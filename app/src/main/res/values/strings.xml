@@ -1,0 +1,4 @@
+<resources>
+    <string name="app_name">Edwin AI Monitor</string>
+    <string name="accessibility_description">Read-only monitor for visible outgoing WhatsApp Business messages. It does not click, type or send messages.</string>
+</resources>
