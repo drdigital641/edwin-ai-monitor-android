@@ -20,6 +20,10 @@ import java.util.Locale
 /** Observer only: never performs accessibility actions or sends WhatsApp messages. */
 class WhatsAppReadService : AccessibilityService() {
     private var lastScan = -300L
+    private var draftContact = ""
+    private var draftText = ""
+    private var draftSeenAt = 0L
+    private val draftTtlMs = 12_000L
 
     override fun onAccessibilityEvent(event: AccessibilityEvent?) {
         if (event == null || event.packageName?.toString() != BridgeConfig.WHATSAPP_BUSINESS_PACKAGE) return
@@ -48,15 +52,39 @@ class WhatsAppReadService : AccessibilityService() {
         if (tree == null) return
         val now = System.currentTimeMillis()
         val contact = MonitorRules.contact(tree) ?: return
+        val compose = MonitorRules.flatten(tree).filter { it.id == "entry" && it.editable }.singleOrNull()
         if (sendClick) {
-            // Read compose contents at the actual click. Never use a stale draft after it clears.
-            val compose = MonitorRules.flatten(tree).filter { it.id == "entry" && it.editable }.singleOrNull() ?: return
-            if (!MonitorRules.usable(compose.text)) return
             val lag = SystemClock.uptimeMillis() - event.eventTime
             if (lag !in 0..5000) return
+
+            // WhatsApp may clear the compose EditText before Accessibility exposes the click tree.
+            // Prefer the live value; otherwise consume only a very recent draft captured in this same chat.
+            val live = compose?.text?.takeIf { MonitorRules.usable(it) }
+            val cached = if (
+                contact == draftContact &&
+                now - draftSeenAt in 0..draftTtlMs &&
+                MonitorRules.usable(draftText)
+            ) draftText else null
+            val outgoing = live ?: cached ?: return
+
+            draftContact = ""
+            draftText = ""
+            draftSeenAt = 0L
+
             val time = Instant.ofEpochMilli(now - lag).truncatedTo(ChronoUnit.MINUTES).toString()
-            Base44Sender.sendOutgoing(this, contact, compose.text, now, time, "accessibility_send_click")
+            Base44Sender.sendOutgoing(this, contact, outgoing, now, time, "accessibility_send_click")
         } else {
+            val currentDraft = compose?.text.orEmpty()
+            if (MonitorRules.usable(currentDraft)) {
+                draftContact = contact
+                draftText = currentDraft
+                draftSeenAt = now
+            } else if (draftContact != contact || now - draftSeenAt > draftTtlMs) {
+                draftContact = ""
+                draftText = ""
+                draftSeenAt = 0L
+            }
+
             MonitorRules.historical(tree, now, DateFormat.is24HourFormat(this)).forEach {
                 Base44Sender.sendOutgoing(this, contact, it.text, now, it.time, "accessibility_historical_right_bubble")
             }
