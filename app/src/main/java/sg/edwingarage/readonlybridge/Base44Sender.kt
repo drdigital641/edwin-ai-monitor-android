@@ -40,6 +40,7 @@ object Base44Sender {
 
         val identity = contact.lowercase() + "|" +
             message.replace(Regex("\\s+"), " ").trim().lowercase() + "|" +
+            (if (trustedSameBubble) "trusted" else "untrusted") + "|" +
             (candidateCanonical ?: "no-time")
         val hash = sha256(identity)
         if (!BridgeState.reserve(app, hash)) return
