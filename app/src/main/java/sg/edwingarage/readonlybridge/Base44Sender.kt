@@ -18,7 +18,8 @@ object Base44Sender {
         observedAtMs: Long,
         candidateMessageTime: String?,
         detectedVia: String,
-        trustedSameBubble: Boolean
+        trustedSameBubble: Boolean,
+        correlationId: String? = null
     ) {
         val app = context.applicationContext
         val contact = contactTitle.trim()
@@ -41,7 +42,7 @@ object Base44Sender {
         val identity = contact.lowercase() + "|" +
             message.replace(Regex("\\s+"), " ").trim().lowercase() + "|" +
             (if (trustedSameBubble) "trusted" else "untrusted") + "|" +
-            (candidateCanonical ?: "no-time")
+            (correlationId?.takeIf { it.isNotBlank() } ?: candidateCanonical ?: "no-time")
         val hash = sha256(identity)
         if (!BridgeState.reserve(app, hash)) return
 
@@ -50,6 +51,7 @@ object Base44Sender {
             put("read_only", true)
             put("author", "human")
             put("detected_via", detectedVia)
+            if (!correlationId.isNullOrBlank()) put("correlation_id", correlationId)
             if (candidateCanonical != null) put("candidate_message_time", candidateCanonical)
             if (authoritative != null) {
                 put("message_time", authoritative)
@@ -78,6 +80,7 @@ object Base44Sender {
             put("device_id", deviceId)
             put("direction", "outgoing")
             put("payload_hash", hash)
+            if (!correlationId.isNullOrBlank()) put("correlation_id", correlationId)
             put("meta", meta)
         }.toString()
 
