@@ -51,8 +51,9 @@ class WhatsAppReadService : AccessibilityService() {
 
         when (event.eventType) {
             AccessibilityEvent.TYPE_VIEW_CLICKED -> {
+                // Do not scan synchronously on Send click: the old last bubble can still be on screen.
+                // handleSendClick schedules post-render scans after WhatsApp has had time to create the new bubble.
                 handleSendClick(event)
-                scanVisibleConversation("event_view_clicked")
             }
             AccessibilityEvent.TYPE_WINDOW_STATE_CHANGED -> {
                 scanVisibleConversation("event_window_state")
@@ -170,6 +171,7 @@ class WhatsAppReadService : AccessibilityService() {
             )
 
             val exactPending = pendingActive &&
+                now - pendingSendClickedAtMs >= 150L &&
                 normalize(contact) == normalize(pendingSendContact) &&
                 normalize(message) == normalize(pendingSendText)
 
