@@ -10,6 +10,14 @@ import java.security.MessageDigest
 import java.time.Instant
 import java.util.concurrent.Executors
 
+/**
+ * Uploads raw sensor evidence to the Base44 monitor app.
+ *
+ * Critical timestamp rule:
+ * - observedAtMs is scanner observation time only.
+ * - messageTime/whatsapp_time is sent only when trustedSameBubble=true.
+ * - Base44 remains the normalization boundary and preserves raw evidence separately.
+ */
 object Base44Sender {
     private val executor = Executors.newSingleThreadExecutor()
 
@@ -21,15 +29,18 @@ object Base44Sender {
         messageTime: String?,
         trigger: String,
         selectedBounds: Rect,
-        nearbyCandidates: JSONArray
+        nearbyCandidates: JSONArray,
+        trustedSameBubble: Boolean
     ) {
         val app = context.applicationContext
         val message = messageText.trim()
         if (message.isBlank()) return
 
-        val canonical = messageTime?.let {
-            try { Instant.parse(it).toString() } catch (_: Exception) { null }
-        }
+        val canonical = if (trustedSameBubble) {
+            messageTime?.let {
+                try { Instant.parse(it).toString() } catch (_: Exception) { null }
+            }
+        } else null
 
         val deviceId = BridgeState.deviceId(app)
         val token = BridgeState.deviceToken(app)
@@ -38,26 +49,40 @@ object Base44Sender {
             return
         }
 
-        val dedupeTime = canonical ?: (observedAtMs / 60_000L).toString()
-        val hash = sha256(deviceId + "|" + contactTitle + "|" + message + "|" + dedupeTime)
+        val identityTime = canonical ?: "untrusted"
+        val identity = deviceId + "|" + contactTitle.trim().lowercase() + "|" +
+            message.replace(Regex("\\s+"), " ").trim().lowercase() + "|" +
+            identityTime + "|" + selectedBounds.left + "|" + selectedBounds.top
+        val hash = sha256(identity)
         val eventId = "acc-" + hash.take(32)
+
+        if (!BridgeState.reserve(app, hash)) return
 
         executor.execute {
             var conn: HttpURLConnection? = null
             try {
                 val meta = JSONObject().apply {
-                    put("reader_version", "1.3-reliability-raw")
+                    put("reader_version", "2.1-exact-bubble-time")
                     put("read_only", true)
                     put("detection", "right_side_accessibility_text")
                     put("capture_trigger", trigger)
-                    put("selected_bounds", selectedBounds.left.toString() + "," + selectedBounds.top + "," + selectedBounds.right + "," + selectedBounds.bottom)
+                    put(
+                        "selected_bounds",
+                        selectedBounds.left.toString() + "," + selectedBounds.top + "," +
+                            selectedBounds.right + "," + selectedBounds.bottom
+                    )
                     put("nearby_right_candidates", nearbyCandidates)
+                    put("author", "human")
                     if (canonical != null) {
                         put("message_time", canonical)
                         put("whatsapp_time", canonical)
-                        put("timestamp_confidence", "same_visible_right_bubble")
+                        put("timestamp_confidence", "exact_same_bubble")
+                        put("timestamp_provenance", "exact_same_bubble_clock")
+                        put("direction_confidence", "right_side_exact_bubble")
                     } else {
-                        put("timestamp_confidence", "unavailable_not_guessed")
+                        put("timestamp_confidence", "historical_same_container_untrusted")
+                        put("timestamp_provenance", "untrusted_historical_clock")
+                        put("direction_confidence", "right_side_historical_candidate")
                     }
                 }
 
@@ -89,15 +114,16 @@ object Base44Sender {
                 }
                 conn.outputStream.use { it.write(body.toByteArray(Charsets.UTF_8)) }
                 val code = conn.responseCode
-                val status = if (code in 200..299) {
-                    "Uploaded to Base44 (" + code + ")"
-                } else if (code == 401) {
-                    "Pairing expired/invalid — pair again"
+                if (code in 200..299) {
+                    BridgeState.acknowledge(app, hash)
+                    BridgeState.saveObservation(app, contactTitle, message, "Uploaded to Base44 ($code)")
                 } else {
-                    "Base44 HTTP " + code
+                    BridgeState.release(app, hash)
+                    val status = if (code == 401) "Pairing expired/invalid — pair again" else "Base44 HTTP $code"
+                    BridgeState.saveObservation(app, contactTitle, message, status)
                 }
-                BridgeState.saveObservation(app, contactTitle, message, status)
             } catch (e: Exception) {
+                BridgeState.release(app, hash)
                 BridgeState.saveObservation(app, contactTitle, message, "Upload error: " + e.javaClass.simpleName)
             } finally {
                 conn?.disconnect()
