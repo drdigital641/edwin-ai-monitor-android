@@ -4,6 +4,8 @@ on:
   workflow_dispatch:
   push:
     branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
 
 jobs:
   build:
@@ -29,7 +31,7 @@ jobs:
         with:
           gradle-version: "8.10.2"
 
-      - name: Verify v2.1 timestamp safety contract
+      - name: Verify v2.2 timestamp safety contract
         run: |
           grep -q 'versionName = "2.2.0"' app/build.gradle.kts
           grep -q 'reader_version", "2.2-v2-core-exact-bubble"' app/src/main/java/sg/edwingarage/readonlybridge/Base44Sender.kt
