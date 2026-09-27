@@ -64,6 +64,24 @@ class MonitorRulesTest {
         assertEquals("2026-09-26T16:00:00Z", MonitorRules.resolveTime("Today", "12:00 am", midnight, false))
         assertEquals("2026-09-26T15:59:00Z", MonitorRules.resolveTime("Yesterday", "11:59 pm", midnight, false))
     }
+    @Test fun exactPostSendAcceptsSameBubbleWithoutDateAnchor() {
+        val c = chat(date = null)
+        assertEquals(
+            ManualMessage("Your car is ready", "2026-09-27T03:30:00Z"),
+            MonitorRules.exactPostSend(c, "Your car is ready", now, false)
+        )
+    }
+
+    @Test fun exactPostSendFailsClosedForDuplicateVisibleTextOrWrongSide() {
+        val duplicate = bubble().copy(box = Box(450, 600, 950, 700), children = listOf(
+            ReadNode("message_text", "Your car is ready", box = Box(465, 620, 870, 660)),
+            ReadNode("date", "11:30 am", box = Box(800, 660, 930, 685))
+        ))
+        val root = chat(extra = listOf(duplicate), date = null)
+        assertNull(MonitorRules.exactPostSend(root, "Your car is ready", now, false))
+        assertNull(MonitorRules.exactPostSend(chat(bubble(x = 50), date = null), "Your car is ready", now, false))
+    }
+
     @Test fun identityUsesAuthoritativeTimeAndNormalizedText() {
         val a = MonitorRules.identity(" Tan ", "Car  ready", "2026-09-27T03:30:00Z")
         assertEquals(a, MonitorRules.identity("tan", "car\nready", "2026-09-27T03:30:00Z"))
