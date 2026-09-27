@@ -57,6 +57,13 @@ class WhatsAppReadService : AccessibilityService() {
             pendingText = compose.text
             pendingClickAtMs = System.currentTimeMillis()
 
+            // Preserve V2's proven immediate manual-text capture, but do not attach a WhatsApp time yet.
+            // Timestamp is independently enriched only after the exact rendered bubble is verified.
+            Base44Sender.sendOutgoing(
+                this, contact, compose.text, pendingClickAtMs, null,
+                "accessibility_send_click_text_only", false
+            )
+
             // Do not manufacture a send time from the click. Wait until WhatsApp renders the
             // outgoing bubble, then bind the clock from that exact bubble to this exact draft.
             handler.postDelayed({ scanPostSend("post_send_250ms") }, 250L)
