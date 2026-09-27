@@ -302,7 +302,7 @@ internal object MonitorRules {
         }
 
         walk(root, emptyList())
-        return matches.distinct().singleOrNull()
+        return matches.singleOrNull()
     }
 
     private fun dateLike(s: String): Boolean {
