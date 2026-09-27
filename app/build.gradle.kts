@@ -9,8 +9,8 @@ android {
         applicationId = "sg.edwingarage.readonlybridge"
         minSdk = 26
         targetSdk = 35
-        versionCode = 5
-        versionName = "1.3-reliability-raw"
+        versionCode = 6
+        versionName = "2.1.0"
     }
     buildTypes { release { isMinifyEnabled = false } }
     compileOptions {
