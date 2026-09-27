@@ -26,6 +26,7 @@ class WhatsAppReadService : AccessibilityService() {
     private var pendingContact = ""
     private var pendingText = ""
     private var pendingClickAtMs = 0L
+    private var pendingCorrelationId = ""
 
     override fun onAccessibilityEvent(event: AccessibilityEvent?) {
         if (event == null || event.packageName?.toString() != BridgeConfig.WHATSAPP_BUSINESS_PACKAGE) return
@@ -56,12 +57,13 @@ class WhatsAppReadService : AccessibilityService() {
             pendingContact = contact
             pendingText = compose.text
             pendingClickAtMs = System.currentTimeMillis()
+            pendingCorrelationId = "send-" + pendingClickAtMs.toString()
 
             // Preserve V2's proven immediate manual-text capture, but do not attach a WhatsApp time yet.
             // Timestamp is independently enriched only after the exact rendered bubble is verified.
             Base44Sender.sendOutgoing(
                 this, contact, compose.text, pendingClickAtMs, null,
-                "accessibility_send_click_text_only", false
+                "accessibility_send_click_text_only", false, pendingCorrelationId
             )
 
             // Do not manufacture a send time from the click. Wait until WhatsApp renders the
@@ -103,11 +105,12 @@ class WhatsAppReadService : AccessibilityService() {
         ) ?: return
 
         Base44Sender.sendOutgoing(
-            this, contact, exact.text, now, exact.time, trigger, true
+            this, contact, exact.text, now, exact.time, trigger, true, pendingCorrelationId
         )
         pendingContact = ""
         pendingText = ""
         pendingClickAtMs = 0L
+        pendingCorrelationId = ""
     }
 
     private fun scanHistorical(trigger: String) {
