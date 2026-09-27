@@ -29,13 +29,28 @@ jobs:
         with:
           gradle-version: "8.10.2"
 
+      - name: Verify v2.1 timestamp safety contract
+        run: |
+          grep -q 'versionName = "2.1.0"' app/build.gradle.kts
+          grep -q 'reader_version", "2.1-exact-bubble-time"' app/src/main/java/sg/edwingarage/readonlybridge/Base44Sender.kt
+          grep -q 'timestamp_confidence", "exact_same_bubble"' app/src/main/java/sg/edwingarage/readonlybridge/Base44Sender.kt
+          grep -q 'observedAtMs' app/src/main/java/sg/edwingarage/readonlybridge/Base44Sender.kt
+          if grep -R -n 'same_visible_right_bubble' app/src/main/java; then
+            echo "Legacy ambiguous timestamp trust marker found"
+            exit 1
+          fi
+          if grep -R -n 'reader_version.*1.3-reliability-raw' app/src/main/java; then
+            echo "Legacy v1.3 reader marker found"
+            exit 1
+          fi
+
       - name: Build debug APK
         run: gradle :app:assembleDebug --stacktrace
 
       - name: Upload APK
         uses: actions/upload-artifact@v4
         with:
-          name: Edwin-AI-Monitor-APK
+          name: Edwin-AI-Monitor-v2.1.0-APK
           path: app/build/outputs/apk/debug/app-debug.apk
           if-no-files-found: error
           retention-days: 30
