@@ -44,6 +44,8 @@ object Base44Sender {
 
         val deviceId = BridgeState.deviceId(app)
         val token = BridgeState.deviceToken(app)
+        // Snapshot diagnostic candidates before handing work to the background executor.
+        val nearbySnapshot = JSONArray(nearbyCandidates.toString())
         if (token.isBlank()) {
             BridgeState.saveObservation(app, contactTitle, message, "Not paired with Base44")
             return
@@ -71,7 +73,7 @@ object Base44Sender {
                         selectedBounds.left.toString() + "," + selectedBounds.top + "," +
                             selectedBounds.right + "," + selectedBounds.bottom
                     )
-                    put("nearby_right_candidates", nearbyCandidates)
+                    put("nearby_right_candidates", nearbySnapshot)
                     put("author", "human")
                     if (canonical != null) {
                         put("message_time", canonical)
