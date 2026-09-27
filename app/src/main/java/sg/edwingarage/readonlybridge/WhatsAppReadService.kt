@@ -284,7 +284,7 @@ class WhatsAppReadService : AccessibilityService() {
             val rect = Rect()
             node.getBoundsInScreen(rect)
             if (rect.isEmpty || rect.centerY() > screenHeight * 0.18) return@mapNotNull null
-            val id = (node.viewIdName ?: "").lowercase(Locale.ENGLISH)
+            val id = (node.viewIdResourceName ?: "").lowercase(Locale.ENGLISH)
             if (id.contains("search") || id.contains("tab") || id.contains("menu")) return@mapNotNull null
             text
         }.firstOrNull().orEmpty()
@@ -315,7 +315,7 @@ class WhatsAppReadService : AccessibilityService() {
     }
 
     private fun isSendButton(node: AccessibilityNodeInfo): Boolean {
-        val id = node.viewIdName ?: ""
+        val id = node.viewIdResourceName ?: ""
         val desc = node.contentDescription?.toString()?.lowercase(Locale.ENGLISH) ?: ""
         val cls = node.className?.toString() ?: ""
         return id.endsWith("/send") || id.endsWith(":id/send") ||
@@ -324,7 +324,7 @@ class WhatsAppReadService : AccessibilityService() {
     }
 
     private fun isComposeOrHeaderNode(node: AccessibilityNodeInfo): Boolean {
-        val id = (node.viewIdName ?: "").lowercase(Locale.ENGLISH)
+        val id = (node.viewIdResourceName ?: "").lowercase(Locale.ENGLISH)
         return id.contains("conversation_name") ||
             id.contains("entry") ||
             id.contains("compose") ||
@@ -511,7 +511,7 @@ class WhatsAppReadService : AccessibilityService() {
     }
 
     private fun findByIdSuffix(node: AccessibilityNodeInfo, suffix: String): String? {
-        val id = node.viewIdName ?: ""
+        val id = node.viewIdResourceName ?: ""
         if (id.endsWith("/$suffix") || id.endsWith(":id/$suffix")) return node.text?.toString()
         for (i in 0 until node.childCount) {
             val child = node.getChild(i) ?: continue
