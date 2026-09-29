@@ -117,6 +117,13 @@ class MainActivity : Activity() {
             }
         })
 
+        root.addView(Button(this).apply {
+            text = "Open Notification Access"
+            setOnClickListener {
+                startActivity(Intent(Settings.ACTION_NOTIFICATION_LISTENER_SETTINGS))
+            }
+        })
+
         root.addView(TextView(this).apply {
             text = "\nHow to use:\n1. Pair with Base44 once.\n2. Enable Edwin AI Monitor in Accessibility.\n3. Open WhatsApp Business normally.\n4. The app observes visible outgoing text only and sends the observation to Base44.\n"
             textSize = 14f
