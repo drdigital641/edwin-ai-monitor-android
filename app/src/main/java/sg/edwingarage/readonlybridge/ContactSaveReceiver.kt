@@ -15,10 +15,16 @@ class ContactSaveReceiver : BroadcastReceiver() {
 
         val phone = intent.getStringExtra("phone")?.trim().orEmpty()
         val carModel = intent.getStringExtra("car_model")?.trim().orEmpty()
-        val whatsappName = intent.getStringExtra("whatsapp_name")?.trim().orEmpty()
+        val suppliedWhatsappName = intent.getStringExtra("whatsapp_name")?.trim().orEmpty()
         val unsaved = intent.getStringExtra("unsaved")?.trim()?.lowercase() in setOf("true", "1", "yes")
+        if (!unsaved || phone.isBlank() || carModel.isBlank()) return
 
-        if (!unsaved || phone.isBlank() || carModel.isBlank() || whatsappName.isBlank()) return
+        val whatsappName = if (suppliedWhatsappName.isNotBlank()) {
+            suppliedWhatsappName
+        } else {
+            WhatsAppNotificationNameService.cachedName(context, phone)
+        }
+        if (whatsappName.isBlank()) return
 
         if (context.checkSelfPermission(android.Manifest.permission.READ_CONTACTS) != PackageManager.PERMISSION_GRANTED ||
             context.checkSelfPermission(android.Manifest.permission.WRITE_CONTACTS) != PackageManager.PERMISSION_GRANTED) {
