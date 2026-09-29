@@ -3,6 +3,8 @@ package sg.edwingarage.readonlybridge
 import android.app.Activity
 import android.content.ComponentName
 import android.content.Intent
+import android.Manifest
+import android.content.pm.PackageManager
 import android.os.Bundle
 import android.provider.Settings
 import android.text.InputType
@@ -22,6 +24,7 @@ class MainActivity : Activity() {
     private lateinit var pairingStatus: TextView
     private lateinit var pairingCode: EditText
     private lateinit var lastStatus: TextView
+    private lateinit var contactsStatus: TextView
 
     private val refresh = object : Runnable {
         override fun run() {
@@ -98,6 +101,22 @@ class MainActivity : Activity() {
             }
         })
 
+        contactsStatus = TextView(this).apply {
+            textSize = 16f
+            setPadding(0, pad, 0, 0)
+        }
+        root.addView(contactsStatus)
+
+        root.addView(Button(this).apply {
+            text = "Grant Contacts Permission"
+            setOnClickListener {
+                requestPermissions(
+                    arrayOf(Manifest.permission.READ_CONTACTS, Manifest.permission.WRITE_CONTACTS),
+                    1001
+                )
+            }
+        })
+
         root.addView(TextView(this).apply {
             text = "\nHow to use:\n1. Pair with Base44 once.\n2. Enable Edwin AI Monitor in Accessibility.\n3. Open WhatsApp Business normally.\n4. The app observes visible outgoing text only and sends the observation to Base44.\n"
             textSize = 14f
@@ -137,6 +156,14 @@ class MainActivity : Activity() {
         } else {
             "Accessibility reader: DISABLED\n"
         }
+
+        contactsStatus.text =
+            if (checkSelfPermission(Manifest.permission.READ_CONTACTS) == PackageManager.PERMISSION_GRANTED &&
+                checkSelfPermission(Manifest.permission.WRITE_CONTACTS) == PackageManager.PERMISSION_GRANTED) {
+                "Contacts auto-save permission: ENABLED ✅"
+            } else {
+                "Contacts auto-save permission: NOT GRANTED"
+            }
 
         val s = BridgeState.snapshot(this)
         val time = if (s.time > 0) {
