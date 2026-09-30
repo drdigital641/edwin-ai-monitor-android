@@ -24,18 +24,28 @@ class ContactSaveReceiver : BroadcastReceiver() {
         } else {
             WhatsAppNotificationNameService.cachedName(context, phone)
         }
-        if (whatsappName.isBlank()) return
+        if (whatsappName.isBlank()) {
+            Base44Sender.sendContactSaveStatus(context, phone, "", carModel, "", "skipped", "no_whatsapp_name_or_fallback")
+            return
+        }
 
         if (context.checkSelfPermission(android.Manifest.permission.READ_CONTACTS) != PackageManager.PERMISSION_GRANTED ||
             context.checkSelfPermission(android.Manifest.permission.WRITE_CONTACTS) != PackageManager.PERMISSION_GRANTED) {
             Toast.makeText(context, "Grant Contacts permission in Edwin AI Monitor.", Toast.LENGTH_LONG).show()
+            Base44Sender.sendContactSaveStatus(context, phone, "", carModel, whatsappName, "skipped", "contacts_permission_missing")
             return
         }
 
-        if (contactExists(context, phone)) return
+        if (contactExists(context, phone)) {
+            Base44Sender.sendContactSaveStatus(context, phone, "", carModel, whatsappName, "skipped", "already_exists")
+            return
+        }
 
         val displayName = (clean(carModel) + " " + clean(whatsappName)).replace(Regex("\\s+"), " ").trim()
-        if (displayName.isBlank()) return
+        if (displayName.isBlank()) {
+            Base44Sender.sendContactSaveStatus(context, phone, "", carModel, whatsappName, "skipped", "empty_display_name")
+            return
+        }
 
         val ops = arrayListOf<ContentProviderOperation>()
         ops += ContentProviderOperation.newInsert(ContactsContract.RawContacts.CONTENT_URI)
@@ -55,8 +65,18 @@ class ContactSaveReceiver : BroadcastReceiver() {
             .build()
 
         runCatching { context.contentResolver.applyBatch(ContactsContract.AUTHORITY, ops) }
-            .onSuccess { Toast.makeText(context, "Saved: $displayName", Toast.LENGTH_SHORT).show() }
-            .onFailure { Toast.makeText(context, "Contact save failed.", Toast.LENGTH_SHORT).show() }
+            .onSuccess {
+                Toast.makeText(context, "Saved: $displayName", Toast.LENGTH_SHORT).show()
+                Base44Sender.sendContactSaveStatus(
+                    context, phone, displayName, carModel, whatsappName, "saved", "created"
+                )
+            }
+            .onFailure {
+                Toast.makeText(context, "Contact save failed.", Toast.LENGTH_SHORT).show()
+                Base44Sender.sendContactSaveStatus(
+                    context, phone, displayName, carModel, whatsappName, "failed", it.javaClass.simpleName
+                )
+            }
     }
 
     private fun contactExists(context: Context, phone: String): Boolean {
