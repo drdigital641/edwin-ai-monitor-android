@@ -11,6 +11,51 @@ import java.util.concurrent.Executors
 object Base44Sender {
     private val executor = Executors.newSingleThreadExecutor()
 
+    fun sendContactSaveStatus(
+        context: Context,
+        phone: String,
+        contactName: String,
+        carModel: String,
+        whatsappName: String,
+        status: String,
+        reason: String
+    ) {
+        val app = context.applicationContext
+        val deviceId = BridgeState.deviceId(app)
+        val token = BridgeState.deviceToken(app)
+        if (deviceId.isBlank() || token.isBlank()) return
+
+        val body = JSONObject().apply {
+            put("event_id", "contact-" + System.currentTimeMillis())
+            put("phone", phone)
+            put("contact_name", contactName)
+            put("car_model", carModel)
+            put("whatsapp_name", whatsappName)
+            put("status", status)
+            put("reason", reason)
+        }.toString()
+
+        executor.execute {
+            var conn: HttpURLConnection? = null
+            try {
+                conn = (URL(BridgeConfig.CONTACT_SAVE_STATUS_URL).openConnection() as HttpURLConnection).apply {
+                    requestMethod = "POST"
+                    connectTimeout = 8_000
+                    readTimeout = 8_000
+                    doOutput = true
+                    setRequestProperty("Content-Type", "application/json")
+                    setRequestProperty("X-Device-Id", deviceId)
+                    setRequestProperty("X-Device-Token", token)
+                }
+                conn.outputStream.use { it.write(body.toByteArray(Charsets.UTF_8)) }
+                conn.responseCode
+            } catch (_: Exception) {
+            } finally {
+                conn?.disconnect()
+            }
+        }
+    }
+
     fun sendOutgoing(
         context: Context,
         contactTitle: String,
