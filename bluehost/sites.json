@@ -1,0 +1,10 @@
+{
+  "_help": "One entry per website. remote_dir is relative to the Bluehost home directory (for example public_html or public_html/clinic-domain.com). Run the 'Bluehost - Check connection' workflow to list the real folders, then replace every CHANGE_ME.",
+  "sites": {
+    "sggarage": { "domain": "CHANGE_ME", "remote_dir": "CHANGE_ME" },
+    "clinic":   { "domain": "CHANGE_ME", "remote_dir": "CHANGE_ME" },
+    "danny":    { "domain": "CHANGE_ME", "remote_dir": "CHANGE_ME" },
+    "alicia":   { "domain": "CHANGE_ME", "remote_dir": "CHANGE_ME" },
+    "site5":    { "domain": "CHANGE_ME", "remote_dir": "CHANGE_ME" }
+  }
+}

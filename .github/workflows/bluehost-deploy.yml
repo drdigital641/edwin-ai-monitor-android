@@ -1,0 +1,129 @@
+name: Bluehost - Deploy
+
+# Publishes sites/<site>/ to Bluehost over SSH.
+#  - Automatically on every push to main that changes files under sites/<site>/
+#  - Manually (Actions tab or an agent) for one site, with an optional dry run
+# Before every real deploy the live folder is backed up on the server to
+# ~/deploy-backups/<site>/ (last 10 kept). Files listed in bluehost/excludes.txt
+# (wp-config.php, uploads, ...) are never overwritten or deleted.
+on:
+  push:
+    branches: [ main ]
+    paths: [ "sites/**" ]
+  workflow_dispatch:
+    inputs:
+      site:
+        description: Site to deploy
+        required: true
+        type: choice
+        options: [sggarage, clinic, danny, alicia, site5]
+      dry_run:
+        description: Only show what would change
+        type: boolean
+        default: true
+      delete_removed:
+        description: Also delete server files that are not in the repo
+        type: boolean
+        default: false
+
+permissions:
+  contents: read
+
+jobs:
+  plan:
+    runs-on: ubuntu-24.04
+    outputs:
+      sites: ${{ steps.pick.outputs.sites }}
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - id: pick
+        env:
+          EVENT: ${{ github.event_name }}
+          INPUT_SITE: ${{ inputs.site }}
+          BEFORE: ${{ github.event.before }}
+          AFTER: ${{ github.sha }}
+        run: |
+          if [ "$EVENT" = "workflow_dispatch" ]; then
+            sites=$(jq -cn --arg s "$INPUT_SITE" '[$s]')
+          else
+            if [ -z "$BEFORE" ] || ! git cat-file -e "$BEFORE^{commit}" 2>/dev/null; then
+              BEFORE=$(git rev-parse "$AFTER^")
+            fi
+            sites=$(git diff --name-only "$BEFORE" "$AFTER" -- sites/ \
+              | cut -d/ -f2 | sort -u \
+              | while read -r s; do jq -e --arg s "$s" '.sites[$s]' bluehost/sites.json >/dev/null && echo "$s"; done \
+              | jq -Rcs 'split("\n") | map(select(length>0))')
+          fi
+          echo "Sites to deploy: $sites"
+          echo "sites=$sites" >> "$GITHUB_OUTPUT"
+
+  deploy:
+    needs: plan
+    if: needs.plan.outputs.sites != '[]'
+    runs-on: ubuntu-24.04
+    environment: bluehost
+    strategy:
+      fail-fast: false
+      matrix:
+        site: ${{ fromJSON(needs.plan.outputs.sites) }}
+    concurrency:
+      group: bluehost-${{ matrix.site }}
+      cancel-in-progress: false
+    env:
+      SITE: ${{ matrix.site }}
+      DRY_RUN: ${{ github.event_name == 'workflow_dispatch' && inputs.dry_run || false }}
+      DELETE_REMOVED: ${{ github.event_name == 'workflow_dispatch' && inputs.delete_removed || false }}
+      BLUEHOST_HOST: ${{ secrets.BLUEHOST_HOST }}
+      BLUEHOST_USER: ${{ secrets.BLUEHOST_USER }}
+      BLUEHOST_PORT: ${{ vars.BLUEHOST_PORT }}
+      BLUEHOST_SSH_KEY: ${{ secrets.BLUEHOST_SSH_KEY }}
+      BLUEHOST_SSH_PASSPHRASE: ${{ secrets.BLUEHOST_SSH_PASSPHRASE }}
+      BLUEHOST_KNOWN_HOSTS: ${{ secrets.BLUEHOST_KNOWN_HOSTS }}
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Resolve site
+        run: |
+          bluehost/site-config.sh "$SITE" >> "$GITHUB_ENV"
+          if [ ! -d "sites/$SITE" ] || [ -z "$(ls -A "sites/$SITE")" ]; then
+            echo "::error::sites/$SITE is empty. Run 'Bluehost - Pull site into repo' first." >&2
+            exit 1
+          fi
+
+      - name: Prepare SSH
+        run: bluehost/ssh-setup.sh
+
+      - name: Back up live folder on server
+        if: env.DRY_RUN != 'true'
+        run: |
+          ssh bluehost 'bash -s' -- "$SITE" "$REMOTE_DIR" <<'REMOTE'
+          set -euo pipefail
+          site="$1"; dir="$2"
+          dest="$HOME/deploy-backups/$site"
+          mkdir -p "$dest"
+          ts=$(date -u +%Y%m%d-%H%M%S)
+          tar -czf "$dest/$ts.tgz" -C "$HOME/$dir" \
+            --exclude=./wp-content/uploads --exclude=./wp-content/cache .
+          ls -1t "$dest"/*.tgz | tail -n +11 | xargs -r rm -f
+          echo "Backup: ~/deploy-backups/$site/$ts.tgz"
+          REMOTE
+
+      - name: Upload changes
+        run: |
+          flags=(-rlt --checksum --omit-dir-times --chmod=D755,F644 --itemize-changes
+                 --exclude-from=bluehost/excludes.txt)
+          [ "$DRY_RUN" = "true" ] && flags+=(--dry-run) && echo "DRY RUN - nothing will change"
+          [ "$DELETE_REMOVED" = "true" ] && flags+=(--delete)
+          rsync "${flags[@]}" "sites/$SITE/" "bluehost:$REMOTE_DIR/"
+
+      - name: Check site responds
+        if: env.DRY_RUN != 'true' && env.DOMAIN != '' && env.DOMAIN != 'CHANGE_ME'
+        run: |
+          code=$(curl -s -o /dev/null -w '%{http_code}' -L --max-time 30 "https://$DOMAIN/")
+          echo "https://$DOMAIN/ -> HTTP $code"
+          if [ "$code" -ge 500 ] || [ "$code" = "000" ]; then
+            echo "::error::Site returned $code after deploy. Restore with the backup printed above." >&2
+            exit 1
+          fi

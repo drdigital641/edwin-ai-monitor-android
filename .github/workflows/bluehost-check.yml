@@ -1,0 +1,60 @@
+name: Bluehost - Check connection
+
+# Run this first. It proves the SSH key works, prints the server's host key
+# (save it as the BLUEHOST_KNOWN_HOSTS secret) and lists the website folders
+# so bluehost/sites.json can be filled in. No files are changed.
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  check:
+    runs-on: ubuntu-24.04
+    environment: bluehost
+    env:
+      BLUEHOST_HOST: ${{ secrets.BLUEHOST_HOST }}
+      BLUEHOST_USER: ${{ secrets.BLUEHOST_USER }}
+      BLUEHOST_PORT: ${{ vars.BLUEHOST_PORT }}
+      BLUEHOST_SSH_KEY: ${{ secrets.BLUEHOST_SSH_KEY }}
+      BLUEHOST_SSH_PASSPHRASE: ${{ secrets.BLUEHOST_SSH_PASSPHRASE }}
+      BLUEHOST_KNOWN_HOSTS: ${{ secrets.BLUEHOST_KNOWN_HOSTS }}
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Prepare SSH
+        run: bluehost/ssh-setup.sh
+
+      - name: Server host key (copy into the BLUEHOST_KNOWN_HOSTS secret)
+        run: |
+          echo "----- copy everything between the lines -----"
+          ssh-keyscan -p "${BLUEHOST_PORT:-22}" -t ed25519,rsa -T 15 "$BLUEHOST_HOST" 2>/dev/null
+          echo "---------------------------------------------"
+
+      - name: Login test and website folders
+        run: |
+          ssh bluehost 'bash -s' <<'REMOTE'
+          set -u
+          echo "Logged in as $(whoami) on $(hostname)"
+          echo "Home: $HOME"
+          echo
+          echo "== Folders that look like websites =="
+          for d in "$HOME/public_html" "$HOME"/public_html/*/ "$HOME"/*/; do
+            [ -d "$d" ] || continue
+            if [ -f "$d/index.php" ] || [ -f "$d/index.html" ] || [ -f "$d/wp-config.php" ]; then
+              kind="static/php"
+              [ -f "$d/wp-config.php" ] && kind="WordPress"
+              size=$(du -sh --exclude=wp-content/uploads "$d" 2>/dev/null | cut -f1)
+              echo "${d#$HOME/}  [$kind, ${size:-?} excluding uploads]"
+            fi
+          done
+          echo
+          echo "== Addon/parked domain map (if available) =="
+          if command -v uapi >/dev/null 2>&1; then
+            uapi --output=jsonpretty DomainInfo domains_data 2>/dev/null \
+              | grep -E '"(domain|documentroot)"' | sed 's/^ *//' || true
+          else
+            echo "(uapi not available)"
+          fi
+          REMOTE

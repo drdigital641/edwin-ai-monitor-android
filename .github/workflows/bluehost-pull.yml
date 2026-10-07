@@ -1,0 +1,62 @@
+name: Bluehost - Pull site into repo
+
+# Copies the live files of one site from Bluehost into sites/<site>/ and
+# commits them, so agents always edit the real current version.
+# Secrets (wp-config.php, .env, ...) and uploads are never pulled; see bluehost/excludes.txt.
+on:
+  workflow_dispatch:
+    inputs:
+      site:
+        description: Site to pull
+        required: true
+        type: choice
+        options: [sggarage, clinic, danny, alicia, site5]
+
+permissions:
+  contents: write
+
+concurrency:
+  group: bluehost-${{ inputs.site }}
+  cancel-in-progress: false
+
+jobs:
+  pull:
+    runs-on: ubuntu-24.04
+    environment: bluehost
+    env:
+      SITE: ${{ inputs.site }}
+      BLUEHOST_HOST: ${{ secrets.BLUEHOST_HOST }}
+      BLUEHOST_USER: ${{ secrets.BLUEHOST_USER }}
+      BLUEHOST_PORT: ${{ vars.BLUEHOST_PORT }}
+      BLUEHOST_SSH_KEY: ${{ secrets.BLUEHOST_SSH_KEY }}
+      BLUEHOST_SSH_PASSPHRASE: ${{ secrets.BLUEHOST_SSH_PASSPHRASE }}
+      BLUEHOST_KNOWN_HOSTS: ${{ secrets.BLUEHOST_KNOWN_HOSTS }}
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Resolve site
+        run: bluehost/site-config.sh "$SITE" >> "$GITHUB_ENV"
+
+      - name: Prepare SSH
+        run: bluehost/ssh-setup.sh
+
+      - name: Download live files
+        run: |
+          mkdir -p "sites/$SITE"
+          # --max-size keeps files GitHub would reject (100 MB) out of git.
+          rsync -rlt --delete --max-size=50m \
+            --exclude-from=bluehost/excludes.txt \
+            "bluehost:$REMOTE_DIR/" "sites/$SITE/"
+          du -sh "sites/$SITE"
+
+      - name: Commit snapshot
+        run: |
+          git config user.name "bluehost-sync"
+          git config user.email "bluehost-sync@users.noreply.github.com"
+          git add -A "sites/$SITE"
+          if git diff --cached --quiet; then
+            echo "No changes: repo already matches the live site."
+            exit 0
+          fi
+          git commit -m "Snapshot $SITE from Bluehost ($(date -u +%Y-%m-%dT%H:%MZ))"
+          git push origin "HEAD:${GITHUB_REF_NAME}"

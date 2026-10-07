@@ -1,0 +1,21 @@
+# Never pulled into git and never overwritten or deleted on the server.
+# Secrets
+wp-config.php
+.env
+.env.*
+*.pem
+*.key
+.htpasswd
+.user.ini
+php.ini
+# Server-managed / large / generated
+.well-known/
+cgi-bin/
+wp-content/uploads/
+wp-content/cache/
+wp-content/upgrade/
+wp-content/backups*/
+wp-content/updraft/
+error_log
+*.log
+.DS_Store
