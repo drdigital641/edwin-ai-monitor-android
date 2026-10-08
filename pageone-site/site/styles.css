@@ -420,3 +420,9 @@ a:focus-visible, button:focus-visible, input:focus-visible, summary:focus-visibl
 .article-cta .btn { margin: 6px 10px 0 0; }
 .article-more { padding-left: 20px; }
 @media (max-width: 640px) { .article-cta { padding: 22px; } .article-cta .btn { width: 100%; margin: 8px 0 0; } }
+
+/* Results */
+.proof .kpis { margin: 0; }
+.proof .price-strip { margin-top: 24px; }
+.kpi .label { line-height: 1.4; }
+@media (max-width: 480px) { .kpis { grid-template-columns: 1fr; } .kpi .value { font-size: 1.7rem; } }

@@ -13,7 +13,7 @@ NAV = [
     ("/get-found/", "Get Found"),
     ("/seo-boost/", "SEO Boost"),
     ("/pricing/", "Pricing"),
-    ("/#stories", "Clients"),
+    ("/results/", "Results"),
     ("/about/", "About"),
     ("/faq/", "FAQ"),
 ]
@@ -21,6 +21,12 @@ NAV = [
 WA_ICON = '<svg viewBox="0 0 24 24" width="28" height="28" aria-hidden="true"><path fill="currentColor" d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm0 18.2c-1.5 0-3-.4-4.3-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8-.2-.1-.4-.1-.6.1l-.8 1c-.1.2-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.3-.4.3-.4.7-1.3.1-.2 0-.3 0-.4l-.8-1.8c-.2-.5-.4-.4-.6-.4h-.5c-.2 0-.4.1-.6.3-.2.2-.8.8-.8 2s.8 2.3 1 2.5c.1.2 1.7 2.6 4.1 3.6 1.5.7 2.1.7 2.9.6.5-.1 1.5-.6 1.7-1.2.2-.6.2-1.1.2-1.2-.1-.1-.3-.2-.5-.3z"/></svg>'
 
 PROVIDER = {"@id": BIZ_ID}
+
+FOUNDER = {"@type": "Person", "name": "Edwin", "jobTitle": "Founder, Page One Singapore",
+           "alumniOf": {"@type": "CollegeOrUniversity", "name": "National University of Singapore", "sameAs": "https://www.nus.edu.sg/"},
+           "hasCredential": {"@type": "EducationalOccupationalCredential", "credentialCategory": "degree",
+                             "name": "Bachelor's degree in Computer Science with Honours"},
+           "knowsAbout": ["Computer science", "Search engine optimisation", "AI search visibility", "Small business operations"]}
 
 
 def crumbs_ld(name, url):
@@ -87,7 +93,7 @@ def page(path, title, desc, schemas, body, crumb=None, robots="index, follow, ma
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="/styles.css?v=5">
+  <link rel="stylesheet" href="/styles.css?v=6">
   <script>document.documentElement.classList.add("js");</script>
 {ld}
 </head>
@@ -127,6 +133,7 @@ def page(path, title, desc, schemas, body, crumb=None, robots="index, follow, ma
       <div>
         <h2>Company</h2>
         <a href="/about/">About</a>
+        <a href="/results/">Results</a>
         <a href="/#stories">Clients</a>
         <a href="/articles/">Articles</a>
         <a href="/faq/">FAQ</a>
@@ -429,12 +436,13 @@ FAQS = [
     ("What is an SEO Boost?", "An optional S$10 top-up for faster results. Each Boost is one full improvement round: we check your Google and AI visibility, make improvements, and send a before/after report of what was done and what's next. Your S$20 plan works without it."),
     ("How do you help me show up in ChatGPT and other AI search?", "AI assistants like ChatGPT, Gemini and Perplexity rely on search indexes such as Bing and Google and on clearly structured information. We connect your site to Google and Bing, mark up your business details so machines can read them, publish an llms.txt file, and write content that answers the questions customers ask."),
     ("Who pays for the domain?", "If you need a new domain, it's registered in your name and you pay for it directly (usually S$15–30 a year). You always own your domain."),
+    ("Do you have proof it works?", "Yes. Our results page shows real Google Search Console numbers from the businesses we run. In the 28 days to 5 October 2026, Edwin Garage got 2,280 clicks from Google with an average position of 6.1, and Cleanic Detailing appeared on page one for 1,181 different searches. Results vary by business, so we don't guarantee them."),
     ("Do you guarantee first page on Google?", "No honest provider can guarantee rankings, because Google decides. We guarantee the work: every SEO Boost is documented in a before/after report so you can see exactly what changed."),
     ("What happens if I cancel?", "Your site stays live until the end of the month you paid for. You keep your domain, and you can buy the site files if you want to host them elsewhere."),
     ("How long until my site is live?", "Usually within 7 days of receiving your details and photos."),
 ]
 faq_html = "\n".join(
-    f"        <details><summary>{q}</summary><p>{a.replace('go.yourbrand.com', '<code>go.yourbrand.com</code>').replace('llms.txt', '<code>llms.txt</code>')}</p></details>"
+    f"        <details><summary>{q}</summary><p>{a.replace('go.yourbrand.com', '<code>go.yourbrand.com</code>').replace('llms.txt', '<code>llms.txt</code>').replace('results page', '<a class="link" href="/results/">results page</a>')}</p></details>"
     for q, a in FAQS)
 page("faq/index.html",
      "FAQ: Fees, Contracts, SEO & AI Search | Page One Singapore",
@@ -454,28 +462,48 @@ page("faq/index.html",
 
 # ---------- About ----------
 page("about/index.html",
-     "About Page One Singapore | Tested on Real Businesses",
-     "Page One Singapore runs the websites and Google listings of five Singapore businesses. Affordable Google and AI visibility for new and small businesses.",
+     "About Page One Singapore | Built by a Singapore Business Owner",
+     "Page One Singapore was built by Edwin, an NUS Computer Science (Honours) graduate with 18+ years in business, and proven on real Singapore businesses first.",
      [{"@context": "https://schema.org", "@type": "AboutPage", "url": SITE + "/about/", "name": "About Page One Singapore",
-       "about": PROVIDER, "mainEntity": {"@type": "Person", "name": "Edwin", "jobTitle": "Founder, Page One Singapore",
-                                         "worksFor": PROVIDER, "owns": {"@type": "AutoRepair", "name": "Edwin Garage", "url": "https://sggarage.com/"}}}],
-     hero("About", "Tested on real businesses", "Built on real Singapore businesses, not theory.",
-          "Five local businesses run on Page One today. Every method we offer was tested on them first.", buttons=False) + """
+       "about": PROVIDER, "mainEntity": dict(FOUNDER, worksFor=PROVIDER,
+                                             owns={"@type": "AutoRepair", "name": "Edwin Garage", "url": "https://sggarage.com/"})}],
+     hero("About", "Built by a business owner", "An SEO system built by a Singapore business owner, not an agency.",
+          "Our founder combines a computer science degree with 18+ years of running businesses. Every method was proven on real Singapore businesses before we offered it to you.", buttons=False) + """
 
     <section class="section">
+      <div class="wrap split">
+        <div class="reveal">
+          <p class="kicker">Our founder</p>
+          <h2>Meet Edwin</h2>
+          <p>Edwin graduated from the National University of Singapore (NUS) with a Bachelor's degree in Computer Science with Honours, and has spent more than 18 years running businesses. He owns Edwin Garage, a car workshop in Ang Mo Kio.</p>
+          <p>He built Page One to solve his own problem: getting found on Google without paying for work he couldn't see. He combined his computing background with AI to build a system that does the SEO work every day, and used it on his own workshop first.</p>
+          <p>It worked. Edwin Garage now gets over 2,000 clicks a month from Google, and the same system runs four other Singapore businesses today.</p>
+          <a class="card-link" href="/results/">See the results →</a>
+        </div>
+        <div class="panel reveal">
+          <h3>Why that matters to you</h3>
+          <ul class="ticks">
+            <li><b>Proven before it was sold.</b> Tested on real businesses, measured in Google Search Console.</li>
+            <li><b>Built by someone who pays for marketing too.</b> Priced for what a new or small business can actually afford.</li>
+            <li><b>Technical and practical.</b> Computer science for the system, 18+ years of business sense for what brings in customers.</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section class="section alt">
       <div class="wrap split">
         <div class="reveal">
           <p class="kicker">Why we exist</p>
           <h2>Online visibility shouldn't need a big budget</h2>
           <p>Page One Singapore runs the websites and Google listings for five local businesses today: a car workshop, a car detailing service, a sofa cleaning company, a property agent and a financial consultant.</p>
           <p>We started because new and small businesses were being quoted hundreds of dollars a month for SEO they couldn't see or measure. So we built a simpler way: S$20 a month, a report for every SEO Boost, and no contract. Start small, and add more only when you see it working.</p>
-          <p><b>Founder:</b> Edwin, who also runs Edwin Garage in Ang Mo Kio. Every method on this site was used on his own business first.</p>
           <a class="card-link" href="/#stories">See the websites we run →</a>
         </div>
-        <div class="panel reveal">
+        <div class="panel reveal" style="background:#fff">
           <h3>How we work</h3>
           <ul class="ticks">
-            <li><b>Honest.</b> No one can guarantee Google rankings, so we never promise them. We show you the work instead.</li>
+            <li><b>Honest.</b> No one can guarantee Google rankings, so we never promise them. We show you the work and the numbers instead.</li>
             <li><b>Transparent.</b> Every SEO Boost comes with a before/after report.</li>
             <li><b>No lock-in.</b> No setup fee, no contract. You own your domain.</li>
             <li><b>Reachable.</b> WhatsApp us 24/7. No obligation to discuss.</li>
@@ -487,6 +515,184 @@ page("about/index.html",
 
 """ + cta("Talk to us, no obligation", "Ask anything on WhatsApp, 24/7. Or start with a free Google + AI visibility check."),
      crumb="About")
+
+# ---------- Results ----------
+# Every figure below comes from Google Search Console (CaseStudyStats in the
+# SearchInsight Bridge app), data through 5 Oct 2026. Do not edit numbers by hand.
+DATA_THROUGH = "5 October 2026"
+
+
+def kpis(items):
+    return '<div class="kpis">' + "".join(
+        f'<div class="kpi"><div class="label">{l}</div><div class="value">{v}</div><div class="delta">{d}</div></div>'
+        for l, v, d in items) + "</div>"
+
+
+def months_table(rows):
+    body = "".join(f"<tr><td>{m}</td><td>{c}</td><td>{i}</td><td>{p}</td></tr>" for m, c, i, p in rows)
+    return ('<div class="table-wrap"><table><thead><tr><th>Month (2026)</th><th>Clicks from Google</th>'
+            '<th>Times shown on Google</th><th>Average position</th></tr></thead><tbody>' + body + "</tbody></table></div>")
+
+
+def ranks_table(rows):
+    body = "".join(f"<tr><td>{q}</td><td>{p}</td><td>{i}</td></tr>" for q, p, i in rows)
+    return ('<div class="table-wrap"><table><thead><tr><th>Search on Google</th><th>Average position</th>'
+            '<th>Times shown (28 days)</th></tr></thead><tbody>' + body + "</tbody></table></div>")
+
+
+RESULTS_FAQ = [
+    ("Where do these numbers come from?", "Every figure on this page comes from Google Search Console, Google's own report of how a website performs in Google Search. We collect it automatically and don't edit it. Data runs to " + DATA_THROUGH + "."),
+    ("What does average position mean?", "Where the website appears in Google results, on average, when someone searches. Positions 1 to 10 are page one. A lower number is better."),
+    ("Will my business get the same results?", "We can't promise that, and no honest provider can. Results depend on your industry, competition and how long your site has been running. Edwin Garage and Cleanic Detailing took about three months to get here. What we can promise is the same system and a report showing the work."),
+    ("Can I see the full report?", "Yes. WhatsApp us and we'll walk you through the Search Console reports behind this page. No obligation."),
+]
+
+page("results/index.html",
+     "SEO Results &amp; Case Studies | Page One Singapore",
+     "Real Google Search Console results from Singapore businesses on Page One's SEO system. Edwin Garage: 2,280 Google clicks in 28 days, average position 6.1.",
+     [{"@context": "https://schema.org", "@type": "CollectionPage", "url": SITE + "/results/",
+       "name": "SEO Results & Case Studies", "about": PROVIDER, "inLanguage": "en-SG",
+       "hasPart": [
+           {"@type": "Article", "headline": "Edwin Garage: from first Google data to 2,280 clicks a month",
+            "url": SITE + "/results/#edwin-garage", "author": {"@type": "Person", "name": "Edwin"}, "publisher": PROVIDER,
+            "datePublished": UPDATED, "about": {"@type": "AutoRepair", "name": "Edwin Garage", "url": "https://sggarage.com/"}},
+           {"@type": "Article", "headline": "Cleanic Detailing: page one for 1,181 searches within four months",
+            "url": SITE + "/results/#cleanic-detailing", "author": {"@type": "Person", "name": "Edwin"}, "publisher": PROVIDER,
+            "datePublished": UPDATED, "about": {"@type": "LocalBusiness", "name": "Cleanic Detailing", "url": "https://cleanicdetailing.com/"}}]},
+      {"@context": "https://schema.org", "@type": "FAQPage",
+       "mainEntity": [{"@type": "Question", "name": q, "acceptedAnswer": {"@type": "Answer", "text": a}} for q, a in RESULTS_FAQ]}],
+     hero("Results", "Straight from Google Search Console",
+          "Real results, on real Singapore businesses.",
+          "We built Page One on our own businesses first. These are their actual Google numbers, unedited, with data to " + DATA_THROUGH + ".", buttons=False) + """
+
+    <section class="section">
+      <div class="wrap">
+        <p class="kicker reveal">At a glance</p>
+        <h2 class="reveal">Two businesses, about three months of SEO</h2>
+        <p class="section-lead reveal">Last 28 days (8 Sep to 5 Oct 2026). "Page one" means an average position of 1 to 10 on Google.</p>
+        <div class="reveal">""" + kpis([
+            ("Edwin Garage: clicks from Google", "2,280", "Average position 6.1"),
+            ("Edwin Garage: searches on page one", "4,290+", "1,531+ in the top 3"),
+            ("Cleanic Detailing: clicks from Google", "492", "Average position 10.0, up from 11.5"),
+            ("Cleanic Detailing: searches on page one", "1,181", "577 in the top 3"),
+        ]) + """</div>
+      </div>
+    </section>
+
+    <section class="section alt" id="edwin-garage">
+      <div class="wrap">
+        <p class="kicker reveal">Case study 1 · Car workshop, Ang Mo Kio</p>
+        <h2 class="reveal">Edwin Garage: from first Google data to 2,280 clicks a month</h2>
+        <div class="split" style="margin-top:24px">
+          <div class="reveal">
+            <p>Edwin Garage is our founder's own car workshop, and the first business to run on the Page One system. Its Search Console data starts on 26 June 2026. Within three months, Google was sending it more than 2,000 visitors a month.</p>
+            <ul class="ticks">
+              <li><b>2,401 clicks</b> from Google in September 2026, up from 1,369 in July</li>
+              <li><b>94,658 times shown</b> on Google in September, up from 38,611 in July</li>
+              <li>Average position around <b>6</b> every month since launch, which is page one</li>
+              <li>On page one for <b>4,290+ different searches</b> in the last 28 days</li>
+            </ul>
+          </div>
+          <div class="panel reveal" style="background:#fff">
+            <h3>What we did</h3>
+            <ul class="ticks">
+              <li>A fast website with a page for each service customers search for</li>
+              <li>Google Business Profile, Search Console and Bing set up</li>
+              <li>Business details marked up for Google and AI assistants, plus <code>llms.txt</code></li>
+              <li>Helpful articles published regularly, picked from real Search Console data</li>
+            </ul>
+          </div>
+        </div>
+        <h3 class="reveal" style="margin-top:40px">Month by month</h3>
+        <div class="reveal">""" + months_table([
+            ("July", "1,369", "38,611", "6.3"),
+            ("August", "2,125", "72,310", "6.6"),
+            ("September", "2,401", "94,658", "6.2"),
+        ]) + """</div>
+        <h3 class="reveal">Where it shows up on Google</h3>
+        <p class="reveal">A few of the searches it ranks for (last 28 days):</p>
+        <div class="reveal">""" + ranks_table([
+            ("car repair workshop", "2.0", "66"),
+            ("car aircon repair", "2.1", "232"),
+            ("car workshop ang mo kio", "2.7", "69"),
+            ("car servicing ang mo kio", "2.9", "66"),
+            ("car garage singapore", "3.3", "71"),
+            ("car repair singapore", "4.4", "197"),
+            ("best car workshop singapore", "4.7", "171"),
+        ]) + """</div>
+        <a class="card-link reveal" href="https://sggarage.com/" target="_blank" rel="noopener">Visit sggarage.com ↗</a>
+      </div>
+    </section>
+
+    <section class="section" id="cleanic-detailing">
+      <div class="wrap">
+        <p class="kicker reveal">Case study 2 · Mobile car detailing</p>
+        <h2 class="reveal">Cleanic Detailing: page one for 1,181 searches within four months</h2>
+        <div class="split" style="margin-top:24px">
+          <div class="reveal">
+            <p>Cleanic Detailing is a mobile car grooming and fumigation service run by Colin Loo. Its Search Console data starts on 20 June 2026. It now ranks in the top 3 for searches like "car grooming singapore" and "car wash singapore".</p>
+            <ul class="ticks">
+              <li><b>505 clicks</b> from Google in September 2026, up from 188 in July</li>
+              <li><b>39,551 times shown</b> on Google in September, up from 16,872 in July</li>
+              <li>Average position improved to <b>10.0</b> in the last 28 days, from 11.5 the 28 days before</li>
+              <li>On page one for <b>1,181 different searches</b>, 577 of them in the top 3</li>
+            </ul>
+          </div>
+          <div class="panel reveal">
+            <h3>What we did</h3>
+            <ul class="ticks">
+              <li>Service pages for car grooming, steam cleaning, fumigation and odour removal</li>
+              <li>Guides on the problems customers search for, like cockroaches or vomit in the car</li>
+              <li>Google Business Profile, Search Console, Bing and structured data set up</li>
+              <li>New articles chosen from the searches Google already shows the site for</li>
+            </ul>
+          </div>
+        </div>
+        <h3 class="reveal" style="margin-top:40px">Month by month</h3>
+        <div class="reveal">""" + months_table([
+            ("July", "188", "16,872", "9.4"),
+            ("August", "500", "31,417", "13.5"),
+            ("September", "505", "39,551", "10.4"),
+        ]) + """</div>
+        <h3 class="reveal">Where it shows up on Google</h3>
+        <p class="reveal">A few of the searches it ranks for (last 28 days):</p>
+        <div class="reveal">""" + ranks_table([
+            ("car polish singapore", "1.3", "55"),
+            ("steam cleaning", "1.8", "139"),
+            ("pressure washing singapore", "1.8", "75"),
+            ("best car wash singapore", "2.0", "114"),
+            ("car grooming singapore", "2.2", "1,312"),
+            ("fumigation car singapore", "2.2", "55"),
+            ("car wash singapore", "2.4", "145"),
+        ]) + """</div>
+        <a class="card-link reveal" href="https://cleanicdetailing.com/" target="_blank" rel="noopener">Visit cleanicdetailing.com ↗</a>
+      </div>
+    </section>
+
+    <section class="section alt">
+      <div class="wrap">
+        <p class="kicker reveal">Newer websites</p>
+        <h2 class="reveal">The other three, shown honestly</h2>
+        <p class="section-lead reveal">SEO takes time. These sites started later, so their numbers are smaller. We show them anyway, because that's what an honest early stage looks like.</p>
+        <div class="cards three">
+          <div class="card reveal"><p class="pill">Since Aug 2026</p><h3>Danny Chua Financial</h3><p>Shown on Google 4,176 times in the last 28 days, up from 1,163 the 28 days before. Average position improved from 64 to 46. Still early.</p></div>
+          <div class="card reveal"><p class="pill">Since Sep 2026</p><h3>SofaCare SG</h3><p>Shown on Google 2,918 times in its first full 28 days, already on page one for 25 searches. Still early.</p></div>
+          <div class="card reveal"><p class="pill">Since 30 Sep 2026</p><h3>Alicia Ong Property</h3><p>Just launched. Google started showing it at the end of September, so it's too early to report results.</p></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="wrap narrow">
+        <p class="kicker reveal">Reading the numbers</p>
+        <h2 class="reveal">Questions about these results</h2>
+""" + "".join(f"""        <details><summary>{q}</summary><p>{a}</p></details>
+""" for q, a in RESULTS_FAQ) + """      </div>
+    </section>
+
+""" + cta("Want this for your business?", "Start with a free Google + AI visibility check on WhatsApp, 24/7. We'll show you where you stand today. No obligation."),
+     crumb="Results")
+
 
 # ---------- Contact ----------
 page("contact/index.html",
@@ -610,14 +816,14 @@ page("404.html",
 # ---------- Home ----------
 page("index.html",
      "Page One Singapore | Get Found on Google &amp; AI from S$20",
-     "Get found on Google, Google Maps and AI search like ChatGPT. Website or SEO landing page from S$20/month. No setup fee, no contract, 24/7 WhatsApp.",
+     "A proven SEO system built by a Singapore business owner. Get found on Google, Google Maps and AI search like ChatGPT from S$20/month. No setup fee, no contract.",
      [{"@context": "https://schema.org", "@graph": [
          {"@type": "ProfessionalService", "@id": BIZ_ID, "name": "Page One Singapore", "url": SITE + "/",
           "logo": SITE + "/icon-512.png", "image": SITE + "/images/og.png",
           "description": "Google and AI search visibility for Singapore businesses: the Get Found subscription (a website or SEO landing page) with optional SEO Boost top-ups.",
           "telephone": "+" + WA, "priceRange": "S$20 - S$70 per month",
           "areaServed": {"@type": "Country", "name": "Singapore"},
-          "founder": {"@type": "Person", "name": "Edwin"},
+          "founder": FOUNDER,
           "knowsAbout": ["Search engine optimisation", "Local SEO", "Google Business Profile", "AI search visibility", "Generative engine optimisation"],
           "openingHoursSpecification": {"@type": "OpeningHoursSpecification",
                                         "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"],
