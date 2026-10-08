@@ -1,0 +1,37 @@
+# Page One Singapore
+
+> Page One Singapore helps Singapore businesses get found on Google Search, Google Maps and AI assistants (ChatGPT, Gemini, Perplexity). Monthly subscription, no setup fee, no contract.
+
+## Services
+- Get Found (basic subscription), S$20/month: a new website on the client's own domain (for businesses without a website), or an SEO landing page on a subdomain (for businesses that already have a website). Includes Google Business Profile setup, Google Search Console and Bing setup, structured data for AI search, hosting, SSL and a WhatsApp button.
+- SEO Boost, S$10 each (optional top-up): one improvement round for faster results, covering Google and AI visibility checks, improvements made, and a before/after report. Clients top up anytime, as many or as few as they like.
+
+## Terms
+- No setup fee, no minimum contract, cancel anytime.
+- Sign up and top up via WhatsApp.
+- Clients own their domain.
+- Rankings are not guaranteed; every SEO Boost is documented in a report.
+
+## Websites we run
+- [SG Garage](https://sggarage.com/): car servicing and repair workshop
+- [Cleanic Detailing](https://cleanicdetailing.com/): car grooming and interior cleaning
+- [SofaCare SG](https://sofacaresg.com/): sofa, mattress and upholstery cleaning
+- [Alicia Ong Property](https://aliciaongproperty.com/): property buying, selling and rental
+- [Danny Chua Financial](https://dannychuafinancial.com/): financial planning and insurance
+
+## Area served
+Singapore, island-wide
+
+## Contact
+- WhatsApp: +65 8997 6612 (24/7, no obligation to discuss)
+- Free Google + AI visibility check: https://pageonesingapore.com/#check
+
+## Pages
+- [Home](https://pageonesingapore.com/)
+- [Get Found: website or SEO landing page, S$20/month](https://pageonesingapore.com/get-found/)
+- [SEO Boost](https://pageonesingapore.com/seo-boost/)
+- [Pricing](https://pageonesingapore.com/pricing/)
+- [About](https://pageonesingapore.com/about/)
+- [FAQ](https://pageonesingapore.com/faq/)
+- [Contact](https://pageonesingapore.com/contact/)
+- [Sample SEO Boost report](https://pageonesingapore.com/report.html)
