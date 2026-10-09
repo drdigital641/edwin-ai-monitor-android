@@ -254,7 +254,7 @@ PLAN_COMPARE = """<div class="cards two plan-compare">
 
 # ---------- Get Found ----------
 page("get-found/index.html",
-     "Get Found Plan: Website or SEO Landing Page | Page One SG",
+     "Small Business SEO Singapore: Get Found Plan from S$20/month",
      "Our S$20/month basic plan. No website? We build one. Have one? We add an SEO landing page, set up for Google and AI search. No setup fee or contract.",
      [service("Get Found basic subscription", "/get-found/",
               "A website on the client's own domain, or an SEO landing page on a subdomain of their existing website, set up for Google Search, Google Maps and AI assistants.", "20")],
@@ -417,7 +417,7 @@ page("seo-boost/index.html",
 
 # ---------- Pricing ----------
 page("pricing/index.html",
-     "Pricing: From S$20/month, No Setup Fee | Page One Singapore",
+     "SEO Pricing Singapore: From S$20/month, No Setup Fee",
      "Simple pricing for Google and AI visibility in Singapore. Get Found plan S$20/month. Optional SEO Boosts S$10 each. No setup fee, no contract.",
      [{"@context": "https://schema.org", "@type": "OfferCatalog", "name": "Page One Singapore pricing", "url": SITE + "/pricing/",
        "itemListElement": [
@@ -622,7 +622,7 @@ RESULTS_FAQ = [
 ]
 
 page("results/index.html",
-     "SEO Results &amp; Case Studies | Page One Singapore",
+     "SEO Case Studies Singapore: Real Google Results | Page One",
      "Real Google Search Console results from Singapore businesses on Page One's SEO system. Edwin Garage: 2,280 Google clicks in 28 days, average position 6.1.",
      [{"@context": "https://schema.org", "@type": "CollectionPage", "url": SITE + "/results/",
        "name": "SEO Results & Case Studies", "about": PROVIDER, "inLanguage": "en-SG",
@@ -1123,10 +1123,13 @@ page("seo-explained/index.html",
 
 
 # ---------- Home ----------
+HOME_QA = [('What is Page One Singapore?', 'Page One Singapore is an affordable SEO service for Singapore small businesses. It gets businesses found on Google Search, Google Maps and AI assistants such as ChatGPT. It was built by Edwin, an NUS Computer Science (Honours) graduate with 18+ years in business, and proven first on his own car workshop, Edwin Garage.'), ('How much does SEO cost with Page One Singapore?', 'The Get Found plan is S$20 a month at an introductory price, with no setup fee and no minimum contract. Optional SEO Boosts cost S$10 each, for when you want faster results.'), ('What do I get every month for S$20?', 'Your business is found naturally in the free, unpaid results on Google, Google Maps and ChatGPT, with a technical audit of your page every month. Your website or SEO landing page is kept online, secure and fast, with a WhatsApp button.'), ('Can you help my business show up in ChatGPT?', "Yes. We connect your site to Bing, which ChatGPT search uses, label your business details with structured data, publish an llms.txt summary and write content that answers customers' questions. No one can guarantee an AI assistant will recommend you, but these steps make it possible."), ('Do I need a website first?', "No. If you don't have a website, we build one on your own domain. If you already have one, we add an SEO landing page on a subdomain and leave your current site as it is."), ('Does it actually work?', "In the 28 days to 5 October 2026, Edwin Garage got 2,280 clicks from Google with an average position of 6.1, and Cleanic Detailing appeared on page one for 1,181 different searches, according to Google Search Console. Results vary by business, so we don't guarantee rankings.")]
+HOME_FAQ_LD = {"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [
+    {"@type": "Question", "name": q, "acceptedAnswer": {"@type": "Answer", "text": a}} for q, a in HOME_QA]}
 page("index.html",
-     "Page One Singapore | Get Found on Google &amp; AI from S$20",
-     "A proven SEO system built by a Singapore business owner. Get found on Google, Google Maps and AI search like ChatGPT from S$20/month. No setup fee, no contract.",
-     [{"@context": "https://schema.org", "@graph": [
+     "Affordable SEO Singapore from S$20/month | Page One Singapore",
+     "Affordable SEO for Singapore small businesses: get found on Google, Google Maps and ChatGPT from S$20/month. Proven on real businesses. No setup fee or contract.",
+     [HOME_FAQ_LD, {"@context": "https://schema.org", "@graph": [
          {"@type": "ProfessionalService", "@id": BIZ_ID, "name": "Page One Singapore", "url": SITE + "/",
           "logo": SITE + "/icon-512.png", "image": SITE + "/images/og.png",
           "description": "Google and AI search visibility for Singapore businesses: the Get Found subscription (a website or SEO landing page) with optional SEO Boost top-ups.",
