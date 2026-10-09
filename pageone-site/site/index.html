@@ -27,8 +27,10 @@
   <meta name="theme-color" content="#060b18">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="/styles.css?v=7">
+  <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800&family=Space+Grotesk:wght@500;600;700&display=swap">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800&family=Space+Grotesk:wght@500;600;700&display=swap" media="print" onload="this.media='all'">
+  <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800&family=Space+Grotesk:wght@500;600;700&display=swap"></noscript>
+  <link rel="stylesheet" href="/styles.css?v=9">
   <script>document.documentElement.classList.add("js");</script>
   <script type="application/ld+json">
 {
@@ -173,7 +175,7 @@
   <div class="promo-bar"><div class="wrap"><b>Introductory price:</b> S$20/month for a limited time. It goes up once we reach our early-client limit. <a href="/signup/">Sign up &rarr;</a></div></div>
   <header class="site-header">
     <div class="wrap header-inner">
-      <a class="logo" href="/" aria-label="Page One Singapore home">
+      <a class="logo" href="/">
         <span class="logo-mark">1</span><span>Page One <b>Singapore</b></span>
       </a>
       <nav class="nav" id="nav" aria-label="Main">
@@ -208,26 +210,31 @@
             <a class="btn btn-ghost" href="#check">Check my website free</a>
           </div>
         </div>
-        <div class="console" aria-hidden="true">
-          <span class="chip chip-1">📍 Google Maps <b>Top 3</b></span>
-          <div class="console-top"><i></i><i></i><i></i></div>
-          <div class="mock-bar">
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>
-            <span class="typed" id="typed">aircon servicing near me</span>
+        <figure class="proof-card" aria-labelledby="proof-title">
+          <span class="chip chip-1">📍 Page one for <b>4,290+</b> searches</span>
+          <div class="proof-top">
+            <span class="proof-src">Google Search Console</span>
+            <span class="proof-real">Real data</span>
           </div>
-          <div class="mock-result top">
-            <div class="mock-tag">YOUR BUSINESS</div>
-            <div class="mock-title">Ah Seng Aircon Services – Tampines</div>
-            <div class="mock-stars">★★★★★ <span>4.9 · Open now</span></div>
+          <h2 class="proof-title" id="proof-title">Edwin Garage, Ang Mo Kio</h2>
+          <div class="proof-hero">
+            <p><b>2,280</b><span>clicks from Google<br>last 28 days</span></p>
+            <p><b>6.1</b><span>average position<br>(page one)</span></p>
           </div>
-          <div class="mock-result"><div class="mock-line w80"></div><div class="mock-line w60"></div></div>
-          <div class="mock-result"><div class="mock-line w70"></div><div class="mock-line w50"></div></div>
-          <div class="mock-ai">
-            <div class="mock-ai-label">✦ AI answer</div>
-            <p>“For aircon servicing in Tampines, <b>Ah Seng Aircon Services</b> is well reviewed and offers same-day…”</p>
+          <p class="proof-label">Monthly clicks from Google, 2026</p>
+          <div class="proof-bars" role="img" aria-label="Monthly clicks from Google: July 1,369; August 2,125; September 2,401">
+            <div class="pb" style="--h:.570" title="July 2026: 1,369 clicks"><span>1,369</span><i></i><small>Jul</small></div>
+            <div class="pb" style="--h:.885" title="August 2026: 2,125 clicks"><span>2,125</span><i></i><small>Aug</small></div>
+            <div class="pb" style="--h:1" title="September 2026: 2,401 clicks"><span>2,401</span><i></i><small>Sep</small></div>
           </div>
-          <span class="chip chip-2">🤖 Mentioned by AI <b>✓</b></span>
-        </div>
+          <ul class="proof-ranks" aria-label="Average Google position for example searches">
+            <li><span>car workshop ang mo kio</span><b>#2.7</b></li>
+            <li><span>car aircon repair</span><b>#2.1</b></li>
+            <li><span>car repair singapore</span><b>#4.4</b></li>
+          </ul>
+          <figcaption>Data to 5 Oct 2026. <a href="/results/">See the full case study →</a></figcaption>
+          <span class="chip chip-2">✓ Same system you get</span>
+        </figure>
       </div>
     </section>
 
@@ -406,6 +413,6 @@
     <svg viewBox="0 0 24 24" width="28" height="28" aria-hidden="true"><path fill="currentColor" d="M4 4h16a2 2 0 0 1 2 2v10a2 2 0 0 1-2 2H9l-5 4v-4a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2zm3 6.5a1.5 1.5 0 1 0 0 .01zm5 0a1.5 1.5 0 1 0 0 .01zm5 0a1.5 1.5 0 1 0 0 .01z"/></svg>
   </a>
 
-  <script src="/main.js?v=5" defer></script>
+  <script src="/main.js?v=6" defer></script>
 </body>
 </html>

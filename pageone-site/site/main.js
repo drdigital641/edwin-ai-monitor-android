@@ -74,7 +74,7 @@ function startChatHelper() {
     '<button class="chat-launcher" id="chat-launcher" type="button" aria-expanded="false" aria-controls="chat-panel" aria-label="Open chat">' +
       '<span class="chat-ring" aria-hidden="true"></span>' +
       '<svg class="chat-icon" viewBox="0 0 24 24" width="28" height="28" aria-hidden="true"><path fill="currentColor" d="M4 4h16a2 2 0 0 1 2 2v10a2 2 0 0 1-2 2H9l-5 4v-4a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2zm3 6.5a1.5 1.5 0 1 0 0 .01zm5 0a1.5 1.5 0 1 0 0 .01zm5 0a1.5 1.5 0 1 0 0 .01z"/></svg>' +
-      '<span class="chat-badge" id="chat-badge" aria-hidden="true">1</span>' +
+      '<span class="chat-badge" id="chat-badge" data-n="1" aria-hidden="true"></span>' +
     '</button>';
   document.body.appendChild(root);
   if (float) float.remove();

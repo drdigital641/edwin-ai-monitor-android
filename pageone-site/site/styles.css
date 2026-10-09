@@ -515,3 +515,28 @@ a:focus-visible, button:focus-visible, input:focus-visible, summary:focus-visibl
 .topup-form .btn { margin-top: 4px; }
 @media (max-width: 860px) { .signup-grid { grid-template-columns: 1fr; gap: 32px; } .signup-card { padding: 22px; } }
 .signup-card .form-error, .lead-form .form-error, .topup-form .form-error { color: #b91c1c; }
+
+/* Hero proof card (real Search Console data) */
+.proof-card { position: relative; margin: 0; background: #111a31; border: 1px solid rgba(255, 255, 255, .12); border-radius: 22px; padding: 26px 24px 22px; box-shadow: 0 30px 80px rgba(0, 0, 0, .45), inset 0 1px 0 rgba(255, 255, 255, .06); color: #dbe3f1; }
+.proof-top { display: flex; justify-content: space-between; align-items: center; gap: 10px; font-size: .74rem; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; }
+.proof-src { color: var(--muted-dark); }
+.proof-real { color: #34d399; border: 1px solid rgba(52, 211, 153, .35); border-radius: 999px; padding: 3px 9px; }
+.proof-title { color: #fff; font-size: 1.25rem; margin: 10px 0 14px; }
+.proof-hero { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-bottom: 18px; }
+.proof-hero p { margin: 0; background: rgba(255, 255, 255, .04); border: 1px solid var(--line-dark); border-radius: 14px; padding: 12px 14px; }
+.proof-hero b { display: block; font-family: var(--display); font-size: 2rem; line-height: 1.1; color: #fff; letter-spacing: -.02em; }
+.proof-hero span { font-size: .8rem; color: var(--muted-dark); line-height: 1.35; }
+.proof-label { margin: 0 0 8px; font-size: .8rem; color: var(--muted-dark); }
+.proof-bars { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; height: 130px; align-items: end; border-bottom: 1px solid rgba(255, 255, 255, .16); padding-bottom: 0; margin-bottom: 26px; }
+.pb { position: relative; height: 100%; display: flex; flex-direction: column; justify-content: flex-end; align-items: center; }
+.pb i { display: block; flex: none; width: 100%; max-width: 64px; height: calc((100% - 22px) * var(--h)); background: #ff3d57; border-radius: 4px 4px 0 0; }
+.pb span { font-size: .8rem; font-weight: 700; color: #fff; margin-bottom: 4px; }
+.pb small { position: absolute; bottom: -22px; font-size: .78rem; color: var(--muted-dark); }
+.proof-ranks { list-style: none; margin: 0 0 14px; padding: 0; }
+.proof-ranks li { display: flex; justify-content: space-between; gap: 12px; padding: 8px 0; border-top: 1px solid var(--line-dark); font-size: .88rem; }
+.proof-ranks b { color: #34d399; font-family: var(--display); }
+.proof-card figcaption { font-size: .78rem; color: var(--muted-dark); margin-bottom: 8px; }
+.proof-card figcaption a { color: #fff; font-weight: 700; }
+@media (max-width: 640px) { .proof-card { padding: 22px 16px 20px; } .proof-hero b { font-size: 1.7rem; } }
+.chat-badge::after { content: attr(data-n); }
+.article-cta .btn, .article-cta .btn-ghost { color: #fff; }

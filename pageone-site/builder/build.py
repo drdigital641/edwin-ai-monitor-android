@@ -95,8 +95,10 @@ def page(path, title, desc, schemas, body, crumb=None, robots="index, follow, ma
   <meta name="theme-color" content="#060b18">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="/styles.css?v=7">
+  <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800&family=Space+Grotesk:wght@500;600;700&display=swap">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800&family=Space+Grotesk:wght@500;600;700&display=swap" media="print" onload="this.media='all'">
+  <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800&family=Space+Grotesk:wght@500;600;700&display=swap"></noscript>
+  <link rel="stylesheet" href="/styles.css?v=9">
   <script>document.documentElement.classList.add("js");</script>
 {ld}
 </head>
@@ -105,7 +107,7 @@ def page(path, title, desc, schemas, body, crumb=None, robots="index, follow, ma
   {PROMO}
   <header class="site-header">
     <div class="wrap header-inner">
-      <a class="logo" href="/" aria-label="Page One Singapore home">
+      <a class="logo" href="/">
         <span class="logo-mark">1</span><span>Page One <b>Singapore</b></span>
       </a>
       <nav class="nav" id="nav" aria-label="Main">
@@ -160,7 +162,7 @@ def page(path, title, desc, schemas, body, crumb=None, robots="index, follow, ma
     {CHAT_ICON}
   </a>
 
-  <script src="/main.js?v=5" defer></script>
+  <script src="/main.js?v=6" defer></script>
 </body>
 </html>
 """
@@ -475,7 +477,7 @@ faq_html = "\n".join(
     for q, a in FAQS)
 page("faq/index.html",
      "FAQ: Fees, Contracts, SEO & AI Search | Page One Singapore",
-     "Answers about Page One Singapore: introductory pricing, setup fees, contracts, signing up, SEO landing pages, SEO Boost, ChatGPT visibility, domains and cancelling.",
+     "Page One Singapore FAQ: introductory pricing, setup fees, contracts, signing up, SEO landing pages, SEO Boost, ChatGPT visibility and cancelling.",
      [{"@context": "https://schema.org", "@type": "FAQPage",
        "mainEntity": [{"@type": "Question", "name": q, "acceptedAnswer": {"@type": "Answer", "text": a}} for q, a in FAQS]}],
      hero("FAQ", "", "Questions, answered",
@@ -833,7 +835,7 @@ page("terms/index.html",
 # ---------- Sign up ----------
 page("signup/index.html",
      "Sign Up: Get Found from S$20/month | Page One Singapore",
-     "Sign up for Page One Singapore's Get Found plan at the introductory price of S$20/month. Secure card payment by Stripe. No setup fee, no contract, cancel anytime.",
+     "Sign up for the Get Found plan at the introductory price of S$20/month. Secure card payment by Stripe. No setup fee, no contract, cancel anytime.",
      [service("Get Found basic subscription", "/signup/",
               "A website or SEO landing page set up for Google Search, Google Maps and AI assistants. Introductory price, billed monthly.", "20")],
      hero("Sign up", "Introductory price · limited time", "Get found on Google and AI from S$20 a month.",
