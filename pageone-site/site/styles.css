@@ -600,3 +600,8 @@ a:focus-visible, button:focus-visible, input:focus-visible, summary:focus-visibl
 .gloss p { margin: 8px 0 0; color: var(--muted); }
 .gloss p b { color: var(--ink); }
 .gloss p.we { padding: 10px 12px; border-radius: 10px; background: rgba(21, 128, 61, .07); color: var(--ink); }
+.plan-compare { margin-top: 28px; }
+.plan-compare .card:hover { transform: none; }
+.plan-compare h3 { margin: 6px 0 12px; }
+.plan-compare .ticks { margin: 0; }
+.plan-compare .ticks li { color: var(--ink); }

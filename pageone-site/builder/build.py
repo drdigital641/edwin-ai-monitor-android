@@ -99,7 +99,7 @@ def page(path, title, desc, schemas, body, crumb=None, robots="index, follow, ma
   <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800&family=Space+Grotesk:wght@500;600;700&display=swap">
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800&family=Space+Grotesk:wght@500;600;700&display=swap" media="print" onload="this.media='all'">
   <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800&family=Space+Grotesk:wght@500;600;700&display=swap"></noscript>
-  <link rel="stylesheet" href="/styles.css?v=11">
+  <link rel="stylesheet" href="/styles.css?v=12">
   <script>document.documentElement.classList.add("js");</script>
 {ld}
 </head>
@@ -229,6 +229,29 @@ GET_FOUND = """<ul class="ticks">
             </ul>
             <p class="fine" style="margin:0"><a class="link" href="/seo-explained/">What do these terms mean? →</a></p>"""
 
+PLAN_COMPARE = """<div class="cards two plan-compare">
+          <div class="card reveal">
+            <p class="pill">Every month · S$20</p>
+            <h3>Get Found: discovered naturally</h3>
+            <ul class="ticks">
+              <li>Found in the free, unpaid results on Google, Google Maps and ChatGPT when customers search for what you do. No ad spend. <span class="term">Organic search</span> <span class="term">AI search visibility</span></li>
+              <li>A technical audit of your page every month: can Google and AI assistants still find it, read it and understand it? <span class="term">Technical SEO audit</span></li>
+              <li>Your website or landing page kept online, secure and fast, with a WhatsApp button <span class="term">Hosting</span> <span class="term">HTTPS</span></li>
+              <li>Google's free report connected, so you can see who finds you <span class="term">Search Console</span></li>
+            </ul>
+          </div>
+          <div class="card reveal">
+            <p class="pill">Optional extra · S$10 each</p>
+            <h3>SEO Boost: extra work to climb faster</h3>
+            <ul class="ticks">
+              <li>We go after niche searches: specific phrases like "aircon chemical wash Tampines". Fewer businesses compete for them, and the people searching are ready to buy. <span class="term">Long-tail keywords</span></li>
+              <li>Extra processing to fix the SEO issues found in your audit <span class="term">Technical SEO fixes</span></li>
+              <li>A before/after report of what was done and what's next</li>
+              <li>Top up anytime, as many or as few as you like</li>
+            </ul>
+          </div>
+        </div>"""
+
 # ---------- Get Found ----------
 page("get-found/index.html",
      "Get Found Plan: Website or SEO Landing Page | Page One SG",
@@ -256,6 +279,15 @@ page("get-found/index.html",
             <p>Keep your current site exactly as it is. We build an SEO landing page (an extra page designed to bring in customers from Google) at an address like <code>go.yourbrand.com</code>. You, or whoever manages your domain, add one setting called a DNS record. We send simple step-by-step instructions, and Edwin can guide you through it.</p>
           </div>
         </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="wrap">
+        <p class="kicker reveal">What S$20 covers every month</p>
+        <h2 class="reveal">Get Found every month, Boost when you want</h2>
+        <p class="section-lead reveal">Your S$20 plan keeps you discovered naturally on Google and ChatGPT, and checks your page every month. A Boost is extra work on top, when you want to climb faster.</p>
+        """ + PLAN_COMPARE + """
       </div>
     </section>
 
@@ -328,16 +360,16 @@ page("seo-boost/index.html",
               "One full round of Google and AI search visibility improvements with a before/after report. Optional, topped up anytime.", "10")],
      hero("SEO Boost", "Optional top-up",
           "Want faster results? Add an SEO Boost.",
-          "Your S$20 plan keeps you visible. Each SEO Boost is an extra round of improvements that helps you climb faster, with a report of exactly what changed.",
+          "Your S$20 plan keeps you discovered naturally on Google and ChatGPT, with a technical audit of your page every month. Each S$10 Boost is extra work on top: we go after niche long-tail searches and do extra processing to fix SEO issues, then report exactly what changed.",
           '<p class="hero-price"><b>S$10</b>/boost · top up anytime</p>') + """
 
     <section class="section">
       <div class="wrap">
         <p class="kicker reveal">What's in one Boost</p>
-        <h2 class="reveal">Check, improve, report</h2>
+        <h2 class="reveal">Find niche searches, fix issues, report</h2>
         <div class="cards three" style="margin-top:32px">
-          <div class="card reveal"><div class="icon">1</div><h3>Check</h3><p>Where you show up on Google and Maps for your main searches, and whether ChatGPT, Gemini and Perplexity mention you.</p><p class="tech"><b>Technical name</b><span class="term">Rank tracking</span><span class="term">AI visibility audit</span></p></div>
-          <div class="card reveal"><div class="icon">2</div><h3>Improve</h3><p>New content and FAQs, page fixes, and a post on your Google Maps listing, aimed at the searches that bring customers.</p><p class="tech"><b>Technical name</b><span class="term">Content SEO</span><span class="term">Technical fixes</span><span class="term">GBP posts</span></p></div>
+          <div class="card reveal"><div class="icon">1</div><h3>Find niche searches</h3><p>The specific phrases your customers type, like "aircon chemical wash Tampines". Fewer businesses compete for them, and the people searching are ready to buy. We also check where you stand on Google, Maps and ChatGPT.</p><p class="tech"><b>Technical name</b><span class="term">Long-tail keyword research</span><span class="term">Rank tracking</span></p></div>
+          <div class="card reveal"><div class="icon">2</div><h3>Target them and fix issues</h3><p>New content and FAQs aimed at those niche searches, plus extra processing to fix the SEO issues found in your monthly audit.</p><p class="tech"><b>Technical name</b><span class="term">Content SEO</span><span class="term">Technical SEO fixes</span></p></div>
           <div class="card reveal"><div class="icon">3</div><h3>Report</h3><p>A before/after report: what was done, what improved, and what's planned next, explained in plain words.</p><p class="tech"><b>Technical name</b><span class="term">Search Console data</span><span class="term">Change log</span></p></div>
         </div>
         <p class="note reveal"><a class="card-link" href="/report.html">See a sample report →</a></p>
@@ -408,8 +440,9 @@ page("pricing/index.html",
             <p class="intro-note"><span class="intro-tag">Introductory price</span> Limited time. Goes up once we reach our early-client limit.</p>
             <ul class="ticks">
               <li><a href="/get-found/">Your own website <em>or</em> a landing page on your subdomain</a></li>
+              <li>Found naturally on Google and ChatGPT: free, unpaid results, no ad spend</li>
+              <li>A technical audit of your page every month</li>
               <li>Your business on Google Maps <span class="term">Google Business Profile</span></li>
-              <li>Set up so Google, Bing and AI assistants can find and read your site</li>
               <li>We keep your site online, secure (padlock) and fast, with a WhatsApp button</li>
               <li>No setup fee · cancel anytime</li>
             </ul>
@@ -420,8 +453,8 @@ page("pricing/index.html",
             <h2 class="h3">SEO Boost</h2>
             <p class="price"><span>S$10</span>/boost</p>
             <ul class="ticks">
-              <li>Check where you show up on Google, Maps and AI assistants</li>
-              <li>Improve it: new content and FAQs, page fixes, Google Maps posts</li>
+              <li>Extra work on niche long-tail searches: specific phrases from customers ready to buy</li>
+              <li>Extra processing to fix SEO issues found in your audit</li>
               <li>Before/after report: what's done, what's next</li>
               <li>Optional: for faster results, top up anytime</li>
             </ul>
@@ -444,6 +477,8 @@ page("pricing/index.html",
             <a class="btn btn-block" href="/signup/" id="calc-signup">Sign up with this plan</a>
           </form>
         </div>
+        <h2 class="reveal" style="margin-top:64px">Get Found vs SEO Boost</h2>
+        """ + PLAN_COMPARE + """
         <div class="split" style="margin-top:56px">
           <div class="panel reveal">
             <h2 class="h3">How payment works</h2>
@@ -462,6 +497,7 @@ page("pricing/index.html",
 # ---------- FAQ ----------
 FAQS = [
     ("What is SEO, in simple words?", "SEO stands for search engine optimisation. In simple words, it means making your business easy for Google to find, understand and recommend, so you show up when customers search for what you sell. Today it also covers AI assistants like ChatGPT, which many people now ask for recommendations. See SEO explained simply for the common terms."),
+    ("What do I get every month for S$20?", "Get Found means your business is discovered naturally: it shows up in the free, unpaid results on Google, Google Maps and ChatGPT when customers search for what you do, with no ad spend. Every month we also run a technical audit of your page to check that Google and AI assistants can still find, read and understand it. Your website or landing page stays online, secure and fast, with a WhatsApp button. Want to climb faster? SEO Boosts add extra work on top."),
     ("I'm not good with computers. Do I need to do anything technical?", "No. You tell us about your business and send a few photos on WhatsApp, and we do the technical work: the website, Google and Bing setup, Google Maps and the AI-search setup. If you already have a website, there's one setting to add to your domain. We send simple step-by-step instructions, and Edwin can guide you through it."),
     ("How will I know it's working?", "We connect your website to Google Search Console, Google's own free report. It shows how many times you appeared in Google, how many people clicked, and what they searched. Every SEO Boost also comes with a before/after report of what was done."),
     ("Is there a setup fee or contract?", "No. There's no setup fee and no minimum contract. You pay S$20 a month in advance and can cancel anytime."),
@@ -470,7 +506,7 @@ FAQS = [
     ("How do I reach you?", "WhatsApp Edwin on " + WA_DISPLAY + ". You can also tap the green chat button on any page. No obligation to buy anything."),
     ("How do I sign up and pay?", "Fill in the short form on our sign-up page or tap the chat button. It opens WhatsApp with your details filled in. Edwin confirms what you need and sends payment details for your first month. SEO Boosts are added or topped up the same way."),
     ("I already have a website. Do I need to change it?", "No. You give us a subdomain such as go.yourbrand.com and we build a separate SEO landing page there. Your current website stays exactly as it is."),
-    ("What is an SEO Boost?", "An optional S$10 top-up for faster results. Each Boost is one full improvement round: we check your Google and AI visibility, make improvements, and send a before/after report of what was done and what's next. Your S$20 plan works without it."),
+    ("What is an SEO Boost?", "An optional S$10 top-up for faster results. Each Boost is extra work on top of your plan: we go after niche long-tail searches (specific phrases, like \"aircon chemical wash Tampines\", that fewer businesses compete for and that come from customers ready to buy) and do extra processing to fix the SEO issues found in your audit. You get a before/after report of what was done and what's next. Your S$20 plan works without it."),
     ("How do you help me show up in ChatGPT and other AI search?", "AI assistants like ChatGPT, Gemini and Perplexity rely on search indexes such as Bing and Google and on clearly structured information. We connect your site to Google and Bing, mark up your business details so machines can read them, publish an llms.txt file, and write content that answers the questions customers ask."),
     ("Who pays for the domain?", "If you need a new domain, it's registered in your name and you pay for it directly (usually S$15–30 a year). You always own your domain."),
     ("Do you have proof it works?", "Yes. Our results page shows real Google Search Console numbers from the businesses we run. In the 28 days to 5 October 2026, Edwin Garage got 2,280 clicks from Google with an average position of 6.1, and Cleanic Detailing appeared on page one for 1,181 different searches. Results vary by business, so we don't guarantee them."),
@@ -870,6 +906,8 @@ page("signup/index.html",
         <div class="reveal">
           <h2 class="h3">What you get</h2>
           <ul class="ticks">
+            <li>Found naturally on Google and ChatGPT: free, unpaid results, no ad spend</li>
+            <li>A technical audit of your page every month</li>
             <li>Your own website, or an SEO landing page on your current site's subdomain</li>
             <li>Google Business Profile set up and completed</li>
             <li>Google Search Console and Bing connected (Bing feeds ChatGPT search)</li>
@@ -954,6 +992,10 @@ GLOSSARY = [
          "A simple file listing every page on your website, made for search engines.",
          "It helps Google find all your pages, not just the homepage.",
          "We create it and keep it up to date for you."),
+        ("long-tail", "Niche, specific searches", "Long-tail keywords",
+         "Longer, very specific searches, like \"aircon chemical wash Tampines\" instead of just \"aircon\".",
+         "Fewer businesses compete for them, and the people typing them usually know exactly what they want, so they're more likely to call.",
+         "Each SEO Boost goes after niche long-tail searches for your business."),
         ("title", "Your headline on Google", "Title tag and meta description",
          "The blue headline and the short description under it that people see in Google results.",
          "It's your shop sign in the search results. A clear one gets more people to tap on you instead of a competitor.",
@@ -1010,6 +1052,10 @@ GLOSSARY = [
          "Included with your hosting."),
     ]),
     ("measuring", "Measuring results", [
+        ("audit", "A health check of your page", "Technical SEO audit",
+         "A check of whether Google and AI assistants can find your page, read it and understand it: things like loading, mobile layout, page titles and business details.",
+         "Small technical problems can quietly stop you showing up, even when everything looks fine to you.",
+         "Included every month in your S$20 Get Found plan. SEO Boosts add extra processing to fix the issues it finds."),
         ("gsc", "Google's free report on your website", "Google Search Console (GSC)",
          "A free tool from Google that shows how your website performs in Google Search: how often you appear, how many people click, and what they searched.",
          "It's real data straight from Google, not a guess. Our results page uses it too.",
