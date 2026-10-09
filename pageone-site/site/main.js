@@ -192,6 +192,35 @@ if (checker) {
   const err = document.getElementById("checker-error");
   const btn = checker.querySelector("button[type=\"submit\"]");
   const ICON = { pass: "✓", warn: "!", fail: "✕" };
+  // Each check in plain words, with the industry term and why it matters to a business owner
+  const PLAIN = {
+    status: ["Your website opens", "HTTP status", "If the page doesn't open, customers leave and Google drops it."],
+    https: ["Secure padlock", "HTTPS / SSL", "Without it, browsers show \"Not secure\", which puts customers off."],
+    http_redirect: ["Always opens the secure version", "HTTP to HTTPS redirect", "Old links and typed addresses can still land on the unsafe version."],
+    title: ["Headline shown on Google", "Title tag", "It's the blue headline people see in Google. A clear one gets more taps."],
+    description: ["Short description on Google", "Meta description", "The lines under your headline in Google: your sales pitch in the results."],
+    h1: ["Clear main heading", "H1", "Tells visitors and Google in one line what you do."],
+    indexable: ["Allowed to appear on Google", "Indexability (noindex)", "If this is blocked, the page can't show up on Google at all."],
+    canonical: ["Main address set", "Canonical tag", "Stops Google splitting the page into duplicate copies."],
+    robots: ["Instructions for search engines", "robots.txt", "A small file that tells Google what it may read."],
+    sitemap: ["List of your pages for Google", "XML sitemap", "Helps Google find every page, not just the homepage."],
+    pages: ["Enough pages to be found", "Indexable pages", "Each service and area needs its own page to show up for those searches."],
+    internal_links: ["Links between your pages", "Internal linking", "Helps visitors and Google discover your other pages."],
+    viewport: ["Fits phone screens", "Mobile viewport", "Most customers search on their phone. A site that doesn't fit loses them."],
+    response: ["Website responds quickly", "Server response time", "Slow sites lose impatient visitors and can rank lower."],
+    weight: ["Page isn't too heavy", "HTML page weight", "Heavy pages load slowly on mobile data."],
+    schema: ["Business details labelled for Google and AI", "Structured data (Schema.org)", "Lets Google and ChatGPT read your name, address, hours and services correctly."],
+    ai_bots: ["ChatGPT and AI tools can read your site", "AI crawler access", "If AI tools are blocked, they can't recommend you."],
+    content: ["Enough words to explain your business", "Indexable text content", "Google and AI read words. Too few, and they can't tell what you offer."],
+    h2: ["Page split into clear sections", "H2 subheadings", "Makes the page easy to scan, for people and for AI."],
+    llms: ["Summary for AI tools", "llms.txt", "A short plain-text summary that helps AI tools describe you (nice to have)."],
+    og: ["Nice preview when shared on WhatsApp", "Open Graph tags", "Shared links show a picture and title instead of a bare address."],
+    alt: ["Photos described in words", "Image alt text", "Google can't see photos. Descriptions help them appear in Google Images."],
+    local: ["Phone number and location shown", "NAP: name, address, phone", "Google uses this to show you to customers nearby."],
+    contact: ["One-tap call or WhatsApp", "Click-to-call / click-to-chat", "Ready customers can reach you instantly instead of hunting for your number."],
+  };
+  const GROUP = { "Google basics": "Showing up on Google", "Mobile": "Phones and speed", "AI search": "ChatGPT and AI assistants", "Customers": "Turning visitors into customers" };
+  const plainLabel = (c) => (PLAIN[c.id] ? PLAIN[c.id][0] : c.label);
   const showError = (msg) => { err.textContent = msg; err.hidden = false; };
 
   const renderBasics = (r) => {
@@ -210,6 +239,18 @@ if (checker) {
       : `${fails} problem${fails === 1 ? "" : "s"} and ${warns} thing${warns === 1 ? "" : "s"} to improve.`));
     head.appendChild(t);
     out.appendChild(head);
+    const meaning = el("p", "score-meaning");
+    meaning.append("What your score means: ");
+    meaning.appendChild(el("b", "good", "85–100"));
+    meaning.append(" in good shape · ");
+    meaning.appendChild(el("b", "ok", "60–84"));
+    meaning.append(" customers can find you, but you're missing some · ");
+    meaning.appendChild(el("b", "bad", "below 60"));
+    meaning.append(" many customers won't find you. Each item shows the plain-English meaning, with the technical name in grey. ");
+    const gl = el("a", "link", "New to these terms? SEO explained simply →");
+    gl.href = "/seo-explained/";
+    meaning.appendChild(gl);
+    out.appendChild(meaning);
 
     const groups = {};
     r.checks.forEach((c) => (groups[c.group] = groups[c.group] || []).push(c));
@@ -217,14 +258,17 @@ if (checker) {
     const grid = el("div", "checker-groups");
     for (const g of Object.keys(groups)) {
       const box = el("div", "checker-group");
-      box.appendChild(el("h4", null, g));
+      box.appendChild(el("h4", null, GROUP[g] || g));
       const ul = el("ul");
       for (const c of groups[g].sort((a, b) => order[a.status] - order[b.status])) {
         const li = el("li", "chk " + c.status);
         li.appendChild(el("span", "chk-icon", ICON[c.status]));
         const d = el("div");
-        d.appendChild(el("b", null, c.label));
+        const name = el("b", null, plainLabel(c));
+        if (PLAIN[c.id]) { name.append(" "); name.appendChild(el("span", "term", PLAIN[c.id][1])); }
+        d.appendChild(name);
         d.appendChild(el("p", null, c.detail));
+        if (c.status !== "pass" && PLAIN[c.id]) d.appendChild(el("p", "chk-why", "Why it matters: " + PLAIN[c.id][2]));
         li.appendChild(d);
         ul.appendChild(li);
       }
@@ -234,14 +278,14 @@ if (checker) {
     out.appendChild(grid);
 
     const speed = el("div", "checker-speed");
-    speed.appendChild(el("h4", null, "Mobile speed (Google PageSpeed)"));
+    speed.appendChild(el("h4", null, "How fast it loads on a phone (Google PageSpeed)"));
     const sp = el("p", "fine", "Measuring with Google… this can take up to 30 seconds.");
     speed.appendChild(sp);
     out.appendChild(speed);
 
     // Summary Edwin sees in the pre-filled WhatsApp message
     const issues = r.checks.filter((c) => c.status !== "pass").sort((a, b) => order[a.status] - order[b.status])
-      .slice(0, 6).map((c) => "- " + c.label + (c.status === "fail" ? " (problem)" : " (to improve)"));
+      .slice(0, 6).map((c) => "- " + plainLabel(c) + (c.status === "fail" ? " (problem)" : " (to improve)"));
     const summary = r.host + ": " + r.score + "/100" + (issues.length ? "\n" + issues.join("\n") : "");
     storageSet("p1-check", summary, sessionStorage);
     const ctaBox = el("div", "checker-cta");
@@ -272,9 +316,9 @@ if (checker) {
     const score = el("b", r.score >= 90 ? "good" : r.score >= 50 ? "ok" : "bad", r.score + "/100");
     sp.appendChild(score);
     const bits = [];
-    if (r.lab && r.lab.lcp) bits.push("Main content shows in " + r.lab.lcp);
-    if (r.lab && r.lab.cls) bits.push("layout shift " + r.lab.cls);
-    if (r.field_overall) bits.push("real-user Core Web Vitals: " + r.field_overall.toLowerCase());
+    if (r.lab && r.lab.lcp) bits.push("main content shows in " + r.lab.lcp + " (LCP)");
+    if (r.lab && r.lab.cls) bits.push("page jumps around: " + r.lab.cls + " (CLS, lower is better)");
+    if (r.field_overall) bits.push("real visitors' experience: " + r.field_overall.toLowerCase() + " (Core Web Vitals)");
     sp.append(" " + bits.join(" · "));
   };
 
@@ -294,7 +338,7 @@ if (checker) {
     noSite.href = waLink("Hi Edwin, I don't have a website yet. Can Page One build one for my business?\nMy business: ");
     noSite.target = "_blank"; noSite.rel = "noopener";
   }
-  const STEPS = ["Opening your homepage…", "Checking Google basics…", "Checking mobile setup…", "Checking AI-search readiness…", "Scoring your website…"];
+  const STEPS = ["Opening your homepage…", "Checking how Google sees it…", "Checking it on a phone…", "Checking if ChatGPT and AI can read it…", "Working out your score…"];
   let stepTimer = null;
   const startProgress = () => {
     if (!progress) return;

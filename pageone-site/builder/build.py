@@ -99,7 +99,7 @@ def page(path, title, desc, schemas, body, crumb=None, robots="index, follow, ma
   <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800&family=Space+Grotesk:wght@500;600;700&display=swap">
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800&family=Space+Grotesk:wght@500;600;700&display=swap" media="print" onload="this.media='all'">
   <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800&family=Space+Grotesk:wght@500;600;700&display=swap"></noscript>
-  <link rel="stylesheet" href="/styles.css?v=10">
+  <link rel="stylesheet" href="/styles.css?v=11">
   <script>document.documentElement.classList.add("js");</script>
 {ld}
 </head>
@@ -146,6 +146,7 @@ def page(path, title, desc, schemas, body, crumb=None, robots="index, follow, ma
         <a href="/#stories">Clients</a>
         <a href="/articles/">Articles</a>
         <a href="/faq/">FAQ</a>
+        <a href="/seo-explained/">SEO explained simply</a>
         <a href="/contact/">Contact</a>
       </div>
       <div>
@@ -163,7 +164,7 @@ def page(path, title, desc, schemas, body, crumb=None, robots="index, follow, ma
     {WA_ICON}
   </a>
 
-  <script src="/main.js?v=9" defer></script>
+  <script src="/main.js?v=10" defer></script>
 </body>
 </html>
 """
@@ -220,12 +221,13 @@ def hero(crumb, eyebrow, h1, lead, price_html="", buttons=True):
 
 
 GET_FOUND = """<ul class="ticks">
-              <li>Google Business Profile set up and completed</li>
-              <li>Google Search Console and Bing Webmaster connected (Bing feeds ChatGPT search)</li>
-              <li>Business details marked up so Google and AI assistants can read them</li>
-              <li><code>llms.txt</code> and sitemap so AI tools and search engines find every page</li>
-              <li>Fast hosting, SSL padlock and a WhatsApp chat button</li>
-            </ul>"""
+              <li>Your business on Google Maps, with hours, photos and a call button <span class="term">Google Business Profile</span></li>
+              <li>Google and Bing told your site exists, with Google's free report connected so you can see who finds you. Bing also powers ChatGPT search. <span class="term">Search Console</span> <span class="term">Bing Webmaster Tools</span></li>
+              <li>Your name, address, hours and services labelled so Google and AI assistants read them correctly <span class="term">Structured data (Schema.org)</span></li>
+              <li>A list of all your pages, plus a short summary for AI tools, so nothing gets missed <span class="term">XML sitemap</span> <span class="term">llms.txt</span></li>
+              <li>Fast, secure website (the padlock in the address bar) with a WhatsApp chat button <span class="term">Hosting</span> <span class="term">HTTPS / SSL</span></li>
+            </ul>
+            <p class="fine" style="margin:0"><a class="link" href="/seo-explained/">What do these terms mean? →</a></p>"""
 
 # ---------- Get Found ----------
 page("get-found/index.html",
@@ -251,7 +253,7 @@ page("get-found/index.html",
           <div class="card reveal">
             <p class="pill">Already have a website</p>
             <h3>We add a landing page</h3>
-            <p>Keep your current site exactly as it is. We build an SEO landing page on a subdomain like <code>go.yourbrand.com</code>. You just add one DNS record.</p>
+            <p>Keep your current site exactly as it is. We build an SEO landing page (an extra page designed to bring in customers from Google) at an address like <code>go.yourbrand.com</code>. You, or whoever manages your domain, add one setting called a DNS record. We send simple step-by-step instructions, and Edwin can guide you through it.</p>
           </div>
         </div>
       </div>
@@ -268,6 +270,7 @@ page("get-found/index.html",
             <li>WhatsApp button on every page, so enquiries come straight to you</li>
             <li>Small text and photo changes when you need them</li>
           </ul>
+          <p class="no-tech"><b>No tech skills needed.</b> You tell us about your business on WhatsApp. We handle the website, Google, Maps and AI setup.</p>
         </div>
         <div class="panel reveal" style="background:#fff">
           <h3>Plus the Google + AI setup</h3>
@@ -333,9 +336,9 @@ page("seo-boost/index.html",
         <p class="kicker reveal">What's in one Boost</p>
         <h2 class="reveal">Check, improve, report</h2>
         <div class="cards three" style="margin-top:32px">
-          <div class="card reveal"><div class="icon">1</div><h3>Check</h3><p>Where you rank on Google and Maps for your main searches, and whether ChatGPT, Gemini and Perplexity mention you.</p></div>
-          <div class="card reveal"><div class="icon">2</div><h3>Improve</h3><p>New content and FAQs, page fixes, and a Google Business Profile post, aimed at the searches that matter.</p></div>
-          <div class="card reveal"><div class="icon">3</div><h3>Report</h3><p>A before/after report: what was done, what improved, and what's planned next.</p></div>
+          <div class="card reveal"><div class="icon">1</div><h3>Check</h3><p>Where you show up on Google and Maps for your main searches, and whether ChatGPT, Gemini and Perplexity mention you.</p><p class="tech"><b>Technical name</b><span class="term">Rank tracking</span><span class="term">AI visibility audit</span></p></div>
+          <div class="card reveal"><div class="icon">2</div><h3>Improve</h3><p>New content and FAQs, page fixes, and a post on your Google Maps listing, aimed at the searches that bring customers.</p><p class="tech"><b>Technical name</b><span class="term">Content SEO</span><span class="term">Technical fixes</span><span class="term">GBP posts</span></p></div>
+          <div class="card reveal"><div class="icon">3</div><h3>Report</h3><p>A before/after report: what was done, what improved, and what's planned next, explained in plain words.</p><p class="tech"><b>Technical name</b><span class="term">Search Console data</span><span class="term">Change log</span></p></div>
         </div>
         <p class="note reveal"><a class="card-link" href="/report.html">See a sample report →</a></p>
       </div>
@@ -405,9 +408,9 @@ page("pricing/index.html",
             <p class="intro-note"><span class="intro-tag">Introductory price</span> Limited time. Goes up once we reach our early-client limit.</p>
             <ul class="ticks">
               <li><a href="/get-found/">Your own website <em>or</em> a landing page on your subdomain</a></li>
-              <li>Google Business Profile setup</li>
-              <li>Google + Bing + AI visibility setup</li>
-              <li>Hosting, SSL, WhatsApp button</li>
+              <li>Your business on Google Maps <span class="term">Google Business Profile</span></li>
+              <li>Set up so Google, Bing and AI assistants can find and read your site</li>
+              <li>We keep your site online, secure (padlock) and fast, with a WhatsApp button</li>
               <li>No setup fee · cancel anytime</li>
             </ul>
             <a class="btn btn-block" href="/signup/">Sign up now</a>
@@ -417,8 +420,8 @@ page("pricing/index.html",
             <h2 class="h3">SEO Boost</h2>
             <p class="price"><span>S$10</span>/boost</p>
             <ul class="ticks">
-              <li>Check Google, Maps &amp; AI visibility</li>
-              <li>Make improvements: content, FAQs, fixes, Google posts</li>
+              <li>Check where you show up on Google, Maps and AI assistants</li>
+              <li>Improve it: new content and FAQs, page fixes, Google Maps posts</li>
               <li>Before/after report: what's done, what's next</li>
               <li>Optional: for faster results, top up anytime</li>
             </ul>
@@ -458,6 +461,9 @@ page("pricing/index.html",
 
 # ---------- FAQ ----------
 FAQS = [
+    ("What is SEO, in simple words?", "SEO stands for search engine optimisation. In simple words, it means making your business easy for Google to find, understand and recommend, so you show up when customers search for what you sell. Today it also covers AI assistants like ChatGPT, which many people now ask for recommendations. See SEO explained simply for the common terms."),
+    ("I'm not good with computers. Do I need to do anything technical?", "No. You tell us about your business and send a few photos on WhatsApp, and we do the technical work: the website, Google and Bing setup, Google Maps and the AI-search setup. If you already have a website, there's one setting to add to your domain. We send simple step-by-step instructions, and Edwin can guide you through it."),
+    ("How will I know it's working?", "We connect your website to Google Search Console, Google's own free report. It shows how many times you appeared in Google, how many people clicked, and what they searched. Every SEO Boost also comes with a before/after report of what was done."),
     ("Is there a setup fee or contract?", "No. There's no setup fee and no minimum contract. You pay S$20 a month in advance and can cancel anytime."),
     ("Will the S$20 price go up?", "S$20 a month is an introductory price for a limited time. It will go up once we reach our early-client limit, so it's the lowest it will be."),
     ("Is the free website check really free?", "Yes. Enter your website address on our homepage and the checker tests Google basics, mobile setup, speed and AI-search readiness in under a minute. No sign-up needed."),
@@ -474,7 +480,7 @@ FAQS = [
     ("How long until my site is live?", "Usually within 7 days of receiving your details and photos."),
 ]
 faq_html = "\n".join(
-    f"        <details><summary>{q}</summary><p>{a.replace('go.yourbrand.com', '<code>go.yourbrand.com</code>').replace('llms.txt', '<code>llms.txt</code>').replace('results page', '<a class="link" href="/results/">results page</a>')}</p></details>"
+    f"        <details><summary>{q}</summary><p>{a.replace('go.yourbrand.com', '<code>go.yourbrand.com</code>').replace('llms.txt', '<code>llms.txt</code>').replace('results page', '<a class="link" href="/results/">results page</a>').replace('SEO explained simply', '<a class="link" href="/seo-explained/">SEO explained simply</a>')}</p></details>"
     for q, a in FAQS)
 page("faq/index.html",
      "FAQ: Fees, Contracts, SEO & AI Search | Page One Singapore",
@@ -928,6 +934,145 @@ page("404.html",
       </div>
     </section>
 """, robots="noindex, follow")
+
+# ---------- SEO explained simply (glossary) ----------
+GLOSSARY = [
+    ("found", "Being found on Google", [
+        ("seo", "Showing up when customers search", "SEO (search engine optimisation)",
+         "Making your business easy for Google to find, understand and recommend, so you appear when people search for what you sell.",
+         "People searching on Google are already looking to buy. Unlike ads, you don't pay each time someone clicks on an unpaid result.",
+         "Everything on this page, set up when you join and kept up every month."),
+        ("keywords", "The words customers type", "Keywords / search queries",
+         "The exact words people type into Google, like \"car aircon repair\" or \"sofa cleaning Tampines\".",
+         "If your website doesn't use the words your customers use, Google has no reason to show you for them.",
+         "We write your pages around the real searches in your trade and area."),
+        ("indexing", "Being listed by Google", "Indexing",
+         "Google keeping a copy of your page in its library, so it can show it in search results.",
+         "A page that isn't indexed can't appear on Google at all, however good it is.",
+         "We submit your site to Google and Bing and check your pages get listed."),
+        ("sitemap", "A list of your pages for Google", "XML sitemap",
+         "A simple file listing every page on your website, made for search engines.",
+         "It helps Google find all your pages, not just the homepage.",
+         "We create it and keep it up to date for you."),
+        ("title", "Your headline on Google", "Title tag and meta description",
+         "The blue headline and the short description under it that people see in Google results.",
+         "It's your shop sign in the search results. A clear one gets more people to tap on you instead of a competitor.",
+         "We write them for every page."),
+        ("landing-page", "A page built to bring in customers", "Landing page and subdomain",
+         "A page designed for one job, such as getting enquiries for one service. A subdomain is an extra address on your own domain, like go.yourbrand.com.",
+         "If you already have a website, a landing page lets us add an SEO page without touching your current site.",
+         "If you have a website, we build your landing page on a subdomain. You keep your current site as it is."),
+    ]),
+    ("local", "Google Maps and local searches", [
+        ("gbp", "Your listing on Google Maps", "Google Business Profile (GBP)",
+         "Your free business listing on Google Maps, and the box with your hours, photos, reviews and phone number that appears on the right of Google Search.",
+         "For \"near me\" searches, this listing is often the first thing customers see, before any website.",
+         "We set it up and complete it as part of Get Found."),
+        ("local-seo", "Being found by people nearby", "Local SEO",
+         "Helping your business show up for searches in your area, like \"plumber Jurong\" or \"near me\".",
+         "Most small businesses serve their own area. Local searches are the customers most likely to call.",
+         "We add your location or service area to your website, Google listing and business details."),
+        ("nap", "Same name, address and phone everywhere", "NAP consistency",
+         "Your business Name, Address and Phone number written the same way everywhere they appear online.",
+         "If they don't match, Google is less sure the details are correct, and customers can get confused.",
+         "We keep them the same on your website, Google listing and business details."),
+    ]),
+    ("ai", "ChatGPT and AI assistants", [
+        ("ai-search", "Getting recommended by AI", "AI search / GEO (generative engine optimisation)",
+         "More people now ask ChatGPT, Gemini or Perplexity for recommendations instead of typing into Google. Making your business easy for these tools to find and describe is called GEO, or AEO (answer engine optimisation).",
+         "If an AI assistant can't read your website, it can't recommend you.",
+         "We connect your site to Bing (which ChatGPT search uses), label your business details for machines, and write content that answers customers' questions."),
+        ("schema", "Business details labelled for machines", "Structured data (Schema.org)",
+         "Hidden labels in your website's code that tell Google and AI, for example, \"this is our phone number\" and \"these are our opening hours\".",
+         "Without them, machines have to guess your details, and sometimes guess wrong.",
+         "We add them to your website as part of Get Found."),
+        ("llms", "A summary of your business for AI tools", "llms.txt",
+         "A short plain-text file that sums up your business and links to your main pages, written for AI tools to read.",
+         "It's a new, emerging standard: nice to have, and cheap to add.",
+         "We publish one on your website."),
+        ("crawlers", "Letting AI tools read your site", "Crawlers / bots and robots.txt",
+         "Google and AI companies use programs called crawlers to read websites. A small file called robots.txt tells them what they may read.",
+         "Some websites block AI crawlers by accident, so those tools can never recommend them.",
+         "We make sure Google, Bing and AI assistants aren't blocked."),
+    ]),
+    ("website", "Your website", [
+        ("mobile", "Works well on a phone", "Mobile-first / responsive design",
+         "A website that fits and works properly on a phone screen. Google mainly looks at the phone version of your site.",
+         "Most of your customers will find you on their phone. A site that's hard to use there loses them.",
+         "Every site and landing page we build is designed for phones first."),
+        ("speed", "How fast your website feels", "Page speed / Core Web Vitals",
+         "Google's measures of how quickly a page shows its main content (LCP), whether things jump around while loading (CLS), and how fast it reacts to taps (INP).",
+         "Slow pages make people press back. Google also uses these measures as a ranking signal.",
+         "We build lightweight pages and host them on fast servers. Our free checker shows your own scores."),
+        ("https", "The padlock in the address bar", "HTTPS / SSL certificate",
+         "A security certificate that encrypts the connection between your website and your visitor.",
+         "Without it, browsers label your site \"Not secure\", which puts customers off. Google prefers secure sites.",
+         "Included with your hosting."),
+    ]),
+    ("measuring", "Measuring results", [
+        ("gsc", "Google's free report on your website", "Google Search Console (GSC)",
+         "A free tool from Google that shows how your website performs in Google Search: how often you appear, how many people click, and what they searched.",
+         "It's real data straight from Google, not a guess. Our results page uses it too.",
+         "We connect it for you, and use it to decide what to improve."),
+        ("impressions", "How often you were seen", "Impressions",
+         "The number of times your website appeared in someone's Google results, even if they didn't click.",
+         "A rising number means Google is showing you for more searches.", None),
+        ("clicks", "People who visited from Google", "Clicks and CTR (click-through rate)",
+         "Clicks are people who tapped through to your website from Google. CTR is the share of people who clicked after seeing you: 50 clicks from 1,000 impressions is a 5% CTR.",
+         "Clicks are real potential customers. A low CTR usually means your headline on Google needs work.", None),
+        ("position", "Where you appear on Google", "Average position",
+         "Your average spot in Google's results. 1 is the top result, and 1 to 10 is roughly page one. Lower is better.",
+         "Most people never look past page one, so getting into the top 10 is where the clicks are. For example, Edwin Garage averaged position 6.1 in the 28 days to 5 October 2026.", None),
+        ("organic", "Free results vs paid ads", "Organic vs paid search",
+         "Organic results are the normal, unpaid listings. Paid results are ads marked \"Sponsored\", where you pay Google for every click.",
+         "Ads stop the moment you stop paying. Organic visibility keeps working in the background.",
+         "Our plans work on your organic (unpaid) visibility. There's no ad spend."),
+    ]),
+]
+
+_gl_cards = []
+_gl_terms = []
+for gid, gname, terms in GLOSSARY:
+    arts = []
+    for tid, plain, tech, what, why, we in terms:
+        we_html = f'\n            <p class="we"><b>What we do:</b> {we}</p>' if we else ""
+        arts.append(f"""          <article class="reveal" id="{tid}">
+            <h3>{plain}<br><span class="term">{tech}</span></h3>
+            <p><b>In plain English:</b> {what}</p>
+            <p><b>Why it matters:</b> {why}</p>{we_html}
+          </article>""")
+        _gl_terms.append({"@type": "DefinedTerm", "@id": SITE + "/seo-explained/#" + tid, "name": tech.replace("&amp;", "&"),
+                          "alternateName": plain, "description": what, "url": SITE + "/seo-explained/#" + tid})
+    _gl_cards.append(f"""    <section class="section{' alt' if len(_gl_cards) % 2 else ''}" id="{gid}">
+      <div class="wrap">
+        <h2 class="reveal">{gname}</h2>
+        <div class="gloss">
+""" + "\n".join(arts) + """
+        </div>
+      </div>
+    </section>""")
+
+_gl_nav = "".join(f'<li><a href="#{gid}">{gname}</a></li>' for gid, gname, _ in GLOSSARY)
+page("seo-explained/index.html",
+     "SEO Explained Simply: Jargon in Plain English | Page One SG",
+     "SEO, Google Business Profile, structured data, Core Web Vitals, Search Console and AI search, explained in plain English for Singapore business owners.",
+     [{"@context": "https://schema.org", "@type": "DefinedTermSet", "@id": SITE + "/seo-explained/#terms",
+       "name": "SEO and AI search terms, explained simply", "url": SITE + "/seo-explained/", "inLanguage": "en-SG",
+       "hasDefinedTerm": _gl_terms}],
+     hero("SEO explained simply", "No jargon needed", "SEO and AI search, explained simply.",
+          "You don't need to understand any of this to work with us. But if you'd like to know what we're doing for your business, here's what each term means, why it matters and what we do about it. The technical name is in grey, in case you hear it elsewhere.", buttons=False) + f"""
+
+    <section class="section" style="padding-bottom:0">
+      <div class="wrap">
+        <ul class="gloss-nav" aria-label="Topics">{_gl_nav}</ul>
+      </div>
+    </section>
+
+""" + "\n\n".join(_gl_cards) + """
+
+""" + cta("Still not sure? Just ask.", "No question is too basic. WhatsApp Edwin and he'll explain how it applies to your business. No obligation."),
+     crumb="SEO explained simply")
+
 
 # ---------- Home ----------
 page("index.html",

@@ -571,3 +571,32 @@ a:focus-visible, button:focus-visible, input:focus-visible, summary:focus-visibl
   .checker-row { flex-direction: column; }
   .checker-row .btn { width: 100%; }
 }
+
+/* ---------- Plain English + technical term ---------- */
+.term { display: inline-block; margin-left: 2px; padding: 1px 8px; border: 1px solid var(--line); border-radius: 6px; background: var(--bg-alt); color: var(--muted); font: 600 .7rem/1.5 ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; letter-spacing: 0; text-transform: none; vertical-align: 2px; }
+.dark .term { background: rgba(255, 255, 255, .06); border-color: var(--line-dark); color: var(--muted-dark); }
+.chk-why { margin-top: 4px !important; font-size: .86rem; color: var(--ink) !important; }
+.score-meaning { margin: -4px 0 20px; font-size: .9rem; color: var(--muted); line-height: 1.6; }
+.score-meaning b.good { color: #15803d; } .score-meaning b.ok { color: #b45309; } .score-meaning b.bad { color: #dc2626; }
+.score-meaning .link { white-space: nowrap; }
+.card .tech { margin-top: 14px; padding-top: 12px; border-top: 1px dashed var(--line); font-size: .8rem; }
+.card .tech b { display: block; margin-bottom: 4px; font-size: .68rem; letter-spacing: .1em; text-transform: uppercase; color: var(--muted); }
+.card .tech .term { margin: 0 4px 4px 0; }
+.plain-cards .card:hover { transform: none; }
+.plain-cards .emoji { font-size: 1.6rem; line-height: 1; margin-bottom: 12px; }
+.plain-cards h3 { margin: 0 0 8px; }
+.kpi-explain { margin: 0 0 8px; padding: 16px 18px; border-radius: 14px; background: var(--bg-alt); color: var(--muted); font-size: .92rem; line-height: 1.6; }
+.kpi-explain b { color: var(--ink); }
+.no-tech { margin: 24px 0 0; padding: 18px 20px; border-radius: 14px; background: rgba(21, 128, 61, .08); color: var(--ink); }
+/* Glossary page */
+.gloss-nav { display: flex; flex-wrap: wrap; gap: 8px; margin: 0 0 8px; padding: 0; list-style: none; }
+.gloss-nav a { display: inline-block; padding: 8px 14px; border: 1px solid var(--line); border-radius: 999px; background: #fff; color: var(--ink); font-weight: 600; font-size: .9rem; text-decoration: none; }
+.gloss-nav a:hover { border-color: var(--red); }
+.gloss { display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px; margin-top: 24px; }
+@media (max-width: 760px) { .gloss { grid-template-columns: 1fr; } }
+.gloss article { background: #fff; border: 1px solid var(--line); border-radius: 16px; padding: 22px; scroll-margin-top: 90px; }
+.gloss h3 { margin: 0 0 10px; font-size: 1.12rem; }
+.gloss h3 .term { display: inline-block; margin: 6px 0 0; vertical-align: 0; }
+.gloss p { margin: 8px 0 0; color: var(--muted); }
+.gloss p b { color: var(--ink); }
+.gloss p.we { padding: 10px 12px; border-radius: 10px; background: rgba(21, 128, 61, .07); color: var(--ink); }
