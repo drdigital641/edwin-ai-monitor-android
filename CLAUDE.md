@@ -2,7 +2,7 @@
 
 Owner: Edwin, who owns the Bluehost cPanel account `sgmodde1`.
 
-## The five websites (all on `sgmodde1`)
+## The six websites (all on `sgmodde1`)
 
 | Bridge key | Domain                 | Name                 |
 |------------|------------------------|----------------------|
@@ -11,6 +11,11 @@ Owner: Edwin, who owns the Bluehost cPanel account `sgmodde1`.
 | `alicia`   | aliciaongproperty.com  | Alicia Ong Property  |
 | `danny`    | dannychuafinancial.com | Danny Chua Financial |
 | `sofacare` | sofacaresg.com         | SofaCare SG          |
+| `pageone`  | pageonesingapore.com   | Page One Singapore   |
+
+Page One Singapore also gets articles from an hourly publisher inside the bridge
+(`publishPageOneArticles`), which writes under `articles/`, `images/articles/` and the
+site's sitemap/llms files. Check its recent runs (`PageOnePublishRun`) before changing those files by hand.
 
 ## How every website change is made
 
