@@ -8,6 +8,8 @@ WA_DISPLAY = "+65 8997 6612"
 WA_LINK = f"https://wa.me/{WA}?text=Hi%20Page%20One%20Singapore%2C%20I%27d%20like%20to%20know%20more."
 UPDATED = "2026-10-08"
 BIZ_ID = SITE + "/#business"
+API = "https://base44.app/api/apps/6ac7f2548a9c3877449e2772/functions"
+PROMO = '<div class="promo-bar"><div class="wrap"><b>Introductory price:</b> S$20/month for a limited time. It goes up once we reach our early-client limit. <a href="/signup/">Sign up &rarr;</a></div></div>'
 
 NAV = [
     ("/get-found/", "Get Found"),
@@ -18,6 +20,7 @@ NAV = [
     ("/faq/", "FAQ"),
 ]
 
+CHAT_ICON = '<svg viewBox="0 0 24 24" width="28" height="28" aria-hidden="true"><path fill="currentColor" d="M4 4h16a2 2 0 0 1 2 2v10a2 2 0 0 1-2 2H9l-5 4v-4a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2zm3 6.5a1.5 1.5 0 1 0 0 .01zm5 0a1.5 1.5 0 1 0 0 .01zm5 0a1.5 1.5 0 1 0 0 .01z"/></svg>'
 WA_ICON = '<svg viewBox="0 0 24 24" width="28" height="28" aria-hidden="true"><path fill="currentColor" d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm0 18.2c-1.5 0-3-.4-4.3-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8-.2-.1-.4-.1-.6.1l-.8 1c-.1.2-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.3-.4.3-.4.7-1.3.1-.2 0-.3 0-.4l-.8-1.8c-.2-.5-.4-.4-.6-.4h-.5c-.2 0-.4.1-.6.3-.2.2-.8.8-.8 2s.8 2.3 1 2.5c.1.2 1.7 2.6 4.1 3.6 1.5.7 2.1.7 2.9.6.5-.1 1.5-.6 1.7-1.2.2-.6.2-1.1.2-1.2-.1-.1-.3-.2-.5-.3z"/></svg>'
 
 PROVIDER = {"@id": BIZ_ID}
@@ -93,12 +96,13 @@ def page(path, title, desc, schemas, body, crumb=None, robots="index, follow, ma
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="/styles.css?v=6">
+  <link rel="stylesheet" href="/styles.css?v=7">
   <script>document.documentElement.classList.add("js");</script>
 {ld}
 </head>
 <body>
   <a class="skip-link" href="#main">Skip to content</a>
+  {PROMO}
   <header class="site-header">
     <div class="wrap header-inner">
       <a class="logo" href="/" aria-label="Page One Singapore home">
@@ -107,7 +111,7 @@ def page(path, title, desc, schemas, body, crumb=None, robots="index, follow, ma
       <nav class="nav" id="nav" aria-label="Main">
 {nav}
       </nav>
-      <a class="btn btn-small" href="/#check">Free check</a>
+      <a class="btn btn-small" href="/signup/">Sign up</a>
       <button class="menu-btn" id="menu-btn" type="button" aria-label="Menu" aria-expanded="false" aria-controls="nav">☰</button>
     </div>
   </header>
@@ -121,13 +125,15 @@ def page(path, title, desc, schemas, body, crumb=None, robots="index, follow, ma
       <div>
         <a class="logo" href="/"><span class="logo-mark">1</span><span>Page One <b>Singapore</b></span></a>
         <p>Google + AI visibility for Singapore businesses. Island-wide, from S$20 a month.</p>
-        <p><a class="footer-wa" href="{WA_LINK}" target="_blank" rel="noopener">WhatsApp {WA_DISPLAY}</a><br><span>24/7 · no obligation to discuss</span></p>
+        <p><a class="footer-cta" href="/signup/">Sign up from S$20/month</a><br><span>Questions? Tap the chat button, or <a href="/contact/">leave a message</a>.</span></p>
       </div>
       <div>
         <h2>Services</h2>
         <a href="/get-found/">Get Found</a>
         <a href="/seo-boost/">SEO Boost</a>
         <a href="/pricing/">Pricing</a>
+        <a href="/signup/">Sign up</a>
+        <a href="/#check">Free website checker</a>
         <a href="/report.html">Sample report</a>
       </div>
       <div>
@@ -150,11 +156,11 @@ def page(path, title, desc, schemas, body, crumb=None, robots="index, follow, ma
     </div>
   </footer>
 
-  <a class="wa-float" id="wa-float" href="/#check" aria-label="Chat with us on WhatsApp">
-    {WA_ICON}
+  <a class="wa-float" id="wa-float" href="/contact/" aria-label="Contact us">
+    {CHAT_ICON}
   </a>
 
-  <script src="/main.js?v=4" defer></script>
+  <script src="/main.js?v=5" defer></script>
 </body>
 </html>
 """
@@ -178,12 +184,15 @@ def service(name, url, desc, price):
     }
 
 
-def cta(title="Not sure where you stand?", text="Get a free Google + AI visibility check on WhatsApp. No obligation to discuss further. We're on WhatsApp 24/7."):
+def cta(title="Not sure where you stand?", text="Check your website free in under a minute, or ask our assistant anything. No obligation."):
     return f"""    <section class="cta-band">
       <div class="wrap">
         <h2>{title}</h2>
         <p>{text}</p>
-        <a class="btn" href="/#check">Get my free visibility check</a>
+        <div class="cta-row center">
+          <a class="btn" href="/signup/">Sign up from S$20/month</a>
+          <a class="btn btn-ghost" href="/#check">Check my website free</a>
+        </div>
       </div>
     </section>"""
 
@@ -191,8 +200,8 @@ def cta(title="Not sure where you stand?", text="Get a free Google + AI visibili
 def hero(crumb, eyebrow, h1, lead, price_html="", buttons=True):
     btns = """
         <div class="cta-row">
-          <a class="btn" href="/#check">Get my free visibility check</a>
-          <a class="btn btn-ghost" href="/pricing/">See pricing</a>
+          <a class="btn" href="/signup/">Sign up from S$20/month</a>
+          <a class="btn btn-ghost" href="/#check">Check my website free</a>
         </div>""" if buttons else ""
     eb = f'\n        <p class="eyebrow"><span class="live" aria-hidden="true"></span>{eyebrow}</p>' if eyebrow else ""
     pr = f"\n        {price_html}" if price_html else ""
@@ -224,7 +233,7 @@ page("get-found/index.html",
      hero("Get Found", "Basic subscription",
           "Get Found: your shopfront on Google and AI.",
           "One simple plan. Whether you have a website or not, we set you up to be found on Google Search, Google Maps and AI assistants.",
-          '<p class="hero-price"><b>S$20</b>/month · no setup fee · no contract</p>') + """
+          '<p class="hero-price"><b>S$20</b>/month · <span class="intro-tag">Introductory price</span> · no setup fee · no contract</p>') + """
 
     <section class="section">
       <div class="wrap">
@@ -269,13 +278,13 @@ page("get-found/index.html",
         <p class="kicker reveal">How it works</p>
         <h2 class="reveal">Live within 7 days</h2>
         <ol class="steps" style="margin-top:72px">
-          <li class="reveal"><span>1</span><h3>Free visibility check</h3><p>We show you where you stand on Google, Maps and AI today. No obligation.</p></li>
-          <li class="reveal"><span>2</span><h3>Tell us about your business</h3><p>A short WhatsApp chat: what you do, where, and a few photos.</p></li>
+          <li class="reveal"><span>1</span><h3>Free website check</h3><p>See where your website stands on Google, mobile and AI search in under a minute.</p></li>
+          <li class="reveal"><span>2</span><h3>Sign up online</h3><p>Two minutes, secure card payment. Then tell us what you do, where, and send a few photos.</p></li>
           <li class="reveal"><span>3</span><h3>We build and launch</h3><p>Your site or landing page goes live, connected to Google, Maps and Bing.</p></li>
         </ol>
         <div class="price-strip reveal">
-          <p><b>S$20/month</b> · no setup fee · cancel anytime</p>
-          <a class="card-link" href="/seo-boost/">Want faster results? Add SEO Boosts →</a>
+          <p><b>S$20/month</b> · introductory price · no setup fee · cancel anytime</p>
+          <a class="card-link" href="/signup/">Sign up now →</a>
         </div>
       </div>
     </section>
@@ -308,7 +317,7 @@ redirect("landing-page/index.html", "/get-found/")
 # ---------- SEO Boost ----------
 page("seo-boost/index.html",
      "SEO Boost: S$10 Top-up for Faster Results | Page One SG",
-     "An optional S$10 SEO Boost: one full round of Google and AI visibility improvements, with a before/after report. Top up anytime by WhatsApp.",
+     "An optional S$10 SEO Boost: one full round of Google and AI visibility improvements, with a before/after report. Add at sign-up or top up anytime online.",
      [service("SEO Boost (optional top-up)", "/seo-boost/",
               "One full round of Google and AI search visibility improvements with a before/after report. Optional, topped up anytime.", "10")],
      hero("SEO Boost", "Optional top-up",
@@ -340,7 +349,7 @@ page("seo-boost/index.html",
           <h3>Topping up</h3>
           <ul class="ticks">
             <li>S$10 per Boost</li>
-            <li>Top up by WhatsApp, anytime, 24/7</li>
+            <li>Add Boosts at sign-up, or top up online anytime</li>
             <li>Works on top of your Get Found plan</li>
             <li>Rankings aren't guaranteed, but every Boost is documented</li>
           </ul>
@@ -349,7 +358,23 @@ page("seo-boost/index.html",
       </div>
     </section>
 
-""" + cta("Start with your free check", "Before you spend anything, see where you stand on Google, Maps and ChatGPT. No obligation to discuss further."),
+    <section class="section" id="top-up">
+      <div class="wrap narrow">
+        <p class="kicker reveal">Already a client?</p>
+        <h2 class="reveal">Top up SEO Boosts</h2>
+        <form class="topup-form panel reveal" id="topup-form" novalidate>
+          <label>Email you subscribed with<input name="email" type="email" required autocomplete="email"></label>
+          <label>How many Boosts?
+            <select name="boosts"><option value="1">1 Boost · S$10</option><option value="2" selected>2 Boosts · S$20</option><option value="3">3 Boosts · S$30</option><option value="4">4 Boosts · S$40</option><option value="6">6 Boosts · S$60</option><option value="10">10 Boosts · S$100</option></select>
+          </label>
+          <p class="form-error" role="alert" hidden></p>
+          <button class="btn" type="submit">Pay securely with Stripe</button>
+          <p class="fine">One-time payment. Not a client yet? <a href="/signup/">Sign up here</a> and add Boosts at the same time.</p>
+        </form>
+      </div>
+    </section>
+
+""" + cta("Start with a free website check", "Before you spend anything, see where your website stands on Google, mobile and AI search. Takes under a minute."),
      crumb="SEO Boost")
 
 # ---------- Pricing ----------
@@ -365,7 +390,7 @@ page("pricing/index.html",
             "url": SITE + "/seo-boost/", "seller": PROVIDER}]}],
      hero("Pricing", "No setup fee · No contract · Cancel anytime",
           "Simple pricing. Start at S$20.",
-          "One monthly plan, plus optional SEO Boosts when you want faster results. Sign up and pay over WhatsApp.", buttons=False) + """
+          "One monthly plan at an introductory price, plus optional SEO Boosts when you want faster results. Sign up online in two minutes.", buttons=False) + """
 
     <section class="section">
       <div class="wrap">
@@ -374,6 +399,7 @@ page("pricing/index.html",
             <p class="pill">Basic subscription</p>
             <h2 class="h3">Get Found</h2>
             <p class="price"><span>S$20</span>/month</p>
+            <p class="intro-note"><span class="intro-tag">Introductory price</span> Limited time. Goes up once we reach our early-client limit.</p>
             <ul class="ticks">
               <li><a href="/get-found/">Your own website <em>or</em> a landing page on your subdomain</a></li>
               <li>Google Business Profile setup</li>
@@ -381,6 +407,7 @@ page("pricing/index.html",
               <li>Hosting, SSL, WhatsApp button</li>
               <li>No setup fee · cancel anytime</li>
             </ul>
+            <a class="btn btn-block" href="/signup/">Sign up now</a>
           </div>
           <div class="price-card accent reveal">
             <p class="pill">Optional top-up</p>
@@ -408,13 +435,13 @@ page("pricing/index.html",
               <strong id="calc-total">S$40</strong><span>/month</span>
             </div>
             <p class="calc-break" id="calc-break">S$20 Get Found + 2 × S$10 Boosts</p>
-            <a class="btn btn-block" href="/#check">Start with a free check</a>
+            <a class="btn btn-block" href="/signup/" id="calc-signup">Sign up with this plan</a>
           </form>
         </div>
         <div class="split" style="margin-top:56px">
           <div class="panel reveal">
             <h2 class="h3">How payment works</h2>
-            <p>Message us on WhatsApp, 24/7. We confirm what you need, then send payment details for your first month. Boosts are topped up the same way.</p>
+            <p>Sign up online and pay by card through Stripe, a secure payment provider. You're billed S$20 automatically each month until you cancel. SEO Boosts are one-time charges, added at sign-up or <a class="link" href="/seo-boost/#top-up">topped up anytime</a>. We never see your card number.</p>
           </div>
           <div class="panel reveal">
             <h2 class="h3">Your domain</h2>
@@ -429,15 +456,17 @@ page("pricing/index.html",
 # ---------- FAQ ----------
 FAQS = [
     ("Is there a setup fee or contract?", "No. There's no setup fee and no minimum contract. You pay S$20 a month in advance and can cancel anytime."),
-    ("Is the free visibility check really free?", "Yes. We check how you show up on Google, Google Maps and ChatGPT and send you the results on WhatsApp. There's no obligation to discuss or buy anything afterwards."),
-    ("When can I reach you?", "Anytime. Our WhatsApp support runs 24/7 on " + WA_DISPLAY + "."),
-    ("How do I sign up and pay?", "Message us on WhatsApp. We'll confirm what you need, then send you the payment details for your first month. SEO Boosts are topped up the same way."),
+    ("Will the S$20 price go up?", "S$20 a month is an introductory price for a limited time. It will go up once we reach our early-client limit, so it's the lowest it will be."),
+    ("Is the free website check really free?", "Yes. Enter your website address on our homepage and the checker tests Google basics, mobile setup, speed and AI-search readiness in under a minute. No sign-up needed."),
+    ("When can I reach you?", "Anytime. Our chat assistant answers questions 24/7, and you can leave a message on our contact page for Edwin to reply personally."),
+    ("How do I sign up and pay?", "Sign up online at pageonesingapore.com/signup/ and pay by credit or debit card through Stripe, a secure payment provider. You're billed monthly until you cancel. SEO Boosts can be added at sign-up or topped up anytime."),
     ("I already have a website. Do I need to change it?", "No. You give us a subdomain such as go.yourbrand.com and we build a separate SEO landing page there. Your current website stays exactly as it is."),
     ("What is an SEO Boost?", "An optional S$10 top-up for faster results. Each Boost is one full improvement round: we check your Google and AI visibility, make improvements, and send a before/after report of what was done and what's next. Your S$20 plan works without it."),
     ("How do you help me show up in ChatGPT and other AI search?", "AI assistants like ChatGPT, Gemini and Perplexity rely on search indexes such as Bing and Google and on clearly structured information. We connect your site to Google and Bing, mark up your business details so machines can read them, publish an llms.txt file, and write content that answers the questions customers ask."),
     ("Who pays for the domain?", "If you need a new domain, it's registered in your name and you pay for it directly (usually S$15–30 a year). You always own your domain."),
     ("Do you have proof it works?", "Yes. Our results page shows real Google Search Console numbers from the businesses we run. In the 28 days to 5 October 2026, Edwin Garage got 2,280 clicks from Google with an average position of 6.1, and Cleanic Detailing appeared on page one for 1,181 different searches. Results vary by business, so we don't guarantee them."),
     ("Do you guarantee first page on Google?", "No honest provider can guarantee rankings, because Google decides. We guarantee the work: every SEO Boost is documented in a before/after report so you can see exactly what changed."),
+    ("How do I cancel?", "Leave a message on our contact page with the email you subscribed with. We'll cancel your subscription and confirm by email."),
     ("What happens if I cancel?", "Your site stays live until the end of the month you paid for. You keep your domain, and you can buy the site files if you want to host them elsewhere."),
     ("How long until my site is live?", "Usually within 7 days of receiving your details and photos."),
 ]
@@ -446,11 +475,11 @@ faq_html = "\n".join(
     for q, a in FAQS)
 page("faq/index.html",
      "FAQ: Fees, Contracts, SEO & AI Search | Page One Singapore",
-     "Answers about Page One Singapore: setup fees, contracts, 24/7 WhatsApp support, SEO landing pages, SEO Boost, ChatGPT visibility, domains and cancelling.",
+     "Answers about Page One Singapore: introductory pricing, setup fees, contracts, signing up, SEO landing pages, SEO Boost, ChatGPT visibility, domains and cancelling.",
      [{"@context": "https://schema.org", "@type": "FAQPage",
        "mainEntity": [{"@type": "Question", "name": q, "acceptedAnswer": {"@type": "Answer", "text": a}} for q, a in FAQS]}],
      hero("FAQ", "", "Questions, answered",
-          "Can't find yours? Tap the chat button and ask us on WhatsApp, 24/7. No obligation.", buttons=False) + """
+          "Can't find yours? Tap the chat button and ask our assistant, 24/7. No obligation.", buttons=False) + """
 
     <section class="section">
       <div class="wrap narrow">
@@ -506,14 +535,14 @@ page("about/index.html",
             <li><b>Honest.</b> No one can guarantee Google rankings, so we never promise them. We show you the work and the numbers instead.</li>
             <li><b>Transparent.</b> Every SEO Boost comes with a before/after report.</li>
             <li><b>No lock-in.</b> No setup fee, no contract. You own your domain.</li>
-            <li><b>Reachable.</b> WhatsApp us 24/7. No obligation to discuss.</li>
+            <li><b>Reachable.</b> Our chat assistant answers 24/7, and Edwin replies personally to messages.</li>
             <li><b>Local.</b> We serve businesses across Singapore.</li>
           </ul>
         </div>
       </div>
     </section>
 
-""" + cta("Talk to us, no obligation", "Ask anything on WhatsApp, 24/7. Or start with a free Google + AI visibility check."),
+""" + cta("Talk to us, no obligation", "Ask our assistant anything, 24/7. Or start with a free website check."),
      crumb="About")
 
 # ---------- Results ----------
@@ -544,7 +573,7 @@ RESULTS_FAQ = [
     ("Where do these numbers come from?", "Every figure on this page comes from Google Search Console, Google's own report of how a website performs in Google Search. We collect it automatically and don't edit it. Data runs to " + DATA_THROUGH + "."),
     ("What does average position mean?", "Where the website appears in Google results, on average, when someone searches. Positions 1 to 10 are page one. A lower number is better."),
     ("Will my business get the same results?", "We can't promise that, and no honest provider can. Results depend on your industry, competition and how long your site has been running. Edwin Garage and Cleanic Detailing took about three months to get here. What we can promise is the same system and a report showing the work."),
-    ("Can I see the full report?", "Yes. WhatsApp us and we'll walk you through the Search Console reports behind this page. No obligation."),
+    ("Can I see the full report?", "Yes. Leave a message on our contact page and we'll walk you through the Search Console reports behind this page. No obligation."),
 ]
 
 page("results/index.html",
@@ -690,35 +719,46 @@ page("results/index.html",
 """ for q, a in RESULTS_FAQ) + """      </div>
     </section>
 
-""" + cta("Want this for your business?", "Start with a free Google + AI visibility check on WhatsApp, 24/7. We'll show you where you stand today. No obligation."),
+""" + cta("Want this for your business?", "Sign up at the introductory price, or check where your website stands today. No obligation."),
      crumb="Results")
 
 
 # ---------- Contact ----------
 page("contact/index.html",
-     "Contact Page One Singapore | WhatsApp 24/7",
-     "WhatsApp Page One Singapore 24/7 on +65 8997 6612. Ask about getting found on Google and AI search. No obligation to discuss.",
+     "Contact Page One Singapore | Questions Answered 24/7",
+     "Ask Page One Singapore anything about getting found on Google and AI search. Chat with our assistant 24/7 or leave a message and Edwin replies personally.",
      [{"@context": "https://schema.org", "@type": "ContactPage", "url": SITE + "/contact/", "name": "Contact Page One Singapore", "about": PROVIDER}],
-     hero("Contact", "WhatsApp 24/7", "Talk to us on WhatsApp, anytime.",
-          "Questions, a free check, or ready to start: message us 24/7. No obligation to discuss.", buttons=False) + f"""
+     hero("Contact", "We reply personally", "Questions? We're here.",
+          "Our chat assistant answers common questions 24/7. For anything else, leave a message and Edwin replies personally. No obligation.", buttons=False) + """
 
     <section class="section">
       <div class="wrap split">
         <div class="reveal">
-          <p class="kicker">WhatsApp</p>
-          <h2>{WA_DISPLAY}</h2>
-          <p class="section-lead" style="margin-bottom:24px">We reply personally. Support runs 24/7, and there's no obligation to buy anything.</p>
-          <a class="btn" href="{WA_LINK}" target="_blank" rel="noopener">Chat on WhatsApp</a>
+          <p class="kicker">Leave a message</p>
+          <h2>Edwin replies personally</h2>
+          <form class="lead-form" id="lead-form" novalidate>
+            <label>Your name<input name="name" required autocomplete="name"></label>
+            <label>Email<input name="email" type="email" autocomplete="email"></label>
+            <label>Phone (optional)<input name="phone" type="tel" autocomplete="tel" inputmode="tel"></label>
+            <label>Business name<input name="business" autocomplete="organization"></label>
+            <label>Website (if any)<input name="website" inputmode="url" placeholder="yourbusiness.com.sg"></label>
+            <label>How can we help?<textarea name="message" rows="4" maxlength="1500"></textarea></label>
+            <label class="hp" aria-hidden="true">Leave empty<input name="company_url" tabindex="-1" autocomplete="off"></label>
+            <p class="form-error" role="alert" hidden></p>
+            <button class="btn btn-block" type="submit">Send message</button>
+            <p class="fine">We only use your details to reply. See our <a href="/privacy/">privacy policy</a>.</p>
+          </form>
+          <p class="form-done" id="lead-done" hidden><b>Thanks, message received.</b> Edwin will get back to you soon.</p>
         </div>
         <div class="panel reveal">
-          <h3>Help us help you faster</h3>
-          <p>When you message, it helps to include:</p>
+          <h3>Faster answers</h3>
           <ul class="ticks">
-            <li>Your business name</li>
-            <li>What you do and the area you serve</li>
-            <li>Your website, if you have one</li>
+            <li><button class="link-btn" type="button" data-open-chat>Ask our chat assistant</button>, 24/7</li>
+            <li><a class="link" href="/#check">Check your website free</a> in under a minute</li>
+            <li><a class="link" href="/faq/">Read the FAQ</a>: fees, contracts, cancelling</li>
+            <li><a class="link" href="/signup/">Sign up</a> at the introductory price</li>
           </ul>
-          <p>Prefer a form? Use the <a class="link" href="/#check">free visibility check</a>.</p>
+          <p class="fine">Already a client and want to cancel or change your plan? Leave a message with the email you subscribed with.</p>
         </div>
       </div>
     </section>
@@ -729,29 +769,30 @@ page("privacy/index.html",
      "Privacy Policy | Page One Singapore",
      "How Page One Singapore collects, uses and protects your personal data, in line with Singapore's Personal Data Protection Act (PDPA).",
      [],
-     hero("Privacy policy", "", "Privacy policy", "Last updated 8 October 2026", buttons=False) + f"""
+     hero("Privacy policy", "", "Privacy policy", "Last updated 9 October 2026", buttons=False) + f"""
 
     <section class="section">
       <div class="wrap narrow prose">
         <p>Page One Singapore ("we", "us") respects your privacy. This policy explains how we handle personal data in line with Singapore's Personal Data Protection Act 2012 (PDPA).</p>
         <h2>What we collect</h2>
-        <p>Only what you choose to send us, usually through WhatsApp or our free check form: your name, business name, phone number, business details, website address and any photos or information you share for your website.</p>
+        <p>Only what you choose to send us: your name, email, phone number, business name and website when you sign up or leave a message, the website address you enter in our free checker, messages you type into our chat assistant, and any photos or information you share for your website.</p>
         <h2>How we use it</h2>
         <ul>
-          <li>To reply to your enquiry and send your free visibility check</li>
+          <li>To reply to your enquiry and run the website checks you ask for</li>
+          <li>To answer your questions in the chat assistant. Chat messages are stored so we can improve answers; please don't type sensitive personal information into the chat</li>
           <li>To build and maintain your website or landing page</li>
           <li>To set up your Google Business Profile and search listings, with your permission</li>
           <li>To arrange payment and send SEO Boost reports</li>
         </ul>
         <p>We don't sell your personal data, and we don't use it for marketing unrelated to your enquiry.</p>
         <h2>Sharing</h2>
-        <p>We share data only as needed to deliver our service, for example with our web host, domain registrar, Google and Bing, or messaging and payment providers. These providers handle data under their own privacy policies.</p>
+        <p>We share data only as needed to deliver our service, for example with our web host, domain registrar, Google and Bing, our cloud platform (Base44), the AI service that powers our chat assistant, and Stripe, which processes card payments. Your card details go straight to Stripe; we never see or store your card number. These providers handle data under their own privacy policies.</p>
         <h2>This website</h2>
-        <p>This site doesn't use advertising or tracking cookies. It loads fonts from Google Fonts and stores a small note in your browser so the chat pop-up doesn't repeat. To see which pages are useful, it counts visits and WhatsApp-button clicks anonymously: the page, how you arrived (for example Google or ChatGPT), your device type and a random ID kept in your browser. This never includes your name or phone number, and it's switched off if your browser sends a Do Not Track signal. The free check form doesn't send data to us directly; it opens WhatsApp with your details filled in, and you choose whether to send them.</p>
+        <p>This site doesn't use advertising or tracking cookies. It loads fonts from Google Fonts and stores a small note in your browser so the chat pop-up doesn't repeat. To see which pages are useful, it counts visits and button clicks anonymously: the page, how you arrived (for example Google or ChatGPT), your device type and a random ID kept in your browser. This never includes your name or phone number, and it's switched off if your browser sends a Do Not Track signal. To stop abuse of the free checker, chat and contact form, we keep a one-way scrambled code of your IP address (not the address itself) for rate limiting.</p>
         <h2>Keeping and protecting data</h2>
         <p>We keep personal data only as long as needed for the purposes above or as required by law, and take reasonable steps to protect it.</p>
         <h2>Your rights</h2>
-        <p>You can ask to access or correct your personal data, or withdraw consent for us to use it. Contact our Data Protection Officer on WhatsApp at <a href="{WA_LINK}" target="_blank" rel="noopener">{WA_DISPLAY}</a>.</p>
+        <p>You can ask to access or correct your personal data, or withdraw consent for us to use it. Contact our Data Protection Officer through our <a href="/contact/">contact page</a>.</p>
         <h2>Changes</h2>
         <p>We may update this policy. The latest version is always on this page.</p>
       </div>
@@ -763,17 +804,19 @@ page("terms/index.html",
      "Terms of Service | Page One Singapore",
      "The terms for Page One Singapore's Get Found subscription and SEO Boost top-ups: payment, cancellation, domains and what we can and can't promise.",
      [],
-     hero("Terms of service", "", "Terms of service", "Last updated 8 October 2026", buttons=False) + f"""
+     hero("Terms of service", "", "Terms of service", "Last updated 9 October 2026", buttons=False) + f"""
 
     <section class="section">
       <div class="wrap narrow prose">
         <p>These terms apply when you use Page One Singapore's services. By signing up, you agree to them.</p>
         <h2>Our services</h2>
-        <p><b>Get Found</b> (S$20 a month) covers a website on your own domain or a landing page on your subdomain, plus the Google and AI search setup described on our <a href="/get-found/">Get Found page</a>. <b>SEO Boost</b> (S$10 each) is an optional round of improvements with a report.</p>
+        <p><b>Get Found</b> (S$20 a month, an introductory price) covers a website on your own domain or a landing page on your subdomain, plus the Google and AI search setup described on our <a href="/get-found/">Get Found page</a>. <b>SEO Boost</b> (S$10 each) is an optional round of improvements with a report.</p>
         <h2>Payment</h2>
-        <p>The monthly fee is paid in advance. SEO Boosts are paid when you top up. We arrange payment over WhatsApp. Prices are in Singapore dollars.</p>
+        <p>You pay by card through Stripe when you sign up. The monthly fee is charged in advance, automatically each month, until you cancel. SEO Boosts are one-time charges paid when you buy them. Prices are in Singapore dollars.</p>
+        <h2>Introductory price</h2>
+        <p>S$20 a month is an introductory price for a limited time. We will raise the price for new sign-ups once we reach our early-client limit. We'll tell you before any price change applies to your own subscription.</p>
         <h2>No contract, cancel anytime</h2>
-        <p>There's no minimum term. You can cancel anytime by WhatsApp. Your service runs until the end of the month you've paid for; we don't refund part-months.</p>
+        <p>There's no minimum term. You can cancel anytime by leaving a message on our <a href=\"/contact/\">contact page</a>. Your service runs until the end of the month you've paid for; we don't refund part-months.</p>
         <h2>Your domain and content</h2>
         <p>Domains we register for you are in your name and paid by you directly. You keep your domain if you cancel. You confirm you have the rights to any text, photos and logos you send us. If you cancel, you can buy the site files if you want to host them elsewhere.</p>
         <h2>Results</h2>
@@ -782,10 +825,83 @@ page("terms/index.html",
         <p>To the extent the law allows, our total liability is limited to the fees you paid us in the 3 months before the claim.</p>
         <h2>Changes and law</h2>
         <p>We may update these terms and will tell active clients about material changes. These terms are governed by the laws of Singapore.</p>
-        <p>Questions? WhatsApp us 24/7 on <a href="{WA_LINK}" target="_blank" rel="noopener">{WA_DISPLAY}</a>.</p>
+        <p>Questions? Ask our chat assistant or leave a message on our <a href="/contact/">contact page</a>.</p>
       </div>
     </section>
 """, crumb="Terms of service")
+
+# ---------- Sign up ----------
+page("signup/index.html",
+     "Sign Up: Get Found from S$20/month | Page One Singapore",
+     "Sign up for Page One Singapore's Get Found plan at the introductory price of S$20/month. Secure card payment by Stripe. No setup fee, no contract, cancel anytime.",
+     [service("Get Found basic subscription", "/signup/",
+              "A website or SEO landing page set up for Google Search, Google Maps and AI assistants. Introductory price, billed monthly.", "20")],
+     hero("Sign up", "Introductory price · limited time", "Get found on Google and AI from S$20 a month.",
+          "Sign up in two minutes. Secure card payment by Stripe. No setup fee, no contract, cancel anytime.", buttons=False) + """
+
+    <section class="section">
+      <div class="wrap signup-grid">
+        <form class="signup-card reveal" id="signup-form" novalidate>
+          <p class="pill">Get Found plan</p>
+          <p class="price"><span>S$20</span>/month</p>
+          <p class="intro-note"><span class="intro-tag">Introductory price</span> For a limited time. The price goes up once we reach our early-client limit.</p>
+          <label>Business name<input name="business" required autocomplete="organization" maxlength="100"></label>
+          <label>Email<input name="email" type="email" required autocomplete="email"></label>
+          <label>Current website (if any)<input name="website" inputmode="url" placeholder="yourbusiness.com.sg" maxlength="200"></label>
+          <fieldset class="boost-pick">
+            <legend>Add SEO Boosts for faster results? <small>S$10 each, charged once</small></legend>
+            <label><input type="radio" name="boosts" value="0" checked> None</label>
+            <label><input type="radio" name="boosts" value="1"> 1</label>
+            <label><input type="radio" name="boosts" value="2"> 2</label>
+            <label><input type="radio" name="boosts" value="4"> 4</label>
+          </fieldset>
+          <div class="total" aria-live="polite"><span>Today</span><strong id="signup-total">S$20</strong><span id="signup-then">then S$20/month</span></div>
+          <p class="form-error" role="alert" hidden></p>
+          <button class="btn btn-block" type="submit">Continue to secure payment</button>
+          <p class="fine">You'll enter your card on Stripe's secure page. We never see your card number. By signing up you agree to our <a href="/terms/">terms</a>.</p>
+          <p class="notice" id="signup-cancelled" hidden>Payment cancelled. Nothing was charged. You can try again anytime.</p>
+        </form>
+        <div class="reveal">
+          <h2 class="h3">What you get</h2>
+          <ul class="ticks">
+            <li>Your own website, or an SEO landing page on your current site's subdomain</li>
+            <li>Google Business Profile set up and completed</li>
+            <li>Google Search Console and Bing connected (Bing feeds ChatGPT search)</li>
+            <li>Business details marked up for Google and AI assistants</li>
+            <li>Fast hosting, SSL padlock, small changes when you need them</li>
+            <li>Usually live within 7 days</li>
+          </ul>
+          <h2 class="h3" style="margin-top:32px">What happens next</h2>
+          <ol class="mini-steps">
+            <li>Pay securely on Stripe.</li>
+            <li>We contact you to collect your details and a few photos.</li>
+            <li>Your site goes live, connected to Google, Maps and Bing.</li>
+          </ol>
+          <p class="fine" style="margin-top:20px">Proof it works: <a class="link" href="/results/">see real Google Search Console results</a>. Questions? Tap the chat button.</p>
+        </div>
+      </div>
+    </section>
+""", crumb="Sign up")
+
+page("signup/success/index.html",
+     "Thank You for Signing Up | Page One Singapore",
+     "Your Page One Singapore sign-up is confirmed.",
+     [],
+     hero("Sign up", "Payment received", "Thank you. You're in!",
+          "We've received your sign-up. Stripe will email your receipt shortly.", buttons=False) + """
+
+    <section class="section">
+      <div class="wrap narrow">
+        <h2 class="h3">What happens next</h2>
+        <ol class="mini-steps">
+          <li>We'll contact you using the email or phone you gave at checkout to collect your business details and a few photos.</li>
+          <li>We build your website or landing page and connect it to Google, Maps and Bing. Usually live within 7 days.</li>
+          <li>You're billed S$20 each month until you cancel. Cancel anytime from our <a class="link" href="/contact/">contact page</a>.</li>
+        </ol>
+        <p>Want faster results? <a class="link" href="/seo-boost/#top-up">Top up SEO Boosts</a> anytime.</p>
+      </div>
+    </section>
+""", crumb="Sign up", robots="noindex, follow")
 
 # ---------- Sample report ----------
 page("report.html",
@@ -800,7 +916,7 @@ page("404.html",
      "The page you're looking for doesn't exist.",
      [],
      hero("Not found", "", "This page doesn't exist.",
-          "It may have moved. Try one of these, or WhatsApp us 24/7.", buttons=False) + """
+          "It may have moved. Try one of these, or ask our chat assistant.", buttons=False) + """
 
     <section class="section">
       <div class="wrap">

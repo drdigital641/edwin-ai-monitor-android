@@ -1,12 +1,5 @@
-// Page One Singapore WhatsApp number (country code, no + or spaces).
-const WHATSAPP_NUMBER = "6589976612";
-
 const PLAN_PRICE = 20;
 const BOOST_PRICE = 10;
-
-function waLink(text) {
-  return "https://wa.me/" + WHATSAPP_NUMBER + "?text=" + encodeURIComponent(text);
-}
 
 // Pricing calculator
 const calc = document.getElementById("calc");
@@ -24,121 +17,150 @@ if (calc) {
   update();
 }
 
-// Free check form -> prefilled WhatsApp message
-const form = document.getElementById("check-form");
-if (form) {
-  const error = document.getElementById("form-error");
-  form.addEventListener("submit", (e) => {
-    e.preventDefault();
-    const d = Object.fromEntries(new FormData(form).entries());
-    if (!d.business?.trim() || !d.industry?.trim() || !d.name?.trim()) {
-      error.hidden = false;
-      return;
-    }
-    error.hidden = true;
-    const lines = [
-      "Hi Page One Singapore, I'd like a free Google + AI visibility check.",
-      "Business: " + d.business.trim(),
-      "What we do: " + d.industry.trim(),
-      d.area?.trim() && "Area: " + d.area.trim(),
-      d.website?.trim() && "Website: " + d.website.trim(),
-      "Name: " + d.name.trim(),
-    ].filter(Boolean);
-    window.open(waLink(lines.join("\n")), "_blank", "noopener");
+// Page One backend (Base44): chat assistant, website checker, sign-up and contact form.
+const API = "https://base44.app/api/apps/6ac7f2548a9c3877449e2772/functions";
+const trackCta = (type) => { try { if (window.p1Track) window.p1Track(type); } catch (e) { /* ignore */ } };
+
+async function callApi(name, payload) {
+  const res = await fetch(API + "/" + name, {
+    method: "POST", credentials: "omit",
+    headers: { "Content-Type": "application/json" }, body: JSON.stringify(payload),
   });
+  let data = {};
+  try { data = await res.json(); } catch (e) { /* ignore */ }
+  return { ok: res.ok, status: res.status, data };
 }
 
-// Floating WhatsApp button (fallback if the chat helper can't start)
-const float = document.getElementById("wa-float");
-if (float) {
-  float.href = waLink("Hi Page One Singapore, I'd like to know more about the S$20 Get Found plan.");
-  float.target = "_blank";
-  float.rel = "noopener";
+function el(tag, cls, text) {
+  const n = document.createElement(tag);
+  if (cls) n.className = cls;
+  if (text != null) n.textContent = text;
+  return n;
 }
 
-// Animated chat helper: replaces the plain WhatsApp button
-const QUICK_REPLIES = [
-  { label: "Get a free Google + AI visibility check", text: "Hi Page One Singapore, I'd like a free Google + AI visibility check for my business." },
-  { label: "How much will it cost me?", text: "Hi Page One Singapore, how much would the Get Found plan and SEO Boosts cost for my business?" },
-  { label: "I already have a website", text: "Hi Page One Singapore, I already have a website. Can you add an SEO landing page for me?" },
-  { label: "Something else", text: "Hi Page One Singapore, I have a question." },
-];
+function storageGet(key, store) {
+  try { return (store || localStorage).getItem(key); } catch (e) { return null; }
+}
+function storageSet(key, value, store) {
+  try { (store || localStorage).setItem(key, value); } catch (e) { /* private mode */ }
+}
 
-function storageGet(key) {
-  try { return sessionStorage.getItem(key); } catch (e) { return null; }
-}
-function storageSet(key, value) {
-  try { sessionStorage.setItem(key, value); } catch (e) { /* private mode */ }
-}
+// ---------- AI chat assistant (bottom right) ----------
+const SUGGESTIONS = ["How much does it cost?", "What do I get for S$20?", "Do you have proof it works?", "How do I sign up?"];
+const SAFE_LINK = /^\/(signup\/|pricing\/|get-found\/|seo-boost\/|results\/|report\.html|faq\/|#check|about\/|contact\/|privacy\/|terms\/)$/;
 
 function startChatHelper() {
-  const root = document.createElement("div");
-  root.className = "chat-helper";
+  const float = document.getElementById("wa-float");
+  const root = el("div", "chat-helper");
   root.innerHTML =
     '<div class="chat-teaser" id="chat-teaser" hidden>' +
       '<button class="chat-teaser-close" type="button" aria-label="Dismiss">×</button>' +
-      '<p><b>Hi there 👋</b><br>Can customers find you on Google and ChatGPT? Ask us, it\'s free.</p>' +
-    "</div>" +
+      '<p>Questions about getting found on Google? Ask me 👋</p>' +
+    '</div>' +
     '<section class="chat-panel" id="chat-panel" role="dialog" aria-label="Chat with Page One Singapore" hidden>' +
       '<header class="chat-head">' +
         '<span class="chat-avatar" aria-hidden="true">1</span>' +
-        '<div><b>Page One Singapore</b><small>WhatsApp 24/7 · no obligation</small></div>' +
+        '<div><b>Page One assistant</b><small>AI · answers instantly, 24/7</small></div>' +
         '<button class="chat-close" type="button" aria-label="Close chat">×</button>' +
-      "</header>" +
-      '<div class="chat-body" id="chat-body"></div>' +
-    "</section>" +
+      '</header>' +
+      '<div class="chat-body" id="chat-body" aria-live="polite"></div>' +
+      '<form class="chat-form" id="chat-form">' +
+        '<label class="sr-only" for="chat-input">Your message</label>' +
+        '<input id="chat-input" type="text" maxlength="600" autocomplete="off" placeholder="Ask a question…">' +
+        '<button type="submit" aria-label="Send"><svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true"><path fill="currentColor" d="M3 20.5 21 12 3 3.5l.01 6.6L15 12 3.01 13.9z"/></svg></button>' +
+      '</form>' +
+      '<p class="chat-note">AI assistant, may make mistakes. Need a person? <a href="/contact/">Leave a message</a>.</p>' +
+    '</section>' +
     '<button class="chat-launcher" id="chat-launcher" type="button" aria-expanded="false" aria-controls="chat-panel" aria-label="Open chat">' +
       '<span class="chat-ring" aria-hidden="true"></span>' +
       '<svg class="chat-icon" viewBox="0 0 24 24" width="28" height="28" aria-hidden="true"><path fill="currentColor" d="M4 4h16a2 2 0 0 1 2 2v10a2 2 0 0 1-2 2H9l-5 4v-4a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2zm3 6.5a1.5 1.5 0 1 0 0 .01zm5 0a1.5 1.5 0 1 0 0 .01zm5 0a1.5 1.5 0 1 0 0 .01z"/></svg>' +
       '<span class="chat-badge" id="chat-badge" aria-hidden="true">1</span>' +
-    "</button>";
+    '</button>';
   document.body.appendChild(root);
-  if (float) float.hidden = true;
+  if (float) float.remove();
 
   const teaser = root.querySelector("#chat-teaser");
   const panel = root.querySelector("#chat-panel");
   const body = root.querySelector("#chat-body");
   const launcher = root.querySelector("#chat-launcher");
   const badge = root.querySelector("#chat-badge");
-  let filled = false;
+  const form = root.querySelector("#chat-form");
+  const input = root.querySelector("#chat-input");
+  let history = [];
+  try { history = JSON.parse(storageGet("p1-chat", sessionStorage) || "[]"); } catch (e) { history = []; }
+  let busy = false;
+  let started = false;
 
-  const addBubble = (html) => {
-    const p = document.createElement("p");
-    p.className = "chat-msg";
-    p.innerHTML = html;
+  const scroll = () => { body.scrollTop = body.scrollHeight; };
+  const save = () => storageSet("p1-chat", JSON.stringify(history.slice(-20)), sessionStorage);
+
+  const render = (m) => {
+    const p = el("p", "chat-msg" + (m.role === "user" ? " chat-me" : ""), m.content);
     body.appendChild(p);
+    if (m.links && m.links.length) {
+      const list = el("div", "chat-replies");
+      for (const l of m.links) {
+        if (!SAFE_LINK.test(l.href)) continue;
+        const a = el("a", "chat-reply", l.label);
+        a.href = l.href;
+        list.appendChild(a);
+      }
+      if (list.childNodes.length) body.appendChild(list);
+    }
   };
 
-  const fillConversation = () => {
-    if (filled) return;
-    filled = true;
-    const typing = document.createElement("p");
-    typing.className = "chat-msg chat-typing";
+  const chips = () => {
+    const list = el("div", "chat-replies chat-suggest");
+    for (const q of SUGGESTIONS) {
+      const b = el("button", "chat-reply", q);
+      b.type = "button";
+      b.addEventListener("click", () => { list.remove(); send(q); });
+      list.appendChild(b);
+    }
+    body.appendChild(list);
+  };
+
+  const greet = () => {
+    if (started) return;
+    started = true;
+    if (history.length) { history.forEach(render); scroll(); return; }
+    render({ role: "assistant", content: "Hi! 👋 I'm Page One's assistant. Ask me anything about getting found on Google and AI search, our S$20 introductory plan, or signing up." });
+    chips();
+  };
+
+  async function send(text) {
+    text = String(text || "").trim().slice(0, 600);
+    if (!text || busy) return;
+    busy = true;
+    const suggest = body.querySelector(".chat-suggest");
+    if (suggest) suggest.remove();
+    const mine = { role: "user", content: text };
+    history.push(mine);
+    render(mine);
+    const typing = el("p", "chat-msg chat-typing");
     typing.setAttribute("aria-label", "Typing");
     typing.innerHTML = "<span></span><span></span><span></span>";
     body.appendChild(typing);
-    setTimeout(() => {
-      typing.remove();
-      addBubble("Hi! 👋 I'm with Page One Singapore.");
-      addBubble("We help Singapore businesses get found on Google, Google Maps and AI. Plans start at <b>S$20/month</b>, no contract. What can we help with?");
-      const list = document.createElement("div");
-      list.className = "chat-replies";
-      for (const q of QUICK_REPLIES) {
-        const a = document.createElement("a");
-        a.className = "chat-reply";
-        a.href = waLink(q.text);
-        a.target = "_blank";
-        a.rel = "noopener";
-        a.textContent = q.label;
-        list.appendChild(a);
-      }
-      body.appendChild(list);
-      const note = document.createElement("p");
-      note.className = "chat-note";
-      note.textContent = "Opens WhatsApp. We reply personally, 24/7. No obligation to discuss.";
-      body.appendChild(note);
-    }, 900);
-  };
+    scroll();
+    trackCta("chat_message");
+    let reply;
+    try {
+      const r = await callApi("siteChat", {
+        messages: history.slice(-8).map((m) => ({ role: m.role, content: m.content })),
+        page: location.pathname, session: storageGet("p1-sid", sessionStorage) || "",
+      });
+      reply = { role: "assistant", content: r.data.reply || "Sorry, I couldn't answer that just now.", links: r.data.links || [] };
+    } catch (e) {
+      reply = { role: "assistant", content: "Sorry, I can't connect right now. Please try again, or leave a message on our contact page.", links: [{ label: "Contact", href: "/contact/" }] };
+    }
+    typing.remove();
+    history.push(reply);
+    save();
+    render(reply);
+    scroll();
+    busy = false;
+    input.focus();
+  }
 
   const hideTeaser = () => { teaser.hidden = true; };
   const open = () => {
@@ -148,7 +170,10 @@ function startChatHelper() {
     badge.hidden = true;
     hideTeaser();
     storageSet("p1-chat-seen", "1");
-    fillConversation();
+    greet();
+    scroll();
+    if (window.matchMedia("(min-width: 768px)").matches) input.focus();
+    trackCta("chat_open");
   };
   const close = () => {
     panel.hidden = true;
@@ -156,19 +181,17 @@ function startChatHelper() {
     launcher.classList.remove("is-open");
     launcher.focus();
   };
+  window.p1OpenChat = open;
 
+  form.addEventListener("submit", (e) => { e.preventDefault(); const t = input.value; input.value = ""; send(t); });
   launcher.addEventListener("click", () => (panel.hidden ? open() : close()));
   root.querySelector(".chat-close").addEventListener("click", close);
   teaser.querySelector("p").addEventListener("click", open);
-  teaser.querySelector(".chat-teaser-close").addEventListener("click", () => {
-    hideTeaser();
-    storageSet("p1-chat-seen", "1");
-  });
-  document.addEventListener("keydown", (e) => {
-    if (e.key === "Escape" && !panel.hidden) close();
-  });
+  teaser.querySelector(".chat-teaser-close").addEventListener("click", () => { hideTeaser(); storageSet("p1-chat-seen", "1"); });
+  document.addEventListener("keydown", (e) => { if (e.key === "Escape" && !panel.hidden) close(); });
+  document.querySelectorAll("[data-open-chat]").forEach((b) => b.addEventListener("click", open));
 
-  // Pop the teaser bubble once per visit, on larger screens only, so it never covers content on phones
+  // Pop the teaser bubble once, on larger screens only, so it never covers content on phones
   const roomy = window.matchMedia("(min-width: 768px)").matches;
   if (storageGet("p1-chat-seen")) {
     badge.hidden = true;
@@ -183,6 +206,237 @@ function startChatHelper() {
 }
 
 startChatHelper();
+
+// ---------- Website checker (homepage) ----------
+const checker = document.getElementById("checker-form");
+if (checker) {
+  const out = document.getElementById("checker-result");
+  const err = document.getElementById("checker-error");
+  const btn = checker.querySelector("button");
+  const ICON = { pass: "✓", warn: "!", fail: "✕" };
+  const showError = (msg) => { err.textContent = msg; err.hidden = false; };
+
+  const renderBasics = (r) => {
+    out.textContent = "";
+    const head = el("div", "checker-head");
+    const ring = el("div", "score-ring " + (r.score >= 85 ? "good" : r.score >= 60 ? "ok" : "bad"));
+    ring.style.setProperty("--p", r.score);
+    ring.appendChild(el("b", null, String(r.score)));
+    ring.appendChild(el("small", null, "/100"));
+    head.appendChild(ring);
+    const t = el("div");
+    t.appendChild(el("h3", null, r.host));
+    const fails = r.checks.filter((c) => c.status === "fail").length;
+    const warns = r.checks.filter((c) => c.status === "warn").length;
+    t.appendChild(el("p", null, fails + warns === 0 ? "Excellent. Your website covers all the basics we check."
+      : `${fails} problem${fails === 1 ? "" : "s"} and ${warns} thing${warns === 1 ? "" : "s"} to improve.`));
+    head.appendChild(t);
+    out.appendChild(head);
+
+    const groups = {};
+    r.checks.forEach((c) => (groups[c.group] = groups[c.group] || []).push(c));
+    const order = { fail: 0, warn: 1, pass: 2 };
+    const grid = el("div", "checker-groups");
+    for (const g of Object.keys(groups)) {
+      const box = el("div", "checker-group");
+      box.appendChild(el("h4", null, g));
+      const ul = el("ul");
+      for (const c of groups[g].sort((a, b) => order[a.status] - order[b.status])) {
+        const li = el("li", "chk " + c.status);
+        li.appendChild(el("span", "chk-icon", ICON[c.status]));
+        const d = el("div");
+        d.appendChild(el("b", null, c.label));
+        d.appendChild(el("p", null, c.detail));
+        li.appendChild(d);
+        ul.appendChild(li);
+      }
+      box.appendChild(ul);
+      grid.appendChild(box);
+    }
+    out.appendChild(grid);
+
+    const speed = el("div", "checker-speed");
+    speed.appendChild(el("h4", null, "Mobile speed (Google PageSpeed)"));
+    const sp = el("p", "fine", "Measuring with Google… this can take up to 30 seconds.");
+    speed.appendChild(sp);
+    out.appendChild(speed);
+
+    const ctaBox = el("div", "checker-cta");
+    ctaBox.appendChild(el("p", null, fails + warns ? "Want us to fix these for you? Our Get Found plan covers all of this, from S$20 a month (introductory price)." : "Great foundations. Want more customers from Google and AI search? See what we do for S$20 a month."));
+    const row = el("div", "cta-row");
+    const s1 = el("a", "btn", "Sign up from S$20/month"); s1.href = "/signup/";
+    const s2 = el("button", "btn btn-ghost", "Ask our assistant"); s2.type = "button";
+    s2.addEventListener("click", () => window.p1OpenChat && window.p1OpenChat());
+    row.appendChild(s1); row.appendChild(s2);
+    ctaBox.appendChild(row);
+    out.appendChild(ctaBox);
+    return sp;
+  };
+
+  const renderSpeed = (sp, r, url) => {
+    if (!r || !r.ok || r.score == null) {
+      sp.textContent = "";
+      sp.append("Google's speed test is busy right now. ");
+      const a = el("a", "link", "Run it on PageSpeed Insights ↗");
+      a.href = "https://pagespeed.web.dev/analysis?url=" + encodeURIComponent(url);
+      a.target = "_blank"; a.rel = "noopener";
+      sp.appendChild(a);
+      return;
+    }
+    sp.className = "speed-line";
+    sp.textContent = "";
+    const score = el("b", r.score >= 90 ? "good" : r.score >= 50 ? "ok" : "bad", r.score + "/100");
+    sp.appendChild(score);
+    const bits = [];
+    if (r.lab && r.lab.lcp) bits.push("Main content shows in " + r.lab.lcp);
+    if (r.lab && r.lab.cls) bits.push("layout shift " + r.lab.cls);
+    if (r.field_overall) bits.push("real-user Core Web Vitals: " + r.field_overall.toLowerCase());
+    sp.append(" " + bits.join(" · "));
+  };
+
+  checker.addEventListener("submit", async (e) => {
+    e.preventDefault();
+    const url = checker.url.value.trim();
+    err.hidden = true;
+    if (!url) { showError("Enter your website address, like yourbusiness.com.sg"); return; }
+    btn.disabled = true;
+    btn.textContent = "Checking…";
+    out.hidden = false;
+    out.textContent = "";
+    out.appendChild(el("p", "checker-loading", "Checking " + url + " … this takes about 10 seconds."));
+    trackCta("checker_run");
+    try {
+      const r = await callApi("siteCheck", { url, mode: "basics" });
+      if (!r.data || !r.data.ok) { out.hidden = true; showError((r.data && r.data.error) || "We couldn't check that website. Please try again."); return; }
+      storageSet("p1-site", r.data.url, sessionStorage);
+      const sp = renderBasics(r.data);
+      out.scrollIntoView({ behavior: "smooth", block: "start" });
+      callApi("siteCheck", { url: r.data.url, mode: "speed" }).then((s) => renderSpeed(sp, s.data, r.data.url)).catch(() => renderSpeed(sp, null, r.data.url));
+    } catch (e2) {
+      out.hidden = true;
+      showError("We couldn't reach our checker. Please try again in a moment.");
+    } finally {
+      btn.disabled = false;
+      btn.textContent = "Check my website";
+    }
+  });
+}
+
+// ---------- Sign up (Stripe Checkout) ----------
+const signup = document.getElementById("signup-form");
+if (signup) {
+  const params = new URLSearchParams(location.search);
+  const err = signup.querySelector(".form-error");
+  const btn = signup.querySelector('button[type="submit"]');
+  const total = document.getElementById("signup-total");
+  const boostsWanted = params.get("boosts");
+  if (boostsWanted && signup.querySelector('input[name="boosts"][value="' + boostsWanted + '"]')) {
+    signup.querySelector('input[name="boosts"][value="' + boostsWanted + '"]').checked = true;
+  }
+  const site = storageGet("p1-site", sessionStorage);
+  if (site && !signup.website.value) signup.website.value = site;
+  if (params.get("cancelled")) document.getElementById("signup-cancelled").hidden = false;
+  const update = () => {
+    const n = Number(signup.querySelector('input[name="boosts"]:checked').value || 0);
+    total.textContent = "S$" + (PLAN_PRICE + n * BOOST_PRICE);
+  };
+  signup.addEventListener("change", update);
+  update();
+  signup.addEventListener("submit", async (e) => {
+    e.preventDefault();
+    const d = Object.fromEntries(new FormData(signup).entries());
+    err.hidden = true;
+    if (!String(d.business || "").trim() || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(String(d.email || "").trim())) {
+      err.textContent = "Please enter your business name and a valid email.";
+      err.hidden = false;
+      return;
+    }
+    btn.disabled = true;
+    btn.textContent = "Opening secure payment…";
+    trackCta("signup_start");
+    try {
+      const r = await callApi("createCheckout", { business: d.business, email: d.email, website: d.website, boosts: Number(d.boosts || 0) });
+      if (r.data && r.data.url) { location.href = r.data.url; return; }
+      err.textContent = (r.data && r.data.error) || "We couldn't start checkout. Please try again.";
+    } catch (e2) {
+      err.textContent = "We couldn't reach the payment page. Please check your connection and try again.";
+    }
+    err.hidden = false;
+    btn.disabled = false;
+    btn.textContent = "Continue to secure payment";
+  });
+}
+
+// Pricing calculator -> sign-up link keeps the chosen number of Boosts
+const calcSignup = document.getElementById("calc-signup");
+if (calcSignup && calc) {
+  const sync = () => { calcSignup.href = "/signup/?boosts=" + (calc.querySelector('input[name="runs"]:checked')?.value || 0); };
+  calc.addEventListener("change", sync);
+  sync();
+}
+
+// ---------- SEO Boost top-up ----------
+const topup = document.getElementById("topup-form");
+if (topup) {
+  const err = topup.querySelector(".form-error");
+  const btn = topup.querySelector('button[type="submit"]');
+  topup.addEventListener("submit", async (e) => {
+    e.preventDefault();
+    const email = topup.email.value.trim();
+    err.hidden = true;
+    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) { err.textContent = "Please enter the email you subscribed with."; err.hidden = false; return; }
+    btn.disabled = true;
+    btn.textContent = "Opening secure payment…";
+    trackCta("boost_topup_start");
+    try {
+      const r = await callApi("createCheckout", { kind: "boosts", email, boosts: Number(topup.boosts.value) });
+      if (r.data && r.data.url) { location.href = r.data.url; return; }
+      err.textContent = (r.data && r.data.error) || "We couldn't start checkout. Please try again.";
+    } catch (e2) {
+      err.textContent = "We couldn't reach the payment page. Please try again.";
+    }
+    err.hidden = false;
+    btn.disabled = false;
+    btn.textContent = "Pay securely with Stripe";
+  });
+}
+
+// ---------- Contact form ----------
+const lead = document.getElementById("lead-form");
+if (lead) {
+  const err = lead.querySelector(".form-error");
+  const btn = lead.querySelector('button[type="submit"]');
+  const site = storageGet("p1-site", sessionStorage);
+  if (site && !lead.website.value) lead.website.value = site;
+  lead.addEventListener("submit", async (e) => {
+    e.preventDefault();
+    const d = Object.fromEntries(new FormData(lead).entries());
+    err.hidden = true;
+    const emailOk = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(String(d.email || "").trim());
+    if (!String(d.name || "").trim() || (!emailOk && String(d.phone || "").replace(/\D/g, "").length < 7)) {
+      err.textContent = "Please add your name and an email or phone number so we can reply.";
+      err.hidden = false;
+      return;
+    }
+    btn.disabled = true;
+    btn.textContent = "Sending…";
+    try {
+      const r = await callApi("siteLead", { ...d, source: "contact_form", page: location.pathname });
+      if (r.data && r.data.ok) {
+        lead.hidden = true;
+        document.getElementById("lead-done").hidden = false;
+        trackCta("lead_submit");
+        return;
+      }
+      err.textContent = (r.data && r.data.error) || "Something went wrong. Please try again.";
+    } catch (e2) {
+      err.textContent = "We couldn't send your message. Please check your connection and try again.";
+    }
+    err.hidden = false;
+    btn.disabled = false;
+    btn.textContent = "Send message";
+  });
+}
 
 const year = document.getElementById("year");
 if (year) year.textContent = new Date().getFullYear();
@@ -295,7 +549,7 @@ if (menuBtn && nav) {
   });
 }
 
-// Anonymous visit and WhatsApp-click counts for the Page One controller (Base44).
+// Anonymous visit and button-click counts for the Page One controller (Base44).
 // No cookies and no personal details: page, referrer type, device and a random id only.
 // Skipped when the browser sends Do Not Track or is automated.
 (() => {
@@ -345,9 +599,9 @@ if (menuBtn && nav) {
       : a.closest(".article-cta") ? "article_cta" : a.classList.contains("btn") ? "whatsapp_button" : "whatsapp_link";
     send("CtaClick", { cta_type: type });
   }, true);
-  const checkForm = document.getElementById("check-form");
-  if (checkForm) checkForm.addEventListener("submit", () => {
-    if (checkForm.querySelector("#form-error") && !checkForm.querySelector("#form-error").hidden) return;
-    setTimeout(() => { const err = document.getElementById("form-error"); if (!err || err.hidden) send("CtaClick", { cta_type: "free_check_form" }); }, 0);
-  });
+  window.p1Track = (type) => send("CtaClick", { cta_type: type });
+  document.addEventListener("click", (e) => {
+    const a = e.target.closest && e.target.closest('a[href^="/signup/"]');
+    if (a) send("CtaClick", { cta_type: "signup_link" });
+  }, true);
 })();
