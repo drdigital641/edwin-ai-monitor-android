@@ -162,7 +162,7 @@ def page(path, title, desc, schemas, body, crumb=None, robots="index, follow, ma
     {CHAT_ICON}
   </a>
 
-  <script src="/main.js?v=6" defer></script>
+  <script src="/main.js?v=7" defer></script>
 </body>
 </html>
 """

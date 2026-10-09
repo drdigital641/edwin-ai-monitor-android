@@ -21,11 +21,23 @@ if (calc) {
 const API = "https://base44.app/api/apps/6ac7f2548a9c3877449e2772/functions";
 const trackCta = (type) => { try { if (window.p1Track) window.p1Track(type); } catch (e) { /* ignore */ } };
 
-async function callApi(name, payload) {
-  const res = await fetch(API + "/" + name, {
-    method: "POST", credentials: "omit",
-    headers: { "Content-Type": "application/json" }, body: JSON.stringify(payload),
-  });
+// Retries twice on network errors and temporary server errors (502/503/504), so a brief
+// platform hiccup doesn't show visitors an error.
+async function callApi(name, payload, attempt = 0) {
+  let res;
+  try {
+    res = await fetch(API + "/" + name, {
+      method: "POST", credentials: "omit",
+      headers: { "Content-Type": "application/json" }, body: JSON.stringify(payload),
+    });
+  } catch (e) {
+    if (attempt < 2) { await new Promise((r) => setTimeout(r, 1500 * (attempt + 1))); return callApi(name, payload, attempt + 1); }
+    throw e;
+  }
+  if ([502, 503, 504].includes(res.status) && attempt < 2) {
+    await new Promise((r) => setTimeout(r, 1500 * (attempt + 1)));
+    return callApi(name, payload, attempt + 1);
+  }
   let data = {};
   try { data = await res.json(); } catch (e) { /* ignore */ }
   return { ok: res.ok, status: res.status, data };
