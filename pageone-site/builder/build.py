@@ -70,6 +70,7 @@ def page(path, title, desc, schemas, body, crumb=None, robots="index, follow, ma
 <html lang="en-SG">
 <head>
   <meta charset="utf-8">
+  <script>if(/(^|\\.)pageonesingapore\\.com$/.test(location.hostname)&&(location.protocol==="http:"||location.hostname!=="pageonesingapore.com"))location.replace("https://pageonesingapore.com"+location.pathname+location.search+location.hash);</script>
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>{title}</title>
   <meta name="description" content="{desc}">
@@ -98,7 +99,7 @@ def page(path, title, desc, schemas, body, crumb=None, robots="index, follow, ma
   <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800&family=Space+Grotesk:wght@500;600;700&display=swap">
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800&family=Space+Grotesk:wght@500;600;700&display=swap" media="print" onload="this.media='all'">
   <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800&family=Space+Grotesk:wght@500;600;700&display=swap"></noscript>
-  <link rel="stylesheet" href="/styles.css?v=9">
+  <link rel="stylesheet" href="/styles.css?v=10">
   <script>document.documentElement.classList.add("js");</script>
 {ld}
 </head>
@@ -162,7 +163,7 @@ def page(path, title, desc, schemas, body, crumb=None, robots="index, follow, ma
     {WA_ICON}
   </a>
 
-  <script src="/main.js?v=8" defer></script>
+  <script src="/main.js?v=9" defer></script>
 </body>
 </html>
 """

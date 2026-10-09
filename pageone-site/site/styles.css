@@ -540,3 +540,34 @@ a:focus-visible, button:focus-visible, input:focus-visible, summary:focus-visibl
 @media (max-width: 640px) { .proof-card { padding: 22px 16px 20px; } .proof-hero b { font-size: 1.7rem; } }
 .chat-badge::after { content: attr(data-n); }
 .article-cta .btn, .article-cta .btn-ghost { color: #fff; }
+
+/* Website checker input (v2): clear, labelled, phone-friendly */
+.checker-box { max-width: 680px; background: #fff; color: var(--ink); border-radius: 20px; padding: 20px; box-shadow: 0 24px 60px rgba(0, 0, 0, .35); }
+.checker-label { display: block; font-weight: 800; font-size: .95rem; margin-bottom: 10px; color: var(--ink); }
+.checker-row { display: flex; gap: 10px; }
+.checker-field { position: relative; flex: 1; min-width: 0; }
+.checker-globe { position: absolute; left: 14px; top: 50%; transform: translateY(-50%); color: #64748b; pointer-events: none; }
+.checker-field input { width: 100%; height: 54px; font: inherit; font-size: 17px; color: var(--ink); background: #f8fafc; border: 2px solid #cbd5e1; border-radius: 14px; padding: 0 44px 0 44px; transition: border-color .15s, box-shadow .15s, background .15s; }
+.checker-field input::placeholder { color: #94a3b8; }
+.checker-field input:focus { outline: none; background: #fff; border-color: var(--red); box-shadow: 0 0 0 4px rgba(255, 61, 87, .15); }
+.checker-clear { position: absolute; right: 8px; top: 50%; transform: translateY(-50%); width: 32px; height: 32px; border: 0; border-radius: 50%; background: #e2e8f0; color: #334155; font-size: 1.2rem; line-height: 1; cursor: pointer; }
+.checker-clear[hidden] { display: none; }
+.checker-row .btn { flex: none; height: 54px; padding: 0 22px; }
+.checker-hint { margin: 10px 2px 0; font-size: .86rem; color: var(--muted); }
+.checker-try { border: 0; background: none; padding: 0; font: inherit; font-weight: 700; color: var(--red-dark); text-decoration: underline; cursor: pointer; margin-left: 4px; }
+.checker-box .form-error { color: #b91c1c; margin: 10px 2px 0; }
+.checker-box .form-error[hidden] { display: none; }
+.checker-progress { margin-top: 14px; }
+.checker-progress[hidden] { display: none; }
+.checker-progress .bar { display: block; height: 6px; background: #e2e8f0; border-radius: 3px; overflow: hidden; }
+.checker-progress .bar i { display: block; height: 100%; width: 8%; background: var(--grad); border-radius: 3px; transition: width .8s ease; }
+.checker-progress .step { display: block; margin-top: 8px; font-size: .88rem; font-weight: 600; color: var(--muted); }
+.checker-nosite { margin: 14px 2px 0; padding-top: 14px; border-top: 1px solid #e2e8f0; font-size: .9rem; color: var(--muted); }
+.checker-nosite a { color: #15803d; font-weight: 800; text-decoration: none; }
+.checker-social { margin: 0; }
+.checker-social h3 { color: var(--ink); margin: 0 0 8px; }
+@media (max-width: 640px) {
+  .checker-box { padding: 16px; border-radius: 18px; }
+  .checker-row { flex-direction: column; }
+  .checker-row .btn { width: 100%; }
+}

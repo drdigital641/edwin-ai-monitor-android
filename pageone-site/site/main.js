@@ -190,7 +190,7 @@ const checker = document.getElementById("checker-form");
 if (checker) {
   const out = document.getElementById("checker-result");
   const err = document.getElementById("checker-error");
-  const btn = checker.querySelector("button");
+  const btn = checker.querySelector("button[type=\"submit\"]");
   const ICON = { pass: "✓", warn: "!", fail: "✕" };
   const showError = (msg) => { err.textContent = msg; err.hidden = false; };
 
@@ -278,28 +278,104 @@ if (checker) {
     sp.append(" " + bits.join(" · "));
   };
 
-  checker.addEventListener("submit", async (e) => {
-    e.preventDefault();
-    const url = checker.url.value.trim();
-    err.hidden = true;
-    if (!url) { showError("Enter your website address, like yourbusiness.com.sg"); return; }
-    btn.disabled = true;
-    btn.textContent = "Checking…";
+  // Input helpers: clear button, example, "no website yet" link, and progress steps
+  const input = checker.url;
+  const clearBtn = document.getElementById("checker-clear");
+  const progress = document.getElementById("checker-progress");
+  const stepText = document.getElementById("checker-step");
+  const bar = progress ? progress.querySelector(".bar i") : null;
+  const syncClear = () => { if (clearBtn) clearBtn.hidden = !input.value; };
+  input.addEventListener("input", syncClear);
+  if (clearBtn) clearBtn.addEventListener("click", () => { input.value = ""; syncClear(); err.hidden = true; input.focus(); });
+  const tryBtn = checker.querySelector("[data-try]");
+  if (tryBtn) tryBtn.addEventListener("click", () => { input.value = tryBtn.dataset.try; syncClear(); checker.requestSubmit ? checker.requestSubmit() : checker.dispatchEvent(new Event("submit")); });
+  const noSite = document.getElementById("checker-nosite");
+  if (noSite) {
+    noSite.href = waLink("Hi Edwin, I don't have a website yet. Can Page One build one for my business?\nMy business: ");
+    noSite.target = "_blank"; noSite.rel = "noopener";
+  }
+  const STEPS = ["Opening your homepage…", "Checking Google basics…", "Checking mobile setup…", "Checking AI-search readiness…", "Scoring your website…"];
+  let stepTimer = null;
+  const startProgress = () => {
+    if (!progress) return;
+    progress.hidden = false;
+    let i = 0;
+    stepText.textContent = STEPS[0];
+    bar.style.width = "12%";
+    stepTimer = setInterval(() => {
+      i = Math.min(i + 1, STEPS.length - 1);
+      stepText.textContent = STEPS[i];
+      bar.style.width = Math.min(12 + i * 20, 92) + "%";
+    }, 1600);
+  };
+  const stopProgress = () => { if (stepTimer) clearInterval(stepTimer); stepTimer = null; if (progress) progress.hidden = true; };
+
+  // Social and marketplace pages aren't websites Google can rank like a business site
+  const SOCIAL = [
+    [/(^|\.)(facebook\.com|fb\.com|fb\.me)$/, "Facebook page"], [/(^|\.)instagram\.com$/, "Instagram profile"],
+    [/(^|\.)tiktok\.com$/, "TikTok profile"], [/(^|\.)(shopee\.|lazada\.|carousell\.)/, "marketplace shop"],
+    [/(^|\.)(linktr\.ee|beacons\.ai)$/, "link page"], [/(^|\.)(wa\.me|whatsapp\.com)$/, "WhatsApp link"],
+    [/(^|\.)(maps\.app\.goo\.gl|goo\.gl)$|(^|\.)google\.[a-z.]+$/, "Google listing"],
+  ];
+  const socialKind = (value) => {
+    let host = "";
+    try { host = new URL(/^https?:\/\//.test(value) ? value : "https://" + value).hostname.replace(/^www\./, ""); } catch (e3) { return null; }
+    for (const [re, kind] of SOCIAL) if (re.test(host)) return kind;
+    return null;
+  };
+  const renderSocial = (value, kind) => {
     out.hidden = false;
     out.textContent = "";
-    out.appendChild(el("p", "checker-loading", "Checking " + url + " … this takes about 10 seconds."));
+    const box = el("div", "checker-social");
+    box.appendChild(el("h3", null, "That's a " + kind + ", not a website"));
+    box.appendChild(el("p", null, "A " + kind + " is a great start, but Google and AI assistants rank real websites for searches like \"hair salon near me\". Customers searching on Google may never see your " + kind + "."));
+    box.appendChild(el("p", null, "Our Get Found plan builds you a proper website, connected to Google, Maps and AI search, from S$20 a month (introductory price)."));
+    const row = el("div", "cta-row");
+    const a = el("a", "btn", "Chat with Edwin about a website");
+    a.href = waLink("Hi Edwin, my business is only on " + (/^[aeiou]/i.test(kind) ? "an " : "a ") + kind + " (" + value + "). Can Page One build me a proper website?");
+    a.target = "_blank"; a.rel = "noopener";
+    const p2 = el("a", "btn btn-ghost", "See what's included"); p2.href = "/get-found/";
+    row.appendChild(a); row.appendChild(p2);
+    const cta = el("div", "checker-cta"); cta.appendChild(row);
+    box.appendChild(cta);
+    out.appendChild(box);
+    trackCta("checker_social");
+  };
+
+  checker.addEventListener("submit", async (e) => {
+    e.preventDefault();
+    const url = input.value.trim().replace(/\s+/g, "").replace(/[.,;]+$/, "").toLowerCase();
+    input.value = url;
+    syncClear();
+    err.hidden = true;
+    if (!url) { showError("Type your website address first, like yourbusiness.com.sg"); input.focus(); return; }
+    if (!/\./.test(url)) { showError("That doesn't look like a website address. It should look like yourbusiness.com.sg. No website yet? Tap \"Chat with Edwin\" below."); input.focus(); return; }
+    const kind = socialKind(url);
+    if (kind) { renderSocial(url, kind); out.scrollIntoView({ behavior: "smooth", block: "start" }); return; }
+    input.blur();
+    btn.disabled = true;
+    btn.textContent = "Checking…";
+    out.hidden = true;
+    out.textContent = "";
+    startProgress();
     trackCta("checker_run");
     try {
       const r = await callApi("siteCheck", { url, mode: "basics" });
-      if (!r.data || !r.data.ok) { out.hidden = true; showError((r.data && r.data.error) || "We couldn't check that website. Please try again."); return; }
+      if (!r.data || !r.data.ok) {
+        const msg = (r.data && r.data.error) || "We couldn't check that website. Please try again.";
+        showError(/doesn't return a web page|couldn't reach/i.test(msg) ? "We couldn't open " + url + ". Check the spelling, or try it with www. in front." : msg);
+        return;
+      }
       storageSet("p1-site", r.data.url, sessionStorage);
+      stopProgress();
+      out.hidden = false;
       const sp = renderBasics(r.data);
       out.scrollIntoView({ behavior: "smooth", block: "start" });
       callApi("siteCheck", { url: r.data.url, mode: "speed" }).then((s) => renderSpeed(sp, s.data, r.data.url)).catch(() => renderSpeed(sp, null, r.data.url));
     } catch (e2) {
-      out.hidden = true;
-      showError("We couldn't reach our checker. Please try again in a moment.");
+      showError("We couldn't reach our checker. Please check your connection and try again.");
     } finally {
+      stopProgress();
       btn.disabled = false;
       btn.textContent = "Check my website";
     }
