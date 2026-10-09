@@ -19,6 +19,20 @@ if (calc) {
 
 // Page One backend (Base44): chat assistant, website checker, sign-up and contact form.
 const API = "https://base44.app/api/apps/6ac7f2548a9c3877449e2772/functions";
+
+// Edwin's WhatsApp (country code, no + or spaces). Every enquiry goes here for now.
+const WHATSAPP_NUMBER = "6597856612";
+// Pre-filled WhatsApp message, ending with the page it came from so Edwin knows the context.
+function waLink(text) {
+  const from = "\n\n(From pageonesingapore.com" + location.pathname + ")";
+  return "https://wa.me/" + WHATSAPP_NUMBER + "?text=" + encodeURIComponent(text + from);
+}
+function openWhatsApp(text, type) {
+  trackCta(type || "whatsapp_form");
+  const url = waLink(text);
+  const w = window.open(url, "_blank", "noopener");
+  if (!w) location.href = url;
+}
 const trackCta = (type) => { try { if (window.p1Track) window.p1Track(type); } catch (e) { /* ignore */ } };
 
 // Retries twice on network errors and temporary server errors (502/503/504), so a brief
@@ -57,9 +71,13 @@ function storageSet(key, value, store) {
   try { (store || localStorage).setItem(key, value); } catch (e) { /* private mode */ }
 }
 
-// ---------- AI chat assistant (bottom right) ----------
-const SUGGESTIONS = ["How much does it cost?", "What do I get for S$20?", "Do you have proof it works?", "How do I sign up?"];
-const SAFE_LINK = /^\/(signup\/|pricing\/|get-found\/|seo-boost\/|results\/|report\.html|faq\/|#check|about\/|contact\/|privacy\/|terms\/)$/;
+// ---------- WhatsApp chat helper (bottom right) ----------
+const QUICK_REPLIES = [
+  { label: "I want to sign up (S$20/month)", text: "Hi Edwin, I'd like to sign up for the Get Found plan (S$20/month).\nMy business: \nWebsite (if any): " },
+  { label: "I don't have a website yet", text: "Hi Edwin, I don't have a website yet. Can Page One build one for my business?\nMy business: " },
+  { label: "I already have a website", text: "Hi Edwin, I already have a website. Can you add an SEO landing page and help it show up on Google?\nMy website: " },
+  { label: "How much will it cost me?", text: "Hi Edwin, how much would the Get Found plan and SEO Boosts cost for my business?" },
+];
 
 function startChatHelper() {
   const float = document.getElementById("wa-float");
@@ -67,25 +85,25 @@ function startChatHelper() {
   root.innerHTML =
     '<div class="chat-teaser" id="chat-teaser" hidden>' +
       '<button class="chat-teaser-close" type="button" aria-label="Dismiss">×</button>' +
-      '<p>Questions about getting found on Google? Ask me 👋</p>' +
+      '<p>Questions about getting found on Google? Chat with Edwin 👋</p>' +
     '</div>' +
-    '<section class="chat-panel" id="chat-panel" role="dialog" aria-label="Chat with Page One Singapore" hidden>' +
+    '<section class="chat-panel" id="chat-panel" role="dialog" aria-label="Chat with Page One Singapore on WhatsApp" hidden>' +
       '<header class="chat-head">' +
         '<span class="chat-avatar" aria-hidden="true">1</span>' +
-        '<div><b>Page One assistant</b><small>AI · answers instantly, 24/7</small></div>' +
+        '<div><b>Edwin, Page One Singapore</b><small>Replies personally on WhatsApp</small></div>' +
         '<button class="chat-close" type="button" aria-label="Close chat">×</button>' +
       '</header>' +
-      '<div class="chat-body" id="chat-body" aria-live="polite"></div>' +
+      '<div class="chat-body" id="chat-body"></div>' +
       '<form class="chat-form" id="chat-form">' +
         '<label class="sr-only" for="chat-input">Your message</label>' +
-        '<input id="chat-input" type="text" maxlength="600" autocomplete="off" placeholder="Ask a question…">' +
-        '<button type="submit" aria-label="Send"><svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true"><path fill="currentColor" d="M3 20.5 21 12 3 3.5l.01 6.6L15 12 3.01 13.9z"/></svg></button>' +
+        '<input id="chat-input" type="text" maxlength="600" autocomplete="off" placeholder="Type your question…">' +
+        '<button type="submit" aria-label="Send on WhatsApp"><svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true"><path fill="currentColor" d="M3 20.5 21 12 3 3.5l.01 6.6L15 12 3.01 13.9z"/></svg></button>' +
       '</form>' +
-      '<p class="chat-note">AI assistant, may make mistakes. Need a person? <a href="/contact/">Leave a message</a>.</p>' +
+      '<p class="chat-note">Opens WhatsApp with your message. No obligation.</p>' +
     '</section>' +
     '<button class="chat-launcher" id="chat-launcher" type="button" aria-expanded="false" aria-controls="chat-panel" aria-label="Open chat">' +
       '<span class="chat-ring" aria-hidden="true"></span>' +
-      '<svg class="chat-icon" viewBox="0 0 24 24" width="28" height="28" aria-hidden="true"><path fill="currentColor" d="M4 4h16a2 2 0 0 1 2 2v10a2 2 0 0 1-2 2H9l-5 4v-4a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2zm3 6.5a1.5 1.5 0 1 0 0 .01zm5 0a1.5 1.5 0 1 0 0 .01zm5 0a1.5 1.5 0 1 0 0 .01z"/></svg>' +
+      '<svg class="chat-icon" viewBox="0 0 24 24" width="28" height="28" aria-hidden="true"><path fill="currentColor" d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm0 18.2c-1.5 0-3-.4-4.3-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8-.2-.1-.4-.1-.6.1l-.8 1c-.1.2-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.3-.4.3-.4.7-1.3.1-.2 0-.3 0-.4l-.8-1.8c-.2-.5-.4-.4-.6-.4h-.5c-.2 0-.4.1-.6.3-.2.2-.8.8-.8 2s.8 2.3 1 2.5c.1.2 1.7 2.6 4.1 3.6 1.5.7 2.1.7 2.9.6.5-.1 1.5-.6 1.7-1.2.2-.6.2-1.1.2-1.2-.1-.1-.3-.2-.5-.3z"/></svg>' +
       '<span class="chat-badge" id="chat-badge" data-n="1" aria-hidden="true"></span>' +
     '</button>';
   document.body.appendChild(root);
@@ -98,81 +116,25 @@ function startChatHelper() {
   const badge = root.querySelector("#chat-badge");
   const form = root.querySelector("#chat-form");
   const input = root.querySelector("#chat-input");
-  let history = [];
-  try { history = JSON.parse(storageGet("p1-chat", sessionStorage) || "[]"); } catch (e) { history = []; }
-  let busy = false;
-  let started = false;
+  let filled = false;
 
-  const scroll = () => { body.scrollTop = body.scrollHeight; };
-  const save = () => storageSet("p1-chat", JSON.stringify(history.slice(-20)), sessionStorage);
-
-  const render = (m) => {
-    const p = el("p", "chat-msg" + (m.role === "user" ? " chat-me" : ""), m.content);
-    body.appendChild(p);
-    if (m.links && m.links.length) {
-      const list = el("div", "chat-replies");
-      for (const l of m.links) {
-        if (!SAFE_LINK.test(l.href)) continue;
-        const a = el("a", "chat-reply", l.label);
-        a.href = l.href;
-        list.appendChild(a);
-      }
-      if (list.childNodes.length) body.appendChild(list);
-    }
-  };
-
-  const chips = () => {
-    const list = el("div", "chat-replies chat-suggest");
-    for (const q of SUGGESTIONS) {
-      const b = el("button", "chat-reply", q);
-      b.type = "button";
-      b.addEventListener("click", () => { list.remove(); send(q); });
-      list.appendChild(b);
+  const fill = () => {
+    if (filled) return;
+    filled = true;
+    body.appendChild(el("p", "chat-msg", "Hi! 👋 I'm Edwin from Page One Singapore."));
+    body.appendChild(el("p", "chat-msg", "We help Singapore businesses get found on Google, Google Maps and AI, from S$20 a month (introductory price). Pick a topic or type your question, and we'll continue on WhatsApp."));
+    const list = el("div", "chat-replies");
+    const checked = storageGet("p1-check", sessionStorage);
+    const replies = checked ? [{ label: "Help me fix my website check results", text: "Hi Edwin, I ran the website checker:\n" + checked + "\nCan you help me fix these?" }, ...QUICK_REPLIES] : QUICK_REPLIES;
+    for (const q of replies) {
+      const a = el("a", "chat-reply", q.label);
+      a.href = waLink(q.text);
+      a.target = "_blank";
+      a.rel = "noopener";
+      list.appendChild(a);
     }
     body.appendChild(list);
   };
-
-  const greet = () => {
-    if (started) return;
-    started = true;
-    if (history.length) { history.forEach(render); scroll(); return; }
-    render({ role: "assistant", content: "Hi! 👋 I'm Page One's assistant. Ask me anything about getting found on Google and AI search, our S$20 introductory plan, or signing up." });
-    chips();
-  };
-
-  async function send(text) {
-    text = String(text || "").trim().slice(0, 600);
-    if (!text || busy) return;
-    busy = true;
-    const suggest = body.querySelector(".chat-suggest");
-    if (suggest) suggest.remove();
-    const mine = { role: "user", content: text };
-    history.push(mine);
-    render(mine);
-    const typing = el("p", "chat-msg chat-typing");
-    typing.setAttribute("aria-label", "Typing");
-    typing.innerHTML = "<span></span><span></span><span></span>";
-    body.appendChild(typing);
-    scroll();
-    trackCta("chat_message");
-    let reply;
-    try {
-      const r = await callApi("siteChat", {
-        messages: history.slice(-8).map((m) => ({ role: m.role, content: m.content })),
-        page: location.pathname, session: storageGet("p1-sid", sessionStorage) || "",
-      });
-      reply = { role: "assistant", content: r.data.reply || "Sorry, I couldn't answer that just now.", links: r.data.links || [] };
-    } catch (e) {
-      reply = { role: "assistant", content: "Sorry, I can't connect right now. Please try again, or leave a message on our contact page.", links: [{ label: "Contact", href: "/contact/" }] };
-    }
-    typing.remove();
-    history.push(reply);
-    save();
-    render(reply);
-    scroll();
-    busy = false;
-    input.focus();
-  }
 
   const hideTeaser = () => { teaser.hidden = true; };
   const open = () => {
@@ -182,9 +144,7 @@ function startChatHelper() {
     badge.hidden = true;
     hideTeaser();
     storageSet("p1-chat-seen", "1");
-    greet();
-    scroll();
-    if (window.matchMedia("(min-width: 768px)").matches) input.focus();
+    fill();
     trackCta("chat_open");
   };
   const close = () => {
@@ -195,7 +155,13 @@ function startChatHelper() {
   };
   window.p1OpenChat = open;
 
-  form.addEventListener("submit", (e) => { e.preventDefault(); const t = input.value; input.value = ""; send(t); });
+  form.addEventListener("submit", (e) => {
+    e.preventDefault();
+    const t = input.value.trim();
+    if (!t) { input.focus(); return; }
+    input.value = "";
+    openWhatsApp("Hi Edwin, " + t, "chat_typed");
+  });
   launcher.addEventListener("click", () => (panel.hidden ? open() : close()));
   root.querySelector(".chat-close").addEventListener("click", close);
   teaser.querySelector("p").addEventListener("click", open);
@@ -273,12 +239,18 @@ if (checker) {
     speed.appendChild(sp);
     out.appendChild(speed);
 
+    // Summary Edwin sees in the pre-filled WhatsApp message
+    const issues = r.checks.filter((c) => c.status !== "pass").sort((a, b) => order[a.status] - order[b.status])
+      .slice(0, 6).map((c) => "- " + c.label + (c.status === "fail" ? " (problem)" : " (to improve)"));
+    const summary = r.host + ": " + r.score + "/100" + (issues.length ? "\n" + issues.join("\n") : "");
+    storageSet("p1-check", summary, sessionStorage);
     const ctaBox = el("div", "checker-cta");
-    ctaBox.appendChild(el("p", null, fails + warns ? "Want us to fix these for you? Our Get Found plan covers all of this, from S$20 a month (introductory price)." : "Great foundations. Want more customers from Google and AI search? See what we do for S$20 a month."));
+    ctaBox.appendChild(el("p", null, fails + warns ? "Want help fixing these? Chat with Edwin on WhatsApp. Your results are sent with your message, so he can tell you what to fix first. Our Get Found plan covers all of this from S$20 a month (introductory price)." : "Great foundations. Want more customers from Google and AI search? Chat with Edwin about what we can do for S$20 a month."));
     const row = el("div", "cta-row");
-    const s1 = el("a", "btn", "Sign up from S$20/month"); s1.href = "/signup/";
-    const s2 = el("button", "btn btn-ghost", "Ask our assistant"); s2.type = "button";
-    s2.addEventListener("click", () => window.p1OpenChat && window.p1OpenChat());
+    const s1 = el("a", "btn", "Chat with Edwin about my results");
+    s1.href = waLink("Hi Edwin, I ran the website checker on pageonesingapore.com:\n" + summary + "\nCan you help me improve my website?");
+    s1.target = "_blank"; s1.rel = "noopener";
+    const s2 = el("a", "btn btn-ghost", "See plans from S$20/month"); s2.href = "/pricing/";
     row.appendChild(s1); row.appendChild(s2);
     ctaBox.appendChild(row);
     out.appendChild(ctaBox);
@@ -334,12 +306,11 @@ if (checker) {
   });
 }
 
-// ---------- Sign up (Stripe Checkout) ----------
+// ---------- Sign up (opens WhatsApp with the details filled in) ----------
 const signup = document.getElementById("signup-form");
 if (signup) {
   const params = new URLSearchParams(location.search);
   const err = signup.querySelector(".form-error");
-  const btn = signup.querySelector('button[type="submit"]');
   const total = document.getElementById("signup-total");
   const boostsWanted = params.get("boosts");
   if (boostsWanted && signup.querySelector('input[name="boosts"][value="' + boostsWanted + '"]')) {
@@ -347,35 +318,34 @@ if (signup) {
   }
   const site = storageGet("p1-site", sessionStorage);
   if (site && !signup.website.value) signup.website.value = site;
-  if (params.get("cancelled")) document.getElementById("signup-cancelled").hidden = false;
   const update = () => {
     const n = Number(signup.querySelector('input[name="boosts"]:checked').value || 0);
     total.textContent = "S$" + (PLAN_PRICE + n * BOOST_PRICE);
   };
   signup.addEventListener("change", update);
   update();
-  signup.addEventListener("submit", async (e) => {
+  signup.addEventListener("submit", (e) => {
     e.preventDefault();
     const d = Object.fromEntries(new FormData(signup).entries());
     err.hidden = true;
-    if (!String(d.business || "").trim() || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(String(d.email || "").trim())) {
-      err.textContent = "Please enter your business name and a valid email.";
+    if (!String(d.business || "").trim() || !String(d.name || "").trim()) {
+      err.textContent = "Please enter your name and business name.";
       err.hidden = false;
       return;
     }
-    btn.disabled = true;
-    btn.textContent = "Opening secure payment…";
-    trackCta("signup_start");
-    try {
-      const r = await callApi("createCheckout", { business: d.business, email: d.email, website: d.website, boosts: Number(d.boosts || 0) });
-      if (r.data && r.data.url) { location.href = r.data.url; return; }
-      err.textContent = (r.data && r.data.error) || "We couldn't start checkout. Please try again.";
-    } catch (e2) {
-      err.textContent = "We couldn't reach the payment page. Please check your connection and try again.";
-    }
-    err.hidden = false;
-    btn.disabled = false;
-    btn.textContent = "Continue to secure payment";
+    const n = Number(d.boosts || 0);
+    const lines = [
+      "Hi Edwin, I'd like to sign up for the Get Found plan (S$20/month, introductory price).",
+      "Name: " + String(d.name).trim(),
+      "Business: " + String(d.business).trim(),
+      String(d.industry || "").trim() && "What we do: " + String(d.industry).trim(),
+      "Website: " + (String(d.website || "").trim() || "none yet"),
+      "SEO Boosts: " + (n ? n + " (S$" + n * BOOST_PRICE + ")" : "none for now"),
+      "First month total: S$" + (PLAN_PRICE + n * BOOST_PRICE),
+    ].filter(Boolean);
+    const checked = storageGet("p1-check", sessionStorage);
+    if (checked) lines.push("", "My website check: " + checked);
+    openWhatsApp(lines.join("\n"), "signup_whatsapp");
   });
 }
 
@@ -387,66 +357,37 @@ if (calcSignup && calc) {
   sync();
 }
 
-// ---------- SEO Boost top-up ----------
+// ---------- SEO Boost top-up (WhatsApp) ----------
 const topup = document.getElementById("topup-form");
 if (topup) {
   const err = topup.querySelector(".form-error");
-  const btn = topup.querySelector('button[type="submit"]');
-  topup.addEventListener("submit", async (e) => {
+  topup.addEventListener("submit", (e) => {
     e.preventDefault();
-    const email = topup.email.value.trim();
+    const business = topup.business.value.trim();
     err.hidden = true;
-    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) { err.textContent = "Please enter the email you subscribed with."; err.hidden = false; return; }
-    btn.disabled = true;
-    btn.textContent = "Opening secure payment…";
-    trackCta("boost_topup_start");
-    try {
-      const r = await callApi("createCheckout", { kind: "boosts", email, boosts: Number(topup.boosts.value) });
-      if (r.data && r.data.url) { location.href = r.data.url; return; }
-      err.textContent = (r.data && r.data.error) || "We couldn't start checkout. Please try again.";
-    } catch (e2) {
-      err.textContent = "We couldn't reach the payment page. Please try again.";
-    }
-    err.hidden = false;
-    btn.disabled = false;
-    btn.textContent = "Pay securely with Stripe";
+    if (!business) { err.textContent = "Please enter your business name."; err.hidden = false; return; }
+    const n = Number(topup.boosts.value);
+    openWhatsApp("Hi Edwin, I'd like to top up " + n + " SEO Boost" + (n > 1 ? "s" : "") + " (S$" + n * BOOST_PRICE + ").\nBusiness: " + business, "boost_topup_whatsapp");
   });
 }
 
-// ---------- Contact form ----------
+// ---------- Contact form (WhatsApp) ----------
 const lead = document.getElementById("lead-form");
 if (lead) {
   const err = lead.querySelector(".form-error");
-  const btn = lead.querySelector('button[type="submit"]');
   const site = storageGet("p1-site", sessionStorage);
   if (site && !lead.website.value) lead.website.value = site;
-  lead.addEventListener("submit", async (e) => {
+  lead.addEventListener("submit", (e) => {
     e.preventDefault();
     const d = Object.fromEntries(new FormData(lead).entries());
     err.hidden = true;
-    const emailOk = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(String(d.email || "").trim());
-    if (!String(d.name || "").trim() || (!emailOk && String(d.phone || "").replace(/\D/g, "").length < 7)) {
-      err.textContent = "Please add your name and an email or phone number so we can reply.";
-      err.hidden = false;
-      return;
-    }
-    btn.disabled = true;
-    btn.textContent = "Sending…";
-    try {
-      const r = await callApi("siteLead", { ...d, source: "contact_form", page: location.pathname });
-      if (r.data && r.data.ok) {
-        lead.hidden = true;
-        document.getElementById("lead-done").hidden = false;
-        trackCta("lead_submit");
-        return;
-      }
-      err.textContent = (r.data && r.data.error) || "Something went wrong. Please try again.";
-    } catch (e2) {
-      err.textContent = "We couldn't send your message. Please check your connection and try again.";
-    }
-    err.hidden = false;
-    btn.disabled = false;
-    btn.textContent = "Send message";
+    if (!String(d.name || "").trim()) { err.textContent = "Please add your name."; err.hidden = false; return; }
+    const lines = [
+      "Hi Edwin, I'm " + String(d.name).trim() + (String(d.business || "").trim() ? " from " + String(d.business).trim() : "") + ".",
+      String(d.website || "").trim() && "Website: " + String(d.website).trim(),
+      String(d.message || "").trim(),
+    ].filter(Boolean);
+    openWhatsApp(lines.join("\n"), "contact_whatsapp");
   });
 }
 
