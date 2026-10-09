@@ -605,3 +605,12 @@ a:focus-visible, button:focus-visible, input:focus-visible, summary:focus-visibl
 .plan-compare h3 { margin: 6px 0 12px; }
 .plan-compare .ticks { margin: 0; }
 .plan-compare .ticks li { color: var(--ink); }
+/* Shareable checker result */
+.checker-share { margin: 0 0 20px; padding: 14px 16px; border: 1px dashed var(--line); border-radius: 14px; background: var(--bg-alt); }
+.checker-share p { margin: 0 0 10px; font-size: .9rem; color: var(--muted); }
+.checker-share-row { display: flex; flex-wrap: wrap; gap: 10px; }
+.checker-share-row .btn { padding: 10px 16px; font-size: .9rem; }
+.checker-share .btn-ghost { background: #fff; color: #15803d; border: 1px solid rgba(21, 128, 61, .35); box-shadow: none; }
+#checker-result, #check { scroll-margin-top: 84px; }
+.checker-result .checker-head h3 { color: var(--ink); margin: 0 0 4px; overflow-wrap: anywhere; }
+.checker-result .checker-head p { color: var(--muted); }

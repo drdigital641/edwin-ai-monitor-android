@@ -223,6 +223,35 @@ if (checker) {
   const plainLabel = (c) => (PLAIN[c.id] ? PLAIN[c.id][0] : c.label);
   const showError = (msg) => { err.textContent = msg; err.hidden = false; };
 
+  // Shareable result link: /?report=<code>#check opens this exact saved result.
+  const reportLink = (id) => location.origin + "/?report=" + encodeURIComponent(id) + "#check";
+  const whenText = (iso) => {
+    if (!iso) return "";
+    const d = new Date(/[zZ]|[+-]\d\d:?\d\d$/.test(iso) ? iso : iso + "Z");
+    return isNaN(d) ? "" : d.toLocaleString("en-SG", { day: "numeric", month: "short", year: "numeric", hour: "numeric", minute: "2-digit", timeZone: "Asia/Singapore" });
+  };
+  const shareBar = (r) => {
+    const link = reportLink(r.share_id);
+    const box = el("div", "checker-share");
+    const when = whenText(r.checked_at);
+    box.appendChild(el("p", null, r.saved ? "Saved result" + (when ? " from " + when : "") + ". Run a fresh check anytime below." : "Share this result: anyone with the link sees this exact report."));
+    const row = el("div", "checker-share-row");
+    const copy = el("button", "btn btn-small", "Copy result link");
+    copy.type = "button";
+    copy.addEventListener("click", async () => {
+      try { await navigator.clipboard.writeText(link); copy.textContent = "Link copied ✓"; }
+      catch (e) { window.prompt("Copy this link:", link); }
+      setTimeout(() => { copy.textContent = "Copy result link"; }, 2500);
+      trackCta("checker_copy_link");
+    });
+    const wa = el("a", "btn btn-small btn-ghost", "Send on WhatsApp");
+    wa.href = "https://wa.me/?text=" + encodeURIComponent("Website check for " + r.host + ": " + r.score + "/100. See the full report: " + link);
+    wa.target = "_blank"; wa.rel = "noopener";
+    row.appendChild(copy); row.appendChild(wa);
+    box.appendChild(row);
+    return box;
+  };
+
   const renderBasics = (r) => {
     out.textContent = "";
     const head = el("div", "checker-head");
@@ -239,6 +268,7 @@ if (checker) {
       : `${fails} problem${fails === 1 ? "" : "s"} and ${warns} thing${warns === 1 ? "" : "s"} to improve.`));
     head.appendChild(t);
     out.appendChild(head);
+    if (r.share_id) out.appendChild(shareBar(r));
     const meaning = el("p", "score-meaning");
     meaning.append("What your score means: ");
     meaning.appendChild(el("b", "good", "85–100"));
@@ -292,7 +322,7 @@ if (checker) {
     ctaBox.appendChild(el("p", null, fails + warns ? "Want help fixing these? Chat with Edwin on WhatsApp. Your results are sent with your message, so he can tell you what to fix first. Our Get Found plan covers all of this from S$20 a month (introductory price)." : "Great foundations. Want more customers from Google and AI search? Chat with Edwin about what we can do for S$20 a month."));
     const row = el("div", "cta-row");
     const s1 = el("a", "btn", "Chat with Edwin about my results");
-    s1.href = waLink("Hi Edwin, I ran the website checker on pageonesingapore.com:\n" + summary + "\nCan you help me improve my website?");
+    s1.href = waLink("Hi Edwin, I ran the website checker on pageonesingapore.com:\n" + summary + (r.share_id ? "\nReport: " + reportLink(r.share_id) : "") + "\nCan you help me improve my website?");
     s1.target = "_blank"; s1.rel = "noopener";
     const s2 = el("a", "btn btn-ghost", "See plans from S$20/month"); s2.href = "/pricing/";
     row.appendChild(s1); row.appendChild(s2);
@@ -414,8 +444,9 @@ if (checker) {
       stopProgress();
       out.hidden = false;
       const sp = renderBasics(r.data);
+      if (r.data.share_id && history.replaceState) history.replaceState(null, "", "/?report=" + encodeURIComponent(r.data.share_id) + "#check");
       out.scrollIntoView({ behavior: "smooth", block: "start" });
-      callApi("siteCheck", { url: r.data.url, mode: "speed" }).then((s) => renderSpeed(sp, s.data, r.data.url)).catch(() => renderSpeed(sp, null, r.data.url));
+      runSpeed(sp, r.data);
     } catch (e2) {
       showError("We couldn't reach our checker. Please check your connection and try again.");
     } finally {
@@ -424,6 +455,49 @@ if (checker) {
       btn.textContent = "Check my website";
     }
   });
+
+  // Mobile speed: use the saved result if there is one, otherwise ask Google (and save it with the report).
+  function runSpeed(sp, data) {
+    if (data.speed && data.speed.ok) { renderSpeed(sp, data.speed, data.url); return; }
+    callApi("siteCheck", { url: data.url, mode: "speed", share_id: data.share_id || "" })
+      .then((s) => renderSpeed(sp, s.data, data.url)).catch(() => renderSpeed(sp, null, data.url));
+  }
+
+  // Links Edwin can send: /?report=<code> shows a saved result straight away;
+  // /?check=theirsite.com runs a fresh check automatically.
+  const params = new URLSearchParams(location.search);
+  const report = params.get("report");
+  const preset = params.get("check") || params.get("site");
+  const section = document.getElementById("check");
+  const reveal = () => {
+    checker.querySelectorAll(".reveal").forEach((n) => n.classList.add("in"));
+    if (section) section.querySelectorAll(".reveal").forEach((n) => n.classList.add("in"));
+    if (section) section.scrollIntoView({ block: "start" });
+  };
+  if (report) {
+    reveal();
+    if (progress) { progress.hidden = false; stepText.textContent = "Loading the saved result…"; if (bar) bar.style.width = "60%"; }
+    callApi("siteCheck", { report }).then((r) => {
+      if (progress) progress.hidden = true;
+      if (!r.data || !r.data.ok) { showError((r.data && r.data.error) || "This result link didn't work. Run a fresh check below."); return; }
+      input.value = r.data.host || "";
+      syncClear();
+      storageSet("p1-site", r.data.url, sessionStorage);
+      out.hidden = false;
+      const sp = renderBasics(r.data);
+      out.scrollIntoView({ block: "start" });
+      runSpeed(sp, r.data);
+      trackCta("checker_report_view");
+    }).catch(() => {
+      if (progress) progress.hidden = true;
+      showError("We couldn't load that result. Please check your connection and refresh.");
+    });
+  } else if (preset) {
+    reveal();
+    input.value = preset.trim().slice(0, 300);
+    syncClear();
+    if (checker.requestSubmit) checker.requestSubmit(); else checker.dispatchEvent(new Event("submit", { cancelable: true }));
+  }
 }
 
 // ---------- Sign up (opens WhatsApp with the details filled in) ----------
