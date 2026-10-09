@@ -959,7 +959,9 @@ page("404.html",
      "Page Not Found | Page One Singapore",
      "The page you're looking for doesn't exist.",
      [],
-     hero("Not found", "", "This page doesn't exist.",
+     # /check/<site> links (from prospect messages) go to the homepage checker, which runs the report.
+     """    <script>(function(){var m=location.pathname.match(/^\\/check\\/(.+)$/);if(m){var s=m[1];try{s=decodeURIComponent(s)}catch(e){}location.replace("/?check="+encodeURIComponent(s.replace(/\\/+$/,""))+"#check")}})();</script>
+""" + hero("Not found", "", "This page doesn't exist.",
           "It may have moved. Try one of these, or WhatsApp us.", buttons=False) + """
 
     <section class="section">
