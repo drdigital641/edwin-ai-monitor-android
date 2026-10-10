@@ -166,7 +166,7 @@ def page(path, title, desc, schemas, body, crumb=None, robots="index, follow, ma
     {WA_ICON}
   </a>
 
-  <script src="/main.js?v=11" defer></script>
+  <script src="/main.js?v=12" defer></script>
 </body>
 </html>
 """
@@ -1251,8 +1251,8 @@ HOME_QA = [('What is Page One Singapore?', 'Page One Singapore is an affordable 
 HOME_FAQ_LD = {"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [
     {"@type": "Question", "name": q, "acceptedAnswer": {"@type": "Answer", "text": a}} for q, a in HOME_QA]}
 page("index.html",
-     "Affordable SEO Singapore from S$20/month | Page One Singapore",
-     "Affordable SEO for Singapore small businesses: get found on Google, Google Maps and ChatGPT from S$20/month. Proven on real businesses. No setup fee or contract.",
+     "Affordable SEO Singapore from S$20/month | Page One SG",
+     "Affordable SEO for Singapore small businesses: get found on Google, Maps and ChatGPT from S$20/month. Proven on real businesses. No setup fee or contract.",
      [HOME_FAQ_LD, {"@context": "https://schema.org", "@graph": [
          {"@type": "ProfessionalService", "@id": BIZ_ID, "name": "Page One Singapore", "url": SITE + "/",
           "logo": SITE + "/icon-512.png", "image": SITE + "/images/og.png",
