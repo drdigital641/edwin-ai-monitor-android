@@ -12,6 +12,7 @@ API = "https://base44.app/api/apps/6ac7f2548a9c3877449e2772/functions"
 PROMO = '<div class="promo-bar"><div class="wrap"><b>Introductory price:</b> S$20/month for a limited time. It goes up once we reach our early-client limit. <a href="/signup/">Sign up &rarr;</a></div></div>'
 
 NAV = [
+    ("/website/", "Website"),
     ("/get-found/", "Get Found"),
     ("/seo-boost/", "SEO Boost"),
     ("/pricing/", "Pricing"),
@@ -99,7 +100,7 @@ def page(path, title, desc, schemas, body, crumb=None, robots="index, follow, ma
   <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800&family=Space+Grotesk:wght@500;600;700&display=swap">
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800&family=Space+Grotesk:wght@500;600;700&display=swap" media="print" onload="this.media='all'">
   <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800&family=Space+Grotesk:wght@500;600;700&display=swap"></noscript>
-  <link rel="stylesheet" href="/styles.css?v=13">
+  <link rel="stylesheet" href="/styles.css?v=14">
   <script>document.documentElement.classList.add("js");</script>
 {ld}
 </head>
@@ -132,6 +133,7 @@ def page(path, title, desc, schemas, body, crumb=None, robots="index, follow, ma
       </div>
       <div>
         <h2>Services</h2>
+        <a href="/website/">Website, built and managed</a>
         <a href="/get-found/">Get Found</a>
         <a href="/seo-boost/">SEO Boost</a>
         <a href="/pricing/">Pricing</a>
@@ -271,7 +273,7 @@ page("get-found/index.html",
           <div class="card reveal">
             <p class="pill">No website yet</p>
             <h3>We build your website</h3>
-            <p>A fast, mobile-friendly site on your own domain. The domain is registered in your name, so you always own it (usually S$15–30 a year, paid directly).</p>
+            <p>A fast, mobile-friendly site on your own domain, managed for you every month. The domain is registered in your name, so you always own it (usually S$15–30 a year, paid directly). <a class="link" href="/website/">More about our websites →</a></p>
           </div>
           <div class="card reveal">
             <p class="pill">Already have a website</p>
@@ -349,8 +351,129 @@ def redirect(path, target):
 """)
 
 
-redirect("new-website/index.html", "/get-found/")
+redirect("new-website/index.html", "/website/")
 redirect("landing-page/index.html", "/get-found/")
+
+# ---------- Website: built and managed ----------
+WEBSITE_FAQ = [
+    ("How much does a website cost with Page One Singapore?", "S$20 a month on the Get Found plan, at an introductory price for a limited time. That covers building your website, hosting it, keeping it secure and fast, and looking after it every month. There's no setup fee and no contract. Your domain is registered in your name and paid by you directly, usually S$15–30 a year."),
+    ("Who looks after the website after it's built?", "We do. We host it, keep it online, secure and fast, run a technical audit every month, and make small text and photo changes when you need them. You just WhatsApp Edwin."),
+    ("I only have a Facebook or Instagram page. Do I still need a website?", "A social page is a good start, but Google and ChatGPT can't rank it like a website. A website with a page for each service and your area gives customers searching on Google a way to find you, and it's yours, not a social platform's."),
+    ("Do I own my website and domain?", "Your domain is registered in your name, so you always own it. If you cancel, your site stays live until the end of the month you paid for, you keep your domain, and you can buy the site files if you want to host them elsewhere."),
+    ("How long does it take to build my website?", "Usually within 7 days of receiving your details and photos. You send them over WhatsApp, and we do the rest."),
+    ("Do I need any technical skills?", "No. You tell us about your business and send a few photos. We handle the domain setup, design, hosting, Google setup and updates."),
+    ("I already have a website but no one looks after it. Can you help?", "Yes, WhatsApp Edwin to talk through your options. We can add an SEO landing page next to your current site, and he'll tell you honestly what makes sense for your situation."),
+]
+
+_site_cards = [
+    ("https://sggarage.com/", "sggarage.com", "sggarage.webp", "Edwin Garage", "Car workshop, Ang Mo Kio"),
+    ("https://cleanicdetailing.com/", "cleanicdetailing.com", "cleanic.webp", "Cleanic Detailing", "Car grooming and interior cleaning"),
+    ("https://sofacaresg.com/", "sofacaresg.com", "sofacare.webp", "SofaCare SG", "Sofa, mattress and upholstery cleaning"),
+    ("https://aliciaongproperty.com/", "aliciaongproperty.com", "alicia.webp", "Alicia Ong Property", "Property agent"),
+    ("https://dannychuafinancial.com/", "dannychuafinancial.com", "danny.webp", "Danny Chua Financial", "Financial consultant"),
+]
+_site_html = "\n".join(f"""          <a class="card site-card reveal" href="{u}" target="_blank" rel="noopener">
+            <span class="browser"><span class="browser-bar"><i></i><i></i><i></i><span>{d}</span></span><img src="/images/clients/{img}" width="640" height="400" alt="{n} website homepage" loading="lazy" decoding="async"></span>
+            <h3>{n}</h3><p>{what}</p>
+          </a>""" for u, d, img, n, what in _site_cards)
+_wfaq_html = "\n".join(f"        <details class=\"reveal\"><summary>{q}</summary><p>{a}</p></details>" for q, a in WEBSITE_FAQ)
+
+page("website/index.html",
+     "Small Business Website Singapore: Built &amp; Managed for S$20/month",
+     "No website yet? We build a fast, mobile-friendly website for your Singapore business and manage it for you: hosting, updates and Google setup. S$20/month.",
+     [service("Website design and management for small businesses", "/website/",
+              "A website built on the client's own domain, set up for Google, Google Maps and AI search, then hosted and managed every month: security, speed, a monthly technical audit and small text and photo changes.", "20"),
+      {"@context": "https://schema.org", "@type": "FAQPage",
+       "mainEntity": [{"@type": "Question", "name": q, "acceptedAnswer": {"@type": "Answer", "text": a}} for q, a in WEBSITE_FAQ]}],
+     hero("Website", "No website yet?",
+          "A good website for your business, built and managed for S$20 a month.",
+          "Just starting out, or still relying on a Facebook page? We build a fast, mobile-friendly website on your own domain, set it up so Google, Google Maps and ChatGPT can find it, then look after it for you every month. No setup fee, no contract, no tech skills needed.",
+          '<p class="hero-price"><b>S$20</b>/month · <span class="intro-tag">Introductory price</span> · website + management · no setup fee</p>') + """
+
+    <section class="section">
+      <div class="wrap">
+        <p class="kicker reveal">Who it's for</p>
+        <h2 class="reveal">Sound familiar?</h2>
+        <div class="cards three" style="margin-top:32px">
+          <div class="card reveal"><h3>You're starting a new business</h3><p>You need a proper website so customers can find you and trust you, without paying a big amount upfront.</p></div>
+          <div class="card reveal"><h3>You're only on Facebook or Instagram</h3><p>Social pages are a start, but Google and ChatGPT can't rank them like a website. A website is yours, and it shows up when people search.</p></div>
+          <div class="card reveal"><h3>You don't want to manage a website</h3><p>No time to learn a website builder, chase a designer for changes or worry about hosting. You want someone to look after it.</p></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section alt">
+      <div class="wrap">
+        <p class="kicker reveal">What you get</p>
+        <h2 class="reveal">Built for you, set up for Google, managed every month</h2>
+        <div class="cards three plain-cards" style="margin-top:32px">
+          <div class="card reveal"><div class="emoji" aria-hidden="true">🛠️</div><h3>Built for you</h3><p>A fast website that works well on phones, on your own domain, with your services, area, photos and a WhatsApp button so customers can message you in one tap.</p><p class="tech"><b>Technical name</b><span class="term">Mobile-first design</span><span class="term">Custom domain</span></p></div>
+          <div class="card reveal"><div class="emoji" aria-hidden="true">🔍</div><h3>Set up to be found</h3><p>Your Google Maps listing, Google and Bing connected, and your business details labelled so Google and AI assistants like ChatGPT can read them.</p><p class="tech"><b>Technical name</b><span class="term">Google Business Profile</span><span class="term">Structured data</span><span class="term">llms.txt</span></p></div>
+          <div class="card reveal"><div class="emoji" aria-hidden="true">🧰</div><h3>Managed every month</h3><p>We keep it online, secure and fast, run a technical audit every month, and make small text and photo changes when you need them. Just WhatsApp Edwin.</p><p class="tech"><b>Technical name</b><span class="term">Hosting</span><span class="term">HTTPS / SSL</span><span class="term">Technical SEO audit</span></p></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="wrap">
+        <p class="kicker reveal">Websites we built and run</p>
+        <h2 class="reveal">Real Singapore businesses, live today</h2>
+        <p class="section-lead reveal">Visit them and judge for yourself. Each one is built and looked after with the same system you get.</p>
+        <div class="cards three site-cards" style="margin-top:32px">
+""" + _site_html + """
+        </div>
+        <p class="note reveal"><a class="card-link" href="/results/">See their Google results →</a></p>
+      </div>
+    </section>
+
+    <section class="section alt">
+      <div class="wrap">
+        <p class="kicker reveal">Your options</p>
+        <h2 class="reveal">Website builder, web designer, or Page One?</h2>
+        <div class="table-wrap reveal" style="margin-top:24px">
+          <table class="compare">
+            <thead><tr><th></th><th>DIY website builder</th><th>Web designer (one-off)</th><th>Page One</th></tr></thead>
+            <tbody>
+              <tr><th>Who builds it</th><td>You</td><td>The designer</td><td>We do</td></tr>
+              <tr><th>Google, Maps and AI setup</th><td>Up to you</td><td>Depends on the designer</td><td>Included</td></tr>
+              <tr><th>Hosting and security</th><td>Through the builder</td><td>Often up to you</td><td>Included</td></tr>
+              <tr><th>Changes after launch</th><td>You do them</td><td>Often charged separately</td><td>Small changes included</td></tr>
+              <tr><th>Cost</th><td>Builder plan plus your time</td><td>Usually an upfront fee</td><td>S$20 a month, no setup fee</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="wrap">
+        <p class="kicker reveal">How it works</p>
+        <h2 class="reveal">Live within 7 days</h2>
+        <ol class="steps" style="margin-top:72px">
+          <li class="reveal"><span>1</span><h3>Chat with Edwin</h3><p>On WhatsApp: tell us what you do and where. No obligation.</p></li>
+          <li class="reveal"><span>2</span><h3>Send details and photos</h3><p>We register your domain in your name and build your website.</p></li>
+          <li class="reveal"><span>3</span><h3>We launch and look after it</h3><p>Usually live within 7 days, connected to Google, Maps and Bing, and managed every month after that.</p></li>
+        </ol>
+        <div class="price-strip reveal">
+          <p><b>S$20/month</b> · introductory price · website + management · no setup fee · cancel anytime</p>
+          <a class="card-link" href="/signup/">Sign up now →</a>
+        </div>
+      </div>
+    </section>
+
+    <section class="section alt">
+      <div class="wrap narrow">
+        <p class="kicker reveal">Questions</p>
+        <h2 class="reveal">Small business websites: your questions, answered</h2>
+        <div style="margin-top:24px">
+""" + _wfaq_html + """
+        </div>
+      </div>
+    </section>
+
+""" + cta("Get your business online this week", "Tell Edwin about your business on WhatsApp. No obligation, no tech skills needed."),
+     crumb="Website")
+
 
 # ---------- SEO Boost ----------
 page("seo-boost/index.html",
@@ -497,6 +620,7 @@ page("pricing/index.html",
 # ---------- FAQ ----------
 FAQS = [
     ("What is SEO, in simple words?", "SEO stands for search engine optimisation. In simple words, it means making your business easy for Google to find, understand and recommend, so you show up when customers search for what you sell. Today it also covers AI assistants like ChatGPT, which many people now ask for recommendations. See SEO explained simply for the common terms."),
+    ("Can you build and manage a website for my new business?", "Yes. If you don't have a website, the S$20 Get Found plan includes building one on your own domain and managing it every month: hosting, security, speed, a monthly technical audit and small text and photo changes. It's usually live within 7 days. See our website page for details."),
     ("What do I get every month for S$20?", "Get Found means your business is discovered naturally: it shows up in the free, unpaid results on Google, Google Maps and ChatGPT when customers search for what you do, with no ad spend. Every month we also run a technical audit of your page to check that Google and AI assistants can still find, read and understand it. Your website or landing page stays online, secure and fast, with a WhatsApp button. Want to climb faster? SEO Boosts add extra work on top."),
     ("I'm not good with computers. Do I need to do anything technical?", "No. You tell us about your business and send a few photos on WhatsApp, and we do the technical work: the website, Google and Bing setup, Google Maps and the AI-search setup. If you already have a website, there's one setting to add to your domain. We send simple step-by-step instructions, and Edwin can guide you through it."),
     ("How will I know it's working?", "We connect your website to Google Search Console, Google's own free report. It shows how many times you appeared in Google, how many people clicked, and what they searched. Every SEO Boost also comes with a before/after report of what was done."),
@@ -516,7 +640,7 @@ FAQS = [
     ("How long until my site is live?", "Usually within 7 days of receiving your details and photos."),
 ]
 faq_html = "\n".join(
-    f"        <details><summary>{q}</summary><p>{a.replace('go.yourbrand.com', '<code>go.yourbrand.com</code>').replace('llms.txt', '<code>llms.txt</code>').replace('results page', '<a class="link" href="/results/">results page</a>').replace('SEO explained simply', '<a class="link" href="/seo-explained/">SEO explained simply</a>')}</p></details>"
+    f"        <details><summary>{q}</summary><p>{a.replace('go.yourbrand.com', '<code>go.yourbrand.com</code>').replace('llms.txt', '<code>llms.txt</code>').replace('results page', '<a class="link" href="/results/">results page</a>').replace('SEO explained simply', '<a class="link" href="/seo-explained/">SEO explained simply</a>').replace('our website page', '<a class="link" href="/website/">our website page</a>')}</p></details>"
     for q, a in FAQS)
 page("faq/index.html",
      "FAQ: Fees, Contracts, SEO & AI Search | Page One Singapore",
