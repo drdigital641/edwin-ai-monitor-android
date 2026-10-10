@@ -362,7 +362,7 @@ WEBSITE_FAQ = [
     ("Do I own my website and domain?", "Your domain is registered in your name, so you always own it. If you cancel, your site stays live until the end of the month you paid for, you keep your domain, and you can buy the site files if you want to host them elsewhere."),
     ("How long does it take to build my website?", "Usually within 7 days of receiving your details and photos. You send them over WhatsApp, and we do the rest."),
     ("Do I need any technical skills?", "No. You tell us about your business and send a few photos. We handle the domain setup, design, hosting, Google setup and updates."),
-    ("I already have a website but no one looks after it. Can you help?", "Yes, WhatsApp Edwin to talk through your options. We can add an SEO landing page next to your current site, and he'll tell you honestly what makes sense for your situation."),
+    ("I already have a website but no one looks after it. Can you help?", "Yes. We can take over looking after your existing website, or keep your site as it is and add an SEO landing page next to it. WhatsApp Edwin with your website address and he'll check it and tell you honestly which makes sense for you."),
 ]
 
 _site_cards = [
@@ -397,7 +397,7 @@ page("website/index.html",
         <div class="cards three" style="margin-top:32px">
           <div class="card reveal"><h3>You're starting a new business</h3><p>You need a proper website so customers can find you and trust you, without paying a big amount upfront.</p></div>
           <div class="card reveal"><h3>You're only on Facebook or Instagram</h3><p>Social pages are a start, but Google and ChatGPT can't rank them like a website. A website is yours, and it shows up when people search.</p></div>
-          <div class="card reveal"><h3>You don't want to manage a website</h3><p>No time to learn a website builder, chase a designer for changes or worry about hosting. You want someone to look after it.</p></div>
+          <div class="card reveal"><h3>You don't want to manage a website</h3><p>No time to learn a website builder, chase a designer for changes or worry about hosting. Already have a website that no one looks after? We can take it over and manage it for you.</p></div>
         </div>
       </div>
     </section>
@@ -629,7 +629,7 @@ FAQS = [
     ("Is the free website check really free?", "Yes. Enter your website address on our homepage and the checker tests Google basics, mobile setup, speed and AI-search readiness in under a minute. No sign-up needed."),
     ("How do I reach you?", "WhatsApp Edwin on " + WA_DISPLAY + ". You can also tap the green chat button on any page. No obligation to buy anything."),
     ("How do I sign up and pay?", "Fill in the short form on our sign-up page or tap the chat button. It opens WhatsApp with your details filled in. Edwin confirms what you need and sends payment details for your first month. SEO Boosts are added or topped up the same way."),
-    ("I already have a website. Do I need to change it?", "No. You give us a subdomain such as go.yourbrand.com and we build a separate SEO landing page there. Your current website stays exactly as it is."),
+    ("I already have a website. Do I need to change it?", "No. You give us a subdomain such as go.yourbrand.com and we build a separate SEO landing page there. Your current website stays exactly as it is. If you'd rather have someone look after your whole website, we can also take it over and manage it for you."),
     ("What is an SEO Boost?", "An optional S$10 top-up for faster results. Each Boost is extra work on top of your plan: we go after niche long-tail searches (specific phrases, like \"aircon chemical wash Tampines\", that fewer businesses compete for and that come from customers ready to buy) and do extra processing to fix the SEO issues found in your audit. You get a before/after report of what was done and what's next. Your S$20 plan works without it."),
     ("How do you help me show up in ChatGPT and other AI search?", "AI assistants like ChatGPT, Gemini and Perplexity rely on search indexes such as Bing and Google and on clearly structured information. We connect your site to Google and Bing, mark up your business details so machines can read them, publish an llms.txt file, and write content that answers the questions customers ask."),
     ("Who pays for the domain?", "If you need a new domain, it's registered in your name and you pay for it directly (usually S$15–30 a year). You always own your domain."),
