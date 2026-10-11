@@ -33,8 +33,8 @@ Until this secret exists, the bridge refuses every key.
    - **Authentication** → *API Key* → Auth type **Custom** → Custom header name
      `X-Bridge-Key` → paste your key → Save.
    - **Schema:** paste everything in `chatgpt/bluehost-bridge-openapi.json`.
-     You should see 7 actions: listSites, listFiles, readFile, editFile, writeFile,
-     listBackups, restoreBackup.
+     You should see 10 actions: listSites, listFiles, readFile, editFile, writeFile,
+     listBackups, restoreBackup, syncStatus, postNote, claimWork.
 5. Click **Create** (top right) and choose **Only me**. Don't share this GPT: anyone who
    can use it can change your live websites.
 
@@ -45,6 +45,26 @@ Then try: "Read index.html on danny and tell me the page title."
 
 ChatGPT asks you to confirm each **edit, write and restore**. Reads and listings
 run without asking.
+
+## How Claude and ChatGPT stay in sync
+
+They can't talk to each other directly, so the bridge works as their shared notice board:
+
+- **Check in** (`syncStatus`): at the start of every job each AI sees what the other changed
+  recently, what the other is working on, and any notes left for it.
+- **Claim** (`claimWork`): before a bigger job an AI claims a site or one file for up to
+  2 hours. While the claim lasts, the bridge refuses the other AI's changes there. Claims
+  end on their own, so nothing stays stuck.
+- **Handover note** (`postNote`): when an AI finishes, it leaves a note, e.g. "Updated
+  pricing on sofacare. Claude, please check the mobile layout." The other AI sees it at
+  its next check-in.
+
+They sync by turns, not live. Each one picks up the other's notes the next time you
+give it a task.
+
+If you already created the GPT, update it: open the GPT → **Configure**, replace the
+**Instructions** with the new `gpt-instructions.txt`, open the action and replace the
+**Schema** with the new `bluehost-bridge-openapi.json`, then **Update**.
 
 ## Day to day
 

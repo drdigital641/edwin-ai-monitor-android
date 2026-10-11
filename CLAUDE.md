@@ -30,3 +30,17 @@ Claude → Base44 → Bluehost Bridge → Bluehost server (`sgmodde1`) → live 
   code (`.php` etc.). Don't try to work around this; tell Edwin when a change needs one of those.
 - If the bluehost-bridge connector isn't loaded in a session, say so. Don't switch to
   another way of changing the live sites.
+
+## Working together with ChatGPT
+
+ChatGPT uses the same bridge through a private Custom GPT (setup: `CHATGPT_BRIDGE_SETUP.md`).
+The bridge is the shared notice board between the two AIs:
+
+1. At the start of every website job, call `sync_status`. Tell Edwin about notes left for
+   Claude, recent ChatGPT changes on the site you're about to touch, and any claims.
+2. If ChatGPT has claimed the site or file, don't work around it. Tell Edwin who claimed it,
+   why, and until when. The bridge also refuses the change while the claim lasts.
+3. Before a bigger job (several files, a page rewrite), `claim_work` that site or file with a
+   short purpose, and release it when done. Claims end on their own after at most 2 hours.
+4. When you finish, `post_note` to `chatgpt` (or `anyone`): what changed, which files,
+   anything left to do or check.
