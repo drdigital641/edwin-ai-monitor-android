@@ -41,3 +41,24 @@ ErrorDocument 404 /404.html
   Header always set X-Content-Type-Options "nosniff"
   Header always set Referrer-Policy "strict-origin-when-cross-origin"
 </IfModule>
+
+# ---- Extra protection (added 12 Oct 2026) ----
+# Never show a folder's file list
+Options -Indexes
+# Don't advertise the server version on error pages
+ServerSignature Off
+# Page One is a static website: no PHP should ever run here, so a planted PHP "backdoor" file can't run either.
+<FilesMatch "\.(php|php[0-9]|phtml|phar|cgi|pl|py|sh)$">
+  Require all denied
+</FilesMatch>
+# Hide hidden files and leftovers (backups, archives, logs, notes)
+<FilesMatch "(^\.|\.(bak|old|orig|save|swp|sql|zip|tar|gz|tgz|7z|rar|log|ini|conf|env|md|yml|yaml)$)">
+  Require all denied
+</FilesMatch>
+# Stop other websites framing our pages (clickjacking) and switch off browser features we don't use
+<IfModule mod_headers.c>
+  Header always set X-Frame-Options "SAMEORIGIN"
+  Header always set Content-Security-Policy "frame-ancestors 'self'; base-uri 'self'; object-src 'none'"
+  Header always set Permissions-Policy "camera=(), microphone=(), geolocation=(), payment=(), usb=()"
+  Header always unset X-Powered-By
+</IfModule>
