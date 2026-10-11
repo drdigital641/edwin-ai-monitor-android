@@ -3,7 +3,8 @@
 
     python3 build.py            # writes the HTML pages into ./site
 
-Content comes from source/content.md and source/prices.json (captured from dmts.com.sg).
+Content comes from source/content.md (captured from dmts.com.sg) and the client's answers at onboarding.
+The old cost estimator (source/prices.json) is archived only: DMTS quotes after a paid pre-repair diagnostic.
 Shared assets (dmts.css, dmts.js, favicon.svg, img/) live in ./site and are edited by hand.
 """
 import html
@@ -14,7 +15,7 @@ HERE = os.path.dirname(os.path.abspath(__file__))
 OUT = os.path.join(HERE, 'site')
 BASE = '/dmts/'
 ORIGIN = 'https://pageonesingapore.com'
-ASSET_V = '1'
+ASSET_V = '2'
 
 # Until DMTS approves this site and it replaces dmts.com.sg, keep it out of Google
 # so it never competes with the client's own domain.
@@ -27,7 +28,9 @@ BIZ = {
     'mobile': '+6584309665', 'mobile_disp': '8430 9665',
     'wa': '6584309665',
     'fax_disp': '6352 8831',
-    'email': 'sales@dmts.com.sg',
+    'email': 'contact@dmts.com.sg',
+    'google': 'https://share.google/ZXSk6rE3VdUNgZyKS',
+    'facebook': 'https://www.facebook.com/DYNAMICMOTORINGTRANSMISSIONSPECIALIST/',
     'hq': {'street': '71 Woodlands Industrial Park E9, #01-25 Wave 9', 'postal': '757048',
            'map': '71 Woodlands Industrial Park E9 Wave 9 Singapore'},
     'branch': {'street': '60 Jalan Lam Huat, #05-48', 'postal': '737869',
@@ -35,8 +38,10 @@ BIZ = {
 }
 WA_TEXT = 'Hi Dynamic Motoring, I would like a quote for my gearbox.'
 
-NAV = [('', 'Home'), ('services/', 'Services'), ('cost-estimator/', 'Cost Estimator'),
-       ('gallery/', 'Gallery'), ('about/', 'About'), ('contact/', 'Contact')]
+NAV = [('', 'Home'), ('services/', 'Services'), ('gallery/', 'Gallery'), ('about/', 'About'), ('contact/', 'Contact')]
+
+DIAG = 'Pre-repair diagnostic from S$30'
+WARRANTY = 'All repairs come with a standard 6-month warranty unless otherwise stated.'
 
 ICON = {
     'phone': '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .4 1.9.7 2.8a2 2 0 0 1-.5 2.1L8 9.9a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.8.7a2 2 0 0 1 1.7 2z"/></svg>',
@@ -63,8 +68,8 @@ def wa_link(text=WA_TEXT):
 
 def cta_buttons(extra=''):
     return (f'<div class="btns">'
-            f'<a class="btn btn-red" href="tel:{BIZ["tel"]}">{ICON["phone"]}Call {BIZ["tel_disp"]}</a>'
             f'<a class="btn btn-wa" href="{wa_link()}" target="_blank" rel="noopener">{ICON["wa"]}WhatsApp us</a>'
+            f'<a class="btn btn-red" href="tel:{BIZ["tel"]}">{ICON["phone"]}Call {BIZ["tel_disp"]}</a>'
             f'{extra}</div>')
 
 
@@ -77,7 +82,6 @@ def schema():
             'parentOrganization': {'@id': f'{ORIGIN}{BASE}#org'},
             'telephone': BIZ['tel'], 'email': BIZ['email'],
             'image': f'{ORIGIN}{BASE}img/shopfront.webp',
-            'priceRange': 'S$300 - S$2,800',
             'address': {'@type': 'PostalAddress', 'streetAddress': a['street'],
                         'addressLocality': 'Singapore', 'postalCode': a['postal'], 'addressCountry': 'SG'},
             'openingHoursSpecification': [
@@ -89,7 +93,7 @@ def schema():
         {'@type': 'Organization', '@id': f'{ORIGIN}{BASE}#org', 'name': 'Dynamic Motoring',
          'alternateName': ['DMTS', 'Dynamic Motoring Transmission Specialist'],
          'url': f'{ORIGIN}{BASE}', 'logo': f'{ORIGIN}{BASE}img/logo.webp',
-         'email': BIZ['email'], 'telephone': BIZ['tel'], 'sameAs': ['https://dmts.com.sg/'],
+         'email': BIZ['email'], 'telephone': BIZ['tel'], 'sameAs': ['https://dmts.com.sg/', BIZ['facebook'], BIZ['google']],
          'description': 'Gearbox and automatic transmission repair, overhaul, upgrade and servicing specialist in Singapore.'},
         place('hq', 'Woodlands HQ'), place('branch', 'Jalan Lam Huat branch')]}
 
@@ -124,13 +128,13 @@ def page(path, title, desc, body, active='', extra_head='', ld=None, scripts='')
 <body>
 <a class="skip" href="#main">Skip to content</a>
 <div class="topbar"><div class="wrap">
-<span>Gearbox &amp; auto transmission specialist <span class="hide-sm">· Mon–Fri 9am–6pm · Sat 9am–3pm</span></span>
-<span><a href="tel:{BIZ["tel"]}">{BIZ["tel_disp"]}</a> <span class="hide-sm">· After hours <a href="tel:{BIZ["mobile"]}">{BIZ["mobile_disp"]}</a></span></span>
+<span>Gearbox &amp; auto transmission specialist <span class="hide-sm">· Mon–Fri 9am–6pm · Sat 9am–3pm · Sun &amp; PH closed</span></span>
+<span><a href="{wa_link()}" target="_blank" rel="noopener">WhatsApp {BIZ["mobile_disp"]}</a> <span class="hide-sm">· Tel <a href="tel:{BIZ["tel"]}">{BIZ["tel_disp"]}</a></span></span>
 </div></div>
 <header class="site"><div class="wrap">
 <a class="logo" href="{u()}"><img src="{u("img/logo.webp")}" width="360" height="127" alt="Dynamic Motoring"></a>
 <nav class="main" aria-label="Main">{nav}</nav>
-<a class="btn btn-red hdr-cta" href="tel:{BIZ["tel"]}">{ICON["phone"]}{BIZ["tel_disp"]}</a>
+<a class="btn btn-wa hdr-cta" href="{wa_link()}" target="_blank" rel="noopener">{ICON["wa"]}WhatsApp {BIZ["mobile_disp"]}</a>
 <button class="menu-btn" type="button" aria-expanded="false" aria-controls="mnav">Menu</button>
 </div>
 <nav class="mobile-nav" id="mnav" aria-label="Mobile">{mnav}</nav>
@@ -142,8 +146,9 @@ def page(path, title, desc, body, active='', extra_head='', ld=None, scripts='')
 <div class="grid">
 <div>
 <h3>Dynamic Motoring</h3>
-<p>Gearbox repair, overhaul, upgrade and servicing for continental, Japanese, Korean and other makes. Free diagnostic test and free towing to our workshop during office hours.</p>
-<p><a href="tel:{BIZ["tel"]}">Tel {BIZ["tel_disp"]}</a><br><a href="tel:{BIZ["mobile"]}">After hours {BIZ["mobile_disp"]}</a><br>Fax {BIZ["fax_disp"]}<br><a href="mailto:{BIZ["email"]}">{BIZ["email"]}</a></p>
+<p>Gearbox repair, overhaul, upgrade and servicing for continental, Japanese, Korean and other makes. {DIAG}, free towing to our workshop during office hours, and a 6-month warranty on repairs.</p>
+<p><a href="{wa_link()}" target="_blank" rel="noopener">WhatsApp {BIZ["mobile_disp"]}</a> (preferred)<br><a href="tel:{BIZ["tel"]}">Tel {BIZ["tel_disp"]}</a><br>Fax {BIZ["fax_disp"]}<br><a href="mailto:{BIZ["email"]}">{BIZ["email"]}</a></p>
+<p><a href="{BIZ["facebook"]}" target="_blank" rel="noopener">Facebook</a> · <a href="{BIZ["google"]}" target="_blank" rel="noopener">Google</a></p>
 </div>
 <div>
 <h3>Workshops</h3>
@@ -153,14 +158,14 @@ def page(path, title, desc, body, active='', extra_head='', ld=None, scripts='')
 <div>
 <h3>Pages</h3>
 <ul>{''.join(f'<li><a href="{u(p)}">{e(n)}</a></li>' for p, n in NAV)}</ul>
-<p style="margin-top:1em">Mon–Fri 9:00–18:00<br>Sat 9:00–15:00</p>
+<p style="margin-top:1em">Mon–Fri 9:00–18:00<br>Sat 9:00–15:00<br>Sun &amp; PH closed</p>
 </div>
 </div>
 <div class="fine"><span>© 2026 Dynamic Motoring. All rights reserved.</span><a href="https://pageonesingapore.com/">Website &amp; SEO by Page One Singapore</a></div>
 </div></footer>
 <div class="dock">
-<a class="btn btn-red" href="tel:{BIZ["tel"]}">{ICON["phone"]}Call</a>
 <a class="btn btn-wa" href="{wa_link()}" target="_blank" rel="noopener">{ICON["wa"]}WhatsApp</a>
+<a class="btn btn-red" href="tel:{BIZ["tel"]}">{ICON["phone"]}Call</a>
 </div>
 <script src="{u("dmts.js")}?v={ASSET_V}" defer></script>
 {scripts}
@@ -218,19 +223,19 @@ GALLERY = [
 
 FAQ = [
     ('How much does a gearbox repair cost in Singapore?',
-     f'It depends on the car and the fault. As a guide, our estimator starts from S$300 for an ATF leak repair on Japanese and Korean cars, and a full transmission overhaul is S$1,800 for Japanese and Korean cars, S$2,500 for continental cars and S$2,800 for other makes. <a href="{BASE}cost-estimator/">Try the cost estimator</a>, then call us for a firm quote after the diagnostic test.'),
-    ('Do you charge for diagnosis?',
-     'The computer diagnostic test to read the transmission fault code is free (S$0 in our estimator).'),
+     f'It depends on the car and the fault, so we don’t quote blind. We start with a pre-repair diagnostic (from S$30) to find the actual cause, then give you a clear quote before any work starts. <a href="{wa_link()}" target="_blank" rel="noopener">WhatsApp us</a> your car model and symptoms to get started.'),
+    ('How much is the diagnostic?',
+     'Our pre-repair diagnostic starts from S$30. We read the transmission fault codes and check the gearbox, then tell you the fault and the repair price before any work starts.'),
     ('My car can’t move. Can you tow it?',
-     f'Yes. We provide free pick-up to our workshop for gearbox repair during office hours, and if the car can’t move because of transmission failure we send a tow truck, free of charge. Call <a href="tel:{BIZ["tel"]}">{BIZ["tel_disp"]}</a>, or <a href="tel:{BIZ["mobile"]}">{BIZ["mobile_disp"]}</a> after office hours.'),
+     f'Yes. We provide free pick-up to our workshop for gearbox repair during office hours, and if the car can’t move because of transmission failure we send a tow truck, free of charge. WhatsApp <a href="{wa_link()}" target="_blank" rel="noopener">{BIZ["mobile_disp"]}</a> or call <a href="tel:{BIZ["tel"]}">{BIZ["tel_disp"]}</a>.'),
     ('Which car brands do you work on?',
      'All types of vehicles: continental (Audi, BMW, Mercedes-Benz, Volkswagen, Mini), Japanese (Toyota, Lexus, Honda, Mazda, Mitsubishi, Nissan, Subaru, Suzuki), Korean (Hyundai, Kia) and other makes such as Land Rover, Jaguar, Volvo, Ford, Renault, Peugeot, Citroën, Chevrolet and Opel.'),
     ('Is there a warranty after repair?',
-     'Yes, every gearbox repair comes with a warranty for peace of mind. Ask us for the warranty terms for your repair when we quote.'),
+     'Yes. ' + WARRANTY),
     ('What are the signs my gearbox needs attention?',
-     'A transmission check light, hesitation or refusing to go into gear, being stuck in one gear, jerking or slipping between gears, vibration at low RPM, red ATF stains under the car, or a loud noise from the gearbox. Any of these is worth a free diagnostic test before it gets worse.'),
+     'A transmission check light, hesitation or refusing to go into gear, being stuck in one gear, jerking or slipping between gears, vibration at low RPM, red ATF stains under the car, or a loud noise from the gearbox. Any of these is worth a diagnostic before it gets worse.'),
     ('Where are your workshops and when are you open?',
-     f'Our HQ is at {BIZ["hq"]["street"]}, Singapore {BIZ["hq"]["postal"]}, and our branch is at {BIZ["branch"]["street"]}, Singapore {BIZ["branch"]["postal"]}. We are open Monday to Friday 9am–6pm and Saturday 9am–3pm.'),
+     f'Our HQ is at {BIZ["hq"]["street"]}, Singapore {BIZ["hq"]["postal"]}, and our branch is at {BIZ["branch"]["street"]}, Singapore {BIZ["branch"]["postal"]}. We are open Monday to Friday 9am–6pm and Saturday 9am–3pm, and closed on Sundays and public holidays.'),
 ]
 
 
@@ -258,10 +263,10 @@ def band(h, p):
 
 WHY = [
     ('gear', 'Specialist', 'Auto transmission repair and overhaul for all types of vehicles.'),
-    ('tag', 'Direct pricing', 'Competitive, direct pricing for transmission issues. You pay only for what is needed.'),
+    ('tag', 'Direct pricing', 'A clear quote after the diagnostic, before any work starts. You pay only for what is needed.'),
     ('drop', 'Quality parts &amp; ATF', 'High quality parts and the correct Automatic Transmission Fluid for your gearbox.'),
     ('users', 'Experienced team', 'Experienced, well-trained mechanics with over 15 years of combined gearbox experience.'),
-    ('shield', 'Warranty', 'Warranty after repair, for peace of mind.'),
+    ('shield', '6-month warranty', WARRANTY),
     ('truck', 'Free towing', 'Free pick-up or tow to our workshop during office hours.'),
 ]
 
@@ -294,7 +299,7 @@ def loc_cards(maps=False):
 
 
 HOURS = ('<dl class="hours"><dt>Mon – Fri</dt><dd>9:00am – 6:00pm</dd><dt>Saturday</dt><dd>9:00am – 3:00pm</dd>'
-         '<dt>Sun &amp; PH</dt><dd>After-hours line <a href="tel:+6584309665">8430 9665</a></dd></dl>')
+         '<dt>Sun &amp; PH</dt><dd>Closed</dd></dl>')
 
 
 # ---------- pages ----------
@@ -310,9 +315,9 @@ def home():
 <div class="wrap">
 <span class="eyebrow">Gearbox specialist · Singapore</span>
 <h1>Gearbox Repair &amp; Auto Transmission Specialist in Singapore</h1>
-<p class="lead">Dynamic Motoring repairs, overhauls, upgrades and services automatic gearboxes for all car makes. Free diagnostic test, free towing to our workshop, and direct pricing you can check before you call.</p>
-<ul class="chips"><li>Free diagnostic test</li><li>Free towing / pick-up</li><li>Warranty after repair</li><li>15+ years combined experience</li></ul>
-{cta_buttons(f'<a class="btn btn-ghost" href="{u("cost-estimator/")}">Estimate my repair cost</a>')}
+<p class="lead">Dynamic Motoring repairs, overhauls, upgrades and services automatic gearboxes for all car makes. Pre-repair diagnostic from S$30, free towing to our workshop, and a 6-month warranty on repairs.</p>
+<ul class="chips"><li>Diagnostic from S$30</li><li>Free towing / pick-up</li><li>6-month warranty</li><li>15+ years combined experience</li></ul>
+{cta_buttons()}
 </div>
 </section>
 
@@ -327,17 +332,17 @@ def home():
 </div></section>
 
 <section><div class="wrap">
-<div class="sec-head"><h2>Gearbox problems we fix</h2><p>Noticed one of these? Book a free diagnostic test before a small fault becomes a full overhaul.</p></div>
+<div class="sec-head"><h2>Gearbox problems we fix</h2><p>Noticed one of these? Book a diagnostic before a small fault becomes a full overhaul.</p></div>
 <div class="sym">{sym}</div>
-<p style="margin-top:22px"><a class="btn btn-blue" href="{u("cost-estimator/")}">See prices for these problems</a></p>
+<p style="margin-top:22px"><a class="btn btn-wa" href="{wa_link("Hi Dynamic Motoring, my car has a gearbox problem. Car model: ")}" target="_blank" rel="noopener">{ICON["wa"]}WhatsApp us your symptoms</a></p>
 </div></section>
 
 <section class="alt"><div class="wrap split">
 <div>
-<h2>Know the cost before you come in</h2>
-<p>Pick your car brand and the symptoms, and our estimator shows the typical repair price for continental, Japanese, Korean and other makes. Customers tell us the final quote often comes in <em>below</em> the estimate.</p>
-<ul class="ticks"><li>Diagnostic test: free</li><li>ATF leak repair: from S$300</li><li>Full overhaul: from S$1,800</li></ul>
-<a class="btn btn-blue" href="{u("cost-estimator/")}">Open the cost estimator</a>
+<h2>Know the fault before you pay for a repair</h2>
+<p>Gearbox symptoms can have very different causes, from a worn solenoid to a failing torque converter. So we diagnose first, then quote. You decide before any repair work starts.</p>
+<ul class="ticks"><li>{DIAG}</li><li>Clear quote before any work starts</li><li>Standard 6-month warranty on repairs</li></ul>
+<a class="btn btn-wa" href="{wa_link("Hi Dynamic Motoring, I would like to book a gearbox diagnostic.")}" target="_blank" rel="noopener">{ICON["wa"]}Book a diagnostic</a>
 </div>
 <div>{img("diagnostics", "Laptop running a transmission diagnostic test on a BMW")}</div>
 </div></section>
@@ -364,10 +369,10 @@ def home():
 {faq_html()}
 </div></section>
 
-{band("Gearbox acting up?", "Call or WhatsApp us for a free quote. If the car can’t move, we’ll tow it in for free.")}
+{band("Gearbox acting up?", "WhatsApp or call us. If the car can’t move, we’ll tow it in for free.")}
 '''
     return page('', 'Gearbox Repair & Auto Transmission Specialist Singapore | Dynamic Motoring',
-                'Gearbox repair, overhaul and servicing for all car makes in Woodlands, Singapore. Free diagnostic test, free towing, warranty and direct pricing. Call 6352 8832.',
+                'Gearbox repair, overhaul and servicing for all car makes in Woodlands, Singapore. Diagnostic from S$30, free towing and a 6-month warranty. WhatsApp 8430 9665.',
                 body, active='', ld=[faq_ld()])
 
 
@@ -384,7 +389,7 @@ def services():
             + f'<section><div class="wrap"><div class="sec-head"><h2>Signs your gearbox needs a check</h2></div><div class="sym">'
             + ''.join(f'<div class="card"><h3>{e(t)}</h3><p class="muted">{e(d)}</p></div>' for t, d in SYMPTOMS)
             + '</div></div></section>'
-            + band('Not sure what’s wrong?', 'The diagnostic test is free. We’ll tell you the fault and the price before any work starts.'))
+            + band('Not sure what’s wrong?', 'Our pre-repair diagnostic starts from S$30. We’ll tell you the fault and the price before any work starts.'))
     ld = [crumbs_ld('Services', 'services/'), {
         '@context': 'https://schema.org', '@type': 'ItemList', 'itemListElement': [
             {'@type': 'ListItem', 'position': i + 1, 'item': {'@type': 'Service', 'name': html.unescape(t), 'description': d,
@@ -392,42 +397,19 @@ def services():
                                                                'url': f'{ORIGIN}{BASE}services/#{sid}'}}
             for i, (sid, t, im, alt, d) in enumerate(SERVICES)]}]
     return page('services/', 'Gearbox Repair, Overhaul & ATF Servicing Singapore | Dynamic Motoring',
-                'Automatic gearbox repair and overhaul, transmission strengthening upgrades, ATF servicing and free towing in Singapore. All car makes. Free diagnostic test.',
+                'Automatic gearbox repair and overhaul, transmission strengthening upgrades, ATF servicing and free towing in Singapore. All car makes. Diagnostic from S$30.',
                 body, active='services/', ld=ld)
 
 
-def estimator():
-    data = json.load(open(os.path.join(HERE, 'source', 'prices.json'), encoding='utf-8'))
-    body = page_hero('Cost Estimator', 'Gearbox Repair Cost Estimator',
-                     'Choose your car type and brand, tick the repair for each symptom you notice, and see the estimated price. Then send it to us for a firm quote.') + f'''
-<section><div class="wrap">
-<div class="est">
-<div>
-<div class="tabs" role="tablist" id="cats"></div>
-<label class="f" for="brand">Car brand</label>
-<select id="brand"></select>
-<h2 style="font-size:1.3rem;margin:24px 0 12px">Symptoms &amp; possible repairs</h2>
-<div id="syms"></div>
-</div>
-<aside class="card total" aria-live="polite">
-<div class="muted">Estimated total</div>
-<div class="sum" id="sum">S$0</div>
-<ul id="picked"><li>Tick a repair to add it.</li></ul>
-<div class="btns" style="flex-direction:column">
-<a class="btn btn-wa" id="send-wa" href="#" target="_blank" rel="noopener">{ICON["wa"]}Send estimate on WhatsApp</a>
-<a class="btn btn-line" id="send-mail" href="#">Email estimate</a>
-<a class="btn btn-red" href="tel:{BIZ["tel"]}">{ICON["phone"]}Call {BIZ["tel_disp"]}</a>
-</div>
-<p class="note" style="margin-top:14px">Estimates are a guide only. The final price is confirmed after the free diagnostic test, and is often lower.</p>
-</aside>
-</div>
-</div></section>
-''' + band('Prefer to talk it through?', 'Describe the symptoms and your car model, and we’ll tell you what it’s likely to be.')
-    scripts = (f'<script>window.DMTS_PRICES={json.dumps(data["categories"], ensure_ascii=False)};'
-               f'window.DMTS_WA="{BIZ["wa"]}";window.DMTS_EMAIL="{BIZ["email"]}";</script>')
-    return page('cost-estimator/', 'Gearbox Repair Cost Estimator Singapore | Dynamic Motoring',
-                'Estimate your gearbox repair cost in Singapore by car brand and symptom: valve body service, torque converter, mechatronic, ATF leak or full transmission overhaul.',
-                body, active='cost-estimator/', ld=[crumbs_ld('Cost Estimator', 'cost-estimator/')], scripts=scripts)
+def retired_estimator():
+    # DMTS no longer publishes repair prices (they quote after a diagnostic), so the old
+    # estimator URL just forwards to the home page.
+    return f'''<!doctype html>
+<html lang="en-SG"><head><meta charset="utf-8"><meta name="robots" content="noindex">
+<title>Dynamic Motoring</title><link rel="canonical" href="{ORIGIN}{BASE}">
+<meta http-equiv="refresh" content="0; url={BASE}"></head>
+<body><p><a href="{BASE}">Continue to Dynamic Motoring</a></p></body></html>
+'''
 
 
 def gallery():
@@ -462,7 +444,7 @@ def about():
 <li>Specialist in auto transmission repair &amp; overhaul of all types of vehicles</li>
 <li>Experienced &amp; well-trained mechanics in gearbox repair</li>
 <li>Competitive and direct pricing for transmission issues</li>
-<li>Warranty after repair for peace of mind</li>
+<li>Standard 6-month warranty on repairs</li>
 <li>High quality parts and Automatic Transmission Fluid (ATF)</li>
 <li>Comfortable waiting lounge with a clear view of your car</li>
 </ul>
@@ -477,20 +459,21 @@ def about():
 
 def contact():
     body = page_hero('Contact', 'Contact Dynamic Motoring',
-                     'Call, WhatsApp or email us for a free gearbox quote. If your car can’t move, we’ll arrange free towing during office hours.') + f'''
+                     'WhatsApp is the fastest way to reach us. If your car can’t move, we’ll arrange free towing during office hours.') + f'''
 <section><div class="wrap">
 <div class="grid g2">
 <div class="card">
 <h2 style="font-size:1.4rem">Get in touch</h2>
-<p><strong>Office:</strong> <a href="tel:{BIZ["tel"]}">{BIZ["tel_disp"]}</a><br>
-<strong>After office hours:</strong> <a href="tel:{BIZ["mobile"]}">{BIZ["mobile_disp"]}</a><br>
+<p><strong>WhatsApp (preferred):</strong> <a href="{wa_link()}" target="_blank" rel="noopener">{BIZ["mobile_disp"]}</a><br>
+<strong>Office:</strong> <a href="tel:{BIZ["tel"]}">{BIZ["tel_disp"]}</a><br>
 <strong>Fax:</strong> {BIZ["fax_disp"]}<br>
-<strong>Email:</strong> <a href="mailto:{BIZ["email"]}">{BIZ["email"]}</a></p>
+<strong>Email:</strong> <a href="mailto:{BIZ["email"]}">{BIZ["email"]}</a><br>
+<strong>Find us on:</strong> <a href="{BIZ["facebook"]}" target="_blank" rel="noopener">Facebook</a> · <a href="{BIZ["google"]}" target="_blank" rel="noopener">Google</a></p>
 {HOURS}
 <div style="margin-top:18px">{cta_buttons()}</div>
 </div>
 <form class="card" id="qform">
-<h2 style="font-size:1.4rem">Ask for a quote</h2>
+<h2 style="font-size:1.4rem">Book a diagnostic</h2>
 <p class="muted">This opens WhatsApp with your message ready to send.</p>
 <label class="f" for="q-name">Name</label><input id="q-name" type="text" autocomplete="name" required>
 <label class="f" for="q-phone" style="margin-top:12px">Contact number</label><input id="q-phone" type="tel" autocomplete="tel" required>
@@ -507,8 +490,9 @@ def contact():
 </div></section>
 '''
     return page('contact/', 'Contact | Dynamic Motoring Gearbox Specialist Singapore',
-                'Contact Dynamic Motoring for gearbox repair in Singapore. Call 6352 8832, after hours 8430 9665. Workshops at Wave 9 Woodlands and Jalan Lam Huat.',
-                body, active='contact/', ld=[crumbs_ld('Contact', 'contact/')])
+                'Contact Dynamic Motoring for gearbox repair in Singapore. WhatsApp 8430 9665 or call 6352 8832. Workshops at Wave 9 Woodlands and Jalan Lam Huat.',
+                body, active='contact/', ld=[crumbs_ld('Contact', 'contact/')],
+                scripts=f'<script>window.DMTS_EMAIL="{BIZ["email"]}";</script>')
 
 
 def write(rel, text):
@@ -522,7 +506,7 @@ def write(rel, text):
 if __name__ == '__main__':
     write('index.html', home())
     write('services/index.html', services())
-    write('cost-estimator/index.html', estimator())
+    write('cost-estimator/index.html', retired_estimator())
     write('gallery/index.html', gallery())
     write('about/index.html', about())
     write('contact/index.html', contact())
