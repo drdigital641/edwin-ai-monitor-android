@@ -1,82 +1,45 @@
 # Bluehost Bridge in ChatGPT (Custom GPT)
 
-A private Custom GPT that uses the **same** bridge as Claude: the same six sites, backups,
-change log and safety rules. Set it up once; after that, open the GPT and talk to it.
-It works on web and on the phone, with no Developer mode.
+Everything lives in Base44. The **Bluehost Bridge** app holds the rules both AIs follow,
+the ChatGPT setup steps, the key generator and the link ChatGPT imports its actions from.
+No Developer mode, no MCP.
 
-You need three things from the `chatgpt/` folder:
+## Set up ChatGPT (about 5 minutes)
 
-| What | File |
+Open the Bluehost Bridge app (`https://blue-bridge-pilot.base44.app`), sign in, tap
+**Connect AI**, and stay on the **ChatGPT** tab. It walks you through:
+
+1. **Generate ChatGPT key.** Copy it; it is shown only once.
+2. In ChatGPT: **GPTs → Create → Configure**. Name it `Bluehost Bridge` and paste the short
+   instructions from the page (copy button).
+3. **Actions → Create new action → Import from URL**, paste
+   `https://blue-bridge-pilot.base44.app/functions/bridgeOpenapi`, then **Import**.
+4. **Authentication → API Key → Custom**, header name `X-Bridge-Key`, paste the key.
+5. **Create → Only me.** Ask: "List my websites."
+
+## Where things live
+
+| What | Where in Base44 |
 |---|---|
-| Instructions | `chatgpt/gpt-instructions.txt` |
-| API description (schema) | `chatgpt/bluehost-bridge-openapi.json` |
-| Secret key | You make this in step 1. It is never stored in this repo. |
+| Rules both AIs follow | `BridgeGuide` records (app data). Edit there; both AIs load them with `getInstructions` / `get_instructions` at the start of each conversation. |
+| ChatGPT keys | Connect → ChatGPT tab. Generate, see last use, **Revoke**. Only a fingerprint of each key is stored. |
+| Change log | `BridgeLog`, which shows which AI made each change |
+| Handover notes / work claims | `BridgeNote` / `BridgeLock` |
 
-## Step 1: Make the key (Base44)
-
-1. Make a random password of **at least 32 characters** (letters and numbers), for example
-   with your phone's password manager. Save it in your password manager.
-2. Open the **Bluehost Bridge** app in Base44 → **Dashboard → Secrets** (sometimes shown
-   as *Environment variables*) → add a secret:
-   - Name: `BRIDGE_API_KEY`
-   - Value: the password from step 1
-3. Save. Base44 restarts the bridge's functions with the new key. That takes a few seconds.
-
-Until this secret exists, the bridge refuses every key.
-
-## Step 2: Create the GPT (ChatGPT)
-
-1. Go to **chatgpt.com → GPTs (Explore GPTs) → Create**, then open the **Configure** tab.
-2. **Name:** `Bluehost Bridge`
-3. **Instructions:** paste everything in `chatgpt/gpt-instructions.txt`.
-4. Scroll down to **Actions → Create new action**:
-   - **Authentication** → *API Key* → Auth type **Custom** → Custom header name
-     `X-Bridge-Key` → paste your key → Save.
-   - **Schema:** paste everything in `chatgpt/bluehost-bridge-openapi.json`.
-     You should see 10 actions: listSites, listFiles, readFile, editFile, writeFile,
-     listBackups, restoreBackup, syncStatus, postNote, claimWork.
-5. Click **Create** (top right) and choose **Only me**. Don't share this GPT: anyone who
-   can use it can change your live websites.
-
-## Step 3: Test
-
-Open the GPT and ask: **"List my websites."** You should see all six sites.
-Then try: "Read index.html on danny and tell me the page title."
-
-ChatGPT asks you to confirm each **edit, write and restore**. Reads and listings
-run without asking.
+The files in `chatgpt/` are copies for reference. Base44 is the source of truth.
 
 ## How Claude and ChatGPT stay in sync
 
-They can't talk to each other directly, so the bridge works as their shared notice board:
+They can't talk directly, so Base44 is their shared notice board:
 
-- **Check in** (`syncStatus`): at the start of every job each AI sees what the other changed
-  recently, what the other is working on, and any notes left for it.
-- **Claim** (`claimWork`): before a bigger job an AI claims a site or one file for up to
-  2 hours. While the claim lasts, the bridge refuses the other AI's changes there. Claims
-  end on their own, so nothing stays stuck.
-- **Handover note** (`postNote`): when an AI finishes, it leaves a note, e.g. "Updated
-  pricing on sofacare. Claude, please check the mobile layout." The other AI sees it at
-  its next check-in.
+- **Check in** (`syncStatus` / `sync_status`): what the other AI changed recently, what it
+  is working on, and notes left for you.
+- **Claim** (`claimWork` / `claim_work`): reserve a site or file for up to 2 hours; the
+  bridge refuses the other AI's changes there until it ends.
+- **Handover note** (`postNote` / `post_note`): what changed and what's left to do.
 
-They sync by turns, not live. Each one picks up the other's notes the next time you
-give it a task.
+They sync by turns, not live: each picks up the other's notes when you next give it a task.
 
-If you already created the GPT, update it: open the GPT → **Configure**, replace the
-**Instructions** with the new `gpt-instructions.txt`, open the action and replace the
-**Schema** with the new `bluehost-bridge-openapi.json`, then **Update**.
+## Cutting off ChatGPT
 
-## Day to day
-
-- Every change ChatGPT makes is backed up and verified, and it shows up in the bridge's
-  change log (`BridgeLog`) as `chatgpt-gpt (API key)`.
-- Claude and ChatGPT can work at the same time. If both change the same file, the second
-  change is refused until it re-reads the file, so nothing is silently overwritten.
-- Very large files can be too big for ChatGPT to read in one go. If that happens, ask
-  ChatGPT to edit a specific part, or use Claude for that file.
-
-## Cutting off ChatGPT's access
-
-Change or delete the `BRIDGE_API_KEY` secret in Base44. The old key stops working at
-once. Claude's connector is not affected. Put the new key into the GPT's action settings
-if you want to keep using it.
+Connect → ChatGPT tab → **Revoke** the key. It stops working at once. Claude is not affected.

@@ -2,8 +2,8 @@
   "openapi": "3.1.0",
   "info": {
     "title": "Bluehost Bridge",
-    "version": "1.1.0",
-    "description": "Read and safely change files on Edwin's six Bluehost websites (account sgmodde1). Every change is backed up first and verified byte-for-byte."
+    "version": "1.2.0",
+    "description": "Edwin's Bluehost websites through Base44. Call getInstructions first in every conversation: the rules live in Base44."
   },
   "servers": [
     {
@@ -16,6 +16,29 @@
     }
   ],
   "paths": {
+    "/bridgeGuide": {
+      "post": {
+        "operationId": "getInstructions",
+        "summary": "Call first in every conversation. Returns Edwin's current rules for website work, stored in Base44. Follow them exactly.",
+        "x-openai-isConsequential": false,
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {}
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "$ref": "#/components/responses/Result"
+          }
+        }
+      }
+    },
     "/bridgeSites": {
       "post": {
         "operationId": "listSites",

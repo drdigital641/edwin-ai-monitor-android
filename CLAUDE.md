@@ -1,5 +1,10 @@
 # Edwin's website architecture (permanent rules)
 
+**The master rules live in Base44** (`BridgeGuide` records in the Bluehost Bridge app) and
+are shared with ChatGPT. At the start of every website conversation, call the bridge's
+`get_instructions` tool and follow what it returns; it wins over this file if they differ.
+This file is the fallback summary.
+
 Owner: Edwin, who owns the Bluehost cPanel account `sgmodde1`.
 
 ## The six websites (all on `sgmodde1`)
