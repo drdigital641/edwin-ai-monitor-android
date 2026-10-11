@@ -69,7 +69,10 @@ CHEAP_SEO_FAQ = [
     ("Is S$20 a month too cheap for SEO to work?",
      "The price is low because the daily work is automated, not because steps are skipped. Edwin Garage, where the system was first built, got 2,280 clicks from Google in the 28 days to 5 October 2026 with an average position of 6.1, according to Google Search Console. Results vary by business, so we don't guarantee rankings."),
     ("What's the catch?",
-     "There's no setup fee or contract, and you can cancel anytime. S$20 is an introductory price and goes up once we reach our early-client limit. Your domain is registered in your name and paid by you directly, usually S$15–30 a year."),
+     "There's no setup fee or contract, and you can cancel anytime. S$20 is an introductory price: it goes up once we reach our early-client target, so it's worth grabbing now. Any new price will stay close to S$20. Your domain is registered in your name and paid by you directly, usually S$15–30 a year."),
+    ('Is S$20 a month a gimmick price?', "No. S$20 isn't a teaser to upsell you later, and it isn't budget SEO with steps skipped. It's a baseline for what SEO costs now that AI does the daily work that used to be billed by the hour. The same system runs every website we manage, and it's proven on real businesses: Edwin Garage got 2,280 clicks from Google in the 28 days to 5 October 2026, according to Google Search Console. No setup fee, no contract, so you can judge it for yourself."),
+    ("How can I check that S$20 SEO really works?",
+     "Look at the evidence yourself. Our Google Search Console results for Edwin Garage and Cleanic Detailing are published on our results page with dates. The websites we run are live: Edwin Garage, Cleanic Detailing, SofaCare SG, Alicia Ong Property and Danny Chua Financial, across five different industries. Run any of them through our free website check. Page One Singapore is a project of Snap Commercial Pte. Ltd. (UEN 202209904W), a registered Singapore company."),
     ("Does Google penalise content written with AI?",
      "Google's guidance is that it rewards helpful, accurate content, however it's produced, and acts against content mass-produced only to game rankings. We use AI to write useful answers to real customer questions, based on facts about your business and real Search Console data, not to churn out filler."),
     ("Is anyone actually looking after my site, or is it all robots?",
@@ -139,6 +142,21 @@ page("cheapest-seo-singapore/index.html",
     </section>
 
     <section class="section">
+      <div class="wrap narrow">
+        <p class="kicker reveal">A baseline, not a gimmick</p>
+        <h2 class="reveal">S$20 isn't budget SEO. It's what SEO costs now.</h2>
+        <p class="section-lead reveal">A low price can look too good to be true, so here's the honest answer. S$20 isn't a teaser to upsell you later, and it isn't SEO with steps skipped. It's the new baseline: when AI does the daily work that used to be billed by the hour, the cost of doing SEO properly falls, and the price can fall with it.</p>
+        <ul class="ticks reveal">
+          <li><b>The same system for everyone.</b> Every website we manage runs on it, including Edwin's own workshop.</li>
+          <li><b>Proven, with dates and sources.</b> Real Google Search Console results, published on our <a class="link" href="/results/">results page</a>.</li>
+          <li><b>Checkable.</b> The websites we run are live, across five industries. Run any of them through our <a class="link" href="/free-website-check/">free website check</a>.</li>
+          <li><b>A registered company.</b> Page One Singapore is a project of Snap Commercial Pte. Ltd. (UEN 202209904W).</li>
+          <li><b>An introductory price.</b> S$20 goes up once we reach our early-client target, so grab it now. Any new price will stay close to S$20, so it stays affordable.</li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="section alt">
       <div class="wrap">
         <p class="kicker reveal">Proof, not promises</p>
         <h2 class="reveal">The same system, on real Singapore businesses</h2>
@@ -147,7 +165,7 @@ page("cheapest-seo-singapore/index.html",
       </div>
     </section>
 
-    <section class="section alt">
+    <section class="section">
       <div class="wrap">
         <p class="kicker reveal">What S$20 a month gets you</p>
         <h2 class="reveal">The Get Found plan</h2>
@@ -159,7 +177,7 @@ page("cheapest-seo-singapore/index.html",
       </div>
     </section>
 
-    <section class="section">
+    <section class="section alt">
       <div class="wrap narrow">
         <p class="kicker reveal">Questions</p>
         <h2 class="reveal">Cheap SEO: your questions, answered</h2>

@@ -10,7 +10,7 @@ UPDATED = "2026-10-08"
 BIZ_ID = SITE + "/#business"
 GBP = "https://maps.google.com/?cid=8757289318297107567"
 API = "https://base44.app/api/apps/6ac7f2548a9c3877449e2772/functions"
-PROMO = '<div class="promo-bar"><div class="wrap"><b>Introductory price:</b> S$20/month for a limited time. It goes up once we reach our early-client limit. <a href="/signup/">Sign up &rarr;</a></div></div>'
+PROMO = '<div class="promo-bar"><div class="wrap"><b>Introductory price:</b> S$20/month until we reach our early-client target. Grab it before it goes up. Any new price will stay close to S$20. <a href="/signup/">Sign up &rarr;</a></div></div>'
 
 NAV = [
     ("/website/", "Website"),
@@ -571,7 +571,7 @@ page("pricing/index.html",
             <p class="pill">Basic subscription</p>
             <h2 class="h3">Get Found</h2>
             <p class="price"><span>S$20</span>/month</p>
-            <p class="intro-note"><span class="intro-tag">Introductory price</span> Limited time. Goes up once we reach our early-client limit.</p>
+            <p class="intro-note"><span class="intro-tag">Introductory price</span> Goes up once we reach our early-client target, so grab it now. Any new price will stay close to S$20.</p>
             <ul class="ticks">
               <li><a href="/get-found/">Your own website <em>or</em> a landing page on your subdomain</a></li>
               <li>Found naturally on Google and ChatGPT: free, unpaid results, no ad spend</li>
@@ -638,7 +638,8 @@ FAQS = [
     ("I'm not good with computers. Do I need to do anything technical?", "No. You tell us about your business and send a few photos on WhatsApp, and we do the technical work: the website, Google and Bing setup, Google Maps and the AI-search setup. If you already have a website, there's one setting to add to your domain. We send simple step-by-step instructions, and Edwin can guide you through it."),
     ("How will I know it's working?", "We connect your website to Google Search Console, Google's own free report. It shows how many times you appeared in Google, how many people clicked, and what they searched. Every SEO Boost also comes with a before/after report of what was done."),
     ("Is there a setup fee or contract?", "No. There's no setup fee and no minimum contract. You pay S$20 a month in advance and can cancel anytime."),
-    ("Will the S$20 price go up?", "S$20 a month is an introductory price for a limited time. It will go up once we reach our early-client limit, so it's the lowest it will be."),
+    ("Will the S$20 price go up?", "Yes, a little. S$20 a month is an introductory price until we reach our early-client target, so now is the time to grab it. When it goes up, the new price will stay close to S$20, so SEO stays affordable for small businesses."),
+    ('Is S$20 a month a gimmick price?', "No. S$20 isn't a teaser to upsell you later, and it isn't budget SEO with steps skipped. It's a baseline for what SEO costs now that AI does the daily work that used to be billed by the hour. The same system runs every website we manage, and it's proven on real businesses: Edwin Garage got 2,280 clicks from Google in the 28 days to 5 October 2026, according to Google Search Console. No setup fee, no contract, so you can judge it for yourself."),
     ("Is the free website check really free?", "Yes. Enter your website address on our homepage and the checker tests Google basics, mobile setup, speed and AI-search readiness in under a minute. No sign-up needed."),
     ("How do I reach you?", "WhatsApp Edwin on " + WA_DISPLAY + ". You can also tap the green chat button on any page. No obligation to buy anything."),
     ("How do I sign up and pay?", "Fill in the short form on our sign-up page or tap the chat button. It opens WhatsApp with your details filled in. Edwin confirms what you need and sends payment details for your first month. SEO Boosts are added or topped up the same way."),
@@ -995,7 +996,7 @@ page("terms/index.html",
         <h2>Payment</h2>
         <p>The monthly fee is paid in advance. SEO Boosts are paid when you top up. We arrange payment over WhatsApp. Prices are in Singapore dollars.</p>
         <h2>Introductory price</h2>
-        <p>S$20 a month is an introductory price for a limited time. We will raise the price for new sign-ups once we reach our early-client limit. We'll tell you before any price change applies to your own subscription.</p>
+        <p>S$20 a month is an introductory price for a limited time. We will raise the price for new sign-ups once we reach our early-client target, and we intend to keep the new price close to S$20. We'll tell you before any price change applies to your own subscription.</p>
         <h2>No contract, cancel anytime</h2>
         <p>There's no minimum term. You can cancel anytime by WhatsApp. Your service runs until the end of the month you've paid for; we don't refund part-months.</p>
         <h2>Your domain and content</h2>
@@ -1025,7 +1026,7 @@ page("signup/index.html",
         <form class="signup-card reveal" id="signup-form" novalidate>
           <p class="pill">Get Found plan</p>
           <p class="price"><span>S$20</span>/month</p>
-          <p class="intro-note"><span class="intro-tag">Introductory price</span> For a limited time. The price goes up once we reach our early-client limit.</p>
+          <p class="intro-note"><span class="intro-tag">Introductory price</span> The price goes up once we reach our early-client target, so grab it now. Any new price will stay close to S$20, so it stays affordable.</p>
           <label>Business name<input name="business" required autocomplete="organization" maxlength="100"></label>
           <label>Your name<input name="name" required autocomplete="name" maxlength="80"></label>
           <label>What does your business do? (optional)<input name="industry" maxlength="120" placeholder="e.g. hair salon in Bedok"></label>
