@@ -8,6 +8,7 @@ WA_DISPLAY = "+65 9785 6612"
 WA_LINK = f"https://wa.me/{WA}?text=Hi%20Page%20One%20Singapore%2C%20I%27d%20like%20to%20know%20more."
 UPDATED = "2026-10-08"
 BIZ_ID = SITE + "/#business"
+GBP = "https://maps.google.com/?cid=8757289318297107567"
 API = "https://base44.app/api/apps/6ac7f2548a9c3877449e2772/functions"
 PROMO = '<div class="promo-bar"><div class="wrap"><b>Introductory price:</b> S$20/month for a limited time. It goes up once we reach our early-client limit. <a href="/signup/">Sign up &rarr;</a></div></div>'
 
@@ -931,6 +932,7 @@ page("contact/index.html",
             <li><a class="link" href="/#check">Check your website free</a> in under a minute</li>
             <li><a class="link" href="/faq/">Read the FAQ</a>: fees, contracts, cancelling</li>
             <li><a class="link" href="/signup/">Sign up</a> at the introductory price</li>
+            <li><a class="link" href="{GBP}" target="_blank" rel="noopener">Find us on Google Maps</a> and read our reviews</li>
           </ul>
           <p class="fine">Already a client and want to change or cancel your plan? Just WhatsApp us.</p>
         </div>
@@ -1268,6 +1270,7 @@ page("index.html",
           "logo": SITE + "/icon-512.png", "image": SITE + "/images/og.png",
           "description": "Google and AI search visibility for Singapore businesses: the Get Found subscription (a website or SEO landing page) with optional SEO Boost top-ups.",
           "telephone": "+" + WA, "priceRange": "S$20 - S$70 per month",
+          "hasMap": GBP, "sameAs": [GBP],
           "areaServed": {"@type": "Country", "name": "Singapore"},
           "founder": FOUNDER,
           "parentOrganization": COMPANY,
