@@ -17,3 +17,10 @@ The pages carry `noindex` (`NOINDEX = True` in `build.py`) so this copy never co
 - Sunday / public holiday hours (old site didn't say).
 - Email: the old site used both sales@ and contact@dmts.com.sg. The new site uses sales@.
 - Facebook / Google Business Profile URLs (none were linked on the old site).
+
+## Status
+
+Published 11 Oct 2026 to https://pageonesingapore.com/dmts/ as a **preview** (noindex). It goes live
+only when the client is activated through the Page One controller's create-client / Activate flow,
+which moves it to the client's own domain. That flow's previews use `/preview/<slug>/`, so this folder
+may be moved there.

@@ -169,7 +169,7 @@ def page(path, title, desc, body, active='', extra_head='', ld=None, scripts='')
 '''
 
 
-def img(name, alt, w=720, h=540, lazy=True, cls=''):
+def img(name, alt, w=640, h=480, lazy=True, cls=''):
     return (f'<img src="{u("img/" + name + ".webp")}" width="{w}" height="{h}" alt="{e(alt)}"'
             f'{" loading=\"lazy\"" if lazy else ""} decoding="async"{f" class=\"{cls}\"" if cls else ""}>')
 
@@ -210,9 +210,7 @@ GALLERY = [
     ('diagnostics', 'Computer diagnostic test reading transmission fault codes'),
     ('gearbox-teardown', 'Gearbox overhaul on the teardown bench'),
     ('gearbox-parts', 'Clutch packs and gear sets from an automatic gearbox'),
-    ('teardown-bench', 'Dedicated gearbox teardown station'),
     ('gearbox-removal', 'Removing a gearbox with a transmission jack'),
-    ('gearbox-jack', 'Gearbox lowered on a transmission jack'),
     ('transmission-cutaway', 'Automatic transmission cutaway display in the lounge'),
     ('atf-fluids', 'Fuchs Titan ATF used for gearbox servicing'),
     ('customer-lounge', 'Air-conditioned customer waiting lounge'),
@@ -308,7 +306,7 @@ def home():
     gal = ''.join(f'<figure>{img(n, a)}<figcaption>{e(a)}</figcaption></figure>' for n, a in GALLERY[:6])
     body = f'''
 <section class="hero" style="padding:0">
-{img("hero-workshop", "Dynamic Motoring gearbox workshop in Woodlands", 1200, 900, lazy=False, cls="bg")}
+{img("hero-workshop", "Dynamic Motoring gearbox workshop in Woodlands", 800, 600, lazy=False, cls="bg")}
 <div class="wrap">
 <span class="eyebrow">Gearbox specialist · Singapore</span>
 <h1>Gearbox Repair &amp; Auto Transmission Specialist in Singapore</h1>
