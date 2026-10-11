@@ -146,6 +146,8 @@ def page(path, title, desc, schemas, body, crumb=None, robots="index, follow, ma
         <a href="/signup/">Sign up</a>
         <a href="/free-website-check/">Free website check</a>
         <a href="/industries/">Industries we help</a>
+        <a href="/cheapest-seo-singapore/">Low-cost SEO</a>
+        <a href="/cheapest-website-singapore/">Website without the lump sum</a>
         <a href="/report.html">Sample report</a>
       </div>
       <div>
@@ -1261,6 +1263,8 @@ HOME_FAQ_LD = {"@context": "https://schema.org", "@type": "FAQPage", "mainEntity
     {"@type": "Question", "name": q, "acceptedAnswer": {"@type": "Answer", "text": a}} for q, a in HOME_QA]}
 # Industry pages, industries hub and the free website check page.
 exec(open(os.path.join(HERE, "industries.py"), encoding="utf-8").read())
+# "Cheapest SEO" / "cheapest website" pages (honest answers to those searches).
+exec(open(os.path.join(HERE, "affordable.py"), encoding="utf-8").read())
 
 page("index.html",
      "Affordable SEO Singapore from S$20/month | Page One SG",
