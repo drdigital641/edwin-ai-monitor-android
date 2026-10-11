@@ -138,7 +138,8 @@ def page(path, title, desc, schemas, body, crumb=None, robots="index, follow, ma
         <a href="/seo-boost/">SEO Boost</a>
         <a href="/pricing/">Pricing</a>
         <a href="/signup/">Sign up</a>
-        <a href="/#check">Free website checker</a>
+        <a href="/free-website-check/">Free website check</a>
+        <a href="/industries/">Industries we help</a>
         <a href="/report.html">Sample report</a>
       </div>
       <div>
@@ -1250,6 +1251,9 @@ page("seo-explained/index.html",
 HOME_QA = [('What is Page One Singapore?', 'Page One Singapore is an affordable SEO service for Singapore small businesses. It gets businesses found on Google Search, Google Maps and AI assistants such as ChatGPT. It was built by Edwin, an NUS Computer Science (Honours) graduate with 18+ years in business, and proven first on his own car workshop, Edwin Garage.'), ('How much does SEO cost with Page One Singapore?', 'The Get Found plan is S$20 a month at an introductory price, with no setup fee and no minimum contract. Optional SEO Boosts cost S$10 each, for when you want faster results.'), ('What do I get every month for S$20?', 'Your business is found naturally in the free, unpaid results on Google, Google Maps and ChatGPT, with a technical audit of your page every month. Your website or SEO landing page is kept online, secure and fast, with a WhatsApp button.'), ('Can you help my business show up in ChatGPT?', "Yes. We connect your site to Bing, which ChatGPT search uses, label your business details with structured data, publish an llms.txt summary and write content that answers customers' questions. No one can guarantee an AI assistant will recommend you, but these steps make it possible."), ('Do I need a website first?', "No. If you don't have a website, we build one on your own domain. If you already have one, we add an SEO landing page on a subdomain and leave your current site as it is."), ('Does it actually work?', "In the 28 days to 5 October 2026, Edwin Garage got 2,280 clicks from Google with an average position of 6.1, and Cleanic Detailing appeared on page one for 1,181 different searches, according to Google Search Console. Results vary by business, so we don't guarantee rankings.")]
 HOME_FAQ_LD = {"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [
     {"@type": "Question", "name": q, "acceptedAnswer": {"@type": "Answer", "text": a}} for q, a in HOME_QA]}
+# Industry pages, industries hub and the free website check page.
+exec(open(os.path.join(HERE, "industries.py"), encoding="utf-8").read())
+
 page("index.html",
      "Affordable SEO Singapore from S$20/month | Page One SG",
      "Affordable SEO for Singapore small businesses: get found on Google, Maps and ChatGPT from S$20/month. Proven on real businesses. No setup fee or contract.",
