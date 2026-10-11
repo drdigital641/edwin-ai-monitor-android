@@ -1,5 +1,11 @@
 #!/usr/bin/env python3
-"""Build the Dynamic Motoring (DMTS) site published at pageonesingapore.com/dmts/.
+"""Build the Dynamic Motoring (DMTS) site.
+
+Built once into pageonesingapore.com/preview/dmts/ and never moved: on activation, dmts.com.sg's
+document root is pointed at that same folder. Every internal link is relative so the files work at
+both addresses, and canonical/structured-data URLs always name dmts.com.sg. Search engines are kept
+off the preview copy by "Disallow: /preview/" in pageonesingapore.com/robots.txt; dmts.com.sg gets
+its own robots.txt and sitemap.xml from this folder.
 
     python3 build.py            # writes the HTML pages into ./site
 
@@ -13,13 +19,11 @@ import os
 
 HERE = os.path.dirname(os.path.abspath(__file__))
 OUT = os.path.join(HERE, 'site')
-BASE = '/dmts/'
-ORIGIN = 'https://pageonesingapore.com'
+ORIGIN = 'https://dmts.com.sg'  # the client's domain: canonical URLs and structured data
+BASE = '/'
+DEPTH = 0  # folder depth of the page being built; set by build() so u() can emit relative links
 ASSET_V = '2'
 
-# Until DMTS approves this site and it replaces dmts.com.sg, keep it out of Google
-# so it never competes with the client's own domain.
-NOINDEX = True
 
 BIZ = {
     'name': 'Dynamic Motoring',
@@ -58,7 +62,7 @@ e = html.escape
 
 
 def u(path=''):
-    return BASE + path
+    return ('../' * DEPTH or './') + path
 
 
 def wa_link(text=WA_TEXT):
@@ -93,17 +97,16 @@ def schema():
         {'@type': 'Organization', '@id': f'{ORIGIN}{BASE}#org', 'name': 'Dynamic Motoring',
          'alternateName': ['DMTS', 'Dynamic Motoring Transmission Specialist'],
          'url': f'{ORIGIN}{BASE}', 'logo': f'{ORIGIN}{BASE}img/logo.webp',
-         'email': BIZ['email'], 'telephone': BIZ['tel'], 'sameAs': ['https://dmts.com.sg/', BIZ['facebook'], BIZ['google']],
+         'email': BIZ['email'], 'telephone': BIZ['tel'], 'sameAs': [BIZ['facebook'], BIZ['google']],
          'description': 'Gearbox and automatic transmission repair, overhaul, upgrade and servicing specialist in Singapore.'},
         place('hq', 'Woodlands HQ'), place('branch', 'Jalan Lam Huat branch')]}
 
 
 def page(path, title, desc, body, active='', extra_head='', ld=None, scripts=''):
-    canonical = ORIGIN + u(path)
+    canonical = ORIGIN + BASE + path
     nav = ''.join(f'<a href="{u(p)}"{" aria-current=\"page\"" if p == active else ""}>{e(n)}</a>' for p, n in NAV)
     mnav = ''.join(f'<a href="{u(p)}">{e(n)}</a>' for p, n in NAV)
     lds = ''.join(f'<script type="application/ld+json">{json.dumps(x, ensure_ascii=False)}</script>' for x in ([schema()] + (ld or [])))
-    robots = 'noindex, follow' if NOINDEX else 'index, follow, max-image-preview:large'
     return f'''<!doctype html>
 <html lang="en-SG">
 <head>
@@ -111,7 +114,7 @@ def page(path, title, desc, body, active='', extra_head='', ld=None, scripts='')
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>{e(title)}</title>
 <meta name="description" content="{e(desc)}">
-<meta name="robots" content="{robots}">
+<meta name="robots" content="index, follow, max-image-preview:large">
 <link rel="canonical" href="{canonical}">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Dynamic Motoring">
@@ -407,8 +410,8 @@ def retired_estimator():
     return f'''<!doctype html>
 <html lang="en-SG"><head><meta charset="utf-8"><meta name="robots" content="noindex">
 <title>Dynamic Motoring</title><link rel="canonical" href="{ORIGIN}{BASE}">
-<meta http-equiv="refresh" content="0; url={BASE}"></head>
-<body><p><a href="{BASE}">Continue to Dynamic Motoring</a></p></body></html>
+<meta http-equiv="refresh" content="0; url={u()}"></head>
+<body><p><a href="{u()}">Continue to Dynamic Motoring</a></p></body></html>
 '''
 
 
@@ -503,10 +506,28 @@ def write(rel, text):
     print('wrote', rel, len(text.encode()), 'bytes')
 
 
+def robots_txt():
+    return f'User-agent: *\nAllow: /\n\nSitemap: {ORIGIN}/sitemap.xml\n'
+
+
+def sitemap():
+    urls = ''.join(f'<url><loc>{ORIGIN}{BASE}{p}</loc></url>' for p, _ in NAV)
+    return f'<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">{urls}</urlset>\n'
+
+
+def build(rel, fn):
+    global DEPTH
+    DEPTH = rel.count('/')
+    write(rel, fn())
+
+
 if __name__ == '__main__':
-    write('index.html', home())
-    write('services/index.html', services())
-    write('cost-estimator/index.html', retired_estimator())
-    write('gallery/index.html', gallery())
-    write('about/index.html', about())
-    write('contact/index.html', contact())
+    build('index.html', home)
+    build('services/index.html', services)
+    build('cost-estimator/index.html', retired_estimator)
+    build('gallery/index.html', gallery)
+    build('about/index.html', about)
+    build('contact/index.html', contact)
+    # Only read when dmts.com.sg serves this folder; pageonesingapore.com uses its own root robots.txt.
+    build('robots.txt', robots_txt)
+    build('sitemap.xml', sitemap)
