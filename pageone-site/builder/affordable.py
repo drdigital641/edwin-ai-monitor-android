@@ -27,10 +27,45 @@ def _myths(rows, left="What people say", right="What's true now"):
         </div>"""
 
 
+PRICE_GLANCE = """    <section class="section alt" id="price">
+      <div class="wrap">
+        <p class="kicker reveal">Price at a glance</p>
+        <h2 class="reveal">SEO and a website in Singapore from S$20 a month</h2>
+        <div class="table-wrap reveal" style="margin-top:24px">
+          <table class="compare">
+            <thead><tr><th>Page One Singapore</th><th>Price</th><th>What you get</th></tr></thead>
+            <tbody>
+              <tr><th>Get Found plan</th><td><b>S$20 a month</b> (introductory price)</td><td>Your website (or an SEO landing page), Google, Google Maps and ChatGPT setup, regular new articles, a technical audit every month, hosting and security</td></tr>
+              <tr><th>SEO Boost (optional)</th><td><b>S$10 each</b></td><td>Accelerated growth: more articles aimed at new keywords, extra SEO fixes and a before/after report</td></tr>
+              <tr><th>Setup fee</th><td><b>S$0</b></td><td>No setup fee and no lump sum</td></tr>
+              <tr><th>Contract</th><td><b>None</b></td><td>Monthly, cancel anytime</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <p class="note reveal">Your domain is registered in your name and paid by you directly, usually S$15–30 a year. <a class="link" href="/pricing/">Full pricing →</a></p>
+      </div>
+    </section>
+"""
+
+
+def _price_ld(url):
+    return {"@context": "https://schema.org", "@type": "OfferCatalog", "name": "Page One Singapore prices", "url": SITE + url,
+            "itemListElement": [
+                {"@type": "Offer", "name": "Get Found: website or SEO landing page, Google and AI search setup, regular articles, monthly audit",
+                 "price": "20", "priceCurrency": "SGD", "url": SITE + "/get-found/", "seller": PROVIDER,
+                 "priceSpecification": {"@type": "UnitPriceSpecification", "price": "20", "priceCurrency": "SGD", "unitCode": "MON"}},
+                {"@type": "Offer", "name": "SEO Boost (optional): accelerated growth with more articles for new keywords",
+                 "price": "10", "priceCurrency": "SGD", "url": SITE + "/seo-boost/", "seller": PROVIDER}]}
+
+
 # ---------- Cheapest SEO in Singapore ----------
 CHEAP_SEO_FAQ = [
     ("Is Page One the cheapest SEO in Singapore?",
      "We can't check every provider's prices, so we won't claim that. What we can tell you is our price: the Get Found plan is S$20 a month at an introductory price, with no setup fee and no contract. Optional SEO Boosts are S$10 each."),
+    ("How much does SEO cost in Singapore?",
+     "It depends on the provider and on how much of the work is done by hand. When Edwin started, small businesses like his own workshop were being quoted hundreds of dollars a month for SEO they couldn't see or measure. With Page One, the Get Found plan is S$20 a month (introductory price) and includes your website or landing page, Google, Maps and ChatGPT setup, regular new articles and a monthly technical audit. Optional SEO Boosts are S$10 each. No setup fee, no contract."),
+    ("What's the difference between the S$20 plan and an SEO Boost?",
+     "The S$20 plan is the steady base: your site, the Google and AI search setup, regular new articles and a monthly audit. An SEO Boost (S$10) is for accelerated growth: more articles aimed at new keywords, so you show up for more searches sooner, plus extra fixes and a before/after report."),
     ("Is S$20 a month too cheap for SEO to work?",
      "The price is low because the daily work is automated, not because steps are skipped. Edwin Garage, where the system was first built, got 2,280 clicks from Google in the 28 days to 5 October 2026 with an average position of 6.1, according to Google Search Console. Results vary by business, so we don't guarantee rankings."),
     ("What's the catch?",
@@ -48,17 +83,18 @@ page("cheapest-seo-singapore/index.html",
      "Looking for the cheapest SEO in Singapore? AI now does the daily SEO work, so good SEO costs less. Page One: S$20/month, no setup fee, no contract.",
      [service("Affordable SEO subscription for Singapore businesses", "/cheapest-seo-singapore/",
               "Low-cost, automated SEO for Singapore small businesses: Google, Google Maps and AI search visibility for S$20 a month, no setup fee, no contract.", "20"),
-      _faq_ld(CHEAP_SEO_FAQ)],
+      _faq_ld(CHEAP_SEO_FAQ), _price_ld("/cheapest-seo-singapore/")],
      hero("Cheap SEO that works", "Looking for the cheapest SEO in Singapore?",
           "Cheap SEO doesn't have to mean bad SEO.",
-          "SEO used to be expensive because it took a lot of people's time. AI now does most of that daily work. With the right strategy, structure and design, good SEO can cost S$20 a month.",
-          '<p class="hero-price"><b>S$20</b>/month · <span class="intro-tag">Introductory price</span> · no setup fee · no contract</p>') + f"""
+          "SEO used to be expensive because it took a lot of people's time. AI now does most of that daily work. With the right strategy, structure and design, good SEO, including regular new articles, can cost S$20 a month.",
+          '<p class="hero-price"><b>S$20</b>/month · <span class="intro-tag">Introductory price</span> · no setup fee · no contract</p>') + "\n\n" + PRICE_GLANCE + f"""
 
     <section class="section">
       <div class="wrap narrow">
         <p class="kicker reveal">Why SEO used to cost so much</p>
         <h2 class="reveal">You were paying for hours, not results</h2>
         <p class="section-lead reveal">Doing SEO properly is a lot of small jobs, repeated every week: checking pages for problems, fixing them, writing new content, updating business listings, telling Google about changes and reporting what happened. Done by hand, every one of those jobs is someone's billable time.</p>
+        <p class="section-lead reveal">When Edwin started, small businesses like his own car workshop were being quoted hundreds of dollars a month for SEO they couldn't see or measure.</p>
         <p class="section-lead reveal">That's why SEO has usually been priced like a professional service, with a big setup fee or a high monthly retainer. It wasn't that anyone was overcharging. It was simply the only way to do it.</p>
       </div>
     </section>
@@ -158,11 +194,11 @@ page("cheapest-website-singapore/index.html",
      "Looking for the cheapest way to get a website in Singapore? Page One builds, hosts and updates it for S$20/month. No lump sum, no setup fee, no contract.",
      [service("Website built and managed for Singapore businesses", "/cheapest-website-singapore/",
               "A website built, hosted and kept up to date for a monthly subscription instead of a lump sum: S$20 a month, no setup fee, no contract.", "20"),
-      _faq_ld(CHEAP_SITE_FAQ)],
+      _faq_ld(CHEAP_SITE_FAQ), _price_ld("/cheapest-website-singapore/")],
      hero("A website without the lump sum", "Looking for the cheapest website maker in Singapore?",
           "A website without the lump sum.",
           "Most websites are a big one-off payment, then left alone until they're out of date. Page One builds your website, hosts it and keeps it updated for S$20 a month, so it keeps working for you.",
-          '<p class="hero-price"><b>S$20</b>/month · <span class="intro-tag">Introductory price</span> · no setup fee · no contract</p>') + f"""
+          '<p class="hero-price"><b>S$20</b>/month · <span class="intro-tag">Introductory price</span> · no setup fee · no contract</p>') + "\n\n" + PRICE_GLANCE + f"""
 
     <section class="section">
       <div class="wrap narrow">
@@ -180,7 +216,7 @@ page("cheapest-website-singapore/index.html",
         <p class="section-lead reveal">Building and maintaining a website used to take a lot of manual work. Page One uses AI and automation for the repetitive parts, so we can build your site and keep looking after it for a small monthly fee instead of a big upfront one.</p>
         <div class="cards three" style="margin-top:32px">{_cards([
             ("Built from what you already have", "Send us your old website address, or just your details on WhatsApp. We pull in your services, contact details and photos, and show you a preview first."),
-            ("Kept fresh", "New, helpful content keeps your site current, so search engines have a reason to keep coming back."),
+            ("Kept fresh", "Regular new articles are included in the S$20 plan, so search engines have a reason to keep coming back. Want to grow faster? Add SEO Boosts."),
             ("Checked automatically", "The system checks your site on a schedule, every day including weekends, and problems get fixed instead of waiting to be noticed."),
             ("Ready for Google and AI", "A page for each service, your business details labelled for Google, Bing and AI assistants, and a sitemap so nothing gets missed."),
             ("Fast and secure", "Hosting, the padlock (HTTPS) and a one-tap WhatsApp button, all included."),
