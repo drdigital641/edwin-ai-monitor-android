@@ -1,0 +1,150 @@
+{
+  "openapi": "3.1.0",
+  "info": {
+    "title": "Bluehost Bridge",
+    "version": "1.0.0",
+    "description": "Read and safely change files on Edwin's six Bluehost websites (account sgmodde1). Every change is backed up first and verified byte-for-byte."
+  },
+  "servers": [{ "url": "https://blue-bridge-pilot.base44.app/functions" }],
+  "security": [{ "BridgeKey": [] }],
+  "paths": {
+    "/bridgeSites": {
+      "post": {
+        "operationId": "listSites",
+        "summary": "List the six websites, their folders and whether each is reachable. Start here.",
+        "x-openai-isConsequential": false,
+        "requestBody": { "required": true, "content": { "application/json": { "schema": { "type": "object", "properties": {} } } } },
+        "responses": { "200": { "$ref": "#/components/responses/Result" } }
+      }
+    },
+    "/bridgeList": {
+      "post": {
+        "operationId": "listFiles",
+        "summary": "List files and folders in one site. Folders that belong to another site are marked belongsToSite.",
+        "x-openai-isConsequential": false,
+        "requestBody": { "required": true, "content": { "application/json": { "schema": {
+          "type": "object", "required": ["site"],
+          "properties": {
+            "site": { "$ref": "#/components/schemas/Site" },
+            "path": { "type": "string", "description": "Folder inside the site. Omit for the site's top folder." }
+          }
+        } } } },
+        "responses": { "200": { "$ref": "#/components/responses/Result" } }
+      }
+    },
+    "/bridgeRead": {
+      "post": {
+        "operationId": "readFile",
+        "summary": "Read one file. Returns content (text) or content_base64 (binary) and its sha256. Keep the sha256: writeFile needs it to overwrite.",
+        "x-openai-isConsequential": false,
+        "requestBody": { "required": true, "content": { "application/json": { "schema": {
+          "type": "object", "required": ["site", "path"],
+          "properties": { "site": { "$ref": "#/components/schemas/Site" }, "path": { "$ref": "#/components/schemas/Path" } }
+        } } } },
+        "responses": { "200": { "$ref": "#/components/responses/Result" } }
+      }
+    },
+    "/bridgeEdit": {
+      "post": {
+        "operationId": "editFile",
+        "summary": "Preferred way to change part of a text file (goes live immediately). Each old_text must appear exactly expected_occurrences times (default 1) or nothing changes.",
+        "x-openai-isConsequential": true,
+        "requestBody": { "required": true, "content": { "application/json": { "schema": {
+          "type": "object", "required": ["site", "path", "edits"],
+          "properties": {
+            "site": { "$ref": "#/components/schemas/Site" },
+            "path": { "$ref": "#/components/schemas/Path" },
+            "edits": {
+              "type": "array", "minItems": 1, "maxItems": 50,
+              "items": {
+                "type": "object", "required": ["old_text", "new_text"],
+                "properties": {
+                  "old_text": { "type": "string", "description": "Exact text currently in the file." },
+                  "new_text": { "type": "string", "description": "Text to put in its place." },
+                  "expected_occurrences": { "type": "integer", "minimum": 1, "description": "How many times old_text appears. Default 1." }
+                }
+              }
+            }
+          }
+        } } } },
+        "responses": { "200": { "$ref": "#/components/responses/Result" } }
+      }
+    },
+    "/bridgeWrite": {
+      "post": {
+        "operationId": "writeFile",
+        "summary": "Create a new file or replace a whole file (goes live immediately). To overwrite, pass expected_sha256 from readFile. PHP, .htaccess and password files are blocked.",
+        "x-openai-isConsequential": true,
+        "requestBody": { "required": true, "content": { "application/json": { "schema": {
+          "type": "object", "required": ["site", "path"],
+          "properties": {
+            "site": { "$ref": "#/components/schemas/Site" },
+            "path": { "$ref": "#/components/schemas/Path" },
+            "content": { "type": "string", "description": "Full UTF-8 text of the file. Send this or content_base64, not both." },
+            "content_base64": { "type": "string", "description": "Full binary content, base64-encoded (for images)." },
+            "expected_sha256": { "type": "string", "description": "sha256 from readFile. Required when the file already exists." }
+          }
+        } } } },
+        "responses": { "200": { "$ref": "#/components/responses/Result" } }
+      }
+    },
+    "/bridgeBackups": {
+      "post": {
+        "operationId": "listBackups",
+        "summary": "List the private backups taken before each change for a site, newest first. Optionally only backups that contain one file.",
+        "x-openai-isConsequential": false,
+        "requestBody": { "required": true, "content": { "application/json": { "schema": {
+          "type": "object", "required": ["site"],
+          "properties": {
+            "site": { "$ref": "#/components/schemas/Site" },
+            "path": { "type": "string", "description": "Optional: only backups containing this file." },
+            "limit": { "type": "integer", "minimum": 1, "maximum": 100 }
+          }
+        } } } },
+        "responses": { "200": { "$ref": "#/components/responses/Result" } }
+      }
+    },
+    "/bridgeRestore": {
+      "post": {
+        "operationId": "restoreBackup",
+        "summary": "Put a file back to the version in a backup (from listBackups). Goes live immediately. The current version is backed up first, so a restore can be undone.",
+        "x-openai-isConsequential": true,
+        "requestBody": { "required": true, "content": { "application/json": { "schema": {
+          "type": "object", "required": ["site", "backup_id", "path"],
+          "properties": {
+            "site": { "$ref": "#/components/schemas/Site" },
+            "backup_id": { "type": "string", "description": "backupId from listBackups, e.g. 20261009-234842-02eb82" },
+            "path": { "$ref": "#/components/schemas/Path" }
+          }
+        } } } },
+        "responses": { "200": { "$ref": "#/components/responses/Result" } }
+      }
+    }
+  },
+  "components": {
+    "securitySchemes": {
+      "BridgeKey": { "type": "apiKey", "in": "header", "name": "X-Bridge-Key" }
+    },
+    "schemas": {
+      "Site": {
+        "type": "string",
+        "enum": ["sggarage", "cleanic", "alicia", "danny", "sofacare", "pageone"],
+        "description": "sggarage=sggarage.com, cleanic=cleanicdetailing.com, alicia=aliciaongproperty.com, danny=dannychuafinancial.com, sofacare=sofacaresg.com, pageone=pageonesingapore.com"
+      },
+      "Path": {
+        "type": "string",
+        "description": "File path inside the site folder, e.g. index.html or about/index.html (not a URL)."
+      }
+    },
+    "responses": {
+      "Result": {
+        "description": "ok is true on success; otherwise error explains what went wrong and nothing was changed unless it says so.",
+        "content": { "application/json": { "schema": {
+          "type": "object",
+          "properties": { "ok": { "type": "boolean" }, "error": { "type": "string" } },
+          "additionalProperties": true
+        } } }
+      }
+    }
+  }
+}

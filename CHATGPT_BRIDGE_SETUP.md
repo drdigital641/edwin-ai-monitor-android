@@ -1,63 +1,62 @@
-# Connecting ChatGPT to the Bluehost Bridge
+# Bluehost Bridge in ChatGPT (Custom GPT)
 
-ChatGPT connects to the **same** bridge Claude uses. Both share one set of backups,
-one change log and the same safety rules. There is no second copy to keep in sync.
+A private Custom GPT that uses the **same** bridge as Claude: the same six sites, backups,
+change log and safety rules. Set it up once; after that, open the GPT and talk to it.
+It works on web and on the phone, with no Developer mode.
 
-## 1. Add the bridge to ChatGPT
+You need three things from the `chatgpt/` folder:
 
-1. In ChatGPT, open **Settings → Apps** and turn on **Developer mode**.
-2. Click **Create app**.
-   - Name: `Bluehost Bridge`
-   - MCP server URL: `https://blue-bridge-pilot.base44.app/api/mcp`
-   - Authentication: **OAuth**
-3. Click **Create**. A Bluehost Bridge sign-in page opens. Sign in with Edwin's
-   admin account and approve. The bridge only works for admin accounts.
-4. In a new chat, turn on the Bluehost Bridge app from the composer (**+ → Developer mode**,
-   or the tools menu), then ask: "List my websites." You should see six sites.
+| What | File |
+|---|---|
+| Instructions | `chatgpt/gpt-instructions.txt` |
+| API description (schema) | `chatgpt/bluehost-bridge-openapi.json` |
+| Secret key | You make this in step 1. It is never stored in this repo. |
 
-If the tool list looks out of date after the bridge is updated, refresh the app in
-ChatGPT's settings. ChatGPT caches the list of tools.
+## Step 1: Make the key (Base44)
 
-## 2. Paste these instructions into ChatGPT
+1. Make a random password of **at least 32 characters** (letters and numbers), for example
+   with your phone's password manager. Save it in your password manager.
+2. Open the **Bluehost Bridge** app in Base44 → **Dashboard → Secrets** (sometimes shown
+   as *Environment variables*) → add a secret:
+   - Name: `BRIDGE_API_KEY`
+   - Value: the password from step 1
+3. Save. Base44 restarts the bridge's functions with the new key. That takes a few seconds.
 
-Put this in a ChatGPT **Project's instructions**, or in **Settings → Personalization →
-Custom instructions**, so ChatGPT follows the same rules as Claude:
+Until this secret exists, the bridge refuses every key.
 
-```
-I am Edwin. I own the Bluehost cPanel account sgmodde1, which hosts six websites:
+## Step 2: Create the GPT (ChatGPT)
 
-- sggarage  = sggarage.com          (SG Garage)
-- cleanic   = cleanicdetailing.com  (Cleanic Detailing)
-- alicia    = aliciaongproperty.com (Alicia Ong Property)
-- danny     = dannychuafinancial.com (Danny Chua Financial)
-- sofacare  = sofacaresg.com        (SofaCare SG)
-- pageone   = pageonesingapore.com  (Page One Singapore)
+1. Go to **chatgpt.com → GPTs (Explore GPTs) → Create**, then open the **Configure** tab.
+2. **Name:** `Bluehost Bridge`
+3. **Instructions:** paste everything in `chatgpt/gpt-instructions.txt`.
+4. Scroll down to **Actions → Create new action**:
+   - **Authentication** → *API Key* → Auth type **Custom** → Custom header name
+     `X-Bridge-Key` → paste your key → Save.
+   - **Schema:** paste everything in `chatgpt/bluehost-bridge-openapi.json`.
+     You should see 7 actions: listSites, listFiles, readFile, editFile, writeFile,
+     listBackups, restoreBackup.
+5. Click **Create** (top right) and choose **Only me**. Don't share this GPT: anyone who
+   can use it can change your live websites.
 
-Every website change goes: AI -> Base44 -> Bluehost Bridge -> Bluehost server -> live site.
-Use only the Bluehost Bridge app to change my websites. Changes go live immediately.
+## Step 3: Test
 
-How to work with the bridge:
-- Start with list_sites. Use list_files and read_file to look before changing anything.
-- For small changes use edit_file (find and replace). old_text must match exactly once.
-- To replace a whole file or upload an image use write_file. To overwrite an existing
-  file, pass expected_sha256 from your latest read_file. If the write is refused because
-  the file changed, read it again and redo the change. Never guess the sha256.
-- Every change is backed up first and verified. To undo, use list_backups and
-  restore_backup.
-- The bridge blocks password files, .htaccess and server code (.php etc.). Do not try to
-  get around this. Tell me when a change needs one of those.
-- Page One Singapore gets new articles from an hourly publisher that writes articles/,
-  images/articles/, sitemap and llms files. Don't hand-edit those without asking me.
-- After a change, tell me which site and file changed and give me the live URL.
-- If the Bluehost Bridge app isn't available in the chat, say so. Don't use any
-  other way to change my live websites.
-```
+Open the GPT and ask: **"List my websites."** You should see all six sites.
+Then try: "Read index.html on danny and tell me the page title."
 
-## Notes
+ChatGPT asks you to confirm each **edit, write and restore**. Reads and listings
+run without asking.
 
-- Claude and ChatGPT can both use the bridge at the same time. If both try to change the
-  same file, the second change is refused because the file changed since it was read. Nothing gets
-  silently overwritten.
-- Every change made through ChatGPT shows up in the bridge's change log (`BridgeLog`)
-  under the signed-in account.
-- To cut off ChatGPT's access, delete the app in ChatGPT's Apps settings.
+## Day to day
+
+- Every change ChatGPT makes is backed up and verified, and it shows up in the bridge's
+  change log (`BridgeLog`) as `chatgpt-gpt (API key)`.
+- Claude and ChatGPT can work at the same time. If both change the same file, the second
+  change is refused until it re-reads the file, so nothing is silently overwritten.
+- Very large files can be too big for ChatGPT to read in one go. If that happens, ask
+  ChatGPT to edit a specific part, or use Claude for that file.
+
+## Cutting off ChatGPT's access
+
+Change or delete the `BRIDGE_API_KEY` secret in Base44. The old key stops working at
+once. Claude's connector is not affected. Put the new key into the GPT's action settings
+if you want to keep using it.
