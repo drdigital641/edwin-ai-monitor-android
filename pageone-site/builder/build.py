@@ -26,6 +26,11 @@ WA_ICON = '<svg viewBox="0 0 24 24" width="28" height="28" aria-hidden="true"><p
 
 PROVIDER = {"@id": BIZ_ID}
 
+COMPANY = {"@type": "Organization", "@id": SITE + "/#company", "name": "Snap Commercial Pte. Ltd.",
+           "legalName": "SNAP COMMERCIAL PTE. LTD.", "foundingDate": "2022-03-23",
+           "identifier": {"@type": "PropertyValue", "propertyID": "UEN", "value": "202209904W"},
+           "address": {"@type": "PostalAddress", "addressCountry": "SG"}}
+
 FOUNDER = {"@type": "Person", "name": "Edwin", "jobTitle": "Founder, Page One Singapore",
            "alumniOf": {"@type": "CollegeOrUniversity", "name": "National University of Singapore", "sameAs": "https://www.nus.edu.sg/"},
            "hasCredential": {"@type": "EducationalOccupationalCredential", "credentialCategory": "degree",
@@ -159,7 +164,7 @@ def page(path, title, desc, schemas, body, crumb=None, robots="index, follow, ma
       </div>
     </div>
     <div class="wrap footer-bottom">
-      <p class="fine">© <span id="year">2026</span> Page One Singapore. All rights reserved.</p>
+      <p class="fine">© <span id="year">2026</span> Page One Singapore. All rights reserved. Page One Singapore is a project of Snap Commercial Pte. Ltd. (UEN 202209904W).</p>
     </div>
   </footer>
 
@@ -697,6 +702,7 @@ page("about/index.html",
           <h2>Online visibility shouldn't need a big budget</h2>
           <p>Page One Singapore runs the websites and Google listings for five local businesses today: a car workshop, a car detailing service, a sofa cleaning company, a property agent and a financial consultant.</p>
           <p>We started because new and small businesses were being quoted hundreds of dollars a month for SEO they couldn't see or measure. So we built a simpler way: S$20 a month, a report for every SEO Boost, and no contract. Start small, and add more only when you see it working.</p>
+          <p>Page One Singapore is a project of Snap Commercial Pte. Ltd., a Singapore company registered in 2022 (UEN 202209904W).</p>
           <a class="card-link" href="/#stories">See the websites we run →</a>
         </div>
         <div class="panel reveal" style="background:#fff">
@@ -941,7 +947,7 @@ page("privacy/index.html",
 
     <section class="section">
       <div class="wrap narrow prose">
-        <p>Page One Singapore ("we", "us") respects your privacy. This policy explains how we handle personal data in line with Singapore's Personal Data Protection Act 2012 (PDPA).</p>
+        <p>Page One Singapore ("we", "us"), a project of Snap Commercial Pte. Ltd. (UEN 202209904W), respects your privacy. This policy explains how we handle personal data in line with Singapore's Personal Data Protection Act 2012 (PDPA).</p>
         <h2>What we collect</h2>
         <p>Only what you choose to send us: your name, phone number, business name, website and messages when you contact us on WhatsApp, the website address you enter in our free checker, and any photos or information you share for your website.</p>
         <h2>How we use it</h2>
@@ -975,7 +981,7 @@ page("terms/index.html",
 
     <section class="section">
       <div class="wrap narrow prose">
-        <p>These terms apply when you use Page One Singapore's services. By signing up, you agree to them.</p>
+        <p>These terms apply when you use Page One Singapore's services. Page One Singapore is a project of Snap Commercial Pte. Ltd. (UEN 202209904W), which provides the services. By signing up, you agree to these terms.</p>
         <h2>Our services</h2>
         <p><b>Get Found</b> (S$20 a month, an introductory price) covers a website on your own domain or a landing page on your subdomain, plus the Google and AI search setup described on our <a href="/get-found/">Get Found page</a>. <b>SEO Boost</b> (S$10 each) is an optional round of improvements with a report.</p>
         <h2>Payment</h2>
@@ -1264,6 +1270,7 @@ page("index.html",
           "telephone": "+" + WA, "priceRange": "S$20 - S$70 per month",
           "areaServed": {"@type": "Country", "name": "Singapore"},
           "founder": FOUNDER,
+          "parentOrganization": COMPANY,
           "knowsAbout": ["Search engine optimisation", "Local SEO", "Google Business Profile", "AI search visibility", "Generative engine optimisation"],
           "openingHoursSpecification": {"@type": "OpeningHoursSpecification",
                                         "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"],
