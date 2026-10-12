@@ -30,6 +30,13 @@ ASSET_V = '1'
 # Until go-live the share image and icons are linked at the preview address (the same files).
 LIVE = False
 IMG_ORIGIN = ORIGIN if LIVE else PREVIEW
+# While MOCKUP is True the photos (img/) are served from jsDelivr, pinned to the commit that holds
+# them, because the Bluehost Bridge only takes files pasted inline. Before go-live upload site/img/ to
+# the folder and set IMG_CDN = None so every image is served from the client's own domain.
+IMG_COMMIT = '1cf6ce2e33b8e2add12ffe807ee9c89ec98cc8e7'
+IMG_CDN = f'https://cdn.jsdelivr.net/gh/drdigital641/edwin-ai-monitor-android@{IMG_COMMIT}/pageone-site/clients/ecu-clinic/site/' if MOCKUP else None
+if IMG_CDN:
+    IMG_ORIGIN = IMG_CDN.rstrip('/')
 SHARES = {}
 
 BIZ = {
@@ -63,6 +70,8 @@ e = html.escape
 
 
 def u(path=''):
+    if IMG_CDN and (path.startswith('img/') or path == 'icon-512.png'):
+        return IMG_CDN + path
     return ('../' * DEPTH or './') + path
 
 
@@ -230,6 +239,7 @@ def page(path, title, desc, body, ld=None, share=('module-circuit-board.jpg', No
 <link rel="icon" href="{u("icon-192.png")}" type="image/png" sizes="192x192">
 <link rel="apple-touch-icon" href="{u("apple-touch-icon.png")}">
 <link rel="manifest" href="{u("site.webmanifest")}">
+{'<link rel="preconnect" href="https://cdn.jsdelivr.net">' if IMG_CDN else ''}
 <link rel="preload" as="image" href="{u("img/ecu-circuit-board.webp")}" media="(max-width:899px)">
 <link rel="preload" as="image" href="{u("img/ecu-circuit-board-lg.webp")}" media="(min-width:900px)">
 <link rel="stylesheet" href="{u("ecu.css")}?v={ASSET_V}">
@@ -400,7 +410,7 @@ if __name__ == '__main__':
     build('site.webmanifest', lambda: json.dumps({
         'name': BIZ['name'], 'short_name': 'ECU Clinic', 'start_url': './', 'display': 'standalone',
         'background_color': '#ffffff', 'theme_color': '#1f262b',
-        'icons': [{'src': f'icon-{n}.png', 'sizes': f'{n}x{n}', 'type': 'image/png'} for n in (192, 512)]}, indent=1))
+        'icons': [{'src': u(f'icon-{n}.png').lstrip('./') if n == 192 else u(f'icon-{n}.png'), 'sizes': f'{n}x{n}', 'type': 'image/png'} for n in (192, 512)]}, indent=1))
     import share
     for slug, (photo, headline) in SHARES.items():
         share.card(slug, photo, headline)
