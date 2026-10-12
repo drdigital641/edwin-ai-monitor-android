@@ -22,7 +22,7 @@ OUT = os.path.join(HERE, 'site')
 ORIGIN = 'https://dmts.com.sg'  # the client's domain: canonical URLs and structured data
 BASE = '/'
 DEPTH = 0  # folder depth of the page being built; set by build() so u() can emit relative links
-ASSET_V = '3'
+ASSET_V = '4'
 SLUG = 'dmts'  # Page One client key: p1-site marker (go-live check) and WhatsApp tracker
 INDEXNOW_KEY = '5792dfeef836aebd82a445c206294c95'  # same key as the controller's Client record
 
@@ -488,17 +488,17 @@ def home():
 
 <section><div class="wrap">
 <div class="sec-head"><h2>Why drivers bring their gearbox to DMTS</h2><p>We only do transmissions, so we find the real fault faster and recommend only the repair you need.</p></div>
-<div class="grid g3">{why_cards()}</div>
+<div class="grid g3 why">{why_cards()}</div>
 </div></section>
 
 <section class="alt"><div class="wrap">
 <div class="sec-head"><h2>Our gearbox services</h2><p>From a quick ATF service to a full transmission overhaul or performance upgrade.</p></div>
-<div class="grid g4">{svc}</div>
+<div class="grid g4 svc">{svc}</div>
 </div></section>
 
 <section><div class="wrap">
 <div class="sec-head"><h2>Gearbox problems we fix</h2><p>Noticed one of these? Book a diagnostic before a small fault becomes a full overhaul.</p></div>
-<div class="sym">{sym}</div>
+<div class="sym compact">{sym}</div>
 <p style="margin-top:22px"><a class="btn btn-wa" href="{wa_link("Hi Dynamic Motoring, my car has a gearbox problem. Car model: ")}" target="_blank" rel="noopener">{ICON["wa"]}WhatsApp us your symptoms</a>
 <a class="btn btn-line" href="{u("gearbox-problems/")}">All gearbox problems</a></p>
 </div></section>
@@ -520,7 +520,7 @@ def home():
 
 <section class="alt"><div class="wrap">
 <div class="sec-head"><h2>Inside our workshop</h2><p>Dedicated gearbox teardown stations, diagnostic equipment and an air-conditioned lounge where you can watch your car being worked on.</p></div>
-<div class="gallery">{gal}</div>
+<div class="gallery home-gal">{gal}</div>
 <p style="margin-top:20px"><a class="btn btn-line" href="{u("gallery/")}">View all photos</a></p>
 </div></section>
 
