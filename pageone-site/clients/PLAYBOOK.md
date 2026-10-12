@@ -26,6 +26,10 @@ The controller app's Clients page queues jobs on the `Client` record (`design_jo
   icon cards, trust strip from TRUE facts only, how-it-works steps, gallery, FAQ, contact cards with
   map link, strong WhatsApp CTAs plus a floating WhatsApp button. Mobile-first: no horizontal scroll
   at 390 px; check 390 and 1280 px in headless Chromium before publishing.
+- Phones get a compact layout (see DMTS's `@media(max-width:759px)` block): no plain-text top bar
+  (the sticky WhatsApp/Call dock covers it), h1 about 1.6rem, 2-column icon cards, thumbnail-left
+  service cards, swipeable reviews, short home gallery. Keep the home page under about 7,000 px tall
+  at 390 px, and check it with a real-viewport full-page screenshot (puppeteer-core), not just overflow.
 - All internal links relative (same files work at both addresses).
 - `<meta name="p1-site" content="<slug>">` on every page (the go-live check looks for it).
 - Footer credit: "Website & SEO by Page One Singapore" linking to https://pageonesingapore.com/.
