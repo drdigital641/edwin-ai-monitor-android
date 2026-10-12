@@ -22,7 +22,7 @@ OUT = os.path.join(HERE, 'site')
 ORIGIN = 'https://dmts.com.sg'  # the client's domain: canonical URLs and structured data
 BASE = '/'
 DEPTH = 0  # folder depth of the page being built; set by build() so u() can emit relative links
-ASSET_V = '2'
+ASSET_V = '3'
 SLUG = 'dmts'  # Page One client key: p1-site marker (go-live check) and WhatsApp tracker
 INDEXNOW_KEY = '5792dfeef836aebd82a445c206294c95'  # same key as the controller's Client record
 
@@ -44,7 +44,8 @@ BIZ = {
 }
 WA_TEXT = 'Hi Dynamic Motoring, I would like a quote for my gearbox.'
 
-NAV = [('', 'Home'), ('services/', 'Services'), ('gallery/', 'Gallery'), ('about/', 'About'), ('contact/', 'Contact')]
+NAV = [('', 'Home'), ('services/', 'Services'), ('gearbox-problems/', 'Gearbox Problems'), ('gallery/', 'Gallery'),
+       ('about/', 'About'), ('contact/', 'Contact')]
 
 DIAG = 'Pre-repair diagnostic from S$30'
 WARRANTY = 'All repairs come with a standard 6-month warranty unless otherwise stated.'
@@ -162,6 +163,12 @@ def page(path, title, desc, body, active='', extra_head='', ld=None, scripts='')
 <p><strong>Branch</strong><br>{e(BIZ["branch"]["street"])}<br>Singapore {BIZ["branch"]["postal"]}</p>
 </div>
 <div>
+<h3>Services</h3>
+<ul>{''.join(f'<li><a href="{u("services/" + sid + "/")}">{t}</a></li>' for sid, t, *_ in SERVICES)}</ul>
+<h3 style="margin-top:1em">Gearbox problems</h3>
+<ul>{''.join(f'<li><a href="{u("gearbox-problems/" + p["slug"] + "/")}">{e(p["name"])}</a></li>' for p in PROBLEMS)}</ul>
+</div>
+<div>
 <h3>Pages</h3>
 <ul>{''.join(f'<li><a href="{u(p)}">{e(n)}</a></li>' for p, n in NAV)}</ul>
 <p style="margin-top:1em">Mon–Fri 9:00–18:00<br>Sat 9:00–15:00<br>Sun &amp; PH closed</p>
@@ -197,15 +204,6 @@ SERVICES = [
      'We provide free pick-up to our workshop for gearbox repair during office hours. If the vehicle cannot move at all because of transmission failure, we send a tow truck to pick it up, free of charge.'),
 ]
 
-SYMPTOMS = [
-    ('Transmission check light on', 'Engine or transmission check light on the dashboard while driving.'),
-    ('Lack of response', 'Car hesitates or refuses to go into gear when you accelerate.'),
-    ('Can’t change gear', 'Stuck in first gear, or only upshifts to third, when moving off or in motion.'),
-    ('Jerking or gears slipping', 'Car jerks when shifting up or down, or slips in and out of gear (or pops into neutral) while driving.'),
-    ('Vibration', 'Car vibrates at high speed on low RPM, or when accelerating hard from a standstill.'),
-    ('ATF leaking or low', 'Bright red oil (ATF) stains on the floor after the car has been parked for a while.'),
-    ('Gearbox noise', 'Loud noise from the gearbox once the engine starts or while the car is moving.'),
-]
 
 TESTIMONIALS = [
     ('Ulysses Wang', 'BMW 5 Series', 'I never knew that there are actually car workshops that specialised in gearbox related problems until I chanced upon Dynamic Motoring Transmission Specialist from the internet. I had an idea of the repair cost after going through the cost estimator on their website. Arranged an appointment with Jacky and drove my BMW 5 series to let him check. Workshop was impressive from the setup and was relieved to know from him that the actual repair cost was lower than the estimated quote.'),
@@ -245,21 +243,184 @@ FAQ = [
 ]
 
 
+FAQ_BY_Q = dict(FAQ)
+
+# One page per service. Only DMTS's own facts (old site + onboarding) and general gearbox knowledge.
+SERVICE_PAGES = {
+    'gearbox-repair': {
+        'title': 'Gearbox Repair & Overhaul Singapore | Dynamic Motoring',
+        'desc': 'Automatic gearbox repair and full transmission overhaul in Singapore for all car makes. Diagnostic from S$30, quote before work, 6-month warranty.',
+        'h1': 'Gearbox Repair &amp; Overhaul in Singapore',
+        'sub': 'We find the real cause first, then repair only what is needed, or overhaul the whole transmission when that is the right fix.',
+        'sections': [
+            ('Repair or full overhaul?',
+             '<p>Not every gearbox fault needs a full rebuild. Some problems come from one part, such as a solenoid, a sensor, the valve body or a leaking seal, and can be repaired on their own. Others, such as worn clutch packs or internal damage, mean the transmission has to come out, be stripped down and rebuilt. Our diagnostic tells us which one your car needs, so you only pay for what is needed.</p>'),
+            ('Any type or brand of gearbox',
+             '<p>We work on automatic transmissions for continental, Japanese, Korean and other makes, from everyday family cars to continental models. Our workshop has dedicated teardown benches, transmission jacks and diagnostic tools specialising in auto transmission, so the work is done on site.</p>'),
+        ],
+        'problems': ['car-jerks-when-changing-gear', 'car-stuck-in-gear', 'transmission-warning-light', 'gearbox-noise'],
+        'faq': ['How much does a gearbox repair cost in Singapore?', 'How much is the diagnostic?', 'Is there a warranty after repair?', 'Which car brands do you work on?'],
+    },
+    'gearbox-upgrade': {
+        'title': 'Gearbox Upgrade & Strengthening Singapore | DMTS',
+        'desc': 'Gearbox strengthening upgrades in Singapore: clutch, valve body and torque converter upgrades matched to your engine’s power and torque.',
+        'h1': 'Gearbox Strengthening &amp; Upgrade',
+        'sub': 'For cars whose engine now makes more power or torque than the original gearbox was built for, or owners who want a more reliable transmission.',
+        'sections': [
+            ('When an upgrade makes sense',
+             '<p>A gearbox is designed for a certain amount of power (bhp) and torque (Nm). If the engine has been tuned or modified, the original clutches and torque converter can be pushed past what they were built for. A strengthening upgrade matches the gearbox to the engine, so it can handle the extra load reliably.</p>'),
+            ('What we upgrade',
+             '<ul class="ticks"><li>Clutch packs</li><li>Valve body</li><li>Torque converter</li><li>Lubrication of bearings and gears, set up for the new performance level</li></ul>'
+             '<p>Every upgrade starts with an assessment and a complete diagnostic of your current gearbox, so the upgrade is designed for your car and how you drive it.</p>'),
+        ],
+        'problems': ['car-jerks-when-changing-gear', 'car-vibrates-when-accelerating'],
+        'faq': ['How much is the diagnostic?', 'Is there a warranty after repair?', 'Which car brands do you work on?'],
+    },
+    'gearbox-servicing': {
+        'title': 'Gearbox Servicing & ATF Change Singapore | DMTS',
+        'desc': 'Automatic gearbox servicing in Singapore with the manufacturer-recommended or gearbox-specific ATF, in the right amount. All car makes.',
+        'h1': 'Gearbox Maintenance &amp; ATF Servicing',
+        'sub': 'Servicing your automatic transmission is as important as servicing the engine. The right fluid, in the right amount, keeps bearings and gears lasting longer.',
+        'sections': [
+            ('Why the right ATF matters',
+             '<p>Automatic Transmission Fluid (ATF) cools and lubricates the gearbox and carries the hydraulic pressure that makes it shift. Different gearboxes need different fluids. We only use the manufacturer’s recommended or gearbox-specific brand of ATF, filled to the correct level, for longer life of bearings and gears with less wear.</p>'),
+            ('Servicing prevents breakdowns',
+             '<p>Good maintenance and periodic inspection catch small issues, such as a slow leak or old, worn fluid, before they turn into slipping, harsh shifting or a full overhaul. Follow the transmission service interval in your car’s service schedule, or ask us to check it for you.</p>'),
+        ],
+        'problems': ['transmission-fluid-leak', 'car-hesitates-when-accelerating', 'gearbox-noise'],
+        'faq': ['What are the signs my gearbox needs attention?', 'Which car brands do you work on?', 'Where are your workshops and when are you open?'],
+    },
+    'free-towing': {
+        'title': 'Free Towing for Gearbox Repair Singapore | DMTS',
+        'desc': 'Car stuck because of the gearbox? Dynamic Motoring provides free pick-up and towing to our workshop for gearbox repair during office hours.',
+        'h1': 'Free Towing &amp; Pick-Up for Gearbox Repair in Singapore',
+        'sub': 'If your car can’t move because of a transmission failure, we send a tow truck to bring it to our workshop, free of charge, during office hours.',
+        'sections': [
+            ('How it works',
+             f'<ol class="steps"><li><strong>WhatsApp us</strong> at <a href="{wa_link()}" target="_blank" rel="noopener">{BIZ["mobile_disp"]}</a> or call <a href="tel:{BIZ["tel"]}">{BIZ["tel_disp"]}</a> with your location, car model and what happened.</li>'
+             '<li><strong>We arrange the pick-up</strong> to our workshop during office hours (Mon–Fri 9am–6pm, Sat 9am–3pm).</li>'
+             '<li><strong>We diagnose the gearbox</strong> (from S$30) and tell you the fault and the price before any repair starts.</li></ol>'),
+            ('Free for gearbox repair',
+             '<p>Pick-up and towing are free when the car comes to us for gearbox repair. If your car can still be driven safely, you are also welcome to drive in to either workshop.</p>'),
+        ],
+        'problems': ['car-stuck-in-gear', 'transmission-warning-light'],
+        'faq': ['My car can’t move. Can you tow it?', 'Where are your workshops and when are you open?', 'How much is the diagnostic?'],
+    },
+}
+
+# One page per common gearbox problem (the symptoms list on the old site), with general causes.
+PROBLEMS = [
+    {'slug': 'transmission-warning-light', 'name': 'Transmission check light on',
+     'title': 'Transmission Warning Light On? Singapore Gearbox Help',
+     'desc': 'Engine or transmission check light on while driving? What it can mean for your gearbox, what to do now, and how we find the fault in Singapore.',
+     'h1': 'Transmission or Check Light On: What It Means (Singapore)',
+     'seen': 'The engine or transmission check light comes on while driving. Some cars also hold one gear (often called “limp mode”) to protect the gearbox.',
+     'causes': ['The gearbox control unit has stored a fault code', 'A faulty sensor or shift solenoid', 'Low or overheated transmission fluid (ATF)', 'Wiring or connector problems', 'Internal wear in the gearbox'],
+     'now': ['Note when the light came on and how the car is behaving', 'Avoid hard acceleration and long trips until it is checked', 'If the car is stuck in one gear or won’t move, don’t force it: ask us to tow it in'],
+     'img': ('diagnostics', 'Diagnostic computer reading transmission fault codes'),
+     'services': ['gearbox-repair', 'free-towing'],
+     'faq': [('Can I keep driving with the transmission light on?',
+              'It depends on the fault. If the car drives normally, keep it gentle and get it checked soon. If it is stuck in one gear, jerks badly or won’t move, stop driving it and arrange a tow, because driving on can turn a small fault into a bigger repair.')]},
+    {'slug': 'car-hesitates-when-accelerating', 'name': 'Lack of response',
+     'title': 'Car Hesitates or Won’t Go Into Gear? Singapore | DMTS',
+     'desc': 'Car hesitates or refuses to go into gear when you accelerate? Common gearbox causes, what to do, and how we diagnose it in Singapore.',
+     'h1': 'Car Hesitates or Won’t Go Into Gear: Causes and Repair in Singapore',
+     'seen': 'You press the accelerator and the car hesitates, or there is a delay before it goes into Drive or Reverse.',
+     'causes': ['Low or old transmission fluid (ATF)', 'Faulty shift solenoids or valve body', 'Worn clutch packs inside the gearbox', 'Torque converter problems'],
+     'now': ['Check for red fluid stains where you park', 'Avoid hard acceleration until it is checked', 'Book a diagnostic before the delay gets worse'],
+     'img': ('mechanics-under-car', 'Mechanics inspecting a gearbox from under the car'),
+     'services': ['gearbox-repair', 'gearbox-servicing'],
+     'faq': [('Is a delay when shifting into Drive serious?',
+              'A short delay can be an early sign of low fluid or wear. It is usually cheaper to fix when caught early, so it is worth a diagnostic rather than waiting until the car won’t move.')]},
+    {'slug': 'car-stuck-in-gear', 'name': 'Can’t change gear',
+     'title': 'Car Stuck in Gear or Won’t Upshift? Singapore | DMTS',
+     'desc': 'Car stuck in first gear or only shifting up to third? Common gearbox causes, limp mode explained, and free towing to our Singapore workshop.',
+     'h1': 'Car Stuck in Gear or Won’t Upshift: Help in Singapore',
+     'seen': 'The car stays in first gear, or only shifts up to third, when moving off or while driving.',
+     'causes': ['The gearbox has gone into limp mode after detecting a fault', 'A failed shift solenoid', 'Valve body problems', 'Low transmission fluid', 'Gearbox control unit or wiring faults'],
+     'now': ['Drive slowly to a safe place and avoid highways', 'Don’t keep driving long distances in one gear', 'WhatsApp us: if the car can’t move, we tow it in free during office hours'],
+     'img': ('gearbox-removal', 'Gearbox being removed with a transmission jack'),
+     'services': ['gearbox-repair', 'free-towing'],
+     'faq': [('What is limp mode?',
+              'Many automatic gearboxes hold one gear when they detect a fault, to protect themselves from further damage. The car can still move slowly, but it needs a diagnostic to find out why.')]},
+    {'slug': 'car-jerks-when-changing-gear', 'name': 'Jerking or gears slipping',
+     'title': 'Car Jerks When Changing Gear? Singapore | DMTS',
+     'desc': 'Car jerks when shifting, slips in and out of gear or pops into neutral? Common automatic gearbox causes and how we fix them in Singapore.',
+     'h1': 'Car Jerks When Changing Gear or Slips Out of Gear: Singapore Repair',
+     'seen': 'The car jerks when shifting up or down, slips in and out of gear, or pops into neutral while driving.',
+     'causes': ['Worn clutch packs or bands inside the gearbox', 'Low or degraded transmission fluid (ATF)', 'Valve body or shift solenoid faults', 'Torque converter problems'],
+     'now': ['Avoid hard acceleration and towing loads', 'Check for fluid leaks where you park', 'Book a diagnostic: slipping usually gets worse with time'],
+     'img': ('gearbox-teardown', 'Automatic gearbox opened up on the teardown bench'),
+     'services': ['gearbox-repair', 'gearbox-servicing'],
+     'faq': [('Will changing the gearbox oil fix jerking?',
+              'Sometimes, if the fluid is low or worn out. But jerking can also come from worn clutches or a faulty valve body, which fresh fluid won’t fix. A diagnostic tells you which it is before you spend money.')]},
+    {'slug': 'car-vibrates-when-accelerating', 'name': 'Vibration',
+     'title': 'Car Vibrates When Accelerating? Singapore | DMTS',
+     'desc': 'Car vibrates at high speed on low RPM or when accelerating hard from a stop? Possible gearbox causes and how we check them in Singapore.',
+     'h1': 'Car Vibrates When Accelerating: Gearbox Causes in Singapore',
+     'seen': 'The car vibrates at high speed on low RPM, or when accelerating hard from a standstill.',
+     'causes': ['Torque converter (lock-up clutch) problems', 'Worn engine or gearbox mounts', 'Low or degraded transmission fluid', 'Drivetrain parts such as drive shafts'],
+     'now': ['Note the speed and RPM when it happens', 'Avoid hard acceleration until it is checked', 'Book a diagnostic to find out whether it is the gearbox or another part'],
+     'img': ('workshop-lifts', 'Car on a lift in the Dynamic Motoring workshop'),
+     'services': ['gearbox-repair', 'gearbox-upgrade'],
+     'faq': [('Is vibration always a gearbox problem?',
+              'No. Vibration can also come from mounts, tyres or drive shafts. Our diagnostic checks the gearbox first, and we will tell you if the cause is elsewhere.')]},
+    {'slug': 'transmission-fluid-leak', 'name': 'ATF leaking or low',
+     'title': 'Transmission Fluid Leak Repair Singapore | DMTS',
+     'desc': 'Bright red oil stains under your parked car? It may be automatic transmission fluid. Common leak causes and why low ATF damages a gearbox.',
+     'h1': 'Transmission Fluid Leak in Singapore: Red Oil Under the Car',
+     'seen': 'Bright red oil (ATF) stains on the floor after the car has been parked for a while.',
+     'causes': ['Worn or leaking gearbox seals', 'A leaking transmission pan gasket', 'Damaged transmission cooler lines', 'Loose or damaged drain or fill plugs'],
+     'now': ['Don’t just keep topping up: find and fix the leak', 'Watch for slipping or harsh shifts, signs the fluid is already low', 'Book a check before low fluid overheats the gearbox'],
+     'img': ('atf-fluids', 'Automatic transmission fluid used for gearbox servicing'),
+     'services': ['gearbox-servicing', 'gearbox-repair'],
+     'faq': [('Is it safe to drive with a transmission fluid leak?',
+              'A small leak can be driven to a workshop, but low fluid makes a gearbox overheat and slip, which can lead to a much bigger repair. Get it checked soon, and don’t ignore it.')]},
+    {'slug': 'gearbox-noise', 'name': 'Gearbox noise',
+     'title': 'Gearbox Noise: Whining or Clunking? Singapore | DMTS',
+     'desc': 'Loud noise from the gearbox when the engine starts or while driving? Common causes of whining, humming and clunking gearboxes in Singapore cars.',
+     'h1': 'Gearbox Noise in Singapore: Whining, Humming or Clunking',
+     'seen': 'A loud noise from the gearbox once the engine starts or while the car is moving.',
+     'causes': ['Worn bearings inside the gearbox', 'Low transmission fluid', 'Torque converter problems', 'Worn gear sets'],
+     'now': ['Note whether the noise happens in Park, in gear or only while moving', 'Check for fluid leaks', 'Book a diagnostic: noises rarely go away on their own'],
+     'img': ('gearbox-parts', 'Clutch packs and gear sets from an automatic gearbox'),
+     'services': ['gearbox-repair', 'gearbox-servicing'],
+     'faq': [('Why does my gearbox whine?',
+              'A whine that changes with speed often points to worn bearings or gears, or low fluid. A diagnostic can narrow it down before the wear causes more damage.')]},
+]
+PROBLEM_BY = {p['slug']: p for p in PROBLEMS}
+SERVICE_NAME = {sid: t for sid, t, *_ in SERVICES}
+SERVICE_ROW = {sid: (sid, t, im, alt, d) for sid, t, im, alt, d in SERVICES}
+
+
 def faq_ld():
     import re
     return {'@context': 'https://schema.org', '@type': 'FAQPage', 'mainEntity': [
         {'@type': 'Question', 'name': q, 'acceptedAnswer': {'@type': 'Answer', 'text': re.sub('<[^>]+>', '', a)}} for q, a in FAQ]}
 
 
-def crumbs_ld(name, path):
+def crumbs_ld(name, path, parent=None):
+    trail = [('Home', '')] + ([parent] if parent else []) + [(name, path)]
     return {'@context': 'https://schema.org', '@type': 'BreadcrumbList', 'itemListElement': [
-        {'@type': 'ListItem', 'position': 1, 'name': 'Home', 'item': ORIGIN + BASE},
-        {'@type': 'ListItem', 'position': 2, 'name': name, 'item': ORIGIN + BASE + path}]}
+        {'@type': 'ListItem', 'position': i + 1, 'name': html.unescape(n), 'item': ORIGIN + BASE + p} for i, (n, p) in enumerate(trail)]}
 
 
-def page_hero(name, h1, sub):
-    return (f'<div class="page-hero"><div class="wrap"><div class="crumbs"><a href="{u()}">Home</a> › {e(name)}</div>'
+def page_hero(name, h1, sub, parent=None):
+    mid = f'<a href="{u(parent[1])}">{e(parent[0])}</a> › ' if parent else ''
+    return (f'<div class="page-hero"><div class="wrap"><div class="crumbs"><a href="{u()}">Home</a> › {mid}{e(html.unescape(name))}</div>'
             f'<h1>{h1}</h1><p>{sub}</p></div></div>')
+
+
+def faq_ld_of(items):
+    import re
+    return {'@context': 'https://schema.org', '@type': 'FAQPage', 'mainEntity': [
+        {'@type': 'Question', 'name': q, 'acceptedAnswer': {'@type': 'Answer', 'text': re.sub('<[^>]+>', '', a)}} for q, a in items]}
+
+
+def faq_block(items, heading):
+    return (f'<section class="alt"><div class="wrap" style="max-width:860px"><div class="sec-head"><h2>{heading}</h2></div>'
+            + ''.join(f'<details><summary>{e(q)}</summary><div class="a">{a}</div></details>' for q, a in items)
+            + '</div></section>')
 
 
 def band(h, p):
@@ -310,10 +471,8 @@ HOURS = ('<dl class="hours"><dt>Mon – Fri</dt><dd>9:00am – 6:00pm</dd><dt>Sa
 
 # ---------- pages ----------
 def home():
-    svc = ''.join(f'<a class="card img" href="{u("services/")}#{sid}" style="text-decoration:none;color:inherit">{img(im, alt)}'
-                  f'<div class="body"><h3>{t}</h3><p class="muted">{d[:118].rsplit(" ", 1)[0]}…</p></div></a>'
-                  for sid, t, im, alt, d in SERVICES)
-    sym = ''.join(f'<div class="card"><h3>{e(t)}</h3><p class="muted">{e(d)}</p></div>' for t, d in SYMPTOMS[:6])
+    svc = service_cards()
+    sym = problem_cards()
     gal = ''.join(f'<figure>{img(n, a)}<figcaption>{e(a)}</figcaption></figure>' for n, a in GALLERY[:6])
     body = f'''
 <section class="hero" style="padding:0">
@@ -340,7 +499,8 @@ def home():
 <section><div class="wrap">
 <div class="sec-head"><h2>Gearbox problems we fix</h2><p>Noticed one of these? Book a diagnostic before a small fault becomes a full overhaul.</p></div>
 <div class="sym">{sym}</div>
-<p style="margin-top:22px"><a class="btn btn-wa" href="{wa_link("Hi Dynamic Motoring, my car has a gearbox problem. Car model: ")}" target="_blank" rel="noopener">{ICON["wa"]}WhatsApp us your symptoms</a></p>
+<p style="margin-top:22px"><a class="btn btn-wa" href="{wa_link("Hi Dynamic Motoring, my car has a gearbox problem. Car model: ")}" target="_blank" rel="noopener">{ICON["wa"]}WhatsApp us your symptoms</a>
+<a class="btn btn-line" href="{u("gearbox-problems/")}">All gearbox problems</a></p>
 </div></section>
 
 <section class="alt"><div class="wrap split">
@@ -377,7 +537,7 @@ def home():
 
 {band("Gearbox acting up?", "WhatsApp or call us. If the car can’t move, we’ll tow it in for free.")}
 '''
-    return page('', 'Gearbox Repair & Auto Transmission Specialist Singapore | Dynamic Motoring',
+    return page('', 'Gearbox Repair & Transmission Specialist Singapore | DMTS',
                 'Gearbox repair, overhaul and servicing for all car makes in Woodlands, Singapore. Diagnostic from S$30, free towing and a 6-month warranty. WhatsApp 8430 9665.',
                 body, active='', ld=[faq_ld()])
 
@@ -386,25 +546,134 @@ def services():
     blocks = []
     for i, (sid, t, im, alt, d) in enumerate(SERVICES):
         pic = f'<div>{img(im, alt)}</div>'
-        txt = f'<div><h2>{t}</h2><p>{d}</p>{cta_buttons()}</div>'
+        more = f'<a class="btn btn-line" href="{u("services/" + sid + "/")}">Full details</a>'
+        txt = f'<div><h2>{t}</h2><p>{d}</p>{cta_buttons(more)}</div>'
         blocks.append(f'<section id="{sid}"{" class=\"alt\"" if i % 2 else ""}><div class="wrap split">'
                       f'{txt + pic if i % 2 else pic + txt}</div></section>')
     body = (page_hero('Services', 'Gearbox Repair, Overhaul, Upgrade &amp; Servicing',
                       'Everything we do is about your transmission: diagnosis, repair, overhaul, strengthening upgrades and ATF servicing, for all car makes.')
             + ''.join(blocks)
             + f'<section><div class="wrap"><div class="sec-head"><h2>Signs your gearbox needs a check</h2></div><div class="sym">'
-            + ''.join(f'<div class="card"><h3>{e(t)}</h3><p class="muted">{e(d)}</p></div>' for t, d in SYMPTOMS)
+            + problem_cards()
             + '</div></div></section>'
+            + faq_block(FAQ[:5], 'Gearbox service questions')
+            + trust_strip()
             + band('Not sure what’s wrong?', 'Our pre-repair diagnostic starts from S$30. We’ll tell you the fault and the price before any work starts.'))
-    ld = [crumbs_ld('Services', 'services/'), {
+    ld = [crumbs_ld('Services', 'services/'), faq_ld_of(FAQ[:5]), {
         '@context': 'https://schema.org', '@type': 'ItemList', 'itemListElement': [
             {'@type': 'ListItem', 'position': i + 1, 'item': {'@type': 'Service', 'name': html.unescape(t), 'description': d,
                                                                'provider': {'@id': f'{ORIGIN}{BASE}#org'}, 'areaServed': 'Singapore',
-                                                               'url': f'{ORIGIN}{BASE}services/#{sid}'}}
+                                                               'url': f'{ORIGIN}{BASE}services/{sid}/'}}
             for i, (sid, t, im, alt, d) in enumerate(SERVICES)]}]
-    return page('services/', 'Gearbox Repair, Overhaul & ATF Servicing Singapore | Dynamic Motoring',
+    return page('services/', 'Gearbox Repair, Overhaul & Servicing Singapore | DMTS',
                 'Automatic gearbox repair and overhaul, transmission strengthening upgrades, ATF servicing and free towing in Singapore. All car makes. Diagnostic from S$30.',
                 body, active='services/', ld=ld)
+
+
+def problem_cards(slugs=None):
+    ps = [PROBLEM_BY[s] for s in slugs] if slugs else PROBLEMS
+    return ''.join(f'<a class="card" href="{u("gearbox-problems/" + p["slug"] + "/")}" style="text-decoration:none;color:inherit">'
+                   f'<h3>{e(p["name"])}</h3><p class="muted">{e(p["seen"])}</p><span class="more">What it means →</span></a>' for p in ps)
+
+
+def service_cards(sids=None):
+    rows = [SERVICE_ROW[s] for s in sids] if sids else SERVICES
+    return ''.join(f'<a class="card img" href="{u("services/" + sid + "/")}" style="text-decoration:none;color:inherit">{img(im, alt)}'
+                   f'<div class="body"><h3>{t}</h3><p class="muted">{d[:118].rsplit(" ", 1)[0]}…</p><span class="more">Learn more →</span></div></a>'
+                   for sid, t, im, alt, d in rows)
+
+
+def trust_strip(reviews=True):
+    rv = f'<section><div class="wrap"><div class="sec-head"><h2>What our customers say</h2></div><div class="grid g3">{testimonials()}</div></div></section>'
+    return ((rv if reviews else '') + f'<section class="alt"><div class="wrap"><div class="sec-head"><h2>Our workshops in Woodlands and Jalan Lam Huat</h2></div>'
+            f'<div class="grid g2">{loc_cards()}</div><div class="card" style="margin-top:18px">{HOURS}</div></div></section>')
+
+
+def service_page(sid):
+    _, t, im, alt, d = SERVICE_ROW[sid]
+    sp = SERVICE_PAGES[sid]
+    faq = [(q, FAQ_BY_Q[q]) for q in sp['faq']]
+    others = [s for s, *_ in SERVICES if s != sid]
+    secs = ''.join(f'<section{" class=\"alt\"" if i % 2 == 0 else ""}><div class="wrap" style="max-width:860px"><h2>{h}</h2>{b}</div></section>'
+                   for i, (h, b) in enumerate(sp['sections']))
+    body = (page_hero(t, sp['h1'], sp['sub'], parent=('Services', 'services/'))
+            + f'''<section><div class="wrap split">
+<div><h2>{t} at Dynamic Motoring</h2><p>{d}</p>
+<ul class="ticks"><li>{DIAG}</li><li>Clear quote before any work starts</li><li>{WARRANTY}</li><li>Free towing to our workshop during office hours</li></ul>
+{cta_buttons()}</div>
+<div>{img(im, alt)}</div>
+</div></section>'''
+            + secs
+            + f'<section><div class="wrap"><div class="sec-head"><h2>Problems this fixes</h2></div><div class="sym">{problem_cards(sp["problems"])}</div></div></section>'
+            + faq_block(faq, f'{t}: common questions')
+            + trust_strip()
+            + f'<section><div class="wrap"><div class="sec-head"><h2>Other gearbox services</h2></div><div class="grid g3">{service_cards(others)}</div></div></section>'
+            + band('Talk to a gearbox specialist', 'WhatsApp us your car model and symptoms. If the car can’t move, we’ll tow it in for free.'))
+    ld = [crumbs_ld(t, f'services/{sid}/', parent=('Services', 'services/')), faq_ld_of(faq),
+          {'@context': 'https://schema.org', '@type': 'Service', 'name': html.unescape(t), 'description': d, 'serviceType': html.unescape(t),
+           'provider': {'@id': f'{ORIGIN}{BASE}#org'}, 'areaServed': {'@type': 'Country', 'name': 'Singapore'}, 'url': f'{ORIGIN}{BASE}services/{sid}/'}]
+    return page(f'services/{sid}/', sp['title'], sp['desc'], body, active='services/', ld=ld)
+
+
+HUB_FAQ = [(q, FAQ_BY_Q[q]) for q in ['What are the signs my gearbox needs attention?', 'How much is the diagnostic?',
+                                     'How much does a gearbox repair cost in Singapore?', 'My car can’t move. Can you tow it?',
+                                     'Which car brands do you work on?']]
+
+
+def problems_hub():
+    body = (page_hero('Gearbox Problems', 'Common Gearbox Problems in Singapore and What They Mean',
+                      'Noticed something wrong with your automatic gearbox? Find your symptom below to see the usual causes and what to do next.')
+            + f'<section><div class="wrap"><div class="sym">{problem_cards()}</div></div></section>'
+            + f'''<section class="alt"><div class="wrap split">
+<div><h2>Not sure which one it is?</h2><p>Gearbox symptoms often overlap, and the same symptom can have very different causes. Our pre-repair diagnostic reads the transmission fault codes and checks the gearbox, then we tell you the fault and the price before any work starts.</p>
+<ul class="ticks"><li>{DIAG}</li><li>Clear quote before any work starts</li><li>Free towing if the car can’t move</li></ul>{cta_buttons()}</div>
+<div>{img("diagnostics", "Transmission diagnostic test running on a laptop")}</div></div></section>'''
+            + faq_block(HUB_FAQ, 'Gearbox problem FAQ')
+            + trust_strip()
+            + band('Gearbox acting up?', 'WhatsApp or call us. If the car can’t move, we’ll tow it in for free.'))
+    ld = [crumbs_ld('Gearbox Problems', 'gearbox-problems/'), faq_ld_of(HUB_FAQ),
+          {'@context': 'https://schema.org', '@type': 'ItemList', 'itemListElement': [
+              {'@type': 'ListItem', 'position': i + 1, 'name': p['name'], 'url': f'{ORIGIN}{BASE}gearbox-problems/{p["slug"]}/'} for i, p in enumerate(PROBLEMS)]}]
+    return page('gearbox-problems/', 'Common Gearbox Problems & Symptoms Singapore | DMTS',
+                'Transmission light on, jerking, slipping, stuck in gear, leaks, vibration or noise? What each gearbox symptom can mean and what to do next.',
+                body, active='gearbox-problems/', ld=ld)
+
+
+def problem_page(slug):
+    p = PROBLEM_BY[slug]
+    faq = p['faq'] + [('How much does it cost to fix?',
+                       f'It depends on the cause, so we don’t quote blind. Our pre-repair diagnostic starts from S$30, and we give you a clear quote before any work starts. <a href="{wa_link()}" target="_blank" rel="noopener">WhatsApp us</a> your car model and symptoms.')]
+    li = lambda xs: ''.join(f'<li>{e(x)}</li>' for x in xs)
+    others = [q['slug'] for q in PROBLEMS if q['slug'] != slug][:3]
+    body = (page_hero(p['name'], p['h1'], e(p['seen']), parent=('Gearbox Problems', 'gearbox-problems/'))
+            + f'''<section><div class="wrap split">
+<div><h2>Common causes</h2><p>These are the usual reasons for this symptom in an automatic gearbox. More than one can be involved, which is why we diagnose before quoting.</p>
+<ul class="ticks">{li(p["causes"])}</ul></div>
+<div>{img(*p["img"])}</div>
+</div></section>
+<section class="alt"><div class="wrap" style="max-width:860px">
+<h2>What to do now</h2><ul class="ticks">{li(p["now"])}</ul>
+<h3>Why it pays to check early</h3>
+<p>An automatic gearbox rarely fixes itself. A fault that starts as a sensor, a solenoid or low fluid can, if the car keeps being driven, wear the clutches and other internal parts, and a simple repair can turn into a full overhaul. Finding the cause early usually means a smaller, cheaper fix, which is why we diagnose first and quote before any work starts.</p>
+</div></section>
+<section><div class="wrap" style="max-width:860px">
+<h2>How we find and fix it</h2>
+<ol class="steps"><li><strong>Tell us what’s happening.</strong> WhatsApp <a href="{wa_link("Hi Dynamic Motoring, my car has a gearbox problem. Car model: ")}" target="_blank" rel="noopener">{BIZ["mobile_disp"]}</a> with your car model and the symptom.</li>
+<li><strong>Diagnostic from S$30.</strong> We read the transmission fault codes and check the gearbox to find the actual cause.</li>
+<li><strong>Clear quote first.</strong> You know the fault and the price before any repair starts.</li>
+<li><strong>Repair with warranty.</strong> {WARRANTY}</li></ol>
+{cta_buttons()}
+</div></section>'''
+            + f'<section class="alt"><div class="wrap"><div class="sec-head"><h2>Related services</h2></div><div class="grid g3">{service_cards(p["services"])}</div></div></section>'
+            + faq_block(faq, 'Questions about this problem')
+            + trust_strip()
+            + f'<section><div class="wrap"><div class="sec-head"><h2>Other gearbox problems</h2></div><div class="sym">{problem_cards(others)}</div></div></section>')
+    ld = [crumbs_ld(p['name'], f'gearbox-problems/{slug}/', parent=('Gearbox Problems', 'gearbox-problems/')), faq_ld_of(faq)]
+    return page(f'gearbox-problems/{slug}/', p['title'], p['desc'], body, active='gearbox-problems/', ld=ld)
+
+
+def all_pages():
+    return ([p for p, _ in NAV] + [f'services/{s}/' for s, *_ in SERVICES] + [f'gearbox-problems/{p["slug"]}/' for p in PROBLEMS])
 
 
 def retired_estimator():
@@ -420,13 +689,21 @@ def retired_estimator():
 
 def gallery():
     gal = ''.join(f'<figure>{img(n, a)}<figcaption>{e(a)}</figcaption></figure>' for n, a in GALLERY)
-    body = (page_hero('Gallery', 'Our Gearbox Workshop',
+    body = (page_hero('Gallery', 'Our Gearbox Workshop in Woodlands, Singapore',
                       'A look inside Dynamic Motoring: diagnostic equipment, gearbox teardown benches, transmission jacks and our customer lounge.')
             + f'<section><div class="wrap"><div class="gallery">{gal}</div></div></section>'
+            + f'''<section class="alt"><div class="wrap" style="max-width:860px">
+<h2>Built for gearbox work</h2>
+<p>Our workshop is set up for automatic transmissions: dedicated gearbox teardown benches, transmission jacks for removing and refitting gearboxes, car lifts, and diagnostic tools specialising in auto transmission. We use the manufacturer’s recommended or gearbox-specific brand of ATF, such as the Fuchs Titan fluids in our servicing bay.</p>
+<h2>Wait in comfort</h2>
+<p>Our air-conditioned customer lounge has a clear view of the workshop, so you can watch your car being worked on, and an automatic transmission cutaway on display that shows what is inside a gearbox.</p>
+</div></section>'''
+            + faq_block(FAQ[4:], 'Visiting us')
+            + trust_strip()
             + band('Come and see us', 'Visit our Woodlands HQ or Jalan Lam Huat branch, or let us pick your car up for free.'))
-    return page('gallery/', 'Workshop Photos | Dynamic Motoring Gearbox Specialist',
+    return page('gallery/', 'Gearbox Workshop Photos, Woodlands Singapore | DMTS',
                 'Photos of the Dynamic Motoring gearbox workshop in Woodlands, Singapore: diagnostics, gearbox overhaul benches, car lifts and customer lounge.',
-                body, active='gallery/', ld=[crumbs_ld('Gallery', 'gallery/')])
+                body, active='gallery/', ld=[crumbs_ld('Gallery', 'gallery/'), faq_ld_of(FAQ[4:])])
 
 
 def about():
@@ -457,10 +734,10 @@ def about():
 </div>
 </div></section>
 <section><div class="wrap"><div class="sec-head"><h2>What our customers say</h2></div><div class="grid g3">{testimonials()}</div></div></section>
-''' + band('Talk to a gearbox specialist', 'Call, WhatsApp or drop by either workshop.')
+''' + faq_block(FAQ, 'Frequently asked questions') + trust_strip(reviews=False) + band('Talk to a gearbox specialist', 'Call, WhatsApp or drop by either workshop.')
     return page('about/', 'About Dynamic Motoring | Gearbox Specialist Singapore',
                 'Dynamic Motoring (DMTS) is a Singapore gearbox and auto transmission specialist with over 15 years of combined experience in gearbox repair and overhaul.',
-                body, active='about/', ld=[crumbs_ld('About', 'about/')])
+                body, active='about/', ld=[crumbs_ld('About', 'about/'), faq_ld_of(FAQ)])
 
 
 def contact():
@@ -494,10 +771,16 @@ def contact():
 <div class="sec-head"><h2>Our workshops</h2></div>
 <div class="grid g2">{loc_cards(maps=True)}</div>
 </div></section>
-'''
+<section><div class="wrap" style="max-width:860px">
+<h2>Before you come in</h2>
+<p>Tell us your car make and model and what the gearbox is doing, for example a warning light, jerking between gears, slipping or a noise. It helps us plan the diagnostic. If the car can still be driven safely, drive in to either workshop during opening hours. If it can’t move, we arrange free towing to our workshop during office hours.</p>
+<h2>After the diagnostic</h2>
+<p>Our pre-repair diagnostic starts from S$30. We tell you the fault and give you a clear quote before any work starts, and repairs come with a standard 6-month warranty unless otherwise stated.</p>
+</div></section>
+''' + faq_block(FAQ[:5], 'Common questions') + f'<section><div class="wrap"><div class="sec-head"><h2>What our customers say</h2></div><div class="grid g3">{testimonials()}</div></div></section>'
     return page('contact/', 'Contact | Dynamic Motoring Gearbox Specialist Singapore',
                 'Contact Dynamic Motoring for gearbox repair in Singapore. WhatsApp 8430 9665 or call 6352 8832. Workshops at Wave 9 Woodlands and Jalan Lam Huat.',
-                body, active='contact/', ld=[crumbs_ld('Contact', 'contact/')],
+                body, active='contact/', ld=[crumbs_ld('Contact', 'contact/'), faq_ld_of(FAQ[:5])],
                 scripts=f'<script>window.DMTS_EMAIL="{BIZ["email"]}";</script>')
 
 
@@ -514,7 +797,9 @@ def robots_txt():
 
 
 def sitemap():
-    urls = ''.join(f'<url><loc>{ORIGIN}{BASE}{p}</loc></url>' for p, _ in NAV)
+    import datetime
+    today = datetime.date.today().isoformat()
+    urls = ''.join(f'<url><loc>{ORIGIN}{BASE}{p}</loc><lastmod>{today}</lastmod></url>' for p in all_pages())
     return f'<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">{urls}</urlset>\n'
 
 
@@ -538,7 +823,9 @@ def llms_txt():
 {svc}
 
 ## Pages
-''' + '\n'.join(f'- [{n}]({ORIGIN}/{p})' for p, n in NAV) + f'''
+''' + '\n'.join(f'- [{n}]({ORIGIN}/{p})' for p, n in NAV) + '\n' + '\n'.join(
+        f'- [{txt(t)}]({ORIGIN}/services/{sid}/)' for sid, t, *_ in SERVICES) + '\n' + '\n'.join(
+        f'- [{p["name"]}]({ORIGIN}/gearbox-problems/{p["slug"]}/): {p["seen"]}' for p in PROBLEMS) + f'''
 
 ## Common questions
 {faq}
@@ -554,6 +841,11 @@ def build(rel, fn):
 if __name__ == '__main__':
     build('index.html', home)
     build('services/index.html', services)
+    for sid, *_ in SERVICES:
+        build(f'services/{sid}/index.html', lambda sid=sid: service_page(sid))
+    build('gearbox-problems/index.html', problems_hub)
+    for prob in PROBLEMS:
+        build(f'gearbox-problems/{prob["slug"]}/index.html', lambda s=prob['slug']: problem_page(s))
     build('cost-estimator/index.html', retired_estimator)
     build('gallery/index.html', gallery)
     build('about/index.html', about)

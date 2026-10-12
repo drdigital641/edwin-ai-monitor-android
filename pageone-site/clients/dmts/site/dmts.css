@@ -1,4 +1,4 @@
-:root{--blue:#0a5bb5;--blue-d:#08498f;--navy:#0b1e33;--ink:#18222e;--muted:#5b6673;--line:#e3e8ee;--bg:#f5f7fa;--red:#d9232d;--wa:#1fae55;--r:14px;--w:1140px}
+:root{--blue:#0a5bb5;--blue-d:#08498f;--navy:#0b1e33;--ink:#18222e;--muted:#5b6673;--line:#e3e8ee;--bg:#f5f7fa;--red:#d9232d;--wa:#14803e;--r:14px;--w:1140px}
 *{box-sizing:border-box}
 html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
 body{margin:0;font:16px/1.6 system-ui,-apple-system,"Segoe UI",Roboto,Arial,sans-serif;color:var(--ink);background:#fff}
@@ -34,7 +34,7 @@ nav.main a:hover,nav.main a[aria-current]{color:var(--blue);background:#eef4fb}
 .btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;padding:13px 20px;border-radius:12px;font-weight:700;text-decoration:none;border:0;cursor:pointer;font:inherit;font-weight:700;line-height:1.2}
 .btn-red{background:var(--red);color:#fff}.btn-red:hover{background:#b81c25}
 .btn-blue{background:var(--blue);color:#fff}.btn-blue:hover{background:var(--blue-d)}
-.btn-wa{background:var(--wa);color:#fff}.btn-wa:hover{background:#178f45}
+.btn-wa{background:var(--wa);color:#fff}.btn-wa:hover{background:#0f6a33}
 .btn-ghost{background:rgba(255,255,255,.12);color:#fff;border:1px solid rgba(255,255,255,.5)}
 .btn-line{background:#fff;color:var(--navy);border:1px solid var(--line)}
 .btns{display:flex;flex-wrap:wrap;gap:10px}
@@ -151,3 +151,7 @@ footer.site ul{list-style:none;padding:0;margin:0}footer.site li{margin:.35em 0}
 .dock{position:fixed;left:0;right:0;bottom:0;z-index:50;display:grid;grid-template-columns:1fr 1fr;gap:8px;padding:10px 12px calc(10px + env(safe-area-inset-bottom));background:rgba(255,255,255,.96);border-top:1px solid var(--line)}
 .dock .btn{padding:12px 10px}
 @media(min-width:900px){.dock{display:none}footer.site{padding-bottom:44px}}
+@media(min-width:760px){footer.site .grid{grid-template-columns:1.3fr 1fr 1fr 1fr}}
+footer.site ul li{margin-bottom:4px}
+.more{display:inline-block;margin-top:8px;font-weight:700;color:var(--blue)}
+.steps{margin:0 0 22px;padding-left:1.3em}.steps li{margin-bottom:10px;line-height:1.55}

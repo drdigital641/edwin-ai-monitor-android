@@ -57,6 +57,21 @@ The controller app's Clients page queues jobs on the `Client` record (`design_jo
   `<indexnow_key>.txt` (key from the Client record).
 - Remove the preview strip. The page must answer the go-live check on the domain.
 
+## Before/after reports (every client, every SEO run or Boost)
+- Before touching anything, capture the old site while it is still live: run the public checker
+  (`siteCheck` basics) on the old home page, run Lighthouse mobile locally
+  (`npx lighthouse@12.2.1 <url> --form-factor=mobile` with CHROME_PATH=/opt/pw-browsers/chromium),
+  take 390 px and 1280 px screenshots (puppeteer-core with a real viewport; Chromium's
+  `--screenshot --window-size` crops wide layouts and misleads), and save them in
+  `clients/<slug>/before/` with a README table. Attach the share code and speed to the Client's
+  onboarding ScoreRecord (share_id, speed_json, speed_score) and to the SiteCheck row (speed_json).
+- The new site must beat the old one on every measure. Aim for 100 on the checker for every page.
+- Every ScoreRecord now saves its own shareable report (share_id → https://pageonesingapore.com/?report=<id>#check):
+  go-live (with a speed test), fixes, routine score changes. After an SEO run or Boost, record a
+  ScoreRecord with kind `boost` the same way, so the client's history shows the measured result.
+- The Controller's score history shows a Report link per entry, and "Copy progress summary" includes
+  the before and latest report links.
+
 ## Content rules
 - Only facts from the old site and Edwin. Never invent prices, reviews, ratings, years, awards,
   guarantees or response times. No "best", "No. 1", "cheapest".
