@@ -1,30 +1,48 @@
 User-agent: *
 Allow: /
+Disallow: /preview/
+Disallow: /dmts/
 
 # Search and AI assistants are welcome to read this site
 User-agent: Googlebot
 Allow: /
+Disallow: /preview/
+Disallow: /dmts/
 
 User-agent: Bingbot
 Allow: /
+Disallow: /preview/
+Disallow: /dmts/
 
 User-agent: OAI-SearchBot
 Allow: /
+Disallow: /preview/
+Disallow: /dmts/
 
 User-agent: ChatGPT-User
 Allow: /
+Disallow: /preview/
+Disallow: /dmts/
 
 User-agent: GPTBot
 Allow: /
+Disallow: /preview/
+Disallow: /dmts/
 
 User-agent: PerplexityBot
 Allow: /
+Disallow: /preview/
+Disallow: /dmts/
 
 User-agent: ClaudeBot
 Allow: /
+Disallow: /preview/
+Disallow: /dmts/
 
 User-agent: Google-Extended
 Allow: /
+Disallow: /preview/
+Disallow: /dmts/
 
 Sitemap: https://pageonesingapore.com/sitemap.xml
 Sitemap: https://pageonesingapore.com/sitemap.txt

@@ -21,18 +21,24 @@ The pages carry `noindex` (`NOINDEX = True` in `build.py`) so this copy never co
 - Email: contact@dmts.com.sg (WhatsApp preferred).
 - Google: https://share.google/ZXSk6rE3VdUNgZyKS · Facebook: https://www.facebook.com/DYNAMICMOTORINGTRANSMISSIONSPECIALIST/
 
-## Status
+## Status (12 Oct 2026): client signed up, going live
 
-Built once into https://pageonesingapore.com/preview/dmts/ and never moved. On activation, point
-dmts.com.sg's document root (addon domain / DNS) at `public_html/preview/dmts/`; nothing is re-uploaded.
+Follows the standard procedure in `../PLAYBOOK.md` (same as every client from now on):
 
-- All internal links are relative, so the same files work at both addresses.
-- Canonical URLs, Open Graph and structured data always name https://dmts.com.sg/.
-- pageonesingapore.com/robots.txt has `Disallow: /preview/` (and `/dmts/`) in every group, so the
-  preview copy is not crawled. The folder's own `robots.txt` and `sitemap.xml` are what dmts.com.sg
-  serves once it points here.
-- The WhatsApp tracker in `dmts.js` skips pageonesingapore.com, so it only counts on dmts.com.sg.
-- The first upload at /dmts/ now redirects to /preview/dmts/. Its old images/CSS/JS are still on the
-  server (the bridge cannot delete files).
-- Social share previews of the preview link show no image until dmts.com.sg is live (og:image points
-  at the client domain).
+- One folder, never moved: `public_html/website_b1ec45f5/preview/dmts/` (shown at
+  https://pageonesingapore.com/preview/dmts/). On go-live, dmts.com.sg is added in cPanel as an
+  **addon domain** whose document root is that folder; the client only changes DNS (A record @ to
+  173.254.31.20, CNAME www to dmts.com.sg). Nothing is copied or re-uploaded.
+- Controller Client record: slug `dmts`, domain dmts.com.sg, status `activating`, `custom: true`
+  (hand-built, so the app never overwrites these files), `design_job: site_done`. The go-live
+  checklist on the Clients page tracks DNS, site, https and Search Console.
+- Every page has `<meta name="p1-site" content="dmts">` (the go-live check looks for it), canonical
+  URLs/Open Graph/structured data name https://dmts.com.sg/, and the pages are indexable.
+- Domain files served from this folder once dmts.com.sg points here: `robots.txt`, `sitemap.xml`,
+  `llms.txt` and the IndexNow key file `5792dfeef836aebd82a445c206294c95.txt`.
+- pageonesingapore.com/robots.txt disallows `/preview/` and `/dmts/`, so the copy under
+  pageonesingapore.com is never crawled; dmts.com.sg uses this folder's own robots.txt.
+- WhatsApp clicks are counted by `dmts.js` (site key `dmts`) only on dmts.com.sg.
+- Onboarding score of the old dmts.com.sg (WordPress, 12 Oct 2026): 55/100, saved in the score history.
+- Leftover: the very first upload at pageonesingapore.com/dmts/ only redirects to /preview/dmts/; its
+  old copies can be deleted in cPanel File Manager whenever convenient (the bridge can't delete).

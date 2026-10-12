@@ -23,6 +23,8 @@ ORIGIN = 'https://dmts.com.sg'  # the client's domain: canonical URLs and struct
 BASE = '/'
 DEPTH = 0  # folder depth of the page being built; set by build() so u() can emit relative links
 ASSET_V = '2'
+SLUG = 'dmts'  # Page One client key: p1-site marker (go-live check) and WhatsApp tracker
+INDEXNOW_KEY = '5792dfeef836aebd82a445c206294c95'  # same key as the controller's Client record
 
 
 BIZ = {
@@ -115,6 +117,7 @@ def page(path, title, desc, body, active='', extra_head='', ld=None, scripts='')
 <title>{e(title)}</title>
 <meta name="description" content="{e(desc)}">
 <meta name="robots" content="index, follow, max-image-preview:large">
+<meta name="p1-site" content="{SLUG}">
 <link rel="canonical" href="{canonical}">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Dynamic Motoring">
@@ -515,6 +518,33 @@ def sitemap():
     return f'<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">{urls}</urlset>\n'
 
 
+def llms_txt():
+    import re
+    txt = lambda h: html.unescape(re.sub(r'<[^>]+>', '', h))
+    svc = '\n'.join(f'- {txt(name)}: {txt(body).split(". ")[0]}.' for _, name, _, _, body, *rest in SERVICES)
+    faq = '\n'.join(f'- {txt(q)} {txt(a)}' for q, a in FAQ[:6])
+    hq, br = BIZ['hq'], BIZ['branch']
+    return f'''# {BIZ['name']} ({BIZ['short']})
+
+> Gearbox and automatic transmission repair, overhaul, upgrade and servicing specialist in Singapore.
+
+- WhatsApp: {BIZ['mobile_disp']} (preferred) · Tel: {BIZ['tel_disp']} · Email: {BIZ['email']}
+- Woodlands HQ: {hq['street']}, Singapore {hq['postal']}
+- Branch: {br['street']}, Singapore {br['postal']}
+- Hours: Mon-Fri 9am-6pm, Sat 9am-3pm, closed Sundays and public holidays
+- {DIAG}. {WARRANTY}
+
+## Services
+{svc}
+
+## Pages
+''' + '\n'.join(f'- [{n}]({ORIGIN}/{p})' for p, n in NAV) + f'''
+
+## Common questions
+{faq}
+'''
+
+
 def build(rel, fn):
     global DEPTH
     DEPTH = rel.count('/')
@@ -531,3 +561,5 @@ if __name__ == '__main__':
     # Only read when dmts.com.sg serves this folder; pageonesingapore.com uses its own root robots.txt.
     build('robots.txt', robots_txt)
     build('sitemap.xml', sitemap)
+    build('llms.txt', llms_txt)
+    build(f'{INDEXNOW_KEY}.txt', lambda: INDEXNOW_KEY)

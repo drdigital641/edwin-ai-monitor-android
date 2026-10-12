@@ -32,6 +32,18 @@ The controller app's Clients page queues jobs on the `Client` record (`design_jo
 - WhatsApp tracker (same CtaClick snippet as dmts.js, `site: '<slug>'`), skipped on
   pageonesingapore.com.
 
+## Robots and duplicates (standard)
+- pageonesingapore.com/robots.txt disallows `/preview/` in every group, so preview copies are never
+  crawled under pageonesingapore.com. Each client domain serves its own folder's `robots.txt`
+  (Allow all + its sitemap). Never remove that Disallow; never add client folders anywhere else.
+
+## Go-live (the same for every client)
+1. Edwin presses Activate with the client's domain (Claude builds or finishes the full site).
+2. cPanel → Domains → Create a new domain (addon domain): the client's domain, untick "Share
+   document root", document root `public_html/website_b1ec45f5/preview/<slug>`.
+3. The client only changes DNS: A record @ → 173.254.31.20, CNAME www → their domain.
+4. AutoSSL issues https; the Clients page checklist confirms DNS, site, https and Search Console.
+
 ## Mock-up specifics
 - One page only (index.html + css/js + img). `noindex, nofollow`. Canonical = the preview URL.
   Yellow strip: "Preview by Page One Singapore. This is a draft of your new website."
