@@ -1,0 +1,407 @@
+#!/usr/bin/env python3
+"""Build The ECU Clinic website (page 1: the home page).
+
+Built once into pageonesingapore.com/preview/ecu-clinic/ and never moved: on activation the client's
+domain is pointed at that same folder. Every internal link is relative so the files work at both
+addresses. While MOCKUP is True the page is noindex, carries the yellow preview strip, and its
+canonical/structured-data URLs name the preview address; at activation set MOCKUP = False and ORIGIN
+to the confirmed domain.
+
+    python3 prep.py    # web photos, logo and icons (only when source photos change)
+    python3 build.py   # writes the pages into ./site and the share image
+
+Facts come only from source/content.md (the client's logo, flyers and Edwin's notes).
+ecu.css, ecu.js and img/ live in ./site.
+"""
+import html
+import json
+import os
+from urllib.parse import quote
+
+HERE = os.path.dirname(os.path.abspath(__file__))
+OUT = os.path.join(HERE, 'site')
+SLUG = 'ecu-clinic'  # Page One client key: p1-site marker (go-live check) and WhatsApp tracker
+PREVIEW = 'https://pageonesingapore.com/preview/ecu-clinic'
+MOCKUP = True
+ORIGIN = PREVIEW if MOCKUP else 'https://ecuclinic.com'  # domain not confirmed yet (12 Oct 2026)
+BASE = '/'
+DEPTH = 0
+ASSET_V = '1'
+# Until go-live the share image and icons are linked at the preview address (the same files).
+LIVE = False
+IMG_ORIGIN = ORIGIN if LIVE else PREVIEW
+SHARES = {}
+
+BIZ = {
+    'name': 'The ECU Clinic',
+    'contact': 'Ching',
+    'tel': '+6598931923', 'tel_disp': '9893 1923',
+    'wa': '6598931923',
+    'facebook': 'https://www.facebook.com/TheECUclinicSG',
+    'building': 'Premier @ Kaki Bukit',
+    'street': '8 Kaki Bukit Avenue 4, #06-43',
+    'postal': '415875',
+    'map': 'Premier @ Kaki Bukit, 8 Kaki Bukit Avenue 4, Singapore 415875',
+}
+WA_TEXT = 'Hi The ECU Clinic, I need help with my car. Car model: \nChassis no.: \nFault code: '
+WARRANTY = '6-month warranty'
+HOURS_TXT = 'Monday to Saturday, 10am to 6pm. Closed on Sundays and public holidays. After-hours appointments can be arranged.'
+
+ICON = {
+    'phone': '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .4 1.9.7 2.8a2 2 0 0 1-.5 2.1L8 9.9a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.8.7a2 2 0 0 1 1.7 2z"/></svg>',
+    'wa': '<svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.5 14.4c-.3-.1-1.8-.9-2-1s-.5-.1-.7.1-.8 1-1 1.2-.4.2-.7.1a8.2 8.2 0 0 1-4-3.5c-.3-.5.3-.5.9-1.6.1-.2 0-.4 0-.5l-.9-2.2c-.2-.6-.5-.5-.7-.5h-.6a1.1 1.1 0 0 0-.8.4 3.4 3.4 0 0 0-1 2.5 5.9 5.9 0 0 0 1.2 3.1 13.5 13.5 0 0 0 5.2 4.6c1.9.8 2.7.9 3.6.7a3.1 3.1 0 0 0 2-1.4 2.5 2.5 0 0 0 .2-1.4c-.1-.2-.3-.3-.6-.4zM12 21.8a9.8 9.8 0 0 1-5-1.4l-.4-.2-3.7 1 1-3.6-.2-.4A9.8 9.8 0 1 1 12 21.8zm8.4-18.2A11.8 11.8 0 0 0 1.8 17.8L.1 24l6.3-1.7a11.8 11.8 0 0 0 5.6 1.4A11.8 11.8 0 0 0 20.4 3.6z"/></svg>',
+    'chip': '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="6" y="6" width="12" height="12" rx="2"/><path d="M9 2v4M15 2v4M9 18v4M15 18v4M2 9h4M2 15h4M18 9h4M18 15h4"/></svg>',
+    'swap': '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M17 3l4 4-4 4M21 7H7M7 21l-4-4 4-4M3 17h14"/></svg>',
+    'code': '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M8 7l-5 5 5 5M16 7l5 5-5 5M14 4l-4 16"/></svg>',
+    'brake': '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="4"/><path d="M12 3v2M12 19v2M3 12h2M19 12h2"/></svg>',
+    'shield': '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="M9 12l2 2 4-4"/></svg>',
+    'users': '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.9M16 3.1a4 4 0 0 1 0 7.8"/></svg>',
+    'truck': '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M1 3h15v13H1zM16 8h4l3 3v5h-7z"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg>',
+}
+
+e = html.escape
+
+
+def u(path=''):
+    return ('../' * DEPTH or './') + path
+
+
+def wa_link(text=WA_TEXT):
+    return f'https://wa.me/{BIZ["wa"]}?text={quote(text)}'
+
+
+def cta_buttons(dark=False):
+    call = 'btn-ghost' if dark else 'btn-red'
+    return (f'<div class="btns">'
+            f'<a class="btn btn-wa" href="{wa_link()}" target="_blank" rel="noopener">{ICON["wa"]}<span class="lg">WhatsApp {BIZ["tel_disp"]}</span><span class="sm">WhatsApp us</span></a>'
+            f'<a class="btn {call}" href="tel:{BIZ["tel"]}">{ICON["phone"]}Call {BIZ["contact"]}</a></div>')
+
+
+def img(name, alt, w=640, h=480, lazy=True, cls=''):
+    return (f'<img src="{u("img/" + name + ".webp")}" width="{w}" height="{h}" alt="{e(alt)}"'
+            f'{" loading=\"lazy\"" if lazy else ""} decoding="async"{f" class=\"{cls}\"" if cls else ""}>')
+
+
+# ---------- content (facts from source/content.md only) ----------
+SERVICES = [
+    ('ecu', 'ECU Repair &amp; Replacement', 'ecu-chip-damage', 'Damaged chip on an ECU circuit board, circled for repair',
+     'We repair the engine control unit itself, or supply a new, used or reconditioned unit when that is the better fix.',
+     ['ECU repair', 'New and used ECUs', 'Recon transmission ECU and MU for Toyota Prius, Noah, Voxy and Aqua',
+      'VAG mechatronics and gateway repair']),
+    ('abs', 'ABS Pump &amp; Module Repair', 'abs-pump-in-car', 'ABS pump and module in a car engine bay',
+     'ABS warning light or brake system fault? We repair ABS modules and supply used and reconditioned ABS pumps.',
+     ['ABS module repair', 'Used and recon ABS pumps', 'Toyota Voxy, Noah and Sienta ABS pump and module: repair, replace, used or recon',
+      'Plug and play available']),
+    ('coding', 'Programming &amp; Coding', 'esp-control-unit-scan', 'Scan tool showing a Mercedes-Benz ESP control unit version',
+     'Software updates, fault code solutions and coding for engine, gearbox, safety and comfort systems.',
+     ['Software update', 'DTC remove and coding', 'Gearbox programming', 'Radar coding and calibration',
+      'AUX and media system coding', 'Airbag coding', 'i-stop function']),
+    ('diesel', 'Diesel &amp; Key Programming', 'ecu-units-on-bench', 'Two engine control units on the bench for programming',
+     'Diesel system work and key programming for BMW and Mercedes-Benz.',
+     ['AdBlue, EGR and DPF coding', 'Catalytic system', 'Diesel system optimisation', 'BMW and Benz key programming']),
+]
+
+WHY = [
+    ('chip', 'Board-level repair', 'We repair the control unit itself, down to the circuit board.'),
+    ('swap', 'Repair, recon, used or new', 'More than one way to fix it: repair, reconditioned, used or new units.'),
+    ('brake', 'ECU and ABS focus', 'Engine, gearbox and ABS control units are what we work on every day.'),
+    ('users', 'Over a decade of experience', 'Our team has more than ten years of experience with car electronics.'),
+    ('truck', 'Pick-up and delivery', 'Can’t come in? Pick-up and delivery service is available.'),
+    ('shield', '6-month warranty', 'Our repairs come with a 6-month warranty.'),
+]
+
+MAKES = ['Audi', 'BMW', 'Chevrolet', 'Honda', 'Kia', 'Mercedes-Benz', 'Mini', 'Nissan', 'Skoda', 'Toyota',
+         'Volkswagen', 'Volvo', 'and more']
+
+BMW_MODELS = [
+    ('1 Series', 'F20, F21, F40'), ('2 Series', 'F22, F23, F45, F46, G42'), ('3 Series', 'F30, F31, F34, G20, G21'),
+    ('4 Series', 'F32, F33, F36, F82, G22, G23'), ('5 Series', 'F07 GT, F10, F11, G30, G31'), ('6 Series', 'F06, F12, F13, G32'),
+    ('7 Series', 'F01, F02, G11, G12'), ('8 Series', 'G14, G15, G16'), ('X1', 'E84, F48, U11'), ('X2', 'F39, U10'),
+    ('X3', 'F25, G01'), ('X4', 'F26, G02'), ('X5', 'E70, F15, G05'), ('X6', 'E71, F16, G06'), ('M2', 'F87, G87'), ('Z4', 'G29'),
+]
+
+GALLERY = [
+    ('ecu-board-repair', 'ECU circuit board during a repair'),
+    ('abs-module-in-car', 'ABS module in the engine bay'),
+    ('vw-gateway-module', 'Volkswagen and Audi gateway module'),
+    ('bmw-body-module', 'BMW body control module (FEM) out of the car'),
+    ('mercedes-module-wiring', 'Mercedes-Benz control module and wiring'),
+    ('bmw-fault-code-scan', 'Scan tool reading BMW engine fault codes'),
+    ('ecu-circuit-board', 'Control unit circuit board'),
+    ('ecu-units-on-bench', 'Engine control units on the bench'),
+]
+
+STEPS = [
+    ('WhatsApp us the details', f'Send your car model, chassis number and the fault code to <a href="{wa_link()}" target="_blank" rel="noopener">{BIZ["tel_disp"]}</a>. A photo of the scan tool screen or warning light helps.'),
+    ('We check and advise', 'We tell you what we can do: repair your unit, or supply a recon, used or new one.'),
+    ('Drop off or pick-up', f'Bring the car or module to us at {BIZ["building"]}, or use our pick-up and delivery service.'),
+    ('Fixed, with warranty', 'Your car is back on the road, and the repair comes with a 6-month warranty.'),
+]
+
+FAQ = [
+    ('What should I send when I WhatsApp you?',
+     f'Your car model, chassis number and the fault code. A photo of the scan tool screen or the warning light on the dashboard also helps. WhatsApp <a href="{wa_link()}" target="_blank" rel="noopener">{BIZ["tel_disp"]}</a>.'),
+    ('Do you repair ECUs or replace them?',
+     'Both. We repair the ECU itself, and we can also supply new, used or reconditioned units. For Toyota Prius, Noah, Voxy and Aqua we also do recon transmission ECUs and MUs.'),
+    ('Can you repair my ABS pump or module?',
+     'Yes. We repair ABS modules and supply used and reconditioned ABS pumps for makes such as Toyota, Honda, Mercedes-Benz, Volkswagen, Audi, Nissan, Volvo and Chevrolet. For Toyota Voxy, Noah and Sienta we repair, replace or supply used and recon ABS pumps and modules, with plug and play available.'),
+    ('Which car brands do you work on?',
+     'Continental and Asian cars, including Audi, BMW, Chevrolet, Honda, Kia, Mercedes-Benz, Mini, Nissan, Skoda, Toyota, Volkswagen and Volvo. If your car isn’t listed, WhatsApp us the model and we will tell you.'),
+    ('Is there a warranty?',
+     'Yes. Our repairs come with a 6-month warranty.'),
+    ('Can you collect my car or module?',
+     'Yes. Pick-up and delivery service is available. WhatsApp us your location and what needs to be collected.'),
+    ('Which BMWs can have temperature programming?',
+     'Most BMW models from 2010 to 2018, including the 1 to 8 Series, X1 to X6, M2 and Z4. See the full list on this page, or WhatsApp us your model to check.'),
+    ('Where are you and when are you open?',
+     f'We are at {BIZ["building"]}, {BIZ["street"]}, Singapore {BIZ["postal"]}. {HOURS_TXT}'),
+]
+
+NAV = [('#services', 'Services'), ('#bmw-temperature', 'BMW Temperature'), ('#how', 'How it works'),
+       ('#gallery', 'Our work'), ('#faq', 'FAQ'), ('#contact', 'Contact')]
+
+
+def schema():
+    return {'@context': 'https://schema.org', '@graph': [
+        {'@type': 'AutoRepair', '@id': f'{ORIGIN}{BASE}#business', 'name': BIZ['name'],
+         'description': 'ECU repair, ABS pump and module repair, and car programming and coding in Kaki Bukit, Singapore.',
+         'url': f'{ORIGIN}{BASE}', 'telephone': BIZ['tel'],
+         'logo': f'{IMG_ORIGIN}/icon-512.png', 'image': f'{IMG_ORIGIN}/img/share/home.jpg',
+         'sameAs': [BIZ['facebook']],
+         'address': {'@type': 'PostalAddress', 'streetAddress': f'{BIZ["street"]}, {BIZ["building"]}',
+                     'addressLocality': 'Singapore', 'postalCode': BIZ['postal'], 'addressCountry': 'SG'},
+         'openingHoursSpecification': [{'@type': 'OpeningHoursSpecification',
+                                        'dayOfWeek': ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'],
+                                        'opens': '10:00', 'closes': '18:00'}],
+         'areaServed': 'Singapore',
+         'hasOfferCatalog': {'@type': 'OfferCatalog', 'name': 'Services', 'itemListElement': [
+             {'@type': 'Offer', 'itemOffered': {'@type': 'Service', 'name': html.unescape(t)}} for _, t, *_ in SERVICES]
+             + [{'@type': 'Offer', 'itemOffered': {'@type': 'Service', 'name': 'BMW temperature programming'}}]}}]}
+
+
+def faq_ld():
+    import re
+    return {'@context': 'https://schema.org', '@type': 'FAQPage', 'mainEntity': [
+        {'@type': 'Question', 'name': q, 'acceptedAnswer': {'@type': 'Answer', 'text': re.sub('<[^>]+>', '', a)}} for q, a in FAQ]}
+
+
+def page(path, title, desc, body, ld=None, share=('module-circuit-board.jpg', None)):
+    canonical = ORIGIN + BASE + path
+    slug = path.strip('/').replace('/', '-') or 'home'
+    headline = share[1] or title.split(' | ')[0]
+    SHARES[slug] = (share[0], headline)
+    og_img = f'{IMG_ORIGIN}/img/share/{slug}.jpg'
+    ld = [schema()] + (ld or []) + [{'@context': 'https://schema.org', '@type': 'WebPage', '@id': canonical, 'url': canonical,
+                                     'name': title, 'description': desc, 'about': {'@id': f'{ORIGIN}{BASE}#business'},
+                                     'primaryImageOfPage': {'@type': 'ImageObject', 'url': og_img, 'width': 1200, 'height': 630}}]
+    nav = ''.join(f'<a href="{p}">{e(n)}</a>' for p, n in NAV)
+    lds = ''.join(f'<script type="application/ld+json">{json.dumps(x, ensure_ascii=False)}</script>' for x in ld)
+    robots = 'noindex, nofollow' if MOCKUP else 'index, follow, max-image-preview:large'
+    strip = '<div class="preview-strip">Preview by Page One Singapore. This is a draft of your new website.</div>\n' if MOCKUP else ''
+    return f'''<!doctype html>
+<html lang="en-SG">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>{e(title)}</title>
+<meta name="description" content="{e(desc)}">
+<meta name="robots" content="{robots}">
+<meta name="p1-site" content="{SLUG}">
+<link rel="canonical" href="{canonical}">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="{BIZ['name']}">
+<meta property="og:title" content="{e(title)}">
+<meta property="og:description" content="{e(desc)}">
+<meta property="og:url" content="{canonical}">
+<meta property="og:image" content="{og_img}">
+<meta property="og:image:secure_url" content="{og_img}">
+<meta property="og:image:type" content="image/jpeg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="{e(headline)} | {BIZ['name']}">
+<meta property="og:locale" content="en_SG">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="{e(title)}">
+<meta name="twitter:description" content="{e(desc)}">
+<meta name="twitter:image" content="{og_img}">
+<meta name="theme-color" content="#1f262b">
+<link rel="icon" href="{u("favicon.ico")}" sizes="48x48">
+<link rel="icon" href="{u("icon-96.png")}" type="image/png" sizes="96x96">
+<link rel="icon" href="{u("icon-192.png")}" type="image/png" sizes="192x192">
+<link rel="apple-touch-icon" href="{u("apple-touch-icon.png")}">
+<link rel="manifest" href="{u("site.webmanifest")}">
+<link rel="preload" as="image" href="{u("img/ecu-circuit-board.webp")}" media="(max-width:899px)">
+<link rel="preload" as="image" href="{u("img/ecu-circuit-board-lg.webp")}" media="(min-width:900px)">
+<link rel="stylesheet" href="{u("ecu.css")}?v={ASSET_V}">
+{lds}
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+{strip}<div class="topbar"><div class="wrap">
+<span>ECU &amp; ABS repair for cars <span class="hide-sm">· Mon–Sat 10am–6pm · Sun &amp; PH closed</span></span>
+<span><a href="{wa_link()}" target="_blank" rel="noopener">WhatsApp {BIZ["tel_disp"]}</a> <span class="hide-sm">· {BIZ["building"]}</span></span>
+</div></div>
+<header class="site"><div class="wrap">
+<a class="logo" href="{u()}"><img src="{u("img/logo.webp")}" width="538" height="100" alt="The ECU Clinic: ECU and ABS repair for cars"></a>
+<nav class="main" aria-label="Main">{nav}</nav>
+<a class="btn btn-wa hdr-cta" href="{wa_link()}" target="_blank" rel="noopener">{ICON["wa"]}WhatsApp {BIZ["tel_disp"]}</a>
+<button class="menu-btn" type="button" aria-expanded="false" aria-controls="mnav">Menu</button>
+</div>
+<nav class="mobile-nav" id="mnav" aria-label="Mobile">{nav}</nav>
+</header>
+<main id="main">
+{body}
+</main>
+<footer class="site"><div class="wrap">
+<div class="grid">
+<div>
+<h3>The ECU Clinic</h3>
+<p>ECU and ABS repair for cars in Kaki Bukit, Singapore: ECU repair and replacement, ABS pump and module repair, programming and coding. Pick-up and delivery available, 6-month warranty.</p>
+<p><a href="{wa_link()}" target="_blank" rel="noopener">WhatsApp {BIZ["tel_disp"]}</a> (preferred, ask for {BIZ["contact"]})<br><a href="tel:{BIZ["tel"]}">Call {BIZ["tel_disp"]}</a></p>
+<p><a href="{BIZ["facebook"]}" target="_blank" rel="noopener">Facebook</a></p>
+</div>
+<div>
+<h3>Workshop</h3>
+<p>{BIZ["building"]}<br>{e(BIZ["street"])}<br>Singapore {BIZ["postal"]}</p>
+<p>Mon–Sat 10am–6pm<br>Sun &amp; PH closed<br>After hours by appointment</p>
+</div>
+<div>
+<h3>Services</h3>
+<ul>{''.join(f'<li><a href="#{sid}">{t}</a></li>' for sid, t, *_ in SERVICES)}<li><a href="#bmw-temperature">BMW Temperature Programming</a></li></ul>
+</div>
+<div>
+<h3>On this page</h3>
+<ul>{''.join(f'<li><a href="{p}">{e(n)}</a></li>' for p, n in NAV)}</ul>
+</div>
+</div>
+<div class="fine"><span>© 2026 The ECU Clinic. All rights reserved.</span><a href="https://pageonesingapore.com/">Website &amp; SEO by Page One Singapore</a></div>
+</div></footer>
+<div class="dock">
+<a class="btn btn-wa" href="{wa_link()}" target="_blank" rel="noopener">{ICON["wa"]}WhatsApp</a>
+<a class="btn btn-red" href="tel:{BIZ["tel"]}">{ICON["phone"]}Call</a>
+</div>
+<script src="{u("ecu.js")}?v={ASSET_V}" defer></script>
+</body>
+</html>
+'''
+
+
+def why_cards():
+    return ''.join(f'<div class="card"><div class="ico">{ICON[i]}</div><h3>{t}</h3><p class="muted">{d}</p></div>' for i, t, d in WHY)
+
+
+def service_cards():
+    return ''.join(
+        f'<div class="card img" id="{sid}">{img(im, alt)}<div class="body"><h3>{t}</h3><p class="muted">{d}</p>'
+        f'<ul class="ticks">{"".join(f"<li>{e(x)}</li>" for x in items)}</ul></div></div>'
+        for sid, t, im, alt, d, items in SERVICES)
+
+
+def home():
+    gal = ''.join(f'<figure>{img(n, a)}<figcaption>{e(a)}</figcaption></figure>' for n, a in GALLERY)
+    steps = ''.join(f'<li><strong>{t}.</strong> {d}</li>' for t, d in STEPS)
+    models = ''.join(f'<p><strong>{s}</strong><br>{c}</p>' for s, c in BMW_MODELS)
+    makes = ''.join(f'<li>{m}</li>' for m in MAKES)
+    faq = ''.join(f'<details><summary>{e(q)}</summary><div class="a">{a}</div></details>' for q, a in FAQ)
+    body = f'''
+<section class="hero" style="padding:0">
+<picture><source media="(min-width:900px)" srcset="{u("img/ecu-circuit-board-lg.webp")}">{img("ecu-circuit-board", "Car control unit circuit board", lazy=False, cls="bg")}</picture>
+<div class="wrap">
+<span class="eyebrow">ECU &amp; ABS repair · Kaki Bukit, Singapore</span>
+<h1>ECU &amp; ABS Repair Specialist in Singapore</h1>
+<p class="lead">The ECU Clinic repairs, replaces and programs engine, gearbox and ABS control units for continental and Asian cars. WhatsApp us your fault code, chassis number and car model to get started.</p>
+<ul class="chips"><li>6-month warranty</li><li>Pick-up &amp; delivery</li><li>10+ years’ experience</li><li>Mon–Sat 10am–6pm</li></ul>
+{cta_buttons(dark=True)}
+</div>
+</section>
+
+<section><div class="wrap">
+<div class="sec-head"><h2>Why drivers and workshops come to The ECU Clinic</h2><p>When a warning light won’t go away, the fault is often in a control unit. That is what we fix.</p></div>
+<div class="grid g3 why">{why_cards()}</div>
+</div></section>
+
+<section class="alt" id="services"><div class="wrap">
+<div class="sec-head"><h2>Our services</h2><p>ECU and ABS repair, replacement units, and programming and coding, in one place.</p></div>
+<div class="grid g2 svc">{service_cards()}</div>
+<p style="margin-top:22px"><a class="btn btn-wa" href="{wa_link()}" target="_blank" rel="noopener">{ICON["wa"]}WhatsApp us your fault code</a></p>
+</div></section>
+
+<section><div class="wrap">
+<div class="sec-head"><h2>Car brands we work on</h2><p>Continental and Asian cars. Not sure about yours? WhatsApp us the model.</p></div>
+<ul class="makes">{makes}</ul>
+</div></section>
+
+<section class="alt" id="bmw-temperature"><div class="wrap split media-hide-sm">
+<div>
+<span class="eyebrow" style="color:var(--blue)">BMW temperature programming</span>
+<h2>BMW running hot at 120°C or more?</h2>
+<p>We reprogram your BMW to bring a high coolant temperature down to a stable 95°C or so, for steady performance and long-term engine protection.</p>
+<ul class="ticks"><li>Reduces high coolant temperature to about 95°C</li><li>Keeps the engine at a stable operating temperature</li><li>No change to daily driving or other functions</li></ul>
+<a class="btn btn-wa" href="{wa_link("Hi The ECU Clinic, I would like BMW temperature programming. Model and year: ")}" target="_blank" rel="noopener">{ICON["wa"]}Check my BMW</a>
+<details class="models"><summary>BMW models we program (2010–2018)</summary><div class="a">{models}<p>Model not listed? WhatsApp us and we’ll advise on compatibility.</p></div></details>
+</div>
+<div>{img("bmw-fault-code-scan", "Scan tool reading BMW engine fault codes")}</div>
+</div></section>
+
+<section id="how"><div class="wrap split media-hide-sm">
+<div>
+<h2>How it works</h2>
+<ol class="steps">{steps}</ol>
+{cta_buttons()}
+</div>
+<div>{img("abs-module-in-car", "ABS module in a car engine bay")}</div>
+</div></section>
+
+<section class="alt" id="gallery"><div class="wrap">
+<div class="sec-head"><h2>Our work</h2><p>Control units, ABS modules and circuit boards from cars we have worked on.</p></div>
+<div class="gallery home-gal">{gal}</div>
+</div></section>
+
+<section id="contact"><div class="wrap">
+<div class="sec-head"><h2>Visit us in Kaki Bukit</h2><p>WhatsApp is the fastest way to reach us for enquiries and appointments.</p></div>
+<div class="loc-wrap">
+<div class="card loc"><span class="tag">Workshop</span><h3>{BIZ["building"]}</h3>
+<p>{e(BIZ["street"])}<br>Singapore {BIZ["postal"]}</p>
+<div class="btns"><a class="btn btn-wa" href="{wa_link()}" target="_blank" rel="noopener">{ICON["wa"]}WhatsApp {BIZ["tel_disp"]}</a>
+<a class="btn btn-line" href="https://www.google.com/maps/search/?api=1&amp;query={quote(BIZ["map"])}" target="_blank" rel="noopener">Directions</a></div></div>
+<div class="card"><h3>Opening hours</h3><dl class="hours"><dt>Mon – Sat</dt><dd>10:00am – 6:00pm</dd><dt>Sun &amp; PH</dt><dd>Closed</dd></dl>
+<p class="muted" style="margin-top:10px">After-hours appointments can be arranged. Pick-up and delivery available.</p></div>
+</div>
+</div></section>
+
+<section class="alt" id="faq"><div class="wrap" style="max-width:860px">
+<div class="sec-head"><h2>ECU &amp; ABS repair FAQ</h2></div>
+{faq}
+</div></section>
+
+<section><div class="wrap"><div class="band"><div><h2>Warning light on?</h2><p>WhatsApp us the fault code, chassis number and car model. We’ll tell you what we can do.</p></div>{cta_buttons(dark=True)}</div></div></section>
+'''
+    return page('', 'ECU & ABS Repair Singapore | The ECU Clinic, Kaki Bukit',
+                'ECU repair, ABS pump and module repair, programming and coding for continental and Asian cars in Kaki Bukit, Singapore. 6-month warranty. WhatsApp 9893 1923.',
+                body, ld=[faq_ld()], share=('module-circuit-board.jpg', 'ECU & ABS Repair Specialist in Singapore'))
+
+
+def write(rel, text):
+    p = os.path.join(OUT, rel)
+    os.makedirs(os.path.dirname(p), exist_ok=True)
+    with open(p, 'w', encoding='utf-8') as f:
+        f.write(text)
+    print('wrote', rel, len(text.encode()), 'bytes')
+
+
+def build(rel, fn):
+    global DEPTH
+    DEPTH = rel.count('/')
+    write(rel, fn())
+
+
+if __name__ == '__main__':
+    build('index.html', home)
+    build('site.webmanifest', lambda: json.dumps({
+        'name': BIZ['name'], 'short_name': 'ECU Clinic', 'start_url': './', 'display': 'standalone',
+        'background_color': '#ffffff', 'theme_color': '#1f262b',
+        'icons': [{'src': f'icon-{n}.png', 'sizes': f'{n}x{n}', 'type': 'image/png'} for n in (192, 512)]}, indent=1))
+    import share
+    for slug, (photo, headline) in SHARES.items():
+        share.card(slug, photo, headline)
+    print('share images', len(SHARES))
