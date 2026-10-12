@@ -8,4 +8,5 @@ as the reference.
 - Website build starts when Edwin says so ("page 1": the home page first).
 
 ## Received so far
-- (nothing yet)
+- Logo (`source/logo-original.jpg`, 500x500 JPG on white): green circuit board above "THE ECU CLINIC",
+  tagline "ECU / ABS REPAIR FOR CARS". Colours: charcoal text, PCB green accent.
