@@ -8,7 +8,15 @@ Only what the client's own logo, flyers and photos say. Received from Edwin, 12 
 - Also on WeChat (QR on the services flyer) and Facebook ("The ECU Clinic").
 - Pick-up and delivery service available.
 - When asking for help, customers should send the fault code, chassis number and car model.
-- Warranty: 6 months (shown on the ABS flyers). TO CONFIRM: does it cover all repairs, or ABS only?
+- Address: Premier @ Kaki Bukit, 8 Kaki Bukit Avenue 4, #06-43, Singapore 415875 (from Edwin, 12 Oct 2026).
+- Hours: 10am to 6pm (official working hours). After-hours appointments can be arranged.
+- Warranty: 6 months (confirmed by Edwin).
+- Experience: the team has more than a decade of experience.
+- Domain: ecuclinic.com for now (not confirmed). On 12 Oct 2026 it was a parked "lander" page,
+  registered 17 Sep 2025 via Wild West Domains (GoDaddy reseller), expiring 17 Sep 2027.
+  CHECK the client owns it before go-live.
+- Also listed on Carousell ("The ECU Clinic": ECU and ABS module repair, ABS pump restoration,
+  airbag and check-engine light, programming/coding; continental and Asian cars).
 
 ## ECU repair (services flyer)
 - ECU repair, new ECU, used ECU.
@@ -48,6 +56,8 @@ Reference for wording only. They use car-maker logos and stock/AI cars, so they 
 page images.
 
 ## Still needed
-- Address / workshop location (or "mobile / pick-up only"), opening hours.
-- Domain (existing or new), Google Business profile link, Facebook link, any reviews.
-- Years in business or other true facts they want shown.
+- Facebook page link and WeChat ID (Facebook/WeChat need a login; screenshots of the About
+  section, posts and reviews would do).
+- Google Business profile link, reviews.
+- Whether hours are Mon-Sat or Mon-Fri, and days closed.
+- Confirm the client owns ecuclinic.com.
