@@ -36,6 +36,18 @@ The controller app's Clients page queues jobs on the `Client` record (`design_jo
 - WhatsApp tracker (same CtaClick snippet as dmts.js, `site: '<slug>'`), skipped on
   pageonesingapore.com.
 
+## Share images and icons (standard, every page)
+- Every page gets its own 1200x630 JPG share image (`share.py`, see DMTS): the client's real photo
+  (full-size original from `source/`), navy wash, logo plate, the page headline, the client's true
+  offers and WhatsApp number. Tags: og:image (+ secure_url, type, width, height, alt),
+  twitter:card summary_large_image, WebPage schema primaryImageOfPage, Service/LocalBusiness image.
+- Icons from the client's logo: favicon.ico (16/32/48), icon-48/96/192/512.png, apple-touch-icon.png
+  (180), site.webmanifest, img/logo.png for Organization logo. Google shows the favicon and the share
+  image next to search results; WhatsApp and Facebook show the share image on every link.
+- Until go-live, image URLs point at the preview address (`LIVE = False`), because the client's
+  domain still serves their old site and would 404. WhatsApp caches a link's preview; to see a new
+  one, share the link with `?v=2` added.
+
 ## Robots and duplicates (standard)
 - pageonesingapore.com/robots.txt disallows `/preview/` in every group, so preview copies are never
   crawled under pageonesingapore.com. Each client domain serves its own folder's `robots.txt`
@@ -47,6 +59,8 @@ The controller app's Clients page queues jobs on the `Client` record (`design_jo
    document root", document root `public_html/website_b1ec45f5/preview/<slug>`.
 3. The client only changes DNS: A record @ → 173.254.31.20, CNAME www → their domain.
 4. AutoSSL issues https; the Clients page checklist confirms DNS, site, https and Search Console.
+5. Once the domain serves the folder, Claude sets `LIVE = True` in the client's build.py, rebuilds and
+   republishes, so share images, icons and structured-data images use the client's own domain.
 
 ## Mock-up specifics
 - One page only (index.html + css/js + img). `noindex, nofollow`. Canonical = the preview URL.

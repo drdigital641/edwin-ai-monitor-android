@@ -25,6 +25,11 @@ DEPTH = 0  # folder depth of the page being built; set by build() so u() can emi
 ASSET_V = '4'
 SLUG = 'dmts'  # Page One client key: p1-site marker (go-live check) and WhatsApp tracker
 INDEXNOW_KEY = '5792dfeef836aebd82a445c206294c95'  # same key as the controller's Client record
+# Share images and icons must load before dmts.com.sg points here, so until go-live they are linked
+# at the preview address (the same files). At go-live set LIVE = True, rebuild and republish.
+LIVE = False
+IMG_ORIGIN = ORIGIN if LIVE else 'https://pageonesingapore.com/preview/dmts'
+SHARES = {}  # share-image slug -> (photo, headline), filled as pages are built
 
 
 BIZ = {
@@ -88,7 +93,8 @@ def schema():
             'name': f'Dynamic Motoring ({label})',
             'parentOrganization': {'@id': f'{ORIGIN}{BASE}#org'},
             'telephone': BIZ['tel'], 'email': BIZ['email'],
-            'image': f'{ORIGIN}{BASE}img/shopfront.webp',
+            'image': [f'{IMG_ORIGIN}/img/share/home.jpg', f'{IMG_ORIGIN}/img/share/contact.jpg'],
+            'logo': f'{IMG_ORIGIN}/img/logo.png',
             'address': {'@type': 'PostalAddress', 'streetAddress': a['street'],
                         'addressLocality': 'Singapore', 'postalCode': a['postal'], 'addressCountry': 'SG'},
             'openingHoursSpecification': [
@@ -99,14 +105,22 @@ def schema():
     return {'@context': 'https://schema.org', '@graph': [
         {'@type': 'Organization', '@id': f'{ORIGIN}{BASE}#org', 'name': 'Dynamic Motoring',
          'alternateName': ['DMTS', 'Dynamic Motoring Transmission Specialist'],
-         'url': f'{ORIGIN}{BASE}', 'logo': f'{ORIGIN}{BASE}img/logo.webp',
+         'url': f'{ORIGIN}{BASE}', 'logo': {'@type': 'ImageObject', 'url': f'{IMG_ORIGIN}/img/logo.png'},
+         'image': f'{IMG_ORIGIN}/img/share/home.jpg',
          'email': BIZ['email'], 'telephone': BIZ['tel'], 'sameAs': [BIZ['facebook'], BIZ['google']],
          'description': 'Gearbox and automatic transmission repair, overhaul, upgrade and servicing specialist in Singapore.'},
         place('hq', 'Woodlands HQ'), place('branch', 'Jalan Lam Huat branch')]}
 
 
-def page(path, title, desc, body, active='', extra_head='', ld=None, scripts=''):
+def page(path, title, desc, body, active='', extra_head='', ld=None, scripts='', share=('hero-workshop', None)):
     canonical = ORIGIN + BASE + path
+    slug = path.strip('/').replace('/', '-') or 'home'
+    headline = share[1] or title.split(' | ')[0]
+    SHARES[slug] = (share[0], headline)
+    og_img = f'{IMG_ORIGIN}/img/share/{slug}.jpg'
+    ld = (ld or []) + [{'@context': 'https://schema.org', '@type': 'WebPage', '@id': canonical, 'url': canonical, 'name': title,
+                        'description': desc, 'isPartOf': {'@id': f'{ORIGIN}{BASE}#org'},
+                        'primaryImageOfPage': {'@type': 'ImageObject', 'url': og_img, 'width': 1200, 'height': 630}}]
     nav = ''.join(f'<a href="{u(p)}"{" aria-current=\"page\"" if p == active else ""}>{e(n)}</a>' for p, n in NAV)
     mnav = ''.join(f'<a href="{u(p)}">{e(n)}</a>' for p, n in NAV)
     lds = ''.join(f'<script type="application/ld+json">{json.dumps(x, ensure_ascii=False)}</script>' for x in ([schema()] + (ld or [])))
@@ -125,10 +139,24 @@ def page(path, title, desc, body, active='', extra_head='', ld=None, scripts='')
 <meta property="og:title" content="{e(title)}">
 <meta property="og:description" content="{e(desc)}">
 <meta property="og:url" content="{canonical}">
-<meta property="og:image" content="{ORIGIN}{BASE}img/hero-workshop.webp">
+<meta property="og:image" content="{og_img}">
+<meta property="og:image:secure_url" content="{og_img}">
+<meta property="og:image:type" content="image/jpeg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="{e(headline)} | Dynamic Motoring">
 <meta property="og:locale" content="en_SG">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="{e(title)}">
+<meta name="twitter:description" content="{e(desc)}">
+<meta name="twitter:image" content="{og_img}">
 <meta name="theme-color" content="#0b1e33">
+<link rel="icon" href="{u("favicon.ico")}" sizes="48x48">
+<link rel="icon" href="{u("icon-96.png")}" type="image/png" sizes="96x96">
+<link rel="icon" href="{u("icon-192.png")}" type="image/png" sizes="192x192">
 <link rel="icon" href="{u("favicon.svg")}" type="image/svg+xml">
+<link rel="apple-touch-icon" href="{u("apple-touch-icon.png")}">
+<link rel="manifest" href="{u("site.webmanifest")}">
 <link rel="stylesheet" href="{u("dmts.css")}?v={ASSET_V}">
 {extra_head}{lds}
 </head>
@@ -539,7 +567,7 @@ def home():
 '''
     return page('', 'Gearbox Repair & Transmission Specialist Singapore | DMTS',
                 'Gearbox repair, overhaul and servicing for all car makes in Woodlands, Singapore. Diagnostic from S$30, free towing and a 6-month warranty. WhatsApp 8430 9665.',
-                body, active='', ld=[faq_ld()])
+                body, active='', ld=[faq_ld()], share=('hero-workshop', 'Gearbox Repair & Auto Transmission Specialist in Singapore'))
 
 
 def services():
@@ -567,7 +595,7 @@ def services():
             for i, (sid, t, im, alt, d) in enumerate(SERVICES)]}]
     return page('services/', 'Gearbox Repair, Overhaul & Servicing Singapore | DMTS',
                 'Automatic gearbox repair and overhaul, transmission strengthening upgrades, ATF servicing and free towing in Singapore. All car makes. Diagnostic from S$30.',
-                body, active='services/', ld=ld)
+                body, active='services/', ld=ld, share=('gearbox-teardown', 'Gearbox Repair, Overhaul, Upgrade & Servicing'))
 
 
 def problem_cards(slugs=None):
@@ -611,8 +639,9 @@ def service_page(sid):
             + band('Talk to a gearbox specialist', 'WhatsApp us your car model and symptoms. If the car can’t move, we’ll tow it in for free.'))
     ld = [crumbs_ld(t, f'services/{sid}/', parent=('Services', 'services/')), faq_ld_of(faq),
           {'@context': 'https://schema.org', '@type': 'Service', 'name': html.unescape(t), 'description': d, 'serviceType': html.unescape(t),
-           'provider': {'@id': f'{ORIGIN}{BASE}#org'}, 'areaServed': {'@type': 'Country', 'name': 'Singapore'}, 'url': f'{ORIGIN}{BASE}services/{sid}/'}]
-    return page(f'services/{sid}/', sp['title'], sp['desc'], body, active='services/', ld=ld)
+           'provider': {'@id': f'{ORIGIN}{BASE}#org'}, 'areaServed': {'@type': 'Country', 'name': 'Singapore'}, 'url': f'{ORIGIN}{BASE}services/{sid}/',
+           'image': f'{IMG_ORIGIN}/img/share/services-{sid}.jpg'}]
+    return page(f'services/{sid}/', sp['title'], sp['desc'], body, active='services/', ld=ld, share=(im, html.unescape(sp['h1'])))
 
 
 HUB_FAQ = [(q, FAQ_BY_Q[q]) for q in ['What are the signs my gearbox needs attention?', 'How much is the diagnostic?',
@@ -636,7 +665,7 @@ def problems_hub():
               {'@type': 'ListItem', 'position': i + 1, 'name': p['name'], 'url': f'{ORIGIN}{BASE}gearbox-problems/{p["slug"]}/'} for i, p in enumerate(PROBLEMS)]}]
     return page('gearbox-problems/', 'Common Gearbox Problems & Symptoms Singapore | DMTS',
                 'Transmission light on, jerking, slipping, stuck in gear, leaks, vibration or noise? What each gearbox symptom can mean and what to do next.',
-                body, active='gearbox-problems/', ld=ld)
+                body, active='gearbox-problems/', ld=ld, share=('diagnostics', 'Common Gearbox Problems and What They Mean'))
 
 
 def problem_page(slug):
@@ -669,7 +698,7 @@ def problem_page(slug):
             + trust_strip()
             + f'<section><div class="wrap"><div class="sec-head"><h2>Other gearbox problems</h2></div><div class="sym">{problem_cards(others)}</div></div></section>')
     ld = [crumbs_ld(p['name'], f'gearbox-problems/{slug}/', parent=('Gearbox Problems', 'gearbox-problems/')), faq_ld_of(faq)]
-    return page(f'gearbox-problems/{slug}/', p['title'], p['desc'], body, active='gearbox-problems/', ld=ld)
+    return page(f'gearbox-problems/{slug}/', p['title'], p['desc'], body, active='gearbox-problems/', ld=ld, share=(p['img'][0], p['h1']))
 
 
 def all_pages():
@@ -703,7 +732,7 @@ def gallery():
             + band('Come and see us', 'Visit our Woodlands HQ or Jalan Lam Huat branch, or let us pick your car up for free.'))
     return page('gallery/', 'Gearbox Workshop Photos, Woodlands Singapore | DMTS',
                 'Photos of the Dynamic Motoring gearbox workshop in Woodlands, Singapore: diagnostics, gearbox overhaul benches, car lifts and customer lounge.',
-                body, active='gallery/', ld=[crumbs_ld('Gallery', 'gallery/'), faq_ld_of(FAQ[4:])])
+                body, active='gallery/', ld=[crumbs_ld('Gallery', 'gallery/'), faq_ld_of(FAQ[4:])], share=('customer-lounge', 'Inside Our Gearbox Workshop in Woodlands'))
 
 
 def about():
@@ -737,7 +766,7 @@ def about():
 ''' + faq_block(FAQ, 'Frequently asked questions') + trust_strip(reviews=False) + band('Talk to a gearbox specialist', 'Call, WhatsApp or drop by either workshop.')
     return page('about/', 'About Dynamic Motoring | Gearbox Specialist Singapore',
                 'Dynamic Motoring (DMTS) is a Singapore gearbox and auto transmission specialist with over 15 years of combined experience in gearbox repair and overhaul.',
-                body, active='about/', ld=[crumbs_ld('About', 'about/'), faq_ld_of(FAQ)])
+                body, active='about/', ld=[crumbs_ld('About', 'about/'), faq_ld_of(FAQ)], share=('mechanics-under-car', 'Transmission Specialists with 15+ Years of Combined Experience'))
 
 
 def contact():
@@ -780,7 +809,7 @@ def contact():
 ''' + faq_block(FAQ[:5], 'Common questions') + f'<section><div class="wrap"><div class="sec-head"><h2>What our customers say</h2></div><div class="grid g3">{testimonials()}</div></div></section>'
     return page('contact/', 'Contact | Dynamic Motoring Gearbox Specialist Singapore',
                 'Contact Dynamic Motoring for gearbox repair in Singapore. WhatsApp 8430 9665 or call 6352 8832. Workshops at Wave 9 Woodlands and Jalan Lam Huat.',
-                body, active='contact/', ld=[crumbs_ld('Contact', 'contact/'), faq_ld_of(FAQ[:5])],
+                body, active='contact/', ld=[crumbs_ld('Contact', 'contact/'), faq_ld_of(FAQ[:5])], share=('shopfront', 'Contact Dynamic Motoring: Woodlands & Jalan Lam Huat'),
                 scripts=f'<script>window.DMTS_EMAIL="{BIZ["email"]}";</script>')
 
 
@@ -855,3 +884,12 @@ if __name__ == '__main__':
     build('sitemap.xml', sitemap)
     build('llms.txt', llms_txt)
     build(f'{INDEXNOW_KEY}.txt', lambda: INDEXNOW_KEY)
+    build('site.webmanifest', lambda: json.dumps({
+        'name': 'Dynamic Motoring', 'short_name': 'DMTS', 'start_url': './', 'display': 'standalone',
+        'background_color': '#ffffff', 'theme_color': '#0b1e33',
+        'icons': [{'src': f'icon-{n}.png', 'sizes': f'{n}x{n}', 'type': 'image/png'} for n in (192, 512)]}, indent=1))
+    import share
+    share.icons()
+    for slug, (photo, headline) in SHARES.items():
+        share.card(slug, photo, headline)
+    print('share images', len(SHARES))
