@@ -57,6 +57,10 @@ The controller app's Clients page queues jobs on the `Client` record (`design_jo
 1. Edwin presses Activate with the client's domain (Claude builds or finishes the full site).
 2. cPanel → Domains → Create a new domain (addon domain): the client's domain, untick "Share
    document root", document root `public_html/website_b1ec45f5/preview/<slug>`.
+   If cPanel refuses with "This domain points to an IP address that does not use the DNS servers
+   associated with this server" (XID 7ukad4: the domain keeps the client's own nameservers), ask
+   Bluehost support chat to add it as an addon domain on account sgmodde1 with that document root
+   and include it in AutoSSL. Never move the client's nameservers just to get past this check.
 3. The client only changes DNS: A record @ → 173.254.31.20, CNAME www → their domain.
 4. AutoSSL issues https; the Clients page checklist confirms DNS, site, https and Search Console.
 5. Once the domain serves the folder, Claude sets `LIVE = True` in the client's build.py, rebuilds and
