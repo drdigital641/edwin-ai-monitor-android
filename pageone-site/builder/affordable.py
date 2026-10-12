@@ -282,3 +282,95 @@ page("cheapest-website-singapore/index.html",
 
 """ + cta("Get your website without the lump sum", "Chat with Edwin on WhatsApp and send your old website address or your details. No obligation."),
      crumb="A website without the lump sum")
+
+
+# ---------- New business website ----------
+# For people starting a business who need their first website. Compares doing it yourself (no market prices quoted)
+# with Page One's all-in plan. Only Page One's own prices appear as numbers.
+NEW_BIZ_FAQ = [
+    ("How much does a website for a new business cost with Page One?",
+     "S$20 a month on the Get Found plan (introductory price). That covers building the website, hosting it, keeping it secure, writing the content with you, setting it up on Google and Google Maps, regular new articles and looking after it every month. No setup fee and no contract. The only separate cost is your domain name, registered in your name, usually S$15–30 a year."),
+    ("What would I need to do it myself?",
+     "Usually: a domain name, a hosting plan or a website builder subscription, a design or template, the words and photos for every page, the security certificate, Google Business Profile, Google Search Console and Bing set up, and someone to keep it updated. Each has its own bill or takes your time. With Page One, all of that except the domain is in the S$20 a month."),
+    ("I've just registered my business. How soon can I have a website?",
+     "Usually within 7 days of receiving your details and a few photos on WhatsApp. If you don't have photos yet, we can start with what you have and add more later."),
+    ("I don't have a logo or photos yet. Can I still start?",
+     "Yes. We can start with a clean text logo and a simple layout, and add your logo and photos when you have them."),
+    ("Do I own the website and domain?",
+     "Your domain is registered in your name, so you always own it. If you cancel, your site stays live until the end of the month you paid for, you keep your domain, and you can buy the site files if you want to host them elsewhere."),
+    ("Is S$20 a month just a starter price that jumps later?",
+     "S$20 is an introductory price. It goes up once we reach our early-client target, so it's worth grabbing now, and any new price will stay close to S$20 so it stays affordable."),
+]
+
+page("new-business-website/index.html",
+     "Website for a New Business in Singapore: S$20/month, All Done",
+     "Starting a business in Singapore? Page One sets up your website, hosting, content and Google listing for S$20/month. No setup fee, no contract, live in 7 days.",
+     [service("Website for new businesses in Singapore", "/new-business-website/",
+              "A website for a new Singapore business, set up and managed: hosting, content, Google and Google Maps setup and monthly updates for S$20 a month.", "20"),
+      _faq_ld(NEW_BIZ_FAQ), _price_ld("/new-business-website/")],
+     hero("New business website", "Starting a business in Singapore?",
+          "Your new business website, done for you.",
+          "You've got a business to run. Page One sets up everything you need to be found online: the website, the hosting, the content and your Google listing. One plan, S$20 a month, and Edwin looks after it from then on.",
+          '<p class="hero-price"><b>S$20</b>/month · <span class="intro-tag">Introductory price</span> · hosting included · no setup fee</p>') + "\n\n" + PRICE_GLANCE + f"""
+
+    <section class="section">
+      <div class="wrap narrow">
+        <p class="kicker reveal">Start the right way</p>
+        <h2 class="reveal">What a new business needs to be found online</h2>
+        <p class="section-lead reveal">Most new owners know they need a website, but not where to start: which builder, which hosting, what to write, how to get on Google. It's easy to spend weeks on it, or to end up with a site nobody finds. Here's what matters, in order:</p>
+        <ol class="steps" style="margin-top:56px">
+          <li class="reveal"><span>1</span><h3>Your own domain</h3><p>yourbusiness.com.sg or .com, registered in your name. It's yours for as long as you keep it.</p></li>
+          <li class="reveal"><span>2</span><h3>A website built to be found</h3><p>A page for each service, your area, opening hours and a one-tap WhatsApp button, fast on phones and secure.</p></li>
+          <li class="reveal"><span>3</span><h3>Google and Maps from day one</h3><p>Google Business Profile, Search Console and Bing set up, so you can start showing up when people search nearby.</p></li>
+        </ol>
+        <p class="note reveal">With Page One, steps 2 and 3 are done for you, and we help you with step 1.</p>
+      </div>
+    </section>
+
+    <section class="section alt">
+      <div class="wrap">
+        <p class="kicker reveal">Do it yourself, or let Edwin do it</p>
+        <h2 class="reveal">Everything you'd otherwise sort out yourself</h2>
+        <div class="table-wrap reveal" style="margin-top:24px">
+          <table class="compare">
+            <thead><tr><th></th><th>Doing it yourself</th><th>Page One (S$20 a month)</th></tr></thead>
+            <tbody>
+              <tr><th>Hosting / server</th><td>Choose a plan and pay for it yourself</td><td>Included</td></tr>
+              <tr><th>Website builder or developer</th><td>A subscription, or a developer's fee</td><td>Included: we build it</td></tr>
+              <tr><th>Design and page content</th><td>Your evenings and weekends</td><td>Included: we write it with you</td></tr>
+              <tr><th>Security (the padlock)</th><td>Set up and renew it yourself</td><td>Included</td></tr>
+              <tr><th>Google, Maps and Bing setup</th><td>Learn how, then do it</td><td>Included</td></tr>
+              <tr><th>New articles and updates</th><td>Whenever you find time</td><td>Included, regularly</td></tr>
+              <tr><th>Domain name</th><td>Yours to buy</td><td>Yours to buy (usually S$15–30 a year), we set it up</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <p class="note reveal">S$20 a month is S$240 a year for the website, hosting, content, Google setup and monthly care. Add up what the do-it-yourself column would cost you, including your own hours, and compare.</p>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="wrap">
+        <p class="kicker reveal">Why it's only S$20</p>
+        <h2 class="reveal">One-stop, because the busywork is automated</h2>
+        <p class="section-lead reveal">Edwin built a system where AI does the repetitive work: checking the site, writing helpful articles, telling Google about changes. That's how one person can set up and look after your whole online presence for S$20 a month, so you can spend your time on your customers. <a class="link" href="/cheapest-seo-singapore/">Why cheap doesn't mean bad →</a></p>
+        <ol class="steps" style="margin-top:56px">
+          <li class="reveal"><span>1</span><h3>Chat with Edwin</h3><p>On WhatsApp: tell us what you do and where. No obligation.</p></li>
+          <li class="reveal"><span>2</span><h3>Send details and photos</h3><p>We help register your domain in your name and build your website.</p></li>
+          <li class="reveal"><span>3</span><h3>Live within 7 days</h3><p>Connected to Google, Maps and Bing, and looked after every month after that.</p></li>
+        </ol>
+      </div>
+    </section>
+
+    <section class="section alt">
+      <div class="wrap narrow">
+        <p class="kicker reveal">Questions</p>
+        <h2 class="reveal">New business website: your questions, answered</h2>
+        <div style="margin-top:24px">
+{_faq_html(NEW_BIZ_FAQ)}        </div>
+        <p class="note reveal">Already have a website that nobody looks after? <a class="link" href="/website/">We can take it over →</a></p>
+      </div>
+    </section>
+
+""" + cta("Starting a business? Let's get you online.", "Chat with Edwin on WhatsApp: tell us what you do and where. Live within 7 days, S$20 a month."),
+     crumb="New business website")
