@@ -375,6 +375,8 @@ WEBSITE_FAQ = [
     ("Do I own my website and domain?", "Your domain is registered in your name, so you always own it. If you cancel, your site stays live until the end of the month you paid for, you keep your domain, and you can buy the site files if you want to host them elsewhere."),
     ("How long does it take to build my website?", "Usually within 7 days of receiving your details and photos. You send them over WhatsApp, and we do the rest."),
     ("Do I need any technical skills?", "No. You tell us about your business and send a few photos. We handle the domain setup, design, hosting, Google setup and updates."),
+    ("What does a small business website cost per year with Page One?", "About S$255–270 a year all in: 12 months at S$20 (S$240) plus your domain name, usually S$15–30 a year, paid by you directly. Building the website, hosting, the security certificate, Google setup, a monthly technical audit and small changes are all inside the S$20. There is no setup fee and no separate renewal bill for hosting or maintenance."),
+    ("What pages does a small business website need?", "Most local businesses need a homepage that says what you do and which area you serve, one page for each main service, a way to see prices or how you quote, an about page, and a contact page with your hours and a WhatsApp button. We build these pages for you. If your site has a contact form, add a short privacy notice too: under the PDPA you need to tell people what you will use their details for."),
     ("I already have a website but no one looks after it. Can you help?", "Yes. We can take over looking after your existing website, or keep your site as it is and add an SEO landing page next to it. WhatsApp Edwin with your website address and he'll check it and tell you honestly which makes sense for you."),
 ]
 
@@ -471,10 +473,32 @@ page("website/index.html",
           <p><b>S$20/month</b> · introductory price · website + management · no setup fee · cancel anytime</p>
           <a class="card-link" href="/signup/">Sign up now →</a>
         </div>
+        <p class="note reveal">Same system, real numbers: Edwin Garage, built and run this way, got 2,280 clicks from Google in the 28 days to 5 October 2026, with an average position of 6.1 (Google Search Console). <a class="link" href="/results/">See the case studies →</a></p>
       </div>
     </section>
 
-    <section class="section alt">
+    <section class="section alt" id="checklist">
+      <div class="wrap narrow">
+        <p class="kicker reveal">Small business website checklist</p>
+        <h2 class="reveal">What every small business website in Singapore needs</h2>
+        <p class="section-lead reveal">Whoever builds it, check your website has these. Most website price guides talk about design and page count. These are the things that decide whether customers can find you and contact you.</p>
+        <ul class="ticks reveal">
+          <li><b>Says what you do and where, in the first screen.</b> "Aircon servicing in Tampines", not "Welcome to our website".</li>
+          <li><b>One page per main service.</b> Google ranks pages, not businesses. A service with no page is hard to find.</li>
+          <li><b>Fast and easy on a phone.</b> Most people searching for a local business are on their phone.</li>
+          <li><b>One-tap WhatsApp or call button</b> on every page, with the number you actually answer.</li>
+          <li><b>The padlock (HTTPS).</b> Browsers warn visitors about sites without it.</li>
+          <li><b>Linked to your Google Business Profile</b>, with the same name, phone and hours on both.</li>
+          <li><b>Business details labelled for Google and AI assistants</b> (structured data), so ChatGPT and Google read your name, area and services correctly.</li>
+          <li><b>Search Console connected</b>, so you can see which searches find you.</li>
+          <li><b>A privacy notice if you have a contact form.</b> Under the PDPA, tell people what you'll use their details for.</li>
+          <li><b>Someone looking after it.</b> Hosting renewals, security updates and new content don't stop after launch.</li>
+        </ul>
+        <p class="note reveal">On the S$20 plan we build and look after all of these except the privacy notice, which is your business's own policy: send us the wording and we add it to your site. <a class="link" href="/#check">Check your current website free →</a> · <a class="link" href="/new-business-website/">Starting a new business? See the launch checklist →</a></p>
+      </div>
+    </section>
+
+    <section class="section">
       <div class="wrap narrow">
         <p class="kicker reveal">Questions</p>
         <h2 class="reveal">Small business websites: your questions, answered</h2>
@@ -485,7 +509,7 @@ page("website/index.html",
     </section>
 
 """ + cta("Get your business online this week", "Tell Edwin about your business on WhatsApp. No obligation, no tech skills needed."),
-     crumb="Website")
+     crumb="Website", updated="2026-10-13")
 
 
 # ---------- SEO Boost ----------
@@ -552,10 +576,23 @@ page("seo-boost/index.html",
      crumb="SEO Boost")
 
 # ---------- Pricing ----------
+# "SEO packages / SEO pricing Singapore" owner page. Only Page One's own prices are numbers; other packages are
+# described by what buyers should compare, never by a provider's price.
+PRICING_FAQ = [
+    ("How much does SEO cost in Singapore with Page One?", "S$20 a month on the Get Found plan (introductory price), with no setup fee and no minimum contract. Optional SEO Boosts are S$10 each. The only other cost is your domain name, usually S$15–30 a year, which is registered in your name and paid by you directly."),
+    ("Is there a minimum contract?", "No. You pay monthly in advance and can cancel anytime by WhatsApp. If you cancel, your site stays live until the end of the month you paid for, and you keep your domain."),
+    ("Is there a setup fee?", "No. Building your website (or SEO landing page), Google Business Profile, Search Console and Bing setup are all part of the S$20 a month."),
+    ("What happens when the introductory price ends?", "S$20 is an introductory price until we reach our early-client target. Any new price will stay close to S$20."),
+    ("What is not included?", "Paid ads, running your social media accounts and buying links. Your domain name is paid by you directly. We also don't promise rankings, because Google decides them and no honest provider can guarantee them."),
+    ("Do I need a website before I sign up?", "No. If you don't have one, we build it on your own domain as part of the S$20 plan. If you already have one, we add an SEO landing page on a subdomain and leave your current site as it is."),
+]
+
 page("pricing/index.html",
-     "SEO Pricing Singapore: From S$20/month, No Setup Fee",
-     "Simple pricing for Google and AI visibility in Singapore. Get Found plan S$20/month. Optional SEO Boosts S$10 each. No setup fee, no contract.",
-     [{"@context": "https://schema.org", "@type": "OfferCatalog", "name": "Page One Singapore pricing", "url": SITE + "/pricing/",
+     "SEO Packages &amp; Pricing Singapore: S$20/month, No Contract",
+     "SEO package pricing for Singapore small businesses: S$20/month with your website, Google Maps and ChatGPT setup, articles and a monthly audit. No setup fee or contract.",
+     [{"@context": "https://schema.org", "@type": "FAQPage",
+       "mainEntity": [{"@type": "Question", "name": q, "acceptedAnswer": {"@type": "Answer", "text": a}} for q, a in PRICING_FAQ]},
+      {"@context": "https://schema.org", "@type": "OfferCatalog", "name": "Page One Singapore pricing", "url": SITE + "/pricing/",
        "itemListElement": [
            {"@type": "Offer", "name": "Get Found basic subscription (website or landing page + Google & AI visibility setup)", "price": "20", "priceCurrency": "SGD",
             "url": SITE + "/get-found/", "seller": PROVIDER,
@@ -630,7 +667,42 @@ page("pricing/index.html",
       </div>
     </section>
 
-""" + cta(), crumb="Pricing")
+    <section class="section alt" id="compare-packages">
+      <div class="wrap">
+        <p class="kicker reveal">Comparing SEO packages?</p>
+        <h2 class="reveal">What to check in any SEO package, and our answers</h2>
+        <p class="section-lead reveal">SEO packages in Singapore are hard to compare: different keyword counts, minimum terms, setup fees and "guarantees". These are the lines that change what you actually pay and get. Ask every provider for theirs.</p>
+        <div class="table-wrap reveal" style="margin-top:24px">
+          <table class="compare">
+            <thead><tr><th>Ask about</th><th>Why it matters</th><th>Page One Get Found</th></tr></thead>
+            <tbody>
+              <tr><th>Monthly price</th><td>Is it the full price, or before add-ons?</td><td><b>S$20</b> (introductory price), optional SEO Boosts S$10 each</td></tr>
+              <tr><th>Setup or audit fee</th><td>Some packages charge one before month one</td><td>S$0</td></tr>
+              <tr><th>Minimum term</th><td>Many SEO contracts have one; know yours before the first invoice</td><td>None, cancel anytime</td></tr>
+              <tr><th>Website</th><td>Many SEO packages assume you already have one</td><td>Included: we build it if you don't have one</td></tr>
+              <tr><th>Google Maps (Business Profile)</th><td>Local customers often find you on Maps first</td><td>Included</td></tr>
+              <tr><th>AI search (ChatGPT, Google AI answers)</th><td>Often a separate or higher-tier package</td><td>Included: Bing, structured data and llms.txt</td></tr>
+              <tr><th>Content</th><td>Who writes it, and is it about your customers' questions?</td><td>Regular new articles written for your site</td></tr>
+              <tr><th>Seeing results yourself</th><td>A report made by the provider is not the same as Google's own numbers</td><td>Search Console connected, so you see your own Google numbers</td></tr>
+              <tr><th>Ranking guarantee</th><td>No one controls Google's rankings</td><td>None, and be careful of anyone who offers one</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <p class="note reveal">Comparing an agency retainer or an in-house hire? <a class="link" href="/seo-services-singapore/">SEO services in Singapore compared →</a> · Starting a new business? <a class="link" href="/new-business-website/">Your first-year cost, all in →</a></p>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="wrap narrow">
+        <p class="kicker reveal">Questions</p>
+        <h2 class="reveal">SEO pricing: your questions, answered</h2>
+        <div style="margin-top:24px">
+""" + "\n".join(f"        <details class=\"reveal\"><summary>{q}</summary><p>{a}</p></details>" for q, a in PRICING_FAQ) + """
+        </div>
+      </div>
+    </section>
+
+""" + cta(), crumb="Pricing", updated="2026-10-13")
 
 # ---------- FAQ ----------
 FAQS = [
