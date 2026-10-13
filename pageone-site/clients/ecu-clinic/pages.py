@@ -30,13 +30,39 @@ SERVICE_PAGES = [
         faq=[('Can you repair my ABS pump or module?', 'Yes. We repair ABS, ESP and ESC modules and supply used and reconditioned ABS pumps for makes such as Toyota, Honda, Mercedes-Benz, Hyundai, Kia, Volkswagen, Audi, Nissan, Volvo and Chevrolet.'),
              ('Do you do Toyota Voxy, Noah and Sienta ABS pumps?', 'Yes. We repair, replace or supply used and recon ABS pumps and modules for the Toyota Voxy, Noah and Sienta, with plug and play available.'),
              ('Is there a warranty?', 'Yes. Our repairs come with a 6-month warranty.'),
-             ('What should I send you?', 'Your car model, chassis number and the fault code. A photo of the scan tool screen or the warning light also helps.')],
+             ('What should I send you?', 'Your car model, chassis number and the fault code. A photo of the scan tool screen or the warning light also helps.'),
+             ('Is it safe to drive with the ABS light on?', 'In most cases your normal brakes still work, but the anti-lock function may be off until the fault is fixed, so the wheels can lock under hard braking, especially on wet roads. If the red brake warning light is on too, or the pedal feels different, stop driving and get the car checked.'),
+             ('Can I bring in just the ABS unit?', 'Yes. You can bring the car or the part to us at Premier @ Kaki Bukit, or use our pick-up and delivery service.')],
+        # EDGE Loop, 13 Oct 2026 (owner page for "abs pump repair singapore" and "abs module repair singapore").
+        # The Singapore top 10 (Carousell listings, workshop pages, a V-Tec product page) mostly skip these:
+        # driving with the light on, how sensor vs unit is told apart, and a plain comparison of the options.
+        updated='13 Oct 2026',
+        jobs=[('mercedes-esp-pumps', 'Mercedes-Benz ESP pumps on our bench'), ('hyundai-kia-esc', 'Hyundai / Kia ESC unit'),
+              ('abs-pump-in-car', 'ABS pump in the engine bay'), ('abs-module-in-car', 'ABS module in a car’s engine bay')],
+        more=[('Is it safe to drive with the ABS light on?',
+               '<p>In most cases your normal brakes still work, but the anti-lock function may be switched off until the fault is fixed. That means the wheels can lock under hard braking, especially on wet roads, so leave more distance and avoid hard stops.</p>'
+               '<p>If the red brake warning light comes on together with the ABS light, or the brake pedal feels different, stop driving and get the car checked first. Our pick-up and delivery service can collect it. More in our guide: <a href="{u}articles/abs-warning-light-causes/">ABS warning light causes</a>.</p>'),
+              ('Sensor, wiring, pump or module: how we find the fault',
+               '<ol class="steps"><li><strong>Read the fault code.</strong> The ABS control module stores a code that points to the circuit at fault.</li>'
+               '<li><strong>Rule out the simple causes.</strong> Wheel speed sensors, their wiring and connectors, brake fluid level and fuses.</li>'
+               '<li><strong>Check the unit itself.</strong> If the code and tests point to the pump motor or the module, the ABS unit is the problem.</li>'
+               '<li><strong>Tell you the options.</strong> You decide before any work starts.</li></ol>'
+               '<p>This order matters: the same warning light can come from a wheel speed sensor or from the ABS unit, and replacing parts without the code can mean paying for parts you did not need.</p>'),
+              ('Your options: repair, recon, used or new',
+               '<div class="grid g2">'
+               '<div class="card"><h3>Repair your unit</h3><p>We repair the fault in your own ABS pump or module, down to the circuit board where we can.</p></div>'
+               '<div class="card"><h3>Reconditioned unit</h3><p>A rebuilt ABS pump, for when repairing your own unit is not the right fix.</p></div>'
+               '<div class="card"><h3>Used unit</h3><p>A used ABS pump for the same model, for example the Toyota Voxy, Noah and Sienta.</p></div>'
+               '<div class="card"><h3>New unit</h3><p>A new part, where that is the right fix for your car.</p></div>'
+               '</div>'
+               '<p style="margin-top:16px">Plug and play is available. We explain the options before any work starts, and our repairs come with a 6-month warranty.</p>')],
+        visit=True,
         related=['abs-warning-light-causes', 'toyota-voxy-noah-sienta-abs-pump', 'mercedes-active-brake-assist-functions-limited'],
     ),
     dict(
         slug='mercedes-7g-9g-tcu-repair', key='tcu', name='Mercedes 7G & 9G TCU Repair',
-        title='Mercedes 7G-Tronic & 9G-Tronic TCU Repair Singapore | The ECU Clinic',
-        desc='Mercedes 7-speed (722.9) and 9-speed gearbox TCU repair in Kaki Bukit. Fault diagnosis, conductor plate work, new filter, gasket and oil. WhatsApp 9893 1923.',
+        title='Mercedes 7G-Tronic 722.9 TCU & Conductor Plate Repair Singapore | The ECU Clinic',
+        desc='Mercedes 7G-Tronic (722.9) TCU and conductor plate repair, done locally in Kaki Bukit: fault codes read first, new filter, gasket and oil on the same job. 9G-Tronic TCU too.',
         h1='Mercedes 7-Speed & 9-Speed TCU Repair',
         lead='Gearbox warning, harsh shifts or stuck in one gear? We diagnose and repair the transmission control unit (TCU) on Mercedes 7G-Tronic and 9G-Tronic automatics.',
         photo='mercedes-7g-conductor-plate', alt='Mercedes 722.9 conductor plate with new filter, pan gasket and gearbox oil',
@@ -51,7 +77,20 @@ SERVICE_PAGES = [
                ('Gear display problems', 'The gear indicator flashes, is blank, or shows the wrong gear.')],
         faq=[('Which Mercedes gearboxes do you work on?', 'The 7-speed 7G-Tronic (722.9) and the 9-speed 9G-Tronic. Send us the car model, chassis number and fault code to check.'),
              ('Do you change the gearbox oil too?', 'Yes. When we work on the conductor plate we fit a new filter, pan gasket and gearbox oil on the same job.'),
+             ('Do I have to remove and post the unit myself?', 'No. We read the fault codes and do the TCU and conductor plate work at our workshop in Kaki Bukit. If the car is stuck in limp mode, pick-up and delivery service is available.'),
+             ('Can I keep driving in limp mode?', 'Limp mode is meant to get the car home or to a workshop, not for daily driving. The longer the gearbox runs with a fault, the more can go wrong, so get it checked soon.'),
              ('Is there a warranty?', 'Yes. Our repairs come with a 6-month warranty.')],
+        # EDGE Loop, 13 Oct 2026 (owner page for "mercedes 722.9 tcu repair singapore" / "7g tronic conductor plate").
+        # The top results are overseas mail-in services and eBay listings priced in USD, with no local option.
+        updated='13 Oct 2026',
+        more=[('Repaired here in Singapore, not posted overseas',
+               '<p>Many of the 722.9 conductor plate repair services you will find online are mail-in services abroad: you remove the unit, ship it overseas and wait for it to come back. '
+               'With us, the fault codes are read, the TCU and conductor plate work is done, and the new filter, pan gasket and gearbox oil are fitted, all at our workshop at Premier @ Kaki Bukit.</p>'),
+              ('What the conductor plate does',
+               '<p>On the 7G-Tronic, the transmission control unit is built onto the conductor plate, which sits on the valve body inside the gearbox and also carries the gearbox speed sensors. '
+               'Because it lives in hot gearbox oil, its electronics and sensors can develop faults over the years. A speed sensor or TCU fault can put the gearbox into limp mode even when the gears and clutches are fine, which is why we read the codes before anything is opened.</p>'
+               '<p>More in our guide: <a href="{u}articles/mercedes-7g-tronic-722-9-tcu-problems/">Mercedes 7G-Tronic (722.9) TCU problems</a>.</p>')],
+        visit=True,
         related=['mercedes-7g-tronic-722-9-tcu-problems', 'mercedes-active-brake-assist-functions-limited'],
     ),
     dict(
@@ -91,7 +130,24 @@ SERVICE_PAGES = [
                ('Engine runs more often', 'The engine starts more often, even at low speed.'),
                ('Battery gauge jumps', 'The battery level drops or rises quickly.')],
         faq=[('What hybrid batteries do you fit?', 'Brand-new OEM hybrid batteries, with a warranty of 1 year or 100,000 km.'),
+             ('Is the battery new or reconditioned?', 'Brand-new OEM. The warranty is 1 year or 100,000 km.'),
+             ('Can I drive with the hybrid warning light on?', 'The car may still drive, but get it checked soon. A weak pack makes the engine work harder, and some cars reduce power to protect the system. WhatsApp us the fault code and your car model.'),
              ('How do I get a price?', 'WhatsApp us your car model and year. We will check availability and price.')],
+        # EDGE Loop, 13 Oct 2026 (owner page for "hybrid battery replacement singapore"). The top 10 often leave
+        # unclear whether a pack is new or reconditioned, and one shows three different warranties on one page.
+        updated='13 Oct 2026',
+        jobs=[('hybrid-battery-pack', 'Brand-new hybrid battery pack ready to fit'), ('hybrid-battery-side', 'Brand-new hybrid battery pack')],
+        more=[('New, reconditioned or repaired: know what you are buying',
+               '<p>When you shop for a hybrid battery in Singapore you will be offered different things under the same name. Ask which one it is, and what the warranty covers:</p>'
+               '<div class="grid g3">'
+               '<div class="card"><h3>Brand-new OEM pack</h3><p>A new pack made for your car. This is what we fit, with a warranty of 1 year or 100,000 km.</p></div>'
+               '<div class="card"><h3>Reconditioned pack</h3><p>A used pack that has been rebuilt, usually by replacing weak modules. The rest of the pack keeps its age.</p></div>'
+               '<div class="card"><h3>Module repair</h3><p>Only the failed modules in your pack are replaced. The other modules keep their age and wear.</p></div>'
+               '</div>'),
+              ('Is it the battery?',
+               '<p>A hybrid system warning can come from the battery pack or from other parts of the hybrid system. We read the fault code first, so you only replace the battery when the battery is the problem. '
+               'More in our guide: <a href="{u}articles/hybrid-battery-replacement-signs/">signs your hybrid battery needs replacing</a>.</p>')],
+        visit=True,
         related=['hybrid-battery-replacement-signs'],
     ),
     dict(

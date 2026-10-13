@@ -558,10 +558,28 @@ def service_page(sp):
 <div class="sec-head"><h2>BMW models we program (2010–2018)</h2><p>Model not listed? WhatsApp us and we’ll advise on compatibility.</p></div>
 <div class="models-list">{models}</div>
 </div></section>'''
+    # EDGE Loop additions (13 Oct 2026): visible update date, real job photos beside a call to action,
+    # extra sections that cover what the Singapore top 10 leave out, and the workshop address and hours.
+    updated = f'<p class="meta">Updated {sp["updated"]}</p>' if sp.get('updated') else ''
+    jobs = ''
+    if sp.get('jobs'):
+        jobs = (f'<section><div class="wrap"><div class="sec-head"><h2>Recent jobs from our workshop</h2>'
+                f'<p>Our own photos of units we have worked on. Send us yours on WhatsApp.</p></div>'
+                f'<div class="gallery home-gal">' + ''.join(f'<figure>{img(n, a)}<figcaption>{e(a)}</figcaption></figure>' for n, a in sp['jobs'])
+                + f'</div><div style="margin-top:18px">{cta_buttons()}</div></div></section>')
+    first_alt = 0 if jobs else 1  # keep plain/alt backgrounds alternating after the signs section
+    more = ''.join(f'<section{" class=\"alt\"" if i % 2 == first_alt else ""}><div class="wrap prose"><h2>{e(h)}</h2>{b.replace("{u}", u())}</div></section>'
+                   for i, (h, b) in enumerate(sp.get('more', [])))
+    visit = ''
+    if sp.get('visit'):
+        visit = (f'<section class="alt"><div class="wrap prose"><h2>Visit us in Kaki Bukit</h2>'
+                 f'<p><strong>{e(BIZ["building"])}</strong>, {e(BIZ["street"])}, Singapore {BIZ["postal"]}. '
+                 f'<a href="https://www.google.com/maps/search/?api=1&amp;query={quote(BIZ["map"])}" target="_blank" rel="noopener">Directions</a></p>'
+                 f'<p>{e(HOURS_TXT)}</p></div></section>')
     body = sub_hero(crumbs_disp, 'Service · Kaki Bukit, Singapore', sp['h1'], sp['lead'], sp['photo'], sp['alt']) + f'''
 <section><div class="wrap split">
 <div>
-<h2>About this service</h2>
+{updated}<h2>About this service</h2>
 {intro}
 <h3>What we do</h3>
 <ul class="ticks">{what}</ul>
@@ -571,7 +589,7 @@ def service_page(sp):
 ''' + (f'''<section class="alt"><div class="wrap">
 <div class="sec-head"><h2>Signs you may need this</h2><p>Not sure? WhatsApp us the fault code and we’ll tell you.</p></div>
 <div class="grid sym">{signs}</div>
-</div></section>''' if signs else '') + extra + f'''
+</div></section>''' if signs else '') + jobs + more + extra + f'''
 <section><div class="wrap split">
 <div>
 <h2>How it works</h2>
@@ -587,7 +605,7 @@ def service_page(sp):
 <div class="grid g3 arts">{article_cards(rel)}</div>
 </div></section>''' if rel else '') + f'''
 <section><div class="wrap"><div class="sec-head"><h2>Other services</h2></div><ul class="ticks">{others}</ul></div></section>
-''' + band()
+''' + visit + band()
     svc_ld = {'@context': 'https://schema.org', '@type': 'Service', 'name': sp['name'], 'serviceType': sp['name'],
               'description': sp['desc'], 'provider': {'@id': f'{ORIGIN}{BASE}#business'}, 'areaServed': 'Singapore',
               'url': f'{ORIGIN}{BASE}{path}'}
