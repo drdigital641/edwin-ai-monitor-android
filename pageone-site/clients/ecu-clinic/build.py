@@ -26,7 +26,7 @@ MOCKUP = True
 ORIGIN = PREVIEW if MOCKUP else 'https://theecuclinicsg.com'  # domain chosen by Edwin, 13 Oct 2026
 BASE = '/'
 DEPTH = 0
-ASSET_V = '3'
+ASSET_V = '4'
 # Until go-live the share image and icons are linked at the preview address (the same files).
 LIVE = False
 IMG_ORIGIN = ORIGIN if LIVE else PREVIEW

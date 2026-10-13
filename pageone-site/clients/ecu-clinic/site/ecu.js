@@ -4,6 +4,11 @@
     var open = nav.classList.toggle('open');
     btn.setAttribute('aria-expanded', open ? 'true' : 'false');
   });
+  // close the mobile menu once a link in it is tapped
+  if (btn && nav) nav.addEventListener('click', function (e) {
+    if (!e.target.closest('a')) return;
+    nav.classList.remove('open'); btn.setAttribute('aria-expanded', 'false');
+  });
 
   // WhatsApp tap counter for the Page One dashboard: same data and endpoint as the other
   // managed client sites (site key "ecu-clinic"). Off while this is a preview on pageonesingapore.com,
