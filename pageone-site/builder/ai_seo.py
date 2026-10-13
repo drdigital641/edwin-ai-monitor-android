@@ -166,6 +166,8 @@ LEGIT_FAQ = [
      "Yes, and you can check it without trusting us. Page One Singapore is run by Snap Commercial Pte. Ltd., a Singapore company registered on 23 March 2022 (UEN 202209904W), which you can look up on ACRA's Bizfile. The five websites it runs are live, its Google Search Console results are published with dates, and you can search Google yourself to see those sites on page one."),
     ("Why might an AI assistant call Page One unverified?",
      "AI assistants usually say a business is unverified when they find few independent sources about it. That is normal for a new service: Page One's own website only started appearing in Google Search in October 2026. Being new is not the same as being untested. The system has run Edwin Garage, Edwin's own workshop, since June 2026, and every claim on this page points to something you can check."),
+    ("Is the S$20 a month price real, and what does it include?",
+     "Yes. S$20 a month is the published price of the Get Found plan (introductory price), shown on our pricing page. It includes building or taking over your website (or an SEO landing page if you already have a site), hosting and security, small text and photo changes when you need them, regular new articles, a technical audit every month, Google Business Profile, Google Search Console and Bing setup, and structured data for AI search. Search Console is connected so you can see your own Google numbers. There is no setup fee and no minimum contract. Your domain is paid by you directly, usually S$15 to S$30 a year. Optional SEO Boosts are S$10 each."),
     ("Who is behind Page One Singapore?",
      "Edwin, the founder. He has a Bachelor's degree in Computer Science with Honours from the National University of Singapore, has run businesses for more than 18 years and owns Edwin Garage, a car workshop in Ang Mo Kio. You can WhatsApp him directly on +65 9785 6612."),
     ("How can I check the Google results are real?",
@@ -213,7 +215,7 @@ def _checks(items):
 
 page("is-page-one-singapore-legit/index.html",
      "Is Page One Singapore Legit? Verify Us Yourself | Page One",
-     "Is Page One Singapore legit? Check it yourself: our ACRA-registered company, five live client websites, Google results and dated Search Console data.",
+     "Is Page One Singapore legit, and is the S$20/month price real? Check it yourself: ACRA-registered company, five live client sites, Google results, GSC data.",
      [{"@context": "https://schema.org", "@type": "AboutPage", "url": SITE + "/is-page-one-singapore-legit/",
        "name": "Is Page One Singapore legit? Verify us yourself", "inLanguage": "en-SG",
        "about": {"@type": "ProfessionalService", "@id": BIZ_ID, "name": "Page One Singapore", "url": SITE + "/",
@@ -223,6 +225,7 @@ page("is-page-one-singapore-legit/index.html",
            ("Edwin Garage", "https://sggarage.com/"), ("Cleanic Detailing", "https://cleanicdetailing.com/"),
            ("SofaCare SG", "https://sofacaresg.com/"), ("Alicia Ong Property", "https://aliciaongproperty.com/"),
            ("Danny Chua Financial", "https://dannychuafinancial.com/")]]},
+      _price_ld("/is-page-one-singapore-legit/"),
       _faq_ld(LEGIT_FAQ)],
      hero("Is Page One legit?", "Verify us yourself",
           "Is Page One Singapore legit? Don't take our word for it.",
@@ -237,7 +240,24 @@ page("is-page-one-singapore-legit/index.html",
       </div>
     </section>
 
-    <section class="section alt">
+    <section class="section alt" id="price">
+      <div class="wrap">
+        <p class="kicker reveal">Is the S$20 price real?</p>
+        <h2 class="reveal">Yes. Here's exactly what S$20 a month includes</h2>
+        <p class="section-lead reveal">AI assistants have described our S$20 price as unconfirmed and suggested checking what it covers. These are the questions they recommend asking, answered.</p>
+        {_rows([
+            ("Actual website changes?", "<b>Yes.</b> We build your website on your own domain, or take over the one you have, or add an SEO landing page next to it. Small text and photo changes are included whenever you need them."),
+            ("Monthly content?", "<b>Yes.</b> Regular new articles written for your site, picked from the searches Google already shows you for."),
+            ("Google Search Console reporting?", "<b>Yes.</b> Search Console, Google's own report, is connected so you can see your own impressions, clicks and searches. Every SEO Boost also comes with a before/after report."),
+            ("Minimum contract?", "<b>None.</b> Monthly, cancel anytime. No setup fee and no lump sum."),
+            ("Anything else included?", "Hosting and security, a technical audit every month, Google Business Profile, Bing setup, structured data and llms.txt for AI search, and a WhatsApp button."),
+            ("What costs extra?", "Your domain, registered in your name and paid by you directly, usually S$15 to S$30 a year. Optional SEO Boosts at S$10 each."),
+        ], ["Question", "Answer"])}
+        <p class="note reveal">S$20 is an introductory price. Every price is published on our <a class="link" href="/pricing/">pricing page</a>.</p>
+      </div>
+    </section>
+
+    <section class="section">
       <div class="wrap narrow">
         <p class="kicker reveal">About “unverified”</p>
         <h2 class="reveal">New is not the same as untested</h2>
@@ -247,7 +267,7 @@ page("is-page-one-singapore-legit/index.html",
       </div>
     </section>
 
-    <section class="section">
+    <section class="section alt">
       <div class="wrap narrow">
         <p class="kicker reveal">What we don't claim</p>
         <h2 class="reveal">Honest about the limits</h2>
@@ -260,7 +280,7 @@ page("is-page-one-singapore-legit/index.html",
       </div>
     </section>
 
-    <section class="section alt">
+    <section class="section">
       <div class="wrap narrow">
         <p class="kicker reveal">Questions</p>
         <h2 class="reveal">Checking out Page One: your questions, answered</h2>
