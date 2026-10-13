@@ -9,8 +9,9 @@ Only what the client's own logo, flyers and photos say. Received from Edwin, 12 
 - Pick-up and delivery service available.
 - When asking for help, customers should send the fault code, chassis number and car model.
 - Address: Premier @ Kaki Bukit, 8 Kaki Bukit Avenue 4, #06-43, Singapore 415875 (from Edwin, 12 Oct 2026).
-- Hours: Monday to Saturday, 10am to 6pm. Closed on Sundays and public holidays.
-  After-hours appointments can be arranged.
+- Hours (updated by Edwin 13 Oct 2026): Mon-Fri 9am-7pm (Edwin wrote "Monday"; read as Mon-Fri), Sat 9am-3pm,
+  Sun & PH closed. WhatsApp enquiries welcome 24/7. After-hours appointments can be arranged.
+- Hybrid battery warranty: 1 year or 100,000 km (Edwin, 13 Oct 2026). BMW temperature programming: keep (Edwin OK).
 - Preferred contact: WhatsApp 9893 1923 for enquiries and appointments (make WhatsApp the main CTA).
 - Warranty: 6 months (confirmed by Edwin).
 - Experience: the team has more than a decade of experience.
@@ -72,5 +73,3 @@ page images.
 - Facebook page link and WeChat ID (Facebook/WeChat need a login; screenshots of the About
   section, posts and reviews would do).
 - Google Business profile link, reviews.
-- Warranty terms for hybrid battery replacement (site only states 6 months for repairs).
-- Whether to keep BMW temperature programming (it is ECU programming; kept for now).

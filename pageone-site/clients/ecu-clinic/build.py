@@ -53,7 +53,7 @@ BIZ = {
 }
 WA_TEXT = 'Hi The ECU Clinic, I need help with my car. Car model: \nChassis no.: \nFault code: '
 WARRANTY = '6-month warranty'
-HOURS_TXT = 'Monday to Saturday, 10am to 6pm. Closed on Sundays and public holidays. After-hours appointments can be arranged.'
+HOURS_TXT = 'Monday to Friday, 9am to 7pm. Saturday, 9am to 3pm. Closed on Sundays and public holidays. WhatsApp enquiries are welcome 24/7, and after-hours appointments can be arranged.'
 
 ICON = {
     'phone': '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .4 1.9.7 2.8a2 2 0 0 1-.5 2.1L8 9.9a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.8.7a2 2 0 0 1 1.7 2z"/></svg>',
@@ -119,7 +119,7 @@ SERVICES = [
      ['Mercedes-Benz ELV diagnosis', 'Steering lock repair', 'WhatsApp us your model and the symptoms']),
     ('hybrid', 'Hybrid Battery Replacement', 'hybrid-battery-pack', 'Brand-new hybrid battery pack ready to fit',
      'Hybrid battery warning or a weak battery? We replace it with a brand-new OEM hybrid battery.',
-     ['Brand-new OEM hybrid batteries', 'Removal and fitting', 'WhatsApp us your car model and year to check availability']),
+     ['Brand-new OEM hybrid batteries', 'Warranty: 1 year or 100,000 km', 'Removal and fitting', 'WhatsApp us your car model and year to check availability']),
 ]
 
 WHY = [
@@ -179,11 +179,11 @@ FAQ = [
     ('Do you repair Mercedes steering locks?',
      'Yes. We repair the electronic steering lock (ELV) on Mercedes-Benz cars. WhatsApp us your model and what the car is doing.'),
     ('What hybrid batteries do you fit?',
-     'Brand-new OEM hybrid batteries. WhatsApp us your car model and year and we will check availability and price.'),
+     'Brand-new OEM hybrid batteries, with a warranty of 1 year or 100,000 km. WhatsApp us your car model and year and we will check availability and price.'),
     ('Which car brands do you work on?',
      'Continental and Asian cars, including Audi, BMW, Chevrolet, Honda, Hyundai, Kia, Mercedes-Benz, Mini, Nissan, Skoda, Toyota, Volkswagen and Volvo. If your car isn’t listed, WhatsApp us the model and we will tell you.'),
     ('Is there a warranty?',
-     'Yes. Our repairs come with a 6-month warranty.'),
+     'Yes. Our repairs come with a 6-month warranty. Brand-new hybrid batteries come with a warranty of 1 year or 100,000 km.'),
     ('Can you collect my car or part?',
      'Yes. Pick-up and delivery service is available. WhatsApp us your location and what needs to be collected.'),
     ('Which BMWs can have temperature programming?',
@@ -206,8 +206,10 @@ def schema():
          'address': {'@type': 'PostalAddress', 'streetAddress': f'{BIZ["street"]}, {BIZ["building"]}',
                      'addressLocality': 'Singapore', 'postalCode': BIZ['postal'], 'addressCountry': 'SG'},
          'openingHoursSpecification': [{'@type': 'OpeningHoursSpecification',
-                                        'dayOfWeek': ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'],
-                                        'opens': '10:00', 'closes': '18:00'}],
+                                        'dayOfWeek': ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday'],
+                                        'opens': '09:00', 'closes': '19:00'},
+                                       {'@type': 'OpeningHoursSpecification', 'dayOfWeek': ['Saturday'],
+                                        'opens': '09:00', 'closes': '15:00'}],
          'areaServed': 'Singapore',
          'hasOfferCatalog': {'@type': 'OfferCatalog', 'name': 'Services', 'itemListElement': [
              {'@type': 'Offer', 'itemOffered': {'@type': 'Service', 'name': html.unescape(t)}} for _, t, *_ in SERVICES]
@@ -275,7 +277,7 @@ def page(path, title, desc, body, ld=None, share=('module-circuit-board.jpg', No
 <a class="skip" href="#main">Skip to content</a>
 {SPRITE}
 {strip}<div class="topbar"><div class="wrap">
-<span>ABS &amp; brake system repair <span class="hide-sm">· Mon–Sat 10am–6pm · Sun &amp; PH closed</span></span>
+<span>ABS &amp; brake system repair <span class="hide-sm">· Mon–Fri 9am–7pm · Sat 9am–3pm · WhatsApp 24/7</span></span>
 <span><a href="{wa_link()}" target="_blank" rel="noopener">WhatsApp {BIZ["tel_disp"]}</a> <span class="hide-sm">· {BIZ["building"]}</span></span>
 </div></div>
 <header class="site"><div class="wrap">
@@ -300,7 +302,7 @@ def page(path, title, desc, body, ld=None, share=('module-circuit-board.jpg', No
 <div>
 <h3>Workshop</h3>
 <p>{BIZ["building"]}<br>{e(BIZ["street"])}<br>Singapore {BIZ["postal"]}</p>
-<p>Mon–Sat 10am–6pm<br>Sun &amp; PH closed<br>After hours by appointment</p>
+<p>Mon–Fri 9am–7pm<br>Sat 9am–3pm<br>Sun &amp; PH closed<br>WhatsApp enquiries 24/7</p>
 </div>
 <div>
 <h3>Services</h3>
@@ -348,7 +350,7 @@ def home():
 <span class="eyebrow">Brake system specialist · Kaki Bukit, Singapore</span>
 <h1>ABS Pump Repair &amp; Brake Fault Diagnosis in Singapore</h1>
 <p class="lead">ABS or ESP light on? We find the fault and repair the pump or module. We also repair Mercedes 7-speed and 9-speed gearbox control units and steering locks, and fit brand-new OEM hybrid batteries.</p>
-<ul class="chips"><li>6-month warranty</li><li>Pick-up &amp; delivery</li><li>10+ years’ experience</li><li>Mon–Sat 10am–6pm</li></ul>
+<ul class="chips"><li>6-month warranty</li><li>Pick-up &amp; delivery</li><li>10+ years’ experience</li><li>WhatsApp enquiries 24/7</li></ul>
 {cta_buttons(dark=True)}
 </div>
 </section>
@@ -413,8 +415,8 @@ def home():
 <p>{e(BIZ["street"])}<br>Singapore {BIZ["postal"]}</p>
 <div class="btns"><a class="btn btn-wa" href="{wa_link()}" target="_blank" rel="noopener">{ICON["wa"]}WhatsApp {BIZ["tel_disp"]}</a>
 <a class="btn btn-line" href="https://www.google.com/maps/search/?api=1&amp;query={quote(BIZ["map"])}" target="_blank" rel="noopener">Directions</a></div></div>
-<div class="card"><h3>Opening hours</h3><dl class="hours"><dt>Mon – Sat</dt><dd>10:00am – 6:00pm</dd><dt>Sun &amp; PH</dt><dd>Closed</dd></dl>
-<p class="muted" style="margin-top:10px">After-hours appointments can be arranged. Pick-up and delivery available.</p></div>
+<div class="card"><h3>Opening hours</h3><dl class="hours"><dt>Mon – Fri</dt><dd>9:00am – 7:00pm</dd><dt>Sat</dt><dd>9:00am – 3:00pm</dd><dt>Sun &amp; PH</dt><dd>Closed</dd></dl>
+<p class="muted" style="margin-top:10px">WhatsApp enquiries are welcome 24/7. After-hours appointments can be arranged. Pick-up and delivery available.</p></div>
 </div>
 </div></section>
 

@@ -14,7 +14,7 @@ FONT_B = '/usr/share/fonts/opentype/inter/Inter-Bold.otf'
 FONT_M = '/usr/share/fonts/opentype/inter/InterDisplay-Medium.otf'
 CHARCOAL = (24, 30, 34)
 LOGO = os.path.join(SRC, 'logo-horizontal.png')
-CHIPS = ['6-month warranty', 'Pick-up & delivery', 'Mon–Sat 10am–6pm']
+CHIPS = ['6-month warranty', 'Pick-up & delivery', 'WhatsApp 24/7']
 WA = 'WhatsApp 9893 1923'
 
 
