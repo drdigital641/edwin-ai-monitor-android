@@ -9,9 +9,8 @@ the files work at both addresses, and canonical/structured-data URLs always name
 
 Content comes from source/content.md (captured from the old Base44 shop on 13 Oct 2026). Orders go
 through WhatsApp (pre-filled per kit), which the CtaClick tracker in cleeneo.js counts.
-Shared assets (cleeneo.css, cleeneo.js) live in ./site and are edited by hand.
-Share images and icons are drawn by share.mjs (headless Chromium), since no client photos were
-available when the site was built.
+Shared assets (cleeneo.css, cleeneo.js, img/) live in ./site and are edited by hand.
+Share images and icons are drawn by share.mjs (headless Chromium) from the client's photo and logo.
 """
 import html
 import json
@@ -25,7 +24,7 @@ ORIGIN = 'https://cleeneo.co'
 BASE = '/'
 DEPTH = 0  # folder depth of the page being built; set by build() so u() can emit relative links
 ABS = False  # root-relative links instead (404 page: Apache serves it at any depth)
-ASSET_V = '1'
+ASSET_V = "2"
 SLUG = 'cleeneo'
 INDEXNOW_KEY = 'af35e347ce61461f81c1426315d06255'  # same key as the controller's Client record
 # Until cleeneo.co points here, share images and icons are linked at the preview address.
@@ -80,36 +79,15 @@ ICON = {
     'star': '<svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2l3.1 6.3 6.9 1-5 4.9 1.2 6.8L12 17.8 5.8 21l1.2-6.8-5-4.9 6.9-1z"/></svg>',
 }
 
-# Drawn illustrations (no client photos yet). Colours follow cleeneo.css.
-STRIP_PATH = ('M30 40C30 18 60 10 100 22C150 38 250 38 300 22C340 10 370 18 370 40V120C370 142 340 150 300 138'
-              'C250 122 150 122 100 138C60 150 30 142 30 120Z')
+# Client photos (source/photos, uploaded by Edwin 13 Oct 2026), resized into site/img by hand.
+def photo(name, alt, w=900, h=900, lazy=True, cls='photo'):
+    return (f'<img class="{cls}" src="{u("img/" + name + ".webp")}" srcset="{u("img/" + name + "-480.webp")} 480w, {u("img/" + name + ".webp")} 900w"'
+            f' sizes="(max-width: 899px) 92vw, 540px" width="{w}" height="{h}" alt="{e(alt)}"{" loading=\"lazy\"" if lazy else ""} decoding="async">')
 
 
-def strip_svg(label='Cleeneo silk nasal strip with three spring-tension bars', cls='art'):
-    return f'''<svg class="{cls}" viewBox="0 0 400 160" role="img" aria-label="{label}">
-<defs><linearGradient id="silk" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#fbf7f0"/><stop offset=".55" stop-color="#efe5d6"/><stop offset="1" stop-color="#e2d4bf"/></linearGradient></defs>
-<path d="{STRIP_PATH}" fill="url(#silk)" stroke="#004d53" stroke-width="3"/>
-<g fill="none" stroke="#2a8a83" stroke-width="5" stroke-linecap="round" opacity=".85">
-<path d="M62 60C150 74 250 74 338 60"/><path d="M60 80H340"/><path d="M62 100C150 86 250 86 338 100"/></g>
-</svg>'''
-
-
-def layers_svg():
-    rows = [('Silk contact layer', '#efe5d6', None), ('Three PET spring-tension bars', '#d7ece9', 'bars'),
-            ('Hypoallergenic, latex-free adhesive', '#f6f1e8', 'dots'), ('Release liner (peel off)', '#ffffff', None)]
-    parts = []
-    for i, (name, fill, kind) in enumerate(rows):
-        y = 30 + i * 70
-        parts.append(f'<g transform="translate(0 {y})"><path d="M20 30 L170 0 L320 30 L170 60Z" fill="{fill}" stroke="#004d53" stroke-width="2.5"/>')
-        if kind == 'bars':
-            parts.append('<g stroke="#2a8a83" stroke-width="4" stroke-linecap="round"><path d="M70 22 L220 52"/><path d="M95 16 L245 46"/><path d="M120 10 L270 40"/></g>')
-        if kind == 'dots':
-            parts.append('<g fill="#c9b79c">' + ''.join(f'<circle cx="{x}" cy="{yy}" r="2.5"/>' for x, yy in
-                         [(110, 22), (150, 14), (190, 22), (230, 30), (130, 34), (170, 30), (210, 42), (150, 44), (250, 36)]) + '</g>')
-        parts.append(f'<path d="M320 30 H350" stroke="#004d53" stroke-width="1.5" stroke-dasharray="3 3"/>'
-                     f'<text x="358" y="36" font-size="17" font-weight="600" fill="#0f2a2c">{i + 1}. {name}</text></g>')
-    return ('<svg class="art layers" viewBox="0 0 700 330" role="img" aria-label="The four layers of a Cleeneo strip: '
-            'silk contact layer, three PET spring-tension bars, hypoallergenic adhesive and release liner">' + ''.join(parts) + '</svg>')
+HAND_ALT = 'Hand holding a black Cleeneo silk nasal strip with the Cleeneo logo'
+LAYERS_ALT = 'The layers of a Cleeneo strip: black silk weave, spring-tension bar, adhesive and release liner'
+FLAT_ALT = 'Cleeneo nasal strip, top view'
 
 
 def nose_svg():
@@ -118,17 +96,17 @@ def nose_svg():
 <path d="M132 20C130 80 118 130 102 162"/><path d="M168 20C170 80 182 130 198 162"/>
 <path d="M102 162C84 178 90 204 112 206C126 208 136 200 150 204C164 200 174 208 188 206C210 204 216 178 198 162"/>
 <ellipse cx="124" cy="192" rx="10" ry="5"/><ellipse cx="176" cy="192" rx="10" ry="5"/></g>
-<g transform="translate(150 112) scale(.42) translate(-200 -80)"><path d="M30 40C30 18 60 10 100 22C150 38 250 38 300 22C340 10 370 18 370 40V120C370 142 340 150 300 138C250 122 150 122 100 138C60 150 30 142 30 120Z" fill="#efe5d6" stroke="#004d53" stroke-width="6"/>
-<g fill="none" stroke="#2a8a83" stroke-width="9" stroke-linecap="round"><path d="M62 60C150 74 250 74 338 60"/><path d="M60 80H340"/><path d="M62 100C150 86 250 86 338 100"/></g></g>
+<g transform="translate(150 112) scale(.42) translate(-200 -80)"><path d="M30 40C30 18 60 10 100 22C150 38 250 38 300 22C340 10 370 18 370 40V120C370 142 340 150 300 138C250 122 150 122 100 138C60 150 30 142 30 120Z" fill="#1d1f20" stroke="#000" stroke-width="6"/>
+<g fill="none" stroke="#6e7b7c" stroke-width="7" stroke-linecap="round"><path d="M62 60C150 74 250 74 338 60"/><path d="M60 80H340"/><path d="M62 100C150 86 250 86 338 100"/></g></g>
 <g fill="none" stroke="#e07a3f" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round">
 <path d="M96 146H56"/><path d="M66 136L56 146L66 156"/><path d="M204 146H244"/><path d="M234 136L244 146L234 156"/></g>
 <text x="150" y="250" text-anchor="middle" font-size="15" font-weight="600" fill="#004d53">The bar lifts, the nasal valve opens</text>
 </svg>'''
 
 
-MARK = ('<svg class="mark" viewBox="0 0 40 40" aria-hidden="true"><rect width="40" height="40" rx="11" fill="#004d53"/>'
-        '<path d="M7 15c0-3 3-4 7-2.6 4 1.3 8 1.3 12 0 4-1.4 7-.4 7 2.6v10c0 3-3 4-7 2.6-4-1.3-8-1.3-12 0C10 29 7 28 7 25z" fill="#efe5d6"/>'
-        '<path d="M10 17.5c7 1.6 13 1.6 20 0M10 20h20M10 22.5c7-1.6 13-1.6 20 0" stroke="#2a8a83" stroke-width="1.6" fill="none" stroke-linecap="round"/></svg>')
+def mark():
+    return f'<img class="mark" src="{u("img/mark.webp")}" width="36" height="36" alt="">'
+
 
 e = html.escape
 
@@ -240,7 +218,6 @@ def page(path, title, desc, body, active='', ld=None, share=None, kicker='Drug-f
 <link rel="icon" href="{u("favicon.ico")}" sizes="48x48">
 <link rel="icon" href="{u("icon-96.png")}" type="image/png" sizes="96x96">
 <link rel="icon" href="{u("icon-192.png")}" type="image/png" sizes="192x192">
-<link rel="icon" href="{u("favicon.svg")}" type="image/svg+xml">
 <link rel="apple-touch-icon" href="{u("apple-touch-icon.png")}">
 <link rel="manifest" href="{u("site.webmanifest")}">
 <link rel="stylesheet" href="{u("cleeneo.css")}?v={ASSET_V}">
@@ -253,7 +230,7 @@ def page(path, title, desc, body, active='', ld=None, share=None, kicker='Drug-f
 <span><a href="{wa_link()}" target="_blank" rel="noopener">WhatsApp {BIZ["disp"]}</a></span>
 </div></div>
 <header class="site"><div class="wrap">
-<a class="logo" href="{u()}" aria-label="Cleeneo home">{MARK}<span>cleeneo</span></a>
+<a class="logo" href="{u()}" aria-label="Cleeneo home">{mark()}<span>Cleeneo</span></a>
 <nav class="main" aria-label="Main">{nav}</nav>
 {wa_btn("Order on WhatsApp", ORDER_TEXT, "btn btn-wa hdr-cta")}
 <button class="menu-btn" type="button" aria-expanded="false" aria-controls="mnav">Menu</button>
@@ -266,7 +243,7 @@ def page(path, title, desc, body, active='', ld=None, share=None, kicker='Drug-f
 <footer class="site"><div class="wrap">
 <div class="grid">
 <div>
-<p class="flogo">{MARK}<span>cleeneo</span></p>
+<p class="flogo">{mark()}<span>Cleeneo</span></p>
 <p>Drug-free, latex-free silk nasal strips, designed and run from Singapore. Free delivery on every kit, Singapore only.</p>
 <p><a href="{wa_link()}" target="_blank" rel="noopener">WhatsApp {BIZ["disp"]}</a><br><a href="mailto:{BIZ["email"]}">{BIZ["email"]}</a></p>
 </div>
@@ -417,7 +394,7 @@ def home():
 <ul class="chips"><li>Trial kit S$9.90</li><li>Free delivery in Singapore</li><li>No subscription</li></ul>
 <div class="btns">{wa_btn("Order on WhatsApp", ORDER_TEXT)}<a class="btn btn-line" href="{u("kits/")}">See kits &amp; prices</a></div>
 </div>
-<div class="hero-art">{strip_svg()}<p class="cap">Three spring-tension bars under a soft silk layer</p></div>
+<div class="hero-art">{photo("strip-in-hand", HAND_ALT, lazy=False)}</div>
 </div></section>
 
 <section><div class="wrap">
@@ -446,7 +423,7 @@ def home():
 <p>Each Cleeneo strip is built in four layers, so it lifts firmly but feels soft on your skin.</p>
 <ul class="ticks"><li><strong>Silk contact layer</strong> for a soft, breathable finish</li><li><strong>Three PET spring-tension bars</strong> for an even lift</li><li><strong>Hypoallergenic, latex-free adhesive</strong> that holds overnight</li><li><strong>Release liner</strong> you peel off before use</li></ul>
 </div>
-<div>{layers_svg()}</div>
+<div>{photo("strip-layers", LAYERS_ALT)}</div>
 </div></section>
 
 <section><div class="wrap">
@@ -536,7 +513,7 @@ def use_page(key):
                    for i, (h, b) in enumerate(p['sections']))
     items = pick(*p['faq'])
     body = (page_hero([('Nasal strips', 'kits/'), (p['h1'].split(' for ')[-1].split(' and ')[0].capitalize(), path)], p['h1'], p['sub'])
-            + f'<section><div class="wrap split"><div>{strip_svg()}</div><div><h2>Try Cleeneo for {key}</h2>'
+            + f'<section><div class="wrap split"><div>{photo("strip-flat", FLAT_ALT)}</div><div><h2>Try Cleeneo for {key}</h2>'
               f'<p>Start with the 10-strip trial kit for S$9.90, or save with a 30-strip pack. Free delivery across Singapore and no subscription.</p>'
               f'{rating_line()}<div class="btns">{wa_btn("Order on WhatsApp", p["wa"])}<a class="btn btn-line" href="{u("kits/")}">See kits &amp; prices</a></div></div></div></section>'
             + secs
@@ -640,7 +617,7 @@ def about():
 <p>Every strip uses the same four-layer build: three PET spring-tension bars, a soft silk layer and a hypoallergenic, latex-free adhesive. No drugs, no sprays.</p>
 <p>Cleeneo is founded and run from Singapore, with one simple mission: help people wake up rested.</p>
 </div>
-<div>{layers_svg()}</div>
+<div>{photo("strip-layers", LAYERS_ALT)}</div>
 </div></section>
 <section class="alt"><div class="wrap grid g3">
 <div class="card"><div class="ico">{ICON["wind"]}</div><h3>Effortless breathing</h3><p>A firm, even lift that opens the nasal valve without discomfort.</p></div>
@@ -792,10 +769,6 @@ def manifest():
                        'icons': [{'src': f'icon-{s}.png', 'sizes': f'{s}x{s}', 'type': 'image/png'} for s in (192, 512)]}, indent=1)
 
 
-def favicon_svg():
-    return MARK.replace('class="mark" ', 'xmlns="http://www.w3.org/2000/svg" ').replace(' aria-hidden="true"', '')
-
-
 def main():
     build('index.html', home)
     for k in USES:
@@ -815,14 +788,14 @@ def main():
     build('sitemap.xml', sitemap)
     build('llms.txt', llms_txt)
     build('site.webmanifest', manifest)
-    build('favicon.svg', favicon_svg)
     write(f'{INDEXNOW_KEY}.txt', INDEXNOW_KEY)
     for d in ('img', 'img/share'):
         write(f'{d}/index.html', '')
     print('pages', len(PAGES))
     cards = {s: {'headline': h, 'kicker': k} for s, (h, k) in SHARES.items()}
     with open(os.path.join(HERE, 'share-cards.json'), 'w') as f:
-        json.dump({'cards': cards, 'strip': strip_svg(cls='art'), 'mark': MARK}, f, ensure_ascii=False)
+        json.dump({'cards': cards, 'photo': os.path.join(HERE, 'source', 'photos', 'strip-in-hand.png'),
+                   'mark': os.path.join(HERE, 'source', 'photos', 'mark-512.png')}, f, ensure_ascii=False)
     if os.environ.get('SKIP_IMAGES') != '1':
         env = dict(os.environ)
         if 'NODE_PATH' not in env:
