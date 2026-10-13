@@ -33,7 +33,7 @@ IMG_ORIGIN = ORIGIN if LIVE else PREVIEW
 # While MOCKUP is True the photos (img/) are served from jsDelivr, pinned to the commit that holds
 # them, because the Bluehost Bridge only takes files pasted inline. Before go-live upload site/img/ to
 # the folder and set IMG_CDN = None so every image is served from the client's own domain.
-IMG_COMMIT = 'ff6ce6a712aa53889eeda7f5ba22370887c4c9b8'
+IMG_COMMIT = '55ce4a05db3fe9c131bf8425bc9e925459fcbf35'
 IMG_CDN = f'https://cdn.jsdelivr.net/gh/drdigital641/edwin-ai-monitor-android@{IMG_COMMIT}/pageone-site/clients/ecu-clinic/site/' if MOCKUP else None
 if IMG_CDN:
     IMG_ORIGIN = IMG_CDN.rstrip('/')
