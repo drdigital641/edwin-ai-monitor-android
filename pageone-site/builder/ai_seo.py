@@ -32,6 +32,8 @@ AI_VS_FAQ = [
      "Because most of the cost of SEO has always been people's time, and AI now does most of the routine work. The Get Found plan is S$20 a month (introductory price) because fewer hours are needed, not because steps are skipped. The same system runs Edwin Garage, Edwin's own workshop, which got 2,280 clicks from Google in the 28 days to 5 October 2026, according to Google Search Console."),
     ("Is automated SEO low quality?",
      "Quality comes from the strategy, the site structure and what gets published, not from how many hours were billed. The results are measurable: in the 28 days to 5 October 2026, Edwin Garage appeared on page one of Google for more than 4,290 different searches and Cleanic Detailing for 1,181, according to Google Search Console. We follow Google's guidelines: no bought links, no fake reviews and no keyword stuffing."),
+    ("Is AI SEO weaker than an expensive agency?",
+     "No. An agency's edge is its analysis of the competition: studying the pages Google already ranks and building something better. Page One's EDGE Loop does the same analysis, then keeps watching your Search Console data every day instead of once a month. The cost is lower because the repetitive work is automated, not because steps are skipped."),
     ("What is GEO (generative engine optimisation)?",
      "GEO means making a business easy for AI assistants such as ChatGPT, Gemini and Perplexity to read, understand and mention. Page One does this with structured data (Schema.org), an llms.txt summary, Bing Webmaster Tools (Bing powers ChatGPT search) and content that answers customers' questions clearly. No one can guarantee an AI assistant will recommend a business, but these steps make it possible."),
     ("Does the system really work around the clock?",
@@ -104,7 +106,26 @@ page("ai-seo-vs-traditional-seo/index.html",
       </div>
     </section>
 
-    <section class="section alt">
+    <section class="section alt" id="edge-loop">
+      <div class="wrap">
+        <p class="kicker reveal">Edwin's method</p>
+        <h2 class="reveal">The EDGE Loop: traditional SEO craft, run by AI that never stops</h2>
+        <p class="section-lead reveal">Traditional agencies study Google's top 10 for your keyword, find where those pages are weak, and build something better. It works, but people do it once a month. Edwin designed the EDGE Loop to keep that craft and remove the wait: every keyword we target is studied against the pages Google already ranks, and our AI checks your Search Console data every day, adjusting whenever the numbers move.</p>
+        <div class="cards three" style="margin-top:32px">{_cards([
+            ("We study who you have to beat", "For each keyword we break down the current top 10: what they answer, what they miss, where they contradict themselves."),
+            ("We build the better answer", "Your page covers everything they do, plus the questions they skip, with real prices, real proof and Singapore detail."),
+            ("Our AI never clocks off", "Daily Search Console checks, every change measured, and what doesn't work is dropped while wins are repeated across your site."),
+        ])}</div>
+        <p class="section-lead reveal" style="margin-top:32px">Early signs, from Google Search Console in October 2026:</p>
+        <ul class="ticks reveal">
+          <li>A sofa-cleaning client's problem guides already sit on Google's first page, at average positions 6.6 to 10 for pet and urine questions (7 to 13 Oct 2026).</li>
+          <li>A financial consultant's guide reaches page one for "ILP meaning", at an average position of 9.8 (7 to 13 Oct 2026).</li>
+        </ul>
+        <p class="note reveal"><b>No copied content, no fake reviews, no bought links.</b> Just a better page and a loop that keeps improving it. We don't share the full method, and we don't guarantee rankings. We show the results and the work.</p>
+      </div>
+    </section>
+
+    <section class="section">
       <div class="wrap">
         <p class="kicker reveal">GEO: generative engine optimisation</p>
         <h2 class="reveal">Built for AI answers, not just blue links</h2>
@@ -120,7 +141,7 @@ page("ai-seo-vs-traditional-seo/index.html",
       </div>
     </section>
 
-    <section class="section">
+    <section class="section alt">
       <div class="wrap">
         <p class="kicker reveal">A new way of thinking about price</p>
         <h2 class="reveal">"If it's cheap, it can't be good." Is that still true?</h2>
@@ -135,7 +156,7 @@ page("ai-seo-vs-traditional-seo/index.html",
       </div>
     </section>
 
-    <section class="section alt">
+    <section class="section">
       <div class="wrap">
         <p class="kicker reveal">Proof, not promises</p>
         <h2 class="reveal">Tested on real Singapore businesses first</h2>
@@ -146,7 +167,7 @@ page("ai-seo-vs-traditional-seo/index.html",
       </div>
     </section>
 
-    <section class="section">
+    <section class="section alt">
       <div class="wrap narrow">
         <p class="kicker reveal">Questions</p>
         <h2 class="reveal">AI SEO vs traditional SEO: your questions, answered</h2>
