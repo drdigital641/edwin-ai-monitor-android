@@ -26,7 +26,7 @@ MOCKUP = True
 ORIGIN = PREVIEW if MOCKUP else 'https://theecuclinicsg.com'  # domain chosen by Edwin, 13 Oct 2026
 BASE = '/'
 DEPTH = 0
-ASSET_V = '2'
+ASSET_V = '3'
 # Until go-live the share image and icons are linked at the preview address (the same files).
 LIVE = False
 IMG_ORIGIN = ORIGIN if LIVE else PREVIEW
@@ -354,6 +354,13 @@ def home():
 {cta_buttons(dark=True)}
 </div>
 </section>
+
+<section class="stats" aria-label="At a glance"><div class="wrap"><ul>
+<li><b data-count="10">10<small>+</small></b>years with car electronics</li>
+<li><b data-count="6">6<small>months</small></b>warranty on repairs</li>
+<li><b data-count="100000">100,000<small>km</small></b>or 1-year hybrid battery warranty</li>
+<li><b>24/7</b>WhatsApp enquiries</li>
+</ul></div></section>
 
 <section><div class="wrap">
 <div class="sec-head"><h2>Why drivers and workshops come to The ECU Clinic</h2><p>When a brake warning light won’t go away, the fault is often in the ABS pump or module. That is what we fix.</p></div>

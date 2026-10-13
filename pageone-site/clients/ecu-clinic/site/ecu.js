@@ -36,4 +36,44 @@
     }, true);
   })();
 
+  // Motion: header shadow on scroll, reveal-on-scroll, count-up stats.
+  // Nothing is hidden until this script runs, and only things below the fold get hidden,
+  // so the page is never blank if the script is slow or blocked.
+  var head = document.querySelector('header.site');
+  var onScroll = function () { if (head) head.classList.toggle('scrolled', window.scrollY > 8); };
+  window.addEventListener('scroll', onScroll, { passive: true }); onScroll();
+
+  var reduce = window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if (reduce || !('IntersectionObserver' in window)) return;
+
+  var groups = [
+    ['.sec-head', ''], ['.why .card', 'stagger'], ['.svc .card', 'stagger'], ['.split>div:first-child', 'from-l'],
+    ['.split>div:last-child', 'from-r'], ['.makes li', 'stagger-fast'], ['.gallery figure', 'zoom stagger'],
+    ['.loc-wrap>.card', 'stagger'], ['#faq details', 'stagger-fast'], ['.band', 'zoom'], ['.svc+p', ''], ['.stats li', 'stagger']
+  ];
+  var vh = window.innerHeight, io = new IntersectionObserver(function (es) {
+    es.forEach(function (en) { if (en.isIntersecting) { en.target.classList.add('in'); io.unobserve(en.target); count(en.target); } });
+  }, { rootMargin: '0px 0px -8% 0px', threshold: 0.12 });
+  groups.forEach(function (g) {
+    var els = document.querySelectorAll(g[0]), step = /stagger-fast/.test(g[1]) ? 0.04 : /stagger/.test(g[1]) ? 0.09 : 0;
+    Array.prototype.forEach.call(els, function (el, i) {
+      if (el.getBoundingClientRect().top < vh * 0.92) { count(el); return; }
+      el.classList.add('rv');
+      g[1].split(' ').forEach(function (c) { if (c && c.indexOf('stagger') < 0) el.classList.add(c); });
+      if (step) el.style.setProperty('--d', Math.min(i % 8 * step, 0.5) + 's');
+      io.observe(el);
+    });
+  });
+
+  function count(el) {
+    var b = el.querySelector && el.querySelector('b[data-count]'); if (!b || b.dataset.done) return; b.dataset.done = 1;
+    var to = +b.dataset.count, tail = b.innerHTML.replace(/^[\d,]+/, ''), t0 = null, dur = 1400;
+    var fmt = function (n) { return Math.round(n).toLocaleString('en-SG'); };
+    var tick = function (t) {
+      if (!t0) t0 = t; var p = Math.min((t - t0) / dur, 1), e = 1 - Math.pow(1 - p, 3);
+      b.innerHTML = fmt(to * e) + tail; if (p < 1) requestAnimationFrame(tick);
+    };
+    requestAnimationFrame(tick);
+  }
+
 })();

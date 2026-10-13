@@ -199,3 +199,96 @@ footer.site li{margin:.2em 0}footer.site h3{font-size:.92rem}
 .preview-strip{font-size:.78rem}
 }
 footer.site p a{text-decoration:underline;text-underline-offset:2px}
+
+/* ---------- motion & polish (13 Oct 2026) ---------- */
+/* Only transform/opacity animate, so phones stay smooth. Everything is switched off under
+   prefers-reduced-motion at the end of this block. */
+:root{--glow:#2fd3a8;--ease:cubic-bezier(.22,.8,.26,1)}
+body{text-rendering:optimizeLegibility;-webkit-font-smoothing:antialiased}
+
+/* header: frosted glass, shadow once the page scrolls */
+header.site{background:rgba(255,255,255,.86);-webkit-backdrop-filter:saturate(1.6) blur(12px);backdrop-filter:saturate(1.6) blur(12px);transition:box-shadow .3s,border-color .3s}
+header.site.scrolled{box-shadow:0 8px 28px rgba(16,30,36,.10);border-color:transparent}
+nav.main a{position:relative;transition:color .2s,background .2s}
+
+/* hero: slow zoom on the photo, teal glow, sweeping scan line, staggered entrance */
+.hero{overflow:hidden;isolation:isolate}
+.hero img.bg{opacity:.42;transform-origin:65% 40%;animation:kb 22s ease-in-out infinite alternate;will-change:transform}
+.hero:before{content:"";position:absolute;inset:0;z-index:0;pointer-events:none;
+  background:radial-gradient(60% 80% at 85% 20%,rgba(47,211,168,.28),transparent 60%),
+             linear-gradient(100deg,rgba(17,24,28,.92) 0%,rgba(17,24,28,.72) 45%,rgba(17,24,28,.25) 100%)}
+.hero:after{content:"";position:absolute;left:0;right:0;top:-30%;height:30%;z-index:0;pointer-events:none;
+  background:linear-gradient(180deg,transparent,rgba(47,211,168,.10) 70%,rgba(47,211,168,.35) 98%,transparent);
+  animation:scan 7s linear infinite}
+.hero .wrap{z-index:1}
+.hero .wrap>*{animation:rise .9s var(--ease) both}
+.hero .eyebrow{animation-delay:.05s}.hero h1{animation-delay:.15s}.hero p.lead{animation-delay:.3s}
+.hero .chips{animation-delay:.42s}.hero .btns{animation-delay:.54s}
+.hero h1{background:linear-gradient(90deg,#fff 0%,#fff 55%,#a8f0dc 100%);-webkit-background-clip:text;background-clip:text;color:transparent}
+.hero .eyebrow:before{content:"";display:inline-block;width:8px;height:8px;border-radius:50%;background:var(--glow);margin-right:9px;vertical-align:1px;box-shadow:0 0 0 0 rgba(47,211,168,.7);animation:ping 2.2s infinite}
+.chips li{-webkit-backdrop-filter:blur(6px);backdrop-filter:blur(6px)}
+@keyframes kb{from{transform:scale(1.04)}to{transform:scale(1.16) translate(-2%,-1%)}}
+@keyframes scan{from{transform:translateY(0)}to{transform:translateY(460%)}}
+@keyframes rise{from{opacity:0;transform:translateY(22px)}to{opacity:1;transform:none}}
+@keyframes ping{70%{box-shadow:0 0 0 10px rgba(47,211,168,0)}100%{box-shadow:0 0 0 0 rgba(47,211,168,0)}}
+
+/* stats strip under the hero, numbers count up when they come into view */
+.stats{padding:0;background:var(--navy);position:relative;z-index:2}
+.stats ul{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(2,1fr);border-top:1px solid rgba(255,255,255,.1)}
+.stats li{padding:20px 16px;color:#b9c6c9;font-size:.86rem;line-height:1.35;border-right:1px solid rgba(255,255,255,.08)}
+.stats li:nth-child(2n){border-right:0}
+.stats b{display:block;font-size:1.9rem;line-height:1.1;color:#fff;letter-spacing:-.02em;margin-bottom:4px;font-variant-numeric:tabular-nums}
+.stats b small{font-size:.55em;font-weight:700;color:var(--glow);margin-left:2px}
+@media(min-width:760px){.stats ul{grid-template-columns:repeat(4,1fr)}.stats li{padding:26px 22px}.stats li:nth-child(2n){border-right:1px solid rgba(255,255,255,.08)}.stats li:last-child{border-right:0}.stats b{font-size:2.3rem}}
+
+/* section headings: accent bar that draws in */
+.sec-head h2:after,#diagnosis h2:after,#bmw-temperature h2:after,#how h2:after{content:"";display:block;width:56px;height:4px;border-radius:4px;margin-top:14px;
+  background:linear-gradient(90deg,var(--blue),var(--glow));transform-origin:left;transition:transform .9s var(--ease) .2s}
+.rv:not(.in) h2:after,.rv:not(.in).sec-head h2:after{transform:scaleX(0)}
+
+/* cards, photos and chips: lift and zoom on hover */
+.card{transition:transform .35s var(--ease),box-shadow .35s var(--ease),border-color .35s}
+.card.img img,.gallery img,.split img{transition:transform .8s var(--ease)}
+.split>div:has(img){overflow:hidden;border-radius:var(--r);box-shadow:0 18px 40px rgba(16,30,36,.16)}
+.ico{transition:transform .4s var(--ease),background .3s,color .3s}
+@media(hover:hover){
+  .card:hover{transform:translateY(-6px);box-shadow:0 18px 40px rgba(16,30,36,.12);border-color:#cfe6df}
+  .card:hover .ico{transform:rotate(-8deg) scale(1.08);background:var(--blue);color:#fff}
+  .card.img:hover img,.gallery figure:hover img,.split>div:hover img{transform:scale(1.07)}
+  .makes li:hover{background:var(--blue);color:#fff;border-color:var(--blue);transform:translateY(-2px)}
+  .btn:hover{transform:translateY(-2px);box-shadow:0 10px 24px rgba(0,0,0,.18)}
+}
+.makes li{transition:background .25s,color .25s,border-color .25s,transform .25s}
+.gallery figure{box-shadow:0 6px 18px rgba(16,30,36,.10)}
+.gallery figcaption{transition:padding .35s var(--ease)}
+details{transition:border-color .25s,box-shadow .25s}
+details[open]{border-color:#bfe0d7;box-shadow:0 10px 26px rgba(16,30,36,.07)}
+summary:after{transition:transform .3s var(--ease)}
+details[open] summary:after{content:"+";transform:rotate(45deg)}
+details[open] .a{animation:rise .45s var(--ease)}
+
+/* buttons: shine sweep on WhatsApp buttons, soft pulse on the sticky ones */
+.btn{position:relative;overflow:hidden;transition:transform .25s var(--ease),box-shadow .25s,background .25s}
+.btn-wa:after{content:"";position:absolute;top:0;bottom:0;left:-60%;width:40%;transform:skewX(-20deg);
+  background:linear-gradient(90deg,transparent,rgba(255,255,255,.35),transparent);animation:shine 4.5s ease-in-out infinite 1.5s}
+.hdr-cta.btn-wa,.dock .btn-wa{box-shadow:0 0 0 0 rgba(20,128,62,.55);animation:pulse 2.6s infinite 2s}
+.dock .btn-wa:after,.hdr-cta:after{animation-delay:3s}
+@keyframes shine{0%,60%{left:-60%}100%{left:130%}}
+@keyframes pulse{70%{box-shadow:0 0 0 12px rgba(20,128,62,0)}100%{box-shadow:0 0 0 0 rgba(20,128,62,0)}}
+.dock{-webkit-backdrop-filter:blur(10px);backdrop-filter:blur(10px);background:rgba(255,255,255,.88)}
+
+/* CTA band: slowly drifting gradient */
+.band{background:linear-gradient(120deg,#066e5d,#0b4f47,#1f262b,#066e5d);background-size:300% 300%;animation:drift 14s ease infinite;box-shadow:0 24px 50px rgba(6,110,93,.25)}
+@keyframes drift{0%,100%{background-position:0% 50%}50%{background-position:100% 50%}}
+
+/* scroll reveal (ecu.js adds .rv to things below the fold, then .in as they appear) */
+.rv{opacity:0;transform:translateY(28px);transition:opacity .8s var(--ease),transform .8s var(--ease);transition-delay:var(--d,0s)}
+.rv.in{opacity:1;transform:none}
+.rv.from-l{transform:translateX(-36px)}.rv.from-r{transform:translateX(36px)}.rv.zoom{transform:scale(.94)}
+.rv.in.from-l,.rv.in.from-r,.rv.in.zoom{transform:none}
+
+@media(prefers-reduced-motion:reduce){
+  *,*:before,*:after{animation:none!important;transition:none!important;scroll-behavior:auto!important}
+  .rv{opacity:1;transform:none}
+  .hero h1{color:#fff;background:none}
+}
