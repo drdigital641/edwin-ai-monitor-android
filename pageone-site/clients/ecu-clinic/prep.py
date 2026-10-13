@@ -13,6 +13,8 @@ SRC = os.path.join(HERE, 'source')
 OUT = os.path.join(HERE, 'site')
 IMG = os.path.join(OUT, 'img')
 
+HERO = 'mercedes-esp-pumps'  # home hero background (also gets a 1200 px -lg version)
+
 # web name -> (source photo, (top, bottom) as fractions of height, or None)
 PHOTOS = {
     'ecu-circuit-board': ('module-circuit-board.jpg', None),
@@ -26,6 +28,19 @@ PHOTOS = {
     'ecu-units-on-bench': ('ecu-units-on-bench.jpg', None),
     'bmw-body-module': ('bmw-fem-body-module.jpg', (0.19, 0.75)),
     'vw-gateway-module': ('vw-gateway-module.jpg', (0.30, 0.86)),
+    # Job photos from the client, 13 Oct 2026 (ABS / TCU / ELV / hybrid battery refocus)
+    'abs-esc-units-bench': ('abs-esc-units-on-bench.jpg', (0.04, 0.60)),
+    'mercedes-esp-pumps': ('mercedes-esp-pumps.jpg', (0.20, 0.60)),
+    'hyundai-kia-esc': ('hyundai-kia-esc-units.jpg', (0.30, 0.70)),
+    'mercedes-7g-conductor-plate': ('mercedes-722-9-conductor-plate-kit.jpg', (0.28, 0.70)),
+    'active-brake-assist-warning': ('mercedes-active-brake-assist-warning.jpg', None),
+    'control-board-bench': ('control-board-repair-bench.jpg', None),
+    'mini-fuse-box': ('mini-fuse-box.jpg', (0.12, 0.68)),
+    'mercedes-elv': ('mercedes-elv-steering-lock.jpg', (0.42, 0.82)),
+    'elv-units': ('elv-steering-lock-units.jpg', (0.30, 0.70)),
+    'hybrid-battery-pack': ('hybrid-battery-pack-1.jpg', (0.18, 0.58)),
+    'hybrid-battery-side': ('hybrid-battery-pack-2.jpg', (0.22, 0.62)),
+    'hybrid-battery-modules': ('hybrid-battery-new-modules.jpg', (0.10, 0.50)),
 }
 
 
@@ -42,7 +57,7 @@ def web_photos():
         im = photo(name)
         q = 50 if name.startswith('ecu-') else 62  # dense circuit-board detail compresses poorly
         im.resize((640, 480), Image.LANCZOS).save(os.path.join(IMG, name + '.webp'), 'WEBP', quality=q, method=6)
-        im.resize((1200, 900), Image.LANCZOS).save(os.path.join(IMG, name + '-lg.webp'), 'WEBP', quality=40, method=6) if name == 'ecu-circuit-board' else None
+        im.resize((1200, 900), Image.LANCZOS).save(os.path.join(IMG, name + '-lg.webp'), 'WEBP', quality=40, method=6) if name == HERO else None
 
 
 def _cutout(box):

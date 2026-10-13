@@ -23,10 +23,10 @@ OUT = os.path.join(HERE, 'site')
 SLUG = 'ecu-clinic'  # Page One client key: p1-site marker (go-live check) and WhatsApp tracker
 PREVIEW = 'https://pageonesingapore.com/preview/ecu-clinic'
 MOCKUP = True
-ORIGIN = PREVIEW if MOCKUP else 'https://ecuclinic.com'  # domain not confirmed yet (12 Oct 2026)
+ORIGIN = PREVIEW if MOCKUP else 'https://theecuclinicsg.com'  # domain chosen by Edwin, 13 Oct 2026
 BASE = '/'
 DEPTH = 0
-ASSET_V = '1'
+ASSET_V = '2'
 # Until go-live the share image and icons are linked at the preview address (the same files).
 LIVE = False
 IMG_ORIGIN = ORIGIN if LIVE else PREVIEW
@@ -38,6 +38,7 @@ IMG_CDN = f'https://cdn.jsdelivr.net/gh/drdigital641/edwin-ai-monitor-android@{I
 if IMG_CDN:
     IMG_ORIGIN = IMG_CDN.rstrip('/')
 SHARES = {}
+HERO = 'mercedes-esp-pumps'  # hero background photo (prep.py makes the -lg version)
 
 BIZ = {
     'name': 'The ECU Clinic',
@@ -92,34 +93,37 @@ def img(name, alt, w=640, h=480, lazy=True, cls=''):
 
 
 # ---------- content (facts from source/content.md only) ----------
+# 13 Oct 2026 client amendments: lead with ABS pump repair and brake fault diagnosis; ECU work is not
+# featured (the client is still learning it); add Mercedes 7G/9G TCU repair, Mercedes steering lock
+# (ELV) repair and brand-new OEM hybrid batteries; no BMW or Mercedes key programming.
 SERVICES = [
-    ('ecu', 'ECU Repair &amp; Replacement', 'ecu-chip-damage', 'Damaged chip on an ECU circuit board, circled for repair',
-     'We repair the engine control unit itself, or supply a new, used or reconditioned unit when that is the better fix.',
-     ['ECU repair', 'New and used ECUs', 'Recon transmission ECU and MU for Toyota Prius, Noah, Voxy and Aqua',
-      'VAG mechatronics and gateway repair']),
-    ('abs', 'ABS Pump &amp; Module Repair', 'abs-pump-in-car', 'ABS pump and module in a car engine bay',
-     'ABS warning light or brake system fault? We repair ABS modules and supply used and reconditioned ABS pumps.',
-     ['ABS module repair', 'Used and recon ABS pumps', 'Toyota Voxy, Noah and Sienta ABS pump and module: repair, replace, used or recon',
-      'Plug and play available']),
-    ('coding', 'Programming &amp; Coding', 'esp-control-unit-scan', 'Scan tool showing a Mercedes-Benz ESP control unit version',
-     'Software updates, fault code solutions and coding for engine, gearbox, safety and comfort systems.',
-     ['Software update', 'DTC remove and coding', 'Gearbox programming', 'Radar coding and calibration',
-      'AUX and media system coding', 'Airbag coding', 'i-stop function']),
-    ('diesel', 'Diesel &amp; Key Programming', 'ecu-units-on-bench', 'Two engine control units on the bench for programming',
-     'Diesel system work and key programming for BMW and Mercedes-Benz.',
-     ['AdBlue, EGR and DPF coding', 'Catalytic system', 'Diesel system optimisation', 'BMW and Benz key programming']),
+    ('abs', 'ABS Pump &amp; Module Repair', 'abs-esc-units-bench', 'ABS and ESC units on the repair bench',
+     'ABS, ESP or ESC warning light? We repair the pump and module, or supply a used or reconditioned unit.',
+     ['ABS, ESP and ESC module repair', 'Used and recon ABS pumps', 'Mercedes-Benz ESP units',
+      'Hyundai and Kia ESC units', 'Toyota Voxy, Noah and Sienta: repair, replace, used or recon', 'Plug and play available']),
+    ('tcu', 'Mercedes 7-Speed &amp; 9-Speed TCU Repair', 'mercedes-7g-conductor-plate',
+     'Mercedes 7-speed gearbox conductor plate with new filter, gasket and gearbox oil',
+     'Gearbox warning, harsh shifts or stuck in one gear? We diagnose and repair the transmission control unit (TCU) on Mercedes 7-speed and 9-speed automatics.',
+     ['7G-Tronic (722.9) TCU and conductor plate', '9G-Tronic TCU', 'Fault code reading and diagnosis',
+      'New filter, pan gasket and gearbox oil fitted on the same job']),
+    ('elv', 'Mercedes Steering Lock (ELV) Repair', 'mercedes-elv', 'Mercedes-Benz electronic steering lock on the bench',
+     'Key won’t turn, or the car won’t start because of the steering lock? We repair the electronic steering lock (ELV) on Mercedes-Benz.',
+     ['Mercedes-Benz ELV diagnosis', 'Steering lock repair', 'WhatsApp us your model and the symptoms']),
+    ('hybrid', 'Hybrid Battery Replacement', 'hybrid-battery-pack', 'Brand-new hybrid battery pack ready to fit',
+     'Hybrid battery warning or a weak battery? We replace it with a brand-new OEM hybrid battery.',
+     ['Brand-new OEM hybrid batteries', 'Removal and fitting', 'WhatsApp us your car model and year to check availability']),
 ]
 
 WHY = [
-    ('chip', 'Board-level repair', 'We repair the control unit itself, down to the circuit board.'),
+    ('brake', 'ABS and brake system focus', 'ABS pumps, modules and brake system faults are our main work.'),
+    ('chip', 'Board-level repair', 'Where we can, we repair the unit itself, down to the circuit board.'),
     ('swap', 'Repair, recon, used or new', 'More than one way to fix it: repair, reconditioned, used or new units.'),
-    ('brake', 'ECU and ABS focus', 'Engine, gearbox and ABS control units are what we work on every day.'),
     ('users', 'Over a decade of experience', 'Our team has more than ten years of experience with car electronics.'),
     ('truck', 'Pick-up and delivery', 'Can’t come in? Pick-up and delivery service is available.'),
     ('shield', '6-month warranty', 'Our repairs come with a 6-month warranty.'),
 ]
 
-MAKES = ['Audi', 'BMW', 'Chevrolet', 'Honda', 'Kia', 'Mercedes-Benz', 'Mini', 'Nissan', 'Skoda', 'Toyota',
+MAKES = ['Audi', 'BMW', 'Chevrolet', 'Honda', 'Hyundai', 'Kia', 'Mercedes-Benz', 'Mini', 'Nissan', 'Skoda', 'Toyota',
          'Volkswagen', 'Volvo', 'and more']
 
 BMW_MODELS = [
@@ -130,35 +134,49 @@ BMW_MODELS = [
 ]
 
 GALLERY = [
-    ('ecu-board-repair', 'ECU circuit board during a repair'),
-    ('abs-module-in-car', 'ABS module in the engine bay'),
-    ('vw-gateway-module', 'Volkswagen and Audi gateway module'),
-    ('bmw-body-module', 'BMW body control module (FEM) out of the car'),
-    ('mercedes-module-wiring', 'Mercedes-Benz control module and wiring'),
-    ('bmw-fault-code-scan', 'Scan tool reading BMW engine fault codes'),
-    ('ecu-circuit-board', 'Control unit circuit board'),
-    ('ecu-units-on-bench', 'Engine control units on the bench'),
+    ('mercedes-esp-pumps', 'Mercedes-Benz ESP pumps on the bench'),
+    ('hyundai-kia-esc', 'Hyundai / Kia ESC unit'),
+    ('mercedes-7g-conductor-plate', 'Mercedes 7-speed TCU job'),
+    ('hybrid-battery-modules', 'Hybrid battery with new modules'),
+    ('abs-esc-units-bench', 'ABS and ESC units for repair'),
+    ('abs-pump-in-car', 'ABS pump in the engine bay'),
+    ('mercedes-elv', 'Mercedes steering lock (ELV)'),
+    ('elv-units', 'Steering lock units'),
+    ('hybrid-battery-side', 'Brand-new hybrid battery pack'),
+    ('active-brake-assist-warning', 'Mercedes brake assist warning'),
+    ('mini-fuse-box', 'Mini fuse box module'),
+    ('control-board-bench', 'Control board on the repair bench'),
 ]
+
+WARNINGS = ['ABS warning light', 'ESP or ESC warning', 'Brake system warning',
+            '“Active Brake Assist functions limited” (Mercedes)', 'Gearbox warning or limp mode (Mercedes)',
+            'Steering lock or no-start fault (Mercedes)', 'Hybrid system warning']
 
 STEPS = [
     ('WhatsApp us the details', f'Send your car model, chassis number and the fault code to <a href="{wa_link()}" target="_blank" rel="noopener">{BIZ["tel_disp"]}</a>. A photo of the scan tool screen or warning light helps.'),
     ('We check and advise', 'We tell you what we can do: repair your unit, or supply a recon, used or new one.'),
-    ('Drop off or pick-up', f'Bring the car or module to us at {BIZ["building"]}, or use our pick-up and delivery service.'),
+    ('Drop off or pick-up', f'Bring the car or part to us at {BIZ["building"]}, or use our pick-up and delivery service.'),
     ('Fixed, with warranty', 'Your car is back on the road, and the repair comes with a 6-month warranty.'),
 ]
 
 FAQ = [
     ('What should I send when I WhatsApp you?',
      f'Your car model, chassis number and the fault code. A photo of the scan tool screen or the warning light on the dashboard also helps. WhatsApp <a href="{wa_link()}" target="_blank" rel="noopener">{BIZ["tel_disp"]}</a>.'),
-    ('Do you repair ECUs or replace them?',
-     'Both. We repair the ECU itself, and we can also supply new, used or reconditioned units. For Toyota Prius, Noah, Voxy and Aqua we also do recon transmission ECUs and MUs.'),
     ('Can you repair my ABS pump or module?',
-     'Yes. We repair ABS modules and supply used and reconditioned ABS pumps for makes such as Toyota, Honda, Mercedes-Benz, Volkswagen, Audi, Nissan, Volvo and Chevrolet. For Toyota Voxy, Noah and Sienta we repair, replace or supply used and recon ABS pumps and modules, with plug and play available.'),
+     'Yes. We repair ABS, ESP and ESC modules and supply used and reconditioned ABS pumps for makes such as Toyota, Honda, Mercedes-Benz, Hyundai, Kia, Volkswagen, Audi, Nissan, Volvo and Chevrolet. For Toyota Voxy, Noah and Sienta we repair, replace or supply used and recon ABS pumps and modules, with plug and play available.'),
+    ('My Mercedes says “Active Brake Assist functions limited”. Can you help?',
+     'Yes. WhatsApp us a photo of the dashboard and the fault code. We diagnose brake system warnings like this one and tell you what is causing it before any part is changed.'),
+    ('Do you repair Mercedes 7-speed and 9-speed gearboxes?',
+     'We repair the transmission control unit (TCU) on Mercedes 7G-Tronic (722.9) and 9G-Tronic automatic gearboxes. Send us the car model, chassis number and fault code.'),
+    ('Do you repair Mercedes steering locks?',
+     'Yes. We repair the electronic steering lock (ELV) on Mercedes-Benz cars. WhatsApp us your model and what the car is doing.'),
+    ('What hybrid batteries do you fit?',
+     'Brand-new OEM hybrid batteries. WhatsApp us your car model and year and we will check availability and price.'),
     ('Which car brands do you work on?',
-     'Continental and Asian cars, including Audi, BMW, Chevrolet, Honda, Kia, Mercedes-Benz, Mini, Nissan, Skoda, Toyota, Volkswagen and Volvo. If your car isn’t listed, WhatsApp us the model and we will tell you.'),
+     'Continental and Asian cars, including Audi, BMW, Chevrolet, Honda, Hyundai, Kia, Mercedes-Benz, Mini, Nissan, Skoda, Toyota, Volkswagen and Volvo. If your car isn’t listed, WhatsApp us the model and we will tell you.'),
     ('Is there a warranty?',
      'Yes. Our repairs come with a 6-month warranty.'),
-    ('Can you collect my car or module?',
+    ('Can you collect my car or part?',
      'Yes. Pick-up and delivery service is available. WhatsApp us your location and what needs to be collected.'),
     ('Which BMWs can have temperature programming?',
      'Most BMW models from 2010 to 2018, including the 1 to 8 Series, X1 to X6, M2 and Z4. See the full list on this page, or WhatsApp us your model to check.'),
@@ -166,14 +184,14 @@ FAQ = [
      f'We are at {BIZ["building"]}, {BIZ["street"]}, Singapore {BIZ["postal"]}. {HOURS_TXT}'),
 ]
 
-NAV = [('#services', 'Services'), ('#bmw-temperature', 'BMW Temperature'), ('#how', 'How it works'),
+NAV = [('#services', 'Services'), ('#diagnosis', 'Warning lights'), ('#how', 'How it works'),
        ('#gallery', 'Our work'), ('#faq', 'FAQ'), ('#contact', 'Contact')]
 
 
 def schema():
     return {'@context': 'https://schema.org', '@graph': [
         {'@type': 'AutoRepair', '@id': f'{ORIGIN}{BASE}#business', 'name': BIZ['name'],
-         'description': 'ECU repair, ABS pump and module repair, and car programming and coding in Kaki Bukit, Singapore.',
+         'description': 'ABS pump and module repair, brake system fault diagnosis, Mercedes 7-speed and 9-speed TCU repair, Mercedes steering lock repair and hybrid battery replacement in Kaki Bukit, Singapore.',
          'url': f'{ORIGIN}{BASE}', 'telephone': BIZ['tel'],
          'logo': f'{IMG_ORIGIN}/icon-512.png', 'image': f'{IMG_ORIGIN}/img/share/home.jpg',
          'sameAs': [BIZ['facebook']],
@@ -240,15 +258,15 @@ def page(path, title, desc, body, ld=None, share=('module-circuit-board.jpg', No
 <link rel="apple-touch-icon" href="{u("apple-touch-icon.png")}">
 <link rel="manifest" href="{u("site.webmanifest")}">
 {'<link rel="preconnect" href="https://cdn.jsdelivr.net">' if IMG_CDN else ''}
-<link rel="preload" as="image" href="{u("img/ecu-circuit-board.webp")}" media="(max-width:899px)">
-<link rel="preload" as="image" href="{u("img/ecu-circuit-board-lg.webp")}" media="(min-width:900px)">
+<link rel="preload" as="image" href="{u("img/{HERO}.webp")}" media="(max-width:899px)">
+<link rel="preload" as="image" href="{u("img/{HERO}-lg.webp")}" media="(min-width:900px)">
 <link rel="stylesheet" href="{u("ecu.css")}?v={ASSET_V}">
 {lds}
 </head>
 <body>
 <a class="skip" href="#main">Skip to content</a>
 {strip}<div class="topbar"><div class="wrap">
-<span>ECU &amp; ABS repair for cars <span class="hide-sm">· Mon–Sat 10am–6pm · Sun &amp; PH closed</span></span>
+<span>ABS &amp; brake system repair <span class="hide-sm">· Mon–Sat 10am–6pm · Sun &amp; PH closed</span></span>
 <span><a href="{wa_link()}" target="_blank" rel="noopener">WhatsApp {BIZ["tel_disp"]}</a> <span class="hide-sm">· {BIZ["building"]}</span></span>
 </div></div>
 <header class="site"><div class="wrap">
@@ -266,7 +284,7 @@ def page(path, title, desc, body, ld=None, share=('module-circuit-board.jpg', No
 <div class="grid">
 <div>
 <h3>The ECU Clinic</h3>
-<p>ECU and ABS repair for cars in Kaki Bukit, Singapore: ECU repair and replacement, ABS pump and module repair, programming and coding. Pick-up and delivery available, 6-month warranty.</p>
+<p>ABS pump and module repair and brake fault diagnosis in Kaki Bukit, Singapore. Also Mercedes 7-speed and 9-speed TCU repair, Mercedes steering lock repair and brand-new OEM hybrid batteries. Pick-up and delivery available, 6-month warranty.</p>
 <p><a href="{wa_link()}" target="_blank" rel="noopener">WhatsApp {BIZ["tel_disp"]}</a> (preferred, ask for {BIZ["contact"]})<br><a href="tel:{BIZ["tel"]}">Call {BIZ["tel_disp"]}</a></p>
 <p><a href="{BIZ["facebook"]}" target="_blank" rel="noopener">Facebook</a></p>
 </div>
@@ -312,36 +330,48 @@ def home():
     steps = ''.join(f'<li><strong>{t}.</strong> {d}</li>' for t, d in STEPS)
     models = ''.join(f'<p><strong>{s}</strong><br>{c}</p>' for s, c in BMW_MODELS)
     makes = ''.join(f'<li>{m}</li>' for m in MAKES)
+    warns = ''.join(f'<li>{e(w)}</li>' for w in WARNINGS)
     faq = ''.join(f'<details><summary>{e(q)}</summary><div class="a">{a}</div></details>' for q, a in FAQ)
     body = f'''
 <section class="hero" style="padding:0">
-<picture><source media="(min-width:900px)" srcset="{u("img/ecu-circuit-board-lg.webp")}">{img("ecu-circuit-board", "Car control unit circuit board", lazy=False, cls="bg")}</picture>
+<picture><source media="(min-width:900px)" srcset="{u(f"img/{HERO}-lg.webp")}">{img(HERO, "Mercedes-Benz ESP pumps on the repair bench", lazy=False, cls="bg")}</picture>
 <div class="wrap">
-<span class="eyebrow">ECU &amp; ABS repair · Kaki Bukit, Singapore</span>
-<h1>ECU &amp; ABS Repair Specialist in Singapore</h1>
-<p class="lead">The ECU Clinic repairs, replaces and programs engine, gearbox and ABS control units for continental and Asian cars. WhatsApp us your fault code, chassis number and car model to get started.</p>
+<span class="eyebrow">Brake system specialist · Kaki Bukit, Singapore</span>
+<h1>ABS Pump Repair &amp; Brake Fault Diagnosis in Singapore</h1>
+<p class="lead">ABS or ESP light on? We find the fault and repair the pump or module. We also repair Mercedes 7-speed and 9-speed gearbox control units and steering locks, and fit brand-new OEM hybrid batteries.</p>
 <ul class="chips"><li>6-month warranty</li><li>Pick-up &amp; delivery</li><li>10+ years’ experience</li><li>Mon–Sat 10am–6pm</li></ul>
 {cta_buttons(dark=True)}
 </div>
 </section>
 
 <section><div class="wrap">
-<div class="sec-head"><h2>Why drivers and workshops come to The ECU Clinic</h2><p>When a warning light won’t go away, the fault is often in a control unit. That is what we fix.</p></div>
+<div class="sec-head"><h2>Why drivers and workshops come to The ECU Clinic</h2><p>When a brake warning light won’t go away, the fault is often in the ABS pump or module. That is what we fix.</p></div>
 <div class="grid g3 why">{why_cards()}</div>
 </div></section>
 
 <section class="alt" id="services"><div class="wrap">
-<div class="sec-head"><h2>Our services</h2><p>ECU and ABS repair, replacement units, and programming and coding, in one place.</p></div>
+<div class="sec-head"><h2>Our services</h2><p>ABS and brake system repair, plus Mercedes gearbox and steering lock repair and hybrid batteries.</p></div>
 <div class="grid g2 svc">{service_cards()}</div>
 <p style="margin-top:22px"><a class="btn btn-wa" href="{wa_link()}" target="_blank" rel="noopener">{ICON["wa"]}WhatsApp us your fault code</a></p>
 </div></section>
 
-<section><div class="wrap">
+<section id="diagnosis"><div class="wrap split">
+<div>
+<span class="eyebrow" style="color:var(--blue)">Fault diagnosis</span>
+<h2>Warning light on the dashboard?</h2>
+<p>An ABS, ESP or brake warning can come from the pump, the module, a sensor or the wiring. We find the cause first, then tell you the options: repair, recon, used or new.</p>
+<ul class="ticks">{warns}</ul>
+<a class="btn btn-wa" href="{wa_link("Hi The ECU Clinic, I have a warning light on my car. Car model: \nChassis no.: \nFault code / warning: ")}" target="_blank" rel="noopener">{ICON["wa"]}Send us a photo of the warning</a>
+</div>
+<div>{img("active-brake-assist-warning", "Mercedes-Benz dashboard showing Active Brake Assist functions limited")}</div>
+</div></section>
+
+<section class="alt"><div class="wrap">
 <div class="sec-head"><h2>Car brands we work on</h2><p>Continental and Asian cars. Not sure about yours? WhatsApp us the model.</p></div>
 <ul class="makes">{makes}</ul>
 </div></section>
 
-<section class="alt" id="bmw-temperature"><div class="wrap split media-hide-sm">
+<section id="bmw-temperature"><div class="wrap split media-hide-sm">
 <div>
 <span class="eyebrow" style="color:var(--blue)">BMW temperature programming</span>
 <h2>BMW running hot at 120°C or more?</h2>
@@ -353,21 +383,21 @@ def home():
 <div>{img("bmw-fault-code-scan", "Scan tool reading BMW engine fault codes")}</div>
 </div></section>
 
-<section id="how"><div class="wrap split media-hide-sm">
+<section class="alt" id="how"><div class="wrap split media-hide-sm">
 <div>
 <h2>How it works</h2>
 <ol class="steps">{steps}</ol>
 {cta_buttons()}
 </div>
-<div>{img("abs-module-in-car", "ABS module in a car engine bay")}</div>
+<div>{img("hyundai-kia-esc", "Hyundai / Kia ESC unit on the bench")}</div>
 </div></section>
 
-<section class="alt" id="gallery"><div class="wrap">
-<div class="sec-head"><h2>Our work</h2><p>Control units, ABS modules and circuit boards from cars we have worked on.</p></div>
+<section id="gallery"><div class="wrap">
+<div class="sec-head"><h2>Our work</h2><p>Real jobs from our workshop: ABS and ESP units, Mercedes gearbox and steering lock work, and hybrid batteries.</p></div>
 <div class="gallery home-gal">{gal}</div>
 </div></section>
 
-<section id="contact"><div class="wrap">
+<section class="alt" id="contact"><div class="wrap">
 <div class="sec-head"><h2>Visit us in Kaki Bukit</h2><p>WhatsApp is the fastest way to reach us for enquiries and appointments.</p></div>
 <div class="loc-wrap">
 <div class="card loc"><span class="tag">Workshop</span><h3>{BIZ["building"]}</h3>
@@ -379,16 +409,16 @@ def home():
 </div>
 </div></section>
 
-<section class="alt" id="faq"><div class="wrap" style="max-width:860px">
-<div class="sec-head"><h2>ECU &amp; ABS repair FAQ</h2></div>
+<section id="faq"><div class="wrap" style="max-width:860px">
+<div class="sec-head"><h2>ABS &amp; brake repair FAQ</h2></div>
 {faq}
 </div></section>
 
-<section><div class="wrap"><div class="band"><div><h2>Warning light on?</h2><p>WhatsApp us the fault code, chassis number and car model. We’ll tell you what we can do.</p></div>{cta_buttons(dark=True)}</div></div></section>
+<section><div class="wrap"><div class="band"><div><h2>ABS or brake light on?</h2><p>WhatsApp us the fault code, chassis number and car model. We’ll tell you what we can do.</p></div>{cta_buttons(dark=True)}</div></div></section>
 '''
-    return page('', 'ECU & ABS Repair Singapore | The ECU Clinic, Kaki Bukit',
-                'ECU repair, ABS pump and module repair, programming and coding for continental and Asian cars in Kaki Bukit, Singapore. 6-month warranty. WhatsApp 9893 1923.',
-                body, ld=[faq_ld()], share=('module-circuit-board.jpg', 'ECU & ABS Repair Specialist in Singapore'))
+    return page('', 'ABS Pump Repair Singapore | The ECU Clinic, Kaki Bukit',
+                'ABS pump and module repair, brake fault diagnosis, Mercedes 7G/9G TCU and steering lock repair, new OEM hybrid batteries. Kaki Bukit. WhatsApp 9893 1923.',
+                body, ld=[faq_ld()], share=('mercedes-esp-pumps.jpg', 'ABS Pump Repair Specialist in Singapore'))
 
 
 def write(rel, text):

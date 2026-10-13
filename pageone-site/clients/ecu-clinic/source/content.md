@@ -57,8 +57,20 @@ Only what the client's own logo, flyers and photos say. Received from Edwin, 12 
 Reference for wording only. They use car-maker logos and stock/AI cars, so they are not used as
 page images.
 
+## Client amendments (13 Oct 2026, via Edwin; client's WhatsApp in Chinese)
+- Focus on ABS pump repair and related fault diagnosis.
+- ECU: client is still learning, so ECU repair/coding is not featured (no ECU service card).
+- Add Mercedes 7-speed and 9-speed TCU repair (photo: 722.9 conductor plate with Mercedes ATF, filter, gasket).
+- Drop BMW and Mercedes key programming. Keep only Mercedes steering lock (ELV) repair.
+- Add brand-new OEM hybrid battery replacement.
+- Domain chosen: theecuclinicsg.com (DNS to be pointed later by Edwin).
+- 16 job photos added to photos/ (ABS/ESC units, Mercedes ESP pumps, Hyundai/Kia MEB4 ESC, 722.9 kit,
+  Active Brake Assist dash warning, ELV + ELV simulator, Mini fuse box, control board, hybrid packs,
+  two ECU bench shots not used on the page).
+
 ## Still needed
 - Facebook page link and WeChat ID (Facebook/WeChat need a login; screenshots of the About
   section, posts and reviews would do).
 - Google Business profile link, reviews.
-- Confirm the client owns ecuclinic.com.
+- Warranty terms for hybrid battery replacement (site only states 6 months for repairs).
+- Whether to keep BMW temperature programming (it is ECU programming; kept for now).

@@ -24,14 +24,19 @@ Built to the standard in `../PLAYBOOK.md`, with DMTS (`../dmts/`) as the referen
   `MOCKUP = False` (and `IMG_CDN` becomes None), confirm the domain, rebuild and republish.
 - Controller Client record: slug `ecu-clinic`, status `preview`, `custom: true`, `design_job: mockup_done`.
 
+## Update (13 Oct 2026): client amendments
+Home page refocused on ABS pump repair and brake fault diagnosis; ECU repair, coding, diesel and key
+programming cards removed; added Mercedes 7G/9G TCU, Mercedes ELV and new OEM hybrid battery cards, a
+"Warning light" diagnosis section and a 12-photo gallery from the client's new job photos. Domain is
+theecuclinicsg.com (ORIGIN in build.py, used once MOCKUP = False).
+
 ## Confirmed with Edwin
 - Address: Premier @ Kaki Bukit, 8 Kaki Bukit Avenue 4, #06-43, Singapore 415875.
 - Mon-Sat 10am-6pm, closed Sundays and public holidays, after-hours appointments can be arranged.
 - WhatsApp 9893 1923 (Ching) preferred for enquiries and appointments.
 - 6-month warranty. Team has more than a decade of experience.
-- Facebook: https://www.facebook.com/TheECUclinicSG. Domain ecuclinic.com (temporary, not confirmed).
+- Facebook: https://www.facebook.com/TheECUclinicSG. Domain theecuclinicsg.com (chosen 13 Oct 2026).
 
 ## Open
-- Confirm the client owns ecuclinic.com (registered 17 Sep 2025 via a GoDaddy reseller, parked).
 - WeChat ID, Google Business profile link, reviews.
 - Client to confirm wording for "Airbag coding" and "AdBlue, EGR and DPF coding" (see chat notes).
