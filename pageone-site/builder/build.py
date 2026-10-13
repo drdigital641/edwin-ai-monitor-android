@@ -50,7 +50,7 @@ def crumbs_ld(name, url):
     }
 
 
-def page(path, title, desc, schemas, body, crumb=None, robots="index, follow, max-image-preview:large"):
+def page(path, title, desc, schemas, body, crumb=None, robots="index, follow, max-image-preview:large", updated=None):
     if path == "index.html":
         current = "/"
     elif path.endswith("index.html"):
@@ -64,7 +64,7 @@ def page(path, title, desc, schemas, body, crumb=None, robots="index, follow, ma
             "@context": "https://schema.org", "@type": "WebPage", "url": SITE + current, "name": title.replace("&amp;", "&"),
             "description": desc, "inLanguage": "en-SG", "isPartOf": {"@id": SITE + "/#website"},
             "primaryImageOfPage": {"@type": "ImageObject", "url": SITE + "/images/og.png", "width": 600, "height": 315},
-            "dateModified": UPDATED}]
+            "dateModified": updated or UPDATED}]
     nav = "\n".join(
         f'        <a href="{href}"{" aria-current=\"page\"" if href == current else ""}>{label}</a>'
         for href, label in NAV
@@ -141,6 +141,7 @@ def page(path, title, desc, schemas, body, crumb=None, robots="index, follow, ma
         <h2>Services</h2>
         <a href="/website/">Website, built and managed</a>
         <a href="/new-business-website/">New business website</a>
+        <a href="/seo-services-singapore/">SEO services compared</a>
         <a href="/get-found/">Get Found</a>
         <a href="/seo-boost/">SEO Boost</a>
         <a href="/pricing/">Pricing</a>
@@ -1301,5 +1302,5 @@ page("index.html",
          {"@type": "WebSite", "@id": SITE + "/#website", "url": SITE + "/", "name": "Page One Singapore",
           "alternateName": ["Page One SG", "PageOne Singapore", "pageonesingapore.com"],
           "inLanguage": "en-SG", "publisher": {"@id": BIZ_ID}}]}],
-     open(os.path.join(HERE, "home_body.html"), encoding="utf-8").read().rstrip("\n"))
+     open(os.path.join(HERE, "home_body.html"), encoding="utf-8").read().rstrip("\n"), updated="2026-10-13")
 print("built")
