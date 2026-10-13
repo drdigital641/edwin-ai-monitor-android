@@ -95,8 +95,8 @@ SERVICE_PAGES = [
     ),
     dict(
         slug='mercedes-steering-lock-elv-repair', key='elv', name='Mercedes Steering Lock (ELV) Repair',
-        title='Mercedes Steering Lock (ELV) Repair Singapore | The ECU Clinic',
-        desc='Mercedes-Benz electronic steering lock (ELV/ESL) diagnosis and repair in Kaki Bukit. Key won’t turn or car won’t start? WhatsApp 9893 1923.',
+        title='Mercedes Steering Lock (ELV/ESL) Repair Singapore | The ECU Clinic',
+        desc='Key won’t turn or Mercedes won’t start? We test and repair the electronic steering lock (ELV/ESL) in Kaki Bukit. Pick-up if your car can’t be driven. 6-month warranty.',
         h1='Mercedes Steering Lock (ELV) Repair',
         lead='Key won’t turn, or the car won’t start because of the steering lock? We diagnose and repair the electronic steering lock (ELV) on Mercedes-Benz.',
         photo='mercedes-elv', alt='Mercedes-Benz electronic steering lock (ELV) on the bench',
@@ -110,7 +110,34 @@ SERVICE_PAGES = [
                ('Works sometimes', 'The car starts on some tries and not on others.')],
         faq=[('Do you repair Mercedes steering locks?', 'Yes. We repair the electronic steering lock (ELV) on Mercedes-Benz cars. WhatsApp us your model and what the car is doing.'),
              ('My car won’t start. Can you collect it?', 'Pick-up and delivery service is available. WhatsApp us your location.'),
+             ('Is it the steering lock, or just the key or battery?', 'A flat key battery, a weak car battery or an ignition switch fault can look like a steering lock fault, so we rule those out first. Then we test the steering lock itself.'),
+             ('It still starts sometimes. Can I wait?', 'A steering lock that works on some tries and not others often gets worse over time, and when it stops unlocking the car will not start at all. Get it checked before it leaves you stranded.'),
              ('Is there a warranty?', 'Yes. Our repairs come with a 6-month warranty.')],
+        # EDGE Loop, 14 Oct 2026 (owner page for "mercedes steering lock repair singapore" / "mercedes elv repair").
+        # The top results are overseas: US DIY guides and dealer quotes in USD, eBay parts and tool listings, a South
+        # African mobile mechanic. None is a Singapore workshop, none says how to tell the lock from a key or battery
+        # fault, and none deals with the car that cannot be driven to a workshop.
+        updated='14 Oct 2026',
+        jobs=[('mercedes-elv', 'Mercedes ignition switch and key on our test bench'), ('elv-units', 'Steering lock parts on our bench')],
+        more=[('Steering lock, key or battery: what we check first',
+               '<ol class="steps"><li><strong>The simple causes.</strong> A flat key battery, a weak car battery or an ignition switch fault can look just like a steering lock fault.</li>'
+               '<li><strong>The fault codes.</strong> The car’s control units store codes that show whether they can talk to the steering lock.</li>'
+               '<li><strong>The steering lock itself.</strong> We test the unit to confirm it is the part that is failing.</li>'
+               '<li><strong>Your options.</strong> We tell you what we can do before any work starts.</li></ol>'
+               '<p>More in our guide: <a href="{u}articles/mercedes-steering-lock-elv-failure/">Mercedes steering lock (ELV) failure: signs and repair</a>.</p>'),
+              ('Car stuck and won’t start? We can collect it',
+               '<p>When the steering lock fails, the car usually cannot be driven to a workshop. Our pick-up and delivery service can collect it. '
+               'WhatsApp us your car model, your location and what the car is doing: for example, the key will not turn, nothing happens when you press start, or a message appears on the dashboard. '
+               'WhatsApp enquiries are welcome 24/7.</p>'),
+              ('Repaired here in Singapore',
+               '<p>Most of what you will find online about Mercedes steering lock faults is written for drivers abroad: do-it-yourself guides, parts and tools posted from overseas, and dealer quotes in US dollars. '
+               'With us, the testing and repair are done at our workshop at Premier @ Kaki Bukit, and our repairs come with a 6-month warranty.</p>')],
+        steps=[('WhatsApp us the details', 'Send your car model and what the car is doing to <a href="{wa}" target="_blank" rel="noopener">9893 1923</a>. If you have a fault code, send that too.'),
+               ('We check and advise', 'We rule out the key and battery, test the steering lock, and tell you what we can do before any work starts.'),
+               ('Drop off or pick-up', 'Bring the car to us at Premier @ Kaki Bukit. If it cannot be driven, use our pick-up and delivery service.'),
+               ('Fixed, with warranty', 'Your car is back on the road, and the repair comes with a 6-month warranty.')],
+        band=('Mercedes won’t start?', 'WhatsApp us your car model and what the car is doing. If it can’t be driven, we can collect it.'),
+        visit=True,
         related=['mercedes-steering-lock-elv-failure'],
     ),
     dict(
@@ -147,6 +174,12 @@ SERVICE_PAGES = [
               ('Is it the battery?',
                '<p>A hybrid system warning can come from the battery pack or from other parts of the hybrid system. We read the fault code first, so you only replace the battery when the battery is the problem. '
                'More in our guide: <a href="{u}articles/hybrid-battery-replacement-signs/">signs your hybrid battery needs replacing</a>.</p>')],
+        # Own steps (14 Oct 2026): the shared steps offer "repair, recon, used or new" and a 6-month repair warranty,
+        # which do not fit a page that fits brand-new OEM packs only, with a 1 year or 100,000 km warranty.
+        steps=[('WhatsApp us the details', 'Send your car model and year, and the fault code if you have one, to <a href="{wa}" target="_blank" rel="noopener">9893 1923</a>.'),
+               ('We check and advise', 'We read the fault code to confirm the battery is the problem, then check availability and price of a brand-new OEM battery for your car.'),
+               ('Drop off or pick-up', 'Bring the car to us at Premier @ Kaki Bukit, or use our pick-up and delivery service.'),
+               ('Fitted, with warranty', 'We remove the old pack and fit the new one. The battery comes with a warranty of 1 year or 100,000 km.')],
         visit=True,
         related=['hybrid-battery-replacement-signs'],
     ),
