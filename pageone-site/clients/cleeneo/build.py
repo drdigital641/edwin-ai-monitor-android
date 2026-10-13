@@ -24,7 +24,7 @@ ORIGIN = 'https://cleeneo.co'
 BASE = '/'
 DEPTH = 0  # folder depth of the page being built; set by build() so u() can emit relative links
 ABS = False  # root-relative links instead (404 page: Apache serves it at any depth)
-ASSET_V = "2"
+ASSET_V = "3"
 SLUG = 'cleeneo'
 INDEXNOW_KEY = 'af35e347ce61461f81c1426315d06255'  # same key as the controller's Client record
 # Until cleeneo.co points here, share images and icons are linked at the preview address.
@@ -403,7 +403,7 @@ def home():
 </div></section>
 
 <section class="alt"><div class="wrap split">
-<div>{nose_svg()}</div>
+<div>{photo("strip-flat", FLAT_ALT)}</div>
 <div>
 <h2>How a nasal strip works</h2>
 <p>Just inside your nostrils is the nasal valve, the narrowest part of the airway in your nose. When it narrows, from a cold, allergies, the shape of your nose or simply lying down, breathing through your nose takes more effort and many people switch to breathing through the mouth.</p>
@@ -537,7 +537,7 @@ def how_to():
     body = (page_hero([('How to use', 'how-to-use/')], 'How to Apply Nasal Strips for the Best Lift',
                       'Four simple steps. Placement matters most: on the bridge, just above where the nostrils flare.')
             + f'<section><div class="wrap">{steps_html()}</div></section>'
-            + f'<section class="alt"><div class="wrap split"><div>{nose_svg()}</div><div><h2>Getting the position right</h2>'
+            + f'<section class="alt"><div class="wrap split"><div>{photo("strip-flat", FLAT_ALT)}</div><div><h2>Getting the position right</h2>'
               '<p>The strip works by lifting the sides of your nose at the nasal valve. Too high up on the bony part of the bridge and it has nothing to lift; too low and it sits on the soft tip. Feel for where the hard bridge ends and the softer sides of the nose begin, and centre the strip just there.</p>'
               '<ul class="ticks"><li>Clean, dry, oil-free skin</li><li>Centred, with both ends sitting evenly on the sides of the nose</li><li>Pressed firmly for 10 to 15 seconds</li></ul></div></div></section>'
             + faq_block(items, 'Tips and questions')
