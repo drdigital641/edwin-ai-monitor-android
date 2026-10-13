@@ -52,7 +52,10 @@
     ['.loc-wrap>.card', 'stagger'], ['#faq details', 'stagger-fast'], ['.band', 'zoom'], ['.svc+p', ''], ['.stats li', 'stagger']
   ];
   var vh = window.innerHeight, io = new IntersectionObserver(function (es) {
-    es.forEach(function (en) { if (en.isIntersecting) { en.target.classList.add('in'); io.unobserve(en.target); count(en.target); } });
+    es.forEach(function (en) { if (!en.isIntersecting) return;
+      var t = en.target; t.classList.add('in'); io.unobserve(t); count(t);
+      // once shown, drop the reveal classes so hover effects run without the stagger delay
+      setTimeout(function () { t.classList.remove('rv', 'in', 'from-l', 'from-r', 'zoom'); t.style.removeProperty('--d'); }, 1600); });
   }, { rootMargin: '0px 0px -8% 0px', threshold: 0.12 });
   groups.forEach(function (g) {
     var els = document.querySelectorAll(g[0]), step = /stagger-fast/.test(g[1]) ? 0.04 : /stagger/.test(g[1]) ? 0.09 : 0;
