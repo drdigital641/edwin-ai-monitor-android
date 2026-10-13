@@ -69,6 +69,11 @@ page images.
   Active Brake Assist dash warning, ELV + ELV simulator, Mini fuse box, control board, hybrid packs,
   two ECU bench shots not used on the page).
 
+## Trade (Edwin, 13 Oct 2026)
+- Many car workshops refer ABS/ECU repairs to The ECU Clinic (it does the hands-on repair and returns the unit).
+  Edwin chose the soft wording: "Many car workshops send their ABS and module repairs to us. Come direct and deal
+  with the technician who does the repair." No "middleman", "cheaper" or "highest quality" claims.
+
 ## Still needed
 - Facebook page link and WeChat ID (Facebook/WeChat need a login; screenshots of the About
   section, posts and reviews would do).

@@ -374,6 +374,7 @@ def home():
 <section><div class="wrap">
 <div class="sec-head"><h2>Why drivers and workshops come to The ECU Clinic</h2><p>When a brake warning light won’t go away, the fault is often in the ABS pump or module. That is what we fix.</p></div>
 <div class="grid g3 why">{why_cards()}</div>
+<div class="card" style="margin-top:18px;border-left:4px solid #2fd3a8;background:var(--bg)"><h3 style="margin-bottom:.3em">The repairer behind many workshops</h3><p style="margin:0">Many car workshops send their ABS and module repairs to us. Come direct and deal with the technician who does the repair.</p></div>
 </div></section>
 
 <section class="alt" id="services"><div class="wrap">
