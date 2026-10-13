@@ -300,11 +300,15 @@ NEW_BIZ_FAQ = [
      "Your domain is registered in your name, so you always own it. If you cancel, your site stays live until the end of the month you paid for, you keep your domain, and you can buy the site files if you want to host them elsewhere."),
     ("Is S$20 a month just a starter price that jumps later?",
      "S$20 is an introductory price. It goes up once we reach our early-client target, so it's worth grabbing now, and any new price will stay close to S$20 so it stays affordable."),
+    ("What does a new business website cost in the first year with Page One?",
+     "About S$255–270 in total: 12 months at S$20 (S$240) plus your domain name, which is usually S$15–30 a year and paid by you directly. That includes building the website, hosting, the security certificate, Google Business Profile, Search Console and Bing setup, regular new articles, a monthly technical audit and small changes. There is no setup fee."),
+    ("Can I get a .com.sg domain before my company is registered?",
+     "A .com.sg domain is for businesses registered, or in the process of registering, with ACRA or another recognised Singapore body, under SGNIC's rules. A .com or plain .sg domain has no such requirement, so you can start with one of those and add .com.sg once your registration is done."),
 ]
 
 page("new-business-website/index.html",
      "Website for a New Business in Singapore: S$20/month, All Done",
-     "Starting a business in Singapore? Page One sets up your website, hosting, content and Google listing for S$20/month. No setup fee, no contract, live in 7 days.",
+     "Starting a business in Singapore? Your website, hosting, content and Google listing for S$20/month: about S$255–270 for the whole first year. No setup fee, live in 7 days.",
      [service("Website for new businesses in Singapore", "/new-business-website/",
               "A website for a new Singapore business, set up and managed: hosting, content, Google and Google Maps setup and monthly updates for S$20 a month.", "20"),
       _faq_ld(NEW_BIZ_FAQ), _price_ld("/new-business-website/")],
@@ -365,7 +369,35 @@ page("new-business-website/index.html",
       </div>
     </section>
 
-    <section class="section alt">
+    <section class="section alt" id="first-year-cost">
+      <div class="wrap narrow">
+        <p class="kicker reveal">The real first-year cost</p>
+        <h2 class="reveal">What your website costs in year one, all in</h2>
+        <p class="section-lead reveal">Most website price guides quote the build and stop there. A new business pays for the whole first year: the build, the domain, hosting, the security certificate, changes after launch and getting set up on Google. Here is that whole year with Page One, using only our published prices.</p>
+        <div class="table-wrap reveal" style="margin-top:24px">
+          <table class="compare">
+            <thead><tr><th>First-year item</th><th>With Page One</th></tr></thead>
+            <tbody>
+              <tr><th>Building the website</th><td>S$0 setup fee</td></tr>
+              <tr><th>Hosting and security (the padlock)</th><td>Included in S$20 a month</td></tr>
+              <tr><th>Google Business Profile, Search Console and Bing setup</th><td>Included</td></tr>
+              <tr><th>Regular new articles and a technical audit every month</th><td>Included</td></tr>
+              <tr><th>Small text and photo changes after launch</th><td>Included: WhatsApp Edwin</td></tr>
+              <tr><th>Domain name (in your name, paid by you)</th><td>Usually S$15–30 a year</td></tr>
+              <tr><th><b>Total for the first 12 months</b></th><td><b>About S$255–270</b> (12 × S$20, plus your domain)</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <p class="note reveal">S$20 is an introductory price. If it goes up later, any new price will stay close to S$20. Year two costs the same as year one: there is no separate renewal bill for hosting or maintenance.</p>
+        <h3 class="reveal" style="margin-top:40px">Two Singapore rules to know before you launch</h3>
+        <ul class="ticks reveal">
+          <li><b>A .com.sg address needs a registered business.</b> SGNIC, which runs .sg domains, only gives .com.sg to businesses registered (or registering) with ACRA or another recognised Singapore body. A plain .sg or .com has no such rule. If you're still registering, you can start with .com and add .com.sg later.</li>
+          <li><b>Your contact form collects personal data.</b> Under the PDPA, if your website asks for names, phone numbers or emails, tell people what you'll use them for. A short privacy notice and a line next to the form usually does it. See the <a class="link" href="https://www.pdpc.gov.sg/help-and-resources/2019/09/guide-to-notification" target="_blank" rel="noopener">PDPC guide to notification</a>.</li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="section">
       <div class="wrap">
         <p class="kicker reveal">Why it's only S$20</p>
         <h2 class="reveal">One-stop, because the busywork is automated</h2>
@@ -378,7 +410,7 @@ page("new-business-website/index.html",
       </div>
     </section>
 
-    <section class="section">
+    <section class="section alt">
       <div class="wrap narrow">
         <p class="kicker reveal">Questions</p>
         <h2 class="reveal">New business website: your questions, answered</h2>
@@ -413,6 +445,8 @@ SEO_SERVICES_FAQ = [
      "No. Google decides rankings, so no honest provider can guarantee them. Be careful of anyone who does. We document the work instead, and you can see your own numbers in Google Search Console."),
     ("Is there a contract or setup fee?",
      "No. The Get Found plan is S$20 a month at an introductory price, paid monthly in advance, with no setup fee and no minimum contract. Cancel anytime by WhatsApp."),
+    ("How do I check that an SEO company in Singapore is legitimate?",
+     "Look the company up on ACRA's Bizfile by name or UEN, ask for Google Search Console numbers with the date range shown for a website you can visit, open the client websites they name, and read the minimum term in the contract. Be careful with headline promises like \"Rank #1\" that their own small print says no one can guarantee. Page One's company details, client websites and dated Search Console results are all published so you can check them."),
 ]
 
 page("seo-services-singapore/index.html",
@@ -438,6 +472,8 @@ page("seo-services-singapore/index.html",
               <tr><th>Upfront</th><td>Sometimes a setup or audit fee</td><td>Recruitment time, equipment and training</td><td>No setup fee</td></tr>
               <tr><th>Commitment</th><td>Minimum terms are common</td><td>Employment contract and notice period</td><td>None, cancel anytime</td></tr>
               <tr><th>Website included</th><td>Usually quoted separately</td><td>Depends on their skills</td><td>Yes, if you need one</td></tr>
+              <tr><th>AI search (ChatGPT, Google AI answers)</th><td>Varies: some packages include it only in higher tiers</td><td>Depends on their skills</td><td>Included: Bing connected (ChatGPT search uses it), business details labelled with structured data, an llms.txt summary</td></tr>
+              <tr><th>Can you check results yourself?</th><td>Ask for Google Search Console access</td><td>Yes, it's your own account</td><td>Yes: Search Console is connected so you see your own Google numbers</td></tr>
               <tr><th>What's covered</th><td>Depends on the package: can include competitive keywords, links, content and ads</td><td>Often SEO plus social media, ads, content and events</td><td>Organic Google, Google Maps and AI search for a local business: website, setup, regular articles, monthly audit</td></tr>
               <tr><th>Best for</th><td>Larger budgets, national or multi-market searches</td><td>Enough marketing work to keep a full-time person busy</td><td>New and small local businesses that want the essentials done properly</td></tr>
             </tbody>
@@ -476,7 +512,7 @@ page("seo-services-singapore/index.html",
     <section class="section">
       <div class="wrap narrow">
         <p class="kicker reveal">Before you sign with anyone</p>
-        <h2 class="reveal">Six questions to ask any SEO provider</h2>
+        <h2 class="reveal">Seven questions to ask any SEO provider</h2>
         <ul class="ticks reveal">
           <li><b>Who owns the website and the domain?</b> It should be you. With Page One, your domain is registered in your name.</li>
           <li><b>Is there a minimum contract or setup fee?</b> Know what you're committing to before you start.</li>
@@ -484,7 +520,19 @@ page("seo-services-singapore/index.html",
           <li><b>Will I get access to Google Search Console?</b> It's Google's own free report, so you can check results yourself.</li>
           <li><b>Do you guarantee rankings?</b> If the answer is yes, be careful. Google decides rankings, so no one can promise them.</li>
           <li><b>How do you get links?</b> Bought links break Google's guidelines and can hurt your site.</li>
+          <li><b>Does it cover AI search?</b> More people now ask ChatGPT or read Google's AI answers before they click. Ask what is done for that, and whether it costs extra.</li>
         </ul>
+        <p class="kicker reveal" id="check-claims" style="margin-top:56px">Check before you trust</p>
+        <h2 class="reveal">How to check any SEO provider's claims in 10 minutes</h2>
+        <p class="section-lead reveal">SEO pages are full of big numbers: "#1 ranked", "200+ clients", "300% more leads". Many come with no client name, no date and no way to check. Here's how to test them, whoever you are talking to, including us.</p>
+        <ul class="ticks reveal">
+          <li><b>Look up the company.</b> Search the company name or UEN on ACRA's Bizfile. A real Singapore company shows its registration date and status.</li>
+          <li><b>Ask for dated Search Console numbers.</b> Search Console is Google's own report. Ask for clicks, impressions and average position with the date range shown, for a site you can visit.</li>
+          <li><b>Visit the client websites.</b> If they name clients, open the sites and search for their services yourself.</li>
+          <li><b>Read the headline against the small print.</b> A page that promises "Rank #1" but says in its FAQ that no one can guarantee rankings is telling you something.</li>
+          <li><b>Find the minimum term.</b> Many SEO contracts have one. Know yours before you pay the first invoice.</li>
+        </ul>
+        <p class="note reveal">We publish ours: company registration, live client websites and dated Search Console numbers. <a class="link" href="/is-page-one-singapore-legit/">Check Page One's claims yourself →</a> · <a class="link" href="/results/">Our Search Console results →</a></p>
       </div>
     </section>
 
