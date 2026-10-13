@@ -1093,7 +1093,10 @@ page("report.html",
      "Sample SEO Boost Report | Page One Singapore",
      "See what one S$10 SEO Boost from Page One Singapore delivers: Google and AI visibility checks, improvements made, and a before/after report.",
      [],
-     open(os.path.join(HERE, "report_body.html"), encoding="utf-8").read(), crumb="Sample report")
+     open(os.path.join(HERE, "report_body.html"), encoding="utf-8").read(), crumb="Sample report",
+     # Kept out of Google: it's a fictional sample, and Search Console showed it ranking
+     # for our own brand search ("page one") instead of the homepage.
+     robots="noindex, follow")
 
 # ---------- 404 ----------
 page("404.html",
@@ -1273,7 +1276,7 @@ exec(open(os.path.join(HERE, "industries.py"), encoding="utf-8").read())
 exec(open(os.path.join(HERE, "affordable.py"), encoding="utf-8").read())
 
 page("index.html",
-     "Affordable SEO Singapore from S$20/month | Page One SG",
+     "Affordable SEO Singapore from S$20/month | Page One Singapore",
      "Affordable SEO for Singapore small businesses: get found on Google, Maps and ChatGPT from S$20/month. Proven on real businesses. No setup fee or contract.",
      [HOME_FAQ_LD, {"@context": "https://schema.org", "@graph": [
          {"@type": "ProfessionalService", "@id": BIZ_ID, "name": "Page One Singapore", "url": SITE + "/",
@@ -1296,6 +1299,7 @@ page("index.html",
           "makesOffer": [{"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Get Found basic subscription", "url": SITE + "/get-found/"}, "price": "20", "priceCurrency": "SGD"},
                          {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "SEO Boost", "url": SITE + "/seo-boost/"}, "price": "10", "priceCurrency": "SGD"}]},
          {"@type": "WebSite", "@id": SITE + "/#website", "url": SITE + "/", "name": "Page One Singapore",
+          "alternateName": ["Page One SG", "PageOne Singapore", "pageonesingapore.com"],
           "inLanguage": "en-SG", "publisher": {"@id": BIZ_ID}}]}],
      open(os.path.join(HERE, "home_body.html"), encoding="utf-8").read().rstrip("\n"))
 print("built")
