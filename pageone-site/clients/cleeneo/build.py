@@ -24,7 +24,7 @@ ORIGIN = 'https://cleeneo.co'
 BASE = '/'
 DEPTH = 0  # folder depth of the page being built; set by build() so u() can emit relative links
 ABS = False  # root-relative links instead (404 page: Apache serves it at any depth)
-ASSET_V = "3"
+ASSET_V = "4"
 SLUG = 'cleeneo'
 INDEXNOW_KEY = 'af35e347ce61461f81c1426315d06255'  # same key as the controller's Client record
 # Until cleeneo.co points here, share images and icons are linked at the preview address.
@@ -82,7 +82,7 @@ ICON = {
 # Client photos (source/photos, uploaded by Edwin 13 Oct 2026), resized into site/img by hand.
 def photo(name, alt, w=900, h=900, lazy=True, cls='photo'):
     return (f'<img class="{cls}" src="{u("img/" + name + ".webp")}" srcset="{u("img/" + name + "-480.webp")} 480w, {u("img/" + name + ".webp")} 900w"'
-            f' sizes="(max-width: 899px) 92vw, 540px" width="{w}" height="{h}" alt="{e(alt)}"{" loading=\"lazy\"" if lazy else ""} decoding="async">')
+            f' sizes="(max-width: 899px) 92vw, 540px" width="{w}" height="{h}" alt="{e(alt)}"{" loading=\"lazy\"" if lazy else " fetchpriority=\"high\""} decoding="async">')
 
 
 HAND_ALT = 'Hand holding a black Cleeneo silk nasal strip with the Cleeneo logo'
@@ -220,6 +220,10 @@ def page(path, title, desc, body, active='', ld=None, share=None, kicker='Drug-f
 <link rel="icon" href="{u("icon-192.png")}" type="image/png" sizes="192x192">
 <link rel="apple-touch-icon" href="{u("apple-touch-icon.png")}">
 <link rel="manifest" href="{u("site.webmanifest")}">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600&amp;family=Manrope:wght@400;500;600;700;800&amp;display=swap" media="print" onload="this.media='all'">
+<noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600&amp;family=Manrope:wght@400;500;600;700;800&amp;display=swap"></noscript>
 <link rel="stylesheet" href="{u("cleeneo.css")}?v={ASSET_V}">
 {lds}
 </head>
@@ -536,7 +540,7 @@ def how_to():
              FAQ[3]]
     body = (page_hero([('How to use', 'how-to-use/')], 'How to Apply Nasal Strips for the Best Lift',
                       'Four simple steps. Placement matters most: on the bridge, just above where the nostrils flare.')
-            + f'<section><div class="wrap">{steps_html()}</div></section>'
+            + f'<section><div class="wrap"><div class="sec-head"><h2>Apply it in four steps</h2></div>{steps_html()}</div></section>'
             + f'<section class="alt"><div class="wrap split"><div>{photo("strip-flat", FLAT_ALT)}</div><div><h2>Getting the position right</h2>'
               '<p>The strip works by lifting the sides of your nose at the nasal valve. Too high up on the bony part of the bridge and it has nothing to lift; too low and it sits on the soft tip. Feel for where the hard bridge ends and the softer sides of the nose begin, and centre the strip just there.</p>'
               '<ul class="ticks"><li>Clean, dry, oil-free skin</li><li>Centred, with both ends sitting evenly on the sides of the nose</li><li>Pressed firmly for 10 to 15 seconds</li></ul></div></div></section>'
@@ -554,7 +558,7 @@ def kits():
     opts = ''.join(f'<option value="{k["id"]}">{e(k["name"])}: {k["strips"]} strips, S${k["price"]}</option>' for k in KITS)
     body = (page_hero([('Kits &amp; prices', 'kits/')], 'Cleeneo Nasal Strip Kits and Prices',
                       'Three simple options, all with free delivery across Singapore and no subscription.')
-            + f'<section><div class="wrap">{kit_cards()}</div></section>'
+            + f'<section><div class="wrap"><div class="sec-head"><h2>Choose your kit</h2></div>{kit_cards()}</div></section>'
             + f'''<section class="alt" id="order"><div class="wrap split top">
 <div>
 <h2>Order on WhatsApp</h2>
@@ -589,7 +593,7 @@ def shipping():
              ('How do I track my order?', f'Your parcel is tracked. If you need an update, WhatsApp us on <a href="{wa_link("Hi Cleeneo, can I have an update on my order?")}" target="_blank" rel="noopener">{BIZ["disp"]}</a> or email <a href="mailto:{BIZ["email"]}">{BIZ["email"]}</a>.')]
     body = (page_hero([('Shipping &amp; returns', 'shipping/')], 'Shipping and Delivery Across Singapore',
                       'Free, tracked and insured delivery on every order. Singapore only.')
-            + f'''<section><div class="wrap grid g3">
+            + f'''<section><div class="wrap"><div class="sec-head"><h2>How delivery works</h2></div></div><div class="wrap grid g3">
 <div class="card"><div class="ico">{ICON["truck"]}</div><h3>Free delivery</h3><p>Free on every kit, with no minimum order. Tracked and insured.</p></div>
 <div class="card"><div class="ico">{ICON["repeat"].replace('<path d="M2 2l20 20"/>', '')}</div><h3>Fast dispatch</h3><p>Orders before 2pm SGT are dispatched the next business day. Later or weekend orders go out within 1–2 business days.</p></div>
 <div class="card"><div class="ico">{ICON["plane"]}</div><h3>Singapore only</h3><p>Arrives typically 2–4 business days after dispatch, to residential, commercial and PO box addresses. No international shipping.</p></div>
@@ -634,7 +638,7 @@ def about():
 def contact():
     body = (page_hero([('Contact', 'contact/')], 'Contact Cleeneo',
                       'Questions, orders, wholesale or partnerships. WhatsApp is the fastest way to reach us.')
-            + f'''<section><div class="wrap split top">
+            + f'''<section><div class="wrap"><div class="sec-head"><h2>Ways to reach us</h2></div></div><div class="wrap split top">
 <div class="grid">
 <div class="card"><div class="ico">{ICON["wa"]}</div><h3>WhatsApp</h3><p><a href="{wa_link()}" target="_blank" rel="noopener">{BIZ["disp"]}</a></p>{wa_btn("Chat on WhatsApp")}</div>
 <div class="card"><div class="ico">{ICON["mail"]}</div><h3>Email</h3><p><a href="mailto:{BIZ["email"]}">{BIZ["email"]}</a><br><span class="muted">For questions, wholesale orders and partnerships.</span></p></div>
@@ -676,7 +680,7 @@ POSTS = [{
 def blog():
     cards = ''.join(f'<a class="card use" href="{u("blog/" + p["slug"] + "/")}"><p class="muted small">{p["date_disp"]}</p><h3>{e(p["title"])}</h3><p>{e(p["desc"])}</p><span class="more">Read more →</span></a>' for p in POSTS)
     body = (page_hero([('Blog', 'blog/')], 'The Cleeneo Blog', 'Plain guides to nose breathing, snoring and sleeping better.')
-            + f'<section><div class="wrap grid g2">{cards}</div></section>')
+            + f'<section><div class="wrap"><div class="sec-head"><h2>Latest guides</h2></div></div><div class="wrap grid g2">{cards}</div></section>')
     return page('blog/', 'Blog: Nose Breathing, Snoring & Sleep | Cleeneo',
                 'Guides from Cleeneo on nasal strips, nose breathing, snoring and better sleep in Singapore.',
                 body, active='', ld=[crumbs_ld([('Blog', 'blog/')])], share='Guides to Nose Breathing, Snoring and Better Sleep')
@@ -702,7 +706,7 @@ def not_found():
     try:
         body = (page_hero([('Page not found', '')], 'Sorry, that page isn’t here',
                           'It may have moved when the Cleeneo site was updated. These links will get you back on track.')
-                + f'<section><div class="wrap">{use_cards()}<p style="margin-top:20px" class="btns"><a class="btn btn-line" href="{u()}">Home</a><a class="btn btn-line" href="{u("kits/")}">Kits &amp; prices</a>{wa_btn("WhatsApp us")}</p></div></section>')
+                + f'<section><div class="wrap"><div class="sec-head"><h2>Find the right strip</h2></div>{use_cards()}<p style="margin-top:20px" class="btns"><a class="btn btn-line" href="{u()}">Home</a><a class="btn btn-line" href="{u("kits/")}">Kits &amp; prices</a>{wa_btn("WhatsApp us")}</p></div></section>')
         html_ = page('404.html', 'Page not found | Cleeneo', 'This page does not exist on cleeneo.co.', body)
     finally:
         ABS = False
