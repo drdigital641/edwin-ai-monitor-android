@@ -24,7 +24,7 @@ ORIGIN = 'https://cleeneo.co'
 BASE = '/'
 DEPTH = 0  # folder depth of the page being built; set by build() so u() can emit relative links
 ABS = False  # root-relative links instead (404 page: Apache serves it at any depth)
-ASSET_V = "4"
+ASSET_V = "5"
 SLUG = 'cleeneo'
 INDEXNOW_KEY = 'af35e347ce61461f81c1426315d06255'  # same key as the controller's Client record
 # Until cleeneo.co points here, share images and icons are linked at the preview address.
@@ -41,11 +41,11 @@ WA_TEXT = 'Hi Cleeneo, I have a question about your nasal strips.'
 
 KITS = [
     {'id': 'trial', 'name': 'Trial Kit', 'strips': 10, 'price': '9.90', 'was': None,
-     'note': 'Try them for a week or two', 'badge': None},
+     'note': '10 nights', 'badge': None},
     {'id': 'pack30', 'name': '30-Strip Pack', 'strips': 30, 'price': '21.90', 'was': '29.90',
-     'note': 'A month of nights', 'badge': 'Popular'},
+     'note': 'A month', 'badge': 'Popular'},
     {'id': 'bundle', 'name': 'Bundle: Buy 2 Get 1 Free', 'strips': 90, 'price': '43.80', 'was': '89.70',
-     'note': 'Three packs of 30, best price per strip', 'badge': 'Best value'},
+     'note': '3 × 30 strips', 'badge': 'Best value'},
 ]
 
 NAV = [('', 'Home'), ('nasal-strips/snoring/', 'Snoring'), ('nasal-strips/sports/', 'Sports'),
@@ -54,15 +54,14 @@ NAV = [('', 'Home'), ('nasal-strips/snoring/', 'Snoring'), ('nasal-strips/sports
 FOOT_MORE = [('about/', 'About Cleeneo'), ('shipping/', 'Shipping &amp; returns'), ('blog/', 'Blog')]
 
 REVIEWS = [
-    ('Wei Ming T.', 'First night in years I didn’t wake up gasping. The lift is immediate and the adhesive leaves zero residue.'),
-    ('Priya N.', 'I’ve tried every strip on the pharmacy shelf. This is a different category entirely.'),
-    ('Jun Hao L.', 'My sleep tracking showed a 22% drop in disturbances the first week. The tension bar is the real engineering feat here.'),
-    ('Mei Ling C.', 'Genuinely changed my mornings. I breathe through my nose now without thinking about it. Worth every cent.'),
+    ('Wei Ming T.', 'First night in years I didn’t wake up gasping.'),
+    ('Priya N.', 'This is a different category entirely.'),
+    ('Mei Ling C.', 'Genuinely changed my mornings.'),
 ]
 RATING = ('4.9', '48')
 
-DOCTOR = ('Cleeneo strips are a drug-free breathing aid, not a treatment for sleep apnoea or any medical condition. '
-          'If you snore loudly most nights, stop breathing or gasp in your sleep, or feel very tired during the day, please see a doctor.')
+DOCTOR = ('Cleeneo is a breathing aid, not a treatment for sleep apnoea or any medical condition. '
+          'If you snore loudly, gasp in your sleep or feel very tired by day, please see a doctor.')
 
 ICON = {
     'wa': '<svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.5 14.4c-.3-.1-1.8-.9-2-1s-.5-.1-.7.1-.8 1-1 1.2-.4.2-.7.1a8.2 8.2 0 0 1-4-3.5c-.3-.5.3-.5.9-1.6.1-.2 0-.4 0-.5l-.9-2.2c-.2-.6-.5-.5-.7-.5h-.6a1.1 1.1 0 0 0-.8.4 3.4 3.4 0 0 0-1 2.5 5.9 5.9 0 0 0 1.2 3.1 13.5 13.5 0 0 0 5.2 4.6c1.9.8 2.7.9 3.6.7a3.1 3.1 0 0 0 2-1.4 2.5 2.5 0 0 0 .2-1.4c-.1-.2-.3-.3-.6-.4zM12 21.8a9.8 9.8 0 0 1-5-1.4l-.4-.2-3.7 1 1-3.6-.2-.4A9.8 9.8 0 1 1 12 21.8zm8.4-18.2A11.8 11.8 0 0 0 1.8 17.8L.1 24l6.3-1.7a11.8 11.8 0 0 0 5.6 1.4A11.8 11.8 0 0 0 20.4 3.6z"/></svg>',
@@ -222,8 +221,8 @@ def page(path, title, desc, body, active='', ld=None, share=None, kicker='Drug-f
 <link rel="manifest" href="{u("site.webmanifest")}">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600&amp;family=Manrope:wght@400;500;600;700;800&amp;display=swap" media="print" onload="this.media='all'">
-<noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600&amp;family=Manrope:wght@400;500;600;700;800&amp;display=swap"></noscript>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&amp;display=swap" media="print" onload="this.media='all'">
+<noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&amp;display=swap"></noscript>
 <link rel="stylesheet" href="{u("cleeneo.css")}?v={ASSET_V}">
 {lds}
 </head>
@@ -300,18 +299,17 @@ def kit_cards(head=True):
 <h3>{e(k["name"])}</h3>
 <p class="strips">{k["strips"]} strips</p>
 <p class="price"><span>S${k["price"]}</span>{was}</p>
-<p class="per">About {per * 100:.0f}¢ a strip · {e(k["note"])}</p>
-<ul class="ticks sm"><li>Free delivery in Singapore</li><li>One-time order, no subscription</li></ul>
+<p class="per">{e(k["note"])} · {per * 100:.0f}¢ a strip</p>
 {wa_btn("Order on WhatsApp", kit_text(k), "btn btn-wa wide")}
 </article>''')
     return '<div class="grid g3 kits">' + ''.join(cards) + '</div>'
 
 
 def reviews_block():
-    q = ''.join(f'<blockquote class="card quote">{stars()}<p>“{e(t)}”</p><cite>{e(n)}</cite> <span class="muted">· verified buyer</span></blockquote>'
+    q = ''.join(f'<blockquote class="card quote">{stars()}<p>“{e(t)}”</p><cite>{e(n)}</cite></blockquote>'
                 for n, t in REVIEWS)
     return (f'<section><div class="wrap"><div class="sec-head"><h2>What customers say</h2>{rating_line()}</div>'
-            f'<div class="grid g4 reviews" tabindex="0" role="region" aria-label="Customer reviews">{q}</div></div></section>')
+            f'<div class="grid g3 reviews" tabindex="0" role="region" aria-label="Customer reviews">{q}</div></div></section>')
 
 
 def faq_html(items):
@@ -329,29 +327,28 @@ def band(h, p, text=ORDER_TEXT, label='Order on WhatsApp', second=True):
 
 
 def why_cards():
-    items = [('shield', 'Drug-free &amp; latex-free', 'Works mechanically, not chemically. No medicine, no drowsiness, nothing to interact with.'),
-             ('layers', 'Four-layer silk build', 'Three PET spring-tension bars under a soft silk layer, with a hypoallergenic adhesive.'),
-             ('truck', 'Free Singapore delivery', 'Tracked and insured. Usually dispatched in 1–2 business days.'),
-             ('repeat', 'No subscription', 'Order a pack when you need one. No auto-renewal and nothing to cancel.')]
-    return ''.join(f'<div class="card"><div class="ico">{ICON[i]}</div><h3>{t}</h3><p>{d}</p></div>' for i, t, d in items)
+    items = [('shield', 'Drug-free', 'Nothing to wear off.'),
+             ('layers', 'Soft silk', 'Gentle on skin, firm lift.'),
+             ('truck', 'Free delivery', 'Anywhere in Singapore.'),
+             ('repeat', 'No subscription', 'Buy only when you need.')]
+    return ''.join(f'<div class="card"><div class="ico">{ICON[i]}</div><p class="t">{t}</p><p>{d}</p></div>' for i, t, d in items)
 
 
 def use_cards(skip=None):
-    items = [('nasal-strips/snoring/', 'moon', 'Snoring &amp; sleep', 'Keep breathing through your nose at night, for quieter nights and better mornings.'),
-             ('nasal-strips/sports/', 'run', 'Sports &amp; training', 'More air through your nose while you run, ride or train.'),
-             ('nasal-strips/allergies/', 'leaf', 'Allergies &amp; congestion', 'Drug-free relief for a blocked nose from dust mites, mould and haze.')]
+    items = [('nasal-strips/snoring/', 'moon', 'Sleep', 'Quieter, deeper nights.'),
+             ('nasal-strips/sports/', 'run', 'Sport', 'More air while you train.'),
+             ('nasal-strips/allergies/', 'leaf', 'Allergies', 'Clear a blocked nose, drug-free.')]
     return '<div class="grid g3 uses">' + ''.join(
-        f'<a class="card use" href="{u(p)}"><div class="ico">{ICON[i]}</div><h3>{t}</h3><p>{d}</p><span class="more">Learn more →</span></a>'
+        f'<a class="card use" href="{u(p)}"><div class="ico">{ICON[i]}</div><h3>{t}</h3><p>{d}</p><span class="more">More →</span></a>'
         for p, i, t, d in items if p != skip) + '</div>'
 
 
 STEPS = [
-    ('Clean and dry', 'Wash the bridge of your nose and dry it fully. Oil, lotion or moisturiser stops the adhesive from holding.'),
-    ('Find the spot', 'Peel off the liner and centre the strip across the bridge of your nose, just above where your nostrils flare.'),
-    ('Press it down', 'Press the ends onto the sides of your nose and rub along the strip for 10 to 15 seconds so it bonds.'),
-    ('Peel off gently', 'In the morning, wet the strip and peel slowly from the ends. Use a fresh strip each time.'),
+    ('Clean and dry', 'No oil or lotion on your nose.'),
+    ('Place it', 'Centre it just above the nostril flare.'),
+    ('Press', 'Rub along the strip for 10–15 seconds.'),
+    ('Peel off', 'Wet it and peel slowly in the morning.'),
 ]
-
 
 def steps_html():
     return '<ol class="steps">' + ''.join(f'<li><h3>{t}</h3><p>{d}</p></li>' for t, d in STEPS) + '</ol>'
@@ -363,21 +360,21 @@ def doctor_note():
 
 FAQ = [
     ('How do nasal strips work?',
-     'A Cleeneo strip has three flexible PET spring-tension bars. Once it is on the bridge of your nose, the bars try to straighten, which gently lifts the sides of your nose and widens the nasal valve, the narrowest part of your nasal airway. More air can then flow through your nose without effort.'),
+     'Three flexible spring bars gently lift the sides of your nose, so more air flows through.'),
     ('Are Cleeneo strips drug-free and latex-free?',
-     'Yes. They work mechanically, not chemically, and use a hypoallergenic, latex-free adhesive.'),
+     'Yes. No medicine, and a hypoallergenic, latex-free adhesive.'),
     ('Can I sleep with them on?',
-     'Yes. The adhesive and tension bar are made to hold through a full night’s sleep. Put a fresh strip on just before bed.'),
+     'Yes. They’re made to hold all night. Use a fresh strip each time.'),
     ('How long can I wear one strip?',
-     'The adhesive is designed to hold for up to 12 hours. Use a new strip for each night or each session.'),
+     'Up to 12 hours.'),
     ('How fast is delivery in Singapore?',
-     'Orders are dispatched within 1–2 business days (orders before 2pm SGT usually go out the next business day) and typically arrive 2–4 business days after dispatch. Delivery is free, tracked and insured.'),
+     'Free, tracked delivery. Dispatched in 1–2 business days, arrives 2–4 days later.'),
     ('Do I need a subscription?',
-     'No. Order a one-time pack or bundle whenever you need one. There is no auto-renewal and nothing to cancel.'),
+     'No. One-time orders only.'),
     ('How do I order?',
-     f'Pick a kit and tap “Order on WhatsApp”. Your kit is filled in for you; just add your name and delivery address and we will confirm your order and payment details in the chat. You can also email <a href="mailto:{BIZ["email"]}">{BIZ["email"]}</a>.'),
+     f'Tap “Order on WhatsApp”, add your name and address, and we’ll confirm. Or email <a href="mailto:{BIZ["email"]}">{BIZ["email"]}</a>.'),
     ('Do you ship outside Singapore?',
-     'Not at the moment. Cleeneo delivers within Singapore only, to residential, commercial and PO box addresses.'),
+     'Not yet. Singapore only.'),
 ]
 FAQ_BY = dict(FAQ)
 
@@ -391,65 +388,49 @@ def home():
     body = f'''
 <section class="hero"><div class="wrap hero-grid">
 <div>
-<span class="eyebrow">Singapore brand · Drug-free · Latex-free</span>
-<h1>Drug-Free Silk Nasal Strips for Better Sleep and Breathing</h1>
-<p class="lead">Cleeneo strips sit on the bridge of your nose and gently lift the nasal valve, so air flows through your nose more easily. For snoring, a blocked nose, or more air while you train.</p>
+<span class="eyebrow">Drug-free · Latex-free · Singapore</span>
+<h1>Silk Nasal Strips for Better Sleep</h1>
+<p class="lead">Breathe easier through your nose, from tonight.</p>
 {rating_line()}
-<ul class="chips"><li>Trial kit S$9.90</li><li>Free delivery in Singapore</li><li>No subscription</li></ul>
-<div class="btns">{wa_btn("Order on WhatsApp", ORDER_TEXT)}<a class="btn btn-line" href="{u("kits/")}">See kits &amp; prices</a></div>
+<div class="btns">{wa_btn("Order on WhatsApp", ORDER_TEXT)}<a class="btn btn-line" href="{u("kits/")}">Shop kits</a></div>
+<ul class="chips"><li>Trial kit S$9.90</li><li>Free delivery</li></ul>
 </div>
 <div class="hero-art">{photo("strip-in-hand", HAND_ALT, lazy=False)}</div>
 </div></section>
 
-<section><div class="wrap">
-<div class="sec-head"><h2>Why Cleeneo</h2><p>A simple, mechanical way to breathe through your nose, made for Singapore and delivered free.</p></div>
-<div class="grid g4 why">{why_cards()}</div>
-</div></section>
+<section class="tight"><div class="wrap"><div class="grid g4 why">{why_cards()}</div></div></section>
 
 <section class="alt"><div class="wrap split">
-<div>{photo("strip-flat", FLAT_ALT)}</div>
+<div>{photo("strip-layers", LAYERS_ALT)}</div>
 <div>
-<h2>How a nasal strip works</h2>
-<p>Just inside your nostrils is the nasal valve, the narrowest part of the airway in your nose. When it narrows, from a cold, allergies, the shape of your nose or simply lying down, breathing through your nose takes more effort and many people switch to breathing through the mouth.</p>
-<p>A Cleeneo strip acts like a small spring. Its three PET bars gently lift the sides of your nose, widening the nasal valve the moment it goes on. No drugs, no sprays, nothing to wear off.</p>
-<a class="btn btn-line" href="{u("how-to-use/")}">How to put one on</a>
+<span class="eyebrow">How it works</span>
+<h2>Opens your nose, gently</h2>
+<p>Three spring bars lift the sides of your nose, so air flows freely.</p>
+<ul class="ticks"><li>Silk top layer</li><li>Three PET spring bars</li><li>Latex-free adhesive</li></ul>
+<a class="btn btn-line" href="{u("how-to-use/")}">How to use</a>
 </div>
 </div></section>
 
 <section><div class="wrap">
-<div class="sec-head"><h2>Made for the moments you need to breathe</h2></div>
+<div class="sec-head"><h2>What it’s for</h2></div>
 {use_cards()}
 </div></section>
 
-<section class="alt"><div class="wrap split">
-<div>
-<h2>Four layers, one strip</h2>
-<p>Each Cleeneo strip is built in four layers, so it lifts firmly but feels soft on your skin.</p>
-<ul class="ticks"><li><strong>Silk contact layer</strong> for a soft, breathable finish</li><li><strong>Three PET spring-tension bars</strong> for an even lift</li><li><strong>Hypoallergenic, latex-free adhesive</strong> that holds overnight</li><li><strong>Release liner</strong> you peel off before use</li></ul>
-</div>
-<div>{photo("strip-layers", LAYERS_ALT)}</div>
-</div></section>
-
-<section><div class="wrap">
-<div class="sec-head"><h2>On in under a minute</h2></div>
-{steps_html()}
-</div></section>
-
 <section class="alt" id="buy"><div class="wrap">
-<div class="sec-head"><h2>Choose your kit</h2><p>All prices in Singapore dollars. Free delivery on every kit, Singapore only.</p></div>
+<div class="sec-head"><h2>Choose your kit</h2><p>Free delivery. No subscription.</p></div>
 {kit_cards()}
 </div></section>
 
 {reviews_block()}
 
-{faq_block(pick("How do nasal strips work?", "Are Cleeneo strips drug-free and latex-free?", "Can I sleep with them on?", "How fast is delivery in Singapore?", "Do I need a subscription?", "How do I order?"), "Nasal strip FAQ")}
+{faq_block(pick("How do nasal strips work?", "Can I sleep with them on?", "How fast is delivery in Singapore?", "How do I order?"), "FAQ")}
 
-{band("Ready to breathe easier tonight?", "Start with the S$9.90 trial kit. Free delivery across Singapore.", kit_text(KITS[0]), "Order the trial kit")}
+{band("Breathe easier tonight", "Start with the S$9.90 trial kit.", kit_text(KITS[0]), "Order the trial kit")}
 '''
     return page('', 'Cleeneo Nasal Strips | Drug-Free Snoring Relief Singapore',
                 'Drug-free, latex-free silk nasal strips for snoring, sport and a blocked nose. Rated 4.9/5. Trial kit S$9.90 with free delivery across Singapore.',
-                body, active='', ld=[product_ld(), faq_ld(pick("How do nasal strips work?", "Are Cleeneo strips drug-free and latex-free?", "Can I sleep with them on?", "How fast is delivery in Singapore?", "Do I need a subscription?", "How do I order?"))],
-                share='Drug-Free Silk Nasal Strips for Better Sleep and Breathing')
+                body, active='', ld=[product_ld(), faq_ld(pick("How do nasal strips work?", "Can I sleep with them on?", "How fast is delivery in Singapore?", "How do I order?"))],
+                share='Silk Nasal Strips for Better Sleep')
 
 
 USES = {
@@ -457,54 +438,39 @@ USES = {
         'title': 'Nasal Strips for Snoring Singapore | Cleeneo',
         'desc': 'Drug-free silk nasal strips that help you keep breathing through your nose at night for quieter sleep. Trial kit S$9.90, free delivery in Singapore.',
         'h1': 'Nasal Strips for Snoring and Better Sleep',
-        'sub': 'When your nose is open, you are more likely to keep breathing through it at night. Cleeneo gently lifts the nasal valve so you can.',
+        'sub': 'Keep breathing through your nose all night.',
         'icon': 'moon',
         'sections': [
-            ('Why a blocked nose leads to snoring',
-             '<p>When the airway in your nose is narrow, breathing through it takes effort, so many sleepers end up breathing through the mouth. Mouth breathing lets air rattle past the soft tissue at the back of the throat, which is what you hear as snoring. It also leaves you with a dry mouth and a groggy start to the day.</p>'
-             '<p>A Cleeneo strip widens the nasal valve from the outside, making it easier to stay with nose breathing through the night. For snoring that starts in the nose, that can mean quieter nights for you and whoever sleeps next to you.</p>'),
-            ('A strip that lasts the night',
-             '<ul class="ticks"><li>Hypoallergenic, latex-free adhesive made to hold through a full night</li><li>Soft silk layer that is comfortable on your skin</li><li>Peels off in the morning without leaving residue</li><li>Drug-free, so it is fine to use every night</li></ul>'),
-            ('When to see a doctor',
-             f'<p>{DOCTOR}</p>'),
+            ('Why it helps',
+             '<ul class="ticks"><li>A blocked nose pushes you to mouth-breathe, and snore</li><li>Cleeneo opens your nose from the outside</li><li>Holds all night, peels off clean</li></ul>'),
         ],
-        'faq': ['How do nasal strips work?', 'Can I sleep with them on?', 'Are Cleeneo strips drug-free and latex-free?', 'Do I need a subscription?'],
+        'faq': ['How do nasal strips work?', 'Can I sleep with them on?', 'Do I need a subscription?'],
         'wa': 'Hi Cleeneo, I would like to try your nasal strips for snoring.',
     },
     'sports': {
         'title': 'Sports Nasal Strips for Running & Training | Cleeneo SG',
         'desc': 'Silk nasal strips for runners, cyclists and gym-goers in Singapore. More air through your nose while you train. Trial kit S$9.90, free delivery.',
         'h1': 'Sports Nasal Strips for Running, Cycling and Training',
-        'sub': 'Keep breathing through your nose for longer as the effort goes up. Cleeneo opens the nasal valve so more air gets through with each breath.',
+        'sub': 'More air through your nose as the effort goes up.',
         'icon': 'run',
         'sections': [
-            ('Why athletes use nasal strips',
-             '<p>Many runners, cyclists and gym-goers train to breathe through the nose: it warms and filters the air and helps keep breathing calm and steady. As the effort rises, a narrow nasal valve is often what forces you to switch to mouth breathing.</p>'
-             '<p>A Cleeneo strip gently lifts the sides of your nose, so more air can flow through it per breath. Many people find nose breathing feels easier for longer.</p>'),
-            ('Made to stay on',
-             '<ul class="ticks"><li>Adhesive designed to stay in place through sweat and movement</li><li>Low-profile silk finish under a cap, helmet or goggles</li><li>Drug-free, with nothing to declare or wear off</li></ul>'),
-            ('How to use it for training',
-             '<p>Put a strip on clean, dry skin before your warm-up and press it down well, so it bonds before you start sweating. Breathe through your nose during your session, then peel it off gently after your cool-down. Use a fresh strip each session.</p>'),
+            ('Built for training',
+             '<ul class="ticks"><li>More air per breath through your nose</li><li>Stays on through sweat and movement</li><li>Low-profile under a cap or helmet</li><li>Apply before your warm-up</li></ul>'),
         ],
-        'faq': ['How do nasal strips work?', 'How long can I wear one strip?', 'Are Cleeneo strips drug-free and latex-free?', 'How do I order?'],
+        'faq': ['How do nasal strips work?', 'How long can I wear one strip?', 'How do I order?'],
         'wa': 'Hi Cleeneo, I would like to try your nasal strips for sport.',
     },
     'allergies': {
         'title': 'Nasal Strips for Allergies & Blocked Nose | Cleeneo SG',
         'desc': 'Drug-free nasal strips for a blocked nose from dust mites, mould or haze in Singapore. No drowsiness. Trial kit S$9.90, free delivery.',
         'h1': 'Nasal Strips for Allergies and a Blocked Nose',
-        'sub': 'Singapore’s humidity means dust mites and mould all year round. Cleeneo opens your nose mechanically, with no medicine and no drowsiness.',
+        'sub': 'Drug-free relief from dust mites, mould and haze.',
         'icon': 'leaf',
         'sections': [
-            ('Drug-free relief for a stuffy nose',
-             '<p>Allergies make the lining of the nose swell, which narrows the nasal valve even further. A Cleeneo strip lifts the sides of your nose from the outside, giving air more room to pass the moment it goes on.</p>'
-             '<p>Because it works mechanically, there is no drowsiness, no rebound effect and nothing to build a dependency on. If you take allergy medication, keep following your doctor’s or pharmacist’s advice; the strip contains no medicine of its own.</p>'),
-            ('Day or night',
-             '<ul class="ticks"><li>Wear it at night when a blocked nose keeps you awake</li><li>Or during the day at home, at work or while travelling</li><li>Adhesive designed to hold for up to 12 hours</li><li>Hypoallergenic, latex-free adhesive and a soft silk layer</li></ul>'),
-            ('Allergies all year round',
-             '<p>Singapore has no pollen season to wait out. Dust mites, mould and the occasional haze are around all year, which is why many allergy sufferers keep a pack of strips at the bedside.</p>'),
+            ('Why it helps',
+             '<ul class="ticks"><li>Opens a stuffy nose the moment it goes on</li><li>No medicine, no drowsiness</li><li>Wear it day or night, up to 12 hours</li></ul>'),
         ],
-        'faq': ['Are Cleeneo strips drug-free and latex-free?', 'How long can I wear one strip?', 'Can I sleep with them on?', 'How fast is delivery in Singapore?'],
+        'faq': ['Are Cleeneo strips drug-free and latex-free?', 'How long can I wear one strip?', 'Can I sleep with them on?'],
         'wa': 'Hi Cleeneo, I would like to try your nasal strips for my allergies.',
     },
 }
@@ -518,34 +484,30 @@ def use_page(key):
     items = pick(*p['faq'])
     body = (page_hero([('Nasal strips', 'kits/'), (p['h1'].split(' for ')[-1].split(' and ')[0].capitalize(), path)], p['h1'], p['sub'])
             + f'<section><div class="wrap split"><div>{photo("strip-flat", FLAT_ALT)}</div><div><h2>Try Cleeneo for {key}</h2>'
-              f'<p>Start with the 10-strip trial kit for S$9.90, or save with a 30-strip pack. Free delivery across Singapore and no subscription.</p>'
+              f'<p>Trial kit S$9.90. Free delivery.</p>'
               f'{rating_line()}<div class="btns">{wa_btn("Order on WhatsApp", p["wa"])}<a class="btn btn-line" href="{u("kits/")}">See kits &amp; prices</a></div></div></div></section>'
             + secs
-            + f'<section class="alt"><div class="wrap"><div class="sec-head"><h2>How to put it on</h2></div>{steps_html()}</div></section>'
             + reviews_block()
             + f'<section class="alt"><div class="wrap"><div class="sec-head"><h2>Choose your kit</h2></div>{kit_cards()}</div></section>'
             + faq_block(items, 'Questions')
-            + f'<section><div class="wrap"><div class="sec-head"><h2>Other ways people use Cleeneo</h2></div>{use_cards(path)}</div></section>')
+            + f'<section><div class="wrap"><div class="sec-head"><h2>Also great for</h2></div>{use_cards(path)}</div></section>')
     crumb = p['h1'].replace('Nasal Strips for ', '').replace('Sports Nasal Strips for ', '')
     ld = [crumbs_ld([('Nasal strips', 'kits/'), (crumb, path)]), faq_ld(items), product_ld()]
     return page(path, p['title'], p['desc'], body, active=path, ld=ld, share=p['h1'])
 
 
 def how_to():
-    items = [('Can I reuse a strip?', 'No. Use a fresh strip each night or each session, so the adhesive and the lift work as they should.'),
-             ('The strip keeps coming off. What should I do?',
-              'Make sure the skin is clean and completely dry, with no moisturiser or sunscreen on the nose. Press along the whole strip for 10 to 15 seconds after putting it on, and place it on the bridge just above the flare of the nostrils.'),
-             ('Does it hurt to take off?',
-              'It should not. Wet the strip with warm water first, then peel slowly from each end towards the middle.'),
-             FAQ[3]]
+    items = [('Can I reuse a strip?', 'No. Use a fresh strip each time.'),
+             ('The strip keeps coming off. What should I do?', 'Dry, oil-free skin, then press for 10–15 seconds.'),
+             ('Does it hurt to take off?', 'No. Wet it first and peel slowly from the ends.')]
     body = (page_hero([('How to use', 'how-to-use/')], 'How to Apply Nasal Strips for the Best Lift',
-                      'Four simple steps. Placement matters most: on the bridge, just above where the nostrils flare.')
+                      'Four steps, under a minute.')
             + f'<section><div class="wrap"><div class="sec-head"><h2>Apply it in four steps</h2></div>{steps_html()}</div></section>'
             + f'<section class="alt"><div class="wrap split"><div>{photo("strip-flat", FLAT_ALT)}</div><div><h2>Getting the position right</h2>'
-              '<p>The strip works by lifting the sides of your nose at the nasal valve. Too high up on the bony part of the bridge and it has nothing to lift; too low and it sits on the soft tip. Feel for where the hard bridge ends and the softer sides of the nose begin, and centre the strip just there.</p>'
-              '<ul class="ticks"><li>Clean, dry, oil-free skin</li><li>Centred, with both ends sitting evenly on the sides of the nose</li><li>Pressed firmly for 10 to 15 seconds</li></ul></div></div></section>'
+              '<p>Where the hard bridge meets the soft sides of your nose.</p>'
+              '<ul class="ticks"><li>Clean, dry skin</li><li>Centred and even</li><li>Pressed 10–15 seconds</li></ul></div></div></section>'
             + faq_block(items, 'Tips and questions')
-            + band('Try it tonight', 'The S$9.90 trial kit has 10 strips, with free delivery across Singapore.', kit_text(KITS[0]), 'Order the trial kit'))
+            + band('Try it tonight', 'Trial kit S$9.90, free delivery.', kit_text(KITS[0]), 'Order the trial kit'))
     return page('how-to-use/', 'How to Apply Nasal Strips: Step by Step | Cleeneo',
                 'How to put on a nasal strip for the best lift: clean and dry, find the spot, press for 10 to 15 seconds, and peel off gently in the morning.',
                 body, active='how-to-use/', ld=[crumbs_ld([('How to use', 'how-to-use/')]), faq_ld(items), {
@@ -557,14 +519,14 @@ def how_to():
 def kits():
     opts = ''.join(f'<option value="{k["id"]}">{e(k["name"])}: {k["strips"]} strips, S${k["price"]}</option>' for k in KITS)
     body = (page_hero([('Kits &amp; prices', 'kits/')], 'Cleeneo Nasal Strip Kits and Prices',
-                      'Three simple options, all with free delivery across Singapore and no subscription.')
+                      'Free delivery. No subscription.')
             + f'<section><div class="wrap"><div class="sec-head"><h2>Choose your kit</h2></div>{kit_cards()}</div></section>'
             + f'''<section class="alt" id="order"><div class="wrap split top">
 <div>
 <h2>Order on WhatsApp</h2>
-<p>Choose your kit and fill in your delivery details. Tapping the button opens WhatsApp with your order typed out, ready to send. We will confirm your order and payment details in the chat.</p>
-<ul class="ticks"><li>Free delivery, tracked and insured</li><li>Orders before 2pm SGT usually go out the next business day</li><li>Typically arrives 2–4 business days after dispatch</li></ul>
-<p class="muted">Prefer email? Send your order to <a href="mailto:{BIZ["email"]}">{BIZ["email"]}</a>.</p>
+<p>Fill in your details. WhatsApp opens with your order ready to send.</p>
+<ul class="ticks"><li>Free, tracked delivery</li><li>Arrives in 2–4 business days</li></ul>
+<p class="muted">Or email <a href="mailto:{BIZ["email"]}">{BIZ["email"]}</a>.</p>
 </div>
 <form class="card form" id="oform">
 <label class="f" for="o-kit">Kit</label><select id="o-kit" required>{opts}</select>
@@ -576,35 +538,33 @@ def kits():
 <p class="small muted">Singapore addresses only.</p>
 </form>
 </div></section>'''
-            + reviews_block()
-            + faq_block(pick('How do I order?', 'How fast is delivery in Singapore?', 'Do I need a subscription?', 'Do you ship outside Singapore?'), 'Ordering questions'))
+            + faq_block(pick('How do I order?', 'How fast is delivery in Singapore?', 'Do you ship outside Singapore?'), 'Ordering questions'))
     data = json.dumps({k['id']: {'name': k['name'], 'strips': k['strips'], 'price': k['price']} for k in KITS})
     body += f'<script>window.CLEENEO_KITS={data};</script>'
     return page('kits/', 'Buy Nasal Strips Online in Singapore: Kits & Prices | Cleeneo',
                 'Cleeneo silk nasal strips: 10-strip trial kit S$9.90, 30-strip pack S$21.90, 90-strip bundle S$43.80. Free delivery in Singapore, no subscription.',
                 body, active='kits/', ld=[crumbs_ld([('Kits & prices', 'kits/')]), product_ld(),
-                                          faq_ld(pick('How do I order?', 'How fast is delivery in Singapore?', 'Do I need a subscription?', 'Do you ship outside Singapore?'))],
+                                          faq_ld(pick('How do I order?', 'How fast is delivery in Singapore?', 'Do you ship outside Singapore?'))],
                 share='Nasal Strip Kits from S$9.90 with Free Delivery')
 
 
 def shipping():
-    items = [('Is delivery really free?', 'Yes. Delivery is free on every kit, with no minimum order.'),
+    items = [('Is delivery really free?', 'Yes, on every kit.'),
              FAQ[7],
-             ('How do I track my order?', f'Your parcel is tracked. If you need an update, WhatsApp us on <a href="{wa_link("Hi Cleeneo, can I have an update on my order?")}" target="_blank" rel="noopener">{BIZ["disp"]}</a> or email <a href="mailto:{BIZ["email"]}">{BIZ["email"]}</a>.')]
+             ('How do I track my order?', f'WhatsApp us on <a href="{wa_link("Hi Cleeneo, can I have an update on my order?")}" target="_blank" rel="noopener">{BIZ["disp"]}</a> for an update.')]
     body = (page_hero([('Shipping &amp; returns', 'shipping/')], 'Shipping and Delivery Across Singapore',
-                      'Free, tracked and insured delivery on every order. Singapore only.')
+                      'Free and tracked. Singapore only.')
             + f'''<section><div class="wrap"><div class="sec-head"><h2>How delivery works</h2></div></div><div class="wrap grid g3">
-<div class="card"><div class="ico">{ICON["truck"]}</div><h3>Free delivery</h3><p>Free on every kit, with no minimum order. Tracked and insured.</p></div>
-<div class="card"><div class="ico">{ICON["repeat"].replace('<path d="M2 2l20 20"/>', '')}</div><h3>Fast dispatch</h3><p>Orders before 2pm SGT are dispatched the next business day. Later or weekend orders go out within 1–2 business days.</p></div>
-<div class="card"><div class="ico">{ICON["plane"]}</div><h3>Singapore only</h3><p>Arrives typically 2–4 business days after dispatch, to residential, commercial and PO box addresses. No international shipping.</p></div>
+<div class="card"><div class="ico">{ICON["truck"]}</div><h3>Free delivery</h3><p>On every kit. No minimum.</p></div>
+<div class="card"><div class="ico">{ICON["repeat"].replace('<path d="M2 2l20 20"/>', '')}</div><h3>Fast dispatch</h3><p>Out in 1–2 business days.</p></div>
+<div class="card"><div class="ico">{ICON["plane"]}</div><h3>Singapore only</h3><p>Arrives 2–4 days after dispatch.</p></div>
 </div></section>
 <section class="alt"><div class="wrap narrow">
 <h2>Returns and problems with an order</h2>
-<p>If your order arrives damaged, or there is a problem with your strips, email <a href="mailto:{BIZ["email"]}">{BIZ["email"]}</a> within 14 days of delivery and we will sort it out promptly.</p>
-<p>For hygiene reasons, opened packs cannot be returned. Quality issues are always looked after.</p>
+<p>Damaged or faulty? Email <a href="mailto:{BIZ["email"]}">{BIZ["email"]}</a> within 14 days and we’ll fix it. Opened packs can’t be returned for hygiene reasons.</p>
 </div></section>'''
             + faq_block(items, 'Delivery questions')
-            + band('Free delivery on every kit', 'Order on WhatsApp in a minute.'))
+            + band('Free delivery on every kit', 'Order in a minute.'))
     return page('shipping/', 'Shipping & Delivery Across Singapore | Cleeneo',
                 'Free, tracked and insured delivery across Singapore on every Cleeneo order. Dispatched in 1–2 business days, arriving in 2–4. Singapore only.',
                 body, active='', ld=[crumbs_ld([('Shipping & returns', 'shipping/')]), faq_ld(items)],
@@ -613,23 +573,22 @@ def shipping():
 
 def about():
     body = (page_hero([('About', 'about/')], 'About Cleeneo',
-                      'A Singapore brand making premium silk nasal strips for effortless breathing.')
+                      'Premium silk nasal strips, made in Singapore.')
             + f'''<section><div class="wrap split">
 <div>
 <h2>Breathe easier, sleep deeper</h2>
-<p>Cleeneo makes silk nasal strips that gently lift the nasal passages, so you can breathe through your nose more easily. They are made for nighttime congestion, mouth breathing and snoring, and for anyone who wants clearer airflow: sleepers, athletes, travellers and allergy sufferers.</p>
-<p>Every strip uses the same four-layer build: three PET spring-tension bars, a soft silk layer and a hypoallergenic, latex-free adhesive. No drugs, no sprays.</p>
-<p>Cleeneo is founded and run from Singapore, with one simple mission: help people wake up rested.</p>
+<p>Silk nasal strips that gently open your nose. For sleepers, athletes, travellers and allergy sufferers.</p>
+<p>Our mission is simple: help you wake up rested.</p>
 </div>
 <div>{photo("strip-layers", LAYERS_ALT)}</div>
 </div></section>
 <section class="alt"><div class="wrap grid g3">
-<div class="card"><div class="ico">{ICON["wind"]}</div><h3>Effortless breathing</h3><p>A firm, even lift that opens the nasal valve without discomfort.</p></div>
-<div class="card"><div class="ico">{ICON["plane"]}</div><h3>Who it’s for</h3><p>Sleepers, athletes, travellers and anyone who wants clearer airflow.</p></div>
-<div class="card"><div class="ico">{ICON["shield"]}</div><h3>Singapore-based</h3><p>Designed and run locally, with free, fast delivery across Singapore.</p></div>
+<div class="card"><div class="ico">{ICON["wind"]}</div><h3>Effortless breathing</h3><p>Firm lift, no discomfort.</p></div>
+<div class="card"><div class="ico">{ICON["plane"]}</div><h3>Who it’s for</h3><p>Anyone who wants clearer airflow.</p></div>
+<div class="card"><div class="ico">{ICON["shield"]}</div><h3>Singapore-based</h3><p>Local, with free delivery.</p></div>
 </div></section>'''
             + reviews_block()
-            + band('Questions about Cleeneo?', 'WhatsApp or email us, including for wholesale orders and partnerships.', WA_TEXT, 'WhatsApp us', second=False))
+            + band('Questions?', 'WhatsApp us, including wholesale.', WA_TEXT, 'WhatsApp us', second=False))
     return page('about/', 'About Cleeneo | Silk Nasal Strips Designed in Singapore',
                 'Cleeneo is a Singapore brand of drug-free, latex-free silk nasal strips for sleepers, athletes, travellers and allergy sufferers.',
                 body, active='', ld=[crumbs_ld([('About', 'about/')])], share='Silk Nasal Strips, Designed and Run in Singapore')
@@ -637,12 +596,12 @@ def about():
 
 def contact():
     body = (page_hero([('Contact', 'contact/')], 'Contact Cleeneo',
-                      'Questions, orders, wholesale or partnerships. WhatsApp is the fastest way to reach us.')
+                      'WhatsApp is the fastest way to reach us.')
             + f'''<section><div class="wrap"><div class="sec-head"><h2>Ways to reach us</h2></div></div><div class="wrap split top">
 <div class="grid">
 <div class="card"><div class="ico">{ICON["wa"]}</div><h3>WhatsApp</h3><p><a href="{wa_link()}" target="_blank" rel="noopener">{BIZ["disp"]}</a></p>{wa_btn("Chat on WhatsApp")}</div>
-<div class="card"><div class="ico">{ICON["mail"]}</div><h3>Email</h3><p><a href="mailto:{BIZ["email"]}">{BIZ["email"]}</a><br><span class="muted">For questions, wholesale orders and partnerships.</span></p></div>
-<div class="card"><div class="ico">{ICON["truck"]}</div><h3>Delivery</h3><p>Singapore only. Free, tracked and insured. <a href="{u("shipping/")}">Shipping details</a></p></div>
+<div class="card"><div class="ico">{ICON["mail"]}</div><h3>Email</h3><p><a href="mailto:{BIZ["email"]}">{BIZ["email"]}</a></p></div>
+<div class="card"><div class="ico">{ICON["truck"]}</div><h3>Delivery</h3><p>Free, Singapore only. <a href="{u("shipping/")}">Details</a></p></div>
 </div>
 <form class="card form" id="qform">
 <h2 class="h3">Send us a message</h2>
