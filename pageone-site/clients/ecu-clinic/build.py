@@ -67,6 +67,14 @@ ICON = {
     'truck': '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M1 3h15v13H1zM16 8h4l3 3v5h-7z"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg>',
 }
 
+# WhatsApp and phone icons repeat on every button: draw them once in a hidden sprite and reuse them.
+SPRITE = ('<svg width="0" height="0" style="position:absolute" aria-hidden="true">'
+          + ICON['wa'].replace('<svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">', '<symbol id="i-wa" viewBox="0 0 24 24">').replace('</svg>', '</symbol>')
+          + ICON['phone'].replace('<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">', '<symbol id="i-phone" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">').replace('</svg>', '</symbol>')
+          + '</svg>')
+ICON['wa'] = '<svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><use href="#i-wa"/></svg>'
+ICON['phone'] = '<svg viewBox="0 0 24 24" aria-hidden="true"><use href="#i-phone"/></svg>'
+
 e = html.escape
 
 
@@ -265,6 +273,7 @@ def page(path, title, desc, body, ld=None, share=('module-circuit-board.jpg', No
 </head>
 <body>
 <a class="skip" href="#main">Skip to content</a>
+{SPRITE}
 {strip}<div class="topbar"><div class="wrap">
 <span>ABS &amp; brake system repair <span class="hide-sm">· Mon–Sat 10am–6pm · Sun &amp; PH closed</span></span>
 <span><a href="{wa_link()}" target="_blank" rel="noopener">WhatsApp {BIZ["tel_disp"]}</a> <span class="hide-sm">· {BIZ["building"]}</span></span>
