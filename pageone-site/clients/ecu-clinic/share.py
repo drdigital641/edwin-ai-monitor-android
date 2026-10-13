@@ -42,7 +42,7 @@ def _logo_plate(height):
     return plate
 
 
-def card(slug, photo, headline, kicker='ECU & ABS repair · Kaki Bukit, Singapore'):
+def card(slug, photo, headline, kicker='Brake system specialist · Kaki Bukit'):
     W, H = 1200, 630
     img = ImageOps.fit(ImageOps.exif_transpose(Image.open(os.path.join(SRC, 'photos', photo))).convert('RGB'), (W, H), Image.LANCZOS)
     shade = Image.new('L', (W, 1))
