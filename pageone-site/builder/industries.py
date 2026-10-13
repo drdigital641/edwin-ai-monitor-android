@@ -175,8 +175,99 @@ INDUSTRIES = [
     },
 ]
 
+# New-business pages: for someone opening one of these businesses. Extra keys: "new" (listed under "Opening a new
+# business?" on the hub), "eyebrow", "opening" (what to set up before day one) and "cta". No proof section: we don't
+# run a site in these industries yet, so none is claimed.
+NEW_INDUSTRIES = [
+    {
+        "slug": "home-bakery", "name": "Home bakeries", "short": "home bakery", "new": True,
+        "eyebrow": "Starting a home bakery?",
+        "title": "Starting a Home Bakery? Website + Google SEO | Page One",
+        "desc": "Starting a home bakery in Singapore? Get a website on your own domain, Google Maps and WhatsApp orders set up before your first bake. S$20/month, no setup fee.",
+        "h1": "Starting a home bakery? Get found from your first bake",
+        "lead": "Instagram gets you started, but people also search Google and ask ChatGPT for cakes, bakes and tarts near them. Page One sets up a simple website with your menu, how to order and a WhatsApp button, plus your Google listing, so new customers can find you from day one.",
+        "searches": ["custom birthday cake Punggol", "home baker near me", "pineapple tarts order Singapore", "halal home bakery", "bento cake delivery"],
+        "needs": [("Your menu, clearly", "What you bake, sizes, flavours and prices or how you quote, with photos. Each popular item can have its own page so Google can match it to searches."),
+                  ("How to order", "Lead time, pickup area or delivery, payment and how far ahead to order, written once so you stop answering the same questions on chat."),
+                  ("Orders by WhatsApp", "A one-tap WhatsApp button on every page, so a customer looking at a cake photo can message you straight away.")],
+        "opening": [("Check the home-based business rules", "Read the current HDB or URA home-based business rules and SFA's guidance on home-based food businesses, and follow them. We don't give legal advice, but we can show the details customers should know, such as halal status, on your site."),
+                    ("Pick your name and domain", "Choose a name you can keep, then register the matching domain in your name (usually S$15–30 a year). Use the same name on Instagram, Google and your website."),
+                    ("Decide what you'll list first", "Start with your best-selling bakes and your order process. You can add more items as you go."),
+                    ("Get on Google Maps", "A Google Business Profile can show your service area without showing your home address. We set it up with you.")],
+        "faqs": [("I bake from home. Can I be on Google Maps without showing my address?", "Yes. Google lets you list the area you serve and hide your full address. We set it up that way for home-based businesses."),
+                 ("Is Instagram not enough for a home bakery?", "Instagram is great for showing your bakes, but Google and ChatGPT can't rank it like a website. A website catches the customers who search instead of scroll, and it's yours."),
+                 ("I haven't started selling yet. Is it too early?", "No. Setting up your website and Google listing before you launch means you're findable from your first order. It's usually live within 7 days."),
+                 ("What does it cost?", "S$20 a month on the Get Found plan (introductory price), website included, no setup fee and no contract. Your domain is paid by you directly, usually S$15–30 a year.")],
+        "cta": ("Starting a home bakery? Let's get you found.", "Tell Edwin on WhatsApp what you bake and where you deliver. No obligation."),
+    },
+    {
+        "slug": "cafe", "name": "Cafes", "short": "cafe", "new": True,
+        "eyebrow": "Opening a cafe?",
+        "title": "Opening a Cafe in Singapore? Website + Google | Page One",
+        "desc": "Opening a cafe in Singapore? Get your website, menu, opening hours and Google Maps listing ready before day one, so people nearby can find you. S$20/month.",
+        "h1": "Opening a cafe? Be on Google before your first customer",
+        "lead": "When a new cafe opens, people nearby search Google Maps and ask ChatGPT where to go for coffee, brunch or a quiet place to work. Page One gets your cafe onto Google, Google Maps and AI search with a simple website showing your menu, hours and location.",
+        "searches": ["cafe near me", "brunch Tiong Bahru", "work friendly cafe Singapore", "new cafes Singapore", "halal cafe Bugis"],
+        "needs": [("Menu and prices", "Your menu as real text, not just a photo, so Google and AI assistants can read it and match it to what people search for."),
+                  ("Hours, location and how to get there", "Opening hours, nearest MRT, parking and whether you take reservations, the same on your website and your Google listing."),
+                  ("Photos that make people come in", "Your space, your food and your coffee, labelled so Google Images and AI assistants understand them.")],
+        "opening": [("Get your licence sorted first", "Food shops in Singapore need the right SFA licence before they open. Once that's in progress, you can get your website and Google listing ready in parallel."),
+                    ("Claim your Google listing early", "Set up your Google Business Profile with your opening date, so people can find you from day one. We set it up with you."),
+                    ("Register your domain", "Register your cafe's domain in your name (usually S$15–30 a year), and use the exact same name everywhere."),
+                    ("Put your menu online", "Even a short opening menu helps. We can add seasonal items and new dishes later.")],
+        "faqs": [("We open in a few weeks. When should we set up the website?", "Before you open. Your website is usually live within 7 days, and having your Google listing and website ready means people can find you as soon as you open your doors."),
+                 ("Can you put our menu on the website?", "Yes. We put it on as real text with prices, so Google and AI assistants can read it, and we update it when you send changes on WhatsApp."),
+                 ("Do we still need a website if we're on food delivery apps?", "Delivery apps list you alongside many competitors. Your own website and Google listing bring people to you directly, for dine-in, takeaway and events."),
+                 ("What does it cost?", "S$20 a month on the Get Found plan (introductory price), website included, no setup fee and no contract.")],
+        "cta": ("Opening a cafe? Let's get you on the map.", "Tell Edwin on WhatsApp where you're opening and when. No obligation."),
+    },
+    {
+        "slug": "nail-lash-studio", "name": "Nail &amp; lash studios", "short": "nail or lash studio", "new": True,
+        "eyebrow": "Opening a nail or lash studio?",
+        "title": "Opening a Nail or Lash Studio? Website + SEO | Page One",
+        "desc": "Opening a nail or lash studio in Singapore? Get a website with services, prices and WhatsApp booking, plus Google Maps, from day one. S$20/month, no contract.",
+        "h1": "Opening a nail or lash studio? Get booked from Google",
+        "lead": "New customers search by treatment and area, then look at photos and prices before they book. Page One gives your new studio a website with your services, prices and a booking button, and puts you on Google, Google Maps and ChatGPT from day one.",
+        "searches": ["gel manicure Tampines", "eyelash extension near me", "lash lift price Singapore", "nail salon Jurong East", "home based lash studio"],
+        "needs": [("Services with prices", "Each treatment, such as gel manicure, nail art, lash extensions or lash lift, with prices and how long it takes, so customers can choose before they message."),
+                  ("Your work, front and centre", "Photos of your sets and designs, labelled so Google Images and AI assistants understand them."),
+                  ("Easy booking", "A WhatsApp button or your booking link on every page, plus your hours and location or service area.")],
+        "opening": [("Settle your name and domain", "Pick a studio name you can keep and register the matching domain in your name (usually S$15–30 a year)."),
+                    ("Write your price list", "Start with your main treatments and prices. You can add promotions and new services later."),
+                    ("Get on Google Maps", "A Google Business Profile with your hours and photos. Home-based? You can show your area without your full address."),
+                    ("Collect your first reviews", "Ask your first customers to leave a Google review. It's one of the first things new customers look at.")],
+        "faqs": [("I'm opening a home-based lash studio. Can I still show up on Google Maps?", "Yes. You can list the area you serve without showing your full address publicly. We set it up for you."),
+                 ("Instagram works for me. Why a website?", "Instagram is great for showing your work, but Google and ChatGPT can't rank it like a website. A website catches the customers who search instead of scroll."),
+                 ("Can I link my booking app?", "Yes. We can put your booking link next to the WhatsApp button on every page."),
+                 ("What does it cost?", "S$20 a month (introductory price), website included, no setup fee and no contract.")],
+        "cta": ("Opening a studio? Let's get you booked.", "Tell Edwin on WhatsApp what you offer and where. No obligation."),
+    },
+    {
+        "slug": "fitness-studio", "name": "Fitness studios &amp; personal trainers", "short": "fitness studio or personal training business", "new": True,
+        "eyebrow": "Opening a gym, studio or PT business?",
+        "title": "New Fitness Studio or PT Business? Website + SEO | Page One",
+        "desc": "Opening a fitness studio or starting as a personal trainer in Singapore? Get a website, Google Maps and WhatsApp enquiries set up from day one. S$20/month.",
+        "h1": "Starting a fitness studio or PT business? Get found first",
+        "lead": "People search for a trainer, a class or a studio near home or work, then compare what's offered and what it costs. Page One gives your new studio or personal training business a website that explains your classes and prices, and gets you onto Google, Google Maps and ChatGPT.",
+        "searches": ["personal trainer Bishan", "pilates studio near me", "HIIT class Singapore", "personal trainer for beginners", "boxing class Tanjong Pagar"],
+        "needs": [("Classes and sessions explained", "Each class type or training package on its own page, with who it's for, how long it is and the price or how you quote."),
+                  ("Your trainers and qualifications", "Who teaches, their experience and certifications, written clearly so customers and AI assistants can trust them."),
+                  ("Easy trial booking", "A WhatsApp button for trial sessions and questions, plus your timetable, location or the areas you train in.")],
+        "opening": [("Decide what you'll offer first", "Your main classes or packages and prices. Keep it simple at launch and add more as you grow."),
+                    ("Register your domain", "Register your studio or trainer name as a domain in your name (usually S$15–30 a year)."),
+                    ("Get on Google Maps", "A Google Business Profile for your studio. Mobile personal trainer? You can list the areas you cover instead of an address."),
+                    ("Have your certifications ready", "List the qualifications you actually hold. Customers check, and it helps them choose you.")],
+        "faqs": [("I'm a freelance personal trainer without a studio. Do I need a website?", "It helps. People search for a trainer by area and goal, and a website with your approach, packages and qualifications gives them a reason to message you. Google lets you list the areas you cover without a fixed address."),
+                 ("Can you show our class timetable?", "Yes. We can add your timetable and update it when you send changes on WhatsApp."),
+                 ("We're opening soon. Is it too early?", "No. Your website is usually live within 7 days, and being on Google before you open means people can find you from day one."),
+                 ("What does it cost?", "S$20 a month (introductory price), website included, no setup fee and no contract.")],
+        "cta": ("Starting out in fitness? Let's get you found.", "Tell Edwin on WhatsApp what you offer and where. No obligation."),
+    },
+]
+INDUSTRIES = INDUSTRIES + NEW_INDUSTRIES
+
 _checker_src = open(os.path.join(HERE, "home_body.html"), encoding="utf-8").read()
-CHECKER_SECTION = _checker_src[_checker_src.index("<!-- WEBSITE CHECKER -->"):_checker_src.index("<!-- PROOF -->")]
+CHECKER_SECTION = _checker_src[_checker_src.index("<!-- WEBSITE CHECKER -->"):_checker_src.index("<!-- CLIENT STORIES -->")]
 
 
 def industry_page(ind):
@@ -190,11 +281,23 @@ def industry_page(ind):
       <div class="wrap">
         <p class="kicker reveal">Proof</p>
         <h2 class="reveal">The same system, running on a real {ind['short']}</h2>
-        {ind['proof']}
+        {ind.get("proof", "")}
       </div>
     </section>
-""" if ind["proof"] else ""
-    body = hero(f'<a href="/industries/">Industries</a> / {ind["name"]}', ind["name"] + " in Singapore", ind["h1"], ind["lead"],
+""" if ind.get("proof") else ""
+    opening = "".join(f'<li><b>{h}.</b> {p}</li>' for h, p in ind.get("opening", []))
+    opening = f"""
+    <section class="section">
+      <div class="wrap narrow">
+        <p class="kicker reveal">Before you open</p>
+        <h2 class="reveal">Opening a {ind['short']}: what to set up first</h2>
+        <ul class="ticks reveal">{opening}</ul>
+        <p class="note reveal">We do the website, Google Maps, Google and Bing setup for you. <a class="link" href="/new-business-website/">See the full new business launch checklist →</a></p>
+      </div>
+    </section>
+""" if opening else ""
+    cta_title, cta_text = ind.get("cta", (f"Get your {ind['short']} found", "Check your website free, or chat with Edwin on WhatsApp. No obligation."))
+    body = hero(f'<a href="/industries/">Industries</a> / {ind["name"]}', ind.get("eyebrow", ind["name"] + " in Singapore"), ind["h1"], ind["lead"],
                 '<p class="hero-price"><b>S$20</b>/month · <span class="intro-tag">Introductory price</span> · website + SEO · no setup fee</p>') + f"""
 
     <section class="section">
@@ -215,7 +318,7 @@ def industry_page(ind):
         <p class="note reveal">Plus everything in the Get Found plan: Google Business Profile, Google and Bing connected, structured data for AI search, hosting, security and a monthly technical audit. <a class="link" href="/get-found/">See what's included →</a></p>
       </div>
     </section>
-{proof}
+{proof}{opening}
     <section class="section alt">
       <div class="wrap narrow">
         <p class="kicker reveal">Questions</p>
@@ -226,23 +329,26 @@ def industry_page(ind):
       </div>
     </section>
 
-""" + cta(f"Get your {ind['short']} found", "Check your website free, or chat with Edwin on WhatsApp. No obligation.")
+""" + cta(cta_title, cta_text)
     page(f"industries/{ind['slug']}/index.html", ind["title"], ind["desc"],
          [service(f"Website and SEO for {ind['name'].replace('&amp;', '&').lower()} in Singapore", url, ind["desc"], "20"),
           {"@context": "https://schema.org", "@type": "FAQPage",
            "mainEntity": [{"@type": "Question", "name": q, "acceptedAnswer": {"@type": "Answer", "text": a}} for q, a in ind["faqs"]]}],
-         body, crumb="Industries")
+         body, crumb="Industries", updated="2026-10-13" if ind.get("new") else None)
 
 
 for _ind in INDUSTRIES:
     industry_page(_ind)
 
-_ind_cards = "".join(
-    f'<div class="card reveal"><h3><a href="/industries/{i["slug"]}/">{i["name"]}</a></h3><p>{i["desc"]}</p><a class="card-link" href="/industries/{i["slug"]}/">See how it works →</a></div>'
-    for i in INDUSTRIES)
+def _ind_card(i):
+    return f'<div class="card reveal"><h3><a href="/industries/{i["slug"]}/">{i["name"]}</a></h3><p>{i["desc"]}</p><a class="card-link" href="/industries/{i["slug"]}/">See how it works →</a></div>'
+
+
+_new_cards = "".join(_ind_card(i) for i in INDUSTRIES if i.get("new"))
+_ind_cards = "".join(_ind_card(i) for i in INDUSTRIES if not i.get("new"))
 page("industries/index.html",
      "SEO &amp; Websites by Industry in Singapore | Page One",
-     "How Page One gets Singapore small businesses found on Google, Maps and ChatGPT, industry by industry: workshops, cleaning, aircon, renovation, tuition and more.",
+     "How Page One gets Singapore small businesses found on Google, Maps and ChatGPT, by industry: new bakeries, cafes and studios, workshops, cleaning and more.",
      [{"@context": "https://schema.org", "@type": "ItemList", "itemListElement": [
          {"@type": "ListItem", "position": n + 1, "url": f"{SITE}/industries/{i['slug']}/", "name": i["name"].replace("&amp;", "&")}
          for n, i in enumerate(INDUSTRIES)]}],
@@ -251,13 +357,24 @@ page("industries/index.html",
 
     <section class="section">
       <div class="wrap">
-        <div class="cards three" style="margin-top:8px">{_ind_cards}</div>
+        <p class="kicker reveal">Opening a new business?</p>
+        <h2 class="reveal">Get found from day one</h2>
+        <p class="section-lead reveal">What to set up before you open, and what your first website needs. <a class="link" href="/new-business-website/">See the new business launch checklist →</a></p>
+        <div class="cards three" style="margin-top:32px">{_new_cards}</div>
+      </div>
+    </section>
+
+    <section class="section alt">
+      <div class="wrap">
+        <p class="kicker reveal">Established trades</p>
+        <h2 class="reveal">Industries we help</h2>
+        <div class="cards three" style="margin-top:32px">{_ind_cards}</div>
         <p class="note reveal">Don't see your industry? The same system works for most local businesses. <a class="link" href="{WA_LINK}" target="_blank" rel="noopener">Ask Edwin on WhatsApp →</a></p>
       </div>
     </section>
 
 """ + cta(),
-     crumb="Industries")
+     crumb="Industries", updated="2026-10-13")
 
 # ---------- Free website check (landing page for the checker) ----------
 FREE_CHECK_FAQ = [

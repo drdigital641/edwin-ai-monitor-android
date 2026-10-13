@@ -183,12 +183,12 @@ page("cheapest-seo-singapore/index.html",
         <h2 class="reveal">Cheap SEO: your questions, answered</h2>
         <div style="margin-top:24px">
 {_faq_html(CHEAP_SEO_FAQ)}        </div>
-        <p class="note reveal">Need a website too? <a class="link" href="/cheapest-website-singapore/">A website without the lump sum →</a></p>
+        <p class="note reveal">Need a website too? <a class="link" href="/cheapest-website-singapore/">A website without the lump sum →</a> · Comparing agencies or an in-house hire? <a class="link" href="/seo-services-singapore/">SEO services compared →</a></p>
       </div>
     </section>
 
 """ + cta("See what S$20 a month can do for you", "Check your website free in under a minute, or chat with Edwin on WhatsApp. No obligation."),
-     crumb="Cheap SEO that works")
+     crumb="Cheap SEO that works", updated="2026-10-13")
 
 
 # ---------- Cheapest website maker in Singapore ----------
@@ -327,7 +327,23 @@ page("new-business-website/index.html",
       </div>
     </section>
 
-    <section class="section alt">
+    <section class="section alt" id="launch-checklist">
+      <div class="wrap narrow">
+        <p class="kicker reveal">New business launch checklist</p>
+        <h2 class="reveal">Your first five steps online</h2>
+        <p class="section-lead reveal">Work through these in order. The ones marked <b>we do this</b> are part of the S$20 plan.</p>
+        <ul class="ticks reveal">
+          <li><b>ACRA registration done.</b> Your business is registered through Bizfile and you have your UEN. Use the exact registered or trading name everywhere: website, Google listing and social pages.</li>
+          <li><b>Domain registered in your name.</b> yourbusiness.com.sg or .com, usually S$15–30 a year, paid by you directly so you always own it. <span class="term">We help you set it up</span></li>
+          <li><b>Google Business Profile.</b> Your listing on Google Maps with your category, hours, photos and area. Home-based? You can hide your address and show the area you serve. <span class="term">We do this</span></li>
+          <li><b>WhatsApp button.</b> One tap from any page to message you, on the number you'll use for the business. <span class="term">We do this</span></li>
+          <li><b>Your first pages.</b> A homepage that says what you do and where, a page for each main service or product, prices or how you quote, an about page and a contact page with your hours. Then Google Search Console and Bing connected so you can see who finds you. <span class="term">We do this</span></li>
+        </ul>
+        <p class="note reveal">Opening a <a class="link" href="/industries/home-bakery/">home bakery</a>, <a class="link" href="/industries/cafe/">cafe</a>, <a class="link" href="/industries/nail-lash-studio/">nail or lash studio</a> or <a class="link" href="/industries/fitness-studio/">fitness studio</a>? See what to set up for your type of business.</p>
+      </div>
+    </section>
+
+    <section class="section">
       <div class="wrap">
         <p class="kicker reveal">Do it yourself, or let Edwin do it</p>
         <h2 class="reveal">Everything you'd otherwise sort out yourself</h2>
@@ -349,7 +365,7 @@ page("new-business-website/index.html",
       </div>
     </section>
 
-    <section class="section">
+    <section class="section alt">
       <div class="wrap">
         <p class="kicker reveal">Why it's only S$20</p>
         <h2 class="reveal">One-stop, because the busywork is automated</h2>
@@ -362,15 +378,147 @@ page("new-business-website/index.html",
       </div>
     </section>
 
-    <section class="section alt">
+    <section class="section">
       <div class="wrap narrow">
         <p class="kicker reveal">Questions</p>
         <h2 class="reveal">New business website: your questions, answered</h2>
         <div style="margin-top:24px">
 {_faq_html(NEW_BIZ_FAQ)}        </div>
-        <p class="note reveal">Already have a website that nobody looks after? <a class="link" href="/website/">We can take it over →</a></p>
+        <p class="note reveal">Comparing this with an SEO agency or hiring a marketing executive? <a class="link" href="/seo-services-singapore/">See how S$20 a month compares →</a></p>
       </div>
     </section>
 
 """ + cta("Starting a business? Let's get you online.", "Chat with Edwin on WhatsApp: tell us what you do and where. Live within 7 days, S$20 a month."),
-     crumb="New business website")
+     crumb="New business website", updated="2026-10-13")
+
+
+# ---------- SEO services in Singapore: agency vs in-house vs Page One ----------
+# For people actively shopping for SEO or about to hire an SEO / digital marketing executive. Market figures are
+# general Singapore ranges, labelled as typical ranges and never as any provider's quote. CPF 17% is the employer
+# rate for Singapore citizens and PRs aged 55 and below. The salary example is an illustration, not a benchmark.
+SEO_SERVICES_FAQ = [
+    ("How much do SEO services cost in Singapore?",
+     "It varies a lot by provider and scope. As a general guide, small business SEO retainers from agencies are often somewhere around S$500 to S$3,000 or more a month, sometimes with a setup or audit fee. Hiring an in-house SEO or digital marketing executive typically means a salary of roughly S$3,000 to S$5,000 a month plus employer CPF and tools. These are typical ranges, not quotes. Page One's Get Found plan is S$20 a month (introductory price), with optional SEO Boosts at S$10 each, no setup fee and no contract."),
+    ("Is an SEO agency better than Page One?",
+     "It depends on what you need. An agency can make sense if you have a larger budget, compete for national searches, sell in several markets or want ads and SEO handled together. Page One is built for new and small local businesses that want the essentials done properly at a low monthly cost: a website, Google and Google Maps setup, AI search setup, regular articles and a monthly technical audit."),
+    ("Should I hire an in-house SEO executive or outsource?",
+     "Hire if you have enough marketing work to keep a full-time person busy, for example social media, ads, content and events as well as SEO. If what you mainly need is for your website to be found on Google and Google Maps, outsourcing the SEO groundwork usually costs far less, and you can still hire later when there's more to do."),
+    ("How much does it cost to hire an SEO or digital marketing executive in Singapore?",
+     "Salaries for these roles typically range from around S$3,000 to S$5,000 a month depending on experience, as a general guide. On top of salary, employers pay CPF of 17% for Singapore citizens and PRs aged 55 and below, plus paid SEO tools, leave cover, training and your own time managing the role. For example, a S$3,500 salary plus 17% CPF is about S$4,095 a month before tools or bonus."),
+    ("What does Page One not do?",
+     "We don't run paid ads, manage your social media accounts, or buy links. We don't promise rankings, because no honest provider can. We focus on organic (unpaid) visibility on Google, Google Maps and AI assistants like ChatGPT for local small businesses."),
+    ("Can Page One work alongside my marketing executive?",
+     "Yes. We look after the website and the Google and AI search groundwork, and your executive can send us updates on WhatsApp while they focus on social media, ads and customers."),
+    ("Do you guarantee page one on Google?",
+     "No. Google decides rankings, so no honest provider can guarantee them. Be careful of anyone who does. We document the work instead, and you can see your own numbers in Google Search Console."),
+    ("Is there a contract or setup fee?",
+     "No. The Get Found plan is S$20 a month at an introductory price, paid monthly in advance, with no setup fee and no minimum contract. Cancel anytime by WhatsApp."),
+]
+
+page("seo-services-singapore/index.html",
+     "SEO Services Singapore: Agency vs In-house vs S$20/month",
+     "Comparing SEO services in Singapore? Agency retainers, hiring an SEO executive or Page One at S$20/month: typical costs, what you get and when each makes sense.",
+     [service("SEO services for Singapore small businesses", "/seo-services-singapore/",
+              "Done-for-you SEO for Singapore small businesses: a website or SEO landing page, Google, Google Maps and AI search setup, regular articles and a monthly technical audit for S$20 a month.", "20"),
+      _faq_ld(SEO_SERVICES_FAQ), _price_ld("/seo-services-singapore/")],
+     hero("SEO services compared", "Shopping for SEO in Singapore?",
+          "SEO services in Singapore: agency, in-house hire, or S$20 a month?",
+          "If you're comparing SEO companies, or thinking of hiring someone to do it, here's an honest side-by-side: typical costs, what each option is good at, and where Page One fits, and where it doesn't.",
+          '<p class="hero-price"><b>S$20</b>/month · <span class="intro-tag">Introductory price</span> · no setup fee · no contract</p>') + f"""
+
+    <section class="section">
+      <div class="wrap">
+        <p class="kicker reveal">Side by side</p>
+        <h2 class="reveal">SEO agency vs in-house executive vs Page One</h2>
+        <div class="table-wrap reveal" style="margin-top:24px">
+          <table class="compare">
+            <thead><tr><th></th><th>SEO agency</th><th>In-house SEO / digital marketing executive</th><th>Page One</th></tr></thead>
+            <tbody>
+              <tr><th>Typical monthly cost</th><td>Often around S$500 to S$3,000+ for a small business retainer</td><td>Salary often around S$3,000 to S$5,000, plus 17% employer CPF and tools</td><td><b>S$20</b> (introductory price), optional SEO Boosts S$10 each</td></tr>
+              <tr><th>Upfront</th><td>Sometimes a setup or audit fee</td><td>Recruitment time, equipment and training</td><td>No setup fee</td></tr>
+              <tr><th>Commitment</th><td>Minimum terms are common</td><td>Employment contract and notice period</td><td>None, cancel anytime</td></tr>
+              <tr><th>Website included</th><td>Usually quoted separately</td><td>Depends on their skills</td><td>Yes, if you need one</td></tr>
+              <tr><th>What's covered</th><td>Depends on the package: can include competitive keywords, links, content and ads</td><td>Often SEO plus social media, ads, content and events</td><td>Organic Google, Google Maps and AI search for a local business: website, setup, regular articles, monthly audit</td></tr>
+              <tr><th>Best for</th><td>Larger budgets, national or multi-market searches</td><td>Enough marketing work to keep a full-time person busy</td><td>New and small local businesses that want the essentials done properly</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <p class="note reveal"><b>About these figures:</b> agency and salary figures are general Singapore market ranges for illustration only. They are typical ranges, not quotes from any provider, and real prices vary a lot by experience and scope. Always ask for a written quote. Only Page One's own prices are exact.</p>
+      </div>
+    </section>
+
+    <section class="section alt" id="hiring">
+      <div class="wrap split">
+        <div class="reveal">
+          <p class="kicker">Thinking of hiring an SEO executive?</p>
+          <h2>Add up the full cost first</h2>
+          <p>A good SEO or digital marketing executive can be worth every dollar, if there's enough work for them. Before you post the job ad, count everything the role costs, not just the salary.</p>
+          <ul class="ticks">
+            <li><b>Salary.</b> Typically around S$3,000 to S$5,000 a month for these roles, depending on experience (general range, not a quote).</li>
+            <li><b>Employer CPF.</b> 17% on top for Singapore citizens and PRs aged 55 and below.</li>
+            <li><b>Tools.</b> Professional SEO tools are usually paid monthly subscriptions.</li>
+            <li><b>Your time.</b> Recruiting, training, managing and covering leave or a resignation.</li>
+          </ul>
+          <p class="fine">Example only: a S$3,500 salary plus 17% CPF is about S$4,095 a month, or roughly S$49,000 a year, before tools or bonus.</p>
+        </div>
+        <div class="panel reveal" style="background:#fff">
+          <h3>When each makes sense</h3>
+          <ul class="ticks">
+            <li><b>Hire</b> when you have ongoing marketing work across social media, ads, content and events, and someone to manage the role.</li>
+            <li><b>Use Page One</b> when what you mainly need is to be found on Google, Google Maps and ChatGPT, with the website looked after for you.</li>
+            <li><b>Or both.</b> We handle the website and search groundwork, and your executive focuses on social media, ads and customers.</li>
+          </ul>
+          <a class="card-link" href="/get-found/">See what S$20 a month covers →</a>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="wrap narrow">
+        <p class="kicker reveal">Before you sign with anyone</p>
+        <h2 class="reveal">Six questions to ask any SEO provider</h2>
+        <ul class="ticks reveal">
+          <li><b>Who owns the website and the domain?</b> It should be you. With Page One, your domain is registered in your name.</li>
+          <li><b>Is there a minimum contract or setup fee?</b> Know what you're committing to before you start.</li>
+          <li><b>What exactly is done each month?</b> Ask for a list, not "ongoing optimisation".</li>
+          <li><b>Will I get access to Google Search Console?</b> It's Google's own free report, so you can check results yourself.</li>
+          <li><b>Do you guarantee rankings?</b> If the answer is yes, be careful. Google decides rankings, so no one can promise them.</li>
+          <li><b>How do you get links?</b> Bought links break Google's guidelines and can hurt your site.</li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="section alt">
+      <div class="wrap">
+        <p class="kicker reveal">Where Page One fits</p>
+        <h2 class="reveal">Honest about what S$20 a month is for</h2>
+        <div class="cards two" style="margin-top:32px">
+          <div class="card reveal"><p class="pill">A good fit</p><h3>New and small local businesses</h3><p>You're opening a business, or you're a small business that wants to be found on Google, Google Maps and ChatGPT without a big retainer. You'd rather WhatsApp someone than learn SEO tools. No website yet? We build one. Already have one? We add an SEO landing page next to it.</p></div>
+          <div class="card reveal"><p class="pill">Probably not a fit</p><h3>When you need more than search groundwork</h3><p>You need paid ads managed, social media run for you, a large online shop with thousands of products, several countries, or someone in your office every day. An agency or an in-house hire is the better choice there.</p></div>
+        </div>
+        <p class="note reveal">Why can it cost this little? AI now does the daily SEO work that used to be billed by the hour. <a class="link" href="/cheapest-seo-singapore/">Cheap SEO doesn't have to mean bad SEO →</a></p>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="wrap">
+        <p class="kicker reveal">Proof, not promises</p>
+        <h2 class="reveal">The same system, on real Singapore businesses</h2>
+        {PROOF_GARAGE}
+        <div style="margin-top:28px">{PROOF_CLEANIC}</div>
+      </div>
+    </section>
+
+""" + PRICE_GLANCE + f"""
+    <section class="section">
+      <div class="wrap narrow">
+        <p class="kicker reveal">Questions</p>
+        <h2 class="reveal">SEO services in Singapore: your questions, answered</h2>
+        <div style="margin-top:24px">
+{_faq_html(SEO_SERVICES_FAQ)}        </div>
+        <p class="note reveal">Starting a new business? <a class="link" href="/new-business-website/">Get your first website and Google listing →</a></p>
+      </div>
+    </section>
+
+""" + cta("Compare it for yourself", "Start at S$20 a month with no setup fee and no contract, or ask Edwin anything on WhatsApp first. No obligation."),
+     crumb="SEO services compared", updated="2026-10-13")
