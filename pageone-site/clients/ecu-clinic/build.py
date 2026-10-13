@@ -266,8 +266,8 @@ def page(path, title, desc, body, ld=None, share=('module-circuit-board.jpg', No
 <link rel="apple-touch-icon" href="{u("apple-touch-icon.png")}">
 <link rel="manifest" href="{u("site.webmanifest")}">
 {'<link rel="preconnect" href="https://cdn.jsdelivr.net">' if IMG_CDN else ''}
-<link rel="preload" as="image" href="{u("img/{HERO}.webp")}" media="(max-width:899px)">
-<link rel="preload" as="image" href="{u("img/{HERO}-lg.webp")}" media="(min-width:900px)">
+<link rel="preload" as="image" href="{u(f"img/{HERO}.webp")}" media="(max-width:899px)">
+<link rel="preload" as="image" href="{u(f"img/{HERO}-lg.webp")}" media="(min-width:900px)">
 <link rel="stylesheet" href="{u("ecu.css")}?v={ASSET_V}">
 {lds}
 </head>
