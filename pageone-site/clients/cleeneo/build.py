@@ -264,7 +264,7 @@ def page(path, title, desc, body, active='', ld=None, share=None, kicker='Drug-f
 </div>
 </div>
 <p class="fine-note">{DOCTOR}</p>
-<div class="fine"><span>© 2026 Cleeneo. All rights reserved.</span><a href="https://pageonesingapore.com/">Website &amp; SEO by Page One Singapore</a></div>
+<div class="fine"><span>© 2026 Cleeneo. All rights reserved. <a href="{u("privacy/")}">Privacy</a></span><a href="https://pageonesingapore.com/">Website &amp; SEO by Page One Singapore</a></div>
 </div></footer>
 <div class="dock">{wa_btn("Order on WhatsApp", ORDER_TEXT)}</div>
 <script src="{u("cleeneo.js")}?v={ASSET_V}" defer></script>
@@ -594,6 +594,30 @@ def about():
                 body, active='', ld=[crumbs_ld([('About', 'about/')])], share='Silk Nasal Strips, Designed and Run in Singapore')
 
 
+def privacy():
+    body = (page_hero([('Privacy', 'privacy/')], 'Privacy Policy',
+                      'How we handle your personal data, in line with Singapore’s PDPA.')
+            + f'''<section><div class="wrap narrow article">
+<h2>What we collect</h2>
+<p>Only what you send us when you order or ask a question: your name, phone number, delivery address, email and your messages.</p>
+<h2>Why we use it</h2>
+<ul class="ticks"><li>To confirm, deliver and support your order</li><li>To reply to your questions</li></ul>
+<p>We don’t sell your data or send marketing unless you ask us to.</p>
+<h2>Who we share it with</h2>
+<p>Only our delivery partner, to get your order to you, and payment providers you choose to pay with.</p>
+<h2>How long we keep it</h2>
+<p>As long as we need it for your order and our legal records, then we delete it.</p>
+<h2>This website</h2>
+<p>We don’t use advertising cookies. We count taps on our WhatsApp buttons, with no names or phone numbers attached.</p>
+<h2>Your rights</h2>
+<p>You can ask to see, correct or delete your data, or withdraw consent, at any time. Email <a href="mailto:{BIZ["email"]}">{BIZ["email"]}</a> and we’ll reply within 30 days.</p>
+<p class="muted">Last updated 13 October 2026.</p>
+</div></section>''')
+    return page('privacy/', 'Privacy Policy | Cleeneo',
+                'How Cleeneo collects, uses and protects your personal data under Singapore’s Personal Data Protection Act (PDPA).',
+                body, active='', ld=[crumbs_ld([('Privacy', 'privacy/')])], share='Privacy Policy')
+
+
 def contact():
     body = (page_hero([('Contact', 'contact/')], 'Contact Cleeneo',
                       'WhatsApp is the fastest way to reach us.')
@@ -722,6 +746,7 @@ def llms_txt():
 - [Shipping and returns]({ORIGIN}/shipping/)
 - [About]({ORIGIN}/about/)
 - [Contact]({ORIGIN}/contact/)
+- [Privacy]({ORIGIN}/privacy/)
 - [Blog]({ORIGIN}/blog/)
 '''
 
@@ -743,6 +768,7 @@ def main():
     build('shipping/index.html', shipping)
     build('about/index.html', about)
     build('contact/index.html', contact)
+    build('privacy/index.html', privacy)
     build('blog/index.html', blog)
     for p in POSTS:
         build(f'blog/{p["slug"]}/index.html', post, p)

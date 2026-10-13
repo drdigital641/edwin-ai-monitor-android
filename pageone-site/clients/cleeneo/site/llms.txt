@@ -20,4 +20,5 @@
 - [Shipping and returns](https://cleeneo.co/shipping/)
 - [About](https://cleeneo.co/about/)
 - [Contact](https://cleeneo.co/contact/)
+- [Privacy](https://cleeneo.co/privacy/)
 - [Blog](https://cleeneo.co/blog/)
