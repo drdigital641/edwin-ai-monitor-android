@@ -292,3 +292,6 @@ details[open] .a{animation:rise .45s var(--ease)}
   .rv{opacity:1;transform:none}
   .hero h1{color:#fff;background:none}
 }
+/* no sideways wobble on phones: the slide-in columns start 36px off to the side */
+html{overflow-x:hidden}
+@media(max-width:899px){.rv.from-l,.rv.from-r{transform:translateY(28px)}}
