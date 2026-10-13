@@ -33,7 +33,7 @@ IMG_ORIGIN = ORIGIN if LIVE else PREVIEW
 # Photos (img/), the share image and icon-512 are served from jsDelivr, pinned to the commit that
 # holds them, because the Bluehost Bridge only takes files pasted inline. To serve them from the
 # client's own domain instead, upload site/img/ and icon-512.png via cPanel and set IMG_CDN = None.
-IMG_COMMIT = 'b1ed2a23adb69ba0cb1c4c33a94c76101e437984'
+IMG_COMMIT = '22da05f017c842c1dea6cdd32178b29a7d760a43'
 IMG_CDN = f'https://cdn.jsdelivr.net/gh/drdigital641/edwin-ai-monitor-android@{IMG_COMMIT}/pageone-site/clients/ecu-clinic/site/'
 if IMG_CDN:
     IMG_ORIGIN = IMG_CDN.rstrip('/')
