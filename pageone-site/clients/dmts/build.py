@@ -830,11 +830,12 @@ def not_found():
 <p style="margin-top:22px"><a class="btn btn-line" href="{u()}">Home</a> <a class="btn btn-line" href="{u("gearbox-problems/")}">Gearbox problems</a> <a class="btn btn-line" href="{u("contact/")}">Contact</a></p>
 </div></section>'''
                 + band('Gearbox acting up?', 'WhatsApp or call us. If the car can’t move, we’ll tow it in for free.'))
-        html_ = page('404.html', 'Page not found | Dynamic Motoring', 'This page does not exist on dmts.com.sg.', body)
+        html_ = page('404.html', 'Page not found | Dynamic Motoring', 'This page does not exist on dmts.com.sg.', body, active=None)
     finally:
         ABS = False
         SHARES.pop('404.html', None)
     html_ = html_.replace('<meta name="robots" content="index, follow, max-image-preview:large">', '<meta name="robots" content="noindex, follow">')
+    html_ = html_.replace('/img/share/404.html.jpg', '/img/share/home.jpg')  # no share image of its own
     return re.sub(r'<link rel="canonical"[^>]*>\n', '', html_)
 
 
