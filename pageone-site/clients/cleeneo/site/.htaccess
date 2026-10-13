@@ -1,0 +1,36 @@
+# Cleeneo (cleeneo.co). This folder is cleeneo.co's document root and also
+# pageonesingapore.com/preview/cleeneo/. Anything here overrides the parent pageonesingapore.com
+# .htaccess for this folder; compression, caching and security headers still come from the parent.
+#
+# RewriteEngine On here switches off the parent's rewrite rules for this folder, because they assume
+# pageonesingapore.com's paths. So the https / no-www / index.html rules are repeated here.
+RewriteEngine On
+
+# One address only: https://cleeneo.co (no www, always https)
+RewriteCond %{HTTP_HOST} ^www\.(.+)$ [NC]
+RewriteRule ^ https://%1%{REQUEST_URI} [L,R=301]
+RewriteCond %{HTTPS} off
+RewriteRule ^ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
+
+# The rules below are for cleeneo.co only (the preview address keeps its plain folder paths).
+# /index.html and /about/index.html -> the clean folder address
+RewriteCond %{HTTP_HOST} ^cleeneo\.co$ [NC]
+RewriteCond %{THE_REQUEST} \s/(.*/)?index\.html[\s?] [NC]
+RewriteRule ^(.*/)?index\.html$ https://cleeneo.co/$1 [L,R=301]
+
+# Old Base44 shop addresses (cleeneo.co until Oct 2026) -> the matching new page.
+RewriteCond %{HTTP_HOST} ^cleeneo\.co$ [NC]
+RewriteRule ^(checkout|cart|shop|buy)/?$ https://cleeneo.co/kits/ [L,R=301]
+RewriteCond %{HTTP_HOST} ^cleeneo\.co$ [NC]
+RewriteRule ^nasal-strips/?$ https://cleeneo.co/kits/ [L,R=301]
+RewriteCond %{HTTP_HOST} ^cleeneo\.co$ [NC]
+RewriteRule ^(about|contact|shipping|blog|kits|how-to-use)$ https://cleeneo.co/$1/ [L,R=301]
+RewriteCond %{HTTP_HOST} ^cleeneo\.co$ [NC]
+RewriteRule ^(nasal-strips/(snoring|sports|allergies))$ https://cleeneo.co/$1/ [L,R=301]
+RewriteCond %{HTTP_HOST} ^cleeneo\.co$ [NC]
+RewriteRule ^(blog/do-nasal-strips-really-help-with-snoring)$ https://cleeneo.co/$1/ [L,R=301]
+RewriteCond %{HTTP_HOST} ^cleeneo\.co$ [NC]
+RewriteRule ^(privacy|terms|privacy-policy|terms-of-service)/?$ https://cleeneo.co/shipping/ [L,R=301]
+
+# Our own "page not found" page (the parent's /404.html does not exist on cleeneo.co)
+ErrorDocument 404 /404.html
