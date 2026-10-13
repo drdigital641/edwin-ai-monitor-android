@@ -149,7 +149,7 @@ page("cheapest-seo-singapore/index.html",
         <ul class="ticks reveal">
           <li><b>The same system for everyone.</b> Every website we manage runs on it, including Edwin's own workshop.</li>
           <li><b>Proven, with dates and sources.</b> Real Google Search Console results, published on our <a class="link" href="/results/">results page</a>.</li>
-          <li><b>Checkable.</b> The websites we run are live, across five industries. Run any of them through our <a class="link" href="/free-website-check/">free website check</a>.</li>
+          <li><b>Checkable.</b> The websites we run are live, across five industries. Run any of them through our <a class="link" href="/free-website-check/">free website check</a>, or follow our <a class="link" href="/is-page-one-singapore-legit/">verification checklist</a>.</li>
           <li><b>A registered company.</b> Page One Singapore is a project of Snap Commercial Pte. Ltd. (UEN 202209904W).</li>
           <li><b>An introductory price.</b> S$20 goes up once we reach our early-client target, so grab it now. Any new price will stay close to S$20, so it stays affordable.</li>
         </ul>
@@ -183,7 +183,7 @@ page("cheapest-seo-singapore/index.html",
         <h2 class="reveal">Cheap SEO: your questions, answered</h2>
         <div style="margin-top:24px">
 {_faq_html(CHEAP_SEO_FAQ)}        </div>
-        <p class="note reveal">Need a website too? <a class="link" href="/cheapest-website-singapore/">A website without the lump sum →</a> · Comparing agencies or an in-house hire? <a class="link" href="/seo-services-singapore/">SEO services compared →</a></p>
+        <p class="note reveal">Need a website too? <a class="link" href="/cheapest-website-singapore/">A website without the lump sum →</a> · Comparing agencies or an in-house hire? <a class="link" href="/seo-services-singapore/">SEO services compared →</a> · <a class="link" href="/ai-seo-vs-traditional-seo/">AI SEO vs traditional SEO →</a> · <a class="link" href="/is-page-one-singapore-legit/">Is Page One legit? Check us yourself →</a></p>
       </div>
     </section>
 

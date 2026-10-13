@@ -714,6 +714,7 @@ page("about/index.html",
           <p>We started because new and small businesses were being quoted hundreds of dollars a month for SEO they couldn't see or measure. So we built a simpler way: S$20 a month, a report for every SEO Boost, and no contract. Start small, and add more only when you see it working.</p>
           <p>Page One Singapore is a project of Snap Commercial Pte. Ltd., a Singapore company registered in 2022 (UEN 202209904W).</p>
           <a class="card-link" href="/#stories">See the websites we run →</a>
+          <p><a class="link" href="/is-page-one-singapore-legit/">Is Page One legit? Check every claim yourself →</a></p>
         </div>
         <div class="panel reveal" style="background:#fff">
           <h3>How we work</h3>
@@ -1275,6 +1276,8 @@ HOME_FAQ_LD = {"@context": "https://schema.org", "@type": "FAQPage", "mainEntity
 exec(open(os.path.join(HERE, "industries.py"), encoding="utf-8").read())
 # "Cheapest SEO" / "cheapest website" pages (honest answers to those searches).
 exec(open(os.path.join(HERE, "affordable.py"), encoding="utf-8").read())
+# "AI SEO vs traditional SEO" and "Is Page One legit?" (verify-it-yourself) pages.
+exec(open(os.path.join(HERE, "ai_seo.py"), encoding="utf-8").read())
 
 page("index.html",
      "Affordable SEO Singapore from S$20/month | Page One Singapore",
