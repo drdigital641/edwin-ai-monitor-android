@@ -295,3 +295,22 @@ details[open] .a{animation:rise .45s var(--ease)}
 /* no sideways wobble on phones: the slide-in columns start 36px off to the side */
 html{overflow-x:hidden}
 @media(max-width:899px){.rv.from-l,.rv.from-r{transform:translateY(28px)}}
+/* service pages and articles (13 Oct 2026) */
+.more{margin:.8em 0 0;font-weight:600}.more a{color:var(--blue)}
+.hero.sub .wrap{padding:40px 16px 38px}
+.hero.sub h1{font-size:clamp(1.55rem,4vw,2.4rem)}
+.hero .crumbs{margin-bottom:12px}
+.prose{max-width:760px}
+.prose h2{margin-top:1.4em}
+.prose p,.prose li{font-size:1.04rem;line-height:1.7}
+.prose .meta{color:var(--muted);font-size:.9rem}
+.arts .card.art{display:block;color:inherit;text-decoration:none}
+.arts .card.art h3{color:var(--ink)}
+.models-list{display:grid;grid-template-columns:repeat(2,1fr);gap:4px 18px}
+@media(min-width:760px){.models-list{grid-template-columns:repeat(4,1fr)}}
+@media(max-width:759px){
+.hero.sub .wrap{padding:22px 16px 24px}
+.prose p,.prose li{font-size:.98rem}
+.arts .card.art{display:grid}
+.models-list p{font-size:.9rem;margin:.3em 0}
+}

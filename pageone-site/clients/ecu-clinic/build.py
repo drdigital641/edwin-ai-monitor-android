@@ -26,7 +26,7 @@ MOCKUP = False  # live on theecuclinicsg.com since 13 Oct 2026 (Edwin's go-ahead
 ORIGIN = PREVIEW if MOCKUP else 'https://theecuclinicsg.com'  # domain chosen by Edwin, 13 Oct 2026
 BASE = '/'
 DEPTH = 0
-ASSET_V = '5'
+ASSET_V = '6'
 # Until go-live the share image and icons are linked at the preview address (the same files).
 LIVE = False
 IMG_ORIGIN = ORIGIN if LIVE else PREVIEW
@@ -192,8 +192,17 @@ FAQ = [
      f'We are at {BIZ["building"]}, {BIZ["street"]}, Singapore {BIZ["postal"]}. {HOURS_TXT}'),
 ]
 
-NAV = [('#services', 'Services'), ('#diagnosis', 'Warning lights'), ('#how', 'How it works'),
+# '#x' links go to a section of the home page; 'x/' links go to a page (both relative, via href()).
+NAV = [('#services', 'Services'), ('articles/', 'Articles'), ('#how', 'How it works'),
        ('#gallery', 'Our work'), ('#faq', 'FAQ'), ('#contact', 'Contact')]
+
+from pages import SERVICE_PAGES, ARTICLES
+SP = {sp['key']: sp for sp in SERVICE_PAGES}
+ART = {a['slug']: a for a in ARTICLES}
+
+
+def href(p):
+    return u() + p if p.startswith('#') else u(p)
 
 
 def schema():
@@ -222,7 +231,7 @@ def faq_ld():
         {'@type': 'Question', 'name': q, 'acceptedAnswer': {'@type': 'Answer', 'text': re.sub('<[^>]+>', '', a)}} for q, a in FAQ]}
 
 
-def page(path, title, desc, body, ld=None, share=('module-circuit-board.jpg', None)):
+def page(path, title, desc, body, ld=None, share=('module-circuit-board.jpg', None), og_type='website'):
     canonical = ORIGIN + BASE + path
     slug = path.strip('/').replace('/', '-') or 'home'
     headline = share[1] or title.split(' | ')[0]
@@ -231,7 +240,7 @@ def page(path, title, desc, body, ld=None, share=('module-circuit-board.jpg', No
     ld = [schema()] + (ld or []) + [{'@context': 'https://schema.org', '@type': 'WebPage', '@id': canonical, 'url': canonical,
                                      'name': title, 'description': desc, 'about': {'@id': f'{ORIGIN}{BASE}#business'},
                                      'primaryImageOfPage': {'@type': 'ImageObject', 'url': og_img, 'width': 1200, 'height': 630}}]
-    nav = ''.join(f'<a href="{p}">{e(n)}</a>' for p, n in NAV)
+    nav = ''.join(f'<a href="{href(p)}">{e(n)}</a>' for p, n in NAV)
     lds = ''.join(f'<script type="application/ld+json">{json.dumps(x, ensure_ascii=False)}</script>' for x in ld)
     robots = 'noindex, nofollow' if MOCKUP else 'index, follow, max-image-preview:large'
     strip = '<div class="preview-strip">Preview by Page One Singapore. This is a draft of your new website.</div>\n' if MOCKUP else ''
@@ -245,7 +254,7 @@ def page(path, title, desc, body, ld=None, share=('module-circuit-board.jpg', No
 <meta name="robots" content="{robots}">
 <meta name="p1-site" content="{SLUG}">
 <link rel="canonical" href="{canonical}">
-<meta property="og:type" content="website">
+<meta property="og:type" content="{og_type}">
 <meta property="og:site_name" content="{BIZ['name']}">
 <meta property="og:title" content="{e(title)}">
 <meta property="og:description" content="{e(desc)}">
@@ -268,8 +277,7 @@ def page(path, title, desc, body, ld=None, share=('module-circuit-board.jpg', No
 <link rel="apple-touch-icon" href="{u("apple-touch-icon.png")}">
 <link rel="manifest" href="{u("site.webmanifest")}">
 {'<link rel="preconnect" href="https://cdn.jsdelivr.net">' if IMG_CDN else ''}
-<link rel="preload" as="image" href="{u(f"img/{HERO}.webp")}" media="(max-width:899px)">
-<link rel="preload" as="image" href="{u(f"img/{HERO}-lg.webp")}" media="(min-width:900px)">
+{f'<link rel="preload" as="image" href="{u(f"img/{HERO}.webp")}" media="(max-width:899px)">' + chr(10) + f'<link rel="preload" as="image" href="{u(f"img/{HERO}-lg.webp")}" media="(min-width:900px)">' if not path else ''}
 <link rel="stylesheet" href="{u("ecu.css")}?v={ASSET_V}">
 {lds}
 </head>
@@ -306,11 +314,11 @@ def page(path, title, desc, body, ld=None, share=('module-circuit-board.jpg', No
 </div>
 <div>
 <h3>Services</h3>
-<ul>{''.join(f'<li><a href="#{sid}">{t}</a></li>' for sid, t, *_ in SERVICES)}<li><a href="#bmw-temperature">BMW Temperature Programming</a></li></ul>
+<ul>{''.join(f'<li><a href="{u(f"services/{sp['slug']}/")}">{e(sp['name'])}</a></li>' for sp in SERVICE_PAGES)}</ul>
 </div>
 <div>
-<h3>On this page</h3>
-<ul>{''.join(f'<li><a href="{p}">{e(n)}</a></li>' for p, n in NAV)}</ul>
+<h3>Articles</h3>
+<ul>{''.join(f'<li><a href="{u(f"articles/{a['slug']}/")}">{e(a['h1'])}</a></li>' for a in ARTICLES[:4])}<li><a href="{u("articles/")}">All articles</a></li></ul>
 </div>
 </div>
 <div class="fine"><span>© 2026 The ECU Clinic. All rights reserved.</span><a href="https://pageonesingapore.com/">Website &amp; SEO by Page One Singapore</a></div>
@@ -332,7 +340,8 @@ def why_cards():
 def service_cards():
     return ''.join(
         f'<div class="card img" id="{sid}">{img(im, alt)}<div class="body"><h3>{t}</h3><p class="muted">{d}</p>'
-        f'<ul class="ticks">{"".join(f"<li>{e(x)}</li>" for x in items)}</ul></div></div>'
+        f'<ul class="ticks">{"".join(f"<li>{e(x)}</li>" for x in items)}</ul>'
+        f'<p class="more"><a href="{u(f"services/{SP[sid]["slug"]}/")}">More about {t} →</a></p></div></div>'
         for sid, t, im, alt, d, items in SERVICES)
 
 
@@ -397,6 +406,7 @@ def home():
 <ul class="ticks"><li>Reduces high coolant temperature to about 95°C</li><li>Keeps the engine at a stable operating temperature</li><li>No change to daily driving or other functions</li></ul>
 <a class="btn btn-wa" href="{wa_link("Hi The ECU Clinic, I would like BMW temperature programming. Model and year: ")}" target="_blank" rel="noopener">{ICON["wa"]}Check my BMW</a>
 <details class="models"><summary>BMW models we program (2010–2018)</summary><div class="a">{models}<p>Model not listed? WhatsApp us and we’ll advise on compatibility.</p></div></details>
+<p class="more"><a href="{u("services/bmw-temperature-programming/")}">More about BMW temperature programming →</a></p>
 </div>
 <div>{img("bmw-fault-code-scan", "Scan tool reading BMW engine fault codes")}</div>
 </div></section>
@@ -415,7 +425,13 @@ def home():
 <div class="gallery home-gal">{gal}</div>
 </div></section>
 
-<section class="alt" id="contact"><div class="wrap">
+<section class="alt"><div class="wrap">
+<div class="sec-head"><h2>Guides and articles</h2><p>Warning lights and common faults, explained in plain words.</p></div>
+<div class="grid g3 arts">{article_cards(ARTICLES[:3])}</div>
+<p style="margin-top:18px"><a class="btn btn-line" href="{u("articles/")}">All articles</a></p>
+</div></section>
+
+<section id="contact"><div class="wrap">
 <div class="sec-head"><h2>Visit us in Kaki Bukit</h2><p>WhatsApp is the fastest way to reach us for enquiries and appointments.</p></div>
 <div class="loc-wrap">
 <div class="card loc"><span class="tag">Workshop</span><h3>{BIZ["building"]}</h3>
@@ -457,9 +473,14 @@ def robots_txt():
     return f'User-agent: *\nAllow: /\n\nSitemap: {ORIGIN}/sitemap.xml\n'
 
 
+def all_paths():
+    return ([''] + [f'services/{sp["slug"]}/' for sp in SERVICE_PAGES] + ['articles/']
+            + [f'articles/{a["slug"]}/' for a in ARTICLES])
+
+
 def sitemap():
-    return (f'<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">'
-            f'<url><loc>{ORIGIN}{BASE}</loc></url></urlset>\n')
+    urls = ''.join(f'<url><loc>{ORIGIN}{BASE}{p}</loc></url>' for p in all_paths())
+    return f'<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">{urls}</urlset>\n'
 
 
 def not_found():
@@ -478,8 +499,148 @@ def not_found():
 '''
 
 
+# ---------- service pages and articles ----------
+def crumbs_ld(items):
+    # items: [(name, path)], home first
+    return {'@context': 'https://schema.org', '@type': 'BreadcrumbList', 'itemListElement': [
+        {'@type': 'ListItem', 'position': i + 1, 'name': n, 'item': f'{ORIGIN}{BASE}{p}'} for i, (n, p) in enumerate(items)]}
+
+
+def crumbs_html(items):
+    parts = [f'<a href="{u(p) if p else u()}">{e(n)}</a>' for n, p in items[:-1]] + [e(items[-1][0])]
+    return '<nav class="crumbs" aria-label="Breadcrumb">' + ' › '.join(parts) + '</nav>'
+
+
+def faq_ld_of(qa):
+    import re
+    return {'@context': 'https://schema.org', '@type': 'FAQPage', 'mainEntity': [
+        {'@type': 'Question', 'name': q, 'acceptedAnswer': {'@type': 'Answer', 'text': re.sub('<[^>]+>', '', a)}} for q, a in qa]}
+
+
+def sub_hero(crumbs, eyebrow, h1, lead, photo, alt, buttons=True):
+    return f'''<section class="hero sub" style="padding:0">
+{img(photo, alt, lazy=False, cls="bg")}
+<div class="wrap">
+{crumbs_html(crumbs)}
+<span class="eyebrow">{e(eyebrow)}</span>
+<h1>{e(h1)}</h1>
+<p class="lead">{e(lead)}</p>
+{cta_buttons(dark=True) if buttons else ''}
+</div>
+</section>'''
+
+
+def article_cards(arts):
+    return ''.join(
+        f'<a class="card img art" href="{u(f"articles/{a["slug"]}/")}">{img(a["photo"], a["alt"])}'
+        f'<div class="body"><h3>{e(a["h1"])}</h3><p class="muted">{e(a["lead"])}</p></div></a>' for a in arts)
+
+
+def band(title='ABS or brake light on?', text='WhatsApp us the fault code, chassis number and car model. We’ll tell you what we can do.'):
+    return f'<section><div class="wrap"><div class="band"><div><h2>{e(title)}</h2><p>{e(text)}</p></div>{cta_buttons(dark=True)}</div></div></section>'
+
+
+def service_page(sp):
+    path = f'services/{sp["slug"]}/'
+    crumbs = [('Home', ''), ('Services', '#services'), (sp['name'], path)]
+    crumbs_disp = [('Home', ''), (sp['name'], path)]
+    what = ''.join(f'<li>{e(x)}</li>' for x in sp['what'])
+    signs = ''.join(f'<div class="card"><h3>{e(t)}</h3><p>{e(d)}</p></div>' for t, d in sp['signs'])
+    faq = ''.join(f'<details><summary>{e(q)}</summary><div class="a">{e(a)}</div></details>' for q, a in sp['faq'])
+    intro = ''.join(f'<p>{e(x)}</p>' for x in sp['intro'])
+    rel = [ART[s] for s in sp['related']]
+    others = ''.join(f'<li><a href="{u(f"services/{o["slug"]}/")}">{e(o["name"])}</a></li>' for o in SERVICE_PAGES if o is not sp)
+    extra = ''
+    if sp['key'] == 'bmw':
+        models = ''.join(f'<p><strong>{s}</strong><br>{c}</p>' for s, c in BMW_MODELS)
+        extra = f'''<section class="alt"><div class="wrap">
+<div class="sec-head"><h2>BMW models we program (2010–2018)</h2><p>Model not listed? WhatsApp us and we’ll advise on compatibility.</p></div>
+<div class="models-list">{models}</div>
+</div></section>'''
+    body = sub_hero(crumbs_disp, 'Service · Kaki Bukit, Singapore', sp['h1'], sp['lead'], sp['photo'], sp['alt']) + f'''
+<section><div class="wrap split">
+<div>
+<h2>About this service</h2>
+{intro}
+<h3>What we do</h3>
+<ul class="ticks">{what}</ul>
+</div>
+<div>{img(sp["photo"], sp["alt"])}</div>
+</div></section>
+''' + (f'''<section class="alt"><div class="wrap">
+<div class="sec-head"><h2>Signs you may need this</h2><p>Not sure? WhatsApp us the fault code and we’ll tell you.</p></div>
+<div class="grid sym">{signs}</div>
+</div></section>''' if signs else '') + extra + f'''
+<section><div class="wrap split">
+<div>
+<h2>How it works</h2>
+<ol class="steps">{''.join(f'<li><strong>{t}.</strong> {d}</li>' for t, d in STEPS)}</ol>
+</div>
+<div>
+<h2>Questions</h2>
+{faq}
+</div>
+</div></section>
+''' + (f'''<section class="alt"><div class="wrap">
+<div class="sec-head"><h2>Related articles</h2></div>
+<div class="grid g3 arts">{article_cards(rel)}</div>
+</div></section>''' if rel else '') + f'''
+<section><div class="wrap"><div class="sec-head"><h2>Other services</h2></div><ul class="ticks">{others}</ul></div></section>
+''' + band()
+    svc_ld = {'@context': 'https://schema.org', '@type': 'Service', 'name': sp['name'], 'serviceType': sp['name'],
+              'description': sp['desc'], 'provider': {'@id': f'{ORIGIN}{BASE}#business'}, 'areaServed': 'Singapore',
+              'url': f'{ORIGIN}{BASE}{path}'}
+    return page(path, sp['title'], sp['desc'], body, ld=[svc_ld, crumbs_ld(crumbs_disp), faq_ld_of(sp['faq'])],
+                share=(sp['share'], sp['h1']))
+
+
+def articles_index():
+    path = 'articles/'
+    crumbs = [('Home', ''), ('Articles', path)]
+    body = sub_hero(crumbs, 'Guides', 'Car Electronics Guides and Articles',
+                    'ABS and brake warnings, Mercedes gearbox and steering lock faults, and hybrid batteries, explained in plain words.',
+                    'control-board-bench', 'Control board on the repair bench', buttons=False) + f'''
+<section><div class="wrap">
+<div class="grid g3 arts">{article_cards(ARTICLES)}</div>
+</div></section>
+''' + band()
+    return page(path, 'ABS, Brake & Mercedes Repair Guides | The ECU Clinic Articles',
+                'Plain-English guides to ABS warning lights, Mercedes Active Brake Assist, 7G-Tronic TCU faults, steering lock (ELV) failure and hybrid batteries.',
+                body, ld=[crumbs_ld(crumbs)], share=('control-board-repair-bench.jpg', 'Car Electronics Guides'))
+
+
+def article(a):
+    path = f'articles/{a["slug"]}/'
+    sp = next(s for s in SERVICE_PAGES if s['slug'] == a['service'])
+    crumbs = [('Home', ''), ('Articles', 'articles/'), (a['h1'], path)]
+    more = [x for x in ARTICLES if x is not a][:3]
+    body = sub_hero(crumbs, 'Guide', a['h1'], a['lead'], a['photo'], a['alt'], buttons=False) + f'''
+<section><div class="wrap prose">
+<p class="meta">By The ECU Clinic · {a["date"][8:10].lstrip("0")} Oct 2026</p>
+{a["body"].replace("{wa}", wa_link())}
+<div class="btns" style="margin-top:22px"><a class="btn btn-wa" href="{wa_link()}" target="_blank" rel="noopener">{ICON["wa"]}WhatsApp {BIZ["tel_disp"]}</a>
+<a class="btn btn-line" href="{u(f"services/{sp['slug']}/")}">{e(sp["name"])}</a></div>
+</div></section>
+<section class="alt"><div class="wrap">
+<div class="sec-head"><h2>More articles</h2></div>
+<div class="grid g3 arts">{article_cards(more)}</div>
+</div></section>
+''' + band()
+    art_ld = {'@context': 'https://schema.org', '@type': 'Article', 'headline': a['h1'], 'description': a['desc'],
+              'datePublished': a['date'], 'dateModified': a['date'], 'mainEntityOfPage': f'{ORIGIN}{BASE}{path}',
+              'image': f'{IMG_ORIGIN}/img/share/{path.strip("/").replace("/", "-")}.jpg',
+              'author': {'@type': 'Organization', 'name': BIZ['name'], 'url': f'{ORIGIN}{BASE}'},
+              'publisher': {'@id': f'{ORIGIN}{BASE}#business'}}
+    return page(path, a['title'], a['desc'], body, ld=[art_ld, crumbs_ld(crumbs)], share=(a['share'], a['h1']), og_type='article')
+
+
 if __name__ == '__main__':
     build('index.html', home)
+    for sp in SERVICE_PAGES:
+        build(f'services/{sp["slug"]}/index.html', lambda sp=sp: service_page(sp))
+    build('articles/index.html', articles_index)
+    for a in ARTICLES:
+        build(f'articles/{a["slug"]}/index.html', lambda a=a: article(a))
     # Only read when theecuclinicsg.com serves this folder; pageonesingapore.com has its own root robots.txt.
     build('robots.txt', robots_txt)
     build('sitemap.xml', sitemap)
