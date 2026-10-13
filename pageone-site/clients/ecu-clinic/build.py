@@ -22,7 +22,7 @@ HERE = os.path.dirname(os.path.abspath(__file__))
 OUT = os.path.join(HERE, 'site')
 SLUG = 'ecu-clinic'  # Page One client key: p1-site marker (go-live check) and WhatsApp tracker
 PREVIEW = 'https://pageonesingapore.com/preview/ecu-clinic'
-MOCKUP = True
+MOCKUP = False  # live on theecuclinicsg.com since 13 Oct 2026 (Edwin's go-ahead)
 ORIGIN = PREVIEW if MOCKUP else 'https://theecuclinicsg.com'  # domain chosen by Edwin, 13 Oct 2026
 BASE = '/'
 DEPTH = 0
@@ -30,11 +30,11 @@ ASSET_V = '4'
 # Until go-live the share image and icons are linked at the preview address (the same files).
 LIVE = False
 IMG_ORIGIN = ORIGIN if LIVE else PREVIEW
-# While MOCKUP is True the photos (img/) are served from jsDelivr, pinned to the commit that holds
-# them, because the Bluehost Bridge only takes files pasted inline. Before go-live upload site/img/ to
-# the folder and set IMG_CDN = None so every image is served from the client's own domain.
+# Photos (img/), the share image and icon-512 are served from jsDelivr, pinned to the commit that
+# holds them, because the Bluehost Bridge only takes files pasted inline. To serve them from the
+# client's own domain instead, upload site/img/ and icon-512.png via cPanel and set IMG_CDN = None.
 IMG_COMMIT = 'b1ed2a23adb69ba0cb1c4c33a94c76101e437984'
-IMG_CDN = f'https://cdn.jsdelivr.net/gh/drdigital641/edwin-ai-monitor-android@{IMG_COMMIT}/pageone-site/clients/ecu-clinic/site/' if MOCKUP else None
+IMG_CDN = f'https://cdn.jsdelivr.net/gh/drdigital641/edwin-ai-monitor-android@{IMG_COMMIT}/pageone-site/clients/ecu-clinic/site/'
 if IMG_CDN:
     IMG_ORIGIN = IMG_CDN.rstrip('/')
 SHARES = {}
@@ -453,8 +453,37 @@ def build(rel, fn):
     write(rel, fn())
 
 
+def robots_txt():
+    return f'User-agent: *\nAllow: /\n\nSitemap: {ORIGIN}/sitemap.xml\n'
+
+
+def sitemap():
+    return (f'<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">'
+            f'<url><loc>{ORIGIN}{BASE}</loc></url></urlset>\n')
+
+
+def not_found():
+    # Served for any missing address on theecuclinicsg.com (the parent .htaccess sets ErrorDocument
+    # 404 /404.html, which resolves to this folder there), so links are root-absolute.
+    return f'''<!doctype html>
+<html lang="en-SG"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex"><title>Page not found | The ECU Clinic</title>
+<link rel="stylesheet" href="/ecu.css?v={ASSET_V}"></head>
+<body><main id="main"><section><div class="wrap" style="max-width:640px;text-align:center;padding:80px 16px">
+<h1>Page not found</h1>
+<p>This page doesn’t exist. Head back to the home page, or WhatsApp us your car model and fault code.</p>
+<div class="btns" style="justify-content:center"><a class="btn btn-line" href="/">Home page</a>
+<a class="btn btn-wa" href="{wa_link()}" target="_blank" rel="noopener">WhatsApp {BIZ["tel_disp"]}</a></div>
+</div></section></main></body></html>
+'''
+
+
 if __name__ == '__main__':
     build('index.html', home)
+    # Only read when theecuclinicsg.com serves this folder; pageonesingapore.com has its own root robots.txt.
+    build('robots.txt', robots_txt)
+    build('sitemap.xml', sitemap)
+    build('404.html', not_found)
     build('site.webmanifest', lambda: json.dumps({
         'name': BIZ['name'], 'short_name': 'ECU Clinic', 'start_url': './', 'display': 'standalone',
         'background_color': '#ffffff', 'theme_color': '#1f262b',
