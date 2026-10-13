@@ -1,0 +1,42 @@
+# Dynamic Motoring (dmts.com.sg). This folder is dmts.com.sg's document root and also
+# pageonesingapore.com/preview/dmts/. Anything here overrides the parent pageonesingapore.com
+# .htaccess for this folder; compression, caching and security headers still come from the parent.
+#
+# RewriteEngine On here switches off the parent's rewrite rules for this folder, because they assume
+# pageonesingapore.com's paths (their index.html rule would send dmts.com.sg/about/index.html to
+# dmts.com.sg/preview/dmts/about/). So the https / no-www / index.html rules are repeated here.
+RewriteEngine On
+
+# One address only: https://dmts.com.sg (no www, always https)
+RewriteCond %{HTTP_HOST} ^www\.(.+)$ [NC]
+RewriteRule ^ https://%1%{REQUEST_URI} [L,R=301]
+RewriteCond %{HTTPS} off
+RewriteRule ^ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
+
+# The rules below are for dmts.com.sg only (the preview address keeps its plain folder paths).
+# /index.html and /about/index.html -> the clean folder address
+RewriteCond %{HTTP_HOST} ^dmts\.com\.sg$ [NC]
+RewriteCond %{THE_REQUEST} \s/(.*/)?index\.html[\s?] [NC]
+RewriteRule ^(.*/)?index\.html$ https://dmts.com.sg/$1 [L,R=301]
+
+# Old WordPress addresses (dmts.com.sg until Oct 2026) -> the matching new page, so Google and
+# old bookmarks keep working.
+RewriteCond %{HTTP_HOST} ^dmts\.com\.sg$ [NC]
+RewriteRule ^about-us/?$ https://dmts.com.sg/about/ [L,R=301]
+RewriteCond %{HTTP_HOST} ^dmts\.com\.sg$ [NC]
+RewriteRule ^photo-gallery/?$ https://dmts.com.sg/gallery/ [L,R=301]
+RewriteCond %{HTTP_HOST} ^dmts\.com\.sg$ [NC]
+RewriteRule ^(price-estimator|cost-estimator)/?$ https://dmts.com.sg/ [L,R=301]
+RewriteCond %{HTTP_HOST} ^dmts\.com\.sg$ [NC]
+RewriteRule ^faq/?$ https://dmts.com.sg/about/ [L,R=301]
+RewriteCond %{HTTP_HOST} ^dmts\.com\.sg$ [NC]
+RewriteRule ^site-maintenance/?$ https://dmts.com.sg/services/gearbox-servicing/ [L,R=301]
+RewriteCond %{HTTP_HOST} ^dmts\.com\.sg$ [NC]
+RewriteRule ^(blog|feed|comments/feed)/?$ https://dmts.com.sg/ [L,R=301]
+RewriteCond %{HTTP_HOST} ^dmts\.com\.sg$ [NC]
+RewriteRule ^(.+)/feed/?$ https://dmts.com.sg/$1/ [L,R=301]
+RewriteCond %{HTTP_HOST} ^dmts\.com\.sg$ [NC]
+RewriteRule ^wp-content/uploads/.*\.(jpe?g|png|gif|webp)$ https://dmts.com.sg/gallery/ [NC,L,R=301]
+
+# Our own "page not found" page (the parent's /404.html does not exist on dmts.com.sg)
+ErrorDocument 404 /404.html

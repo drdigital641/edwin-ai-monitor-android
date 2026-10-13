@@ -39,6 +39,11 @@ Follows the standard procedure in `../PLAYBOOK.md` (same as every client from no
 - pageonesingapore.com/robots.txt disallows `/preview/` and `/dmts/`, so the copy under
   pageonesingapore.com is never crawled; dmts.com.sg uses this folder's own robots.txt.
 - WhatsApp clicks are counted by `dmts.js` (site key `dmts`) only on dmts.com.sg.
+- `.htaccess` (hand-edited) gives dmts.com.sg its own https/no-www/index.html rules, 301s from the old
+  WordPress addresses (about-us, photo-gallery, faq, price-estimator, site-maintenance, blog, feeds, old
+  upload images) and `ErrorDocument 404 /404.html`. It must be published with the site: the parent
+  pageonesingapore.com .htaccess would otherwise send dmts.com.sg/x/index.html to /preview/dmts/x/ and
+  point 404s at a /404.html that only exists on pageonesingapore.com.
 - Onboarding score of the old dmts.com.sg (WordPress, 12 Oct 2026): 55/100, saved in the score history.
 - Leftover: the very first upload at pageonesingapore.com/dmts/ only redirects to /preview/dmts/; its
   old copies can be deleted in cPanel File Manager whenever convenient (the bridge can't delete).

@@ -31,7 +31,7 @@ nav.main a:hover,nav.main a[aria-current]{color:var(--blue);background:#eef4fb}
 @media(min-width:900px){nav.main{display:flex;gap:2px}.menu-btn{display:none}.mobile-nav{display:none!important}.btn.hdr-cta{display:inline-flex}.topbar .hide-sm{display:inline}}
 
 /* buttons */
-.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;padding:13px 20px;border-radius:12px;font-weight:700;text-decoration:none;border:0;cursor:pointer;font:inherit;font-weight:700;line-height:1.2}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;padding:13px 20px;border-radius:12px;font-weight:700;text-decoration:none;border:1px solid transparent;vertical-align:middle;cursor:pointer;font:inherit;font-weight:700;line-height:1.2}
 .btn-red{background:var(--red);color:#fff}.btn-red:hover{background:#b81c25}
 .btn-blue{background:var(--blue);color:#fff}.btn-blue:hover{background:var(--blue-d)}
 .btn-wa{background:var(--wa);color:#fff}.btn-wa:hover{background:#0f6a33}
@@ -87,7 +87,7 @@ section.alt{background:var(--bg)}
 blockquote{margin:0}
 .quote p{font-size:1rem}
 .quote cite{font-style:normal;font-weight:700;color:var(--navy)}
-.stars{color:#f5a623;letter-spacing:2px;margin-bottom:8px}
+
 
 /* gallery */
 .gallery{display:grid;gap:10px;grid-template-columns:repeat(2,1fr)}

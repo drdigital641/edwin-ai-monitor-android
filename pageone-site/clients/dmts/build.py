@@ -16,13 +16,15 @@ Shared assets (dmts.css, dmts.js, favicon.svg, img/) live in ./site and are edit
 import html
 import json
 import os
+import re
 
 HERE = os.path.dirname(os.path.abspath(__file__))
 OUT = os.path.join(HERE, 'site')
 ORIGIN = 'https://dmts.com.sg'  # the client's domain: canonical URLs and structured data
 BASE = '/'
 DEPTH = 0  # folder depth of the page being built; set by build() so u() can emit relative links
-ASSET_V = '4'
+ABS = False  # root-relative links instead (404 page: Apache serves it at any depth)
+ASSET_V = '5'
 SLUG = 'dmts'  # Page One client key: p1-site marker (go-live check) and WhatsApp tracker
 INDEXNOW_KEY = '5792dfeef836aebd82a445c206294c95'  # same key as the controller's Client record
 # Share images and icons must load before dmts.com.sg points here, so until go-live they are linked
@@ -70,6 +72,8 @@ e = html.escape
 
 
 def u(path=''):
+    if ABS:
+        return BASE + path
     return ('../' * DEPTH or './') + path
 
 
@@ -471,7 +475,7 @@ def why_cards():
 
 
 def testimonials():
-    return ''.join(f'<blockquote class="card quote"><div class="stars" aria-label="5 stars">★★★★★</div><p>“{e(q)}”</p>'
+    return ''.join(f'<blockquote class="card quote"><p>“{e(q)}”</p>'
                    f'<cite>{e(n)}</cite> <span class="muted">· {e(c)}</span></blockquote>' for n, c, q in TESTIMONIALS)
 
 
@@ -543,7 +547,7 @@ def home():
 
 <section><div class="wrap">
 <div class="sec-head"><h2>What our customers say</h2></div>
-<div class="grid g3">{testimonials()}</div>
+<div class="grid g3" tabindex="0" role="region" aria-label="Customer reviews">{testimonials()}</div>
 </div></section>
 
 <section class="alt"><div class="wrap">
@@ -612,7 +616,7 @@ def service_cards(sids=None):
 
 
 def trust_strip(reviews=True):
-    rv = f'<section><div class="wrap"><div class="sec-head"><h2>What our customers say</h2></div><div class="grid g3">{testimonials()}</div></div></section>'
+    rv = f'<section><div class="wrap"><div class="sec-head"><h2>What our customers say</h2></div><div class="grid g3" tabindex="0" role="region" aria-label="Customer reviews">{testimonials()}</div></div></section>'
     return ((rv if reviews else '') + f'<section class="alt"><div class="wrap"><div class="sec-head"><h2>Our workshops in Woodlands and Jalan Lam Huat</h2></div>'
             f'<div class="grid g2">{loc_cards()}</div><div class="card" style="margin-top:18px">{HOURS}</div></div></section>')
 
@@ -652,7 +656,7 @@ HUB_FAQ = [(q, FAQ_BY_Q[q]) for q in ['What are the signs my gearbox needs atten
 def problems_hub():
     body = (page_hero('Gearbox Problems', 'Common Gearbox Problems in Singapore and What They Mean',
                       'Noticed something wrong with your automatic gearbox? Find your symptom below to see the usual causes and what to do next.')
-            + f'<section><div class="wrap"><div class="sym">{problem_cards()}</div></div></section>'
+            + f'<section><div class="wrap"><div class="sec-head"><h2>Find your symptom</h2></div><div class="sym">{problem_cards()}</div></div></section>'
             + f'''<section class="alt"><div class="wrap split">
 <div><h2>Not sure which one it is?</h2><p>Gearbox symptoms often overlap, and the same symptom can have very different causes. Our pre-repair diagnostic reads the transmission fault codes and checks the gearbox, then we tell you the fault and the price before any work starts.</p>
 <ul class="ticks"><li>{DIAG}</li><li>Clear quote before any work starts</li><li>Free towing if the car can’t move</li></ul>{cta_buttons()}</div>
@@ -762,7 +766,7 @@ def about():
 </ul>
 </div>
 </div></section>
-<section><div class="wrap"><div class="sec-head"><h2>What our customers say</h2></div><div class="grid g3">{testimonials()}</div></div></section>
+<section><div class="wrap"><div class="sec-head"><h2>What our customers say</h2></div><div class="grid g3" tabindex="0" role="region" aria-label="Customer reviews">{testimonials()}</div></div></section>
 ''' + faq_block(FAQ, 'Frequently asked questions') + trust_strip(reviews=False) + band('Talk to a gearbox specialist', 'Call, WhatsApp or drop by either workshop.')
     return page('about/', 'About Dynamic Motoring | Gearbox Specialist Singapore',
                 'Dynamic Motoring (DMTS) is a Singapore gearbox and auto transmission specialist with over 15 years of combined experience in gearbox repair and overhaul.',
@@ -806,11 +810,32 @@ def contact():
 <h2>After the diagnostic</h2>
 <p>Our pre-repair diagnostic starts from S$30. We tell you the fault and give you a clear quote before any work starts, and repairs come with a standard 6-month warranty unless otherwise stated.</p>
 </div></section>
-''' + faq_block(FAQ[:5], 'Common questions') + f'<section><div class="wrap"><div class="sec-head"><h2>What our customers say</h2></div><div class="grid g3">{testimonials()}</div></div></section>'
+''' + faq_block(FAQ[:5], 'Common questions') + f'<section><div class="wrap"><div class="sec-head"><h2>What our customers say</h2></div><div class="grid g3" tabindex="0" role="region" aria-label="Customer reviews">{testimonials()}</div></div></section>'
     return page('contact/', 'Contact | Dynamic Motoring Gearbox Specialist Singapore',
                 'Contact Dynamic Motoring for gearbox repair in Singapore. WhatsApp 8430 9665 or call 6352 8832. Workshops at Wave 9 Woodlands and Jalan Lam Huat.',
                 body, active='contact/', ld=[crumbs_ld('Contact', 'contact/'), faq_ld_of(FAQ[:5])], share=('shopfront', 'Contact Dynamic Motoring: Woodlands & Jalan Lam Huat'),
                 scripts=f'<script>window.DMTS_EMAIL="{BIZ["email"]}";</script>')
+
+
+def not_found():
+    # Served by Apache (ErrorDocument in .htaccess) at whatever URL was missing, so links are root-relative.
+    global ABS
+    ABS = True
+    try:
+        body = (page_hero('Page not found', 'Sorry, we can’t find that page',
+                          'The page may have moved when we rebuilt our website. Try one of these, or WhatsApp us and we’ll help.')
+                + f'''<section><div class="wrap">
+<div class="sec-head"><h2>Our gearbox services</h2></div>
+<div class="grid g4 svc">{service_cards()}</div>
+<p style="margin-top:22px"><a class="btn btn-line" href="{u()}">Home</a> <a class="btn btn-line" href="{u("gearbox-problems/")}">Gearbox problems</a> <a class="btn btn-line" href="{u("contact/")}">Contact</a></p>
+</div></section>'''
+                + band('Gearbox acting up?', 'WhatsApp or call us. If the car can’t move, we’ll tow it in for free.'))
+        html_ = page('404.html', 'Page not found | Dynamic Motoring', 'This page does not exist on dmts.com.sg.', body)
+    finally:
+        ABS = False
+        SHARES.pop('404.html', None)
+    html_ = html_.replace('<meta name="robots" content="index, follow, max-image-preview:large">', '<meta name="robots" content="noindex, follow">')
+    return re.sub(r'<link rel="canonical"[^>]*>\n', '', html_)
 
 
 def write(rel, text):
@@ -876,6 +901,8 @@ if __name__ == '__main__':
     for prob in PROBLEMS:
         build(f'gearbox-problems/{prob["slug"]}/index.html', lambda s=prob['slug']: problem_page(s))
     build('cost-estimator/index.html', retired_estimator)
+    build('price-estimator/index.html', retired_estimator)  # the old WordPress estimator's real address
+    build('404.html', not_found)
     build('gallery/index.html', gallery)
     build('about/index.html', about)
     build('contact/index.html', contact)
