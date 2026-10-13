@@ -277,21 +277,68 @@ FAQ = [
 
 FAQ_BY_Q = dict(FAQ)
 
+# EDGE Loop, 13 Oct 2026: extra questions for the owner pages only (the home page FAQ is unchanged).
+# The Singapore top 10 for "gearbox repair/overhaul" and "gearbox oil change" leave these open or contradict
+# themselves (turnaround, repair vs overhaul, driving on a faulty gearbox, how often to change ATF).
+# General gearbox knowledge in hedged wording; DMTS facts only from onboarding (no new prices or promises).
+FAQ_BY_Q.update({
+    'Do I need a full gearbox overhaul?':
+        'Not always. If the fault is in one part, such as a solenoid, a sensor, the valve body or a seal, that part can often be repaired on its own. '
+        'A full overhaul is the right fix when there is wear or damage inside the gearbox, such as worn clutch packs. The diagnostic (from S$30) tells us which one your car needs, and you get the quote before any work starts.',
+    'How long does a gearbox overhaul take?':
+        'It depends on the gearbox and whether parts have to be ordered, so we give you a time estimate together with the quote. '
+        'As one example, a customer’s Audi A4 overhaul was ready after 3 days (see his review on this page).',
+    'Can I keep driving with a gearbox problem?':
+        'It is best not to. Slipping, jerking, a warning light or limp mode usually get worse with driving, and a small fault can turn into a bigger repair. '
+        'If the car can’t move or doesn’t feel safe, we tow it to our workshop for free during office hours.',
+    'How often should the gearbox oil (ATF) be changed?':
+        'Follow the transmission service interval in your car’s service schedule; it differs by make and gearbox. Some makers call the fluid “lifetime”, '
+        'but heat and stop-start driving, which are normal in Singapore, are hard on ATF. If you don’t know when it was last changed, ask us to check the fluid’s level and condition.',
+    'Which ATF do you use?':
+        'The manufacturer’s recommended ATF or the gearbox-specific brand for your transmission, filled to the correct level. Using the wrong fluid can cause harsh or slipping shifts.',
+})
+
 # One page per service. Only DMTS's own facts (old site + onboarding) and general gearbox knowledge.
 SERVICE_PAGES = {
     'gearbox-repair': {
         'title': 'Gearbox Repair & Overhaul Singapore | Dynamic Motoring',
-        'desc': 'Automatic gearbox repair and full transmission overhaul in Singapore for all car makes. Diagnostic from S$30, quote before work, 6-month warranty.',
+        'desc': 'Automatic gearbox repair and overhaul in Singapore, all car makes. Diagnostic from S$30, quote before work, free towing, 6-month warranty. Woodlands & Jalan Lam Huat.',
         'h1': 'Gearbox Repair &amp; Overhaul in Singapore',
-        'sub': 'We find the real cause first, then repair only what is needed, or overhaul the whole transmission when that is the right fix.',
+        'sub': 'We find the real cause first, then repair only what is needed, or overhaul the whole transmission when that is the right fix. Diagnostic from S$30, quote before any work, 6-month warranty.',
+        'updated': '13 Oct 2026',
+        # Proof beside the first call to action: verbatim excerpt of a real customer review already on the site.
+        'proof': ('Alvin Lee', 'Audi A4 overhaul',
+                  'Jacky was very patient and professional in explaining to me the overhaul process … My car was ready after 3 days and was given a 6 months warranty as well.'),
         'sections': [
             ('Repair or full overhaul?',
-             '<p>Not every gearbox fault needs a full rebuild. Some problems come from one part, such as a solenoid, a sensor, the valve body or a leaking seal, and can be repaired on their own. Others, such as worn clutch packs or internal damage, mean the transmission has to come out, be stripped down and rebuilt. Our diagnostic tells us which one your car needs, so you only pay for what is needed.</p>'),
+             '<p>Not every gearbox fault needs a full rebuild. Some problems come from one part, such as a solenoid, a sensor, the valve body or a leaking seal, and can be repaired on their own. Others, such as worn clutch packs or internal damage, mean the transmission has to come out, be stripped down and rebuilt. Our diagnostic tells us which one your car needs, so you only pay for what is needed.</p>'
+             '<div class="grid g3" style="margin-top:18px">'
+             '<div class="card"><h3>Targeted repair</h3><p class="muted">One part is at fault: a solenoid, sensor, valve body or leaking seal. We fix that part and leave the rest of the gearbox alone.</p></div>'
+             '<div class="card"><h3>Full overhaul</h3><p class="muted">Wear or damage inside the gearbox. The transmission comes out, is stripped down, worn parts are replaced, and it is rebuilt and refilled with the correct ATF.</p></div>'
+             '<div class="card"><h3>Strengthening upgrade</h3><p class="muted">The engine now makes more power or torque than the gearbox was built for. See <a href="{u}services/gearbox-upgrade/">gearbox strengthening &amp; upgrade</a>.</p></div>'
+             '</div>'),
+            ('What happens when you bring your car in',
+             '<ol class="steps">'
+             '<li><strong>Diagnostic (from S$30).</strong> We read the transmission fault codes and check the gearbox to find the actual cause.</li>'
+             '<li><strong>Quote before any work.</strong> We tell you the fault, whether it needs a repair or an overhaul, the price and how long it should take. You decide.</li>'
+             '<li><strong>Repair or overhaul on site.</strong> Our teardown benches, transmission jacks and diagnostic tools are in our own workshop, so the gearbox does not leave us.</li>'
+             '<li><strong>The right ATF, in the right amount.</strong> The gearbox is refilled with the manufacturer’s recommended or gearbox-specific fluid.</li>'
+             '<li><strong>Back to you with a warranty.</strong> All repairs come with a standard 6-month warranty unless otherwise stated.</li>'
+             '</ol>'),
+            ('What affects the cost of a gearbox repair',
+             '<p>We don’t publish a price list, because two cars with the same symptom can need very different work. These are the things that decide the price, and we explain each one in your quote:</p>'
+             '<ul class="ticks"><li><strong>The gearbox type and make.</strong> A conventional automatic, a CVT and a dual-clutch gearbox are built differently.</li>'
+             '<li><strong>What has failed.</strong> A single solenoid or seal costs far less to fix than worn clutch packs or a damaged torque converter.</li>'
+             '<li><strong>Parts needed.</strong> Which parts have to be replaced, and whether they have to be ordered.</li>'
+             '<li><strong>How long the fault has been left.</strong> Driving on a slipping gearbox can spread the damage, which is why we suggest a diagnostic early.</li></ul>'
+             '<p>The one fixed number is the start: our pre-repair diagnostic is from S$30.</p>'),
             ('Any type or brand of gearbox',
-             '<p>We work on automatic transmissions for continental, Japanese, Korean and other makes, from everyday family cars to continental models. Our workshop has dedicated teardown benches, transmission jacks and diagnostic tools specialising in auto transmission, so the work is done on site.</p>'),
+             '<p>We work on automatic transmissions for continental, Japanese, Korean and other makes, from everyday family cars to continental models. Our workshop has dedicated teardown benches, transmission jacks and diagnostic tools specialising in auto transmission, so the work is done on site, at our HQ in Woodlands (Wave 9) or our branch at Jalan Lam Huat. '
+             'Not sure what kind of gearbox your car has? WhatsApp us the car model and we’ll tell you.</p>'),
         ],
         'problems': ['car-jerks-when-changing-gear', 'car-stuck-in-gear', 'transmission-warning-light', 'gearbox-noise'],
-        'faq': ['How much does a gearbox repair cost in Singapore?', 'How much is the diagnostic?', 'Is there a warranty after repair?', 'Which car brands do you work on?'],
+        'faq': ['How much does a gearbox repair cost in Singapore?', 'Do I need a full gearbox overhaul?', 'How long does a gearbox overhaul take?',
+                'Can I keep driving with a gearbox problem?', 'How much is the diagnostic?', 'Is there a warranty after repair?', 'Which car brands do you work on?'],
     },
     'gearbox-upgrade': {
         'title': 'Gearbox Upgrade & Strengthening Singapore | DMTS',
@@ -309,18 +356,28 @@ SERVICE_PAGES = {
         'faq': ['How much is the diagnostic?', 'Is there a warranty after repair?', 'Which car brands do you work on?'],
     },
     'gearbox-servicing': {
-        'title': 'Gearbox Servicing & ATF Change Singapore | DMTS',
-        'desc': 'Automatic gearbox servicing in Singapore with the manufacturer-recommended or gearbox-specific ATF, in the right amount. All car makes.',
-        'h1': 'Gearbox Maintenance &amp; ATF Servicing',
-        'sub': 'Servicing your automatic transmission is as important as servicing the engine. The right fluid, in the right amount, keeps bearings and gears lasting longer.',
+        'title': 'Gearbox Oil (ATF) Change & Servicing Singapore | DMTS',
+        'desc': 'Gearbox oil (ATF) change and automatic gearbox servicing in Singapore with the manufacturer-recommended or gearbox-specific fluid, in the right amount. All car makes.',
+        'h1': 'Gearbox Oil (ATF) Change &amp; Gearbox Servicing',
+        'sub': 'Servicing your automatic transmission is as important as servicing the engine. The right gearbox oil, in the right amount, keeps bearings and gears lasting longer.',
+        'updated': '13 Oct 2026',
+        'share_h': 'Gearbox Maintenance & ATF Servicing',  # keep the published share card
+        'proof': ('Rhyce Chng', 'Free service',
+                  'Nice and cosy waiting lounge with a clear view of my car undergoing maintenance. Fantastic experience with them.'),
         'sections': [
             ('Why the right ATF matters',
-             '<p>Automatic Transmission Fluid (ATF) cools and lubricates the gearbox and carries the hydraulic pressure that makes it shift. Different gearboxes need different fluids. We only use the manufacturer’s recommended or gearbox-specific brand of ATF, filled to the correct level, for longer life of bearings and gears with less wear.</p>'),
-            ('Servicing prevents breakdowns',
-             '<p>Good maintenance and periodic inspection catch small issues, such as a slow leak or old, worn fluid, before they turn into slipping, harsh shifting or a full overhaul. Follow the transmission service interval in your car’s service schedule, or ask us to check it for you.</p>'),
+             '<p>Automatic Transmission Fluid (ATF), often just called gearbox oil, cools and lubricates the gearbox and carries the hydraulic pressure that makes it shift. Different gearboxes need different fluids. We only use the manufacturer’s recommended or gearbox-specific brand of ATF, filled to the correct level, for longer life of bearings and gears with less wear.</p>'),
+            ('How often to change gearbox oil in Singapore',
+             '<p>Start with the transmission service interval in your car’s service schedule; it differs by make and gearbox. Some makers describe the fluid as “lifetime”, but heat and stop-start traffic, which are everyday conditions in Singapore, are hard on ATF. '
+             'If you have bought a used car, or you don’t know when the gearbox oil was last changed, ask us to check its level and condition before deciding.</p>'),
+            ('What we check at a gearbox service',
+             '<ul class="ticks"><li>ATF level and condition</li><li>Signs of leaks around seals, the oil pan and cooler lines</li>'
+             '<li>How the gearbox shifts, so small problems are caught early</li><li>Refill with the manufacturer’s recommended or gearbox-specific ATF, in the right amount</li></ul>'
+             '<p>Good maintenance and periodic inspection catch small issues, such as a slow leak or old, worn fluid, before they turn into slipping, harsh shifting or a full <a href="{u}services/gearbox-repair/">gearbox overhaul</a>. You can wait in our air-conditioned lounge and watch your car being worked on.</p>'),
         ],
         'problems': ['transmission-fluid-leak', 'car-hesitates-when-accelerating', 'gearbox-noise'],
-        'faq': ['What are the signs my gearbox needs attention?', 'Which car brands do you work on?', 'Where are your workshops and when are you open?'],
+        'faq': ['How often should the gearbox oil (ATF) be changed?', 'Which ATF do you use?', 'What are the signs my gearbox needs attention?',
+                'Which car brands do you work on?', 'Where are your workshops and when are you open?'],
     },
     'free-towing': {
         'title': 'Free Towing for Gearbox Repair Singapore | DMTS',
@@ -626,13 +683,19 @@ def service_page(sid):
     sp = SERVICE_PAGES[sid]
     faq = [(q, FAQ_BY_Q[q]) for q in sp['faq']]
     others = [s for s, *_ in SERVICES if s != sid]
-    secs = ''.join(f'<section{" class=\"alt\"" if i % 2 == 0 else ""}><div class="wrap" style="max-width:860px"><h2>{h}</h2>{b}</div></section>'
+    secs = ''.join(f'<section{" class=\"alt\"" if i % 2 == 0 else ""}><div class="wrap" style="max-width:860px"><h2>{h}</h2>{b.replace("{u}", u())}</div></section>'
                    for i, (h, b) in enumerate(sp['sections']))
-    body = (page_hero(t, sp['h1'], sp['sub'], parent=('Services', 'services/'))
+    sub = sp['sub'] + (f'<br><small>Updated {sp["updated"]}</small>' if sp.get('updated') else '')
+    proof = ''
+    if sp.get('proof'):
+        n, c, q = sp['proof']
+        proof = (f'<blockquote class="card quote" style="margin-top:18px"><p>“{e(q)}”</p>'
+                 f'<cite>{e(n)}</cite> <span class="muted">· {e(c)} · customer review</span></blockquote>')
+    body = (page_hero(t, sp['h1'], sub, parent=('Services', 'services/'))
             + f'''<section><div class="wrap split">
 <div><h2>{t} at Dynamic Motoring</h2><p>{d}</p>
 <ul class="ticks"><li>{DIAG}</li><li>Clear quote before any work starts</li><li>{WARRANTY}</li><li>Free towing to our workshop during office hours</li></ul>
-{cta_buttons()}</div>
+{cta_buttons()}{proof}</div>
 <div>{img(im, alt)}</div>
 </div></section>'''
             + secs
@@ -645,7 +708,7 @@ def service_page(sid):
           {'@context': 'https://schema.org', '@type': 'Service', 'name': html.unescape(t), 'description': d, 'serviceType': html.unescape(t),
            'provider': {'@id': f'{ORIGIN}{BASE}#org'}, 'areaServed': {'@type': 'Country', 'name': 'Singapore'}, 'url': f'{ORIGIN}{BASE}services/{sid}/',
            'image': f'{IMG_ORIGIN}/img/share/services-{sid}.jpg'}]
-    return page(f'services/{sid}/', sp['title'], sp['desc'], body, active='services/', ld=ld, share=(im, html.unescape(sp['h1'])))
+    return page(f'services/{sid}/', sp['title'], sp['desc'], body, active='services/', ld=ld, share=(im, html.unescape(sp.get('share_h', sp['h1']))))
 
 
 HUB_FAQ = [(q, FAQ_BY_Q[q]) for q in ['What are the signs my gearbox needs attention?', 'How much is the diagnostic?',
