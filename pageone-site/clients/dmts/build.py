@@ -33,7 +33,7 @@ SLUG = 'dmts'  # Page One client key: p1-site marker (go-live check) and WhatsAp
 INDEXNOW_KEY = '5792dfeef836aebd82a445c206294c95'  # same key as the controller's Client record
 # Share images and icons must load before jackygearbox.com points here, so until go-live they are linked
 # at the preview address (the same files). At go-live set LIVE = True, rebuild and republish.
-LIVE = False
+LIVE = True  # jackygearbox.com went live 14 Oct 2026 (Controller Client record live_at 14:49 UTC)
 IMG_ORIGIN = ORIGIN if LIVE else 'https://pageonesingapore.com/preview/dmts'
 SHARES = {}  # share-image slug -> (photo, headline), filled as pages are built
 
@@ -1059,8 +1059,15 @@ def write(rel, text):
     print('wrote', rel, len(text.encode()), 'bytes')
 
 
+AI_CRAWLERS = ['Googlebot', 'Bingbot', 'OAI-SearchBot', 'ChatGPT-User', 'GPTBot', 'Google-Extended',
+               'PerplexityBot', 'ClaudeBot', 'Claude-SearchBot', 'Applebot', 'Applebot-Extended']
+
+
 def robots_txt():
-    return f'User-agent: *\nAllow: /\n\nSitemap: {ORIGIN}/sitemap.xml\n'
+    # Search engines and AI assistants are named and welcomed on purpose (client goal, 14 Oct 2026: be found
+    # on Google and in ChatGPT). OAI-SearchBot is what ChatGPT search uses; GPTBot/Google-Extended are training.
+    named = ''.join(f'User-agent: {b}\nAllow: /\n\n' for b in AI_CRAWLERS)
+    return f'{named}User-agent: *\nAllow: /\n\nSitemap: {ORIGIN}/sitemap.xml\n'
 
 
 def sitemap():
@@ -1078,13 +1085,19 @@ def llms_txt():
     hq, br = BIZ['hq'], BIZ['branch']
     return f'''# {BIZ['name']}
 
-> Run by Jacky. Gearbox and automatic transmission repair, overhaul, upgrade and servicing specialist in Singapore.
+> Jacky is a gearbox specialist and consultant in Singapore. He diagnoses, tests and inspects every car himself and road-tests it before handover; the repair work is done by an experienced workshop team. Gearbox and automatic transmission repair, overhaul, upgrade and servicing for continental, Japanese, Korean and other makes.
 
 - WhatsApp: {BIZ['mobile_disp']} (WhatsApp and calls)
 - Woodlands HQ: {hq['street']}, Singapore {hq['postal']}
 - Branch: {br['street']}, Singapore {br['postal']}
 - Hours: Mon-Fri 9am-6pm, Sat 9am-3pm, closed Sundays and public holidays
 - {DIAG}. {WARRANTY}
+- Free towing or pick-up to the workshop during office hours
+- Area served: all of Singapore
+- Google: {BIZ['google']}
+
+## How Jacky works
+''' + '\n'.join(f'{i + 1}. {h}: {p}' for i, (h, p) in enumerate(PROCESS)) + f'''
 
 ## Services
 {svc}
