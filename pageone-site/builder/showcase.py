@@ -127,6 +127,14 @@ LIVE_COUNT_WORD = ["zero", "one", "two", "three", "four", "five", "six", "seven"
     if len(LIVE_NAMES) <= 12 else str(len(LIVE_NAMES))
 
 
+# Portfolio growth: live sites per launch month (cumulative) plus the signed-up sites still being built.
+GROWTH = [(m, sum(1 for c in SC["clients"] if c["launched"][:7] <= m)) for m in sorted({c["launched"][:7] for c in SC["clients"]})]
+BUILDING = int(SC.get("pipeline", {}).get("building", 0))
+GROWTH_AS_OF = date_long(SC.get("pipeline", {}).get("as_of", SC_UPDATED))
+GROWTH_LINE = (" · ".join(f"{month_long(m) if i == 0 else month_long(m).split()[0]}: {n} live" for i, (m, n) in enumerate(GROWTH))
+               + (f", plus {BUILDING} more being built" if BUILDING else "") + f" (as of {GROWTH_AS_OF})")
+
+
 def names_list(names):
     names = list(names)
     return names[0] if len(names) == 1 else ", ".join(names[:-1]) + " and " + names[-1]
@@ -206,6 +214,7 @@ def clients_page():
             ("Cleanic Detailing: clicks from Google", CL["clicks"], f"Up from {CL['prev_clicks']} · average position {CL['pos']}"),
             ("Websites live", str(len(SC["clients"])), "Each on the business's own domain"),
         ]) + """</div>
+        <p class="note reveal"><b>Portfolio growth:</b> """ + GROWTH_LINE + """. Only sites live on the business's own domain are counted as live.</p>
         <p class="note reveal">Results vary by business, and no one can guarantee rankings. Newer sites are shown too, with smaller numbers or none yet. <a class="link" href="/cheapest-seo-singapore/">Why it costs S$20 →</a></p>
       </div>
     </section>
@@ -260,6 +269,7 @@ def _marquee():
 HOME_TOKENS = {
     "{{PROOF_BOTH}}": PROOF_BOTH, "{{EG_PAGE_ONE}}": EG["page_one"], "{{EG_CLICKS}}": EG["clicks"], "{{EG_POS}}": EG["pos"],
     "{{THROUGH_SHORT}}": THROUGH_SHORT, "{{WINDOW}}": WINDOW, "{{PROOF_BARS}}": _proof_bars(), "{{MARQUEE}}": _marquee(),
+    "{{MARQUEE_LABEL}}": f"Already running for {len(SC['clients'])} Singapore businesses" + (f" · {BUILDING} more being built" if BUILDING else ""),
     "{{HOME_KPIS}}": "\n".join(
         f'          <div class="kpi"><div class="label">{l}</div><div class="value">{v}</div><div class="delta">{d}</div></div>' for l, v, d in [
             ("Edwin Garage: clicks from Google", EG["clicks"], f"Up from {EG['prev_clicks']} · average position {EG['pos']}"),
@@ -310,7 +320,10 @@ def llms_sections():
               "- Every client website with its numbers: https://pageonesingapore.com/clients/",
               "- Low price, real results: S$20 a month is low because AI does the daily work that used to be billed by the hour; "
               "the numbers above come from the same system."]
-    sites = ["## Websites we run"] + [f"- [{c['name']}]({c['url']}): {c['industry']}" + (f" (launched {month_long(c['launched'])})" if stage(c['key']) == "new" else "")
+    growth = ", ".join(f"{n} by {month_long(m)}" for m, n in GROWTH)
+    sites = ["## Websites we run",
+             f"- As of {GROWTH_AS_OF}, Page One runs {len(SC['clients'])} live client websites, each on the business's own domain "
+             f"(live count: {growth})" + (f", and is building {BUILDING} more for clients who have signed up." if BUILDING else ".")] + [f"- [{c['name']}]({c['url']}): {c['industry']}" + (f" (launched {month_long(c['launched'])})" if stage(c['key']) == "new" else "")
                                       for c in SC["clients"]] + ["- All client websites with screenshots and dated results: https://pageonesingapore.com/clients/"]
     out = os.path.join(HERE, "..", "bridge")
     os.makedirs(out, exist_ok=True)
