@@ -109,17 +109,11 @@ def logos():
     lock.save(os.path.join(SRC, 'logo-horizontal.png'))
     board.save(os.path.join(SRC, 'logo-board.png'))
     print('logo', lock.size)
-    # Square icons from the circuit board.
-    def square(size, pad):
-        im = Image.new('RGBA', (size, size), (255, 255, 255, 255))
-        g = ImageOps.contain(board, (size - 2 * pad, size - 2 * pad), Image.LANCZOS)
-        im.alpha_composite(g, ((size - g.width) // 2, (size - g.height) // 2))
-        return im
-    for s in (48, 96, 192, 512):
-        square(s, max(1, s // 24)).convert('RGB').quantize(48).save(os.path.join(OUT, f'icon-{s}.png'), optimize=True)
-    square(180, 14).convert('RGB').quantize(128).save(os.path.join(OUT, 'apple-touch-icon.png'), optimize=True)
-    square(48, 1).save(os.path.join(OUT, 'favicon.ico'), sizes=[(16, 16), (32, 32), (48, 48)])
-
+    # Favicon and app icons: the watchdog's redesign (14 Oct 2026, Edwin's request) lives in source/favicon/
+    # and is copied as is, so re-running prep.py keeps it.
+    import shutil
+    for f in ('favicon.ico', 'icon-48.png', 'icon-96.png', 'icon-192.png', 'icon-512.png', 'apple-touch-icon.png'):
+        shutil.copy(os.path.join(SRC, 'favicon', f), os.path.join(OUT, f))
 
 if __name__ == '__main__':
     os.makedirs(IMG, exist_ok=True)

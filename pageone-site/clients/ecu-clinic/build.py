@@ -740,7 +740,7 @@ if __name__ == '__main__':
     build('site.webmanifest', lambda: json.dumps({
         'name': BIZ['name'], 'short_name': 'ECU Clinic', 'start_url': './', 'display': 'standalone',
         'background_color': '#ffffff', 'theme_color': '#1f262b',
-        'icons': [{'src': u(f'icon-{n}.png').lstrip('./') if n == 192 else u(f'icon-{n}.png'), 'sizes': f'{n}x{n}', 'type': 'image/png'} for n in (192, 512)]}, indent=1))
+        'icons': [{'src': f'icon-{n}.png', 'sizes': f'{n}x{n}', 'type': 'image/png'} for n in (192, 512)]}, indent=1))
     import share
     for slug, (photo, headline) in SHARES.items():
         share.card(slug, photo, headline)
