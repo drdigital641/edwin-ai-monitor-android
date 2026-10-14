@@ -67,12 +67,12 @@ CHEAP_SEO_FAQ = [
     ("What's the difference between the S$20 plan and an SEO Boost?",
      "The S$20 plan is the steady base: your site, the Google and AI search setup, regular new articles and a monthly audit. An SEO Boost (S$10) is for accelerated growth: more articles aimed at new keywords, so you show up for more searches sooner, plus extra fixes and a before/after report."),
     ("Is S$20 a month too cheap for SEO to work?",
-     "The price is low because the daily work is automated, not because steps are skipped. Edwin Garage, where the system was first built, got 2,280 clicks from Google in the 28 days to 5 October 2026 with an average position of 6.1, according to Google Search Console. Results vary by business, so we don't guarantee rankings."),
+     "The price is low because the daily work is automated, not because steps are skipped. Edwin Garage, where the system was first built, got " + EG["clicks"] + " clicks from Google in the 28 days to " + THROUGH + " with an average position of " + EG["pos"] + ", according to Google Search Console. Results vary by business, so we don't guarantee rankings."),
     ("What's the catch?",
      "There's no setup fee or contract, and you can cancel anytime. S$20 is an introductory price: it goes up once we reach our early-client target, so it's worth grabbing now. Any new price will stay close to S$20. Your domain is registered in your name and paid by you directly, usually S$15–30 a year."),
-    ('Is S$20 a month a gimmick price?', "No. S$20 isn't a teaser to upsell you later, and it isn't budget SEO with steps skipped. It's a baseline for what SEO costs now that AI does the daily work that used to be billed by the hour. The same system runs every website we manage, and it's proven on real businesses: Edwin Garage got 2,280 clicks from Google in the 28 days to 5 October 2026, according to Google Search Console. No setup fee, no contract, so you can judge it for yourself."),
+    ('Is S$20 a month a gimmick price?', "No. S$20 isn't a teaser to upsell you later, and it isn't budget SEO with steps skipped. It's a baseline for what SEO costs now that AI does the daily work that used to be billed by the hour. The same system runs every website we manage, and it's proven on real businesses: " + PROOF_EG + ", according to Google Search Console. No setup fee, no contract, so you can judge it for yourself."),
     ("How can I check that S$20 SEO really works?",
-     "Look at the evidence yourself. Our Google Search Console results for Edwin Garage and Cleanic Detailing are published on our results page with dates. The websites we run are live: Edwin Garage, Cleanic Detailing, SofaCare SG, Alicia Ong Property and Danny Chua Financial, across five different industries. Run any of them through our free website check. Page One Singapore is a project of Snap Commercial Pte. Ltd. (UEN 202209904W), a registered Singapore company."),
+     "Look at the evidence yourself. Our Google Search Console results for Edwin Garage and Cleanic Detailing are published on our results page with dates. The websites we run are live: " + names_list(LIVE_NAMES) + ", " + LIVE_COUNT_WORD + " businesses in all (see them on our client page). Run any of them through our free website check. Page One Singapore is a project of Snap Commercial Pte. Ltd. (UEN 202209904W), a registered Singapore company."),
     ("Does Google penalise content written with AI?",
      "Google's guidance is that it rewards helpful, accurate content, however it's produced, and acts against content mass-produced only to game rankings. We use AI to write useful answers to real customer questions, based on facts about your business and real Search Console data, not to churn out filler."),
     ("Is anyone actually looking after my site, or is it all robots?",
@@ -266,7 +266,7 @@ page("cheapest-website-singapore/index.html",
       <div class="wrap">
         <p class="kicker reveal">Websites we built and run</p>
         <h2 class="reveal">See them for yourself</h2>
-        <p class="section-lead reveal">These Singapore businesses use the same system you get: <a class="link" href="https://sggarage.com/" target="_blank" rel="noopener">Edwin Garage</a>, <a class="link" href="https://cleanicdetailing.com/" target="_blank" rel="noopener">Cleanic Detailing</a>, <a class="link" href="https://sofacaresg.com/" target="_blank" rel="noopener">SofaCare SG</a>, <a class="link" href="https://aliciaongproperty.com/" target="_blank" rel="noopener">Alicia Ong Property</a> and <a class="link" href="https://dannychuafinancial.com/" target="_blank" rel="noopener">Danny Chua Financial</a>. <a class="link" href="/website/">More about our websites →</a></p>
+        <p class="section-lead reveal">These Singapore businesses use the same system you get: """ + names_list([f'<a class="link" href="{c["url"]}" target="_blank" rel="noopener">{c["name"]}</a>' for c in SC["clients"]]) + """. <a class="link" href="/clients/">See them all →</a> <a class="link" href="/website/">More about our websites →</a></p>
       </div>
     </section>
 
@@ -327,7 +327,7 @@ page("new-business-website/index.html",
           <li class="reveal"><span>2</span><h3>A website built to be found</h3><p>A page for each service, your area, opening hours and a one-tap WhatsApp button, fast on phones and secure.</p></li>
           <li class="reveal"><span>3</span><h3>Google and Maps from day one</h3><p>Google Business Profile, Search Console and Bing set up, so you can start showing up when people search nearby.</p></li>
         </ol>
-        <p class="note reveal">With Page One, steps 2 and 3 are done for you, and we help you with step 1.</p>
+        <p class="note reveal">With Page One, steps 2 and 3 are done for you, and we help you with step 1. After launch, it's <a class="link" href="/managed-website-singapore/">fully managed</a>: hosting, upkeep, SEO articles and AI search setup.</p>
       </div>
     </section>
 
