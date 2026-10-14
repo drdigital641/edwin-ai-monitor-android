@@ -55,6 +55,10 @@ def crumbs_ld(name, url):
 
 
 def page(path, title, desc, schemas, body, crumb=None, robots="index, follow, max-image-preview:large", updated=None):
+    # The two pages owned by another thread keep their published footer byte for byte.
+    frozen = path in ("ai-seo-vs-traditional-seo/index.html", "is-page-one-singapore-legit/index.html")
+    managed_link = "" if frozen else '        <a href="/managed-website-singapore/">Fully managed website</a>\n'
+    clients_href = "/#stories" if frozen else "/clients/"
     if path == "index.html":
         current = "/"
     elif path.endswith("index.html"):
@@ -144,7 +148,7 @@ def page(path, title, desc, schemas, body, crumb=None, robots="index, follow, ma
       <div>
         <h2>Services</h2>
         <a href="/website/">Website, built and managed</a>
-        <a href="/new-business-website/">New business website</a>
+{managed_link}        <a href="/new-business-website/">New business website</a>
         <a href="/seo-services-singapore/">SEO services compared</a>
         <a href="/get-found/">Get Found</a>
         <a href="/seo-boost/">SEO Boost</a>
@@ -160,7 +164,7 @@ def page(path, title, desc, schemas, body, crumb=None, robots="index, follow, ma
         <h2>Company</h2>
         <a href="/about/">About</a>
         <a href="/results/">Results</a>
-        <a href="/#stories">Clients</a>
+        <a href="{clients_href}">Clients</a>
         <a href="/articles/">Articles</a>
         <a href="/faq/">FAQ</a>
         <a href="/seo-explained/">SEO explained simply</a>
@@ -406,7 +410,7 @@ page("website/index.html",
         <div class="cards three" style="margin-top:32px">
           <div class="card reveal"><h3>You're starting a new business</h3><p>You need a proper website so customers can find you and trust you, without paying a big amount upfront. <a class="link" href="/new-business-website/">Start here →</a></p></div>
           <div class="card reveal"><h3>You're only on Facebook or Instagram</h3><p>Social pages are a start, but Google and ChatGPT can't rank them like a website. A website is yours, and it shows up when people search.</p></div>
-          <div class="card reveal"><h3>You don't want to manage a website</h3><p>No time to learn a website builder, chase a designer for changes or worry about hosting. Already have a website that no one looks after? We can take it over and manage it for you.</p></div>
+          <div class="card reveal"><h3>You don't want to manage a website</h3><p>No time to learn a website builder, chase a designer for changes or worry about hosting. Already have a website that no one looks after? We can take it over and manage it for you. <a class="link" href="/managed-website-singapore/">What fully managed covers →</a></p></div>
         </div>
       </div>
     </section>
@@ -1335,6 +1339,8 @@ exec(open(os.path.join(HERE, "industries.py"), encoding="utf-8").read())
 exec(open(os.path.join(HERE, "affordable.py"), encoding="utf-8").read())
 # Client showcase (/clients/), from showcase.json.
 clients_page()
+# Fully managed website owner page (/managed-website-singapore/).
+exec(open(os.path.join(HERE, "managed.py"), encoding="utf-8").read())
 # "AI SEO vs traditional SEO" and "Is Page One legit?" (verify-it-yourself) pages.
 # These two pages are owned by another thread and must not change here, so ai_seo.py gets the
 # proof blocks exactly as they were published (5 Oct 2026 data), not the refreshed ones.

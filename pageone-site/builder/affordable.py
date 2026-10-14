@@ -266,7 +266,7 @@ page("cheapest-website-singapore/index.html",
       <div class="wrap">
         <p class="kicker reveal">Websites we built and run</p>
         <h2 class="reveal">See them for yourself</h2>
-        <p class="section-lead reveal">These Singapore businesses use the same system you get: <a class="link" href="https://sggarage.com/" target="_blank" rel="noopener">Edwin Garage</a>, <a class="link" href="https://cleanicdetailing.com/" target="_blank" rel="noopener">Cleanic Detailing</a>, <a class="link" href="https://sofacaresg.com/" target="_blank" rel="noopener">SofaCare SG</a>, <a class="link" href="https://aliciaongproperty.com/" target="_blank" rel="noopener">Alicia Ong Property</a> and <a class="link" href="https://dannychuafinancial.com/" target="_blank" rel="noopener">Danny Chua Financial</a>. <a class="link" href="/website/">More about our websites →</a></p>
+        <p class="section-lead reveal">These Singapore businesses use the same system you get: """ + names_list([f'<a class="link" href="{c["url"]}" target="_blank" rel="noopener">{c["name"]}</a>' for c in SC["clients"]]) + """. <a class="link" href="/clients/">See them all →</a> <a class="link" href="/website/">More about our websites →</a></p>
       </div>
     </section>
 
@@ -327,7 +327,7 @@ page("new-business-website/index.html",
           <li class="reveal"><span>2</span><h3>A website built to be found</h3><p>A page for each service, your area, opening hours and a one-tap WhatsApp button, fast on phones and secure.</p></li>
           <li class="reveal"><span>3</span><h3>Google and Maps from day one</h3><p>Google Business Profile, Search Console and Bing set up, so you can start showing up when people search nearby.</p></li>
         </ol>
-        <p class="note reveal">With Page One, steps 2 and 3 are done for you, and we help you with step 1.</p>
+        <p class="note reveal">With Page One, steps 2 and 3 are done for you, and we help you with step 1. After launch, it's <a class="link" href="/managed-website-singapore/">fully managed</a>: hosting, upkeep, SEO articles and AI search setup.</p>
       </div>
     </section>
 
