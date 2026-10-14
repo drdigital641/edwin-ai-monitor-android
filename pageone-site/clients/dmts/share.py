@@ -1,4 +1,4 @@
-"""Share images (WhatsApp, Facebook, Google) and site icons for DMTS, made from the client's own photos.
+"""Share images (WhatsApp, Facebook, Google) and site icons for Jacky Gearbox (formerly DMTS), made from the client's own photos.
 
     card(slug, photo, headline)   -> site/img/share/<slug>.jpg (1200x630, used as og:image)
     icons()                       -> favicon.ico, icon-48/96/192/512.png, apple-touch-icon.png, logo.png
@@ -14,7 +14,8 @@ OUT = os.path.join(HERE, 'site')
 FONT_B = '/usr/share/fonts/opentype/inter/Inter-Bold.otf'
 FONT_M = '/usr/share/fonts/opentype/inter/InterDisplay-Medium.otf'
 NAVY = (11, 30, 51)
-LOGO = os.path.join(SRC, 'Dynamic-Motoring-Logo_transparent.png')
+LOGO = os.path.join(SRC, 'jacky-gearbox-logo.png')  # logo option A, chosen 14 Oct 2026 (site/img/logo.svg)
+ICON = os.path.join(SRC, 'jacky-gearbox-icon.png')  # its JG gear on its own (site/favicon.svg)
 
 # web image name -> full-size original
 ORIGINAL = {
@@ -103,14 +104,8 @@ def card(slug, photo, headline, kicker='Gearbox & auto transmission specialist Â
 
 
 def icons():
-    """Square gear icon from the logo, for browser tabs, Google results and phone home screens."""
-    logo = Image.open(LOGO).convert('RGBA')
-    logo = logo.crop(logo.getbbox())
-    # The gears sit at the left of the logo: cut at the first empty column after them.
-    alpha = logo.getchannel('A')
-    top = int(logo.height * 0.7)  # "Transmission Specialist" runs along the bottom, under the grey gear
-    cut = next(x for x in range(logo.height // 4, logo.width) if alpha.crop((x, 0, x + 1, top)).getbbox() is None)
-    gear = logo.crop((0, 0, cut, logo.height))
+    """Square JG gear icon, for browser tabs, Google results and phone home screens."""
+    gear = Image.open(ICON).convert('RGBA')
     gear = gear.crop(gear.getbbox())
     def square(size, pad, bg):
         im = Image.new('RGBA', (size, size), bg)
@@ -124,6 +119,8 @@ def icons():
         out[s] = p
     square(180, 18, (255, 255, 255, 255)).convert('RGB').save(os.path.join(OUT, 'apple-touch-icon.png'), optimize=True)
     square(48, 2, (255, 255, 255, 255)).save(os.path.join(OUT, 'favicon.ico'), sizes=[(16, 16), (32, 32), (48, 48)])
+    logo = Image.open(LOGO).convert('RGBA')
+    logo = logo.crop(logo.getbbox())
     wide = ImageOps.contain(logo, (1200, 450), Image.LANCZOS)
     plate = Image.new('RGBA', (wide.width + 60, wide.height + 60), (255, 255, 255, 255))
     plate.alpha_composite(wide, (30, 30))

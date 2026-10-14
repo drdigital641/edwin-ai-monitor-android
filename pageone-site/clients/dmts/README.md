@@ -1,4 +1,12 @@
-# Dynamic Motoring (DMTS): pageonesingapore.com/preview/dmts/
+# Jacky Gearbox (formerly Dynamic Motoring, DMTS): pageonesingapore.com/preview/dmts/
+
+**Rebrand, 14 Oct 2026:** the client renamed the business Jacky Gearbox, on jackygearbox.com, with Jacky
+(the owner) as the face of the site. Logo option A (JG inside a gear, navy and blue, no red: Jacky's
+request) is `site/img/logo.svg`, with the icon in `site/favicon.svg` and PNG masters in `source/photos/jacky-gearbox-*.png`
+(drawn by `/mnt/project-files/dmts/logo-options/generator.py`). The folder and the Page One site key stay `dmts`.
+`.htaccess` now sends every dmts.com.sg address to the same page on jackygearbox.com. Jacky's portfolio and
+experience are still to come from the client: fill `JACKY_STORY` and `meet_jacky()` in `build.py`.
+
 
 New client (onboarding 12 Oct 2026). Gearbox / auto transmission specialist, Woodlands, Singapore. Old site: https://dmts.com.sg/ (WordPress, 2017).
 

@@ -1,4 +1,4 @@
-:root{--blue:#0a5bb5;--blue-d:#08498f;--navy:#0b1e33;--ink:#18222e;--muted:#5b6673;--line:#e3e8ee;--bg:#f5f7fa;--red:#d9232d;--wa:#14803e;--r:14px;--w:1140px}
+:root{--blue:#0a5bb5;--blue-d:#08498f;--navy:#0b1e33;--ink:#18222e;--muted:#5b6673;--line:#e3e8ee;--bg:#f5f7fa;--wa:#14803e;--r:14px;--w:1140px}
 *{box-sizing:border-box}
 html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
 body{margin:0;font:16px/1.6 system-ui,-apple-system,"Segoe UI",Roboto,Arial,sans-serif;color:var(--ink);background:#fff}
@@ -19,7 +19,7 @@ p{margin:0 0 1em}
 .topbar .hide-sm{display:none}
 header.site{position:sticky;top:0;z-index:40;background:#fff;border-bottom:1px solid var(--line)}
 header.site .wrap{display:flex;align-items:center;justify-content:space-between;min-height:68px;gap:12px}
-.logo img{width:150px;height:auto}
+.logo img{width:170px;height:auto}
 nav.main{display:none}
 nav.main a{color:var(--ink);text-decoration:none;font-weight:600;font-size:.95rem;padding:8px 10px;border-radius:8px}
 nav.main a:hover,nav.main a[aria-current]{color:var(--blue);background:#eef4fb}
@@ -32,7 +32,7 @@ nav.main a:hover,nav.main a[aria-current]{color:var(--blue);background:#eef4fb}
 
 /* buttons */
 .btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;padding:13px 20px;border-radius:12px;font-weight:700;text-decoration:none;border:1px solid transparent;vertical-align:middle;cursor:pointer;font:inherit;font-weight:700;line-height:1.2}
-.btn-red{background:var(--red);color:#fff}.btn-red:hover{background:#b81c25}
+.btn-call{background:var(--blue);color:#fff;border-color:rgba(255,255,255,.35)}.btn-call:hover{background:var(--blue-d)}
 .btn-blue{background:var(--blue);color:#fff}.btn-blue:hover{background:var(--blue-d)}
 .btn-wa{background:var(--wa);color:#fff}.btn-wa:hover{background:#0f6a33}
 .btn-ghost{background:rgba(255,255,255,.12);color:#fff;border:1px solid rgba(255,255,255,.5)}
@@ -47,6 +47,7 @@ nav.main a:hover,nav.main a[aria-current]{color:var(--blue);background:#eef4fb}
 .hero h1{color:#fff;max-width:760px}
 .hero p.lead{font-size:1.15rem;max-width:620px;color:#e3ebf5}
 .eyebrow{display:inline-block;font-size:.8rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:#9cc7ff;margin-bottom:12px}
+.eyebrow.dark{color:var(--blue)}
 .chips{display:flex;flex-wrap:wrap;gap:8px;margin:20px 0 26px;padding:0;list-style:none}
 .chips li{background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.25);padding:6px 12px;border-radius:999px;font-size:.9rem}
 .page-hero{background:var(--navy);color:#fff;padding:44px 0 36px}
@@ -81,7 +82,7 @@ section.alt{background:var(--bg)}
 /* symptoms */
 .sym{display:grid;gap:14px}
 @media(min-width:760px){.sym{grid-template-columns:repeat(2,1fr)}}
-.sym .card h3{color:var(--red);margin-bottom:.3em}
+.sym .card h3{color:var(--blue);margin-bottom:.3em}
 
 /* testimonials */
 blockquote{margin:0}
@@ -119,7 +120,7 @@ label.f{display:block;font-weight:600;margin:0 0 6px}
 select,input[type=text],input[type=tel],input[type=email],textarea{width:100%;font:inherit;padding:12px;border:1px solid #c9d2dc;border-radius:10px;background:#fff;color:var(--ink)}
 textarea{min-height:110px;resize:vertical}
 .symrow{border:1px solid var(--line);border-radius:12px;padding:14px 16px;margin-bottom:12px;background:#fff}
-.symrow h3{font-size:1rem;color:var(--red);margin-bottom:.2em}
+.symrow h3{font-size:1rem;color:var(--blue);margin-bottom:.2em}
 .symrow .d{font-size:.92rem;color:var(--muted);margin-bottom:8px}
 .opt{display:flex;gap:10px;align-items:flex-start;padding:8px 0;border-top:1px dashed var(--line);cursor:pointer}
 .opt input{margin-top:5px;width:18px;height:18px;flex:none;accent-color:var(--blue)}
@@ -161,7 +162,7 @@ footer.site ul li{margin-bottom:4px}
 body{font-size:15px;line-height:1.55}
 h1{font-size:1.6rem}h2{font-size:1.3rem}h3{font-size:1rem}
 .topbar{display:none}
-header.site .wrap{min-height:58px}.logo img{width:128px}
+header.site .wrap{min-height:58px}.logo img{width:140px}
 section{padding:34px 0}.sec-head{margin-bottom:16px}.sec-head p{font-size:.92rem}
 .hero .wrap{padding:28px 16px 26px}.hero p.lead{font-size:.98rem;margin-bottom:.6em}
 .eyebrow{font-size:.7rem;margin-bottom:8px}
