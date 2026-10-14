@@ -21,6 +21,7 @@ SERVICE_PAGES = [
                'We start with the fault code, so we know whether the problem is the unit itself or something around it, such as a sensor or wiring. Then we tell you the options: repair your unit, or fit a reconditioned, used or new one.',
                'Many car workshops send their ABS and module repairs to us. Come direct and deal with the technician who does the repair.'],
         what=['ABS, ESP and ESC module repair', 'Honda VSA modulator faults, such as “VSA Solenoid Valve Malfunction” (121-11)',
+              'Honda yaw rate and acceleration sensor faults inside the modulator (81-19, 81-20)',
               'Used and reconditioned ABS pumps', 'Mercedes-Benz ESP pumps and units, such as the N30/4 control unit',
               'Hyundai and Kia ESC units', 'Toyota Voxy, Noah and Sienta: repair, replace, used or recon',
               'Plug and play available', 'Makes include Audi, VW, BMW, Chevrolet, Honda, Mercedes, Nissan, Toyota, Skoda, Mini, Kia and Volvo'],
@@ -211,10 +212,34 @@ SERVICE_PAGES = [
                ('Radar fault code', 'A scan shows P2583 “Millimeter Wave Radar Function Error”.'),
                ('Aiming incomplete', 'A scan shows “Millimeter Wave Radar Aiming Incomplete”.')],
         faq=[('Do I need a new radar unit?', 'Not always. We repair the existing front radar unit instead of replacing it.'),
+             ('My Honda has both ABS and radar faults. Can you fix both?', 'Yes. We see cars with both the VSA (ABS) unit and the front radar faulty, and repair both on the same visit. WhatsApp us all the fault codes.'),
              ('Which Honda models do you work on?', 'Honda models with Honda Sensing and a front millimeter wave radar, such as the Vezel. WhatsApp us your model and year to check.'),
              ('Is there a warranty?', 'Yes. Our repairs come with a 6-month warranty.'),
              ('What should I send you?', 'Your car model, year and the fault codes. A photo of the scan tool screen or the dashboard warning helps.')],
-        related=['honda-millimeter-wave-radar-error-p2583'],
+        related=['honda-millimeter-wave-radar-error-p2583', 'honda-vsa-solenoid-valve-malfunction'],
+        jobs=[('honda-radar-fault-codes', '2019 Honda Vezel: radar function error and aiming incomplete'),
+              ('honda-abs-radar-codes', 'Honda Vezel with both the radar and the VSA (ABS) unit faulty')],
+    ),
+    dict(
+        slug='bmw-cas-module-repair', key='cas', name='BMW CAS Module Repair',
+        title='BMW CAS Module Repair Singapore | Car Access System Fault | The ECU Clinic',
+        desc='BMW CAS (Car Access System) module repair in Kaki Bukit. Key not recognised, car won’t start or steering lock (ELV) faults. WhatsApp 9893 1923.',
+        h1='BMW CAS Module Repair',
+        lead='Key not recognised, car won’t start, or CAS and steering lock faults on the scan tool? We repair the BMW CAS module.',
+        photo='bmw-cas-fault-codes', alt='Scan tool showing BMW CAS fault codes for ELV, processor and engine start',
+        share='bmw-cas-fault-codes.jpg',
+        intro=['The CAS (Car Access System) is the BMW control unit that recognises your key, works with the immobiliser and allows the engine to start. On many BMWs it also controls the electric steering lock (ELV).',
+               'When the CAS module develops a fault, the car may not recognise the key, the engine may not start, or the steering lock may stay locked. We read the fault codes first, then repair the CAS module.'],
+        what=['BMW CAS module diagnosis and repair', 'CAS faults linked to the electric steering lock (ELV)',
+              'Engine start and key recognition faults', 'Fault code reading'],
+        signs=[('Key not recognised', 'The car does not detect the key, or shows a key or immobiliser message.'),
+               ('Engine won’t start', 'The starter does not turn, or the engine does not crank.'),
+               ('Steering lock problems', 'The steering stays locked, or a steering lock message appears.'),
+               ('CAS fault codes', 'A scan shows CAS codes such as “ELV Fault”, “Processor” or “Engine Start, Starter Operation”.')],
+        faq=[('What does the CAS module do?', 'It recognises the key, works with the immobiliser, allows the engine to start and, on many BMWs, controls the electric steering lock.'),
+             ('My BMW won’t start and shows CAS codes. Can you help?', 'Yes. WhatsApp us your model, year and the fault codes. Our pick-up and delivery service can collect a car that will not start.'),
+             ('Is there a warranty?', 'Yes. Our repairs come with a 6-month warranty.')],
+        related=['bmw-cas-elv-fault-codes'],
     ),
     dict(
         slug='bmw-temperature-programming', key='bmw', name='BMW Temperature Programming',
@@ -235,6 +260,61 @@ SERVICE_PAGES = [
 
 # slug, title tag, meta desc, h1, lead, photo, alt, share photo, date, related service slug, body html
 ARTICLES = [
+    dict(
+        slug='honda-yaw-rate-sensor-malfunction', service='abs-pump-repair', date='2026-10-14',
+        title='Honda Yaw Rate Sensor Malfunction (81-19, C0063): VSA & ABS Lights | The ECU Clinic',
+        desc='Honda yaw rate sensor and acceleration sensor faults inside the VSA modulator control unit (81-19, 81-20, C0063, C0062): what they mean and how they are repaired.',
+        h1='Honda Yaw Rate Sensor Malfunction (81-19)',
+        lead='A well-known Honda ABS fault: the yaw rate sensor inside the VSA modulator, and why it brings up so many other codes.',
+        photo='honda-yaw-rate-codes', alt='Scan tool showing Honda codes 81-19 yaw rate sensor and 81-20 acceleration sensor inside the modulator control unit', share='honda-yaw-rate-sensor-codes.jpg',
+        body='''<p>The yaw rate sensor measures how fast the car is turning. Together with the acceleration sensor, it tells the VSA (Vehicle Stability Assist) system whether the car is going where the driver is steering. On many Honda models these sensors are built into the VSA modulator control unit, the ABS unit in the engine bay.</p>
+<h2>The codes</h2>
+<p>The scan in the photo above shows how one fault spreads across several systems:</p>
+<ul class="ticks">
+<li><strong>81-19</strong> Yaw Rate Sensor (Inside Of Modulator Control Unit) Internal Circuit Malfunction (ABS)</li>
+<li><strong>81-20</strong> Acceleration Sensor (Inside Of Modulator Control Unit) Internal Circuit Malfunction (ABS)</li>
+<li><strong>38-11</strong> ABS Solenoid Valve Malfunction (ABS)</li>
+<li><strong>C0063-F0</strong> Yaw Rate Sensor Malfunction and <strong>U0415-68</strong> ABS System Malfunction (electric servo brake)</li>
+<li><strong>C0062-F0</strong> Longitudinal Acceleration Sensor Malfunction and <strong>U0416-68</strong> VSA System Malfunction (electric parking brake)</li>
+</ul>
+<p>The brake, parking brake and other systems log these codes because they rely on the sensor data from the VSA unit. The words “inside of modulator control unit” point to the unit itself, not to a separate sensor you can swap.</p>
+<h2>What you see on the dashboard</h2>
+<p>Usually the ABS, VSA and brake warning lights together, often with parking brake or driver assistance warnings as well.</p>
+<h2>How it is fixed</h2>
+<p>We read all the codes first, then repair the VSA modulator control unit, or supply a reconditioned, used or new one. Our repairs come with a 6-month warranty.</p>
+<p>WhatsApp us your car model, year and the fault codes. A photo of the scan tool screen helps.</p>''',
+    ),
+    dict(
+        slug='bmw-cas-elv-fault-codes', service='bmw-cas-module-repair', date='2026-10-14',
+        title='BMW CAS Fault Codes: ELV Fault, Processor & Engine Start (A11E, A0AF) | The ECU Clinic',
+        desc='What BMW CAS fault codes such as A11E ELV Fault, A0AF Processor and A0B4 Engine Start mean, why the car may not start, and repairing the CAS module.',
+        h1='BMW CAS Fault Codes: ELV Fault, Processor and Engine Start',
+        lead='Why a BMW shows a list of CAS and steering lock codes, and what to do when the car won’t start.',
+        photo='bmw-cas-fault-codes', alt='Scan tool showing BMW CAS fault codes on a 2009 BMW 320i', share='bmw-cas-fault-codes.jpg',
+        body='''<p>On many BMWs, the CAS (Car Access System) module recognises the key, works with the immobiliser, allows the engine to start and controls the electric steering lock (ELV). Because it does so much, a CAS fault can show up as several codes at once.</p>
+<h2>The codes</h2>
+<p>The scan in the photo above, from a 2009 BMW 320i, listed these in the CAS:</p>
+<ul class="ticks">
+<li><strong>A11E</strong> and <strong>A11A</strong> CAS: ELV Fault</li>
+<li><strong>A0AF</strong> CAS: Processor</li>
+<li><strong>A119</strong> CAS: Power Supply, El. Steering Lock</li>
+<li><strong>A116</strong> CAS: Critical Status, El. Steering Lock</li>
+<li><strong>A0B4</strong> CAS: Engine Start, Starter Operation</li>
+<li><strong>A0B5</strong> CAS: Fault, Road Speed Signal</li>
+<li>CAS: Control-Unit Fault</li>
+</ul>
+<h2>What the driver notices</h2>
+<ul class="ticks">
+<li>The key is not recognised</li>
+<li>The engine does not crank or start</li>
+<li>The steering stays locked, or a steering lock message appears</li>
+</ul>
+<h2>CAS or steering lock?</h2>
+<p>The steering lock and the CAS work together, so codes from one often appear in the other. Reading all the codes, and checking power supply to the steering lock, helps tell which part is at fault before anything is replaced.</p>
+<h2>How it is fixed</h2>
+<p>We diagnose the CAS and steering lock, then repair the CAS module. If the car cannot be driven, our pick-up and delivery service can collect it. Our repairs come with a 6-month warranty.</p>
+<p>WhatsApp us your BMW model, year and the fault codes.</p>''',
+    ),
     dict(
         slug='honda-vsa-solenoid-valve-malfunction', service='abs-pump-repair', date='2026-10-14',
         title='Honda VSA Solenoid Valve Malfunction (121-11): ABS, VSA & Brake Lights | The ECU Clinic',
@@ -294,6 +374,8 @@ ARTICLES = [
 <li><strong>P2583-54</strong> Millimeter Wave Radar Aiming Incomplete: the radar needs to be aimed (calibrated).</li>
 </ul>
 <p>Everything else on the car scanned clean, so the problem was the radar.</p>
+<h2>Radar and ABS faults on the same car</h2>
+<p>Honda Sensing also uses information from the VSA (ABS) unit, so the two systems can show faults together. We have seen a Honda Vezel with three permanent codes at once: <strong>U3000-49</strong> “Multipurpose Camera Unit/Millimeter Wave Radar Internal Electronic Failure”, plus <strong>U0416-68</strong> and <strong>U0416-F8</strong> for the VSA brake actuator and modulator control unit. In a case like that both units need attention, and we read every code before deciding what to repair.</p>
 <h2>Other things that can upset the radar</h2>
 <ul class="ticks">
 <li>Dirt, mud or a sticker over the front emblem or grille where the radar sits</li>

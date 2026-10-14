@@ -45,6 +45,9 @@ PHOTOS = {
     # A 4-value crop is (left, top, right, bottom) as fractions.
     'honda-radar-fault-codes': ('honda-vezel-radar-fault-codes.jpg', (0.10, 0.21, 0.86, 0.97)),
     'mercedes-esp-fault-code': ('mercedes-esp-n30-4-fault-code.jpg', (0.33, 0.75)),
+    'bmw-cas-fault-codes': ('bmw-cas-fault-codes.jpg', (0.04, 0.10, 0.70, 0.98)),
+    'honda-yaw-rate-codes': ('honda-yaw-rate-sensor-codes.jpg', (0.0, 0.0, 0.73, 1.0)),
+    'honda-abs-radar-codes': ('honda-vezel-abs-and-radar-codes.jpg', (0.12, 0.44, 0.86, 0.85)),
     'honda-vsa-fault-codes': ('honda-vezel-vsa-fault-codes.jpg', (0.13, 0.33, 1.0, 0.82)),
 }
 

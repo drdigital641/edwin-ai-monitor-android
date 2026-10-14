@@ -120,6 +120,9 @@ SERVICES = [
     ('radar', 'Honda Front Radar (ADAS) Repair', 'honda-radar-fault-codes', 'Scan tool showing Honda millimeter wave radar fault codes',
      'Honda Sensing warning or a radar function error? We repair your existing front radar unit instead of replacing it.',
      ['Honda millimeter wave radar repair', 'P2583 radar function error', 'No new radar needed', 'WhatsApp us your model and fault codes']),
+    ('cas', 'BMW CAS Module Repair', 'bmw-cas-fault-codes', 'Scan tool showing BMW CAS fault codes',
+     'Key not recognised or car won’t start? We repair the BMW CAS (Car Access System) module, including CAS faults linked to the steering lock.',
+     ['BMW CAS module repair', 'ELV, processor and engine start CAS codes', 'Pick-up available if the car won’t start']),
     ('hybrid', 'Hybrid Battery Replacement', 'hybrid-battery-pack', 'Brand-new hybrid battery pack ready to fit',
      'Hybrid battery warning or a weak battery? We replace it with a brand-new OEM hybrid battery.',
      ['Brand-new OEM hybrid batteries', 'Warranty: 1 year or 100,000 km', 'Removal and fitting', 'WhatsApp us your car model and year to check availability']),
@@ -306,7 +309,7 @@ def page(path, title, desc, body, ld=None, share=('module-circuit-board.jpg', No
 <div class="grid">
 <div>
 <h3>The ECU Clinic</h3>
-<p>ABS pump and module repair and brake fault diagnosis in Kaki Bukit, Singapore. Also Honda front radar repair, Mercedes 7-speed and 9-speed TCU repair, Mercedes steering lock repair and brand-new OEM hybrid batteries. Pick-up and delivery available, 6-month warranty.</p>
+<p>ABS pump and module repair and brake fault diagnosis in Kaki Bukit, Singapore. Also Honda front radar repair, BMW CAS repair, Mercedes 7-speed and 9-speed TCU repair, Mercedes steering lock repair and brand-new OEM hybrid batteries. Pick-up and delivery available, 6-month warranty.</p>
 <p><a href="{wa_link()}" target="_blank" rel="noopener">WhatsApp {BIZ["tel_disp"]}</a> (preferred, ask for {BIZ["contact"]})<br><a href="tel:{BIZ["tel"]}">Call {BIZ["tel_disp"]}</a></p>
 <p><a href="{BIZ["facebook"]}" target="_blank" rel="noopener">Facebook</a></p>
 </div>
@@ -381,7 +384,7 @@ def home():
 </div></section>
 
 <section class="alt" id="services"><div class="wrap">
-<div class="sec-head"><h2>Our services</h2><p>ABS and brake system repair, plus Honda radar repair, Mercedes gearbox and steering lock repair and hybrid batteries.</p></div>
+<div class="sec-head"><h2>Our services</h2><p>ABS and brake system repair, plus Honda radar, BMW CAS, Mercedes gearbox and steering lock repair and hybrid batteries.</p></div>
 <div class="grid g2 svc">{service_cards()}</div>
 <p style="margin-top:22px"><a class="btn btn-wa" href="{wa_link()}" target="_blank" rel="noopener">{ICON["wa"]}WhatsApp us your fault code</a></p>
 </div></section>
