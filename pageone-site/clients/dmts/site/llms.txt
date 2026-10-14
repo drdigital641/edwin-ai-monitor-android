@@ -32,6 +32,10 @@
 - [Vibration](https://jackygearbox.com/gearbox-problems/car-vibrates-when-accelerating/): The car vibrates at high speed on low RPM, or when accelerating hard from a standstill.
 - [ATF leaking or low](https://jackygearbox.com/gearbox-problems/transmission-fluid-leak/): Bright red oil (ATF) stains on the floor after the car has been parked for a while.
 - [Gearbox noise](https://jackygearbox.com/gearbox-problems/gearbox-noise/): A loud noise from the gearbox once the engine starts or while the car is moving.
+- [Engine revs but car doesn’t speed up](https://jackygearbox.com/gearbox-problems/gearbox-slipping/): You press the accelerator, the engine revs climb, but the car is slow to pick up speed, or the gear seems to slip out for a moment.
+- [Burning smell](https://jackygearbox.com/gearbox-problems/burning-smell-from-gearbox/): A sharp burning smell after driving, especially in stop-start traffic or after a long climb, sometimes with slipping or harsh shifts.
+- [Car won’t move in Drive or Reverse](https://jackygearbox.com/gearbox-problems/car-wont-move-in-drive/): The engine starts and runs, but the car doesn’t move, or barely moves, when you select Drive or Reverse.
+- [Gear lever stuck in Park](https://jackygearbox.com/gearbox-problems/gear-lever-stuck-in-park/): You press the brake but the gear lever won’t move out of Park, or the gear selector doesn’t respond.
 
 ## Common questions
 - How much does a gearbox repair cost in Singapore? It depends on the car and the fault, so we don’t quote blind. We start with a pre-repair diagnostic (from S$30) to find the actual cause, then give you a clear quote before any work starts. WhatsApp us your car model and symptoms to get started.
