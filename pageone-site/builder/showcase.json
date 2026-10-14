@@ -499,5 +499,10 @@
       },
       "short": "gearbox specialist"
     }
-  ]
+  ],
+  "pipeline": {
+    "_readme": "Websites being built for signed-up clients that are not live on their own domain yet. Shown only as a count (never named) next to the live count. Update when a site launches (move it into clients) or a new client signs up.",
+    "building": 3,
+    "as_of": "2026-10-15"
+  }
 }
