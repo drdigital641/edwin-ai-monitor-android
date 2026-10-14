@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <script>if(/(^|\.)pageonesingapore\.com$/.test(location.hostname)&&(location.protocol==="http:"||location.hostname!=="pageonesingapore.com"))location.replace("https://pageonesingapore.com"+location.pathname+location.search+location.hash);</script>
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Affordable SEO Singapore from S$20/month | Page One Singapore</title>
+  <title>Affordable SEO Singapore from S$20/month | Page One SG</title>
   <meta name="description" content="Affordable SEO for Singapore small businesses: get found on Google, Maps and ChatGPT from S$20/month. Proven on real businesses. No setup fee or contract.">
   <meta name="robots" content="index, follow, max-image-preview:large">
   <link rel="canonical" href="https://pageonesingapore.com/">
@@ -16,7 +16,7 @@
   <link rel="manifest" href="/site.webmanifest">
   <meta property="og:type" content="website">
   <meta property="og:site_name" content="Page One Singapore">
-  <meta property="og:title" content="Affordable SEO Singapore from S$20/month | Page One Singapore">
+  <meta property="og:title" content="Affordable SEO Singapore from S$20/month | Page One SG">
   <meta property="og:description" content="Affordable SEO for Singapore small businesses: get found on Google, Maps and ChatGPT from S$20/month. Proven on real businesses. No setup fee or contract.">
   <meta property="og:url" content="https://pageonesingapore.com/">
   <meta property="og:image" content="https://pageonesingapore.com/images/og.png">
@@ -25,6 +25,10 @@
   <meta property="og:image:alt" content="Page One Singapore: get found on Google and AI search from S$20 a month">
   <meta property="og:locale" content="en_SG">
   <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Affordable SEO Singapore from S$20/month | Page One SG">
+  <meta name="twitter:description" content="Affordable SEO for Singapore small businesses: get found on Google, Maps and ChatGPT from S$20/month. Proven on real businesses. No setup fee or contract.">
+  <meta name="twitter:image" content="https://pageonesingapore.com/images/og.png">
+  <meta name="twitter:image:alt" content="Page One Singapore: get found on Google and AI search from S$20 a month">
   <meta name="theme-color" content="#060b18">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -97,20 +101,55 @@
       "@type": "ProfessionalService",
       "@id": "https://pageonesingapore.com/#business",
       "name": "Page One Singapore",
+      "alternateName": [
+        "Page One SG",
+        "PageOne Singapore"
+      ],
       "url": "https://pageonesingapore.com/",
-      "logo": "https://pageonesingapore.com/icon-512.png",
+      "logo": {
+        "@type": "ImageObject",
+        "url": "https://pageonesingapore.com/icon-512.png",
+        "width": 512,
+        "height": 512
+      },
       "image": "https://pageonesingapore.com/images/og.png",
-      "description": "Google and AI search visibility for Singapore businesses: the Get Found subscription (a website or SEO landing page) with optional SEO Boost top-ups.",
+      "description": "Done-for-you website and SEO for Singapore small businesses: a website (or SEO landing page) built and managed, found on Google Search, Google Maps and AI assistants, from S$20 a month. No setup fee, no contract.",
       "telephone": "+6597856612",
       "priceRange": "S$20 - S$70 per month",
-      "hasMap": "https://maps.google.com/?cid=8757289318297107567",
-      "sameAs": [
-        "https://maps.google.com/?cid=8757289318297107567"
-      ],
+      "address": {
+        "@type": "PostalAddress",
+        "addressCountry": "SG"
+      },
       "areaServed": {
         "@type": "Country",
         "name": "Singapore"
       },
+      "contactPoint": {
+        "@type": "ContactPoint",
+        "contactType": "customer support",
+        "telephone": "+6597856612",
+        "url": "https://wa.me/6597856612",
+        "availableLanguage": "English",
+        "areaServed": "SG",
+        "hoursAvailable": {
+          "@type": "OpeningHoursSpecification",
+          "dayOfWeek": [
+            "Monday",
+            "Tuesday",
+            "Wednesday",
+            "Thursday",
+            "Friday",
+            "Saturday",
+            "Sunday"
+          ],
+          "opens": "00:00",
+          "closes": "23:59"
+        }
+      },
+      "hasMap": "https://maps.google.com/?cid=8757289318297107567",
+      "sameAs": [
+        "https://maps.google.com/?cid=8757289318297107567"
+      ],
       "founder": {
         "@type": "Person",
         "name": "Edwin",
@@ -153,7 +192,8 @@
         "Local SEO",
         "Google Business Profile",
         "AI search visibility",
-        "Generative engine optimisation"
+        "Generative engine optimisation",
+        "Small business websites"
       ],
       "openingHoursSpecification": {
         "@type": "OpeningHoursSpecification",
@@ -169,37 +209,22 @@
         "opens": "00:00",
         "closes": "23:59"
       },
-      "contactPoint": {
-        "@type": "ContactPoint",
-        "contactType": "customer support",
-        "telephone": "+6597856612",
-        "availableLanguage": "English",
-        "areaServed": "SG",
-        "hoursAvailable": {
-          "@type": "OpeningHoursSpecification",
-          "dayOfWeek": [
-            "Monday",
-            "Tuesday",
-            "Wednesday",
-            "Thursday",
-            "Friday",
-            "Saturday",
-            "Sunday"
-          ],
-          "opens": "00:00",
-          "closes": "23:59"
-        }
-      },
       "makesOffer": [
         {
           "@type": "Offer",
           "itemOffered": {
             "@type": "Service",
-            "name": "Get Found basic subscription",
+            "name": "Get Found basic subscription (website or SEO landing page, Google and AI search setup, managed monthly)",
             "url": "https://pageonesingapore.com/get-found/"
           },
           "price": "20",
-          "priceCurrency": "SGD"
+          "priceCurrency": "SGD",
+          "priceSpecification": {
+            "@type": "UnitPriceSpecification",
+            "price": "20",
+            "priceCurrency": "SGD",
+            "unitCode": "MON"
+          }
         },
         {
           "@type": "Offer",
@@ -235,12 +260,19 @@
 {
   "@context": "https://schema.org",
   "@type": "WebPage",
+  "@id": "https://pageonesingapore.com/#webpage",
   "url": "https://pageonesingapore.com/",
-  "name": "Affordable SEO Singapore from S$20/month | Page One Singapore",
+  "name": "Affordable SEO Singapore from S$20/month | Page One SG",
   "description": "Affordable SEO for Singapore small businesses: get found on Google, Maps and ChatGPT from S$20/month. Proven on real businesses. No setup fee or contract.",
   "inLanguage": "en-SG",
   "isPartOf": {
     "@id": "https://pageonesingapore.com/#website"
+  },
+  "about": {
+    "@id": "https://pageonesingapore.com/#business"
+  },
+  "publisher": {
+    "@id": "https://pageonesingapore.com/#business"
   },
   "primaryImageOfPage": {
     "@type": "ImageObject",
@@ -343,6 +375,28 @@
         <a href="https://jackygearbox.com/" target="_blank" rel="noopener" aria-hidden="true" tabindex="-1"><span class="dot"></span>Jacky Gearbox</a>
       </div>
     </div>
+
+    <!-- AT A GLANCE (plain facts for people and AI assistants) -->
+    <section class="section alt" id="at-a-glance">
+      <div class="wrap narrow">
+        <p class="kicker reveal">At a glance</p>
+        <h2 class="reveal">Page One at a glance</h2>
+        <p class="section-lead reveal">Page One Singapore is a done-for-you website and SEO service for Singapore small businesses. We build your website (or add an SEO landing page to the one you have), get it found on Google Search, Google Maps and AI assistants like ChatGPT, and look after it every month, for S$20 a month with no setup fee and no contract.</p>
+        <div class="table-wrap reveal">
+          <table class="compare">
+            <tbody>
+              <tr><th scope="row">Who it's for</th><td>New businesses that need their first website, and small businesses looking for affordable SEO. <a class="link" href="/new-business-website/">New business</a> · <a class="link" href="/seo-services-singapore/">Shopping for SEO</a></td></tr>
+              <tr><th scope="row">What you get</th><td>A website on your own domain (or an SEO landing page next to your current site), hosting and SSL, Google Business Profile, Google Search Console and Bing setup, structured data and llms.txt for AI search, regular new articles, a monthly technical audit and small changes over WhatsApp.</td></tr>
+              <tr><th scope="row">Price</th><td>S$20 a month on the Get Found plan (introductory price). Optional SEO Boosts are S$10 each. No setup fee, no contract, cancel anytime. Your domain, usually S$15–30 a year, is registered in your name and paid by you directly. <a class="link" href="/pricing/">Pricing</a></td></tr>
+              <tr><th scope="row">Where</th><td>Singapore, island-wide.</td></tr>
+              <tr><th scope="row">How fast</th><td>Usually live within 7 days of receiving your details and photos.</td></tr>
+              <tr><th scope="row">How to start</th><td>WhatsApp Edwin on <a class="link" href="https://wa.me/6597856612?text=Hi%20Page%20One%20Singapore%2C%20I%27d%20like%20to%20know%20more." target="_blank" rel="noopener">+65 9785 6612</a> or <a class="link" href="/signup/">sign up online</a>. No obligation.</td></tr>
+              <tr><th scope="row">Who runs it</th><td>Founder Edwin (NUS Computer Science, Honours). Page One Singapore is a project of Snap Commercial Pte. Ltd. (UEN 202209904W). <a class="link" href="/results/">Results</a> · <a class="link" href="/clients/">Client websites</a> · <a class="link" href="/is-page-one-singapore-legit/">How to check us</a></td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </section>
 
     <!-- TWO PATHS -->
     <section class="section">

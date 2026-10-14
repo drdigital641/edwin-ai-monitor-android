@@ -85,7 +85,7 @@ INDUSTRIES = [
     },
     {
         "slug": "renovation-contractor", "name": "Renovation contractors", "short": "renovation business",
-        "title": "SEO &amp; Website for Renovation Contractors in Singapore | Page One",
+        "title": "SEO &amp; Website for Renovation Contractors in Singapore",
         "desc": "Renovation, carpentry and home repair contractors: get found on Google, Maps and ChatGPT with a website that shows your work. S$20/month, no contract.",
         "h1": "Get your renovation business found on Google",
         "lead": "Homeowners spend weeks researching before they choose a contractor. They look at past projects, check reviews and compare. Page One gives your renovation business a website that shows your work and gets it found on Google, Google Maps and ChatGPT.",
@@ -334,7 +334,7 @@ def industry_page(ind):
          [service(f"Website and SEO for {ind['name'].replace('&amp;', '&').lower()} in Singapore", url, ind["desc"], "20"),
           {"@context": "https://schema.org", "@type": "FAQPage",
            "mainEntity": [{"@type": "Question", "name": q, "acceptedAnswer": {"@type": "Answer", "text": a}} for q, a in ind["faqs"]]}],
-         body, crumb="Industries", updated="2026-10-13" if ind.get("new") else None)
+         body, crumb=ind["name"], crumb_parent=("Industries", "/industries/"), updated="2026-10-13" if ind.get("new") else None)
 
 
 for _ind in INDUSTRIES:
@@ -353,7 +353,7 @@ page("industries/index.html",
          {"@type": "ListItem", "position": n + 1, "url": f"{SITE}/industries/{i['slug']}/", "name": i["name"].replace("&amp;", "&")}
          for n, i in enumerate(INDUSTRIES)]}],
      hero("Industries", "Who we help", "Get found on Google, whatever you do",
-          "Customers search differently for a plumber than for a tuition centre. Pick your industry to see what people search for, what your website needs, and the results we've had where we have them.") + f"""
+          "Page One builds and looks after websites that get Singapore small businesses found on Google, Google Maps and ChatGPT, whatever the trade, for S$20 a month. Customers search differently for a plumber than for a tuition centre, so pick your industry to see what people search for, what your website needs, and the results we've had where we have them.") + f"""
 
     <section class="section">
       <div class="wrap">
@@ -374,7 +374,7 @@ page("industries/index.html",
     </section>
 
 """ + cta(),
-     crumb="Industries", updated="2026-10-13")
+     crumb="Industries", updated=AIV_UPDATED)
 
 # ---------- Free website check (landing page for the checker) ----------
 FREE_CHECK_FAQ = [

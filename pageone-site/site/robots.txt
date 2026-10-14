@@ -3,7 +3,10 @@ Allow: /
 Disallow: /preview/
 Disallow: /dmts/
 
-# Search and AI assistants are welcome to read this site
+# Search engines and AI assistants are welcome to read this site.
+# Google, Bing (which also feeds ChatGPT search and Copilot), ChatGPT, Perplexity, Claude, Apple, DuckDuckGo and Common Crawl.
+# Summaries for AI tools: /llms.txt and /llms-full.txt
+
 User-agent: Googlebot
 Allow: /
 Disallow: /preview/
@@ -34,12 +37,47 @@ Allow: /
 Disallow: /preview/
 Disallow: /dmts/
 
+User-agent: Perplexity-User
+Allow: /
+Disallow: /preview/
+Disallow: /dmts/
+
 User-agent: ClaudeBot
 Allow: /
 Disallow: /preview/
 Disallow: /dmts/
 
+User-agent: Claude-SearchBot
+Allow: /
+Disallow: /preview/
+Disallow: /dmts/
+
+User-agent: Claude-User
+Allow: /
+Disallow: /preview/
+Disallow: /dmts/
+
 User-agent: Google-Extended
+Allow: /
+Disallow: /preview/
+Disallow: /dmts/
+
+User-agent: Applebot
+Allow: /
+Disallow: /preview/
+Disallow: /dmts/
+
+User-agent: Applebot-Extended
+Allow: /
+Disallow: /preview/
+Disallow: /dmts/
+
+User-agent: DuckAssistBot
+Allow: /
+Disallow: /preview/
+Disallow: /dmts/
+
+User-agent: CCBot
 Allow: /
 Disallow: /preview/
 Disallow: /dmts/
