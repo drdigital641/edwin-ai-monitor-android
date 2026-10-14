@@ -68,6 +68,9 @@ page images.
 - 16 job photos added to photos/ (ABS/ESC units, Mercedes ESP pumps, Hyundai/Kia MEB4 ESC, 722.9 kit,
   Active Brake Assist dash warning, ELV + ELV simulator, Mini fuse box, control board, hybrid packs,
   two ECU bench shots not used on the page).
+- Mercedes ELV emulators: the client sells them (Edwin, 14 Oct 2026). Site describes them as an option alongside
+  steering lock repair. No prices, brands or emulator warranty terms confirmed. The ELV Simulator photos
+  (elv-steering-lock-units, mercedes-elv-steering-lock) show one.
 
 ## Trade (Edwin, 13 Oct 2026)
 - Many car workshops refer ABS/ECU repairs to The ECU Clinic (it does the hands-on repair and returns the unit).

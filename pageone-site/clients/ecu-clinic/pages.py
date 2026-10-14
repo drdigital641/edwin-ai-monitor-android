@@ -96,14 +96,14 @@ SERVICE_PAGES = [
     dict(
         slug='mercedes-steering-lock-elv-repair', key='elv', name='Mercedes Steering Lock (ELV) Repair',
         title='Mercedes Steering Lock (ELV/ESL) Repair Singapore | The ECU Clinic',
-        desc='Key won’t turn or Mercedes won’t start? We test and repair the electronic steering lock (ELV/ESL) in Kaki Bukit. Pick-up if your car can’t be driven. 6-month warranty.',
+        desc='Key won’t turn or Mercedes won’t start? We test and repair the electronic steering lock (ELV/ESL), or fit an ELV emulator, in Kaki Bukit. Pick-up if your car can’t be driven.',
         h1='Mercedes Steering Lock (ELV) Repair',
         lead='Key won’t turn, or the car won’t start because of the steering lock? We diagnose and repair the electronic steering lock (ELV) on Mercedes-Benz.',
         photo='mercedes-elv', alt='Mercedes-Benz electronic steering lock (ELV) on the bench',
         share='mercedes-elv-steering-lock.jpg',
         intro=['Many Mercedes-Benz models use an electronic steering lock, often called the ELV or ESL. It is a small motorised unit on the steering column that locks the steering when the car is off and unlocks it when the key is turned or the start button is pressed.',
                'If the ELV does not unlock, the car cannot start. We test the unit, repair it, and get your car driving again. WhatsApp us your model and what the car is doing, and we will tell you what we can do.'],
-        what=['Mercedes-Benz ELV diagnosis', 'Steering lock repair', 'Pick-up and delivery available'],
+        what=['Mercedes-Benz ELV diagnosis', 'Steering lock repair', 'Mercedes ELV emulators', 'Pick-up and delivery available'],
         signs=[('Key won’t turn', 'The key goes in but will not turn in the ignition.'),
                ('No start, no crank', 'Nothing happens when you try to start the car.'),
                ('Steering stays locked', 'The steering wheel stays locked after you switch on.'),
@@ -112,19 +112,27 @@ SERVICE_PAGES = [
              ('My car won’t start. Can you collect it?', 'Pick-up and delivery service is available. WhatsApp us your location.'),
              ('Is it the steering lock, or just the key or battery?', 'A flat key battery, a weak car battery or an ignition switch fault can look like a steering lock fault, so we rule those out first. Then we test the steering lock itself.'),
              ('It still starts sometimes. Can I wait?', 'A steering lock that works on some tries and not others often gets worse over time, and when it stops unlocking the car will not start at all. Get it checked before it leaves you stranded.'),
+             ('What is an ELV emulator, and when is it used?', 'An ELV emulator is a small electronic unit that takes the place of the steering lock. It gives the car the signal it expects from the lock, so the car can start. It is used instead of repairing the lock when the lock itself has failed and repairing it is not the right fix. The original lock comes off, so the steering no longer locks when you switch off. We explain both options before any work starts.'),
              ('Is there a warranty?', 'Yes. Our repairs come with a 6-month warranty.')],
         # EDGE Loop, 14 Oct 2026 (owner page for "mercedes steering lock repair singapore" / "mercedes elv repair").
         # The top results are overseas: US DIY guides and dealer quotes in USD, eBay parts and tool listings, a South
         # African mobile mechanic. None is a Singapore workshop, none says how to tell the lock from a key or battery
         # fault, and none deals with the car that cannot be driven to a workshop.
         updated='14 Oct 2026',
-        jobs=[('mercedes-elv', 'Mercedes ignition switch and key on our test bench'), ('elv-units', 'Steering lock parts on our bench')],
+        jobs=[('mercedes-elv', 'ELV emulator and Mercedes ignition switch with key on our test bench'), ('elv-units', 'ELV emulator (top) and Mercedes ignition switch on our bench')],
         more=[('Steering lock, key or battery: what we check first',
                '<ol class="steps"><li><strong>The simple causes.</strong> A flat key battery, a weak car battery or an ignition switch fault can look just like a steering lock fault.</li>'
                '<li><strong>The fault codes.</strong> The car’s control units store codes that show whether they can talk to the steering lock.</li>'
                '<li><strong>The steering lock itself.</strong> We test the unit to confirm it is the part that is failing.</li>'
-               '<li><strong>Your options.</strong> We tell you what we can do before any work starts.</li></ol>'
+               '<li><strong>Your options.</strong> Repair the steering lock, or fit an ELV emulator. We tell you what we can do before any work starts.</li></ol>'
                '<p>More in our guide: <a href="{u}articles/mercedes-steering-lock-elv-failure/">Mercedes steering lock (ELV) failure: signs and repair</a>.</p>'),
+              # Client sells Mercedes ELV emulators (Edwin, 14 Oct 2026). No prices, brands or emulator warranty terms stated.
+              ('Your options: repair the lock or fit an ELV emulator',
+               '<div class="grid g2">'
+               '<div class="card"><h3>Repair the steering lock</h3><p>We repair your car’s own electronic steering lock, so it keeps locking the steering when the car is off.</p></div>'
+               '<div class="card"><h3>Fit an ELV emulator</h3><p>A small electronic unit that takes the place of the steering lock. It gives the car the signal it expects from the lock, so the car starts. The original lock comes off, so the steering no longer locks when you switch off.</p></div>'
+               '</div>'
+               '<p style="margin-top:16px">An emulator is used instead of repairing the lock when the lock itself has failed and repairing it is not the right fix for your car. We test the lock first and explain both options before any work starts.</p>'),
               ('Car stuck and won’t start? We can collect it',
                '<p>When the steering lock fails, the car usually cannot be driven to a workshop. Our pick-up and delivery service can collect it. '
                'WhatsApp us your car model, your location and what the car is doing: for example, the key will not turn, nothing happens when you press start, or a message appears on the dashboard. '
@@ -133,7 +141,7 @@ SERVICE_PAGES = [
                '<p>Most of what you will find online about Mercedes steering lock faults is written for drivers abroad: do-it-yourself guides, parts and tools posted from overseas, and dealer quotes in US dollars. '
                'With us, the testing and repair are done at our workshop at Premier @ Kaki Bukit, and our repairs come with a 6-month warranty.</p>')],
         steps=[('WhatsApp us the details', 'Send your car model and what the car is doing to <a href="{wa}" target="_blank" rel="noopener">9893 1923</a>. If you have a fault code, send that too.'),
-               ('We check and advise', 'We rule out the key and battery, test the steering lock, and tell you what we can do before any work starts.'),
+               ('We check and advise', 'We rule out the key and battery, test the steering lock, and tell you the options (repair the lock or fit an ELV emulator) before any work starts.'),
                ('Drop off or pick-up', 'Bring the car to us at Premier @ Kaki Bukit. If it cannot be driven, use our pick-up and delivery service.'),
                ('Fixed, with warranty', 'Your car is back on the road, and the repair comes with a 6-month warranty.')],
         band=('Mercedes won’t start?', 'WhatsApp us your car model and what the car is doing. If it can’t be driven, we can collect it.'),
