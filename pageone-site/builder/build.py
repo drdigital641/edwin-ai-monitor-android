@@ -39,6 +39,10 @@ FOUNDER = {"@type": "Person", "name": "Edwin", "jobTitle": "Founder, Page One Si
            "knowsAbout": ["Computer science", "Search engine optimisation", "AI search visibility", "Small business operations"]}
 
 
+# Client list and every Search Console figure on the site (builder/showcase.json).
+exec(open(os.path.join(HERE, "showcase.py"), encoding="utf-8").read())
+
+
 def crumbs_ld(name, url):
     return {
         "@context": "https://schema.org",
@@ -380,17 +384,7 @@ WEBSITE_FAQ = [
     ("I already have a website but no one looks after it. Can you help?", "Yes. We can take over looking after your existing website, or keep your site as it is and add an SEO landing page next to it. WhatsApp Edwin with your website address and he'll check it and tell you honestly which makes sense for you."),
 ]
 
-_site_cards = [
-    ("https://sggarage.com/", "sggarage.com", "sggarage.webp", "Edwin Garage", "Car workshop, Ang Mo Kio"),
-    ("https://cleanicdetailing.com/", "cleanicdetailing.com", "cleanic.webp", "Cleanic Detailing", "Car grooming and interior cleaning"),
-    ("https://sofacaresg.com/", "sofacaresg.com", "sofacare.webp", "SofaCare SG", "Sofa, mattress and upholstery cleaning"),
-    ("https://aliciaongproperty.com/", "aliciaongproperty.com", "alicia.webp", "Alicia Ong Property", "Property agent"),
-    ("https://dannychuafinancial.com/", "dannychuafinancial.com", "danny.webp", "Danny Chua Financial", "Financial consultant"),
-]
-_site_html = "\n".join(f"""          <a class="card site-card reveal" href="{u}" target="_blank" rel="noopener">
-            <span class="browser"><span class="browser-bar"><i></i><i></i><i></i><span>{d}</span></span><img src="/images/clients/{img}" width="640" height="400" alt="{n} website homepage" loading="lazy" decoding="async"></span>
-            <h3>{n}</h3><p>{what}</p>
-          </a>""" for u, d, img, n, what in _site_cards)
+_site_html = site_cards_html()
 _wfaq_html = "\n".join(f"        <details class=\"reveal\"><summary>{q}</summary><p>{a}</p></details>" for q, a in WEBSITE_FAQ)
 
 page("website/index.html",
@@ -437,7 +431,7 @@ page("website/index.html",
         <div class="cards three site-cards" style="margin-top:32px">
 """ + _site_html + """
         </div>
-        <p class="note reveal"><a class="card-link" href="/results/">See their Google results →</a></p>
+        <p class="note reveal"><a class="card-link" href="/clients/">See every client website and its Google numbers →</a></p>
       </div>
     </section>
 
@@ -473,7 +467,7 @@ page("website/index.html",
           <p><b>S$20/month</b> · introductory price · website + management · no setup fee · cancel anytime</p>
           <a class="card-link" href="/signup/">Sign up now →</a>
         </div>
-        <p class="note reveal">Same system, real numbers: Edwin Garage, built and run this way, got 2,280 clicks from Google in the 28 days to 5 October 2026, with an average position of 6.1 (Google Search Console). <a class="link" href="/results/">See the case studies →</a></p>
+        <p class="note reveal">Same system, real numbers: Edwin Garage, built and run this way, got """ + EG["clicks"] + """ clicks from Google in the 28 days to """ + THROUGH + """, with an average position of """ + EG["pos"] + """ (Google Search Console). <a class="link" href="/results/">See the case studies →</a> <a class="link" href="/clients/">See every client website →</a></p>
       </div>
     </section>
 
@@ -713,7 +707,7 @@ FAQS = [
     ("How will I know it's working?", "We connect your website to Google Search Console, Google's own free report. It shows how many times you appeared in Google, how many people clicked, and what they searched. Every SEO Boost also comes with a before/after report of what was done."),
     ("Is there a setup fee or contract?", "No. There's no setup fee and no minimum contract. You pay S$20 a month in advance and can cancel anytime."),
     ("Will the S$20 price go up?", "Yes, a little. S$20 a month is an introductory price until we reach our early-client target, so now is the time to grab it. When it goes up, the new price will stay close to S$20, so SEO stays affordable for small businesses."),
-    ('Is S$20 a month a gimmick price?', "No. S$20 isn't a teaser to upsell you later, and it isn't budget SEO with steps skipped. It's a baseline for what SEO costs now that AI does the daily work that used to be billed by the hour. The same system runs every website we manage, and it's proven on real businesses: Edwin Garage got 2,280 clicks from Google in the 28 days to 5 October 2026, according to Google Search Console. No setup fee, no contract, so you can judge it for yourself."),
+    ('Is S$20 a month a gimmick price?', "No. S$20 isn't a teaser to upsell you later, and it isn't budget SEO with steps skipped. It's a baseline for what SEO costs now that AI does the daily work that used to be billed by the hour. The same system runs every website we manage, and it's proven on real businesses: " + PROOF_EG + ", according to Google Search Console. No setup fee, no contract, so you can judge it for yourself."),
     ("Is the free website check really free?", "Yes. Enter your website address on our homepage and the checker tests Google basics, mobile setup, speed and AI-search readiness in under a minute. No sign-up needed."),
     ("How do I reach you?", "WhatsApp Edwin on " + WA_DISPLAY + ". You can also tap the green chat button on any page. No obligation to buy anything."),
     ("How do I sign up and pay?", "Fill in the short form on our sign-up page or tap the chat button. It opens WhatsApp with your details filled in. Edwin confirms what you need and sends payment details for your first month. SEO Boosts are added or topped up the same way."),
@@ -721,7 +715,7 @@ FAQS = [
     ("What is an SEO Boost?", "An optional S$10 top-up for accelerated growth. Your plan already includes regular articles; each Boost adds more content on top, aimed at new niche long-tail searches (specific phrases, like \"aircon chemical wash Tampines\", that fewer businesses compete for and that come from customers ready to buy) and do extra processing to fix the SEO issues found in your audit. You get a before/after report of what was done and what's next. Your S$20 plan works without it."),
     ("How do you help me show up in ChatGPT and other AI search?", "AI assistants like ChatGPT, Gemini and Perplexity rely on search indexes such as Bing and Google and on clearly structured information. We connect your site to Google and Bing, mark up your business details so machines can read them, publish an llms.txt file, and write content that answers the questions customers ask."),
     ("Who pays for the domain?", "If you need a new domain, it's registered in your name and you pay for it directly (usually S$15–30 a year). You always own your domain."),
-    ("Do you have proof it works?", "Yes. Our results page shows real Google Search Console numbers from the businesses we run. In the 28 days to 5 October 2026, Edwin Garage got 2,280 clicks from Google with an average position of 6.1, and Cleanic Detailing appeared on page one for 1,181 different searches. Results vary by business, so we don't guarantee them."),
+    ("Do you have proof it works?", "Yes. Our results page shows real Google Search Console numbers from the businesses we run. " + PROOF_BOTH.replace(", according to Google Search Console", "") + " Results vary by business, so we don't guarantee them."),
     ("Do you guarantee first page on Google?", "No honest provider can guarantee rankings, because Google decides. We guarantee the work: every SEO Boost is documented in a before/after report so you can see exactly what changed."),
     ("How do I cancel?", "Just WhatsApp us. Your service runs to the end of the month you've paid for."),
     ("What happens if I cancel?", "Your site stays live until the end of the month you paid for. You keep your domain, and you can buy the site files if you want to host them elsewhere."),
@@ -805,9 +799,9 @@ page("about/index.html",
      crumb="About")
 
 # ---------- Results ----------
-# Every figure below comes from Google Search Console (CaseStudyStats in the
-# SearchInsight Bridge app), data through 5 Oct 2026. Do not edit numbers by hand.
-DATA_THROUGH = "5 October 2026"
+# Every figure below comes from builder/showcase.json (Google Search Console via CaseStudyStats in the
+# SearchInsight Bridge app). Refresh with builder/showcase_refresh.py; never edit numbers by hand.
+DATA_THROUGH = THROUGH
 
 
 def kpis(items):
@@ -828,8 +822,23 @@ def ranks_table(rows):
             '<th>Times shown (28 days)</th></tr></thead><tbody>' + body + "</tbody></table></div>")
 
 
+def _month_change(key, field):
+    m = G[key]["full_months"]
+    a, b = m[0], m[-1]
+    return (f"{_n(b[field])}", month_long(b["month"]).split()[0] + " " + b["month"][:4],
+            _n(a[field]), month_long(a["month"]).split()[0])
+
+
+_eg_c, _eg_i = _month_change("sggarage", "clicks"), _month_change("sggarage", "impressions")
+_cl_c, _cl_i = _month_change("cleanic", "clicks"), _month_change("cleanic", "impressions")
+_eg_pos = [m["position"] for m in G["sggarage"]["full_months"]]
+_others = [c for c in SC["clients"] if stage(c["key"]) != "case"]
+_others_html = "\n".join(
+    f'          <div class="card reveal"><p class="pill">{pill(c["key"])}</p><h3>{c["name"]}</h3><p>{result_text(c["key"])}</p>'
+    f'<p><a class="link" href="{c["url"]}" target="_blank" rel="noopener">{c["domain"]} ↗</a></p></div>' for c in _others)
+
 RESULTS_FAQ = [
-    ("Where do these numbers come from?", "Every figure on this page comes from Google Search Console, Google's own report of how a website performs in Google Search. We collect it automatically and don't edit it. Data runs to " + DATA_THROUGH + "."),
+    ("Where do these numbers come from?", "Every figure on this page comes from Google Search Console, Google's own report of how a website performs in Google Search. We collect the final data automatically and don't edit it. Data runs to " + DATA_THROUGH + "."),
     ("What does average position mean?", "Where the website appears in Google results, on average, when someone searches. Positions 1 to 10 are page one. A lower number is better."),
     ("Will my business get the same results?", "We can't promise that, and no honest provider can. Results depend on your industry, competition and how long your site has been running. Edwin Garage and Cleanic Detailing took about three months to get here. What we can promise is the same system and a report showing the work."),
     ("Can I see the full report?", "Yes. WhatsApp us and we'll walk you through the Search Console reports behind this page. No obligation."),
@@ -837,16 +846,16 @@ RESULTS_FAQ = [
 
 page("results/index.html",
      "SEO Case Studies Singapore: Real Google Results | Page One",
-     "Real Google Search Console results from Singapore businesses on Page One's SEO system. Edwin Garage: 2,280 Google clicks in 28 days, average position 6.1.",
+     f"Real Google Search Console results from Singapore businesses on Page One's SEO system. Edwin Garage: {EG['clicks']} Google clicks in the 28 days to {THROUGH_SHORT}, average position {EG['pos']}.",
      [{"@context": "https://schema.org", "@type": "CollectionPage", "url": SITE + "/results/",
-       "name": "SEO Results & Case Studies", "about": PROVIDER, "inLanguage": "en-SG",
+       "name": "SEO Results & Case Studies", "about": PROVIDER, "inLanguage": "en-SG", "dateModified": SC_UPDATED,
        "hasPart": [
-           {"@type": "Article", "headline": "Edwin Garage: from first Google data to 2,280 clicks a month",
+           {"@type": "Article", "headline": f"Edwin Garage: from first Google data to {EG['clicks']} clicks in 28 days",
             "url": SITE + "/results/#edwin-garage", "author": {"@type": "Person", "name": "Edwin"}, "publisher": PROVIDER,
-            "datePublished": UPDATED, "about": {"@type": "AutoRepair", "name": "Edwin Garage", "url": "https://sggarage.com/"}},
-           {"@type": "Article", "headline": "Cleanic Detailing: page one for 1,181 searches within four months",
+            "datePublished": UPDATED, "dateModified": SC_UPDATED, "about": {"@type": "AutoRepair", "name": "Edwin Garage", "url": "https://sggarage.com/"}},
+           {"@type": "Article", "headline": f"Cleanic Detailing: page one for {CL['page_one']} searches within four months",
             "url": SITE + "/results/#cleanic-detailing", "author": {"@type": "Person", "name": "Edwin"}, "publisher": PROVIDER,
-            "datePublished": UPDATED, "about": {"@type": "LocalBusiness", "name": "Cleanic Detailing", "url": "https://cleanicdetailing.com/"}}]},
+            "datePublished": UPDATED, "dateModified": SC_UPDATED, "about": {"@type": "LocalBusiness", "name": "Cleanic Detailing", "url": "https://cleanicdetailing.com/"}}]},
       {"@context": "https://schema.org", "@type": "FAQPage",
        "mainEntity": [{"@type": "Question", "name": q, "acceptedAnswer": {"@type": "Answer", "text": a}} for q, a in RESULTS_FAQ]}],
      hero("Results", "Straight from Google Search Console",
@@ -857,28 +866,29 @@ page("results/index.html",
       <div class="wrap">
         <p class="kicker reveal">At a glance</p>
         <h2 class="reveal">Two businesses, about three months of SEO</h2>
-        <p class="section-lead reveal">Last 28 days (8 Sep to 5 Oct 2026). "Page one" means an average position of 1 to 10 on Google.</p>
+        <p class="section-lead reveal">Last 28 days (""" + WINDOW + """), compared with the 28 days before (""" + PREV_WINDOW + """). "Page one" means an average position of 1 to 10 on Google.</p>
         <div class="reveal">""" + kpis([
-            ("Edwin Garage: clicks from Google", "2,280", "Average position 6.1"),
-            ("Edwin Garage: searches on page one", "4,290+", "1,531+ in the top 3"),
-            ("Cleanic Detailing: clicks from Google", "492", "Average position 10.0, up from 11.5"),
-            ("Cleanic Detailing: searches on page one", "1,181", "577 in the top 3"),
+            ("Edwin Garage: clicks from Google", EG["clicks"], f"Up from {EG['prev_clicks']} · average position {EG['pos']}"),
+            ("Edwin Garage: searches on page one", EG["page_one"], f"{EG['top3']} in the top 3"),
+            ("Cleanic Detailing: clicks from Google", CL["clicks"], f"Up from {CL['prev_clicks']} · average position {CL['pos']}, from {CL['prev_pos']}"),
+            ("Cleanic Detailing: searches on page one", CL["page_one"], f"{CL['top3']} in the top 3"),
         ]) + """</div>
+        <p class="note reveal">Want to see the websites themselves? <a class="link" href="/clients/">See every client website →</a></p>
       </div>
     </section>
 
     <section class="section alt" id="edwin-garage">
       <div class="wrap">
         <p class="kicker reveal">Case study 1 · Car workshop, Ang Mo Kio</p>
-        <h2 class="reveal">Edwin Garage: from first Google data to 2,280 clicks a month</h2>
+        <h2 class="reveal">Edwin Garage: from first Google data to """ + EG["clicks"] + """ clicks in 28 days</h2>
         <div class="split" style="margin-top:24px">
           <div class="reveal">
-            <p>Edwin Garage is our founder's own car workshop, and the first business to run on the Page One system. Its Search Console data starts on 26 June 2026. Within three months, Google was sending it more than 2,000 visitors a month.</p>
+            <p>Edwin Garage is our founder's own car workshop, and the first business to run on the Page One system. Its Search Console data starts on """ + EG["first_long"] + """. Within three months, Google was sending it more than 2,000 visitors a month.</p>
             <ul class="ticks">
-              <li><b>2,401 clicks</b> from Google in September 2026, up from 1,369 in July</li>
-              <li><b>94,658 times shown</b> on Google in September, up from 38,611 in July</li>
-              <li>Average position around <b>6</b> every month since launch, which is page one</li>
-              <li>On page one for <b>4,290+ different searches</b> in the last 28 days</li>
+              <li><b>""" + _eg_c[0] + """ clicks</b> from Google in """ + _eg_c[1] + """, up from """ + _eg_c[2] + """ in """ + _eg_c[3] + """</li>
+              <li><b>""" + _eg_i[0] + """ times shown</b> on Google in """ + _eg_i[1].split()[0] + """, up from """ + _eg_i[2] + """ in """ + _eg_i[3] + """</li>
+              <li>Average position between <b>""" + f"{min(_eg_pos):.1f} and {max(_eg_pos):.1f}" + """</b> every full month since launch, which is page one</li>
+              <li>On page one for <b>""" + EG["page_one"] + """ different searches</b> in the 28 days to """ + THROUGH_SHORT + """</li>
             </ul>
           </div>
           <div class="panel reveal" style="background:#fff">
@@ -892,22 +902,10 @@ page("results/index.html",
           </div>
         </div>
         <h3 class="reveal" style="margin-top:40px">Month by month</h3>
-        <div class="reveal">""" + months_table([
-            ("July", "1,369", "38,611", "6.3"),
-            ("August", "2,125", "72,310", "6.6"),
-            ("September", "2,401", "94,658", "6.2"),
-        ]) + """</div>
+        <div class="reveal">""" + months_table(months_rows("sggarage")) + """</div>
         <h3 class="reveal">Where it shows up on Google</h3>
-        <p class="reveal">A few of the searches it ranks for (last 28 days):</p>
-        <div class="reveal">""" + ranks_table([
-            ("car repair workshop", "2.0", "66"),
-            ("car aircon repair", "2.1", "232"),
-            ("car workshop ang mo kio", "2.7", "69"),
-            ("car servicing ang mo kio", "2.9", "66"),
-            ("car garage singapore", "3.3", "71"),
-            ("car repair singapore", "4.4", "197"),
-            ("best car workshop singapore", "4.7", "171"),
-        ]) + """</div>
+        <p class="reveal">A few of the searches it ranks for (28 days to """ + THROUGH_SHORT + """):</p>
+        <div class="reveal">""" + ranks_table(query_rows("sggarage")) + """</div>
         <a class="card-link reveal" href="https://sggarage.com/" target="_blank" rel="noopener">Visit sggarage.com ↗</a>
       </div>
     </section>
@@ -915,15 +913,15 @@ page("results/index.html",
     <section class="section" id="cleanic-detailing">
       <div class="wrap">
         <p class="kicker reveal">Case study 2 · Mobile car detailing</p>
-        <h2 class="reveal">Cleanic Detailing: page one for 1,181 searches within four months</h2>
+        <h2 class="reveal">Cleanic Detailing: page one for """ + CL["page_one"] + """ searches within four months</h2>
         <div class="split" style="margin-top:24px">
           <div class="reveal">
-            <p>Cleanic Detailing is a mobile car grooming and fumigation service run by Colin Loo. Its Search Console data starts on 20 June 2026. It now ranks in the top 3 for searches like "car grooming singapore" and "car wash singapore".</p>
+            <p>Cleanic Detailing is a mobile car grooming and fumigation service run by Colin Loo. Its Search Console data starts on """ + CL["first_long"] + """. It now ranks in the top 3 for searches like """ + top3_examples("cleanic") + """.</p>
             <ul class="ticks">
-              <li><b>505 clicks</b> from Google in September 2026, up from 188 in July</li>
-              <li><b>39,551 times shown</b> on Google in September, up from 16,872 in July</li>
-              <li>Average position improved to <b>10.0</b> in the last 28 days, from 11.5 the 28 days before</li>
-              <li>On page one for <b>1,181 different searches</b>, 577 of them in the top 3</li>
+              <li><b>""" + _cl_c[0] + """ clicks</b> from Google in """ + _cl_c[1] + """, up from """ + _cl_c[2] + """ in """ + _cl_c[3] + """</li>
+              <li><b>""" + _cl_i[0] + """ times shown</b> on Google in """ + _cl_i[1].split()[0] + """, up from """ + _cl_i[2] + """ in """ + _cl_i[3] + """</li>
+              <li>Average position improved to <b>""" + CL["pos"] + """</b> in the 28 days to """ + THROUGH_SHORT + """, from """ + CL["prev_pos"] + """ the 28 days before</li>
+              <li>On page one for <b>""" + CL["page_one"] + """ different searches</b>, """ + CL["top3"] + """ of them in the top 3</li>
             </ul>
           </div>
           <div class="panel reveal">
@@ -937,22 +935,10 @@ page("results/index.html",
           </div>
         </div>
         <h3 class="reveal" style="margin-top:40px">Month by month</h3>
-        <div class="reveal">""" + months_table([
-            ("July", "188", "16,872", "9.4"),
-            ("August", "500", "31,417", "13.5"),
-            ("September", "505", "39,551", "10.4"),
-        ]) + """</div>
+        <div class="reveal">""" + months_table(months_rows("cleanic")) + """</div>
         <h3 class="reveal">Where it shows up on Google</h3>
-        <p class="reveal">A few of the searches it ranks for (last 28 days):</p>
-        <div class="reveal">""" + ranks_table([
-            ("car polish singapore", "1.3", "55"),
-            ("steam cleaning", "1.8", "139"),
-            ("pressure washing singapore", "1.8", "75"),
-            ("best car wash singapore", "2.0", "114"),
-            ("car grooming singapore", "2.2", "1,312"),
-            ("fumigation car singapore", "2.2", "55"),
-            ("car wash singapore", "2.4", "145"),
-        ]) + """</div>
+        <p class="reveal">A few of the searches it ranks for (28 days to """ + THROUGH_SHORT + """):</p>
+        <div class="reveal">""" + ranks_table(query_rows("cleanic")) + """</div>
         <a class="card-link reveal" href="https://cleanicdetailing.com/" target="_blank" rel="noopener">Visit cleanicdetailing.com ↗</a>
       </div>
     </section>
@@ -960,13 +946,12 @@ page("results/index.html",
     <section class="section alt">
       <div class="wrap">
         <p class="kicker reveal">Newer websites</p>
-        <h2 class="reveal">The other three, shown honestly</h2>
-        <p class="section-lead reveal">SEO takes time. These sites started later, so their numbers are smaller. We show them anyway, because that's what an honest early stage looks like.</p>
+        <h2 class="reveal">The other """ + LIVE_COUNT_WORD_OTHERS + """, shown honestly</h2>
+        <p class="section-lead reveal">SEO takes time. These sites started later, so their numbers are smaller, or not there yet. We show them anyway, because that's what an honest early stage looks like.</p>
         <div class="cards three">
-          <div class="card reveal"><p class="pill">Since Aug 2026</p><h3>Danny Chua Financial</h3><p>Shown on Google 4,176 times in the last 28 days, up from 1,163 the 28 days before. Average position improved from 64 to 46. Still early.</p></div>
-          <div class="card reveal"><p class="pill">Since Sep 2026</p><h3>SofaCare SG</h3><p>Shown on Google 2,918 times in its first full 28 days, already on page one for 25 searches. Still early.</p></div>
-          <div class="card reveal"><p class="pill">Since 30 Sep 2026</p><h3>Alicia Ong Property</h3><p>Just launched. Google started showing it at the end of September, so it's too early to report results.</p></div>
+""" + _others_html + """
         </div>
+        <p class="note reveal"><a class="card-link" href="/clients/">See all the client websites →</a></p>
       </div>
     </section>
 
@@ -979,7 +964,7 @@ page("results/index.html",
     </section>
 
 """ + cta("Want this for your business?", "Sign up at the introductory price, or check where your website stands today. No obligation."),
-     crumb="Results")
+     crumb="Results", updated=SC_UPDATED)
 
 
 # ---------- Contact ----------
@@ -1288,7 +1273,7 @@ GLOSSARY = [
          "Clicks are real potential customers. A low CTR usually means your headline on Google needs work.", None),
         ("position", "Where you appear on Google", "Average position",
          "Your average spot in Google's results. 1 is the top result, and 1 to 10 is roughly page one. Lower is better.",
-         "Most people never look past page one, so getting into the top 10 is where the clicks are. For example, Edwin Garage averaged position 6.1 in the 28 days to 5 October 2026.", None),
+         "Most people never look past page one, so getting into the top 10 is where the clicks are. For example, Edwin Garage averaged position " + EG["pos"] + " in the 28 days to " + THROUGH + ".", None),
         ("organic", "Free results vs paid ads", "Organic vs paid search",
          "Organic results are the normal, unpaid listings. Paid results are ads marked \"Sponsored\", where you pay Google for every click.",
          "Ads stop the moment you stop paying. Organic visibility keeps working in the background.",
@@ -1341,15 +1326,35 @@ page("seo-explained/index.html",
 
 
 # ---------- Home ----------
-HOME_QA = [('What is Page One Singapore?', 'Page One Singapore is an affordable SEO service for Singapore small businesses. It gets businesses found on Google Search, Google Maps and AI assistants such as ChatGPT. It was built by Edwin, an NUS Computer Science (Honours) graduate with 18+ years in business, and proven first on his own car workshop, Edwin Garage.'), ('How much does SEO cost with Page One Singapore?', 'The Get Found plan is S$20 a month at an introductory price, with no setup fee and no minimum contract. Optional SEO Boosts cost S$10 each, for when you want faster results.'), ('What do I get every month for S$20?', 'Your business is found naturally in the free, unpaid results on Google, Google Maps and ChatGPT. We write regular new articles for your site and run a technical audit of your page every month. Your website or SEO landing page is kept online, secure and fast, with a WhatsApp button. Want to grow faster? SEO Boosts add more content aimed at new keywords.'), ('Can you help my business show up in ChatGPT?', "Yes. We connect your site to Bing, which ChatGPT search uses, label your business details with structured data, publish an llms.txt summary and write content that answers customers' questions. No one can guarantee an AI assistant will recommend you, but these steps make it possible."), ('Do I need a website first?', "No. If you don't have a website, we build one on your own domain. If you already have one, we add an SEO landing page on a subdomain and leave your current site as it is."), ('Does it actually work?', "In the 28 days to 5 October 2026, Edwin Garage got 2,280 clicks from Google with an average position of 6.1, and Cleanic Detailing appeared on page one for 1,181 different searches, according to Google Search Console. Results vary by business, so we don't guarantee rankings.")]
+HOME_QA = [('What is Page One Singapore?', 'Page One Singapore is an affordable SEO service for Singapore small businesses. It gets businesses found on Google Search, Google Maps and AI assistants such as ChatGPT. It was built by Edwin, an NUS Computer Science (Honours) graduate with 18+ years in business, and proven first on his own car workshop, Edwin Garage.'), ('How much does SEO cost with Page One Singapore?', 'The Get Found plan is S$20 a month at an introductory price, with no setup fee and no minimum contract. Optional SEO Boosts cost S$10 each, for when you want faster results.'), ('What do I get every month for S$20?', 'Your business is found naturally in the free, unpaid results on Google, Google Maps and ChatGPT. We write regular new articles for your site and run a technical audit of your page every month. Your website or SEO landing page is kept online, secure and fast, with a WhatsApp button. Want to grow faster? SEO Boosts add more content aimed at new keywords.'), ('Can you help my business show up in ChatGPT?', "Yes. We connect your site to Bing, which ChatGPT search uses, label your business details with structured data, publish an llms.txt summary and write content that answers customers' questions. No one can guarantee an AI assistant will recommend you, but these steps make it possible."), ('Do I need a website first?', "No. If you don't have a website, we build one on your own domain. If you already have one, we add an SEO landing page on a subdomain and leave your current site as it is."), ('Does it actually work?', PROOF_BOTH + " Results vary by business, so we don't guarantee rankings.")]
 HOME_FAQ_LD = {"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [
     {"@type": "Question", "name": q, "acceptedAnswer": {"@type": "Answer", "text": a}} for q, a in HOME_QA]}
 # Industry pages, industries hub and the free website check page.
 exec(open(os.path.join(HERE, "industries.py"), encoding="utf-8").read())
 # "Cheapest SEO" / "cheapest website" pages (honest answers to those searches).
 exec(open(os.path.join(HERE, "affordable.py"), encoding="utf-8").read())
+# Client showcase (/clients/), from showcase.json.
+clients_page()
 # "AI SEO vs traditional SEO" and "Is Page One legit?" (verify-it-yourself) pages.
+# These two pages are owned by another thread and must not change here, so ai_seo.py gets the
+# proof blocks exactly as they were published (5 Oct 2026 data), not the refreshed ones.
+_FROZEN_GARAGE = """<div class="kpis reveal">
+          <div class="kpi"><div class="label">Edwin Garage: clicks from Google</div><div class="value">2,280</div><div class="delta">28 days to 5 Oct 2026</div></div>
+          <div class="kpi"><div class="label">Average position</div><div class="value">6.1</div><div class="delta">Page one is 1 to 10</div></div>
+          <div class="kpi"><div class="label">Searches on page one</div><div class="value">4,290+</div><div class="delta">Google Search Console</div></div>
+        </div>
+        <p class="note reveal">Edwin Garage is Edwin's own car workshop in Ang Mo Kio, where this system was first built and tested. <a class="link" href="/results/">See the full case study →</a></p>"""
+
+_FROZEN_CLEANIC = """<div class="kpis reveal">
+          <div class="kpi"><div class="label">Cleanic Detailing: clicks from Google</div><div class="value">492</div><div class="delta">28 days to 5 Oct 2026</div></div>
+          <div class="kpi"><div class="label">Average position</div><div class="value">10.0</div><div class="delta">From 11.5 the 28 days before</div></div>
+          <div class="kpi"><div class="label">Searches on page one</div><div class="value">1,181</div><div class="delta">Google Search Console</div></div>
+        </div>
+        <p class="note reveal">Cleanic Detailing is a Singapore car grooming business we run the website and SEO for. <a class="link" href="/results/">See the full case study →</a></p>"""
+_live_proof = (PROOF_GARAGE, PROOF_CLEANIC)
+PROOF_GARAGE, PROOF_CLEANIC = _FROZEN_GARAGE, _FROZEN_CLEANIC
 exec(open(os.path.join(HERE, "ai_seo.py"), encoding="utf-8").read())
+PROOF_GARAGE, PROOF_CLEANIC = _live_proof
 
 page("index.html",
      "Affordable SEO Singapore from S$20/month | Page One Singapore",
@@ -1377,5 +1382,5 @@ page("index.html",
          {"@type": "WebSite", "@id": SITE + "/#website", "url": SITE + "/", "name": "Page One Singapore",
           "alternateName": ["Page One SG", "PageOne Singapore", "pageonesingapore.com"],
           "inLanguage": "en-SG", "publisher": {"@id": BIZ_ID}}]}],
-     open(os.path.join(HERE, "home_body.html"), encoding="utf-8").read().rstrip("\n"), updated="2026-10-13")
+     fill_home(open(os.path.join(HERE, "home_body.html"), encoding="utf-8").read().rstrip("\n")), updated=SC_UPDATED)
 print("built")

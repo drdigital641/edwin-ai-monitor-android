@@ -1,0 +1,481 @@
+{
+  "_readme": "Client showcase data for pageonesingapore.com (/clients/, /results/, home page, /website/, FAQ, industry and low-cost pages). Edit the client list by hand; never type the gsc blocks by hand: run builder/showcase_refresh.py with a CaseStudyStats export. Only list sites that are live on their own domain. Steps: /mnt/project-files/seo-method/rollout/pageone.md, 'Client showcase'.",
+  "data": {
+    "source": "Google Search Console (final data), collected by the Case Study Stats workflow into CaseStudyStats, SearchInsight Bridge app 6aa2d85827b1f2c2d43b241e",
+    "generated_at": "2026-10-14T15:28:15.254Z",
+    "data_through": "2026-10-11",
+    "window": [
+      "2026-09-14",
+      "2026-10-11"
+    ],
+    "prev_window": [
+      "2026-08-17",
+      "2026-09-13"
+    ]
+  },
+  "clients": [
+    {
+      "key": "sggarage",
+      "name": "Edwin Garage",
+      "domain": "sggarage.com",
+      "url": "https://sggarage.com/",
+      "industry": "Car workshop, Ang Mo Kio",
+      "schema_type": "AutoRepair",
+      "img": "/images/clients/sggarage.webp",
+      "gsc_site": "sc-domain:sggarage.com",
+      "launched": "2026-06",
+      "case_study": "/results/#edwin-garage",
+      "owner_note": "Edwin's own workshop, where the system was first built.",
+      "brand_terms": [
+        "edwin",
+        "sg garage",
+        "sggarage"
+      ],
+      "skip_queries": [
+        "yes"
+      ],
+      "built": [
+        "A page for each service drivers search for",
+        "Google Business Profile, Search Console and Bing",
+        "New articles every day, picked from Search Console data"
+      ],
+      "articles": 131,
+      "gsc": {
+        "record_id": "6acf9f931a85ac36b4e6735f",
+        "first_day": "2026-06-26",
+        "clicks": 2278,
+        "impressions": 94201,
+        "position": 6.1,
+        "prev_clicks": 2116,
+        "prev_impressions": 78207,
+        "prev_position": 6.6,
+        "queries": 5000,
+        "page_one": 4311,
+        "top3": 1497,
+        "capped": true,
+        "monthly": [
+          {
+            "month": "2026-06",
+            "days": 5,
+            "clicks": 160,
+            "impressions": 2514,
+            "position": 7.4
+          },
+          {
+            "month": "2026-07",
+            "days": 31,
+            "clicks": 1369,
+            "impressions": 38611,
+            "position": 6.3
+          },
+          {
+            "month": "2026-08",
+            "days": 31,
+            "clicks": 2125,
+            "impressions": 72310,
+            "position": 6.6
+          },
+          {
+            "month": "2026-09",
+            "days": 30,
+            "clicks": 2401,
+            "impressions": 94658,
+            "position": 6.2
+          },
+          {
+            "month": "2026-10",
+            "days": 11,
+            "clicks": 917,
+            "impressions": 39281,
+            "position": 6.1
+          }
+        ],
+        "top_queries": [
+          {
+            "query": "how to diagnose car transmission issues",
+            "position": 3,
+            "impressions": 305
+          },
+          {
+            "query": "car aircon repair",
+            "position": 3.1,
+            "impressions": 155
+          },
+          {
+            "query": "car aircon servicing singapore",
+            "position": 4,
+            "impressions": 199
+          },
+          {
+            "query": "best car workshop singapore",
+            "position": 4.2,
+            "impressions": 164
+          },
+          {
+            "query": "car repair singapore",
+            "position": 4.4,
+            "impressions": 210
+          },
+          {
+            "query": "car battery replacement cost",
+            "position": 5,
+            "impressions": 348
+          },
+          {
+            "query": "timing belt",
+            "position": 5,
+            "impressions": 185
+          }
+        ]
+      }
+    },
+    {
+      "key": "cleanic",
+      "name": "Cleanic Detailing",
+      "domain": "cleanicdetailing.com",
+      "url": "https://cleanicdetailing.com/",
+      "industry": "Mobile car grooming and fumigation",
+      "schema_type": "LocalBusiness",
+      "img": "/images/clients/cleanic.webp",
+      "gsc_site": "sc-domain:cleanicdetailing.com",
+      "launched": "2026-06",
+      "case_study": "/results/#cleanic-detailing",
+      "brand_terms": [
+        "cleanic"
+      ],
+      "skip_queries": [],
+      "built": [
+        "Service pages for grooming, steam cleaning, fumigation and odour removal",
+        "Guides on the problems customers search for",
+        "Google Business Profile, Search Console, Bing and structured data"
+      ],
+      "articles": 76,
+      "gsc": {
+        "record_id": "6acf9f9245d87fd96b4ef42e",
+        "first_day": "2026-06-20",
+        "clicks": 500,
+        "impressions": 39514,
+        "position": 9.3,
+        "prev_clicks": 440,
+        "prev_impressions": 31064,
+        "prev_position": 11.4,
+        "queries": 1500,
+        "page_one": 1222,
+        "top3": 568,
+        "capped": false,
+        "monthly": [
+          {
+            "month": "2026-06",
+            "days": 11,
+            "clicks": 54,
+            "impressions": 6771,
+            "position": 4.2
+          },
+          {
+            "month": "2026-07",
+            "days": 31,
+            "clicks": 188,
+            "impressions": 16872,
+            "position": 9.4
+          },
+          {
+            "month": "2026-08",
+            "days": 31,
+            "clicks": 500,
+            "impressions": 31417,
+            "position": 13.5
+          },
+          {
+            "month": "2026-09",
+            "days": 30,
+            "clicks": 505,
+            "impressions": 39551,
+            "position": 10.4
+          },
+          {
+            "month": "2026-10",
+            "days": 11,
+            "clicks": 205,
+            "impressions": 15381,
+            "position": 7.9
+          }
+        ],
+        "top_queries": [
+          {
+            "query": "steam cleaning",
+            "position": 1.9,
+            "impressions": 153
+          },
+          {
+            "query": "car grooming singapore",
+            "position": 2.3,
+            "impressions": 1068
+          },
+          {
+            "query": "car wash singapore",
+            "position": 2.8,
+            "impressions": 134
+          },
+          {
+            "query": "mobile car wash singapore",
+            "position": 2.9,
+            "impressions": 154
+          },
+          {
+            "query": "car wash near me",
+            "position": 3.5,
+            "impressions": 265
+          },
+          {
+            "query": "car wash",
+            "position": 3.6,
+            "impressions": 258
+          },
+          {
+            "query": "car fumigation singapore",
+            "position": 4,
+            "impressions": 211
+          }
+        ]
+      }
+    },
+    {
+      "key": "sofacare",
+      "name": "SofaCare SG",
+      "domain": "sofacaresg.com",
+      "url": "https://sofacaresg.com/",
+      "industry": "Sofa, mattress and upholstery cleaning",
+      "schema_type": "LocalBusiness",
+      "img": "/images/clients/sofacare.webp",
+      "gsc_site": "sc-domain:sofacaresg.com",
+      "launched": "2026-09",
+      "brand_terms": [
+        "sofacare",
+        "sofa care"
+      ],
+      "skip_queries": [],
+      "built": [
+        "Separate pages for sofa, mattress and upholstery cleaning",
+        "Clear pricing and a proper FAQ",
+        "Cleaning guides published regularly"
+      ],
+      "articles": 42,
+      "gsc": {
+        "record_id": "6acf9f91c63c5b421c22aa4e",
+        "first_day": "2026-09-04",
+        "clicks": 9,
+        "impressions": 3667,
+        "position": 72.0,
+        "prev_clicks": 10,
+        "prev_impressions": 370,
+        "prev_position": 65.1,
+        "queries": 212,
+        "page_one": 28,
+        "top3": 7,
+        "capped": false,
+        "monthly": [
+          {
+            "month": "2026-09",
+            "days": 27,
+            "clicks": 14,
+            "impressions": 2205,
+            "position": 69.1
+          },
+          {
+            "month": "2026-10",
+            "days": 11,
+            "clicks": 5,
+            "impressions": 1832,
+            "position": 74.0
+          }
+        ],
+        "top_queries": []
+      }
+    },
+    {
+      "key": "alicia",
+      "name": "Alicia Ong Property",
+      "domain": "aliciaongproperty.com",
+      "url": "https://aliciaongproperty.com/",
+      "industry": "Property agent (ERA)",
+      "schema_type": "RealEstateAgent",
+      "img": "/images/clients/alicia.webp",
+      "gsc_site": "sc-domain:aliciaongproperty.com",
+      "launched": "2026-09",
+      "brand_terms": [
+        "alicia"
+      ],
+      "skip_queries": [],
+      "built": [
+        "Pages for residential, commercial and industrial property",
+        "Case studies and a WhatsApp button on every page",
+        "Owner and landlord guides published regularly"
+      ],
+      "articles": 16,
+      "gsc": {
+        "record_id": "6acf9f91ab76e2b117ff3adc",
+        "first_day": "2026-09-30",
+        "clicks": 12,
+        "impressions": 101,
+        "position": 15.2,
+        "prev_clicks": 0,
+        "prev_impressions": 0,
+        "prev_position": 0,
+        "queries": 12,
+        "page_one": 3,
+        "top3": 1,
+        "capped": false,
+        "monthly": [
+          {
+            "month": "2026-09",
+            "days": 1,
+            "clicks": 0,
+            "impressions": 0,
+            "position": null
+          },
+          {
+            "month": "2026-10",
+            "days": 11,
+            "clicks": 12,
+            "impressions": 101,
+            "position": 15.2
+          }
+        ],
+        "top_queries": []
+      }
+    },
+    {
+      "key": "danny",
+      "name": "Danny Chua Financial",
+      "domain": "dannychuafinancial.com",
+      "url": "https://dannychuafinancial.com/",
+      "industry": "Financial consultant",
+      "schema_type": "Person",
+      "img": "/images/clients/danny.webp",
+      "gsc_site": "sc-domain:dannychuafinancial.com",
+      "launched": "2026-08",
+      "brand_terms": [
+        "danny"
+      ],
+      "skip_queries": [],
+      "built": [
+        "Plain-language pages on financial planning, insurance and retirement",
+        "Representative details shown so visitors can verify them",
+        "Articles published regularly"
+      ],
+      "articles": 57,
+      "gsc": {
+        "record_id": "6acf9f9004d2843e3c5bbbba",
+        "first_day": "2026-08-13",
+        "clicks": 31,
+        "impressions": 5234,
+        "position": 41.3,
+        "prev_clicks": 19,
+        "prev_impressions": 1650,
+        "prev_position": 61.2,
+        "queries": 321,
+        "page_one": 81,
+        "top3": 17,
+        "capped": false,
+        "monthly": [
+          {
+            "month": "2026-08",
+            "days": 19,
+            "clicks": 12,
+            "impressions": 641,
+            "position": 62.6
+          },
+          {
+            "month": "2026-09",
+            "days": 30,
+            "clicks": 23,
+            "impressions": 3517,
+            "position": 49.5
+          },
+          {
+            "month": "2026-10",
+            "days": 11,
+            "clicks": 15,
+            "impressions": 2726,
+            "position": 37.8
+          }
+        ],
+        "top_queries": []
+      }
+    },
+    {
+      "key": "ecu-clinic",
+      "name": "The ECU Clinic",
+      "domain": "theecuclinicsg.com",
+      "url": "https://theecuclinicsg.com/",
+      "industry": "ABS and brake module repair, Kaki Bukit",
+      "schema_type": "AutoRepair",
+      "img": "https://cdn.jsdelivr.net/gh/drdigital641/edwin-ai-monitor-android@e5540541d6d5c8d959ab64bb4acd91412fe9a4c3/site-assets/pageone/clients/theecuclinicsg.webp",
+      "gsc_site": "sc-domain:theecuclinicsg.com",
+      "launched": "2026-10",
+      "brand_terms": [
+        "ecu clinic"
+      ],
+      "skip_queries": [],
+      "built": [
+        "5 service pages: ABS pump repair, Mercedes 7G/9G TCU repair, Mercedes steering lock (ELV), hybrid battery replacement, BMW temperature programming",
+        "6 articles on the faults drivers search for",
+        "13 pages in the sitemap"
+      ],
+      "articles": 6,
+      "gsc": {
+        "record_id": "6acf9f8fba5f01df3b24b8f4",
+        "first_day": null,
+        "clicks": 0,
+        "impressions": 0,
+        "position": 0,
+        "prev_clicks": 0,
+        "prev_impressions": 0,
+        "prev_position": 0,
+        "queries": 0,
+        "page_one": 0,
+        "top3": 0,
+        "capped": false,
+        "monthly": [],
+        "top_queries": []
+      }
+    },
+    {
+      "key": "jackygearbox",
+      "name": "Jacky Gearbox",
+      "domain": "jackygearbox.com",
+      "url": "https://jackygearbox.com/",
+      "industry": "Gearbox and transmission specialist",
+      "schema_type": "AutoRepair",
+      "img": "https://cdn.jsdelivr.net/gh/drdigital641/edwin-ai-monitor-android@e5540541d6d5c8d959ab64bb4acd91412fe9a4c3/site-assets/pageone/clients/jackygearbox.webp",
+      "gsc_site": "sc-domain:jackygearbox.com",
+      "launched": "2026-10",
+      "brand_terms": [
+        "jacky"
+      ],
+      "skip_queries": [],
+      "built": [
+        "4 service pages: gearbox repair, upgrade, servicing and free towing",
+        "11 gearbox-problem guides, from slipping gears to a lever stuck in park",
+        "21 pages in the sitemap"
+      ],
+      "articles": null,
+      "gsc": {
+        "record_id": "6acf9f9402b7fef07d050523",
+        "first_day": null,
+        "clicks": 0,
+        "impressions": 0,
+        "position": 0,
+        "prev_clicks": 0,
+        "prev_impressions": 0,
+        "prev_position": 0,
+        "queries": 0,
+        "page_one": 0,
+        "top3": 0,
+        "capped": false,
+        "monthly": [],
+        "top_queries": []
+      }
+    }
+  ]
+}

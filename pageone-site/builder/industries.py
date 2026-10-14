@@ -4,16 +4,16 @@
 # labelled as examples, no invented statistics, no ranking guarantees.
 
 PROOF_GARAGE = """<div class="kpis reveal">
-          <div class="kpi"><div class="label">Edwin Garage: clicks from Google</div><div class="value">2,280</div><div class="delta">28 days to 5 Oct 2026</div></div>
-          <div class="kpi"><div class="label">Average position</div><div class="value">6.1</div><div class="delta">Page one is 1 to 10</div></div>
-          <div class="kpi"><div class="label">Searches on page one</div><div class="value">4,290+</div><div class="delta">Google Search Console</div></div>
+          <div class="kpi"><div class="label">Edwin Garage: clicks from Google</div><div class="value">""" + EG["clicks"] + """</div><div class="delta">28 days to """ + THROUGH_SHORT + """</div></div>
+          <div class="kpi"><div class="label">Average position</div><div class="value">""" + EG["pos"] + """</div><div class="delta">Page one is 1 to 10</div></div>
+          <div class="kpi"><div class="label">Searches on page one</div><div class="value">""" + EG["page_one"] + """</div><div class="delta">Google Search Console</div></div>
         </div>
         <p class="note reveal">Edwin Garage is Edwin's own car workshop in Ang Mo Kio, where this system was first built and tested. <a class="link" href="/results/">See the full case study →</a></p>"""
 
 PROOF_CLEANIC = """<div class="kpis reveal">
-          <div class="kpi"><div class="label">Cleanic Detailing: clicks from Google</div><div class="value">492</div><div class="delta">28 days to 5 Oct 2026</div></div>
-          <div class="kpi"><div class="label">Average position</div><div class="value">10.0</div><div class="delta">From 11.5 the 28 days before</div></div>
-          <div class="kpi"><div class="label">Searches on page one</div><div class="value">1,181</div><div class="delta">Google Search Console</div></div>
+          <div class="kpi"><div class="label">Cleanic Detailing: clicks from Google</div><div class="value">""" + CL["clicks"] + """</div><div class="delta">28 days to """ + THROUGH_SHORT + """</div></div>
+          <div class="kpi"><div class="label">Average position</div><div class="value">""" + CL["pos"] + """</div><div class="delta">From """ + CL["prev_pos"] + """ the 28 days before</div></div>
+          <div class="kpi"><div class="label">Searches on page one</div><div class="value">""" + CL["page_one"] + """</div><div class="delta">Google Search Console</div></div>
         </div>
         <p class="note reveal">Cleanic Detailing is a Singapore car grooming business we run the website and SEO for. <a class="link" href="/results/">See the full case study →</a></p>"""
 
@@ -34,7 +34,7 @@ INDUSTRIES = [
                   ("Your location, made obvious", "Your address, opening hours and area in the right places, so you appear for \"near me\" searches and on Google Maps."),
                   ("Trust before they call", "Photos of your workshop and work, what brands you handle, and a one-tap WhatsApp button for quotes.")],
         "proof": PROOF_GARAGE,
-        "faqs": [("Can SEO really bring customers to a car workshop?", "It's how Edwin Garage gets found: in the 28 days to 5 October 2026 it got 2,280 clicks from Google with an average position of 6.1, according to Google Search Console. Results vary by workshop and area, so we don't guarantee them."),
+        "faqs": [("Can SEO really bring customers to a car workshop?", "It's how Edwin Garage gets found: in the 28 days to " + THROUGH + " it got " + EG["clicks"] + " clicks from Google with an average position of " + EG["pos"] + ", according to Google Search Console. Results vary by workshop and area, so we don't guarantee them."),
                  ("Do I need to do anything technical?", "No. Tell us your services, brands and area and send some photos on WhatsApp. We do the website, Google Maps, Google and Bing setup."),
                  ("I already have a website. Do I need a new one?", "No. We can add an SEO landing page next to it on a subdomain, or take over looking after your existing site.")],
     },
@@ -50,7 +50,7 @@ INDUSTRIES = [
                   ("Easy booking", "A WhatsApp button and clear service areas, so customers can ask for a slot in one tap.")],
         "proof": PROOF_CLEANIC,
         "faqs": [("Does this work for mobile detailers without a shop?", "Yes. Google lets service-area businesses hide their address and list the areas they cover. We set that up for you."),
-                 ("What results have you had in this industry?", "Cleanic Detailing got 492 clicks from Google in the 28 days to 5 October 2026 and appeared on page one for 1,181 different searches, according to Google Search Console. Results vary, so we don't guarantee them."),
+                 ("What results have you had in this industry?", "Cleanic Detailing got " + CL["clicks"] + " clicks from Google in the 28 days to " + THROUGH + " and appeared on page one for " + CL["page_one"] + " different searches, according to Google Search Console. Results vary, so we don't guarantee them."),
                  ("How long does it take?", "Your site is usually live within 7 days. Search results build over weeks to months; Cleanic Detailing took about three months to reach these numbers.")],
     },
     {
