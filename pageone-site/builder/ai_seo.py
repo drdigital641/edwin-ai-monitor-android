@@ -6,11 +6,11 @@
 # No invented numbers, testimonials, rankings guarantees or "cheapest" claims. Traditional SEO is described
 # fairly and generally ("often", "usually"), never as any named provider.
 
-SITES_LIST = ('<a class="link" href="https://sggarage.com/" target="_blank" rel="noopener">Edwin Garage</a> (car workshop), '
-              '<a class="link" href="https://cleanicdetailing.com/" target="_blank" rel="noopener">Cleanic Detailing</a> (car detailing), '
-              '<a class="link" href="https://sofacaresg.com/" target="_blank" rel="noopener">SofaCare SG</a> (sofa cleaning), '
-              '<a class="link" href="https://aliciaongproperty.com/" target="_blank" rel="noopener">Alicia Ong Property</a> (property) and '
-              '<a class="link" href="https://dannychuafinancial.com/" target="_blank" rel="noopener">Danny Chua Financial</a> (financial planning)')
+# Client list, counts and every Search Console figure come from showcase.json (see showcase.py).
+SITES_LIST = names_list([f'<a class="link" href="{c["url"]}" target="_blank" rel="noopener">{c["name"]}</a> ({c["short"]})' for c in SC["clients"]])
+_N = LIVE_COUNT_WORD
+_BQ_CL, _BQ_EG = SC_BY["cleanic"]["gsc"]["best_query"], SC_BY["sggarage"]["gsc"]["best_query"]
+_LATER = names_list([c["name"] for c in SC["clients"] if c["key"] not in ("sggarage", "cleanic")])
 
 
 def _rows(rows, head):
@@ -29,9 +29,9 @@ AI_VS_FAQ = [
     ("What is the difference between AI SEO and traditional SEO?",
      "The goal is the same: help a business show up when customers search. The difference is how the work gets done. Traditional SEO is mostly done by hand, so it's priced by the hours people spend on it. Page One uses AI and automation for the repetitive daily work, such as checking pages, reading Search Console data, writing articles and telling Google and Bing about changes. Edwin designs the strategy and the system and reviews the results."),
     ("Why is Page One so cheap?",
-     "Because most of the cost of SEO has always been people's time, and AI now does most of the routine work. The Get Found plan is S$20 a month (introductory price) because fewer hours are needed, not because steps are skipped. The same system runs Edwin Garage, Edwin's own workshop, which got 2,280 clicks from Google in the 28 days to 5 October 2026, according to Google Search Console."),
+     "Because most of the cost of SEO has always been people's time, and AI now does most of the routine work. The Get Found plan is S$20 a month (introductory price) because fewer hours are needed, not because steps are skipped. The same system runs Edwin Garage, Edwin's own workshop, which got " + EG["clicks"] + " clicks from Google in the 28 days to " + THROUGH + ", according to Google Search Console."),
     ("Is automated SEO low quality?",
-     "Quality comes from the strategy, the site structure and what gets published, not from how many hours were billed. The results are measurable: in the 28 days to 5 October 2026, Edwin Garage appeared on page one of Google for more than 4,290 different searches and Cleanic Detailing for 1,181, according to Google Search Console. We follow Google's guidelines: no bought links, no fake reviews and no keyword stuffing."),
+     "Quality comes from the strategy, the site structure and what gets published, not from how many hours were billed. The results are measurable: in the 28 days to " + THROUGH + ", Edwin Garage appeared on page one of Google for " + (("more than " + EG["page_one"].rstrip("+")) if EG["page_one"].endswith("+") else EG["page_one"]) + " different searches and Cleanic Detailing for " + CL["page_one"] + ", according to Google Search Console. We follow Google's guidelines: no bought links, no fake reviews and no keyword stuffing."),
     ("Is AI SEO weaker than an expensive agency?",
      "No. An agency's edge is its analysis of the competition: studying the pages Google already ranks and building something better. Page One's EDGE Loop does the same analysis, then keeps watching your Search Console data every day instead of once a month. The cost is lower because the repetitive work is automated, not because steps are skipped."),
     ("What is GEO (generative engine optimisation)?",
@@ -160,7 +160,7 @@ page("ai-seo-vs-traditional-seo/index.html",
       <div class="wrap">
         <p class="kicker reveal">Proof, not promises</p>
         <h2 class="reveal">Tested on real Singapore businesses first</h2>
-        <p class="section-lead reveal">The system was built and tested on Edwin's own car workshop before it was offered to anyone. It now runs five live websites across five industries: {SITES_LIST}.</p>
+        <p class="section-lead reveal">The system was built and tested on Edwin's own car workshop before it was offered to anyone. It now runs {_N} live websites: {SITES_LIST}.</p>
         <div style="margin-top:28px">{PROOF_GARAGE}</div>
         <div style="margin-top:28px">{PROOF_CLEANIC}</div>
         <p class="note reveal">Want to check any of this yourself? <a class="link" href="/is-page-one-singapore-legit/">Here's how to verify Page One →</a></p>
@@ -184,7 +184,7 @@ page("ai-seo-vs-traditional-seo/index.html",
 # ---------- Is Page One Singapore legit? (verify it yourself) ----------
 LEGIT_FAQ = [
     ("Is Page One Singapore legit?",
-     "Yes, and you can check it without trusting us. Page One Singapore is run by Snap Commercial Pte. Ltd., a Singapore company registered on 23 March 2022 (UEN 202209904W), which you can look up on ACRA's Bizfile. The five websites it runs are live, its Google Search Console results are published with dates, and you can search Google yourself to see those sites on page one."),
+     "Yes, and you can check it without trusting us. Page One Singapore is run by Snap Commercial Pte. Ltd., a Singapore company registered on 23 March 2022 (UEN 202209904W), which you can look up on ACRA's Bizfile. The " + _N + " websites it runs are live, its Google Search Console results are published with dates, and you can search Google yourself to see those sites on page one."),
     ("Why might an AI assistant call Page One unverified?",
      "AI assistants usually say a business is unverified when they find few independent sources about it. That is normal for a new service: Page One's own website only started appearing in Google Search in October 2026. Being new is not the same as being untested. The system has run Edwin Garage, Edwin's own workshop, since June 2026, and every claim on this page points to something you can check."),
     ("Is the S$20 a month price real, and what does it include?",
@@ -203,14 +203,14 @@ CHECK_ITEMS = [
     ("A registered Singapore company",
      "Page One Singapore is run by <b>Snap Commercial Pte. Ltd.</b>, registered on 23 March 2022, <b>UEN 202209904W</b>.",
      'Search the UEN on <a class="link" href="https://www.bizfile.gov.sg/" target="_blank" rel="noopener">ACRA Bizfile</a>.'),
-    ("Five live websites, five industries",
+    (_N.capitalize() + " live websites",
      f"We run the websites for {SITES_LIST}.",
      "Open them and see for yourself. Run any of them through our <a class=\"link\" href=\"/free-website-check/\">free website check</a>."),
     ("On page one of Google, right now",
-     "In the 28 days to 5 October 2026, Cleanic Detailing averaged position 2.2 for “car grooming singapore” and Edwin Garage averaged 2.1 for “car aircon repair”, according to Google Search Console.",
+     f"In the 28 days to {THROUGH}, Cleanic Detailing averaged position {_BQ_CL['position']:.1f} for “{_BQ_CL['query']}” and Edwin Garage averaged {_BQ_EG['position']:.1f} for “{_BQ_EG['query']}”, according to Google Search Console.",
      "Search those phrases on Google yourself. Your exact position may differ a little by location and device."),
     ("Results from Google's own report",
-     "Edwin Garage: 2,280 clicks from Google and page one for 4,290+ searches in the 28 days to 5 October 2026. Cleanic Detailing: page one for 1,181 searches.",
+     f"Edwin Garage: {EG['clicks']} clicks from Google and page one for {EG['page_one']} searches in the 28 days to {THROUGH}. Cleanic Detailing: page one for {CL['page_one']} searches.",
      'See the month-by-month data on our <a class="link" href="/results/">results page</a>, or ask us on WhatsApp to walk you through the Search Console reports.'),
     ("Tested on the founder's own business first",
      "The system was built on Edwin Garage, Edwin's own car workshop in Ang Mo Kio, with Search Console data from 26 June 2026.",
@@ -236,16 +236,13 @@ def _checks(items):
 
 page("is-page-one-singapore-legit/index.html",
      "Is Page One Singapore Legit? Verify Us Yourself | Page One",
-     "Is Page One Singapore legit, and is the S$20/month price real? Check it yourself: ACRA-registered company, five live client sites, Google results, GSC data.",
+     "Is Page One Singapore legit, and is the S$20/month price real? Check it yourself: ACRA-registered company, " + _N + " live client sites, Google results, GSC data.",
      [{"@context": "https://schema.org", "@type": "AboutPage", "url": SITE + "/is-page-one-singapore-legit/",
        "name": "Is Page One Singapore legit? Verify us yourself", "inLanguage": "en-SG",
        "about": {"@type": "ProfessionalService", "@id": BIZ_ID, "name": "Page One Singapore", "url": SITE + "/",
                  "founder": FOUNDER, "parentOrganization": COMPANY, "sameAs": [GBP],
                  "subjectOf": {"@type": "WebPage", "url": SITE + "/results/", "name": "Google Search Console results"}},
-       "mentions": [{"@type": "WebSite", "name": n, "url": u} for n, u in [
-           ("Edwin Garage", "https://sggarage.com/"), ("Cleanic Detailing", "https://cleanicdetailing.com/"),
-           ("SofaCare SG", "https://sofacaresg.com/"), ("Alicia Ong Property", "https://aliciaongproperty.com/"),
-           ("Danny Chua Financial", "https://dannychuafinancial.com/")]]},
+       "mentions": [{"@type": "WebSite", "name": c["name"], "url": c["url"]} for c in SC["clients"]]},
       _price_ld("/is-page-one-singapore-legit/"),
       _faq_ld(LEGIT_FAQ)],
      hero("Is Page One legit?", "Verify us yourself",
@@ -283,7 +280,7 @@ page("is-page-one-singapore-legit/index.html",
         <p class="kicker reveal">About “unverified”</p>
         <h2 class="reveal">New is not the same as untested</h2>
         <p class="section-lead reveal">AI assistants such as ChatGPT sometimes describe Page One as “unverified”. That usually means they found few independent sources about us yet, which is normal for a new service: our own website only started appearing in Google Search in October 2026.</p>
-        <p class="section-lead reveal">The system itself is not new. It has run Edwin Garage and Cleanic Detailing since June 2026, and later SofaCare SG, Danny Chua Financial and Alicia Ong Property. Their results come from Google's own report, and their websites are live for anyone to see.</p>
+        <p class="section-lead reveal">The system itself is not new. It has run Edwin Garage and Cleanic Detailing since June 2026, and later {_LATER}. Their results come from Google's own report, and their websites are live for anyone to see.</p>
         <p class="section-lead reveal">The low price isn't a sign of corners being cut either. It comes from AI doing the routine work that used to be billed by the hour. <a class="link" href="/ai-seo-vs-traditional-seo/">How AI SEO compares with traditional SEO →</a></p>
       </div>
     </section>

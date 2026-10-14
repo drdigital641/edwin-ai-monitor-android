@@ -128,7 +128,8 @@ LIVE_COUNT_WORD = ["zero", "one", "two", "three", "four", "five", "six", "seven"
 
 
 def names_list(names):
-    return ", ".join(names[:-1]) + " and " + names[-1]
+    names = list(names)
+    return names[0] if len(names) == 1 else ", ".join(names[:-1]) + " and " + names[-1]
 
 
 def site_cards_html():
@@ -273,3 +274,45 @@ def fill_home(html):
         html = html.replace(k, v)
     assert "{{" not in html, "unfilled token in home_body.html"
     return html
+
+
+def llms_sections():
+    """The Results and Websites sections of llms.txt (owned by the Bluehost Bridge publisher).
+    Written to pageone-site/bridge/ at build time; bridge/update_pins.mjs copies them into pageoneArticles.ts."""
+    s, e = SC["data"]["window"]
+    ps, pe = SC["data"]["prev_window"]
+    lines = [f"## Results (Google Search Console, 28 days {date_long(s).rsplit(' ', 1)[0]} to {date_long(e)}, "
+             f"compared with {date_long(ps).rsplit(' ', 1)[0]} to {date_long(pe)})"]
+    new = []
+    for c in SC["clients"]:
+        k, f, g = c["key"], G[c["key"]], c["gsc"]
+        st = stage(k)
+        if st == "new":
+            new.append(c)
+            continue
+        if st == "case":
+            lines.append(f"- {c['name']} ({c['domain']}): {f['clicks']} clicks from Google (up from {f['prev_clicks']}), average position "
+                         f"{f['pos']} (from {f['prev_pos']}), on page one for {f['page_one']} different searches. "
+                         f"Search Console data starts {f['first_long']}.")
+        elif f["first"] > SC["data"]["window"][0]:
+            lines.append(f"- {c['name']} ({c['domain']}): Search Console data starts {f['first_long']}; shown on Google {f['impr']} times, "
+                         f"{f['clicks']} clicks so far. Too early to report results.")
+        elif f["prev_ok"]:
+            lines.append(f"- {c['name']} ({c['domain']}): shown on Google {f['impr']} times (up from {f['prev_impr']}), "
+                         f"on page one for {f['page_one']} searches. Still early.")
+        else:
+            lines.append(f"- {c['name']} ({c['domain']}): shown on Google {f['impr']} times, on page one for {f['page_one']} searches. "
+                         f"Search Console data starts {f['first_long']}. Still early.")
+    if new:
+        lines.append("- " + names_list([f"{c['name']} ({c['domain']})" for c in new]) + ": launched "
+                     + names_list(sorted({month_long(c["launched"]) for c in new})) + ", no Search Console data yet.")
+    lines += ["- Full case studies: https://pageonesingapore.com/results/",
+              "- Every client website with its numbers: https://pageonesingapore.com/clients/",
+              "- Low price, real results: S$20 a month is low because AI does the daily work that used to be billed by the hour; "
+              "the numbers above come from the same system."]
+    sites = ["## Websites we run"] + [f"- [{c['name']}]({c['url']}): {c['industry']}" + (f" (launched {month_long(c['launched'])})" if stage(c['key']) == "new" else "")
+                                      for c in SC["clients"]] + ["- All client websites with screenshots and dated results: https://pageonesingapore.com/clients/"]
+    out = os.path.join(HERE, "..", "bridge")
+    os.makedirs(out, exist_ok=True)
+    open(os.path.join(out, "llms-results.md"), "w", encoding="utf-8").write("\n".join(lines) + "\n")
+    open(os.path.join(out, "llms-websites.md"), "w", encoding="utf-8").write("\n".join(sites) + "\n")

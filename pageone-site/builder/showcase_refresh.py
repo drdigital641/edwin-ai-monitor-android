@@ -11,10 +11,14 @@ stats_json (a JSON string or an object). The newest record per site is used.
 PORTFOLIOSITE.json (optional) is a PortfolioSite export from the Controller app
 (6ac7f2548a9c3877449e2772); its articles_total updates each client's article count.
 
+After updating showcase.json it rebuilds the site (builder/build.py) and the llms.txt sections in
+pageone-site/bridge/. Exit code 0 = figures changed (open a PR and publish), 3 = nothing changed
+(skip the publish).
+
 Only numbers from these exports are written. Everything a page says is formatted from
 them in builder/showcase.py, so a refresh never needs a hand edit of any figure.
 """
-import json, os, sys
+import json, os, subprocess, sys
 
 HERE = os.path.dirname(os.path.abspath(__file__))
 DATA = os.path.join(HERE, "showcase.json")
@@ -39,6 +43,7 @@ def main():
             newest[s] = r
     with open(DATA, encoding="utf-8") as f:
         data = json.load(f)
+    before = json.dumps([[c.get("gsc"), c.get("articles")] for c in data["clients"]], sort_keys=True)
 
     windows = set()
     for c in data["clients"]:
@@ -53,6 +58,8 @@ def main():
         brand = [b.lower() for b in c.get("brand_terms", [])]
         queries = [q for q in st.get("showcase", [])
                    if q["query"].lower() not in skip and not any(b in q["query"].lower() for b in brand)]
+        top3 = sorted([q for q in queries if q["position"] <= 3], key=lambda q: -q["impressions"])
+        best = {"query": top3[0]["query"], "position": top3[0]["position"], "impressions": top3[0]["impressions"]} if top3 else None
         queries = sorted(sorted(queries, key=lambda q: -q["impressions"])[:QUERY_ROWS], key=lambda q: q["position"])
         c["gsc"] = {
             "record_id": r.get("id"), "first_day": st.get("first_day_with_data"),
@@ -62,6 +69,7 @@ def main():
             "capped": st.get("queries_28d", 0) >= ROW_LIMIT,
             "monthly": [{"month": m["month"], "days": m["days"], "clicks": m["clicks"], "impressions": m["impressions"],
                          "position": None if m["position"] is None else round(m["position"], 1)} for m in st.get("monthly", [])],
+            "best_query": best,
             "top_queries": [{"query": q["query"], "position": q["position"], "impressions": q["impressions"]} for q in queries],
         }
     if len(windows) != 1:
@@ -86,6 +94,13 @@ def main():
         json.dump(data, f, ensure_ascii=False, indent=2)
         f.write("\n")
     print(f"showcase.json refreshed: {len(data['clients'])} sites, 28 days {s} to {e} (previous {ps} to {pe}).")
+    site = os.path.join(HERE, "..", "site")
+    subprocess.run([sys.executable, os.path.join(HERE, "build.py"), site], check=True)
+    after = json.dumps([[c.get("gsc"), c.get("articles")] for c in data["clients"]], sort_keys=True)
+    if after == before:
+        print("NO CHANGE: every figure is the same as before. Skip the PR and the publish.")
+        sys.exit(3)
+    print("CHANGED: commit pageone-site/, open a PR, merge, then run bridge/update_pins.mjs in the Bluehost Bridge sandbox.")
 
 
 if __name__ == "__main__":

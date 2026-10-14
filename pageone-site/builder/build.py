@@ -55,10 +55,8 @@ def crumbs_ld(name, url):
 
 
 def page(path, title, desc, schemas, body, crumb=None, robots="index, follow, max-image-preview:large", updated=None, head_extra="", foot_extra=""):
-    # The two pages owned by another thread keep their published footer byte for byte.
-    frozen = path in ("ai-seo-vs-traditional-seo/index.html", "is-page-one-singapore-legit/index.html")
-    managed_link = "" if frozen else '        <a href="/managed-website-singapore/">Fully managed website</a>\n'
-    clients_href = "/#stories" if frozen else "/clients/"
+    managed_link = '        <a href="/managed-website-singapore/">Fully managed website</a>\n'
+    clients_href = "/clients/"
     if path == "index.html":
         current = "/"
     elif path.endswith("index.html"):
@@ -1339,28 +1337,11 @@ exec(open(os.path.join(HERE, "industries.py"), encoding="utf-8").read())
 exec(open(os.path.join(HERE, "affordable.py"), encoding="utf-8").read())
 # Client showcase (/clients/), from showcase.json.
 clients_page()
+llms_sections()
 # Fully managed website owner page (/managed-website-singapore/).
 exec(open(os.path.join(HERE, "managed.py"), encoding="utf-8").read())
 # "AI SEO vs traditional SEO" and "Is Page One legit?" (verify-it-yourself) pages.
-# These two pages are owned by another thread and must not change here, so ai_seo.py gets the
-# proof blocks exactly as they were published (5 Oct 2026 data), not the refreshed ones.
-_FROZEN_GARAGE = """<div class="kpis reveal">
-          <div class="kpi"><div class="label">Edwin Garage: clicks from Google</div><div class="value">2,280</div><div class="delta">28 days to 5 Oct 2026</div></div>
-          <div class="kpi"><div class="label">Average position</div><div class="value">6.1</div><div class="delta">Page one is 1 to 10</div></div>
-          <div class="kpi"><div class="label">Searches on page one</div><div class="value">4,290+</div><div class="delta">Google Search Console</div></div>
-        </div>
-        <p class="note reveal">Edwin Garage is Edwin's own car workshop in Ang Mo Kio, where this system was first built and tested. <a class="link" href="/results/">See the full case study →</a></p>"""
-
-_FROZEN_CLEANIC = """<div class="kpis reveal">
-          <div class="kpi"><div class="label">Cleanic Detailing: clicks from Google</div><div class="value">492</div><div class="delta">28 days to 5 Oct 2026</div></div>
-          <div class="kpi"><div class="label">Average position</div><div class="value">10.0</div><div class="delta">From 11.5 the 28 days before</div></div>
-          <div class="kpi"><div class="label">Searches on page one</div><div class="value">1,181</div><div class="delta">Google Search Console</div></div>
-        </div>
-        <p class="note reveal">Cleanic Detailing is a Singapore car grooming business we run the website and SEO for. <a class="link" href="/results/">See the full case study →</a></p>"""
-_live_proof = (PROOF_GARAGE, PROOF_CLEANIC)
-PROOF_GARAGE, PROOF_CLEANIC = _FROZEN_GARAGE, _FROZEN_CLEANIC
 exec(open(os.path.join(HERE, "ai_seo.py"), encoding="utf-8").read())
-PROOF_GARAGE, PROOF_CLEANIC = _live_proof
 
 page("index.html",
      "Affordable SEO Singapore from S$20/month | Page One Singapore",
