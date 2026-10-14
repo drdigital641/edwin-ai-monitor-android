@@ -51,3 +51,88 @@
     f.addEventListener('submit', function (ev) { ev.preventDefault(); track(); window.open(wa(msg()), '_blank', 'noopener'); });
   }
 })();
+
+// Gearbox motion: meshing gears that turn and speed up while you scroll, cogs on the headings that turn
+// with the page, scroll reveals, the process line, counters. Content stays visible without JS, and
+// everything sits still for visitors who ask for reduced motion.
+(function () {
+  var root = document.documentElement, still = window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var hdr = document.querySelector('header.site');
+  var onScroll = function () {
+    var y = window.pageYOffset || 0;
+    root.style.setProperty('--rot', (y * 0.25).toFixed(1) + 'deg');
+    if (hdr) hdr.classList.toggle('scrolled', y > 10);
+    proc();
+  };
+
+  // process line: fills as the steps scroll through the middle of the screen
+  var procs = [].slice.call(document.querySelectorAll('.process'));
+  var proc = function () {
+    procs.forEach(function (ol) {
+      var r = ol.getBoundingClientRect(), vh = window.innerHeight;
+      var p = still ? 1 : Math.max(0, Math.min(1, (vh * 0.75 - r.top) / (r.height || 1)));
+      ol.style.setProperty('--p', p.toFixed(3));
+      var steps = ol.querySelectorAll('.step');
+      for (var i = 0; i < steps.length; i++) steps[i].classList.toggle('on', p >= i / Math.max(1, steps.length - 1) - 0.02);
+    });
+  };
+  window.addEventListener('scroll', onScroll, { passive: true });
+  window.addEventListener('resize', proc);
+  onScroll();
+  if (still) return;
+
+  // meshing gears: rotation = k * driver angle + c (k and c are worked out at build time)
+  var sets = [].slice.call(document.querySelectorAll('svg.gears')).map(function (svg) {
+    return { svg: svg, vis: true, gears: [].slice.call(svg.querySelectorAll('.gr')).map(function (g) {
+      return { g: g, k: +g.getAttribute('data-k'), c: +g.getAttribute('data-c') };
+    }) };
+  });
+  var a = 0, boost = 0, lastY = window.pageYOffset || 0, lastT = 0;
+  window.addEventListener('scroll', function () {
+    var y = window.pageYOffset || 0; boost += Math.min(40, Math.abs(y - lastY) * 0.35); lastY = y;
+  }, { passive: true });
+  var frame = function (t) {
+    var dt = lastT ? Math.min(50, t - lastT) : 16; lastT = t;
+    a += dt * 0.012 + boost * 0.12; boost *= 0.9;
+    sets.forEach(function (s) {
+      if (!s.vis) return;
+      s.gears.forEach(function (x) { x.g.setAttribute('transform', 'rotate(' + (x.k * a + x.c).toFixed(2) + ')'); });
+    });
+    requestAnimationFrame(frame);
+  };
+  if ('IntersectionObserver' in window) {
+    var gio = new IntersectionObserver(function (es) { es.forEach(function (en) {
+      sets.forEach(function (s) { if (s.svg === en.target) s.vis = en.isIntersecting; });
+    }); });
+    sets.forEach(function (s) { gio.observe(s.svg); });
+  }
+  if (sets.length) requestAnimationFrame(frame);
+
+  // scroll reveal, staggered within each group
+  if (!('IntersectionObserver' in window)) return;
+  var counted = function (el) {
+    var n = +el.getAttribute('data-n'), t0 = 0;
+    var step = function (t) { if (!t0) t0 = t; var p = Math.min(1, (t - t0) / 1100);
+      el.textContent = Math.round(n * (1 - Math.pow(1 - p, 3))); if (p < 1) requestAnimationFrame(step); };
+    requestAnimationFrame(step);
+  };
+  var io = new IntersectionObserver(function (es) {
+    es.forEach(function (en) {
+      if (!en.isIntersecting) return;
+      var el = en.target; el.classList.add('in'); io.unobserve(el);
+      setTimeout(function () { el.classList.remove('rv', 'in'); el.style.removeProperty('--d'); }, 1400); // hand hover effects back
+      [].forEach.call(el.querySelectorAll('.n[data-n]'), counted);
+    });
+  }, { rootMargin: '0px 0px -8% 0px' });
+  var sel = 'main section .sec-head, main .card, main .stat, main .split > *, main .band, main details, main .gallery figure, main .step, main section > .wrap > h2, main .ticks';
+  var seen = [];
+  [].forEach.call(document.querySelectorAll(sel), function (el) {
+    if (el.closest('.hero') || seen.some(function (p) { return p.contains(el); })) return;
+    var r = el.getBoundingClientRect();
+    if (r.top < window.innerHeight && r.bottom > 0) return; // already on screen: leave it as is
+    var sib = el.parentNode ? [].indexOf.call(el.parentNode.children, el) : 0;
+    el.style.setProperty('--d', (Math.min(sib, 5) * 0.08) + 's');
+    el.classList.add('rv'); seen.push(el); io.observe(el);
+  });
+  root.classList.add('js');
+})();

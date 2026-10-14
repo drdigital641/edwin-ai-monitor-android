@@ -28,7 +28,7 @@ ORIGIN = 'https://jackygearbox.com'  # the client's domain (was dmts.com.sg unti
 BASE = '/'
 DEPTH = 0  # folder depth of the page being built; set by build() so u() can emit relative links
 ABS = False  # root-relative links instead (404 page: Apache serves it at any depth)
-ASSET_V = '7'
+ASSET_V = '8'
 SLUG = 'dmts'  # Page One client key: p1-site marker (go-live check) and WhatsApp tracker
 INDEXNOW_KEY = '5792dfeef836aebd82a445c206294c95'  # same key as the controller's Client record
 # Share images and icons must load before jackygearbox.com points here, so until go-live they are linked
@@ -72,6 +72,91 @@ ICON = {
 e = html.escape
 
 
+
+# ---- gearbox motion design (client request 14 Oct 2026: gearbox theme with movement) ----
+# Gears are drawn here as SVG paths. Meshing gears carry data-k / data-c so jg.js can turn them
+# together (rotation = k * driver angle + c): the driver turns slowly and speeds up while you scroll.
+import math
+
+
+def gear_path(z, m, hole=.32, windows=0):
+    r, ra, rf = m * z / 2, m * z / 2 + m, m * z / 2 - 1.25 * m
+    p = 2 * math.pi / z
+    pts = []
+    for i in range(z):
+        c = i * p
+        for rr, da in ((rf, -.30), (ra, -.15), (ra, .15), (rf, .30)):
+            pts.append((rr * math.cos(c + da * p), rr * math.sin(c + da * p)))
+    d = 'M' + 'L'.join(f'{x:.1f} {y:.1f}' for x, y in pts) + 'Z'
+
+    def circ(cx, cy, rr):
+        return f'M{cx - rr:.1f} {cy:.1f}a{rr:.1f} {rr:.1f} 0 1 0 {2 * rr:.1f} 0a{rr:.1f} {rr:.1f} 0 1 0 {-2 * rr:.1f} 0Z'
+    d += circ(0, 0, r * hole)
+    for j in range(windows):
+        a = j * 2 * math.pi / windows
+        d += circ(r * .62 * math.cos(a), r * .62 * math.sin(a), r * .16)
+    return d
+
+
+def gear_train(spec, m):
+    """spec: [(z, windows, parent_index, angle_deg)] with the first entry the driver at (0, 0).
+    Returns [(x, y, z, path, k, c)] positioned so each gear meshes with its parent."""
+    out = []
+    for z, win, par, ang in spec:
+        if par is None:
+            x = y = 0.0
+            k, c = 1.0, 0.0
+        else:
+            px, py, pz, _, pk, pc = out[par]
+            dist = m * (pz + z) / 2
+            x, y = px + dist * math.cos(math.radians(ang)), py + dist * math.sin(math.radians(ang))
+            # parent rotation P = pk*a + pc; child = -(pz/z)*(P - ang) + ang + 180 + 180/z
+            k = -(pz / z) * pk
+            c = -(pz / z) * (pc - ang) + ang + 180 + 180 / z
+        out.append((x, y, z, gear_path(z, m, windows=win), k, c))
+    return out
+
+
+def gear_svg(spec, m, cls, view):
+    gears = ''.join(f'<g transform="translate({x:.1f} {y:.1f})"><g class="gr" data-k="{k:.4f}" data-c="{c:.2f}" '
+                    f'transform="rotate({c:.2f})"><path d="{d}"/></g></g>' for x, y, z, d, k, c in gear_train(spec, m))
+    return f'<svg class="{cls}" viewBox="{view}" aria-hidden="true" focusable="false">{gears}</svg>'
+
+
+HERO_GEARS = gear_svg([(28, 6, None, 0), (16, 5, 0, 200), (11, 0, 1, 125), (13, 0, 0, 300)], 16, 'gears hero-gears', '-530 -530 1060 1060')
+PAGE_GEARS = gear_svg([(20, 5, None, 0), (12, 0, 0, 205)], 12, 'gears page-gears', '-200 -200 400 400')
+BAND_GEARS = gear_svg([(14, 0, None, 0), (9, 0, 0, 150)], 10, 'gears band-gears', '-110 -110 220 220')
+COG = f'<svg class="cog" viewBox="-12 -12 24 24" aria-hidden="true" focusable="false"><path d="{gear_path(10, 1.7, hole=.38)}"/></svg>'
+
+TICKER = ['Diagnostic from S$30', 'Free towing', '6-month warranty', 'Final road test by Jacky',
+          'Gearbox repair', 'Overhaul', 'ATF servicing', 'Performance upgrades']
+
+
+def ticker():
+    row = ''.join(f'<span>{e(t)}</span>{COG}' for t in TICKER)
+    return f'<div class="ticker" aria-hidden="true"><div class="track">{row}{row}</div></div>'
+
+
+def stats():
+    items = [('S$', '30', '', 'Diagnostic from'), ('', '6', ' months', 'Warranty on repairs'),
+             ('', '15', '+ yrs', 'Combined gearbox experience'), ('', '1', '', 'Specialist, first test to final road test')]
+    return '<div class="stats">' + ''.join(
+        f'<div class="stat"><b>{a}<span class="n" data-n="{n}">{n}</span>{z}</b><span>{e(t)}</span></div>' for a, n, z, t in items) + '</div>'
+
+
+PROCESS = [
+    ('Diagnosis and testing', 'Jacky reads the fault codes, tests the gearbox and finds the actual cause.'),
+    ('A clear quote', 'He explains the fault and the price before any work starts. You decide.'),
+    ('The repair', 'An experienced workshop team, with over 15 years of combined gearbox experience, carries out the repair or overhaul. Jacky inspects the work.'),
+    ('Final test and handover', 'Jacky road-tests the car himself before he hands it back to you.'),
+]
+
+
+def process():
+    return ('<ol class="process">' + ''.join(
+        f'<li class="step"><span class="node">{COG}<b>{i + 1}</b></span><div><h3>{e(h)}</h3><p>{e(p)}</p></div></li>'
+        for i, (h, p) in enumerate(PROCESS)) + '</ol>')
+
 def u(path=''):
     if ABS:
         return BASE + path
@@ -91,33 +176,27 @@ def cta_buttons(extra=''):
 
 
 def schema():
-    def place(key, label):
-        a = BIZ[key]
-        return {
-            '@type': 'AutoRepair', '@id': f'{ORIGIN}{BASE}#{key}',
-            'name': f'Jacky Gearbox ({label})',
-            'parentOrganization': {'@id': f'{ORIGIN}{BASE}#org'},
-            'telephone': BIZ['tel'],
-            'image': [f'{IMG_ORIGIN}/img/share/home.jpg', f'{IMG_ORIGIN}/img/share/contact.jpg'],
-            'logo': f'{IMG_ORIGIN}/img/logo.png',
-            'address': {'@type': 'PostalAddress', 'streetAddress': a['street'],
-                        'addressLocality': 'Singapore', 'postalCode': a['postal'], 'addressCountry': 'SG'},
-            'openingHoursSpecification': [
-                {'@type': 'OpeningHoursSpecification', 'dayOfWeek': ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday'], 'opens': '09:00', 'closes': '18:00'},
-                {'@type': 'OpeningHoursSpecification', 'dayOfWeek': 'Saturday', 'opens': '09:00', 'closes': '15:00'}],
-            'areaServed': 'Singapore',
-        }
+    # Jacky's own business (client brief, 14 Oct 2026): he is a gearbox specialist and consultant who
+    # diagnoses, inspects and road-tests every car himself; the repair work is done at the workshops he
+    # works from. His Google Business Profile is a service-area profile, so no street address here
+    # (the workshop addresses belong to the workshop's own listing).
     return {'@context': 'https://schema.org', '@graph': [
-        {'@type': 'Organization', '@id': f'{ORIGIN}{BASE}#org', 'name': 'Jacky Gearbox',
-         'founder': {'@type': 'Person', 'name': 'Jacky', 'jobTitle': 'Gearbox specialist'},
+        {'@type': 'AutoRepair', '@id': f'{ORIGIN}{BASE}#org', 'name': 'Jacky Gearbox',
          'url': f'{ORIGIN}{BASE}', 'logo': {'@type': 'ImageObject', 'url': f'{IMG_ORIGIN}/img/logo.png'},
          'image': f'{IMG_ORIGIN}/img/share/home.jpg',
-         'telephone': BIZ['tel'], 'sameAs': [BIZ['google']],
-         'description': 'Gearbox and automatic transmission repair, overhaul, upgrade and servicing specialist in Singapore.'},
-        place('hq', 'Woodlands HQ'), place('branch', 'Jalan Lam Huat branch')]}
+         'telephone': BIZ['mobile'], 'sameAs': [BIZ['google']],
+         'areaServed': {'@type': 'Country', 'name': 'Singapore'},
+         'openingHoursSpecification': [
+             {'@type': 'OpeningHoursSpecification', 'dayOfWeek': ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday'], 'opens': '09:00', 'closes': '18:00'},
+             {'@type': 'OpeningHoursSpecification', 'dayOfWeek': 'Saturday', 'opens': '09:00', 'closes': '15:00'}],
+         'founder': {'@id': f'{ORIGIN}{BASE}#jacky'},
+         'description': 'Jacky is a gearbox specialist and consultant in Singapore. He diagnoses, inspects and road-tests every car himself, for gearbox repair, overhaul, upgrades and ATF servicing.'},
+        {'@type': 'Person', '@id': f'{ORIGIN}{BASE}#jacky', 'name': 'Jacky', 'jobTitle': 'Gearbox specialist and consultant',
+         'worksFor': {'@id': f'{ORIGIN}{BASE}#org'}, 'knowsAbout': ['Automatic transmission repair', 'Gearbox overhaul', 'Gearbox diagnostics', 'ATF servicing']}]}
 
 
 def page(path, title, desc, body, active='', extra_head='', ld=None, scripts='', share=('hero-workshop', None)):
+    body = body.replace('<div class="sec-head">', f'<div class="sec-head"><span class="rule">{COG}</span>')
     canonical = ORIGIN + BASE + path
     slug = path.strip('/').replace('/', '-') or 'home'
     headline = share[1] or title.split(' | ')[0]
@@ -243,7 +322,6 @@ TESTIMONIALS = [
     # to remove from the site (14 Oct 2026). Full texts are in source/content.md.
     ('Ulysses Wang', 'BMW 5 Series', '… Arranged an appointment with Jacky and drove my BMW 5 series to let him check. Workshop was impressive from the setup …'),
     ('Alvin Lee', 'Audi A4', '… I was initially very worried about the repair cost when my Audi A4 gearbox was diagnosed to be faulty. But Jacky was very patient and professional in explaining to me the overhaul process and the quoted price was below what I have expected. My car was ready after 3 days and was given a 6 months warranty as well. I would definitely recommend my friends to them for any gearbox issues.'),
-    ('Rhyce Chng', 'Free service', '… Nice and cosy waiting lounge with a clear view of my car undergoing maintenance. Fantastic experience with them. Thumbs up.'),
 ]
 
 GALLERY = [
@@ -363,8 +441,8 @@ SERVICE_PAGES = {
         'sub': 'Servicing your automatic transmission is as important as servicing the engine. The right gearbox oil, in the right amount, keeps bearings and gears lasting longer.',
         'updated': '13 Oct 2026',
         'share_h': 'Gearbox Maintenance & ATF Servicing',  # keep the published share card
-        'proof': ('Rhyce Chng', 'Free service',
-                  'Nice and cosy waiting lounge with a clear view of my car undergoing maintenance. Fantastic experience with them.'),
+        'proof': ('Ulysses Wang', 'BMW 5 Series',
+                  'Arranged an appointment with Jacky and drove my BMW 5 series to let him check.'),
         'sections': [
             ('Why the right ATF matters',
              '<p>Automatic Transmission Fluid (ATF), often just called gearbox oil, cools and lubricates the gearbox and carries the hydraulic pressure that makes it shift. Different gearboxes need different fluids. We only use the manufacturer’s recommended or gearbox-specific brand of ATF, filled to the correct level, for longer life of bearings and gears with less wear.</p>'),
@@ -497,7 +575,7 @@ def crumbs_ld(name, path, parent=None):
 
 def page_hero(name, h1, sub, parent=None):
     mid = f'<a href="{u(parent[1])}">{e(parent[0])}</a> › ' if parent else ''
-    return (f'<div class="page-hero"><div class="wrap"><div class="crumbs"><a href="{u()}">Home</a> › {mid}{e(html.unescape(name))}</div>'
+    return (f'<div class="page-hero">{PAGE_GEARS}<div class="wrap"><div class="crumbs"><a href="{u()}">Home</a> › {mid}{e(html.unescape(name))}</div>'
             f'<h1>{h1}</h1><p>{sub}</p></div></div>')
 
 
@@ -514,7 +592,7 @@ def faq_block(items, heading):
 
 
 def band(h, p):
-    return (f'<section><div class="wrap"><div class="band"><div><h2>{h}</h2><p>{p}</p></div>'
+    return (f'<section><div class="wrap"><div class="band">{BAND_GEARS}<div><h2>{h}</h2><p>{p}</p></div>'
             f'{cta_buttons()}</div></div></section>')
 
 
@@ -522,7 +600,7 @@ WHY = [
     ('gear', 'Specialist', 'Auto transmission repair and overhaul for all types of vehicles.'),
     ('tag', 'Direct pricing', 'A clear quote after the diagnostic, before any work starts. You pay only for what is needed.'),
     ('drop', 'Quality parts &amp; ATF', 'High quality parts and the correct Automatic Transmission Fluid for your gearbox.'),
-    ('users', 'Experienced team', 'Experienced, well-trained mechanics with over 15 years of combined gearbox experience.'),
+    ('users', 'One specialist, start to finish', 'Jacky diagnoses, inspects and road-tests your car himself, backed by a workshop team with over 15 years of combined gearbox experience.'),
     ('shield', '6-month warranty', WARRANTY),
     ('truck', 'Free towing', 'Free pick-up or tow to our workshop during office hours.'),
 ]
@@ -567,62 +645,70 @@ def home():
     body = f'''
 <section class="hero" style="padding:0">
 {img("hero-workshop", "Jacky Gearbox workshop in Woodlands", 800, 600, lazy=False, cls="bg")}
+<div class="blueprint" aria-hidden="true"></div>{HERO_GEARS}
 <div class="wrap">
-<span class="eyebrow">Jacky Gearbox · Woodlands, Singapore</span>
+<span class="eyebrow">Jacky · Gearbox specialist &amp; consultant</span>
 <h1>Gearbox Repair &amp; Auto Transmission Specialist in Singapore</h1>
-<p class="lead">I’m Jacky. My team and I work only on gearboxes: repair, overhaul, upgrades and servicing for all car makes. Pre-repair diagnostic from S$30, free towing to our workshop, and a 6-month warranty on repairs.</p>
-<ul class="chips"><li>Diagnostic from S$30</li><li>Free towing / pick-up</li><li>6-month warranty</li><li>15+ years combined experience</li></ul>
+<p class="lead">I’m Jacky. I diagnose and test your gearbox myself, check the repair, and road-test the car before I hand it back to you. Repair, overhaul, upgrades and servicing for all car makes.</p>
+<ul class="chips"><li>Diagnostic from S$30</li><li>Free towing / pick-up</li><li>6-month warranty</li><li>Final road test by Jacky</li></ul>
 {cta_buttons()}
 </div>
 </section>
+{ticker()}
 
 <section><div class="wrap">
-<div class="sec-head"><h2>Why drivers bring their gearbox to Jacky</h2><p>We only do transmissions, so we find the real fault faster and recommend only the repair you need.</p></div>
+<div class="sec-head"><h2>Why drivers bring their gearbox to Jacky</h2><p>One specialist looks after your gearbox from the first test to the final road test, so you always know who is responsible for your car.</p></div>
+{stats()}
 <div class="grid g3 why">{why_cards()}</div>
 </div></section>
 
 {meet_jacky()}
 
+<section class="process-sec"><div class="wrap">
+<div class="sec-head"><span class="eyebrow dark">How it works</span><h2>From first test to final road test</h2><p>Jacky is with your car at every check, so nothing is handed back until he is happy with it.</p></div>
+{process()}
+</div></section>
+
 <section class="alt"><div class="wrap">
-<div class="sec-head"><h2>Our gearbox services</h2><p>From a quick ATF service to a full transmission overhaul or performance upgrade.</p></div>
+<div class="sec-head"><h2>Gearbox services</h2><p>From a quick ATF service to a full transmission overhaul or performance upgrade.</p></div>
 <div class="grid g4 svc">{svc}</div>
 </div></section>
 
-<section><div class="wrap">
-<div class="sec-head"><h2>Gearbox problems we fix</h2><p>Noticed one of these? Book a diagnostic before a small fault becomes a full overhaul.</p></div>
+<section class="alt"><div class="wrap">
+<div class="sec-head"><h2>Gearbox problems Jacky fixes</h2><p>Noticed one of these? Book a diagnostic before a small fault becomes a full overhaul.</p></div>
 <div class="sym compact">{sym}</div>
-<p style="margin-top:22px"><a class="btn btn-wa" href="{wa_link("Hi Jacky, my car has a gearbox problem. Car model: ")}" target="_blank" rel="noopener">{ICON["wa"]}WhatsApp us your symptoms</a>
+<p style="margin-top:22px"><a class="btn btn-wa" href="{wa_link("Hi Jacky, my car has a gearbox problem. Car model: ")}" target="_blank" rel="noopener">{ICON["wa"]}WhatsApp Jacky your symptoms</a>
 <a class="btn btn-line" href="{u("gearbox-problems/")}">All gearbox problems</a></p>
 </div></section>
 
-<section class="alt"><div class="wrap split">
+<section><div class="wrap split">
 <div>
 <h2>Know the fault before you pay for a repair</h2>
-<p>Gearbox symptoms can have very different causes, from a worn solenoid to a failing torque converter. So we diagnose first, then quote. You decide before any repair work starts.</p>
+<p>Gearbox symptoms can have very different causes, from a worn solenoid to a failing torque converter. So Jacky diagnoses first, then quotes. You decide before any repair work starts.</p>
 <ul class="ticks"><li>{DIAG}</li><li>Clear quote before any work starts</li><li>Standard 6-month warranty on repairs</li></ul>
 <a class="btn btn-wa" href="{wa_link("Hi Jacky, I would like to book a gearbox diagnostic.")}" target="_blank" rel="noopener">{ICON["wa"]}Book a diagnostic</a>
 </div>
 <div>{img("diagnostics", "Laptop running a transmission diagnostic test on a BMW")}</div>
 </div></section>
 
-<section><div class="wrap">
-<div class="sec-head"><h2>What our customers say</h2></div>
+<section class="alt"><div class="wrap">
+<div class="sec-head"><h2>What customers say about Jacky</h2></div>
 <div class="grid g3" tabindex="0" role="region" aria-label="Customer reviews">{testimonials()}</div>
 </div></section>
 
-<section class="alt"><div class="wrap">
-<div class="sec-head"><h2>Inside our workshop</h2><p>Dedicated gearbox teardown stations, diagnostic equipment and an air-conditioned lounge where you can watch your car being worked on.</p></div>
+<section><div class="wrap">
+<div class="sec-head"><h2>Inside the workshop</h2><p>Dedicated gearbox teardown stations, diagnostic equipment and an air-conditioned lounge where you can watch your car being worked on.</p></div>
 <div class="gallery home-gal">{gal}</div>
 <p style="margin-top:20px"><a class="btn btn-line" href="{u("gallery/")}">View all photos</a></p>
 </div></section>
 
-<section><div class="wrap">
-<div class="sec-head"><h2>Two workshops in the north</h2></div>
+<section class="alt"><div class="wrap">
+<div class="sec-head"><h2>Where Jacky works</h2><p>Two workshops in the north of Singapore.</p></div>
 <div class="grid g2">{loc_cards()}</div>
 <div class="card" style="margin-top:18px">{HOURS}</div>
 </div></section>
 
-<section class="alt"><div class="wrap" style="max-width:860px">
+<section><div class="wrap" style="max-width:860px">
 <div class="sec-head"><h2>Gearbox repair FAQ</h2></div>
 {faq_html()}
 </div></section>
@@ -676,7 +762,7 @@ def service_cards(sids=None):
 
 
 def trust_strip(reviews=True):
-    rv = f'<section><div class="wrap"><div class="sec-head"><h2>What our customers say</h2></div><div class="grid g3" tabindex="0" role="region" aria-label="Customer reviews">{testimonials()}</div></div></section>'
+    rv = f'<section><div class="wrap"><div class="sec-head"><h2>What customers say about Jacky</h2></div><div class="grid g3" tabindex="0" role="region" aria-label="Customer reviews">{testimonials()}</div></div></section>'
     return ((rv if reviews else '') + f'<section class="alt"><div class="wrap"><div class="sec-head"><h2>Our workshops in Woodlands and Jalan Lam Huat</h2></div>'
             f'<div class="grid g2">{loc_cards()}</div><div class="card" style="margin-top:18px">{HOURS}</div></div></section>')
 
@@ -806,18 +892,17 @@ def gallery():
 
 
 def meet_jacky(more=True):
-    # Jacky is the face of the business (client brief, 14 Oct 2026). Only facts we have so far: he
-    # checks the cars himself and explains the repair (customer reviews), and the team's 15+ years of
-    # combined experience. His own portfolio and experience are coming from the client: add them here
+    # Jacky is the business (client brief, 14 Oct 2026): a gearbox specialist and consultant who does the
+    # diagnosis, testing, inspection and final road test himself; the workshop team does the repair. His own portfolio and experience are coming from the client: add them here
     # and on the About page (JACKY_STORY) when they arrive, with his photo in place of the workshop one.
     link = f'<a class="btn btn-line" href="{u("about/")}">More about Jacky</a>' if more else ''
     return f'''<section class="alt"><div class="wrap split">
 <div>{img("gearbox-teardown", "Gearbox overhaul on the teardown bench")}</div>
 <div>
 <span class="eyebrow dark">Meet Jacky</span>
-<h2>The gearbox specialist you actually speak to</h2>
-<p>When you bring your car to Jacky Gearbox, you deal with Jacky. He checks the car himself, explains what is wrong with the gearbox in plain words, and gives you the price before any work starts.</p>
-<p>Jacky and his team have over 15 years of combined experience in gearbox repair and overhaul, for continental, Japanese, Korean and other makes.</p>
+<h2>The gearbox specialist you deal with from start to finish</h2>
+<p>Jacky diagnoses and tests your gearbox himself, explains the fault in plain words, and gives you the price before any work starts. The repair is done by an experienced workshop team; Jacky inspects the work and does the final road test before he hands the car back to you.</p>
+<p>You can also come to Jacky for advice, for example a second opinion on a gearbox quote, or whether a repair is worth doing on your car.</p>
 <div class="btns"><a class="btn btn-wa" href="{wa_link()}" target="_blank" rel="noopener">{ICON["wa"]}WhatsApp Jacky</a>{link}</div>
 </div>
 </div></section>'''
@@ -828,21 +913,24 @@ JACKY_STORY = ''  # Jacky's own story, portfolio and experience: to come from th
 
 def about():
     body = page_hero('About', 'Meet Jacky, your gearbox specialist',
-                     'Gearbox repair, overhaul and servicing in Woodlands and Jalan Lam Huat, with Jacky looking after your car.') + meet_jacky(more=False) + JACKY_STORY + f'''
-<section><div class="wrap split">
+                     'Gearbox specialist and consultant in Singapore. Jacky diagnoses, inspects and road-tests every car himself.') + meet_jacky(more=False) + JACKY_STORY + f'''
+<section class="process-sec"><div class="wrap">
+<div class="sec-head"><h2>How Jacky works</h2></div>
+{process()}
+</div></section>
+<section class="alt"><div class="wrap split">
 <div>
-<h2>Transmission specialists, not general mechanics</h2>
-<p>Jacky’s team has over 15 years of combined industry experience in gearbox repair and overhaul. With wide and in-depth knowledge of different transmission systems and models, we follow a rigorous, stringent process to solve any gearbox issue, and keep up to date with the latest developments in the auto transmission industry.</p>
-<h3>What we believe</h3>
-<p>Every customer should get the most direct and accurate gearbox solution for their specific problem, to save them time and money. That takes an experienced team of transmission specialists and an extensive range of special tools and equipment.</p>
+<h3>What Jacky believes</h3>
+<p>Every customer should get the most direct and accurate gearbox solution for their specific problem, to save them time and money, and should know exactly who is responsible for their car.</p>
 </div>
 <div>{img("transmission-cutaway", "Automatic transmission cutaway on display in the customer lounge")}</div>
 </div></section>
-<section class="alt"><div class="wrap">
-<h2>Our strengths</h2>
+<section><div class="wrap">
+<h2>Why customers choose Jacky</h2>
 <ul class="ticks">
 <li>Specialist in auto transmission repair &amp; overhaul of all types of vehicles</li>
-<li>Experienced &amp; well-trained mechanics in gearbox repair</li>
+<li>Jacky diagnoses, inspects and road-tests every car himself</li>
+<li>An experienced, well-trained workshop team for the repair work</li>
 <li>Competitive and direct pricing for transmission issues</li>
 <li>Standard 6-month warranty on repairs</li>
 <li>High quality parts and Automatic Transmission Fluid (ATF)</li>
@@ -852,7 +940,7 @@ def about():
 <section><div class="wrap"><div class="sec-head"><h2>What customers say about Jacky</h2></div><div class="grid g3" tabindex="0" role="region" aria-label="Customer reviews">{testimonials()}</div></div></section>
 ''' + faq_block(FAQ, 'Frequently asked questions') + trust_strip(reviews=False) + band('Talk to Jacky', 'Call, WhatsApp or drop by either workshop.')
     return page('about/', 'About Jacky | Gearbox Specialist Singapore | Jacky Gearbox',
-                'Meet Jacky, the gearbox specialist behind Jacky Gearbox, with over 15 years of combined team experience in gearbox repair and overhaul in Singapore.',
+                'Meet Jacky, a gearbox specialist and consultant in Singapore who diagnoses, inspects and road-tests every car himself.',
                 body, active='about/', ld=[crumbs_ld('About', 'about/'), faq_ld_of(FAQ)], share=('gearbox-teardown', 'Meet Jacky, Your Gearbox Specialist'))
 
 
@@ -892,7 +980,7 @@ def contact():
 <h2>After the diagnostic</h2>
 <p>Our pre-repair diagnostic starts from S$30. We tell you the fault and give you a clear quote before any work starts, and repairs come with a standard 6-month warranty unless otherwise stated.</p>
 </div></section>
-''' + faq_block(FAQ[:5], 'Common questions') + f'<section><div class="wrap"><div class="sec-head"><h2>What our customers say</h2></div><div class="grid g3" tabindex="0" role="region" aria-label="Customer reviews">{testimonials()}</div></div></section>'
+''' + faq_block(FAQ[:5], 'Common questions') + f'<section><div class="wrap"><div class="sec-head"><h2>What customers say about Jacky</h2></div><div class="grid g3" tabindex="0" role="region" aria-label="Customer reviews">{testimonials()}</div></div></section>'
     return page('contact/', 'Contact Jacky | Gearbox Specialist Singapore',
                 'Contact Jacky Gearbox for gearbox repair in Singapore. WhatsApp 8430 9665 or call 6352 8832. Workshops at Wave 9 Woodlands and Jalan Lam Huat.',
                 body, active='contact/', ld=[crumbs_ld('Contact', 'contact/'), faq_ld_of(FAQ[:5])], share=('workshop-lifts', 'Contact Jacky Gearbox: Woodlands & Jalan Lam Huat'))
