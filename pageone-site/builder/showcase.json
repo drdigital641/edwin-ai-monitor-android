@@ -90,6 +90,11 @@
             "position": 6.1
           }
         ],
+        "best_query": {
+          "query": "how to diagnose car transmission issues",
+          "position": 3,
+          "impressions": 305
+        },
         "top_queries": [
           {
             "query": "how to diagnose car transmission issues",
@@ -127,7 +132,8 @@
             "impressions": 185
           }
         ]
-      }
+      },
+      "short": "car workshop"
     },
     {
       "key": "cleanic",
@@ -200,6 +206,11 @@
             "position": 7.9
           }
         ],
+        "best_query": {
+          "query": "car grooming singapore",
+          "position": 2.3,
+          "impressions": 1068
+        },
         "top_queries": [
           {
             "query": "steam cleaning",
@@ -237,7 +248,8 @@
             "impressions": 211
           }
         ]
-      }
+      },
+      "short": "car detailing"
     },
     {
       "key": "sofacare",
@@ -289,8 +301,10 @@
             "position": 74.0
           }
         ],
+        "best_query": null,
         "top_queries": []
-      }
+      },
+      "short": "sofa cleaning"
     },
     {
       "key": "alicia",
@@ -341,8 +355,10 @@
             "position": 15.2
           }
         ],
+        "best_query": null,
         "top_queries": []
-      }
+      },
+      "short": "property"
     },
     {
       "key": "danny",
@@ -400,8 +416,10 @@
             "position": 37.8
           }
         ],
+        "best_query": null,
         "top_queries": []
-      }
+      },
+      "short": "financial planning"
     },
     {
       "key": "ecu-clinic",
@@ -437,8 +455,10 @@
         "top3": 0,
         "capped": false,
         "monthly": [],
+        "best_query": null,
         "top_queries": []
-      }
+      },
+      "short": "ABS and brake repair"
     },
     {
       "key": "jackygearbox",
@@ -474,8 +494,10 @@
         "top3": 0,
         "capped": false,
         "monthly": [],
+        "best_query": null,
         "top_queries": []
-      }
+      },
+      "short": "gearbox specialist"
     }
   ]
 }
