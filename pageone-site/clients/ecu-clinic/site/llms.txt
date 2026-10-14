@@ -1,0 +1,46 @@
+# The ECU Clinic
+
+> ABS pump and module repair and car electronics fault diagnosis in Kaki Bukit, Singapore. Also Honda front radar (Honda Sensing) repair, BMW CAS module repair, Mercedes 7G and 9G TCU repair, Mercedes steering lock (ELV) repair, brand-new OEM hybrid batteries and BMW temperature programming. Repairs come with a 6-month warranty. Many car workshops send their ABS and module repairs to us.
+
+- Address: Premier @ Kaki Bukit, 8 Kaki Bukit Avenue 4, #06-43, Singapore 415875
+- WhatsApp or call: +65 9893 1923 (ask for Ching). WhatsApp is the fastest way to reach us.
+- Hours: Monday to Friday, 9am to 7pm. Saturday, 9am to 3pm. Closed on Sundays and public holidays. WhatsApp enquiries are welcome 24/7, and after-hours appointments can be arranged.
+- Pick-up and delivery available. Hybrid battery warranty: 1 year or 100,000 km.
+- Website: https://theecuclinicsg.com/
+- Facebook: https://www.facebook.com/TheECUclinicSG
+
+## Services
+
+- [ABS Pump & Module Repair](https://theecuclinicsg.com/services/abs-pump-repair/): ABS pump and ABS module repair in Kaki Bukit. ABS, ESP and ESC units, used and recon pumps, Toyota Voxy, Noah and Sienta. 6-month warranty. WhatsApp 9893 1923.
+- [Mercedes 7G & 9G TCU Repair](https://theecuclinicsg.com/services/mercedes-7g-9g-tcu-repair/): Mercedes 7G-Tronic (722.9) TCU and conductor plate repair, done locally in Kaki Bukit: fault codes read first, new filter, gasket and oil on the same job. 9G-Tronic TCU too.
+- [Mercedes Steering Lock (ELV) Repair](https://theecuclinicsg.com/services/mercedes-steering-lock-elv-repair/): Key won’t turn or Mercedes won’t start? We test and repair the electronic steering lock (ELV/ESL), or fit an ELV emulator, in Kaki Bukit. Pick-up if your car can’t be driven.
+- [Hybrid Battery Replacement](https://theecuclinicsg.com/services/hybrid-battery-replacement/): Brand-new OEM hybrid battery replacement in Kaki Bukit, with a warranty of 1 year or 100,000 km. WhatsApp your car model and year: 9893 1923.
+- [Honda Front Radar (ADAS) Repair](https://theecuclinicsg.com/services/honda-radar-repair/): Honda front radar (millimeter wave radar) repair in Kaki Bukit. P2583 radar function error and Honda Sensing warnings. We repair your unit instead of replacing it. WhatsApp 9893 1923.
+- [BMW CAS Module Repair](https://theecuclinicsg.com/services/bmw-cas-module-repair/): BMW CAS (Car Access System) module repair in Kaki Bukit. Key not recognised, car won’t start or steering lock (ELV) faults. WhatsApp 9893 1923.
+- [BMW Temperature Programming](https://theecuclinicsg.com/services/bmw-temperature-programming/): BMW coolant temperature programming in Kaki Bukit: bring a high running temperature down to about 95°C. Most models 2010–2018. WhatsApp 9893 1923.
+
+## Fault codes we repair
+
+- 121-11 (Honda): VSA Solenoid Valve Malfunction
+- 81-19 / 81-20 (Honda): Yaw rate or acceleration sensor inside the VSA modulator
+- U0416 (Honda): VSA system or VSA modulator control unit malfunction
+- P2583 (Honda): Millimeter Wave Radar Function Error
+- U3000-49 (Honda): Camera unit / millimeter wave radar internal failure
+- 5001 (N30/4) (Mercedes-Benz): Internal fault in the ESP control unit
+- A11E / A0AF / A0B4 (BMW): CAS: ELV fault, processor, engine start
+
+Any other warning light or fault code: WhatsApp a photo of the scan tool or dashboard to +65 9893 1923.
+
+## Articles
+
+- [Honda Yaw Rate Sensor Malfunction (81-19)](https://theecuclinicsg.com/articles/honda-yaw-rate-sensor-malfunction/): Honda yaw rate sensor and acceleration sensor faults inside the VSA modulator control unit (81-19, 81-20, C0063, C0062): what they mean and how they are repaired.
+- [BMW CAS Fault Codes: ELV Fault, Processor and Engine Start](https://theecuclinicsg.com/articles/bmw-cas-elv-fault-codes/): What BMW CAS fault codes such as A11E ELV Fault, A0AF Processor and A0B4 Engine Start mean, why the car may not start, and repairing the CAS module.
+- [Honda VSA Solenoid Valve Malfunction (121-11)](https://theecuclinicsg.com/articles/honda-vsa-solenoid-valve-malfunction/): What the Honda VSA Solenoid Valve Malfunction code (121-11) means, why ABS, VSA, parking brake and steering warnings come on together, and how it is fixed.
+- [Mercedes ESP Control Unit Fault: N30/4 Internal Fault (5001)](https://theecuclinicsg.com/articles/mercedes-esp-control-unit-fault-n30-4/): What the Mercedes-Benz fault “internal fault in component N30/4 (Electronic Stability Program control unit)” means, the warnings it causes, and repairing the ESP unit.
+- [Honda Millimeter Wave Radar Function Error (P2583)](https://theecuclinicsg.com/articles/honda-millimeter-wave-radar-error-p2583/): What the Honda P2583 Millimeter Wave Radar Function Error and Aiming Incomplete codes mean, why Honda Sensing switches off, and repairing the radar instead of replacing it.
+- [ABS Warning Light On? Common Causes and What To Do](https://theecuclinicsg.com/articles/abs-warning-light-causes/): Why the ABS warning light comes on, what it means for your brakes, the common causes from sensors to the ABS pump and module, and what to do next.
+- [Mercedes “Active Brake Assist Functions Limited”: What It Means](https://theecuclinicsg.com/articles/mercedes-active-brake-assist-functions-limited/): What the Mercedes “Active Brake Assist functions limited” message means, common reasons it appears, and when it needs a diagnosis.
+- [Mercedes 7G-Tronic (722.9) TCU Problems: Signs and Repair](https://theecuclinicsg.com/articles/mercedes-7g-tronic-722-9-tcu-problems/): Signs of a failing TCU on the Mercedes 7G-Tronic 722.9 gearbox: limp mode, harsh shifts and gearbox warnings. What the conductor plate does and how it is repaired.
+- [Mercedes Steering Lock (ELV) Failure: Signs and Repair](https://theecuclinicsg.com/articles/mercedes-steering-lock-elv-failure/): Key won’t turn or Mercedes won’t start? Signs of a failing electronic steering lock (ELV/ESL), what it does, and how it is repaired in Singapore.
+- [Signs Your Hybrid Battery Needs Replacing](https://theecuclinicsg.com/articles/hybrid-battery-replacement-signs/): The common signs of a weak hybrid battery, what causes it, and replacing it with a brand-new OEM battery with a 1-year or 100,000 km warranty.
+- [Toyota Voxy, Noah & Sienta ABS Pump: Repair, Recon or Used](https://theecuclinicsg.com/articles/toyota-voxy-noah-sienta-abs-pump/): ABS pump and module options for the Toyota Voxy, Noah and Sienta in Singapore: repair, replace, used or recon, with plug and play available and a 6-month warranty.

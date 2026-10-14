@@ -502,7 +502,43 @@ def build(rel, fn):
 
 
 def robots_txt():
-    return f'User-agent: *\nAllow: /\n\nSitemap: {ORIGIN}/sitemap.xml\n'
+    # Search and AI assistants are welcome (ChatGPT search, Google AI, Bing/Copilot, Perplexity, Claude).
+    bots = ['GPTBot', 'OAI-SearchBot', 'ChatGPT-User', 'Googlebot', 'Google-Extended', 'Bingbot',
+            'PerplexityBot', 'ClaudeBot', 'Claude-SearchBot', 'Applebot', 'Applebot-Extended']
+    named = ''.join(f'User-agent: {n}\nAllow: /\n\n' for n in bots)
+    return f'{named}User-agent: *\nAllow: /\n\nSitemap: {ORIGIN}/sitemap.xml\n'
+
+
+def llms_txt():
+    # Plain summary for AI assistants (ChatGPT, Perplexity, Claude, Gemini): who we are, what we fix, where.
+    svc = '\n'.join(f'- [{sp["name"]}]({ORIGIN}{BASE}services/{sp["slug"]}/): {sp["desc"]}' for sp in SERVICE_PAGES)
+    arts = '\n'.join(f'- [{a["h1"]}]({ORIGIN}{BASE}articles/{a["slug"]}/): {a["desc"]}' for a in ARTICLES)
+    codes = '\n'.join(f'- {c} ({m}): {d}' for c, m, d, p in CODES)
+    return f"""# {BIZ['name']}
+
+> ABS pump and module repair and car electronics fault diagnosis in Kaki Bukit, Singapore. Also Honda front radar (Honda Sensing) repair, BMW CAS module repair, Mercedes 7G and 9G TCU repair, Mercedes steering lock (ELV) repair, brand-new OEM hybrid batteries and BMW temperature programming. Repairs come with a {WARRANTY}. Many car workshops send their ABS and module repairs to us.
+
+- Address: {BIZ['building']}, {BIZ['street']}, Singapore {BIZ['postal']}
+- WhatsApp or call: +65 {BIZ['tel_disp']} (ask for {BIZ['contact']}). WhatsApp is the fastest way to reach us.
+- Hours: {HOURS_TXT}
+- Pick-up and delivery available. Hybrid battery warranty: 1 year or 100,000 km.
+- Website: {ORIGIN}{BASE}
+- Facebook: {BIZ['facebook']}
+
+## Services
+
+{svc}
+
+## Fault codes we repair
+
+{codes}
+
+Any other warning light or fault code: WhatsApp a photo of the scan tool or dashboard to +65 {BIZ['tel_disp']}.
+
+## Articles
+
+{arts}
+"""
 
 
 def all_paths():
@@ -511,7 +547,10 @@ def all_paths():
 
 
 def sitemap():
-    urls = ''.join(f'<url><loc>{ORIGIN}{BASE}{p}</loc></url>' for p in all_paths())
+    # lastmod: an article's own date; every other page the build date (pages are rebuilt when content changes)
+    today = __import__('datetime').date.today().isoformat()
+    dates = {f'articles/{a["slug"]}/': a.get('updated_iso', a['date']) for a in ARTICLES}
+    urls = ''.join(f'<url><loc>{ORIGIN}{BASE}{p}</loc><lastmod>{dates.get(p, today)}</lastmod></url>' for p in all_paths())
     return f'<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">{urls}</urlset>\n'
 
 
@@ -696,6 +735,7 @@ if __name__ == '__main__':
     # Only read when theecuclinicsg.com serves this folder; pageonesingapore.com has its own root robots.txt.
     build('robots.txt', robots_txt)
     build('sitemap.xml', sitemap)
+    build('llms.txt', llms_txt)
     build('404.html', not_found)
     build('site.webmanifest', lambda: json.dumps({
         'name': BIZ['name'], 'short_name': 'ECU Clinic', 'start_url': './', 'display': 'standalone',
