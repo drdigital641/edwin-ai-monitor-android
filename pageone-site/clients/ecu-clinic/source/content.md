@@ -77,6 +77,15 @@ page images.
   Edwin chose the soft wording: "Many car workshops send their ABS and module repairs to us. Come direct and deal
   with the technician who does the repair." No "middleman", "cheaper" or "highest quality" claims.
 
+## New jobs (Edwin, 14 Oct 2026, with scan-tool photos)
+- Honda front radar (millimeter wave radar, Honda Sensing) repair without replacing the unit. Example: 2019 Vezel, P2583-4A / P2583-54.
+- Honda VSA solenoid valve malfunction 121-11 (with EPB 83-141, EPS U0416-68): "the most famous Honda ABS pump error which ECU Clinic handles the most".
+- Mercedes ESP pump repair, e.g. W204 C180 code 5001 internal fault in N30/4 (ESP control unit).
+- Edwin also said ECU Clinic can bypass ADAS errors (Honda and Mercedes front radar) and P0420. NOT on the site:
+  disabling emission monitoring / safety systems is not something to advertise (NEA/LTA rules). Leave out unless Edwin overrides.
+- Photos: source/photos/honda-vezel-radar-fault-codes.jpg, honda-vezel-vsa-fault-codes.jpg, mercedes-esp-n30-4-fault-code.jpg
+  (VIN / frame / serial numbers blurred).
+
 ## Still needed
 - Facebook page link and WeChat ID (Facebook/WeChat need a login; screenshots of the About
   section, posts and reviews would do).

@@ -20,7 +20,8 @@ SERVICE_PAGES = [
         intro=['ABS pumps and modules are our main work. The ABS unit sits in the engine bay and combines a hydraulic pump with an electronic control module. When the module or pump develops a fault, the ABS warning light comes on, and on many cars the ESP or traction control light comes on with it.',
                'We start with the fault code, so we know whether the problem is the unit itself or something around it, such as a sensor or wiring. Then we tell you the options: repair your unit, or fit a reconditioned, used or new one.',
                'Many car workshops send their ABS and module repairs to us. Come direct and deal with the technician who does the repair.'],
-        what=['ABS, ESP and ESC module repair', 'Used and reconditioned ABS pumps', 'Mercedes-Benz ESP units',
+        what=['ABS, ESP and ESC module repair', 'Honda VSA modulator faults, such as “VSA Solenoid Valve Malfunction” (121-11)',
+              'Used and reconditioned ABS pumps', 'Mercedes-Benz ESP pumps and units, such as the N30/4 control unit',
               'Hyundai and Kia ESC units', 'Toyota Voxy, Noah and Sienta: repair, replace, used or recon',
               'Plug and play available', 'Makes include Audi, VW, BMW, Chevrolet, Honda, Mercedes, Nissan, Toyota, Skoda, Mini, Kia and Volvo'],
         signs=[('ABS light stays on', 'The ABS warning light comes on and stays on after the car is restarted.'),
@@ -28,6 +29,7 @@ SERVICE_PAGES = [
                ('Brake system message', 'The dashboard shows a brake system or brake assist message.'),
                ('Fault code points to the module', 'A scan shows a code for the ABS control module or pump motor.')],
         faq=[('Can you repair my ABS pump or module?', 'Yes. We repair ABS, ESP and ESC modules and supply used and reconditioned ABS pumps for makes such as Toyota, Honda, Mercedes-Benz, Hyundai, Kia, Volkswagen, Audi, Nissan, Volvo and Chevrolet.'),
+             ('Do you fix the Honda “VSA Solenoid Valve Malfunction” fault?', 'Yes. The Honda VSA (ABS) unit fault 121-11 is one of the Honda jobs we see most often. WhatsApp us the model, year and fault codes.'),
              ('Do you do Toyota Voxy, Noah and Sienta ABS pumps?', 'Yes. We repair, replace or supply used and recon ABS pumps and modules for the Toyota Voxy, Noah and Sienta, with plug and play available.'),
              ('Is there a warranty?', 'Yes. Our repairs come with a 6-month warranty.'),
              ('What should I send you?', 'Your car model, chassis number and the fault code. A photo of the scan tool screen or the warning light also helps.'),
@@ -57,7 +59,7 @@ SERVICE_PAGES = [
                '</div>'
                '<p style="margin-top:16px">Plug and play is available. We explain the options before any work starts, and our repairs come with a 6-month warranty.</p>')],
         visit=True,
-        related=['abs-warning-light-causes', 'toyota-voxy-noah-sienta-abs-pump', 'mercedes-active-brake-assist-functions-limited'],
+        related=['honda-vsa-solenoid-valve-malfunction', 'mercedes-esp-control-unit-fault-n30-4', 'abs-warning-light-causes'],
     ),
     dict(
         slug='mercedes-7g-9g-tcu-repair', key='tcu', name='Mercedes 7G & 9G TCU Repair',
@@ -192,6 +194,29 @@ SERVICE_PAGES = [
         related=['hybrid-battery-replacement-signs'],
     ),
     dict(
+        slug='honda-radar-repair', key='radar', name='Honda Front Radar (ADAS) Repair',
+        title='Honda Sensing Radar Repair Singapore | Millimeter Wave Radar Error | The ECU Clinic',
+        desc='Honda front radar (millimeter wave radar) repair in Kaki Bukit. P2583 radar function error and Honda Sensing warnings. We repair your unit instead of replacing it. WhatsApp 9893 1923.',
+        h1='Honda Front Radar (ADAS) Repair',
+        lead='Honda Sensing warning, or a “Millimeter Wave Radar Function Error” on the scan tool? We repair your existing front radar unit instead of replacing it with a new one.',
+        photo='honda-radar-fault-codes', alt='Scan tool showing Honda Vezel millimeter wave radar fault codes P2583-4A and P2583-54',
+        share='honda-vezel-radar-fault-codes.jpg',
+        intro=['Honda Sensing driver assistance features, such as collision mitigation braking and adaptive cruise control, rely on a millimeter wave radar unit at the front of the car. When that radar unit develops a fault, Honda Sensing warnings come on and the driver assistance features can switch off.',
+               'On the scan tool this often shows as P2583, “Millimeter Wave Radar Function Error”, in the driver assistance system. We read the codes first, then repair the radar unit you already have, instead of fitting a new one.',
+               'A second code, “Millimeter Wave Radar Aiming Incomplete”, means the radar also needs to be aimed (calibrated) before the system works normally. We tell you what your car needs before any work starts.'],
+        what=['Honda front radar (millimeter wave radar) repair', 'Repair of your existing unit, no new radar needed',
+              'Fault code reading and diagnosis', 'Honda models with Honda Sensing, such as the Vezel'],
+        signs=[('Honda Sensing warning', 'A Honda Sensing or driver assistance warning appears on the dashboard.'),
+               ('Features switched off', 'Adaptive cruise control or collision mitigation braking is unavailable.'),
+               ('Radar fault code', 'A scan shows P2583 “Millimeter Wave Radar Function Error”.'),
+               ('Aiming incomplete', 'A scan shows “Millimeter Wave Radar Aiming Incomplete”.')],
+        faq=[('Do I need a new radar unit?', 'Not always. We repair the existing front radar unit instead of replacing it.'),
+             ('Which Honda models do you work on?', 'Honda models with Honda Sensing and a front millimeter wave radar, such as the Vezel. WhatsApp us your model and year to check.'),
+             ('Is there a warranty?', 'Yes. Our repairs come with a 6-month warranty.'),
+             ('What should I send you?', 'Your car model, year and the fault codes. A photo of the scan tool screen or the dashboard warning helps.')],
+        related=['honda-millimeter-wave-radar-error-p2583'],
+    ),
+    dict(
         slug='bmw-temperature-programming', key='bmw', name='BMW Temperature Programming',
         title='BMW Temperature Programming Singapore | Coolant 120°C to 95°C | The ECU Clinic',
         desc='BMW coolant temperature programming in Kaki Bukit: bring a high running temperature down to about 95°C. Most models 2010–2018. WhatsApp 9893 1923.',
@@ -210,6 +235,76 @@ SERVICE_PAGES = [
 
 # slug, title tag, meta desc, h1, lead, photo, alt, share photo, date, related service slug, body html
 ARTICLES = [
+    dict(
+        slug='honda-vsa-solenoid-valve-malfunction', service='abs-pump-repair', date='2026-10-14',
+        title='Honda VSA Solenoid Valve Malfunction (121-11): ABS, VSA & Brake Lights | The ECU Clinic',
+        desc='What the Honda VSA Solenoid Valve Malfunction code (121-11) means, why ABS, VSA, parking brake and steering warnings come on together, and how it is fixed.',
+        h1='Honda VSA Solenoid Valve Malfunction (121-11)',
+        lead='One of the most common Honda ABS faults we see: what the code means and why so many warning lights come on at once.',
+        photo='honda-vsa-fault-codes', alt='Scan tool showing Honda Vezel fault 121-11 VSA Solenoid Valve Malfunction', share='honda-vezel-vsa-fault-codes.jpg',
+        body='''<p>VSA (Vehicle Stability Assist) is Honda’s name for its stability control system. On Honda cars, the ABS and VSA share one unit in the engine bay, often called the VSA modulator: a hydraulic block with solenoid valves, a pump motor and an electronic control module.</p>
+<p>When the scan tool shows <strong>121-11 “VSA Solenoid Valve Malfunction”</strong>, the car has found a fault with the valves in that unit. It is one of the Honda ABS faults we handle most often, including on the Honda Vezel.</p>
+<h2>Why so many warning lights come on</h2>
+<p>Other systems in the car take information from the VSA unit. When it has a fault, they can log their own codes too. On the Vezel in the photo above, the scan showed:</p>
+<ul class="ticks">
+<li><strong>121-11</strong> VSA Solenoid Valve Malfunction (ABS)</li>
+<li><strong>83-141</strong> Electric Parking Brake System Malfunction (ABS)</li>
+<li><strong>U0416-68</strong> VSA System Malfunction (electric power steering)</li>
+</ul>
+<p>On the dashboard this can show up as the ABS, VSA, brake and parking brake lights together, and on cars with Honda Sensing, driver assistance warnings as well. The cause is often the single VSA unit, not several separate faults.</p>
+<h2>Is it safe to drive?</h2>
+<p>Normal braking usually still works, but anti-lock braking and stability control can be switched off. If the red brake light is on or the brake pedal feels different, stop driving and get the car checked.</p>
+<h2>How it is fixed</h2>
+<p>We read all the codes first, to confirm the fault is in the VSA unit and not in a sensor or wiring. Then we repair the unit, or supply a reconditioned, used or new one. Our repairs come with a 6-month warranty.</p>
+<p>WhatsApp us your car model, year and the fault codes. A photo of the scan tool screen helps.</p>''',
+    ),
+    dict(
+        slug='mercedes-esp-control-unit-fault-n30-4', service='abs-pump-repair', date='2026-10-14',
+        title='Mercedes ESP Control Unit Fault N30/4 (5001): ABS & ESP Lights | The ECU Clinic',
+        desc='What the Mercedes-Benz fault “internal fault in component N30/4 (Electronic Stability Program control unit)” means, the warnings it causes, and repairing the ESP unit.',
+        h1='Mercedes ESP Control Unit Fault: N30/4 Internal Fault (5001)',
+        lead='What the N30/4 code means on a Mercedes-Benz, and your options for the ESP pump and module.',
+        photo='mercedes-esp-fault-code', alt='Scan tool showing Mercedes-Benz fault 5001, internal fault in component N30/4 ESP control unit', share='mercedes-esp-n30-4-fault-code.jpg',
+        body='''<p>On a Mercedes-Benz, <strong>N30/4</strong> is the part number Mercedes uses for the ESP (Electronic Stability Program) control unit. It is fitted to the ESP pump in the engine bay, and it runs the anti-lock brakes, stability control and traction control.</p>
+<p>The scan in the photo above, from a Mercedes-Benz C 180 Kompressor (W204), shows <strong>5001: “There is an internal fault in component N30/4 (Electronic Stability Program control unit)”</strong>. An internal fault means the control unit itself has found a problem inside the unit, rather than with a sensor or wire outside it.</p>
+<h2>What you see on the dashboard</h2>
+<ul class="ticks">
+<li>ABS and ESP warning lights</li>
+<li>Brake or brake assist messages</li>
+<li>On newer models, messages such as “Active Brake Assist functions limited”</li>
+</ul>
+<h2>Is it safe to drive?</h2>
+<p>Normal braking usually still works, but anti-lock braking and stability control can be switched off. If the red brake light is on or the brake pedal feels different, stop driving and get the car checked.</p>
+<h2>How it is fixed</h2>
+<p>We read all the codes first, to confirm the fault is in the ESP unit. Then we repair your Mercedes ESP pump and module, or supply a reconditioned, used or new one. Our repairs come with a 6-month warranty.</p>
+<p>WhatsApp us your car model, chassis number and the fault code. A photo of the scan tool screen helps.</p>''',
+    ),
+    dict(
+        slug='honda-millimeter-wave-radar-error-p2583', service='honda-radar-repair', date='2026-10-14',
+        title='Honda Millimeter Wave Radar Function Error (P2583) | Honda Sensing Warning | The ECU Clinic',
+        desc='What the Honda P2583 Millimeter Wave Radar Function Error and Aiming Incomplete codes mean, why Honda Sensing switches off, and repairing the radar instead of replacing it.',
+        h1='Honda Millimeter Wave Radar Function Error (P2583)',
+        lead='Why Honda Sensing switches off, what the radar codes mean, and how the front radar can be repaired.',
+        photo='honda-radar-fault-codes', alt='Scan tool showing Honda Vezel codes P2583-4A and P2583-54', share='honda-vezel-radar-fault-codes.jpg',
+        body='''<p>Honda Sensing uses a millimeter wave radar at the front of the car to measure the distance to the vehicle ahead. Features such as collision mitigation braking and adaptive cruise control depend on it. When the radar has a fault, Honda Sensing warnings appear and those features can switch off.</p>
+<h2>The codes</h2>
+<p>On the 2019 Honda Vezel in the photo above, the driver assistance system showed two codes:</p>
+<ul class="ticks">
+<li><strong>P2583-4A</strong> Millimeter Wave Radar Function Error: the radar unit itself has a fault.</li>
+<li><strong>P2583-54</strong> Millimeter Wave Radar Aiming Incomplete: the radar needs to be aimed (calibrated).</li>
+</ul>
+<p>Everything else on the car scanned clean, so the problem was the radar.</p>
+<h2>Other things that can upset the radar</h2>
+<ul class="ticks">
+<li>Dirt, mud or a sticker over the front emblem or grille where the radar sits</li>
+<li>A knock to the front of the car, which can move the radar out of line</li>
+<li>Front bumper or grille repairs</li>
+</ul>
+<p>These are worth ruling out first. If the radar unit itself has failed, clearing the code will not fix it.</p>
+<h2>Repair instead of replace</h2>
+<p>A new radar unit is an expensive part. We repair the existing radar unit instead of replacing it, and tell you before any work starts whether the radar will also need aiming. Our repairs come with a 6-month warranty.</p>
+<p>WhatsApp us your car model, year and the fault codes. A photo of the scan tool screen helps.</p>''',
+    ),
     dict(
         slug='abs-warning-light-causes', service='abs-pump-repair', date='2026-10-13',
         title='ABS Warning Light On? Common Causes and What To Do | The ECU Clinic',

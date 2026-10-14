@@ -41,13 +41,20 @@ PHOTOS = {
     'hybrid-battery-pack': ('hybrid-battery-pack-1.jpg', (0.18, 0.58)),
     'hybrid-battery-side': ('hybrid-battery-pack-2.jpg', (0.22, 0.62)),
     'hybrid-battery-modules': ('hybrid-battery-new-modules.jpg', (0.10, 0.50)),
+    # Honda scan screens from Edwin, 14 Oct 2026 (VIN / frame and serial numbers blurred in the source copy).
+    # A 4-value crop is (left, top, right, bottom) as fractions.
+    'honda-radar-fault-codes': ('honda-vezel-radar-fault-codes.jpg', (0.10, 0.21, 0.86, 0.97)),
+    'mercedes-esp-fault-code': ('mercedes-esp-n30-4-fault-code.jpg', (0.33, 0.75)),
+    'honda-vsa-fault-codes': ('honda-vezel-vsa-fault-codes.jpg', (0.13, 0.33, 1.0, 0.82)),
 }
 
 
 def photo(name):
     src, band = PHOTOS[name]
     im = ImageOps.exif_transpose(Image.open(os.path.join(SRC, 'photos', src))).convert('RGB')
-    if band:
+    if band and len(band) == 4:
+        im = im.crop((int(im.width * band[0]), int(im.height * band[1]), int(im.width * band[2]), int(im.height * band[3])))
+    elif band:
         im = im.crop((0, int(im.height * band[0]), im.width, int(im.height * band[1])))
     return ImageOps.fit(im, (1600, 1200) if im.width >= 1600 else (im.width, im.width * 3 // 4), Image.LANCZOS)
 
