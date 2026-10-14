@@ -5,11 +5,11 @@
     btn.setAttribute('aria-expanded', open ? 'true' : 'false');
   });
 
-  var WA_NUM = '6584309665', EMAIL = window.DMTS_EMAIL || 'contact@dmts.com.sg';
+  var WA_NUM = '6584309665';
   var wa = function (text) { return 'https://wa.me/' + WA_NUM + '?text=' + encodeURIComponent(text); };
 
   // WhatsApp tap counter for the Page One dashboard: same data and endpoint as the other
-  // managed client sites (site key "dmts"). Off while this is a preview on pageonesingapore.com,
+  // managed client sites (Page One site key for this client). Off while this is a preview on pageonesingapore.com,
   // so it only counts once the site runs on the client's own domain.
   var track = function () {};
   (function () {
@@ -40,18 +40,14 @@
     }, true);
   })();
 
-  // Contact form -> WhatsApp (preferred) or email
+  // Contact form -> WhatsApp
   var f = document.getElementById('qform');
   if (f) {
     var msg = function () {
       var v = function (id) { return document.getElementById(id).value.trim(); };
-      return 'Hi Dynamic Motoring, I would like to book a gearbox diagnostic.\nName: ' + v('q-name') + '\nContact: ' + v('q-phone') +
+      return 'Hi Jacky, I would like to book a gearbox diagnostic.\nName: ' + v('q-name') + '\nContact: ' + v('q-phone') +
         (v('q-car') ? '\nCar: ' + v('q-car') : '') + (v('q-msg') ? '\nProblem: ' + v('q-msg') : '');
     };
     f.addEventListener('submit', function (ev) { ev.preventDefault(); track(); window.open(wa(msg()), '_blank', 'noopener'); });
-    document.getElementById('q-mail').addEventListener('click', function () {
-      if (!f.reportValidity()) return;
-      location.href = 'mailto:' + EMAIL + '?subject=' + encodeURIComponent('Gearbox diagnostic request') + '&body=' + encodeURIComponent(msg());
-    });
   }
 })();

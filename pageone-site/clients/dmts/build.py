@@ -1,5 +1,6 @@
 #!/usr/bin/env python3
-"""Build the Jacky Gearbox site (jackygearbox.com), formerly Dynamic Motoring (DMTS, dmts.com.sg).
+"""Build the Jacky Gearbox site (jackygearbox.com). The client was Dynamic Motoring (dmts.com.sg) until Oct 2026;
+at the client's request (14 Oct 2026) the site carries no old name, email or old social links.
 
 Rebranded 14 Oct 2026: the client renamed the business Jacky Gearbox, with Jacky (the owner) as the
 face of the site and logo option A (JG gear). dmts.com.sg will 301 to jackygearbox.com.
@@ -14,7 +15,7 @@ its own robots.txt and sitemap.xml from this folder.
 
 Content comes from source/content.md (captured from dmts.com.sg) and the client's answers at onboarding.
 The old cost estimator (source/prices.json) is archived only: the client quotes after a paid pre-repair diagnostic.
-Shared assets (dmts.css, dmts.js, favicon.svg, img/) live in ./site and are edited by hand.
+Shared assets (jg.css, jg.js, favicon.svg, img/) live in ./site and are edited by hand.
 """
 import html
 import json
@@ -27,7 +28,7 @@ ORIGIN = 'https://jackygearbox.com'  # the client's domain (was dmts.com.sg unti
 BASE = '/'
 DEPTH = 0  # folder depth of the page being built; set by build() so u() can emit relative links
 ABS = False  # root-relative links instead (404 page: Apache serves it at any depth)
-ASSET_V = '6'
+ASSET_V = '7'
 SLUG = 'dmts'  # Page One client key: p1-site marker (go-live check) and WhatsApp tracker
 INDEXNOW_KEY = '5792dfeef836aebd82a445c206294c95'  # same key as the controller's Client record
 # Share images and icons must load before jackygearbox.com points here, so until go-live they are linked
@@ -39,14 +40,11 @@ SHARES = {}  # share-image slug -> (photo, headline), filled as pages are built
 
 BIZ = {
     'name': 'Jacky Gearbox',
-    'former': 'Dynamic Motoring (DMTS)',
     'tel': '+6563528832', 'tel_disp': '6352 8832',
     'mobile': '+6584309665', 'mobile_disp': '8430 9665',
     'wa': '6584309665',
     'fax_disp': '6352 8831',
-    'email': 'contact@dmts.com.sg',
     'google': 'https://share.google/ZXSk6rE3VdUNgZyKS',
-    'facebook': 'https://www.facebook.com/DYNAMICMOTORINGTRANSMISSIONSPECIALIST/',
     'hq': {'street': '71 Woodlands Industrial Park E9, #01-25 Wave 9', 'postal': '757048',
            'map': '71 Woodlands Industrial Park E9 Wave 9 Singapore'},
     'branch': {'street': '60 Jalan Lam Huat, #05-48', 'postal': '737869',
@@ -99,7 +97,7 @@ def schema():
             '@type': 'AutoRepair', '@id': f'{ORIGIN}{BASE}#{key}',
             'name': f'Jacky Gearbox ({label})',
             'parentOrganization': {'@id': f'{ORIGIN}{BASE}#org'},
-            'telephone': BIZ['tel'], 'email': BIZ['email'],
+            'telephone': BIZ['tel'],
             'image': [f'{IMG_ORIGIN}/img/share/home.jpg', f'{IMG_ORIGIN}/img/share/contact.jpg'],
             'logo': f'{IMG_ORIGIN}/img/logo.png',
             'address': {'@type': 'PostalAddress', 'streetAddress': a['street'],
@@ -111,11 +109,10 @@ def schema():
         }
     return {'@context': 'https://schema.org', '@graph': [
         {'@type': 'Organization', '@id': f'{ORIGIN}{BASE}#org', 'name': 'Jacky Gearbox',
-         'alternateName': ['Dynamic Motoring', 'DMTS', 'Dynamic Motoring Transmission Specialist'],
          'founder': {'@type': 'Person', 'name': 'Jacky', 'jobTitle': 'Gearbox specialist'},
          'url': f'{ORIGIN}{BASE}', 'logo': {'@type': 'ImageObject', 'url': f'{IMG_ORIGIN}/img/logo.png'},
          'image': f'{IMG_ORIGIN}/img/share/home.jpg',
-         'email': BIZ['email'], 'telephone': BIZ['tel'], 'sameAs': [BIZ['facebook'], BIZ['google']],
+         'telephone': BIZ['tel'], 'sameAs': [BIZ['google']],
          'description': 'Gearbox and automatic transmission repair, overhaul, upgrade and servicing specialist in Singapore.'},
         place('hq', 'Woodlands HQ'), place('branch', 'Jalan Lam Huat branch')]}
 
@@ -165,7 +162,7 @@ def page(path, title, desc, body, active='', extra_head='', ld=None, scripts='',
 <link rel="icon" href="{u("favicon.svg")}" type="image/svg+xml">
 <link rel="apple-touch-icon" href="{u("apple-touch-icon.png")}">
 <link rel="manifest" href="{u("site.webmanifest")}">
-<link rel="stylesheet" href="{u("dmts.css")}?v={ASSET_V}">
+<link rel="stylesheet" href="{u("jg.css")}?v={ASSET_V}">
 {extra_head}{lds}
 </head>
 <body>
@@ -190,8 +187,8 @@ def page(path, title, desc, body, active='', extra_head='', ld=None, scripts='',
 <div>
 <h3>Jacky Gearbox</h3>
 <p>Gearbox repair, overhaul, upgrade and servicing for continental, Japanese, Korean and other makes. {DIAG}, free towing to our workshop during office hours, and a 6-month warranty on repairs.</p>
-<p><a href="{wa_link()}" target="_blank" rel="noopener">WhatsApp {BIZ["mobile_disp"]}</a> (preferred)<br><a href="tel:{BIZ["tel"]}">Tel {BIZ["tel_disp"]}</a><br>Fax {BIZ["fax_disp"]}<br><a href="mailto:{BIZ["email"]}">{BIZ["email"]}</a></p>
-<p><a href="{BIZ["facebook"]}" target="_blank" rel="noopener">Facebook</a> · <a href="{BIZ["google"]}" target="_blank" rel="noopener">Google</a></p>
+<p><a href="{wa_link()}" target="_blank" rel="noopener">WhatsApp {BIZ["mobile_disp"]}</a> (preferred)<br><a href="tel:{BIZ["tel"]}">Tel {BIZ["tel_disp"]}</a><br>Fax {BIZ["fax_disp"]}</p>
+<p><a href="{BIZ["google"]}" target="_blank" rel="noopener">Find us on Google</a></p>
 </div>
 <div>
 <h3>Workshops</h3>
@@ -210,13 +207,13 @@ def page(path, title, desc, body, active='', extra_head='', ld=None, scripts='',
 <p style="margin-top:1em">Mon–Fri 9:00–18:00<br>Sat 9:00–15:00<br>Sun &amp; PH closed</p>
 </div>
 </div>
-<div class="fine"><span>© 2026 Jacky Gearbox (formerly Dynamic Motoring). All rights reserved.</span><a href="https://pageonesingapore.com/">Website &amp; SEO by Page One Singapore</a></div>
+<div class="fine"><span>© 2026 Jacky Gearbox. All rights reserved.</span><a href="https://pageonesingapore.com/">Website &amp; SEO by Page One Singapore</a></div>
 </div></footer>
 <div class="dock">
 <a class="btn btn-wa" href="{wa_link()}" target="_blank" rel="noopener">{ICON["wa"]}WhatsApp</a>
 <a class="btn btn-call" href="tel:{BIZ["tel"]}">{ICON["phone"]}Call</a>
 </div>
-<script src="{u("dmts.js")}?v={ASSET_V}" defer></script>
+<script src="{u("jg.js")}?v={ASSET_V}" defer></script>
 {scripts}
 </body>
 </html>
@@ -242,15 +239,15 @@ SERVICES = [
 
 
 TESTIMONIALS = [
-    ('Ulysses Wang', 'BMW 5 Series', 'I never knew that there are actually car workshops that specialised in gearbox related problems until I chanced upon Dynamic Motoring Transmission Specialist from the internet. I had an idea of the repair cost after going through the cost estimator on their website. Arranged an appointment with Jacky and drove my BMW 5 series to let him check. Workshop was impressive from the setup and was relieved to know from him that the actual repair cost was lower than the estimated quote.'),
-    ('Alvin Lee', 'Audi A4', 'Great service experience with Dynamic Motoring Transmission Specialist. I was initially very worried about the repair cost when my Audi A4 gearbox was diagnosed to be faulty. But Jacky was very patient and professional in explaining to me the overhaul process and the quoted price was below what I have expected. My car was ready after 3 days and was given a 6 months warranty as well. I would definitely recommend my friends to them for any gearbox issues.'),
-    ('Rhyce Chng', 'Free service', 'Bought a used car from Dynamic Motoring and was given a free service at their workshop, Transmission Specialist. Nice and cosy waiting lounge with a clear view of my car undergoing maintenance. Fantastic experience with them. Thumbs up.'),
+    # Verbatim excerpts (… marks a cut): the full reviews name the old business, which the client asked
+    # to remove from the site (14 Oct 2026). Full texts are in source/content.md.
+    ('Ulysses Wang', 'BMW 5 Series', '… Arranged an appointment with Jacky and drove my BMW 5 series to let him check. Workshop was impressive from the setup …'),
+    ('Alvin Lee', 'Audi A4', '… I was initially very worried about the repair cost when my Audi A4 gearbox was diagnosed to be faulty. But Jacky was very patient and professional in explaining to me the overhaul process and the quoted price was below what I have expected. My car was ready after 3 days and was given a 6 months warranty as well. I would definitely recommend my friends to them for any gearbox issues.'),
+    ('Rhyce Chng', 'Free service', '… Nice and cosy waiting lounge with a clear view of my car undergoing maintenance. Fantastic experience with them. Thumbs up.'),
 ]
 
 GALLERY = [
-    ('shopfront', 'Jacky Gearbox workshop at Wave 9, Woodlands'),
     ('workshop-lifts', 'Car lifts in the Jacky Gearbox workshop'),
-    ('mechanics-under-car', 'Mechanics inspecting a gearbox from under the car'),
     ('engine-bay-check', 'Technicians checking an engine bay'),
     ('diagnostics', 'Computer diagnostic test reading transmission fault codes'),
     ('gearbox-teardown', 'Gearbox overhaul on the teardown bench'),
@@ -421,7 +418,7 @@ PROBLEMS = [
      'seen': 'You press the accelerator and the car hesitates, or there is a delay before it goes into Drive or Reverse.',
      'causes': ['Low or old transmission fluid (ATF)', 'Faulty shift solenoids or valve body', 'Worn clutch packs inside the gearbox', 'Torque converter problems'],
      'now': ['Check for red fluid stains where you park', 'Avoid hard acceleration until it is checked', 'Book a diagnostic before the delay gets worse'],
-     'img': ('mechanics-under-car', 'Mechanics inspecting a gearbox from under the car'),
+     'img': ('gearbox-removal', 'Gearbox being lowered from under the car on a transmission jack'),
      'services': ['gearbox-repair', 'gearbox-servicing'],
      'faq': [('Is a delay when shifting into Drive serious?',
               'A short delay can be an early sign of low fluid or wear. It is usually cheaper to fix when caught early, so it is worth a diagnostic rather than waiting until the car won’t move.')]},
@@ -815,7 +812,7 @@ def meet_jacky(more=True):
     # and on the About page (JACKY_STORY) when they arrive, with his photo in place of the workshop one.
     link = f'<a class="btn btn-line" href="{u("about/")}">More about Jacky</a>' if more else ''
     return f'''<section class="alt"><div class="wrap split">
-<div>{img("mechanics-under-car", "Jacky’s team inspecting a car on a lift")}</div>
+<div>{img("gearbox-teardown", "Gearbox overhaul on the teardown bench")}</div>
 <div>
 <span class="eyebrow dark">Meet Jacky</span>
 <h2>The gearbox specialist you actually speak to</h2>
@@ -831,15 +828,13 @@ JACKY_STORY = ''  # Jacky's own story, portfolio and experience: to come from th
 
 def about():
     body = page_hero('About', 'Meet Jacky, your gearbox specialist',
-                     'Jacky Gearbox, formerly Dynamic Motoring (DMTS). Same workshops, same phone numbers, same warranty.') + meet_jacky(more=False) + JACKY_STORY + f'''
+                     'Gearbox repair, overhaul and servicing in Woodlands and Jalan Lam Huat, with Jacky looking after your car.') + meet_jacky(more=False) + JACKY_STORY + f'''
 <section><div class="wrap split">
 <div>
 <h2>Transmission specialists, not general mechanics</h2>
 <p>Jacky’s team has over 15 years of combined industry experience in gearbox repair and overhaul. With wide and in-depth knowledge of different transmission systems and models, we follow a rigorous, stringent process to solve any gearbox issue, and keep up to date with the latest developments in the auto transmission industry.</p>
 <h3>What we believe</h3>
 <p>Every customer should get the most direct and accurate gearbox solution for their specific problem, to save them time and money. That takes an experienced team of transmission specialists and an extensive range of special tools and equipment.</p>
-<h3>Why the new name</h3>
-<p>In 2026 Dynamic Motoring became Jacky Gearbox, named after the specialist our customers already know. What you rely on stays the same: the same workshops in Woodlands and Jalan Lam Huat, the same phone and WhatsApp numbers, and the same 6-month warranty.</p>
 </div>
 <div>{img("transmission-cutaway", "Automatic transmission cutaway on display in the customer lounge")}</div>
 </div></section>
@@ -857,8 +852,8 @@ def about():
 <section><div class="wrap"><div class="sec-head"><h2>What customers say about Jacky</h2></div><div class="grid g3" tabindex="0" role="region" aria-label="Customer reviews">{testimonials()}</div></div></section>
 ''' + faq_block(FAQ, 'Frequently asked questions') + trust_strip(reviews=False) + band('Talk to Jacky', 'Call, WhatsApp or drop by either workshop.')
     return page('about/', 'About Jacky | Gearbox Specialist Singapore | Jacky Gearbox',
-                'Meet Jacky, the gearbox specialist behind Jacky Gearbox (formerly Dynamic Motoring), with over 15 years of combined team experience in gearbox repair and overhaul in Singapore.',
-                body, active='about/', ld=[crumbs_ld('About', 'about/'), faq_ld_of(FAQ)], share=('mechanics-under-car', 'Meet Jacky, Your Gearbox Specialist'))
+                'Meet Jacky, the gearbox specialist behind Jacky Gearbox, with over 15 years of combined team experience in gearbox repair and overhaul in Singapore.',
+                body, active='about/', ld=[crumbs_ld('About', 'about/'), faq_ld_of(FAQ)], share=('gearbox-teardown', 'Meet Jacky, Your Gearbox Specialist'))
 
 
 def contact():
@@ -871,8 +866,7 @@ def contact():
 <p><strong>WhatsApp (preferred):</strong> <a href="{wa_link()}" target="_blank" rel="noopener">{BIZ["mobile_disp"]}</a><br>
 <strong>Office:</strong> <a href="tel:{BIZ["tel"]}">{BIZ["tel_disp"]}</a><br>
 <strong>Fax:</strong> {BIZ["fax_disp"]}<br>
-<strong>Email:</strong> <a href="mailto:{BIZ["email"]}">{BIZ["email"]}</a><br>
-<strong>Find us on:</strong> <a href="{BIZ["facebook"]}" target="_blank" rel="noopener">Facebook</a> · <a href="{BIZ["google"]}" target="_blank" rel="noopener">Google</a></p>
+<strong>Find us on:</strong> <a href="{BIZ["google"]}" target="_blank" rel="noopener">Google</a></p>
 {HOURS}
 <div style="margin-top:18px">{cta_buttons()}</div>
 </div>
@@ -884,7 +878,7 @@ def contact():
 <label class="f" for="q-car" style="margin-top:12px">Car make &amp; model</label><input id="q-car" type="text" placeholder="e.g. BMW 520i, 2016">
 <label class="f" for="q-msg" style="margin-top:12px">What’s happening?</label><textarea id="q-msg" placeholder="e.g. jerks when shifting from 2nd to 3rd"></textarea>
 <div class="btns" style="margin-top:14px"><button class="btn btn-wa" type="submit">{ICON["wa"]}Send on WhatsApp</button>
-<button class="btn btn-line" type="button" id="q-mail">Send by email</button></div>
+</div>
 </form>
 </div>
 </div></section>
@@ -901,8 +895,7 @@ def contact():
 ''' + faq_block(FAQ[:5], 'Common questions') + f'<section><div class="wrap"><div class="sec-head"><h2>What our customers say</h2></div><div class="grid g3" tabindex="0" role="region" aria-label="Customer reviews">{testimonials()}</div></div></section>'
     return page('contact/', 'Contact Jacky | Gearbox Specialist Singapore',
                 'Contact Jacky Gearbox for gearbox repair in Singapore. WhatsApp 8430 9665 or call 6352 8832. Workshops at Wave 9 Woodlands and Jalan Lam Huat.',
-                body, active='contact/', ld=[crumbs_ld('Contact', 'contact/'), faq_ld_of(FAQ[:5])], share=('shopfront', 'Contact Jacky Gearbox: Woodlands & Jalan Lam Huat'),
-                scripts=f'<script>window.DMTS_EMAIL="{BIZ["email"]}";</script>')
+                body, active='contact/', ld=[crumbs_ld('Contact', 'contact/'), faq_ld_of(FAQ[:5])], share=('workshop-lifts', 'Contact Jacky Gearbox: Woodlands & Jalan Lam Huat'))
 
 
 def not_found():
@@ -954,9 +947,9 @@ def llms_txt():
     hq, br = BIZ['hq'], BIZ['branch']
     return f'''# {BIZ['name']}
 
-> Formerly {BIZ['former']}. Run by Jacky. Gearbox and automatic transmission repair, overhaul, upgrade and servicing specialist in Singapore.
+> Run by Jacky. Gearbox and automatic transmission repair, overhaul, upgrade and servicing specialist in Singapore.
 
-- WhatsApp: {BIZ['mobile_disp']} (preferred) · Tel: {BIZ['tel_disp']} · Email: {BIZ['email']}
+- WhatsApp: {BIZ['mobile_disp']} (preferred) · Tel: {BIZ['tel_disp']}
 - Woodlands HQ: {hq['street']}, Singapore {hq['postal']}
 - Branch: {br['street']}, Singapore {br['postal']}
 - Hours: Mon-Fri 9am-6pm, Sat 9am-3pm, closed Sundays and public holidays
