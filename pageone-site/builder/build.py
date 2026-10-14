@@ -54,7 +54,7 @@ def crumbs_ld(name, url):
     }
 
 
-def page(path, title, desc, schemas, body, crumb=None, robots="index, follow, max-image-preview:large", updated=None):
+def page(path, title, desc, schemas, body, crumb=None, robots="index, follow, max-image-preview:large", updated=None, head_extra="", foot_extra=""):
     # The two pages owned by another thread keep their published footer byte for byte.
     frozen = path in ("ai-seo-vs-traditional-seo/index.html", "is-page-one-singapore-legit/index.html")
     managed_link = "" if frozen else '        <a href="/managed-website-singapore/">Fully managed website</a>\n'
@@ -116,7 +116,7 @@ def page(path, title, desc, schemas, body, crumb=None, robots="index, follow, ma
   <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800&family=Space+Grotesk:wght@500;600;700&display=swap"></noscript>
   <link rel="stylesheet" href="/styles.css?v=14">
   <script>document.documentElement.classList.add("js");</script>
-{ld}
+{ld}{head_extra}
 </head>
 <body>
   <a class="skip-link" href="#main">Skip to content</a>
@@ -185,7 +185,7 @@ def page(path, title, desc, schemas, body, crumb=None, robots="index, follow, ma
     {WA_ICON}
   </a>
 
-  <script src="/main.js?v=12" defer></script>
+  <script src="/main.js?v=12" defer></script>{foot_extra}
 </body>
 </html>
 """
@@ -1388,5 +1388,7 @@ page("index.html",
          {"@type": "WebSite", "@id": SITE + "/#website", "url": SITE + "/", "name": "Page One Singapore",
           "alternateName": ["Page One SG", "PageOne Singapore", "pageonesingapore.com"],
           "inLanguage": "en-SG", "publisher": {"@id": BIZ_ID}}]}],
-     fill_home(open(os.path.join(HERE, "home_body.html"), encoding="utf-8").read().rstrip("\n")), updated=SC_UPDATED)
+     fill_home(open(os.path.join(HERE, "home_body.html"), encoding="utf-8").read().rstrip("\n")), updated=SC_UPDATED,
+     head_extra="\n  <style>" + " ".join(open(os.path.join(HERE, "home_motion.css"), encoding="utf-8").read().split("\n")[1:]).strip() + "</style>",
+     foot_extra='\n  <script src="/motion.js?v=1" defer></script>')
 print("built")
