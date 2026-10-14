@@ -40,10 +40,9 @@ SHARES = {}  # share-image slug -> (photo, headline), filled as pages are built
 
 BIZ = {
     'name': 'Jacky Gearbox',
-    'tel': '+6563528832', 'tel_disp': '6352 8832',
+    'tel': '+6584309665', 'tel_disp': '8430 9665',  # one number for WhatsApp and calls (user, 14 Oct 2026)
     'mobile': '+6584309665', 'mobile_disp': '8430 9665',
     'wa': '6584309665',
-    'fax_disp': '6352 8831',
     'google': 'https://share.google/ZXSk6rE3VdUNgZyKS',
     'hq': {'street': '71 Woodlands Industrial Park E9, #01-25 Wave 9', 'postal': '757048',
            'map': '71 Woodlands Industrial Park E9 Wave 9 Singapore'},
@@ -248,7 +247,7 @@ def page(path, title, desc, body, active='', extra_head='', ld=None, scripts='',
 <a class="skip" href="#main">Skip to content</a>
 <div class="topbar"><div class="wrap">
 <span>Gearbox &amp; auto transmission specialist <span class="hide-sm">· Mon–Fri 9am–6pm · Sat 9am–3pm · Sun &amp; PH closed</span></span>
-<span><a href="{wa_link()}" target="_blank" rel="noopener">WhatsApp {BIZ["mobile_disp"]}</a> <span class="hide-sm">· Tel <a href="tel:{BIZ["tel"]}">{BIZ["tel_disp"]}</a></span></span>
+<span><a href="{wa_link()}" target="_blank" rel="noopener">WhatsApp {BIZ["mobile_disp"]}</a></span>
 </div></div>
 <header class="site"><div class="wrap">
 <a class="logo" href="{u()}"><img src="{u("img/logo.svg")}" width="743" height="280" alt="Jacky Gearbox"></a>
@@ -266,7 +265,7 @@ def page(path, title, desc, body, active='', extra_head='', ld=None, scripts='',
 <div>
 <h3>Jacky Gearbox</h3>
 <p>Gearbox repair, overhaul, upgrade and servicing for continental, Japanese, Korean and other makes. {DIAG}, free towing to our workshop during office hours, and a 6-month warranty on repairs.</p>
-<p><a href="{wa_link()}" target="_blank" rel="noopener">WhatsApp {BIZ["mobile_disp"]}</a> (preferred)<br><a href="tel:{BIZ["tel"]}">Tel {BIZ["tel_disp"]}</a><br>Fax {BIZ["fax_disp"]}</p>
+<p><a href="{wa_link()}" target="_blank" rel="noopener">WhatsApp {BIZ["mobile_disp"]}</a> (calls too)</p>
 <p><a href="{BIZ["google"]}" target="_blank" rel="noopener">Find us on Google</a></p>
 </div>
 <div>
@@ -342,7 +341,7 @@ FAQ = [
     ('How much is the diagnostic?',
      'Our pre-repair diagnostic starts from S$30. We read the transmission fault codes and check the gearbox, then tell you the fault and the repair price before any work starts.'),
     ('My car can’t move. Can you tow it?',
-     f'Yes. We provide free pick-up to our workshop for gearbox repair during office hours, and if the car can’t move because of transmission failure we send a tow truck, free of charge. WhatsApp <a href="{wa_link()}" target="_blank" rel="noopener">{BIZ["mobile_disp"]}</a> or call <a href="tel:{BIZ["tel"]}">{BIZ["tel_disp"]}</a>.'),
+     f'Yes. We provide free pick-up to our workshop for gearbox repair during office hours, and if the car can’t move because of transmission failure we send a tow truck, free of charge. WhatsApp or call <a href="{wa_link()}" target="_blank" rel="noopener">{BIZ["mobile_disp"]}</a>.'),
     ('Which car brands do you work on?',
      'All types of vehicles: continental (Audi, BMW, Mercedes-Benz, Volkswagen, Mini), Japanese (Toyota, Lexus, Honda, Mazda, Mitsubishi, Nissan, Subaru, Suzuki), Korean (Hyundai, Kia) and other makes such as Land Rover, Jaguar, Volvo, Ford, Renault, Peugeot, Citroën, Chevrolet and Opel.'),
     ('Is there a warranty after repair?',
@@ -465,7 +464,7 @@ SERVICE_PAGES = {
         'sub': 'If your car can’t move because of a transmission failure, we send a tow truck to bring it to our workshop, free of charge, during office hours.',
         'sections': [
             ('How it works',
-             f'<ol class="steps"><li><strong>WhatsApp us</strong> at <a href="{wa_link()}" target="_blank" rel="noopener">{BIZ["mobile_disp"]}</a> or call <a href="tel:{BIZ["tel"]}">{BIZ["tel_disp"]}</a> with your location, car model and what happened.</li>'
+             f'<ol class="steps"><li><strong>WhatsApp us</strong> or call <a href="{wa_link()}" target="_blank" rel="noopener">{BIZ["mobile_disp"]}</a> with your location, car model and what happened.</li>'
              '<li><strong>We arrange the pick-up</strong> to our workshop during office hours (Mon–Fri 9am–6pm, Sat 9am–3pm).</li>'
              '<li><strong>We diagnose the gearbox</strong> (from S$30) and tell you the fault and the price before any repair starts.</li></ol>'),
             ('Free for gearbox repair',
@@ -951,9 +950,7 @@ def contact():
 <div class="grid g2">
 <div class="card">
 <h2 style="font-size:1.4rem">Get in touch</h2>
-<p><strong>WhatsApp (preferred):</strong> <a href="{wa_link()}" target="_blank" rel="noopener">{BIZ["mobile_disp"]}</a><br>
-<strong>Office:</strong> <a href="tel:{BIZ["tel"]}">{BIZ["tel_disp"]}</a><br>
-<strong>Fax:</strong> {BIZ["fax_disp"]}<br>
+<p><strong>WhatsApp or call Jacky:</strong> <a href="{wa_link()}" target="_blank" rel="noopener">{BIZ["mobile_disp"]}</a><br>
 <strong>Find us on:</strong> <a href="{BIZ["google"]}" target="_blank" rel="noopener">Google</a></p>
 {HOURS}
 <div style="margin-top:18px">{cta_buttons()}</div>
@@ -982,7 +979,7 @@ def contact():
 </div></section>
 ''' + faq_block(FAQ[:5], 'Common questions') + f'<section><div class="wrap"><div class="sec-head"><h2>What customers say about Jacky</h2></div><div class="grid g3" tabindex="0" role="region" aria-label="Customer reviews">{testimonials()}</div></div></section>'
     return page('contact/', 'Contact Jacky | Gearbox Specialist Singapore',
-                'Contact Jacky Gearbox for gearbox repair in Singapore. WhatsApp 8430 9665 or call 6352 8832. Workshops at Wave 9 Woodlands and Jalan Lam Huat.',
+                'Contact Jacky Gearbox for gearbox repair in Singapore. WhatsApp or call Jacky at 8430 9665. Workshops at Wave 9 Woodlands and Jalan Lam Huat.',
                 body, active='contact/', ld=[crumbs_ld('Contact', 'contact/'), faq_ld_of(FAQ[:5])], share=('workshop-lifts', 'Contact Jacky Gearbox: Woodlands & Jalan Lam Huat'))
 
 
@@ -1037,7 +1034,7 @@ def llms_txt():
 
 > Run by Jacky. Gearbox and automatic transmission repair, overhaul, upgrade and servicing specialist in Singapore.
 
-- WhatsApp: {BIZ['mobile_disp']} (preferred) · Tel: {BIZ['tel_disp']}
+- WhatsApp: {BIZ['mobile_disp']} (WhatsApp and calls)
 - Woodlands HQ: {hq['street']}, Singapore {hq['postal']}
 - Branch: {br['street']}, Singapore {br['postal']}
 - Hours: Mon-Fri 9am-6pm, Sat 9am-3pm, closed Sundays and public holidays
