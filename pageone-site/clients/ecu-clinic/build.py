@@ -166,6 +166,28 @@ WARNINGS = ['ABS warning light', 'ESP or ESC warning', 'Brake system warning',
             '“Active Brake Assist functions limited” (Mercedes)', 'Gearbox warning or limp mode (Mercedes)',
             'Steering lock or no-start fault (Mercedes)', 'Hybrid system warning']
 
+# Fault codes the clinic repairs (Edwin's scan-tool photos, 14 Oct 2026). Real repairs only:
+# no bypass / disable jobs here (see source/content.md).
+CODES = [
+    ('121-11', 'Honda', 'VSA Solenoid Valve Malfunction', 'articles/honda-vsa-solenoid-valve-malfunction/'),
+    ('81-19 / 81-20', 'Honda', 'Yaw rate or acceleration sensor inside the VSA modulator', 'articles/honda-yaw-rate-sensor-malfunction/'),
+    ('U0416', 'Honda', 'VSA system or VSA modulator control unit malfunction', 'articles/honda-vsa-solenoid-valve-malfunction/'),
+    ('P2583', 'Honda', 'Millimeter Wave Radar Function Error', 'articles/honda-millimeter-wave-radar-error-p2583/'),
+    ('U3000-49', 'Honda', 'Camera unit / millimeter wave radar internal failure', 'services/honda-radar-repair/'),
+    ('5001 (N30/4)', 'Mercedes-Benz', 'Internal fault in the ESP control unit', 'articles/mercedes-esp-control-unit-fault-n30-4/'),
+    ('A11E / A0AF / A0B4', 'BMW', 'CAS: ELV fault, processor, engine start', 'articles/bmw-cas-elv-fault-codes/'),
+]
+
+
+def codes_section(alt=False):
+    cards = ''.join(f'<a class="card code" href="{u(p)}" style="display:block;color:inherit;text-decoration:none"><span style="display:inline-block;font-size:.75rem;font-weight:700;text-transform:uppercase;letter-spacing:.06em;color:var(--blue);background:#e3f3ef;border-radius:6px;padding:3px 8px;margin-bottom:8px">{e(m)}</span><h3>{e(c)}</h3><p>{e(d)}</p></a>' for c, m, d, p in CODES)
+    return f'''<section{' class="alt"' if alt else ''} id="fault-codes"><div class="wrap">
+<div class="sec-head"><h2>Fault codes we handle</h2><p>Common codes we repair at our workshop. Got a different warning light or code? WhatsApp us a photo of the scan tool or dashboard and we’ll tell you what we can do.</p></div>
+<div class="grid sym codes">{cards}</div>
+<p style="margin-top:20px"><a class="btn btn-wa" href="{wa_link("Hi The ECU Clinic, I have a fault code on my car. Car model: \nFault code: ")}" target="_blank" rel="noopener">{ICON["wa"]}WhatsApp us your fault code</a></p>
+</div></section>'''
+
+
 STEPS = [
     ('WhatsApp us the details', f'Send your car model, chassis number and the fault code to <a href="{wa_link()}" target="_blank" rel="noopener">{BIZ["tel_disp"]}</a>. A photo of the scan tool screen or warning light helps.'),
     ('We check and advise', 'We tell you what we can do: repair your unit, or supply a recon, used or new one.'),
@@ -432,6 +454,8 @@ def home():
 <div class="gallery home-gal">{gal}</div>
 </div></section>
 
+{codes_section()}
+
 <section class="alt"><div class="wrap">
 <div class="sec-head"><h2>Guides and articles</h2><p>Warning lights and common faults, explained in plain words.</p></div>
 <div class="grid g3 arts">{article_cards(ARTICLES[:3])}</div>
@@ -559,6 +583,8 @@ def service_page(sp):
     rel = [ART[s] for s in sp['related']]
     others = ''.join(f'<li><a href="{u(f"services/{o["slug"]}/")}">{e(o["name"])}</a></li>' for o in SERVICE_PAGES if o is not sp)
     extra = ''
+    if sp['key'] == 'abs':
+        extra = codes_section()
     if sp['key'] == 'bmw':
         models = ''.join(f'<p><strong>{s}</strong><br>{c}</p>' for s, c in BMW_MODELS)
         extra = f'''<section class="alt"><div class="wrap">
