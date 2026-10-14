@@ -34,6 +34,7 @@ IMG_ORIGIN = ORIGIN if LIVE else PREVIEW
 # holds them, because the Bluehost Bridge only takes files pasted inline. To serve them from the
 # client's own domain instead, upload site/img/ and icon-512.png via cPanel and set IMG_CDN = None.
 IMG_COMMIT = 'cee16fe230df8b19cf7d5b0562dd956c9d36b813'
+ICON512 = 'https://cdn.jsdelivr.net/gh/drdigital641/edwin-ai-monitor-android@60351e1d47abc966e3fb83e2a412c33cc4e42ffe/pageone-site/clients/ecu-clinic/site/icon-512.png'
 IMG_CDN = f'https://cdn.jsdelivr.net/gh/drdigital641/edwin-ai-monitor-android@{IMG_COMMIT}/pageone-site/clients/ecu-clinic/site/'
 if IMG_CDN:
     IMG_ORIGIN = IMG_CDN.rstrip('/')
@@ -740,7 +741,9 @@ if __name__ == '__main__':
     build('site.webmanifest', lambda: json.dumps({
         'name': BIZ['name'], 'short_name': 'ECU Clinic', 'start_url': './', 'display': 'standalone',
         'background_color': '#ffffff', 'theme_color': '#1f262b',
-        'icons': [{'src': f'icon-{n}.png', 'sizes': f'{n}x{n}', 'type': 'image/png'} for n in (192, 512)]}, indent=1))
+        'icons': [{'src': 'icon-192.png', 'sizes': '192x192', 'type': 'image/png'},
+                  # the bridge can't upload this binary, so it comes from jsDelivr at the commit with the new icon
+                  {'src': ICON512, 'sizes': '512x512', 'type': 'image/png'}]}, indent=1))
     import share
     for slug, (photo, headline) in SHARES.items():
         share.card(slug, photo, headline)
