@@ -58,7 +58,7 @@ _MANAGED_TABLE = [
 _managed_rows = "\n".join(f"              <tr><th>{a}</th><td>{c}</td><td>{b}</td></tr>" for a, b, c in _MANAGED_TABLE)
 
 page("managed-website-singapore/index.html",
-     "Fully Managed Website Singapore: S$20/month, All-In | Page One",
+     "Fully Managed Website Singapore: S$20/month, All-In",
      "A fully managed website for your Singapore business: design, hosting, security, SEO articles, AEO and GEO for AI search, all for S$20/month. No setup fee, no contract.",
      [service("Fully managed website", "/managed-website-singapore/",
               "A website built on the client's own domain and fully managed every month: hosting, security, updates, SEO articles, Google setup and AEO/GEO for AI search.", "20"),

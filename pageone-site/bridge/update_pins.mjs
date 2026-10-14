@@ -4,7 +4,8 @@
 // It points SITE_SRC at the commit and recomputes the sha256 of every SITE_SRC pin from the raw file at
 // that commit (so a pin can never point at bytes that were not reviewed). It also replaces the "## Results" and
 // "## Websites we run" sections of LLMS_BASE with pageone-site/bridge/llms-results.md and llms-websites.md
-// (written by builder/build.py from showcase.json). New pages still need a PINNED_ASSETS and STATIC_PAGES entry by hand.
+// (written by builder/build.py from showcase.json), and PAGE_LASTMOD (per-page sitemap dates) from bridge/lastmod.json.
+// New pages still need a PINNED_ASSETS and STATIC_PAGES entry by hand.
 // Afterwards: create a checkpoint, run the "Page One Article Publisher" workflow and check the live sha256 values.
 import fs from 'fs';
 import crypto from 'crypto';
@@ -38,6 +39,14 @@ const swap = (start, end, text) => {
 };
 swap('## Results (', '\n## Services', (await get('bridge/llms-results.md')).toString('utf8'));
 swap('## Websites we run\n', '\n## Area served', (await get('bridge/llms-websites.md')).toString('utf8'));
+
+// Per-page sitemap dates (pageone-site/bridge/lastmod.json, written by builder/build.py), once the Bridge has PAGE_LASTMOD.
+const lm = /const PAGE_LASTMOD: Record<string, string> = \{[^}]*\};/;
+if (lm.test(s)) s = s.replace(lm, `const PAGE_LASTMOD: Record<string, string> = ${(await get('bridge/lastmod.json')).toString('utf8').trim()};`);
+
+// Business JSON-LD for article pages (pageone-site/bridge/org-graph.json), between the ORG_GRAPH markers.
+const og0 = s.indexOf('// ORG_GRAPH:start\n'), og1 = s.indexOf('// ORG_GRAPH:end');
+if (og0 >= 0 && og1 > og0) s = s.slice(0, og0) + '// ORG_GRAPH:start\nconst ORG_GRAPH = ' + (await get('bridge/org-graph.json')).toString('utf8').trim() + ';\n' + s.slice(og1);
 
 fs.writeFileSync(F, s);
 console.log(changed.length ? changed.join('\n') : 'no page changed');

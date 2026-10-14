@@ -208,7 +208,7 @@ CHEAP_SITE_FAQ = [
 ]
 
 page("cheapest-website-singapore/index.html",
-     "Cheapest Website Maker in Singapore? From S$20/month | Page One",
+     "Cheapest Website Maker in Singapore? From S$20/month",
      "Looking for the cheapest way to get a website in Singapore? Page One builds, hosts and updates it for S$20/month. No lump sum, no setup fee, no contract.",
      [service("Website built and managed for Singapore businesses", "/cheapest-website-singapore/",
               "A website built, hosted and kept up to date for a monthly subscription instead of a lump sum: S$20 a month, no setup fee, no contract.", "20"),
@@ -307,7 +307,7 @@ NEW_BIZ_FAQ = [
 ]
 
 page("new-business-website/index.html",
-     "Website for a New Business in Singapore: S$20/month, All Done",
+     "Website for a New Business in Singapore: S$20/month",
      "Starting a business in Singapore? Your website, hosting, content and Google listing for S$20/month: about S$255–270 for the whole first year. No setup fee, live in 7 days.",
      [service("Website for new businesses in Singapore", "/new-business-website/",
               "A website for a new Singapore business, set up and managed: hosting, content, Google and Google Maps setup and monthly updates for S$20 a month.", "20"),

@@ -39,22 +39,44 @@ FOUNDER = {"@type": "Person", "name": "Edwin", "jobTitle": "Founder, Page One Si
            "knowsAbout": ["Computer science", "Search engine optimisation", "AI search visibility", "Small business operations"]}
 
 
+# One description of the business, used in the JSON-LD of every page (full version on the homepage).
+# Only facts that are stated on the site. sameAs lists only real profiles: the Google Business Profile.
+CONTACT_POINT = {"@type": "ContactPoint", "contactType": "customer support", "telephone": "+" + WA,
+                 "url": f"https://wa.me/{WA}", "availableLanguage": "English", "areaServed": "SG",
+                 "hoursAvailable": {"@type": "OpeningHoursSpecification",
+                                    "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"],
+                                    "opens": "00:00", "closes": "23:59"}}
+ORG_CORE = {"@type": "ProfessionalService", "@id": BIZ_ID, "name": "Page One Singapore",
+            "alternateName": ["Page One SG", "PageOne Singapore"], "url": SITE + "/",
+            "logo": {"@type": "ImageObject", "url": SITE + "/icon-512.png", "width": 512, "height": 512},
+            "image": SITE + "/images/og.png",
+            "description": "Done-for-you website and SEO for Singapore small businesses: a website (or SEO landing page) built and managed, found on Google Search, Google Maps and AI assistants, from S$20 a month. No setup fee, no contract.",
+            "telephone": "+" + WA, "priceRange": "S$20 - S$70 per month",
+            "address": {"@type": "PostalAddress", "addressCountry": "SG"},
+            "areaServed": {"@type": "Country", "name": "Singapore"},
+            "contactPoint": CONTACT_POINT, "hasMap": GBP, "sameAs": [GBP]}
+WEBSITE_NODE = {"@type": "WebSite", "@id": SITE + "/#website", "url": SITE + "/", "name": "Page One Singapore",
+                "alternateName": ["Page One SG", "PageOne Singapore", "pageonesingapore.com"],
+                "inLanguage": "en-SG", "publisher": {"@id": BIZ_ID}}
+AIV_UPDATED = "2026-10-14"  # AI-visibility release: at-a-glance blocks and plain answers
+LASTMOD = {}     # page URL -> dateModified, for the sitemap (bridge/lastmod.json)
+LLMS_PAGES = []  # (url, title, description, [(question, answer)]) for llms-full.txt
+
+
 # Client list and every Search Console figure on the site (builder/showcase.json).
 exec(open(os.path.join(HERE, "showcase.py"), encoding="utf-8").read())
 
 
-def crumbs_ld(name, url):
+def crumbs_ld(name, url, parent=None):
+    trail = [("Home", "/")] + ([parent] if parent else []) + [(name.replace("&amp;", "&"), url)]
     return {
         "@context": "https://schema.org",
         "@type": "BreadcrumbList",
-        "itemListElement": [
-            {"@type": "ListItem", "position": 1, "name": "Home", "item": SITE + "/"},
-            {"@type": "ListItem", "position": 2, "name": name, "item": SITE + url},
-        ],
+        "itemListElement": [{"@type": "ListItem", "position": i + 1, "name": n, "item": SITE + u} for i, (n, u) in enumerate(trail)],
     }
 
 
-def page(path, title, desc, schemas, body, crumb=None, robots="index, follow, max-image-preview:large", updated=None, head_extra="", foot_extra=""):
+def page(path, title, desc, schemas, body, crumb=None, robots="index, follow, max-image-preview:large", updated=None, head_extra="", foot_extra="", crumb_parent=None):
     managed_link = '        <a href="/managed-website-singapore/">Fully managed website</a>\n'
     clients_href = "/clients/"
     if path == "index.html":
@@ -64,13 +86,19 @@ def page(path, title, desc, schemas, body, crumb=None, robots="index, follow, ma
     else:
         current = "/" + path
     if crumb:
-        schemas = schemas + [crumbs_ld(crumb, current)]
+        schemas = schemas + [crumbs_ld(crumb, current, crumb_parent)]
     if "noindex" not in robots:
         schemas = schemas + [{
-            "@context": "https://schema.org", "@type": "WebPage", "url": SITE + current, "name": title.replace("&amp;", "&"),
+            "@context": "https://schema.org", "@type": "WebPage", "@id": SITE + current + "#webpage", "url": SITE + current, "name": title.replace("&amp;", "&"),
             "description": desc, "inLanguage": "en-SG", "isPartOf": {"@id": SITE + "/#website"},
+            "about": {"@id": BIZ_ID}, "publisher": {"@id": BIZ_ID},
             "primaryImageOfPage": {"@type": "ImageObject", "url": SITE + "/images/og.png", "width": 600, "height": 315},
             "dateModified": updated or UPDATED}]
+        if path != "index.html":  # the homepage carries the full business description
+            schemas = schemas + [{"@context": "https://schema.org", "@graph": [ORG_CORE, WEBSITE_NODE]}]
+        LASTMOD[current] = updated or UPDATED
+        LLMS_PAGES.append((current, title.replace("&amp;", "&"), desc, [
+            (q["name"], q["acceptedAnswer"]["text"]) for s in schemas if s.get("@type") == "FAQPage" for q in s["mainEntity"]]))
     nav = "\n".join(
         f'        <a href="{href}"{" aria-current=\"page\"" if href == current else ""}>{label}</a>'
         for href, label in NAV
@@ -106,6 +134,10 @@ def page(path, title, desc, schemas, body, crumb=None, robots="index, follow, ma
   <meta property="og:image:alt" content="Page One Singapore: get found on Google and AI search from S$20 a month">
   <meta property="og:locale" content="en_SG">
   <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="{title}">
+  <meta name="twitter:description" content="{desc}">
+  <meta name="twitter:image" content="{SITE}/images/og.png">
+  <meta name="twitter:image:alt" content="Page One Singapore: get found on Google and AI search from S$20 a month">
   <meta name="theme-color" content="#060b18">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -203,7 +235,9 @@ def service(name, url, desc, price):
         "provider": PROVIDER,
         "areaServed": {"@type": "Country", "name": "Singapore"},
         "image": SITE + "/images/og.png",
-        "offers": {"@type": "Offer", "price": price, "priceCurrency": "SGD"},
+        "offers": {"@type": "Offer", "price": price, "priceCurrency": "SGD", "url": SITE + url,
+                   **({"priceSpecification": {"@type": "UnitPriceSpecification", "price": price, "priceCurrency": "SGD", "unitCode": "MON"}}
+                      if price == "20" else {})},
     }
 
 
@@ -273,6 +307,47 @@ PLAN_COMPARE = """<div class="cards two plan-compare">
           </div>
         </div>"""
 
+# "Page One at a glance": the plain facts an AI assistant (or a busy owner) needs, in one place.
+# Homepage and About. Only facts already stated elsewhere on the site.
+GLANCE_ANSWER = ("Page One Singapore is a done-for-you website and SEO service for Singapore small businesses. "
+                 "We build your website (or add an SEO landing page to the one you have), get it found on Google Search, Google Maps "
+                 "and AI assistants like ChatGPT, and look after it every month, for S$20 a month with no setup fee and no contract.")
+GLANCE_ROWS = [
+    ("Who it's for", 'New businesses that need their first website, and small businesses looking for affordable SEO. '
+                     '<a class="link" href="/new-business-website/">New business</a> · <a class="link" href="/seo-services-singapore/">Shopping for SEO</a>'),
+    ("What you get", "A website on your own domain (or an SEO landing page next to your current site), hosting and SSL, Google Business Profile, "
+                     "Google Search Console and Bing setup, structured data and llms.txt for AI search, regular new articles, a monthly technical audit "
+                     "and small changes over WhatsApp."),
+    ("Price", 'S$20 a month on the Get Found plan (introductory price). Optional SEO Boosts are S$10 each. No setup fee, no contract, cancel anytime. '
+              'Your domain, usually S$15–30 a year, is registered in your name and paid by you directly. <a class="link" href="/pricing/">Pricing</a>'),
+    ("Where", "Singapore, island-wide."),
+    ("How fast", "Usually live within 7 days of receiving your details and photos."),
+    ("How to start", f'WhatsApp Edwin on <a class="link" href="{WA_LINK}" target="_blank" rel="noopener">{WA_DISPLAY}</a> '
+                     'or <a class="link" href="/signup/">sign up online</a>. No obligation.'),
+    ("Who runs it", 'Founder Edwin (NUS Computer Science, Honours). Page One Singapore is a project of Snap Commercial Pte. Ltd. (UEN 202209904W). '
+                    '<a class="link" href="/results/">Results</a> · <a class="link" href="/clients/">Client websites</a> · '
+                    '<a class="link" href="/is-page-one-singapore-legit/">How to check us</a>'),
+]
+
+
+def glance(section_class="section"):
+    rows = "\n".join(f"              <tr><th scope=\"row\">{k}</th><td>{v}</td></tr>" for k, v in GLANCE_ROWS)
+    return f"""    <section class="{section_class}" id="at-a-glance">
+      <div class="wrap narrow">
+        <p class="kicker reveal">At a glance</p>
+        <h2 class="reveal">Page One at a glance</h2>
+        <p class="section-lead reveal">{GLANCE_ANSWER}</p>
+        <div class="table-wrap reveal">
+          <table class="compare">
+            <tbody>
+{rows}
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </section>"""
+
+
 # ---------- Get Found ----------
 page("get-found/index.html",
      "Small Business SEO Singapore: Get Found Plan from S$20/month",
@@ -281,7 +356,7 @@ page("get-found/index.html",
               "A website on the client's own domain, or an SEO landing page on a subdomain of their existing website, set up for Google Search, Google Maps and AI assistants.", "20")],
      hero("Get Found", "Basic subscription",
           "Get Found: your shopfront on Google and AI.",
-          "One simple plan. Whether you have a website or not, we set you up to be found on Google Search, Google Maps and AI assistants.",
+          "Get Found is our S$20-a-month plan that gets your business found on Google Search, Google Maps and AI assistants like ChatGPT. No website? We build one on your own domain. Already have one? We add an SEO landing page next to it.",
           '<p class="hero-price"><b>S$20</b>/month · <span class="intro-tag">Introductory price</span> · no setup fee · no contract</p>') + """
 
     <section class="section">
@@ -348,7 +423,7 @@ page("get-found/index.html",
       </div>
     </section>
 
-""" + cta(), crumb="Get Found")
+""" + cta(), crumb="Get Found", updated=AIV_UPDATED)
 
 
 def redirect(path, target):
@@ -390,7 +465,7 @@ _site_html = site_cards_html()
 _wfaq_html = "\n".join(f"        <details class=\"reveal\"><summary>{q}</summary><p>{a}</p></details>" for q, a in WEBSITE_FAQ)
 
 page("website/index.html",
-     "Small Business Website Singapore: Built &amp; Managed for S$20/month",
+     "Small Business Website Singapore: Built &amp; Managed, S$20/mo",
      "No website yet? We build a fast, mobile-friendly website for your Singapore business and manage it for you: hosting, updates and Google setup. S$20/month.",
      [service("Website design and management for small businesses", "/website/",
               "A website built on the client's own domain, set up for Google, Google Maps and AI search, then hosted and managed every month: security, speed, a monthly technical audit and small text and photo changes.", "20"),
@@ -516,7 +591,7 @@ page("seo-boost/index.html",
               "One full round of Google and AI search visibility improvements with a before/after report. Optional, topped up anytime.", "10")],
      hero("SEO Boost", "Optional top-up",
           "Want faster results? Add an SEO Boost.",
-          "Your S$20 plan already includes regular new articles and a technical audit every month. Each S$10 Boost accelerates growth on top: more content aimed at new niche long-tail searches, so you show up for more searches, plus extra processing to fix SEO issues, then a report of exactly what changed.",
+          "An SEO Boost is an optional S$10 top-up for faster results: more content aimed at new niche long-tail searches, extra processing to fix SEO issues, then a report of exactly what changed. Your S$20 plan already includes regular new articles and a technical audit every month.",
           '<p class="hero-price"><b>S$10</b>/boost · top up anytime</p>') + """
 
     <section class="section">
@@ -569,7 +644,7 @@ page("seo-boost/index.html",
     </section>
 
 """ + cta("Start with a free website check", "Before you spend anything, see where your website stands on Google, mobile and AI search. Takes under a minute."),
-     crumb="SEO Boost")
+     crumb="SEO Boost", updated=AIV_UPDATED)
 
 # ---------- Pricing ----------
 # "SEO packages / SEO pricing Singapore" owner page. Only Page One's own prices are numbers; other packages are
@@ -744,13 +819,13 @@ page("faq/index.html",
 
 # ---------- About ----------
 page("about/index.html",
-     "About Page One Singapore | Built by a Singapore Business Owner",
+     "About Page One Singapore: Built by a Business Owner",
      "Page One Singapore was built by Edwin, an NUS Computer Science (Honours) graduate with 18+ years in business, and proven on real Singapore businesses first.",
      [{"@context": "https://schema.org", "@type": "AboutPage", "url": SITE + "/about/", "name": "About Page One Singapore",
        "about": PROVIDER, "mainEntity": dict(FOUNDER, worksFor=PROVIDER,
                                              owns={"@type": "AutoRepair", "name": "Edwin Garage", "url": "https://sggarage.com/"})}],
      hero("About", "Built by a business owner", "An SEO system built by a Singapore business owner, not an agency.",
-          "Our founder combines a computer science degree with 18+ years of running businesses. Every method was proven on real Singapore businesses before we offered it to you.", buttons=False) + """
+          "Page One Singapore builds and looks after websites that get small businesses found on Google and ChatGPT, from S$20 a month. Our founder combines a computer science degree with 18+ years of running businesses, and every method was proven on real Singapore businesses before we offered it to you.", buttons=False) + """
 
     <section class="section">
       <div class="wrap split">
@@ -759,7 +834,7 @@ page("about/index.html",
           <h2>Meet Edwin</h2>
           <p>Edwin graduated from the National University of Singapore (NUS) with a Bachelor's degree in Computer Science with Honours, and has spent more than 18 years running businesses. He owns Edwin Garage, a car workshop in Ang Mo Kio.</p>
           <p>He built Page One to solve his own problem: getting found on Google without paying for work he couldn't see. He combined his computing background with AI to build a system that does the SEO work every day, and used it on his own workshop first.</p>
-          <p>It worked. Edwin Garage now gets over 2,000 clicks a month from Google, and the same system runs four other Singapore businesses today.</p>
+          <p>It worked. Edwin Garage now gets over 2,000 clicks a month from Google, and the same system runs every client website we manage today.</p>
           <a class="card-link" href="/results/">See the results →</a>
         </div>
         <div class="panel reveal">
@@ -778,7 +853,7 @@ page("about/index.html",
         <div class="reveal">
           <p class="kicker">Why we exist</p>
           <h2>Online visibility shouldn't need a big budget</h2>
-          <p>Page One Singapore runs the websites and Google listings for five local businesses today: a car workshop, a car detailing service, a sofa cleaning company, a property agent and a financial consultant.</p>
+          <p>Page One Singapore runs the websites and Google listings for """ + LIVE_COUNT_WORD + """ local businesses today, from a car workshop and a car detailing service to a sofa cleaning company, a property agent and a financial consultant. <a class="link" href="/clients/">See them all</a>.</p>
           <p>We started because new and small businesses were being quoted hundreds of dollars a month for SEO they couldn't see or measure. So we built a simpler way: S$20 a month, a report for every SEO Boost, and no contract. Start small, and add more only when you see it working.</p>
           <p>Page One Singapore is a project of Snap Commercial Pte. Ltd., a Singapore company registered in 2022 (UEN 202209904W).</p>
           <a class="card-link" href="/#stories">See the websites we run →</a>
@@ -797,8 +872,10 @@ page("about/index.html",
       </div>
     </section>
 
+""" + glance() + """
+
 """ + cta("Talk to us, no obligation", "Ask Edwin anything on WhatsApp. Or start with a free website check."),
-     crumb="About")
+     crumb="About", updated=AIV_UPDATED)
 
 # ---------- Results ----------
 # Every figure below comes from builder/showcase.json (Google Search Console via CaseStudyStats in the
@@ -1344,32 +1421,62 @@ exec(open(os.path.join(HERE, "managed.py"), encoding="utf-8").read())
 exec(open(os.path.join(HERE, "ai_seo.py"), encoding="utf-8").read())
 
 page("index.html",
-     "Affordable SEO Singapore from S$20/month | Page One Singapore",
+     "Affordable SEO Singapore from S$20/month | Page One SG",
      "Affordable SEO for Singapore small businesses: get found on Google, Maps and ChatGPT from S$20/month. Proven on real businesses. No setup fee or contract.",
      [HOME_FAQ_LD, {"@context": "https://schema.org", "@graph": [
-         {"@type": "ProfessionalService", "@id": BIZ_ID, "name": "Page One Singapore", "url": SITE + "/",
-          "logo": SITE + "/icon-512.png", "image": SITE + "/images/og.png",
-          "description": "Google and AI search visibility for Singapore businesses: the Get Found subscription (a website or SEO landing page) with optional SEO Boost top-ups.",
-          "telephone": "+" + WA, "priceRange": "S$20 - S$70 per month",
-          "hasMap": GBP, "sameAs": [GBP],
-          "areaServed": {"@type": "Country", "name": "Singapore"},
-          "founder": FOUNDER,
-          "parentOrganization": COMPANY,
-          "knowsAbout": ["Search engine optimisation", "Local SEO", "Google Business Profile", "AI search visibility", "Generative engine optimisation"],
-          "openingHoursSpecification": {"@type": "OpeningHoursSpecification",
-                                        "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"],
-                                        "opens": "00:00", "closes": "23:59"},
-          "contactPoint": {"@type": "ContactPoint", "contactType": "customer support", "telephone": "+" + WA,
-                           "availableLanguage": "English", "areaServed": "SG",
-                           "hoursAvailable": {"@type": "OpeningHoursSpecification",
-                                              "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"],
-                                              "opens": "00:00", "closes": "23:59"}},
-          "makesOffer": [{"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Get Found basic subscription", "url": SITE + "/get-found/"}, "price": "20", "priceCurrency": "SGD"},
-                         {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "SEO Boost", "url": SITE + "/seo-boost/"}, "price": "10", "priceCurrency": "SGD"}]},
-         {"@type": "WebSite", "@id": SITE + "/#website", "url": SITE + "/", "name": "Page One Singapore",
-          "alternateName": ["Page One SG", "PageOne Singapore", "pageonesingapore.com"],
-          "inLanguage": "en-SG", "publisher": {"@id": BIZ_ID}}]}],
-     fill_home(open(os.path.join(HERE, "home_body.html"), encoding="utf-8").read().rstrip("\n")), updated=SC_UPDATED,
+         dict(ORG_CORE,
+              founder=FOUNDER,
+              parentOrganization=COMPANY,
+              knowsAbout=["Search engine optimisation", "Local SEO", "Google Business Profile", "AI search visibility", "Generative engine optimisation", "Small business websites"],
+              openingHoursSpecification=CONTACT_POINT["hoursAvailable"],
+              makesOffer=[{"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Get Found basic subscription (website or SEO landing page, Google and AI search setup, managed monthly)", "url": SITE + "/get-found/"}, "price": "20", "priceCurrency": "SGD",
+                           "priceSpecification": {"@type": "UnitPriceSpecification", "price": "20", "priceCurrency": "SGD", "unitCode": "MON"}},
+                          {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "SEO Boost", "url": SITE + "/seo-boost/"}, "price": "10", "priceCurrency": "SGD"}]),
+         WEBSITE_NODE]}],
+     fill_home(open(os.path.join(HERE, "home_body.html"), encoding="utf-8").read().rstrip("\n").replace("{{GLANCE}}", glance("section alt"))),
+     updated=max(SC_UPDATED, AIV_UPDATED),
      head_extra="\n  <style>" + " ".join(open(os.path.join(HERE, "home_motion.css"), encoding="utf-8").read().split("\n")[1:]).strip() + "</style>",
      foot_extra='\n  <script src="/motion.js?v=1" defer></script>')
+
+
+# ---------- llms-full.txt and per-page sitemap dates ----------
+# llms.txt (short) is owned by the Bluehost Bridge (LLMS_BASE). llms-full.txt is a static file built here from the
+# same page data: every indexable page's title, description and every FAQ answer, so AI assistants get the whole
+# picture in one fetch. bridge/lastmod.json gives the Bridge a real lastmod per page for sitemap.xml.
+import html as _html
+import re as _re
+
+
+def _plain(x):
+    return _html.unescape(_re.sub(r"<[^>]+>", "", x)).replace("\u00a0", " ").strip()
+
+
+_ORDER = ["/", "/website/", "/get-found/", "/pricing/", "/new-business-website/", "/seo-services-singapore/", "/managed-website-singapore/",
+          "/seo-boost/", "/results/", "/clients/", "/about/", "/is-page-one-singapore-legit/", "/ai-seo-vs-traditional-seo/", "/faq/"]
+_pages = sorted(LLMS_PAGES, key=lambda r: (_ORDER.index(r[0]) if r[0] in _ORDER else len(_ORDER), r[0]))
+_out = ["# Page One Singapore: full guide for AI assistants", "",
+        "> " + GLANCE_ANSWER, "",
+        f"Short version: {SITE}/llms.txt. This file is generated from the website itself and lists every public page with its "
+        "description and the questions it answers. Prices are in Singapore dollars (SGD).", "",
+        "## At a glance"]
+_out += [f"- {k}: {_plain(_re.sub(r'<a [^>]*href="(/[^"]*)"[^>]*>(.*?)</a>', lambda m: m.group(2) + ' (' + SITE + m.group(1) + ')', v))}" for k, v in GLANCE_ROWS]
+_out += ["- Contact: WhatsApp " + WA_DISPLAY + " (https://wa.me/" + WA + ")", "- Google Business Profile: " + GBP, ""]
+for _u, _t, _d, _qa in _pages:
+    _out += [f"## {_plain(_t)}", f"URL: {SITE}{_u}", f"Last updated: {LASTMOD[_u]}", "", _plain(_d)]
+    if _qa:
+        _out.append("")
+        for _q, _a in _qa:
+            _out += [f"Q: {_plain(_q)}", f"A: {_plain(_a)}", ""]
+    else:
+        _out.append("")
+open(os.path.join(ROOT, "llms-full.txt"), "w", encoding="utf-8").write("\n".join(_out).rstrip("\n") + "\n")
+_bridge = os.path.join(HERE, "..", "bridge")
+if os.path.isdir(_bridge) and os.path.abspath(ROOT) == os.path.abspath(os.path.join(HERE, "..", "site")):
+    with open(os.path.join(_bridge, "lastmod.json"), "w", encoding="utf-8") as _f:
+        json.dump(dict(sorted(LASTMOD.items())), _f, indent=1)
+        _f.write("\n")
+    # The same business description for the Bridge's article pages (ORG_GRAPH in pageoneArticles.ts).
+    with open(os.path.join(_bridge, "org-graph.json"), "w", encoding="utf-8") as _f:
+        json.dump({"@context": "https://schema.org", "@graph": [ORG_CORE, WEBSITE_NODE]}, _f, ensure_ascii=False, indent=2)
+        _f.write("\n")
 print("built")
