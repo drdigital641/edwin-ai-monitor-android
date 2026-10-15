@@ -28,7 +28,7 @@ ORIGIN = 'https://jackygearbox.com'  # the client's domain (was dmts.com.sg unti
 BASE = '/'
 DEPTH = 0  # folder depth of the page being built; set by build() so u() can emit relative links
 ABS = False  # root-relative links instead (404 page: Apache serves it at any depth)
-ASSET_V = '8'
+ASSET_V = '9'
 SLUG = 'dmts'  # Page One client key: p1-site marker (go-live check) and WhatsApp tracker
 INDEXNOW_KEY = '5792dfeef836aebd82a445c206294c95'  # same key as the controller's Client record
 # Share images and icons must load before jackygearbox.com points here, so until go-live they are linked
@@ -51,8 +51,8 @@ BIZ = {
 }
 WA_TEXT = 'Hi Jacky, I would like a quote for my gearbox.'
 
-NAV = [('', 'Home'), ('services/', 'Services'), ('gearbox-problems/', 'Gearbox Problems'), ('gallery/', 'Gallery'),
-       ('about/', 'About'), ('contact/', 'Contact')]
+NAV = [('', 'Home'), ('services/', 'Services'), ('gearbox-problems/', 'Gearbox Problems'), ('articles/', 'Articles'),
+       ('gallery/', 'Gallery'), ('about/', 'About'), ('contact/', 'Contact')]
 
 DIAG = 'Pre-repair diagnostic from S$30'
 WARRANTY = 'All repairs come with a standard 6-month warranty unless otherwise stated.'
@@ -261,31 +261,36 @@ def page(path, title, desc, body, active='', extra_head='', ld=None, scripts='',
 {body}
 </main>
 <footer class="site"><div class="wrap">
-<div class="grid">
-<div>
-<h3>Jacky Gearbox</h3>
-<p>Gearbox repair, overhaul, upgrade and servicing for continental, Japanese, Korean and other makes. {DIAG}, free towing to our workshop during office hours, and a 6-month warranty on repairs.</p>
-<p><a href="{wa_link()}" target="_blank" rel="noopener">WhatsApp {BIZ["mobile_disp"]}</a> (calls too)</p>
-<p><a href="{BIZ["google"]}" target="_blank" rel="noopener">Find us on Google</a></p>
+<div class="foot-top">
+<div class="foot-brand">
+<img src="{u("img/logo-white.svg")}" width="743" height="280" alt="Jacky Gearbox" loading="lazy">
+<p>Gearbox specialist and consultant in Singapore. Jacky diagnoses, inspects and road-tests every car himself.</p>
 </div>
-<div>
-<h3>Workshops</h3>
-<p><strong>HQ</strong><br>{e(BIZ["hq"]["street"])}<br>Singapore {BIZ["hq"]["postal"]}</p>
-<p><strong>Branch</strong><br>{e(BIZ["branch"]["street"])}<br>Singapore {BIZ["branch"]["postal"]}</p>
+<div class="btns"><a class="btn btn-wa" href="{wa_link()}" target="_blank" rel="noopener">{ICON["wa"]}WhatsApp Jacky</a>
+<a class="btn btn-ghost" href="{BIZ["google"]}" target="_blank" rel="noopener">Find us on Google</a></div>
 </div>
+<div class="foot-cols">
 <div>
 <h3>Services</h3>
 <ul>{''.join(f'<li><a href="{u("services/" + sid + "/")}">{t}</a></li>' for sid, t, *_ in SERVICES)}</ul>
-<h3 style="margin-top:1em">Gearbox problems</h3>
-<ul>{''.join(f'<li><a href="{u("gearbox-problems/" + p["slug"] + "/")}">{e(p["name"])}</a></li>' for p in PROBLEMS)}</ul>
 </div>
 <div>
-<h3>Pages</h3>
-<ul>{''.join(f'<li><a href="{u(p)}">{e(n)}</a></li>' for p, n in NAV)}</ul>
-<p style="margin-top:1em">Mon–Fri 9:00–18:00<br>Sat 9:00–15:00<br>Sun &amp; PH closed</p>
+<h3>Gearbox problems</h3>
+<ul>{''.join(f'<li><a href="{u("gearbox-problems/" + p["slug"] + "/")}">{e(p["name"])}</a></li>' for p in PROBLEMS[:5])}
+<li><a class="all" href="{u("gearbox-problems/")}">All {len(PROBLEMS)} problems →</a></li></ul>
+</div>
+<div>
+<h3>Articles</h3>
+<ul>{''.join(f'<li><a href="{u("articles/" + ar["slug"] + "/")}">{e(ar["short"])}</a></li>' for ar in ARTICLES[:3])}
+<li><a class="all" href="{u("articles/")}">All articles →</a></li></ul>
+</div>
+<div>
+<h3>Visit</h3>
+<p>Woodlands (HQ) · Jalan Lam Huat<br><a href="{u("contact/")}">Addresses and directions →</a></p>
+<p class="hrs">Mon–Fri 9am–6pm<br>Sat 9am–3pm<br>Sun &amp; PH closed</p>
 </div>
 </div>
-<div class="fine"><span>© 2026 Jacky Gearbox. All rights reserved.</span><a href="https://pageonesingapore.com/">Website &amp; SEO by Page One Singapore</a></div>
+<div class="fine"><span>© 2026 Jacky Gearbox</span><nav aria-label="Footer">{''.join(f'<a href="{u(p)}">{e(n)}</a>' for p, n in NAV[1:])}</nav><a href="https://pageonesingapore.com/">Website &amp; SEO by Page One Singapore</a></div>
 </div></footer>
 <div class="dock">
 <a class="btn btn-wa" href="{wa_link()}" target="_blank" rel="noopener">{ICON["wa"]}WhatsApp</a>
@@ -902,8 +907,105 @@ def problem_page(slug):
     return page(f'gearbox-problems/{slug}/', p['title'], p['desc'], body, active='gearbox-problems/', ld=ld, share=(p['img'][0], p['h1']))
 
 
+
+# ---- Articles (client rule: an articles section for long-tail keywords; EDGE writes them) ----
+# One Markdown file per article in source/articles/<slug>.md. Header lines "key: value" (title, desc, h1,
+# short, date, img, services, problems) end at a line "---". Body: "## " / "### " headings, "- " lists,
+# paragraphs, **bold**, [text](/path/) links. A final "## Questions" section of "Q: " / "A: " lines becomes
+# the FAQ block and FAQPage schema. See source/articles/README.md for the writing rules.
+import glob
+
+
+def _inline(t):
+    t = e(t)
+    t = re.sub(r'\*\*(.+?)\*\*', r'<strong>\1</strong>', t)
+    return re.sub(r'\[(.+?)\]\((/[^)]*)\)', lambda m: f'<a href="{u(m.group(2).lstrip("/"))}">{m.group(1)}</a>', t)
+
+
+def load_articles():
+    out = []
+    for f in sorted(glob.glob(os.path.join(HERE, 'source', 'articles', '*.md'))):
+        if os.path.basename(f).lower() == 'readme.md':
+            continue
+        head, body = open(f, encoding='utf-8').read().split('\n---\n', 1)
+        a = dict(line.split(': ', 1) for line in head.strip().splitlines())
+        a['slug'] = os.path.basename(f)[:-3]
+        a['services'] = [x.strip() for x in a.get('services', '').split(',') if x.strip()]
+        a['problems'] = [x.strip() for x in a.get('problems', '').split(',') if x.strip()]
+        main, _, qs = body.partition('\n## Questions\n')
+        a['faq'] = re.findall(r'^Q: (.+)\nA: (.+)$', qs, re.M)
+        a['body'] = main.strip()
+        out.append(a)
+    return sorted(out, key=lambda a: a['date'], reverse=True)
+
+
+def md(text):
+    out = []
+    for block in text.split('\n\n'):
+        lines = block.strip().splitlines()
+        if not lines:
+            continue
+        if all(l.startswith('- ') for l in lines):
+            out.append('<ul class="ticks">' + ''.join(f'<li>{_inline(l[2:])}</li>' for l in lines) + '</ul>')
+        elif lines[0].startswith('### ') or lines[0].startswith('## '):
+            lvl = 3 if lines[0].startswith('### ') else 2
+            rest = f'<p>{_inline(" ".join(lines[1:]))}</p>' if lines[1:] else ''
+            out.append(f'<h{lvl}>{_inline(lines[0][lvl + 1:])}</h{lvl}>{rest}')
+        else:
+            out.append(f'<p>{_inline(" ".join(lines))}</p>')
+    return '\n'.join(out)
+
+
+ARTICLES = load_articles()
+
+
+def nice_date(d):
+    import datetime
+    return datetime.date.fromisoformat(d).strftime('%-d %B %Y')
+
+
+def article_cards(items):
+    return ''.join(f'<a class="card art" href="{u("articles/" + a["slug"] + "/")}"><span class="date">{nice_date(a["date"])}</span>'
+                   f'<h3>{e(a["h1"])}</h3><p class="muted">{e(a["desc"])}</p><span class="more">Read article →</span></a>' for a in items)
+
+
+def articles_hub():
+    body = (page_hero('Articles', 'Gearbox articles and guides',
+                      'Plain-English answers to the gearbox questions drivers in Singapore ask Jacky most.')
+            + f'<section><div class="wrap"><div class="grid g3">{article_cards(ARTICLES)}</div></div></section>'
+            + band('Have a gearbox question?', 'WhatsApp Jacky with your car model and what is happening.'))
+    return page('articles/', 'Gearbox Articles & Guides | Jacky Gearbox Singapore',
+                'Gearbox guides from Jacky, a gearbox specialist in Singapore: overhaul vs replacement, ATF changes, warning signs and more.',
+                body, active='articles/', ld=[crumbs_ld('Articles', 'articles/')])
+
+
+def article_page(slug):
+    a = next(x for x in ARTICLES if x['slug'] == slug)
+    others = [x for x in ARTICLES if x['slug'] != slug][:3]
+    faq = [(q, _inline(ans)) for q, ans in a['faq']]
+    pic = a.get('img', 'gearbox-teardown|Gearbox overhaul on the teardown bench').split('|')
+    body = (page_hero(a['short'], e(a['h1']), e(a['desc']), parent=('Articles', 'articles/'))
+            + '<section><div class="wrap article">'
+            + f'<p class="byline">By Jacky Gearbox · {nice_date(a["date"])}</p>'
+            + img(pic[0], pic[1], 960, 540)
+            + md(a['body'])
+            + '<div class="callout"><h3>Not sure what your gearbox needs?</h3>'
+            + f'<p>Jacky diagnoses and tests the gearbox himself and tells you the fault and the price before any work starts. {DIAG}.</p>{cta_buttons()}</div>'
+            + '</div></section>'
+            + (faq_block(faq, 'Questions') if faq else '')
+            + (f'<section><div class="wrap"><div class="sec-head"><h2>Related services</h2></div><div class="grid g3">{service_cards(a["services"])}</div></div></section>' if a['services'] else '')
+            + (f'<section class="alt"><div class="wrap"><div class="sec-head"><h2>Related gearbox problems</h2></div><div class="sym">{problem_cards(a["problems"])}</div></div></section>' if a['problems'] else '')
+            + (f'<section><div class="wrap"><div class="sec-head"><h2>More articles</h2></div><div class="grid g3">{article_cards(others)}</div></div></section>' if others else ''))
+    art_ld = {'@context': 'https://schema.org', '@type': 'Article', 'headline': a['h1'], 'description': a['desc'],
+              'datePublished': a['date'], 'dateModified': a.get('updated', a['date']),
+              'image': f'{IMG_ORIGIN}/img/share/articles-{slug}.jpg', 'mainEntityOfPage': f'{ORIGIN}/articles/{slug}/',
+              'author': {'@id': f'{ORIGIN}{BASE}#org'}, 'publisher': {'@id': f'{ORIGIN}{BASE}#org'}}
+    ld = [crumbs_ld(a['short'], f'articles/{slug}/', parent=('Articles', 'articles/')), art_ld] + ([faq_ld_of(faq)] if faq else [])
+    return page(f'articles/{slug}/', a['title'], a['desc'], body, active='articles/', ld=ld, share=(pic[0], a['h1']))
+
 def all_pages():
-    return ([p for p, _ in NAV] + [f'services/{s}/' for s, *_ in SERVICES] + [f'gearbox-problems/{p["slug"]}/' for p in PROBLEMS])
+    return ([p for p, _ in NAV] + [f'services/{s}/' for s, *_ in SERVICES] + [f'gearbox-problems/{p["slug"]}/' for p in PROBLEMS]
+            + [f'articles/{a["slug"]}/' for a in ARTICLES])
 
 
 def retired_estimator():
@@ -1105,7 +1207,8 @@ def llms_txt():
 ## Pages
 ''' + '\n'.join(f'- [{n}]({ORIGIN}/{p})' for p, n in NAV) + '\n' + '\n'.join(
         f'- [{txt(t)}]({ORIGIN}/services/{sid}/)' for sid, t, *_ in SERVICES) + '\n' + '\n'.join(
-        f'- [{p["name"]}]({ORIGIN}/gearbox-problems/{p["slug"]}/): {p["seen"]}' for p in PROBLEMS) + f'''
+        f'- [{p["name"]}]({ORIGIN}/gearbox-problems/{p["slug"]}/): {p["seen"]}' for p in PROBLEMS) + '\n' + '\n'.join(
+        f'- [{a["h1"]}]({ORIGIN}/articles/{a["slug"]}/): {a["desc"]}' for a in ARTICLES) + f'''
 
 ## Common questions
 {faq}
@@ -1126,6 +1229,9 @@ if __name__ == '__main__':
     build('gearbox-problems/index.html', problems_hub)
     for prob in PROBLEMS:
         build(f'gearbox-problems/{prob["slug"]}/index.html', lambda s=prob['slug']: problem_page(s))
+    build('articles/index.html', articles_hub)
+    for art in ARTICLES:
+        build(f'articles/{art["slug"]}/index.html', lambda s=art['slug']: article_page(s))
     build('cost-estimator/index.html', retired_estimator)
     build('price-estimator/index.html', retired_estimator)  # the old WordPress estimator's real address
     build('404.html', not_found)

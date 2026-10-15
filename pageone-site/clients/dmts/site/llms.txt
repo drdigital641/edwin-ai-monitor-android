@@ -27,6 +27,7 @@
 - [Home](https://jackygearbox.com/)
 - [Services](https://jackygearbox.com/services/)
 - [Gearbox Problems](https://jackygearbox.com/gearbox-problems/)
+- [Articles](https://jackygearbox.com/articles/)
 - [Gallery](https://jackygearbox.com/gallery/)
 - [About](https://jackygearbox.com/about/)
 - [Contact](https://jackygearbox.com/contact/)
@@ -45,6 +46,8 @@
 - [Burning smell](https://jackygearbox.com/gearbox-problems/burning-smell-from-gearbox/): A sharp burning smell after driving, especially in stop-start traffic or after a long climb, sometimes with slipping or harsh shifts.
 - [Car won’t move in Drive or Reverse](https://jackygearbox.com/gearbox-problems/car-wont-move-in-drive/): The engine starts and runs, but the car doesn’t move, or barely moves, when you select Drive or Reverse.
 - [Gear lever stuck in Park](https://jackygearbox.com/gearbox-problems/gear-lever-stuck-in-park/): You press the brake but the gear lever won’t move out of Park, or the gear selector doesn’t respond.
+- [Gearbox Overhaul vs Replacement: Which Is Right for Your Car?](https://jackygearbox.com/articles/gearbox-overhaul-vs-replacement/): Overhaul, reconditioned unit or a new gearbox? How to decide for your car in Singapore, what each option involves, and the questions to ask before you pay.
+- [How Often Should You Change Gearbox Oil (ATF) in Singapore?](https://jackygearbox.com/articles/how-often-change-atf-singapore/): How often should you change automatic transmission fluid in Singapore's stop-start traffic? What the "lifetime fluid" label means, warning signs, and what a proper ATF service includes.
 
 ## Common questions
 - How much does a gearbox repair cost in Singapore? It depends on the car and the fault, so we don’t quote blind. We start with a pre-repair diagnostic (from S$30) to find the actual cause, then give you a clear quote before any work starts. WhatsApp us your car model and symptoms to get started.
