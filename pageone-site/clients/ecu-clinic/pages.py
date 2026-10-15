@@ -526,7 +526,7 @@ ARTICLES = [
     dict(
         # EDGE daily article, 15 Oct 2026 (8pm run). Gap: the results for this question are US DIY pages (YOUCANIC),
         # a US forum and an overseas mail-in seller; none is a Singapore workshop that repairs the Hyundai / Kia ESC unit.
-        slug='hyundai-kia-abs-esc-light-on', service='abs-pump-repair', date='2026-10-15', img_commit='IMGCOMMIT',
+        slug='hyundai-kia-abs-esc-light-on', service='abs-pump-repair', date='2026-10-15', img_commit='5aca7fa95f89177d2c80cb6af8329a685bc3a6fe',
         title='Hyundai or Kia ABS and ESC Light On? Causes and Repair | The ECU Clinic',
         desc='Why the ABS and ESC lights come on together in a Hyundai or Kia, whether it is safe to drive, the usual causes, and how the ESC unit is checked and repaired in Singapore.',
         h1='Why Are the ABS and ESC Lights On in My Hyundai or Kia?',
