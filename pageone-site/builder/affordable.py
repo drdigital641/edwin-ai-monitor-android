@@ -266,7 +266,7 @@ page("cheapest-website-singapore/index.html",
       <div class="wrap">
         <p class="kicker reveal">Websites we built and run</p>
         <h2 class="reveal">See them for yourself</h2>
-        <p class="section-lead reveal">These Singapore businesses use the same system you get: """ + names_list([f'<a class="link" href="{c["url"]}" target="_blank" rel="noopener">{c["name"]}</a>' for c in SC["clients"]]) + """. <a class="link" href="/clients/">See them all →</a> <a class="link" href="/website/">More about our websites →</a></p>
+        <p class="section-lead reveal">These Singapore businesses use the same system you get: """ + names_list([f'<a class="link" href="{c["url"]}" target="_blank" rel="noopener">{c["name"]}</a>' for c in SC["clients"]]) + f""". <a class="link" href="/clients/">See them all →</a> <a class="link" href="/website/">More about our websites →</a></p>
       </div>
     </section>
 
@@ -281,7 +281,7 @@ page("cheapest-website-singapore/index.html",
     </section>
 
 """ + cta("Get your website without the lump sum", "Chat with Edwin on WhatsApp and send your old website address or your details. No obligation."),
-     crumb="A website without the lump sum")
+     crumb="A website without the lump sum", updated="2026-10-15")
 
 
 # ---------- New business website ----------
@@ -308,7 +308,7 @@ NEW_BIZ_FAQ = [
 
 page("new-business-website/index.html",
      "Website for a New Business in Singapore: S$20/month",
-     "Starting a business in Singapore? Your website, hosting, content and Google listing for S$20/month: about S$255–270 for the whole first year. No setup fee, live in 7 days.",
+     "Starting a business in Singapore? Website, hosting, content and Google listing for S$20/month, about S$255–270 for year one. No setup fee, live in 7 days.",
      [service("Website for new businesses in Singapore", "/new-business-website/",
               "A website for a new Singapore business, set up and managed: hosting, content, Google and Google Maps setup and monthly updates for S$20 a month.", "20"),
       _faq_ld(NEW_BIZ_FAQ), _price_ld("/new-business-website/")],
@@ -392,7 +392,7 @@ page("new-business-website/index.html",
         <h3 class="reveal" style="margin-top:40px">Two Singapore rules to know before you launch</h3>
         <ul class="ticks reveal">
           <li><b>A .com.sg address needs a registered business.</b> SGNIC, which runs .sg domains, only gives .com.sg to businesses registered (or registering) with ACRA or another recognised Singapore body. A plain .sg or .com has no such rule. If you're still registering, you can start with .com and add .com.sg later.</li>
-          <li><b>Your contact form collects personal data.</b> Under the PDPA, if your website asks for names, phone numbers or emails, tell people what you'll use them for. A short privacy notice and a line next to the form usually does it. See the <a class="link" href="https://www.pdpc.gov.sg/help-and-resources/2019/09/guide-to-notification" target="_blank" rel="noopener">PDPC guide to notification</a>.</li>
+          <li><b>Your contact form collects personal data.</b> Under the PDPA, if your website asks for names, phone numbers or emails, tell people what you'll use them for. A short privacy notice and a line next to the form usually does it. See the <a class="link" href="https://www.pdpc.gov.sg/organisations/resources/guidance-by-topic/guide-to-notification" target="_blank" rel="noopener">PDPC guide to notification</a>.</li>
         </ul>
       </div>
     </section>

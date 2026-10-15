@@ -53,7 +53,7 @@ _sag_cards = "\n".join(_sag_card(*x) for x in _SAG_ITEMS)
 
 page("seo-aeo-geo-singapore/index.html",
      "SEO, AEO and GEO Singapore: All Three from S$20/month",
-     "SEO for Google, AEO for Google's answer boxes and AI Overviews, GEO for ChatGPT, Gemini and Perplexity: what each means and how Page One does all three for S$20/month.",
+     "SEO for Google, AEO for Google's answers and AI Overviews, GEO for ChatGPT, Gemini and Perplexity: what each means and how we do all three for S$20/month.",
      [service("SEO, AEO and GEO", SAG_URL,
               "Search engine optimisation (Google Search and Maps), answer engine optimisation (featured snippets, People Also Ask, AI Overviews) "
               "and generative engine optimisation (ChatGPT, Gemini, Perplexity, Copilot), done together for Singapore small businesses.", "20"),

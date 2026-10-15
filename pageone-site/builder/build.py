@@ -585,11 +585,19 @@ page("website/index.html",
 
 
 # ---------- SEO Boost ----------
+BOOST_FAQ = [
+    ("How much does an SEO Boost cost?", "S$10 per Boost, on top of the S$20-a-month Get Found plan. There is no package to commit to: add Boosts at sign-up or top up anytime on WhatsApp. Most businesses start with 1 or 2 a month and add more when they want to push harder, for example before a busy season."),
+    ("What is the difference between the plan and a Boost?", "The S$20 Get Found plan already includes regular new articles and a technical audit every month. Each Boost adds more content on top, aimed at new niche long-tail searches, plus extra processing to fix the issues found in your audit, and ends with a before/after report."),
+    ("Does an SEO Boost guarantee better rankings?", "No. Google decides rankings, so no honest provider can guarantee them. What we guarantee is the work: every Boost is documented in a before/after report, so you can see exactly what was done and what changed."),
+]
+BOOST_FAQ_LD = {"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [
+    {"@type": "Question", "name": q, "acceptedAnswer": {"@type": "Answer", "text": a}} for q, a in BOOST_FAQ]}
+
 page("seo-boost/index.html",
      "SEO Boost: S$10 Top-up for Faster Results | Page One SG",
      "An optional S$10 SEO Boost: one full round of Google and AI visibility improvements, with a before/after report. Add at sign-up or top up anytime on WhatsApp.",
      [service("SEO Boost (optional top-up)", "/seo-boost/",
-              "One full round of Google and AI search visibility improvements with a before/after report. Optional, topped up anytime.", "10")],
+              "One full round of Google and AI search visibility improvements with a before/after report. Optional, topped up anytime.", "10"), BOOST_FAQ_LD],
      hero("SEO Boost", "Optional top-up",
           "Want faster results? Add an SEO Boost.",
           "An SEO Boost is an optional S$10 top-up for faster results: more content aimed at new niche long-tail searches, extra processing to fix SEO issues, then a report of exactly what changed. Your S$20 plan already includes regular new articles and a technical audit every month.",
@@ -644,8 +652,18 @@ page("seo-boost/index.html",
       </div>
     </section>
 
+    <section class="section alt">
+      <div class="wrap narrow">
+        <p class="kicker reveal">Questions</p>
+        <h2 class="reveal">SEO Boost: your questions, answered</h2>
+        <div style="margin-top:24px">
+""" + "".join(f"        <details class=\"reveal\"><summary>{q}</summary><p>{a}</p></details>\n" for q, a in BOOST_FAQ) + """        </div>
+        <p class="note reveal"><a class="link" href="/report.html">See a sample Boost report →</a> <a class="link" href="/faq/">Full FAQ →</a></p>
+      </div>
+    </section>
+
 """ + cta("Start with a free website check", "Before you spend anything, see where your website stands on Google, mobile and AI search. Takes under a minute."),
-     crumb="SEO Boost", updated=AIV_UPDATED)
+     crumb="SEO Boost", updated="2026-10-15")
 
 # ---------- Pricing ----------
 # "SEO packages / SEO pricing Singapore" owner page. Only Page One's own prices are numbers; other packages are
@@ -661,7 +679,7 @@ PRICING_FAQ = [
 
 page("pricing/index.html",
      "SEO Packages &amp; Pricing Singapore: S$20/month, No Contract",
-     "SEO package pricing for Singapore small businesses: S$20/month with your website, Google Maps and ChatGPT setup, articles and a monthly audit. No setup fee or contract.",
+     "SEO pricing for Singapore small businesses: S$20/month with your website, Google Maps and ChatGPT setup, articles and a monthly audit. No setup fee or contract.",
      [{"@context": "https://schema.org", "@type": "FAQPage",
        "mainEntity": [{"@type": "Question", "name": q, "acceptedAnswer": {"@type": "Answer", "text": a}} for q, a in PRICING_FAQ]},
       {"@context": "https://schema.org", "@type": "OfferCatalog", "name": "Page One Singapore pricing", "url": SITE + "/pricing/",
@@ -926,7 +944,7 @@ RESULTS_FAQ = [
 
 page("results/index.html",
      "SEO Case Studies Singapore: Real Google Results | Page One",
-     f"Real Google Search Console results from Singapore businesses on Page One's SEO system. Edwin Garage: {EG['clicks']} Google clicks in the 28 days to {THROUGH_SHORT}, average position {EG['pos']}.",
+     f"Real Google Search Console results from Singapore businesses on Page One. Edwin Garage: {EG['clicks']} clicks from Google in the 28 days to {THROUGH_SHORT}, position {EG['pos']}.",
      [{"@context": "https://schema.org", "@type": "CollectionPage", "url": SITE + "/results/",
        "name": "SEO Results & Case Studies", "about": PROVIDER, "inLanguage": "en-SG", "dateModified": SC_UPDATED,
        "hasPart": [
@@ -1049,8 +1067,8 @@ page("results/index.html",
 
 # ---------- Contact ----------
 page("contact/index.html",
-     "Contact Page One Singapore | WhatsApp Edwin",
-     "Ask Page One Singapore anything about getting found on Google and AI search. WhatsApp Edwin on +65 9785 6612. No obligation.",
+     "Contact Page One Singapore: WhatsApp Edwin, +65 9785 6612",
+     "Ask Page One Singapore about websites, SEO and getting found on Google and AI search. WhatsApp Edwin on +65 9785 6612; he replies personally. No obligation.",
      [{"@context": "https://schema.org", "@type": "ContactPage", "url": SITE + "/contact/", "name": "Contact Page One Singapore", "about": PROVIDER}],
      hero("Contact", "Edwin replies personally", "Questions? Chat with Edwin.",
           "The fastest way to reach us is WhatsApp. No obligation to buy anything.", buttons=False) + f"""
@@ -1085,7 +1103,24 @@ page("contact/index.html",
         </div>
       </div>
     </section>
-""", crumb="Contact")
+
+    <section class="section alt">
+      <div class="wrap narrow">
+        <p class="kicker reveal">Who you are talking to</p>
+        <h2 class="reveal">Business details</h2>
+        <div class="table-wrap reveal">
+          <table class="compare">
+          <tr><th>Business</th><td>Page One Singapore, a done-for-you website and SEO service for Singapore small businesses</td></tr>
+          <tr><th>Company</th><td>A project of Snap Commercial Pte. Ltd., UEN 202209904W, incorporated in Singapore on 23 March 2022. You can look the UEN up on <a class="link" href="https://www.bizfile.gov.sg/" target="_blank" rel="noopener">ACRA Bizfile</a>.</td></tr>
+          <tr><th>Founder</th><td>Edwin, NUS Computer Science (Honours). <a class="link" href="/about/">About Edwin →</a></td></tr>
+          <tr><th>WhatsApp and phone</th><td><a class="link" href="{WA_LINK}" target="_blank" rel="noopener">{WA_DISPLAY}</a></td></tr>
+          <tr><th>Area served</th><td>Singapore, island-wide.</td></tr>
+          <tr><th>Google Maps</th><td><a class="link" href="{GBP}" target="_blank" rel="noopener">Page One Singapore on Google</a></td></tr>
+        </table></div>
+        <p class="note reveal">Want to check us before you message? <a class="link" href="/is-page-one-singapore-legit/">Every claim with a way to verify it →</a> <a class="link" href="/clients/">The client websites we run →</a></p>
+      </div>
+    </section>
+""", crumb="Contact", updated="2026-10-15")
 
 # ---------- Privacy ----------
 page("privacy/index.html",
@@ -1155,7 +1190,7 @@ page("terms/index.html",
 # ---------- Sign up ----------
 page("signup/index.html",
      "Sign Up: Get Found from S$20/month | Page One Singapore",
-     "Sign up for the Get Found plan at the introductory price of S$20/month on WhatsApp. No setup fee, no contract, cancel anytime.",
+     "Sign up for the Get Found plan at the introductory price of S$20/month: website, Google and AI search setup, articles and monthly audits. No setup fee or contract.",
      [service("Get Found basic subscription", "/signup/",
               "A website or SEO landing page set up for Google Search, Google Maps and AI assistants. Introductory price, billed monthly.", "20")],
      hero("Sign up", "Introductory price · limited time", "Get found on Google and AI from S$20 a month.",
@@ -1406,7 +1441,7 @@ page("seo-explained/index.html",
 
 
 # ---------- Home ----------
-HOME_QA = [('What is Page One Singapore?', 'Page One Singapore is an affordable SEO service for Singapore small businesses. It gets businesses found on Google Search, Google Maps and AI assistants such as ChatGPT. It was built by Edwin, an NUS Computer Science (Honours) graduate with 18+ years in business, and proven first on his own car workshop, Edwin Garage.'), ('How much does SEO cost with Page One Singapore?', 'The Get Found plan is S$20 a month at an introductory price, with no setup fee and no minimum contract. Optional SEO Boosts cost S$10 each, for when you want faster results.'), ('What do I get every month for S$20?', 'Your business is found naturally in the free, unpaid results on Google, Google Maps and ChatGPT. We write regular new articles for your site and run a technical audit of your page every month. Your website or SEO landing page is kept online, secure and fast, with a WhatsApp button. Want to grow faster? SEO Boosts add more content aimed at new keywords.'), ('Can you help my business show up in ChatGPT?', "Yes. We connect your site to Bing, which ChatGPT search uses, label your business details with structured data, publish an llms.txt summary and write content that answers customers' questions. No one can guarantee an AI assistant will recommend you, but these steps make it possible."), ('Do I need a website first?', "No. If you don't have a website, we build one on your own domain. If you already have one, we add an SEO landing page on a subdomain and leave your current site as it is."), ('Does it actually work?', PROOF_BOTH + " Results vary by business, so we don't guarantee rankings.")]
+HOME_QA = [('What is Page One Singapore?', 'Page One Singapore is an affordable SEO service for Singapore small businesses. It gets businesses found on Google Search, Google Maps and AI assistants such as ChatGPT. It was built by Edwin, an NUS Computer Science (Honours) graduate with 18+ years in business, and proven first on his own car workshop, Edwin Garage.'), ('How much does SEO cost with Page One Singapore?', 'The Get Found plan is S$20 a month at an introductory price, with no setup fee and no minimum contract. Optional SEO Boosts cost S$10 each, for when you want faster results.'), ('What do I get every month for S$20?', 'Your business is found naturally in the free, unpaid results on Google, Google Maps and ChatGPT. We write regular new articles for your site and run a technical audit of your page every month. Your website or SEO landing page is kept online, secure and fast, with a WhatsApp button. Want to grow faster? SEO Boosts add more content aimed at new keywords.'), ('Does it actually work?', PROOF_BOTH + " Results vary by business, so we don't guarantee rankings.")]
 HOME_FAQ_LD = {"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [
     {"@type": "Question", "name": q, "acceptedAnswer": {"@type": "Answer", "text": a}} for q, a in HOME_QA]}
 # Industry pages, industries hub and the free website check page.
@@ -1437,7 +1472,7 @@ page("index.html",
                           {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "SEO Boost", "url": SITE + "/seo-boost/"}, "price": "10", "priceCurrency": "SGD"}]),
          WEBSITE_NODE]}],
      fill_home(open(os.path.join(HERE, "home_body.html"), encoding="utf-8").read().rstrip("\n").replace("{{GLANCE}}", glance("section alt"))),
-     updated=max(SC_UPDATED, AIV_UPDATED),
+     updated=max(SC_UPDATED, AIV_UPDATED, "2026-10-15"),
      head_extra="\n  <style>" + " ".join(open(os.path.join(HERE, "home_motion.css"), encoding="utf-8").read().split("\n")[1:]).strip() + "</style>",
      foot_extra='\n  <script src="/motion.js?v=1" defer></script>')
 
