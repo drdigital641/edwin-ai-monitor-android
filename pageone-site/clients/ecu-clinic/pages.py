@@ -196,7 +196,7 @@ SERVICE_PAGES = [
     ),
     dict(
         slug='honda-radar-repair', key='radar', name='Honda Front Radar (ADAS) Repair',
-        title='Honda Sensing Radar Repair Singapore | Millimeter Wave Radar Error | The ECU Clinic',
+        title='Honda Sensing Radar Repair Singapore | The ECU Clinic',
         desc='Honda front radar (millimeter wave radar) repair in Kaki Bukit. P2583 radar function error and Honda Sensing warnings. We repair your unit instead of replacing it. WhatsApp 9893 1923.',
         h1='Honda Front Radar (ADAS) Repair',
         lead='Honda Sensing warning, or a “Millimeter Wave Radar Function Error” on the scan tool? We repair your existing front radar unit instead of replacing it with a new one.',
@@ -222,7 +222,7 @@ SERVICE_PAGES = [
     ),
     dict(
         slug='bmw-cas-module-repair', key='cas', name='BMW CAS Module Repair',
-        title='BMW CAS Module Repair Singapore | Car Access System Fault | The ECU Clinic',
+        title='BMW CAS Module Repair Singapore | The ECU Clinic',
         desc='BMW CAS (Car Access System) module repair in Kaki Bukit. Key not recognised, car won’t start or steering lock (ELV) faults. WhatsApp 9893 1923.',
         h1='BMW CAS Module Repair',
         lead='Key not recognised, car won’t start, or CAS and steering lock faults on the scan tool? We repair the BMW CAS module.',
@@ -262,7 +262,7 @@ SERVICE_PAGES = [
 ARTICLES = [
     dict(
         slug='honda-yaw-rate-sensor-malfunction', service='abs-pump-repair', date='2026-10-14',
-        title='Honda Yaw Rate Sensor Malfunction (81-19, C0063): VSA & ABS Lights | The ECU Clinic',
+        title='Honda Yaw Rate Sensor Fault 81-19 | The ECU Clinic',
         desc='Honda yaw rate sensor and acceleration sensor faults inside the VSA modulator control unit (81-19, 81-20, C0063, C0062): what they mean and how they are repaired.',
         h1='Honda Yaw Rate Sensor Malfunction (81-19)',
         lead='A well-known Honda ABS fault: the yaw rate sensor inside the VSA modulator, and why it brings up so many other codes.',
@@ -286,7 +286,7 @@ ARTICLES = [
     ),
     dict(
         slug='bmw-cas-elv-fault-codes', service='bmw-cas-module-repair', date='2026-10-14',
-        title='BMW CAS Fault Codes: ELV Fault, Processor & Engine Start (A11E, A0AF) | The ECU Clinic',
+        title='BMW CAS Fault Codes A11E, A0AF, A0B4 | The ECU Clinic',
         desc='What BMW CAS fault codes such as A11E ELV Fault, A0AF Processor and A0B4 Engine Start mean, why the car may not start, and repairing the CAS module.',
         h1='BMW CAS Fault Codes: ELV Fault, Processor and Engine Start',
         lead='Why a BMW shows a list of CAS and steering lock codes, and what to do when the car won’t start.',
@@ -317,7 +317,7 @@ ARTICLES = [
     ),
     dict(
         slug='honda-vsa-solenoid-valve-malfunction', service='abs-pump-repair', date='2026-10-14',
-        title='Honda VSA Solenoid Valve Malfunction (121-11): ABS, VSA & Brake Lights | The ECU Clinic',
+        title='Honda 121-11 VSA Solenoid Valve Fault | The ECU Clinic',
         desc='What the Honda VSA Solenoid Valve Malfunction code (121-11) means, why ABS, VSA, parking brake and steering warnings come on together, and how it is fixed.',
         h1='Honda VSA Solenoid Valve Malfunction (121-11)',
         lead='One of the most common Honda ABS faults we see: what the code means and why so many warning lights come on at once.',
@@ -340,7 +340,7 @@ ARTICLES = [
     ),
     dict(
         slug='mercedes-esp-control-unit-fault-n30-4', service='abs-pump-repair', date='2026-10-14',
-        title='Mercedes ESP Control Unit Fault N30/4 (5001): ABS & ESP Lights | The ECU Clinic',
+        title='Mercedes ESP Fault N30/4 (5001) | The ECU Clinic',
         desc='What the Mercedes-Benz fault “internal fault in component N30/4 (Electronic Stability Program control unit)” means, the warnings it causes, and repairing the ESP unit.',
         h1='Mercedes ESP Control Unit Fault: N30/4 Internal Fault (5001)',
         lead='What the N30/4 code means on a Mercedes-Benz, and your options for the ESP pump and module.',
@@ -361,7 +361,7 @@ ARTICLES = [
     ),
     dict(
         slug='honda-millimeter-wave-radar-error-p2583', service='honda-radar-repair', date='2026-10-14',
-        title='Honda Millimeter Wave Radar Function Error (P2583) | Honda Sensing Warning | The ECU Clinic',
+        title='Honda P2583 Millimeter Wave Radar Error | The ECU Clinic',
         desc='What the Honda P2583 Millimeter Wave Radar Function Error and Aiming Incomplete codes mean, why Honda Sensing switches off, and repairing the radar instead of replacing it.',
         h1='Honda Millimeter Wave Radar Function Error (P2583)',
         lead='Why Honda Sensing switches off, what the radar codes mean, and how the front radar can be repaired.',

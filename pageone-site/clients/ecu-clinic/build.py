@@ -501,7 +501,7 @@ def home():
 <section><div class="wrap"><div class="band"><div><h2>ABS or brake light on?</h2><p>WhatsApp us the fault code, chassis number and car model. We’ll tell you what we can do.</p></div>{cta_buttons(dark=True)}</div></div></section>
 '''
     # 14 Oct 2026: home is the brand / brake system specialist page; services/abs-pump-repair/ owns "abs pump repair singapore".
-    return page('', 'ABS & Brake System Specialist Singapore | The ECU Clinic, Kaki Bukit',
+    return page('', 'ABS & Brake System Specialist Singapore | The ECU Clinic',
                 'ABS pump and module repair, brake fault diagnosis, Mercedes 7G/9G TCU and steering lock repair, new OEM hybrid batteries. Kaki Bukit. WhatsApp 9893 1923.',
                 body, ld=[faq_ld()], share=('mercedes-esp-pumps.jpg', 'ABS Pump Repair Specialist in Singapore'))
 
