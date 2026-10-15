@@ -165,9 +165,9 @@ PROCESS = [
 ]
 
 
-def process():
+def process(short=False):
     return ('<ol class="process">' + ''.join(
-        f'<li class="step"><span class="node">{COG}<b>{i + 1}</b></span><div><h3>{e(h)}</h3><p>{e(p)}</p></div></li>'
+        f'<li class="step"><span class="node">{COG}<b>{i + 1}</b></span><div><h3>{e(h)}</h3>{"" if short else f"<p>{e(p)}</p>"}</div></li>'
         for i, (h, p) in enumerate(PROCESS)) + '</ol>')
 
 def u(path=''):
@@ -399,6 +399,10 @@ FAQ = [
 
 
 FAQ_BY_Q = dict(FAQ)
+# Lean home page (Edwin's rule, 15 Oct 2026): the home page keeps the 4 strongest questions (visible = FAQPage schema).
+# The other three stay on the owner pages: warranty (services, contact, gallery), signs (gallery, problems hub),
+# where/open (gallery).
+HOME_FAQ = FAQ[:4]
 
 # EDGE Loop, 13 Oct 2026: extra questions for the owner pages only (the home page FAQ is unchanged).
 # The Singapore top 10 for "gearbox repair/overhaul" and "gearbox oil change" leave these open or contradict
@@ -654,7 +658,7 @@ SERVICE_ROW = {sid: (sid, t, im, alt, d) for sid, t, im, alt, d in SERVICES}
 def faq_ld():
     import re
     return {'@context': 'https://schema.org', '@type': 'FAQPage', 'mainEntity': [
-        {'@type': 'Question', 'name': q, 'acceptedAnswer': {'@type': 'Answer', 'text': re.sub('<[^>]+>', '', a)}} for q, a in FAQ]}
+        {'@type': 'Question', 'name': q, 'acceptedAnswer': {'@type': 'Answer', 'text': re.sub('<[^>]+>', '', a)}} for q, a in HOME_FAQ]}
 
 
 def crumbs_ld(name, path, parent=None):
@@ -696,8 +700,8 @@ WHY = [
 ]
 
 
-def why_cards():
-    return ''.join(f'<div class="card"><div class="ico">{ICON[i]}</div><h3>{t}</h3><p class="muted">{d}</p></div>' for i, t, d in WHY)
+def why_cards(n=None):
+    return ''.join(f'<div class="card"><div class="ico">{ICON[i]}</div><h3>{t}</h3><p class="muted">{d}</p></div>' for i, t, d in WHY[:n])
 
 
 def testimonials():
@@ -706,7 +710,7 @@ def testimonials():
 
 
 def faq_html():
-    return ''.join(f'<details><summary>{e(q)}</summary><div class="a">{a}</div></details>' for q, a in FAQ)
+    return ''.join(f'<details><summary>{e(q)}</summary><div class="a">{a}</div></details>' for q, a in HOME_FAQ)
 
 
 def loc_cards(maps=False, only=None):
@@ -732,8 +736,8 @@ HOURS = ('<dl class="hours"><dt>Mon – Fri</dt><dd>9:00am – 6:00pm</dd><dt>Sa
 
 # ---------- pages ----------
 def home():
-    svc = service_cards()
-    sym = problem_cards()
+    svc = service_cards(home=True)
+    sym = problem_cards(short=True)
     gal = ''.join(f'<figure>{img(n, a)}<figcaption>{e(a)}</figcaption></figure>' for n, a in GALLERY[:6])
     body = f'''
 <section class="hero" style="padding:0">
@@ -750,16 +754,16 @@ def home():
 {ticker()}
 
 <section><div class="wrap">
-<div class="sec-head"><h2>Why drivers bring their gearbox to Jacky</h2><p>One specialist looks after your gearbox from the first test to the final road test, so you always know who is responsible for your car.</p></div>
+<div class="sec-head"><h2>Why drivers bring their gearbox to Jacky</h2></div>
 {stats()}
-<div class="grid g3 why">{why_cards()}</div>
+<div class="grid g3 why">{why_cards(3)}</div>
 </div></section>
 
-{meet_jacky()}
+{meet_jacky(advice=False)}
 
 <section class="process-sec"><div class="wrap">
 <div class="sec-head"><span class="eyebrow dark">How it works</span><h2>From first test to final road test</h2><p>Jacky is with your car at every check, so nothing is handed back until he is happy with it.</p></div>
-{process()}
+{process(short=True)}
 </div></section>
 
 <section class="alt"><div class="wrap">
@@ -778,7 +782,6 @@ def home():
 <div>
 <h2>Know the fault before you pay for a repair</h2>
 <p>Gearbox symptoms can have very different causes, from a worn solenoid to a failing torque converter. So Jacky diagnoses first, then quotes. You decide before any repair work starts.</p>
-<ul class="ticks"><li>{DIAG}</li><li>Clear quote before any work starts</li><li>Standard 6-month warranty on repairs</li></ul>
 <a class="btn btn-wa" href="{wa_link("Hi Jacky, I would like to book a gearbox diagnostic.")}" target="_blank" rel="noopener">{ICON["wa"]}Book a diagnostic</a>
 </div>
 <div>{img("diagnostics", "Laptop running a transmission diagnostic test on a BMW")}</div>
@@ -790,7 +793,7 @@ def home():
 </div></section>
 
 <section><div class="wrap">
-<div class="sec-head"><h2>Inside the workshop</h2><p>Dedicated gearbox teardown stations, diagnostic equipment and an air-conditioned lounge where you can watch your car being worked on.</p></div>
+<div class="sec-head"><h2>Inside the workshop</h2></div>
 <div class="gallery home-gal">{gal}</div>
 <p style="margin-top:20px"><a class="btn btn-line" href="{u("gallery/")}">View all photos</a></p>
 </div></section>
@@ -841,14 +844,18 @@ def services():
                 body, active='services/', ld=ld, share=('gearbox-teardown', 'Gearbox Repair, Overhaul, Upgrade & Servicing'))
 
 
-def problem_cards(slugs=None):
+def problem_cards(slugs=None, short=False):
     ps = [PROBLEM_BY[s] for s in slugs] if slugs else PROBLEMS
     return ''.join(f'<a class="card" href="{u("gearbox-problems/" + p["slug"] + "/")}" style="text-decoration:none;color:inherit">'
-                   f'<h3>{e(p["name"])}</h3><p class="muted">{e(p["seen"])}</p><span class="more">What it means →</span></a>' for p in ps)
+                   f'<h3>{e(p["name"])}</h3>' + ('</a>' if short else f'<p class="muted">{e(p["seen"])}</p><span class="more">What it means →</span></a>') for p in ps)
 
 
-def service_cards(sids=None):
+def service_cards(sids=None, home=False):
     rows = [SERVICE_ROW[s] for s in sids] if sids else SERVICES
+    if home:  # lean home page: the service's first sentence + "More details"
+        return ''.join(f'<a class="card img" href="{u("services/" + sid + "/")}" style="text-decoration:none;color:inherit">{img(im, alt)}'
+                       f'<div class="body"><h3>{t}</h3><p class="muted">{d.split(". ")[0].rstrip(".")}.</p><span class="more">More details →</span></div></a>'
+                       for sid, t, im, alt, d in rows)
     return ''.join(f'<a class="card img" href="{u("services/" + sid + "/")}" style="text-decoration:none;color:inherit">{img(im, alt)}'
                    f'<div class="body"><h3>{t}</h3><p class="muted">{d[:118].rsplit(" ", 1)[0]}…</p><span class="more">Learn more →</span></div></a>'
                    for sid, t, im, alt, d in rows)
@@ -1122,7 +1129,7 @@ def gallery():
                 body, active='gallery/', ld=[crumbs_ld('Gallery', 'gallery/'), faq_ld_of(FAQ[4:])], share=('customer-lounge', 'Inside Our Gearbox Workshop in Woodlands'))
 
 
-def meet_jacky(more=True):
+def meet_jacky(more=True, advice=True):
     # Jacky is the business (client brief, 14 Oct 2026): a gearbox specialist and consultant who does the
     # diagnosis, testing, inspection and final road test himself; the workshop team does the repair. His own portfolio and experience are coming from the client: add them here
     # and on the About page (JACKY_STORY) when they arrive, with his photo in place of the workshop one.
@@ -1133,7 +1140,7 @@ def meet_jacky(more=True):
 <span class="eyebrow dark">Meet Jacky</span>
 <h2>The gearbox specialist you deal with from start to finish</h2>
 <p>Jacky diagnoses and tests your gearbox himself, explains the fault in plain words, and gives you the price before any work starts. The repair is done by an experienced workshop team; Jacky inspects the work and does the final road test before he hands the car back to you.</p>
-<p>You can also come to Jacky for advice, for example a second opinion on a gearbox quote, or whether a repair is worth doing on your car.</p>
+{'<p>You can also come to Jacky for advice, for example a second opinion on a gearbox quote, or whether a repair is worth doing on your car.</p>' if advice else ''}
 <div class="btns"><a class="btn btn-wa" href="{wa_link()}" target="_blank" rel="noopener">{ICON["wa"]}WhatsApp Jacky</a>{link}</div>
 </div>
 </div></section>'''
