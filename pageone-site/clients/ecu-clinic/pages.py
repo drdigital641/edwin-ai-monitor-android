@@ -523,4 +523,41 @@ ARTICLES = [
 <h2>Get a quick answer</h2>
 <p>WhatsApp us your car model, chassis number and the fault code. A photo of the warning lights also helps.</p>''',
     ),
+    dict(
+        # EDGE daily article, 15 Oct 2026 (8pm run). Gap: the results for this question are US DIY pages (YOUCANIC),
+        # a US forum and an overseas mail-in seller; none is a Singapore workshop that repairs the Hyundai / Kia ESC unit.
+        slug='hyundai-kia-abs-esc-light-on', service='abs-pump-repair', date='2026-10-15', img_commit='IMGCOMMIT',
+        title='Hyundai or Kia ABS and ESC Light On? Causes and Repair | The ECU Clinic',
+        desc='Why the ABS and ESC lights come on together in a Hyundai or Kia, whether it is safe to drive, the usual causes, and how the ESC unit is checked and repaired in Singapore.',
+        h1='Why Are the ABS and ESC Lights On in My Hyundai or Kia?',
+        lead='One fault, two warning lights: what it means, what to check first, and when the ESC unit itself needs repair.',
+        photo='hyundai-kia-esc', alt='Hyundai / Kia ESC unit on our repair bench', share='hyundai-kia-esc-units.jpg',
+        body='''<p><strong>Short answer:</strong> in a Hyundai or Kia, the ABS and ESC (Electronic Stability Control) systems share one unit in the engine bay, so a single fault usually turns on both lights. The cause can be a wheel speed sensor, wiring, a switch or sensor the system relies on, or the ESC unit itself. Reading the fault code tells you which.</p>
+<h2>What is the ESC unit?</h2>
+<p>ESC is the stability control system. It uses the same hydraulic block, pump motor and electronic control module as the anti-lock brakes (ABS). That is why the ABS light, the ESC light and sometimes the brake warning light come on together: the systems run through the same unit.</p>
+<h2>Is it safe to drive with the ABS and ESC lights on?</h2>
+<p>In most cases your normal brakes still work, but anti-lock braking and stability control may be switched off until the fault is fixed. The wheels can then lock under hard braking, and the car will not correct a skid on a wet road. Leave more distance and avoid hard stops. If the red brake warning light is also on, or the brake pedal feels different, stop driving and get the car checked first.</p>
+<h2>What are the common causes?</h2>
+<ul class="ticks">
+<li><strong>Wheel speed sensor.</strong> Each wheel has one. A dirty, damaged or failed sensor is a common cause.</li>
+<li><strong>Wiring and connectors.</strong> Sensor wiring runs close to the wheels and can be damaged or corroded.</li>
+<li><strong>Other inputs the ESC relies on.</strong> Stability control also uses signals such as steering angle and brake pedal position, so a fault there can turn on the ESC light.</li>
+<li><strong>Low brake fluid or a blown fuse.</strong> Simple causes worth ruling out first.</li>
+<li><strong>The ESC unit itself.</strong> The control module or the pump motor in the unit can develop internal faults.</li>
+</ul>
+<h2>How do we find which part is at fault?</h2>
+<ol class="steps">
+<li><strong>Read the fault codes.</strong> The ESC module stores codes that point to the circuit at fault.</li>
+<li><strong>Rule out the simple causes.</strong> Sensors, wiring, fluid level and fuses.</li>
+<li><strong>Check the unit.</strong> If the codes and tests point to the module or pump, the ESC unit is the problem.</li>
+<li><strong>Tell you the options.</strong> You decide before any work starts.</li>
+</ol>
+<h2>Repair, recon, used or new?</h2>
+<p>If the fault is in the ESC unit, we can repair your own unit, or supply a reconditioned, used or new one. The photo above is a Hyundai / Kia ESC unit on our bench. Our repairs come with a 6-month warranty. See <a href="../../services/abs-pump-repair/">ABS pump and module repair</a> for how the options compare.</p>
+<h2>What should I send?</h2>
+<p>WhatsApp us your car model, year, chassis number and the fault codes. A photo of the dashboard or the scan tool screen also helps. You can bring the car, or just the unit, to Premier @ Kaki Bukit, or use our pick-up and delivery service.</p>''',
+        faq=[('Can I clear the ABS and ESC lights myself?', 'Clearing the code only turns the lights off until the fault is found again. If the cause is still there, the lights come back, so read the code first.'),
+             ('How long can I keep driving with the ESC light on?', 'There is no safe fixed limit. Normal braking usually still works, but anti-lock braking and stability control may be off, so get it checked soon, and stop driving if the red brake light is on too.'),
+             ('Can you repair the unit without the car?', 'Yes. You can bring just the ESC unit to us at Premier @ Kaki Bukit, or use our pick-up and delivery service.')],
+    ),
 ]

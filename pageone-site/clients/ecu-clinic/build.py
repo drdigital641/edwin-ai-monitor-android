@@ -269,12 +269,13 @@ def faq_ld():
         {'@type': 'Question', 'name': q, 'acceptedAnswer': {'@type': 'Answer', 'text': re.sub('<[^>]+>', '', a)}} for q, a in HOME_FAQ]}
 
 
-def page(path, title, desc, body, ld=None, share=('module-circuit-board.jpg', None), og_type='website'):
+def page(path, title, desc, body, ld=None, share=('module-circuit-board.jpg', None), og_type='website', img_origin=None):
     canonical = ORIGIN + BASE + path
     slug = path.strip('/').replace('/', '-') or 'home'
     headline = share[1] or title.split(' | ')[0]
     SHARES[slug] = (share[0], headline)
-    og_img = f'{IMG_ORIGIN}/img/share/{slug}.jpg'
+    # img_origin: a share image added after IMG_COMMIT is served from the commit that added it (no site-wide re-pin).
+    og_img = f'{img_origin or IMG_ORIGIN}/img/share/{slug}.jpg'
     ld = [schema()] + (ld or []) + [{'@context': 'https://schema.org', '@type': 'WebPage', '@id': canonical, 'url': canonical,
                                      'name': title, 'description': desc, 'about': {'@id': f'{ORIGIN}{BASE}#business'},
                                      'primaryImageOfPage': {'@type': 'ImageObject', 'url': og_img, 'width': 1200, 'height': 630}}]
@@ -735,12 +736,21 @@ def article(a):
 <div class="grid g3 arts">{article_cards(more)}</div>
 </div></section>
 ''' + band()
+    # Optional visible FAQ (AEO checklist, EDGE daily articles from 15 Oct 2026); articles without 'faq' render as before.
+    if a.get('faq'):
+        qa = ''.join(f'<details><summary>{e(q)}</summary><div class="a">{e(x)}</div></details>' for q, x in a['faq'])
+        body = body.replace('<section class="alt"><div class="wrap">\n<div class="sec-head"><h2>More articles</h2>',
+                            f'<section><div class="wrap prose"><h2>Questions</h2>\n{qa}\n</div></section>\n'
+                            '<section class="alt"><div class="wrap">\n<div class="sec-head"><h2>More articles</h2>', 1)
+    origin = (IMG_CDN.replace(IMG_COMMIT, a['img_commit']).rstrip('/') if a.get('img_commit') and IMG_CDN else IMG_ORIGIN)
     art_ld = {'@context': 'https://schema.org', '@type': 'Article', 'headline': a['h1'], 'description': a['desc'],
               'datePublished': a['date'], 'dateModified': a['date'], 'mainEntityOfPage': f'{ORIGIN}{BASE}{path}',
-              'image': f'{IMG_ORIGIN}/img/share/{path.strip("/").replace("/", "-")}.jpg',
+              'image': f'{origin}/img/share/{path.strip("/").replace("/", "-")}.jpg',
               'author': {'@type': 'Organization', 'name': BIZ['name'], 'url': f'{ORIGIN}{BASE}'},
               'publisher': {'@id': f'{ORIGIN}{BASE}#business'}}
-    return page(path, a['title'], a['desc'], body, ld=[art_ld, crumbs_ld(crumbs)], share=(a['share'], a['h1']), og_type='article')
+    ld = [art_ld, crumbs_ld(crumbs)] + ([faq_ld_of(a['faq'])] if a.get('faq') else [])
+    return page(path, a['title'], a['desc'], body, ld=ld, share=(a['share'], a['h1']), og_type='article',
+                img_origin=origin if a.get('img_commit') else None)
 
 
 if __name__ == '__main__':
