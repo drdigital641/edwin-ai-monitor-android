@@ -28,7 +28,7 @@ ORIGIN = 'https://jackygearbox.com'  # the client's domain (was dmts.com.sg unti
 BASE = '/'
 DEPTH = 0  # folder depth of the page being built; set by build() so u() can emit relative links
 ABS = False  # root-relative links instead (404 page: Apache serves it at any depth)
-ASSET_V = '9'
+ASSET_V = '10'
 SLUG = 'dmts'  # Page One client key: p1-site marker (go-live check) and WhatsApp tracker
 INDEXNOW_KEY = '5792dfeef836aebd82a445c206294c95'  # same key as the controller's Client record
 # Share images and icons must load before jackygearbox.com points here, so until go-live they are linked
@@ -50,6 +50,20 @@ BIZ = {
                'map': '60 Jalan Lam Huat Singapore 737869'},
 }
 WA_TEXT = 'Hi Jacky, I would like a quote for my gearbox.'
+
+# The two workshops Jacky works from, each with its own local landing page and schema entity, so searches
+# like "gearbox repair Woodlands" or "gearbox workshop near Kranji" find the nearest one (user, 15 Oct 2026).
+# Jalan Lam Huat is in the Kranji / Sungei Kadut industrial area, a few minutes from Kranji MRT.
+LOCATIONS = [
+    {'key': 'hq', 'id': 'woodlands', 'slug': 'gearbox-repair-woodlands', 'place': 'Woodlands', 'tag': 'Headquarters',
+     'label': 'Woodlands (Wave 9)', 'h1': 'Gearbox Repair in Woodlands',
+     'where': 'Wave 9, in Woodlands Industrial Park E9',
+     'near': ['Woodlands', 'Admiralty', 'Marsiling', 'Woodlands North', 'Sembawang', 'Canberra', 'Yishun']},
+    {'key': 'branch', 'id': 'kranji', 'slug': 'gearbox-repair-kranji', 'place': 'Kranji', 'tag': 'Branch',
+     'label': 'Jalan Lam Huat (Kranji)', 'h1': 'Gearbox Repair in Kranji',
+     'where': 'Jalan Lam Huat, in the Kranji industrial area',
+     'near': ['Kranji', 'Sungei Kadut', 'Yew Tee', 'Choa Chu Kang', 'Bukit Panjang', 'Lim Chu Kang', 'Bukit Batok']},
+]
 
 NAV = [('', 'Home'), ('services/', 'Services'), ('gearbox-problems/', 'Gearbox Problems'), ('articles/', 'Articles'),
        ('gallery/', 'Gallery'), ('about/', 'About'), ('contact/', 'Contact')]
@@ -174,24 +188,49 @@ def cta_buttons(extra=''):
             f'{extra}</div>')
 
 
+HOURS_LD = [
+    {'@type': 'OpeningHoursSpecification', 'dayOfWeek': ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday'], 'opens': '09:00', 'closes': '18:00'},
+    {'@type': 'OpeningHoursSpecification', 'dayOfWeek': 'Saturday', 'opens': '09:00', 'closes': '15:00'}]
+
+
+def map_url(key):
+    from urllib.parse import quote
+    return f'https://www.google.com/maps/search/?api=1&query={quote(BIZ[key]["map"])}'
+
+
+def location_ld(loc):
+    a = BIZ[loc['key']]
+    return {'@type': 'AutoRepair', '@id': f'{ORIGIN}{BASE}#{loc["id"]}', 'name': f'Jacky Gearbox {loc["place"]}',
+            'url': f'{ORIGIN}{BASE}{loc["slug"]}/', 'image': f'{IMG_ORIGIN}/img/share/{loc["slug"]}.jpg',
+            'telephone': BIZ['mobile'], 'priceRange': 'Diagnostic from S$30',
+            'address': {'@type': 'PostalAddress', 'streetAddress': a['street'], 'addressLocality': 'Singapore',
+                        'postalCode': a['postal'], 'addressCountry': 'SG'},
+            'hasMap': map_url(loc['key']),
+            'areaServed': [{'@type': 'Place', 'name': f'{n}, Singapore'} for n in loc['near']],
+            'openingHoursSpecification': HOURS_LD, 'parentOrganization': {'@id': f'{ORIGIN}{BASE}#org'}}
+
+
 def schema():
     # Jacky's own business (client brief, 14 Oct 2026): he is a gearbox specialist and consultant who
-    # diagnoses, inspects and road-tests every car himself; the repair work is done at the workshops he
-    # works from. His Google Business Profile is a service-area profile, so no street address here
-    # (the workshop addresses belong to the workshop's own listing).
+    # diagnoses, inspects and road-tests every car himself; the repair work is done at the two workshops he
+    # works from. Each workshop is its own AutoRepair with a street address (user, 15 Oct 2026), linked to
+    # the brand as a department, so local and "near me" searches can match either one.
+    org = f'{ORIGIN}{BASE}#org'
     return {'@context': 'https://schema.org', '@graph': [
-        {'@type': 'AutoRepair', '@id': f'{ORIGIN}{BASE}#org', 'name': 'Jacky Gearbox',
+        {'@type': 'AutoRepair', '@id': org, 'name': 'Jacky Gearbox',
          'url': f'{ORIGIN}{BASE}', 'logo': {'@type': 'ImageObject', 'url': f'{IMG_ORIGIN}/img/logo.png'},
          'image': f'{IMG_ORIGIN}/img/share/home.jpg',
          'telephone': BIZ['mobile'], 'sameAs': [BIZ['google']],
-         'areaServed': {'@type': 'Country', 'name': 'Singapore'},
-         'openingHoursSpecification': [
-             {'@type': 'OpeningHoursSpecification', 'dayOfWeek': ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday'], 'opens': '09:00', 'closes': '18:00'},
-             {'@type': 'OpeningHoursSpecification', 'dayOfWeek': 'Saturday', 'opens': '09:00', 'closes': '15:00'}],
+         'address': location_ld(LOCATIONS[0])['address'],
+         'areaServed': [{'@type': 'Country', 'name': 'Singapore'}] + [{'@type': 'Place', 'name': f'{n}, Singapore'} for l in LOCATIONS for n in l['near']],
+         'openingHoursSpecification': HOURS_LD,
+         'department': [{'@id': f'{ORIGIN}{BASE}#{l["id"]}'} for l in LOCATIONS],
          'founder': {'@id': f'{ORIGIN}{BASE}#jacky'},
-         'description': 'Jacky is a gearbox specialist and consultant in Singapore. He diagnoses, inspects and road-tests every car himself, for gearbox repair, overhaul, upgrades and ATF servicing.'},
+         'description': 'Jacky is a gearbox specialist and consultant in Singapore, working from workshops in Woodlands and Kranji. He diagnoses, inspects and road-tests every car himself, for gearbox repair, overhaul, upgrades and ATF servicing.'},
         {'@type': 'Person', '@id': f'{ORIGIN}{BASE}#jacky', 'name': 'Jacky', 'jobTitle': 'Gearbox specialist and consultant',
-         'worksFor': {'@id': f'{ORIGIN}{BASE}#org'}, 'knowsAbout': ['Automatic transmission repair', 'Gearbox overhaul', 'Gearbox diagnostics', 'ATF servicing']}]}
+         'worksFor': {'@id': org}, 'workLocation': [{'@id': f'{ORIGIN}{BASE}#{l["id"]}'} for l in LOCATIONS],
+         'knowsAbout': ['Automatic transmission repair', 'Gearbox overhaul', 'Gearbox diagnostics', 'ATF servicing']}]
+        + [location_ld(l) for l in LOCATIONS]}
 
 
 def page(path, title, desc, body, active='', extra_head='', ld=None, scripts='', share=('hero-workshop', None)):
@@ -286,7 +325,8 @@ def page(path, title, desc, body, active='', extra_head='', ld=None, scripts='',
 </div>
 <div>
 <h3>Visit</h3>
-<p>Woodlands (HQ) · Jalan Lam Huat<br><a href="{u("contact/")}">Addresses and directions →</a></p>
+<ul>{''.join(f'<li><a href="{u(l["slug"] + "/")}">Gearbox repair {e(l["place"])}</a></li>' for l in LOCATIONS)}
+<li><a class="all" href="{u("contact/")}">Addresses and directions →</a></li></ul>
 <p class="hrs">Mon–Fri 9am–6pm<br>Sat 9am–3pm<br>Sun &amp; PH closed</p>
 </div>
 </div>
@@ -385,7 +425,7 @@ FAQ_BY_Q.update({
 SERVICE_PAGES = {
     'gearbox-repair': {
         'title': 'Gearbox Repair & Overhaul Singapore | Jacky Gearbox',
-        'desc': 'Automatic gearbox repair and overhaul in Singapore, all car makes. Diagnostic from S$30, quote before work, free towing, 6-month warranty. Woodlands & Jalan Lam Huat.',
+        'desc': 'Automatic gearbox repair and overhaul in Singapore, all car makes. Diagnostic from S$30, quote before work, free towing, 6-month warranty. Woodlands & Kranji.',
         'h1': 'Gearbox Repair &amp; Overhaul in Singapore',
         'sub': 'We find the real cause first, then repair only what is needed, or overhaul the whole transmission when that is the right fix. Diagnostic from S$30, quote before any work, 6-month warranty.',
         'updated': '13 Oct 2026',
@@ -416,7 +456,7 @@ SERVICE_PAGES = {
              '<li><strong>How long the fault has been left.</strong> Driving on a slipping gearbox can spread the damage, which is why we suggest a diagnostic early.</li></ul>'
              '<p>The one fixed number is the start: our pre-repair diagnostic is from S$30.</p>'),
             ('Any type or brand of gearbox',
-             '<p>We work on automatic transmissions for continental, Japanese, Korean and other makes, from everyday family cars to continental models. Our workshop has dedicated teardown benches, transmission jacks and diagnostic tools specialising in auto transmission, so the work is done on site, at our HQ in Woodlands (Wave 9) or our branch at Jalan Lam Huat. '
+             '<p>We work on automatic transmissions for continental, Japanese, Korean and other makes, from everyday family cars to continental models. Our workshop has dedicated teardown benches, transmission jacks and diagnostic tools specialising in auto transmission, so the work is done on site, at our HQ in Woodlands (Wave 9) or our branch at Jalan Lam Huat in Kranji. '
              'Not sure what kind of gearbox your car has? WhatsApp us the car model and we’ll tell you.</p>'),
         ],
         'problems': ['car-jerks-when-changing-gear', 'car-stuck-in-gear', 'transmission-warning-light', 'gearbox-noise'],
@@ -669,17 +709,20 @@ def faq_html():
     return ''.join(f'<details><summary>{e(q)}</summary><div class="a">{a}</div></details>' for q, a in FAQ)
 
 
-def loc_cards(maps=False):
+def loc_cards(maps=False, only=None):
+    from urllib.parse import quote
     out = []
-    for key, tag, label in (('hq', 'Headquarters', 'Woodlands (Wave 9)'), ('branch', 'Branch', 'Jalan Lam Huat')):
-        a = BIZ[key]
-        from urllib.parse import quote
+    for loc in LOCATIONS:
+        if only and loc['key'] != only:
+            continue
+        a = BIZ[loc['key']]
         q = quote(a['map'])
-        m = (f'<iframe class="map" title="Map: Jacky Gearbox {e(label)}" loading="lazy" referrerpolicy="no-referrer-when-downgrade" '
+        m = (f'<iframe class="map" title="Map: Jacky Gearbox {e(loc["label"])}" loading="lazy" referrerpolicy="no-referrer-when-downgrade" '
              f'src="https://www.google.com/maps?q={q}&amp;output=embed"></iframe>') if maps else ''
-        out.append(f'<div class="card loc"><span class="tag">{tag}</span><h3>{e(label)}</h3>'
-                   f'<p>{e(a["street"])}<br>Singapore {a["postal"]}</p>'
-                   f'<a class="btn btn-line" href="https://www.google.com/maps/search/?api=1&amp;query={q}" target="_blank" rel="noopener">Directions</a>{m}</div>')
+        more = '' if only else f'<a class="btn btn-line" href="{u(loc["slug"] + "/")}">{e(loc["place"])} workshop</a>'
+        out.append(f'<div class="card loc"><span class="tag">{loc["tag"]}</span><h3>{e(loc["label"])}</h3>'
+                   f'<p>{e(a["street"])}<br>Singapore {a["postal"]}</p><div class="btns">'
+                   f'<a class="btn btn-line" href="https://www.google.com/maps/search/?api=1&amp;query={q}" target="_blank" rel="noopener">Directions</a>{more}</div>{m}</div>')
     return ''.join(out)
 
 
@@ -813,7 +856,7 @@ def service_cards(sids=None):
 
 def trust_strip(reviews=True):
     rv = f'<section><div class="wrap"><div class="sec-head"><h2>What customers say about Jacky</h2></div><div class="grid g3" tabindex="0" role="region" aria-label="Customer reviews">{testimonials()}</div></div></section>'
-    return ((rv if reviews else '') + f'<section class="alt"><div class="wrap"><div class="sec-head"><h2>Our workshops in Woodlands and Jalan Lam Huat</h2></div>'
+    return ((rv if reviews else '') + f'<section class="alt"><div class="wrap"><div class="sec-head"><h2>Our workshops in Woodlands and Kranji</h2></div>'
             f'<div class="grid g2">{loc_cards()}</div><div class="card" style="margin-top:18px">{HOURS}</div></div></section>')
 
 
@@ -1003,9 +1046,50 @@ def article_page(slug):
     ld = [crumbs_ld(a['short'], f'articles/{slug}/', parent=('Articles', 'articles/')), art_ld] + ([faq_ld_of(faq)] if faq else [])
     return page(f'articles/{slug}/', a['title'], a['desc'], body, active='articles/', ld=ld, share=(pic[0], a['h1']))
 
+def location_page(loc):
+    a = BIZ[loc['key']]
+    other = next(l for l in LOCATIONS if l is not loc)
+    near = ', '.join(loc['near'][1:-1]) + ' and ' + loc['near'][-1]
+    addr = f'{a["street"]}, Singapore {a["postal"]}'
+    faq = [
+        (f'Where is Jacky Gearbox in {loc["place"]}?',
+         f'At {e(addr)}. <a href="{e(map_url(loc["key"]))}" target="_blank" rel="noopener">Open it in Google Maps</a>.'),
+        (f'Is there a gearbox workshop near {loc["near"][1]} or {loc["near"][2]}?',
+         f'Yes. Our {e(loc["place"])} workshop at {e(loc["where"])} is close to {e(near)}. Our other workshop is in {e(other["place"])}.'),
+        ('Can you tow my car to the workshop?',
+         'Yes. If your car can’t move, we arrange free towing or pick-up to our workshop during office hours. WhatsApp Jacky with your location.'),
+        ('What are the opening hours?', 'Monday to Friday 9am to 6pm, Saturday 9am to 3pm. Closed on Sundays and public holidays.'),
+        ('How much is a gearbox diagnostic?',
+         f'{DIAG}. Jacky tells you the fault and gives you a clear quote before any work starts. {WARRANTY}'),
+    ]
+    body = (page_hero(loc['h1'], loc['h1'],
+                      f'Jacky’s {e(loc["place"])} workshop at {e(loc["where"])}. Gearbox and automatic transmission repair, '
+                      f'overhaul and servicing for drivers in {e(near)}.', parent=('Contact', 'contact/'))
+            + f'''<section><div class="wrap"><div class="grid g2">
+{loc_cards(maps=True, only=loc["key"])}
+<div class="card"><h2 style="font-size:1.4rem">Why drivers in {e(loc["place"])} come to Jacky</h2>
+<ul class="ticks"><li>{DIAG}</li><li>Clear quote before any work starts</li><li>Jacky diagnoses, inspects and road-tests every car himself</li>
+<li>Free towing or pick-up during office hours</li><li>Standard 6-month warranty on repairs</li><li>All makes: continental, Japanese and Korean</li></ul>
+{HOURS}<div class="btns" style="margin-top:16px">{cta_buttons()}</div></div>
+</div></div></section>
+<section class="alt"><div class="wrap"><div class="sec-head"><h2>Areas near our {e(loc["place"])} workshop</h2></div>
+<ul class="chips light">{''.join(f'<li>{e(n)}</li>' for n in loc["near"])}</ul>
+<p>Closer to {e(', '.join(other["near"][:3]))}? Our <a href="{u(other["slug"] + "/")}">{e(other["place"])} workshop</a> at {e(BIZ[other["key"]]["street"])} may be nearer. We serve all of Singapore from both.</p>
+</div></section>
+<section><div class="wrap"><div class="sec-head"><h2>Gearbox services in {e(loc["place"])}</h2></div><div class="grid g3">{service_cards()}</div></div></section>
+<section class="alt"><div class="wrap"><div class="sec-head"><h2>Common gearbox problems we fix</h2></div><div class="sym">{problem_cards([p["slug"] for p in PROBLEMS[:6]])}</div>
+<p style="margin-top:16px"><a href="{u("gearbox-problems/")}">See all {len(PROBLEMS)} gearbox problems →</a></p></div></section>'''
+            + faq_block(faq, f'Gearbox repair in {e(loc["place"])}: common questions')
+            + band(f'Gearbox trouble near {e(loc["place"])}?', 'WhatsApp Jacky with your car model and what the gearbox is doing. If the car can’t move, we tow it in free during office hours.'))
+    return page(f'{loc["slug"]}/', f'Gearbox Repair {loc["place"]} | Jacky Gearbox',
+                f'Gearbox and automatic transmission repair in {loc["place"]} at {addr}. Near {", ".join(loc["near"][1:4])}. Diagnostic from S$30, free towing. WhatsApp 8430 9665.',
+                body, active='contact/', ld=[crumbs_ld(loc['h1'], f'{loc["slug"]}/', ('Contact', 'contact/')), faq_ld_of(faq)],
+                share=('workshop-lifts' if loc['key'] == 'hq' else 'diagnostics', f'Gearbox Repair in {loc["place"]}'))
+
+
 def all_pages():
     return ([p for p, _ in NAV] + [f'services/{s}/' for s, *_ in SERVICES] + [f'gearbox-problems/{p["slug"]}/' for p in PROBLEMS]
-            + [f'articles/{a["slug"]}/' for a in ARTICLES])
+            + [f'articles/{a["slug"]}/' for a in ARTICLES] + [f'{l["slug"]}/' for l in LOCATIONS])
 
 
 def retired_estimator():
@@ -1032,7 +1116,7 @@ def gallery():
 </div></section>'''
             + faq_block(FAQ[4:], 'Visiting us')
             + trust_strip()
-            + band('Come and see us', 'Visit our Woodlands HQ or Jalan Lam Huat branch, or let us pick your car up for free.'))
+            + band('Come and see us', 'Visit our Woodlands HQ or our Kranji branch at Jalan Lam Huat, or let us pick your car up for free.'))
     return page('gallery/', 'Gearbox Workshop Photos, Woodlands Singapore | Jacky Gearbox',
                 'Photos of the Jacky Gearbox workshop in Woodlands, Singapore: diagnostics, gearbox overhaul benches, car lifts and customer lounge.',
                 body, active='gallery/', ld=[crumbs_ld('Gallery', 'gallery/'), faq_ld_of(FAQ[4:])], share=('customer-lounge', 'Inside Our Gearbox Workshop in Woodlands'))
@@ -1127,8 +1211,8 @@ def contact():
 </div></section>
 ''' + faq_block(FAQ[:5], 'Common questions') + f'<section><div class="wrap"><div class="sec-head"><h2>What customers say about Jacky</h2></div><div class="grid g3" tabindex="0" role="region" aria-label="Customer reviews">{testimonials()}</div></div></section>'
     return page('contact/', 'Contact Jacky | Gearbox Specialist Singapore',
-                'Contact Jacky Gearbox for gearbox repair in Singapore. WhatsApp or call Jacky at 8430 9665. Workshops at Wave 9 Woodlands and Jalan Lam Huat.',
-                body, active='contact/', ld=[crumbs_ld('Contact', 'contact/'), faq_ld_of(FAQ[:5])], share=('workshop-lifts', 'Contact Jacky Gearbox: Woodlands & Jalan Lam Huat'))
+                'Contact Jacky Gearbox for gearbox repair in Singapore. WhatsApp or call Jacky at 8430 9665. Workshops at Wave 9 Woodlands and Jalan Lam Huat, Kranji.',
+                body, active='contact/', ld=[crumbs_ld('Contact', 'contact/'), faq_ld_of(FAQ[:5])], share=('workshop-lifts', 'Contact Jacky Gearbox: Woodlands & Kranji'))
 
 
 def not_found():
@@ -1191,12 +1275,11 @@ def llms_txt():
 
 - WhatsApp: {BIZ['mobile_disp']} (WhatsApp and calls)
 - Woodlands HQ: {hq['street']}, Singapore {hq['postal']}
-- Branch: {br['street']}, Singapore {br['postal']}
+- Kranji branch: {br['street']}, Singapore {br['postal']}
 - Hours: Mon-Fri 9am-6pm, Sat 9am-3pm, closed Sundays and public holidays
 - {DIAG}. {WARRANTY}
 - Free towing or pick-up to the workshop during office hours
-- Area served: all of Singapore
-- Google: {BIZ['google']}
+- Area served: all of Singapore; nearest for {', '.join(LOCATIONS[0]['near'])} (Woodlands) and {', '.join(LOCATIONS[1]['near'])} (Kranji)\n- Google: {BIZ['google']}
 
 ## How Jacky works
 ''' + '\n'.join(f'{i + 1}. {h}: {p}' for i, (h, p) in enumerate(PROCESS)) + f'''
@@ -1208,7 +1291,8 @@ def llms_txt():
 ''' + '\n'.join(f'- [{n}]({ORIGIN}/{p})' for p, n in NAV) + '\n' + '\n'.join(
         f'- [{txt(t)}]({ORIGIN}/services/{sid}/)' for sid, t, *_ in SERVICES) + '\n' + '\n'.join(
         f'- [{p["name"]}]({ORIGIN}/gearbox-problems/{p["slug"]}/): {p["seen"]}' for p in PROBLEMS) + '\n' + '\n'.join(
-        f'- [{a["h1"]}]({ORIGIN}/articles/{a["slug"]}/): {a["desc"]}' for a in ARTICLES) + f'''
+        f'- [{a["h1"]}]({ORIGIN}/articles/{a["slug"]}/): {a["desc"]}' for a in ARTICLES) + '\n' + '\n'.join(
+        f'- [{l["h1"]}]({ORIGIN}/{l["slug"]}/): workshop at {BIZ[l["key"]]["street"]}, Singapore {BIZ[l["key"]]["postal"]}' for l in LOCATIONS) + f'''
 
 ## Common questions
 {faq}
@@ -1238,6 +1322,8 @@ if __name__ == '__main__':
     build('gallery/index.html', gallery)
     build('about/index.html', about)
     build('contact/index.html', contact)
+    for loc in LOCATIONS:
+        build(f'{loc["slug"]}/index.html', lambda loc=loc: location_page(loc))
     # Only read when jackygearbox.com serves this folder; pageonesingapore.com uses its own root robots.txt.
     build('robots.txt', robots_txt)
     build('sitemap.xml', sitemap)

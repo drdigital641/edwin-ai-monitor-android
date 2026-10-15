@@ -340,3 +340,7 @@ footer.site .fine{flex-direction:column;align-items:flex-start;gap:10px}
 a.card.art{display:flex;flex-direction:column;text-decoration:none;color:inherit}
 a.card.art .date{font-size:.8rem;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--blue);margin-bottom:8px}
 a.card.art h3{color:var(--navy)}a.card.art .more{margin-top:auto}
+/* location pages: area chips on a light background */
+.chips.light{margin:0 0 18px}
+.chips.light li{background:#eaf2fc;border-color:#cfe0f3;color:var(--ink,#0b1e33);backdrop-filter:none}
+.loc .btns{display:flex;flex-wrap:wrap;gap:8px}
