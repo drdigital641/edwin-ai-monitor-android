@@ -17,7 +17,7 @@ Short version: https://pageonesingapore.com/llms.txt. This file is generated fro
 
 ## Affordable SEO Singapore: SEO, AEO & GEO from S$20/month
 URL: https://pageonesingapore.com/
-Last updated: 2026-10-14
+Last updated: 2026-10-15
 
 SEO, AEO and GEO for Singapore small businesses: found on Google, in Google's answers and in ChatGPT, from S$20/month. Proven on real businesses. No contract.
 
@@ -29,12 +29,6 @@ A: The Get Found plan is S$20 a month at an introductory price, with no setup fe
 
 Q: What do I get every month for S$20?
 A: Your business is found naturally in the free, unpaid results on Google, Google Maps and ChatGPT. We write regular new articles for your site and run a technical audit of your page every month. Your website or SEO landing page is kept online, secure and fast, with a WhatsApp button. Want to grow faster? SEO Boosts add more content aimed at new keywords.
-
-Q: Can you help my business show up in ChatGPT?
-A: Yes. We connect your site to Bing, which ChatGPT search uses, label your business details with structured data, publish an llms.txt summary and write content that answers customers' questions. No one can guarantee an AI assistant will recommend you, but these steps make it possible.
-
-Q: Do I need a website first?
-A: No. If you don't have a website, we build one on your own domain. If you already have one, we add an SEO landing page on a subdomain and leave your current site as it is.
 
 Q: Does it actually work?
 A: In the 28 days to 11 October 2026, Edwin Garage got 2,278 clicks from Google with an average position of 6.1, and Cleanic Detailing appeared on page one for 1,222 different searches, according to Google Search Console. Results vary by business, so we don't guarantee rankings.
@@ -82,7 +76,7 @@ Our S$20/month basic plan. No website? We build one. Have one? We add an SEO lan
 URL: https://pageonesingapore.com/pricing/
 Last updated: 2026-10-13
 
-SEO package pricing for Singapore small businesses: S$20/month with your website, Google Maps and ChatGPT setup, articles and a monthly audit. No setup fee or contract.
+SEO pricing for Singapore small businesses: S$20/month with your website, Google Maps and ChatGPT setup, articles and a monthly audit. No setup fee or contract.
 
 Q: How much does SEO cost in Singapore with Page One?
 A: S$20 a month on the Get Found plan (introductory price), with no setup fee and no minimum contract. Optional SEO Boosts are S$10 each. The only other cost is your domain name, usually S$15–30 a year, which is registered in your name and paid by you directly.
@@ -106,7 +100,7 @@ A: No. If you don't have one, we build it on your own domain as part of the S$20
 URL: https://pageonesingapore.com/new-business-website/
 Last updated: 2026-10-13
 
-Starting a business in Singapore? Your website, hosting, content and Google listing for S$20/month: about S$255–270 for the whole first year. No setup fee, live in 7 days.
+Starting a business in Singapore? Website, hosting, content and Google listing for S$20/month, about S$255–270 for year one. No setup fee, live in 7 days.
 
 Q: How much does a website for a new business cost with Page One?
 A: S$20 a month on the Get Found plan (introductory price). That covers building the website, hosting it, keeping it secure, writing the content with you, setting it up on Google and Google Maps, regular new articles and looking after it every month. No setup fee and no contract. The only separate cost is your domain name, registered in your name, usually S$15–30 a year.
@@ -169,7 +163,7 @@ A: Look the company up on ACRA's Bizfile by name or UEN, ask for Google Search C
 URL: https://pageonesingapore.com/managed-website-singapore/
 Last updated: 2026-10-14
 
-A fully managed website for your Singapore business: design, hosting, security, SEO articles, AEO and GEO for AI search, all for S$20/month. No setup fee, no contract.
+A fully managed website for your Singapore business: design, hosting, security, SEO articles, AEO and GEO, all for S$20/month. No setup fee or contract.
 
 Q: What does a fully managed website mean?
 A: It means you don't have to touch the technical side at all. Page One builds the website on your own domain, hosts it, keeps it online, secure and fast, runs a technical audit every month, makes small text and photo changes when you WhatsApp us, and keeps publishing new articles so Google and AI assistants have reasons to show you. All of it is in the S$20 a month plan.
@@ -199,7 +193,7 @@ A: The price is low because AI now does the daily work that used to be billed by
 URL: https://pageonesingapore.com/seo-aeo-geo-singapore/
 Last updated: 2026-10-15
 
-SEO for Google, AEO for Google's answer boxes and AI Overviews, GEO for ChatGPT, Gemini and Perplexity: what each means and how Page One does all three for S$20/month.
+SEO for Google, AEO for Google's answers and AI Overviews, GEO for ChatGPT, Gemini and Perplexity: what each means and how we do all three for S$20/month.
 
 Q: What is AEO (answer engine optimisation)?
 A: AEO, answer engine optimisation, means shaping your pages so Google can lift a short answer straight from them into a featured snippet, a People Also Ask box or an AI Overview. We do it by putting customers' real questions in headings and answering each one in two or three plain sentences, marked up with FAQ structured data.
@@ -215,15 +209,24 @@ A: Google Search Console is connected to your site from day one, so you can see 
 
 ## SEO Boost: S$10 Top-up for Faster Results | Page One SG
 URL: https://pageonesingapore.com/seo-boost/
-Last updated: 2026-10-14
+Last updated: 2026-10-15
 
 An optional S$10 SEO Boost: one full round of Google and AI visibility improvements, with a before/after report. Add at sign-up or top up anytime on WhatsApp.
+
+Q: How much does an SEO Boost cost?
+A: S$10 per Boost, on top of the S$20-a-month Get Found plan. There is no package to commit to: add Boosts at sign-up or top up anytime on WhatsApp. Most businesses start with 1 or 2 a month and add more when they want to push harder, for example before a busy season.
+
+Q: What is the difference between the plan and a Boost?
+A: The S$20 Get Found plan already includes regular new articles and a technical audit every month. Each Boost adds more content on top, aimed at new niche long-tail searches, plus extra processing to fix the issues found in your audit, and ends with a before/after report.
+
+Q: Does an SEO Boost guarantee better rankings?
+A: No. Google decides rankings, so no honest provider can guarantee them. What we guarantee is the work: every Boost is documented in a before/after report, so you can see exactly what was done and what changed.
 
 ## SEO Case Studies Singapore: Real Google Results | Page One
 URL: https://pageonesingapore.com/results/
 Last updated: 2026-10-14
 
-Real Google Search Console results from Singapore businesses on Page One's SEO system. Edwin Garage: 2,278 Google clicks in the 28 days to 11 Oct 2026, average position 6.1.
+Real Google Search Console results from Singapore businesses on Page One. Edwin Garage: 2,278 clicks from Google in the 28 days to 11 Oct 2026, position 6.1.
 
 Q: Where do these numbers come from?
 A: Every figure on this page comes from Google Search Console, Google's own report of how a website performs in Google Search. We collect the final data automatically and don't edit it. Data runs to 11 October 2026.
@@ -428,7 +431,7 @@ A: Because SEO never finishes. Google keeps re-checking sites, competitors keep 
 
 ## Cheapest Website Maker in Singapore? From S$20/month
 URL: https://pageonesingapore.com/cheapest-website-singapore/
-Last updated: 2026-10-08
+Last updated: 2026-10-15
 
 Looking for the cheapest way to get a website in Singapore? Page One builds, hosts and updates it for S$20/month. No lump sum, no setup fee, no contract.
 
@@ -450,11 +453,11 @@ A: What Google cares about is whether the site is fast, secure, clear about what
 Q: Do I need any technical skills?
 A: No. You tell us about your business on WhatsApp and send a few photos. We handle the domain setup, design, hosting, Google setup and updates.
 
-## Contact Page One Singapore | WhatsApp Edwin
+## Contact Page One Singapore: WhatsApp Edwin, +65 9785 6612
 URL: https://pageonesingapore.com/contact/
-Last updated: 2026-10-08
+Last updated: 2026-10-15
 
-Ask Page One Singapore anything about getting found on Google and AI search. WhatsApp Edwin on +65 9785 6612. No obligation.
+Ask Page One Singapore about websites, SEO and getting found on Google and AI search. WhatsApp Edwin on +65 9785 6612; he replies personally. No obligation.
 
 ## Free Website & SEO Check for Singapore Businesses | Page One
 URL: https://pageonesingapore.com/free-website-check/
@@ -482,7 +485,7 @@ How Page One gets Singapore small businesses found on Google, Maps and ChatGPT, 
 
 ## SEO & Website for Aircon Servicing in Singapore | Page One
 URL: https://pageonesingapore.com/industries/aircon-servicing/
-Last updated: 2026-10-08
+Last updated: 2026-10-15
 
 Aircon servicing, chemical wash and repair companies: get found on Google, Google Maps and ChatGPT when customers search. S$20/month, no contract.
 
@@ -497,7 +500,7 @@ A: Yes. Setting up and improving your Google Business Profile is part of the Get
 
 ## SEO & Website for Beauty Salons in Singapore | Page One
 URL: https://pageonesingapore.com/industries/beauty-salon/
-Last updated: 2026-10-08
+Last updated: 2026-10-15
 
 Beauty salons, spas, nail and lash studios: get found on Google, Google Maps and ChatGPT by customers nearby. S$20/month, website included.
 
@@ -512,7 +515,7 @@ A: S$20 a month (introductory price), website included, no setup fee and no cont
 
 ## Opening a Cafe in Singapore? Website + Google | Page One
 URL: https://pageonesingapore.com/industries/cafe/
-Last updated: 2026-10-13
+Last updated: 2026-10-15
 
 Opening a cafe in Singapore? Get your website, menu, opening hours and Google Maps listing ready before day one, so people nearby can find you. S$20/month.
 
@@ -530,7 +533,7 @@ A: S$20 a month on the Get Found plan (introductory price), website included, no
 
 ## SEO & Website for Car Detailing in Singapore | Page One
 URL: https://pageonesingapore.com/industries/car-detailing/
-Last updated: 2026-10-08
+Last updated: 2026-10-15
 
 Car grooming, coating and interior cleaning businesses: get found on Google, Maps and ChatGPT. Proven on Cleanic Detailing. S$20/month, no contract.
 
@@ -545,7 +548,7 @@ A: Your site is usually live within 7 days. Search results build over weeks to m
 
 ## SEO & Website for Car Workshops in Singapore | Page One
 URL: https://pageonesingapore.com/industries/car-workshop/
-Last updated: 2026-10-08
+Last updated: 2026-10-15
 
 Get your car workshop found on Google, Google Maps and ChatGPT. Built and proven on Edwin Garage in Ang Mo Kio. S$20/month, no setup fee, no contract.
 
@@ -560,7 +563,7 @@ A: No. We can add an SEO landing page next to it on a subdomain, or take over lo
 
 ## SEO & Website for Cleaning Services in Singapore | Page One
 URL: https://pageonesingapore.com/industries/cleaning-services/
-Last updated: 2026-10-08
+Last updated: 2026-10-15
 
 Home, office, sofa and mattress cleaning businesses: get found on Google, Google Maps and ChatGPT. S$20/month, website included, no setup fee.
 
@@ -575,7 +578,7 @@ A: S$20 a month on the Get Found plan (introductory price), with no setup fee an
 
 ## New Fitness Studio or PT Business? Website + SEO | Page One
 URL: https://pageonesingapore.com/industries/fitness-studio/
-Last updated: 2026-10-13
+Last updated: 2026-10-15
 
 Opening a fitness studio or starting as a personal trainer in Singapore? Get a website, Google Maps and WhatsApp enquiries set up from day one. S$20/month.
 
@@ -593,7 +596,7 @@ A: S$20 a month (introductory price), website included, no setup fee and no cont
 
 ## Starting a Home Bakery? Website + Google SEO | Page One
 URL: https://pageonesingapore.com/industries/home-bakery/
-Last updated: 2026-10-13
+Last updated: 2026-10-15
 
 Starting a home bakery in Singapore? Get a website on your own domain, Google Maps and WhatsApp orders set up before your first bake. S$20/month, no setup fee.
 
@@ -611,7 +614,7 @@ A: S$20 a month on the Get Found plan (introductory price), website included, no
 
 ## Opening a Nail or Lash Studio? Website + SEO | Page One
 URL: https://pageonesingapore.com/industries/nail-lash-studio/
-Last updated: 2026-10-13
+Last updated: 2026-10-15
 
 Opening a nail or lash studio in Singapore? Get a website with services, prices and WhatsApp booking, plus Google Maps, from day one. S$20/month, no contract.
 
@@ -629,7 +632,7 @@ A: S$20 a month (introductory price), website included, no setup fee and no cont
 
 ## SEO & Website for Pest Control in Singapore | Page One
 URL: https://pageonesingapore.com/industries/pest-control/
-Last updated: 2026-10-08
+Last updated: 2026-10-15
 
 Pest control companies: get found on Google, Google Maps and ChatGPT when homes and businesses search for help. S$20/month, no contract.
 
@@ -644,7 +647,7 @@ A: Your site is usually live within 7 days. Google results build over weeks to m
 
 ## SEO & Website for Plumbers in Singapore | Page One
 URL: https://pageonesingapore.com/industries/plumber/
-Last updated: 2026-10-08
+Last updated: 2026-10-15
 
 Plumbers and plumbing contractors: get found on Google, Google Maps and ChatGPT when customers need help fast. S$20/month, website included.
 
@@ -659,7 +662,7 @@ A: S$20 a month (introductory price), no setup fee and no contract.
 
 ## Website & SEO for Property Agents in Singapore | Page One
 URL: https://pageonesingapore.com/industries/property-agent/
-Last updated: 2026-10-08
+Last updated: 2026-10-15
 
 Property agents: a personal website that gets found on Google and ChatGPT, built and managed for you. S$20/month. We run aliciaongproperty.com.
 
@@ -674,7 +677,7 @@ A: S$20 a month (introductory price), website included, no setup fee and no cont
 
 ## SEO & Website for Renovation Contractors in Singapore
 URL: https://pageonesingapore.com/industries/renovation-contractor/
-Last updated: 2026-10-08
+Last updated: 2026-10-15
 
 Renovation, carpentry and home repair contractors: get found on Google, Maps and ChatGPT with a website that shows your work. S$20/month, no contract.
 
@@ -689,7 +692,7 @@ A: S$20 a month on the Get Found plan (introductory price), including the websit
 
 ## SEO & Website for Tuition Centres in Singapore | Page One
 URL: https://pageonesingapore.com/industries/tuition-centre/
-Last updated: 2026-10-08
+Last updated: 2026-10-15
 
 Tuition centres and private tutors: get found on Google, Google Maps and ChatGPT when parents search by subject, level and area. S$20/month.
 
@@ -718,7 +721,7 @@ SEO, Google Business Profile, structured data, Core Web Vitals, Search Console a
 URL: https://pageonesingapore.com/signup/
 Last updated: 2026-10-08
 
-Sign up for the Get Found plan at the introductory price of S$20/month on WhatsApp. No setup fee, no contract, cancel anytime.
+Sign up for the Get Found plan at the introductory price of S$20/month: website, Google and AI search setup, articles and monthly audits. No setup fee or contract.
 
 ## Terms of Service | Page One Singapore
 URL: https://pageonesingapore.com/terms/

@@ -353,7 +353,7 @@ a:focus-visible, button:focus-visible, input:focus-visible, summary:focus-visibl
 .footer-grid { display: grid; grid-template-columns: 1.6fr 1fr 1fr 1fr; gap: 32px; }
 @media (max-width: 860px) { .footer-grid { grid-template-columns: 1fr 1fr; } .footer-grid > div:first-child { grid-column: 1 / -1; } }
 .footer-grid h2 { font-size: .78rem; letter-spacing: .14em; text-transform: uppercase; color: #fff; margin: 4px 0 14px; }
-.footer-grid > div > a:not(.logo):not(.footer-wa) { display: block; color: #b9c4d4; text-decoration: none; margin: 8px 0; }
+.footer-grid > div > a:not(.logo):not(.footer-wa) { display: block; color: #b9c4d4; text-decoration: none; margin: 1px 0; padding: 7px 0; }
 .footer-grid > div > a:not(.logo):not(.footer-wa):hover { color: #fff; }
 .footer-grid p { margin: 14px 0 0; max-width: 340px; }
 .footer-wa { color: #34d399 !important; font-weight: 700; text-decoration: none; }

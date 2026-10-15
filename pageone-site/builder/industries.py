@@ -296,6 +296,20 @@ def industry_page(ind):
       </div>
     </section>
 """ if opening else ""
+    # Cost and timing, as question headings with a short direct answer (AEO). Published prices and showcase figures only.
+    _a = "an" if ind['short'][0] in "aeiou" else "a"
+    cost_time = f"""
+    <section class="section">
+      <div class="wrap narrow">
+        <p class="kicker reveal">Cost and timing</p>
+        <h2 class="reveal">How much does a website and SEO cost for {_a} {ind['short']} in Singapore?</h2>
+        <p class="reveal">With Page One it is S$20 a month at our introductory price, with no setup fee and no contract. That covers building the website, hosting, the security certificate, Google Business Profile, Search Console and Bing setup, regular new articles and a monthly technical audit. Your domain, usually S$15–30 a year, is the only extra: about S$255–270 for the first year.</p>
+        <h2 class="reveal">How long before {_a} {ind['short']} shows up on Google?</h2>
+        <p class="reveal">Your website is usually live within 7 days. Showing up in Google Search and Google Maps then builds over weeks to months, depending on your area and how many competitors you have. Nobody can honestly guarantee a ranking. As a guide, {PROOF_EG}, according to Google Search Console.</p>
+        <p class="note reveal"><a class="link" href="/pricing/">See full pricing →</a> <a class="link" href="/clients/">See the client websites we run →</a></p>
+      </div>
+    </section>
+"""
     cta_title, cta_text = ind.get("cta", (f"Get your {ind['short']} found", "Check your website free, or chat with Edwin on WhatsApp. No obligation."))
     body = hero(f'<a href="/industries/">Industries</a> / {ind["name"]}', ind.get("eyebrow", ind["name"] + " in Singapore"), ind["h1"], ind["lead"],
                 '<p class="hero-price"><b>S$20</b>/month · <span class="intro-tag">Introductory price</span> · website + SEO · no setup fee</p>') + f"""
@@ -318,7 +332,7 @@ def industry_page(ind):
         <p class="note reveal">Plus everything in the Get Found plan: Google Business Profile, Google and Bing connected, structured data for AI search, hosting, security and a monthly technical audit. <a class="link" href="/get-found/">See what's included →</a></p>
       </div>
     </section>
-{proof}{opening}
+{proof}{opening}{cost_time}
     <section class="section alt">
       <div class="wrap narrow">
         <p class="kicker reveal">Questions</p>
@@ -334,7 +348,7 @@ def industry_page(ind):
          [service(f"Website and SEO for {ind['name'].replace('&amp;', '&').lower()} in Singapore", url, ind["desc"], "20"),
           {"@context": "https://schema.org", "@type": "FAQPage",
            "mainEntity": [{"@type": "Question", "name": q, "acceptedAnswer": {"@type": "Answer", "text": a}} for q, a in ind["faqs"]]}],
-         body, crumb=ind["name"], crumb_parent=("Industries", "/industries/"), updated="2026-10-13" if ind.get("new") else None)
+         body, crumb=ind["name"], crumb_parent=("Industries", "/industries/"), updated="2026-10-15")
 
 
 for _ind in INDUSTRIES:
