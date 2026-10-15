@@ -804,6 +804,7 @@ FAQS = [
     ("Is there a setup fee or contract?", "No. There's no setup fee and no minimum contract. You pay S$20 a month in advance and can cancel anytime."),
     ("Will the S$20 price go up?", "Yes, a little. S$20 a month is an introductory price until we reach our early-client target, so now is the time to grab it. When it goes up, the new price will stay close to S$20, so SEO stays affordable for small businesses."),
     ('Is S$20 a month a gimmick price?', "No. S$20 isn't a teaser to upsell you later, and it isn't budget SEO with steps skipped. It's a baseline for what SEO costs now that AI does the daily work that used to be billed by the hour. The same system runs every website we manage, and it's proven on real businesses: " + PROOF_EG + ", according to Google Search Console. No setup fee, no contract, so you can judge it for yourself."),
+    ("Can I get a website and SEO for under S$50 a month?", "Yes. The S$20 Get Found plan (introductory price) is ongoing monthly SEO with your website built and managed, not a one-off task. With up to S$50 a month you can add up to three SEO Boosts at S$10 each. The first year of a website costs S$240, plus your domain. See our small-budget guide."),
     ("Is the free website check really free?", "Yes. Enter your website address on our homepage and the checker tests Google basics, mobile setup, speed and AI-search readiness in under a minute. No sign-up needed."),
     ("How do I reach you?", "WhatsApp Edwin on " + WA_DISPLAY + ". You can also tap the green chat button on any page. No obligation to buy anything."),
     ("How do I sign up and pay?", "Fill in the short form on our sign-up page or tap the chat button. It opens WhatsApp with your details filled in. Edwin confirms what you need and sends payment details for your first month. SEO Boosts are added or topped up the same way."),
@@ -818,7 +819,7 @@ FAQS = [
     ("How long until my site is live?", "Usually within 7 days of receiving your details and photos."),
 ]
 faq_html = "\n".join(
-    f"        <details><summary>{q}</summary><p>{a.replace('go.yourbrand.com', '<code>go.yourbrand.com</code>').replace('llms.txt', '<code>llms.txt</code>').replace('results page', '<a class="link" href="/results/">results page</a>').replace('SEO explained simply', '<a class="link" href="/seo-explained/">SEO explained simply</a>').replace('our website page', '<a class="link" href="/website/">our website page</a>')}</p></details>"
+    f"        <details><summary>{q}</summary><p>{a.replace('go.yourbrand.com', '<code>go.yourbrand.com</code>').replace('llms.txt', '<code>llms.txt</code>').replace('results page', '<a class="link" href="/results/">results page</a>').replace('SEO explained simply', '<a class="link" href="/seo-explained/">SEO explained simply</a>').replace('our website page', '<a class="link" href="/website/">our website page</a>').replace('small-budget guide', '<a class="link" href="/budget-seo-website-singapore/">small-budget guide</a>')}</p></details>"
     for q, a in FAQS)
 page("faq/index.html",
      "FAQ: Fees, Contracts, SEO & AI Search | Page One Singapore",
@@ -1448,6 +1449,8 @@ HOME_FAQ_LD = {"@context": "https://schema.org", "@type": "FAQPage", "mainEntity
 exec(open(os.path.join(HERE, "industries.py"), encoding="utf-8").read())
 # "Cheapest SEO" / "cheapest website" pages (honest answers to those searches).
 exec(open(os.path.join(HERE, "affordable.py"), encoding="utf-8").read())
+# Small-budget owner page (/budget-seo-website-singapore/): S$20 to S$50 a month, website under S$300.
+exec(open(os.path.join(HERE, "budget.py"), encoding="utf-8").read())
 # Client showcase (/clients/), from showcase.json.
 clients_page()
 llms_sections()
