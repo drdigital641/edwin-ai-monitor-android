@@ -72,7 +72,7 @@ page("managed-website-singapore/index.html",
       <div class="wrap">
         <p class="kicker reveal">What's managed</p>
         <h2 class="reveal">Everything we look after, in plain words</h2>
-        <p class="section-lead reveal">You run your business. We run the website, and the work that gets it found on Google and in AI answers.</p>
+        <p class="section-lead reveal">You run your business. We run the website, and the work that gets it found on Google and in AI answers. <a class="link" href="/seo-aeo-geo-singapore/">SEO, AEO and GEO explained →</a></p>
         <div class="cards three plain-cards" style="margin-top:32px">
 {_managed_cards}
         </div>

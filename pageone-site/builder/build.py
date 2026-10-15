@@ -178,7 +178,8 @@ def page(path, title, desc, schemas, body, crumb=None, robots="index, follow, ma
       <div>
         <h2>Services</h2>
         <a href="/website/">Website, built and managed</a>
-{managed_link}        <a href="/new-business-website/">New business website</a>
+{managed_link}        <a href="/seo-aeo-geo-singapore/">SEO, AEO and GEO</a>
+        <a href="/new-business-website/">New business website</a>
         <a href="/seo-services-singapore/">SEO services compared</a>
         <a href="/get-found/">Get Found</a>
         <a href="/seo-boost/">SEO Boost</a>
@@ -1417,12 +1418,14 @@ clients_page()
 llms_sections()
 # Fully managed website owner page (/managed-website-singapore/).
 exec(open(os.path.join(HERE, "managed.py"), encoding="utf-8").read())
+# SEO, AEO and GEO together (/seo-aeo-geo-singapore/); the homepage strip links here.
+exec(open(os.path.join(HERE, "seo_aeo_geo.py"), encoding="utf-8").read())
 # "AI SEO vs traditional SEO" and "Is Page One legit?" (verify-it-yourself) pages.
 exec(open(os.path.join(HERE, "ai_seo.py"), encoding="utf-8").read())
 
 page("index.html",
-     "Affordable SEO Singapore from S$20/month | Page One SG",
-     "Affordable SEO for Singapore small businesses: get found on Google, Maps and ChatGPT from S$20/month. Proven on real businesses. No setup fee or contract.",
+     "Affordable SEO Singapore: SEO, AEO &amp; GEO from S$20/month",
+     "SEO, AEO and GEO for Singapore small businesses: found on Google, in Google's answers and in ChatGPT, from S$20/month. Proven on real businesses. No contract.",
      [HOME_FAQ_LD, {"@context": "https://schema.org", "@graph": [
          dict(ORG_CORE,
               founder=FOUNDER,
@@ -1451,7 +1454,7 @@ def _plain(x):
     return _html.unescape(_re.sub(r"<[^>]+>", "", x)).replace("\u00a0", " ").strip()
 
 
-_ORDER = ["/", "/website/", "/get-found/", "/pricing/", "/new-business-website/", "/seo-services-singapore/", "/managed-website-singapore/",
+_ORDER = ["/", "/website/", "/get-found/", "/pricing/", "/new-business-website/", "/seo-services-singapore/", "/managed-website-singapore/", "/seo-aeo-geo-singapore/",
           "/seo-boost/", "/results/", "/clients/", "/about/", "/is-page-one-singapore-legit/", "/ai-seo-vs-traditional-seo/", "/faq/"]
 _pages = sorted(LLMS_PAGES, key=lambda r: (_ORDER.index(r[0]) if r[0] in _ORDER else len(_ORDER), r[0]))
 _out = ["# Page One Singapore: full guide for AI assistants", "",

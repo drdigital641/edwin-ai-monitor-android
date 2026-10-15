@@ -15,11 +15,11 @@ Short version: https://pageonesingapore.com/llms.txt. This file is generated fro
 - Contact: WhatsApp +65 9785 6612 (https://wa.me/6597856612)
 - Google Business Profile: https://maps.google.com/?cid=8757289318297107567
 
-## Affordable SEO Singapore from S$20/month | Page One SG
+## Affordable SEO Singapore: SEO, AEO & GEO from S$20/month
 URL: https://pageonesingapore.com/
 Last updated: 2026-10-14
 
-Affordable SEO for Singapore small businesses: get found on Google, Maps and ChatGPT from S$20/month. Proven on real businesses. No setup fee or contract.
+SEO, AEO and GEO for Singapore small businesses: found on Google, in Google's answers and in ChatGPT, from S$20/month. Proven on real businesses. No contract.
 
 Q: What is Page One Singapore?
 A: Page One Singapore is an affordable SEO service for Singapore small businesses. It gets businesses found on Google Search, Google Maps and AI assistants such as ChatGPT. It was built by Edwin, an NUS Computer Science (Honours) graduate with 18+ years in business, and proven first on his own car workshop, Edwin Garage.
@@ -194,6 +194,24 @@ A: Usually within 7 days of receiving your details and photos. You send them ove
 
 Q: Is S$20 a month too cheap to be any good?
 A: The price is low because AI now does the daily work that used to be billed by the hour, not because steps are skipped. Edwin Garage got 2,278 clicks from Google in the 28 days to 11 October 2026, according to Google Search Console, and every client website is live for you to check.
+
+## SEO, AEO and GEO Singapore: All Three from S$20/month
+URL: https://pageonesingapore.com/seo-aeo-geo-singapore/
+Last updated: 2026-10-15
+
+SEO for Google, AEO for Google's answer boxes and AI Overviews, GEO for ChatGPT, Gemini and Perplexity: what each means and how Page One does all three for S$20/month.
+
+Q: What is AEO (answer engine optimisation)?
+A: AEO, answer engine optimisation, means shaping your pages so Google can lift a short answer straight from them into a featured snippet, a People Also Ask box or an AI Overview. We do it by putting customers' real questions in headings and answering each one in two or three plain sentences, marked up with FAQ structured data.
+
+Q: What is GEO (generative engine optimisation)?
+A: GEO, generative engine optimisation, means helping AI assistants such as ChatGPT, Gemini, Perplexity and Copilot find your business, describe it correctly and name it as a source. We publish clear business facts and an llms.txt summary, allow AI crawlers in robots.txt, connect your site to Bing and Google, and keep your details consistent. No one can guarantee a mention.
+
+Q: Do I need SEO, AEO and GEO?
+A: Most small businesses benefit from all three, because customers now look in three places: Google's results, the answers Google shows above them, and AI assistants. The three share the same groundwork, so doing them together costs less than doing them separately. With Page One, all three are part of the S$20 a month plan, with no setup fee.
+
+Q: How do I know it's working?
+A: Google Search Console is connected to your site from day one, so you can see how often you appear on Google, what people searched and how many clicked. AI assistants have no official report yet, so the simplest check is to ask ChatGPT or Perplexity about your type of business in your area and see who is named.
 
 ## SEO Boost: S$10 Top-up for Faster Results | Page One SG
 URL: https://pageonesingapore.com/seo-boost/
