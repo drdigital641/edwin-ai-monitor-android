@@ -501,8 +501,9 @@
     }
   ],
   "pipeline": {
-    "_readme": "Websites being built for signed-up clients that are not live on their own domain yet. Shown only as a count (never named) next to the live count. Update when a site launches (move it into clients) or a new client signs up.",
+    "_readme": "Websites being built for signed-up clients that are not live on their own domain yet. Shown only as a count (never named) next to the live count. Set by showcase_refresh.py from the Controller Client export (status activating or preview, not yet a live site here, slug not in exclude); as_of is the day the count last changed. Put Client slugs that are not signed-up clients (e.g. a demo preview) in exclude.",
     "building": 3,
-    "as_of": "2026-10-15"
+    "as_of": "2026-10-15",
+    "exclude": []
   }
 }
