@@ -50,6 +50,9 @@ THROUGH_SHORT = date_short(SC["data"]["data_through"])   # 11 Oct 2026
 WINDOW = _span(*SC["data"]["window"])                    # 14 Sep to 11 Oct 2026
 PREV_WINDOW = _span(*SC["data"]["prev_window"])          # 17 Aug to 13 Sep 2026
 SC_UPDATED = SC["data"]["generated_at"][:10]
+# /clients/ changes when the figures change, when a site launches or when the being-built count moves.
+CLIENTS_UPDATED = max([SC_UPDATED, SC.get("pipeline", {}).get("as_of", "")]
+                      + [c["launched"] + "-01" if len(c["launched"]) == 7 else c["launched"] for c in SC["clients"]])
 
 
 def _fmt(c):
@@ -194,7 +197,7 @@ def clients_page():
          "Client Websites &amp; Google Results | Page One Singapore",
          f"See the websites Page One Singapore built and runs for real Singapore businesses, with their Google Search Console numbers to {THROUGH_SHORT}. S$20 a month.",
          [{"@context": "https://schema.org", "@type": "CollectionPage", "url": SITE + "/clients/",
-           "name": "Client websites and results", "about": PROVIDER, "inLanguage": "en-SG", "dateModified": SC_UPDATED,
+           "name": "Client websites and results", "about": PROVIDER, "inLanguage": "en-SG", "dateModified": CLIENTS_UPDATED,
            "mainEntity": {"@type": "ItemList", "name": "Websites built and run by Page One Singapore",
                           "numberOfItems": len(SC["clients"]), "itemListElement": sites_ld}},
           {"@context": "https://schema.org", "@type": "FAQPage",
@@ -240,7 +243,7 @@ def clients_page():
     </section>
 
 """ + cta("Want your business on this page?", "Sign up at the introductory price, or check where your website stands today. No obligation."),
-         crumb="Clients", updated=SC_UPDATED)
+         crumb="Clients", updated=CLIENTS_UPDATED)
 
 _WORDS = ["zero", "one", "two", "three", "four", "five", "six", "seven", "eight", "nine", "ten"]
 _n_others = sum(1 for c in SC["clients"] if stage(c["key"]) != "case")
