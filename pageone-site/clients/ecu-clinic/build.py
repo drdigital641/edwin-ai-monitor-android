@@ -221,12 +221,21 @@ FAQ = [
      f'We are at {BIZ["building"]}, {BIZ["street"]}, Singapore {BIZ["postal"]}. {HOURS_TXT}'),
 ]
 
+# Lean home page (Edwin's rule, 15 Oct 2026): the home page shows the 4 strongest FAQs and its FAQPage schema
+# matches them exactly. The other answers already live on the service pages (TCU, ELV, hybrid, BMW temperature,
+# ABS pick-up) or in the home page's own brands, contact and hours sections, so nothing is lost.
+
 # '#x' links go to a section of the home page; 'x/' links go to a page (both relative, via href()).
 NAV = [('#services', 'Services'), ('articles/', 'Articles'), ('#how', 'How it works'),
        ('#gallery', 'Our work'), ('#faq', 'FAQ'), ('#contact', 'Contact')]
 
 from pages import SERVICE_PAGES, ARTICLES
 SP = {sp['key']: sp for sp in SERVICE_PAGES}
+# Lean home page (Edwin's rule, 15 Oct 2026): the home page shows the 4 strongest FAQs and its FAQPage schema
+# matches them exactly. The ABS answer is the ABS page's own (its Toyota Voxy/Noah/Sienta sentence is that page's
+# separate FAQ). The other answers already live on the service pages (TCU, ELV, hybrid, BMW temperature, ABS
+# pick-up) or in the home page's own brands, contact and hours sections, so nothing is lost.
+HOME_FAQ = [SP['abs']['faq'][0], FAQ[2], FAQ[0], FAQ[7]]
 ART = {a['slug']: a for a in ARTICLES}
 
 
@@ -257,7 +266,7 @@ def schema():
 def faq_ld():
     import re
     return {'@context': 'https://schema.org', '@type': 'FAQPage', 'mainEntity': [
-        {'@type': 'Question', 'name': q, 'acceptedAnswer': {'@type': 'Answer', 'text': re.sub('<[^>]+>', '', a)}} for q, a in FAQ]}
+        {'@type': 'Question', 'name': q, 'acceptedAnswer': {'@type': 'Answer', 'text': re.sub('<[^>]+>', '', a)}} for q, a in HOME_FAQ]}
 
 
 def page(path, title, desc, body, ld=None, share=('module-circuit-board.jpg', None), og_type='website'):
@@ -363,24 +372,37 @@ def page(path, title, desc, body, ld=None, share=('module-circuit-board.jpg', No
 
 
 def why_cards():
-    return ''.join(f'<div class="card"><div class="ico">{ICON[i]}</div><h3>{t}</h3><p class="muted">{d}</p></div>' for i, t, d in WHY)
+    # Lean home page (15 Oct 2026): experience, pick-up and warranty are already in the hero chips and the stats row.
+    return ''.join(f'<div class="card"><div class="ico">{ICON[i]}</div><h3>{t}</h3><p class="muted">{d}</p></div>' for i, t, d in WHY[:3])
 
 
 def service_cards():
     return ''.join(
-        f'<div class="card img" id="{sid}">{img(im, alt)}<div class="body"><h3>{t}</h3><p class="muted">{d}</p>'
-        f'<ul class="ticks">{"".join(f"<li>{e(x)}</li>" for x in items)}</ul>'
-        f'<p class="more"><a href="{u(f"services/{SP[sid]["slug"]}/")}">More about {t} →</a></p></div></div>'
+        f'<div class="card img" id="{sid}">{img(im, alt)}<div class="body"><h3>{t}</h3><p class="muted">{card_text(sid, d)}</p>'
+        f'<p class="more"><a href="{u(f"services/{SP[sid]["slug"]}/")}" aria-label="More details: {t}">More details →</a></p></div></div>'
         for sid, t, im, alt, d, items in SERVICES)
+
+
+
+# Lean home page (15 Oct 2026): the tick lists of each card are on the service pages (same wording). The radar card
+# keeps the link to the P2583 article that the home page's fault-code cards carried (the codes are on the ABS page).
+CARD_LINK = {'radar': ('radar function error', 'articles/honda-millimeter-wave-radar-error-p2583/')}
+
+
+def card_text(sid, d):
+    if sid in CARD_LINK:
+        words, path = CARD_LINK[sid]
+        d = d.replace(words, f'<a href="{u(path)}">{words}</a>', 1)
+    return d
 
 
 def home():
     gal = ''.join(f'<figure>{img(n, a)}<figcaption>{e(a)}</figcaption></figure>' for n, a in GALLERY)
-    steps = ''.join(f'<li><strong>{t}.</strong> {d}</li>' for t, d in STEPS)
-    models = ''.join(f'<p><strong>{s}</strong><br>{c}</p>' for s, c in BMW_MODELS)
+    # Lean home page (Edwin's rule, 15 Oct 2026): the warning-light list (WARNINGS), BMW ticks and model list, the
+    # 4 How-it-works steps and the fault-code cards are not repeated here; the same wording is on the service pages
+    # (signs, What we do, BMW model list, How it works, ABS page fault codes). Every photo and animation stays.
     makes = ''.join(f'<li>{m}</li>' for m in MAKES)
-    warns = ''.join(f'<li>{e(w)}</li>' for w in WARNINGS)
-    faq = ''.join(f'<details><summary>{e(q)}</summary><div class="a">{a}</div></details>' for q, a in FAQ)
+    faq = ''.join(f'<details><summary>{e(q)}</summary><div class="a">{a}</div></details>' for q, a in HOME_FAQ)
     body = f'''
 <section class="hero" style="padding:0">
 <picture><source media="(min-width:900px)" srcset="{u(f"img/{HERO}-lg.webp")}">{img(HERO, "Mercedes-Benz ESP pumps on the repair bench", lazy=False, cls="bg")}</picture>
@@ -417,7 +439,6 @@ def home():
 <span class="eyebrow" style="color:var(--blue)">Fault diagnosis</span>
 <h2>Warning light on the dashboard?</h2>
 <p>An ABS, ESP or brake warning can come from the pump, the module, a sensor or the wiring. We find the cause first, then tell you the options: repair, recon, used or new.</p>
-<ul class="ticks">{warns}</ul>
 <a class="btn btn-wa" href="{wa_link("Hi The ECU Clinic, I have a warning light on my car. Car model: \nChassis no.: \nFault code / warning: ")}" target="_blank" rel="noopener">{ICON["wa"]}Send us a photo of the warning</a>
 </div>
 <div>{img("active-brake-assist-warning", "Mercedes-Benz dashboard showing Active Brake Assist functions limited")}</div>
@@ -433,10 +454,8 @@ def home():
 <span class="eyebrow" style="color:var(--blue)">BMW temperature programming</span>
 <h2>BMW running hot at 120°C or more?</h2>
 <p>We reprogram your BMW to bring a high coolant temperature down to a stable 95°C or so, for steady performance and long-term engine protection.</p>
-<ul class="ticks"><li>Reduces high coolant temperature to about 95°C</li><li>Keeps the engine at a stable operating temperature</li><li>No change to daily driving or other functions</li></ul>
 <a class="btn btn-wa" href="{wa_link("Hi The ECU Clinic, I would like BMW temperature programming. Model and year: ")}" target="_blank" rel="noopener">{ICON["wa"]}Check my BMW</a>
-<details class="models"><summary>BMW models we program (2010–2018)</summary><div class="a">{models}<p>Model not listed? WhatsApp us and we’ll advise on compatibility.</p></div></details>
-<p class="more"><a href="{u("services/bmw-temperature-programming/")}">More about BMW temperature programming →</a></p>
+<p class="more"><a href="{u("services/bmw-temperature-programming/")}" aria-label="More details: BMW temperature programming">More details →</a></p>
 </div>
 <div>{img("bmw-fault-code-scan", "Scan tool reading BMW engine fault codes")}</div>
 </div></section>
@@ -444,7 +463,7 @@ def home():
 <section class="alt" id="how"><div class="wrap split media-hide-sm">
 <div>
 <h2>How it works</h2>
-<ol class="steps">{steps}</ol>
+<p>Send your car model, chassis number and the fault code to <a href="{wa_link()}" target="_blank" rel="noopener">{BIZ["tel_disp"]}</a>. We tell you what we can do: repair your unit, or supply a recon, used or new one.</p>
 {cta_buttons()}
 </div>
 <div>{img("hyundai-kia-esc", "Hyundai / Kia ESC unit on the bench")}</div>
@@ -455,11 +474,9 @@ def home():
 <div class="gallery home-gal">{gal}</div>
 </div></section>
 
-{codes_section()}
-
 <section class="alt"><div class="wrap">
-<div class="sec-head"><h2>Guides and articles</h2><p>Warning lights and common faults, explained in plain words.</p></div>
-<div class="grid g3 arts">{article_cards(ARTICLES[:3])}</div>
+<div class="sec-head"><h2>Guides and articles</h2></div>
+<div class="grid g3 arts">{article_cards(ARTICLES[:3], lead=False)}</div>
 <p style="margin-top:18px"><a class="btn btn-line" href="{u("articles/")}">All articles</a></p>
 </div></section>
 
@@ -602,10 +619,10 @@ def sub_hero(crumbs, eyebrow, h1, lead, photo, alt, buttons=True):
 </section>'''
 
 
-def article_cards(arts):
+def article_cards(arts, lead=True):
     return ''.join(
         f'<a class="card img art" href="{u(f"articles/{a["slug"]}/")}">{img(a["photo"], a["alt"])}'
-        f'<div class="body"><h3>{e(a["h1"])}</h3><p class="muted">{e(a["lead"])}</p></div></a>' for a in arts)
+        f'<div class="body"><h3>{e(a["h1"])}</h3>{f"<p class=\"muted\">{e(a["lead"])}</p>" if lead else ""}</div></a>' for a in arts)
 
 
 def band(title='ABS or brake light on?', text='WhatsApp us the fault code, chassis number and car model. We’ll tell you what we can do.'):
