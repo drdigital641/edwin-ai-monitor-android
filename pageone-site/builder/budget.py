@@ -37,7 +37,7 @@ page(BUDGET_URL.strip("/") + "/index.html",
      hero("Small budget", "SEO and a website on a small budget",
           "Website and SEO bundled for S$20 a month in Singapore",
           "On a S$20 to S$50 budget, you don't have to choose between a website and SEO. Page One bundles both for S$20 a month (introductory price): your website built and managed, and kept found on Google, Google Maps and ChatGPT every month. No setup fee, no contract. With S$50, add up to three SEO Boosts at S$10 each. The first year of a website costs S$240, plus your domain.",
-          '<p class="hero-price"><b>S$20</b>/month · <span class="intro-tag">Introductory price</span> · no setup fee · no contract</p>') + f"""
+          '<p class="hero-price"><b>S$20</b>/month · <span class="intro-tag">Introductory price</span> · no setup fee · no contract · <a class="link" href="https://wa.me/6597856612" target="_blank" rel="noopener">WhatsApp +65 9785 6612</a></p>') + f"""
 
     <section class="section">
       <div class="wrap">
@@ -56,7 +56,7 @@ page(BUDGET_URL.strip("/") + "/index.html",
             </tbody>
           </table>
         </div>
-        <p class="note reveal"><b>About these figures:</b> the freelance, builder and package costs are general market ranges for illustration only, not quotes from any provider. Real prices vary, so always check what's included and what renews. Only Page One's own prices are exact.</p>
+        <p class="note reveal"><b>About these figures:</b> the freelance, builder and package costs are general market ranges for illustration only, not quotes from any provider. Real prices vary, so always check what's included and what renews. Only Page One's own prices are exact (checked 15 October 2026).</p>
       </div>
     </section>
 
