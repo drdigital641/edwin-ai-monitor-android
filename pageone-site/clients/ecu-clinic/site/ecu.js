@@ -49,12 +49,49 @@
   window.addEventListener('scroll', onScroll, { passive: true }); onScroll();
 
   var reduce = window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches;
-  if (reduce || !('IntersectionObserver' in window)) return;
+  if (reduce) return;
+
+  // reading progress bar + hero parallax, one rAF per scroll
+  var bar = document.createElement('div'); bar.className = 'progress'; document.body.appendChild(bar);
+  var heroImg = document.querySelector('.hero img.bg'), ticking = false;
+  var paint = function () {
+    ticking = false;
+    var h = document.documentElement.scrollHeight - innerHeight, y = scrollY;
+    bar.style.transform = 'scaleX(' + (h > 0 ? Math.min(y / h, 1) : 0) + ')';
+    if (heroImg && y < innerHeight * 1.2) heroImg.style.setProperty('--py', (y * 0.3).toFixed(1) + 'px');
+  };
+  window.addEventListener('scroll', function () { if (!ticking) { ticking = true; requestAnimationFrame(paint); } }, { passive: true });
+  paint();
+
+  // pointer spotlight on cards, gentle tilt on photo cards (mouse only)
+  if (matchMedia('(hover: hover)').matches) {
+    document.querySelectorAll('.card.img, .gallery figure').forEach(function (c) { c.classList.add('tilt'); });
+    document.addEventListener('pointermove', function (ev) {
+      var c = ev.target.closest && ev.target.closest('.card, .gallery figure'); if (!c) return;
+      var r = c.getBoundingClientRect(), x = (ev.clientX - r.left) / r.width, y = (ev.clientY - r.top) / r.height;
+      c.style.setProperty('--mx', (x * 100).toFixed(1) + '%'); c.style.setProperty('--my', (y * 100).toFixed(1) + '%');
+      if (c.classList.contains('tilt')) { c.style.setProperty('--rx', ((0.5 - y) * 6).toFixed(2) + 'deg'); c.style.setProperty('--ry', ((x - 0.5) * 6).toFixed(2) + 'deg'); }
+    }, { passive: true });
+  }
+
+  // tap ripple on buttons
+  document.addEventListener('pointerdown', function (ev) {
+    var b = ev.target.closest && ev.target.closest('.btn'); if (!b) return;
+    var r = b.getBoundingClientRect(), d = Math.max(r.width, r.height), s = document.createElement('span');
+    s.className = 'rip'; s.style.width = s.style.height = d + 'px';
+    s.style.left = (ev.clientX - r.left - d / 2) + 'px'; s.style.top = (ev.clientY - r.top - d / 2) + 'px';
+    b.appendChild(s); setTimeout(function () { s.remove(); }, 650);
+  }, { passive: true });
+
+  if (!('IntersectionObserver' in window)) return;
 
   var groups = [
     ['.sec-head', ''], ['.why .card', 'stagger'], ['.svc .card', 'stagger'], ['.split>div:first-child', 'from-l'],
     ['.split>div:last-child', 'from-r'], ['.makes li', 'stagger-fast'], ['.gallery figure', 'zoom stagger'],
-    ['.loc-wrap>.card', 'stagger'], ['#faq details', 'stagger-fast'], ['.band', 'zoom'], ['.svc+p', ''], ['.stats li', 'stagger']
+    ['.loc-wrap>.card', 'stagger'], ['#faq details', 'stagger-fast'], ['.band', 'zoom'], ['.svc+p', ''], ['.stats li', 'stagger'],
+    // service pages, articles and the fault-code list (16 Oct 2026)
+    ['.sym .card', 'stagger'], ['.arts .card', 'zoom stagger'], ['.prose>h2,.prose>p,.prose>ul', ''], ['.models-list p', 'stagger-fast'],
+    ['.split details', 'stagger-fast'], ['ul.ticks', ''], ['.split>div>h2', '']
   ];
   var vh = window.innerHeight, io = new IntersectionObserver(function (es) {
     es.forEach(function (en) { if (!en.isIntersecting) return;

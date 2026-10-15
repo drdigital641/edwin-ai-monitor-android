@@ -314,3 +314,41 @@ html{overflow-x:hidden}
 .arts .card.art{display:grid}
 .models-list p{font-size:.9rem;margin:.3em 0}
 }
+/* ---------- motion round 2 (16 Oct 2026, Edwin: "more motion and transition") ---------- */
+/* reading progress bar along the top edge */
+.progress{position:fixed;left:0;top:0;height:3px;width:100%;z-index:60;pointer-events:none;transform-origin:left;transform:scaleX(0);
+  background:linear-gradient(90deg,var(--blue),var(--glow))}
+/* hero photo drifts slower than the page (translate composes with the slow zoom) */
+.hero img.bg{translate:0 var(--py,0px)}
+/* nav links: underline that slides in */
+nav.main a:after{content:"";position:absolute;left:10px;right:10px;bottom:4px;height:2px;border-radius:2px;background:var(--glow);
+  transform:scaleX(0);transform-origin:left;transition:transform .35s var(--ease)}
+nav.main a:hover:after,nav.main a[aria-current]:after{transform:scaleX(1)}
+/* cards: soft spotlight that follows the pointer, slight 3D tilt on photo cards */
+.card{position:relative}
+.card:before{content:"";position:absolute;inset:0;border-radius:inherit;pointer-events:none;opacity:0;transition:opacity .35s;
+  background:radial-gradient(260px circle at var(--mx,50%) var(--my,50%),rgba(47,211,168,.14),transparent 60%)}
+@media(hover:hover){
+  .card:hover:before{opacity:1}
+  .tilt{will-change:transform}
+  .tilt:hover{transform:perspective(900px) rotateX(var(--rx,0deg)) rotateY(var(--ry,0deg)) translateY(-6px)}
+  .codes .card:hover h3{color:var(--blue)}
+}
+.codes .card h3{transition:color .3s}
+/* tap ripple on buttons */
+.btn .rip{position:absolute;border-radius:50%;pointer-events:none;background:rgba(255,255,255,.45);transform:scale(0);animation:rip .6s ease-out forwards}
+@keyframes rip{to{transform:scale(4);opacity:0}}
+/* service-page sub hero gets the same entrance and glow as the home hero */
+.hero.sub .crumbs{animation:rise .8s var(--ease) both}
+/* ticks pop in one by one when their list is revealed */
+.rv .ticks li,.ticks.rv li{transition:opacity .5s var(--ease),transform .5s var(--ease)}
+.ticks.rv:not(.in) li{opacity:0;transform:translateX(-12px)}
+.ticks.rv.in li:nth-child(2){transition-delay:.06s}.ticks.rv.in li:nth-child(3){transition-delay:.12s}
+.ticks.rv.in li:nth-child(4){transition-delay:.18s}.ticks.rv.in li:nth-child(5){transition-delay:.24s}
+.ticks.rv.in li:nth-child(6){transition-delay:.3s}.ticks.rv.in li:nth-child(n+7){transition-delay:.36s}
+.ticks.rv{opacity:1;transform:none}
+@media(prefers-reduced-motion:reduce){
+  .progress{display:none}
+  .hero img.bg{translate:none}
+  .ticks.rv li{opacity:1!important;transform:none!important}
+}
