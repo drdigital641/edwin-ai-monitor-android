@@ -42,7 +42,7 @@ PRICE_GLANCE = """    <section class="section alt" id="price">
             </tbody>
           </table>
         </div>
-        <p class="note reveal">Your domain is registered in your name and paid by you directly, usually S$15–30 a year. <a class="link" href="/pricing/">Full pricing →</a></p>
+        <p class="note reveal">Your domain is registered in your name and paid by you directly, usually S$15–30 a year. Prices checked 15 October 2026. <a class="link" href="/pricing/">Full pricing →</a></p>
       </div>
     </section>
 """
@@ -82,7 +82,7 @@ CHEAP_SEO_FAQ = [
 ]
 
 page("cheapest-seo-singapore/index.html",
-     "Cheapest SEO in Singapore? Why Cheap SEO Can Work | Page One",
+     "Cheapest SEO in Singapore? From S$20/month | Page One",
      "Looking for the cheapest SEO in Singapore? AI now does the daily SEO work, so good SEO costs less. Page One: S$20/month, no setup fee, no contract.",
      [service("Affordable SEO subscription for Singapore businesses", "/cheapest-seo-singapore/",
               "Low-cost, automated SEO for Singapore small businesses: Google, Google Maps and AI search visibility for S$20 a month, no setup fee, no contract.", "20"),
@@ -90,7 +90,7 @@ page("cheapest-seo-singapore/index.html",
      hero("Cheap SEO that works", "Looking for the cheapest SEO in Singapore?",
           "Cheap SEO doesn't have to mean bad SEO.",
           "SEO used to be expensive because it took a lot of people's time. AI now does most of that daily work. With the right strategy, structure and design, good SEO, including regular new articles, can cost S$20 a month.",
-          '<p class="hero-price"><b>S$20</b>/month · <span class="intro-tag">Introductory price</span> · no setup fee · no contract</p>') + "\n\n" + PRICE_GLANCE + f"""
+          '<p class="hero-price"><b>S$20</b>/month · <span class="intro-tag">Introductory price</span> · no setup fee · no contract · <a class="link" href="https://wa.me/6597856612" target="_blank" rel="noopener">WhatsApp +65 9785 6612</a></p>') + "\n\n" + PRICE_GLANCE + f"""
 
     <section class="section">
       <div class="wrap narrow">
@@ -188,7 +188,7 @@ page("cheapest-seo-singapore/index.html",
     </section>
 
 """ + cta("See what S$20 a month can do for you", "Check your website free in under a minute, or chat with Edwin on WhatsApp. No obligation."),
-     crumb="Cheap SEO that works", updated="2026-10-13")
+     crumb="Cheap SEO that works", updated="2026-10-15")
 
 
 # ---------- Cheapest website maker in Singapore ----------
@@ -216,7 +216,7 @@ page("cheapest-website-singapore/index.html",
      hero("A website without the lump sum", "Looking for the cheapest website maker in Singapore?",
           "A website without the lump sum.",
           "Most websites are a big one-off payment, then left alone until they're out of date. Page One builds your website, hosts it and keeps it updated for S$20 a month, so it keeps working for you.",
-          '<p class="hero-price"><b>S$20</b>/month · <span class="intro-tag">Introductory price</span> · no setup fee · no contract</p>') + "\n\n" + PRICE_GLANCE + f"""
+          '<p class="hero-price"><b>S$20</b>/month · <span class="intro-tag">Introductory price</span> · no setup fee · no contract · <a class="link" href="https://wa.me/6597856612" target="_blank" rel="noopener">WhatsApp +65 9785 6612</a></p>') + "\n\n" + PRICE_GLANCE + f"""
 
     <section class="section">
       <div class="wrap narrow">
