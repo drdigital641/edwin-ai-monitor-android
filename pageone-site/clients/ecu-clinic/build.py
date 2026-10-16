@@ -52,7 +52,10 @@ BIZ = {
     'postal': '415875',
     'map': 'Premier @ Kaki Bukit, 8 Kaki Bukit Avenue 4, Singapore 415875',
 }
-WA_TEXT = 'Hi The ECU Clinic, I need help with my car. Car model: \nChassis no.: \nFault code: '
+WA_TEXT = 'I need help with my car. Car model: \nChassis no.: \nFault code: '
+# Every WhatsApp link opens with the page and the button the visitor tapped (Edwin, 16 Oct 2026), so Ching
+# can see which page brought the enquiry. wa_link leaves WA_PAGE_MARK in the text; page() swaps in the page name.
+WA_PAGE_MARK = '\x00P1PAGE\x00'
 WARRANTY = '6-month warranty'
 HOURS_TXT = 'Monday to Friday, 9am to 7pm. Saturday, 9am to 3pm. Closed on Sundays and public holidays. WhatsApp enquiries are welcome 24/7, and after-hours appointments can be arranged.'
 
@@ -85,14 +88,25 @@ def u(path=''):
     return ('../' * DEPTH or './') + path
 
 
-def wa_link(text=WA_TEXT):
-    return f'https://wa.me/{BIZ["wa"]}?text={quote(text)}'
+def wa_link(text=WA_TEXT, cta='WhatsApp button'):
+    msg = f"Hi The ECU Clinic, I'm enquiring from your website (Page: {WA_PAGE_MARK}, Button: {html.unescape(cta)}). {text}"
+    return f'https://wa.me/{BIZ["wa"]}?text={quote(msg)}'
 
 
-def cta_buttons(dark=False):
+def wa_page_name(path, title, body):
+    import re
+    if path == '':
+        return 'Homepage'
+    m = re.search(r'<nav class="crumbs"[^>]*>(.*?)</nav>', body)
+    if m:
+        return html.unescape(re.sub(r'<[^>]+>', '', m.group(1)).split(' › ')[-1]).strip()
+    return html.unescape(title.split(' | ')[0])
+
+
+def cta_buttons(dark=False, cta='WhatsApp us'):
     call = 'btn-ghost' if dark else 'btn-red'
     return (f'<div class="btns">'
-            f'<a class="btn btn-wa" href="{wa_link()}" target="_blank" rel="noopener">{ICON["wa"]}<span class="lg">WhatsApp {BIZ["tel_disp"]}</span><span class="sm">WhatsApp us</span></a>'
+            f'<a class="btn btn-wa" href="{wa_link(cta=cta)}" target="_blank" rel="noopener">{ICON["wa"]}<span class="lg">WhatsApp {BIZ["tel_disp"]}</span><span class="sm">WhatsApp us</span></a>'
             f'<a class="btn {call}" href="tel:{BIZ["tel"]}">{ICON["phone"]}Call {BIZ["contact"]}</a></div>')
 
 
@@ -185,12 +199,12 @@ def codes_section(alt=False):
     return f'''<section{' class="alt"' if alt else ''} id="fault-codes"><div class="wrap">
 <div class="sec-head"><h2>Fault codes we handle</h2><p>Common codes we repair at our workshop. Got a different warning light or code? WhatsApp us a photo of the scan tool or dashboard and we’ll tell you what we can do.</p></div>
 <div class="grid sym codes">{cards}</div>
-<p style="margin-top:20px"><a class="btn btn-wa" href="{wa_link("Hi The ECU Clinic, I have a fault code on my car. Car model: \nFault code: ")}" target="_blank" rel="noopener">{ICON["wa"]}WhatsApp us your fault code</a></p>
+<p style="margin-top:20px"><a class="btn btn-wa" href="{wa_link("I have a fault code on my car. Car model: \nFault code: ", cta="WhatsApp us your fault code")}" target="_blank" rel="noopener">{ICON["wa"]}WhatsApp us your fault code</a></p>
 </div></section>'''
 
 
 STEPS = [
-    ('WhatsApp us the details', f'Send your car model, chassis number and the fault code to <a href="{wa_link()}" target="_blank" rel="noopener">{BIZ["tel_disp"]}</a>. A photo of the scan tool screen or warning light helps.'),
+    ('WhatsApp us the details', f'Send your car model, chassis number and the fault code to <a href="{wa_link(cta="How it works")}" target="_blank" rel="noopener">{BIZ["tel_disp"]}</a>. A photo of the scan tool screen or warning light helps.'),
     ('We check and advise', 'We tell you what we can do: repair your unit, or supply a recon, used or new one.'),
     ('Drop off or pick-up', f'Bring the car or part to us at {BIZ["building"]}, or use our pick-up and delivery service.'),
     ('Fixed, with warranty', 'Your car is back on the road, and the repair comes with a 6-month warranty.'),
@@ -198,7 +212,7 @@ STEPS = [
 
 FAQ = [
     ('What should I send when I WhatsApp you?',
-     f'Your car model, chassis number and the fault code. A photo of the scan tool screen or the warning light on the dashboard also helps. WhatsApp <a href="{wa_link()}" target="_blank" rel="noopener">{BIZ["tel_disp"]}</a>.'),
+     f'Your car model, chassis number and the fault code. A photo of the scan tool screen or the warning light on the dashboard also helps. WhatsApp <a href="{wa_link(cta="FAQ")}" target="_blank" rel="noopener">{BIZ["tel_disp"]}</a>.'),
     ('Can you repair my ABS pump or module?',
      'Yes. We repair ABS, ESP and ESC modules and supply used and reconditioned ABS pumps for makes such as Toyota, Honda, Mercedes-Benz, Hyundai, Kia, Volkswagen, Audi, Nissan, Volvo and Chevrolet. For Toyota Voxy, Noah and Sienta we repair, replace or supply used and recon ABS pumps and modules, with plug and play available.'),
     ('My Mercedes says “Active Brake Assist functions limited”. Can you help?',
@@ -269,7 +283,8 @@ def faq_ld():
         {'@type': 'Question', 'name': q, 'acceptedAnswer': {'@type': 'Answer', 'text': re.sub('<[^>]+>', '', a)}} for q, a in HOME_FAQ]}
 
 
-def page(path, title, desc, body, ld=None, share=('module-circuit-board.jpg', None), og_type='website', img_origin=None):
+def page(path, title, desc, body, ld=None, share=('module-circuit-board.jpg', None), og_type='website', img_origin=None, wa_page=None):
+    wa_mark, wa_name = quote(WA_PAGE_MARK), quote(wa_page or wa_page_name(path, title, body))
     canonical = ORIGIN + BASE + path
     slug = path.strip('/').replace('/', '-') or 'home'
     headline = share[1] or title.split(' | ')[0]
@@ -325,12 +340,12 @@ def page(path, title, desc, body, ld=None, share=('module-circuit-board.jpg', No
 {SPRITE}
 {strip}<div class="topbar"><div class="wrap">
 <span>ABS &amp; brake system repair <span class="hide-sm">· Mon–Fri 9am–7pm · Sat 9am–3pm · WhatsApp 24/7</span></span>
-<span><a href="{wa_link()}" target="_blank" rel="noopener">WhatsApp {BIZ["tel_disp"]}</a> <span class="hide-sm">· {BIZ["building"]}</span></span>
+<span><a href="{wa_link(cta="Top bar")}" target="_blank" rel="noopener">WhatsApp {BIZ["tel_disp"]}</a> <span class="hide-sm">· {BIZ["building"]}</span></span>
 </div></div>
 <header class="site"><div class="wrap">
 <a class="logo" href="{u()}"><img src="{u("img/logo.webp")}" width="538" height="100" alt="The ECU Clinic: ECU and ABS repair for cars"></a>
 <nav class="main" aria-label="Main">{nav}</nav>
-<a class="btn btn-wa hdr-cta" href="{wa_link()}" target="_blank" rel="noopener">{ICON["wa"]}WhatsApp {BIZ["tel_disp"]}</a>
+<a class="btn btn-wa hdr-cta" href="{wa_link(cta="Header")}" target="_blank" rel="noopener">{ICON["wa"]}WhatsApp {BIZ["tel_disp"]}</a>
 <button class="menu-btn" type="button" aria-expanded="false" aria-controls="mnav">Menu</button>
 </div>
 <nav class="mobile-nav" id="mnav" aria-label="Mobile">{nav}</nav>
@@ -343,7 +358,7 @@ def page(path, title, desc, body, ld=None, share=('module-circuit-board.jpg', No
 <div>
 <h3>The ECU Clinic</h3>
 <p>ABS pump and module repair and brake fault diagnosis in Kaki Bukit, Singapore. Also Honda front radar repair, BMW CAS repair, Mercedes 7-speed and 9-speed TCU repair, Mercedes steering lock repair and brand-new OEM hybrid batteries. Pick-up and delivery available, 6-month warranty.</p>
-<p><a href="{wa_link()}" target="_blank" rel="noopener">WhatsApp {BIZ["tel_disp"]}</a> (preferred, ask for {BIZ["contact"]})<br><a href="tel:{BIZ["tel"]}">Call {BIZ["tel_disp"]}</a></p>
+<p><a href="{wa_link(cta="Footer")}" target="_blank" rel="noopener">WhatsApp {BIZ["tel_disp"]}</a> (preferred, ask for {BIZ["contact"]})<br><a href="tel:{BIZ["tel"]}">Call {BIZ["tel_disp"]}</a></p>
 <p><a href="{BIZ["facebook"]}" target="_blank" rel="noopener">Facebook</a></p>
 </div>
 <div>
@@ -363,13 +378,13 @@ def page(path, title, desc, body, ld=None, share=('module-circuit-board.jpg', No
 <div class="fine"><span>© 2026 The ECU Clinic. All rights reserved.</span><a href="https://pageonesingapore.com/">Website &amp; SEO by Page One Singapore</a></div>
 </div></footer>
 <div class="dock">
-<a class="btn btn-wa" href="{wa_link()}" target="_blank" rel="noopener">{ICON["wa"]}WhatsApp</a>
+<a class="btn btn-wa" href="{wa_link(cta="Sticky bar")}" target="_blank" rel="noopener">{ICON["wa"]}WhatsApp</a>
 <a class="btn btn-red" href="tel:{BIZ["tel"]}">{ICON["phone"]}Call</a>
 </div>
 <script src="{u("ecu.js")}?v={ASSET_V}" defer></script>
 </body>
 </html>
-'''
+'''.replace(wa_mark, wa_name)
 
 
 def why_cards():
@@ -412,7 +427,7 @@ def home():
 <h1>ABS Pump Repair &amp; Brake Fault Diagnosis in Singapore</h1>
 <p class="lead">ABS or ESP light on? We find the fault and repair the pump or module. We also repair Mercedes 7-speed and 9-speed gearbox control units and steering locks, and fit brand-new OEM hybrid batteries.</p>
 <ul class="chips"><li>6-month warranty</li><li>Pick-up &amp; delivery</li><li>10+ years’ experience</li><li>WhatsApp enquiries 24/7</li></ul>
-{cta_buttons(dark=True)}
+{cta_buttons(dark=True, cta="Hero")}
 </div>
 </section>
 
@@ -432,7 +447,7 @@ def home():
 <section class="alt" id="services"><div class="wrap">
 <div class="sec-head"><h2>Our services</h2><p>ABS and brake system repair, plus Honda radar, BMW CAS, Mercedes gearbox and steering lock repair and hybrid batteries.</p></div>
 <div class="grid g2 svc">{service_cards()}</div>
-<p style="margin-top:22px"><a class="btn btn-wa" href="{wa_link()}" target="_blank" rel="noopener">{ICON["wa"]}WhatsApp us your fault code</a></p>
+<p style="margin-top:22px"><a class="btn btn-wa" href="{wa_link(cta="WhatsApp us your fault code")}" target="_blank" rel="noopener">{ICON["wa"]}WhatsApp us your fault code</a></p>
 </div></section>
 
 <section id="diagnosis"><div class="wrap split">
@@ -440,7 +455,7 @@ def home():
 <span class="eyebrow" style="color:var(--blue)">Fault diagnosis</span>
 <h2>Warning light on the dashboard?</h2>
 <p>An ABS, ESP or brake warning can come from the pump, the module, a sensor or the wiring. We find the cause first, then tell you the options: repair, recon, used or new.</p>
-<a class="btn btn-wa" href="{wa_link("Hi The ECU Clinic, I have a warning light on my car. Car model: \nChassis no.: \nFault code / warning: ")}" target="_blank" rel="noopener">{ICON["wa"]}Send us a photo of the warning</a>
+<a class="btn btn-wa" href="{wa_link("I have a warning light on my car. Car model: \nChassis no.: \nFault code / warning: ", cta="Send us a photo of the warning")}" target="_blank" rel="noopener">{ICON["wa"]}Send us a photo of the warning</a>
 </div>
 <div>{img("active-brake-assist-warning", "Mercedes-Benz dashboard showing Active Brake Assist functions limited")}</div>
 </div></section>
@@ -455,7 +470,7 @@ def home():
 <span class="eyebrow" style="color:var(--blue)">BMW temperature programming</span>
 <h2>BMW running hot at 120°C or more?</h2>
 <p>We reprogram your BMW to bring a high coolant temperature down to a stable 95°C or so, for steady performance and long-term engine protection.</p>
-<a class="btn btn-wa" href="{wa_link("Hi The ECU Clinic, I would like BMW temperature programming. Model and year: ")}" target="_blank" rel="noopener">{ICON["wa"]}Check my BMW</a>
+<a class="btn btn-wa" href="{wa_link("I would like BMW temperature programming. Model and year: ", cta="Check my BMW")}" target="_blank" rel="noopener">{ICON["wa"]}Check my BMW</a>
 <p class="more"><a href="{u("services/bmw-temperature-programming/")}" aria-label="More details: BMW temperature programming">More details →</a></p>
 </div>
 <div>{img("bmw-fault-code-scan", "Scan tool reading BMW engine fault codes")}</div>
@@ -464,8 +479,8 @@ def home():
 <section class="alt" id="how"><div class="wrap split media-hide-sm">
 <div>
 <h2>How it works</h2>
-<p>Send your car model, chassis number and the fault code to <a href="{wa_link()}" target="_blank" rel="noopener">{BIZ["tel_disp"]}</a>. We tell you what we can do: repair your unit, or supply a recon, used or new one.</p>
-{cta_buttons()}
+<p>Send your car model, chassis number and the fault code to <a href="{wa_link(cta="How it works")}" target="_blank" rel="noopener">{BIZ["tel_disp"]}</a>. We tell you what we can do: repair your unit, or supply a recon, used or new one.</p>
+{cta_buttons(cta="How it works")}
 </div>
 <div>{img("hyundai-kia-esc", "Hyundai / Kia ESC unit on the bench")}</div>
 </div></section>
@@ -486,7 +501,7 @@ def home():
 <div class="loc-wrap">
 <div class="card loc"><span class="tag">Workshop</span><h3>{BIZ["building"]}</h3>
 <p>{e(BIZ["street"])}<br>Singapore {BIZ["postal"]}</p>
-<div class="btns"><a class="btn btn-wa" href="{wa_link()}" target="_blank" rel="noopener">{ICON["wa"]}WhatsApp {BIZ["tel_disp"]}</a>
+<div class="btns"><a class="btn btn-wa" href="{wa_link(cta="Visit us")}" target="_blank" rel="noopener">{ICON["wa"]}WhatsApp {BIZ["tel_disp"]}</a>
 <a class="btn btn-line" href="https://www.google.com/maps/search/?api=1&amp;query={quote(BIZ["map"])}" target="_blank" rel="noopener">Directions</a></div></div>
 <div class="card"><h3>Opening hours</h3><dl class="hours"><dt>Mon – Fri</dt><dd>9:00am – 7:00pm</dd><dt>Sat</dt><dd>9:00am – 3:00pm</dd><dt>Sun &amp; PH</dt><dd>Closed</dd></dl>
 <p class="muted" style="margin-top:10px">WhatsApp enquiries are welcome 24/7. After-hours appointments can be arranged. Pick-up and delivery available.</p></div>
@@ -498,7 +513,7 @@ def home():
 {faq}
 </div></section>
 
-<section><div class="wrap"><div class="band"><div><h2>ABS or brake light on?</h2><p>WhatsApp us the fault code, chassis number and car model. We’ll tell you what we can do.</p></div>{cta_buttons(dark=True)}</div></div></section>
+<section><div class="wrap"><div class="band"><div><h2>ABS or brake light on?</h2><p>WhatsApp us the fault code, chassis number and car model. We’ll tell you what we can do.</p></div>{cta_buttons(dark=True, cta="Bottom banner")}</div></div></section>
 '''
     # 14 Oct 2026: home is the brand / brake system specialist page; services/abs-pump-repair/ owns "abs pump repair singapore".
     return page('', 'ABS & Brake System Specialist Singapore | The ECU Clinic',
@@ -517,7 +532,9 @@ def write(rel, text):
 def build(rel, fn):
     global DEPTH
     DEPTH = rel.count('/')
-    write(rel, fn())
+    out = fn()
+    assert '%00P1PAGE%00' not in out, f'{rel}: a WhatsApp link was built outside page(), so it has no page name'
+    write(rel, out)
 
 
 def robots_txt():
@@ -584,9 +601,9 @@ def not_found():
 <h1>Page not found</h1>
 <p>This page doesn’t exist. Head back to the home page, or WhatsApp us your car model and fault code.</p>
 <div class="btns" style="justify-content:center"><a class="btn btn-line" href="/">Home page</a>
-<a class="btn btn-wa" href="{wa_link()}" target="_blank" rel="noopener">WhatsApp {BIZ["tel_disp"]}</a></div>
+<a class="btn btn-wa" href="{wa_link(cta="Page not found")}" target="_blank" rel="noopener">WhatsApp {BIZ["tel_disp"]}</a></div>
 </div></section></main></body></html>
-'''
+'''.replace(quote(WA_PAGE_MARK), quote('Page not found'))
 
 
 # ---------- service pages and articles ----------
@@ -615,7 +632,7 @@ def sub_hero(crumbs, eyebrow, h1, lead, photo, alt, buttons=True):
 <span class="eyebrow">{e(eyebrow)}</span>
 <h1>{e(h1)}</h1>
 <p class="lead">{e(lead)}</p>
-{cta_buttons(dark=True) if buttons else ''}
+{cta_buttons(dark=True, cta="Hero") if buttons else ''}
 </div>
 </section>'''
 
@@ -627,7 +644,7 @@ def article_cards(arts, lead=True):
 
 
 def band(title='ABS or brake light on?', text='WhatsApp us the fault code, chassis number and car model. We’ll tell you what we can do.'):
-    return f'<section><div class="wrap"><div class="band"><div><h2>{e(title)}</h2><p>{e(text)}</p></div>{cta_buttons(dark=True)}</div></div></section>'
+    return f'<section><div class="wrap"><div class="band"><div><h2>{e(title)}</h2><p>{e(text)}</p></div>{cta_buttons(dark=True, cta="Bottom banner")}</div></div></section>'
 
 
 def service_page(sp):
@@ -657,7 +674,7 @@ def service_page(sp):
         jobs = (f'<section><div class="wrap"><div class="sec-head"><h2>Recent jobs from our workshop</h2>'
                 f'<p>Our own photos of units we have worked on. Send us yours on WhatsApp.</p></div>'
                 f'<div class="gallery home-gal">' + ''.join(f'<figure>{img(n, a)}<figcaption>{e(a)}</figcaption></figure>' for n, a in sp['jobs'])
-                + f'</div><div style="margin-top:18px">{cta_buttons()}</div></div></section>')
+                + f'</div><div style="margin-top:18px">{cta_buttons(cta="Recent jobs")}</div></div></section>')
     first_alt = 0 if jobs else 1  # keep plain/alt backgrounds alternating after the signs section
     more = ''.join(f'<section{" class=\"alt\"" if i % 2 == first_alt else ""}><div class="wrap prose"><h2>{e(h)}</h2>{b.replace("{u}", u())}</div></section>'
                    for i, (h, b) in enumerate(sp.get('more', [])))
@@ -684,7 +701,7 @@ def service_page(sp):
 <section><div class="wrap split">
 <div>
 <h2>How it works</h2>
-<ol class="steps">{''.join(f'<li><strong>{t}.</strong> {d.replace("{wa}", wa_link())}</li>' for t, d in sp.get('steps', STEPS))}</ol>
+<ol class="steps">{''.join(f'<li><strong>{t}.</strong> {d.replace("{wa}", wa_link(cta="How it works"))}</li>' for t, d in sp.get('steps', STEPS))}</ol>
 </div>
 <div>
 <h2>Questions</h2>
@@ -727,8 +744,8 @@ def article(a):
     body = sub_hero(crumbs, 'Guide', a['h1'], a['lead'], a['photo'], a['alt'], buttons=False) + f'''
 <section><div class="wrap prose">
 <p class="meta">By The ECU Clinic · {a["date"][8:10].lstrip("0")} Oct 2026</p>
-{a["body"].replace("{wa}", wa_link())}
-<div class="btns" style="margin-top:22px"><a class="btn btn-wa" href="{wa_link()}" target="_blank" rel="noopener">{ICON["wa"]}WhatsApp {BIZ["tel_disp"]}</a>
+{a["body"].replace("{wa}", wa_link(cta="Article text"))}
+<div class="btns" style="margin-top:22px"><a class="btn btn-wa" href="{wa_link(cta="Article end")}" target="_blank" rel="noopener">{ICON["wa"]}WhatsApp {BIZ["tel_disp"]}</a>
 <a class="btn btn-line" href="{u(f"services/{sp['slug']}/")}">{e(sp["name"])}</a></div>
 </div></section>
 <section class="alt"><div class="wrap">

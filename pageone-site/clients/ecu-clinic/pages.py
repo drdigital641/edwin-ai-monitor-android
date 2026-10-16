@@ -4,6 +4,8 @@ specialised service plus an articles section for long-tail searches).
 Client facts come only from source/content.md. Articles add general, widely documented car knowledge
 in hedged wording ("can", "often"), with no prices, no model-specific failure claims and no promises.
 Body text is HTML; {wa} is replaced with the WhatsApp link by build.py.
+Every WhatsApp link (including {wa}) is prefilled by build.py with the page name and the button tapped
+(16 Oct 2026), so never hand-write a wa.me link here.
 """
 
 # slug, short name, title tag, meta description, h1, lead, photo (web name), photo alt, share photo (source jpg),
