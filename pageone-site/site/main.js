@@ -231,6 +231,59 @@ if (checker) {
   const plainLabel = (c) => (PLAIN[c.id] ? PLAIN[c.id][0] : c.label);
   const showError = (msg) => { err.textContent = msg; err.hidden = false; };
 
+  // Context sent with each check, so Edwin's "Site checks" log shows where it came from.
+  // Edwin marks his own phone once with /?p1test=1 (undo with /?p1test=0): his checks are then logged as tests.
+  let trigger = "form";
+  const ctxParams = new URLSearchParams(location.search);
+  if (ctxParams.get("p1test") === "1") storageSet("p1-owner", "1");
+  if (ctxParams.get("p1test") === "0") { try { localStorage.removeItem("p1-owner"); } catch (e) { /* ignore */ } }
+  const checkCtx = (how) => {
+    const ref = document.referrer && !document.referrer.includes(location.hostname) ? document.referrer.slice(0, 300) : "";
+    return {
+      page: location.pathname, trigger: how, referrer: ref,
+      utm_source: ctxParams.get("utm_source") || "", utm_medium: ctxParams.get("utm_medium") || "", utm_campaign: ctxParams.get("utm_campaign") || "",
+      test: storageGet("p1-owner") === "1" || ctxParams.get("p1test") === "1", automated: !!navigator.webdriver,
+    };
+  };
+
+  // Optional: the visitor can leave a WhatsApp number or email for a free fix list. It is added to their log row.
+  const leadBox = (r) => {
+    const box = el("form", "checker-lead");
+    box.noValidate = true;
+    box.appendChild(el("h4", null, "Want Edwin to send you a free fix list?"));
+    box.appendChild(el("p", null, "Optional. Leave your WhatsApp number or email and Edwin will send you what to fix first on " + r.host + "."));
+    const row = el("div", "checker-lead-row");
+    const name = el("input"); name.name = "name"; name.type = "text"; name.autocomplete = "name"; name.placeholder = "Your name (optional)"; name.maxLength = 80; name.setAttribute("aria-label", "Your name (optional)");
+    const contact = el("input"); contact.name = "contact"; contact.type = "text"; contact.autocomplete = "tel"; contact.inputMode = "email"; contact.placeholder = "WhatsApp number or email"; contact.maxLength = 120; contact.setAttribute("aria-label", "WhatsApp number or email");
+    const hp = el("input", "hp"); hp.name = "company_url"; hp.tabIndex = -1; hp.autocomplete = "off"; hp.setAttribute("aria-hidden", "true");
+    const send = el("button", "btn", "Send me the fix list"); send.type = "submit";
+    row.appendChild(name); row.appendChild(contact); row.appendChild(send);
+    box.appendChild(row); box.appendChild(hp);
+    const e2 = el("p", "form-error"); e2.hidden = true; e2.setAttribute("role", "alert");
+    box.appendChild(e2);
+    box.appendChild(el("p", "fine", "Only used to reply to you about this check. Saved with the website you checked."));
+    box.addEventListener("submit", async (ev) => {
+      ev.preventDefault();
+      const c = contact.value.trim();
+      if (!/@/.test(c) && c.replace(/\D/g, "").length < 8) { e2.textContent = "Please enter a WhatsApp number (like 9123 4567) or an email address."; e2.hidden = false; contact.focus(); return; }
+      e2.hidden = true; send.disabled = true; send.textContent = "Sending…";
+      try {
+        const res = await callApi("siteCheckContact", { log_id: r.log_id, log_token: r.log_token, name: name.value.trim(), contact: c, company_url: hp.value });
+        if (!res.data || !res.data.ok) { e2.textContent = (res.data && res.data.error) || "That didn't work. Please try again."; e2.hidden = false; return; }
+        box.textContent = "";
+        box.classList.add("done");
+        box.appendChild(el("h4", null, "Thanks! Edwin will send your fix list soon."));
+        box.appendChild(el("p", null, "Usually the same day, on WhatsApp or email."));
+        trackCta("checker_fixlist");
+      } catch (e3) {
+        e2.textContent = "We couldn't send that. Please check your connection and try again."; e2.hidden = false;
+      } finally {
+        send.disabled = false; if (send.isConnected) send.textContent = "Send me the fix list";
+      }
+    });
+    return box;
+  };
+
   // Shareable result link: /?report=<code>#check opens this exact saved result.
   const reportLink = (id) => location.origin + "/?report=" + encodeURIComponent(id) + "#check";
   const whenText = (iso) => {
@@ -370,7 +423,7 @@ if (checker) {
   input.addEventListener("input", syncClear);
   if (clearBtn) clearBtn.addEventListener("click", () => { input.value = ""; syncClear(); err.hidden = true; input.focus(); });
   const tryBtn = checker.querySelector("[data-try]");
-  if (tryBtn) tryBtn.addEventListener("click", () => { input.value = tryBtn.dataset.try; syncClear(); checker.requestSubmit ? checker.requestSubmit() : checker.dispatchEvent(new Event("submit")); });
+  if (tryBtn) tryBtn.addEventListener("click", () => { trigger = "example"; input.value = tryBtn.dataset.try; syncClear(); checker.requestSubmit ? checker.requestSubmit() : checker.dispatchEvent(new Event("submit")); });
   const noSite = document.getElementById("checker-nosite");
   if (noSite) {
     noSite.href = waLink("Hi Edwin, I don't have a website yet. Can Page One build one for my business?\nMy business: ");
@@ -424,8 +477,11 @@ if (checker) {
     trackCta("checker_social");
   };
 
+  checker.addEventListener("p1-hero", () => { trigger = "hero"; });
   checker.addEventListener("submit", async (e) => {
     e.preventDefault();
+    const how = trigger;
+    trigger = "form";
     const url = input.value.trim().replace(/\s+/g, "").replace(/[.,;]+$/, "").toLowerCase();
     input.value = url;
     syncClear();
@@ -442,7 +498,7 @@ if (checker) {
     startProgress();
     trackCta("checker_run");
     try {
-      const r = await callApi("siteCheck", { url, mode: "basics" });
+      const r = await callApi("siteCheck", { url, mode: "basics", ctx: checkCtx(how) });
       if (!r.data || !r.data.ok) {
         const msg = (r.data && r.data.error) || "We couldn't check that website. Please try again.";
         showError(/doesn't return a web page|couldn't reach/i.test(msg) ? "We couldn't open " + url + ". Check the spelling, or try it with www. in front." : msg);
@@ -452,6 +508,10 @@ if (checker) {
       stopProgress();
       out.hidden = false;
       const sp = renderBasics(r.data);
+      if (r.data.log_id && r.data.log_token) {
+        const head = out.querySelector(".score-meaning");
+        out.insertBefore(leadBox(r.data), head || null);
+      }
       if (r.data.share_id && history.replaceState) history.replaceState(null, "", "/?report=" + encodeURIComponent(r.data.share_id) + "#check");
       out.scrollIntoView({ behavior: "smooth", block: "start" });
       runSpeed(sp, r.data);
@@ -501,11 +561,29 @@ if (checker) {
       showError("We couldn't load that result. Please check your connection and refresh.");
     });
   } else if (preset) {
+    trigger = params.get("from") === "hero" ? "hero" : "link";
     reveal();
     input.value = preset.trim().slice(0, 300);
     syncClear();
     if (checker.requestSubmit) checker.requestSubmit(); else checker.dispatchEvent(new Event("submit", { cancelable: true }));
   }
+}
+
+// ---------- Free score box in the homepage hero ----------
+// On the homepage it runs the checker further down the page; elsewhere (or without JS) it opens /free-website-check/?check=...
+const heroCheck = document.getElementById("hero-check");
+if (heroCheck && checker) {
+  heroCheck.addEventListener("submit", (e) => {
+    const v = heroCheck.check.value.trim();
+    if (!v) return;
+    e.preventDefault();
+    checker.url.value = v;
+    checker.url.dispatchEvent(new Event("input"));
+    checker.dispatchEvent(new CustomEvent("p1-hero"));
+    if (checker.requestSubmit) checker.requestSubmit(); else checker.dispatchEvent(new Event("submit", { cancelable: true }));
+    document.getElementById("check").scrollIntoView({ behavior: "smooth", block: "start" });
+    trackCta("hero_check");
+  });
 }
 
 // ---------- Sign up (opens WhatsApp with the details filled in) ----------

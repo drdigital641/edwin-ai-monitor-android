@@ -8,6 +8,15 @@
           <p class="eyebrow"><span class="live" aria-hidden="true"></span>Proven on real Singapore businesses</p>
           <h1>Customers are searching for you on Google and ChatGPT. <span class="grad-text">Can they find you?</span></h1>
           <p class="lead">We get your business found three ways at once: on Google and Maps (SEO), in the answers Google shows first (AEO), and in AI assistants like ChatGPT (GEO). We do all of it for you for <strong>S$20 a month</strong>, website included if you need one. Built by a Singapore business owner and proven on his own workshop first.</p>
+          <form class="hero-check" id="hero-check" action="/free-website-check/" method="get">
+            <label class="hero-check-label" for="hero-check-url"><span class="hero-check-tag">Free</span>Check your website's score</label>
+            <div class="hero-check-row">
+              <input id="hero-check-url" name="check" type="text" inputmode="url" autocomplete="url" autocapitalize="none" autocorrect="off" spellcheck="false" enterkeyhint="go" placeholder="yourbusiness.com.sg" required maxlength="300">
+              <input type="hidden" name="from" value="hero">
+              <button class="btn" type="submit">Check my score</button>
+            </div>
+            <p class="hero-check-note">Score out of 100 for Google, phones and ChatGPT · under a minute · no sign-up. We keep a record of sites checked (<a href="/privacy/">privacy</a>).</p>
+          </form>
           <div class="cta-row">
             <a class="btn" href="/new-business-website/">Starting a business? Get your first website + Google from day one</a>
             <a class="btn btn-ghost" href="/seo-services-singapore/">Looking for SEO? See how S$20/month compares</a>
@@ -177,6 +186,7 @@
           <p class="form-error checker-error" id="checker-error" role="alert" hidden></p>
           <div class="checker-progress" id="checker-progress" hidden><span class="bar"><i></i></span><span class="step" id="checker-step">Opening your homepage…</span></div>
           <p class="checker-nosite">No website yet? <a class="checker-nosite-link" id="checker-nosite" href="#">Chat with Edwin on WhatsApp →</a></p>
+          <p class="checker-privacy">We keep a record of each website checked and its score, so Edwin can follow up. Your name and number are saved only if you choose to leave them. <a href="/privacy/">Privacy</a></p>
         </form>
         <div class="checker-result" id="checker-result" aria-live="polite" hidden></div>
       </div>
