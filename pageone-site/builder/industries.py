@@ -269,6 +269,20 @@ INDUSTRIES = INDUSTRIES + NEW_INDUSTRIES
 _checker_src = open(os.path.join(HERE, "home_body.html"), encoding="utf-8").read()
 CHECKER_SECTION = _checker_src[_checker_src.index("<!-- WEBSITE CHECKER -->"):_checker_src.index("<!-- CLIENT STORIES -->")]
 
+# /free-website-check/: the checker itself is the first thing on the page (title, then the address box).
+_CHECKER_INTRO = """        <p class="kicker reveal">Free · no sign-up · under a minute</p>
+        <h2 class="reveal">How healthy is your website?</h2>
+        <p class="section-lead reveal">See how your website looks to Google, on a phone and to AI assistants like ChatGPT. You'll get a score out of 100 and a plain-English list of what to fix.</p>
+"""
+assert CHECKER_SECTION.count(_CHECKER_INTRO) == 1
+CHECKER_TOP = (CHECKER_SECTION
+    .replace('<section class="section dark check" id="check">', '<section class="section dark check check-top" id="check">')
+    .replace(_CHECKER_INTRO, """        <p class="crumbs"><a href="/">Home</a> / Free website check</p>
+        <p class="eyebrow"><span class="live" aria-hidden="true"></span>Free · no sign-up · under a minute</p>
+        <h1>Free website and SEO check: see your score in a minute</h1>
+        <p class="lead">Type your website address below. You get a score out of 100 for Google, phones and AI assistants like ChatGPT, with a plain-English list of what to fix. It's the same check we run before we work on any client's website.</p>
+"""))
+
 
 def industry_page(ind):
     url = f"/industries/{ind['slug']}/"
@@ -406,8 +420,7 @@ page("free-website-check/index.html",
        "provider": PROVIDER, "description": "Checks a website's Google basics, mobile setup, speed and AI-search readiness and explains each fix in plain English."},
       {"@context": "https://schema.org", "@type": "FAQPage",
        "mainEntity": [{"@type": "Question", "name": q, "acceptedAnswer": {"@type": "Answer", "text": a}} for q, a in FREE_CHECK_FAQ]}],
-     hero("Free website check", "Free · no sign-up · under a minute", "Free website and SEO check",
-          "Type your website address below. It's the same check we run before we work on any client's website.", buttons=False) + "\n" + CHECKER_SECTION + f"""
+     CHECKER_TOP + f"""
     <section class="section alt">
       <div class="wrap narrow">
         <p class="kicker reveal">Questions</p>

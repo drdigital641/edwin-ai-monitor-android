@@ -144,7 +144,7 @@ def page(path, title, desc, schemas, body, crumb=None, robots="index, follow, ma
   <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800&family=Space+Grotesk:wght@500;600;700&display=swap">
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800&family=Space+Grotesk:wght@500;600;700&display=swap" media="print" onload="this.media='all'">
   <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800&family=Space+Grotesk:wght@500;600;700&display=swap"></noscript>
-  <link rel="stylesheet" href="/styles.css?v=14">
+  <link rel="stylesheet" href="/styles.css?v=15">
   <script>document.documentElement.classList.add("js");</script>
 {ld}{head_extra}
 </head>
@@ -216,7 +216,7 @@ def page(path, title, desc, schemas, body, crumb=None, robots="index, follow, ma
     {WA_ICON}
   </a>
 
-  <script src="/main.js?v=12" defer></script>{foot_extra}
+  <script src="/main.js?v=13" defer></script>{foot_extra}
 </body>
 </html>
 """
@@ -1128,16 +1128,17 @@ page("privacy/index.html",
      "Privacy Policy | Page One Singapore",
      "How Page One Singapore collects, uses and protects your personal data, in line with Singapore's Personal Data Protection Act (PDPA).",
      [],
-     hero("Privacy policy", "", "Privacy policy", "Last updated 9 October 2026", buttons=False) + f"""
+     hero("Privacy policy", "", "Privacy policy", "Last updated 16 October 2026", buttons=False) + f"""
 
     <section class="section">
       <div class="wrap narrow prose">
         <p>Page One Singapore ("we", "us"), a project of Snap Commercial Pte. Ltd. (UEN 202209904W), respects your privacy. This policy explains how we handle personal data in line with Singapore's Personal Data Protection Act 2012 (PDPA).</p>
         <h2>What we collect</h2>
-        <p>Only what you choose to send us: your name, phone number, business name, website and messages when you contact us on WhatsApp, the website address you enter in our free checker, and any photos or information you share for your website.</p>
+        <p>Only what you choose to send us: your name, phone number, business name, website and messages when you contact us on WhatsApp, the website address you enter in our free checker (and, only if you choose to leave them under your result, your name and WhatsApp number or email), and any photos or information you share for your website.</p>
         <h2>How we use it</h2>
         <ul>
           <li>To reply to your enquiry and run the website checks you ask for</li>
+          <li>To follow up on a website check, for example by sending the free fix list you asked for</li>
           <li>To build and maintain your website or landing page</li>
           <li>To set up your Google Business Profile and search listings, with your permission</li>
           <li>To arrange payment and send SEO Boost reports</li>
@@ -1146,7 +1147,7 @@ page("privacy/index.html",
         <h2>Sharing</h2>
         <p>We share data only as needed to deliver our service, for example with our web host, domain registrar, Google and Bing, our cloud platform (Base44), WhatsApp, and payment providers. These providers handle data under their own privacy policies.</p>
         <h2>This website</h2>
-        <p>This site doesn't use advertising or tracking cookies. It loads fonts from Google Fonts and stores a small note in your browser so the chat pop-up doesn't repeat. To see which pages are useful, it counts visits and button clicks anonymously: the page, how you arrived (for example Google or ChatGPT), your device type and a random ID kept in your browser. This never includes your name or phone number, and it's switched off if your browser sends a Do Not Track signal. Our forms don't send data to us directly; they open WhatsApp with your details filled in, and you choose whether to send them. To stop abuse of the free checker, we keep a one-way scrambled code of your IP address (not the address itself) for rate limiting.</p>
+        <p>This site doesn't use advertising or tracking cookies. It loads fonts from Google Fonts and stores a small note in your browser so the chat pop-up doesn't repeat. To see which pages are useful, it counts visits and button clicks anonymously: the page, how you arrived (for example Google or ChatGPT), your device type and a random ID kept in your browser. This never includes your name or phone number, and it's switched off if your browser sends a Do Not Track signal. Our contact and sign-up forms don't send data to us directly; they open WhatsApp with your details filled in, and you choose whether to send them. When you run the free checker, we keep a record of the website you checked, its score, the time, the page you ran it from, how you arrived, your device type and your country if our platform provides it, so Edwin can follow up. The optional "free fix list" box under a result sends your name and WhatsApp number or email to us directly, and we save them with that record. To stop abuse of the free checker, we keep a one-way scrambled code of your IP address (not the address itself) for rate limiting.</p>
         <h2>Keeping and protecting data</h2>
         <p>We keep personal data only as long as needed for the purposes above or as required by law, and take reasonable steps to protect it.</p>
         <h2>Your rights</h2>
