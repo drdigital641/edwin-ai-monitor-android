@@ -45,7 +45,8 @@
   if (f) {
     var msg = function () {
       var v = function (id) { return document.getElementById(id).value.trim(); };
-      return 'Hi Jacky, I would like to book a gearbox diagnostic.\nName: ' + v('q-name') + '\nContact: ' + v('q-phone') +
+      return 'Hi Jacky, I\'m enquiring from your website (Page: Contact, Button: Book a diagnostic form). ' +
+        'I would like to book a gearbox diagnostic.\nName: ' + v('q-name') + '\nContact: ' + v('q-phone') +
         (v('q-car') ? '\nCar: ' + v('q-car') : '') + (v('q-msg') ? '\nProblem: ' + v('q-msg') : '');
     };
     f.addEventListener('submit', function (ev) { ev.preventDefault(); track(); window.open(wa(msg()), '_blank', 'noopener'); });

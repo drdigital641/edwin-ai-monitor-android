@@ -15,6 +15,9 @@ Header (key: value lines, then a line with only ---):
 Body: "## " / "### " headings, "- " lists, paragraphs, **bold**, [text](/path/) links to our own pages.
 End with "## Questions" then Q: / A: lines (one line each) for the FAQ block and schema.
 
+WhatsApp CTAs: build.py adds the article's end-of-article and site-wide WhatsApp buttons itself, prefilled with the
+page (the article's h1) and the button tapped (16 Oct 2026). Don't hand-write wa.me links in an article.
+
 Fact rules (client):
 - Jacky is the sole persona: he diagnoses, tests, inspects and road-tests; the workshop team does the repair.
 - No new prices, durations, review counts, years or results. Only S$30 diagnostic, 6-month warranty,

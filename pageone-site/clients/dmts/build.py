@@ -28,7 +28,7 @@ ORIGIN = 'https://jackygearbox.com'  # the client's domain (was dmts.com.sg unti
 BASE = '/'
 DEPTH = 0  # folder depth of the page being built; set by build() so u() can emit relative links
 ABS = False  # root-relative links instead (404 page: Apache serves it at any depth)
-ASSET_V = '10'
+ASSET_V = '11'
 SLUG = 'dmts'  # Page One client key: p1-site marker (go-live check) and WhatsApp tracker
 INDEXNOW_KEY = '5792dfeef836aebd82a445c206294c95'  # same key as the controller's Client record
 # Share images and icons must load before jackygearbox.com points here, so until go-live they are linked
@@ -49,7 +49,10 @@ BIZ = {
     'branch': {'street': '60 Jalan Lam Huat, #05-48', 'postal': '737869',
                'map': '60 Jalan Lam Huat Singapore 737869'},
 }
-WA_TEXT = 'Hi Jacky, I would like a quote for my gearbox.'
+WA_TEXT = 'I would like a quote for my gearbox. My car: '
+# Every WhatsApp link opens with the page and the button the visitor tapped (Edwin, 16 Oct 2026), so Jacky
+# can see which page brought the enquiry. wa_link leaves WA_PAGE_MARK in the text; page() swaps in the page name.
+WA_PAGE_MARK = '\x00P1PAGE\x00'
 
 # The two workshops Jacky works from, each with its own local landing page and schema entity, so searches
 # like "gearbox repair Woodlands" or "gearbox workshop near Kranji" find the nearest one (user, 15 Oct 2026).
@@ -176,14 +179,24 @@ def u(path=''):
     return ('../' * DEPTH or './') + path
 
 
-def wa_link(text=WA_TEXT):
+def wa_link(text=WA_TEXT, cta='WhatsApp button'):
     from urllib.parse import quote
-    return f'https://wa.me/{BIZ["wa"]}?text={quote(text)}'
+    msg = f"Hi Jacky, I'm enquiring from your website (Page: {WA_PAGE_MARK}, Button: {html.unescape(cta)}). {text}"
+    return f'https://wa.me/{BIZ["wa"]}?text={quote(msg)}'
 
 
-def cta_buttons(extra=''):
+def wa_page_name(path, title, body):
+    if path == '':
+        return 'Homepage'
+    m = re.search(r'<div class="crumbs">(.*?)</div>', body)
+    if m:
+        return html.unescape(re.sub(r'<[^>]+>', '', m.group(1)).split(' › ')[-1]).strip()
+    return html.unescape(title.split(' | ')[0])
+
+
+def cta_buttons(extra='', cta='WhatsApp us'):
     return (f'<div class="btns">'
-            f'<a class="btn btn-wa" href="{wa_link()}" target="_blank" rel="noopener">{ICON["wa"]}WhatsApp us</a>'
+            f'<a class="btn btn-wa" href="{wa_link(cta=cta)}" target="_blank" rel="noopener">{ICON["wa"]}WhatsApp us</a>'
             f'<a class="btn btn-call" href="tel:{BIZ["tel"]}">{ICON["phone"]}Call {BIZ["tel_disp"]}</a>'
             f'{extra}</div>')
 
@@ -233,7 +246,9 @@ def schema():
         + [location_ld(l) for l in LOCATIONS]}
 
 
-def page(path, title, desc, body, active='', extra_head='', ld=None, scripts='', share=('hero-workshop', None)):
+def page(path, title, desc, body, active='', extra_head='', ld=None, scripts='', share=('hero-workshop', None), wa_page=None):
+    from urllib.parse import quote
+    wa_mark, wa_name = quote(WA_PAGE_MARK), quote(wa_page or wa_page_name(path, title, body))
     body = body.replace('<div class="sec-head">', f'<div class="sec-head"><span class="rule">{COG}</span>')
     canonical = ORIGIN + BASE + path
     slug = path.strip('/').replace('/', '-') or 'home'
@@ -286,12 +301,12 @@ def page(path, title, desc, body, active='', extra_head='', ld=None, scripts='',
 <a class="skip" href="#main">Skip to content</a>
 <div class="topbar"><div class="wrap">
 <span>Gearbox &amp; auto transmission specialist <span class="hide-sm">· Mon–Fri 9am–6pm · Sat 9am–3pm · Sun &amp; PH closed</span></span>
-<span><a href="{wa_link()}" target="_blank" rel="noopener">WhatsApp {BIZ["mobile_disp"]}</a></span>
+<span><a href="{wa_link(cta="Top bar")}" target="_blank" rel="noopener">WhatsApp {BIZ["mobile_disp"]}</a></span>
 </div></div>
 <header class="site"><div class="wrap">
 <a class="logo" href="{u()}"><img src="{u("img/logo.svg")}" width="743" height="280" alt="Jacky Gearbox"></a>
 <nav class="main" aria-label="Main">{nav}</nav>
-<a class="btn btn-wa hdr-cta" href="{wa_link()}" target="_blank" rel="noopener">{ICON["wa"]}WhatsApp {BIZ["mobile_disp"]}</a>
+<a class="btn btn-wa hdr-cta" href="{wa_link(cta="Header")}" target="_blank" rel="noopener">{ICON["wa"]}WhatsApp {BIZ["mobile_disp"]}</a>
 <button class="menu-btn" type="button" aria-expanded="false" aria-controls="mnav">Menu</button>
 </div>
 <nav class="mobile-nav" id="mnav" aria-label="Mobile">{mnav}</nav>
@@ -305,7 +320,7 @@ def page(path, title, desc, body, active='', extra_head='', ld=None, scripts='',
 <img src="{u("img/logo-white.svg")}" width="743" height="280" alt="Jacky Gearbox" loading="lazy">
 <p>Gearbox specialist and consultant in Singapore. Jacky diagnoses, inspects and road-tests every car himself.</p>
 </div>
-<div class="btns"><a class="btn btn-wa" href="{wa_link()}" target="_blank" rel="noopener">{ICON["wa"]}WhatsApp Jacky</a>
+<div class="btns"><a class="btn btn-wa" href="{wa_link(cta="Footer")}" target="_blank" rel="noopener">{ICON["wa"]}WhatsApp Jacky</a>
 <a class="btn btn-ghost" href="{BIZ["google"]}" target="_blank" rel="noopener">Find us on Google</a></div>
 </div>
 <div class="foot-cols">
@@ -333,14 +348,14 @@ def page(path, title, desc, body, active='', extra_head='', ld=None, scripts='',
 <div class="fine"><span>© 2026 Jacky Gearbox</span><nav aria-label="Footer">{''.join(f'<a href="{u(p)}">{e(n)}</a>' for p, n in NAV[1:])}</nav><a href="https://pageonesingapore.com/">Website &amp; SEO by Page One Singapore</a></div>
 </div></footer>
 <div class="dock">
-<a class="btn btn-wa" href="{wa_link()}" target="_blank" rel="noopener">{ICON["wa"]}WhatsApp</a>
+<a class="btn btn-wa" href="{wa_link(cta="Sticky bar")}" target="_blank" rel="noopener">{ICON["wa"]}WhatsApp</a>
 <a class="btn btn-call" href="tel:{BIZ["tel"]}">{ICON["phone"]}Call</a>
 </div>
 <script src="{u("jg.js")}?v={ASSET_V}" defer></script>
 {scripts}
 </body>
 </html>
-'''
+'''.replace(wa_mark, wa_name)
 
 
 def img(name, alt, w=640, h=480, lazy=True, cls=''):
@@ -382,11 +397,11 @@ GALLERY = [
 
 FAQ = [
     ('How much does a gearbox repair cost in Singapore?',
-     f'It depends on the car and the fault, so we don’t quote blind. We start with a pre-repair diagnostic (from S$30) to find the actual cause, then give you a clear quote before any work starts. <a href="{wa_link()}" target="_blank" rel="noopener">WhatsApp us</a> your car model and symptoms to get started.'),
+     f'It depends on the car and the fault, so we don’t quote blind. We start with a pre-repair diagnostic (from S$30) to find the actual cause, then give you a clear quote before any work starts. <a href="{wa_link(cta="FAQ")}" target="_blank" rel="noopener">WhatsApp us</a> your car model and symptoms to get started.'),
     ('How much is the diagnostic?',
      'Our pre-repair diagnostic starts from S$30. We read the transmission fault codes and check the gearbox, then tell you the fault and the repair price before any work starts.'),
     ('My car can’t move. Can you tow it?',
-     f'Yes. We provide free pick-up to our workshop for gearbox repair during office hours, and if the car can’t move because of transmission failure we send a tow truck, free of charge. WhatsApp or call <a href="{wa_link()}" target="_blank" rel="noopener">{BIZ["mobile_disp"]}</a>.'),
+     f'Yes. We provide free pick-up to our workshop for gearbox repair during office hours, and if the car can’t move because of transmission failure we send a tow truck, free of charge. WhatsApp or call <a href="{wa_link(cta="FAQ")}" target="_blank" rel="noopener">{BIZ["mobile_disp"]}</a>.'),
     ('Which car brands do you work on?',
      'All types of vehicles: continental (Audi, BMW, Mercedes-Benz, Volkswagen, Mini), Japanese (Toyota, Lexus, Honda, Mazda, Mitsubishi, Nissan, Subaru, Suzuki), Korean (Hyundai, Kia) and other makes such as Land Rover, Jaguar, Volvo, Ford, Renault, Peugeot, Citroën, Chevrolet and Opel.'),
     ('Is there a warranty after repair?',
@@ -513,7 +528,7 @@ SERVICE_PAGES = {
         'sub': 'If your car can’t move because of a transmission failure, we send a tow truck to bring it to our workshop, free of charge, during office hours.',
         'sections': [
             ('How it works',
-             f'<ol class="steps"><li><strong>WhatsApp us</strong> or call <a href="{wa_link()}" target="_blank" rel="noopener">{BIZ["mobile_disp"]}</a> with your location, car model and what happened.</li>'
+             f'<ol class="steps"><li><strong>WhatsApp us</strong> or call <a href="{wa_link(cta="How it works")}" target="_blank" rel="noopener">{BIZ["mobile_disp"]}</a> with your location, car model and what happened.</li>'
              '<li><strong>We arrange the pick-up</strong> to our workshop during office hours (Mon–Fri 9am–6pm, Sat 9am–3pm).</li>'
              '<li><strong>We diagnose the gearbox</strong> (from S$30) and tell you the fault and the price before any repair starts.</li></ol>'),
             ('Free for gearbox repair',
@@ -687,7 +702,7 @@ def faq_block(items, heading):
 
 def band(h, p):
     return (f'<section><div class="wrap"><div class="band">{BAND_GEARS}<div><h2>{h}</h2><p>{p}</p></div>'
-            f'{cta_buttons()}</div></div></section>')
+            f'{cta_buttons(cta="Bottom banner")}</div></div></section>')
 
 
 WHY = [
@@ -748,7 +763,7 @@ def home():
 <h1>Gearbox Repair &amp; Auto Transmission Specialist in Singapore</h1>
 <p class="lead">I’m Jacky. I diagnose and test your gearbox myself, check the repair, and road-test the car before I hand it back to you. Repair, overhaul, upgrades and servicing for all car makes.</p>
 <ul class="chips"><li>Diagnostic from S$30</li><li>Free towing / pick-up</li><li>6-month warranty</li><li>Final road test by Jacky</li></ul>
-{cta_buttons()}
+{cta_buttons(cta="Hero")}
 </div>
 </section>
 {ticker()}
@@ -774,7 +789,7 @@ def home():
 <section class="alt"><div class="wrap">
 <div class="sec-head"><h2>Gearbox problems Jacky fixes</h2><p>Noticed one of these? Book a diagnostic before a small fault becomes a full overhaul.</p></div>
 <div class="sym compact">{sym}</div>
-<p style="margin-top:22px"><a class="btn btn-wa" href="{wa_link("Hi Jacky, my car has a gearbox problem. Car model: ")}" target="_blank" rel="noopener">{ICON["wa"]}WhatsApp Jacky your symptoms</a>
+<p style="margin-top:22px"><a class="btn btn-wa" href="{wa_link("My car has a gearbox problem. Car model: ", cta="WhatsApp Jacky your symptoms")}" target="_blank" rel="noopener">{ICON["wa"]}WhatsApp Jacky your symptoms</a>
 <a class="btn btn-line" href="{u("gearbox-problems/")}">All gearbox problems</a></p>
 </div></section>
 
@@ -782,7 +797,7 @@ def home():
 <div>
 <h2>Know the fault before you pay for a repair</h2>
 <p>Gearbox symptoms can have very different causes, from a worn solenoid to a failing torque converter. So Jacky diagnoses first, then quotes. You decide before any repair work starts.</p>
-<a class="btn btn-wa" href="{wa_link("Hi Jacky, I would like to book a gearbox diagnostic.")}" target="_blank" rel="noopener">{ICON["wa"]}Book a diagnostic</a>
+<a class="btn btn-wa" href="{wa_link("I would like to book a gearbox diagnostic. My car: ", cta="Book a diagnostic")}" target="_blank" rel="noopener">{ICON["wa"]}Book a diagnostic</a>
 </div>
 <div>{img("diagnostics", "Laptop running a transmission diagnostic test on a BMW")}</div>
 </div></section>
@@ -821,7 +836,7 @@ def services():
     for i, (sid, t, im, alt, d) in enumerate(SERVICES):
         pic = f'<div>{img(im, alt)}</div>'
         more = f'<a class="btn btn-line" href="{u("services/" + sid + "/")}">Full details</a>'
-        txt = f'<div><h2>{t}</h2><p>{d}</p>{cta_buttons(more)}</div>'
+        txt = f'<div><h2>{t}</h2><p>{d}</p>{cta_buttons(more, cta=f"Service card ({t})")}</div>'
         blocks.append(f'<section id="{sid}"{" class=\"alt\"" if i % 2 else ""}><div class="wrap split">'
                       f'{txt + pic if i % 2 else pic + txt}</div></section>')
     body = (page_hero('Services', 'Gearbox Repair, Overhaul, Upgrade &amp; Servicing',
@@ -884,7 +899,7 @@ def service_page(sid):
             + f'''<section><div class="wrap split">
 <div><h2>{t} at Jacky Gearbox</h2><p>{d}</p>
 <ul class="ticks"><li>{DIAG}</li><li>Clear quote before any work starts</li><li>{WARRANTY}</li><li>Free towing to our workshop during office hours</li></ul>
-{cta_buttons()}{proof}</div>
+{cta_buttons(cta="Service intro")}{proof}</div>
 <div>{img(im, alt)}</div>
 </div></section>'''
             + secs
@@ -911,7 +926,7 @@ def problems_hub():
             + f'<section><div class="wrap"><div class="sec-head"><h2>Find your symptom</h2></div><div class="sym">{problem_cards()}</div></div></section>'
             + f'''<section class="alt"><div class="wrap split">
 <div><h2>Not sure which one it is?</h2><p>Gearbox symptoms often overlap, and the same symptom can have very different causes. Our pre-repair diagnostic reads the transmission fault codes and checks the gearbox, then we tell you the fault and the price before any work starts.</p>
-<ul class="ticks"><li>{DIAG}</li><li>Clear quote before any work starts</li><li>Free towing if the car can’t move</li></ul>{cta_buttons()}</div>
+<ul class="ticks"><li>{DIAG}</li><li>Clear quote before any work starts</li><li>Free towing if the car can’t move</li></ul>{cta_buttons(cta="Not sure which one")}</div>
 <div>{img("diagnostics", "Transmission diagnostic test running on a laptop")}</div></div></section>'''
             + faq_block(HUB_FAQ, 'Gearbox problem FAQ')
             + trust_strip()
@@ -927,7 +942,7 @@ def problems_hub():
 def problem_page(slug):
     p = PROBLEM_BY[slug]
     faq = p['faq'] + [('How much does it cost to fix?',
-                       f'It depends on the cause, so we don’t quote blind. Our pre-repair diagnostic starts from S$30, and we give you a clear quote before any work starts. <a href="{wa_link()}" target="_blank" rel="noopener">WhatsApp us</a> your car model and symptoms.')]
+                       f'It depends on the cause, so we don’t quote blind. Our pre-repair diagnostic starts from S$30, and we give you a clear quote before any work starts. <a href="{wa_link(cta="FAQ")}" target="_blank" rel="noopener">WhatsApp us</a> your car model and symptoms.')]
     li = lambda xs: ''.join(f'<li>{e(x)}</li>' for x in xs)
     others = [q['slug'] for q in PROBLEMS if q['slug'] != slug][:3]
     body = (page_hero(p['name'], p['h1'], e(p['seen']), parent=('Gearbox Problems', 'gearbox-problems/'))
@@ -943,11 +958,11 @@ def problem_page(slug):
 </div></section>
 <section><div class="wrap" style="max-width:860px">
 <h2>How we find and fix it</h2>
-<ol class="steps"><li><strong>Tell us what’s happening.</strong> WhatsApp <a href="{wa_link("Hi Jacky, my car has a gearbox problem. Car model: ")}" target="_blank" rel="noopener">{BIZ["mobile_disp"]}</a> with your car model and the symptom.</li>
+<ol class="steps"><li><strong>Tell us what’s happening.</strong> WhatsApp <a href="{wa_link("My car has a gearbox problem. Car model: ", cta="How we find and fix it")}" target="_blank" rel="noopener">{BIZ["mobile_disp"]}</a> with your car model and the symptom.</li>
 <li><strong>Diagnostic from S$30.</strong> We read the transmission fault codes and check the gearbox to find the actual cause.</li>
 <li><strong>Clear quote first.</strong> You know the fault and the price before any repair starts.</li>
 <li><strong>Repair with warranty.</strong> {WARRANTY}</li></ol>
-{cta_buttons()}
+{cta_buttons(cta="How we find and fix it")}
 </div></section>'''
             + f'<section class="alt"><div class="wrap"><div class="sec-head"><h2>Related services</h2></div><div class="grid g3">{service_cards(p["services"])}</div></div></section>'
             + faq_block(faq, 'Questions about this problem')
@@ -1040,7 +1055,7 @@ def article_page(slug):
             + img(pic[0], pic[1], 960, 540)
             + md(a['body'])
             + '<div class="callout"><h3>Not sure what your gearbox needs?</h3>'
-            + f'<p>Jacky diagnoses and tests the gearbox himself and tells you the fault and the price before any work starts. {DIAG}.</p>{cta_buttons()}</div>'
+            + f'<p>Jacky diagnoses and tests the gearbox himself and tells you the fault and the price before any work starts. {DIAG}.</p>{cta_buttons(cta="Article end")}</div>'
             + '</div></section>'
             + (faq_block(faq, 'Questions') if faq else '')
             + (f'<section><div class="wrap"><div class="sec-head"><h2>Related services</h2></div><div class="grid g3">{service_cards(a["services"])}</div></div></section>' if a['services'] else '')
@@ -1051,7 +1066,7 @@ def article_page(slug):
               'image': f'{IMG_ORIGIN}/img/share/articles-{slug}.jpg', 'mainEntityOfPage': f'{ORIGIN}/articles/{slug}/',
               'author': {'@id': f'{ORIGIN}{BASE}#org'}, 'publisher': {'@id': f'{ORIGIN}{BASE}#org'}}
     ld = [crumbs_ld(a['short'], f'articles/{slug}/', parent=('Articles', 'articles/')), art_ld] + ([faq_ld_of(faq)] if faq else [])
-    return page(f'articles/{slug}/', a['title'], a['desc'], body, active='articles/', ld=ld, share=(pic[0], a['h1']))
+    return page(f'articles/{slug}/', a['title'], a['desc'], body, active='articles/', ld=ld, share=(pic[0], a['h1']), wa_page=a['h1'])
 
 def location_page(loc):
     a = BIZ[loc['key']]
@@ -1077,7 +1092,7 @@ def location_page(loc):
 <div class="card"><h2 style="font-size:1.4rem">Why drivers in {e(loc["place"])} come to Jacky</h2>
 <ul class="ticks"><li>{DIAG}</li><li>Clear quote before any work starts</li><li>Jacky diagnoses, inspects and road-tests every car himself</li>
 <li>Free towing or pick-up during office hours</li><li>Standard 6-month warranty on repairs</li><li>All makes: continental, Japanese and Korean</li></ul>
-{HOURS}<div class="btns" style="margin-top:16px">{cta_buttons()}</div></div>
+{HOURS}<div class="btns" style="margin-top:16px">{cta_buttons(cta="Location card")}</div></div>
 </div></div></section>
 <section class="alt"><div class="wrap"><div class="sec-head"><h2>Areas near our {e(loc["place"])} workshop</h2></div>
 <ul class="chips light">{''.join(f'<li>{e(n)}</li>' for n in loc["near"])}</ul>
@@ -1141,7 +1156,7 @@ def meet_jacky(more=True, advice=True):
 <h2>The gearbox specialist you deal with from start to finish</h2>
 <p>Jacky diagnoses and tests your gearbox himself, explains the fault in plain words, and gives you the price before any work starts. The repair is done by an experienced workshop team; Jacky inspects the work and does the final road test before he hands the car back to you.</p>
 {'<p>You can also come to Jacky for advice, for example a second opinion on a gearbox quote, or whether a repair is worth doing on your car.</p>' if advice else ''}
-<div class="btns"><a class="btn btn-wa" href="{wa_link()}" target="_blank" rel="noopener">{ICON["wa"]}WhatsApp Jacky</a>{link}</div>
+<div class="btns"><a class="btn btn-wa" href="{wa_link(cta="Meet Jacky")}" target="_blank" rel="noopener">{ICON["wa"]}WhatsApp Jacky</a>{link}</div>
 </div>
 </div></section>'''
 
@@ -1189,10 +1204,10 @@ def contact():
 <div class="grid g2">
 <div class="card">
 <h2 style="font-size:1.4rem">Get in touch</h2>
-<p><strong>WhatsApp or call Jacky:</strong> <a href="{wa_link()}" target="_blank" rel="noopener">{BIZ["mobile_disp"]}</a><br>
+<p><strong>WhatsApp or call Jacky:</strong> <a href="{wa_link(cta="Contact details")}" target="_blank" rel="noopener">{BIZ["mobile_disp"]}</a><br>
 <strong>Find us on:</strong> <a href="{BIZ["google"]}" target="_blank" rel="noopener">Google</a></p>
 {HOURS}
-<div style="margin-top:18px">{cta_buttons()}</div>
+<div style="margin-top:18px">{cta_buttons(cta="Get in touch")}</div>
 </div>
 <form class="card" id="qform">
 <h2 style="font-size:1.4rem">Book a diagnostic</h2>
@@ -1309,7 +1324,9 @@ def llms_txt():
 def build(rel, fn):
     global DEPTH
     DEPTH = rel.count('/')
-    write(rel, fn())
+    out = fn()
+    assert '%00P1PAGE%00' not in out, f'{rel}: a WhatsApp link was built outside page(), so it has no page name'
+    write(rel, out)
 
 
 if __name__ == '__main__':
