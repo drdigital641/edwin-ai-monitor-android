@@ -1,0 +1,38 @@
+# One-off: fetch AIVS's machine videos from aivs.sg, convert them to small
+# H.264 web videos for the preview site, commit them, then delete this file.
+name: aivs-video
+on:
+  push:
+    branches: [site-assets]
+    paths: ['.github/workflows/aivs-video.yml']
+permissions:
+  contents: write
+jobs:
+  video:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: site-assets
+      - name: Fetch and convert
+        run: |
+          sudo apt-get update -qq && sudo apt-get install -y -qq ffmpeg
+          UA="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0 Safari/537.36"
+          curl -fsSL -A "$UA" -o /tmp/pb.mov https://aivs.sg/wp-content/uploads/2026/05/Ai-Printbox-Website.mov
+          curl -fsSL -A "$UA" -o /tmp/tp.mp4 https://aivs.sg/wp-content/uploads/2025/04/TOPI-VIDEO-Video.mp4
+          D=site-assets/aivs/video
+          mkdir -p $D
+          ffmpeg -y -loglevel error -i /tmp/pb.mov -an -vf "scale=720:-2,format=yuv420p" -c:v libx264 -profile:v high -preset slow -crf 28 -movflags +faststart $D/printbox.mp4
+          ffmpeg -y -loglevel error -ss 2 -i /tmp/pb.mov -frames:v 1 -vf "scale=720:-2" -q:v 4 $D/printbox-poster.jpg
+          ffmpeg -y -loglevel error -i /tmp/tp.mp4 -an -vf "scale=1280:-2,format=yuv420p" -c:v libx264 -profile:v high -preset slow -crf 29 -movflags +faststart $D/topi.mp4
+          ffmpeg -y -loglevel error -ss 3 -i /tmp/tp.mp4 -frames:v 1 -vf "scale=1280:-2" -q:v 4 $D/topi-poster.jpg
+          ls -la $D
+          sha256sum $D/*
+      - name: Commit
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git rm -q .github/workflows/aivs-video.yml
+          git add site-assets/aivs/video
+          git commit -q -m "AIVS: host machine videos for the preview site"
+          git push origin HEAD:site-assets
