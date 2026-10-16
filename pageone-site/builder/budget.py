@@ -7,6 +7,8 @@
 BUDGET_URL = "/budget-seo-website-singapore/"
 
 BUDGET_FAQ = [
+    ("What is affordable SEO for a small business in Singapore?",
+     "Affordable SEO is ongoing work at a monthly price a small business can keep paying: a fast website, a Google Business Profile, Search Console, a page for each service, regular useful articles and a monthly check for problems. Page One Singapore bundles all of that with the website for S$20 a month, with no setup fee and no contract."),
     ("Can I get ongoing SEO in Singapore for S$20 to S$50 a month?",
      "Yes. Page One's Get Found plan is S$20 a month (introductory price) and it is ongoing, not a one-off task: your website or SEO landing page, Google, Google Maps and ChatGPT setup, regular new articles and a technical audit every month. With up to S$50 a month, add up to three optional SEO Boosts at S$10 each. No setup fee, no contract."),
     ("Can I get a website in Singapore for under S$300?",
@@ -37,7 +39,7 @@ page(BUDGET_URL.strip("/") + "/index.html",
      hero("Small budget", "SEO and a website on a small budget",
           "Website and SEO bundled for S$20 a month in Singapore",
           "On a S$20 to S$50 budget, you don't have to choose between a website and SEO. Page One bundles both for S$20 a month (introductory price): your website built and managed, and kept found on Google, Google Maps and ChatGPT every month. No setup fee, no contract. With S$50, add up to three SEO Boosts at S$10 each. The first year of a website costs S$240, plus your domain.",
-          '<p class="hero-price"><b>S$20</b>/month · <span class="intro-tag">Introductory price</span> · no setup fee · no contract · <a class="link" href="https://wa.me/6597856612" target="_blank" rel="noopener">WhatsApp +65 9785 6612</a></p>') + f"""
+          '<p class="hero-price"><b>S$20</b>/month · <span class="intro-tag">Introductory price</span> · no setup fee · no contract · <a class="link" href="https://wa.me/6597856612" target="_blank" rel="noopener">WhatsApp +65 9785 6612</a></p>') + "\n\n" + PRICE_GLANCE + f"""
 
     <section class="section">
       <div class="wrap">
@@ -56,7 +58,7 @@ page(BUDGET_URL.strip("/") + "/index.html",
             </tbody>
           </table>
         </div>
-        <p class="note reveal"><b>About these figures:</b> the freelance, builder and package costs are general market ranges for illustration only, not quotes from any provider. Real prices vary, so always check what's included and what renews. Only Page One's own prices are exact (checked 15 October 2026).</p>
+        <p class="note reveal"><b>About these figures:</b> the freelance, builder and package costs are general market ranges for illustration only, not quotes from any provider. Real prices vary, so always check what's included and what renews. Only Page One's own prices are exact (checked 17 October 2026).</p>
       </div>
     </section>
 
@@ -112,7 +114,7 @@ page(BUDGET_URL.strip("/") + "/index.html",
       </div>
     </section>
 
-""" + PRICE_GLANCE + f"""
+
     <section class="section">
       <div class="wrap narrow">
         <p class="kicker reveal">Questions</p>
@@ -124,4 +126,4 @@ page(BUDGET_URL.strip("/") + "/index.html",
     </section>
 
 """ + cta("Start with S$20 a month", "No setup fee and no contract. Sign up, or ask Edwin anything on WhatsApp first. No obligation."),
-     crumb="Small budget", updated="2026-10-15")
+     crumb="Small budget", updated="2026-10-17")
