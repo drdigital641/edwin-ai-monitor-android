@@ -27,22 +27,55 @@ def _myths(rows, left="What people say", right="What's true now"):
         </div>"""
 
 
-PRICE_GLANCE = """    <section class="section alt" id="price">
+# What exactly S$20 a month includes (Edwin's ask, 17 Oct 2026, from a ChatGPT assessment: "make the S$20/month offer
+# extremely clear, including exactly what's included"). Every line is already promised elsewhere on the site
+# (/get-found/, /website/, /terms/); nothing new is claimed here. Shared by the three cheap-cluster pages.
+OFFER_ONE_LINE = ("Page One Singapore builds, hosts and manages a website with SEO for Singapore small businesses for "
+                  "S$20 a month (introductory price), with no setup fee and no contract. The only extra cost is your "
+                  "domain name, registered in your name, usually S$15 to S$30 a year.")
+
+OFFER_INCLUDED = [
+    "<b>Your website</b> on your own domain: a homepage, one page for each main service, an about page and a contact page (or an SEO landing page if you already have a website)",
+    "<b>Hosting and security</b>: fast pages, the padlock (HTTPS) and a WhatsApp chat button",
+    "<b>Google Maps</b>: your Google Business Profile set up, with hours, photos and a call button",
+    "<b>Google and Bing</b>: Search Console and Bing Webmaster Tools connected, so you can see who finds you. Bing also powers ChatGPT search",
+    "<b>Ready for AI assistants</b>: your name, address, hours and services labelled for Google, ChatGPT and others, plus a sitemap and an llms.txt summary",
+    "<b>Regular new articles</b> written for your site, answering what your customers search for",
+    "<b>A technical audit every month</b>, with problems fixed",
+    "<b>Small text and photo changes</b> when you need them, over WhatsApp",
+    "<b>Usually live within 7 days</b> of getting your details and photos",
+]
+
+OFFER_EXTRA = [
+    "<b>Your domain name</b>: registered in your name and paid by you directly, usually S$15 to S$30 a year",
+    '<b>SEO Boosts</b> (optional, S$10 each): extra articles for new keywords, extra fixes and a before/after report. <a class="link" href="/seo-boost/">What a Boost does →</a>',
+    "<b>Not offered</b>: running paid ads, managing social media, large online shops and sites for several countries",
+]
+
+PRICE_GLANCE = """    <section class="section alt" id="whats-included">
       <div class="wrap">
-        <p class="kicker reveal">Price at a glance</p>
-        <h2 class="reveal">SEO and a website in Singapore from S$20 a month</h2>
-        <div class="table-wrap reveal" style="margin-top:24px">
-          <table class="compare">
-            <thead><tr><th>Page One Singapore</th><th>Price</th><th>What you get</th></tr></thead>
-            <tbody>
-              <tr><th>Get Found plan</th><td><b>S$20 a month</b> (introductory price)</td><td>Your website (or an SEO landing page), Google, Google Maps and ChatGPT setup, regular new articles, a technical audit every month, hosting and security</td></tr>
-              <tr><th>SEO Boost (optional)</th><td><b>S$10 each</b></td><td>Accelerated growth: more articles aimed at new keywords, extra SEO fixes and a before/after report</td></tr>
-              <tr><th>Setup fee</th><td><b>S$0</b></td><td>No setup fee and no lump sum</td></tr>
-              <tr><th>Contract</th><td><b>None</b></td><td>Monthly, cancel anytime</td></tr>
-            </tbody>
-          </table>
+        <p class="kicker reveal">The S$20 offer, in full</p>
+        <h2 class="reveal">What exactly do you get for S$20 a month?</h2>
+        <p class="section-lead reveal">""" + OFFER_ONE_LINE + """</p>
+        <div class="cards two" style="margin-top:24px">
+          <div class="card reveal">
+            <p class="pill">Included in S$20 a month</p>
+            <ul class="ticks">""" + "".join(f"<li>{i}</li>" for i in OFFER_INCLUDED) + """</ul>
+          </div>
+          <div class="card reveal">
+            <p class="pill">Not in the S$20</p>
+            <ul style="padding-left:20px;margin:10px 0 16px">""" + "".join(f'<li style="margin:10px 0">{i}</li>' for i in OFFER_EXTRA) + """</ul>
+            <table class="compare" style="margin-top:8px">
+              <tbody>
+                <tr><th>Monthly price</th><td><b>S$20</b> (introductory price)</td></tr>
+                <tr><th>Setup fee</th><td><b>S$0</b></td></tr>
+                <tr><th>Contract</th><td><b>None</b>, cancel anytime</td></tr>
+                <tr><th>First year</th><td><b>S$240</b>, plus your domain</td></tr>
+              </tbody>
+            </table>
+          </div>
         </div>
-        <p class="note reveal">Your domain is registered in your name and paid by you directly, usually S$15–30 a year. Prices checked 15 October 2026. <a class="link" href="/pricing/">Full pricing →</a></p>
+        <p class="note reveal">Prices checked 17 October 2026. <a class="link" href="/pricing/">Full pricing →</a> · <a class="link" href="/terms/">Terms →</a></p>
       </div>
     </section>
 """
@@ -60,8 +93,12 @@ def _price_ld(url):
 
 # ---------- Cheapest SEO in Singapore ----------
 CHEAP_SEO_FAQ = [
-    ("Is Page One the cheapest SEO in Singapore?",
-     "We can't check every provider's prices, so we won't claim that. What we can tell you is our price: the Get Found plan is S$20 a month at an introductory price, with no setup fee and no contract. Optional SEO Boosts are S$10 each."),
+    ("What is the cheapest SEO in Singapore?",
+     "There is no official price list, so no one can honestly say who is cheapest. For ongoing monthly SEO, Page One Singapore charges S$20 a month (introductory price) for a website or SEO landing page, Google, Google Maps and ChatGPT setup, regular new articles and a monthly technical audit. No setup fee, no contract."),
+    ("What exactly is included in Page One's S$20 a month?",
+     "Your website on your own domain (or an SEO landing page), hosting and HTTPS, a WhatsApp button, your Google Business Profile, Search Console and Bing set up, business details labelled for AI assistants, regular new articles, a monthly technical audit and small changes over WhatsApp. Your domain, usually S$15 to S$30 a year, is the only extra."),
+    ("Affordable SEO for small businesses: what should it include?",
+     "At minimum: a fast mobile website, a Google Business Profile, Search Console, a page for each service, regular useful articles and a monthly check for problems, done every month rather than once. Page One bundles all of that with the website for S$20 a month, with no setup fee and no contract."),
     ("How much does SEO cost in Singapore?",
      "It depends on the provider and on how much of the work is done by hand. When Edwin started, small businesses like his own workshop were being quoted hundreds of dollars a month for SEO they couldn't see or measure. With Page One, the Get Found plan is S$20 a month (introductory price) and includes your website or landing page, Google, Maps and ChatGPT setup, regular new articles and a monthly technical audit. Optional SEO Boosts are S$10 each. No setup fee, no contract."),
     ("What's the difference between the S$20 plan and an SEO Boost?",
@@ -188,11 +225,13 @@ page("cheapest-seo-singapore/index.html",
     </section>
 
 """ + cta("See what S$20 a month can do for you", "Check your website free in under a minute, or chat with Edwin on WhatsApp. No obligation."),
-     crumb="Cheap SEO that works", updated="2026-10-15")
+     crumb="Cheap SEO that works", updated="2026-10-17")
 
 
 # ---------- Cheapest website maker in Singapore ----------
 CHEAP_SITE_FAQ = [
+    ("What is the cheapest way to get a website in Singapore?",
+     "Building it yourself on a website builder usually costs the least money but the most time. If you want it done for you without a lump sum, Page One Singapore builds, hosts and manages your website for S$20 a month (introductory price), with no setup fee and no contract. Your first year is S$240, plus your domain."),
     ("Is Page One the cheapest website maker in Singapore?",
      "We can't check every provider's prices, so we won't claim that. Our price is S$20 a month on the Get Found plan (introductory price), which covers building, hosting and looking after your website. There's no setup fee and no contract."),
     ("Why a monthly fee instead of paying once?",
@@ -281,7 +320,7 @@ page("cheapest-website-singapore/index.html",
     </section>
 
 """ + cta("Get your website without the lump sum", "Chat with Edwin on WhatsApp and send your old website address or your details. No obligation."),
-     crumb="A website without the lump sum", updated="2026-10-15")
+     crumb="A website without the lump sum", updated="2026-10-17")
 
 
 # ---------- New business website ----------
@@ -421,7 +460,7 @@ page("new-business-website/index.html",
     </section>
 
 """ + cta("Starting a business? Let's get you online.", "Chat with Edwin on WhatsApp: tell us what you do and where. Live within 7 days, S$20 a month."),
-     crumb="New business website", updated="2026-10-13")
+     crumb="New business website", updated="2026-10-17")
 
 
 # ---------- SEO services in Singapore: agency vs in-house vs Page One ----------
@@ -569,4 +608,4 @@ page("seo-services-singapore/index.html",
     </section>
 
 """ + cta("Compare it for yourself", "Start at S$20 a month with no setup fee and no contract, or ask Edwin anything on WhatsApp first. No obligation."),
-     crumb="SEO services compared", updated="2026-10-13")
+     crumb="SEO services compared", updated="2026-10-17")
