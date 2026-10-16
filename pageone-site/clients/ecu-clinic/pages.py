@@ -562,4 +562,48 @@ ARTICLES = [
              ('How long can I keep driving with the ESC light on?', 'There is no safe fixed limit. Normal braking usually still works, but anti-lock braking and stability control may be off, so get it checked soon, and stop driving if the red brake light is on too.'),
              ('Can you repair the unit without the car?', 'Yes. You can bring just the ESC unit to us at Premier @ Kaki Bukit, or use our pick-up and delivery service.')],
     ),
+    dict(
+        # EDGE daily article, 16 Oct 2026 (8pm run). Gap: for "toyota abs vsc trc lights on" the results are UK and AU
+        # owners' club forum threads and a Pakistani forum; no answer page and no Singapore workshop.
+        slug='toyota-abs-vsc-trc-lights-on', service='abs-pump-repair', date='2026-10-16',
+        title='Toyota ABS, VSC and TRC Lights On? Causes | The ECU Clinic',
+        desc='Why the ABS, VSC and TRC OFF lights come on together in a Toyota, if it is safe to drive, what to check first, and how the ABS unit is repaired in Singapore.',
+        h1='Why Are the ABS, VSC and TRC Lights On in My Toyota?',
+        lead='Three warning lights at once usually means one fault: what it can be, what to check first, and when the ABS unit needs repair.',
+        photo='abs-pump-in-car', alt='ABS pump and module in a car’s engine bay', share='abs-unit-engine-bay-1.jpg',
+        body='''<p><strong>Short answer:</strong> in a Toyota, the ABS (anti-lock brakes), VSC (Vehicle Stability Control) and TRC (traction control) systems work through the same brake actuator and control unit, so one fault often turns on all three lights. Common causes are a wheel speed sensor, wiring, a switch or sensor the system relies on, or the ABS unit itself. The fault code tells you which.</p>
+<h2>What do the ABS, VSC and TRC lights mean?</h2>
+<ul class="ticks">
+<li><strong>ABS</strong> is the anti-lock braking system. It stops the wheels locking when you brake hard.</li>
+<li><strong>VSC</strong> is Toyota’s stability control. It brakes single wheels to help the car hold its line in a skid.</li>
+<li><strong>TRC</strong> is traction control. It stops the wheels spinning when you pull away. On many Toyotas the light reads “TRC OFF” when the system has switched itself off.</li>
+</ul>
+<p>VSC and TRC both need the wheel speed signals and the brake actuator that ABS uses. When the ABS side has a fault, the car usually switches VSC and TRC off too, which is why the lights come on together.</p>
+<h2>Is it safe to drive with the ABS, VSC and TRC lights on?</h2>
+<p>In most cases your normal brakes still work, but anti-lock braking, stability control and traction control may be switched off until the fault is fixed. The wheels can then lock under hard braking, and the car will not correct a skid on a wet road. Leave more distance and avoid hard stops. If the red BRAKE warning light is also on, or the brake pedal feels different, stop driving and get the car checked first. Our pick-up and delivery service can collect it.</p>
+<h2>Why is the check engine light on as well?</h2>
+<p>On many Toyota models, VSC and TRC are also switched off when the engine or hybrid system reports a fault, so the VSC and TRC lights can come on with the check engine light even when the brakes are fine. That is one more reason to read all the stored codes, not just the ABS ones, before any part is changed.</p>
+<h2>What are the common causes?</h2>
+<ul class="ticks">
+<li><strong>Wheel speed sensor.</strong> Each wheel has one. A dirty, damaged or failed sensor is a common cause.</li>
+<li><strong>Wiring and connectors.</strong> Sensor wiring runs close to the wheels and can be damaged or corroded.</li>
+<li><strong>Other inputs the system relies on.</strong> Stability control also uses signals such as steering angle, yaw rate and the brake light switch, so a fault there can turn on the VSC light.</li>
+<li><strong>Low brake fluid or a blown fuse.</strong> Simple causes worth ruling out first.</li>
+<li><strong>The ABS unit itself.</strong> The control module or the pump motor in the brake actuator can develop internal faults.</li>
+</ul>
+<h2>How do we find which part is at fault?</h2>
+<ol class="steps">
+<li><strong>Read the fault codes.</strong> The ABS and skid control system stores codes that point to the circuit at fault.</li>
+<li><strong>Rule out the simple causes.</strong> Sensors, wiring, switches, fluid level and fuses.</li>
+<li><strong>Check the unit.</strong> If the codes and tests point to the module or pump, the ABS unit is the problem.</li>
+<li><strong>Tell you the options.</strong> You decide before any work starts.</li>
+</ol>
+<h2>Repair, recon, used or new?</h2>
+<p>If the fault is in the ABS unit, we can repair your own unit, or supply a reconditioned, used or new one. Plug and play is available, and our repairs come with a 6-month warranty. Driving a Voxy, Noah or Sienta? See <a href="../toyota-voxy-noah-sienta-abs-pump/">Toyota Voxy, Noah and Sienta ABS pump options</a>, or <a href="../../services/abs-pump-repair/">ABS pump and module repair</a> for how the options compare.</p>
+<h2>What should I send?</h2>
+<p>WhatsApp us your car model, year, chassis number and the fault codes. A photo of the dashboard or the scan tool screen also helps. You can bring the car, or just the unit, to Premier @ Kaki Bukit, or use our pick-up and delivery service.</p>''',
+        faq=[('Will the ABS, VSC and TRC lights go off by themselves?', 'Sometimes they go off after a restart if the fault is intermittent, but the code stays stored and the lights usually come back until the cause is fixed. Read the code first.'),
+             ('Can a weak battery turn on the VSC light?', 'Low voltage can make some control units store faults, so it is worth checking the battery and charging. If the lights stay on, the stored codes show where the fault really is.'),
+             ('Can you repair the ABS unit without the car?', 'Yes. You can bring just the unit to us at Premier @ Kaki Bukit, or use our pick-up and delivery service.')],
+    ),
 ]
