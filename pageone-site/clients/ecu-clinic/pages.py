@@ -565,7 +565,7 @@ ARTICLES = [
     dict(
         # EDGE daily article, 16 Oct 2026 (8pm run). Gap: for "toyota abs vsc trc lights on" the results are UK and AU
         # owners' club forum threads and a Pakistani forum; no answer page and no Singapore workshop.
-        slug='toyota-abs-vsc-trc-lights-on', service='abs-pump-repair', date='2026-10-16',
+        slug='toyota-abs-vsc-trc-lights-on', service='abs-pump-repair', date='2026-10-16', img_commit='e5ff66e16633185e4cfde2c4e1d2d475b7e1e06b',
         title='Toyota ABS, VSC and TRC Lights On? Causes | The ECU Clinic',
         desc='Why the ABS, VSC and TRC OFF lights come on together in a Toyota, if it is safe to drive, what to check first, and how the ABS unit is repaired in Singapore.',
         h1='Why Are the ABS, VSC and TRC Lights On in My Toyota?',
