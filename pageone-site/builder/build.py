@@ -331,6 +331,14 @@ GLANCE_ROWS = [
 ]
 
 
+HOME_GLANCE = f"""    <section class="section alt" id="at-a-glance">
+      <div class="wrap narrow">
+        <p class="kicker reveal">At a glance</p>
+        <p class="section-lead reveal">{GLANCE_ANSWER} <a class="link" href="/about/#at-a-glance">All the facts →</a></p>
+      </div>
+    </section>"""
+
+
 def glance(section_class="section"):
     rows = "\n".join(f"              <tr><th scope=\"row\">{k}</th><td>{v}</td></tr>" for k, v in GLANCE_ROWS)
     return f"""    <section class="{section_class}" id="at-a-glance">
@@ -1443,7 +1451,13 @@ page("seo-explained/index.html",
 
 
 # ---------- Home ----------
-HOME_QA = [('What is Page One Singapore?', 'Page One Singapore is an affordable SEO service for Singapore small businesses. It gets businesses found on Google Search, Google Maps and AI assistants such as ChatGPT. It was built by Edwin, an NUS Computer Science (Honours) graduate with 18+ years in business, and proven first on his own car workshop, Edwin Garage.'), ('How much does SEO cost with Page One Singapore?', 'The Get Found plan is S$20 a month at an introductory price, with no setup fee and no minimum contract. Optional SEO Boosts cost S$10 each, for when you want faster results.'), ('What do I get every month for S$20?', 'Your business is found naturally in the free, unpaid results on Google, Google Maps and ChatGPT. We write regular new articles for your site and run a technical audit of your page every month. Your website or SEO landing page is kept online, secure and fast, with a WhatsApp button. Want to grow faster? SEO Boosts add more content aimed at new keywords.'), ('Does it actually work?', PROOF_BOTH + " Results vary by business, so we don't guarantee rankings.")]
+HOME_QA = [
+    ('What is Page One Singapore?', 'A done-for-you website and SEO service for Singapore small businesses: found on Google, Google Maps and ChatGPT for S$20 a month. Built by Edwin (NUS Computer Science) and proven first on his own car workshop.'),
+    ('How much does it cost?', 'S$20 a month (introductory price). No setup fee, no contract. Optional SEO Boosts are S$10 each. Your domain, usually S$15 to S$30 a year, is in your name.'),
+    ('What do I get for S$20?', 'Your website or SEO landing page, hosting, Google Maps, Google and Bing setup, regular new articles, a monthly technical audit and small changes over WhatsApp.'),
+    ('Does it actually work?', f"Edwin Garage got {EG['clicks']} Google clicks in the 28 days to {THROUGH}, according to Google Search Console. Results vary, so we don't guarantee rankings."),
+]
+HOME_FAQ_HTML = "".join(f'          <details class="reveal"><summary>{q}</summary><p>{a}</p></details>\n' for q, a in HOME_QA)
 HOME_FAQ_LD = {"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [
     {"@type": "Question", "name": q, "acceptedAnswer": {"@type": "Answer", "text": a}} for q, a in HOME_QA]}
 # Industry pages, industries hub and the free website check page.
@@ -1475,8 +1489,8 @@ page("index.html",
                            "priceSpecification": {"@type": "UnitPriceSpecification", "price": "20", "priceCurrency": "SGD", "unitCode": "MON"}},
                           {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "SEO Boost", "url": SITE + "/seo-boost/"}, "price": "10", "priceCurrency": "SGD"}]),
          WEBSITE_NODE]}],
-     fill_home(open(os.path.join(HERE, "home_body.html"), encoding="utf-8").read().rstrip("\n").replace("{{GLANCE}}", glance("section alt"))),
-     updated=max(SC_UPDATED, AIV_UPDATED, "2026-10-15"),
+     fill_home(open(os.path.join(HERE, "home_body.html"), encoding="utf-8").read().rstrip("\n").replace("{{GLANCE}}", HOME_GLANCE).replace("{{HOME_FAQ}}", HOME_FAQ_HTML)),
+     updated=max(SC_UPDATED, AIV_UPDATED, "2026-10-17"),
      head_extra="\n  <style>" + " ".join(open(os.path.join(HERE, "home_motion.css"), encoding="utf-8").read().split("\n")[1:]).strip() + "</style>",
      foot_extra='\n  <script src="/motion.js?v=1" defer></script>')
 
