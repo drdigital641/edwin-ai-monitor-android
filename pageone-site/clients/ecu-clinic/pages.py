@@ -609,7 +609,7 @@ ARTICLES = [
     dict(
         # EDGE daily article, 17 Oct 2026 (8pm run). Gap: for "nissan abs vdc slip light on" the results are US owners' forums
         # (my350z, infinitiscene, cargurus) and Q&A sites (RepairPal, YourMechanic); no answer page and no Singapore workshop.
-        slug='nissan-abs-vdc-slip-lights-on', service='abs-pump-repair', date='2026-10-17',
+        slug='nissan-abs-vdc-slip-lights-on', service='abs-pump-repair', date='2026-10-17', img_commit='da285199c37dea7d534214fead290640f7345856',
         title='Nissan ABS, VDC and SLIP Lights On? Causes | The ECU Clinic',
         desc='Why the ABS, VDC OFF and SLIP lights come on together in a Nissan, if it is safe to drive, what to check first, and how the ABS unit is repaired in Singapore.',
         h1='Why Are the ABS, VDC and SLIP Lights On in My Nissan?',
