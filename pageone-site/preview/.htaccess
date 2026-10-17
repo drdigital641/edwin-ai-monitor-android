@@ -1,0 +1,9 @@
+# Upload as public_html/website_b1ec45f5/preview/.htaccess (cPanel File Manager, show hidden files).
+# Hides every client preview from search engines while it is reached through pageonesingapore.com.
+# Header rules are inherited by each preview/<slug>/ folder even when that folder has its own .htaccess.
+# When a client's own domain serves the same folder, the Host differs, so the header is not sent and nothing needs editing.
+<IfModule mod_headers.c>
+<If "%{HTTP_HOST} =~ /(^|\.)pageonesingapore\.com$/i">
+Header always set X-Robots-Tag "noindex, nofollow"
+</If>
+</IfModule>
