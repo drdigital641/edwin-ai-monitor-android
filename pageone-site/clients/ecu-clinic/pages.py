@@ -606,4 +606,50 @@ ARTICLES = [
              ('Can a weak battery turn on the VSC light?', 'Low voltage can make some control units store faults, so it is worth checking the battery and charging. If the lights stay on, the stored codes show where the fault really is.'),
              ('Can you repair the ABS unit without the car?', 'Yes. You can bring just the unit to us at Premier @ Kaki Bukit, or use our pick-up and delivery service.')],
     ),
+    dict(
+        # EDGE daily article, 17 Oct 2026 (8pm run). Gap: for "nissan abs vdc slip light on" the results are US owners' forums
+        # (my350z, infinitiscene, cargurus) and Q&A sites (RepairPal, YourMechanic); no answer page and no Singapore workshop.
+        slug='nissan-abs-vdc-slip-lights-on', service='abs-pump-repair', date='2026-10-17',
+        title='Nissan ABS, VDC and SLIP Lights On? Causes | The ECU Clinic',
+        desc='Why the ABS, VDC OFF and SLIP lights come on together in a Nissan, if it is safe to drive, what to check first, and how the ABS unit is repaired in Singapore.',
+        h1='Why Are the ABS, VDC and SLIP Lights On in My Nissan?',
+        lead='Three warning lights at once usually means one fault: what it can be, what to check first, and when the ABS unit needs repair.',
+        photo='abs-module-in-car', alt='ABS module in a car’s engine bay', share='abs-unit-engine-bay-2.jpg',
+        body='''<p><strong>Short answer:</strong> in a Nissan, the ABS (anti-lock brakes), VDC (Vehicle Dynamic Control) and traction control share the same ABS actuator, control unit and wheel speed signals, so one fault often turns on the ABS, VDC OFF and SLIP lights together. Common causes are a wheel speed sensor, wiring, the steering angle sensor or the ABS unit itself. The fault code tells you which.</p>
+<h2>What do the ABS, VDC OFF and SLIP lights mean?</h2>
+<ul class="ticks">
+<li><strong>ABS</strong> is the anti-lock braking system. It stops the wheels locking when you brake hard.</li>
+<li><strong>VDC</strong> is Nissan’s stability control. It brakes single wheels and can reduce engine power to help the car hold its line in a skid. The “VDC OFF” light comes on when the system is switched off, by the button or by a fault.</li>
+<li><strong>SLIP</strong> is the traction and stability indicator. A short flash while driving on a slippery road means the system is working. A SLIP light that stays on with VDC OFF usually means the system has switched itself off because of a fault.</li>
+</ul>
+<p>VDC and traction control need the wheel speed signals and the actuator that ABS uses. When the ABS side has a fault, the car usually switches VDC off too, which is why the lights come on together.</p>
+<h2>Is it safe to drive with the ABS, VDC and SLIP lights on?</h2>
+<p>In most cases your normal brakes still work, but anti-lock braking, stability control and traction control may be switched off until the fault is fixed. The wheels can then lock under hard braking, and the car will not correct a skid on a wet road. Leave more distance and avoid hard stops. If the red brake warning light is also on, or the brake pedal feels different, stop driving and get the car checked first. Our pick-up and delivery service can collect it.</p>
+<h2>Did someone press the VDC OFF button?</h2>
+<p>If only the VDC OFF light is on, check the button first: on many Nissans it sits low on the dashboard, near the driver’s knee, and is easy to press by accident. Pressing it again usually turns the system back on. If the ABS light is on as well, or the lights stay on after a restart, there is a stored fault.</p>
+<h2>Why can the check engine light come on as well?</h2>
+<p>On many Nissan models, VDC is also switched off when the engine or gearbox reports a fault, because the system can no longer control engine power. So the VDC OFF and SLIP lights can come on with the check engine light even when the brakes are fine. That is why all the stored codes should be read, not just the ABS ones, before any part is changed.</p>
+<h2>What are the common causes?</h2>
+<ul class="ticks">
+<li><strong>Wheel speed sensor.</strong> Each wheel has one. A dirty, damaged or failed sensor is a common cause.</li>
+<li><strong>Wiring and connectors.</strong> Sensor wiring runs close to the wheels and can be damaged or corroded.</li>
+<li><strong>Steering angle sensor.</strong> VDC needs to know where the steering is pointing. On some models the sensor needs resetting after a wheel alignment or steering work, or the VDC light can come on.</li>
+<li><strong>Low brake fluid, a blown fuse or low battery voltage.</strong> Simple causes worth ruling out first.</li>
+<li><strong>The ABS unit itself.</strong> The control module or the pump motor in the ABS actuator can develop internal faults.</li>
+</ul>
+<h2>How do we find which part is at fault?</h2>
+<ol class="steps">
+<li><strong>Read the fault codes.</strong> The ABS control unit stores codes that point to the circuit at fault.</li>
+<li><strong>Rule out the simple causes.</strong> The VDC OFF button, sensors, wiring, fluid level, fuses and battery.</li>
+<li><strong>Check the unit.</strong> If the codes and tests point to the module or pump, the ABS unit is the problem.</li>
+<li><strong>Tell you the options.</strong> You decide before any work starts.</li>
+</ol>
+<h2>Repair, recon, used or new?</h2>
+<p>If the fault is in the ABS unit, we can repair your own ABS module, or supply a reconditioned, used or new unit. Plug and play is available, and our repairs come with a 6-month warranty. See <a href="../../services/abs-pump-repair/">ABS pump and module repair</a> for how the options compare, or <a href="../abs-warning-light-causes/">ABS warning light causes</a> for the ABS light on its own.</p>
+<h2>What should I send?</h2>
+<p>WhatsApp us your car model, year, chassis number and the fault codes. A photo of the dashboard or the scan tool screen also helps. You can bring the car, or just the unit, to Premier @ Kaki Bukit, or use our pick-up and delivery service.</p>''',
+        faq=[('Why does the SLIP light flash while I am driving?', 'A short flash on a wet or slippery road means traction or stability control is working. If the SLIP light stays on with the VDC OFF light, the system has switched itself off, usually because of a stored fault.'),
+             ('Will the ABS, VDC and SLIP lights go off by themselves?', 'Sometimes they go off after a restart if the fault is intermittent, but the code stays stored and the lights usually come back until the cause is fixed. Read the code first.'),
+             ('Can you repair the ABS unit without the car?', 'Yes. You can bring just the unit to us at Premier @ Kaki Bukit, or use our pick-up and delivery service.')],
+    ),
 ]
