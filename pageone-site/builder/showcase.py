@@ -187,7 +187,7 @@ def clients_page():
         ("Are these real businesses?", f"Yes. Every website on this page is live on the business's own domain, so you can open it and check. Edwin Garage is our founder's own car workshop, where the system was first built. The others are businesses we build and run websites for."),
         ("Where do the Google numbers come from?", f"From Google Search Console, Google's own report of how a website performs in Google Search. We collect the final data automatically and don't edit it. The figures on this page cover the 28 days to {THROUGH} ({WINDOW}), compared with the 28 days before ({PREV_WINDOW})."),
         ("Why do some websites have no numbers?", "Google needs time to find and test a new website. A site launched this month has no Search Console data yet, so we show what we built instead of guessing. The numbers will appear here once Google has them."),
-        ("How can it be good if it only costs S$20 a month?", "The price is low because AI now does the daily SEO work that used to be billed by the hour, not because steps are skipped. The websites and numbers on this page are the proof, not a promise: results vary by business, and newer sites show smaller numbers."),
+        ("How can it be good if it only costs S$20 a month?", "The price is low because a set of AI tools we designed does the daily SEO work that used to be billed by the hour, not because steps are skipped. The websites and numbers on this page are the proof, not a promise: results vary by business, and newer sites show smaller numbers."),
         ("How often is this page updated?", "We refresh it from Search Console regularly, and add new client websites once they are live on their own domain. The date of the data is always shown."),
     ]
     sites_ld = [{"@type": "ListItem", "position": i + 1,
@@ -210,7 +210,7 @@ def clients_page():
       <div class="wrap">
         <p class="kicker reveal">Cheap can still be good</p>
         <h2 class="reveal">A low price, with the numbers to back it</h2>
-        <p class="section-lead reveal">S$20 a month is low because AI does the daily SEO work that used to be billed by the hour, not because steps are skipped. Here is what the same system has done. Last 28 days (""" + WINDOW + """), compared with the 28 days before.</p>
+        <p class="section-lead reveal">S$20 a month is low because a set of AI tools we designed does the daily SEO work that used to be billed by the hour, not because steps are skipped. Here is what the same system has done. Last 28 days (""" + WINDOW + """), compared with the 28 days before.</p>
         <div class="reveal">""" + kpis([
             ("Edwin Garage: clicks from Google", EG["clicks"], f"Up from {EG['prev_clicks']} · average position {EG['pos']}"),
             ("Edwin Garage: searches on page one", EG["page_one"], f"{EG['top3']} in the top 3"),
@@ -338,7 +338,7 @@ def llms_sections():
                      + names_list(sorted({month_long(c["launched"]) for c in new})) + ", no Search Console data yet.")
     lines += ["- Full case studies: https://pageonesingapore.com/results/",
               "- Every client website with its numbers: https://pageonesingapore.com/clients/",
-              "- Low price, real results: S$20 a month is low because AI does the daily work that used to be billed by the hour; "
+              "- Low price, real results: S$20 a month is low because a set of AI tools we designed does the daily SEO work that used to be billed by the hour; "
               "the numbers above come from the same system."]
     growth = ", ".join(f"{n} by {month_long(m)}" for m, n in GROWTH)
     sites = ["## Websites we run",

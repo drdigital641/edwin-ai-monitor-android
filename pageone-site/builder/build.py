@@ -749,7 +749,7 @@ page("pricing/index.html",
             <a class="btn btn-block" href="/signup/" id="calc-signup">Sign up with this plan</a>
           </form>
         </div>
-        <p class="note reveal" style="margin-top:32px">Why so low? AI now does the daily SEO work that used to be billed by the hour. <a class="link" href="/cheapest-seo-singapore/">Cheap SEO doesn't have to mean bad SEO →</a> · <a class="link" href="/cheapest-website-singapore/">A website without the lump sum →</a></p>
+        <p class="note reveal" style="margin-top:32px">Why so low? A set of AI tools we designed does the daily SEO work that used to be billed by the hour. <a class="link" href="/cheapest-seo-singapore/">Cheap SEO doesn't have to mean bad SEO →</a> · <a class="link" href="/cheapest-website-singapore/">A website without the lump sum →</a></p>
         <h2 class="reveal" style="margin-top:64px">Get Found vs SEO Boost</h2>
         """ + PLAN_COMPARE + """
         <div class="split" style="margin-top:56px">
@@ -811,7 +811,7 @@ FAQS = [
     ("How will I know it's working?", "We connect your website to Google Search Console, Google's own free report. It shows how many times you appeared in Google, how many people clicked, and what they searched. Every SEO Boost also comes with a before/after report of what was done."),
     ("Is there a setup fee or contract?", "No. There's no setup fee and no minimum contract. You pay S$20 a month in advance and can cancel anytime."),
     ("Will the S$20 price go up?", "Yes, a little. S$20 a month is an introductory price until we reach our early-client target, so now is the time to grab it. When it goes up, the new price will stay close to S$20, so SEO stays affordable for small businesses."),
-    ('Is S$20 a month a gimmick price?', "No. S$20 isn't a teaser to upsell you later, and it isn't budget SEO with steps skipped. It's a baseline for what SEO costs now that AI does the daily work that used to be billed by the hour. The same system runs every website we manage, and it's proven on real businesses: " + PROOF_EG + ", according to Google Search Console. No setup fee, no contract, so you can judge it for yourself."),
+    ('Is S$20 a month a gimmick price?', "No. S$20 isn't a teaser to upsell you later, and it isn't budget SEO with steps skipped. It's what SEO can cost when a set of AI tools we designed does the daily optimisation work that used to be billed by the hour. The same system runs every website we manage, and it's proven on real businesses: " + PROOF_EG + ", according to Google Search Console. No setup fee, no contract, so you can judge it for yourself."),
     ("Can I get a website and SEO for under S$50 a month?", "Yes. The S$20 Get Found plan (introductory price) is ongoing monthly SEO with your website built and managed, not a one-off task. With up to S$50 a month you can add up to three SEO Boosts at S$10 each. The first year of a website costs S$240, plus your domain. See our small-budget guide."),
     ("Is the free website check really free?", "Yes. Enter your website address on our homepage and the checker tests Google basics, mobile setup, speed and AI-search readiness in under a minute. No sign-up needed."),
     ("How do I reach you?", "WhatsApp Edwin on " + WA_DISPLAY + ". You can also tap the green chat button on any page. No obligation to buy anything."),
@@ -861,7 +861,7 @@ page("about/index.html",
           <p class="kicker">Our founder</p>
           <h2>Meet Edwin</h2>
           <p>Edwin graduated from the National University of Singapore (NUS) with a Bachelor's degree in Computer Science with Honours, and has spent more than 18 years running businesses. He owns Edwin Garage, a car workshop in Ang Mo Kio.</p>
-          <p>He built Page One to solve his own problem: getting found on Google without paying for work he couldn't see. He combined his computing background with AI to build a system that does the SEO work every day, and used it on his own workshop first.</p>
+          <p>He built Page One to solve his own problem: getting found on Google without paying for work he couldn't see. He used his computing background to design a set of AI tools that optimise SEO every day, and used it on his own workshop first.</p>
           <p>It worked. Edwin Garage now gets over 2,000 clicks a month from Google, and the same system runs every client website we manage today.</p>
           <a class="card-link" href="/results/">See the results →</a>
         </div>
@@ -1452,7 +1452,7 @@ page("seo-explained/index.html",
 
 # ---------- Home ----------
 HOME_QA = [
-    ('What is Page One Singapore?', 'A done-for-you website and SEO service for Singapore small businesses: found on Google, Google Maps and ChatGPT for S$20 a month. Built by Edwin (NUS Computer Science) and proven first on his own car workshop.'),
+    ('What is Page One Singapore?', 'A done-for-you website and SEO service for Singapore small businesses: found on Google, Google Maps and ChatGPT for S$20 a month. Edwin (NUS Computer Science) designed a set of AI tools to optimise its SEO daily, and proved them first on his own car workshop.'),
     ('How much does it cost?', 'S$20 a month (introductory price). No setup fee, no contract. Optional SEO Boosts are S$10 each. Your domain, usually S$15 to S$30 a year, is in your name.'),
     ('What do I get for S$20?', 'Your website or SEO landing page, hosting, Google Maps, Google and Bing setup, regular new articles, a monthly technical audit and small changes over WhatsApp.'),
     ('Does it actually work?', f"Edwin Garage got {EG['clicks']} Google clicks in the 28 days to {THROUGH}, according to Google Search Console. Results vary, so we don't guarantee rankings."),

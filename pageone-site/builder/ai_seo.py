@@ -27,9 +27,9 @@ def _rows(rows, head):
 # ---------- AI SEO vs traditional SEO ----------
 AI_VS_FAQ = [
     ("What is the difference between AI SEO and traditional SEO?",
-     "The goal is the same: help a business show up when customers search. The difference is how the work gets done. Traditional SEO is mostly done by hand, so it's priced by the hours people spend on it. Page One uses AI and automation for the repetitive daily work, such as checking pages, reading Search Console data, writing articles and telling Google and Bing about changes. Edwin designs the strategy and the system and reviews the results."),
+     "The goal is the same: help a business show up when customers search. The difference is how the work gets done. Traditional SEO is mostly done by hand, so it's priced by the hours people spend on it. Page One has designed a set of AI tools that do the repetitive daily work automatically, such as checking pages, reading Search Console data, writing articles and telling Google and Bing about changes. Edwin designs the strategy and the system and reviews the results."),
     ("Why is Page One so cheap?",
-     "Because most of the cost of SEO has always been people's time, and AI now does most of the routine work. The Get Found plan is S$20 a month (introductory price) because fewer hours are needed, not because steps are skipped. The same system runs Edwin Garage, Edwin's own workshop, which got " + EG["clicks"] + " clicks from Google in the 28 days to " + THROUGH + ", according to Google Search Console."),
+     "Because most of the cost of SEO has always been people's time, and AI tools we designed now do most of the routine work automatically. The Get Found plan is S$20 a month (introductory price) because fewer hours are needed, not because steps are skipped. The same system runs Edwin Garage, Edwin's own workshop, which got " + EG["clicks"] + " clicks from Google in the 28 days to " + THROUGH + ", according to Google Search Console."),
     ("Is automated SEO low quality?",
      "Quality comes from the strategy, the site structure and what gets published, not from how many hours were billed. The results are measurable: in the 28 days to " + THROUGH + ", Edwin Garage appeared on page one of Google for " + (("more than " + EG["page_one"].rstrip("+")) if EG["page_one"].endswith("+") else EG["page_one"]) + " different searches and Cleanic Detailing for " + CL["page_one"] + ", according to Google Search Console. We follow Google's guidelines: no bought links, no fake reviews and no keyword stuffing."),
     ("Is AI SEO weaker than an expensive agency?",
@@ -62,14 +62,14 @@ page("ai-seo-vs-traditional-seo/index.html",
       _faq_ld(AI_VS_FAQ)],
      hero("AI SEO vs traditional SEO", "Why the price is low",
           "Cheap because AI cut the hours. Not because we cut corners.",
-          "Traditional SEO is priced by the hour, because people do the work by hand. Page One uses AI to do the repetitive daily work, with Edwin in charge of the strategy. Fewer hours means a lower price. The quality is in the results, and you can check them yourself.",
+          "Traditional SEO is priced by the hour, because people do the work by hand. Page One has designed a set of AI tools to optimise your SEO daily, with Edwin in charge of the strategy. Fewer hours means a lower price. The quality is in the results, and you can check them yourself.",
           '<p class="hero-price"><b>S$20</b>/month · <span class="intro-tag">Introductory price</span> · no setup fee · no contract</p>') + f"""
 
     <section class="section">
       <div class="wrap narrow">
         <p class="kicker reveal">The short answer</p>
         <h2 class="reveal">Price follows labour. AI made the labour cheap.</h2>
-        <p class="section-lead reveal">Most of what you pay for in SEO is people's time: checking pages, fixing problems, writing articles, updating listings and writing reports, every week. When AI does that routine work, far fewer hours are needed, so the price can fall a long way while the work still gets done, and done every day.</p>
+        <p class="section-lead reveal">Most of what you pay for in SEO is people's time: checking pages, fixing problems, writing articles, updating listings and writing reports, every week. When AI tools designed for that routine work monitor, adapt and deploy automatically, far fewer hours are needed, so the price can fall a long way while the work still gets done, and done every day.</p>
         <p class="section-lead reveal">Cheap doesn't have to mean bad, and good doesn't have to be expensive. A price tells you how much labour went in. It doesn't tell you how good the result is. That's why we publish our <a class="link" href="/results/">results</a>, with dates, straight from Google Search Console.</p>
       </div>
     </section>
@@ -146,7 +146,7 @@ page("ai-seo-vs-traditional-seo/index.html",
         <p class="kicker reveal">A new way of thinking about price</p>
         <h2 class="reveal">"If it's cheap, it can't be good." Is that still true?</h2>
         {_myths([
-            ("Cheap means low quality.", "Cheap used to mean fewer hours, and fewer hours meant less work done. When AI does the hours, a low price and thorough work can go together."),
+            ("Cheap means low quality.", "Cheap used to mean fewer hours, and fewer hours meant less work done. When AI tools designed for the job do the hours, a low price and thorough work can go together."),
             ("Automated means nobody is watching.", "The system flags problems the day they appear, and Edwin reviews the results. It is watched more often than a site that gets a look once a month."),
             ("AI content is spam.", "Google's guidance is that it rewards helpful, accurate content however it's produced. We write useful answers to real customer questions, based on facts about the business and real Search Console data."),
             ("Big agencies must be better because they're big.", "Size tells you how many people are billing hours. Results tell you whether it works. Ask any provider for dated Search Console data."),

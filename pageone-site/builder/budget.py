@@ -18,7 +18,7 @@ BUDGET_FAQ = [
     ("What should I spend first on a small budget?",
      "Start with the free groundwork: a Google Business Profile and Google Search Console. Then make sure you have a fast, mobile-friendly website that keeps getting new, useful pages. The S$20 plan covers all of that. Add SEO Boosts only when you want to grow faster."),
     ("Why is it so cheap? What's the catch?",
-     "AI now does the daily SEO work that used to be billed by the hour, so the price can be low without skipping steps. There is no setup fee and no contract, and you can cancel anytime. S$20 is an introductory price; any new price will stay close to S$20."),
+     "A set of AI tools we designed does the daily SEO work that used to be billed by the hour, so the price can be low without skipping steps. There is no setup fee and no contract, and you can cancel anytime. S$20 is an introductory price; any new price will stay close to S$20."),
     ("Who is it not right for?",
      "If you need paid ads managed, social media run for you, a large online shop or several countries, a bigger budget and an agency are the better choice. Page One is for new and small local businesses that want to be found on Google, Google Maps and ChatGPT."),
 ]

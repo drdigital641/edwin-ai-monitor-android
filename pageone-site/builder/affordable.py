@@ -107,7 +107,7 @@ CHEAP_SEO_FAQ = [
      "The price is low because the daily work is automated, not because steps are skipped. Edwin Garage, where the system was first built, got " + EG["clicks"] + " clicks from Google in the 28 days to " + THROUGH + " with an average position of " + EG["pos"] + ", according to Google Search Console. Results vary by business, so we don't guarantee rankings."),
     ("What's the catch?",
      "There's no setup fee or contract, and you can cancel anytime. S$20 is an introductory price: it goes up once we reach our early-client target, so it's worth grabbing now. Any new price will stay close to S$20. Your domain is registered in your name and paid by you directly, usually S$15–30 a year."),
-    ('Is S$20 a month a gimmick price?', "No. S$20 isn't a teaser to upsell you later, and it isn't budget SEO with steps skipped. It's a baseline for what SEO costs now that AI does the daily work that used to be billed by the hour. The same system runs every website we manage, and it's proven on real businesses: " + PROOF_EG + ", according to Google Search Console. No setup fee, no contract, so you can judge it for yourself."),
+    ('Is S$20 a month a gimmick price?', "No. S$20 isn't a teaser to upsell you later, and it isn't budget SEO with steps skipped. It's what SEO can cost when a set of AI tools we designed does the daily optimisation work that used to be billed by the hour. The same system runs every website we manage, and it's proven on real businesses: " + PROOF_EG + ", according to Google Search Console. No setup fee, no contract, so you can judge it for yourself."),
     ("How can I check that S$20 SEO really works?",
      "Look at the evidence yourself. Our Google Search Console results for Edwin Garage and Cleanic Detailing are published on our results page with dates. The websites we run are live: " + names_list(LIVE_NAMES) + ", " + LIVE_COUNT_WORD + " businesses in all (see them on our client page). Run any of them through our free website check. Page One Singapore is a project of Snap Commercial Pte. Ltd. (UEN 202209904W), a registered Singapore company."),
     ("Does Google penalise content written with AI?",
@@ -120,13 +120,13 @@ CHEAP_SEO_FAQ = [
 
 page("cheapest-seo-singapore/index.html",
      "Cheapest SEO in Singapore? From S$20/month | Page One",
-     "Looking for the cheapest SEO in Singapore? AI now does the daily SEO work, so good SEO costs less. Page One: S$20/month, no setup fee, no contract.",
+     "Looking for the cheapest SEO in Singapore? Our AI tools optimise SEO daily, so good SEO costs less. Page One: S$20/month, no setup fee, no contract.",
      [service("Affordable SEO subscription for Singapore businesses", "/cheapest-seo-singapore/",
               "Low-cost, automated SEO for Singapore small businesses: Google, Google Maps and AI search visibility for S$20 a month, no setup fee, no contract.", "20"),
       _faq_ld(CHEAP_SEO_FAQ), _price_ld("/cheapest-seo-singapore/")],
      hero("Cheap SEO that works", "Looking for the cheapest SEO in Singapore?",
           "Cheap SEO doesn't have to mean bad SEO.",
-          "SEO used to be expensive because it took a lot of people's time. AI now does most of that daily work. With the right strategy, structure and design, good SEO, including regular new articles, can cost S$20 a month.",
+          "SEO used to be expensive because it took a lot of people's time. AI tools designed for SEO now do most of that daily work, automatically. With the right strategy, structure and design, good SEO, including regular new articles, can cost S$20 a month.",
           '<p class="hero-price"><b>S$20</b>/month · <span class="intro-tag">Introductory price</span> · no setup fee · no contract · <a class="link" href="https://wa.me/6597856612" target="_blank" rel="noopener">WhatsApp +65 9785 6612</a></p>') + "\n\n" + PRICE_GLANCE + f"""
 
     <section class="section">
@@ -142,8 +142,8 @@ page("cheapest-seo-singapore/index.html",
     <section class="section alt">
       <div class="wrap">
         <p class="kicker reveal">What changed</p>
-        <h2 class="reveal">AI does the repetitive work. A good system does the rest.</h2>
-        <p class="section-lead reveal">Edwin built Page One as a system: he designs the strategy, the site structure and the design once, and the daily work runs automatically. When the biggest cost, people's time, is mostly automated, the price can come down a long way. That's how the Get Found plan costs S$20 a month.</p>
+        <h2 class="reveal">AI tools we designed optimise your SEO every day.</h2>
+        <p class="section-lead reveal">Edwin built Page One as a set of systematic SEO practices designed to monitor, adapt and deploy automatically. He sets the strategy, the site structure and the design once, and his AI tools carry out the daily work. When the biggest cost, people's time, is mostly automated, the price can come down a long way. That's how the Get Found plan costs S$20 a month.</p>
         <div class="cards three" style="margin-top:32px">{_cards([
             ("Faster", "A full technical check of a website takes seconds, not an afternoon. Problems are found the day they appear, not at next month's review."),
             ("Every day", "The system runs on a schedule every day, weekends and public holidays included. It doesn't wait for office hours or someone to come back from leave."),
@@ -182,7 +182,7 @@ page("cheapest-seo-singapore/index.html",
       <div class="wrap narrow">
         <p class="kicker reveal">A baseline, not a gimmick</p>
         <h2 class="reveal">S$20 isn't budget SEO. It's what SEO costs now.</h2>
-        <p class="section-lead reveal">A low price can look too good to be true, so here's the honest answer. S$20 isn't a teaser to upsell you later, and it isn't SEO with steps skipped. It's the new baseline: when AI does the daily work that used to be billed by the hour, the cost of doing SEO properly falls, and the price can fall with it.</p>
+        <p class="section-lead reveal">A low price can look too good to be true, so here's the honest answer. S$20 isn't a teaser to upsell you later, and it isn't SEO with steps skipped. It's the new baseline: when AI tools designed for SEO do the daily work that used to be billed by the hour, the cost of doing SEO properly falls, and the price can fall with it.</p>
         <ul class="ticks reveal">
           <li><b>The same system for everyone.</b> Every website we manage runs on it, including Edwin's own workshop.</li>
           <li><b>Proven, with dates and sources.</b> Real Google Search Console results, published on our <a class="link" href="/results/">results page</a>.</li>
@@ -270,7 +270,7 @@ page("cheapest-website-singapore/index.html",
       <div class="wrap">
         <p class="kicker reveal">The new way</p>
         <h2 class="reveal">Your website as an ongoing service, run by automation</h2>
-        <p class="section-lead reveal">Building and maintaining a website used to take a lot of manual work. Page One uses AI and automation for the repetitive parts, so we can build your site and keep looking after it for a small monthly fee instead of a big upfront one.</p>
+        <p class="section-lead reveal">Building and maintaining a website used to take a lot of manual work. Page One has designed a set of AI tools that handle the repetitive parts automatically, so we can build your site and keep looking after it for a small monthly fee instead of a big upfront one.</p>
         <div class="cards three" style="margin-top:32px">{_cards([
             ("Built from what you already have", "Send us your old website address, or just your details on WhatsApp. We pull in your services, contact details and photos, and show you a preview first."),
             ("Kept fresh", "Regular new articles are included in the S$20 plan, so search engines have a reason to keep coming back. Want to grow faster? Add SEO Boosts."),
@@ -440,7 +440,7 @@ page("new-business-website/index.html",
       <div class="wrap">
         <p class="kicker reveal">Why it's only S$20</p>
         <h2 class="reveal">One-stop, because the busywork is automated</h2>
-        <p class="section-lead reveal">Edwin built a system where AI does the repetitive work: checking the site, writing helpful articles, telling Google about changes. That's how one person can set up and look after your whole online presence for S$20 a month, so you can spend your time on your customers. <a class="link" href="/cheapest-seo-singapore/">Why cheap doesn't mean bad →</a></p>
+        <p class="section-lead reveal">Edwin designed a set of AI tools that do the repetitive work automatically: monitoring the site, publishing helpful articles and telling Google about changes. That's how one person can set up and look after your whole online presence for S$20 a month, so you can spend your time on your customers. <a class="link" href="/cheapest-seo-singapore/">Why cheap doesn't mean bad →</a></p>
         <ol class="steps" style="margin-top:56px">
           <li class="reveal"><span>1</span><h3>Chat with Edwin</h3><p>On WhatsApp: tell us what you do and where. No obligation.</p></li>
           <li class="reveal"><span>2</span><h3>Send details and photos</h3><p>We help register your domain in your name and build your website.</p></li>
@@ -583,7 +583,7 @@ page("seo-services-singapore/index.html",
           <div class="card reveal"><p class="pill">A good fit</p><h3>New and small local businesses</h3><p>You're opening a business, or you're a small business that wants to be found on Google, Google Maps and ChatGPT without a big retainer. You'd rather WhatsApp someone than learn SEO tools. No website yet? We build one. Already have one? We add an SEO landing page next to it.</p></div>
           <div class="card reveal"><p class="pill">Probably not a fit</p><h3>When you need more than search groundwork</h3><p>You need paid ads managed, social media run for you, a large online shop with thousands of products, several countries, or someone in your office every day. An agency or an in-house hire is the better choice there.</p></div>
         </div>
-        <p class="note reveal">Why can it cost this little? AI now does the daily SEO work that used to be billed by the hour. <a class="link" href="/cheapest-seo-singapore/">Cheap SEO doesn't have to mean bad SEO →</a></p>
+        <p class="note reveal">Why can it cost this little? A set of AI tools we designed does the daily SEO work that used to be billed by the hour. <a class="link" href="/cheapest-seo-singapore/">Cheap SEO doesn't have to mean bad SEO →</a></p>
       </div>
     </section>
 
