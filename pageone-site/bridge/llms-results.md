@@ -1,0 +1,11 @@
+## Results (Google Search Console, 28 days 17 September to 14 October 2026, compared with 20 August to 16 September 2026)
+- Edwin Garage (sggarage.com): 2,289 clicks from Google (up from 2,110), average position 6.1 (from 6.5), on page one for 4,290+ different searches. Search Console data starts 26 June 2026.
+- Cleanic Detailing (cleanicdetailing.com): 506 clicks from Google (up from 443), average position 8.9 (from 11.1), on page one for 1,230 different searches. Search Console data starts 20 June 2026.
+- SofaCare SG (sofacaresg.com): shown on Google 3,686 times, on page one for 30 searches. Search Console data starts 4 September 2026. Still early.
+- Alicia Ong Property (aliciaongproperty.com): Search Console data starts 30 September 2026; shown on Google 134 times, 14 clicks so far. Too early to report results.
+- Danny Chua Financial (dannychuafinancial.com): shown on Google 5,602 times (up from 2,055), on page one for 99 searches. Still early.
+- The ECU Clinic (theecuclinicsg.com): Search Console data starts 12 October 2026; shown on Google 35 times, 0 clicks so far. Too early to report results.
+- Jacky Gearbox (jackygearbox.com): Search Console data starts 13 October 2026; shown on Google 5 times, 1 clicks so far. Too early to report results.
+- Full case studies: https://pageonesingapore.com/results/
+- Every client website with its numbers: https://pageonesingapore.com/clients/
+- Low price, real results: S$20 a month is low because a set of AI tools we designed does the daily SEO work that used to be billed by the hour; the numbers above come from the same system.
