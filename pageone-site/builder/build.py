@@ -1402,7 +1402,7 @@ GLOSSARY = [
         ("organic", "Free results vs paid ads", "Organic vs paid search",
          "Organic results are the normal, unpaid listings. Paid results are ads marked \"Sponsored\", where you pay Google for every click.",
          "Ads stop the moment you stop paying. Organic visibility keeps working in the background.",
-         "Our plans work on your organic (unpaid) visibility. There's no ad spend."),
+         "Our plans work on your organic (unpaid) visibility. There's no ad spend. <a class=\"link\" href=\"/google-ads-vs-seo-vs-ai-blog-tools/\">Google Ads vs SEO vs AI blog tools, compared →</a>"),
     ]),
 ]
 
@@ -1447,7 +1447,7 @@ page("seo-explained/index.html",
 """ + "\n\n".join(_gl_cards) + """
 
 """ + cta("Still not sure? Just ask.", "No question is too basic. WhatsApp Edwin and he'll explain how it applies to your business. No obligation."),
-     crumb="SEO explained simply")
+     crumb="SEO explained simply", updated="2026-10-17")
 
 
 # ---------- Home ----------
@@ -1475,6 +1475,8 @@ exec(open(os.path.join(HERE, "managed.py"), encoding="utf-8").read())
 exec(open(os.path.join(HERE, "seo_aeo_geo.py"), encoding="utf-8").read())
 # "AI SEO vs traditional SEO" and "Is Page One legit?" (verify-it-yourself) pages.
 exec(open(os.path.join(HERE, "ai_seo.py"), encoding="utf-8").read())
+# Google Ads vs SEO vs AI blog tools (/google-ads-vs-seo-vs-ai-blog-tools/), linked from /seo-explained/.
+exec(open(os.path.join(HERE, "ads_compare.py"), encoding="utf-8").read())
 
 page("index.html",
      "Affordable SEO Singapore: SEO, AEO &amp; GEO from S$20/month",
