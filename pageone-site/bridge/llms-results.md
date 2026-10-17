@@ -8,4 +8,4 @@
 - Jacky Gearbox (jackygearbox.com): launched October 2026, no Search Console data yet.
 - Full case studies: https://pageonesingapore.com/results/
 - Every client website with its numbers: https://pageonesingapore.com/clients/
-- Low price, real results: S$20 a month is low because AI does the daily work that used to be billed by the hour; the numbers above come from the same system.
+- Low price, real results: S$20 a month is low because a set of AI tools we designed does the daily SEO work that used to be billed by the hour; the numbers above come from the same system.

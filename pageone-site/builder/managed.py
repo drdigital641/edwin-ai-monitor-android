@@ -20,7 +20,7 @@ MANAGED_FAQ = [
     ("How long until my website is live?",
      "Usually within 7 days of receiving your details and photos. You send them over WhatsApp, and we do the rest."),
     ("Is S$20 a month too cheap to be any good?",
-     "The price is low because AI now does the daily work that used to be billed by the hour, not because steps are skipped. " + PROOF_EG + ", according to Google Search Console, and every client website is live for you to check."),
+     "The price is low because a set of AI tools we designed does the daily SEO work that used to be billed by the hour, not because steps are skipped. " + PROOF_EG + ", according to Google Search Console, and every client website is live for you to check."),
 ]
 
 _MANAGED_ITEMS = [
