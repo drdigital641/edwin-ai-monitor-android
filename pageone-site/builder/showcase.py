@@ -269,16 +269,31 @@ def _marquee():
     return "\n".join([one(c, False) for c in SC["clients"]] + [one(c, True) for c in SC["clients"]])
 
 
+def _g(key):
+    return SC_BY[key]["gsc"]
+
+
+def _kbar(a, b):
+    """Two-row mini bar chart under a homepage KPI (decorative: the KPI text already says the same)."""
+    top = max(a[1], b[1]) or 1
+    row = lambda lab, v, cls: (f'<p><small>{lab}</small><i class="{cls}" style="--w:{round(v / top, 3)}"></i></p>')
+    return f'<div class="kbar" aria-hidden="true">{row(a[0], a[1], "was")}{row(b[0], b[1], "now")}</div>'
+
+
 HOME_TOKENS = {
-    "{{PROOF_BOTH}}": PROOF_BOTH, "{{EG_PAGE_ONE}}": EG["page_one"], "{{EG_CLICKS}}": EG["clicks"], "{{EG_POS}}": EG["pos"],
+    "{{PROOF_BOTH}}": PROOF_BOTH, "{{EG_PAGE_ONE}}": EG["page_one"], "{{EG_CLICKS}}": EG["clicks"], "{{EG_POS}}": EG["pos"], "{{EG_POS_FROM}}": (f' data-from="{EG["prev_pos"]}"' if float(EG["prev_pos"]) > float(EG["pos"]) else ""),
     "{{THROUGH_SHORT}}": THROUGH_SHORT, "{{WINDOW}}": WINDOW, "{{PROOF_BARS}}": _proof_bars(), "{{MARQUEE}}": _marquee(),
     "{{MARQUEE_LABEL}}": f"Already running for {len(SC['clients'])} Singapore businesses" + (f" · {BUILDING} more being built" if BUILDING else ""),
     "{{HOME_KPIS}}": "\n".join(
-        f'          <div class="kpi"><div class="label">{l}</div><div class="value">{v}</div><div class="delta">{d}</div></div>' for l, v, d in [
-            ("Edwin Garage: clicks from Google", EG["clicks"], f"Up from {EG['prev_clicks']} · average position {EG['pos']}"),
-            ("Edwin Garage: searches on page one", EG["page_one"], f"{EG['top3']} in the top 3"),
-            ("Cleanic Detailing: clicks from Google", CL["clicks"], f"Up from {CL['prev_clicks']} the 28 days before"),
-            ("Cleanic Detailing: searches on page one", CL["page_one"], f"{CL['top3']} in the top 3")]),
+        f'          <div class="kpi"><div class="label">{l}</div><div class="value">{v}</div><div class="delta">{d}</div>{b}</div>' for l, v, d, b in [
+            ("Edwin Garage: clicks from Google", EG["clicks"], f"Up from {EG['prev_clicks']} · average position {EG['pos']}",
+             _kbar(("Before", _g("sggarage")["prev_clicks"]), ("Now", _g("sggarage")["clicks"]))),
+            ("Edwin Garage: searches on page one", EG["page_one"], f"{EG['top3']} in the top 3",
+             _kbar(("Page one", _g("sggarage")["page_one"]), ("Top 3", _g("sggarage")["top3"]))),
+            ("Cleanic Detailing: clicks from Google", CL["clicks"], f"Up from {CL['prev_clicks']} the 28 days before",
+             _kbar(("Before", _g("cleanic")["prev_clicks"]), ("Now", _g("cleanic")["clicks"]))),
+            ("Cleanic Detailing: searches on page one", CL["page_one"], f"{CL['top3']} in the top 3",
+             _kbar(("Page one", _g("cleanic")["page_one"]), ("Top 3", _g("cleanic")["top3"])))]),
 }
 
 

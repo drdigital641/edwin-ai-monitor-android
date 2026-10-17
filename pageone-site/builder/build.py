@@ -1492,7 +1492,7 @@ page("index.html",
      fill_home(open(os.path.join(HERE, "home_body.html"), encoding="utf-8").read().rstrip("\n").replace("{{GLANCE}}", HOME_GLANCE).replace("{{HOME_FAQ}}", HOME_FAQ_HTML)),
      updated=max(SC_UPDATED, AIV_UPDATED, "2026-10-17"),
      head_extra="\n  <style>" + " ".join(open(os.path.join(HERE, "home_motion.css"), encoding="utf-8").read().split("\n")[1:]).strip() + "</style>",
-     foot_extra='\n  <script src="/motion.js?v=1" defer></script>')
+     foot_extra='\n  <script src="/motion.js?v=2" defer></script>')
 
 
 # ---------- llms-full.txt and per-page sitemap dates ----------
