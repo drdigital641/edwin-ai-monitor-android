@@ -6,5 +6,5 @@
 - [Alicia Ong Property](https://aliciaongproperty.com/): Property agent (ERA)
 - [Danny Chua Financial](https://dannychuafinancial.com/): Financial consultant
 - [The ECU Clinic](https://theecuclinicsg.com/): ABS and brake module repair, Kaki Bukit
-- [Jacky Gearbox](https://jackygearbox.com/): Gearbox and transmission specialist (launched October 2026)
+- [Jacky Gearbox](https://jackygearbox.com/): Gearbox and transmission specialist
 - All client websites with screenshots and dated results: https://pageonesingapore.com/clients/
