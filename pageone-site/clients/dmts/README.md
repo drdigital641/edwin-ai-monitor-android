@@ -1,4 +1,12 @@
-# Dynamic Motoring (DMTS): pageonesingapore.com/preview/dmts/
+# Jacky Gearbox (formerly Dynamic Motoring, DMTS): pageonesingapore.com/preview/dmts/
+
+**Rebrand, 14 Oct 2026:** the client renamed the business Jacky Gearbox, on jackygearbox.com, with Jacky
+(the owner) as the face of the site. Logo option A (JG inside a gear, navy and blue, no red: Jacky's
+request) is `site/img/logo.svg`, with the icon in `site/favicon.svg` and PNG masters in `source/photos/jacky-gearbox-*.png`
+(drawn by `/mnt/project-files/dmts/logo-options/generator.py`). The folder and the Page One site key stay `dmts`.
+`.htaccess` now sends every dmts.com.sg address to the same page on jackygearbox.com. Jacky's portfolio and
+experience are still to come from the client: fill `JACKY_STORY` and `meet_jacky()` in `build.py`.
+
 
 New client (onboarding 12 Oct 2026). Gearbox / auto transmission specialist, Woodlands, Singapore. Old site: https://dmts.com.sg/ (WordPress, 2017).
 
@@ -39,6 +47,11 @@ Follows the standard procedure in `../PLAYBOOK.md` (same as every client from no
 - pageonesingapore.com/robots.txt disallows `/preview/` and `/dmts/`, so the copy under
   pageonesingapore.com is never crawled; dmts.com.sg uses this folder's own robots.txt.
 - WhatsApp clicks are counted by `dmts.js` (site key `dmts`) only on dmts.com.sg.
+- `.htaccess` (hand-edited) gives dmts.com.sg its own https/no-www/index.html rules, 301s from the old
+  WordPress addresses (about-us, photo-gallery, faq, price-estimator, site-maintenance, blog, feeds, old
+  upload images) and `ErrorDocument 404 /404.html`. It must be published with the site: the parent
+  pageonesingapore.com .htaccess would otherwise send dmts.com.sg/x/index.html to /preview/dmts/x/ and
+  point 404s at a /404.html that only exists on pageonesingapore.com.
 - Onboarding score of the old dmts.com.sg (WordPress, 12 Oct 2026): 55/100, saved in the score history.
 - Leftover: the very first upload at pageonesingapore.com/dmts/ only redirects to /preview/dmts/; its
   old copies can be deleted in cPanel File Manager whenever convenient (the bridge can't delete).
