@@ -282,6 +282,8 @@ def _kbar(a, b):
 
 HOME_TOKENS = {
     "{{PROOF_BOTH}}": PROOF_BOTH, "{{EG_PAGE_ONE}}": EG["page_one"], "{{EG_CLICKS}}": EG["clicks"], "{{EG_POS}}": EG["pos"], "{{EG_POS_FROM}}": (f' data-from="{EG["prev_pos"]}"' if float(EG["prev_pos"]) > float(EG["pos"]) else ""),
+    "{{EG_LINK}}": f'<a class="link" href="{SC_BY["sggarage"]["url"]}" target="_blank" rel="noopener">Edwin Garage</a>',
+    "{{CL_LINK}}": f'<a class="link" href="{SC_BY["cleanic"]["url"]}" target="_blank" rel="noopener">Cleanic Detailing</a>',
     "{{THROUGH_SHORT}}": THROUGH_SHORT, "{{WINDOW}}": WINDOW, "{{PROOF_BARS}}": _proof_bars(), "{{MARQUEE}}": _marquee(),
     "{{MARQUEE_LABEL}}": f"Already running for {len(SC['clients'])} Singapore businesses" + (f" · {BUILDING} more being built" if BUILDING else ""),
     "{{HOME_KPIS}}": "\n".join(
