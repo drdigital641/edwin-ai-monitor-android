@@ -613,7 +613,7 @@ ARTICLES = [
         title='Nissan ABS, VDC and SLIP Lights On? Causes | The ECU Clinic',
         desc='Why the ABS, VDC OFF and SLIP lights come on together in a Nissan, if it is safe to drive, what to check first, and how the ABS unit is repaired in Singapore.',
         h1='Why Are the ABS, VDC and SLIP Lights On in My Nissan?',
-        lead='Three warning lights at once usually means one fault: what it can be, what to check first, and when the ABS unit needs repair.',
+        lead='ABS, VDC OFF and SLIP lights on together? What each light means, the button to check first, and when the ABS unit needs repair.',
         photo='abs-module-in-car', alt='ABS module in a car’s engine bay', share='abs-unit-engine-bay-2.jpg',
         body='''<p><strong>Short answer:</strong> in a Nissan, the ABS (anti-lock brakes), VDC (Vehicle Dynamic Control) and traction control share the same ABS actuator, control unit and wheel speed signals, so one fault often turns on the ABS, VDC OFF and SLIP lights together. Common causes are a wheel speed sensor, wiring, the steering angle sensor or the ABS unit itself. The fault code tells you which.</p>
 <h2>What do the ABS, VDC OFF and SLIP lights mean?</h2>
