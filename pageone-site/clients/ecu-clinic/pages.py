@@ -652,4 +652,48 @@ ARTICLES = [
              ('Will the ABS, VDC and SLIP lights go off by themselves?', 'Sometimes they go off after a restart if the fault is intermittent, but the code stays stored and the lights usually come back until the cause is fixed. Read the code first.'),
              ('Can you repair the ABS unit without the car?', 'Yes. You can bring just the unit to us at Premier @ Kaki Bukit, or use our pick-up and delivery service.')],
     ),
+    dict(
+        # EDGE daily article, 18 Oct 2026 (8pm run, by hand). Gap: for "vw audi abs esp light on" the results are US owners'
+        # forums (audizine, audiworld, cargurus) and one UK mail-in seller page (ecutesting.com) that blames the pump alone;
+        # no answer page and no Singapore workshop.
+        slug='vw-audi-abs-esp-light-on', service='abs-pump-repair', date='2026-10-18',
+        title='VW or Audi ABS and ESP Lights On? Causes | The ECU Clinic',
+        desc='Why the ABS and ESP (ESC) lights come on together in a VW, Audi or Skoda, if it is safe to drive, what to check first, and ABS unit repair in Singapore.',
+        h1='Why Are the ABS and ESP Lights On in My VW or Audi?',
+        lead='ABS and ESP lights on together in a Volkswagen, Audi or Skoda? What each light means, the simple causes to rule out first, and when the ABS unit needs repair.',
+        photo='abs-esc-units-bench', alt='ABS and ESC units on the workbench at The ECU Clinic', share='abs-esc-units-on-bench.jpg',
+        body='''<p><strong>Short answer:</strong> in most Volkswagen, Audi and Skoda models, ABS (anti-lock brakes) and ESP (electronic stability programme, called ESC on newer cars) are run by the same ABS unit and use the same wheel speed signals, so one fault often turns on both lights. Common causes are a wheel speed sensor, the brake light switch, the steering angle sensor, low voltage or the ABS unit itself. The fault code tells you which.</p>
+<h2>What do the ABS and ESP lights mean?</h2>
+<ul class="ticks">
+<li><strong>ABS</strong> is the anti-lock braking system. It stops the wheels locking when you brake hard.</li>
+<li><strong>ESP</strong> (or ESC) is the stability system. It brakes single wheels and can reduce engine power to help the car hold its line in a skid. Traction control (ASR) is part of it. A light that flashes briefly on a slippery road means it is working; a light that stays on means it has switched itself off.</li>
+</ul>
+<p>ESP needs the wheel speed signals, the brake pressure reading and the pump that ABS uses. When the ABS side has a fault, the car switches ESP off too, which is why the two lights come on together.</p>
+<h2>Is it safe to drive with the ABS and ESP lights on?</h2>
+<p>In most cases your normal brakes still work, but anti-lock braking, stability control and traction control may be off until the fault is fixed. The wheels can then lock under hard braking, and the car will not correct a skid on a wet road. Leave more distance and avoid hard stops. If the red brake warning light is also on, or the brake pedal feels different, stop driving and get the car checked first. Our pick-up and delivery service can collect it.</p>
+<h2>Did someone switch ESP off?</h2>
+<p>On many models a button marked ESC, ESP or ASR OFF turns traction control off, and the ESP light or an "OFF" light then stays on. Press the button again, or restart the car, and it usually switches back on. If the ABS light is on as well, or the lights stay on after a restart, there is a stored fault.</p>
+<h2>What are the common causes?</h2>
+<ul class="ticks">
+<li><strong>Wheel speed sensor.</strong> Each wheel has one. A dirty, damaged or failed sensor, or its wiring, is a common cause.</li>
+<li><strong>Brake light switch.</strong> ESP uses it to know when you are braking, so a faulty switch can turn the ESP light on, sometimes with brake lights that stay on or do not work.</li>
+<li><strong>Steering angle sensor.</strong> ESP needs to know where the steering is pointing. On many models the sensor must be set up again after a wheel alignment, steering work or a battery change, or the ESP light comes on.</li>
+<li><strong>Low battery voltage or a blown fuse.</strong> Simple causes worth ruling out first, especially after a battery has gone flat.</li>
+<li><strong>The ABS unit itself.</strong> The control module, the pump motor or a sensor inside the unit, such as the brake pressure sensor on many models, can develop internal faults.</li>
+</ul>
+<h2>How do we find which part is at fault?</h2>
+<ol class="steps">
+<li><strong>Read the fault codes.</strong> The ABS control unit stores codes that point to the circuit at fault.</li>
+<li><strong>Rule out the simple causes.</strong> The ESC button, sensors, wiring, the brake light switch, steering angle setup, battery and fuses.</li>
+<li><strong>Check the unit.</strong> If the codes and tests point to the module, the pump or a sensor inside the unit, the ABS unit is the problem.</li>
+<li><strong>Tell you the options.</strong> You decide before any work starts.</li>
+</ol>
+<h2>Repair, recon, used or new?</h2>
+<p>If the fault is in the ABS unit, we can repair your own ABS module, or supply a reconditioned, used or new unit. Our repairs come with a 6-month warranty. See <a href="../../services/abs-pump-repair/">ABS pump and module repair</a> for how the options compare, or <a href="../abs-warning-light-causes/">ABS warning light causes</a> for the ABS light on its own.</p>
+<h2>What should I send?</h2>
+<p>WhatsApp us your car model, year, chassis number and the fault codes. A photo of the dashboard or the scan tool screen also helps. You can bring the car, or just the unit, to Premier @ Kaki Bukit, or use our pick-up and delivery service.</p>''',
+        faq=[('Can a bad brake light switch turn on the ESP light?', 'Yes, on many Volkswagen and Audi models. ESP uses the switch to know when you brake, so a faulty switch can store a fault and turn the ESP light on. Reading the code shows whether the switch is the cause.'),
+             ('Why did the ESP light come on after a wheel alignment or battery change?', 'On many models the steering angle sensor has to be set up again after alignment, steering work or a flat battery. Until it is, ESP may switch itself off and the light stays on.'),
+             ('Can you repair the ABS unit without the car?', 'Yes. You can bring just the unit to us at Premier @ Kaki Bukit, or use our pick-up and delivery service.')],
+    ),
 ]
