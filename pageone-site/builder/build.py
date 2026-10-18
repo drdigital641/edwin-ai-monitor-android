@@ -391,7 +391,7 @@ page("get-found/index.html",
       <div class="wrap">
         <p class="kicker reveal">What S$20 covers every month</p>
         <h2 class="reveal">Get Found every month, Boost when you want</h2>
-        <p class="section-lead reveal">Your S$20 plan keeps you discovered naturally on Google and ChatGPT, with regular new articles and a technical audit every month. A Boost accelerates growth: more content aimed at new keywords, so you show up for more searches, faster.</p>
+        <p class="section-lead reveal">Your S$20 plan keeps your site discoverable on Google and AI search like ChatGPT, with regular new articles and a technical audit every month. A Boost adds more content aimed at new keywords, so you can show up for more searches. More work doesn't guarantee faster rankings, but every Boost is reported.</p>
         """ + PLAN_COMPARE + """
       </div>
     </section>
@@ -602,13 +602,13 @@ BOOST_FAQ_LD = {"@context": "https://schema.org", "@type": "FAQPage", "mainEntit
     {"@type": "Question", "name": q, "acceptedAnswer": {"@type": "Answer", "text": a}} for q, a in BOOST_FAQ]}
 
 page("seo-boost/index.html",
-     "SEO Boost: S$10 Top-up for Faster Results | Page One SG",
+     "SEO Boost: S$10 Top-up for Extra SEO Work | Page One SG",
      "An optional S$10 SEO Boost: one full round of Google and AI visibility improvements, with a before/after report. Add at sign-up or top up anytime on WhatsApp.",
      [service("SEO Boost (optional top-up)", "/seo-boost/",
               "One full round of Google and AI search visibility improvements with a before/after report. Optional, topped up anytime.", "10"), BOOST_FAQ_LD],
      hero("SEO Boost", "Optional top-up",
-          "Want faster results? Add an SEO Boost.",
-          "An SEO Boost is an optional S$10 top-up for faster results: more content aimed at new niche long-tail searches, extra processing to fix SEO issues, then a report of exactly what changed. Your S$20 plan already includes regular new articles and a technical audit every month.",
+          "Want more SEO work done? Add an SEO Boost.",
+          "An SEO Boost is an optional S$10 top-up for extra SEO work: more content aimed at new niche long-tail searches, extra processing to fix SEO issues, then a report of exactly what changed. Your S$20 plan already includes regular new articles and a technical audit every month.",
           '<p class="hero-price"><b>S$10</b>/boost · top up anytime</p>') + """
 
     <section class="section">
@@ -699,7 +699,7 @@ page("pricing/index.html",
             "url": SITE + "/seo-boost/", "seller": PROVIDER}]}],
      hero("Pricing", "No setup fee · No contract · Cancel anytime",
           "Simple pricing. Start at S$20.",
-          "One monthly plan at an introductory price, plus optional SEO Boosts when you want faster results. Sign up by chatting with Edwin on WhatsApp.", buttons=False) + """
+          "One monthly plan at an introductory price, plus optional SEO Boosts when you want extra SEO work done. Sign up by chatting with Edwin on WhatsApp.", buttons=False) + """
 
     <section class="section">
       <div class="wrap">
@@ -736,16 +736,16 @@ page("pricing/index.html",
             <h2 class="h3" id="calc-title">Your monthly cost</h2>
             <fieldset>
               <legend>SEO Boosts this month (optional)</legend>
-              <label><input type="radio" name="runs" value="0"> No Boost <small>base plan</small></label>
+              <label><input type="radio" name="runs" value="0" checked> No Boost <small>base plan</small></label>
               <label><input type="radio" name="runs" value="1"> 1 Boost <small>steady</small></label>
-              <label><input type="radio" name="runs" value="2" checked> 2 Boosts <small>faster</small></label>
-              <label><input type="radio" name="runs" value="4"> 4 Boosts <small>fastest</small></label>
+              <label><input type="radio" name="runs" value="2"> 2 Boosts <small>more work</small></label>
+              <label><input type="radio" name="runs" value="4"> 4 Boosts <small>most work</small></label>
             </fieldset>
             <div class="total" aria-live="polite">
               <span>Total</span>
-              <strong id="calc-total">S$40</strong><span>/month</span>
+              <strong id="calc-total">S$20</strong><span>/month</span>
             </div>
-            <p class="calc-break" id="calc-break">S$20 Get Found + 2 × S$10 Boosts</p>
+            <p class="calc-break" id="calc-break">S$20 Get Found only</p>
             <a class="btn btn-block" href="/signup/" id="calc-signup">Sign up with this plan</a>
           </form>
         </div>

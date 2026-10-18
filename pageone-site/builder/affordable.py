@@ -273,7 +273,7 @@ page("cheapest-website-singapore/index.html",
         <p class="section-lead reveal">Building and maintaining a website used to take a lot of manual work. Page One has designed a set of AI tools that handle the repetitive parts automatically, so we can build your site and keep looking after it for a small monthly fee instead of a big upfront one.</p>
         <div class="cards three" style="margin-top:32px">{_cards([
             ("Built from what you already have", "Send us your old website address, or just your details on WhatsApp. We pull in your services, contact details and photos, and show you a preview first."),
-            ("Kept fresh", "Regular new articles are included in the S$20 plan, so search engines have a reason to keep coming back. Want to grow faster? Add SEO Boosts."),
+            ("Kept fresh", "Regular new articles are included in the S$20 plan, so search engines have a reason to keep coming back. Want more pages working for you? Add SEO Boosts."),
             ("Checked automatically", "The system checks your site on a schedule, every day including weekends, and problems get fixed instead of waiting to be noticed."),
             ("Ready for Google and AI", "A page for each service, your business details labelled for Google, Bing and AI assistants, and a sitemap so nothing gets missed."),
             ("Fast and secure", "Hosting, the padlock (HTTPS) and a one-tap WhatsApp button, all included."),

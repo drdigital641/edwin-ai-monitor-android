@@ -381,7 +381,7 @@ page("industries/index.html",
          {"@type": "ListItem", "position": n + 1, "url": f"{SITE}/industries/{i['slug']}/", "name": i["name"].replace("&amp;", "&")}
          for n, i in enumerate(INDUSTRIES)]}],
      hero("Industries", "Who we help", "Get found on Google, whatever you do",
-          "Page One builds and looks after websites that get Singapore small businesses found on Google, Google Maps and ChatGPT, whatever the trade, for S$20 a month. Customers search differently for a plumber than for a tuition centre, so pick your industry to see what people search for, what your website needs, and the results we've had where we have them.") + f"""
+          "Page One builds and looks after websites that help Singapore small businesses get found on Google, Google Maps and AI search like ChatGPT, whatever the trade, for S$20 a month. Customers search differently for a plumber than for a tuition centre, so pick your industry to see what people search for, what your website needs, and the results we've had where we have them.") + f"""
 
     <section class="section">
       <div class="wrap">

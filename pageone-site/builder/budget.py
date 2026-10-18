@@ -26,7 +26,7 @@ BUDGET_FAQ = [
 _BUDGET_ROWS = [
     ("S$20", "Get Found plan", "Website (or SEO landing page), Google, Maps and ChatGPT setup, regular new articles, monthly technical audit, hosting and security"),
     ("S$30", "Plan + 1 SEO Boost", "Everything above, plus extra articles aimed at new keywords and a before/after report"),
-    ("S$40", "Plan + 2 SEO Boosts", "Faster growth: more pages for more of the searches your customers type"),
+    ("S$40", "Plan + 2 SEO Boosts", "More work: more pages for more of the searches your customers type"),
     ("S$50", "Plan + 3 SEO Boosts", "The most you'd need on a small budget. You can stop the Boosts any month"),
 ]
 
@@ -38,7 +38,7 @@ page(BUDGET_URL.strip("/") + "/index.html",
       _faq_ld(BUDGET_FAQ), _price_ld(BUDGET_URL)],
      hero("Small budget", "SEO and a website on a small budget",
           "Website and SEO bundled for S$20 a month in Singapore",
-          "On a S$20 to S$50 budget, you don't have to choose between a website and SEO. Page One bundles both for S$20 a month (introductory price): your website built and managed, and kept found on Google, Google Maps and ChatGPT every month. No setup fee, no contract. With S$50, add up to three SEO Boosts at S$10 each. The first year of a website costs S$240, plus your domain.",
+          "On a S$20 to S$50 budget, you don't have to choose between a website and SEO. Page One bundles both for S$20 a month (introductory price): your website built and managed, and kept discoverable on Google, Google Maps and AI search like ChatGPT every month. No setup fee, no contract. With S$50, add up to three SEO Boosts at S$10 each. The first year of a website costs S$240, plus your domain.",
           '<p class="hero-price"><b>S$20</b>/month · <span class="intro-tag">Introductory price</span> · no setup fee · no contract · <a class="link" href="https://wa.me/6597856612" target="_blank" rel="noopener">WhatsApp +65 9785 6612</a></p>') + "\n\n" + PRICE_GLANCE + f"""
 
     <section class="section">
@@ -72,7 +72,7 @@ page(BUDGET_URL.strip("/") + "/index.html",
             <tbody>{"".join(f"<tr><th>{a}</th><td><b>{b}</b></td><td>{c}</td></tr>" for a, b, c in _BUDGET_ROWS)}</tbody>
           </table>
         </div>
-        <p class="note reveal">Start at S$20. Add Boosts only when you want to grow faster, and stop them any month. <a class="link" href="/seo-boost/">What an SEO Boost does →</a></p>
+        <p class="note reveal">Start at S$20. Add Boosts only when you want more pages working for you, and stop them any month. <a class="link" href="/seo-boost/">What an SEO Boost does →</a></p>
       </div>
     </section>
 
