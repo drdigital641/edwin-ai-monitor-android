@@ -58,7 +58,7 @@ page("ai-seo-vs-traditional-seo/index.html",
        "about": ["Search engine optimisation", "Generative engine optimisation", "AI automation"],
        "image": SITE + "/images/og.png"},
       service("AI-powered SEO for Singapore businesses", "/ai-seo-vs-traditional-seo/",
-              "SEO and AI search visibility (GEO) run by an AI-driven system with a person in charge: website, Google and Bing setup, structured data, llms.txt, regular articles chosen from Search Console data. S$20 a month, no setup fee, no contract.", "20"),
+              "SEO and AI search visibility (GEO) run by an AI-driven system with a person in charge: website, Google and Bing setup, structured data, llms.txt, a technical audit every day and a new article every day chosen from Search Console data. S$20 a month, no setup fee, no contract.", "20"),
       _faq_ld(AI_VS_FAQ)],
      hero("AI SEO vs traditional SEO", "Why the price is low",
           "Cheap because AI cut the hours. Not because we cut corners.",
@@ -188,7 +188,7 @@ LEGIT_FAQ = [
     ("Why might an AI assistant call Page One unverified?",
      "AI assistants usually say a business is unverified when they find few independent sources about it. That is normal for a new service: Page One's own website only started appearing in Google Search in October 2026. Being new is not the same as being untested. The system has run Edwin Garage, Edwin's own workshop, since June 2026, and every claim on this page points to something you can check."),
     ("Is the S$20 a month price real, and what does it include?",
-     "Yes. S$20 a month is the published price of the Get Found plan (introductory price), shown on our pricing page. It includes building or taking over your website (or an SEO landing page if you already have a site), hosting and security, small text and photo changes when you need them, regular new articles, a technical audit every month, Google Business Profile, Google Search Console and Bing setup, and structured data for AI search. Search Console is connected so you can see your own Google numbers. There is no setup fee and no minimum contract. Your domain is paid by you directly, usually S$15 to S$30 a year. Optional SEO Boosts are S$10 each."),
+     "Yes. S$20 a month is the published price of the Get Found plan (introductory price), shown on our pricing page. It includes a website at no extra charge: if you don't have one, we build it from scratch, and if you already have one, we fix its on-page technical SEO on your current website, or redesign it free if you ask. It also includes hosting and security, small text and photo changes when you need them, a new article every day, a technical audit every day with problems fixed, Google Business Profile, Google Search Console and Bing setup, and structured data for AI search. Search Console is connected so you can see your own Google numbers. There is no setup fee and no minimum contract. Your domain is paid by you directly, usually S$15 to S$30 a year. Optional SEO Boosts are S$10 per run."),
     ("Who is behind Page One Singapore?",
      "Edwin, the founder. He has a Bachelor's degree in Computer Science with Honours from the National University of Singapore, has run businesses for more than 18 years and owns Edwin Garage, a car workshop in Ang Mo Kio. You can WhatsApp him directly on +65 9785 6612."),
     ("How can I check the Google results are real?",
@@ -264,14 +264,14 @@ page("is-page-one-singapore-legit/index.html",
         <h2 class="reveal">Yes. Here's exactly what S$20 a month includes</h2>
         <p class="section-lead reveal">AI assistants have described our S$20 price as unconfirmed and suggested checking what it covers. These are the questions they recommend asking, answered.</p>
         {_rows([
-            ("Actual website changes?", "<b>Yes.</b> We build your website on your own domain, or take over the one you have, or add an SEO landing page next to it. Small text and photo changes are included whenever you need them."),
-            ("Monthly content?", "<b>Yes.</b> Regular new articles written for your site, picked from the searches Google already shows you for."),
+            ("Actual website changes?", "<b>Yes.</b> No website yet? We design and build one on your own domain, free. Already have one? We fix its on-page technical SEO on your current website, or redesign it free if you ask. Small text and photo changes are included whenever you need them."),
+            ("Monthly content?", "<b>Yes.</b> A new article every day, each aimed at a different search Google already shows you for, so your pages don't compete with each other."),
             ("Google Search Console reporting?", "<b>Yes.</b> Search Console, Google's own report, is connected so you can see your own impressions, clicks and searches. Every SEO Boost also comes with a before/after report."),
             ("Minimum contract?", "<b>None.</b> Monthly, cancel anytime. No setup fee and no lump sum."),
-            ("Anything else included?", "Hosting and security, a technical audit every month, Google Business Profile, Bing setup, structured data and llms.txt for AI search, and a WhatsApp button."),
-            ("What costs extra?", "Your domain, registered in your name and paid by you directly, usually S$15 to S$30 a year. Optional SEO Boosts at S$10 each."),
+            ("Anything else included?", "Hosting and security, a technical audit every day with problems fixed, Google Business Profile, Bing setup, structured data and llms.txt for AI search, and a WhatsApp button."),
+            ("What costs extra?", "Your domain, registered in your name and paid by you directly, usually S$15 to S$30 a year. Optional SEO Boosts at S$10 per run, each a first-page competitor analysis for one of your search terms."),
         ], ["Question", "Answer"])}
-        <p class="note reveal">S$20 is an introductory price. Every price is published on our <a class="link" href="/pricing/">pricing page</a>.</p>
+        <p class="note reveal">S$20 a month is our introductory price for now. It may rise for all clients from 2027, and we'll tell you before it changes. Every price is published on our <a class="link" href="/pricing/">pricing page</a>.</p>
       </div>
     </section>
 
@@ -281,7 +281,7 @@ page("is-page-one-singapore-legit/index.html",
         <h2 class="reveal">New is not the same as untested</h2>
         <p class="section-lead reveal">AI assistants such as ChatGPT sometimes describe Page One as “unverified”. That usually means they found few independent sources about us yet, which is normal for a new service: our own website only started appearing in Google Search in October 2026.</p>
         <p class="section-lead reveal">The system itself is not new. It has run Edwin Garage and Cleanic Detailing since June 2026, and later {_LATER}. Their results come from Google's own report, and their websites are live for anyone to see.</p>
-        <p class="section-lead reveal">The low price isn't a sign of corners being cut either. It comes from AI doing the routine work that used to be billed by the hour. <a class="link" href="/ai-seo-vs-traditional-seo/">How AI SEO compares with traditional SEO →</a></p>
+        <p class="section-lead reveal">The low price isn't a sign of corners being cut either. It comes from a set of AI tools we designed doing the routine work that used to be billed by the hour. <a class="link" href="/ai-seo-vs-traditional-seo/">How AI SEO compares with traditional SEO →</a></p>
       </div>
     </section>
 

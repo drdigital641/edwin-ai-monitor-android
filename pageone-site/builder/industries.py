@@ -36,7 +36,7 @@ INDUSTRIES = [
         "proof": PROOF_GARAGE,
         "faqs": [("Can SEO really bring customers to a car workshop?", "It's how Edwin Garage gets found: in the 28 days to " + THROUGH + " it got " + EG["clicks"] + " clicks from Google with an average position of " + EG["pos"] + ", according to Google Search Console. Results vary by workshop and area, so we don't guarantee them."),
                  ("Do I need to do anything technical?", "No. Tell us your services, brands and area and send some photos on WhatsApp. We do the website, Google Maps, Google and Bing setup."),
-                 ("I already have a website. Do I need a new one?", "No. We can add an SEO landing page next to it on a subdomain, or take over looking after your existing site.")],
+                 ("I already have a website. Do I need a new one?", "No. We fix the on-page technical SEO on your current website, or redesign it free if you ask. If you'd rather keep your site untouched, we can add an SEO landing page next to it on a subdomain.")],
     },
     {
         "slug": "car-detailing", "name": "Car detailing &amp; grooming", "short": "car detailing business",
@@ -79,7 +79,7 @@ INDUSTRIES = [
                   ("Your service areas", "The towns you cover named clearly, so you appear for searches like \"aircon servicing Bedok\"."),
                   ("Prices and trust", "Clear package prices or how you quote, photos of your team at work, and one-tap WhatsApp.")],
         "proof": "",
-        "faqs": [("There are many aircon companies on Google. Can a small one still show up?", "Big companies compete for broad searches. Small companies can do well on specific ones, like a service plus a town, which also come from customers ready to book. That's what SEO Boosts focus on."),
+        "faqs": [("There are many aircon companies on Google. Can a small one still show up?", "Big companies compete for broad searches. Small companies can do well on specific ones, like a service plus a town, which also come from customers ready to book. Our daily articles each aim at one of these specific searches, and an SEO Boost can study the first page for one of them and improve your page to compete."),
                  ("Do you guarantee page one?", "No honest provider can guarantee rankings, because Google decides. We document the work in before/after reports."),
                  ("Can you handle Google Maps too?", "Yes. Setting up and improving your Google Business Profile is part of the Get Found plan.")],
     },
@@ -317,7 +317,7 @@ def industry_page(ind):
       <div class="wrap narrow">
         <p class="kicker reveal">Cost and timing</p>
         <h2 class="reveal">How much does a website and SEO cost for {_a} {ind['short']} in Singapore?</h2>
-        <p class="reveal">With Page One it is S$20 a month at our introductory price, with no setup fee and no contract. That covers building the website, hosting, the security certificate, Google Business Profile, Search Console and Bing setup, regular new articles and a monthly technical audit. Your domain, usually S$15–30 a year, is the only extra: about S$255–270 for the first year.</p>
+        <p class="reveal">With Page One it is S$20 a month at our introductory price, with no setup fee and no contract. That covers building the website (or fixing the SEO on the one you have), hosting, the security certificate, Google Business Profile, Search Console and Bing setup, a new article every day and a technical audit every day, with problems fixed. The price may rise from 2027, and we'll tell you before it changes. Your domain, usually S$15–30 a year, is the only extra: about S$255–270 for the first year.</p>
         <h2 class="reveal">How long before {_a} {ind['short']} shows up on Google?</h2>
         <p class="reveal">Your website is usually live within 7 days. Showing up in Google Search and Google Maps then builds over weeks to months, depending on your area and how many competitors you have. Nobody can honestly guarantee a ranking. As a guide, {PROOF_EG}, according to Google Search Console.</p>
         <p class="note reveal"><a class="link" href="/pricing/">See full pricing →</a> <a class="link" href="/clients/">See the client websites we run →</a></p>
@@ -343,7 +343,7 @@ def industry_page(ind):
         <p class="kicker reveal">What we set up</p>
         <h2 class="reveal">What a {ind['short']} website needs to get found</h2>
         <div class="cards three" style="margin-top:32px">{needs}</div>
-        <p class="note reveal">Plus everything in the Get Found plan: Google Business Profile, Google and Bing connected, structured data for AI search, hosting, security and a monthly technical audit. <a class="link" href="/get-found/">See what's included →</a></p>
+        <p class="note reveal">Plus everything in the Get Found plan: Google Business Profile, Google and Bing connected, structured data for AI search, hosting, security and a technical audit every day, with problems fixed. <a class="link" href="/get-found/">See what's included →</a></p>
       </div>
     </section>
 {proof}{opening}{cost_time}
@@ -431,5 +431,5 @@ page("free-website-check/index.html",
       </div>
     </section>
 
-""" + cta("Want it fixed for you?", "Get Found takes care of it for S$20 a month: website or landing page, Google, Maps and AI search, managed every month."),
+""" + cta("Want it fixed for you?", "Get Found takes care of it for S$20 a month: a new website or fixes to your current one, Google, Maps and AI search, managed every day."),
      crumb="Free website check")

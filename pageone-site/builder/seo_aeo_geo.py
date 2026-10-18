@@ -22,8 +22,8 @@ _SAG_ITEMS = [
      "Search engine optimisation. Getting your website into Google Search and Google Maps when customers type what you do and where, like \"aircon repair Tampines\".",
      ["Your pages use the words customers actually search for",
       "Google Business Profile, Google Search Console and Bing set up",
-      "Fast, mobile-friendly pages with a monthly technical audit",
-      "Regular new articles, chosen from your own Search Console data"],
+      "Fast, mobile-friendly pages, with a technical audit every day and problems fixed",
+      "A new article every day, each aimed at a different real search from your own Search Console data"],
      ["Keyword research", "Local SEO", "Technical SEO"]),
     ("aeo", "💬", "AEO: be the answer Google shows first",
      "Answer engine optimisation. Being the short answer Google lifts out and shows above the usual results: featured snippets, People Also Ask boxes and AI Overviews.",
@@ -78,7 +78,7 @@ page("seo-aeo-geo-singapore/index.html",
       <div class="wrap narrow">
         <p class="kicker reveal">Why together</p>
         <h2 class="reveal">One set of groundwork, three places to be found</h2>
-        <p class="reveal">Clear pages, honest business facts, structured data and regular articles help Google rank you, give Google a short answer to show, and give AI assistants something reliable to quote. Doing them together means nothing is done twice, which is part of why it fits in S$20 a month.</p>
+        <p class="reveal">Clear pages, honest business facts, structured data and a new article every day help Google rank you, give Google a short answer to show, and give AI assistants something reliable to quote. Doing them together means nothing is done twice, which is part of why it fits in S$20 a month.</p>
         <p class="reveal">{PROOF_BOTH} Results vary by business, so we don't guarantee rankings or AI mentions.</p>
         <p class="note reveal"><a class="card-link" href="/results/">See the results →</a> <a class="card-link" href="/managed-website-singapore/">What fully managed covers →</a> <a class="card-link" href="/pricing/">Full pricing →</a></p>
       </div>
