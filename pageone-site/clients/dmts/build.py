@@ -984,7 +984,9 @@ import glob
 def _inline(t):
     t = e(t)
     t = re.sub(r'\*\*(.+?)\*\*', r'<strong>\1</strong>', t)
-    return re.sub(r'\[(.+?)\]\((/[^)]*)\)', lambda m: f'<a href="{u(m.group(2).lstrip("/"))}">{m.group(1)}</a>', t)
+    t = re.sub(r'\[(.+?)\]\((/[^)]*)\)', lambda m: f'<a href="{u(m.group(2).lstrip("/"))}">{m.group(1)}</a>', t)
+    # Editorial cross-client links (MASTER-RULES 7.5, max 1 per article, logged in seo-method/backlinks/cross-linking.md).
+    return re.sub(r'\[(.+?)\]\((https://[^)\s]+)\)', lambda m: f'<a href="{m.group(2)}">{m.group(1)}</a>', t)
 
 
 def load_articles():
