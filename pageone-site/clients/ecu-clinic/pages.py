@@ -656,7 +656,7 @@ ARTICLES = [
         # EDGE daily article, 18 Oct 2026 (8pm run, by hand). Gap: for "vw audi abs esp light on" the results are US owners'
         # forums (audizine, audiworld, cargurus) and one UK mail-in seller page (ecutesting.com) that blames the pump alone;
         # no answer page and no Singapore workshop.
-        slug='vw-audi-abs-esp-light-on', service='abs-pump-repair', date='2026-10-18',
+        slug='vw-audi-abs-esp-light-on', service='abs-pump-repair', date='2026-10-18', img_commit='149b8e72f958915d4e996861d283fb96193b3764',
         title='VW or Audi ABS and ESP Lights On? Causes | The ECU Clinic',
         desc='Why the ABS and ESP (ESC) lights come on together in a VW, Audi or Skoda, if it is safe to drive, what to check first, and ABS unit repair in Singapore.',
         h1='Why Are the ABS and ESP Lights On in My VW or Audi?',
