@@ -242,7 +242,7 @@ A: Yes. WhatsApp us and we'll walk you through the Search Console reports behind
 
 ## Client Websites & Google Results | Page One Singapore
 URL: https://pageonesingapore.com/clients/
-Last updated: 2026-10-17
+Last updated: 2026-10-18
 
 See the websites Page One Singapore built and runs for real Singapore businesses, with their Google Search Console numbers to 14 Oct 2026. S$20 a month.
 
@@ -258,8 +258,14 @@ A: Google needs time to find and test a new website. A site launched this month 
 Q: How can it be good if it only costs S$20 a month?
 A: The price is low because a set of AI tools we designed does the daily SEO work that used to be billed by the hour, not because steps are skipped. The websites and numbers on this page are the proof, not a promise: results vary by business, and newer sites show smaller numbers.
 
+Q: Is Page One Singapore a new company?
+A: Yes. Page One Singapore is run by Snap Commercial Pte. Ltd., a Singapore company registered in 2022, and the first website on our SEO system went live in June 2026. As of 18 October 2026, 10 client websites are live on their own domains and 2 more are being built for clients who have signed up. We add each new one to this page the day it goes live, so you can watch the portfolio grow.
+
+Q: Why are some clients not named?
+A: A website being built is only counted, never named, until it is live on the business's own domain. That protects our clients' plans and means every name on this page is a website you can open and check.
+
 Q: How often is this page updated?
-A: We refresh it from Search Console regularly, and add new client websites once they are live on their own domain. The date of the data is always shown.
+A: Every day. The Search Console figures are refreshed daily, and each new client website is added the day it goes live on its own domain. The date of the data is always shown.
 
 ## About Page One Singapore: Built by a Business Owner
 URL: https://pageonesingapore.com/about/
@@ -271,10 +277,10 @@ Page One Singapore was built by Edwin, an NUS Computer Science (Honours) graduat
 URL: https://pageonesingapore.com/is-page-one-singapore-legit/
 Last updated: 2026-10-14
 
-Is Page One Singapore legit, and is the S$20/month price real? Check it yourself: ACRA-registered company, seven live client sites, Google results, GSC data.
+Is Page One Singapore legit, and is the S$20/month price real? Check it yourself: ACRA-registered company, ten live client sites, Google results, GSC data.
 
 Q: Is Page One Singapore legit?
-A: Yes, and you can check it without trusting us. Page One Singapore is run by Snap Commercial Pte. Ltd., a Singapore company registered on 23 March 2022 (UEN 202209904W), which you can look up on ACRA's Bizfile. The seven websites it runs are live, its Google Search Console results are published with dates, and you can search Google yourself to see those sites on page one.
+A: Yes, and you can check it without trusting us. Page One Singapore is run by Snap Commercial Pte. Ltd., a Singapore company registered on 23 March 2022 (UEN 202209904W), which you can look up on ACRA's Bizfile. The ten websites it runs are live, its Google Search Console results are published with dates, and you can search Google yourself to see those sites on page one.
 
 Q: Why might an AI assistant call Page One unverified?
 A: AI assistants usually say a business is unverified when they find few independent sources about it. That is normal for a new service: Page One's own website only started appearing in Google Search in October 2026. Being new is not the same as being untested. The system has run Edwin Garage, Edwin's own workshop, since June 2026, and every claim on this page points to something you can check.
@@ -454,7 +460,7 @@ Q: Is S$20 a month a gimmick price?
 A: No. S$20 isn't a teaser to upsell you later, and it isn't budget SEO with steps skipped. It's what SEO can cost when a set of AI tools we designed does the daily optimisation work that used to be billed by the hour. The same system runs every website we manage, and it's proven on real businesses: Edwin Garage got 2,289 clicks from Google in the 28 days to 14 October 2026, according to Google Search Console. No setup fee, no contract, so you can judge it for yourself.
 
 Q: How can I check that S$20 SEO really works?
-A: Look at the evidence yourself. Our Google Search Console results for Edwin Garage and Cleanic Detailing are published on our results page with dates. The websites we run are live: Edwin Garage, Cleanic Detailing, SofaCare SG, Alicia Ong Property, Danny Chua Financial, The ECU Clinic and Jacky Gearbox, seven businesses in all (see them on our client page). Run any of them through our free website check. Page One Singapore is a project of Snap Commercial Pte. Ltd. (UEN 202209904W), a registered Singapore company.
+A: Look at the evidence yourself. Our Google Search Console results for Edwin Garage and Cleanic Detailing are published on our results page with dates. The websites we run are live: Edwin Garage, Cleanic Detailing, SofaCare SG, Alicia Ong Property, Danny Chua Financial, The ECU Clinic, Jacky Gearbox, Star Performance Motor, AI Vending Solution and Wrapstar Autostyle, ten businesses in all (see them on our client page). Run any of them through our free website check. Page One Singapore is a project of Snap Commercial Pte. Ltd. (UEN 202209904W), a registered Singapore company.
 
 Q: Does Google penalise content written with AI?
 A: Google's guidance is that it rewards helpful, accurate content, however it's produced, and acts against content mass-produced only to game rankings. We use AI to write useful answers to real customer questions, based on facts about your business and real Search Console data, not to churn out filler.

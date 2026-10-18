@@ -26,12 +26,12 @@ def date_short(iso):
 
 
 def month_long(ym):
-    y, m = ym.split("-")
+    y, m = ym[:7].split("-")
     return f"{_MON[int(m) - 1]} {y}"
 
 
 def month_short(ym):
-    y, m = ym.split("-")
+    y, m = ym[:7].split("-")
     return f"{_MON[int(m) - 1][:3]} {y}"
 
 
@@ -82,6 +82,11 @@ G = {k: _fmt(c) for k, c in SC_BY.items()}
 EG, CL = G["sggarage"], G["cleanic"]
 
 
+def launch_phrase(c):
+    """'Went live on 18 October 2026' when the exact day is known, else 'Launched in October 2026'."""
+    return f"Went live on {date_long(c['launched'])}" if len(c["launched"]) == 10 else f"Launched in {month_long(c['launched'])}"
+
+
 def stage(key):
     c, f = SC_BY[key], G[key]
     if not f["has_data"]:
@@ -94,7 +99,7 @@ def stage(key):
 def pill(key):
     c, f = SC_BY[key], G[key]
     if stage(key) == "new":
-        return "Launched " + month_short(c["launched"])
+        return ("Live since " + date_short(c["launched"])) if len(c["launched"]) == 10 else "Launched " + month_short(c["launched"])
     return "Since " + (date_short(f["first"]) if stage(key) == "early" and f["first"] > SC["data"]["window"][0] else month_short(f["first"][:7]))
 
 
@@ -102,7 +107,7 @@ def result_text(key, built_follows=False):
     """One honest sentence or two about a site's Google numbers, with the window stated."""
     c, f, g = SC_BY[key], G[key], SC_BY[key]["gsc"]
     if stage(key) == "new":
-        return (f"Launched in {month_long(c['launched'])}. Search Console has no data for it yet, "
+        return (f"{launch_phrase(c)}. Search Console has no data for it yet, "
                 "so there are no Google results to report." + (" Here is what we built." if built_follows else f" So far: {c['built'][-1]}."))
     if stage(key) == "case":
         return (f"{f['clicks']} clicks from Google in the 28 days to {THROUGH_SHORT} (up from {f['prev_clicks']} the 28 days before), "
@@ -141,6 +146,86 @@ GROWTH_LINE = (" · ".join(f"{month_long(m) if i == 0 else month_long(m).split()
 def names_list(names):
     names = list(names)
     return names[0] if len(names) == 1 else ", ".join(names[:-1]) + " and " + names[-1]
+
+
+# "New and growing": the newest launches, the month-by-month live count and the being-built count.
+# Shown on the home page (a short strip) and at the top of /clients/, and written to llms.txt,
+# so people and AI assistants see that real clients keep joining. Only sites live on their own
+# domain are named; signed-up clients still being built are only counted.
+def _launch_key(c):
+    return c["launched"] if len(c["launched"]) == 10 else c["launched"] + "-00"
+
+
+NEWEST = sorted(SC["clients"], key=_launch_key, reverse=True)
+FIRST_LAUNCH = month_long(min(c["launched"][:7] for c in SC["clients"]))
+LATEST_MONTH = NEWEST[0]["launched"][:7]
+N_LATEST_MONTH = sum(1 for c in SC["clients"] if c["launched"][:7] == LATEST_MONTH)
+LIVE_N = len(SC["clients"])
+
+
+def _month_range(a, b):
+    y, m = int(a[:4]), int(a[5:7])
+    out = []
+    while f"{y}-{m:02d}" <= b:
+        out.append(f"{y}-{m:02d}")
+        y, m = (y + 1, 1) if m == 12 else (y, m + 1)
+    return out
+
+
+GROWTH_MONTHS = [(m, sum(1 for c in SC["clients"] if c["launched"][:7] <= m))
+                 for m in _month_range(min(c["launched"][:7] for c in SC["clients"]), LATEST_MONTH)]
+
+
+def launch_short(c):
+    return date_short(c["launched"]) if len(c["launched"]) == 10 else month_short(c["launched"])
+
+
+def growing_lead():
+    return (f"Page One Singapore is new, and we say so openly: the first website on our system went live in {FIRST_LAUNCH}. "
+            f"As of {GROWTH_AS_OF}, {LIVE_N} client websites are live on their own domains"
+            + (f", {BUILDING} more are being built for clients who have signed up" if BUILDING else "")
+            + f", and {N_LATEST_MONTH} of the live ones went live in {month_long(LATEST_MONTH)} alone.")
+
+
+def newest_cards(n=3):
+    return "\n".join(f"""          <a class="card site-card reveal" href="{c['url']}" target="_blank" rel="noopener">
+            <span class="browser"><span class="browser-bar"><i></i><i></i><i></i><span>{c['domain']}</span></span><img src="{c['img']}" width="640" height="400" alt="{c['name']} website homepage ({c['domain']})" loading="lazy" decoding="async"></span>
+            <p class="pill live-pill"><span class="live-dot" aria-hidden="true"></span>Live {launch_short(c)}</p>
+            <h3>{c['name']}</h3><p>{c['industry']}</p>
+          </a>""" for c in NEWEST[:n])
+
+
+def growth_chart():
+    top = max(n for _, n in GROWTH_MONTHS) + BUILDING
+    bars = [f'<div class="g" style="--h:{round(n / top, 3)}"><span>{n}</span><i></i><small>{month_short(m)[:3]}</small></div>' for m, n in GROWTH_MONTHS]
+    if BUILDING:
+        bars.append(f'<div class="g b" style="--h:{round(BUILDING / top, 3)}"><span>+{BUILDING}</span><i></i><small>Building</small></div>')
+    label = "; ".join(f"{month_long(m)}: {n} live" for m, n in GROWTH_MONTHS) + (f"; plus {BUILDING} being built" if BUILDING else "")
+    return (f'<div class="grow reveal" style="--n:{len(bars)}" role="img" aria-label="Client websites live at the end of each month: {label}">'
+            + "".join(bars) + "</div>")
+
+
+def launch_log():
+    rows = "".join(f'<li><time datetime="{c["launched"]}">{launch_short(c)}</time><a href="{c["url"]}" target="_blank" rel="noopener">{c["name"]}</a><span>{c["industry"]}</span></li>'
+                   for c in NEWEST)
+    return f'<ol class="launch-log reveal" aria-label="Client websites, newest first">{rows}</ol>'
+
+
+GROW_CSS = (".live-pill{background:rgba(22,163,74,.1)!important;color:#15803d!important}"
+            ".live-dot{display:inline-block;width:7px;height:7px;border-radius:50%;background:#16a34a;margin-right:6px;vertical-align:1px;animation:livep 2s ease-in-out infinite}"
+            "@keyframes livep{50%{box-shadow:0 0 0 5px rgba(22,163,74,0)}0%,100%{box-shadow:0 0 0 0 rgba(22,163,74,.45)}}"
+            ".grow{display:grid;grid-template-columns:repeat(var(--n),minmax(0,1fr));gap:12px;height:170px;align-items:end;border-bottom:1px solid #dbe2ea;margin:8px 0 40px;max-width:560px}"
+            ".grow .g{position:relative;height:100%;display:flex;flex-direction:column;justify-content:flex-end;align-items:center}"
+            ".grow .g i{display:block;width:100%;max-width:56px;height:calc((100% - 24px) * var(--h));background:linear-gradient(#ff3d57,#ff6f82);border-radius:6px 6px 0 0;transform-origin:bottom;transition:transform .9s cubic-bezier(.2,.8,.2,1)}"
+            ".grow .g.b i{background:repeating-linear-gradient(45deg,#ffb3bf 0 6px,#ffe0e5 6px 12px)}"
+            ".grow .g span{font-weight:800;font-size:.9rem;margin-bottom:4px;font-variant-numeric:tabular-nums}"
+            ".grow .g small{position:absolute;bottom:-24px;font-size:.78rem;color:var(--muted);white-space:nowrap}"
+            ".js .grow:not(.in) .g i{transform:scaleY(0)}"
+            ".launch-log{list-style:none;padding:0;margin:0 0 8px;max-width:760px}"
+            ".launch-log li{display:grid;grid-template-columns:100px 1fr;gap:2px 14px;padding:10px 0;border-bottom:1px solid #e5eaf0}"
+            ".launch-log time{grid-row:span 2;font-weight:700;color:var(--red-dark);font-size:.9rem;font-variant-numeric:tabular-nums}"
+            ".launch-log a{font-weight:700;color:inherit}.launch-log span{color:var(--muted);font-size:.92rem}"
+            "@media (prefers-reduced-motion:reduce){.live-dot{animation:none}.js .grow:not(.in) .g i{transform:none}.grow .g i{transition:none}}")
 
 
 def site_cards_html():
@@ -188,10 +273,13 @@ def clients_page():
         ("Where do the Google numbers come from?", f"From Google Search Console, Google's own report of how a website performs in Google Search. We collect the final data automatically and don't edit it. The figures on this page cover the 28 days to {THROUGH} ({WINDOW}), compared with the 28 days before ({PREV_WINDOW})."),
         ("Why do some websites have no numbers?", "Google needs time to find and test a new website. A site launched this month has no Search Console data yet, so we show what we built instead of guessing. The numbers will appear here once Google has them."),
         ("How can it be good if it only costs S$20 a month?", "The price is low because a set of AI tools we designed does the daily SEO work that used to be billed by the hour, not because steps are skipped. The websites and numbers on this page are the proof, not a promise: results vary by business, and newer sites show smaller numbers."),
-        ("How often is this page updated?", "We refresh it from Search Console regularly, and add new client websites once they are live on their own domain. The date of the data is always shown."),
+        ("Is Page One Singapore a new company?", f"Yes. Page One Singapore is run by Snap Commercial Pte. Ltd., a Singapore company registered in 2022, and the first website on our SEO system went live in {FIRST_LAUNCH}. As of {GROWTH_AS_OF}, {LIVE_N} client websites are live on their own domains" + (f" and {BUILDING} more are being built for clients who have signed up" if BUILDING else "") + ". We add each new one to this page the day it goes live, so you can watch the portfolio grow."),
+        ("Why are some clients not named?", "A website being built is only counted, never named, until it is live on the business's own domain. That protects our clients' plans and means every name on this page is a website you can open and check."),
+        ("How often is this page updated?", "Every day. The Search Console figures are refreshed daily, and each new client website is added the day it goes live on its own domain. The date of the data is always shown."),
     ]
     sites_ld = [{"@type": "ListItem", "position": i + 1,
-                 "item": {"@type": "WebSite", "name": c["name"], "url": c["url"], "description": c["industry"]}}
+                 "item": dict({"@type": "WebSite", "name": c["name"], "url": c["url"], "description": c["industry"]},
+                              **({"dateCreated": c["launched"]} if len(c["launched"]) == 10 else {}))}
                 for i, c in enumerate(SC["clients"])]
     page("clients/index.html",
          "Client Websites &amp; Google Results | Page One Singapore",
@@ -204,7 +292,23 @@ def clients_page():
            "mainEntity": [{"@type": "Question", "name": q, "acceptedAnswer": {"@type": "Answer", "text": a}} for q, a in faq]}],
          hero("Clients", "Client websites",
               "S$20 a month, and here is what it has done for real Singapore businesses.",
-              f"Every website below is live on the business's own domain. Open them, judge the design yourself, and read their Google numbers straight from Search Console, with data to {THROUGH}.", buttons=False) + """
+              f"Every website below is live on the business's own domain. Open them, judge the design yourself, and read their Google numbers straight from Search Console, with data to {THROUGH}. We are new and growing: each new client website is added here the day it goes live.", buttons=False) + """
+
+    <section class="section" id="newest">
+      <div class="wrap">
+        <p class="kicker reveal">New clients, every week</p>
+        <h2 class="reveal">Young, and growing in the open</h2>
+        <p class="section-lead reveal">""" + growing_lead() + """ Signed-up clients are counted, but only named once their own website is live.</p>
+        """ + growth_chart() + """
+        <h3 class="reveal">The newest client websites</h3>
+        <div class="cards three site-cards" style="margin:20px 0 36px">
+""" + newest_cards(3) + """
+        </div>
+        <h3 class="reveal">Every launch, newest first</h3>
+        """ + launch_log() + """
+        <p class="note reveal">Dates are when each website went live on the business's own domain with Page One (the month only, where the exact day was not recorded).</p>
+      </div>
+    </section>
 
     <section class="section">
       <div class="wrap">
@@ -243,7 +347,7 @@ def clients_page():
     </section>
 
 """ + cta("Want your business on this page?", "Sign up at the introductory price, or check where your website stands today. No obligation."),
-         crumb="Clients", updated=CLIENTS_UPDATED)
+         crumb="Clients", updated=CLIENTS_UPDATED, head_extra="\n  <style>" + GROW_CSS + "</style>")
 
 _WORDS = ["zero", "one", "two", "three", "four", "five", "six", "seven", "eight", "nine", "ten"]
 _n_others = sum(1 for c in SC["clients"] if stage(c["key"]) != "case")
@@ -285,6 +389,17 @@ HOME_TOKENS = {
     "{{EG_LINK}}": f'<a class="link" href="{SC_BY["sggarage"]["url"]}" target="_blank" rel="noopener">Edwin Garage</a>',
     "{{CL_LINK}}": f'<a class="link" href="{SC_BY["cleanic"]["url"]}" target="_blank" rel="noopener">Cleanic Detailing</a>',
     "{{THROUGH_SHORT}}": THROUGH_SHORT, "{{WINDOW}}": WINDOW, "{{PROOF_BARS}}": _proof_bars(), "{{MARQUEE}}": _marquee(),
+    "{{NEWEST}}": f"""    <section class="section newest" id="newest">
+      <div class="wrap">
+        <p class="kicker reveal">New clients, every week</p>
+        <h2 class="reveal">New, and growing in the open</h2>
+        <p class="section-lead reveal">{growing_lead()} Here are the newest.</p>
+        <div class="cards three site-cards">
+{newest_cards(3)}
+        </div>
+        <p class="note reveal"><a class="card-link" href="/clients/#newest">See every client website, newest first →</a></p>
+      </div>
+    </section>""",
     "{{MARQUEE_LABEL}}": f"Already running for {len(SC['clients'])} Singapore businesses" + (f" · {BUILDING} more being built" if BUILDING else ""),
     "{{HOME_KPIS}}": "\n".join(
         f'          <div class="kpi"><div class="label">{l}</div><div class="value">{v}</div><div class="delta">{d}</div>{b}</div>' for l, v, d, b in [
@@ -335,7 +450,7 @@ def llms_sections():
                          f"Search Console data starts {f['first_long']}. Still early.")
     if new:
         lines.append("- " + names_list([f"{c['name']} ({c['domain']})" for c in new]) + ": launched "
-                     + names_list(sorted({month_long(c["launched"]) for c in new})) + ", no Search Console data yet.")
+                     + names_list(sorted({month_long(c["launched"]) for c in new}, key=lambda x: x)) + ", no Search Console data yet.")
     lines += ["- Full case studies: https://pageonesingapore.com/results/",
               "- Every client website with its numbers: https://pageonesingapore.com/clients/",
               "- Low price, real results: S$20 a month is low because a set of AI tools we designed does the daily SEO work that used to be billed by the hour; "
@@ -343,8 +458,12 @@ def llms_sections():
     growth = ", ".join(f"{n} by {month_long(m)}" for m, n in GROWTH)
     sites = ["## Websites we run",
              f"- As of {GROWTH_AS_OF}, Page One runs {len(SC['clients'])} live client websites, each on the business's own domain "
-             f"(live count: {growth})" + (f", and is building {BUILDING} more for clients who have signed up." if BUILDING else ".")] + [f"- [{c['name']}]({c['url']}): {c['industry']}" + (f" (launched {month_long(c['launched'])})" if stage(c['key']) == "new" else "")
-                                      for c in SC["clients"]] + ["- All client websites with screenshots and dated results: https://pageonesingapore.com/clients/"]
+             f"(live count: {growth})" + (f", and is building {BUILDING} more for clients who have signed up." if BUILDING else ".")] + [f"- [{c['name']}]({c['url']}): {c['industry']}" + (f" (live since {date_long(c['launched'])})" if len(c['launched']) == 10 else f" (launched {month_long(c['launched'])})" if stage(c['key']) == "new" else "")
+                                      for c in SC["clients"]] + [
+             f"- New and growing: Page One Singapore is a young company; the first website on its system went live in {FIRST_LAUNCH}. "
+             f"{N_LATEST_MONTH} client websites went live in {month_long(LATEST_MONTH)} alone, newest first: "
+             + "; ".join(f"{c['name']} ({c['domain']}, live {date_long(c['launched']) if len(c['launched']) == 10 else month_long(c['launched'])})" for c in NEWEST if c["launched"][:7] == LATEST_MONTH) + ".",
+             "- Signed-up clients whose websites are still being built are counted but not named until their own domain is live."] + ["- All client websites with screenshots and dated results: https://pageonesingapore.com/clients/"]
     out = os.path.join(HERE, "..", "bridge")
     os.makedirs(out, exist_ok=True)
     open(os.path.join(out, "llms-results.md"), "w", encoding="utf-8").write("\n".join(lines) + "\n")

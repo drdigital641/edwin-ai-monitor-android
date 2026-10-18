@@ -477,7 +477,7 @@
       "schema_type": "AutoRepair",
       "img": "https://cdn.jsdelivr.net/gh/drdigital641/edwin-ai-monitor-android@e5540541d6d5c8d959ab64bb4acd91412fe9a4c3/site-assets/pageone/clients/jackygearbox.webp",
       "gsc_site": "sc-domain:jackygearbox.com",
-      "launched": "2026-10",
+      "launched": "2026-10-14",
       "brand_terms": [
         "jacky"
       ],
@@ -514,12 +514,134 @@
         "top_queries": []
       },
       "short": "gearbox specialist"
+    },
+    {
+      "key": "star-performance",
+      "name": "Star Performance Motor",
+      "domain": "starperformancemotor.com",
+      "url": "https://starperformancemotor.com/",
+      "industry": "Used car dealer, Yishun",
+      "schema_type": "AutoDealer",
+      "img": "https://cdn.jsdelivr.net/gh/drdigital641/edwin-ai-monitor-android@5309d55f0031c13b15f6e97f6a8e3132e23bf838/site-assets/pageone/clients/starperformancemotor.webp",
+      "gsc_site": "sc-domain:starperformancemotor.com",
+      "launched": "2026-10-17",
+      "brand_terms": [
+        "star performance"
+      ],
+      "skip_queries": [],
+      "built": [
+        "Pages for buying, selling, trade-in, consignment, car sourcing and export",
+        "Cars for sale, sold cars and verbatim customer reviews",
+        "Opening hours, address and business details for Google and AI search"
+      ],
+      "articles": 0,
+      "gsc": {
+        "record_id": null,
+        "first_day": null,
+        "clicks": 0,
+        "impressions": 0,
+        "position": 0,
+        "prev_clicks": 0,
+        "prev_impressions": 0,
+        "prev_position": 0,
+        "queries": 0,
+        "page_one": 0,
+        "top3": 0,
+        "capped": false,
+        "monthly": [],
+        "best_query": null,
+        "top_queries": []
+      },
+      "short": "used car dealer"
+    },
+    {
+      "key": "aivs",
+      "name": "AI Vending Solution",
+      "domain": "aivs.sg",
+      "url": "https://aivs.sg/",
+      "industry": "Vending machines you can own",
+      "schema_type": "LocalBusiness",
+      "img": "https://cdn.jsdelivr.net/gh/drdigital641/edwin-ai-monitor-android@5309d55f0031c13b15f6e97f6a8e3132e23bf838/site-assets/pageone/clients/aivs.webp",
+      "gsc_site": "sc-domain:aivs.sg",
+      "launched": "2026-10-18",
+      "brand_terms": [
+        "aivs",
+        "ai vending"
+      ],
+      "skip_queries": [],
+      "built": [
+        "A page for each machine: AI Printbox and Topi Express",
+        "Pages for owning, hosting, support and custom branding, plus all 20 locations",
+        "Guides for people starting a vending business"
+      ],
+      "articles": 0,
+      "gsc": {
+        "record_id": null,
+        "first_day": null,
+        "clicks": 0,
+        "impressions": 0,
+        "position": 0,
+        "prev_clicks": 0,
+        "prev_impressions": 0,
+        "prev_position": 0,
+        "queries": 0,
+        "page_one": 0,
+        "top3": 0,
+        "capped": false,
+        "monthly": [],
+        "best_query": null,
+        "top_queries": []
+      },
+      "short": "vending machines"
+    },
+    {
+      "key": "wrapstar",
+      "name": "Wrapstar Autostyle",
+      "domain": "wrapstarautostyle.com",
+      "url": "https://wrapstarautostyle.com/",
+      "industry": "Car wraps, PPF and window film, Yishun",
+      "schema_type": "AutoRepair",
+      "img": "https://cdn.jsdelivr.net/gh/drdigital641/edwin-ai-monitor-android@5309d55f0031c13b15f6e97f6a8e3132e23bf838/site-assets/pageone/clients/wrapstarautostyle.webp",
+      "gsc_site": "sc-domain:wrapstarautostyle.com",
+      "launched": "2026-10-18",
+      "brand_terms": [
+        "wrapstar"
+      ],
+      "skip_queries": [],
+      "built": [
+        "Pages for colour wraps, colour and clear PPF, window film and dechrome",
+        "A colour catalogue and past works grouped by colour",
+        "Dated prices and guides on wraps and tint rules"
+      ],
+      "articles": 0,
+      "gsc": {
+        "record_id": null,
+        "first_day": null,
+        "clicks": 0,
+        "impressions": 0,
+        "position": 0,
+        "prev_clicks": 0,
+        "prev_impressions": 0,
+        "prev_position": 0,
+        "queries": 0,
+        "page_one": 0,
+        "top3": 0,
+        "capped": false,
+        "monthly": [],
+        "best_query": null,
+        "top_queries": []
+      },
+      "short": "car wraps and PPF"
     }
   ],
   "pipeline": {
     "_readme": "Websites being built for signed-up clients that are not live on their own domain yet. Shown only as a count (never named) next to the live count. Set by showcase_refresh.py from the Controller Client export (status activating or preview, not yet a live site here, slug not in exclude); as_of is the day the count last changed. Put Client slugs that are not signed-up clients (e.g. a demo preview) in exclude.",
-    "building": 3,
-    "as_of": "2026-10-15",
-    "exclude": []
+    "building": 2,
+    "as_of": "2026-10-18",
+    "exclude": [
+      "nanyang-carpentry",
+      "new-zen-werkz"
+    ],
+    "_exclude_note": "Previews built to pitch a prospect, not signed-up clients. Remove a slug from exclude the day that business signs up."
   }
 }
