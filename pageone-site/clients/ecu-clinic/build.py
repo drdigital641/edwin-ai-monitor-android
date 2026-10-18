@@ -41,6 +41,14 @@ if IMG_CDN:
 SHARES = {}
 HERO = 'mercedes-esp-pumps'  # hero background photo (prep.py makes the -lg version)
 
+# Real Google Business Profile figures, checked 18 Oct 2026. Update when reviews change.
+# Visible text only: no Review/AggregateRating schema (self-serving for Google).
+GOOGLE_REVIEWS = {
+    'rating': '5.0', 'count_text': '1 review so far',
+    'read': 'https://search.google.com/local/reviews?placeid=ChIJU8-75AAX2jERRmA8PvLfV7k',
+    'write': 'https://search.google.com/local/writereview?placeid=ChIJU8-75AAX2jERRmA8PvLfV7k',
+}
+
 BIZ = {
     'name': 'The ECU Clinic',
     'contact': 'Ching',
@@ -488,6 +496,17 @@ def home():
 <section id="gallery"><div class="wrap">
 <div class="sec-head"><h2>Our work</h2><p>Real jobs from our workshop: ABS and ESP units, Mercedes gearbox and steering lock work, and hybrid batteries.</p></div>
 <div class="gallery home-gal">{gal}</div>
+</div></section>
+
+<section id="reviews"><div class="wrap" style="max-width:860px">
+<div class="sec-head"><h2>Google reviews</h2></div>
+<div class="card" style="text-align:center">
+<p style="font-size:2.2rem;line-height:1;margin:0;color:#f5a623" aria-hidden="true">★★★★★</p>
+<p style="margin:10px 0 4px"><strong>Rated {GOOGLE_REVIEWS["rating"]} on Google</strong> ({GOOGLE_REVIEWS["count_text"]}).</p>
+<p class="muted">Read what customers wrote, or share your own experience after your repair.</p>
+<div class="btns" style="justify-content:center"><a class="btn btn-line" href="{GOOGLE_REVIEWS["read"]}" target="_blank" rel="noopener">Read our Google reviews</a>
+<a class="btn btn-line" href="{GOOGLE_REVIEWS["write"]}" target="_blank" rel="noopener">Leave a review</a></div>
+</div>
 </div></section>
 
 <section class="alt"><div class="wrap">
