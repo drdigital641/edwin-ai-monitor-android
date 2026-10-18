@@ -17,7 +17,7 @@ ADS_QA = [
     ("ai-blog-tools", "What does an AI blog autopilot tool do?",
      "An AI blog autopilot tool is software that suggests keywords, writes blog articles with AI and publishes them to a website you already have, on a schedule. It is usually self-serve: you connect your site, set your topics and review what goes out. It helps with one part of SEO, regular articles, rather than the whole job."),
     ("page-one", "What does Page One do differently?",
-     "Page One Singapore is a done-for-you service, not software. For S$20 a month (introductory price) it builds and hosts your website, sets up Google Business Profile, Search Console and Bing, labels your details for AI assistants, writes regular articles and audits the site every month. No setup fee, no contract. It doesn't run paid ads."),
+     "Page One Singapore is a done-for-you service, not software. For S$20 a month (introductory price) it builds and hosts a website for you free, or fixes the technical SEO on the one you have. It sets up Google Business Profile, Search Console and Bing, labels your details for AI assistants, writes a new article every day and audits the site every day, fixing problems. No setup fee, no contract. It doesn't run paid ads."),
     ("which-fits", "Which one should I choose?",
      "Choose Google Ads if you need calls this week and have a budget for clicks. Choose an AI blog tool if you already have a good website and someone to look after it. Choose Page One if you want the website, Google Maps, articles and upkeep done for you. They can be combined."),
 ]
@@ -34,19 +34,19 @@ ADS_FAQ = [
     ("Are AI-written articles bad for SEO?",
      "Not by themselves. Google says it rewards helpful content however it is produced, but mass-produced pages made mainly to rank break its spam policies. What matters is that each article answers a real customer question accurately. Page One picks article topics from your own Search Console data, so each one answers a search your customers really make."),
     ("Can I cancel Page One anytime?",
-     "Yes. There is no setup fee and no contract, so you can cancel anytime. The only other cost is your domain name, which is registered in your name and paid by you directly, usually S$15 to S$30 a year. Optional SEO Boosts are S$10 each, and you choose whether to buy any."),
+     "Yes. There is no setup fee and no contract, so you can cancel anytime. The only other cost is your domain name, which is registered in your name and paid by you directly, usually S$15 to S$30 a year. Optional SEO Boosts are S$10 per run, and you choose whether to buy any."),
 ]
 
 _ADS_COLS = ["Google Ads", "AI blog autopilot tool", "Page One (website + SEO)"]
 _ADS_ROWS = [
-    ("What it is", "Paid ads at the top of Google, marked “Sponsored”", "Software that writes and publishes blog articles to your site", "A done-for-you website with SEO, managed every month"),
+    ("What it is", "Paid ads at the top of Google, marked “Sponsored”", "Software that writes and publishes blog articles to your site", "A done-for-you website with SEO, managed every day"),
     ("How you pay", "Your own ad budget, charged per click (for example, a S$2,000 a month budget; you set the amount)", "A software subscription", "<b>S$20 a month</b> (introductory price), no setup fee"),
     ("When it stops", "Ads stop showing when the budget runs out or you pause", "Articles already published stay on your site", "No contract; cancel anytime"),
-    ("Website included", "No, you need a landing page", "No, it posts to a site you already have", "Yes, on your own domain (or an SEO landing page)"),
+    ("Website included", "No, you need a landing page", "No, it posts to a site you already have", "Yes: built free on your own domain, or your current site's technical SEO fixed"),
     ("Google Maps (Business Profile)", "Not included", "Usually not included", "Set up for you"),
     ("Search Console and Bing", "Not included", "Sometimes connected for keyword data", "Connected for you"),
-    ("Articles", "None", "Yes, automatically", "Yes, regular articles from your own search data"),
-    ("Monthly technical audit", "No", "Usually not", "Yes, with problems fixed"),
+    ("Articles", "None", "Yes, automatically", "Yes, a new article every day, each aimed at a different real search"),
+    ("Daily technical audit", "No", "Usually not", "Yes, with problems fixed"),
     ("Ready for AI assistants", "No", "Depends on the tool", "Structured data and llms.txt included"),
     ("Who does the work", "You or an ads manager", "The software, with you reviewing", "Page One, with Edwin in charge"),
     ("Best for", "Leads this week, promotions, busy seasons", "Owners who already have a site and time to manage it", "New and small local businesses that want it done for them"),
