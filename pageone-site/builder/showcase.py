@@ -66,6 +66,11 @@ def _fmt(c):
     full = [m for m in g["monthly"] if m["days"] >= 28 and m["month"] + "-28" <= SC["data"]["data_through"]
             and not (g["first_day"] and m["month"] == g["first_day"][:7] and not g["first_day"].endswith("-01"))]
     first = g["first_day"]
+    # A site Page One rebuilt on an existing domain (e.g. aivs.sg) has Search Console history from the business's
+    # earlier website. Those numbers are not our results, so until the data window starts after our launch the
+    # site is shown as newly launched, like a site with no data.
+    _ld = c["launched"] + "-01" if len(c["launched"]) == 7 else c["launched"]
+    pre_site = bool(first) and (_d(_ld) - _d(first)).days > 30 and _ld > SC["data"]["window"][0]
     return {
         "clicks": _n(g["clicks"]), "prev_clicks": _n(g["prev_clicks"]),
         "impr": _n(g["impressions"]), "prev_impr": _n(g["prev_impressions"]),
@@ -74,7 +79,8 @@ def _fmt(c):
         "first": first, "first_long": date_long(first) if first else "",
         # The previous window is a fair comparison only if the site had data before it started.
         "prev_ok": bool(first) and first <= SC["data"]["prev_window"][0],
-        "has_data": g["impressions"] > 0,
+        "has_data": g["impressions"] > 0 and not pre_site,
+        "pre_site": pre_site,
     }
 
 
@@ -106,11 +112,14 @@ def pill(key):
 def result_text(key, built_follows=False):
     """One honest sentence or two about a site's Google numbers, with the window stated."""
     c, f, g = SC_BY[key], G[key], SC_BY[key]["gsc"]
+    if stage(key) == "new" and f["pre_site"]:
+        return (f"{launch_phrase(c)}. Its earlier Google numbers belong to the business's previous website, so we will report "
+                "Google results only once there is data from after our launch." + (" Here is what we built." if built_follows else f" So far: {c['built'][-1]}."))
     if stage(key) == "new":
         return (f"{launch_phrase(c)}. Search Console has no data for it yet, "
                 "so there are no Google results to report." + (" Here is what we built." if built_follows else f" So far: {c['built'][-1]}."))
     if stage(key) == "case":
-        return (f"{f['clicks']} clicks from Google in the 28 days to {THROUGH_SHORT} (up from {f['prev_clicks']} the 28 days before), "
+        return (f"{f['clicks']} clicks from Google in the 28 days to {THROUGH_SHORT} ({'up from' if g['clicks'] > g['prev_clicks'] else 'compared with'} {f['prev_clicks']} the 28 days before), "
                 f"average position {f['pos']} (from {f['prev_pos']}), on page one for {f['page_one']} different searches.")
     if f["prev_ok"]:
         move = "up from" if g["impressions"] > g["prev_impressions"] else "compared with"
@@ -436,18 +445,22 @@ def llms_sections():
             new.append(c)
             continue
         if st == "case":
-            lines.append(f"- {c['name']} ({c['domain']}): {f['clicks']} clicks from Google (up from {f['prev_clicks']}), average position "
+            lines.append(f"- {c['name']} ({c['domain']}): {f['clicks']} clicks from Google ({'up from' if g['clicks'] > g['prev_clicks'] else 'compared with'} {f['prev_clicks']}), average position "
                          f"{f['pos']} (from {f['prev_pos']}), on page one for {f['page_one']} different searches. "
                          f"Search Console data starts {f['first_long']}.")
         elif f["first"] > SC["data"]["window"][0]:
             lines.append(f"- {c['name']} ({c['domain']}): Search Console data starts {f['first_long']}; shown on Google {f['impr']} times, "
                          f"{f['clicks']} clicks so far. Too early to report results.")
         elif f["prev_ok"]:
-            lines.append(f"- {c['name']} ({c['domain']}): shown on Google {f['impr']} times (up from {f['prev_impr']}), "
+            lines.append(f"- {c['name']} ({c['domain']}): shown on Google {f['impr']} times ({'up from' if g['impressions'] > g['prev_impressions'] else 'compared with'} {f['prev_impr']}), "
                          f"on page one for {f['page_one']} searches. Still early.")
         else:
             lines.append(f"- {c['name']} ({c['domain']}): shown on Google {f['impr']} times, on page one for {f['page_one']} searches. "
                          f"Search Console data starts {f['first_long']}. Still early.")
+    for c in [c for c in new if G[c["key"]]["pre_site"]]:
+        lines.append(f"- {c['name']} ({c['domain']}): new website {('went live on ' + date_long(c['launched'])) if len(c['launched']) == 10 else ('launched in ' + month_long(c['launched']))}; "
+                     "its earlier Search Console data belongs to the previous website, so results are reported only from after our launch.")
+    new = [c for c in new if not G[c["key"]]["pre_site"]]
     if new:
         lines.append("- " + names_list([f"{c['name']} ({c['domain']})" for c in new]) + ": launched "
                      + names_list(sorted({month_long(c["launched"]) for c in new}, key=lambda x: x)) + ", no Search Console data yet.")

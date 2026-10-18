@@ -2,15 +2,15 @@
   "_readme": "Client showcase data for pageonesingapore.com (/clients/, /results/, home page, /website/, FAQ, industry and low-cost pages). Edit the client list by hand; never type the gsc blocks by hand: run builder/showcase_refresh.py with a CaseStudyStats export. Only list sites that are live on their own domain. Steps: /mnt/project-files/seo-method/rollout/pageone.md, 'Client showcase'.",
   "data": {
     "source": "Google Search Console (final data), collected by the Case Study Stats workflow into CaseStudyStats, SearchInsight Bridge app 6aa2d85827b1f2c2d43b241e",
-    "generated_at": "2026-10-17T11:54:46.827Z",
-    "data_through": "2026-10-14",
+    "generated_at": "2026-10-18T15:37:23.703Z",
+    "data_through": "2026-10-15",
     "window": [
-      "2026-09-17",
-      "2026-10-14"
+      "2026-09-18",
+      "2026-10-15"
     ],
     "prev_window": [
-      "2026-08-20",
-      "2026-09-16"
+      "2026-08-21",
+      "2026-09-17"
     ]
   },
   "clients": [
@@ -39,19 +39,19 @@
         "Google Business Profile, Search Console and Bing",
         "New articles every day, picked from Search Console data"
       ],
-      "articles": 133,
+      "articles": 135,
       "gsc": {
-        "record_id": "6ad36209aaefc25314d510b6",
+        "record_id": "6ad4e7ba3c1d2e69ca8c759b",
         "first_day": "2026-06-26",
-        "clicks": 2289,
-        "impressions": 96433,
+        "clicks": 2302,
+        "impressions": 97498,
         "position": 6.1,
-        "prev_clicks": 2110,
-        "prev_impressions": 79450,
+        "prev_clicks": 2128,
+        "prev_impressions": 80024,
         "prev_position": 6.5,
         "queries": 5000,
-        "page_one": 4290,
-        "top3": 1473,
+        "page_one": 4291,
+        "top3": 1486,
         "capped": true,
         "monthly": [
           {
@@ -84,52 +84,52 @@
           },
           {
             "month": "2026-10",
-            "days": 14,
-            "clicks": 1167,
-            "impressions": 51350,
+            "days": 15,
+            "clicks": 1252,
+            "impressions": 55440,
             "position": 6.1
           }
         ],
         "best_query": {
           "query": "how to diagnose car transmission issues",
-          "position": 2.8,
-          "impressions": 291
+          "position": 2.7,
+          "impressions": 301
         },
         "top_queries": [
           {
             "query": "how to diagnose car transmission issues",
-            "position": 2.8,
-            "impressions": 291
+            "position": 2.7,
+            "impressions": 301
           },
           {
             "query": "car aircon repair",
             "position": 3.2,
-            "impressions": 158
-          },
-          {
-            "query": "car repair",
-            "position": 4,
-            "impressions": 138
+            "impressions": 157
           },
           {
             "query": "car aircon servicing singapore",
-            "position": 4.1,
-            "impressions": 194
+            "position": 4,
+            "impressions": 193
+          },
+          {
+            "query": "car repair",
+            "position": 4.2,
+            "impressions": 139
           },
           {
             "query": "best car workshop singapore",
-            "position": 4.2,
-            "impressions": 154
+            "position": 4.3,
+            "impressions": 152
           },
           {
             "query": "car repair singapore",
-            "position": 4.5,
-            "impressions": 222
+            "position": 4.6,
+            "impressions": 224
           },
           {
-            "query": "car battery replacement cost",
+            "query": "car aircon servicing",
             "position": 5,
-            "impressions": 232
+            "impressions": 230
           }
         ]
       },
@@ -155,19 +155,19 @@
         "Guides on the problems customers search for",
         "Google Business Profile, Search Console, Bing and structured data"
       ],
-      "articles": 79,
+      "articles": 80,
       "gsc": {
-        "record_id": "6ad3620b8f69588f63c6fde2",
+        "record_id": "6ad4e7b6697bf6d8b9effa0d",
         "first_day": "2026-06-20",
-        "clicks": 506,
-        "impressions": 40631,
+        "clicks": 505,
+        "impressions": 41074,
         "position": 8.9,
-        "prev_clicks": 443,
-        "prev_impressions": 31409,
-        "prev_position": 11.1,
-        "queries": 1508,
-        "page_one": 1230,
-        "top3": 584,
+        "prev_clicks": 436,
+        "prev_impressions": 31376,
+        "prev_position": 11.0,
+        "queries": 1501,
+        "page_one": 1221,
+        "top3": 586,
         "capped": false,
         "monthly": [
           {
@@ -200,52 +200,52 @@
           },
           {
             "month": "2026-10",
-            "days": 14,
-            "clicks": 266,
-            "impressions": 19955,
-            "position": 7.8
+            "days": 15,
+            "clicks": 278,
+            "impressions": 21321,
+            "position": 7.7
           }
         ],
         "best_query": {
           "query": "car grooming singapore",
           "position": 2,
-          "impressions": 1041
+          "impressions": 1037
         },
         "top_queries": [
           {
             "query": "steam cleaning",
             "position": 1.9,
-            "impressions": 156
+            "impressions": 161
           },
           {
             "query": "car grooming singapore",
             "position": 2,
-            "impressions": 1041
+            "impressions": 1037
           },
           {
             "query": "mobile car wash singapore",
             "position": 2.3,
-            "impressions": 151
+            "impressions": 153
           },
           {
             "query": "car wash singapore",
-            "position": 3.3,
-            "impressions": 137
+            "position": 3.2,
+            "impressions": 140
           },
           {
             "query": "car wash",
             "position": 3.4,
-            "impressions": 233
+            "impressions": 234
           },
           {
             "query": "car wash near me",
-            "position": 3.6,
-            "impressions": 317
+            "position": 3.5,
+            "impressions": 327
           },
           {
             "query": "car fumigation singapore",
             "position": 4.3,
-            "impressions": 220
+            "impressions": 222
           }
         ]
       },
@@ -271,18 +271,18 @@
         "Clear pricing and a proper FAQ",
         "Cleaning guides published regularly"
       ],
-      "articles": 43,
+      "articles": 44,
       "gsc": {
-        "record_id": "6ad36207a7056da55f4905be",
+        "record_id": "6ad4e7b5e330abf559b709b0",
         "first_day": "2026-09-04",
         "clicks": 9,
-        "impressions": 3686,
-        "position": 72.7,
+        "impressions": 3805,
+        "position": 73.3,
         "prev_clicks": 11,
-        "prev_impressions": 853,
-        "prev_position": 69.8,
-        "queries": 212,
-        "page_one": 30,
+        "prev_impressions": 904,
+        "prev_position": 69.0,
+        "queries": 211,
+        "page_one": 31,
         "top3": 9,
         "capped": false,
         "monthly": [
@@ -295,10 +295,10 @@
           },
           {
             "month": "2026-10",
-            "days": 14,
+            "days": 15,
             "clicks": 6,
-            "impressions": 2334,
-            "position": 75.0
+            "impressions": 2504,
+            "position": 75.3
           }
         ],
         "best_query": null,
@@ -325,18 +325,18 @@
         "Case studies and a WhatsApp button on every page",
         "Owner and landlord guides published regularly"
       ],
-      "articles": 19,
+      "articles": 20,
       "gsc": {
-        "record_id": "6ad36209924838bdb12094ec",
+        "record_id": "6ad4e7b5e56052fbda2a1e88",
         "first_day": "2026-09-30",
-        "clicks": 14,
-        "impressions": 134,
-        "position": 14.2,
+        "clicks": 15,
+        "impressions": 151,
+        "position": 14.5,
         "prev_clicks": 0,
         "prev_impressions": 0,
         "prev_position": 0,
-        "queries": 14,
-        "page_one": 5,
+        "queries": 16,
+        "page_one": 6,
         "top3": 2,
         "capped": false,
         "monthly": [
@@ -349,10 +349,10 @@
           },
           {
             "month": "2026-10",
-            "days": 14,
-            "clicks": 14,
-            "impressions": 134,
-            "position": 14.2
+            "days": 15,
+            "clicks": 15,
+            "impressions": 151,
+            "position": 14.5
           }
         ],
         "best_query": null,
@@ -379,19 +379,19 @@
         "Representative details shown so visitors can verify them",
         "Articles published regularly"
       ],
-      "articles": 60,
+      "articles": 61,
       "gsc": {
-        "record_id": "6ad36207469479222c4646f5",
+        "record_id": "6ad4e7b426a61962163159e6",
         "first_day": "2026-08-13",
         "clicks": 32,
-        "impressions": 5602,
-        "position": 39.4,
+        "impressions": 5792,
+        "position": 39.2,
         "prev_clicks": 18,
-        "prev_impressions": 2055,
-        "prev_position": 59.0,
-        "queries": 340,
-        "page_one": 99,
-        "top3": 21,
+        "prev_impressions": 2160,
+        "prev_position": 57.6,
+        "queries": 355,
+        "page_one": 103,
+        "top3": 22,
         "capped": false,
         "monthly": [
           {
@@ -410,10 +410,10 @@
           },
           {
             "month": "2026-10",
-            "days": 14,
-            "clicks": 19,
-            "impressions": 3563,
-            "position": 36.6
+            "days": 15,
+            "clicks": 20,
+            "impressions": 3887,
+            "position": 36.5
           }
         ],
         "best_query": null,
@@ -440,27 +440,27 @@
         "6 articles on the faults drivers search for",
         "13 pages in the sitemap"
       ],
-      "articles": 13,
+      "articles": 14,
       "gsc": {
-        "record_id": "6ad3620bb1690c1550fde305",
+        "record_id": "6ad4e7b8db7c3c3c4ea833d1",
         "first_day": "2026-10-12",
-        "clicks": 0,
-        "impressions": 35,
-        "position": 40.6,
+        "clicks": 2,
+        "impressions": 101,
+        "position": 28.0,
         "prev_clicks": 0,
         "prev_impressions": 0,
         "prev_position": 0,
-        "queries": 18,
-        "page_one": 3,
-        "top3": 0,
+        "queries": 33,
+        "page_one": 7,
+        "top3": 1,
         "capped": false,
         "monthly": [
           {
             "month": "2026-10",
-            "days": 3,
-            "clicks": 0,
-            "impressions": 35,
-            "position": 40.6
+            "days": 4,
+            "clicks": 2,
+            "impressions": 101,
+            "position": 28.0
           }
         ],
         "best_query": null,
@@ -487,27 +487,27 @@
         "11 gearbox-problem guides, from slipping gears to a lever stuck in park",
         "21 pages in the sitemap"
       ],
-      "articles": 4,
+      "articles": 5,
       "gsc": {
-        "record_id": "6ad3620840ec8ad13f279359",
+        "record_id": "6ad4e7b77ba8ac58e0886936",
         "first_day": "2026-10-13",
-        "clicks": 1,
-        "impressions": 5,
-        "position": 38.6,
+        "clicks": 4,
+        "impressions": 34,
+        "position": 46.9,
         "prev_clicks": 0,
         "prev_impressions": 0,
         "prev_position": 0,
-        "queries": 3,
+        "queries": 14,
         "page_one": 0,
         "top3": 0,
         "capped": false,
         "monthly": [
           {
             "month": "2026-10",
-            "days": 2,
-            "clicks": 1,
-            "impressions": 5,
-            "position": 38.6
+            "days": 3,
+            "clicks": 4,
+            "impressions": 34,
+            "position": 46.9
           }
         ],
         "best_query": null,
@@ -534,9 +534,9 @@
         "Cars for sale, sold cars and verbatim customer reviews",
         "Opening hours, address and business details for Google and AI search"
       ],
-      "articles": 0,
+      "articles": 5,
       "gsc": {
-        "record_id": null,
+        "record_id": "6ad4e7b97b8e497f255ccb3b",
         "first_day": null,
         "clicks": 0,
         "impressions": 0,
@@ -574,21 +574,120 @@
         "Pages for owning, hosting, support and custom branding, plus all 20 locations",
         "Guides for people starting a vending business"
       ],
-      "articles": 0,
+      "articles": 8,
       "gsc": {
-        "record_id": null,
-        "first_day": null,
-        "clicks": 0,
-        "impressions": 0,
-        "position": 0,
-        "prev_clicks": 0,
-        "prev_impressions": 0,
-        "prev_position": 0,
-        "queries": 0,
-        "page_one": 0,
-        "top3": 0,
+        "record_id": "6ad4e7b4b1699dbb80d9ac40",
+        "first_day": "2025-09-03",
+        "clicks": 113,
+        "impressions": 1010,
+        "position": 6.6,
+        "prev_clicks": 139,
+        "prev_impressions": 1293,
+        "prev_position": 8.0,
+        "queries": 73,
+        "page_one": 58,
+        "top3": 37,
         "capped": false,
-        "monthly": [],
+        "monthly": [
+          {
+            "month": "2025-09",
+            "days": 28,
+            "clicks": 140,
+            "impressions": 696,
+            "position": 17.3
+          },
+          {
+            "month": "2025-10",
+            "days": 31,
+            "clicks": 115,
+            "impressions": 675,
+            "position": 7.3
+          },
+          {
+            "month": "2025-11",
+            "days": 30,
+            "clicks": 155,
+            "impressions": 925,
+            "position": 6.4
+          },
+          {
+            "month": "2025-12",
+            "days": 31,
+            "clicks": 166,
+            "impressions": 1176,
+            "position": 6.0
+          },
+          {
+            "month": "2026-01",
+            "days": 31,
+            "clicks": 159,
+            "impressions": 1364,
+            "position": 7.6
+          },
+          {
+            "month": "2026-02",
+            "days": 28,
+            "clicks": 123,
+            "impressions": 944,
+            "position": 7.3
+          },
+          {
+            "month": "2026-03",
+            "days": 31,
+            "clicks": 128,
+            "impressions": 1264,
+            "position": 6.4
+          },
+          {
+            "month": "2026-04",
+            "days": 30,
+            "clicks": 157,
+            "impressions": 1314,
+            "position": 6.2
+          },
+          {
+            "month": "2026-05",
+            "days": 31,
+            "clicks": 190,
+            "impressions": 1450,
+            "position": 5.5
+          },
+          {
+            "month": "2026-06",
+            "days": 30,
+            "clicks": 177,
+            "impressions": 1521,
+            "position": 5.7
+          },
+          {
+            "month": "2026-07",
+            "days": 31,
+            "clicks": 161,
+            "impressions": 1602,
+            "position": 8.2
+          },
+          {
+            "month": "2026-08",
+            "days": 31,
+            "clicks": 127,
+            "impressions": 1416,
+            "position": 10.6
+          },
+          {
+            "month": "2026-09",
+            "days": 30,
+            "clicks": 164,
+            "impressions": 1406,
+            "position": 6.0
+          },
+          {
+            "month": "2026-10",
+            "days": 15,
+            "clicks": 40,
+            "impressions": 451,
+            "position": 8.6
+          }
+        ],
         "best_query": null,
         "top_queries": []
       },
@@ -613,9 +712,9 @@
         "A colour catalogue and past works grouped by colour",
         "Dated prices and guides on wraps and tint rules"
       ],
-      "articles": 0,
+      "articles": 5,
       "gsc": {
-        "record_id": null,
+        "record_id": "6ad4e7b8d79be6c9e2c92042",
         "first_day": null,
         "clicks": 0,
         "impressions": 0,
