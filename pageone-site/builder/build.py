@@ -853,7 +853,7 @@ page("about/index.html",
        "about": PROVIDER, "mainEntity": dict(FOUNDER, worksFor=PROVIDER,
                                              owns={"@type": "AutoRepair", "name": "Edwin Garage", "url": "https://sggarage.com/"})}],
      hero("About", "Built by a business owner", "An SEO system built by a Singapore business owner, not an agency.",
-          "Page One Singapore builds and looks after websites that get small businesses found on Google and ChatGPT, from S$20 a month. Our founder combines a computer science degree with 18+ years of running businesses, and every method was proven on real Singapore businesses before we offered it to you.", buttons=False) + """
+          "Page One Singapore builds and looks after websites that help small businesses get found on Google and AI search like ChatGPT, from S$20 a month. Our founder combines a computer science degree with 18+ years of running businesses, and every method was proven on real Singapore businesses before we offered it to you.", buttons=False) + """
 
     <section class="section">
       <div class="wrap split">
@@ -1452,7 +1452,7 @@ page("seo-explained/index.html",
 
 # ---------- Home ----------
 HOME_QA = [
-    ('What is Page One Singapore?', 'A done-for-you website and SEO service for Singapore small businesses: found on Google, Google Maps and ChatGPT for S$20 a month. Edwin (NUS Computer Science) designed a set of AI tools to optimise its SEO daily, and proved them first on his own car workshop.'),
+    ('What is Page One Singapore?', 'A done-for-you website and SEO service for Singapore small businesses: built to help you get found on Google, Google Maps and AI search like ChatGPT, for S$20 a month. Edwin (NUS Computer Science) designed a set of AI tools to optimise its SEO daily, and proved them first on his own car workshop.'),
     ('How much does it cost?', 'S$20 a month (introductory price). No setup fee, no contract. Optional SEO Boosts are S$10 each. Your domain, usually S$15 to S$30 a year, is in your name.'),
     ('What do I get for S$20?', 'Your website or SEO landing page, hosting, Google Maps, Google and Bing setup, regular new articles, a monthly technical audit and small changes over WhatsApp.'),
     ('Does it actually work?', f"Edwin Garage got {EG['clicks']} Google clicks in the 28 days to {THROUGH}, according to Google Search Console. Results vary, so we don't guarantee rankings."),

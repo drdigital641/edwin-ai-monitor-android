@@ -161,7 +161,7 @@ INDUSTRIES = [
     {
         "slug": "property-agent", "name": "Property agents", "short": "property agent",
         "title": "Website &amp; SEO for Property Agents in Singapore | Page One",
-        "desc": "Property agents: a personal website that gets found on Google and ChatGPT, built and managed for you. S$20/month. We run aliciaongproperty.com.",
+        "desc": "Property agents: a personal website designed to be found on Google and ChatGPT, built and managed for you. S$20/month. We run aliciaongproperty.com.",
         "h1": "A personal website for property agents, found on Google",
         "lead": "Sellers, buyers and landlords search for an agent who knows their estate and property type. A personal website helps you get found and remembered, beyond the portals. Page One builds and manages it for you.",
         "searches": ["property agent Punggol", "sell HDB 4 room", "condo rental agent", "HDB resale process", "how to choose a property agent"],
