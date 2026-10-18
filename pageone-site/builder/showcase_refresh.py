@@ -87,6 +87,11 @@ def main():
     for c in data["clients"]:
         r = newest.get(c["gsc_site"])
         if not r:
+            if not c.get("gsc", {}).get("record_id"):
+                # A newly launched site whose Search Console property has no data yet: it stays on the page as
+                # "launched, no data yet" until the Case Study Stats workflow returns a record for it.
+                print(f"note: no CaseStudyStats record yet for {c['gsc_site']} ({c['name']}); shown as launched, no data yet.")
+                continue
             sys.exit(f"No CaseStudyStats record for {c['gsc_site']} ({c['name']}). Add the site to Search Console or remove it.")
         st = r["stats_json"]
         st = json.loads(st) if isinstance(st, str) else st
@@ -115,7 +120,7 @@ def main():
     through, s, e, ps, pe = windows.pop()
     data["data"] = {
         "source": "Google Search Console (final data), collected by the Case Study Stats workflow into CaseStudyStats, SearchInsight Bridge app 6aa2d85827b1f2c2d43b241e",
-        "generated_at": max(newest[c["gsc_site"]]["generated_at"] for c in data["clients"]),
+        "generated_at": max(newest[c["gsc_site"]]["generated_at"] for c in data["clients"] if c["gsc_site"] in newest),
         "data_through": through, "window": [s, e], "prev_window": [ps, pe],
     }
 

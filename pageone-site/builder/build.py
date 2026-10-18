@@ -1493,7 +1493,7 @@ page("index.html",
          WEBSITE_NODE]}],
      fill_home(open(os.path.join(HERE, "home_body.html"), encoding="utf-8").read().rstrip("\n").replace("{{GLANCE}}", HOME_GLANCE).replace("{{HOME_FAQ}}", HOME_FAQ_HTML)),
      updated=max(SC_UPDATED, AIV_UPDATED, "2026-10-17"),
-     head_extra="\n  <style>" + " ".join(open(os.path.join(HERE, "home_motion.css"), encoding="utf-8").read().split("\n")[1:]).strip() + "</style>",
+     head_extra="\n  <style>" + " ".join(open(os.path.join(HERE, "home_motion.css"), encoding="utf-8").read().split("\n")[1:]).strip() + GROW_CSS + "</style>",
      foot_extra='\n  <script src="/motion.js?v=2" defer></script>')
 
 

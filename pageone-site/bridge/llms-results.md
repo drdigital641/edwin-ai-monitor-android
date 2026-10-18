@@ -6,6 +6,7 @@
 - Danny Chua Financial (dannychuafinancial.com): shown on Google 5,602 times (up from 2,055), on page one for 99 searches. Still early.
 - The ECU Clinic (theecuclinicsg.com): Search Console data starts 12 October 2026; shown on Google 35 times, 0 clicks so far. Too early to report results.
 - Jacky Gearbox (jackygearbox.com): Search Console data starts 13 October 2026; shown on Google 5 times, 1 clicks so far. Too early to report results.
+- Star Performance Motor (starperformancemotor.com), AI Vending Solution (aivs.sg) and Wrapstar Autostyle (wrapstarautostyle.com): launched October 2026, no Search Console data yet.
 - Full case studies: https://pageonesingapore.com/results/
 - Every client website with its numbers: https://pageonesingapore.com/clients/
 - Low price, real results: S$20 a month is low because a set of AI tools we designed does the daily SEO work that used to be billed by the hour; the numbers above come from the same system.
