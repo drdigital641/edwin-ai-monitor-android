@@ -3,6 +3,9 @@
 // It does nothing when the visitor prefers reduced motion, so the page stays in its final state.
 (() => {
   if (matchMedia("(prefers-reduced-motion: reduce)").matches || !("IntersectionObserver" in window)) return;
+  // Crawlers and AI readers (Google, Bing, ChatGPT and other fetchers, headless browsers) get the page as written,
+  // so they always read the real figures instead of a counter caught at 0 or mid-count.
+  if (navigator.webdriver || /bot|crawl|spider|slurp|headless|lighthouse|gpt|openai|claude|anthropic|perplexity|bing|google|preview/i.test(navigator.userAgent)) return;
   document.documentElement.classList.add("pm");
 
   // Count a number in el from `from` to the number already written in it, keeping any prefix/suffix ("#", "+").
@@ -12,8 +15,14 @@
     const end = parseFloat(m[2].replace(/,/g, "")), dec = (m[2].split(".")[1] || "").length;
     const start = from == null ? 0 : from;
     const fmt = (v) => v.toLocaleString("en-US", { minimumFractionDigits: dec, maximumFractionDigits: dec });
-    el.textContent = m[1] + fmt(start) + m[3];
-    return () => {
+    // Only figures already on screen start from the low value now; the rest keep their real value until they are
+    // scrolled to, so anyone reading the page text (people or tools) never sees a 0.
+    const r = el.getBoundingClientRect();
+    let primed = false;
+    const prime = () => { if (!primed) { el.textContent = m[1] + fmt(start) + m[3]; primed = true; } };
+    if (r.bottom > 0 && r.top < innerHeight) prime();
+    const run = () => {
+      prime();
       const t0 = performance.now();
       const step = (t) => {
         const k = Math.min(1, (t - t0) / d), e = 1 - Math.pow(1 - k, 3);
@@ -22,7 +31,10 @@
       };
       requestAnimationFrame(step);
     };
+    run.prime = prime;
+    return run;
   };
+  const primeAll = (fns) => fns.forEach((f) => f && f.prime());
   const later = (fn, ms) => fn && setTimeout(fn, ms);
   const watch = (els, onIn, threshold) => {
     const io = new IntersectionObserver((es) => es.forEach((e) => {
@@ -37,6 +49,7 @@
       count(b, 1400, b.dataset.from ? parseFloat(b.dataset.from) : null));
     const bars = [...card.querySelectorAll(".pb span")].map((s) => count(s, 1000));
     watch([card], (c) => {
+      primeAll(heads); primeAll(bars);
       c.classList.add("on");
       heads.forEach((f) => later(f, 200));
       bars.forEach((f, i) => later(f, i * 250));
@@ -46,7 +59,7 @@
   // KPI tiles: one after another, number counts, then the mini chart and note.
   const tiles = [...document.querySelectorAll(".proof .kpi")];
   const runs = tiles.map((t) => count(t.querySelector(".value"), 1200));
-  watch(tiles.length ? [tiles[0].parentNode] : [], () => tiles.forEach((t, i) => later(() => {
+  watch(tiles.length ? [tiles[0].parentNode] : [], () => primeAll(runs) || tiles.forEach((t, i) => later(() => {
     t.classList.add("on");
     later(runs[i], 150);
   }, i * 180)), 0.2);
