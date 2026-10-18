@@ -1,0 +1,24 @@
+# Wrapstar Autostyle (wrapstarautostyle.com). Installed by the Bluehost Bridge pinned-config route (the hourly publisher writes it).
+# Before go-live the folder is pageonesingapore.com/preview/wrapstar/: the X-Robots-Tag below hides it from search engines
+# only on the pageonesingapore.com host, so the same files go live on the client domain with no page edits.
+<IfModule mod_headers.c>
+SetEnvIfNoCase Host ^(www\.)?pageonesingapore\.com$ P1_PREVIEW
+Header set X-Robots-Tag "noindex, nofollow" env=P1_PREVIEW
+<FilesMatch "\.(html)$">
+Header set Cache-Control "max-age=3600, public"
+</FilesMatch>
+<FilesMatch "\.(webp|png|jpg|ico|css|js)$">
+Header set Cache-Control "max-age=2592000, public"
+</FilesMatch>
+</IfModule>
+RewriteEngine On
+# Live since 18 Oct 2026. www -> apex, and /index.html or /folder/index.html -> the clean folder URL
+# (without this the parent pageonesingapore.com rules send /index.html to /preview/wrapstar/, which 404s on the live domain).
+RewriteCond %{HTTP_HOST} ^www\.wrapstarautostyle\.com$ [NC]
+RewriteRule ^ https://wrapstarautostyle.com%{REQUEST_URI} [L,R=301]
+RewriteCond %{HTTP_HOST} ^wrapstarautostyle\.com$ [NC]
+RewriteCond %{THE_REQUEST} \s/+(.*/)?index\.html[\s?]
+RewriteRule ^(.*/)?index\.html$ https://wrapstarautostyle.com/$1 [L,R=301]
+RewriteCond %{HTTPS} off
+RewriteRule ^ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
+ErrorDocument 404 /404.html
