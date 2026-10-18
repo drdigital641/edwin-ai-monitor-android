@@ -1,0 +1,802 @@
+#!/usr/bin/env python3
+"""Build the Cleeneo site (cleeneo.co).
+
+Built once into pageonesingapore.com/preview/cleeneo/ and never moved: on activation, cleeneo.co's
+document root is pointed at that same folder (see ../PLAYBOOK.md). Every internal link is relative so
+the files work at both addresses, and canonical/structured-data URLs always name cleeneo.co.
+
+    python3 build.py            # writes the pages into ./site, then the share images and icons
+
+Content comes from source/content.md (captured from the old Base44 shop on 13 Oct 2026). Orders go
+through WhatsApp (pre-filled per kit), which the CtaClick tracker in cleeneo.js counts.
+Shared assets (cleeneo.css, cleeneo.js, img/) live in ./site and are edited by hand.
+Share images and icons are drawn by share.mjs (headless Chromium) from the client's photo and logo.
+"""
+import html
+import json
+import os
+import subprocess
+from urllib.parse import quote
+
+HERE = os.path.dirname(os.path.abspath(__file__))
+OUT = os.path.join(HERE, 'site')
+ORIGIN = 'https://cleeneo.co'
+BASE = '/'
+DEPTH = 0  # folder depth of the page being built; set by build() so u() can emit relative links
+ABS = False  # root-relative links instead (404 page: Apache serves it at any depth)
+ASSET_V = "5"
+SLUG = 'cleeneo'
+INDEXNOW_KEY = 'af35e347ce61461f81c1426315d06255'  # same key as the controller's Client record
+# Until cleeneo.co points here, share images and icons are linked at the preview address.
+LIVE = False
+IMG_ORIGIN = ORIGIN if LIVE else 'https://pageonesingapore.com/preview/cleeneo'
+SHARES = {}  # share-image slug -> (headline, kicker)
+
+BIZ = {
+    'name': 'Cleeneo',
+    'wa': '6580604977', 'tel': '+6580604977', 'disp': '8060 4977',
+    'email': 'sales@cleeneo.co',
+}
+WA_TEXT = 'Hi Cleeneo, I have a question about your nasal strips.'
+
+KITS = [
+    {'id': 'trial', 'name': 'Trial Kit', 'strips': 10, 'price': '9.90', 'was': None,
+     'note': '10 nights', 'badge': None},
+    {'id': 'pack30', 'name': '30-Strip Pack', 'strips': 30, 'price': '21.90', 'was': '29.90',
+     'note': 'A month', 'badge': 'Popular'},
+    {'id': 'bundle', 'name': 'Bundle: Buy 2 Get 1 Free', 'strips': 90, 'price': '43.80', 'was': '89.70',
+     'note': '3 × 30 strips', 'badge': 'Best value'},
+]
+
+NAV = [('', 'Home'), ('nasal-strips/snoring/', 'Snoring'), ('nasal-strips/sports/', 'Sports'),
+       ('nasal-strips/allergies/', 'Allergies'), ('how-to-use/', 'How to use'), ('kits/', 'Kits &amp; prices'),
+       ('contact/', 'Contact')]
+FOOT_MORE = [('about/', 'About Cleeneo'), ('shipping/', 'Shipping &amp; returns'), ('blog/', 'Blog')]
+
+REVIEWS = [
+    ('Wei Ming T.', 'First night in years I didn’t wake up gasping.'),
+    ('Priya N.', 'This is a different category entirely.'),
+    ('Mei Ling C.', 'Genuinely changed my mornings.'),
+]
+RATING = ('4.9', '48')
+
+DOCTOR = ('Cleeneo is a breathing aid, not a treatment for sleep apnoea or any medical condition. '
+          'If you snore loudly, gasp in your sleep or feel very tired by day, please see a doctor.')
+
+ICON = {
+    'wa': '<svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.5 14.4c-.3-.1-1.8-.9-2-1s-.5-.1-.7.1-.8 1-1 1.2-.4.2-.7.1a8.2 8.2 0 0 1-4-3.5c-.3-.5.3-.5.9-1.6.1-.2 0-.4 0-.5l-.9-2.2c-.2-.6-.5-.5-.7-.5h-.6a1.1 1.1 0 0 0-.8.4 3.4 3.4 0 0 0-1 2.5 5.9 5.9 0 0 0 1.2 3.1 13.5 13.5 0 0 0 5.2 4.6c1.9.8 2.7.9 3.6.7a3.1 3.1 0 0 0 2-1.4 2.5 2.5 0 0 0 .2-1.4c-.1-.2-.3-.3-.6-.4zM12 21.8a9.8 9.8 0 0 1-5-1.4l-.4-.2-3.7 1 1-3.6-.2-.4A9.8 9.8 0 1 1 12 21.8zm8.4-18.2A11.8 11.8 0 0 0 1.8 17.8L.1 24l6.3-1.7a11.8 11.8 0 0 0 5.6 1.4A11.8 11.8 0 0 0 20.4 3.6z"/></svg>',
+    'moon': '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></svg>',
+    'run': '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="14" cy="4" r="2"/><path d="M6 21l4-6 3 2 2 4M9 11l3-3 3 3 3 1M10 15l-1-5"/></svg>',
+    'leaf': '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M11 20A7 7 0 0 1 9.8 6.1C15.5 5 17 4.5 19 2c1 2 2 4.2 2 8 0 5.5-4.8 10-10 10z"/><path d="M2 21c0-3 1.9-5.4 5.1-6"/></svg>',
+    'plane': '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M17.8 19.2L16 11l3.5-3.5C21 6 21.5 4 21 3c-1-.5-3 0-4.5 1.5L13 8 4.8 6.2c-.5-.1-.9.1-1.1.5l-.3.5c-.2.5-.1 1 .3 1.3L9 12l-2 3H4l-1 1 3 2 2 3 1-1v-3l3-2 3.5 5.3c.3.4.8.5 1.3.3l.5-.2c.4-.3.6-.7.5-1.2z"/></svg>',
+    'shield': '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="M9 12l2 2 4-4"/></svg>',
+    'truck': '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M1 3h15v13H1zM16 8h4l3 3v5h-7z"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg>',
+    'repeat': '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M17 1l4 4-4 4"/><path d="M3 11V9a4 4 0 0 1 4-4h14M7 23l-4-4 4-4"/><path d="M21 13v2a4 4 0 0 1-4 4H3"/><path d="M2 2l20 20"/></svg>',
+    'layers': '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 2l10 5-10 5L2 7z"/><path d="M2 17l10 5 10-5M2 12l10 5 10-5"/></svg>',
+    'wind': '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9.6 4.6A2 2 0 1 1 11 8H2M12.6 19.4A2 2 0 1 0 14 16H2M17.7 7.7A2.5 2.5 0 1 1 19.5 12H2"/></svg>',
+    'mail': '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="M22 6l-10 7L2 6"/></svg>',
+    'star': '<svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2l3.1 6.3 6.9 1-5 4.9 1.2 6.8L12 17.8 5.8 21l1.2-6.8-5-4.9 6.9-1z"/></svg>',
+}
+
+# Client photos (source/photos, uploaded by Edwin 13 Oct 2026), resized into site/img by hand.
+def photo(name, alt, w=900, h=900, lazy=True, cls='photo'):
+    return (f'<img class="{cls}" src="{u("img/" + name + ".webp")}" srcset="{u("img/" + name + "-480.webp")} 480w, {u("img/" + name + ".webp")} 900w"'
+            f' sizes="(max-width: 899px) 92vw, 540px" width="{w}" height="{h}" alt="{e(alt)}"{" loading=\"lazy\"" if lazy else " fetchpriority=\"high\""} decoding="async">')
+
+
+HAND_ALT = 'Hand holding a black Cleeneo silk nasal strip with the Cleeneo logo'
+LAYERS_ALT = 'The layers of a Cleeneo strip: black silk weave, spring-tension bar, adhesive and release liner'
+FLAT_ALT = 'Cleeneo nasal strip, top view'
+
+
+def nose_svg():
+    return '''<svg class="art nose" viewBox="0 0 300 260" role="img" aria-label="A nasal strip on the bridge of the nose gently lifting the sides of the nose to open the nasal valve">
+<g fill="none" stroke="#0f2a2c" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+<path d="M132 20C130 80 118 130 102 162"/><path d="M168 20C170 80 182 130 198 162"/>
+<path d="M102 162C84 178 90 204 112 206C126 208 136 200 150 204C164 200 174 208 188 206C210 204 216 178 198 162"/>
+<ellipse cx="124" cy="192" rx="10" ry="5"/><ellipse cx="176" cy="192" rx="10" ry="5"/></g>
+<g transform="translate(150 112) scale(.42) translate(-200 -80)"><path d="M30 40C30 18 60 10 100 22C150 38 250 38 300 22C340 10 370 18 370 40V120C370 142 340 150 300 138C250 122 150 122 100 138C60 150 30 142 30 120Z" fill="#1d1f20" stroke="#000" stroke-width="6"/>
+<g fill="none" stroke="#6e7b7c" stroke-width="7" stroke-linecap="round"><path d="M62 60C150 74 250 74 338 60"/><path d="M60 80H340"/><path d="M62 100C150 86 250 86 338 100"/></g></g>
+<g fill="none" stroke="#e07a3f" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round">
+<path d="M96 146H56"/><path d="M66 136L56 146L66 156"/><path d="M204 146H244"/><path d="M234 136L244 146L234 156"/></g>
+<text x="150" y="250" text-anchor="middle" font-size="15" font-weight="600" fill="#004d53">The bar lifts, the nasal valve opens</text>
+</svg>'''
+
+
+def mark():
+    return f'<img class="mark" src="{u("img/mark.webp")}" width="36" height="36" alt="">'
+
+
+e = html.escape
+
+
+def u(path=''):
+    if ABS:
+        return BASE + path
+    return ('../' * DEPTH or './') + path
+
+
+def wa_link(text=WA_TEXT):
+    return f'https://wa.me/{BIZ["wa"]}?text={quote(text)}'
+
+
+def kit_text(k):
+    return (f'Hi Cleeneo, I would like to order the {k["name"]} ({k["strips"]} strips, S${k["price"]}).\n'
+            'Name:\nDelivery address and postal code:')
+
+
+ORDER_TEXT = 'Hi Cleeneo, I would like to order your nasal strips. Which kit do you recommend for me?'
+
+
+def wa_btn(label, text=WA_TEXT, cls='btn btn-wa'):
+    return f'<a class="{cls}" href="{wa_link(text)}" target="_blank" rel="noopener">{ICON["wa"]}{label}</a>'
+
+
+def org_ld():
+    return {'@context': 'https://schema.org', '@graph': [
+        {'@type': 'OnlineStore', '@id': f'{ORIGIN}/#org', 'name': 'Cleeneo', 'alternateName': 'Cleeneo Nasal Strips',
+         'url': f'{ORIGIN}/', 'logo': {'@type': 'ImageObject', 'url': f'{IMG_ORIGIN}/img/logo.png'},
+         'image': f'{IMG_ORIGIN}/img/share/home.jpg', 'email': BIZ['email'], 'telephone': BIZ['tel'],
+         'areaServed': {'@type': 'Country', 'name': 'Singapore'},
+         'description': 'Singapore brand of drug-free, latex-free silk nasal strips for snoring, sport and allergy congestion, delivered free across Singapore.',
+         'contactPoint': {'@type': 'ContactPoint', 'contactType': 'customer service', 'telephone': BIZ['tel'],
+                          'email': BIZ['email'], 'areaServed': 'SG', 'availableLanguage': 'English'}},
+        {'@type': 'WebSite', '@id': f'{ORIGIN}/#site', 'url': f'{ORIGIN}/', 'name': 'Cleeneo', 'publisher': {'@id': f'{ORIGIN}/#org'},
+         'inLanguage': 'en-SG'}]}
+
+
+def product_ld():
+    ship = {'@type': 'OfferShippingDetails', 'shippingRate': {'@type': 'MonetaryAmount', 'value': 0, 'currency': 'SGD'},
+            'shippingDestination': {'@type': 'DefinedRegion', 'addressCountry': 'SG'},
+            'deliveryTime': {'@type': 'ShippingDeliveryTime',
+                             'handlingTime': {'@type': 'QuantitativeValue', 'minValue': 1, 'maxValue': 2, 'unitCode': 'DAY'},
+                             'transitTime': {'@type': 'QuantitativeValue', 'minValue': 2, 'maxValue': 4, 'unitCode': 'DAY'}}}
+    return {'@context': 'https://schema.org', '@type': 'Product', '@id': f'{ORIGIN}/#product',
+            'name': 'Cleeneo Silk Nasal Strips', 'brand': {'@type': 'Brand', 'name': 'Cleeneo'},
+            'image': [f'{IMG_ORIGIN}/img/share/kits.jpg', f'{IMG_ORIGIN}/img/share/home.jpg'],
+            'description': 'Drug-free, latex-free silk nasal strips with three PET spring-tension bars that lift the nasal valve for easier nose breathing.',
+            'material': 'Silk, PET, hypoallergenic adhesive',
+            'aggregateRating': {'@type': 'AggregateRating', 'ratingValue': RATING[0], 'reviewCount': RATING[1], 'bestRating': '5'},
+            'offers': [{'@type': 'Offer', 'name': k['name'], 'price': k['price'], 'priceCurrency': 'SGD', 'url': f'{ORIGIN}/kits/#{k["id"]}',
+                        'eligibleQuantity': {'@type': 'QuantitativeValue', 'value': k['strips'], 'unitText': 'strips'},
+                        'seller': {'@id': f'{ORIGIN}/#org'}, 'shippingDetails': ship} for k in KITS]}
+
+
+def crumbs_ld(items):
+    """items: [(name, path)] after Home."""
+    lst = [('Home', '')] + items
+    return {'@context': 'https://schema.org', '@type': 'BreadcrumbList', 'itemListElement': [
+        {'@type': 'ListItem', 'position': i + 1, 'name': html.unescape(n), 'item': f'{ORIGIN}/{p}'} for i, (n, p) in enumerate(lst)]}
+
+
+def faq_ld(items):
+    import re
+    return {'@context': 'https://schema.org', '@type': 'FAQPage', 'mainEntity': [
+        {'@type': 'Question', 'name': q, 'acceptedAnswer': {'@type': 'Answer', 'text': re.sub('<[^>]+>', '', a)}} for q, a in items]}
+
+
+def page(path, title, desc, body, active='', ld=None, share=None, kicker='Drug-free silk nasal strips · Singapore'):
+    canonical = ORIGIN + BASE + path
+    slug = path.strip('/').replace('/', '-') or 'home'
+    headline = share or title.split(' | ')[0]
+    SHARES[slug] = (headline, kicker)
+    og_img = f'{IMG_ORIGIN}/img/share/{slug}.jpg'
+    ld = (ld or []) + [{'@context': 'https://schema.org', '@type': 'WebPage', '@id': canonical, 'url': canonical, 'name': title,
+                        'description': desc, 'isPartOf': {'@id': f'{ORIGIN}/#site'}, 'inLanguage': 'en-SG',
+                        'primaryImageOfPage': {'@type': 'ImageObject', 'url': og_img, 'width': 1200, 'height': 630}}]
+    nav = ''.join(f'<a href="{u(p)}"{" aria-current=\"page\"" if p == active else ""}>{n}</a>' for p, n in NAV[1:])
+    mnav = ''.join(f'<a href="{u(p)}">{n}</a>' for p, n in NAV + FOOT_MORE)
+    lds = ''.join(f'<script type="application/ld+json">{json.dumps(x, ensure_ascii=False)}</script>' for x in [org_ld()] + ld)
+    return f'''<!doctype html>
+<html lang="en-SG">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>{e(title)}</title>
+<meta name="description" content="{e(desc)}">
+<meta name="robots" content="index, follow, max-image-preview:large">
+<meta name="p1-site" content="{SLUG}">
+<link rel="canonical" href="{canonical}">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Cleeneo">
+<meta property="og:title" content="{e(title)}">
+<meta property="og:description" content="{e(desc)}">
+<meta property="og:url" content="{canonical}">
+<meta property="og:image" content="{og_img}">
+<meta property="og:image:secure_url" content="{og_img}">
+<meta property="og:image:type" content="image/jpeg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="{e(headline)} | Cleeneo">
+<meta property="og:locale" content="en_SG">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="{e(title)}">
+<meta name="twitter:description" content="{e(desc)}">
+<meta name="twitter:image" content="{og_img}">
+<meta name="theme-color" content="#004d53">
+<link rel="icon" href="{u("favicon.ico")}" sizes="48x48">
+<link rel="icon" href="{u("icon-96.png")}" type="image/png" sizes="96x96">
+<link rel="icon" href="{u("icon-192.png")}" type="image/png" sizes="192x192">
+<link rel="apple-touch-icon" href="{u("apple-touch-icon.png")}">
+<link rel="manifest" href="{u("site.webmanifest")}">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&amp;display=swap" media="print" onload="this.media='all'">
+<noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&amp;display=swap"></noscript>
+<link rel="stylesheet" href="{u("cleeneo.css")}?v={ASSET_V}">
+{lds}
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<div class="topbar"><div class="wrap">
+<span>Free delivery across Singapore on every kit <span class="hide-sm">· No subscription</span></span>
+<span><a href="{wa_link()}" target="_blank" rel="noopener">WhatsApp {BIZ["disp"]}</a></span>
+</div></div>
+<header class="site"><div class="wrap">
+<a class="logo" href="{u()}" aria-label="Cleeneo home">{mark()}<span>Cleeneo</span></a>
+<nav class="main" aria-label="Main">{nav}</nav>
+{wa_btn("Order on WhatsApp", ORDER_TEXT, "btn btn-wa hdr-cta")}
+<button class="menu-btn" type="button" aria-expanded="false" aria-controls="mnav">Menu</button>
+</div>
+<nav class="mobile-nav" id="mnav" aria-label="Mobile">{mnav}</nav>
+</header>
+<main id="main">
+{body}
+</main>
+<footer class="site"><div class="wrap">
+<div class="grid">
+<div>
+<p class="flogo">{mark()}<span>Cleeneo</span></p>
+<p>Drug-free, latex-free silk nasal strips, designed and run from Singapore. Free delivery on every kit, Singapore only.</p>
+<p><a href="{wa_link()}" target="_blank" rel="noopener">WhatsApp {BIZ["disp"]}</a><br><a href="mailto:{BIZ["email"]}">{BIZ["email"]}</a></p>
+</div>
+<div>
+<h3>Nasal strips for</h3>
+<ul><li><a href="{u("nasal-strips/snoring/")}">Snoring &amp; better sleep</a></li><li><a href="{u("nasal-strips/sports/")}">Sports &amp; training</a></li><li><a href="{u("nasal-strips/allergies/")}">Allergies &amp; congestion</a></li></ul>
+</div>
+<div>
+<h3>Shop</h3>
+<ul><li><a href="{u("kits/")}">Kits &amp; prices</a></li><li><a href="{u("how-to-use/")}">How to use</a></li><li><a href="{u("shipping/")}">Shipping &amp; returns</a></li></ul>
+</div>
+<div>
+<h3>Cleeneo</h3>
+<ul><li><a href="{u("about/")}">About</a></li><li><a href="{u("blog/")}">Blog</a></li><li><a href="{u("contact/")}">Contact</a></li></ul>
+</div>
+</div>
+<p class="fine-note">{DOCTOR}</p>
+<div class="fine"><span>© 2026 Cleeneo. All rights reserved. <a href="{u("privacy/")}">Privacy</a></span><a href="https://pageonesingapore.com/">Website &amp; SEO by Page One Singapore</a></div>
+</div></footer>
+<div class="dock">{wa_btn("Order on WhatsApp", ORDER_TEXT)}</div>
+<script src="{u("cleeneo.js")}?v={ASSET_V}" defer></script>
+</body>
+</html>
+'''
+
+
+# ---------- shared blocks ----------
+def page_hero(crumbs, h1, sub):
+    trail = '<a href="' + u() + '">Home</a>' + ''.join(
+        f' / <a href="{u(p)}">{n}</a>' if i < len(crumbs) - 1 else f' / <span>{n}</span>' for i, (n, p) in enumerate(crumbs))
+    return (f'<section class="page-hero"><div class="wrap"><p class="crumbs">{trail}</p><h1>{h1}</h1>'
+            f'<p>{sub}</p></div></section>')
+
+
+def stars():
+    return f'<span class="stars" aria-hidden="true">{ICON["star"] * 5}</span>'
+
+
+def rating_line():
+    return f'<p class="rating">{stars()}<span><strong>{RATING[0]}/5</strong> from {RATING[1]} verified reviews</span></p>'
+
+
+def kit_cards(head=True):
+    cards = []
+    for k in KITS:
+        per = float(k['price']) / k['strips']
+        was = f'<s>S${k["was"]}</s>' if k['was'] else ''
+        badge = f'<span class="badge">{k["badge"]}</span>' if k['badge'] else ''
+        cards.append(f'''<article class="kit card" id="{k["id"]}">{badge}
+<h3>{e(k["name"])}</h3>
+<p class="strips">{k["strips"]} strips</p>
+<p class="price"><span>S${k["price"]}</span>{was}</p>
+<p class="per">{e(k["note"])} · {per * 100:.0f}¢ a strip</p>
+{wa_btn("Order on WhatsApp", kit_text(k), "btn btn-wa wide")}
+</article>''')
+    return '<div class="grid g3 kits">' + ''.join(cards) + '</div>'
+
+
+def reviews_block():
+    q = ''.join(f'<blockquote class="card quote">{stars()}<p>“{e(t)}”</p><cite>{e(n)}</cite></blockquote>'
+                for n, t in REVIEWS)
+    return (f'<section><div class="wrap"><div class="sec-head"><h2>What customers say</h2>{rating_line()}</div>'
+            f'<div class="grid g3 reviews" tabindex="0" role="region" aria-label="Customer reviews">{q}</div></div></section>')
+
+
+def faq_html(items):
+    return '<div class="faq">' + ''.join(f'<details><summary>{e(q)}</summary><div><p>{a}</p></div></details>' for q, a in items) + '</div>'
+
+
+def faq_block(items, heading='Questions'):
+    return f'<section class="alt"><div class="wrap narrow"><div class="sec-head"><h2>{heading}</h2></div>{faq_html(items)}</div></section>'
+
+
+def band(h, p, text=ORDER_TEXT, label='Order on WhatsApp', second=True):
+    more = f'<a class="btn btn-ghost" href="{u("kits/")}">See kits &amp; prices</a>' if second else ''
+    return (f'<section><div class="wrap"><div class="band"><div><h2>{h}</h2><p>{p}</p></div>'
+            f'<div class="btns">{wa_btn(label, text)}{more}</div></div></div></section>')
+
+
+def why_cards():
+    items = [('shield', 'Drug-free', 'Nothing to wear off.'),
+             ('layers', 'Soft silk', 'Gentle on skin, firm lift.'),
+             ('truck', 'Free delivery', 'Anywhere in Singapore.'),
+             ('repeat', 'No subscription', 'Buy only when you need.')]
+    return ''.join(f'<div class="card"><div class="ico">{ICON[i]}</div><p class="t">{t}</p><p>{d}</p></div>' for i, t, d in items)
+
+
+def use_cards(skip=None):
+    items = [('nasal-strips/snoring/', 'moon', 'Sleep', 'Quieter, deeper nights.'),
+             ('nasal-strips/sports/', 'run', 'Sport', 'More air while you train.'),
+             ('nasal-strips/allergies/', 'leaf', 'Allergies', 'Clear a blocked nose, drug-free.')]
+    return '<div class="grid g3 uses">' + ''.join(
+        f'<a class="card use" href="{u(p)}"><div class="ico">{ICON[i]}</div><h3>{t}</h3><p>{d}</p><span class="more">More →</span></a>'
+        for p, i, t, d in items if p != skip) + '</div>'
+
+
+STEPS = [
+    ('Clean and dry', 'No oil or lotion on your nose.'),
+    ('Place it', 'Centre it just above the nostril flare.'),
+    ('Press', 'Rub along the strip for 10–15 seconds.'),
+    ('Peel off', 'Wet it and peel slowly in the morning.'),
+]
+
+def steps_html():
+    return '<ol class="steps">' + ''.join(f'<li><h3>{t}</h3><p>{d}</p></li>' for t, d in STEPS) + '</ol>'
+
+
+def doctor_note():
+    return f'<p class="note">{DOCTOR}</p>'
+
+
+FAQ = [
+    ('How do nasal strips work?',
+     'Three flexible spring bars gently lift the sides of your nose, so more air flows through.'),
+    ('Are Cleeneo strips drug-free and latex-free?',
+     'Yes. No medicine, and a hypoallergenic, latex-free adhesive.'),
+    ('Can I sleep with them on?',
+     'Yes. They’re made to hold all night. Use a fresh strip each time.'),
+    ('How long can I wear one strip?',
+     'Up to 12 hours.'),
+    ('How fast is delivery in Singapore?',
+     'Free, tracked delivery. Dispatched in 1–2 business days, arrives 2–4 days later.'),
+    ('Do I need a subscription?',
+     'No. One-time orders only.'),
+    ('How do I order?',
+     f'Tap “Order on WhatsApp”, add your name and address, and we’ll confirm. Or email <a href="mailto:{BIZ["email"]}">{BIZ["email"]}</a>.'),
+    ('Do you ship outside Singapore?',
+     'Not yet. Singapore only.'),
+]
+FAQ_BY = dict(FAQ)
+
+
+def pick(*qs):
+    return [(q, FAQ_BY[q]) for q in qs]
+
+
+# ---------- pages ----------
+def home():
+    body = f'''
+<section class="hero"><div class="wrap hero-grid">
+<div>
+<span class="eyebrow">Drug-free · Latex-free · Singapore</span>
+<h1>Silk Nasal Strips for Better Sleep</h1>
+<p class="lead">Breathe easier through your nose, from tonight.</p>
+{rating_line()}
+<div class="btns">{wa_btn("Order on WhatsApp", ORDER_TEXT)}<a class="btn btn-line" href="{u("kits/")}">Shop kits</a></div>
+<ul class="chips"><li>Trial kit S$9.90</li><li>Free delivery</li></ul>
+</div>
+<div class="hero-art">{photo("strip-in-hand", HAND_ALT, lazy=False)}</div>
+</div></section>
+
+<section class="tight"><div class="wrap"><div class="grid g4 why">{why_cards()}</div></div></section>
+
+<section class="alt"><div class="wrap split">
+<div>{photo("strip-layers", LAYERS_ALT)}</div>
+<div>
+<span class="eyebrow">How it works</span>
+<h2>Opens your nose, gently</h2>
+<p>Three spring bars lift the sides of your nose, so air flows freely.</p>
+<ul class="ticks"><li>Silk top layer</li><li>Three PET spring bars</li><li>Latex-free adhesive</li></ul>
+<a class="btn btn-line" href="{u("how-to-use/")}">How to use</a>
+</div>
+</div></section>
+
+<section><div class="wrap">
+<div class="sec-head"><h2>What it’s for</h2></div>
+{use_cards()}
+</div></section>
+
+<section class="alt" id="buy"><div class="wrap">
+<div class="sec-head"><h2>Choose your kit</h2><p>Free delivery. No subscription.</p></div>
+{kit_cards()}
+</div></section>
+
+{reviews_block()}
+
+{faq_block(pick("How do nasal strips work?", "Can I sleep with them on?", "How fast is delivery in Singapore?", "How do I order?"), "FAQ")}
+
+{band("Breathe easier tonight", "Start with the S$9.90 trial kit.", kit_text(KITS[0]), "Order the trial kit")}
+'''
+    return page('', 'Cleeneo Nasal Strips | Drug-Free Snoring Relief Singapore',
+                'Drug-free, latex-free silk nasal strips for snoring, sport and a blocked nose. Rated 4.9/5. Trial kit S$9.90 with free delivery across Singapore.',
+                body, active='', ld=[product_ld(), faq_ld(pick("How do nasal strips work?", "Can I sleep with them on?", "How fast is delivery in Singapore?", "How do I order?"))],
+                share='Silk Nasal Strips for Better Sleep')
+
+
+USES = {
+    'snoring': {
+        'title': 'Nasal Strips for Snoring Singapore | Cleeneo',
+        'desc': 'Drug-free silk nasal strips that help you keep breathing through your nose at night for quieter sleep. Trial kit S$9.90, free delivery in Singapore.',
+        'h1': 'Nasal Strips for Snoring and Better Sleep',
+        'sub': 'Keep breathing through your nose all night.',
+        'icon': 'moon',
+        'sections': [
+            ('Why it helps',
+             '<ul class="ticks"><li>A blocked nose pushes you to mouth-breathe, and snore</li><li>Cleeneo opens your nose from the outside</li><li>Holds all night, peels off clean</li></ul>'),
+        ],
+        'faq': ['How do nasal strips work?', 'Can I sleep with them on?', 'Do I need a subscription?'],
+        'wa': 'Hi Cleeneo, I would like to try your nasal strips for snoring.',
+    },
+    'sports': {
+        'title': 'Sports Nasal Strips for Running & Training | Cleeneo SG',
+        'desc': 'Silk nasal strips for runners, cyclists and gym-goers in Singapore. More air through your nose while you train. Trial kit S$9.90, free delivery.',
+        'h1': 'Sports Nasal Strips for Running, Cycling and Training',
+        'sub': 'More air through your nose as the effort goes up.',
+        'icon': 'run',
+        'sections': [
+            ('Built for training',
+             '<ul class="ticks"><li>More air per breath through your nose</li><li>Stays on through sweat and movement</li><li>Low-profile under a cap or helmet</li><li>Apply before your warm-up</li></ul>'),
+        ],
+        'faq': ['How do nasal strips work?', 'How long can I wear one strip?', 'How do I order?'],
+        'wa': 'Hi Cleeneo, I would like to try your nasal strips for sport.',
+    },
+    'allergies': {
+        'title': 'Nasal Strips for Allergies & Blocked Nose | Cleeneo SG',
+        'desc': 'Drug-free nasal strips for a blocked nose from dust mites, mould or haze in Singapore. No drowsiness. Trial kit S$9.90, free delivery.',
+        'h1': 'Nasal Strips for Allergies and a Blocked Nose',
+        'sub': 'Drug-free relief from dust mites, mould and haze.',
+        'icon': 'leaf',
+        'sections': [
+            ('Why it helps',
+             '<ul class="ticks"><li>Opens a stuffy nose the moment it goes on</li><li>No medicine, no drowsiness</li><li>Wear it day or night, up to 12 hours</li></ul>'),
+        ],
+        'faq': ['Are Cleeneo strips drug-free and latex-free?', 'How long can I wear one strip?', 'Can I sleep with them on?'],
+        'wa': 'Hi Cleeneo, I would like to try your nasal strips for my allergies.',
+    },
+}
+
+
+def use_page(key):
+    p = USES[key]
+    path = f'nasal-strips/{key}/'
+    secs = ''.join(f'<section{" class=\"alt\"" if i % 2 else ""}><div class="wrap narrow"><h2>{h}</h2>{b}</div></section>'
+                   for i, (h, b) in enumerate(p['sections']))
+    items = pick(*p['faq'])
+    body = (page_hero([('Nasal strips', 'kits/'), (p['h1'].split(' for ')[-1].split(' and ')[0].capitalize(), path)], p['h1'], p['sub'])
+            + f'<section><div class="wrap split"><div>{photo("strip-flat", FLAT_ALT)}</div><div><h2>Try Cleeneo for {key}</h2>'
+              f'<p>Trial kit S$9.90. Free delivery.</p>'
+              f'{rating_line()}<div class="btns">{wa_btn("Order on WhatsApp", p["wa"])}<a class="btn btn-line" href="{u("kits/")}">See kits &amp; prices</a></div></div></div></section>'
+            + secs
+            + reviews_block()
+            + f'<section class="alt"><div class="wrap"><div class="sec-head"><h2>Choose your kit</h2></div>{kit_cards()}</div></section>'
+            + faq_block(items, 'Questions')
+            + f'<section><div class="wrap"><div class="sec-head"><h2>Also great for</h2></div>{use_cards(path)}</div></section>')
+    crumb = p['h1'].replace('Nasal Strips for ', '').replace('Sports Nasal Strips for ', '')
+    ld = [crumbs_ld([('Nasal strips', 'kits/'), (crumb, path)]), faq_ld(items), product_ld()]
+    return page(path, p['title'], p['desc'], body, active=path, ld=ld, share=p['h1'])
+
+
+def how_to():
+    items = [('Can I reuse a strip?', 'No. Use a fresh strip each time.'),
+             ('The strip keeps coming off. What should I do?', 'Dry, oil-free skin, then press for 10–15 seconds.'),
+             ('Does it hurt to take off?', 'No. Wet it first and peel slowly from the ends.')]
+    body = (page_hero([('How to use', 'how-to-use/')], 'How to Apply Nasal Strips for the Best Lift',
+                      'Four steps, under a minute.')
+            + f'<section><div class="wrap"><div class="sec-head"><h2>Apply it in four steps</h2></div>{steps_html()}</div></section>'
+            + f'<section class="alt"><div class="wrap split"><div>{photo("strip-flat", FLAT_ALT)}</div><div><h2>Getting the position right</h2>'
+              '<p>Where the hard bridge meets the soft sides of your nose.</p>'
+              '<ul class="ticks"><li>Clean, dry skin</li><li>Centred and even</li><li>Pressed 10–15 seconds</li></ul></div></div></section>'
+            + faq_block(items, 'Tips and questions')
+            + band('Try it tonight', 'Trial kit S$9.90, free delivery.', kit_text(KITS[0]), 'Order the trial kit'))
+    return page('how-to-use/', 'How to Apply Nasal Strips: Step by Step | Cleeneo',
+                'How to put on a nasal strip for the best lift: clean and dry, find the spot, press for 10 to 15 seconds, and peel off gently in the morning.',
+                body, active='how-to-use/', ld=[crumbs_ld([('How to use', 'how-to-use/')]), faq_ld(items), {
+                    '@context': 'https://schema.org', '@type': 'HowTo', 'name': 'How to apply a Cleeneo nasal strip',
+                    'step': [{'@type': 'HowToStep', 'position': i + 1, 'name': t, 'text': d} for i, (t, d) in enumerate(STEPS)]}],
+                share='How to Apply Nasal Strips for the Best Lift')
+
+
+def kits():
+    opts = ''.join(f'<option value="{k["id"]}">{e(k["name"])}: {k["strips"]} strips, S${k["price"]}</option>' for k in KITS)
+    body = (page_hero([('Kits &amp; prices', 'kits/')], 'Cleeneo Nasal Strip Kits and Prices',
+                      'Free delivery. No subscription.')
+            + f'<section><div class="wrap"><div class="sec-head"><h2>Choose your kit</h2></div>{kit_cards()}</div></section>'
+            + f'''<section class="alt" id="order"><div class="wrap split top">
+<div>
+<h2>Order on WhatsApp</h2>
+<p>Fill in your details. WhatsApp opens with your order ready to send.</p>
+<ul class="ticks"><li>Free, tracked delivery</li><li>Arrives in 2–4 business days</li></ul>
+<p class="muted">Or email <a href="mailto:{BIZ["email"]}">{BIZ["email"]}</a>.</p>
+</div>
+<form class="card form" id="oform">
+<label class="f" for="o-kit">Kit</label><select id="o-kit" required>{opts}</select>
+<label class="f" for="o-qty">Quantity</label><select id="o-qty">{''.join(f'<option>{n}</option>' for n in range(1, 6))}</select>
+<label class="f" for="o-name">Name</label><input id="o-name" type="text" autocomplete="name" required>
+<label class="f" for="o-addr">Delivery address</label><textarea id="o-addr" autocomplete="street-address" required></textarea>
+<label class="f" for="o-postal">Postal code</label><input id="o-postal" type="text" inputmode="numeric" autocomplete="postal-code" pattern="[0-9]{{6}}" required>
+<button class="btn btn-wa wide" type="submit">{ICON["wa"]}Send order on WhatsApp</button>
+<p class="small muted">Singapore addresses only.</p>
+</form>
+</div></section>'''
+            + faq_block(pick('How do I order?', 'How fast is delivery in Singapore?', 'Do you ship outside Singapore?'), 'Ordering questions'))
+    data = json.dumps({k['id']: {'name': k['name'], 'strips': k['strips'], 'price': k['price']} for k in KITS})
+    body += f'<script>window.CLEENEO_KITS={data};</script>'
+    return page('kits/', 'Buy Nasal Strips Online in Singapore: Kits & Prices | Cleeneo',
+                'Cleeneo silk nasal strips: 10-strip trial kit S$9.90, 30-strip pack S$21.90, 90-strip bundle S$43.80. Free delivery in Singapore, no subscription.',
+                body, active='kits/', ld=[crumbs_ld([('Kits & prices', 'kits/')]), product_ld(),
+                                          faq_ld(pick('How do I order?', 'How fast is delivery in Singapore?', 'Do you ship outside Singapore?'))],
+                share='Nasal Strip Kits from S$9.90 with Free Delivery')
+
+
+def shipping():
+    items = [('Is delivery really free?', 'Yes, on every kit.'),
+             FAQ[7],
+             ('How do I track my order?', f'WhatsApp us on <a href="{wa_link("Hi Cleeneo, can I have an update on my order?")}" target="_blank" rel="noopener">{BIZ["disp"]}</a> for an update.')]
+    body = (page_hero([('Shipping &amp; returns', 'shipping/')], 'Shipping and Delivery Across Singapore',
+                      'Free and tracked. Singapore only.')
+            + f'''<section><div class="wrap"><div class="sec-head"><h2>How delivery works</h2></div></div><div class="wrap grid g3">
+<div class="card"><div class="ico">{ICON["truck"]}</div><h3>Free delivery</h3><p>On every kit. No minimum.</p></div>
+<div class="card"><div class="ico">{ICON["repeat"].replace('<path d="M2 2l20 20"/>', '')}</div><h3>Fast dispatch</h3><p>Out in 1–2 business days.</p></div>
+<div class="card"><div class="ico">{ICON["plane"]}</div><h3>Singapore only</h3><p>Arrives 2–4 days after dispatch.</p></div>
+</div></section>
+<section class="alt"><div class="wrap narrow">
+<h2>Returns and problems with an order</h2>
+<p>Damaged or faulty? Email <a href="mailto:{BIZ["email"]}">{BIZ["email"]}</a> within 14 days and we’ll fix it. Opened packs can’t be returned for hygiene reasons.</p>
+</div></section>'''
+            + faq_block(items, 'Delivery questions')
+            + band('Free delivery on every kit', 'Order in a minute.'))
+    return page('shipping/', 'Shipping & Delivery Across Singapore | Cleeneo',
+                'Free, tracked and insured delivery across Singapore on every Cleeneo order. Dispatched in 1–2 business days, arriving in 2–4. Singapore only.',
+                body, active='', ld=[crumbs_ld([('Shipping & returns', 'shipping/')]), faq_ld(items)],
+                share='Free, Tracked Delivery Across Singapore')
+
+
+def about():
+    body = (page_hero([('About', 'about/')], 'About Cleeneo',
+                      'Premium silk nasal strips, made in Singapore.')
+            + f'''<section><div class="wrap split">
+<div>
+<h2>Breathe easier, sleep deeper</h2>
+<p>Silk nasal strips that gently open your nose. For sleepers, athletes, travellers and allergy sufferers.</p>
+<p>Our mission is simple: help you wake up rested.</p>
+</div>
+<div>{photo("strip-layers", LAYERS_ALT)}</div>
+</div></section>
+<section class="alt"><div class="wrap grid g3">
+<div class="card"><div class="ico">{ICON["wind"]}</div><h3>Effortless breathing</h3><p>Firm lift, no discomfort.</p></div>
+<div class="card"><div class="ico">{ICON["plane"]}</div><h3>Who it’s for</h3><p>Anyone who wants clearer airflow.</p></div>
+<div class="card"><div class="ico">{ICON["shield"]}</div><h3>Singapore-based</h3><p>Local, with free delivery.</p></div>
+</div></section>'''
+            + reviews_block()
+            + band('Questions?', 'WhatsApp us, including wholesale.', WA_TEXT, 'WhatsApp us', second=False))
+    return page('about/', 'About Cleeneo | Silk Nasal Strips Designed in Singapore',
+                'Cleeneo is a Singapore brand of drug-free, latex-free silk nasal strips for sleepers, athletes, travellers and allergy sufferers.',
+                body, active='', ld=[crumbs_ld([('About', 'about/')])], share='Silk Nasal Strips, Designed and Run in Singapore')
+
+
+def privacy():
+    body = (page_hero([('Privacy', 'privacy/')], 'Privacy Policy',
+                      'How we handle your personal data, in line with Singapore’s PDPA.')
+            + f'''<section><div class="wrap narrow article">
+<h2>What we collect</h2>
+<p>Only what you send us when you order or ask a question: your name, phone number, delivery address, email and your messages.</p>
+<h2>Why we use it</h2>
+<ul class="ticks"><li>To confirm, deliver and support your order</li><li>To reply to your questions</li></ul>
+<p>We don’t sell your data or send marketing unless you ask us to.</p>
+<h2>Who we share it with</h2>
+<p>Only our delivery partner, to get your order to you, and payment providers you choose to pay with.</p>
+<h2>How long we keep it</h2>
+<p>As long as we need it for your order and our legal records, then we delete it.</p>
+<h2>This website</h2>
+<p>We don’t use advertising cookies. We count taps on our WhatsApp buttons, with no names or phone numbers attached.</p>
+<h2>Your rights</h2>
+<p>You can ask to see, correct or delete your data, or withdraw consent, at any time. Email <a href="mailto:{BIZ["email"]}">{BIZ["email"]}</a> and we’ll reply within 30 days.</p>
+<p class="muted">Last updated 13 October 2026.</p>
+</div></section>''')
+    return page('privacy/', 'Privacy Policy | Cleeneo',
+                'How Cleeneo collects, uses and protects your personal data under Singapore’s Personal Data Protection Act (PDPA).',
+                body, active='', ld=[crumbs_ld([('Privacy', 'privacy/')])], share='Privacy Policy')
+
+
+def contact():
+    body = (page_hero([('Contact', 'contact/')], 'Contact Cleeneo',
+                      'WhatsApp is the fastest way to reach us.')
+            + f'''<section><div class="wrap"><div class="sec-head"><h2>Ways to reach us</h2></div></div><div class="wrap split top">
+<div class="grid">
+<div class="card"><div class="ico">{ICON["wa"]}</div><h3>WhatsApp</h3><p><a href="{wa_link()}" target="_blank" rel="noopener">{BIZ["disp"]}</a></p>{wa_btn("Chat on WhatsApp")}</div>
+<div class="card"><div class="ico">{ICON["mail"]}</div><h3>Email</h3><p><a href="mailto:{BIZ["email"]}">{BIZ["email"]}</a></p></div>
+<div class="card"><div class="ico">{ICON["truck"]}</div><h3>Delivery</h3><p>Free, Singapore only. <a href="{u("shipping/")}">Details</a></p></div>
+</div>
+<form class="card form" id="qform">
+<h2 class="h3">Send us a message</h2>
+<label class="f" for="q-name">Name</label><input id="q-name" type="text" autocomplete="name" required>
+<label class="f" for="q-contact">Phone or email</label><input id="q-contact" type="text" autocomplete="email" required>
+<label class="f" for="q-msg">Message</label><textarea id="q-msg" required></textarea>
+<div class="btns"><button class="btn btn-wa" type="submit">{ICON["wa"]}Send on WhatsApp</button><button class="btn btn-line" type="button" id="q-mail">Send by email</button></div>
+</form>
+</div></section>'''
+            + faq_block(pick('How do I order?', 'How fast is delivery in Singapore?', 'Do you ship outside Singapore?'), 'Before you message'))
+    return page('contact/', 'Contact Cleeneo | WhatsApp 8060 4977',
+                'Contact Cleeneo on WhatsApp 8060 4977 or sales@cleeneo.co for orders, questions, wholesale and partnerships. Singapore delivery only.',
+                body, active='contact/', ld=[crumbs_ld([('Contact', 'contact/')]), faq_ld(pick('How do I order?', 'How fast is delivery in Singapore?', 'Do you ship outside Singapore?'))],
+                share='Contact Cleeneo: WhatsApp 8060 4977')
+
+
+POSTS = [{
+    'slug': 'do-nasal-strips-really-help-with-snoring',
+    'title': 'Do Nasal Strips Really Help With Snoring and Mouth Breathing?',
+    'seo': 'Do Nasal Strips Help With Snoring? How They Work | Cleeneo',
+    'desc': 'How nasal strips open the nasal valve, why nose breathing matters for sleep, what to look for in a good strip, and how to apply one properly.',
+    'date': '2026-10-11', 'date_disp': '11 October 2026',
+    'body': [
+        ('', '<p>Waking up with a dry mouth, feeling groggy, or being told you snore are often signs of the same thing: breathing through your mouth at night because your nose is partly blocked. Nasal strips are a simple, non-invasive way to help. Here is how they work, when they help, and what makes a good one.</p>'),
+        ('How nasal strips work', '<p>The narrowest part of the airway in your nose is the <strong>nasal valve</strong>, just inside the nostrils. Even a small narrowing here makes breathing through your nose noticeably harder. A nasal strip works like a flexible spring: once it is pressed onto the bridge of the nose, its bars try to straighten, gently lifting the side walls of the nose away from the middle. The valve widens and air flows in with less resistance.</p><p>Because the strip works purely through tension, there is no medicine involved, so nothing wears off and nothing interacts with other things you take.</p>'),
+        ('Why nose breathing matters for sleep', '<p>Your nose warms, humidifies and filters the air before it reaches your lungs, and the sinuses add nitric oxide to the air you breathe in. When the nose is blocked and you switch to breathing through your mouth, air moves past the soft tissue at the back of the throat and can make it vibrate. That vibration is snoring.</p><p>So for snoring that starts with a blocked or narrow nose, keeping the nose open can make a real difference. Strips will not fix every kind of snoring, though. Snoring caused by the throat, the tongue or sleep apnoea needs a doctor’s advice.</p>'),
+        ('What to look for in a good nasal strip', '<h3>1. More than one tension bar</h3><p>Several flexible bars lift more evenly than a single band, and hold the nasal passages open more consistently through the night.</p><h3>2. A breathable, soft material</h3><p>Soft materials such as silk sit comfortably on the skin and follow the shape of the nose. Rubbery or heavy plastic strips can trap sweat and oil and lift off.</p><h3>3. A skin-friendly adhesive</h3><p>The adhesive should hold all night but come off without red marks. Latex-free, hypoallergenic adhesives are kinder to sensitive skin.</p>'),
+        ('How to apply a nasal strip properly', '<ol><li><strong>Clean your skin.</strong> Wash and fully dry your nose so there is no oil or moisturiser.</li><li><strong>Find the right position.</strong> Centre the strip on the bridge of your nose, just above where the nostrils flare.</li><li><strong>Press and secure.</strong> Rub along the strip for 10 to 15 seconds so the adhesive bonds.</li><li><strong>Remove it gently.</strong> In the morning, wet the strip and peel slowly from both ends.</li></ol>'),
+        ('When to see a doctor', f'<p>{DOCTOR}</p>'),
+        ('Try Cleeneo', '<p>Cleeneo strips have three PET spring-tension bars under a soft silk layer, with a hypoallergenic, latex-free adhesive. The 10-strip trial kit is S$9.90 with free delivery across Singapore, and there is no subscription.</p>'),
+    ],
+}]
+
+
+def blog():
+    cards = ''.join(f'<a class="card use" href="{u("blog/" + p["slug"] + "/")}"><p class="muted small">{p["date_disp"]}</p><h3>{e(p["title"])}</h3><p>{e(p["desc"])}</p><span class="more">Read more →</span></a>' for p in POSTS)
+    body = (page_hero([('Blog', 'blog/')], 'The Cleeneo Blog', 'Plain guides to nose breathing, snoring and sleeping better.')
+            + f'<section><div class="wrap"><div class="sec-head"><h2>Latest guides</h2></div></div><div class="wrap grid g2">{cards}</div></section>')
+    return page('blog/', 'Blog: Nose Breathing, Snoring & Sleep | Cleeneo',
+                'Guides from Cleeneo on nasal strips, nose breathing, snoring and better sleep in Singapore.',
+                body, active='', ld=[crumbs_ld([('Blog', 'blog/')])], share='Guides to Nose Breathing, Snoring and Better Sleep')
+
+
+def post(p):
+    path = f'blog/{p["slug"]}/'
+    secs = ''.join((f'<h2>{h}</h2>' if h else '') + b for h, b in p['body'])
+    body = (page_hero([('Blog', 'blog/'), ('Article', path)], e(p['title']), f'By Cleeneo · {p["date_disp"]}')
+            + f'<section><div class="wrap narrow article">{secs}<div class="btns" style="margin-top:24px">{wa_btn("Order the trial kit", kit_text(KITS[0]))}'
+              f'<a class="btn btn-line" href="{u("kits/")}">See kits &amp; prices</a></div></div></section>')
+    ld = [crumbs_ld([('Blog', 'blog/'), (p['title'], path)]), {
+        '@context': 'https://schema.org', '@type': 'BlogPosting', 'headline': p['title'], 'description': p['desc'],
+        'datePublished': p['date'], 'dateModified': '2026-10-13', 'author': {'@type': 'Organization', 'name': 'Cleeneo', 'url': f'{ORIGIN}/'},
+        'publisher': {'@id': f'{ORIGIN}/#org'}, 'mainEntityOfPage': f'{ORIGIN}/{path}',
+        'image': f'{IMG_ORIGIN}/img/share/blog-{p["slug"]}.jpg'}]
+    return page(path, p['seo'], p['desc'], body, active='', ld=ld, share=p['title'])
+
+
+def not_found():
+    global ABS
+    ABS = True
+    try:
+        body = (page_hero([('Page not found', '')], 'Sorry, that page isn’t here',
+                          'It may have moved when the Cleeneo site was updated. These links will get you back on track.')
+                + f'<section><div class="wrap"><div class="sec-head"><h2>Find the right strip</h2></div>{use_cards()}<p style="margin-top:20px" class="btns"><a class="btn btn-line" href="{u()}">Home</a><a class="btn btn-line" href="{u("kits/")}">Kits &amp; prices</a>{wa_btn("WhatsApp us")}</p></div></section>')
+        html_ = page('404.html', 'Page not found | Cleeneo', 'This page does not exist on cleeneo.co.', body)
+    finally:
+        ABS = False
+        SHARES.pop('404.html', None)
+    return html_.replace('<meta name="robots" content="index, follow, max-image-preview:large">', '<meta name="robots" content="noindex, follow">')
+
+
+def write(rel, text):
+    path = os.path.join(OUT, rel)
+    os.makedirs(os.path.dirname(path), exist_ok=True)
+    with open(path, 'w', encoding='utf-8') as f:
+        f.write(text)
+
+
+PAGES = []
+
+
+def build(rel, fn, *args):
+    global DEPTH
+    DEPTH = rel.count('/')
+    write(rel, fn(*args))
+    if rel.endswith('index.html'):
+        PAGES.append(rel[:-len('index.html')])
+
+
+def robots_txt():
+    return f'User-agent: *\nAllow: /\n\nSitemap: {ORIGIN}/sitemap.xml\n'
+
+
+def sitemap():
+    urls = ''.join(f'<url><loc>{ORIGIN}/{p}</loc><lastmod>2026-10-13</lastmod></url>' for p in PAGES)
+    return f'<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">{urls}</urlset>\n'
+
+
+def llms_txt():
+    kits = '\n'.join(f'- {k["name"]}: {k["strips"]} strips, S${k["price"]}' for k in KITS)
+    return f'''# Cleeneo
+
+> Singapore brand of drug-free, latex-free silk nasal strips. A spring-tension bar lifts the nasal valve for easier nose breathing, for snoring, sport and allergy congestion. Free delivery across Singapore (Singapore only), no subscription.
+
+- Orders and questions: WhatsApp +65 {BIZ["disp"]} (https://wa.me/{BIZ["wa"]}), email {BIZ["email"]}
+- Rated {RATING[0]}/5 from {RATING[1]} verified reviews
+
+## Kits (SGD, free delivery)
+{kits}
+
+## Pages
+- [Home]({ORIGIN}/)
+- [Nasal strips for snoring]({ORIGIN}/nasal-strips/snoring/)
+- [Sports nasal strips]({ORIGIN}/nasal-strips/sports/)
+- [Nasal strips for allergies]({ORIGIN}/nasal-strips/allergies/)
+- [How to use]({ORIGIN}/how-to-use/)
+- [Kits and prices]({ORIGIN}/kits/)
+- [Shipping and returns]({ORIGIN}/shipping/)
+- [About]({ORIGIN}/about/)
+- [Contact]({ORIGIN}/contact/)
+- [Privacy]({ORIGIN}/privacy/)
+- [Blog]({ORIGIN}/blog/)
+'''
+
+
+def manifest():
+    return json.dumps({'name': 'Cleeneo', 'short_name': 'Cleeneo', 'start_url': './', 'display': 'browser',
+                       'background_color': '#ffffff', 'theme_color': '#004d53',
+                       'icons': [{'src': f'icon-{s}.png', 'sizes': f'{s}x{s}', 'type': 'image/png'} for s in (192, 512)]}, indent=1)
+
+
+def main():
+    build('index.html', home)
+    for k in USES:
+        build(f'nasal-strips/{k}/index.html', use_page, k)
+    build('nasal-strips/index.html', lambda: redirect_page('../kits/'))
+    PAGES.remove('nasal-strips/')
+    build('how-to-use/index.html', how_to)
+    build('kits/index.html', kits)
+    build('shipping/index.html', shipping)
+    build('about/index.html', about)
+    build('contact/index.html', contact)
+    build('privacy/index.html', privacy)
+    build('blog/index.html', blog)
+    for p in POSTS:
+        build(f'blog/{p["slug"]}/index.html', post, p)
+    build('404.html', not_found)
+    build('robots.txt', robots_txt)
+    build('sitemap.xml', sitemap)
+    build('llms.txt', llms_txt)
+    build('site.webmanifest', manifest)
+    write(f'{INDEXNOW_KEY}.txt', INDEXNOW_KEY)
+    for d in ('img', 'img/share'):
+        write(f'{d}/index.html', '')
+    print('pages', len(PAGES))
+    cards = {s: {'headline': h, 'kicker': k} for s, (h, k) in SHARES.items()}
+    with open(os.path.join(HERE, 'share-cards.json'), 'w') as f:
+        json.dump({'cards': cards, 'photo': os.path.join(HERE, 'source', 'photos', 'strip-in-hand.png'),
+                   'mark': os.path.join(HERE, 'source', 'photos', 'mark-512.png')}, f, ensure_ascii=False)
+    if os.environ.get('SKIP_IMAGES') != '1':
+        env = dict(os.environ)
+        if 'NODE_PATH' not in env:
+            env['NODE_PATH'] = subprocess.run(['npm', 'root', '-g'], capture_output=True, text=True).stdout.strip()
+        subprocess.run(['node', os.path.join(HERE, 'share.mjs')], check=True, env=env)
+
+
+def redirect_page(to):
+    return (f'<!doctype html><html lang="en-SG"><head><meta charset="utf-8"><meta name="robots" content="noindex">'
+            f'<meta http-equiv="refresh" content="0; url={to}"><link rel="canonical" href="{ORIGIN}/kits/"><title>Cleeneo</title></head>'
+            f'<body><p><a href="{to}">Cleeneo kits and prices</a></p></body></html>')
+
+
+if __name__ == '__main__':
+    main()
