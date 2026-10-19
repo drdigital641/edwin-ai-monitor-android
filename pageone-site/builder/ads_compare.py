@@ -1,14 +1,14 @@
 # /google-ads-vs-seo-vs-ai-blog-tools/: the owner page for "Google Ads vs SEO vs AI blog tools" (Edwin, 17 Oct 2026,
 # after seeing ads for AI blog autopilot tools). Distinct intent from /budget-seo-website-singapore/ (what a small budget
 # buys), /cheapest-seo-singapore/ (price searches), /ai-seo-vs-traditional-seo/ (why AI-run SEO costs less) and
-# /seo-services-singapore/ (agency vs in-house vs S$20). Links to all four; edits none of them.
+# /seo-services-singapore/ (agency vs in-house vs S$50). Links to all four; edits none of them.
 # Content rules (Edwin, 15 Oct 2026, pageone-s20-bundle-positioning): categories only, never a named competitor or a
 # competitor's price, never knock anyone. The Google Ads figure is a labelled example budget, not a market price.
 # AI blog tools get no price. Page One facts are only those already on /pricing/, /get-found/ and the offer block.
 # Run from build.py (exec) after ai_seo.py (uses _faq_html, _faq_ld, PRICE_GLANCE, PROOF_BOTH).
 
 ADS_URL = "/google-ads-vs-seo-vs-ai-blog-tools/"
-ADS_UPDATED = "2026-10-17"
+ADS_UPDATED = "2026-10-19"
 
 # Question headings with a 40-60 word answer first (AEO checklist). Not FAQ markup: only the visible FAQ below is marked up.
 ADS_QA = [
@@ -17,16 +17,16 @@ ADS_QA = [
     ("ai-blog-tools", "What does an AI blog autopilot tool do?",
      "An AI blog autopilot tool is software that suggests keywords, writes blog articles with AI and publishes them to a website you already have, on a schedule. It is usually self-serve: you connect your site, set your topics and review what goes out. It helps with one part of SEO, regular articles, rather than the whole job."),
     ("page-one", "What does Page One do differently?",
-     "Page One Singapore is a done-for-you service, not software. For S$20 a month (introductory price) it builds and hosts a website for you free, or fixes the technical SEO on the one you have. It sets up Google Business Profile, Search Console and Bing, labels your details for AI assistants, writes a new article every day and audits the site every day, fixing problems. No setup fee, no contract. It doesn't run paid ads."),
+     "Page One Singapore is a done-for-you service, not software. For S$50 a month it builds and hosts a website for you free, or fixes the technical SEO on the one you have. It sets up Google Business Profile, Search Console and Bing, labels your details for AI assistants, writes a new article every day and audits the site every day, fixing problems. No setup fee, no contract. It doesn't run paid ads."),
     ("which-fits", "Which one should I choose?",
      "Choose Google Ads if you need calls this week and have a budget for clicks. Choose an AI blog tool if you already have a good website and someone to look after it. Choose Page One if you want the website, Google Maps, articles and upkeep done for you. They can be combined."),
 ]
 
 ADS_FAQ = [
     ("Is SEO cheaper than Google Ads?",
-     "Usually, over time. With Google Ads you pay for every click, so the cost grows with the traffic and stops when you stop paying. SEO is a fixed monthly cost for the work, and the unpaid clicks it earns cost nothing each. Page One's SEO is S$20 a month, but results build gradually and no one can guarantee rankings."),
+     "Usually, over time. With Google Ads you pay for every click, so the cost grows with the traffic and stops when you stop paying. SEO is a fixed monthly cost for the work, and the unpaid clicks it earns cost nothing each. Page One's SEO is S$50 a month, but results build gradually and no one can guarantee rankings."),
     ("Do AI blog tools build my website?",
-     "Most don't. An AI blog autopilot tool usually needs a website you already have, and it adds articles to it. Hosting, security, page speed, your Google Business Profile and Search Console are normally left to you. Page One includes the website, hosting and that setup in the S$20 a month, with the articles."),
+     "Most don't. An AI blog autopilot tool usually needs a website you already have, and it adds articles to it. Hosting, security, page speed, your Google Business Profile and Search Console are normally left to you. Page One includes the website, hosting and that setup in the S$50 a month, with the articles."),
     ("Does Page One run Google Ads for me?",
      "No. Page One focuses on organic, unpaid visibility on Google Search, Google Maps and AI assistants like ChatGPT. We don't run paid ads, manage social media or buy links. If you want ads managed, an agency or a Google Ads specialist is the better fit, and your Page One website can still be the page your ads link to."),
     ("How fast does each one work?",
@@ -40,7 +40,7 @@ ADS_FAQ = [
 _ADS_COLS = ["Google Ads", "AI blog autopilot tool", "Page One (website + SEO)"]
 _ADS_ROWS = [
     ("What it is", "Paid ads at the top of Google, marked “Sponsored”", "Software that writes and publishes blog articles to your site", "A done-for-you website with SEO, managed every day"),
-    ("How you pay", "Your own ad budget, charged per click (for example, a S$2,000 a month budget; you set the amount)", "A software subscription", "<b>S$20 a month</b> (introductory price), no setup fee"),
+    ("How you pay", "Your own ad budget, charged per click (for example, a S$2,000 a month budget; you set the amount)", "A software subscription", "<b>S$50 a month</b>, no setup fee"),
     ("When it stops", "Ads stop showing when the budget runs out or you pause", "Articles already published stay on your site", "No contract; cancel anytime"),
     ("Website included", "No, you need a landing page", "No, it posts to a site you already have", "Yes: built free on your own domain, or your current site's technical SEO fixed"),
     ("Google Maps (Business Profile)", "Not included", "Usually not included", "Set up for you"),
@@ -132,7 +132,7 @@ page(ADS_URL.strip("/") + "/index.html",
         <h2 class="reveal">{ADS_QA[2][1]}</h2>
         <p class="section-lead reveal">{ADS_QA[2][2]}</p>
         <p class="reveal">{PROOF_BOTH} Results vary by business, so we don't guarantee rankings or AI mentions.</p>
-        <p class="note reveal"><a class="card-link" href="/pricing/">Full pricing →</a> <a class="card-link" href="/results/">See the results →</a> <a class="card-link" href="/budget-seo-website-singapore/">On a small budget? What S$20 to S$50 buys →</a></p>
+        <p class="note reveal"><a class="card-link" href="/pricing/">Full pricing →</a> <a class="card-link" href="/results/">See the results →</a> <a class="card-link" href="/budget-seo-website-singapore/">On a small budget? What S$50 a month buys →</a></p>
       </div>
     </section>
 
@@ -165,7 +165,7 @@ page(ADS_URL.strip("/") + "/index.html",
         <h2 class="reveal">Google Ads, SEO and AI blog tools: your questions, answered</h2>
         <div style="margin-top:24px">
 {_faq_html(ADS_FAQ)}        </div>
-        <p class="note reveal">Why AI-run SEO can cost this little: <a class="link" href="/ai-seo-vs-traditional-seo/">AI SEO vs traditional SEO →</a> · Comparing SEO providers: <a class="link" href="/seo-services-singapore/">agency vs in-house vs S$20 a month →</a> · Price searches: <a class="link" href="/cheapest-seo-singapore/">low-cost SEO in Singapore →</a></p>
+        <p class="note reveal">Why AI-run SEO can cost this little: <a class="link" href="/ai-seo-vs-traditional-seo/">AI SEO vs traditional SEO →</a> · Comparing SEO providers: <a class="link" href="/seo-services-singapore/">agency vs in-house vs S$50 a month →</a> · Price searches: <a class="link" href="/cheapest-seo-singapore/">low-cost SEO in Singapore →</a></p>
       </div>
     </section>
 

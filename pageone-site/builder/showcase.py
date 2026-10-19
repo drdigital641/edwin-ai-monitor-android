@@ -281,7 +281,7 @@ def clients_page():
         ("Are these real businesses?", f"Yes. Every website on this page is live on the business's own domain, so you can open it and check. Edwin Garage is our founder's own car workshop, where the system was first built. The others are businesses we build and run websites for."),
         ("Where do the Google numbers come from?", f"From Google Search Console, Google's own report of how a website performs in Google Search. We collect the final data automatically and don't edit it. The figures on this page cover the 28 days to {THROUGH} ({WINDOW}), compared with the 28 days before ({PREV_WINDOW})."),
         ("Why do some websites have no numbers?", "Google needs time to find and test a new website. A site launched this month has no Search Console data yet, so we show what we built instead of guessing. The numbers will appear here once Google has them."),
-        ("How can it be good if it only costs S$20 a month?", "The price is low because a set of AI tools we designed does the daily SEO work that used to be billed by the hour, not because steps are skipped. The websites and numbers on this page are the proof, not a promise: results vary by business, and newer sites show smaller numbers."),
+        ("How can it be good if it only costs S$50 a month?", "The price is low because a set of AI tools we designed does the daily SEO work that used to be billed by the hour, not because steps are skipped. The websites and numbers on this page are the proof, not a promise: results vary by business, and newer sites show smaller numbers."),
         ("Is Page One Singapore a new company?", f"Yes. Page One Singapore is run by Snap Commercial Pte. Ltd., a Singapore company registered in 2022, and the first website on our SEO system went live in {FIRST_LAUNCH}. As of {GROWTH_AS_OF}, {LIVE_N} client websites are live on their own domains" + (f" and {BUILDING} more are being built for clients who have signed up" if BUILDING else "") + ". We add each new one to this page the day it goes live, so you can watch the portfolio grow."),
         ("Why are some clients not named?", "A website being built is only counted, never named, until it is live on the business's own domain. That protects our clients' plans and means every name on this page is a website you can open and check."),
         ("How often is this page updated?", "Every day. The Search Console figures are refreshed daily, and each new client website is added the day it goes live on its own domain. The date of the data is always shown."),
@@ -292,7 +292,7 @@ def clients_page():
                 for i, c in enumerate(SC["clients"])]
     page("clients/index.html",
          "Client Websites &amp; Google Results | Page One Singapore",
-         f"See the websites Page One Singapore built and runs for real Singapore businesses, with their Google Search Console numbers to {THROUGH_SHORT}. S$20 a month.",
+         f"See the websites Page One Singapore built and runs for real Singapore businesses, with their Google Search Console numbers to {THROUGH_SHORT}. S$50 a month.",
          [{"@context": "https://schema.org", "@type": "CollectionPage", "url": SITE + "/clients/",
            "name": "Client websites and results", "about": PROVIDER, "inLanguage": "en-SG", "dateModified": CLIENTS_UPDATED,
            "mainEntity": {"@type": "ItemList", "name": "Websites built and run by Page One Singapore",
@@ -300,7 +300,7 @@ def clients_page():
           {"@context": "https://schema.org", "@type": "FAQPage",
            "mainEntity": [{"@type": "Question", "name": q, "acceptedAnswer": {"@type": "Answer", "text": a}} for q, a in faq]}],
          hero("Clients", "Client websites",
-              "S$20 a month, and here is what it has done for real Singapore businesses.",
+              "S$50 a month, and here is what it has done for real Singapore businesses.",
               f"Every website below is live on the business's own domain. Open them, judge the design yourself, and read their Google numbers straight from Search Console, with data to {THROUGH}. We are new and growing: each new client website is added here the day it goes live.", buttons=False) + """
 
     <section class="section" id="newest">
@@ -323,7 +323,7 @@ def clients_page():
       <div class="wrap">
         <p class="kicker reveal">Cheap can still be good</p>
         <h2 class="reveal">A low price, with the numbers to back it</h2>
-        <p class="section-lead reveal">S$20 a month is low because a set of AI tools we designed does the daily SEO work that used to be billed by the hour, not because steps are skipped. Here is what the same system has done. Last 28 days (""" + WINDOW + """), compared with the 28 days before.</p>
+        <p class="section-lead reveal">S$50 a month is low because a set of AI tools we designed does the daily SEO work that used to be billed by the hour, not because steps are skipped. Here is what the same system has done. Last 28 days (""" + WINDOW + """), compared with the 28 days before.</p>
         <div class="reveal">""" + kpis([
             ("Edwin Garage: clicks from Google", EG["clicks"], f"Up from {EG['prev_clicks']} · average position {EG['pos']}"),
             ("Edwin Garage: searches on page one", EG["page_one"], f"{EG['top3']} in the top 3"),
@@ -331,7 +331,7 @@ def clients_page():
             ("Websites live", str(len(SC["clients"])), "Each on the business's own domain"),
         ]) + """</div>
         <p class="note reveal"><b>Portfolio growth:</b> """ + GROWTH_LINE + """. Only sites live on the business's own domain are counted as live.</p>
-        <p class="note reveal">Results vary by business, and no one can guarantee rankings. Newer sites are shown too, with smaller numbers or none yet. <a class="link" href="/cheapest-seo-singapore/">Why it costs S$20 →</a></p>
+        <p class="note reveal">Results vary by business, and no one can guarantee rankings. Newer sites are shown too, with smaller numbers or none yet. <a class="link" href="/cheapest-seo-singapore/">Why it costs S$50 →</a></p>
       </div>
     </section>
 
@@ -355,7 +355,7 @@ def clients_page():
 """ for q, a in faq) + """      </div>
     </section>
 
-""" + cta("Want your business on this page?", "Sign up at the introductory price, or check where your website stands today. No obligation."),
+""" + cta("Want your business on this page?", "Sign up at S$50 a month, or check where your website stands today. No obligation."),
          crumb="Clients", updated=CLIENTS_UPDATED, head_extra="\n  <style>" + GROW_CSS + "</style>")
 
 _WORDS = ["zero", "one", "two", "three", "four", "five", "six", "seven", "eight", "nine", "ten"]
@@ -466,7 +466,7 @@ def llms_sections():
                      + names_list(sorted({month_long(c["launched"]) for c in new}, key=lambda x: x)) + ", no Search Console data yet.")
     lines += ["- Full case studies: https://pageonesingapore.com/results/",
               "- Every client website with its numbers: https://pageonesingapore.com/clients/",
-              "- Low price, real results: S$20 a month is low because a set of AI tools we designed does the daily SEO work that used to be billed by the hour; "
+              "- Low price, real results: S$50 a month is low because a set of AI tools we designed does the daily SEO work that used to be billed by the hour; "
               "the numbers above come from the same system."]
     growth = ", ".join(f"{n} by {month_long(m)}" for m, n in GROWTH)
     sites = ["## Websites we run",

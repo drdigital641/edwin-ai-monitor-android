@@ -1,7 +1,7 @@
 # /seo-aeo-geo-singapore/: the owner page for "SEO AEO GEO Singapore" searches, angled as "all three together".
 # The homepage shows only a three-card strip that links here; the detail and the FAQs live on this page.
 # Different intents, linked both ways: /ai-seo-vs-traditional-seo/ (why AI-run SEO costs less) and
-# /seo-services-singapore/ (agency vs in-house vs S$20). Run from build.py (exec) after managed.py.
+# /seo-services-singapore/ (agency vs in-house vs S$50). Run from build.py (exec) after managed.py.
 # Facts rule: only what every Page One site already gets; no promise that Google or an AI tool will show anyone.
 
 SAG_URL = "/seo-aeo-geo-singapore/"
@@ -12,7 +12,7 @@ SAG_FAQ = [
     ("What is GEO (generative engine optimisation)?",
      "GEO, generative engine optimisation, means helping AI assistants such as ChatGPT, Gemini, Perplexity and Copilot find your business, describe it correctly and name it as a source. We publish clear business facts and an llms.txt summary, allow AI crawlers in robots.txt, connect your site to Bing and Google, and keep your details consistent. No one can guarantee a mention."),
     ("Do I need SEO, AEO and GEO?",
-     "Most small businesses benefit from all three, because customers now look in three places: Google's results, the answers Google shows above them, and AI assistants. The three share the same groundwork, so doing them together costs less than doing them separately. With Page One, all three are part of the S$20 a month plan, with no setup fee."),
+     "Most small businesses benefit from all three, because customers now look in three places: Google's results, the answers Google shows above them, and AI assistants. The three share the same groundwork, so doing them together costs less than doing them separately. With Page One, all three are part of the S$50 a month plan, with no setup fee."),
     ("How do I know it's working?",
      "Google Search Console is connected to your site from day one, so you can see how often you appear on Google, what people searched and how many clicked. AI assistants have no official report yet, so the simplest check is to ask ChatGPT or Perplexity about your type of business in your area and see who is named."),
 ]
@@ -52,17 +52,17 @@ def _sag_card(k, e, t, what, does, terms):
 _sag_cards = "\n".join(_sag_card(*x) for x in _SAG_ITEMS)
 
 page("seo-aeo-geo-singapore/index.html",
-     "SEO, AEO and GEO Singapore: All Three from S$20/month",
-     "SEO for Google, AEO for Google's answers and AI Overviews, GEO for ChatGPT, Gemini and Perplexity: what each means and how we do all three for S$20/month.",
+     "SEO, AEO and GEO Singapore: All Three from S$50/month",
+     "SEO for Google, AEO for Google's answers and AI Overviews, GEO for ChatGPT, Gemini and Perplexity: what each means and how we do all three for S$50/month.",
      [service("SEO, AEO and GEO", SAG_URL,
               "Search engine optimisation (Google Search and Maps), answer engine optimisation (featured snippets, People Also Ask, AI Overviews) "
-              "and generative engine optimisation (ChatGPT, Gemini, Perplexity, Copilot), done together for Singapore small businesses.", "20"),
+              "and generative engine optimisation (ChatGPT, Gemini, Perplexity, Copilot), done together for Singapore small businesses.", "50"),
       _faq_ld(SAG_FAQ)],
      hero("SEO, AEO and GEO", "SEO + AEO + GEO",
           "SEO, AEO and GEO: found on Google, in its answers and in AI assistants.",
           "Customers now look in three places: Google's results, the short answers Google shows above them, and AI assistants like ChatGPT. "
-          "Page One works on all three at the same time, for S$20 a month (introductory price), with no setup fee and no contract.",
-          '<p class="hero-price"><b>S$20</b>/month · <span class="intro-tag">Introductory price</span> · all three together</p>') + f"""
+          "Page One works on all three at the same time, for S$50 a month, with no setup fee and no contract.",
+          '<p class="hero-price"><b>S$50</b>/month · <span class="intro-tag">Register by 31 Dec 2026</span> · all three together</p>') + f"""
 
     <section class="section">
       <div class="wrap">
@@ -78,7 +78,7 @@ page("seo-aeo-geo-singapore/index.html",
       <div class="wrap narrow">
         <p class="kicker reveal">Why together</p>
         <h2 class="reveal">One set of groundwork, three places to be found</h2>
-        <p class="reveal">Clear pages, honest business facts, structured data and a new article every day help Google rank you, give Google a short answer to show, and give AI assistants something reliable to quote. Doing them together means nothing is done twice, which is part of why it fits in S$20 a month.</p>
+        <p class="reveal">Clear pages, honest business facts, structured data and a new article every day help Google rank you, give Google a short answer to show, and give AI assistants something reliable to quote. Doing them together means nothing is done twice, which is part of why it fits in S$50 a month.</p>
         <p class="reveal">{PROOF_BOTH} Results vary by business, so we don't guarantee rankings or AI mentions.</p>
         <p class="note reveal"><a class="card-link" href="/results/">See the results →</a> <a class="card-link" href="/managed-website-singapore/">What fully managed covers →</a> <a class="card-link" href="/pricing/">Full pricing →</a></p>
       </div>
@@ -89,9 +89,9 @@ page("seo-aeo-geo-singapore/index.html",
         <p class="kicker reveal">Questions</p>
         <h2 class="reveal">SEO, AEO and GEO: your questions, answered</h2>
 """ + "\n".join(f'        <details class="reveal"><summary>{q}</summary><p>{a}</p></details>' for q, a in SAG_FAQ) + """
-        <p class="note reveal">Wondering why it costs so little? See <a class="link" href="/ai-seo-vs-traditional-seo/">AI SEO vs traditional SEO</a>. Comparing providers? See <a class="link" href="/seo-services-singapore/">agency vs in-house vs S$20 a month</a>.</p>
+        <p class="note reveal">Wondering why it costs so little? See <a class="link" href="/ai-seo-vs-traditional-seo/">AI SEO vs traditional SEO</a>. Comparing providers? See <a class="link" href="/seo-services-singapore/">agency vs in-house vs S$50 a month</a>.</p>
       </div>
     </section>
 
-""" + cta("Want to be found in all three places?", "Sign up at the introductory price, or chat with Edwin on WhatsApp first. No obligation."),
-     crumb="SEO, AEO and GEO", updated="2026-10-15")
+""" + cta("Want to be found in all three places?", "Sign up at S$50 a month, or chat with Edwin on WhatsApp first. No obligation."),
+     crumb="SEO, AEO and GEO", updated="2026-10-19")

@@ -1,4 +1,4 @@
-const PLAN_PRICE = 20;
+const PLAN_PRICE = 50;
 const BOOST_PRICE = 10;
 
 // Pricing calculator
@@ -73,7 +73,7 @@ function storageSet(key, value, store) {
 
 // ---------- WhatsApp chat helper (bottom right) ----------
 const QUICK_REPLIES = [
-  { label: "I want to sign up (S$20/month)", text: "Hi Edwin, I'd like to sign up for the Get Found plan (S$20/month).\nMy business: \nWebsite (if any): " },
+  { label: "I want to sign up (S$50/month)", text: "Hi Edwin, I'd like to sign up for the Get Found plan (S$50/month).\nMy business: \nWebsite (if any): " },
   { label: "I don't have a website yet", text: "Hi Edwin, I don't have a website yet. Can Page One build one for my business?\nMy business: " },
   { label: "I already have a website", text: "Hi Edwin, I already have a website. Can you add an SEO landing page and help it show up on Google?\nMy website: " },
   { label: "How much will it cost me?", text: "Hi Edwin, how much would the Get Found plan and SEO Boosts cost for my business?" },
@@ -122,7 +122,7 @@ function startChatHelper() {
     if (filled) return;
     filled = true;
     body.appendChild(el("p", "chat-msg", "Hi! 👋 I'm Edwin from Page One Singapore."));
-    body.appendChild(el("p", "chat-msg", "We help Singapore businesses get found on Google, Google Maps and AI, from S$20 a month (introductory price). Pick a topic or type your question, and we'll continue on WhatsApp."));
+    body.appendChild(el("p", "chat-msg", "We help Singapore businesses get found on Google, Google Maps and AI, from S$50 a month. Pick a topic or type your question, and we'll continue on WhatsApp."));
     const list = el("div", "chat-replies");
     const checked = storageGet("p1-check", sessionStorage);
     const replies = checked ? [{ label: "Help me fix my website check results", text: "Hi Edwin, I ran the website checker:\n" + checked + "\nCan you help me fix these?" }, ...QUICK_REPLIES] : QUICK_REPLIES;
@@ -380,12 +380,12 @@ if (checker) {
     const summary = r.host + ": " + r.score + "/100" + (issues.length ? "\n" + issues.join("\n") : "");
     storageSet("p1-check", summary, sessionStorage);
     const ctaBox = el("div", "checker-cta");
-    ctaBox.appendChild(el("p", null, fails + warns ? "Want help fixing these? Chat with Edwin on WhatsApp. Your results are sent with your message, so he can tell you what to fix first. Our Get Found plan covers all of this from S$20 a month (introductory price)." : "Great foundations. Want more customers from Google and AI search? Chat with Edwin about what we can do for S$20 a month."));
+    ctaBox.appendChild(el("p", null, fails + warns ? "Want help fixing these? Chat with Edwin on WhatsApp. Your results are sent with your message, so he can tell you what to fix first. Our Get Found plan covers all of this from S$50 a month." : "Great foundations. Want more customers from Google and AI search? Chat with Edwin about what we can do for S$50 a month."));
     const row = el("div", "cta-row");
     const s1 = el("a", "btn", "Chat with Edwin about my results");
     s1.href = waLink("Hi Edwin, I ran the website checker on pageonesingapore.com:\n" + summary + (r.share_id ? "\nReport: " + reportLink(r.share_id) : "") + "\nCan you help me improve my website?");
     s1.target = "_blank"; s1.rel = "noopener";
-    const s2 = el("a", "btn btn-ghost", "See plans from S$20/month"); s2.href = "/pricing/";
+    const s2 = el("a", "btn btn-ghost", "See plans from S$50/month"); s2.href = "/pricing/";
     row.appendChild(s1); row.appendChild(s2);
     ctaBox.appendChild(row);
     out.appendChild(ctaBox);
@@ -464,7 +464,7 @@ if (checker) {
     const box = el("div", "checker-social");
     box.appendChild(el("h3", null, "That's a " + kind + ", not a website"));
     box.appendChild(el("p", null, "A " + kind + " is a great start, but Google and AI assistants rank real websites for searches like \"hair salon near me\". Customers searching on Google may never see your " + kind + "."));
-    box.appendChild(el("p", null, "Our Get Found plan builds you a proper website, connected to Google, Maps and AI search, from S$20 a month (introductory price)."));
+    box.appendChild(el("p", null, "Our Get Found plan builds you a proper website, connected to Google, Maps and AI search, from S$50 a month."));
     const row = el("div", "cta-row");
     const a = el("a", "btn", "Chat with Edwin about a website");
     a.href = waLink("Hi Edwin, my business is only on " + (/^[aeiou]/i.test(kind) ? "an " : "a ") + kind + " (" + value + "). Can Page One build me a proper website?");
@@ -615,7 +615,7 @@ if (signup) {
     }
     const n = Number(d.boosts || 0);
     const lines = [
-      "Hi Edwin, I'd like to sign up for the Get Found plan (S$20/month, introductory price).",
+      "Hi Edwin, I'd like to sign up for the Get Found plan (S$50/month).",
       "Name: " + String(d.name).trim(),
       "Business: " + String(d.business).trim(),
       String(d.industry || "").trim() && "What we do: " + String(d.industry).trim(),

@@ -3,7 +3,7 @@
 > Page One Singapore helps Singapore businesses get found on Google Search, Google Maps and AI assistants (ChatGPT, Gemini, Perplexity). Monthly subscription, no setup fee, no contract.
 
 ## Services
-- Get Found (basic subscription), S$20/month: a new website on the client's own domain (for businesses without a website), or an SEO landing page on a subdomain (for businesses that already have a website). Includes Google Business Profile setup, Google Search Console and Bing setup, structured data for AI search, hosting, SSL and a WhatsApp button.
+- Get Found (basic subscription), S$50/month: a new website on the client's own domain (for businesses without a website), or an SEO landing page on a subdomain (for businesses that already have a website). Includes Google Business Profile setup, Google Search Console and Bing setup, structured data for AI search, hosting, SSL and a WhatsApp button.
 - SEO Boost, S$10 each (optional top-up): one improvement round for faster results, covering Google and AI visibility checks, improvements made, and a before/after report. Clients top up anytime, as many or as few as they like.
 
 ## Terms
@@ -28,7 +28,7 @@ Singapore, island-wide
 
 ## Pages
 - [Home](https://pageonesingapore.com/)
-- [Get Found: website or SEO landing page, S$20/month](https://pageonesingapore.com/get-found/)
+- [Get Found: website or SEO landing page, S$50/month](https://pageonesingapore.com/get-found/)
 - [SEO Boost](https://pageonesingapore.com/seo-boost/)
 - [Pricing](https://pageonesingapore.com/pricing/)
 - [About](https://pageonesingapore.com/about/)

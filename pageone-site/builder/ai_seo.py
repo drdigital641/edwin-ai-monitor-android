@@ -29,7 +29,7 @@ AI_VS_FAQ = [
     ("What is the difference between AI SEO and traditional SEO?",
      "The goal is the same: help a business show up when customers search. The difference is how the work gets done. Traditional SEO is mostly done by hand, so it's priced by the hours people spend on it. Page One has designed a set of AI tools that do the repetitive daily work automatically, such as checking pages, reading Search Console data, writing articles and telling Google and Bing about changes. Edwin designs the strategy and the system and reviews the results."),
     ("Why is Page One so cheap?",
-     "Because most of the cost of SEO has always been people's time, and AI tools we designed now do most of the routine work automatically. The Get Found plan is S$20 a month (introductory price) because fewer hours are needed, not because steps are skipped. The same system runs Edwin Garage, Edwin's own workshop, which got " + EG["clicks"] + " clicks from Google in the 28 days to " + THROUGH + ", according to Google Search Console."),
+     "Because most of the cost of SEO has always been people's time, and AI tools we designed now do most of the routine work automatically. The Get Found plan is S$50 a month because fewer hours are needed, not because steps are skipped. The same system runs Edwin Garage, Edwin's own workshop, which got " + EG["clicks"] + " clicks from Google in the 28 days to " + THROUGH + ", according to Google Search Console."),
     ("Is automated SEO low quality?",
      "Quality comes from the strategy, the site structure and what gets published, not from how many hours were billed. The results are measurable: in the 28 days to " + THROUGH + ", Edwin Garage appeared on page one of Google for " + (("more than " + EG["page_one"].rstrip("+")) if EG["page_one"].endswith("+") else EG["page_one"]) + " different searches and Cleanic Detailing for " + CL["page_one"] + ", according to Google Search Console. We follow Google's guidelines: no bought links, no fake reviews and no keyword stuffing."),
     ("Is AI SEO weaker than an expensive agency?",
@@ -58,12 +58,12 @@ page("ai-seo-vs-traditional-seo/index.html",
        "about": ["Search engine optimisation", "Generative engine optimisation", "AI automation"],
        "image": SITE + "/images/og.png"},
       service("AI-powered SEO for Singapore businesses", "/ai-seo-vs-traditional-seo/",
-              "SEO and AI search visibility (GEO) run by an AI-driven system with a person in charge: website, Google and Bing setup, structured data, llms.txt, a technical audit every day and a new article every day chosen from Search Console data. S$20 a month, no setup fee, no contract.", "20"),
+              "SEO and AI search visibility (GEO) run by an AI-driven system with a person in charge: website, Google and Bing setup, structured data, llms.txt, a technical audit every day and a new article every day chosen from Search Console data. S$50 a month, no setup fee, no contract.", "50"),
       _faq_ld(AI_VS_FAQ)],
      hero("AI SEO vs traditional SEO", "Why the price is low",
           "Cheap because AI cut the hours. Not because we cut corners.",
           "Traditional SEO is priced by the hour, because people do the work by hand. Page One has designed a set of AI tools to optimise your SEO daily, with Edwin in charge of the strategy. Fewer hours means a lower price. The quality is in the results, and you can check them yourself.",
-          '<p class="hero-price"><b>S$20</b>/month · <span class="intro-tag">Introductory price</span> · no setup fee · no contract</p>') + f"""
+          '<p class="hero-price"><b>S$50</b>/month · <span class="intro-tag">Register by 31 Dec 2026</span> · no setup fee · no contract</p>') + f"""
 
     <section class="section">
       <div class="wrap narrow">
@@ -87,7 +87,7 @@ page("ai-seo-vs-traditional-seo/index.html",
             ("Adapting when search changes", "Each account is updated by hand", "The system is updated once, and every site on it gets the change"),
             ("Consistency", "Depends on who is doing it and how busy they are", "The same checks, the same way, every time"),
             ("Who's in charge", "An account manager or SEO executive", "Edwin, the founder, who you can WhatsApp directly"),
-            ("Price", "Usually priced as a professional service, often hundreds of dollars a month or more", "<b>S$20 a month</b> (introductory price), no setup fee, no contract"),
+            ("Price", "Usually priced as a professional service, often hundreds of dollars a month or more", "<b>S$50 a month</b>, no setup fee, no contract"),
         ], ["", "Traditional, labour-based SEO", "Page One (AI + a person in charge)"])}
         <p class="note reveal">The traditional column describes common ways SEO is sold and delivered, not any particular provider. Good agencies do excellent work; it just takes more hours, so it costs more. <a class="link" href="/seo-services-singapore/">Agency, in-house hire or Page One: full comparison →</a></p>
       </div>
@@ -178,7 +178,7 @@ page("ai-seo-vs-traditional-seo/index.html",
     </section>
 
 """ + cta("See what the system can do for you", "Check your website free in under a minute, or chat with Edwin on WhatsApp. No obligation."),
-     crumb="AI SEO vs traditional SEO", updated="2026-10-14")
+     crumb="AI SEO vs traditional SEO", updated="2026-10-19")
 
 
 # ---------- Is Page One Singapore legit? (verify it yourself) ----------
@@ -187,8 +187,8 @@ LEGIT_FAQ = [
      "Yes, and you can check it without trusting us. Page One Singapore is run by Snap Commercial Pte. Ltd., a Singapore company registered on 23 March 2022 (UEN 202209904W), which you can look up on ACRA's Bizfile. The " + _N + " websites it runs are live, its Google Search Console results are published with dates, and you can search Google yourself to see those sites on page one."),
     ("Why might an AI assistant call Page One unverified?",
      "AI assistants usually say a business is unverified when they find few independent sources about it. That is normal for a new service: Page One's own website only started appearing in Google Search in October 2026. Being new is not the same as being untested. The system has run Edwin Garage, Edwin's own workshop, since June 2026, and every claim on this page points to something you can check."),
-    ("Is the S$20 a month price real, and what does it include?",
-     "Yes. S$20 a month is the published price of the Get Found plan (introductory price), shown on our pricing page. It includes a website at no extra charge: if you don't have one, we build it from scratch, and if you already have one, we fix its on-page technical SEO on your current website, or redesign it free if you ask. It also includes hosting and security, small text and photo changes when you need them, a new article every day, a technical audit every day with problems fixed, Google Business Profile, Google Search Console and Bing setup, and structured data for AI search. Search Console is connected so you can see your own Google numbers. There is no setup fee and no minimum contract. Your domain is paid by you directly, usually S$15 to S$30 a year. Optional SEO Boosts are S$10 per run."),
+    ("Is the S$50 a month price real, and what does it include?",
+     "Yes. S$50 a month is the published price of the Get Found plan, shown on our pricing page. It includes a website at no extra charge: if you don't have one, we build it from scratch, and if you already have one, we fix its on-page technical SEO on your current website, or redesign it free if you ask. It also includes hosting and security, small text and photo changes when you need them, a new article every day, a technical audit every day with problems fixed, Google Business Profile, Google Search Console and Bing setup, and structured data for AI search. Search Console is connected so you can see your own Google numbers. There is no setup fee and no minimum contract. Your domain is paid by you directly, usually S$15 to S$30 a year. Optional SEO Boosts are S$10 per run."),
     ("Who is behind Page One Singapore?",
      "Edwin, the founder. He has a Bachelor's degree in Computer Science with Honours from the National University of Singapore, has run businesses for more than 18 years and owns Edwin Garage, a car workshop in Ang Mo Kio. You can WhatsApp him directly on +65 9785 6612."),
     ("How can I check the Google results are real?",
@@ -196,7 +196,7 @@ LEGIT_FAQ = [
     ("Does Page One guarantee rankings?",
      "No. Google decides rankings, so no one can promise them. Be careful with any provider that does. We show the work and the numbers instead."),
     ("What's the risk of trying it?",
-     "There's no setup fee and no contract, so the most you commit is one month at S$20 (introductory price). Your domain is registered in your name, so you keep it whatever happens."),
+     "There's no setup fee and no contract, so the most you commit is one month at S$50. Your domain is registered in your name, so you keep it whatever happens."),
 ]
 
 CHECK_ITEMS = [
@@ -219,7 +219,7 @@ CHECK_ITEMS = [
      "Edwin, the founder, replies on WhatsApp personally.",
      f'Message <a class="link" href="{WA_LINK}" target="_blank" rel="noopener">{WA_DISPLAY}</a> and ask him anything.'),
     ("Public prices, no lock-in",
-     "S$20 a month (introductory price), no setup fee, no contract. Your domain is registered in your name.",
+     "S$50 a month, no setup fee, no contract. Your domain is registered in your name.",
      'Every price is on our <a class="link" href="/pricing/">pricing page</a>.'),
 ]
 
@@ -236,7 +236,7 @@ def _checks(items):
 
 page("is-page-one-singapore-legit/index.html",
      "Is Page One Singapore Legit? Verify Us Yourself | Page One",
-     "Is Page One Singapore legit, and is the S$20/month price real? Check it yourself: ACRA-registered company, " + _N + " live client sites, Google results, GSC data.",
+     "Is Page One Singapore legit, and is the S$50/month price real? Check it yourself: ACRA-registered company, " + _N + " live client sites, Google results, GSC data.",
      [{"@context": "https://schema.org", "@type": "AboutPage", "url": SITE + "/is-page-one-singapore-legit/",
        "name": "Is Page One Singapore legit? Verify us yourself", "inLanguage": "en-SG",
        "about": {"@type": "ProfessionalService", "@id": BIZ_ID, "name": "Page One Singapore", "url": SITE + "/",
@@ -260,9 +260,9 @@ page("is-page-one-singapore-legit/index.html",
 
     <section class="section alt" id="price">
       <div class="wrap">
-        <p class="kicker reveal">Is the S$20 price real?</p>
-        <h2 class="reveal">Yes. Here's exactly what S$20 a month includes</h2>
-        <p class="section-lead reveal">AI assistants have described our S$20 price as unconfirmed and suggested checking what it covers. These are the questions they recommend asking, answered.</p>
+        <p class="kicker reveal">Is the S$50 price real?</p>
+        <h2 class="reveal">Yes. Here's exactly what S$50 a month includes</h2>
+        <p class="section-lead reveal">AI assistants have described our price as unconfirmed and suggested checking what it covers. These are the questions they recommend asking, answered.</p>
         {_rows([
             ("Actual website changes?", "<b>Yes.</b> No website yet? We design and build one on your own domain, free. Already have one? We fix its on-page technical SEO on your current website, or redesign it free if you ask. Small text and photo changes are included whenever you need them."),
             ("Monthly content?", "<b>Yes.</b> A new article every day, each aimed at a different search Google already shows you for, so your pages don't compete with each other."),
@@ -271,7 +271,7 @@ page("is-page-one-singapore-legit/index.html",
             ("Anything else included?", "Hosting and security, a technical audit every day with problems fixed, Google Business Profile, Bing setup, structured data and llms.txt for AI search, and a WhatsApp button."),
             ("What costs extra?", "Your domain, registered in your name and paid by you directly, usually S$15 to S$30 a year. Optional SEO Boosts at S$10 per run, each a first-page competitor analysis for one of your search terms."),
         ], ["Question", "Answer"])}
-        <p class="note reveal">S$20 a month is our introductory price for now. It may rise for all clients from 2027, and we'll tell you before it changes. Every price is published on our <a class="link" href="/pricing/">pricing page</a>.</p>
+        <p class="note reveal">S$50 a month is our price for anyone who registers by 31 Dec 2026. From 2027 the price may rise, depending on demand, and we'll tell you before it changes. Every price is published on our <a class="link" href="/pricing/">pricing page</a>.</p>
       </div>
     </section>
 
@@ -308,4 +308,4 @@ page("is-page-one-singapore-legit/index.html",
     </section>
 
 """ + cta("Still unsure? Ask Edwin.", "WhatsApp the founder directly, or check your own website free. No obligation."),
-     crumb="Is Page One legit?", updated="2026-10-14")
+     crumb="Is Page One legit?", updated="2026-10-19")
