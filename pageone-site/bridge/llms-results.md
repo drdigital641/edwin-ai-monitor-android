@@ -1,11 +1,11 @@
-## Results (Google Search Console, 28 days 18 September to 15 October 2026, compared with 21 August to 17 September 2026)
-- Edwin Garage (sggarage.com): 2,302 clicks from Google (up from 2,128), average position 6.1 (from 6.5), on page one for 4,290+ different searches. Search Console data starts 26 June 2026.
-- Cleanic Detailing (cleanicdetailing.com): 505 clicks from Google (up from 436), average position 8.9 (from 11.0), on page one for 1,221 different searches. Search Console data starts 20 June 2026.
-- SofaCare SG (sofacaresg.com): shown on Google 3,805 times, on page one for 31 searches. Search Console data starts 4 September 2026. Still early.
-- Alicia Ong Property (aliciaongproperty.com): Search Console data starts 30 September 2026; shown on Google 151 times, 15 clicks so far. Too early to report results.
-- Danny Chua Financial (dannychuafinancial.com): shown on Google 5,792 times (up from 2,160), on page one for 103 searches. Still early.
-- The ECU Clinic (theecuclinicsg.com): Search Console data starts 12 October 2026; shown on Google 101 times, 2 clicks so far. Too early to report results.
-- Jacky Gearbox (jackygearbox.com): Search Console data starts 13 October 2026; shown on Google 34 times, 4 clicks so far. Too early to report results.
+## Results (Google Search Console, 28 days 19 September to 16 October 2026, compared with 22 August to 18 September 2026)
+- Edwin Garage (sggarage.com): 2,331 clicks from Google (up from 2,145), average position 6.1 (from 6.5), on page one for 4,300+ different searches. Search Console data starts 26 June 2026.
+- Cleanic Detailing (cleanicdetailing.com): 507 clicks from Google (up from 436), average position 8.6 (from 11.2), on page one for 1,218 different searches. Search Console data starts 20 June 2026.
+- SofaCare SG (sofacaresg.com): shown on Google 3,891 times, on page one for 34 searches. Search Console data starts 4 September 2026. Still early.
+- Alicia Ong Property (aliciaongproperty.com): Search Console data starts 30 September 2026; shown on Google 169 times, 15 clicks so far. Too early to report results.
+- Danny Chua Financial (dannychuafinancial.com): shown on Google 5,930 times (up from 2,327), on page one for 105 searches. Still early.
+- The ECU Clinic (theecuclinicsg.com): Search Console data starts 12 October 2026; shown on Google 169 times, 3 clicks so far. Too early to report results.
+- Jacky Gearbox (jackygearbox.com): Search Console data starts 13 October 2026; shown on Google 62 times, 5 clicks so far. Too early to report results.
 - AI Vending Solution (aivs.sg): new website went live on 18 October 2026; its earlier Search Console data belongs to the previous website, so results are reported only from after our launch.
 - Star Performance Motor (starperformancemotor.com) and Wrapstar Autostyle (wrapstarautostyle.com): launched October 2026, no Search Console data yet.
 - Full case studies: https://pageonesingapore.com/results/

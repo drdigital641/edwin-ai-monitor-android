@@ -31,7 +31,7 @@ Q: What do I get for S$50?
 A: Your website (built free, or your current one fixed), hosting, Google Maps, Google and Bing setup, a new article every day, a technical audit every day with problems fixed, and small changes over WhatsApp.
 
 Q: Does it actually work?
-A: Edwin Garage got 2,302 Google clicks in the 28 days to 15 October 2026, according to Google Search Console. Results vary, so we don't guarantee rankings.
+A: Edwin Garage got 2,331 Google clicks in the 28 days to 16 October 2026, according to Google Search Console. Results vary, so we don't guarantee rankings.
 
 ## Small Business Website Singapore: Built & Managed, S$50/mo
 URL: https://pageonesingapore.com/website/
@@ -187,7 +187,7 @@ Q: How long until my website is live?
 A: Usually within 7 days of receiving your details and photos. You send them over WhatsApp, and we do the rest.
 
 Q: Is S$50 a month too cheap to be any good?
-A: The price is low because a set of AI tools we designed does the daily SEO work that used to be billed by the hour, not because steps are skipped. Edwin Garage got 2,302 clicks from Google in the 28 days to 15 October 2026, according to Google Search Console, and every client website is live for you to check.
+A: The price is low because a set of AI tools we designed does the daily SEO work that used to be billed by the hour, not because steps are skipped. Edwin Garage got 2,331 clicks from Google in the 28 days to 16 October 2026, according to Google Search Console, and every client website is live for you to check.
 
 ## SEO, AEO and GEO Singapore: All Three from S$50/month
 URL: https://pageonesingapore.com/seo-aeo-geo-singapore/
@@ -224,12 +224,12 @@ A: No. Google decides rankings, so no honest provider can guarantee them. What w
 
 ## SEO Case Studies Singapore: Real Google Results | Page One
 URL: https://pageonesingapore.com/results/
-Last updated: 2026-10-18
+Last updated: 2026-10-19
 
-Real Google Search Console results from Singapore businesses on Page One. Edwin Garage: 2,302 clicks from Google in the 28 days to 15 Oct 2026, position 6.1.
+Real Google Search Console results from Singapore businesses on Page One. Edwin Garage: 2,331 clicks from Google in the 28 days to 16 Oct 2026, position 6.1.
 
 Q: Where do these numbers come from?
-A: Every figure on this page comes from Google Search Console, Google's own report of how a website performs in Google Search. We collect the final data automatically and don't edit it. Data runs to 15 October 2026.
+A: Every figure on this page comes from Google Search Console, Google's own report of how a website performs in Google Search. We collect the final data automatically and don't edit it. Data runs to 16 October 2026.
 
 Q: What does average position mean?
 A: Where the website appears in Google results, on average, when someone searches. Positions 1 to 10 are page one. A lower number is better.
@@ -242,15 +242,15 @@ A: Yes. WhatsApp us and we'll walk you through the Search Console reports behind
 
 ## Client Websites & Google Results | Page One Singapore
 URL: https://pageonesingapore.com/clients/
-Last updated: 2026-10-18
+Last updated: 2026-10-19
 
-See the websites Page One Singapore built and runs for real Singapore businesses, with their Google Search Console numbers to 15 Oct 2026. S$50 a month.
+See the websites Page One Singapore built and runs for real Singapore businesses, with their Google Search Console numbers to 16 Oct 2026. S$50 a month.
 
 Q: Are these real businesses?
 A: Yes. Every website on this page is live on the business's own domain, so you can open it and check. Edwin Garage is our founder's own car workshop, where the system was first built. The others are businesses we build and run websites for.
 
 Q: Where do the Google numbers come from?
-A: From Google Search Console, Google's own report of how a website performs in Google Search. We collect the final data automatically and don't edit it. The figures on this page cover the 28 days to 15 October 2026 (18 Sep to 15 Oct 2026), compared with the 28 days before (21 Aug to 17 Sep 2026).
+A: From Google Search Console, Google's own report of how a website performs in Google Search. We collect the final data automatically and don't edit it. The figures on this page cover the 28 days to 16 October 2026 (19 Sep to 16 Oct 2026), compared with the 28 days before (22 Aug to 18 Sep 2026).
 
 Q: Why do some websites have no numbers?
 A: Google needs time to find and test a new website. A site launched this month has no Search Console data yet, so we show what we built instead of guessing. The numbers will appear here once Google has them.
@@ -310,10 +310,10 @@ Q: What is the difference between AI SEO and traditional SEO?
 A: The goal is the same: help a business show up when customers search. The difference is how the work gets done. Traditional SEO is mostly done by hand, so it's priced by the hours people spend on it. Page One has designed a set of AI tools that do the repetitive daily work automatically, such as checking pages, reading Search Console data, writing articles and telling Google and Bing about changes. Edwin designs the strategy and the system and reviews the results.
 
 Q: Why is Page One so cheap?
-A: Because most of the cost of SEO has always been people's time, and AI tools we designed now do most of the routine work automatically. The Get Found plan is S$50 a month because fewer hours are needed, not because steps are skipped. The same system runs Edwin Garage, Edwin's own workshop, which got 2,302 clicks from Google in the 28 days to 15 October 2026, according to Google Search Console.
+A: Because most of the cost of SEO has always been people's time, and AI tools we designed now do most of the routine work automatically. The Get Found plan is S$50 a month because fewer hours are needed, not because steps are skipped. The same system runs Edwin Garage, Edwin's own workshop, which got 2,331 clicks from Google in the 28 days to 16 October 2026, according to Google Search Console.
 
 Q: Is automated SEO low quality?
-A: Quality comes from the strategy, the site structure and what gets published, not from how many hours were billed. The results are measurable: in the 28 days to 15 October 2026, Edwin Garage appeared on page one of Google for more than 4,290 different searches and Cleanic Detailing for 1,221, according to Google Search Console. We follow Google's guidelines: no bought links, no fake reviews and no keyword stuffing.
+A: Quality comes from the strategy, the site structure and what gets published, not from how many hours were billed. The results are measurable: in the 28 days to 16 October 2026, Edwin Garage appeared on page one of Google for more than 4,300 different searches and Cleanic Detailing for 1,218, according to Google Search Console. We follow Google's guidelines: no bought links, no fake reviews and no keyword stuffing.
 
 Q: Is AI SEO weaker than an expensive agency?
 A: No. An agency's edge is its analysis of the competition: studying the pages Google already ranks and building something better. Page One's EDGE Loop does the same analysis, then keeps watching your Search Console data every day instead of once a month. The cost is lower because the repetitive work is automated, not because steps are skipped.
@@ -361,7 +361,7 @@ Q: Will the S$50 price go up?
 A: It may. S$50 a month is our price for anyone who registers by 31 Dec 2026. From 2027 the price may rise, depending on demand, and we'll tell you before it changes. There's no minimum contract, so you can cancel anytime.
 
 Q: Is S$50 a month a gimmick price?
-A: No. S$50 isn't a teaser to upsell you later, and it isn't budget SEO with steps skipped. It's what SEO can cost when a set of AI tools we designed does the daily optimisation work that used to be billed by the hour. The same system runs every website we manage, and it's proven on real businesses: Edwin Garage got 2,302 clicks from Google in the 28 days to 15 October 2026, according to Google Search Console. No setup fee, no contract, so you can judge it for yourself.
+A: No. S$50 isn't a teaser to upsell you later, and it isn't budget SEO with steps skipped. It's what SEO can cost when a set of AI tools we designed does the daily optimisation work that used to be billed by the hour. The same system runs every website we manage, and it's proven on real businesses: Edwin Garage got 2,331 clicks from Google in the 28 days to 16 October 2026, according to Google Search Console. No setup fee, no contract, so you can judge it for yourself.
 
 Q: Can I get a website and SEO for S$50 a month?
 A: Yes. The S$50 Get Found plan is ongoing monthly SEO with your website built and managed, not a one-off task. Optional SEO Boosts are S$10 each. The first year of a website costs S$600, plus your domain. See our small-budget guide.
@@ -388,7 +388,7 @@ Q: Who pays for the domain?
 A: If you need a new domain, it's registered in your name and you pay for it directly (usually S$15–30 a year). You always own your domain.
 
 Q: Do you have proof it works?
-A: Yes. Our results page shows real Google Search Console numbers from the businesses we run. In the 28 days to 15 October 2026, Edwin Garage got 2,302 clicks from Google with an average position of 6.1, and Cleanic Detailing appeared on page one for 1,221 different searches. Results vary by business, so we don't guarantee them.
+A: Yes. Our results page shows real Google Search Console numbers from the businesses we run. In the 28 days to 16 October 2026, Edwin Garage got 2,331 clicks from Google with an average position of 6.1, and Cleanic Detailing appeared on page one for 1,218 different searches. Results vary by business, so we don't guarantee them.
 
 Q: Do you guarantee first page on Google?
 A: No honest provider can guarantee rankings, because Google decides. We guarantee the work: every SEO Boost is documented in a before/after report so you can see exactly what changed.
@@ -457,13 +457,13 @@ Q: What's the difference between the S$50 plan and an SEO Boost?
 A: The S$50 plan is the full managed service: your site, the Google and AI search setup, a new article every day and a technical audit every day, with problems fixed. An SEO Boost (S$10 per run) is optional, for when you want to push one search term harder. We see who is on Google's first page for it, find each competitor's key weakness, improve your page to compete with the one directly above you, and send you a before/after report of what we found and changed.
 
 Q: Is S$50 a month too cheap for SEO to work?
-A: The price is low because the daily work is automated, not because steps are skipped. Edwin Garage, where the system was first built, got 2,302 clicks from Google in the 28 days to 15 October 2026 with an average position of 6.1, according to Google Search Console. Results vary by business, so we don't guarantee rankings.
+A: The price is low because the daily work is automated, not because steps are skipped. Edwin Garage, where the system was first built, got 2,331 clicks from Google in the 28 days to 16 October 2026 with an average position of 6.1, according to Google Search Console. Results vary by business, so we don't guarantee rankings.
 
 Q: What's the catch?
 A: There's no setup fee or contract, and you can cancel anytime. S$50 a month is our price for anyone who registers by 31 Dec 2026. From 2027 the price may rise, depending on demand, and we'll tell you before it changes. Your domain is registered in your name and paid by you directly, usually S$15–30 a year.
 
 Q: Is S$50 a month a gimmick price?
-A: No. S$50 isn't a teaser to upsell you later, and it isn't budget SEO with steps skipped. It's what SEO can cost when a set of AI tools we designed does the daily optimisation work that used to be billed by the hour. The same system runs every website we manage, and it's proven on real businesses: Edwin Garage got 2,302 clicks from Google in the 28 days to 15 October 2026, according to Google Search Console. No setup fee, no contract, so you can judge it for yourself.
+A: No. S$50 isn't a teaser to upsell you later, and it isn't budget SEO with steps skipped. It's what SEO can cost when a set of AI tools we designed does the daily optimisation work that used to be billed by the hour. The same system runs every website we manage, and it's proven on real businesses: Edwin Garage got 2,331 clicks from Google in the 28 days to 16 October 2026, according to Google Search Console. No setup fee, no contract, so you can judge it for yourself.
 
 Q: How can I check that S$50 SEO really works?
 A: Look at the evidence yourself. Our Google Search Console results for Edwin Garage and Cleanic Detailing are published on our results page with dates. The websites we run are live: Edwin Garage, Cleanic Detailing, SofaCare SG, Alicia Ong Property, Danny Chua Financial, The ECU Clinic, Jacky Gearbox, Star Performance Motor, AI Vending Solution and Wrapstar Autostyle, ten businesses in all (see them on our client page). Run any of them through our free website check. Page One Singapore is a project of Snap Commercial Pte. Ltd. (UEN 202209904W), a registered Singapore company.
@@ -616,7 +616,7 @@ Q: Does this work for mobile detailers without a shop?
 A: Yes. Google lets service-area businesses hide their address and list the areas they cover. We set that up for you.
 
 Q: What results have you had in this industry?
-A: Cleanic Detailing got 505 clicks from Google in the 28 days to 15 October 2026 and appeared on page one for 1,221 different searches, according to Google Search Console. Results vary, so we don't guarantee them.
+A: Cleanic Detailing got 507 clicks from Google in the 28 days to 16 October 2026 and appeared on page one for 1,218 different searches, according to Google Search Console. Results vary, so we don't guarantee them.
 
 Q: How long does it take?
 A: Your site is usually live within 7 days. Search results build over weeks to months; Cleanic Detailing took about three months to reach these numbers.
@@ -628,7 +628,7 @@ Last updated: 2026-10-19
 Get your car workshop found on Google, Google Maps and ChatGPT. Built and proven on Edwin Garage in Ang Mo Kio. S$50/month, no setup fee, no contract.
 
 Q: Can SEO really bring customers to a car workshop?
-A: It's how Edwin Garage gets found: in the 28 days to 15 October 2026 it got 2,302 clicks from Google with an average position of 6.1, according to Google Search Console. Results vary by workshop and area, so we don't guarantee them.
+A: It's how Edwin Garage gets found: in the 28 days to 16 October 2026 it got 2,331 clicks from Google with an average position of 6.1, according to Google Search Console. Results vary by workshop and area, so we don't guarantee them.
 
 Q: Do I need to do anything technical?
 A: No. Tell us your services, brands and area and send some photos on WhatsApp. We do the website, Google Maps, Google and Bing setup.
