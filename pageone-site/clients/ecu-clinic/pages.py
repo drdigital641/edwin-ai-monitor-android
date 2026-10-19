@@ -697,7 +697,7 @@ ARTICLES = [
              ('Can you repair the ABS unit without the car?', 'Yes. You can bring just the unit to us at Premier @ Kaki Bukit, or use our pick-up and delivery service.')],
     ),
     dict(
-        slug='bmw-abs-dsc-light-on', service='abs-pump-repair', date='2026-10-19',
+        slug='bmw-abs-dsc-light-on', service='abs-pump-repair', date='2026-10-19', img_commit='1490c0ca596d204d9117dff70d1c9d1ae7b76f62',
         title='BMW ABS and DSC Lights On? Causes | The ECU Clinic',
         desc='Why the ABS and DSC lights come on together in a BMW or Mini, whether it is safe to drive, what to check first, and BMW ABS unit repair in Singapore.',
         h1='Why Are the ABS and DSC Lights On in My BMW?',
