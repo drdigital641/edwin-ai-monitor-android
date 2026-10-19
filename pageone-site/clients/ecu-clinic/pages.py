@@ -415,8 +415,8 @@ ARTICLES = [
     ),
     dict(
         slug='mercedes-active-brake-assist-functions-limited', service='abs-pump-repair', date='2026-10-13',
-        title='Mercedes “Active Brake Assist Functions Limited”: What It Means | The ECU Clinic',
-        desc='What the Mercedes “Active Brake Assist functions limited” message means, common reasons it appears, and when it needs a diagnosis.',
+        title='Active Brake Assist Functions Limited? | The ECU Clinic',
+        desc='Mercedes “Active Brake Assist functions limited”? Often a dirty or knocked radar sensor. If it stays on or an ABS or ESP light shows, read the fault code.',
         h1='Mercedes “Active Brake Assist Functions Limited”: What It Means',
         lead='Why this message appears on a Mercedes dashboard, and when it is more than a dirty sensor.',
         photo='active-brake-assist-warning', alt='Mercedes dashboard showing Active Brake Assist functions limited',
@@ -695,5 +695,47 @@ ARTICLES = [
         faq=[('Can a bad brake light switch turn on the ESP light?', 'Yes, on many Volkswagen and Audi models. ESP uses the switch to know when you brake, so a faulty switch can store a fault and turn the ESP light on. Reading the code shows whether the switch is the cause.'),
              ('Why did the ESP light come on after a wheel alignment or battery change?', 'On many models the steering angle sensor has to be set up again after alignment, steering work or a flat battery. Until it is, ESP may switch itself off and the light stays on.'),
              ('Can you repair the ABS unit without the car?', 'Yes. You can bring just the unit to us at Premier @ Kaki Bukit, or use our pick-up and delivery service.')],
+    ),
+    dict(
+        slug='bmw-abs-dsc-light-on', service='abs-pump-repair', date='2026-10-19',
+        title='BMW ABS and DSC Lights On? Causes | The ECU Clinic',
+        desc='Why the ABS and DSC lights come on together in a BMW or Mini, whether it is safe to drive, what to check first, and BMW ABS unit repair in Singapore.',
+        h1='Why Are the ABS and DSC Lights On in My BMW?',
+        lead='ABS and DSC lights on together in a BMW or Mini? What each light means, the simple causes to rule out first, and when the ABS unit needs repair.',
+        photo='abs-pump-in-car', alt='ABS pump and module in a car’s engine bay', share='abs-unit-engine-bay-1.jpg',
+        body='''<p><strong>Short answer:</strong> on BMW and Mini cars, ABS (anti-lock brakes) and DSC (Dynamic Stability Control) are run by the same ABS/DSC unit and share the same wheel speed signals, so one fault usually turns on both lights, often with the brake warning too. Common causes are a wheel speed sensor, the steering angle sensor, the brake light switch, low battery voltage or the ABS/DSC unit itself. The fault code tells you which.</p>
+<h2>What do the ABS and DSC lights mean?</h2>
+<ul class="ticks">
+<li><strong>ABS</strong> is the anti-lock braking system. It stops the wheels locking when you brake hard.</li>
+<li><strong>DSC</strong> is BMW’s name for stability control. It brakes single wheels and can reduce engine power to help the car hold its line. A DSC light that flashes briefly on a slippery road means it is working; a light that stays on means the system has switched itself off.</li>
+</ul>
+<p>DSC needs the wheel speed signals and the pump and valves that ABS uses. When the ABS side has a fault, DSC is switched off too, which is why the two lights come on together.</p>
+<h2>Is it safe to drive with the ABS and DSC lights on?</h2>
+<p>In most cases your normal brakes still work, but anti-lock braking and stability control may be off until the fault is fixed. The wheels can then lock under hard braking, and the car will not correct a skid on a wet road. Leave more distance and avoid hard stops. If the red brake warning light is on, the brake pedal feels different or the brake fluid is low, stop driving and get the car checked first. Our pick-up and delivery service can collect it.</p>
+<h2>Did someone press the DSC button?</h2>
+<p>On many BMW models a short press of the DSC button switches to DTC (Dynamic Traction Control) and a long press switches DSC off, and a “DSC OFF” or traction light then stays on. Press the button again, or restart the car, and it usually switches back on. If the ABS light is on as well, or the lights stay on after a restart, there is a stored fault.</p>
+<h2>What are the common causes?</h2>
+<ul class="ticks">
+<li><strong>Wheel speed sensor.</strong> Each wheel has one. A dirty, damaged or failed sensor, or its wiring, is the most common cause.</li>
+<li><strong>Steering angle sensor.</strong> DSC needs to know where the steering is pointing. On many models it must be set up again after a wheel alignment, steering work or a battery change.</li>
+<li><strong>Brake light switch.</strong> DSC uses it to know when you are braking, so a faulty switch can turn the lights on.</li>
+<li><strong>Low battery voltage.</strong> A weak battery, or one that has just gone flat, can make several modules store faults at once.</li>
+<li><strong>The ABS/DSC unit itself.</strong> The control module, the pump motor or a sensor inside the unit can develop internal faults.</li>
+</ul>
+<p>A separate orange or yellow brake pad warning on many BMW models comes from the pad wear sensor, not the ABS unit.</p>
+<h2>How do we find which part is at fault?</h2>
+<ol class="steps">
+<li><strong>Read the fault codes.</strong> The ABS/DSC unit stores codes that point to the circuit at fault.</li>
+<li><strong>Rule out the simple causes.</strong> The DSC button, sensors, wiring, the brake light switch, steering angle setup, battery and fuses.</li>
+<li><strong>Check the unit.</strong> If the codes and tests point to the module, the pump or a sensor inside the unit, the ABS/DSC unit is the problem.</li>
+<li><strong>Tell you the options.</strong> You decide before any work starts.</li>
+</ol>
+<h2>Can the ABS/DSC unit be repaired?</h2>
+<p>Often, yes. We repair ABS units for BMW and Mini as well as other makes, and explain the options before any work starts. Our repairs come with a 6-month warranty. See <a href="../../services/abs-pump-repair/">ABS pump and module repair</a> for how the options compare, or <a href="../abs-warning-light-causes/">ABS warning light causes</a> for the ABS light on its own.</p>
+<h2>What should I send?</h2>
+<p>WhatsApp us your car model, year, chassis number and the fault codes. A photo of the dashboard or the scan tool screen also helps. You can bring the car, or just the unit, to Premier @ Kaki Bukit, or use our pick-up and delivery service.</p>''',
+        faq=[('Can a weak battery turn on the ABS and DSC lights in a BMW?', 'Yes. Low voltage can make the ABS/DSC unit and other modules store faults. If the lights came on after a flat battery or a jump start, have the battery checked and the codes read before replacing parts.'),
+             ('Why did the DSC light come on after a wheel alignment or battery change?', 'On many models the steering angle sensor has to be set up again after alignment, steering work or a flat battery. Until it is, DSC may switch itself off and the light stays on.'),
+             ('Do I need to bring the whole car?', 'No. You can bring just the ABS unit to us at Premier @ Kaki Bukit, or use our pick-up and delivery service for the car.')],
     ),
 ]
