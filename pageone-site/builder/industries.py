@@ -26,7 +26,7 @@ INDUSTRIES = [
     {
         "slug": "car-workshop", "name": "Car workshops", "short": "car workshop",
         "title": "SEO &amp; Website for Car Workshops in Singapore | Page One",
-        "desc": "Get your car workshop found on Google, Google Maps and ChatGPT. Built and proven on Edwin Garage in Ang Mo Kio. S$20/month, no setup fee, no contract.",
+        "desc": "Get your car workshop found on Google, Google Maps and ChatGPT. Built and proven on Edwin Garage in Ang Mo Kio. S$50/month, no setup fee, no contract.",
         "h1": "Get your car workshop found on Google",
         "lead": "Drivers search for a workshop when something goes wrong: a warning light, a strange noise, a servicing that's due. Page One makes sure your workshop shows up on Google, Google Maps and ChatGPT at that moment. Built and proven on Edwin's own workshop.",
         "searches": ["car servicing Ang Mo Kio", "car aircon not cold repair", "workshop near me open Sunday", "accident claim workshop Singapore", "brake pad replacement price"],
@@ -41,7 +41,7 @@ INDUSTRIES = [
     {
         "slug": "car-detailing", "name": "Car detailing &amp; grooming", "short": "car detailing business",
         "title": "SEO &amp; Website for Car Detailing in Singapore | Page One",
-        "desc": "Car grooming, coating and interior cleaning businesses: get found on Google, Maps and ChatGPT. Proven on Cleanic Detailing. S$20/month, no contract.",
+        "desc": "Car grooming, coating and interior cleaning businesses: get found on Google, Maps and ChatGPT. Proven on Cleanic Detailing. S$50/month, no contract.",
         "h1": "Get your car detailing business found on Google",
         "lead": "Car owners compare detailers online before they book: coating, polishing, interior cleaning, odour removal. Page One puts your services in front of them on Google, Google Maps and ChatGPT, with the same system that runs Cleanic Detailing.",
         "searches": ["car interior cleaning Singapore", "ceramic coating price", "car polish near me", "car odour removal", "mobile car wash at home"],
@@ -56,7 +56,7 @@ INDUSTRIES = [
     {
         "slug": "cleaning-services", "name": "Cleaning services", "short": "cleaning business",
         "title": "SEO &amp; Website for Cleaning Services in Singapore | Page One",
-        "desc": "Home, office, sofa and mattress cleaning businesses: get found on Google, Google Maps and ChatGPT. S$20/month, website included, no setup fee.",
+        "desc": "Home, office, sofa and mattress cleaning businesses: get found on Google, Google Maps and ChatGPT. S$50/month, website included, no setup fee.",
         "h1": "Get your cleaning business found on Google",
         "lead": "People search for cleaners when they need one now: after a renovation, before moving in, when the sofa needs a deep clean. Page One gets your cleaning business into those searches on Google, Google Maps and ChatGPT.",
         "searches": ["sofa cleaning Singapore", "post renovation cleaning HDB", "mattress cleaning near me", "part time cleaner Tampines", "carpet cleaning price"],
@@ -66,12 +66,12 @@ INDUSTRIES = [
         "proof": site_proof("https://sofacaresg.com/", "SofaCare SG", "a sofa, mattress and upholstery cleaning business"),
         "faqs": [("I clean islandwide. Can I still show up in local searches?", "Yes. We list the areas you cover and set up your Google Business Profile as a service-area business."),
                  ("Do I need a website, or is Carousell enough?", "Marketplace listings help, but Google and ChatGPT can't rank them like your own website. A website is yours and shows up when people search."),
-                 ("What does it cost?", "S$20 a month on the Get Found plan (introductory price), with no setup fee and no contract.")],
+                 ("What does it cost?", "S$50 a month on the Get Found plan, with no setup fee and no contract.")],
     },
     {
         "slug": "aircon-servicing", "name": "Aircon servicing", "short": "aircon servicing company",
         "title": "SEO &amp; Website for Aircon Servicing in Singapore | Page One",
-        "desc": "Aircon servicing, chemical wash and repair companies: get found on Google, Google Maps and ChatGPT when customers search. S$20/month, no contract.",
+        "desc": "Aircon servicing, chemical wash and repair companies: get found on Google, Google Maps and ChatGPT when customers search. S$50/month, no contract.",
         "h1": "Get your aircon servicing company found on Google",
         "lead": "When an aircon stops cooling or starts leaking, people search and call the first company that looks trustworthy. Page One gets your aircon business into those searches on Google, Google Maps and ChatGPT.",
         "searches": ["aircon chemical wash Tampines", "aircon leaking water repair", "aircon servicing package HDB", "aircon not cold", "aircon gas top up price"],
@@ -86,7 +86,7 @@ INDUSTRIES = [
     {
         "slug": "renovation-contractor", "name": "Renovation contractors", "short": "renovation business",
         "title": "SEO &amp; Website for Renovation Contractors in Singapore",
-        "desc": "Renovation, carpentry and home repair contractors: get found on Google, Maps and ChatGPT with a website that shows your work. S$20/month, no contract.",
+        "desc": "Renovation, carpentry and home repair contractors: get found on Google, Maps and ChatGPT with a website that shows your work. S$50/month, no contract.",
         "h1": "Get your renovation business found on Google",
         "lead": "Homeowners spend weeks researching before they choose a contractor. They look at past projects, check reviews and compare. Page One gives your renovation business a website that shows your work and gets it found on Google, Google Maps and ChatGPT.",
         "searches": ["HDB bathroom renovation", "kitchen cabinet carpentry Singapore", "BTO renovation contractor", "toilet waterproofing repair", "small renovation works near me"],
@@ -96,12 +96,12 @@ INDUSTRIES = [
         "proof": "",
         "faqs": [("Can my project photos help with Google?", "Yes. Well-labelled photos can show up in Google Images and help Google and AI assistants understand the work you do."),
                  ("I get most jobs through referrals. Why do I need SEO?", "Referrals often check you online before calling. A clear website and Google Maps listing help them trust you, and SEO brings in people who don't know you yet."),
-                 ("How much does it cost?", "S$20 a month on the Get Found plan (introductory price), including the website. No setup fee, no contract.")],
+                 ("How much does it cost?", "S$50 a month on the Get Found plan, including the website. No setup fee, no contract.")],
     },
     {
         "slug": "tuition-centre", "name": "Tuition centres", "short": "tuition centre",
         "title": "SEO &amp; Website for Tuition Centres in Singapore | Page One",
-        "desc": "Tuition centres and private tutors: get found on Google, Google Maps and ChatGPT when parents search by subject, level and area. S$20/month.",
+        "desc": "Tuition centres and private tutors: get found on Google, Google Maps and ChatGPT when parents search by subject, level and area. S$50/month.",
         "h1": "Get your tuition centre found by parents on Google",
         "lead": "Parents search by subject, level and area, and increasingly ask ChatGPT for recommendations. Page One gets your tuition centre into those searches with a website that answers parents' questions clearly.",
         "searches": ["PSLE maths tuition Bishan", "O level chemistry tuition", "small group tuition near me", "secondary English tuition Tampines", "JC economics tutor"],
@@ -116,7 +116,7 @@ INDUSTRIES = [
     {
         "slug": "plumber", "name": "Plumbers", "short": "plumbing business",
         "title": "SEO &amp; Website for Plumbers in Singapore | Page One",
-        "desc": "Plumbers and plumbing contractors: get found on Google, Google Maps and ChatGPT when customers need help fast. S$20/month, website included.",
+        "desc": "Plumbers and plumbing contractors: get found on Google, Google Maps and ChatGPT when customers need help fast. S$50/month, website included.",
         "h1": "Get your plumbing business found when customers need you",
         "lead": "A leaking pipe or choked toilet can't wait, so people search and call fast. Page One makes sure your plumbing business shows up on Google, Google Maps and ChatGPT, with a phone and WhatsApp button one tap away.",
         "searches": ["plumber near me", "choked toilet Singapore", "water heater installation HDB", "kitchen sink leaking repair", "24 hour plumber Jurong"],
@@ -126,12 +126,12 @@ INDUSTRIES = [
         "proof": "",
         "faqs": [("Most of my customers call in an emergency. Does SEO help?", "Yes. Emergency searches happen on phones, and people call the first trustworthy result. A fast mobile site and Google Maps listing put you there."),
                  ("Do you list my PUB licence?", "If you're a licensed plumber, we show your licence details clearly. It's a strong trust signal for customers."),
-                 ("What does it cost?", "S$20 a month (introductory price), no setup fee and no contract.")],
+                 ("What does it cost?", "S$50 a month, no setup fee and no contract.")],
     },
     {
         "slug": "pest-control", "name": "Pest control", "short": "pest control company",
         "title": "SEO &amp; Website for Pest Control in Singapore | Page One",
-        "desc": "Pest control companies: get found on Google, Google Maps and ChatGPT when homes and businesses search for help. S$20/month, no contract.",
+        "desc": "Pest control companies: get found on Google, Google Maps and ChatGPT when homes and businesses search for help. S$50/month, no contract.",
         "h1": "Get your pest control company found on Google",
         "lead": "Nobody plans to need pest control. When they do, they search for the specific pest and their area. Page One gets your company into those searches on Google, Google Maps and ChatGPT.",
         "searches": ["termite treatment HDB", "bed bug treatment Singapore", "cockroach control near me", "rat problem in house", "mosquito fogging service"],
@@ -146,7 +146,7 @@ INDUSTRIES = [
     {
         "slug": "beauty-salon", "name": "Beauty salons &amp; spas", "short": "beauty salon",
         "title": "SEO &amp; Website for Beauty Salons in Singapore | Page One",
-        "desc": "Beauty salons, spas, nail and lash studios: get found on Google, Google Maps and ChatGPT by customers nearby. S$20/month, website included.",
+        "desc": "Beauty salons, spas, nail and lash studios: get found on Google, Google Maps and ChatGPT by customers nearby. S$50/month, website included.",
         "h1": "Get your salon found by customers nearby",
         "lead": "Customers search by treatment and area, then check photos and reviews before they book. Page One gets your salon onto Google, Google Maps and ChatGPT, with a website that shows your work and makes booking easy.",
         "searches": ["facial near me", "eyelash extension Tampines", "gel manicure Bugis", "hair salon Bishan", "home based lash studio"],
@@ -156,12 +156,12 @@ INDUSTRIES = [
         "proof": "",
         "faqs": [("I'm a home-based studio. Can I still show up on Google Maps?", "Yes. You can list the area you serve without showing your full address publicly. We set it up for you."),
                  ("Instagram works for me. Why a website?", "Instagram is great for showing your work, but Google and ChatGPT can't rank it like a website. A website catches the customers who search instead of scroll."),
-                 ("What does it cost?", "S$20 a month (introductory price), website included, no setup fee and no contract.")],
+                 ("What does it cost?", "S$50 a month, website included, no setup fee and no contract.")],
     },
     {
         "slug": "property-agent", "name": "Property agents", "short": "property agent",
         "title": "Website &amp; SEO for Property Agents in Singapore | Page One",
-        "desc": "Property agents: a personal website designed to be found on Google and ChatGPT, built and managed for you. S$20/month. We run aliciaongproperty.com.",
+        "desc": "Property agents: a personal website designed to be found on Google and ChatGPT, built and managed for you. S$50/month. We run aliciaongproperty.com.",
         "h1": "A personal website for property agents, found on Google",
         "lead": "Sellers, buyers and landlords search for an agent who knows their estate and property type. A personal website helps you get found and remembered, beyond the portals. Page One builds and manages it for you.",
         "searches": ["property agent Punggol", "sell HDB 4 room", "condo rental agent", "HDB resale process", "how to choose a property agent"],
@@ -171,7 +171,7 @@ INDUSTRIES = [
         "proof": site_proof("https://aliciaongproperty.com/", "Alicia Ong Property", "a Singapore property agent"),
         "faqs": [("Do I still need my own website if I list on property portals?", "Portals bring listings to buyers. Your own website brings people to you: sellers looking for an agent, and anyone who searches your name."),
                  ("Will you include my CEA details?", "Yes. We show your name, registration number and agency details on the site, and keep the content factual."),
-                 ("What does it cost?", "S$20 a month (introductory price), website included, no setup fee and no contract.")],
+                 ("What does it cost?", "S$50 a month, website included, no setup fee and no contract.")],
     },
 ]
 
@@ -183,7 +183,7 @@ NEW_INDUSTRIES = [
         "slug": "home-bakery", "name": "Home bakeries", "short": "home bakery", "new": True,
         "eyebrow": "Starting a home bakery?",
         "title": "Starting a Home Bakery? Website + Google SEO | Page One",
-        "desc": "Starting a home bakery in Singapore? Get a website on your own domain, Google Maps and WhatsApp orders set up before your first bake. S$20/month, no setup fee.",
+        "desc": "Starting a home bakery in Singapore? Get a website on your own domain, Google Maps and WhatsApp orders set up before your first bake. S$50/month, no setup fee.",
         "h1": "Starting a home bakery? Get found from your first bake",
         "lead": "Instagram gets you started, but people also search Google and ask ChatGPT for cakes, bakes and tarts near them. Page One sets up a simple website with your menu, how to order and a WhatsApp button, plus your Google listing, so new customers can find you from day one.",
         "searches": ["custom birthday cake Punggol", "home baker near me", "pineapple tarts order Singapore", "halal home bakery", "bento cake delivery"],
@@ -197,14 +197,14 @@ NEW_INDUSTRIES = [
         "faqs": [("I bake from home. Can I be on Google Maps without showing my address?", "Yes. Google lets you list the area you serve and hide your full address. We set it up that way for home-based businesses."),
                  ("Is Instagram not enough for a home bakery?", "Instagram is great for showing your bakes, but Google and ChatGPT can't rank it like a website. A website catches the customers who search instead of scroll, and it's yours."),
                  ("I haven't started selling yet. Is it too early?", "No. Setting up your website and Google listing before you launch means you're findable from your first order. It's usually live within 7 days."),
-                 ("What does it cost?", "S$20 a month on the Get Found plan (introductory price), website included, no setup fee and no contract. Your domain is paid by you directly, usually S$15–30 a year.")],
+                 ("What does it cost?", "S$50 a month on the Get Found plan, website included, no setup fee and no contract. Your domain is paid by you directly, usually S$15–30 a year.")],
         "cta": ("Starting a home bakery? Let's get you found.", "Tell Edwin on WhatsApp what you bake and where you deliver. No obligation."),
     },
     {
         "slug": "cafe", "name": "Cafes", "short": "cafe", "new": True,
         "eyebrow": "Opening a cafe?",
         "title": "Opening a Cafe in Singapore? Website + Google | Page One",
-        "desc": "Opening a cafe in Singapore? Get your website, menu, opening hours and Google Maps listing ready before day one, so people nearby can find you. S$20/month.",
+        "desc": "Opening a cafe in Singapore? Get your website, menu, opening hours and Google Maps listing ready before day one, so people nearby can find you. S$50/month.",
         "h1": "Opening a cafe? Be on Google before your first customer",
         "lead": "When a new cafe opens, people nearby search Google Maps and ask ChatGPT where to go for coffee, brunch or a quiet place to work. Page One gets your cafe onto Google, Google Maps and AI search with a simple website showing your menu, hours and location.",
         "searches": ["cafe near me", "brunch Tiong Bahru", "work friendly cafe Singapore", "new cafes Singapore", "halal cafe Bugis"],
@@ -218,14 +218,14 @@ NEW_INDUSTRIES = [
         "faqs": [("We open in a few weeks. When should we set up the website?", "Before you open. Your website is usually live within 7 days, and having your Google listing and website ready means people can find you as soon as you open your doors."),
                  ("Can you put our menu on the website?", "Yes. We put it on as real text with prices, so Google and AI assistants can read it, and we update it when you send changes on WhatsApp."),
                  ("Do we still need a website if we're on food delivery apps?", "Delivery apps list you alongside many competitors. Your own website and Google listing bring people to you directly, for dine-in, takeaway and events."),
-                 ("What does it cost?", "S$20 a month on the Get Found plan (introductory price), website included, no setup fee and no contract.")],
+                 ("What does it cost?", "S$50 a month on the Get Found plan, website included, no setup fee and no contract.")],
         "cta": ("Opening a cafe? Let's get you on the map.", "Tell Edwin on WhatsApp where you're opening and when. No obligation."),
     },
     {
         "slug": "nail-lash-studio", "name": "Nail &amp; lash studios", "short": "nail or lash studio", "new": True,
         "eyebrow": "Opening a nail or lash studio?",
         "title": "Opening a Nail or Lash Studio? Website + SEO | Page One",
-        "desc": "Opening a nail or lash studio in Singapore? Get a website with services, prices and WhatsApp booking, plus Google Maps, from day one. S$20/month, no contract.",
+        "desc": "Opening a nail or lash studio in Singapore? Get a website with services, prices and WhatsApp booking, plus Google Maps, from day one. S$50/month, no contract.",
         "h1": "Opening a nail or lash studio? Get booked from Google",
         "lead": "New customers search by treatment and area, then look at photos and prices before they book. Page One gives your new studio a website with your services, prices and a booking button, and puts you on Google, Google Maps and ChatGPT from day one.",
         "searches": ["gel manicure Tampines", "eyelash extension near me", "lash lift price Singapore", "nail salon Jurong East", "home based lash studio"],
@@ -239,14 +239,14 @@ NEW_INDUSTRIES = [
         "faqs": [("I'm opening a home-based lash studio. Can I still show up on Google Maps?", "Yes. You can list the area you serve without showing your full address publicly. We set it up for you."),
                  ("Instagram works for me. Why a website?", "Instagram is great for showing your work, but Google and ChatGPT can't rank it like a website. A website catches the customers who search instead of scroll."),
                  ("Can I link my booking app?", "Yes. We can put your booking link next to the WhatsApp button on every page."),
-                 ("What does it cost?", "S$20 a month (introductory price), website included, no setup fee and no contract.")],
+                 ("What does it cost?", "S$50 a month, website included, no setup fee and no contract.")],
         "cta": ("Opening a studio? Let's get you booked.", "Tell Edwin on WhatsApp what you offer and where. No obligation."),
     },
     {
         "slug": "fitness-studio", "name": "Fitness studios &amp; personal trainers", "short": "fitness studio or personal training business", "new": True,
         "eyebrow": "Opening a gym, studio or PT business?",
         "title": "New Fitness Studio or PT Business? Website + SEO | Page One",
-        "desc": "Opening a fitness studio or starting as a personal trainer in Singapore? Get a website, Google Maps and WhatsApp enquiries set up from day one. S$20/month.",
+        "desc": "Opening a fitness studio or starting as a personal trainer in Singapore? Get a website, Google Maps and WhatsApp enquiries set up from day one. S$50/month.",
         "h1": "Starting a fitness studio or PT business? Get found first",
         "lead": "People search for a trainer, a class or a studio near home or work, then compare what's offered and what it costs. Page One gives your new studio or personal training business a website that explains your classes and prices, and gets you onto Google, Google Maps and ChatGPT.",
         "searches": ["personal trainer Bishan", "pilates studio near me", "HIIT class Singapore", "personal trainer for beginners", "boxing class Tanjong Pagar"],
@@ -260,7 +260,7 @@ NEW_INDUSTRIES = [
         "faqs": [("I'm a freelance personal trainer without a studio. Do I need a website?", "It helps. People search for a trainer by area and goal, and a website with your approach, packages and qualifications gives them a reason to message you. Google lets you list the areas you cover without a fixed address."),
                  ("Can you show our class timetable?", "Yes. We can add your timetable and update it when you send changes on WhatsApp."),
                  ("We're opening soon. Is it too early?", "No. Your website is usually live within 7 days, and being on Google before you open means people can find you from day one."),
-                 ("What does it cost?", "S$20 a month (introductory price), website included, no setup fee and no contract.")],
+                 ("What does it cost?", "S$50 a month, website included, no setup fee and no contract.")],
         "cta": ("Starting out in fitness? Let's get you found.", "Tell Edwin on WhatsApp what you offer and where. No obligation."),
     },
 ]
@@ -317,7 +317,7 @@ def industry_page(ind):
       <div class="wrap narrow">
         <p class="kicker reveal">Cost and timing</p>
         <h2 class="reveal">How much does a website and SEO cost for {_a} {ind['short']} in Singapore?</h2>
-        <p class="reveal">With Page One it is S$20 a month at our introductory price, with no setup fee and no contract. That covers building the website (or fixing the SEO on the one you have), hosting, the security certificate, Google Business Profile, Search Console and Bing setup, a new article every day and a technical audit every day, with problems fixed. The price may rise from 2027, and we'll tell you before it changes. Your domain, usually S$15–30 a year, is the only extra: about S$255–270 for the first year.</p>
+        <p class="reveal">With Page One it is S$50 a month, with no setup fee and no contract. That covers building the website (or fixing the SEO on the one you have), hosting, the security certificate, Google Business Profile, Search Console and Bing setup, a new article every day and a technical audit every day, with problems fixed. The price may rise from 2027, and we'll tell you before it changes. Your domain, usually S$15–30 a year, is the only extra: about S$615–630 for the first year.</p>
         <h2 class="reveal">How long before {_a} {ind['short']} shows up on Google?</h2>
         <p class="reveal">Your website is usually live within 7 days. Showing up in Google Search and Google Maps then builds over weeks to months, depending on your area and how many competitors you have. Nobody can honestly guarantee a ranking. As a guide, {PROOF_EG}, according to Google Search Console.</p>
         <p class="note reveal"><a class="link" href="/pricing/">See full pricing →</a> <a class="link" href="/clients/">See the client websites we run →</a></p>
@@ -326,7 +326,7 @@ def industry_page(ind):
 """
     cta_title, cta_text = ind.get("cta", (f"Get your {ind['short']} found", "Check your website free, or chat with Edwin on WhatsApp. No obligation."))
     body = hero(f'<a href="/industries/">Industries</a> / {ind["name"]}', ind.get("eyebrow", ind["name"] + " in Singapore"), ind["h1"], ind["lead"],
-                '<p class="hero-price"><b>S$20</b>/month · <span class="intro-tag">Introductory price</span> · website + SEO · no setup fee</p>') + f"""
+                '<p class="hero-price"><b>S$50</b>/month · <span class="intro-tag">Register by 31 Dec 2026</span> · website + SEO · no setup fee</p>') + f"""
 
     <section class="section">
       <div class="wrap">
@@ -359,10 +359,10 @@ def industry_page(ind):
 
 """ + cta(cta_title, cta_text)
     page(f"industries/{ind['slug']}/index.html", ind["title"], ind["desc"],
-         [service(f"Website and SEO for {ind['name'].replace('&amp;', '&').lower()} in Singapore", url, ind["desc"], "20"),
+         [service(f"Website and SEO for {ind['name'].replace('&amp;', '&').lower()} in Singapore", url, ind["desc"], "50"),
           {"@context": "https://schema.org", "@type": "FAQPage",
            "mainEntity": [{"@type": "Question", "name": q, "acceptedAnswer": {"@type": "Answer", "text": a}} for q, a in ind["faqs"]]}],
-         body, crumb=ind["name"], crumb_parent=("Industries", "/industries/"), updated="2026-10-15")
+         body, crumb=ind["name"], crumb_parent=("Industries", "/industries/"), updated="2026-10-19")
 
 
 for _ind in INDUSTRIES:
@@ -381,7 +381,7 @@ page("industries/index.html",
          {"@type": "ListItem", "position": n + 1, "url": f"{SITE}/industries/{i['slug']}/", "name": i["name"].replace("&amp;", "&")}
          for n, i in enumerate(INDUSTRIES)]}],
      hero("Industries", "Who we help", "Get found on Google, whatever you do",
-          "Page One builds and looks after websites that help Singapore small businesses get found on Google, Google Maps and AI search like ChatGPT, whatever the trade, for S$20 a month. Customers search differently for a plumber than for a tuition centre, so pick your industry to see what people search for, what your website needs, and the results we've had where we have them.") + f"""
+          "Page One builds and looks after websites that help Singapore small businesses get found on Google, Google Maps and AI search like ChatGPT, whatever the trade, for S$50 a month. Customers search differently for a plumber than for a tuition centre, so pick your industry to see what people search for, what your website needs, and the results we've had where we have them.") + f"""
 
     <section class="section">
       <div class="wrap">
@@ -431,5 +431,5 @@ page("free-website-check/index.html",
       </div>
     </section>
 
-""" + cta("Want it fixed for you?", "Get Found takes care of it for S$20 a month: a new website or fixes to your current one, Google, Maps and AI search, managed every day."),
+""" + cta("Want it fixed for you?", "Get Found takes care of it for S$50 a month: a new website or fixes to your current one, Google, Maps and AI search, managed every day."),
      crumb="Free website check")

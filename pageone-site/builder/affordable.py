@@ -27,11 +27,11 @@ def _myths(rows, left="What people say", right="What's true now"):
         </div>"""
 
 
-# What exactly S$20 a month includes (Edwin's ask, 17 Oct 2026, from a ChatGPT assessment: "make the S$20/month offer
+# What exactly S$50 a month includes (Edwin's ask, 17 Oct 2026, from a ChatGPT assessment: "make the monthly offer
 # extremely clear, including exactly what's included"). Every line is already promised elsewhere on the site
 # (/get-found/, /website/, /terms/); nothing new is claimed here. Shared by the three cheap-cluster pages.
 OFFER_ONE_LINE = ("Page One Singapore builds, hosts and manages a website with SEO for Singapore small businesses for "
-                  "S$20 a month (introductory price), with no setup fee and no contract. The only extra cost is your "
+                  "S$50 a month, with no setup fee and no contract. The only extra cost is your "
                   "domain name, registered in your name, usually S$15 to S$30 a year.")
 
 OFFER_INCLUDED = [
@@ -54,23 +54,23 @@ OFFER_EXTRA = [
 
 PRICE_GLANCE = """    <section class="section alt" id="whats-included">
       <div class="wrap">
-        <p class="kicker reveal">The S$20 offer, in full</p>
-        <h2 class="reveal">What exactly do you get for S$20 a month?</h2>
+        <p class="kicker reveal">The S$50 offer, in full</p>
+        <h2 class="reveal">What exactly do you get for S$50 a month?</h2>
         <p class="section-lead reveal">""" + OFFER_ONE_LINE + """</p>
         <div class="cards two" style="margin-top:24px">
           <div class="card reveal">
-            <p class="pill">Included in S$20 a month</p>
+            <p class="pill">Included in S$50 a month</p>
             <ul class="ticks">""" + "".join(f"<li>{i}</li>" for i in OFFER_INCLUDED) + """</ul>
           </div>
           <div class="card reveal">
-            <p class="pill">Not in the S$20</p>
+            <p class="pill">Not in the S$50</p>
             <ul style="padding-left:20px;margin:10px 0 16px">""" + "".join(f'<li style="margin:10px 0">{i}</li>' for i in OFFER_EXTRA) + """</ul>
             <table class="compare" style="margin-top:8px">
               <tbody>
-                <tr><th>Monthly price</th><td><b>S$20</b> (introductory price)</td></tr>
+                <tr><th>Monthly price</th><td><b>S$50</b></td></tr>
                 <tr><th>Setup fee</th><td><b>S$0</b></td></tr>
                 <tr><th>Contract</th><td><b>None</b>, cancel anytime</td></tr>
-                <tr><th>First year</th><td><b>S$240</b>, plus your domain</td></tr>
+                <tr><th>First year</th><td><b>S$600</b>, plus your domain</td></tr>
               </tbody>
             </table>
           </div>
@@ -85,8 +85,8 @@ def _price_ld(url):
     return {"@context": "https://schema.org", "@type": "OfferCatalog", "name": "Page One Singapore prices", "url": SITE + url,
             "itemListElement": [
                 {"@type": "Offer", "name": "Get Found: website built free or your current site's technical SEO fixed, Google and AI search setup, a new article every day, a technical audit every day",
-                 "price": "20", "priceCurrency": "SGD", "url": SITE + "/get-found/", "seller": PROVIDER,
-                 "priceSpecification": {"@type": "UnitPriceSpecification", "price": "20", "priceCurrency": "SGD", "unitCode": "MON"}},
+                 "price": "50", "priceCurrency": "SGD", "url": SITE + "/get-found/", "seller": PROVIDER,
+                 "priceSpecification": {"@type": "UnitPriceSpecification", "price": "50", "priceCurrency": "SGD", "unitCode": "MON"}},
                 {"@type": "Offer", "name": "SEO Boost (optional, per run): first-page competitor analysis for one search term, page improvements and a before/after report",
                  "price": "10", "priceCurrency": "SGD", "url": SITE + "/seo-boost/", "seller": PROVIDER}]}
 
@@ -94,21 +94,23 @@ def _price_ld(url):
 # ---------- Cheapest SEO in Singapore ----------
 CHEAP_SEO_FAQ = [
     ("What is the cheapest SEO in Singapore?",
-     "There is no official price list, so no one can honestly say who is cheapest. For ongoing monthly SEO, Page One Singapore charges S$20 a month (introductory price) for a website (built free, or your current site's technical SEO fixed), Google, Google Maps and ChatGPT setup, a new article every day and a technical audit every day, with problems fixed. No setup fee, no contract."),
-    ("What exactly is included in Page One's S$20 a month?",
+     "There is no official price list, so no one can honestly say who is cheapest. For ongoing monthly SEO, Page One Singapore charges S$50 a month for a website (built free, or your current site's technical SEO fixed), Google, Google Maps and ChatGPT setup, a new article every day and a technical audit every day, with problems fixed. No setup fee, no contract."),
+    ("Can I still get SEO for S$20 a month?",
+     "Our S$20 early-bird spots are now full. Early-bird clients keep S$20; new clients join at S$50 a month, website and SEO included, still far below typical agency retainers."),
+    ("What exactly is included in Page One's S$50 a month?",
      "Your website on your own domain (built free, or your current site's technical SEO fixed, or a free redesign if you ask), hosting and HTTPS, a WhatsApp button, your Google Business Profile, Search Console and Bing set up, business details labelled for AI assistants, a new article every day, a technical audit every day with problems fixed, and small changes over WhatsApp. Your domain, usually S$15 to S$30 a year, is the only extra."),
     ("Affordable SEO for small businesses: what should it include?",
-     "At minimum: a fast mobile website, a Google Business Profile, Search Console, a page for each service, useful new articles and regular checks for problems, done continuously rather than once. Page One bundles all of that with the website for S$20 a month, with a new article and a technical audit every day, with no setup fee and no contract."),
+     "At minimum: a fast mobile website, a Google Business Profile, Search Console, a page for each service, useful new articles and regular checks for problems, done continuously rather than once. Page One bundles all of that with the website for S$50 a month, with a new article and a technical audit every day, with no setup fee and no contract."),
     ("How much does SEO cost in Singapore?",
-     "It depends on the provider and on how much of the work is done by hand. When Edwin started, small businesses like his own workshop were being quoted hundreds of dollars a month for SEO they couldn't see or measure. With Page One, the Get Found plan is S$20 a month (introductory price) and includes your website (built free, or your current site's technical SEO fixed), Google, Maps and ChatGPT setup, a new article every day and a technical audit every day. Optional SEO Boosts are S$10 per run. No setup fee, no contract."),
-    ("What's the difference between the S$20 plan and an SEO Boost?",
-     "The S$20 plan is the full managed service: your site, the Google and AI search setup, a new article every day and a technical audit every day, with problems fixed. An SEO Boost (S$10 per run) is optional, for when you want to push one search term harder. We see who is on Google's first page for it, find each competitor's key weakness, improve your page to compete with the one directly above you, and send you a before/after report of what we found and changed."),
-    ("Is S$20 a month too cheap for SEO to work?",
+     "It depends on the provider and on how much of the work is done by hand. When Edwin started, small businesses like his own workshop were being quoted hundreds of dollars a month for SEO they couldn't see or measure. With Page One, the Get Found plan is S$50 a month and includes your website (built free, or your current site's technical SEO fixed), Google, Maps and ChatGPT setup, a new article every day and a technical audit every day. Optional SEO Boosts are S$10 per run. No setup fee, no contract."),
+    ("What's the difference between the S$50 plan and an SEO Boost?",
+     "The S$50 plan is the full managed service: your site, the Google and AI search setup, a new article every day and a technical audit every day, with problems fixed. An SEO Boost (S$10 per run) is optional, for when you want to push one search term harder. We see who is on Google's first page for it, find each competitor's key weakness, improve your page to compete with the one directly above you, and send you a before/after report of what we found and changed."),
+    ("Is S$50 a month too cheap for SEO to work?",
      "The price is low because the daily work is automated, not because steps are skipped. Edwin Garage, where the system was first built, got " + EG["clicks"] + " clicks from Google in the 28 days to " + THROUGH + " with an average position of " + EG["pos"] + ", according to Google Search Console. Results vary by business, so we don't guarantee rankings."),
     ("What's the catch?",
-     "There's no setup fee or contract, and you can cancel anytime. S$20 a month is our introductory price for now. It may rise for all clients from 2027, and we'll tell you before it changes. Your domain is registered in your name and paid by you directly, usually S$15–30 a year."),
-    ('Is S$20 a month a gimmick price?', "No. S$20 isn't a teaser to upsell you later, and it isn't budget SEO with steps skipped. It's what SEO can cost when a set of AI tools we designed does the daily optimisation work that used to be billed by the hour. The same system runs every website we manage, and it's proven on real businesses: " + PROOF_EG + ", according to Google Search Console. No setup fee, no contract, so you can judge it for yourself."),
-    ("How can I check that S$20 SEO really works?",
+     "There's no setup fee or contract, and you can cancel anytime. S$50 a month is our price for anyone who registers by 31 Dec 2026. From 2027 the price may rise, depending on demand, and we'll tell you before it changes. Your domain is registered in your name and paid by you directly, usually S$15–30 a year."),
+    ('Is S$50 a month a gimmick price?', "No. S$50 isn't a teaser to upsell you later, and it isn't budget SEO with steps skipped. It's what SEO can cost when a set of AI tools we designed does the daily optimisation work that used to be billed by the hour. The same system runs every website we manage, and it's proven on real businesses: " + PROOF_EG + ", according to Google Search Console. No setup fee, no contract, so you can judge it for yourself."),
+    ("How can I check that S$50 SEO really works?",
      "Look at the evidence yourself. Our Google Search Console results for Edwin Garage and Cleanic Detailing are published on our results page with dates. The websites we run are live: " + names_list(LIVE_NAMES) + ", " + LIVE_COUNT_WORD + " businesses in all (see them on our client page). Run any of them through our free website check. Page One Singapore is a project of Snap Commercial Pte. Ltd. (UEN 202209904W), a registered Singapore company."),
     ("Does Google penalise content written with AI?",
      "Google's guidance is that it rewards helpful, accurate content, however it's produced, and acts against content mass-produced only to game rankings. We use AI to write useful answers to real customer questions, based on facts about your business and real Search Console data, not to churn out filler."),
@@ -119,15 +121,15 @@ CHEAP_SEO_FAQ = [
 ]
 
 page("cheapest-seo-singapore/index.html",
-     "Cheapest SEO in Singapore? From S$20/month | Page One",
-     "Looking for the cheapest SEO in Singapore? Our AI tools optimise SEO daily, so good SEO costs less. Page One: S$20/month, no setup fee, no contract.",
+     "Cheapest SEO in Singapore? From S$50/month | Page One",
+     "Looking for the cheapest SEO in Singapore? Our AI tools optimise SEO daily, so good SEO costs less. Page One: S$50/month, no setup fee, no contract.",
      [service("Affordable SEO subscription for Singapore businesses", "/cheapest-seo-singapore/",
-              "Low-cost, automated SEO for Singapore small businesses: Google, Google Maps and AI search visibility for S$20 a month, no setup fee, no contract.", "20"),
+              "Low-cost, automated SEO for Singapore small businesses: Google, Google Maps and AI search visibility for S$50 a month, no setup fee, no contract.", "50"),
       _faq_ld(CHEAP_SEO_FAQ), _price_ld("/cheapest-seo-singapore/")],
      hero("Cheap SEO that works", "Looking for the cheapest SEO in Singapore?",
           "Cheap SEO doesn't have to mean bad SEO.",
-          "SEO used to be expensive because it took a lot of people's time. AI tools designed for SEO now do most of that daily work, automatically. With the right strategy, structure and design, good SEO, including a new article every day, can cost S$20 a month.",
-          '<p class="hero-price"><b>S$20</b>/month · <span class="intro-tag">Introductory price</span> · no setup fee · no contract · <a class="link" href="https://wa.me/6597856612" target="_blank" rel="noopener">WhatsApp +65 9785 6612</a></p>') + "\n\n" + PRICE_GLANCE + f"""
+          "SEO used to be expensive because it took a lot of people's time. AI tools designed for SEO now do most of that daily work, automatically. With the right strategy, structure and design, good SEO, including a new article every day, can cost S$50 a month, website and SEO included, still far below typical agency retainers.",
+          '<p class="hero-price"><b>S$50</b>/month · <span class="intro-tag">Register by 31 Dec 2026</span> · no setup fee · no contract · <a class="link" href="https://wa.me/6597856612" target="_blank" rel="noopener">WhatsApp +65 9785 6612</a></p>') + "\n\n" + PRICE_GLANCE + f"""
 
     <section class="section">
       <div class="wrap narrow">
@@ -143,7 +145,7 @@ page("cheapest-seo-singapore/index.html",
       <div class="wrap">
         <p class="kicker reveal">What changed</p>
         <h2 class="reveal">AI tools we designed optimise your SEO every day.</h2>
-        <p class="section-lead reveal">Edwin built Page One as a set of systematic SEO practices designed to monitor, adapt and deploy automatically. He sets the strategy, the site structure and the design once, and his AI tools carry out the daily work. When the biggest cost, people's time, is mostly automated, the price can come down a long way. That's how the Get Found plan costs S$20 a month.</p>
+        <p class="section-lead reveal">Edwin built Page One as a set of systematic SEO practices designed to monitor, adapt and deploy automatically. He sets the strategy, the site structure and the design once, and his AI tools carry out the daily work. When the biggest cost, people's time, is mostly automated, the price can come down a long way. That's how the Get Found plan costs S$50 a month.</p>
         <div class="cards three" style="margin-top:32px">{_cards([
             ("Faster", "A full technical check of a website takes seconds, not an afternoon. Problems are found the day they appear, not at next month's review."),
             ("Every day", "The system runs on a schedule every day, weekends and public holidays included. It doesn't wait for office hours or someone to come back from leave."),
@@ -181,14 +183,14 @@ page("cheapest-seo-singapore/index.html",
     <section class="section">
       <div class="wrap narrow">
         <p class="kicker reveal">A baseline, not a gimmick</p>
-        <h2 class="reveal">S$20 isn't budget SEO. It's what SEO costs now.</h2>
-        <p class="section-lead reveal">A low price can look too good to be true, so here's the honest answer. S$20 isn't a teaser to upsell you later, and it isn't SEO with steps skipped. It's the new baseline: when AI tools designed for SEO do the daily work that used to be billed by the hour, the cost of doing SEO properly falls, and the price can fall with it.</p>
+        <h2 class="reveal">S$50 isn't budget SEO. It's what SEO costs now.</h2>
+        <p class="section-lead reveal">A low price can look too good to be true, so here's the honest answer. S$50 isn't a teaser to upsell you later, and it isn't SEO with steps skipped. It's the new baseline: when AI tools designed for SEO do the daily work that used to be billed by the hour, the cost of doing SEO properly falls, and the price can fall with it.</p>
         <ul class="ticks reveal">
           <li><b>The same system for everyone.</b> Every website we manage runs on it, including Edwin's own workshop.</li>
           <li><b>Proven, with dates and sources.</b> Real Google Search Console results, published on our <a class="link" href="/results/">results page</a>.</li>
           <li><b>Checkable.</b> The {LIVE_COUNT_WORD} websites we run are live. Run any of them through our <a class="link" href="/free-website-check/">free website check</a>, or follow our <a class="link" href="/is-page-one-singapore-legit/">verification checklist</a>.</li>
           <li><b>A registered company.</b> Page One Singapore is a project of Snap Commercial Pte. Ltd. (UEN 202209904W).</li>
-          <li><b>An introductory price.</b> S$20 a month is our introductory price for now. It may rise from 2027, and we'll tell you before it changes.</li>
+          <li><b>A published price.</b> S$50 a month is our price for anyone who registers by 31 Dec 2026. From 2027 the price may rise, depending on demand, and we'll tell you before it changes.</li>
         </ul>
       </div>
     </section>
@@ -204,11 +206,11 @@ page("cheapest-seo-singapore/index.html",
 
     <section class="section">
       <div class="wrap">
-        <p class="kicker reveal">What S$20 a month gets you</p>
+        <p class="kicker reveal">What S$50 a month gets you</p>
         <h2 class="reveal">The Get Found plan</h2>
         {GET_FOUND}
         <div class="price-strip reveal">
-          <p><b>S$20/month</b> · introductory price · no setup fee · cancel anytime · optional SEO Boosts S$10 each</p>
+          <p><b>S$50/month</b> · register by 31 Dec 2026 · no setup fee · cancel anytime · optional SEO Boosts S$10 each</p>
           <a class="card-link" href="/pricing/">See pricing →</a>
         </div>
       </div>
@@ -224,16 +226,16 @@ page("cheapest-seo-singapore/index.html",
       </div>
     </section>
 
-""" + cta("See what S$20 a month can do for you", "Check your website free in under a minute, or chat with Edwin on WhatsApp. No obligation."),
-     crumb="Cheap SEO that works", updated="2026-10-17")
+""" + cta("See what S$50 a month can do for you", "Check your website free in under a minute, or chat with Edwin on WhatsApp. No obligation."),
+     crumb="Cheap SEO that works", updated="2026-10-19")
 
 
 # ---------- Cheapest website maker in Singapore ----------
 CHEAP_SITE_FAQ = [
     ("What is the cheapest way to get a website in Singapore?",
-     "Building it yourself on a website builder usually costs the least money but the most time. If you want it done for you without a lump sum, Page One Singapore builds, hosts and manages your website for S$20 a month (introductory price), with no setup fee and no contract. Your first year is S$240, plus your domain."),
+     "Building it yourself on a website builder usually costs the least money but the most time. If you want it done for you without a lump sum, Page One Singapore builds, hosts and manages your website for S$50 a month, with no setup fee and no contract. Your first year is S$600, plus your domain."),
     ("Is Page One the cheapest website maker in Singapore?",
-     "We can't check every provider's prices, so we won't claim that. Our price is S$20 a month on the Get Found plan (introductory price), which covers building, hosting and looking after your website. There's no setup fee and no contract."),
+     "We can't check every provider's prices, so we won't claim that. Our price is S$50 a month on the Get Found plan, which covers building, hosting and looking after your website. There's no setup fee and no contract."),
     ("Why a monthly fee instead of paying once?",
      "A website isn't finished on launch day. It needs hosting, security updates, fixes, new content and Google setup to keep being found. A small monthly fee covers all of that, and you don't pay a big sum upfront."),
     ("Do I own my website and domain?",
@@ -247,15 +249,15 @@ CHEAP_SITE_FAQ = [
 ]
 
 page("cheapest-website-singapore/index.html",
-     "Cheapest Website Maker in Singapore? From S$20/month",
-     "Looking for the cheapest way to get a website in Singapore? Page One builds, hosts and updates it for S$20/month. No lump sum, no setup fee, no contract.",
+     "Cheapest Website Maker in Singapore? From S$50/month",
+     "Looking for the cheapest way to get a website in Singapore? Page One builds, hosts and updates it for S$50/month. No lump sum, no setup fee, no contract.",
      [service("Website built and managed for Singapore businesses", "/cheapest-website-singapore/",
-              "A website built, hosted and kept up to date for a monthly subscription instead of a lump sum: S$20 a month, no setup fee, no contract.", "20"),
+              "A website built, hosted and kept up to date for a monthly subscription instead of a lump sum: S$50 a month, no setup fee, no contract.", "50"),
       _faq_ld(CHEAP_SITE_FAQ), _price_ld("/cheapest-website-singapore/")],
      hero("A website without the lump sum", "Looking for the cheapest website maker in Singapore?",
           "A website without the lump sum.",
-          "Most websites are a big one-off payment, then left alone until they're out of date. Page One builds your website, hosts it and keeps it updated for S$20 a month, so it keeps working for you.",
-          '<p class="hero-price"><b>S$20</b>/month · <span class="intro-tag">Introductory price</span> · no setup fee · no contract · <a class="link" href="https://wa.me/6597856612" target="_blank" rel="noopener">WhatsApp +65 9785 6612</a></p>') + "\n\n" + PRICE_GLANCE + f"""
+          "Most websites are a big one-off payment, then left alone until they're out of date. Page One builds your website, hosts it and keeps it updated for S$50 a month, website and SEO included, still far below typical agency retainers, so it keeps working for you.",
+          '<p class="hero-price"><b>S$50</b>/month · <span class="intro-tag">Register by 31 Dec 2026</span> · no setup fee · no contract · <a class="link" href="https://wa.me/6597856612" target="_blank" rel="noopener">WhatsApp +65 9785 6612</a></p>') + "\n\n" + PRICE_GLANCE + f"""
 
     <section class="section">
       <div class="wrap narrow">
@@ -273,11 +275,11 @@ page("cheapest-website-singapore/index.html",
         <p class="section-lead reveal">Building and maintaining a website used to take a lot of manual work. Page One has designed a set of AI tools that handle the repetitive parts automatically, so we can build your site and keep looking after it for a small monthly fee instead of a big upfront one.</p>
         <div class="cards three" style="margin-top:32px">{_cards([
             ("Built from what you already have", "Send us your old website address, or just your details on WhatsApp. We pull in your services, contact details and photos, and show you a preview first."),
-            ("Kept fresh", "A new article every day is included in the S$20 plan, each aimed at a different real search, so search engines have a reason to keep coming back. Want to push one search term harder? Add an SEO Boost."),
+            ("Kept fresh", "A new article every day is included in the S$50 plan, each aimed at a different real search, so search engines have a reason to keep coming back. Want to push one search term harder? Add an SEO Boost."),
             ("Checked automatically", "The system checks your site on a schedule, every day including weekends, and problems get fixed instead of waiting to be noticed."),
             ("Ready for Google and AI", "A page for each service, your business details labelled for Google, Bing and AI assistants, and a sitemap so nothing gets missed."),
             ("Fast and secure", "Hosting, the padlock (HTTPS) and a one-tap WhatsApp button, all included."),
-            ("No lump sum", "S$20 a month at an introductory price. No setup fee, no contract, cancel anytime. Your domain is in your name."),
+            ("No lump sum", "S$50 a month. No setup fee, no contract, cancel anytime. Your domain is in your name."),
         ])}</div>
       </div>
     </section>
@@ -291,7 +293,7 @@ page("cheapest-website-singapore/index.html",
             <thead><tr><th></th><th>DIY website builder</th><th>Web designer (one-off)</th><th>Page One</th></tr></thead>
             <tbody>
               <tr><th>Who builds it</th><td>You</td><td>The designer</td><td>We do</td></tr>
-              <tr><th>How you pay</th><td>Builder plan plus your time</td><td>Usually an upfront fee</td><td>S$20 a month, no setup fee</td></tr>
+              <tr><th>How you pay</th><td>Builder plan plus your time</td><td>Usually an upfront fee</td><td>S$50 a month, no setup fee</td></tr>
               <tr><th>Updates after launch</th><td>You do them</td><td>Often charged separately</td><td>Included, done for you</td></tr>
               <tr><th>Google, Maps and AI setup</th><td>Up to you</td><td>Depends on the designer</td><td>Included</td></tr>
               <tr><th>Keeps getting checked</th><td>Up to you</td><td>Usually not</td><td>Yes, automatically</td></tr>
@@ -320,7 +322,7 @@ page("cheapest-website-singapore/index.html",
     </section>
 
 """ + cta("Get your website without the lump sum", "Chat with Edwin on WhatsApp and send your old website address or your details. No obligation."),
-     crumb="A website without the lump sum", updated="2026-10-17")
+     crumb="A website without the lump sum", updated="2026-10-19")
 
 
 # ---------- New business website ----------
@@ -328,33 +330,33 @@ page("cheapest-website-singapore/index.html",
 # with Page One's all-in plan. Only Page One's own prices appear as numbers.
 NEW_BIZ_FAQ = [
     ("How much does a website for a new business cost with Page One?",
-     "S$20 a month on the Get Found plan (introductory price). That covers building the website, hosting it, keeping it secure, writing the content with you, setting it up on Google and Google Maps, a new article every day and a technical audit every day, with problems fixed. No setup fee and no contract. The only separate cost is your domain name, registered in your name, usually S$15–30 a year."),
+     "S$50 a month on the Get Found plan. That covers building the website, hosting it, keeping it secure, writing the content with you, setting it up on Google and Google Maps, a new article every day and a technical audit every day, with problems fixed. No setup fee and no contract. The only separate cost is your domain name, registered in your name, usually S$15–30 a year."),
     ("What would I need to do it myself?",
-     "Usually: a domain name, a hosting plan or a website builder subscription, a design or template, the words and photos for every page, the security certificate, Google Business Profile, Google Search Console and Bing set up, and someone to keep it updated. Each has its own bill or takes your time. With Page One, all of that except the domain is in the S$20 a month."),
+     "Usually: a domain name, a hosting plan or a website builder subscription, a design or template, the words and photos for every page, the security certificate, Google Business Profile, Google Search Console and Bing set up, and someone to keep it updated. Each has its own bill or takes your time. With Page One, all of that except the domain is in the S$50 a month."),
     ("I've just registered my business. How soon can I have a website?",
      "Usually within 7 days of receiving your details and a few photos on WhatsApp. If you don't have photos yet, we can start with what you have and add more later."),
     ("I don't have a logo or photos yet. Can I still start?",
      "Yes. We can start with a clean text logo and a simple layout, and add your logo and photos when you have them."),
     ("Do I own the website and domain?",
      "Your domain is registered in your name, so you always own it. If you cancel, your site stays live until the end of the month you paid for, you keep your domain, and you can buy the site files if you want to host them elsewhere."),
-    ("Is S$20 a month just a starter price that jumps later?",
-     "S$20 a month is our introductory price for now. It may rise for all clients from 2027, and we'll tell you before it changes. There's no setup fee and no contract, so you can cancel anytime."),
+    ("Is S$50 a month just a starter price that jumps later?",
+     "S$50 a month is our price for anyone who registers by 31 Dec 2026. From 2027 the price may rise, depending on demand, and we'll tell you before it changes. There's no setup fee and no contract, so you can cancel anytime."),
     ("What does a new business website cost in the first year with Page One?",
-     "About S$255–270 in total: 12 months at S$20 (S$240) plus your domain name, which is usually S$15–30 a year and paid by you directly. That includes building the website, hosting, the security certificate, Google Business Profile, Search Console and Bing setup, a new article every day, a technical audit every day and small changes. There is no setup fee."),
+     "About S$615–630 in total: 12 months at S$50 (S$600) plus your domain name, which is usually S$15–30 a year and paid by you directly. That includes building the website, hosting, the security certificate, Google Business Profile, Search Console and Bing setup, a new article every day, a technical audit every day and small changes. There is no setup fee."),
     ("Can I get a .com.sg domain before my company is registered?",
      "A .com.sg domain is for businesses registered, or in the process of registering, with ACRA or another recognised Singapore body, under SGNIC's rules. A .com or plain .sg domain has no such requirement, so you can start with one of those and add .com.sg once your registration is done."),
 ]
 
 page("new-business-website/index.html",
-     "Website for a New Business in Singapore: S$20/month",
-     "Starting a business in Singapore? Website, hosting, content and Google listing for S$20/month, about S$255–270 for year one. No setup fee, live in 7 days.",
+     "Website for a New Business in Singapore: S$50/month",
+     "Starting a business in Singapore? Website, hosting, content and Google listing for S$50/month, about S$615–630 for year one. No setup fee, live in 7 days.",
      [service("Website for new businesses in Singapore", "/new-business-website/",
-              "A website for a new Singapore business, set up and managed: hosting, content, Google and Google Maps setup, daily articles and daily upkeep for S$20 a month.", "20"),
+              "A website for a new Singapore business, set up and managed: hosting, content, Google and Google Maps setup, daily articles and daily upkeep for S$50 a month.", "50"),
       _faq_ld(NEW_BIZ_FAQ), _price_ld("/new-business-website/")],
      hero("New business website", "Starting a business in Singapore?",
           "Your new business website, done for you.",
-          "You've got a business to run. Page One sets up everything you need to be found online: the website, the hosting, the content and your Google listing. One plan, S$20 a month, and Edwin looks after it from then on.",
-          '<p class="hero-price"><b>S$20</b>/month · <span class="intro-tag">Introductory price</span> · hosting included · no setup fee</p>') + "\n\n" + PRICE_GLANCE + f"""
+          "You've got a business to run. Page One sets up everything you need to be found online: the website, the hosting, the content and your Google listing. One plan, S$50 a month, and Edwin looks after it from then on.",
+          '<p class="hero-price"><b>S$50</b>/month · <span class="intro-tag">Register by 31 Dec 2026</span> · hosting included · no setup fee</p>') + "\n\n" + PRICE_GLANCE + f"""
 
     <section class="section">
       <div class="wrap narrow">
@@ -374,7 +376,7 @@ page("new-business-website/index.html",
       <div class="wrap narrow">
         <p class="kicker reveal">New business launch checklist</p>
         <h2 class="reveal">Your first five steps online</h2>
-        <p class="section-lead reveal">Work through these in order. The ones marked <b>we do this</b> are part of the S$20 plan.</p>
+        <p class="section-lead reveal">Work through these in order. The ones marked <b>we do this</b> are part of the S$50 plan.</p>
         <ul class="ticks reveal">
           <li><b>ACRA registration done.</b> Your business is registered through Bizfile and you have your UEN. Use the exact registered or trading name everywhere: website, Google listing and social pages.</li>
           <li><b>Domain registered in your name.</b> yourbusiness.com.sg or .com, usually S$15–30 a year, paid by you directly so you always own it. <span class="term">We help you set it up</span></li>
@@ -392,7 +394,7 @@ page("new-business-website/index.html",
         <h2 class="reveal">Everything you'd otherwise sort out yourself</h2>
         <div class="table-wrap reveal" style="margin-top:24px">
           <table class="compare">
-            <thead><tr><th></th><th>Doing it yourself</th><th>Page One (S$20 a month)</th></tr></thead>
+            <thead><tr><th></th><th>Doing it yourself</th><th>Page One (S$50 a month)</th></tr></thead>
             <tbody>
               <tr><th>Hosting / server</th><td>Choose a plan and pay for it yourself</td><td>Included</td></tr>
               <tr><th>Website builder or developer</th><td>A subscription, or a developer's fee</td><td>Included: we build it</td></tr>
@@ -404,7 +406,7 @@ page("new-business-website/index.html",
             </tbody>
           </table>
         </div>
-        <p class="note reveal">S$20 a month is S$240 a year for the website, hosting, content, Google setup and daily care. Add up what the do-it-yourself column would cost you, including your own hours, and compare.</p>
+        <p class="note reveal">S$50 a month is S$600 a year for the website, hosting, content, Google setup and daily care. Add up what the do-it-yourself column would cost you, including your own hours, and compare.</p>
       </div>
     </section>
 
@@ -418,16 +420,16 @@ page("new-business-website/index.html",
             <thead><tr><th>First-year item</th><th>With Page One</th></tr></thead>
             <tbody>
               <tr><th>Building the website</th><td>S$0 setup fee</td></tr>
-              <tr><th>Hosting and security (the padlock)</th><td>Included in S$20 a month</td></tr>
+              <tr><th>Hosting and security (the padlock)</th><td>Included in S$50 a month</td></tr>
               <tr><th>Google Business Profile, Search Console and Bing setup</th><td>Included</td></tr>
               <tr><th>A new article every day and a technical audit every day</th><td>Included</td></tr>
               <tr><th>Small text and photo changes after launch</th><td>Included: WhatsApp Edwin</td></tr>
               <tr><th>Domain name (in your name, paid by you)</th><td>Usually S$15–30 a year</td></tr>
-              <tr><th><b>Total for the first 12 months</b></th><td><b>About S$255–270</b> (12 × S$20, plus your domain)</td></tr>
+              <tr><th><b>Total for the first 12 months</b></th><td><b>About S$615–630</b> (12 × S$50, plus your domain)</td></tr>
             </tbody>
           </table>
         </div>
-        <p class="note reveal">S$20 a month is our introductory price for now. It may rise from 2027, and we'll tell you before it changes. There is no separate renewal bill for hosting or maintenance.</p>
+        <p class="note reveal">S$50 a month is our price for anyone who registers by 31 Dec 2026. From 2027 the price may rise, depending on demand, and we'll tell you before it changes. There is no separate renewal bill for hosting or maintenance.</p>
         <h3 class="reveal" style="margin-top:40px">Two Singapore rules to know before you launch</h3>
         <ul class="ticks reveal">
           <li><b>A .com.sg address needs a registered business.</b> SGNIC, which runs .sg domains, only gives .com.sg to businesses registered (or registering) with ACRA or another recognised Singapore body. A plain .sg or .com has no such rule. If you're still registering, you can start with .com and add .com.sg later.</li>
@@ -438,9 +440,9 @@ page("new-business-website/index.html",
 
     <section class="section">
       <div class="wrap">
-        <p class="kicker reveal">Why it's only S$20</p>
+        <p class="kicker reveal">Why it's only S$50</p>
         <h2 class="reveal">One-stop, because the busywork is automated</h2>
-        <p class="section-lead reveal">Edwin designed a set of AI tools that do the repetitive work automatically: monitoring the site, publishing helpful articles and telling Google about changes. That's how one person can set up and look after your whole online presence for S$20 a month, so you can spend your time on your customers. <a class="link" href="/cheapest-seo-singapore/">Why cheap doesn't mean bad →</a></p>
+        <p class="section-lead reveal">Edwin designed a set of AI tools that do the repetitive work automatically: monitoring the site, publishing helpful articles and telling Google about changes. That's how one person can set up and look after your whole online presence for S$50 a month, so you can spend your time on your customers. <a class="link" href="/cheapest-seo-singapore/">Why cheap doesn't mean bad →</a></p>
         <ol class="steps" style="margin-top:56px">
           <li class="reveal"><span>1</span><h3>Chat with Edwin</h3><p>On WhatsApp: tell us what you do and where. No obligation.</p></li>
           <li class="reveal"><span>2</span><h3>Send details and photos</h3><p>We help register your domain in your name and build your website.</p></li>
@@ -455,12 +457,12 @@ page("new-business-website/index.html",
         <h2 class="reveal">New business website: your questions, answered</h2>
         <div style="margin-top:24px">
 {_faq_html(NEW_BIZ_FAQ)}        </div>
-        <p class="note reveal">Comparing this with an SEO agency or hiring a marketing executive? <a class="link" href="/seo-services-singapore/">See how S$20 a month compares →</a></p>
+        <p class="note reveal">Comparing this with an SEO agency or hiring a marketing executive? <a class="link" href="/seo-services-singapore/">See how S$50 a month compares →</a></p>
       </div>
     </section>
 
-""" + cta("Starting a business? Let's get you online.", "Chat with Edwin on WhatsApp: tell us what you do and where. Live within 7 days, S$20 a month."),
-     crumb="New business website", updated="2026-10-17")
+""" + cta("Starting a business? Let's get you online.", "Chat with Edwin on WhatsApp: tell us what you do and where. Live within 7 days, S$50 a month."),
+     crumb="New business website", updated="2026-10-19")
 
 
 # ---------- SEO services in Singapore: agency vs in-house vs Page One ----------
@@ -469,7 +471,7 @@ page("new-business-website/index.html",
 # rate for Singapore citizens and PRs aged 55 and below. The salary example is an illustration, not a benchmark.
 SEO_SERVICES_FAQ = [
     ("How much do SEO services cost in Singapore?",
-     "It varies a lot by provider and scope. As a general guide, small business SEO retainers from agencies are often somewhere around S$500 to S$3,000 or more a month, sometimes with a setup or audit fee. Hiring an in-house SEO or digital marketing executive typically means a salary of roughly S$3,000 to S$5,000 a month plus employer CPF and tools. These are typical ranges, not quotes. Page One's Get Found plan is S$20 a month (introductory price), with optional SEO Boosts at S$10 each, no setup fee and no contract."),
+     "It varies a lot by provider and scope. As a general guide, small business SEO retainers from agencies are often somewhere around S$500 to S$3,000 or more a month, sometimes with a setup or audit fee. Hiring an in-house SEO or digital marketing executive typically means a salary of roughly S$3,000 to S$5,000 a month plus employer CPF and tools. These are typical ranges, not quotes. Page One's Get Found plan is S$50 a month, with optional SEO Boosts at S$10 each, no setup fee and no contract."),
     ("Is an SEO agency better than Page One?",
      "It depends on what you need. An agency can make sense if you have a larger budget, compete for national searches, sell in several markets or want ads and SEO handled together. Page One is built for new and small local businesses that want the essentials done properly at a low monthly cost: a website, Google and Google Maps setup, AI search setup, a new article every day and a technical audit every day."),
     ("Should I hire an in-house SEO executive or outsource?",
@@ -483,21 +485,21 @@ SEO_SERVICES_FAQ = [
     ("Do you guarantee page one on Google?",
      "No. Google decides rankings, so no honest provider can guarantee them. Be careful of anyone who does. We document the work instead, and you can see your own numbers in Google Search Console."),
     ("Is there a contract or setup fee?",
-     "No. The Get Found plan is S$20 a month at an introductory price, paid monthly in advance, with no setup fee and no minimum contract. Cancel anytime by WhatsApp."),
+     "No. The Get Found plan is S$50 a month, paid monthly in advance, with no setup fee and no minimum contract. Cancel anytime by WhatsApp."),
     ("How do I check that an SEO company in Singapore is legitimate?",
      "Look the company up on ACRA's Bizfile by name or UEN, ask for Google Search Console numbers with the date range shown for a website you can visit, open the client websites they name, and read the minimum term in the contract. Be careful with headline promises like \"Rank #1\" that their own small print says no one can guarantee. Page One's company details, client websites and dated Search Console results are all published so you can check them."),
 ]
 
 page("seo-services-singapore/index.html",
-     "SEO Services Singapore: Agency vs In-house vs S$20/month",
-     "Comparing SEO services in Singapore? Agency retainers, hiring an SEO executive or Page One at S$20/month: typical costs, what you get and when each makes sense.",
+     "SEO Services Singapore: Agency vs In-house vs S$50/month",
+     "Comparing SEO services in Singapore? Agency retainers, hiring an SEO executive or Page One at S$50/month: typical costs, what you get and when each makes sense.",
      [service("SEO services for Singapore small businesses", "/seo-services-singapore/",
-              "Done-for-you SEO for Singapore small businesses: a website (built free, or your current site's technical SEO fixed), Google, Google Maps and AI search setup, a new article every day and a technical audit every day for S$20 a month.", "20"),
+              "Done-for-you SEO for Singapore small businesses: a website (built free, or your current site's technical SEO fixed), Google, Google Maps and AI search setup, a new article every day and a technical audit every day for S$50 a month.", "50"),
       _faq_ld(SEO_SERVICES_FAQ), _price_ld("/seo-services-singapore/")],
      hero("SEO services compared", "Shopping for SEO in Singapore?",
-          "SEO services in Singapore: agency, in-house hire, or S$20 a month?",
+          "SEO services in Singapore: agency, in-house hire, or S$50 a month?",
           "If you're comparing SEO companies, or thinking of hiring someone to do it, here's an honest side-by-side: typical costs, what each option is good at, and where Page One fits, and where it doesn't.",
-          '<p class="hero-price"><b>S$20</b>/month · <span class="intro-tag">Introductory price</span> · no setup fee · no contract</p>') + f"""
+          '<p class="hero-price"><b>S$50</b>/month · <span class="intro-tag">Register by 31 Dec 2026</span> · no setup fee · no contract</p>') + f"""
 
     <section class="section">
       <div class="wrap">
@@ -507,7 +509,7 @@ page("seo-services-singapore/index.html",
           <table class="compare">
             <thead><tr><th></th><th>SEO agency</th><th>In-house SEO / digital marketing executive</th><th>Page One</th></tr></thead>
             <tbody>
-              <tr><th>Typical monthly cost</th><td>Often around S$500 to S$3,000+ for a small business retainer</td><td>Salary often around S$3,000 to S$5,000, plus 17% employer CPF and tools</td><td><b>S$20</b> (introductory price), optional SEO Boosts S$10 each</td></tr>
+              <tr><th>Typical monthly cost</th><td>Often around S$500 to S$3,000+ for a small business retainer</td><td>Salary often around S$3,000 to S$5,000, plus 17% employer CPF and tools</td><td><b>S$50</b>, optional SEO Boosts S$10 each</td></tr>
               <tr><th>Upfront</th><td>Sometimes a setup or audit fee</td><td>Recruitment time, equipment and training</td><td>No setup fee</td></tr>
               <tr><th>Commitment</th><td>Minimum terms are common</td><td>Employment contract and notice period</td><td>None, cancel anytime</td></tr>
               <tr><th>Website included</th><td>Usually quoted separately</td><td>Depends on their skills</td><td>Yes: built free if you need one, or your current site's technical SEO fixed</td></tr>
@@ -543,7 +545,7 @@ page("seo-services-singapore/index.html",
             <li><b>Use Page One</b> when what you mainly need is to be found on Google, Google Maps and ChatGPT, with the website looked after for you.</li>
             <li><b>Or both.</b> We handle the website and search groundwork, and your executive focuses on social media, ads and customers.</li>
           </ul>
-          <a class="card-link" href="/get-found/">See what S$20 a month covers →</a>
+          <a class="card-link" href="/get-found/">See what S$50 a month covers →</a>
         </div>
       </div>
     </section>
@@ -578,7 +580,7 @@ page("seo-services-singapore/index.html",
     <section class="section alt">
       <div class="wrap">
         <p class="kicker reveal">Where Page One fits</p>
-        <h2 class="reveal">Honest about what S$20 a month is for</h2>
+        <h2 class="reveal">Honest about what S$50 a month is for</h2>
         <div class="cards two" style="margin-top:32px">
           <div class="card reveal"><p class="pill">A good fit</p><h3>New and small local businesses</h3><p>You're opening a business, or you're a small business that wants to be found on Google, Google Maps and ChatGPT without a big retainer. You'd rather WhatsApp someone than learn SEO tools. No website yet? We build one free. Already have one? We fix its on-page technical SEO, or redesign it free if you ask.</p></div>
           <div class="card reveal"><p class="pill">Probably not a fit</p><h3>When you need more than search groundwork</h3><p>You need paid ads managed, social media run for you, a large online shop with thousands of products, several countries, or someone in your office every day. An agency or an in-house hire is the better choice there.</p></div>
@@ -607,5 +609,5 @@ page("seo-services-singapore/index.html",
       </div>
     </section>
 
-""" + cta("Compare it for yourself", "Start at S$20 a month with no setup fee and no contract, or ask Edwin anything on WhatsApp first. No obligation."),
-     crumb="SEO services compared", updated="2026-10-17")
+""" + cta("Compare it for yourself", "Start at S$50 a month with no setup fee and no contract, or ask Edwin anything on WhatsApp first. No obligation."),
+     crumb="SEO services compared", updated="2026-10-19")
