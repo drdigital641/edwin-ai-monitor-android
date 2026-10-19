@@ -414,6 +414,13 @@ FAQ = [
 
 
 FAQ_BY_Q = dict(FAQ)
+# Upgrade page only (Booster run, 19 Oct 2026): kept out of FAQ, so the home page and other pages keep their questions.
+FAQ_BY_Q.update({
+    'Will a remap or engine upgrade damage my gearbox?':
+        'It can, if the extra torque is more than the clutches and torque converter were built for. Signs are slipping or flaring under full throttle, harsh shifts, shudder or hot gearbox oil. A strengthening upgrade matches the gearbox to the new power.',
+    'Do I need a gearbox upgrade or just an overhaul?':
+        'An overhaul restores a worn gearbox for its standard power. An upgrade is for an engine that now makes more power or torque, or for extra reliability. If the gearbox is worn and the engine is tuned, both are usually planned together.',
+})
 # Lean home page (Edwin's rule, 15 Oct 2026): the home page keeps the 4 strongest questions (visible = FAQPage schema).
 # The other three stay on the owner pages: warranty (services, contact, gallery), signs (gallery, problems hub),
 # where/open (gallery).
@@ -487,15 +494,31 @@ SERVICE_PAGES = {
         'desc': 'Gearbox strengthening upgrades in Singapore: clutch, valve body and torque converter upgrades matched to your engine’s power and torque.',
         'h1': 'Gearbox Strengthening &amp; Upgrade',
         'sub': 'For cars whose engine now makes more power or torque than the original gearbox was built for, or owners who want a more reliable transmission.',
+        'updated': '19 Oct 2026',
         'sections': [
             ('When an upgrade makes sense',
              '<p>A gearbox is designed for a certain amount of power (bhp) and torque (Nm). If the engine has been tuned or modified, the original clutches and torque converter can be pushed past what they were built for. A strengthening upgrade matches the gearbox to the engine, so it can handle the extra load reliably.</p>'),
+            ('Signs the gearbox is struggling with more power',
+             '<p>A gearbox that is past its limit usually shows it under full throttle or heavy load first:</p>'
+             '<ul class="ticks"><li><strong>Flare or slip on hard acceleration.</strong> The revs jump during a shift, or climb without the car speeding up. See <a href="{u}gearbox-problems/gearbox-slipping/">engine revs but the car doesn’t speed up</a>.</li>'
+             '<li><strong>Harsh or late shifts</strong> after a remap or engine upgrade, or a gearbox that drops into a protective limp mode.</li>'
+             '<li><strong>Shudder or vibration</strong> when the torque converter locks up under load.</li>'
+             '<li><strong>Hot or burnt-smelling gearbox oil</strong>, because a slipping clutch turns power into heat.</li></ul>'
+             '<p>The same signs can come from worn parts or old gearbox oil, so they are checked before anything is upgraded.</p>'),
+            ('Upgrade or overhaul: which do you need?',
+             '<p>An <a href="{u}services/gearbox-repair/">overhaul</a> restores a worn gearbox to working order for the power it was built for. A strengthening upgrade goes further, for an engine that now makes more power or torque than standard, or an owner who wants extra reliability. If the gearbox is already worn, the upgrade is usually planned together with the overhaul, while the gearbox is open.</p>'),
             ('What we upgrade',
              '<ul class="ticks"><li>Clutch packs</li><li>Valve body</li><li>Torque converter</li><li>Lubrication of bearings and gears, set up for the new performance level</li></ul>'
              '<p>Every upgrade starts with an assessment and a complete diagnostic of your current gearbox, so the upgrade is designed for your car and how you drive it.</p>'),
+            ('How an upgrade works',
+             '<ol class="steps"><li><strong>Tell Jacky about the car.</strong> WhatsApp the model, the gearbox and what has been done to the engine.</li>'
+             '<li><strong>Assessment and diagnostic.</strong> Jacky reads the fault codes, checks the gearbox oil and road-tests the car. The diagnostic starts from S$30.</li>'
+             '<li><strong>Upgrade plan and quote.</strong> Which parts to upgrade for your power and torque, and the price, before any work starts.</li>'
+             '<li><strong>Upgrade.</strong> The workshop team fits the parts agreed in the quote.</li></ol>'),
         ],
         'problems': ['car-jerks-when-changing-gear', 'car-vibrates-when-accelerating'],
-        'faq': ['How much is the diagnostic?', 'Is there a warranty after repair?', 'Which car brands do you work on?'],
+        'faq': ['Will a remap or engine upgrade damage my gearbox?', 'Do I need a gearbox upgrade or just an overhaul?',
+                'How much is the diagnostic?', 'Is there a warranty after repair?', 'Which car brands do you work on?'],
     },
     'gearbox-servicing': {
         'title': 'Gearbox Oil (ATF) Change & Servicing Singapore | Jacky Gearbox',
