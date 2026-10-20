@@ -738,4 +738,47 @@ ARTICLES = [
              ('Why did the DSC light come on after a wheel alignment or battery change?', 'On many models the steering angle sensor has to be set up again after alignment, steering work or a flat battery. Until it is, DSC may switch itself off and the light stays on.'),
              ('Do I need to bring the whole car?', 'No. You can bring just the ABS unit to us at Premier @ Kaki Bukit, or use our pick-up and delivery service for the car.')],
     ),
+    dict(
+        # EDGE daily article, 20 Oct 2026 (8pm run). Make series (Hyundai/Kia, Toyota, Nissan, VW/Audi, BMW done): Honda's general
+        # "ABS + VSA lights" question; the code articles (81-19, 121-11) stay the owners of their codes and are linked from here.
+        slug='honda-abs-vsa-light-on', service='abs-pump-repair', date='2026-10-20', img_commit='IMGCOMMIT',
+        title='Honda ABS and VSA Lights On? Causes | The ECU Clinic',
+        desc='Why the ABS and VSA lights come on together in a Honda, whether it is safe to drive, the simple causes to rule out first, and Honda ABS repair in Singapore.',
+        h1='Why Are the ABS and VSA Lights On in My Honda?',
+        lead='ABS and VSA lights on together in a Honda? What each light means, the simple causes to rule out first, and when the ABS (VSA modulator) unit needs repair.',
+        photo='honda-vsa-fault-codes', alt='Scan tool showing a Honda VSA fault code read at The ECU Clinic', share='honda-vezel-vsa-fault-codes.jpg',
+        body='''<p><strong>Short answer:</strong> on Honda cars, ABS (anti-lock brakes) and VSA (Vehicle Stability Assist, Honda’s stability control) share one unit in the engine bay, often called the VSA modulator, and use the same wheel speed signals. So one fault usually turns on both lights, sometimes with the brake warning too. Common causes are a wheel speed sensor, low battery voltage, the brake light switch or a fault inside the ABS/VSA unit itself. The fault code tells you which.</p>
+<h2>What do the ABS and VSA lights mean?</h2>
+<ul class="ticks">
+<li><strong>ABS</strong> is the anti-lock braking system. It stops the wheels locking when you brake hard.</li>
+<li><strong>VSA</strong> is Honda’s stability and traction control. It brakes single wheels and can reduce engine power to help the car hold its line. A VSA light that flashes briefly on a slippery road means it is working; a light that stays on means the system has switched itself off.</li>
+</ul>
+<p>VSA needs the wheel speed signals and the pump and valves that ABS uses. When the ABS side has a fault, VSA is switched off too, which is why the two lights come on together.</p>
+<h2>Is it safe to drive with the ABS and VSA lights on?</h2>
+<p>In most cases your normal brakes still work, but anti-lock braking and stability control may be off until the fault is fixed. The wheels can then lock under hard braking, and the car will not correct a skid on a wet road. Leave more distance and avoid hard stops. If the red brake warning light is on, the brake pedal feels different or the brake fluid is low, stop driving and get the car checked first. Our pick-up and delivery service can collect it.</p>
+<h2>Did someone press the VSA OFF button?</h2>
+<p>Many Honda models have a VSA OFF button. When it is pressed, a “VSA OFF” light stays on. Press the button again, or restart the car, and VSA usually switches back on. If the ABS light is on as well, or the lights stay on after a restart, there is a stored fault.</p>
+<h2>What are the common causes?</h2>
+<ul class="ticks">
+<li><strong>Wheel speed sensor.</strong> Each wheel has one. A dirty, damaged or failed sensor, or its wiring, is a common cause.</li>
+<li><strong>Low battery voltage.</strong> A weak battery, or one that has just gone flat, can make several modules store faults at once.</li>
+<li><strong>Brake light switch.</strong> VSA uses it to know when you are braking, so a faulty switch can turn the lights on.</li>
+<li><strong>The ABS/VSA unit itself.</strong> Faults inside the unit are among the Honda ABS faults we handle most often, for example <a href="../honda-vsa-solenoid-valve-malfunction/">121-11 VSA Solenoid Valve Malfunction</a> and the <a href="../honda-yaw-rate-sensor-malfunction/">81-19 yaw rate sensor</a> code for the sensor inside the modulator.</li>
+</ul>
+<p>When the VSA unit has a fault, other systems that take information from it, such as the electric parking brake and power steering, can show their own warnings too.</p>
+<h2>How do we find which part is at fault?</h2>
+<ol class="steps">
+<li><strong>Read the fault codes.</strong> The ABS/VSA unit stores codes that point to the circuit at fault.</li>
+<li><strong>Rule out the simple causes.</strong> The VSA OFF button, sensors, wiring, the brake light switch, battery and fuses.</li>
+<li><strong>Check the unit.</strong> If the codes and tests point to the module, the pump or a sensor inside the unit, the ABS/VSA unit is the problem.</li>
+<li><strong>Tell you the options.</strong> You decide before any work starts.</li>
+</ol>
+<h2>Repair, used or new?</h2>
+<p>If the fault is in the ABS unit, we can repair your own Honda ABS module, or supply a used unit. Our repairs come with a 6-month warranty. See <a href="../../services/abs-pump-repair/">ABS pump and module repair</a> for how the options compare, or <a href="../abs-warning-light-causes/">ABS warning light causes</a> for the ABS light on its own.</p>
+<h2>What should I send?</h2>
+<p>WhatsApp us your car model, year, chassis number and the fault codes. A photo of the dashboard or the scan tool screen also helps. You can bring the car, or just the unit, to Premier @ Kaki Bukit, or use our pick-up and delivery service.</p>''',
+        faq=[('Why do the ABS, VSA and brake lights all come on in my Honda?', 'ABS and VSA share one unit, and the brake system warning can come on with them when that unit has a fault. Reading the fault code shows which part is the cause. If the brake pedal feels different or the fluid is low, stop driving first.'),
+             ('Will the ABS and VSA lights go off by themselves?', 'Sometimes they go off after a restart if the fault is intermittent, but the code stays stored and the lights usually come back until the cause is fixed. Read the code first.'),
+             ('Can you repair the ABS unit without the car?', 'Yes. You can bring just the unit to us at Premier @ Kaki Bukit, or use our pick-up and delivery service.')],
+    ),
 ]
