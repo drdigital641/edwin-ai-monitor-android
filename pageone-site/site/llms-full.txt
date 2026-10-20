@@ -432,6 +432,30 @@ A: A set of AI tools we designed does the daily SEO work that used to be billed 
 Q: Who is it not right for?
 A: If you need paid ads managed, social media run for you, a large online shop or several countries, a bigger budget and an agency are the better choice. Page One is for new and small local businesses that want to be found on Google, Google Maps and ChatGPT.
 
+## ChatGPT SEO Singapore: Help ChatGPT Find Your Business | S$50/month
+URL: https://pageonesingapore.com/chatgpt-seo-singapore/
+Last updated: 2026-10-21
+
+ChatGPT SEO for Singapore small businesses: how ChatGPT search picks sources, the six things we set up so it can find and describe you, and how to check. Included in S$50/month.
+
+Q: What is ChatGPT SEO?
+A: ChatGPT SEO means making your business easy for ChatGPT to find, read and describe correctly when someone asks it a question with web search on. It is part of GEO, generative engine optimisation. In practice it is the same groundwork as good SEO, plus a few AI-specific steps: allowing OpenAI's search crawler, connecting Bing, and publishing clear facts AI tools can quote.
+
+Q: How does ChatGPT decide which businesses to mention?
+A: When ChatGPT searches the web, it reads pages from its own crawler (OAI-SearchBot) and from search partners such as Bing, then writes an answer and links its sources. Pages that answer the question directly, state facts like price and area clearly, and are mentioned by other websites are easier for it to use. OpenAI does not publish a ranking formula, and no one can control what it says.
+
+Q: Can you guarantee ChatGPT will recommend my business?
+A: No, and no honest provider can. ChatGPT's answers change with the question, the user and the day. What we can do is make sure nothing stops ChatGPT from finding and understanding your site, and keep adding pages that answer what your customers ask.
+
+Q: How much does ChatGPT SEO cost with Page One?
+A: It is included in the S$50 a month plan together with Google SEO, with no setup fee and no contract. There is no separate ChatGPT package.
+
+Q: How do I check if ChatGPT knows my business?
+A: Open ChatGPT, turn on search, and ask the way a customer would, for example "best aircon servicing in Tampines" or "what does [your business name] do?". See whether you are named, and whether the details are right. Try a few different wordings, because answers vary.
+
+Q: Does this help with Gemini, Perplexity and Copilot too?
+A: Yes. The same steps (clear facts, structured data, crawlers allowed, Bing and Google connected, consistent details everywhere) help every AI assistant that searches the web. Copilot uses Bing directly, and Gemini draws on Google.
+
 ## Cheapest SEO in Singapore? From S$50/month | Page One
 URL: https://pageonesingapore.com/cheapest-seo-singapore/
 Last updated: 2026-10-19
@@ -785,6 +809,36 @@ URL: https://pageonesingapore.com/privacy/
 Last updated: 2026-10-19
 
 How Page One Singapore collects, uses and protects your personal data, in line with Singapore's Personal Data Protection Act (PDPA).
+
+## Car Detailing SEO Case Study Singapore: Cleanic Detailing | Page One
+URL: https://pageonesingapore.com/results/cleanic-detailing/
+Last updated: 2026-10-20
+
+How Cleanic Detailing, a Singapore mobile car grooming service, reached page one on Google for 1,218 searches. Real Search Console numbers to 17 Oct 2026.
+
+Q: Where do these numbers come from?
+A: Google Search Console, Google's own report on how a website performs in Google Search. We collect the final data automatically and don't edit it. Data runs to 17 October 2026.
+
+Q: How long did it take?
+A: Search Console data for Cleanic Detailing starts on 20 June 2026. It reached page one for 1,218 different searches in the 28 days to 17 Oct 2026. Every business is different, so we don't promise the same timing.
+
+Q: Will my business get the same results?
+A: We can't promise that, and no honest provider can. Results depend on your industry, your competition and how long your site has been running. What we can promise is the same system, and Search Console connected so you see your own numbers.
+
+## Financial Adviser SEO Case Study Singapore: the First Months | Page One
+URL: https://pageonesingapore.com/results/danny-chua-financial/
+Last updated: 2026-10-20
+
+What the first months of SEO look like for a Singapore financial consultant's website: Danny Chua Financial's real Search Console numbers to 17 Oct 2026.
+
+Q: Why show a case study that is still early?
+A: Because most new websites look like this for the first few months, and anyone selling SEO should say so. Our newer client sites are shown the same way on the results page.
+
+Q: Where do these numbers come from?
+A: Google Search Console, Google's own report on how a website performs in Google Search. We collect the final data automatically and don't edit it. Data runs to 17 October 2026.
+
+Q: How long does SEO take for a new website?
+A: Usually months, not weeks. Google first needs to find and test the pages, then rankings build as articles add up. We can't promise timing or rankings for any business.
 
 ## SEO Explained Simply: Jargon in Plain English | Page One SG
 URL: https://pageonesingapore.com/seo-explained/

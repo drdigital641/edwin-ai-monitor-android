@@ -983,7 +983,8 @@ _eg_pos = [m["position"] for m in G["sggarage"]["full_months"]]
 _others = [c for c in SC["clients"] if stage(c["key"]) != "case"]
 _others_html = "\n".join(
     f'          <div class="card reveal"><p class="pill">{pill(c["key"])}</p><h3>{c["name"]}</h3><p>{result_text(c["key"])}</p>'
-    f'<p><a class="link" href="{c["url"]}" target="_blank" rel="noopener">{c["domain"]} ↗</a></p></div>' for c in _others)
+    f'<p><a class="link" href="{c["url"]}" target="_blank" rel="noopener">{c["domain"]} ↗</a>'
+    + (f' · <a class="link" href="{c["case_study"]}">Case study →</a>' if c.get("case_study") else "") + '</p></div>' for c in _others)
 
 RESULTS_FAQ = [
     ("Where do these numbers come from?", "Every figure on this page comes from Google Search Console, Google's own report of how a website performs in Google Search. We collect the final data automatically and don't edit it. Data runs to " + DATA_THROUGH + "."),
@@ -1054,7 +1055,7 @@ page("results/index.html",
         <h3 class="reveal">Where it shows up on Google</h3>
         <p class="reveal">A few of the searches it ranks for (28 days to """ + THROUGH_SHORT + """):</p>
         <div class="reveal">""" + ranks_table(query_rows("sggarage")) + """</div>
-        <a class="card-link reveal" href="https://sggarage.com/" target="_blank" rel="noopener">Visit sggarage.com ↗</a>
+        <p class="note reveal"><a class="card-link" href="/articles/seo-case-study-singapore-car-workshop/">How Edwin Garage reached page one →</a> <a class="card-link" href="https://sggarage.com/" target="_blank" rel="noopener">Visit sggarage.com ↗</a></p>
       </div>
     </section>
 
@@ -1082,12 +1083,7 @@ page("results/index.html",
             </ul>
           </div>
         </div>
-        <h3 class="reveal" style="margin-top:40px">Month by month</h3>
-        <div class="reveal">""" + months_table(months_rows("cleanic")) + """</div>
-        <h3 class="reveal">Where it shows up on Google</h3>
-        <p class="reveal">A few of the searches it ranks for (28 days to """ + THROUGH_SHORT + """):</p>
-        <div class="reveal">""" + ranks_table(query_rows("cleanic")) + """</div>
-        <a class="card-link reveal" href="https://cleanicdetailing.com/" target="_blank" rel="noopener">Visit cleanicdetailing.com ↗</a>
+        <p class="note reveal"><a class="card-link" href="/results/cleanic-detailing/">Read the full case study, month by month →</a> <a class="card-link" href="https://cleanicdetailing.com/" target="_blank" rel="noopener">Visit cleanicdetailing.com ↗</a></p>
       </div>
     </section>
 
@@ -1515,6 +1511,10 @@ llms_sections()
 exec(open(os.path.join(HERE, "managed.py"), encoding="utf-8").read())
 # SEO, AEO and GEO together (/seo-aeo-geo-singapore/); the homepage strip links here.
 exec(open(os.path.join(HERE, "seo_aeo_geo.py"), encoding="utf-8").read())
+# ChatGPT SEO owner page (/chatgpt-seo-singapore/); the GEO card on /seo-aeo-geo-singapore/ links here.
+exec(open(os.path.join(HERE, "chatgpt_seo.py"), encoding="utf-8").read())
+# One page per client case study (/results/<slug>/), from showcase.json.
+exec(open(os.path.join(HERE, "case_studies.py"), encoding="utf-8").read())
 # "AI SEO vs traditional SEO" and "Is Page One legit?" (verify-it-yourself) pages.
 exec(open(os.path.join(HERE, "ai_seo.py"), encoding="utf-8").read())
 # Google Ads vs SEO vs AI blog tools (/google-ads-vs-seo-vs-ai-blog-tools/), linked from /seo-explained/.

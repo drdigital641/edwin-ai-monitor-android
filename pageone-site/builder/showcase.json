@@ -145,7 +145,7 @@
       "img": "/images/clients/cleanic.webp",
       "gsc_site": "sc-domain:cleanicdetailing.com",
       "launched": "2026-06",
-      "case_study": "/results/#cleanic-detailing",
+      "case_study": "/results/cleanic-detailing/",
       "brand_terms": [
         "cleanic"
       ],
@@ -419,7 +419,8 @@
         "best_query": null,
         "top_queries": []
       },
-      "short": "financial planning"
+      "short": "financial planning",
+      "case_study": "/results/danny-chua-financial/"
     },
     {
       "key": "ecu-clinic",
