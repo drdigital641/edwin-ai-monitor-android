@@ -514,7 +514,7 @@ page("website/index.html",
     <section class="section">
       <div class="wrap">
         <p class="kicker reveal">Websites we built and run</p>
-        <h2 class="reveal">Real Singapore businesses, live today</h2>
+        <h2 class="reveal">Real businesses, live today</h2>
         <p class="section-lead reveal">Visit them and judge for yourself. Each one is built and looked after with the same system you get.</p>
         <div class="cards three site-cards" style="margin-top:32px">
 """ + _site_html + """
