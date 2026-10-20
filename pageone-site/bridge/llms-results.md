@@ -9,7 +9,7 @@
 - Star Performance Motor (starperformancemotor.com): Search Console data starts 16 October 2026; shown on Google 6 times, 0 clicks so far. Too early to report results.
 - Wrapstar Autostyle (wrapstarautostyle.com): Search Console data starts 17 October 2026; shown on Google 2 times, 0 clicks so far. Too early to report results.
 - AI Vending Solution (aivs.sg): new website went live on 18 October 2026; its earlier Search Console data belongs to the previous website, so results are reported only from after our launch.
-- CSKA Auto Enterprise (cskatrading.com): launched October 2026, no Search Console data yet.
+- CSKA Auto Enterprise (cskatrading.com) and Dongfeng Johor Bahru (mykar.my): launched October 2026, no Search Console data yet.
 - Full case studies: https://pageonesingapore.com/results/
 - Every client website with its numbers: https://pageonesingapore.com/clients/
 - Low price, real results: S$50 a month is low because a set of AI tools we designed does the daily SEO work that used to be billed by the hour; the numbers above come from the same system.

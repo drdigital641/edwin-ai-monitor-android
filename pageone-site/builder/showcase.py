@@ -338,7 +338,7 @@ def clients_page():
     <section class="section alt">
       <div class="wrap">
         <p class="kicker reveal">The websites</p>
-        <h2 class="reveal">""" + LIVE_COUNT_WORD.capitalize() + """ Singapore businesses, live today</h2>
+        <h2 class="reveal">""" + LIVE_COUNT_WORD.capitalize() + """ businesses, live today</h2>
         <p class="section-lead reveal">The established sites first, then the newer ones, shown honestly. Tap any screenshot to open the live website.</p>
         <div class="cards three site-cards" style="margin-top:32px">
 """ + "\n".join(cards) + """
@@ -409,7 +409,7 @@ HOME_TOKENS = {
         <p class="note reveal"><a class="card-link" href="/clients/#newest">See every client website, newest first →</a></p>
       </div>
     </section>""",
-    "{{MARQUEE_LABEL}}": f"Already running for {len(SC['clients'])} Singapore businesses" + (f" · {BUILDING} more being built" if BUILDING else ""),
+    "{{MARQUEE_LABEL}}": f"Already running for {len(SC['clients'])} businesses" + (f" · {BUILDING} more being built" if BUILDING else ""),
     "{{HOME_KPIS}}": "\n".join(
         f'          <div class="kpi"><div class="label">{l}</div><div class="value">{v}</div><div class="delta">{d}</div>{b}</div>' for l, v, d, b in [
             ("Edwin Garage: clicks from Google", EG["clicks"], f"Up from {EG['prev_clicks']} · average position {EG['pos']}",

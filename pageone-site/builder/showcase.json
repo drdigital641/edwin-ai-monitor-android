@@ -786,6 +786,46 @@
         "top_queries": []
       },
       "short": "workshop tools"
+    },
+    {
+      "key": "dongfeng-jb",
+      "name": "Dongfeng Johor Bahru",
+      "domain": "mykar.my",
+      "url": "https://mykar.my/",
+      "industry": "Dongfeng EV 3S centre, Johor Bahru",
+      "schema_type": "AutoDealer",
+      "img": "https://cdn.jsdelivr.net/gh/drdigital641/edwin-ai-monitor-android@a7ccf2004efb26935efd4ac1437e18df12c85aad/site-assets/pageone/clients/mykar.webp",
+      "gsc_site": "sc-domain:mykar.my",
+      "launched": "2026-10-20",
+      "brand_terms": [
+        "dongfeng",
+        "mykar"
+      ],
+      "skip_queries": [],
+      "built": [
+        "Model pages for the Dongfeng Vigo SUV and 007 sedan, with specs and colours",
+        "Pages for test drives, service, spare parts and dealer partners",
+        "The whole site in English, Bahasa Melayu and Chinese"
+      ],
+      "articles": 4,
+      "gsc": {
+        "record_id": null,
+        "first_day": null,
+        "clicks": 0,
+        "impressions": 0,
+        "position": 0,
+        "prev_clicks": 0,
+        "prev_impressions": 0,
+        "prev_position": 0,
+        "queries": 0,
+        "page_one": 0,
+        "top3": 0,
+        "capped": false,
+        "monthly": [],
+        "best_query": null,
+        "top_queries": []
+      },
+      "short": "Dongfeng EVs in JB"
     }
   ],
   "pipeline": {
@@ -795,8 +835,8 @@
     "exclude": [
       "nanyang-carpentry",
       "new-zen-werkz",
-      "dongfeng-jb"
+      "new-age-polish-paused-7q4k"
     ],
-    "_exclude_note": "Previews built to pitch a prospect, not signed-up clients. Remove a slug from exclude the day that business signs up."
+    "_exclude_note": "Previews built to pitch a prospect, not signed-up clients. Remove a slug from exclude the day that business signs up. new-age-polish-paused-7q4k is a duplicate Controller row of new-age-polish (already counted)."
   }
 }
