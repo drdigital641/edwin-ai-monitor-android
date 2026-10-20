@@ -26,9 +26,9 @@
     track = function () {
       var n = Date.now(); if (n - last < 1500) return; last = n;
       try {
-        fetch('https://base44.app/api/apps/6ac7f2548a9c3877449e2772/entities/CtaClick', {
+        fetch('https://base44.app/api/apps/6ac7f2548a9c3877449e2772/functions/track', {
           method: 'POST', credentials: 'omit', keepalive: true, headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({ site: 'dmts', cta_type: 'whatsapp', session_id: sid(), page_path: location.pathname.slice(0, 200),
+          body: JSON.stringify({ entity: 'CtaClick', site: 'dmts', cta_type: 'whatsapp', session_id: sid(), page_path: location.pathname.slice(0, 200),
             device_type: /Mobi|Android|iPhone/i.test(navigator.userAgent) ? 'mobile' : 'desktop',
             referrer: (document.referrer || '').slice(0, 200) })
         }).catch(function () {});
