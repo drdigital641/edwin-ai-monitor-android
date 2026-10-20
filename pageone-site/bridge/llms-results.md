@@ -7,7 +7,7 @@
 - The ECU Clinic (theecuclinicsg.com): Search Console data starts 12 October 2026; shown on Google 169 times, 3 clicks so far. Too early to report results.
 - Jacky Gearbox (jackygearbox.com): Search Console data starts 13 October 2026; shown on Google 62 times, 5 clicks so far. Too early to report results.
 - AI Vending Solution (aivs.sg): new website went live on 18 October 2026; its earlier Search Console data belongs to the previous website, so results are reported only from after our launch.
-- Star Performance Motor (starperformancemotor.com) and Wrapstar Autostyle (wrapstarautostyle.com): launched October 2026, no Search Console data yet.
+- Star Performance Motor (starperformancemotor.com), Wrapstar Autostyle (wrapstarautostyle.com) and CSKA Auto Enterprise (cskatrading.com): launched October 2026, no Search Console data yet.
 - Full case studies: https://pageonesingapore.com/results/
 - Every client website with its numbers: https://pageonesingapore.com/clients/
 - Low price, real results: S$50 a month is low because a set of AI tools we designed does the daily SEO work that used to be billed by the hour; the numbers above come from the same system.

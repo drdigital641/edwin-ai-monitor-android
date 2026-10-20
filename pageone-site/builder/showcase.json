@@ -739,12 +739,51 @@
         "top_queries": []
       },
       "short": "car wraps and PPF"
+    },
+    {
+      "key": "cska-auto",
+      "name": "CSKA Auto Enterprise",
+      "domain": "cskatrading.com",
+      "url": "https://cskatrading.com/",
+      "industry": "Workshop tools and equipment supplier, Woodlands",
+      "schema_type": "LocalBusiness",
+      "img": "https://cdn.jsdelivr.net/gh/drdigital641/edwin-ai-monitor-android@7ddc41ea8e260e30f8977631639359bafd3a106b/site-assets/pageone/clients/cskatrading.webp",
+      "gsc_site": "sc-domain:cskatrading.com",
+      "launched": "2026-10-19",
+      "brand_terms": [
+        "cska"
+      ],
+      "skip_queries": [],
+      "built": [
+        "A page for each tool range: diagnostic scanners, aircon machines, battery testers, lifts, ADAS and EV tools",
+        "Brand pages for THINKCAR, Autel, TOPDON and SP ZONE, plus photos of real workshop handovers",
+        "Guides for workshop owners choosing scanners and setting up a new workshop"
+      ],
+      "articles": 6,
+      "gsc": {
+        "record_id": null,
+        "first_day": null,
+        "clicks": 0,
+        "impressions": 0,
+        "position": 0,
+        "prev_clicks": 0,
+        "prev_impressions": 0,
+        "prev_position": 0,
+        "queries": 0,
+        "page_one": 0,
+        "top3": 0,
+        "capped": false,
+        "monthly": [],
+        "best_query": null,
+        "top_queries": []
+      },
+      "short": "workshop tools"
     }
   ],
   "pipeline": {
     "_readme": "Websites being built for signed-up clients that are not live on their own domain yet. Shown only as a count (never named) next to the live count. Set by showcase_refresh.py from the Controller Client export (status activating or preview, not yet a live site here, slug not in exclude); as_of is the day the count last changed. Put Client slugs that are not signed-up clients (e.g. a demo preview) in exclude.",
     "building": 2,
-    "as_of": "2026-10-18",
+    "as_of": "2026-10-20",
     "exclude": [
       "nanyang-carpentry",
       "new-zen-werkz",
