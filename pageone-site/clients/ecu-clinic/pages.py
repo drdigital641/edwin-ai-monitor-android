@@ -741,7 +741,7 @@ ARTICLES = [
     dict(
         # EDGE daily article, 20 Oct 2026 (8pm run). Make series (Hyundai/Kia, Toyota, Nissan, VW/Audi, BMW done): Honda's general
         # "ABS + VSA lights" question; the code articles (81-19, 121-11) stay the owners of their codes and are linked from here.
-        slug='honda-abs-vsa-light-on', service='abs-pump-repair', date='2026-10-20', img_commit='IMGCOMMIT',
+        slug='honda-abs-vsa-light-on', service='abs-pump-repair', date='2026-10-20', img_commit='6b208e2e80166158ff8903d4631487949185d6df',
         title='Honda ABS and VSA Lights On? Causes | The ECU Clinic',
         desc='Why the ABS and VSA lights come on together in a Honda, whether it is safe to drive, the simple causes to rule out first, and Honda ABS repair in Singapore.',
         h1='Why Are the ABS and VSA Lights On in My Honda?',
