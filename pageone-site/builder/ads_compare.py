@@ -17,7 +17,7 @@ ADS_QA = [
     ("ai-blog-tools", "What does an AI blog autopilot tool do?",
      "An AI blog autopilot tool is software that suggests keywords, writes blog articles with AI and publishes them to a website you already have, on a schedule. It is usually self-serve: you connect your site, set your topics and review what goes out. It helps with one part of SEO, regular articles, rather than the whole job."),
     ("page-one", "What does Page One do differently?",
-     "Page One Singapore is a done-for-you service, not software. For S$50 a month it builds and hosts a website for you free, or fixes the technical SEO on the one you have. It sets up Google Business Profile, Search Console and Bing, labels your details for AI assistants, writes a new article every day and audits the site every day, fixing problems. No setup fee, no contract. It doesn't run paid ads."),
+     "Page One Singapore is a done-for-you service, not software. For S$50 a month it builds and hosts a website for you free, or fixes the technical SEO on the one you have. It sets up Google Business Profile, Search Console and Bing, labels your details for AI assistants, writes a new article every 2 days and audits the site every day, fixing problems. No setup fee, no contract. It doesn't run paid ads."),
     ("which-fits", "Which one should I choose?",
      "Choose Google Ads if you need calls this week and have a budget for clicks. Choose an AI blog tool if you already have a good website and someone to look after it. Choose Page One if you want the website, Google Maps, articles and upkeep done for you. They can be combined."),
 ]
@@ -45,7 +45,7 @@ _ADS_ROWS = [
     ("Website included", "No, you need a landing page", "No, it posts to a site you already have", "Yes: built free on your own domain, or your current site's technical SEO fixed"),
     ("Google Maps (Business Profile)", "Not included", "Usually not included", "Set up for you"),
     ("Search Console and Bing", "Not included", "Sometimes connected for keyword data", "Connected for you"),
-    ("Articles", "None", "Yes, automatically", "Yes, a new article every day, each aimed at a different real search"),
+    ("Articles", "None", "Yes, automatically", "Yes, a new article every 2 days, each aimed at a different real search"),
     ("Daily technical audit", "No", "Usually not", "Yes, with problems fixed"),
     ("Ready for AI assistants", "No", "Depends on the tool", "Structured data and llms.txt included"),
     ("Who does the work", "You or an ads manager", "The software, with you reviewing", "Page One, with Edwin in charge"),

@@ -9,13 +9,13 @@ BUDGET_URL = "/budget-seo-website-singapore/"
 
 BUDGET_FAQ = [
     ("What is affordable SEO for a small business in Singapore?",
-     "Affordable SEO is ongoing work at a monthly price a small business can keep paying: a fast website, a Google Business Profile, Search Console, a page for each service, useful new articles and regular checks for problems. Page One Singapore bundles all of that with the website for S$50 a month, with a new article and a technical audit every day, no setup fee and no contract."),
+     "Affordable SEO is ongoing work at a monthly price a small business can keep paying: a fast website, a Google Business Profile, Search Console, a page for each service, useful new articles and regular checks for problems. Page One Singapore bundles all of that with the website for S$50 a month, with a new article every 2 days and a technical audit every day, no setup fee and no contract."),
     ("Can I get ongoing SEO in Singapore for S$50 a month?",
-     "Yes. Page One's Get Found plan is S$50 a month and it is ongoing, not a one-off task: your website (built free, or your current site's technical SEO fixed), Google, Google Maps and ChatGPT setup, a new article every day and a technical audit every day, with problems fixed. Optional SEO Boosts are S$10 per run, each a first-page competitor analysis for one of your search terms. No setup fee, no contract. That is still far below typical agency retainers, which are often hundreds of dollars a month or more (a general range, not any provider's quote)."),
+     "Yes. Page One's Get Found plan is S$50 a month and it is ongoing, not a one-off task: your website (built free, or your current site's technical SEO fixed), Google, Google Maps and ChatGPT setup, a new article every 2 days and a technical audit every day, with problems fixed. Optional SEO Boosts are S$10 per run, each a first-page competitor analysis for one of your search terms. No setup fee, no contract. That is still far below typical agency retainers, which are often hundreds of dollars a month or more (a general range, not any provider's quote)."),
     ("Is the S$20 early-bird price still available?",
      "No. Our S$20 early-bird spots are now full. Early-bird clients keep S$20; new clients join at S$50 a month, website and SEO included."),
     ("How much does a website cost in the first year on a small budget?",
-     "On the S$50 plan the website is built and managed for you with no setup fee, so the first year costs S$600, including hosting, security, SEO setup, a new article every day and a technical audit every day. The only extra is your domain, registered in your name, usually S$15 to S$30 a year. There is no lump sum upfront and no separate renewal bill for hosting."),
+     "On the S$50 plan the website is built and managed for you with no setup fee, so the first year costs S$600, including hosting, security, SEO setup, a new article every 2 days and a technical audit every day. The only extra is your domain, registered in your name, usually S$15 to S$30 a year. There is no lump sum upfront and no separate renewal bill for hosting."),
     ("Is a one-off SEO task enough?",
      "A one-off task, such as optimising one page's title and headings, can help that page. But SEO never finishes: Google re-checks sites, competitors change theirs and customers search new questions. Ongoing work, checked every day, usually does more than one fix, which is why the S$50 plan is a monthly subscription."),
     ("What should I spend first on a small budget?",
@@ -27,7 +27,7 @@ BUDGET_FAQ = [
 ]
 
 _BUDGET_ROWS = [
-    ("S$50", "Get Found plan", "Website (built free, or your current site's technical SEO fixed), Google, Maps and ChatGPT setup, a new article every day, a technical audit every day, hosting and security"),
+    ("S$50", "Get Found plan", "Website (built free, or your current site's technical SEO fixed), Google, Maps and ChatGPT setup, a new article every 2 days, a technical audit every day, hosting and security"),
     ("S$60", "Plan + 1 SEO Boost", "Everything above, plus one Boost run: a first-page competitor analysis for one of your search terms, your page improved to compete with the one directly above you, and a before/after report"),
     ("S$70", "Plan + 2 SEO Boosts", "Two Boost runs, for two of your search terms, each with its own report"),
     ("S$80", "Plan + 3 SEO Boosts", "Three Boost runs. Boosts are optional top-ups, so buy them only when you want to"),
@@ -37,7 +37,7 @@ page(BUDGET_URL.strip("/") + "/index.html",
      "Website &amp; SEO for S$50 a Month in Singapore | Page One",
      "Website and SEO bundled for S$50 a month in Singapore: what a small budget buys, one-off tasks vs ongoing SEO, and what a website costs in year one.",
      [service("Website and SEO for a small budget", BUDGET_URL,
-              "Ongoing website and SEO for Singapore small businesses on a small monthly budget, for S$50 a month: a website (built free, or your current site's technical SEO fixed), Google, Google Maps and AI search setup, a new article every day and a technical audit every day.", "50"),
+              "Ongoing website and SEO for Singapore small businesses on a small monthly budget, for S$50 a month: a website (built free, or your current site's technical SEO fixed), Google, Google Maps and AI search setup, a new article every 2 days and a technical audit every day.", "50"),
       _faq_ld(BUDGET_FAQ), _price_ld(BUDGET_URL)],
      hero("Small budget", "SEO and a website on a small budget",
           "Website and SEO bundled for S$50 a month in Singapore",
@@ -54,7 +54,7 @@ page(BUDGET_URL.strip("/") + "/index.html",
             <tbody>
               <tr><th>What it is</th><td>Website built and managed, with ongoing SEO</td><td>One job, such as optimising one page or an audit report</td><td>A tool to build the site yourself</td><td>A designer builds the site once</td></tr>
               <tr><th>Typical cost</th><td><b>S$50 a month</b>, Boosts S$10 each</td><td>Often around S$15 to S$50 per task, paid each time</td><td>A monthly plan, plus your own time</td><td>Often a few hundred dollars or more upfront, plus hosting renewals</td></tr>
-              <tr><th>Ongoing work</th><td>Yes: a new article and a technical audit every day, plus upkeep</td><td>No, you buy the next task</td><td>Only what you do yourself</td><td>Usually not, changes are often charged</td></tr>
+              <tr><th>Ongoing work</th><td>Yes: a new article every 2 days and a technical audit every day, plus upkeep</td><td>No, you buy the next task</td><td>Only what you do yourself</td><td>Usually not, changes are often charged</td></tr>
               <tr><th>Who does the work</th><td>Page One, every day</td><td>The freelancer, for that one task</td><td>You</td><td>The designer, at the start</td></tr>
               <tr><th>Google, Maps and ChatGPT setup</th><td>Included</td><td>Sometimes, as a separate task</td><td>You set it up</td><td>Sometimes "basic SEO" at launch</td></tr>
               <tr><th>Best for</th><td>New and small businesses that want it done for them</td><td>Fixing one known problem</td><td>People who enjoy building it themselves</td><td>A one-time site you'll look after yourself</td></tr>
