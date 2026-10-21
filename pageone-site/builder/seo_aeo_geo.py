@@ -37,7 +37,8 @@ _SAG_ITEMS = [
      ["Clear business facts marked up with structured data",
       "An llms.txt summary written for AI tools",
       "AI crawlers allowed in your robots.txt",
-      "Bing connected (ChatGPT search and Copilot use Bing), and your details kept the same everywhere"],
+      "Bing connected (ChatGPT search and Copilot use Bing), and your details kept the same everywhere",
+      'More on this: <a class="link" href="/chatgpt-seo-singapore/">ChatGPT SEO →</a>'],
      ["Structured data (Schema.org)", "llms.txt", "Bing Webmaster Tools"]),
 ]
 
