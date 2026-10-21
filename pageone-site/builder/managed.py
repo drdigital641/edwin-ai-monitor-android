@@ -6,7 +6,7 @@
 
 MANAGED_FAQ = [
     ("What does a fully managed website mean?",
-     "It means you don't have to touch the technical side at all. Page One builds the website on your own domain, hosts it, keeps it online, secure and fast, runs a technical audit every day and fixes the problems it finds, makes small text and photo changes when you WhatsApp us, and publishes a new article every day, each aimed at a different real search, so Google and AI assistants have reasons to show you. All of it is in the S$50 a month plan."),
+     "It means you don't have to touch the technical side at all. Page One builds the website on your own domain, hosts it, keeps it online, secure and fast, runs a technical audit every day and fixes the problems it finds, makes small text and photo changes when you WhatsApp us, and publishes a new article every 2 days, each aimed at a different real search, so Google and AI assistants have reasons to show you. All of it is in the S$50 a month plan."),
     ("What is AEO (answer engine optimisation)?",
      "AEO means setting up your pages so that when someone asks a question, Google's AI answers or ChatGPT can use your page as the answer. In practice that means clear question-and-answer content, FAQ structured data, and your business details written plainly, which we do for every site."),
     ("What is GEO (generative engine optimisation)?",
@@ -27,7 +27,7 @@ _MANAGED_ITEMS = [
     ("🖥️", "Hosting and speed", "Your website lives on our hosting with a security certificate (the padlock), set up to load fast on phones.", ["Hosting", "SSL"]),
     ("🛡️", "Security and upkeep", "We keep it online, secure and fast, and run a technical audit every day to catch and fix anything that breaks.", ["Technical SEO audit"]),
     ("✏️", "Changes on WhatsApp", "New photo, new price, new opening hours? Send it on WhatsApp and we make the small change for you.", ["Content updates"]),
-    ("📝", "SEO articles", "A new article is written for your site every day, each answering a different question your customers search for, so your pages don't compete with each other.", ["SEO content"]),
+    ("📝", "SEO articles", "A new article is written for your site every 2 days, each answering a different question your customers search for, so your pages don't compete with each other.", ["SEO content"]),
     ("💬", "AEO: be the answer", "Question-and-answer content and FAQ structured data, so Google's AI answers and ChatGPT can use your page when someone asks.", ["Answer engine optimisation"]),
     ("🤖", "GEO: be described correctly by AI", "Google and Bing connected, business details marked up, an llms.txt summary, so AI tools can find and describe you.", ["Generative engine optimisation", "llms.txt"]),
     ("📍", "Google Maps and Search", "Your Google Business Profile, Google Search Console and Bing set up, so you can show up when people search nearby.", ["Google Business Profile", "Search Console"]),
@@ -48,7 +48,7 @@ _MANAGED_TABLE = [
     ("Hosting and security certificate (SSL)", "Included", ""),
     ("Kept online, secure and fast, with a technical audit every day and problems fixed", "Included", ""),
     ("Small text and photo changes on WhatsApp", "Included", ""),
-    ("A new SEO article every day", "Included", ""),
+    ("A new SEO article every 2 days", "Included", ""),
     ("Google Business Profile, Search Console and Bing setup", "Included", ""),
     ("AEO and GEO setup: FAQ and business structured data, llms.txt", "Included", ""),
     ("Domain name", "Extra", "About S$15–30 a year, paid to the registrar in your name"),
@@ -61,11 +61,11 @@ page("managed-website-singapore/index.html",
      "Fully Managed Website Singapore: S$50/month, All-In",
      "A fully managed website for your Singapore business: design, hosting, security, SEO articles, AEO and GEO, all for S$50/month. No setup fee or contract.",
      [service("Fully managed website", "/managed-website-singapore/",
-              "A website built on the client's own domain and fully managed every day: hosting, security, a daily technical audit, updates, daily SEO articles, Google setup and AEO/GEO for AI search.", "50"),
+              "A website built on the client's own domain and fully managed every day: hosting, security, a daily technical audit, updates, SEO articles every 2 days, Google setup and AEO/GEO for AI search.", "50"),
       _faq_ld(MANAGED_FAQ), _price_ld("/managed-website-singapore/")],
      hero("Managed website", "Fully managed website",
           "A fully managed website for S$50 a month.",
-          "Page One builds your website on your own domain, then manages everything for S$50 a month: hosting, security, a technical audit every day, a new SEO article every day, and the setup that helps Google, Google Maps and AI assistants like ChatGPT find and quote you. Already have a website? We fix its on-page technical SEO, or redesign it free if you ask. No setup fee, no contract. The only extra is your domain, about S$15–30 a year.",
+          "Page One builds your website on your own domain, then manages everything for S$50 a month: hosting, security, a technical audit every day, a new SEO article every 2 days, and the setup that helps Google, Google Maps and AI assistants like ChatGPT find and quote you. Already have a website? We fix its on-page technical SEO, or redesign it free if you ask. No setup fee, no contract. The only extra is your domain, about S$15–30 a year.",
           '<p class="hero-price"><b>S$50</b>/month · <span class="intro-tag">Register by 31 Dec 2026</span> · everything managed · no setup fee</p>') + f"""
 
     <section class="section">
@@ -102,7 +102,7 @@ page("managed-website-singapore/index.html",
         <ol class="steps" style="margin-top:56px">
           <li class="reveal"><span>1</span><h3>Tell us about your business</h3><p>Your services, area, hours and a few photos, over WhatsApp. No forms to fill in, no tech skills needed.</p></li>
           <li class="reveal"><span>2</span><h3>We build and set it up</h3><p>Your website on your own domain, plus Google Business Profile, Search Console, Bing and the AI search setup.</p></li>
-          <li class="reveal"><span>3</span><h3>We manage it every day</h3><p>Usually live within 7 days. After that: hosting, upkeep, a new article every day, a technical audit every day and changes when you ask.</p></li>
+          <li class="reveal"><span>3</span><h3>We manage it every day</h3><p>Usually live within 7 days. After that: hosting, upkeep, a new article every 2 days, a technical audit every day and changes when you ask.</p></li>
         </ol>
       </div>
     </section>

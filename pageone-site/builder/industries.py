@@ -79,7 +79,7 @@ INDUSTRIES = [
                   ("Your service areas", "The towns you cover named clearly, so you appear for searches like \"aircon servicing Bedok\"."),
                   ("Prices and trust", "Clear package prices or how you quote, photos of your team at work, and one-tap WhatsApp.")],
         "proof": "",
-        "faqs": [("There are many aircon companies on Google. Can a small one still show up?", "Big companies compete for broad searches. Small companies can do well on specific ones, like a service plus a town, which also come from customers ready to book. Our daily articles each aim at one of these specific searches, and an SEO Boost can study the first page for one of them and improve your page to compete."),
+        "faqs": [("There are many aircon companies on Google. Can a small one still show up?", "Big companies compete for broad searches. Small companies can do well on specific ones, like a service plus a town, which also come from customers ready to book. Our articles, one every 2 days, each aim at one of these specific searches, and an SEO Boost can study the first page for one of them and improve your page to compete."),
                  ("Do you guarantee page one?", "No honest provider can guarantee rankings, because Google decides. We document the work in before/after reports."),
                  ("Can you handle Google Maps too?", "Yes. Setting up and improving your Google Business Profile is part of the Get Found plan.")],
     },
@@ -317,7 +317,7 @@ def industry_page(ind):
       <div class="wrap narrow">
         <p class="kicker reveal">Cost and timing</p>
         <h2 class="reveal">How much does a website and SEO cost for {_a} {ind['short']} in Singapore?</h2>
-        <p class="reveal">With Page One it is S$50 a month, with no setup fee and no contract. That covers building the website (or fixing the SEO on the one you have), hosting, the security certificate, Google Business Profile, Search Console and Bing setup, a new article every day and a technical audit every day, with problems fixed. The price may rise from 2027, and we'll tell you before it changes. Your domain, usually S$15–30 a year, is the only extra: about S$615–630 for the first year.</p>
+        <p class="reveal">With Page One it is S$50 a month, with no setup fee and no contract. That covers building the website (or fixing the SEO on the one you have), hosting, the security certificate, Google Business Profile, Search Console and Bing setup, a new article every 2 days and a technical audit every day, with problems fixed. The price may rise from 2027, and we'll tell you before it changes. Your domain, usually S$15–30 a year, is the only extra: about S$615–630 for the first year.</p>
         <h2 class="reveal">How long before {_a} {ind['short']} shows up on Google?</h2>
         <p class="reveal">Your website is usually live within 7 days. Showing up in Google Search and Google Maps then builds over weeks to months, depending on your area and how many competitors you have. Nobody can honestly guarantee a ranking. As a guide, {PROOF_EG}, according to Google Search Console.</p>
         <p class="note reveal"><a class="link" href="/pricing/">See full pricing →</a> <a class="link" href="/clients/">See the client websites we run →</a></p>

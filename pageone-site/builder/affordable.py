@@ -40,7 +40,7 @@ OFFER_INCLUDED = [
     "<b>Google Maps</b>: your Google Business Profile set up, with hours, photos and a call button",
     "<b>Google and Bing</b>: Search Console and Bing Webmaster Tools connected, so you can see who finds you. Bing also powers ChatGPT search",
     "<b>Ready for AI assistants</b>: your name, address, hours and services labelled for Google, ChatGPT and others, plus a sitemap and an llms.txt summary",
-    "<b>A new article every day</b> written for your site, each aimed at a different real search your customers make, so your pages don't compete with each other",
+    "<b>A new article every 2 days</b> written for your site, each aimed at a different real search your customers make, so your pages don't compete with each other",
     "<b>A technical audit every day</b>, with problems fixed: titles and descriptions, headings, broken links, mobile, speed, structured data, sitemap, indexing and the files AI search reads. Your site stays technically correct, so Google and AI search like ChatGPT can find, read and understand every page",
     "<b>Small text and photo changes</b> when you need them, over WhatsApp",
     "<b>Usually live within 7 days</b> of getting your details and photos",
@@ -84,7 +84,7 @@ PRICE_GLANCE = """    <section class="section alt" id="whats-included">
 def _price_ld(url):
     return {"@context": "https://schema.org", "@type": "OfferCatalog", "name": "Page One Singapore prices", "url": SITE + url,
             "itemListElement": [
-                {"@type": "Offer", "name": "Get Found: website built free or your current site's technical SEO fixed, Google and AI search setup, a new article every day, a technical audit every day",
+                {"@type": "Offer", "name": "Get Found: website built free or your current site's technical SEO fixed, Google and AI search setup, a new article every 2 days, a technical audit every day",
                  "price": "50", "priceCurrency": "SGD", "url": SITE + "/get-found/", "seller": PROVIDER,
                  "priceSpecification": {"@type": "UnitPriceSpecification", "price": "50", "priceCurrency": "SGD", "unitCode": "MON"}},
                 {"@type": "Offer", "name": "SEO Boost (optional, per run): first-page competitor analysis for one search term, page improvements and a before/after report",
@@ -94,17 +94,17 @@ def _price_ld(url):
 # ---------- Cheapest SEO in Singapore ----------
 CHEAP_SEO_FAQ = [
     ("What is the cheapest SEO in Singapore?",
-     "There is no official price list, so no one can honestly say who is cheapest. For ongoing monthly SEO, Page One Singapore charges S$50 a month for a website (built free, or your current site's technical SEO fixed), Google, Google Maps and ChatGPT setup, a new article every day and a technical audit every day, with problems fixed. No setup fee, no contract."),
+     "There is no official price list, so no one can honestly say who is cheapest. For ongoing monthly SEO, Page One Singapore charges S$50 a month for a website (built free, or your current site's technical SEO fixed), Google, Google Maps and ChatGPT setup, a new article every 2 days and a technical audit every day, with problems fixed. No setup fee, no contract."),
     ("Can I still get SEO for S$20 a month?",
      "Our S$20 early-bird spots are now full. Early-bird clients keep S$20; new clients join at S$50 a month, website and SEO included, still far below typical agency retainers."),
     ("What exactly is included in Page One's S$50 a month?",
-     "Your website on your own domain (built free, or your current site's technical SEO fixed, or a free redesign if you ask), hosting and HTTPS, a WhatsApp button, your Google Business Profile, Search Console and Bing set up, business details labelled for AI assistants, a new article every day, a technical audit every day with problems fixed, and small changes over WhatsApp. Your domain, usually S$15 to S$30 a year, is the only extra."),
+     "Your website on your own domain (built free, or your current site's technical SEO fixed, or a free redesign if you ask), hosting and HTTPS, a WhatsApp button, your Google Business Profile, Search Console and Bing set up, business details labelled for AI assistants, a new article every 2 days, a technical audit every day with problems fixed, and small changes over WhatsApp. Your domain, usually S$15 to S$30 a year, is the only extra."),
     ("Affordable SEO for small businesses: what should it include?",
-     "At minimum: a fast mobile website, a Google Business Profile, Search Console, a page for each service, useful new articles and regular checks for problems, done continuously rather than once. Page One bundles all of that with the website for S$50 a month, with a new article and a technical audit every day, with no setup fee and no contract."),
+     "At minimum: a fast mobile website, a Google Business Profile, Search Console, a page for each service, useful new articles and regular checks for problems, done continuously rather than once. Page One bundles all of that with the website for S$50 a month, with a new article every 2 days and a technical audit every day, with no setup fee and no contract."),
     ("How much does SEO cost in Singapore?",
-     "It depends on the provider and on how much of the work is done by hand. When Edwin started, small businesses like his own workshop were being quoted hundreds of dollars a month for SEO they couldn't see or measure. With Page One, the Get Found plan is S$50 a month and includes your website (built free, or your current site's technical SEO fixed), Google, Maps and ChatGPT setup, a new article every day and a technical audit every day. Optional SEO Boosts are S$10 per run. No setup fee, no contract."),
+     "It depends on the provider and on how much of the work is done by hand. When Edwin started, small businesses like his own workshop were being quoted hundreds of dollars a month for SEO they couldn't see or measure. With Page One, the Get Found plan is S$50 a month and includes your website (built free, or your current site's technical SEO fixed), Google, Maps and ChatGPT setup, a new article every 2 days and a technical audit every day. Optional SEO Boosts are S$10 per run. No setup fee, no contract."),
     ("What's the difference between the S$50 plan and an SEO Boost?",
-     "The S$50 plan is the full managed service: your site, the Google and AI search setup, a new article every day and a technical audit every day, with problems fixed. An SEO Boost (S$10 per run) is optional, for when you want to push one search term harder. We see who is on Google's first page for it, find each competitor's key weakness, improve your page to compete with the one directly above you, and send you a before/after report of what we found and changed."),
+     "The S$50 plan is the full managed service: your site, the Google and AI search setup, a new article every 2 days and a technical audit every day, with problems fixed. An SEO Boost (S$10 per run) is optional, for when you want to push one search term harder. We see who is on Google's first page for it, find each competitor's key weakness, improve your page to compete with the one directly above you, and send you a before/after report of what we found and changed."),
     ("Is S$50 a month too cheap for SEO to work?",
      "The price is low because the daily work is automated, not because steps are skipped. Edwin Garage, where the system was first built, got " + EG["clicks"] + " clicks from Google in the 28 days to " + THROUGH + " with an average position of " + EG["pos"] + ", according to Google Search Console. Results vary by business, so we don't guarantee rankings."),
     ("What's the catch?",
@@ -128,7 +128,7 @@ page("cheapest-seo-singapore/index.html",
       _faq_ld(CHEAP_SEO_FAQ), _price_ld("/cheapest-seo-singapore/")],
      hero("Cheap SEO that works", "Looking for the cheapest SEO in Singapore?",
           "Cheap SEO doesn't have to mean bad SEO.",
-          "SEO used to be expensive because it took a lot of people's time. AI tools designed for SEO now do most of that daily work, automatically. With the right strategy, structure and design, good SEO, including a new article every day, can cost S$50 a month, website and SEO included, still far below typical agency retainers.",
+          "SEO used to be expensive because it took a lot of people's time. AI tools designed for SEO now do most of that daily work, automatically. With the right strategy, structure and design, good SEO, including a new article every 2 days, can cost S$50 a month, website and SEO included, still far below typical agency retainers.",
           '<p class="hero-price"><b>S$50</b>/month · <span class="intro-tag">Register by 31 Dec 2026</span> · no setup fee · no contract · <a class="link" href="https://wa.me/6597856612" target="_blank" rel="noopener">WhatsApp +65 9785 6612</a></p>') + "\n\n" + PRICE_GLANCE + f"""
 
     <section class="section">
@@ -275,7 +275,7 @@ page("cheapest-website-singapore/index.html",
         <p class="section-lead reveal">Building and maintaining a website used to take a lot of manual work. Page One has designed a set of AI tools that handle the repetitive parts automatically, so we can build your site and keep looking after it for a small monthly fee instead of a big upfront one.</p>
         <div class="cards three" style="margin-top:32px">{_cards([
             ("Built from what you already have", "Send us your old website address, or just your details on WhatsApp. We pull in your services, contact details and photos, and show you a preview first."),
-            ("Kept fresh", "A new article every day is included in the S$50 plan, each aimed at a different real search, so search engines have a reason to keep coming back. Want to push one search term harder? Add an SEO Boost."),
+            ("Kept fresh", "A new article every 2 days is included in the S$50 plan, each aimed at a different real search, so search engines have a reason to keep coming back. Want to push one search term harder? Add an SEO Boost."),
             ("Checked automatically", "The system checks your site on a schedule, every day including weekends, and problems get fixed instead of waiting to be noticed."),
             ("Ready for Google and AI", "A page for each service, your business details labelled for Google, Bing and AI assistants, and a sitemap so nothing gets missed."),
             ("Fast and secure", "Hosting, the padlock (HTTPS) and a one-tap WhatsApp button, all included."),
@@ -330,7 +330,7 @@ page("cheapest-website-singapore/index.html",
 # with Page One's all-in plan. Only Page One's own prices appear as numbers.
 NEW_BIZ_FAQ = [
     ("How much does a website for a new business cost with Page One?",
-     "S$50 a month on the Get Found plan. That covers building the website, hosting it, keeping it secure, writing the content with you, setting it up on Google and Google Maps, a new article every day and a technical audit every day, with problems fixed. No setup fee and no contract. The only separate cost is your domain name, registered in your name, usually S$15–30 a year."),
+     "S$50 a month on the Get Found plan. That covers building the website, hosting it, keeping it secure, writing the content with you, setting it up on Google and Google Maps, a new article every 2 days and a technical audit every day, with problems fixed. No setup fee and no contract. The only separate cost is your domain name, registered in your name, usually S$15–30 a year."),
     ("What would I need to do it myself?",
      "Usually: a domain name, a hosting plan or a website builder subscription, a design or template, the words and photos for every page, the security certificate, Google Business Profile, Google Search Console and Bing set up, and someone to keep it updated. Each has its own bill or takes your time. With Page One, all of that except the domain is in the S$50 a month."),
     ("I've just registered my business. How soon can I have a website?",
@@ -342,7 +342,7 @@ NEW_BIZ_FAQ = [
     ("Is S$50 a month just a starter price that jumps later?",
      "S$50 a month is our price for anyone who registers by 31 Dec 2026. From 2027 the price may rise, depending on demand, and we'll tell you before it changes. There's no setup fee and no contract, so you can cancel anytime."),
     ("What does a new business website cost in the first year with Page One?",
-     "About S$615–630 in total: 12 months at S$50 (S$600) plus your domain name, which is usually S$15–30 a year and paid by you directly. That includes building the website, hosting, the security certificate, Google Business Profile, Search Console and Bing setup, a new article every day, a technical audit every day and small changes. There is no setup fee."),
+     "About S$615–630 in total: 12 months at S$50 (S$600) plus your domain name, which is usually S$15–30 a year and paid by you directly. That includes building the website, hosting, the security certificate, Google Business Profile, Search Console and Bing setup, a new article every 2 days, a technical audit every day and small changes. There is no setup fee."),
     ("Can I get a .com.sg domain before my company is registered?",
      "A .com.sg domain is for businesses registered, or in the process of registering, with ACRA or another recognised Singapore body, under SGNIC's rules. A .com or plain .sg domain has no such requirement, so you can start with one of those and add .com.sg once your registration is done."),
 ]
@@ -351,7 +351,7 @@ page("new-business-website/index.html",
      "Website for a New Business in Singapore: S$50/month",
      "Starting a business in Singapore? Website, hosting, content and Google listing for S$50/month, about S$615–630 for year one. No setup fee, live in 7 days.",
      [service("Website for new businesses in Singapore", "/new-business-website/",
-              "A website for a new Singapore business, set up and managed: hosting, content, Google and Google Maps setup, daily articles and daily upkeep for S$50 a month.", "50"),
+              "A website for a new Singapore business, set up and managed: hosting, content, Google and Google Maps setup, articles every 2 days and daily upkeep for S$50 a month.", "50"),
       _faq_ld(NEW_BIZ_FAQ), _price_ld("/new-business-website/")],
      hero("New business website", "Starting a business in Singapore?",
           "Your new business website, done for you.",
@@ -401,7 +401,7 @@ page("new-business-website/index.html",
               <tr><th>Design and page content</th><td>Your evenings and weekends</td><td>Included: we write it with you</td></tr>
               <tr><th>Security (the padlock)</th><td>Set up and renew it yourself</td><td>Included</td></tr>
               <tr><th>Google, Maps and Bing setup</th><td>Learn how, then do it</td><td>Included</td></tr>
-              <tr><th>New articles and updates</th><td>Whenever you find time</td><td>Included: a new article every day</td></tr>
+              <tr><th>New articles and updates</th><td>Whenever you find time</td><td>Included: a new article every 2 days</td></tr>
               <tr><th>Domain name</th><td>Yours to buy</td><td>Yours to buy (usually S$15–30 a year), we set it up</td></tr>
             </tbody>
           </table>
@@ -422,7 +422,7 @@ page("new-business-website/index.html",
               <tr><th>Building the website</th><td>S$0 setup fee</td></tr>
               <tr><th>Hosting and security (the padlock)</th><td>Included in S$50 a month</td></tr>
               <tr><th>Google Business Profile, Search Console and Bing setup</th><td>Included</td></tr>
-              <tr><th>A new article every day and a technical audit every day</th><td>Included</td></tr>
+              <tr><th>A new article every 2 days and a technical audit every day</th><td>Included</td></tr>
               <tr><th>Small text and photo changes after launch</th><td>Included: WhatsApp Edwin</td></tr>
               <tr><th>Domain name (in your name, paid by you)</th><td>Usually S$15–30 a year</td></tr>
               <tr><th><b>Total for the first 12 months</b></th><td><b>About S$615–630</b> (12 × S$50, plus your domain)</td></tr>
@@ -473,7 +473,7 @@ SEO_SERVICES_FAQ = [
     ("How much do SEO services cost in Singapore?",
      "It varies a lot by provider and scope. As a general guide, small business SEO retainers from agencies are often somewhere around S$500 to S$3,000 or more a month, sometimes with a setup or audit fee. Hiring an in-house SEO or digital marketing executive typically means a salary of roughly S$3,000 to S$5,000 a month plus employer CPF and tools. These are typical ranges, not quotes. Page One's Get Found plan is S$50 a month, with optional SEO Boosts at S$10 each, no setup fee and no contract."),
     ("Is an SEO agency better than Page One?",
-     "It depends on what you need. An agency can make sense if you have a larger budget, compete for national searches, sell in several markets or want ads and SEO handled together. Page One is built for new and small local businesses that want the essentials done properly at a low monthly cost: a website, Google and Google Maps setup, AI search setup, a new article every day and a technical audit every day."),
+     "It depends on what you need. An agency can make sense if you have a larger budget, compete for national searches, sell in several markets or want ads and SEO handled together. Page One is built for new and small local businesses that want the essentials done properly at a low monthly cost: a website, Google and Google Maps setup, AI search setup, a new article every 2 days and a technical audit every day."),
     ("Should I hire an in-house SEO executive or outsource?",
      "Hire if you have enough marketing work to keep a full-time person busy, for example social media, ads, content and events as well as SEO. If what you mainly need is for your website to be found on Google and Google Maps, outsourcing the SEO groundwork usually costs far less, and you can still hire later when there's more to do."),
     ("How much does it cost to hire an SEO or digital marketing executive in Singapore?",
@@ -494,7 +494,7 @@ page("seo-services-singapore/index.html",
      "SEO Services Singapore: Agency vs In-house vs S$50/month",
      "Comparing SEO services in Singapore? Agency retainers, hiring an SEO executive or Page One at S$50/month: typical costs, what you get and when each makes sense.",
      [service("SEO services for Singapore small businesses", "/seo-services-singapore/",
-              "Done-for-you SEO for Singapore small businesses: a website (built free, or your current site's technical SEO fixed), Google, Google Maps and AI search setup, a new article every day and a technical audit every day for S$50 a month.", "50"),
+              "Done-for-you SEO for Singapore small businesses: a website (built free, or your current site's technical SEO fixed), Google, Google Maps and AI search setup, a new article every 2 days and a technical audit every day for S$50 a month.", "50"),
       _faq_ld(SEO_SERVICES_FAQ), _price_ld("/seo-services-singapore/")],
      hero("SEO services compared", "Shopping for SEO in Singapore?",
           "SEO services in Singapore: agency, in-house hire, or S$50 a month?",
@@ -515,7 +515,7 @@ page("seo-services-singapore/index.html",
               <tr><th>Website included</th><td>Usually quoted separately</td><td>Depends on their skills</td><td>Yes: built free if you need one, or your current site's technical SEO fixed</td></tr>
               <tr><th>AI search (ChatGPT, Google AI answers)</th><td>Varies: some packages include it only in higher tiers</td><td>Depends on their skills</td><td>Included: Bing connected (ChatGPT search uses it), business details labelled with structured data, an llms.txt summary. <a class="link" href="/seo-aeo-geo-singapore/">SEO, AEO and GEO explained</a></td></tr>
               <tr><th>Can you check results yourself?</th><td>Ask for Google Search Console access</td><td>Yes, it's your own account</td><td>Yes: Search Console is connected so you see your own Google numbers</td></tr>
-              <tr><th>What's covered</th><td>Depends on the package: can include competitive keywords, links, content and ads</td><td>Often SEO plus social media, ads, content and events</td><td>Organic Google, Google Maps and AI search for a local business: website, setup, a new article every day, a daily technical audit</td></tr>
+              <tr><th>What's covered</th><td>Depends on the package: can include competitive keywords, links, content and ads</td><td>Often SEO plus social media, ads, content and events</td><td>Organic Google, Google Maps and AI search for a local business: website, setup, a new article every 2 days, a daily technical audit</td></tr>
               <tr><th>Best for</th><td>Larger budgets, national or multi-market searches</td><td>Enough marketing work to keep a full-time person busy</td><td>New and small local businesses that want the essentials done properly</td></tr>
             </tbody>
           </table>
