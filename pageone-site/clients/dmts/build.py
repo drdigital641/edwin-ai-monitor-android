@@ -29,6 +29,7 @@ BASE = '/'
 DEPTH = 0  # folder depth of the page being built; set by build() so u() can emit relative links
 ABS = False  # root-relative links instead (404 page: Apache serves it at any depth)
 ASSET_V = '11'
+JS_V = '12'
 SLUG = 'dmts'  # Page One client key: p1-site marker (go-live check) and WhatsApp tracker
 INDEXNOW_KEY = '5792dfeef836aebd82a445c206294c95'  # same key as the controller's Client record
 # Share images and icons must load before jackygearbox.com points here, so until go-live they are linked
@@ -351,7 +352,7 @@ def page(path, title, desc, body, active='', extra_head='', ld=None, scripts='',
 <a class="btn btn-wa" href="{wa_link(cta="Sticky bar")}" target="_blank" rel="noopener">{ICON["wa"]}WhatsApp</a>
 <a class="btn btn-call" href="tel:{BIZ["tel"]}">{ICON["phone"]}Call</a>
 </div>
-<script src="{u("jg.js")}?v={ASSET_V}" defer></script>
+<script src="{u("jg.js")}?v={JS_V}" defer></script>
 {scripts}
 </body>
 </html>
