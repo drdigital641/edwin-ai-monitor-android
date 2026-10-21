@@ -653,8 +653,20 @@ PROBLEMS = [
      'now': ['Check the floor where you park for red fluid stains', 'Drive gently and avoid hard acceleration and highways', 'Book a diagnostic early: slipping wears the gearbox faster the longer it goes on'],
      'img': ('gearbox-parts', 'Clutch packs and gear sets from an automatic gearbox'),
      'services': ['gearbox-repair', 'gearbox-servicing'],
+     'extra': ('<section><div class="wrap" style="max-width:860px"><h2>What does it mean when an automatic gearbox slips?</h2>'
+               '<p>A slipping automatic gearbox lets the engine rev without passing full drive to the wheels. You may notice the revs rising while the car barely speeds up, a gear that drops out, or a delay when you pull away. Common causes are low or burnt fluid, worn clutch packs, torque converter faults, and solenoid or valve body faults.</p>'
+               '<h3>What the pattern can point to</h3>'
+               '<ul class="ticks"><li><strong>Red fluid under the car, or burnt-smelling fluid:</strong> low or worn-out fluid is a likely cause.</li>'
+               '<li><strong>Revs jump during one particular gear change:</strong> a worn clutch pack or band for that gear can be involved.</li>'
+               '<li><strong>Slipping mostly when the gearbox is hot:</strong> fluid that has broken down or a torque converter fault can be involved.</li>'
+               '<li><strong>A warning light or limp mode as well:</strong> a stored fault code, a sensor or a shift solenoid may be the cause. See <a href="../transmission-warning-light/">gearbox warning light</a>.</li></ul>'
+               '<p>These are general patterns, not a diagnosis: more than one cause can be involved, so the gearbox needs to be tested. <small>Updated 22 Oct 2026.</small></p></div></section>'),
      'faq': [('Can a slipping gearbox be fixed without an overhaul?',
-              'Sometimes. If the cause is low or old fluid, or a faulty solenoid, a service or a smaller repair may be enough. Worn clutch packs usually need an overhaul. Jacky tests the gearbox first and tells you which it is before any work starts.')]},
+              'Sometimes. If the cause is low or old fluid, or a faulty solenoid, a service or a smaller repair may be enough. Worn clutch packs usually need an overhaul. Jacky tests the gearbox first and tells you which it is before any work starts.'),
+             ('Is it safe to keep driving a car with a slipping gearbox?',
+              'It is best not to. Slipping wears the clutches faster the longer it continues, and a small fault can become a full overhaul. If the car is still moving, drive gently and book a diagnostic. If it will not move or the gearbox is in limp mode, WhatsApp Jacky and the car can be towed in.'),
+             ('Is a slipping gearbox the same as limp mode?',
+              'No. Slipping means the gearbox is not passing full drive to the wheels. Limp mode is a protective setting where the gearbox holds one gear after it detects a fault. They can have related causes, and both need a diagnostic.')]},
     {'slug': 'burning-smell-from-gearbox', 'name': 'Burning smell',
      'title': 'Burning Smell From the Gearbox? Singapore | Jacky Gearbox',
      'desc': 'A burning smell after driving can mean the gearbox or its fluid is overheating. Common causes, why it matters, and what to do in Singapore traffic.',
@@ -975,6 +987,7 @@ def problem_page(slug):
 <ul class="ticks">{li(p["causes"])}</ul></div>
 <div>{img(*p["img"])}</div>
 </div></section>
+{p.get("extra", "")}
 <section class="alt"><div class="wrap" style="max-width:860px">
 <h2>What to do now</h2><ul class="ticks">{li(p["now"])}</ul>
 <h3>Why it pays to check early</h3>
