@@ -642,6 +642,23 @@ def nb_zz(key, eb, h, paras, L, rev=False, link=None, extra=''):
         wa_btn(T('Hello Benjamin, I read your Nirvana products page and would like to know more about %s.' % h['en'], '您好 Benjamin，我看了您的富贵山庄产品介绍，想了解%s。' % h['zh']), L, cls='btn btn-wa btn-sm'))
 
 
+FB_BASE = 'https://cdn.jsdelivr.net/gh/drdigital641/edwin-ai-monitor-android@45664d3/site-assets/benjamin-poon/booklet/pages/'
+
+
+def nb_flipbook(L):
+    pages = ''.join('<div class="fb-page"><img src="%sp%02d.webp" alt="%s %d" width="900" height="1273"%s></div>' % (
+        FB_BASE, i, E(t(T('Nirvana booklet 2025, page', '富贵山庄 2025 宣传册，第'), L)), i, '' if i <= 3 else ' loading="lazy" decoding="async"') for i in range(1, 33))
+    return ('<section class="sec sec-cream fbsec"><div class="wrap"><div class="tl"><span class="eyebrow-c">%s</span><h2>%s</h2><p>%s</p></div>'
+            '<div class="fb-wrap"><div id="flipbook">%s</div></div>'
+            '<div class="fb-ctl"><button type="button" id="fb-prev" aria-label="%s">&larr;</button><span id="fb-count">1 / 32</span><button type="button" id="fb-next" aria-label="%s">&rarr;</button></div>'
+            '<div class="cta-row center" style="margin-top:26px">%s<a class="btn btn-outline" href="%s" target="_blank" rel="noopener">%s</a></div></div></section>') % (
+        E(t(T('Nirvana booklet 2025', '富贵山庄 2025 宣传册'), L)), E(t(T('Flip through the booklet', '翻阅宣传册'), L)),
+        E(t(T('Tap or drag the corner of a page to turn it. Benjamin can explain anything inside, in English or Chinese.', '点击或拖动页角即可翻页。册内任何内容，Benjamin 都可以中英文为您讲解。'), L)),
+        pages, E(t(T('Previous page', '上一页'), L)), E(t(T('Next page', '下一页'), L)),
+        wa_btn(T('Hello Benjamin, I looked at the Nirvana booklet on your website and would like to know more.', '您好 Benjamin，我在您的网站看了富贵山庄宣传册，想进一步了解。'), L),
+        NB_SRC, E(t(T('Open on Flipsnack', '在 Flipsnack 打开'), L)))
+
+
 def nb_body(L):
     note = T('A general illustration of Nirvana Memorial Garden\'s products and services, based on Nirvana\'s 2025 booklet. Prices, availability and terms are confirmed by Nirvana at the time of purchase; Benjamin will check the details for you.',
              '本页根据富贵山庄 2025 年宣传册整理，概括介绍富贵山庄的产品与服务。价格、供应及条款以购买时富贵山庄的确认为准，Benjamin 会为您查证细节。')
@@ -728,7 +745,9 @@ def nb_body(L):
         title_lines(T('FAQ', '常见问题'), T('About this page', '关于本页'), L), faq_html(NB_FAQ, L).replace('<h2>%s</h2>' % E(t(W['faq'], L)), '', 1),
         E(t(T('Source: Nirvana Memorial Garden booklet 2025,', '资料来源：富贵山庄 2025 年宣传册，'), L)), NB_SRC, E(t(T('view the original booklet', '查看原版宣传册'), L)), E(t(W['independent'], L)),
         pending_box([T('Nirvana / Advance Planners OK for Benjamin to reuse the booklet photos and wording on his personal website.', '富贵山庄 / Advance Planners 是否同意 Benjamin 在个人网站使用宣传册的照片与文字。')], L))
-    return intro + suites + tradition + prayer + funeral + freccia + fac + why + trust + miles + visit + src
+    text = intro + suites + tradition + prayer + funeral + freccia + fac + why + trust + miles + visit + src
+    return nb_flipbook(L) + ('<details class="nbtext"><summary><span>%s</span></summary>%s</details>' % (
+        E(t(T('Read the booklet as text (English & 中文)', '阅读宣传册文字版（中文 & English）'), L)), text))
 
 
 PAGES = {}

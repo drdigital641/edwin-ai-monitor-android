@@ -51,3 +51,8 @@ function tick(t){var dt=last?Math.max(0,Math.min(64,t-last)):16;last=t;
     r.scrollLeft=o.pos});
   requestAnimationFrame(tick)}
 requestAnimationFrame(tick)})})();
+
+(function(d){var fb=d.getElementById('flipbook');if(!fb)return;var s=d.createElement('script');s.src='https://cdn.jsdelivr.net/npm/page-flip@2.0.7/dist/js/page-flip.browser.js';
+s.onload=function(){try{fb.classList.add('ready');var pf=new St.PageFlip(fb,{width:450,height:637,size:'stretch',minWidth:260,maxWidth:1000,minHeight:368,maxHeight:1415,showCover:true,maxShadowOpacity:.35,mobileScrollSupport:true,usePortrait:true});
+pf.loadFromHTML(fb.querySelectorAll('.fb-page'));fb.querySelectorAll('img[loading]').forEach(function(i){i.loading='eager'});var c=d.getElementById('fb-count');function u(){c.textContent=(pf.getCurrentPageIndex()+1)+' / '+pf.getPageCount()}pf.on('flip',u);u();
+d.getElementById('fb-prev').onclick=function(){pf.flipPrev()};d.getElementById('fb-next').onclick=function(){pf.flipNext()}}catch(e){fb.classList.remove('ready')}};d.head.appendChild(s)})(document);
