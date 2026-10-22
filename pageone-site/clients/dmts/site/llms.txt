@@ -1,12 +1,21 @@
-# Dynamic Motoring (DMTS)
+# Jacky Gearbox
 
-> Gearbox and automatic transmission repair, overhaul, upgrade and servicing specialist in Singapore.
+> Jacky is a gearbox specialist and consultant in Singapore. He diagnoses, tests and inspects every car himself and road-tests it before handover; the repair work is done by an experienced workshop team. Gearbox and automatic transmission repair, overhaul, upgrade and servicing for continental, Japanese, Korean and other makes.
 
-- WhatsApp: 8430 9665 (preferred) · Tel: 6352 8832 · Email: contact@dmts.com.sg
+- WhatsApp: 8430 9665 (WhatsApp and calls)
 - Woodlands HQ: 71 Woodlands Industrial Park E9, #01-25 Wave 9, Singapore 757048
-- Branch: 60 Jalan Lam Huat, #05-48, Singapore 737869
+- Kranji branch: 60 Jalan Lam Huat, #05-48, Singapore 737869
 - Hours: Mon-Fri 9am-6pm, Sat 9am-3pm, closed Sundays and public holidays
 - Pre-repair diagnostic from S$30. All repairs come with a standard 6-month warranty unless otherwise stated.
+- Free towing or pick-up to the workshop during office hours
+- Area served: all of Singapore; nearest for Woodlands, Admiralty, Marsiling, Woodlands North, Sembawang, Canberra, Yishun (Woodlands) and Kranji, Sungei Kadut, Yew Tee, Choa Chu Kang, Bukit Panjang, Lim Chu Kang, Bukit Batok (Kranji)
+- Google: https://share.google/ZXSk6rE3VdUNgZyKS
+
+## How Jacky works
+1. Diagnosis and testing: Jacky reads the fault codes, tests the gearbox and finds the actual cause.
+2. A clear quote: He explains the fault and the price before any work starts. You decide.
+3. The repair: An experienced workshop team, with over 15 years of combined gearbox experience, carries out the repair or overhaul. Jacky inspects the work.
+4. Final test and handover: Jacky road-tests the car himself before he hands it back to you.
 
 ## Services
 - Gearbox Repair & Overhaul: We have a full range of diagnostic tools specialising in auto transmission to accurately identify the root cause.
@@ -15,28 +24,45 @@
 - Free Towing / Pick-Up: We provide free pick-up to our workshop for gearbox repair during office hours.
 
 ## Pages
-- [Home](https://dmts.com.sg/)
-- [Services](https://dmts.com.sg/services/)
-- [Gearbox Problems](https://dmts.com.sg/gearbox-problems/)
-- [Gallery](https://dmts.com.sg/gallery/)
-- [About](https://dmts.com.sg/about/)
-- [Contact](https://dmts.com.sg/contact/)
-- [Gearbox Repair & Overhaul](https://dmts.com.sg/services/gearbox-repair/)
-- [Gearbox Strengthening & Upgrade](https://dmts.com.sg/services/gearbox-upgrade/)
-- [Gearbox Maintenance & Servicing](https://dmts.com.sg/services/gearbox-servicing/)
-- [Free Towing / Pick-Up](https://dmts.com.sg/services/free-towing/)
-- [Transmission check light on](https://dmts.com.sg/gearbox-problems/transmission-warning-light/): The engine or transmission check light comes on while driving. Some cars also hold one gear (often called “limp mode”) to protect the gearbox.
-- [Lack of response](https://dmts.com.sg/gearbox-problems/car-hesitates-when-accelerating/): You press the accelerator and the car hesitates, or there is a delay before it goes into Drive or Reverse.
-- [Can’t change gear](https://dmts.com.sg/gearbox-problems/car-stuck-in-gear/): The car stays in first gear, or only shifts up to third, when moving off or while driving.
-- [Jerking or gears slipping](https://dmts.com.sg/gearbox-problems/car-jerks-when-changing-gear/): The car jerks when shifting up or down, slips in and out of gear, or pops into neutral while driving.
-- [Vibration](https://dmts.com.sg/gearbox-problems/car-vibrates-when-accelerating/): The car vibrates at high speed on low RPM, or when accelerating hard from a standstill.
-- [ATF leaking or low](https://dmts.com.sg/gearbox-problems/transmission-fluid-leak/): Bright red oil (ATF) stains on the floor after the car has been parked for a while.
-- [Gearbox noise](https://dmts.com.sg/gearbox-problems/gearbox-noise/): A loud noise from the gearbox once the engine starts or while the car is moving.
+- [Home](https://jackygearbox.com/)
+- [Services](https://jackygearbox.com/services/)
+- [Gearbox Problems](https://jackygearbox.com/gearbox-problems/)
+- [Articles](https://jackygearbox.com/articles/)
+- [Gallery](https://jackygearbox.com/gallery/)
+- [About](https://jackygearbox.com/about/)
+- [Contact](https://jackygearbox.com/contact/)
+- [Gearbox Repair & Overhaul](https://jackygearbox.com/services/gearbox-repair/)
+- [Gearbox Strengthening & Upgrade](https://jackygearbox.com/services/gearbox-upgrade/)
+- [Gearbox Maintenance & Servicing](https://jackygearbox.com/services/gearbox-servicing/)
+- [Free Towing / Pick-Up](https://jackygearbox.com/services/free-towing/)
+- [Transmission check light on](https://jackygearbox.com/gearbox-problems/transmission-warning-light/): The engine or transmission check light comes on while driving. Some cars also hold one gear (often called “limp mode”) to protect the gearbox.
+- [Lack of response](https://jackygearbox.com/gearbox-problems/car-hesitates-when-accelerating/): You press the accelerator and the car hesitates, or there is a delay before it goes into Drive or Reverse.
+- [Can’t change gear](https://jackygearbox.com/gearbox-problems/car-stuck-in-gear/): The car stays in first gear, or only shifts up to third, when moving off or while driving.
+- [Jerking or gears slipping](https://jackygearbox.com/gearbox-problems/car-jerks-when-changing-gear/): The car jerks when shifting up or down, slips in and out of gear, or pops into neutral while driving.
+- [Vibration](https://jackygearbox.com/gearbox-problems/car-vibrates-when-accelerating/): The car vibrates at high speed on low RPM, or when accelerating hard from a standstill.
+- [ATF leaking or low](https://jackygearbox.com/gearbox-problems/transmission-fluid-leak/): Bright red oil (ATF) stains on the floor after the car has been parked for a while.
+- [Gearbox noise](https://jackygearbox.com/gearbox-problems/gearbox-noise/): A loud noise from the gearbox once the engine starts or while the car is moving.
+- [Engine revs but car doesn’t speed up](https://jackygearbox.com/gearbox-problems/gearbox-slipping/): You press the accelerator, the engine revs climb, but the car is slow to pick up speed, or the gear seems to slip out for a moment.
+- [Burning smell](https://jackygearbox.com/gearbox-problems/burning-smell-from-gearbox/): A sharp burning smell after driving, especially in stop-start traffic or after a long climb, sometimes with slipping or harsh shifts.
+- [Car won’t move in Drive or Reverse](https://jackygearbox.com/gearbox-problems/car-wont-move-in-drive/): The engine starts and runs, but the car doesn’t move, or barely moves, when you select Drive or Reverse.
+- [Gear lever stuck in Park](https://jackygearbox.com/gearbox-problems/gear-lever-stuck-in-park/): You press the brake but the gear lever won’t move out of Park, or the gear selector doesn’t respond.
+- [Gearbox Oil Flush or Drain and Fill: Which Is Better for Your Car?](https://jackygearbox.com/articles/gearbox-flush-or-drain-and-fill/): Gearbox flush or drain and fill? How each method changes automatic transmission fluid, how much old fluid is left behind, and which suits your car in Singapore.
+- [What Does Milky or Pink Gearbox Fluid Mean?](https://jackygearbox.com/articles/milky-or-pink-gearbox-fluid/): Milky, pink or foamy automatic transmission fluid usually means water or coolant has got into the gearbox. Causes, why it is urgent and what to do next.
+- [Is It Worth Repairing the Gearbox on an Older Car?](https://jackygearbox.com/articles/is-it-worth-repairing-gearbox-older-car/): Gearbox failed on an older car in Singapore? How to weigh the repair quote against the car's remaining COE, its condition and its value before you decide.
+- [How Do I Check the Gearbox Before Buying a Used Car?](https://jackygearbox.com/articles/check-gearbox-before-buying-used-car/): Buying a used car in Singapore? How to check the automatic gearbox on a test drive, what the gearbox oil and warning lights tell you, and when to walk away.
+- [What Driving Habits Damage an Automatic Gearbox?](https://jackygearbox.com/articles/driving-habits-that-damage-automatic-gearbox/): Which everyday driving habits wear out an automatic, CVT or dual-clutch gearbox in Singapore traffic, what to do instead, and the signs damage has started.
+- [What Are the Signs of a Bad Torque Converter?](https://jackygearbox.com/articles/bad-torque-converter-symptoms/): Shudder, slipping, noise or overheating? The signs of a bad torque converter, how it differs from other gearbox faults, and how it is tested in Singapore.
+- [What Is Gearbox Limp Mode, and Can I Still Drive My Car?](https://jackygearbox.com/articles/gearbox-limp-mode/): Car stuck in one gear with no power? What gearbox limp mode is, why it happens, whether you can drive, and how to get the fault found in Singapore.
+- [CVT, Dual-Clutch or Automatic: Which Gearbox Does Your Car Have?](https://jackygearbox.com/articles/cvt-dual-clutch-or-automatic-gearbox/): CVT, dual-clutch (DSG) or conventional automatic? How to tell which gearbox your car has, how each works, its typical problems, and why it matters for repair.
+- [Gearbox Overhaul vs Replacement: Which Is Right for Your Car?](https://jackygearbox.com/articles/gearbox-overhaul-vs-replacement/): Overhaul, reconditioned unit or a new gearbox? How to decide for your car in Singapore, what each option involves, and the questions to ask before you pay.
+- [How Often Should You Change Gearbox Oil (ATF) in Singapore?](https://jackygearbox.com/articles/how-often-change-atf-singapore/): How often should you change automatic transmission fluid in Singapore's stop-start traffic? What the "lifetime fluid" label means, warning signs, and what a proper ATF service includes.
+- [Gearbox Repair in Woodlands](https://jackygearbox.com/gearbox-repair-woodlands/): workshop at 71 Woodlands Industrial Park E9, #01-25 Wave 9, Singapore 757048
+- [Gearbox Repair in Kranji](https://jackygearbox.com/gearbox-repair-kranji/): workshop at 60 Jalan Lam Huat, #05-48, Singapore 737869
 
 ## Common questions
 - How much does a gearbox repair cost in Singapore? It depends on the car and the fault, so we don’t quote blind. We start with a pre-repair diagnostic (from S$30) to find the actual cause, then give you a clear quote before any work starts. WhatsApp us your car model and symptoms to get started.
 - How much is the diagnostic? Our pre-repair diagnostic starts from S$30. We read the transmission fault codes and check the gearbox, then tell you the fault and the repair price before any work starts.
-- My car can’t move. Can you tow it? Yes. We provide free pick-up to our workshop for gearbox repair during office hours, and if the car can’t move because of transmission failure we send a tow truck, free of charge. WhatsApp 8430 9665 or call 6352 8832.
+- My car can’t move. Can you tow it? Yes. We provide free pick-up to our workshop for gearbox repair during office hours, and if the car can’t move because of transmission failure we send a tow truck, free of charge. WhatsApp or call 8430 9665.
 - Which car brands do you work on? All types of vehicles: continental (Audi, BMW, Mercedes-Benz, Volkswagen, Mini), Japanese (Toyota, Lexus, Honda, Mazda, Mitsubishi, Nissan, Subaru, Suzuki), Korean (Hyundai, Kia) and other makes such as Land Rover, Jaguar, Volvo, Ford, Renault, Peugeot, Citroën, Chevrolet and Opel.
 - Is there a warranty after repair? Yes. All repairs come with a standard 6-month warranty unless otherwise stated.
 - What are the signs my gearbox needs attention? A transmission check light, hesitation or refusing to go into gear, being stuck in one gear, jerking or slipping between gears, vibration at low RPM, red ATF stains under the car, or a loud noise from the gearbox. Any of these is worth a diagnostic before it gets worse.
