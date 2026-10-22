@@ -37,7 +37,7 @@ LIVE = False
 PREVIEW = 'https://pageonesingapore.com/preview/%s/' % SLUG
 SITE = ('https://%s/' % DOMAIN) if LIVE else PREVIEW
 # Hidden from Google by the X-Robots-Tag header in pageonesingapore.com/preview/.htaccess, never a meta tag (Edwin, 17 Oct 2026).
-IMG = os.environ.get('BP_IMG', 'https://cdn.jsdelivr.net/gh/drdigital641/edwin-ai-monitor-android@52ab531/site-assets/benjamin-poon/')
+IMG = os.environ.get('BP_IMG', 'https://cdn.jsdelivr.net/gh/drdigital641/edwin-ai-monitor-android@9349d27/site-assets/benjamin-poon/')
 SHOW_PENDING = not LIVE
 UPDATED = '2026-10-22'
 
@@ -106,8 +106,6 @@ GUIDES = [_g[s] for s in GUIDE_ORDER if s in _g]
 ROLE = T('Service Advisor · Life Managing Director (生命经理师)', '生命经理师 · Service Advisor')
 
 CONFIRM = [
-    T('How you represent Nirvana: your badge says "NVG Authorised Agency" and the award images say Advance Planners. Which name should the site use?',
-      '您与富贵山庄的关系：名牌上写 "NVG Authorised Agency"，奖项图片则是 Advance Planners。网站应使用哪个名称？'),
     T('Written OK from Nirvana / Advance Planners to run a personal consultant website using their names (and later logos or official photos).',
       '富贵山庄 / Advance Planners 是否同意您以个人顾问名义建立网站并使用其名称（以及日后的标志或官方照片）。'),
     T('Exact name of the Changi Road venue in English and Chinese (天灵总道堂 or 天灵总道寺?), and which products you can offer at each of the three venues.',
@@ -174,8 +172,8 @@ SVC_ICON = {'columbarium-niches': 'niche', 'ancestral-tablets': 'tablet', 'funer
 VENUE_MARK = {'nirvana-memorial-garden': '富贵山庄', 'lin-san-temple': '灵山寺', 'thian-leng-temple': '天灵总道堂'}
 
 PHOTOS = {  # name: (file, w, h, alt)
-    'portrait': ('benjamin-badge.webp', 1000, 1000, T('Benjamin Poon (潘国雄), Service Advisor and Life Managing Director (生命经理师) 2025', '潘国雄（Benjamin Poon），生命经理师 Life Managing Director 2025，Service Advisor')),
-    'face': ('benjamin-badge-sm.webp', 240, 240, T('Benjamin Poon (潘国雄)', '潘国雄（Benjamin Poon）')),
+    'portrait': ('benjamin-badge-apg.webp', 1000, 1000, T('Benjamin Poon (潘国雄), Service Advisor and Life Managing Director (生命经理师) 2025', '潘国雄（Benjamin Poon），生命经理师 Life Managing Director 2025，Service Advisor')),
+    'face': ('benjamin-badge-apg-sm.webp', 240, 240, T('Benjamin Poon (潘国雄)', '潘国雄（Benjamin Poon）')),
     'award-sep': ('award-sep-2025.webp', 1200, 469, T('APG September 2025 Award banner naming Benjamin Poon', 'APG 2025 年 9 月奖项海报，获奖者潘国雄（Benjamin Poon）')),
     'award-oct': ('award-oct-2025.webp', 960, 600, T('APG October 2025 Sales Award awardees, including Benjamin Poon', 'APG 2025 年 10 月销售奖获奖名单，包括潘国雄（Benjamin Poon）')),
     'award-may': ('award-may-2026.webp', 960, 600, T('APG May 2026 Sales Award awardees, including Benjamin Poon', 'APG 2026 年 5 月销售奖获奖名单，包括潘国雄（Benjamin Poon）')),
@@ -425,7 +423,7 @@ def home_body(L):
     mood = '<section class="sec sec-cream gal"><div class="wrap">%s</div>%s<div class="wrap" style="margin-top:22px">%s</div></section>' % (
         title_lines(T('A place of peace', '安宁之所'), T('Calm, dignified and close to family', '宁静、庄重，离家人更近'), L,
                     T('Choosing a resting place is a family decision. Benjamin helps you see the options clearly before you decide.', '选择安息之所是全家人的决定。Benjamin 帮您在决定前把选择看清楚。')),
-        glide(MOOD_KEYS[:9], L), pending_box([CONFIRM[6]], L))
+        glide(MOOD_KEYS[:9], L), pending_box([CONFIRM[5]], L))
     meet = ('<section class="sec sec-white meet"><div class="wrap split"><figure class="portrait">%s</figure><div><span class="eyebrow">%s</span><h2>%s</h2><p>%s</p><p>%s</p>'
             '<div class="cta-row" style="margin-top:26px"><a class="btn btn-outline" href="about-benjamin-poon/">%s</a>%s</div></div></div></section>') % (
         img('portrait', L), E(t(T('Meet Benjamin', '认识潘国雄'), L)), E(t(T('A personal guide, from first question to final arrangement', '从第一个问题到最后安排，全程亲自陪伴'), L)),
@@ -444,7 +442,7 @@ def home_body(L):
     trust = '<section class="sec sec-cream gal"><div class="wrap">%s</div>%s<div class="wrap" style="margin-top:22px">%s</div></section>' % (
         title_lines(T('Recognition', '肯定'), T('Awards from Advance Planners (APG)', 'Advance Planners（APG）颁发的奖项'), L,
                     T('Benjamin joined in late 2025 and has been named in these APG sales awards.', 'Benjamin 于 2025 年底加入，并获得以下 APG 销售奖项。')),
-        awards_html(L), pending_box([CONFIRM[5]], L))
+        awards_html(L), pending_box([CONFIRM[4]], L))
     guides = '<section class="sec sec-white"><div class="wrap">%s<div class="acards">%s</div><p class="center" style="margin-top:34px"><a class="btn btn-outline" href="guides/">%s</a></p></div></section>' % (
         title_lines(T('Guides', '指南'), T('Plain answers before you decide', '做决定前的实用解答'), L),
         ''.join(guide_card(g, L) for g in GUIDES[:3]), E(t(T('All guides', '全部指南'), L)))
@@ -475,7 +473,7 @@ def about_body(L):
     info = '<div class="info">%s</div>' % ''.join('<div><b>%s</b><span>%s</span></div>' % (E(t(a, L)), E(t(b, L))) for a, b in facts)
     body = '<div class="layout"><div class="prose"><div class="answer">%s</div>%s%s<h2>%s</h2>%s<p class="notice">%s</p>%s</div>%s</div>' % (
         rich(t(p[0], L)), ''.join('<p>%s</p>' % rich(t(x, L)) for x in p[1:]), info,
-        E(t(T('Recognition', '获奖'), L)), awards_html(L), E(t(W['independent'], L)), pending_box(CONFIRM[:5], L),
+        E(t(T('Recognition', '获奖'), L)), awards_html(L), E(t(W['independent'], L)), pending_box(CONFIRM[:4], L),
         aside(L, T('Hello Benjamin, I read your About page and would like to talk to you.', '您好 Benjamin，我看了您的个人介绍，想与您聊聊。')))
     return '<section class="sec"><div class="wrap">%s</div></section>' % body
 
@@ -814,7 +812,7 @@ def build_pages():
         for g in GUIDES:
             path = 'guides/%s/' % g['slug']
             page(L, path, g['title'], g['desc'], g['h1'], guide_body(g, L), crumbs=[('guides/', nav['guides/']), (path, g['h1'])], lede=g['lede'], kind='article',
-                 schema=[{'@type': 'Article', 'headline': t(g['h1'], L), 'description': t(g['desc'], L), 'inLanguage': LANG_ATTR[L], 'image': IMG + 'og-benjamin-poon-4.jpg',
+                 schema=[{'@type': 'Article', 'headline': t(g['h1'], L), 'description': t(g['desc'], L), 'inLanguage': LANG_ATTR[L], 'image': IMG + 'og-benjamin-poon-5.jpg',
                           'datePublished': g.get('date', UPDATED), 'dateModified': g.get('date', UPDATED), 'author': {'@id': SITE + '#benjamin'},
                           'mainEntityOfPage': SITE + PFX[L] + path}, faq_schema(g['faqs'], L)])
         page(L, 'contact/', T('Contact Benjamin Poon | WhatsApp +65 8932 9933', '联系潘国雄 | WhatsApp +65 8932 9933'),
@@ -844,7 +842,7 @@ def render(L, path, p):
     pre = '../' * full.count('/')
     lpre = pre + PFX[L]
     url = SITE + full
-    share = IMG + 'og-benjamin-poon-4.jpg'
+    share = IMG + 'og-benjamin-poon-5.jpg'
 
     def fix(s):
         return re.sub(r'(href|src|action)="(?!https?:|mailto:|tel:|#|\.\./|data:)([^"]*)"', lambda m: '%s="%s%s"' % (m.group(1), lpre, m.group(2)), s)
