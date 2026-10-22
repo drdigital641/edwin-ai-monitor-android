@@ -164,7 +164,7 @@ a:hover .more::after,.more:hover::after{width:40px}
 .split figure{margin:0;position:relative}
 .split figure img{width:100%;aspect-ratio:4/5;object-fit:cover}
 @media (max-width:860px){.split{grid-template-columns:1fr}.split figure img{aspect-ratio:4/3}}
-.meet .portrait{max-width:430px;justify-self:center}
+.meet .portrait{max-width:430px;width:100%;justify-self:center}
 .meet .portrait img{aspect-ratio:1;border-radius:50%;width:100%}
 .meet .portrait::before{display:none}
 .meet .portrait::after{display:none}
