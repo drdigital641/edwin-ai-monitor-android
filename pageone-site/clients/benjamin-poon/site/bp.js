@@ -10,7 +10,7 @@ ready(function(){
     var on=function(){var r=art.getBoundingClientRect(),t=r.height-innerHeight;bar.style.transform='scaleX('+Math.min(1,Math.max(0,-r.top/(t>0?t:1)))+')'};
     addEventListener('scroll',on,{passive:true});on()}
   /* gentle reveal: only elements below the fold are hidden, so nothing on screen ever blanks */
-  var els=[].slice.call(d.querySelectorAll('.sec-head,.pcard,.acard,.ccard,.faq details,.band,.steps li,.split figure,.info'));
+  var els=[].slice.call(d.querySelectorAll('.sec-head,.tl,.zz,.pcard,.acard,.ccard,.faq details,.band,.steps li,.split figure,.info'));
   if(!rm&&'IntersectionObserver' in window){
     var io=new IntersectionObserver(function(es){es.forEach(function(en){if(en.isIntersecting){en.target.classList.add('in');io.unobserve(en.target)}})},{rootMargin:'0px 0px -6% 0px',threshold:.06});
     els.forEach(function(e){if(e.getBoundingClientRect().top<innerHeight)return;e.classList.add('rv');var i=[].indexOf.call(e.parentNode.children,e);e.style.transitionDelay=Math.min(i,4)*70+'ms';io.observe(e)});
