@@ -5,7 +5,7 @@ New Page One client, 22 Oct 2026 (Edwin). Spec: HANDOVER-from-client.md (client'
 Facts used and where they came from:
 - Client handover (from Benjamin via Edwin): name Benjamin Poon (潘国雄); WhatsApp/mobile +65 8932 9933; email
   benpoon.nirvana@gmail.com; represents Nirvana Singapore (富貴山庄; nirvana.com.sg is the company's site, not his);
-  describes himself as 生命规划师 (English title pending); services: columbarium niches, ancestral tablets, funeral
+  describes himself as 生命经理师 (English title pending); services: columbarium niches, ancestral tablets, funeral
   services, will planning (Certified Will Planner with Advance Planners, wording pending); joined around late 2025;
   three venues: Nirvana Memorial Garden (950 Old Choa Chu Kang Road S699816), Lin San Temple 灵山寺 (27 Lorong 12 Geylang
   S399004), Thian Leng Chong Toh Tong 天灵总道堂 (472 Changi Road S419890, name pending). English + Chinese only, no Malay.
@@ -37,7 +37,7 @@ LIVE = False
 PREVIEW = 'https://pageonesingapore.com/preview/%s/' % SLUG
 SITE = ('https://%s/' % DOMAIN) if LIVE else PREVIEW
 # Hidden from Google by the X-Robots-Tag header in pageonesingapore.com/preview/.htaccess, never a meta tag (Edwin, 17 Oct 2026).
-IMG = os.environ.get('BP_IMG', 'https://cdn.jsdelivr.net/gh/drdigital641/edwin-ai-monitor-android@469067e/site-assets/benjamin-poon/')
+IMG = os.environ.get('BP_IMG', 'https://cdn.jsdelivr.net/gh/drdigital641/edwin-ai-monitor-android@52ab531/site-assets/benjamin-poon/')
 SHOW_PENDING = not LIVE
 UPDATED = '2026-10-22'
 
@@ -103,11 +103,11 @@ GUIDE_ORDER = ['columbarium-niche-vs-ancestral-tablet', 'questions-before-choosi
 _g = {g['slug']: g for g in GA.GUIDES + GB.GUIDES}
 GUIDES = [_g[s] for s in GUIDE_ORDER if s in _g]
 
-ROLE = T('Life planning professional · Nirvana Singapore', '生命规划师 · 富贵山庄')
+ROLE = T('Service Advisor · Life Managing Director (生命经理师)', '生命经理师 · Service Advisor')
 
 CONFIRM = [
-    T('Your exact English job title (you used "life managing director"; the preview says "life planning professional") and how you represent Nirvana (agent of Advance Planners, an authorised agency of Nirvana?).',
-      '您正式的英文职称（您提过 "life managing director"，预览暂用 "life planning professional"），以及您与富贵山庄的关系（是否为 Advance Planners 的顾问，而 Advance Planners 是富贵山庄的授权代理？）。'),
+    T('How you represent Nirvana: your badge says "NVG Authorised Agency" and the award images say Advance Planners. Which name should the site use?',
+      '您与富贵山庄的关系：名牌上写 "NVG Authorised Agency"，奖项图片则是 Advance Planners。网站应使用哪个名称？'),
     T('Written OK from Nirvana / Advance Planners to run a personal consultant website using their names (and later logos or official photos).',
       '富贵山庄 / Advance Planners 是否同意您以个人顾问名义建立网站并使用其名称（以及日后的标志或官方照片）。'),
     T('Exact name of the Changi Road venue in English and Chinese (天灵总道堂 or 天灵总道寺?), and which products you can offer at each of the three venues.',
@@ -174,8 +174,8 @@ SVC_ICON = {'columbarium-niches': 'niche', 'ancestral-tablets': 'tablet', 'funer
 VENUE_MARK = {'nirvana-memorial-garden': '富贵山庄', 'lin-san-temple': '灵山寺', 'thian-leng-temple': '天灵总道堂'}
 
 PHOTOS = {  # name: (file, w, h, alt)
-    'portrait': ('benjamin-portrait-3.webp', 800, 1200, T('Benjamin Poon (潘国雄) in a dark suit, arms crossed', '身穿深色西装、双手交叉的潘国雄（Benjamin Poon）')),
-    'face': ('benjamin-face-3.webp', 400, 400, T('Benjamin Poon (潘国雄)', '潘国雄（Benjamin Poon）')),
+    'portrait': ('benjamin-badge.webp', 1000, 1000, T('Benjamin Poon (潘国雄), Service Advisor and Life Managing Director (生命经理师) 2025', '潘国雄（Benjamin Poon），生命经理师 Life Managing Director 2025，Service Advisor')),
+    'face': ('benjamin-badge-sm.webp', 240, 240, T('Benjamin Poon (潘国雄)', '潘国雄（Benjamin Poon）')),
     'award-sep': ('award-sep-2025.webp', 1200, 469, T('APG September 2025 Award banner naming Benjamin Poon', 'APG 2025 年 9 月奖项海报，获奖者潘国雄（Benjamin Poon）')),
     'award-oct': ('award-oct-2025.webp', 960, 600, T('APG October 2025 Sales Award awardees, including Benjamin Poon', 'APG 2025 年 10 月销售奖获奖名单，包括潘国雄（Benjamin Poon）')),
     'award-may': ('award-may-2026.webp', 960, 600, T('APG May 2026 Sales Award awardees, including Benjamin Poon', 'APG 2026 年 5 月销售奖获奖名单，包括潘国雄（Benjamin Poon）')),
@@ -315,8 +315,8 @@ def aside(L, msg):
 # ------------------------------------------------------------------------------------------------
 FAQ_HOME = [
     (T('Who is Benjamin Poon?', 'Benjamin Poon（潘国雄）是谁？'),
-     T('Benjamin Poon (潘国雄) is a life planning professional in Singapore who represents Nirvana Singapore. He helps families understand columbarium niches, ancestral tablets, funeral arrangements and will planning, in English or Chinese.',
-       '潘国雄（Benjamin Poon）是新加坡的生命规划师，代表富贵山庄（Nirvana Singapore）。他以中文或英文协助家庭了解福位、神主牌、殡葬安排与遗嘱规划。')),
+     T('Benjamin Poon (潘国雄) is a Service Advisor and Life Managing Director in Singapore who represents Nirvana Singapore. He helps families understand columbarium niches, ancestral tablets, funeral arrangements and will planning, in English or Chinese.',
+       '潘国雄（Benjamin Poon）是新加坡的生命经理师，代表富贵山庄（Nirvana Singapore）。他以中文或英文协助家庭了解福位、神主牌、殡葬安排与遗嘱规划。')),
     (T('Is this the official Nirvana website?', '这是富贵山庄的官方网站吗？'),
      T('No. This is Benjamin\'s personal website. The company\'s official website is <a href="https://nirvana.com.sg/">nirvana.com.sg</a>.',
        '不是。这是 Benjamin 的个人网站。公司官方网站为 <a href="https://nirvana.com.sg/">nirvana.com.sg</a>。')),
@@ -402,7 +402,7 @@ def home_body(L):
             '<span class="eyebrow-c light">%s</span><h1>%s</h1><p class="hero-sub">%s</p>'
             '<div class="cta-row center">%s<a class="btn btn-ghost" href="services/">%s</a></div></div>'
             '<div class="hero-steps"><p>%s</p><ol>%s</ol></div></div></section>') % (
-        hero_imgs, E(t(T('Benjamin Poon 潘国雄 · Memorial & life planning consultant · Singapore', '潘国雄 Benjamin Poon · 身后事与生命规划顾问 · 新加坡'), L)),
+        hero_imgs, E(t(T('Benjamin Poon 潘国雄 · Service Advisor · Life Managing Director · Singapore', '潘国雄 Benjamin Poon · 生命经理师 · 新加坡'), L)),
         E(t(T('Columbarium niches, ancestral tablets, funerals & wills', '福位 · 神主牌 · 殡葬安排 · 遗嘱规划'), L)),
         E(t(T('Personal, no-pressure guidance at Nirvana Memorial Garden, Lin San Temple and Thian Leng, explained in English or 中文.',
               '在富贵山庄、灵山寺与天灵总道堂，为您亲自讲解、安排参观，没有压力，中英文皆可。'), L)),
@@ -455,8 +455,8 @@ def home_body(L):
 
 def about_body(L):
     p = [
-        T('Benjamin Poon (潘国雄) is a life planning professional in Singapore. He represents Nirvana Singapore (富贵山庄) and helps families look into columbarium niches, ancestral tablets, funeral arrangements and will planning.',
-          '潘国雄（Benjamin Poon）是新加坡的生命规划师，代表富贵山庄（Nirvana Singapore），协助家庭了解福位、神主牌、殡葬安排与遗嘱规划。'),
+        T('Benjamin Poon (潘国雄) is a Service Advisor and Life Managing Director in Singapore. He represents Nirvana Singapore (富贵山庄) and helps families look into columbarium niches, ancestral tablets, funeral arrangements and will planning.',
+          '潘国雄（Benjamin Poon）是新加坡的生命经理师，代表富贵山庄（Nirvana Singapore），协助家庭了解福位、神主牌、殡葬安排与遗嘱规划。'),
         T('He joined in late 2025. He speaks English and Chinese, and he prefers to explain options calmly so that families can decide together, without pressure.',
           '他于 2025 年底加入，能说中文和英文。他习惯平和地说明各种选择，让家人可以一起商量、从容决定。'),
         T('Benjamin works with three venues: <a href="locations/nirvana-memorial-garden/">Nirvana Memorial Garden</a> on Old Choa Chu Kang Road, <a href="locations/lin-san-temple/">Lin San Temple</a> in Geylang and <a href="locations/thian-leng-temple/">Thian Leng Chong Toh Tong</a> on Changi Road.',
@@ -740,7 +740,7 @@ def page(L, path, title, desc, h1, body, crumbs=None, lede='', schema=None, hero
 
 
 def person(L):
-    return {'@type': 'Person', '@id': SITE + '#benjamin', 'name': NAME, 'alternateName': NAME_ZH, 'jobTitle': t(T('Life planning professional', '生命规划师'), L),
+    return {'@type': 'Person', '@id': SITE + '#benjamin', 'name': NAME, 'alternateName': NAME_ZH, 'jobTitle': t(T('Service Advisor, Life Managing Director', '生命经理师'), L),
             'telephone': TEL, 'email': EMAIL, 'image': IMG + PHOTOS['portrait'][0], 'url': SITE + PFX[L] + 'about-benjamin-poon/',
             'affiliation': [{'@type': 'Organization', 'name': 'Nirvana Singapore', 'alternateName': '富貴山庄', 'url': NIRVANA},
                             {'@type': 'Organization', 'name': 'Advance Planners'}],
@@ -753,13 +753,13 @@ def build_pages():
         nav = dict(W['nav'])
         page(L, '', T('Benjamin Poon 潘国雄 | Niches, Tablets & Wills Singapore', '潘国雄 Benjamin Poon | 新加坡福位、神主牌与遗嘱规划'),
              T('Benjamin Poon (潘国雄), Nirvana Singapore: columbarium niches, ancestral tablets, funeral arrangements and will planning. WhatsApp +65 8932 9933.',
-               '潘国雄（Benjamin Poon），富贵山庄生命规划师：福位、骨灰位、神主牌、殡葬安排与遗嘱规划。中英文服务，WhatsApp +65 8932 9933。'),
+               '潘国雄（Benjamin Poon），富贵山庄生命经理师：福位、骨灰位、神主牌、殡葬安排与遗嘱规划。中英文服务，WhatsApp +65 8932 9933。'),
              'Benjamin Poon', home_body(L), hero=False, schema=[faq_schema(FAQ_HOME, L)])
-        page(L, 'about-benjamin-poon/', T('About Benjamin Poon (潘国雄) | Nirvana Singapore', '关于潘国雄 Benjamin Poon | 生命规划师'),
-             T('Benjamin Poon (潘国雄) is a life planning professional representing Nirvana Singapore. Niches, ancestral tablets, funerals and will planning, in English and Chinese.',
-               '潘国雄（Benjamin Poon），代表富贵山庄的生命规划师，以中英文协助福位、神主牌、殡葬与遗嘱规划。'),
+        page(L, 'about-benjamin-poon/', T('About Benjamin Poon (潘国雄) | Nirvana Singapore', '关于潘国雄 Benjamin Poon | 生命经理师'),
+             T('Benjamin Poon (潘国雄) is a Service Advisor and Life Managing Director representing Nirvana Singapore. Niches, ancestral tablets, funerals and will planning, in English and Chinese.',
+               '潘国雄（Benjamin Poon），代表富贵山庄的生命经理师，以中英文协助福位、神主牌、殡葬与遗嘱规划。'),
              T('About Benjamin Poon', '关于潘国雄'), about_body(L), crumbs=[('about-benjamin-poon/', nav['about-benjamin-poon/'])],
-             lede=T('Life planning professional, Singapore. English and Chinese.', '新加坡生命规划师，中英文服务。'), schema=[])
+             lede=T('Service Advisor and Life Managing Director, Singapore. English and Chinese.', '新加坡生命经理师，中英文服务。'), schema=[])
         page(L, 'services/', T('Memorial & Will Planning Services | Benjamin Poon', '福位、神主牌、殡葬与遗嘱服务 | 潘国雄'),
              T('Columbarium niches, ancestral tablets, funeral services and will planning in Singapore, explained by Benjamin Poon (潘国雄). WhatsApp +65 8932 9933.',
                '潘国雄为您讲解新加坡福位、神主牌、殡葬服务与遗嘱规划。WhatsApp +65 8932 9933。'),
@@ -795,7 +795,7 @@ def build_pages():
         for g in GUIDES:
             path = 'guides/%s/' % g['slug']
             page(L, path, g['title'], g['desc'], g['h1'], guide_body(g, L), crumbs=[('guides/', nav['guides/']), (path, g['h1'])], lede=g['lede'], kind='article',
-                 schema=[{'@type': 'Article', 'headline': t(g['h1'], L), 'description': t(g['desc'], L), 'inLanguage': LANG_ATTR[L], 'image': IMG + 'og-benjamin-poon-3.jpg',
+                 schema=[{'@type': 'Article', 'headline': t(g['h1'], L), 'description': t(g['desc'], L), 'inLanguage': LANG_ATTR[L], 'image': IMG + 'og-benjamin-poon-4.jpg',
                           'datePublished': g.get('date', UPDATED), 'dateModified': g.get('date', UPDATED), 'author': {'@id': SITE + '#benjamin'},
                           'mainEntityOfPage': SITE + PFX[L] + path}, faq_schema(g['faqs'], L)])
         page(L, 'contact/', T('Contact Benjamin Poon | WhatsApp +65 8932 9933', '联系潘国雄 | WhatsApp +65 8932 9933'),
@@ -817,7 +817,7 @@ ASSET_V = hashlib.sha256(b''.join(open(os.path.join(HERE, f), 'rb').read() for f
 
 def brand_html(lpre, L):
     return '<a class="brand" href="%s" aria-label="Benjamin Poon, %s"><span class="brand-mark" aria-hidden="true">BP</span><span class="brand-name">Benjamin Poon<small>潘国雄 · %s</small></span></a>' % (
-        lpre or './', E(t(W['home'], L)), E(t(T('Life planning', '生命规划师'), L)))
+        lpre or './', E(t(W['home'], L)), E(t(T('Life Managing Director', '生命经理师'), L)))
 
 
 def render(L, path, p):
@@ -825,7 +825,7 @@ def render(L, path, p):
     pre = '../' * full.count('/')
     lpre = pre + PFX[L]
     url = SITE + full
-    share = IMG + 'og-benjamin-poon-3.jpg'
+    share = IMG + 'og-benjamin-poon-4.jpg'
 
     def fix(s):
         return re.sub(r'(href|src|action)="(?!https?:|mailto:|tel:|#|\.\./|data:)([^"]*)"', lambda m: '%s="%s%s"' % (m.group(1), lpre, m.group(2)), s)
@@ -882,7 +882,7 @@ def render(L, path, p):
 <meta property="og:image" content="{share}">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
-<meta property="og:image:alt" content="{E(t(T('Benjamin Poon (潘国雄), life planning professional, Singapore', '潘国雄 Benjamin Poon，新加坡生命规划师'), L))}">
+<meta property="og:image:alt" content="{E(t(T('Benjamin Poon (潘国雄), Service Advisor and Life Managing Director, Singapore', '潘国雄 Benjamin Poon，新加坡生命经理师'), L))}">
 <meta property="og:locale" content="{OG_LOCALE[L]}">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:image" content="{share}">
@@ -989,8 +989,8 @@ def main():
                 '<xhtml:link rel="alternate" hreflang="x-default" href="%s%s"/>' % (SITE, path)))
         f.write('</urlset>\n')
     with open(os.path.join(OUT, 'llms.txt'), 'w') as f:
-        f.write('# Benjamin Poon (潘国雄), life planning professional, Singapore\n\n'
-                '> Benjamin Poon (潘国雄) is a life planning professional (生命规划师) in Singapore who represents Nirvana Singapore (富贵山庄). '
+        f.write('# Benjamin Poon (潘国雄), Service Advisor and Life Managing Director, Singapore\n\n'
+                '> Benjamin Poon (潘国雄) is a Service Advisor and Life Managing Director (生命经理师) in Singapore who represents Nirvana Singapore (富贵山庄). '
                 'He helps families with columbarium niches (福位/骨灰位), ancestral tablets (神主牌), funeral arrangements (殡葬服务) and will planning (遗嘱规划, with Advance Planners). '
                 'Venues: Nirvana Memorial Garden, 950 Old Choa Chu Kang Road, Singapore 699816; Lin San Temple (灵山寺), 27 Lorong 12 Geylang, Singapore 399004; '
                 'Thian Leng Chong Toh Tong (天灵总道堂), 472 Changi Road, Singapore 419890. He is named in the APG (Advance Planners) September 2025 Award, October 2025 Sales Award and May 2026 Sales Award. '
