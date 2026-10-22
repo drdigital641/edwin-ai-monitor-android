@@ -125,8 +125,8 @@ CONFIRM = [
 # Shared words
 # ------------------------------------------------------------------------------------------------
 W = {
-    'nav': [('about-benjamin-poon/', T('About', '关于我')), ('services/', T('Services', '服务')), ('nirvana-products-services/', T('Nirvana', '富贵山庄')), ('locations/', T('Locations', '地点')),
-            ('guides/', T('Guides', '指南')), ('contact/', T('Contact', '联系'))],
+    'nav': [('about-benjamin-poon/', T('About', '关于我')), ('services/', T('Services', '服务')), ('locations/', T('Locations', '地点')),
+            ('guides/', T('Guides', '指南')), ('contact/', T('Contact', '联系')), ('nirvana-products-services/', T('About Nirvana', '关于富贵山庄'))],
     'home': T('Home', '首页'),
     'menu': T('Menu', '菜单'),
     'whatsapp': T('WhatsApp', 'WhatsApp'),
