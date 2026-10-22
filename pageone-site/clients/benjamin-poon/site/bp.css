@@ -190,7 +190,7 @@ a:hover .more::after,.more:hover::after{width:40px}
 .phero.has-bg{color:#fff;padding:clamp(120px,18vw,230px) 0 clamp(44px,6vw,70px);background:var(--ink)}
 .phero-bg{position:absolute;inset:0;margin:0}
 .phero-bg img{width:100%;height:100%;object-fit:cover;animation:drift 22s ease-in-out infinite alternate}
-.phero-bg::after{content:'';position:absolute;inset:0;background:linear-gradient(180deg,rgba(25,21,15,.25),rgba(25,21,15,.72))}
+.phero-bg::after{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 70% 70% at 50% 60%,rgba(25,21,15,.66),rgba(25,21,15,.3)),linear-gradient(180deg,rgba(25,21,15,.1),rgba(25,21,15,.6))}
 .phero .wrap{position:relative}
 .phero.has-bg h1{color:#fff;text-shadow:0 2px 24px rgba(0,0,0,.3)}
 .phero.has-bg .lede{color:#efe9dd}
