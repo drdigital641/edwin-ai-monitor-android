@@ -2,15 +2,15 @@
   "_readme": "Client showcase data for pageonesingapore.com (/clients/, /results/, home page, /website/, FAQ, industry and low-cost pages). Edit the client list by hand; never type the gsc blocks by hand: run builder/showcase_refresh.py with a CaseStudyStats export. Only list sites that are live on their own domain. Steps: /mnt/project-files/seo-method/rollout/pageone.md, 'Client showcase'.",
   "data": {
     "source": "Google Search Console (final data), collected by the Case Study Stats workflow into CaseStudyStats, SearchInsight Bridge app 6aa2d85827b1f2c2d43b241e",
-    "generated_at": "2026-10-22T17:07:53.980Z",
-    "data_through": "2026-10-19",
+    "generated_at": "2026-10-23T17:07:36.845Z",
+    "data_through": "2026-10-20",
     "window": [
-      "2026-09-22",
-      "2026-10-19"
+      "2026-09-23",
+      "2026-10-20"
     ],
     "prev_window": [
-      "2026-08-25",
-      "2026-09-21"
+      "2026-08-26",
+      "2026-09-22"
     ]
   },
   "clients": [
@@ -41,17 +41,17 @@
       ],
       "articles": 137,
       "gsc": {
-        "record_id": "6ada42f1c38c0224619eaa58",
+        "record_id": "6adb945edbb8512c5529459c",
         "first_day": "2026-06-26",
-        "clicks": 2357,
-        "impressions": 100153,
+        "clicks": 2355,
+        "impressions": 100763,
         "position": 6.2,
-        "prev_clicks": 2148,
-        "prev_impressions": 83094,
+        "prev_clicks": 2166,
+        "prev_impressions": 83772,
         "prev_position": 6.4,
         "queries": 5000,
-        "page_one": 4278,
-        "top3": 1447,
+        "page_one": 4266,
+        "top3": 1442,
         "capped": true,
         "monthly": [
           {
@@ -84,27 +84,27 @@
           },
           {
             "month": "2026-10",
-            "days": 19,
-            "clicks": 1609,
-            "impressions": 70789,
+            "days": 20,
+            "clicks": 1697,
+            "impressions": 74777,
             "position": 6.1
           }
         ],
         "best_query": {
           "query": "how to diagnose car transmission issues",
-          "position": 2.4,
-          "impressions": 362
+          "position": 2.2,
+          "impressions": 371
         },
         "top_queries": [
           {
             "query": "how to diagnose car transmission issues",
-            "position": 2.4,
-            "impressions": 362
+            "position": 2.2,
+            "impressions": 371
           },
           {
             "query": "car aircon repair",
-            "position": 2.9,
-            "impressions": 157
+            "position": 2.8,
+            "impressions": 156
           },
           {
             "query": "car repair",
@@ -113,23 +113,23 @@
           },
           {
             "query": "how to repair a car's side mirror",
-            "position": 4.1,
-            "impressions": 214
+            "position": 4.2,
+            "impressions": 252
+          },
+          {
+            "query": "car repair singapore",
+            "position": 4.3,
+            "impressions": 218
           },
           {
             "query": "car aircon servicing singapore",
             "position": 4.3,
-            "impressions": 187
+            "impressions": 190
           },
           {
-            "query": "car repair singapore",
-            "position": 4.4,
-            "impressions": 218
-          },
-          {
-            "query": "best car workshop singapore",
-            "position": 4.9,
-            "impressions": 127
+            "query": "cooling coil",
+            "position": 5,
+            "impressions": 125
           }
         ]
       },
@@ -157,17 +157,17 @@
       ],
       "articles": 81,
       "gsc": {
-        "record_id": "6ada42ecb1486cdc81e7aeac",
+        "record_id": "6adb945d8b7e1b1557891b0a",
         "first_day": "2026-06-20",
-        "clicks": 482,
-        "impressions": 40780,
-        "position": 8.5,
-        "prev_clicks": 463,
-        "prev_impressions": 33339,
+        "clicks": 484,
+        "impressions": 40665,
+        "position": 8.3,
+        "prev_clicks": 465,
+        "prev_impressions": 33999,
         "prev_position": 11.0,
-        "queries": 1492,
-        "page_one": 1210,
-        "top3": 574,
+        "queries": 1490,
+        "page_one": 1206,
+        "top3": 577,
         "capped": false,
         "monthly": [
           {
@@ -200,47 +200,47 @@
           },
           {
             "month": "2026-10",
-            "days": 19,
-            "clicks": 341,
-            "impressions": 26902,
+            "days": 20,
+            "clicks": 355,
+            "impressions": 28380,
             "position": 7.8
           }
         ],
         "best_query": {
           "query": "car grooming singapore",
-          "position": 1.9,
-          "impressions": 452
+          "position": 1.5,
+          "impressions": 437
         },
         "top_queries": [
           {
             "query": "car grooming singapore",
-            "position": 1.9,
-            "impressions": 452
+            "position": 1.5,
+            "impressions": 437
           },
           {
             "query": "steam cleaning",
             "position": 2,
-            "impressions": 161
+            "impressions": 163
           },
           {
             "query": "mobile car wash singapore",
-            "position": 2.3,
-            "impressions": 154
+            "position": 2.2,
+            "impressions": 150
           },
           {
             "query": "full car detailing singapore",
-            "position": 3.5,
-            "impressions": 159
+            "position": 3.3,
+            "impressions": 174
           },
           {
             "query": "car wash",
-            "position": 3.6,
-            "impressions": 238
+            "position": 3.7,
+            "impressions": 233
           },
           {
             "query": "car wash near me",
             "position": 3.8,
-            "impressions": 342
+            "impressions": 338
           },
           {
             "query": "car fumigation singapore",
@@ -273,16 +273,16 @@
       ],
       "articles": 44,
       "gsc": {
-        "record_id": "6ada42f40e81e871e5091afa",
+        "record_id": "6adb945f78aa040d672c1eca",
         "first_day": "2026-09-04",
         "clicks": 8,
-        "impressions": 4190,
-        "position": 73.6,
+        "impressions": 4294,
+        "position": 73.9,
         "prev_clicks": 12,
-        "prev_impressions": 1256,
-        "prev_position": 69.1,
+        "prev_impressions": 1358,
+        "prev_position": 69.4,
         "queries": 218,
-        "page_one": 32,
+        "page_one": 31,
         "top3": 9,
         "capped": false,
         "monthly": [
@@ -295,10 +295,10 @@
           },
           {
             "month": "2026-10",
-            "days": 19,
+            "days": 20,
             "clicks": 6,
-            "impressions": 3241,
-            "position": 74.9
+            "impressions": 3447,
+            "position": 75.2
           }
         ],
         "best_query": null,
@@ -327,16 +327,16 @@
       ],
       "articles": 22,
       "gsc": {
-        "record_id": "6ada42eedd1593272a3965f6",
+        "record_id": "6adb945ae2903e1c16c5f732",
         "first_day": "2026-09-30",
-        "clicks": 16,
-        "impressions": 285,
-        "position": 15.8,
+        "clicks": 17,
+        "impressions": 347,
+        "position": 15.4,
         "prev_clicks": 0,
         "prev_impressions": 0,
         "prev_position": 0,
-        "queries": 43,
-        "page_one": 19,
+        "queries": 46,
+        "page_one": 20,
         "top3": 4,
         "capped": false,
         "monthly": [
@@ -349,10 +349,10 @@
           },
           {
             "month": "2026-10",
-            "days": 19,
-            "clicks": 16,
-            "impressions": 285,
-            "position": 15.8
+            "days": 20,
+            "clicks": 17,
+            "impressions": 347,
+            "position": 15.4
           }
         ],
         "best_query": null,
@@ -381,17 +381,17 @@
       ],
       "articles": 62,
       "gsc": {
-        "record_id": "6ada42ef4732b0e6c71eff8a",
+        "record_id": "6adb9459be93509092c7b612",
         "first_day": "2026-08-13",
-        "clicks": 29,
-        "impressions": 6567,
-        "position": 37.2,
+        "clicks": 30,
+        "impressions": 6783,
+        "position": 36.8,
         "prev_clicks": 20,
-        "prev_impressions": 2570,
-        "prev_position": 56.2,
-        "queries": 410,
-        "page_one": 115,
-        "top3": 25,
+        "prev_impressions": 2685,
+        "prev_position": 55.1,
+        "queries": 417,
+        "page_one": 117,
+        "top3": 27,
         "capped": false,
         "monthly": [
           {
@@ -410,10 +410,10 @@
           },
           {
             "month": "2026-10",
-            "days": 19,
-            "clicks": 22,
-            "impressions": 5234,
-            "position": 36.2
+            "days": 20,
+            "clicks": 24,
+            "impressions": 5610,
+            "position": 35.9
           }
         ],
         "best_query": null,
@@ -442,25 +442,25 @@
       ],
       "articles": 16,
       "gsc": {
-        "record_id": "6ada42f272d2f25489084a67",
+        "record_id": "6adb94605806f394c089e88b",
         "first_day": "2026-10-12",
-        "clicks": 6,
-        "impressions": 533,
-        "position": 19.5,
+        "clicks": 9,
+        "impressions": 659,
+        "position": 18.5,
         "prev_clicks": 0,
         "prev_impressions": 0,
         "prev_position": 0,
-        "queries": 97,
-        "page_one": 33,
-        "top3": 1,
+        "queries": 107,
+        "page_one": 39,
+        "top3": 3,
         "capped": false,
         "monthly": [
           {
             "month": "2026-10",
-            "days": 8,
-            "clicks": 6,
-            "impressions": 533,
-            "position": 19.5
+            "days": 9,
+            "clicks": 9,
+            "impressions": 659,
+            "position": 18.5
           }
         ],
         "best_query": null,
@@ -489,25 +489,25 @@
       ],
       "articles": 7,
       "gsc": {
-        "record_id": "6ada42f0c94298b8af45df91",
+        "record_id": "6adb945d2bd5bffb74decd70",
         "first_day": "2026-10-13",
         "clicks": 5,
-        "impressions": 189,
-        "position": 51.5,
+        "impressions": 250,
+        "position": 51.3,
         "prev_clicks": 0,
         "prev_impressions": 0,
         "prev_position": 0,
-        "queries": 30,
+        "queries": 44,
         "page_one": 0,
         "top3": 0,
         "capped": false,
         "monthly": [
           {
             "month": "2026-10",
-            "days": 7,
+            "days": 8,
             "clicks": 5,
-            "impressions": 189,
-            "position": 51.5
+            "impressions": 250,
+            "position": 51.3
           }
         ],
         "best_query": null,
@@ -536,25 +536,25 @@
       ],
       "articles": 7,
       "gsc": {
-        "record_id": "6ada42f1dd2cd9e2093c6373",
+        "record_id": "6adb945fade40fc525576d5e",
         "first_day": "2026-10-16",
-        "clicks": 2,
-        "impressions": 51,
-        "position": 24.8,
+        "clicks": 4,
+        "impressions": 79,
+        "position": 29.2,
         "prev_clicks": 0,
         "prev_impressions": 0,
         "prev_position": 0,
-        "queries": 14,
+        "queries": 18,
         "page_one": 5,
-        "top3": 4,
+        "top3": 3,
         "capped": false,
         "monthly": [
           {
             "month": "2026-10",
-            "days": 4,
-            "clicks": 2,
-            "impressions": 51,
-            "position": 24.8
+            "days": 5,
+            "clicks": 4,
+            "impressions": 79,
+            "position": 29.2
           }
         ],
         "best_query": null,
@@ -584,17 +584,17 @@
       ],
       "articles": 10,
       "gsc": {
-        "record_id": "6ada42eb91d46172911615a5",
+        "record_id": "6adb945be8204744039f76a6",
         "first_day": "2025-09-03",
-        "clicks": 114,
-        "impressions": 993,
-        "position": 6.7,
-        "prev_clicks": 147,
-        "prev_impressions": 1333,
-        "prev_position": 7.3,
+        "clicks": 112,
+        "impressions": 969,
+        "position": 7.1,
+        "prev_clicks": 152,
+        "prev_impressions": 1360,
+        "prev_position": 7.1,
         "queries": 74,
-        "page_one": 58,
-        "top3": 34,
+        "page_one": 54,
+        "top3": 32,
         "capped": false,
         "monthly": [
           {
@@ -690,10 +690,10 @@
           },
           {
             "month": "2026-10",
-            "days": 19,
-            "clicks": 64,
-            "impressions": 642,
-            "position": 8.0
+            "days": 20,
+            "clicks": 68,
+            "impressions": 675,
+            "position": 8.1
           }
         ],
         "best_query": null,
@@ -722,25 +722,25 @@
       ],
       "articles": 7,
       "gsc": {
-        "record_id": "6ada42f341927da84a411bdf",
+        "record_id": "6adb946284ec86589d49920d",
         "first_day": "2026-10-17",
         "clicks": 2,
-        "impressions": 84,
-        "position": 22.2,
+        "impressions": 152,
+        "position": 21.8,
         "prev_clicks": 0,
         "prev_impressions": 0,
         "prev_position": 0,
-        "queries": 23,
-        "page_one": 4,
-        "top3": 0,
+        "queries": 37,
+        "page_one": 9,
+        "top3": 1,
         "capped": false,
         "monthly": [
           {
             "month": "2026-10",
-            "days": 3,
+            "days": 4,
             "clicks": 2,
-            "impressions": 84,
-            "position": 22.2
+            "impressions": 152,
+            "position": 21.8
           }
         ],
         "best_query": null,
@@ -769,25 +769,25 @@
       ],
       "articles": 6,
       "gsc": {
-        "record_id": "6ada42eac8000b69c095693c",
+        "record_id": "6adb945c9349d3a82767ad52",
         "first_day": "2026-10-18",
-        "clicks": 2,
-        "impressions": 16,
-        "position": 4.8,
+        "clicks": 3,
+        "impressions": 29,
+        "position": 7.3,
         "prev_clicks": 0,
         "prev_impressions": 0,
         "prev_position": 0,
-        "queries": 1,
-        "page_one": 1,
+        "queries": 3,
+        "page_one": 2,
         "top3": 0,
         "capped": false,
         "monthly": [
           {
             "month": "2026-10",
-            "days": 2,
-            "clicks": 2,
-            "impressions": 16,
-            "position": 4.8
+            "days": 3,
+            "clicks": 3,
+            "impressions": 29,
+            "position": 7.3
           }
         ],
         "best_query": null,
@@ -817,25 +817,25 @@
       ],
       "articles": 4,
       "gsc": {
-        "record_id": "6ada42edfaa58ff382d57958",
+        "record_id": "6adb945af33d8b5b6f61ee22",
         "first_day": "2026-10-19",
         "clicks": 0,
-        "impressions": 0,
-        "position": 0,
+        "impressions": 15,
+        "position": 2.1,
         "prev_clicks": 0,
         "prev_impressions": 0,
         "prev_position": 0,
-        "queries": 0,
-        "page_one": 0,
-        "top3": 0,
+        "queries": 1,
+        "page_one": 1,
+        "top3": 1,
         "capped": false,
         "monthly": [
           {
             "month": "2026-10",
-            "days": 1,
+            "days": 2,
             "clicks": 0,
-            "impressions": 0,
-            "position": null
+            "impressions": 15,
+            "position": 2.1
           }
         ],
         "best_query": null,
