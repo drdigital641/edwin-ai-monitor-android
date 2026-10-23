@@ -75,7 +75,7 @@ def load(name):
 
 SV = load('services')
 LO = load('locations')
-GA, GB = load('guides_a'), load('guides_b')
+GA, GB, GC = load('guides_a'), load('guides_b'), load('guides_c')
 SERVICES, LOCATIONS = SV.SERVICES, LO.LOCATIONS
 PX = dict(load('photos_client').PHOTOS_CLIENT, **load('photos_nirvana').PHOTOS_NV, **load('photos').PHOTOS_EXT, **load('photos_booklet').PHOTOS_BK)  # licensed stock / Commons photos, hotlinked for the preview (see content/photos.py)
 
@@ -97,10 +97,13 @@ def role_for(prefix, slug):
 SVC_PHOTO = {s['slug']: role_for('service:', s['slug']) for s in SERVICES}
 VENUE_PHOTO = {v['slug']: role_for('venue:', v['slug']) for v in LOCATIONS}
 role = lambda r: [k for k, v in PX.items() if v.get('role') == r or k == r]
-GUIDE_ORDER = ['columbarium-niche-vs-ancestral-tablet', 'questions-before-choosing-a-columbarium-niche', 'arranging-a-columbarium-viewing',
+GUIDE_ORDER = ['lin-san-temple-niche-ancestral-tablet-geylang', 'thian-leng-changi-road-niche-ancestral-tablet', 'nirvana-family-suites-columbarium',
+               'east-singapore-niche-near-home', 'nirvana-memorial-garden-west-residents', 'nirvana-ancestral-tablets', 'visiting-columbarium-with-elderly-parents',
+               'nirvana-one-time-maintenance-fee-trust-fund', 'nirvana-qing-ming-zhong-yuan-prayers',
+               'columbarium-niche-vs-ancestral-tablet', 'questions-before-choosing-a-columbarium-niche', 'arranging-a-columbarium-viewing',
                'pre-planning-vs-immediate-funeral-arrangements', 'what-to-do-when-a-loved-one-passes-away-singapore',
                'will-planning-basics-singapore', 'preparing-for-a-memorial-planning-consultation']
-_g = {g['slug']: g for g in GA.GUIDES + GB.GUIDES}
+_g = {g['slug']: g for g in GA.GUIDES + GB.GUIDES + GC.GUIDES}
 GUIDES = [_g[s] for s in GUIDE_ORDER if s in _g]
 
 ROLE = T('Service Advisor · Life Managing Director (生命经理师)', '生命经理师 · Service Advisor')
@@ -347,6 +350,8 @@ def venue_card(v, L):
 
 
 def guide_photo(g):
+    if g.get('photo'):
+        return g['photo']
     i = GUIDES.index(g) if g in GUIDES else 0
     pool = MOOD_KEYS or list(PX)
     return pool[(i * 3 + 1) % len(pool)]
