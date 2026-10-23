@@ -61,11 +61,11 @@ var imgs=c.querySelectorAll('.cp-img'),sws=c.querySelectorAll('.cp-sw'),nm=c.que
 [].forEach.call(imgs,function(m){m.classList.toggle('on',m.getAttribute('data-i')===i)});
 [].forEach.call(sws,function(s){var on=s===b;s.classList.toggle('on',on);s.setAttribute('aria-pressed',on)});
 nm.textContent=b.querySelector('span').textContent})})})})();
-/* WhatsApp tap counter -> Page One Controller (public write-only "track" fn). Site: dongfeng-jb. Added 22 Oct 2026. */
+/* WhatsApp tap counter -> Page One Controller (public write-only "track" fn). Site: dongfeng-jb. Added 22 Oct 2026. 23 Oct: cta_type whatsapp_sales / whatsapp_service (Controller counts any type containing 'whatsapp'). */
 (function(){if(window.__p1cta)return;var h=location.hostname.replace(/^www\./,'');if(h==='pageonesingapore.com'||h==='localhost')return;window.__p1cta=1;
 var WA=/^(https?:\/\/(wa\.me|api\.whatsapp\.com|web\.whatsapp\.com)\/|whatsapp:)/i,last=0;
 function sid(){try{var k='p1cta_sid',v=sessionStorage.getItem(k);if(!v){v=Math.random().toString(36).slice(2)+Date.now().toString(36);sessionStorage.setItem(k,v)}return v}catch(e){return'na'}}
-function send(){var n=Date.now();if(n-last<1500)return;last=n;try{fetch('https://base44.app/api/apps/6ac7f2548a9c3877449e2772/functions/track',{method:'POST',credentials:'omit',keepalive:true,headers:{'Content-Type':'application/json'},body:JSON.stringify({entity:'CtaClick',site:'dongfeng-jb',cta_type:'whatsapp',session_id:sid(),page_path:location.pathname.slice(0,200),device_type:/Mobi|Android|iPhone/i.test(navigator.userAgent)?'mobile':'desktop',referrer:(document.referrer||'').slice(0,200)})}).catch(function(){})}catch(e){}}
+function send(ty){var n=Date.now();if(n-last<1500)return;last=n;try{fetch('https://base44.app/api/apps/6ac7f2548a9c3877449e2772/functions/track',{method:'POST',credentials:'omit',keepalive:true,headers:{'Content-Type':'application/json'},body:JSON.stringify({entity:'CtaClick',site:'dongfeng-jb',cta_type:ty||'whatsapp',session_id:sid(),page_path:location.pathname.slice(0,200),device_type:/Mobi|Android|iPhone/i.test(navigator.userAgent)?'mobile':'desktop',referrer:(document.referrer||'').slice(0,200)})}).catch(function(){})}catch(e){}}
 window.p1WaTap=send;
-document.addEventListener('click',function(e){var a=e.target&&e.target.closest?e.target.closest('a[href]'):null;if(a&&WA.test(String(a.href||'')))send()},true);
-document.addEventListener('submit',function(e){var f=e.target;if(f&&f.getAttribute&&(f.getAttribute('data-wa')||/wa\.me|whatsapp/i.test(f.getAttribute('action')||'')))send()},true)})();
+document.addEventListener('click',function(e){var a=e.target&&e.target.closest?e.target.closest('a[href]'):null;if(a&&WA.test(String(a.href||'')))send(/60182240828/.test(a.href)?'whatsapp_service':'whatsapp_sales')},true);
+document.addEventListener('submit',function(e){var f=e.target;if(f&&f.getAttribute&&(f.getAttribute('data-wa')||/wa\.me|whatsapp/i.test(f.getAttribute('action')||'')))send('whatsapp_sales')},true)})();
