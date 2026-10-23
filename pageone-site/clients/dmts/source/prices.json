@@ -1,0 +1,474 @@
+{
+ "source": "https://dmts.com.sg/ (Cost Estimator, homepage), captured 2026-10-11",
+ "currency": "SGD",
+ "categories": [
+  {
+   "category": "Continental Cars",
+   "symptoms": [
+    {
+     "symptom": "Transmission Check Light On",
+     "description": [
+      "Engine/transmission check light on the dashboard while in motion."
+     ],
+     "options": [
+      {
+       "repair": "Diagnostic test with computer to access fault code",
+       "price_sgd": 0
+      }
+     ]
+    },
+    {
+     "symptom": "Lack of Response",
+     "description": [
+      "Car hesitates or refuse to go into gear during acceleration."
+     ],
+     "options": [
+      {
+       "repair": "Service valve body, replace ATF, filter & solenoid set",
+       "price_sgd": 1200
+      },
+      {
+       "repair": "Transmission overhaul (Including change of ATF, filter, clutch, gaskets, piston set, solenoid set, torque converter.)",
+       "price_sgd": 2500
+      }
+     ]
+    },
+    {
+     "symptom": "Unable to Change Gear When Moving Off or In Motion",
+     "description": [
+      "Stuck at first gear or only upshift to third gear."
+     ],
+     "options": [
+      {
+       "repair": "Replace Mechatronic",
+       "price_sgd": 1800
+      }
+     ]
+    },
+    {
+     "symptom": "Jerking Motion / Gears Slipping",
+     "description": [
+      "Car jerks when transiting into next gear (upshift/downshift).",
+      "Transmission is spontaneously slipping in and out of gear (or simply popping into neutral) while driving."
+     ],
+     "options": [
+      {
+       "repair": "Replace transmission control unit",
+       "price_sgd": 1200
+      },
+      {
+       "repair": "Transmission overhaul (Including change of ATF, filter, clutch, gaskets, piston set, solenoid set, torque converter.)",
+       "price_sgd": 2500
+      }
+     ]
+    },
+    {
+     "symptom": "Vibration",
+     "description": [
+      "Car vibrates when driving at high speed on low RPM.",
+      "Vibration felt during sudden acceleration from standstill."
+     ],
+     "options": [
+      {
+       "repair": "Replace torque converter or dual clutch",
+       "price_sgd": 1400
+      },
+      {
+       "repair": "Transmission overhaul (Including change of ATF, filter, clutch, gaskets, piston set, solenoid set, torque converter.)",
+       "price_sgd": 2500
+      }
+     ]
+    },
+    {
+     "symptom": "Automatic Transmission Fluid (ATF) Leaking / Low Level",
+     "description": [
+      "Floor stained with bright red color oil (ATF) after car is parked for a period of time."
+     ],
+     "options": [
+      {
+       "repair": "Replace oil seal and sump gasket.",
+       "price_sgd": 400
+      }
+     ]
+    },
+    {
+     "symptom": "Gearbox Noise",
+     "description": [
+      "Loud noise from gearbox once engine is started or when vehicle is in motion."
+     ],
+     "options": [
+      {
+       "repair": "Replace bearing set, gear set or pump.",
+       "price_sgd": 1200
+      },
+      {
+       "repair": "Transmission overhaul (Including change of ATF, filter, clutch, gaskets, piston set, solenoid set, torque converter.)",
+       "price_sgd": 2500
+      }
+     ]
+    }
+   ],
+   "brands": [
+    "Audi",
+    "BMW",
+    "Mercedes-Benz",
+    "Volkswagen",
+    "Mini"
+   ]
+  },
+  {
+   "category": "Japanese Cars",
+   "symptoms": [
+    {
+     "symptom": "Transmission Check Light On",
+     "description": [
+      "Engine/transmission check light on the dashboard while in motion."
+     ],
+     "options": [
+      {
+       "repair": "Diagnostic test with computer to access fault code",
+       "price_sgd": 0
+      }
+     ]
+    },
+    {
+     "symptom": "Lack of Response",
+     "description": [
+      "Car hesitates or refuse to go into gear during acceleration."
+     ],
+     "options": [
+      {
+       "repair": "Service valve body, replace ATF, filter & solenoid set",
+       "price_sgd": 800
+      },
+      {
+       "repair": "Transmission overhaul (Including change of ATF, filter, clutch, gaskets, piston set, solenoid set, torque converter.)",
+       "price_sgd": 1800
+      }
+     ]
+    },
+    {
+     "symptom": "Unable to Change Gear When Moving Off or In Motion",
+     "description": [
+      "Stuck at first gear or only upshift to third gear."
+     ],
+     "options": [
+      {
+       "repair": "Service valve body, replace ATF, filter & solenoid set",
+       "price_sgd": 800
+      },
+      {
+       "repair": "Transmission overhaul (Including change of ATF, filter, clutch, gaskets, piston set, solenoid set, torque converter.)",
+       "price_sgd": 1800
+      }
+     ]
+    },
+    {
+     "symptom": "Jerking Motion / Gears Slipping",
+     "description": [
+      "Car jerks when transiting into next gear (upshift/downshift).",
+      "Transmission is spontaneously slipping in and out of gear (or simply popping into neutral) while driving."
+     ],
+     "options": [
+      {
+       "repair": "Replace transmission control unit",
+       "price_sgd": 800
+      },
+      {
+       "repair": "Transmission overhaul (Including change of ATF, filter, clutch, gaskets, piston set, solenoid set, torque converter.)",
+       "price_sgd": 1800
+      }
+     ]
+    },
+    {
+     "symptom": "Vibration",
+     "description": [
+      "Car vibrates when driving at high speed on low RPM.",
+      "Vibration felt during sudden acceleration from standstill."
+     ],
+     "options": [
+      {
+       "repair": "Replace torque converter or dual clutch",
+       "price_sgd": 900
+      },
+      {
+       "repair": "Transmission overhaul (Including change of ATF, filter, clutch, gaskets, piston set, solenoid set, torque converter.)",
+       "price_sgd": 1800
+      }
+     ]
+    },
+    {
+     "symptom": "Automatic Transmission Fluid (ATF) Leaking / Low Level",
+     "description": [
+      "Floor stained with bright red color oil (ATF) after car is parked for a period of time."
+     ],
+     "options": [
+      {
+       "repair": "Replace oil seal and sump gasket.",
+       "price_sgd": 300
+      }
+     ]
+    },
+    {
+     "symptom": "Gearbox Noise",
+     "description": [
+      "Loud noise from gearbox once engine is started or when vehicle is in motion."
+     ],
+     "options": [
+      {
+       "repair": "Replace bearing set, gear set or pump.",
+       "price_sgd": 1200
+      },
+      {
+       "repair": "Transmission overhaul (Including change of ATF, filter, clutch, gaskets, piston set, solenoid set, torque converter.)",
+       "price_sgd": 1800
+      }
+     ]
+    }
+   ],
+   "brands": [
+    "Toyota",
+    "Lexus",
+    "Honda",
+    "Mazda",
+    "Mitsubishi",
+    "Nissan",
+    "Subaru",
+    "Suzuki"
+   ]
+  },
+  {
+   "category": "Korean Cars",
+   "symptoms": [
+    {
+     "symptom": "Transmission Check Light On",
+     "description": [
+      "Engine/transmission check light on the dashboard while in motion."
+     ],
+     "options": [
+      {
+       "repair": "Diagnostic test with computer to access fault code",
+       "price_sgd": 0
+      }
+     ]
+    },
+    {
+     "symptom": "Lack of Response",
+     "description": [
+      "Car hesitates or refuse to go into gear during acceleration."
+     ],
+     "options": [
+      {
+       "repair": "Service valve body, replace ATF, filter & solenoid set",
+       "price_sgd": 800
+      },
+      {
+       "repair": "Transmission overhaul (Including change of ATF, filter, clutch, gaskets, piston set, solenoid set, torque converter.)",
+       "price_sgd": 1800
+      }
+     ]
+    },
+    {
+     "symptom": "Unable to Change Gear When Moving Off or In Motion",
+     "description": [
+      "Stuck at first gear or only upshift to third gear."
+     ],
+     "options": [
+      {
+       "repair": "Service valve body, replace ATF, filter & solenoid set",
+       "price_sgd": 800
+      },
+      {
+       "repair": "Transmission overhaul (Including change of ATF, filter, clutch, gaskets, piston set, solenoid set, torque converter.)",
+       "price_sgd": 1800
+      }
+     ]
+    },
+    {
+     "symptom": "Jerking Motion / Gears Slipping",
+     "description": [
+      "Car jerks when transiting into next gear (upshift/downshift).",
+      "Transmission is spontaneously slipping in and out of gear (or simply popping into neutral) while driving."
+     ],
+     "options": [
+      {
+       "repair": "Replace transmission control unit",
+       "price_sgd": 800
+      },
+      {
+       "repair": "Transmission overhaul (Including change of ATF, filter, clutch, gaskets, piston set, solenoid set, torque converter.)",
+       "price_sgd": 1800
+      }
+     ]
+    },
+    {
+     "symptom": "Vibration",
+     "description": [
+      "Car vibrates when driving at high speed on low RPM.",
+      "Vibration felt during sudden acceleration from standstill."
+     ],
+     "options": [
+      {
+       "repair": "Replace torque converter or dual clutch",
+       "price_sgd": 900
+      },
+      {
+       "repair": "Transmission overhaul (Including change of ATF, filter, clutch, gaskets, piston set, solenoid set, torque converter.)",
+       "price_sgd": 1800
+      }
+     ]
+    },
+    {
+     "symptom": "Automatic Transmission Fluid (ATF) Leaking / Low Level",
+     "description": [
+      "Floor stained with bright red color oil (ATF) after car is parked for a period of time."
+     ],
+     "options": [
+      {
+       "repair": "Replace oil seal and sump gasket.",
+       "price_sgd": 300
+      }
+     ]
+    },
+    {
+     "symptom": "Gearbox Noise",
+     "description": [
+      "Loud noise from gearbox once engine is started or when vehicle is in motion."
+     ],
+     "options": [
+      {
+       "repair": "Replace bearing set, gear set or pump.",
+       "price_sgd": 1200
+      },
+      {
+       "repair": "Transmission overhaul (Including change of ATF, filter, clutch, gaskets, piston set, solenoid set, torque converter.)",
+       "price_sgd": 1800
+      }
+     ]
+    }
+   ],
+   "brands": [
+    "Hyundai",
+    "Kia"
+   ]
+  },
+  {
+   "category": "Other Makes",
+   "symptoms": [
+    {
+     "symptom": "Transmission Check Light On",
+     "description": [
+      "Engine/transmission check light on the dashboard while in motion."
+     ],
+     "options": [
+      {
+       "repair": "Diagnostic test with computer to access fault code",
+       "price_sgd": 0
+      }
+     ]
+    },
+    {
+     "symptom": "Lack of Response",
+     "description": [
+      "Car hesitates or refuse to go into gear during acceleration."
+     ],
+     "options": [
+      {
+       "repair": "Service valve body, replace ATF, filter & solenoid set",
+       "price_sgd": 1200
+      },
+      {
+       "repair": "Transmission overhaul (Including change of ATF, filter, clutch, gaskets, piston set, solenoid set, torque converter.)",
+       "price_sgd": 2800
+      }
+     ]
+    },
+    {
+     "symptom": "Unable to Change Gear When Moving Off or In Motion",
+     "description": [
+      "Stuck at first gear or only upshift to third gear."
+     ],
+     "options": [
+      {
+       "repair": "Replace Mechatronic",
+       "price_sgd": 2500
+      }
+     ]
+    },
+    {
+     "symptom": "Jerking Motion / Gears Slipping",
+     "description": [
+      "Car jerks when transiting into next gear (upshift/downshift).",
+      "Transmission is spontaneously slipping in and out of gear (or simply popping into neutral) while driving."
+     ],
+     "options": [
+      {
+       "repair": "Replace transmission control unit",
+       "price_sgd": 2000
+      },
+      {
+       "repair": "Transmission overhaul (Including change of ATF, filter, clutch, gaskets, piston set, solenoid set, torque converter.)",
+       "price_sgd": 2800
+      }
+     ]
+    },
+    {
+     "symptom": "Vibration",
+     "description": [
+      "Car vibrates when driving at high speed on low RPM.",
+      "Vibration felt during sudden acceleration from standstill."
+     ],
+     "options": [
+      {
+       "repair": "Replace torque converter or dual clutch",
+       "price_sgd": 1800
+      },
+      {
+       "repair": "Transmission overhaul (Including change of ATF, filter, clutch, gaskets, piston set, solenoid set, torque converter.)",
+       "price_sgd": 2800
+      }
+     ]
+    },
+    {
+     "symptom": "Automatic Transmission Fluid (ATF) Leaking / Low Level",
+     "description": [
+      "Floor stained with bright red color oil (ATF) after car is parked for a period of time."
+     ],
+     "options": [
+      {
+       "repair": "Replace oil seal and sump gasket.",
+       "price_sgd": 400
+      }
+     ]
+    },
+    {
+     "symptom": "Gearbox Noise",
+     "description": [
+      "Loud noise from gearbox once engine is started or when vehicle is in motion."
+     ],
+     "options": [
+      {
+       "repair": "Replace bearing set, gear set or pump.",
+       "price_sgd": 1600
+      },
+      {
+       "repair": "Transmission overhaul (Including change of ATF, filter, clutch, gaskets, piston set, solenoid set, torque converter.)",
+       "price_sgd": 2800
+      }
+     ]
+    }
+   ],
+   "brands": [
+    "Land Rover",
+    "Jaguar",
+    "Volvo",
+    "Ford",
+    "Renault",
+    "Peugeot",
+    "Citroen",
+    "Chevrolet",
+    "Opel"
+   ]
+  }
+ ]
+}

@@ -1,0 +1,86 @@
+User-agent: *
+Allow: /
+Disallow: /preview/
+Disallow: /dmts/
+
+# Search engines and AI assistants are welcome to read this site.
+# Google, Bing (which also feeds ChatGPT search and Copilot), ChatGPT, Perplexity, Claude, Apple, DuckDuckGo and Common Crawl.
+# Summaries for AI tools: /llms.txt and /llms-full.txt
+
+User-agent: Googlebot
+Allow: /
+Disallow: /preview/
+Disallow: /dmts/
+
+User-agent: Bingbot
+Allow: /
+Disallow: /preview/
+Disallow: /dmts/
+
+User-agent: OAI-SearchBot
+Allow: /
+Disallow: /preview/
+Disallow: /dmts/
+
+User-agent: ChatGPT-User
+Allow: /
+Disallow: /preview/
+Disallow: /dmts/
+
+User-agent: GPTBot
+Allow: /
+Disallow: /preview/
+Disallow: /dmts/
+
+User-agent: PerplexityBot
+Allow: /
+Disallow: /preview/
+Disallow: /dmts/
+
+User-agent: Perplexity-User
+Allow: /
+Disallow: /preview/
+Disallow: /dmts/
+
+User-agent: ClaudeBot
+Allow: /
+Disallow: /preview/
+Disallow: /dmts/
+
+User-agent: Claude-SearchBot
+Allow: /
+Disallow: /preview/
+Disallow: /dmts/
+
+User-agent: Claude-User
+Allow: /
+Disallow: /preview/
+Disallow: /dmts/
+
+User-agent: Google-Extended
+Allow: /
+Disallow: /preview/
+Disallow: /dmts/
+
+User-agent: Applebot
+Allow: /
+Disallow: /preview/
+Disallow: /dmts/
+
+User-agent: Applebot-Extended
+Allow: /
+Disallow: /preview/
+Disallow: /dmts/
+
+User-agent: DuckAssistBot
+Allow: /
+Disallow: /preview/
+Disallow: /dmts/
+
+User-agent: CCBot
+Allow: /
+Disallow: /preview/
+Disallow: /dmts/
+
+Sitemap: https://pageonesingapore.com/sitemap.xml
+Sitemap: https://pageonesingapore.com/sitemap.txt

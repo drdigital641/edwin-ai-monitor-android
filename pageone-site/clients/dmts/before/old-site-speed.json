@@ -1,0 +1,18 @@
+{
+ "ok": true,
+ "source": "Lighthouse 12.2.1 (mobile), run 2026-10-12",
+ "score": 27,
+ "categories": {
+  "performance": 27,
+  "accessibility": 72,
+  "best-practices": 75,
+  "seo": 69
+ },
+ "lab": {
+  "fcp": "12.5\u00a0s",
+  "lcp": "34.0\u00a0s",
+  "tbt": "2,120\u00a0ms",
+  "cls": "0.039",
+  "si": "15.3\u00a0s"
+ }
+}

@@ -1,0 +1,259 @@
+    <!-- HERO -->
+    <section class="hero">
+      <span class="glow glow-1" aria-hidden="true"></span>
+      <span class="glow glow-2" aria-hidden="true"></span>
+      <span class="glow glow-3" aria-hidden="true"></span>
+      <div class="wrap hero-grid">
+        <div>
+          <p class="eyebrow"><span class="live" aria-hidden="true"></span>Proven on real Singapore businesses</p>
+          <h1>Customers are searching for you on Google and ChatGPT. <span class="grad-text">Can they find you?</span></h1>
+          <p class="lead">We get your business found on Google, Google Maps and ChatGPT for <strong>S$50 a month</strong>, website included. Proven first on our founder's own workshop.</p>
+          <form class="hero-check" id="hero-check" action="/free-website-check/" method="get">
+            <label class="hero-check-label" for="hero-check-url"><span class="hero-check-tag">Free</span>Check your website's score</label>
+            <div class="hero-check-row">
+              <input id="hero-check-url" name="check" type="text" inputmode="url" autocomplete="url" autocapitalize="none" autocorrect="off" spellcheck="false" enterkeyhint="go" placeholder="yourbusiness.com.sg" required maxlength="300">
+              <input type="hidden" name="from" value="hero">
+              <button class="btn" type="submit">Check my score</button>
+            </div>
+            <p class="hero-check-note">Score out of 100 · under a minute · no sign-up. We keep a record of sites checked (<a href="/privacy/">privacy</a>).</p>
+          </form>
+          <div class="cta-row">
+            <a class="btn" href="/new-business-website/">Starting a business? Get your first website</a>
+            <a class="btn btn-ghost" href="/seo-services-singapore/">Looking for SEO? Compare options</a>
+          </div>
+          <ul class="badges" aria-label="Plan highlights">
+            <li>S$50 a month</li><li>No tech skills needed</li><li>No setup fee</li><li>No contract</li><li>Cancel anytime</li>
+          </ul>
+          <p class="hero-alt">Ready to start? <a href="/signup/">Sign up from S$50/month →</a></p>
+        </div>
+        <figure class="proof-card" aria-labelledby="proof-title">
+          <span class="chip chip-1">📍 Page one for <b>{{EG_PAGE_ONE}}</b> searches</span>
+          <div class="proof-top">
+            <span class="proof-src">Google Search Console</span>
+            <span class="proof-real">Real data</span>
+          </div>
+          <h2 class="proof-title" id="proof-title">Edwin Garage, Ang Mo Kio</h2>
+          <div class="proof-hero">
+            <p><b>{{EG_CLICKS}}</b><span>people clicked through<br>from Google, last 28 days</span></p>
+            <p><b{{EG_POS_FROM}}>{{EG_POS}}</b><span>average Google position<br>(1–10 is page one)</span></p>
+          </div>
+          <p class="proof-label">Monthly clicks from Google, 2026</p>
+{{PROOF_BARS}}
+          <figcaption>Data to {{THROUGH_SHORT}}. <a href="/results/">See the full case study →</a></figcaption>
+          <span class="chip chip-2">✓ Same system you get</span>
+        </figure>
+      </div>
+    </section>
+
+    <!-- CLIENT MARQUEE -->
+    <div class="marquee" aria-label="Websites we run">
+      <p class="marquee-label">{{MARQUEE_LABEL}} · <a href="/clients/">See them all</a></p>
+      <div class="marquee-track">
+{{MARQUEE}}
+      </div>
+    </div>
+
+    <!-- AT A GLANCE (plain facts for people and AI assistants) -->
+{{GLANCE}}
+
+    <!-- TWO PATHS -->
+    <section class="section">
+      <div class="wrap">
+        <p class="kicker reveal">Which one are you?</p>
+        <h2 class="reveal">Two ways we help</h2>
+        <div class="cards two" style="margin-top:32px">
+          <a class="card reveal" href="/new-business-website/"><p class="pill">Starting a business</p><h3>Your first website, found on Google from day one</h3><p>Website, Google Maps and Google set up for you, usually live within 7 days.</p><span class="card-link">Start the right way →</span></a>
+          <a class="card reveal" href="/seo-services-singapore/"><p class="pill">Looking for SEO</p><h3>Comparing SEO agencies, or hiring someone?</h3><p>An honest side-by-side: agency, in-house hire, or Page One at S$50 a month.</p><span class="card-link">See how it compares →</span></a>
+        </div>
+        <p class="note reveal">Opening a <a class="link" href="/industries/home-bakery/">home bakery</a>, <a class="link" href="/industries/cafe/">cafe</a>, <a class="link" href="/industries/nail-lash-studio/">nail or lash studio</a> or <a class="link" href="/industries/fitness-studio/">fitness studio</a>? <a class="link" href="/industries/">All industries →</a></p>
+      </div>
+    </section>
+
+    <!-- PROOF -->
+    <section class="section proof">
+      <div class="wrap">
+        <p class="kicker reveal">What our clients' sites achieved</p>
+        <h2 class="reveal">Real numbers from Google Search Console</h2>
+        <p class="section-lead reveal">Last 28 days ({{WINDOW}}) vs the 28 days before, for {{EG_LINK}} and {{CL_LINK}}.</p>
+        <div class="kpis reveal">
+{{HOME_KPIS}}
+        </div>
+        <figure class="climb reveal">
+          <figcaption>How SEO moves a business up Google, step by step (illustration)</figcaption>
+          <div class="climb-grid">
+            <span class="climb-n" aria-hidden="true"><b>1</b><b>2</b><b>3</b><b>4</b><b>5</b></span>
+            <ol aria-label="Illustration: your business moves from position 5 to position 2 in Google results">
+              <li><i></i></li>
+              <li class="me">Your business</li>
+              <li class="d"><i></i></li>
+              <li class="d"><i></i></li>
+              <li class="d"><i></i></li>
+            </ol>
+          </div>
+        </figure>
+        <p class="kpi-explain reveal"><b>Clicks</b> = people who tapped through from Google. <b>Position</b> 1 to 10 = page one. <a class="link" href="/seo-explained/#measuring">More terms →</a></p>
+        <div class="price-strip reveal">
+          <p><b>About 3 months</b> of SEO each. Unpaid Google results only, no ads.</p>
+          <a class="card-link" href="/results/">See the full case studies →</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- NEWEST CLIENTS (from showcase.json) -->
+{{NEWEST}}
+
+    <!-- SEO + AEO + GEO (gist only; detail on /seo-aeo-geo-singapore/) -->
+    <section class="section" id="seo-aeo-geo">
+      <div class="wrap">
+        <p class="kicker reveal">SEO + AEO + GEO, together</p>
+        <h2 class="reveal">Found on Google, in its answers and in AI assistants</h2>
+        <p class="section-lead reveal">We have designed a set of AI tools to optimise your SEO daily: systematic SEO practices that monitor, adapt and deploy automatically.</p>
+        <div class="cards three plain-cards" style="margin-top:24px">
+          <div class="card reveal"><div class="emoji" aria-hidden="true">🔍</div><h3>SEO: rank on Google</h3><p>Show up in Google Search and Maps when customers look for what you do.</p><a class="card-link" href="/seo-aeo-geo-singapore/#seo">Find out more about SEO →</a></div>
+          <div class="card reveal"><div class="emoji" aria-hidden="true">💬</div><h3>AEO: be the answer</h3><p>Be the short answer Google shows first, above the usual results.</p><a class="card-link" href="/seo-aeo-geo-singapore/#aeo">Find out more about AEO →</a></div>
+          <div class="card reveal"><div class="emoji" aria-hidden="true">🤖</div><h3>GEO: get named by AI</h3><p>Help ChatGPT, Gemini and Perplexity find and describe your business correctly.</p><a class="card-link" href="/seo-aeo-geo-singapore/#geo">Find out more about GEO →</a></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- PLAIN ENGLISH -->
+    <section class="section alt" id="explained">
+      <div class="wrap">
+        <p class="kicker reveal">SEO, explained simply</p>
+        <h2 class="reveal">What we do for you, in plain English</h2>
+        <div class="cards three plain-cards" style="margin-top:32px">
+          <div class="card reveal"><div class="emoji" aria-hidden="true">📍</div><h3>Show up on Google Maps</h3><p>Appear on the map with your hours, photos and a call button.</p></div>
+          <div class="card reveal"><div class="emoji" aria-hidden="true">🔍</div><h3>Appear when customers search</h3><p>Pages that use the words your customers type.</p></div>
+          <div class="card reveal"><div class="emoji" aria-hidden="true">🤖</div><h3>Be easy for ChatGPT and AI to recommend</h3><p>Your details labelled so AI assistants describe you correctly.</p></div>
+          <div class="card reveal"><div class="emoji" aria-hidden="true">📱</div><h3>Fast and easy on a phone</h3><p>Quick to load on a phone, so customers don't press back.</p></div>
+          <div class="card reveal"><div class="emoji" aria-hidden="true">💬</div><h3>Enquiries straight to your WhatsApp</h3><p>A WhatsApp button on every page.</p></div>
+          <div class="card reveal"><div class="emoji" aria-hidden="true">📊</div><h3>See that it's working</h3><p>Google's free report shows who found you and what they searched.</p></div>
+        </div>
+        <p class="note reveal"><a class="card-link" href="/seo-explained/">SEO explained simply →</a></p>
+      </div>
+    </section>
+
+    <!-- HOW IT WORKS -->
+    <section class="section">
+      <div class="wrap">
+        <p class="kicker reveal">How it works</p>
+        <h2 class="reveal">Three easy steps. No tech skills needed.</h2>
+        <ol class="steps" style="margin-top:72px">
+          <li class="reveal"><span>1</span><h3>Tell us where you're starting</h3><p>New business? Tell us what you're opening. Already have a website? <a class="link" href="#check">Check it free</a> in under a minute.</p></li>
+          <li class="reveal"><span>2</span><h3>Chat with Edwin</h3><p>On WhatsApp: what you do, where, and a few photos.</p></li>
+          <li class="reveal"><span>3</span><h3>We do the rest</h3><p>Usually live within 7 days, on Google, Maps and Bing.</p></li>
+        </ol>
+        <p class="no-tech reveal"><b>Not good with computers?</b> That's who we built this for: you just WhatsApp Edwin.</p>
+      </div>
+    </section>
+
+    <!-- SERVICES -->
+    <section class="section alt">
+      <div class="wrap">
+        <p class="kicker reveal">What we do</p>
+        <h2 class="reveal">One simple plan, plus an optional boost</h2>
+        <div class="cards two" style="margin-top:32px">
+          <a class="card reveal" href="/get-found/"><div class="icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg></div><p class="pill">Basic subscription</p><h3>Get Found</h3><p>A website built free, or your current one fixed. A technical audit and a new article every 2 days.</p><span class="price-tag">S$50 <small>/month</small></span><br><span class="card-link">Learn more →</span></a>
+          <a class="card reveal" href="/seo-boost/"><div class="icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2 4 14h7l-1 8 9-12h-7z"/></svg></div><p class="pill">Optional top-up</p><h3>SEO Boost</h3><p>First-page competitor analysis for one search term, then your page improved, with a report.</p><span class="price-tag">S$10 <small>/run</small></span><br><span class="card-link">Learn more →</span></a>
+        </div>
+        <div class="price-strip reveal">
+          <p><b>From S$50/month</b> · no setup fee · no contract · cancel anytime · <a class="link" href="/cheapest-seo-singapore/">why SEO can cost this little now</a></p>
+          <a class="card-link" href="/pricing/">See pricing →</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- WEBSITE CHECKER -->
+    <section class="section dark check" id="check">
+      <span class="glow glow-1" aria-hidden="true"></span>
+      <div class="wrap">
+        <p class="kicker reveal">Free · no sign-up · under a minute</p>
+        <h2 class="reveal">How healthy is your website?</h2>
+        <p class="section-lead reveal">See how your website looks to Google, on a phone and to AI assistants like ChatGPT. You'll get a score out of 100 and a plain-English list of what to fix.</p>
+        <form class="checker-box reveal" id="checker-form" novalidate>
+          <label class="checker-label" for="checker-url">Your website address</label>
+          <div class="checker-row">
+            <div class="checker-field">
+              <svg class="checker-globe" viewBox="0 0 24 24" width="20" height="20" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-width="1.8" d="M12 3a9 9 0 1 0 0 18 9 9 0 0 0 0-18zm-9 9h18M12 3c2.5 2.7 3.8 5.7 3.8 9s-1.3 6.3-3.8 9c-2.5-2.7-3.8-5.7-3.8-9S9.5 5.7 12 3z"/></svg>
+              <input id="checker-url" name="url" type="text" inputmode="url" autocomplete="url" autocapitalize="none" autocorrect="off" spellcheck="false" enterkeyhint="go" placeholder="e.g. yourbusiness.com.sg" required maxlength="300" aria-describedby="checker-hint">
+              <button class="checker-clear" type="button" id="checker-clear" aria-label="Clear" hidden>×</button>
+            </div>
+            <button class="btn" type="submit">Check my website</button>
+          </div>
+          <p class="checker-hint" id="checker-hint">No need to type https:// or www. <button class="checker-try" type="button" data-try="sggarage.com">Try an example</button></p>
+          <p class="form-error checker-error" id="checker-error" role="alert" hidden></p>
+          <div class="checker-progress" id="checker-progress" hidden><span class="bar"><i></i></span><span class="step" id="checker-step">Opening your homepage…</span></div>
+          <p class="checker-nosite">No website yet? <a class="checker-nosite-link" id="checker-nosite" href="#">Chat with Edwin on WhatsApp →</a></p>
+          <p class="checker-privacy">We keep a record of each website checked and its score, so Edwin can follow up. Your name and number are saved only if you choose to leave them. <a href="/privacy/">Privacy</a></p>
+        </form>
+        <div class="checker-result" id="checker-result" aria-live="polite" hidden></div>
+      </div>
+    </section>
+
+    <!-- CLIENT STORIES -->
+    <section class="section dark stories" id="stories">
+      <span class="glow glow-1" aria-hidden="true"></span>
+      <span class="glow glow-2" aria-hidden="true"></span>
+      <div class="wrap">
+        <p class="kicker reveal">What our clients say</p>
+        <h2 class="reveal">Websites we run</h2>
+        <p class="section-lead reveal">Real Singapore businesses, built and kept up with the same AI-assisted SEO system you get. Visit them and judge for yourself, <a class="link" href="/clients/">see every client website</a>, or <a class="link" href="/results/">see their Google numbers</a>.</p>
+        <div class="carousel reveal" id="carousel" aria-roledescription="carousel" aria-label="What our clients say">
+          <div class="carousel-track" id="carousel-track">
+            <article class="story" aria-roledescription="slide" aria-label="1 of 5: Edwin Garage">
+              <a class="browser" href="https://sggarage.com/" target="_blank" rel="noopener"><div class="browser-bar"><i></i><i></i><i></i><span>sggarage.com</span></div><img src="/images/clients/sggarage.webp" width="640" height="400" alt="Edwin Garage website homepage" loading="lazy" decoding="async"></a>
+              <div class="story-body">
+                <blockquote>I'm Edwin. I studied Computer Science at NUS and have run businesses for over 18 years, including Edwin Garage, a car workshop in Ang Mo Kio. I built this AI system to get my own workshop found on Google, and it now brings in over 2,000 Google clicks a month. Page One Singapore is that same system, at a price any small business can afford. Try it for a month. If it doesn't help you, stop. No contract.</blockquote>
+                <div class="who"><span class="who-mark">E</span><div><b>Edwin</b><small>Founder, Page One Singapore · Owner, Edwin Garage</small><br><a href="https://sggarage.com/" target="_blank" rel="noopener">sggarage.com ↗</a></div></div>
+              </div>
+            </article>
+            <article class="story" aria-roledescription="slide" aria-label="2 of 5: Cleanic Detailing">
+              <a class="browser" href="https://cleanicdetailing.com/" target="_blank" rel="noopener"><div class="browser-bar"><i></i><i></i><i></i><span>cleanicdetailing.com</span></div><img src="/images/clients/cleanic.webp" width="640" height="400" alt="Cleanic Detailing website homepage" loading="lazy" decoding="async"></a>
+              <div class="story-body">
+                <blockquote>My customers search for things like cockroaches in the car, bad smells and wet carpets. Edwin's system keeps publishing helpful guides on exactly those problems. People read them, then WhatsApp me their car model and what they noticed. It keeps working in the background while I'm out on jobs.</blockquote>
+                <div class="who"><span class="who-mark">C</span><div><b>Colin Loo</b><small>Owner, Cleanic Detailing</small><br><a href="https://cleanicdetailing.com/" target="_blank" rel="noopener">cleanicdetailing.com ↗</a></div></div>
+              </div>
+            </article>
+            <article class="story" aria-roledescription="slide" aria-label="3 of 5: SofaCare SG">
+              <a class="browser" href="https://sofacaresg.com/" target="_blank" rel="noopener"><div class="browser-bar"><i></i><i></i><i></i><span>sofacaresg.com</span></div><img src="/images/clients/sofacare.webp" width="640" height="400" alt="SofaCare SG website homepage" loading="lazy" decoding="async"></a>
+              <div class="story-body">
+                <blockquote>Our site has its own pages for sofa, mattress and upholstery cleaning, clear pricing and a proper FAQ. Customers understand the service before they message us, so our WhatsApp chats get straight to the quote. New cleaning tips keep going up without us having to write them.</blockquote>
+                <div class="who"><span class="who-mark">S</span><div><b>SofaCare SG</b><small>Sofa, mattress &amp; upholstery cleaning</small><br><a href="https://sofacaresg.com/" target="_blank" rel="noopener">sofacaresg.com ↗</a></div></div>
+              </div>
+            </article>
+            <article class="story" aria-roledescription="slide" aria-label="4 of 5: Alicia Ong Property">
+              <a class="browser" href="https://aliciaongproperty.com/" target="_blank" rel="noopener"><div class="browser-bar"><i></i><i></i><i></i><span>aliciaongproperty.com</span></div><img src="/images/clients/alicia.webp" width="640" height="400" alt="Alicia Ong Property website homepage" loading="lazy" decoding="async"></a>
+              <div class="story-body">
+                <blockquote>Edwin built my website around how I actually work: residential, commercial and industrial property, buying, selling, rental and maintenance. Clients can read real case studies and WhatsApp me from any page. It looks professional, and I don't have to touch it.</blockquote>
+                <div class="who"><span class="who-mark">A</span><div><b>Alicia Ong</b><small>Senior Marketing Director, ERA</small><br><a href="https://aliciaongproperty.com/" target="_blank" rel="noopener">aliciaongproperty.com ↗</a></div></div>
+              </div>
+            </article>
+            <article class="story" aria-roledescription="slide" aria-label="5 of 5: Danny Chua Financial">
+              <a class="browser" href="https://dannychuafinancial.com/" target="_blank" rel="noopener"><div class="browser-bar"><i></i><i></i><i></i><span>dannychuafinancial.com</span></div><img src="/images/clients/danny.webp" width="640" height="400" alt="Danny Chua Financial website homepage" loading="lazy" decoding="async"></a>
+              <div class="story-body">
+                <blockquote>My website explains financial planning, insurance and retirement in plain language, and shows my representative details so people can verify me. New articles go up regularly, and enquiries come straight to my WhatsApp. It's a clean, trustworthy place to send people.</blockquote>
+                <div class="who"><span class="who-mark">D</span><div><b>Danny Chua</b><small>Financial Consultant</small><br><a href="https://dannychuafinancial.com/" target="_blank" rel="noopener">dannychuafinancial.com ↗</a></div></div>
+              </div>
+            </article>
+          </div>
+          <div class="carousel-nav">
+            <button class="carousel-btn" type="button" id="carousel-prev" aria-label="Previous story">←</button>
+            <div class="dots" id="carousel-dots"></div>
+            <button class="carousel-btn" type="button" id="carousel-next" aria-label="Next story">→</button>
+          </div>
+          <p class="permission">Shared in each business owner's own words, with their permission. <a class="link" href="https://maps.google.com/?cid=8757289318297107567" target="_blank" rel="noopener">Read our Google reviews ↗</a></p>
+        </div>
+      </div>
+    </section>
+
+
+    <!-- QUICK ANSWERS -->
+    <section class="section" id="answers">
+      <div class="wrap narrow">
+        <p class="kicker reveal">Quick answers</p>
+        <h2 class="reveal">Affordable SEO in Singapore: your questions, answered</h2>
+        <div class="faq-list" style="margin-top:24px">
+{{HOME_FAQ}}        </div>
+        <p class="note reveal" style="text-align:center">More in the <a class="link" href="/faq/">full FAQ</a> and our <a class="link" href="/articles/">SEO guides for Singapore businesses</a>. </p>
+      </div>
+    </section>
