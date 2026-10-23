@@ -32,8 +32,8 @@ HERE = os.path.dirname(os.path.abspath(__file__))
 OUT = os.environ.get('BP_OUT', os.path.join(HERE, 'site'))
 
 SLUG = 'benjamin-poon'
-DOMAIN = 'benjaminpoon.sg'  # placeholder: domain not chosen or bought yet (PENDING)
-LIVE = False
+DOMAIN = 'planwithben.sg'  # live since 24 Oct 2026 (Vodien DNS, Bluehost addon -> preview/benjamin-poon)
+LIVE = True
 PREVIEW = 'https://pageonesingapore.com/preview/%s/' % SLUG
 SITE = ('https://%s/' % DOMAIN) if LIVE else PREVIEW
 # Hidden from Google by the X-Robots-Tag header in pageonesingapore.com/preview/.htaccess, never a meta tag (Edwin, 17 Oct 2026).

@@ -56,3 +56,11 @@ requestAnimationFrame(tick)})})();
 s.onload=function(){try{fb.classList.add('ready');var pf=new St.PageFlip(fb,{width:450,height:637,size:'stretch',minWidth:260,maxWidth:1000,minHeight:368,maxHeight:1415,showCover:true,maxShadowOpacity:.35,mobileScrollSupport:true,usePortrait:true});
 pf.loadFromHTML(fb.querySelectorAll('.fb-page'));fb.querySelectorAll('img[loading]').forEach(function(i){i.loading='eager'});var c=d.getElementById('fb-count');function u(){c.textContent=(pf.getCurrentPageIndex()+1)+' / '+pf.getPageCount()}pf.on('flip',u);u();
 d.getElementById('fb-prev').onclick=function(){pf.flipPrev()};d.getElementById('fb-next').onclick=function(){pf.flipNext()}}catch(e){fb.classList.remove('ready')}};d.head.appendChild(s)})(document);
+/* WhatsApp tap counter -> Page One Controller (public write-only "track" fn). Replace benjamin-poon with the Controller Client slug. Added 22 Oct 2026. */
+(function(){if(window.__p1cta)return;var h=location.hostname.replace(/^www\./,'');if(h==='pageonesingapore.com'||h==='localhost')return;window.__p1cta=1;
+var WA=/^(https?:\/\/(wa\.me|api\.whatsapp\.com|web\.whatsapp\.com)\/|whatsapp:)/i,last=0;
+function sid(){try{var k='p1cta_sid',v=sessionStorage.getItem(k);if(!v){v=Math.random().toString(36).slice(2)+Date.now().toString(36);sessionStorage.setItem(k,v)}return v}catch(e){return'na'}}
+function send(){var n=Date.now();if(n-last<1500)return;last=n;try{fetch('https://base44.app/api/apps/6ac7f2548a9c3877449e2772/functions/track',{method:'POST',credentials:'omit',keepalive:true,headers:{'Content-Type':'application/json'},body:JSON.stringify({entity:'CtaClick',site:'benjamin-poon',cta_type:'whatsapp',session_id:sid(),page_path:location.pathname.slice(0,200),device_type:/Mobi|Android|iPhone/i.test(navigator.userAgent)?'mobile':'desktop',referrer:(document.referrer||'').slice(0,200)})}).catch(function(){})}catch(e){}}
+window.p1WaTap=send;
+document.addEventListener('click',function(e){var a=e.target&&e.target.closest?e.target.closest('a[href]'):null;if(a&&WA.test(String(a.href||'')))send()},true);
+document.addEventListener('submit',function(e){var f=e.target;if(f&&f.getAttribute&&(f.getAttribute('data-wa')||/wa\.me|whatsapp/i.test(f.getAttribute('action')||'')))send()},true)})();
