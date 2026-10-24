@@ -1005,8 +1005,11 @@ def main():
         f.write(''.join('User-agent: %s\nAllow: /\n\n' % b for b in BOTS) + 'User-agent: *\nAllow: /\n\nSitemap: %ssitemap.xml\n' % SITE)
     with open(os.path.join(OUT, 'sitemap.xml'), 'w') as f:
         f.write('<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">\n')
+        gdate = {'guides/%s/' % g['slug']: g.get('date', UPDATED) for g in GUIDES}
+        newest = max([UPDATED] + list(gdate.values()))
         for (L, path) in PAGES:
-            f.write('  <url><loc>%s%s%s</loc><lastmod>%s</lastmod>%s</url>\n' % (SITE, PFX[L], path, UPDATED, ''.join(
+            mod = gdate.get(path) or (newest if path in ('', 'guides/') else UPDATED)  # real article dates, so the newest is easy to find
+            f.write('  <url><loc>%s%s%s</loc><lastmod>%s</lastmod>%s</url>\n' % (SITE, PFX[L], path, mod, ''.join(
                 '<xhtml:link rel="alternate" hreflang="%s" href="%s%s%s"/>' % (HREFLANG[l], SITE, PFX[l], path) for l in LANGS) +
                 '<xhtml:link rel="alternate" hreflang="x-default" href="%s%s"/>' % (SITE, path)))
         f.write('</urlset>\n')
