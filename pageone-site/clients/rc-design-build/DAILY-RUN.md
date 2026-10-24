@@ -13,7 +13,8 @@ Steps (stop and report if any step fails; never invent text that the image does 
    curl -s -X POST https://base44.app/api/apps/6adc39a33be36ae8a3ed0782/functions/dailyConcept -H 'Content-Type: application/json' -d '{}'
    It returns {date, space, theme, url} and makes at most one image per Singapore date (repeat calls return the same one).
    Then run_command: curl -s "<url>" | base64 -w0  -> the output is saved to a file; decode it to /tmp/daily.img.
-3. Look at the image. Write /tmp/entry.json:
+3. Look at the image. If it shows any readable brand name, logo, trademark or copied artwork, do NOT publish: log "rejected: logo visible" and stop (Edwin rule, 24 Oct 2026: only original AI ideas and his own photos, nothing copied from other companies).
+   Otherwise write the entry. Write /tmp/entry.json:
    {"date": "<date>", "space": "<space>", "title": "<5-8 words>", "summary": "<40-60 words describing only what is visible, plain Singapore English>",
     "ideas": ["4 short design ideas visible in the image"], "alt": "<what the image shows> (AI design concept)"}
    No prices, brands, claims, or "our project" wording: it is an AI design concept.
