@@ -542,6 +542,8 @@ def contact_body(L):
         (SVG['wa'], T('WhatsApp', 'WhatsApp'), T('Fastest. Send a short message and Benjamin will reply.', '最快捷。发一条简短讯息，Benjamin 会回复您。'), wa_btn(msg, L, T('Open WhatsApp', '打开 WhatsApp'))),
         (SVG['phone'], T('Call', '电话'), T(TEL_SHOW, TEL_SHOW), '<a class="btn btn-line" href="tel:%s">%s</a>' % (TEL, E(t(T('Call now', '立即致电'), L)))),
         (SVG['mail'], T('Email', '电邮'), T(EMAIL, EMAIL), '<a class="btn btn-line" href="mailto:%s">%s</a>' % (EMAIL, E(t(T('Send email', '发送电邮'), L)))),
+        ('<span aria-hidden="true">★</span>', T('Google reviews', 'Google 评价'), T('See what families say on his Google Business Profile.', '在他的 Google 商家资料查看家属的评价。'),
+         '<a class="btn btn-line" href="%s" target="_blank" rel="noopener">%s</a>' % (GBP, E(t(T('Read reviews', '查看评价'), L)))),
     ]
     grid = '<div class="ccards">%s</div>' % ''.join('<div class="ccard"><div class="ico">%s</div><h3>%s</h3><p>%s</p>%s</div>' % (i, E(t(a, L)), E(t(b, L)), c) for i, a, b, c in cards)
     tips = [T('What you are looking into (niche, ancestral tablet, funeral arrangement or will).', '您想了解的事项（福位、神主牌、殡葬安排或遗嘱）。'),
@@ -761,12 +763,15 @@ def page(L, path, title, desc, h1, body, crumbs=None, lede='', schema=None, hero
                             photo=photo or path_photo(path) if path else None)
 
 
+GBP = 'https://www.google.com/search?kgmid=/g/11p29lvn6n'  # Ben's Google Business Profile (Edwin, 24 Oct 2026)
+
+
 def person(L):
     return {'@type': 'Person', '@id': SITE + '#benjamin', 'name': NAME, 'alternateName': NAME_ZH, 'jobTitle': t(T('Service Advisor, Life Managing Director', '生命经理师'), L),
             'telephone': TEL, 'email': EMAIL, 'image': IMG + PHOTOS['portrait'][0], 'url': SITE + PFX[L] + 'about-benjamin-poon/',
             'affiliation': [{'@type': 'Organization', 'name': 'Nirvana Singapore', 'alternateName': '富貴山庄', 'url': NIRVANA},
                             {'@type': 'Organization', 'name': 'Advance Planners'}],
-            'knowsLanguage': ['en', 'zh'], 'areaServed': {'@type': 'Country', 'name': 'Singapore'},
+            'knowsLanguage': ['en', 'zh'], 'sameAs': [GBP], 'areaServed': {'@type': 'Country', 'name': 'Singapore'},
             'award': ['APG September 2025 Award', 'APG October 2025 Sales Award', 'APG May 2026 Sales Award']}
 
 
@@ -940,6 +945,7 @@ def render(L, path, p):
 <li><a href="{E(wa_url(W['wa_home'], L))}" target="_blank" rel="noopener" data-wa="1">WhatsApp {TEL_SHOW}</a></li>
 <li><a href="tel:{TEL}">{E(t(W['call'], L))} {TEL_SHOW}</a></li>
 <li><a href="mailto:{EMAIL}">{EMAIL}</a></li>
+<li><a href="{GBP}" target="_blank" rel="noopener">{E(t(T('Google reviews', 'Google 评价'), L))} ★★★★★</a></li>
 </ul></div>
 </div>
 <p style="margin-top:26px;font-size:.85rem">{E(t(W['independent'], L))}</p>
