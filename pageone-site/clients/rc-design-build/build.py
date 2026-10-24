@@ -469,16 +469,19 @@ def workshop_block(path):
         '<div class="ws-slot"><span>Workshop photo %d</span><small>coming soon</small></div>' % i for i in (1, 2, 3))
 
 
-HOME_TPL = '''<section class="hero"><div class="wrap">
-<div><span class="eyebrow">R&amp;C Spaceworks &middot; Singapore</span>
+HOME_TPL = '''<section class="lux">
+<div class="lux-bg" aria-hidden="true">{dimg}</div><div class="lux-grad" aria-hidden="true"></div>
+<div class="wrap lux-in">
+<span class="eyebrow">R&amp;C Spaceworks &middot; Singapore</span>
 <h1>Design &amp; Build for Retail and Commercial Spaces</h1>
 <p class="lede">From custom carpentry and renovation to electrical, flooring and integrated audio, visual and lighting.</p>
-<div class="btns">{cta}<a class="btn btn-ghost" href="{services}">Explore Our Services</a></div>
+<div class="btns">{cta}<a class="btn btn-onimg" href="{services}">Explore Our Services</a></div>
 <ul class="ticks"><li>Own carpentry workshop</li><li>One contact from design to handover</li><li>Written scope before work starts</li></ul>
-</div>
-<figure class="hero-img daily"><a href="{dailyp}#d{ddate}">{dimg}<span class="tag">AI design concept</span></a>
-<figcaption><span class="dtag">AI concept of the day &middot; {dnice}</span><b>{dtitle}</b><a href="{dailyp}">See past concepts &rarr;</a></figcaption></figure>
-</div></section>
+<a class="lux-cap" href="{dailyp}#d{ddate}"><span>AI concept of the day &middot; {dnice}</span><b>{dtitle}</b></a>
+</div><span class="tag lux-tag">AI design concept</span></section>
+
+<section class="marq-band" aria-label="Past AI design concepts"><div class="wrap marq-head"><span>Past AI concepts</span><a href="{dailyp}">Browse the gallery &rarr;</a></div>
+<div class="marq"><div class="marq-track">{marq}</div></div></section>
 
 <section class="quick"><div class="wrap"><dl>{facts}</dl></div></section>
 
@@ -528,6 +531,16 @@ HOME_TPL = '''<section class="hero"><div class="wrap">
 '''
 
 
+def marquee(path, dp):
+    items = [('%s#d%s' % (dp, x['date']), daily_url(x, True), x['alt'], nice_date(x['date']), x['title']) for x in DAILY[1:]]
+    cp = rel(path, '/design-concepts/')
+    items += [('%s#%s' % (cp, c['slug']), img_url(c['image'], True), c['title'] + ' (AI design concept)', 'Design concept', c['title'])
+              for c in C_SPC.CONCEPTS]
+    one = ''.join('<a class="mq" href="%s"%%s><img src="%s" width="640" height="480" alt="%s" loading="lazy" decoding="async">'
+                  '<span><small>%s</small>%s</span></a>' % (h, u, E(a), E(t), E(n)) for h, u, a, t, n in items)
+    return one.replace('%s', '') + one.replace('%s', ' tabindex="-1" aria-hidden="true"').replace(' alt="', ' alt="" data-alt="')
+
+
 def build_home():
     path = '/'
     d = DAILY[0]
@@ -538,8 +551,9 @@ def build_home():
              ('Enquiries', 'WhatsApp <a href="%s" rel="noopener">%s</a>' % (E(wa_link('my space', path)), PHONE_DISPLAY))]
     body = HOME_TPL.format(
         cta=cta(path, 'my space', 'WhatsApp Us'), services=rel(path, '/services/'), dailyp=dp, ddate=d['date'],
-        dimg='<img src="%s" srcset="%s 640w, %s 1024w" sizes="(max-width: 860px) 92vw, 46vw" width="1024" height="1024" alt="%s" loading="eager" fetchpriority="high">' % (
+        dimg='<img src="%s" srcset="%s 640w, %s 1024w" sizes="100vw" width="1024" height="1024" alt="%s" loading="eager" fetchpriority="high">' % (
             daily_url(d), daily_url(d, True), daily_url(d), E(d['alt'])),
+        marq=marquee(path, dp),
         dnice=nice_date(d['date']), dtitle=E(d['title']),
         facts=''.join('<div><dt>%s</dt><dd>%s</dd></div>' % f for f in facts),
         real=''.join(real_fig(*r) for r in REAL), projects=rel(path, '/projects/'), workshop=workshop_block(path),
