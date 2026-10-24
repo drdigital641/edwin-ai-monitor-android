@@ -2,15 +2,15 @@
   "_readme": "Client showcase data for pageonesingapore.com (/clients/, /results/, home page, /website/, FAQ, industry and low-cost pages). Edit the client list by hand; never type the gsc blocks by hand: run builder/showcase_refresh.py with a CaseStudyStats export. Only list sites that are live on their own domain. Steps: /mnt/project-files/seo-method/rollout/pageone.md, 'Client showcase'.",
   "data": {
     "source": "Google Search Console (final data), collected by the Case Study Stats workflow into CaseStudyStats, SearchInsight Bridge app 6aa2d85827b1f2c2d43b241e",
-    "generated_at": "2026-10-23T17:07:36.845Z",
-    "data_through": "2026-10-20",
+    "generated_at": "2026-10-24T17:07:14.648Z",
+    "data_through": "2026-10-21",
     "window": [
-      "2026-09-23",
-      "2026-10-20"
+      "2026-09-24",
+      "2026-10-21"
     ],
     "prev_window": [
-      "2026-08-26",
-      "2026-09-22"
+      "2026-08-27",
+      "2026-09-23"
     ]
   },
   "clients": [
@@ -41,17 +41,17 @@
       ],
       "articles": 137,
       "gsc": {
-        "record_id": "6adb945edbb8512c5529459c",
+        "record_id": "6adce5c531606c4cc28e2f3c",
         "first_day": "2026-06-26",
-        "clicks": 2355,
-        "impressions": 100763,
+        "clicks": 2375,
+        "impressions": 101347,
         "position": 6.2,
-        "prev_clicks": 2166,
-        "prev_impressions": 83772,
-        "prev_position": 6.4,
+        "prev_clicks": 2182,
+        "prev_impressions": 84535,
+        "prev_position": 6.3,
         "queries": 5000,
-        "page_one": 4266,
-        "top3": 1442,
+        "page_one": 4272,
+        "top3": 1435,
         "capped": true,
         "monthly": [
           {
@@ -84,52 +84,52 @@
           },
           {
             "month": "2026-10",
-            "days": 20,
-            "clicks": 1697,
-            "impressions": 74777,
+            "days": 21,
+            "clicks": 1804,
+            "impressions": 78711,
             "position": 6.1
           }
         ],
         "best_query": {
           "query": "how to diagnose car transmission issues",
-          "position": 2.2,
-          "impressions": 371
+          "position": 2.3,
+          "impressions": 387
         },
         "top_queries": [
           {
             "query": "how to diagnose car transmission issues",
-            "position": 2.2,
-            "impressions": 371
-          },
-          {
-            "query": "car aircon repair",
-            "position": 2.8,
-            "impressions": 156
+            "position": 2.3,
+            "impressions": 387
           },
           {
             "query": "car repair",
-            "position": 3.8,
-            "impressions": 178
+            "position": 3.9,
+            "impressions": 179
           },
           {
             "query": "how to repair a car's side mirror",
-            "position": 4.2,
-            "impressions": 252
+            "position": 4.3,
+            "impressions": 286
           },
           {
             "query": "car repair singapore",
             "position": 4.3,
-            "impressions": 218
+            "impressions": 222
           },
           {
             "query": "car aircon servicing singapore",
-            "position": 4.3,
-            "impressions": 190
+            "position": 4.4,
+            "impressions": 179
           },
           {
-            "query": "cooling coil",
-            "position": 5,
-            "impressions": 125
+            "query": "car aircon repair",
+            "position": 4.5,
+            "impressions": 159
+          },
+          {
+            "query": "timing belt",
+            "position": 4.8,
+            "impressions": 149
           }
         ]
       },
@@ -157,17 +157,17 @@
       ],
       "articles": 81,
       "gsc": {
-        "record_id": "6adb945d8b7e1b1557891b0a",
+        "record_id": "6adce5c6e5ab95852d9d2116",
         "first_day": "2026-06-20",
-        "clicks": 484,
-        "impressions": 40665,
+        "clicks": 480,
+        "impressions": 40625,
         "position": 8.3,
         "prev_clicks": 465,
-        "prev_impressions": 33999,
+        "prev_impressions": 34408,
         "prev_position": 11.0,
-        "queries": 1490,
-        "page_one": 1206,
-        "top3": 577,
+        "queries": 1491,
+        "page_one": 1210,
+        "top3": 582,
         "capped": false,
         "monthly": [
           {
@@ -200,52 +200,52 @@
           },
           {
             "month": "2026-10",
-            "days": 20,
-            "clicks": 355,
-            "impressions": 28380,
+            "days": 21,
+            "clicks": 370,
+            "impressions": 29634,
             "position": 7.8
           }
         ],
         "best_query": {
           "query": "car grooming singapore",
-          "position": 1.5,
-          "impressions": 437
+          "position": 1.4,
+          "impressions": 434
         },
         "top_queries": [
           {
             "query": "car grooming singapore",
-            "position": 1.5,
-            "impressions": 437
+            "position": 1.4,
+            "impressions": 434
           },
           {
             "query": "steam cleaning",
             "position": 2,
-            "impressions": 163
+            "impressions": 162
           },
           {
             "query": "mobile car wash singapore",
-            "position": 2.2,
-            "impressions": 150
+            "position": 2.3,
+            "impressions": 147
           },
           {
             "query": "full car detailing singapore",
-            "position": 3.3,
-            "impressions": 174
-          },
-          {
-            "query": "car wash",
-            "position": 3.7,
-            "impressions": 233
+            "position": 3.1,
+            "impressions": 176
           },
           {
             "query": "car wash near me",
-            "position": 3.8,
-            "impressions": 338
+            "position": 3.6,
+            "impressions": 322
+          },
+          {
+            "query": "car wash",
+            "position": 3.6,
+            "impressions": 235
           },
           {
             "query": "car fumigation singapore",
-            "position": 4.1,
-            "impressions": 222
+            "position": 4.2,
+            "impressions": 223
           }
         ]
       },
@@ -273,16 +273,16 @@
       ],
       "articles": 44,
       "gsc": {
-        "record_id": "6adb945f78aa040d672c1eca",
+        "record_id": "6adce5c87595bd5cb94794a3",
         "first_day": "2026-09-04",
-        "clicks": 8,
-        "impressions": 4294,
-        "position": 73.9,
-        "prev_clicks": 12,
-        "prev_impressions": 1358,
-        "prev_position": 69.4,
-        "queries": 218,
-        "page_one": 31,
+        "clicks": 7,
+        "impressions": 4468,
+        "position": 74.1,
+        "prev_clicks": 13,
+        "prev_impressions": 1428,
+        "prev_position": 69.5,
+        "queries": 221,
+        "page_one": 34,
         "top3": 9,
         "capped": false,
         "monthly": [
@@ -295,10 +295,10 @@
           },
           {
             "month": "2026-10",
-            "days": 20,
+            "days": 21,
             "clicks": 6,
-            "impressions": 3447,
-            "position": 75.2
+            "impressions": 3691,
+            "position": 75.3
           }
         ],
         "best_query": null,
@@ -327,16 +327,16 @@
       ],
       "articles": 22,
       "gsc": {
-        "record_id": "6adb945ae2903e1c16c5f732",
+        "record_id": "6adce5c4ef4eabaebcb951f1",
         "first_day": "2026-09-30",
         "clicks": 17,
-        "impressions": 347,
-        "position": 15.4,
+        "impressions": 421,
+        "position": 16.0,
         "prev_clicks": 0,
         "prev_impressions": 0,
         "prev_position": 0,
-        "queries": 46,
-        "page_one": 20,
+        "queries": 56,
+        "page_one": 23,
         "top3": 4,
         "capped": false,
         "monthly": [
@@ -349,10 +349,10 @@
           },
           {
             "month": "2026-10",
-            "days": 20,
+            "days": 21,
             "clicks": 17,
-            "impressions": 347,
-            "position": 15.4
+            "impressions": 421,
+            "position": 16.0
           }
         ],
         "best_query": null,
@@ -381,17 +381,17 @@
       ],
       "articles": 62,
       "gsc": {
-        "record_id": "6adb9459be93509092c7b612",
+        "record_id": "6adce5c322a27958074f9672",
         "first_day": "2026-08-13",
-        "clicks": 30,
-        "impressions": 6783,
-        "position": 36.8,
+        "clicks": 31,
+        "impressions": 7059,
+        "position": 36.4,
         "prev_clicks": 20,
-        "prev_impressions": 2685,
-        "prev_position": 55.1,
-        "queries": 417,
-        "page_one": 117,
-        "top3": 27,
+        "prev_impressions": 2781,
+        "prev_position": 54.5,
+        "queries": 424,
+        "page_one": 121,
+        "top3": 30,
         "capped": false,
         "monthly": [
           {
@@ -410,10 +410,10 @@
           },
           {
             "month": "2026-10",
-            "days": 20,
-            "clicks": 24,
-            "impressions": 5610,
-            "position": 35.9
+            "days": 21,
+            "clicks": 25,
+            "impressions": 6016,
+            "position": 35.6
           }
         ],
         "best_query": null,
@@ -442,25 +442,25 @@
       ],
       "articles": 16,
       "gsc": {
-        "record_id": "6adb94605806f394c089e88b",
+        "record_id": "6adce5c985e39369aa8fa3c1",
         "first_day": "2026-10-12",
-        "clicks": 9,
-        "impressions": 659,
-        "position": 18.5,
+        "clicks": 10,
+        "impressions": 828,
+        "position": 18.2,
         "prev_clicks": 0,
         "prev_impressions": 0,
         "prev_position": 0,
-        "queries": 107,
-        "page_one": 39,
-        "top3": 3,
+        "queries": 125,
+        "page_one": 45,
+        "top3": 4,
         "capped": false,
         "monthly": [
           {
             "month": "2026-10",
-            "days": 9,
-            "clicks": 9,
-            "impressions": 659,
-            "position": 18.5
+            "days": 10,
+            "clicks": 10,
+            "impressions": 828,
+            "position": 18.2
           }
         ],
         "best_query": null,
@@ -489,25 +489,25 @@
       ],
       "articles": 7,
       "gsc": {
-        "record_id": "6adb945d2bd5bffb74decd70",
+        "record_id": "6adce5c7c5c880d7b2f6e10e",
         "first_day": "2026-10-13",
         "clicks": 5,
-        "impressions": 250,
-        "position": 51.3,
+        "impressions": 347,
+        "position": 52.9,
         "prev_clicks": 0,
         "prev_impressions": 0,
         "prev_position": 0,
-        "queries": 44,
-        "page_one": 0,
+        "queries": 65,
+        "page_one": 1,
         "top3": 0,
         "capped": false,
         "monthly": [
           {
             "month": "2026-10",
-            "days": 8,
+            "days": 9,
             "clicks": 5,
-            "impressions": 250,
-            "position": 51.3
+            "impressions": 347,
+            "position": 52.9
           }
         ],
         "best_query": null,
@@ -536,25 +536,25 @@
       ],
       "articles": 7,
       "gsc": {
-        "record_id": "6adb945fade40fc525576d5e",
+        "record_id": "6adce5c91668256737292129",
         "first_day": "2026-10-16",
         "clicks": 4,
-        "impressions": 79,
-        "position": 29.2,
+        "impressions": 117,
+        "position": 30.1,
         "prev_clicks": 0,
         "prev_impressions": 0,
         "prev_position": 0,
-        "queries": 18,
+        "queries": 21,
         "page_one": 5,
         "top3": 3,
         "capped": false,
         "monthly": [
           {
             "month": "2026-10",
-            "days": 5,
+            "days": 6,
             "clicks": 4,
-            "impressions": 79,
-            "position": 29.2
+            "impressions": 117,
+            "position": 30.1
           }
         ],
         "best_query": null,
@@ -584,17 +584,17 @@
       ],
       "articles": 10,
       "gsc": {
-        "record_id": "6adb945be8204744039f76a6",
+        "record_id": "6adce5c7b8a7919ec934d91d",
         "first_day": "2025-09-03",
-        "clicks": 112,
-        "impressions": 969,
-        "position": 7.1,
-        "prev_clicks": 152,
-        "prev_impressions": 1360,
-        "prev_position": 7.1,
+        "clicks": 109,
+        "impressions": 956,
+        "position": 7.2,
+        "prev_clicks": 158,
+        "prev_impressions": 1388,
+        "prev_position": 7.0,
         "queries": 74,
-        "page_one": 54,
-        "top3": 32,
+        "page_one": 53,
+        "top3": 30,
         "capped": false,
         "monthly": [
           {
@@ -690,10 +690,10 @@
           },
           {
             "month": "2026-10",
-            "days": 20,
-            "clicks": 68,
-            "impressions": 675,
-            "position": 8.1
+            "days": 21,
+            "clicks": 76,
+            "impressions": 715,
+            "position": 8.0
           }
         ],
         "best_query": null,
@@ -722,25 +722,25 @@
       ],
       "articles": 7,
       "gsc": {
-        "record_id": "6adb946284ec86589d49920d",
+        "record_id": "6adce5ca6adae1ed19ce04a0",
         "first_day": "2026-10-17",
         "clicks": 2,
-        "impressions": 152,
-        "position": 21.8,
+        "impressions": 218,
+        "position": 22.5,
         "prev_clicks": 0,
         "prev_impressions": 0,
         "prev_position": 0,
-        "queries": 37,
-        "page_one": 9,
+        "queries": 46,
+        "page_one": 10,
         "top3": 1,
         "capped": false,
         "monthly": [
           {
             "month": "2026-10",
-            "days": 4,
+            "days": 5,
             "clicks": 2,
-            "impressions": 152,
-            "position": 21.8
+            "impressions": 218,
+            "position": 22.5
           }
         ],
         "best_query": null,
@@ -769,25 +769,25 @@
       ],
       "articles": 6,
       "gsc": {
-        "record_id": "6adb945c9349d3a82767ad52",
+        "record_id": "6adce5c59cd7222cd27c3e40",
         "first_day": "2026-10-18",
-        "clicks": 3,
-        "impressions": 29,
-        "position": 7.3,
+        "clicks": 6,
+        "impressions": 60,
+        "position": 15.7,
         "prev_clicks": 0,
         "prev_impressions": 0,
         "prev_position": 0,
-        "queries": 3,
-        "page_one": 2,
+        "queries": 12,
+        "page_one": 4,
         "top3": 0,
         "capped": false,
         "monthly": [
           {
             "month": "2026-10",
-            "days": 3,
-            "clicks": 3,
-            "impressions": 29,
-            "position": 7.3
+            "days": 4,
+            "clicks": 6,
+            "impressions": 60,
+            "position": 15.7
           }
         ],
         "best_query": null,
@@ -817,25 +817,25 @@
       ],
       "articles": 4,
       "gsc": {
-        "record_id": "6adb945af33d8b5b6f61ee22",
+        "record_id": "6adce5c32ccbc75d935c6a92",
         "first_day": "2026-10-19",
-        "clicks": 0,
-        "impressions": 15,
-        "position": 2.1,
+        "clicks": 2,
+        "impressions": 44,
+        "position": 4.3,
         "prev_clicks": 0,
         "prev_impressions": 0,
         "prev_position": 0,
-        "queries": 1,
-        "page_one": 1,
-        "top3": 1,
+        "queries": 4,
+        "page_one": 2,
+        "top3": 2,
         "capped": false,
         "monthly": [
           {
             "month": "2026-10",
-            "days": 2,
-            "clicks": 0,
-            "impressions": 15,
-            "position": 2.1
+            "days": 3,
+            "clicks": 2,
+            "impressions": 44,
+            "position": 4.3
           }
         ],
         "best_query": null,
@@ -846,8 +846,8 @@
   ],
   "pipeline": {
     "_readme": "Websites being built for signed-up clients that are not live on their own domain yet. Shown only as a count (never named) next to the live count. Set by showcase_refresh.py from the Controller Client export (status activating or preview, not yet a live site here, slug not in exclude); as_of is the day the count last changed. Put Client slugs that are not signed-up clients (e.g. a demo preview) in exclude.",
-    "building": 3,
-    "as_of": "2026-10-20",
+    "building": 4,
+    "as_of": "2026-10-24",
     "exclude": [
       "nanyang-carpentry",
       "new-zen-werkz",
