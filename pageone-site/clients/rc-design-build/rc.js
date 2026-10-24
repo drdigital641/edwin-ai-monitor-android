@@ -8,6 +8,38 @@
     if(!hs.length)return;
     t.querySelectorAll('tbody tr').forEach(function(r){[].forEach.call(r.children,function(c,i){if(hs[i])c.setAttribute('data-l',hs[i])})});
   });
+  /* archive strip: auto-slides; touch/click pauses, customer can swipe or drag; resumes 1s after release */
+  var mq=d.querySelector('.marq');
+  if(mq){
+    root.classList.add('marq-js');
+    var reduce=window.matchMedia&&window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    var speed=0.45,held=false,resumeAt=0,last=0,pos=mq.scrollLeft,drag=null,moved=false;
+    function half(){return mq.scrollWidth/2}
+    function hold(){held=true}
+    function release(){held=false;resumeAt=performance.now()+1000;pos=mq.scrollLeft}
+    function step(t){
+      var dt=last?Math.min(t-last,50):16;last=t;
+      if(!held&&!reduce&&t>=resumeAt&&!d.hidden){
+        pos+=speed*dt/16;
+        if(pos>=half())pos-=half();
+        mq.scrollLeft=pos;
+      }else if(held){pos=mq.scrollLeft}
+      if(!drag){if(mq.scrollLeft>=half()){mq.scrollLeft-=half();pos=mq.scrollLeft}else if(!held&&mq.scrollLeft<1){mq.scrollLeft+=half();pos=mq.scrollLeft}}
+      requestAnimationFrame(step);
+    }
+    mq.addEventListener('touchstart',hold,{passive:true});
+    mq.addEventListener('touchend',release,{passive:true});
+    mq.addEventListener('touchcancel',release,{passive:true});
+    mq.addEventListener('mouseenter',hold);
+    mq.addEventListener('mouseleave',function(){if(drag){drag=null;mq.classList.remove('dragging')}release()});
+    mq.addEventListener('wheel',function(){hold();clearTimeout(mq._w);mq._w=setTimeout(release,200)},{passive:true});
+    mq.addEventListener('mousedown',function(e){if(e.button!==0)return;drag={x:e.clientX,s:mq.scrollLeft};moved=false;mq.classList.add('dragging');e.preventDefault()});
+    window.addEventListener('mousemove',function(e){if(!drag)return;var dx=e.clientX-drag.x;if(Math.abs(dx)>5)moved=true;var v=drag.s-dx,h=half();if(v<0){v+=h;drag.s+=h}else if(v>=h){v-=h;drag.s-=h}mq.scrollLeft=v});
+    window.addEventListener('mouseup',function(){if(!drag)return;drag=null;mq.classList.remove('dragging');pos=mq.scrollLeft});
+    mq.addEventListener('click',function(e){if(moved){e.preventDefault();e.stopPropagation();moved=false}},true);
+    mq.addEventListener('focusin',hold);mq.addEventListener('focusout',release);
+    requestAnimationFrame(step);
+  }
   if(!('IntersectionObserver' in window)||navigator.webdriver)return;
   if(window.matchMedia&&window.matchMedia('(prefers-reduced-motion: reduce)').matches)return;
   var els=d.querySelectorAll('.rv');
