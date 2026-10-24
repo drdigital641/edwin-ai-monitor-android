@@ -312,7 +312,7 @@ def footer(path):
 <div><h3>Plan</h3><ul>%s</ul></div>
 <p class="small">Photos marked "Real project" show R&amp;C Spaceworks carpentry (decor added with AI styling). Photos marked "AI design concept" are ideas, not completed work. &copy; 2026 %s.</p>
 </div></footer>
-<a class="wa-float" href="%s" rel="noopener" aria-label="WhatsApp R&amp;C Spaceworks">%sWhatsApp %s</a>
+<a class="wa-float" href="%s" rel="noopener" aria-label="WhatsApp R&amp;C Spaceworks">%s<span class="sr">WhatsApp %s</span></a>
 <script src="%src.js?v=%s" defer></script>
 <script src="%swa-tap-counter.js?v=%s" defer></script>
 </body>
