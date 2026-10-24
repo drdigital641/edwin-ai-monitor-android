@@ -1,4 +1,4 @@
-"""R&C - Retail & Commercial Design & Build: builds every page into site/ (python3 build.py).
+"""SG Commercial Fitout - Retail & Commercial Design & Build: builds every page into site/ (python3 build.py).
 
 New Edwin-owned brand, started 24 Oct 2026 from the brief in drdigital641/edwin-ai-context
 (handoffs/2026-10-24-rc-design-build-project.md, copied to content/PROJECT-BRIEF.md).
@@ -28,7 +28,7 @@ import guides as C_GDE  # noqa: E402
 
 OUT = os.environ.get('RC_OUT', os.path.join(HERE, 'site'))
 SLUG = 'rc-design-build'
-DOMAIN = 'rcspaceworks.com'   # Edwin 24 Oct 2026 (not registered yet on 24 Oct: NXDOMAIN)
+DOMAIN = 'commercialfitout.sg'   # Edwin 24 Oct 2026 12:08 UTC (no DNS yet on 24 Oct)
 LIVE = False           # True only after Edwin's go-ahead and every PENDING item is confirmed
 WA_NUMBER = '6586594553'  # Edwin 24 Oct 2026
 PHONE_DISPLAY = '+65 8659 4553'
@@ -38,8 +38,8 @@ ASSET_SHA = 'c4353b1'
 IMG = os.environ.get('RC_IMG') or ('https://cdn.jsdelivr.net/gh/drdigital641/edwin-ai-monitor-android@%s/site-assets/%s/' % (ASSET_SHA, SLUG))
 TODAY = '2026-10-24'
 INDEXNOW_KEY = '7d4c2a9e1f6b8035c4e2a7d9b1f60c38'
-BRAND = 'R&C Spaceworks'
-BRAND_FULL = 'R&C Spaceworks - Retail & Commercial Design & Build'
+BRAND = 'SG Commercial Fitout'
+BRAND_FULL = 'SG Commercial Fitout - Retail & Commercial Design & Build'
 TAGLINE = 'Singapore retail and commercial design & build specialists.'
 
 if LIVE:
@@ -47,7 +47,7 @@ if LIVE:
 
 PENDING = [
     ('Operating company', 'Registered business name and UEN to be confirmed.'),
-    ('Domain', 'rcspaceworks.com is chosen but not registered yet.'),
+    ('Domain', 'CommercialFitout.sg is chosen and not live yet.'),
 ]
 
 # Real work supplied by Edwin 24 Oct 2026 ("real projects" by the company). Each upload carried the caption
@@ -59,7 +59,7 @@ REAL = [
     ('real-wall-cabinet', 'Wall cabinet with adjustable shelves', 'Top-hung cabinets above the hood, fitted with concealed hinges and adjustable shelves.'),
     ('real-pantry-drawers', 'Drawer stack detail', 'Three-drawer stack and double-door cabinet with recessed finger pulls.'),
 ]
-REAL_NOTE = 'Real R&C Spaceworks carpentry. Decor items in these photos were added with AI styling.'
+REAL_NOTE = 'Real SG Commercial Fitout carpentry. Decor items in these photos were added with AI styling.'
 WORKSHOP = []  # filenames of real workshop photos (Edwin uploading 24 Oct 2026 evening)
 
 # ---------- page registry ----------
@@ -156,7 +156,7 @@ def pic(key, alt, cls='', eager=False, small=False, tag=True):
 def wa_link(topic, frm):
     if not WA_NUMBER:
         return None
-    msg = 'Hi R&C Spaceworks, I would like to discuss %s. (Page: %s, ref: website)' % (topic, frm)
+    msg = 'Hi SG Commercial Fitout, I would like to discuss %s. (Page: %s, ref: website)' % (topic, frm)
     return 'https://wa.me/%s?text=%s' % (WA_NUMBER, quote(msg))
 
 
@@ -196,7 +196,7 @@ SG = {'@type': 'Country', 'name': 'Singapore', 'sameAs': 'https://en.wikipedia.o
 
 
 def org_schema():
-    o = {'@type': ['Organization', 'GeneralContractor'], '@id': BASE + '#org', 'name': BRAND_FULL, 'alternateName': [BRAND, 'R&C'],
+    o = {'@type': ['Organization', 'GeneralContractor'], '@id': BASE + '#org', 'name': BRAND_FULL, 'alternateName': [BRAND, 'CommercialFitout.sg', 'SG Fitout'],
          'url': BASE, 'logo': BASE + 'icon-512.png', 'image': IMG + 'og-rc.jpg', 'slogan': SPECIALTY,
          'telephone': PHONE_DISPLAY, 'address': {'@type': 'PostalAddress', 'addressCountry': 'SG'},
          'areaServed': SG, 'audience': AUDIENCE,
@@ -208,7 +208,7 @@ def org_schema():
          'hasOfferCatalog': {'@type': 'OfferCatalog', 'name': 'Retail and commercial design and build services in Singapore',
                              'itemListElement': [{'@type': 'Offer', 'itemOffered': {'@type': 'Service', 'name': SHORT[x] + ' for retail and commercial spaces',
                                                                                      'url': abs_url(x)}} for x in SERVICE_ORDER]},
-         'description': 'R&C Spaceworks specialises in design and build for retail outlets and commercial spaces in Singapore, such as shops, '
+         'description': 'SG Commercial Fitout specialises in design and build for retail outlets and commercial spaces in Singapore, such as shops, '
                         'offices, showrooms, F&B outlets and salons, with its own carpentry workshop: carpentry, renovation, electrical works, '
                         'tiling and flooring, painting and finishing, and audio, visual and lighting (AVL).'}
     return o
@@ -244,8 +244,11 @@ def svc_tile(frm, path):
 # ---------- layout ----------
 def brand_title(t):
     if t.endswith(' | R&C'):
-        t2 = t + ' Spaceworks'
-        return t2 if len(t2) <= 60 else t
+        base = t[:-6]
+        for suf in (' | SG Commercial Fitout', ' | SG Fitout'):
+            if len(base + suf) <= 60:
+                return base + suf
+        return base
     return t
 
 
@@ -293,7 +296,7 @@ def header(path):
 <a class="skip" href="#main">Skip to content</a>
 <div class="strip"><div class="wrap"><span>Retail &amp; commercial specialists</span><span>Shops · Offices · F&amp;B · Salons · Own workshop</span><a href="%s" rel="noopener">WhatsApp %s</a></div></div>
 <header class="top"><div class="wrap">
-<a class="brand" href="%s"><img src="%sicon-192.png" width="40" height="40" alt=""><span>R&amp;C Spaceworks<small>Retail &amp; Commercial Design &amp; Build</small></span></a>
+<a class="brand" href="%s"><img src="%sicons/mark-96.png" width="44" height="40" alt=""><span>SG Commercial Fitout<small>Retail &amp; Commercial Design &amp; Build</small></span></a>
 <nav class="nav" id="nav" aria-label="Main">%s</nav>
 %s
 <button class="menu-btn" type="button" aria-controls="nav" aria-expanded="false">Menu</button>
@@ -306,13 +309,13 @@ def footer(path):
     col = lambda paths: ''.join('<li><a href="%s">%s</a></li>' % (rel(path, p), E(SHORT[p])) for p in paths)
     return '''</main>
 <footer class="foot"><div class="wrap">
-<div><img class="flogo" src="%sicons/logo-full-light.png" width="220" height="141" alt="R&amp;C Spaceworks - Retail &amp; Commercial Design &amp; Build" loading="lazy"><p>%s</p><p>WhatsApp <a href="%s" rel="noopener">%s</a></p>%s</div>
+<div><img class="flogo" src="%sicons/logo-full-light.png" width="260" height="66" alt="SG Commercial Fitout - Retail &amp; Commercial Design &amp; Build" loading="lazy"><p>%s</p><p>WhatsApp <a href="%s" rel="noopener">%s</a></p>%s</div>
 <div><h3>Services</h3><ul>%s</ul></div>
 <div><h3>AVL &amp; spaces</h3><ul>%s</ul></div>
 <div><h3>Plan</h3><ul>%s</ul></div>
-<p class="small">Photos marked "Real project" show R&amp;C Spaceworks carpentry (decor added with AI styling). Photos marked "AI design concept" are ideas, not completed work. &copy; 2026 %s.</p>
+<p class="small">Photos marked "Real project" show SG Commercial Fitout carpentry (decor added with AI styling). Photos marked "AI design concept" are ideas, not completed work. &copy; 2026 %s.</p>
 </div></footer>
-<a class="wa-float" href="%s" rel="noopener" aria-label="WhatsApp R&amp;C Spaceworks">%s<span class="sr">WhatsApp %s</span></a>
+<a class="wa-float" href="%s" rel="noopener" aria-label="WhatsApp SG Commercial Fitout">%s<span class="sr">WhatsApp %s</span></a>
 <script src="%src.js?v=%s" defer></script>
 <script src="%swa-tap-counter.js?v=%s" defer></script>
 </body>
@@ -446,11 +449,11 @@ def build_concepts():
 
 # ---------- home ----------
 HOME_FAQ = [
-    ('What does R&C Spaceworks do?', 'R&C Spaceworks designs and builds retail and commercial spaces in Singapore: custom carpentry, renovation, '
+    ('What does SG Commercial Fitout do?', 'SG Commercial Fitout designs and builds retail and commercial spaces in Singapore: custom carpentry, renovation, '
      'electrical works, tiling and flooring, painting and finishing, and audio, visual and lighting (AVL) for shops, offices, F&B outlets and salons.'),
-    ('Do you have your own carpentry workshop?', 'Yes. R&C Spaceworks has its own carpentry workshop, so counters, cabinets and shelving can be '
+    ('Do you have your own carpentry workshop?', 'Yes. SG Commercial Fitout has its own carpentry workshop, so counters, cabinets and shelving can be '
      'made to your measurements. Workshop photos are on the Projects page.'),
-    ('Are the photos real?', 'Photos marked "Real project" show R&C Spaceworks carpentry; decor items in them were added with AI styling. '
+    ('Are the photos real?', 'Photos marked "Real project" show SG Commercial Fitout carpentry; decor items in them were added with AI styling. '
      'Photos marked "AI design concept" are ideas to discuss, not completed work.'),
     ('What should I send to start?', 'WhatsApp a floor plan or unit layout, a few photos of the unit, what the space is for and your target opening date. '
      'Landlord or mall fit-out guidelines help too, if you have them.'),
@@ -472,13 +475,13 @@ def concept_line(c):
 
 def real_fig(k, t, dsc):
     return '<figure class="real rv"><div class="ph">%s</div><figcaption><b>%s</b>%s</figcaption></figure>' % (
-        real_pic(k, t + ' by R&C Spaceworks'), E(t), E(dsc))
+        real_pic(k, t + ' by SG Commercial Fitout'), E(t), E(dsc))
 
 
 def workshop_block(path):
     if WORKSHOP:
         return '<div class="grid g3">%s</div>' % ''.join(
-            '<figure class="real rv"><div class="ph"><img src="%s" width="640" height="480" alt="R&amp;C Spaceworks carpentry workshop" loading="lazy">'
+            '<figure class="real rv"><div class="ph"><img src="%s" width="640" height="480" alt="SG Commercial Fitout carpentry workshop" loading="lazy">'
             '<span class="tag tag-real">Our workshop</span></div></figure>' % (IMG + w) for w in WORKSHOP)
     if LIVE:
         return ''
@@ -595,20 +598,20 @@ def build_home():
 def build_projects():
     path = '/projects/'
     inner = ('<div class="head"><h2>Real projects</h2><p>%s</p></div><div class="grid g3">%s</div>'
-             '<div class="head" style="margin-top:50px"><h2>Our carpentry workshop</h2><p>R&amp;C Spaceworks makes its carpentry in its own workshop, '
+             '<div class="head" style="margin-top:50px"><h2>Our carpentry workshop</h2><p>SG Commercial Fitout makes its carpentry in its own workshop, '
              'so counters, cabinets and shelving are built to the measurements taken on site.</p></div>%s%s') % (
         E(REAL_NOTE), ''.join(real_fig(*r) for r in REAL), workshop_block(path),
         '' if WORKSHOP else pending_box([('Workshop photos', 'real workshop photos are being added')], 'Coming soon'))
     crumbs = [(path, 'Projects & workshop')]
-    schema = [org_schema(), crumbs_schema(crumbs), {'@type': 'CollectionPage', 'name': 'R&C Spaceworks projects and workshop', 'url': abs_url(path)}]
+    schema = [org_schema(), crumbs_schema(crumbs), {'@type': 'CollectionPage', 'name': 'SG Commercial Fitout projects and workshop', 'url': abs_url(path)}]
     body = ('%s<section class="phead"><div class="wrap"><div><span class="eyebrow">Projects &amp; workshop</span>'
             '<h1>Our projects and carpentry workshop</h1><p class="answer">Built-in shelving, pantry counters, drawer units and wall cabinets made by '
-            'R&amp;C Spaceworks in its own carpentry workshop, then installed on site.</p><div class="btns">%s</div></div>'
+            'SG Commercial Fitout in its own carpentry workshop, then installed on site.</p><div class="btns">%s</div></div>'
             '<div class="pic">%s</div></div></section><section class="band sand"><div class="wrap">%s</div></section>%s') % (
         crumbs_html(path, crumbs), cta(path, 'a carpentry project', 'WhatsApp Us'),
-        real_pic('real-sink-counter', 'Sink counter with drawers by R&C Spaceworks', eager=True), inner, cta_band(path, 'a carpentry project'))
-    write(path, head(path, 'Carpentry Projects & Workshop | R&C Spaceworks',
-                     'Real carpentry by R&C Spaceworks: built-in shelving, pantry counters, drawers and wall cabinets made in our own Singapore workshop.',
+        real_pic('real-sink-counter', 'Sink counter with drawers by SG Commercial Fitout', eager=True), inner, cta_band(path, 'a carpentry project'))
+    write(path, head(path, 'Carpentry Projects & Workshop | SG Commercial Fitout',
+                     'Real carpentry by SG Commercial Fitout: built-in shelving, pantry counters, drawers and wall cabinets made in our own Singapore workshop.',
                      schema, og_img=img_url('real-sink-counter')) + header(path) + body + footer(path))
 
 
@@ -633,7 +636,7 @@ def build_daily():
             '<section class="band sand"><div class="wrap"><div class="prose" style="max-width:none">%s</div></div></section>%s') % (
         crumbs_html(path, crumbs), cta(path, 'an idea from the concept of the day', 'WhatsApp Us'), rel(path, '/design-concepts/'),
         ''.join(items), cta_band(path, 'an idea from the concept of the day'))
-    write(path, head(path, 'AI Interior Concept of the Day | R&C Spaceworks',
+    write(path, head(path, 'AI Interior Concept of the Day | SG Commercial Fitout',
                      'A dated daily AI interior concept for Singapore shops, offices, F&B outlets and salons, with every past concept kept in this gallery.',
                      schema, og_img=daily_url(DAILY[0])) + header(path) + body + footer(path), DAILY[0]['date'])
 
@@ -653,7 +656,7 @@ def simple(path, title, desc, h1, kicker, answer, prose, crumbs, key=None, alt='
 
 def build_static():
     about = '''<h2>Who we are</h2>
-<p>R&amp;C Spaceworks is a Singapore design and build company that specialises in retail outlets and commercial spaces: shops and boutiques, offices and showrooms, F&amp;B outlets and service counters, and salons and beauty studios. We have our own carpentry workshop, so counters, cabinets and shelving are made to the measurements taken on site.</p>
+<p>SG Commercial Fitout is a Singapore design and build company that specialises in retail outlets and commercial spaces: shops and boutiques, offices and showrooms, F&amp;B outlets and service counters, and salons and beauty studios. We have our own carpentry workshop, so counters, cabinets and shelving are made to the measurements taken on site.</p>
 <h2>What we cover</h2>
 <ul><li><a href="/retail-commercial-design-build/">Design &amp; build</a>: one point of contact from brief to handover.</li>
 <li><a href="/services/commercial-carpentry/">Carpentry</a>: counters, shelving, storage, display fixtures and reception joinery, made in our workshop.</li>
@@ -664,10 +667,10 @@ def build_static():
 <h2>Contact</h2>
 <p>WhatsApp <a href="%s" rel="noopener">%s</a>. We serve businesses in Singapore.</p>
 %s''' % (E(wa_link('my space', '/about/')), PHONE_DISPLAY, pending_box([('Operating company', 'registered name and UEN to be confirmed')]))
-    simple('/about/', 'About R&C Spaceworks | Design & Build Singapore', 'About R&C Spaceworks: Singapore design and build for shops, offices, F&B outlets and salons, with our own carpentry workshop.',
-           'About R&C Spaceworks', 'About', 'R&C Spaceworks is a Singapore design and build company for shops, offices, showrooms, F&B outlets and salons. It has its own carpentry workshop and covers carpentry, renovation, electrical, flooring, painting and AVL.',
+    simple('/about/', 'About SG Commercial Fitout | Design & Build Singapore', 'About SG Commercial Fitout: Singapore design and build for shops, offices, F&B outlets and salons, with our own carpentry workshop.',
+           'About SG Commercial Fitout', 'About', 'SG Commercial Fitout is a Singapore design and build company for shops, offices, showrooms, F&B outlets and salons. It has its own carpentry workshop and covers carpentry, renovation, electrical, flooring, painting and AVL.',
            about, [('/about/', 'About')], 'design-planning', 'Floor plan and material samples on a planning table (AI design concept)',
-           [{'@type': 'AboutPage', 'name': 'About R&C Spaceworks', 'url': abs_url('/about/')}])
+           [{'@type': 'AboutPage', 'name': 'About SG Commercial Fitout', 'url': abs_url('/about/')}])
     w = wa_link('my space', '/contact/')
     contact = '''<h2>WhatsApp us</h2>
 <p>The fastest way to start is a WhatsApp message to <strong>%s</strong> with what you already have about the unit and the business.</p>
@@ -680,29 +683,29 @@ def build_static():
 <li><strong>Landlord or mall fit-out guidelines</strong>, if you have them.</li>
 <li><strong>Priorities</strong>: what must be right on day one, and what can wait.</li></ol>
 <p class="note">Not sure where to begin? Read <a href="/guides/how-to-brief-a-shop-fit-out/">how to brief a shop fit-out</a> first.</p>''' % (PHONE_DISPLAY, E(w), WA_SVG, PHONE_DISPLAY)
-    simple('/contact/', 'Contact R&C Spaceworks | WhatsApp +65 8659 4553', 'WhatsApp R&C Spaceworks at +65 8659 4553 about your shop, office, F&B or salon space. Send your floor plan, unit photos and opening date.',
-           'Contact us', 'Contact', 'WhatsApp R&C Spaceworks at +65 8659 4553. Send a floor plan, a few photos of the unit, what the space is for and your target opening date, and we will discuss your scope.',
+    simple('/contact/', 'Contact SG Commercial Fitout | WhatsApp +65 8659 4553', 'WhatsApp SG Commercial Fitout at +65 8659 4553 about your shop, office, F&B or salon space. Send your floor plan, unit photos and opening date.',
+           'Contact us', 'Contact', 'WhatsApp SG Commercial Fitout at +65 8659 4553. Send a floor plan, a few photos of the unit, what the space is for and your target opening date, and we will discuss your scope.',
            contact, [('/contact/', 'Contact')], 'office-reception', 'Office reception with a curved oak counter (AI design concept)',
-           [{'@type': 'ContactPage', 'name': 'Contact R&C Spaceworks', 'url': abs_url('/contact/')}])
+           [{'@type': 'ContactPage', 'name': 'Contact SG Commercial Fitout', 'url': abs_url('/contact/')}])
     privacy = '''<p>Last updated 24 October 2026.</p>
 <h2>What this website collects</h2>
 <p>This website has no forms and sets no advertising cookies. When you tap a WhatsApp button, an anonymous count is recorded (the page you were on, whether you used a phone or computer, and the referring site) so we can see which pages help visitors. It does not record your name, number or the message you send.</p>
 <h2>Messages you send</h2>
-<p>If you contact R&amp;C Spaceworks, the details you choose to share (such as your name, number, floor plan and photos) are used only to respond to your enquiry and discuss your project, in line with Singapore's Personal Data Protection Act. They are not sold or shared for marketing.</p>
+<p>If you contact SG Commercial Fitout, the details you choose to share (such as your name, number, floor plan and photos) are used only to respond to your enquiry and discuss your project, in line with Singapore's Personal Data Protection Act. They are not sold or shared for marketing.</p>
 <h2>Third-party services</h2>
 <p>WhatsApp messages are handled by WhatsApp under its own privacy policy. Fonts and scripts on this site are served from this website.</p>
 <h2>Access, correction and questions</h2>
-<p>You may ask to see, correct or delete personal data you have shared with R&amp;C Spaceworks.</p>
+<p>You may ask to see, correct or delete personal data you have shared with SG Commercial Fitout.</p>
 %s''' % pending_box([('Data protection contact', 'to be published with the operating company details')])
-    simple('/privacy-policy/', 'Privacy Policy | R&C Spaceworks', 'How the R&C Spaceworks website handles personal data: no forms, an anonymous WhatsApp tap count, and how enquiry details are used.',
-           'Privacy policy', 'Privacy', 'This website has no forms and no advertising cookies. It records only an anonymous count of WhatsApp button taps. Details you send when you contact R&C Spaceworks are used only to answer your enquiry.',
+    simple('/privacy-policy/', 'Privacy Policy | SG Commercial Fitout', 'How the SG Commercial Fitout website handles personal data: no forms, an anonymous WhatsApp tap count, and how enquiry details are used.',
+           'Privacy policy', 'Privacy', 'This website has no forms and no advertising cookies. It records only an anonymous count of WhatsApp button taps. Details you send when you contact SG Commercial Fitout are used only to answer your enquiry.',
            privacy, [('/privacy-policy/', 'Privacy policy')])
 
 
 def build_404():
     path = '/404/'
     r = '/preview/%s/' % SLUG if not DOMAIN else '/'
-    doc = head('/', 'Page not found | R&C Spaceworks', 'This page does not exist.', [org_schema()]).replace(
+    doc = head('/', 'Page not found | SG Commercial Fitout', 'This page does not exist.', [org_schema()]).replace(
         '<meta name="robots" content="index, follow, max-image-preview:large">', '<meta name="robots" content="noindex">')
     # 404 is served at any depth, so use root-absolute links
     doc = re.sub(r'(href|src)="(?:\./|(?:\.\./)*)((?:favicon|icon-|apple-|site\.web|fonts/|rc\.css)[^"]*)"', lambda m: '%s="%s%s"' % (m.group(1), r, m.group(2)), doc)
@@ -729,7 +732,7 @@ def build_machine():
     with open(os.path.join(OUT, 'robots.txt'), 'w') as f:
         f.write(rb)
     lines = ['# %s' % BRAND_FULL, '', '> %s' % TAGLINE, '',
-             'R&C Spaceworks is a Singapore design and build company that specialises in retail outlets and commercial spaces, with its own carpentry workshop: shops and boutiques, offices and showrooms, '
+             'SG Commercial Fitout is a Singapore design and build company that specialises in retail outlets and commercial spaces, with its own carpentry workshop: shops and boutiques, offices and showrooms, '
              'cafes and service counters, salons and beauty studios. Services: integrated design and build, commercial carpentry, '
              'renovation, electrical works, tiling and flooring, painting and finishing, and audio, visual and lighting (AVL).',
              '', 'Contact: WhatsApp %s. Photos marked Real project show its own carpentry (decor added with AI styling); AI design concept images are ideas, not completed work.' % PHONE_DISPLAY, '']
@@ -747,7 +750,7 @@ def build_machine():
         f.write('\n'.join(lines))
     with open(os.path.join(OUT, INDEXNOW_KEY + '.txt'), 'w') as f:
         f.write(INDEXNOW_KEY)
-    man = {'name': BRAND_FULL, 'short_name': 'R&C Spaceworks', 'start_url': './', 'display': 'browser', 'background_color': '#fbf8f2',
+    man = {'name': BRAND_FULL, 'short_name': 'SG Commercial Fitout', 'start_url': './', 'display': 'browser', 'background_color': '#fbf8f2',
            'theme_color': '#2b2925', 'icons': [{'src': 'icon-192.png', 'sizes': '192x192', 'type': 'image/png'},
                                                {'src': 'icon-512.png', 'sizes': '512x512', 'type': 'image/png'}]}
     with open(os.path.join(OUT, 'site.webmanifest'), 'w') as f:
@@ -765,6 +768,7 @@ def main():
         shutil.copy(os.path.join(HERE, 'icons', name), OUT)
     os.makedirs(os.path.join(OUT, 'icons'), exist_ok=True)
     shutil.copy(os.path.join(HERE, 'icons', 'logo-full-light.png'), os.path.join(OUT, 'icons'))
+    shutil.copy(os.path.join(HERE, 'icons', 'mark-96.png'), os.path.join(OUT, 'icons'))
     build_home()
     build_hubs()
     build_concepts()

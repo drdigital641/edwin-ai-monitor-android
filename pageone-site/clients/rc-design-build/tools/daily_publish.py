@@ -1,4 +1,4 @@
-"""R&C Spaceworks "AI concept of the day": add one dated concept, rebuild, commit and push.
+"""SG Commercial Fitout "AI concept of the day": add one dated concept, rebuild, commit and push.
 
 Usage: python3 daily_publish.py <image file> <entry.json>
   entry.json = {"date": "YYYY-MM-DD", "title": "...", "space": "F&B", "summary": "40-60 words",
@@ -59,7 +59,7 @@ def main(img_path, entry_path):
         im.save(os.path.join(base, e['date'] + '.webp'), 'WEBP', quality=76, method=6)
         im.resize((640, 640), Image.LANCZOS).save(os.path.join(base, e['date'] + '-640.webp'), 'WEBP', quality=72, method=6)
     run(GIT + ['add', 'site-assets/rc-design-build/daily'])
-    run(GIT + ['commit', '-q', '-m', 'R&C concept of the day image %s%s' % (e['date'], TRAILER)])
+    run(GIT + ['commit', '-q', '-m', 'SG Commercial Fitout concept of the day image %s%s' % (e['date'], TRAILER)])
     run(['git', '-C', REPO, 'push', '-q', 'origin', 'HEAD:site-assets'])
     img_sha = run(['git', '-C', REPO, 'rev-parse', '--short', 'HEAD'])
     # 2) data entry
@@ -76,7 +76,7 @@ def main(img_path, entry_path):
         shutil.rmtree(dst, ignore_errors=True)
         shutil.copytree(PROJ, dst, ignore=shutil.ignore_patterns('__pycache__', 'assets', 'uploads-original', 'real', 'daily', 'screens', 'logo-512.png'))
     run(GIT + ['add', '-A', 'pageone-site/clients/rc-design-build'])
-    run(GIT + ['commit', '-q', '-m', 'R&C concept of the day %s%s' % (e['date'], TRAILER)])
+    run(GIT + ['commit', '-q', '-m', 'SG Commercial Fitout concept of the day %s%s' % (e['date'], TRAILER)])
     run(['git', '-C', REPO, 'push', '-q', 'origin', 'HEAD:site-assets'])
     print('SITE_SHA', run(['git', '-C', REPO, 'rev-parse', 'HEAD']))
 

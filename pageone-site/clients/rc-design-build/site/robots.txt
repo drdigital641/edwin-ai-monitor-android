@@ -37,4 +37,4 @@ Allow: /
 User-agent: *
 Allow: /
 
-Sitemap: https://rcspaceworks.com/sitemap.xml
+Sitemap: https://commercialfitout.sg/sitemap.xml

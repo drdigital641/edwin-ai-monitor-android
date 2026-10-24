@@ -1,4 +1,4 @@
-# R&C Spaceworks: AI concept of the day (daily run, ~01:35 SGT)
+# SG Commercial Fitout: AI concept of the day (daily run, ~01:35 SGT)
 
 Goal: one new dated AI interior concept on the homepage hero; the previous one moves into the gallery
 (/design-concepts/concept-of-the-day/). Edwin asked for this on 24 Oct 2026. Preview only until go-live.
@@ -22,5 +22,5 @@ Steps (stop and report if any step fails; never invent text that the image does 
    It commits the image + rebuilt site to branch site-assets and prints SITE_SHA (skips if the date already exists).
 5. Bluehost Bridge sync_from_github: {site: "pageone", ref: SITE_SHA, source_path: "pageone-site/clients/rc-design-build/site",
    base_path: "preview/rc-design-build"}. Re-run once if any file is skipped.
-6. After go-live only (rcspaceworks.com serves the site): IndexNow the homepage and the gallery URL (key 7d4c2a9e1f6b8035c4e2a7d9b1f60c38).
+6. After go-live only (commercialfitout.sg serves the site): IndexNow the homepage and the gallery URL (key 7d4c2a9e1f6b8035c4e2a7d9b1f60c38).
 7. Log one line to /mnt/project-files/rc-design-build/daily-log.md if the mount exists (date, title, SITE_SHA, result).

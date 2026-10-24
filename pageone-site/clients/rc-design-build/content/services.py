@@ -130,7 +130,7 @@ PAGES = [{'path': '/retail-commercial-design-build/',
                         'compare.</li>\n'
                         '</ul>'},
                {'h2': 'The intended process and what to prepare',
-                'html': '<p>An R&amp;C project is planned to follow these steps:</p>\n'
+                'html': '<p>Each project is planned to follow these steps:</p>\n'
                         '<ol><li><strong>Discuss:</strong> your business, how the space is used and what '
                         'must change.</li>\n'
                         '<li><strong>Assess:</strong> review the unit, constraints and existing '
@@ -309,7 +309,7 @@ PAGES = [{'path': '/retail-commercial-design-build/',
                         'hardware, makes quotations comparable and gives everyone the same reference at '
                         'handover.</p>'},
                {'h2': 'The intended process and what to prepare',
-                'html': '<p>An R&amp;C carpentry project is planned to follow these steps:</p>\n'
+                'html': '<p>Each carpentry project is planned to follow these steps:</p>\n'
                         '<ol><li>Discuss what you display, store and sell, and how staff and customers '
                         'move.</li>\n'
                         '<li>Measure the space and review site conditions.</li>\n'
@@ -479,7 +479,7 @@ PAGES = [{'path': '/retail-commercial-design-build/',
                         '<p>Keep a written record of agreed changes, and photograph the unit before work '
                         'starts so the starting condition is clear to everyone.</p>'},
                {'h2': 'The intended process and what to prepare',
-                'html': '<p>An R&amp;C renovation project is planned to follow these steps:</p>\n'
+                'html': '<p>Each renovation project is planned to follow these steps:</p>\n'
                         '<ol><li>Discuss your intended use and any constraints.</li>\n'
                         '<li>Assess the unit on site.</li>\n'
                         '<li>Define scope, layout and finishes.</li>\n'
@@ -645,7 +645,7 @@ PAGES = [{'path': '/retail-commercial-design-build/',
                         '<p>A marked-up plan showing every point, switch and light fitting, agreed before '
                         'work starts, is the simplest way to avoid these.</p>'},
                {'h2': 'The intended process and what to prepare',
-                'html': '<p>An R&amp;C electrical project is planned to follow these steps:</p>\n'
+                'html': '<p>Each electrical project is planned to follow these steps:</p>\n'
                         '<ol><li>Discuss your equipment, layout and lighting needs.</li>\n'
                         '<li>Check existing conditions on site.</li>\n'
                         '<li>Mark power, lighting and switch positions on a plan.</li>\n'
@@ -810,7 +810,7 @@ PAGES = [{'path': '/retail-commercial-design-build/',
                         '<p>Ask what care and cleaning products suit the finish, and give your cleaning '
                         'staff those instructions at handover.</p>'},
                {'h2': 'The intended process and what to prepare',
-                'html': '<p>An R&amp;C flooring project is planned to follow these steps:</p>\n'
+                'html': '<p>Each flooring project is planned to follow these steps:</p>\n'
                         '<ol><li>Discuss use, traffic, cleaning and appearance.</li>\n'
                         '<li>Assess the existing floor on site.</li>\n'
                         '<li>Shortlist materials and review samples.</li>\n'
@@ -971,7 +971,7 @@ PAGES = [{'path': '/retail-commercial-design-build/',
                         '<p>Keep a record of the exact paint names and colour codes used, so touch-ups and '
                         'reinstatement can match later.</p>'},
                {'h2': 'The intended process and what to prepare',
-                'html': '<p>An R&amp;C painting project is planned to follow these steps:</p>\n'
+                'html': '<p>Each painting project is planned to follow these steps:</p>\n'
                         '<ol><li>Discuss colours, finishes and any reinstatement requirements.</li>\n'
                         '<li>Inspect surfaces and agree preparation.</li>\n'
                         '<li>Review colour and finish samples on site.</li>\n'
@@ -1009,4 +1009,4 @@ PAGES = [{'path': '/retail-commercial-design-build/',
               '/retail-commercial-design-build/'],
   'wa_topic': 'painting and finishing for my shop'}]
 
-SERVICES_INTRO = 'R&C helps Singapore shop owners, office and showroom tenants, and cafe and salon operators plan their spaces. Each service below has its own page covering scope, options, budget drivers and planning factors, so you can see what a trade involves before you enquire. You can ask about a single trade, such as carpentry or flooring, or have the work planned together through design and build. Send us your floor plan and we will discuss your scope.'
+SERVICES_INTRO = 'SG Commercial Fitout helps Singapore shop owners, office and showroom tenants, and cafe and salon operators plan their spaces. Each service below has its own page covering scope, options, budget drivers and planning factors, so you can see what a trade involves before you enquire. You can ask about a single trade, such as carpentry or flooring, or have the work planned together through design and build. Send us your floor plan and we will discuss your scope.'
