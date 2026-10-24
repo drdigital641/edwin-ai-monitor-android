@@ -867,4 +867,49 @@ ARTICLES = [
              ('Will the lights go off by themselves?', 'Sometimes they go off after a restart if the fault is intermittent, but the code stays stored and the lights usually come back until the cause is fixed. Read the code first.'),
              ('Do I need to bring the whole car?', 'No. You can bring just the ABS unit to us at Premier @ Kaki Bukit, or use our pick-up and delivery service for the car.')],
     ),
+    dict(
+        # Night article dated 25 Oct 2026. Make series: Mercedes-Benz. Mercedes has a message article (Active Brake Assist functions limited) and a
+        # fault-code article (N30/4 5001); this one owns the general "ABS and ESP lights on in a Mercedes" intent and links down to both.
+        # Client facts: Mercedes ABS repair, used ABS pump and ABS module repair, Mercedes ESP pump repair (content.md).
+        slug='mercedes-abs-esp-light-on', service='abs-pump-repair', date='2026-10-25', img_commit='9c65549ccba1858dc9c715548780adcd16ff2b29',
+        title='Mercedes ABS and ESP Lights On? Causes | The ECU Clinic',
+        desc='Why the ABS and ESP lights come on in a Mercedes-Benz, whether it is safe to drive, what to check first, and ESP pump and ABS module repair in Singapore.',
+        h1='Why Are the ABS and ESP Lights On in My Mercedes-Benz?',
+        lead='ABS and ESP lights on in a Mercedes-Benz? What they mean, the simple causes to rule out first, and when the ESP pump and module need repair.',
+        photo='mercedes-esp-pumps', alt='Mercedes-Benz ESP pump and module units on the bench', share='mercedes-esp-pumps.jpg',
+        body='''<p><strong>Short answer:</strong> in a Mercedes-Benz, ABS (anti-lock brakes), ESP (Electronic Stability Program) and, on many models, brake assist (BAS) all work through the same ESP pump and control unit, so one fault often turns on more than one light or message. Common causes are a wheel speed sensor or its wiring, a steering angle sensor, low battery voltage, the brake light switch, or a fault in the ESP unit itself. The fault code tells you which. We repair Mercedes ESP pumps and ABS modules in Singapore.</p>
+<h2>What do the ABS and ESP lights mean?</h2>
+<ul class="ticks">
+<li><strong>ABS</strong> is the anti-lock braking system. It stops the wheels locking when you brake hard.</li>
+<li><strong>ESP</strong> brakes single wheels and can reduce engine power to help the car hold its line. The light flashes briefly when the system is working on a slippery road. A light that stays on means ESP has switched itself off, or has a fault.</li>
+<li><strong>BAS</strong> (brake assist) adds braking force in an emergency stop. On newer models you may see a message such as “Active Brake Assist functions limited” instead. That message has its own page: <a href="../mercedes-active-brake-assist-functions-limited/">Active Brake Assist functions limited</a>.</li>
+</ul>
+<p>Stability control needs the wheel speed signals and the pump and valves that ABS uses. When the ABS side has a fault, ESP is usually switched off too, which is why the lights often come on together.</p>
+<h2>Is it safe to drive with the ABS and ESP lights on?</h2>
+<p>In most cases your normal brakes still work, but anti-lock braking and stability control may be off until the fault is fixed. The wheels can then lock under hard braking, and the car will not correct a skid on a wet road. Leave more distance and avoid hard stops. If the red brake warning light is on, the brake pedal feels different or the brake fluid is low, stop driving and get the car checked first. Our pick-up and delivery service can collect it.</p>
+<h2>Did someone press the ESP button?</h2>
+<p>Many Mercedes-Benz models have a button that switches ESP off, and a light then stays on. Press the button again, or restart the car, and the system usually switches back on. If the ABS light is on as well, or the lights stay on after a restart, there is a stored fault.</p>
+<h2>What are the common causes?</h2>
+<ul class="ticks">
+<li><strong>Wheel speed sensor.</strong> Each wheel has one. A dirty, damaged or failed sensor, or its wiring, is a common cause.</li>
+<li><strong>Low battery voltage.</strong> A weak battery, or one that has just gone flat, can make several modules store faults at once.</li>
+<li><strong>Brake light switch.</strong> The system uses it to know when you are braking, so a faulty switch can turn the lights on.</li>
+<li><strong>Steering angle or other sensors.</strong> ESP also reads the steering angle, so a fault in that signal can switch it off.</li>
+<li><strong>The ESP pump and control unit.</strong> The control module, the pump motor or a sensor inside the unit can develop internal faults. This is the cause when the simple checks come back clean. One example is the code “internal fault in component N30/4”, explained on <a href="../mercedes-esp-control-unit-fault-n30-4/">Mercedes ESP fault N30/4 (5001)</a>.</li>
+</ul>
+<h2>How do we find which part is at fault?</h2>
+<ol class="steps">
+<li><strong>Read the fault codes.</strong> The ESP unit stores codes that point to the circuit at fault.</li>
+<li><strong>Rule out the simple causes.</strong> The ESP button, sensors, wiring, the brake light switch, battery and fuses.</li>
+<li><strong>Check the unit.</strong> If the codes and tests point to the control module, the pump or a sensor inside the unit, the ESP unit is the problem.</li>
+<li><strong>Tell you the options.</strong> You decide before any work starts.</li>
+</ol>
+<h2>Repair, used or new?</h2>
+<p>If the fault is in the ESP unit, we can repair your own Mercedes ESP pump and module, or supply a used ABS unit. Our repairs come with a 6-month warranty. See <a href="../../services/abs-pump-repair/">ABS pump and module repair</a> for how the options compare, or <a href="../abs-warning-light-causes/">ABS warning light causes</a> for the ABS light on its own.</p>
+<h2>What should I send?</h2>
+<p>WhatsApp us your car model, year, chassis number and the fault codes. A photo of the dashboard or the scan tool screen also helps. You can bring the car, or just the unit, to Premier @ Kaki Bukit, or use our pick-up and delivery service.</p>''',
+        faq=[('Can a weak battery turn on the ABS and ESP lights in a Mercedes-Benz?', 'Yes. Low voltage can make the ESP unit and other modules store faults. If the lights came on after a flat battery or a jump start, have the battery checked and the codes read before replacing parts.'),
+             ('Will the lights go off by themselves?', 'Sometimes they go off after a restart if the fault is intermittent, but the code stays stored and the lights usually come back until the cause is fixed. Read the code first.'),
+             ('Do I need to bring the whole car?', 'No. You can bring just the ESP pump or ABS unit to us at Premier @ Kaki Bukit, or use our pick-up and delivery service for the car.')],
+    ),
 ]
