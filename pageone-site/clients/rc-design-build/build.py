@@ -490,6 +490,7 @@ HOME_TPL = '''<section class="lux lux-full">
 <div class="lux-bg" aria-hidden="true">{dimg}</div><div class="lux-grad" aria-hidden="true"></div>
 <div class="wrap lux-in">
 <a class="lux-day" href="{dailyp}#d{ddate}"><span class="lux-date">AI concept of the day &middot; {dnice}</span><span class="lux-title">{dtitle}</span><span class="lux-more">View the concept &rarr;</span></a>
+<button type="button" class="lux-back" hidden>&larr; Back to today&rsquo;s concept</button>
 </div><span class="tag lux-tag">AI design concept</span><span class="lux-scroll" aria-hidden="true"></span></section>
 
 <section class="marq-band" aria-label="Past AI design concepts"><div class="wrap marq-head"><span>The archive</span><a href="{dailyp}">Browse the gallery &rarr;</a></div>
@@ -545,13 +546,19 @@ HOME_TPL = '''<section class="lux lux-full">
 
 
 def marquee(path, dp):
-    items = [('%s#d%s' % (dp, x['date']), daily_url(x, True), x['alt'], nice_date(x['date']), x['title']) for x in DAILY[1:]]
+    items = [('%s#d%s' % (dp, x['date']), daily_url(x, True), daily_url(x), x['alt'], 'AI concept of the day &middot; ' + nice_date(x['date']),
+              nice_date(x['date']), x['title']) for x in DAILY[1:]]
     cp = rel(path, '/design-concepts/')
-    items += [('%s#%s' % (cp, c['slug']), img_url(c['image'], True), c['title'] + ' (AI design concept)', 'Design concept', c['title'])
-              for c in C_SPC.CONCEPTS]
-    one = ''.join('<a class="mq" href="%s"%%s><img src="%s" width="640" height="480" alt="%s" loading="lazy" decoding="async">'
-                  '<span><small>%s</small>%s</span></a>' % (h, u, E(a), E(t), E(n)) for h, u, a, t, n in items)
-    return one.replace('%s', '') + one.replace('%s', ' tabindex="-1" aria-hidden="true"').replace(' alt="', ' alt="" data-alt="')
+    items += [('%s#%s' % (cp, c['slug']), img_url(c['image'], True), img_url(c['image']), c['title'] + ' (AI design concept)',
+               'AI design concept', 'Design concept', c['title']) for c in C_SPC.CONCEPTS]
+    tpl = ('<a class="mq" href="%s" data-full="%s" data-alt="%s" data-label="%s" data-title="%s"{x}><img src="%s" width="640" height="480" '
+           'alt="{alt}" loading="lazy" decoding="async"><span><small>%s</small>%s</span></a>')
+    out = ['', '']
+    for h, sm, full, alt, label, short, title in items:
+        base = tpl % (h, full, E(alt), label, E(title), sm, E(short), E(title))
+        out[0] += base.replace('{x}', '').replace('{alt}', E(alt))
+        out[1] += base.replace('{x}', ' tabindex="-1" aria-hidden="true"').replace('{alt}', '')
+    return out[0] + out[1]
 
 
 def build_home():
