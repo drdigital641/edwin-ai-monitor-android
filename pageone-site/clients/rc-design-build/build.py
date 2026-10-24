@@ -486,21 +486,22 @@ def workshop_block(path):
         '<div class="ws-slot"><span>Workshop photo %d</span><small>coming soon</small></div>' % i for i in (1, 2, 3))
 
 
-HOME_TPL = '''<section class="lux">
+HOME_TPL = '''<section class="lux lux-full">
 <div class="lux-bg" aria-hidden="true">{dimg}</div><div class="lux-grad" aria-hidden="true"></div>
 <div class="wrap lux-in">
-<span class="eyebrow">Singapore retail &amp; commercial specialists</span>
-<h1>Design &amp; Build for Retail and Commercial Spaces</h1>
-<p class="lede">We specialise in retail outlets and commercial spaces in Singapore: shops, offices, showrooms, F&amp;B outlets and salons. Carpentry, renovation, electrical, flooring and integrated audio, visual and lighting.</p>
-<div class="btns">{cta}<a class="btn btn-onimg" href="{services}">Explore Our Services</a></div>
-<ul class="ticks"><li>Specialised in retail &amp; commercial outlets</li><li>Own carpentry workshop</li><li>One contact from design to handover</li><li>Written scope before work starts</li></ul>
-<a class="lux-cap" href="{dailyp}#d{ddate}"><span>AI concept of the day &middot; {dnice}</span><b>{dtitle}</b></a>
-</div><span class="tag lux-tag">AI design concept</span></section>
+<a class="lux-day" href="{dailyp}#d{ddate}"><span class="lux-date">AI concept of the day &middot; {dnice}</span><span class="lux-title">{dtitle}</span><span class="lux-more">View the concept &rarr;</span></a>
+</div><span class="tag lux-tag">AI design concept</span><span class="lux-scroll" aria-hidden="true"></span></section>
 
-<section class="marq-band" aria-label="Past AI design concepts"><div class="wrap marq-head"><span>Past AI concepts</span><a href="{dailyp}">Browse the gallery &rarr;</a></div>
+<section class="marq-band" aria-label="Past AI design concepts"><div class="wrap marq-head"><span>The archive</span><a href="{dailyp}">Browse the gallery &rarr;</a></div>
 <div class="marq"><div class="marq-track">{marq}</div></div></section>
 
-<section class="quick"><div class="wrap"><dl>{facts}</dl></div></section>
+<section class="intro"><div class="wrap intro-in">
+<div class="intro-l"><span class="eyebrow">Singapore retail &amp; commercial specialists</span>
+<h1>Design &amp; Build for <em>Retail</em> and <em>Commercial</em> Spaces</h1></div>
+<div class="intro-r"><p class="lede">We specialise in retail outlets and commercial spaces in Singapore: shops, offices, showrooms, F&amp;B outlets and salons. Carpentry, renovation, electrical, flooring and integrated audio, visual and lighting, made in our own workshop and coordinated by one contact.</p>
+<div class="btns">{cta}<a class="btn btn-ghost" href="{services}">Explore Our Services</a></div></div>
+</div>
+<div class="wrap"><dl class="facts-line">{facts}</dl></div></section>
 
 <section class="band sand"><div class="wrap">
 <div class="head rv"><h2>Our carpentry workshop</h2><p>Counters, cabinets and shelving are made in our own workshop to your measurements, then installed on site.</p></div>
