@@ -296,7 +296,7 @@ def header(path):
 <a class="skip" href="#main">Skip to content</a>
 <div class="strip"><div class="wrap"><span>Retail &amp; commercial specialists</span><span>Shops · Offices · F&amp;B · Salons · Own workshop</span><a href="%s" rel="noopener">WhatsApp %s</a></div></div>
 <header class="top"><div class="wrap">
-<a class="brand" href="%s"><img src="%sicons/mark-96.png" width="44" height="40" alt=""><span>SG Commercial Fitout<small>Retail &amp; Commercial Design &amp; Build</small></span></a>
+<a class="brand" href="%s" aria-label="SG Commercial Fitout home"><img src="%sicons/logo-header.png" width="230" height="48" alt="SG Commercial Fitout"></a>
 <nav class="nav" id="nav" aria-label="Main">%s</nav>
 %s
 <button class="menu-btn" type="button" aria-controls="nav" aria-expanded="false">Menu</button>
@@ -309,7 +309,7 @@ def footer(path):
     col = lambda paths: ''.join('<li><a href="%s">%s</a></li>' % (rel(path, p), E(SHORT[p])) for p in paths)
     return '''</main>
 <footer class="foot"><div class="wrap">
-<div><img class="flogo" src="%sicons/logo-full-light.png" width="260" height="66" alt="SG Commercial Fitout - Retail &amp; Commercial Design &amp; Build" loading="lazy"><p>%s</p><p>WhatsApp <a href="%s" rel="noopener">%s</a></p>%s</div>
+<div><img class="flogo" src="%sicons/logo-sgcf-light.png" width="260" height="66" alt="SG Commercial Fitout - Retail &amp; Commercial Design &amp; Build" loading="lazy"><p>%s</p><p>WhatsApp <a href="%s" rel="noopener">%s</a></p>%s</div>
 <div><h3>Services</h3><ul>%s</ul></div>
 <div><h3>AVL &amp; spaces</h3><ul>%s</ul></div>
 <div><h3>Plan</h3><ul>%s</ul></div>
@@ -768,7 +768,8 @@ def main():
         shutil.copy(os.path.join(HERE, 'icons', name), OUT)
     os.makedirs(os.path.join(OUT, 'icons'), exist_ok=True)
     shutil.copy(os.path.join(HERE, 'icons', 'logo-full-light.png'), os.path.join(OUT, 'icons'))
-    shutil.copy(os.path.join(HERE, 'icons', 'mark-96.png'), os.path.join(OUT, 'icons'))
+    for n in ('mark-96.png', 'logo-header.png', 'logo-sgcf-light.png'):
+        shutil.copy(os.path.join(HERE, 'icons', n), os.path.join(OUT, 'icons'))
     build_home()
     build_hubs()
     build_concepts()
