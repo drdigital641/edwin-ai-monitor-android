@@ -28,35 +28,46 @@ import guides as C_GDE  # noqa: E402
 
 OUT = os.environ.get('RC_OUT', os.path.join(HERE, 'site'))
 SLUG = 'rc-design-build'
-DOMAIN = ''            # final domain not chosen yet (brief section 13)
+DOMAIN = 'rcspaceworks.com'   # Edwin 24 Oct 2026 (not registered yet on 24 Oct: NXDOMAIN)
 LIVE = False           # True only after Edwin's go-ahead and every PENDING item is confirmed
-WA_NUMBER = ''         # digits only, e.g. '6591234567'; empty = honest "opening soon" state
+WA_NUMBER = '6586594553'  # Edwin 24 Oct 2026
+PHONE_DISPLAY = '+65 8659 4553'
 PREVIEW = 'https://pageonesingapore.com/preview/%s/' % SLUG
 BASE = ('https://%s/' % DOMAIN) if DOMAIN else PREVIEW
-ASSET_SHA = '6958e99'
+ASSET_SHA = '86d651f'
 IMG = os.environ.get('RC_IMG') or ('https://cdn.jsdelivr.net/gh/drdigital641/edwin-ai-monitor-android@%s/site-assets/%s/' % (ASSET_SHA, SLUG))
 TODAY = '2026-10-24'
 INDEXNOW_KEY = '7d4c2a9e1f6b8035c4e2a7d9b1f60c38'
-BRAND = 'R&C'
-BRAND_FULL = 'R&C - Retail & Commercial Design & Build'
+BRAND = 'R&C Spaceworks'
+BRAND_FULL = 'R&C Spaceworks - Retail & Commercial Design & Build'
 TAGLINE = 'Retail spaces. Commercial interiors. Built around your business.'
 
 if LIVE:
     assert DOMAIN and WA_NUMBER, 'LIVE needs DOMAIN and WA_NUMBER confirmed'
 
 PENDING = [
-    ('Domain', 'Final website address not chosen yet.'),
-    ('Operating company', 'Registered business name and UEN to be confirmed before launch.'),
-    ('Enquiry line', 'WhatsApp number for R&C enquiries to be confirmed.'),
-    ('Who delivers the work', 'Delivery arrangements to be confirmed before projects are taken on.'),
-    ('Service area', 'Areas served to be confirmed.'),
+    ('Operating company', 'Registered business name and UEN to be confirmed.'),
+    ('Domain', 'rcspaceworks.com is chosen but not registered yet.'),
 ]
+
+# Real work supplied by Edwin 24 Oct 2026 ("real projects" by the company). Each upload carried the caption
+# "AI styling concept - proposed additions": the carpentry is real, decor items were added with AI styling.
+REAL = [
+    ('real-shelving', 'Built-in shelving bay', 'Full-height open shelving with adjustable shelves and a low storage counter beside it.'),
+    ('real-pantry-counter', 'Pantry counter and cabinets', 'Handle-less drawers and doors under a stone-look top, with a floating shelf above.'),
+    ('real-sink-counter', 'Sink counter with drawers', 'Undermount sink run with cabinets, drawers and a floating shelf with under-shelf lighting.'),
+    ('real-wall-cabinet', 'Wall cabinet with adjustable shelves', 'Top-hung cabinets above the hood, fitted with concealed hinges and adjustable shelves.'),
+    ('real-pantry-drawers', 'Drawer stack detail', 'Three-drawer stack and double-door cabinet with recessed finger pulls.'),
+]
+REAL_NOTE = 'Real R&C Spaceworks carpentry. Decor items in these photos were added with AI styling.'
+WORKSHOP = []  # filenames of real workshop photos (Edwin uploading 24 Oct 2026 evening)
 
 # ---------- page registry ----------
 SVC = {p['path']: p for p in C_SVC.PAGES}
 AVLP = {p['path']: p for p in C_AVL.PAGES}
 SPC = {p['path']: p for p in C_SPC.PAGES}
 GDE = {p['path']: p for p in C_GDE.PAGES}
+DAILY = sorted(json.load(open(os.path.join(HERE, 'content', 'daily.json'))), key=lambda d: d['date'], reverse=True)
 ALL_CONTENT = {}
 for d in (SVC, AVLP, SPC, GDE):
     ALL_CONTENT.update(d)
@@ -73,12 +84,13 @@ SHORT = {
     '/spaces/offices-showrooms/': 'Offices & showrooms', '/spaces/cafes-service-counters/': 'Cafes & service counters',
     '/spaces/salons-beauty-studios/': 'Salons & beauty studios', '/services/': 'Services', '/spaces/': 'Spaces',
     '/design-concepts/': 'Design concepts', '/guides/': 'Guides', '/about/': 'About', '/contact/': 'Contact',
-    '/privacy-policy/': 'Privacy policy', '/': 'Home',
+    '/privacy-policy/': 'Privacy policy', '/': 'Home', '/projects/': 'Projects & workshop',
+    '/design-concepts/concept-of-the-day/': 'AI concept of the day',
 }
 for p in GDE.values():
     SHORT[p['path']] = p['h1']
 
-NAV = [('/retail-commercial-design-build/', 'Design & Build'), ('/services/', 'Services'), ('/avl/', 'AVL'),
+NAV = [('/services/', 'Services'), ('/avl/', 'AVL'), ('/projects/', 'Projects'),
        ('/spaces/', 'Spaces'), ('/design-concepts/', 'Concepts'), ('/guides/', 'Guides'), ('/about/', 'About'),
        ('/contact/', 'Contact')]
 
@@ -112,6 +124,23 @@ def img_url(key, small=False):
     return IMG + key + ('-640' if small else '') + '.webp'
 
 
+def daily_url(d, small=False):
+    sha = ASSET_SHA if d['asset_sha'] == 'ASSET_SHA' else d['asset_sha']
+    base = os.environ.get('RC_IMG') or ('https://cdn.jsdelivr.net/gh/drdigital641/edwin-ai-monitor-android@%s/site-assets/%s/' % (sha, SLUG))
+    return base + d['image'] + ('-640' if small else '') + '.webp'
+
+
+def nice_date(iso):
+    import datetime
+    return datetime.date.fromisoformat(iso).strftime('%-d %b %Y')
+
+
+def real_pic(key, alt, eager=False):
+    return ('<img src="%s" srcset="%s 640w, %s 1100w" sizes="(max-width: 700px) 80vw, 30vw" width="640" height="480" alt="%s"%s decoding="async">'
+            '<span class="tag tag-real">Real project</span>') % (img_url(key, True), img_url(key, True), img_url(key), E(alt),
+                                                                ' loading="eager"' if eager else ' loading="lazy"')
+
+
 def pic(key, alt, cls='', eager=False, small=False, tag=True):
     w = 640 if small else 1024
     srcset = '%s 640w, %s 1024w' % (img_url(key, True), img_url(key))
@@ -127,14 +156,17 @@ def pic(key, alt, cls='', eager=False, small=False, tag=True):
 def wa_link(topic, frm):
     if not WA_NUMBER:
         return None
-    msg = 'Hi R&C, I would like to discuss %s. (Page: %s, ref: website)' % (topic, frm)
+    msg = 'Hi R&C Spaceworks, I would like to discuss %s. (Page: %s, ref: website)' % (topic, frm)
     return 'https://wa.me/%s?text=%s' % (WA_NUMBER, quote(msg))
+
+
+WA_SVG = '<svg width="18" height="18" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2Zm0 18.2a8.2 8.2 0 0 1-4.2-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2Zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8-.2-.1-.4-.1-.6.1l-.8 1c-.1.2-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.2-.4.2-.4.7-1.3.1-.2 0-.3 0-.4l-.8-1.8c-.2-.5-.4-.4-.6-.4h-.5a1 1 0 0 0-.7.3 3 3 0 0 0-.9 2.2 5.2 5.2 0 0 0 1.1 2.7 11.8 11.8 0 0 0 4.5 4c1.7.7 2.3.8 3.2.6.5-.1 1.5-.6 1.7-1.2.2-.6.2-1.1.2-1.2-.1-.1-.2-.2-.5-.3Z"/></svg>'
 
 
 def cta(frm, topic='my space', label='Discuss Your Space', cls='btn btn-main'):
     w = wa_link(topic, frm)
     if w:
-        return '<a class="%s" href="%s" rel="noopener">%s</a>' % (cls, E(w), label)
+        return '<a class="%s" href="%s" rel="noopener">%s%s</a>' % (cls, E(w), WA_SVG, label)
     return '<a class="%s" href="%s">%s</a>' % (cls, rel(frm, '/contact/'), label)
 
 
@@ -159,8 +191,10 @@ def faq_schema(faqs):
 def org_schema():
     o = {'@type': 'Organization', '@id': BASE + '#org', 'name': BRAND_FULL, 'alternateName': BRAND, 'url': BASE,
          'logo': BASE + 'icon-512.png', 'slogan': TAGLINE,
-         'description': 'Design and build for retail and commercial spaces in Singapore: carpentry, renovation, electrical works, '
-                        'tiling and flooring, painting and finishing, and audio, visual and lighting (AVL).'}
+         'telephone': PHONE_DISPLAY, 'areaServed': {'@type': 'Country', 'name': 'Singapore'},
+         'contactPoint': {'@type': 'ContactPoint', 'telephone': PHONE_DISPLAY, 'contactType': 'sales', 'availableLanguage': ['English']},
+         'description': 'Design and build for retail and commercial spaces in Singapore, with its own carpentry workshop: carpentry, renovation, '
+                        'electrical works, tiling and flooring, painting and finishing, and audio, visual and lighting (AVL).'}
     return o
 
 
@@ -192,7 +226,15 @@ def svc_tile(frm, path):
 
 
 # ---------- layout ----------
+def brand_title(t):
+    if t.endswith(' | R&C'):
+        t2 = t + ' Spaceworks'
+        return t2 if len(t2) <= 60 else t
+    return t
+
+
 def head(path, title, desc, schema, og_img=None):
+    title = brand_title(title)
     can = abs_url(path)
     og = og_img or (IMG + 'og-rc.jpg')
     ld = json.dumps({'@context': 'https://schema.org', '@graph': schema}, ensure_ascii=False).replace('</', '<\\/')
@@ -233,40 +275,42 @@ def header(path):
                     for p, n in NAV)
     return '''<body>
 <a class="skip" href="#main">Skip to content</a>
+<div class="strip"><div class="wrap"><span>Own carpentry workshop</span><span>Shops · Offices · F&amp;B · Salons</span><a href="%s" rel="noopener">WhatsApp %s</a></div></div>
 <header class="top"><div class="wrap">
-<a class="brand" href="%s"><img src="%sicon-192.png" width="38" height="38" alt=""><span>R&amp;C<small>Retail &amp; Commercial Design &amp; Build</small></span></a>
+<a class="brand" href="%s"><img src="%sicon-192.png" width="40" height="40" alt=""><span>R&amp;C Spaceworks<small>Retail &amp; Commercial Design &amp; Build</small></span></a>
 <nav class="nav" id="nav" aria-label="Main">%s</nav>
 %s
 <button class="menu-btn" type="button" aria-controls="nav" aria-expanded="false">Menu</button>
 </div></header>
 <main id="main">
-''' % (rel(path, '/'), rel(path, '/'), links, cta(path, 'my space', 'Discuss Your Space'))
+''' % (E(wa_link('my space', path) or rel(path, '/contact/')), PHONE_DISPLAY, rel(path, '/'), rel(path, '/'), links, cta(path, 'my space', 'WhatsApp Us'))
 
 
 def footer(path):
     col = lambda paths: ''.join('<li><a href="%s">%s</a></li>' % (rel(path, p), E(SHORT[p])) for p in paths)
     return '''</main>
 <footer class="foot"><div class="wrap">
-<div><h3>R&amp;C</h3><p>%s</p><p>Design &amp; build for retail and commercial spaces in Singapore: carpentry, renovation, electrical, flooring, finishing and AVL.</p>%s</div>
+<div><img class="flogo" src="%sicons/logo-full-light.png" width="220" height="141" alt="R&amp;C Spaceworks - Retail &amp; Commercial Design &amp; Build" loading="lazy"><p>%s</p><p>WhatsApp <a href="%s" rel="noopener">%s</a></p>%s</div>
 <div><h3>Services</h3><ul>%s</ul></div>
 <div><h3>AVL &amp; spaces</h3><ul>%s</ul></div>
 <div><h3>Plan</h3><ul>%s</ul></div>
-<p class="small">Images on this site are AI design concepts for discussion, not completed projects. &copy; 2026 %s.</p>
+<p class="small">Photos marked "Real project" show R&amp;C Spaceworks carpentry (decor added with AI styling). Photos marked "AI design concept" are ideas, not completed work. &copy; 2026 %s.</p>
 </div></footer>
+<a class="wa-float" href="%s" rel="noopener" aria-label="WhatsApp R&amp;C Spaceworks">%sWhatsApp %s</a>
 <script src="%src.js?v=%s" defer></script>
 <script src="%swa-tap-counter.js?v=%s" defer></script>
 </body>
 </html>
-''' % (E(TAGLINE), pending_box([('Operating company', 'name and UEN to be confirmed'), ('Contact', 'enquiry line to be confirmed')]),
+''' % (rel(path, '/'), E(TAGLINE), E(wa_link('my space', path) or ''), PHONE_DISPLAY, pending_box([('Operating company', 'name and UEN to be confirmed')]),
        col(SERVICE_ORDER), col(['/avl/', '/avl/commercial-audio-systems/', '/avl/display-visual-systems/', '/avl/architectural-feature-lighting/', '/spaces/retail-shops-boutiques/', '/spaces/cafes-service-counters/']),
-       col(['/design-concepts/', '/guides/', '/about/', '/contact/', '/privacy-policy/']), E(BRAND_FULL),
-       rel(path, '/'), vhash('rc.js'), rel(path, '/'), vhash('wa-tap-counter.js'))
+       col(['/projects/', '/design-concepts/', '/design-concepts/concept-of-the-day/', '/guides/', '/about/', '/contact/', '/privacy-policy/']), E(BRAND_FULL),
+       E(wa_link('my space', path) or ''), WA_SVG, PHONE_DISPLAY, rel(path, '/'), vhash('rc.js'), rel(path, '/'), vhash('wa-tap-counter.js'))
 
 
 def cta_band(path, topic):
     return ('<div class="wrap"><div class="cta-band rv"><div><h2>Planning a shop, office, cafe or salon space?</h2>'
-            '<p>Send your floor plan, unit photos, intended use and target opening date, and we\'ll discuss your scope.</p></div>'
-            '<div>%s</div></div></div>') % cta(path, topic, 'Discuss Your Space', 'btn btn-light')
+            '<p>WhatsApp your floor plan, unit photos, what the space is for and your target opening date. We\'ll discuss your scope.</p></div>'
+            '<div>%s</div></div></div>') % cta(path, topic, 'WhatsApp Us', 'btn btn-light')
 
 
 PAGES_OUT = []  # (path, lastmod)
@@ -385,22 +429,21 @@ def build_concepts():
 
 # ---------- home ----------
 HOME_FAQ = [
-    ('What does R&C do?', 'R&C is a design and build brand for retail and commercial spaces in Singapore. It covers integrated planning, '
-     'custom carpentry, renovation, electrical works, tiling and flooring, painting and finishing, and audio, visual and lighting (AVL) '
-     'for shops, offices, showrooms, cafes and salons.'),
-    ('Are the photos on this site completed projects?', 'No. Every image on this site is an AI design concept, labelled as such, to help '
-     'discuss ideas. Photographs of actual completed work will only be shown once real projects exist and the owners agree.'),
-    ('What should I send to start?', 'A floor plan or unit layout, a few photos of the unit, how you plan to use the space, your landlord or '
-     'mall fit-out guidelines if you have them, and your target opening date. That is enough for a first scope discussion.'),
-    ('Can AVL be planned together with the renovation?', 'Yes, and it is usually easier that way. Speaker, screen and feature lighting '
-     'positions affect ceilings, wall backing, power points and cable routes, so planning them during the fit-out avoids rework later.'),
+    ('What does R&C Spaceworks do?', 'R&C Spaceworks designs and builds retail and commercial spaces in Singapore: custom carpentry, renovation, '
+     'electrical works, tiling and flooring, painting and finishing, and audio, visual and lighting (AVL) for shops, offices, F&B outlets and salons.'),
+    ('Do you have your own carpentry workshop?', 'Yes. R&C Spaceworks has its own carpentry workshop, so counters, cabinets and shelving can be '
+     'made to your measurements. Workshop photos are on the Projects page.'),
+    ('Are the photos real?', 'Photos marked "Real project" show R&C Spaceworks carpentry; decor items in them were added with AI styling. '
+     'Photos marked "AI design concept" are ideas to discuss, not completed work.'),
+    ('What should I send to start?', 'WhatsApp a floor plan or unit layout, a few photos of the unit, what the space is for and your target opening date. '
+     'Landlord or mall fit-out guidelines help too, if you have them.'),
 ]
 
-PROCESS = [('Brief', 'Your business, how the space will be used, priorities and target opening date.'),
-           ('Site assessment', 'Measure the unit, check existing services and landlord or mall requirements.'),
-           ('Scope & quotation', 'A written scope that separates what is included from what is not.'),
+PROCESS = [('WhatsApp us', 'Send your floor plan, unit photos, what the space is for and your target opening date.'),
+           ('Site visit', 'We measure the unit and check existing services and landlord or mall rules.'),
+           ('Scope & quotation', 'A written scope that shows what is included and what is not.'),
            ('Design', 'Layout, carpentry details, finishes, lighting and AVL positions agreed before work starts.'),
-           ('Installation', 'Trades sequenced on site within the building\'s working rules.'),
+           ('Workshop & installation', 'Carpentry made in our workshop, then trades sequenced on site.'),
            ('Handover', 'Walk-through, defects list and the information you need to run the space.')]
 
 
@@ -410,74 +453,155 @@ def concept_line(c):
     return s[0].rstrip('.') + '.'
 
 
-def build_home():
-    path = '/'
-    spaces = ''.join(card(path, p['path'], SHORT[p['path']], p['card'], p['image']) for p in C_SPC.PAGES)
-    svcs = ''.join(svc_tile(path, s) for s in SERVICE_ORDER)
-    concepts = ''.join('<a class="card" href="%s#%s"><div class="ph">%s</div><div class="bd"><h3>%s</h3><p>%s</p><span class="more">View concept</span></div></a>' % (
-        rel(path, '/design-concepts/'), E(c['slug']), pic(c['image'], c['title'] + ' (AI design concept)', small=True), E(c['title']),
-        E(concept_line(c))) for c in sorted(C_SPC.CONCEPTS, key=lambda c: c['image'] in ('hero-boutique', 'office-reception', 'cafe-counter', 'salon-stations'))[:5])
-    steps = ''.join('<li class="rv"><strong>%s</strong><span>%s</span></li>' % (E(a), E(b)) for a, b in PROCESS)
-    trio = ''.join('<div><b>%s</b><span>%s</span></div>' % (E(t['title']), E(t['text'])) for t in C_AVL.AVL_TRIO)
-    guides = ''.join(card(path, p['path'], p['h1'], p['card'], p['image'], 'Read guide') for p in C_GDE.PAGES[:3])
-    faqs = ''.join('<details><summary>%s</summary><p>%s</p></details>' % (E(q), E(a)) for q, a in HOME_FAQ)
-    body = '''<section class="hero"><div class="wrap">
-<div><span class="eyebrow">Retail &amp; Commercial Design &amp; Build</span>
+def real_fig(k, t, dsc):
+    return '<figure class="real rv"><div class="ph">%s</div><figcaption><b>%s</b>%s</figcaption></figure>' % (
+        real_pic(k, t + ' by R&C Spaceworks'), E(t), E(dsc))
+
+
+def workshop_block(path):
+    if WORKSHOP:
+        return '<div class="grid g3">%s</div>' % ''.join(
+            '<figure class="real rv"><div class="ph"><img src="%s" width="640" height="480" alt="R&amp;C Spaceworks carpentry workshop" loading="lazy">'
+            '<span class="tag tag-real">Our workshop</span></div></figure>' % (IMG + w) for w in WORKSHOP)
+    if LIVE:
+        return ''
+    return '<div class="grid g3 ws-slots">%s</div>' % ''.join(
+        '<div class="ws-slot"><span>Workshop photo %d</span><small>coming soon</small></div>' % i for i in (1, 2, 3))
+
+
+HOME_TPL = '''<section class="hero"><div class="wrap">
+<div><span class="eyebrow">R&amp;C Spaceworks &middot; Singapore</span>
 <h1>Design &amp; Build for Retail and Commercial Spaces</h1>
 <p class="lede">From custom carpentry and renovation to electrical, flooring and integrated audio, visual and lighting.</p>
-<div class="btns">%s<a class="btn btn-ghost" href="%s">Explore Our Services</a></div>
-<ul class="facts"><li>Shops &amp; boutiques</li><li>Offices &amp; showrooms</li><li>Cafes &amp; counters</li><li>Salons &amp; studios</li></ul>
+<div class="btns">{cta}<a class="btn btn-ghost" href="{services}">Explore Our Services</a></div>
+<ul class="ticks"><li>Own carpentry workshop</li><li>One contact from design to handover</li><li>Written scope before work starts</li></ul>
 </div>
-<div class="hero-img">%s</div>
+<figure class="hero-img daily"><a href="{dailyp}#d{ddate}">{dimg}<span class="tag">AI design concept</span></a>
+<figcaption><span class="dtag">AI concept of the day &middot; {dnice}</span><b>{dtitle}</b><a href="{dailyp}">See past concepts &rarr;</a></figcaption></figure>
 </div></section>
 
+<section class="quick"><div class="wrap"><dl>{facts}</dl></div></section>
+
+<section class="band"><div class="wrap">
+<div class="head rv"><h2>Our real projects</h2><p>Carpentry made by R&amp;C Spaceworks. Decor items in these photos were added with AI styling.</p></div>
+<div class="rail rail-real">{real}</div>
+<p class="rv" style="margin-top:14px"><a href="{projects}">Projects &amp; workshop &rarr;</a></p></div></section>
+
 <section class="band sand"><div class="wrap">
-<div class="head rv"><h2>Spaces built around how your business works</h2><p>A boutique, a reception, a service counter and a salon station each ask different things of a layout.</p></div>
-<div class="grid g4">%s</div></div></section>
+<div class="head rv"><h2>Our carpentry workshop</h2><p>Counters, cabinets and shelving are made in our own workshop to your measurements, then installed on site.</p></div>
+{workshop}</div></section>
 
 <section class="band"><div class="wrap">
-<div class="head rv"><h2>Services</h2><p>One coordinated scope, or the specialist trade you need. Each service has its own page with the details.</p></div>
-<div class="svc">%s</div>
-<p class="rv" style="margin-top:20px"><a href="%s">See all services and AVL &rarr;</a></p></div></section>
+<div class="head rv"><h2>Our services</h2><p>One coordinated scope, or just the trade you need. Tap a service for the details.</p></div>
+<div class="svc">{svcs}</div>
+<p class="rv" style="margin-top:20px"><a href="{services}">All services and AVL &rarr;</a></p></div></section>
 
-<section class="band olive"><div class="wrap">
-<div class="head rv"><h2>Design concepts</h2><p>AI-generated design concepts to start a conversation. They are ideas, not completed projects.</p></div>
-<div class="rail">%s</div></div></section>
+<section class="band sand"><div class="wrap">
+<div class="head rv"><h2>Spaces we work on</h2><p>A boutique, an office reception, an F&amp;B counter and a salon station each need a different layout.</p></div>
+<div class="grid g4">{spaces}</div></div></section>
 
 <section class="band"><div class="wrap">
-<div class="head rv"><h2>How an R&amp;C project is planned to run</h2><p>The intended process, from first brief to handover.</p></div>
-<ol class="steps">%s</ol></div></section>
+<div class="head rv"><h2>How it works</h2><p>Six simple steps, from your first WhatsApp to handover.</p></div>
+<ol class="steps">{steps}</ol></div></section>
 
 <section class="band dark"><div class="wrap avl">
-<div class="pic rv">%s</div>
+<div class="pic rv">{avlpic}</div>
 <div class="rv"><span class="eyebrow" style="color:var(--oak-l)">AVL: audio, visual and lighting</span>
 <h2>Sound, screens and light, planned with the space</h2>
-<p>Ceiling speakers, display screens and feature lighting all need backing, power and cable routes. Planning them with the fit-out keeps them neat and avoids rework.</p>
-<div class="trio">%s</div>
-<div class="btns"><a class="btn btn-light" href="%s">Explore AVL</a></div></div>
+<p>Ceiling speakers, display screens and feature lighting need backing, power and cable routes. Planning them with the fit-out keeps them neat and avoids rework.</p>
+<div class="trio">{trio}</div>
+<div class="btns"><a class="btn btn-light" href="{avl}">Explore AVL</a></div></div>
 </div></section>
 
 <section class="band sand"><div class="wrap">
-<div class="head rv"><h2>Planning guides</h2><p>Practical reading for shop owners and tenants.</p></div>
-<div class="grid g3">%s</div>
-<p class="rv" style="margin-top:20px"><a href="%s">All guides &rarr;</a></p></div></section>
+<div class="head rv"><h2>Planning guides</h2><p>Useful reading for shop owners and tenants.</p></div>
+<div class="grid g3">{guides}</div>
+<p class="rv" style="margin-top:20px"><a href="{guidesp}">All guides &rarr;</a></p></div></section>
 
 <section class="band" id="enquire"><div class="wrap enq">
-<div class="rv"><h2>Discuss your space</h2><p>Start with what you already have. These four things are enough for a first conversation about scope:</p>
-<ul class="check"><li>Floor plan or unit layout</li><li>A few photos of the unit as it is now</li><li>How you intend to use the space</li><li>Your target opening date</li></ul></div>
-<div class="panel rv"><h3>Ready when you are</h3><p>Share your details and we'll discuss your scope.</p>%s<div class="btns">%s</div></div>
+<div class="rv"><h2>Get a quote on WhatsApp</h2><p>Send what you already have. These four things are enough to start:</p>
+<ul class="check"><li>Floor plan or unit layout</li><li>A few photos of the unit now</li><li>What the space is for</li><li>Your target opening date</li></ul></div>
+<div class="panel rv"><h3>WhatsApp {phone}</h3><p>Tell us about your shop, office, F&amp;B outlet or salon and we'll discuss your scope.</p><div class="btns">{cta}</div></div>
 </div></section>
 
-<section class="band sand"><div class="wrap"><div class="faq" style="max-width:820px"><h2>Questions</h2>%s</div></div></section>
-''' % (cta(path), rel(path, '/services/'), pic('hero-boutique', 'Small Singapore boutique unit with oak shelving, cream walls and an olive accent behind the counter (AI design concept)', eager=True),
-       spaces, svcs, rel(path, '/services/'), concepts, steps,
-       pic('showroom', 'Showroom with a display screen, ceiling speakers and warm feature lighting (AI design concept)'), trio, rel(path, '/avl/'),
-       guides, rel(path, '/guides/'), pending_box([('Enquiry line', 'WhatsApp number to be confirmed')]), cta(path), faqs)
+<section class="band sand"><div class="wrap"><div class="faq" style="max-width:820px"><h2>Common questions</h2>{faqs}</div></div></section>
+'''
+
+
+def build_home():
+    path = '/'
+    d = DAILY[0]
+    dp = rel(path, '/design-concepts/concept-of-the-day/')
+    facts = [('What we do', 'Carpentry, renovation, electrical, flooring, painting and AVL'),
+             ('For', 'Shops, offices &amp; showrooms, F&amp;B outlets, salons'),
+             ('Workshop', 'Our own carpentry workshop'),
+             ('Enquiries', 'WhatsApp <a href="%s" rel="noopener">%s</a>' % (E(wa_link('my space', path)), PHONE_DISPLAY))]
+    body = HOME_TPL.format(
+        cta=cta(path, 'my space', 'WhatsApp Us'), services=rel(path, '/services/'), dailyp=dp, ddate=d['date'],
+        dimg='<img src="%s" srcset="%s 640w, %s 1024w" sizes="(max-width: 860px) 92vw, 46vw" width="1024" height="1024" alt="%s" loading="eager" fetchpriority="high">' % (
+            daily_url(d), daily_url(d, True), daily_url(d), E(d['alt'])),
+        dnice=nice_date(d['date']), dtitle=E(d['title']),
+        facts=''.join('<div><dt>%s</dt><dd>%s</dd></div>' % f for f in facts),
+        real=''.join(real_fig(*r) for r in REAL), projects=rel(path, '/projects/'), workshop=workshop_block(path),
+        svcs=''.join(svc_tile(path, s) for s in SERVICE_ORDER),
+        spaces=''.join(card(path, p['path'], SHORT[p['path']], p['card'], p['image']) for p in C_SPC.PAGES),
+        steps=''.join('<li class="rv"><strong>%s</strong><span>%s</span></li>' % (E(a), E(b)) for a, b in PROCESS),
+        avlpic=pic('showroom', 'Showroom with a display screen, ceiling speakers and warm feature lighting (AI design concept)'),
+        trio=''.join('<div><b>%s</b><span>%s</span></div>' % (E(t['title']), E(t['text'])) for t in C_AVL.AVL_TRIO), avl=rel(path, '/avl/'),
+        guides=''.join(card(path, p['path'], p['h1'], p['card'], p['image'], 'Read guide') for p in C_GDE.PAGES[:3]),
+        guidesp=rel(path, '/guides/'), phone=PHONE_DISPLAY,
+        faqs=''.join('<details><summary>%s</summary><p>%s</p></details>' % (E(q), E(a)) for q, a in HOME_FAQ))
     schema = [org_schema(), {'@type': 'WebSite', '@id': BASE + '#site', 'name': BRAND_FULL, 'url': BASE, 'publisher': {'@id': BASE + '#org'}},
               faq_schema(HOME_FAQ)]
-    title = 'Retail & Commercial Design & Build Singapore | R&C'
-    desc = 'Design and build for Singapore shops, offices, cafes and salons: custom carpentry, renovation, electrical, flooring, finishing and AVL.'
-    write(path, head(path, title, desc, schema) + header(path) + body + footer(path))
+    title = 'Retail & Commercial Design & Build | R&C Spaceworks'
+    desc = 'Design and build for Singapore shops, offices, F&B outlets and salons, with our own carpentry workshop: carpentry, renovation, electrical and AVL.'
+    write(path, head(path, title, desc, schema, og_img=daily_url(d)) + header(path) + body + footer(path))
+
+
+def build_projects():
+    path = '/projects/'
+    inner = ('<div class="head"><h2>Real projects</h2><p>%s</p></div><div class="grid g3">%s</div>'
+             '<div class="head" style="margin-top:50px"><h2>Our carpentry workshop</h2><p>R&amp;C Spaceworks makes its carpentry in its own workshop, '
+             'so counters, cabinets and shelving are built to the measurements taken on site.</p></div>%s%s') % (
+        E(REAL_NOTE), ''.join(real_fig(*r) for r in REAL), workshop_block(path),
+        '' if WORKSHOP else pending_box([('Workshop photos', 'real workshop photos are being added')], 'Coming soon'))
+    crumbs = [(path, 'Projects & workshop')]
+    schema = [org_schema(), crumbs_schema(crumbs), {'@type': 'CollectionPage', 'name': 'R&C Spaceworks projects and workshop', 'url': abs_url(path)}]
+    body = ('%s<section class="phead"><div class="wrap"><div><span class="eyebrow">Projects &amp; workshop</span>'
+            '<h1>Our projects and carpentry workshop</h1><p class="answer">Built-in shelving, pantry counters, drawer units and wall cabinets made by '
+            'R&amp;C Spaceworks in its own carpentry workshop, then installed on site.</p><div class="btns">%s</div></div>'
+            '<div class="pic">%s</div></div></section><section class="band sand"><div class="wrap">%s</div></section>%s') % (
+        crumbs_html(path, crumbs), cta(path, 'a carpentry project', 'WhatsApp Us'),
+        real_pic('real-sink-counter', 'Sink counter with drawers by R&C Spaceworks', eager=True), inner, cta_band(path, 'a carpentry project'))
+    write(path, head(path, 'Carpentry Projects & Workshop | R&C Spaceworks',
+                     'Real carpentry by R&C Spaceworks: built-in shelving, pantry counters, drawers and wall cabinets made in our own Singapore workshop.',
+                     schema, og_img=img_url('real-sink-counter')) + header(path) + body + footer(path))
+
+
+def build_daily():
+    path = '/design-concepts/concept-of-the-day/'
+    items = []
+    for x in DAILY:
+        items.append(('<article class="concept rv" id="d%s"><div class="pic"><img src="%s" srcset="%s 640w, %s 1024w" sizes="(max-width: 800px) 92vw, 46vw" '
+                      'width="1024" height="1024" alt="%s" loading="lazy"><span class="tag">AI design concept</span></div>'
+                      '<div><span class="eyebrow">%s &middot; %s</span><h2>%s</h2><p>%s</p><ul>%s</ul></div></article>') % (
+            x['date'], daily_url(x, True), daily_url(x, True), daily_url(x), E(x['alt']), nice_date(x['date']), E(x['space']), E(x['title']),
+            E(x['summary']), ''.join('<li>%s</li>' % E(i) for i in x['ideas'])))
+    crumbs = [('/design-concepts/', 'Design concepts'), (path, 'AI concept of the day')]
+    schema = [org_schema(), crumbs_schema(crumbs),
+              {'@type': 'ImageGallery', 'name': 'AI concept of the day', 'url': abs_url(path),
+               'associatedMedia': [{'@type': 'ImageObject', 'contentUrl': daily_url(x), 'name': x['title'], 'uploadDate': x['date'],
+                                    'description': x['summary']} for x in DAILY]}]
+    body = ('%s<section class="phead"><div class="wrap" style="grid-template-columns:1fr"><div><span class="eyebrow">Gallery</span>'
+            '<h1>AI concept of the day</h1><p class="answer">A new AI-generated interior idea for a Singapore shop, office, F&amp;B outlet or salon, '
+            'dated each day. Past concepts stay here so you can browse them. They are ideas to discuss, not completed projects.</p>'
+            '<div class="btns">%s<a class="btn btn-ghost" href="%s">More design concepts</a></div></div></div></section>'
+            '<section class="band sand"><div class="wrap"><div class="prose" style="max-width:none">%s</div></div></section>%s') % (
+        crumbs_html(path, crumbs), cta(path, 'an idea from the concept of the day', 'WhatsApp Us'), rel(path, '/design-concepts/'),
+        ''.join(items), cta_band(path, 'an idea from the concept of the day'))
+    write(path, head(path, 'AI Interior Concept of the Day | R&C Spaceworks',
+                     'A dated daily AI interior concept for Singapore shops, offices, F&B outlets and salons, with every past concept kept in this gallery.',
+                     schema, og_img=daily_url(DAILY[0])) + header(path) + body + footer(path), DAILY[0]['date'])
 
 
 # ---------- about / contact / privacy / 404 ----------
@@ -494,59 +618,57 @@ def simple(path, title, desc, h1, kicker, answer, prose, crumbs, key=None, alt='
 
 
 def build_static():
-    about = '''<h2>What R&amp;C is for</h2>
-<p>R&amp;C is a design and build brand for Singapore business owners and tenants who are opening, moving or refreshing a retail or commercial space. The focus is practical: shops and boutiques, offices and showrooms, cafes and service counters, and salons and beauty studios.</p>
-<h2>What R&amp;C covers</h2>
-<ul><li><a href="/retail-commercial-design-build/">Design &amp; build</a>: integrated planning and coordination from brief to handover.</li>
-<li><a href="/services/commercial-carpentry/">Commercial carpentry</a>: counters, shelving, storage, display fixtures and reception joinery.</li>
+    about = '''<h2>Who we are</h2>
+<p>R&amp;C Spaceworks is a Singapore design and build company for retail and commercial spaces: shops and boutiques, offices and showrooms, F&amp;B outlets and service counters, and salons and beauty studios. We have our own carpentry workshop, so counters, cabinets and shelving are made to the measurements taken on site.</p>
+<h2>What we cover</h2>
+<ul><li><a href="/retail-commercial-design-build/">Design &amp; build</a>: one point of contact from brief to handover.</li>
+<li><a href="/services/commercial-carpentry/">Carpentry</a>: counters, shelving, storage, display fixtures and reception joinery, made in our workshop.</li>
 <li><a href="/services/commercial-renovation/">Renovation</a>, <a href="/services/commercial-electrical-works/">electrical works</a>, <a href="/services/commercial-tiling-flooring/">tiling and flooring</a>, and <a href="/services/commercial-painting-finishing/">painting and finishing</a>.</li>
 <li><a href="/avl/">AVL</a>: audio, visual and lighting planned with the space.</li></ul>
-<h2>How this website handles evidence</h2>
-<p>R&amp;C is a new brand. This site therefore shows no client list, reviews, project counts or years in business, because none can be verified yet. Every image is an AI design concept and is labelled as one. Photographs of actual completed work, and any credentials, will be added only when they are real and can be checked.</p>
-<h2>Business details</h2>
-<p>The operating company, contact details and delivery arrangements will be published here before R&amp;C takes on projects.</p>
-%s''' % pending_box()
-    simple('/about/', 'About R&C | Retail & Commercial Design & Build', 'About R&C, a Singapore design and build brand for shops, offices, cafes and salons: what it covers and how this site handles evidence.',
-           'About R&C', 'About', 'R&C - Retail & Commercial Design & Build is a new Singapore brand for business owners and tenants planning shops, offices, showrooms, cafes and salons, covering design and build, carpentry, renovation, electrical, flooring, finishing and AVL.',
+<h2>Our work and our photos</h2>
+<p>See <a href="/projects/">our projects and workshop</a>. Photos marked "Real project" show our own carpentry; decor items in them were added with AI styling. Photos marked "AI design concept" are ideas to discuss, not completed work. We do not publish reviews, client names or figures we cannot back up.</p>
+<h2>Contact</h2>
+<p>WhatsApp <a href="%s" rel="noopener">%s</a>. We serve businesses in Singapore.</p>
+%s''' % (E(wa_link('my space', '/about/')), PHONE_DISPLAY, pending_box([('Operating company', 'registered name and UEN to be confirmed')]))
+    simple('/about/', 'About R&C Spaceworks | Design & Build Singapore', 'About R&C Spaceworks: Singapore design and build for shops, offices, F&B outlets and salons, with our own carpentry workshop.',
+           'About R&C Spaceworks', 'About', 'R&C Spaceworks is a Singapore design and build company for shops, offices, showrooms, F&B outlets and salons. It has its own carpentry workshop and covers carpentry, renovation, electrical, flooring, painting and AVL.',
            about, [('/about/', 'About')], 'design-planning', 'Floor plan and material samples on a planning table (AI design concept)',
-           [{'@type': 'AboutPage', 'name': 'About R&C', 'url': abs_url('/about/')}])
+           [{'@type': 'AboutPage', 'name': 'About R&C Spaceworks', 'url': abs_url('/about/')}])
     w = wa_link('my space', '/contact/')
-    contact_cta = ('<p><a class="btn btn-main" href="%s" rel="noopener">WhatsApp R&amp;C</a></p>' % E(w)) if w else pending_box(
-        [('Enquiry line', 'The R&C WhatsApp number is being set up. Until then this page lists what to prepare.')], 'Enquiry line opening soon')
-    contact = '''<h2>How to start</h2>
-<p>The quickest way to a useful first conversation is to share what you already have about the unit and the business.</p>
-%s
-<h2>What to prepare</h2>
+    contact = '''<h2>WhatsApp us</h2>
+<p>The fastest way to start is a WhatsApp message to <strong>%s</strong> with what you already have about the unit and the business.</p>
+<p><a class="btn btn-main" href="%s" rel="noopener">%sWhatsApp %s</a></p>
+<h2>What to send</h2>
 <ol><li><strong>Floor plan or unit layout</strong>, from the landlord, mall or previous tenant if you have one.</li>
 <li><strong>Photos of the unit</strong> as it is now: shopfront, each wall, ceiling and floor.</li>
-<li><strong>Intended use</strong>: what you sell or do there, how many staff, what customers do in the space.</li>
+<li><strong>What the space is for</strong>: what you sell or do there, how many staff, what customers do in the space.</li>
 <li><strong>Target opening date</strong>, plus any handover or fit-out period in your lease.</li>
 <li><strong>Landlord or mall fit-out guidelines</strong>, if you have them.</li>
 <li><strong>Priorities</strong>: what must be right on day one, and what can wait.</li></ol>
-<p class="note">Not sure where to begin? Read <a href="/guides/how-to-brief-a-shop-fit-out/">how to brief a shop fit-out</a> first.</p>''' % contact_cta
-    simple('/contact/', 'Contact R&C | Discuss Your Retail or Office Space', 'Discuss your shop, office, cafe or salon space with R&C: what to send for a first scope conversation, including floor plan, photos and opening date.',
-           'Discuss your space', 'Contact', 'Send a floor plan, a few photos of the unit, how you will use the space and your target opening date. That is enough for a first conversation about scope, options and next steps.',
+<p class="note">Not sure where to begin? Read <a href="/guides/how-to-brief-a-shop-fit-out/">how to brief a shop fit-out</a> first.</p>''' % (PHONE_DISPLAY, E(w), WA_SVG, PHONE_DISPLAY)
+    simple('/contact/', 'Contact R&C Spaceworks | WhatsApp +65 8659 4553', 'WhatsApp R&C Spaceworks at +65 8659 4553 about your shop, office, F&B or salon space. Send your floor plan, unit photos and opening date.',
+           'Contact us', 'Contact', 'WhatsApp R&C Spaceworks at +65 8659 4553. Send a floor plan, a few photos of the unit, what the space is for and your target opening date, and we will discuss your scope.',
            contact, [('/contact/', 'Contact')], 'office-reception', 'Office reception with a curved oak counter (AI design concept)',
-           [{'@type': 'ContactPage', 'name': 'Contact R&C', 'url': abs_url('/contact/')}])
+           [{'@type': 'ContactPage', 'name': 'Contact R&C Spaceworks', 'url': abs_url('/contact/')}])
     privacy = '''<p>Last updated 24 October 2026.</p>
 <h2>What this website collects</h2>
 <p>This website has no forms and sets no advertising cookies. When you tap a WhatsApp button, an anonymous count is recorded (the page you were on, whether you used a phone or computer, and the referring site) so we can see which pages help visitors. It does not record your name, number or the message you send.</p>
 <h2>Messages you send</h2>
-<p>If you contact R&amp;C, the details you choose to share (such as your name, number, floor plan and photos) are used only to respond to your enquiry and discuss your project, in line with Singapore's Personal Data Protection Act. They are not sold or shared for marketing.</p>
+<p>If you contact R&amp;C Spaceworks, the details you choose to share (such as your name, number, floor plan and photos) are used only to respond to your enquiry and discuss your project, in line with Singapore's Personal Data Protection Act. They are not sold or shared for marketing.</p>
 <h2>Third-party services</h2>
 <p>WhatsApp messages are handled by WhatsApp under its own privacy policy. Fonts and scripts on this site are served from this website.</p>
 <h2>Access, correction and questions</h2>
-<p>You may ask to see, correct or delete personal data you have shared with R&amp;C.</p>
+<p>You may ask to see, correct or delete personal data you have shared with R&amp;C Spaceworks.</p>
 %s''' % pending_box([('Data protection contact', 'to be published with the operating company details')])
-    simple('/privacy-policy/', 'Privacy Policy | R&C', 'How the R&C website handles personal data: no forms, an anonymous WhatsApp tap count, and how enquiry details are used.',
-           'Privacy policy', 'Privacy', 'This website has no forms and no advertising cookies. It records only an anonymous count of WhatsApp button taps. Details you send when you contact R&C are used only to answer your enquiry.',
+    simple('/privacy-policy/', 'Privacy Policy | R&C Spaceworks', 'How the R&C Spaceworks website handles personal data: no forms, an anonymous WhatsApp tap count, and how enquiry details are used.',
+           'Privacy policy', 'Privacy', 'This website has no forms and no advertising cookies. It records only an anonymous count of WhatsApp button taps. Details you send when you contact R&C Spaceworks are used only to answer your enquiry.',
            privacy, [('/privacy-policy/', 'Privacy policy')])
 
 
 def build_404():
     path = '/404/'
     r = '/preview/%s/' % SLUG if not DOMAIN else '/'
-    doc = head('/', 'Page not found | R&C', 'This page does not exist.', [org_schema()]).replace(
+    doc = head('/', 'Page not found | R&C Spaceworks', 'This page does not exist.', [org_schema()]).replace(
         '<meta name="robots" content="index, follow, max-image-preview:large">', '<meta name="robots" content="noindex">')
     # 404 is served at any depth, so use root-absolute links
     doc = re.sub(r'(href|src)="(?:\./|(?:\.\./)*)((?:favicon|icon-|apple-|site\.web|fonts/|rc\.css)[^"]*)"', lambda m: '%s="%s%s"' % (m.group(1), r, m.group(2)), doc)
@@ -573,10 +695,10 @@ def build_machine():
     with open(os.path.join(OUT, 'robots.txt'), 'w') as f:
         f.write(rb)
     lines = ['# %s' % BRAND_FULL, '', '> %s' % TAGLINE, '',
-             'R&C is a new Singapore design and build brand for retail and commercial spaces: shops and boutiques, offices and showrooms, '
+             'R&C Spaceworks is a Singapore design and build company for retail and commercial spaces, with its own carpentry workshop: shops and boutiques, offices and showrooms, '
              'cafes and service counters, salons and beauty studios. Services: integrated design and build, commercial carpentry, '
              'renovation, electrical works, tiling and flooring, painting and finishing, and audio, visual and lighting (AVL).',
-             '', 'All images on the site are AI design concepts, not completed projects. No prices, reviews or project counts are published.', '']
+             '', 'Contact: WhatsApp %s. Photos marked Real project show its own carpentry (decor added with AI styling); AI design concept images are ideas, not completed work.' % PHONE_DISPLAY, '']
     sections = [('Services', SERVICE_ORDER), ('AVL', [p['path'] for p in C_AVL.PAGES]), ('Spaces', [p['path'] for p in C_SPC.PAGES]),
                 ('Guides', [p['path'] for p in C_GDE.PAGES])]
     for name, paths in sections:
@@ -586,12 +708,12 @@ def build_machine():
             lines.append('- [%s](%s): %s' % (p['h1'], abs_url(pth), p['card']))
         lines.append('')
     lines += ['## Other', '- [Design concepts](%s): AI design concepts, clearly labelled.' % abs_url('/design-concepts/'),
-              '- [About](%s)' % abs_url('/about/'), '- [Contact](%s)' % abs_url('/contact/'), '']
+              '- [Projects & workshop](%s)' % abs_url('/projects/'), '- [AI concept of the day](%s)' % abs_url('/design-concepts/concept-of-the-day/'), '- [About](%s)' % abs_url('/about/'), '- [Contact](%s)' % abs_url('/contact/'), '']
     with open(os.path.join(OUT, 'llms.txt'), 'w') as f:
         f.write('\n'.join(lines))
     with open(os.path.join(OUT, INDEXNOW_KEY + '.txt'), 'w') as f:
         f.write(INDEXNOW_KEY)
-    man = {'name': BRAND_FULL, 'short_name': 'R&C', 'start_url': './', 'display': 'browser', 'background_color': '#fbf8f2',
+    man = {'name': BRAND_FULL, 'short_name': 'R&C Spaceworks', 'start_url': './', 'display': 'browser', 'background_color': '#fbf8f2',
            'theme_color': '#2b2925', 'icons': [{'src': 'icon-192.png', 'sizes': '192x192', 'type': 'image/png'},
                                                {'src': 'icon-512.png', 'sizes': '512x512', 'type': 'image/png'}]}
     with open(os.path.join(OUT, 'site.webmanifest'), 'w') as f:
@@ -607,9 +729,13 @@ def main():
     shutil.copytree(os.path.join(HERE, 'fonts'), os.path.join(OUT, 'fonts'))
     for name in ('favicon.ico', 'favicon-48.png', 'icon-192.png', 'icon-512.png', 'apple-touch-icon.png'):
         shutil.copy(os.path.join(HERE, 'icons', name), OUT)
+    os.makedirs(os.path.join(OUT, 'icons'), exist_ok=True)
+    shutil.copy(os.path.join(HERE, 'icons', 'logo-full-light.png'), os.path.join(OUT, 'icons'))
     build_home()
     build_hubs()
     build_concepts()
+    build_projects()
+    build_daily()
     for p in C_SVC.PAGES:
         cr = [(p['path'], SHORT[p['path']])] if p['path'] == '/retail-commercial-design-build/' else [('/services/', 'Services'), (p['path'], SHORT[p['path']])]
         content_page(p, cr)

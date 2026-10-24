@@ -37,4 +37,4 @@ Allow: /
 User-agent: *
 Allow: /
 
-Sitemap: https://pageonesingapore.com/preview/rc-design-build/sitemap.xml
+Sitemap: https://rcspaceworks.com/sitemap.xml
