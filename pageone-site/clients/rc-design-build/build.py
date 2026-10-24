@@ -40,7 +40,7 @@ TODAY = '2026-10-24'
 INDEXNOW_KEY = '7d4c2a9e1f6b8035c4e2a7d9b1f60c38'
 BRAND = 'R&C Spaceworks'
 BRAND_FULL = 'R&C Spaceworks - Retail & Commercial Design & Build'
-TAGLINE = 'Retail spaces. Commercial interiors. Built around your business.'
+TAGLINE = 'Singapore retail and commercial design & build specialists.'
 
 if LIVE:
     assert DOMAIN and WA_NUMBER, 'LIVE needs DOMAIN and WA_NUMBER confirmed'
@@ -188,13 +188,29 @@ def faq_schema(faqs):
             'acceptedAnswer': {'@type': 'Answer', 'text': a}} for q, a in faqs]}
 
 
+SPECIALTY = 'Design and build specialists for retail outlets and commercial spaces in Singapore'
+AUDIENCE = {'@type': 'BusinessAudience', 'name': 'Retail outlet and commercial space owners and tenants in Singapore',
+            'audienceType': 'Shops, boutiques, offices, showrooms, F&B outlets, cafes and salons',
+            'geographicArea': {'@type': 'Country', 'name': 'Singapore'}}
+SG = {'@type': 'Country', 'name': 'Singapore', 'sameAs': 'https://en.wikipedia.org/wiki/Singapore'}
+
+
 def org_schema():
-    o = {'@type': 'Organization', '@id': BASE + '#org', 'name': BRAND_FULL, 'alternateName': BRAND, 'url': BASE,
-         'logo': BASE + 'icon-512.png', 'slogan': TAGLINE,
-         'telephone': PHONE_DISPLAY, 'areaServed': {'@type': 'Country', 'name': 'Singapore'},
-         'contactPoint': {'@type': 'ContactPoint', 'telephone': PHONE_DISPLAY, 'contactType': 'sales', 'availableLanguage': ['English']},
-         'description': 'Design and build for retail and commercial spaces in Singapore, with its own carpentry workshop: carpentry, renovation, '
-                        'electrical works, tiling and flooring, painting and finishing, and audio, visual and lighting (AVL).'}
+    o = {'@type': ['Organization', 'GeneralContractor'], '@id': BASE + '#org', 'name': BRAND_FULL, 'alternateName': [BRAND, 'R&C'],
+         'url': BASE, 'logo': BASE + 'icon-512.png', 'image': IMG + 'og-rc.jpg', 'slogan': SPECIALTY,
+         'telephone': PHONE_DISPLAY, 'address': {'@type': 'PostalAddress', 'addressCountry': 'SG'},
+         'areaServed': SG, 'audience': AUDIENCE,
+         'knowsAbout': ['Retail shop fit-out', 'Commercial interior design and build', 'Shop renovation', 'Office renovation',
+                        'Showroom fit-out', 'F&B counter and cafe fit-out', 'Salon fit-out', 'Commercial carpentry', 'Retail display shelving',
+                        'Commercial electrical works', 'Commercial tiling and flooring', 'Audio, visual and lighting (AVL) for shops'],
+         'contactPoint': {'@type': 'ContactPoint', 'telephone': PHONE_DISPLAY, 'contactType': 'sales', 'areaServed': 'SG',
+                          'availableLanguage': ['English']},
+         'hasOfferCatalog': {'@type': 'OfferCatalog', 'name': 'Retail and commercial design and build services in Singapore',
+                             'itemListElement': [{'@type': 'Offer', 'itemOffered': {'@type': 'Service', 'name': SHORT[x] + ' for retail and commercial spaces',
+                                                                                     'url': abs_url(x)}} for x in SERVICE_ORDER]},
+         'description': 'R&C Spaceworks specialises in design and build for retail outlets and commercial spaces in Singapore, such as shops, '
+                        'offices, showrooms, F&B outlets and salons, with its own carpentry workshop: carpentry, renovation, electrical works, '
+                        'tiling and flooring, painting and finishing, and audio, visual and lighting (AVL).'}
     return o
 
 
@@ -275,7 +291,7 @@ def header(path):
                     for p, n in NAV)
     return '''<body>
 <a class="skip" href="#main">Skip to content</a>
-<div class="strip"><div class="wrap"><span>Own carpentry workshop</span><span>Shops · Offices · F&amp;B · Salons</span><a href="%s" rel="noopener">WhatsApp %s</a></div></div>
+<div class="strip"><div class="wrap"><span>Retail &amp; commercial specialists</span><span>Shops · Offices · F&amp;B · Salons · Own workshop</span><a href="%s" rel="noopener">WhatsApp %s</a></div></div>
 <header class="top"><div class="wrap">
 <a class="brand" href="%s"><img src="%sicon-192.png" width="40" height="40" alt=""><span>R&amp;C Spaceworks<small>Retail &amp; Commercial Design &amp; Build</small></span></a>
 <nav class="nav" id="nav" aria-label="Main">%s</nav>
@@ -342,7 +358,8 @@ def content_page(p, crumbs, kind='service'):
         main_entity.update({'headline': p['h1'], 'datePublished': p['date'], 'dateModified': p['date'],
                             'author': {'@id': BASE + '#org'}, 'publisher': {'@id': BASE + '#org'}})
     else:
-        main_entity.update({'provider': {'@id': BASE + '#org'}, 'serviceType': p['kicker']})
+        main_entity.update({'provider': {'@id': BASE + '#org'}, 'serviceType': p['kicker'], 'areaServed': SG, 'audience': AUDIENCE,
+                            'category': 'Retail and commercial interiors'})
     schema.append(main_entity)
     secs = ''.join('<h2>%s</h2>%s' % (E(s['h2']), fix_links(s['html'], path)) for s in p['sections'])
     meta = ''
@@ -472,11 +489,11 @@ def workshop_block(path):
 HOME_TPL = '''<section class="lux">
 <div class="lux-bg" aria-hidden="true">{dimg}</div><div class="lux-grad" aria-hidden="true"></div>
 <div class="wrap lux-in">
-<span class="eyebrow">R&amp;C Spaceworks &middot; Singapore</span>
+<span class="eyebrow">Singapore retail &amp; commercial specialists</span>
 <h1>Design &amp; Build for Retail and Commercial Spaces</h1>
-<p class="lede">From custom carpentry and renovation to electrical, flooring and integrated audio, visual and lighting.</p>
+<p class="lede">We specialise in retail outlets and commercial spaces in Singapore: shops, offices, showrooms, F&amp;B outlets and salons. Carpentry, renovation, electrical, flooring and integrated audio, visual and lighting.</p>
 <div class="btns">{cta}<a class="btn btn-onimg" href="{services}">Explore Our Services</a></div>
-<ul class="ticks"><li>Own carpentry workshop</li><li>One contact from design to handover</li><li>Written scope before work starts</li></ul>
+<ul class="ticks"><li>Specialised in retail &amp; commercial outlets</li><li>Own carpentry workshop</li><li>One contact from design to handover</li><li>Written scope before work starts</li></ul>
 <a class="lux-cap" href="{dailyp}#d{ddate}"><span>AI concept of the day &middot; {dnice}</span><b>{dtitle}</b></a>
 </div><span class="tag lux-tag">AI design concept</span></section>
 
@@ -484,11 +501,6 @@ HOME_TPL = '''<section class="lux">
 <div class="marq"><div class="marq-track">{marq}</div></div></section>
 
 <section class="quick"><div class="wrap"><dl>{facts}</dl></div></section>
-
-<section class="band"><div class="wrap">
-<div class="head rv"><h2>Our real projects</h2><p>Carpentry made by R&amp;C Spaceworks. Decor items in these photos were added with AI styling.</p></div>
-<div class="rail rail-real">{real}</div>
-<p class="rv" style="margin-top:14px"><a href="{projects}">Projects &amp; workshop &rarr;</a></p></div></section>
 
 <section class="band sand"><div class="wrap">
 <div class="head rv"><h2>Our carpentry workshop</h2><p>Counters, cabinets and shelving are made in our own workshop to your measurements, then installed on site.</p></div>
@@ -546,7 +558,7 @@ def build_home():
     d = DAILY[0]
     dp = rel(path, '/design-concepts/concept-of-the-day/')
     facts = [('What we do', 'Carpentry, renovation, electrical, flooring, painting and AVL'),
-             ('For', 'Shops, offices &amp; showrooms, F&amp;B outlets, salons'),
+             ('Specialists in', 'Singapore retail outlets &amp; commercial spaces'),
              ('Workshop', 'Our own carpentry workshop'),
              ('Enquiries', 'WhatsApp <a href="%s" rel="noopener">%s</a>' % (E(wa_link('my space', path)), PHONE_DISPLAY))]
     body = HOME_TPL.format(
@@ -567,8 +579,8 @@ def build_home():
         faqs=''.join('<details><summary>%s</summary><p>%s</p></details>' % (E(q), E(a)) for q, a in HOME_FAQ))
     schema = [org_schema(), {'@type': 'WebSite', '@id': BASE + '#site', 'name': BRAND_FULL, 'url': BASE, 'publisher': {'@id': BASE + '#org'}},
               faq_schema(HOME_FAQ)]
-    title = 'Retail & Commercial Design & Build | R&C Spaceworks'
-    desc = 'Design and build for Singapore shops, offices, F&B outlets and salons, with our own carpentry workshop: carpentry, renovation, electrical and AVL.'
+    title = 'Singapore Retail & Commercial Design & Build | R&C'
+    desc = 'Design and build specialists for Singapore retail outlets and commercial spaces: shops, offices, F&B and salons. Own carpentry workshop.'
     write(path, head(path, title, desc, schema, og_img=daily_url(d)) + header(path) + body + footer(path))
 
 
@@ -633,7 +645,7 @@ def simple(path, title, desc, h1, kicker, answer, prose, crumbs, key=None, alt='
 
 def build_static():
     about = '''<h2>Who we are</h2>
-<p>R&amp;C Spaceworks is a Singapore design and build company for retail and commercial spaces: shops and boutiques, offices and showrooms, F&amp;B outlets and service counters, and salons and beauty studios. We have our own carpentry workshop, so counters, cabinets and shelving are made to the measurements taken on site.</p>
+<p>R&amp;C Spaceworks is a Singapore design and build company that specialises in retail outlets and commercial spaces: shops and boutiques, offices and showrooms, F&amp;B outlets and service counters, and salons and beauty studios. We have our own carpentry workshop, so counters, cabinets and shelving are made to the measurements taken on site.</p>
 <h2>What we cover</h2>
 <ul><li><a href="/retail-commercial-design-build/">Design &amp; build</a>: one point of contact from brief to handover.</li>
 <li><a href="/services/commercial-carpentry/">Carpentry</a>: counters, shelving, storage, display fixtures and reception joinery, made in our workshop.</li>
@@ -709,7 +721,7 @@ def build_machine():
     with open(os.path.join(OUT, 'robots.txt'), 'w') as f:
         f.write(rb)
     lines = ['# %s' % BRAND_FULL, '', '> %s' % TAGLINE, '',
-             'R&C Spaceworks is a Singapore design and build company for retail and commercial spaces, with its own carpentry workshop: shops and boutiques, offices and showrooms, '
+             'R&C Spaceworks is a Singapore design and build company that specialises in retail outlets and commercial spaces, with its own carpentry workshop: shops and boutiques, offices and showrooms, '
              'cafes and service counters, salons and beauty studios. Services: integrated design and build, commercial carpentry, '
              'renovation, electrical works, tiling and flooring, painting and finishing, and audio, visual and lighting (AVL).',
              '', 'Contact: WhatsApp %s. Photos marked Real project show its own carpentry (decor added with AI styling); AI design concept images are ideas, not completed work.' % PHONE_DISPLAY, '']
