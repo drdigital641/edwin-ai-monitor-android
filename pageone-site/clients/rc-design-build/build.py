@@ -32,6 +32,8 @@ DOMAIN = 'commercialfitout.sg'   # Edwin 24 Oct 2026 12:08 UTC (no DNS yet on 24
 LIVE = False           # True only after Edwin's go-ahead and every PENDING item is confirmed
 WA_NUMBER = '6586594553'  # Edwin 24 Oct 2026
 PHONE_DISPLAY = '+65 8659 4553'
+ADDR_TEXT = '113 Eunos Ave 3, #04-02, Gordon Ind Building, Singapore 409838'  # Edwin 25 Oct 2026
+ADDR_HTML = '113 Eunos Ave 3, #04-02<br>Gordon Ind Building<br>Singapore 409838'
 PREVIEW = 'https://pageonesingapore.com/preview/%s/' % SLUG
 BASE = ('https://%s/' % DOMAIN) if DOMAIN else PREVIEW
 ASSET_SHA = 'c4353b1'
@@ -198,7 +200,7 @@ SG = {'@type': 'Country', 'name': 'Singapore', 'sameAs': 'https://en.wikipedia.o
 def org_schema():
     o = {'@type': ['Organization', 'GeneralContractor'], '@id': BASE + '#org', 'name': BRAND_FULL, 'alternateName': [BRAND, 'CommercialFitout.sg', 'SG Fitout'],
          'url': BASE, 'logo': BASE + 'icon-512.png', 'image': IMG + 'og-rc.jpg', 'slogan': SPECIALTY,
-         'telephone': PHONE_DISPLAY, 'address': {'@type': 'PostalAddress', 'addressCountry': 'SG'},
+         'telephone': PHONE_DISPLAY, 'address': {'@type': 'PostalAddress', 'streetAddress': '113 Eunos Ave 3, #04-02, Gordon Ind Building', 'addressLocality': 'Singapore', 'postalCode': '409838', 'addressCountry': 'SG'},
          'areaServed': SG, 'audience': AUDIENCE,
          'knowsAbout': ['Retail shop fit-out', 'Commercial interior design and build', 'Shop renovation', 'Office renovation',
                         'Showroom fit-out', 'F&B counter and cafe fit-out', 'Salon fit-out', 'Commercial carpentry', 'Retail display shelving',
@@ -309,7 +311,7 @@ def footer(path):
     col = lambda paths: ''.join('<li><a href="%s">%s</a></li>' % (rel(path, p), E(SHORT[p])) for p in paths)
     return '''</main>
 <footer class="foot"><div class="wrap">
-<div><img class="flogo" src="%sicons/logo-sgcf-light.png" width="260" height="66" alt="SG Commercial Fitout - Retail &amp; Commercial Design &amp; Build" loading="lazy"><p>%s</p><p>WhatsApp <a href="%s" rel="noopener">%s</a></p>%s</div>
+<div><img class="flogo" src="%sicons/logo-sgcf-light.png" width="260" height="66" alt="SG Commercial Fitout - Retail &amp; Commercial Design &amp; Build" loading="lazy"><p>%s</p><p>%s</p><p>WhatsApp <a href="%s" rel="noopener">%s</a></p>%s</div>
 <div><h3>Services</h3><ul>%s</ul></div>
 <div><h3>AVL &amp; spaces</h3><ul>%s</ul></div>
 <div><h3>Plan</h3><ul>%s</ul></div>
@@ -320,7 +322,7 @@ def footer(path):
 <script src="%swa-tap-counter.js?v=%s" defer></script>
 </body>
 </html>
-''' % (rel(path, '/'), E(TAGLINE), E(wa_link('my space', path) or ''), PHONE_DISPLAY, pending_box([('Operating company', 'name and UEN to be confirmed')]),
+''' % (rel(path, '/'), E(TAGLINE), ADDR_HTML, E(wa_link('my space', path) or ''), PHONE_DISPLAY, pending_box([('Operating company', 'name and UEN to be confirmed')]),
        col(SERVICE_ORDER), col(['/avl/', '/avl/commercial-audio-systems/', '/avl/display-visual-systems/', '/avl/architectural-feature-lighting/', '/spaces/retail-shops-boutiques/', '/spaces/cafes-service-counters/']),
        col(['/projects/', '/design-concepts/', '/design-concepts/concept-of-the-day/', '/guides/', '/about/', '/contact/', '/privacy-policy/']), E(BRAND_FULL),
        E(wa_link('my space', path) or ''), WA_SVG, PHONE_DISPLAY, rel(path, '/'), vhash('rc.js'), rel(path, '/'), vhash('wa-tap-counter.js'))
@@ -665,8 +667,8 @@ def build_static():
 <h2>Our work and our photos</h2>
 <p>See <a href="/projects/">our projects and workshop</a>. Photos marked "Real project" show our own carpentry; decor items in them were added with AI styling. Photos marked "AI design concept" are ideas to discuss, not completed work. We do not publish reviews, client names or figures we cannot back up.</p>
 <h2>Contact</h2>
-<p>WhatsApp <a href="%s" rel="noopener">%s</a>. We serve businesses in Singapore.</p>
-%s''' % (E(wa_link('my space', '/about/')), PHONE_DISPLAY, pending_box([('Operating company', 'registered name and UEN to be confirmed')]))
+<p>Address: %s. WhatsApp <a href="%s" rel="noopener">%s</a>. We serve businesses in Singapore.</p>
+%s''' % (ADDR_TEXT, E(wa_link('my space', '/about/')), PHONE_DISPLAY, pending_box([('Operating company', 'registered name and UEN to be confirmed')]))
     simple('/about/', 'About SG Commercial Fitout | Design & Build Singapore', 'About SG Commercial Fitout: Singapore design and build for shops, offices, F&B outlets and salons, with our own carpentry workshop.',
            'About SG Commercial Fitout', 'About', 'SG Commercial Fitout is a Singapore design and build company for shops, offices, showrooms, F&B outlets and salons. It has its own carpentry workshop and covers carpentry, renovation, electrical, flooring, painting and AVL.',
            about, [('/about/', 'About')], 'design-planning', 'Floor plan and material samples on a planning table (AI design concept)',
@@ -675,6 +677,8 @@ def build_static():
     contact = '''<h2>WhatsApp us</h2>
 <p>The fastest way to start is a WhatsApp message to <strong>%s</strong> with what you already have about the unit and the business.</p>
 <p><a class="btn btn-main" href="%s" rel="noopener">%sWhatsApp %s</a></p>
+<h2>Address</h2>
+<p>%s.</p>
 <h2>What to send</h2>
 <ol><li><strong>Floor plan or unit layout</strong>, from the landlord, mall or previous tenant if you have one.</li>
 <li><strong>Photos of the unit</strong> as it is now: shopfront, each wall, ceiling and floor.</li>
@@ -682,7 +686,7 @@ def build_static():
 <li><strong>Target opening date</strong>, plus any handover or fit-out period in your lease.</li>
 <li><strong>Landlord or mall fit-out guidelines</strong>, if you have them.</li>
 <li><strong>Priorities</strong>: what must be right on day one, and what can wait.</li></ol>
-<p class="note">Not sure where to begin? Read <a href="/guides/how-to-brief-a-shop-fit-out/">how to brief a shop fit-out</a> first.</p>''' % (PHONE_DISPLAY, E(w), WA_SVG, PHONE_DISPLAY)
+<p class="note">Not sure where to begin? Read <a href="/guides/how-to-brief-a-shop-fit-out/">how to brief a shop fit-out</a> first.</p>''' % (PHONE_DISPLAY, E(w), WA_SVG, PHONE_DISPLAY, ADDR_TEXT)
     simple('/contact/', 'Contact SG Commercial Fitout | WhatsApp +65 8659 4553', 'WhatsApp SG Commercial Fitout at +65 8659 4553 about your shop, office, F&B or salon space. Send your floor plan, unit photos and opening date.',
            'Contact us', 'Contact', 'WhatsApp SG Commercial Fitout at +65 8659 4553. Send a floor plan, a few photos of the unit, what the space is for and your target opening date, and we will discuss your scope.',
            contact, [('/contact/', 'Contact')], 'office-reception', 'Office reception with a curved oak counter (AI design concept)',
@@ -735,7 +739,7 @@ def build_machine():
              'SG Commercial Fitout is a Singapore design and build company that specialises in retail outlets and commercial spaces, with its own carpentry workshop: shops and boutiques, offices and showrooms, '
              'cafes and service counters, salons and beauty studios. Services: integrated design and build, commercial carpentry, '
              'renovation, electrical works, tiling and flooring, painting and finishing, and audio, visual and lighting (AVL).',
-             '', 'Contact: WhatsApp %s. Photos marked Real project show its own carpentry (decor added with AI styling); AI design concept images are ideas, not completed work.' % PHONE_DISPLAY, '']
+             '', 'Address: %s. Contact: WhatsApp %s. Photos marked Real project show its own carpentry (decor added with AI styling); AI design concept images are ideas, not completed work.' % (ADDR_TEXT, PHONE_DISPLAY), '']
     sections = [('Services', SERVICE_ORDER), ('AVL', [p['path'] for p in C_AVL.PAGES]), ('Spaces', [p['path'] for p in C_SPC.PAGES]),
                 ('Guides', [p['path'] for p in C_GDE.PAGES])]
     for name, paths in sections:
