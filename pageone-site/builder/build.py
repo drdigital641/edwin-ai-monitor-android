@@ -18,6 +18,7 @@ NAV = [
     ("/seo-boost/", "SEO Boost"),
     ("/pricing/", "Pricing"),
     ("/results/", "Results"),
+    ("/clients/", "Clients"),
     ("/about/", "About"),
     ("/faq/", "FAQ"),
 ]

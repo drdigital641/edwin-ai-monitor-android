@@ -620,7 +620,8 @@ a:focus-visible, button:focus-visible, input:focus-visible, summary:focus-visibl
 .site-cards .site-card { padding: 16px; text-decoration: none; color: inherit; }
 .site-card .browser { transform: none; box-shadow: 0 10px 30px rgba(15, 23, 42, .18); margin-bottom: 14px; }
 .site-card h3 { margin: 0 0 4px; }
-@media (min-width: 821px) and (max-width: 1080px) { .nav { gap: 16px; } .nav a { font-size: .86rem; } }
+@media (min-width: 821px) and (max-width: 1080px) { .nav { gap: 16px; } .nav a { font-size: .86rem; white-space: nowrap; } }
+@media (min-width: 821px) and (max-width: 940px) { .header-inner { gap: 12px; } .nav { gap: 10px; } .nav a { font-size: .8rem; } .logo { font-size: .95rem; gap: 8px; } .header-inner .btn-small { padding: 8px 12px; } }
 .compare th:last-child, .compare td:last-child { background: rgba(21, 128, 61, .08); color: var(--ink); font-weight: 700; }
 @media (max-width: 600px) { .compare { font-size: .8rem; } .compare th, .compare td { padding: 10px 6px; } }
 /* Free score check in the homepage hero, and the checker as the top of /free-website-check/ */
