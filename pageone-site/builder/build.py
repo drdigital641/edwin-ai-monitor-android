@@ -145,7 +145,7 @@ def page(path, title, desc, schemas, body, crumb=None, robots="index, follow, ma
   <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800&family=Space+Grotesk:wght@500;600;700&display=swap">
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800&family=Space+Grotesk:wght@500;600;700&display=swap" media="print" onload="this.media='all'">
   <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800&family=Space+Grotesk:wght@500;600;700&display=swap"></noscript>
-  <link rel="stylesheet" href="/styles.css?v=15">
+  <link rel="stylesheet" href="/styles.css?v=16">
   <script>document.documentElement.classList.add("js");</script>
 {ld}{head_extra}
 </head>
@@ -188,6 +188,7 @@ def page(path, title, desc, schemas, body, crumb=None, robots="index, follow, ma
         <a href="/signup/">Sign up</a>
         <a href="/free-website-check/">Free website check</a>
         <a href="/industries/">Industries we help</a>
+        <a href="/affordable-seo-services-singapore/">Affordable SEO services</a>
         <a href="/cheapest-seo-singapore/">Low-cost SEO</a>
         <a href="/cheapest-website-singapore/">Website without the lump sum</a>
         <a href="/report.html">Sample report</a>
@@ -1509,6 +1510,8 @@ exec(open(os.path.join(HERE, "industries.py"), encoding="utf-8").read())
 exec(open(os.path.join(HERE, "affordable.py"), encoding="utf-8").read())
 # Small-budget owner page (/budget-seo-website-singapore/): S$50 a month, website and SEO included.
 exec(open(os.path.join(HERE, "budget.py"), encoding="utf-8").read())
+# Affordable SEO services owner page (/affordable-seo-services-singapore/), 25 Oct 2026.
+exec(open(os.path.join(HERE, "affordable_seo.py"), encoding="utf-8").read())
 # Client showcase (/clients/), from showcase.json.
 clients_page()
 llms_sections()
