@@ -92,8 +92,8 @@ SHORT = {
 for p in GDE.values():
     SHORT[p['path']] = p['h1']
 
-NAV = [('/design-concepts/', 'Gallery'), ('/services/', 'Services'), ('/avl/', 'AVL'), ('/projects/', 'Projects'),
-       ('/guides/', 'Guides'), ('/about/', 'About'), ('/contact/', 'Contact')]
+# Projects is hidden from the menu until more real photos arrive (Edwin 26 Oct 2026); the page stays live and in the footer.
+NAV = [('/design-concepts/', 'Gallery'), ('/services/', 'Services'), ('/guides/', 'Guides'), ('/about/', 'About'), ('/contact/', 'Contact')]
 
 # ---------- helpers ----------
 E = html.escape
@@ -291,7 +291,7 @@ def head(path, title, desc, schema, og_img=None):
 
 
 def header(path):
-    links = ''.join('<a href="%s"%s>%s</a>' % (rel(path, p), ' aria-current="page"' if path == p or (p != '/' and path.startswith(p) and p in ('/services/', '/avl/', '/guides/', '/design-concepts/')) or (p == '/design-concepts/' and path.startswith('/spaces/')) else '', E(n))
+    links = ''.join('<a href="%s"%s>%s</a>' % (rel(path, p), ' aria-current="page"' if path == p or (p != '/' and path.startswith(p) and p in ('/services/', '/avl/', '/guides/', '/design-concepts/')) or (p == '/design-concepts/' and path.startswith('/spaces/')) or (p == '/services/' and (path.startswith('/avl/') or path == '/retail-commercial-design-build/')) else '', E(n))
                     for p, n in NAV)
     return '''<body>
 <a class="skip" href="#main">Skip to content</a>
@@ -888,7 +888,7 @@ def main():
         cr = [(p['path'], SHORT[p['path']])] if p['path'] == '/retail-commercial-design-build/' else [('/services/', 'Services'), (p['path'], SHORT[p['path']])]
         content_page(p, cr)
     for p in C_AVL.PAGES:
-        cr = [('/avl/', 'AVL')] if p['path'] == '/avl/' else [('/avl/', 'AVL'), (p['path'], SHORT[p['path']])]
+        cr = [('/services/', 'Services'), ('/avl/', 'AVL')] if p['path'] == '/avl/' else [('/services/', 'Services'), ('/avl/', 'AVL'), (p['path'], SHORT[p['path']])]
         content_page(p, cr)
     for p in C_SPC.PAGES:
         content_page(p, [('/spaces/', 'Spaces'), (p['path'], SHORT[p['path']])])
