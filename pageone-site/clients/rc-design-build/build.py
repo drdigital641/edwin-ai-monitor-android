@@ -39,6 +39,7 @@ BASE = ('https://%s/' % DOMAIN) if DOMAIN else PREVIEW
 ASSET_SHA = 'c4353b1'
 IMG = os.environ.get('RC_IMG') or ('https://cdn.jsdelivr.net/gh/drdigital641/edwin-ai-monitor-android@%s/site-assets/%s/' % (ASSET_SHA, SLUG))
 TODAY = '2026-10-24'
+LASTMOD_OVERRIDE = {'/guides/': '2026-10-26'}  # pages whose content changed after TODAY (night article run)
 INDEXNOW_KEY = '7d4c2a9e1f6b8035c4e2a7d9b1f60c38'
 BRAND = 'SG Commercial Fitout'
 BRAND_FULL = 'SG Commercial Fitout - Retail & Commercial Design & Build'
@@ -725,7 +726,7 @@ def build_404():
 
 # ---------- machine files ----------
 def build_machine():
-    urls = ''.join('<url><loc>%s</loc><lastmod>%s</lastmod></url>' % (E(abs_url(p)), m) for p, m in sorted(PAGES_OUT))
+    urls = ''.join('<url><loc>%s</loc><lastmod>%s</lastmod></url>' % (E(abs_url(p)), LASTMOD_OVERRIDE.get(p, m)) for p, m in sorted(PAGES_OUT))
     with open(os.path.join(OUT, 'sitemap.xml'), 'w') as f:
         f.write('<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">%s</urlset>\n' % urls)
     bots = ['Googlebot', 'Googlebot-Image', 'Bingbot', 'OAI-SearchBot', 'GPTBot', 'ChatGPT-User', 'PerplexityBot', 'ClaudeBot',
