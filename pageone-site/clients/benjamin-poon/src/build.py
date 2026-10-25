@@ -461,7 +461,7 @@ def home_body(L):
     brand = ('<section class="nvbrand"><div class="wrap"><img src="%snirvana-logo.png" alt="%s" width="480" height="134">'
              '<p>%s</p></div></section>') % (pre, E(t(T('富貴 Nirvana', '富貴 Nirvana 富贵山庄'), L)),
         E(t(T('Benjamin Poon (潘国雄) represents Nirvana Singapore', '潘国雄 · 富贵山庄生命经理师'), L)))
-    return brand + hero + intro + svcs + mood + meet + venues + steps + trust + guides + faq
+    return hero + intro + svcs + mood + meet + venues + steps + trust + guides + faq
 
 
 def about_body(L):
@@ -850,9 +850,10 @@ def build_pages():
 ASSET_V = hashlib.sha256(b''.join(open(os.path.join(HERE, f), 'rb').read() for f in ('bp.css', 'bp.js'))).hexdigest()[:8]
 
 
-def brand_html(lpre, L):
-    return '<a class="brand" href="%s" aria-label="Benjamin Poon, %s"><span class="brand-mark" aria-hidden="true">BP</span><span class="brand-name">Benjamin Poon<small>潘国雄 · %s</small></span></a>' % (
-        lpre or './', E(t(W['home'], L)), E(t(T('Life Managing Director', '生命经理师'), L)))
+def brand_html(lpre, L, pre=''):
+    return ('<a class="brand" href="%s" aria-label="Benjamin Poon, %s"><img class="brand-nv" src="%snirvana-logo.png" alt="富貴 Nirvana" width="480" height="134">'
+            '<span class="brand-name">Benjamin Poon<small>潘国雄 · %s</small></span></a>') % (
+        lpre or './', E(t(W['home'], L)), pre, E(t(T('Life Managing Director', '生命经理师'), L)))
 
 
 def render(L, path, p):
@@ -892,7 +893,7 @@ def render(L, path, p):
         band = '<section class="sec"><div class="wrap"><div class="band"><div><h2>%s</h2><p>%s</p></div><div class="cta-row">%s</div></div></div></section>' % (
             E(t(W['band_h'], L)), E(t(W['band_p'], L)), wa_btn(W['wa_home'], L))
     body = fix(p['body'] + band)
-    brand = brand_html(lpre, L)
+    brand = brand_html(lpre, L, pre)
     ftr_svc = ''.join('<li><a href="%sservices/%s/">%s</a></li>' % (lpre, s['slug'], E(t(s['card'], L))) for s in SERVICES)
     ftr_loc = ''.join('<li><a href="%slocations/%s/">%s</a></li>' % (lpre, v['slug'], E(t(v['name'], L))) for v in LOCATIONS)
     ftr_more = ''.join('<li><a href="%s%s">%s</a></li>' % (lpre, h, E(t(x, L))) for h, x in [('about-benjamin-poon/', W['nav'][0][1]), ('guides/', W['nav'][3][1]),
