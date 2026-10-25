@@ -38,6 +38,6 @@ Address: 113 Eunos Ave 3, #04-02, Gordon Ind Building, Singapore 409838. Contact
 ## Other
 - [Design concepts](https://commercialfitout.sg/design-concepts/): AI design concepts, clearly labelled.
 - [Projects & workshop](https://commercialfitout.sg/projects/)
-- [AI concept of the day](https://commercialfitout.sg/design-concepts/concept-of-the-day/)
+- [AI concept of the day](https://commercialfitout.sg/design-concepts/concept-of-the-day/): a new commercial interior concept every day for a different kind of Singapore business; free to browse for ideas
 - [About](https://commercialfitout.sg/about/)
 - [Contact](https://commercialfitout.sg/contact/)

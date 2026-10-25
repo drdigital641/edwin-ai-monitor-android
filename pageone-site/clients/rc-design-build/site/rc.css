@@ -373,3 +373,4 @@ figure.real figcaption b{display:block;color:var(--char);font:600 1.05rem/1.3 va
 .cnav a small{display:block;font-weight:500;opacity:.7;margin-bottom:3px}
 .cn-old{text-align:right}
 @media(max-width:900px){.cdet-in{grid-template-columns:1fr;gap:18px}.cdet-pic{margin:0 -16px;border-radius:0}.cdet-pic .tag{left:16px}}
+.marq-note p{margin:16px 0 0;max-width:760px;color:#e8e1d2;font-size:.95rem;line-height:1.6}.marq-note b{color:#fff}

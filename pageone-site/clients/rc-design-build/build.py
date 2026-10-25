@@ -451,6 +451,8 @@ def build_concepts():
 
 # ---------- home ----------
 HOME_FAQ = [
+    ('What is the AI concept of the day?', 'Every day SG Commercial Fitout publishes a new commercial interior concept for a different kind of Singapore business. '
+     'Anyone can browse them for design ideas. If you like one, WhatsApp us and we can design and build your new space or revamp an existing one.'),
     ('What does SG Commercial Fitout do?', 'SG Commercial Fitout designs and builds retail and commercial spaces in Singapore: custom carpentry, renovation, '
      'electrical works, tiling and flooring, painting and finishing, and audio, visual and lighting (AVL) for shops, offices, F&B outlets and salons.'),
     ('Do you have your own carpentry workshop?', 'Yes. SG Commercial Fitout has its own carpentry workshop, so counters, cabinets and shelving can be '
@@ -499,7 +501,8 @@ HOME_TPL = '''<section class="lux lux-full">
 </div><span class="tag lux-tag">AI design concept</span><span class="lux-scroll" aria-hidden="true"></span></section>
 
 <section class="marq-band" aria-label="Past AI design concepts"><div class="wrap marq-head"><span>The archive</span><a href="{dailyp}">Browse the gallery &rarr;</a></div>
-<div class="marq"><div class="marq-track">{marq}</div></div></section>
+<div class="marq"><div class="marq-track">{marq}</div></div>
+<div class="wrap marq-note"><p><b>A new commercial concept every day.</b> Each day we design a fresh interior idea for a different kind of Singapore business. Use them freely for ideas. If one fits, WhatsApp us and we can design and build your new space or revamp your current one.</p></div></section>
 
 <section class="intro"><div class="wrap intro-in">
 <div class="intro-l"><span class="eyebrow">Singapore retail &amp; commercial specialists</span>
@@ -639,8 +642,9 @@ def build_daily():
                'associatedMedia': [{'@type': 'ImageObject', 'contentUrl': daily_url(x), 'url': abs_url(daily_path(x)), 'name': x['title'],
                                     'uploadDate': x['date'], 'description': x['summary']} for x in DAILY]}]
     body = ('%s<section class="al-head"><div class="wrap"><span class="eyebrow">Gallery &middot; %d concepts</span>'
-            '<h1>AI concept of the day</h1><p>A new AI interior idea for a Singapore shop, office, F&amp;B outlet or salon every day. '
-            'Tap a picture to see the details. These are ideas to discuss, not completed projects.</p></div></section>'
+            '<h1>AI concept of the day</h1><p>Every day we create a new commercial interior concept for a different kind of Singapore business: shops, offices, F&amp;B outlets, salons and more. '
+            'Browse them freely for design ideas and tap a picture to see the details. If you like one, WhatsApp us and we can design and build your new space or revamp your current one. '
+            'These are AI design ideas, not completed projects.</p></div></section>'
             '<section class="album"><div class="wrap al-wrap"><div class="al-grid">%s</div></div></section>%s') % (
         crumbs_html(path, crumbs), len(DAILY) + len(C_SPC.CONCEPTS), tiles, cta_band(path, 'an idea from the concept of the day'))
     write(path, head(path, 'AI Interior Concept of the Day | SG Commercial Fitout',
@@ -668,7 +672,7 @@ def build_daily_one(x, newer, older):
             '<div class="cdet-txt"><a class="cdet-back" href="%s">&larr; All concepts</a>'
             '<span class="eyebrow">%s &middot; %s</span><h1>%s</h1><p class="answer">%s</p>'
             '<h2>Design ideas in this concept</h2><ul>%s</ul>'
-            '<p class="cdet-note">This is an AI-generated design idea, not a completed project. We can adapt it to your unit, brand and budget.</p>'
+            '<p class="cdet-note">We publish a new commercial concept every day for a different kind of business. This one is an AI-generated design idea, not a completed project. Like it? We can design and build it for your new space, or revamp your current one, adapted to your unit, brand and budget.</p>'
             '<div class="btns">%s</div></div></div>'
             '<div class="wrap cnav">%s%s</div></section>%s') % (
         crumbs_html(path, crumbs), daily_url(x), daily_url(x, True), daily_url(x), E(x['alt']), rel(path, gp),
@@ -788,7 +792,7 @@ def build_machine():
             lines.append('- [%s](%s): %s' % (p['h1'], abs_url(pth), p['card']))
         lines.append('')
     lines += ['## Other', '- [Design concepts](%s): AI design concepts, clearly labelled.' % abs_url('/design-concepts/'),
-              '- [Projects & workshop](%s)' % abs_url('/projects/'), '- [AI concept of the day](%s)' % abs_url('/design-concepts/concept-of-the-day/'), '- [About](%s)' % abs_url('/about/'), '- [Contact](%s)' % abs_url('/contact/'), '']
+              '- [Projects & workshop](%s)' % abs_url('/projects/'), '- [AI concept of the day](%s): a new commercial interior concept every day for a different kind of Singapore business; free to browse for ideas' % abs_url('/design-concepts/concept-of-the-day/'), '- [About](%s)' % abs_url('/about/'), '- [Contact](%s)' % abs_url('/contact/'), '']
     with open(os.path.join(OUT, 'llms.txt'), 'w') as f:
         f.write('\n'.join(lines))
     with open(os.path.join(OUT, INDEXNOW_KEY + '.txt'), 'w') as f:
