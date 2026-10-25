@@ -24,15 +24,13 @@ No invented facts: no address, UEN, team, years, prices, timelines, reviews, war
 Every image is labelled "AI design concept". No regulatory specifics. CTAs go to /contact/ until WA_NUMBER is set
 (then wa.me with prefill: project type, page, ref=website).
 
-## Pending (Edwin) before go-live
-1. Domain (none chosen; do not buy without Edwin). 2. Operating company + UEN. 3. WhatsApp number (Edwin 24 Oct: decide later).
-4. Who delivers the work. 5. Service area. 6. Real photos of actual work, when they exist (separate "Actual work" section).
-
-## Go-live steps (only on Edwin's word)
-1. Set DOMAIN, WA_NUMBER, LIVE = True, rebuild, commit, sync.
-2. Write htaccess.txt (https, no-www, index.html 301, ErrorDocument 404 /404.html, 1 h HTML cache; copy new-age-polish/htaccess.txt
-   pattern) and have it placed as .htaccess via cPanel; addon domain doc root = preview/rc-design-build.
-3. Search Console + Bing, IndexNow (key file 7d4c2a9e1f6b8035c4e2a7d9b1f60c38.txt already in site), Controller row -> live.
+## Status: LIVE on https://commercialfitout.sg since 25 Oct 2026 (Edwin: "verified in gsc and live")
+Addon domain doc root = preview/rc-design-build (same files as the preview URL; the preview host still sends noindex).
+Checked 25 Oct 01:15 UTC: http and www 301 to https://commercialfitout.sg/, /about -> /about/, real 404, no X-Robots
+on the domain, robots allows OAI-SearchBot, sitemap 30 URLs, IndexNow 202. No own .htaccess was needed for that.
+Controller Client row status live. Night run writes a guide on EVEN SGT dates (ARTICLES.md); IndexNow daily via
+watchdog/indexnow.py. Still open: operating company + UEN (no box shown on LIVE; add to footer/schema once Edwin
+gives it), workshop photos (WORKSHOP list in build.py; section hidden until filled).
 
 ## Temporary image tool
 Base44 app "R&C Image Studio (temp)" (6adc39a33be36ae8a3ed0782) has a key-guarded genImage function (secret IMG_KEY) used to

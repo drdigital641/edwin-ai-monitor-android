@@ -1,4 +1,4 @@
-# SG Commercial Fitout: AI concept of the day (daily run, ~01:35 SGT)
+# SG Commercial Fitout: AI concept of the day (daily run, 00:00 SGT, scheduled task "SG Commercial Fitout concept of the day")
 
 Goal: one new dated AI interior concept on the homepage hero; the previous one moves into the gallery
 (/design-concepts/concept-of-the-day/). Edwin asked for this on 24 Oct 2026. Preview only until go-live.
@@ -24,3 +24,7 @@ Steps (stop and report if any step fails; never invent text that the image does 
    base_path: "preview/rc-design-build"}. Re-run once if any file is skipped.
 6. After go-live only (commercialfitout.sg serves the site): IndexNow the homepage and the gallery URL (key 7d4c2a9e1f6b8035c4e2a7d9b1f60c38).
 7. Log one line to /mnt/project-files/rc-design-build/daily-log.md if the mount exists (date, title, SITE_SHA, result).
+
+LIVE since 25 Oct 2026 on https://commercialfitout.sg (same Bluehost folder preview/rc-design-build). After the sync,
+check the homepage on the domain shows today's date and IndexNow / and /design-concepts/concept-of-the-day/ from the
+Base44 sandbox (key 7d4c2a9e1f6b8035c4e2a7d9b1f60c38). build.py must stay LIVE = True.
