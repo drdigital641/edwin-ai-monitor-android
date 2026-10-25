@@ -121,13 +121,13 @@ CHEAP_SEO_FAQ = [
 ]
 
 page("cheapest-seo-singapore/index.html",
-     "Cheapest SEO in Singapore? From S$50/month | Page One",
-     "Looking for the cheapest SEO in Singapore? Our AI tools optimise SEO daily, so good SEO costs less. Page One: S$50/month, no setup fee, no contract.",
+     "Cheap SEO Services Singapore: S$50/month, No Contract",
+     "Cheap SEO services in Singapore that still work: our AI tools optimise SEO daily, so good SEO costs less. S$50/month, no setup fee, no contract.",
      [service("Affordable SEO subscription for Singapore businesses", "/cheapest-seo-singapore/",
               "Low-cost, automated SEO for Singapore small businesses: Google, Google Maps and AI search visibility for S$50 a month, no setup fee, no contract.", "50"),
       _faq_ld(CHEAP_SEO_FAQ), _price_ld("/cheapest-seo-singapore/")],
      hero("Cheap SEO that works", "Looking for the cheapest SEO in Singapore?",
-          "Cheap SEO doesn't have to mean bad SEO.",
+          "Cheap SEO in Singapore doesn't have to mean bad SEO.",
           "SEO used to be expensive because it took a lot of people's time. AI tools designed for SEO now do most of that daily work, automatically. With the right strategy, structure and design, good SEO, including a new article every 2 days, can cost S$50 a month, website and SEO included, still far below typical agency retainers.",
           '<p class="hero-price"><b>S$50</b>/month · <span class="intro-tag">Register by 31 Dec 2026</span> · no setup fee · no contract · <a class="link" href="https://wa.me/6597856612" target="_blank" rel="noopener">WhatsApp +65 9785 6612</a></p>') + "\n\n" + PRICE_GLANCE + f"""
 
@@ -222,12 +222,12 @@ page("cheapest-seo-singapore/index.html",
         <h2 class="reveal">Cheap SEO: your questions, answered</h2>
         <div style="margin-top:24px">
 {_faq_html(CHEAP_SEO_FAQ)}        </div>
-        <p class="note reveal">Need a website too? <a class="link" href="/cheapest-website-singapore/">A website without the lump sum →</a> · Comparing agencies or an in-house hire? <a class="link" href="/seo-services-singapore/">SEO services compared →</a> · <a class="link" href="/ai-seo-vs-traditional-seo/">AI SEO vs traditional SEO →</a> · <a class="link" href="/is-page-one-singapore-legit/">Is Page One legit? Check us yourself →</a></p>
+        <p class="note reveal">Comparing packages? <a class="link" href="/affordable-seo-services-singapore/">What affordable SEO services should include →</a> · Need a website too? <a class="link" href="/cheapest-website-singapore/">A website without the lump sum →</a> · Comparing agencies or an in-house hire? <a class="link" href="/seo-services-singapore/">SEO services compared →</a> · <a class="link" href="/ai-seo-vs-traditional-seo/">AI SEO vs traditional SEO →</a> · <a class="link" href="/is-page-one-singapore-legit/">Is Page One legit? Check us yourself →</a></p>
       </div>
     </section>
 
 """ + cta("See what S$50 a month can do for you", "Check your website free in under a minute, or chat with Edwin on WhatsApp. No obligation."),
-     crumb="Cheap SEO that works", updated="2026-10-19")
+     crumb="Cheap SEO that works", updated="2026-10-25")
 
 
 # ---------- Cheapest website maker in Singapore ----------
