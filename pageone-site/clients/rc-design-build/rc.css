@@ -350,7 +350,7 @@ figure.real figcaption b{display:block;color:var(--char);font:600 1.05rem/1.3 va
 .hdr .btn,.site-head .btn,header .btn{white-space:nowrap}
 @media (min-width:761px) and (max-width:1180px){.nav a{padding:8px 7px;font-size:.88rem}.brand img{height:38px}}
 /* concept album (photo-album grid) + single concept page */
-.al-head{padding:26px 0 14px}.al-head h1{margin:6px 0 8px;font-size:clamp(28px,4vw,44px)}.al-head p{max-width:640px;color:var(--muted,#5b6159);margin:0}
+.al-head{padding:16px 0 12px}.al-head h1{margin:6px 0 8px;font-size:clamp(28px,4vw,44px)}.al-head p{max-width:640px;color:var(--muted,#5b6159);margin:0}
 .album{padding:6px 0 40px}
 .al-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;max-width:1080px}
 .al-tile{position:relative;display:block;aspect-ratio:1/1;overflow:hidden;border-radius:6px;background:#e9e6df}
@@ -374,3 +374,10 @@ figure.real figcaption b{display:block;color:var(--char);font:600 1.05rem/1.3 va
 .cn-old{text-align:right}
 @media(max-width:900px){.cdet-in{grid-template-columns:1fr;gap:18px}.cdet-pic{margin:0 -16px;border-radius:0}.cdet-pic .tag{left:16px}}
 .marq-note p{margin:16px 0 0;max-width:760px;color:#e8e1d2;font-size:.95rem;line-height:1.6}.marq-note b{color:#fff}
+.al-chips{display:flex;gap:8px;overflow-x:auto;margin-top:16px;padding-bottom:4px;-webkit-overflow-scrolling:touch;scrollbar-width:none}
+.al-chips::-webkit-scrollbar{display:none}
+.al-chip{flex:0 0 auto;border:1px solid var(--line,#d8d2c4);background:#fff;color:var(--char,#2c332c);border-radius:999px;padding:8px 14px;font:600 .88rem/1 var(--sans);cursor:pointer}
+.al-chip.on{background:var(--char,#2c332c);border-color:var(--char,#2c332c);color:#fff}
+.al-tile[hidden]{display:none}
+.al-foot{margin:14px 0 0;font-size:.92rem;color:var(--muted,#5b6159)}
+@media(max-width:760px){.al-foot{padding:0 14px}}

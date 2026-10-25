@@ -85,16 +85,15 @@ SHORT = {
     '/avl/architectural-feature-lighting/': 'Feature lighting', '/spaces/retail-shops-boutiques/': 'Retail shops & boutiques',
     '/spaces/offices-showrooms/': 'Offices & showrooms', '/spaces/cafes-service-counters/': 'Cafes & service counters',
     '/spaces/salons-beauty-studios/': 'Salons & beauty studios', '/services/': 'Services', '/spaces/': 'Spaces',
-    '/design-concepts/': 'Design concepts', '/guides/': 'Guides', '/about/': 'About', '/contact/': 'Contact',
+    '/design-concepts/': 'Design gallery', '/guides/': 'Guides', '/about/': 'About', '/contact/': 'Contact',
     '/privacy-policy/': 'Privacy policy', '/': 'Home', '/projects/': 'Projects & workshop',
     '/design-concepts/concept-of-the-day/': 'AI concept of the day',
 }
 for p in GDE.values():
     SHORT[p['path']] = p['h1']
 
-NAV = [('/services/', 'Services'), ('/avl/', 'AVL'), ('/projects/', 'Projects'),
-       ('/spaces/', 'Spaces'), ('/design-concepts/', 'Concepts'), ('/guides/', 'Guides'), ('/about/', 'About'),
-       ('/contact/', 'Contact')]
+NAV = [('/design-concepts/', 'Gallery'), ('/services/', 'Services'), ('/avl/', 'AVL'), ('/projects/', 'Projects'),
+       ('/guides/', 'Guides'), ('/about/', 'About'), ('/contact/', 'Contact')]
 
 # ---------- helpers ----------
 E = html.escape
@@ -292,7 +291,7 @@ def head(path, title, desc, schema, og_img=None):
 
 
 def header(path):
-    links = ''.join('<a href="%s"%s>%s</a>' % (rel(path, p), ' aria-current="page"' if path == p or (p != '/' and path.startswith(p) and p in ('/services/', '/avl/', '/spaces/', '/guides/')) else '', E(n))
+    links = ''.join('<a href="%s"%s>%s</a>' % (rel(path, p), ' aria-current="page"' if path == p or (p != '/' and path.startswith(p) and p in ('/services/', '/avl/', '/guides/', '/design-concepts/')) or (p == '/design-concepts/' and path.startswith('/spaces/')) else '', E(n))
                     for p, n in NAV)
     return '''<body>
 <a class="skip" href="#main">Skip to content</a>
@@ -431,22 +430,94 @@ def build_hubs():
         'Shop floor plan with material samples on a table (AI design concept)', inner, [('/guides/', 'Guides')])
 
 
+CATS = [('all', 'All'), ('retail', 'Retail'), ('fnb', 'F&B & cafes'), ('office', 'Offices & showrooms'), ('salon', 'Salons')]
+CAT_SPACE = {'retail': '/spaces/retail-shops-boutiques/', 'fnb': '/spaces/cafes-service-counters/',
+             'office': '/spaces/offices-showrooms/', 'salon': '/spaces/salons-beauty-studios/'}
+
+
+def cat_of(space):
+    t = space.lower()
+    if 'salon' in t or 'beauty' in t or 'spa' in t:
+        return 'salon'
+    if 'office' in t or 'showroom' in t or 'reception' in t:
+        return 'office'
+    if 'f&b' in t or 'cafe' in t or 'café' in t or 'restaurant' in t or 'bar' in t or 'food' in t:
+        return 'fnb'
+    return 'retail'
+
+
+def gallery_items():
+    """Every AI concept, newest daily first, then the concept library."""
+    out = [dict(path=daily_path(x), small=daily_url(x, True), alt=x['alt'], label=nice_date(x['date']), cat=cat_of(x['space'])) for x in DAILY]
+    out += [dict(path='/design-concepts/%s/' % c['slug'], small=img_url(c['image'], True), alt=c['title'] + ' (AI design concept)',
+                 label=c['space'].capitalize(), cat=cat_of(c['space'])) for c in C_SPC.CONCEPTS]
+    return out
+
+
+def album_tiles(path, items):
+    return ''.join(('<a class="al-tile" href="%s" data-cat="%s"><img src="%s" width="640" height="640" alt="%s" loading="%s" decoding="async">'
+                    '<span class="al-date">%s</span></a>') % (rel(path, it['path']), it['cat'], it['small'], E(it['alt']),
+                                                              'eager' if n < 9 else 'lazy', E(it['label'])) for n, it in enumerate(items))
+
+
 def build_concepts():
     path = '/design-concepts/'
-    rows = []
+    items = gallery_items()
+    chips = ''.join('<button type="button" class="al-chip%s" data-f="%s">%s</button>' % (' on' if k == 'all' else '', k, E(n)) for k, n in CATS)
+    spaces = ''.join(card(path, p['path'], SHORT[p['path']], p['card'], p['image']) for p in C_SPC.PAGES)
+    crumbs = [(path, 'Gallery')]
+    schema = [org_schema(), crumbs_schema(crumbs),
+              {'@type': 'ImageGallery', 'name': 'SG Commercial Fitout design gallery', 'url': abs_url(path),
+               'description': 'AI interior design concepts for Singapore shops, F&B outlets, offices, showrooms and salons.',
+               'hasPart': [{'@type': 'ImageObject', 'contentUrl': it['small'].replace('-640.webp', '.webp'), 'url': abs_url(it['path']),
+                            'name': it['alt']} for it in items]}]
+    body = ('%s<section class="al-head"><div class="wrap"><span class="eyebrow">Gallery &middot; %d designs</span>'
+            '<h1>Design gallery</h1>'
+            '<p>Commercial interior ideas for Singapore shops, F&amp;B, offices and salons, with a new concept every day. Tap a picture to see the ideas behind it.</p>'
+            '<div class="al-chips" role="group" aria-label="Filter by type of space">%s</div></div></section>'
+            '<section class="album"><div class="wrap al-wrap"><div class="al-grid">%s</div>'
+            '<p class="al-foot">Like a design? WhatsApp us and we can design and build your new space or revamp your current one. All designs here are AI design concepts, not completed projects; our real carpentry is on the <a href="%s">Projects</a> page.</p></div></section>'
+            '<section class="band sand"><div class="wrap"><div class="head"><h2>Plan by type of space</h2>'
+            '<p>What each kind of business space needs, and how we fit it out.</p></div><div class="grid g4">%s</div></div></section>%s') % (
+        crumbs_html(path, crumbs), len(items), chips, album_tiles(path, items), rel(path, '/projects/'), spaces,
+        cta_band(path, 'an idea from your design gallery'))
+    write(path, head(path, 'Retail & Commercial Interior Design Gallery | SG Fitout',
+                     'Browse AI interior design ideas for Singapore shops, F&B outlets, offices, showrooms and salons. A new commercial concept is added every day.',
+                     schema, og_img=daily_url(DAILY[0])) + header(path) + body + footer(path), DAILY[0]['date'])
     for c in C_SPC.CONCEPTS:
-        chips = ''.join('<li><a href="%s">%s</a></li>' % (rel(path, s), E(SHORT.get(s, s))) for s in c['services'] if s in SHORT)
-        rows.append('''<div class="concept rv" id="%s"><div class="pic">%s</div><div><span class="eyebrow">AI design concept · %s</span>
-<h2>%s</h2><p>%s</p><ul>%s</ul><ul class="chips">%s</ul></div></div>''' % (
-            E(c['slug']), pic(c['image'], c['title'] + ' (AI design concept)'), E(c['space'].title()), E(c['title']), E(c['summary']),
-            ''.join('<li>%s</li>' % E(x) for x in c['elements']), chips))
-    inner = '<div class="prose" style="max-width:none">%s</div>' % ''.join(rows)
-    hub(path, 'Retail & Office Interior Design Concepts | R&C',
-        'AI design concepts for small shops, office receptions, cafe counters, salons and showrooms: ideas to discuss, clearly labelled, not completed projects.',
-        'Design concepts for retail and commercial spaces', 'Design concepts', C_SPC.CONCEPTS_INTRO, 'showroom',
-        'Small showroom with oak display walls and a screen (AI design concept)', inner, [(path, 'Design concepts')],
-        [{'@type': 'ItemList', 'itemListElement': [{'@type': 'ListItem', 'position': i + 1, 'name': c['title'],
-                                                     'url': abs_url(path) + '#' + c['slug']} for i, c in enumerate(C_SPC.CONCEPTS)]}])
+        build_concept_one(c)
+
+
+def build_concept_one(c):
+    path = '/design-concepts/%s/' % c['slug']
+    gp = '/design-concepts/'
+    crumbs = [(gp, 'Gallery'), (path, c['title'])]
+    cat = cat_of(c['space'])
+    sp = CAT_SPACE[cat]
+    chips = ''.join('<li><a href="%s">%s</a></li>' % (rel(path, x), E(SHORT.get(x, x))) for x in c['services'] if x in SHORT)
+    schema = [org_schema(), crumbs_schema(crumbs),
+              {'@type': 'ImageObject', 'contentUrl': img_url(c['image']), 'url': abs_url(path), 'name': c['title'],
+               'caption': c['title'] + ' (AI design concept)', 'description': c['summary'], 'creditText': 'AI design concept by SG Commercial Fitout',
+               'copyrightNotice': 'SG Commercial Fitout', 'creator': {'@type': 'Organization', 'name': BRAND}}]
+    body = ('%s<section class="cdet"><div class="wrap cdet-in">'
+            '<div class="cdet-pic"><img src="%s" srcset="%s 640w, %s 1024w" sizes="(max-width: 900px) 100vw, 56vw" width="1024" height="1024" '
+            'alt="%s (AI design concept)" fetchpriority="high"><span class="tag">AI design concept</span></div>'
+            '<div class="cdet-txt"><a class="cdet-back" href="%s">&larr; Back to the gallery</a>'
+            '<span class="eyebrow">Design concept &middot; %s</span><h1>%s</h1><p class="answer">%s</p>'
+            '<h2>Design ideas in this concept</h2><ul>%s</ul>'
+            '<h2>Services involved</h2><ul class="chips">%s</ul>'
+            '<p class="cdet-note">This is an AI-generated design idea, not a completed project. We can design and build it for your new space, or revamp your current one, '
+            'adapted to your unit, brand and budget. More on <a href="%s">%s</a>.</p>'
+            '<div class="btns">%s</div></div></div></section>%s') % (
+        crumbs_html(path, crumbs), img_url(c['image']), img_url(c['image'], True), img_url(c['image']), E(c['title']), rel(path, gp),
+        E(c['space'].capitalize()), E(c['title']), E(c['summary']), ''.join('<li>%s</li>' % E(x) for x in c['elements']), chips,
+        rel(path, sp), E(SHORT[sp].lower()), cta(path, 'the design concept "%s"' % c['title'], 'WhatsApp about this idea'),
+        cta_band(path, 'an idea from your design gallery'))
+    title = '%s | AI Concept' % c['title']
+    if len(title) > 60:
+        title = c['title'][:60]
+    write(path, head(path, title, ('AI interior design concept: %s' % c['summary'])[:158], schema, og_img=img_url(c['image']))
+          + header(path) + body + footer(path))
 
 
 # ---------- home ----------
@@ -500,7 +571,7 @@ HOME_TPL = '''<section class="lux lux-full">
 <button type="button" class="lux-back" hidden>&larr; Back to today&rsquo;s concept</button>
 </div><span class="tag lux-tag">AI design concept</span><span class="lux-scroll" aria-hidden="true"></span></section>
 
-<section class="marq-band" aria-label="Past AI design concepts"><div class="wrap marq-head"><span>The archive</span><a href="{dailyp}">Browse the gallery &rarr;</a></div>
+<section class="marq-band" aria-label="Past AI design concepts"><div class="wrap marq-head"><span>The archive</span><a href="{galp}">Open the gallery &rarr;</a></div>
 <div class="marq"><div class="marq-track">{marq}</div></div>
 <div class="wrap marq-note"><p><b>A new commercial concept every day.</b> Each day we design a fresh interior idea for a different kind of Singapore business. Use them freely for ideas. If one fits, WhatsApp us and we can design and build your new space or revamp your current one.</p></div></section>
 
@@ -557,7 +628,7 @@ def marquee(path, dp):
     items = [('%s%s/' % (dp, x['date']), daily_url(x, True), daily_url(x), x['alt'], 'AI concept of the day &middot; ' + nice_date(x['date']),
               nice_date(x['date']), x['title']) for x in DAILY[1:]]
     cp = rel(path, '/design-concepts/')
-    items += [('%s#%s' % (cp, c['slug']), img_url(c['image'], True), img_url(c['image']), c['title'] + ' (AI design concept)',
+    items += [('%s%s/' % (cp, c['slug']), img_url(c['image'], True), img_url(c['image']), c['title'] + ' (AI design concept)',
                'AI design concept', 'Design concept', c['title']) for c in C_SPC.CONCEPTS]
     tpl = ('<a class="mq" href="%s" data-full="%s" data-alt="%s" data-label="%s" data-title="%s"{x}><img src="%s" width="640" height="480" '
            'alt="{alt}" loading="lazy" decoding="async"><span><small>%s</small>%s</span></a>')
@@ -578,7 +649,7 @@ def build_home():
              ('Workshop', 'Our own carpentry workshop'),
              ('Enquiries', 'WhatsApp <a href="%s" rel="noopener">%s</a>' % (E(wa_link('my space', path)), PHONE_DISPLAY))]
     body = HOME_TPL.format(
-        cta=cta(path, 'my space', 'WhatsApp Us'), services=rel(path, '/services/'), dailyp=dp, ddate=d['date'],
+        cta=cta(path, 'my space', 'WhatsApp Us'), services=rel(path, '/services/'), dailyp=dp, galp=rel(path, '/design-concepts/'), ddate=d['date'],
         dimg='<img src="%s" srcset="%s 640w, %s 1024w" sizes="100vw" width="1024" height="1024" alt="%s" loading="eager" fetchpriority="high">' % (
             daily_url(d), daily_url(d, True), daily_url(d), E(d['alt'])),
         marq=marquee(path, dp),
@@ -626,27 +697,18 @@ def daily_path(x):
 
 def build_daily():
     path = '/design-concepts/concept-of-the-day/'
-    tiles = ''.join(
-        ('<a class="al-tile" href="%s"><img src="%s" width="640" height="640" alt="%s" loading="%s" decoding="async">'
-         '<span class="al-date">%s</span></a>') % (
-            rel(path, daily_path(x)), daily_url(x, True), E(x['alt']), 'eager' if n < 9 else 'lazy', nice_date(x['date']))
-        for n, x in enumerate(DAILY))
-    tiles += ''.join(
-        ('<a class="al-tile" href="%s#%s"><img src="%s" width="640" height="480" alt="%s (AI design concept)" loading="lazy" decoding="async">'
-         '<span class="al-date">%s</span></a>') % (
-            rel(path, '/design-concepts/'), c['slug'], img_url(c['image'], True), E(c['title']), E(c['space'].capitalize()))
-        for c in C_SPC.CONCEPTS)
-    crumbs = [('/design-concepts/', 'Design concepts'), (path, 'AI concept of the day')]
+    tiles = album_tiles(path, gallery_items()[:len(DAILY)])
+    crumbs = [('/design-concepts/', 'Gallery'), (path, 'AI concept of the day')]
     schema = [org_schema(), crumbs_schema(crumbs),
               {'@type': 'ImageGallery', 'name': 'AI concept of the day', 'url': abs_url(path),
                'associatedMedia': [{'@type': 'ImageObject', 'contentUrl': daily_url(x), 'url': abs_url(daily_path(x)), 'name': x['title'],
                                     'uploadDate': x['date'], 'description': x['summary']} for x in DAILY]}]
-    body = ('%s<section class="al-head"><div class="wrap"><span class="eyebrow">Gallery &middot; %d concepts</span>'
+    body = ('%s<section class="al-head"><div class="wrap"><span class="eyebrow">Daily &middot; %d concepts</span>'
             '<h1>AI concept of the day</h1><p>Every day we create a new commercial interior concept for a different kind of Singapore business: shops, offices, F&amp;B outlets, salons and more. '
             'Browse them freely for design ideas and tap a picture to see the details. If you like one, WhatsApp us and we can design and build your new space or revamp your current one. '
             'These are AI design ideas, not completed projects.</p></div></section>'
-            '<section class="album"><div class="wrap al-wrap"><div class="al-grid">%s</div></div></section>%s') % (
-        crumbs_html(path, crumbs), len(DAILY) + len(C_SPC.CONCEPTS), tiles, cta_band(path, 'an idea from the concept of the day'))
+            '<section class="album"><div class="wrap al-wrap"><div class="al-grid">%s</div><p class="al-foot"><a href="%s">See every design in the gallery &rarr;</a></p></div></section>%s') % (
+        crumbs_html(path, crumbs), len(DAILY), tiles, rel(path, '/design-concepts/'), cta_band(path, 'an idea from the concept of the day'))
     write(path, head(path, 'AI Interior Concept of the Day | SG Commercial Fitout',
                      'A dated daily AI interior concept for Singapore shops, offices, F&B outlets and salons. Browse every past concept as a photo album.',
                      schema, og_img=daily_url(DAILY[0])) + header(path) + body + footer(path), DAILY[0]['date'])
@@ -657,7 +719,7 @@ def build_daily():
 def build_daily_one(x, newer, older):
     path = daily_path(x)
     gp = '/design-concepts/concept-of-the-day/'
-    crumbs = [('/design-concepts/', 'Design concepts'), (gp, 'AI concept of the day'), (path, nice_date(x['date']))]
+    crumbs = [('/design-concepts/', 'Gallery'), (gp, 'AI concept of the day'), (path, nice_date(x['date']))]
     schema = [org_schema(), crumbs_schema(crumbs),
               {'@type': 'ImageObject', 'contentUrl': daily_url(x), 'url': abs_url(path), 'name': x['title'], 'caption': x['alt'],
                'description': x['summary'], 'uploadDate': x['date'], 'creditText': 'AI design concept by SG Commercial Fitout',
@@ -669,13 +731,13 @@ def build_daily_one(x, newer, older):
     body = ('%s<section class="cdet"><div class="wrap cdet-in">'
             '<div class="cdet-pic"><img src="%s" srcset="%s 640w, %s 1024w" sizes="(max-width: 900px) 100vw, 56vw" width="1024" height="1024" '
             'alt="%s" fetchpriority="high"><span class="tag">AI design concept</span></div>'
-            '<div class="cdet-txt"><a class="cdet-back" href="%s">&larr; All concepts</a>'
+            '<div class="cdet-txt"><a class="cdet-back" href="%s">&larr; Back to the gallery</a>'
             '<span class="eyebrow">%s &middot; %s</span><h1>%s</h1><p class="answer">%s</p>'
             '<h2>Design ideas in this concept</h2><ul>%s</ul>'
             '<p class="cdet-note">We publish a new commercial concept every day for a different kind of business. This one is an AI-generated design idea, not a completed project. Like it? We can design and build it for your new space, or revamp your current one, adapted to your unit, brand and budget.</p>'
             '<div class="btns">%s</div></div></div>'
             '<div class="wrap cnav">%s%s</div></section>%s') % (
-        crumbs_html(path, crumbs), daily_url(x), daily_url(x, True), daily_url(x), E(x['alt']), rel(path, gp),
+        crumbs_html(path, crumbs), daily_url(x), daily_url(x, True), daily_url(x), E(x['alt']), rel(path, '/design-concepts/'),
         nice_date(x['date']), E(x['space']), E(x['title']), E(x['summary']), ''.join('<li>%s</li>' % E(i) for i in x['ideas']),
         cta(path, 'this AI concept (%s)' % nice_date(x['date']), 'WhatsApp about this idea'),
         nav(newer, 'new', '&larr; Newer'), nav(older, 'old', 'Older &rarr;'), cta_band(path, 'an idea from the concept of the day'))
@@ -791,7 +853,7 @@ def build_machine():
             p = ALL_CONTENT[pth]
             lines.append('- [%s](%s): %s' % (p['h1'], abs_url(pth), p['card']))
         lines.append('')
-    lines += ['## Other', '- [Design concepts](%s): AI design concepts, clearly labelled.' % abs_url('/design-concepts/'),
+    lines += ['## Other', '- [Design gallery](%s): every AI design concept in one photo album (a new commercial concept added daily), each with its own page.' % abs_url('/design-concepts/'),
               '- [Projects & workshop](%s)' % abs_url('/projects/'), '- [AI concept of the day](%s): a new commercial interior concept every day for a different kind of Singapore business; free to browse for ideas' % abs_url('/design-concepts/concept-of-the-day/'), '- [About](%s)' % abs_url('/about/'), '- [Contact](%s)' % abs_url('/contact/'), '']
     with open(os.path.join(OUT, 'llms.txt'), 'w') as f:
         f.write('\n'.join(lines))

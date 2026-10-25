@@ -73,3 +73,4 @@
     if(el.getBoundingClientRect().top<vh){el.classList.add('in')}else{el.style.transitionDelay=((i%4)*70)+'ms';io.observe(el)}
   });
 })();
+(function(){var cs=document.querySelectorAll('.al-chip');if(!cs.length)return;cs.forEach(function(c){c.addEventListener('click',function(){var f=c.getAttribute('data-f');cs.forEach(function(x){x.classList.toggle('on',x===c)});document.querySelectorAll('.al-tile').forEach(function(t){t.hidden=!(f==='all'||t.getAttribute('data-cat')===f)})})})})();
