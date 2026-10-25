@@ -160,7 +160,7 @@ function startChatHelper() {
     const t = input.value.trim();
     if (!t) { input.focus(); return; }
     input.value = "";
-    openWhatsApp("Hi Edwin, " + t, "chat_typed");
+    openWhatsApp("Hi Edwin, " + t, "whatsapp_chat_typed");
   });
   launcher.addEventListener("click", () => (panel.hidden ? open() : close()));
   root.querySelector(".chat-close").addEventListener("click", close);
@@ -818,9 +818,10 @@ if (menuBtn && nav) {
   };
   const send = (entity, extra) => {
     try {
-      fetch("https://base44.app/api/apps/" + APP + "/entities/" + entity, {
+      // The controller app is private: counts go through its public write-only "track" function.
+      fetch("https://base44.app/api/apps/" + APP + "/functions/track", {
         method: "POST", credentials: "omit", keepalive: true,
-        headers: { "Content-Type": "application/json" }, body: JSON.stringify({ ...base, ...extra }),
+        headers: { "Content-Type": "application/json" }, body: JSON.stringify({ entity, site: "pageone", ...base, ...extra }),
       }).catch(() => {});
     } catch (e) { /* tracking must never break the page */ }
   };
@@ -828,7 +829,7 @@ if (menuBtn && nav) {
   document.addEventListener("click", (e) => {
     const a = e.target.closest && e.target.closest('a[href*="wa.me/"]');
     if (!a) return;
-    const type = a.classList.contains("chat-reply") ? "chat_reply" : a.classList.contains("footer-wa") ? "footer_whatsapp"
+    const type = a.classList.contains("chat-reply") ? "whatsapp_chat_reply" : a.classList.contains("footer-wa") ? "footer_whatsapp"
       : a.closest(".article-cta") ? "article_cta" : a.classList.contains("btn") ? "whatsapp_button" : "whatsapp_link";
     send("CtaClick", { cta_type: type });
   }, true);
