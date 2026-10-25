@@ -349,3 +349,27 @@ figure.real figcaption b{display:block;color:var(--char);font:600 1.05rem/1.3 va
 @media (max-width:760px){.brand img{height:36px}}
 .hdr .btn,.site-head .btn,header .btn{white-space:nowrap}
 @media (min-width:761px) and (max-width:1180px){.nav a{padding:8px 7px;font-size:.88rem}.brand img{height:38px}}
+/* concept album (photo-album grid) + single concept page */
+.al-head{padding:26px 0 14px}.al-head h1{margin:6px 0 8px;font-size:clamp(28px,4vw,44px)}.al-head p{max-width:640px;color:var(--muted,#5b6159);margin:0}
+.album{padding:6px 0 40px}
+.al-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;max-width:1080px}
+.al-tile{position:relative;display:block;aspect-ratio:1/1;overflow:hidden;border-radius:6px;background:#e9e6df}
+.al-tile img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .5s ease}
+.al-tile:hover img{transform:scale(1.04)}
+.al-date{position:absolute;left:0;right:0;bottom:0;padding:18px 8px 6px;font-size:12px;font-weight:600;color:#fff;background:linear-gradient(transparent,rgba(0,0,0,.55));letter-spacing:.02em}
+@media(max-width:760px){.al-wrap{padding-left:2px;padding-right:2px}.al-grid{gap:2px}.al-tile{border-radius:0}.al-date{font-size:10.5px;padding:14px 6px 4px}}
+.cdet{padding:10px 0 40px}
+.cdet-in{display:grid;grid-template-columns:1.15fr 1fr;gap:36px;align-items:start}
+.cdet-pic{position:relative;border-radius:var(--radius-l,14px);overflow:hidden;aspect-ratio:1/1}
+.cdet-pic img{width:100%;height:100%;object-fit:cover;display:block}
+.cdet-pic .tag{position:absolute;left:12px;bottom:12px}
+.cdet-back{display:table;margin-bottom:14px;font-weight:600;text-decoration:none}
+.cdet-txt h1{margin:6px 0 12px;font-size:clamp(26px,3.2vw,40px)}
+.cdet-txt h2{font-size:18px;margin:20px 0 8px}
+.cdet-txt ul{margin:0 0 14px;padding-left:20px}.cdet-txt li{margin:4px 0}
+.cdet-note{font-size:14px;color:var(--muted,#5b6159)}
+.cnav{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:28px}
+.cnav a{display:block;padding:14px 16px;border:1px solid var(--line,#ddd);border-radius:10px;text-decoration:none;color:inherit;font-weight:600}
+.cnav a small{display:block;font-weight:500;opacity:.7;margin-bottom:3px}
+.cn-old{text-align:right}
+@media(max-width:900px){.cdet-in{grid-template-columns:1fr;gap:18px}.cdet-pic{margin:0 -16px;border-radius:0}.cdet-pic .tag{left:16px}}

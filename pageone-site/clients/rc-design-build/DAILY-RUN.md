@@ -22,7 +22,7 @@ Steps (stop and report if any step fails; never invent text that the image does 
    It commits the image + rebuilt site to branch site-assets and prints SITE_SHA (skips if the date already exists).
 5. Bluehost Bridge sync_from_github: {site: "pageone", ref: SITE_SHA, source_path: "pageone-site/clients/rc-design-build/site",
    base_path: "preview/rc-design-build"}. Re-run once if any file is skipped.
-6. After go-live only (commercialfitout.sg serves the site): IndexNow the homepage and the gallery URL (key 7d4c2a9e1f6b8035c4e2a7d9b1f60c38).
+6. After go-live only (commercialfitout.sg serves the site): IndexNow the homepage, the gallery URL and the new day page /design-concepts/concept-of-the-day/<date>/ (key 7d4c2a9e1f6b8035c4e2a7d9b1f60c38).
 7. Log one line to /mnt/project-files/rc-design-build/daily-log.md if the mount exists (date, title, SITE_SHA, result).
 
 LIVE since 25 Oct 2026 on https://commercialfitout.sg (same Bluehost folder preview/rc-design-build). After the sync,
