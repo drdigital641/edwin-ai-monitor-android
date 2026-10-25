@@ -852,8 +852,8 @@ ASSET_V = hashlib.sha256(b''.join(open(os.path.join(HERE, f), 'rb').read() for f
 
 def brand_html(lpre, L, pre=''):
     return ('<a class="brand" href="%s" aria-label="Benjamin Poon, %s"><img class="brand-nv" src="%snirvana-logo.png" alt="富貴 Nirvana" width="480" height="134">'
-            '<span class="brand-name">Benjamin Poon<small>潘国雄 · %s</small></span></a>') % (
-        lpre or './', E(t(W['home'], L)), pre, E(t(T('Life Managing Director', '生命经理师'), L)))
+            '<span class="brand-name">%s</span></a>') % (
+        lpre or './', E(t(W['home'], L)), pre, E(t(T('Benjamin Poon 潘国雄 · Life Managing Director', '潘国雄 Benjamin Poon · 生命经理师'), L)))
 
 
 def render(L, path, p):
