@@ -453,7 +453,7 @@ HOME_FAQ = [
     ('What does SG Commercial Fitout do?', 'SG Commercial Fitout designs and builds retail and commercial spaces in Singapore: custom carpentry, renovation, '
      'electrical works, tiling and flooring, painting and finishing, and audio, visual and lighting (AVL) for shops, offices, F&B outlets and salons.'),
     ('Do you have your own carpentry workshop?', 'Yes. SG Commercial Fitout has its own carpentry workshop, so counters, cabinets and shelving can be '
-     'made to your measurements. Workshop photos are on the Projects page.'),
+     'made to your measurements. Photos of real work are on the Projects page.'),
     ('Are the photos real?', 'Photos marked "Real project" show SG Commercial Fitout carpentry; decor items in them were added with AI styling. '
      'Photos marked "AI design concept" are ideas to discuss, not completed work.'),
     ('What should I send to start?', 'WhatsApp a floor plan or unit layout, a few photos of the unit, what the space is for and your target opening date. '
