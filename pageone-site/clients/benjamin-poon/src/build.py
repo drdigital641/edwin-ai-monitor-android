@@ -75,7 +75,7 @@ def load(name):
 
 SV = load('services')
 LO = load('locations')
-GA, GB, GC, GD = load('guides_a'), load('guides_b'), load('guides_c'), load('guides_d')
+GA, GB, GC, GD, GE = load('guides_a'), load('guides_b'), load('guides_c'), load('guides_d'), load('guides_e')
 SERVICES, LOCATIONS = SV.SERVICES, LO.LOCATIONS
 PX = dict(load('photos_client').PHOTOS_CLIENT, **load('photos_nirvana').PHOTOS_NV, **load('photos').PHOTOS_EXT, **load('photos_booklet').PHOTOS_BK)  # licensed stock / Commons photos, hotlinked for the preview (see content/photos.py)
 
@@ -97,14 +97,14 @@ def role_for(prefix, slug):
 SVC_PHOTO = {s['slug']: role_for('service:', s['slug']) for s in SERVICES}
 VENUE_PHOTO = {v['slug']: role_for('venue:', v['slug']) for v in LOCATIONS}
 role = lambda r: [k for k, v in PX.items() if v.get('role') == r or k == r]
-GUIDE_ORDER = ['private-memorial-park-vs-government-columbarium', 'plan-niche-while-healthy', 'cantonese-hokkien-speaking-memorial-advisor',
+GUIDE_ORDER = ['sudden-passing-call-benjamin-nirvana', 'how-to-get-to-nirvana-memorial-garden', 'private-memorial-park-vs-government-columbarium', 'plan-niche-while-healthy', 'cantonese-hokkien-speaking-memorial-advisor',
                'lin-san-temple-niche-ancestral-tablet-geylang', 'thian-leng-changi-road-niche-ancestral-tablet', 'nirvana-family-suites-columbarium',
                'east-singapore-niche-near-home', 'nirvana-memorial-garden-west-residents', 'nirvana-ancestral-tablets', 'visiting-columbarium-with-elderly-parents',
                'nirvana-one-time-maintenance-fee-trust-fund', 'nirvana-qing-ming-zhong-yuan-prayers',
                'columbarium-niche-vs-ancestral-tablet', 'questions-before-choosing-a-columbarium-niche', 'arranging-a-columbarium-viewing',
                'pre-planning-vs-immediate-funeral-arrangements', 'what-to-do-when-a-loved-one-passes-away-singapore',
                'will-planning-basics-singapore', 'preparing-for-a-memorial-planning-consultation']
-_g = {g['slug']: g for g in GA.GUIDES + GB.GUIDES + GC.GUIDES + GD.GUIDES}
+_g = {g['slug']: g for g in GA.GUIDES + GB.GUIDES + GC.GUIDES + GD.GUIDES + GE.GUIDES}
 GUIDES = [_g[s] for s in GUIDE_ORDER if s in _g]
 
 ROLE = T('Service Advisor · Life Managing Director (生命经理师)', '生命经理师 · Service Advisor')
@@ -579,7 +579,7 @@ def privacy_body(L):
                  '<strong>Click counts:</strong> the site may count page views and taps on WhatsApp buttons (no names or message content) to learn which pages help. A tap does not mean a message was sent.',
                  '<strong>Third parties:</strong> WhatsApp, Google Maps and font services are run by third parties under their own privacy policies.',
                  '<strong>Access and correction:</strong> to see, correct or delete your data, or withdraw consent, email <a href="mailto:%s">%s</a>.' % (EMAIL, EMAIL),
-                 'Last updated 25 October 2026.']
+                 'Last updated 26 October 2026.']
     return '<section class="sec"><div class="wrap prose">%s</div></section>' % ''.join('<p>%s</p>' % x for x in paras)
 
 
@@ -1040,7 +1040,7 @@ def main():
         for (L, path), p in PAGES.items():
             if L == 'en':
                 f.write('- [%s](%s%s): %s\n' % (p['title'].split(' | ')[0], SITE, path, p['desc']))
-        f.write('\nLast updated 25 October 2026.\n')
+        f.write('\nLast updated 26 October 2026.\n')
     with open(os.path.join(OUT, 'site.webmanifest'), 'w') as f:
         json.dump({'name': 'Benjamin Poon 潘国雄', 'short_name': 'Benjamin Poon', 'icons': [{'src': 'icon-192.png', 'sizes': '192x192', 'type': 'image/png'},
                                                                                          {'src': 'icon-512.png', 'sizes': '512x512', 'type': 'image/png'}],
