@@ -24,6 +24,8 @@ ORIGINAL = {
     'gearbox-teardown': 'IMG_0318e.jpg', 'hero-workshop': 'IMG_0301e.jpg', 'mechanics-under-car': 'IMG_0298e.jpg',
     'shopfront': 'Shopfront-02.jpg', 'transmission-cutaway': 'WhatsApp-Image-2017-12-14-at-4.04.40-PM-1.jpg',
     'workshop-lifts': 'WhatsApp-Image-2017-12-15-at-11.47.32-AM.jpg',
+    # Edwin's scanner photos, 25 Oct 2026 (VIN / chassis / serial blurred)
+    'subaru-p0971-scan': 'subaru-p0971-scan-redacted.jpg', 'honda-freed-p2857-scan': 'honda-freed-p2857-scan-redacted.jpg',
 }
 
 
