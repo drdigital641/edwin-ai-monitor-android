@@ -151,7 +151,7 @@ def page(path, title, desc, schemas, body, crumb=None, robots="index, follow, ma
 </head>
 <body>
   <a class="skip-link" href="#main">Skip to content</a>
-  {PROMO}
+  {"" if path == "index.html" else PROMO}
   <header class="site-header">
     <div class="wrap header-inner">
       <a class="logo" href="/">
@@ -1534,7 +1534,7 @@ page("index.html",
                            "priceSpecification": {"@type": "UnitPriceSpecification", "price": "50", "priceCurrency": "SGD", "unitCode": "MON"}},
                           {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "SEO Boost", "url": SITE + "/seo-boost/"}, "price": "10", "priceCurrency": "SGD"}]),
          WEBSITE_NODE]}],
-     fill_home(open(os.path.join(HERE, "home_body.html"), encoding="utf-8").read().rstrip("\n").replace("{{GLANCE}}", HOME_GLANCE).replace("{{HOME_FAQ}}", HOME_FAQ_HTML)),
+     fill_home(open(os.path.join(HERE, "home_body.html"), encoding="utf-8").read().rstrip("\n").replace("{{GLANCE_ANSWER}}", GLANCE_ANSWER).replace("{{HOME_FAQ}}", HOME_FAQ_HTML)),
      updated=max(SC_UPDATED, AIV_UPDATED, "2026-10-17"),
      head_extra="\n  <style>" + " ".join(open(os.path.join(HERE, "home_motion.css"), encoding="utf-8").read().split("\n")[1:]).strip() + GROW_CSS + "</style>",
      foot_extra='\n  <script src="/motion.js?v=4" defer></script>')
