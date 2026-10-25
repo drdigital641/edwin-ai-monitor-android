@@ -217,7 +217,7 @@ def page(path, title, desc, schemas, body, crumb=None, robots="index, follow, ma
     {WA_ICON}
   </a>
 
-  <script src="/main.js?v=13" defer></script>{foot_extra}
+  <script src="/main.js?v=15" defer></script>{foot_extra}
 </body>
 </html>
 """

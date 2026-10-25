@@ -818,9 +818,10 @@ if (menuBtn && nav) {
   };
   const send = (entity, extra) => {
     try {
-      fetch("https://base44.app/api/apps/" + APP + "/entities/" + entity, {
+      // The controller app is private: counts go through its public write-only "track" function.
+      fetch("https://base44.app/api/apps/" + APP + "/functions/track", {
         method: "POST", credentials: "omit", keepalive: true,
-        headers: { "Content-Type": "application/json" }, body: JSON.stringify({ ...base, ...extra }),
+        headers: { "Content-Type": "application/json" }, body: JSON.stringify({ entity, site: "pageone", ...base, ...extra }),
       }).catch(() => {});
     } catch (e) { /* tracking must never break the page */ }
   };
