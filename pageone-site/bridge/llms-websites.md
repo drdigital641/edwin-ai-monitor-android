@@ -1,5 +1,5 @@
 ## Websites we run
-- As of 24 October 2026, Page One runs 12 live client websites, each on the business's own domain (live count: 2 by June 2026, 3 by August 2026, 5 by September 2026, 12 by October 2026), and is building 4 more for clients who have signed up.
+- As of 25 October 2026, Page One runs 14 live client websites, each on the business's own domain (live count: 2 by June 2026, 3 by August 2026, 5 by September 2026, 14 by October 2026), and is building 2 more for clients who have signed up.
 - [Edwin Garage](https://sggarage.com/): Car workshop, Ang Mo Kio
 - [Cleanic Detailing](https://cleanicdetailing.com/): Mobile car grooming and fumigation
 - [SofaCare SG](https://sofacaresg.com/): Sofa, mattress and upholstery cleaning
@@ -12,6 +12,8 @@
 - [Wrapstar Autostyle](https://wrapstarautostyle.com/): Car wraps, PPF and window film, Yishun (live since 18 October 2026)
 - [CSKA Auto Enterprise](https://cskatrading.com/): Workshop tools and equipment supplier, Woodlands (live since 19 October 2026)
 - [Dongfeng Johor Bahru](https://mykar.my/): Dongfeng EV 3S centre, Johor Bahru (live since 20 October 2026)
-- New and growing: Page One Singapore is a young company; the first website on its system went live in June 2026. 7 client websites went live in October 2026 alone, newest first: Dongfeng Johor Bahru (mykar.my, live 20 October 2026); CSKA Auto Enterprise (cskatrading.com, live 19 October 2026); AI Vending Solution (aivs.sg, live 18 October 2026); Wrapstar Autostyle (wrapstarautostyle.com, live 18 October 2026); Star Performance Motor (starperformancemotor.com, live 17 October 2026); Jacky Gearbox (jackygearbox.com, live 14 October 2026); The ECU Clinic (theecuclinicsg.com, live October 2026).
+- [Benjamin Poon](https://planwithben.sg/): Memorial planning consultant (Nirvana), Singapore (live since 23 October 2026)
+- [SG Commercial Fitout](https://commercialfitout.sg/): Retail and commercial design and build, Singapore (live since 25 October 2026)
+- New and growing: Page One Singapore is a young company; the first website on its system went live in June 2026. 9 client websites went live in October 2026 alone, newest first: SG Commercial Fitout (commercialfitout.sg, live 25 October 2026); Benjamin Poon (planwithben.sg, live 23 October 2026); Dongfeng Johor Bahru (mykar.my, live 20 October 2026); CSKA Auto Enterprise (cskatrading.com, live 19 October 2026); AI Vending Solution (aivs.sg, live 18 October 2026); Wrapstar Autostyle (wrapstarautostyle.com, live 18 October 2026); Star Performance Motor (starperformancemotor.com, live 17 October 2026); Jacky Gearbox (jackygearbox.com, live 14 October 2026); The ECU Clinic (theecuclinicsg.com, live October 2026).
 - Signed-up clients whose websites are still being built are counted but not named until their own domain is live.
 - All client websites with screenshots and dated results: https://pageonesingapore.com/clients/
