@@ -29,7 +29,7 @@ import guides as C_GDE  # noqa: E402
 OUT = os.environ.get('RC_OUT', os.path.join(HERE, 'site'))
 SLUG = 'rc-design-build'
 DOMAIN = 'commercialfitout.sg'   # Edwin 24 Oct 2026 12:08 UTC (no DNS yet on 24 Oct)
-LIVE = False           # True only after Edwin's go-ahead and every PENDING item is confirmed
+LIVE = True            # True only after Edwin's go-ahead and every PENDING item is confirmed
 WA_NUMBER = '6586594553'  # Edwin 24 Oct 2026
 PHONE_DISPLAY = '+65 8659 4553'
 ADDR_TEXT = '113 Eunos Ave 3, #04-02, Gordon Ind Building, Singapore 409838'  # Edwin 25 Oct 2026
@@ -49,7 +49,6 @@ if LIVE:
 
 PENDING = [
     ('Operating company', 'Registered business name and UEN to be confirmed.'),
-    ('Domain', 'CommercialFitout.sg is chosen and not live yet.'),
 ]
 
 # Real work supplied by Edwin 24 Oct 2026 ("real projects" by the company). Each upload carried the caption
