@@ -842,12 +842,95 @@
         "top_queries": []
       },
       "short": "Dongfeng EVs in JB"
+    },
+    {
+      "key": "benjamin-poon",
+      "name": "Benjamin Poon",
+      "domain": "planwithben.sg",
+      "url": "https://planwithben.sg/",
+      "industry": "Memorial planning consultant (Nirvana), Singapore",
+      "schema_type": "ProfessionalService",
+      "img": "https://cdn.jsdelivr.net/gh/drdigital641/edwin-ai-monitor-android@38d2a93236189ef5c524ff6980a02bcba674d51b/site-assets/pageone/clients/planwithben.webp",
+      "gsc_site": "sc-domain:planwithben.sg",
+      "launched": "2026-10-23",
+      "brand_terms": [
+        "benjamin",
+        "poon",
+        "planwithben",
+        "潘国雄"
+      ],
+      "skip_queries": [],
+      "built": [
+        "A page for each service: columbarium niches, ancestral tablets, funeral services and will planning",
+        "Pages for the three venues he serves: Nirvana Memorial Garden, Lin San Temple and Thian Leng",
+        "The whole site in English and Chinese, with guides for families planning ahead"
+      ],
+      "articles": 0,
+      "gsc": {
+        "record_id": null,
+        "first_day": null,
+        "clicks": 0,
+        "impressions": 0,
+        "position": 0,
+        "prev_clicks": 0,
+        "prev_impressions": 0,
+        "prev_position": 0,
+        "queries": 0,
+        "page_one": 0,
+        "top3": 0,
+        "capped": false,
+        "monthly": [],
+        "best_query": null,
+        "top_queries": []
+      },
+      "short": "memorial planning"
+    },
+    {
+      "key": "rc-design-build",
+      "name": "SG Commercial Fitout",
+      "domain": "commercialfitout.sg",
+      "url": "https://commercialfitout.sg/",
+      "industry": "Retail and commercial design and build, Singapore",
+      "schema_type": "GeneralContractor",
+      "img": "https://cdn.jsdelivr.net/gh/drdigital641/edwin-ai-monitor-android@38d2a93236189ef5c524ff6980a02bcba674d51b/site-assets/pageone/clients/commercialfitout.webp",
+      "gsc_site": "sc-domain:commercialfitout.sg",
+      "launched": "2026-10-25",
+      "brand_terms": [
+        "commercial fitout",
+        "commercialfitout",
+        "sg fitout"
+      ],
+      "skip_queries": [],
+      "built": [
+        "Pages for each trade: carpentry, electrical, painting, tiling and flooring, renovation, plus audio, visual and lighting",
+        "Pages for each kind of space: shops and boutiques, cafes, offices and showrooms, salons",
+        "A new AI design concept on the home page every day, plus guides for shop owners planning a fit-out"
+      ],
+      "articles": 0,
+      "gsc": {
+        "record_id": null,
+        "first_day": null,
+        "clicks": 0,
+        "impressions": 0,
+        "position": 0,
+        "prev_clicks": 0,
+        "prev_impressions": 0,
+        "prev_position": 0,
+        "queries": 0,
+        "page_one": 0,
+        "top3": 0,
+        "capped": false,
+        "monthly": [],
+        "best_query": null,
+        "top_queries": []
+      },
+      "short": "shop fit-outs"
     }
   ],
   "pipeline": {
     "_readme": "Websites being built for signed-up clients that are not live on their own domain yet. Shown only as a count (never named) next to the live count. Set by showcase_refresh.py from the Controller Client export (status activating or preview, not yet a live site here, slug not in exclude); as_of is the day the count last changed. Put Client slugs that are not signed-up clients (e.g. a demo preview) in exclude.",
-    "building": 4,
-    "as_of": "2026-10-24",
+    "building": 2,
+    "as_of": "2026-10-25",
     "exclude": [
       "nanyang-carpentry",
       "new-zen-werkz",
