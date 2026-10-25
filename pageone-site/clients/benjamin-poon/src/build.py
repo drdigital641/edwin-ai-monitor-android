@@ -457,7 +457,11 @@ def home_body(L):
         ''.join(guide_card(g, L) for g in GUIDES[:3]), E(t(T('All guides', '全部指南'), L)))
     faq = '<section class="sec sec-cream"><div class="wrap">%s<div class="faq-wrap">%s</div></div></section>' % (
         title_lines(T('FAQ', '常见问题'), T('Good to know', '您可能想知道'), L), faq_html(FAQ_HOME, L).replace('<h2>%s</h2>' % E(t(W['faq'], L)), '', 1))
-    return hero + intro + svcs + mood + meet + venues + steps + trust + guides + faq
+    pre = '' if L == 'en' else '../'
+    brand = ('<section class="nvbrand"><div class="wrap"><img src="%snirvana-logo.png" alt="%s" width="480" height="134">'
+             '<p>%s</p></div></section>') % (pre, E(t(T('富貴 Nirvana', '富貴 Nirvana 富贵山庄'), L)),
+        E(t(T('Benjamin Poon (潘国雄) represents Nirvana Singapore', '潘国雄 · 富贵山庄生命经理师'), L)))
+    return brand + hero + intro + svcs + mood + meet + venues + steps + trust + guides + faq
 
 
 def about_body(L):
@@ -917,9 +921,9 @@ def render(L, path, p):
 <meta property="og:locale" content="{OG_LOCALE[L]}">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:image" content="{share}">
-<link rel="icon" href="{pre}favicon.ico" sizes="48x48">
-<link rel="icon" href="{pre}icon-192.png" type="image/png" sizes="192x192">
-<link rel="apple-touch-icon" href="{pre}apple-touch-icon.png">
+<link rel="icon" href="{pre}favicon.ico?v=2" sizes="48x48">
+<link rel="icon" href="{pre}icon-192.png?v=2" type="image/png" sizes="192x192">
+<link rel="apple-touch-icon" href="{pre}apple-touch-icon.png?v=2">
 <link rel="manifest" href="{pre}site.webmanifest">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:opsz,wght@6..96,400;6..96,500&family=Jost:wght@400;500;600{'&family=Noto+Serif+SC:wght@600' if L == 'zh' else ''}&display=swap">
@@ -1038,13 +1042,14 @@ def main():
         f.write('\nLast updated 25 October 2026.\n')
     with open(os.path.join(OUT, 'site.webmanifest'), 'w') as f:
         json.dump({'name': 'Benjamin Poon 潘国雄', 'short_name': 'Benjamin Poon', 'icons': [{'src': 'icon-192.png', 'sizes': '192x192', 'type': 'image/png'},
-                                                                                         {'src': IMG + 'icon-512.png', 'sizes': '512x512', 'type': 'image/png'}],
+                                                                                         {'src': 'icon-512.png', 'sizes': '512x512', 'type': 'image/png'}],
                    'theme_color': '#163028', 'background_color': '#f7f3eb', 'display': 'browser'}, f, ensure_ascii=False)
     with open(os.path.join(HERE, 'htaccess.txt'), 'w') as f:
         f.write(HTACCESS.replace('{DOMAIN}', DOMAIN))
     for fn in ('bp.css', 'bp.js'):
         shutil.copy(os.path.join(HERE, fn), os.path.join(OUT, fn))
-    for fn in ('favicon.ico', 'icon-192.png', 'apple-touch-icon.png'):
+    shutil.copy(os.path.join(HERE, 'nirvana-logo.png'), os.path.join(OUT, 'nirvana-logo.png'))
+    for fn in ('favicon.ico', 'icon-192.png', 'apple-touch-icon.png', 'icon-512.png'):
         shutil.copy(os.path.join(HERE, 'icons', fn), os.path.join(OUT, fn))
     print('built %d pages' % len(PAGES))
 
