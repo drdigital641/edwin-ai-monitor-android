@@ -4,9 +4,29 @@
     "title": "Shophouse bakery counter in oak and olive",
     "space": "F&B",
     "summary": "A long oak service counter with a fluted front and a stone-look top runs along a heritage shophouse unit. Olive wall tiles and warm pendants frame the bread display, while terrazzo-look flooring and timber shutters keep the shophouse character.",
-    "ideas": ["Fluted oak counter front with a rounded end", "Glass bread display set into the counter run", "Olive wall tiles behind the service area", "Warm pendant lights over the counter"],
+    "ideas": [
+      "Fluted oak counter front with a rounded end",
+      "Glass bread display set into the counter run",
+      "Olive wall tiles behind the service area",
+      "Warm pendant lights over the counter"
+    ],
     "image": "daily/2026-10-24",
     "asset_sha": "ASSET_SHA",
     "alt": "Shophouse bakery-cafe with a long fluted oak counter, bread display and olive tiled wall (AI design concept)"
+  },
+  {
+    "date": "2026-10-25",
+    "space": "Retail",
+    "title": "Bright pharmacy-style wellness shop in light oak",
+    "summary": "A pharmacy-style wellness shop with light oak gondola shelving islands, full-height oak wall shelving and a white-topped oak service counter at the back. Cream suspended panels mark zones under an even grid of downlights, with an olive feature wall and large beige floor tiles keeping the space calm and easy to browse.",
+    "ideas": [
+      "Two-sided oak gondola islands with a deeper base shelf for heavier stock",
+      "Cream suspended panels above each zone for future category signs",
+      "Full-height wall shelving framing the service counter",
+      "Even downlight grid with an olive accent wall to soften the bright retail look"
+    ],
+    "alt": "Pharmacy-style wellness shop with light oak gondola shelving, wall shelving, a service counter and cream hanging panels (AI design concept)",
+    "image": "daily/2026-10-25",
+    "asset_sha": "82f97e6"
   }
 ]
