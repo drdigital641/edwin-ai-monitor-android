@@ -48,3 +48,6 @@
 @keyframes pm-down{from{transform:translateY(-46px)}}
 @media (hover:hover) and (pointer:fine){.story .browser{transform:perspective(1200px) rotateY(var(--ry,-4deg)) rotateX(var(--rx,0deg));transition:transform .25s}}
 @media (prefers-reduced-motion:reduce){.grad-text::after,.js .climb.in li.me,.js .climb.in li.d{animation:none}.story .browser{transform:none}}
+.hero-lean .hero-check{margin-top:26px}
+.hero-paths{margin:18px 0 0;color:#aab6cc;font-size:.95rem}
+.hero-paths a{color:#fff;font-weight:700;text-decoration:underline;text-underline-offset:3px}
