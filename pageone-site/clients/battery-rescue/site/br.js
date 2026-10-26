@@ -30,7 +30,7 @@ function setMode(m){$$('.seg button').forEach(function(b){b.setAttribute('aria-s
 $$('.seg button').forEach(function(b){b.addEventListener('click',function(){setMode(b.dataset.mode)})});
 setMode(location.hash==='#compare'?'compare':'stuck');
 window.addEventListener('hashchange',function(){setMode(location.hash==='#compare'?'compare':'stuck');scrollTo(0,0)});
-$$('.tabs a').forEach(function(a){a.addEventListener('click',function(){var h=a.getAttribute('href');if(h==='/'&&location.pathname==='/'){setMode('stuck')}})});
+$$('.tabs a').forEach(function(a){a.addEventListener('click',function(){if(a.pathname===location.pathname&&!a.hash){setMode('stuck')}})});
 /* ---------- car search ---------- */
 var FIT=D.fit||[],P=D.price||{};
 function label(r){return r[0]+' '+r[1]}
