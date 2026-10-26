@@ -62,7 +62,16 @@ REAL = [
     ('real-pantry-drawers', 'Drawer stack detail', 'Three-drawer stack and double-door cabinet with recessed finger pulls.'),
 ]
 REAL_NOTE = 'Real SG Commercial Fitout carpentry. Decor items in these photos were added with AI styling.'
-WORKSHOP = []  # filenames of real workshop photos (Edwin uploading 24 Oct 2026 evening)
+# Real workshop photos from Edwin (26 Oct 2026), cropped and colour-graded only (no AI changes). First 3 show on the homepage.
+WS_SHA = 'd676bed'
+WORKSHOP = [
+    ('ws-saw-bay', 'Panel saw and plywood sheets in the SG Commercial Fitout carpentry workshop'),
+    ('ws-carcasses', 'Cabinet carcasses and drawer boxes being made in our workshop'),
+    ('ws-oak-laminate', 'Oak-grain laminate board ready for cutting in our workshop'),
+    ('ws-panel-saw', 'Sliding table panel saw used to cut boards to size'),
+    ('ws-board-stack', 'Stack of wood-grain boards stored in our workshop'),
+    ('ws-board-aisle', 'Plywood and laminate boards lined up beside the cutting area'),
+]
 
 # ---------- page registry ----------
 SVC = {p['path']: p for p in C_SVC.PAGES}
@@ -553,11 +562,16 @@ def real_fig(k, t, dsc):
         real_pic(k, t + ' by SG Commercial Fitout'), E(t), E(dsc))
 
 
-def workshop_block(path):
+def ws_url(k, small=True):
+    base = os.environ.get('RC_IMG') or ('https://cdn.jsdelivr.net/gh/drdigital641/edwin-ai-monitor-android@%s/site-assets/%s/' % (WS_SHA, SLUG))
+    return base + 'workshop/' + k + ('-640' if small else '') + '.webp'
+
+
+def workshop_block(path, n=3):
     if WORKSHOP:
         return '<div class="grid g3">%s</div>' % ''.join(
-            '<figure class="real rv"><div class="ph"><img src="%s" width="640" height="480" alt="SG Commercial Fitout carpentry workshop" loading="lazy">'
-            '<span class="tag tag-real">Our workshop</span></div></figure>' % (IMG + w) for w in WORKSHOP)
+            '<figure class="real rv"><div class="ph"><img src="%s" srcset="%s 640w, %s 1200w" sizes="(max-width: 760px) 92vw, 31vw" width="640" height="480" alt="%s" loading="lazy">'
+            '<span class="tag tag-real">Our workshop</span></div></figure>' % (ws_url(k), ws_url(k), ws_url(k, False), E(a)) for k, a in WORKSHOP[:n])
     if LIVE:
         return ''
     return '<div class="grid g3 ws-slots">%s</div>' % ''.join(
@@ -676,7 +690,7 @@ def build_projects():
     inner = ('<div class="head"><h2>Real projects</h2><p>%s</p></div><div class="grid g3">%s</div>'
              '<div class="head" style="margin-top:50px"><h2>Our carpentry workshop</h2><p>SG Commercial Fitout makes its carpentry in its own workshop, '
              'so counters, cabinets and shelving are built to the measurements taken on site.</p></div>%s%s') % (
-        E(REAL_NOTE), ''.join(real_fig(*r) for r in REAL), workshop_block(path),
+        E(REAL_NOTE), ''.join(real_fig(*r) for r in REAL), workshop_block(path, 6),
         '' if WORKSHOP else pending_box([('Workshop photos', 'real workshop photos are being added')], 'Coming soon'))
     crumbs = [(path, 'Projects & workshop')]
     schema = [org_schema(), crumbs_schema(crumbs), {'@type': 'CollectionPage', 'name': 'SG Commercial Fitout projects and workshop', 'url': abs_url(path)}]
