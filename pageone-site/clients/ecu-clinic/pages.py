@@ -912,4 +912,44 @@ ARTICLES = [
              ('Will the lights go off by themselves?', 'Sometimes they go off after a restart if the fault is intermittent, but the code stays stored and the lights usually come back until the cause is fixed. Read the code first.'),
              ('Do I need to bring the whole car?', 'No. You can bring just the ESP pump or ABS unit to us at Premier @ Kaki Bukit, or use our pick-up and delivery service for the car.')],
     ),
+    dict(
+        # Night article dated 27 Oct 2026. New intent (not a make-series article): ABS pump noise / buzzing / pedal pulsing when braking, normal or fault.
+        # No client fact beyond: ABS pump and module repair, used ABS units, 6-month warranty, pick-up and delivery. General knowledge is hedged.
+        slug='abs-pump-noise-buzzing-when-braking', service='abs-pump-repair', date='2026-10-27', img_commit='72ce95c65946f40493773a5153f46d087d03e37c',
+        title='ABS Pump Buzzing or Noisy When Braking? Normal or Fault | The ECU Clinic',
+        desc='Why the ABS pump buzzes, clicks or pulses the brake pedal when braking, when that is normal, when it points to a fault, and what to do next in Singapore.',
+        h1='Why Does My ABS Pump Buzz or Make Noise When Braking?',
+        lead='A buzz, click or pulsing pedal when you brake hard is often the ABS doing its job. Here is how to tell normal from a fault.',
+        photo='abs-pump-in-car', alt='ABS pump and module in a car’s engine bay', share='abs-unit-engine-bay-1.jpg',
+        body='''<p><strong>Short answer:</strong> a buzzing, clicking or grinding sound from the engine bay, together with a pulsing brake pedal, during a hard stop or on a wet or loose road is usually the ABS working normally. It is worth checking when the ABS light is on, when the noise happens in ordinary light braking, when the pump keeps running after you stop, or when the pedal feels different. A fault code shows whether the ABS unit is at fault.</p>
+<h2>When is ABS pump noise normal?</h2>
+<ul class="ticks">
+<li><strong>Hard braking or a slippery road.</strong> When a wheel is about to lock, the ABS releases and re-applies brake pressure many times a second. You can hear a buzz, a rattle or a grinding sound and feel the pedal pulse under your foot. This is the system working.</li>
+<li><strong>A short hum or click after starting or moving off.</strong> Many cars run a brief self-check of the ABS pump and valves. It is usually over in a second or two. Makers differ, so your owner’s manual is the best guide for your car.</li>
+</ul>
+<h2>When may the noise point to a fault?</h2>
+<ul class="ticks">
+<li><strong>The ABS light is on</strong> (or the ESP, ESC or traction control light with it). The system has stored a fault. See <a href="../abs-warning-light-causes/">ABS warning light causes</a>.</li>
+<li><strong>The noise or pulsing happens in normal, gentle braking</strong> on a dry road.</li>
+<li><strong>The pump motor keeps running</strong> or buzzes for a long time after you stop, or each time you switch on.</li>
+<li><strong>The brake pedal feels different:</strong> unusually hard, soft or sinking.</li>
+</ul>
+<p>If the red brake warning light is on, the pedal feels different or the brake fluid is low, stop driving and get the car checked. Our pick-up and delivery service can collect it.</p>
+<h2>What else can make noise or pulsing when braking?</h2>
+<p>Not every noise comes from the ABS unit. Worn brake pads, rough or uneven brake discs, a dirty or damaged wheel speed sensor or a worn wheel bearing can also cause grinding, squealing or a pulsing pedal. That is why it is better to read the fault codes first than to replace parts by guesswork.</p>
+<h2>How do we find the cause?</h2>
+<ol class="steps">
+<li><strong>Read the fault codes.</strong> The ABS module stores codes that point to the circuit at fault.</li>
+<li><strong>Rule out the simple causes.</strong> Brake pads and discs, wheel speed sensors and their wiring, brake fluid level, battery and fuses.</li>
+<li><strong>Check the unit.</strong> If the codes and tests point to the pump motor, the valves or the control module, the ABS unit is the problem.</li>
+<li><strong>Tell you the options.</strong> You decide before any work starts.</li>
+</ol>
+<h2>Repair, used or new?</h2>
+<p>If the fault is in the ABS unit, we can repair your own ABS pump and module, or supply a used ABS unit. Our repairs come with a 6-month warranty. See <a href="../../services/abs-pump-repair/">ABS pump and module repair</a> for how the options compare.</p>
+<h2>What should I send?</h2>
+<p>WhatsApp us your car model, year, chassis number and the fault codes. A photo of the dashboard or the scan tool screen also helps, and a short description of when the noise happens. You can bring the car, or just the unit, to Premier @ Kaki Bukit, or use our pick-up and delivery service.</p>''',
+        faq=[('Is it normal for the ABS to buzz and the brake pedal to pulse?', 'Yes, during a hard stop or on a wet or loose surface the ABS can buzz and pulse the pedal as it stops the wheels locking. If it happens in normal braking, or the ABS light is on, have the codes read.'),
+             ('Why does my ABS pump make a noise when I start the car?', 'Many cars run a short self-check of the ABS pump and valves after starting or when first moving off, which can sound like a brief hum or click. A noise that is long, loud or comes with a warning light is worth checking.'),
+             ('Can I keep driving if the ABS pump is noisy?', 'If the ABS light is off and the brakes feel normal, it is probably the ABS working. If the light is on, expect the anti-lock function to be off, so leave more distance and avoid hard stops. If the red brake light is on or the pedal feels different, stop driving.')],
+    ),
 ]
