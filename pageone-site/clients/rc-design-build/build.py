@@ -72,20 +72,20 @@ WORKSHOP = [
     ('ws-board-stack', 'Stack of wood-grain boards stored in our workshop'),
     ('ws-board-aisle', 'Plywood and laminate boards lined up beside the cutting area'),
 ]
-# Homepage mini carousel (Edwin 26 Oct 2026: 'mini size sliding carousel', polish photos, add AI close-ups).
-# Square crops of his real photos (graded only) mixed with AI close-ups, which are always labelled "AI close-up".
-CAROUSEL_SHA = 'f337c82'
+# Homepage workshop carousel (Edwin 26 Oct 2026). Only Edwin's own workshop photos (he removed the AI close-ups).
+# Items: (sha, file stem, width at 480px height, alt). Newer photos first.
 CAROUSEL = [
-    ('ws-oak-laminate', 'real', 'Oak-grain laminate board in our workshop'),
-    ('ai-fluted-counter', 'ai', 'Fluted oak counter front with brass trim (AI close-up)'),
-    ('ws-carcasses', 'real', 'Drawer boxes and cabinet carcasses being made in our workshop'),
-    ('ai-drawer-joint', 'ai', 'Plywood drawer corner joint and drawer runner (AI close-up)'),
-    ('ws-saw-bay', 'real', 'Panel saw bay in our carpentry workshop'),
-    ('ai-edge-banding', 'ai', 'Hands pressing oak edge banding onto a cabinet panel (AI close-up)'),
-    ('ws-board-stack', 'real', 'Stack of wood-grain boards in our workshop'),
-    ('ai-material-samples', 'ai', 'Oak veneer and stone-look laminate samples (AI close-up)'),
-    ('ws-board-aisle', 'real', 'Plywood and laminate boards by the cutting area'),
+    ('6b3bb41', 'ws-floor-h480', 853, 'SG Commercial Fitout carpentry workshop with panel saw, board racks and dust extractors'),
+    ('6b3bb41', 'ws-cutting-h480', 418, 'Cutting an oak-laminate board on the panel saw in our workshop'),
+    ('6b3bb41', 'ws-cabinets', 576, 'Cabinet carcasses and drawer boxes being made in our workshop'),
+    ('6b3bb41', 'ws-assembly-h480', 357, 'Assembling a cabinet carcass with a cordless drill in our workshop'),
+    ('6b3bb41', 'ws-shelves', 576, 'Workbench and storage shelving with edge-banding rolls in our workshop'),
+    ('f337c82', 'ws-oak-laminate-sq400', 480, 'Oak-grain laminate board in our workshop'),
+    ('f337c82', 'ws-board-stack-sq400', 480, 'Stack of wood-grain boards in our workshop'),
+    ('f337c82', 'ws-saw-bay-sq400', 480, 'Panel saw bay in our carpentry workshop'),
 ]
+ABOUT_WS = [('ws-cutting', 'Cutting an oak-laminate board on the panel saw'), ('ws-assembly', 'Assembling a cabinet carcass'),
+            ('ws-cabinets', 'Cabinet carcasses and drawer boxes'), ('ws-shelves', 'Workbench and storage shelving')]
 
 # ---------- page registry ----------
 SVC = {p['path']: p for p in C_SVC.PAGES}
@@ -581,12 +581,15 @@ def ws_url(k, small=True):
     return base + 'workshop/' + k + ('-640' if small else '') + '.webp'
 
 
+def ws_img(sha, stem):
+    base = os.environ.get('RC_IMG') or ('https://cdn.jsdelivr.net/gh/drdigital641/edwin-ai-monitor-android@%s/site-assets/%s/' % (sha, SLUG))
+    return base + 'workshop/' + stem + '.webp'
+
+
 def workshop_carousel():
-    base = os.environ.get('RC_IMG') or ('https://cdn.jsdelivr.net/gh/drdigital641/edwin-ai-monitor-android@%s/site-assets/%s/' % (CAROUSEL_SHA, SLUG))
-    def tile(k, kind, alt, hidden=False):
-        u = base + 'workshop/' + k
-        return ('<figure class="wsc-t"%s><img src="%s-sq400.webp" srcset="%s-sq400.webp 400w, %s-sq.webp 800w" sizes="180px" width="400" height="400" alt="%s" loading="lazy">'
-                '<figcaption class="%s">%s</figcaption></figure>') % (' aria-hidden="true"' if hidden else '', u, u, u, E(alt) if not hidden else '', 'wsc-ai' if kind == 'ai' else 'wsc-real', 'AI close-up' if kind == 'ai' else 'Our workshop')
+    def tile(sha, stem, w, alt, hidden=False):
+        return ('<figure class="wsc-t" style="aspect-ratio:%d/480"%s><img src="%s" width="%d" height="480" alt="%s" loading="lazy">'
+                '<figcaption class="wsc-real">Our workshop</figcaption></figure>') % (w, ' aria-hidden="true"' if hidden else '', ws_img(sha, stem), w, '' if hidden else E(alt))
     one = ''.join(tile(*c) for c in CAROUSEL)
     two = ''.join(tile(*c, hidden=True) for c in CAROUSEL)
     return '<div class="wsc rv"><div class="wsc-track">%s%s</div></div>' % (one, two)
@@ -623,7 +626,7 @@ HOME_TPL = '''<section class="lux lux-full">
 <div class="wrap"><dl class="facts-line">{facts}</dl></div></section>
 
 <section class="band sand ws-band"><div class="wrap">
-<div class="head rv"><h2>Our carpentry workshop</h2><p>Counters, cabinets and shelving made to measure in our own workshop. AI close-ups show the finish we aim for.</p></div></div>
+<div class="head rv"><h2>Our carpentry workshop</h2><p>Counters, cabinets and shelving are made to measure in our own workshop, then installed on site.</p></div></div>
 {workshop}</section>
 
 <section class="band"><div class="wrap">
@@ -788,9 +791,17 @@ def build_daily_one(x, newer, older):
 
 
 # ---------- about / contact / privacy / 404 ----------
-def simple(path, title, desc, h1, kicker, answer, prose, crumbs, key=None, alt='', schema_extra=None):
+def about_ws():
+    return '<div class="ab-ws">%s</div>' % ''.join(
+        '<figure><img src="%s" alt="%s" loading="lazy"><figcaption>%s</figcaption></figure>' % (ws_img('6b3bb41', k), E(a + ' in the SG Commercial Fitout workshop'), E(a)) for k, a in ABOUT_WS)
+
+
+def simple(path, title, desc, h1, kicker, answer, prose, crumbs, key=None, alt='', schema_extra=None, picture_html=None):
     schema = [org_schema(), crumbs_schema(crumbs)] + (schema_extra or [])
     picture = '<div class="pic">%s</div>' % pic(key, alt, eager=True) if key else ''
+    if picture_html:
+        picture = '<div class="pic">%s</div>' % picture_html
+        key = key or 'x'
     body = '''%s
 <section class="phead"><div class="wrap"%s>
 <div><span class="eyebrow">%s</span><h1>%s</h1><p class="answer">%s</p></div>%s</div></section>
@@ -808,15 +819,19 @@ def build_static():
 <li><a href="/services/commercial-carpentry/">Carpentry</a>: counters, shelving, storage, display fixtures and reception joinery, made in our workshop.</li>
 <li><a href="/services/commercial-renovation/">Renovation</a>, <a href="/services/commercial-electrical-works/">electrical works</a>, <a href="/services/commercial-tiling-flooring/">tiling and flooring</a>, and <a href="/services/commercial-painting-finishing/">painting and finishing</a>.</li>
 <li><a href="/avl/">AVL</a>: audio, visual and lighting planned with the space.</li></ul>
+<h2>Our carpentry workshop</h2>
+<p>Counters, cabinets, shelving and display fixtures are cut and assembled in our own workshop, then installed on site.</p>
+%s
 <h2>Our work and our photos</h2>
 <p>See <a href="/projects/">our projects and workshop</a>. Photos marked "Real project" show our own carpentry; decor items in them were added with AI styling. Photos marked "AI design concept" are ideas to discuss, not completed work. We do not publish reviews, client names or figures we cannot back up.</p>
 <h2>Contact</h2>
 <p>Address: %s. WhatsApp <a href="%s" rel="noopener">%s</a>. We serve businesses in Singapore.</p>
-%s''' % (ADDR_TEXT, E(wa_link('my space', '/about/')), PHONE_DISPLAY, pending_box([('Operating company', 'registered name and UEN to be confirmed')]))
+%s''' % (about_ws(), ADDR_TEXT, E(wa_link('my space', '/about/')), PHONE_DISPLAY, pending_box([('Operating company', 'registered name and UEN to be confirmed')]))
     simple('/about/', 'About SG Commercial Fitout | Design & Build Singapore', 'About SG Commercial Fitout: Singapore design and build for shops, offices, F&B outlets and salons, with our own carpentry workshop.',
            'About SG Commercial Fitout', 'About', 'SG Commercial Fitout is a Singapore design and build company for shops, offices, showrooms, F&B outlets and salons. It has its own carpentry workshop and covers carpentry, renovation, electrical, flooring, painting and AVL.',
-           about, [('/about/', 'About')], 'design-planning', 'Floor plan and material samples on a planning table (AI design concept)',
-           [{'@type': 'AboutPage', 'name': 'About SG Commercial Fitout', 'url': abs_url('/about/')}])
+           about, [('/about/', 'About')], None, '',
+           [{'@type': 'AboutPage', 'name': 'About SG Commercial Fitout', 'url': abs_url('/about/'), 'image': ws_img('6b3bb41', 'ws-floor')}],
+           picture_html='<img src="%s" width="1400" height="788" alt="SG Commercial Fitout carpentry workshop with panel saw, board racks and dust extractors" fetchpriority="high"><span class="tag tag-real">Our workshop</span>' % ws_img('6b3bb41', 'ws-floor'))
     w = wa_link('my space', '/contact/')
     contact = '''<h2>WhatsApp us</h2>
 <p>The fastest way to start is a WhatsApp message to <strong>%s</strong> with what you already have about the unit and the business.</p>
