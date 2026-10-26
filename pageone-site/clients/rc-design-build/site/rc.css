@@ -381,3 +381,17 @@ figure.real figcaption b{display:block;color:var(--char);font:600 1.05rem/1.3 va
 .al-tile[hidden]{display:none}
 .al-foot{margin:14px 0 0;font-size:.92rem;color:var(--muted,#5b6159)}
 @media(max-width:760px){.al-foot{padding:0 14px}}
+/* workshop mini carousel (homepage) */
+.ws-band{overflow:hidden}
+.wsc{overflow:hidden;margin-top:6px;-webkit-mask-image:linear-gradient(90deg,transparent,#000 5%,#000 95%,transparent);mask-image:linear-gradient(90deg,transparent,#000 5%,#000 95%,transparent)}
+.wsc-track{display:flex;gap:12px;width:max-content;animation:wsc 60s linear infinite}
+.wsc:hover .wsc-track,.wsc:active .wsc-track{animation-play-state:paused}
+@keyframes wsc{to{transform:translateX(calc(-50% - 6px))}}
+.wsc-t{position:relative;flex:0 0 auto;width:180px;margin:0;border-radius:14px;overflow:hidden;background:#e9e2d6;box-shadow:0 6px 18px rgba(40,36,28,.10)}
+.wsc-t img{display:block;width:100%;height:180px;object-fit:cover;transition:transform .6s ease}
+.wsc-t:hover img{transform:scale(1.05)}
+.wsc-t figcaption{position:absolute;left:8px;bottom:8px;padding:4px 8px;border-radius:999px;font:700 .58rem/1 var(--sans);letter-spacing:.1em;text-transform:uppercase;color:#fff}
+.wsc-real{background:rgba(101,113,75,.92)}
+.wsc-ai{background:rgba(38,38,34,.78)}
+@media (max-width:760px){.wsc-t{width:136px}.wsc-t img{height:136px}.wsc-track{gap:10px;animation-duration:48s}.wsc-t figcaption{font-size:.52rem;left:6px;bottom:6px}}
+@media (prefers-reduced-motion:reduce){.wsc-track{animation:none}.wsc{overflow-x:auto}}

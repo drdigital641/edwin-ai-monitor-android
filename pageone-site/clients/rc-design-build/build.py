@@ -72,6 +72,20 @@ WORKSHOP = [
     ('ws-board-stack', 'Stack of wood-grain boards stored in our workshop'),
     ('ws-board-aisle', 'Plywood and laminate boards lined up beside the cutting area'),
 ]
+# Homepage mini carousel (Edwin 26 Oct 2026: 'mini size sliding carousel', polish photos, add AI close-ups).
+# Square crops of his real photos (graded only) mixed with AI close-ups, which are always labelled "AI close-up".
+CAROUSEL_SHA = 'f337c82'
+CAROUSEL = [
+    ('ws-oak-laminate', 'real', 'Oak-grain laminate board in our workshop'),
+    ('ai-fluted-counter', 'ai', 'Fluted oak counter front with brass trim (AI close-up)'),
+    ('ws-carcasses', 'real', 'Drawer boxes and cabinet carcasses being made in our workshop'),
+    ('ai-drawer-joint', 'ai', 'Plywood drawer corner joint and drawer runner (AI close-up)'),
+    ('ws-saw-bay', 'real', 'Panel saw bay in our carpentry workshop'),
+    ('ai-edge-banding', 'ai', 'Hands pressing oak edge banding onto a cabinet panel (AI close-up)'),
+    ('ws-board-stack', 'real', 'Stack of wood-grain boards in our workshop'),
+    ('ai-material-samples', 'ai', 'Oak veneer and stone-look laminate samples (AI close-up)'),
+    ('ws-board-aisle', 'real', 'Plywood and laminate boards by the cutting area'),
+]
 
 # ---------- page registry ----------
 SVC = {p['path']: p for p in C_SVC.PAGES}
@@ -567,6 +581,17 @@ def ws_url(k, small=True):
     return base + 'workshop/' + k + ('-640' if small else '') + '.webp'
 
 
+def workshop_carousel():
+    base = os.environ.get('RC_IMG') or ('https://cdn.jsdelivr.net/gh/drdigital641/edwin-ai-monitor-android@%s/site-assets/%s/' % (CAROUSEL_SHA, SLUG))
+    def tile(k, kind, alt, hidden=False):
+        u = base + 'workshop/' + k
+        return ('<figure class="wsc-t"%s><img src="%s-sq400.webp" srcset="%s-sq400.webp 400w, %s-sq.webp 800w" sizes="180px" width="400" height="400" alt="%s" loading="lazy">'
+                '<figcaption class="%s">%s</figcaption></figure>') % (' aria-hidden="true"' if hidden else '', u, u, u, E(alt) if not hidden else '', 'wsc-ai' if kind == 'ai' else 'wsc-real', 'AI close-up' if kind == 'ai' else 'Our workshop')
+    one = ''.join(tile(*c) for c in CAROUSEL)
+    two = ''.join(tile(*c, hidden=True) for c in CAROUSEL)
+    return '<div class="wsc rv"><div class="wsc-track">%s%s</div></div>' % (one, two)
+
+
 def workshop_block(path, n=3):
     if WORKSHOP:
         return '<div class="grid g3">%s</div>' % ''.join(
@@ -597,9 +622,9 @@ HOME_TPL = '''<section class="lux lux-full">
 </div>
 <div class="wrap"><dl class="facts-line">{facts}</dl></div></section>
 
-<section class="band sand"><div class="wrap">
-<div class="head rv"><h2>Our carpentry workshop</h2><p>Counters, cabinets and shelving are made in our own workshop to your measurements, then installed on site.</p></div>
-{workshop}</div></section>
+<section class="band sand ws-band"><div class="wrap">
+<div class="head rv"><h2>Our carpentry workshop</h2><p>Counters, cabinets and shelving made to measure in our own workshop. AI close-ups show the finish we aim for.</p></div></div>
+{workshop}</section>
 
 <section class="band"><div class="wrap">
 <div class="head rv"><h2>Our services</h2><p>One coordinated scope, or just the trade you need. Tap a service for the details.</p></div>
@@ -669,7 +694,7 @@ def build_home():
         marq=marquee(path, dp),
         dnice=nice_date(d['date']), dtitle=E(d['title']),
         facts=''.join('<div><dt>%s</dt><dd>%s</dd></div>' % f for f in facts),
-        real=''.join(real_fig(*r) for r in REAL), projects=rel(path, '/projects/'), workshop=workshop_block(path),
+        real=''.join(real_fig(*r) for r in REAL), projects=rel(path, '/projects/'), workshop=workshop_carousel(),
         svcs=''.join(svc_tile(path, s) for s in SERVICE_ORDER),
         spaces=''.join(card(path, p['path'], SHORT[p['path']], p['card'], p['image']) for p in C_SPC.PAGES),
         steps=''.join('<li class="rv"><strong>%s</strong><span>%s</span></li>' % (E(a), E(b)) for a, b in PROCESS),
