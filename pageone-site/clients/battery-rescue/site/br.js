@@ -14,6 +14,7 @@ window.brTrk=trk;
 document.addEventListener('click',function(e){var a=e.target.closest&&e.target.closest('a[href]');if(!a)return;var h=a.getAttribute('href')||'';
  if(/^tel:/i.test(h))trk('call',a.getAttribute('data-ref')||'');else if(/wa\.me|whatsapp/i.test(h))trk('whatsapp',a.getAttribute('data-ref')||'')},true);
 /* ---------- helpers ---------- */
+function km(a,b){return km_(a,b)}
 function money(x){return'$'+x.toFixed(2)}
 function sgHour(){var d=new Date(Date.now()+(8*60+new Date().getTimezoneOffset())*60000);return d.getHours()}
 function isNight(){var h=sgHour();return h>=22||h<9}
@@ -23,13 +24,13 @@ function waLink(msg){return'https://wa.me/'+WA+'?text='+encodeURIComponent(msg)}
 if('IntersectionObserver' in window){var io=new IntersectionObserver(function(es){es.forEach(function(x){if(x.isIntersecting){x.target.classList.add('in');io.unobserve(x.target)}})},{rootMargin:'0px 0px -40px'});
  $$('.rv').forEach(function(el){var r=el.getBoundingClientRect();if(r.top<innerHeight)el.classList.add('in');else io.observe(el)})}else $$('.rv').forEach(function(el){el.classList.add('in')});
 /* ---------- mode switch ---------- */
-var app=$('#app');if(!app)return;
+var app=$('#app');
 function setMode(m){$$('.seg button').forEach(function(b){b.setAttribute('aria-selected',b.dataset.mode===m?'true':'false')});
  $$('[data-panel]').forEach(function(p){p.hidden=p.dataset.panel!==m});
  try{history.replaceState(null,'',m==='compare'?'#compare':location.pathname)}catch(e){}}
 $$('.seg button').forEach(function(b){b.addEventListener('click',function(){setMode(b.dataset.mode)})});
-setMode(location.hash==='#compare'?'compare':'stuck');
-window.addEventListener('hashchange',function(){setMode(location.hash==='#compare'?'compare':'stuck');scrollTo(0,0)});
+if(app)setMode(location.hash==='#compare'?'compare':'stuck');
+window.addEventListener('hashchange',function(){if(!app)return;setMode(location.hash==='#compare'?'compare':'stuck');scrollTo(0,0)});
 $$('.tabs a').forEach(function(a){a.addEventListener('click',function(){if(a.pathname===location.pathname&&!a.hash){setMode('stuck')}})});
 /* ---------- car search ---------- */
 var FIT=D.fit||[],P=D.price||{};
@@ -63,14 +64,19 @@ if(sBox)sBox.addEventListener('car',function(e){var r=e.detail,b=batLine(r);cur=
 function waMsg(loc){var m='Hi Battery Rescue, my car battery is flat. Please help.';if(cur){m+='\nCar: '+label(cur.r)+' ('+cur.r[2]+')\nBattery: '+cur.b.name}if(loc)m+='\nMy location: '+loc;m+='\n(Website source: '+location.href.split('#')[0]+')';return m}
 function updWa(){$$('.wa-dyn').forEach(function(a){a.href=waLink(waMsg(''))})}
 updWa();
-$$('.wa-loc').forEach(function(a){a.addEventListener('click',function(e){if(!navigator.geolocation)return;e.preventDefault();var done=false,lbl=$('.t',a),old=lbl?lbl.innerHTML:'';
+function inArea(la,lo){return(D.areas||[]).some(function(x){return km([la,lo],[x[1],x[2]])<=4.2})}
+function nearestOut(la,lo){var o=(D.out||[]).slice().sort(function(a,b){return km([la,lo],[a.lat,a.lng])-km([la,lo],[b.lat,b.lng])})[0];return o}
+$$('.wa-loc').forEach(function(a){a.addEventListener('click',function(e){if(a.dataset.go){return}if(!navigator.geolocation)return;e.preventDefault();var done=false,lbl=$('.t',a),old=lbl?lbl.innerHTML:'';
  if(lbl)lbl.innerHTML='Getting your location…';
  function go(loc){if(done)return;done=true;if(lbl)lbl.innerHTML=old;trk('whatsapp',(cur&&cur.b.k||'rescue')+(loc?'|gps':''));location.href=waLink(waMsg(loc))}
- navigator.geolocation.getCurrentPosition(function(p){go('https://maps.google.com/?q='+p.coords.latitude.toFixed(5)+','+p.coords.longitude.toFixed(5))},function(){go('')},{enableHighAccuracy:true,timeout:7000,maximumAge:60000});
+ navigator.geolocation.getCurrentPosition(function(p){var la=p.coords.latitude,lo=p.coords.longitude,loc='https://maps.google.com/?q='+la.toFixed(5)+','+lo.toFixed(5),box=$('#s-out');
+  if(!inArea(la,lo)&&box){done=true;if(lbl)lbl.innerHTML=old;var o=nearestOut(la,lo);trk('out_of_area','');
+   box.innerHTML='<b>You seem to be outside our rescue area</b> ('+esc(D.areaTxt)+'). Call us to check, or walk in to the nearest outlet: <b>'+esc(o.name)+'</b>, '+esc(o.addr)+' (~'+km([la,lo],[o.lat,o.lng]).toFixed(1)+' km).<div class="row" style="display:flex;gap:8px;margin-top:10px"><a class="btn o" href="'+waLink(waMsg(loc))+'">WhatsApp anyway</a><a class="btn o" href="https://www.google.com/maps/search/?api=1&query='+encodeURIComponent(o.map)+'" target="_blank" rel="noopener">Map to outlet</a></div>';box.hidden=false;box.scrollIntoView({behavior:'smooth',block:'center'});return}
+  go(loc)},function(){go('')},{enableHighAccuracy:true,timeout:7000,maximumAge:60000});
  setTimeout(function(){go('')},9000)})});
 /* ---------- compare mode ---------- */
 var O=D.out||[],cBox=$('#c-car'),cRes=$('#c-res'),oUl=$('#c-out'),ccur=null,me=null;
-function km(a,b){var R=6371,dl=(b[0]-a[0])*Math.PI/180,dn=(b[1]-a[1])*Math.PI/180,x=Math.sin(dl/2)*Math.sin(dl/2)+Math.cos(a[0]*Math.PI/180)*Math.cos(b[0]*Math.PI/180)*Math.sin(dn/2)*Math.sin(dn/2);return 2*R*Math.asin(Math.sqrt(x))}
+function km_(a,b){var R=6371,dl=(b[0]-a[0])*Math.PI/180,dn=(b[1]-a[1])*Math.PI/180,x=Math.sin(dl/2)*Math.sin(dl/2)+Math.cos(a[0]*Math.PI/180)*Math.cos(b[0]*Math.PI/180)*Math.sin(dn/2)*Math.sin(dn/2);return 2*R*Math.asin(Math.sqrt(x))}
 function drawOut(){if(!oUl)return;var list=O.slice();if(me)list.sort(function(a,b){return km(me,[a.lat,a.lng])-km(me,[b.lat,b.lng])});
  var w=ccur&&ccur.b.k?money(ccur.b.list-20):'';
  oUl.innerHTML=list.map(function(o){return'<li><div class="on"><div><b>'+esc(o.name)+'</b><div class="ad">'+esc(o.addr)+'</div><div class="ad">'+esc(D.hours)+'</div></div>'+(me?'<span class="km">~'+km(me,[o.lat,o.lng]).toFixed(1)+' km</span>':'')+'</div>'+
