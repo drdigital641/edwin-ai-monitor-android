@@ -35,7 +35,8 @@ $$('.tabs a').forEach(function(a){a.addEventListener('click',function(){if(a.pat
 var FIT=D.fit||[],P=D.price||{};
 function label(r){return r[0]+' '+r[1]}
 function yrs(y){var n=(y.match(/(19|20)\d\d/g)||[]).map(Number);var a=n[0]||1900,b=/now/i.test(y)?2100:(n[1]||n[0]||2100);return[a,b]}
-function search(q){q=q.toLowerCase().replace(/[^a-z0-9 \-]/g,' ').trim();if(q.length<2)return[];var t=q.split(/\s+/),yr=null,out=[];
+var ALIAS={vw:'volkswagen',merc:'mercedes',benz:'mercedes',bmw:'bmw',chevy:'chevrolet',landrover:'land rover',rangerover:'range rover',corolla:'corolla',altis:'altis'};
+function search(q){q=q.toLowerCase().replace(/[^a-z0-9 \-]/g,' ').trim();q=q.split(/\s+/).map(function(w){return ALIAS[w]||w}).join(' ');if(q.length<2)return[];var t=q.split(/\s+/),yr=null,out=[];
  t=t.filter(function(w){if(/^(19|20)\d\d$/.test(w)){yr=+w;return false}return true});
  for(var i=0;i<FIT.length&&out.length<40;i++){var r=FIT[i],s=(r[0]+' '+r[1]).toLowerCase(),s2=s.replace(/-/g,'');
   if(!t.every(function(w){return s.indexOf(w)>-1||s2.indexOf(w.replace(/-/g,''))>-1}))continue;
