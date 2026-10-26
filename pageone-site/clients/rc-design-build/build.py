@@ -80,9 +80,6 @@ CAROUSEL = [
     ('6b3bb41', 'ws-cabinets', 576, 'Cabinet carcasses and drawer boxes being made in our workshop'),
     ('6b3bb41', 'ws-assembly-h480', 357, 'Assembling a cabinet carcass with a cordless drill in our workshop'),
     ('6b3bb41', 'ws-shelves', 576, 'Workbench and storage shelving with edge-banding rolls in our workshop'),
-    ('f337c82', 'ws-oak-laminate-sq400', 480, 'Oak-grain laminate board in our workshop'),
-    ('f337c82', 'ws-board-stack-sq400', 480, 'Stack of wood-grain boards in our workshop'),
-    ('f337c82', 'ws-saw-bay-sq400', 480, 'Panel saw bay in our carpentry workshop'),
 ]
 ABOUT_WS = [('ws-cutting', 'Cutting an oak-laminate board on the panel saw'), ('ws-assembly', 'Assembling a cabinet carcass'),
             ('ws-cabinets', 'Cabinet carcasses and drawer boxes'), ('ws-shelves', 'Workbench and storage shelving')]
@@ -590,20 +587,17 @@ def workshop_carousel():
     def tile(sha, stem, w, alt, hidden=False):
         return ('<figure class="wsc-t" style="aspect-ratio:%d/480"%s><img src="%s" width="%d" height="480" alt="%s" loading="lazy">'
                 '<figcaption class="wsc-real">Our workshop</figcaption></figure>') % (w, ' aria-hidden="true"' if hidden else '', ws_img(sha, stem), w, '' if hidden else E(alt))
-    one = ''.join(tile(*c) for c in CAROUSEL)
-    two = ''.join(tile(*c, hidden=True) for c in CAROUSEL)
+    # each half holds the set twice so wide screens never see a gap
+    one = ''.join(tile(*c) for c in CAROUSEL) + ''.join(tile(*c, hidden=True) for c in CAROUSEL)
+    two = ''.join(tile(*c, hidden=True) for c in CAROUSEL) * 2
     return '<div class="wsc rv"><div class="wsc-track">%s%s</div></div>' % (one, two)
 
 
-def workshop_block(path, n=3):
-    if WORKSHOP:
-        return '<div class="grid g3">%s</div>' % ''.join(
-            '<figure class="real rv"><div class="ph"><img src="%s" srcset="%s 640w, %s 1200w" sizes="(max-width: 760px) 92vw, 31vw" width="640" height="480" alt="%s" loading="lazy">'
-            '<span class="tag tag-real">Our workshop</span></div></figure>' % (ws_url(k), ws_url(k), ws_url(k, False), E(a)) for k, a in WORKSHOP[:n])
-    if LIVE:
-        return ''
-    return '<div class="grid g3 ws-slots">%s</div>' % ''.join(
-        '<div class="ws-slot"><span>Workshop photo %d</span><small>coming soon</small></div>' % i for i in (1, 2, 3))
+def workshop_block(path, n=5):
+    items = CAROUSEL[:n]
+    return '<div class="grid g3">%s</div>' % ''.join(
+        '<figure class="real rv"><div class="ph"><img src="%s" width="%d" height="480" alt="%s" loading="lazy">'
+        '<span class="tag tag-real">Our workshop</span></div></figure>' % (ws_img(sha, stem), w, E(a)) for sha, stem, w, a in items)
 
 
 HOME_TPL = '''<section class="lux lux-full">
@@ -718,7 +712,7 @@ def build_projects():
     inner = ('<div class="head"><h2>Real projects</h2><p>%s</p></div><div class="grid g3">%s</div>'
              '<div class="head" style="margin-top:50px"><h2>Our carpentry workshop</h2><p>SG Commercial Fitout makes its carpentry in its own workshop, '
              'so counters, cabinets and shelving are built to the measurements taken on site.</p></div>%s%s') % (
-        E(REAL_NOTE), ''.join(real_fig(*r) for r in REAL), workshop_block(path, 6),
+        E(REAL_NOTE), ''.join(real_fig(*r) for r in REAL), workshop_block(path, 5),
         '' if WORKSHOP else pending_box([('Workshop photos', 'real workshop photos are being added')], 'Coming soon'))
     crumbs = [(path, 'Projects & workshop')]
     schema = [org_schema(), crumbs_schema(crumbs), {'@type': 'CollectionPage', 'name': 'SG Commercial Fitout projects and workshop', 'url': abs_url(path)}]
