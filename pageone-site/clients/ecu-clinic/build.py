@@ -92,7 +92,7 @@ e = html.escape
 
 
 # Photos added after IMG_COMMIT, served from the commit that added them (no site-wide re-pin).
-IMG_PIN = {n: '570a0643be57596bf12700b3614e04276b9e3cf5' for n in (
+IMG_PIN = {n: '0ec3278037d64b025d7e569b9735eef6d32f293f' for n in (
     'bmw-cas3-modules', 'mercedes-c180-esp-unit', 'mercedes-c180-esp-codes', 'mercedes-me17-ecus',
     'mercedes-camtronic-codes', 'audi-abs-fault-codes')}  # job photos, 27 Oct 2026
 

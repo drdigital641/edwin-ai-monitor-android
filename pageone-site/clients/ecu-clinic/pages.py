@@ -271,7 +271,7 @@ SERVICE_PAGES = [
              ('Can I bring in just the ECU?', 'Yes. Bring the car or the ECU to us at Premier @ Kaki Bukit, or use our pick-up and delivery service.'),
              ('Is there a warranty?', 'Yes. Our repairs come with a 6-month warranty.')],
         related=[],
-        img_commit='147887a74850278f54d456b3b14035521cee5442',  # share image added after IMG_COMMIT
+        img_commit='0ec3278037d64b025d7e569b9735eef6d32f293f',  # share image added after IMG_COMMIT
         updated='27 Oct 2026',
         jobs=[('mercedes-me17-ecus', 'Mercedes C-Class (C205): Bosch MED17.7.2 engine ECUs on our bench'),
               ('mercedes-camtronic-codes', 'Scan of the same car: Camtronic, camshaft and sensor circuit codes')],
@@ -303,7 +303,7 @@ SERVICE_PAGES = [
              ('Is it safe to drive with the ABS light on?', 'In most cases your normal brakes still work, but the anti-lock function may be off until the fault is fixed, so the wheels can lock under hard braking, especially on wet roads. If the red brake warning light is on too, or the pedal feels different, stop driving and get the car checked.'),
              ('Is there a warranty?', 'Yes. Our repairs come with a 6-month warranty.')],
         related=['vw-audi-abs-esp-light-on'],
-        img_commit='147887a74850278f54d456b3b14035521cee5442',  # share image added after IMG_COMMIT
+        img_commit='0ec3278037d64b025d7e569b9735eef6d32f293f',  # share image added after IMG_COMMIT
         updated='27 Oct 2026',
         jobs=[('audi-abs-fault-codes', 'Audi A3: ABS hydraulic pump and control module defective, with sensor codes')],
         more=[('Recent job: Audi A3 with 10 ABS codes',
