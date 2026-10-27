@@ -527,9 +527,13 @@ ARTICLES = [
 <p>These signs can also come from low or old gearbox oil, wiring or mechanical problems, so they do not always mean the TCU has failed.</p>
 <h2>Why the fault code comes first</h2>
 <p>The TCU stores fault codes that point to the cause, such as a speed sensor or a solenoid circuit. Reading them tells us whether the TCU and conductor plate are the problem before the gearbox is opened.</p>
+<h2>Repair or replace the TCU?</h2>
+<p>In many cases the answer is repair. If the fault code and tests point to the TCU or conductor plate, we repair your own unit instead of replacing the whole gearbox. A replacement part is a bigger job, so it only makes sense when the unit cannot be repaired. If the fault is elsewhere, such as old gearbox oil, a wiring fault or a mechanical problem, repairing the TCU would not help, and we will tell you that after the diagnosis, before any part is changed.</p>
 <h2>How we repair it</h2>
 <p>We work on the TCU and conductor plate. Because the gearbox pan has to come off, we fit a new filter, pan gasket and gearbox oil on the same job. We also work on the TCU of the 9-speed 9G-Tronic.</p>
 <p>WhatsApp us your car model, chassis number and the fault code. Our repairs come with a 6-month warranty.</p>''',
+        faq=[('Can a Mercedes 7G-Tronic TCU be repaired instead of replaced?', 'Often, yes, when the fault is in the TCU or conductor plate. We read the fault codes first, then repair your own unit and fit a new filter, pan gasket and gearbox oil on the same job. Repairs come with a 6-month warranty.'),
+             ('How do I know if it is the TCU or something else?', 'Limp mode, harsh shifts and gearbox warnings can also come from low or old gearbox oil, wiring or mechanical problems. The stored fault codes show which it is, so WhatsApp us your car model, chassis number and the fault code.')],
     ),
     dict(
         slug='mercedes-steering-lock-elv-failure', service='mercedes-steering-lock-elv-repair', date='2026-10-13',
