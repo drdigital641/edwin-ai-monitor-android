@@ -455,7 +455,7 @@ SERVICE_PAGES = {
         'desc': 'Automatic gearbox repair and overhaul in Singapore, all car makes. Diagnostic from S$30, quote before work, free towing, 6-month warranty. Woodlands & Kranji.',
         'h1': 'Gearbox Repair &amp; Overhaul in Singapore',
         'sub': 'We find the real cause first, then repair only what is needed, or overhaul the whole transmission when that is the right fix. Diagnostic from S$30, quote before any work, 6-month warranty.',
-        'updated': '13 Oct 2026',
+        'updated': '28 Oct 2026',
         # Proof beside the first call to action: verbatim excerpt of a real customer review already on the site.
         'proof': ('Alvin Lee', 'Audi A4 overhaul',
                   'Jacky was very patient and professional in explaining to me the overhaul process … My car was ready after 3 days and was given a 6 months warranty as well.'),
@@ -482,6 +482,16 @@ SERVICE_PAGES = {
              '<li><strong>Parts needed.</strong> Which parts have to be replaced, and whether they have to be ordered.</li>'
              '<li><strong>How long the fault has been left.</strong> Driving on a slipping gearbox can spread the damage, which is why we suggest a diagnostic early.</li></ul>'
              '<p>The one fixed number is the start: our pre-repair diagnostic is from S$30.</p>'),
+            ('How to choose a gearbox repair workshop in Singapore',
+             '<p>Gearbox workshops differ in how they diagnose, quote and stand behind the work. Whichever one you choose, ask these six questions before you hand over the keys, and compare the answers. Here is how we answer them:</p>'
+             '<ol class="steps">'
+             '<li><strong>Do you diagnose before quoting?</strong> Yes. Our pre-repair diagnostic (from S$30) reads the transmission fault codes and checks the gearbox to find the actual cause.</li>'
+             '<li><strong>Is the quote clear before work starts?</strong> Yes. We tell you the fault, whether it needs a repair or an overhaul, the price and how long it should take. You decide.</li>'
+             '<li><strong>Is the work done in your own workshop?</strong> Yes. Our teardown benches, transmission jacks and diagnostic tools are on site, so the gearbox does not leave us.</li>'
+             '<li><strong>What warranty applies?</strong> All repairs come with a standard 6-month warranty unless otherwise stated. Ask any workshop to give its warranty terms in writing.</li>'
+             '<li><strong>Which fluid goes in?</strong> The manufacturer’s recommended ATF or the gearbox-specific fluid, filled to the correct level.</li>'
+             '<li><strong>What if the car cannot be driven?</strong> We offer free towing to our workshop during office hours (see <a href="{u}services/free-towing/">free towing</a>).</li>'
+             '</ol>'),
             ('Any type or brand of gearbox',
              '<p>We work on automatic transmissions for continental, Japanese, Korean and other makes, from everyday family cars to continental models. Our workshop has dedicated teardown benches, transmission jacks and diagnostic tools specialising in auto transmission, so the work is done on site, at our HQ in Woodlands (Wave 9) or our branch at Jalan Lam Huat in Kranji. '
              'Not sure what kind of gearbox your car has? WhatsApp us the car model and we’ll tell you.</p>'),
