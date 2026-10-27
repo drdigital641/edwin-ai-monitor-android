@@ -536,7 +536,7 @@ SERVICE_PAGES = {
         'desc': 'Gearbox oil (ATF) change and automatic gearbox servicing in Singapore with the manufacturer-recommended or gearbox-specific fluid, in the right amount. All car makes.',
         'h1': 'Gearbox Oil (ATF) Change &amp; Gearbox Servicing',
         'sub': 'Servicing your automatic transmission is as important as servicing the engine. The right gearbox oil, in the right amount, keeps bearings and gears lasting longer.',
-        'updated': '13 Oct 2026',
+        'updated': '28 Oct 2026',
         'share_h': 'Gearbox Maintenance & ATF Servicing',  # keep the published share card
         'proof': ('Ulysses Wang', 'BMW 5 Series',
                   'Arranged an appointment with Jacky and drove my BMW 5 series to let him check.'),
@@ -550,6 +550,10 @@ SERVICE_PAGES = {
              '<ul class="ticks"><li>ATF level and condition</li><li>Signs of leaks around seals, the oil pan and cooler lines</li>'
              '<li>How the gearbox shifts, so small problems are caught early</li><li>Refill with the manufacturer’s recommended or gearbox-specific ATF, in the right amount</li></ul>'
              '<p>Good maintenance and periodic inspection catch small issues, such as a slow leak or old, worn fluid, before they turn into slipping, harsh shifting or a full <a href="{u}services/gearbox-repair/">gearbox overhaul</a>. You can wait in our air-conditioned lounge and watch your car being worked on.</p>'),
+            ('Ask for a gearbox service quote',
+             '<p>Send your car model, year, mileage and any service history on WhatsApp. Mention any warning lights or change in how the car shifts. '
+             'Ask which transmission fluid specification and quantity your car needs, whether a filter or gasket is part of the proposed work, the total price and the estimated workshop time. '
+             'Jacky will advise whether servicing or a diagnostic is the appropriate next step.</p>'),
         ],
         'problems': ['transmission-fluid-leak', 'car-hesitates-when-accelerating', 'gearbox-noise'],
         'faq': ['How often should the gearbox oil (ATF) be changed?', 'Which ATF do you use?', 'What are the signs my gearbox needs attention?',
@@ -870,7 +874,7 @@ def home():
 {faq_html()}
 </div></section>
 
-{band("Gearbox acting up? Talk to Jacky.", "WhatsApp or call us. If the car can’t move, we’ll tow it in for free.")}
+{band("Gearbox acting up? Talk to Jacky.", "WhatsApp or call us. Free towing to our workshop is available during office hours; contact us to arrange collection.")}
 '''
     return page('', 'Gearbox Repair & Transmission Specialist Singapore | Jacky Gearbox',
                 'Gearbox repair, overhaul and servicing for all car makes in Woodlands, Singapore. Diagnostic from S$30, free towing and a 6-month warranty. WhatsApp 8430 9665.',
@@ -953,7 +957,7 @@ def service_page(sid):
             + faq_block(faq, f'{t}: common questions')
             + trust_strip()
             + f'<section><div class="wrap"><div class="sec-head"><h2>Other gearbox services</h2></div><div class="grid g3">{service_cards(others)}</div></div></section>'
-            + band('Talk to a gearbox specialist', 'WhatsApp us your car model and symptoms. If the car can’t move, we’ll tow it in for free.'))
+            + band('Talk to a gearbox specialist', 'WhatsApp us your car model and symptoms. Free towing to our workshop is available during office hours; contact us to arrange collection.'))
     ld = [crumbs_ld(t, f'services/{sid}/', parent=('Services', 'services/')), faq_ld_of(faq),
           {'@context': 'https://schema.org', '@type': 'Service', 'name': html.unescape(t), 'description': d, 'serviceType': html.unescape(t),
            'provider': {'@id': f'{ORIGIN}{BASE}#org'}, 'areaServed': {'@type': 'Country', 'name': 'Singapore'}, 'url': f'{ORIGIN}{BASE}services/{sid}/',
@@ -972,11 +976,11 @@ def problems_hub():
             + f'<section><div class="wrap"><div class="sec-head"><h2>Find your symptom</h2></div><div class="sym">{problem_cards()}</div></div></section>'
             + f'''<section class="alt"><div class="wrap split">
 <div><h2>Not sure which one it is?</h2><p>Gearbox symptoms often overlap, and the same symptom can have very different causes. Our pre-repair diagnostic reads the transmission fault codes and checks the gearbox, then we tell you the fault and the price before any work starts.</p>
-<ul class="ticks"><li>{DIAG}</li><li>Clear quote before any work starts</li><li>Free towing if the car can’t move</li></ul>{cta_buttons(cta="Not sure which one")}</div>
+<ul class="ticks"><li>{DIAG}</li><li>Clear quote before any work starts</li><li>Free towing during office hours</li></ul>{cta_buttons(cta="Not sure which one")}</div>
 <div>{img("diagnostics", "Transmission diagnostic test running on a laptop")}</div></div></section>'''
             + faq_block(HUB_FAQ, 'Gearbox problem FAQ')
             + trust_strip()
-            + band('Gearbox acting up?', 'WhatsApp or call us. If the car can’t move, we’ll tow it in for free.'))
+            + band('Gearbox acting up?', 'WhatsApp or call us. Free towing to our workshop is available during office hours; contact us to arrange collection.'))
     ld = [crumbs_ld('Gearbox Problems', 'gearbox-problems/'), faq_ld_of(HUB_FAQ),
           {'@context': 'https://schema.org', '@type': 'ItemList', 'itemListElement': [
               {'@type': 'ListItem', 'position': i + 1, 'name': p['name'], 'url': f'{ORIGIN}{BASE}gearbox-problems/{p["slug"]}/'} for i, p in enumerate(PROBLEMS)]}]
@@ -1187,7 +1191,7 @@ def gallery():
 </div></section>'''
             + faq_block(FAQ[4:], 'Visiting us')
             + trust_strip()
-            + band('Come and see us', 'Visit our Woodlands HQ or our Kranji branch at Jalan Lam Huat, or let us pick your car up for free.'))
+            + band('Come and see us', 'Visit our Woodlands HQ or our Kranji branch at Jalan Lam Huat, or ask us about free pick-up during office hours.'))
     return page('gallery/', 'Gearbox Workshop Photos, Woodlands Singapore | Jacky Gearbox',
                 'Photos of the Jacky Gearbox workshop in Woodlands, Singapore: diagnostics, gearbox overhaul benches, car lifts and customer lounge.',
                 body, active='gallery/', ld=[crumbs_ld('Gallery', 'gallery/'), faq_ld_of(FAQ[4:])], share=('customer-lounge', 'Inside Our Gearbox Workshop in Woodlands'))
@@ -1298,7 +1302,7 @@ def not_found():
 <div class="grid g4 svc">{service_cards()}</div>
 <p style="margin-top:22px"><a class="btn btn-line" href="{u()}">Home</a> <a class="btn btn-line" href="{u("gearbox-problems/")}">Gearbox problems</a> <a class="btn btn-line" href="{u("contact/")}">Contact</a></p>
 </div></section>'''
-                + band('Gearbox acting up?', 'WhatsApp or call us. If the car can’t move, we’ll tow it in for free.'))
+                + band('Gearbox acting up?', 'WhatsApp or call us. Free towing to our workshop is available during office hours; contact us to arrange collection.'))
         html_ = page('404.html', 'Page not found | Jacky Gearbox', 'This page does not exist on jackygearbox.com.', body, active=None)
     finally:
         ABS = False
