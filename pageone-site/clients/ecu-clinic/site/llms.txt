@@ -17,6 +17,8 @@
 - [Hybrid Battery Replacement](https://theecuclinicsg.com/services/hybrid-battery-replacement/): Brand-new OEM hybrid battery replacement in Kaki Bukit, with a warranty of 1 year or 100,000 km. WhatsApp your car model and year: 9893 1923.
 - [Honda Front Radar (ADAS) Repair](https://theecuclinicsg.com/services/honda-radar-repair/): Honda front radar (millimeter wave radar) repair in Kaki Bukit. P2583 radar function error and Honda Sensing warnings. We repair your unit instead of replacing it. WhatsApp 9893 1923.
 - [BMW CAS Module Repair](https://theecuclinicsg.com/services/bmw-cas-module-repair/): BMW CAS (Car Access System) module repair in Kaki Bukit. Key not recognised, car won’t start or steering lock (ELV) faults. WhatsApp 9893 1923.
+- [Mercedes Engine ECU Repair](https://theecuclinicsg.com/services/mercedes-ecu-repair/): Mercedes-Benz engine ECU repair in Kaki Bukit. We test the ECU and repair your own unit on the bench, such as the Bosch MED17.7.2 on the M274 engine. WhatsApp 9893 1923.
+- [Audi ABS Pump & Module Repair](https://theecuclinicsg.com/services/audi-abs-repair/): Audi ABS pump and ABS module repair in Kaki Bukit. We read the brake electronics codes and repair your own ABS module. 6-month warranty. WhatsApp 9893 1923.
 - [BMW Temperature Programming](https://theecuclinicsg.com/services/bmw-temperature-programming/): BMW coolant temperature programming in Kaki Bukit: bring a high running temperature down to about 95°C. Most models 2010–2018. WhatsApp 9893 1923.
 
 ## Fault codes we repair
@@ -26,8 +28,10 @@
 - U0416 (Honda): VSA system or VSA modulator control unit malfunction
 - P2583 (Honda): Millimeter Wave Radar Function Error
 - U3000-49 (Honda): Camera unit / millimeter wave radar internal failure
-- 5001 (N30/4) (Mercedes-Benz): Internal fault in the ESP control unit
+- 01276 / 16352 (Audi): ABS hydraulic pump and ABS control module defective
+- 5001 / 5944 (N30/4) (Mercedes-Benz): Internal fault in the ESP control unit
 - A11E / A0AF / A0B4 (BMW): CAS: ELV fault, processor, engine start
+- P001A / P002A (Mercedes-Benz): Camtronic solenoid circuit faults traced to the engine ECU
 
 Any other warning light or fault code: WhatsApp a photo of the scan tool or dashboard to +65 9893 1923.
 
@@ -51,3 +55,6 @@ Any other warning light or fault code: WhatsApp a photo of the scan tool or dash
 - [Why Are the ABS and DSC Lights On in My BMW?](https://theecuclinicsg.com/articles/bmw-abs-dsc-light-on/): Why the ABS and DSC lights come on together in a BMW or Mini, whether it is safe to drive, what to check first, and BMW ABS unit repair in Singapore.
 - [Why Are the ABS and VSA Lights On in My Honda?](https://theecuclinicsg.com/articles/honda-abs-vsa-light-on/): Why the ABS and VSA lights come on together in a Honda, whether it is safe to drive, the simple causes to rule out first, and Honda ABS repair in Singapore.
 - [Why Are the ABS and Traction Control Lights On in My Chevrolet?](https://theecuclinicsg.com/articles/chevrolet-abs-esc-light-on/): Why the ABS and traction or stability control lights come on in a Chevrolet, whether it is safe to drive, what to check first, and ABS repair in Singapore.
+- [Why Are the ABS and DSTC Lights On in My Volvo?](https://theecuclinicsg.com/articles/volvo-abs-dstc-light-on/): Why the ABS and DSTC or stability and traction control lights come on in a Volvo, whether it is safe to drive, what to check first, and ABS module repair in Singapore.
+- [Why Are the ABS and ESP Lights On in My Mercedes-Benz?](https://theecuclinicsg.com/articles/mercedes-abs-esp-light-on/): Why the ABS and ESP lights come on in a Mercedes-Benz, whether it is safe to drive, what to check first, and ESP pump and ABS module repair in Singapore.
+- [Why Does My ABS Pump Buzz or Make Noise When Braking?](https://theecuclinicsg.com/articles/abs-pump-noise-buzzing-when-braking/): Why the ABS pump buzzes, clicks or pulses the brake pedal when braking, when that is normal, when it points to a fault, and what to do next in Singapore.

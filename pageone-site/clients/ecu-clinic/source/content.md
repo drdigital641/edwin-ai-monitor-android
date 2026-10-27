@@ -89,6 +89,18 @@ page images.
 - Photos: source/photos/honda-vezel-radar-fault-codes.jpg, honda-vezel-vsa-fault-codes.jpg, mercedes-esp-n30-4-fault-code.jpg
   (VIN / frame / serial numbers blurred).
 
+## New jobs (Edwin, 27 Oct 2026, photos + tapped answers)
+- ECU repair is now offered (reverses the 13 Oct "not featured"). Mercedes C-Class (C205), M274, Bosch MED17.7.2
+  (A 274 900 08 00): original ECU repaired on the bench (faulty output circuits), refitted, codes cleared. Codes
+  P001A13/P002A13 Camtronic, P261612 camshaft output, P119012 intake air pressure, P007D12 charge air temp
+  (the scan also had P0420; cropped out, not on the site).
+- 2009 BMW 320i (E90) CAS faults: used E90 CAS3 module fitted and matched to the car's own keys; car starts again.
+- Mercedes C180 CGI (W204, 204.049), ESP unit A 204 545 39 32, faults 5944 + 5001 in N30/4: ESP module repaired.
+- Audi A3 (8P), 10 ABS codes incl. 01276 ABS hydraulic pump defective, 16352 control module defective: ABS module repaired.
+  Edwin's words: "Audi abs repair specialist".
+- Photos: bmw-cas3-modules-e90, mercedes-me17-ecus-c205 (rotated), mercedes-me-camtronic-codes,
+  mercedes-c180-cgi-esp-unit, mercedes-c180-cgi-esp-codes, audi-a3-abs-codes (VIN / scanner serial blurred).
+
 ## Still needed
 - Facebook page link and WeChat ID (Facebook/WeChat need a login; screenshots of the About
   section, posts and reviews would do).

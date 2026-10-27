@@ -27,6 +27,7 @@ ORIGIN = PREVIEW if MOCKUP else 'https://theecuclinicsg.com'  # domain chosen by
 BASE = '/'
 DEPTH = 0
 ASSET_V = '7'
+JS_V = '8'  # live ecu.js is v8 (live-only beacon change, see git log); never upload repo ecu.js over it
 # Until go-live the share image and icons are linked at the preview address (the same files).
 LIVE = False
 IMG_ORIGIN = ORIGIN if LIVE else PREVIEW
@@ -90,9 +91,16 @@ ICON['phone'] = '<svg viewBox="0 0 24 24" aria-hidden="true"><use href="#i-phone
 e = html.escape
 
 
+# Photos added after IMG_COMMIT, served from the commit that added them (no site-wide re-pin).
+IMG_PIN = {n: '570a0643be57596bf12700b3614e04276b9e3cf5' for n in (
+    'bmw-cas3-modules', 'mercedes-c180-esp-unit', 'mercedes-c180-esp-codes', 'mercedes-me17-ecus',
+    'mercedes-camtronic-codes', 'audi-abs-fault-codes')}  # job photos, 27 Oct 2026
+
+
 def u(path=''):
     if IMG_CDN and (path.startswith('img/') or path == 'icon-512.png'):
-        return IMG_CDN + path
+        pin = IMG_PIN.get(path[4:].rsplit('.', 1)[0])
+        return (IMG_CDN.replace(IMG_COMMIT, pin) if pin else IMG_CDN) + path
     return ('../' * DEPTH or './') + path
 
 
@@ -127,6 +135,7 @@ def img(name, alt, w=640, h=480, lazy=True, cls=''):
 # 13 Oct 2026 client amendments: lead with ABS pump repair and brake fault diagnosis; ECU work is not
 # featured (the client is still learning it); add Mercedes 7G/9G TCU repair, Mercedes steering lock
 # (ELV) repair and brand-new OEM hybrid batteries; no BMW or Mercedes key programming.
+# 27 Oct 2026 (Edwin): ECU repair is now offered (Mercedes engine ECU card and page); Audi ABS page added.
 SERVICES = [
     ('abs', 'ABS Pump &amp; Module Repair', 'abs-esc-units-bench', 'ABS and ESC units on the repair bench',
      'ABS, ESP or ESC warning light? We repair the pump and module, or supply a used or reconditioned unit.',
@@ -146,6 +155,9 @@ SERVICES = [
     ('cas', 'BMW CAS Module Repair', 'bmw-cas-fault-codes', 'Scan tool showing BMW CAS fault codes',
      'Key not recognised or car won’t start? We repair the BMW CAS (Car Access System) module, including CAS faults linked to the steering lock.',
      ['BMW CAS module repair', 'ELV, processor and engine start CAS codes', 'Pick-up available if the car won’t start']),
+    ('ecu', 'Mercedes Engine ECU Repair', 'mercedes-me17-ecus', 'Mercedes-Benz Bosch engine ECUs on the repair bench',
+     'Several engine circuit faults at once? We test the engine ECU and repair your own unit on the bench.',
+     ['Mercedes-Benz engine ECU repair', 'Camtronic, camshaft and sensor circuit faults', 'Your own ECU repaired, then refitted']),
     ('hybrid', 'Hybrid Battery Replacement', 'hybrid-battery-pack', 'Brand-new hybrid battery pack ready to fit',
      'Hybrid battery warning or a weak battery? We replace it with a brand-new OEM hybrid battery.',
      ['Brand-new OEM hybrid batteries', 'Warranty: 1 year or 100,000 km', 'Removal and fitting', 'WhatsApp us your car model and year to check availability']),
@@ -197,8 +209,10 @@ CODES = [
     ('U0416', 'Honda', 'VSA system or VSA modulator control unit malfunction', 'articles/honda-vsa-solenoid-valve-malfunction/'),
     ('P2583', 'Honda', 'Millimeter Wave Radar Function Error', 'articles/honda-millimeter-wave-radar-error-p2583/'),
     ('U3000-49', 'Honda', 'Camera unit / millimeter wave radar internal failure', 'services/honda-radar-repair/'),
-    ('5001 (N30/4)', 'Mercedes-Benz', 'Internal fault in the ESP control unit', 'articles/mercedes-esp-control-unit-fault-n30-4/'),
+    ('01276 / 16352', 'Audi', 'ABS hydraulic pump and ABS control module defective', 'services/audi-abs-repair/'),
+    ('5001 / 5944 (N30/4)', 'Mercedes-Benz', 'Internal fault in the ESP control unit', 'articles/mercedes-esp-control-unit-fault-n30-4/'),
     ('A11E / A0AF / A0B4', 'BMW', 'CAS: ELV fault, processor, engine start', 'articles/bmw-cas-elv-fault-codes/'),
+    ('P001A / P002A', 'Mercedes-Benz', 'Camtronic solenoid circuit faults traced to the engine ECU', 'services/mercedes-ecu-repair/'),
 ]
 
 
@@ -389,7 +403,7 @@ def page(path, title, desc, body, ld=None, share=('module-circuit-board.jpg', No
 <a class="btn btn-wa" href="{wa_link(cta="Sticky bar")}" target="_blank" rel="noopener">{ICON["wa"]}WhatsApp</a>
 <a class="btn btn-red" href="tel:{BIZ["tel"]}">{ICON["phone"]}Call</a>
 </div>
-<script src="{u("ecu.js")}?v={ASSET_V}" defer></script>
+<script src="{u("ecu.js")}?v={JS_V}" defer></script>
 </body>
 </html>
 '''.replace(wa_mark, wa_name)
@@ -736,8 +750,9 @@ def service_page(sp):
     svc_ld = {'@context': 'https://schema.org', '@type': 'Service', 'name': sp['name'], 'serviceType': sp['name'],
               'description': sp['desc'], 'provider': {'@id': f'{ORIGIN}{BASE}#business'}, 'areaServed': 'Singapore',
               'url': f'{ORIGIN}{BASE}{path}'}
+    origin = IMG_CDN.replace(IMG_COMMIT, sp['img_commit']).rstrip('/') if sp.get('img_commit') and IMG_CDN else None
     return page(path, sp['title'], sp['desc'], body, ld=[svc_ld, crumbs_ld(crumbs_disp), faq_ld_of(sp['faq'])],
-                share=(sp['share'], sp['h1']))
+                share=(sp['share'], sp['h1']), img_origin=origin)
 
 
 def articles_index():

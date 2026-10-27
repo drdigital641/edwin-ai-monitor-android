@@ -41,8 +41,10 @@ SERVICE_PAGES = [
         # EDGE Loop, 13 Oct 2026 (owner page for "abs pump repair singapore" and "abs module repair singapore").
         # The Singapore top 10 (Carousell listings, workshop pages, a V-Tec product page) mostly skip these:
         # driving with the light on, how sensor vs unit is told apart, and a plain comparison of the options.
-        updated='13 Oct 2026',
-        jobs=[('mercedes-esp-pumps', 'Mercedes-Benz ESP pumps on our bench'), ('hyundai-kia-esc', 'Hyundai / Kia ESC unit'),
+        updated='27 Oct 2026',
+        jobs=[('mercedes-c180-esp-unit', 'Mercedes C180 CGI (W204): ESP unit we repaired, internal faults 5944 and 5001'),
+              ('mercedes-c180-esp-codes', 'Same car: internal faults in the ESP control unit (N30/4)'),
+              ('mercedes-esp-pumps', 'Mercedes-Benz ESP pumps on our bench'), ('hyundai-kia-esc', 'Hyundai / Kia ESC unit'),
               ('abs-pump-in-car', 'ABS pump in the engine bay'), ('abs-module-in-car', 'ABS module in a car’s engine bay')],
         more=[('Is it safe to drive with the ABS light on?',
                '<p>In most cases your normal brakes still work, but the anti-lock function may be switched off until the fault is fixed. That means the wheels can lock under hard braking, especially on wet roads, so leave more distance and avoid hard stops.</p>'
@@ -231,8 +233,8 @@ SERVICE_PAGES = [
         photo='bmw-cas-fault-codes', alt='Scan tool showing BMW CAS fault codes for ELV, processor and engine start',
         share='bmw-cas-fault-codes.jpg',
         intro=['The CAS (Car Access System) is the BMW control unit that recognises your key, works with the immobiliser and allows the engine to start. On many BMWs it also controls the electric steering lock (ELV).',
-               'When the CAS module develops a fault, the car may not recognise the key, the engine may not start, or the steering lock may stay locked. We read the fault codes first, then repair the CAS module.'],
-        what=['BMW CAS module diagnosis and repair', 'CAS faults linked to the electric steering lock (ELV)',
+               'When the CAS module develops a fault, the car may not recognise the key, the engine may not start, or the steering lock may stay locked. We read the fault codes first, then repair the CAS module, or fit a used CAS module matched to your car’s own keys and engine control unit.'],
+        what=['BMW CAS module diagnosis and repair', 'Used CAS module fitted and matched to your car’s own keys', 'CAS faults linked to the electric steering lock (ELV)',
               'Engine start and key recognition faults', 'Fault code reading'],
         signs=[('Key not recognised', 'The car does not detect the key, or shows a key or immobiliser message.'),
                ('Engine won’t start', 'The starter does not turn, or the engine does not crank.'),
@@ -240,8 +242,80 @@ SERVICE_PAGES = [
                ('CAS fault codes', 'A scan shows CAS codes such as “ELV Fault”, “Processor” or “Engine Start, Starter Operation”.')],
         faq=[('What does the CAS module do?', 'It recognises the key, works with the immobiliser, allows the engine to start and, on many BMWs, controls the electric steering lock.'),
              ('My BMW won’t start and shows CAS codes. Can you help?', 'Yes. WhatsApp us your model, year and the fault codes. Our pick-up and delivery service can collect a car that will not start.'),
+             ('Can you fit a used CAS module?', 'Yes. Where repairing the original is not the right fix, we fit a used CAS module and match it to your car’s own keys and engine control unit.'),
              ('Is there a warranty?', 'Yes. Our repairs come with a 6-month warranty.')],
         related=['bmw-cas-elv-fault-codes'],
+        updated='27 Oct 2026',
+        jobs=[('bmw-cas3-modules', 'Two BMW E90 CAS3 modules on our bench, including the used unit we fitted'),
+              ('bmw-cas-fault-codes', '2009 BMW 320i: CAS and steering lock fault codes')],
+        more=[('Recent job: 2009 BMW 320i (E90) that would not start',
+               '<p>This 320i came in with a long list of CAS codes: ELV (steering lock) fault, processor, power supply to the steering lock, engine start and control-unit fault. The car’s own CAS module was faulty.</p>'
+               '<p>We fitted a used E90 CAS3 module and matched it to the car’s own keys and engine control unit, so the car recognises its keys and starts again. The codes are explained in our guide: <a href="{u}articles/bmw-cas-elv-fault-codes/">BMW CAS fault codes</a>.</p>')],
+    ),
+    dict(
+        slug='mercedes-ecu-repair', key='ecu', name='Mercedes Engine ECU Repair',
+        title='Mercedes ECU Repair Singapore | Engine Control Unit | The ECU Clinic',
+        desc='Mercedes-Benz engine ECU repair in Kaki Bukit. We test the ECU and repair your own unit on the bench, such as the Bosch MED17.7.2 on the M274 engine. WhatsApp 9893 1923.',
+        h1='Mercedes-Benz Engine ECU Repair',
+        lead='Several engine circuit faults at once, such as Camtronic, camshaft or sensor codes? We test the engine ECU and repair your own unit on the bench.',
+        photo='mercedes-me17-ecus', alt='Two Mercedes-Benz Bosch MED17.7.2 engine ECUs (M274 engine) on our repair bench',
+        share='mercedes-me17-ecus-c205.jpg',
+        intro=['The engine ECU (engine control unit) runs the engine: it reads the sensors and drives the injectors, ignition, camshaft adjusters and, on Mercedes engines such as the M274, the Camtronic valve lift solenoids.',
+               'When a driver circuit or a sensor supply inside the ECU fails, the scan tool can show several circuit codes at the same time, even though the sensors and solenoids themselves may be fine. We read every code, check the wiring and parts first, and if the ECU is at fault we repair your own unit on the bench and refit it.'],
+        what=['Mercedes-Benz engine ECU (ME / MED17) diagnosis and repair', 'Bench repair of your own ECU',
+              'Camtronic solenoid, camshaft and sensor circuit faults traced to the ECU', 'Fault code reading'],
+        signs=[('Many circuit codes at once', 'A scan shows several circuit faults together, such as Camtronic solenoids, camshaft position, intake air pressure and charge air temperature.'),
+               ('Engine warning light', 'The check engine light stays on, or comes back soon after the codes are cleared.'),
+               ('Codes return after new parts', 'A sensor or solenoid was replaced, but the same circuit fault comes back.')],
+        faq=[('Can you repair my Mercedes ECU instead of replacing it?', 'Often, yes. WhatsApp us the model, year and fault codes. If the fault is inside the ECU, we repair your own unit on the bench.'),
+             ('Can I bring in just the ECU?', 'Yes. Bring the car or the ECU to us at Premier @ Kaki Bukit, or use our pick-up and delivery service.'),
+             ('Is there a warranty?', 'Yes. Our repairs come with a 6-month warranty.')],
+        related=[],
+        img_commit='147887a74850278f54d456b3b14035521cee5442',  # share image added after IMG_COMMIT
+        updated='27 Oct 2026',
+        jobs=[('mercedes-me17-ecus', 'Mercedes C-Class (C205): Bosch MED17.7.2 engine ECUs on our bench'),
+              ('mercedes-camtronic-codes', 'Scan of the same car: Camtronic, camshaft and sensor circuit codes')],
+        more=[('Recent job: Mercedes C-Class (C205), M274 engine',
+               '<p>The engine control unit (N3/10) had stored codes including:</p><ul class="ticks">'
+               '<li><strong>P001A13</strong> Camtronic solenoid 1 “Intake”: open circuit</li>'
+               '<li><strong>P002A13</strong> Camtronic solenoid 1 “Exhaust”: open circuit</li>'
+               '<li><strong>P261612</strong> Camshaft position output signal: short circuit to positive</li>'
+               '<li><strong>P119012</strong> Intake air pressure sensor: short circuit to positive</li>'
+               '<li><strong>P007D12</strong> Charge air temperature sensor: short circuit to positive</li></ul>'
+               '<p>With several unrelated circuits faulty at the same time, we tested the ECU itself. The fault was in the car’s own ECU, so we repaired it on the bench, refitted it and cleared the codes.</p>')],
+    ),
+    dict(
+        slug='audi-abs-repair', key='audi', name='Audi ABS Pump & Module Repair',
+        title='Audi ABS Repair Specialist Singapore | ABS Module | The ECU Clinic',
+        desc='Audi ABS pump and ABS module repair in Kaki Bukit. We read the brake electronics codes and repair your own ABS module. 6-month warranty. WhatsApp 9893 1923.',
+        h1='Audi ABS Repair Specialist in Singapore',
+        lead='ABS and ESP lights on in your Audi? We read the brake electronics codes and repair your own ABS module.',
+        photo='audi-abs-fault-codes', alt='Scan tool showing Audi brake electronics codes: ABS hydraulic pump and control module defective',
+        share='audi-a3-abs-codes.jpg',
+        intro=['On an Audi, the ABS unit in the engine bay combines the hydraulic pump with the brake electronics control module (address 03 on the scan tool). When the module fails, it often stores a long list of codes at once, including wheel speed sensor codes, even when the sensors themselves may be fine.',
+               'We read every code first and rule out the simple causes, such as sensors, wiring and a weak battery. Then we repair your own ABS module. ABS pumps and modules are our main work, and many car workshops send their ABS repairs to us.'],
+        what=['Audi ABS module (brake electronics) repair', 'ABS hydraulic pump faults',
+              'Codes such as 01276 “ABS Hydraulic Pump” and 16352 “Control Module” defective', 'Volkswagen and Skoda ABS units too'],
+        signs=[('ABS and ESP lights on', 'The ABS and ESP (ESC) warning lights come on together and stay on.'),
+               ('Many codes at once', 'Wheel speed sensor, rotation rate sensor and reference voltage codes appear together with pump or module codes.'),
+               ('Pump or module “defective”', 'The scan shows 01276 ABS Hydraulic Pump or 16352 Control Module as defective.')],
+        faq=[('Do you repair Audi ABS modules?', 'Yes. We repair the ABS module on Audi cars, and on Volkswagen and Skoda too. WhatsApp us the model, year and fault codes.'),
+             ('Is it safe to drive with the ABS light on?', 'In most cases your normal brakes still work, but the anti-lock function may be off until the fault is fixed, so the wheels can lock under hard braking, especially on wet roads. If the red brake warning light is on too, or the pedal feels different, stop driving and get the car checked.'),
+             ('Is there a warranty?', 'Yes. Our repairs come with a 6-month warranty.')],
+        related=['vw-audi-abs-esp-light-on'],
+        img_commit='147887a74850278f54d456b3b14035521cee5442',  # share image added after IMG_COMMIT
+        updated='27 Oct 2026',
+        jobs=[('audi-abs-fault-codes', 'Audi A3: ABS hydraulic pump and control module defective, with sensor codes')],
+        more=[('Recent job: Audi A3 with 10 ABS codes',
+               '<p>The brake electronics (03) had stored 10 codes, including:</p><ul class="ticks">'
+               '<li><strong>01276</strong> ABS Hydraulic Pump: defective</li>'
+               '<li><strong>16352</strong> Control Module: defective</li>'
+               '<li><strong>00290</strong> and <strong>00287</strong> Left and right rear ABS wheel speed sensors: electrical fault in circuit</li>'
+               '<li><strong>01542</strong> Rotation Rate Sensor: electrical fault in circuit</li>'
+               '<li><strong>00538</strong> Reference Voltage: electrical fault in circuit</li>'
+               '<li><strong>01130</strong> ABS Operation: implausible signal</li></ul>'
+               '<p>With the pump, the module and several sensor circuits all faulty at once, the codes pointed to the ABS control module. We repaired the car’s own module, refitted it and cleared the faults.</p>'
+               '<p>This scan also had a low voltage code (terminal 30), which a weak battery can cause, so we check the battery as well. More on the lights in our guide: <a href="{u}articles/vw-audi-abs-esp-light-on/">VW or Audi ABS and ESP lights on</a>.</p>')],
     ),
     dict(
         slug='bmw-temperature-programming', key='bmw', name='BMW Temperature Programming',
@@ -287,7 +361,7 @@ ARTICLES = [
 <p>WhatsApp us your car model, year and the fault codes. A photo of the scan tool screen helps.</p>''',
     ),
     dict(
-        slug='bmw-cas-elv-fault-codes', service='bmw-cas-module-repair', date='2026-10-14',
+        slug='bmw-cas-elv-fault-codes', service='bmw-cas-module-repair', date='2026-10-14', updated_iso='2026-10-27',
         title='BMW CAS Fault Codes A11E, A0AF, A0B4 | The ECU Clinic',
         desc='What BMW CAS fault codes such as A11E ELV Fault, A0AF Processor and A0B4 Engine Start mean, why the car may not start, and repairing the CAS module.',
         h1='BMW CAS Fault Codes: ELV Fault, Processor and Engine Start',
@@ -314,7 +388,7 @@ ARTICLES = [
 <h2>CAS or steering lock?</h2>
 <p>The steering lock and the CAS work together, so codes from one often appear in the other. Reading all the codes, and checking power supply to the steering lock, helps tell which part is at fault before anything is replaced.</p>
 <h2>How it is fixed</h2>
-<p>We diagnose the CAS and steering lock, then repair the CAS module. If the car cannot be driven, our pick-up and delivery service can collect it. Our repairs come with a 6-month warranty.</p>
+<p>We diagnose the CAS and steering lock, then repair the CAS module. For the 320i in the photo, the car’s own CAS module was faulty, so we fitted a used E90 CAS3 module and matched it to the car’s own keys and engine control unit, and the car started again. If the car cannot be driven, our pick-up and delivery service can collect it. Our repairs come with a 6-month warranty.</p>
 <p>WhatsApp us your BMW model, year and the fault codes.</p>''',
     ),
     dict(
@@ -390,7 +464,7 @@ ARTICLES = [
 <p>WhatsApp us your car model, year and the fault codes. A photo of the scan tool screen helps.</p>''',
     ),
     dict(
-        slug='abs-warning-light-causes', service='abs-pump-repair', date='2026-10-13',
+        slug='abs-warning-light-causes', service='abs-pump-repair', date='2026-10-13', updated_iso='2026-10-22',
         title='ABS Warning Light On? Common Causes and What To Do | The ECU Clinic',
         desc='Why the ABS warning light comes on, what it means for your brakes, the common causes from sensors to the ABS pump and module, and what to do next.',
         h1='ABS Warning Light On? Common Causes and What To Do',
@@ -414,7 +488,7 @@ ARTICLES = [
 <p>WhatsApp us your car model, chassis number and the fault code. A photo of the dashboard or the scan tool screen also helps. Our repairs come with a 6-month warranty.</p>''',
     ),
     dict(
-        slug='mercedes-active-brake-assist-functions-limited', service='abs-pump-repair', date='2026-10-13',
+        slug='mercedes-active-brake-assist-functions-limited', service='abs-pump-repair', date='2026-10-13', updated_iso='2026-10-19',
         title='Active Brake Assist Functions Limited? | The ECU Clinic',
         desc='Mercedes “Active Brake Assist functions limited”? Often a dirty or knocked radar sensor. If it stays on or an ABS or ESP light shows, read the fault code.',
         h1='Mercedes “Active Brake Assist Functions Limited”: What It Means',

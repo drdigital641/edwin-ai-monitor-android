@@ -49,14 +49,27 @@ PHOTOS = {
     'honda-yaw-rate-codes': ('honda-yaw-rate-sensor-codes.jpg', (0.0, 0.0, 0.73, 1.0)),
     'honda-abs-radar-codes': ('honda-vezel-abs-and-radar-codes.jpg', (0.12, 0.44, 0.86, 0.85)),
     'honda-vsa-fault-codes': ('honda-vezel-vsa-fault-codes.jpg', (0.13, 0.33, 1.0, 0.82)),
+    # Job photos from Edwin, 27 Oct 2026 (VIN and scanner serial blurred in the source copies).
+    # A 5th value 'pad' keeps the whole crop and pads it to 4:3 on a dark background (wide scan screens).
+    'bmw-cas3-modules': ('bmw-cas3-modules-e90.jpg', (0.0, 0.33, 1.0, 0.80)),
+    'mercedes-c180-esp-unit': ('mercedes-c180-cgi-esp-unit.jpg', None),
+    'mercedes-c180-esp-codes': ('mercedes-c180-cgi-esp-codes.jpg', (0.17, 0.19, 0.92, 0.80, 'pad')),
+    'mercedes-me17-ecus': ('mercedes-me17-ecus-c205.jpg', (0.08, 0.0, 0.92, 1.0)),
+    'mercedes-camtronic-codes': ('mercedes-me-camtronic-codes.jpg', (0.0, 0.34, 1.0, 0.80, 'pad')),
+    'audi-abs-fault-codes': ('audi-a3-abs-codes.jpg', (0.19, 0.0, 0.97, 0.77)),
 }
 
 
 def photo(name):
     src, band = PHOTOS[name]
     im = ImageOps.exif_transpose(Image.open(os.path.join(SRC, 'photos', src))).convert('RGB')
-    if band and len(band) == 4:
+    if band and len(band) >= 4:
         im = im.crop((int(im.width * band[0]), int(im.height * band[1]), int(im.width * band[2]), int(im.height * band[3])))
+        if len(band) == 5 and band[4] == 'pad':
+            w = max(im.width, im.height * 4 // 3)
+            canvas = Image.new('RGB', (w, w * 3 // 4), (24, 28, 34))
+            canvas.paste(im, ((w - im.width) // 2, (w * 3 // 4 - im.height) // 2))
+            im = canvas
     elif band:
         im = im.crop((0, int(im.height * band[0]), im.width, int(im.height * band[1])))
     return ImageOps.fit(im, (1600, 1200) if im.width >= 1600 else (im.width, im.width * 3 // 4), Image.LANCZOS)
