@@ -1026,4 +1026,41 @@ ARTICLES = [
              ('Why does my ABS pump make a noise when I start the car?', 'Many cars run a short self-check of the ABS pump and valves after starting or when first moving off, which can sound like a brief hum or click. A noise that is long, loud or comes with a warning light is worth checking.'),
              ('Can I keep driving if the ABS pump is noisy?', 'If the ABS light is off and the brakes feel normal, it is probably the ABS working. If the light is on, expect the anti-lock function to be off, so leave more distance and avoid hard stops. If the red brake light is on or the pedal feels different, stop driving.')],
     ),
+    dict(
+        # Night article dated 29 Oct 2026. New intent (not a make-series article): is a BMW running at 100-120 C normal.
+        # Client facts only: many BMWs of 2010-2018 run 120C+; we reprogram the engine's temperature setting to about 95C; models list on the
+        # BMW temperature programming page; no "100% safe" claim. General knowledge is hedged. No prices.
+        slug='bmw-coolant-temperature-120-normal', service='bmw-temperature-programming', date='2026-10-29', img_commit='6b2463ab3492e899fe89301b7208a1d5c5538679',
+        title='BMW Running at 120°C? Is Coolant Temperature Normal | The ECU Clinic',
+        desc='Is it normal for a BMW to show 100 to 120°C on the temperature display? What is usually normal, the warning signs, and what temperature programming does.',
+        h1='Is It Normal for a BMW to Run at 120°C?',
+        lead='Seeing 110 or 120°C in iDrive or on the engine temperature display? Here is what is usually normal, what is not, and your options.',
+        photo='bmw-fault-code-scan', alt='Scan tool reading BMW engine data and fault codes', share='diagnostic-bmw-fault-codes.jpg',
+        body='''<p><strong>Short answer:</strong> many BMWs are designed to run hotter than older cars, and a reading of about 100 to 110°C is common. A reading of 120°C or more is higher than most owners expect, even if there is no warning light. It is worth a cooling system check if the reading keeps climbing, a warning message appears or you lose coolant. If the car is not overheating, some owners choose to have the temperature setting reprogrammed so the engine runs nearer 95°C.</p>
+<h2>Why do many BMWs run so hot?</h2>
+<p>Many modern BMWs use an electronically controlled thermostat. The engine control unit can let the coolant run hotter under light load, which helps fuel economy and emissions, and run cooler when you drive hard. The temperature you see can therefore change a lot during one trip. The exact setting depends on the model and engine, so your owner’s manual is the best guide for your car.</p>
+<h2>When is the temperature a warning sign?</h2>
+<ul class="ticks">
+<li><strong>A warning message</strong> or a red temperature light is on. Stop in a safe place and let the engine cool.</li>
+<li><strong>The reading keeps climbing</strong> in traffic or on a normal drive, or it jumps up and down.</li>
+<li><strong>The coolant level drops,</strong> or you see a leak, steam or a sweet smell.</li>
+<li><strong>The heater blows cold</strong> or the cooling fans run all the time.</li>
+</ul>
+<p>Do not keep driving an engine that is overheating. If any of these apply, have the car checked before you think about programming.</p>
+<h2>What can make a BMW run hotter than it should?</h2>
+<ul class="ticks">
+<li><strong>Thermostat.</strong> A thermostat that sticks, or its electric heater, can keep the engine hotter than intended.</li>
+<li><strong>Water pump and fans.</strong> A weak pump or a slow fan reduces the cooling.</li>
+<li><strong>Coolant level, leaks or old coolant.</strong> Low or poor coolant cools less well.</li>
+<li><strong>A blocked radiator</strong> or air in the system after a repair.</li>
+</ul>
+<h2>What is BMW temperature programming?</h2>
+<p>Many BMWs from this period run at a high coolant temperature, often 120°C or more. We reprogram the engine’s temperature setting so it runs at about 95°C instead, for steady performance and long-term engine protection. Daily driving and the car’s other functions are not changed. It covers most BMW models from 2010 to 2018, including the 1 to 8 Series, X1 to X6, M2 and Z4.</p>
+<p>Programming changes the temperature the engine control unit aims for. It does not repair a leak, a faulty thermostat or a failing pump, so fix any real cooling fault first. See <a href="../../services/bmw-temperature-programming/">BMW temperature programming</a> for the full list of models.</p>
+<h2>What should I send?</h2>
+<p>WhatsApp us your BMW model and year, and tell us what temperature you see and when. If there is a warning message or fault codes, send a photo of the dashboard or the scan tool screen. We will tell you whether your model is on the list. You can bring the car to Premier @ Kaki Bukit.</p>''',
+        faq=[('Is 110°C normal for a BMW?', 'On many modern BMWs, readings of about 100 to 110°C are common because the engine control unit lets the coolant run hotter under light load. Check your owner’s manual for your model, and have the car checked if a warning message appears or the reading keeps climbing.'),
+             ('Is it safe to keep driving if my BMW shows 120°C?', 'If there is no warning light or message and the coolant level is steady, the car may be running as designed, but 120°C is high and worth checking. If a warning appears, stop in a safe place and let the engine cool. Do not keep driving an overheating engine.'),
+             ('Which BMWs can have temperature programming?', 'Most BMW models from 2010 to 2018, including the 1 to 8 Series, X1 to X6, M2 and Z4. WhatsApp us your model and year to confirm.')],
+    ),
 ]
