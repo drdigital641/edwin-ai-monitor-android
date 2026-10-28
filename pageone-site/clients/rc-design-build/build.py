@@ -257,9 +257,9 @@ def card(frm, path, title, text, key, more='More details', small=True):
 
 def svc_tile(frm, path):
     p = ALL_CONTENT[path]
-    return ('<a class="rv" href="%s"><img src="%s" width="92" height="92" alt="" loading="lazy" decoding="async">'
+    return ('<a class="rv" href="%s"><img src="%s" width="92" height="92" alt="%s" loading="lazy" decoding="async">'
             '<div><h3>%s</h3><p>%s</p><span class="more">More details</span></div></a>') % (
-        rel(frm, path), img_url(p['image'], True), E(SHORT.get(path, p['h1'])), E(p['card']))
+        rel(frm, path), img_url(p['image'], True), E(SHORT.get(path, p['h1']) + ' (AI design concept)'), E(SHORT.get(path, p['h1'])), E(p['card']))
 
 
 # ---------- layout ----------
@@ -586,7 +586,7 @@ def ws_img(sha, stem):
 def workshop_carousel():
     def tile(sha, stem, w, alt, hidden=False):
         return ('<figure class="wsc-t" style="aspect-ratio:%d/480"%s><img src="%s" width="%d" height="480" alt="%s" loading="lazy">'
-                '<figcaption class="wsc-real">Our workshop</figcaption></figure>') % (w, ' aria-hidden="true"' if hidden else '', ws_img(sha, stem), w, '' if hidden else E(alt))
+                '<figcaption class="wsc-real">Our workshop</figcaption></figure>') % (w, ' aria-hidden="true"' if hidden else '', ws_img(sha, stem), w, E(alt))
     # each half holds the set twice so wide screens never see a gap
     one = ''.join(tile(*c) for c in CAROUSEL) + ''.join(tile(*c, hidden=True) for c in CAROUSEL)
     two = ''.join(tile(*c, hidden=True) for c in CAROUSEL) * 2
@@ -672,7 +672,7 @@ def marquee(path, dp):
     for h, sm, full, alt, label, short, title in items:
         base = tpl % (h, full, E(alt), label, E(title), sm, E(short), E(title))
         out[0] += base.replace('{x}', '').replace('{alt}', E(alt))
-        out[1] += base.replace('{x}', ' tabindex="-1" aria-hidden="true"').replace('{alt}', '')
+        out[1] += base.replace('{x}', ' tabindex="-1" aria-hidden="true"').replace('{alt}', E(alt))
     return out[0] + out[1]
 
 
