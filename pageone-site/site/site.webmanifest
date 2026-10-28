@@ -1,0 +1,12 @@
+{
+  "name": "Page One Singapore",
+  "short_name": "Page One",
+  "start_url": "/",
+  "display": "browser",
+  "background_color": "#060b18",
+  "theme_color": "#060b18",
+  "icons": [
+    { "src": "/icon-192.png", "sizes": "192x192", "type": "image/png" },
+    { "src": "/icon-512.png", "sizes": "512x512", "type": "image/png" }
+  ]
+}

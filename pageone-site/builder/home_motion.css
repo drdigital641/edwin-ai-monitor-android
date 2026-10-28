@@ -1,0 +1,58 @@
+/* Home page motion (transform/opacity only). motion.js adds .pm to <html>; without it (no JS, reduced motion) everything is in its final state. */
+.grad-text{position:relative;display:inline-block}
+.grad-text::after{content:"";position:absolute;left:0;right:0;bottom:-.06em;height:.07em;border-radius:2px;background:var(--grad);transform-origin:left;animation:pm-line 1.1s .35s cubic-bezier(.2,.8,.2,1) both}
+@keyframes pm-line{from{transform:scaleX(0)}}
+@keyframes pm-grow{from{transform:scaleY(0)}}
+@keyframes pm-in{from{opacity:0;transform:translateX(-10px)}}
+@keyframes pm-pop{0%{opacity:0;transform:scale(.6)}70%{opacity:1;transform:scale(1.08)}100%{opacity:1;transform:none}}
+.proof .kpi .value,.proof-hero b,.pb span{font-variant-numeric:tabular-nums}
+/* Hero proof card: bars grow one by one, numbers count, ranks and chips follow */
+.pm .proof-card .pb i{transform:scaleY(0);transform-origin:bottom}
+.pm .proof-card.on .pb i{transform:none;animation:pm-grow 1s cubic-bezier(.2,.8,.2,1) both}
+.pm .proof-card.on .pb:nth-child(2) i{animation-delay:.25s}.pm .proof-card.on .pb:nth-child(3) i{animation-delay:.5s}.pm .proof-card.on .pb:nth-child(4) i{animation-delay:.75s}
+.pm .proof-card .proof-ranks li{opacity:0}
+.pm .proof-card.on .proof-ranks li{opacity:1;animation:pm-in .6s 1.1s ease both}
+.pm .proof-card.on .proof-ranks li:nth-child(2){animation-delay:1.25s}.pm .proof-card.on .proof-ranks li:nth-child(3){animation-delay:1.4s}
+.pm .proof-card .chip{opacity:0;transition:opacity .6s 1.6s}
+.pm .proof-card .chip-2{transition-delay:1.9s}
+.pm .proof-card.on .chip{opacity:1}
+/* KPI tiles: rise in turn, count up, then the mini chart draws and the note appears */
+.kbar{margin:12px 0 0;display:grid;gap:6px}
+.kbar p{margin:0;display:grid;grid-template-columns:62px 1fr;align-items:center;gap:8px}
+.kbar small{font-size:.72rem;font-weight:600;color:var(--muted)}
+.kbar i{display:block;height:8px;width:calc(var(--w) * 100%);min-width:4px;border-radius:4px;background:rgba(15,23,42,.14);transform-origin:left}
+.kbar i.now{background:var(--grad,#16a34a)}
+.pm .proof .kpi{opacity:0;transform:translateY(22px);transition:opacity .6s ease,transform .6s cubic-bezier(.2,.8,.2,1)}
+.pm .proof .kpi.on{opacity:1;transform:none}
+.pm .proof .kpi .kbar i{transform:scaleX(0);transition:transform 1s .5s cubic-bezier(.2,.8,.2,1)}
+.pm .proof .kpi .kbar i.now{transition-delay:.75s}
+.pm .proof .kpi.on .kbar i{transform:none}
+.pm .proof .kpi .delta{opacity:0;transition:opacity .5s 1.2s}
+.pm .proof .kpi.on .delta{opacity:1}
+/* "How it works": connector draws, step numbers pop in order */
+.pm .steps::before{transform:scaleX(0);transform-origin:left;transition:transform 1.6s cubic-bezier(.4,0,.2,1)}
+.pm .steps.on::before{transform:none}
+.pm .steps li span{opacity:0}
+.pm .steps li.in span{animation:pm-pop .6s .25s cubic-bezier(.2,.8,.2,1) both}
+.climb{margin:28px 0 0;padding:18px;background:#fff;border:1px solid var(--line);border-radius:var(--radius);box-shadow:var(--shadow)}
+.climb figcaption{font-size:.82rem;color:var(--muted);font-weight:600;margin:0 0 10px}
+.climb ol{list-style:none;margin:0;padding:0;position:relative}
+.climb li{display:flex;align-items:center;gap:10px;height:40px;padding:0 12px;margin:0 0 6px;border-radius:10px;background:var(--bg-alt,#f3f5f9);font-size:.88rem;color:var(--muted)}
+.climb-grid{display:flex;gap:10px}.climb-n{display:flex;flex-direction:column}.climb-n b{height:40px;margin:0 0 6px;display:flex;align-items:center;font-family:var(--display);color:var(--ink)}
+.climb ol{flex:1;overflow:hidden}
+.climb li i{flex:1;height:8px;border-radius:4px;background:rgba(15,23,42,.08)}
+.climb li.me{background:#ecfdf3;border:1px solid rgba(21,128,61,.35);color:var(--ink);font-weight:700;position:relative;z-index:1}
+.js .climb.in li.me{animation:pm-climb 2.2s .3s cubic-bezier(.5,0,.2,1) both}
+.js .climb.in li.d{animation:pm-down 2.2s .3s cubic-bezier(.5,0,.2,1) both}
+@keyframes pm-climb{from{transform:translateY(138px)}}
+@keyframes pm-down{from{transform:translateY(-46px)}}
+@media (hover:hover) and (pointer:fine){.story .browser{transform:perspective(1200px) rotateY(var(--ry,-4deg)) rotateX(var(--rx,0deg));transition:transform .25s}}
+@media (prefers-reduced-motion:reduce){.grad-text::after,.js .climb.in li.me,.js .climb.in li.d{animation:none}.story .browser{transform:none}}
+.hero-lean .hero-check{margin-top:26px}
+.hero-paths{margin:18px 0 0;color:#aab6cc;font-size:.95rem}
+.hero-paths a{color:#fff;font-weight:700;text-decoration:underline;text-underline-offset:3px}
+.hero-tagline{font-family:inherit;font-weight:800;font-size:clamp(1.25rem,2.6vw,1.6rem);line-height:1.25;margin:14px 0 0;display:inline-block}
+.benefit-strip{list-style:none;padding:0;margin:20px 0 0;display:flex;flex-wrap:wrap;gap:8px}
+.benefit-strip li{font-size:.85rem;font-weight:700;color:#fff;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.18);border-radius:999px;padding:6px 12px}
+.benefit-strip li:first-child{background:rgba(255,61,87,.22);border-color:rgba(255,61,87,.5)}
+.hero-ctas{margin-top:24px}

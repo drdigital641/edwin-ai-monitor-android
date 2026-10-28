@@ -1,0 +1,17 @@
+## Results (Google Search Console, 28 days 24 September to 21 October 2026, compared with 27 August to 23 September 2026)
+- Edwin Garage (sggarage.com): 2,375 clicks from Google (up from 2,182), average position 6.2 (from 6.3), on page one for 4,270+ different searches. Search Console data starts 26 June 2026.
+- Cleanic Detailing (cleanicdetailing.com): 480 clicks from Google (up from 465), average position 8.3 (from 11.0), on page one for 1,210 different searches. Search Console data starts 20 June 2026.
+- SofaCare SG (sofacaresg.com): shown on Google 4,468 times, on page one for 34 searches. Search Console data starts 4 September 2026. Still early.
+- Alicia Ong Property (aliciaongproperty.com): Search Console data starts 30 September 2026; shown on Google 421 times, 17 clicks so far. Too early to report results.
+- Danny Chua Financial (dannychuafinancial.com): shown on Google 7,059 times (up from 2,781), on page one for 121 searches. Still early.
+- The ECU Clinic (theecuclinicsg.com): Search Console data starts 12 October 2026; shown on Google 828 times, 10 clicks so far. Too early to report results.
+- Jacky Gearbox (jackygearbox.com): Search Console data starts 13 October 2026; shown on Google 347 times, 5 clicks so far. Too early to report results.
+- Star Performance Motor (starperformancemotor.com): Search Console data starts 16 October 2026; shown on Google 117 times, 4 clicks so far. Too early to report results.
+- Wrapstar Autostyle (wrapstarautostyle.com): Search Console data starts 17 October 2026; shown on Google 218 times, 2 clicks so far. Too early to report results.
+- CSKA Auto Enterprise (cskatrading.com): Search Console data starts 18 October 2026; shown on Google 60 times, 6 clicks so far. Too early to report results.
+- Dongfeng Johor Bahru (mykar.my): Search Console data starts 19 October 2026; shown on Google 44 times, 2 clicks so far. Too early to report results.
+- AI Vending Solution (aivs.sg): new website went live on 18 October 2026; its earlier Search Console data belongs to the previous website, so results are reported only from after our launch.
+- Benjamin Poon (planwithben.sg) and SG Commercial Fitout (commercialfitout.sg): launched October 2026, no Search Console data yet.
+- Full case studies: https://pageonesingapore.com/results/
+- Every client website with its numbers: https://pageonesingapore.com/clients/
+- Low price, real results: S$50 a month is low because a set of AI tools we designed does the daily SEO work that used to be billed by the hour; the numbers above come from the same system.
