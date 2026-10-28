@@ -1098,6 +1098,7 @@ page("results/index.html",
         <p class="reveal">A few of the searches it ranks for (28 days to """ + THROUGH_SHORT + """):</p>
         <div class="reveal">""" + ranks_table(query_rows("cleanic")) + """</div>
         <a class="card-link reveal" href="https://cleanicdetailing.com/" target="_blank" rel="noopener">Visit cleanicdetailing.com ↗</a>
+        <a class="card-link reveal" href="/articles/lead-generation-case-study-singapore-cleanic-detailing/">Read the full Cleanic case study →</a>
       </div>
     </section>
 
