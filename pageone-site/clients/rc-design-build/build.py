@@ -63,6 +63,8 @@ REAL = [
 ]
 REAL_NOTE = 'Real SG Commercial Fitout carpentry. Decor items in these photos were added with AI styling.'
 # Real workshop photos from Edwin (26 Oct 2026), cropped and colour-graded only (no AI changes). First 3 show on the homepage.
+# Google Business Profile (Edwin 29 Oct 2026: 5-star Google rating). Link only; no rating schema.
+GOOGLE_REVIEWS = 'https://maps.google.com/?cid=6901313874821012508'
 WS_SHA = 'd676bed'
 WORKSHOP = [
     ('ws-saw-bay', 'Panel saw and plywood sheets in the SG Commercial Fitout carpentry workshop'),
@@ -220,7 +222,7 @@ def org_schema():
     o = {'@type': ['Organization', 'GeneralContractor'], '@id': BASE + '#org', 'name': BRAND_FULL, 'alternateName': [BRAND, 'CommercialFitout.sg', 'SG Fitout'],
          'url': BASE, 'logo': BASE + 'icon-512.png', 'image': IMG + 'og-rc.jpg', 'slogan': SPECIALTY,
          'telephone': PHONE_DISPLAY, 'address': {'@type': 'PostalAddress', 'streetAddress': '113 Eunos Ave 3, #04-02, Gordon Ind Building', 'addressLocality': 'Singapore', 'postalCode': '409838', 'addressCountry': 'SG'},
-         'areaServed': SG, 'audience': AUDIENCE,
+         'areaServed': SG, 'audience': AUDIENCE, 'hasMap': GOOGLE_REVIEWS,
          'knowsAbout': ['Retail shop fit-out', 'Commercial interior design and build', 'Shop renovation', 'Office renovation',
                         'Showroom fit-out', 'F&B counter and cafe fit-out', 'Salon fit-out', 'Commercial carpentry', 'Retail display shelving',
                         'Commercial electrical works', 'Commercial tiling and flooring', 'Audio, visual and lighting (AVL) for shops'],
@@ -683,6 +685,7 @@ def build_home():
     facts = [('What we do', 'Carpentry, renovation, electrical, flooring, painting and AVL'),
              ('Specialists in', 'Singapore retail outlets &amp; commercial spaces'),
              ('Workshop', 'Our own carpentry workshop'),
+             ('Google reviews', '&#9733;&#9733;&#9733;&#9733;&#9733; 5-star rating on Google. <a href="%s" rel="noopener" target="_blank">Read our Google reviews</a>' % GOOGLE_REVIEWS),
              ('Enquiries', 'WhatsApp <a href="%s" rel="noopener">%s</a>' % (E(wa_link('my space', path)), PHONE_DISPLAY))]
     body = HOME_TPL.format(
         cta=cta(path, 'my space', 'WhatsApp Us'), services=rel(path, '/services/'), dailyp=dp, galp=rel(path, '/design-concepts/'), ddate=d['date'],
@@ -819,8 +822,8 @@ def build_static():
 <h2>Our work and our photos</h2>
 <p>See <a href="/projects/">our projects and workshop</a>. Photos marked "Real project" show our own carpentry; decor items in them were added with AI styling. Photos marked "AI design concept" are ideas to discuss, not completed work. We do not publish reviews, client names or figures we cannot back up.</p>
 <h2>Contact</h2>
-<p>Address: %s. WhatsApp <a href="%s" rel="noopener">%s</a>. We serve businesses in Singapore.</p>
-%s''' % (about_ws(), ADDR_TEXT, E(wa_link('my space', '/about/')), PHONE_DISPLAY, pending_box([('Operating company', 'registered name and UEN to be confirmed')]))
+<p>Address: %s. WhatsApp <a href="%s" rel="noopener">%s</a>. We serve businesses in Singapore. Customers rate us 5 stars on Google: <a href="%s" rel="noopener" target="_blank">read our Google reviews and find us on Google Maps</a>.</p>
+%s''' % (about_ws(), ADDR_TEXT, E(wa_link('my space', '/about/')), PHONE_DISPLAY, GOOGLE_REVIEWS, pending_box([('Operating company', 'registered name and UEN to be confirmed')]))
     simple('/about/', 'About SG Commercial Fitout | Design & Build Singapore', 'About SG Commercial Fitout: Singapore design and build for shops, offices, F&B outlets and salons, with our own carpentry workshop.',
            'About SG Commercial Fitout', 'About', 'SG Commercial Fitout is a Singapore design and build company for shops, offices, showrooms, F&B outlets and salons. It has its own carpentry workshop and covers carpentry, renovation, electrical, flooring, painting and AVL.',
            about, [('/about/', 'About')], None, '',
