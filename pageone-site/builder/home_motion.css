@@ -51,3 +51,8 @@
 .hero-lean .hero-check{margin-top:26px}
 .hero-paths{margin:18px 0 0;color:#aab6cc;font-size:.95rem}
 .hero-paths a{color:#fff;font-weight:700;text-decoration:underline;text-underline-offset:3px}
+.hero-tagline{font-family:inherit;font-weight:800;font-size:clamp(1.25rem,2.6vw,1.6rem);line-height:1.25;margin:14px 0 0;display:inline-block}
+.benefit-strip{list-style:none;padding:0;margin:20px 0 0;display:flex;flex-wrap:wrap;gap:8px}
+.benefit-strip li{font-size:.85rem;font-weight:700;color:#fff;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.18);border-radius:999px;padding:6px 12px}
+.benefit-strip li:first-child{background:rgba(255,61,87,.22);border-color:rgba(255,61,87,.5)}
+.hero-ctas{margin-top:24px}

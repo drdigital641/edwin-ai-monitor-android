@@ -6,6 +6,12 @@ SITE = "https://pageonesingapore.com"
 WA = "6597856612"
 WA_DISPLAY = "+65 9785 6612"
 WA_LINK = f"https://wa.me/{WA}?text=Hi%20Page%20One%20Singapore%2C%20I%27d%20like%20to%20know%20more."
+
+
+def wa_src(text, source):
+    """Pre-filled WhatsApp link that names where the tap came from (lead-generation CTAs, 28 Oct 2026)."""
+    from urllib.parse import quote
+    return f"https://wa.me/{WA}?text=" + quote(f"{text}\n\n(From pageonesingapore.com, {source})")
 UPDATED = "2026-10-19"
 BIZ_ID = SITE + "/#business"
 GBP = "https://maps.google.com/?cid=8757289318297107567"
@@ -13,9 +19,9 @@ API = "https://base44.app/api/apps/6ac7f2548a9c3877449e2772/functions"
 PROMO = '<div class="promo-bar"><div class="wrap"><b>Our price:</b> S$50/month for anyone who registers by 31 Dec 2026. From 2027 the price may rise, depending on demand, and we\'ll tell you before it changes. <a href="/signup/">Sign up &rarr;</a></div></div>'
 
 NAV = [
+    ("/how-it-works/", "How it works"),
     ("/website/", "Website"),
     ("/get-found/", "Get Found"),
-    ("/seo-boost/", "SEO Boost"),
     ("/pricing/", "Pricing"),
     ("/results/", "Results"),
     ("/clients/", "Clients"),
@@ -184,6 +190,8 @@ def page(path, title, desc, schemas, body, crumb=None, robots="index, follow, ma
         <a href="/seo-services-singapore/">SEO services compared</a>
         <a href="/get-found/">Get Found</a>
         <a href="/seo-boost/">SEO Boost</a>
+        <a href="/how-it-works/">How it works</a>
+        <a href="/lead-generation-singapore/">Lead generation</a>
         <a href="/pricing/">Pricing</a>
         <a href="/signup/">Sign up</a>
         <a href="/free-website-check/">Free website check</a>
@@ -218,7 +226,7 @@ def page(path, title, desc, schemas, body, crumb=None, robots="index, follow, ma
     {WA_ICON}
   </a>
 
-  <script src="/main.js?v=16" defer></script>{foot_extra}
+  <script src="/main.js?v=17" defer></script>{foot_extra}
 </body>
 </html>
 """
@@ -1496,7 +1504,7 @@ page("seo-explained/index.html",
 
 # ---------- Home ----------
 HOME_QA = [
-    ('What is Page One Singapore?', 'A done-for-you website and SEO service for Singapore small businesses: built to help you get found on Google, Google Maps and AI search like ChatGPT, for S$50 a month. Edwin (NUS Computer Science) designed a set of AI tools to optimise its SEO daily, and proved them first on his own car workshop.'),
+    ('What is Page One Singapore?', 'An affordable, done-for-you way for Singapore small businesses to get found and get enquiries: a website (included), SEO for Google Search and Maps, AEO and GEO for AI search like ChatGPT, and WhatsApp enquiry buttons on every page, for S$50 a month. Edwin (NUS Computer Science) designed a set of AI tools to optimise its SEO daily, and proved them first on his own car workshop.'),
     ('How much does it cost?', 'S$50 a month, for anyone who registers by 31 Dec 2026. From 2027 the price may rise, depending on demand, and we\'ll tell you before it changes. No setup fee, no contract. Optional SEO Boosts are S$10 per run. Your domain, usually S$15 to S$30 a year, is in your name.'),
     ('What do I get for S$50?', 'Your website (built free, or your current one fixed), hosting, Google Maps, Google and Bing setup, a new article every 2 days, a technical audit every day with problems fixed, and small changes over WhatsApp.'),
     ('Does it actually work?', f"Edwin Garage got {EG['clicks']} Google clicks in the 28 days to {THROUGH}, according to Google Search Console. Results vary, so we don't guarantee rankings."),
@@ -1523,10 +1531,12 @@ exec(open(os.path.join(HERE, "seo_aeo_geo.py"), encoding="utf-8").read())
 exec(open(os.path.join(HERE, "ai_seo.py"), encoding="utf-8").read())
 # Google Ads vs SEO vs AI blog tools (/google-ads-vs-seo-vs-ai-blog-tools/), linked from /seo-explained/.
 exec(open(os.path.join(HERE, "ads_compare.py"), encoding="utf-8").read())
+# Lead generation repositioning (28 Oct 2026): /how-it-works/ and /lead-generation-singapore/.
+exec(open(os.path.join(HERE, "lead_gen.py"), encoding="utf-8").read())
 
 page("index.html",
-     "Affordable SEO Singapore: SEO, AEO &amp; GEO from S$50/month",
-     "SEO, AEO and GEO for Singapore small businesses: found on Google, in Google's answers and in ChatGPT, from S$50/month. Proven on real businesses. No contract.",
+     "Get Found, Get Enquiries: Affordable SEO Singapore from S$50",
+     "Help customers find your business on Google and AI search like ChatGPT, then turn visitors into enquiries. Website included, S$50/month, no contract.",
      [HOME_FAQ_LD, {"@context": "https://schema.org", "@graph": [
          dict(ORG_CORE,
               founder=FOUNDER,
@@ -1537,7 +1547,9 @@ page("index.html",
                            "priceSpecification": {"@type": "UnitPriceSpecification", "price": "50", "priceCurrency": "SGD", "unitCode": "MON"}},
                           {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "SEO Boost", "url": SITE + "/seo-boost/"}, "price": "10", "priceCurrency": "SGD"}]),
          WEBSITE_NODE]}],
-     fill_home(open(os.path.join(HERE, "home_body.html"), encoding="utf-8").read().rstrip("\n").replace("{{GLANCE_ANSWER}}", GLANCE_ANSWER).replace("{{HOME_FAQ}}", HOME_FAQ_HTML)),
+     fill_home(open(os.path.join(HERE, "home_body.html"), encoding="utf-8").read().rstrip("\n").replace("{{GLANCE_ANSWER}}", GLANCE_ANSWER).replace("{{HOME_FAQ}}", HOME_FAQ_HTML)
+              .replace("{{WA_HERO}}", wa_src("Hi Edwin, I'd like more customer enquiries for my business.", "homepage, top"))
+              .replace("{{WA_FINAL}}", wa_src("Hi Edwin, I'd like more customer enquiries for my business.", "homepage, bottom"))),
      updated=max(SC_UPDATED, AIV_UPDATED, "2026-10-17"),
      head_extra="\n  <style>" + " ".join(open(os.path.join(HERE, "home_motion.css"), encoding="utf-8").read().split("\n")[1:]).strip() + GROW_CSS + "</style>",
      foot_extra='\n  <script src="/motion.js?v=4" defer></script>')
