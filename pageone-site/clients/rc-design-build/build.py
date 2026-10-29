@@ -36,7 +36,7 @@ ADDR_TEXT = '113 Eunos Ave 3, #04-02, Gordon Ind Building, Singapore 409838'  # 
 ADDR_HTML = '113 Eunos Ave 3, #04-02<br>Gordon Ind Building<br>Singapore 409838'
 PREVIEW = 'https://pageonesingapore.com/preview/%s/' % SLUG
 BASE = ('https://%s/' % DOMAIN) if DOMAIN else PREVIEW
-ASSET_SHA = 'c4353b1'
+ASSET_SHA = '8743123'
 IMG = os.environ.get('RC_IMG') or ('https://cdn.jsdelivr.net/gh/drdigital641/edwin-ai-monitor-android@%s/site-assets/%s/' % (ASSET_SHA, SLUG))
 TODAY = '2026-10-24'
 LASTMOD_OVERRIDE = {'/guides/': '2026-10-28'}  # pages whose content changed after TODAY (night article run)
@@ -55,13 +55,17 @@ PENDING = [
 # Real work supplied by Edwin 24 Oct 2026 ("real projects" by the company). Each upload carried the caption
 # "AI styling concept - proposed additions": the carpentry is real, decor items were added with AI styling.
 REAL = [
+    ('real-kitchen-cabinets', 'Kitchen cabinets', 'Full-height tall unit, wood-grain base cabinets and drawers, with white top-hung cabinets above the hood. Photo taken before final cleaning.'),
+    ('real-bathroom', 'Bathroom renovation', 'Grey floor and wall tiles, frameless glass shower screen, mirror cabinet and a vanity with a vessel basin.'),
+    ('real-under-sink-cabinet', 'Under-sink cabinet', 'Sink cabinet with a white interior and base, built around the plumbing under a double-bowl sink.'),
+    ('real-floor-tiling', 'Floor re-tiling in progress', 'Our tiler laying and levelling new floor tiles along a corridor.'),
     ('real-shelving', 'Built-in shelving bay', 'Full-height open shelving with adjustable shelves and a low storage counter beside it.'),
     ('real-pantry-counter', 'Pantry counter and cabinets', 'Handle-less drawers and doors under a stone-look top, with a floating shelf above.'),
     ('real-sink-counter', 'Sink counter with drawers', 'Undermount sink run with cabinets, drawers and a floating shelf with under-shelf lighting.'),
     ('real-wall-cabinet', 'Wall cabinet with adjustable shelves', 'Top-hung cabinets above the hood, fitted with concealed hinges and adjustable shelves.'),
     ('real-pantry-drawers', 'Drawer stack detail', 'Three-drawer stack and double-door cabinet with recessed finger pulls.'),
 ]
-REAL_NOTE = 'Real SG Commercial Fitout carpentry. Decor items in these photos were added with AI styling.'
+REAL_NOTE = 'Real SG Commercial Fitout work. In the five built-in carpentry photos (shelving, pantry, sink counter, wall cabinet, drawers), decor items were added with AI styling; the other photos are only cropped and colour-corrected.'
 # Real workshop photos from Edwin (26 Oct 2026), cropped and colour-graded only (no AI changes). First 3 show on the homepage.
 # Google Business Profile (Edwin 29 Oct 2026: 5-star Google rating). Link only; no rating schema.
 GOOGLE_REVIEWS = 'https://maps.google.com/?cid=6901313874821012508'
@@ -720,8 +724,8 @@ def build_projects():
     crumbs = [(path, 'Projects & workshop')]
     schema = [org_schema(), crumbs_schema(crumbs), {'@type': 'CollectionPage', 'name': 'SG Commercial Fitout projects and workshop', 'url': abs_url(path)}]
     body = ('%s<section class="phead"><div class="wrap"><div><span class="eyebrow">Projects &amp; workshop</span>'
-            '<h1>Our projects and carpentry workshop</h1><p class="answer">Built-in shelving, pantry counters, drawer units and wall cabinets made by '
-            'SG Commercial Fitout in its own carpentry workshop, then installed on site.</p><div class="btns">%s</div></div>'
+            '<h1>Our projects and carpentry workshop</h1><p class="answer">Real work by SG Commercial Fitout: kitchen cabinets, built-in shelving, pantry counters, a bathroom renovation and floor tiling. '
+            'Carpentry is made in our own workshop, then installed on site.</p><div class="btns">%s</div></div>'
             '<div class="pic">%s</div></div></section><section class="band sand"><div class="wrap">%s</div></section>%s') % (
         crumbs_html(path, crumbs), cta(path, 'a carpentry project', 'WhatsApp Us'),
         real_pic('real-sink-counter', 'Sink counter with drawers by SG Commercial Fitout', eager=True), inner, cta_band(path, 'a carpentry project'))
