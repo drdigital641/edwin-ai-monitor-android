@@ -81,7 +81,7 @@
   bub.addEventListener('click', function (e) { if (e.target.closest('.x2')) { e.stopPropagation(); bub.classList.remove('on'); SS.set('mp_bub', 1); return; } open(); });
   $('.c-hd button', chat).addEventListener('click', close);
   document.addEventListener('keydown', function (e) { if (e.key === 'Escape' && !chat.hidden) close(); });
-  if (!SS.get('mp_bub', 0)) setTimeout(function () { if (chat.hidden) bub.classList.add('on'); }, 2500);
+  if (!SS.get('mp_bub', 0)) setTimeout(function () { if (chat.hidden) { bub.classList.add('on'); setTimeout(function () { bub.classList.remove('on'); SS.set('mp_bub', 1); }, 7000); } }, 2500);
   chips.addEventListener('click', function (e) { var b = e.target.closest('button'); if (b) ask(b.textContent); });
   form.addEventListener('submit', function (e) { e.preventDefault(); var v = inp.value.trim(); if (!v) return; inp.value = ''; ask(v); });
   body.addEventListener('click', function (e) {

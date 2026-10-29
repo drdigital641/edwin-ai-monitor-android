@@ -449,3 +449,31 @@ textarea.in{min-height:96px;resize:vertical}
 @keyframes tp{50%{transform:translateY(-4px);opacity:.5}}
 .c-note{font-size:.7rem;color:var(--muted);text-align:center;padding:0 12px 8px;background:#fff}
 .c-form{display:grid;gap:6px;margin-top:8px}.c-form .in{min-height:40px;padding:8px 10px;font-size:.9rem}
+
+/* v3 phone polish */
+.pv-s{display:none}
+@media (max-width:700px){
+  .pv{font-size:.78rem;padding:6px 12px}
+  .pv-l{display:none}.pv-s{display:inline}
+  .hd-act .rfqb{display:none}
+  .catb span{display:inline!important}
+  .catb{padding:0 14px!important;height:42px}
+  .burger{width:42px;height:42px}
+  .logo .wm{font-size:.95rem}
+  .logo small,.logo .sub{font-size:.68rem}
+  .mascot{right:10px;bottom:80px;flex-direction:column;align-items:flex-end;gap:6px}
+  .m-bub{max-width:190px;font-size:.82rem;padding:8px 11px;border-radius:14px 14px 4px 14px}
+  .m-btn{width:64px;height:64px}
+  .logo img{max-width:140px;height:32px;object-fit:contain;object-position:left center}
+  .card .im{aspect-ratio:16/10}
+  .pd-img{aspect-ratio:4/3;max-height:300px}
+}
+@media (max-width:360px){.logo .sub,.logo small{display:none}}
+/* real logo is very wide: let it shrink so the header never overflows */
+.hd .wrap{min-width:0}
+.logo{min-width:0;flex:0 1 auto}
+.logo img{max-width:100%;object-fit:contain;object-position:left center}
+@media (max-width:1240px){.logo img{max-width:240px}}
+@media (max-width:700px){.logo{flex:1 1 auto}.logo img{max-width:100%;height:34px}}
+html,body{overflow-x:clip}
+.hd .catpanel .wrap{display:block;height:auto;gap:0}

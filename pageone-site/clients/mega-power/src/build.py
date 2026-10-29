@@ -181,7 +181,7 @@ def shell(path, title, desc, body, active="", crumbs=None, schema=None, js=("dat
     nav = "".join(f'<a href="{r}{u}"{" aria-current=\"page\"" if k == active else ""}{" data-catpanel aria-controls=\"catpanel\" aria-expanded=\"false\"" if k == "products" else ""}>{e(n)}{" <svg class=\"chev\" viewBox=\"0 0 12 12\" width=\"12\" height=\"12\"><path d=\"M2.5 4.5 6 8l3.5-3.5\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.8\"/></svg>" if k == "products" else ""}</a>' for u, n, k in NAV)
     cp_tiles = "".join(f'<a class="cp-t" href="{r}our-products/{c[0]}.html"><span class="ic">{I[c[3]]}</span><span><b>{e(c[1])}</b><small>{ccount(c[0]) or "to import"}{" listed" if ccount(c[0]) else ""}</small></span></a>' for c in CATS)
     catpanel = f'''<div class="catpanel" id="catpanel" hidden><div class="wrap">
-<form class="qbox" data-finder="main" action="{r}our-products.html" role="search"><label class="f" for="q-cp">Search the catalogue</label><div class="qrow"><input class="in" id="q-cp" name="q" autocomplete="off" placeholder="Part no., car model or part, e.g. 8730R or W205 compressor" data-live><button class="btn btn-o" type="submit">{I['search']}<span class="sr">Search</span></button></div><div class="live" role="listbox"></div></form>
+<form class="qbox" data-finder="main" action="{r}our-products.html" role="search"><label class="f" for="q-cp">Search the catalogue</label><div class="qrow"><input class="in" id="q-cp" name="q" autocomplete="off" placeholder="Part no. or car, e.g. 8730R" data-live><button class="btn btn-o" type="submit">{I['search']}<span class="sr">Search</span></button></div><div class="live" role="listbox"></div></form>
 <div class="cp-grid">{cp_tiles}<a class="cp-t all" href="{r}our-products.html"><span class="ic">{I['list']}</span><span><b>All products</b><small>Search &amp; filter</small></span></a></div>
 <div class="cp-foot"><a href="{r}rfq/#vin">Don't know the part? Send a chassis number</a><a href="{r}rfq/#bulk">Have a parts list? Check it in one go</a><a href="{r}rfq/?need=">Can't find it? Request sourcing</a></div>
 </div></div>'''
@@ -215,7 +215,7 @@ def shell(path, title, desc, body, active="", crumbs=None, schema=None, js=("dat
 </head>
 <body>
 <a class="skip" href="#main">Skip to content</a>
-<div class="pv" role="note">Preview mockup for Mega Power, not the live website. Enquiries here are demo only. <a href="{r}demo-guide/">Demo tour</a> · <a href="{r}staff/">Staff dashboard</a></div>
+<div class="pv" role="note"><span class="pv-l">Preview mockup for Mega Power, not the live website. Enquiries here are demo only. </span><span class="pv-s">Preview mockup · </span><a href="{r}demo-guide/">Demo tour</a> · <a href="{r}staff/">Staff dashboard</a></div>
 <header class="hd"><div class="wrap">
 <a class="logo" href="{r}" aria-label="Mega Power home"><img src="{LOGO}" alt="Mega Power" width="160" height="38" onerror="this.parentNode.classList.add('noimg')"><span class="wm">MEGA POWER<small>Engineering &amp; Trading</small></span></a>
 <nav class="nav" id="nav" aria-label="Main">{nav}</nav>
