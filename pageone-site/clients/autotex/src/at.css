@@ -163,7 +163,7 @@ th{font-size:.76rem;text-transform:uppercase;letter-spacing:.6px;color:var(--mut
 /* footer, floating */
 .ft{background:var(--ink);color:#C9CFD8;padding:40px 0 90px;font-size:.92rem}.ft a{color:#fff}
 .ft-g{display:grid;grid-template-columns:1.4fr 1fr 1fr 1fr;gap:24px}.ft h4{color:#fff;margin:0 0 8px;font-size:.85rem;text-transform:uppercase;letter-spacing:.8px}
-.ft-brand{font:700 26px var(--font-head);letter-spacing:2px;color:#fff;margin:0 0 6px}
+.ft-brand{margin:0 0 10px}.ft-brand img{display:block;width:200px;height:auto}
 .ft-b{border-top:1px solid #2A313B;margin-top:26px;padding-top:16px;font-size:.8rem;color:#8C95A3}
 .wa-fab{position:fixed;right:16px;bottom:16px;width:56px;height:56px;border-radius:50%;background:var(--wa);color:#fff;display:grid;place-items:center;box-shadow:0 8px 24px rgba(0,0,0,.25);z-index:45;transition:transform .2s}
 .wa-fab:hover{transform:scale(1.07)}.wa-fab svg{width:30px;height:30px}

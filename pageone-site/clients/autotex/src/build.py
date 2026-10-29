@@ -167,7 +167,7 @@ MARK = ('<svg class="mark" viewBox="-16 0 224 190" aria-hidden="true" focusable=
 
 DAYS = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"]
 ORG = {"@type": ["AutoPartsStore", "LocalBusiness"], "@id": BASE + "/#store", "name": LEGAL, "alternateName": BRAND,
-       "url": BASE + "/", "logo": {"@type": "ImageObject", "url": BASE + "/logo.svg", "width": 1200, "height": 520},
+       "url": BASE + "/", "logo": {"@type": "ImageObject", "url": BASE + "/logo.png", "width": 600, "height": 243},
        "image": BASE + "/og.jpg", "telephone": "+65 " + TEL,
        "foundingDate": "1995-02-24", "identifier": {"@type": "PropertyValue", "propertyID": "UEN", "value": UEN},
        "address": {"@type": "PostalAddress", "streetAddress": ADDR1 + ", AutoBay@Kaki Bukit", "postalCode": "417883",
@@ -245,7 +245,7 @@ def shell(path, title, desc, body, active="", crumbs=None, schema=None, js=("dat
 <body>
 <a class="skip" href="#main">Skip to content</a>
 <header class="hd"><div class="wrap hd-in">
-<a class="logo" href="{r}" aria-label="Autotex home">{MARK}<span class="wm">AUTOTEX<small>Kia &amp; Hyundai parts</small></span></a>
+<a class="logo" href="{r}" aria-label="Autotex home">{MARK}<span class="wm">AUTOTEX<small>Korean car part stockist</small></span></a>
 <form class="hd-search" action="{r}search/" role="search"><label class="sr" for="hq">Search parts</label><input id="hq" name="q" type="search" placeholder="e.g. Avante brake pads" autocomplete="off">{ICON['search']}</form>
 <a class="cartb" href="{r}cart/" aria-label="Cart">{ICON['cart']}<b data-cart-count>0</b></a>
 <button class="burger" aria-label="Menu" aria-expanded="false" aria-controls="nav"><span></span><span></span><span></span></button>
@@ -254,7 +254,7 @@ def shell(path, title, desc, body, active="", crumbs=None, schema=None, js=("dat
 {body}
 </main>
 <footer class="ft"><div class="wrap ft-g">
-<div><p class="ft-brand">AUTOTEX</p><p>{e(LEGAL)} · UEN {UEN}<br>Kia and Hyundai parts stockist, stocking direct from Korea.</p></div>
+<div><p class="ft-brand"><img src="{r}logo-dark.png" alt="Autotex, Korean car part stockist" width="240" height="97" loading="lazy"></p><p>{e(LEGAL)} · UEN {UEN}<br>Kia and Hyundai parts stockist, stocking direct from Korea.</p></div>
 <div><h4>Visit</h4><p>{e(ADDR1)}<br>{e(ADDR2)}<br><a href="{GMAP}" rel="noopener">Directions</a></p></div>
 <div><h4>Opening hours</h4><p>Mon-Fri 9:30am-5:30pm<br>Sat 9:30am-3:30pm<br>Sunday closed</p></div>
 <div><h4>Talk to us</h4><p><a href="tel:{TEL_H}">Call {TEL}</a><br><a href="https://wa.me/{WA}" rel="noopener">WhatsApp {WA_SHOW}</a></p><p class="ft-links"><a href="{r}hyundai/">Hyundai parts</a> · <a href="{r}kia/">Kia parts</a> · <a href="{r}prices/">Price list</a> · <a href="{r}articles/">Guides</a> · <a href="{r}about/">About</a></p></div>
