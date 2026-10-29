@@ -8,6 +8,7 @@ Preview: pageonesingapore.com/preview/mega-power/ (hidden by the parent preview/
 Product and category URLs keep the current site's paths (/our-products/<cat>/<slug>.html) so old links keep working.
 """
 import html, json, sys, re, datetime, hashlib, shutil
+sys.path.insert(0, __import__('os').path.dirname(__import__('os').path.abspath(__file__)))
 from pathlib import Path
 
 HERE = Path(__file__).resolve().parent
@@ -271,12 +272,12 @@ def finder(r, compact=False):
 <div class="qbox"><label class="f" for="q-veh">Describe the part <i>(e.g. BMW F45 compressor)</i></label>
 <div class="qrow"><input class="in" id="q-veh" name="q" autocomplete="off" placeholder="Make, model, chassis code, part" data-live><button class="btn btn-o" type="submit">{I['search']}<span class="sr">Search</span></button></div>
 <div class="live" role="listbox"></div></div>
-<div class="grid2" style="margin-top:12px">
+{"<details class=\"moref\"><summary>Filter by make, model, year</summary>" if compact else ""}<div class="grid2" style="margin-top:12px">
 <div><label class="f" for="s-make">Make</label><select class="in" id="s-make" name="make"><option value="">Any make</option>{"".join(f'<option>{e(m)}</option>' for m in makes)}<option value="__other">Other make</option></select></div>
 <div><label class="f" for="s-model">Model</label><select class="in" id="s-model" name="model" disabled><option value="">Choose a make first</option></select></div>
 <div><label class="f" for="s-year">Model year <i>(optional)</i></label><input class="in" id="s-year" name="year" inputmode="numeric" maxlength="4" placeholder="e.g. 2015"></div>
 <div><label class="f" for="s-cat">Part type</label><select class="in" id="s-cat" name="cat"><option value="">Any part</option>{"".join(f'<option value="{c[0]}">{e(c[1])}</option>' for c in CATS)}</select></div>
-</div>
+</div>{"</details>" if compact else ""}
 <p class="ex">Try: <button type="button" data-try="BMW F45 compressor">BMW F45 compressor</button><button type="button" data-try="Mercedes W205 compressor">Mercedes W205 compressor</button><button type="button" data-try="Mercedes W210 compressor">Mercedes W210 compressor</button></p>
 </form>
 <form class="tabp" id="p-vin" role="tabpanel" aria-labelledby="t-vin" hidden data-lead="EXPORT" data-sub="VIN_MATCH" novalidate>
@@ -306,54 +307,68 @@ def home():
     r = ""
     feat = [p for p in PRODUCTS if p["id"] in ("mp-0008", "mp-0004", "mp-0010", "mp-0012", "mp-0007", "mp-0013")]
     catgrid = "".join(f'<a class="cat rv" href="our-products/{s}.html"><span class="n{" z" if not ccount(s) else ""}">{ccount(s) if ccount(s) else "to import"}</span><span class="ic">{I[ic]}</span><b>{e(n)}</b><small>{e(d)}</small></a>' for s, n, d, ic in CATS)
-    body = f'''<section class="hero"><div class="wrap">
-<div><span class="eyebrow">Singapore · Since 1989</span>
-<h1>Automotive air-con &amp; cooling parts. <em>Sourced in Singapore, supplied worldwide.</em></h1>
-<p class="lead">Find the right compressor, condenser or blower motor by vehicle, chassis or OEM number. Then send one enquiry and our team confirms fitment and replies.</p>
-<div class="aud" role="list">
-<a class="audb" role="listitem" href="singapore-workshops/">{I['wrench']}<span><b>Singapore workshop</b>Find a part, call your nearest branch</span></a>
-<a class="audb" role="listitem" href="export/">{I['globe']}<span><b>Overseas buyer</b>Request an export quotation</span></a>
-<a class="audb" role="listitem" href="become-a-supplier/">{I['factory']}<span><b>Parts supplier</b>Propose your products to us</span></a>
-</div>
-<ul class="chips"><li><b>Since 1989</b> serving the trade</li><li><b>4</b> branches in Singapore</li><li>Passenger cars to trucks &amp; excavators</li></ul>
-</div>
-{finder(r)}
-</div></section>
-<section class="band"><div class="wrap"><ul>
-<li>{I['calendar']}<span><b>Since 1989</b>Automotive A/C parts for workshops</span></li>
-<li>{I['pin']}<span><b>4 Singapore branches</b>Ang Mo Kio, Toh Guan, Kaki Bukit, Soon Lee</span></li>
-<li>{I['truck']}<span><b>Cars to heavy vehicles</b>Passenger, commercial, trucks, excavators</span></li>
-<li>{I['check']}<span><b>Fitment checked by staff</b>Before any part is quoted</span></li>
-</ul></div></section>
-<section class="sec"><div class="wrap">
-<div class="sec-t rv"><span class="kick">Product range</span><h2>Browse by part type</h2><p>The same twelve categories as our current catalogue. Each opens a page you can filter by make and reference number.</p></div>
-<div class="cats">{catgrid}</div>
-</div></section>
-<section class="sec bg-w"><div class="wrap">
-<div class="sec-t rv"><span class="kick">Who we work with</span><h2>Three ways to work with Mega Power</h2></div>
-<div class="funnels">
-<div class="fn dark rv"><span class="ic">{I['globe']}</span><h3>Overseas buyers</h3><p>Distributors, workshops and parts buyers outside Singapore. Send the vehicle, chassis or OEM number with quantity and destination.</p><a class="btn btn-o" href="export/">Request an export quotation</a></div>
-<div class="fn rv"><span class="ic">{I['factory']}</span><h3>Suppliers &amp; manufacturers</h3><p>Make or distribute A/C and cooling parts? Send your range, catalogue and MOQ to our purchasing team.</p><a class="btn btn-n" href="become-a-supplier/">Propose your products</a></div>
-<div class="fn rv"><span class="ic">{I['wrench']}</span><h3>Singapore workshops</h3><p>Need a part for a job today? Search, then call your nearest branch or send the enquiry with the car details.</p><a class="btn btn-g" href="singapore-workshops/">Workshop enquiries</a></div>
+    from hero_art import world, aircon, singapore
+    BR_XY = [("Ang Mo Kio", 103.862, 1.373), ("Toh Guan", 103.745, 1.333), ("Kaki Bukit", 103.906, 1.336), ("Soon Lee", 103.703, 1.330)]
+    strip_items = "".join(f'<a class="fs-i" href="{p["url"]}"><span class="fs-im">{img_tag(p, w=240, h=180)}</span><span class="fs-t"><small>{e(CAT[p["cat"]][1])}</small><b>{e(p["name"])}</b><span class="mono">{e(p["refs"][0]["n"]) if p["refs"] else ""}</span></span></a>' for p in PRODUCTS)
+    cat_t = "".join(f'<a class="ct rv" href="our-products/{s_}.html"><span class="ic">{I[ic]}</span><b>{e(n)}</b><small>{(str(ccount(s_)) + " listed") if ccount(s_) else "Ask us"}</small></a>' for s_, n, d, ic in CATS)
+    slides = [
+        ("Singapore · Since 1989", '<h1 class="hx-h">Automotive air-con parts, <em>supplied from Singapore to the world.</em></h1>',
+         "Compressors, condensers, blower motors and cooling parts for workshops and buyers in Singapore and overseas.",
+         f'<a class="btn btn-o" href="our-products.html">{I["grid"]} Browse the catalogue</a><a class="btn btn-ghost" href="export/">Export enquiry</a>', world()),
+        ("Find the right part", '<p class="hx-h">Search by car, chassis or <em>OEM number.</em></p>',
+         "Every result says whether the reference is an exact match or needs checking. Our team confirms fitment before quoting.",
+         f'<a class="btn btn-o" href="#finder">{I["search"]} Search parts</a><a class="btn btn-ghost" href="rfq/#vin">Send a chassis number</a>', aircon()),
+        ("4 branches in Singapore", '<p class="hx-h">Need it for a job today? <em>Call your nearest branch.</em></p>',
+         "Ang Mo Kio, Toh Guan, Kaki Bukit and Soon Lee, serving workshops and garages across the island.",
+         f'<a class="btn btn-o" href="#" data-branches>{I["phone"]} Call a branch</a><a class="btn btn-ghost" href="singapore-workshops/">Workshop enquiry</a>', singapore(BR_XY)),
+    ]
+    sl = ""
+    for i, (k, h, t, c, art) in enumerate(slides):
+        on = " is-on" if i == 0 else ""
+        hid = "" if i == 0 else ' aria-hidden="true"'
+        sl += f'<div class="hx-s{on}" role="group" aria-roledescription="slide" aria-label="{i+1} of {len(slides)}"{hid}><div class="hx-art">{art}</div><div class="wrap hx-c"><span class="eyebrow">{k}</span>{h}<p class="hx-p">{t}</p><div class="hx-cta">{c}</div></div></div>'
+    dots = "".join('<button type="button" aria-label="Show slide %d"%s></button>' % (i + 1, ' aria-current="true"' if i == 0 else "") for i in range(len(slides)))
+    body = f'''<section class="hx" aria-roledescription="carousel" aria-label="Mega Power at a glance"><div class="hx-track">{sl}</div>
+<div class="wrap hx-nav"><div class="hx-dots">{dots}</div><button type="button" class="hx-pp" aria-label="Pause slides"><span></span></button></div><div class="hx-bar"><i></i></div></section>
+<section class="hx-find"><div class="wrap">{finder(r, compact=True)}</div></section>
+<section class="sec-c"><div class="wrap">
+<div class="who">
+<a class="wh rv" href="singapore-workshops/"><span class="ic">{I['wrench']}</span><span><b>Singapore workshop</b><small>Check a part, call your branch</small></span><i>&rarr;</i></a>
+<a class="wh dark rv" href="export/"><span class="ic">{I['globe']}</span><span><b>Overseas buyer</b><small>Request an export quotation</small></span><i>&rarr;</i></a>
+<a class="wh rv" href="become-a-supplier/"><span class="ic">{I['factory']}</span><span><b>Parts supplier</b><small>Propose your range to us</small></span><i>&rarr;</i></a>
 </div></div></section>
-<section class="sec"><div class="wrap">
-<div class="sec-t rv" style="display:flex;justify-content:space-between;align-items:flex-end;gap:16px;max-width:none;flex-wrap:wrap"><div><span class="kick">From the catalogue</span><h2>Featured parts</h2></div><a class="btn btn-g" href="our-products.html">See all products</a></div>
-<div class="pgrid f3">{"".join(card(p, r) for p in feat)}</div>
+<section class="sec-c"><div class="wrap">
+<div class="hd2 rv"><div><span class="kick">Product range</span><h2>Shop by part type</h2></div><a class="lk" href="our-products.html">All products &rarr;</a></div>
+<div class="cts">{cat_t}</div>
 </div></section>
-<section class="sec bg-w"><div class="wrap">
-<div class="sec-t rv"><span class="kick">How it works</span><h2>From search to quotation</h2></div>
-<ol class="steps"><li class="rv"><b>Search</b><span>By vehicle, chassis or OEM number.</span></li><li class="rv"><b>Check fitment</b><span>Each result says if it is an exact reference match or needs checking.</span></li><li class="rv"><b>Send an RFQ</b><span>Add parts to your enquiry list with quantities.</span></li><li class="rv"><b>We reply</b><span>Our team confirms the part and sends a quotation.</span></li></ol>
+<section class="sec-c bg-n"><div class="wrap">
+<div class="hd2 rv"><div><span class="kick">From the catalogue</span><h2>Parts on the shelf</h2></div><a class="lk" href="our-products.html">See all &rarr;</a></div></div>
+<div class="fs" aria-label="Featured parts"><div class="fs-tr">{strip_items}<span class="fs-dup" aria-hidden="true">{strip_items}</span></div></div>
+</section>
+<section class="sec-c"><div class="wrap">
+<ul class="stats">
+<li class="rv"><b data-cu="1989" data-from="1960">1989</b><span>Serving the trade since</span></li>
+<li class="rv"><b data-cu="4">4</b><span>Branches in Singapore</span></li>
+<li class="rv"><b data-cu="12">12</b><span>Part types in the catalogue</span></li>
+</ul>
+<ol class="stp">
+<li class="rv"><span>1</span><b>Search</b><small>Car, chassis or OEM no.</small></li>
+<li class="rv"><span>2</span><b>Check fitment</b><small>Exact or needs checking</small></li>
+<li class="rv"><span>3</span><b>Send one enquiry</b><small>Add parts and quantities</small></li>
+<li class="rv"><span>4</span><b>Get a quote</b><small>Our team confirms and replies</small></li>
+</ol>
 </div></section>
-<section class="sec"><div class="wrap two">
-<div class="rv"><span class="kick">About</span><h2>A Singapore A/C parts specialist since 1989</h2><p>{LEGAL} supplies automotive air-conditioning parts to workshops and garages, for passenger cars, commercial vehicles, trucks and excavators.</p><p>Component brands in our current listings include:</p>
-<div class="brands"><span>DENSO</span><span>SANDEN</span><span>BEHR</span><span>VALEO</span><span>OPTEON</span></div>
-<p style="margin-top:18px"><a class="btn btn-g" href="about-us/">More about us</a></p></div>
+<section class="sec-c bg-w"><div class="wrap two2">
+<div class="rv"><span class="kick">About</span><h2>A Singapore A/C parts specialist since 1989</h2><p>{LEGAL} supplies automotive air-conditioning parts to workshops and garages, for passenger cars, commercial vehicles, trucks and excavators.</p>
+<p class="bl">Component brands in our current listings: <span>DENSO</span><span>SANDEN</span><span>BEHR</span><span>VALEO</span><span>OPTEON</span></p>
+<a class="lk" href="about-us/">More about us &rarr;</a></div>
 <div class="faq rv"><h3>Common questions</h3>
 <details><summary>Do you show prices online?</summary><p>No. Prices depend on the exact part, quantity and destination, so we quote each enquiry.</p></details>
 <details><summary>I don't know the part number. Can you still help?</summary><p>Yes. Send the make, model and year, or the VIN or chassis number, and our team identifies the part.</p></details>
 <details><summary>Do you supply buyers outside Singapore?</summary><p>Send an export enquiry with the country and quantity and our team replies with what we can supply.</p></details>
 <details><summary>How do I offer my products to Mega Power?</summary><p>Use the supplier form to send your company details, range, catalogue and MOQ.</p></details>
 </div></div></section>'''
+
     faq = [("Do you show prices online?", "No. Prices depend on the exact part, quantity and destination, so we quote each enquiry."),
            ("I don't know the part number. Can you still help?", "Yes. Send the make, model and year, or the VIN or chassis number, and our team identifies the part."),
            ("Do you supply buyers outside Singapore?", "Send an export enquiry with the country and quantity and our team replies with what we can supply."),
