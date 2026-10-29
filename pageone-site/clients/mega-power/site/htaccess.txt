@@ -1,0 +1,26 @@
+# Mega Power (www.megapower.com.sg) - for go-live only. Preview is hidden by the parent preview/.htaccess header.
+RewriteEngine On
+RewriteCond %{HTTPS} off
+RewriteRule ^ https://www.megapower.com.sg%{REQUEST_URI} [L,R=301]
+RewriteCond %{HTTP_HOST} ^megapower\.com\.sg$ [NC]
+RewriteRule ^ https://www.megapower.com.sg%{REQUEST_URI} [L,R=301]
+# Old Magento paths -> new pages (product and category URLs are unchanged)
+Redirect 301 /about-who-we-are/ /about-us/
+Redirect 301 /about-quality-service/ /about-us/
+Redirect 301 /our-services/ /singapore-workshops/
+Redirect 301 /catalogsearch/advanced/ /our-products.html
+Redirect 301 /checkout/cart/ /rfq/
+Redirect 301 /wishlist/ /rfq/
+Redirect 301 /customer/account/ /rfq/
+Redirect 301 /career-opportunities/ /contact-us/
+Redirect 301 /terms-conditions /terms-conditions/
+Redirect 301 /privacy-policy /privacy-policy/
+ErrorDocument 404 /404.html
+<IfModule mod_headers.c>
+<FilesMatch "\.(html)$">
+Header set Cache-Control "max-age=3600, public"
+</FilesMatch>
+</IfModule>
+<If "%{REQUEST_URI} =~ m#^/staff/#">
+Header always set X-Robots-Tag "noindex, nofollow"
+</If>
