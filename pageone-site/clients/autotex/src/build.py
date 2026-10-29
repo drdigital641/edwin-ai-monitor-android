@@ -1,23 +1,25 @@
 #!/usr/bin/env python3
-"""Autotex Aircon Enterprise - Kia & Hyundai parts shop (Page One Singapore preview, 29 Oct 2026).
+"""Autotex Aircon Enterprise - Kia & Hyundai parts shop, live on https://autotexautoparts.com.sg.
 
-Run:  python3 build.py OUT_DIR        (default ../site)
+Run:  python3 build.py OUT_DIR        (default ../site)      then upload OUT_DIR
+Catalogue = database (Base44 app 6ae3683191b1a44205dbf5ec, entities AtCar / AtProduct / AtPhoto), exported as raw API
+arrays into src/db/cars.json, src/db/products.json and (optional) src/db/photos.json. See README.md.
+catalog.py only defines BRANDS, CATS and PARTS (the part types Autotex supplies). No sample data, no sample prices.
 Facts: ACRA (UEN 52353300D, registered 24 Feb 1995, retail of motor vehicle parts), Google Business Profile
 (1 Kaki Bukit Ave 6 #01-42 AutoBay@Kaki Bukit S417883, 6747 9618, 5.0 from 4 reviews), Edwin (29 Oct 2026:
 Kia and Hyundai stockist, stock direct from Korea, sells to Singapore drivers at distribution price,
-WhatsApp +65 9731 9547). autotex.net is NOT theirs (an Indian textile company) - never link it.
-Catalogue: catalog.py (+ optional catalogue.json = staff changes exported from /staff/). Prices are SAMPLES
-until confirmed; with LIVE = True, sample prices are hidden from schema and shown as "Ask for price".
-Preview: pageonesingapore.com/preview/autotex/ (hidden by the parent preview/.htaccess header; no noindex in pages).
+WhatsApp +65 9731 9547, hours Mon-Fri 9:30am-5:30pm, Sat 9:30am-3:30pm, Sunday closed).
+autotex.net is NOT theirs (an Indian textile company) - never link it.
 """
-import html, json, sys, datetime, hashlib, shutil
+import html, json, sys, datetime, hashlib, shutil, re
 from pathlib import Path
-from catalog import BRANDS, MODELS, CATS, PARTS, fits, sample_price
+from urllib.parse import quote
+from catalog import BRANDS, CATS, PARTS, fits
 
 HERE = Path(__file__).resolve().parent
 OUT = Path(sys.argv[1] if len(sys.argv) > 1 else HERE.parent / "site")
-LIVE = False  # True at go-live: sample prices are not published
-BASE = "https://pageonesingapore.com/preview/autotex"  # TODO go-live: Autotex's own domain (autotex.net is not theirs)
+LIVE = True
+BASE = "https://autotexautoparts.com.sg"
 TODAY = datetime.date.today().isoformat()
 BRAND = "Autotex"
 LEGAL = "Autotex Aircon Enterprise"
@@ -27,60 +29,95 @@ ADDR1 = "1 Kaki Bukit Avenue 6, #01-42"
 ADDR2 = "AutoBay@Kaki Bukit, Singapore 417883"
 TEL = "6747 9618"; TEL_H = "+6567479618"
 WA = "6597319547"; WA_SHOW = "+65 9731 9547"
+HOURS = [("Monday to Friday", "9:30am to 5:30pm"), ("Saturday", "9:30am to 3:30pm"), ("Sunday", "closed")]
+HOURS_LINE = "Mon-Fri 9:30am-5:30pm, Sat 9:30am-3:30pm, Sunday closed"
 GMAP = "https://www.google.com/maps/search/?api=1&query=Autotex+Aircon+Enterprise+1+Kaki+Bukit+Ave+6+%2301-42+Singapore+417883"
 INDEXNOW = "7d3e9a51c4b84f2e9a0c6b1d58e2f437"
+DB_URL = "https://autotex-catalogue-05dbf5ec.base44.app/"
 e = lambda s: html.escape(str(s), quote=True)
 
-# ---------------- catalogue ----------------
-BR = {b: n for b, n in BRANDS}
-M = {m[0]: dict(id=m[0], b=m[1], name=m[2], code=m[3], years=m[4], alias=m[5], fuel=m[6]) for m in MODELS}
-C = {c[0]: dict(id=c[0], name=c[1], line=c[2], icon=c[3]) for c in CATS}
-P = {p[0]: dict(id=p[0], cat=p[1], name=p[2], alias=p[3], side=p[4], unit=p[5]) for p in PARTS}
+# ---------------- catalogue (database exports + catalog.py definitions) ----------------
+def dbfile(name, default):
+    f = HERE / "db" / name
+    return json.loads(f.read_text()) if f.exists() else default
 
-def mlabel(m): return f"{BR[m['b']]} {m['name']} ({m['code']})"
-def mlabel_y(m): return f"{mlabel(m)} {m['years'].replace('-now', ' onwards').replace('-', '-')}"
+def is_pub(row):
+    return (row.get("status") or "published") == "published"
+
+BR = {b: n for b, n in BRANDS}
+CARS = [c for c in dbfile("cars.json", []) if is_pub(c) and c.get("b") in BR and c.get("key")]
+M = {c["key"]: dict(id=c["key"], b=c["b"], name=c["name"], code=c.get("code") or "", years=c.get("years") or "",
+                    alias=list(c.get("alias") or []), fuel=c.get("fuel") or "petrol") for c in CARS}
+C = {c[0]: dict(id=c[0], name=c[1], line=c[2], icon=c[3]) for c in CATS}
+P = {p[0]: dict(id=p[0], cat=p[1], name=p[2], alias=p[3], side=p[4], unit=p[5], need=p[6]) for p in PARTS}
+PT = {p[0]: p for p in PARTS}
+
+def mlabel(m): return f"{BR[m['b']]} {m['name']} ({m['code']})" if m["code"] else f"{BR[m['b']]} {m['name']}"
+def myears(m): return m["years"].replace("-now", " onwards")
+def car_parts(m): return [P[p[0]] for p in PARTS if fits(m["fuel"], p)]
+
+# photos: AtPhoto rows exported to db/photos.json are written to assets/p/<id>.jpg by pull_photos.py
+PHOTO_IDS = {r["id"] for r in dbfile("photos.json", []) if r.get("id") and r.get("data")}
+SEEN_URLS = set()
+
+def photo_src(entry):
+    """Return (path-or-url used in <img>, absolute url) for a photo entry, or None if it cannot be shown statically."""
+    if not isinstance(entry, str): return None
+    if re.match(r"https?://", entry): return entry, entry
+    if entry.startswith("b44photo:") and entry[9:] in PHOTO_IDS:
+        p = f"assets/p/{entry[9:]}.jpg"
+        return p, f"{BASE}/{p}"
+    return None
 
 PRODUCTS = []
-for mt in MODELS:
-    m = M[mt[0]]
-    for pt in PARTS:
-        if not fits(mt, pt):
-            continue
-        p = P[pt[0]]
-        note = ""
-        if pt[7] != "any" and ("electric" in m["fuel"] and m["fuel"] != "electric"):
-            note = "For the petrol and hybrid versions (not the electric version)."
-        if pt[7] == "ice" and m["fuel"] == "hybrid / electric":
-            note = "For the hybrid version (not the electric version)."
-        PRODUCTS.append(dict(id=f"{m['b']}-{m['id']}-{p['id']}", m=m["id"], p=p["id"],
-                             url=f"{m['b']}/{m['id']}/{p['id']}/", price=sample_price(mt, pt), sample=1,
-                             oem="", stock="", status="published", note=note))
-
-# staff changes exported from the dashboard (Import/Export > JSON) are applied here at build time
-cj = HERE / "catalogue.json"
-if cj.exists():
-    ch = json.loads(cj.read_text())
-    by = {x["id"]: x for x in PRODUCTS}
-    for pid, d in (ch.get("products") or {}).items():
-        if pid in by: by[pid].update({k: v for k, v in d.items() if k in ("price", "sample", "oem", "stock", "status", "note")})
-PRODUCTS = [x for x in PRODUCTS if x["status"] == "published"]
+_rows = [x for x in dbfile("products.json", []) if is_pub(x) and x.get("key") and x.get("m") in M]
+_rows.sort(key=lambda x: str(x.get("created_date") or ""))
+_first = {}
+for row in _rows:
+    m = M[row["m"]]
+    pid = row.get("p") or "other"
+    if pid in P:
+        part = P[pid]
+    else:
+        pid = "other"
+        part = dict(id="other", cat=row.get("pc") if row.get("pc") in C else "", name=(row.get("pn") or "Part").strip() or "Part",
+                    alias=[], side=False, unit="piece", need="any")
+    price = row.get("price")
+    try: price = float(price) if price not in (None, "") else None
+    except (TypeError, ValueError): price = None
+    if price is not None and price <= 0: price = None
+    if price is not None and price.is_integer(): price = int(price)
+    key = str(row["key"])
+    if pid != "other" and (m["id"], pid) not in _first:
+        _first[(m["id"], pid)] = key; url = f"{m['b']}/{m['id']}/{pid}/"
+    else:
+        url = f"{m['b']}/{m['id']}/{key}/"
+    if url in SEEN_URLS: continue
+    SEEN_URLS.add(url)
+    photos = [x for x in (row.get("photos") or []) if isinstance(x, str)]
+    PRODUCTS.append(dict(id=key, m=m["id"], p=pid, pn=part["name"], pc=part["cat"], url=url, price=price, oem=(row.get("oem") or "").strip(),
+                         stock=row.get("stock") if row.get("stock") in ("in", "order", "out") else "", side=row.get("side") if row.get("side") in ("L", "R", "pair") else "",
+                         note=(row.get("note") or "").strip(), raw_photos=photos, updated=str(row.get("updated_date") or ""),
+                         model=m, part=part, cat=C.get(part["cat"], dict(id="", name="Other parts", line="", icon="engine"))))
+SIDE_L = {"L": "Left", "R": "Right", "pair": "Pair (left and right)"}
 for x in PRODUCTS:
-    x["model"] = M[x["m"]]; x["part"] = P[x["p"]]; x["cat"] = C[x["part"]["cat"]]
-    x["title"] = f"{x['part']['name']} for {mlabel(x['model'])}"
+    x["title"] = f"{x['part']['name']}{' (' + SIDE_L[x['side']].split(' (')[0] + ')' if x['side'] else ''} for {mlabel(x['model'])}"
+    x["photos"] = [s for s in (photo_src(p) for p in x["raw_photos"]) if s]
+    x["ph_entries"] = x["raw_photos"]
 
 def show_price(x):
-    return x["price"] is not None and not (LIVE and x["sample"])
+    return x["price"] is not None
 
 def money(v):
     return f"S${v:,.0f}" if float(v).is_integer() else f"S${v:,.2f}"
 
 def price_html(x, big=False):
     if not show_price(x):
-        return f'<span class="price ask" data-price="{x["id"]}">Ask for price</span>'
-    b = '<span class="badge sample" title="Demo price for the preview, not Autotex\'s real price">Sample price</span>' if x["sample"] else ""
-    return f'<span class="price{" big" if big else ""}" data-price="{x["id"]}">{money(x["price"])}</span>{b}'
+        return f'<span class="price ask{" big" if big else ""}" data-price="{e(x["id"])}">Ask for price</span>'
+    return f'<span class="price{" big" if big else ""}" data-price="{e(x["id"])}">{money(x["price"])}</span>'
 
 STOCK = {"in": ("In stock", "ok"), "order": ("Order from Korea", "warn"), "out": ("Out of stock", "out")}
+AVAIL = {"in": "https://schema.org/InStock", "order": "https://schema.org/BackOrder", "out": "https://schema.org/OutOfStock"}
 
 # ---------------- icons ----------------
 SV = lambda body, vb="0 0 48 48": f'<svg viewBox="{vb}" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">{body}</svg>'
@@ -105,24 +142,45 @@ ICON = {
 WA_SVG = '<svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2Zm0 18.2a8.2 8.2 0 0 1-4.2-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2Zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8s-.4-.1-.6.1-.7.8-.8 1-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.3-.4.2-.4.7-1.3a.4.4 0 0 0 0-.4l-.8-1.8c-.2-.5-.4-.4-.6-.4h-.5a1 1 0 0 0-.7.3 3 3 0 0 0-.9 2.2 5.2 5.2 0 0 0 1.1 2.7 11.8 11.8 0 0 0 4.5 4c1.7.7 2.3.8 3.2.6a2.7 2.7 0 0 0 1.8-1.2 2.2 2.2 0 0 0 .1-1.3c0-.1-.2-.2-.4-.3Z"/></svg>'
 
 def wa_link(text):
-    from urllib.parse import quote
     return f"https://wa.me/{WA}?text={quote(text)}"
 
-def part_art(x, cls="art"):
+def ask_link(m, part=None):
+    if part: return wa_link(f"Hi Autotex, how much is the {part['name']} for my {mlabel(m)} {m['years']}? Stock and price please. My car plate / chassis number is: ")
+    return wa_link(f"Hi Autotex, I need a part for my {mlabel(m)} {m['years']}. My car plate / chassis number is: ")
+
+def img_tag(src, r, alt, big=False, w=800, h=600):
+    s = src if src.startswith("http") else r + src
+    return f'<img src="{e(s)}" alt="{e(alt)}" width="{w}" height="{h}"{" fetchpriority=\"high\"" if big else " loading=\"lazy\""} decoding="async">'
+
+def part_art(x, r, cls="art"):
+    ph = x["photos"]
+    if ph:
+        return (f'<div class="{cls} has-ph" data-cat="{x["cat"]["id"]}" data-ph="{e(x["ph_entries"][0])}">{img_tag(ph[0][0], r, x["title"], big=cls.endswith("big"))}</div>')
     return f'<div class="{cls}" data-cat="{x["cat"]["id"]}">{ICON[x["cat"]["icon"]]}<span>Photo coming</span></div>'
 
 # ---------------- page shell ----------------
 NAV = [("hyundai/", "Hyundai", "hyundai"), ("kia/", "Kia", "kia"), ("parts/", "Parts", "parts"),
        ("prices/", "Price list", "prices"), ("how-to-order/", "How to order", "order"), ("contact/", "Contact", "contact")]
 
+MARK = ('<svg class="mark" viewBox="-16 0 224 190" aria-hidden="true" focusable="false"><g transform="skewX(-10)"><rect x="18" width="190" height="190" rx="38" fill="#D42A1E"/>'
+        '<path fill="#fff" fill-rule="evenodd" d="M113 34 178 158H146L133 131H93L80 158H48ZM101 107H125L113 80Z"/></g></svg>')
+
+DAYS = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"]
 ORG = {"@type": ["AutoPartsStore", "LocalBusiness"], "@id": BASE + "/#store", "name": LEGAL, "alternateName": BRAND,
-       "url": BASE + "/", "logo": BASE + "/icon-512.png", "image": BASE + "/og.jpg", "telephone": "+65 " + TEL,
+       "url": BASE + "/", "logo": {"@type": "ImageObject", "url": BASE + "/logo.svg", "width": 1200, "height": 520},
+       "image": BASE + "/og.jpg", "telephone": "+65 " + TEL,
        "foundingDate": "1995-02-24", "identifier": {"@type": "PropertyValue", "propertyID": "UEN", "value": UEN},
        "address": {"@type": "PostalAddress", "streetAddress": ADDR1 + ", AutoBay@Kaki Bukit", "postalCode": "417883",
                    "addressLocality": "Singapore", "addressCountry": "SG"},
+       "openingHoursSpecification": [
+           {"@type": "OpeningHoursSpecification", "dayOfWeek": DAYS, "opens": "09:30", "closes": "17:30"},
+           {"@type": "OpeningHoursSpecification", "dayOfWeek": "Saturday", "opens": "09:30", "closes": "15:30"}],
        "contactPoint": [{"@type": "ContactPoint", "telephone": "+65 9731 9547", "contactType": "sales",
                          "contactOption": "WhatsApp", "areaServed": "SG", "availableLanguage": ["English"]}],
        "areaServed": "SG", "hasMap": GMAP}
+
+def hours_html(cls="hours"):
+    return f'<dl class="{cls}">' + "".join(f"<div><dt>{d}</dt><dd>{t}</dd></div>" for d, t in HOURS) + "</dl>"
 
 VER = {}
 def asset(name):
@@ -137,9 +195,11 @@ def write(path, text):
     f.write_text(text)
 
 def shell(path, title, desc, body, active="", crumbs=None, schema=None, js=("data.js", "at.js", "wa.js"),
-          css=("at.css",), index=True, prio="0.6", og_type="website"):
-    depth = path.count("/")
-    r = "../" * depth
+          css=("at.css",), index=True, prio="0.6", og_type="website", og_image=None, og_alt=None, noindex=False):
+    if path == "404.html":
+        r = "/"   # served for any missing URL: root-absolute links
+    else:
+        r = "../" * path.count("/")
     url = BASE + "/" + path.replace("index.html", "")
     ld = [dict(ORG)]
     if crumbs:
@@ -157,6 +217,11 @@ def shell(path, title, desc, body, active="", crumbs=None, schema=None, js=("dat
     body = body.replace("{{CRUMBS}}", cr).replace("{{R}}", r)
     scripts = "".join(f'<script src="{r}{asset(j)}" defer></script>' for j in js)
     styles = "".join(f'<link rel="stylesheet" href="{r}{asset(c)}">' for c in css)
+    robots = "noindex,follow" if noindex else "index,follow,max-image-preview:large"
+    if og_image:
+        ogi = f'<meta property="og:image" content="{e(og_image)}"><meta property="og:image:alt" content="{e(og_alt or title)}">'
+    else:
+        ogi = f'<meta property="og:image" content="{BASE}/og.jpg"><meta property="og:image:width" content="1200"><meta property="og:image:height" content="630"><meta property="og:image:alt" content="Autotex, Kia and Hyundai parts in Singapore">'
     doc = f"""<!doctype html>
 <html lang="en-SG" class="no-js">
 <head>
@@ -165,9 +230,9 @@ def shell(path, title, desc, body, active="", crumbs=None, schema=None, js=("dat
 <title>{e(title)}</title>
 <meta name="description" content="{e(desc)}">
 <link rel="canonical" href="{url}">
-<meta name="robots" content="index,follow,max-image-preview:large">
+<meta name="robots" content="{robots}">
 <meta property="og:type" content="{og_type}"><meta property="og:site_name" content="{BRAND}"><meta property="og:title" content="{e(title)}"><meta property="og:description" content="{e(desc)}"><meta property="og:url" content="{url}">
-<meta property="og:image" content="{BASE}/og.jpg"><meta property="og:image:width" content="1200"><meta property="og:image:height" content="630"><meta property="og:image:alt" content="Autotex, Kia and Hyundai parts in Singapore">
+{ogi}
 <meta name="twitter:card" content="summary_large_image">
 <link rel="icon" href="{r}favicon.ico" sizes="48x48"><link rel="icon" type="image/png" sizes="192x192" href="{r}icon-192.png"><link rel="apple-touch-icon" href="{r}apple-touch-icon.png"><link rel="manifest" href="{r}site.webmanifest">
 <meta name="theme-color" content="#12161C">
@@ -179,9 +244,8 @@ def shell(path, title, desc, body, active="", crumbs=None, schema=None, js=("dat
 </head>
 <body>
 <a class="skip" href="#main">Skip to content</a>
-<div class="pv" role="note">Preview for Autotex, not live yet. <b>Prices shown are samples.</b> <a href="{r}staff/">Staff dashboard</a></div>
 <header class="hd"><div class="wrap hd-in">
-<a class="logo" href="{r}" aria-label="Autotex home"><span class="mark">A</span><span class="wm">AUTOTEX<small>Kia &amp; Hyundai parts</small></span></a>
+<a class="logo" href="{r}" aria-label="Autotex home">{MARK}<span class="wm">AUTOTEX<small>Kia &amp; Hyundai parts</small></span></a>
 <form class="hd-search" action="{r}search/" role="search"><label class="sr" for="hq">Search parts</label><input id="hq" name="q" type="search" placeholder="e.g. Avante brake pads" autocomplete="off">{ICON['search']}</form>
 <a class="cartb" href="{r}cart/" aria-label="Cart">{ICON['cart']}<b data-cart-count>0</b></a>
 <button class="burger" aria-label="Menu" aria-expanded="false" aria-controls="nav"><span></span><span></span><span></span></button>
@@ -192,10 +256,10 @@ def shell(path, title, desc, body, active="", crumbs=None, schema=None, js=("dat
 <footer class="ft"><div class="wrap ft-g">
 <div><p class="ft-brand">AUTOTEX</p><p>{e(LEGAL)} · UEN {UEN}<br>Kia and Hyundai parts stockist, stocking direct from Korea.</p></div>
 <div><h4>Visit</h4><p>{e(ADDR1)}<br>{e(ADDR2)}<br><a href="{GMAP}" rel="noopener">Directions</a></p></div>
-<div><h4>Talk to us</h4><p><a href="tel:{TEL_H}">Call {TEL}</a><br><a href="https://wa.me/{WA}" rel="noopener">WhatsApp {WA_SHOW}</a></p></div>
-<div><h4>Shop</h4><p><a href="{r}hyundai/">Hyundai parts</a><br><a href="{r}kia/">Kia parts</a><br><a href="{r}prices/">Price list</a><br><a href="{r}articles/">Guides</a><br><a href="{r}about/">About</a></p></div>
+<div><h4>Opening hours</h4><p>Mon-Fri 9:30am-5:30pm<br>Sat 9:30am-3:30pm<br>Sunday closed</p></div>
+<div><h4>Talk to us</h4><p><a href="tel:{TEL_H}">Call {TEL}</a><br><a href="https://wa.me/{WA}" rel="noopener">WhatsApp {WA_SHOW}</a></p><p class="ft-links"><a href="{r}hyundai/">Hyundai parts</a> · <a href="{r}kia/">Kia parts</a> · <a href="{r}prices/">Price list</a> · <a href="{r}articles/">Guides</a> · <a href="{r}about/">About</a></p></div>
 </div><div class="wrap ft-b">© {datetime.date.today().year} {e(LEGAL)}. Hyundai and Kia are trademarks of their owners; Autotex is an independent parts stockist.</div></footer>
-<a class="wa-fab" href="https://wa.me/{WA}?text={e('Hi Autotex, I need a part for my car.')}" aria-label="WhatsApp Autotex" rel="noopener">{WA_SVG}</a>
+<a class="wa-fab" href="https://wa.me/{WA}?text={e(quote('Hi Autotex, I need a part for my car.'))}" aria-label="WhatsApp Autotex" rel="noopener">{WA_SVG}</a>
 {scripts}
 </body>
 </html>
@@ -205,17 +269,24 @@ def shell(path, title, desc, body, active="", crumbs=None, schema=None, js=("dat
         SITEMAP.append((url, prio))
 
 def card(x, r, show_model=True, show_part=True):
-    t = x["title"] if (show_model and show_part) else (x["part"]["name"] if not show_model else mlabel(x["model"]))
-    sub = x["model"]["years"].replace("-now", " onwards") if show_model else x["part"]["unit"]
-    return (f'<article class="pc" data-pid="{x["id"]}"><a class="pc-a" href="{r}{x["url"]}">{part_art(x)}'
+    t = x["title"] if (show_model and show_part) else (x["part"]["name"] + (f" ({SIDE_L[x['side']].split(' (')[0]})" if x["side"] else "") if not show_model else mlabel(x["model"]))
+    sub = myears(x["model"]) if show_model else x["part"]["unit"]
+    need_side = x["part"]["side"] and not x["side"]
+    return (f'<article class="pc" data-pid="{e(x["id"])}"><a class="pc-a" href="{r}{x["url"]}">{part_art(x, r)}'
             f'<h3>{e(t)}</h3><p class="pc-sub">{e(sub)}</p></a>'
             f'<div class="pc-f"><div class="pc-p">{price_html(x)}</div>'
-            f'<button class="btn add sm" type="button" data-add="{x["id"]}"{" data-side=\"1\"" if x["part"]["side"] else ""}>Add</button></div></article>')
+            f'<button class="btn add sm" type="button" data-add="{e(x["id"])}"{" data-side=\"1\"" if need_side else ""}>Add</button></div></article>')
+
+def ask_card(m, part, r):
+    return (f'<article class="pc ask" id="p-{part["id"]}" data-ask="{m["id"]}|{part["id"]}"><div class="pc-a"><div class="art" data-cat="{part["cat"]}">{ICON[C[part["cat"]]["icon"]]}</div>'
+            f'<h3>{e(part["name"])}</h3><p class="pc-sub">{e(part["unit"])}</p></div>'
+            f'<div class="pc-f"><div class="pc-p"><span class="price ask">Ask for price</span></div>'
+            f'<a class="btn wa sm" href="{ask_link(m, part)}" rel="noopener">{WA_SVG}Ask on WhatsApp</a></div></article>')
 
 def faq_block(qs):
     h = "".join(f'<details class="faq"><summary>{e(q)}</summary><p>{a}</p></details>' for q, a in qs)
     sch = {"@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": q,
-           "acceptedAnswer": {"@type": "Answer", "text": html.unescape(__import__("re").sub("<[^>]+>", "", a))}} for q, a in qs]}
+           "acceptedAnswer": {"@type": "Answer", "text": html.unescape(re.sub("<[^>]+>", "", a))}} for q, a in qs]}
     return h, sch
 
 def finder(r, b=None, m=None):
@@ -230,42 +301,46 @@ def finder(r, b=None, m=None):
 </form>'''
 
 def model_tile(m, r):
-    n = sum(1 for x in PRODUCTS if x["m"] == m["id"])
     return (f'<a class="mt" href="{r}{m["b"]}/{m["id"]}/"><span class="mt-b">{e(BR[m["b"]])}</span>'
-            f'<b>{e(m["name"])} <i>{e(m["code"])}</i></b><span>{e(m["years"].replace("-now", " onwards"))} · {n} parts</span></a>')
+            f'<b>{e(m["name"])} <i>{e(m["code"])}</i></b><span>{e(myears(m))}</span></a>')
 
 def cat_tile(c, r):
-    n = sum(1 for x in PRODUCTS if x["cat"]["id"] == c["id"])
-    return f'<a class="ct" href="{r}parts/{c["id"]}/">{ICON[c["icon"]]}<b>{e(c["name"])}</b><span>{e(c["line"])} · {n}</span></a>'
+    return f'<a class="ct" href="{r}parts/{c["id"]}/">{ICON[c["icon"]]}<b>{e(c["name"])}</b><span>{e(c["line"])}</span></a>'
 
 # ---------------- home ----------------
 def build_home():
     r = ""
     faqs = [
         ("Do I need the part number to order?", "No. Pick your car model and the part, or send us your car plate or chassis number on WhatsApp. We check the exact part for your car before you pay."),
-        ("Are the prices on this site the final price?", "The price shown is the price for the part listed. We confirm stock and the exact fit for your car on WhatsApp before you pay."),
-        ("Where do I collect my parts?", f"At our shop at {ADDR1}, {ADDR2}. Please WhatsApp us first so we can check stock and get your parts ready."),
+        ("Are the prices on this site the final price?", "Where a part has a price on this site, it is the price for the part listed. For every other part, tap Ask for price and we reply on WhatsApp with the price and stock. Either way we confirm stock and the exact fit for your car before you pay."),
+        ("Where do I collect my parts?", f"At our shop at {ADDR1}, {ADDR2}. We are open {HOURS_LINE}. Please WhatsApp us first so we can check stock and get your parts ready."),
         ("Which cars do you have parts for?", "Hyundai and Kia only, for models sold in Singapore such as the Avante, Tucson, Kona, Ioniq, Cerato, Sportage, Sorento, Niro and Picanto. Ask us if your model is not listed."),
     ]
     fh, fs = faq_block(faqs)
-    hy = "".join(model_tile(M[m[0]], r) for m in MODELS if m[1] == "hyundai")
-    ki = "".join(model_tile(M[m[0]], r) for m in MODELS if m[1] == "kia")
-    cats = "".join(cat_tile(C[c[0]], r) for c in CATS)
-    pop_ids = ["hyundai-avante-ad-front-brake-pads", "kia-cerato-bd-front-brake-discs", "hyundai-kona-os-spark-plugs",
-               "kia-sportage-ql-engine-mount", "hyundai-tucson-tl-headlamp", "kia-picanto-ja-ignition-coil",
-               "hyundai-ioniq-5-front-bumper", "kia-niro-de-front-shock-absorber"]
-    pop = "".join(card(x, r) for x in PRODUCTS if x["id"] in pop_ids)
+    hy = "".join(model_tile(m, r) for m in M.values() if m["b"] == "hyundai")
+    ki = "".join(model_tile(m, r) for m in M.values() if m["b"] == "kia")
+    cats = "".join(cat_tile(c, r) for c in C.values())
+    latest = sorted(PRODUCTS, key=lambda x: x["updated"], reverse=True)[:8]
+    if latest:
+        pop = (f'<section class="sec"><div class="wrap"><div class="sec-h"><h2>Latest parts</h2><p>Parts with a listed price. For anything else, <a href="prices/">ask us for the price</a>. <a href="prices/">See the price list</a>.</p></div>'
+               f'<div class="pgrid" data-latest>{"".join(card(x, r) for x in latest)}</div></div></section>')
+    else:
+        pop = (f'<section class="sec"><div class="wrap two"><div><h2>Prices on request</h2>'
+               f'<p>We quote every part for your exact car, so you get the right part at the right price. Pick your model, tap the part you need, and ask for the price on WhatsApp. We reply with the price and whether it is in stock.</p>'
+               f'<p><a class="btn primary" href="prices/">How prices work</a></p></div>'
+               f'<div class="proof"><p><b>Fastest way</b></p><p>Send your car plate or chassis number and the part you need.</p>'
+               f'<p><a class="btn wa" href="{wa_link("Hi Autotex, I need a part. My car plate / chassis number is: ")}" rel="noopener">{WA_SVG}WhatsApp {WA_SHOW}</a></p></div></div></section>')
     body = f'''
 <section class="hero"><div class="wrap hero-in">
 <div class="hero-t reveal"><p class="eyebrow">Kaki Bukit · Registered {REG[-4:]}</p>
 <h1>Kia and Hyundai parts, <em>direct from Korea</em></h1>
-<p class="lead">Autotex is a Kia and Hyundai parts stockist in Singapore. Pick your car, pick the part, see the price, and send your order to us on WhatsApp. No part number needed.</p>
+<p class="lead">Autotex is a Kia and Hyundai parts stockist in Singapore. Pick your car and the part, then see the price or ask us on WhatsApp. No part number needed.</p>
 <ul class="ticks"><li>{ICON['check']}Body, lamps, brakes, suspension, mounting, ignition</li><li>{ICON['check']}Sold direct to Singapore drivers</li><li>{ICON['check']}We check the fit for your car before you pay</li></ul></div>
 <div class="hero-f reveal">{finder(r)}</div>
 </div></section>
 
 <section class="sec"><div class="wrap">
-<div class="sec-h"><h2>Shop by car</h2><p>Choose your model. Every part for it is on one page.</p></div>
+<div class="sec-h"><h2>Shop by car</h2><p>Choose your model. Every part type we supply for it is on one page.</p></div>
 <div class="tabs" role="tablist"><button role="tab" aria-selected="true" data-tab="hy">Hyundai</button><button role="tab" aria-selected="false" data-tab="ki">Kia</button></div>
 <div class="mgrid" data-pane="hy">{hy}</div><div class="mgrid" data-pane="ki" hidden>{ki}</div>
 <noscript><style>[data-pane]{{display:grid!important}}</style></noscript>
@@ -276,17 +351,14 @@ def build_home():
 <div class="cgrid">{cats}</div>
 </div></section>
 
-<section class="sec"><div class="wrap">
-<div class="sec-h"><h2>Popular parts</h2><p>What Singapore drivers ask for most often. <a href="prices/">See the full price list</a>.</p></div>
-<div class="pgrid">{pop}</div>
-</div></section>
+{pop}
 
 <section class="sec dark"><div class="wrap">
 <div class="sec-h"><h2>How ordering works</h2></div>
 <ol class="steps">
 <li class="reveal"><b>1</b><h3>Find your part</h3><p>Choose your brand, model and part, or just type it, like “Tucson tail lamp”.</p></li>
-<li class="reveal"><b>2</b><h3>Add to cart</h3><p>See the price, pick left or right where needed, and add everything you need.</p></li>
-<li class="reveal"><b>3</b><h3>Send on WhatsApp</h3><p>Your order goes to our WhatsApp. We confirm stock, fit and collection with you.</p></li>
+<li class="reveal"><b>2</b><h3>Get the price</h3><p>See the price where it is listed, or tap Ask for price. Pick left or right where needed.</p></li>
+<li class="reveal"><b>3</b><h3>Send on WhatsApp</h3><p>Your order or question goes to our WhatsApp. We confirm stock, fit and collection with you.</p></li>
 </ol>
 <p class="center"><a class="btn primary" href="how-to-order/">How to order</a></p>
 </div></section>
@@ -296,7 +368,8 @@ def build_home():
 <p>Autotex stocks Kia and Hyundai parts brought in direct from Korea and sells them direct to Singapore drivers at distribution price. Our range covers body parts, lamps, engine parts, suspension, engine mounting, brake pads, brake discs, spark plugs and ignition coils.</p>
 <p>{e(LEGAL)} has been registered in Singapore since {REG} (UEN {UEN}). <a href="about/">About us</a></p></div>
 <div class="proof reveal"><p class="stars" aria-label="Rated 5.0 out of 5 on Google">★★★★★</p><p><b>5.0 on Google</b> from 4 reviews</p><p><a href="{GMAP}" rel="noopener">See us on Google Maps</a></p>
-<p class="addr">{ICON['pin']}<span>{e(ADDR1)}<br>{e(ADDR2)}</span></p></div>
+<p class="addr">{ICON['pin']}<span>{e(ADDR1)}<br>{e(ADDR2)}</span></p>
+<p class="small muted">Open {HOURS_LINE}.</p></div>
 </div></section>
 
 <section class="sec alt"><div class="wrap narrow">
@@ -305,7 +378,7 @@ def build_home():
 <section class="cta"><div class="wrap"><h2>Not sure which part you need?</h2><p>Send us your car plate or chassis number and what is wrong. We will tell you the part and the price.</p>
 <a class="btn wa" href="{wa_link("Hi Autotex, I need a part. My car plate / chassis number is: ")}" rel="noopener">{WA_SVG}WhatsApp {WA_SHOW}</a></div></section>
 '''
-    shell("index.html", "Kia & Hyundai Parts Singapore | Autotex", "Kia and Hyundai parts stockist in Kaki Bukit. Search by car model and part, see the price, and order on WhatsApp. Stock direct from Korea.",
+    shell("index.html", "Kia & Hyundai Parts Singapore | Autotex", "Kia and Hyundai parts stockist in Kaki Bukit. Choose your car and part, see the price or ask on WhatsApp. Stock direct from Korea.",
           body, active="", schema=[fs, {"@type": "WebSite", "@id": BASE + "/#web", "url": BASE + "/", "name": "Autotex",
           "potentialAction": {"@type": "SearchAction", "target": BASE + "/search/?q={q}", "query-input": "required name=q"}}], prio="1.0")
 
@@ -313,49 +386,62 @@ def build_home():
 def build_brands():
     for bid, bn in BRANDS:
         path = f"{bid}/index.html"; r = "../"
-        ms = [M[m[0]] for m in MODELS if m[1] == bid]
+        ms = [m for m in M.values() if m["b"] == bid]
         tiles = "".join(model_tile(m, r) for m in ms)
-        catlinks = "".join(f'<a class="chip" href="{r}parts/{c[0]}/#{bid}">{e(bn)} {e(c[1].lower() if c[0] != "brake-discs" else "brake discs")}</a>' for c in CATS)
-        n = sum(1 for x in PRODUCTS if x["model"]["b"] == bid)
+        catlinks = "".join(f'<a class="chip" href="{r}parts/{c["id"]}/#{bid}">{e(bn)} {e(c["name"].lower() if c["id"] != "brake-discs" else "brake discs")}</a>' for c in C.values())
+        names = ", ".join(dict.fromkeys(m["name"] for m in ms))[:90]
         body = f'''<section class="ph"><div class="wrap">{{{{CRUMBS}}}}
 <h1>{e(bn)} parts in Singapore</h1>
-<p class="lead">{n} {e(bn)} parts across {len(ms)} models, from bumpers and headlamps to brake pads, engine mounting and ignition coils. Choose your model to see every part for it, with prices.</p>
+<p class="lead">{e(bn)} parts for {len(ms)} models, from bumpers and headlamps to brake pads, engine mounting and ignition coils. Choose your model to see every part type we supply for it, then see the price or ask us on WhatsApp.</p>
 <div class="hero-f slim">{finder(r, b=bid)}</div></div></section>
 <section class="sec"><div class="wrap"><h2>{e(bn)} models</h2><div class="mgrid">{tiles}</div></div></section>
 <section class="sec alt"><div class="wrap"><h2>{e(bn)} parts by type</h2><div class="chips">{catlinks}</div>
 <p class="small">Your model is not here? <a href="{wa_link(f"Hi Autotex, do you have parts for my {bn}? Model and year: ")}" rel="noopener">Ask us on WhatsApp</a>.</p></div></section>'''
-        shell(path, f"{bn} Parts Singapore: Prices by Model | Autotex", f"{bn} spare parts in Singapore for {', '.join(sorted({m['name'] for m in ms}))[:90]}. See prices and order on WhatsApp.",
+        shell(path, f"{bn} Parts Singapore: Order by Model | Autotex", f"{bn} spare parts in Singapore for {names}. See the price or ask on WhatsApp.",
               body, active=bid, crumbs=[(f"{bn} parts", f"{bid}/")], prio="0.9")
 
 # ---------------- model pages ----------------
 def build_models():
-    for mt in MODELS:
-        m = M[mt[0]]; bn = BR[m["b"]]
+    for m in M.values():
+        bn = BR[m["b"]]
         path = f"{m['b']}/{m['id']}/index.html"; r = "../../"
         items = [x for x in PRODUCTS if x["m"] == m["id"]]
         secs, jump = [], []
-        for c in CATS:
-            xs = [x for x in items if x["cat"]["id"] == c[0]]
-            if not xs: continue
-            jump.append(f'<a class="chip" href="#{c[0]}">{e(c[1])}</a>')
-            secs.append(f'<section class="msec" id="{c[0]}"><h2>{ICON[c[3]]}{e(c[1])}</h2><div class="pgrid">{"".join(card(x, r, show_model=False) for x in xs)}</div>'
-                        f'<p class="small"><a href="{r}parts/{c[0]}/">{e(c[1])} for other Hyundai and Kia models</a></p></section>')
-        sibs = "".join(model_tile(M[o[0]], r) for o in MODELS if o[1] == m["b"] and o[0] != m["id"] and o[2].split()[0] == m["name"].split()[0])
-        others = "".join(f'<a class="chip" href="{r}{o[1]}/{o[0]}/">{e(o[2])} {e(o[3])}</a>' for o in MODELS if o[1] == m["b"] and o[0] != m["id"])
-        alias = f" Also called the {', '.join(a.title() for a in m['alias'][:2] if a.split()[0] != m['name'].lower().split()[0])}." if any(a.split()[0] != m['name'].lower().split()[0] for a in m['alias'][:2]) else ""
+        fit = car_parts(m)
+        for c in C.values():
+            cards = []
+            for pt in [p for p in fit if p["cat"] == c["id"]]:
+                xs = [x for x in items if x["p"] == pt["id"]]
+                cards.extend(card(x, r, show_model=False) for x in xs) if xs else cards.append(ask_card(m, pt, r))
+            cards.extend(card(x, r, show_model=False) for x in items if x["p"] == "other" and x["cat"]["id"] == c["id"])
+            if not cards: continue
+            jump.append(f'<a class="chip" href="#{c["id"]}">{e(c["name"])}</a>')
+            secs.append(f'<section class="msec" id="{c["id"]}"><h2>{ICON[c["icon"]]}{e(c["name"])}</h2><div class="pgrid">{"".join(cards)}</div>'
+                        f'<p class="small"><a href="{r}parts/{c["id"]}/">{e(c["name"])} for other Hyundai and Kia models</a></p></section>')
+        misc = [x for x in items if x["p"] == "other" and not x["cat"]["id"]]
+        if misc:
+            jump.append('<a class="chip" href="#more">More parts</a>')
+            secs.append(f'<section class="msec" id="more"><h2>More parts</h2><div class="pgrid">{"".join(card(x, r, show_model=False) for x in misc)}</div></section>')
+        first = m["name"].split()[0]
+        sibs = "".join(model_tile(o, r) for o in M.values() if o["b"] == m["b"] and o["id"] != m["id"] and o["name"].split()[0] == first)
+        others = "".join(f'<a class="chip" href="{r}{o["b"]}/{o["id"]}/">{e(o["name"])} {e(o["code"])}</a>' for o in M.values() if o["b"] == m["b"] and o["id"] != m["id"])
+        al = [a for a in m["alias"][:2] if a.split()[0] != m["name"].lower().split()[0]]
+        alias = f" Also called the {', '.join(a.title() for a in al)}." if al else ""
         ev = " As an electric car it has no engine parts, so this page lists body, lamp, brake and suspension parts." if m["fuel"] == "electric" else ""
         body = f'''<section class="ph"><div class="wrap">{{{{CRUMBS}}}}
-<h1>{e(bn)} {e(m["name"])} ({e(m["code"])}) parts</h1>
-<p class="lead">Parts for the {e(bn)} {e(m["name"])}, {e(m["code"])} generation, {e(m["years"].replace("-now", " onwards"))} ({e(m["fuel"])}).{e(alias)}{ev} Prices are per part; add what you need and send the order on WhatsApp.</p>
+<h1>{e(bn)} {e(m["name"])}{f' ({e(m["code"])})' if m["code"] else ""} parts</h1>
+<p class="lead">Parts for the {e(bn)} {e(m["name"])}, {e(m["code"])} generation, {e(myears(m))} ({e(m["fuel"])}).{e(alias)}{ev} Where a price is listed you can add the part to your cart. For the others, tap Ask on WhatsApp and we reply with the price and stock.</p>
 <p class="fitnote">{ICON['check']}<span>Not sure if your car is the {e(m["code"])}? Send us your car plate or chassis number and we will check before you pay.</span></p>
 <div class="chips jump">{"".join(jump)}</div></div></section>
 <div class="wrap msecs">{"".join(secs)}</div>
-{f'<section class="sec alt"><div class="wrap"><h2>Other {e(m["name"].split()[0])} generations</h2><div class="mgrid">{sibs}</div></div></section>' if sibs else ""}
+{f'<section class="sec alt"><div class="wrap"><h2>Other {e(first)} generations</h2><div class="mgrid">{sibs}</div></div></section>' if sibs else ""}
 <section class="sec"><div class="wrap"><h2>Other {e(bn)} models</h2><div class="chips">{others}</div></div></section>'''
-        sch = {"@type": "ItemList", "name": f"{bn} {m['name']} ({m['code']}) parts", "numberOfItems": len(items),
-               "itemListElement": [{"@type": "ListItem", "position": i + 1, "url": BASE + "/" + x["url"], "name": x["title"]} for i, x in enumerate(items)]}
-        shell(path, f"{bn} {m['name']} {m['code']} Parts Singapore | Autotex"[:70], f"{bn} {m['name']} ({m['code']}, {m['years'].replace('-now', '+')}) parts in Singapore: bumpers, lamps, brake pads, discs, suspension and more, with prices. Order on WhatsApp.",
-              body, active=m["b"], crumbs=[(f"{bn} parts", f"{m['b']}/"), (f"{m['name']} ({m['code']})", f"{m['b']}/{m['id']}/")], schema=[sch], prio="0.8")
+        sch = []
+        if items:
+            sch.append({"@type": "ItemList", "name": f"{bn} {m['name']} ({m['code']}) parts", "numberOfItems": len(items),
+                        "itemListElement": [{"@type": "ListItem", "position": i + 1, "url": BASE + "/" + x["url"], "name": x["title"]} for i, x in enumerate(items)]})
+        shell(path, f"{bn} {m['name']} {m['code']} Parts Singapore | Autotex"[:70], f"{bn} {m['name']} ({m['code']}, {m['years'].replace('-now', '+')}) parts in Singapore: bumpers, lamps, brake pads, discs, suspension and more. See the price or ask on WhatsApp.",
+              body, active=m["b"], crumbs=[(f"{bn} parts", f"{m['b']}/"), (f"{m['name']} ({m['code']})", f"{m['b']}/{m['id']}/")], schema=sch, prio="0.8")
 
 # ---------------- product pages ----------------
 def build_products():
@@ -366,110 +452,144 @@ def build_products():
         same_cat = [y for y in same_car if y["cat"]["id"] == c["id"]]
         rest = [y for y in same_car if y["cat"]["id"] != c["id"]]
         related = (same_cat + rest)[:8]
-        other_models = [y for y in PRODUCTS if y["p"] == p["id"] and y["m"] != m["id"]]
+        other_models = [y for y in PRODUCTS if p["id"] != "other" and y["p"] == p["id"] and y["m"] != m["id"]]
         om = "".join(f'<a class="chip" href="{r}{y["url"]}">{e(BR[y["model"]["b"]])} {e(y["model"]["name"])} {e(y["model"]["code"])}</a>' for y in other_models)
         stock = STOCK.get(x["stock"])
-        stock_h = f'<span class="stock {stock[1]}">{stock[0]}</span>' if stock else '<span class="stock">Stock checked on WhatsApp</span>'
+        stock_h = f'<span class="stock {stock[1]}" data-stock="{e(x["id"])}">{stock[0]}</span>' if stock else f'<span class="stock" data-stock="{e(x["id"])}">Stock checked on WhatsApp</span>'
         oem = f'<div><dt>Part number</dt><dd class="mono">{e(x["oem"])}</dd></div>' if x["oem"] else '<div><dt>Part number</dt><dd>We match it to your car plate or chassis number</dd></div>'
-        side = ('<fieldset class="side"><legend>Side</legend><label><input type="radio" name="side" value="Left" required> Left (passenger)</label>'
-                '<label><input type="radio" name="side" value="Right"> Right (driver)</label></fieldset>') if p["side"] else ""
+        if x["side"]:
+            side = f'<p class="sidefix"><b>Side:</b> {e(SIDE_L[x["side"]])}</p>'
+        elif p["side"]:
+            side = ('<fieldset class="side"><legend>Side</legend><label><input type="radio" name="side" value="Left" required> Left (passenger)</label>'
+                    '<label><input type="radio" name="side" value="Right"> Right (driver)</label></fieldset>')
+        else:
+            side = ""
         msg = f"Hi Autotex, I'm asking about: {x['title']} {m['years']}. My car plate / chassis number is: "
         note = f'<p class="note">{e(x["note"])}</p>' if x["note"] else ""
-        sample_note = '<p class="small muted">Preview: this is a sample price for the demo. Autotex will put in the real price.</p>' if x["sample"] and show_price(x) else ""
-        desc_t = f"{p['name']} for the {bn} {m['name']} ({m['code']}, {m['years'].replace('-now', ' onwards')})"
+        desc_t = f"{p['name']} for the {bn} {m['name']} ({m['code']}, {myears(m)})"
+        ph = x["photos"]
+        thumbs = ""
+        if len(ph) > 1:
+            thumbs = "".join(f'<button type="button" data-full="{e(s if s.startswith("http") else r + s)}" aria-label="Photo {i + 1}"><img src="{e(s if s.startswith("http") else r + s)}" alt="" width="64" height="64" loading="lazy"></button>' for i, (s, _) in enumerate(ph))
+        askbtn = (f'<a class="btn wa{"" if not show_price(x) else " ghost"}" href="{wa_link(msg)}" rel="noopener">{WA_SVG}{"Ask about this part" if show_price(x) else "Ask for price on WhatsApp"}</a>')
+        c_link = f'<a href="{r}parts/{c["id"]}/">{e(c["name"])}</a> · ' if c["id"] else ""
+        rel_h = (f'<section class="sec"><div class="wrap"><h2>More parts for your {e(m["name"])} {e(m["code"])}</h2><div class="pgrid">{"".join(card(y, r, show_model=False) for y in related)}</div>'
+                 f'<p><a class="btn ghost" href="{r}{m["b"]}/{m["id"]}/">All {e(bn)} {e(m["name"])} {e(m["code"])} parts</a></p></div></section>') if related else \
+                (f'<section class="sec"><div class="wrap"><p><a class="btn ghost" href="{r}{m["b"]}/{m["id"]}/">All parts for the {e(bn)} {e(m["name"])} {e(m["code"])}</a></p></div></section>')
+        om_h = (f'<section class="sec alt"><div class="wrap"><h2>{e(p["name"])} for other models</h2><div class="chips">{om}</div>'
+                + (f'<p class="small"><a href="{r}parts/{c["id"]}/">All {e(c["name"].lower())}</a></p>' if c["id"] else "") + '</div></section>') if om else ""
         body = f'''<div class="wrap">{{{{CRUMBS}}}}</div>
-<section class="prod wrap" data-product="{x["id"]}">
-<div class="prod-art">{part_art(x, "art big")}<div class="thumbs"></div></div>
+<section class="prod wrap" data-product="{e(x["id"])}">
+<div class="prod-art">{part_art(x, r, "art big")}<div class="thumbs">{thumbs}</div></div>
 <div class="prod-i">
-<p class="eyebrow"><a href="{r}parts/{c["id"]}/">{e(c["name"])}</a> · <a href="{r}{m["b"]}/{m["id"]}/">{e(bn)} {e(m["name"])} {e(m["code"])}</a></p>
-<h1>{e(p["name"])} for {e(bn)} {e(m["name"])} ({e(m["code"])})</h1>
-<p class="fits">Fits {e(bn)} {e(m["name"])} {e(m["code"])}, {e(m["years"].replace("-now", " onwards"))}</p>
+<p class="eyebrow">{c_link}<a href="{r}{m["b"]}/{m["id"]}/">{e(bn)} {e(m["name"])} {e(m["code"])}</a></p>
+<h1>{e(p["name"])}{f' ({e(SIDE_L[x["side"]].split(" (")[0])})' if x["side"] else ""} for {e(bn)} {e(m["name"])} ({e(m["code"])})</h1>
+<p class="fits">Fits {e(bn)} {e(m["name"])} {e(m["code"])}, {e(myears(m))}</p>
+<p class="gone" hidden>This part is no longer listed. <a href="{wa_link(msg)}" rel="noopener">Ask us on WhatsApp</a> if you still need it.</p>
 <div class="buy">
 <div class="buy-p">{price_html(x, big=True)}<span class="unit">per {e(p["unit"])}</span></div>
 {stock_h}
-<form class="buy-f" data-buy="{x["id"]}">{side}
-<div class="qty"><label for="q-{x["id"]}">Qty</label><button type="button" data-q="-1" aria-label="Less">−</button><input id="q-{x["id"]}" name="qty" type="number" min="1" max="20" value="1" inputmode="numeric"><button type="button" data-q="1" aria-label="More">+</button></div>
+<form class="buy-f" data-buy="{e(x["id"])}">{side}
+<div class="qty"><label for="q-{e(x["id"])}">Qty</label><button type="button" data-q="-1" aria-label="Less">−</button><input id="q-{e(x["id"])}" name="qty" type="number" min="1" max="20" value="1" inputmode="numeric"><button type="button" data-q="1" aria-label="More">+</button></div>
 <button class="btn primary big" type="submit">{ICON['cart']}Add to cart</button>
 </form>
-<a class="btn wa ghost" href="{wa_link(msg)}" rel="noopener">{WA_SVG}Ask about this part</a>
-{sample_note}
+{askbtn}
 </div>
 {note}
 <dl class="spec">
 <div><dt>Car</dt><dd>{e(bn)} {e(m["name"])}</dd></div>
-<div><dt>Generation</dt><dd>{e(m["code"])}, {e(m["years"].replace("-now", " onwards"))}</dd></div>
+<div><dt>Generation</dt><dd>{e(m["code"])}, {e(myears(m))}</dd></div>
 <div><dt>Engine type</dt><dd>{e(m["fuel"])}</dd></div>
-<div><dt>Sold as</dt><dd>{e(p["unit"])}{" (left or right)" if p["side"] else ""}</dd></div>
+<div><dt>Sold as</dt><dd>{e(p["unit"])}{" (left or right)" if p["side"] and not x["side"] else ""}</dd></div>
 {oem}
 <div><dt>Collect at</dt><dd>Kaki Bukit (AutoBay)</dd></div>
 </dl>
 <p class="fitnote">{ICON['check']}<span>We check that this part fits your exact car before you pay. Facelift and engine versions can differ, so send us your car plate or chassis number with the order.</span></p>
 </div></section>
-<section class="sec"><div class="wrap"><h2>More parts for your {e(m["name"])} {e(m["code"])}</h2><div class="pgrid">{"".join(card(y, r, show_model=False) for y in related)}</div>
-<p><a class="btn ghost" href="{r}{m["b"]}/{m["id"]}/">All {e(bn)} {e(m["name"])} {e(m["code"])} parts</a></p></div></section>
-<section class="sec alt"><div class="wrap"><h2>{e(p["name"])} for other models</h2><div class="chips">{om}</div>
-<p class="small"><a href="{r}parts/{c["id"]}/">All {e(c["name"].lower())}</a></p></div></section>'''
-        prod = {"@type": "Product", "@id": BASE + "/" + x["url"] + "#product", "name": f"{p['name']} for {bn} {m['name']} ({m['code']})",
-                "sku": x["id"], "category": c["name"], "image": BASE + "/og.jpg",
-                "description": desc_t + ". Sold by Autotex, Kia and Hyundai parts stockist in Singapore.",
+{rel_h}
+{om_h}'''
+        prod = {"@type": "Product", "@id": BASE + "/" + x["url"] + "#product", "name": f"{x['title'].split(' for ')[0]} for {bn} {m['name']} ({m['code']})",
+                "sku": x["id"], "category": c["name"], "image": [u for _, u in ph] or [BASE + "/og.jpg"],
+                "brand": {"@type": "Brand", "name": bn},
+                "description": desc_t + (f". {x['note']}" if x["note"] else "") + ". Sold by Autotex, Kia and Hyundai parts stockist in Singapore.",
                 "isRelatedTo": {"@type": "Car", "name": f"{bn} {m['name']} {m['code']}", "brand": {"@type": "Brand", "name": bn}}}
         if x["oem"]: prod["mpn"] = x["oem"]
         if show_price(x):
             off = {"@type": "Offer", "url": BASE + "/" + x["url"], "priceCurrency": "SGD", "price": f'{x["price"]:.2f}',
                    "seller": {"@id": BASE + "/#store"}, "areaServed": "SG"}
-            if stock: off["availability"] = {"in": "https://schema.org/InStock", "order": "https://schema.org/PreOrder", "out": "https://schema.org/OutOfStock"}[x["stock"]]
+            if x["stock"] in AVAIL: off["availability"] = AVAIL[x["stock"]]
             prod["offers"] = off
         tprice = f" {money(x['price'])}" if show_price(x) else ""
         title = f"{p['name']} {bn} {m['name']} {m['code']}{tprice} | Autotex"
         if len(title) > 60: title = f"{p['name']} {bn} {m['name']} {m['code']}{tprice}"
-        shell(path, title, f"{desc_t}.{(' ' + money(x['price']) + ' per ' + p['unit'] + '.') if show_price(x) else ''} Kia and Hyundai parts stockist in Kaki Bukit. Order on WhatsApp.",
+        shell(path, title, f"{desc_t}.{(' ' + money(x['price']) + ' per ' + p['unit'] + '.') if show_price(x) else ' Ask for the price on WhatsApp.'} Kia and Hyundai parts stockist in Kaki Bukit.",
               body, active=m["b"], crumbs=[(f"{bn} parts", f"{m['b']}/"), (f"{m['name']} ({m['code']})", f"{m['b']}/{m['id']}/"), (p["name"], x["url"])],
-              schema=[prod], prio="0.7", og_type="product")
+              schema=[prod], prio="0.7", og_type="product", og_image=ph[0][1] if ph else None, og_alt=x["title"])
 
 # ---------------- category pages ----------------
 def build_cats():
-    tiles = "".join(cat_tile(C[c[0]], "../") for c in CATS)
+    tiles = "".join(cat_tile(c, "../") for c in C.values())
     body = f'''<section class="ph"><div class="wrap">{{{{CRUMBS}}}}<h1>Hyundai and Kia parts by type</h1>
-<p class="lead">Choose the type of part. Each page lists it for every Hyundai and Kia model we cover, with prices.</p></div></section>
+<p class="lead">Choose the type of part. Each page lists it for every Hyundai and Kia model we cover. See the price where it is listed, or ask us on WhatsApp.</p></div></section>
 <section class="sec"><div class="wrap"><div class="cgrid">{tiles}</div></div></section>'''
     shell("parts/index.html", "Hyundai & Kia Parts by Type | Autotex", "Body parts, headlamps, tail lamps, brake pads, brake discs, suspension, engine mounting, spark plugs and ignition coils for Hyundai and Kia in Singapore.",
           body, active="parts", crumbs=[("Parts", "parts/")], prio="0.8")
-    for ct in CATS:
-        c = C[ct[0]]; r = "../../"
+    for c in C.values():
+        r = "../../"
+        pts = [p for p in P.values() if p["cat"] == c["id"]]
         xs = [x for x in PRODUCTS if x["cat"]["id"] == c["id"]]
         groups = []
         for bid, bn in BRANDS:
-            rows = "".join(f'<tr><td><a href="{r}{x["url"]}">{e(x["model"]["name"])} <i>{e(x["model"]["code"])}</i></a><small>{e(x["model"]["years"].replace("-now", " onwards"))}</small></td>'
-                           f'<td>{e(x["part"]["name"])}</td><td class="r">{price_html(x)}</td><td class="r"><button class="btn add sm" type="button" data-add="{x["id"]}"{" data-side=\"1\"" if x["part"]["side"] else ""}>Add</button></td></tr>'
-                           for x in xs if x["model"]["b"] == bid)
+            rows = []
+            for m in [m for m in M.values() if m["b"] == bid]:
+                for pt in pts:
+                    if not fits(m["fuel"], PT[pt["id"]]): continue
+                    mine = [x for x in xs if x["m"] == m["id"] and x["p"] == pt["id"]]
+                    mcell = f'<a href="{r}{bid}/{m["id"]}/#p-{pt["id"]}">{e(m["name"])} <i>{e(m["code"])}</i></a><small>{e(myears(m))}</small>'
+                    if mine:
+                        for x in mine:
+                            need_side = x["part"]["side"] and not x["side"]
+                            rows.append(f'<tr data-pid="{e(x["id"])}"><td><a href="{r}{x["url"]}">{e(m["name"])} <i>{e(m["code"])}</i></a><small>{e(myears(m))}</small></td>'
+                                        f'<td>{e(x["part"]["name"])}{f" ({SIDE_L[x["side"]].split(" (")[0]})" if x["side"] else ""}</td><td class="r">{price_html(x)}</td><td class="r"><button class="btn add sm" type="button" data-add="{e(x["id"])}"{" data-side=\"1\"" if need_side else ""}>Add</button></td></tr>')
+                    else:
+                        rows.append(f'<tr data-ask="{m["id"]}|{pt["id"]}"><td>{mcell}</td><td>{e(pt["name"])}</td><td class="r"><span class="price ask">Ask for price</span></td>'
+                                    f'<td class="r"><a class="btn wa sm" href="{ask_link(m, pt)}" rel="noopener">{WA_SVG}Ask</a></td></tr>')
             if rows:
-                groups.append(f'<h2 id="{bid}">{e(bn)} {e(c["name"].lower())}</h2><div class="tbl"><table><thead><tr><th>Model</th><th>Part</th><th class="r">Price</th><th></th></tr></thead><tbody>{rows}</tbody></table></div>')
-        others = "".join(f'<a class="chip" href="{r}parts/{o[0]}/">{e(o[1])}</a>' for o in CATS if o[0] != c["id"])
+                groups.append(f'<h2 id="{bid}">{e(bn)} {e(c["name"].lower())}</h2><div class="tbl"><table><thead><tr><th>Model</th><th>Part</th><th class="r">Price</th><th></th></tr></thead><tbody>{"".join(rows)}</tbody></table></div>')
+        others = "".join(f'<a class="chip" href="{r}parts/{o["id"]}/">{e(o["name"])}</a>' for o in C.values() if o["id"] != c["id"])
+        units = ", ".join(sorted({p["unit"] for p in pts}))
         body = f'''<section class="ph"><div class="wrap">{{{{CRUMBS}}}}<h1>{e(c["name"])} for Hyundai and Kia</h1>
-<p class="lead">{e(c["line"])} for {len({x["m"] for x in xs})} Hyundai and Kia models, with prices. Tap your model for details, or add straight to your cart.</p></div></section>
-<section class="sec"><div class="wrap">{"".join(groups)}<p class="small">Prices are per {e(", ".join(sorted({x["part"]["unit"] for x in xs})))}. We confirm the exact fit for your car on WhatsApp before you pay.</p></div></section>
+<p class="lead">{e(c["line"])} for Hyundai and Kia models. Where a price is listed you can add the part to your cart. For the others, tap Ask and we reply on WhatsApp with the price and stock.</p></div></section>
+<section class="sec"><div class="wrap">{"".join(groups)}<p class="small">Sold per {e(units)}. We confirm the exact fit for your car on WhatsApp before you pay.</p></div></section>
 <section class="sec alt"><div class="wrap"><h2>Other part types</h2><div class="chips">{others}</div></div></section>'''
-        sch = {"@type": "ItemList", "name": f"{c['name']} for Hyundai and Kia", "numberOfItems": len(xs),
-               "itemListElement": [{"@type": "ListItem", "position": i + 1, "url": BASE + "/" + x["url"], "name": x["title"]} for i, x in enumerate(xs)]}
-        shell(f"parts/{c['id']}/index.html", f"Hyundai & Kia {c['name']} Singapore | Autotex"[:68], f"{c['name']} for Hyundai and Kia models in Singapore, with prices per model. {c['line']}. Order on WhatsApp from Autotex, Kaki Bukit.",
-              body, active="parts", crumbs=[("Parts", "parts/"), (c["name"], f"parts/{c['id']}/")], schema=[sch], prio="0.8")
+        sch = []
+        if xs:
+            sch.append({"@type": "ItemList", "name": f"{c['name']} for Hyundai and Kia", "numberOfItems": len(xs),
+                        "itemListElement": [{"@type": "ListItem", "position": i + 1, "url": BASE + "/" + x["url"], "name": x["title"]} for i, x in enumerate(xs)]})
+        shell(f"parts/{c['id']}/index.html", f"Hyundai & Kia {c['name']} Singapore | Autotex"[:68], f"{c['name']} for Hyundai and Kia models in Singapore. {c['line']}. See the price or ask on WhatsApp, Autotex, Kaki Bukit.",
+              body, active="parts", crumbs=[("Parts", "parts/"), (c["name"], f"parts/{c['id']}/")], schema=sch, prio="0.8")
 
 # ---------------- price list ----------------
 def build_prices():
     r = "../"
     blocks = []
     for bid, bn in BRANDS:
-        for mt in MODELS:
-            if mt[1] != bid: continue
-            m = M[mt[0]]
-            rows = "".join(f'<tr><td><a href="{r}{x["url"]}">{e(x["part"]["name"])}</a></td><td>{e(x["part"]["unit"])}</td><td class="r">{price_html(x)}</td></tr>'
+        for m in [m for m in M.values() if m["b"] == bid]:
+            rows = "".join(f'<tr data-pid="{e(x["id"])}"><td><a href="{r}{x["url"]}">{e(x["part"]["name"])}{f" ({SIDE_L[x["side"]].split(" (")[0]})" if x["side"] else ""}</a></td><td>{e(x["part"]["unit"])}</td><td class="r">{price_html(x)}</td></tr>'
                            for x in PRODUCTS if x["m"] == m["id"])
-            blocks.append(f'<details class="pl" id="{m["id"]}"><summary><b>{e(bn)} {e(m["name"])}</b> <i>{e(m["code"])}</i> <span>{e(m["years"].replace("-now", " onwards"))}</span></summary><div class="tbl"><table><thead><tr><th>Part</th><th>Sold as</th><th class="r">Price</th></tr></thead><tbody>{rows}</tbody></table></div></details>')
-    body = f'''<section class="ph"><div class="wrap">{{{{CRUMBS}}}}<h1>Hyundai and Kia parts price list</h1>
-<p class="lead">Prices for every part we list, by car model. Tap a model to open its list. Prices are per part as listed; we confirm stock and the fit for your car on WhatsApp before you pay.</p>
-<p class="small muted">Preview: all prices below are samples until Autotex adds the real prices.</p></div></section>
-<section class="sec"><div class="wrap narrow">{"".join(blocks)}</div></section>'''
-    shell("prices/index.html", "Hyundai & Kia Parts Price List Singapore | Autotex", "Price list for Hyundai and Kia parts in Singapore by model: bumpers, lamps, brake pads, discs, suspension, mounting, spark plugs and coils.",
+            if rows:
+                blocks.append(f'<details class="pl" id="{m["id"]}"><summary><b>{e(bn)} {e(m["name"])}</b> <i>{e(m["code"])}</i> <span>{e(myears(m))}</span></summary><div class="tbl"><table><thead><tr><th>Part</th><th>Sold as</th><th class="r">Price</th></tr></thead><tbody>{rows}</tbody></table></div></details>')
+    tiles = "".join(f'<div class="pl-b"><h3>{e(bn)}</h3><div class="mgrid">{"".join(model_tile(m, r) for m in M.values() if m["b"] == bid)}</div></div>' for bid, bn in BRANDS)
+    if blocks:
+        listing = f'<h2>Listed prices</h2>{"".join(blocks)}<h2>Any other part</h2><p>If your part or car is not above, choose your model below and tap Ask on WhatsApp.</p>'
+    else:
+        listing = ('<h2>Prices on request</h2><p>We quote each part for your exact car instead of printing one list for every generation, facelift and engine. '
+                   'Choose your model below, tap the part you need, and ask for the price on WhatsApp. We reply with the price and whether it is in stock.</p>')
+    body = f'''<section class="ph"><div class="wrap">{{{{CRUMBS}}}}<h1>Hyundai and Kia parts prices</h1>
+<p class="lead">Where a price is listed it is the price for the part as listed. For every other part, ask us on WhatsApp and we reply with the price and stock. We confirm the fit for your car before you pay.</p>
+<p><a class="btn wa" href="{wa_link("Hi Autotex, I need a price for a part. My car plate / chassis number is: ")}" rel="noopener">{WA_SVG}Ask for a price on WhatsApp</a></p></div></section>
+<section class="sec"><div class="wrap narrow">{listing}</div><div class="wrap">{tiles}</div></section>'''
+    shell("prices/index.html", "Hyundai & Kia Parts Prices Singapore | Autotex", "Prices for Hyundai and Kia parts in Singapore. See listed prices by model, or ask Autotex for the price and stock of any part on WhatsApp.",
           body, active="prices", crumbs=[("Price list", "prices/")], prio="0.9")
 
 # ---------------- simple pages ----------------
@@ -478,14 +598,14 @@ def build_pages():
     body = f'''<section class="ph"><div class="wrap">{{{{CRUMBS}}}}<h1 data-sr-title>Search parts</h1>
 <div class="hero-f slim">{finder("../")}</div></div></section>
 <section class="sec"><div class="wrap"><div data-results aria-live="polite"><p class="muted">Type your car and the part, for example “Avante brake pads” or “Sportage headlamp”.</p></div></div></section>'''
-    shell("search/index.html", "Search Hyundai & Kia Parts | Autotex", "Search Hyundai and Kia parts by car model and part name.", body, crumbs=[("Search", "search/")], index=False)
+    shell("search/index.html", "Search Hyundai & Kia Parts | Autotex", "Search Hyundai and Kia parts by car model and part name.", body, crumbs=[("Search", "search/")], index=False, noindex=True)
     # cart
     body = f'''<section class="ph"><div class="wrap">{{{{CRUMBS}}}}<h1>Your cart</h1></div></section>
 <section class="sec"><div class="wrap cart-g">
 <div data-cart><p class="muted">Loading your cart…</p></div>
 <form class="co" data-checkout>
 <h2>Send your order</h2>
-<p class="small">Your order opens in WhatsApp as a message to Autotex ({WA_SHOW}). Nothing is paid here. We reply to confirm stock, fit and collection.</p>
+<p class="small">Your order opens in WhatsApp as a message to Autotex ({WA_SHOW}). Nothing is paid here. We reply to confirm price, stock, fit and collection.</p>
 <label>Your name<input name="name" autocomplete="name" required></label>
 <label>Car plate or chassis number<input name="car" placeholder="e.g. SMA1234X" autocapitalize="characters"><small>Helps us check the exact part for your car.</small></label>
 <label>Collection<select name="collect"><option>Self-collect at Kaki Bukit</option><option>Please tell me about delivery</option></select></label>
@@ -494,7 +614,7 @@ def build_pages():
 <p class="small muted" data-co-msg></p>
 </form>
 </div></section>'''
-    shell("cart/index.html", "Your Cart | Autotex", "Your Autotex parts cart.", body, crumbs=[("Cart", "cart/")], index=False)
+    shell("cart/index.html", "Your Cart | Autotex", "Your Autotex parts cart.", body, crumbs=[("Cart", "cart/")], index=False, noindex=True)
     # how to order
     qs = [("Do I pay online?", "No. Your cart is sent to us on WhatsApp. We confirm stock, the exact part for your car and the total, then tell you how to pay and collect."),
           ("What if I don't know my car's generation?", "Send your car plate or chassis number. The chassis number is printed on your vehicle log card. We use it to find the exact part."),
@@ -528,6 +648,7 @@ def build_pages():
 <div><dt>Registered</dt><dd>{REG}</dd></div>
 <div><dt>Business</dt><dd>Retail sale of motor vehicle parts and accessories</dd></div>
 <div><dt>Address</dt><dd>{e(ADDR1)}, {e(ADDR2)}</dd></div>
+<div><dt>Opening hours</dt><dd>{HOURS_LINE}</dd></div>
 <div><dt>Phone</dt><dd><a href="tel:{TEL_H}">{TEL}</a></dd></div>
 <div><dt>WhatsApp</dt><dd><a href="https://wa.me/{WA}" rel="noopener">{WA_SHOW}</a></dd></div>
 <div><dt>Google rating</dt><dd>5.0 from 4 reviews (<a href="{GMAP}" rel="noopener">Google Maps</a>)</dd></div>
@@ -541,13 +662,17 @@ def build_pages():
 <a class="cc" href="{wa_link("Hi Autotex, I need a part for my car. Car plate / chassis: ")}" rel="noopener">{WA_SVG}<b>WhatsApp</b><span>{WA_SHOW}</span></a>
 <a class="cc" href="tel:{TEL_H}">{ICON['phone']}<b>Call</b><span>{TEL}</span></a>
 <a class="cc" href="{GMAP}" rel="noopener">{ICON['pin']}<b>Visit</b><span>{e(ADDR1)}<br>{e(ADDR2)}</span></a>
-</div><div class="wrap"><p class="small">Please WhatsApp before you come down so we can check stock and get your parts ready.</p></div></section>'''
-    shell("contact/index.html", "Contact Autotex | Kia & Hyundai Parts Kaki Bukit", f"WhatsApp {WA_SHOW} or call {TEL}. Autotex, {ADDR1}, AutoBay@Kaki Bukit, Singapore 417883.",
+</div><div class="wrap"><h2>Opening hours</h2>{hours_html("spec hours")}<p class="small">Please WhatsApp before you come down so we can check stock and get your parts ready.</p></div></section>'''
+    shell("contact/index.html", "Contact Autotex | Kia & Hyundai Parts Kaki Bukit", f"WhatsApp {WA_SHOW} or call {TEL}. Autotex, {ADDR1}, AutoBay@Kaki Bukit, Singapore 417883. Open {HOURS_LINE}.",
           body, active="contact", crumbs=[("Contact", "contact/")], prio="0.6")
-    # staff (not indexed, not in sitemap)
-    body = '<div id="staff-app" class="wrap"><p class="muted">Loading the staff dashboard…</p><noscript>The staff dashboard needs JavaScript.</noscript></div>'
-    shell("staff/index.html", "Staff Dashboard | Autotex", "Autotex staff catalogue dashboard (demo).", body, js=("data.js", "staff.js"),
-          css=("at.css", "staff.css"), index=False)
+    # staff: tiny noindex redirect to the Base44 staff dashboard (not in sitemap)
+    write("staff/index.html", f'''<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Staff dashboard | Autotex</title><meta name="robots" content="noindex,nofollow">
+<meta http-equiv="refresh" content="0;url={DB_URL}"><link rel="canonical" href="{DB_URL}">
+<script>location.replace("{DB_URL}");</script></head>
+<body style="font:16px/1.5 system-ui,sans-serif;padding:24px"><p>Opening the staff dashboard. <a href="{DB_URL}">Continue to the staff dashboard</a>.</p></body></html>
+''')
     # 404
     body = f'''<section class="ph"><div class="wrap"><h1>Page not found</h1><p class="lead">That page has moved or never existed. Search for your part instead.</p>
 <div class="hero-f slim">{finder("{{{{R}}}}")}</div></div></section>'''
@@ -584,13 +709,14 @@ def build_articles():
         r = "../../"
         c = C[cat]
         xs = [x for x in PRODUCTS if x["cat"]["id"] == cat][:4]
+        more = (f'<section class="sec alt"><div class="wrap"><h2>{e(c["name"])} we stock</h2><div class="pgrid">{"".join(card(x, r) for x in xs)}</div></div></section>' if xs else "")
         sec = "".join(f'<h2>{e(q)}</h2>{a if a.startswith("<") else f"<p>{a}</p>"}' for q, a in qa)
         body = f'''<section class="ph"><div class="wrap narrow">{{{{CRUMBS}}}}<h1>{e(t)}</h1><p class="lead">{e(d)}</p>
 <p class="small muted">By Autotex · {datetime.date(2026, 10, 29).strftime("%-d %b %Y")}</p></div></section>
 <article class="sec art-b"><div class="wrap narrow">{sec}
 <div class="callout"><b>Need the part?</b> See <a href="{r}parts/{cat}/">{e(c["name"].lower())} for every Hyundai and Kia model</a>, or <a href="{wa_link("Hi Autotex, I read your guide and need a part. Car plate / chassis: ")}" rel="noopener">WhatsApp us your car plate</a>.</div>
 </div></article>
-<section class="sec alt"><div class="wrap"><h2>{e(c["name"])} we stock</h2><div class="pgrid">{"".join(card(x, r) for x in xs)}</div></div></section>'''
+{more}'''
         art = {"@type": "Article", "headline": t, "description": d, "datePublished": "2026-10-29", "dateModified": TODAY,
                "author": {"@id": BASE + "/#store"}, "publisher": {"@id": BASE + "/#store"}, "image": BASE + "/og.jpg",
                "mainEntityOfPage": BASE + f"/articles/{slug}/"}
@@ -607,38 +733,41 @@ def build_articles():
 def build_data():
     d = {"wa": WA, "live": LIVE,
          "brands": [{"id": b, "name": n} for b, n in BRANDS],
-         "models": [{"id": m["id"], "b": m["b"], "name": m["name"], "code": m["code"], "years": m["years"], "alias": m["alias"], "fuel": m["fuel"]} for m in M.values()],
+         "models": [dict(m) for m in M.values()],
          "cats": [{"id": c["id"], "name": c["name"], "line": c["line"], "svg": ICON[c["icon"]]} for c in C.values()],
-         "parts": [{"id": p["id"], "cat": p["cat"], "name": p["name"], "alias": p["alias"], "side": p["side"], "unit": p["unit"]} for p in P.values()],
-         "products": [{k: x[k] for k in ("id", "m", "p", "url", "price", "sample", "oem", "stock", "status", "note")} for x in PRODUCTS]}
-    (HERE / "data.js").write_text("/* Autotex catalogue, generated by build.py " + TODAY + ". Prices with sample:1 are demo prices. */\nwindow.AT=" + json.dumps(d, separators=(",", ":"), ensure_ascii=False) + ";\n")
+         "parts": [{"id": p["id"], "cat": p["cat"], "name": p["name"], "alias": p["alias"], "side": p["side"], "unit": p["unit"], "need": p["need"]} for p in P.values()],
+         "photoMap": {i: f"assets/p/{i}.jpg" for i in sorted(PHOTO_IDS)},
+         "products": [dict({k: x[k] for k in ("id", "m", "p", "url", "price", "oem", "stock", "side", "note")}, photos=x["ph_entries"]) for x in PRODUCTS]}
+    (HERE / "data.js").write_text("/* Autotex catalogue baseline, generated by build.py " + TODAY + " from db/*.json. The live database overrides it in the browser. */\nwindow.AT=" + json.dumps(d, separators=(",", ":"), ensure_ascii=False) + ";\n")
 
 def build_static():
-    for f in ("at.css", "at.js", "wa.js", "data.js", "staff.js", "staff.css"):
+    for f in ("at.css", "at.js", "wa.js", "data.js"):
         shutil.copy(HERE / f, OUT / f)
     for f in (HERE / "assets").iterdir():
         shutil.copy(f, OUT / f.name)
-    write("robots.txt", "User-agent: *\nAllow: /\nDisallow: /staff/\nDisallow: /cart/\nDisallow: /search/\n\n" +
-          "".join(f"User-agent: {b}\nAllow: /\n\n" for b in ["Googlebot", "Bingbot", "OAI-SearchBot", "GPTBot", "ChatGPT-User", "PerplexityBot", "ClaudeBot", "Claude-SearchBot", "Google-Extended", "Applebot-Extended", "DuckAssistBot"]) +
-          f"Sitemap: {BASE}/sitemap.xml\n")
+    bots = ["*", "Googlebot", "Bingbot", "OAI-SearchBot", "GPTBot", "ChatGPT-User", "PerplexityBot", "ClaudeBot", "Claude-SearchBot", "Google-Extended", "Applebot-Extended", "DuckAssistBot"]
+    write("robots.txt", "".join(f"User-agent: {b}\n" for b in bots) + "Allow: /\nDisallow: /staff/\nDisallow: /cart/\nDisallow: /search/\n\n" + f"Sitemap: {BASE}/sitemap.xml\n")
     write("sitemap.xml", '<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n' +
           "".join(f"<url><loc>{u}</loc><lastmod>{TODAY}</lastmod><priority>{p}</priority></url>\n" for u, p in SITEMAP) + "</urlset>\n")
     write(f"{INDEXNOW}.txt", INDEXNOW)
     write("site.webmanifest", json.dumps({"name": "Autotex Kia & Hyundai Parts", "short_name": "Autotex", "icons": [
         {"src": "icon-192.png", "sizes": "192x192", "type": "image/png"}, {"src": "icon-512.png", "sizes": "512x512", "type": "image/png"}],
         "theme_color": "#12161C", "background_color": "#ffffff", "display": "standalone"}))
-    cats = "\n".join(f"- {c[1]}: {BASE}/parts/{c[0]}/" for c in CATS)
-    models = "\n".join(f"- {BR[m[1]]} {m[2]} ({m[3]}, {m[4]}): {BASE}/{m[1]}/{m[0]}/" for m in MODELS)
+    cats = "\n".join(f"- {c['name']}: {BASE}/parts/{c['id']}/" for c in C.values())
+    models = "\n".join(f"- {BR[m['b']]} {m['name']} ({m['code']}, {m['years']}): {BASE}/{m['b']}/{m['id']}/" for m in M.values())
+    plist = "\n".join(f"- {x['title']}{' ' + money(x['price']) if show_price(x) else ''}: {BASE}/{x['url']}" for x in PRODUCTS[:300])
     write("llms.txt", f"""# Autotex (Autotex Aircon Enterprise)
 
-> Kia and Hyundai parts stockist in Kaki Bukit, Singapore. Stocks parts direct from Korea and sells direct to Singapore drivers. Search by car model and part, see the price, order on WhatsApp.
+> Kia and Hyundai parts stockist in Kaki Bukit, Singapore. Stocks parts direct from Korea and sells direct to Singapore drivers. Pick your car and part, see the price where listed or ask on WhatsApp.
 
 - Registered name: {LEGAL}, UEN {UEN}, registered {REG}
 - Address: {ADDR1}, {ADDR2}
+- Opening hours: {HOURS_LINE}
 - Phone: {TEL}. WhatsApp: {WA_SHOW}
 - Google rating: 5.0 from 4 reviews
 - Parts: body parts, headlamps and tail lamps, engine parts, suspension, engine mounting, brake pads, brake discs (rotors), spark plugs, ignition coils
-- Ordering: add parts to the cart and send the order on WhatsApp; Autotex confirms stock and fit (by car plate or chassis number) before payment
+- Prices: listed on the product page where set; otherwise quoted on WhatsApp. Autotex confirms stock and fit (by car plate or chassis number) before payment
+- Ordering: add parts to the cart and send the order on WhatsApp
 - Price list: {BASE}/prices/
 
 ## Parts by type
@@ -646,17 +775,19 @@ def build_static():
 
 ## Models
 {models}
-""")
-    write("htaccess.txt", """# Go-live .htaccess for Autotex's own domain (the Bridge cannot write .htaccess; paste via cPanel)
+""" + (f"\n## Listed products\n{plist}\n" if plist else ""))
+    write("htaccess.txt", f"""# .htaccess for https://autotexautoparts.com.sg (the Bridge cannot write .htaccess; paste via cPanel)
+Options -Indexes
+DirectoryIndex index.html
 ErrorDocument 404 /404.html
 RewriteEngine On
-RewriteCond %{HTTPS} off [OR]
-RewriteCond %{HTTP_HOST} ^www\\. [NC]
-RewriteRule ^ https://DOMAIN%{REQUEST_URI} [L,R=301]
+RewriteCond %{{HTTPS}} off [OR]
+RewriteCond %{{HTTP_HOST}} ^www\\. [NC]
+RewriteRule ^ https://autotexautoparts.com.sg%{{REQUEST_URI}} [L,R=301]
+<IfModule mod_headers.c>
 <FilesMatch "\\.(html)$">
 Header set Cache-Control "max-age=3600"
 </FilesMatch>
-<IfModule mod_headers.c>
 Header set X-Content-Type-Options "nosniff"
 </IfModule>
 """)
@@ -668,4 +799,5 @@ if __name__ == "__main__":
     build_data()
     build_home(); build_brands(); build_models(); build_products(); build_cats(); build_prices(); build_pages(); build_articles()
     build_static()
+    import pull_photos; pull_photos.run(OUT)
     print(f"built {len(SITEMAP)} indexed pages, {len(PRODUCTS)} products -> {OUT}")

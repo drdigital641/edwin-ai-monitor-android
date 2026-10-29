@@ -1,0 +1,294 @@
+[
+ {
+  "id": "seed-avante-ad",
+  "key": "avante-ad",
+  "b": "hyundai",
+  "name": "Avante",
+  "code": "AD",
+  "years": "2016-2020",
+  "alias": [
+   "elantra",
+   "avante ad",
+   "elantra ad"
+  ],
+  "fuel": "petrol",
+  "status": "published"
+ },
+ {
+  "id": "seed-avante-cn7",
+  "key": "avante-cn7",
+  "b": "hyundai",
+  "name": "Avante",
+  "code": "CN7",
+  "years": "2020-now",
+  "alias": [
+   "elantra",
+   "avante cn7",
+   "elantra cn7",
+   "new avante"
+  ],
+  "fuel": "petrol",
+  "status": "published"
+ },
+ {
+  "id": "seed-i30-pd",
+  "key": "i30-pd",
+  "b": "hyundai",
+  "name": "i30",
+  "code": "PD",
+  "years": "2017-2020",
+  "alias": [
+   "i30 hatchback",
+   "i 30"
+  ],
+  "fuel": "petrol",
+  "status": "published"
+ },
+ {
+  "id": "seed-ioniq-ae",
+  "key": "ioniq-ae",
+  "b": "hyundai",
+  "name": "Ioniq Hybrid",
+  "code": "AE",
+  "years": "2016-2022",
+  "alias": [
+   "ioniq",
+   "ionic",
+   "ioniq hybrid"
+  ],
+  "fuel": "hybrid",
+  "status": "published"
+ },
+ {
+  "id": "seed-ioniq-5",
+  "key": "ioniq-5",
+  "b": "hyundai",
+  "name": "Ioniq 5",
+  "code": "NE",
+  "years": "2021-now",
+  "alias": [
+   "ioniq5",
+   "ionic 5",
+   "ioniq 5 ev"
+  ],
+  "fuel": "electric",
+  "status": "published"
+ },
+ {
+  "id": "seed-kona-os",
+  "key": "kona-os",
+  "b": "hyundai",
+  "name": "Kona",
+  "code": "OS",
+  "years": "2017-2023",
+  "alias": [
+   "kona electric",
+   "kona ev",
+   "kona hybrid"
+  ],
+  "fuel": "petrol / hybrid / electric",
+  "status": "published"
+ },
+ {
+  "id": "seed-tucson-tl",
+  "key": "tucson-tl",
+  "b": "hyundai",
+  "name": "Tucson",
+  "code": "TL",
+  "years": "2015-2020",
+  "alias": [
+   "tuscon",
+   "tucson tl"
+  ],
+  "fuel": "petrol / diesel",
+  "status": "published"
+ },
+ {
+  "id": "seed-tucson-nx4",
+  "key": "tucson-nx4",
+  "b": "hyundai",
+  "name": "Tucson",
+  "code": "NX4",
+  "years": "2021-now",
+  "alias": [
+   "tuscon",
+   "new tucson",
+   "tucson hybrid"
+  ],
+  "fuel": "petrol / hybrid",
+  "status": "published"
+ },
+ {
+  "id": "seed-santa-fe-tm",
+  "key": "santa-fe-tm",
+  "b": "hyundai",
+  "name": "Santa Fe",
+  "code": "TM",
+  "years": "2018-2023",
+  "alias": [
+   "santafe",
+   "santa fe"
+  ],
+  "fuel": "petrol / diesel",
+  "status": "published"
+ },
+ {
+  "id": "seed-starex-tq",
+  "key": "starex-tq",
+  "b": "hyundai",
+  "name": "Starex / H-1",
+  "code": "TQ",
+  "years": "2007-2021",
+  "alias": [
+   "h1",
+   "h-1",
+   "grand starex",
+   "starex van"
+  ],
+  "fuel": "diesel",
+  "status": "published"
+ },
+ {
+  "id": "seed-cerato-yd",
+  "key": "cerato-yd",
+  "b": "kia",
+  "name": "Cerato K3",
+  "code": "YD",
+  "years": "2013-2018",
+  "alias": [
+   "k3",
+   "forte",
+   "cerato forte",
+   "cerato k3"
+  ],
+  "fuel": "petrol",
+  "status": "published"
+ },
+ {
+  "id": "seed-cerato-bd",
+  "key": "cerato-bd",
+  "b": "kia",
+  "name": "Cerato K3",
+  "code": "BD",
+  "years": "2018-now",
+  "alias": [
+   "k3",
+   "forte",
+   "new cerato",
+   "cerato bd"
+  ],
+  "fuel": "petrol",
+  "status": "published"
+ },
+ {
+  "id": "seed-picanto-ja",
+  "key": "picanto-ja",
+  "b": "kia",
+  "name": "Picanto",
+  "code": "JA",
+  "years": "2017-now",
+  "alias": [
+   "morning",
+   "picanto ja"
+  ],
+  "fuel": "petrol",
+  "status": "published"
+ },
+ {
+  "id": "seed-sportage-ql",
+  "key": "sportage-ql",
+  "b": "kia",
+  "name": "Sportage",
+  "code": "QL",
+  "years": "2016-2021",
+  "alias": [
+   "sportage ql"
+  ],
+  "fuel": "petrol / diesel",
+  "status": "published"
+ },
+ {
+  "id": "seed-sportage-nq5",
+  "key": "sportage-nq5",
+  "b": "kia",
+  "name": "Sportage",
+  "code": "NQ5",
+  "years": "2022-now",
+  "alias": [
+   "new sportage",
+   "sportage hybrid"
+  ],
+  "fuel": "petrol / hybrid",
+  "status": "published"
+ },
+ {
+  "id": "seed-sorento-um",
+  "key": "sorento-um",
+  "b": "kia",
+  "name": "Sorento",
+  "code": "UM",
+  "years": "2015-2020",
+  "alias": [
+   "sorento um"
+  ],
+  "fuel": "petrol / diesel",
+  "status": "published"
+ },
+ {
+  "id": "seed-niro-de",
+  "key": "niro-de",
+  "b": "kia",
+  "name": "Niro",
+  "code": "DE",
+  "years": "2016-2022",
+  "alias": [
+   "niro hybrid",
+   "niro ev",
+   "e-niro"
+  ],
+  "fuel": "hybrid / electric",
+  "status": "published"
+ },
+ {
+  "id": "seed-ev6",
+  "key": "ev6",
+  "b": "kia",
+  "name": "EV6",
+  "code": "CV",
+  "years": "2021-now",
+  "alias": [
+   "ev 6",
+   "kia ev6"
+  ],
+  "fuel": "electric",
+  "status": "published"
+ },
+ {
+  "id": "seed-carens-rp",
+  "key": "carens-rp",
+  "b": "kia",
+  "name": "Carens",
+  "code": "RP",
+  "years": "2013-2019",
+  "alias": [
+   "carens rp",
+   "rondo"
+  ],
+  "fuel": "petrol",
+  "status": "published"
+ },
+ {
+  "id": "seed-optima-jf",
+  "key": "optima-jf",
+  "b": "kia",
+  "name": "Optima K5",
+  "code": "JF",
+  "years": "2015-2020",
+  "alias": [
+   "k5",
+   "optima k5"
+  ],
+  "fuel": "petrol",
+  "status": "published"
+ }
+]

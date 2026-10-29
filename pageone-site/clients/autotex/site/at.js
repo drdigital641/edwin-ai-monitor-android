@@ -1,4 +1,4 @@
-/* Autotex shop: catalogue merge, search, finder, cart -> WhatsApp. No libraries. */
+/* Autotex shop: live catalogue (Base44 database, public read) over the static baseline, search, finder, cart -> WhatsApp. No libraries. */
 (function () {
   "use strict";
   var AT = window.AT; if (!AT) return;
@@ -9,47 +9,62 @@
   function load(k, d) { try { var v = JSON.parse(localStorage.getItem(k)); return v == null ? d : v; } catch (e) { return d; } }
   function save(k, v) { try { localStorage.setItem(k, JSON.stringify(v)); } catch (e) {} }
 
-  /* ---- catalogue (+ staff changes saved in this browser by /staff/) ---- */
-  var ov = load("at_catalog_v1", {}) || {};
-  (ov.models || []).forEach(function (m) { if (m && m.id && m.b && !AT.models.some(function (o) { return o.id === m.id; })) AT.models.push(m); });
-  var BR = {}, M = {}, P = {}, C = {};
+  /* ---- catalogue: static baseline (data.js), replaced by the live database once it loads ---- */
+  var API = "https://autotex-catalogue-05dbf5ec.base44.app/api/apps/6ae3683191b1a44205dbf5ec/entities/";
+  var CACHE = "at_db_v2", TTL = 5 * 60 * 1000;
+  var SIDE = { L: "Left", R: "Right", pair: "Pair" };
+  var BR = {}, P = {}, C = {}, M = {}, PR = {}, MK = [], live = [], dbState = "pending", STATIC = {}, STATIC_M = {};
   AT.brands.forEach(function (b) { BR[b.id] = b; });
-  AT.models.forEach(function (m) { M[m.id] = m; });
   AT.parts.forEach(function (p) { P[p.id] = p; });
   AT.cats.forEach(function (c) { C[c.id] = c; });
-  var list = AT.products.concat(ov.added || []).map(function (x) {
-    var o = (ov.products || {})[x.id]; var y = {}; for (var k in x) y[k] = x[k];
-    if (o) for (var j in o) y[j] = o[j];
-    return y;
-  });
-  function href(x) { return x.url ? R + x.url : R + "search/?id=" + encodeURIComponent(x.id); }
-  function mhref(m) { return m.custom ? R + "search/?m=" + encodeURIComponent(m.id) : R + m.b + "/" + m.id + "/"; }
-  var SIDE = { L: "Left", R: "Right", pair: "Pair" };
-  var PR = {};
-  list.forEach(function (x) {
-    x.model = M[x.m]; x.part = P[x.p] || { id: "", name: x.pn || "Part", alias: [], side: false, unit: "piece", cat: x.pc || "" };
-    x.cat = C[x.part.cat] || { name: "" };
-    x.title = x.part.name + " for " + (x.model ? BR[x.model.b].name + " " + x.model.name + " (" + x.model.code + ")" : "");
-    PR[x.id] = x;
-  });
-  var live = list.filter(function (x) { return x.status !== "hidden" && x.model; });
+  AT.products.forEach(function (x) { STATIC[x.id] = x; });
+  AT.models.forEach(function (m) { STATIC_M[m.id] = m; });
   AT.PR = PR;
 
-  function money(v) { v = +v; return "S$" + (v % 1 ? v.toFixed(2) : v.toLocaleString("en-SG")); }
-  function showPrice(x) { return x.price != null && x.price !== "" && !(AT.live && x.sample); }
-  function priceHtml(x) {
-    if (!showPrice(x)) return '<span class="price ask">Ask for price</span>';
-    return '<span class="price">' + money(x.price) + "</span>" + (x.sample ? '<span class="badge sample">Sample price</span>' : "");
+  function fits(m, p) {
+    if (p.need === "any") return true;
+    var f = m.fuel || "petrol"; if (f === "electric") return false;
+    if (p.need === "petrol") return f.indexOf("petrol") >= 0 || f.indexOf("hybrid") >= 0;
+    return true;
   }
-  function years(m) { return m.years.replace("-now", " onwards"); }
+  function pub(r) { return !r.status || r.status === "published"; }
+  function mlabel(m) { return BR[m.b].name + " " + m.name + (m.code ? " (" + m.code + ")" : ""); }
+  function years(m) { return String(m.years || "").replace("-now", " onwards"); }
+  function href(x) { return x.url ? R + x.url : R + "search/?id=" + encodeURIComponent(x.id); }
+  function mhref(m) { return STATIC_M[m.id] ? R + m.b + "/" + m.id + "/" : R + "search/?m=" + encodeURIComponent(m.id); }
+  function waLink(t) { return "https://wa.me/" + AT.wa + "?text=" + encodeURIComponent(t); }
+  function askLink(m, p) { return waLink("Hi Autotex, how much is the " + p.name + " for my " + mlabel(m) + " " + m.years + "? Stock and price please. My car plate / chassis number is: "); }
 
-  // refresh prices printed in the static HTML if staff changed them in this browser
-  if (ov.products) $$("[data-price]").forEach(function (el) {
-    var x = PR[el.getAttribute("data-price")]; if (!x || !ov.products[x.id]) return;
-    var w = document.createElement("span"); w.innerHTML = priceHtml(x);
-    var b = el.nextElementSibling; if (b && b.classList.contains("sample")) b.remove();
-    el.replaceWith.apply(el, Array.prototype.slice.call(w.childNodes));
-  });
+  function setData(cars, prods) {
+    var models = cars ? cars.filter(function (c) { return pub(c) && c.key && BR[c.b]; }).map(function (c) {
+      return { id: c.key, b: c.b, name: c.name || "", code: c.code || "", years: c.years || "", alias: c.alias || [], fuel: c.fuel || "petrol" }; }) : AT.models;
+    M = {}; models.forEach(function (m) { M[m.id] = m; });
+    AT.models = models;
+    var src = prods ? prods.filter(function (r) { return pub(r) && r.key && M[r.m]; }).map(function (r) {
+      var st = STATIC[r.key], pr = r.price === "" || r.price == null ? null : +r.price;
+      var x = { id: r.key, m: r.m, p: P[r.p] ? r.p : "other", pn: r.pn || "", pc: r.pc || "", price: pr > 0 ? pr : null, oem: r.oem || "", stock: r.stock || "", side: r.side || "",
+        note: r.note || "", photos: (r.photos || []).filter(function (s) { return typeof s === "string"; }), updated: r.updated_date || "" };
+      if (st && st.url && st.m === x.m && st.p === x.p) x.url = st.url;
+      return x; }) : AT.products.map(function (x) { var y = {}; for (var k in x) y[k] = x[k]; y.photos = x.photos || []; return y; });
+    PR = {}; AT.PR = PR;
+    src.forEach(function (x) {
+      x.model = M[x.m];
+      x.part = P[x.p] || { id: "other", name: x.pn || "Part", alias: [], side: false, unit: "piece", cat: x.pc || "", need: "any" };
+      x.cat = C[x.part.cat] || { id: "", name: "", svg: (C["engine-parts"] || {}).svg };
+      x.title = x.part.name + (x.side ? " (" + SIDE[x.side] + ")" : "") + " for " + mlabel(x.model);
+      PR[x.id] = x;
+    });
+    live = src;
+    MK = AT.models.map(function (m) {
+      var keys = [m.name].concat(m.alias || []).map(function (k) { return norm(k).trim(); });
+      norm(m.name).trim().split(" ").forEach(function (w) { if (w.length > 2 && keys.indexOf(w) < 0) keys.push(w); });
+      return { m: m, keys: keys };
+    });
+  }
+
+  function money(v) { v = +v; return "S$" + (v % 1 ? v.toFixed(2) : v.toLocaleString("en-SG")); }
+  function showPrice(x) { return x.price != null && x.price !== "" && +x.price > 0; }
+  function priceHtml(x) { return showPrice(x) ? '<span class="price" data-price="' + esc(x.id) + '">' + money(x.price) + "</span>" : '<span class="price ask" data-price="' + esc(x.id) + '">Ask for price</span>'; }
 
   /* ---- cart ---- */
   var CK = "at_cart_v1";
@@ -105,16 +120,15 @@
   function renderCart() {
     var c = cart().filter(function (i) { return PR[i.id]; });
     if (!c.length) { cEl.innerHTML = '<div class="empty"><p>Your cart is empty.</p><p><a class="btn primary" href="' + R + '">Find a part</a></p></div>'; return; }
-    var tot = 0, ask = 0, sample = 0;
+    var tot = 0, ask = 0;
     var rows = c.map(function (i, n) {
-      var x = PR[i.id], has = showPrice(x); if (has) tot += x.price * i.q; else ask++; if (has && x.sample) sample++;
+      var x = PR[i.id], has = showPrice(x); if (has) tot += x.price * i.q; else ask++;
       return '<li class="ci"><div><a href="' + esc(href(x)) + '"><b>' + esc(x.part.name) + (i.side ? " (" + esc(i.side) + ")" : "") + "</b></a><span>" + esc(BR[x.model.b].name + " " + x.model.name + " " + x.model.code + ", " + years(x.model)) + "</span>" +
         '<span class="ci-p">' + priceHtml(x) + "</span></div>" +
         '<div class="ci-q"><button type="button" data-cq="' + n + '" data-d="-1" aria-label="Less">−</button><b>' + i.q + '</b><button type="button" data-cq="' + n + '" data-d="1" aria-label="More">+</button>' +
         '<button type="button" class="rm" data-rm="' + n + '" aria-label="Remove">Remove</button></div></li>';
     }).join("");
-    cEl.innerHTML = '<ul class="cl">' + rows + '</ul><div class="ctot"><span>Total' + (ask ? " (plus " + ask + " item" + (ask > 1 ? "s" : "") + " priced on WhatsApp)" : "") + "</span><b>" + money(tot) + "</b></div>" +
-      (sample ? '<p class="small muted">Preview: sample prices, not Autotex\'s real prices.</p>' : "") +
+    cEl.innerHTML = '<ul class="cl">' + rows + '</ul><div class="ctot"><span>Total' + (ask ? " (plus " + ask + " item" + (ask > 1 ? "s" : "") + " priced on WhatsApp)" : "") + "</span><b>" + (tot ? money(tot) : "On WhatsApp") + "</b></div>" +
       '<p class="small">We confirm stock and the exact fit for your car before you pay.</p>';
     cEl._c = c;
   }
@@ -134,9 +148,9 @@
       c.forEach(function (i, n) {
         var x = PR[i.id], has = showPrice(x); if (has) tot += x.price * i.q;
         L.push((n + 1) + ". " + x.part.name + (i.side ? " (" + i.side + ")" : "") + " - " + BR[x.model.b].name + " " + x.model.name + " " + x.model.code + " (" + x.model.years + ")");
-        L.push("   Qty " + i.q + " x " + (has ? money(x.price) + (x.sample ? " (sample price)" : "") : "price please") + (x.oem ? " · Part no. " + x.oem : "") + " · Ref " + x.id);
+        L.push("   Qty " + i.q + " x " + (has ? money(x.price) + "" : "price please") + (x.oem ? " · Part no. " + x.oem : "") + " · Ref " + x.id);
       });
-      L.push("", "Total: " + money(tot) + " (to confirm)", "", "Name: " + (fd.get("name") || ""), "Car plate / chassis: " + (fd.get("car") || "-"), "Collection: " + fd.get("collect"));
+      L.push("", "Total: " + (tot ? money(tot) + " (to confirm)" : "please quote"), "", "Name: " + (fd.get("name") || ""), "Car plate / chassis: " + (fd.get("car") || "-"), "Collection: " + fd.get("collect"));
       if (fd.get("note")) L.push("Notes: " + fd.get("note"));
       var url = "https://wa.me/" + AT.wa + "?text=" + encodeURIComponent(L.join("\n"));
       if (window.p1WaTap) window.p1WaTap($("button[type=submit]", co));
@@ -149,11 +163,6 @@
   function norm(s) { return " " + String(s || "").toLowerCase().replace(/[()]/g, " ").replace(/[^a-z0-9\-+ ]/g, " ").replace(/-/g, " ").replace(/\s+/g, " ").trim() + " "; }
   function lev(a, b) { if (Math.abs(a.length - b.length) > 1) return 9; var d = [], i, j; for (i = 0; i <= a.length; i++) d[i] = [i]; for (j = 0; j <= b.length; j++) d[0][j] = j;
     for (i = 1; i <= a.length; i++) for (j = 1; j <= b.length; j++) d[i][j] = Math.min(d[i - 1][j] + 1, d[i][j - 1] + 1, d[i - 1][j - 1] + (a[i - 1] === b[j - 1] ? 0 : 1)); return d[a.length][b.length]; }
-  var MK = AT.models.map(function (m) {
-    var keys = [m.name].concat(m.alias).map(function (k) { return norm(k).trim(); });
-    norm(m.name).trim().split(" ").forEach(function (w) { if (w.length > 2 && keys.indexOf(w) < 0) keys.push(w); });
-    return { m: m, keys: keys };
-  });
   function parse(q) {
     var s = norm(q), words = s.trim().split(" "), r = { brands: [], models: [], parts: [], year: 0 };
     AT.brands.forEach(function (b) { if (s.indexOf(" " + b.name.toLowerCase() + " ") >= 0) r.brands.push(b.id); });
@@ -188,10 +197,36 @@
     if (!r.parts.length) AT.cats.forEach(function (c) { var w = norm(c.name).trim().split(" ")[0].replace(/s$/, ""); if (w.length > 3 && s.indexOf(" " + w) >= 0) AT.parts.forEach(function (p) { if (p.cat === c.id) r.parts.push(p); }); });
     return r;
   }
+
+  function artHtml(x, big) {
+    return '<div class="art' + (big ? " big" : "") + '" data-cat="' + esc(x.part.cat) + '">' + (x.cat.svg || "") + "<span>Photo coming</span></div>";
+  }
   function pcard(x, showModel) {
-    return '<article class="pc" data-pid="' + esc(x.id) + '"><a class="pc-a" href="' + esc(href(x)) + '"><div class="art" data-cat="' + esc(x.part.cat) + '">' + (x.cat.svg || "") + "<span>Photo coming</span></div>" +
-      "<h3>" + esc(showModel ? x.title : x.part.name) + '</h3><p class="pc-sub">' + esc(showModel ? years(x.model) : x.part.unit) + "</p></a>" +
-      '<div class="pc-f"><div class="pc-p">' + priceHtml(x) + '</div><button class="btn add sm" type="button" data-add="' + esc(x.id) + '">Add</button></div></article>';
+    var needSide = x.part.side && !x.side;
+    return '<article class="pc" data-pid="' + esc(x.id) + '" data-live="1"><a class="pc-a" href="' + esc(href(x)) + '">' + artHtml(x) +
+      "<h3>" + esc(showModel ? x.title : x.part.name + (x.side ? " (" + SIDE[x.side] + ")" : "")) + '</h3><p class="pc-sub">' + esc(showModel ? years(x.model) : x.part.unit) + "</p></a>" +
+      '<div class="pc-f"><div class="pc-p">' + priceHtml(x) + '</div><button class="btn add sm" type="button" data-add="' + esc(x.id) + '"' + (needSide ? ' data-side="1"' : "") + ">Add</button></div></article>";
+  }
+  var WA_SVG = '<svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2Zm0 18.2a8.2 8.2 0 0 1-4.2-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2Z"/></svg>';
+  function askCard(m, p) {
+    return '<article class="pc ask" data-live="1"><div class="pc-a"><div class="art" data-cat="' + esc(p.cat) + '">' + ((C[p.cat] || {}).svg || "") + "</div><h3>" + esc(p.name) + '</h3><p class="pc-sub">' + esc(p.unit) +
+      '</p></div><div class="pc-f"><div class="pc-p"><span class="price ask">Ask for price</span></div><a class="btn wa sm" href="' + esc(askLink(m, p)) + '" rel="noopener">' + WA_SVG + "Ask on WhatsApp</a></div></article>";
+  }
+  // every part type for a car: product cards where listed, otherwise an "Ask on WhatsApp" card
+  function carListing(m) {
+    var its = live.filter(function (x) { return x.m === m.id; }), out = "";
+    AT.cats.forEach(function (c) {
+      var cards = [];
+      AT.parts.filter(function (p) { return p.cat === c.id && fits(m, p); }).forEach(function (p) {
+        var xs = its.filter(function (x) { return x.p === p.id; });
+        if (xs.length) xs.forEach(function (x) { cards.push(pcard(x, false)); }); else cards.push(askCard(m, p));
+      });
+      its.filter(function (x) { return x.p === "other" && x.part.cat === c.id; }).forEach(function (x) { cards.push(pcard(x, false)); });
+      if (cards.length) out += '<section class="msec"><h2>' + esc(c.name) + '</h2><div class="pgrid">' + cards.join("") + "</div></section>";
+    });
+    var misc = its.filter(function (x) { return x.p === "other" && !C[x.part.cat]; });
+    if (misc.length) out += '<section class="msec"><h2>More parts</h2><div class="pgrid">' + misc.map(function (x) { return pcard(x, false); }).join("") + "</div></section>";
+    return out;
   }
   function search(q) {
     var r = parse(q), out = live;
@@ -205,76 +240,153 @@
   }
   AT.search = search;
 
+  /* ---- photos: http(s) url, "b44photo:<id>" (local file if pulled at build time, else the AtPhoto record) ---- */
+  var PH = {};
+  function resolvePhoto(e) {
+    if (!e) return Promise.resolve(null);
+    if (/^https?:\/\//.test(e)) return Promise.resolve(e);
+    if (e.indexOf("b44photo:") !== 0) return Promise.resolve(null);
+    var id = e.slice(9);
+    if (AT.photoMap && AT.photoMap[id]) return Promise.resolve(R + AT.photoMap[id]);
+    if (!PH[id]) PH[id] = fetch(API + "AtPhoto/" + encodeURIComponent(id), { credentials: "omit" }).then(function (r) { return r.ok ? r.json() : null; })
+      .then(function (j) { return j && j.data ? j.data : null; }).catch(function () { return null; });
+    return PH[id];
+  }
+  function showPhotos(a, x) {
+    var first = x.photos && x.photos[0]; if (!first || a.getAttribute("data-ph") === first) return;
+    a.setAttribute("data-ph", first);
+    var go = function () { resolvePhoto(first).then(function (u) { if (!u || a.getAttribute("data-ph") !== first) return; a.classList.add("has-ph");
+      a.innerHTML = '<img src="' + esc(u) + '" alt="' + esc(x.title) + '" width="800" height="600" loading="lazy" decoding="async">'; }); };
+    if ("IntersectionObserver" in window) { var o = new IntersectionObserver(function (es) { if (es[0].isIntersecting) { o.disconnect(); go(); } }, { rootMargin: "300px" }); o.observe(a); } else go();
+  }
+  function showThumbs(host, x) {
+    var th = host.querySelector(".thumbs"); if (!th) return;
+    var sig = (x.photos || []).join("|"); if (th.getAttribute("data-sig") === sig) return; th.setAttribute("data-sig", sig); th.innerHTML = "";
+    if ((x.photos || []).length < 2) return;
+    x.photos.forEach(function (e, i) { resolvePhoto(e).then(function (u) { if (!u || th.getAttribute("data-sig") !== sig) return; var b = document.createElement("button");
+      b.type = "button"; b.setAttribute("data-full", u); b.setAttribute("aria-label", "Photo " + (i + 1)); b.innerHTML = '<img src="' + esc(u) + '" alt="" width="64" height="64" loading="lazy">'; th.appendChild(b); }); });
+  }
+  document.addEventListener("click", function (e) {
+    var b = e.target.closest(".thumbs button[data-full]"); if (!b) return;
+    var a = b.closest(".prod-art").querySelector(".art"); if (!a) return;
+    a.classList.add("has-ph"); a.removeAttribute("data-ph"); a.innerHTML = '<img src="' + esc(b.getAttribute("data-full")) + '" alt="" width="800" height="600">';
+  });
+
+  /* ---- search / detail page ---- */
   var res = $("[data-results]");
-  if (res) {
-    var qs = new URLSearchParams(location.search), q = qs.get("q") || "", fb = qs.get("b"), fm = qs.get("m"), fp = qs.get("p");
-    if (fm && fp) { var hit = live.filter(function (x) { return x.m === fm && x.p === fp; })[0]; if (hit) { location.replace(href(hit)); return; } }
-    if (fm && !fp && M[fm] && !M[fm].custom) { location.replace(mhref(M[fm])); return; }
-    var fid = qs.get("id");
-    if (fid && PR[fid]) { detail(PR[fid]); }
-    else if (fm && M[fm]) { var mm = M[fm], its = live.filter(function (x) { return x.m === fm; });
-      var t0 = $("[data-sr-title]"); if (t0) t0.textContent = BR[mm.b].name + " " + mm.name + (mm.code ? " (" + mm.code + ")" : "") + " parts";
-      res.innerHTML = "<p class=\"lead\">" + esc(years(mm)) + " · " + esc(mm.fuel || "") + "</p>" + (its.length ? '<div class="pgrid">' + its.map(function (x) { return pcard(x, false); }).join("") + "</div>" : '<p class="muted">No parts listed for this car yet. <a href="https://wa.me/' + AT.wa + '">Ask us on WhatsApp</a>.</p>');
-      photos(); }
-    var items = [], head = "";
-    if (q) { var o = search(q); items = o.items; var inp = $(".finder input[name=q]"); if (inp) inp.value = q;
-      var hq = $("#hq"); if (hq) hq.value = q;
+  function renderSearch() {
+    if (!res) return;
+    var qs = new URLSearchParams(location.search), q = qs.get("q") || "", fb = qs.get("b"), fm = qs.get("m"), fp = qs.get("p"), fid = qs.get("id");
+    if (fm && fp) { var hit = live.filter(function (x) { return x.m === fm && x.p === fp; })[0]; if (hit && href(hit).indexOf("search/") < 0) { location.replace(href(hit)); return; } }
+    if (fm && !fp && M[fm] && STATIC_M[fm] && dbState !== "pending") { location.replace(mhref(M[fm])); return; }
+    var t0 = $("[data-sr-title]");
+    if (fid) {
+      if (PR[fid]) { detail(PR[fid]); return; }
+      res.innerHTML = dbState === "pending" ? '<p class="muted">Loading the part…</p>' : '<div class="empty"><p>This part is not listed (any more).</p><p><a class="btn wa" href="' + waLink("Hi Autotex, I was looking at a part on your website (ref " + fid + "). Is it available? My car plate / chassis: ") + '">Ask us on WhatsApp</a></p></div>';
+      return;
+    }
+    if (fm) {
+      if (!M[fm]) { res.innerHTML = dbState === "pending" ? '<p class="muted">Loading…</p>' : '<div class="empty"><p>We could not find that car. Choose your car above, or ask us.</p><p><a class="btn wa" href="' + waLink("Hi Autotex, I need a part for my car. Model and year: ") + '">WhatsApp us</a></p></div>'; return; }
+      var mm = M[fm];
+      if (t0) t0.textContent = BR[mm.b].name + " " + mm.name + (mm.code ? " (" + mm.code + ")" : "") + " parts";
+      res.innerHTML = '<p class="lead">' + esc(years(mm)) + " · " + esc(mm.fuel || "") + '</p><p class="fitnote"><span>Tap Ask on WhatsApp for the price and stock of any part. We check the fit with your car plate or chassis number.</span></p><div class="msecs">' + carListing(mm) + "</div>";
+      return;
+    }
+    var items = [], head = "", o = null;
+    if (q) { o = search(q); items = o.items; var inp = $(".finder input[name=q]"); if (inp && !inp.value) inp.value = q;
+      var hq = $("#hq"); if (hq && !hq.value) hq.value = q;
       head = "<h2>" + items.length + " result" + (items.length === 1 ? "" : "s") + " for “" + esc(q) + "”</h2>";
-      if (o.r.models.length === 1 && !o.r.parts.length) head += '<p><a class="btn ghost" href="' + R + o.r.models[0].b + "/" + o.r.models[0].id + '/">All parts for the ' + esc(BR[o.r.models[0].b].name + " " + o.r.models[0].name + " " + o.r.models[0].code) + "</a></p>";
+      if (o.r.models.length === 1 && !o.r.parts.length) head += '<p><a class="btn ghost" href="' + esc(mhref(o.r.models[0])) + '">All parts for the ' + esc(mlabel(o.r.models[0])) + "</a></p>";
       else if (o.r.models.length > 1) head += '<p class="chips">' + o.r.models.map(function (m) { return '<a class="chip" href="?q=' + encodeURIComponent(q + " " + m.code) + '">' + esc(m.name + " " + m.code + " (" + years(m) + ")") + "</a>"; }).join("") + "</p><p class=\"small muted\">Tap your generation to narrow it down.</p>";
     } else if (fb || fp) {
       items = live.filter(function (x) { return (!fb || x.model.b === fb) && (!fp || x.p === fp); });
-      head = "<h2>" + items.length + " parts</h2>";
+      head = "<h2>" + items.length + " listed part" + (items.length === 1 ? "" : "s") + "</h2>";
+    } else return;
+    var html = head + (items.length ? '<div class="pgrid">' + items.slice(0, 60).map(function (x) { return pcard(x, true); }).join("") + "</div>" + (items.length > 60 ? '<p class="small">Showing 60. Add your model to narrow it down.</p>' : "") : "");
+    if (!items.length) {
+      if (o && o.r.models.length === 1 && o.r.parts.length) {
+        var m1 = o.r.models[0], asks = o.r.parts.filter(function (p) { return fits(m1, p); }).slice(0, 6);
+        if (asks.length) html += '<p class="muted">No price listed yet. Ask us and we reply with the price and stock.</p><div class="pgrid">' + asks.map(function (p) { return askCard(m1, p); }).join("") + "</div>";
+      }
+      if (html.indexOf("pgrid") < 0) html += '<div class="empty"><p>No match yet. Try the car model and the part, like “Sportage brake pads”, or ask us.</p><p><a class="btn wa" href="' + waLink("Hi Autotex, I'm looking for: " + (q || "a part") + ". My car plate / chassis: ") + '">WhatsApp us</a></p></div>';
     }
-    if (!fid && !fm && (q || fb || fp)) {
-      res.innerHTML = head + (items.length ? '<div class="pgrid">' + items.slice(0, 60).map(function (x) { return pcard(x, true); }).join("") + "</div>" + (items.length > 60 ? '<p class="small">Showing 60. Add your model to narrow it down.</p>' : "") :
-        '<div class="empty"><p>No match yet. Try the car model and the part, like “Sportage brake pads”, or ask us.</p><p><a class="btn wa" href="https://wa.me/' + AT.wa + "?text=" + encodeURIComponent("Hi Autotex, I'm looking for: " + q + ". My car plate / chassis: ") + '">WhatsApp us</a></p></div>');
-      var t = $("[data-sr-title]"); if (t && q) t.textContent = "Search: " + q;
-      photos();
-    }
+    res.innerHTML = html;
+    if (t0 && q) t0.textContent = "Search: " + q;
+    refreshStatic();
   }
 
   function detail(x) {
-    var m = x.model, t = $("[data-sr-title]"); if (t) t.textContent = x.part.name + " for " + BR[m.b].name + " " + m.name + (m.code ? " (" + m.code + ")" : "");
+    var m = x.model, t = $("[data-sr-title]"); if (t) t.textContent = x.part.name + " for " + mlabel(m);
     document.title = x.title + " | Autotex";
     var f = $(".hero-f.slim"); if (f) f.hidden = true;
-    var side = x.side ? '<p><b>Side:</b> ' + esc(SIDE[x.side] || "") + "</p>" : (x.part.side ? '<fieldset class="side"><legend>Side</legend><label><input type="radio" name="side" value="Left"> Left (passenger)</label><label><input type="radio" name="side" value="Right"> Right (driver)</label></fieldset>' : "");
-    res.innerHTML = '<section class="prod" data-product="' + esc(x.id) + '"><div class="prod-art"><div class="art big" data-cat="' + esc(x.part.cat) + '">' + (x.cat.svg || "") + '<span>Photo coming</span></div><div class="thumbs"></div></div><div class="prod-i">' +
-      '<p class="fits">Fits ' + esc(BR[m.b].name + " " + m.name + " " + (m.code || "") + ", " + years(m)) + "</p>" +
-      '<div class="buy"><div class="buy-p">' + priceHtml(x) + '<span class="unit">per ' + esc(x.part.unit) + "</span></div>" +
-      '<form class="buy-f" data-buy2>' + side + '<div class="qty"><label>Qty</label><input name="qty" type="number" min="1" max="20" value="1" inputmode="numeric"></div><button class="btn primary big" type="submit">Add to cart</button></form></div>' +
+    var side = x.side ? '<p class="sidefix"><b>Side:</b> ' + esc(SIDE[x.side]) + "</p>" : (x.part.side ? '<fieldset class="side"><legend>Side</legend><label><input type="radio" name="side" value="Left"> Left (passenger)</label><label><input type="radio" name="side" value="Right"> Right (driver)</label></fieldset>' : "");
+    var msg = "Hi Autotex, I'm asking about: " + x.title + " " + m.years + ". My car plate / chassis number is: ";
+    var stock = x.stock === "in" ? '<span class="stock ok">In stock</span>' : x.stock === "order" ? '<span class="stock warn">Order from Korea</span>' : x.stock === "out" ? '<span class="stock out">Out of stock</span>' : '<span class="stock">Stock checked on WhatsApp</span>';
+    res.innerHTML = '<section class="prod" data-product="' + esc(x.id) + '"><div class="prod-art">' + artHtml(x, true) + '<div class="thumbs"></div></div><div class="prod-i">' +
+      '<p class="fits">Fits ' + esc(mlabel(m) + ", " + years(m)) + "</p>" +
+      '<div class="buy"><div class="buy-p">' + priceHtml(x) + '<span class="unit">per ' + esc(x.part.unit) + "</span></div>" + stock +
+      '<form class="buy-f" data-buy2>' + side + '<div class="qty"><label>Qty</label><input name="qty" type="number" min="1" max="20" value="1" inputmode="numeric"></div><button class="btn primary big" type="submit">Add to cart</button></form>' +
+      '<a class="btn wa' + (showPrice(x) ? " ghost" : "") + '" href="' + esc(waLink(msg)) + '" rel="noopener">' + WA_SVG + (showPrice(x) ? "Ask about this part" : "Ask for price on WhatsApp") + "</a></div>" +
       (x.note ? '<p class="note">' + esc(x.note) + "</p>" : "") + (x.oem ? '<p><b>Part number:</b> <span class="mono">' + esc(x.oem) + "</span></p>" : "") + "</div></section>";
     $("[data-buy2]", res).addEventListener("submit", function (e) { e.preventDefault(); var s = res.querySelector("input[name=side]:checked");
       if (res.querySelector("input[name=side]") && !s) { $(".side", res).classList.add("need"); return; }
       add(x.id, Math.max(1, +$("input[name=qty]", res).value || 1), s ? s.value : (SIDE[x.side] || "")); });
-    photos();
+    refreshStatic();
   }
-  /* photos added by staff in this browser (IndexedDB at_media/photos, key "<id>:<i>") */
-  var dbp;
-  function db() { if (!dbp) dbp = new Promise(function (ok, no) { try { var r = indexedDB.open("at_media", 1); r.onupgradeneeded = function () { r.result.createObjectStore("photos"); }; r.onsuccess = function () { ok(r.result); }; r.onerror = no; } catch (e) { no(e); } }); return dbp; }
-  function getPhoto(key) { return db().then(function (d) { return new Promise(function (ok) { try { var q = d.transaction("photos").objectStore("photos").get(key); q.onsuccess = function () { ok(q.result || null); }; q.onerror = function () { ok(null); }; } catch (e) { ok(null); } }); }); }
-  function photos() {
-    $$("[data-pid] .art, [data-product] .art").forEach(function (a) {
-      var host = a.closest("[data-pid]") || a.closest("[data-product]"), id = host.getAttribute("data-pid") || host.getAttribute("data-product"), x = PR[id];
-      if (!x || !x.photos || a._ph) return; a._ph = 1;
-      getPhoto(id + ":0").then(function (u) { if (!u) return; a.classList.add("has-ph"); a.innerHTML = '<img src="' + u + '" alt="' + esc(x.title) + '" loading="lazy">'; }).catch(function () {});
-      var th = host.querySelector(".thumbs");
-      if (th && x.photos > 1) for (var i = 0; i < x.photos; i++) (function (i) { getPhoto(id + ":" + i).then(function (u) { if (!u) return; var b = document.createElement("button"); b.type = "button"; b.innerHTML = '<img src="' + u + '" alt="">';
-        b.onclick = function () { a.innerHTML = '<img src="' + u + '" alt="' + esc(x.title) + '">'; }; th.appendChild(b); }); })(i);
+
+  /* ---- bring the static HTML in line with the live database ---- */
+  function refreshStatic() {
+    $$("[data-live]").forEach(function (el) { if (!res || !res.contains(el)) el.remove(); });
+    $$("[data-ask][hidden]").forEach(function (el) { el.hidden = false; });
+    // prices, stock, visibility of products already printed in the page
+    $$("[data-price]").forEach(function (el) {
+      var x = PR[el.getAttribute("data-price")]; if (!x) return;
+      var big = el.classList.contains("big");
+      if (showPrice(x)) { el.className = "price" + (big ? " big" : ""); el.textContent = money(x.price); } else { el.className = "price ask" + (big ? " big" : ""); el.textContent = "Ask for price"; }
     });
+    $$("[data-stock]").forEach(function (el) {
+      var x = PR[el.getAttribute("data-stock")]; if (!x) return;
+      var s = { in: ["In stock", "ok"], order: ["Order from Korea", "warn"], out: ["Out of stock", "out"] }[x.stock] || ["Stock checked on WhatsApp", ""];
+      el.className = "stock " + s[1]; el.textContent = s[0];
+    });
+    if (dbState === "done") {
+      $$("[data-pid]").forEach(function (el) { if (res && res.contains(el)) return; var gone = !PR[el.getAttribute("data-pid")] && !el.hasAttribute("data-live"); el.hidden = gone; });
+      $$("[data-product]").forEach(function (el) { if (res && res.contains(el)) return; var g = $(".gone", el); if (g) g.hidden = !!PR[el.getAttribute("data-product")]; var f = $(".buy", el); if (f && !PR[el.getAttribute("data-product")]) f.hidden = true; else if (f) f.hidden = false; });
+    }
+    $$("[data-pid], [data-product]").forEach(function (host) {
+      var x = PR[host.getAttribute("data-pid") || host.getAttribute("data-product")]; if (!x) return;
+      var a = $(".art", host); if (a && x.photos && x.photos.length) showPhotos(a, x);
+      if (host.hasAttribute("data-product")) showThumbs(host, x);
+    });
+    if (dbState !== "done") return;
+    // listed products that have no static page yet, and part types now listed: model pages, part pages
+    var used = {};
+    live.filter(function (x) { return !x.url; }).forEach(function (x) {
+      var k = x.m + "|" + x.p, ask = x.p !== "other" && !used[k] ? $('[data-ask="' + k + '"]') : null;
+      if (ask) {
+        used[k] = 1; ask.hidden = true;
+        if (ask.tagName === "TR") ask.insertAdjacentHTML("afterend", '<tr data-live="1" data-pid="' + esc(x.id) + '"><td><a href="' + esc(href(x)) + '">' + esc(x.model.name) + " <i>" + esc(x.model.code) + "</i></a><small>" + esc(years(x.model)) + "</small></td><td>" + esc(x.part.name) + (x.side ? " (" + SIDE[x.side] + ")" : "") + '</td><td class="r">' + priceHtml(x) + '</td><td class="r"><button class="btn add sm" type="button" data-add="' + esc(x.id) + '"' + (x.part.side && !x.side ? ' data-side="1"' : "") + ">Add</button></td></tr>");
+        else ask.insertAdjacentHTML("afterend", pcard(x, false));
+      } else extra(x);
+    });
+    // new cars: tiles on the home page and brand pages
+    AT.models.filter(function (m) { return !STATIC_M[m.id]; }).forEach(function (m) {
+      var tile = '<a class="mt" data-live="1" href="' + esc(mhref(m)) + '"><span class="mt-b">' + esc(BR[m.b].name) + "</span><b>" + esc(m.name) + (m.code ? " <i>" + esc(m.code) + "</i>" : "") + "</b><span>" + esc(years(m)) + "</span></a>";
+      var g = location.pathname.match(new RegExp("/" + m.b + "/$")) ? $(".mgrid") : $('[data-pane="' + (m.b === "kia" ? "ki" : "hy") + '"]');
+      if (g) g.insertAdjacentHTML("beforeend", tile);
+    });
+    // cars removed or hidden in the database
+    $$("a.mt, .chips a.chip").forEach(function (a) { var mt = (a.getAttribute("href") || "").match(/\/(hyundai|kia)\/([a-z0-9-]+)\/$/); if (mt && STATIC_M[mt[2]] && !M[mt[2]]) a.hidden = true; else if (mt) a.hidden = false; });
+    if (cEl) renderCart();
+    refreshFinders();
   }
-  if (list.some(function (x) { return x.photos; })) photos();
-  // staff-added cars: add their tiles to brand pages and the home page tabs
-  AT.models.filter(function (m) { return m.custom; }).forEach(function (m) {
-    var n = live.filter(function (x) { return x.m === m.id; }).length;
-    var tile = '<a class="mt" href="' + esc(mhref(m)) + '"><span class="mt-b">' + esc(BR[m.b].name) + "</span><b>" + esc(m.name) + (m.code ? " <i>" + esc(m.code) + "</i>" : "") + "</b><span>" + esc(years(m)) + " · " + n + " parts</span></a>";
-    var g = location.pathname.match(new RegExp("/" + m.b + "/$")) ? $(".mgrid") : $('[data-pane="' + (m.b === "kia" ? "ki" : "hy") + '"]');
-    if (g) g.insertAdjacentHTML("beforeend", tile);
-  });
-  // staff-added products for this car on the static model page (preview: this browser only)
-  var mp = location.pathname.match(/\/(hyundai|kia)\/([a-z0-9-]+)\/$/);
-  if (mp && M[mp[2]]) { var extra = live.filter(function (x) { return x.m === mp[2] && !x.url; });
-    if (extra.length) { var w = $(".msecs"); if (w) { var s = document.createElement("section"); s.className = "msec"; s.innerHTML = "<h2>Newly added</h2><div class=\"pgrid\">" + extra.map(function (x) { return pcard(x, false); }).join("") + "</div>"; w.insertBefore(s, w.firstChild); photos(); } } }
+  function extra(x) {
+    var mp = location.pathname.match(/\/(hyundai|kia)\/([a-z0-9-]+)\/$/);
+    if (!mp || mp[2] !== x.m) return;
+    var w = $(".msecs"); if (!w) return;
+    var s = $("#live-extra"); if (!s) { s = document.createElement("section"); s.id = "live-extra"; s.className = "msec"; s.setAttribute("data-live", "1"); s.innerHTML = '<h2>Newly added</h2><div class="pgrid"></div>'; w.insertBefore(s, w.firstChild); }
+    $(".pgrid", s).insertAdjacentHTML("beforeend", pcard(x, false));
+  }
 
   /* ---- header search suggestions ---- */
   $$(".hd-search input, .finder input[name=q]").forEach(function (inp) {
@@ -291,34 +403,37 @@
   });
 
   /* ---- finder: brand -> model -> part ---- */
+  var finders = [];
   $$("[data-finder]").forEach(function (f) {
     var sb = $("[data-f=b]", f), sm = $("[data-f=m]", f), sp = $("[data-f=p]", f);
-    function models() {
-      var b = sb.value, want = sm.getAttribute("data-sel");
+    function models(keepModel, keepPart) {
+      var b = sb.value, want = keepModel || sm.getAttribute("data-sel");
       sm.innerHTML = '<option value="">' + (b ? "Choose model" : "Choose brand first") + "</option>" + AT.models.filter(function (m) { return m.b === b; }).map(function (m) {
-        return '<option value="' + m.id + '"' + (m.id === want ? " selected" : "") + ">" + esc(m.name + " " + m.code + " (" + years(m) + ")") + "</option>"; }).join("");
-      sm.disabled = !b; parts();
+        return '<option value="' + esc(m.id) + '"' + (m.id === want ? " selected" : "") + ">" + esc(m.name + " " + m.code + " (" + years(m) + ")") + "</option>"; }).join("");
+      sm.disabled = !b; parts(keepPart);
     }
-    function parts() {
-      var m = sm.value, have = live.filter(function (x) { return x.m === m; });
-      sp.innerHTML = '<option value="">' + (m ? "All parts for this car" : "Choose model first") + "</option>" + AT.cats.map(function (c) {
-        var o = have.filter(function (x) { return x.part.cat === c.id && x.p; }); if (!o.length) return "";
-        return '<optgroup label="' + esc(c.name) + '">' + o.map(function (x) { return '<option value="' + x.p + '">' + esc(x.part.name) + "</option>"; }).join("") + "</optgroup>"; }).join("");
+    function parts(want) {
+      var m = M[sm.value];
+      sp.innerHTML = '<option value="">' + (m ? "All parts for this car" : "Choose model first") + "</option>" + (m ? AT.cats.map(function (c) {
+        var o = AT.parts.filter(function (p) { return p.cat === c.id && fits(m, p); }); if (!o.length) return "";
+        return '<optgroup label="' + esc(c.name) + '">' + o.map(function (p) { return '<option value="' + esc(p.id) + '"' + (p.id === want ? " selected" : "") + ">" + esc(p.name) + "</option>"; }).join("") + "</optgroup>"; }).join("") : "");
       sp.disabled = !m;
     }
     sb.addEventListener("change", function () { sm.removeAttribute("data-sel"); models(); });
-    sm.addEventListener("change", parts);
+    sm.addEventListener("change", function () { parts(); });
     models();
+    finders.push(function () { models(sm.value, sp.value); });
     f.addEventListener("submit", function (e) {
       var q = $("input[name=q]", f).value.trim();
       if (document.activeElement && document.activeElement.closest(".f-q") || (q && !sm.value)) { // typed search
         e.preventDefault(); location.href = R + "search/?q=" + encodeURIComponent(q); return; }
       if (sm.value) { e.preventDefault(); var hit = sp.value && live.filter(function (x) { return x.m === sm.value && x.p === sp.value; })[0];
-        location.href = hit ? href(hit) : mhref(M[sm.value]); return; }
+        location.href = hit ? href(hit) : (sp.value && STATIC_M[sm.value] ? mhref(M[sm.value]) + "#p-" + sp.value : mhref(M[sm.value])); return; }
       if (!sb.value && !q) { e.preventDefault(); sb.focus(); }
       else if (sb.value && !q) { e.preventDefault(); location.href = R + sb.value + "/"; }
     });
   });
+  function refreshFinders() { finders.forEach(function (fn) { fn(); }); }
 
   /* ---- small UI ---- */
   var bg = $(".burger"), nav = $("#nav");
@@ -332,5 +447,30 @@
   if ("IntersectionObserver" in window && !matchMedia("(prefers-reduced-motion: reduce)").matches) {
     var io = new IntersectionObserver(function (es) { es.forEach(function (en) { if (en.isIntersecting) { en.target.classList.add("in"); io.unobserve(en.target); } }); }, { rootMargin: "0px 0px -8% 0px" });
     $$(".reveal, .pc, .mt, .ct").forEach(function (el) { el.classList.add("rv"); io.observe(el); });
+  }
+
+  /* ---- go: static baseline first, then the live database (cached 5 minutes in sessionStorage) ---- */
+  setData(null, null);
+  var cached = null;
+  try { cached = JSON.parse(sessionStorage.getItem(CACHE)); } catch (e) {}
+  function fetchAll(entity) {
+    var out = [];
+    function page(skip) {
+      return fetch(API + entity + "?limit=500&skip=" + skip, { credentials: "omit" }).then(function (r) { if (!r.ok) throw 0; return r.json(); }).then(function (rows) {
+        if (!Array.isArray(rows)) throw 0; out = out.concat(rows);
+        return rows.length >= 500 && skip < 20000 ? page(skip + 500) : out; });
+    }
+    return page(0);
+  }
+  function apply(d) { setData(d.cars, d.prods); dbState = "done"; renderSearch(); refreshStatic(); }
+  if (cached && cached.t && Date.now() - cached.t < TTL && Array.isArray(cached.cars) && Array.isArray(cached.prods)) apply(cached);
+  else {
+    renderSearch(); refreshStatic();
+    if (window.fetch && window.Promise) Promise.all([fetchAll("AtCar"), fetchAll("AtProduct")]).then(function (v) {
+      var d = { t: Date.now(), cars: v[0], prods: v[1] };
+      try { sessionStorage.setItem(CACHE, JSON.stringify(d)); } catch (e) {}
+      apply(d);
+    }).catch(function () { dbState = "failed"; renderSearch(); });
+    else dbState = "failed";
   }
 })();

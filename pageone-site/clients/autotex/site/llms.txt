@@ -1,44 +1,46 @@
 # Autotex (Autotex Aircon Enterprise)
 
-> Kia and Hyundai parts stockist in Kaki Bukit, Singapore. Stocks parts direct from Korea and sells direct to Singapore drivers. Search by car model and part, see the price, order on WhatsApp.
+> Kia and Hyundai parts stockist in Kaki Bukit, Singapore. Stocks parts direct from Korea and sells direct to Singapore drivers. Pick your car and part, see the price where listed or ask on WhatsApp.
 
 - Registered name: Autotex Aircon Enterprise, UEN 52353300D, registered 24 February 1995
 - Address: 1 Kaki Bukit Avenue 6, #01-42, AutoBay@Kaki Bukit, Singapore 417883
+- Opening hours: Mon-Fri 9:30am-5:30pm, Sat 9:30am-3:30pm, Sunday closed
 - Phone: 6747 9618. WhatsApp: +65 9731 9547
 - Google rating: 5.0 from 4 reviews
 - Parts: body parts, headlamps and tail lamps, engine parts, suspension, engine mounting, brake pads, brake discs (rotors), spark plugs, ignition coils
-- Ordering: add parts to the cart and send the order on WhatsApp; Autotex confirms stock and fit (by car plate or chassis number) before payment
-- Price list: https://pageonesingapore.com/preview/autotex/prices/
+- Prices: listed on the product page where set; otherwise quoted on WhatsApp. Autotex confirms stock and fit (by car plate or chassis number) before payment
+- Ordering: add parts to the cart and send the order on WhatsApp
+- Price list: https://autotexautoparts.com.sg/prices/
 
 ## Parts by type
-- Body Parts: https://pageonesingapore.com/preview/autotex/parts/body-parts/
-- Headlamps & Tail Lamps: https://pageonesingapore.com/preview/autotex/parts/lamps/
-- Brake Pads: https://pageonesingapore.com/preview/autotex/parts/brake-pads/
-- Brake Discs (Rotors): https://pageonesingapore.com/preview/autotex/parts/brake-discs/
-- Suspension: https://pageonesingapore.com/preview/autotex/parts/suspension/
-- Engine Mounting: https://pageonesingapore.com/preview/autotex/parts/engine-mounting/
-- Spark Plugs: https://pageonesingapore.com/preview/autotex/parts/spark-plugs/
-- Ignition Coils: https://pageonesingapore.com/preview/autotex/parts/ignition-coils/
-- Engine Parts: https://pageonesingapore.com/preview/autotex/parts/engine-parts/
+- Body Parts: https://autotexautoparts.com.sg/parts/body-parts/
+- Headlamps & Tail Lamps: https://autotexautoparts.com.sg/parts/lamps/
+- Brake Pads: https://autotexautoparts.com.sg/parts/brake-pads/
+- Brake Discs (Rotors): https://autotexautoparts.com.sg/parts/brake-discs/
+- Suspension: https://autotexautoparts.com.sg/parts/suspension/
+- Engine Mounting: https://autotexautoparts.com.sg/parts/engine-mounting/
+- Spark Plugs: https://autotexautoparts.com.sg/parts/spark-plugs/
+- Ignition Coils: https://autotexautoparts.com.sg/parts/ignition-coils/
+- Engine Parts: https://autotexautoparts.com.sg/parts/engine-parts/
 
 ## Models
-- Hyundai Avante (AD, 2016-2020): https://pageonesingapore.com/preview/autotex/hyundai/avante-ad/
-- Hyundai Avante (CN7, 2020-now): https://pageonesingapore.com/preview/autotex/hyundai/avante-cn7/
-- Hyundai i30 (PD, 2017-2020): https://pageonesingapore.com/preview/autotex/hyundai/i30-pd/
-- Hyundai Ioniq Hybrid (AE, 2016-2022): https://pageonesingapore.com/preview/autotex/hyundai/ioniq-ae/
-- Hyundai Ioniq 5 (NE, 2021-now): https://pageonesingapore.com/preview/autotex/hyundai/ioniq-5/
-- Hyundai Kona (OS, 2017-2023): https://pageonesingapore.com/preview/autotex/hyundai/kona-os/
-- Hyundai Tucson (TL, 2015-2020): https://pageonesingapore.com/preview/autotex/hyundai/tucson-tl/
-- Hyundai Tucson (NX4, 2021-now): https://pageonesingapore.com/preview/autotex/hyundai/tucson-nx4/
-- Hyundai Santa Fe (TM, 2018-2023): https://pageonesingapore.com/preview/autotex/hyundai/santa-fe-tm/
-- Hyundai Starex / H-1 (TQ, 2007-2021): https://pageonesingapore.com/preview/autotex/hyundai/starex-tq/
-- Kia Cerato K3 (YD, 2013-2018): https://pageonesingapore.com/preview/autotex/kia/cerato-yd/
-- Kia Cerato K3 (BD, 2018-now): https://pageonesingapore.com/preview/autotex/kia/cerato-bd/
-- Kia Picanto (JA, 2017-now): https://pageonesingapore.com/preview/autotex/kia/picanto-ja/
-- Kia Sportage (QL, 2016-2021): https://pageonesingapore.com/preview/autotex/kia/sportage-ql/
-- Kia Sportage (NQ5, 2022-now): https://pageonesingapore.com/preview/autotex/kia/sportage-nq5/
-- Kia Sorento (UM, 2015-2020): https://pageonesingapore.com/preview/autotex/kia/sorento-um/
-- Kia Niro (DE, 2016-2022): https://pageonesingapore.com/preview/autotex/kia/niro-de/
-- Kia EV6 (CV, 2021-now): https://pageonesingapore.com/preview/autotex/kia/ev6/
-- Kia Carens (RP, 2013-2019): https://pageonesingapore.com/preview/autotex/kia/carens-rp/
-- Kia Optima K5 (JF, 2015-2020): https://pageonesingapore.com/preview/autotex/kia/optima-jf/
+- Hyundai Avante (AD, 2016-2020): https://autotexautoparts.com.sg/hyundai/avante-ad/
+- Hyundai Avante (CN7, 2020-now): https://autotexautoparts.com.sg/hyundai/avante-cn7/
+- Hyundai i30 (PD, 2017-2020): https://autotexautoparts.com.sg/hyundai/i30-pd/
+- Hyundai Ioniq Hybrid (AE, 2016-2022): https://autotexautoparts.com.sg/hyundai/ioniq-ae/
+- Hyundai Ioniq 5 (NE, 2021-now): https://autotexautoparts.com.sg/hyundai/ioniq-5/
+- Hyundai Kona (OS, 2017-2023): https://autotexautoparts.com.sg/hyundai/kona-os/
+- Hyundai Tucson (TL, 2015-2020): https://autotexautoparts.com.sg/hyundai/tucson-tl/
+- Hyundai Tucson (NX4, 2021-now): https://autotexautoparts.com.sg/hyundai/tucson-nx4/
+- Hyundai Santa Fe (TM, 2018-2023): https://autotexautoparts.com.sg/hyundai/santa-fe-tm/
+- Hyundai Starex / H-1 (TQ, 2007-2021): https://autotexautoparts.com.sg/hyundai/starex-tq/
+- Kia Cerato K3 (YD, 2013-2018): https://autotexautoparts.com.sg/kia/cerato-yd/
+- Kia Cerato K3 (BD, 2018-now): https://autotexautoparts.com.sg/kia/cerato-bd/
+- Kia Picanto (JA, 2017-now): https://autotexautoparts.com.sg/kia/picanto-ja/
+- Kia Sportage (QL, 2016-2021): https://autotexautoparts.com.sg/kia/sportage-ql/
+- Kia Sportage (NQ5, 2022-now): https://autotexautoparts.com.sg/kia/sportage-nq5/
+- Kia Sorento (UM, 2015-2020): https://autotexautoparts.com.sg/kia/sorento-um/
+- Kia Niro (DE, 2016-2022): https://autotexautoparts.com.sg/kia/niro-de/
+- Kia EV6 (CV, 2021-now): https://autotexautoparts.com.sg/kia/ev6/
+- Kia Carens (RP, 2013-2019): https://autotexautoparts.com.sg/kia/carens-rp/
+- Kia Optima K5 (JF, 2015-2020): https://autotexautoparts.com.sg/kia/optima-jf/
