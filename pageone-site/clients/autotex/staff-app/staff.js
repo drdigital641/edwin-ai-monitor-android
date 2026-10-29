@@ -61,7 +61,7 @@
     return h;
   }
   function signOutExpired() {
-    lsDel(TOKEN_KEY); token = ''; user = null; renderSignIn('Your session ended. Please sign in again.');
+    lsDel(TOKEN_KEY); lsDel('token'); token = ''; user = null; renderSignIn('Your session ended. Please sign in again.');
   }
   function api(method, path, body) {
     return fetch(BASE + path, { method: method, headers: headers(), body: body === undefined ? undefined : JSON.stringify(body) })
@@ -863,8 +863,8 @@
     var a = t.getAttribute('data-a'), v = t.getAttribute('data-v'), id = t.getAttribute('data-id');
     if (a === 'selall' || a === 'sel') return; // handled on change
     switch (a) {
-      case 'signin': location.href = '/login?from_url=' + encodeURIComponent(location.href); break;
-      case 'signout': lsDel(TOKEN_KEY); token = ''; location.reload(); break;
+      case 'signin': location.href = '/login?returnTo=' + encodeURIComponent(location.pathname); break;
+      case 'signout': lsDel(TOKEN_KEY); lsDel('token'); token = ''; location.reload(); break;
       case 'reload': boot(); break;
       case 'tab': setTab(v); break;
       case 'set': { var c = t.getAttribute('data-c'), f = t.getAttribute('data-f'); if (f === 'cbrand') f = 'brand'; if (f === 'cestatus') f = 'status'; setField(c, f, v); break; }
