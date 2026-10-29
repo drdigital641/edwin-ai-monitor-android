@@ -471,7 +471,58 @@
     });
   }
 
-  window.MP = { D: D, LS: LS, K: K, ROOT: ROOT, esc: esc, norm: norm, search: search, allProducts: allProducts, saveProducts: saveProducts, byId: byId, purl: purl, pimg: pimg, ph: ph, catName: catName, CATS: CATS, leads: leads, track: track, toast: toast, cardHTML: cardHTML };
-  function init() { if (document.body.classList.contains('st')) return; navSetup(); tabs(); liveSearch(); catalogueInit(); productInit(); formsInit(); rfqInit(); localInit(); reveal(); }
+
+  /* ---------- v2: catalogue menu, branch sheet, parts-list checker ---------- */
+  function catPanel() {
+    var pn = $('#catpanel'); if (!pn) return;
+    var trig = $$('[data-catpanel]');
+    function set(open) {
+      pn.hidden = !open; trig.forEach(function (t) { t.setAttribute('aria-expanded', open); });
+      if (open) { var n = $('#nav'); if (n) n.classList.remove('open'); var i = $('input', pn); if (i && window.innerWidth > 700) setTimeout(function () { i.focus(); }, 50); track('catalogue_menu', {}); }
+    }
+    trig.forEach(function (t) { t.addEventListener('click', function (e) { e.preventDefault(); if (t.closest('.mbar')) window.scrollTo({ top: 0, behavior: 'smooth' }); set(pn.hidden); }); });
+    document.addEventListener('keydown', function (e) { if (e.key === 'Escape' && !pn.hidden) set(false); });
+    document.addEventListener('click', function (e) { if (!pn.hidden && !pn.contains(e.target) && !e.target.closest('[data-catpanel]')) set(false); });
+  }
+  function branchSheet() {
+    var m = $('#branch-sheet'); if (!m) return;
+    $$('[data-branches]').forEach(function (b) { b.addEventListener('click', function (e) { e.preventDefault(); m.classList.add('on'); track('branch_sheet', {}); }); });
+    m.addEventListener('click', function (e) { if (e.target === m || e.target.closest('[data-close]')) m.classList.remove('on'); });
+    $$('.brc', m).forEach(function (a) { a.addEventListener('click', function () { track('click_call', { branch: $('b', a).textContent }); }); });
+  }
+  function bulkTool() {
+    $$('[data-bulk]').forEach(function (box) {
+      var ta = $('[data-bulk-in]', box), out = $('[data-bulk-out]', box), last = [];
+      function run() {
+        var lines = ta.value.split(/\n+/).map(function (l) { return l.trim(); }).filter(Boolean).slice(0, 50);
+        if (!lines.length) { out.innerHTML = '<p class="note" style="margin:10px 0 0">Paste at least one part number.</p>'; return; }
+        last = lines.map(function (l) {
+          var m = l.match(/^(.*?)(?:[,;\t]\s*|\s+x\s*|\s+)(\d{1,5})\s*(?:pcs?|units?)?$/i), ref = m ? m[1].trim() : l, qty = m ? +m[2] : 1;
+          if (!M_norm(ref)) { ref = l; qty = 1; }
+          var r = search(ref), ex = r.results.filter(function (x) { return x.kind === 'exact'; })[0], pos = r.results.filter(function (x) { return x.kind !== 'all'; })[0];
+          return { line: l, ref: ref, qty: qty, p: ex ? ex.p : null, maybe: !ex && pos ? pos.p : null };
+        });
+        track('bulk_check', { lines: last.length, found: last.filter(function (x) { return x.p; }).length });
+        var found = last.filter(function (x) { return x.p; }).length;
+        out.innerHTML = '<div class="bres"><table>' + last.map(function (x) {
+          return '<tr><td class="mono">' + esc(x.ref) + '</td><td>' + esc(x.qty) + ' pcs</td><td>' + (x.p ? '<span class="tag tag-t">In catalogue</span> <a href="' + purl(x.p) + '">' + esc(x.p.name) + '</a>' : x.maybe ? '<span class="tag tag-a">Possible match</span> <a href="' + purl(x.maybe) + '">' + esc(x.maybe.name) + '</a><br><span class="note">Not confirmed: sent to our team to check.</span>' : '<span class="tag tag-g">Not listed</span> <span class="note">Sent to our team as a sourcing request.</span>') + '</td></tr>';
+        }).join('') + '</table></div><div style="display:flex;gap:8px;flex-wrap:wrap;margin-top:10px"><button class="btn btn-o btn-s" type="button" data-bulk-add>' + (found ? 'Add ' + found + ' matched part' + (found > 1 ? 's' : '') + ' to my enquiry' : 'Add the list to my enquiry') + '</button></div>';
+        $('[data-bulk-add]', out).addEventListener('click', function () {
+          var l = rfq();
+          last.forEach(function (x) { if (x.p) { var it = l.filter(function (y) { return y.id === x.p.id; })[0]; if (it) it.qty = x.qty; else l.push({ id: x.p.id, qty: x.qty }); } });
+          setRfq(l); renderBasket();
+          var rest = last.filter(function (x) { return !x.p; });
+          if (rest.length) $$('form[data-lead="EXPORT"] textarea[name=message]').forEach(function (t) { t.value = (t.value ? t.value + '\n' : '') + 'Also need (not matched in the catalogue, please check):\n' + rest.map(function (x) { return x.ref + ' x ' + x.qty; }).join('\n'); });
+          toast((found ? found + ' part' + (found > 1 ? 's' : '') + ' added to your enquiry list. ' : '') + (rest.length ? rest.length + ' other line' + (rest.length > 1 ? 's were' : ' was') + ' added to the message for our team.' : ''), 4500);
+          var f = $('form[data-lead="EXPORT"]'); if (f) f.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        });
+      }
+      $('[data-bulk-go]', box).addEventListener('click', run);
+      $('[data-bulk-ex]', box).addEventListener('click', function () { ta.value = '8730R, 10\n4M0 816 421B, 4\n1787, 6\nW210 compressor, 2'; run(); });
+    });
+  }
+  function M_norm(s) { return norm(s); }
+  window.MP = { D: D, LS: LS, K: K, ROOT: ROOT, esc: esc, norm: norm, search: search, allProducts: allProducts, saveProducts: saveProducts, byId: byId, purl: purl, pimg: pimg, ph: ph, catName: catName, CATS: CATS, leads: leads, track: track, toast: toast, cardHTML: cardHTML, addRfq: addRfq, rfq: rfq, saveLead: saveLead, nextId: nextId, published: published };
+  function init() { if (document.body.classList.contains('st')) return; navSetup(); catPanel(); branchSheet(); tabs(); liveSearch(); catalogueInit(); productInit(); formsInit(); rfqInit(); localInit(); bulkTool(); reveal(); if (location.hash === '#bulk' || location.hash === '#vin') { var h = document.getElementById(location.hash.slice(1)); if (h) setTimeout(function () { h.scrollIntoView(); }, 60); } }
   if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', init); else init();
 })();

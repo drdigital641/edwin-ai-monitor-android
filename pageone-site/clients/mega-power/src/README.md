@@ -19,6 +19,7 @@ Live megapower.com.sg was NOT touched.
 - Search: client-side, data.js + staff changes in localStorage (`mp_*_v1`). Exact ref / match / possible labels; unknown chassis codes (W210) fail instead of guessing.
 - Leads, RFQ list, staff products, audit log all live in the viewer's browser only. No email/WhatsApp sent.
 - Product/category URLs = old Magento URLs. htaccess.txt holds the go-live 301s for other old paths.
+- chat.js = mascot + assistant (rule-based intents, catalogue search via window.MP, leads tagged CHAT_*; sessionStorage mp_chat/mp_bub). Not a live AI.
 - wa.js = tracking/wa-tap-counter.js v2 with site 'mega-power' (inactive on pageonesingapore.com; no wa.me links until a WhatsApp number is confirmed; needs a Controller Client row at go-live).
 
 ## Open (owner)

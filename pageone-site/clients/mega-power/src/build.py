@@ -134,6 +134,7 @@ I = {
  "phone": '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"><path d="M5 3h4l2 5-2.5 1.5a11 11 0 0 0 6 6L16 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 5a2 2 0 0 1 2-2Z"/></svg>',
  "mail": '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg>',
  "list": '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M9 6h11M9 12h11M9 18h11"/><circle cx="4.5" cy="6" r="1"/><circle cx="4.5" cy="12" r="1"/><circle cx="4.5" cy="18" r="1"/></svg>',
+ "grid": '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3.5" y="3.5" width="7" height="7" rx="1.5"/><rect x="13.5" y="3.5" width="7" height="7" rx="1.5"/><rect x="3.5" y="13.5" width="7" height="7" rx="1.5"/><rect x="13.5" y="13.5" width="7" height="7" rx="1.5"/></svg>',
  "search": '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>',
  "info": '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><circle cx="12" cy="12" r="9"/><path d="M12 11v6M12 7.5v.5"/></svg>',
  "check": '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="m8 12.5 2.5 2.5L16 9.5"/></svg>',
@@ -148,8 +149,8 @@ WA_SVG = '<svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a10 10 0 0 
 PLACEHOLDER = lambda ic: f'<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 300"><rect width="400" height="300" fill="#F3F0E9"/><g transform="translate(150 100) scale(3.1)" color="#B9B2A3">{I[ic].replace("currentColor","#B9B2A3").replace("<svg ", "<svg width=\"32\" height=\"32\" ")}</g><text x="200" y="262" text-anchor="middle" font-family="Arial" font-size="15" fill="#9C9483">Photo to come from catalogue</text></svg>'
 
 # ---------------- shared page shell ----------------
-NAV = [("our-products.html", "Products & Search", "products"), ("export/", "Export / Global Buyers", "export"),
-       ("become-a-supplier/", "Supply to Mega Power", "supplier"), ("singapore-workshops/", "Singapore Workshops", "local"),
+NAV = [("our-products.html", "Catalogue", "products"), ("singapore-workshops/", "SG Workshops", "local"), ("export/", "Export / Buyers", "export"),
+       ("become-a-supplier/", "Suppliers", "supplier"),
        ("about-us/", "About", "about"), ("contact-us/", "Contact", "contact")]
 
 ORG = {"@type": "Organization", "@id": BASE + "/#org", "name": LEGAL, "alternateName": BRAND, "url": BASE + "/",
@@ -165,7 +166,7 @@ def asset(name):
 
 pages = []  # (path, priority) for sitemap
 
-def shell(path, title, desc, body, active="", crumbs=None, schema=None, js=("data.js", "mp.js", "wa.js"), og_type="website", index=True, img=None):
+def shell(path, title, desc, body, active="", crumbs=None, schema=None, js=("data.js", "mp.js", "chat.js", "wa.js"), og_type="website", index=True, img=None):
     depth = path.count("/") if not path.endswith("/") else path.count("/")
     if path.endswith(".html"):
         depth = path.count("/")
@@ -177,7 +178,14 @@ def shell(path, title, desc, body, active="", crumbs=None, schema=None, js=("dat
         ld.append({"@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": i + 1, "name": n, "item": BASE + "/" + u} for i, (n, u) in enumerate([("Home", "")] + crumbs)]})
     if schema: ld.extend(schema)
     ldj = json.dumps({"@context": "https://schema.org", "@graph": ld}, ensure_ascii=False).replace("</", "<\\/")
-    nav = "".join(f'<a href="{r}{u}"{" aria-current=\"page\"" if k == active else ""}>{e(n)}</a>' for u, n, k in NAV)
+    nav = "".join(f'<a href="{r}{u}"{" aria-current=\"page\"" if k == active else ""}{" data-catpanel aria-controls=\"catpanel\" aria-expanded=\"false\"" if k == "products" else ""}>{e(n)}{" <svg class=\"chev\" viewBox=\"0 0 12 12\" width=\"12\" height=\"12\"><path d=\"M2.5 4.5 6 8l3.5-3.5\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.8\"/></svg>" if k == "products" else ""}</a>' for u, n, k in NAV)
+    cp_tiles = "".join(f'<a class="cp-t" href="{r}our-products/{c[0]}.html"><span class="ic">{I[c[3]]}</span><span><b>{e(c[1])}</b><small>{ccount(c[0]) or "to import"}{" listed" if ccount(c[0]) else ""}</small></span></a>' for c in CATS)
+    catpanel = f'''<div class="catpanel" id="catpanel" hidden><div class="wrap">
+<form class="qbox" data-finder="main" action="{r}our-products.html" role="search"><label class="f" for="q-cp">Search the catalogue</label><div class="qrow"><input class="in" id="q-cp" name="q" autocomplete="off" placeholder="Part no., car model or part, e.g. 8730R or W205 compressor" data-live><button class="btn btn-o" type="submit">{I['search']}<span class="sr">Search</span></button></div><div class="live" role="listbox"></div></form>
+<div class="cp-grid">{cp_tiles}<a class="cp-t all" href="{r}our-products.html"><span class="ic">{I['list']}</span><span><b>All products</b><small>Search &amp; filter</small></span></a></div>
+<div class="cp-foot"><a href="{r}rfq/#vin">Don't know the part? Send a chassis number</a><a href="{r}rfq/#bulk">Have a parts list? Check it in one go</a><a href="{r}rfq/?need=">Can't find it? Request sourcing</a></div>
+</div></div>'''
+    sheet = "".join(f'<a class="brc" href="tel:+65{t.replace(" ","")}"><span><b>{e(n)}</b><small>{e(a)}</small></span><span class="btn btn-o btn-s">{I["phone"]} {t}</span></a>' for n, a, t, f in BRANCHES)
     ogi = img or (BASE + "/og.jpg")
     cr = ""
     if crumbs:
@@ -211,9 +219,9 @@ def shell(path, title, desc, body, active="", crumbs=None, schema=None, js=("dat
 <header class="hd"><div class="wrap">
 <a class="logo" href="{r}" aria-label="Mega Power home"><img src="{LOGO}" alt="Mega Power" width="160" height="38" onerror="this.parentNode.classList.add('noimg')"><span class="wm">MEGA POWER<small>Engineering &amp; Trading</small></span></a>
 <nav class="nav" id="nav" aria-label="Main">{nav}</nav>
-<div class="hd-act"><a class="rfqb" href="{r}rfq/" aria-label="Enquiry list">{I['list']}<span>Enquiry list</span><b data-rfq-count>0</b></a>
+<div class="hd-act"><button class="catb" type="button" data-catpanel aria-controls="catpanel" aria-expanded="false">{I['grid']}<span>Catalogue</span></button><a class="rfqb" href="{r}rfq/" aria-label="Enquiry list">{I['list']}<span>Enquiry list</span><b data-rfq-count>0</b></a>
 <button class="burger" aria-label="Menu" aria-expanded="false" aria-controls="nav"><span></span><span></span><span></span></button></div>
-</div></header>
+</div>{catpanel}</header>
 <main id="main">
 {body}
 </main>
@@ -226,7 +234,8 @@ def shell(path, title, desc, body, active="", crumbs=None, schema=None, js=("dat
 </div>
 <div class="ft-b"><span>&copy; {datetime.date.today().year} {LEGAL}</span><span><a href="{r}privacy-policy/">Privacy</a> · <a href="{r}terms-conditions/">Terms</a> · <a href="{r}staff/">Staff</a></span></div>
 </div></footer>
-<nav class="mbar" aria-label="Quick actions"><a href="{r}our-products.html">{I['search']}Search</a><a class="hot" href="{r}rfq/">{I['list']}Enquiry <span data-rfq-count2></span></a><a href="tel:{TEL_MAIN_H}">{I['phone']}Call</a></nav>
+<nav class="mbar" aria-label="Quick actions"><a href="{r}our-products.html" data-catpanel aria-controls="catpanel">{I['grid']}Catalogue</a><a class="hot" href="{r}rfq/">{I['list']}Enquiry <span data-rfq-count2></span></a><a href="{r}contact-us/" data-branches>{I['phone']}Call a branch</a></nav>
+<div class="mod" id="branch-sheet" role="dialog" aria-modal="true" aria-labelledby="bs-h"><div class="box"><h3 id="bs-h">Call a Mega Power branch</h3><p class="note" style="margin-top:-4px">Opening hours to be confirmed. Main line <a href="tel:{TEL_MAIN_H}">{TEL_MAIN}</a>.</p><div class="brcs">{sheet}</div><button class="btn btn-g" type="button" data-close style="width:100%;margin-top:12px">Close</button></div></div>
 <div class="toast" id="toast" role="status" aria-live="polite"></div>
 {scripts}
 </body>
@@ -301,7 +310,11 @@ def home():
 <div><span class="eyebrow">Singapore · Since 1989</span>
 <h1>Automotive air-con &amp; cooling parts. <em>Sourced in Singapore, supplied worldwide.</em></h1>
 <p class="lead">Find the right compressor, condenser or blower motor by vehicle, chassis or OEM number. Then send one enquiry and our team confirms fitment and replies.</p>
-<div class="hero-cta"><a class="btn btn-o" href="export/">Request an export quotation</a><a class="btn btn-w" href="become-a-supplier/">Propose your products</a></div>
+<div class="aud" role="list">
+<a class="audb" role="listitem" href="singapore-workshops/">{I['wrench']}<span><b>Singapore workshop</b>Find a part, call your nearest branch</span></a>
+<a class="audb" role="listitem" href="export/">{I['globe']}<span><b>Overseas buyer</b>Request an export quotation</span></a>
+<a class="audb" role="listitem" href="become-a-supplier/">{I['factory']}<span><b>Parts supplier</b>Propose your products to us</span></a>
+</div>
 <ul class="chips"><li><b>Since 1989</b> serving the trade</li><li><b>4</b> branches in Singapore</li><li>Passenger cars to trucks &amp; excavators</li></ul>
 </div>
 {finder(r)}
@@ -419,8 +432,11 @@ def product(p):
 <table class="spec"><caption class="sr">Reference numbers</caption>{refs or '<tr><th>Reference</th><td>Not shown on the current listing</td></tr>'}</table>
 <div class="fit">{I['info']}<div><b>Fitment is confirmed by our team.</b> {yrnote}OEM numbers can differ by market, engine and year. Send your VIN or chassis number with the enquiry and we check it before quoting.</div></div>
 <div class="pd-cta"><div class="qty"><button type="button" data-q="-1" aria-label="Less">−</button><input type="number" min="1" value="1" aria-label="Quantity" data-qty><button type="button" data-q="1" aria-label="More">+</button></div>
-<button class="btn btn-o" data-add="{p["id"]}" data-withqty>Add to RFQ</button><a class="btn btn-n" href="{r}rfq/?add={p["id"]}&amp;type=EXPORT">Request export quote</a></div>
-<p style="font-size:.9rem"><a href="{r}singapore-workshops/?p={p["id"]}">Singapore workshop? Enquire locally</a> · <a href="tel:{TEL_MAIN_H}">Call {TEL_MAIN}</a></p>
+<button class="btn btn-o" data-add="{p["id"]}" data-withqty>Add to enquiry list</button></div>
+<div class="split">
+<div><b>{I['wrench']} Singapore workshop</b><span>Call a branch to check the part, or send the car details.</span><div class="brmini">{"".join(f'<a href="tel:+65{t.replace(" ","")}">{e(n)}</a>' for n, a, t, f in BRANCHES)}</div><a class="btn btn-g btn-s" href="{r}singapore-workshops/?p={p["id"]}">Workshop enquiry</a></div>
+<div><b>{I['globe']} Overseas buyer</b><span>Quoted by quantity and destination. Shipping and payment terms are agreed in the quotation.</span><a class="btn btn-n btn-s" href="{r}rfq/?add={p["id"]}&amp;type=EXPORT">Request export quote</a></div>
+</div>
 <h2 style="font-size:1.15rem;margin-top:24px">Specifications</h2>
 <table class="spec">{spec}</table>
 <p class="note">Details as listed on the current Mega Power catalogue page. Stock and prices are given on enquiry.</p>
@@ -508,14 +524,25 @@ def lead_form(kind, r, prefill_note=""):
 <div class="demo-flag">{I['info']}<span>Demo: saved to the staff inbox in this browser. Files are not uploaded in the demo, only their names are kept.</span></div>
 <button class="btn btn-o" type="submit" style="width:100%">Send supplier introduction</button></form>'''
 
+
+def bulk_tool(r, hid="bulk"):
+    return f'''<div class="form-card bulk" id="{hid}" data-bulk style="margin-bottom:22px">
+<h2 style="font-size:1.2rem">{I['list']} Have a parts list? Check it in one go</h2>
+<p class="note" style="margin-top:-4px">Paste OEM or part numbers, one per line, with an optional quantity after a comma (for example <span class="mono">8730R, 10</span>). We match each line against the catalogue.</p>
+<label class="sr" for="{hid}-t">Parts list</label><textarea class="in mono" id="{hid}-t" data-bulk-in style="min-height:110px" placeholder="8730R, 10&#10;4M0 816 421B, 4&#10;1787, 6"></textarea>
+<div style="display:flex;gap:8px;flex-wrap:wrap;margin-top:10px"><button class="btn btn-n btn-s" type="button" data-bulk-go>Check my list</button><button class="btn btn-g btn-s" type="button" data-bulk-ex>Use an example</button></div>
+<div data-bulk-out></div></div>'''
+
 def export_page():
     r = "../"
     body = f'''<section class="ph-hd"><div class="wrap">{{{{CRUMBS}}}}<span class="eyebrow">Export / global buyers</span><h1>Source automotive A/C parts from Singapore</h1><p>For distributors, workshops and parts buyers outside Singapore. Tell us the vehicle, chassis or OEM number, the quantity and where it ships, and our team replies with what we can supply.</p></div></section>
 <section class="sec"><div class="wrap two">
-<div>{lead_form("EXPORT", r)}</div>
+<div>{bulk_tool(r)}{lead_form("EXPORT", r)}</div>
 <div style="display:flex;flex-direction:column;gap:18px">
+<div class="side rv"><h3>How an export enquiry works</h3><ol class="steps-s"><li><b>Send your list</b>Part numbers, vehicles or chassis numbers, with quantities and destination.</li><li><b>We identify the parts</b>Our team checks each reference and fitment.</li><li><b>You get one quotation</b>Covering the parts we can supply, with shipping and payment terms.</li><li><b>Confirm and ship</b>Packing and shipping as agreed in the quotation.</li></ol></div>
 <div class="side rv"><h3>What to send for a fast quote</h3><ul class="ticks"><li>Make, model and year, or the VIN / chassis number</li><li>OEM or part number, if you have it</li><li>Quantity per part</li><li>Destination country and port or city</li><li>A photo of the old part's label helps</li></ul></div>
 <div class="side rv"><h3>Parts we list</h3><p style="font-size:.93rem">Compressors, condensers, cooling coils, fans and blower motors, filters, valves, driers, compressor oil and refrigerant, for passenger cars, commercial vehicles, trucks and excavators.</p><a href="{r}our-products.html">Search the catalogue</a></div>
+<div class="side rv"><h3>Why buyers source from Mega Power</h3><ul class="ticks"><li>In the automotive A/C parts trade since 1989</li><li>Parts from makers such as Denso, Sanden, Behr and Valeo in our listings</li><li>Passenger cars, commercial vehicles, trucks and excavators</li><li>Each reference checked by staff before quoting</li></ul></div>
 <div class="side rv"><h3>Contact</h3><p style="font-size:.93rem;margin:0"><a href="mailto:{EMAIL}">{EMAIL}</a><br><a href="tel:{TEL_MAIN_H}">{TEL_MAIN}</a><br><span class="note">WhatsApp and WeChat for export: to be added once confirmed.</span></p></div>
 </div></div></section>'''
     shell("export/index.html", "Car A/C Parts Exporter Singapore | Mega Power",
@@ -524,14 +551,15 @@ def export_page():
 
 def supplier_page():
     r = "../"
-    body = f'''<section class="ph-hd"><div class="wrap">{{{{CRUMBS}}}}<span class="eyebrow">Supply to Mega Power</span><h1>Become a supplier</h1><p>Manufacturers, brand owners and distributors of automotive A/C and cooling parts: introduce your range to our purchasing team.</p></div></section>
+    body = f'''<section class="ph-hd"><div class="wrap">{{{{CRUMBS}}}}<span class="eyebrow">Supply to Mega Power</span><h1>Supply automotive A/C parts to Mega Power</h1><p>Manufacturers, brand owners and distributors of automotive A/C and cooling parts: introduce your range to our purchasing team in Singapore. Takes about 3 minutes.</p></div></section>
 <section class="sec"><div class="wrap two">
 <div>{lead_form("SUPPLIER", r)}</div>
 <div style="display:flex;flex-direction:column;gap:18px">
+<div class="side rv"><h3>Ranges we source</h3><div class="brands" style="gap:6px">{"".join(f'<span style="font-size:.8rem;padding:5px 10px;letter-spacing:0">{e(c[1])}</span>' for c in CATS[:7] + CATS[10:])}</div><p style="font-size:.9rem;margin:12px 0 0">For passenger cars, commercial vehicles, trucks and excavators. Makers in our current listings include Denso, Sanden, Behr and Valeo.</p></div>
 <div class="side rv"><h3>What helps us review your offer</h3><ul class="ticks"><li>Product range by category, with OEM references</li><li>Catalogue or price list (PDF or Excel)</li><li>Minimum order quantity</li><li>Certifications and factory details</li><li>Markets you already supply</li></ul></div>
 <div class="side rv"><h3>What happens next</h3><ol style="padding-left:18px;margin:0;font-size:.93rem"><li>Our purchasing team reviews the range.</li><li>If it fits, we ask for samples or more detail.</li><li>We reply either way.</li></ol><p class="note" style="margin-top:10px">Reply timing to be confirmed by Mega Power.</p></div>
 </div></div></section>'''
-    shell("become-a-supplier/index.html", "Become a Supplier to Mega Power Singapore",
+    shell("become-a-supplier/index.html", "Supply Car A/C Parts to Mega Power Singapore",
           "Manufacturers and distributors of automotive A/C and cooling parts: send your range, catalogue and MOQ to Mega Power's purchasing team.",
           body, active="supplier", crumbs=[("Become a supplier", "become-a-supplier/")])
 
@@ -539,7 +567,11 @@ def local_page():
     r = "../"
     br = "".join(f'<div class="br rv"><b>{e(n)}</b><p>{e(a)}</p><a class="btn btn-g btn-s" href="tel:+65{t.replace(" ","")}">{I["phone"]} {t}</a></div>' for n, a, t, f in BRANCHES)
     body = f'''<section class="ph-hd"><div class="wrap">{{{{CRUMBS}}}}<span class="eyebrow">Singapore workshops</span><h1>Parts for the job, from your nearest branch</h1><p>Search the catalogue, then call a branch or send the car details. Our team checks fitment before you collect.</p></div></section>
-<section class="sec"><div class="wrap two">
+<section class="sec" style="padding-bottom:0"><div class="wrap">
+<div class="callstrip rv"><b>{I['phone']} Need it today? Call your nearest branch</b><div>{"".join(f'<a class="btn btn-g btn-s" href="tel:+65{t.replace(" ","")}"><span>{e(n)}</span> {t}</a>' for n, a, t, f in BRANCHES)}</div></div>
+<form class="qbox form-card" data-finder="main" action="{r}our-products.html" role="search" style="margin-top:18px"><label class="f" for="q-ws">Check the part first</label><div class="qrow"><input class="in" id="q-ws" name="q" autocomplete="off" placeholder="e.g. W205 compressor or 1787" data-live><button class="btn btn-o" type="submit">{I['search']} Search</button></div><div class="live" role="listbox"></div></form>
+</div></section>
+<section class="sec" style="padding-top:28px"><div class="wrap two">
 <div>{lead_form("LOCAL", r)}</div>
 <div style="display:flex;flex-direction:column;gap:18px">
 <div class="side rv"><h3>WhatsApp message (preview)</h3><p class="note" style="margin-top:0">This message is ready to send once Mega Power confirms its WhatsApp number.</p><div class="wa-prev" data-wa-preview>Hello Mega Power, I am enquiring about a part found on your website. My vehicle details are …</div>
@@ -556,6 +588,7 @@ def rfq_page():
 <section class="sec" style="padding-top:34px"><div class="wrap two">
 <div>
 <div class="basket" data-basket></div>
+{bulk_tool(r)}
 <div class="tabs" role="tablist" style="border-radius:12px 12px 0 0;overflow:hidden;border:1px solid var(--line);border-bottom:0;grid-template-columns:1fr 1fr" data-rfq-tabs>
 <button role="tab" aria-selected="true" data-rt="EXPORT">{I['globe']}Overseas buyer</button><button role="tab" aria-selected="false" data-rt="LOCAL">{I['wrench']}Singapore workshop</button></div>
 <div data-rt-panel="EXPORT">{lead_form("EXPORT", r)}</div>
@@ -734,7 +767,7 @@ def statics():
     (OUT / "img").mkdir(exist_ok=True)
     for s, n, d, ic in CATS:
         (OUT / "img" / f"ph-{ic}.svg").write_text(PLACEHOLDER(ic))
-    for f in ("mp.css", "mp.js", "staff.js", "staff.css", "wa.js"):
+    for f in ("mp.css", "mp.js", "staff.js", "staff.css", "wa.js", "chat.js"):
         shutil.copy(HERE / f, OUT / f)
     (OUT / "site.webmanifest").write_text(json.dumps({"name": LEGAL, "short_name": BRAND, "icons": [{"src": "icon-192.png", "sizes": "192x192", "type": "image/png"}, {"src": "icon-512.png", "sizes": "512x512", "type": "image/png"}], "theme_color": "#0A1F35", "background_color": "#F7F5F0", "display": "standalone", "start_url": "./"}))
     key = "c4f2a8e61b9d47f0a3e5d8c2b7f1e690"
