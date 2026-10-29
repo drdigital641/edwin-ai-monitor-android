@@ -863,7 +863,7 @@
     var a = t.getAttribute('data-a'), v = t.getAttribute('data-v'), id = t.getAttribute('data-id');
     if (a === 'selall' || a === 'sel') return; // handled on change
     switch (a) {
-      case 'signin': location.href = '/login?returnTo=' + encodeURIComponent(location.pathname); break;
+      case 'signin': if (window.__atLogin) window.__atLogin(); else location.href = '/login?from_url=' + encodeURIComponent(location.href); break;
       case 'signout': lsDel(TOKEN_KEY); lsDel('token'); token = ''; location.reload(); break;
       case 'reload': boot(); break;
       case 'tab': setTab(v); break;
