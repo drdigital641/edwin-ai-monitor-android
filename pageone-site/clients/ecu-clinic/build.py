@@ -95,6 +95,8 @@ e = html.escape
 IMG_PIN = {n: '0ec3278037d64b025d7e569b9735eef6d32f293f' for n in (
     'bmw-cas3-modules', 'mercedes-c180-esp-unit', 'mercedes-c180-esp-codes', 'mercedes-me17-ecus',
     'mercedes-camtronic-codes', 'audi-abs-fault-codes')}  # job photos, 27 Oct 2026
+IMG_PIN.update({n: '8806870e5d8d6e2eb0741c11837fb7cfcbab1680' for n in (
+    'mercedes-srs-neck-pro-codes', 'mercedes-airbag-warning-cluster')})  # Mercedes airbag job photos, 29 Oct 2026
 
 
 def u(path=''):
@@ -772,15 +774,15 @@ def articles_index():
 
 def article(a):
     path = f'articles/{a["slug"]}/'
-    sp = next(s for s in SERVICE_PAGES if s['slug'] == a['service'])
+    sp = next((s for s in SERVICE_PAGES if s['slug'] == a['service']), None)
     crumbs = [('Home', ''), ('Articles', 'articles/'), (a['h1'], path)]
     more = [x for x in ARTICLES if x is not a][:3]
     body = sub_hero(crumbs, 'Guide', a['h1'], a['lead'], a['photo'], a['alt'], buttons=False) + f'''
 <section><div class="wrap prose">
 <p class="meta">By The ECU Clinic · {a["date"][8:10].lstrip("0")} Oct 2026</p>
-{a["body"].replace("{wa}", wa_link(cta="Article text"))}
+{a["body"].replace("{wa}", wa_link(cta="Article text")).replace("{img_cluster}", u("img/mercedes-airbag-warning-cluster.webp"))}
 <div class="btns" style="margin-top:22px"><a class="btn btn-wa" href="{wa_link(cta="Article end")}" target="_blank" rel="noopener">{ICON["wa"]}WhatsApp {BIZ["tel_disp"]}</a>
-<a class="btn btn-line" href="{u(f"services/{sp['slug']}/")}">{e(sp["name"])}</a></div>
+{f'<a class="btn btn-line" href="{u(f"services/{sp['slug']}/")}">{e(sp["name"])}</a>' if sp else ''}</div>
 </div></section>
 <section class="alt"><div class="wrap">
 <div class="sec-head"><h2>More articles</h2></div>

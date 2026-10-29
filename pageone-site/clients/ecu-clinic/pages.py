@@ -1063,4 +1063,37 @@ ARTICLES = [
              ('Is it safe to keep driving if my BMW shows 120°C?', 'If there is no warning light or message and the coolant level is steady, the car may be running as designed, but 120°C is high and worth checking. If a warning appears, stop in a safe place and let the engine cool. Do not keep driving an overheating engine.'),
              ('Which BMWs can have temperature programming?', 'Most BMW models from 2010 to 2018, including the 1 to 8 Series, X1 to X6, M2 and Z4. WhatsApp us your model and year to confirm.')],
     ),
+    dict(
+        # Real job photos from Edwin, 29 Oct 2026. Edwin did not say what the fix was, so this is DIAGNOSIS ONLY:
+        # never claim a repair, cost or time. Airbag/SRS/NECK-PRO repair is NOT a confirmed ECU Clinic service (no service page).
+        slug='mercedes-airbag-light-neck-pro-b1c1113', service=None, date='2026-10-29', img_commit='805067a002d92dc3da710e295f501b652d1ff3ae',
+        title='Mercedes Airbag Light: NECK-PRO B1C1113 and B1C1713 | The ECU Clinic',
+        desc='A Mercedes C-Class with the airbag light on and "Front left malfunction, Consult workshop". What the NECK-PRO codes B1C1113 and B1C1713 mean and what to do.',
+        h1='Mercedes Airbag Light On: NECK-PRO Codes B1C1113 and B1C1713',
+        lead='A real job from our workshop: a Mercedes-Benz C-Class with the airbag light on and “Front left malfunction, Consult workshop”. Here is what the scan showed.',
+        photo='mercedes-srs-neck-pro-codes', alt='Scan tool showing Mercedes SRS codes B1C1113 and B1C1713, NECK-PRO head restraint open circuit',
+        share='mercedes-airbag-warning-cluster.jpg',
+        body='''<p><strong>Short answer:</strong> on this Mercedes-Benz C-Class the airbag light and the message “Front left malfunction, Consult workshop” came with two stored airbag (SRS) codes: <strong>B1C1113</strong> and <strong>B1C1713</strong>. Both say the NECK-PRO head restraint has an open circuit, one for the driver’s seat and one for the front passenger seat. The scan tool tells you which circuit to check before anything is replaced.</p>
+<h2>What the car showed</h2>
+<p>The instrument cluster showed the red airbag warning light and the message <em>“Front left malfunction, Consult workshop”</em>.</p>
+<p><img src="{img_cluster}" alt="Mercedes C-Class instrument cluster with the airbag light and the message Front left malfunction, Consult workshop" width="1200" height="585" loading="lazy" style="width:100%;height:auto;border-radius:12px"></p>
+<h2>What the scan tool found</h2>
+<p>A full scan of all control units showed these codes in the SRS (Supplemental Inflatable Restraint System) module, both <em>current and stored</em>:</p>
+<ul class="ticks">
+<li><strong>B1C1113</strong>: the NECK-PRO head restraint “Driver” has a malfunction. There is an open circuit.</li>
+<li><strong>B1C1713</strong>: the NECK-PRO head restraint “Front passenger” has a malfunction. There is an open circuit.</li>
+</ul>
+<p>The same scan also listed faults in other modules that have nothing to do with the airbag light: a navigation data fault in the COMAND audio unit (9549) and a mirror adjustment output fault in the left front door module. That is why we scan every module, not only the one with the warning light.</p>
+<h2>What is NECK-PRO?</h2>
+<p>NECK-PRO is the Mercedes-Benz name for the front head restraints that move forward in a rear-end collision, to reduce the risk of whiplash. They are part of the restraint system, so the airbag (SRS) control unit monitors their circuits. When it sees an open circuit, it stores a code and turns on the airbag light.</p>
+<h2>What does “open circuit” mean?</h2>
+<p>The control unit is not seeing the electrical connection it expects. In general this points to the release unit in the head restraint, or the wiring and connectors between the seat and the car. The code tells you which seat; it does not on its own tell you which of these is at fault. Testing is needed before any part is replaced.</p>
+<h2>Is it safe to drive with the airbag light on?</h2>
+<p>While the airbag light is on, the restraint system has a stored fault, and parts of it may not work as designed in a crash. Get it checked soon. Airbag parts must only be tested with the right equipment: probing airbag circuits with a test lamp or multimeter can be dangerous.</p>
+<h2>What should I send?</h2>
+<p>WhatsApp us your car model, year and the fault codes, with a photo of the dashboard message or the scan tool screen. We will tell you whether it is a job we can take on. You can find us at Premier @ Kaki Bukit.</p>''',
+        faq=[('What do Mercedes codes B1C1113 and B1C1713 mean?', 'On this car the scan tool described them as an open circuit in the NECK-PRO head restraint: B1C1113 for the driver’s seat and B1C1713 for the front passenger seat.'),
+             ('Why does my Mercedes say “Front left malfunction, Consult workshop”?', 'On this C-Class the message came with the airbag light and stored SRS codes. Read the codes with a scan tool to see which part of the restraint system the airbag control unit is reporting.'),
+             ('Can I clear the airbag light myself?', 'Clearing the codes does not fix an open circuit. If the fault is still there, the light comes back. Find the cause first.')],
+    ),
 ]
