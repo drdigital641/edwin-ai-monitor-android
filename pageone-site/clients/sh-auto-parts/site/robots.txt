@@ -1,0 +1,37 @@
+User-agent: *
+Allow: /
+Disallow: /staff/
+
+User-agent: Googlebot
+Allow: /
+Disallow: /staff/
+
+User-agent: Bingbot
+Allow: /
+Disallow: /staff/
+
+User-agent: OAI-SearchBot
+Allow: /
+Disallow: /staff/
+
+User-agent: ChatGPT-User
+Allow: /
+Disallow: /staff/
+
+User-agent: GPTBot
+Allow: /
+Disallow: /staff/
+
+User-agent: PerplexityBot
+Allow: /
+Disallow: /staff/
+
+User-agent: ClaudeBot
+Allow: /
+Disallow: /staff/
+
+User-agent: Google-Extended
+Allow: /
+Disallow: /staff/
+
+Sitemap: https://pageonesingapore.com/preview/sh-auto-parts/sitemap.xml
