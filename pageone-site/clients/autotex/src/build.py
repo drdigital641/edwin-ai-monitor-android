@@ -379,7 +379,7 @@ def build_products():
         desc_t = f"{p['name']} for the {bn} {m['name']} ({m['code']}, {m['years'].replace('-now', ' onwards')})"
         body = f'''<div class="wrap">{{{{CRUMBS}}}}</div>
 <section class="prod wrap" data-product="{x["id"]}">
-<div class="prod-art">{part_art(x, "art big")}</div>
+<div class="prod-art">{part_art(x, "art big")}<div class="thumbs"></div></div>
 <div class="prod-i">
 <p class="eyebrow"><a href="{r}parts/{c["id"]}/">{e(c["name"])}</a> · <a href="{r}{m["b"]}/{m["id"]}/">{e(bn)} {e(m["name"])} {e(m["code"])}</a></p>
 <h1>{e(p["name"])} for {e(bn)} {e(m["name"])} ({e(m["code"])})</h1>

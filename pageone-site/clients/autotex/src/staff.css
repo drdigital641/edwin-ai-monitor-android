@@ -98,3 +98,32 @@ body.st-lock{overflow:hidden}
   .st-c-price,.st-c-status{text-align:left}
   .st-row:not(.st-head) .st-rowmain:hover{background:#f7f8fa}
 }
+
+/* Quick add, photos, cars */
+.st-step{display:flex;align-items:center;gap:10px;font-size:1.05rem;margin:22px 0 10px!important}
+.st-step:first-child{margin-top:0!important}
+.st-step span{display:inline-flex;align-items:center;justify-content:center;width:28px;height:28px;border-radius:50%;background:var(--accent);color:var(--accent-ink,#fff);font-size:.85rem}
+.st-pills{display:flex;flex-wrap:wrap;gap:8px;margin:6px 0}
+.st-pill{display:inline-flex;flex-direction:column;align-items:center;justify-content:center;min-height:52px;min-width:72px;padding:8px 16px;border:2px solid var(--line);border-radius:12px;background:#fff;color:var(--ink);font:inherit;font-weight:600;cursor:pointer;text-align:center}
+.st-pill small{font-weight:400;font-size:.72rem;color:var(--muted);margin-top:2px}
+.st-pill.on{border-color:var(--accent);background:#fdeceb}
+.st-catl{margin:12px 0 2px;font-size:.8rem;font-weight:700;color:var(--muted);text-transform:uppercase;letter-spacing:.03em}
+.st-big-in{font-size:22px!important;min-height:56px;font-weight:700}
+.st-save{min-height:56px!important;font-size:1.1rem}
+.st-warn{background:#fff8e6;border:1px solid #f0dca0;border-radius:10px;padding:12px;margin:10px 0;font-size:.9rem}
+.st-warn .btn{margin-top:8px}
+.st-photos{margin:6px 0}
+.st-thumbs{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin-bottom:10px}
+.st-thumb{position:relative;aspect-ratio:1;border-radius:10px;overflow:hidden;border:1px solid var(--line);background:#eee}
+.st-thumb img{width:100%;height:100%;object-fit:cover;display:block}
+.st-main{position:absolute;left:4px;bottom:4px;background:rgba(18,22,28,.75);color:#fff;font-size:.65rem;padding:2px 6px;border-radius:99px}
+.st-thumb-x{position:absolute;top:0;right:0;width:44px;height:44px;background:none;border:0;color:#fff;font-size:1.6rem;line-height:1;cursor:pointer;text-shadow:0 0 4px #000}
+#staff-app .btn.st-photobtn{flex:1 1 140px;min-height:56px;cursor:pointer}
+.st-2col{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.st-carform{margin:10px 0;padding:12px;border:1px dashed var(--line);border-radius:12px;background:#fafbfc}
+.st-success{text-align:center}
+.st-big{font-size:1.4rem;margin:0 0 6px}
+.st-sthumb{width:120px;height:120px;object-fit:cover;border-radius:12px;margin:8px auto;display:block}
+.st-success .st-btns{justify-content:center}
+.st-list .st-btns a.btn{text-decoration:none;color:var(--ink)}
+.wa-fab{display:none}

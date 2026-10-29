@@ -26,7 +26,7 @@
   function lsSet(k, v) { try { localStorage.setItem(k, v); return true; } catch (e) { return false; } }
   function byId(list) { var o = {}; list.forEach(function (x) { o[x.id] = x; }); return o; }
   function $(sel, el) { return (el || root).querySelector(sel); }
-  var BR = byId(AT.brands || []), MO = byId(AT.models || []), CA = byId(AT.cats || []), PA = byId(AT.parts || []);
+  var BR = byId(AT.brands || []), MO = {}, CA = byId(AT.cats || []), PA = byId(AT.parts || []);
 
   function loadOv() {
     if (mem.ov) return mem.ov;
@@ -35,7 +35,9 @@
     if (!o || typeof o !== 'object') o = {};
     if (!o.products || typeof o.products !== 'object') o.products = {};
     if (!Array.isArray(o.added)) o.added = [];
+    if (!Array.isArray(o.models)) o.models = [];
     mem.ov = o;
+    rebuildMO();
     return o;
   }
   function saveOv() {
@@ -63,7 +65,7 @@
   }
 
   /* ---------- merged catalogue ---------- */
-  var FIELDS = ['price', 'sample', 'oem', 'stock', 'status', 'note'];
+  var FIELDS = ['price', 'sample', 'oem', 'stock', 'status', 'note'], ALLOWED = FIELDS.concat(['photos']);
   function baseList() { return (AT.products || []).concat(loadOv().added); }
   function baseOf(id) {
     var i, p = AT.products || [];
@@ -121,18 +123,19 @@
     if (a == null || b == null) return false;
     return a === b;
   }
-  function norm(k, v) { if (k === 'price') return v == null ? null : v; if (k === 'sample') return v ? 1 : 0; if (k === 'status') return v || 'published'; return v == null ? '' : v; }
+  function norm(k, v) { if (k === 'price') return v == null ? null : v; if (k === 'sample') return v ? 1 : 0; if (k === 'photos') return v | 0; if (k === 'status') return v || 'published'; return v == null ? '' : v; }
   /* patch: partial {field:value}; stores only differences from base. returns list of changed field names */
   function applyPatch(id, patch) {
     var b = baseOf(id); if (!b) return [];
     var ovs = loadOv().products, cur = merge(b), changed = [];
     Object.keys(patch).forEach(function (k) {
-      if (FIELDS.indexOf(k) < 0) return;
+      if (ALLOWED.indexOf(k) < 0) return;
       var v = patch[k];
       if (k === 'price') v = (v === '' || v == null) ? null : Number(v);
       if (k === 'sample') v = v ? 1 : 0;
       if (same(norm(k, cur[k]), v)) return;
       changed.push(k);
+      if (k === 'photos' && loadOv().added.indexOf(b) >= 0) { b.photos = v; return; }
       ovs[id] = ovs[id] || {};
       if (same(norm(k, b[k]), v)) delete ovs[id][k]; else ovs[id][k] = v;
     });
@@ -142,13 +145,13 @@
   function describe(id) { var b = baseOf(id); if (!b) return id; var m = merge(b); return modelLabel(m) + ' ' + partOf(m).name; }
 
   /* ---------- state ---------- */
-  var S = { tab: 'products', F: { brand: '', model: '', cat: '', flag: '', q: '' }, shown: PAGE, sel: {}, edit: null, imp: null, toast: '' };
+  var S = { tab: 'quick', carEdit: null, F: { brand: '', model: '', cat: '', flag: '', q: '' }, shown: PAGE, sel: {}, edit: null, imp: null, toast: '' };
   var filtered = [];
 
   /* ---------- views ---------- */
   function render() {
     if (!who()) { renderLogin(); return; }
-    var tabs = [['products', 'Products'], ['add', 'Add product'], ['io', 'Import/Export'], ['activity', 'Activity']];
+    var tabs = [['quick', 'Quick add'], ['products', 'Products'], ['cars', 'Cars'], ['io', 'Import/Export'], ['activity', 'Activity']];
     root.innerHTML =
       '<div class="st-top"><div><h1 class="st-h1">Staff catalogue</h1><p class="st-sub">Signed in as <strong>' + esc(who()) + '</strong> (demo)</p></div>' +
       '<button type="button" class="btn ghost" data-act="signout">Sign out</button></div>' +
@@ -161,8 +164,9 @@
   }
   function renderPanel() {
     var p = $('#st-panel'); if (!p) return;
-    if (S.tab === 'products') renderProducts(p);
-    else if (S.tab === 'add') renderAdd(p);
+    if (S.tab === 'quick') renderQuick(p);
+    else if (S.tab === 'products') renderProducts(p);
+    else if (S.tab === 'cars') renderCars(p);
     else if (S.tab === 'io') renderIO(p);
     else renderActivity(p);
   }
@@ -181,7 +185,7 @@
   }
   function renderProducts(p) {
     var F = S.F;
-    var models = (AT.models || []).filter(function (m) { return !F.brand || m.b === F.brand; })
+    var models = allModels().filter(function (m) { return !F.brand || m.b === F.brand; })
       .map(function (m) { return [m.id, (BR[m.b] ? BR[m.b].name + ' ' : '') + m.name + (m.code ? ' ' + m.code : '') + ' ' + (m.years || '')]; });
     var flags = [['sample', 'Sample price'], ['nopart', 'No part number'], ['hidden', 'Hidden'], ['edited', 'Edited'], ['instock', 'In stock']];
     p.innerHTML = '<div id="st-sum" class="st-sum"></div>' +
@@ -235,7 +239,7 @@
       '<label class="st-chk"><input type="checkbox" data-sel="' + esc(m.id) + '"' + (S.sel[m.id] ? ' checked' : '') + ' aria-label="Select ' + esc(m._label + ' ' + m._part.name) + '"></label>' +
       '<button type="button" class="st-rowmain" data-act="edit" data-id="' + esc(m.id) + '">' +
       '<span class="st-c-model">' + esc(m._label) + '</span>' +
-      '<span class="st-c-part">' + esc(m._part.name) + (ed ? ' <em class="st-badge b-edit">edited</em>' : '') + '</span>' +
+      '<span class="st-c-part">' + esc(m._part.name) + (SIDE[m.side] ? ' <span class="st-dim">(' + SIDE[m.side] + ')</span>' : '') + (ed ? ' <em class="st-badge b-edit">edited</em>' : '') + '</span>' +
       '<span class="st-c-price">' + esc(money(m.price)) + (m.price != null && m.sample ? ' <em class="st-badge b-sample">sample</em>' : '') + '</span>' +
       '<span class="st-c-stock"><em class="st-badge s-' + (m.stock || 'unk') + '">' + esc(STOCK[m.stock] || 'Unknown') + '</em></span>' +
       '<span class="st-c-oem">' + (m.oem ? esc(m.oem) : '<span class="st-dim">none</span>') + '</span>' +
@@ -260,7 +264,7 @@
   function stockSel(id, v) { return '<select id="' + id + '" name="stock" class="st-in">' + opts(Object.keys(STOCK).map(function (k) { return [k, STOCK[k]]; }), v) + '</select>'; }
   function openEdit(id) {
     var b = baseOf(id); if (!b) return;
-    var m = merge(b), pa = partOf(m); S.edit = id;
+    var m = merge(b), pa = partOf(m); S.edit = id; E = { id: id, photos: [], changed: false };
     closeModal(true);
     var d = document.createElement('div');
     d.className = 'st-modal'; d.id = 'st-modal';
@@ -273,6 +277,7 @@
       '<label class="st-lbl" for="e-oem">Part number (OEM)</label><input id="e-oem" name="oem" class="st-in" type="text" value="' + esc(m.oem) + '" autocomplete="off">' +
       '<label class="st-lbl" for="e-stock">Stock</label>' + stockSel('e-stock', m.stock || '') +
       '<label class="st-lbl" for="e-note">Note shown on the product page</label><textarea id="e-note" name="note" class="st-in" rows="3">' + esc(m.note) + '</textarea>' +
+      '<p class="st-lbl">Photos</p>' + photoPicker('e', []) +
       '<label class="st-check"><input type="checkbox" name="published"' + (m.status !== 'hidden' ? ' checked' : '') + '> <span>Published (untick to hide from the shop)</span></label>' +
       '<p class="st-err" id="e-err" role="alert"></p>' +
       '<div class="st-actions"><button type="submit" class="btn primary">Save</button><button type="button" class="btn ghost" data-act="close">Cancel</button>' +
@@ -282,6 +287,7 @@
     root.appendChild(d);
     document.body.classList.add('st-lock');
     var f = $('#e-price', d); if (f) f.focus();
+    if (m.photos | 0) photoLoad(id, m.photos | 0).then(function (a) { if (E.id === id && !E.changed) { E.photos = a; refreshPhotos('e'); } }, function () { IDBOK = false; refreshPhotos('e'); });
   }
   function closeModal(keep) {
     var d = $('#st-modal'); if (d) d.parentNode.removeChild(d);
@@ -293,45 +299,239 @@
     var pr = fd.price.value.trim(), price = null;
     if (pr !== '') { price = Number(pr); if (isNaN(price) || price < 0) { err.textContent = 'Enter a valid price, or leave it blank.'; return; } price = Math.round(price * 100) / 100; }
     var patch = { price: price, sample: fd.confirmed.checked ? 0 : 1, oem: fd.oem.value.trim(), stock: fd.stock.value, status: fd.published.checked ? 'published' : 'hidden', note: fd.note.value.trim() };
-    var ch = applyPatch(id, patch);
-    if (ch.length) { saveOv(); log('Edited ' + describe(id) + ': ' + ch.join(', ')); toast('Saved ' + ch.length + ' change' + (ch.length > 1 ? 's' : '')); }
-    else toast('No changes to save');
-    closeModal(); refreshList();
+    function go(warn) {
+      var ch = applyPatch(id, patch);
+      if (ch.length) { saveOv(); log('Edited ' + describe(id) + ': ' + ch.join(', ')); toast('Saved ' + ch.length + ' change' + (ch.length > 1 ? 's' : '')); }
+      else toast('No changes to save');
+      if (warn) toast('Photos could not be saved in this browser.');
+      closeModal(); refreshList();
+    }
+    if (E.changed && E.id === id) {
+      patch.photos = E.photos.length;
+      photoSave(id, E.photos).then(function () { go(); }, function () { delete patch.photos; IDBOK = false; go(true); });
+    } else go();
   }
 
-  /* ---------- add product ---------- */
-  function renderAdd(p) {
-    var models = (AT.models || []).map(function (m) { return [m.id, (BR[m.b] ? BR[m.b].name + ' ' : '') + m.name + (m.code ? ' ' + m.code : '') + ' ' + (m.years || '')]; });
-    var parts = (AT.parts || []).map(function (x) { return [x.id, x.name]; }).concat([['__custom', 'Other (type a custom part name)']]);
-    p.innerHTML = '<form class="st-card" data-form="add"><h2 class="st-h2">Add product</h2>' +
-      '<label class="st-lbl" for="a-m">Model</label><select id="a-m" name="m" class="st-in">' + opts(models, '') + '</select>' +
-      '<label class="st-lbl" for="a-p">Part type</label><select id="a-p" name="p" class="st-in" data-act="addpart">' + opts(parts, '') + '</select>' +
-      '<div id="a-custom" hidden><label class="st-lbl" for="a-pn">Custom part name</label><input id="a-pn" name="pn" class="st-in" type="text">' +
-      '<label class="st-lbl" for="a-pc">Category</label><select id="a-pc" name="pc" class="st-in">' + opts((AT.cats || []).map(function (c) { return [c.id, c.name]; }), '', 'No category') + '</select></div>' +
-      '<label class="st-lbl" for="a-price">Price (S$, blank = Ask for price)</label><input id="a-price" name="price" class="st-in" type="number" min="0" step="0.01" inputmode="decimal">' +
-      '<label class="st-check"><input type="checkbox" name="confirmed" checked> <span>Price confirmed (real price)</span></label>' +
-      '<label class="st-lbl" for="a-oem">Part number (OEM)</label><input id="a-oem" name="oem" class="st-in" type="text">' +
-      '<label class="st-lbl" for="a-stock">Stock</label>' + stockSel('a-stock', '') +
-      '<label class="st-lbl" for="a-note">Note</label><textarea id="a-note" name="note" class="st-in" rows="3"></textarea>' +
-      '<p class="st-err" id="a-err" role="alert"></p><button type="submit" class="btn primary st-full">Add product</button></form>';
+  /* ---------- photos (IndexedDB: at_media / photos / "<id>:<i>") ---------- */
+  var dbp = null, IDBOK = null, SIDE = { L: 'Left', R: 'Right', pair: 'Pair' };
+  var E = { id: null, photos: [], changed: false };
+  function idb() {
+    if (dbp) return dbp;
+    dbp = new Promise(function (res, rej) {
+      try {
+        var r = indexedDB.open('at_media', 1);
+        r.onupgradeneeded = function () { r.result.createObjectStore('photos'); };
+        r.onsuccess = function () { res(r.result); };
+        r.onerror = function () { rej(r.error || new Error('IndexedDB error')); };
+      } catch (e) { rej(e); }
+    });
+    dbp.catch(function () { dbp = null; });
+    return dbp;
   }
-  function addProduct(form) {
-    var f = form.elements, err = $('#a-err'), custom = f.p.value === '__custom', pn = f.pn.value.trim();
-    var m = f.m.value;
-    if (custom && !pn) { err.textContent = 'Type a part name.'; return; }
-    var pr = f.price.value.trim(), price = pr === '' ? null : Math.round(Number(pr) * 100) / 100;
-    if (price != null && (isNaN(price) || price < 0)) { err.textContent = 'Enter a valid price.'; return; }
-    var dup = allMerged().filter(function (x) {
-      return x.m === m && (custom ? (!x.p && x._part.name.toLowerCase() === pn.toLowerCase()) || x._part.name.toLowerCase() === pn.toLowerCase() : x.p === f.p.value);
-    })[0];
-    if (dup) { toast('That model and part already exist. Opening it.'); S.tab = 'products'; S.edit = dup.id; render(); return; }
-    var prod = { id: 'custom-' + Date.now(), m: m, p: custom ? '' : f.p.value, url: '', price: price, sample: f.confirmed.checked ? 0 : 1,
-      oem: f.oem.value.trim(), stock: f.stock.value, status: 'published', note: f.note.value.trim() };
-    if (custom) { prod.pn = pn; prod.pc = f.pc.value; }
-    loadOv().added.push(prod); saveOv();
-    log('Added ' + describe(prod.id));
-    toast('Product added');
-    S.tab = 'products'; S.F = { brand: '', model: '', cat: '', flag: 'edited', q: '' }; render();
+  function tx(mode, fn) {
+    return idb().then(function (db) {
+      return new Promise(function (res, rej) {
+        var t = db.transaction('photos', mode), get = fn(t.objectStore('photos'));
+        t.oncomplete = function () { res(get ? get() : undefined); };
+        t.onerror = t.onabort = function () { rej(t.error || new Error('IndexedDB error')); };
+      });
+    });
+  }
+  function photoSave(id, arr) {
+    return tx('readwrite', function (st) { for (var i = 0; i < 4; i++) { if (i < arr.length) st.put(arr[i], id + ':' + i); else st.delete(id + ':' + i); } });
+  }
+  function photoLoad(id, n) {
+    return tx('readonly', function (st) {
+      var rq = []; for (var i = 0; i < n; i++) rq.push(st.get(id + ':' + i));
+      return function () { return rq.map(function (r) { return r.result; }).filter(Boolean); };
+    });
+  }
+  function photoAll() {
+    return tx('readonly', function (st) {
+      var k = st.getAllKeys(), v = st.getAll();
+      return function () { var o = {}; k.result.forEach(function (key, i) { o[key] = v.result[i]; }); return o; };
+    });
+  }
+  function photoPutMany(map) { return tx('readwrite', function (st) { Object.keys(map).forEach(function (k) { st.put(map[k], k); }); }); }
+  function photoClear() { return tx('readwrite', function (st) { st.clear(); }); }
+  function noop() {}
+  function compress(file) {
+    return new Promise(function (res, rej) {
+      var fr = new FileReader();
+      fr.onerror = rej;
+      fr.onload = function () {
+        var im = new Image();
+        im.onerror = rej;
+        im.onload = function () {
+          var w = im.naturalWidth, h = im.naturalHeight, s = Math.min(1, 1000 / Math.max(w, h)), c = document.createElement('canvas'), x;
+          c.width = Math.max(1, Math.round(w * s)); c.height = Math.max(1, Math.round(h * s));
+          x = c.getContext('2d'); x.fillStyle = '#fff'; x.fillRect(0, 0, c.width, c.height); x.drawImage(im, 0, 0, c.width, c.height);
+          res(c.toDataURL('image/jpeg', 0.8));
+        };
+        im.src = fr.result;
+      };
+      fr.readAsDataURL(file);
+    });
+  }
+  function photoArr(ctx) { return ctx === 'q' ? Q.photos : E.photos; }
+  function photoPicker(ctx, arr) {
+    var th = arr.map(function (d, i) {
+      return '<div class="st-thumb"><img src="' + d + '" alt="Photo ' + (i + 1) + '">' + (i === 0 ? '<span class="st-main">Main</span>' : '') +
+        '<button type="button" class="st-thumb-x" data-act="phdel" data-ctx="' + ctx + '" data-i="' + i + '" aria-label="Remove photo ' + (i + 1) + '">&times;</button></div>';
+    }).join('');
+    return '<div class="st-photos" data-ph="' + ctx + '">' + (th ? '<div class="st-thumbs">' + th + '</div>' : '') +
+      (arr.length < 4 ? '<div class="st-btns"><label class="btn primary st-photobtn">Take photo<input type="file" accept="image/*" capture="environment" hidden data-act="photofile" data-ctx="' + ctx + '"></label>' +
+        '<label class="btn st-photobtn">From gallery<input type="file" accept="image/*" multiple hidden data-act="photofile" data-ctx="' + ctx + '"></label></div>' : '') +
+      '<p class="st-hint">Up to 4 photos (' + arr.length + '/4). The first is the main photo.</p>' +
+      (IDBOK === false ? '<p class="st-err">Photos cannot be saved in this browser (private mode?). Try a normal window.</p>' : '') + '</div>';
+  }
+  function refreshPhotos(ctx) {
+    var el = $('[data-ph="' + ctx + '"]'); if (!el) return;
+    var d = document.createElement('div'); d.innerHTML = photoPicker(ctx, photoArr(ctx));
+    el.parentNode.replaceChild(d.firstChild, el);
+  }
+  function addPhotos(ctx, files) {
+    var arr = photoArr(ctx), list = Array.prototype.slice.call(files, 0, Math.max(0, 4 - arr.length));
+    list.reduce(function (pr, f) {
+      return pr.then(function () {
+        return compress(f).then(function (d) { if (arr.length < 4) { arr.push(d); if (ctx === 'e') E.changed = true; refreshPhotos(ctx); } }, function () { toast('That photo could not be read.'); });
+      });
+    }, Promise.resolve());
+  }
+
+  /* ---------- cars ---------- */
+  var FUELS = ['petrol', 'diesel', 'hybrid', 'electric', 'petrol / hybrid', 'petrol / diesel'];
+  function allModels() { return (AT.models || []).concat(loadOv().models); }
+  function rebuildMO() { MO = byId((AT.models || []).concat(mem.ov ? mem.ov.models : [])); }
+  function carForm(m, ctx) {
+    var ym = m && m.years ? /(\d{4})\D+(\d{4}|now)/.exec(m.years) : null;
+    var b = m ? m.b : (ctx === 'q' ? Q.brand : '');
+    return '<form class="st-carform" data-form="car" data-ctx="' + ctx + '" data-id="' + (m ? esc(m.id) : '') + '">' +
+      '<label class="st-lbl" for="c-b-' + ctx + '">Brand</label><select id="c-b-' + ctx + '" name="b" class="st-in">' + opts((AT.brands || []).map(function (x) { return [x.id, x.name]; }), b) + '</select>' +
+      '<label class="st-lbl" for="c-n-' + ctx + '">Model name</label><input id="c-n-' + ctx + '" name="name" class="st-in" type="text" placeholder="e.g. Staria" value="' + esc(m ? m.name : '') + '">' +
+      '<label class="st-lbl" for="c-c-' + ctx + '">Generation code (optional)</label><input id="c-c-' + ctx + '" name="code" class="st-in" type="text" placeholder="e.g. US4" value="' + esc(m ? m.code : '') + '">' +
+      '<div class="st-2col"><div><label class="st-lbl" for="c-f-' + ctx + '">Years from</label><input id="c-f-' + ctx + '" name="yf" class="st-in" type="number" inputmode="numeric" min="1980" max="2100" value="' + (ym ? ym[1] : '') + '"></div>' +
+      '<div><label class="st-lbl" for="c-t-' + ctx + '">Years to (blank = now)</label><input id="c-t-' + ctx + '" name="yt" class="st-in" type="number" inputmode="numeric" min="1980" max="2100" value="' + (ym && ym[2] !== 'now' ? ym[2] : '') + '"></div></div>' +
+      '<label class="st-lbl" for="c-e-' + ctx + '">Engine type</label><select id="c-e-' + ctx + '" name="fuel" class="st-in">' + opts(FUELS.map(function (x) { return [x, x]; }), m ? m.fuel : 'petrol') + '</select>' +
+      '<label class="st-lbl" for="c-a-' + ctx + '">Other names people use (comma separated)</label><input id="c-a-' + ctx + '" name="alias" class="st-in" type="text" value="' + esc(m && m.alias ? m.alias.join(', ') : '') + '">' +
+      '<p class="st-err st-car-err" role="alert"></p><div class="st-actions"><button type="submit" class="btn primary">Save car</button>' +
+      (ctx === 'q' ? '<button type="button" class="btn ghost" data-act="q-addcar">Cancel</button>' : (m ? '<button type="button" class="btn ghost" data-act="car-cancel">Cancel</button>' : '')) + '</div></form>';
+  }
+  function saveCar(form) {
+    var f = form.elements, ctx = form.getAttribute('data-ctx'), eid = form.getAttribute('data-id'), err = $('.st-car-err', form);
+    var b = f.b.value, name = f.name.value.trim(), code = f.code.value.trim(), yf = f.yf.value.trim(), yt = f.yt.value.trim();
+    function bad(s) { err.textContent = s; }
+    if (!b) return bad('Choose a brand.');
+    if (!name) return bad('Enter the model name.');
+    if (yf && !/^(19|20)\d\d$/.test(yf)) return bad('Enter a 4-digit start year.');
+    if (yt && !/^(19|20)\d\d$/.test(yt)) return bad('Enter a 4-digit end year, or leave blank for "now".');
+    if (yt && !yf) return bad('Enter the start year too.');
+    if (allModels().some(function (x) { return x.id !== eid && x.b === b && x.name.toLowerCase() === name.toLowerCase() && (x.code || '').toLowerCase() === code.toLowerCase(); })) return bad('That car is already listed.');
+    var alias = f.alias.value.split(',').map(function (s) { return s.trim().toLowerCase(); }).filter(Boolean);
+    var ov = loadOv(), m = eid ? ov.models.filter(function (x) { return x.id === eid; })[0] : null;
+    if (!m) { m = { id: 'cm-' + Date.now().toString(36), custom: 1 }; ov.models.push(m); }
+    m.b = b; m.name = name; m.code = code; m.years = yf ? yf + '-' + (yt || 'now') : ''; m.alias = alias; m.fuel = f.fuel.value; m.custom = 1;
+    saveOv(); rebuildMO(); log((eid ? 'Edited car ' : 'Added car ') + modelLabel({ m: m.id }));
+    if (ctx === 'q') { Q.brand = b; Q.m = m.id; Q.addCar = false; Q.p = ''; renderPanel(); toast('Car added'); }
+    else { S.carEdit = null; renderPanel(); toast('Car saved'); }
+  }
+  function renderCars(p) {
+    var ed = S.carEdit && MO[S.carEdit] ? MO[S.carEdit] : null, h = '<div class="st-card"><h2 class="st-h2">' + (ed ? 'Edit car' : 'Add a car') + '</h2>' + carForm(ed, 'cars') + '</div>';
+    (AT.brands || []).forEach(function (br) {
+      var ms = allModels().filter(function (m) { return m.b === br.id; });
+      h += '<div class="st-card"><h2 class="st-h2">' + esc(br.name) + ' (' + ms.length + ')</h2><ul class="st-list">' + ms.map(function (m) {
+        return '<li><strong>' + esc(m.name + (m.code ? ' ' + m.code : '')) + '</strong>' + (m.custom ? ' <em class="st-badge b-edit">added by you</em>' : '') +
+          '<br><span class="st-dim">' + esc([m.years, m.fuel].filter(Boolean).join(' - ')) + '</span>' +
+          (m.custom ? '<div class="st-btns"><button type="button" class="btn st-sm" data-act="car-edit" data-id="' + esc(m.id) + '">Edit</button><button type="button" class="btn st-sm st-danger" data-act="car-del" data-id="' + esc(m.id) + '">Delete</button>' +
+            '<a class="btn st-sm" href="../search/?m=' + esc(m.id) + '" target="_blank" rel="noopener">View on shop</a></div>' : '') + '</li>';
+      }).join('') + '</ul></div>';
+    });
+    p.innerHTML = h;
+  }
+
+  /* ---------- quick add ---------- */
+  var Q = null;
+  function qReset(keep) {
+    var q = { photos: [], brand: '', m: '', p: '', pn: '', pc: '', side: null, price: '', confirmed: true, oem: '', stock: '', note: '', addCar: false, done: null, msg: '', saving: false };
+    if (keep && Q) { q.brand = Q.brand; q.m = Q.m; }
+    Q = q;
+  }
+  function pill(act, v, label, on, sub) {
+    return '<button type="button" class="st-pill' + (on ? ' on' : '') + '" data-act="' + act + '" data-v="' + esc(v) + '" aria-pressed="' + !!on + '">' + esc(label) + (sub ? '<small>' + esc(sub) + '</small>' : '') + '</button>';
+  }
+  function step(n, t) { return '<h2 class="st-step"><span>' + n + '</span>' + t + '</h2>'; }
+  function findDup(m, p, pn) {
+    var custom = p === '__custom', low = (pn || '').trim().toLowerCase();
+    return allMerged().filter(function (x) { return x.m === m && (custom ? x._part.name.toLowerCase() === low : x.p === p); })[0];
+  }
+  function renderQuick(p) {
+    var h;
+    if (Q.done) {
+      h = '<div class="st-card st-success"><p class="st-ok st-big">Product saved</p><p>' + esc(Q.done.label) + '</p>' +
+        (Q.done.thumb ? '<img class="st-sthumb" src="' + Q.done.thumb + '" alt="Main photo">' : '') +
+        '<div class="st-btns"><button type="button" class="btn primary" data-act="q-another">Add another</button>' +
+        '<a class="btn" href="../search/?id=' + encodeURIComponent(Q.done.id) + '" target="_blank" rel="noopener">View on shop</a>' +
+        '<button type="button" class="btn ghost" data-act="edit" data-id="' + esc(Q.done.id) + '">Edit</button></div></div>';
+      p.innerHTML = h; return;
+    }
+    h = '<div class="st-card st-quick">' + step(1, 'Photos') + photoPicker('q', Q.photos) + step(2, 'Brand') + '<div class="st-pills">' +
+      (AT.brands || []).map(function (b) { return pill('q-brand', b.id, b.name, Q.brand === b.id); }).join('') + '</div>';
+    if (Q.brand) {
+      h += step(3, 'Car model') + '<div class="st-pills">' + allModels().filter(function (m) { return m.b === Q.brand; }).map(function (m) {
+        return pill('q-model', m.id, m.name + (m.code ? ' ' + m.code : ''), Q.m === m.id, m.years);
+      }).join('') + pill('q-addcar', '', '+ Add a car', Q.addCar) + '</div>' + (Q.addCar ? carForm(null, 'q') : '');
+    }
+    if (Q.m) {
+      h += step(4, 'Part');
+      var seen = {};
+      (AT.cats || []).concat([{ id: '', name: 'Other' }]).forEach(function (c) {
+        var ps = (AT.parts || []).filter(function (x) { return x.cat === c.id || (!c.id && !CA[x.cat]); });
+        if (!ps.length) return;
+        h += '<p class="st-catl">' + esc(c.name) + '</p><div class="st-pills">' + ps.map(function (x) { return pill('q-part', x.id, x.name, Q.p === x.id); }).join('') + '</div>';
+      });
+      h += '<div class="st-pills">' + pill('q-part', '__custom', 'Other part...', Q.p === '__custom') + '</div>';
+      if (Q.p === '__custom') {
+        h += '<label class="st-lbl" for="q-pn">Part name</label><input id="q-pn" class="st-in" type="text" data-q="pn" value="' + esc(Q.pn) + '">' +
+          '<label class="st-lbl" for="q-pc">Category</label><select id="q-pc" class="st-in" data-q="pc">' + opts((AT.cats || []).map(function (c) { return [c.id, c.name]; }), Q.pc, 'No category') + '</select>';
+      }
+      var dup = Q.p && (Q.p !== '__custom' || Q.pn.trim()) ? findDup(Q.m, Q.p, Q.pn) : null;
+      if (dup) h += '<div class="st-warn">This car and part are already in the catalogue. <button type="button" class="btn st-sm" data-act="q-editdup" data-id="' + esc(dup.id) + '">Edit that product instead</button></div>';
+    }
+    if (Q.m && Q.p) {
+      if (Q.p === '__custom' || (PA[Q.p] && PA[Q.p].side)) {
+        h += step(5, 'Side') + '<div class="st-pills">' + [['L', 'Left'], ['R', 'Right'], ['pair', 'Pair'], ['', 'Not applicable']].map(function (s) { return pill('q-side', s[0], s[1], Q.side === s[0]); }).join('') + '</div>';
+      }
+      h += step(6, 'Details') +
+        '<label class="st-lbl" for="q-price">Price (S$)</label><input id="q-price" class="st-in st-big-in" type="number" min="0" step="0.01" inputmode="decimal" data-q="price" value="' + esc(Q.price) + '">' +
+        '<label class="st-check"><input type="checkbox" data-q="confirmed"' + (Q.confirmed ? ' checked' : '') + '> <span>Price confirmed (real price)</span></label>' +
+        '<label class="st-lbl" for="q-oem">Part number (optional)</label><input id="q-oem" class="st-in" type="text" data-q="oem" value="' + esc(Q.oem) + '" autocomplete="off">' +
+        '<p class="st-lbl">Stock</p><div class="st-pills">' + [['in', 'In stock'], ['order', 'Order from Korea'], ['out', 'Out of stock']].map(function (s) { return pill('q-stock', s[0], s[1], Q.stock === s[0]); }).join('') + '</div>' +
+        '<label class="st-lbl" for="q-note">Note (optional)</label><textarea id="q-note" class="st-in" rows="2" data-q="note">' + esc(Q.note) + '</textarea>' +
+        '<p class="st-err" role="alert">' + esc(Q.msg) + '</p><button type="button" class="btn primary st-full st-save" data-act="q-save">Save product</button>';
+    }
+    p.innerHTML = h + '</div>';
+  }
+  function saveQuick() {
+    if (Q.saving) return;
+    var err = '';
+    if (!Q.m) err = 'Choose a car model.'; else if (!Q.p) err = 'Choose a part.';
+    else if (Q.p === '__custom' && !Q.pn.trim()) err = 'Type the part name.';
+    var price = null, pr = String(Q.price).trim();
+    if (!err && pr !== '') { price = Math.round(Number(pr) * 100) / 100; if (isNaN(price) || price < 0) err = 'Enter a valid price, or leave it blank.'; }
+    if (!err && findDup(Q.m, Q.p, Q.pn)) err = 'That car and part already exist. Use "Edit that product instead".';
+    if (err) { Q.msg = err; renderPanel(); return; }
+    var custom = Q.p === '__custom', n = Q.photos.length, photos = Q.photos.slice();
+    var prod = { id: 'custom-' + Date.now().toString(36), m: Q.m, p: custom ? '' : Q.p, url: '', price: price, sample: Q.confirmed ? 0 : 1, oem: Q.oem.trim(), stock: Q.stock,
+      status: 'published', note: Q.note.trim(), side: Q.side || '', photos: 0 };
+    if (custom) { prod.pn = Q.pn.trim(); prod.pc = Q.pc; }
+    Q.saving = true;
+    function done(cnt) {
+      prod.photos = cnt; loadOv().added.push(prod); saveOv();
+      log('Added ' + describe(prod.id) + (cnt ? ' with ' + cnt + ' photo' + (cnt > 1 ? 's' : '') : ''));
+      Q.saving = false; Q.msg = ''; Q.done = { id: prod.id, label: describe(prod.id), thumb: cnt ? photos[0] : '' }; renderPanel();
+    }
+    if (n) photoSave(prod.id, photos).then(function () { done(n); }, function () { IDBOK = false; toast('Photos could not be saved here. Product saved without photos.'); done(0); });
+    else done(0);
   }
 
   /* ---------- import / export ---------- */
@@ -339,7 +539,9 @@
     p.innerHTML = '<div class="st-card"><h2 class="st-h2">Export</h2>' +
       '<p class="st-note">Download the full catalogue including your changes.</p>' +
       '<div class="st-btns"><button type="button" class="btn" data-act="exp-csv">Export CSV</button><button type="button" class="btn" data-act="exp-json">Export changes (JSON)</button></div>' +
-      '<p class="st-note"><strong>Send the JSON file to Page One to publish the changes to the live site.</strong></p></div>' +
+      '<p class="st-note"><strong>Send the JSON file to Page One to publish the changes to the live site.</strong> It includes your new cars and photos, so it can be large.</p></div>' +
+      '<div class="st-card"><h2 class="st-h2">Import JSON</h2><p class="st-note">Restore a changes file exported from here (cars, products, new products and photos).</p>' +
+      '<label class="st-lbl" for="j-file">JSON file</label><input id="j-file" class="st-in" type="file" accept=".json,application/json" data-act="jsonfile"><div id="j-prev"></div></div>' +
       '<div class="st-card"><h2 class="st-h2">Import CSV</h2>' +
       '<p class="st-note">Use a CSV exported from here. Rows are matched by <code>id</code>. Editable columns: price, sample, oem, stock, status, note. Unknown ids are reported, not added.</p>' +
       '<label class="st-lbl" for="i-file">CSV file</label><input id="i-file" class="st-in" type="file" accept=".csv,text/csv" data-act="csvfile">' +
@@ -357,19 +559,47 @@
   }
   function today() { var d = new Date(); return d.getFullYear() + '-' + ('0' + (d.getMonth() + 1)).slice(-2) + '-' + ('0' + d.getDate()).slice(-2); }
   function exportCsv() {
-    var head = ['id', 'brand', 'model', 'code', 'years', 'category', 'part', 'price', 'sample', 'oem', 'stock', 'status', 'note', 'url'];
+    var head = ['id', 'brand', 'model', 'code', 'years', 'category', 'part', 'price', 'sample', 'oem', 'stock', 'status', 'note', 'url', 'side', 'photos'];
     var rows = [head.join(',')];
     sortList(allMerged()).forEach(function (m) {
       var mo = MO[m.m] || {}, br = BR[mo.b] || {}, ca = CA[m._part.cat] || {};
-      rows.push([m.id, br.name, mo.name, mo.code, mo.years, ca.name, m._part.name, m.price == null ? '' : m.price, m.sample ? 1 : 0, m.oem, m.stock, m.status, m.note, m.url].map(csvCell).join(','));
+      rows.push([m.id, br.name, mo.name, mo.code, mo.years, ca.name, m._part.name, m.price == null ? '' : m.price, m.sample ? 1 : 0, m.oem, m.stock, m.status, m.note, m.url, m.side || '', m.photos | 0].map(csvCell).join(','));
     });
     download('autotex-catalogue-' + today() + '.csv', '﻿' + rows.join('\r\n') + '\r\n', 'text/csv');
     log('Exported CSV'); toast('CSV downloaded');
   }
   function exportJson() {
-    var o = loadOv();
-    download('autotex-catalogue-changes-' + today() + '.json', JSON.stringify({ products: o.products, added: o.added, updated: o.updated || new Date().toISOString() }, null, 2), 'application/json');
-    log('Exported changes JSON'); toast('JSON downloaded');
+    var o = loadOv(), out = { products: o.products, added: o.added, models: o.models, updated: o.updated || new Date().toISOString() };
+    function fin(ph, warn) {
+      out.photos = ph;
+      var text = JSON.stringify(out, null, 2), mb = text.length / 1048576;
+      download('autotex-catalogue-changes-' + today() + '.json', text, 'application/json');
+      log('Exported changes JSON'); toast(warn || (mb > 5 ? 'Large file (' + mb.toFixed(1) + ' MB). Sending may take a while.' : 'JSON downloaded'));
+    }
+    photoAll().then(function (ph) { fin(ph); }, function () { fin({}, 'Downloaded without photos (photo storage unavailable).'); });
+  }
+  function previewJson(text) {
+    var box = $('#j-prev'), o;
+    try { o = JSON.parse(text); } catch (e) { box.innerHTML = '<p class="st-err">That is not a valid JSON file.</p>'; return; }
+    if (!o || typeof o !== 'object') { box.innerHTML = '<p class="st-err">Unexpected file contents.</p>'; return; }
+    var j = { models: (Array.isArray(o.models) ? o.models : []).filter(function (m) { return m && m.id && m.b && m.name; }),
+      products: o.products && typeof o.products === 'object' ? o.products : {},
+      added: (Array.isArray(o.added) ? o.added : []).filter(function (a) { return a && a.id && a.m; }), photos: {} };
+    Object.keys(o.photos || {}).forEach(function (k) { if (/^[\w-]+:[0-3]$/.test(k) && typeof o.photos[k] === 'string' && o.photos[k].indexOf('data:image/') === 0) j.photos[k] = o.photos[k]; });
+    S.impJ = j;
+    var np = Object.keys(j.products).length, nh = Object.keys(j.photos).length;
+    box.innerHTML = '<div class="st-prev"><p>This file has <strong>' + j.models.length + '</strong> car(s), <strong>' + np + '</strong> edited product(s), <strong>' + j.added.length + '</strong> new product(s) and <strong>' + nh + '</strong> photo(s).</p>' +
+      '<button type="button" class="btn primary" data-act="json-apply">Apply (merge into this browser)</button></div>';
+  }
+  function applyJson() {
+    var j = S.impJ; if (!j) return;
+    var ov = loadOv();
+    function up(list, arr) { list.forEach(function (x) { var i = -1; arr.forEach(function (y, n) { if (y.id === x.id) i = n; }); if (i >= 0) arr[i] = x; else arr.push(x); }); }
+    up(j.models, ov.models); up(j.added, ov.added);
+    Object.keys(j.products).forEach(function (k) { ov.products[k] = j.products[k]; });
+    saveOv(); rebuildMO(); log('Imported JSON: ' + j.models.length + ' cars, ' + j.added.length + ' new products, ' + Object.keys(j.photos).length + ' photos');
+    var box = $('#j-prev'), n = Object.keys(j.photos).length; S.impJ = null;
+    (n ? photoPutMany(j.photos) : Promise.resolve()).then(function () { box.innerHTML = '<p class="st-ok">Imported.</p>'; }, function () { box.innerHTML = '<p class="st-ok">Imported, but photos could not be saved in this browser.</p>'; });
   }
   function parseCsv(t) {
     var rows = [], row = [], f = '', q = false, i, c;
@@ -487,7 +717,7 @@
       try { ok = window.confirm((isAdded ? 'Delete ' : 'Reset to original: ') + nm + '?'); } catch (x) {}
       if (!ok) return;
       if (isAdded) { ov.added = ov.added.filter(function (a) { return a.id !== id; }); }
-      delete ov.products[id]; delete S.sel[id];
+      delete ov.products[id]; delete S.sel[id]; photoSave(id, []).catch(noop);
       saveOv(); log((isAdded ? 'Deleted ' : 'Reset to original: ') + nm);
       toast(isAdded ? 'Product deleted' : 'Reset to original'); closeModal(); refreshList();
     }
@@ -501,14 +731,35 @@
     else if (act === 'exp-json') exportJson();
     else if (act === 'imp-preview') previewImport();
     else if (act === 'imp-apply') applyImport();
+    else if (act === 'json-apply') applyJson();
+    else if (act === 'q-brand') { var bv = el.getAttribute('data-v'); if (Q.brand !== bv) { Q.brand = bv; Q.m = ''; Q.p = ''; } Q.addCar = false; renderPanel(); }
+    else if (act === 'q-model') { Q.m = el.getAttribute('data-v'); Q.addCar = false; renderPanel(); }
+    else if (act === 'q-addcar') { Q.addCar = !Q.addCar; renderPanel(); }
+    else if (act === 'q-part') { Q.p = el.getAttribute('data-v'); Q.side = null; Q.msg = ''; renderPanel(); }
+    else if (act === 'q-side') { Q.side = el.getAttribute('data-v'); renderPanel(); }
+    else if (act === 'q-stock') { var sv = el.getAttribute('data-v'); Q.stock = Q.stock === sv ? '' : sv; renderPanel(); }
+    else if (act === 'q-save') saveQuick();
+    else if (act === 'q-another') { qReset(true); renderPanel(); }
+    else if (act === 'q-editdup') { S.edit = el.getAttribute('data-id'); S.tab = 'products'; render(); }
+    else if (act === 'phdel') { var cx = el.getAttribute('data-ctx'); photoArr(cx).splice(+el.getAttribute('data-i'), 1); if (cx === 'e') E.changed = true; refreshPhotos(cx); }
+    else if (act === 'car-edit') { S.carEdit = el.getAttribute('data-id'); renderPanel(); window.scrollTo(0, 0); }
+    else if (act === 'car-cancel') { S.carEdit = null; renderPanel(); }
+    else if (act === 'car-del') {
+      var cid = el.getAttribute('data-id');
+      if (loadOv().added.some(function (a) { return a.m === cid; })) { toast('Delete the products for this car first.'); return; }
+      var okc = true, lbl = modelLabel({ m: cid }); try { okc = window.confirm('Delete ' + lbl + '?'); } catch (x) {}
+      if (!okc) return;
+      loadOv().models = loadOv().models.filter(function (m) { return m.id !== cid; }); saveOv(); rebuildMO(); log('Deleted car ' + lbl); renderPanel(); toast('Car deleted');
+    }
     else if (act === 'reset-all') {
       var ok2 = true; try { ok2 = window.confirm('Remove ALL changes saved in this browser?'); } catch (x) {}
       if (!ok2) return;
-      mem.ov = { products: {}, added: [] }; saveOv(); log('Reset all changes'); S.sel = {}; toast('All changes removed');
+      mem.ov = { products: {}, added: [], models: [] }; rebuildMO(); photoClear().catch(noop); qReset(); saveOv(); log('Reset all changes'); S.sel = {}; toast('All changes removed');
     }
   });
   root.addEventListener('input', function (e) {
     var t = e.target;
+    if (t.hasAttribute('data-q')) { Q[t.getAttribute('data-q')] = t.type === 'checkbox' ? t.checked : t.value; return; }
     if (t.getAttribute('data-f') === 'q') { S.F.q = t.value; S.shown = PAGE; refreshList(); }
   });
   root.addEventListener('change', function (e) {
@@ -518,7 +769,11 @@
       S.shown = PAGE; renderPanel();
     } else if (sid) { if (t.checked) S.sel[sid] = true; else delete S.sel[sid]; refreshBulk(); }
     else if (t.getAttribute('data-act') === 'selall') { /* handled in click */ }
-    else if (t.getAttribute('data-act') === 'addpart') { var c = $('#a-custom'); if (c) c.hidden = t.value !== '__custom'; }
+    else if (t.hasAttribute('data-q')) { Q[t.getAttribute('data-q')] = t.type === 'checkbox' ? t.checked : t.value; }
+    else if (t.getAttribute('data-act') === 'photofile' && t.files && t.files.length) { var fl = Array.prototype.slice.call(t.files); t.value = ''; addPhotos(t.getAttribute('data-ctx'), fl); }
+    else if (t.getAttribute('data-act') === 'jsonfile' && t.files && t.files[0]) {
+      var jr = new FileReader(); jr.onload = function () { previewJson(String(jr.result || '')); }; jr.readAsText(t.files[0]);
+    }
     else if (t.getAttribute('data-act') === 'csvfile' && t.files && t.files[0]) {
       var r = new FileReader();
       r.onload = function () { $('#i-text').value = String(r.result || ''); previewImport(); };
@@ -535,12 +790,14 @@
       mem.who = n; try { sessionStorage.setItem(SKEY, n); } catch (x) {}
       log('Signed in'); render();
     } else if (f === 'edit') saveEdit(e.target);
-    else if (f === 'add') addProduct(e.target);
+    else if (f === 'car') saveCar(e.target);
   });
   document.addEventListener('keydown', function (e) {
     if (e.key === 'Escape' && $('#st-modal')) closeModal();
   });
   root.addEventListener('mousedown', function (e) { if (e.target.id === 'st-modal') closeModal(); });
 
+  qReset();
+  idb().then(function () { IDBOK = true; }, function () { IDBOK = false; });
   render();
 })();
