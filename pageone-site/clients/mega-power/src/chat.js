@@ -81,7 +81,16 @@
   bub.addEventListener('click', function (e) { if (e.target.closest('.x2')) { e.stopPropagation(); bub.classList.remove('on'); SS.set('mp_bub', 1); return; } open(); });
   $('.c-hd button', chat).addEventListener('click', close);
   document.addEventListener('keydown', function (e) { if (e.key === 'Escape' && !chat.hidden) close(); });
-  if (!SS.get('mp_bub', 0)) setTimeout(function () { if (chat.hidden) { bub.classList.add('on'); setTimeout(function () { bub.classList.remove('on'); SS.set('mp_bub', 1); }, 7000); } }, 2500);
+  // Greeting bubble: once per session, never over the hero. Phones wait until the visitor has scrolled past the hero.
+  function showBub() { if (SS.get('mp_bub', 0) || !chat.hidden) return; bub.classList.add('on'); SS.set('mp_bub', 1); setTimeout(function () { bub.classList.remove('on'); }, 5000); }
+  var small = window.matchMedia('(max-width:700px)').matches, hx = document.querySelector('.hx');
+  if (!SS.get('mp_bub', 0)) {
+    if (small) {
+      var lim = function () { return hx ? hx.offsetTop + hx.offsetHeight : 500; };
+      var onS = function () { if (window.scrollY > lim()) { window.removeEventListener('scroll', onS); setTimeout(showBub, 600); } };
+      window.addEventListener('scroll', onS, { passive: true });
+    } else setTimeout(showBub, 4000);
+  }
   chips.addEventListener('click', function (e) { var b = e.target.closest('button'); if (b) ask(b.textContent); });
   form.addEventListener('submit', function (e) { e.preventDefault(); var v = inp.value.trim(); if (!v) return; inp.value = ''; ask(v); });
   body.addEventListener('click', function (e) {

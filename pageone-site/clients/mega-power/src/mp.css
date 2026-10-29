@@ -697,3 +697,10 @@ h1,h2,h3,p,li,td,th,a,b,code{overflow-wrap:anywhere}
 .hx-art{-webkit-mask-image:linear-gradient(90deg,transparent 0%,#000 38%);mask-image:linear-gradient(90deg,transparent 0%,#000 38%)}
 .art .land circle{fill:rgba(170,198,230,.38)}
 @media (max-width:700px){.hx-art{-webkit-mask-image:linear-gradient(180deg,#000 70%,transparent);mask-image:linear-gradient(180deg,#000 70%,transparent)}.art-world{transform:scale(1.5)}}
+/* phone: smaller greeting bubble, sits above the mascot, never wider than the mascot column */
+@media (max-width:700px){
+  .m-bub{max-width:150px;font-size:.78rem;padding:7px 10px;line-height:1.35}
+  .m-bub .x2{width:20px;height:20px;top:-7px;left:-7px}
+  .m-btn{width:52px;height:52px}
+  .mascot{right:8px}
+}
