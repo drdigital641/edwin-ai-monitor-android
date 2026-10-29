@@ -16,8 +16,10 @@ if not OUT.is_absolute():
 
 # ------------------------------------------------------------------ constants
 BASE = "https://pageonesingapore.com/preview/sh-auto-parts"   # single BASE constant; change at go-live
-WA = ""      # WhatsApp number, digits with country code, e.g. "65XXXXXXXX". Empty = enquiry form.
-PHONE = ""   # to confirm
+WA = "6583680055"   # ASSUMED WhatsApp = first shopfront number (Edwin to confirm). Empty = enquiry form.
+PHONES = ["+65 8368 0055", "+65 8368 1155"]   # shopfront sign, photo Edwin sent 29 Oct 2026
+PHONE = PHONES[0]
+EMAIL = "shautopartspl@gmail.com"   # shopfront sign
 TODAY = datetime.date.today().isoformat()
 BRAND = "SH Auto Parts"
 LEGAL = "SH AUTO PARTS PTE. LTD."
@@ -43,6 +45,8 @@ def pic(k, alt, w, h, sizes="100vw", eager=False, cls=""):
     ss = ", ".join(f"{purl(k, x)} {x}w" for x in (800, 1400, 2000))
     return (f'<img src="{purl(k, 1400)}" srcset="{ss}" sizes="{sizes}" alt="{e(alt)}" width="{w}" height="{h}" '
             f'{"" if eager else "loading=\"lazy\" "}decoding="async"{" fetchpriority=\"high\"" if eager else ""}{f" class=\"{cls}\"" if cls else ""} onerror="this.remove()">')
+
+SHOP_IMG = '<img src="{{R}}shopfront.jpg" alt="SH Auto Parts shopfront at 61 Woodlands Industrial Park E9, #01-08, E9 Premium" width="720" height="960" loading="lazy" decoding="async">'
 
 # ------------------------------------------------------------------ catalogue model
 PARTS = [  # slug, name, category, synonyms (owner language)
@@ -183,7 +187,7 @@ def asset(name):
 
 pages = []  # (url path, priority)
 def logo_html(r):
-    return (f'<a class="logo" href="{r}" aria-label="SH Auto Parts home">{EMBLEM.replace("<svg ", "<svg class=\"em\" aria-hidden=\"true\" ", 1)}'
+    return (f'<a class="logo" href="{r}" aria-label="SH Auto Parts home"><img class="em" src="{r}logo-96.png" alt="" width="48" height="48">'
             f'<span class="wm"><b>SH AUTO</b><b>PARTS</b><small>{TAG}</small></span></a>')
 
 ORG = {"@type": ["AutoPartsStore", "Organization"], "@id": BASE + "/#org", "name": BRAND, "legalName": LEGAL, "url": BASE + "/",
@@ -193,6 +197,7 @@ ORG = {"@type": ["AutoPartsStore", "Organization"], "@id": BASE + "/#org", "name
        "address": {"@type": "PostalAddress", "streetAddress": ADDR_STREET, "addressLocality": "Singapore", "postalCode": ADDR_POST, "addressCountry": "SG"},
        "areaServed": {"@type": "Country", "name": "Singapore"}}
 if PHONE: ORG["telephone"] = PHONE
+ORG["email"] = EMAIL
 SITE = {"@type": "WebSite", "@id": BASE + "/#site", "url": BASE + "/", "name": BRAND, "publisher": {"@id": BASE + "/#org"},
         "potentialAction": {"@type": "SearchAction", "target": BASE + "/catalogue/?q={search_term_string}", "query-input": "required name=search_term_string"}}
 
@@ -262,7 +267,7 @@ def shell(path, title, desc, body, active="", crumbs=None, schema=None, og_type=
 </main>
 <footer class="ft"><div class="wrap">
 <div class="ft-g">
-<div class="ft-about">{logo_html(r)}<p>{LEGAL}<br>UEN {UEN}<br>Registered address: {e(ADDR)}</p><p class="mu">Brand names are used only to describe which vehicles a part is for.</p></div>
+<div class="ft-about">{logo_html(r)}<p>{LEGAL}<br>UEN {UEN}<br>Shop: {e(ADDR)}<br>Call {" / ".join(f'<a href="tel:{x.replace(" ","")}">{x}</a>' for x in PHONES)}<br><a href="mailto:{EMAIL}">{EMAIL}</a></p><p class="mu">Brand names are used only to describe which vehicles a part is for.</p></div>
 <div><h4>Parts</h4><ul>{parts_ft}<li><a href="{r}catalogue/">Full catalogue</a></li></ul></div>
 <div><h4>Brands</h4><ul>{brands_ft}</ul></div>
 <div><h4>&nbsp;</h4><ul>{brands_ft2}</ul></div>
@@ -352,6 +357,13 @@ def home():
 <section class="sec alt"><div class="wrap">
 <div class="sec-t rv"><p class="kick">How it works</p><h2>Three steps</h2></div>
 <ol class="steps">{st}</ol>
+</div></section>
+<section class="sec"><div class="wrap shop">
+<div class="shop-ph rv">{SHOP_IMG}</div>
+<div class="shop-b rv"><p class="kick">Visit or call</p><h2>Our shop in Woodlands</h2><p>{e(ADDR)}</p>
+<p>Call <a href="tel:{PHONES[0].replace(" ","")}">{PHONES[0]}</a> or <a href="tel:{PHONES[1].replace(" ","")}">{PHONES[1]}</a><br>Email <a href="mailto:{EMAIL}">{EMAIL}</a></p>
+<p class="mu">Opening hours: to confirm.</p>
+<div class="btns">{btn(enq("a part"), "WhatsApp us " + UI["arrow"])}{btn("tel:" + PHONES[0].replace(" ",""), "Call now", "g")}</div></div>
 </div></section>
 <section class="sec"><div class="wrap narrow">
 <div class="sec-t rv"><p class="kick">FAQ</p><h2>Quick answers</h2></div>
@@ -518,12 +530,12 @@ def about():
 <h2>Company details</h2>
 <dl class="facts"><div><dt>Legal name</dt><dd>{LEGAL}</dd></div><div><dt>UEN</dt><dd>{UEN}</dd></div><div><dt>Registered</dt><dd>9 May 2024</dd></div><div><dt>Status</dt><dd>Live company</dd></div>
 <div><dt>Registered address</dt><dd>{e(ADDR)}</dd></div><div><dt>Activity</dt><dd>Retail sale of spare parts and accessories for motor vehicles (SSIC 47314)</dd></div><div><dt>Tagline</dt><dd>{TAG}</dd></div></dl>
-<p class="mu">Company details are as shown in public ACRA records. The shop address, phone, WhatsApp, email and opening hours are to confirm.</p>
+<p class="mu">Company details are as shown in public ACRA records. Phone numbers and email are from our shopfront sign. Opening hours are to confirm.</p>
 <h2>What we do</h2><p>We sell mainly body parts, and some other parts, for China and EV cars. We sell in Singapore to workshops and car owners. We do not export.</p>
 <h2>Brands</h2><p>Our brand board shows MG, Tesla, Maxus, Chery, BYD, GAC, XPeng, Foton, Geely, Zeekr, Omoda, Jaecoo, Denza, Deepal, Avatr and Ora. Brand names are used only to describe which vehicles a part is for. See <a href="{{{{R}}}}brands/">all brands</a>.</p>
-<h2>Photos</h2><p class="mu">{CRED}. They are mood images, not photos of SH Auto Parts stock. The catalogue entries on this preview are samples.</p>
+<h2>Photos</h2><p class="mu">The shop photo is ours. Other car photos are {CRED.lower().replace("stock photos: ","stock photos from ")}: mood images, not photos of SH Auto Parts stock. The catalogue entries on this preview are samples.</p>
 <div class="btns">{btn(enq("a part"), "Send an enquiry " + UI["arrow"])}{btn("{{R}}contact/", "Contact", "g")}</div>{PVN}</div>
-<aside class="side"><div class="panel photo">{pic("showroom", "White sports car in a showroom, mood image", 700, 520, "(min-width:900px) 30vw, 100vw")}</div></aside></div></section>'''
+<aside class="side"><div class="panel photo">{SHOP_IMG}</div><p class="mu">Our shop at E9 Premium, Woodlands.</p></aside></div></section>'''
     shell("about/index.html", "About SH Auto Parts | Singapore Car Parts Supplier",
           "SH AUTO PARTS PTE. LTD., UEN 202418610M, Singapore. China and EV car body parts for workshops and car owners.",
           body, "about", [("About", "about/")], pri=0.6)
@@ -535,8 +547,8 @@ def contact():
 <div class="btns">{btn(enq("a part"), "Open the enquiry form " + UI["arrow"])}{btn("{{R}}catalogue/", "Search the catalogue", "g")}</div>{PVN}
 <h2>Details</h2>
 <dl class="facts"><div><dt>Company</dt><dd>{LEGAL} (UEN {UEN})</dd></div><div><dt>Registered address</dt><dd>{e(ADDR)}</dd></div>
-<div><dt>Phone / WhatsApp</dt><dd><span class="pvn">To confirm</span></dd></div><div><dt>Email</dt><dd><span class="pvn">To confirm</span></dd></div><div><dt>Opening hours</dt><dd><span class="pvn">To confirm</span></dd></div><div><dt>Shop address</dt><dd><span class="pvn">To confirm</span> (the registered address is shown above)</dd></div></dl>
-</div><aside class="side"><div class="panel photo">{pic("m3", "White electric car in a Singapore car park, mood image", 700, 520, "(min-width:900px) 30vw, 100vw")}</div></aside></div></section>'''
+<div><dt>Phone</dt><dd>{"<br>".join(f'<a href="tel:{x.replace(" ","")}">{x}</a>' for x in PHONES)}</dd></div><div><dt>WhatsApp</dt><dd><a href="https://wa.me/{WA}">+65 8368 0055</a></dd></div><div><dt>Email</dt><dd><a href="mailto:{EMAIL}">{EMAIL}</a></dd></div><div><dt>Shop</dt><dd>{e(ADDR)}</dd></div><div><dt>Opening hours</dt><dd><span class="pvn">To confirm</span></dd></div></dl>
+</div><aside class="side"><div class="panel photo">{SHOP_IMG}</div><p class="mu">Our shopfront at 61 Woodlands Industrial Park E9.</p></aside></div></section>'''
     shell("contact/index.html", "Contact | SH Auto Parts Singapore",
           "Contact SH Auto Parts, Singapore: send your car and part through the enquiry form. Registered address and company details.",
           body, "contact", [("Contact", "contact/")], pri=0.6)
@@ -545,7 +557,7 @@ def enquiry():
     brandopts = "".join(f'<option value="{b[0]}">{e(b[1])}</option>' for b in BRANDS)
     body = f'''<section class="ph-hd"><div class="wrap">{{{{CRUMBS}}}}<p class="kick">Enquiry</p><h1>Tell us the car and the part</h1><p class="lead">We confirm fitment against your car and reply.</p></div></section>
 <section class="sec tight"><div class="wrap two-c"><div>
-<div class="demo-note" role="note"><b>Preview note.</b> This form is a demo. Your message is saved in this browser only and is not sent anywhere yet. The WhatsApp number and reply email are to confirm.</div>
+<div class="demo-note" role="note"><b>Preview note.</b> This form is a demo. Your message is saved in this browser only and is not sent anywhere yet. For a faster reply, WhatsApp us on +65 8368 0055 or call +65 8368 1155.</div>
 <form class="form" id="enq-form" novalidate>
 <div class="g2"><label>I am a<select name="as"><option value="workshop">Workshop</option><option value="owner">Car owner</option></select></label>
 <label>Your name<input name="name" required autocomplete="name"></label></div>
@@ -571,7 +583,7 @@ def privacy():
 <h2>Why we use it</h2><p>To reply to your enquiry, confirm fitment and tell you about availability. We do not use it for anything else without asking you.</p>
 <h2>Preview note</h2><p>This is a preview. The enquiry form saves your message in your own browser only and does not send it to us. Staff and retention details below are to confirm before go-live.</p>
 <h2>Keeping and sharing</h2><p>Retention period and any sharing with service providers: <span class="pvn">to confirm</span>.</p>
-<h2>Your rights</h2><p>Under Singapore's Personal Data Protection Act you can ask to see or correct your personal data, or withdraw your consent. Contact details for requests: <span class="pvn">to confirm</span>. Data protection officer: <span class="pvn">to confirm</span>.</p>
+<h2>Your rights</h2><p>Under Singapore's Personal Data Protection Act you can ask to see or correct your personal data, or withdraw your consent. Send requests to <a href="mailto:shautopartspl@gmail.com">shautopartspl@gmail.com</a>. Data protection officer: <span class="pvn">to confirm</span>.</p>
 <h2>Cookies and analytics</h2><p>This site stores your preferences and any staff changes in your browser. It also counts taps on WhatsApp buttons once a WhatsApp number is added. Anything further is to confirm.</p>
 <p class="mu">Company: {LEGAL}, UEN {UEN}, {e(ADDR)}.</p>
 </div></section>'''
@@ -670,7 +682,7 @@ def statics():
         shutil.copy(HERE / "assets" / f, OUT / f)
     for f in ("sh.css", "sh.js", "staff.js", "staff.css", "wa.js"):
         shutil.copy(HERE / f, OUT / f)
-    shutil.copy(HERE / "assets" / "emblem.svg", OUT / "emblem.svg")
+    for f in ("emblem.svg", "logo.png", "logo-96.png", "shopfront.jpg"): shutil.copy(HERE / "assets" / f, OUT / f)
     (OUT / "site.webmanifest").write_text(json.dumps({"name": BRAND, "short_name": BRAND, "icons": [
         {"src": "icon-192.png", "sizes": "192x192", "type": "image/png"}, {"src": "icon-512.png", "sizes": "512x512", "type": "image/png"}],
         "theme_color": "#0A0A0C", "background_color": "#0A0A0C", "display": "standalone", "start_url": "./"}, indent=1))
@@ -682,7 +694,7 @@ def statics():
     L = [f"# {BRAND}", "", f"> {LEGAL}, Singapore (UEN {UEN}). Sells China and EV car parts, mainly body parts, to workshops and car owners in Singapore. No export. Tagline: {TAG}.", "",
          "## Facts", f"- Legal name: {LEGAL}", f"- UEN: {UEN}", "- Registered: 9 May 2024 (live company)", f"- Registered address: {ADDR}",
          "- Activity: retail sale of spare parts and accessories for motor vehicles (SSIC 47314)",
-         "- Phone, WhatsApp, email, opening hours, prices, stock, warranty: to confirm (not published)", "",
+         f"- Phone: {', '.join(PHONES)} (WhatsApp {PHONES[0]})", f"- Email: {EMAIL}", "- Opening hours, prices, stock, warranty: to confirm (not published)", "",
          "## Brands (names used only to describe fitment)"] + [f"- {b[1]}: {BASE}/brands/{b[0]}/" for b in BRANDS] + \
         ["", "## Part types"] + [f"- {c[1]}: {BASE}/parts/{c[0]}/" for c in CATS] + \
         ["", "## Pages", f"- Catalogue search: {BASE}/catalogue/", f"- For workshops: {BASE}/for-workshops/", f"- For car owners: {BASE}/for-car-owners/",

@@ -300,3 +300,9 @@ a:hover>.more svg,.more:hover svg{transform:translateX(4px)}
  .bstrip{overflow-x:auto}.btrack{width:auto}.btrack a[aria-hidden]{display:none}
 }
 @media print{.hd,.mbar,.pv{display:none}}
+
+.logo .em{border-radius:50%}
+.shop{display:grid;gap:28px;align-items:center}.shop-ph img{width:100%;height:auto;max-height:520px;object-fit:cover;border-radius:18px;border:1px solid rgba(255,255,255,.08)}.shop-b a{color:#fff}
+@media(min-width:900px){.shop{grid-template-columns:5fr 6fr;gap:56px}}
+.panel.photo img[src$='shopfront.jpg']{object-fit:cover}
+.shop-ph img,.panel.photo img[src*='shopfront']{aspect-ratio:4/3;object-fit:cover;object-position:50% 12%;height:auto}
