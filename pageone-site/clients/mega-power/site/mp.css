@@ -477,3 +477,15 @@ textarea.in{min-height:96px;resize:vertical}
 @media (max-width:700px){.logo{flex:1 1 auto}.logo img{max-width:100%;height:34px}}
 html,body{overflow-x:clip}
 .hd .catpanel .wrap{display:block;height:auto;gap:0}
+/* phone: catalogue is in the menu and the bottom bar, so no header button */
+@media (max-width:700px){.hd-act .catb{display:none!important}}
+/* grid columns may shrink below their content width (stops long words/forms pushing past the screen) */
+.hero .wrap>*,.grid2>*,.grid3>*,.cats>*,.pgrid>*,.funnels>*,.steps>*,.cat-l>*,.pd>*,.fgrid>*,.two>*,.branches>*,.acards>*,.ft-g>*,.cp-grid>*,.aud>*,.split>*,.c-form>*{min-width:0}
+h1,h2,h3,p,li,td,th,a,b,code{overflow-wrap:anywhere}
+.in,select,textarea{max-width:100%}
+.wa-prev{overflow-wrap:anywhere}
+@media (max-width:700px){
+  body.typing .mascot{display:none}
+  .mascot{bottom:78px}
+  .m-btn{width:56px;height:56px}
+}

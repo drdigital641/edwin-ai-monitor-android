@@ -162,4 +162,6 @@
       st.msgs.push({ w: 'bot', h: d.innerHTML }); save();
     });
   }
+  document.addEventListener('focusin', function (e) { if (e.target.matches && e.target.matches('input,textarea,select') && !e.target.closest('.chat')) document.body.classList.add('typing'); });
+  document.addEventListener('focusout', function () { document.body.classList.remove('typing'); });
 })();
