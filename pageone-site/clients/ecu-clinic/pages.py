@@ -1066,7 +1066,7 @@ ARTICLES = [
     dict(
         # Real job photos from Edwin, 29 Oct 2026. Edwin did not say what the fix was, so this is DIAGNOSIS ONLY:
         # never claim a repair, cost or time. Airbag/SRS/NECK-PRO repair is NOT a confirmed ECU Clinic service (no service page).
-        slug='mercedes-airbag-light-neck-pro-b1c1113', service=None, date='2026-10-29', img_commit='805067a002d92dc3da710e295f501b652d1ff3ae',
+        slug='mercedes-airbag-light-neck-pro-b1c1113', service=None, date='2026-10-29', img_commit='3d936a900680ddbeabd5b521b9e2e6031792d016',
         title='Mercedes Airbag Light: NECK-PRO B1C1113 and B1C1713 | The ECU Clinic',
         desc='A Mercedes C-Class with the airbag light on and "Front left malfunction, Consult workshop". What the NECK-PRO codes B1C1113 and B1C1713 mean and what to do.',
         h1='Mercedes Airbag Light On: NECK-PRO Codes B1C1113 and B1C1713',

@@ -95,7 +95,7 @@ e = html.escape
 IMG_PIN = {n: '0ec3278037d64b025d7e569b9735eef6d32f293f' for n in (
     'bmw-cas3-modules', 'mercedes-c180-esp-unit', 'mercedes-c180-esp-codes', 'mercedes-me17-ecus',
     'mercedes-camtronic-codes', 'audi-abs-fault-codes')}  # job photos, 27 Oct 2026
-IMG_PIN.update({n: '8806870e5d8d6e2eb0741c11837fb7cfcbab1680' for n in (
+IMG_PIN.update({n: '79ce94d8ea67d1d10cc0a78597c7421b60c6089b' for n in (
     'mercedes-srs-neck-pro-codes', 'mercedes-airbag-warning-cluster')})  # Mercedes airbag job photos, 29 Oct 2026
 
 
