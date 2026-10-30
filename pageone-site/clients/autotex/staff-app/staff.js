@@ -113,7 +113,9 @@
     Q = { brand: keep ? Q.brand : '', car: keep ? Q.car : '', part: '', pn: '', pc: '', psearch: '', side: '', price: '', stock: '', oem: '', note: '', photos: [], addCar: false, ac: { name: '', code: '', years: '', fuel: 'petrol' }, err: '', saving: false, done: null };
   }
   newQ(false);
+  function carSortKey(c) { return ((c.b || '') + ' ' + (c.name || '') + ' ' + (c.code || '')).toLowerCase(); }
   function reindex() {
+    cars.sort(function (a, b) { var x = carSortKey(a), y = carSortKey(b); return x < y ? -1 : x > y ? 1 : 0; });
     CM = {}; PM = {};
     cars.forEach(function (c) { CM[c.key] = c; });
     products.forEach(function (p) { PM[p.id] = p; });
@@ -664,7 +666,7 @@
   }
   function productsHTML() {
     var F = S.F;
-    var cl = cars.filter(function (c) { return !F.brand || c.b === F.brand; });
+    var cl = cars.filter(function (c) { return !F.brand || c.b === F.brand; }).sort(function (x, y) { return carShort(x).localeCompare(carShort(y)); });
     var h = '<div class="st-filters"><input class="st-in full" type="search" id="f-q" data-flt="q" placeholder="Search car, part or OEM no." value="' + esc(F.q) + '" aria-label="Search products" autocomplete="off">' +
       '<select class="st-in" data-flt="brand" aria-label="Brand"><option value="">All brands</option>' + D.brands.map(function (b) { return '<option value="' + b.id + '"' + (F.brand === b.id ? ' selected' : '') + '>' + esc(b.name) + '</option>'; }).join('') + '</select>' +
       '<select class="st-in" data-flt="car" aria-label="Car"><option value="">All cars</option>' + cl.map(function (c) { return '<option value="' + esc(c.key) + '"' + (F.car === c.key ? ' selected' : '') + '>' + esc(carShort(c)) + '</option>'; }).join('') + '</select>' +

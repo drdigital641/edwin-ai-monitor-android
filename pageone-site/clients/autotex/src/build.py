@@ -46,6 +46,7 @@ def is_pub(row):
 
 BR = {b: n for b, n in BRANDS}
 CARS = [c for c in dbfile("cars.json", []) if is_pub(c) and c.get("b") in BR and c.get("key")]
+CARS.sort(key=lambda c: (c["b"], (c.get("name") or "").lower(), (c.get("code") or "").lower()))  # A-Z everywhere (Edwin, 30 Oct 2026)
 M = {c["key"]: dict(id=c["key"], b=c["b"], name=c["name"], code=c.get("code") or "", years=c.get("years") or "",
                     alias=list(c.get("alias") or []), fuel=c.get("fuel") or "petrol") for c in CARS}
 C = {c[0]: dict(id=c[0], name=c[1], line=c[2], icon=c[3]) for c in CATS}
@@ -340,6 +341,8 @@ def build_home():
 <div class="hero-f reveal">{finder(r)}</div>
 </div></section>
 
+{pop}
+
 <section class="sec"><div class="wrap">
 <div class="sec-h"><h2>Shop by car</h2><p>Choose your model. Every part type we supply for it is on one page.</p></div>
 <div class="tabs" role="tablist"><button role="tab" aria-selected="true" data-tab="hy">Hyundai</button><button role="tab" aria-selected="false" data-tab="ki">Kia</button></div>
@@ -351,8 +354,6 @@ def build_home():
 <div class="sec-h"><h2>Shop by part</h2><p>Every part type, across all Hyundai and Kia models.</p></div>
 <div class="cgrid">{cats}</div>
 </div></section>
-
-{pop}
 
 <section class="sec dark"><div class="wrap">
 <div class="sec-h"><h2>How ordering works</h2></div>

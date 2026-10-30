@@ -38,6 +38,7 @@
   function setData(cars, prods) {
     var models = cars ? cars.filter(function (c) { return pub(c) && c.key && BR[c.b]; }).map(function (c) {
       return { id: c.key, b: c.b, name: c.name || "", code: c.code || "", years: c.years || "", alias: c.alias || [], fuel: c.fuel || "petrol" }; }) : AT.models;
+    models.sort(function (a, b) { var x = (a.b + " " + a.name + " " + a.code).toLowerCase(), y = (b.b + " " + b.name + " " + b.code).toLowerCase(); return x < y ? -1 : x > y ? 1 : 0; });
     M = {}; models.forEach(function (m) { M[m.id] = m; });
     AT.models = models;
     var src = prods ? prods.filter(function (r) { return pub(r) && r.key && M[r.m]; }).map(function (r) {
@@ -418,9 +419,8 @@
     }
     function parts(want) {
       var m = M[sm.value];
-      sp.innerHTML = '<option value="">' + (m ? "All parts for this car" : "Choose model first") + "</option>" + (m ? AT.cats.map(function (c) {
-        var o = AT.parts.filter(function (p) { return p.cat === c.id && fits(m, p); }); if (!o.length) return "";
-        return '<optgroup label="' + esc(c.name) + '">' + o.map(function (p) { return '<option value="' + esc(p.id) + '"' + (p.id === want ? " selected" : "") + ">" + esc(p.name) + "</option>"; }).join("") + "</optgroup>"; }).join("") : "");
+      sp.innerHTML = '<option value="">' + (m ? "All parts for this car" : "Choose model first") + "</option>" + (m ? AT.parts.filter(function (p) { return fits(m, p); }).sort(function (a, b) { return a.name.localeCompare(b.name); })
+        .map(function (p) { return '<option value="' + esc(p.id) + '"' + (p.id === want ? " selected" : "") + ">" + esc(p.name) + "</option>"; }).join("") : "");
       sp.disabled = !m;
     }
     sb.addEventListener("change", function () { sm.removeAttribute("data-sel"); models(); });
