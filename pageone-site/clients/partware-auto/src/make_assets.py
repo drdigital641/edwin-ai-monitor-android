@@ -6,7 +6,7 @@ HERE = Path(__file__).resolve().parent
 A = HERE / "assets"; L = HERE / "logo"; A.mkdir(exist_ok=True); L.mkdir(exist_ok=True)
 F = "/usr/share/fonts/opentype/inter/Inter-ExtraBold.otf"
 FB = "/usr/share/fonts/opentype/inter/Inter-SemiBold.otf"
-INK = (18, 22, 28); RED = (212, 42, 30); WHITE = (255, 255, 255); GREY = (201, 207, 216)
+INK = (18, 22, 28); RED = (21, 87, 192); WHITE = (255, 255, 255); GREY = (201, 207, 216)
 font = lambda p, s: ImageFont.truetype(p, s)
 
 def slanted(draw, box, color, skew=0.18):
@@ -27,7 +27,7 @@ icon(256).save(A / "favicon.ico", sizes=[(16, 16), (32, 32), (48, 48)])
 # og.jpg 1200x630
 im = Image.new("RGB", (1200, 630), INK); d = ImageDraw.Draw(im)
 d.polygon([(0, 0), (300, 0), (240, 630), (0, 630)], fill=RED)
-d.polygon([(300, 0), (350, 0), (290, 630), (240, 630)], fill=(168, 30, 20))
+d.polygon([(300, 0), (350, 0), (290, 630), (240, 630)], fill=(13, 63, 148))
 d.text((60, 315), "PW", font=font(F, 150), fill=WHITE, anchor="lm")
 d.text((400, 235), "PARTWARE AUTO", font=font(F, 76), fill=WHITE, anchor="lm")
 d.text((404, 330), "Your Honda Parts Specialist", font=font(FB, 44), fill=GREY, anchor="lm")
@@ -42,5 +42,5 @@ def logo(fg, name):
     d.text((140, 80), "PARTWARE AUTO", font=font(F, 76), fill=fg, anchor="lm"); im.save(L / name)
 logo(INK, "logo.png"); logo(WHITE, "logo-dark.png")
 for fg, n in (("#12161C", "logo.svg"), ("#FFFFFF", "logo-dark.svg")):
-    (L / n).write_text(f'<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 160" width="900" height="160" role="img" aria-label="Partware Auto"><polygon points="26,20 118,20 100,140 8,140" fill="#D42A1E"/><text x="54" y="96" font-family="Arial Black,Arial,sans-serif" font-weight="900" font-size="50" fill="#fff" text-anchor="middle">PW</text><text x="140" y="104" font-family="Arial Black,Arial,sans-serif" font-weight="900" font-size="72" fill="{fg}">PARTWARE AUTO</text></svg>')
+    (L / n).write_text(f'<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 160" width="900" height="160" role="img" aria-label="Partware Auto"><polygon points="26,20 118,20 100,140 8,140" fill="#1557C0"/><text x="54" y="96" font-family="Arial Black,Arial,sans-serif" font-weight="900" font-size="50" fill="#fff" text-anchor="middle">PW</text><text x="140" y="104" font-family="Arial Black,Arial,sans-serif" font-weight="900" font-size="72" fill="{fg}">PARTWARE AUTO</text></svg>')
 print("assets ok")

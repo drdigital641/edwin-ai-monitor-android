@@ -1,5 +1,5 @@
-/* Partware Auto shop - light, charcoal and Honda-parts red. Phone-first. */
-:root{--ink:#12161C;--ink2:#2A313B;--muted:#5B6472;--line:#E3E6EA;--bg:#F6F7F9;--card:#fff;--accent:#D42A1E;--accent-d:#A81E14;--accent-ink:#fff;--ok:#16794A;--warn:#B45309;--wa:#1DA851;--radius:12px;
+/* Partware Auto shop - light, charcoal and Partware blue. Phone-first. */
+:root{--ink:#12161C;--ink2:#2A313B;--muted:#5B6472;--line:#E3E6EA;--bg:#F6F7F9;--card:#fff;--accent:#1557C0;--accent-d:#0D3F94;--accent-ink:#fff;--ok:#16794A;--warn:#B45309;--wa:#1DA851;--radius:12px;
 --font:Inter,system-ui,-apple-system,"Segoe UI",Roboto,Arial,sans-serif;--font-head:"Barlow Condensed","Arial Narrow",Inter,sans-serif;--sh:0 1px 2px rgba(18,22,28,.06),0 6px 20px rgba(18,22,28,.06)}
 *{box-sizing:border-box}
 html{-webkit-text-size-adjust:100%;scroll-behavior:smooth}
