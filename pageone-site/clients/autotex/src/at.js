@@ -301,7 +301,7 @@
       var hq = $("#hq"); if (hq && !hq.value) hq.value = q;
       head = "<h2>" + items.length + " result" + (items.length === 1 ? "" : "s") + " for “" + esc(q) + "”</h2>";
       if (o.r.models.length === 1 && !o.r.parts.length) head += '<p><a class="btn ghost" href="' + esc(mhref(o.r.models[0])) + '">All parts for the ' + esc(mlabel(o.r.models[0])) + "</a></p>";
-      else if (o.r.models.length > 1) head += '<p class="chips">' + o.r.models.map(function (m) { return '<a class="chip" href="?q=' + encodeURIComponent(q + " " + m.code) + '">' + esc(m.name + " " + m.code + " (" + years(m) + ")") + "</a>"; }).join("") + "</p><p class=\"small muted\">Tap your generation to narrow it down.</p>";
+      else if (o.r.models.length > 1) head += '<p class="chips">' + o.r.models.map(function (m) { return '<a class="chip" href="?q=' + encodeURIComponent(q + " " + m.code) + '">' + esc(m.name + (m.code ? " " + m.code : "") + " (" + years(m) + ")") + "</a>"; }).join("") + "</p><p class=\"small muted\">Tap your generation to narrow it down.</p>";
     } else if (fb || fp) {
       items = live.filter(function (x) { return (!fb || x.model.b === fb) && (!fp || x.p === fp); });
       head = "<h2>" + items.length + " listed part" + (items.length === 1 ? "" : "s") + "</h2>";
@@ -414,7 +414,7 @@
     function models(keepModel, keepPart) {
       var b = sb.value, want = keepModel || sm.getAttribute("data-sel");
       sm.innerHTML = '<option value="">' + (b ? "Choose model" : "Choose brand first") + "</option>" + AT.models.filter(function (m) { return m.b === b; }).map(function (m) {
-        return '<option value="' + esc(m.id) + '"' + (m.id === want ? " selected" : "") + ">" + esc(m.name + " " + m.code + " (" + years(m) + ")") + "</option>"; }).join("");
+        return '<option value="' + esc(m.id) + '"' + (m.id === want ? " selected" : "") + ">" + esc(m.name + (m.code ? " " + m.code : "") + " (" + years(m) + ")") + "</option>"; }).join("");
       sm.disabled = !b; parts(keepPart);
     }
     function parts(want) {
