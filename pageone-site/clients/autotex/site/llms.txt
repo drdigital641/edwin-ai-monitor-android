@@ -7,7 +7,7 @@
 - Opening hours: Mon-Fri 9:30am-5:30pm, Sat 9:30am-3:30pm, Sunday closed
 - Phone: 6747 9618. WhatsApp: +65 9731 9547
 - Google rating: 5.0 from 4 reviews
-- Parts: body parts, headlamps and tail lamps, engine parts, suspension, engine mounting, brake pads, brake discs (rotors), spark plugs, ignition coils
+- Parts: body parts, headlamps and tail lamps, engine parts, suspension, engine mounting, brake pads, brake discs (rotors), spark plugs, ignition coils, radiators, aircon compressors and condensers, alternators, starter motors, wiper blades, cabin filters
 - Prices: listed on the product page where set; otherwise quoted on WhatsApp. Autotex confirms stock and fit (by car plate or chassis number) before payment
 - Ordering: add parts to the cart and send the order on WhatsApp
 - Price list: https://autotexautoparts.com.sg/prices/
@@ -17,30 +17,57 @@
 - Headlamps & Tail Lamps: https://autotexautoparts.com.sg/parts/lamps/
 - Brake Pads: https://autotexautoparts.com.sg/parts/brake-pads/
 - Brake Discs (Rotors): https://autotexautoparts.com.sg/parts/brake-discs/
-- Suspension: https://autotexautoparts.com.sg/parts/suspension/
+- Suspension & Steering: https://autotexautoparts.com.sg/parts/suspension/
 - Engine Mounting: https://autotexautoparts.com.sg/parts/engine-mounting/
 - Spark Plugs: https://autotexautoparts.com.sg/parts/spark-plugs/
 - Ignition Coils: https://autotexautoparts.com.sg/parts/ignition-coils/
 - Engine Parts: https://autotexautoparts.com.sg/parts/engine-parts/
+- Cooling & Aircon: https://autotexautoparts.com.sg/parts/cooling-aircon/
+- Starting & Charging: https://autotexautoparts.com.sg/parts/electrical/
 
 ## Models
-- Hyundai Avante (AD, 2016-2020): https://autotexautoparts.com.sg/hyundai/avante-ad/
-- Hyundai Avante (CN7, 2020-now): https://autotexautoparts.com.sg/hyundai/avante-cn7/
-- Hyundai i30 (PD, 2017-2020): https://autotexautoparts.com.sg/hyundai/i30-pd/
-- Hyundai Ioniq Hybrid (AE, 2016-2022): https://autotexautoparts.com.sg/hyundai/ioniq-ae/
-- Hyundai Ioniq 5 (NE, 2021-now): https://autotexautoparts.com.sg/hyundai/ioniq-5/
-- Hyundai Kona (OS, 2017-2023): https://autotexautoparts.com.sg/hyundai/kona-os/
-- Hyundai Tucson (TL, 2015-2020): https://autotexautoparts.com.sg/hyundai/tucson-tl/
-- Hyundai Tucson (NX4, 2021-now): https://autotexautoparts.com.sg/hyundai/tucson-nx4/
-- Hyundai Santa Fe (TM, 2018-2023): https://autotexautoparts.com.sg/hyundai/santa-fe-tm/
-- Hyundai Starex / H-1 (TQ, 2007-2021): https://autotexautoparts.com.sg/hyundai/starex-tq/
-- Kia Cerato K3 (YD, 2013-2018): https://autotexautoparts.com.sg/kia/cerato-yd/
-- Kia Cerato K3 (BD, 2018-now): https://autotexautoparts.com.sg/kia/cerato-bd/
-- Kia Picanto (JA, 2017-now): https://autotexautoparts.com.sg/kia/picanto-ja/
-- Kia Sportage (QL, 2016-2021): https://autotexautoparts.com.sg/kia/sportage-ql/
-- Kia Sportage (NQ5, 2022-now): https://autotexautoparts.com.sg/kia/sportage-nq5/
-- Kia Sorento (UM, 2015-2020): https://autotexautoparts.com.sg/kia/sorento-um/
-- Kia Niro (DE, 2016-2022): https://autotexautoparts.com.sg/kia/niro-de/
-- Kia EV6 (CV, 2021-now): https://autotexautoparts.com.sg/kia/ev6/
-- Kia Carens (RP, 2013-2019): https://autotexautoparts.com.sg/kia/carens-rp/
 - Kia Optima K5 (JF, 2015-2020): https://autotexautoparts.com.sg/kia/optima-jf/
+- Kia Carens (RP, 2013-2019): https://autotexautoparts.com.sg/kia/carens-rp/
+- Kia EV6 (CV, 2021-now): https://autotexautoparts.com.sg/kia/ev6/
+- Kia Niro (DE, 2016-2022): https://autotexautoparts.com.sg/kia/niro-de/
+- Kia Sorento (UM, 2015-2020): https://autotexautoparts.com.sg/kia/sorento-um/
+- Kia Sportage (NQ5, 2022-now): https://autotexautoparts.com.sg/kia/sportage-nq5/
+- Kia Sportage (QL, 2016-2021): https://autotexautoparts.com.sg/kia/sportage-ql/
+- Kia Picanto (JA, 2017-now): https://autotexautoparts.com.sg/kia/picanto-ja/
+- Kia Cerato K3 (BD, 2018-now): https://autotexautoparts.com.sg/kia/cerato-bd/
+- Kia Cerato K3 (YD, 2013-2018): https://autotexautoparts.com.sg/kia/cerato-yd/
+- Hyundai Starex / H-1 (TQ, 2007-2021): https://autotexautoparts.com.sg/hyundai/starex-tq/
+- Hyundai Santa Fe (TM, 2018-2023): https://autotexautoparts.com.sg/hyundai/santa-fe-tm/
+- Hyundai Tucson (NX4, 2021-now): https://autotexautoparts.com.sg/hyundai/tucson-nx4/
+- Hyundai Tucson (TL, 2015-2020): https://autotexautoparts.com.sg/hyundai/tucson-tl/
+- Hyundai Kona (OS, 2017-2023): https://autotexautoparts.com.sg/hyundai/kona-os/
+- Hyundai Ioniq 5 (NE, 2021-now): https://autotexautoparts.com.sg/hyundai/ioniq-5/
+- Hyundai Ioniq Hybrid (AE, 2016-2022): https://autotexautoparts.com.sg/hyundai/ioniq-ae/
+- Hyundai i30 (PD, 2017-2020): https://autotexautoparts.com.sg/hyundai/i30-pd/
+- Hyundai Avante (CN7, 2020-now): https://autotexautoparts.com.sg/hyundai/avante-cn7/
+- Hyundai Avante (AD, 2016-2020): https://autotexautoparts.com.sg/hyundai/avante-ad/
+- Kia Rio (YB, 2017-2020): https://autotexautoparts.com.sg/kia/rio-yb/
+- Kia Seltos (SP2, 2020-now): https://autotexautoparts.com.sg/kia/seltos-sp2/
+- Kia Stonic (YB, 2017-now): https://autotexautoparts.com.sg/kia/stonic-yb/
+- Kia K5 (DL3, 2020-2023): https://autotexautoparts.com.sg/kia/k5-dl3/
+- Kia Carnival (KA4, 2021-now): https://autotexautoparts.com.sg/kia/carnival-ka4/
+- Kia Carnival (YP, 2015-2020): https://autotexautoparts.com.sg/kia/carnival-yp/
+- Kia EV3 (, 2024-now): https://autotexautoparts.com.sg/kia/ev3/
+- Kia EV5 (, 2025-now): https://autotexautoparts.com.sg/kia/ev5/
+- Kia EV9 (MV, 2023-now): https://autotexautoparts.com.sg/kia/ev9/
+- Kia Niro (SG2, 2022-now): https://autotexautoparts.com.sg/kia/niro-sg2/
+- Kia Sorento (MQ4, 2020-now): https://autotexautoparts.com.sg/kia/sorento-mq4/
+- Kia Picanto (TA, 2011-2017): https://autotexautoparts.com.sg/kia/picanto-ta/
+- Hyundai Inster (, 2025-now): https://autotexautoparts.com.sg/hyundai/inster/
+- Hyundai Veloster (FS, 2011-2017): https://autotexautoparts.com.sg/hyundai/veloster-fs/
+- Hyundai i40 (VF, 2012-2018): https://autotexautoparts.com.sg/hyundai/i40-vf/
+- Hyundai Sonata (DN8, 2020-2023): https://autotexautoparts.com.sg/hyundai/sonata-dn8/
+- Hyundai Sonata (LF, 2015-2019): https://autotexautoparts.com.sg/hyundai/sonata-lf/
+- Hyundai Staria (US4, 2021-now): https://autotexautoparts.com.sg/hyundai/staria-us4/
+- Hyundai Santa Fe (MX5, 2024-now): https://autotexautoparts.com.sg/hyundai/santa-fe-mx5/
+- Hyundai Santa Fe (DM, 2012-2018): https://autotexautoparts.com.sg/hyundai/santa-fe-dm/
+- Hyundai Kona (SX2, 2023-now): https://autotexautoparts.com.sg/hyundai/kona-sx2/
+- Hyundai Ioniq 6 (CE, 2023-now): https://autotexautoparts.com.sg/hyundai/ioniq-6/
+
+## Listed products
+- Rear Bumper for Hyundai Avante (AD) S$200: https://autotexautoparts.com.sg/hyundai/avante-ad/rear-bumper/

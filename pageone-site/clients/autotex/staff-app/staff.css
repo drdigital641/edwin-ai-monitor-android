@@ -104,3 +104,18 @@ textarea.st-in{min-height:80px;resize:vertical}
 .st-x{min-width:44px;min-height:44px;font-size:1.8rem;line-height:1;background:none;border:0;cursor:pointer;color:var(--muted)}
 body.st-lock{overflow:hidden}
 @media (min-width:700px){.st-modal{align-items:center}.st-sheet{border-radius:16px}.st-thumbs{grid-template-columns:repeat(6,1fr)}.st-filters{grid-template-columns:2fr 1fr 1fr 1fr}}
+.st-plist{background:#fff;border:1px solid var(--line);border-radius:var(--radius);padding:0 12px 4px}
+.st-pcar{margin:0 -12px;padding:12px 12px 6px;font-size:.95rem;background:var(--bg);border-top:1px solid var(--line);position:sticky;top:96px;z-index:5}
+.st-pcar:first-child{border-top:0;border-radius:var(--radius) var(--radius) 0 0}
+.st-pcar small{font-weight:400;color:var(--muted)}
+.st-prow{display:flex;align-items:center;gap:10px;padding:8px 0;border-top:1px solid var(--line)}
+.st-pcar+.st-prow{border-top:0}
+.st-prow label{flex:1 1 auto;min-width:0}
+.st-prow label b{display:block;font-size:.95rem}
+.st-prow label small{display:block;color:var(--muted);font-size:.78rem}
+.st-pin{flex:0 0 116px;display:flex;align-items:center;gap:4px}
+.st-pin span{color:var(--muted);font-size:.85rem}
+.st-pin .st-in{min-height:44px;padding:8px 10px;text-align:right}
+.st-prow.bad .st-in{border-color:var(--accent);background:#fff3f2}
+.st-prow.done label small{color:var(--ok);font-weight:600}
+.st-pok{flex:0 0 116px;text-align:right;color:var(--ok);font-size:1.3rem;font-weight:700}

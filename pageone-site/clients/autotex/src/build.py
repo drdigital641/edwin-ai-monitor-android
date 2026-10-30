@@ -131,6 +131,8 @@ ICON = {
  "plug": SV('<path d="M20 4h8v6h-8zM18 10h12v8H18zM21 18h6v12h-6zM24 30v6M24 36l-4 4M24 36l5 3"/><path d="M18 14h12" opacity=".5"/>'),
  "coil": SV('<rect x="16" y="4" width="16" height="10" rx="2"/><path d="M19 14h10v6H19zM21 20h6v18h-6zM24 38v6"/><path d="M21 25h6M21 30h6" opacity=".5"/>'),
  "engine": SV('<path d="M8 18h6v-4h12v4h6l4 4h4v12h-4l-4 4H14l-6-6Z"/><path d="M4 22v8M17 10h6"/><circle cx="24" cy="27" r="4" opacity=".6"/>'),
+ "fan": SV('<circle cx="24" cy="24" r="4"/><path d="M24 20c-2-8 0-14 6-14 4 0 4 6-2 14M28 24c8-2 14 0 14 6 0 4-6 4-14-2M24 28c2 8 0 14-6 14-4 0-4-6 2-14M20 24c-8 2-14 0-14-6 0-4 6-4 14 2"/>'),
+ "bolt": SV('<path d="M27 4 10 27h12l-3 17 19-25H26Z"/>'),
  "cart": SV('<path d="M3 5h4l3 18h17l3-12H9"/><circle cx="13" cy="28" r="2"/><circle cx="25" cy="28" r="2"/>', "0 0 34 34"),
  "search": SV('<circle cx="14" cy="14" r="9"/><path d="m21 21 7 7"/>', "0 0 32 32"),
  "phone": SV('<path d="M7 4h6l3 7-4 2a16 16 0 0 0 8 8l2-4 7 3v6a3 3 0 0 1-3 3C14 29 4 19 4 7a3 3 0 0 1 3-3Z"/>', "0 0 34 34"),
@@ -335,7 +337,7 @@ def build_home():
 <div class="hero-t reveal"><p class="eyebrow">Kaki Bukit · Registered {REG[-4:]}</p>
 <h1>Kia and Hyundai parts, <em>direct from Korea</em></h1>
 <p class="lead">Autotex is a Kia and Hyundai parts stockist in Singapore. Pick your car and the part, then see the price or ask us on WhatsApp. No part number needed.</p>
-<ul class="ticks"><li>{ICON['check']}Body, lamps, brakes, suspension, mounting, ignition</li><li>{ICON['check']}Sold direct to Singapore drivers</li><li>{ICON['check']}We check the fit for your car before you pay</li></ul></div>
+<ul class="ticks"><li>{ICON['check']}Body, lamps, brakes, suspension, engine, aircon</li><li>{ICON['check']}Sold direct to Singapore drivers</li><li>{ICON['check']}We check the fit for your car before you pay</li></ul></div>
 <div class="hero-f reveal">{finder(r)}</div>
 </div></section>
 
@@ -365,7 +367,7 @@ def build_home():
 
 <section class="sec"><div class="wrap two">
 <div class="reveal"><h2>Why Autotex</h2>
-<p>Autotex stocks Kia and Hyundai parts brought in direct from Korea and sells them direct to Singapore drivers at distribution price. Our range covers body parts, lamps, engine parts, suspension, engine mounting, brake pads, brake discs, spark plugs and ignition coils.</p>
+<p>Autotex stocks Kia and Hyundai parts brought in direct from Korea and sells them direct to Singapore drivers at distribution price. Our range covers body parts, lamps, brake pads and discs, suspension and steering, engine mounting, spark plugs, ignition coils, engine service parts, cooling and aircon parts, alternators and starter motors.</p>
 <p>{e(LEGAL)} has been registered in Singapore since {REG} (UEN {UEN}). <a href="about/">About us</a></p></div>
 <div class="proof reveal"><p class="stars" aria-label="Rated 5.0 out of 5 on Google">★★★★★</p><p><b>5.0 on Google</b> from 4 reviews</p><p><a href="{GMAP}" rel="noopener">See us on Google Maps</a></p>
 <p class="addr">{ICON['pin']}<span>{e(ADDR1)}<br>{e(ADDR2)}</span></p>
@@ -640,7 +642,7 @@ def build_pages():
     body = f'''<section class="ph"><div class="wrap">{{{{CRUMBS}}}}<h1>About Autotex</h1>
 <p class="lead">Autotex Aircon Enterprise is a Kia and Hyundai parts stockist in Kaki Bukit, Singapore. We bring parts in direct from Korea and sell them direct to Singapore drivers.</p></div></section>
 <section class="sec"><div class="wrap two">
-<div><h2>What we stock</h2><p>Hyundai and Kia body parts, headlamps and tail lamps, engine parts, suspension, engine mounting, brake pads, brake discs (rotors), spark plugs and ignition coils.</p>
+<div><h2>What we stock</h2><p>Hyundai and Kia body parts, headlamps and tail lamps, engine parts, suspension, engine mounting, brake pads, brake discs (rotors), cooling and aircon parts, alternators, starter motors, spark plugs and ignition coils.</p>
 <h2>How we sell</h2><p>Owners rarely know a part number, so our shop is built around your car: choose the model, choose the part, and send us the order. We match the exact part to your car plate or chassis number before you pay.</p></div>
 <div class="facts"><h2>Business details</h2><dl class="spec">
 <div><dt>Registered name</dt><dd>{e(LEGAL)}</dd></div>
@@ -765,7 +767,7 @@ def build_static():
 - Opening hours: {HOURS_LINE}
 - Phone: {TEL}. WhatsApp: {WA_SHOW}
 - Google rating: 5.0 from 4 reviews
-- Parts: body parts, headlamps and tail lamps, engine parts, suspension, engine mounting, brake pads, brake discs (rotors), spark plugs, ignition coils
+- Parts: body parts, headlamps and tail lamps, engine parts, suspension, engine mounting, brake pads, brake discs (rotors), spark plugs, ignition coils, radiators, aircon compressors and condensers, alternators, starter motors, wiper blades, cabin filters
 - Prices: listed on the product page where set; otherwise quoted on WhatsApp. Autotex confirms stock and fit (by car plate or chassis number) before payment
 - Ordering: add parts to the cart and send the order on WhatsApp
 - Price list: {BASE}/prices/

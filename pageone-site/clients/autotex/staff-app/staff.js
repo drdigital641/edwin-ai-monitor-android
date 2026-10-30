@@ -314,7 +314,7 @@
       (user ? '<button type="button" class="st-link" data-a="signout">Sign out</button>' : '') + '</div></div>';
     if (user) h += '<div class="st-who">' + esc(user.full_name || '') + ' ' + esc(user.email) + '</div>';
     if (withTabs) {
-      var tabs = [['quick', 'Quick add'], ['products', 'Products'], ['cars', 'Cars'], ['io', 'Import / Export'], ['log', 'Activity']];
+      var tabs = [['quick', 'Quick add'], ['prices', 'Add prices'], ['products', 'Products'], ['cars', 'Cars'], ['io', 'Import / Export'], ['log', 'Activity']];
       h += '<div class="st-tabs" role="tablist">' + tabs.map(function (t) {
         return '<button type="button" class="st-tab" role="tab" aria-selected="' + (S.tab === t[0]) + '" data-a="tab" data-v="' + t[0] + '">' + t[1] + '</button>';
       }).join('') + '</div>';
@@ -365,9 +365,10 @@
   function renderView() {
     var v = document.getElementById('view'); if (!v) return;
     var y = window.scrollY;
-    v.innerHTML = S.tab === 'quick' ? quickHTML() : S.tab === 'products' ? productsHTML() : S.tab === 'cars' ? carsHTML() : S.tab === 'io' ? ioHTML() : logHTML();
+    v.innerHTML = S.tab === 'quick' ? quickHTML() : S.tab === 'prices' ? pricesHTML() : S.tab === 'products' ? productsHTML() : S.tab === 'cars' ? carsHTML() : S.tab === 'io' ? ioHTML() : logHTML();
     Array.prototype.forEach.call(root.querySelectorAll('.st-tab'), function (b) { b.setAttribute('aria-selected', String(b.getAttribute('data-v') === S.tab)); });
     if (S.tab === 'products') renderList();
+    if (S.tab === 'prices') renderPriceList();
     hydrate();
     window.scrollTo(0, y);
   }
@@ -517,6 +518,130 @@
     return api('POST', '/entities/AtCar', rec).then(function (saved) {
       saved = saved && saved.id ? saved : Object.assign({ id: 'tmp-' + key }, rec);
       cars.push(saved); reindex(); logAct('Added car ' + carLabel(key)); return saved;
+    });
+  }
+
+
+  /* ---------- Add prices (parts showing "Ask for price") ---------- */
+  var PR_KEY = 'at_price_drafts';
+  var PR = { brand: '', car: '', cat: '', q: '', shown: 60, edits: {}, done: {}, bad: {}, saving: false };
+  try { PR.edits = JSON.parse(lsGet(PR_KEY) || '{}') || {}; } catch (e) { PR.edits = {}; }
+  function prStore() { var k = Object.keys(PR.edits); if (k.length) lsSet(PR_KEY, JSON.stringify(PR.edits)); else lsDel(PR_KEY); }
+  function noPrice(p) { return p.price == null || p.price === ''; }
+  var PART_ORDER = {}; D.parts.forEach(function (p, i) { PART_ORDER[p.id] = i; });
+  /* same rule as catalog.fits(): EVs have no engine parts, diesel-only cars no plugs/coils */
+  function fitsCar(fuel, need) {
+    fuel = String(fuel || 'petrol');
+    if (!need || need === 'any') return true;
+    if (fuel === 'electric') return false;
+    if (need === 'petrol') return fuel.indexOf('petrol') >= 0 || fuel.indexOf('hybrid') >= 0;
+    return true;
+  }
+  /* every car x part the shop lists that has no product row yet: shown as "Ask for price" on the website */
+  var VIRT = {};
+  function prSlots() {
+    var have = {};
+    products.forEach(function (p) { have[p.m + '|' + p.p] = 1; });
+    var out = [];
+    cars.forEach(function (c) {
+      if ((c.status || 'published') !== 'published') return;
+      D.parts.forEach(function (pd) {
+        var id = 'v:' + c.key + '|' + pd.id;
+        if (!fitsCar(c.fuel, pd.need) || (have[c.key + '|' + pd.id] && !PR.done[id])) return;
+        out.push(VIRT[id] || (VIRT[id] = { id: id, virt: true, m: c.key, p: pd.id, price: null, status: 'published' }));
+      });
+    });
+    return out;
+  }
+  function prItem(id) { return PM[id] || VIRT[id]; }
+  function prList() {
+    var q = PR.q.toLowerCase().trim();
+    return products.concat(prSlots()).filter(function (p) {
+      if (!noPrice(p) && !PR.done[p.id]) return false;
+      if (PR.brand && brandOfProduct(p) !== PR.brand) return false;
+      if (PR.car && p.m !== PR.car) return false;
+      if (PR.cat && partCat(p) !== PR.cat) return false;
+      if (q) {
+        var c = CM[p.m] || {};
+        var hay = [carLabel(p.m), (c.alias || []).join(' '), partName(p), p.oem].join(' ').toLowerCase();
+        return q.split(/\s+/).every(function (w) { return hay.indexOf(w) >= 0; });
+      }
+      return true;
+    }).sort(function (a, b) {
+      var ca = carLabel(a.m), cb = carLabel(b.m);
+      if (ca !== cb) return ca < cb ? -1 : 1;
+      var oa = PART_ORDER[a.p] == null ? 999 : PART_ORDER[a.p], ob = PART_ORDER[b.p] == null ? 999 : PART_ORDER[b.p];
+      return oa - ob || (a.side || '').localeCompare(b.side || '');
+    });
+  }
+  function prPending() { return Object.keys(PR.edits).filter(function (id) { return prItem(id) && String(PR.edits[id]).trim() !== ''; }); }
+  function pricesHTML() {
+    var left = products.filter(noPrice).length + prSlots().length;
+    var cl = cars.filter(function (c) { return !PR.brand || c.b === PR.brand; }).sort(function (x, y) { return carShort(x).localeCompare(carShort(y)); });
+    return '<div class="st-card" style="margin-top:10px"><h2 class="st-h2" style="margin:0 0 4px">Add prices</h2><p class="st-note" style="margin:0"><b>' + left + '</b> parts still show "Ask for price" on the website. Type a price in S$ next to any part, then tap <b>Save</b>. Do a few at a time: prices you typed but did not save yet stay on this phone.</p></div>' +
+      '<div class="st-filters"><input class="st-in full" type="search" data-pf="q" placeholder="Search car or part" value="' + esc(PR.q) + '" aria-label="Search" autocomplete="off">' +
+      '<select class="st-in" data-pf="brand" aria-label="Brand"><option value="">All brands</option>' + D.brands.map(function (b) { return '<option value="' + b.id + '"' + (PR.brand === b.id ? ' selected' : '') + '>' + esc(b.name) + '</option>'; }).join('') + '</select>' +
+      '<select class="st-in" data-pf="car" aria-label="Car"><option value="">All cars</option>' + cl.map(function (c) { return '<option value="' + esc(c.key) + '"' + (PR.car === c.key ? ' selected' : '') + '>' + esc(carShort(c)) + '</option>'; }).join('') + '</select>' +
+      '<select class="st-in" data-pf="cat" aria-label="Part type"><option value="">All part types</option>' + D.cats.map(function (c) { return '<option value="' + esc(c.id) + '"' + (PR.cat === c.id ? ' selected' : '') + '>' + esc(c.name) + '</option>'; }).join('') + '</select></div>' +
+      '<div id="prlist"></div>' +
+      '<div class="st-savebar"><button type="button" class="btn primary full" style="min-height:56px" id="pr-save" data-a="prsave">' + prSaveLabel() + '</button></div>';
+  }
+  function prSaveLabel() {
+    if (PR.saving) return 'Saving...';
+    var n = prPending().length;
+    return n ? 'Save ' + n + ' price' + (n > 1 ? 's' : '') : 'Type a price to save';
+  }
+  function renderPriceList() {
+    var el = document.getElementById('prlist'); if (!el) return;
+    var list = prList(), n = list.length, h = '', last = '';
+    if (!products.length) { el.innerHTML = '<div class="st-empty">No products yet.</div>'; return; }
+    if (!n) { el.innerHTML = '<div class="st-empty">' + (PR.q || PR.brand || PR.car || PR.cat ? 'Nothing here needs a price.' : 'Every part has a price. Well done!') + '</div>'; return; }
+    h += '<div class="st-count">' + n + ' part' + (n > 1 ? 's' : '') + ' to price</div><div class="st-plist">';
+    list.slice(0, PR.shown).forEach(function (p) {
+      var cl = carLabel(p.m);
+      if (cl !== last) { h += '<h3 class="st-pcar">' + esc(cl) + (CM[p.m] && CM[p.m].years ? ' <small>' + esc(CM[p.m].years) + '</small>' : '') + '</h3>'; last = cl; }
+      var done = PR.done[p.id], v = PR.edits[p.id] != null ? PR.edits[p.id] : '';
+      var pd = PA[p.p];
+      h += '<div class="st-prow' + (done ? ' done' : '') + (PR.bad[p.id] ? ' bad' : '') + '"><label for="pr-' + esc(p.id) + '"><b>' + esc(partName(p)) + (p.side ? ' (' + esc(SIDES[p.side] || p.side) + ')' : '') + '</b>' +
+        '<small>' + (done ? 'Saved: ' + esc(money(p.price)) : esc(pd ? 'per ' + pd.unit : '') + ((p.status || 'published') === 'hidden' ? ' · hidden' : '')) + '</small></label>' +
+        (done ? '<span class="st-pok">&#10003;</span>' : '<div class="st-pin"><span>S$</span><input id="pr-' + esc(p.id) + '" class="st-in" inputmode="decimal" enterkeyhint="next" autocomplete="off" data-pr="' + esc(p.id) + '" value="' + esc(v) + '" placeholder="Price"></div>') + '</div>';
+    });
+    h += '</div>';
+    if (n > PR.shown) h += '<button type="button" class="btn full" style="margin-top:12px" data-a="prmore">Show more (' + (n - PR.shown) + ')</button>';
+    el.innerHTML = h;
+  }
+  function prSave() {
+    if (PR.saving) return;
+    var ids = prPending(), bad = 0, jobs = [];
+    PR.bad = {};
+    ids.forEach(function (id) {
+      var n = parsePrice(PR.edits[id]);
+      if (n == null) { delete PR.edits[id]; return; }
+      if (isNaN(n) || n <= 0) { PR.bad[id] = 1; bad++; return; }
+      jobs.push({ id: id, price: Math.round(n * 100) / 100 });
+    });
+    if (bad) { toast(bad + ' price' + (bad > 1 ? 's are' : ' is') + ' not a number. Fix the red rows.', 4000); renderPriceList(); if (!jobs.length) return; }
+    if (!jobs.length) { toast('Type a price first'); return; }
+    PR.saving = true; setText('pr-save', prSaveLabel());
+    runPool(jobs, 4, function (j) {
+      var it = prItem(j.id);
+      if (it && it.virt) {
+        var c = CM[it.m] || {};
+        var rec = { key: uniqueKey(c.b + '-' + it.m + '-' + it.p), m: it.m, p: it.p, price: j.price, stock: '', side: '', oem: '', note: '', photos: [], status: 'published' };
+        return api('POST', '/entities/AtProduct', rec).then(function (saved) {
+          saved = saved && saved.id ? saved : rec;
+          products.unshift(saved); reindex();
+          it.price = j.price; PR.done[j.id] = 1; delete PR.edits[j.id];
+        });
+      }
+      return api('PUT', '/entities/AtProduct/' + encodeURIComponent(j.id), { price: j.price }).then(function () {
+        var p = PM[j.id]; if (p) p.price = j.price; PR.done[j.id] = 1; delete PR.edits[j.id];
+      });
+    }).then(function (r) {
+      PR.saving = false; prStore();
+      logAct('Added prices to ' + r.ok + ' parts' + (r.fail ? ' (' + r.fail + ' failed)' : ''));
+      toast(r.fail ? r.ok + ' saved, ' + r.fail + ' not saved: ' + r.errs[0] : r.ok + ' price' + (r.ok > 1 ? 's' : '') + ' saved. Live on the website now.', 4000);
+      setText('pr-save', prSaveLabel()); renderPriceList();
     });
   }
 
@@ -900,6 +1025,8 @@
       case 'retry': { var nm2 = t.getAttribute('data-c'), it = ctxOf(nm2).photos.filter(function (p) { return p.id === t.getAttribute('data-i'); })[0]; if (it) { processPhoto(nm2, it); refreshPhotos(nm2); } break; }
       case 'flag': S.F[v] = !S.F[v]; S.shown = PAGE; renderView(); break;
       case 'more': S.shown += PAGE; renderList(); break;
+      case 'prmore': PR.shown += 60; renderPriceList(); break;
+      case 'prsave': prSave(); break;
       case 'edit': openEdit(id); break;
       case 'closesheet': closeSheet(); break;
       case 'esave': editSave(); break;
@@ -928,6 +1055,16 @@
   });
   document.addEventListener('input', function (ev) {
     var t = ev.target;
+    if (t.getAttribute && t.getAttribute('data-pr')) {
+      var pid = t.getAttribute('data-pr'); PR.edits[pid] = t.value; delete PR.bad[pid];
+      var row = t.closest('.st-prow'); if (row) row.classList.remove('bad');
+      prStore(); setText('pr-save', prSaveLabel()); return;
+    }
+    if (t.getAttribute && t.getAttribute('data-pf')) {
+      var k = t.getAttribute('data-pf'); PR[k] = t.value; PR.shown = 60;
+      if (k === 'brand') { PR.car = ''; return renderView(); }
+      return renderPriceList();
+    }
     if (t.getAttribute && t.getAttribute('data-flt')) {
       S.F[t.getAttribute('data-flt')] = t.value; S.shown = PAGE;
       if (t.getAttribute('data-flt') === 'brand') { S.F.car = ''; return renderView(); }
@@ -958,10 +1095,19 @@
       r.onload = function () { importState = prepareImport(String(r.result)); refreshImport(); };
       r.readAsText(f); return;
     }
-    if (t.tagName === 'SELECT' && t.getAttribute('data-flt')) return; // handled by input
+    if (t.tagName === 'SELECT' && (t.getAttribute('data-flt') || t.getAttribute('data-pf'))) return; // handled by input
     if (t.tagName === 'SELECT' && t.getAttribute('data-c') === 'e') { E.d[t.getAttribute('data-f')] = t.value; renderSheet(); }
     else if (t.tagName === 'SELECT' && t.id === 'q-pc') Q.pc = t.value;
   });
+
+  document.addEventListener('keydown', function (ev) {
+    var t = ev.target;
+    if (ev.key !== 'Enter' || !t.getAttribute || !t.getAttribute('data-pr')) return;
+    ev.preventDefault();
+    var all = Array.prototype.slice.call(document.querySelectorAll('[data-pr]')), i = all.indexOf(t);
+    if (all[i + 1]) all[i + 1].focus(); else t.blur();
+  });
+  window.addEventListener('beforeunload', function (ev) { if (PR.saving) { ev.preventDefault(); ev.returnValue = ''; } });
 
   boot();
 })();
