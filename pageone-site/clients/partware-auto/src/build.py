@@ -28,7 +28,7 @@ UNIT = "#01-21"
 ADDR1 = f"10 Kaki Bukit Road 1, {UNIT}"
 ADDR2 = "KB Industrial Building, Singapore 416175"
 TEL = "6747 5028"; TEL_H = "+6567475028"
-WA = "6587977581"; WA_SHOW = "+65 8797 7581"
+WA = "6591062832"; WA_SHOW = "+65 9106 2832"
 FB = "https://www.facebook.com/partwareauto"
 GMAP = "https://www.google.com/maps/search/?api=1&query=" + quote("Partware Auto 10 Kaki Bukit Road 1 KB Industrial Building Singapore 416175")
 INDEXNOW = hashlib.sha1(b"partware-auto-indexnow").hexdigest()[:32]
@@ -143,7 +143,7 @@ ORG = {"@type": ["AutoPartsStore", "LocalBusiness"], "@id": BASE + "/#store", "n
        "openingHoursSpecification": [
            {"@type": "OpeningHoursSpecification", "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"], "opens": "09:00", "closes": "18:00"},
            {"@type": "OpeningHoursSpecification", "dayOfWeek": "Saturday", "opens": "09:00", "closes": "15:00"}],
-       "contactPoint": [{"@type": "ContactPoint", "telephone": "+65 8797 7581", "contactType": "sales",
+       "contactPoint": [{"@type": "ContactPoint", "telephone": "+65 9106 2832", "contactType": "sales",
                          "contactOption": "WhatsApp", "areaServed": "SG", "availableLanguage": ["English"]}],
        "areaServed": "SG", "hasMap": GMAP}
 

@@ -14,7 +14,7 @@ so facts below come from public mirrors. Ask Edwin for screenshots of the Google
 | Registered address | 10 Kaki Bukit Road 1, #01-24, KB Industrial Building, Singapore 416175 | ACRA |
 | Shop unit | #01-21 per Yellow Pages and Facebook listing title; #01-24 per ACRA. CONFIRM WITH CLIENT | conflict |
 | Phone | 6747 5028 | Yellow Pages |
-| WhatsApp | +65 8797 7581 | Yellow Pages WhatsApp link (confirm) |
+| Mobile / WhatsApp | +65 9106 2832 | Edwin, 30 Oct 2026 (Yellow Pages had an older +65 8797 7581) |
 | Website (old) | partwareauto.com (blocked from sandbox; content unknown) | Facebook via autoyas.com |
 | Facebook | facebook.com/partwareauto (page id 1570928553211129) | search result |
 | Tagline | "Your Honda Parts Specialist" | Facebook |
