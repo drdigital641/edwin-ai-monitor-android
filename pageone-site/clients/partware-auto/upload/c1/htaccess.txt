@@ -1,0 +1,12 @@
+# Go-live .htaccess for Partware Auto's own domain (paste via cPanel; edit DOMAIN)
+ErrorDocument 404 /404.html
+RewriteEngine On
+RewriteCond %{HTTPS} off [OR]
+RewriteCond %{HTTP_HOST} ^www\. [NC]
+RewriteRule ^ https://DOMAIN%{REQUEST_URI} [L,R=301]
+<FilesMatch "\.(html)$">
+Header set Cache-Control "max-age=3600"
+</FilesMatch>
+<IfModule mod_headers.c>
+Header set X-Content-Type-Options "nosniff"
+</IfModule>
