@@ -209,7 +209,7 @@ def shell(path, title, desc, body, active="", crumbs=None, schema=None, js=("dat
 <a class="skip" href="#main">Skip to content</a>
 {pv}
 <header class="hd"><div class="wrap hd-in">
-<a class="logo" href="{r}" aria-label="Partware Auto home"><span class="mark">PW</span><span class="wm">PARTWARE AUTO<small>Your Honda parts specialist</small></span></a>
+<a class="logo" href="{r}" aria-label="Partware Auto home"><img class="mark" src="{r}mark.png" width="38" height="38" alt=""><span class="wm">PARTWARE AUTO<small>Your Honda parts specialist</small></span></a>
 <form class="hd-search" action="{r}search/" role="search"><label class="sr" for="hq">Search parts</label><input id="hq" name="q" type="search" placeholder="e.g. civic brake pads" autocomplete="off">{ICON['search']}</form>
 <a class="cartb" href="{r}cart/" aria-label="Cart">{ICON['cart']}<b data-cart-count>0</b></a>
 <button class="burger" aria-label="Menu" aria-expanded="false" aria-controls="nav"><span></span><span></span><span></span></button>
