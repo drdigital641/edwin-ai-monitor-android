@@ -43,7 +43,7 @@
     var src = prods ? prods.filter(function (r) { return pub(r) && r.key && M[r.m]; }).map(function (r) {
       var st = STATIC[r.key], pr = r.price === "" || r.price == null ? null : +r.price;
       var x = { id: r.key, m: r.m, p: P[r.p] ? r.p : "other", pn: r.pn || "", pc: r.pc || "", price: pr > 0 ? pr : null, oem: r.oem || "", stock: r.stock || "", side: r.side || "",
-        note: r.note || "", photos: (r.photos || []).filter(function (s) { return typeof s === "string"; }), updated: r.updated_date || "" };
+        note: r.note || "", photos: (r.photos || []).filter(function (s) { return typeof s === "string"; }), updated: r.updated_date || "", created: r.created_date || "" };
       if (st && st.url && st.m === x.m && st.p === x.p) x.url = st.url;
       return x; }) : AT.products.map(function (x) { var y = {}; for (var k in x) y[k] = x[k]; y.photos = x.photos || []; return y; });
     PR = {}; AT.PR = PR;
@@ -340,6 +340,7 @@
   /* ---- bring the static HTML in line with the live database ---- */
   function refreshStatic() {
     $$("[data-live]").forEach(function (el) { if (!res || !res.contains(el)) el.remove(); });
+    renderLatest();
     $$("[data-ask][hidden]").forEach(function (el) { el.hidden = false; });
     // prices, stock, visibility of products already printed in the page
     $$("[data-price]").forEach(function (el) {
@@ -450,6 +451,61 @@
   if ("IntersectionObserver" in window && !matchMedia("(prefers-reduced-motion: reduce)").matches) {
     var io = new IntersectionObserver(function (es) { es.forEach(function (en) { if (en.isIntersecting) { en.target.classList.add("in"); io.unobserve(en.target); } }); }, { rootMargin: "0px 0px -8% 0px" });
     $$(".reveal, .pc, .mt, .ct").forEach(function (el) { el.classList.add("rv"); io.observe(el); });
+  }
+
+  /* ---- "Newly added" carousel on the home page: glides on its own and loops, pauses when held or swiped ---- */
+  var RM = window.matchMedia && matchMedia("(prefers-reduced-motion: reduce)").matches, glides = [], ticking = false;
+  function renderLatest() {
+    var rail = $("[data-latest]"); if (!rail) return;
+    var sec = rail.closest("section"), alt = $("[data-noprod]");
+    if (dbState === "done") {
+      var xs = live.slice().sort(function (a, b) { var x = b.created || b.updated || "", y = a.created || a.updated || ""; return x < y ? -1 : x > y ? 1 : 0; }).slice(0, 12);
+      rail.innerHTML = xs.map(function (x) { return pcard(x, true); }).join("");
+      sec.hidden = !xs.length; if (alt) alt.hidden = !!xs.length;
+    }
+    if (!sec.hidden) setTimeout(function () { glide(rail); }, 0);
+  }
+  function gstate(rail) { return glides.filter(function (o) { return o.r === rail; })[0]; }
+  function glide(rail) {
+    glides = glides.filter(function (o) { return o.r !== rail; });
+    $$("[data-clone]", rail).forEach(function (c) { c.remove(); });
+    rail.classList.remove("auto"); rail.scrollLeft = 0;
+    var head = rail.parentNode.querySelector(".rail-nav");
+    if (!rail._ev) {
+      rail._ev = 1;
+      var hold = function (ms) { var o = gstate(rail); if (o) o.hold = ms === Infinity ? Infinity : Date.now() + (ms || 3000); };
+      var sx = 0, sy = 0, touching = false, grab = false, tm = 0;
+      rail.addEventListener("touchstart", function (e) { var t = e.touches[0]; sx = t.clientX; sy = t.clientY; touching = true; grab = false;
+        clearTimeout(tm); tm = setTimeout(function () { if (touching) { grab = true; hold(Infinity); } }, 350); }, { passive: true });
+      rail.addEventListener("touchmove", function (e) { var t = e.touches[0], dx = Math.abs(t.clientX - sx), dy = Math.abs(t.clientY - sy);
+        if (grab) { if (dy > 12 && dy > dx * 1.5) { grab = false; hold(1); } return; }
+        if (dx > 8 && dx > dy) { grab = true; hold(Infinity); clearTimeout(tm); } else if (dy > 8) clearTimeout(tm); }, { passive: true });
+      var end = function () { touching = false; clearTimeout(tm); if (grab) { grab = false; hold(); } };
+      rail.addEventListener("touchend", end, { passive: true }); rail.addEventListener("touchcancel", end, { passive: true });
+      rail.addEventListener("mouseenter", function () { hold(Infinity); }); rail.addEventListener("mouseleave", function () { hold(800); });
+      rail.addEventListener("wheel", function (e) { if (Math.abs(e.deltaX) > Math.abs(e.deltaY)) hold(); }, { passive: true });
+      rail.addEventListener("focusin", function () { hold(); });
+      if (head) $$(".rail-btn", head).forEach(function (b) { b.addEventListener("click", function () { hold(4000); rail.scrollBy({ left: (+b.getAttribute("data-dir")) * rail.clientWidth * 0.85, behavior: RM ? "auto" : "smooth" }); }); });
+      if ("IntersectionObserver" in window) new IntersectionObserver(function (es) { rail._vis = es[0].isIntersecting; }, { threshold: 0 }).observe(rail); else rail._vis = true;
+      addEventListener("resize", function () { var o = gstate(rail); if (o) o.measure(); });
+    }
+    var fits = rail.scrollWidth <= rail.clientWidth + 4;
+    if (head) head.hidden = fits;
+    if (RM || fits) return;
+    var kids = [].slice.call(rail.children);
+    kids.forEach(function (k) { var c = k.cloneNode(true); c.setAttribute("aria-hidden", "true"); c.setAttribute("data-clone", "1"); c.removeAttribute("id"); c.classList.remove("rv");
+      $$("a,button", c).forEach(function (a) { a.setAttribute("tabindex", "-1"); }); rail.appendChild(c); });
+    rail.classList.add("auto");
+    var o = { r: rail, pos: 0, hold: 0, half: 0 };
+    o.measure = function () { o.half = rail.children[kids.length].offsetLeft - rail.children[0].offsetLeft; }; o.measure();
+    glides.push(o);
+    if (!ticking) { ticking = true; var last = 0; requestAnimationFrame(function tick(t) { var dt = last ? Math.min(64, t - last) : 16; last = t;
+      glides.forEach(function (g) { var r = g.r;
+        if (!r._vis || document.hidden || Date.now() < g.hold) { g.pos = r.scrollLeft; return; }
+        g.pos += dt * 0.035; /* about 35px a second */
+        if (g.half && g.pos >= g.half) g.pos -= g.half;
+        r.scrollLeft = g.pos; });
+      requestAnimationFrame(tick); }); }
   }
 
   /* ---- go: static baseline first, then the live database (cached 5 minutes in sessionStorage) ---- */

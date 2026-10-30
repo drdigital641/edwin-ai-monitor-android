@@ -207,3 +207,15 @@ th{font-size:.76rem;text-transform:uppercase;letter-spacing:.6px;color:var(--mut
 .pl-b{margin-top:22px}
 .thumbs button[data-full]{cursor:pointer}
 @media (max-width:760px){.mark{width:34px;height:29px}.wm{font-size:20px}.wm small{display:none}.hd-in{gap:10px;padding-top:6px;padding-bottom:6px}.pc.ask .btn.wa{font-size:.8rem;padding:8px 6px}.hours div{flex-direction:column;gap:0}}
+/* Newly added carousel (home) */
+.rail-h{display:flex;justify-content:space-between;align-items:flex-end;gap:16px;margin-bottom:18px}
+.rail-h h2{margin:0 0 4px}.rail-h p{margin:0;color:var(--muted)}
+.rail-nav{display:flex;gap:8px;flex:0 0 auto}
+.rail-btn{width:44px;height:44px;border-radius:50%;border:1px solid var(--line);background:#fff;color:var(--ink);font-size:1.15rem;cursor:pointer;transition:border-color .2s}
+.rail-btn:hover{border-color:var(--ink)}
+.rail{display:flex;gap:14px;overflow-x:auto;scroll-snap-type:x mandatory;scrollbar-width:none;-webkit-overflow-scrolling:touch;padding:4px 2px 12px;margin:0 -2px}
+.rail::-webkit-scrollbar{display:none}
+.rail>.pc{flex:0 0 232px;scroll-snap-align:start}
+.rail.auto{scroll-snap-type:none}
+.rail>.pc .art{aspect-ratio:4/3}
+@media (max-width:640px){.rail>.pc{flex-basis:64vw}.rail-nav{display:none}}
