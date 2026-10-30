@@ -16,6 +16,7 @@ ecu.css, ecu.js and img/ live in ./site.
 import html
 import json
 import os
+import re
 from urllib.parse import quote
 
 HERE = os.path.dirname(os.path.abspath(__file__))
@@ -97,6 +98,8 @@ IMG_PIN = {n: '0ec3278037d64b025d7e569b9735eef6d32f293f' for n in (
     'mercedes-camtronic-codes', 'audi-abs-fault-codes')}  # job photos, 27 Oct 2026
 IMG_PIN.update({n: '79ce94d8ea67d1d10cc0a78597c7421b60c6089b' for n in (
     'mercedes-srs-neck-pro-codes', 'mercedes-airbag-warning-cluster')})  # Mercedes airbag job photos, 29 Oct 2026
+IMG_PIN.update({n: 'b2f18f12c4a1c3b706a7db58fec6eca620083ea5' for n in (
+    'toyota-alphard-abs-codes', 'toyota-alphard-new-actuator', 'toyota-alphard-old-vs-new-actuator')})  # Alphard job, 30 Oct 2026
 
 
 def u(path=''):
@@ -780,7 +783,7 @@ def article(a):
     body = sub_hero(crumbs, 'Guide', a['h1'], a['lead'], a['photo'], a['alt'], buttons=False) + f'''
 <section><div class="wrap prose">
 <p class="meta">By The ECU Clinic · {a["date"][8:10].lstrip("0")} Oct 2026</p>
-{a["body"].replace("{wa}", wa_link(cta="Article text")).replace("{img_cluster}", u("img/mercedes-airbag-warning-cluster.webp"))}
+{re.sub(r"\{img:([a-z0-9-]+)\}", lambda m: u(f"img/{m.group(1)}.webp"), a["body"].replace("{wa}", wa_link(cta="Article text")).replace("{img_cluster}", u("img/mercedes-airbag-warning-cluster.webp")))}
 <div class="btns" style="margin-top:22px"><a class="btn btn-wa" href="{wa_link(cta="Article end")}" target="_blank" rel="noopener">{ICON["wa"]}WhatsApp {BIZ["tel_disp"]}</a>
 {f'<a class="btn btn-line" href="{u(f"services/{sp['slug']}/")}">{e(sp["name"])}</a>' if sp else ''}</div>
 </div></section>

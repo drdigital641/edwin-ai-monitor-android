@@ -1096,4 +1096,43 @@ ARTICLES = [
              ('Why does my Mercedes say “Front left malfunction, Consult workshop”?', 'On this C-Class the message came with the airbag light and stored SRS codes. Read the codes with a scan tool to see which part of the restraint system the airbag control unit is reporting.'),
              ('Can I clear the airbag light myself?', 'Clearing the codes does not fix an open circuit. If the fault is still there, the light comes back. Find the cause first.')],
     ),
+    dict(
+        # Real job photos from Edwin, 30 Oct 2026: scan (C1391, C13A9) plus a NEW brake actuator 44510-30290 next to the
+        # removed original. Published: new actuator fitted. No price, time, warranty term or test-drive result was given:
+        # do not add any. Plate, VIN and scanner serial are removed from the photos.
+        slug='toyota-alphard-hybrid-c1391-brake-actuator', service='abs-pump-repair', date='2026-10-30', img_commit='987e39dbd9078e72b25c09135f6a79d79384b86c',
+        title='Toyota Alphard Hybrid C1391 Accumulator Leak: Brake Actuator | The ECU Clinic',
+        desc='A 2020 Toyota Alphard / Vellfire Hybrid with C1391 "Abnormal Leak in Accumulator" and C13A9. What the codes mean and the new brake actuator 44510-30290 we fitted.',
+        h1='Toyota Alphard Hybrid C1391 “Abnormal Leak in Accumulator”: New Brake Actuator Fitted',
+        lead='A real job from our workshop: a 2020 Toyota Alphard / Vellfire Hybrid (2AR-FXE) with brake codes C1391 and C13A9. Here is what the scan showed and what we fitted.',
+        photo='toyota-alphard-old-vs-new-actuator', alt='New Toyota brake actuator 44510-30290 next to the original unit removed from a Toyota Alphard Hybrid',
+        share='toyota-alphard-old-vs-new-brake-actuator.jpg',
+        body='''<p><strong>Short answer:</strong> on this 2020 Toyota Alphard / Vellfire Hybrid the scan tool found <strong>C1391 “Abnormal Leak in Accumulator”</strong> in the ABS / VSC / TRC system and <strong>C13A9 “Brake System Malfunction”</strong> under the electronic parking brake. Both point to the hybrid brake system. We replaced the brake actuator with a new unit, part number <strong>44510-30290</strong>.</p>
+<h2>What the scan tool found</h2>
+<p>A full system scan of the car (Alphard HV / Vellfire HV, 2AR-FXE hybrid engine) showed two systems with one fault each. The engine, hybrid control and OBD systems were all normal.</p>
+<p><img src="{img:toyota-alphard-abs-codes}" alt="Scan tool on a Toyota Alphard Hybrid showing C1391 Abnormal Leak in Accumulator and C13A9 Brake System Malfunction" width="640" height="480" loading="lazy" style="width:100%;height:auto;border-radius:12px"></p>
+<ul class="ticks">
+<li><strong>C1391 Abnormal Leak in Accumulator</strong>: stored in the Anti-lock Braking System (ABS) / Vehicle Stability Control (VSC) / Traction Control (TRC) system.</li>
+<li><strong>C13A9 Brake System Malfunction</strong>: stored in the Electronic Parking Brake (EPB) system.</li>
+</ul>
+<h2>What is the accumulator?</h2>
+<p>On Toyota hybrids like the Alphard and Vellfire, braking is electronically controlled. The brake actuator has a pump motor that builds hydraulic pressure and an accumulator that stores it, so the brakes have pressure ready the moment you press the pedal. C1391 means the control unit has seen the stored pressure fall in a way it does not expect: in plain words, pressure is leaking away inside the unit.</p>
+<p>The label on the pump says it plainly: <em>“High pressure inside brake system.”</em> The system must be depressurised as the repair manual describes before anyone opens a brake line or removes the unit. This is not a job for a test lamp and a spanner.</p>
+<h2>What we did</h2>
+<p>We replaced the brake actuator with a new unit, part number 44510-30290. The photo at the top of this page shows the new unit next to the original that came off the car. Here is the new unit before fitting:</p>
+<p><img src="{img:toyota-alphard-new-actuator}" alt="New Toyota brake actuator with accumulator and pump, part number 44510-30290, still wrapped on its box" width="640" height="480" loading="lazy" style="width:100%;height:auto;border-radius:12px"></p>
+<p>After a brake actuator is changed on a Toyota hybrid, the brake system has to be bled and set up with a scan tool, not just bolted in. That is why we do this work with full diagnostic equipment.</p>
+<h2>Signs your Toyota hybrid brake actuator needs attention</h2>
+<ul class="ticks">
+<li>The brake, ABS, VSC or TRC warning lights come on, sometimes together.</li>
+<li>The scan shows an accumulator or brake system code such as C1391 or C13A9.</li>
+<li>The brake pump runs more often or for longer than it used to.</li>
+</ul>
+<p>Any of these is worth checking soon. If the red BRAKE warning light is on, or the pedal feels different, stop driving and get the car checked first. Our pick-up and delivery service can collect it.</p>
+<h2>What should I send?</h2>
+<p>WhatsApp us your car model, year and the fault codes, with a photo of the dashboard or the scan tool screen. We will tell you what we can do, whether that is repairing your unit or fitting a new, used or reconditioned one. You can find us at Premier @ Kaki Bukit.</p>''',
+        faq=[('What does Toyota code C1391 mean?', 'On this Toyota Alphard / Vellfire Hybrid the scan tool read C1391 as “Abnormal Leak in Accumulator”: the brake system’s stored hydraulic pressure is falling in a way the control unit does not expect.'),
+             ('What part number was the new brake actuator?', 'The new brake actuator we fitted to this 2020 Alphard / Vellfire Hybrid (2AR-FXE) was part number 44510-30290. Check the part number for your own car before ordering.'),
+             ('Is it safe to drive with C1391?', 'Get it checked soon. If the red BRAKE light is on or the pedal feels different, stop driving and have the car collected.')],
+    ),
 ]
