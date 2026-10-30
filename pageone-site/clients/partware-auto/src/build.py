@@ -22,7 +22,7 @@ BRAND = "Partware Auto"
 LEGAL = "Partware Auto Pte. Ltd."
 UEN = "201540164H"
 INC = "11 November 2015"
-# ACRA lists the registered address as #01-24; Yellow Pages and the Facebook listing title say #01-21.
+# Shop unit #01-21 confirmed by the signage in the fleet photo (30 Oct 2026); ACRA registered address is #01-24.
 # CLIENT MUST CONFIRM the shop unit number. Change it here only.
 UNIT = "#01-21"
 ADDR1 = f"10 Kaki Bukit Road 1, {UNIT}"
@@ -292,7 +292,7 @@ def build_home():
     pop_ids = ["honda-civic-fc-front-brake-pads", "honda-vezel-ru-headlamp", "honda-jazz-gk-spark-plugs", "honda-crv-rw-front-shock-absorber"]
     pop = "".join(card(x, r) for x in PRODUCTS if x["id"] in pop_ids)
     body = f'''
-<section class="hero"><div class="wrap hero-in">
+<section class="hero hero-ph"><img class="hero-bg" src="{r}fleet-vans.jpg" width="822" height="437" alt="" fetchpriority="high"><div class="wrap hero-in">
 <div class="hero-t reveal"><p class="eyebrow">Kaki Bukit, Singapore · Since 2015</p>
 <h1>Your Honda Parts Specialist</h1>
 <p class="lead">Retail, wholesale and export of Honda parts. Pick your model and part, or type what you need, then send your list on WhatsApp.</p></div>
@@ -307,6 +307,15 @@ def build_home():
 <a class="reveal" href="workshops/">{ICON['wrench']}<b>Workshops &amp; trade</b><span>Wholesale supply for workshops. Tell us the Honda models you service and the parts you buy often.</span><em>Ask about wholesale</em></a>
 <a class="reveal" href="export/">{ICON['globe']}<b>Overseas export</b><span>Buying Honda parts for another country? Paste your parts list and tell us the destination.</span><em>Send an export list</em></a>
 </div></div></section>
+
+<section class="sec fleet"><div class="wrap">
+<div class="sec-h"><h2>Our shop, vans and team</h2><p>Partware Auto runs from its own unit at KB Industrial Building in Kaki Bukit, with company vans marked "Honda Parts Stockist".</p></div>
+<div class="fl-g">
+<figure class="fl-main reveal"><img src="{r}fleet-vans.jpg" width="822" height="437" loading="lazy" alt="Three Partware Auto vans marked Honda Parts Stockist and three motorbikes outside unit #01-21, KB Industrial Building"><figcaption>Our vans and motorbikes outside the shop, #01-21 KB Industrial Building.</figcaption></figure>
+<figure class="fl-side reveal"><img src="{r}fleet-bay.jpg" width="194" height="259" loading="lazy" alt="Partware Auto vans and motorbikes in the loading bay with parts boxes stacked behind"><figcaption>Loading bay with parts stock behind the vans.</figcaption></figure>
+</div>
+<p class="small muted">Photos from Partware Auto.</p>
+</div></section>
 
 <section class="sec alt"><div class="wrap">
 <div class="sec-h"><h2>Five product groups</h2><p>The same groups as our Facebook page. Each lists parts for every Honda model we cover.</p></div>
@@ -588,7 +597,7 @@ def build_pages():
 </div></section>'''
     shell("cart/index.html", "Your Cart | Partware Auto", "Your Partware Auto parts cart.", body, crumbs=[("Cart", "cart/")], index=False)
     # about: every fact from FACTS.md with its source
-    unit_note = f'<p class="small muted">Preview note: the shop unit shows {UNIT} (Yellow Pages and the Facebook listing). ACRA lists the registered address as #01-24. Partware Auto to confirm.</p>' if not LIVE else ""
+    unit_note = ""  # shop signage photo (Edwin, 30 Oct 2026) confirms #01-21
     rows = [("Registered name", LEGAL, "ACRA via recordowl.com"), ("UEN", f'<span class="mono">{UEN}</span>', "ACRA via recordowl.com, Yellow Pages"),
             ("Incorporated", f"{INC} (the Facebook page says established in 2015)", "ACRA via recordowl.com; Facebook"),
             ("Business activities", "Wholesale of motor vehicle parts (SSIC 46563, primary) and retail of motor vehicle parts (SSIC 47314)", "ACRA"),
