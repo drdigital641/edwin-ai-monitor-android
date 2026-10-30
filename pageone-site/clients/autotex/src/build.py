@@ -57,7 +57,7 @@ def myears(m): return m["years"].replace("-now", " onwards")
 def car_parts(m): return [P[p[0]] for p in PARTS if fits(m["fuel"], p)]
 
 # photos: AtPhoto rows exported to db/photos.json are written to assets/p/<id>.jpg by pull_photos.py
-PHOTO_IDS = {r["id"] for r in dbfile("photos.json", []) if r.get("id") and r.get("data")}
+PHOTO_IDS = {r.get("group") or r["id"] for r in dbfile("photos.json", []) if r.get("id") and r.get("data")}  # chunked photos share a "group"
 SEEN_URLS = set()
 
 def photo_src(entry):

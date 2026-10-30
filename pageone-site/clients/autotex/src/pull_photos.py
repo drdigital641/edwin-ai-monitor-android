@@ -29,11 +29,16 @@ def run(out):
     if not f.exists(): return 0
     n = 0
     d = Path(out) / "assets" / "p"
+    groups = {}
     for row in json.loads(f.read_text()):
-        m = re.match(r"data:[^;,]+;base64,(.+)$", row.get("data") or "", re.S)
-        if not (row.get("id") and m and re.fullmatch(r"[A-Za-z0-9_-]+", row["id"])): continue
+        gid = row.get("group") or row.get("id")
+        if gid: groups.setdefault(gid, []).append(row)
+    for gid, rows in groups.items():
+        data = "".join(r.get("data") or "" for r in sorted(rows, key=lambda r: r.get("i") or 0))
+        m = re.match(r"data:[^;,]+;base64,(.+)$", data, re.S)
+        if not (m and re.fullmatch(r"[A-Za-z0-9_-]+", gid)): continue
         d.mkdir(parents=True, exist_ok=True)
-        (d / f"{row['id']}.jpg").write_bytes(base64.b64decode(m.group(1)))
+        (d / f"{gid}.jpg").write_bytes(base64.b64decode(m.group(1)))
         n += 1
     print(f"pull_photos: wrote {n} photos")
     return n

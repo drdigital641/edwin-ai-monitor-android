@@ -144,8 +144,12 @@
     Array.prototype.forEach.call(imgs, function (img) {
       var id = img.getAttribute('data-b44'); img.removeAttribute('data-b44');
       if (b44cache[id]) { img.src = b44cache[id]; return; }
-      api('GET', '/entities/AtPhoto/' + encodeURIComponent(id)).then(function (r) {
-        if (r && r.data) { b44cache[id] = r.data; img.src = safeSrc(r.data); }
+      api('GET', '/entities/AtPhoto?limit=200&q=' + encodeURIComponent(JSON.stringify({ group: id }))).then(function (rows) {
+        rows = Array.isArray(rows) ? rows : [];
+        if (rows.length) return rows.sort(function (x, y) { return x.i - y.i; }).map(function (x) { return x.data || ''; }).join('');
+        return api('GET', '/entities/AtPhoto/' + encodeURIComponent(id)).then(function (r) { return r && r.data; });
+      }).then(function (d) {
+        if (d) { b44cache[id] = d; img.src = safeSrc(d); }
       }).catch(function () { /* ignore */ });
     });
   }
@@ -226,17 +230,20 @@
         it.val = url; it.state = 'ok';
       }, function (e1) {
         /* fallback (e.g. Base44 upload credits used up): store a smaller copy as an AtPhoto record */
-        var sizes = [[900, 0.7], [720, 0.62], [560, 0.55], [420, 0.5]];
-        function shrink(i) {
-          return compress(it.file, sizes[i][0], sizes[i][1]).then(blobToDataUrl).then(function (data) {
-            return (data.length > 110000 && i < sizes.length - 1) ? shrink(i + 1) : data;
-          });
-        }
-        return shrink(0).then(function (data) {
-          return api('POST', '/entities/AtPhoto', { data: data, product: photoKey(name) });
-        }).then(function (rec) {
-          if (!rec || !rec.id) throw new Error('no id');
-          it.val = 'b44photo:' + rec.id; it.state = 'ok';
+        /* chunked, because a single database field is size-limited */
+        return compress(it.file, 800, 0.65).then(blobToDataUrl).then(function (data) {
+          var group = 'g' + Date.now().toString(36) + Math.random().toString(36).slice(2, 8);
+          function save(size) {
+            var rows = [], n = Math.ceil(data.length / size), i;
+            for (i = 0; i < n; i++) rows.push({ group: group, i: i, n: n, data: data.slice(i * size, (i + 1) * size), product: photoKey(name) });
+            return api('POST', '/entities/AtPhoto/bulk', rows).catch(function (e) {
+              if (/maximum allowed size/i.test(e.message || '') && size > 1000) return save(Math.floor(size / 2));
+              throw e;
+            });
+          }
+          return save(8000).then(function () { return group; });
+        }).then(function (group) {
+          it.val = 'b44photo:' + group; it.state = 'ok';
         }, function (e2) {
           var m = 'upload: ' + ((e1 && e1.message) || 'failed') + '; backup: ' + ((e2 && e2.message) || 'failed');
           try { api('POST', '/entities/AtLog', { who: (user && user.email) || '', what: 'Photo failed (' + m + ')' }); } catch (x) { /* ignore */ }

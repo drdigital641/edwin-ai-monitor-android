@@ -248,8 +248,11 @@
     if (e.indexOf("b44photo:") !== 0) return Promise.resolve(null);
     var id = e.slice(9);
     if (AT.photoMap && AT.photoMap[id]) return Promise.resolve(R + AT.photoMap[id]);
-    if (!PH[id]) PH[id] = fetch(API + "AtPhoto/" + encodeURIComponent(id), { credentials: "omit" }).then(function (r) { return r.ok ? r.json() : null; })
-      .then(function (j) { return j && j.data ? j.data : null; }).catch(function () { return null; });
+    if (!PH[id]) PH[id] = fetch(API + "AtPhoto?limit=200&q=" + encodeURIComponent(JSON.stringify({ group: id })), { credentials: "omit" }).then(function (r) { return r.ok ? r.json() : []; })
+      .then(function (rows) {
+        if (Array.isArray(rows) && rows.length) return rows.sort(function (a, b) { return a.i - b.i; }).map(function (x) { return x.data || ""; }).join("");
+        return fetch(API + "AtPhoto/" + encodeURIComponent(id), { credentials: "omit" }).then(function (r) { return r.ok ? r.json() : null; }).then(function (j) { return j && j.data ? j.data : null; });
+      }).catch(function () { return null; });
     return PH[id];
   }
   function showPhotos(a, x) {
