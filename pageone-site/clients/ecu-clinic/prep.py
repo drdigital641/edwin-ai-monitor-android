@@ -57,6 +57,11 @@ PHOTOS = {
     'mercedes-me17-ecus': ('mercedes-me17-ecus-c205.jpg', (0.08, 0.0, 0.92, 1.0)),
     'mercedes-camtronic-codes': ('mercedes-me-camtronic-codes.jpg', (0.0, 0.34, 1.0, 0.80, 'pad')),
     'audi-abs-fault-codes': ('audi-a3-abs-codes.jpg', (0.19, 0.0, 0.97, 0.77)),
+    # Toyota Alphard / Vellfire Hybrid job from Edwin, 30 Oct 2026. The source copies already have the scanner
+    # serial and VIN painted out and the licence plate cut off; the crops below stay clear of both areas.
+    'toyota-alphard-abs-codes': ('toyota-alphard-hybrid-abs-codes.jpg', (0.10, 0.02, 0.94, 0.68, 'pad')),
+    'toyota-alphard-new-actuator': ('toyota-alphard-new-brake-actuator.jpg', (0.15, 0.59)),
+    'toyota-alphard-old-vs-new-actuator': ('toyota-alphard-old-vs-new-brake-actuator.jpg', (0.0, 0.0, 1.0, 0.68, 'pad')),
 }
 
 
