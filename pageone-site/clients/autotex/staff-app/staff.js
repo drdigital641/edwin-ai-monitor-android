@@ -224,13 +224,23 @@
       refreshPhotos(name);
       return uploadBlob(blob, function (p) { it.pct = p; refreshPhotos(name); }).then(function (url) {
         it.val = url; it.state = 'ok';
-      }, function () {
-        /* fallback: store the photo as an AtPhoto record */
-        return compress(it.file, 900, 0.7).then(blobToDataUrl).then(function (data) {
+      }, function (e1) {
+        /* fallback (e.g. Base44 upload credits used up): store a smaller copy as an AtPhoto record */
+        var sizes = [[900, 0.7], [720, 0.62], [560, 0.55], [420, 0.5]];
+        function shrink(i) {
+          return compress(it.file, sizes[i][0], sizes[i][1]).then(blobToDataUrl).then(function (data) {
+            return (data.length > 110000 && i < sizes.length - 1) ? shrink(i + 1) : data;
+          });
+        }
+        return shrink(0).then(function (data) {
           return api('POST', '/entities/AtPhoto', { data: data, product: photoKey(name) });
         }).then(function (rec) {
           if (!rec || !rec.id) throw new Error('no id');
           it.val = 'b44photo:' + rec.id; it.state = 'ok';
+        }, function (e2) {
+          var m = 'upload: ' + ((e1 && e1.message) || 'failed') + '; backup: ' + ((e2 && e2.message) || 'failed');
+          try { api('POST', '/entities/AtLog', { who: (user && user.email) || '', what: 'Photo failed (' + m + ')' }); } catch (x) { /* ignore */ }
+          throw new Error(m);
         });
       });
     }).catch(function (e) {
@@ -238,6 +248,10 @@
     }).then(function () {
       if (ctxOf(name) === ctx) refreshPhotos(name);
     });
+  }
+  function photoErr(ctx) {
+    var f = (ctx.photos || []).filter(function (p) { return p.state === 'err' && p.msg; })[0];
+    return f ? ' (' + f.msg + ')' : '';
   }
   function photosHTML(name) {
     var ctx = ctxOf(name), h = '';
@@ -288,7 +302,7 @@
 
   /* ---------- top-level screens ---------- */
   function headerHTML(withTabs) {
-    var h = '<header class="st-header"><div class="st-header-in"><div class="st-top"><div class="st-brand"><img src="logo.svg" alt="Autotex"><b>Staff</b></div><div class="st-links">' +
+    var h = '<header class="st-header"><div class="st-header-in"><div class="st-top"><div class="st-brand"><img src="https://cdn.jsdelivr.net/gh/drdigital641/edwin-ai-monitor-android@a8f2a915254fc2ff888ae3dcbaefc0f9919c51d8/pageone-site/clients/autotex/staff-app/logo.svg" alt="Autotex"><b>Staff</b></div><div class="st-links">' +
       '<a class="st-link" href="https://autotexautoparts.com.sg/" target="_blank" rel="noopener">View shop</a>' +
       (user ? '<button type="button" class="st-link" data-a="signout">Sign out</button>' : '') + '</div></div>';
     if (user) h += '<div class="st-who">' + esc(user.full_name || '') + ' ' + esc(user.email) + '</div>';
@@ -301,7 +315,7 @@
     return h + '</div></header>';
   }
   function renderSignIn(msg) {
-    root.innerHTML = headerHTML(false) + '<div class="st-center"><img src="logo.svg" alt="">' +
+    root.innerHTML = headerHTML(false) + '<div class="st-center"><img src="https://cdn.jsdelivr.net/gh/drdigital641/edwin-ai-monitor-android@a8f2a915254fc2ff888ae3dcbaefc0f9919c51d8/pageone-site/clients/autotex/staff-app/logo.svg" alt="">' +
       '<h1 class="st-h1">Autotex Staff</h1><p class="st-note">Sign in to add and edit products. Changes go live on the website straight away.</p>' +
       (msg ? '<p class="st-err">' + esc(msg) + '</p>' : '') +
       '<button type="button" class="btn primary full" style="min-height:56px" data-a="signin">Sign in</button></div>';
@@ -453,7 +467,7 @@
     var d = { m: Q.car, p: Q.part, pn: Q.pn, pc: Q.pc, price: Q.price, oem: Q.oem, stock: Q.stock, side: Q.side, note: Q.note };
     var err = !Q.brand ? 'Choose a brand first.' : validateDraft(d, true);
     if (!err && photosBusy(Q)) err = 'Photos are still uploading. Wait a moment.';
-    if (!err && photosBad(Q)) err = 'A photo failed. Tap it to retry, or remove it.';
+    if (!err && photosBad(Q)) err = 'A photo failed. Tap it to retry, or remove it.' + photoErr(Q);
     if (err) { Q.err = err; setText('q-err', err); return; }
     Q.err = ''; Q.saving = true; setText('q-err', ''); setText('q-save', 'Saving...');
     d.photos = photoVals(Q);
@@ -592,7 +606,7 @@
     var d = E.d, p = E.rec;
     var err = validateDraft(d, true);
     if (!err && photosBusy(d)) err = 'Photos are still uploading. Wait a moment.';
-    if (!err && photosBad(d)) err = 'A photo failed. Tap it to retry, or remove it.';
+    if (!err && photosBad(d)) err = 'A photo failed. Tap it to retry, or remove it.' + photoErr(d);
     if (err) { E.err = err; setText('e-err', err); return; }
     var next = recordFrom(d, p.key, d.status), patch = {};
     ['m', 'pn', 'pc', 'oem', 'stock', 'side', 'note', 'status'].forEach(function (k) {
