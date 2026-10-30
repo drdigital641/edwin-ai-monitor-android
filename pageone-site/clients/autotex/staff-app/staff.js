@@ -312,6 +312,7 @@
   /* ---------- top-level screens ---------- */
   function headerHTML(withTabs) {
     var h = '<header class="st-header"><div class="st-header-in"><div class="st-top"><div class="st-brand"><img src="https://cdn.jsdelivr.net/gh/drdigital641/edwin-ai-monitor-android@a8f2a915254fc2ff888ae3dcbaefc0f9919c51d8/pageone-site/clients/autotex/staff-app/logo.svg" alt="Autotex"><b>Staff</b></div><div class="st-links">' +
+      (user ? '<button type="button" class="st-link" data-a="sync">Refresh</button>' : '') +
       '<a class="st-link" href="https://autotexautoparts.com.sg/" target="_blank" rel="noopener">View shop</a>' +
       (user ? '<button type="button" class="st-link" data-a="signout">Sign out</button>' : '') + '</div></div>';
     if (user) h += '<div class="st-who">' + esc(user.full_name || '') + ' ' + esc(user.email) + '</div>';
@@ -1014,6 +1015,7 @@
       case 'signin': if (window.__atLogin) window.__atLogin(); else location.href = '/login?from_url=' + encodeURIComponent(location.href); break;
       case 'signout': lsDel(TOKEN_KEY); lsDel('token'); token = ''; location.reload(); break;
       case 'reload': boot(); break;
+      case 'sync': syncData(true, true); checkVersion(); break;
       case 'tab': setTab(v); break;
       case 'set': { var c = t.getAttribute('data-c'), f = t.getAttribute('data-f'); if (f === 'cbrand') f = 'brand'; if (f === 'cestatus') f = 'status'; setField(c, f, v); break; }
       case 'addcar': Q.addCar = !Q.addCar; renderView(); if (Q.addCar) { var el = document.getElementById('ac-name'); if (el) el.focus(); } break;
@@ -1110,6 +1112,41 @@
     if (all[i + 1]) all[i + 1].focus(); else t.blur();
   });
   window.addEventListener('beforeunload', function (ev) { if (PR.saving) { ev.preventDefault(); ev.returnValue = ''; } });
+
+  /* ---------- keep in sync: re-read the database every minute and whenever the tab comes back,
+     and reload when a newer dashboard has been deployed ---------- */
+  var lastSync = Date.now(), syncing = false;
+  function busy() {
+    var a = document.activeElement, typing = a && /^(INPUT|TEXTAREA|SELECT)$/.test(a.tagName) && a.type !== 'search';
+    return !!(E || carUi.edit || carUi.open || PR.saving || Q.saving || (Q.photos && Q.photos.length) || Q.addCar || importState || typing);
+  }
+  function sig(list) { var m = ''; list.forEach(function (x) { var d = String(x.updated_date || ''); if (d > m) m = d; }); return list.length + '|' + m; }
+  function syncData(force, loud) {
+    if (!user || user.role !== 'admin' || syncing || !document.getElementById('view')) return;
+    if (!force && Date.now() - lastSync < 55000) return;
+    if (!loud && busy()) return;
+    syncing = true; if (loud) toast('Refreshing...');
+    Promise.all([listAll('AtCar', 'name'), listAll('AtProduct', '-updated_date')]).then(function (r) {
+      syncing = false; lastSync = Date.now();
+      var changed = sig(r[0]) !== sig(cars) || sig(r[1]) !== sig(products);
+      if (changed) { cars = r[0]; products = r[1]; reindex(); renderView(); }
+      if (loud) toast(changed ? 'Updated: ' + cars.length + ' cars, ' + products.length + ' products' : 'Already up to date');
+    }).catch(function (e) { syncing = false; if (loud) toast('Could not refresh: ' + e.message); });
+  }
+  function bundleOf(html) { var m = String(html).match(/\/assets\/[^"'?#\s]+\.js/); return m ? m[0] : ''; }
+  var myBundle = (function () { var el = document.querySelector('script[src*="/assets/"]'); try { return el ? new URL(el.getAttribute('src'), location.href).pathname : ''; } catch (e) { return ''; } })();
+  function checkVersion() {
+    if (!myBundle || !window.fetch) return;
+    fetch('/staff/?v=' + Date.now(), { cache: 'no-store', credentials: 'omit' }).then(function (r) { return r.text(); }).then(function (t) {
+      var b = bundleOf(t); if (!b || b === myBundle) return;
+      if (!busy()) return location.reload();
+      if (!document.getElementById('st-upd')) document.body.insertAdjacentHTML('beforeend', '<button type="button" id="st-upd" class="btn primary" style="position:fixed;left:16px;right:16px;top:8px;z-index:1300;max-width:420px;margin:0 auto" onclick="location.reload()">A newer dashboard is ready. Tap to update</button>');
+    }).catch(function () { /* offline: try later */ });
+  }
+  setInterval(function () { if (!document.hidden) syncData(false); }, 60000);
+  setInterval(function () { if (!document.hidden) checkVersion(); }, 300000);
+  document.addEventListener('visibilitychange', function () { if (!document.hidden) { syncData(true); checkVersion(); } });
+  window.addEventListener('focus', function () { syncData(false); });
 
   boot();
 })();
