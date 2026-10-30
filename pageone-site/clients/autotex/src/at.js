@@ -199,8 +199,11 @@
     return r;
   }
 
+  function ilTag(pid, alt) {
+    return '<img class="il" src="' + esc(R + "assets/parts/" + pid + ".svg") + '" alt="' + esc((alt || "") + " (illustration)") + '" width="400" height="300" loading="lazy" decoding="async">';
+  }
   function artHtml(x, big) {
-    return '<div class="art' + (big ? " big" : "") + '" data-cat="' + esc(x.part.cat) + '">' + (x.cat.svg || "") + "<span>Photo coming</span></div>";
+    return '<div class="art has-il' + (big ? " big" : "") + '" data-cat="' + esc(x.part.cat) + '">' + ilTag(x.part.id, x.title) + "<span>Illustration</span></div>";
   }
   function pcard(x, showModel) {
     var needSide = x.part.side && !x.side;
@@ -210,7 +213,7 @@
   }
   var WA_SVG = '<svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2Zm0 18.2a8.2 8.2 0 0 1-4.2-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2Z"/></svg>';
   function askCard(m, p) {
-    return '<article class="pc ask" data-live="1"><div class="pc-a"><div class="art" data-cat="' + esc(p.cat) + '">' + ((C[p.cat] || {}).svg || "") + "</div><h3>" + esc(p.name) + '</h3><p class="pc-sub">' + esc(p.unit) +
+    return '<article class="pc ask" data-live="1"><div class="pc-a"><div class="art has-il" data-cat="' + esc(p.cat) + '">' + ilTag(p.id, p.name) + "<span>Illustration</span></div><h3>" + esc(p.name) + '</h3><p class="pc-sub">' + esc(p.unit) +
       '</p></div><div class="pc-f"><div class="pc-p"><span class="price ask">Ask for price</span></div><a class="btn wa sm" href="' + esc(askLink(m, p)) + '" rel="noopener">' + WA_SVG + "Ask on WhatsApp</a></div></article>";
   }
   // every part type for a car: product cards where listed, otherwise an "Ask on WhatsApp" card
@@ -259,7 +262,7 @@
   function showPhotos(a, x) {
     var first = x.photos && x.photos[0]; if (!first || a.getAttribute("data-ph") === first) return;
     a.setAttribute("data-ph", first);
-    var go = function () { resolvePhoto(first).then(function (u) { if (!u || a.getAttribute("data-ph") !== first) return; a.classList.add("has-ph");
+    var go = function () { resolvePhoto(first).then(function (u) { if (!u || a.getAttribute("data-ph") !== first) return; a.classList.add("has-ph"); a.classList.remove("has-il");
       a.innerHTML = '<img src="' + esc(u) + '" alt="' + esc(x.title) + '" width="800" height="600" loading="lazy" decoding="async">'; }); };
     if ("IntersectionObserver" in window) { var o = new IntersectionObserver(function (es) { if (es[0].isIntersecting) { o.disconnect(); go(); } }, { rootMargin: "300px" }); o.observe(a); } else go();
   }
@@ -273,7 +276,7 @@
   document.addEventListener("click", function (e) {
     var b = e.target.closest(".thumbs button[data-full]"); if (!b) return;
     var a = b.closest(".prod-art").querySelector(".art"); if (!a) return;
-    a.classList.add("has-ph"); a.removeAttribute("data-ph"); a.innerHTML = '<img src="' + esc(b.getAttribute("data-full")) + '" alt="" width="800" height="600">';
+    a.classList.add("has-ph"); a.classList.remove("has-il"); a.removeAttribute("data-ph"); a.innerHTML = '<img src="' + esc(b.getAttribute("data-full")) + '" alt="" width="800" height="600">';
   });
 
   /* ---- search / detail page ---- */

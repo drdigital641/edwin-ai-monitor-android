@@ -155,11 +155,15 @@ def img_tag(src, r, alt, big=False, w=800, h=600):
     s = src if src.startswith("http") else r + src
     return f'<img src="{e(s)}" alt="{e(alt)}" width="{w}" height="{h}"{" fetchpriority=\"high\"" if big else " loading=\"lazy\""} decoding="async">'
 
+# Claude-drawn illustration per part type (assets/parts/<id>.svg); a real staff photo always wins
+def il_tag(pid, r, alt):
+    return f'<img class="il" src="{r}assets/parts/{e(pid)}.svg" alt="{e(alt)} (illustration)" width="400" height="300" loading="lazy" decoding="async">'
+
 def part_art(x, r, cls="art"):
     ph = x["photos"]
     if ph:
         return (f'<div class="{cls} has-ph" data-cat="{x["cat"]["id"]}" data-ph="{e(x["ph_entries"][0])}">{img_tag(ph[0][0], r, x["title"], big=cls.endswith("big"))}</div>')
-    return f'<div class="{cls}" data-cat="{x["cat"]["id"]}">{ICON[x["cat"]["icon"]]}<span>Photo coming</span></div>'
+    return f'<div class="{cls} has-il" data-cat="{x["cat"]["id"]}">{il_tag(x["part"]["id"], r, x["title"])}<span>Illustration</span></div>'
 
 # ---------------- page shell ----------------
 NAV = [("hyundai/", "Hyundai", "hyundai"), ("kia/", "Kia", "kia"), ("parts/", "Parts", "parts"),
@@ -281,7 +285,7 @@ def card(x, r, show_model=True, show_part=True):
             f'<button class="btn add sm" type="button" data-add="{e(x["id"])}"{" data-side=\"1\"" if need_side else ""}>Add</button></div></article>')
 
 def ask_card(m, part, r):
-    return (f'<article class="pc ask" id="p-{part["id"]}" data-ask="{m["id"]}|{part["id"]}"><div class="pc-a"><div class="art" data-cat="{part["cat"]}">{ICON[C[part["cat"]]["icon"]]}</div>'
+    return (f'<article class="pc ask" id="p-{part["id"]}" data-ask="{m["id"]}|{part["id"]}"><div class="pc-a"><div class="art has-il" data-cat="{part["cat"]}">{il_tag(part["id"], r, part["name"])}<span>Illustration</span></div>'
             f'<h3>{e(part["name"])}</h3><p class="pc-sub">{e(part["unit"])}</p></div>'
             f'<div class="pc-f"><div class="pc-p"><span class="price ask">Ask for price</span></div>'
             f'<a class="btn wa sm" href="{ask_link(m, part)}" rel="noopener">{WA_SVG}Ask on WhatsApp</a></div></article>')
@@ -746,7 +750,8 @@ def build_static():
     for f in ("at.css", "at.js", "wa.js", "data.js"):
         shutil.copy(HERE / f, OUT / f)
     for f in (HERE / "assets").iterdir():
-        shutil.copy(f, OUT / f.name)
+        if f.is_dir(): shutil.copytree(f, OUT / "assets" / f.name, dirs_exist_ok=True)
+        else: shutil.copy(f, OUT / f.name)
     bots = ["*", "Googlebot", "Bingbot", "OAI-SearchBot", "GPTBot", "ChatGPT-User", "PerplexityBot", "ClaudeBot", "Claude-SearchBot", "Google-Extended", "Applebot-Extended", "DuckAssistBot"]
     write("robots.txt", "".join(f"User-agent: {b}\n" for b in bots) + "Allow: /\nDisallow: /staff/\nDisallow: /cart/\nDisallow: /search/\n\n" + f"Sitemap: {BASE}/sitemap.xml\n")
     write("sitemap.xml", '<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n' +
