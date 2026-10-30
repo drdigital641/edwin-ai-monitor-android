@@ -1135,4 +1135,43 @@ ARTICLES = [
              ('What part number was the new brake actuator?', 'The new brake actuator we fitted to this 2020 Alphard / Vellfire Hybrid (2AR-FXE) was part number 44510-30290. Check the part number for your own car before ordering.'),
              ('Is it safe to drive with C1391?', 'Get it checked soon. If the red BRAKE light is on or the pedal feels different, stop driving and have the car collected.')],
     ),
+    dict(
+        # Real job (Edwin's photo, 27 Oct 2026): Audi A3 ABS module repaired. Codes read from the photo; no year, price or
+        # time given: do not add any. VIN and scanner serial are blurred in the photo.
+        slug='audi-abs-fault-code-01276-hydraulic-pump', service='audi-abs-repair', date='2026-10-31', img_commit='ded90dba3566152a2b57662c0787983fb5a8a2f2',
+        title='Audi ABS Code 01276 Hydraulic Pump Defective | The ECU Clinic',
+        desc='An Audi A3 with ABS code 01276 "ABS Hydraulic Pump: Defective" and 16352 "Control Module: Defective" plus sensor codes. What they mean and how the ABS module was repaired.',
+        h1='Audi ABS Code 01276 “ABS Hydraulic Pump: Defective” and 16352 “Control Module”',
+        lead='A real job from our workshop: an Audi A3 with ten brake electronics codes at once. Here is what they meant and why the sensors were not the first thing to replace.',
+        photo='audi-abs-fault-codes', alt='Scan tool showing Audi brake electronics codes 01276 ABS Hydraulic Pump defective and 16352 Control Module defective',
+        share='audi-a3-abs-codes.jpg',
+        body='''<p><strong>Short answer:</strong> on this Audi A3 the brake electronics (address 03) stored <strong>01276 “ABS Hydraulic Pump: Defective”</strong> and <strong>16352 “Control Module: Defective”</strong>, together with several sensor circuit codes. When the pump and the control module are both reported defective, the fault is usually in the ABS unit itself, not in the wheel sensors. We repaired the car’s own ABS module.</p>
+<h2>What the scan tool showed</h2>
+<p>The scan of the brake electronics listed ten codes:</p>
+<ul class="ticks">
+<li><strong>01276</strong> ABS Hydraulic Pump: defective</li>
+<li><strong>16352</strong> Control Module: defective</li>
+<li><strong>00290</strong> Left Rear ABS Wheel Speed Sensor: electrical fault in circuit</li>
+<li><strong>00287</strong> Right Rear ABS Wheel Speed Sensor: electrical fault in circuit</li>
+<li><strong>01542</strong> Rotation Rate Sensor: electrical fault in circuit</li>
+<li><strong>00538</strong> Reference Voltage: electrical fault in circuit</li>
+<li><strong>01130</strong> ABS Operation: implausible signal</li>
+<li>Vehicle Voltage Terminal 30: lower limit exceeded</li>
+</ul>
+<h2>What does code 01276 mean?</h2>
+<p>On an Audi the ABS hydraulic pump and the brake electronics control module sit in one unit in the engine bay. 01276 names the pump as defective. It does not say by itself whether the cause is the pump motor, its circuit or the module, so the unit is tested before anything is replaced.</p>
+<h2>Why so many sensor codes at once?</h2>
+<p>When the ABS module fails, it often stores a long list of codes at once, including wheel speed sensor codes, even when the sensors themselves may be fine. In this job the pump, the module and several sensor circuits were all faulty at once, so the codes pointed at the ABS control module rather than at several separate parts. That is why we read every code first and rule out the simple causes before replacing sensors.</p>
+<h2>Why check the battery as well?</h2>
+<p>The same scan had a low-voltage code for terminal 30, the permanent battery supply. A weak battery or a poor supply can cause brake electronics faults, so it is checked alongside the unit.</p>
+<h2>What did we do?</h2>
+<p>We repaired the car’s own ABS module, refitted it and cleared the faults. We repair Volkswagen and Skoda ABS units too. More in our <a href="../vw-audi-abs-esp-light-on/">guide to VW and Audi ABS and ESP lights</a>.</p>
+<h2>Is it safe to drive with these codes?</h2>
+<p>In most cases the normal brakes still work, but the anti-lock function may be off until the fault is fixed, so the wheels can lock under hard braking, especially on wet roads. If the red brake warning light is on too, or the pedal feels different, stop driving and have the car checked. Our pick-up and delivery service can collect it.</p>
+<h2>What should I send?</h2>
+<p>WhatsApp us your Audi model, year and the fault codes, with a photo of the scan tool screen. You can find us at Premier @ Kaki Bukit. Our repairs come with a 6-month warranty.</p>''',
+        faq=[('What does Audi code 01276 mean?', 'On this Audi A3 the scan tool read 01276 as “ABS Hydraulic Pump: Defective” in the brake electronics (address 03). The ABS pump and control module are one unit, so the code points to that unit; testing shows whether it is the pump, its circuit or the module.'),
+             ('Does code 16352 mean the ABS module is dead?', 'It means the scan tool reports the control module as defective. On this car, with the pump code and several sensor codes at the same time, we repaired the car’s own ABS module and the faults were cleared.'),
+             ('Should I replace the wheel speed sensors first?', 'Not on the codes alone. When the pump and module codes appear with sensor codes, the module can be the cause of all of them, so every code is read and the simple causes ruled out before parts are replaced.')],
+    ),
 ]
