@@ -557,6 +557,23 @@
     return out;
   }
   function prItem(id) { return PM[id] || VIRT[id]; }
+  /* rough Singapore market estimate for a car x part (defs.js "est"); staff confirm it before saving */
+  var EST = D.est || { base: {}, looks: [], car: {} };
+  function prEst(p) {
+    var base = EST.base[p.p]; if (!base) return null;
+    var f = EST.car[p.m] || [1, 1], v = base * (EST.looks.indexOf(partCat(p)) >= 0 ? f[0] : f[1]);
+    return v < 30 ? Math.round(v) : v < 100 ? 5 * Math.round(v / 5) : 10 * Math.round(v / 10);
+  }
+  function prFillEst() {
+    var n = 0;
+    prList().slice(0, PR.shown).forEach(function (p) {
+      if (PR.done[p.id] || (PR.edits[p.id] != null && String(PR.edits[p.id]).trim() !== '')) return;
+      var e = prEst(p); if (e == null) return;
+      PR.edits[p.id] = String(e); n++;
+    });
+    prStore(); renderPriceList(); setText('pr-save', prSaveLabel());
+    toast(n ? n + ' estimates filled in grey. Check them, change any that are wrong, then tap Save.' : 'Nothing to fill on this screen.');
+  }
   function prList() {
     var q = PR.q.toLowerCase().trim();
     return products.concat(prSlots()).filter(function (p) {
@@ -599,15 +616,17 @@
     var list = prList(), n = list.length, h = '', last = '';
     if (!products.length) { el.innerHTML = '<div class="st-empty">No products yet.</div>'; return; }
     if (!n) { el.innerHTML = '<div class="st-empty">' + (PR.q || PR.brand || PR.car || PR.cat ? 'Nothing here needs a price.' : 'Every part has a price. Well done!') + '</div>'; return; }
-    h += '<div class="st-count">' + n + ' part' + (n > 1 ? 's' : '') + ' to price</div><div class="st-plist">';
+    h += '<div class="st-count">' + n + ' part' + (n > 1 ? 's' : '') + ' to price</div>' +
+      '<button type="button" class="btn full" style="margin:6px 0 10px" data-a="prest">Fill market estimates for the ' + Math.min(n, PR.shown) + ' parts below</button>' +
+      '<p class="st-note" style="margin:0 0 10px">Estimates are typical Singapore stockist prices, not your cost. Grey numbers are estimates you have not checked yet.</p><div class="st-plist">';
     list.slice(0, PR.shown).forEach(function (p) {
       var cl = carLabel(p.m);
       if (cl !== last) { h += '<h3 class="st-pcar">' + esc(cl) + (CM[p.m] && CM[p.m].years ? ' <small>' + esc(CM[p.m].years) + '</small>' : '') + '</h3>'; last = cl; }
       var done = PR.done[p.id], v = PR.edits[p.id] != null ? PR.edits[p.id] : '';
-      var pd = PA[p.p];
+      var pd = PA[p.p], e = prEst(p), isEst = e != null && v !== '' && String(v) === String(e);
       h += '<div class="st-prow' + (done ? ' done' : '') + (PR.bad[p.id] ? ' bad' : '') + '"><label for="pr-' + esc(p.id) + '"><b>' + esc(partName(p)) + (p.side ? ' (' + esc(SIDES[p.side] || p.side) + ')' : '') + '</b>' +
         '<small>' + (done ? 'Saved: ' + esc(money(p.price)) : esc(pd ? 'per ' + pd.unit : '') + ((p.status || 'published') === 'hidden' ? ' · hidden' : '')) + '</small></label>' +
-        (done ? '<span class="st-pok">&#10003;</span>' : '<div class="st-pin"><span>S$</span><input id="pr-' + esc(p.id) + '" class="st-in" inputmode="decimal" enterkeyhint="next" autocomplete="off" data-pr="' + esc(p.id) + '" value="' + esc(v) + '" placeholder="Price"></div>') + '</div>';
+        (done ? '<span class="st-pok">&#10003;</span>' : '<div class="st-pin"><span>S$</span><input id="pr-' + esc(p.id) + '" class="st-in" inputmode="decimal" enterkeyhint="next" autocomplete="off" data-pr="' + esc(p.id) + '" value="' + esc(v) + '" placeholder="' + (e != null ? '~' + e : 'Price') + '"' + (isEst ? ' data-est="1"' : '') + '></div>') + '</div>';
     });
     h += '</div>';
     if (n > PR.shown) h += '<button type="button" class="btn full" style="margin-top:12px" data-a="prmore">Show more (' + (n - PR.shown) + ')</button>';
@@ -1031,6 +1050,7 @@
       case 'more': S.shown += PAGE; renderList(); break;
       case 'prmore': PR.shown += 60; renderPriceList(); break;
       case 'prsave': prSave(); break;
+      case 'prest': prFillEst(); break;
       case 'edit': openEdit(id); break;
       case 'closesheet': closeSheet(); break;
       case 'esave': editSave(); break;
@@ -1060,7 +1080,7 @@
   document.addEventListener('input', function (ev) {
     var t = ev.target;
     if (t.getAttribute && t.getAttribute('data-pr')) {
-      var pid = t.getAttribute('data-pr'); PR.edits[pid] = t.value; delete PR.bad[pid];
+      var pid = t.getAttribute('data-pr'); PR.edits[pid] = t.value; delete PR.bad[pid]; t.removeAttribute('data-est');
       var row = t.closest('.st-prow'); if (row) row.classList.remove('bad');
       prStore(); setText('pr-save', prSaveLabel()); return;
     }

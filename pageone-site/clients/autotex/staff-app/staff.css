@@ -119,3 +119,4 @@ body.st-lock{overflow:hidden}
 .st-prow.bad .st-in{border-color:var(--accent);background:#fff3f2}
 .st-prow.done label small{color:var(--ok);font-weight:600}
 .st-pok{flex:0 0 116px;text-align:right;color:var(--ok);font-size:1.3rem;font-weight:700}
+.st-pin input[data-est]{color:#8A94A3;font-style:italic}
