@@ -515,7 +515,7 @@ def build_sets():
             if len(title) > 60: title = f"{st['name']} {bn} {mn(m)}{tp}"
             shell(path, title, f"{st['name']} for the {bn} {mn(m)}: {st['line'].lower()}." + (f" Set price {money(st['price'])}, save {money(st['total'] - st['price'])}." if st["price"] is not None else "") + " Order on WhatsApp.",
                   body, active=m["b"], crumbs=[(f"{bn} parts", f"{m['b']}/"), (mpar(m), f"{m['b']}/{m['id']}/"), (st["name"], st["url"])],
-                  schema=[prod], prio="0.7")
+                  schema=[prod], index=False, noindex=True, prio="0.7")
 
 # ---------------- model pages ----------------
 def build_models():
@@ -649,7 +649,7 @@ def build_products():
         if len(title) > 60: title = f"{p['name']} {bn} {mn(m)}{tprice}"
         shell(path, title, f"{desc_t}.{(' ' + money(x['price']) + ' per ' + p['unit'] + '.') if show_price(x) else ' Ask for the price on WhatsApp.'} Kia and Hyundai parts stockist in Kaki Bukit.",
               body, active=m["b"], crumbs=[(f"{bn} parts", f"{m['b']}/"), (f"{mpar(m)}", f"{m['b']}/{m['id']}/"), (p["name"], x["url"])],
-              schema=[prod], index=False, prio="0.7", og_type="product", og_image=ph[0][1] if ph else None, og_alt=x["title"])
+              schema=[prod], index=False, noindex=True, prio="0.7", og_type="product", og_image=ph[0][1] if ph else None, og_alt=x["title"])
 
 # ---------------- category pages ----------------
 def build_cats():
