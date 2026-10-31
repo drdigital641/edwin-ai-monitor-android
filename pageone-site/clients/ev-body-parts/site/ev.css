@@ -419,3 +419,4 @@ body{padding-bottom:0!important}
 .sguide button:hover,.sguide button:focus-visible{border-color:var(--red2);background:rgba(25,227,177,.12)}
 @media(prefers-reduced-motion:reduce){.shint .pt{animation:none}}
 .bchip{max-width:100%;white-space:normal;overflow-wrap:anywhere}
+@media(max-width:759px){body.typing .fab{opacity:0;pointer-events:none}.sbox{scroll-margin-top:calc(var(--hd) + 8px)}}

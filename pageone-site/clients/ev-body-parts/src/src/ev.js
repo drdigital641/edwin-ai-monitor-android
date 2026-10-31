@@ -446,6 +446,17 @@
       input.value = (v ? v + ' ' : '') + t + ' '; draw(); onPick(); input.focus({ preventScroll: true });
     });
     input.addEventListener('input', draw); input.addEventListener('focus', draw);
+    /* phone: lift the box to just under the header so the keyboard does not hide the picks and results */
+    function lift() {
+      if (window.innerWidth >= 760) return;
+      setTimeout(function () {
+        var hd = document.querySelector('.hd'), top = form.getBoundingClientRect().top + window.pageYOffset - (hd ? hd.offsetHeight : 0) - 8;
+        if (Math.abs(window.pageYOffset - top) > 4) window.scrollTo({ top: Math.max(0, top), behavior: 'smooth' });
+      }, 250);
+    }
+    input.addEventListener('focus', function () { lift(); document.body.classList.add('typing'); });
+    input.addEventListener('blur', function () { setTimeout(function () { if (document.activeElement !== input) document.body.classList.remove('typing'); }, 200); });
+    g.addEventListener('click', lift);
     renderers.push(draw); draw();
     return draw;
   }
