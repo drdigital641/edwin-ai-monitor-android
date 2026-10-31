@@ -956,7 +956,7 @@ def shell(path, title, desc, body, active="", crumbs=None, schema=None, og_type=
 </main>
 <footer class="ft"><div class="wrap">
 <div class="ft-row">{logo_html(r)}<nav class="ft-l" aria-label="Footer">{foot}</nav></div>
-<div class="ft-b"><span>&copy; {datetime.date.today().year} {BRAND} &middot; {DOMAIN} &middot; <a href="{wa_link}">WhatsApp {WA_DISPLAY}</a></span><span>Brand names only describe fitment. Background photos are mood images; part pictures marked Illustrative are not product photos.</span></div>
+<div class="ft-b"><span>&copy; {datetime.date.today().year} {BRAND} &middot; {DOMAIN} &middot; <a href="{wa_link}">WhatsApp {WA_DISPLAY}</a></span><span>Brand names describe fitment only. Illustrative pictures are not product photos.</span></div>
 </div></footer>
 <a class="fab" href="{wa_link}" aria-label="WhatsApp us">{UI["wa"]}</a>
 <div class="toast" id="toast" role="status" aria-live="polite"></div>
@@ -971,9 +971,9 @@ def shell(path, title, desc, body, active="", crumbs=None, schema=None, og_type=
         pages.append(("/" + ("" if path == "index.html" else path.replace("index.html", "")), pri, lastmod or TODAY))
 
 def home_faq():
-    return [("Can you find my part?", "Search by car and part. If it is not listed, tap Get a quote anyway and we check."),
-            ("Who is this for?", f"Workshops and car owners in Singapore. {brand_names()}."),
-            ("How do I get a price?", "Tap Get a quote. We check fitment for your car first, then reply with a quote on WhatsApp.")]
+    return [("Can you find my part?", "Search your car and part. Not listed? Tap Get a quote anyway."),
+            ("Who is this for?", f"Workshops and car owners in Singapore."),
+            ("How do I get a price?", "Tap Get a quote. We check fitment, then quote on WhatsApp.")]
 
 POPULAR = ["tesla-model-3-highland", "tesla-model-y-juniper", "byd-atto-3", "byd-seal", "byd-dolphin", "mg-mg4", "mg-zs-ev-facelift-2023", "zeekr-x"]
 def popular_html():
@@ -985,8 +985,8 @@ def popular_html():
 
 def home():
     faq = home_faq()
-    cats = "".join(f'''<a class="cc rv" href="{{{{R}}}}parts/{c[0]}/"><span class="cc-ic">{ico(c[4])}</span><h3>{e(c[1])}</h3><p>{e(c[2])}</p></a>''' for c in CATS)
-    steps = [("Search", "Your car and the part you need."), ("Get a quote", "One tap opens WhatsApp with the part filled in."), ("We check fitment", "Then we reply with a quote.")]
+    cats = "".join(f'''<a class="cc rv" href="{{{{R}}}}parts/{c[0]}/"><span class="cc-ic">{ico(c[4])}</span><h3>{e(c[1])}</h3></a>''' for c in CATS)
+    steps = [("Search", "Your car and part."), ("Get a quote", "One tap to WhatsApp."), ("We check fitment", "Then we quote.")]
     st = "".join(f'<li class="rv"><span class="n">{i + 1}</span><h3>{e(a)}</h3><p>{e(b)}</p></li>' for i, (a, b) in enumerate(steps))
     new = PRODS[:6]
     body = f'''<section class="hero">
@@ -994,7 +994,7 @@ def home():
 <div class="wrap hero-in">
 <p class="eyebrow">China &amp; EV car parts &middot; Singapore</p>
 <h1>Body parts for China &amp; EV cars, <em>found fast.</em></h1>
-<p class="lead">One catalogue from several EV parts suppliers, each strong in different brands. Search by car and part, then get a quote on WhatsApp.</p>
+<p class="lead">One catalogue, many suppliers. Quote on WhatsApp.</p>
 {search_box("hq")}
 <p class="hero-cta">{wa_btn("a part for my car", "Get a quote on WhatsApp", "g")}</p>
 </div></section>
@@ -1007,9 +1007,9 @@ def home():
 </div></section>
 <section class="sec tight"><div class="wrap"><div class="sec-t rv"><h2>How it works</h2></div><ol class="steps">{st}</ol></div></section>
 <section class="sec tight"><div class="wrap"><div class="sec-t rv"><h2>Why EV Body Parts</h2></div><ul class="whys">
-<li class="rv"><h3>One catalogue</h3><p>Several EV parts suppliers, each strong in different brands, in one search.</p></li>
-<li class="rv"><h3>Fitment checked first</h3><p>We check your version, side and build year before we quote, so you order the right part.</p></li>
-<li class="rv"><h3>Quotes on WhatsApp</h3><p>No account and no checkout. Send the car and the part, and get a quote in the chat.</p></li>
+<li class="rv"><h3>One catalogue</h3><p>Many suppliers, one search.</p></li>
+<li class="rv"><h3>Fitment checked first</h3><p>Checked before we quote.</p></li>
+<li class="rv"><h3>Quotes on WhatsApp</h3><p>No account, no checkout.</p></li>
 </ul></div></section>
 <section class="sec alt tight"><div class="wrap narrow">
 <div class="sec-t rv"><h2>Quick answers</h2></div>
