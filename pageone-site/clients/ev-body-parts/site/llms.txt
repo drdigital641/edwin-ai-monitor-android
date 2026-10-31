@@ -7,7 +7,8 @@
 - Website: https://evbodyparts.sg/
 - Sells: body parts (bumpers, lamps and lights, mirrors, body panels, grilles and trims) and some other parts for China and EV cars
 - Serves: workshops and car owners in Singapore
-- How it works: search by car, part or OE number, then request a quote on WhatsApp. No online checkout. Fitment is checked (build date, market, trim, OE number) before quoting.
+- Sources: works with several EV parts suppliers, each strong in different brands, and presents them as one catalogue
+- How it works: search by car and part, then request a quote on WhatsApp. No online checkout. Fitment is checked (build date, market, trim, OE number) before quoting.
 - WhatsApp: +65 8997 6612
 
 ## Brands (names used only to describe fitment)

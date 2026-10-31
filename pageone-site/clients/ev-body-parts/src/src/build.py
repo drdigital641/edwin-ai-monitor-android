@@ -695,14 +695,14 @@ def about():
     body = f'''<section class="ph-hd"><div class="wrap">{{{{CRUMBS}}}}<p class="kick">About</p><h1>About EV Body Parts</h1><p class="lead">A Singapore seller of body parts for China and EV cars, for workshops and car owners.</p></div></section>
 <section class="sec tight"><div class="wrap two-c"><div class="prose">
 <h2>What we do</h2><p>{BRAND} sells body parts for China and EV cars in Singapore: bumpers, lamps and lights, mirrors, body panels, grilles and trims, plus some other parts. We sell to workshops and to car owners.</p>
-<dl class="facts"><div><dt>Name</dt><dd>{BRAND}</dd></div><div><dt>Website</dt><dd>{DOMAIN}</dd></div><div><dt>Sells</dt><dd>Body parts for China and EV cars</dd></div><div><dt>Serves</dt><dd>Workshops and car owners in Singapore</dd></div>{extra}</dl>
+<dl class="facts"><div><dt>Name</dt><dd>{BRAND}</dd></div><div><dt>Website</dt><dd>{DOMAIN}</dd></div><div><dt>Sells</dt><dd>Body parts for China and EV cars</dd></div><div><dt>Sources</dt><dd>Several EV parts suppliers, one catalogue</dd></div><div><dt>Serves</dt><dd>Workshops and car owners in Singapore</dd></div>{extra}</dl>
 <h2>How we work</h2><p>You search the catalogue or send us your car and the part. We check fitment against your car and reply. Prices are shown where set, and otherwise given on enquiry.</p>
 <h2>Brands</h2><p>Our brand board shows {brand_names()}. Brand names are used only to describe which vehicles a part is for. See <a href="{{{{R}}}}brands/">all brands</a>.</p>
 <h2>Photos</h2><p class="mu">Car photos on the site are {CRED.lower().replace("stock photos: ", "stock photos from ")}: mood images, not photos of {BRAND} stock. Photos on a part listing show that part.</p>
 <div class="btns">{btn(enq("a part"), "Send an enquiry " + UI["arrow"])}{btn("{{R}}contact/", "Contact", "g")}</div>{PVN}</div>
 <aside class="side"><div class="panel photo">{pic("showroom", "White sports car in a showroom, mood image", 700, 520, "(min-width:900px) 30vw, 100vw")}</div></aside></div></section>'''
     shell("about/index.html", "About EV Body Parts | China & EV Car Parts Singapore",
-          "EV Body Parts sells body parts for China and EV cars in Singapore, for workshops and car owners. Search by car and part.",
+          "EV Body Parts brings body parts from several EV parts suppliers into one catalogue for Singapore workshops and car owners.",
           body, "about", [("About", "about/")], pri=0.6)
 
 def contact():
@@ -843,7 +843,7 @@ def statics():
         "".join(f"<url><loc>{BASE}{u}</loc><lastmod>{lm}</lastmod><priority>{pr}</priority></url>\n" for u, pr, lm in pages) + "</urlset>\n")
     L = [f"# {BRAND}", "", f"> {BRAND} ({DOMAIN}) sells body parts for China and EV cars in Singapore, to workshops and car owners. {TAG}.", "",
          "## Facts", f"- Name: {BRAND}", f"- Website: {BASE}/", "- Sells: body parts (bumpers, lamps and lights, mirrors, body panels, grilles and trims) and some other parts for China and EV cars",
-         "- Serves: workshops and car owners in Singapore", "- How it works: search by car, part or OE number, then request a quote on WhatsApp. No online checkout. Fitment is checked (build date, market, trim, OE number) before quoting."]
+         "- Serves: workshops and car owners in Singapore", "- Sources: works with several EV parts suppliers, each strong in different brands, and presents them as one catalogue", "- How it works: search by car and part, then request a quote on WhatsApp. No online checkout. Fitment is checked (build date, market, trim, OE number) before quoting."]
     if LEGAL: L.append(f"- Company: {LEGAL}" + (f" (UEN {UEN})" if UEN else ""))
     if ADDRESS: L.append(f"- Address: {ADDRESS}")
     if WA: L.append(f"- WhatsApp: {WA_DISPLAY}")
@@ -986,7 +986,7 @@ def home():
 <div class="wrap hero-in">
 <p class="eyebrow">China &amp; EV car parts &middot; Singapore</p>
 <h1>Body parts for China &amp; EV cars, <em>found fast.</em></h1>
-<p class="lead">Search by car, part or OE number. Then get a quote on WhatsApp.</p>
+<p class="lead">One catalogue from several EV parts suppliers, each strong in different brands. Search by car and part, then get a quote on WhatsApp.</p>
 {search_box("hq")}
 <p class="hero-cta">{wa_btn("a part for my car", "Get a quote on WhatsApp", "g")}</p>
 </div></section>
@@ -1180,14 +1180,17 @@ def audience_pages():
           body, "own", [("For car owners", "for-car-owners/")], faq=OWN_FAQ, pri=0.8)
 
 def about():
-    body = f'''<section class="ph-hd"><div class="wrap">{{{{CRUMBS}}}}<h1>About EV Body Parts</h1><p class="lead">A Singapore seller of body parts for China and EV cars, for workshops and car owners.</p></div></section>
+    body = f'''<section class="ph-hd"><div class="wrap">{{{{CRUMBS}}}}<h1>About EV Body Parts</h1><p class="lead">One catalogue of body parts for China and EV cars in Singapore, for workshops and car owners.</p></div></section>
 <section class="sec tight"><div class="wrap narrow prose">
-<dl class="facts"><div><dt>Name</dt><dd>{BRAND}</dd></div><div><dt>Website</dt><dd>{DOMAIN}</dd></div><div><dt>Sells</dt><dd>Body parts for China and EV cars</dd></div><div><dt>Serves</dt><dd>Workshops and car owners in Singapore</dd></div><div><dt>Brands</dt><dd>{brand_names()}</dd></div>
+<h2>Why one catalogue</h2>
+<p>Each parts supplier keeps different car brands, so finding one part can mean calling around. We work with several EV parts suppliers and bring their range together in one place. You search once, and we check with the right supplier.</p>
+<p>Tell us the car and the part on WhatsApp. We confirm fitment and come back with a quote.</p>
+<dl class="facts"><div><dt>Name</dt><dd>{BRAND}</dd></div><div><dt>Website</dt><dd>{DOMAIN}</dd></div><div><dt>Sells</dt><dd>Body parts for China and EV cars</dd></div><div><dt>Sources</dt><dd>Several EV parts suppliers, one catalogue</dd></div><div><dt>Serves</dt><dd>Workshops and car owners in Singapore</dd></div><div><dt>Brands</dt><dd>{brand_names()}</dd></div>
 <div><dt>Quotes</dt><dd>On WhatsApp, after a fitment check</dd></div></dl>
 <p class="mu">Background car photos are from Unsplash and are mood images only. Part pictures marked Illustrative are drawings, not photos of a real part.</p>
 <div class="btns">{wa_btn("a part")}</div></div></section>'''
     shell("about/index.html", "About EV Body Parts | China & EV Car Parts Singapore",
-          "EV Body Parts sells body parts for China and EV cars in Singapore, for workshops and car owners. Search by car and part.",
+          "EV Body Parts brings body parts from several EV parts suppliers into one catalogue for Singapore workshops and car owners.",
           body, "about", [("About", "about/")], pri=0.6)
 
 def contact():
