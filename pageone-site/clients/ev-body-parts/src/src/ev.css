@@ -418,3 +418,4 @@ body{padding-bottom:0!important}
 .sguide button{font:inherit;font-size:.9rem;color:var(--tx,#fff);background:rgba(255,255,255,.06);border:1px solid var(--line2);border-radius:999px;padding:7px 13px;cursor:pointer;min-height:36px}
 .sguide button:hover,.sguide button:focus-visible{border-color:var(--red2);background:rgba(25,227,177,.12)}
 @media(prefers-reduced-motion:reduce){.shint .pt{animation:none}}
+.bchip{max-width:100%;white-space:normal;overflow-wrap:anywhere}

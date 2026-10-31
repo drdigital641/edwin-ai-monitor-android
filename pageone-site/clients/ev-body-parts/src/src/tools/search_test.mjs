@@ -36,8 +36,41 @@ const T = [
   ['model y bumper bracket', /Model Y — Pre-Juniper Front Bumper Bracket/],
   ['juniper inner tail lamp', /Juniper Inner Tail Lamp/],
   ['zs ev facelift headlamp', /ZS EV — 2023 facelift Headlamp/],
+  // Tesla suspension & wheel-end taxonomy (brief 1 Nov 2026): technical names and workshop words
+  ['model 3 front upper control arm', /^Tesla Model 3 — Pre-Highland Front Upper Control Arm Assembly$/],
+  ['model y fuca', /^Tesla Model Y — Pre-Juniper Front Upper Control Arm Assembly$/],
+  ['model y rear upper fore link', /^Tesla Model Y — Pre-Juniper Rear Upper Fore Link$/],
+  ['model y rear upper aft link', /^Tesla Model Y — Pre-Juniper Rear Upper Aft Link$/],
+  ['model 3 rear upper arm', /^Tesla Model 3 — Pre-Highland Rear Upper (Fore|Aft) Link$/],
+  ['model 3 compliance link', /^Tesla Model 3 — Pre-Highland Front Lower Control Arm – Compliance Link$/],
+  ['model y lower wishbone', /Front Lower Control Arm – Compliance Link$/],
+  ['model 3 front lateral link', /^Tesla Model 3 — Pre-Highland Front Lower Control Arm – Lateral Link$/],
+  ['model 3 highland front lower arm', /^Tesla Model 3 — Highland Front Lower Control Arm – (Compliance|Lateral) Link$/],
+  ['model y rear lower fore link', /Rear Lower Fore Link$/],
+  ['model y rear lower aft link', /Rear Lower Aft Link$/],
+  ['model y juniper rear lower arm', /^Tesla Model Y — Juniper Rear Lower (Fore|Aft) Link$/],
+  ['tesla model y front absorber', /Front Spring and Damper Assembly$/],
+  ['model 3 front strut', /Front Spring and Damper Assembly$/],
+  ['model 3 rear shock absorber', /^Tesla Model 3 — Pre-Highland Rear Damper Assembly$/],
+  ['model y rear absorber', /Rear Damper Assembly$/],
+  ['model y absorber', /(Front Spring and Damper|Rear Damper) Assembly$/],
+  ['model 3 steering knuckle', /Front Suspension Knuckle Assembly$/],
+  ['model y rear knuckle', /Rear Suspension Knuckle Assembly$/],
+  ['model y rear wheel carrier', /Rear Suspension Knuckle Assembly$/],
+  ['model 3 front hub', /Front Wheel Hub Assembly$/],
+  ['model y rear wheel hub', /Rear Wheel Hub Assembly$/],
+  ['model 3 wheel bearing', /Wheel Bearing$/],
+  ['model y hub bearing', /(Wheel Bearing|Wheel Hub Assembly)$/],
+  ['tesla front spring and damper assembly', /Front Spring and Damper Assembly$/],
 ];
 let fail = 0;
+function guards(EV) {
+  for (const q of ['byd atto 3 lower arm', 'mg4 shock absorber', 'zeekr 001 wheel hub']) {
+    const r = EV.search(q); if (r.results.some(x => x.e.src)) { fail++; console.log('FAIL  suspension src entry for non-Tesla: ' + q); } else console.log('PASS  ' + q.padEnd(28) + ' -> ask card only');
+  }
+  const t = EV.search('model y front absorber').results[0].e.title; if (/Rear/.test(t)) { fail++; console.log('FAIL front/rear mixed'); }
+  const h = EV.search('model y front hub').results.map(x => x.e.part); if (h.includes('wheel-bearing') && h[0] !== 'front-wheel-hub') { fail++; console.log('FAIL hub vs bearing'); }
+}
 function run(label, EV) {
   console.log('== ' + label + ' (entries in memory: ' + EV.entries().length + ')');
   for (const [q, exp] of T) {
@@ -51,7 +84,7 @@ function run(label, EV) {
     console.log('INFO  ' + JSON.stringify(q).padEnd(30) + ' -> ' + r.results.length + ' results, weak=' + r.weak + (r.results[0] ? ', top=' + r.results[0].e.title : ''));
   }
 }
-const A = load(); run('A: empty database, Ask-us cards', A);
+const A = load(); run('A: empty database, Ask-us cards', A); guards(A);
 // no fake listings: with an empty DB no result may be a product
 if (A.entries().length === 0 && T.some(([q]) => A.search(q).results.some(x => !x.e.ask))) { fail++; console.log('FAIL  non-ask result with empty DB'); }
 const B = load();

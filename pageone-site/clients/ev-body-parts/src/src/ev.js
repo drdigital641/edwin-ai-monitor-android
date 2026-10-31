@@ -44,7 +44,7 @@
     var have = {}; ENTRIES.forEach(function (e) { have[e.modelSlug + '|' + e.part] = 1; });
     ALL = ENTRIES.slice();
     S.brands.forEach(function (b) { S.cars.forEach(function (car) { if (car.b !== b.key) return; D.parts.forEach(function (pt) {
-      if (pt.slug === 'other' || have[car.key + '|' + pt.slug]) return;
+      if (pt.slug === 'other' || have[car.key + '|' + pt.slug] || (pt.only && pt.only.indexOf(b.key) < 0)) return;
       ALL.push({ ask: true, src: true, id: 'src-' + car.key + '-' + pt.slug, key: '', brand: b.key, brandName: b.name, model: car.name, modelSlug: car.key, carSlug: car.slug,
         part: pt.slug, partName: pt.name, title: b.name + ' ' + car.name + ' ' + pt.name, side: '', price: null, stock: '', photos: [], url: '' });
     }); }); });

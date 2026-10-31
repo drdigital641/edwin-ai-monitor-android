@@ -141,6 +141,55 @@ CATS = [  # slug, name, line, part slugs, icon, title, desc
 ]
 CAT = {c[0]: c for c in CATS}
 
+# Tesla suspension & wheel-end parts (ChatGPT taxonomy brief, 1 Nov 2026): technical name first, workshop words as aliases.
+# Tesla only for now (SUSP_BRANDS): other brands get an Ask card from search, never a "we source" entry.
+# Names follow the brief; exact Tesla OE naming per generation still to be confirmed against Tesla's parts diagrams.
+SUSP_BRANDS = ["tesla"]
+SUSP = [
+    ("front-upper-control-arm", "Front Upper Control Arm Assembly", ["front upper control arm", "front upper arm", "fuca", "front suspension arm", "front upper wishbone"]),
+    ("rear-upper-fore-link", "Rear Upper Fore Link", ["rear upper fore link", "upper fore link"]),
+    ("rear-upper-aft-link", "Rear Upper Aft Link", ["rear upper aft link", "upper aft link"]),
+    ("front-lower-compliance-link", "Front Lower Control Arm – Compliance Link", ["compliance link", "front compliance link", "lower wishbone", "front lower wishbone", "compliance arm"]),
+    ("front-lower-lateral-link", "Front Lower Control Arm – Lateral Link", ["lateral link", "front lateral link", "lower lateral arm", "front lower lateral link", "lateral arm"]),
+    ("rear-lower-fore-link", "Rear Lower Fore Link", ["rear lower fore link", "lower fore link"]),
+    ("rear-lower-aft-link", "Rear Lower Aft Link", ["rear lower aft link", "lower aft link"]),
+    ("front-spring-damper", "Front Spring and Damper Assembly", ["front spring and damper", "front spring damper", "front absorber", "front shock absorber", "front shock", "front strut", "front suspension strut", "front damper", "strut", "suspension strut", "coilover"]),
+    ("rear-damper", "Rear Damper Assembly", ["rear damper", "rear absorber", "rear shock absorber", "rear shock"]),
+    ("front-suspension-knuckle", "Front Suspension Knuckle Assembly", ["front suspension knuckle", "front knuckle", "steering knuckle", "front wheel knuckle", "wheel carrier", "front wheel carrier"]),
+    ("rear-suspension-knuckle", "Rear Suspension Knuckle Assembly", ["rear suspension knuckle", "rear knuckle", "rear wheel knuckle", "rear wheel carrier"]),
+    ("front-wheel-hub", "Front Wheel Hub Assembly", ["front wheel hub", "front hub", "front hub assembly", "front hub bearing"]),
+    ("rear-wheel-hub", "Rear Wheel Hub Assembly", ["rear wheel hub", "rear hub", "rear hub assembly", "rear hub bearing"]),
+    ("wheel-bearing", "Wheel Bearing", ["wheel bearing", "bearing", "front wheel bearing", "rear wheel bearing"]),
+]
+PARTS += [(k, n, "suspension", syn) for k, n, syn in SUSP]
+SUSP_IDS = [x[0] for x in SUSP]
+SPECIAL |= set(SUSP_IDS)
+_UP, _LO = ["front-upper-control-arm", "rear-upper-fore-link", "rear-upper-aft-link"], ["front-lower-compliance-link", "front-lower-lateral-link", "rear-lower-fore-link", "rear-lower-aft-link"]
+SUSP_AREAS = [
+    ("upper-arms", "Upper control arms", "susp-arm", _UP),
+    ("lower-arms", "Lower control arms & links", "susp-arm", _LO),
+    ("dampers", "Shock absorbers / dampers", "susp-damper", ["front-spring-damper", "rear-damper"]),
+    ("knuckles", "Suspension knuckles", "susp-knuckle", ["front-suspension-knuckle", "rear-suspension-knuckle"]),
+    ("hubs", "Wheel bearings & hubs", "susp-hub", ["front-wheel-hub", "rear-wheel-hub", "wheel-bearing"]),
+]
+def _all(ks, w=1): return {k: w for k in ks}
+GENERIC += [  # shared words: one alias, several distinct part types (never merged into one item)
+    ("upper arm", _all(_UP)), ("upper control arm", _all(_UP)), ("rear upper arm", _all(_UP[1:])), ("rear upper link", _all(_UP[1:])),
+    ("lower arm", _all(_LO)), ("lower control arm", _all(_LO)), ("front lower arm", _all(_LO[:2])), ("front lower control arm", _all(_LO[:2])),
+    ("rear lower arm", _all(_LO[2:])), ("rear lower link", _all(_LO[2:])),
+    ("control arm", _all(_UP + _LO)), ("suspension arm", _all(_UP + _LO)), ("wishbone", _all(_UP[:1] + _LO[:1])),
+    ("fore link", _all(["rear-upper-fore-link", "rear-lower-fore-link"])), ("aft link", _all(["rear-upper-aft-link", "rear-lower-aft-link"])),
+    ("absorber", _all(["front-spring-damper", "rear-damper"])), ("shock absorber", _all(["front-spring-damper", "rear-damper"])),
+    ("shock", _all(["front-spring-damper", "rear-damper"])), ("damper", _all(["front-spring-damper", "rear-damper"])),
+    ("knuckle", _all(["front-suspension-knuckle", "rear-suspension-knuckle"])), ("suspension knuckle", _all(["front-suspension-knuckle", "rear-suspension-knuckle"])),
+    ("wheel hub", _all(["front-wheel-hub", "rear-wheel-hub"])), ("hub", _all(["front-wheel-hub", "rear-wheel-hub"])),
+    ("hub assembly", _all(["front-wheel-hub", "rear-wheel-hub"])), ("hub bearing assembly", _all(["front-wheel-hub", "rear-wheel-hub"])),
+    ("hub bearing", {"wheel-bearing": 1, "front-wheel-hub": 1, "rear-wheel-hub": 1}),
+]
+CATS.append(("suspension", "Suspension & Wheel Hubs", "Control arms, shock absorbers, knuckles, wheel hubs and bearings for Tesla", SUSP_IDS, "susp-arm"))
+CAT = {c[0]: c for c in CATS}
+PART = {p[0]: p for p in PARTS}
+
 def slugify(s): return re.sub(r"[^a-z0-9]+", "-", s.lower()).strip("-")
 
 IC = {
@@ -160,6 +209,12 @@ IC = {
     "wheel-arch": '<path d="M3 25a13 13 0 0 1 26 0"/><path d="M8 25a8 8 0 0 1 16 0M3 25h26"/>',
     "other": '<path d="M20 5a6 6 0 0 0-5.6 8.2L5 22.6a2.6 2.6 0 0 0 3.7 3.7l9.4-9.4A6 6 0 0 0 26.5 11l-3.5 3.5-3.4-1-1-3.4L22 6.6A6 6 0 0 0 20 5Z"/>',
 }
+IC["susp-arm"] = '<path d="M6 22 16 11l10 11"/><circle cx="6" cy="22" r="2.6"/><circle cx="26" cy="22" r="2.6"/><circle cx="16" cy="11" r="2.6"/>'
+IC["susp-damper"] = '<path d="M16 3v5M16 25v4"/><rect x="12.5" y="17" width="7" height="8" rx="1"/><path d="M10 8h12l-12 3h12l-12 3h12"/>'
+IC["susp-knuckle"] = '<circle cx="16" cy="17" r="5"/><circle cx="16" cy="17" r="1.6"/><path d="M16 12V5M12.5 5h7M12 21l-4 5M20 21l4 5M21 17h6"/>'
+IC["susp-hub"] = '<circle cx="16" cy="16" r="11"/><circle cx="16" cy="16" r="4"/><circle cx="16" cy="8.5" r="1.2"/><circle cx="23.5" cy="16" r="1.2"/><circle cx="16" cy="23.5" r="1.2"/><circle cx="8.5" cy="16" r="1.2"/>'
+for _a in SUSP_AREAS:
+    for _k in _a[3]: IC.setdefault(_k, IC[_a[2]])
 IC["glass"] = '<path d="M5 24 8.5 9.5A2 2 0 0 1 10.4 8h11.2a2 2 0 0 1 1.9 1.5L27 24z"/><path d="m12 12-2.5 8M16 12l-1.6 5" opacity=".6"/>'
 for _k, _v in {"front-bumper-bracket": "front-bumper", "rear-bumper-bracket": "rear-bumper", "bumper-reinforcement": "bumper-trim", "front-lip": "bumper-trim", "rear-diffuser": "rear-bumper",
                "lower-grille": "grille", "undertray": "wheel-arch", "bonnet-hinge": "bonnet", "headlamp-bracket": "headlamp", "drl": "headlamp", "front-reflector": "rear-reflector",
@@ -518,6 +573,9 @@ def parts_hub():
           body, "parts", [("Parts", "parts/")], pri=0.8)
 
 PART_COPY = {
+    "suspension": ("Tesla suspension & wheel hub parts", "Tesla control arms, fore and aft links, shock absorbers, knuckles, wheel hubs and wheel bearings, sourced in Singapore. Fitment checked before we quote.",
+        ["Tesla control arms, links, shock absorbers, knuckles, wheel hubs and wheel bearings for the Model 3 and Model Y. Each link is a different part, front and rear are different, and a hub assembly is not the same as a wheel bearing.",
+         "Send your build month and year, the side and a photo of the part or its label on WhatsApp. We confirm the exact part before we quote."]),
     "bumpers": ("Bumpers for China & EV cars", "Front bumpers, rear bumpers and bumper trim for China and EV cars sold in Singapore. Tell us the model and we confirm fitment.",
         ["A bumper is more than one piece. There is usually the outer bumper cover, and separate trim pieces such as the lower lip, strips and garnish. Tell us which piece you mean, and say front or rear.",
          "If your car has parking sensors or a camera near the bumper, mention it and send a photo. It helps us match the right part.",
@@ -822,9 +880,9 @@ def datajs():
             "status": STOCK_L,
             "brands": [{"key": b["key"], "name": b["name"], "alias": b.get("alias") or [], "order": b.get("order") or 0} for b in BRANDS],
             "cars": [carrec(c) for c in CARS],
-            "parts": [{"slug": p[0], "name": p[1], "cat": p[2], "syn": p[3]} for p in PARTS],
+            "parts": [dict({"slug": p[0], "name": p[1], "cat": p[2], "syn": p[3]}, **({"only": SUSP_BRANDS} if p[0] in SUSP_IDS else {})) for p in PARTS],
             "generic": [{"w": g[0], "map": g[1]} for g in GENERIC],
-            "icons": IC, "special": sorted(SPECIAL), "area": {pk: ar[0] for ar in AREAS for pk in ar[3]}, "art": ART, "illus": ILLUS, "products": prods, "photoFiles": {g: v[0] for g, v in PHOTO_FILES.items()}}
+            "icons": IC, "special": sorted(SPECIAL), "area": {pk: ar[0] for ar in AREAS + SUSP_AREAS for pk in ar[3]}, "art": ART, "illus": ILLUS, "products": prods, "photoFiles": {g: v[0] for g, v in PHOTO_FILES.items()}}
     (OUT / "data.js").write_text("window.EV_DATA=" + json.dumps(data, ensure_ascii=False, separators=(",", ":")) + ";\n")
 
 def statics():
@@ -1106,6 +1164,7 @@ def car_pages():
         items = PBYCAR.get(c["key"], [])
         plain = full.replace(" — ", " ")
         mbase = full.split(" — ")[0]
+        ars = AREAS + (SUSP_AREAS if c["b"] in SUSP_BRANDS else [])
         npart = sum(len(a[3]) for a in AREAS)
         title = fit(f"{plain} Headlamp, Tail Lamp & Bumper Singapore", f"{plain} Headlamp & Tail Lamp Singapore", f"{plain} Body Parts Singapore")
         desc = short(f"{plain} headlamp, tail lamp, bumper, mirror and {npart - 4}+ more body parts sourced in Singapore. Fitment checked, quote on WhatsApp.")
@@ -1118,9 +1177,9 @@ def car_pages():
             if a[0] == "special": u = ART["underbody-shield"]
             return f'<img src="{u}" alt="{e(a[1])}: illustrative image" width="64" height="64" loading="lazy" decoding="async" title="{e(ILLUS)}" onerror="this.remove()">' if u else ""
         areas = "".join(f'<details class="area" id="a-{a[0]}"{" open" if i == 0 else ""}><summary><span class="ar-ic">{ico(a[2])}{arpic(a)}</span><h2 class="ar-t">{e(a[1])}</h2><span class="ar-n">{len(a[3])}</span></summary>'
-                        f'<p class="ar-s">{e(plain)} {e(", ".join(PART[pk][1].lower() for pk in a[3][:-1]))} and {e(PART[a[3][-1]][1].lower())}: sourced to order in Singapore.</p>'
+                        f'<p class="ar-s">{e(plain)} {e(", ".join(PART[pk][1].lower() for pk in a[3][:-1]))} and {e(PART[a[3][-1]][1].lower())}: {"we confirm the exact part and side before we quote" if a in SUSP_AREAS else "sourced to order in Singapore"}.</p>'
                         f'{"<p class=ar-note>Safety and structure parts: we check these one by one. Ask on WhatsApp.</p>" if a[0] == "special" else ""}<div class="bchips">{"".join(chip(pk) for pk in a[3])}</div>'
-                        f'{"<p class=illus>" + e(ILLUS) + "</p>" if arpic(a) else ""}</details>' for i, a in enumerate(AREAS))
+                        f'{"<p class=illus>" + e(ILLUS) + "</p>" if arpic(a) else ""}</details>' for i, a in enumerate(ars))
         base = name.split(" — ")[0]
         gens = [o for o in CARS_BY_BRAND[c["b"]] if o["key"] != c["key"] and " — " in (o["name"] + name) and o["name"].split(" — ")[0] == base]
         sibs = "".join(f'<a class="bchip" href="{{{{R}}}}{o["url"]}">{e(o["name"])}</a>' for o in CARS_BY_BRAND[c["b"]] if o["key"] != c["key"])
