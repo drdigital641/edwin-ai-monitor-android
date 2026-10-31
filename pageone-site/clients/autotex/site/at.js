@@ -164,6 +164,15 @@
   function norm(s) { return " " + String(s || "").toLowerCase().replace(/[()]/g, " ").replace(/[^a-z0-9\-+ ]/g, " ").replace(/-/g, " ").replace(/\s+/g, " ").trim() + " "; }
   function lev(a, b) { if (Math.abs(a.length - b.length) > 1) return 9; var d = [], i, j; for (i = 0; i <= a.length; i++) d[i] = [i]; for (j = 0; j <= b.length; j++) d[0][j] = j;
     for (i = 1; i <= a.length; i++) for (j = 1; j <= b.length; j++) d[i][j] = Math.min(d[i - 1][j] + 1, d[i][j - 1] + 1, d[i - 1][j - 1] + (a[i - 1] === b[j - 1] ? 0 : 1)); return d[a.length][b.length]; }
+  // word forms: plural -> singular, common synonyms, so different wordings land on the same part
+  var SYN = { headlight: "headlamp", taillight: "taillamp", light: "lamp", disk: "disc", rotor: "disc", grill: "grille", stabiliser: "stabilizer", mounting: "mount", tyre: "tire", aircond: "aircon", ac: "aircon", hood: "bonnet" };
+  function stem(w) { if (w.length > 3 && /s$/.test(w) && !/ss$/.test(w)) w = w.slice(0, -1); return SYN[w] || w; }
+  function toks(x) { var o = []; norm(x).trim().split(" ").forEach(function (w) { if (w) { w = stem(w); if (o.indexOf(w) < 0) o.push(w); } }); return o; }
+  function hasTok(Q, t) { if (Q.indexOf(t) >= 0) return true; if (t.length < 5) return false; for (var i = 0; i < Q.length; i++) if (Q[i].length >= 5 && lev(Q[i], t) <= 1) return true; return false; }
+  // short forms people type that are not full aliases (front/rear words then pick the side)
+  var XA = { "front-brake-pads": ["pad", "brake"], "rear-brake-pads": ["pad", "brake"], "front-brake-discs": ["disc"], "rear-brake-discs": ["disc"],
+    "front-shock-absorber": ["absorber"], "rear-shock-absorber": ["absorber", "shock"], "headlamp": ["head lamp"], "tail-lamp": ["tail lamp", "taillamp"] };
+  var STOP = ["for", "my", "the", "a", "an", "of", "and", "car", "part", "spare", "price", "how", "much", "cost", "new", "original", "oem", "genuine", "set", "left", "right", "side", "front", "rear", "back", "pair", "kia", "hyundai", "sg", "singapore", "need", "want", "buy", "replace", "replacement", "to", "with", "in", "is"];
   function parse(q) {
     var s = norm(q), words = s.trim().split(" "), r = { brands: [], models: [], parts: [], year: 0 };
     AT.brands.forEach(function (b) { if (s.indexOf(" " + b.name.toLowerCase() + " ") >= 0) r.brands.push(b.id); });
@@ -185,15 +194,28 @@
     var coded = r.models.filter(function (m) { return s.indexOf(" " + m.code.toLowerCase() + " ") >= 0; });
     if (coded.length) r.models = coded;
     if (r.year) { var yr = r.models.filter(function (m) { var p = m.years.split("-"), a = +p[0], b = p[1] === "now" ? 2100 : +p[1]; return r.year >= a && r.year <= b; }); if (yr.length) r.models = yr; }
-    var ph = [];
+    // parts: every word of a part name or alias must appear in the query, in any order ("K3 front pad" = "pad front K3")
+    var Q = toks(s), ph = [];
     AT.parts.forEach(function (p) {
-      var best = 0; [p.name].concat(p.alias).forEach(function (a) { var k = norm(a).trim(); if (s.indexOf(" " + k + " ") >= 0) best = Math.max(best, k.length);
-        else if (k.length >= 5 && k.indexOf(" ") < 0) words.forEach(function (w) { if (w.length >= 5 && lev(w, k) <= 1) best = Math.max(best, k.length - 1); }); });
-      if (best) ph.push({ p: p, s: best });
+      var best = 0, used = null;
+      [p.name].concat(p.alias || [], XA[p.id] || []).forEach(function (a) {
+        var at = toks(a), ok = at.length && at.every(function (t) { return hasTok(Q, t); });
+        if (ok && (at.length > best)) { best = at.length; used = at; }
+      });
+      if (best) ph.push({ p: p, s: best, used: used });
     });
-    if (ph.length) { var t = Math.max.apply(null, ph.map(function (h) { return h.s; })); r.parts = ph.filter(function (h) { return h.s >= t; }).map(function (h) { return h.p; }); }
-    if (s.indexOf(" rear ") >= 0 || s.indexOf(" back ") >= 0) { var rr = r.parts.filter(function (p) { return !/^front/.test(p.id); }); if (rr.length) r.parts = rr; }
-    if (s.indexOf(" front ") >= 0) { var ff = r.parts.filter(function (p) { return !/^rear/.test(p.id); }); if (ff.length) r.parts = ff; }
+    if (ph.length) { var t = Math.max.apply(null, ph.map(function (h) { return h.s; })); ph = ph.filter(function (h) { return h.s >= t; }); r.parts = ph.map(function (h) { return h.p; }); }
+    var isRear = hasTok(Q, "rear") || hasTok(Q, "back"), isFront = hasTok(Q, "front");
+    if (isRear && !isFront) { var rr = r.parts.filter(function (p) { return !/^front/.test(p.id); }); if (rr.length) r.parts = rr; }
+    if (isFront && !isRear) { var ff = r.parts.filter(function (p) { return !/^rear/.test(p.id); }); if (ff.length) r.parts = ff; }
+    // words we could not place (not a brand, car, year, part or filler): used to avoid showing unrelated parts
+    var known = {};
+    STOP.forEach(function (w) { known[w] = 1; });
+    AT.brands.forEach(function (b) { known[stem(b.name.toLowerCase())] = 1; });
+    r.models.forEach(function (m) { toks([m.name, m.code].concat(m.alias || []).join(" ")).forEach(function (w) { known[w] = 1; }); });
+    MK.forEach(function (o) { if (r.models.indexOf(o.m) >= 0) o.keys.forEach(function (k) { toks(k).forEach(function (w) { known[w] = 1; }); }); });
+    ph.forEach(function (h) { h.used.forEach(function (w) { known[w] = 1; }); });
+    r.unknown = Q.filter(function (w) { return !known[w] && !/^\d+$/.test(w) && w.length > 1 && !ph.some(function (h) { return h.used.some(function (u) { return u.length >= 5 && lev(u, w) <= 1; }); }); });
     // category words ("brakes", "suspension", "body parts", "lamps")
     if (!r.parts.length) AT.cats.forEach(function (c) { var w = norm(c.name).trim().split(" ")[0].replace(/s$/, ""); if (w.length > 3 && s.indexOf(" " + w) >= 0) AT.parts.forEach(function (p) { if (p.cat === c.id) r.parts.push(p); }); });
     return r;
@@ -237,6 +259,10 @@
     if (r.brands.length) out = out.filter(function (x) { return r.brands.indexOf(x.model.b) >= 0; });
     if (r.models.length) { var ids = r.models.map(function (m) { return m.id; }); out = out.filter(function (x) { return ids.indexOf(x.m) >= 0; }); }
     if (r.parts.length) { var pids = r.parts.map(function (p) { return p.id; }); out = out.filter(function (x) { return pids.indexOf(x.p) >= 0; }); }
+    else if ((r.models.length || r.brands.length) && r.unknown.length) {
+      // e.g. "K3 xyz": a car was found but the part words were not understood. Try the words as text, never show every part of the car.
+      out = out.filter(function (x) { var hay = toks(x.title + " " + (x.oem || "") + " " + (x.pn || "") + " " + (x.note || "")); return r.unknown.every(function (w) { return hasTok(hay, w); }); });
+    }
     if (!r.brands.length && !r.models.length && !r.parts.length) {
       var s = norm(q).trim(); out = s.length > 2 ? live.filter(function (x) { return (x.oem && norm(x.oem).indexOf(s) >= 0) || norm(x.title).indexOf(s) >= 0 || (x.pn && norm(x.pn).indexOf(s) >= 0); }) : [];
     }
@@ -315,6 +341,7 @@
         var m1 = o.r.models[0], asks = o.r.parts.filter(function (p) { return fits(m1, p); }).slice(0, 6);
         if (asks.length) html += '<p class="muted">No price listed yet. Ask us and we reply with the price and stock.</p><div class="pgrid">' + asks.map(function (p) { return askCard(m1, p); }).join("") + "</div>";
       }
+      if (o && o.r.unknown && o.r.unknown.length && !o.r.parts.length && o.r.models.length === 1) html += '<p><a class="btn ghost" href="' + esc(mhref(o.r.models[0])) + '">See all parts for the ' + esc(mlabel(o.r.models[0])) + "</a></p>";
       if (html.indexOf("pgrid") < 0) html += '<div class="empty"><p>No match yet. Try the car model and the part, like “Sportage brake pads”, or ask us.</p><p><a class="btn wa" href="' + waLink("Hi Autotex, I'm looking for: " + (q || "a part") + ". My car plate / chassis: ") + '">WhatsApp us</a></p></div>';
     }
     res.innerHTML = html;
