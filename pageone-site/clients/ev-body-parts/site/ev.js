@@ -5,7 +5,7 @@
   'use strict';
   var D = root.EV_DATA;
   var ROOT = root.EV_ROOT || '';
-  var K = { enq: 'ev_enq_v1', live: 'ev_live_v1' };
+  var K = { live: 'ev_live_v1' };
   var LIVE_TTL = 45000;
 
   /* ---------- storage (every access guarded) ---------- */
@@ -271,9 +271,9 @@
   function enqHref(e) {
     var veh = ((e.brandName || '') + ' ' + (e.model || '')).trim(), t = e.ask ? (veh + ' ' + e.partName) : (e.title || e.partName);
     if (D.wa) return waLink(t);
-    return ROOT + 'enquiry/?q=' + encodeURIComponent(t) + '&brand=' + encodeURIComponent(e.brand) + '&model=' + encodeURIComponent(e.carSlug || '') + '&part=' + encodeURIComponent(e.part);
+    return ROOT + 'contact/';
   }
-  function enqFree(text) { return D.wa ? waLink(text || 'a part') : ROOT + 'enquiry/?q=' + encodeURIComponent(text || ''); }
+  function enqFree(text) { return D.wa ? waLink(text || 'a part') : ROOT + 'contact/'; }
 
   /* ---------- rendering ---------- */
   function iconSvg(p) { return '<svg class="ic" viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">' + (D.icons[p] || D.icons.other) + '</svg>'; }
@@ -293,12 +293,16 @@
     if (ph.g) return '<img class="ph0" data-b44="' + esc(ph.g) + '" alt="' + esc(e.title) + '" width="88" height="88" decoding="async">';
     return '';
   }
+  function addBtn(e, cls, label) {
+    var key = e.ask ? 'ask:' + e.modelSlug + ':' + e.part : e.key;
+    return '<button type="button" class="' + cls + '" data-add data-key="' + esc(key) + '" data-title="' + esc(e.title) + '" data-car="' + esc(((e.brandName || '') + ' ' + (e.model || '')).trim()) + '" data-part="' + esc(e.partName) + '" data-side="' + esc(e.side || '') + '"' + (e.price ? ' data-price="' + e.price + '"' : '') + (e.ask ? ' data-ask="1"' : '') + '>' + (label || 'Add to cart') + '</button>';
+  }
   function card(e, P) {
     var veh = ((e.brandName || '') + ' ' + (e.model || '')).trim() || e.brandName;
     if (e.ask) {
       return '<article class="rc askc"><div class="rc-ic">' + iconSvg(e.part) + '</div><div class="rc-b"><span class="chip">' + esc(veh) + '</span><h3>' + hlTitle(e, P) + '</h3>' +
-        '<p class="rc-t">Not listed yet. Ask us and we check.</p><div class="rc-m"><span class="pill ask">Ask us</span></div>' +
-        '<div class="rc-a"><a class="btn btn-p btn-s" href="' + esc(enqHref(e)) + '">Ask us about this</a></div></div></article>';
+        '<p class="rc-t">Not listed yet. Price on request.</p><div class="rc-m"><span class="pill ask">Price on request</span></div>' +
+        '<div class="rc-a">' + addBtn(e, 'btn btn-p btn-s') + '<a class="btn btn-g btn-s" href="' + esc(enqHref(e)) + '">Ask</a></div></div></article>';
     }
     var det = e.url ? '<a class="btn btn-g btn-s" href="' + esc(ROOT + e.url) + '">Details</a>' : '<button type="button" class="btn btn-g btn-s" data-det="' + esc(e.id) + '">Details</button>';
     return '<article class="rc"><div class="rc-ic">' + iconSvg(e.part) + mediaHtml(e) + '</div><div class="rc-b">' +
@@ -306,7 +310,7 @@
       '<p class="rc-t">' + esc(e.partName) + (SIDE[e.side] ? ' &middot; ' + SIDE[e.side] : '') + '</p>' +
       '<div class="rc-m">' + (D.status[e.stock] ? '<span class="pill st-' + esc(e.stock) + '">' + esc(D.status[e.stock]) + '</span>' : '') +
       (e.price ? '<span class="price">' + money(e.price) + '</span>' : '<span class="price ask">Ask for price</span>') + '</div>' +
-      '<div class="rc-a"><a class="btn btn-p btn-s" href="' + esc(enqHref(e)) + '">Enquire</a>' + det + '</div></div></article>';
+      '<div class="rc-a">' + addBtn(e, 'btn btn-p btn-s') + det + '</div></div></article>';
   }
   function understood(P) {
     var c = [];
@@ -317,12 +321,12 @@
     return c.length ? '<p class="und">Looking for: ' + c.map(function (x) { return '<b>' + esc(x) + '</b>'; }).join(' &middot; ') + '</p>' : '';
   }
   function notListed(q) {
-    return '<div class="nl"><h3>We may still have it</h3><p>Not listed, or not sure? Send us your car and the part' + (q ? ' (&ldquo;' + esc(q) + '&rdquo;)' : '') + '. We confirm fitment and reply.</p>' +
-      '<a class="btn btn-p" href="' + esc(enqFree(q)) + '">Send us your car and part</a></div>';
+    return '<div class="nl"><h3>Not listed?</h3><p>We may still have it. Ask us on WhatsApp.</p>' +
+      '<a class="btn btn-p" href="' + esc(enqFree(q)) + '">Ask on WhatsApp</a></div>';
   }
   function emptyHtml(name) {
     var t = name ? name + ' ' : '';
-    return '<div class="empty"><h3>No ' + esc(t) + 'listings yet</h3><p>New parts are added all the time. Tell us the car and the part and we check what we can find.</p><a class="btn btn-p btn-s" href="' + esc(enqFree(t + 'part')) + '">Ask us about ' + esc(t) + 'parts</a></div>';
+    return '<div class="empty"><p>No ' + esc(t) + 'listings yet. Ask us on WhatsApp and we check.</p><a class="btn btn-p btn-s" href="' + esc(enqFree(t + 'part')) + '">Ask on WhatsApp</a></div>';
   }
   function renderSearch(box, q, o) {
     o = o || {};
@@ -333,8 +337,8 @@
     if (!norm(q) && !o.showAll) { box.innerHTML = ''; box.classList.remove('on'); return r; }
     box.classList.add('on');
     if (norm(q)) h += understood(r.P);
-    if (norm(q) && r.onlyAsk) h += '<p class="weak">No listing for that yet. You can ask us and we check what we can find.</p>';
-    else if (norm(q) && r.weak && n) h += '<p class="weak">No exact match for that car and part. Showing the nearest listings. We may still have it, so send us your car and part.</p>';
+    if (norm(q) && r.onlyAsk) h += '<p class="weak">No listing for that yet. Add it to the cart and we check.</p>';
+    else if (norm(q) && r.weak && n) h += '<p class="weak">No exact match. Showing the nearest listings.</p>';
     if (norm(q) && !n) h += '<p class="weak">No listing matches that yet.</p>';
     if (n) {
       h += '<div class="rgrid">' + shown.map(function (x) { return card(x.e, r.P); }).join('') + '</div>';
@@ -348,7 +352,7 @@
 
   /* ---------- UI wiring (browser only) ---------- */
   var toastT;
-  function toast(m) { if (typeof document === 'undefined') return; var t = document.getElementById('toast'); if (!t) return; t.textContent = m; t.classList.add('on'); clearTimeout(toastT); toastT = setTimeout(function () { t.classList.remove('on'); }, 2600); }
+  function toast(m) { if (typeof document === 'undefined') return; var t = document.getElementById('toast'); if (!t) return; if (m.html) t.innerHTML = m.html; else t.textContent = m; t.classList.add('on'); clearTimeout(toastT); toastT = setTimeout(function () { t.classList.remove('on'); }, 3800); }
   function $(s, el) { return (el || document).querySelector(s); }
   function $$(s, el) { return Array.prototype.slice.call((el || document).querySelectorAll(s)); }
   function debounce(f, ms) { var t; return function () { var a = arguments; clearTimeout(t); t = setTimeout(function () { f.apply(null, a); }, ms); }; }
@@ -362,8 +366,7 @@
       (D.status[e.stock] ? '<div><dt>Stock</dt><dd>' + esc(D.status[e.stock]) + '</dd></div>' : '') + '<div><dt>Price</dt><dd>' + (e.price ? money(e.price) : 'Ask for price') + '</dd></div>' +
       (e.oem ? '<div><dt>Part number</dt><dd>' + esc(e.oem) + '</dd></div>' : '') + (e.grade ? '<div><dt>Grade</dt><dd>' + esc(e.grade) + '</dd></div>' : '') +
       (e.desc ? '<div><dt>About</dt><dd>' + esc(e.desc) + '</dd></div>' : '') + (e.note ? '<div><dt>Note</dt><dd>' + esc(e.note) + '</dd></div>' : '') + '</dl>' +
-      '<p class="smp big">We confirm fitment against your car before anything is final.</p>' +
-      '<div class="btns"><a class="btn btn-p" href="' + esc(enqHref(e)) + '">Enquire about this part</a><button type="button" class="btn btn-g m-c">Close</button></div></div>';
+            '<div class="btns">' + addBtn(e, 'btn btn-p') + '<a class="btn btn-g" href="' + esc(enqHref(e)) + '">Ask on WhatsApp</a></div></div>';
     document.body.appendChild(m); document.body.classList.add('noscroll');
     function close() { m.remove(); document.body.classList.remove('noscroll'); document.removeEventListener('keydown', key); }
     function key(ev) { if (ev.key === 'Escape') close(); }
@@ -437,41 +440,96 @@
     if (boxes.length) { renderers.push(draw); hydrate(document); }
   }
 
-  function initEnquiry() {
-    var f = document.getElementById('enq-form'); if (!f) return;
-    var u = new URLSearchParams(location.search), q = u.get('q') || '', b = u.get('brand') || '', m = u.get('model') || '';
-    if (q) { f.part.value = q.split(' for ')[0]; }
-    if (b) for (var i = 0; i < f.brand.options.length; i++) if (f.brand.options[i].value === b) f.brand.value = b;
-    if (m) { var cm = S.cars.filter(function (c) { return c.slug === m || c.key === m; })[0]; f.model.value = cm ? cm.name : m; }
-    else if (q.indexOf(' for ') > 0) f.model.value = q.split(' for ')[1];
-    if (u.get('as') === 'owner' || u.get('as') === 'workshop') f.as.value = u.get('as');
-    f.addEventListener('submit', function (ev) {
-      ev.preventDefault();
-      var ok = f.name.value.trim() && f.contact.value.trim() && f.part.value.trim() && f.consent.checked;
-      document.getElementById('enq-err').hidden = !!ok; if (!ok) return;
-      var brandTxt = f.brand.value ? (f.brand.options[f.brand.selectedIndex].text) : '';
-      var lines = ['Hi ' + D.brand + ', I would like to enquire.', '', 'I am a: ' + (f.as.value === 'owner' ? 'car owner' : 'workshop'), 'Name: ' + f.name.value.trim(), 'Phone / WhatsApp: ' + f.contact.value.trim(),
-        'Car: ' + (brandTxt + ' ' + f.model.value.trim()).trim(), 'Part: ' + f.part.value.trim()];
-      if (f.note.value.trim()) lines.push('Note: ' + f.note.value.trim());
-      lines.push('', '(from website)');
-      var list = lsGet(K.enq, []);
-      list.unshift({ t: new Date().toISOString(), name: f.name.value.trim(), part: f.part.value.trim() }); lsSet(K.enq, list.slice(0, 50));
-      f.hidden = true; var okb = document.getElementById('enq-ok'); okb.hidden = false;
-      if (D.wa) {
-        var url = 'https://wa.me/' + D.wa + '?text=' + encodeURIComponent(lines.join('\n'));
-        document.getElementById('enq-ok-msg').innerHTML = 'Opening WhatsApp with your enquiry. If it does not open, <a href="' + esc(url) + '">tap here</a>.';
-        if (root.p1WaTap) root.p1WaTap(null);
-        root.location.href = url;
-      } else { document.getElementById('enq-ok-msg').textContent = 'Your enquiry is saved in this browser only for now.'; }
-      window.scrollTo({ top: 0, behavior: 'smooth' });
+
+  /* ---------- cart (localStorage ev_cart_v1) -> WhatsApp order ---------- */
+  var CK = 'ev_cart_v1', drawer = null;
+  function cartGet() { var c = lsGet(CK, null); return c && Array.isArray(c.items) ? c : { items: [], name: '', note: '', sent: false }; }
+  function cartPut(c) { lsSet(CK, c); badge(); if (drawer && document.body.classList.contains('cart-open')) drawDrawer(); }
+  function badge() {
+    var n = cartGet().items.reduce(function (a, i) { return a + (+i.qty || 0); }, 0);
+    $$('[data-cart-count]').forEach(function (b) { b.textContent = n; b.hidden = !n; });
+  }
+  function cartAdd(it) {
+    var c = cartGet(), f = c.items.filter(function (x) { return x.id === it.id; })[0];
+    if (f) f.qty = Math.min(99, f.qty + 1); else c.items.push({ id: it.id, title: it.title, car: it.car, part: it.part, side: it.side, price: it.price, ask: it.ask, qty: 1 });
+    c.sent = false; cartPut(c);
+    toast({ html: 'Added to cart <button type="button" data-cart-open>View cart</button>' });
+  }
+  function cartTotals(c) {
+    var t = 0, ask = 0; c.items.forEach(function (i) { if (i.price) t += i.price * i.qty; else ask += i.qty; });
+    return { total: t, ask: ask };
+  }
+  function orderText(c) {
+    var L = ['Hi ' + D.brand + ', I would like to order:', ''], T = cartTotals(c);
+    c.items.forEach(function (i, n) { L.push((n + 1) + '. ' + i.qty + ' x ' + i.title + ' - ' + (i.price ? money(i.price) + ' each' : 'price?')); });
+    L.push('');
+    L.push(T.total ? 'Total: ' + money(T.total) + (T.ask ? ' + ' + T.ask + ' item' + (T.ask > 1 ? 's' : '') + ' priced on request' : '') : 'Total: price on request');
+    if (c.name) L.push('Name: ' + c.name);
+    if (c.note) L.push('Note: ' + c.note);
+    L.push('', '(from website)');
+    return L.join('\n');
+  }
+  function cartSet(o) {
+    if (o && !drawer) buildDrawer();
+    document.body.classList.toggle('cart-open', !!o);
+    if (o) { document.body.classList.remove('menu'); drawDrawer(); var x = $('.cdr-x', drawer); if (x) x.focus({ preventScroll: true }); }
+  }
+  function buildDrawer() {
+    drawer = document.createElement('aside'); drawer.className = 'cdr'; drawer.setAttribute('role', 'dialog'); drawer.setAttribute('aria-label', 'Your cart'); drawer.setAttribute('aria-modal', 'true');
+    document.body.appendChild(drawer);
+    drawer.addEventListener('click', function (ev) {
+      var b = ev.target.closest('[data-q],[data-rm],[data-send],[data-clear],.cdr-x'); if (!b) return; var c = cartGet();
+      if (b.hasAttribute('data-q')) { var i = c.items[+b.getAttribute('data-i')]; if (i) { i.qty = Math.max(1, Math.min(99, i.qty + +b.getAttribute('data-q'))); cartPut(c); } }
+      else if (b.hasAttribute('data-rm')) { c.items.splice(+b.getAttribute('data-rm'), 1); cartPut(c); }
+      else if (b.hasAttribute('data-clear')) { c = { items: [], name: c.name, note: '', sent: false }; cartPut(c); }
+      else if (b.hasAttribute('data-send')) {
+        if (!c.items.length || !D.wa) return;
+        var url = 'https://wa.me/' + D.wa + '?text=' + encodeURIComponent(orderText(c));
+        if (root.p1WaTap) { try { root.p1WaTap(b); } catch (e) { } }
+        c.sent = true; lsSet(CK, c);
+        var w = root.open(url, '_blank', 'noopener'); if (!w) root.location.href = url;
+        drawDrawer();
+      } else cartSet(false);
     });
+    drawer.addEventListener('input', function (ev) { var c = cartGet(); if (ev.target.name === 'name') c.name = ev.target.value; if (ev.target.name === 'note') c.note = ev.target.value; lsSet(CK, c); });
+  }
+  function drawDrawer() {
+    if (!drawer) return; var c = cartGet(), T = cartTotals(c), h = '<div class="cdr-h"><h2>Your cart</h2><button type="button" class="cdr-x" aria-label="Close cart">&times;</button></div>';
+    if (!c.items.length) {
+      h += '<div class="cdr-b"><p class="cdr-e">Your cart is empty.</p><p class="mu">Find a part, tap Add to cart, then send the order on WhatsApp.</p><a class="btn btn-p" href="' + ROOT + 'catalogue/">Search the catalogue</a></div>';
+    } else {
+      h += '<div class="cdr-b"><ul class="cl">' + c.items.map(function (i, n) {
+        return '<li><div class="cl-t"><b>' + esc(i.title) + '</b><span>' + (i.price ? money(i.price) + ' each' : 'Price on request') + '</span></div>' +
+          '<div class="cl-q"><button type="button" data-q="-1" data-i="' + n + '" aria-label="Less">&minus;</button><b>' + i.qty + '</b><button type="button" data-q="1" data-i="' + n + '" aria-label="More">+</button>' +
+          '<button type="button" class="cl-rm" data-rm="' + n + '" aria-label="Remove ' + esc(i.title) + '">Remove</button></div></li>';
+      }).join('') + '</ul>' +
+        '<div class="cdr-tot"><span>Total</span><b>' + (T.total ? money(T.total) : 'Price on request') + '</b></div>' + (T.total && T.ask ? '<p class="mu small">+ ' + T.ask + ' item' + (T.ask > 1 ? 's' : '') + ' priced on request</p>' : '') +
+        '<label class="cdr-f">Your name (optional)<input name="name" autocomplete="name" value="' + esc(c.name || '') + '"></label>' +
+        '<label class="cdr-f">Note (optional)<textarea name="note" rows="2" placeholder="Car year, left or right, photo to follow...">' + esc(c.note || '') + '</textarea></label></div>' +
+        '<div class="cdr-ft">' + (c.sent ? '<p class="cdr-s">Order opened in WhatsApp. Send it there, then clear the cart.</p><button type="button" class="btn btn-g" data-clear>Clear cart</button>' : '') +
+        '<button type="button" class="btn btn-p btn-l" data-send>' + (D.wa ? 'Send order on WhatsApp' : 'WhatsApp not set') + '</button></div>';
+    }
+    drawer.innerHTML = h;
+  }
+  function initCart() {
+    badge();
+    document.addEventListener('click', function (ev) {
+      var a = ev.target.closest('[data-add]');
+      if (a) { ev.preventDefault(); var pr = a.getAttribute('data-price'); cartAdd({ id: a.getAttribute('data-key'), title: a.getAttribute('data-title'), car: a.getAttribute('data-car'), part: a.getAttribute('data-part'), side: a.getAttribute('data-side') || '', price: pr ? +pr : null, ask: !!a.getAttribute('data-ask') }); return; }
+      var o = ev.target.closest('[data-cart-open]'); if (o) { ev.preventDefault(); cartSet(true); }
+    });
+    root.addEventListener('storage', function (ev) { if (ev.key === CK) badge(); });
+    if (location.hash === '#cart') cartSet(true);
   }
 
   function initChrome() {
     var bg = $('.burger'), nav = $('#nav');
+    function menuSet(o) { document.body.classList.toggle('menu', o); if (bg) { bg.setAttribute('aria-expanded', o ? 'true' : 'false'); bg.setAttribute('aria-label', o ? 'Close menu' : 'Open menu'); } if (o) { var f = $('a', nav); if (f) f.focus({ preventScroll: true }); } }
     if (bg && nav) {
-      bg.addEventListener('click', function () { var o = document.body.classList.toggle('menu'); bg.setAttribute('aria-expanded', o ? 'true' : 'false'); bg.setAttribute('aria-label', o ? 'Close menu' : 'Open menu'); });
-      $$('a', nav).forEach(function (a) { a.addEventListener('click', function () { document.body.classList.remove('menu'); bg.setAttribute('aria-expanded', 'false'); }); });
+      bg.addEventListener('click', function () { cartSet(false); menuSet(!document.body.classList.contains('menu')); });
+      $$('[data-menu-close],[data-scrim]').forEach(function (x) { x.addEventListener('click', function () { menuSet(false); cartSet(false); }); });
+      $$('a', nav).forEach(function (a) { a.addEventListener('click', function () { menuSet(false); }); });
+      document.addEventListener('keydown', function (ev) { if (ev.key === 'Escape') { menuSet(false); cartSet(false); } });
     }
     var hd = $('.hd'); if (hd) { var f = function () { hd.classList.toggle('scr', window.scrollY > 8); }; window.addEventListener('scroll', f, { passive: true }); f(); }
     if ('IntersectionObserver' in window) {
@@ -486,12 +544,12 @@
 
   function init() {
     $$('[data-search]').forEach(initSearchBox);
-    initCatalogue(); initLists(); initEnquiry(); initChrome();
+    initCatalogue(); initLists(); initChrome(); initCart();
     liveLoad();
   }
 
   root.EV = { D: D, K: K, ROOT: ROOT, search: search, parse: parse, norm: norm, esc: esc, slug: slug, setData: setData, state: S, entries: function () { return ENTRIES; },
-    liveLoad: liveLoad, applyLive: applyLive, card: card, enqHref: enqHref, toast: toast, loadPhoto: loadPhoto, brandName: brandName, modelName: modelName, partName: partName };
+    liveLoad: liveLoad, applyLive: applyLive, card: card, enqHref: enqHref, toast: toast, loadPhoto: loadPhoto, cartGet: function () { return cartGet(); }, brandName: brandName, modelName: modelName, partName: partName };
   if (typeof document !== 'undefined') {
     if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', init); else init();
   }

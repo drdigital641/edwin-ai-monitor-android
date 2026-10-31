@@ -785,7 +785,7 @@ def statics():
     L += ["", "## Brands (names used only to describe fitment)"] + [f"- {b['name']}: {BASE}/brands/{b['key']}/" for b in BRANDS] + \
          ["", "## Part types"] + [f"- {c[1]}: {BASE}/parts/{c[0]}/" for c in CATS] + \
          ["", "## Pages", f"- Catalogue search: {BASE}/catalogue/", f"- For workshops: {BASE}/for-workshops/", f"- For car owners: {BASE}/for-car-owners/",
-          f"- Guides: {BASE}/articles/", f"- Enquiry: {BASE}/enquiry/", f"- Sitemap: {BASE}/sitemap.xml"]
+          f"- Guides: {BASE}/articles/", f"- Sitemap: {BASE}/sitemap.xml"]
     (OUT / "llms.txt").write_text("\n".join(L) + "\n")
     (OUT / "htaccess.txt").write_text(f"""# {BRAND} - go-live notes only (do NOT upload as .htaccess into the preview folder).
 # Preview URL: https://pageonesingapore.com/preview/ev-body-parts/ (hidden by a server header on the parent /preview/ folder; pages carry no noindex).
@@ -802,10 +802,327 @@ ErrorDocument 404 /404.html
 # 6. Submit {BASE}/sitemap.xml to Search Console + Bing; IndexNow key file: /{KEY}.txt
 """)
 
+
+# ====================================================================== v2 (1 Nov 2026): menu + cart + shorter pages (these definitions override the ones above)
+SVG_CART = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 4h2.2l2.1 10.2a2 2 0 0 0 2 1.6h7.6a2 2 0 0 0 2-1.5L20.5 8H6.2"/><circle cx="10" cy="20" r="1.4"/><circle cx="17" cy="20" r="1.4"/></svg>'
+PVN = ""
+MENU = [("catalogue/", "Search the catalogue", "cat"), ("brands/", "Brands", "brands"), ("parts/", "Parts", "parts"), ("for-workshops/", "For workshops", "ws"),
+        ("for-car-owners/", "For car owners", "own"), ("articles/", "Guides", "guides"), ("about/", "About", "about"), ("contact/", "Contact", "contact")]
+def enq(text, r="{{R}}"):
+    return f"https://wa.me/{WA}?text={quote(f'Hi {BRAND}, I am looking for: {text}. (from website)')}" if WA else f"{r}contact/"
+def wa_btn(text, label="WhatsApp us", kind="p"):
+    return btn(enq(text), UI["wa"] + " " + label, kind)
+def addbtn(key, title, car, part, price, side="", ask=False, label="Add to cart", cls="btn btn-p btn-s"):
+    a = f'data-add data-key="{e(key)}" data-title="{e(title)}" data-car="{e(car)}" data-part="{e(part)}" data-side="{e(side)}"'
+    if price: a += f' data-price="{price}"'
+    if ask: a += ' data-ask="1"'
+    return f'<button type="button" class="{cls}" {a}>{label}</button>'
+
+def card_static(x, r="{{R}}"):
+    media = f'<img src="{e(disp(x["imgs"][0]))}" alt="{e(x["title"])}" width="88" height="88" loading="lazy" decoding="async" onerror="this.remove()">' if x["imgs"] else ""
+    add = addbtn(x["key"], x["title"], x["car"]["full"], x["pn"], x["price"], x["side"])
+    return (f'<article class="rc"><div class="rc-ic">{ico(x["p"])}{media}</div><div class="rc-b"><span class="chip">{e(x["car"]["full"])}</span>'
+            f'<h3>{e(x["title"])}</h3><p class="rc-t">{e(x["pn"])}{" &middot; " + SIDE_L[x["side"]] if x["side"] in SIDE_L else ""}</p>'
+            f'<div class="rc-m">{pill_html(x)}{price_html(x)}</div>'
+            f'<div class="rc-a">{add}<a class="btn btn-g btn-s" href="{r}{x["url"]}">Details</a></div></div></article>')
+def list_html(items, name, lim=9):
+    if not items: return f'<div class="empty"><p>No {e(name + " ") if name else ""}listings yet. Ask us on WhatsApp and we check.</p>{wa_btn((name + " part").strip(), "Ask on WhatsApp")}</div>'
+    return '<div class="rgrid">' + "".join(card_static(x) for x in items[:lim]) + '</div>' + (f'<p class="seeall"><a class="btn btn-g" href="{{{{R}}}}catalogue/">See all {len(items)}</a></p>' if len(items) > lim else "")
+
+def shell(path, title, desc, body, active="", crumbs=None, schema=None, og_type="website", index=True, faq=None, img=None, pri=0.7, preload=None, lastmod=None):
+    assert len(title) < 60, (path, len(title), title)
+    assert len(desc) < 160, (path, len(desc), desc)
+    depth = path.count("/")
+    r = "../" * depth
+    url = BASE + "/" + ("" if path == "index.html" else path.replace("index.html", ""))
+    ld = [dict(ORG), dict(SITE)] if path == "index.html" else [dict(ORG)]
+    if crumbs:
+        ld.append({"@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": i + 1, "name": n, "item": BASE + "/" + u} for i, (n, u) in enumerate([("Home", "")] + crumbs)]})
+    if faq: ld.append(faq_ld(faq))
+    if schema: ld.extend(schema)
+    ldj = json.dumps({"@context": "https://schema.org", "@graph": ld}, ensure_ascii=False).replace("</", "<\\/")
+    nav = "".join(f'<a href="{r}{u}"{" aria-current=\"page\"" if k == active else ""}>{n}</a>' for u, n, k in MENU)
+    cr = ""
+    if crumbs:
+        cr = '<nav class="crumbs" aria-label="Breadcrumb"><a href="' + r + '">Home</a>' + "".join(
+            (f'<span>/</span><a href="{r}{u}">{e(n)}</a>' if i < len(crumbs) - 1 else f'<span>/</span><span aria-current="page">{e(n)}</span>') for i, (n, u) in enumerate(crumbs)) + "</nav>"
+    body = body.replace("{{CRUMBS}}", cr).replace("{{R}}", r)
+    ogi = img or BASE + "/og.jpg"
+    dims = '<meta property="og:image:width" content="1200"><meta property="og:image:height" content="630">' if not img else ""
+    wa_link = f"https://wa.me/{WA}?text={quote(f'Hi {BRAND}, I have a question. (from website)')}" if WA else f"{r}contact/"
+    foot = "".join(f'<a href="{r}{u}">{n}</a>' for u, n in [("parts/", "Parts"), ("brands/", "Brands"), ("articles/", "Guides"), ("about/", "About"), ("contact/", "Contact"), ("privacy/", "Privacy")])
+    doc = f"""<!doctype html>
+<html lang="en-SG" class="no-js" data-root="{r}">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>{e(title)}</title>
+<meta name="description" content="{e(desc)}">
+<link rel="canonical" href="{url}">
+<meta name="robots" content="index,follow,max-image-preview:large">
+<meta property="og:type" content="{og_type}"><meta property="og:site_name" content="{BRAND}"><meta property="og:locale" content="en_SG"><meta property="og:title" content="{e(title)}"><meta property="og:description" content="{e(desc)}"><meta property="og:url" content="{url}">
+<meta property="og:image" content="{ogi}">{dims}<meta property="og:image:alt" content="{e(BRAND)} - {e(TAG)}">
+<meta name="twitter:card" content="summary_large_image"><meta name="twitter:title" content="{e(title)}"><meta name="twitter:description" content="{e(desc)}"><meta name="twitter:image" content="{ogi}">
+<link rel="icon" href="{r}favicon.ico" sizes="48x48"><link rel="icon" type="image/png" sizes="192x192" href="{r}icon-192.png"><link rel="apple-touch-icon" href="{r}apple-touch-icon.png"><link rel="manifest" href="{r}site.webmanifest">
+<meta name="theme-color" content="#07090B">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Saira:ital,wght@0,500;0,600;0,700;0,800;1,600;1,700;1,800&display=swap">
+{'<link rel="preconnect" href="https://images.unsplash.com">' if preload else ''}
+<link rel="stylesheet" href="{r}{asset('ev.css')}">
+<script>document.documentElement.classList.remove('no-js');document.documentElement.classList.add('js');window.EV_ROOT="{r}";</script>
+<script type="application/ld+json">{ldj}</script>
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="hd"><div class="wrap">
+{logo_html(r)}
+<div class="hd-r"><button type="button" class="cartbtn" data-cart-open aria-label="Open cart">{SVG_CART}<span class="cbadge" data-cart-count hidden>0</span></button>
+<button class="burger" aria-label="Open menu" aria-expanded="false" aria-controls="nav"><span></span><span></span><span></span></button></div>
+</div></header>
+<div class="scrim" data-scrim></div>
+<nav class="nav" id="nav" aria-label="Main"><div class="nav-h"><b>Menu</b><button type="button" class="nav-x" data-menu-close aria-label="Close menu">&times;</button></div>{nav}<a class="nav-cta" href="{wa_link}">{UI["wa"]} WhatsApp us</a></nav>
+<main id="main">
+{body}
+</main>
+<footer class="ft"><div class="wrap">
+<div class="ft-row">{logo_html(r)}<nav class="ft-l" aria-label="Footer">{foot}</nav></div>
+<div class="ft-b"><span>&copy; {datetime.date.today().year} {BRAND} &middot; {DOMAIN} &middot; <a href="{wa_link}">WhatsApp {WA_DISPLAY}</a></span><span>Brand names only describe fitment. Stock photos are mood images. <a href="{STAFF_URL}" rel="nofollow noopener">Staff</a></span></div>
+</div></footer>
+<a class="fab" href="{wa_link}" aria-label="WhatsApp us">{UI["wa"]}</a>
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+<script src="{r}{asset('data.js')}" defer></script><script src="{r}{asset('ev.js')}" defer></script><script src="{r}{asset('wa.js')}" defer></script>
+</body>
+</html>
+"""
+    f = OUT / path
+    f.parent.mkdir(parents=True, exist_ok=True)
+    f.write_text(doc)
+    if index:
+        pages.append(("/" + ("" if path == "index.html" else path.replace("index.html", "")), pri, lastmod or TODAY))
+
+def home_faq():
+    return [("Do you have my part?", "Search by car and part. If it is not listed, add it to the cart anyway and we check on WhatsApp."),
+            ("Who do you sell to?", f"Workshops and car owners in Singapore. {brand_names()}."),
+            ("Are prices shown?", "Yes, in S$ where set. Otherwise the part says Ask for price and we reply on WhatsApp.")]
+
+def home():
+    faq = home_faq()
+    cats = "".join(f'''<a class="cc rv" href="{{{{R}}}}parts/{c[0]}/"><span class="cc-ic">{ico(c[4])}</span><h3>{e(c[1])}</h3><p>{e(c[2])}</p></a>''' for c in CATS)
+    steps = [("Search", "Type your car and the part."), ("Add to cart", "Add what you need."), ("Send on WhatsApp", "We confirm fitment and reply.")]
+    st = "".join(f'<li class="rv"><span class="n">{i + 1}</span><h3>{e(a)}</h3><p>{e(b)}</p></li>' for i, (a, b) in enumerate(steps))
+    new = PRODS[:6]
+    body = f'''<section class="hero">
+<div class="hero-bg" aria-hidden="true">{pic("hero", "Car tail light in the dark (mood image)", 2000, 1333, "100vw", True, "kb")}</div>
+<div class="wrap hero-in">
+<p class="eyebrow">China &amp; EV car parts &middot; Singapore</p>
+<h1>Body parts for China &amp; EV cars, <em>found fast.</em></h1>
+<p class="lead">Search by car and part. For workshops and car owners.</p>
+{search_box("hq")}
+</div></section>
+<section class="strip"><div class="wrap">{brandchips()}</div></section>
+<section class="sec tight"><div class="wrap"><div class="cgrid">{cats}</div></div></section>
+<section class="sec alt tight" data-new-sec{"" if new else " hidden"}><div class="wrap">
+<div class="sec-t rv"><p class="kick">Newly added</p><h2>Latest parts</h2></div>
+<div data-list="new:" data-limit="6">{list_html(new, "", 6) if new else ""}</div>
+</div></section>
+<section class="sec tight"><div class="wrap"><ol class="steps">{st}</ol></div></section>
+<section class="sec alt tight"><div class="wrap narrow">
+<div class="sec-t rv"><h2>Quick answers</h2></div>
+{faq_html(faq)}
+</div></section>'''
+    shell("index.html", "EV Body Parts | China & EV Body Parts in Singapore",
+          "Search body parts for Tesla, BYD, Denza, MG, Zeekr and more China and EV cars. EV Body Parts serves workshops and car owners in Singapore.",
+          body, "", faq=faq, pri=1.0, preload=True)
+
+def catalogue():
+    brandopts = "".join(f'<option value="{b["key"]}">{e(b["name"])}</option>' for b in BRANDS)
+    partopts = "".join(f'<option value="{p[0]}">{e(p[1])}</option>' for p in PARTS)
+    links = "".join(f'<li><a href="{{{{R}}}}brands/{b["key"]}/">{e(b["name"])} parts</a></li>' for b in BRANDS)
+    body = f'''<section class="ph-hd"><div class="wrap">{{{{CRUMBS}}}}<h1>Search the catalogue</h1><p class="lead">Brand, model and part, or use the filters.</p></div></section>
+<section class="sec tight"><div class="wrap">
+<form class="sbox" id="cat-form" role="search" action="" method="get" data-search="cq">
+<label class="sr" for="cq-q">Search</label>
+<div class="srow">{UI["search"]}<input id="cq-q" class="sin" name="q" type="search" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="e.g. Tesla Model Y tail lamp"><button class="btn btn-p" type="submit">Search</button></div>
+<div class="filters"><label>Brand<select name="brand" id="f-brand"><option value="">All brands</option>{brandopts}</select></label>
+<label>Model<select name="model" id="f-model"><option value="">All models</option></select></label>
+<label>Part<select name="part" id="f-part"><option value="">All parts</option>{partopts}</select></label>
+<button class="btn btn-g btn-s" type="button" id="f-clear">Clear</button></div>
+<p class="try"><span>Try:</span>{"".join(f'<button type="button" data-try="{e(t)}">{e(t)}</button>' for t in TRY[:4])}</p>
+</form>
+<div class="count" id="cat-count" aria-live="polite"></div>
+<div class="sres full" id="cat-res"></div>
+<div class="sec-t" style="margin-top:44px"><h2>Browse by brand</h2></div>
+<ul class="plain brandlist">{links}</ul>
+</div></section>'''
+    ld = [{"@type": "ItemList", "name": f"Brands in the {BRAND} catalogue", "itemListElement": [
+        {"@type": "ListItem", "position": i + 1, "name": f'{b["name"]} body parts', "url": f'{BASE}/brands/{b["key"]}/'} for i, b in enumerate(BRANDS)]}]
+    shell("catalogue/index.html", "Catalogue | EV Body Parts Singapore",
+          "Search China and EV car body parts by brand, model and part, like Tesla Model Y tail lamp. Add to cart and send your order on WhatsApp.",
+          body, "cat", [("Catalogue", "catalogue/")], ld, pri=0.9)
+
+def parts_hub():
+    cards = "".join(f'''<a class="cc rv" href="{{{{R}}}}parts/{c[0]}/"><span class="cc-ic">{ico(c[4])}</span><h3>{e(c[1])}</h3><p>{e(c[2])}</p></a>''' for c in CATS)
+    body = f'''<section class="ph-hd"><div class="wrap">{{{{CRUMBS}}}}<h1>Parts for China &amp; EV cars</h1><p class="lead">Pick a part type.</p></div></section>
+<section class="sec tight"><div class="wrap"><div class="cgrid">{cards}</div></div></section>'''
+    shell("parts/index.html", "Car Body Parts by Type | EV Body Parts",
+          "Bumpers, lamps and lights, mirrors, body panels, grilles and trims for China and EV cars in Singapore. Choose a part type.",
+          body, "parts", [("Parts", "parts/")], pri=0.8)
+
+def part_pages():
+    for c in CATS:
+        slug, name, line, ps, icon = c
+        h1, desc, paras = PART_COPY[slug]
+        title = fit(f"{name} for China & EV Cars | {BRAND}", f"{name} for China & EV Cars")
+        chips = "".join(f'<a class="bchip" href="{{{{R}}}}catalogue/?part={p}">{e(PART[p][1])}</a>' for p in ps)
+        items = [x for x in PRODS if x["p"] in ps]
+        body = f'''<section class="ph-hd"><div class="wrap">{{{{CRUMBS}}}}<h1>{h1.replace("&", "&amp;")}</h1><p class="lead">{e(paras[0])}</p></div></section>
+<section class="sec tight"><div class="wrap"><div class="bchips" style="margin-bottom:28px">{chips}</div>
+<div class="sres full" data-list="parts:{','.join(ps)}" data-limit="9">{list_html(items, name)}</div>
+<p style="margin-top:28px">{wa_btn(name, "Ask on WhatsApp", "g")}</p></div></section>'''
+        shell(f"parts/{slug}/index.html", title, desc, body, "parts", [("Parts", "parts/"), (name, f"parts/{slug}/")], pri=0.8)
+
+def brands_hub():
+    def mod(b):
+        cs = CARS_BY_BRAND[b["key"]]
+        return ", ".join(c["name"] for c in cs) if cs else "Ask us for your model"
+    cards = "".join(f'<a class="cc rv" href="{{{{R}}}}brands/{b["key"]}/"><span class="cc-ic bn">{e(b["name"][:2].upper())}</span><h3>{e(b["name"])}</h3><p>{e(mod(b))}</p></a>' for b in BRANDS)
+    body = f'''<section class="ph-hd"><div class="wrap">{{{{CRUMBS}}}}<h1>Car brands</h1><p class="lead">Pick your brand.</p></div></section>
+<section class="sec tight"><div class="wrap"><div class="cgrid">{cards}</div></div></section>'''
+    shell("brands/index.html", "Car Brands | EV Body Parts Singapore",
+          "China and EV car brands we list body parts for: Tesla, BYD, Denza, MG, Maxus, Chery, Zeekr and more. Choose your brand.",
+          body, "brands", [("Brands", "brands/")], pri=0.8)
+
+def brand_pages():
+    for b in BRANDS:
+        slug, name = b["key"], b["name"]
+        cs = CARS_BY_BRAND[slug]
+        if cs:
+            mnames = [c["name"] for c in cs]
+            intro = b.get("intro") or f"Body parts for {name} {ml(mnames)}. Pick your model."
+            desc = short(f"{name} body parts in Singapore for {ml(mnames)}. Add to cart and send your order on WhatsApp.")
+            chips = "".join(f'<a class="bchip" href="{{{{R}}}}{c["url"]}">{e(c["name"])}</a>' for c in cs)
+        else:
+            intro = b.get("intro") or f"No {name} model is listed yet. Tell us your model and part on WhatsApp."
+            desc = short(f"{name} body parts in Singapore: tell us your model and part and EV Body Parts checks what we can find.")
+            chips = ""
+        title = fit(f"{name} Body Parts in Singapore | {BRAND}", f"{name} Body Parts in Singapore")
+        items = [x for x in PRODS if x["car"]["b"] == slug]
+        body = f'''<section class="ph-hd"><div class="wrap">{{{{CRUMBS}}}}<h1>{e(name)} body parts</h1><p class="lead">{e(intro)}</p>{f'<div class="bchips" style="margin-top:18px">{chips}</div>' if chips else ''}</div></section>
+<section class="sec tight"><div class="wrap">
+<div class="sres full" data-list="brand:{slug}" data-limit="9" data-name="{e(name)}">{list_html(items, name)}</div>
+<p style="margin-top:28px">{wa_btn(name + " part", "Ask on WhatsApp", "g")}</p></div></section>'''
+        shell(f"brands/{slug}/index.html", title, desc, body, "brands", [("Brands", "brands/"), (name, f"brands/{slug}/")], pri=0.7)
+
+def car_pages():
+    for c in CARS:
+        name, full = c["name"], c["full"]
+        items = PBYCAR.get(c["key"], [])
+        title = fit(f"{full} Body Parts Singapore | {BRAND}", f"{full} Body Parts Singapore", f"{full} Body Parts")
+        desc = short(f"{full} body parts in Singapore: bumpers, lamps, mirrors and panels. Add to cart and send your order on WhatsApp.")
+        asks = "".join(addbtn(f'ask:{c["key"]}:{p[0]}', f'{full} {p[1]}', full, p[1], None, ask=True, label=e(p[1]), cls="bchip chipbtn") for p in PARTS if p[0] != "other")
+        sibs = "".join(f'<a class="bchip" href="{{{{R}}}}{o["url"]}">{e(o["name"])}</a>' for o in CARS_BY_BRAND[c["b"]] if o["key"] != c["key"])
+        body = f'''<section class="ph-hd"><div class="wrap">{{{{CRUMBS}}}}<h1>{e(full)} body parts</h1><p class="lead">Tap a part to add it to your cart. Price on request.</p>
+<div class="bchips" style="margin-top:18px">{asks}</div></div></section>
+<section class="sec tight"><div class="wrap">
+<div class="sres full" data-list="car:{c["key"]}" data-limit="12" data-name="{e(full)}">{list_html(items, full, 12)}</div>
+{f'<div class="sec-t" style="margin-top:36px"><h2>Other {e(c["bname"])} models</h2></div><div class="bchips">{sibs}</div>' if sibs else ''}</div></section>'''
+        shell(f'{c["url"]}index.html', title, desc, body, "brands", [("Brands", "brands/"), (c["bname"], f'brands/{c["b"]}/'), (name, c["url"])], pri=0.7)
+
+def product_pages():
+    for x in PRODS:
+        c = x["car"]
+        title = fit(f'{x["title"]} | {BRAND}', f'{x["title"]} Singapore', x["title"])
+        base = x["desc"] or x["note"] or f'{x["title"]} for the {c["full"]}, sold in Singapore.'
+        desc = short(f'{base} {"Price " + money(x["price"]) + "." if x["price"] else "Ask for price."} Order on WhatsApp.')
+        facts = "".join([f'<div><dt>Car</dt><dd><a href="{{{{R}}}}{c["url"]}">{e(c["full"])}</a></dd></div>', f'<div><dt>Part</dt><dd>{e(x["pn"])}</dd></div>',
+                         f'<div><dt>Side</dt><dd>{SIDE_L[x["side"]]}</dd></div>' if x["side"] in SIDE_L else "",
+                         f'<div><dt>Part no.</dt><dd>{e(x["oem"])}</dd></div>' if x["oem"] else "",
+                         f'<div><dt>Grade</dt><dd>{e(x["grade"])}</dd></div>' if x["grade"] else "",
+                         f'<div><dt>Stock</dt><dd>{STOCK_L[x["stock"]]}</dd></div>' if x["stock"] in STOCK_L else ""])
+        imgs = "".join(f'<img src="{e(disp(u))}" alt="{e(x["title"])} photo {i + 1}" width="144" height="108" loading="lazy" decoding="async">' for i, u in enumerate(x["imgs"][1:5], 1))
+        main = f'<img src="{e(disp(x["imgs"][0]))}" alt="{e(x["title"])}" width="800" height="600" decoding="async" fetchpriority="high" onerror="this.remove()">' if x["imgs"] else ""
+        rel = [y for y in PBYCAR[c["key"]] if y["key"] != x["key"]][:6]
+        relh = f'<section class="sec alt tight"><div class="wrap"><div class="sec-t"><h2>More for the {e(c["full"])}</h2></div><div class="rgrid">{"".join(card_static(y) for y in rel)}</div></div></section>' if rel else ""
+        body = f'''<section class="ph-hd"><div class="wrap">{{{{CRUMBS}}}}<h1>{e(x["title"])}</h1></div></section>
+<section class="sec tight"><div class="wrap two-c"><div>
+<div class="pgal">{ico(x["p"])}{main}</div>{f'<div class="pthumbs">{imgs}</div>' if imgs else ''}</div>
+<div class="prose"><div class="pprice{'' if x['price'] else ' ask'}">{money(x["price"]) if x["price"] else "Ask for price"}</div>
+{f'<p>{e(x["desc"])}</p>' if x["desc"] else ''}{f'<p>{e(x["note"])}</p>' if x["note"] else ''}
+<dl class="facts">{facts}</dl>
+<div class="btns">{addbtn(x["key"], x["title"], c["full"], x["pn"], x["price"], x["side"], cls="btn btn-p")}{wa_btn(x["title"], "Ask on WhatsApp", "g")}</div></div></div></section>
+{relh}'''
+        sch = {"@type": "Product", "name": x["title"], "description": base, "sku": x["key"], "url": f'{BASE}/{x["url"]}',
+               "image": [(u if u.startswith("http") else f"{BASE}/{u}") for u in x["imgs"]] or [BASE + "/og.jpg"],
+               "isAccessoryOrSparePartFor": {"@type": "Car", "name": c["full"]}}
+        if x["oem"]: sch["mpn"] = x["oem"]
+        if x["price"]:
+            off = {"@type": "Offer", "price": f'{x["price"]:.2f}', "priceCurrency": "SGD", "url": f'{BASE}/{x["url"]}', "seller": {"@id": BASE + "/#org"}}
+            if x["stock"] in ("in", "out"): off["availability"] = "https://schema.org/InStock" if x["stock"] == "in" else "https://schema.org/OutOfStock"
+            elif x["stock"] == "order": off["availability"] = "https://schema.org/PreOrder"
+            sch["offers"] = off
+        shell(f'{x["url"]}index.html', title, desc, body, "brands",
+              [("Brands", "brands/"), (c["bname"], f'brands/{c["b"]}/'), (c["name"], c["url"]), (x["title"], x["url"])], [sch],
+              img=(sch["image"][0] if x["imgs"] else None), pri=0.6, lastmod=x["updated"] or TODAY)
+
+WS_FAQ = [("What should a workshop send?", "Car brand and model, the part, left or right, and a photo of the old part."),
+          ("Can I ask for a part that is not listed?", "Yes. Add it to the cart or WhatsApp us and we check.")]
+OWN_FAQ = [("I do not know the part name. What now?", "Send a photo of the damage and your car model on WhatsApp."),
+           ("Can I buy online?", "Add parts to the cart and send the order on WhatsApp. We confirm fitment and reply.")]
+def audience_pages():
+    body = f'''<section class="ph-hd"><div class="wrap">{{{{CRUMBS}}}}<h1>Parts for Singapore workshops</h1><p class="lead">Search by car and part, add to cart, send the list on WhatsApp.</p></div></section>
+<section class="sec tight"><div class="wrap narrow prose">
+<ul class="ticks"><li>Search by brand, model and part.</li><li>Add several parts to one cart.</li><li>Send the order on WhatsApp. We confirm fitment.</li></ul>
+<div class="btns">{btn("{{R}}catalogue/", "Search the catalogue")}{wa_btn("parts for our workshop", "WhatsApp us", "g")}</div></div></section>
+<section class="sec alt tight"><div class="wrap narrow"><div class="sec-t"><h2>FAQ</h2></div>{faq_html(WS_FAQ)}</div></section>'''
+    shell("for-workshops/index.html", "Parts for Workshops | EV Body Parts Singapore",
+          "China and EV car body parts for Singapore workshops. Search by car and part, add to cart and order on WhatsApp.",
+          body, "ws", [("For workshops", "for-workshops/")], faq=WS_FAQ, pri=0.8)
+    body = f'''<section class="ph-hd"><div class="wrap">{{{{CRUMBS}}}}<h1>Parts for your China or EV car</h1><p class="lead">Tell us the car and what is damaged.</p></div></section>
+<section class="sec tight"><div class="wrap narrow prose">
+<ul class="ticks"><li>Your car brand and model.</li><li>The part, or a photo of the damage.</li><li>Left or right, as seen from the driver's seat.</li></ul>
+<div class="btns">{btn("{{R}}catalogue/", "Search the catalogue")}{wa_btn("a part for my car", "WhatsApp us", "g")}</div></div></section>
+<section class="sec alt tight"><div class="wrap narrow"><div class="sec-t"><h2>FAQ</h2></div>{faq_html(OWN_FAQ)}</div></section>'''
+    shell("for-car-owners/index.html", "Parts for Car Owners | EV Body Parts Singapore",
+          "Find body parts for your China or EV car in Singapore. Add to cart and send your order on WhatsApp.",
+          body, "own", [("For car owners", "for-car-owners/")], faq=OWN_FAQ, pri=0.8)
+
+def about():
+    body = f'''<section class="ph-hd"><div class="wrap">{{{{CRUMBS}}}}<h1>About EV Body Parts</h1><p class="lead">A Singapore seller of body parts for China and EV cars, for workshops and car owners.</p></div></section>
+<section class="sec tight"><div class="wrap narrow prose">
+<dl class="facts"><div><dt>Name</dt><dd>{BRAND}</dd></div><div><dt>Website</dt><dd>{DOMAIN}</dd></div><div><dt>Sells</dt><dd>Body parts for China and EV cars</dd></div><div><dt>Serves</dt><dd>Workshops and car owners in Singapore</dd></div><div><dt>Brands</dt><dd>{brand_names()}</dd></div>
+<div><dt>Order</dt><dd>Cart, then WhatsApp</dd></div></dl>
+<p class="mu">Car photos are {CRED.lower().replace("stock photos: ", "stock photos from ")}: mood images, not {BRAND} stock.</p>
+<div class="btns">{wa_btn("a part")}</div></div></section>'''
+    shell("about/index.html", "About EV Body Parts | China & EV Car Parts Singapore",
+          "EV Body Parts sells body parts for China and EV cars in Singapore, for workshops and car owners. Search by car and part.",
+          body, "about", [("About", "about/")], pri=0.6)
+
+def contact():
+    body = f'''<section class="ph-hd"><div class="wrap">{{{{CRUMBS}}}}<h1>Contact</h1><p class="lead">WhatsApp is the fastest way.</p></div></section>
+<section class="sec tight"><div class="wrap narrow prose">
+<dl class="facts"><div><dt>WhatsApp</dt><dd><a href="https://wa.me/{WA}">{WA_DISPLAY}</a></dd></div></dl>
+<div class="btns">{wa_btn("a part", "Message us on WhatsApp")}{btn("{{R}}catalogue/", "Search the catalogue", "g")}</div></div></section>'''
+    shell("contact/index.html", "Contact | EV Body Parts Singapore",
+          "Contact EV Body Parts, Singapore, on WhatsApp. Send your car and part and we confirm fitment.",
+          body, "contact", [("Contact", "contact/")], pri=0.6)
+
+def privacy():
+    body = f'''<section class="ph-hd"><div class="wrap">{{{{CRUMBS}}}}<h1>Privacy notice (PDPA)</h1><p class="lead">How {BRAND} handles personal data.</p></div></section>
+<section class="sec tight"><div class="wrap narrow prose">
+<h2>What we collect</h2><p>When you send an order or message on WhatsApp we receive your WhatsApp number and what you write, such as your name, car and parts.</p>
+<h2>Why we use it</h2><p>To reply, confirm fitment and availability. We do not sell personal data.</p>
+<h2>Your cart</h2><p>Your cart is saved in your own browser only. It is not sent to us until you tap Send order on WhatsApp.</p>
+<h2>Your rights</h2><p>Under Singapore's PDPA you can ask to see, correct or delete your data. Message us on <a href="https://wa.me/{WA}">WhatsApp {WA_DISPLAY}</a>.</p>
+<h2>Analytics</h2><p>We count taps on WhatsApp buttons. No other tracking.</p>
+</div></section>'''
+    shell("privacy/index.html", "Privacy Notice | EV Body Parts Singapore",
+          "How EV Body Parts handles personal data from WhatsApp orders and messages, under Singapore's PDPA.",
+          body, "", [("Privacy", "privacy/")], pri=0.3)
+
 if __name__ == "__main__":
     if OUT.exists(): shutil.rmtree(OUT)
     OUT.mkdir(parents=True)
     datajs()
-    home(); catalogue(); parts_hub(); part_pages(); brands_hub(); brand_pages(); car_pages(); product_pages(); audience_pages(); about(); contact(); enquiry(); privacy(); articles()
+    home(); catalogue(); parts_hub(); part_pages(); brands_hub(); brand_pages(); car_pages(); product_pages(); audience_pages(); about(); contact(); privacy(); articles()
     notfound(); statics()
     print(f"pages in sitemap {len(pages)}, brands {len(BRANDS)}, cars {len(CARS)}, products {len(PRODS)}, files {sum(1 for _ in OUT.rglob('*') if _.is_file())}")
