@@ -62,6 +62,12 @@ PHOTOS = {
     'toyota-alphard-abs-codes': ('toyota-alphard-hybrid-abs-codes.jpg', (0.10, 0.02, 0.94, 0.68, 'pad')),
     'toyota-alphard-new-actuator': ('toyota-alphard-new-brake-actuator.jpg', (0.15, 0.59)),
     'toyota-alphard-old-vs-new-actuator': ('toyota-alphard-old-vs-new-brake-actuator.jpg', (0.0, 0.0, 1.0, 0.68, 'pad')),
+    # Toyota C-HR Hybrid battery job from Edwin, 31 Oct 2026. The licence plate is blurred in the source copy of the rear shot;
+    # the removed and opened pack shots are turned 90 degrees in the source copies so the pack fills a 4:3 frame.
+    'toyota-chr-hybrid-rear': ('toyota-chr-hybrid-rear.jpg', None),
+    'toyota-chr-battery-in-car': ('toyota-chr-hybrid-battery-in-car.jpg', (0.24, 0.70)),
+    'toyota-chr-battery-removed': ('toyota-chr-hybrid-battery-removed.jpg', (0.10, 0.12, 0.76, 0.88, 'pad')),
+    'toyota-chr-battery-opened': ('toyota-chr-hybrid-battery-opened.jpg', (0.0, 0.08, 0.84, 0.92, 'pad')),
 }
 
 
