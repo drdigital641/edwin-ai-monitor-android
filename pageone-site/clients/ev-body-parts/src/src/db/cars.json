@@ -1,5 +1,16 @@
 [
  {
+  "key": "avatr-07",
+  "b": "avatr",
+  "name": "07",
+  "alias": [
+   "avatr 07",
+   "07"
+  ],
+  "years": "2026-now",
+  "status": "published"
+ },
+ {
   "key": "avatr-11",
   "b": "avatr",
   "name": "11",
@@ -20,6 +31,30 @@
   "status": "published"
  },
  {
+  "key": "byd-atto-1",
+  "b": "byd",
+  "name": "Atto 1",
+  "alias": [
+   "atto 1",
+   "atto1",
+   "byd atto 1"
+  ],
+  "years": "2026-now",
+  "status": "published"
+ },
+ {
+  "key": "byd-atto-2",
+  "b": "byd",
+  "name": "Atto 2",
+  "alias": [
+   "atto 2",
+   "atto2",
+   "byd atto 2"
+  ],
+  "years": "2025-now",
+  "status": "published"
+ },
+ {
   "key": "byd-atto-3",
   "b": "byd",
   "name": "Atto 3",
@@ -29,6 +64,21 @@
    "atto",
    "byd atto 3"
   ],
+  "years": "2022-2025",
+  "code": "Original / 2024 Singapore update",
+  "status": "published"
+ },
+ {
+  "key": "byd-atto-3-evo",
+  "b": "byd",
+  "name": "Atto 3 Evo",
+  "alias": [
+   "atto 3 evo",
+   "atto3 evo",
+   "byd atto 3 evo"
+  ],
+  "years": "2026-now",
+  "code": "Evo (2026 facelift)",
   "status": "published"
  },
  {
@@ -63,6 +113,18 @@
   "status": "published"
  },
  {
+  "key": "byd-seal-6",
+  "b": "byd",
+  "name": "Seal 6",
+  "alias": [
+   "seal 6",
+   "seal6",
+   "byd seal 6"
+  ],
+  "years": "2025-now",
+  "status": "published"
+ },
+ {
   "key": "byd-sealion-7",
   "b": "byd",
   "name": "Sealion 7",
@@ -83,6 +145,28 @@
    "deepal l07",
    "l07"
   ],
+  "status": "published"
+ },
+ {
+  "key": "deepal-q05",
+  "b": "deepal",
+  "name": "Q05",
+  "alias": [
+   "deepal q05",
+   "q05"
+  ],
+  "years": "2026-now",
+  "status": "published"
+ },
+ {
+  "key": "deepal-s05",
+  "b": "deepal",
+  "name": "S05",
+  "alias": [
+   "deepal s05",
+   "s05"
+  ],
+  "years": "2026-now",
   "status": "published"
  },
  {
@@ -108,6 +192,18 @@
    "denza d9",
    "denza 09"
   ],
+  "status": "published"
+ },
+ {
+  "key": "gac-aion-ut",
+  "b": "gac",
+  "name": "Aion UT",
+  "alias": [
+   "aion ut",
+   "ut",
+   "gac aion ut"
+  ],
+  "years": "2026-now",
   "status": "published"
  },
  {
@@ -141,6 +237,30 @@
    "jaecoo j7",
    "j7"
   ],
+  "status": "hidden"
+ },
+ {
+  "key": "jaecoo-jaecoo-5-ev",
+  "b": "jaecoo",
+  "name": "5 EV",
+  "alias": [
+   "jaecoo 5 ev",
+   "j5 ev",
+   "5 electric"
+  ],
+  "years": "2026-now",
+  "status": "published"
+ },
+ {
+  "key": "jaecoo-jaecoo-6-ev",
+  "b": "jaecoo",
+  "name": "6 EV",
+  "alias": [
+   "jaecoo 6 ev",
+   "j6 ev",
+   "6 electric"
+  ],
+  "years": "2026-now",
   "status": "published"
  },
  {
@@ -157,6 +277,18 @@
   "status": "published"
  },
  {
+  "key": "maxus-edeliver-7",
+  "b": "maxus",
+  "name": "eDeliver 7",
+  "alias": [
+   "edeliver 7",
+   "e deliver 7",
+   "maxus edeliver 7"
+  ],
+  "years": "2024-now",
+  "status": "published"
+ },
+ {
   "key": "maxus-mifa-9",
   "b": "maxus",
   "name": "MIFA 9",
@@ -169,6 +301,30 @@
   "status": "published"
  },
  {
+  "key": "mg-4-urban-ev",
+  "b": "mg",
+  "name": "MG4 Urban EV — 2nd generation",
+  "alias": [
+   "mg4 urban",
+   "mg 4 urban ev",
+   "mg4 urban ev"
+  ],
+  "years": "2026-now",
+  "code": "2nd generation (Urban)",
+  "status": "published"
+ },
+ {
+  "key": "mg-cyberster",
+  "b": "mg",
+  "name": "Cyberster",
+  "alias": [
+   "mg cyberster",
+   "cyberster ev"
+  ],
+  "years": "2024-now",
+  "status": "published"
+ },
+ {
   "key": "mg-hs",
   "b": "mg",
   "name": "HS",
@@ -176,18 +332,32 @@
    "mg hs",
    "hs"
   ],
+  "status": "hidden"
+ },
+ {
+  "key": "mg-m9-ev",
+  "b": "mg",
+  "name": "M9 EV",
+  "alias": [
+   "mg m9 ev",
+   "m9",
+   "mg m9"
+  ],
+  "years": "2025-now",
   "status": "published"
  },
  {
   "key": "mg-mg4",
   "b": "mg",
-  "name": "MG4",
+  "name": "MG4 — 1st generation",
   "alias": [
    "mg4",
    "mg 4",
    "4",
    "mg4 ev"
   ],
+  "years": "2022-2025",
+  "code": "1st generation (RWD)",
   "status": "published"
  },
  {
@@ -202,9 +372,33 @@
   "status": "published"
  },
  {
+  "key": "mg-s5-ev",
+  "b": "mg",
+  "name": "S5 EV",
+  "alias": [
+   "mg s5 ev",
+   "mgs5",
+   "s5 ev"
+  ],
+  "years": "2025-now",
+  "status": "published"
+ },
+ {
+  "key": "mg-s6-ev",
+  "b": "mg",
+  "name": "S6 EV",
+  "alias": [
+   "mg s6 ev",
+   "mgs6",
+   "s6 ev"
+  ],
+  "years": "2026-now",
+  "status": "published"
+ },
+ {
   "key": "mg-zs-ev",
   "b": "mg",
-  "name": "ZS EV",
+  "name": "ZS EV — Pre-facelift",
   "alias": [
    "zs ev",
    "zsev",
@@ -212,6 +406,21 @@
    "mg zs ev",
    "mg zs"
   ],
+  "years": "2020-2022",
+  "code": "Pre-facelift",
+  "status": "published"
+ },
+ {
+  "key": "mg-zs-ev-facelift-2023",
+  "b": "mg",
+  "name": "ZS EV — 2023 facelift",
+  "alias": [
+   "mg zs ev facelift",
+   "zs ev facelift",
+   "2023 zs ev"
+  ],
+  "years": "2023-2024",
+  "code": "2023 facelift",
   "status": "published"
  },
  {
@@ -223,6 +432,18 @@
    "omoda5",
    "e5"
   ],
+  "status": "published"
+ },
+ {
+  "key": "ora-5-ev",
+  "b": "ora",
+  "name": "5 EV",
+  "alias": [
+   "ora 5 ev",
+   "gwm ora 5",
+   "ora5"
+  ],
+  "years": "2026-now",
   "status": "published"
  },
  {
@@ -239,7 +460,7 @@
  {
   "key": "tesla-model-3",
   "b": "tesla",
-  "name": "Model 3",
+  "name": "Model 3 — Pre-Highland",
   "alias": [
    "model 3",
    "model3",
@@ -247,12 +468,28 @@
    "3",
    "tesla model 3"
   ],
+  "years": "2021-2023",
+  "code": "Pre-Highland",
+  "status": "published"
+ },
+ {
+  "key": "tesla-model-3-highland",
+  "b": "tesla",
+  "name": "Model 3 — Highland",
+  "alias": [
+   "model 3 highland",
+   "highland",
+   "tesla highland",
+   "updated model 3"
+  ],
+  "years": "2023-now",
+  "code": "Highland",
   "status": "published"
  },
  {
   "key": "tesla-model-y",
   "b": "tesla",
-  "name": "Model Y",
+  "name": "Model Y — Pre-Juniper",
   "alias": [
    "model y",
    "modely",
@@ -261,6 +498,22 @@
    "tesla model y",
    "tesla my"
   ],
+  "years": "2021-2024",
+  "code": "Pre-Juniper",
+  "status": "published"
+ },
+ {
+  "key": "tesla-model-y-juniper",
+  "b": "tesla",
+  "name": "Model Y — Juniper",
+  "alias": [
+   "model y juniper",
+   "juniper",
+   "tesla juniper",
+   "new model y"
+  ],
+  "years": "2025-now",
+  "code": "Juniper",
   "status": "published"
  },
  {
@@ -278,6 +531,17 @@
   "b": "xpeng",
   "name": "X9",
   "alias": [
+   "xpeng x9",
+   "x9"
+  ],
+  "years": "2024-now",
+  "status": "hidden"
+ },
+ {
+  "key": "xpeng-x9",
+  "b": "xpeng",
+  "name": "X9",
+  "alias": [
    "x9",
    "xpeng x9"
   ],
@@ -286,12 +550,27 @@
  {
   "key": "zeekr-001",
   "b": "zeekr",
-  "name": "001",
+  "name": "001 — Pre-2024 update",
   "alias": [
    "zeekr 001",
    "001",
    "1"
   ],
+  "years": "2021-2023",
+  "code": "Pre-2024 update",
+  "status": "published"
+ },
+ {
+  "key": "zeekr-001-2024-update",
+  "b": "zeekr",
+  "name": "001 — 2024 update",
+  "alias": [
+   "zeekr 001 2024",
+   "2024 zeekr 001",
+   "zeekr 001 facelift"
+  ],
+  "years": "2024-now",
+  "code": "2024 update",
   "status": "published"
  },
  {
@@ -302,6 +581,17 @@
    "zeekr 009",
    "009"
   ],
+  "status": "published"
+ },
+ {
+  "key": "zeekr-7x",
+  "b": "zeekr",
+  "name": "7X",
+  "alias": [
+   "zeekr 7x",
+   "7x"
+  ],
+  "years": "2025-now",
   "status": "published"
  },
  {

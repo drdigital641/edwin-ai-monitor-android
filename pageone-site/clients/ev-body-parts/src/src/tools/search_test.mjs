@@ -13,8 +13,8 @@ function load() {
 const T = [
   ['Tesla Model Y tail lamp', 'Tesla Model Y Tail Lamp'],
   ['tesla y taillight', 'Tesla Model Y Tail Lamp'],
-  ['model y bumper', /^Tesla Model Y (Front|Rear) Bumper$/],
-  ['Tesla Y bumper', /^Tesla Model Y (Front|Rear) Bumper$/],
+  ['model y bumper', /^Tesla Model Y( — [^ ]+)? (Front|Rear) Bumper$/],
+  ['Tesla Y bumper', /^Tesla Model Y( — [^ ]+)? (Front|Rear) Bumper$/],
   ['Denza D9 rear reflector', 'Denza D9 Rear Reflector'],
   ['denza 09 reflector', 'Denza D9 Rear Reflector'],
   ['Denza 09', /^Denza D9 /],
@@ -31,13 +31,16 @@ const T = [
   ['tesla my fender', 'Tesla Model Y Fender'],
   ['headligt atto 3', 'BYD Atto 3 Headlamp'],
   ['hood model y', 'Tesla Model Y Bonnet'],
+  ['model y juniper tail lamp', /Model Y — Juniper Tail Lamp/],
+  ['model 3 highland bumper', /Model 3 — Highland/],
+  ['zs ev facelift headlamp', /ZS EV — 2023 facelift Headlamp/],
 ];
 let fail = 0;
 function run(label, EV) {
   console.log('== ' + label + ' (entries in memory: ' + EV.entries().length + ')');
   for (const [q, exp] of T) {
     const r = EV.search(q); const top = r.results[0] && r.results[0].e.title;
-    const ok = top && (exp instanceof RegExp ? exp.test(top) : top === exp);
+    const ok = top && (exp instanceof RegExp ? exp.test(top) : (top === exp || top.replace(/ — [^]*? (?=(Tail Lamp|Front Bumper|Rear Bumper|Side Mirror|Bonnet|Bumper Trim|Fender|Headlamp)$)/, ' ') === exp));
     if (!ok) fail++;
     console.log((ok ? 'PASS' : 'FAIL') + '  ' + q.padEnd(28) + ' -> ' + (top || '(none)') + (r.results[0] && r.results[0].e.ask ? ' [ask card]' : ''));
   }

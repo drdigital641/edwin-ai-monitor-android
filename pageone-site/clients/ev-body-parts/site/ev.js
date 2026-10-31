@@ -199,7 +199,13 @@
       var m = IDX.models[i];
       if (m.nb && !(brandHit === m.brand)) continue;
       hit = find(t, used, m.seq);
-      if (hit >= 0) { for (k = 0; k < m.seq.length; k++) used[hit + k] = true; R.model = m.model; R.brand = m.brand; break; }
+      if (hit >= 0) {
+        for (k = 0; k < m.seq.length; k++) used[hit + k] = true; R.model = m.model; R.brand = m.brand;
+        /* other generations of the same car (e.g. "model y" -> also Model Y Juniper) when the query did not name one */
+        R.sibs = [];
+        IDX.models.forEach(function (o) { if (o.brand === m.brand && o.model !== m.model && R.sibs.indexOf(o.model) < 0 && o.seq.length > m.seq.length && o.seq.slice(0, m.seq.length).join(' ') === m.seq.join(' ')) R.sibs.push(o.model); });
+        break;
+      }
     }
     if (!R.model && brandHit) { R.brand = brandHit; }
     if (brandAt && R.brand === brandHit) { for (k = 0; k < brandAt[1]; k++) used[brandAt[0] + k] = true; }
@@ -213,19 +219,24 @@
     /* "Ask us" cards: no listing exists for what was understood, so offer an enquiry (never a fake listing) */
     var asks = [];
     if (!P.brand) return asks;
-    var b = BRM[P.brand], car = P.model ? CARM[P.model] : null, veh = b.name + (car ? ' ' + car.name : '');
-    function mk(partSlug, partName, title) {
-      return { ask: true, id: 'ask-' + (P.model || P.brand) + '-' + partSlug, key: '', brand: P.brand, brandName: b.name, model: car ? car.name : '', modelSlug: car ? car.key : '', carSlug: car ? car.slug : '',
-        part: partSlug, partName: partName, title: title, side: '', price: null, stock: '', photos: [], url: '' };
-    }
-    if (P.hasPart) {
-      var max = 0, s; for (s in P.parts) max = Math.max(max, P.parts[s]);
-      Object.keys(P.parts).filter(function (p) { return P.parts[p] >= Math.max(.5, max); }).forEach(function (p) {
-        var has = out.some(function (r) { return r.e.part === p && (!P.model || r.e.modelSlug === P.model) && r.e.brand === P.brand; });
-        if (!has && PARTM[p]) asks.push(mk(p, PARTM[p].name, veh + ' ' + PARTM[p].name));
-      });
-    } else if (car) asks.push(mk('other', 'Parts', veh + ' parts'));
-    else if (!out.length) asks.push(mk('other', 'Parts', veh + ' parts'));
+    var b = BRM[P.brand];
+    var models = P.model ? [P.model].concat(P.sibs || []) : [null];
+    models.forEach(function (mk0) {
+      var car = mk0 ? CARM[mk0] : null, veh = b.name + (car ? ' ' + car.name : '');
+      if (mk0 && !car) return;
+      function mk(partSlug, partName, title) {
+        return { ask: true, id: 'ask-' + (mk0 || P.brand) + '-' + partSlug, key: '', brand: P.brand, brandName: b.name, model: car ? car.name : '', modelSlug: car ? car.key : '', carSlug: car ? car.slug : '',
+          part: partSlug, partName: partName, title: title, side: '', price: null, stock: '', photos: [], url: '' };
+      }
+      if (P.hasPart) {
+        var max = 0, s; for (s in P.parts) max = Math.max(max, P.parts[s]);
+        Object.keys(P.parts).filter(function (p) { return P.parts[p] >= Math.max(.5, max); }).forEach(function (p) {
+          var has = out.some(function (r) { return r.e.part === p && (!mk0 || r.e.modelSlug === mk0) && r.e.brand === P.brand; });
+          if (!has && PARTM[p]) asks.push(mk(p, PARTM[p].name, veh + ' ' + PARTM[p].name));
+        });
+      } else if (car) asks.push(mk('other', 'Parts', veh + ' parts'));
+      else if (!out.length) asks.push(mk('other', 'Parts', veh + ' parts'));
+    });
     return asks;
   }
   function search(q, opts) {
@@ -257,7 +268,9 @@
       out.sort(function (a, b) { return b.score - a.score || a.n - b.n; });
     }
     var products = out.length;
-    if (!opts.pool) askEntries(P, out).forEach(function (a) { out.push({ e: a, score: -1, n: 9999 }); });
+    /* a named model (e.g. a newer generation) with no listing of its own: its Ask-us cards go first, other models' listings follow */
+    var askFirst = P.model && !out.some(function (r) { return r.e.modelSlug === P.model; });
+    if (!opts.pool) { var asks = askEntries(P, out).map(function (a) { return { e: a, score: -1, n: 9999 }; }); out = askFirst ? asks.concat(out) : out.concat(asks); }
     var unk = P.left.filter(function (l) { return l.length >= 4 && !out.some(function (r) { return words(r.e).indexOf(l) >= 0; }); });
     var weak = !out.length || !anyKey || unk.length > 0;
     return { q: q, P: P, results: out, weak: weak, empty: false, onlyAsk: !products && out.length > 0 };
