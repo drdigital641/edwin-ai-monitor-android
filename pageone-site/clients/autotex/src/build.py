@@ -53,8 +53,12 @@ C = {c[0]: dict(id=c[0], name=c[1], line=c[2], icon=c[3]) for c in CATS}
 P = {p[0]: dict(id=p[0], cat=p[1], name=p[2], alias=p[3], side=p[4], unit=p[5], need=p[6]) for p in PARTS}
 PT = {p[0]: p for p in PARTS}
 
-def mlabel(m): return f"{BR[m['b']]} {m['name']} ({m['code']})" if m["code"] else f"{BR[m['b']]} {m['name']}"
+def mlabel(m): return f"{BR[m['b']]} {mpar(m)}" if m["code"] else f"{BR[m['b']]} {m['name']}"
 def myears(m): return m["years"].replace("-now", " onwards")
+# model name with generation code; cars like EV3 / Inster have no code, so never leave "()" or ", ," behind
+def mn(m): return m["name"] + " " + m["code"] if m.get("code") else m["name"]
+def mpar(m): return m["name"] + " (" + m["code"] + ")" if m.get("code") else m["name"]
+def mcy(m, yrs): return "(" + m["code"] + ", " + yrs + ")" if m.get("code") else "(" + yrs + ")"
 def car_parts(m): return [P[p[0]] for p in PARTS if fits(m["fuel"], p)]
 
 # photos: AtPhoto rows exported to db/photos.json are written to assets/p/<id>.jpg by pull_photos.py
@@ -385,8 +389,7 @@ def build_home():
 <a class="btn wa" href="{wa_link("Hi Autotex, I need a part. My car plate / chassis number is: ")}" rel="noopener">{WA_SVG}WhatsApp {WA_SHOW}</a></div></section>
 '''
     shell("index.html", "Kia & Hyundai Parts Singapore | Autotex", "Kia and Hyundai parts stockist in Kaki Bukit. Choose your car and part, see the price or ask on WhatsApp. Stock direct from Korea.",
-          body, active="", schema=[fs, {"@type": "WebSite", "@id": BASE + "/#web", "url": BASE + "/", "name": "Autotex",
-          "potentialAction": {"@type": "SearchAction", "target": BASE + "/search/?q={q}", "query-input": "required name=q"}}], prio="1.0")
+          body, active="", schema=[fs, {"@type": "WebSite", "@id": BASE + "/#web", "url": BASE + "/", "name": "Autotex"}], prio="1.0")
 
 # ---------------- brand pages ----------------
 def build_brands():
@@ -430,24 +433,24 @@ def build_models():
             secs.append(f'<section class="msec" id="more"><h2>More parts</h2><div class="pgrid">{"".join(card(x, r, show_model=False) for x in misc)}</div></section>')
         first = m["name"].split()[0]
         sibs = "".join(model_tile(o, r) for o in M.values() if o["b"] == m["b"] and o["id"] != m["id"] and o["name"].split()[0] == first)
-        others = "".join(f'<a class="chip" href="{r}{o["b"]}/{o["id"]}/">{e(o["name"])} {e(o["code"])}</a>' for o in M.values() if o["b"] == m["b"] and o["id"] != m["id"])
+        others = "".join(f'<a class="chip" href="{r}{o["b"]}/{o["id"]}/">{e(mn(o))}</a>' for o in M.values() if o["b"] == m["b"] and o["id"] != m["id"])
         al = [a for a in m["alias"][:2] if a.split()[0] != m["name"].lower().split()[0]]
         alias = f" Also called the {', '.join(a.title() for a in al)}." if al else ""
         ev = " As an electric car it has no engine parts, so this page lists body, lamp, brake and suspension parts." if m["fuel"] == "electric" else ""
         body = f'''<section class="ph"><div class="wrap">{{{{CRUMBS}}}}
-<h1>{e(bn)} {e(m["name"])}{f' ({e(m["code"])})' if m["code"] else ""} parts</h1>
-<p class="lead">Parts for the {e(bn)} {e(m["name"])}, {e(m["code"])} generation, {e(myears(m))} ({e(m["fuel"])}).{e(alias)}{ev} Where a price is listed you can add the part to your cart. For the others, tap Ask on WhatsApp and we reply with the price and stock.</p>
-<p class="fitnote">{ICON['check']}<span>Not sure if your car is the {e(m["code"])}? Send us your car plate or chassis number and we will check before you pay.</span></p>
+<h1>{e(bn)} {e(mpar(m))} parts</h1>
+<p class="lead">Parts for the {e(bn)} {e(m["name"])}, {e(m["code"]) + " generation, " if m["code"] else ""}{e(myears(m))} ({e(m["fuel"])}).{e(alias)}{ev} Where a price is listed you can add the part to your cart. For the others, tap Ask on WhatsApp and we reply with the price and stock.</p>
+<p class="fitnote">{ICON['check']}<span>Not sure if your car is the {e(m["code"] or m["name"])}? Send us your car plate or chassis number and we will check before you pay.</span></p>
 <div class="chips jump">{"".join(jump)}</div></div></section>
 <div class="wrap msecs">{"".join(secs)}</div>
 {f'<section class="sec alt"><div class="wrap"><h2>Other {e(first)} generations</h2><div class="mgrid">{sibs}</div></div></section>' if sibs else ""}
 <section class="sec"><div class="wrap"><h2>Other {e(bn)} models</h2><div class="chips">{others}</div></div></section>'''
         sch = []
         if items:
-            sch.append({"@type": "ItemList", "name": f"{bn} {m['name']} ({m['code']}) parts", "numberOfItems": len(items),
+            sch.append({"@type": "ItemList", "name": f"{bn} {mpar(m)} parts", "numberOfItems": len(items),
                         "itemListElement": [{"@type": "ListItem", "position": i + 1, "url": BASE + "/" + x["url"], "name": x["title"]} for i, x in enumerate(items)]})
-        shell(path, f"{bn} {m['name']} {m['code']} Parts Singapore | Autotex"[:70], f"{bn} {m['name']} ({m['code']}, {m['years'].replace('-now', '+')}) parts in Singapore: bumpers, lamps, brake pads, discs, suspension and more. See the price or ask on WhatsApp.",
-              body, active=m["b"], crumbs=[(f"{bn} parts", f"{m['b']}/"), (f"{m['name']} ({m['code']})", f"{m['b']}/{m['id']}/")], schema=sch, prio="0.8")
+        shell(path, f"{bn} {mn(m)} Parts Singapore | Autotex"[:70], f"{bn} {m['name']} {mcy(m, m['years'].replace('-now', '+'))} parts in Singapore: bumpers, lamps, brake pads, discs, suspension and more. See the price or ask on WhatsApp.",
+              body, active=m["b"], crumbs=[(f"{bn} parts", f"{m['b']}/"), (f"{mpar(m)}", f"{m['b']}/{m['id']}/")], schema=sch, prio="0.8")
 
 # ---------------- product pages ----------------
 def build_products():
@@ -459,7 +462,7 @@ def build_products():
         rest = [y for y in same_car if y["cat"]["id"] != c["id"]]
         related = (same_cat + rest)[:8]
         other_models = [y for y in PRODUCTS if p["id"] != "other" and y["p"] == p["id"] and y["m"] != m["id"]]
-        om = "".join(f'<a class="chip" href="{r}{y["url"]}">{e(BR[y["model"]["b"]])} {e(y["model"]["name"])} {e(y["model"]["code"])}</a>' for y in other_models)
+        om = "".join(f'<a class="chip" href="{r}{y["url"]}">{e(BR[y["model"]["b"]])} {e(mn(y["model"]))}</a>' for y in other_models)
         stock = STOCK.get(x["stock"])
         stock_h = f'<span class="stock {stock[1]}" data-stock="{e(x["id"])}">{stock[0]}</span>' if stock else f'<span class="stock" data-stock="{e(x["id"])}">Stock checked on WhatsApp</span>'
         oem = f'<div><dt>Part number</dt><dd class="mono">{e(x["oem"])}</dd></div>' if x["oem"] else '<div><dt>Part number</dt><dd>We match it to your car plate or chassis number</dd></div>'
@@ -472,25 +475,25 @@ def build_products():
             side = ""
         msg = f"Hi Autotex, I'm asking about: {x['title']} {m['years']}. My car plate / chassis number is: "
         note = f'<p class="note">{e(x["note"])}</p>' if x["note"] else ""
-        desc_t = f"{p['name']} for the {bn} {m['name']} ({m['code']}, {myears(m)})"
+        desc_t = f"{p['name']} for the {bn} {m['name']} {mcy(m, myears(m))}"
         ph = x["photos"]
         thumbs = ""
         if len(ph) > 1:
             thumbs = "".join(f'<button type="button" data-full="{e(s if s.startswith("http") else r + s)}" aria-label="Photo {i + 1}"><img src="{e(s if s.startswith("http") else r + s)}" alt="" width="64" height="64" loading="lazy"></button>' for i, (s, _) in enumerate(ph))
         askbtn = (f'<a class="btn wa{"" if not show_price(x) else " ghost"}" href="{wa_link(msg)}" rel="noopener">{WA_SVG}{"Ask about this part" if show_price(x) else "Ask for price on WhatsApp"}</a>')
         c_link = f'<a href="{r}parts/{c["id"]}/">{e(c["name"])}</a> · ' if c["id"] else ""
-        rel_h = (f'<section class="sec"><div class="wrap"><h2>More parts for your {e(m["name"])} {e(m["code"])}</h2><div class="pgrid">{"".join(card(y, r, show_model=False) for y in related)}</div>'
-                 f'<p><a class="btn ghost" href="{r}{m["b"]}/{m["id"]}/">All {e(bn)} {e(m["name"])} {e(m["code"])} parts</a></p></div></section>') if related else \
-                (f'<section class="sec"><div class="wrap"><p><a class="btn ghost" href="{r}{m["b"]}/{m["id"]}/">All parts for the {e(bn)} {e(m["name"])} {e(m["code"])}</a></p></div></section>')
+        rel_h = (f'<section class="sec"><div class="wrap"><h2>More parts for your {e(mn(m))}</h2><div class="pgrid">{"".join(card(y, r, show_model=False) for y in related)}</div>'
+                 f'<p><a class="btn ghost" href="{r}{m["b"]}/{m["id"]}/">All {e(bn)} {e(mn(m))} parts</a></p></div></section>') if related else \
+                (f'<section class="sec"><div class="wrap"><p><a class="btn ghost" href="{r}{m["b"]}/{m["id"]}/">All parts for the {e(bn)} {e(mn(m))}</a></p></div></section>')
         om_h = (f'<section class="sec alt"><div class="wrap"><h2>{e(p["name"])} for other models</h2><div class="chips">{om}</div>'
                 + (f'<p class="small"><a href="{r}parts/{c["id"]}/">All {e(c["name"].lower())}</a></p>' if c["id"] else "") + '</div></section>') if om else ""
         body = f'''<div class="wrap">{{{{CRUMBS}}}}</div>
 <section class="prod wrap" data-product="{e(x["id"])}">
 <div class="prod-art">{part_art(x, r, "art big")}<div class="thumbs">{thumbs}</div></div>
 <div class="prod-i">
-<p class="eyebrow">{c_link}<a href="{r}{m["b"]}/{m["id"]}/">{e(bn)} {e(m["name"])} {e(m["code"])}</a></p>
-<h1>{e(p["name"])}{f' ({e(SIDE_L[x["side"]].split(" (")[0])})' if x["side"] else ""} for {e(bn)} {e(m["name"])} ({e(m["code"])})</h1>
-<p class="fits">Fits {e(bn)} {e(m["name"])} {e(m["code"])}, {e(myears(m))}</p>
+<p class="eyebrow">{c_link}<a href="{r}{m["b"]}/{m["id"]}/">{e(bn)} {e(mn(m))}</a></p>
+<h1>{e(p["name"])}{f' ({e(SIDE_L[x["side"]].split(" (")[0])})' if x["side"] else ""} for {e(bn)} {e(mpar(m))}</h1>
+<p class="fits">Fits {e(bn)} {e(mn(m))}, {e(myears(m))}</p>
 <p class="gone" hidden>This part is no longer listed. <a href="{wa_link(msg)}" rel="noopener">Ask us on WhatsApp</a> if you still need it.</p>
 <div class="buy">
 <div class="buy-p">{price_html(x, big=True)}<span class="unit">per {e(p["unit"])}</span></div>
@@ -504,7 +507,7 @@ def build_products():
 {note}
 <dl class="spec">
 <div><dt>Car</dt><dd>{e(bn)} {e(m["name"])}</dd></div>
-<div><dt>Generation</dt><dd>{e(m["code"])}, {e(myears(m))}</dd></div>
+<div><dt>Generation</dt><dd>{e(m["code"] + ", " if m["code"] else "")}{e(myears(m))}</dd></div>
 <div><dt>Engine type</dt><dd>{e(m["fuel"])}</dd></div>
 <div><dt>Sold as</dt><dd>{e(p["unit"])}{" (left or right)" if p["side"] and not x["side"] else ""}</dd></div>
 {oem}
@@ -514,11 +517,11 @@ def build_products():
 </div></section>
 {rel_h}
 {om_h}'''
-        prod = {"@type": "Product", "@id": BASE + "/" + x["url"] + "#product", "name": f"{x['title'].split(' for ')[0]} for {bn} {m['name']} ({m['code']})",
+        prod = {"@type": "Product", "@id": BASE + "/" + x["url"] + "#product", "name": f"{x['title'].split(' for ')[0]} for {bn} {mpar(m)}",
                 "sku": x["id"], "category": c["name"], "image": [u for _, u in ph] or [BASE + "/og.jpg"],
                 "brand": {"@type": "Brand", "name": bn},
                 "description": desc_t + (f". {x['note']}" if x["note"] else "") + ". Sold by Autotex, Kia and Hyundai parts stockist in Singapore.",
-                "isRelatedTo": {"@type": "Car", "name": f"{bn} {m['name']} {m['code']}", "brand": {"@type": "Brand", "name": bn}}}
+                "isRelatedTo": {"@type": "Car", "name": f"{bn} {mn(m)}", "brand": {"@type": "Brand", "name": bn}}}
         if x["oem"]: prod["mpn"] = x["oem"]
         if show_price(x):
             off = {"@type": "Offer", "url": BASE + "/" + x["url"], "priceCurrency": "SGD", "price": f'{x["price"]:.2f}',
@@ -526,10 +529,10 @@ def build_products():
             if x["stock"] in AVAIL: off["availability"] = AVAIL[x["stock"]]
             prod["offers"] = off
         tprice = f" {money(x['price'])}" if show_price(x) else ""
-        title = f"{p['name']} {bn} {m['name']} {m['code']}{tprice} | Autotex"
-        if len(title) > 60: title = f"{p['name']} {bn} {m['name']} {m['code']}{tprice}"
+        title = f"{p['name']} {bn} {mn(m)}{tprice} | Autotex"
+        if len(title) > 60: title = f"{p['name']} {bn} {mn(m)}{tprice}"
         shell(path, title, f"{desc_t}.{(' ' + money(x['price']) + ' per ' + p['unit'] + '.') if show_price(x) else ' Ask for the price on WhatsApp.'} Kia and Hyundai parts stockist in Kaki Bukit.",
-              body, active=m["b"], crumbs=[(f"{bn} parts", f"{m['b']}/"), (f"{m['name']} ({m['code']})", f"{m['b']}/{m['id']}/"), (p["name"], x["url"])],
+              body, active=m["b"], crumbs=[(f"{bn} parts", f"{m['b']}/"), (f"{mpar(m)}", f"{m['b']}/{m['id']}/"), (p["name"], x["url"])],
               schema=[prod], prio="0.7", og_type="product", og_image=ph[0][1] if ph else None, og_alt=x["title"])
 
 # ---------------- category pages ----------------
@@ -761,8 +764,10 @@ def build_static():
         {"src": "icon-192.png", "sizes": "192x192", "type": "image/png"}, {"src": "icon-512.png", "sizes": "512x512", "type": "image/png"}],
         "theme_color": "#12161C", "background_color": "#ffffff", "display": "standalone"}))
     cats = "\n".join(f"- {c['name']}: {BASE}/parts/{c['id']}/" for c in C.values())
-    models = "\n".join(f"- {BR[m['b']]} {m['name']} ({m['code']}, {m['years']}): {BASE}/{m['b']}/{m['id']}/" for m in M.values())
-    plist = "\n".join(f"- {x['title']}{' ' + money(x['price']) if show_price(x) else ''}: {BASE}/{x['url']}" for x in PRODUCTS[:300])
+    models = "\n".join(f"- {BR[m['b']]} {m['name']} {mcy(m, m['years'])}: {BASE}/{m['b']}/{m['id']}/" for m in M.values())
+    # keep llms.txt small (AI fetchers truncate around 30-40 KB): a short product sample, full list lives on /prices/
+    plist = "\n".join(f"- {x['title']}{' ' + money(x['price']) if show_price(x) else ''}: {BASE}/{x['url']}" for x in PRODUCTS[:40])
+    arts = "\n".join(f"- {a[1]}: {BASE}/articles/{a[0]}/" for a in ARTS)
     write("llms.txt", f"""# Autotex (Autotex Aircon Enterprise)
 
 > Kia and Hyundai parts stockist in Kaki Bukit, Singapore. Stocks parts direct from Korea and sells direct to Singapore drivers. Pick your car and part, see the price where listed or ask on WhatsApp.
@@ -780,9 +785,18 @@ def build_static():
 ## Parts by type
 {cats}
 
+## Key pages
+- How to order: {BASE}/how-to-order/
+- About Autotex: {BASE}/about/
+- Contact and directions: {BASE}/contact/
+- Full price list (every car and part): {BASE}/prices/
+
+## Guides
+{arts}
+
 ## Models
 {models}
-""" + (f"\n## Listed products\n{plist}\n" if plist else ""))
+""" + (f"\n## Sample products (full list: {BASE}/prices/)\n{plist}\n" if plist else ""))
     write("htaccess.txt", f"""# .htaccess for https://autotexautoparts.com.sg (the Bridge cannot write .htaccess; paste via cPanel)
 Options -Indexes
 DirectoryIndex index.html
