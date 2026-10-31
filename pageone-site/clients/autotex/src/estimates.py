@@ -7,14 +7,14 @@ BASE = {  # part id: S$ per unit in catalog.py (side parts are per side). Revise
     # body parts and lamps raised towards typical Singapore stockist prices.
     "front-bumper": 320, "rear-bumper": 300, "bonnet": 420, "front-grille": 180, "front-fender": 180,
     "side-mirror": 260, "wiper-blades": 25, "headlamp": 520, "tail-lamp": 260, "fog-lamp": 90,
-    "front-brake-pads": 95, "rear-brake-pads": 70, "front-brake-discs": 160, "rear-brake-discs": 140,
+    "front-brake-pads": 134, "rear-brake-pads": 70, "front-brake-discs": 160, "rear-brake-discs": 140,
     "front-shock-absorber": 170, "rear-shock-absorber": 130, "lower-control-arm": 140, "stabilizer-link": 45,
     "tie-rod-end": 55, "wheel-bearing": 160, "engine-mount": 100, "gearbox-mount": 90, "spark-plugs": 42,
     "ignition-coil": 75, "oil-filter": 8, "air-filter": 18, "drive-belt": 40, "water-pump": 140,
     "thermostat": 55, "radiator": 260, "radiator-fan": 280, "aircon-compressor": 650, "aircon-condenser": 240,
-    "cabin-filter": 22, "alternator": 420, "starter-motor": 340,
+    "cabin-filter": 25, "alternator": 420, "starter-motor": 340,
     # added 31 Oct 2026 for the service kits and sets (ATF S$44 vs S$46 genuine 4 L at autopartsdirect.com.sg)
-    "engine-oil": 55, "transmission-oil": 44, "strut-top-mount": 60, "strut-bearing": 28, "control-arm-bush": 28,
+    "engine-oil": 44, "transmission-oil": 44, "strut-top-mount": 60, "strut-bearing": 28, "control-arm-bush": 28,
     "steering-rack": 650, "radiator-cap": 15, "thermostat-housing": 45, "upper-radiator-hose": 35, "lower-radiator-hose": 40,
     "rear-bump-stop": 25, "rear-top-mount": 45, "valve-cover-gasket": 55, "crankshaft-sensor": 85, "camshaft-sensor": 85, "fuel-pump": 260, "purge-valve": 70, "belt-tensioner": 120, "door-hinge": 70, "door-handle": 65, "boot-lock": 75, "boot-switch": 40, "ball-joint": 60, "power-window-switch": 55,
 }
