@@ -42,10 +42,16 @@
     IDX = null;
   }
   var SIDE = { L: 'Left', R: 'Right', pair: 'Pair' };
+  var SPECIAL = {}; (D.special || []).forEach(function (k) { SPECIAL[k] = 1; });
+  /* part type for a product with a missing/unknown p: longest owner-language match in its name or title */
+  var SYN = []; D.parts.forEach(function (p) { if (p.slug !== 'other') p.syn.concat([p.name]).forEach(function (w) { SYN.push([' ' + String(w).toLowerCase().replace(/[^a-z0-9]+/g, ' ').trim() + ' ', p.slug]); }); });
+  SYN.sort(function (a, b) { return b[0].length - a[0].length; });
+  function classify(t) { t = ' ' + String(t || '').toLowerCase().replace(/[^a-z0-9]+/g, ' ') + ' '; for (var i = 0; i < SYN.length; i++) if (t.indexOf(SYN[i][0]) >= 0) return SYN[i][1]; return ''; }
   function mkEntry(p) {
     var car = CARM[p.m]; if (!car) return null;
-    var b = BRM[car.b], part = PARTM[p.p] && p.p !== 'other' ? PARTM[p.p] : null;
-    var partName = part ? part.name : (p.pn || 'Other part');
+    var b = BRM[car.b], part = PARTM[p.p] && p.p !== 'other' ? PARTM[p.p] : (PARTM[classify((p.pn || '') + ' ' + (p.title || ''))] || null);
+    var named = part && !(PARTM[p.p] && p.p !== 'other');
+    var partName = part && !named ? part.name : (p.pn || (part ? part.name : 'Other part'));
     var title = p.title || (b.name + ' ' + car.name + ' ' + partName + (SIDE[p.side] ? ' (' + SIDE[p.side] + ')' : ''));
     var price = (typeof p.price === 'number' && p.price > 0) ? p.price : null;
     return { id: p.key, key: p.key, brand: car.b, brandName: b.name, model: car.name, modelSlug: car.key, carSlug: car.slug, part: part ? part.slug : 'other', partName: partName,
@@ -214,7 +220,7 @@
   }
 
   /* ---------- search ---------- */
-  function words(e) { return toks([e.title, e.side, e.note, e.partName, e.brandName, e.model].join(' ')); }
+  function words(e) { var o = e.oem || ''; return toks([e.title, e.side, e.note, e.partName, e.brandName, e.model, o, o.replace(/[^0-9a-z]/gi, '')].join(' ')); }
   function askEntries(P, out) {
     /* "Ask us" cards: no listing exists for what was understood, so offer an enquiry (never a fake listing) */
     var asks = [];
@@ -281,8 +287,8 @@
 
   /* ---------- links ---------- */
   function waLink(text) { return 'https://wa.me/' + D.wa + '?text=' + encodeURIComponent('Hi ' + D.brand + ', I am looking for: ' + text + '. (from website)'); }
-  function enqHref(e) {
-    var veh = ((e.brandName || '') + ' ' + (e.model || '')).trim(), t = e.ask ? (veh + ' ' + e.partName) : (e.title || e.partName);
+  function enqHref(e, suf) {
+    var veh = ((e.brandName || '') + ' ' + (e.model || '')).trim(), t = (e.ask ? (veh + ' ' + e.partName) : (e.title || e.partName)) + (suf || '');
     if (D.wa) return waLink(t);
     return ROOT + 'contact/';
   }
@@ -315,15 +321,15 @@
     if (e.ask) {
       return '<article class="rc askc"><div class="rc-ic">' + iconSvg(e.part) + '</div><div class="rc-b"><span class="chip">' + esc(veh) + '</span><h3>' + hlTitle(e, P) + '</h3>' +
         '<p class="rc-t">Not listed yet. Price on request.</p><div class="rc-m"><span class="pill ask">Price on request</span></div>' +
-        '<div class="rc-a">' + addBtn(e, 'btn btn-p btn-s') + '<a class="btn btn-g btn-s" href="' + esc(enqHref(e)) + '">Ask</a></div></div></article>';
+        '<div class="rc-a">' + (SPECIAL[e.part] ? '<a class="btn btn-p btn-s" href="' + esc(enqHref(e, ' (specialist check)')) + '">Check fitment</a>' : addBtn(e, 'btn btn-p btn-s') + '<a class="btn btn-g btn-s" href="' + esc(enqHref(e)) + '">Check fitment</a>') + '</div></div></article>';
     }
     var det = e.url ? '<a class="btn btn-g btn-s" href="' + esc(ROOT + e.url) + '">Details</a>' : '<button type="button" class="btn btn-g btn-s" data-det="' + esc(e.id) + '">Details</button>';
     return '<article class="rc"><div class="rc-ic">' + iconSvg(e.part) + mediaHtml(e) + '</div><div class="rc-b">' +
       '<span class="chip">' + esc(veh) + '</span><h3>' + hlTitle(e, P) + '</h3>' +
-      '<p class="rc-t">' + esc(e.partName) + (SIDE[e.side] ? ' &middot; ' + SIDE[e.side] : '') + '</p>' +
-      '<div class="rc-m">' + (D.status[e.stock] ? '<span class="pill st-' + esc(e.stock) + '">' + esc(D.status[e.stock]) + '</span>' : '') +
+      '<p class="rc-t">' + esc(e.partName) + (e.oem ? ' &middot; OE ' + esc(e.oem) : '') + '</p>' +
+      '<div class="rc-m">' + (SIDE[e.side] ? '<span class="pill side">' + SIDE[e.side] + '</span>' : '') + (D.status[e.stock] ? '<span class="pill st-' + esc(e.stock) + '">' + esc(D.status[e.stock]) + '</span>' : '') +
       (e.price ? '<span class="price">' + money(e.price) + '</span>' : '<span class="price ask">Ask for price</span>') + '</div>' +
-      '<div class="rc-a">' + addBtn(e, 'btn btn-p btn-s') + det + '</div></div></article>';
+      '<div class="rc-a">' + (SPECIAL[e.part] ? '<a class="btn btn-p btn-s" href="' + esc(enqHref(e, ' (specialist check)')) + '">Check fitment</a>' : addBtn(e, 'btn btn-p btn-s')) + det + '</div></div></article>';
   }
   function understood(P) {
     var c = [];
@@ -379,7 +385,7 @@
       (D.status[e.stock] ? '<div><dt>Stock</dt><dd>' + esc(D.status[e.stock]) + '</dd></div>' : '') + '<div><dt>Price</dt><dd>' + (e.price ? money(e.price) : 'Ask for price') + '</dd></div>' +
       (e.oem ? '<div><dt>Part number</dt><dd>' + esc(e.oem) + '</dd></div>' : '') + (e.grade ? '<div><dt>Grade</dt><dd>' + esc(e.grade) + '</dd></div>' : '') +
       (e.desc ? '<div><dt>About</dt><dd>' + esc(e.desc) + '</dd></div>' : '') + (e.note ? '<div><dt>Note</dt><dd>' + esc(e.note) + '</dd></div>' : '') + '</dl>' +
-            '<div class="btns">' + addBtn(e, 'btn btn-p') + '<a class="btn btn-g" href="' + esc(enqHref(e)) + '">Ask on WhatsApp</a></div></div>';
+            '<div class="btns">' + (SPECIAL[e.part] ? '<a class="btn btn-p" href="' + esc(enqHref(e, ' (specialist check)')) + '">Check fitment &amp; price</a>' : addBtn(e, 'btn btn-p') + '<a class="btn btn-g" href="' + esc(enqHref(e)) + '">Check fitment &amp; price</a>') + '</div></div>';
     document.body.appendChild(m); document.body.classList.add('noscroll');
     function close() { m.remove(); document.body.classList.remove('noscroll'); document.removeEventListener('keydown', key); }
     function key(ev) { if (ev.key === 'Escape') close(); }
@@ -479,7 +485,7 @@
     L.push(T.total ? 'Total: ' + money(T.total) + (T.ask ? ' + ' + T.ask + ' item' + (T.ask > 1 ? 's' : '') + ' priced on request' : '') : 'Total: price on request');
     if (c.name) L.push('Name: ' + c.name);
     if (c.note) L.push('Note: ' + c.note);
-    L.push('', '(from website)');
+    L.push('', 'Please confirm fitment. I can send the build year, VIN and photos of the old part here.', '(from website)');
     return L.join('\n');
   }
   function cartSet(o) {

@@ -33,6 +33,8 @@ const T = [
   ['hood model y', 'Tesla Model Y Bonnet'],
   ['model y juniper tail lamp', /Model Y — Juniper Tail Lamp/],
   ['model 3 highland bumper', /Model 3 — Highland/],
+  ['model y bumper bracket', /Model Y — Pre-Juniper Front Bumper Bracket/],
+  ['juniper inner tail lamp', /Juniper Inner Tail Lamp/],
   ['zs ev facelift headlamp', /ZS EV — 2023 facelift Headlamp/],
 ];
 let fail = 0;

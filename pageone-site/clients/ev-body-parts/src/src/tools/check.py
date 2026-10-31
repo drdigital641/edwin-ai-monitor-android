@@ -22,7 +22,7 @@ class P(HTMLParser):
         if tag in ("script",) and a.get("src") and not a["src"].startswith("http"): s.links.append(a["src"])
         if tag == "script" and a.get("type") == "application/ld+json": s._ld = True; s._buf = ""
         if tag == "details" and "faq" in "": pass
-        if tag == "details": s.faq += 1
+        if tag == "details" and "area" not in (dict(a).get("class") or ""): s.faq += 1
         if tag == "h1": s.h1 += 1
         if tag == "img":
             s.imgs.append(a)

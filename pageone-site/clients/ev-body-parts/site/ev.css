@@ -369,3 +369,26 @@ body{padding-bottom:0!important}
 .sec.tight{padding:32px 0 44px}
 @media(min-width:900px){.sec.tight{padding:48px 0 64px}}
 .steps{margin:0}
+/* model tiles (brand pages) */
+.mt-h{font:700 1rem/1.2 var(--fh);letter-spacing:.06em;text-transform:uppercase;margin:22px 0 10px;color:#C9C9D0}
+.mtiles{display:grid;grid-template-columns:repeat(auto-fill,minmax(230px,1fr));gap:10px}
+.mtile{display:flex;align-items:center;gap:12px;padding:14px 16px;border:1px solid var(--line2);border-radius:14px;background:rgba(255,255,255,.03);color:#fff;text-decoration:none;transition:border-color .2s,background .2s}
+.mtile:hover{border-color:var(--red);background:rgba(25,227,177,.08)}
+.mtile .mt-ic svg{width:30px;height:30px;color:var(--red)}
+.mtile .mt-b{flex:1;display:flex;flex-direction:column;gap:2px}.mtile b{font-weight:700}.mtile small{color:#A9A9B2;font-size:.85rem}
+.mtile>svg{width:18px;height:18px;opacity:.6}
+/* part areas (car pages) */
+.areas{display:grid;gap:10px;margin-top:20px}
+.area{border:1px solid var(--line2);border-radius:14px;background:rgba(255,255,255,.02)}
+.area summary{display:flex;align-items:center;gap:12px;padding:14px 16px;cursor:pointer;list-style:none;font-size:1.02rem}
+.area summary::-webkit-details-marker{display:none}
+.area summary::after{content:"+";margin-left:auto;font-size:1.4rem;line-height:1;color:var(--red);transition:transform .2s}
+.area[open] summary::after{transform:rotate(45deg)}
+.area .ar-ic svg{width:28px;height:28px;color:var(--red)}
+.area .ar-n{font-size:.8rem;color:#A9A9B2;border:1px solid var(--line2);border-radius:999px;padding:2px 8px}
+.area .bchips{padding:0 16px 16px}
+.area .bchip{font-size:.82rem;padding:10px 14px}
+.ar-note{margin:0 16px 10px;color:#C9C9D0;font-size:.92rem}
+.chipsp{border-style:dashed}
+.gen-n{margin-top:12px;font-size:.95rem;color:#C9C9D0}.gen-n a{color:var(--red)}
+.pill.side{background:rgba(255,255,255,.08);color:#fff}

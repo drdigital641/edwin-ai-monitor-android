@@ -66,7 +66,48 @@ PARTS = [  # slug, name, category, synonyms (owner language)
     ("tailgate", "Tailgate", "body-panels", ["tailgate", "boot", "boot lid", "trunk lid", "trunk", "liftgate"]),
     ("grille", "Grille", "grilles-trims", ["grille", "grill", "front grille", "front grill"]),
     ("wheel-arch", "Wheel Arch", "grilles-trims", ["wheel arch", "arch lining", "arch liner", "fender liner", "wheel arch liner"]),
+    ("front-bumper-bracket", "Front Bumper Bracket", "bumpers", ["front bumper bracket", "bumper bracket", "bumper guide", "bumper support", "bumper slide bracket", "bumper mounting bracket"]),
+    ("rear-bumper-bracket", "Rear Bumper Bracket", "bumpers", ["rear bumper bracket", "rear bumper guide", "rear bumper support"]),
+    ("bumper-reinforcement", "Bumper Reinforcement", "bumpers", ["bumper reinforcement", "bumper beam", "crash beam", "impact bar", "reinforcement bar", "bumper bar"]),
+    ("front-lip", "Front Lip / Valance", "bumpers", ["front lip", "bumper lip front", "splitter", "front valance", "chin spoiler", "front spoiler", "lip"]),
+    ("rear-diffuser", "Rear Diffuser / Lower Valance", "bumpers", ["rear diffuser", "diffuser", "rear valance", "rear lower valance", "rear lip"]),
+    ("lower-grille", "Lower Grille", "grilles-trims", ["lower grille", "lower grill", "air intake", "intake trim", "bumper grille", "bumper grill", "bumper mesh"]),
+    ("undertray", "Undertray / Lower Guard", "grilles-trims", ["undertray", "under tray", "lower guard", "splash shield", "under cover", "undercover", "belly pan", "engine undercover"]),
+    ("bonnet-hinge", "Bonnet Hinge / Latch", "body-panels", ["bonnet hinge", "hood hinge", "bonnet latch", "hood latch", "bonnet lock", "striker"]),
+    ("headlamp-bracket", "Headlamp Bracket", "lamps-lights", ["headlamp bracket", "headlight bracket", "headlamp tab", "headlight tab", "headlamp repair kit", "headlight repair kit"]),
+    ("drl", "Daytime Running Light", "lamps-lights", ["daytime running light", "drl", "day light", "running light"]),
+    ("front-reflector", "Front Reflector", "lamps-lights", ["front reflector", "front bumper reflector", "side reflector"]),
+    ("inner-tail-lamp", "Inner Tail Lamp", "lamps-lights", ["inner tail lamp", "inner taillight", "inner tail light", "inner taillamp", "tailgate lamp", "tailgate light", "boot lamp", "boot light", "trunk light", "trunk lamp"]),
+    ("third-brake-light", "Third Brake Light", "lamps-lights", ["third brake light", "3rd brake light", "high stop lamp", "high mount stop lamp", "high level brake light", "centre brake light"]),
+    ("side-skirt", "Side Skirt", "grilles-trims", ["side skirt", "rocker panel", "rocker trim", "sill trim", "side sill", "side step"]),
+    ("door-moulding", "Door Moulding", "grilles-trims", ["door moulding", "door molding", "door trim", "door garnish", "door applique", "door strip"]),
+    ("wheel-arch-trim", "Wheel Arch Trim", "grilles-trims", ["wheel arch trim", "arch moulding", "arch molding", "arch garnish", "fender flare", "wheel arch moulding"]),
+    ("rear-spoiler", "Rear Spoiler", "body-panels", ["rear spoiler", "spoiler", "boot spoiler", "trunk spoiler", "wing spoiler", "ducktail"]),
+    ("tailgate-trim", "Tailgate Trim", "grilles-trims", ["tailgate trim", "tailgate garnish", "boot trim", "boot garnish", "trunk trim", "trunk garnish"]),
+    ("windscreen", "Windscreen", "glass-fittings", ["windscreen", "windshield", "front glass", "front windscreen"]),
+    ("rear-glass", "Rear Glass", "glass-fittings", ["rear glass", "rear windscreen", "back glass", "rear window", "back window", "rear windshield"]),
+    ("door-glass", "Door / Quarter Glass", "glass-fittings", ["door glass", "window glass", "side glass", "quarter glass", "side window"]),
+    ("washer-nozzle", "Washer Nozzle / Cover", "glass-fittings", ["washer nozzle", "washer jet", "washer cover", "headlamp washer cover"]),
+    ("tow-hook-cover", "Tow Hook Cover", "glass-fittings", ["tow hook cover", "tow cover", "towing eye cover", "tow cap", "tow hook cap"]),
+    ("plate-bracket", "Number Plate Bracket", "glass-fittings", ["number plate bracket", "plate bracket", "plate holder", "number plate holder", "licence plate holder", "license plate holder"]),
+    ("clips", "Clips & Fittings", "glass-fittings", ["clips", "clip", "retainer", "fastener", "rivet", "fittings", "screws"]),
+    ("crash-structure", "Crash Structure", "other-parts", ["crash structure", "crash box", "front structure", "rear structure", "chassis rail", "subframe", "longitudinal"]),
+    ("radiator-support", "Radiator Support / Cooling", "other-parts", ["radiator support", "front carrier", "radiator carrier", "radiator bracket", "condenser bracket", "front panel", "radiator", "condenser", "cooling pack"]),
+    ("underbody-shield", "Underbody / Battery Shield", "other-parts", ["underbody shield", "battery shield", "battery cover", "battery protection", "underbody panel", "battery guard"]),
+    ("jacking-pad", "Jacking Pad / Lift Point", "other-parts", ["jacking pad", "jack pad", "jacking point", "lift point", "jack point"]),
     ("other", "Other Part", "other-parts", ["wiper", "cabin filter", "other part"]),
+]
+# Parts that need a specialist check: never sold through the cart, always a WhatsApp quote
+SPECIAL = {"crash-structure", "radiator-support", "underbody-shield", "jacking-pad", "bumper-reinforcement", "windscreen"}
+# Car page groups, in the order an owner walks around the car
+AREAS = [
+    ("front", "Front body", "front-bumper", ["front-bumper", "front-bumper-bracket", "bumper-reinforcement", "grille", "lower-grille", "front-lip", "undertray", "wheel-arch", "fender", "bonnet", "bonnet-hinge"]),
+    ("lamps", "Headlamps & front lights", "headlamp", ["headlamp", "headlamp-bracket", "drl", "fog-lamp", "front-reflector"]),
+    ("side", "Side body & mirrors", "side-mirror", ["side-mirror", "door-panel", "door-moulding", "side-skirt", "wheel-arch-trim"]),
+    ("rear", "Rear body", "rear-bumper", ["rear-bumper", "rear-bumper-bracket", "rear-diffuser", "bumper-trim", "rear-reflector", "tailgate", "tailgate-trim", "rear-spoiler"]),
+    ("tail", "Tail lamps", "tail-lamp", ["tail-lamp", "inner-tail-lamp", "third-brake-light"]),
+    ("glass", "Glass & small fittings", "glass", ["windscreen", "rear-glass", "door-glass", "washer-nozzle", "tow-hook-cover", "plate-bracket", "clips"]),
+    ("special", "Structure & underbody (specialist check)", "other", ["crash-structure", "radiator-support", "underbody-shield", "jacking-pad"]),
 ]
 PART = {p[0]: p for p in PARTS}
 GENERIC = [  # generic words owners type: slug -> weight
@@ -77,12 +118,13 @@ GENERIC = [  # generic words owners type: slug -> weight
     ("panel", {"bonnet": .5, "fender": .5, "door-panel": .5, "tailgate": .5}),
 ]
 CATS = [  # slug, name, line, part slugs, icon, title, desc
-    ("bumpers", "Bumpers", "Front bumpers, rear bumpers and bumper trim", ["front-bumper", "rear-bumper", "bumper-trim"], "front-bumper"),
-    ("lamps-lights", "Lamps & Lights", "Headlamps, tail lamps, rear reflectors and fog lamps", ["headlamp", "tail-lamp", "rear-reflector", "fog-lamp"], "tail-lamp"),
+    ("bumpers", "Bumpers", "Front bumpers, rear bumpers and bumper trim", ["front-bumper", "rear-bumper", "bumper-trim", "front-bumper-bracket", "rear-bumper-bracket", "bumper-reinforcement", "front-lip", "rear-diffuser"], "front-bumper"),
+    ("lamps-lights", "Lamps & Lights", "Headlamps, tail lamps, rear reflectors and fog lamps", ["headlamp", "tail-lamp", "rear-reflector", "fog-lamp", "headlamp-bracket", "drl", "front-reflector", "inner-tail-lamp", "third-brake-light"], "tail-lamp"),
     ("mirrors", "Mirrors", "Side mirrors, covers and mirror glass", ["side-mirror"], "side-mirror"),
-    ("body-panels", "Body Panels", "Bonnets, fenders, door panels and tailgates", ["bonnet", "fender", "door-panel", "tailgate"], "bonnet"),
-    ("grilles-trims", "Grilles & Trims", "Front grilles, bumper trim and wheel arch linings", ["grille", "bumper-trim", "wheel-arch"], "grille"),
-    ("other-parts", "Other Parts", "Wipers, cabin filters and other small parts", ["other"], "other"),
+    ("body-panels", "Body Panels", "Bonnets, fenders, door panels and tailgates", ["bonnet", "fender", "door-panel", "tailgate", "bonnet-hinge", "rear-spoiler"], "bonnet"),
+    ("grilles-trims", "Grilles & Trims", "Front grilles, bumper trim and wheel arch linings", ["grille", "lower-grille", "bumper-trim", "wheel-arch", "undertray", "side-skirt", "door-moulding", "wheel-arch-trim", "tailgate-trim"], "grille"),
+    ("glass-fittings", "Glass & Fittings", "Windscreens, door glass, plate brackets and clips", ["windscreen", "rear-glass", "door-glass", "washer-nozzle", "tow-hook-cover", "plate-bracket", "clips"], "glass"),
+    ("other-parts", "Other Parts", "Structure, cooling and underbody parts (specialist check) and other parts", ["crash-structure", "radiator-support", "underbody-shield", "jacking-pad", "other"], "other"),
 ]
 CAT = {c[0]: c for c in CATS}
 
@@ -105,6 +147,20 @@ IC = {
     "wheel-arch": '<path d="M3 25a13 13 0 0 1 26 0"/><path d="M8 25a8 8 0 0 1 16 0M3 25h26"/>',
     "other": '<path d="M20 5a6 6 0 0 0-5.6 8.2L5 22.6a2.6 2.6 0 0 0 3.7 3.7l9.4-9.4A6 6 0 0 0 26.5 11l-3.5 3.5-3.4-1-1-3.4L22 6.6A6 6 0 0 0 20 5Z"/>',
 }
+IC["glass"] = '<path d="M5 24 8.5 9.5A2 2 0 0 1 10.4 8h11.2a2 2 0 0 1 1.9 1.5L27 24z"/><path d="m12 12-2.5 8M16 12l-1.6 5" opacity=".6"/>'
+for _k, _v in {"front-bumper-bracket": "front-bumper", "rear-bumper-bracket": "rear-bumper", "bumper-reinforcement": "bumper-trim", "front-lip": "bumper-trim", "rear-diffuser": "rear-bumper",
+               "lower-grille": "grille", "undertray": "wheel-arch", "bonnet-hinge": "bonnet", "headlamp-bracket": "headlamp", "drl": "headlamp", "front-reflector": "rear-reflector",
+               "inner-tail-lamp": "tail-lamp", "third-brake-light": "tail-lamp", "side-skirt": "door-panel", "door-moulding": "door-panel", "wheel-arch-trim": "wheel-arch",
+               "rear-spoiler": "tailgate", "tailgate-trim": "tailgate", "windscreen": "glass", "rear-glass": "glass", "door-glass": "glass", "washer-nozzle": "other",
+               "tow-hook-cover": "other", "plate-bracket": "other", "clips": "other", "crash-structure": "other", "radiator-support": "other", "underbody-shield": "other", "jacking-pad": "other"}.items():
+    IC.setdefault(_k, IC[_v])
+_SYN = sorted([(syn, p[0]) for p in PARTS if p[0] != "other" for syn in p[3] + [p[1].lower()]], key=lambda t: -len(t[0]))
+def classify(*texts):
+    """Part type for a product whose p is missing/other/unknown: longest owner-language match in its name/title."""
+    t = " " + re.sub(r"[^a-z0-9]+", " ", " ".join(x or "" for x in texts).lower()) + " "
+    for syn, slug in _SYN:
+        if " " + syn + " " in t: return slug
+    return "other"
 def ico(k, cls="ic"):
     return f'<svg class="{cls}" viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">{IC[k]}</svg>'
 UI = {
@@ -159,6 +215,7 @@ for r in load("products.json"):
     if not is_pub(r) or r.get("m") not in CAR or not r.get("key"): continue
     car = CAR[r["m"]]
     p = r.get("p") or "other"
+    if p not in PART or p == "other": p = classify(r.get("pn"), r.get("title"))
     pname = PART[p][1] if p in PART and p != "other" else (r.get("pn") or "Other part")
     pslug = r["key"][len(car["key"]) + 1:] if r["key"].startswith(car["key"] + "-") else r["key"]
     pslug = slugify(pslug) or slugify(r["key"])
@@ -463,9 +520,12 @@ PART_COPY = {
     "grilles-trims": ("Grilles & trims for China & EV cars", "Front grilles, bumper trim and wheel arch linings for China and EV cars in Singapore. Send your model and we confirm fitment.",
         ["Grilles and trim pieces are small but easy to get wrong, because the shape changes between models. Send a photo of the piece, or of the place where it was fitted.",
          "Bumper trim also appears under Bumpers. Wheel arch lining is the liner inside the wheel arch."]),
-    "other-parts": ("Other parts for China & EV cars", "Wipers, cabin filters and other small parts for China and EV cars in Singapore. Tell us the car and what you need.",
-        ["Our focus is body parts, but some owners and workshops also need other small parts such as wipers or a cabin filter. Ask us with the car model and we check.",
-         "If the part you want is not in the catalogue, send an enquiry. Not being listed does not mean we cannot help."]),
+    "glass-fittings": ("Glass & small fittings for China & EV cars", "Windscreens, door glass, number plate brackets, tow hook covers and clips for China and EV cars in Singapore. Tell us the car and the part.",
+        ["Small fittings like clips, tow hook covers and plate brackets are easy to lose in a repair. Tell us the car, the part and the side, or send a photo.",
+         "For a windscreen, tell us if your car has a camera or sensor behind it. Glass with cameras needs the exact version and may need calibration after fitting."]),
+    "other-parts": ("Structure, underbody & other parts for China & EV cars", "Crash structure, radiator support, underbody and battery shields and other parts for China and EV cars in Singapore. Each one is checked by hand.",
+        ["Structure, cooling and underbody parts are safety related, so we do not sell them through the cart. Send the car, the build year and photos on WhatsApp and we check each part one by one.",
+         "Some owners also need small parts such as wipers or a cabin filter. Ask us with the car model and we check."]),
 }
 def part_pages():
     for c in CATS:
@@ -756,7 +816,7 @@ def datajs():
             "cars": [carrec(c) for c in CARS],
             "parts": [{"slug": p[0], "name": p[1], "cat": p[2], "syn": p[3]} for p in PARTS],
             "generic": [{"w": g[0], "map": g[1]} for g in GENERIC],
-            "icons": IC, "products": prods, "photoFiles": {g: v[0] for g, v in PHOTO_FILES.items()}}
+            "icons": IC, "special": sorted(SPECIAL), "products": prods, "photoFiles": {g: v[0] for g, v in PHOTO_FILES.items()}}
     (OUT / "data.js").write_text("window.EV_DATA=" + json.dumps(data, ensure_ascii=False, separators=(",", ":")) + ";\n")
 
 def statics():
@@ -820,10 +880,10 @@ def addbtn(key, title, car, part, price, side="", ask=False, label="Add to cart"
 
 def card_static(x, r="{{R}}"):
     media = f'<img src="{e(disp(x["imgs"][0]))}" alt="{e(x["title"])}" width="88" height="88" loading="lazy" decoding="async" onerror="this.remove()">' if x["imgs"] else ""
-    add = addbtn(x["key"], x["title"], x["car"]["full"], x["pn"], x["price"], x["side"])
+    add = f'<a class="btn btn-p btn-s" href="{e(enq(x["title"] + " (specialist check)"))}">Check fitment</a>' if x["p"] in SPECIAL else addbtn(x["key"], x["title"], x["car"]["full"], x["pn"], x["price"], x["side"])
     return (f'<article class="rc"><div class="rc-ic">{ico(x["p"])}{media}</div><div class="rc-b"><span class="chip">{e(x["car"]["full"])}</span>'
-            f'<h3>{e(x["title"])}</h3><p class="rc-t">{e(x["pn"])}{" &middot; " + SIDE_L[x["side"]] if x["side"] in SIDE_L else ""}</p>'
-            f'<div class="rc-m">{pill_html(x)}{price_html(x)}</div>'
+            f'<h3>{e(x["title"])}</h3><p class="rc-t">{e(x["pn"])}{f" &middot; OE {e(x["oem"])}" if x["oem"] else ""}</p>'
+            f'<div class="rc-m">{f"<span class=\"pill side\">{SIDE_L[x["side"]]}</span>" if x["side"] in SIDE_L else ""}{pill_html(x)}{price_html(x)}</div>'
             f'<div class="rc-a">{add}<a class="btn btn-g btn-s" href="{r}{x["url"]}">Details</a></div></div></article>')
 def list_html(items, name, lim=9):
     if not items: return f'<div class="empty"><p>No {e(name + " ") if name else ""}listings yet. Ask us on WhatsApp and we check.</p>{wa_btn((name + " part").strip(), "Ask on WhatsApp")}</div>'
@@ -998,16 +1058,16 @@ def brand_pages():
         cs = CARS_BY_BRAND[slug]
         if cs:
             mnames = [c["name"] for c in cs]
-            intro = b.get("intro") or f"Body parts for {name} {ml(mnames)}. Pick your model."
+            intro = b.get("intro") or (f"Pick your {name} first. Some models have an older and a newer version with different bumpers and lamps." if any(" — " in c["name"] for c in cs) else f"Body parts for {name} {ml(mnames)}. Pick your model.")
             desc = short(f"{name} body parts in Singapore for {ml(mnames)}. Add to cart and send your order on WhatsApp.")
-            chips = "".join(f'<a class="bchip" href="{{{{R}}}}{c["url"]}">{e(c["name"])}</a>' for c in cs)
+            chips = "".join(f'<a class="mtile" href="{{{{R}}}}{c["url"]}"><span class="mt-ic">{UI["car"]}</span><span class="mt-b"><b>{e(c["name"])}</b>{f'<small>{e(c["years"])}</small>' if c.get("years") else ''}</span>{UI["arrow"]}</a>' for c in cs)
         else:
             intro = b.get("intro") or f"No {name} model is listed yet. Tell us your model and part on WhatsApp."
             desc = short(f"{name} body parts in Singapore: tell us your model and part and EV Body Parts checks what we can find.")
             chips = ""
         title = fit(f"{name} Body Parts in Singapore | {BRAND}", f"{name} Body Parts in Singapore")
         items = [x for x in PRODS if x["car"]["b"] == slug]
-        body = f'''<section class="ph-hd"><div class="wrap">{{{{CRUMBS}}}}<h1>{e(name)} body parts</h1><p class="lead">{e(intro)}</p>{f'<div class="bchips" style="margin-top:18px">{chips}</div>' if chips else ''}</div></section>
+        body = f'''<section class="ph-hd"><div class="wrap">{{{{CRUMBS}}}}<h1>{e(name)} body parts</h1><p class="lead">{e(intro)}</p>{f'<h2 class="mt-h">Choose your {e(name)}</h2><div class="mtiles">{chips}</div>' if chips else ''}</div></section>
 <section class="sec tight"><div class="wrap">
 <div class="sres full" data-list="brand:{slug}" data-limit="9" data-name="{e(name)}">{list_html(items, name)}</div>
 <p style="margin-top:28px">{wa_btn(name + " part", "Ask on WhatsApp", "g")}</p></div></section>'''
@@ -1019,10 +1079,21 @@ def car_pages():
         items = PBYCAR.get(c["key"], [])
         title = fit(f"{full} Body Parts Singapore | {BRAND}", f"{full} Body Parts Singapore", f"{full} Body Parts")
         desc = short(f"{full} body parts in Singapore: bumpers, lamps, mirrors and panels. Add to cart and send your order on WhatsApp.")
-        asks = "".join(addbtn(f'ask:{c["key"]}:{p[0]}', f'{full} {p[1]}', full, p[1], None, ask=True, label=e(p[1]), cls="bchip chipbtn") for p in PARTS if p[0] != "other")
+        def chip(pk):
+            pn = PART[pk][1]
+            if pk in SPECIAL: return f'<a class="bchip chipsp" href="{e(enq(full + " " + pn + " (specialist check)"))}">{e(pn)}</a>'
+            return addbtn(f'ask:{c["key"]}:{pk}', f'{full} {pn}', full, pn, None, ask=True, label=e(pn), cls="bchip chipbtn")
+        areas = "".join(f'<details class="area"{" open" if i == 0 else ""}><summary><span class="ar-ic">{ico(a[2])}</span><b>{e(a[1])}</b><span class="ar-n">{len(a[3])}</span></summary>'
+                        f'{"<p class=ar-note>Safety and structure parts: we check these one by one. Ask on WhatsApp.</p>" if a[0] == "special" else ""}<div class="bchips">{"".join(chip(pk) for pk in a[3])}</div></details>' for i, a in enumerate(AREAS))
+        base = name.split(" — ")[0]
+        gens = [o for o in CARS_BY_BRAND[c["b"]] if o["key"] != c["key"] and " — " in (o["name"] + name) and o["name"].split(" — ")[0] == base]
         sibs = "".join(f'<a class="bchip" href="{{{{R}}}}{o["url"]}">{e(o["name"])}</a>' for o in CARS_BY_BRAND[c["b"]] if o["key"] != c["key"])
-        body = f'''<section class="ph-hd"><div class="wrap">{{{{CRUMBS}}}}<h1>{e(full)} body parts</h1><p class="lead">Tap a part to add it to your cart. Price on request.</p>
-<div class="bchips" style="margin-top:18px">{asks}</div></div></section>
+        yrs = f' ({e(c["years"])})' if c.get("years") else ""
+        genl = (f'<p class="gen-n">Not sure? This page is for {e(name.split(" — ")[1] if " — " in name else name)}{yrs}. Other version: '
+                + ", ".join(f'<a href="{{{{R}}}}{o["url"]}">{e(o["name"].split(" — ")[1] if " — " in o["name"] else o["name"])}{f" ({e(o["years"])})" if o.get("years") else ""}</a>' for o in gens)
+                + '. Send your build year or a photo on WhatsApp and we confirm.</p>') if gens else ""
+        body = f'''<section class="ph-hd"><div class="wrap">{{{{CRUMBS}}}}<h1>{e(full)} body parts</h1><p class="lead">Pick an area, then tap a part to add it to your cart. Price on request.</p>{genl}
+<div class="areas">{areas}</div></div></section>
 <section class="sec tight"><div class="wrap">
 <div class="sres full" data-list="car:{c["key"]}" data-limit="12" data-name="{e(full)}">{list_html(items, full, 12)}</div>
 {f'<div class="sec-t" style="margin-top:36px"><h2>Other {e(c["bname"])} models</h2></div><div class="bchips">{sibs}</div>' if sibs else ''}</div></section>'''
@@ -1036,7 +1107,7 @@ def product_pages():
         desc = short(f'{base} {"Price " + money(x["price"]) + "." if x["price"] else "Ask for price."} Order on WhatsApp.')
         facts = "".join([f'<div><dt>Car</dt><dd><a href="{{{{R}}}}{c["url"]}">{e(c["full"])}</a></dd></div>', f'<div><dt>Part</dt><dd>{e(x["pn"])}</dd></div>',
                          f'<div><dt>Side</dt><dd>{SIDE_L[x["side"]]}</dd></div>' if x["side"] in SIDE_L else "",
-                         f'<div><dt>Part no.</dt><dd>{e(x["oem"])}</dd></div>' if x["oem"] else "",
+                         f'<div><dt>OE no.</dt><dd>{e(x["oem"])}</dd></div>' if x["oem"] else "",
                          f'<div><dt>Grade</dt><dd>{e(x["grade"])}</dd></div>' if x["grade"] else "",
                          f'<div><dt>Stock</dt><dd>{STOCK_L[x["stock"]]}</dd></div>' if x["stock"] in STOCK_L else ""])
         imgs = "".join(f'<img src="{e(disp(u))}" alt="{e(x["title"])} photo {i + 1}" width="144" height="108" loading="lazy" decoding="async">' for i, u in enumerate(x["imgs"][1:5], 1))
@@ -1049,7 +1120,7 @@ def product_pages():
 <div class="prose"><div class="pprice{'' if x['price'] else ' ask'}">{money(x["price"]) if x["price"] else "Ask for price"}</div>
 {f'<p>{e(x["desc"])}</p>' if x["desc"] else ''}{f'<p>{e(x["note"])}</p>' if x["note"] else ''}
 <dl class="facts">{facts}</dl>
-<div class="btns">{addbtn(x["key"], x["title"], c["full"], x["pn"], x["price"], x["side"], cls="btn btn-p")}{wa_btn(x["title"], "Ask on WhatsApp", "g")}</div></div></div></section>
+<div class="btns">{wa_btn(x["title"] + " (specialist check)", "Check fitment & price") if x["p"] in SPECIAL else addbtn(x["key"], x["title"], c["full"], x["pn"], x["price"], x["side"], cls="btn btn-p")}{"" if x["p"] in SPECIAL else wa_btn(x["title"], "Check fitment & price", "g")}</div></div></div></section>
 {relh}'''
         sch = {"@type": "Product", "name": x["title"], "description": base, "sku": x["key"], "url": f'{BASE}/{x["url"]}',
                "image": [(u if u.startswith("http") else f"{BASE}/{u}") for u in x["imgs"]] or [BASE + "/og.jpg"],
