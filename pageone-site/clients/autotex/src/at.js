@@ -461,6 +461,17 @@
     function lastWord(q) { return q.split(/\s+/).pop() || ""; }
     function base(q) { return /\s$/.test(q) || !q ? q : q.slice(0, q.length - lastWord(q).length); }
     function pick(text, fn) { inp.value = text + " "; fn(); draw(); }
+    var expanded = false, lastLabel = "", mb = document.createElement("button");
+    mb.type = "button"; mb.className = "fmore"; mb.hidden = true; g.parentNode.insertBefore(mb, g.nextSibling);
+    function fitRows() { /* show two rows of chips, then a "See more (+)" button */
+      g.style.maxHeight = ""; mb.hidden = true;
+      var bs = g.querySelectorAll("button"), tops = [], gt = g.getBoundingClientRect().top;
+      for (var i = 0; i < bs.length; i++) { var t = Math.round(bs[i].getBoundingClientRect().top - gt); if (tops.indexOf(t) < 0) tops.push(t); }
+      if (tops.length <= 2) return;
+      mb.hidden = false; mb.textContent = expanded ? "See less (\u2212)" : "See more (+)";
+      if (!expanded) g.style.maxHeight = (tops[2] - 6) + "px";
+    }
+    mb.addEventListener("click", function () { expanded = !expanded; fitRows(); });
     function draw() {
       var q = inp.value, lw = lastWord(q).toLowerCase(), b = sb.value, m = M[sm.value], label, items = [];
       if (!b) { label = "Pick your car:";
@@ -473,8 +484,10 @@
       var seen = {};
       items = items.filter(function (x) { var k = x.t.toLowerCase(); if (seen[k]) return false; seen[k] = 1; return true; });
       if (lw) { var f2 = items.filter(function (x) { return x.t.toLowerCase().split(/\s+/).some(function (w) { return w.indexOf(lw) === 0; }); }); if (f2.length) items = f2; }
-      g.innerHTML = '<span class="gl">' + esc(label) + '</span>' + items.slice(0, 8).map(function (x) {
+      if (label !== lastLabel) { expanded = false; lastLabel = label; }
+      g.innerHTML = '<span class="gl">' + esc(label) + '</span>' + items.slice(0, 60).map(function (x) {
         return '<button type="button" data-k="' + x.k + '" data-id="' + esc(x.id) + '" data-t="' + esc(x.t) + '">' + esc(x.t) + '</button>'; }).join("");
+      fitRows();
       f.classList.toggle("typing", !!q);
     }
     g.addEventListener("click", function (ev) {

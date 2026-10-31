@@ -240,3 +240,6 @@ th{font-size:.76rem;text-transform:uppercase;letter-spacing:.6px;color:var(--mut
 .fguide .gl{width:100%;font-size:.8rem;font-weight:700;text-transform:uppercase;letter-spacing:.6px;color:var(--muted)}
 .fguide button{font:600 .88rem/1 var(--font);color:var(--ink);background:#F2F4F7;border:1px solid #CDD2D9;border-radius:999px;padding:10px 14px;cursor:pointer;min-height:40px}
 .fguide button:hover,.fguide button:focus-visible{border-color:var(--red,#D62B1F)}
+
+.fguide{overflow:hidden}
+.fmore{margin-top:8px;font:700 .9rem/1 var(--font);color:var(--red,#D62B1F);background:none;border:0;padding:10px 4px;min-height:40px;cursor:pointer}
