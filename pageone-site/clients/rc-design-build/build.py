@@ -198,8 +198,7 @@ def cta(frm, topic='my space', label='Discuss Your Space', cls='btn btn-main'):
 
 
 MOCKUP_TOPIC = 'free design mockups of my current space (I will send photos)'
-MOCKUP_TEXT = ('<b>Free design mockups for your space, first in Singapore.</b> WhatsApp a photo of your current space and we will create a few '
-               'AI 3D mockup designs for you to discuss, with no obligation.')
+MOCKUP_TEXT = '<b>Free 3D mockups of your space.</b> WhatsApp us a photo. No obligation.'
 
 
 def mockup_box(path, cls='mockup'):
@@ -508,10 +507,10 @@ def build_concepts():
                             'name': it['alt']} for it in items]}]
     body = ('%s<section class="al-head"><div class="wrap"><span class="eyebrow">Gallery &middot; %d designs</span>'
             '<h1>Design gallery</h1>'
-            '<p>Commercial interior ideas for Singapore shops, F&amp;B, offices and salons, and the first in Singapore to publish a new design concept here every day. Tap a picture to see the ideas behind it.</p>'
+            '<p>First in Singapore: a new design concept every day. Tap a picture for details.</p>'
             '%s<div class="al-chips" role="group" aria-label="Filter by type of space">%s</div></div></section>'
             '<section class="album"><div class="wrap al-wrap"><div class="al-grid">%s</div>'
-            '<p class="al-foot">Like a design? WhatsApp us and we can design and build your new space or revamp your current one. All designs here are AI design concepts, not completed projects; our real carpentry is on the <a href="%s">Projects</a> page.</p></div></section>'
+            '<p class="al-foot">AI design concepts, not completed projects. Real work is on <a href="%s">Projects</a>.</p></div></section>'
             '<section class="band sand"><div class="wrap"><div class="head"><h2>Plan by type of space</h2>'
             '<p>What each kind of business space needs, and how we fit it out.</p></div><div class="grid g4">%s</div></div></section>%s') % (
         crumbs_html(path, crumbs), len(items), mockup_box(path), chips, album_tiles(path, items), rel(path, '/projects/'), spaces,
@@ -627,12 +626,12 @@ HOME_TPL = '''<section class="lux lux-full">
 
 <section class="marq-band" aria-label="Past AI design concepts"><div class="wrap marq-head"><span>The archive</span><a href="{galp}">Open the gallery &rarr;</a></div>
 <div class="marq"><div class="marq-track">{marq}</div></div>
-<div class="wrap marq-note"><p><b>First in Singapore to publish a new design concept every day.</b> Each day we design a fresh interior idea for a different kind of Singapore business. Use them freely for ideas. If one fits, WhatsApp us and we can design and build your new space or revamp your current one.</p>{mockup}</div></section>
+<div class="wrap marq-note"><p><b>First in Singapore: a new design concept every day.</b> Free to browse. Like one? We can build it.</p>{mockup}</div></section>
 
 <section class="intro"><div class="wrap intro-in">
 <div class="intro-l"><span class="eyebrow">Singapore retail &amp; commercial specialists</span>
 <h1>Design &amp; Build for <em>Retail</em> and <em>Commercial</em> Spaces</h1></div>
-<div class="intro-r"><p class="lede">We specialise in retail outlets and commercial spaces in Singapore: shops, offices, showrooms, F&amp;B outlets and salons. Carpentry, renovation, electrical, flooring and integrated audio, visual and lighting, made in our own workshop and coordinated by one contact.</p>
+<div class="intro-r"><p class="lede">Shops, offices, showrooms, F&amp;B and salons in Singapore. Carpentry from our own workshop, plus renovation, electrical, flooring and AVL, with one contact.</p>
 <div class="btns">{cta}<a class="btn btn-ghost" href="{services}">Explore Our Services</a></div></div>
 </div>
 <div class="wrap"><dl class="facts-line">{facts}</dl></div></section>
@@ -671,7 +670,7 @@ HOME_TPL = '''<section class="lux lux-full">
 <section class="band" id="enquire"><div class="wrap enq">
 <div class="rv"><h2>Get a quote on WhatsApp</h2><p>Send what you already have. These four things are enough to start:</p>
 <ul class="check"><li>Floor plan or unit layout</li><li>A few photos of the unit now</li><li>What the space is for</li><li>Your target opening date</li></ul></div>
-<div class="panel rv"><h3>WhatsApp {phone}</h3><p>Tell us about your shop, office, F&amp;B outlet or salon and we'll discuss your scope.</p><div class="btns">{cta}</div>{mockup2}</div>
+<div class="panel rv"><h3>WhatsApp {phone}</h3><p>Tell us about your space and we'll discuss your scope.</p><div class="btns">{cta}</div></div>
 </div></section>
 
 <section class="band sand"><div class="wrap"><div class="faq" style="max-width:820px"><h2>Common questions</h2>{faqs}</div></div></section>
@@ -704,7 +703,7 @@ def build_home():
              ('Google reviews', '&#9733;&#9733;&#9733;&#9733;&#9733; 5-star rating on Google. <a href="%s" rel="noopener" target="_blank">Read our Google reviews</a>' % GOOGLE_REVIEWS),
              ('Enquiries', 'WhatsApp <a href="%s" rel="noopener">%s</a>' % (E(wa_link('my space', path)), PHONE_DISPLAY))]
     body = HOME_TPL.format(
-        cta=cta(path, 'my space', 'WhatsApp Us'), mockup=mockup_box(path, 'mockup mockup-dark'), mockup2=mockup_box(path, 'mockup mockup-panel'),
+        cta=cta(path, 'my space', 'WhatsApp Us'), mockup=mockup_box(path, 'mockup mockup-dark'),
         services=rel(path, '/services/'), dailyp=dp, galp=rel(path, '/design-concepts/'), ddate=d['date'],
         dimg='<img src="%s" srcset="%s 640w, %s 1024w" sizes="100vw" width="1024" height="1024" alt="%s" loading="eager" fetchpriority="high">' % (
             daily_url(d), daily_url(d, True), daily_url(d), E(d['alt'])),
@@ -760,9 +759,7 @@ def build_daily():
                'associatedMedia': [{'@type': 'ImageObject', 'contentUrl': daily_url(x), 'url': abs_url(daily_path(x)), 'name': x['title'],
                                     'uploadDate': x['date'], 'description': x['summary']} for x in DAILY]}]
     body = ('%s<section class="al-head"><div class="wrap"><span class="eyebrow">Daily &middot; %d concepts</span>'
-            '<h1>AI concept of the day</h1><p>We are the first in Singapore to publish a new design concept every day. Every day we create a new commercial interior concept for a different kind of Singapore business: shops, offices, F&amp;B outlets, salons and more. '
-            'Browse them freely for design ideas and tap a picture to see the details. If you like one, WhatsApp us and we can design and build your new space or revamp your current one. '
-            'These are AI design ideas, not completed projects.</p>%s</div></section>'
+            '<h1>AI concept of the day</h1><p>First in Singapore: a new design concept every day. Free to browse. AI ideas, not completed projects.</p>%s</div></section>'
             '<section class="album"><div class="wrap al-wrap"><div class="al-grid">%s</div><p class="al-foot"><a href="%s">See every design in the gallery &rarr;</a></p></div></section>%s') % (
         crumbs_html(path, crumbs), len(DAILY), mockup_box(path), tiles, rel(path, '/design-concepts/'), cta_band(path, 'an idea from the concept of the day'))
     write(path, head(path, 'AI Interior Concept of the Day | SG Commercial Fitout',
