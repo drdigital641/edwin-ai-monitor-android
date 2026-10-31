@@ -549,9 +549,12 @@ def build_models():
         al = [a for a in m["alias"][:2] if a.split()[0] != m["name"].lower().split()[0]]
         alias = f" Also called the {', '.join(a.title() for a in al)}." if al else ""
         ev = " As an electric car it has no engine parts, so this page lists body, lamp, brake and suspension parts." if m["fuel"] == "electric" else ""
+        names = [p["name"].lower() for p in fit if p["id"] in ("front-brake-pads", "oil-filter", "headlamp", "front-bumper", "spark-plugs", "front-shock-absorber") ][:5]
+        fitline = (f" Common parts for this car include {', '.join(names[:-1]) + ' and ' + names[-1] if len(names) > 1 else (names[0] if names else 'body and service parts')}."
+                   f" Each part is checked against the {e(m['name'])} {e(m['code'] or '')} before you pay.") if fit else ""
         body = f'''<section class="ph"><div class="wrap">{{{{CRUMBS}}}}
 <h1>{e(bn)} {e(mpar(m))} parts</h1>
-<p class="lead">Parts for the {e(bn)} {e(m["name"])}, {e(m["code"]) + " generation, " if m["code"] else ""}{e(myears(m))} ({e(m["fuel"])}).{e(alias)}{ev} Where a price is listed you can add the part to your cart. For the others, tap Ask on WhatsApp and we reply with the price and stock.</p>
+<p class="lead">Parts for the {e(bn)} {e(m["name"])}, {e(m["code"]) + " generation, " if m["code"] else ""}{e(myears(m))} ({e(m["fuel"])}).{e(alias)}{ev} Where a price is listed you can add the part to your cart. For the others, tap Ask on WhatsApp and we reply with the price and stock.{fitline}</p>
 <p class="fitnote">{ICON['check']}<span>Not sure if your car is the {e(m["code"] or m["name"])}? Send us your car plate or chassis number and we will check before you pay.</span></p>
 <div class="chips jump">{"".join(jump)}</div></div></section>
 <div class="wrap msecs">{"".join(secs)}</div>
