@@ -317,7 +317,7 @@
       (user ? '<button type="button" class="st-link" data-a="signout">Sign out</button>' : '') + '</div></div>';
     if (user) h += '<div class="st-who">' + esc(user.full_name || '') + ' ' + esc(user.email) + '</div>';
     if (withTabs) {
-      var tabs = [['quick', 'Quick add'], ['prices', 'Add prices'], ['products', 'Products'], ['cars', 'Cars'], ['io', 'Import / Export'], ['log', 'Activity']];
+      var tabs = [['quick', 'Quick add'], ['products', 'Products'], ['cars', 'Cars'], ['io', 'Import / Export'], ['log', 'Activity']];
       h += '<div class="st-tabs" role="tablist">' + tabs.map(function (t) {
         return '<button type="button" class="st-tab" role="tab" aria-selected="' + (S.tab === t[0]) + '" data-a="tab" data-v="' + t[0] + '">' + t[1] + '</button>';
       }).join('') + '</div>';
