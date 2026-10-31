@@ -207,6 +207,7 @@ def asset(name):
     return f"{name}?v={VER[name]}"
 
 SITEMAP = []
+FEED = []  # Google Merchant Center feed rows (products with a price)
 def write(path, text):
     f = OUT / path
     f.parent.mkdir(parents=True, exist_ok=True)
@@ -639,6 +640,13 @@ def build_products():
                 "isRelatedTo": {"@type": "Car", "name": f"{bn} {mn(m)}", "brand": {"@type": "Brand", "name": bn}}}
         if x["oem"]: prod["mpn"] = x["oem"]
         if show_price(x):
+            FEED.append({"id": x["id"], "title": prod["name"][:150], "description": prod["description"][:5000],
+                         "link": BASE + "/" + x["url"], "image_link": prod["image"][0],
+                         "availability": {"in": "in_stock", "order": "backorder", "out": "out_of_stock"}.get(x["stock"] or "in", "in_stock"),
+                         "price": f'{x["price"]:.2f} SGD', "condition": "new", "brand": bn, "mpn": x["oem"] or "",
+                         "identifier_exists": "yes" if x["oem"] else "no", "google_product_category": "5613",
+                         "product_type": f"{bn} > {mn(m)} > {c['name']}", "shipping": "SG:::10.00 SGD"})
+        if show_price(x):
             off = {"@type": "Offer", "url": BASE + "/" + x["url"], "priceCurrency": "SGD", "price": f'{x["price"]:.2f}',
                    "seller": {"@id": BASE + "/#store"}, "areaServed": "SG"}
             off["availability"] = AVAIL.get(x["stock"] or "in", AVAIL["in"])  # Edwin 31 Oct: parts are in stock
@@ -937,4 +945,6 @@ if __name__ == "__main__":
     build_home(); build_brands(); build_models(); build_products(); build_sets(); build_cats(); build_prices(); build_pages(); build_articles()
     build_static()
     import pull_photos; pull_photos.run(OUT)
+    cols = ["id", "title", "description", "link", "image_link", "availability", "price", "condition", "brand", "mpn", "identifier_exists", "google_product_category", "product_type", "shipping"]
+    write("merchant-feed.tsv", "\t".join(cols) + "\n" + "".join("\t".join(str(r[k]).replace("\t", " ").replace("\n", " ") for k in cols) + "\n" for r in FEED))
     print(f"built {len(SITEMAP)} indexed pages, {len(PRODUCTS)} products -> {OUT}")
