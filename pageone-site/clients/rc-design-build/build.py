@@ -39,7 +39,7 @@ BASE = ('https://%s/' % DOMAIN) if DOMAIN else PREVIEW
 ASSET_SHA = '8743123'
 IMG = os.environ.get('RC_IMG') or ('https://cdn.jsdelivr.net/gh/drdigital641/edwin-ai-monitor-android@%s/site-assets/%s/' % (ASSET_SHA, SLUG))
 TODAY = '2026-10-24'
-LASTMOD_OVERRIDE = {'/guides/': '2026-10-30'}  # pages whose content changed after TODAY (night article run)
+LASTMOD_OVERRIDE = {'/guides/': '2026-11-01'}  # pages whose content changed after TODAY (night article run)
 INDEXNOW_KEY = '7d4c2a9e1f6b8035c4e2a7d9b1f60c38'
 BRAND = 'SG Commercial Fitout'
 BRAND_FULL = 'SG Commercial Fitout - Retail & Commercial Design & Build'
@@ -279,7 +279,7 @@ def brand_title(t):
     return t
 
 
-def head(path, title, desc, schema, og_img=None):
+def head(path, title, desc, schema, og_img=None, og_alt=None):
     title = brand_title(title)
     can = abs_url(path)
     og = og_img or (IMG + 'og-rc.jpg')
@@ -309,11 +309,11 @@ def head(path, title, desc, schema, og_img=None):
 <meta property="og:image" content="%s">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
-<meta property="og:image:alt" content="Small shop interior with oak shelving and cream walls (AI design concept)">
+<meta property="og:image:alt" content="%s">
 <meta name="twitter:card" content="summary_large_image">
 <script type="application/ld+json">%s</script>
 </head>
-''' % (E(title), E(desc), can, r, r, r, r, r, r, vhash('rc.css'), E(BRAND_FULL), E(title), E(desc), can, og, ld)
+''' % (E(title), E(desc), can, r, r, r, r, r, r, vhash('rc.css'), E(BRAND_FULL), E(title), E(desc), can, og, E(og_alt or 'Small shop interior with oak shelving and cream walls (AI design concept)'), ld)
 
 
 def header(path):
@@ -394,7 +394,7 @@ def content_page(p, crumbs, kind='service'):
     secs = ''.join('<h2>%s</h2>%s' % (E(s['h2']), fix_links(s['html'], path)) for s in p['sections'])
     meta = ''
     if kind == 'guide':
-        meta = '<p class="meta">Planning guide · %s · Published 24 October 2026</p>' % E(p['reading'])
+        meta = '<p class="meta">Planning guide · %s · Published %s</p>' % (E(p['reading']), __import__('datetime').date.fromisoformat(p['date']).strftime('%-d %B %Y'))
     side_rel = related_html(path, p['related'])
     owner = ''
     if kind == 'guide' and p.get('owner') in SHORT:
@@ -413,7 +413,7 @@ def content_page(p, crumbs, kind='service'):
          cta(path, p.get('wa_topic', 'my space')) + (' <a class="btn btn-ghost" href="%s">All services</a>' % rel(path, '/services/') if kind == 'service' else ''),
          pic(p['image'], p['image_alt'], eager=True), secs, owner, faq_html(p['faqs']), side_rel,
          cta(path, p.get('wa_topic', 'my space')), cta_band(path, p.get('wa_topic', 'my space')))
-    write(path, head(path, p['title'], p['desc'], schema) + header(path) + body + footer(path), p.get('date', TODAY))
+    write(path, head(path, p['title'], p['desc'], schema, og_img=((BASE + 'share/' + p['og']) if p.get('og') else None), og_alt=(p['image_alt'] if p.get('og') else None)) + header(path) + body + footer(path), p.get('date', TODAY))
 
 
 # ---------- hub pages ----------
@@ -930,6 +930,8 @@ def main():
     shutil.copytree(os.path.join(HERE, 'fonts'), os.path.join(OUT, 'fonts'))
     for name in ('favicon.ico', 'favicon-48.png', 'icon-192.png', 'icon-512.png', 'apple-touch-icon.png'):
         shutil.copy(os.path.join(HERE, 'icons', name), OUT)
+    if os.path.isdir(os.path.join(HERE, 'share')):
+        shutil.copytree(os.path.join(HERE, 'share'), os.path.join(OUT, 'share'))
     os.makedirs(os.path.join(OUT, 'icons'), exist_ok=True)
     shutil.copy(os.path.join(HERE, 'icons', 'logo-full-light.png'), os.path.join(OUT, 'icons'))
     for n in ('mark-96.png', 'logo-header.png', 'logo-sgcf-light.png'):
