@@ -340,9 +340,10 @@
   function card(e, P) {
     var veh = ((e.brandName || '') + ' ' + (e.model || '')).trim() || e.brandName;
     if (e.ask) {
-      return '<article class="rc askc"><div class="rc-ic">' + iconSvg(e.part) + artHtml(e) + '</div><div class="rc-b"><span class="chip">' + esc(veh) + '</span><h3>' + hlTitle(e, P) + '</h3>' +
+      var ar = D.area && D.area[e.part], cu = e.src && e.carSlug ? ROOT + 'brands/' + e.brand + '/' + e.carSlug + '/' + (ar ? '#a-' + ar : '') : '';
+      return '<article class="rc askc"><div class="rc-ic">' + iconSvg(e.part) + artHtml(e) + '</div><div class="rc-b"><span class="chip">' + esc(veh) + '</span><h3>' + (cu ? '<a href="' + esc(cu) + '">' + hlTitle(e, P) + '</a>' : hlTitle(e, P)) + '</h3>' +
         '<p class="rc-t">' + (e.src ? 'We source this part. Fitment checked before we quote.' : 'Not listed yet. We check fitment and quote.') + '</p>' +
-        '<div class="rc-a">' + addBtn(e, 'btn btn-p btn-s', SPECIAL[e.part] ? 'Check fitment' : 'Get a quote') + '</div></div></article>';
+        '<div class="rc-a">' + addBtn(e, 'btn btn-p btn-s', SPECIAL[e.part] ? 'Check fitment' : 'Get a quote') + (cu ? '<a class="btn btn-g btn-s" href="' + esc(cu) + '">Details</a>' : '') + '</div></div></article>';
     }
     var det = e.url ? '<a class="btn btn-g btn-s" href="' + esc(ROOT + e.url) + '">Details</a>' : '<button type="button" class="btn btn-g btn-s" data-det="' + esc(e.id) + '">Details</button>';
     return '<article class="rc"><div class="rc-ic">' + iconSvg(e.part) + mediaHtml(e) + '</div><div class="rc-b">' +
@@ -586,6 +587,8 @@
   function init() {
     $$('[data-search]').forEach(initSearchBox);
     initCatalogue(); initLists(); initChrome(); initCart();
+    /* car page opened at a part area (#a-tail etc.): open that area and scroll to it */
+    (function () { var h = location.hash && document.getElementById(location.hash.slice(1)); if (h && h.tagName === 'DETAILS') { h.open = true; setTimeout(function () { h.scrollIntoView({ block: 'start' }); }, 50); } })();
     liveLoad();
   }
 

@@ -823,7 +823,7 @@ def datajs():
             "cars": [carrec(c) for c in CARS],
             "parts": [{"slug": p[0], "name": p[1], "cat": p[2], "syn": p[3]} for p in PARTS],
             "generic": [{"w": g[0], "map": g[1]} for g in GENERIC],
-            "icons": IC, "special": sorted(SPECIAL), "art": ART, "illus": ILLUS, "products": prods, "photoFiles": {g: v[0] for g, v in PHOTO_FILES.items()}}
+            "icons": IC, "special": sorted(SPECIAL), "area": {pk: ar[0] for ar in AREAS for pk in ar[3]}, "art": ART, "illus": ILLUS, "products": prods, "photoFiles": {g: v[0] for g, v in PHOTO_FILES.items()}}
     (OUT / "data.js").write_text("window.EV_DATA=" + json.dumps(data, ensure_ascii=False, separators=(",", ":")) + ";\n")
 
 def statics():
@@ -1098,7 +1098,7 @@ def car_pages():
             u = ART.get(a[3][0]) if a[0] != "glass" else None
             if a[0] == "special": u = ART["underbody-shield"]
             return f'<img src="{u}" alt="{e(a[1])}: illustrative image" width="64" height="64" loading="lazy" decoding="async" title="{e(ILLUS)}" onerror="this.remove()">' if u else ""
-        areas = "".join(f'<details class="area"{" open" if i == 0 else ""}><summary><span class="ar-ic">{ico(a[2])}{arpic(a)}</span><b>{e(a[1])}</b><span class="ar-n">{len(a[3])}</span></summary>'
+        areas = "".join(f'<details class="area" id="a-{a[0]}"{" open" if i == 0 else ""}><summary><span class="ar-ic">{ico(a[2])}{arpic(a)}</span><b>{e(a[1])}</b><span class="ar-n">{len(a[3])}</span></summary>'
                         f'{"<p class=ar-note>Safety and structure parts: we check these one by one. Ask on WhatsApp.</p>" if a[0] == "special" else ""}<div class="bchips">{"".join(chip(pk) for pk in a[3])}</div>'
                         f'{"<p class=illus>" + e(ILLUS) + "</p>" if arpic(a) else ""}</details>' for i, a in enumerate(AREAS))
         base = name.split(" — ")[0]
