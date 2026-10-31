@@ -126,7 +126,7 @@ STOCK = {"in": ("In stock", "ok"), "order": ("Order from Korea", "warn"), "out":
 AVAIL = {"in": "https://schema.org/InStock", "order": "https://schema.org/BackOrder", "out": "https://schema.org/OutOfStock"}
 # Return and delivery terms (Edwin, 31 Oct 2026): 7-day return in original packaging; collect or deliver in 1 day; free delivery above S$80.
 RETURN_POLICY = {"@type": "MerchantReturnPolicy", "applicableCountry": "SG", "returnPolicyCategory": "https://schema.org/MerchantReturnFiniteReturnWindow",
-                 "merchantReturnDays": 7, "returnMethod": "https://schema.org/ReturnInStore", "returnFees": "https://schema.org/FreeReturn"}
+                 "merchantReturnDays": 7, "returnMethod": "https://schema.org/ReturnInStore"}
 SHIPPING = {"@type": "OfferShippingDetails", "shippingDestination": {"@type": "DefinedRegion", "addressCountry": "SG"},
             "deliveryTime": {"@type": "ShippingDeliveryTime", "handlingTime": {"@type": "QuantitativeValue", "minValue": 0, "maxValue": 1, "unitCode": "DAY"},
                              "transitTime": {"@type": "QuantitativeValue", "minValue": 0, "maxValue": 1, "unitCode": "DAY"}}}
