@@ -480,7 +480,9 @@
         items = AT.models.filter(function (x) { return x.b === b && x.name; }).map(function (x) { return { t: x.name + (x.code ? " " + x.code : ""), id: x.id, k: "m" }; }); }
       else { label = mlabel(m) + ": tap a part";
         items = PRI.filter(function (id) { return AT.parts.some(function (p) { return p.id === id && fits(m, p); }); })
-          .map(function (id) { var p = AT.parts.filter(function (x) { return x.id === id; })[0]; return { t: p.name, id: id, k: "p" }; }); }
+          .map(function (id) { var p = AT.parts.filter(function (x) { return x.id === id; })[0]; return { t: p.name, id: id, k: "p" }; });
+        AT.parts.filter(function (p) { return PRI.indexOf(p.id) < 0 && fits(m, p) && p.id !== "other"; }).sort(function (a, b) { return a.name.localeCompare(b.name); })
+          .forEach(function (p) { items.push({ t: p.name, id: p.id, k: "p" }); }); }
       var seen = {};
       items = items.filter(function (x) { var k = x.t.toLowerCase(); if (seen[k]) return false; seen[k] = 1; return true; });
       if (lw) { var f2 = items.filter(function (x) { return x.t.toLowerCase().split(/\s+/).some(function (w) { return w.indexOf(lw) === 0; }); }); if (f2.length) items = f2; }
