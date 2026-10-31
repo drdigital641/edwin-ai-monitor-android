@@ -483,7 +483,7 @@ def home():
 def catalogue():
     brandopts = "".join(f'<option value="{b["key"]}">{e(b["name"])}</option>' for b in BRANDS)
     partopts = "".join(f'<option value="{p[0]}">{e(p[1])}</option>' for p in PARTS)
-    links = "".join(f'<li><a href="{{{{R}}}}brands/{b["key"]}/">{e(b["name"])} parts</a></li>' for b in BRANDS)
+    links = "".join(f'<a class="bchip" href="{{{{R}}}}brands/{b["key"]}/">{e(b["name"])}</a>' for b in BRANDS)
     body = f'''<section class="ph-hd"><div class="wrap">{{{{CRUMBS}}}}<p class="kick">Catalogue</p><h1>Search the catalogue</h1>
 <p class="lead">Type the brand, model and part, or use the filters. The list is read live, so new parts show as soon as they are added.</p></div></section>
 <section class="sec tight"><div class="wrap">
@@ -500,7 +500,7 @@ def catalogue():
 <div class="count" id="cat-count" aria-live="polite"></div>
 <div class="sres full" id="cat-res"></div>
 <div class="sec-t" style="margin-top:44px"><h2>Browse by brand</h2></div>
-<ul class="plain brandlist">{links}</ul>
+<div class="bchips">{links}</div>
 </div></section>'''
     ld = [{"@type": "ItemList", "name": f"Brands in the {BRAND} catalogue", "itemListElement": [
         {"@type": "ListItem", "position": i + 1, "name": f'{b["name"]} body parts', "url": f'{BASE}/brands/{b["key"]}/'} for i, b in enumerate(BRANDS)]}]
@@ -920,7 +920,7 @@ def shell(path, title, desc, body, active="", crumbs=None, schema=None, og_type=
     ogi = img or BASE + "/og.jpg"
     dims = '<meta property="og:image:width" content="1200"><meta property="og:image:height" content="630">' if not img else ""
     wa_link = f"https://wa.me/{WA}?text={quote(f'Hi {BRAND}, I have a question. (from website)')}" if WA else f"{r}contact/"
-    foot = "".join(f'<a href="{r}{u}">{n}</a>' for u, n in [("parts/", "Parts"), ("brands/", "Brands"), ("articles/", "Guides"), ("about/", "About"), ("contact/", "Contact"), ("privacy/", "Privacy")])
+    foot = "".join(f'<a href="{r}{u}">{n}</a>' for u, n in [("parts/", "Parts"), ("brands/", "Brands"), ("articles/", "Guides"), ("about/", "About"), ("contact/", "Contact"), ("privacy/", "Privacy"), ("terms/", "Terms")])
     doc = f"""<!doctype html>
 <html lang="en-SG" class="no-js" data-root="{r}">
 <head>
@@ -956,7 +956,7 @@ def shell(path, title, desc, body, active="", crumbs=None, schema=None, og_type=
 </main>
 <footer class="ft"><div class="wrap">
 <div class="ft-row">{logo_html(r)}<nav class="ft-l" aria-label="Footer">{foot}</nav></div>
-<div class="ft-b"><span>&copy; {datetime.date.today().year} {BRAND} &middot; {DOMAIN} &middot; <a href="{wa_link}">WhatsApp {WA_DISPLAY}</a></span><span>Brand names only describe fitment. Background photos are mood images; part pictures marked Illustrative are not product photos. <a href="{STAFF_URL}" rel="nofollow noopener">Staff</a></span></div>
+<div class="ft-b"><span>&copy; {datetime.date.today().year} {BRAND} &middot; {DOMAIN} &middot; <a href="{wa_link}">WhatsApp {WA_DISPLAY}</a></span><span>Brand names only describe fitment. Background photos are mood images; part pictures marked Illustrative are not product photos.</span></div>
 </div></footer>
 <a class="fab" href="{wa_link}" aria-label="WhatsApp us">{UI["wa"]}</a>
 <div class="toast" id="toast" role="status" aria-live="polite"></div>
@@ -971,14 +971,22 @@ def shell(path, title, desc, body, active="", crumbs=None, schema=None, og_type=
         pages.append(("/" + ("" if path == "index.html" else path.replace("index.html", "")), pri, lastmod or TODAY))
 
 def home_faq():
-    return [("Can you find my part?", "Search by car and part, or by OE number. If it is not listed, tap Get a quote anyway and we check."),
+    return [("Can you find my part?", "Search by car and part. If it is not listed, tap Get a quote anyway and we check."),
             ("Who is this for?", f"Workshops and car owners in Singapore. {brand_names()}."),
             ("How do I get a price?", "Tap Get a quote. We check fitment for your car first, then reply with a quote on WhatsApp.")]
+
+POPULAR = ["tesla-model-3-highland", "tesla-model-y-juniper", "byd-atto-3", "byd-seal", "byd-dolphin", "mg-mg4", "mg-zs-ev-facelift-2023", "zeekr-x"]
+def popular_html():
+    cm = {c["key"]: c for c in CARS}
+    cs = [cm[k] for k in POPULAR if k in cm]
+    if not cs: return ""
+    tiles = "".join(f'<a class="mtile" href="{{{{R}}}}{c["url"]}"><span class="mt-ic">{UI["car"]}</span><span class="mt-b"><b>{e(c["full"])}</b>{f'<small>{e(c["years"])}</small>' if c.get("years") else ''}</span>{UI["arrow"]}</a>' for c in cs)
+    return f'<section class="sec tight"><div class="wrap"><div class="sec-t rv"><h2>Popular models</h2></div><div class="mtiles">{tiles}</div><p style="margin-top:18px"><a class="more" href="{{{{R}}}}brands/">All brands and models {UI["arrow"]}</a></p></div></section>'
 
 def home():
     faq = home_faq()
     cats = "".join(f'''<a class="cc rv" href="{{{{R}}}}parts/{c[0]}/"><span class="cc-ic">{ico(c[4])}</span><h3>{e(c[1])}</h3><p>{e(c[2])}</p></a>''' for c in CATS)
-    steps = [("Search", "Your car and the part, or the OE number."), ("Get a quote", "One tap opens WhatsApp with the part filled in."), ("We check fitment", "Then we reply with a quote.")]
+    steps = [("Search", "Your car and the part you need."), ("Get a quote", "One tap opens WhatsApp with the part filled in."), ("We check fitment", "Then we reply with a quote.")]
     st = "".join(f'<li class="rv"><span class="n">{i + 1}</span><h3>{e(a)}</h3><p>{e(b)}</p></li>' for i, (a, b) in enumerate(steps))
     new = PRODS[:6]
     body = f'''<section class="hero">
@@ -991,12 +999,18 @@ def home():
 <p class="hero-cta">{wa_btn("a part for my car", "Get a quote on WhatsApp", "g")}</p>
 </div></section>
 <section class="strip"><div class="wrap">{brandchips()}</div></section>
-<section class="sec tight"><div class="wrap"><div class="cgrid">{cats}</div></div></section>
+<section class="sec tight"><div class="wrap"><div class="sec-t rv"><h2>Browse by part</h2></div><div class="cgrid">{cats}</div></div></section>
+{popular_html()}
 <section class="sec alt tight" data-new-sec{"" if new else " hidden"}><div class="wrap">
 <div class="sec-t rv"><p class="kick">Newly added</p><h2>Latest parts</h2></div>
 <div data-list="new:" data-limit="6">{list_html(new, "", 6) if new else ""}</div>
 </div></section>
-<section class="sec tight"><div class="wrap"><ol class="steps">{st}</ol></div></section>
+<section class="sec tight"><div class="wrap"><div class="sec-t rv"><h2>How it works</h2></div><ol class="steps">{st}</ol></div></section>
+<section class="sec tight"><div class="wrap"><div class="sec-t rv"><h2>Why EV Body Parts</h2></div><ul class="whys">
+<li class="rv"><h3>One catalogue</h3><p>Several EV parts suppliers, each strong in different brands, in one search.</p></li>
+<li class="rv"><h3>Fitment checked first</h3><p>We check your version, side and build year before we quote, so you order the right part.</p></li>
+<li class="rv"><h3>Quotes on WhatsApp</h3><p>No account and no checkout. Send the car and the part, and get a quote in the chat.</p></li>
+</ul></div></section>
 <section class="sec alt tight"><div class="wrap narrow">
 <div class="sec-t rv"><h2>Quick answers</h2></div>
 {faq_html(faq)}
@@ -1008,7 +1022,7 @@ def home():
 def catalogue():
     brandopts = "".join(f'<option value="{b["key"]}">{e(b["name"])}</option>' for b in BRANDS)
     partopts = "".join(f'<option value="{p[0]}">{e(p[1])}</option>' for p in PARTS)
-    links = "".join(f'<li><a href="{{{{R}}}}brands/{b["key"]}/">{e(b["name"])} parts</a></li>' for b in BRANDS)
+    links = "".join(f'<a class="bchip" href="{{{{R}}}}brands/{b["key"]}/">{e(b["name"])}</a>' for b in BRANDS)
     body = f'''<section class="ph-hd"><div class="wrap">{{{{CRUMBS}}}}<h1>Search the catalogue</h1><p class="lead">Brand, model and part, or use the filters.</p></div></section>
 <section class="sec tight"><div class="wrap">
 <form class="sbox" id="cat-form" role="search" action="" method="get" data-search="cq">
@@ -1023,7 +1037,7 @@ def catalogue():
 <div class="count" id="cat-count" aria-live="polite"></div>
 <div class="sres full" id="cat-res"></div>
 <div class="sec-t" style="margin-top:44px"><h2>Browse by brand</h2></div>
-<ul class="plain brandlist">{links}</ul>
+<div class="bchips">{links}</div>
 </div></section>'''
     ld = [{"@type": "ItemList", "name": f"Brands in the {BRAND} catalogue", "itemListElement": [
         {"@type": "ListItem", "position": i + 1, "name": f'{b["name"]} body parts', "url": f'{BASE}/brands/{b["key"]}/'} for i, b in enumerate(BRANDS)]}]
@@ -1073,15 +1087,15 @@ def brand_pages():
             desc = short(f"{name} body parts in Singapore for {ml(mnames)}. Find your part and get a quote on WhatsApp.")
             chips = "".join(f'<a class="mtile" href="{{{{R}}}}{c["url"]}"><span class="mt-ic">{UI["car"]}</span><span class="mt-b"><b>{e(c["name"])}</b>{f'<small>{e(c["years"])}</small>' if c.get("years") else ''}</span>{UI["arrow"]}</a>' for c in cs)
         else:
-            intro = b.get("intro") or f"No {name} model is listed yet. Tell us your model and part on WhatsApp."
+            intro = b.get("intro") or f"We source {name} body parts to order: bumpers, lamps, mirrors, panels and trims. Tell us your {name} model, build year and the part, and we check fitment and quote."
             desc = short(f"{name} body parts in Singapore: tell us your model and part and EV Body Parts checks what we can find.")
             chips = ""
         title = fit(f"{name} Body Parts in Singapore | {BRAND}", f"{name} Body Parts in Singapore")
         items = [x for x in PRODS if x["car"]["b"] == slug]
         body = f'''<section class="ph-hd"><div class="wrap">{{{{CRUMBS}}}}<h1>{e(name)} body parts</h1><p class="lead">{e(intro)}</p>{f'<h2 class="mt-h">Choose your {e(name)}</h2><div class="mtiles">{chips}</div>' if chips else ''}</div></section>
 <section class="sec tight"><div class="wrap">
-<div class="sres full" data-list="brand:{slug}" data-limit="9" data-name="{e(name)}">{list_html(items, name)}</div>
-<p style="margin-top:28px">{wa_btn(name + " part", "Ask on WhatsApp", "g")}</p></div></section>'''
+{f'<div class="sres full" data-list="brand:{slug}" data-limit="9" data-name="{e(name)}">{list_html(items, name)}</div>' if cs else f'<div class="sec-t"><h2>Parts we source for {e(name)}</h2></div><div class="bchips">{"".join(f"<a class=bchip href={{{{R}}}}parts/{c[0]}/>{e(c[1])}</a>" for c in CATS)}</div>'}
+<p style="margin-top:28px">{wa_btn(name + " part", "Get a " + name + " quote on WhatsApp", "p" if not cs else "g")}</p></div></section>'''
         shell(f"brands/{slug}/index.html", title, desc, body, "brands", [("Brands", "brands/"), (name, f"brands/{slug}/")], pri=0.7)
 
 def car_pages():
@@ -1146,7 +1160,7 @@ def product_pages():
 <div class="prose">
 {f'<p>{e(x["desc"])}</p>' if x["desc"] else ''}{f'<p>{e(x["note"])}</p>' if x["note"] else ''}
 <dl class="facts">{facts}</dl>
-<p class="mu small">We confirm fitment against your build date, market, trim and OE number before quoting.</p>
+<p class="mu small">We confirm fitment against your build date, market, trim and photos before quoting.</p>
 <div class="btns">{wa_btn(x["title"] + (" (specialist check)" if x["p"] in SPECIAL else ""), "Check fitment & get a quote", "p", x["oem"], x["side"])}</div></div></div></section>
 {relh}'''
         sch = {"@type": "Product", "name": x["title"], "description": base, "sku": x["key"], "url": f'{BASE}/{x["url"]}',
@@ -1157,18 +1171,19 @@ def product_pages():
               [("Brands", "brands/"), (c["bname"], f'brands/{c["b"]}/'), (c["name"], c["url"]), (x["title"], x["url"])], [sch],
               img=(sch["image"][0] if x["imgs"] else None), pri=0.6, lastmod=x["updated"] or TODAY)
 
-WS_FAQ = [("What should a workshop send?", "Car brand and model, the part, left or right, and a photo of the old part."),
+WS_FAQ = [("What should a workshop send?", "Car brand and model, the part, left or right, the build year and a photo of the old part."),
+          ("Can I send several parts at once?", "Yes. Send the list in one WhatsApp message with photos. We check each part and quote them together."),
           ("Can I ask for a part that is not listed?", "Yes. Tap Get a quote or WhatsApp us and we check.")]
 OWN_FAQ = [("I do not know the part name. What now?", "Send a photo of the damage and your car model on WhatsApp."),
            ("Can I buy online?", "No. You find the part here and tap Get a quote. We check fitment first, then reply with a quote on WhatsApp.")]
 def audience_pages():
-    body = f'''<section class="ph-hd"><div class="wrap">{{{{CRUMBS}}}}<h1>Parts for Singapore workshops</h1><p class="lead">Search by car, part or OE number, then get a quote on WhatsApp.</p></div></section>
+    body = f'''<section class="ph-hd"><div class="wrap">{{{{CRUMBS}}}}<h1>Parts for Singapore workshops</h1><p class="lead">One catalogue for China and EV car body parts, from several suppliers. Search by car and part, then get a quote on WhatsApp.</p></div></section>
 <section class="sec tight"><div class="wrap narrow prose">
-<ul class="ticks"><li>Search by brand, model and part.</li><li>Or search by OE number.</li><li>Tap Get a quote. We confirm fitment, then quote.</li></ul>
+<ul class="ticks"><li>Search by brand, model and part.</li><li>Send a list of parts in one WhatsApp message.</li><li>We confirm fitment for each part, then quote.</li></ul>
 <div class="btns">{btn("{{R}}catalogue/", "Search the catalogue")}{wa_btn("parts for our workshop", "WhatsApp us", "g")}</div></div></section>
 <section class="sec alt tight"><div class="wrap narrow"><div class="sec-t"><h2>FAQ</h2></div>{faq_html(WS_FAQ)}</div></section>'''
     shell("for-workshops/index.html", "Parts for Workshops | EV Body Parts Singapore",
-          "China and EV car body parts for Singapore workshops. Search by car, part or OE number and get a quote on WhatsApp.",
+          "China and EV car body parts for Singapore workshops. Search by car and part and get a quote on WhatsApp.",
           body, "ws", [("For workshops", "for-workshops/")], faq=WS_FAQ, pri=0.8)
     body = f'''<section class="ph-hd"><div class="wrap">{{{{CRUMBS}}}}<h1>Parts for your China or EV car</h1><p class="lead">Tell us the car and what is damaged.</p></div></section>
 <section class="sec tight"><div class="wrap narrow prose">
@@ -1196,7 +1211,9 @@ def about():
 def contact():
     body = f'''<section class="ph-hd"><div class="wrap">{{{{CRUMBS}}}}<h1>Contact</h1><p class="lead">WhatsApp is the fastest way.</p></div></section>
 <section class="sec tight"><div class="wrap narrow prose">
-<dl class="facts"><div><dt>WhatsApp</dt><dd><a href="https://wa.me/{WA}">{WA_DISPLAY}</a></dd></div></dl>
+<dl class="facts"><div><dt>WhatsApp</dt><dd><a href="https://wa.me/{WA}">{WA_DISPLAY}</a></dd></div><div><dt>Serves</dt><dd>Workshops and car owners in Singapore</dd></div></dl>
+<h2>What to send</h2>
+<ul class="ticks"><li>Car brand, model and build year.</li><li>The part, and left or right if it has a side.</li><li>A photo of the damaged or old part.</li></ul>
 <div class="btns">{wa_btn("a part", "Message us on WhatsApp")}{btn("{{R}}catalogue/", "Search the catalogue", "g")}</div></div></section>'''
     shell("contact/index.html", "Contact | EV Body Parts Singapore",
           "Contact EV Body Parts, Singapore, on WhatsApp. Send your car and part and we confirm fitment.",
@@ -1214,10 +1231,23 @@ def privacy():
           "How EV Body Parts handles personal data from WhatsApp quote requests and messages, under Singapore's PDPA.",
           body, "", [("Privacy", "privacy/")], pri=0.3)
 
+def terms():
+    body = f'''<section class="ph-hd"><div class="wrap">{{{{CRUMBS}}}}<h1>Terms of use</h1><p class="lead">The short version of how this website and our quotes work.</p></div></section>
+<section class="sec tight"><div class="wrap narrow prose">
+<h2>The catalogue</h2><p>The catalogue lists parts we can source for each car. A listing is not a promise of stock. We confirm availability, fitment and price on WhatsApp before you order.</p>
+<h2>Quotes and orders</h2><p>A quote is confirmed in writing on WhatsApp. Payment, delivery and return terms are stated with each quote and apply to that order.</p>
+<h2>Fitment</h2><p>We check fitment from the details and photos you send (model, version, build year, side). Please send accurate details; we will ask if anything is unclear.</p>
+<h2>Pictures and brand names</h2><p>Pictures marked Illustrative are drawings, not photos of the actual part. Car brand and model names are used only to describe which car a part fits. {BRAND} is not affiliated with any car maker.</p>
+<h2>Contact</h2><p>Questions about these terms: <a href="https://wa.me/{WA}">WhatsApp {WA_DISPLAY}</a>.</p>
+</div></section>'''
+    shell("terms/index.html", "Terms of Use | EV Body Parts Singapore",
+          "How the EV Body Parts catalogue and WhatsApp quotes work: listings, quotes, fitment checks, illustrative pictures and brand names.",
+          body, "", [("Terms", "terms/")], pri=0.3)
+
 if __name__ == "__main__":
     if OUT.exists(): shutil.rmtree(OUT)
     OUT.mkdir(parents=True)
     datajs()
-    home(); catalogue(); parts_hub(); part_pages(); brands_hub(); brand_pages(); car_pages(); product_pages(); audience_pages(); about(); contact(); privacy(); articles()
+    home(); catalogue(); parts_hub(); part_pages(); brands_hub(); brand_pages(); car_pages(); product_pages(); audience_pages(); about(); contact(); privacy(); terms(); articles()
     notfound(); statics()
     print(f"pages in sitemap {len(pages)}, brands {len(BRANDS)}, cars {len(CARS)}, products {len(PRODS)}, files {sum(1 for _ in OUT.rglob('*') if _.is_file())}")

@@ -48,6 +48,11 @@
       ALL.push({ ask: true, src: true, id: 'src-' + car.key + '-' + pt.slug, key: '', brand: b.key, brandName: b.name, model: car.name, modelSlug: car.key, carSlug: car.slug,
         part: pt.slug, partName: pt.name, title: b.name + ' ' + car.name + ' ' + pt.name, side: '', price: null, stock: '', photos: [], url: '' });
     }); }); });
+    /* first page of the catalogue: one part per car, popular brands first, so the list shows variety */
+    var TOP = ['headlamp', 'front-bumper', 'tail-lamp', 'side-mirror', 'rear-bumper', 'grille'], PB = { tesla: 0, byd: 1, mg: 2, zeekr: 3 };
+    var src = ALL.slice(ENTRIES.length), cars = S.cars.slice().sort(function (a, b) { return (a.b in PB ? PB[a.b] : 9) - (b.b in PB ? PB[b.b] : 9); }), lead = [], used = {};
+    cars.forEach(function (c, i) { var pk = TOP[i % TOP.length]; for (var j = 0; j < src.length; j++) { var x = src[j]; if (x.modelSlug === c.key && x.part === pk) { lead.push(x); used[x.id] = 1; break; } } });
+    ALL = ENTRIES.concat(lead, src.filter(function (x) { return !used[x.id]; }));
     IDX = null;
   }
   var SIDE = { L: 'Left', R: 'Right', pair: 'Pair' };
@@ -341,7 +346,7 @@
     var veh = ((e.brandName || '') + ' ' + (e.model || '')).trim() || e.brandName;
     if (e.ask) {
       var ar = D.area && D.area[e.part], cu = e.src && e.carSlug ? ROOT + 'brands/' + e.brand + '/' + e.carSlug + '/' + (ar ? '#a-' + ar : '') : '';
-      return '<article class="rc askc"><div class="rc-ic">' + iconSvg(e.part) + artHtml(e) + '</div><div class="rc-b"><span class="chip">' + esc(veh) + '</span><h3>' + (cu ? '<a href="' + esc(cu) + '">' + hlTitle(e, P) + '</a>' : hlTitle(e, P)) + '</h3>' +
+      return '<article class="rc askc"><div class="rc-ic">' + iconSvg(e.part) + artHtml(e) + '</div><div class="rc-b">' + (e.src ? '' : '<span class="chip">' + esc(veh) + '</span>') + '<h3>' + (cu ? '<a href="' + esc(cu) + '">' + hlTitle(e, P) + '</a>' : hlTitle(e, P)) + '</h3>' +
         '<p class="rc-t">' + (e.src ? 'We source this part. Fitment checked before we quote.' : 'Not listed yet. We check fitment and quote.') + '</p>' +
         '<div class="rc-a">' + addBtn(e, 'btn btn-p btn-s', SPECIAL[e.part] ? 'Check fitment' : 'Get a quote') + (cu ? '<a class="btn btn-g btn-s" href="' + esc(cu) + '">Details</a>' : '') + '</div></div></article>';
     }
@@ -405,7 +410,7 @@
       '<dl class="facts"><div><dt>Part type</dt><dd>' + esc(e.partName) + '</dd></div>' + (SIDE[e.side] ? '<div><dt>Side</dt><dd>' + SIDE[e.side] + '</dd></div>' : '') +
       (e.oem ? '<div><dt>OE no.</dt><dd>' + esc(e.oem) + '</dd></div>' : '') + (e.grade ? '<div><dt>Grade</dt><dd>' + esc(e.grade) + '</dd></div>' : '') +
       (e.desc ? '<div><dt>About</dt><dd>' + esc(e.desc) + '</dd></div>' : '') + (e.note ? '<div><dt>Note</dt><dd>' + esc(e.note) + '</dd></div>' : '') + '</dl>' +
-            '<p class="mu small">We confirm fitment against your build date, market, trim and OE number before quoting.</p><div class="btns">' + addBtn(e, 'btn btn-p', 'Check fitment &amp; get a quote') + '</div></div>';
+            '<p class="mu small">We confirm fitment against your build date, market, trim and photos before quoting.</p><div class="btns">' + addBtn(e, 'btn btn-p', 'Check fitment &amp; get a quote') + '</div></div>';
     document.body.appendChild(m); document.body.classList.add('noscroll');
     function close() { m.remove(); document.body.classList.remove('noscroll'); document.removeEventListener('keydown', key); }
     function key(ev) { if (ev.key === 'Escape') close(); }
