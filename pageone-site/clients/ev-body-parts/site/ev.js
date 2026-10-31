@@ -306,11 +306,15 @@
     }
     return String(e.title).split(' ').map(function (w) { var n = norm(w); return n && (set[n] || set[stem(n)]) ? '<mark>' + esc(w) + '</mark>' : esc(w); }).join(' ');
   }
+  function artHtml(e) {
+    var u = D.art && D.art[e.part];
+    return u ? '<img class="art" src="' + esc(u) + '" alt="Illustrative image" title="' + esc(D.illus || '') + '" width="88" height="88" loading="lazy" decoding="async" onerror="this.remove()"><span class="illus-t">Illustrative</span>' : '';
+  }
   function mediaHtml(e) {
     var ph = photoSrc(e.photos && e.photos[0]);
     if (ph.url) return '<img src="' + esc(ph.url) + '" alt="' + esc(e.title) + '" width="88" height="88" loading="lazy" decoding="async" onerror="this.remove()">';
     if (ph.g) return '<img class="ph0" data-b44="' + esc(ph.g) + '" alt="' + esc(e.title) + '" width="88" height="88" decoding="async">';
-    return '';
+    return artHtml(e);
   }
   function addBtn(e, cls, label) {
     var key = e.ask ? 'ask:' + e.modelSlug + ':' + e.part : e.key;
@@ -319,7 +323,7 @@
   function card(e, P) {
     var veh = ((e.brandName || '') + ' ' + (e.model || '')).trim() || e.brandName;
     if (e.ask) {
-      return '<article class="rc askc"><div class="rc-ic">' + iconSvg(e.part) + '</div><div class="rc-b"><span class="chip">' + esc(veh) + '</span><h3>' + hlTitle(e, P) + '</h3>' +
+      return '<article class="rc askc"><div class="rc-ic">' + iconSvg(e.part) + artHtml(e) + '</div><div class="rc-b"><span class="chip">' + esc(veh) + '</span><h3>' + hlTitle(e, P) + '</h3>' +
         '<p class="rc-t">Not listed yet. Price on request.</p><div class="rc-m"><span class="pill ask">Price on request</span></div>' +
         '<div class="rc-a">' + (SPECIAL[e.part] ? '<a class="btn btn-p btn-s" href="' + esc(enqHref(e, ' (specialist check)')) + '">Check fitment</a>' : addBtn(e, 'btn btn-p btn-s') + '<a class="btn btn-g btn-s" href="' + esc(enqHref(e)) + '">Check fitment</a>') + '</div></div></article>';
     }

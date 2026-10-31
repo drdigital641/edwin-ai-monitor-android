@@ -97,6 +97,18 @@ PARTS = [  # slug, name, category, synonyms (owner language)
     ("jacking-pad", "Jacking Pad / Lift Point", "other-parts", ["jacking pad", "jack pad", "jacking point", "lift point", "jack point"]),
     ("other", "Other Part", "other-parts", ["wiper", "cabin filter", "other part"]),
 ]
+# Category art (ChatGPT, 31 Oct 2026): original AI illustrations in the Base44 media library. Illustrative only, never product evidence.
+ART_BASE = "https://media.base44.com/images/public/6ae5c57dbb2270677873e207/"
+ART_FILES = {"front-bumper": "48a1e6a8b_front-bumper-cover.jpg", "headlamp": "da93cd754_headlamp-assembly.jpg", "tail-lamp": "5354b9c93_tail-lamp-assembly.jpg",
+             "side-mirror": "c3fb234be_side-mirror-assembly.jpg", "fender": "a8d194bce_front-fender.jpg", "rear-bumper": "2f9bf66f7_rear-bumper-cover.jpg",
+             "wheel-arch": "e709fd2c1_wheel-arch-liner.jpg", "bonnet": "7a0028b07_bonnet-hood.jpg", "underbody": "4350625e4_underbody-shield.jpg"}
+ART_OF = {"front-bumper": "front-bumper", "front-bumper-bracket": "front-bumper", "bumper-reinforcement": "front-bumper", "front-lip": "front-bumper", "grille": "front-bumper", "lower-grille": "front-bumper",
+          "headlamp": "headlamp", "headlamp-bracket": "headlamp", "drl": "headlamp", "fog-lamp": "headlamp", "front-reflector": "headlamp",
+          "tail-lamp": "tail-lamp", "inner-tail-lamp": "tail-lamp", "third-brake-light": "tail-lamp", "rear-reflector": "tail-lamp",
+          "side-mirror": "side-mirror", "fender": "fender", "wheel-arch-trim": "fender", "rear-bumper": "rear-bumper", "rear-bumper-bracket": "rear-bumper", "rear-diffuser": "rear-bumper", "bumper-trim": "rear-bumper",
+          "wheel-arch": "wheel-arch", "bonnet": "bonnet", "bonnet-hinge": "bonnet", "undertray": "underbody", "underbody-shield": "underbody", "jacking-pad": "underbody"}
+ART = {k: ART_BASE + ART_FILES[v] for k, v in ART_OF.items()}
+ILLUS = "Illustrative image — actual part and fitment must be confirmed"
 # Parts that need a specialist check: never sold through the cart, always a WhatsApp quote
 SPECIAL = {"crash-structure", "radiator-support", "underbody-shield", "jacking-pad", "bumper-reinforcement", "windscreen"}
 # Car page groups, in the order an owner walks around the car
@@ -816,7 +828,7 @@ def datajs():
             "cars": [carrec(c) for c in CARS],
             "parts": [{"slug": p[0], "name": p[1], "cat": p[2], "syn": p[3]} for p in PARTS],
             "generic": [{"w": g[0], "map": g[1]} for g in GENERIC],
-            "icons": IC, "special": sorted(SPECIAL), "products": prods, "photoFiles": {g: v[0] for g, v in PHOTO_FILES.items()}}
+            "icons": IC, "special": sorted(SPECIAL), "art": ART, "illus": ILLUS, "products": prods, "photoFiles": {g: v[0] for g, v in PHOTO_FILES.items()}}
     (OUT / "data.js").write_text("window.EV_DATA=" + json.dumps(data, ensure_ascii=False, separators=(",", ":")) + ";\n")
 
 def statics():
@@ -879,7 +891,7 @@ def addbtn(key, title, car, part, price, side="", ask=False, label="Add to cart"
     return f'<button type="button" class="{cls}" {a}>{label}</button>'
 
 def card_static(x, r="{{R}}"):
-    media = f'<img src="{e(disp(x["imgs"][0]))}" alt="{e(x["title"])}" width="88" height="88" loading="lazy" decoding="async" onerror="this.remove()">' if x["imgs"] else ""
+    media = f'<img src="{e(disp(x["imgs"][0]))}" alt="{e(x["title"])}" width="88" height="88" loading="lazy" decoding="async" onerror="this.remove()">' if x["imgs"] else (f'<img class="art" src="{ART[x["p"]]}" alt="Illustrative image" title="{e(ILLUS)}" width="88" height="88" loading="lazy" decoding="async" onerror="this.remove()"><span class="illus-t">Illustrative</span>' if x["p"] in ART else "")
     add = f'<a class="btn btn-p btn-s" href="{e(enq(x["title"] + " (specialist check)"))}">Check fitment</a>' if x["p"] in SPECIAL else addbtn(x["key"], x["title"], x["car"]["full"], x["pn"], x["price"], x["side"])
     return (f'<article class="rc"><div class="rc-ic">{ico(x["p"])}{media}</div><div class="rc-b"><span class="chip">{e(x["car"]["full"])}</span>'
             f'<h3>{e(x["title"])}</h3><p class="rc-t">{e(x["pn"])}{f" &middot; OE {e(x["oem"])}" if x["oem"] else ""}</p>'
@@ -1083,8 +1095,13 @@ def car_pages():
             pn = PART[pk][1]
             if pk in SPECIAL: return f'<a class="bchip chipsp" href="{e(enq(full + " " + pn + " (specialist check)"))}">{e(pn)}</a>'
             return addbtn(f'ask:{c["key"]}:{pk}', f'{full} {pn}', full, pn, None, ask=True, label=e(pn), cls="bchip chipbtn")
-        areas = "".join(f'<details class="area"{" open" if i == 0 else ""}><summary><span class="ar-ic">{ico(a[2])}</span><b>{e(a[1])}</b><span class="ar-n">{len(a[3])}</span></summary>'
-                        f'{"<p class=ar-note>Safety and structure parts: we check these one by one. Ask on WhatsApp.</p>" if a[0] == "special" else ""}<div class="bchips">{"".join(chip(pk) for pk in a[3])}</div></details>' for i, a in enumerate(AREAS))
+        def arpic(a):
+            u = ART.get(a[3][0]) if a[0] != "glass" else None
+            if a[0] == "special": u = ART["underbody-shield"]
+            return f'<img src="{u}" alt="{e(a[1])}: illustrative image" width="64" height="64" loading="lazy" decoding="async" title="{e(ILLUS)}" onerror="this.remove()">' if u else ""
+        areas = "".join(f'<details class="area"{" open" if i == 0 else ""}><summary><span class="ar-ic">{ico(a[2])}{arpic(a)}</span><b>{e(a[1])}</b><span class="ar-n">{len(a[3])}</span></summary>'
+                        f'{"<p class=ar-note>Safety and structure parts: we check these one by one. Ask on WhatsApp.</p>" if a[0] == "special" else ""}<div class="bchips">{"".join(chip(pk) for pk in a[3])}</div>'
+                        f'{"<p class=illus>" + e(ILLUS) + "</p>" if arpic(a) else ""}</details>' for i, a in enumerate(AREAS))
         base = name.split(" — ")[0]
         gens = [o for o in CARS_BY_BRAND[c["b"]] if o["key"] != c["key"] and " — " in (o["name"] + name) and o["name"].split(" — ")[0] == base]
         sibs = "".join(f'<a class="bchip" href="{{{{R}}}}{o["url"]}">{e(o["name"])}</a>' for o in CARS_BY_BRAND[c["b"]] if o["key"] != c["key"])
