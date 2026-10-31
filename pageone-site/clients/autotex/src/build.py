@@ -124,10 +124,10 @@ def price_html(x, big=False):
 
 STOCK = {"in": ("In stock", "ok"), "order": ("Order from Korea", "warn"), "out": ("Out of stock", "out")}
 AVAIL = {"in": "https://schema.org/InStock", "order": "https://schema.org/BackOrder", "out": "https://schema.org/OutOfStock"}
-# Return and delivery terms (Edwin, 31 Oct 2026): 7-day return in original packaging; collect or deliver in 1 day; free delivery above S$80.
+# Return and delivery terms (Edwin, 31 Oct 2026): 7-day return in original packaging; collect or deliver in 1 day; S$10 delivery, free above S$80.
 RETURN_POLICY = {"@type": "MerchantReturnPolicy", "applicableCountry": "SG", "returnPolicyCategory": "https://schema.org/MerchantReturnFiniteReturnWindow",
                  "merchantReturnDays": 7, "returnMethod": "https://schema.org/ReturnInStore"}
-SHIPPING = {"@type": "OfferShippingDetails", "shippingDestination": {"@type": "DefinedRegion", "addressCountry": "SG"},
+SHIPPING = {"@type": "OfferShippingDetails", "shippingRate": {"@type": "MonetaryAmount", "value": "10.00", "currency": "SGD"}, "shippingDestination": {"@type": "DefinedRegion", "addressCountry": "SG"},
             "deliveryTime": {"@type": "ShippingDeliveryTime", "handlingTime": {"@type": "QuantitativeValue", "minValue": 0, "maxValue": 1, "unitCode": "DAY"},
                              "transitTime": {"@type": "QuantitativeValue", "minValue": 0, "maxValue": 1, "unitCode": "DAY"}}}
 
