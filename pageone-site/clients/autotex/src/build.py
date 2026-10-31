@@ -124,6 +124,12 @@ def price_html(x, big=False):
 
 STOCK = {"in": ("In stock", "ok"), "order": ("Order from Korea", "warn"), "out": ("Out of stock", "out")}
 AVAIL = {"in": "https://schema.org/InStock", "order": "https://schema.org/BackOrder", "out": "https://schema.org/OutOfStock"}
+# Return and delivery terms (Edwin, 31 Oct 2026): 7-day return in original packaging; collect or deliver in 1 day; free delivery above S$80.
+RETURN_POLICY = {"@type": "MerchantReturnPolicy", "applicableCountry": "SG", "returnPolicyCategory": "https://schema.org/MerchantReturnFiniteReturnWindow",
+                 "merchantReturnDays": 7, "returnMethod": "https://schema.org/ReturnInStore", "returnFees": "https://schema.org/FreeReturn"}
+SHIPPING = {"@type": "OfferShippingDetails", "shippingDestination": {"@type": "DefinedRegion", "addressCountry": "SG"},
+            "deliveryTime": {"@type": "ShippingDeliveryTime", "handlingTime": {"@type": "QuantitativeValue", "minValue": 0, "maxValue": 1, "unitCode": "DAY"},
+                             "transitTime": {"@type": "QuantitativeValue", "minValue": 0, "maxValue": 1, "unitCode": "DAY"}}}
 
 # ---------------- icons ----------------
 SV = lambda body, vb="0 0 48 48": f'<svg viewBox="{vb}" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">{body}</svg>'
@@ -502,7 +508,8 @@ def build_sets():
                     "isRelatedTo": {"@type": "Car", "name": f"{bn} {mn(m)}", "brand": {"@type": "Brand", "name": bn}}}
             if st["price"] is not None:
                 prod["offers"] = {"@type": "Offer", "url": BASE + "/" + st["url"], "priceCurrency": "SGD", "price": f'{st["price"]:.2f}',
-                                  "availability": AVAIL["in"], "seller": {"@id": BASE + "/#store"}, "areaServed": "SG"}
+                                  "availability": AVAIL["in"], "seller": {"@id": BASE + "/#store"}, "areaServed": "SG",
+                                  "hasMerchantReturnPolicy": RETURN_POLICY, "shippingDetails": SHIPPING}
             tp = f" {money(st['price'])}" if st["price"] is not None else ""
             title = f"{st['name']} {bn} {mn(m)}{tp} | Autotex"
             if len(title) > 60: title = f"{st['name']} {bn} {mn(m)}{tp}"
@@ -632,6 +639,7 @@ def build_products():
             off = {"@type": "Offer", "url": BASE + "/" + x["url"], "priceCurrency": "SGD", "price": f'{x["price"]:.2f}',
                    "seller": {"@id": BASE + "/#store"}, "areaServed": "SG"}
             off["availability"] = AVAIL.get(x["stock"] or "in", AVAIL["in"])  # Edwin 31 Oct: parts are in stock
+            off["hasMerchantReturnPolicy"] = RETURN_POLICY; off["shippingDetails"] = SHIPPING
             prod["offers"] = off
         tprice = f" {money(x['price'])}" if show_price(x) else ""
         title = f"{p['name']} {bn} {mn(m)}{tprice} | Autotex"
