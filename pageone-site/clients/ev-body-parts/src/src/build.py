@@ -546,7 +546,7 @@ def part_pages():
         h1, desc, paras = PART_COPY[slug]
         title = fit(f"{name} for China & EV Cars | {BRAND}", f"{name} for China & EV Cars")
         sub = "".join(f'<li id="{p}"><span class="ic-s">{ico(p)}</span><div><h3>{e(PART[p][1])}</h3><p class="mu">Also searched as: {e(", ".join(PART[p][3][:4]))}.</p>'
-                      f'<a class="more" href="{{{{R}}}}catalogue/?part={p}">See {e(PART[p][1].lower())} listings {UI["arrow"]}</a></div></li>' for p in ps)
+                      f'<a class="more" href="{{{{R}}}}catalogue/?part={p}">See {e(PART[p][1].lower())} parts {UI["arrow"]}</a></div></li>' for p in ps)
         others = "".join(f'<a class="bchip" href="{{{{R}}}}parts/{o[0]}/">{e(o[1])}</a>' for o in CATS if o[0] != slug)
         items = [x for x in PRODS if x["p"] in ps]
         body = f'''<section class="ph-hd"><div class="wrap">{{{{CRUMBS}}}}<p class="kick">Parts</p><h1>{h1.replace("&", "&amp;")}</h1><p class="lead">{e(line)}.</p></div></section>
@@ -595,7 +595,7 @@ def brand_pages():
 <div class="prose">{modelsec}<p>Not sure which part you need? Read <a href="{{{{R}}}}articles/which-part-is-it/">which part is it</a>, or <a href="{enq(name + " part")}">send us your {e(name)} and the part</a>.</p>{PVN}</div>
 <aside class="side"><div class="panel"><h3>Search {e(name)} parts</h3>{search_box("bq", f"{name} model and part", tries=[f"{name} tail lamp", f"{name} front bumper"], big=False)}</div></aside>
 </div></section>
-<section class="sec alt tight"><div class="wrap"><div class="sec-t"><h2>{e(name)} listings</h2><p>Parts currently in the catalogue. We confirm fitment on enquiry.</p></div>
+<section class="sec alt tight"><div class="wrap"><div class="sec-t"><h2>{e(name)} parts</h2><p>Parts we can source, listed or ordered in. We confirm fitment before we quote.</p></div>
 <div class="sres full" data-list="brand:{slug}" data-limit="9" data-name="{e(name)}">{list_html(items, name)}</div></div></section>
 <section class="sec tight"><div class="wrap"><div class="sec-t"><h2>Other brands</h2></div><div class="bchips">{others}</div></div></section>'''
         shell(f"brands/{slug}/index.html", title, desc, body, "brands", [("Brands", "brands/"), (name, f"brands/{slug}/")], pri=0.7)
@@ -618,7 +618,7 @@ def car_pages():
 <p>Not sure what the part is called? Read <a href="{{{{R}}}}articles/which-part-is-it/">which part is it</a>, or send a photo of the damage with your car.</p>{PVN}</div>
 <aside class="side"><div class="panel"><h3>Search {e(full)} parts</h3>{search_box("cq2", f"{full} part", tries=[f"{full} tail lamp", f"{full} front bumper"], big=False)}</div></aside>
 </div></section>
-<section class="sec alt tight"><div class="wrap"><div class="sec-t"><h2>{e(full)} listings</h2><p>Parts currently in the catalogue for this car.</p></div>
+<section class="sec alt tight"><div class="wrap"><div class="sec-t"><h2>{e(full)} parts</h2><p>Parts we can source for this car. We confirm fitment before we quote.</p></div>
 <div class="sres full" data-list="car:{c["key"]}" data-limit="12" data-name="{e(full)}">{list_html(items, full, 12)}</div></div></section>
 {f'<section class="sec tight"><div class="wrap"><div class="sec-t"><h2>Other {e(c["bname"])} models</h2></div><div class="bchips">{sibs}</div></div></section>' if sibs else ''}'''
         shell(f'{c["url"]}index.html', title, desc, body, "brands",
@@ -896,7 +896,7 @@ def card_static(x, r="{{R}}"):
             f'<div class="rc-m">{f"<span class=\"pill side\">{SIDE_L[x["side"]]}</span>" if x["side"] in SIDE_L else ""}</div>'
             f'<div class="rc-a">{add}<a class="btn btn-g btn-s" href="{r}{x["url"]}">Details</a></div></div></article>')
 def list_html(items, name, lim=9):
-    if not items: return f'<div class="empty"><p>No {e(name + " ") if name else ""}listings yet. Ask us on WhatsApp and we check.</p>{wa_btn((name + " part").strip(), "Ask on WhatsApp")}</div>'
+    if not items: return f'<div class="empty"><p>We source {e(name + " ") if name else ""}parts to order. Ask us on WhatsApp and we check fitment.</p>{wa_btn((name + " part").strip(), "Ask on WhatsApp")}</div>'
     return '<div class="rgrid">' + "".join(card_static(x) for x in items[:lim]) + '</div>' + (f'<p class="seeall"><a class="btn btn-g" href="{{{{R}}}}catalogue/">See all {len(items)}</a></p>' if len(items) > lim else "")
 
 def shell(path, title, desc, body, active="", crumbs=None, schema=None, og_type="website", index=True, faq=None, img=None, pri=0.7, preload=None, lastmod=None):

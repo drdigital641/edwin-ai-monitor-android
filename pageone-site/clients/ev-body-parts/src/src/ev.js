@@ -25,7 +25,7 @@
 
   /* ---------- state: snapshot first, live data replaces it ---------- */
   var S = { brands: [], cars: [], products: [], live: false };
-  var BRM = {}, CARM = {}, PARTM = {}, STATIC_URL = {}, ENTRIES = [], IDX = null;
+  var BRM = {}, CARM = {}, PARTM = {}, STATIC_URL = {}, ENTRIES = [], ALL = [], IDX = null;
   D.parts.forEach(function (p) { PARTM[p.slug] = p; });
   D.products.forEach(function (p) { if (p.url) STATIC_URL[p.key] = p.url; });
   function carSlug(c) { var pre = c.b + '-'; return c.slug || (c.key.indexOf(pre) === 0 && c.key.length > pre.length ? c.key.slice(pre.length) : c.key); }
@@ -39,6 +39,15 @@
     ENTRIES = [];
     products.forEach(function (p) { var e = mkEntry(p); if (e) ENTRIES.push(e); });
     ENTRIES.sort(function (a, b) { return String(b.created).localeCompare(String(a.created)); });
+    /* the catalogue is every part we can source for every model (Edwin, 31 Oct 2026: not a warehouse, a sourcing catalogue);
+       a model+part with its own listing shows that listing instead */
+    var have = {}; ENTRIES.forEach(function (e) { have[e.modelSlug + '|' + e.part] = 1; });
+    ALL = ENTRIES.slice();
+    S.brands.forEach(function (b) { S.cars.forEach(function (car) { if (car.b !== b.key) return; D.parts.forEach(function (pt) {
+      if (pt.slug === 'other' || have[car.key + '|' + pt.slug]) return;
+      ALL.push({ ask: true, src: true, id: 'src-' + car.key + '-' + pt.slug, key: '', brand: b.key, brandName: b.name, model: car.name, modelSlug: car.key, carSlug: car.slug,
+        part: pt.slug, partName: pt.name, title: b.name + ' ' + car.name + ' ' + pt.name, side: '', price: null, stock: '', photos: [], url: '' });
+    }); }); });
     IDX = null;
   }
   var SIDE = { L: 'Left', R: 'Right', pair: 'Pair' };
@@ -255,7 +264,7 @@
       var s = 0;
       if (P.brand && e.brand !== P.brand) return;
       if (P.brand) s += 20;
-      if (P.model) { if (e.modelSlug === P.model && e.brand === P.brand) s += 50; }
+      if (P.model) { if (e.modelSlug === P.model && e.brand === P.brand) s += 50; else if (e.src && (P.sibs || []).indexOf(e.modelSlug) >= 0) s += 45; }
       if (P.hasPart) { var w = P.parts[e.part] || 0; if (!w) return; s += 40 * w; }
       if (anyKey) {
         if (P.left.length) { var ew = words(e); P.left.forEach(function (l) { if (ew.indexOf(l) >= 0) s += 6; }); }
@@ -332,7 +341,7 @@
     var veh = ((e.brandName || '') + ' ' + (e.model || '')).trim() || e.brandName;
     if (e.ask) {
       return '<article class="rc askc"><div class="rc-ic">' + iconSvg(e.part) + artHtml(e) + '</div><div class="rc-b"><span class="chip">' + esc(veh) + '</span><h3>' + hlTitle(e, P) + '</h3>' +
-        '<p class="rc-t">Not listed yet. We check fitment and quote.</p>' +
+        '<p class="rc-t">' + (e.src ? 'We source this part. Fitment checked before we quote.' : 'Not listed yet. We check fitment and quote.') + '</p>' +
         '<div class="rc-a">' + addBtn(e, 'btn btn-p btn-s', SPECIAL[e.part] ? 'Check fitment' : 'Get a quote') + '</div></div></article>';
     }
     var det = e.url ? '<a class="btn btn-g btn-s" href="' + esc(ROOT + e.url) + '">Details</a>' : '<button type="button" class="btn btn-g btn-s" data-det="' + esc(e.id) + '">Details</button>';
@@ -427,19 +436,13 @@
       S.cars.filter(function (c) { return c.b === fb.value; }).forEach(function (m) { fm.insertAdjacentHTML('beforeend', '<option value="' + esc(m.slug) + '">' + esc(m.name) + '</option>'); });
       fm.disabled = !fb.value || fm.options.length < 2; if (cur) fm.value = cur;
     }
-    function pool() { return ENTRIES.filter(function (e) { return (!fb.value || e.brand === fb.value) && (!fm.value || e.carSlug === fm.value) && (!fp.value || e.part === fp.value); }); }
+    function pool() { return ALL.filter(function (e) { return (!fb.value || e.brand === fb.value) && (!fm.value || e.carSlug === fm.value) && (!fp.value || e.part === fp.value); }); }
     function run(reset) {
       if (reset) shown = 24;
-      var q = input.value;
-      /* filters become words in the search, so they give the same results (and Get-a-quote cards) as typing them */
-      var car = fm.value ? S.cars.filter(function (c) { return c.b === fb.value && c.slug === fm.value; })[0] : null;
-      var fq = [q, fb.value ? brandName(fb.value) : '', car ? car.name.replace(/ — /g, ' ') : '', fp.value ? partName(fp.value) : ''].filter(Boolean).join(' ').trim();
-      var r = renderSearch(res, fq, { shown: shown, showAll: true, more: true, limit: 24 });
-      if (fp.value && !fb.value && !r.results.length) res.insertAdjacentHTML('afterbegin', '<p class="weak">Choose a brand and model to ask for a ' + esc(partName(fp.value)) + ' quote.</p>');
-      /* the count is real listings only; Get-a-quote cards are not listings */
-      var n = r.results.filter(function (x) { return !x.e.ask; }).length, a = r.results.length - n;
-      count.innerHTML = '<b>' + n + '</b> ' + (n === 1 ? 'listing' : 'listings') + (norm(fq) ? ' for &ldquo;' + esc(fq) + '&rdquo;' : '') +
-        (a ? ' &middot; ' + a + ' part' + (a > 1 ? 's' : '') + ' you can ask a quote for' : '');
+      var q = input.value, fq = [q, fb.value ? brandName(fb.value) : '', fm.value ? (S.cars.filter(function (c) { return c.b === fb.value && c.slug === fm.value; })[0] || {}).name || '' : '', fp.value ? partName(fp.value) : ''].filter(Boolean).join(' ').replace(/ — /g, ' ');
+      /* every part we can source counts: listed parts and order-in parts alike */
+      var r = renderSearch(res, q, { pool: pool(), shown: shown, showAll: true, more: true, limit: 24 }), n = r.results.length;
+      count.innerHTML = '<b>' + n.toLocaleString('en-SG') + '</b> ' + (n === 1 ? 'part' : 'parts') + (fq ? ' for &ldquo;' + esc(fq) + '&rdquo;' : ' we can source');
       var u = new URLSearchParams(); if (q) u.set('q', q); if (fb.value) u.set('brand', fb.value); if (fm.value) u.set('model', fm.value); if (fp.value) u.set('part', fp.value);
       try { history.replaceState(null, '', location.pathname + (u.toString() ? '?' + u.toString() : '')); } catch (e) { }
     }
@@ -462,17 +465,17 @@
     function draw() {
       boxes.forEach(function (box) {
         var spec = box.getAttribute('data-list').split(':'), lim = +box.getAttribute('data-limit') || 9, name = box.getAttribute('data-name') || '', list, href = ROOT + 'catalogue/';
-        if (spec[0] === 'brand') { list = ENTRIES.filter(function (e) { return e.brand === spec[1]; }); href += '?brand=' + spec[1]; }
-        else if (spec[0] === 'car') { list = ENTRIES.filter(function (e) { return e.modelSlug === spec[1]; }); var c = CARM[spec[1]]; if (c) href += '?brand=' + c.b + '&model=' + c.slug; }
+        if (spec[0] === 'brand') { list = ALL.filter(function (e) { return e.brand === spec[1]; }); href += '?brand=' + spec[1]; }
+        else if (spec[0] === 'car') { list = ALL.filter(function (e) { return e.modelSlug === spec[1]; }); var c = CARM[spec[1]]; if (c) href += '?brand=' + c.b + '&model=' + c.slug; }
         else if (spec[0] === 'new') { list = ENTRIES.slice(); var sec = box.closest('[data-new-sec]'); if (sec) sec.hidden = !list.length; }
-        else { var ps = spec[1].split(','); list = ENTRIES.filter(function (e) { return ps.indexOf(e.part) >= 0; }); href += '?part=' + ps[0]; }
+        else { var ps = spec[1].split(','); list = ALL.filter(function (e) { return ps.indexOf(e.part) >= 0; }); href += '?part=' + ps[0]; }
         if (!list.length) { box.innerHTML = spec[0] === 'new' ? '' : emptyHtml(name); return; }
         box.innerHTML = '<div class="rgrid">' + list.slice(0, lim).map(function (e) { return card(e); }).join('') + '</div>' +
-          (list.length > lim ? '<p class="seeall"><a class="btn btn-g" href="' + esc(href) + '">See all ' + list.length + ' listings</a></p>' : '');
+          (list.length > lim ? '<p class="seeall"><a class="btn btn-g" href="' + esc(href) + '">See all ' + list.length + ' parts</a></p>' : '');
         hydrate(box);
       });
     }
-    if (boxes.length) { renderers.push(draw); hydrate(document); }
+    if (boxes.length) { renderers.push(draw); draw(); }
   }
 
 
