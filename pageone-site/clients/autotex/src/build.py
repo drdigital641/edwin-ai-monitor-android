@@ -14,7 +14,7 @@ autotex.net is NOT theirs (an Indian textile company) - never link it.
 import html, json, sys, datetime, hashlib, shutil, re
 from pathlib import Path
 from urllib.parse import quote
-from catalog import BRANDS, CATS, PARTS, fits
+from catalog import BRANDS, CATS, PARTS, fits, BUNDLES, SET_DISCOUNT
 
 HERE = Path(__file__).resolve().parent
 OUT = Path(sys.argv[1] if len(sys.argv) > 1 else HERE.parent / "site")
@@ -409,6 +409,89 @@ def build_brands():
         shell(path, f"{bn} Parts Singapore: Order by Model | Autotex", f"{bn} spare parts in Singapore for {names}. See the price or ask on WhatsApp.",
               body, active=bid, crumbs=[(f"{bn} parts", f"{bid}/")], prio="0.9")
 
+# ---------------- service kits and repair sets ----------------
+def car_sets(m):
+    """Sets that apply to this car, with its listed parts and prices. Items that do not fit the car are left out."""
+    out = []
+    mine = {}
+    for x in PRODUCTS:
+        if x["m"] == m["id"] and x["p"] != "other": mine.setdefault(x["p"], x)
+    for bid, name, line, inc, opt in BUNDLES:
+        def rows(lst):
+            rs = []
+            for pid, q in lst:
+                pt = P.get(pid)
+                if not pt or not fits(m["fuel"], next(pp for pp in PARTS if pp[0] == pid)): continue
+                rs.append(dict(part=pt, qty=q, x=mine.get(pid)))
+            return rs
+        items, adds = rows(inc), rows(opt)
+        if len(items) < 3: continue   # e.g. service kits on an electric car
+        priced = all(it["x"] and show_price(it["x"]) for it in items)
+        total = sum(it["x"]["price"] * it["qty"] for it in items) if priced else None
+        price = int(round(total * (1 - SET_DISCOUNT))) if priced else None
+        out.append(dict(id=bid, name=name, line=line, items=items, adds=adds, total=total, price=price,
+                        url=f"{m['b']}/{m['id']}/sets/{bid}/"))
+    return out
+
+def set_card(st, r):
+    pr = (f'<span class="price">{money(st["price"])}</span><small class="save">Save {money(st["total"] - st["price"])}</small>'
+          if st["price"] is not None else '<span class="price ask">Ask for set price</span>')
+    return (f'<article class="pc set"><a class="pc-a" href="{r}{st["url"]}"><div class="art has-il set-art">'
+            + "".join(il_tag(it["part"]["id"], r, it["part"]["name"]) for it in st["items"][:4]) +
+            f'<span>Set of {len(st["items"])}</span></div><h3>{e(st["name"])}</h3><p class="pc-sub">{e(st["line"])}</p></a>'
+            f'<div class="pc-f"><div class="pc-p">{pr}</div><a class="btn sm" href="{r}{st["url"]}">View set</a></div></article>')
+
+def build_sets():
+    for m in M.values():
+        bn = BR[m["b"]]
+        for st in car_sets(m):
+            path = st["url"] + "index.html"; r = "../../../../"
+            def li(it):
+                x, pt = it["x"], it["part"]
+                link = f'<a href="{r}{x["url"]}">{e(pt["name"])}</a>' if x else e(pt["name"])
+                each = money(x["price"]) if x and show_price(x) else "Ask"
+                sub = money(x["price"] * it["qty"]) if x and show_price(x) else "Ask"
+                return f'<tr><td>{link}<small>{e(pt["unit"])}</small></td><td class="r">{it["qty"]}</td><td class="r">{each}</td><td class="r">{sub}</td></tr>'
+            lines = "".join(li(it) for it in st["items"])
+            adds = "".join(li(it) for it in st["adds"])
+            names = ", ".join(f'{it["qty"]} x {it["part"]["name"]}' if it["qty"] > 1 else it["part"]["name"] for it in st["items"])
+            msg = (f"Hi Autotex, I'd like the {st['name']} for my {mlabel(m)} {m['years']}"
+                   + (f" (set price {money(st['price'])})" if st["price"] is not None else "") + f": {names}."
+                   + (" Add-ons I want (optional): " if st["adds"] else "") + " My car plate / chassis number is: ")
+            if st["price"] is not None:
+                buy = (f'<div class="buy-p"><span class="price big">{money(st["price"])}</span><span class="unit">set price</span></div>'
+                       f'<p class="save-l">Bought one by one: {money(st["total"])}. You save {money(st["total"] - st["price"])} ({int(SET_DISCOUNT * 100)}% off).</p>')
+            else:
+                buy = '<div class="buy-p"><span class="price ask big">Ask for set price</span></div>'
+            body = f'''<div class="wrap">{{{{CRUMBS}}}}</div>
+<section class="prod wrap">
+<div class="prod-art"><div class="art big has-il set-art">{"".join(il_tag(it["part"]["id"], r, it["part"]["name"]) for it in st["items"][:4])}<span>Illustration</span></div></div>
+<div class="prod-i">
+<p class="eyebrow"><a href="{r}{m["b"]}/{m["id"]}/">{e(bn)} {e(mn(m))}</a></p>
+<h1>{e(st["name"])} for {e(bn)} {e(mpar(m))}</h1>
+<p class="fits">Fits {e(bn)} {e(mn(m))}, {e(myears(m))}. {e(st["line"])}.</p>
+<div class="buy">{buy}
+<a class="btn wa big" href="{wa_link(msg)}" rel="noopener">{WA_SVG}Order this set on WhatsApp</a></div>
+<p class="fitnote">{ICON['check']}<span>We check every part against your car plate or chassis number before you pay.{" Engine oil grade and quantity are matched to your engine." if any(it["part"]["id"] == "engine-oil" for it in st["items"]) else ""}</span></p>
+</div></section>
+<section class="sec"><div class="wrap"><h2>What is in the set</h2>
+<div class="tbl"><table><thead><tr><th>Part</th><th class="r">Qty</th><th class="r">Each</th><th class="r">Subtotal</th></tr></thead><tbody>{lines}</tbody></table></div>
+{f'<h2>Optional add-ons</h2><p>Not included in the set price. Tell us on WhatsApp if you want them.</p><div class="tbl"><table><thead><tr><th>Part</th><th class="r">Qty</th><th class="r">Each</th><th class="r">Subtotal</th></tr></thead><tbody>{adds}</tbody></table></div>' if adds else ""}
+<p><a class="btn ghost" href="{r}{m["b"]}/{m["id"]}/">All parts for the {e(bn)} {e(mn(m))}</a></p></div></section>'''
+            prod = {"@type": "Product", "@id": BASE + "/" + st["url"] + "#product", "name": f"{st['name']} for {bn} {mpar(m)}",
+                    "sku": f"{m['b']}-{m['id']}-{st['id']}", "category": "Service kits and repair sets", "image": [BASE + "/og.jpg"],
+                    "brand": {"@type": "Brand", "name": bn}, "description": f"{st['line']}. Set for the {bn} {mn(m)} ({myears(m)}), sold by Autotex in Singapore.",
+                    "isRelatedTo": {"@type": "Car", "name": f"{bn} {mn(m)}", "brand": {"@type": "Brand", "name": bn}}}
+            if st["price"] is not None:
+                prod["offers"] = {"@type": "Offer", "url": BASE + "/" + st["url"], "priceCurrency": "SGD", "price": f'{st["price"]:.2f}',
+                                  "seller": {"@id": BASE + "/#store"}, "areaServed": "SG"}
+            tp = f" {money(st['price'])}" if st["price"] is not None else ""
+            title = f"{st['name']} {bn} {mn(m)}{tp} | Autotex"
+            if len(title) > 60: title = f"{st['name']} {bn} {mn(m)}{tp}"
+            shell(path, title, f"{st['name']} for the {bn} {mn(m)}: {st['line'].lower()}." + (f" Set price {money(st['price'])}, save {money(st['total'] - st['price'])}." if st["price"] is not None else "") + " Order on WhatsApp.",
+                  body, active=m["b"], crumbs=[(f"{bn} parts", f"{m['b']}/"), (mpar(m), f"{m['b']}/{m['id']}/"), (st["name"], st["url"])],
+                  schema=[prod], prio="0.7")
+
 # ---------------- model pages ----------------
 def build_models():
     for m in M.values():
@@ -427,6 +510,10 @@ def build_models():
             jump.append(f'<a class="chip" href="#{c["id"]}">{e(c["name"])}</a>')
             secs.append(f'<section class="msec" id="{c["id"]}"><h2>{ICON[c["icon"]]}{e(c["name"])}</h2><div class="pgrid">{"".join(cards)}</div>'
                         f'<p class="small"><a href="{r}parts/{c["id"]}/">{e(c["name"])} for other Hyundai and Kia models</a></p></section>')
+        sts = car_sets(m)
+        if sts:
+            jump.insert(0, '<a class="chip" href="#sets">Service kits &amp; sets</a>')
+            secs.insert(0, f'<section class="msec" id="sets"><h2>{ICON["engine"]}Service kits &amp; sets</h2><p class="small">Everything for the job in one order, {int(SET_DISCOUNT * 100)}% below the single-part prices.</p><div class="pgrid">{"".join(set_card(st, r) for st in sts)}</div></section>')
         misc = [x for x in items if x["p"] == "other" and not x["cat"]["id"]]
         if misc:
             jump.append('<a class="chip" href="#more">More parts</a>')
@@ -818,7 +905,7 @@ if __name__ == "__main__":
         shutil.rmtree(OUT)
     OUT.mkdir(parents=True)
     build_data()
-    build_home(); build_brands(); build_models(); build_products(); build_cats(); build_prices(); build_pages(); build_articles()
+    build_home(); build_brands(); build_models(); build_products(); build_sets(); build_cats(); build_prices(); build_pages(); build_articles()
     build_static()
     import pull_photos; pull_photos.run(OUT)
     print(f"built {len(SITEMAP)} indexed pages, {len(PRODUCTS)} products -> {OUT}")

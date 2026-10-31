@@ -223,3 +223,7 @@ th{font-size:.76rem;text-transform:uppercase;letter-spacing:.6px;color:var(--mut
 .art.has-il{background:#EEF0F3}.art.has-il img.il{width:100%;height:100%;object-fit:cover;display:block;transition:transform .4s}
 .pc:hover .art.has-il img.il{transform:scale(1.04)}
 .art.has-il span{background:rgba(255,255,255,.82);border-radius:6px;padding:2px 6px;color:#6B7380;font-size:.6rem}
+/* service kits and sets */
+.set-art{display:grid!important;grid-template-columns:1fr 1fr;gap:2px;place-items:stretch}
+.set-art img.il{width:100%;height:100%;object-fit:cover}
+.pc.set .save,.save-l{color:#13804a;font-weight:600}.pc.set .save{display:block;font-size:.75rem}

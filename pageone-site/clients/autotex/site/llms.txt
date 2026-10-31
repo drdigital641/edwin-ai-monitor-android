@@ -24,6 +24,7 @@
 - Engine Parts: https://autotexautoparts.com.sg/parts/engine-parts/
 - Cooling & Aircon: https://autotexautoparts.com.sg/parts/cooling-aircon/
 - Starting & Charging: https://autotexautoparts.com.sg/parts/electrical/
+- Oils & Fluids: https://autotexautoparts.com.sg/parts/oils-fluids/
 
 ## Key pages
 - How to order: https://autotexautoparts.com.sg/how-to-order/
@@ -39,11 +40,14 @@
 ## Models
 - Hyundai Avante (AD, 2016-2020): https://autotexautoparts.com.sg/hyundai/avante-ad/
 - Hyundai Avante (CN7, 2020-now): https://autotexautoparts.com.sg/hyundai/avante-cn7/
+- Hyundai Avante N (2022-now): https://autotexautoparts.com.sg/hyundai/avante-n/
 - Hyundai i30 (PD, 2017-2020): https://autotexautoparts.com.sg/hyundai/i30-pd/
+- Hyundai i30 N (2018-2022): https://autotexautoparts.com.sg/hyundai/i30-n/
 - Hyundai i40 (VF, 2012-2018): https://autotexautoparts.com.sg/hyundai/i40-vf/
 - Hyundai Inster (2025-now): https://autotexautoparts.com.sg/hyundai/inster/
 - Hyundai Ioniq 5 (NE, 2021-now): https://autotexautoparts.com.sg/hyundai/ioniq-5/
 - Hyundai Ioniq 6 (CE, 2023-now): https://autotexautoparts.com.sg/hyundai/ioniq-6/
+- Hyundai Ioniq 9 (2025-now): https://autotexautoparts.com.sg/hyundai/ioniq-9/
 - Hyundai Ioniq Hybrid (AE, 2016-2022): https://autotexautoparts.com.sg/hyundai/ioniq-ae/
 - Hyundai Kona (OS, 2017-2023): https://autotexautoparts.com.sg/hyundai/kona-os/
 - Hyundai Kona (SX2, 2023-now): https://autotexautoparts.com.sg/hyundai/kona-sx2/
@@ -57,12 +61,14 @@
 - Hyundai Tucson (NX4, 2021-now): https://autotexautoparts.com.sg/hyundai/tucson-nx4/
 - Hyundai Tucson (TL, 2015-2020): https://autotexautoparts.com.sg/hyundai/tucson-tl/
 - Hyundai Veloster (FS, 2011-2017): https://autotexautoparts.com.sg/hyundai/veloster-fs/
+- Hyundai Venue (QX, 2019-2023): https://autotexautoparts.com.sg/hyundai/venue-qx/
 - Kia Carens (RP, 2013-2019): https://autotexautoparts.com.sg/kia/carens-rp/
 - Kia Carnival (KA4, 2021-now): https://autotexautoparts.com.sg/kia/carnival-ka4/
 - Kia Carnival (YP, 2015-2020): https://autotexautoparts.com.sg/kia/carnival-yp/
 - Kia Cerato K3 (BD, 2018-now): https://autotexautoparts.com.sg/kia/cerato-bd/
 - Kia Cerato K3 (YD, 2013-2018): https://autotexautoparts.com.sg/kia/cerato-yd/
 - Kia EV3 (2024-now): https://autotexautoparts.com.sg/kia/ev3/
+- Kia EV4 (2025-now): https://autotexautoparts.com.sg/kia/ev4/
 - Kia EV5 (2025-now): https://autotexautoparts.com.sg/kia/ev5/
 - Kia EV6 (CV, 2021-now): https://autotexautoparts.com.sg/kia/ev6/
 - Kia EV9 (MV, 2023-now): https://autotexautoparts.com.sg/kia/ev9/
@@ -72,12 +78,15 @@
 - Kia Optima K5 (JF, 2015-2020): https://autotexautoparts.com.sg/kia/optima-jf/
 - Kia Picanto (JA, 2017-now): https://autotexautoparts.com.sg/kia/picanto-ja/
 - Kia Picanto (TA, 2011-2017): https://autotexautoparts.com.sg/kia/picanto-ta/
+- Kia PV5 (2025-now): https://autotexautoparts.com.sg/kia/pv5/
 - Kia Rio (YB, 2017-2020): https://autotexautoparts.com.sg/kia/rio-yb/
 - Kia Seltos (SP2, 2020-now): https://autotexautoparts.com.sg/kia/seltos-sp2/
 - Kia Sorento (MQ4, 2020-now): https://autotexautoparts.com.sg/kia/sorento-mq4/
 - Kia Sorento (UM, 2015-2020): https://autotexautoparts.com.sg/kia/sorento-um/
+- Kia Soul (SK3, 2019-2022): https://autotexautoparts.com.sg/kia/soul-sk3/
 - Kia Sportage (NQ5, 2022-now): https://autotexautoparts.com.sg/kia/sportage-nq5/
 - Kia Sportage (QL, 2016-2021): https://autotexautoparts.com.sg/kia/sportage-ql/
+- Kia Stinger (CK, 2018-2023): https://autotexautoparts.com.sg/kia/stinger-ck/
 - Kia Stonic (YB, 2017-now): https://autotexautoparts.com.sg/kia/stonic-yb/
 
 ## Sample products (full list: https://autotexautoparts.com.sg/prices/)
