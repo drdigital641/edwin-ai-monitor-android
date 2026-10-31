@@ -198,7 +198,7 @@ def cta(frm, topic='my space', label='Discuss Your Space', cls='btn btn-main'):
 
 
 MOCKUP_TOPIC = 'free design mockups of my current space (I will send photos)'
-MOCKUP_TEXT = ('<b>Free design mockups for your space.</b> WhatsApp a photo of your current space and we will create a few '
+MOCKUP_TEXT = ('<b>Free design mockups for your space, first in Singapore.</b> WhatsApp a photo of your current space and we will create a few '
                'AI 3D mockup designs for you to discuss, with no obligation.')
 
 
@@ -508,7 +508,7 @@ def build_concepts():
                             'name': it['alt']} for it in items]}]
     body = ('%s<section class="al-head"><div class="wrap"><span class="eyebrow">Gallery &middot; %d designs</span>'
             '<h1>Design gallery</h1>'
-            '<p>Commercial interior ideas for Singapore shops, F&amp;B, offices and salons, with a new design concept published here every day. Tap a picture to see the ideas behind it.</p>'
+            '<p>Commercial interior ideas for Singapore shops, F&amp;B, offices and salons, and the first in Singapore to publish a new design concept here every day. Tap a picture to see the ideas behind it.</p>'
             '%s<div class="al-chips" role="group" aria-label="Filter by type of space">%s</div></div></section>'
             '<section class="album"><div class="wrap al-wrap"><div class="al-grid">%s</div>'
             '<p class="al-foot">Like a design? WhatsApp us and we can design and build your new space or revamp your current one. All designs here are AI design concepts, not completed projects; our real carpentry is on the <a href="%s">Projects</a> page.</p></div></section>'
@@ -627,7 +627,7 @@ HOME_TPL = '''<section class="lux lux-full">
 
 <section class="marq-band" aria-label="Past AI design concepts"><div class="wrap marq-head"><span>The archive</span><a href="{galp}">Open the gallery &rarr;</a></div>
 <div class="marq"><div class="marq-track">{marq}</div></div>
-<div class="wrap marq-note"><p><b>A new design concept every day, published here.</b> Each day we design a fresh interior idea for a different kind of Singapore business. Use them freely for ideas. If one fits, WhatsApp us and we can design and build your new space or revamp your current one.</p>{mockup}</div></section>
+<div class="wrap marq-note"><p><b>First in Singapore to publish a new design concept every day.</b> Each day we design a fresh interior idea for a different kind of Singapore business. Use them freely for ideas. If one fits, WhatsApp us and we can design and build your new space or revamp your current one.</p>{mockup}</div></section>
 
 <section class="intro"><div class="wrap intro-in">
 <div class="intro-l"><span class="eyebrow">Singapore retail &amp; commercial specialists</span>
@@ -760,7 +760,7 @@ def build_daily():
                'associatedMedia': [{'@type': 'ImageObject', 'contentUrl': daily_url(x), 'url': abs_url(daily_path(x)), 'name': x['title'],
                                     'uploadDate': x['date'], 'description': x['summary']} for x in DAILY]}]
     body = ('%s<section class="al-head"><div class="wrap"><span class="eyebrow">Daily &middot; %d concepts</span>'
-            '<h1>AI concept of the day</h1><p>Every day we create a new commercial interior concept for a different kind of Singapore business: shops, offices, F&amp;B outlets, salons and more. '
+            '<h1>AI concept of the day</h1><p>We are the first in Singapore to publish a new design concept every day. Every day we create a new commercial interior concept for a different kind of Singapore business: shops, offices, F&amp;B outlets, salons and more. '
             'Browse them freely for design ideas and tap a picture to see the details. If you like one, WhatsApp us and we can design and build your new space or revamp your current one. '
             'These are AI design ideas, not completed projects.</p>%s</div></section>'
             '<section class="album"><div class="wrap al-wrap"><div class="al-grid">%s</div><p class="al-foot"><a href="%s">See every design in the gallery &rarr;</a></p></div></section>%s') % (
