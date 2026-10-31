@@ -41,7 +41,7 @@
     models.sort(function (a, b) { var x = (a.b + " " + a.name + " " + a.code).toLowerCase(), y = (b.b + " " + b.name + " " + b.code).toLowerCase(); return x < y ? -1 : x > y ? 1 : 0; });
     M = {}; models.forEach(function (m) { M[m.id] = m; });
     AT.models = models;
-    var src = prods ? prods.filter(function (r) { return pub(r) && r.key && M[r.m]; }).map(function (r) {
+    var src = prods ? prods.filter(function (r) { return pub(r) && r.key && M[r.m] && (P[r.p] || r.p === "other" || r.pn); }).map(function (r) {
       var st = STATIC[r.key], pr = r.price === "" || r.price == null ? null : +r.price;
       var x = { id: r.key, m: r.m, p: P[r.p] ? r.p : "other", pn: r.pn || "", pc: r.pc || "", price: pr > 0 ? pr : null, oem: r.oem || "", stock: r.stock || "", side: r.side || "",
         note: r.note || "", photos: (r.photos || []).filter(function (s) { return typeof s === "string"; }), updated: r.updated_date || "", created: r.created_date || "" };

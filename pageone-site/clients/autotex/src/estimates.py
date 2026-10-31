@@ -22,7 +22,7 @@ LOOKS = {"body-parts", "lamps"}  # categories scaled by the body/lamp factor
 SIZE = {  # (body/lamp factor, mechanical factor)
     "small": (0.8, 0.85), "mid": (1.0, 1.0), "large": (1.25, 1.15), "xl": (1.45, 1.3)}
 CAR_SIZE = {
-    "small": "picanto-ja picanto-ta rio-yb stonic-yb inster venue-qx",
+    "small": "accent-rb picanto-ja picanto-ta rio-yb stonic-yb inster venue-qx",
     "mid": "avante-ad avante-cn7 cerato-bd cerato-yd i30-pd veloster-fs ioniq-ae kona-os kona-sx2 niro-de niro-sg2 seltos-sp2 carens-rp ev3 soul-sk3 ev4",
     "large": "optima-jf k5-dl3 sonata-lf sonata-dn8 i40-vf tucson-tl tucson-nx4 sportage-ql sportage-nq5 ioniq-5 ioniq-6 ev6 ev5 stinger-ck avante-n i30-n",
     "xl": "santa-fe-dm santa-fe-tm santa-fe-mx5 sorento-um sorento-mq4 carnival-yp carnival-ka4 starex-tq staria-us4 ev9 ioniq-9 pv5",
