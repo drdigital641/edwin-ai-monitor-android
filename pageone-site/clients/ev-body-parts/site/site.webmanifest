@@ -1,0 +1,20 @@
+{
+ "name": "EV Body Parts",
+ "short_name": "EV Body Parts",
+ "icons": [
+  {
+   "src": "icon-192.png",
+   "sizes": "192x192",
+   "type": "image/png"
+  },
+  {
+   "src": "icon-512.png",
+   "sizes": "512x512",
+   "type": "image/png"
+  }
+ ],
+ "theme_color": "#07090B",
+ "background_color": "#07090B",
+ "display": "standalone",
+ "start_url": "./"
+}

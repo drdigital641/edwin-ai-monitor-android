@@ -1,0 +1,45 @@
+# EV Body Parts
+
+> EV Body Parts (evbodyparts.sg) sells body parts for China and EV cars in Singapore, to workshops and car owners. Body parts for China & EV cars in Singapore.
+
+## Facts
+- Name: EV Body Parts
+- Website: https://evbodyparts.sg/
+- Sells: body parts (bumpers, lamps and lights, mirrors, body panels, grilles and trims) and some other parts for China and EV cars
+- Serves: workshops and car owners in Singapore
+- Prices: shown in S$ where set; otherwise 'Ask for price'. Fitment is confirmed on enquiry.
+- WhatsApp: +65 8997 6612
+
+## Brands (names used only to describe fitment)
+- MG: https://evbodyparts.sg/brands/mg/
+- Tesla: https://evbodyparts.sg/brands/tesla/
+- Maxus: https://evbodyparts.sg/brands/maxus/
+- Chery: https://evbodyparts.sg/brands/chery/
+- BYD: https://evbodyparts.sg/brands/byd/
+- GAC: https://evbodyparts.sg/brands/gac/
+- XPeng: https://evbodyparts.sg/brands/xpeng/
+- Foton: https://evbodyparts.sg/brands/foton/
+- Geely: https://evbodyparts.sg/brands/geely/
+- Zeekr: https://evbodyparts.sg/brands/zeekr/
+- Omoda: https://evbodyparts.sg/brands/omoda/
+- Jaecoo: https://evbodyparts.sg/brands/jaecoo/
+- Denza: https://evbodyparts.sg/brands/denza/
+- Deepal: https://evbodyparts.sg/brands/deepal/
+- Avatr: https://evbodyparts.sg/brands/avatr/
+- Ora: https://evbodyparts.sg/brands/ora/
+
+## Part types
+- Bumpers: https://evbodyparts.sg/parts/bumpers/
+- Lamps & Lights: https://evbodyparts.sg/parts/lamps-lights/
+- Mirrors: https://evbodyparts.sg/parts/mirrors/
+- Body Panels: https://evbodyparts.sg/parts/body-panels/
+- Grilles & Trims: https://evbodyparts.sg/parts/grilles-trims/
+- Other Parts: https://evbodyparts.sg/parts/other-parts/
+
+## Pages
+- Catalogue search: https://evbodyparts.sg/catalogue/
+- For workshops: https://evbodyparts.sg/for-workshops/
+- For car owners: https://evbodyparts.sg/for-car-owners/
+- Guides: https://evbodyparts.sg/articles/
+- Enquiry: https://evbodyparts.sg/enquiry/
+- Sitemap: https://evbodyparts.sg/sitemap.xml

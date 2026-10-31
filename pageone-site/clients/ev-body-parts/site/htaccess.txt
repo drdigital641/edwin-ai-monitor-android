@@ -1,0 +1,13 @@
+# EV Body Parts - go-live notes only (do NOT upload as .htaccess into the preview folder).
+# Preview URL: https://pageonesingapore.com/preview/ev-body-parts/ (hidden by a server header on the parent /preview/ folder; pages carry no noindex).
+# At go-live:
+#  1. Point evbodyparts.sg at this folder (addon domain), SSL on. BASE in build.py is already https://evbodyparts.sg.
+#  2. Set WA (digits with country code), PHONE, EMAIL, LEGAL, UEN, ADDRESS in build.py and rebuild.
+#  3. Add a Controller Client row for site id 'ev-body-parts' (wa.js tap counter) when WA is set.
+#  4. Add evbodyparts.sg to both crawler monitor lists (Controller crawlerMonitor COLLECTED + Bridge crawlerLogs CRAWLER_DOMAINS).
+#  5. Force https + one host:
+RewriteEngine On
+RewriteCond %{HTTPS} off
+RewriteRule ^ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
+ErrorDocument 404 /404.html
+# 6. Submit https://evbodyparts.sg/sitemap.xml to Search Console + Bing; IndexNow key file: /f9badb093cb250f8b0a26711842f59f2.txt

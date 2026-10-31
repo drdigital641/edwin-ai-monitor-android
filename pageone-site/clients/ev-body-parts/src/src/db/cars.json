@@ -1,0 +1,317 @@
+[
+ {
+  "key": "avatr-11",
+  "b": "avatr",
+  "name": "11",
+  "alias": [
+   "avatr 11",
+   "11"
+  ],
+  "status": "published"
+ },
+ {
+  "key": "avatr-12",
+  "b": "avatr",
+  "name": "12",
+  "alias": [
+   "avatr 12",
+   "12"
+  ],
+  "status": "published"
+ },
+ {
+  "key": "byd-atto-3",
+  "b": "byd",
+  "name": "Atto 3",
+  "alias": [
+   "atto 3",
+   "atto3",
+   "atto",
+   "byd atto 3"
+  ],
+  "status": "published"
+ },
+ {
+  "key": "byd-dolphin",
+  "b": "byd",
+  "name": "Dolphin",
+  "alias": [
+   "dolphin",
+   "byd dolphin"
+  ],
+  "status": "published"
+ },
+ {
+  "key": "byd-m6",
+  "b": "byd",
+  "name": "M6",
+  "alias": [
+   "m6",
+   "byd m6"
+  ],
+  "status": "published"
+ },
+ {
+  "key": "byd-seal",
+  "b": "byd",
+  "name": "Seal",
+  "alias": [
+   "seal",
+   "seal u",
+   "byd seal"
+  ],
+  "status": "published"
+ },
+ {
+  "key": "byd-sealion-7",
+  "b": "byd",
+  "name": "Sealion 7",
+  "alias": [
+   "sealion 7",
+   "sealion7",
+   "sea lion 7",
+   "sealion",
+   "byd sealion 7"
+  ],
+  "status": "published"
+ },
+ {
+  "key": "deepal-l07",
+  "b": "deepal",
+  "name": "L07",
+  "alias": [
+   "deepal l07",
+   "l07"
+  ],
+  "status": "published"
+ },
+ {
+  "key": "deepal-s07",
+  "b": "deepal",
+  "name": "S07",
+  "alias": [
+   "deepal s07",
+   "s07"
+  ],
+  "status": "published"
+ },
+ {
+  "key": "denza-d9",
+  "b": "denza",
+  "name": "D9",
+  "alias": [
+   "d9",
+   "d 9",
+   "d09",
+   "09",
+   "9",
+   "denza d9",
+   "denza 09"
+  ],
+  "status": "published"
+ },
+ {
+  "key": "gac-aion-v",
+  "b": "gac",
+  "name": "Aion V",
+  "alias": [
+   "aion v",
+   "aionv",
+   "v",
+   "gac aion v"
+  ],
+  "status": "published"
+ },
+ {
+  "key": "gac-aion-y",
+  "b": "gac",
+  "name": "Aion Y",
+  "alias": [
+   "aion y",
+   "aiony",
+   "gac aion y"
+  ],
+  "status": "published"
+ },
+ {
+  "key": "jaecoo-j7",
+  "b": "jaecoo",
+  "name": "J7",
+  "alias": [
+   "jaecoo j7",
+   "j7"
+  ],
+  "status": "published"
+ },
+ {
+  "key": "maxus-edeliver-3",
+  "b": "maxus",
+  "name": "eDeliver 3",
+  "alias": [
+   "edeliver 3",
+   "e deliver 3",
+   "edeliver3",
+   "edeliver",
+   "maxus edeliver 3"
+  ],
+  "status": "published"
+ },
+ {
+  "key": "maxus-mifa-9",
+  "b": "maxus",
+  "name": "MIFA 9",
+  "alias": [
+   "mifa 9",
+   "mifa9",
+   "mifa",
+   "maxus mifa 9"
+  ],
+  "status": "published"
+ },
+ {
+  "key": "mg-hs",
+  "b": "mg",
+  "name": "HS",
+  "alias": [
+   "mg hs",
+   "hs"
+  ],
+  "status": "published"
+ },
+ {
+  "key": "mg-mg4",
+  "b": "mg",
+  "name": "MG4",
+  "alias": [
+   "mg4",
+   "mg 4",
+   "4",
+   "mg4 ev"
+  ],
+  "status": "published"
+ },
+ {
+  "key": "mg-mg5",
+  "b": "mg",
+  "name": "MG5",
+  "alias": [
+   "mg5",
+   "mg 5",
+   "5"
+  ],
+  "status": "published"
+ },
+ {
+  "key": "mg-zs-ev",
+  "b": "mg",
+  "name": "ZS EV",
+  "alias": [
+   "zs ev",
+   "zsev",
+   "zs",
+   "mg zs ev",
+   "mg zs"
+  ],
+  "status": "published"
+ },
+ {
+  "key": "omoda-omoda-e5",
+  "b": "omoda",
+  "name": "Omoda E5",
+  "alias": [
+   "omoda e5",
+   "omoda5",
+   "e5"
+  ],
+  "status": "published"
+ },
+ {
+  "key": "ora-good-cat",
+  "b": "ora",
+  "name": "Good Cat",
+  "alias": [
+   "good cat",
+   "goodcat",
+   "ora good cat"
+  ],
+  "status": "published"
+ },
+ {
+  "key": "tesla-model-3",
+  "b": "tesla",
+  "name": "Model 3",
+  "alias": [
+   "model 3",
+   "model3",
+   "m3",
+   "3",
+   "tesla model 3"
+  ],
+  "status": "published"
+ },
+ {
+  "key": "tesla-model-y",
+  "b": "tesla",
+  "name": "Model Y",
+  "alias": [
+   "model y",
+   "modely",
+   "y",
+   "my",
+   "tesla model y",
+   "tesla my"
+  ],
+  "status": "published"
+ },
+ {
+  "key": "xpeng-g6",
+  "b": "xpeng",
+  "name": "G6",
+  "alias": [
+   "g6",
+   "xpeng g6"
+  ],
+  "status": "published"
+ },
+ {
+  "key": "xpeng-x9",
+  "b": "xpeng",
+  "name": "X9",
+  "alias": [
+   "x9",
+   "xpeng x9"
+  ],
+  "status": "published"
+ },
+ {
+  "key": "zeekr-001",
+  "b": "zeekr",
+  "name": "001",
+  "alias": [
+   "zeekr 001",
+   "001",
+   "1"
+  ],
+  "status": "published"
+ },
+ {
+  "key": "zeekr-009",
+  "b": "zeekr",
+  "name": "009",
+  "alias": [
+   "zeekr 009",
+   "009"
+  ],
+  "status": "published"
+ },
+ {
+  "key": "zeekr-x",
+  "b": "zeekr",
+  "name": "X",
+  "alias": [
+   "zeekr x",
+   "x"
+  ],
+  "status": "published"
+ }
+]
