@@ -7,7 +7,7 @@ BASE = {  # part id: S$ per unit in catalog.py (side parts are per side). Revise
     # body parts and lamps raised towards typical Singapore stockist prices.
     "front-bumper": 320, "rear-bumper": 300, "bonnet": 420, "front-grille": 180, "front-fender": 180,
     "side-mirror": 260, "wiper-blades": 25, "headlamp": 520, "tail-lamp": 260, "fog-lamp": 90,
-    "front-brake-pads": 134, "rear-brake-pads": 70, "front-brake-discs": 160, "rear-brake-discs": 140,
+    "front-brake-pads": 95, "rear-brake-pads": 70, "front-brake-discs": 160, "rear-brake-discs": 140,
     "front-shock-absorber": 170, "rear-shock-absorber": 130, "lower-control-arm": 140, "stabilizer-link": 45,
     "tie-rod-end": 55, "wheel-bearing": 160, "engine-mount": 100, "gearbox-mount": 90, "spark-plugs": 42,
     "ignition-coil": 75, "oil-filter": 8, "air-filter": 18, "drive-belt": 40, "water-pump": 140,
