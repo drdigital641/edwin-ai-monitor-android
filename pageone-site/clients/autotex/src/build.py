@@ -302,13 +302,14 @@ def faq_block(qs):
     return h, sch
 
 def finder(r, b=None, m=None):
-    return f'''<form class="finder" data-finder action="{r}search/">
-<div class="f-row"><label><span>1. Car brand</span><select name="b" data-f="b"><option value="">Choose brand</option>{"".join(f'<option value="{bid}"{" selected" if bid == b else ""}>{e(n)}</option>' for bid, n in BRANDS)}</select></label>
+    sel = (f'''<div class="f-sel" hidden><label><span>1. Car brand</span><select name="b" data-f="b"><option value="">Choose brand</option>{"".join(f'<option value="{bid}"{" selected" if bid == b else ""}>{e(n)}</option>' for bid, n in BRANDS)}</select></label>
 <label><span>2. Model</span><select name="m" data-f="m" data-sel="{e(m or "")}"><option value="">Choose model</option></select></label>
-<label><span>3. Part</span><select name="p" data-f="p"><option value="">Choose part</option></select></label>
-<button class="btn primary" type="submit">Show part</button></div>
-<div class="f-or"><span>or type it</span></div>
-<div class="f-q"><input name="q" type="search" placeholder="Try: Kia Cerato rear brake pads" aria-label="Search parts" autocomplete="off"><button class="btn dark" type="submit">{ICON['search']}<span>Search</span></button></div>
+<label><span>3. Part</span><select name="p" data-f="p"><option value="">Choose part</option></select></label></div>''')
+    return f'''<form class="finder" data-finder action="{r}search/">
+{sel}
+<div class="f-hint" aria-hidden="true"><span>Start here: type your car and part</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M12 4v15M6 13l6 6 6-6"/></svg></div>
+<div class="f-q"><input name="q" type="search" placeholder="e.g. Kia Cerato front brake pads" aria-label="Search parts, for example Kia Cerato front brake pads" autocomplete="off"><button class="btn dark" type="submit">{ICON['search']}<span>Search</span></button></div>
+<div class="fguide" data-guide aria-label="Suggestions"></div>
 <noscript><p class="small">Search needs JavaScript. Browse by <a href="{r}hyundai/">Hyundai</a>, <a href="{r}kia/">Kia</a> or the <a href="{r}prices/">price list</a>.</p></noscript>
 </form>'''
 

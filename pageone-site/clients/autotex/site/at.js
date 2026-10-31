@@ -456,7 +456,37 @@
     sb.addEventListener("change", function () { sm.removeAttribute("data-sel"); models(); });
     sm.addEventListener("change", function () { parts(); });
     models();
-    finders.push(function () { models(sm.value, sp.value); });
+    var inp = $("input[name=q]", f), g = $("[data-guide]", f);
+    var PRI = ["front-brake-pads", "rear-brake-pads", "oil-filter", "engine-oil", "air-filter", "cabin-filter", "spark-plugs", "headlamp", "tail-lamp", "front-bumper", "side-mirror", "front-shock-absorber", "radiator", "alternator"];
+    function lastWord(q) { return q.split(/\s+/).pop() || ""; }
+    function base(q) { return /\s$/.test(q) || !q ? q : q.slice(0, q.length - lastWord(q).length); }
+    function pick(text, fn) { inp.value = text + " "; fn(); draw(); inp.focus({ preventScroll: true }); }
+    function draw() {
+      var q = inp.value, lw = lastWord(q).toLowerCase(), b = sb.value, m = M[sm.value], label, items = [];
+      if (!b) { label = "Step 1: tap your brand";
+        items = AT.brands.map(function (x) { return { t: x.name, id: x.id, k: "b" }; }); }
+      else if (!m) { label = BR[b].name + " models: tap yours";
+        items = AT.models.filter(function (x) { return x.b === b && x.name; }).map(function (x) { return { t: x.name + (x.code ? " " + x.code : ""), id: x.id, k: "m" }; }); }
+      else { label = mlabel(m) + ": tap a part";
+        items = PRI.filter(function (id) { return AT.parts.some(function (p) { return p.id === id && fits(m, p); }); })
+          .map(function (id) { var p = AT.parts.filter(function (x) { return x.id === id; })[0]; return { t: p.name, id: id, k: "p" }; }); }
+      var seen = {};
+      items = items.filter(function (x) { var k = x.t.toLowerCase(); if (seen[k]) return false; seen[k] = 1; return true; });
+      if (lw) { var f2 = items.filter(function (x) { return x.t.toLowerCase().split(/\s+/).some(function (w) { return w.indexOf(lw) === 0; }); }); if (f2.length) items = f2; }
+      g.innerHTML = '<span class="gl">' + esc(label) + '</span>' + items.slice(0, 8).map(function (x) {
+        return '<button type="button" data-k="' + x.k + '" data-id="' + esc(x.id) + '" data-t="' + esc(x.t) + '">' + esc(x.t) + '</button>'; }).join("");
+      f.classList.toggle("typing", !!q);
+    }
+    g.addEventListener("click", function (ev) {
+      var c = ev.target.closest("[data-k]"); if (!c) return;
+      var k = c.getAttribute("data-k"), id = c.getAttribute("data-id"), t = c.getAttribute("data-t"), text = base(inp.value);
+      if (k === "b") { sb.value = id; sm.removeAttribute("data-sel"); sb.dispatchEvent(new Event("change")); pick(text + BR[id].name, function () {}); }
+      else if (k === "m") { sm.value = id; sm.dispatchEvent(new Event("change")); pick(text + t, function () {}); }
+      else { sp.value = id; inp.value = text + t + " "; inp.blur(); if (f.requestSubmit) f.requestSubmit(); }
+    });
+    inp.addEventListener("input", draw); inp.addEventListener("focus", draw);
+    draw();
+    finders.push(function () { models(sm.value, sp.value); draw(); });
     f.addEventListener("submit", function (e) {
       var q = $("input[name=q]", f).value.trim();
       if (document.activeElement && document.activeElement.closest(".f-q") || (q && !sm.value)) { // typed search

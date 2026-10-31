@@ -227,3 +227,13 @@ th{font-size:.76rem;text-transform:uppercase;letter-spacing:.6px;color:var(--mut
 .set-art{display:grid!important;grid-template-columns:1fr 1fr;gap:2px;place-items:stretch}
 .set-art img.il{width:100%;height:100%;object-fit:cover}
 .pc.set .save,.save-l{color:#13804a;font-weight:600}.pc.set .save{display:block;font-size:.75rem}
+
+/* home finder guide (31 Oct 2026): type first, then tap-through chips */
+.finder .f-hint{display:flex;flex-direction:column;align-items:center;gap:2px;color:var(--red,#D62B1F);font:700 .9rem/1.2 var(--font);margin:0 0 8px}
+.finder .f-hint svg{width:26px;height:26px;animation:fhint 1.2s ease-in-out infinite}
+.finder.typing .f-hint{display:none}
+@keyframes fhint{0%,100%{transform:translateY(0)}50%{transform:translateY(6px)}}
+.fguide{display:flex;flex-wrap:wrap;gap:8px;align-items:center;margin-top:12px}
+.fguide .gl{width:100%;font-size:.8rem;font-weight:700;text-transform:uppercase;letter-spacing:.6px;color:var(--muted)}
+.fguide button{font:600 .88rem/1 var(--font);color:var(--ink);background:#F2F4F7;border:1px solid #CDD2D9;border-radius:999px;padding:10px 14px;cursor:pointer;min-height:40px}
+.fguide button:hover,.fguide button:focus-visible{border-color:var(--red,#D62B1F)}
