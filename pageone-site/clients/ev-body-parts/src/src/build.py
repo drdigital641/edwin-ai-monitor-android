@@ -1088,8 +1088,11 @@ def car_pages():
     for c in CARS:
         name, full = c["name"], c["full"]
         items = PBYCAR.get(c["key"], [])
-        title = fit(f"{full} Body Parts Singapore | {BRAND}", f"{full} Body Parts Singapore", f"{full} Body Parts")
-        desc = short(f"{full} body parts in Singapore: bumpers, lamps, mirrors and panels. Tap a part to get a quote on WhatsApp.")
+        plain = full.replace(" — ", " ")
+        mbase = full.split(" — ")[0]
+        npart = sum(len(a[3]) for a in AREAS)
+        title = fit(f"{plain} Headlamp, Tail Lamp & Bumper Singapore", f"{plain} Headlamp & Tail Lamp Singapore", f"{plain} Body Parts Singapore")
+        desc = short(f"{plain} headlamp, tail lamp, bumper, mirror and {npart - 4}+ more body parts sourced in Singapore. Fitment checked, quote on WhatsApp.")
         def chip(pk):
             pn = PART[pk][1]
             if pk in SPECIAL: return f'<a class="bchip chipsp" href="{e(enq(full + " " + pn + " (specialist check)"))}">{e(pn)}</a>'
@@ -1098,7 +1101,8 @@ def car_pages():
             u = ART.get(a[3][0]) if a[0] != "glass" else None
             if a[0] == "special": u = ART["underbody-shield"]
             return f'<img src="{u}" alt="{e(a[1])}: illustrative image" width="64" height="64" loading="lazy" decoding="async" title="{e(ILLUS)}" onerror="this.remove()">' if u else ""
-        areas = "".join(f'<details class="area" id="a-{a[0]}"{" open" if i == 0 else ""}><summary><span class="ar-ic">{ico(a[2])}{arpic(a)}</span><b>{e(a[1])}</b><span class="ar-n">{len(a[3])}</span></summary>'
+        areas = "".join(f'<details class="area" id="a-{a[0]}"{" open" if i == 0 else ""}><summary><span class="ar-ic">{ico(a[2])}{arpic(a)}</span><h2 class="ar-t">{e(a[1])}</h2><span class="ar-n">{len(a[3])}</span></summary>'
+                        f'<p class="ar-s">{e(plain)} {e(", ".join(PART[pk][1].lower() for pk in a[3][:-1]))} and {e(PART[a[3][-1]][1].lower())}: sourced to order in Singapore.</p>'
                         f'{"<p class=ar-note>Safety and structure parts: we check these one by one. Ask on WhatsApp.</p>" if a[0] == "special" else ""}<div class="bchips">{"".join(chip(pk) for pk in a[3])}</div>'
                         f'{"<p class=illus>" + e(ILLUS) + "</p>" if arpic(a) else ""}</details>' for i, a in enumerate(AREAS))
         base = name.split(" — ")[0]
@@ -1108,12 +1112,19 @@ def car_pages():
         genl = (f'<p class="gen-n">Not sure? This page is for {e(name.split(" — ")[1] if " — " in name else name)}{yrs}. Other version: '
                 + ", ".join(f'<a href="{{{{R}}}}{o["url"]}">{e(o["name"].split(" — ")[1] if " — " in o["name"] else o["name"])}{f" ({e(o["years"])})" if o.get("years") else ""}</a>' for o in gens)
                 + '. Send your build year or a photo on WhatsApp and we confirm.</p>') if gens else ""
-        body = f'''<section class="ph-hd"><div class="wrap">{{{{CRUMBS}}}}<h1>{e(full)} body parts</h1><p class="lead">Pick an area, then tap a part to get a quote on WhatsApp.</p>{genl}
+        cfaq = [(f"Where can I get a {plain} headlamp or tail lamp in Singapore?",
+                 f"{BRAND} sources {plain} headlamps, tail lamps, bumpers, mirrors and other body parts to order. Tap Get a quote or WhatsApp us the part, the side and your build year."),
+                (f"How do you make sure the part fits my {mbase}?",
+                 "We check your build month and year, the market and a photo of the old part or its label before we quote." + (f" The {mbase} has more than one version, so the build year matters." if gens else "")),
+                (f"Can I get a front or rear bumper for the {plain}?",
+                 "Yes. We source front and rear bumpers, brackets, grilles and trims to order. Send a photo of the damage and we check which parts you need.")]
+        body = f'''<section class="ph-hd"><div class="wrap">{{{{CRUMBS}}}}<h1>{e(full)} body parts in Singapore</h1><p class="lead">Headlamps, tail lamps, bumpers, mirrors and {npart - 4}+ more parts for the {e(plain)}, sourced to order. Pick an area, then tap a part to get a quote on WhatsApp.</p>{genl}
 <div class="areas">{areas}</div></div></section>
 <section class="sec tight"><div class="wrap">
 <div class="sres full" data-list="car:{c["key"]}" data-limit="12" data-name="{e(full)}">{list_html(items, full, 12)}</div>
+<div class="sec-t" style="margin-top:36px"><h2>{e(plain)} parts: common questions</h2></div>{faq_html(cfaq)}
 {f'<div class="sec-t" style="margin-top:36px"><h2>Other {e(c["bname"])} models</h2></div><div class="bchips">{sibs}</div>' if sibs else ''}</div></section>'''
-        shell(f'{c["url"]}index.html', title, desc, body, "brands", [("Brands", "brands/"), (c["bname"], f'brands/{c["b"]}/'), (name, c["url"])], pri=0.7)
+        shell(f'{c["url"]}index.html', title, desc, body, "brands", [("Brands", "brands/"), (c["bname"], f'brands/{c["b"]}/'), (name, c["url"])], pri=0.7, faq=cfaq)
 
 def product_pages():
     for x in PRODS:

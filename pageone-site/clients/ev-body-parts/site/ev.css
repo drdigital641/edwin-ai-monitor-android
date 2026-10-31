@@ -404,3 +404,4 @@ body{padding-bottom:0!important}
 @media(max-width:420px){.hd-q span{display:none}.hd-q{width:46px;justify-content:center;padding:0}}
 .hero-cta{margin-top:14px}
 .area{scroll-margin-top:84px}
+.area summary h2.ar-t{font-size:inherit;font-weight:700;margin:0;line-height:1.3;flex:1}.ar-s{font-size:.86rem;color:#C9C9D0;margin:0 16px 12px}
