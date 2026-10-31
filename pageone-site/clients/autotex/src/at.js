@@ -460,7 +460,7 @@
     var PRI = ["front-brake-pads", "rear-brake-pads", "oil-filter", "engine-oil", "air-filter", "cabin-filter", "spark-plugs", "headlamp", "tail-lamp", "front-bumper", "side-mirror", "front-shock-absorber", "radiator", "alternator"];
     function lastWord(q) { return q.split(/\s+/).pop() || ""; }
     function base(q) { return /\s$/.test(q) || !q ? q : q.slice(0, q.length - lastWord(q).length); }
-    function pick(text, fn) { inp.value = text + " "; fn(); draw(); inp.focus({ preventScroll: true }); }
+    function pick(text, fn) { inp.value = text + " "; fn(); draw(); }
     function draw() {
       var q = inp.value, lw = lastWord(q).toLowerCase(), b = sb.value, m = M[sm.value], label, items = [];
       if (!b) { label = "Pick your car:";
@@ -484,7 +484,19 @@
       else if (k === "m") { sm.value = id; sm.dispatchEvent(new Event("change")); pick(text + t, function () {}); }
       else { sp.value = id; inp.value = text + t + " "; inp.blur(); if (f.requestSubmit) f.requestSubmit(); }
     });
-    inp.addEventListener("input", draw); inp.addEventListener("focus", draw);
+    inp.addEventListener("input", draw);
+    inp.addEventListener("focus", function () { draw(); if (f.scrollIntoView) { try { f.scrollIntoView({ block: "start", behavior: "smooth" }); } catch (e) { f.scrollIntoView(); } } });
+    /* animated placeholder: types example searches while the box is empty and idle */
+    var EX = ["Kia Cerato front brake pads", "Avante oil filter", "Sportage headlamp", "Tucson shock absorber", "Sorento engine mount"];
+    var still = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    if (!still) { var ei = 0, ec = 0, del = false, hold = 0;
+      setInterval(function () {
+        if (document.activeElement === inp || inp.value) return;
+        var w = EX[ei];
+        if (hold > 0) { hold--; return; }
+        if (!del) { ec++; if (ec >= w.length) { del = true; hold = 14; } } else { ec -= 2; if (ec <= 0) { ec = 0; del = false; ei = (ei + 1) % EX.length; } }
+        inp.setAttribute("placeholder", "e.g. " + w.slice(0, Math.max(ec, 0)) + (ec < w.length ? "|" : ""));
+      }, 90); }
     draw();
     finders.push(function () { models(sm.value, sp.value); draw(); });
     f.addEventListener("submit", function (e) {

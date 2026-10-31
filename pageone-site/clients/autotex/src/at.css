@@ -230,7 +230,11 @@ th{font-size:.76rem;text-transform:uppercase;letter-spacing:.6px;color:var(--mut
 
 /* home finder guide (Nov 2026): EV Body Parts style - type first, brand chips beside it */
 .finder .f-hint{display:block;color:var(--ink);font:600 .95rem/1.3 var(--font);margin:0 0 10px}
-.finder .f-hint .pt{display:inline-block}
+.finder .f-hint .pt{display:inline-block;font-size:1.5rem;animation:fpoint 1s ease-in-out infinite}
+@keyframes fpoint{0%,100%{transform:translateY(-3px)}50%{transform:translateY(5px)}}
+@media (prefers-reduced-motion:reduce){.finder .f-hint .pt{animation:none}}
+.finder{scroll-margin-top:70px}
+@media (max-width:980px){.hero-f{order:-1}.hero-in{gap:20px}.hero{padding-top:18px}}
 .finder.typing .f-hint{display:none}
 .fguide{display:flex;flex-wrap:wrap;gap:8px;align-items:center;margin-top:12px}
 .fguide .gl{width:100%;font-size:.8rem;font-weight:700;text-transform:uppercase;letter-spacing:.6px;color:var(--muted)}
