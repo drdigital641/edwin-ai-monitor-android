@@ -197,6 +197,15 @@ def cta(frm, topic='my space', label='Discuss Your Space', cls='btn btn-main'):
     return '<a class="%s" href="%s">%s</a>' % (cls, rel(frm, '/contact/'), label)
 
 
+MOCKUP_TOPIC = 'free design mockups of my current space (I will send photos)'
+MOCKUP_TEXT = ('<b>Free design mockups for your space.</b> WhatsApp a photo of your current space and we will create a few '
+               'AI 3D mockup designs for you to discuss, with no obligation.')
+
+
+def mockup_box(path, cls='mockup'):
+    return '<div class="%s"><p>%s</p>%s</div>' % (cls, MOCKUP_TEXT, cta(path, MOCKUP_TOPIC, 'Get free mockups', 'btn btn-light' if 'dark' in cls else 'btn btn-main'))
+
+
 def pending_box(items=None, title='Pending before launch'):
     if LIVE:
         return ''
@@ -499,13 +508,13 @@ def build_concepts():
                             'name': it['alt']} for it in items]}]
     body = ('%s<section class="al-head"><div class="wrap"><span class="eyebrow">Gallery &middot; %d designs</span>'
             '<h1>Design gallery</h1>'
-            '<p>Commercial interior ideas for Singapore shops, F&amp;B, offices and salons, with a new concept every day. Tap a picture to see the ideas behind it.</p>'
-            '<div class="al-chips" role="group" aria-label="Filter by type of space">%s</div></div></section>'
+            '<p>Commercial interior ideas for Singapore shops, F&amp;B, offices and salons, with a new design concept published here every day. Tap a picture to see the ideas behind it.</p>'
+            '%s<div class="al-chips" role="group" aria-label="Filter by type of space">%s</div></div></section>'
             '<section class="album"><div class="wrap al-wrap"><div class="al-grid">%s</div>'
             '<p class="al-foot">Like a design? WhatsApp us and we can design and build your new space or revamp your current one. All designs here are AI design concepts, not completed projects; our real carpentry is on the <a href="%s">Projects</a> page.</p></div></section>'
             '<section class="band sand"><div class="wrap"><div class="head"><h2>Plan by type of space</h2>'
             '<p>What each kind of business space needs, and how we fit it out.</p></div><div class="grid g4">%s</div></div></section>%s') % (
-        crumbs_html(path, crumbs), len(items), chips, album_tiles(path, items), rel(path, '/projects/'), spaces,
+        crumbs_html(path, crumbs), len(items), mockup_box(path), chips, album_tiles(path, items), rel(path, '/projects/'), spaces,
         cta_band(path, 'an idea from your design gallery'))
     write(path, head(path, 'Retail & Commercial Interior Design Gallery | SG Fitout',
                      'Browse AI interior design ideas for Singapore shops, F&B outlets, offices, showrooms and salons. A new commercial concept is added every day.',
@@ -550,11 +559,14 @@ def build_concept_one(c):
 HOME_FAQ = [
     ('What is the AI concept of the day?', 'Every day SG Commercial Fitout publishes a new commercial interior concept for a different kind of Singapore business. '
      'Anyone can browse them for design ideas. If you like one, WhatsApp us and we can design and build your new space or revamp an existing one.'),
+    ('Can I get a free design mockup of my space?', 'Yes. WhatsApp a photo of your current space to SG Commercial Fitout and we will create a few '
+     'AI 3D mockup designs for you to discuss, free and with no obligation.'),
     ('What does SG Commercial Fitout do?', 'SG Commercial Fitout designs and builds retail and commercial spaces in Singapore: custom carpentry, renovation, '
      'electrical works, tiling and flooring, painting and finishing, and audio, visual and lighting (AVL) for shops, offices, F&B outlets and salons.'),
     ('Do you have your own carpentry workshop?', 'Yes. SG Commercial Fitout has its own carpentry workshop, so counters, cabinets and shelving can be '
      'made to your measurements. Photos of real work are on the Projects page.'),
-    ('Are the photos real?', 'Photos marked "Real project" show SG Commercial Fitout carpentry; decor items in them were added with AI styling. '
+    ('Are the photos real?', 'Photos marked "Real project" show SG Commercial Fitout work. In the five built-in carpentry photos, decor items were added with AI styling; '
+     'the other real photos are only cropped and colour-corrected. '
      'Photos marked "AI design concept" are ideas to discuss, not completed work.'),
     ('What should I send to start?', 'WhatsApp a floor plan or unit layout, a few photos of the unit, what the space is for and your target opening date. '
      'Landlord or mall fit-out guidelines help too, if you have them.'),
@@ -615,7 +627,7 @@ HOME_TPL = '''<section class="lux lux-full">
 
 <section class="marq-band" aria-label="Past AI design concepts"><div class="wrap marq-head"><span>The archive</span><a href="{galp}">Open the gallery &rarr;</a></div>
 <div class="marq"><div class="marq-track">{marq}</div></div>
-<div class="wrap marq-note"><p><b>A new commercial concept every day.</b> Each day we design a fresh interior idea for a different kind of Singapore business. Use them freely for ideas. If one fits, WhatsApp us and we can design and build your new space or revamp your current one.</p></div></section>
+<div class="wrap marq-note"><p><b>A new design concept every day, published here.</b> Each day we design a fresh interior idea for a different kind of Singapore business. Use them freely for ideas. If one fits, WhatsApp us and we can design and build your new space or revamp your current one.</p>{mockup}</div></section>
 
 <section class="intro"><div class="wrap intro-in">
 <div class="intro-l"><span class="eyebrow">Singapore retail &amp; commercial specialists</span>
@@ -659,7 +671,7 @@ HOME_TPL = '''<section class="lux lux-full">
 <section class="band" id="enquire"><div class="wrap enq">
 <div class="rv"><h2>Get a quote on WhatsApp</h2><p>Send what you already have. These four things are enough to start:</p>
 <ul class="check"><li>Floor plan or unit layout</li><li>A few photos of the unit now</li><li>What the space is for</li><li>Your target opening date</li></ul></div>
-<div class="panel rv"><h3>WhatsApp {phone}</h3><p>Tell us about your shop, office, F&amp;B outlet or salon and we'll discuss your scope.</p><div class="btns">{cta}</div></div>
+<div class="panel rv"><h3>WhatsApp {phone}</h3><p>Tell us about your shop, office, F&amp;B outlet or salon and we'll discuss your scope.</p><div class="btns">{cta}</div>{mockup2}</div>
 </div></section>
 
 <section class="band sand"><div class="wrap"><div class="faq" style="max-width:820px"><h2>Common questions</h2>{faqs}</div></div></section>
@@ -692,7 +704,8 @@ def build_home():
              ('Google reviews', '&#9733;&#9733;&#9733;&#9733;&#9733; 5-star rating on Google. <a href="%s" rel="noopener" target="_blank">Read our Google reviews</a>' % GOOGLE_REVIEWS),
              ('Enquiries', 'WhatsApp <a href="%s" rel="noopener">%s</a>' % (E(wa_link('my space', path)), PHONE_DISPLAY))]
     body = HOME_TPL.format(
-        cta=cta(path, 'my space', 'WhatsApp Us'), services=rel(path, '/services/'), dailyp=dp, galp=rel(path, '/design-concepts/'), ddate=d['date'],
+        cta=cta(path, 'my space', 'WhatsApp Us'), mockup=mockup_box(path, 'mockup mockup-dark'), mockup2=mockup_box(path, 'mockup mockup-panel'),
+        services=rel(path, '/services/'), dailyp=dp, galp=rel(path, '/design-concepts/'), ddate=d['date'],
         dimg='<img src="%s" srcset="%s 640w, %s 1024w" sizes="100vw" width="1024" height="1024" alt="%s" loading="eager" fetchpriority="high">' % (
             daily_url(d), daily_url(d, True), daily_url(d), E(d['alt'])),
         marq=marquee(path, dp),
@@ -749,9 +762,9 @@ def build_daily():
     body = ('%s<section class="al-head"><div class="wrap"><span class="eyebrow">Daily &middot; %d concepts</span>'
             '<h1>AI concept of the day</h1><p>Every day we create a new commercial interior concept for a different kind of Singapore business: shops, offices, F&amp;B outlets, salons and more. '
             'Browse them freely for design ideas and tap a picture to see the details. If you like one, WhatsApp us and we can design and build your new space or revamp your current one. '
-            'These are AI design ideas, not completed projects.</p></div></section>'
+            'These are AI design ideas, not completed projects.</p>%s</div></section>'
             '<section class="album"><div class="wrap al-wrap"><div class="al-grid">%s</div><p class="al-foot"><a href="%s">See every design in the gallery &rarr;</a></p></div></section>%s') % (
-        crumbs_html(path, crumbs), len(DAILY), tiles, rel(path, '/design-concepts/'), cta_band(path, 'an idea from the concept of the day'))
+        crumbs_html(path, crumbs), len(DAILY), mockup_box(path), tiles, rel(path, '/design-concepts/'), cta_band(path, 'an idea from the concept of the day'))
     write(path, head(path, 'AI Interior Concept of the Day | SG Commercial Fitout',
                      'A dated daily AI interior concept for Singapore shops, offices, F&B outlets and salons. Browse every past concept as a photo album.',
                      schema, og_img=daily_url(DAILY[0])) + header(path) + body + footer(path), DAILY[0]['date'])
@@ -899,7 +912,7 @@ def build_machine():
              'SG Commercial Fitout is a Singapore design and build company that specialises in retail outlets and commercial spaces, with its own carpentry workshop: shops and boutiques, offices and showrooms, '
              'cafes and service counters, salons and beauty studios. Services: integrated design and build, commercial carpentry, '
              'renovation, electrical works, tiling and flooring, painting and finishing, and audio, visual and lighting (AVL).',
-             '', 'Address: %s. Contact: WhatsApp %s. Photos marked Real project show its own carpentry (decor added with AI styling); AI design concept images are ideas, not completed work.' % (ADDR_TEXT, PHONE_DISPLAY), '']
+             '', 'Address: %s. Contact: WhatsApp %s. Photos marked Real project show its own work (decor added with AI styling in the five built-in carpentry photos); free AI 3D mockup designs from a photo of your current space, no obligation; AI design concept images are ideas, not completed work.' % (ADDR_TEXT, PHONE_DISPLAY), '']
     sections = [('Services', SERVICE_ORDER), ('AVL', [p['path'] for p in C_AVL.PAGES]), ('Spaces', [p['path'] for p in C_SPC.PAGES]),
                 ('Guides', [p['path'] for p in C_GDE.PAGES])]
     for name, paths in sections:
