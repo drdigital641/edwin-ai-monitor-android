@@ -407,12 +407,12 @@ def list_html(items, name, lim=9):
     return '<div class="rgrid">' + "".join(card_static(x) for x in items[:lim]) + '</div>' + (f'<p class="seeall"><a class="btn btn-g" href="{{{{R}}}}catalogue/">See all {len(items)} listings</a></p>' if len(items) > lim else "")
 
 TRY = ["Tesla Model Y tail lamp", "Denza D9 rear reflector", "atto3 headlight", "MG4 side mirror", "zeekr 001 bonnet", "sticker bumper model y"]
-def search_box(idp, ph="Brand, model and part, e.g. Tesla Model Y tail lamp", action="{{R}}catalogue/", live=True, tries=TRY, big=True):
+def search_box(idp, ph="e.g. my Model Y back light", action="{{R}}catalogue/", live=True, tries=TRY, big=True):
     ch = "".join(f'<button type="button" data-try="{e(t)}">{e(t)}</button>' for t in tries)
     return f'''<form class="sbox{" big" if big else ""}" role="search" action="{action}" method="get" data-search="{idp}">
 <label class="sr" for="{idp}-q">Search the catalogue</label>
+<p class="shint">Type it the way you would say it.</p>
 <div class="srow">{UI["search"]}<input id="{idp}-q" class="sin" name="q" type="search" autocomplete="off" autocapitalize="off" spellcheck="false" enterkeyhint="search" placeholder="{e(ph)}"><button class="btn btn-p" type="submit">Search</button></div>
-<p class="try"><span>Try:</span>{ch}</p>
 <div class="sres" id="{idp}-res" aria-live="polite"></div></form>'''
 
 def brandchips(r="{{R}}", marquee=True):
@@ -489,6 +489,7 @@ def catalogue():
 <section class="sec tight"><div class="wrap">
 <form class="sbox" id="cat-form" role="search" action="" method="get" data-search="cq">
 <label class="sr" for="cq-q">Search</label>
+<p class="shint">Type it the way you would say it.</p>
 <div class="srow">{UI["search"]}<input id="cq-q" class="sin" name="q" type="search" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="Brand, model and part, e.g. Tesla Model Y tail lamp"><button class="btn btn-p" type="submit">Search</button></div>
 <div class="filters"><label>Brand<select name="brand" id="f-brand"><option value="">All brands</option>{brandopts}</select></label>
 <label>Model<select name="model" id="f-model"><option value="">All models</option></select></label>
@@ -1027,12 +1028,13 @@ def catalogue():
 <section class="sec tight"><div class="wrap">
 <form class="sbox" id="cat-form" role="search" action="" method="get" data-search="cq">
 <label class="sr" for="cq-q">Search</label>
-<div class="srow">{UI["search"]}<input id="cq-q" class="sin" name="q" type="search" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="e.g. Tesla Model Y tail lamp"><button class="btn btn-p" type="submit">Search</button></div>
+<p class="shint">Type it the way you would say it.</p>
+<div class="srow">{UI["search"]}<input id="cq-q" class="sin" name="q" type="search" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="e.g. my Model Y back light"><button class="btn btn-p" type="submit">Search</button></div>
 <div class="filters"><label>Brand<select name="brand" id="f-brand"><option value="">All brands</option>{brandopts}</select></label>
 <label>Model<select name="model" id="f-model"><option value="">All models</option></select></label>
 <label>Part<select name="part" id="f-part"><option value="">All parts</option>{partopts}</select></label>
 <button class="btn btn-g btn-s" type="button" id="f-clear">Clear</button></div>
-<p class="try"><span>Try:</span>{"".join(f'<button type="button" data-try="{e(t)}">{e(t)}</button>' for t in TRY[:4])}</p>
+
 </form>
 <div class="count" id="cat-count" aria-live="polite"></div>
 <div class="sres full" id="cat-res"></div>
