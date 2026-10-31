@@ -497,12 +497,12 @@ def build_sets():
 {f'<h2>Optional add-ons</h2><p>Not included in the set price. Tell us on WhatsApp if you want them{"; rear top mounts are only used on some models, so we confirm with your chassis number" if any(it["part"]["id"] == "rear-top-mount" for it in st["adds"]) else ""}.</p><div class="tbl"><table><thead><tr><th>Part</th><th class="r">Qty</th><th class="r">Each</th><th class="r">Subtotal</th></tr></thead><tbody>{adds}</tbody></table></div>' if adds else ""}
 <p><a class="btn ghost" href="{r}{m["b"]}/{m["id"]}/">All parts for the {e(bn)} {e(mn(m))}</a></p></div></section>'''
             prod = {"@type": "Product", "@id": BASE + "/" + st["url"] + "#product", "name": f"{st['name']} for {bn} {mpar(m)}",
-                    "sku": f"{m['b']}-{m['id']}-{st['id']}", "category": "Service kits and repair sets", "image": [BASE + "/og.jpg"],
+                    "sku": f"{m['b']}-{m['id']}-{st['id']}", "category": "Service kits and repair sets", "image": [BASE + "/assets/parts/" + it["part"]["id"] + ".jpg" for it in st["items"][:4]],
                     "brand": {"@type": "Brand", "name": bn}, "description": f"{st['line']}. Set for the {bn} {mn(m)} ({myears(m)}), sold by Autotex in Singapore.",
                     "isRelatedTo": {"@type": "Car", "name": f"{bn} {mn(m)}", "brand": {"@type": "Brand", "name": bn}}}
             if st["price"] is not None:
                 prod["offers"] = {"@type": "Offer", "url": BASE + "/" + st["url"], "priceCurrency": "SGD", "price": f'{st["price"]:.2f}',
-                                  "seller": {"@id": BASE + "/#store"}, "areaServed": "SG"}
+                                  "availability": AVAIL["in"], "seller": {"@id": BASE + "/#store"}, "areaServed": "SG"}
             tp = f" {money(st['price'])}" if st["price"] is not None else ""
             title = f"{st['name']} {bn} {mn(m)}{tp} | Autotex"
             if len(title) > 60: title = f"{st['name']} {bn} {mn(m)}{tp}"
@@ -623,7 +623,7 @@ def build_products():
 {rel_h}
 {om_h}'''
         prod = {"@type": "Product", "@id": BASE + "/" + x["url"] + "#product", "name": f"{x['title'].split(' for ')[0]} for {bn} {mpar(m)}",
-                "sku": x["id"], "category": c["name"], "image": [u for _, u in ph] or [BASE + "/og.jpg"],
+                "sku": x["id"], "category": c["name"], "image": [u for _, u in ph] or [BASE + "/assets/parts/" + p["id"] + ".jpg"],
                 "brand": {"@type": "Brand", "name": bn},
                 "description": desc_t + (f". {x['note']}" if x["note"] else "") + ". Sold by Autotex, Kia and Hyundai parts stockist in Singapore.",
                 "isRelatedTo": {"@type": "Car", "name": f"{bn} {mn(m)}", "brand": {"@type": "Brand", "name": bn}}}
@@ -631,7 +631,7 @@ def build_products():
         if show_price(x):
             off = {"@type": "Offer", "url": BASE + "/" + x["url"], "priceCurrency": "SGD", "price": f'{x["price"]:.2f}',
                    "seller": {"@id": BASE + "/#store"}, "areaServed": "SG"}
-            if x["stock"] in AVAIL: off["availability"] = AVAIL[x["stock"]]
+            off["availability"] = AVAIL.get(x["stock"] or "in", AVAIL["in"])  # Edwin 31 Oct: parts are in stock
             prod["offers"] = off
         tprice = f" {money(x['price'])}" if show_price(x) else ""
         title = f"{p['name']} {bn} {mn(m)}{tprice} | Autotex"
