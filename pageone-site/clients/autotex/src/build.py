@@ -425,7 +425,7 @@ def car_sets(m):
                 rs.append(dict(part=pt, qty=q, x=mine.get(pid)))
             return rs
         items, adds = rows(inc), rows(opt)
-        if len(items) < 3: continue   # e.g. service kits on an electric car
+        if len(items) < 2: continue   # e.g. service kits on an electric car
         priced = all(it["x"] and show_price(it["x"]) for it in items)
         total = sum(it["x"]["price"] * it["qty"] for it in items) if priced else None
         price = int(round(total * (1 - SET_DISCOUNT))) if priced else None
@@ -476,7 +476,7 @@ def build_sets():
 </div></section>
 <section class="sec"><div class="wrap"><h2>What is in the set</h2>
 <div class="tbl"><table><thead><tr><th>Part</th><th class="r">Qty</th><th class="r">Each</th><th class="r">Subtotal</th></tr></thead><tbody>{lines}</tbody></table></div>
-{f'<h2>Optional add-ons</h2><p>Not included in the set price. Tell us on WhatsApp if you want them.</p><div class="tbl"><table><thead><tr><th>Part</th><th class="r">Qty</th><th class="r">Each</th><th class="r">Subtotal</th></tr></thead><tbody>{adds}</tbody></table></div>' if adds else ""}
+{f'<h2>Optional add-ons</h2><p>Not included in the set price. Tell us on WhatsApp if you want them{"; rear top mounts are only used on some models, so we confirm with your chassis number" if any(it["part"]["id"] == "rear-top-mount" for it in st["adds"]) else ""}.</p><div class="tbl"><table><thead><tr><th>Part</th><th class="r">Qty</th><th class="r">Each</th><th class="r">Subtotal</th></tr></thead><tbody>{adds}</tbody></table></div>' if adds else ""}
 <p><a class="btn ghost" href="{r}{m["b"]}/{m["id"]}/">All parts for the {e(bn)} {e(mn(m))}</a></p></div></section>'''
             prod = {"@type": "Product", "@id": BASE + "/" + st["url"] + "#product", "name": f"{st['name']} for {bn} {mpar(m)}",
                     "sku": f"{m['b']}-{m['id']}-{st['id']}", "category": "Service kits and repair sets", "image": [BASE + "/og.jpg"],

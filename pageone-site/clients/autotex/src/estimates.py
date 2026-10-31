@@ -16,6 +16,7 @@ BASE = {  # part id: S$ per unit in catalog.py (side parts are per side). Revise
     # added 31 Oct 2026 for the service kits and sets (ATF S$44 vs S$46 genuine 4 L at autopartsdirect.com.sg)
     "engine-oil": 55, "transmission-oil": 44, "strut-top-mount": 60, "strut-bearing": 28, "control-arm-bush": 28,
     "steering-rack": 650, "radiator-cap": 15, "thermostat-housing": 45, "upper-radiator-hose": 35, "lower-radiator-hose": 40,
+    "rear-bump-stop": 25, "rear-top-mount": 45,
 }
 LOOKS = {"body-parts", "lamps"}  # categories scaled by the body/lamp factor
 SIZE = {  # (body/lamp factor, mechanical factor)

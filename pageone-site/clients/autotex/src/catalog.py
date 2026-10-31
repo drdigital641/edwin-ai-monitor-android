@@ -69,6 +69,8 @@ PARTS = [
     ('strut-top-mount', 'suspension', 'Strut Top Mount', ['top mount', 'strut mount', 'absorber mount', 'top mounting', 'shock mount'], True, 'piece', 'any'),
     ('strut-bearing', 'suspension', 'Strut Top Bearing', ['top bearing', 'strut bearing', 'bearing stopper', 'absorber bearing', 'top bearing stopper'], True, 'piece', 'any'),
     ('control-arm-bush', 'suspension', 'Lower Arm Bush', ['bush', 'lower arm bush', 'control arm bush', 'arm bush', 'bushing'], True, 'piece', 'any'),
+    ('rear-bump-stop', 'suspension', 'Rear Absorber Stopper (Bump Stop)', ['rear stopper', 'bump stop', 'stopper', 'rear bump stop', 'absorber stopper', 'bump stopper'], True, 'piece', 'any'),
+    ('rear-top-mount', 'suspension', 'Rear Absorber Top Mount', ['rear top mount', 'rear absorber mount', 'rear shock mount', 'rear top mounting'], True, 'piece', 'any'),
     ('steering-rack', 'suspension', 'Steering Rack', ['steering rack', 'rack', 'power steering rack', 'steering gear'], False, 'piece', 'any'),
     ('radiator-cap', 'cooling-aircon', 'Radiator Cap', ['radiator cap', 'coolant cap', 'pressure cap'], False, 'piece', 'ice'),
     ('thermostat-housing', 'cooling-aircon', 'Thermostat Housing (Outlet)', ['thermostat housing', 'thermostat outlet', 'water outlet', 'thermostat cover'], False, 'piece', 'ice'),
@@ -102,6 +104,9 @@ BUNDLES = [
     ("front-suspension-set", "Front Suspension Set", "Absorbers, top mounts, top bearings, links, bushes and lower arms (both sides)",
      [("front-shock-absorber", 2), ("strut-top-mount", 2), ("strut-bearing", 2), ("stabilizer-link", 2), ("control-arm-bush", 2), ("lower-control-arm", 2)],
      [("steering-rack", 1)]),
+    ("rear-suspension-set", "Rear Suspension Set", "Rear absorbers and stoppers (both sides); rear top mounts on models that use them",
+     [("rear-shock-absorber", 2), ("rear-bump-stop", 2)],
+     [("rear-top-mount", 2)]),
     ("cooling-system-set", "Cooling System Set", "Radiator, cap, thermostat and outlet, hoses, water pump and fan motor",
      [("radiator", 1), ("radiator-cap", 1), ("thermostat", 1), ("thermostat-housing", 1), ("upper-radiator-hose", 1), ("lower-radiator-hose", 1), ("water-pump", 1), ("radiator-fan", 1)], []),
 ]
