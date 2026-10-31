@@ -419,6 +419,48 @@
     var f = $('.m-x', m); if (f) f.focus();
   }
 
+
+  /* guide chips: tap to finish the query, brand -> model -> part (no chatbot, no AI call) */
+  var GTOP = ['headlamp', 'tail-lamp', 'front-bumper', 'rear-bumper', 'side-mirror', 'grille', 'bonnet', 'windscreen'];
+  function guide(form, input, onPick) {
+    var row = $('.srow', form); if (!row) return function () { };
+    var g = document.createElement('div'); g.className = 'sguide'; g.setAttribute('aria-label', 'Suggestions'); row.parentNode.insertBefore(g, row.nextSibling);
+    function nm(x) { return String(x).replace(/ — /g, ' '); }
+    function draw() {
+      if (!S.brands.length) { g.innerHTML = ''; return; }
+      var q = input.value, P = parse(q), raw = q.replace(/\s+$/, ''), ends = /\s$/.test(q) || !q;
+      var lw = ends ? '' : (raw.split(/\s+/).pop() || '').toLowerCase(), label, list;
+      if (!P.brand) { label = 'Pick your car:'; var PR = ['tesla', 'byd', 'mg', 'zeekr']; list = S.brands.slice().sort(function (a, b) { var x = PR.indexOf(a.key), y = PR.indexOf(b.key); return (x < 0 ? 9 : x) - (y < 0 ? 9 : y); }).map(function (b) { return b.name; }); }
+      else if (!P.model) { label = brandName(P.brand) + ' model:'; list = S.cars.filter(function (c) { return c.b === P.brand; }).map(function (c) { return nm(c.name); }); }
+      else if (!P.hasPart) { label = 'Which part?'; list = GTOP.filter(function (s) { return PARTM[s]; }).map(partName); }
+      else { g.innerHTML = ''; return; }
+      var seen = {}; list = list.filter(function (x) { var k = x.toLowerCase(); if (seen[k]) return false; seen[k] = 1; return true; });
+      var f = lw ? list.filter(function (x) { return x.toLowerCase().split(/\s+/).some(function (w) { return w.indexOf(lw) === 0; }) || x.toLowerCase().indexOf(lw) === 0; }) : [];
+      var rep = f.length > 0; if (rep) list = f;
+      g.innerHTML = '<span class="gl">' + esc(label) + '</span>' + list.slice(0, 8).map(function (x) { return '<button type="button" data-g="' + esc(x) + '" data-r="' + (rep ? 1 : 0) + '">' + esc(x) + '</button>'; }).join('');
+    }
+    g.addEventListener('click', function (ev) {
+      var b = ev.target.closest('[data-g]'); if (!b) return;
+      var v = input.value.replace(/\s+$/, ''), t = b.getAttribute('data-g');
+      if (b.getAttribute('data-r') === '1') v = v.replace(/\S+$/, '').replace(/\s+$/, '');
+      input.value = (v ? v + ' ' : '') + t + ' '; draw(); onPick(); input.focus({ preventScroll: true });
+    });
+    input.addEventListener('input', draw); input.addEventListener('focus', draw);
+    renderers.push(draw); draw();
+    return draw;
+  }
+  /* placeholder types out examples while the box is empty */
+  function typePh(input) {
+    if (!input || (window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches)) return;
+    var ex = ['my Model Y back light', 'BYD Atto 3 front bumper', 'MG4 side mirror', 'Zeekr 001 headlight', 'Model 3 bonnet'], i = 0, k = 0, dir = 1, base = input.placeholder;
+    function tick() {
+      if (input.value || document.activeElement === input) { input.placeholder = base; return setTimeout(tick, 1200); }
+      var w = ex[i]; k += dir; input.placeholder = 'e.g. ' + w.slice(0, k);
+      var d = 70; if (k >= w.length) { dir = -1; d = 1600; } else if (k <= 0) { dir = 1; i = (i + 1) % ex.length; d = 300; } else if (dir < 0) d = 30;
+      setTimeout(tick, d);
+    }
+    setTimeout(tick, 900);
+  }
   function initSearchBox(form) {
     var id = form.getAttribute('data-search'), input = $('.sin', form), res = $('.sres', form);
     if (id === 'cq' || !res || !input) return;
@@ -426,6 +468,7 @@
     var run = function () { renderSearch(res, input.value, { limit: 6, seeAll: ROOT + 'catalogue/' }); };
     input.addEventListener('input', debounce(run, 120));
     renderers.push(function () { if (norm(input.value)) run(); });
+    guide(form, input, run); typePh(input);
     $$('[data-try]', form).forEach(function (b) { b.addEventListener('click', function () { input.value = b.getAttribute('data-try'); run(); input.focus({ preventScroll: true }); if (res.scrollIntoView && home && window.innerWidth < 760) setTimeout(function () { res.scrollIntoView({ behavior: 'smooth', block: 'start' }); }, 60); }); });
     var u = new URLSearchParams(location.search); if (u.get('q') && home) { input.value = u.get('q'); run(); }
   }
@@ -458,6 +501,7 @@
     fb.addEventListener('change', function () { fm.value = ''; fillModels(); run(true); });
     fm.addEventListener('change', function () { run(true); }); fp.addEventListener('change', function () { run(true); });
     input.addEventListener('input', debounce(function () { run(true); }, 120));
+    guide(form, input, function () { run(true); }); typePh(input);
     form.addEventListener('submit', function (ev) { ev.preventDefault(); run(true); });
     $('#f-clear').addEventListener('click', function () { input.value = ''; fb.value = ''; fm.value = ''; fp.value = ''; fillModels(); run(true); });
     $$('[data-try]', form).forEach(function (b) { b.addEventListener('click', function () { input.value = b.getAttribute('data-try'); fb.value = ''; fm.value = ''; fp.value = ''; fillModels(); run(true); }); });

@@ -411,7 +411,7 @@ def search_box(idp, ph="e.g. my Model Y back light", action="{{R}}catalogue/", l
     ch = "".join(f'<button type="button" data-try="{e(t)}">{e(t)}</button>' for t in tries)
     return f'''<form class="sbox{" big" if big else ""}" role="search" action="{action}" method="get" data-search="{idp}">
 <label class="sr" for="{idp}-q">Search the catalogue</label>
-<p class="shint">Type it the way you would say it.</p>
+<p class="shint"><span class="pt" aria-hidden="true">&#128071;</span> Type it the way you would say it.</p>
 <div class="srow">{UI["search"]}<input id="{idp}-q" class="sin" name="q" type="search" autocomplete="off" autocapitalize="off" spellcheck="false" enterkeyhint="search" placeholder="{e(ph)}"><button class="btn btn-p" type="submit">Search</button></div>
 <div class="sres" id="{idp}-res" aria-live="polite"></div></form>'''
 
@@ -489,7 +489,7 @@ def catalogue():
 <section class="sec tight"><div class="wrap">
 <form class="sbox" id="cat-form" role="search" action="" method="get" data-search="cq">
 <label class="sr" for="cq-q">Search</label>
-<p class="shint">Type it the way you would say it.</p>
+<p class="shint"><span class="pt" aria-hidden="true">&#128071;</span> Type it the way you would say it.</p>
 <div class="srow">{UI["search"]}<input id="cq-q" class="sin" name="q" type="search" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="Brand, model and part, e.g. Tesla Model Y tail lamp"><button class="btn btn-p" type="submit">Search</button></div>
 <div class="filters"><label>Brand<select name="brand" id="f-brand"><option value="">All brands</option>{brandopts}</select></label>
 <label>Model<select name="model" id="f-model"><option value="">All models</option></select></label>
@@ -1028,7 +1028,7 @@ def catalogue():
 <section class="sec tight"><div class="wrap">
 <form class="sbox" id="cat-form" role="search" action="" method="get" data-search="cq">
 <label class="sr" for="cq-q">Search</label>
-<p class="shint">Type it the way you would say it.</p>
+<p class="shint"><span class="pt" aria-hidden="true">&#128071;</span> Type it the way you would say it.</p>
 <div class="srow">{UI["search"]}<input id="cq-q" class="sin" name="q" type="search" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="e.g. my Model Y back light"><button class="btn btn-p" type="submit">Search</button></div>
 <div class="filters"><label>Brand<select name="brand" id="f-brand"><option value="">All brands</option>{brandopts}</select></label>
 <label>Model<select name="model" id="f-model"><option value="">All models</option></select></label>

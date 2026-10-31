@@ -409,3 +409,12 @@ body{padding-bottom:0!important}
 .whys li{border:1px solid rgba(255,255,255,.09);border-radius:16px;padding:20px 22px;background:rgba(255,255,255,.025)}
 .whys h3{margin:0 0 6px;font-size:1.08rem}.whys p{margin:0;color:#C9C9D0;font-size:.95rem;line-height:1.55}
 .shint{margin:0 0 10px;color:var(--silver);font-size:.95rem}
+.shint .pt{display:inline-block;animation:ptb 1.1s ease-in-out infinite}
+@keyframes ptb{0%,100%{transform:translateY(-2px)}50%{transform:translateY(6px)}}
+.sbox:focus-within .pt{animation:none;opacity:.55}
+.sguide{display:flex;flex-wrap:wrap;gap:8px;margin-top:10px;align-items:center}
+.sguide:empty{display:none}
+.sguide .gl{color:var(--mu);font-size:.85rem;margin-right:2px}
+.sguide button{font:inherit;font-size:.9rem;color:var(--tx,#fff);background:rgba(255,255,255,.06);border:1px solid var(--line2);border-radius:999px;padding:7px 13px;cursor:pointer;min-height:36px}
+.sguide button:hover,.sguide button:focus-visible{border-color:var(--red2);background:rgba(25,227,177,.12)}
+@media(prefers-reduced-motion:reduce){.shint .pt{animation:none}}
