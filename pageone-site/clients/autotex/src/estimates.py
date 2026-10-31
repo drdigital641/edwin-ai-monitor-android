@@ -1,15 +1,18 @@
 """Rough Singapore stockist price estimates (S$, parts only, OEM-quality) used ONLY to pre-fill the
 staff "Add prices" tab. Staff check each one before saving; nothing here is shown on the shop.
 BASE is for a mid-size car (Avante / Cerato class); per-car factors scale it."""
-BASE = {  # part id: S$ per unit in catalog.py (side parts are per side)
-    "front-bumper": 220, "rear-bumper": 200, "bonnet": 280, "front-grille": 150, "front-fender": 120,
-    "side-mirror": 180, "wiper-blades": 25, "headlamp": 380, "tail-lamp": 180, "fog-lamp": 70,
-    "front-brake-pads": 70, "rear-brake-pads": 60, "front-brake-discs": 140, "rear-brake-discs": 120,
-    "front-shock-absorber": 150, "rear-shock-absorber": 110, "lower-control-arm": 110, "stabilizer-link": 40,
-    "tie-rod-end": 45, "wheel-bearing": 120, "engine-mount": 120, "gearbox-mount": 100, "spark-plugs": 60,
-    "ignition-coil": 70, "oil-filter": 12, "air-filter": 25, "drive-belt": 45, "water-pump": 150,
-    "thermostat": 60, "radiator": 220, "radiator-fan": 250, "aircon-compressor": 550, "aircon-condenser": 200,
-    "cabin-filter": 20, "alternator": 380, "starter-motor": 300,
+BASE = {  # part id: S$ per unit in catalog.py (side parts are per side). Revised 31 Oct 2026 (Edwin):
+    # service items at or just under Singapore genuine retail (autopartsdirect.com.sg, Oct 2026: oil filter S$9-16,
+    # air filter S$18-34, cabin filter S$20-38, spark plug S$9-27 each, brake pads S$74-149, engine mounts S$69-172);
+    # body parts and lamps raised towards typical Singapore stockist prices.
+    "front-bumper": 320, "rear-bumper": 300, "bonnet": 420, "front-grille": 180, "front-fender": 180,
+    "side-mirror": 260, "wiper-blades": 25, "headlamp": 520, "tail-lamp": 260, "fog-lamp": 90,
+    "front-brake-pads": 95, "rear-brake-pads": 70, "front-brake-discs": 160, "rear-brake-discs": 140,
+    "front-shock-absorber": 170, "rear-shock-absorber": 130, "lower-control-arm": 140, "stabilizer-link": 45,
+    "tie-rod-end": 55, "wheel-bearing": 160, "engine-mount": 100, "gearbox-mount": 90, "spark-plugs": 42,
+    "ignition-coil": 75, "oil-filter": 8, "air-filter": 18, "drive-belt": 40, "water-pump": 140,
+    "thermostat": 55, "radiator": 260, "radiator-fan": 280, "aircon-compressor": 650, "aircon-condenser": 240,
+    "cabin-filter": 22, "alternator": 420, "starter-motor": 340,
 }
 LOOKS = {"body-parts", "lamps"}  # categories scaled by the body/lamp factor
 SIZE = {  # (body/lamp factor, mechanical factor)
