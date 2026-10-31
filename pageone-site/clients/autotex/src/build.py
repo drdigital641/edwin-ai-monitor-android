@@ -313,7 +313,7 @@ def finder(r, b=None, m=None):
 <label><span>3. Part</span><select name="p" data-f="p"><option value="">Choose part</option></select></label></div>''')
     return f'''<form class="finder" data-finder action="{r}search/">
 {sel}
-<div class="f-hint" aria-hidden="true"><span>Start here: type your car and part</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M12 4v15M6 13l6 6 6-6"/></svg></div>
+<p class="f-hint"><span class="pt" aria-hidden="true">&#128071;</span> Type it the way you would say it.</p>
 <div class="f-q"><input name="q" type="search" placeholder="e.g. Kia Cerato front brake pads" aria-label="Search parts, for example Kia Cerato front brake pads" autocomplete="off"><button class="btn dark" type="submit">{ICON['search']}<span>Search</span></button></div>
 <div class="fguide" data-guide aria-label="Suggestions"></div>
 <noscript><p class="small">Search needs JavaScript. Browse by <a href="{r}hyundai/">Hyundai</a>, <a href="{r}kia/">Kia</a> or the <a href="{r}prices/">price list</a>.</p></noscript>
@@ -646,7 +646,7 @@ def build_products():
         if len(title) > 60: title = f"{p['name']} {bn} {mn(m)}{tprice}"
         shell(path, title, f"{desc_t}.{(' ' + money(x['price']) + ' per ' + p['unit'] + '.') if show_price(x) else ' Ask for the price on WhatsApp.'} Kia and Hyundai parts stockist in Kaki Bukit.",
               body, active=m["b"], crumbs=[(f"{bn} parts", f"{m['b']}/"), (f"{mpar(m)}", f"{m['b']}/{m['id']}/"), (p["name"], x["url"])],
-              schema=[prod], prio="0.7", og_type="product", og_image=ph[0][1] if ph else None, og_alt=x["title"])
+              schema=[prod], index=False, prio="0.7", og_type="product", og_image=ph[0][1] if ph else None, og_alt=x["title"])
 
 # ---------------- category pages ----------------
 def build_cats():

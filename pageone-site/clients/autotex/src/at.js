@@ -463,7 +463,7 @@
     function pick(text, fn) { inp.value = text + " "; fn(); draw(); inp.focus({ preventScroll: true }); }
     function draw() {
       var q = inp.value, lw = lastWord(q).toLowerCase(), b = sb.value, m = M[sm.value], label, items = [];
-      if (!b) { label = "Step 1: tap your brand";
+      if (!b) { label = "Pick your car:";
         items = AT.brands.map(function (x) { return { t: x.name, id: x.id, k: "b" }; }); }
       else if (!m) { label = BR[b].name + " models: tap yours";
         items = AT.models.filter(function (x) { return x.b === b && x.name; }).map(function (x) { return { t: x.name + (x.code ? " " + x.code : ""), id: x.id, k: "m" }; }); }
