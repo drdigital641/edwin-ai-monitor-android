@@ -100,6 +100,8 @@ IMG_PIN.update({n: '79ce94d8ea67d1d10cc0a78597c7421b60c6089b' for n in (
     'mercedes-srs-neck-pro-codes', 'mercedes-airbag-warning-cluster')})  # Mercedes airbag job photos, 29 Oct 2026
 IMG_PIN.update({n: 'b2f18f12c4a1c3b706a7db58fec6eca620083ea5' for n in (
     'toyota-alphard-abs-codes', 'toyota-alphard-new-actuator', 'toyota-alphard-old-vs-new-actuator')})  # Alphard job, 30 Oct 2026
+IMG_PIN.update({n: '2332c72c9a8c659e3c83adc897109aac049c9cd5' for n in (
+    'toyota-chr-hybrid-rear', 'toyota-chr-battery-in-car', 'toyota-chr-battery-removed', 'toyota-chr-battery-opened')})  # C-HR hybrid battery job, 31 Oct 2026
 
 
 def u(path=''):

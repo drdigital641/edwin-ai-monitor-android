@@ -1174,4 +1174,43 @@ ARTICLES = [
              ('Does code 16352 mean the ABS module is dead?', 'It means the scan tool reports the control module as defective. On this car, with the pump code and several sensor codes at the same time, we repaired the car’s own ABS module and the faults were cleared.'),
              ('Should I replace the wheel speed sensors first?', 'Not on the codes alone. When the pump and module codes appear with sensor codes, the module can be the cause of all of them, so every code is read and the simple causes ruled out before parts are replaced.')],
     ),
+    dict(
+        # Real job photos from Edwin, 31 Oct 2026: Toyota C-HR Hybrid, Ni-MH hybrid battery under the rear seat, the pack
+        # removed and the cover off. The photos do not show a fault code, the cause, or what was fitted (new pack,
+        # new or reconditioned modules): do not add any of these until Edwin confirms. Plate blurred in the source copy.
+        slug='toyota-chr-hybrid-battery-removal', service='hybrid-battery-replacement', date='2026-10-31', img_commit='2332c72c9a8c659e3c83adc897109aac049c9cd5',
+        title='Toyota C-HR Hybrid Battery: Where It Is and How It Comes Out | The ECU Clinic',
+        desc='A Toyota C-HR Hybrid in our workshop: the Ni-MH hybrid battery under the rear seat, taken out and opened on the bench. What it looks like inside and what to know before replacing one.',
+        h1='Toyota C-HR Hybrid Battery: Taken Out From Under the Rear Seat',
+        lead='A real job from our workshop: a Toyota C-HR Hybrid with its hybrid battery out of the car and the cover off. Here is where the pack sits, what is inside, and why it is checked before anything is replaced.',
+        photo='toyota-chr-battery-opened', alt='Toyota C-HR Hybrid nickel-metal hydride battery pack with the cover off, showing the row of battery modules',
+        share='toyota-chr-hybrid-battery-opened.jpg',
+        body='''<p><strong>Short answer:</strong> on the Toyota C-HR Hybrid the high-voltage hybrid battery sits <strong>under the rear seat</strong>. It is a <strong>nickel-metal hydride (Ni-MH)</strong> pack, as its label says. To reach it, the rear seat cushion comes out, the high-voltage system is made safe, and the pack is unbolted and lifted out of the floor.</p>
+<p><img src="{img:toyota-chr-hybrid-rear}" alt="Silver Toyota C-HR with Hybrid Synergy Drive badge in The ECU Clinic workshop, number plate blurred" width="640" height="480" loading="lazy" style="width:100%;height:auto;border-radius:12px"></p>
+<h2>Where is the hybrid battery on a Toyota C-HR?</h2>
+<p>Under the rear seat cushion, in the floor of the car. With the cushion out you can see the pack: a long silver case with the orange high-voltage cables and the battery junction block at one end. On the C-HR the pack is a single unit across the width of the car.</p>
+<p><img src="{img:toyota-chr-battery-in-car}" alt="Toyota C-HR Hybrid battery under the rear seat with the seat cushion removed, orange high-voltage cables at one end" width="640" height="480" loading="lazy" style="width:100%;height:auto;border-radius:12px"></p>
+<p>The orange cables carry high voltage. The label on the pack carries a <em>danger</em> warning in Japanese and says it contains an alkaline electrolyte. Before the pack is unbolted, the high-voltage system has to be shut down and isolated as the repair manual describes. This is a job for trained hands and insulated tools.</p>
+<h2>The pack out of the car</h2>
+<p>Out of the car, the pack is easier to inspect and to work on safely on the floor of the workshop.</p>
+<p><img src="{img:toyota-chr-battery-removed}" alt="Toyota C-HR Hybrid Ni-MH battery pack removed from the car, lying on the workshop floor with its cover on" width="640" height="480" loading="lazy" style="width:100%;height:auto;border-radius:12px"></p>
+<h2>What is inside a C-HR hybrid battery?</h2>
+<p>With the cover off you can see how the pack is built: a long row of identical battery modules held together in one stack, with sensing wires running along the top and the junction block with the main high-voltage connections at the end. The photo at the top of this page shows this pack open.</p>
+<p>Because the pack is made of many modules in series, one weak module can pull the whole pack down. That is why a hybrid battery warning is read and checked properly before anyone decides what to replace.</p>
+<h2>Check before you replace</h2>
+<p>A hybrid system warning can come from the battery pack or from other parts of the hybrid system. We read the fault codes first, so you only replace the battery when the battery is the problem. When it is, we fit a <a href="../../services/hybrid-battery-replacement/">brand-new OEM hybrid battery</a>, with a warranty of 1 year or 100,000 km.</p>
+<p>Common signs that a hybrid battery is getting weak:</p>
+<ul class="ticks">
+<li>A hybrid system warning on the dashboard.</li>
+<li>The car uses more petrol than it used to.</li>
+<li>The engine starts more often, even at low speed.</li>
+<li>The battery level on the display drops or rises quickly.</li>
+</ul>
+<h2>What should I send?</h2>
+<p>WhatsApp us your car model and year, and the fault code or a photo of the warning if you have one. We will check availability and price for your car. You can find us at Premier @ Kaki Bukit, or use our pick-up and delivery service.</p>''',
+        faq=[('Where is the hybrid battery on a Toyota C-HR?', 'Under the rear seat cushion, in the floor of the car. The cushion comes out to reach it.'),
+             ('What type of hybrid battery does the Toyota C-HR Hybrid in this job use?', 'A nickel-metal hydride (Ni-MH) pack, as printed on the label of the pack we took out.'),
+             ('Can I take the hybrid battery out myself?', 'No. The pack and its orange cables carry high voltage. The system must be shut down and isolated as the repair manual describes, with insulated tools, before the pack is unbolted.'),
+             ('What hybrid battery do you fit?', 'Brand-new OEM hybrid batteries, with a warranty of 1 year or 100,000 km. WhatsApp us your car model and year to check availability and price.')],
+    ),
 ]
