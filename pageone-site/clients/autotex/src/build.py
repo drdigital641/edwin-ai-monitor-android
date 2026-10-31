@@ -15,6 +15,7 @@ import html, json, sys, datetime, hashlib, shutil, re
 from pathlib import Path
 from urllib.parse import quote
 from catalog import BRANDS, CATS, PARTS, fits, BUNDLES, SET_DISCOUNT
+from specs import spec, GB_LABEL
 
 HERE = Path(__file__).resolve().parent
 OUT = Path(sys.argv[1] if len(sys.argv) > 1 else HERE.parent / "site")
@@ -410,6 +411,14 @@ def build_brands():
               body, active=bid, crumbs=[(f"{bn} parts", f"{bid}/")], prio="0.9")
 
 # ---------------- service kits and repair sets ----------------
+def spec_note(m, pid):
+    sp = spec(m["id"])
+    if not sp: return ""
+    if pid == "engine-oil": return f'{sp["grade"]} for this engine, {sp["oil_l"]:g} L fill (sold per 4 L bottle)'
+    if pid == "transmission-oil": return f'{GB_LABEL[sp["gb"]]} for the {sp["gbtext"]}, about {sp["fluid_l"]:g} L fill (sold per 4 L)'
+    if pid == "spark-plugs": return f'{sp["cyl"]} plugs for this engine'
+    return ""
+
 def car_sets(m):
     """Sets that apply to this car, with its listed parts and prices. Items that do not fit the car are left out."""
     out = []
@@ -422,12 +431,19 @@ def car_sets(m):
             for pid, q in lst:
                 pt = P.get(pid)
                 if not pt or not fits(m["fuel"], next(pp for pp in PARTS if pp[0] == pid)): continue
-                rs.append(dict(part=pt, qty=q, x=mine.get(pid)))
+                sp = spec(m["id"]); x = mine.get(pid); it = dict(part=pt, qty=q, x=x, unit=None, ql=str(q))
+                if sp and pid == "engine-oil": it.update(qty=sp["oil_l"], unit="/L", ql=f'{sp["oil_l"]:g} L')
+                elif sp and pid == "transmission-oil": it.update(qty=sp["fluid_l"], unit="/L", ql=f'{sp["fluid_l"]:g} L')
+                elif sp and pid == "spark-plugs": it.update(qty=sp["cyl"], unit="/plug", ql=f'{sp["cyl"]} plugs')
+                elif sp and pid == "ignition-coil": it.update(qty=sp["cyl"], ql=str(sp["cyl"]))
+                if it["unit"] and x and show_price(x): it["each"] = x["price"] / 4   # oils are priced per 4 L pack
+                elif x and show_price(x): it["each"] = x["price"]
+                rs.append(it)
             return rs
         items, adds = rows(inc), rows(opt)
         if len(items) < 2: continue   # e.g. service kits on an electric car
         priced = all(it["x"] and show_price(it["x"]) for it in items)
-        total = sum(it["x"]["price"] * it["qty"] for it in items) if priced else None
+        total = round(sum(it["each"] * it["qty"] for it in items)) if priced else None
         price = int(round(total * (1 - SET_DISCOUNT))) if priced else None
         out.append(dict(id=bid, name=name, line=line, items=items, adds=adds, total=total, price=price,
                         url=f"{m['b']}/{m['id']}/sets/{bid}/"))
@@ -449,12 +465,13 @@ def build_sets():
             def li(it):
                 x, pt = it["x"], it["part"]
                 link = f'<a href="{r}{x["url"]}">{e(pt["name"])}</a>' if x else e(pt["name"])
-                each = money(x["price"]) if x and show_price(x) else "Ask"
-                sub = money(x["price"] * it["qty"]) if x and show_price(x) else "Ask"
-                return f'<tr><td>{link}<small>{e(pt["unit"])}</small></td><td class="r">{it["qty"]}</td><td class="r">{each}</td><td class="r">{sub}</td></tr>'
+                ok = x and show_price(x)
+                each = (money(round(it["each"], 2)) + (it["unit"] or "")) if ok else "Ask"
+                sub = money(round(it["each"] * it["qty"])) if ok else "Ask"
+                return f'<tr><td>{link}<small>{e(spec_note(m, pt["id"]) or pt["unit"])}</small></td><td class="r">{it["ql"]}</td><td class="r">{each}</td><td class="r">{sub}</td></tr>'
             lines = "".join(li(it) for it in st["items"])
             adds = "".join(li(it) for it in st["adds"])
-            names = ", ".join(f'{it["qty"]} x {it["part"]["name"]}' if it["qty"] > 1 else it["part"]["name"] for it in st["items"])
+            names = ", ".join(f'{it["ql"]} {it["part"]["name"]}' if it["ql"] != "1" else it["part"]["name"] for it in st["items"])
             msg = (f"Hi Autotex, I'd like the {st['name']} for my {mlabel(m)} {m['years']}"
                    + (f" (set price {money(st['price'])})" if st["price"] is not None else "") + f": {names}."
                    + (" Add-ons I want (optional): " if st["adds"] else "") + " My car plate / chassis number is: ")
@@ -472,7 +489,7 @@ def build_sets():
 <p class="fits">Fits {e(bn)} {e(mn(m))}, {e(myears(m))}. {e(st["line"])}.</p>
 <div class="buy">{buy}
 <a class="btn wa big" href="{wa_link(msg)}" rel="noopener">{WA_SVG}Order this set on WhatsApp</a></div>
-<p class="fitnote">{ICON['check']}<span>We check every part against your car plate or chassis number before you pay.{" Engine oil grade and quantity are matched to your engine." if any(it["part"]["id"] == "engine-oil" for it in st["items"]) else ""}</span></p>
+<p class="fitnote">{ICON['check']}<span>We check every part against your car plate or chassis number before you pay.{" Oil grade, litres and gearbox fluid are the standard fills for your model; we confirm them with your chassis number." if any(it["part"]["id"] in ("engine-oil", "transmission-oil") for it in st["items"]) else ""}</span></p>
 </div></section>
 <section class="sec"><div class="wrap"><h2>What is in the set</h2>
 <div class="tbl"><table><thead><tr><th>Part</th><th class="r">Qty</th><th class="r">Each</th><th class="r">Subtotal</th></tr></thead><tbody>{lines}</tbody></table></div>
@@ -561,7 +578,7 @@ def build_products():
         else:
             side = ""
         msg = f"Hi Autotex, I'm asking about: {x['title']} {m['years']}. My car plate / chassis number is: "
-        note = f'<p class="note">{e(x["note"])}</p>' if x["note"] else ""
+        note = (f'<p class="note">{e(x["note"])}</p>' if x["note"] else "") + (f'<p class="note"><b>For this model:</b> {e(spec_note(m, x["p"]))}. We confirm with your chassis number.</p>' if spec_note(m, x["p"]) else "")
         desc_t = f"{p['name']} for the {bn} {m['name']} {mcy(m, myears(m))}"
         ph = x["photos"]
         thumbs = ""
