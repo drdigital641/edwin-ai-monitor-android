@@ -398,3 +398,8 @@ body{padding-bottom:0!important}
 .area .ar-ic{position:relative;display:grid;place-items:center;width:52px;height:52px;flex:none;border-radius:10px;overflow:hidden}
 .area .ar-ic img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;background:#f2f2f2}
 .illus{margin:0 16px 14px;font-size:.78rem;color:#9A9AA3}
+/* enquiry-first header quote button */
+.hd-q{display:inline-flex;align-items:center;gap:8px;height:46px;padding:0 14px;border-radius:14px;background:var(--red);color:#04110d;font:700 .82rem/1 var(--fh);letter-spacing:.05em;text-transform:uppercase;text-decoration:none}
+.hd-q svg{width:20px;height:20px}
+@media(max-width:420px){.hd-q span{display:none}.hd-q{width:46px;justify-content:center;padding:0}}
+.hero-cta{margin-top:14px}

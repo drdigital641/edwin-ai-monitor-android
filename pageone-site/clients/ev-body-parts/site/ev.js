@@ -288,8 +288,14 @@
   /* ---------- links ---------- */
   function waLink(text) { return 'https://wa.me/' + D.wa + '?text=' + encodeURIComponent('Hi ' + D.brand + ', I am looking for: ' + text + '. (from website)'); }
   function enqHref(e, suf) {
+    /* prefilled WhatsApp quote request; the VIN is never put in the link (buyer adds it in the chat if needed) */
     var veh = ((e.brandName || '') + ' ' + (e.model || '')).trim(), t = (e.ask ? (veh + ' ' + e.partName) : (e.title || e.partName)) + (suf || '');
-    if (D.wa) return waLink(t);
+    if (D.wa) {
+      var L = ['Hi ' + D.brand + ', please check fitment and quote:', 'Part: ' + t];
+      if (e.oem) L.push('OE no.: ' + e.oem);
+      L.push('Side: ' + (SIDE[e.side] || 'left / right / pair?'), 'Build month/year: ', 'Market: Singapore', 'I can send photos here. (from website)');
+      return 'https://wa.me/' + D.wa + '?text=' + encodeURIComponent(L.join('\n'));
+    }
     return ROOT + 'contact/';
   }
   function enqFree(text) { return D.wa ? waLink(text || 'a part') : ROOT + 'contact/'; }
@@ -317,6 +323,8 @@
     return artHtml(e);
   }
   function addBtn(e, cls, label) {
+    /* enquiry-first: no cart, the button opens a prefilled WhatsApp quote request */
+    return '<a class="' + cls + '" href="' + esc(enqHref(e, SPECIAL[e.part] ? ' (specialist check)' : '')) + '" data-wa="quote">' + (label || 'Get a quote') + '</a>';
     var key = e.ask ? 'ask:' + e.modelSlug + ':' + e.part : e.key;
     return '<button type="button" class="' + cls + '" data-add data-key="' + esc(key) + '" data-title="' + esc(e.title) + '" data-car="' + esc(((e.brandName || '') + ' ' + (e.model || '')).trim()) + '" data-part="' + esc(e.partName) + '" data-side="' + esc(e.side || '') + '"' + (e.price ? ' data-price="' + e.price + '"' : '') + (e.ask ? ' data-ask="1"' : '') + '>' + (label || 'Add to cart') + '</button>';
   }
@@ -324,16 +332,15 @@
     var veh = ((e.brandName || '') + ' ' + (e.model || '')).trim() || e.brandName;
     if (e.ask) {
       return '<article class="rc askc"><div class="rc-ic">' + iconSvg(e.part) + artHtml(e) + '</div><div class="rc-b"><span class="chip">' + esc(veh) + '</span><h3>' + hlTitle(e, P) + '</h3>' +
-        '<p class="rc-t">Not listed yet. Price on request.</p><div class="rc-m"><span class="pill ask">Price on request</span></div>' +
-        '<div class="rc-a">' + (SPECIAL[e.part] ? '<a class="btn btn-p btn-s" href="' + esc(enqHref(e, ' (specialist check)')) + '">Check fitment</a>' : addBtn(e, 'btn btn-p btn-s') + '<a class="btn btn-g btn-s" href="' + esc(enqHref(e)) + '">Check fitment</a>') + '</div></div></article>';
+        '<p class="rc-t">Not listed yet. We check fitment and quote.</p>' +
+        '<div class="rc-a">' + addBtn(e, 'btn btn-p btn-s', SPECIAL[e.part] ? 'Check fitment' : 'Get a quote') + '</div></div></article>';
     }
     var det = e.url ? '<a class="btn btn-g btn-s" href="' + esc(ROOT + e.url) + '">Details</a>' : '<button type="button" class="btn btn-g btn-s" data-det="' + esc(e.id) + '">Details</button>';
     return '<article class="rc"><div class="rc-ic">' + iconSvg(e.part) + mediaHtml(e) + '</div><div class="rc-b">' +
       '<span class="chip">' + esc(veh) + '</span><h3>' + hlTitle(e, P) + '</h3>' +
       '<p class="rc-t">' + esc(e.partName) + (e.oem ? ' &middot; OE ' + esc(e.oem) : '') + '</p>' +
-      '<div class="rc-m">' + (SIDE[e.side] ? '<span class="pill side">' + SIDE[e.side] + '</span>' : '') + (D.status[e.stock] ? '<span class="pill st-' + esc(e.stock) + '">' + esc(D.status[e.stock]) + '</span>' : '') +
-      (e.price ? '<span class="price">' + money(e.price) + '</span>' : '<span class="price ask">Ask for price</span>') + '</div>' +
-      '<div class="rc-a">' + (SPECIAL[e.part] ? '<a class="btn btn-p btn-s" href="' + esc(enqHref(e, ' (specialist check)')) + '">Check fitment</a>' : addBtn(e, 'btn btn-p btn-s')) + det + '</div></div></article>';
+      '<div class="rc-m">' + (SIDE[e.side] ? '<span class="pill side">' + SIDE[e.side] + '</span>' : '') + '</div>' +
+      '<div class="rc-a">' + addBtn(e, 'btn btn-p btn-s', SPECIAL[e.part] ? 'Check fitment' : 'Get a quote') + det + '</div></div></article>';
   }
   function understood(P) {
     var c = [];
@@ -360,7 +367,7 @@
     if (!norm(q) && !o.showAll) { box.innerHTML = ''; box.classList.remove('on'); return r; }
     box.classList.add('on');
     if (norm(q)) h += understood(r.P);
-    if (norm(q) && r.onlyAsk) h += '<p class="weak">No listing for that yet. Add it to the cart and we check.</p>';
+    if (norm(q) && r.onlyAsk) h += '<p class="weak">No listing for that yet. Tap Get a quote and we check.</p>';
     else if (norm(q) && r.weak && n) h += '<p class="weak">No exact match. Showing the nearest listings.</p>';
     if (norm(q) && !n) h += '<p class="weak">No listing matches that yet.</p>';
     if (n) {
@@ -386,10 +393,9 @@
     m = document.createElement('div'); m.id = 'det'; m.className = 'modal'; m.setAttribute('role', 'dialog'); m.setAttribute('aria-modal', 'true'); m.setAttribute('aria-label', e.title);
     m.innerHTML = '<div class="m-box"><button class="m-x" aria-label="Close" type="button">&times;</button><div class="m-ic">' + iconSvg(e.part) + '</div><p class="kick">' + esc(veh || e.brandName) + '</p><h2>' + esc(e.title) + '</h2>' +
       '<dl class="facts"><div><dt>Part type</dt><dd>' + esc(e.partName) + '</dd></div>' + (SIDE[e.side] ? '<div><dt>Side</dt><dd>' + SIDE[e.side] + '</dd></div>' : '') +
-      (D.status[e.stock] ? '<div><dt>Stock</dt><dd>' + esc(D.status[e.stock]) + '</dd></div>' : '') + '<div><dt>Price</dt><dd>' + (e.price ? money(e.price) : 'Ask for price') + '</dd></div>' +
-      (e.oem ? '<div><dt>Part number</dt><dd>' + esc(e.oem) + '</dd></div>' : '') + (e.grade ? '<div><dt>Grade</dt><dd>' + esc(e.grade) + '</dd></div>' : '') +
+      (e.oem ? '<div><dt>OE no.</dt><dd>' + esc(e.oem) + '</dd></div>' : '') + (e.grade ? '<div><dt>Grade</dt><dd>' + esc(e.grade) + '</dd></div>' : '') +
       (e.desc ? '<div><dt>About</dt><dd>' + esc(e.desc) + '</dd></div>' : '') + (e.note ? '<div><dt>Note</dt><dd>' + esc(e.note) + '</dd></div>' : '') + '</dl>' +
-            '<div class="btns">' + (SPECIAL[e.part] ? '<a class="btn btn-p" href="' + esc(enqHref(e, ' (specialist check)')) + '">Check fitment &amp; price</a>' : addBtn(e, 'btn btn-p') + '<a class="btn btn-g" href="' + esc(enqHref(e)) + '">Check fitment &amp; price</a>') + '</div></div>';
+            '<p class="mu small">We confirm fitment against your build date, market, trim and OE number before quoting.</p><div class="btns">' + addBtn(e, 'btn btn-p', 'Check fitment &amp; get a quote') + '</div></div>';
     document.body.appendChild(m); document.body.classList.add('noscroll');
     function close() { m.remove(); document.body.classList.remove('noscroll'); document.removeEventListener('keydown', key); }
     function key(ev) { if (ev.key === 'Escape') close(); }
@@ -535,6 +541,9 @@
     drawer.innerHTML = h;
   }
   function initCart() {
+    /* enquiry-first (31 Oct 2026): the cart is retired; clear any cart saved by the old version */
+    try { localStorage.removeItem(CK); } catch (x) {}
+    return;
     badge();
     document.addEventListener('click', function (ev) {
       var a = ev.target.closest('[data-add]');
