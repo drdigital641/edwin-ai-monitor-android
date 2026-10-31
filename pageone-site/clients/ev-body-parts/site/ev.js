@@ -432,15 +432,21 @@
       var lw = ends ? '' : (raw.split(/\s+/).pop() || '').toLowerCase(), label, list;
       if (!P.brand) { label = 'Pick your car:'; var PR = ['tesla', 'byd', 'mg', 'zeekr']; list = S.brands.slice().sort(function (a, b) { var x = PR.indexOf(a.key), y = PR.indexOf(b.key); return (x < 0 ? 9 : x) - (y < 0 ? 9 : y); }).map(function (b) { return b.name; }); }
       else if (!P.model) { label = brandName(P.brand) + ' model:'; list = S.cars.filter(function (c) { return c.b === P.brand; }).map(function (c) { return nm(c.name); }); }
-      else if (!P.hasPart) { label = 'Which part?'; list = GTOP.filter(function (s) { return PARTM[s]; }).map(partName); }
+      else if (!P.hasPart) { label = 'Which part?'; list = GTOP.filter(function (s) { return PARTM[s]; }).concat(D.parts.filter(function (pt) { return pt.slug !== 'other' && GTOP.indexOf(pt.slug) < 0 && (!pt.only || pt.only.indexOf(P.brand) >= 0); }).map(function (pt) { return pt.slug; })).map(partName); }
       else { g.innerHTML = ''; return; }
+      var gk = label + '|' + P.brand + '|' + P.model; if (gk !== lastLabel) { open = false; lastLabel = gk; }
       var seen = {}; list = list.filter(function (x) { var k = x.toLowerCase(); if (seen[k]) return false; seen[k] = 1; return true; });
       var f = lw ? list.filter(function (x) { return x.toLowerCase().split(/\s+/).some(function (w) { return w.indexOf(lw) === 0; }) || x.toLowerCase().indexOf(lw) === 0; }) : [];
       var rep = f.length > 0; if (rep) list = f;
-      g.innerHTML = '<span class="gl">' + esc(label) + '</span>' + list.slice(0, 8).map(function (x) { return '<button type="button" data-g="' + esc(x) + '" data-r="' + (rep ? 1 : 0) + '">' + esc(x) + '</button>'; }).join('');
+      /* about two rows, then "See more (+)" opens the full list */
+      var cap = window.innerWidth < 760 ? 4 : 7, more = list.length > cap + 1;
+      g.innerHTML = '<span class="gl">' + esc(label) + '</span>' + list.map(function (x, i) { return '<button type="button" data-g="' + esc(x) + '" data-r="' + (rep ? 1 : 0) + '"' + (more && i >= cap && !open ? ' hidden' : '') + '>' + esc(x) + '</button>'; }).join('') +
+        (more ? '<button type="button" class="gmore" data-more-g="1" aria-expanded="' + open + '">' + (open ? 'Show less (&minus;)' : 'See more (+' + (list.length - cap) + ')') + '</button>' : '');
     }
+    var open = false, lastLabel = '';
     g.addEventListener('click', function (ev) {
-      var b = ev.target.closest('[data-g]'); if (!b) return;
+      if (ev.target.closest('[data-more-g]')) { open = !open; draw(); return; }
+      var b = ev.target.closest('[data-g]'); if (!b) return; open = false;
       var v = input.value.replace(/\s+$/, ''), t = b.getAttribute('data-g');
       if (b.getAttribute('data-r') === '1') v = v.replace(/\S+$/, '').replace(/\s+$/, '');
       input.value = (v ? v + ' ' : '') + t + ' '; draw(); onPick(); input.focus({ preventScroll: true });
