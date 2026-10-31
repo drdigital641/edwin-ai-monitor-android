@@ -264,16 +264,17 @@ def crumbs_schema(crumbs):
 
 
 def card(frm, path, title, text, key, more='More details', small=True):
-    return ('<a class="card rv" href="%s"><div class="ph">%s</div><div class="bd"><h3>%s</h3><p>%s</p>'
+    return ('<a class="card rv" href="%s"><div class="ph">%s</div><div class="bd"><h3>%s</h3>%s'
             '<span class="more">%s</span></div></a>') % (rel(frm, path), pic(key, title + ' (AI design concept)', small=small),
-                                                        E(title), E(text), more)
+                                                        E(title), '<p>%s</p>' % E(text) if text else '', more)
 
 
-def svc_tile(frm, path):
+def svc_tile(frm, path, brief=False):
     p = ALL_CONTENT[path]
     return ('<a class="rv" href="%s"><img src="%s" width="92" height="92" alt="%s" loading="lazy" decoding="async">'
-            '<div><h3>%s</h3><p>%s</p><span class="more">More details</span></div></a>') % (
-        rel(frm, path), img_url(p['image'], True), E(SHORT.get(path, p['h1']) + ' (AI design concept)'), E(SHORT.get(path, p['h1'])), E(p['card']))
+            '<div><h3>%s</h3>%s<span class="more">More details</span></div></a>') % (
+        rel(frm, path), img_url(p['image'], True), E(SHORT.get(path, p['h1']) + ' (AI design concept)'), E(SHORT.get(path, p['h1'])),
+        '' if brief else '<p>%s</p>' % E(p['card']))
 
 
 # ---------- layout ----------
@@ -631,46 +632,44 @@ HOME_TPL = '''<section class="lux lux-full">
 <section class="intro"><div class="wrap intro-in">
 <div class="intro-l"><span class="eyebrow">Singapore retail &amp; commercial specialists</span>
 <h1>Design &amp; Build for <em>Retail</em> and <em>Commercial</em> Spaces</h1></div>
-<div class="intro-r"><p class="lede">Shops, offices, showrooms, F&amp;B and salons in Singapore. Carpentry from our own workshop, plus renovation, electrical, flooring and AVL, with one contact.</p>
+<div class="intro-r"><p class="lede">Shops, offices, F&amp;B and salons. Own carpentry workshop. One contact.</p>
 <div class="btns">{cta}<a class="btn btn-ghost" href="{services}">Explore Our Services</a></div></div>
 </div>
 <div class="wrap"><dl class="facts-line">{facts}</dl></div></section>
 
 <section class="band sand ws-band"><div class="wrap">
-<div class="head rv"><h2>Our carpentry workshop</h2><p>Counters, cabinets and shelving are made to measure in our own workshop, then installed on site.</p></div></div>
+<div class="head rv"><h2>Our carpentry workshop</h2><p>Made to measure, in house.</p></div></div>
 {workshop}</section>
 
 <section class="band"><div class="wrap">
-<div class="head rv"><h2>Our services</h2><p>One coordinated scope, or just the trade you need. Tap a service for the details.</p></div>
+<div class="head rv"><h2>Our services</h2></div>
 <div class="svc">{svcs}</div>
 <p class="rv" style="margin-top:20px"><a href="{services}">All services and AVL &rarr;</a></p></div></section>
 
 <section class="band sand"><div class="wrap">
-<div class="head rv"><h2>Spaces we work on</h2><p>A boutique, an office reception, an F&amp;B counter and a salon station each need a different layout.</p></div>
+<div class="head rv"><h2>Spaces we work on</h2></div>
 <div class="grid g4">{spaces}</div></div></section>
 
 <section class="band"><div class="wrap">
-<div class="head rv"><h2>How it works</h2><p>Six simple steps, from your first WhatsApp to handover.</p></div>
+<div class="head rv"><h2>How it works</h2></div>
 <ol class="steps">{steps}</ol></div></section>
 
 <section class="band dark"><div class="wrap avl">
 <div class="pic rv">{avlpic}</div>
 <div class="rv"><span class="eyebrow" style="color:var(--oak-l)">AVL: audio, visual and lighting</span>
 <h2>Sound, screens and light, planned with the space</h2>
-<p>Ceiling speakers, display screens and feature lighting need backing, power and cable routes. Planning them with the fit-out keeps them neat and avoids rework.</p>
-<div class="trio">{trio}</div>
 <div class="btns"><a class="btn btn-light" href="{avl}">Explore AVL</a></div></div>
 </div></section>
 
 <section class="band sand"><div class="wrap">
-<div class="head rv"><h2>Planning guides</h2><p>Useful reading for shop owners and tenants.</p></div>
+<div class="head rv"><h2>Planning guides</h2></div>
 <div class="grid g3">{guides}</div>
 <p class="rv" style="margin-top:20px"><a href="{guidesp}">All guides &rarr;</a></p></div></section>
 
 <section class="band" id="enquire"><div class="wrap enq">
-<div class="rv"><h2>Get a quote on WhatsApp</h2><p>Send what you already have. These four things are enough to start:</p>
+<div class="rv"><h2>Get a quote on WhatsApp</h2><p>Just send:</p>
 <ul class="check"><li>Floor plan or unit layout</li><li>A few photos of the unit now</li><li>What the space is for</li><li>Your target opening date</li></ul></div>
-<div class="panel rv"><h3>WhatsApp {phone}</h3><p>Tell us about your space and we'll discuss your scope.</p><div class="btns">{cta}</div></div>
+<div class="panel rv"><h3>WhatsApp {phone}</h3><div class="btns">{cta}</div></div>
 </div></section>
 
 <section class="band sand"><div class="wrap"><div class="faq" style="max-width:820px"><h2>Common questions</h2>{faqs}</div></div></section>
@@ -697,10 +696,8 @@ def build_home():
     path = '/'
     d = DAILY[0]
     dp = rel(path, '/design-concepts/concept-of-the-day/')
-    facts = [('What we do', 'Carpentry, renovation, electrical, flooring, painting and AVL'),
-             ('Specialists in', 'Singapore retail outlets &amp; commercial spaces'),
-             ('Workshop', 'Our own carpentry workshop'),
-             ('Google reviews', '&#9733;&#9733;&#9733;&#9733;&#9733; 5-star rating on Google. <a href="%s" rel="noopener" target="_blank">Read our Google reviews</a>' % GOOGLE_REVIEWS),
+    facts = [('What we do', 'Carpentry, renovation, electrical, flooring, AVL'),
+             ('Google', '&#9733;&#9733;&#9733;&#9733;&#9733; 5 stars. <a href="%s" rel="noopener" target="_blank">Read reviews</a>' % GOOGLE_REVIEWS),
              ('Enquiries', 'WhatsApp <a href="%s" rel="noopener">%s</a>' % (E(wa_link('my space', path)), PHONE_DISPLAY))]
     body = HOME_TPL.format(
         cta=cta(path, 'my space', 'WhatsApp Us'), mockup=mockup_box(path, 'mockup mockup-dark'),
@@ -711,12 +708,12 @@ def build_home():
         dnice=nice_date(d['date']), dtitle=E(d['title']),
         facts=''.join('<div><dt>%s</dt><dd>%s</dd></div>' % f for f in facts),
         real=''.join(real_fig(*r) for r in REAL), projects=rel(path, '/projects/'), workshop=workshop_carousel(),
-        svcs=''.join(svc_tile(path, s) for s in SERVICE_ORDER),
-        spaces=''.join(card(path, p['path'], SHORT[p['path']], p['card'], p['image']) for p in C_SPC.PAGES),
-        steps=''.join('<li class="rv"><strong>%s</strong><span>%s</span></li>' % (E(a), E(b)) for a, b in PROCESS),
+        svcs=''.join(svc_tile(path, s, True) for s in SERVICE_ORDER),
+        spaces=''.join(card(path, p['path'], SHORT[p['path']], '', p['image']) for p in C_SPC.PAGES),
+        steps=''.join('<li class="rv"><strong>%s</strong></li>' % E(a) for a, b in PROCESS),
         avlpic=pic('showroom', 'Showroom with a display screen, ceiling speakers and warm feature lighting (AI design concept)'),
-        trio=''.join('<div><b>%s</b><span>%s</span></div>' % (E(t['title']), E(t['text'])) for t in C_AVL.AVL_TRIO), avl=rel(path, '/avl/'),
-        guides=''.join(card(path, p['path'], p['h1'], p['card'], p['image'], 'Read guide') for p in C_GDE.PAGES[:3]),
+        avl=rel(path, '/avl/'),
+        guides=''.join(card(path, p['path'], p['h1'], '', p['image'], 'Read guide') for p in C_GDE.PAGES[:3]),
         guidesp=rel(path, '/guides/'), phone=PHONE_DISPLAY,
         faqs=''.join('<details><summary>%s</summary><p>%s</p></details>' % (E(q), E(a)) for q, a in HOME_FAQ))
     schema = [org_schema(), {'@type': 'WebSite', '@id': BASE + '#site', 'name': BRAND_FULL, 'url': BASE, 'publisher': {'@id': BASE + '#org'}},
