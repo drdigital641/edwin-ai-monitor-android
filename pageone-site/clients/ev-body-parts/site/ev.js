@@ -430,10 +430,16 @@
     function pool() { return ENTRIES.filter(function (e) { return (!fb.value || e.brand === fb.value) && (!fm.value || e.carSlug === fm.value) && (!fp.value || e.part === fp.value); }); }
     function run(reset) {
       if (reset) shown = 24;
-      var q = input.value, p = pool();
-      var r = renderSearch(res, q, { pool: (fb.value || fm.value || fp.value) ? p : null, shown: shown, showAll: true, more: true, limit: 24 });
-      var n = r.results.length;
-      count.innerHTML = '<b>' + n + '</b> ' + (n === 1 ? 'listing' : 'listings') + (norm(q) ? ' for &ldquo;' + esc(q) + '&rdquo;' : '');
+      var q = input.value;
+      /* filters become words in the search, so they give the same results (and Get-a-quote cards) as typing them */
+      var car = fm.value ? S.cars.filter(function (c) { return c.b === fb.value && c.slug === fm.value; })[0] : null;
+      var fq = [q, fb.value ? brandName(fb.value) : '', car ? car.name.replace(/ — /g, ' ') : '', fp.value ? partName(fp.value) : ''].filter(Boolean).join(' ').trim();
+      var r = renderSearch(res, fq, { shown: shown, showAll: true, more: true, limit: 24 });
+      if (fp.value && !fb.value && !r.results.length) res.insertAdjacentHTML('afterbegin', '<p class="weak">Choose a brand and model to ask for a ' + esc(partName(fp.value)) + ' quote.</p>');
+      /* the count is real listings only; Get-a-quote cards are not listings */
+      var n = r.results.filter(function (x) { return !x.e.ask; }).length, a = r.results.length - n;
+      count.innerHTML = '<b>' + n + '</b> ' + (n === 1 ? 'listing' : 'listings') + (norm(fq) ? ' for &ldquo;' + esc(fq) + '&rdquo;' : '') +
+        (a ? ' &middot; ' + a + ' part' + (a > 1 ? 's' : '') + ' you can ask a quote for' : '');
       var u = new URLSearchParams(); if (q) u.set('q', q); if (fb.value) u.set('brand', fb.value); if (fm.value) u.set('model', fm.value); if (fp.value) u.set('part', fp.value);
       try { history.replaceState(null, '', location.pathname + (u.toString() ? '?' + u.toString() : '')); } catch (e) { }
     }
