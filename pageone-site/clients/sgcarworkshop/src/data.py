@@ -578,6 +578,55 @@ _BX = {
 for _b in BASIC:
     _b.update(_BX[_b["slug"]])
     _b.update(tier="free", services=[], regions_note="Region from the public listing area (URA planning regions).")
+
+
+def _auto_basic():
+    """Basic listings found by basic_agent.py (basic_auto.json). Records older than 30 days are left out until refreshed (Places terms: only place_id is kept long-term)."""
+    import datetime as _dt, json as _j, os as _os, re as _re
+    p = _os.path.join(_os.path.dirname(_os.path.abspath(__file__)), "basic_auto.json")
+    if not _os.path.exists(p):
+        return []
+    out, now = [], _dt.datetime.utcnow()
+    for r in _j.load(open(p)).values():
+        f = _dt.datetime.fromisoformat(r["fetched_at"])
+        digits = _re.sub(r"\D", "", r.get("phone", ""))[-8:]
+        if (now - f).days > 30 or len(digits) != 8:
+            continue
+        m = _re.search(r"Singapore\s+(\d{6})", r.get("address", ""))
+        postal = m.group(1) if m else ""
+        street = _re.sub(r",?\s*Singapore\s+\d{6}\s*$", "", r["address"])
+        wk = {}
+        for line in r.get("hours", []):
+            d, _, t = line.partition(": ")
+            wk[d] = t.replace("\u2009", " ").replace("\u202f", " ").replace("\u2013", " to ").replace("  ", " ")
+        rows, seen = [], {}
+        for d in ("Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"):
+            if d in wk:
+                seen.setdefault(wk[d], []).append(d[:3])
+        for t, ds in seen.items():
+            _o = ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"]
+            _i = [_o.index(x) for x in ds]
+            consec = _i == list(range(_i[0], _i[0] + len(_i)))
+            rows.append((ds[0] if len(ds) == 1 else (ds[0] + " to " + ds[-1] if consec else ", ".join(ds)), t))
+        slug = _re.sub(r"[^a-z0-9]+", "-", r["name"].lower()).strip("-")
+        import areas as _ar
+        _es = _ar.estate_for(street, postal)
+        _en = _ar.ESTATES[_es]["name"] if _es else "Singapore"
+        _rg = _ar.ESTATES[_es]["region"] if _es else "central"
+        mobile = digits[0] in "89"
+        out.append(dict(slug=slug, place_id=r["place_id"], name=r["name"], area_label=_en, regions=[_rg], category="general-servicing-repair",
+                        phone="+65" + digits, phone_show=digits[:4] + " " + digits[4:], whatsapp=("65" + digits) if mobile else None, cid=None,
+                        site=r.get("website") or None, desc="Car workshop at " + street + ".", source="Google Places API (New), fetched %s" % f.date(),
+                        addresses=[dict(label=None, street=street, postal=postal)], address_public=r["address"], rating=r.get("rating"), reviews=r.get("reviews"),
+                        checked=f.strftime("%-d %b %Y"), hours_rows=rows or [("See Google listing", "")], hours_ld=[],
+                        services_public=["Car servicing and repair"], services_source="Google listing",
+                        lede="%s is a car workshop at %s. Call to ask about servicing or a repair for your car, or tap Directions to find the unit." % (r["name"], street),
+                        area_ctx="%s is in the %s region of Singapore." % (_en, _rg.replace("-", " ").title()), tier="free", services=[], regions_note="Region from the public listing area (URA planning regions)."))
+    return out
+
+
+_AUTO = _auto_basic()
+BASIC.extend(_AUTO)
 ENTRIES.extend(BASIC)
 _RANK = {"premium_leadgen": 0, "premium": 1, "free": 2}
 ENTRIES.sort(key=lambda e: _RANK[e["tier"]])  # Premium, Verified, Basic (stable within a tier)
