@@ -14,7 +14,7 @@
 - SG Commercial Fitout (commercialfitout.sg): Search Console data starts 25 October 2026; shown on Google 123 times, 3 clicks so far. Too early to report results.
 - Battery Rescue SG (batteryrescue.sg): Search Console data starts 27 October 2026; shown on Google 30 times, 0 clicks so far. Too early to report results.
 - AI Vending Solution (aivs.sg): new website went live on 18 October 2026; its earlier Search Console data belongs to the previous website, so results are reported only from after our launch.
-- Autotex (autotexautoparts.com.sg) and EV Body Parts (evbodyparts.sg): launched October 2026 and November 2026, no Search Console data yet.
+- Autotex (autotexautoparts.com.sg), Klar Details (klardetails.com.sg) and EV Body Parts (evbodyparts.sg): launched October 2026 and November 2026, no Search Console data yet.
 - Full case studies: https://pageonesingapore.com/results/
 - Every client website with its numbers: https://pageonesingapore.com/clients/
 - Low price, real results: S$50 a month is low because a set of AI tools we designed does the daily SEO work that used to be billed by the hour; the numbers above come from the same system.
