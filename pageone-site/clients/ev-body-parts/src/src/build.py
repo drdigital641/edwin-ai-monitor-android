@@ -888,6 +888,7 @@ def datajs():
 def statics():
     for f in ("favicon.ico", "favicon-48.png", "icon-192.png", "icon-512.png", "apple-touch-icon.png", "og.jpg", "logo-96.png", "mark.svg"):
         shutil.copy(HERE / "assets" / f, OUT / f)
+    shutil.copytree(HERE / "assets" / "featured", OUT / "assets" / "featured", dirs_exist_ok=True)
     for f in ("ev.css", "ev.js", "wa.js"):
         shutil.copy(HERE / f, OUT / f)
     for g, (path, raw) in PHOTO_FILES.items():
@@ -1043,9 +1044,9 @@ def popular_html():
     return f'<section class="sec tight"><div class="wrap"><div class="sec-t rv"><h2>Popular models</h2></div><div class="mtiles">{tiles}</div><p style="margin-top:18px"><a class="more" href="{{{{R}}}}brands/">All brands and models {UI["arrow"]}</a></p></div></section>'
 
 # Featured parts carousel (homepage refresh brief, 1 Nov 2026). Tesla suspension leads as the showcase; other makes follow.
-# Images are AI illustrations (ChatGPT, Base44 media), never product photos. FEATURE_IMG fills in when ChatGPT uploads the
-# suspension set; until then those cards show a labelled placeholder with the part's line icon.
-FEATURE_IMG = {}  # part id -> image URL (illustrative only)
+# Images: AI illustrations supplied by Edwin (1 Nov 2026), cropped from one sheet. Never product photos; always labelled.
+FEATURE_IMG = {pk: "{{R}}assets/featured/featured-" + pk + ".jpg" for pk in (
+    "front-upper-control-arm", "front-lower-compliance-link", "front-spring-damper", "front-suspension-knuckle", "front-wheel-hub")}
 FEATURED = [  # car key, part id, area id, common names shown under the technical name
     ("tesla-model-y", "front-upper-control-arm", "upper-arms", "Front upper arm, FUCA"),
     ("tesla-model-y", "front-lower-compliance-link", "lower-arms", "Front lower arm, lower wishbone"),
