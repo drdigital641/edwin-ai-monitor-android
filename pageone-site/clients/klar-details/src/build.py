@@ -224,6 +224,25 @@ def svc_card(s, i):
 ART_IMG = {}
 
 
+# each guide's photo matches its topic (Edwin, 1 Nov 2026); unlisted guides fall back to the rotation
+ART_PICK = {
+    'car-water-spot-removal-singapore': 'specialist_wipe', 'remove-bird-droppings-tree-sap-car-paint': 'klarshield_spray',
+    'car-polishing-vs-waxing-vs-ceramic-coating': 'klarcoat_bottle', 'car-paint-oxidation-vs-clear-coat-damage': 'rupes_polish',
+    'leather-car-seat-cleaning-care-guide': 'steam_leather', 'car-wheel-cleaning-remove-brake-dust': 'klarcoat_range',
+    'how-to-wash-ceramic-coated-car': 'products_table', 'car-paint-swirl-marks-causes-prevention': 'rupes_white',
+    'new-car-detailing-singapore-guide': 'mercedes_headlight', 'interior-car-detailing-singapore-guide': 'steam_rear_cabin',
+    'how-regular-car-detailing-protects-your-vehicles-resale-value-in-singapore': 'bentley_wall',
+    '5-signs-your-car-needs-paint-correction': 'rupes_polish',
+    'what-really-happens-during-a-professional-car-detailing-session-and-why-it-takes-hours': 'every_detail_counts',
+    'why-professional-car-detailing-matters-in-singapores-harsh-climate': 'klarshield_spray',
+    'interior-car-detailing-why-its-more-than-just-a-deep-clean': 'vent_brush',
+    'why-klar-details-is-the-go-to-choice-for-tesla-and-ev-owners-in-singapore': 'applicator_closeup',
+    'blog-pure-water-final-rinse': 'specialist_wipe', '5-reasons-your-car-needs-ceramic-coating-in-singapore': 'klarcoat_bottle',
+    'ceramic-coating-vs-graphene-coating-which-is-better-for-singapores-humid-climate': 'klarcoat_range',
+    'graphene-coating-for-car-protect-in-singapore': 'graphene_apply',
+}
+
+
 def art_img(a):
     """Photo for an article: never the same as the article before it in date order, and spread over the whole pool."""
     if not ART_IMG:
@@ -232,11 +251,12 @@ def art_img(a):
             pref = [k for k in ART_POOL if k not in used[-(len(ART_POOL) - 1):]]
             ART_IMG[x['slug']] = pref[0] if pref else ART_POOL[len(used) % len(ART_POOL)]
             used.append(ART_IMG[x['slug']])
-    return ART_IMG[a['slug']]
+    k = ART_PICK.get(a['slug'])
+    return k if k in IMG else ART_IMG[a['slug']]
 
 
 def acard(a, i=0, key=None):
-    pic = '<div class="card-pic">%s</div>' % img(key or art_img(a))
+    pic = '' if key is False else '<div class="card-pic">%s</div>' % img(key or art_img(a))
     return ('<a class="card art rv" href="articles/%s/" style="--d:%dms">%s<div class="card-b"><time datetime="%s">%s</time><h3>%s</h3><p>%s</p><span class="more">Read %s</span></div></a>'
             % (a['slug'], (i % 3) * 70, pic, a['date'], nice_date(a['date']), E(a['title']), E(a['desc']), ARROW))
 
@@ -322,7 +342,7 @@ def home():
            'This is the same care every Signature treatment gets for at least six man-hours.</p>%s</div><div class="video portrait rv"><video controls preload="metadata" playsinline poster="assets/photos/klarcoat-bottle.jpg"><source src="assets/premium-wash.mp4" type="video/mp4"></video></div></div></section>'
            % wa_btn('Book a free assessment'))
     areas = ''.join('<a class="chip" href="areas/%s/">%s</a>' % (a['slug'], E(a['name'])) for a in AREAS)
-    arts = ''.join(acard(a, i) for i, a in enumerate(ARTICLES[:3]))
+    arts = ''.join(acard(a, i, False) for i, a in enumerate(ARTICLES[:3]))  # text cards: every photo is already on the homepage
     body = f'''
 <section class="sec"><div class="wrap">
 <div class="sec-h rv"><p class="eyebrow">What we do</p><h2>One page per service, so you know exactly what you are booking</h2></div>
@@ -374,7 +394,7 @@ def service_page(s, i=0):
 <section class="sec"><div class="wrap narrow"><div class="price rv"><h2>Price</h2><p>{E(s['price'])}</p><div class="cta-row">{wa_btn('Ask for a quote', s['name'].lower() + '.')}<a class="btn btn-ghost" href="prices/">How we price {ARROW}</a></div></div></div></section>
 <section class="sec alt"><div class="wrap narrow"><h2>Questions about {E(s['name'].lower())}</h2>{faq_html(s['faqs'])}</div></section>
 {related_services(s.get('related', []))}
-{related_articles(s.get('articles', []), avoid=hk + EXTRA.get(s['slug'], []))}
+{related_articles(s.get('articles', []), avoid=hk + EXTRA.get(s['slug'], []) + (['klarshield_spray'] if s['slug'] == 'premium-hand-wash' else []))}
 '''
     schema = [{'@type': 'Service', 'name': s['name'], 'serviceType': s['name'], 'provider': {'@id': SITE + '#business'}, 'areaServed': {'@type': 'Country', 'name': 'Singapore'},
                'url': SITE + 'services/%s/' % s['slug'], 'description': s['desc']}, faq_schema(s['faqs'])]
