@@ -1213,4 +1213,40 @@ ARTICLES = [
              ('Can I take the hybrid battery out myself?', 'No. The pack and its orange cables carry high voltage. The system must be shut down and isolated as the repair manual describes, with insulated tools, before the pack is unbolted.'),
              ('What hybrid battery do you fit?', 'Brand-new OEM hybrid batteries, with a warranty of 1 year or 100,000 km. WhatsApp us your car model and year to check availability and price.')],
     ),
+    dict(
+        # 2 Nov 2026: decision intent (repair vs used vs recon). Client facts only (content.md): repair, reconditioned, used, new
+        # options; 6-month repair warranty; pick-up and delivery; plug and play for Toyota Voxy/Noah/Sienta. No prices or times.
+        slug='abs-pump-repair-or-used-or-reconditioned-unit', service='abs-pump-repair', date='2026-11-02', img_site=True,
+        title='ABS Pump: Repair, Used or Reconditioned Unit? | The ECU Clinic',
+        desc='Repair your own ABS pump or module, or fit a used or reconditioned unit? How the options differ, what to ask, and what to send us before a quote.',
+        h1='ABS Pump Faulty: Repair It, or Fit a Used or Reconditioned Unit?',
+        lead='When the fault is inside the ABS pump or module, you usually have more than one way forward. Here is how the options differ and how to choose.',
+        photo='abs-esc-units-bench', alt='ABS and ESC units on the repair bench', share='abs-esc-units-on-bench.jpg',
+        body='''<p><strong>Short answer:</strong> once a scan shows the fault is inside the ABS pump or module, there are usually four routes: repair your own unit, fit a reconditioned unit, fit a used unit, or fit a new one. We find the fault first and then tell you the options for your car. Repairing your own unit is often the first thing to look at, because it keeps the car’s original unit, but the right choice depends on the fault and the car.</p>
+<h2>What are the options for a faulty ABS pump or module?</h2>
+<ul class="ticks">
+<li><strong>Repair your own unit.</strong> The unit is taken off, repaired on the bench and refitted to your car. Our repairs come with a 6-month warranty.</li>
+<li><strong>Reconditioned unit.</strong> A unit that has already been repaired or refurbished and is supplied to replace yours.</li>
+<li><strong>Used unit.</strong> A unit taken from another car. Its history is not known, so ask what has been checked.</li>
+<li><strong>New unit.</strong> A new part, where one is available for your model.</li>
+</ul>
+<h2>When is repairing your own unit a good fit?</h2>
+<p>When the codes and tests point to the unit itself, such as a pump or module reported as defective. The car keeps its own unit, so there is no second car’s unit to match to yours. Our pick-up and delivery service can collect the car if you would rather not drive it.</p>
+<h2>When do people choose a used or reconditioned unit?</h2>
+<p>Usually when they want a unit that is ready to fit, or when the unit is too damaged to repair. Some units may need to be coded or matched to the car after fitting, and that depends on the make and model, so ask before you agree. For the Toyota Voxy, Noah and Sienta, plug and play units are available: see our <a href="../toyota-voxy-noah-sienta-abs-pump/">Toyota ABS pump guide</a>.</p>
+<h2>What should you ask before choosing?</h2>
+<ul class="ticks">
+<li>What does the scan show, and has the cause been confirmed before anything is replaced?</li>
+<li>Is the unit repaired, reconditioned, used or new, and what has been checked on it?</li>
+<li>Does it need coding or matching to your car after fitting?</li>
+<li>What warranty applies to the option you pick?</li>
+</ul>
+<p>Not every ABS light is a pump or module fault. Sensors and wiring cause many of them, so read the code first: see <a href="../abs-warning-light-causes/">ABS warning light on? Common causes</a>.</p>
+<h2>What should you send us?</h2>
+<p>WhatsApp us the fault code, the chassis number and the car model, with a photo of the scan tool screen if you have one. We read the codes, find the fault and tell you the options for your car. You can find us at Premier @ Kaki Bukit.</p>''',
+        faq=[('Should I repair my ABS pump or replace it?', 'It depends on the fault. If the codes and tests show the fault is inside your unit, repair is often the first thing to look at. A unit that is badly damaged may need a replacement. We find the fault first, then tell you the options for your car.'),
+             ('What is a reconditioned ABS pump?', 'A unit that has already been repaired or refurbished and is supplied to replace your faulty one. Ask what was done to it and what warranty applies before you agree.'),
+             ('Does a used ABS unit need coding after fitting?', 'On some makes and models a replacement unit has to be coded or matched to the car, and on others it does not. Ask before you agree, and give us your car model and chassis number so we can check.'),
+             ('Is there a warranty?', 'Yes. Our repairs come with a 6-month warranty.')],
+    ),
 ]

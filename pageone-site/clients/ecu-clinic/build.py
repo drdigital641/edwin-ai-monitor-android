@@ -784,7 +784,7 @@ def article(a):
     more = [x for x in ARTICLES if x is not a][:3]
     body = sub_hero(crumbs, 'Guide', a['h1'], a['lead'], a['photo'], a['alt'], buttons=False) + f'''
 <section><div class="wrap prose">
-<p class="meta">By The ECU Clinic · {a["date"][8:10].lstrip("0")} Oct 2026</p>
+<p class="meta">By The ECU Clinic · {a["date"][8:10].lstrip("0")} {["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"][int(a["date"][5:7])-1]} 2026</p>
 {re.sub(r"\{img:([a-z0-9-]+)\}", lambda m: u(f"img/{m.group(1)}.webp"), a["body"].replace("{wa}", wa_link(cta="Article text")).replace("{img_cluster}", u("img/mercedes-airbag-warning-cluster.webp")))}
 <div class="btns" style="margin-top:22px"><a class="btn btn-wa" href="{wa_link(cta="Article end")}" target="_blank" rel="noopener">{ICON["wa"]}WhatsApp {BIZ["tel_disp"]}</a>
 {f'<a class="btn btn-line" href="{u(f"services/{sp['slug']}/")}">{e(sp["name"])}</a>' if sp else ''}</div>
@@ -800,7 +800,7 @@ def article(a):
         body = body.replace('<section class="alt"><div class="wrap">\n<div class="sec-head"><h2>More articles</h2>',
                             f'<section><div class="wrap prose"><h2>Questions</h2>\n{qa}\n</div></section>\n'
                             '<section class="alt"><div class="wrap">\n<div class="sec-head"><h2>More articles</h2>', 1)
-    origin = (IMG_CDN.replace(IMG_COMMIT, a['img_commit']).rstrip('/') if a.get('img_commit') and IMG_CDN else IMG_ORIGIN)
+    origin = (ORIGIN.rstrip('/') if a.get('img_site') else IMG_CDN.replace(IMG_COMMIT, a['img_commit']).rstrip('/') if a.get('img_commit') and IMG_CDN else IMG_ORIGIN)
     art_ld = {'@context': 'https://schema.org', '@type': 'Article', 'headline': a['h1'], 'description': a['desc'],
               'datePublished': a['date'], 'dateModified': a['date'], 'mainEntityOfPage': f'{ORIGIN}{BASE}{path}',
               'image': f'{origin}/img/share/{path.strip("/").replace("/", "-")}.jpg',
@@ -808,7 +808,7 @@ def article(a):
               'publisher': {'@id': f'{ORIGIN}{BASE}#business'}}
     ld = [art_ld, crumbs_ld(crumbs)] + ([faq_ld_of(a['faq'])] if a.get('faq') else [])
     return page(path, a['title'], a['desc'], body, ld=ld, share=(a['share'], a['h1']), og_type='article',
-                img_origin=origin if a.get('img_commit') else None)
+                img_origin=origin if (a.get('img_commit') or a.get('img_site')) else None)
 
 
 if __name__ == '__main__':
