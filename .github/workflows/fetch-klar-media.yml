@@ -37,6 +37,13 @@ jobs:
             echo "== $ip"; curl -s -m 15 --resolve klardetails.com.sg:80:$ip http://klardetails.com.sg/ | grep -o '<title>[^<]*' | head -1 || true
           done
 
+      - name: Live check
+        run: |
+          for u in / /services/graphene-coating/ /service-klarcoat/ /about-us/ /blog/ /sitemap.xml /robots.txt /nope-404-test/; do
+            echo "== $u"; curl -s -o /tmp/b -D - -m 20 "https://klardetails.com.sg$u" | grep -iE '^(HTTP|location|x-robots|server|cache-control)' || true
+            grep -o '<title>[^<]*' /tmp/b | head -1 || true
+          done
+
       - name: Download
         run: |
           set -e
