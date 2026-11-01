@@ -21,11 +21,11 @@ import media as M          # noqa: E402
 OUT = sys.argv[1] if len(sys.argv) > 1 else os.path.join(HERE, 'site')
 SLUG = 'klar-details'
 DOMAIN = 'klardetails.com.sg'
-LIVE = False
+LIVE = True
 PREVIEW = 'https://pageonesingapore.com/preview/%s/' % SLUG
 SITE = ('https://%s/' % DOMAIN) if LIVE else PREVIEW
 UPDATED = '2026-11-01'
-V = '12'
+V = '13'
 INDEXNOW_KEY = '3f8b2c6d9e14a7b05c2d8e6f1a4b9c73'
 
 # Homepage promo popup. Klar switches it off by setting PROMO['on'] = False and rebuilding;
@@ -81,13 +81,32 @@ LOCAL = {  # client's branding photos (Edwin, 1 Nov 2026), served from assets/ph
     'fumigation_spray': ('fumigation-spray.jpg', 'Anti-bacterial fumigation treatment inside a car', 'GALLERY'),
     'steam_leather': ('steam-leather-seat.jpg', 'Controlled-pressure steam cleaning of red leather seats', 'GALLERY'),
     'vent_brush': ('vent-brush-detail.jpg', 'Detailing brush cleaning air vents and dashboard trim', 'GALLERY'),
+    'graphene_apply': ('graphene-applicator-bonnet.jpg', 'KlarGRAPHENE coating applied by hand to a grey bonnet', 'GALLERY'),
 }
 IMG = {k: {'url': SITE + 'assets/photos/' + f, 'alt': a, 'use': u} for k, (f, a, u) in LOCAL.items()} | IMG
+# Client photos copied off the old WordPress host (assets/client/<same filename>); used whenever the copy exists.
+CLIENT_DIR = os.path.join(HERE, 'assets', 'client')
+for _k, _v in IMG.items():
+    _b = os.path.basename(_v['url'].split('?')[0])
+    if 'klardetails.com.sg' in _v['url'] and os.path.exists(os.path.join(CLIENT_DIR, _b)):
+        _v['url'] = SITE + 'assets/client/' + _b
+# The old WordPress host went offline on 1 Nov 2026 (domain now points at Bluehost), so on the live build any client
+# photo that was not recovered is dropped and its slot falls back to one of the branding photos above.
+class _Img(dict):
+    def __missing__(self, key):  # a dropped client photo falls back to a branding photo instead of breaking the build
+        return dict.__getitem__(self, 'graphene_apply' if 'graphene' in key else 'every_detail_counts')
+
+
+if LIVE:
+    IMG = _Img({k: v for k, v in IMG.items() if 'klardetails.com.sg/wp-content' not in v['url']})
+SUBST = {'ceramic-coating': 'klarcoat_bottle', 'graphene-coating': 'graphene_apply', 'paint-correction': 'every_detail_counts', 'interior-detailing': 'steam_rear_cabin',
+         'interior-pest-control': 'fumigation_spray', 'coating-maintenance': 'specialist_wipe', 'new-car-detailing': 'specialist_wipe', 'premium-hand-wash': 'specialist_wipe'}
 SERVICE_IMG = {'ceramic-coating': 'klarcoat_bottle', 'graphene-coating': 'graphene_coating', 'paint-correction': 'bmw_infrared', 'interior-detailing': 'steam_rear_cabin',
                'interior-pest-control': 'fumigation_spray', 'coating-maintenance': 'bmw_m6', 'new-car-detailing': 'tesla_charging', 'premium-hand-wash': 'specialist_wipe'}
 HERO_KEYS = [k for k, v in IMG.items() if v['use'] == 'HERO']
 GALLERY_KEYS = [k for k, v in IMG.items() if v['use'] == 'GALLERY']
 BRAND_KEYS = [k for k, v in IMG.items() if v['use'] == 'BRAND']
+SERVICE_IMG = {k: (v if v in IMG else SUBST[k]) for k, v in SERVICE_IMG.items()}
 VIDEO = M.VIDEOS[0] if M.VIDEOS else None
 
 WA_SVG = ('<svg viewBox="0 0 24 24" aria-hidden="true" fill="currentColor"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2Zm0 '
@@ -686,9 +705,12 @@ def main():
           'RewriteEngine On', 'RewriteCond %{HTTPS} off [OR]', 'RewriteCond %{HTTP_HOST} ^www\\. [NC]', 'RewriteRule ^(.*)$ https://%s/$1 [L,R=301]' % DOMAIN, '']
     ht += ['RewriteRule ^%s$ /%s [L,R=301]' % (re.escape(k.rstrip('/')) + ('/?' if k.endswith('/') else ''), v) for k, v in old.items()]
     ht += ['', '<IfModule mod_headers.c>', '<FilesMatch "\\.(html)$">', 'Header set Cache-Control "max-age=3600, public"', '</FilesMatch>',
-           '<FilesMatch "\\.(css|js|svg|png|ico|webp|jpg)$">', 'Header set Cache-Control "max-age=604800, public"', '</FilesMatch>', '</IfModule>']
+           '<FilesMatch "\\.(css|js|svg|png|ico|webp|jpg|jpeg|mp4)$">', 'Header set Cache-Control "max-age=604800, public"', '</FilesMatch>', '</IfModule>']
     with open(os.path.join(HERE, 'htaccess.txt'), 'w', encoding='utf-8') as f:
         f.write('\n'.join(ht) + '\n')
+    if LIVE:  # tracked in the repo; the bridge cannot write it, so sync with exclude ['.htaccess'] and Edwin uploads it via cPanel
+        with open(os.path.join(OUT, '.htaccess'), 'w', encoding='utf-8') as f:
+            f.write('\n'.join(ht) + '\n')
     print('pages', len(PAGES))
 
 
