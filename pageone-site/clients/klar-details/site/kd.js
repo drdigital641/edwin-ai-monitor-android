@@ -23,6 +23,13 @@ ready(function(){
       [].forEach.call(pr.querySelectorAll('a.btn-wa'),function(a){a.addEventListener('click',function(){try{sessionStorage.setItem(key,String(Date.now()))}catch(e){}})});
     }
   }
+  /* lazy photos: some Safari versions never start a native lazy image (blank tiles). Load each one as it comes near,
+     and load any that are still waiting shortly after the page has loaded. The src stays in the HTML for search engines. */
+  var lz=[].slice.call(d.querySelectorAll('img[loading="lazy"]'));
+  function go(i){if(i.getAttribute('loading')==='lazy'){i.setAttribute('loading','eager');if(!i.complete){var s=i.getAttribute('srcset');if(s)i.srcset=s;i.src=i.getAttribute('src')}}}
+  if('IntersectionObserver' in window){var lo=new IntersectionObserver(function(es){es.forEach(function(x){if(x.isIntersecting){go(x.target);lo.unobserve(x.target)}})},{rootMargin:'800px 800px'});lz.forEach(function(i){lo.observe(i)})}
+  function late(){setTimeout(function(){lz.forEach(go)},1800)}
+  if(d.readyState==='complete')late();else window.addEventListener('load',late);
   /* service galleries: arrow buttons move one photo; swipe works natively */
   [].forEach.call(d.querySelectorAll('[data-swipe]'),function(g){var nav=g.nextElementSibling;if(!nav||!nav.classList.contains('gal-nav'))return;
     nav.removeAttribute('aria-hidden');[].forEach.call(nav.querySelectorAll('.gal-b'),function(b){b.setAttribute('aria-label',b.getAttribute('data-dir')>0?'Next photo':'Previous photo');

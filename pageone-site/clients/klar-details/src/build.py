@@ -25,7 +25,7 @@ LIVE = True
 PREVIEW = 'https://pageonesingapore.com/preview/%s/' % SLUG
 SITE = ('https://%s/' % DOMAIN) if LIVE else PREVIEW
 UPDATED = '2026-11-01'
-V = '17'
+V = '18'
 INDEXNOW_KEY = '3f8b2c6d9e14a7b05c2d8e6f1a4b9c73'
 
 # Homepage promo popup. Klar switches it off by setting PROMO['on'] = False and rebuilding;
@@ -489,7 +489,7 @@ def service_page(s, i=0):
     accordion = '<div class="acc">%s</div>' % ''.join('<details%s><summary><h2>%s</h2></summary><div class="acc-b">%s</div></details>' % (' open' if j == 0 else '', h, b) for j, (h, b) in enumerate(acc))
     on_page = hk + gal + v['steps']
     video = ('<section class="sec dark"><div class="wrap split"><div><p class="eyebrow">Watch</p><h2>A Klar premium hand wash, start to finish</h2><p>Filmed in the Klar bays at Toh Guan Road East.</p></div>'
-             '<div class="video portrait rv"><video controls preload="metadata" playsinline poster="assets/photos/klar-specialist-wipe-800.webp"><source src="assets/premium-wash.mp4" type="video/mp4"></video></div></div></section>') if s['slug'] == 'premium-hand-wash' else ''
+             '<div class="video portrait rv"><video controls preload="metadata" playsinline poster="' + SITE + 'assets/photos/klar-specialist-wipe-800.webp"><source src="assets/premium-wash.mp4" type="video/mp4"></video></div></div></section>') if s['slug'] == 'premium-hand-wash' else ''
     body = f'''
 <section class="sec sec-tight"><div class="wrap">{chips}</div></section>
 <section class="sec sec-gal"><div class="wrap"><div class="sec-h"><p class="eyebrow">In the bay</p><h2 class="h-sm">{E(s['name'])} in pictures</h2></div></div>{gallery}</section>
