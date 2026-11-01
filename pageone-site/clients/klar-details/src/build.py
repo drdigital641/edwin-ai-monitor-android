@@ -25,7 +25,7 @@ LIVE = False
 PREVIEW = 'https://pageonesingapore.com/preview/%s/' % SLUG
 SITE = ('https://%s/' % DOMAIN) if LIVE else PREVIEW
 UPDATED = '2026-11-01'
-V = '3'
+V = '4'
 INDEXNOW_KEY = '3f8b2c6d9e14a7b05c2d8e6f1a4b9c73'
 
 NAME = 'Klar Details'
@@ -435,6 +435,42 @@ def privacy():
          '<section class="sec"><div class="wrap narrow">%s</div></section>' % sections_html(P['sections']), crumbs=[('privacy/', 'Privacy')], cta=False)
 
 
+def products_page():
+    faqs = [('Can I buy Klar products for home use?', 'A retail range built on the KlarCOAT, KlarGRAPHENE and KlarSHIELD lines is being prepared. Register your interest on WhatsApp and we will message you when the first products and prices are confirmed, with the same aftercare guidance we give at handover.'),
+            ('Will the products be the same ones used in the studio?', 'The retail range is drawn from the same in-house lines our detailers use. Professional coatings still need preparation, correction and curing in the studio, so retail items focus on washing, maintenance and protecting a finish between visits.'),
+            ('Where will Klar products be sold?', 'At the Klar studio and through channels we confirm closer to launch. Resellers and partner workshops can ask about stocking Klar products through the franchise and partnership page.')]
+    body = f'''
+<section class="sec"><div class="wrap split">
+<div class="rt"><p>Klar Details is preparing a retail range built on the same in-house lines our detailers use every day: KlarCOAT, KlarGRAPHENE and KlarSHIELD. The first products focus on keeping a coated car clean and protected between studio visits.</p>
+<p>Product names, contents and prices are published here once confirmed. Register your interest on WhatsApp and you hear first.</p>
+<div class="cta-row">{wa_btn('Register interest in Klar products', 'Klar products.')}</div></div>
+<div class="pic rv">{img(pick(BRAND_KEYS, 1, 1)[0] if BRAND_KEYS else pick(HERO_KEYS, 1)[0])}</div>
+</div></section>
+<section class="sec alt"><div class="wrap narrow"><h2>Questions about Klar products</h2>{faq_html(faqs)}</div></section>
+{related_services(['coating-maintenance', 'premium-hand-wash', 'graphene-coating'])}
+'''
+    page('products/', 'Klar Products: Car Care Range', 'Klar Details is preparing a retail car care range built on its in-house KlarCOAT, KlarGRAPHENE and KlarSHIELD lines. Register your interest on WhatsApp.',
+         'Klar products', body, crumbs=[('products/', 'Products')], kicker='Coming soon', lede='The lines used in our studio, prepared for home use. Details and prices published once confirmed.', schema=[faq_schema(faqs)])
+
+
+def franchise_page():
+    faqs = [('What does a Klar Details franchise include?', 'The Klar name and brand standards, the in-house KlarCOAT, KlarGRAPHENE, KlarINTERIOR and KlarMAINTENANCE lines, training in our preparation, application and curing process, and the backing of MK Group. Full terms are shared in conversation after a first meeting.'),
+            ('Who is a Klar franchise for?', 'Workshop owners, detailers and investors in Singapore and the region who want to run a premium detailing studio to a documented standard rather than build a brand from nothing. Experience with cars helps; our training covers the Klar process.'),
+            ('How do I start a conversation?', 'Send a WhatsApp message with your name, location and background, or email us. We reply with the next step, usually a visit to the Klar studio so you can see the process before any numbers are discussed.')]
+    body = f'''
+<section class="sec"><div class="wrap split">
+<div class="rt"><p>Since 2014 Klar Details has built a detailing process around preparation, in-house coatings and controlled curing, and since November 2024 it has had MK Group behind it. We are now opening that process to partners who want to run a Klar studio of their own.</p>
+<p>A Klar franchise is a premium detailing studio operated to Klar standards, with our product lines, training and brand. Tell us about yourself and we arrange a visit to the studio first.</p>
+<div class="cta-row">{wa_btn('Ask about a Klar franchise', 'a Klar franchise.')}<a class="btn btn-ghost" href="mailto:{EMAIL}">Email {EMAIL}</a></div></div>
+<div class="pic rv">{img(pick(BRAND_KEYS, 1, 0)[0] if BRAND_KEYS else pick(HERO_KEYS, 1)[0])}</div>
+</div></section>
+<section class="sec alt"><div class="wrap narrow"><h2>What partners get</h2><ul class="inc"><li>The Klar brand and studio standards</li><li>KlarCOAT, KlarGRAPHENE, KlarINTERIOR and KlarMAINTENANCE lines</li><li>Training in preparation, application and infrared curing</li><li>MK Group backing and sister brands for servicing and repairs</li><li>Marketing and website support</li><li>A studio visit before any commitment</li></ul></div></section>
+<section class="sec"><div class="wrap narrow"><h2>Questions about franchising</h2>{faq_html(faqs)}</div></section>
+'''
+    page('franchise/', 'Klar Details Franchise and Partnerships', 'Run a premium car detailing studio to Klar standards with in-house coating lines, training and MK Group backing. Start with a visit to the Klar studio.',
+         'Klar franchise and partnerships', body, crumbs=[('franchise/', 'Franchise')], kicker='Partner with Klar', lede='A Klar studio of your own, run to the standards owners already trust at Toh Guan Road East.', schema=[faq_schema(faqs)], og=None)
+
+
 NAV = [('services/', 'Services'), ('graphene-bonnet-trial/', 'S$88 trial'), ('our-work/', 'Our work'), ('prices/', 'Prices'), ('articles/', 'Guides'), ('about/', 'About'), ('contact/', 'Contact')]
 
 
@@ -519,7 +555,7 @@ def shell(path, p, robots_meta=''):
 <div class="ftr-grid">
 <div>{brand}<p>Premium car detailing centre at Enterprise Hub, Toh Guan Road East, Singapore. KlarCOAT ceramic, KlarGRAPHENE, paint correction, interior detailing and coating maintenance since 2014.</p><p class="mk">An MK Group brand · <a href="{MOTOSERV}" target="_blank" rel="noopener">Motoserv.sg</a> for servicing and repairs</p></div>
 <div><h3>Services</h3><ul>{svc_links}<li><a href="{pre}graphene-bonnet-trial/">S$88 graphene bonnet trial</a></li></ul></div>
-<div><h3>Areas</h3><ul><li><a href="{pre}areas/">West Singapore</a></li>{area_links}</ul><h3>Explore</h3><ul><li><a href="{pre}our-work/">Our work</a></li><li><a href="{pre}reviews/">Reviews</a></li><li><a href="{pre}prices/">Prices</a></li><li><a href="{pre}articles/">Guides</a></li><li><a href="{pre}faq/">FAQ</a></li><li><a href="{pre}about/">About</a></li><li><a href="{pre}privacy/">Privacy</a></li></ul></div>
+<div><h3>Areas</h3><ul><li><a href="{pre}areas/">West Singapore</a></li>{area_links}</ul><h3>Explore</h3><ul><li><a href="{pre}our-work/">Our work</a></li><li><a href="{pre}reviews/">Reviews</a></li><li><a href="{pre}prices/">Prices</a></li><li><a href="{pre}articles/">Guides</a></li><li><a href="{pre}faq/">FAQ</a></li><li><a href="{pre}about/">About</a></li><li><a href="{pre}products/">Klar products</a></li><li><a href="{pre}franchise/">Franchise</a></li><li><a href="{pre}privacy/">Privacy</a></li></ul></div>
 <div><h3>Contact</h3><ul>
 <li><a href="tel:{TEL}">{TEL_SHOW}</a></li>
 <li><a href="{E(wa_url())}" target="_blank" rel="noopener">WhatsApp {WA_SHOW}</a></li>
@@ -554,7 +590,7 @@ def main():
     articles_index()
     for i, a in enumerate(ARTICLES):
         article_page(a, i)
-    our_work(); reviews_page(); about(); prices(); faq_page(); contact(); privacy()
+    our_work(); reviews_page(); about(); prices(); faq_page(); contact(); privacy(); products_page(); franchise_page()
     for path, p in PAGES.items():
         write(path + 'index.html', shell(path, p))
     nf = dict(title='Page not found | Klar Details', desc='This page does not exist.', h1='Page not found',
