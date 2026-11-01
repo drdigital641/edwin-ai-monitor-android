@@ -3,7 +3,7 @@
 # /directory/ hub and links to no directory URL. The listing template is standalone: builder/directory_listing.py.
 # Facts rule: no invented price, no promise of leads or rankings. Run from build.py (exec) after lead_gen.py.
 
-DIRECTORY_PRICE = 20     # S$/month, Verified directory listing (Edwin, 1 Nov 2026). Not the old S$20 early-bird SEO plan. None = "ask us on WhatsApp"
+DIRECTORY_PRICE = None     # S$/month, Verified directory listing (Edwin, 1 Nov 2026). Not the old S$20 early-bird SEO plan. None = "ask us on WhatsApp"
 DIRECTORY_DOMAIN = None  # e.g. "sgcarworkshop.sg" once bought; None = not named on the site yet
 
 _DIR_WA_MSG = "Hi Edwin, I'd like to ask about the directory listing plan."
@@ -29,7 +29,7 @@ def _dir_btns(source):
 DIR_URL = "/directory-listing/"
 DIR_FAQ = [
     ("How much does a directory listing cost?",
-     f"A basic listing card is free. The Verified listing page is S${DIRECTORY_PRICE} a month. This is the Verified listing, not the earlier S$20 early-bird SEO plan. The own-website plan is S$50 a month."),
+     "A Basic listing card is free. For a Verified listing page, ask us on WhatsApp for the price. The own-website plan is S$50 a month."),
     ("Do I need to buy a domain?",
      "No. We set up your listing page and keep it running. You don't buy, register or renew a domain for it."),
     ("Will a listing bring me enquiries?",
@@ -47,7 +47,7 @@ _dir_table = "\n".join(f'              <tr><th scope="row">{a}</th><td>{b}</td><
 
 page("directory-listing/index.html",
      "Directory Listing Plan: One Page for Your Business",
-     "No website or domain of your own? Get one listing page with your photos, services, hours and WhatsApp and call buttons. Verified listing S$20/month.",
+     "No website or domain of your own? Get one listing page with your photos, services, hours and WhatsApp and call buttons. Ask us on WhatsApp for the price.",
      [_faq_ld(DIR_FAQ)],
      hero("Directory listing", "Directory listing plan",
           "No website of your own? Get a listing page instead.",

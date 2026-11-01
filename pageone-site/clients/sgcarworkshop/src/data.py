@@ -82,10 +82,10 @@ AREAS = {
 # it is not Page One's older S$20 early-bird SEO plan. Prices live here so they change in one place.
 TIERS = {
     "free": dict(label="Basic listing", badge="Basic listing", price=0, price_text="Free", tagline="Get found"),
-    "premium": dict(label="Verified listing", badge="Verified", price=20, price_text="S$20/month", tagline="Landing page"),
-    "premium_leadgen": dict(label="Premium", badge="Premium", price=50, price_text="S$50/month", tagline="Full Page One website setup"),
+    "premium": dict(label="Verified listing", badge="Verified", price=20, price_text="Ask us on WhatsApp", tagline="Landing page"),
+    "premium_leadgen": dict(label="Premium", badge="Premium", price=50, price_text="Ask us on WhatsApp", tagline="Full Page One website setup"),
 }
-PRICE_NOTE = "The S$20 is the Verified listing price. It is not the earlier S$20 early-bird SEO plan from Page One."
+PRICE_NOTE = "Prices are not published: ask us on WhatsApp. Basic is free."  # Edwin 1 Nov 2026: Verified S$20/mo, Premium S$50/mo, internal only
 
 # One clearly labelled example of the free tier, shown only on /list-your-workshop/ (made-up name, not a real business).
 FREE_EXAMPLE = dict(

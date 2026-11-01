@@ -215,7 +215,7 @@ def home():
     faqs = [
         ('What is %s?' % SITE_NAME, 'A small directory of car workshops and car services in Singapore. Each entry shows what the business does, where it is and how to contact it, using details confirmed by the business.'),
         ('How do I list my workshop?', 'Message Page One Singapore on WhatsApp. A Basic listing is a basic card. A Verified listing is a full page with photos, services, map, WhatsApp and Call buttons. Premium adds your own Page One website.'),
-        ('How much does a listing cost?', 'A Basic listing costs nothing. The Verified listing is S$20 a month, and Premium is S$50 a month. The S$20 is not the earlier S$20 early-bird SEO plan.'),
+        ('How much does a listing cost?', 'A Basic listing is free. For Verified and Premium, send us a WhatsApp message and we will explain what each includes and the price for your workshop.'),
         ('Do you rank or review workshops?', 'No. Entries are not ranked and we do not write reviews. Verified pages may show a rating line from a source people can open, with its link and the date we checked.'),
     ]
     faq_html = ''.join('<details><summary>%s</summary><p>%s</p></details>' % (E(q), E(a)) for q, a in faqs)
@@ -353,7 +353,7 @@ def tiers_strip():
         ('premium_leadgen', 'Everything in Verified plus your own Page One website, local SEO and monthly tap reports.'),
     ]
     li = ''.join('<li class="rv">%s<b>%s</b><span class="pr">%s</span>%s</li>' % (tier_badge(t), E(TIERS[t]['tagline']), E(TIERS[t]['price_text']), E(txt)) for t, txt in items)
-    return '<ol class="steps tiers-strip">%s</ol><p class="fine">The S$20 is the Verified listing, not the earlier S$20 early-bird SEO plan. <a href="list-your-workshop/">Compare the three tiers</a>.</p>' % li
+    return '<ol class="steps tiers-strip">%s</ol><p class="fine"><a href="list-your-workshop/">Compare the three tiers</a>.</p>' % li
 
 
 def ld_business(e, url):
@@ -519,7 +519,7 @@ def list_page():
 <p class="lede" style="font-size:1.1rem;max-width:720px">{E(SITE_NAME)} lists car workshops and car services in Singapore: repair, gearbox, ABS and ECU modules, spray painting and bodywork, batteries, detailing and coating, wraps and PPF, and parts. Pick the tier that fits your business.</p>
 <h2 style="margin-top:24px">Three tiers</h2>
 {tier_table()}
-<p class="fine">{E(PRICE_NOTE)} Prices are per month. Every tier gets WhatsApp taps counted and reported to you, and no tier promises a number of enquiries or a ranking.</p>
+<p class="fine">{E(PRICE_NOTE)} Every tier gets WhatsApp taps counted and reported to you, and no tier promises a number of enquiries or a ranking.</p>
 <h2 style="margin-top:28px">What a free card looks like</h2>
 <p>A Basic listing is a plain card. Here is a made-up example with a made-up name, so you can see the style.</p>
 <div class="grid ex-grid">{free_card(depth)}</div>
@@ -531,7 +531,7 @@ def list_page():
 <a class="btn amber big" href="{wa}" target="_blank" rel="noopener" data-cta="whatsapp_list_page">{WA_SVG} WhatsApp Page One</a></div>
 </div>'''
     page('list-your-workshop/', 'List Your Car Workshop | SG Car Workshop',
-         'Free, Verified S$20/month or Premium S$50/month: compare the three ways to list your car workshop in Singapore.',
+         'Basic (free), Verified or Premium: compare the three ways to list your car workshop in Singapore.',
          body, [dict(crld, **{'@context': 'https://schema.org'})])
 
 
