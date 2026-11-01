@@ -23,6 +23,10 @@ ready(function(){
       [].forEach.call(pr.querySelectorAll('a.btn-wa'),function(a){a.addEventListener('click',function(){try{sessionStorage.setItem(key,String(Date.now()))}catch(e){}})});
     }
   }
+  /* service galleries: arrow buttons move one photo; swipe works natively */
+  [].forEach.call(d.querySelectorAll('[data-swipe]'),function(g){var nav=g.nextElementSibling;if(!nav||!nav.classList.contains('gal-nav'))return;
+    nav.removeAttribute('aria-hidden');[].forEach.call(nav.querySelectorAll('.gal-b'),function(b){b.setAttribute('aria-label',b.getAttribute('data-dir')>0?'Next photo':'Previous photo');
+      b.addEventListener('click',function(){var it=g.querySelector('.gal-i');var w=it?it.getBoundingClientRect().width+14:300;g.scrollBy({left:w*+b.getAttribute('data-dir'),behavior:rm?'auto':'smooth'})})})});
   /* rails glide slowly; pause on touch, hover or sideways swipe */
   [].forEach.call(d.querySelectorAll('[data-glide]'),function(r){
     var t=r.querySelector('.rail-track');if(!t||rm)return;

@@ -25,7 +25,7 @@ LIVE = True
 PREVIEW = 'https://pageonesingapore.com/preview/%s/' % SLUG
 SITE = ('https://%s/' % DOMAIN) if LIVE else PREVIEW
 UPDATED = '2026-11-01'
-V = '15'
+V = '16'
 INDEXNOW_KEY = '3f8b2c6d9e14a7b05c2d8e6f1a4b9c73'
 
 # Homepage promo popup. Klar switches it off by setting PROMO['on'] = False and rebuilding;
@@ -90,6 +90,14 @@ LOCAL = {  # client's branding photos (Edwin, 1 Nov 2026), served from assets/ph
     'applicator_closeup': ('coating-applicator-closeup.jpg', 'Close-up of a gloved hand laying coating with a suede applicator block', 'GALLERY'),
     'mercedes_headlight': ('mercedes-headlight-studio.jpg', 'Mercedes-Benz E-Class headlight and grille after detailing in the Klar studio', 'GALLERY'),
     'klarcoat_range': ('klarcoat-range-graphene-advance.jpg', 'KlarCOAT Clearview, Plastic, Graphene Advance and Rims bottles in front of a blue BMW in the Klar studio', 'GALLERY'),
+    # generic close-up process photos (Edwin, 2 Nov 2026): process imagery only, never captioned as a customer car or a result
+    'water_beading': ('water-beading-paint.webp', 'Water beading on coated grey paint', 'PROCESS'),
+    'foam_wash': ('foam-hand-wash.webp', 'Wash mitt moving foam across a black car door', 'PROCESS'),
+    'wheel_clean': ('wheel-brush-clean.webp', 'Soft brush cleaning foam through alloy wheel spokes', 'PROCESS'),
+    'pure_rinse': ('pure-water-rinse.webp', 'Rinsing a white car roof with a gentle sheet of water', 'PROCESS'),
+    'coating_apply': ('coating-applicator-blue-paint.webp', 'Gloved hand applying coating to blue paint with an applicator block', 'PROCESS'),
+    'leather_wipe': ('leather-seat-wipe.webp', 'Microfibre cloth wiping a light leather seat', 'PROCESS'),
+    'carpet_vacuum': ('carpet-vacuum-brush.webp', 'Brush vacuum lifting dust from a car floor carpet', 'PROCESS'),
     'rupes_white': ('rupes-polish-white-mustang.jpg', 'Machine polishing the bonnet of a white Ford Mustang with a RUPES polisher', 'GALLERY'),
 }
 IMG = {k: {'url': SITE + 'assets/photos/' + f, 'alt': a, 'use': u} for k, (f, a, u) in LOCAL.items()} | IMG
@@ -159,9 +167,21 @@ def tel_btn(cls='btn btn-ghost'):
     return '<a class="%s" href="tel:%s">%s<span>Call %s</span></a>' % (cls, TEL, TEL_SVG, TEL_SHOW)
 
 
-def img(key, cls='', eager=False, sizes=None):
+DIMS = json.load(open(os.path.join(HERE, 'assets', 'photos', 'dims.json')))
+
+
+def img(key, cls='', eager=False, sizes='(max-width: 700px) 100vw, 50vw'):
     i = IMG[key]
-    return '<img class="%s" src="%s" alt="%s"%s%s>' % (cls, E(i['url']), E(i['alt']), '' if eager else ' loading="lazy" decoding="async"', ' fetchpriority="high"' if eager else '')
+    url, extra = i['url'], ''
+    m = re.search(r'assets/photos/([\w-]+)\.(jpg|webp)$', url)
+    if m and m.group(1) in DIMS:
+        n = m.group(1)
+        w, h = DIMS[n]
+        url = SITE + 'assets/photos/%s.webp' % n
+        extra = ' width="%d" height="%d"' % (w, h)
+        if w > 800:
+            extra += ' srcset="%sassets/photos/%s-800.webp 800w, %s %dw" sizes="%s"' % (SITE, n, url, w, sizes)
+    return '<img class="%s" src="%s" alt="%s"%s%s%s>' % (cls, E(url), E(i['alt']), extra, ' decoding="async"' if eager else ' loading="lazy" decoding="async"', ' fetchpriority="high"' if eager else '')
 
 
 def pick(keys, n, start=0):
@@ -192,12 +212,12 @@ def sections_html(secs):
 PAGES = {}
 
 
-def page(path, title, desc, h1, body, crumbs=None, lede='', schema=None, hero='light', cta=True, kicker='', hero_img=None, og=None):
+def page(path, title, desc, h1, body, crumbs=None, lede='', schema=None, hero='light', cta=True, kicker='', hero_img=None, og=None, photo=None, hero_extra=''):
     if not title.endswith(NAME) and not title.endswith('| Klar'):
         title = '%s | %s' % (title, NAME) if len(title) + 15 <= 60 else '%s | Klar' % title
     assert len(title) <= 60, (path, len(title), title)
     assert len(desc) <= 160, (path, len(desc), desc)
-    PAGES[path] = dict(title=title, desc=desc, h1=h1, body=body, crumbs=crumbs, lede=lede, schema=schema or [], hero=hero, cta=cta, kicker=kicker, hero_img=hero_img, og=og)
+    PAGES[path] = dict(title=title, desc=desc, h1=h1, body=body, crumbs=crumbs, lede=lede, schema=schema or [], hero=hero, cta=cta, kicker=kicker, hero_img=hero_img, og=og, photo=photo, hero_extra=hero_extra)
 
 
 def business_schema():
@@ -222,6 +242,7 @@ def svc_card(s, i):
 
 
 ART_IMG = {}
+NEUTRAL = ['bentley_wall', 'every_detail_counts', 'products_table', 'mercedes_headlight', 'klarcoat_range', 'klarcoat_bottle']
 
 
 # each guide's photo matches its topic (Edwin, 1 Nov 2026); unlisted guides fall back to the rotation
@@ -267,7 +288,8 @@ def nice_date(d):
 
 
 def gallery_rail(keys, eager=False):
-    cards = ''.join('<figure class="shot"><a href="our-work/">%s</a><figcaption>%s</figcaption></figure>' % (img(k, eager=eager and i < 2), E(IMG[k]['alt'])) for i, k in enumerate(keys))
+    # rail photos load straight away: lazy images inside a sideways scroller showed as dark empty tiles
+    cards = ''.join('<figure class="shot"><a href="our-work/">%s</a><figcaption>%s</figcaption></figure>' % (img(k, eager=eager and i < 2, sizes='(max-width: 700px) 78vw, 380px').replace(' loading="lazy"', ''), E(IMG[k]['alt'])) for i, k in enumerate(keys))
     return '<div class="rail" data-glide><div class="rail-track">%s</div></div>' % cards
 
 
@@ -298,10 +320,12 @@ def related_articles(slugs, heading='Guides that help you decide', avoid=()):
     used, items = set(avoid), ''
     for i, s in enumerate(x for x in slugs if x in ABY):
         k = art_img(ABY[s])
-        if k in used:
-            k = next((p for p in ART_POOL if p in IMG and p not in used), k)
+        if k in used:  # next photo on the same topic, then a neutral studio shot, never an unrelated one
+            v = SVC_V.get(ABY[s].get('owner'), {})
+            cands = v.get('pool', []) + [v.get('hero')] + v.get('steps', []) + NEUTRAL
+            k = next((p for p in cands if p in IMG and p not in used), None)
         used.add(k)
-        items += acard(ABY[s], i, k)
+        items += acard(ABY[s], i, k if k else False)
     return '<section class="sec"><div class="wrap"><h2>%s</h2><div class="grid3">%s</div></div></section>' % (E(heading), items) if items else ''
 
 
@@ -379,26 +403,104 @@ def services_index():
          'Car detailing services', body, crumbs=[('services/', 'Services')], lede='Each service has its own page with what is included, the process, how long it takes and the questions owners ask most.', kicker='Services')
 
 
+# Photo-led service pages (Edwin, 2 Nov 2026): every word stays in the HTML, long text sits in accordions.
+CHIP_IC = {
+    'shield': '<path d="M12 3l7 3v6c0 4.5-3 7.5-7 9-4-1.5-7-4.5-7-9V6z"/><path d="M9 12l2 2 4-4"/>',
+    'drop': '<path d="M12 3c3 4 6 7 6 11a6 6 0 0 1-12 0c0-4 3-7 6-11z"/>',
+    'spark': '<path d="M12 3v4M12 17v4M3 12h4M17 12h4M6 6l2.5 2.5M15.5 15.5 18 18M6 18l2.5-2.5M15.5 8.5 18 6"/>',
+    'bay': '<path d="M3 21V9l9-5 9 5v12"/><path d="M7 21v-7h10v7"/>',
+    'clock': '<circle cx="12" cy="12" r="8.5"/><path d="M12 7.5V12l3 2"/>',
+    'search': '<circle cx="11" cy="11" r="6.5"/><path d="m16 16 4.5 4.5"/>',
+    'tag': '<path d="M3 12V4h8l10 10-8 8z"/><circle cx="7.5" cy="8.5" r="1.3"/>',
+    'leaf': '<path d="M5 19c0-8 5-13 14-14-1 9-6 14-14 14z"/><path d="M5 19 13 11"/>',
+    'steam': '<path d="M8 20c-2-2 2-4 0-6s2-4 0-6M12 20c-2-2 2-4 0-6s2-4 0-6M16 20c-2-2 2-4 0-6s2-4 0-6"/>',
+    'check': '<circle cx="12" cy="12" r="8.5"/><path d="m8.5 12 2.5 2.5 4.5-5"/>',
+}
+
+
+def chip_ic(k):
+    return '<svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">%s</svg>' % CHIP_IC[k]
+
+
+# hero photo, benefit chips (facts already on the page), one photo per step, matched photo pool for the gallery
+SVC_V = {
+    'ceramic-coating': dict(hero='bentley_wall', promise='In-house KlarCOAT ceramic, applied by hand and cured in an enclosed bay.',
+        chips=[('shield', 'In-house KlarCOAT'), ('clock', '1 to 2 years with minimal upkeep'), ('bay', 'Enclosed, dust-free bay'), ('spark', 'Infrared curing')],
+        steps=['mercedes_headlight', 'foam_wash', 'rupes_polish', 'specialist_wipe', 'coating_apply', 'water_beading'],
+        pool=['coating_apply', 'applicator_closeup', 'water_beading', 'klarcoat_bottle', 'every_detail_counts', 'klarcoat_range', 'products_table']),
+    'graphene-coating': dict(hero='klarcoat_range', promise='KlarGRAPHENE: deeper gloss and water beading, rated up to 3 to 5 years with proper maintenance.', price='From S$88 bonnet trial',
+        chips=[('shield', 'Up to 3 to 5 years, maintained'), ('drop', 'Water beading, easier washing'), ('tag', 'Try it first: S$88 bonnet trial'), ('bay', 'Enclosed bay')],
+        steps=['every_detail_counts', 'foam_wash', 'rupes_white', 'specialist_wipe', 'graphene_apply', 'water_beading'],
+        pool=['graphene_apply', 'coating_apply', 'water_beading', 'applicator_closeup', 'klarcoat_bottle', 'bentley_wall', 'products_table']),
+    'paint-correction': dict(hero='rupes_polish', promise='Swirls, etching and oxidation levelled by machine, after a test and a plan.',
+        chips=[('search', 'Free paint assessment'), ('spark', 'Swirls, oxidation, water-spot etching'), ('check', 'Test and plan first'), ('tag', 'Fixed quote before work')],
+        steps=['mercedes_headlight', 'foam_wash', 'rupes_white', 'every_detail_counts', 'klarshield_spray'],
+        pool=['rupes_white', 'every_detail_counts', 'water_beading', 'specialist_wipe', 'bentley_wall', 'klarshield_spray', 'mercedes_headlight']),
+    'interior-detailing': dict(hero='steam_rear_cabin', promise='KlarINTERIOR: steam, shampoo, extraction and leather care for the whole cabin.',
+        chips=[('steam', 'Controlled-pressure steam'), ('drop', 'Seat shampoo and extraction'), ('leaf', 'Leather cleaning and conditioning'), ('spark', 'Odour treatment')],
+        steps=['bentley_wall', 'carpet_vacuum', 'steam_leather', 'leather_wipe', 'fumigation_spray', 'vent_brush'],
+        pool=['steam_leather', 'leather_wipe', 'carpet_vacuum', 'vent_brush', 'fumigation_spray', 'products_table', 'specialist_wipe']),
+    'interior-pest-control': dict(hero='fumigation_spray', promise='NEA-approved, aviation-grade anti-bacterial fumigation after a deep clean.',
+        chips=[('shield', 'NEA-approved fumigation'), ('spark', 'Aviation-grade anti-bacterial'), ('leaf', 'Targets bacteria and odour'), ('steam', 'Deep clean and steam first')],
+        steps=['bentley_wall', 'carpet_vacuum', 'steam_rear_cabin', 'fumigation_spray', 'vent_brush'],
+        pool=['carpet_vacuum', 'steam_rear_cabin', 'steam_leather', 'vent_brush', 'leather_wipe', 'products_table', 'every_detail_counts']),
+    'coating-maintenance': dict(hero='klarshield_spray', promise='KlarMAINTENANCE keeps a ceramic or graphene coating working, every six months.',
+        chips=[('clock', 'Half-yearly programme'), ('shield', 'KlarSHIELD top layer'), ('drop', 'Pure-water final rinse'), ('check', 'For ceramic and graphene')],
+        steps=['water_beading', 'foam_wash', 'specialist_wipe', 'products_table', 'pure_rinse', 'carpet_vacuum'],
+        pool=['water_beading', 'pure_rinse', 'wheel_clean', 'foam_wash', 'products_table', 'klarcoat_range', 'specialist_wipe']),
+    'new-car-detailing': dict(hero='mercedes_headlight', promise='Protect a new car before its first months of wear. Paint inspected first.',
+        chips=[('search', 'Paint inspected first'), ('shield', 'KlarCOAT or KlarGRAPHENE'), ('leaf', 'Interior protection'), ('check', 'Aftercare handover')],
+        steps=['bentley_wall', 'foam_wash', 'rupes_white', 'coating_apply', 'leather_wipe', 'every_detail_counts'],
+        pool=['coating_apply', 'water_beading', 'klarshield_spray', 'foam_wash', 'leather_wipe', 'applicator_closeup', 'klarcoat_range']),
+    'premium-hand-wash': dict(hero='specialist_wipe', promise='A careful hand wash and decontamination in an enclosed bay, by appointment.',
+        chips=[('drop', 'Premium hand wash'), ('spark', 'Exterior decontamination'), ('check', 'Wheels and arches'), ('clock', 'By appointment')],
+        steps=['pure_rinse', 'foam_wash', 'wheel_clean', 'products_table', 'water_beading'],
+        pool=['foam_wash', 'wheel_clean', 'pure_rinse', 'water_beading', 'products_table', 'mercedes_headlight', 'bentley_wall']),
+}
+
+
+def svc_gallery(slug):
+    """6 photos matched to the service, most specific first; the hero photo is never repeated."""
+    v = SVC_V[slug]
+    return [k for k in v['pool'] if k in IMG and k != v['hero']][:6]
+
+
 def service_page(s, i=0):
-    hk = [SERVICE_IMG[s['slug']]]
+    v = SVC_V[s['slug']]
+    hk = [v['hero']]
+    nm = s['name'].lower()
+    price_line = v.get('price') or 'Free assessment, fixed quote'
+    hero_extra = ('<p class="price-from">%s</p><div class="cta-row">%s<a class="btn btn-light" href="%s" target="_blank" rel="noopener">Book a slot %s</a></div>'
+                  % (E(price_line), wa_btn('WhatsApp us', nm + '.'), E(wa_url('booking a slot for ' + nm + '.')), ARROW))
+    chips = '<ul class="bchips">%s</ul>' % ''.join('<li class="rv" style="--d:%dms">%s<span>%s</span></li>' % (j * 60, chip_ic(ic), E(tx)) for j, (ic, tx) in enumerate(v['chips']))
+    gal = svc_gallery(s['slug'])
+    gallery = ('<div class="gal" data-swipe><div class="gal-track">%s</div></div><div class="gal-nav" aria-hidden="true"><button type="button" class="gal-b" data-dir="-1">&#8592;</button><button type="button" class="gal-b" data-dir="1">&#8594;</button></div>'
+               % ''.join('<figure class="gal-i">%s</figure>' % img(k, sizes='(max-width: 700px) 85vw, 420px') for k in gal))
+    steps = '<ol class="psteps">%s</ol>' % ''.join(
+        '<li class="rv" style="--d:%dms"><div class="ps-pic">%s<span class="n">%d</span></div><div class="ps-t"><b>%s</b><p>%s</p></div></li>'
+        % ((j % 3) * 70, img(v['steps'][j % len(v['steps'])], sizes='(max-width: 700px) 45vw, 260px'), j + 1, E(st), E(d)) for j, (st, d) in enumerate(s['steps']))
     inc = '<ul class="inc">%s</ul>' % ''.join('<li>%s</li>' % E(x) for x in s['includes'])
+    acc = [('What %s at Klar includes' % E(nm), inc + '<div class="rt">%s</div>' % s['intro'])]
+    acc += [(E(h), '<div class="rt">%s</div>' % b) for h, b in s['sections']]
+    acc += [('Price', '<p>%s</p><div class="cta-row">%s<a class="btn btn-ghost" href="prices/">How we price %s</a></div>' % (E(s['price']), wa_btn('Ask for a quote', nm + '.'), ARROW))]
+    accordion = '<div class="acc">%s</div>' % ''.join('<details%s><summary><h2>%s</h2></summary><div class="acc-b">%s</div></details>' % (' open' if j == 0 else '', h, b) for j, (h, b) in enumerate(acc))
+    on_page = hk + gal + v['steps']
+    video = ('<section class="sec dark"><div class="wrap split"><div><p class="eyebrow">Watch</p><h2>A Klar premium hand wash, start to finish</h2><p>Filmed in the Klar bays at Toh Guan Road East.</p></div>'
+             '<div class="video portrait rv"><video controls preload="metadata" playsinline poster="assets/photos/klar-specialist-wipe-800.webp"><source src="assets/premium-wash.mp4" type="video/mp4"></video></div></div></section>') if s['slug'] == 'premium-hand-wash' else ''
     body = f'''
-<section class="sec"><div class="wrap split">
-<div class="rt">{s['intro']}<div class="cta-row">{wa_btn('WhatsApp for a free assessment', s['name'].lower() + '.')}{tel_btn()}</div></div>
-<div class="pic rv">{img(hk[0]) if hk else ''}</div>
-</div></section>
-{('<section class="sec dark"><div class="wrap split"><div><p class="eyebrow">Watch</p><h2>A Klar premium hand wash, start to finish</h2><p>Filmed in the Klar bays at Toh Guan Road East.</p></div><div class="video portrait rv"><video controls preload="metadata" playsinline poster="assets/photos/klarshield-spray.jpg"><source src="assets/premium-wash.mp4" type="video/mp4"></video></div></div></section>') if s['slug'] == 'premium-hand-wash' else ''}
-<section class="sec alt"><div class="wrap"><h2>What {E(s['name'].lower())} at Klar includes</h2>{inc}{extra_pics(s['slug'])}</div></section>
-<section class="sec"><div class="wrap narrow"><h2>How it works</h2>{steps_html(s['steps'])}</div></section>
-<section class="sec alt"><div class="wrap narrow">{sections_html(s['sections'])}</div></section>
-<section class="sec"><div class="wrap narrow"><div class="price rv"><h2>Price</h2><p>{E(s['price'])}</p><div class="cta-row">{wa_btn('Ask for a quote', s['name'].lower() + '.')}<a class="btn btn-ghost" href="prices/">How we price {ARROW}</a></div></div></div></section>
-<section class="sec alt"><div class="wrap narrow"><h2>Questions about {E(s['name'].lower())}</h2>{faq_html(s['faqs'])}</div></section>
+<section class="sec sec-tight"><div class="wrap">{chips}</div></section>
+<section class="sec sec-gal"><div class="wrap"><div class="sec-h"><p class="eyebrow">In the bay</p><h2 class="h-sm">{E(s['name'])} in pictures</h2></div></div>{gallery}</section>
+{video}
+<section class="sec alt"><div class="wrap"><h2>How it works</h2>{steps}</div></section>
+<section class="sec"><div class="wrap narrow">{accordion}</div></section>
+<section class="sec alt"><div class="wrap narrow"><h2>Questions about {E(nm)}</h2>{faq_html(s['faqs'])}</div></section>
 {related_services(s.get('related', []))}
-{related_articles(s.get('articles', []), avoid=hk + EXTRA.get(s['slug'], []) + (['klarshield_spray'] if s['slug'] == 'premium-hand-wash' else []))}
+{related_articles(s.get('articles', []), avoid=on_page)}
 '''
     schema = [{'@type': 'Service', 'name': s['name'], 'serviceType': s['name'], 'provider': {'@id': SITE + '#business'}, 'areaServed': {'@type': 'Country', 'name': 'Singapore'},
-               'url': SITE + 'services/%s/' % s['slug'], 'description': s['desc']}, faq_schema(s['faqs'])]
-    page('services/%s/' % s['slug'], s['title'], s['desc'], s['h1'], body, crumbs=[('services/', 'Services'), ('services/%s/' % s['slug'], s['name'])], kicker=s.get('line', ''), schema=schema, og=IMG[hk[0]]['url'])
+               'url': SITE + 'services/%s/' % s['slug'], 'description': s['desc'], 'image': IMG[hk[0]]['url']}, faq_schema(s['faqs'])]
+    page('services/%s/' % s['slug'], s['title'], s['desc'], s['h1'], body, crumbs=[('services/', 'Services'), ('services/%s/' % s['slug'], s['name'])], kicker=s.get('line', ''),
+         schema=schema, og=IMG[hk[0]]['url'], photo=hk[0], lede=v['promise'], hero_extra=hero_extra)
 
 
 EXTRA = {'interior-detailing': ['steam_leather', 'vent_brush'], 'interior-pest-control': ['steam_leather', 'vent_brush'],
@@ -627,7 +729,11 @@ def shell(path, p, robots_meta=''):
     graph += p['schema']
     ld = json.dumps({'@context': 'https://schema.org', '@graph': graph}, ensure_ascii=False).replace('</', '<\\/')
     head_hero = ''
-    if p['hero']:
+    if p.get('photo'):
+        head_hero = ('<section class="phero shero"><div class="shero-media">%s</div><div class="wrap">%s%s<h1>%s</h1>%s%s</div></section>' % (
+            img(p['photo'], eager=True, sizes='100vw'), crumbs_html, '<p class="kicker">%s</p>' % E(p['kicker']) if p['kicker'] else '', E(p['h1']),
+            '<p class="lede">%s</p>' % E(p['lede']) if p['lede'] else '', p['hero_extra']))
+    elif p['hero']:
         head_hero = ('<section class="phero"><div class="wrap">%s%s<h1>%s</h1>%s</div></section>' % (
             crumbs_html, '<p class="kicker">%s</p>' % E(p['kicker']) if p['kicker'] else '', E(p['h1']), '<p class="lede">%s</p>' % E(p['lede']) if p['lede'] else ''))
     title = E(p['title'])

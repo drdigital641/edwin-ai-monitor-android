@@ -12,7 +12,7 @@ for dp, _, fs in os.walk(root):
             try:
                 g = json.loads(m)['@graph']
                 for n in g:
-                    if n.get('@type') == 'FAQPage' and len(n['mainEntity']) != t.count('<details'): errs.append('faq mismatch')
+                    if n.get('@type') == 'FAQPage' and len(n['mainEntity']) != len(re.findall(r'<summary>(?!<h2>)', t)): errs.append('faq mismatch')
             except Exception as e: errs.append('jsonld %s' % e)
         if t.count('<h1') != 1: errs.append('h1=%d' % t.count('<h1'))
         if 'noindex' in t and f != '404.html': errs.append('noindex')
