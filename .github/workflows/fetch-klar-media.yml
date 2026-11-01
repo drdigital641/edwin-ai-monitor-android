@@ -20,6 +20,14 @@ jobs:
         with:
           ref: claude/project-thread-mh5ubf
 
+      - name: Diagnose the old host
+        run: |
+          echo "A records:"; getent ahosts klardetails.com.sg | head -3 || true
+          echo "certificate served for the bare host:"
+          openssl s_client -connect klardetails.com.sg:443 -servername klardetails.com.sg </dev/null 2>/dev/null | openssl x509 -noout -subject -issuer -ext subjectAltName || true
+          echo "http headers:"; curl -sI -m 15 http://klardetails.com.sg/ | head -12 || true
+          echo "https headers (unverified, headers only):"; curl -sI -m 15 --insecure https://klardetails.com.sg/ | head -12 || true
+
       - name: Download
         run: |
           set -e
@@ -31,7 +39,9 @@ jobs:
             # their certificate does not cover the bare host (curl 60), so try the www host, then plain http
             w="${u/https:\/\/klardetails.com.sg/https:\/\/www.klardetails.com.sg}"
             h="${u/https:/http:}"
-            for src in "$w" "$h" "$u"; do
+            # last resort: the public wsrv.nl image proxy fetches it server-side (q=92, no resize)
+            x="https://wsrv.nl/?url=$(python3 -c 'import urllib.parse,sys;print(urllib.parse.quote(sys.argv[1],safe=""))' "$u")&q=92&n=-1"
+            for src in "$w" "$h" "$u" "$x"; do
               if curl -fsSL --retry 2 -A "Mozilla/5.0 (PageOne media copy)" -o "$f" "$src"; then echo "ok $f $(stat -c%s "$f") from $src"; break; fi
               echo "miss $src"
             done
