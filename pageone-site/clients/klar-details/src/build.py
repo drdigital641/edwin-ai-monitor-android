@@ -25,7 +25,7 @@ LIVE = False
 PREVIEW = 'https://pageonesingapore.com/preview/%s/' % SLUG
 SITE = ('https://%s/' % DOMAIN) if LIVE else PREVIEW
 UPDATED = '2026-11-01'
-V = '6'
+V = '8'
 INDEXNOW_KEY = '3f8b2c6d9e14a7b05c2d8e6f1a4b9c73'
 
 NAME = 'Klar Details'
@@ -54,6 +54,18 @@ ARTICLES = sorted(articles_a.ARTICLES + articles_b.ARTICLES, key=lambda a: a['da
 ABY = {a['slug']: a for a in ARTICLES}
 AREAS = C.AREAS
 IMG = {k: v for k, v in M.IMAGES.items() if not (k.endswith('_full') and k[:-5] in M.IMAGES)}  # drop same-photo duplicates
+LOCAL = {  # client's branding photos (Edwin, 1 Nov 2026), served from assets/photos/
+    'every_detail_counts': ('coating-every-detail-counts.jpg', 'Klar specialist applying KlarCOAT to a Mercedes bonnet under the "because every detail counts" wall', 'HERO'),
+    'klarcoat_bottle': ('klarcoat-bottle.jpg', 'KlarCOAT nanotechnology coating poured onto an applicator block', 'GALLERY'),
+    'specialist_wipe': ('klar-specialist-wipe.jpg', 'Klar specialist hand-finishing a white Mercedes', 'GALLERY'),
+    'steam_rear_cabin': ('steam-rear-cabin.jpg', 'Steam sanitising the rear cabin of a Range Rover', 'GALLERY'),
+    'fumigation_spray': ('fumigation-spray.jpg', 'Anti-bacterial fumigation treatment inside a car', 'GALLERY'),
+    'steam_leather': ('steam-leather-seat.jpg', 'Controlled-pressure steam cleaning of red leather seats', 'GALLERY'),
+    'vent_brush': ('vent-brush-detail.jpg', 'Detailing brush cleaning air vents and dashboard trim', 'GALLERY'),
+}
+IMG = {k: {'url': SITE + 'assets/photos/' + f, 'alt': a, 'use': u} for k, (f, a, u) in LOCAL.items()} | IMG
+SERVICE_IMG = {'ceramic-coating': 'klarcoat_bottle', 'graphene-coating': 'graphene_coating', 'paint-correction': 'bmw_infrared', 'interior-detailing': 'steam_rear_cabin',
+               'interior-pest-control': 'fumigation_spray', 'coating-maintenance': 'bmw_m6', 'new-car-detailing': 'tesla_charging', 'premium-hand-wash': 'specialist_wipe'}
 HERO_KEYS = [k for k, v in IMG.items() if v['use'] == 'HERO']
 GALLERY_KEYS = [k for k, v in IMG.items() if v['use'] == 'GALLERY']
 BRAND_KEYS = [k for k, v in IMG.items() if v['use'] == 'BRAND']
@@ -151,15 +163,13 @@ def business_schema():
 
 
 def svc_card(s, i):
-    k = pick(GALLERY_KEYS + HERO_KEYS, 1, i)
-    pic = ('<div class="card-pic">%s</div>' % img(k[0])) if k else ''
+    pic = '<div class="card-pic">%s</div>' % img(SERVICE_IMG[s['slug']])
     return ('<a class="card svc rv" href="services/%s/" style="--d:%dms">%s<div class="card-b"><span class="line">%s</span><h3>%s</h3><p>%s</p><span class="more">More details %s</span></div></a>'
             % (s['slug'], (i % 4) * 70, pic, E(s.get('line', '')), E(s['name']), E(s['card']), ARROW))
 
 
 def acard(a, i=0):
-    k = pick(GALLERY_KEYS, 1, i + 3)
-    pic = ('<div class="card-pic">%s</div>' % img(k[0])) if k else ''
+    pic = '<div class="card-pic">%s</div>' % img(SERVICE_IMG.get(a.get('owner'), 'every_detail_counts'))
     return ('<a class="card art rv" href="articles/%s/" style="--d:%dms">%s<div class="card-b"><time datetime="%s">%s</time><h3>%s</h3><p>%s</p><span class="more">Read %s</span></div></a>'
             % (a['slug'], (i % 3) * 70, pic, a['date'], nice_date(a['date']), E(a['title']), E(a['desc']), ARROW))
 
@@ -203,7 +213,7 @@ def related_articles(slugs, heading='Guides that help you decide'):
 
 def home():
     H = C.HOME
-    hero_k = pick(HERO_KEYS, 1)[0]
+    hero_k = 'every_detail_counts'
     hero = f'''<section class="hero">
 <div class="hero-media">{img(hero_k, eager=True)}</div>
 <div class="wrap hero-in">
@@ -261,14 +271,14 @@ def services_index():
 
 
 def service_page(s, i=0):
-    hk = pick(GALLERY_KEYS + HERO_KEYS, 1, i + 1)
+    hk = [SERVICE_IMG[s['slug']]]
     inc = '<ul class="inc">%s</ul>' % ''.join('<li>%s</li>' % E(x) for x in s['includes'])
     body = f'''
 <section class="sec"><div class="wrap split">
 <div class="rt">{s['intro']}<div class="cta-row">{wa_btn('WhatsApp for a free assessment', s['name'].lower() + '.')}{tel_btn()}</div></div>
 <div class="pic rv">{img(hk[0]) if hk else ''}</div>
 </div></section>
-<section class="sec alt"><div class="wrap"><h2>What {E(s['name'].lower())} at Klar includes</h2>{inc}</div></section>
+<section class="sec alt"><div class="wrap"><h2>What {E(s['name'].lower())} at Klar includes</h2>{inc}{extra_pics(s['slug'])}</div></section>
 <section class="sec"><div class="wrap narrow"><h2>How it works</h2>{steps_html(s['steps'])}</div></section>
 <section class="sec alt"><div class="wrap narrow">{sections_html(s['sections'])}</div></section>
 <section class="sec"><div class="wrap narrow"><div class="price rv"><h2>Price</h2><p>{E(s['price'])}</p><div class="cta-row">{wa_btn('Ask for a quote', s['name'].lower() + '.')}<a class="btn btn-ghost" href="prices/">How we price {ARROW}</a></div></div></div></section>
@@ -278,7 +288,17 @@ def service_page(s, i=0):
 '''
     schema = [{'@type': 'Service', 'name': s['name'], 'serviceType': s['name'], 'provider': {'@id': SITE + '#business'}, 'areaServed': {'@type': 'Country', 'name': 'Singapore'},
                'url': SITE + 'services/%s/' % s['slug'], 'description': s['desc']}, faq_schema(s['faqs'])]
-    page('services/%s/' % s['slug'], s['title'], s['desc'], s['h1'], body, crumbs=[('services/', 'Services'), ('services/%s/' % s['slug'], s['name'])], kicker=s.get('line', ''), schema=schema)
+    page('services/%s/' % s['slug'], s['title'], s['desc'], s['h1'], body, crumbs=[('services/', 'Services'), ('services/%s/' % s['slug'], s['name'])], kicker=s.get('line', ''), schema=schema, og=IMG[hk[0]]['url'])
+
+
+EXTRA = {'interior-detailing': ['steam_leather', 'vent_brush'], 'interior-pest-control': ['steam_rear_cabin', 'steam_leather'], 'ceramic-coating': ['every_detail_counts', 'coating_black_hood'],
+         'premium-hand-wash': ['klarcoat_bottle', 'bmw_m6'], 'paint-correction': ['infrared_curing_2', 'lexus_rc'], 'graphene-coating': ['graphene_trial_photo', 'tesla_byd'],
+         'coating-maintenance': ['specialist_wipe', 'service_maint_hero'], 'new-car-detailing': ['byd', 'tesla_byd']}
+
+
+def extra_pics(slug):
+    ks = [k for k in EXTRA.get(slug, []) if k in IMG]
+    return ('<div class="pics pics-sm">%s</div>' % ''.join('<figure class="shot"><a href="our-work/">%s</a><figcaption>%s</figcaption></figure>' % (img(k), E(IMG[k]['alt'])) for k in ks)) if ks else ''
 
 
 def trial_page():
@@ -293,7 +313,7 @@ def trial_page():
 <div class="rt"><p>The S$88 Graphene Coating Bonnet Trial is the only way in Singapore we know of to test a graphene coating on your own car before committing to a full treatment. We wash and prepare the bonnet, apply KlarGRAPHENE, show you the water beading and finish with a gloss enhancement treatment.</p>
 <p>It suits new car owners deciding between ceramic and graphene, enthusiasts who want to see the gloss on their own colour, and anyone who prefers to try before they buy.</p>
 <div class="cta-row">{wa_btn('Book the S$88 trial', 'the S$88 graphene bonnet trial.')}{tel_btn()}</div></div>
-<div class="pic rv">{img(pick(HERO_KEYS + GALLERY_KEYS, 1, 2)[0])}</div>
+<div class="pic rv">{img('graphene_trial_photo' if 'graphene_trial_photo' in IMG else 'graphene_coating')}</div>
 </div></section>
 <section class="sec alt"><div class="wrap"><h2>What the trial includes</h2><ul class="inc">{''.join('<li>%s</li>' % E(x) for x in inc)}</ul></div></section>
 <section class="sec"><div class="wrap narrow"><div class="price rv"><h2>S$88, fixed</h2><p>The price is fixed before you arrive. If the bonnet needs more preparation than the trial covers, we tell you first and you decide.</p>{wa_btn('Book the S$88 trial', 'the S$88 graphene bonnet trial.')}</div></div></section>
@@ -342,7 +362,7 @@ def articles_index():
 
 def article_page(a, i=0):
     owner = SBY.get(a['owner'])
-    hk = pick(GALLERY_KEYS + HERO_KEYS, 1, i + 5)
+    hk = [SERVICE_IMG.get(a.get('owner'), 'every_detail_counts')]
     rel = [s for s in a.get('related', []) if s in ABY]
     body = f'''
 <article class="sec"><div class="wrap narrow">
@@ -551,7 +571,7 @@ def shell(path, p, robots_meta=''):
 </main>
 <footer class="ftr"><div class="wrap">
 <div class="ftr-grid">
-<div>{brand}<p>Premium car detailing centre at Enterprise Hub, Toh Guan Road East, Singapore. KlarCOAT ceramic, KlarGRAPHENE, paint correction, interior detailing and coating maintenance since 2014.</p><p class="mk">An MK Group brand · <a href="{MOTOSERV}" target="_blank" rel="noopener">Motoserv.sg</a> for servicing and repairs</p></div>
+<div>{brand}<p>Premium car detailing centre at Enterprise Hub, Toh Guan Road East, Singapore. KlarCOAT ceramic, KlarGRAPHENE, paint correction, interior detailing and coating maintenance since 2014.</p><p class="mk"><b>Complete Automotive Care.</b> Need car servicing, repairs, aircon, tyres, batteries or vehicle inspection? <a href="{MOTOSERV}" target="_blank" rel="noopener">Explore Motoserv.sg →</a></p></div>
 <div><h3>Services</h3><ul>{svc_links}<li><a href="{pre}graphene-bonnet-trial/">S$88 graphene bonnet trial</a></li></ul></div>
 <div><h3>Areas</h3><ul><li><a href="{pre}areas/">West Singapore</a></li>{area_links}</ul><h3>Explore</h3><ul><li><a href="{pre}our-work/">Our work</a></li><li><a href="{pre}reviews/">Reviews</a></li><li><a href="{pre}prices/">Prices</a></li><li><a href="{pre}articles/">Guides</a></li><li><a href="{pre}faq/">FAQ</a></li><li><a href="{pre}about/">About</a></li><li><a href="{pre}products/">Klar products</a></li><li><a href="{pre}franchise/">Franchise</a></li><li><a href="{pre}privacy/">Privacy</a></li></ul></div>
 <div><h3>Contact</h3><ul>
