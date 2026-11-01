@@ -25,7 +25,7 @@ LIVE = True
 PREVIEW = 'https://pageonesingapore.com/preview/%s/' % SLUG
 SITE = ('https://%s/' % DOMAIN) if LIVE else PREVIEW
 UPDATED = '2026-11-01'
-V = '18'
+V = '19'
 INDEXNOW_KEY = '3f8b2c6d9e14a7b05c2d8e6f1a4b9c73'
 
 # Homepage promo popup. Klar switches it off by setting PROMO['on'] = False and rebuilding;
@@ -181,7 +181,7 @@ def img(key, cls='', eager=False, sizes='(max-width: 700px) 100vw, 50vw'):
         extra = ' width="%d" height="%d"' % (w, h)
         if w > 800:
             extra += ' srcset="%sassets/photos/%s-800.webp 800w, %s %dw" sizes="%s"' % (SITE, n, url, w, sizes)
-    return '<img class="%s" src="%s" alt="%s"%s%s%s>' % (cls, E(url), E(i['alt']), extra, ' decoding="async"' if eager else ' loading="lazy" decoding="async"', ' fetchpriority="high"' if eager else '')
+    return '<img class="%s" src="%s" alt="%s"%s%s%s>' % (cls, E(url), E(i['alt']), extra, ' decoding="async"', ' fetchpriority="high"' if eager else '')
 
 
 def pick(keys, n, start=0):
