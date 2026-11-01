@@ -490,6 +490,20 @@
     var u = new URLSearchParams(location.search); if (u.get('q') && home) { input.value = u.get('q'); run(); }
   }
 
+
+  /* featured parts carousel: native swipe/scroll-snap, prev/next buttons, arrow keys */
+  function initCarousel() {
+    $$('[data-car]').forEach(function (tr) {
+      var sec = tr.closest('section') || document, prev = $('[data-car-prev]', sec), next = $('[data-car-next]', sec);
+      function step() { var c = tr.querySelector('li'); return c ? c.getBoundingClientRect().width + 16 : tr.clientWidth * 0.8; }
+      function upd() { if (prev) prev.disabled = tr.scrollLeft < 4; if (next) next.disabled = tr.scrollLeft + tr.clientWidth >= tr.scrollWidth - 4; }
+      function go(d) { tr.scrollBy({ left: d * step(), behavior: 'smooth' }); }
+      if (prev) prev.addEventListener('click', function () { go(-1); });
+      if (next) next.addEventListener('click', function () { go(1); });
+      tr.addEventListener('keydown', function (ev) { if (ev.target !== tr) return; if (ev.key === 'ArrowRight') { ev.preventDefault(); go(1); } else if (ev.key === 'ArrowLeft') { ev.preventDefault(); go(-1); } });
+      tr.addEventListener('scroll', debounce(upd, 60), { passive: true }); window.addEventListener('resize', debounce(upd, 120)); upd();
+    });
+  }
   function initCatalogue() {
     var form = document.getElementById('cat-form'); if (!form) return;
     var input = $('#cq-q'), res = document.getElementById('cat-res'), count = document.getElementById('cat-count');
@@ -651,7 +665,7 @@
   }
 
   function init() {
-    $$('[data-search]').forEach(initSearchBox);
+    $$('[data-search]').forEach(initSearchBox); initCarousel();
     initCatalogue(); initLists(); initChrome(); initCart();
     /* car page opened at a part area (#a-tail etc.): open that area and scroll to it */
     (function () { var h = location.hash && document.getElementById(location.hash.slice(1)); if (h && h.tagName === 'DETAILS') { h.open = true; setTimeout(function () { h.scrollIntoView({ block: 'start' }); }, 50); } })();

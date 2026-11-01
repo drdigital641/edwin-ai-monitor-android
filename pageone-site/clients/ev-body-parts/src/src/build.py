@@ -1042,6 +1042,53 @@ def popular_html():
     tiles = "".join(f'<a class="mtile" href="{{{{R}}}}{c["url"]}"><span class="mt-ic">{UI["car"]}</span><span class="mt-b"><b>{e(c["full"])}</b>{f'<small>{e(c["years"])}</small>' if c.get("years") else ''}</span>{UI["arrow"]}</a>' for c in cs)
     return f'<section class="sec tight"><div class="wrap"><div class="sec-t rv"><h2>Popular models</h2></div><div class="mtiles">{tiles}</div><p style="margin-top:18px"><a class="more" href="{{{{R}}}}brands/">All brands and models {UI["arrow"]}</a></p></div></section>'
 
+# Featured parts carousel (homepage refresh brief, 1 Nov 2026). Tesla suspension leads as the showcase; other makes follow.
+# Images are AI illustrations (ChatGPT, Base44 media), never product photos. FEATURE_IMG fills in when ChatGPT uploads the
+# suspension set; until then those cards show a labelled placeholder with the part's line icon.
+FEATURE_IMG = {}  # part id -> image URL (illustrative only)
+FEATURED = [  # car key, part id, area id, common names shown under the technical name
+    ("tesla-model-y", "front-upper-control-arm", "upper-arms", "Front upper arm, FUCA"),
+    ("tesla-model-y", "front-lower-compliance-link", "lower-arms", "Front lower arm, lower wishbone"),
+    ("tesla-model-y", "front-spring-damper", "dampers", "Front absorber, front strut"),
+    ("tesla-model-y", "front-suspension-knuckle", "knuckles", "Steering knuckle, wheel carrier"),
+    ("tesla-model-y", "front-wheel-hub", "hubs", "Front hub, hub bearing assembly"),
+    ("byd-atto-3", "headlamp", "lamps", "Headlight, front light"),
+    ("mg-mg4", "side-mirror", "side", "Wing mirror, door mirror"),
+    ("zeekr-001", "front-bumper", "front", "Bumper cover"),
+    ("tesla-model-3-highland", "tail-lamp", "tail", "Tail light, back light"),
+    ("byd-seal", "rear-bumper", "rear", "Back bumper"),
+    ("xpeng-g6", "bonnet", "front", "Hood"),
+    ("mg-zs-ev", "fender", "front", "Front wing, mudguard"),
+]
+def featured_html():
+    cm = {c["key"]: c for c in CARS}
+    cards = []
+    for ck, pk, area, aka in FEATURED:
+        c = cm.get(ck)
+        if not c or pk not in PART: continue
+        pn = PART[pk][1]
+        src = FEATURE_IMG.get(pk) or ART.get(pk)
+        if src:
+            media = (f'<img src="{src}" alt="{e(pn)}: illustrative image" width="480" height="360" loading="lazy" decoding="async" onerror="this.remove()">'
+                     f'<span class="fc-tag" title="{e(ILLUS)}">Illustrative image</span>')
+        else:
+            media = f'<span class="fc-ph" aria-hidden="true">{ico(pk)}</span><span class="fc-tag">Illustration coming</span>'
+        title = c["full"] + " " + pn + (" (specialist check)" if pk in SPECIAL else "")
+        link = "{{R}}" + c["url"] + "#a-" + area
+        cards.append(f'<li class="fc"><div class="fc-m">{media}</div><div class="fc-b"><p class="fc-k">{e(c["full"])}</p>'
+                     f'<h3><a href="{link}">{e(pn)}</a></h3><p class="fc-a">Also called: {e(aka)}</p>'
+                     f'<div class="fc-x"><a class="btn btn-p btn-s" href="{e(enq(title))}" data-wa="quote">Get a quote</a><a class="btn btn-g btn-s" href="{link}">Details</a></div></div></li>')
+    return ('<section class="sec tight feat" aria-labelledby="feat-h"><div class="wrap">'
+            '<div class="feat-hd"><div><p class="kick">Featured parts</p><h2 id="feat-h">Tesla suspension, plus parts for every EV we cover</h2></div>'
+            '<div class="feat-nav"><button type="button" class="fbtn" data-car-prev aria-label="Previous parts">&#8249;</button><button type="button" class="fbtn" data-car-next aria-label="Next parts">&#8250;</button></div></div>'
+            f'<ul class="ftrack" data-car tabindex="0" aria-label="Featured parts, scroll sideways">{"".join(cards)}</ul>'
+            f'<p class="illus">{e(ILLUS)}. We source to order and confirm fitment before we quote.</p></div></section>')
+
+def hero_visual():
+    tiles = [("front-bumper", "Front bumper"), ("headlamp", "Headlamp"), ("side-mirror", "Side mirror")]
+    t = "".join(f'<figure class="hv-t hv-{i}"><img src="{ART[k]}" alt="{e(n)}: illustrative image" width="420" height="315" loading="lazy" decoding="async" onerror="this.parentNode.remove()"><figcaption>{e(n)}</figcaption></figure>' for i, (k, n) in enumerate(tiles))
+    return f'<div class="hv" aria-hidden="true">{t}<span class="hv-n">Illustrative images</span></div>'
+
 def home():
     faq = home_faq()
     cats = "".join(f'''<a class="cc rv" href="{{{{R}}}}parts/{c[0]}/"><span class="cc-ic">{ico(c[4])}</span><h3>{e(c[1])}</h3></a>''' for c in CATS)
@@ -1049,15 +1096,17 @@ def home():
     st = "".join(f'<li class="rv"><span class="n">{i + 1}</span><h3>{e(a)}</h3><p>{e(b)}</p></li>' for i, (a, b) in enumerate(steps))
     new = PRODS[:6]
     body = f'''<section class="hero">
-<div class="hero-bg" aria-hidden="true">{pic("hero", "Car tail light in the dark (mood image)", 2000, 1333, "100vw", True, "kb")}</div>
-<div class="wrap hero-in">
+<div class="wrap hero-in hero-2">
+<div class="hero-t">
 <p class="eyebrow">China &amp; EV car parts &middot; Singapore</p>
 <h1>Body parts for China &amp; EV cars, <em>found fast.</em></h1>
 <p class="lead">One catalogue, many suppliers. Quote on WhatsApp.</p>
 {search_box("hq")}
 <p class="hero-cta">{wa_btn("a part for my car", "Get a quote on WhatsApp", "g")}</p>
+</div>{hero_visual()}
 </div></section>
-<section class="strip"><div class="wrap">{brandchips()}</div></section>
+<section class="strip"><div class="wrap"><p class="strip-l">{len(BRANDS)} EV and China car brands in one catalogue &middot; <a href="{{{{R}}}}brands/">See all brands</a></p>{brandchips()}</div></section>
+{featured_html()}
 <section class="sec tight"><div class="wrap"><div class="sec-t rv"><h2>Browse by part</h2></div><div class="cgrid">{cats}</div></div></section>
 {popular_html()}
 <section class="sec alt tight" data-new-sec{"" if new else " hidden"}><div class="wrap">
@@ -1076,7 +1125,7 @@ def home():
 </div></section>'''
     shell("index.html", "EV Body Parts | China & EV Body Parts in Singapore",
           "Search body parts for Tesla, BYD, Denza, MG, Zeekr and more China and EV cars. EV Body Parts serves workshops and car owners in Singapore.",
-          body, "", faq=faq, pri=1.0, preload=True)
+          body, "", faq=faq, pri=1.0)
 
 def catalogue():
     brandopts = "".join(f'<option value="{b["key"]}">{e(b["name"])}</option>' for b in BRANDS)
