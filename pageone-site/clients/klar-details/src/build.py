@@ -25,7 +25,7 @@ LIVE = True
 PREVIEW = 'https://pageonesingapore.com/preview/%s/' % SLUG
 SITE = ('https://%s/' % DOMAIN) if LIVE else PREVIEW
 UPDATED = '2026-11-01'
-V = '13'
+V = '15'
 INDEXNOW_KEY = '3f8b2c6d9e14a7b05c2d8e6f1a4b9c73'
 
 # Homepage promo popup. Klar switches it off by setting PROMO['on'] = False and rebuilding;
@@ -82,6 +82,15 @@ LOCAL = {  # client's branding photos (Edwin, 1 Nov 2026), served from assets/ph
     'steam_leather': ('steam-leather-seat.jpg', 'Controlled-pressure steam cleaning of red leather seats', 'GALLERY'),
     'vent_brush': ('vent-brush-detail.jpg', 'Detailing brush cleaning air vents and dashboard trim', 'GALLERY'),
     'graphene_apply': ('graphene-applicator-bonnet.jpg', 'KlarGRAPHENE coating applied by hand to a grey bonnet', 'GALLERY'),
+    # second batch from Klar (Edwin, 1 Nov 2026) after the client said photos looked repeated
+    'bentley_wall': ('bentley-studio-wall.jpg', 'Red Bentley Continental GT convertible in the Klar studio under the "because every detail counts" wall', 'BRAND'),
+    'products_table': ('klar-products-vouchers.jpg', 'Klar shampoo, KlarCOAT bottles, Klar Shield, microfibre towel and Klar vouchers on a display table', 'BRAND'),
+    'rupes_polish': ('rupes-machine-polish.jpg', 'Klar specialist machine polishing a red bonnet with a RUPES dual-action polisher', 'GALLERY'),
+    'klarshield_spray': ('klarshield-spray.jpg', 'Klar Shield coating protector sprayed and buffed on a grey bonnet', 'GALLERY'),
+    'applicator_closeup': ('coating-applicator-closeup.jpg', 'Close-up of a gloved hand laying coating with a suede applicator block', 'GALLERY'),
+    'mercedes_headlight': ('mercedes-headlight-studio.jpg', 'Mercedes-Benz E-Class headlight and grille after detailing in the Klar studio', 'GALLERY'),
+    'klarcoat_range': ('klarcoat-range-graphene-advance.jpg', 'KlarCOAT Clearview, Plastic, Graphene Advance and Rims bottles in front of a blue BMW in the Klar studio', 'GALLERY'),
+    'rupes_white': ('rupes-polish-white-mustang.jpg', 'Machine polishing the bonnet of a white Ford Mustang with a RUPES polisher', 'GALLERY'),
 }
 IMG = {k: {'url': SITE + 'assets/photos/' + f, 'alt': a, 'use': u} for k, (f, a, u) in LOCAL.items()} | IMG
 # Client photos copied off the old WordPress host (assets/client/<same filename>); used whenever the copy exists.
@@ -101,12 +110,18 @@ if LIVE:
     IMG = _Img({k: v for k, v in IMG.items() if 'klardetails.com.sg/wp-content' not in v['url']})
 SUBST = {'ceramic-coating': 'klarcoat_bottle', 'graphene-coating': 'graphene_apply', 'paint-correction': 'every_detail_counts', 'interior-detailing': 'steam_rear_cabin',
          'interior-pest-control': 'fumigation_spray', 'coating-maintenance': 'specialist_wipe', 'new-car-detailing': 'specialist_wipe', 'premium-hand-wash': 'specialist_wipe'}
-SERVICE_IMG = {'ceramic-coating': 'klarcoat_bottle', 'graphene-coating': 'graphene_coating', 'paint-correction': 'bmw_infrared', 'interior-detailing': 'steam_rear_cabin',
-               'interior-pest-control': 'fumigation_spray', 'coating-maintenance': 'bmw_m6', 'new-car-detailing': 'tesla_charging', 'premium-hand-wash': 'specialist_wipe'}
+# one different photo per service (client: card photo must match the service, and no repeats)
+SERVICE_IMG = {'ceramic-coating': 'applicator_closeup', 'graphene-coating': 'klarcoat_range', 'paint-correction': 'rupes_polish', 'interior-detailing': 'steam_rear_cabin',
+               'interior-pest-control': 'fumigation_spray', 'coating-maintenance': 'klarshield_spray', 'new-car-detailing': 'mercedes_headlight', 'premium-hand-wash': 'specialist_wipe'}
 HERO_KEYS = [k for k, v in IMG.items() if v['use'] == 'HERO']
 GALLERY_KEYS = [k for k, v in IMG.items() if v['use'] == 'GALLERY']
 BRAND_KEYS = [k for k, v in IMG.items() if v['use'] == 'BRAND']
 SERVICE_IMG = {k: (v if v in IMG else SUBST[k]) for k, v in SERVICE_IMG.items()}
+# first three = the homepage's latest guides, chosen to be photos the homepage shows nowhere else
+ART_POOL = ['steam_leather', 'vent_brush', 'graphene_apply', 'bentley_wall', 'rupes_white', 'products_table', 'klarcoat_bottle', 'applicator_closeup', 'rupes_polish',
+            'klarshield_spray', 'mercedes_headlight', 'klarcoat_range', 'steam_rear_cabin', 'every_detail_counts', 'fumigation_spray', 'specialist_wipe']
+HOME_WORK = ['bentley_wall', 'rupes_white', 'products_table']  # homepage 'our work' strip: photos not used by the hero or service cards
+ART_POOL = [k for k in ART_POOL if k in IMG]
 VIDEO = M.VIDEOS[0] if M.VIDEOS else None
 
 WA_SVG = ('<svg viewBox="0 0 24 24" aria-hidden="true" fill="currentColor"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2Zm0 '
@@ -206,8 +221,22 @@ def svc_card(s, i):
             % (s['slug'], (i % 4) * 70, pic, E(s.get('line', '')), E(s['name']), E(s['card']), ARROW))
 
 
-def acard(a, i=0):
-    pic = '<div class="card-pic">%s</div>' % img(SERVICE_IMG.get(a.get('owner'), 'every_detail_counts'))
+ART_IMG = {}
+
+
+def art_img(a):
+    """Photo for an article: never the same as the article before it in date order, and spread over the whole pool."""
+    if not ART_IMG:
+        used = []
+        for x in ARTICLES:
+            pref = [k for k in ART_POOL if k not in used[-(len(ART_POOL) - 1):]]
+            ART_IMG[x['slug']] = pref[0] if pref else ART_POOL[len(used) % len(ART_POOL)]
+            used.append(ART_IMG[x['slug']])
+    return ART_IMG[a['slug']]
+
+
+def acard(a, i=0, key=None):
+    pic = '<div class="card-pic">%s</div>' % img(key or art_img(a))
     return ('<a class="card art rv" href="articles/%s/" style="--d:%dms">%s<div class="card-b"><time datetime="%s">%s</time><h3>%s</h3><p>%s</p><span class="more">Read %s</span></div></a>'
             % (a['slug'], (i % 3) * 70, pic, a['date'], nice_date(a['date']), E(a['title']), E(a['desc']), ARROW))
 
@@ -244,8 +273,15 @@ def related_services(slugs):
     return '<section class="sec alt"><div class="wrap"><h2>Related services</h2><div class="minis">%s</div></div></section>' % items if items else ''
 
 
-def related_articles(slugs, heading='Guides that help you decide'):
-    items = ''.join(acard(ABY[s], i) for i, s in enumerate(slugs) if s in ABY)
+def related_articles(slugs, heading='Guides that help you decide', avoid=()):
+    # never show a photo the page already shows, and no two cards with the same photo
+    used, items = set(avoid), ''
+    for i, s in enumerate(x for x in slugs if x in ABY):
+        k = art_img(ABY[s])
+        if k in used:
+            k = next((p for p in ART_POOL if p in IMG and p not in used), k)
+        used.add(k)
+        items += acard(ABY[s], i, k)
     return '<section class="sec"><div class="wrap"><h2>%s</h2><div class="grid3">%s</div></div></section>' % (E(heading), items) if items else ''
 
 
@@ -283,7 +319,7 @@ def home():
     svcs = ''.join(svc_card(s, i) for i, s in enumerate(SERVICES))
     why = ''.join('<li class="rv" style="--d:%dms"><span class="n">%02d</span><h3>%s</h3><p>%s</p></li>' % (i * 70, i + 1, E(t), E(d)) for i, (t, d) in enumerate(H['why']))
     vid = ('<section class="sec dark"><div class="wrap split"><div><p class="eyebrow">Inside the studio</p><h2>Watch a Klar premium hand wash</h2><p>Enclosed, dust-free bays, a pure-water final rinse and a hand finish. '
-           'This is the same care every Signature treatment gets for at least six man-hours.</p>%s</div><div class="video portrait rv"><video controls preload="metadata" playsinline poster="assets/photos/klar-specialist-wipe.jpg"><source src="assets/premium-wash.mp4" type="video/mp4"></video></div></div></section>'
+           'This is the same care every Signature treatment gets for at least six man-hours.</p>%s</div><div class="video portrait rv"><video controls preload="metadata" playsinline poster="assets/photos/klarcoat-bottle.jpg"><source src="assets/premium-wash.mp4" type="video/mp4"></video></div></div></section>'
            % wa_btn('Book a free assessment'))
     areas = ''.join('<a class="chip" href="areas/%s/">%s</a>' % (a['slug'], E(a['name'])) for a in AREAS)
     arts = ''.join(acard(a, i) for i, a in enumerate(ARTICLES[:3]))
@@ -296,7 +332,7 @@ def home():
 <div class="sec-h rv"><p class="eyebrow">Why owners choose Klar</p><h2>Particular about details? So are we.</h2></div>
 <ol class="why">{why}</ol>
 </div></section>
-<section class="sec work-sec"><div class="wrap sec-h rv"><p class="eyebrow">Our work</p><h2>Recent cars through the bays</h2></div>{gallery_rail(pick(GALLERY_KEYS, min(10, len(GALLERY_KEYS))))}<div class="wrap center"><a class="btn btn-ghost" href="our-work/">See more of our work {ARROW}</a></div></section>
+<section class="sec work-sec"><div class="wrap sec-h rv"><p class="eyebrow">Our work</p><h2>Recent cars through the bays</h2></div>{gallery_rail([k for k in HOME_WORK if k in IMG])}<div class="wrap center"><a class="btn btn-ghost" href="our-work/">See more of our work {ARROW}</a></div></section>
 {vid}
 <section class="sec"><div class="wrap sec-h rv"><p class="eyebrow">Reviews</p><h2>In our customers' words</h2></div>{review_cards()}<div class="wrap center"><a class="btn btn-ghost" href="reviews/">All reviews {ARROW}</a></div></section>
 <section class="sec alt"><div class="wrap split">
@@ -331,23 +367,24 @@ def service_page(s, i=0):
 <div class="rt">{s['intro']}<div class="cta-row">{wa_btn('WhatsApp for a free assessment', s['name'].lower() + '.')}{tel_btn()}</div></div>
 <div class="pic rv">{img(hk[0]) if hk else ''}</div>
 </div></section>
-{('<section class="sec dark"><div class="wrap split"><div><p class="eyebrow">Watch</p><h2>A Klar premium hand wash, start to finish</h2><p>Filmed in the Klar bays at Toh Guan Road East.</p></div><div class="video portrait rv"><video controls preload="metadata" playsinline poster="assets/photos/klar-specialist-wipe.jpg"><source src="assets/premium-wash.mp4" type="video/mp4"></video></div></div></section>') if s['slug'] == 'premium-hand-wash' else ''}
+{('<section class="sec dark"><div class="wrap split"><div><p class="eyebrow">Watch</p><h2>A Klar premium hand wash, start to finish</h2><p>Filmed in the Klar bays at Toh Guan Road East.</p></div><div class="video portrait rv"><video controls preload="metadata" playsinline poster="assets/photos/klarshield-spray.jpg"><source src="assets/premium-wash.mp4" type="video/mp4"></video></div></div></section>') if s['slug'] == 'premium-hand-wash' else ''}
 <section class="sec alt"><div class="wrap"><h2>What {E(s['name'].lower())} at Klar includes</h2>{inc}{extra_pics(s['slug'])}</div></section>
 <section class="sec"><div class="wrap narrow"><h2>How it works</h2>{steps_html(s['steps'])}</div></section>
 <section class="sec alt"><div class="wrap narrow">{sections_html(s['sections'])}</div></section>
 <section class="sec"><div class="wrap narrow"><div class="price rv"><h2>Price</h2><p>{E(s['price'])}</p><div class="cta-row">{wa_btn('Ask for a quote', s['name'].lower() + '.')}<a class="btn btn-ghost" href="prices/">How we price {ARROW}</a></div></div></div></section>
 <section class="sec alt"><div class="wrap narrow"><h2>Questions about {E(s['name'].lower())}</h2>{faq_html(s['faqs'])}</div></section>
 {related_services(s.get('related', []))}
-{related_articles(s.get('articles', []))}
+{related_articles(s.get('articles', []), avoid=hk + EXTRA.get(s['slug'], []))}
 '''
     schema = [{'@type': 'Service', 'name': s['name'], 'serviceType': s['name'], 'provider': {'@id': SITE + '#business'}, 'areaServed': {'@type': 'Country', 'name': 'Singapore'},
                'url': SITE + 'services/%s/' % s['slug'], 'description': s['desc']}, faq_schema(s['faqs'])]
     page('services/%s/' % s['slug'], s['title'], s['desc'], s['h1'], body, crumbs=[('services/', 'Services'), ('services/%s/' % s['slug'], s['name'])], kicker=s.get('line', ''), schema=schema, og=IMG[hk[0]]['url'])
 
 
-EXTRA = {'interior-detailing': ['steam_leather', 'vent_brush'], 'interior-pest-control': ['steam_rear_cabin', 'steam_leather'], 'ceramic-coating': ['every_detail_counts', 'coating_black_hood'],
-         'premium-hand-wash': ['klarcoat_bottle', 'bmw_m6'], 'paint-correction': ['infrared_curing_2', 'lexus_rc'], 'graphene-coating': ['graphene_trial_photo', 'tesla_byd'],
-         'coating-maintenance': ['specialist_wipe', 'service_maint_hero'], 'new-car-detailing': ['byd', 'tesla_byd']}
+EXTRA = {'interior-detailing': ['steam_leather', 'vent_brush'], 'interior-pest-control': ['steam_leather', 'vent_brush'],
+         'ceramic-coating': ['klarcoat_bottle', 'bentley_wall'], 'premium-hand-wash': ['bentley_wall', 'mercedes_headlight'],
+         'paint-correction': ['rupes_white', 'every_detail_counts'], 'graphene-coating': ['applicator_closeup', 'klarcoat_bottle'],
+         'coating-maintenance': ['products_table', 'specialist_wipe'], 'new-car-detailing': ['klarshield_spray', 'applicator_closeup']}
 
 
 def extra_pics(slug):
@@ -373,7 +410,7 @@ def trial_page():
 <section class="sec"><div class="wrap narrow"><div class="price rv"><h2>S$88, fixed</h2><p>The price is fixed before you arrive. If the bonnet needs more preparation than the trial covers, we tell you first and you decide.</p>{wa_btn('Book the S$88 trial', 'the S$88 graphene bonnet trial.')}</div></div></section>
 <section class="sec alt"><div class="wrap narrow"><h2>Questions about the trial</h2>{faq_html(faqs)}</div></section>
 {related_services(['graphene-coating', 'ceramic-coating', 'coating-maintenance'])}
-{related_articles(g.get('articles', []))}
+{related_articles(g.get('articles', []), avoid=['graphene_trial_photo' if 'graphene_trial_photo' in IMG else 'graphene_coating', 'graphene_apply'])}
 '''
     schema = [{'@type': 'Offer', 'name': 'Graphene Coating Bonnet Trial', 'price': '88', 'priceCurrency': 'SGD', 'availability': 'https://schema.org/InStock', 'url': SITE + 'graphene-bonnet-trial/',
                'offeredBy': {'@id': SITE + '#business'}, 'itemOffered': {'@type': 'Service', 'name': 'Graphene coating on the bonnet', 'provider': {'@id': SITE + '#business'}}}, faq_schema(faqs)]
@@ -416,7 +453,7 @@ def articles_index():
 
 def article_page(a, i=0):
     owner = SBY.get(a['owner'])
-    hk = [SERVICE_IMG.get(a.get('owner'), 'every_detail_counts')]
+    hk = [art_img(a)]
     rel = [s for s in a.get('related', []) if s in ABY]
     body = f'''
 <article class="sec"><div class="wrap narrow">
@@ -427,7 +464,7 @@ def article_page(a, i=0):
 {('<h2>Questions</h2>' + faq_html(a['faqs'])) if a.get('faqs') else ''}
 {('<div class="owner rv"><p class="eyebrow">Related service</p><a class="mini" href="services/%s/">%s<span><b>%s</b><small>%s</small></span>%s</a></div>' % (owner['slug'], icon(owner['slug']), E(owner['name']), E(owner.get('line', '')), ARROW)) if owner else ''}
 </div></article>
-{related_articles(rel, 'Keep reading')}
+{related_articles(rel, 'Keep reading', avoid=hk)}
 '''
     schema = [{'@type': 'Article', 'headline': a['h1'], 'description': a['desc'], 'datePublished': a['date'], 'dateModified': UPDATED, 'inLanguage': 'en-SG',
                'author': {'@type': 'Organization', 'name': NAME, 'url': SITE}, 'publisher': {'@id': SITE + '#business'}, 'mainEntityOfPage': SITE + 'articles/%s/' % a['slug'],
