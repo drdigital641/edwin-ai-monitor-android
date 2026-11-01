@@ -232,3 +232,11 @@ background:radial-gradient(600px 260px at 100% 0,rgba(232,181,42,.28),transparen
 .js .rv.in{opacity:1;transform:none}
 @media(prefers-reduced-motion:reduce){*,*:before,*:after{animation:none!important;transition:none!important}.js .rv{opacity:1;transform:none}html{scroll-behavior:auto}}
 .prose .photo img{max-height:420px;aspect-ratio:16/10}
+/* v3 hero: copy on top, real jobs carousel straight under it */
+.hero-top{display:grid;grid-template-columns:minmax(0,7fr) minmax(0,4fr);gap:36px;align-items:end;padding-top:44px;padding-bottom:30px}
+.hero-top h1{font-size:clamp(2.1rem,4.6vw,3.6rem)}
+.hero-side .cta-row{margin-top:0}.hero-side .rec{margin:14px 0 10px}
+.hero .rail{padding-bottom:40px}
+.hero .job{width:380px}
+@media(max-width:900px){.hero-top{grid-template-columns:minmax(0,1fr);gap:8px;padding-top:26px;padding-bottom:22px}.hero .cta-row .btn{flex:1 1 100%}.hero .job{width:82vw}}
+@media(max-width:900px){.hero-side .cta-row{display:none}.hero-side .rec{margin:4px 0 6px;font-size:.88rem}.hero-top .lede{font-size:1rem;margin-bottom:.4em}.hero-top h1{font-size:2rem}}

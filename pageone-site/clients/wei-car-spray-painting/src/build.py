@@ -36,7 +36,7 @@ LIVE = False
 PREVIEW = 'https://pageonesingapore.com/preview/%s/' % SLUG
 SITE = ('https://%s/' % DOMAIN) if LIVE else PREVIEW
 UPDATED = '2026-11-01'
-V = '2'
+V = '3'
 INDEXNOW_KEY = '7c41e9a0d2b85f36a1e4c07b9d5f2e18'
 
 NAME = 'Wei Car Spray Painting'
@@ -462,13 +462,13 @@ def demo_car():
 </div>'''
 
 
-def job_card(j):
+def job_card(j, eager=False):
     return ('<a class="job" href="our-work/#%s">%s<span class="job-tag">%s</span><span class="job-txt"><b>%s</b><span>%s</span><small>%s</small></span></a>'
-            % (j['k'], jimg(j['k'], '%s: %s (%s)' % (j['car'], j['work'], j['date'])), E(j['tag']), E(j['car']), E(j['work']), E(j['date'])))
+            % (j['k'], jimg(j['k'], '%s: %s (%s)' % (j['car'], j['work'], j['date']), eager=eager), E(j['tag']), E(j['car']), E(j['work']), E(j['date'])))
 
 
-def jobs_rail():
-    return '<div class="rail" data-glide tabindex="0" aria-label="Recent jobs"><div class="rail-track">%s</div></div>' % ''.join(job_card(j) for j in JOBS)
+def jobs_rail(eager=False):
+    return '<div class="rail" data-glide tabindex="0" aria-label="Recent jobs"><div class="rail-track">%s</div></div>' % ''.join(job_card(j, eager and i < 3) for i, j in enumerate(JOBS))
 
 
 def before_after():
@@ -499,23 +499,19 @@ def proof_items():
 def home():
     body = f'''
 <section class="hero">
-<div class="wrap hero-grid">
+<div class="wrap hero-top">
 <div class="hero-copy">
 <p class="kicker">Yishun Industrial Park A · Since 2012</p>
-<h1>Car spray painting in Yishun, <span>any colour you want.</span></h1>
+<h1>Car spray painting in Yishun, <span>see our real work.</span></h1>
 <p class="lede">Resprays, colour changes, scratch, dent and bumper repair, body kits and accident claims at Blk 1017 Yishun Industrial Park A. WhatsApp photos and Wei tells you what your car needs.</p>
+</div>
+<div class="hero-side">
 <div class="cta-row">{wa_btn()}{tel_btn()}</div>
 <p class="rec">★ {REC} <small>({REC_DATE})</small></p>
+<a class="link" href="our-work/">See all jobs <i aria-hidden="true">→</i></a>
 </div>
-{demo_car()}
 </div>
-</section>
-
-<section class="sec sec-tint">
-<div class="wrap">
-<div class="sec-head row"><div><p class="kicker">Our work</p><h2>Real cars from our workshop</h2></div><a class="link" href="our-work/">See all jobs <i aria-hidden="true">→</i></a></div>
-</div>
-{jobs_rail()}
+{jobs_rail(eager=True)}
 </section>
 
 <section class="sec">
