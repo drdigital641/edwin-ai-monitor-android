@@ -3,6 +3,7 @@
 # Data: builder/showcase.json, refreshed by builder/showcase_refresh.py from CaseStudyStats.
 # Rules: only figures from showcase.json, the date window always stated, no ratings or reviews,
 # no "best" or "#1" claims, sites with no Search Console data get "launched" + what was built.
+import calendar
 import datetime as _dt
 
 with open(os.path.join(HERE, "showcase.json"), encoding="utf-8") as _f:
@@ -63,7 +64,9 @@ def _fmt(c):
         p1s, t3s = _n(p1 // 10 * 10) + "+", _n(t3 // 10 * 10) + "+"
     else:
         p1s, t3s = _n(p1), _n(t3)
-    full = [m for m in g["monthly"] if m["days"] >= 28 and m["month"] + "-28" <= SC["data"]["data_through"]
+    # A month counts only when every calendar day is in the data (a 28-day October is still partial).
+    full = [m for m in g["monthly"] if m["days"] >= calendar.monthrange(int(m["month"][:4]), int(m["month"][5:7]))[1]
+            and m["month"] + "-28" <= SC["data"]["data_through"]
             and not (g["first_day"] and m["month"] == g["first_day"][:7] and not g["first_day"].endswith("-01"))]
     first = g["first_day"]
     # A site Page One rebuilt on an existing domain (e.g. aivs.sg) has Search Console history from the business's
@@ -120,7 +123,7 @@ def result_text(key, built_follows=False):
                 "so there are no Google results to report." + (" Here is what we built." if built_follows else f" So far: {c['built'][-1]}."))
     if stage(key) == "case":
         return (f"{f['clicks']} clicks from Google in the 28 days to {THROUGH_SHORT} ({'up from' if g['clicks'] > g['prev_clicks'] else 'compared with'} {f['prev_clicks']} the 28 days before), "
-                f"average position {f['pos']} (from {f['prev_pos']}), on page one for {f['page_one']} different searches.")
+                + (f"average position {f['pos']} (from {f['prev_pos']})" if f['pos'] != f['prev_pos'] else f"average position steady at {f['pos']}") + f", on page one for {f['page_one']} different searches.")
     if f["prev_ok"]:
         move = "up from" if g["impressions"] > g["prev_impressions"] else "compared with"
         pos = (f" Average position improved from {round(g['prev_position'])} to {round(g['position'])}."
@@ -446,7 +449,7 @@ def llms_sections():
             continue
         if st == "case":
             lines.append(f"- {c['name']} ({c['domain']}): {f['clicks']} clicks from Google ({'up from' if g['clicks'] > g['prev_clicks'] else 'compared with'} {f['prev_clicks']}), average position "
-                         f"{f['pos']} (from {f['prev_pos']}), on page one for {f['page_one']} different searches. "
+                         + (f"{f['pos']} (from {f['prev_pos']})" if f['pos'] != f['prev_pos'] else f"steady at {f['pos']}") + f", on page one for {f['page_one']} different searches. "
                          f"Search Console data starts {f['first_long']}.")
         elif f["first"] > SC["data"]["window"][0]:
             lines.append(f"- {c['name']} ({c['domain']}): Search Console data starts {f['first_long']}; shown on Google {f['impr']} times, "
