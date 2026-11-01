@@ -491,38 +491,35 @@ ENTRIES = [
 # Fields shown on the card: name, desc, category, area + region, WhatsApp (only if a mobile number) or Call, Directions (Google Maps cid).
 BASIC = [
     dict(slug="everest-garage", place_id="ChIJ6zFftrUX2jERlx4oI_q1cYw", name="Everest Garage", area_label="Kaki Bukit", regions=["east"], category="general-servicing-repair",
-         phone="+6580400072", phone_show="8040 0072", whatsapp="6580400072", cid="10120069923614498455",
+         cid="10120069923614498455",
          desc="Car repair and maintenance workshop in Kaki Bukit, on level 5 of 25 Kaki Bukit Road 4.",
          source="Google business listing cid 10120069923614498455, checked 1 Nov 2026"),
     dict(slug="hup-soon-lee-motor-service", place_id="ChIJKcgic4gU2jER-SiN1fV9wY4", name="Hup Soon Lee Motor Service", area_label="Yishun", regions=["north"], category="general-servicing-repair",
-         phone="+6562579387", phone_show="6257 9387", whatsapp=None, cid="10286641518694181113",
+         cid="10286641518694181113",
          desc="Long-running car repair workshop in Yishun Industrial Park A that works on private and commercial vehicles, including Euro 4, 5 and 6 models.",
          source="Google business listing cid 10286641518694181113, checked 1 Nov 2026"),
     dict(slug="cys-automobile-services", place_id="ChIJSYwXNWsT2jERZWyiONA8GI4", name="CYS Automobile Services", area_label="Woodlands", regions=["north"], category="general-servicing-repair",
-         phone="+6562192098", phone_show="6219 2098", whatsapp=None, cid="10239000617827855461",
+         cid="10239000617827855461",
          desc="Woodlands workshop for servicing and repairs that also handles accident reporting and motor insurance claims.",
          source="Google business listing cid 10239000617827855461, checked 1 Nov 2026"),
     # Added 1 Nov 2026 from details Edwin sent (Google business listings). WhatsApp only where Edwin said the number takes WhatsApp.
     dict(slug="sonic-auto-garage", place_id="ChIJOdFuZBkZ2jERzzREQDSArDQ", name="Sonic Auto Garage", area_label="Ubi", regions=["central"], category="general-servicing-repair",
-         phone="+6588560121", phone_show="8856 0121", whatsapp=None, cid=None,
+         cid=None,
          desc="Car servicing and repair workshop in Paya Ubi Industrial Park, with gearbox, aircon, tyre and battery work, plus towing and accident claims.",
          source="Google business listing place_id ChIJOdFuZBkZ2jERzzREQDSArDQ, details from Edwin 1 Nov 2026"),
     dict(slug="allen-motor-workshop", place_id="", name="Allen Motor Workshop", area_label="Sin Ming", regions=["central"], category="general-servicing-repair",
-         phone="+6594521771", phone_show="9452 1771", whatsapp=None, cid="4502333234277743988",
+         cid="4502333234277743988",
          desc="Car servicing and repair workshop in Sin Ming Industrial Estate Sector C.",
          source="Google business listing cid 4502333234277743988, details from Edwin 1 Nov 2026"),
     dict(slug="jss-motorworkz", place_id="", name="JSS MotorWorkz", area_label="Toh Guan", regions=["west"], category="general-servicing-repair",
-         phone="+6583231517", phone_show="8323 1517", whatsapp="6583231517", cid="75407007477044089", site="https://jssmotorworkz.com/",
+         cid="75407007477044089",
          desc="Workshop at Enterprise Hub, Toh Guan, for servicing, engine and gearbox overhauls, diagnostics, aircon and walnut blasting.",
          source="Google business listing cid 75407007477044089, details from Edwin 1 Nov 2026"),
 ]
-# Extra public facts from basic-run/2026-11-01.json (Google business listings, checked 1 Nov 2026). hours_rows is the display form; hours_ld the
-# schema.org openingHours form. Hup Soon Lee's Monday closing time is unclear on Google, so Monday is shown as "from 9am" and left out of the schema.
+# Public facts for Basic listings (address, plain services, wording). Phone, hours, rating and reviews are deliberately NOT stored: they load live from Google Places.
 _BX = {
     "everest-garage": dict(
-        address_public="25 Kaki Bukit Rd 4, #05-81, Singapore 417800", rating="5.0", reviews=19, checked="1 Nov 2026",
-        hours_rows=[("Mon to Fri", "9:30am to 6:30pm"), ("Sat", "9:30am to 3pm"), ("Sun", "Closed")],
-        hours_ld=["Mo-Fr 09:30-18:30", "Sa 09:30-15:00"],
+        address_public="25 Kaki Bukit Rd 4, #05-81, Singapore 417800",
         services_public=["Car servicing", "Oil change", "Car aircon", "General repairs"],
         services_source="Google listing category + topics customers mention",
         whatsapp_source="WhatsApp number confirmed through the wa.link on its Google listing, 1 Nov 2026",
@@ -530,45 +527,35 @@ _BX = {
               "Its Google listing shows servicing, oil change, aircon and general repairs. Message the workshop on WhatsApp, or tap Directions to find the unit."),
         area_ctx="Kaki Bukit is in the East planning region of Singapore, which also takes in the Bedok car trade units."),
     "hup-soon-lee-motor-service": dict(
-        address_public="1018 Yishun Industrial Park A, #01-352, Singapore 768760", rating="4.4", reviews=10, checked="1 Nov 2026",
-        hours_rows=[("Mon", "From 9am, call to confirm closing time"), ("Tue to Sat", "9am to 6pm"), ("Sun", "Closed")],
-        hours_ld=["Tu-Sa 09:00-18:00"],
+        address_public="1018 Yishun Industrial Park A, #01-352, Singapore 768760",
         services_public=["Car repair and servicing", "Private and commercial vehicles", "Euro 4, 5 and 6 vehicles"],
         services_source="Google listing description",
         lede=("Hup Soon Lee Motor Service is a long-running car repair workshop at 1018 Yishun Industrial Park A. "
               "According to its Google listing it works on private and commercial vehicles, including Euro 4, 5 and 6 models. Call to ask about your car."),
         area_ctx="Yishun is in the North planning region of Singapore, alongside Woodlands, Sembawang and Kranji."),
     "cys-automobile-services": dict(
-        address_public="38 Woodlands Industrial Park E1, #07-17, Singapore 757700", rating="4.4", reviews=31, checked="1 Nov 2026",
-        hours_rows=[("Mon to Fri", "9am to 5pm"), ("Sat", "9am to 1pm"), ("Sun", "Closed")],
-        hours_ld=["Mo-Fr 09:00-17:00", "Sa 09:00-13:00"],
+        address_public="38 Woodlands Industrial Park E1, #07-17, Singapore 757700",
         services_public=["Servicing and repair", "Accident reporting", "Motor insurance claims", "Vehicle inspection", "Vehicle rental"],
         services_source="Google listing description",
         lede=("CYS Automobile Services is a servicing and repair workshop on level 7 of 38 Woodlands Industrial Park E1. "
               "Its Google listing also mentions accident reporting, motor insurance claims, vehicle inspection and vehicle rental. Call to ask which of these fits your car."),
         area_ctx="Woodlands is in the North planning region of Singapore, alongside Yishun, Sembawang and Kranji."),
     "sonic-auto-garage": dict(
-        address_public="53 Ubi Ave 1, #01-21 Paya Ubi Industrial Park, Singapore 408934", rating="5.0", reviews=26, checked="1 Nov 2026",
-        hours_rows=[("Mon to Sat", "9:30am to 6:30pm"), ("Sun", "Closed")],
-        hours_ld=["Mo-Sa 09:30-18:30"],
+        address_public="53 Ubi Ave 1, #01-21 Paya Ubi Industrial Park, Singapore 408934",
         services_public=["General servicing and repair", "Brakes", "Diagnostics", "Gearbox", "Car aircon", "Tyres and batteries", "Towing and accident claims"],
         services_source="Google listing, details from Edwin",
         lede=("Sonic Auto Garage is a car servicing and repair workshop at unit #01-21 of Paya Ubi Industrial Park, 53 Ubi Avenue 1. "
               "Its Google listing covers servicing, brakes, diagnostics, gearbox, aircon, tyres and batteries, as well as towing and accident claims. Call to book your car in."),
         area_ctx="Ubi is in the Geylang planning area, part of the Central region of Singapore."),
     "allen-motor-workshop": dict(
-        address_public="1 Sin Ming Industrial Estate Sector C, #01-127, Singapore 575636", rating="4.9", reviews=50, checked="1 Nov 2026",
-        hours_rows=[("Mon to Fri", "9am to 6pm"), ("Sat", "9am to 3pm"), ("Sun", "Closed")],
-        hours_ld=["Mo-Fr 09:00-18:00", "Sa 09:00-15:00"],
+        address_public="1 Sin Ming Industrial Estate Sector C, #01-127, Singapore 575636",
         services_public=["Car servicing", "Car repair"],
         services_source="Google listing, details from Edwin",
         lede=("Allen Motor Workshop is a car servicing and repair workshop at unit #01-127, 1 Sin Ming Industrial Estate Sector C. "
               "Call to ask about servicing or a repair for your car, or tap Directions to find the unit."),
         area_ctx="Sin Ming is in the Bishan planning area, part of the Central region of Singapore."),
     "jss-motorworkz": dict(
-        address_public="48 Toh Guan Road East, #02-140 Enterprise Hub, Singapore 608586", rating="4.9", reviews=None, checked="1 Nov 2026",
-        hours_rows=[("Mon to Sat", "9am to 6pm"), ("Sun", "Closed")],
-        hours_ld=["Mo-Sa 09:00-18:00"],
+        address_public="48 Toh Guan Road East, #02-140 Enterprise Hub, Singapore 608586",
         services_public=["Servicing", "Engine repair and overhaul", "Gearbox repair and overhaul", "Diagnostics", "Car aircon", "Walnut blasting", "Tyres and batteries"],
         services_source="Google listing, details from Edwin",
         lede=("JSS MotorWorkz is a workshop on level 2 of Enterprise Hub, 48 Toh Guan Road East. "
@@ -581,47 +568,29 @@ for _b in BASIC:
 
 
 def _auto_basic():
-    """Basic listings found by basic_agent.py (basic_auto.json). Records older than 30 days are left out until refreshed (Places terms: only place_id is kept long-term)."""
-    import datetime as _dt, json as _j, os as _os, re as _re
+    """Basic listings found by basic_agent.py (basic_auto.json). Stored: place_id + name + address + our own estate/slug only.
+    Phone, hours, rating, reviews, website and photos are never stored: dir.js loads them live from Google Places in the visitor's browser."""
+    import json as _j, os as _os, re as _re
+    import areas as _ar
     p = _os.path.join(_os.path.dirname(_os.path.abspath(__file__)), "basic_auto.json")
     if not _os.path.exists(p):
         return []
-    out, now = [], _dt.datetime.utcnow()
+    out = []
     for r in _j.load(open(p)).values():
-        f = _dt.datetime.fromisoformat(r["fetched_at"])
-        digits = _re.sub(r"\D", "", r.get("phone", ""))[-8:]
-        if (now - f).days > 30 or len(digits) != 8:
-            continue
-        m = _re.search(r"Singapore\s+(\d{6})", r.get("address", ""))
+        m = _re.search(r"(\d{6})\s*$", r.get("address", ""))
         postal = m.group(1) if m else ""
-        street = _re.sub(r",?\s*Singapore\s+\d{6}\s*$", "", r["address"])
-        wk = {}
-        for line in r.get("hours", []):
-            d, _, t = line.partition(": ")
-            wk[d] = t.replace("\u2009", " ").replace("\u202f", " ").replace("\u2013", " to ").replace("  ", " ")
-        rows, seen = [], {}
-        for d in ("Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"):
-            if d in wk:
-                seen.setdefault(wk[d], []).append(d[:3])
-        for t, ds in seen.items():
-            _o = ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"]
-            _i = [_o.index(x) for x in ds]
-            consec = _i == list(range(_i[0], _i[0] + len(_i)))
-            rows.append((ds[0] if len(ds) == 1 else (ds[0] + " to " + ds[-1] if consec else ", ".join(ds)), t))
-        slug = _re.sub(r"[^a-z0-9]+", "-", r["name"].lower()).strip("-")
-        import areas as _ar
-        _es = _ar.estate_for(street, postal)
-        _en = _ar.ESTATES[_es]["name"] if _es else "Singapore"
-        _rg = _ar.ESTATES[_es]["region"] if _es else "central"
-        mobile = digits[0] in "89"
-        out.append(dict(slug=slug, place_id=r["place_id"], name=r["name"], area_label=_en, regions=[_rg], category="general-servicing-repair",
-                        phone="+65" + digits, phone_show=digits[:4] + " " + digits[4:], whatsapp=("65" + digits) if mobile else None, cid=None,
-                        site=r.get("website") or None, desc="Car workshop at " + street + ".", source="Google Places API (New), fetched %s" % f.date(),
-                        addresses=[dict(label=None, street=street, postal=postal)], address_public=r["address"], rating=r.get("rating"), reviews=r.get("reviews"),
-                        checked=f.strftime("%-d %b %Y"), hours_rows=rows or [("See Google listing", "")], hours_ld=[],
-                        services_public=["Car servicing and repair"], services_source="Google listing",
-                        lede="%s is a car workshop at %s. Call to ask about servicing or a repair for your car, or tap Directions to find the unit." % (r["name"], street),
-                        area_ctx="%s is in the %s region of Singapore." % (_en, _rg.replace("-", " ").title()), tier="free", services=[], regions_note="Region from the public listing area (URA planning regions)."))
+        street = _re.sub(r",?\s*(?:Singapore\s+)?\d{6}\s*$", "", r["address"])
+        es = r.get("estate") or _ar.estate_for(street, postal)
+        if not es:
+            continue
+        en, rg = _ar.ESTATES[es]["name"], _ar.ESTATES[es]["region"]
+        out.append(dict(slug=r["slug"], place_id=r["place_id"], name=r["name"], area_label=en, regions=[rg], category="general-servicing-repair", cid=None,
+                        desc="Car workshop at " + street + ".", source="Google Places API (New) place_id %s" % r["place_id"],
+                        addresses=[dict(label=None, street=street, postal=postal)], address_public=r["address"],
+                        services_public=["Car repair and servicing"], services_source="Google listing category",
+                        lede="%s is a car workshop at %s. Tap Directions to find the unit, or use the contact button to get in touch." % (r["name"], street),
+                        area_ctx="%s is in the %s region of Singapore." % (en, rg.replace("-", " ").title()),
+                        tier="free", services=[], regions_note="Region from the public listing area (URA planning regions)."))
     return out
 
 

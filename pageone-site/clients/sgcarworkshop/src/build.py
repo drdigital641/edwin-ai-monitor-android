@@ -453,6 +453,15 @@ def call_btn(e, page_path, cls='', label='Call'):
     return '<a class="btn%s" href="tel:%s" %s>%s %s</a>' % ((' ' + cls) if cls else '', e['phone'], track_attrs('call', e, page_path), ic('phone'), E(label))
 
 
+def live_contact(e, page_path, cls=''):
+    """Basic contact button. The phone number is NOT stored: dir.js loads it live from Google Places and turns this into WhatsApp (mobile) or Call.
+    Until then (or if Places fails) it is a plain link to the Google listing."""
+    msg = "Hi %s, I found you on %s (%s). I'd like to ask about %s." % (e['name'], SITE_NAME, page_label(page_path), ASK.get(e['slug'], 'my car'))
+    return ('<a class="btn wa live%s" href="%s" target="_blank" rel="noopener" data-live="contact" data-wa-msg="%s" data-cta="contact_dir_%s" data-tier="free" data-page="%s">'
+            '<span class="ic-wa" hidden>%s</span><span class="ic-call">%s</span> <span class="lbl">Contact on Google</span></a>') % (
+        (' ' + cls) if cls else '', E(maps_url(e)), E(msg, True), e['slug'], E(page_label(page_path)), WA_SVG, ic('phone'))
+
+
 def photo_img(p, depth, lazy=True, cls=''):
     if p.get('f'):
         return img_tag(p['f'], p['alt'], depth, lazy=lazy, cls=cls)
@@ -540,7 +549,7 @@ def card(e, depth, page_path=''):
     attrs = 'data-search="%s" data-cat="%s" data-regions="%s" data-tier="%s"' % (E(card_search(e), True), c['slug'], ' '.join(e['regions']), e['tier'])
     rg = '<p class="meta rg">%s<span>%s</span></p>' % (ic('pin'), E(region_label(e)))
     if e['tier'] == 'free':
-        acts = wa_btn(e, page_path, 'sm') if e.get('whatsapp') else call_btn(e, page_path, 'sm wa', 'Call ' + e['phone_show'])
+        acts = live_contact(e, page_path, 'sm')
         acts += '<span class="minor"><a class="btn sm ghost" href="%s" target="_blank" rel="noopener" data-cta="directions_%s">Directions</a>' % (E(maps_url(e)), e['slug'])
         acts += '<a class="btn sm ghost" href="%sworkshops/%s/" data-cta="view_%s">View</a></span>' % (pre(depth), e['slug'], e['slug'])
         return ('<article class="card basic" %s><div class="ph gph" %s>%s%s</div><div class="bd"><span class="tag">%s</span>'
@@ -714,23 +723,15 @@ def basic_page(e):
     url = abs_url(path)
     cr, crld = crumbs(depth, workshop_trail(e))
     gurl = maps_url(e)
-    if e.get('whatsapp'):
-        contact_btn = wa_btn(e, path, 'big', 'WhatsApp ' + e['phone_show'])
-        contact_line = 'WhatsApp %s' % e['phone_show']
-    else:
-        contact_btn = call_btn(e, path, 'big wa', 'Call ' + e['phone_show'])
-        contact_line = 'Call %s' % e['phone_show']
+    contact_btn = live_contact(e, path, 'big')
     photo = '<div class="hero-ph gph" %s>%s</div>' % (gph_attrs(e), gph_tile(e))
     svcs = ''.join('<li>%s</li>' % E(s) for s in e['services_public'])
-    hours = ''.join('<dt>%s</dt><dd>%s</dd>' % (E(a), E(b)) for a, b in e['hours_rows'])
-    rating = ('Rated %s from %d Google reviews (checked %s)' % (e['rating'], e['reviews'], e['checked'])) if e.get('reviews') else (
-        'Rated %s on Google (checked %s)' % (e['rating'], e['checked']))
-    reviews = '<p class="reviews-line">%s <a href="%s" target="_blank" rel="noopener" data-cta="reviews_%s" data-tier="free" data-page="%s">%s</a></p>' % (
-        ic('shield'), E(gurl), e['slug'], E(page_label(path)), E(rating))
+    hours = '<p class="fine" data-live="hours">See opening hours on the <a href="%s" target="_blank" rel="noopener">Google listing</a>.</p>' % E(gurl)
+    reviews = '<p class="reviews-line" data-live="rating">%s <a href="%s" target="_blank" rel="noopener" data-cta="reviews_%s" data-tier="free" data-page="%s">See the Google rating and reviews</a></p>' % (
+        ic('shield'), E(gurl), e['slug'], E(page_label(path)))
     claim = owner_note(e, depth, path)
     area_links = area_link_html(e, '../../')
-    site_btn = (' <a class="btn ghost" href="%s" target="_blank" rel="noopener" data-cta="website_%s" data-tier="free">%s %s</a>' % (
-        E(e['site']), e['slug'], ic('out'), E(e['site'].split('//')[1].strip('/')))) if e.get('site') else ''
+    site_btn = ' <a class="btn ghost" href="#" hidden target="_blank" rel="noopener" data-live="site" data-cta="website_%s" data-tier="free">%s <span class="lbl">Website</span></a>' % (e['slug'], ic('out'))
     body = f'''<div class="w nar basicpg">{cr}
 <div class="badges" style="margin-top:14px">{tier_badge(e)}<span class="tag">{E(c['short'])}</span></div>
 <h1 style="margin-top:8px">{E(e['name'])}</h1>
@@ -743,22 +744,23 @@ def basic_page(e):
 <ul class="tick svc-plain">{svcs}</ul>
 <p class="fine">From the workshop's Google listing.</p>
 <section id="find" class="findus"><h2>Find us</h2>
-<ul class="facts"><li data-addr>{ic('pin')}<span>{E(e['address_public'])}</span></li><li>{ic('phone')}<span>{E(contact_line)}</span></li></ul>
+<ul class="facts"><li data-addr>{ic('pin')}<span>{E(e['address_public'])}</span></li><li data-live="phoneline">{ic('phone')}<span>Phone number on the <a href="{E(gurl)}" target="_blank" rel="noopener">Google listing</a></span></li></ul>
 <p style="margin:10px 0"><a class="btn" href="{gurl}" target="_blank" rel="noopener" data-cta="directions_{e['slug']}" data-tier="free" data-page="{E(page_label(path))}" data-map>{ic('pin')} Directions</a>{site_btn}</p>
-<h3>Opening hours</h3><dl class="hours">{hours}</dl>
+<h3>Opening hours</h3>{hours}
 </section>
 {reviews}
-<p class="fine">Checked on Google, 1 Nov 2026. More <a href="../../services/{c['slug']}/">{E(c['name'].lower())}</a>{area_links}.</p>
+<p class="fine">Phone, opening hours and rating are shown live from Google. More <a href="../../services/{c['slug']}/">{E(c['name'].lower())}</a>{area_links}.</p>
 {claim}
 </div>'''
-    street, postal = e['address_public'].rsplit(', Singapore ', 1)
+    _m = re.search(r'^(.*?)[, ]+(?:Singapore\s+)?(\d{6})\s*$', e['address_public'])
+    street, postal = (_m.group(1), _m.group(2)) if _m else (e['address_public'], '')
     ld = {'@context': 'https://schema.org', '@type': 'AutoRepair', 'name': e['name'], 'url': url,
           'address': {'@type': 'PostalAddress', 'streetAddress': street, 'postalCode': postal, 'addressLocality': 'Singapore', 'addressCountry': 'SG'},
-          'telephone': e['phone'], 'openingHours': e['hours_ld']}
-    bar = wabar([wa_btn(e, path) if e.get('whatsapp') else call_btn(e, path, 'wa'),
+          }
+    bar = wabar([live_contact(e, path),
                  '<a class="btn" href="%s" target="_blank" rel="noopener" data-cta="directions_%s" data-tier="free" data-page="%s">%s Directions</a>' % (E(gurl), e['slug'], E(page_label(path)), ic('pin'))])
-    desc = '%s: car workshop in %s, %s region. Address, directions, hours and Google rating. %s.' % (e['name'], e['area_label'], RN[e['region']], contact_line)
-    page(path, '%s | %s Car Workshop' % (e['name'], e['area_label']), desc, body, [ld, dict(crld, **{'@context': 'https://schema.org'})], bar=bar, h1=e['name'])
+    desc = next(d for d in ('%s: car workshop in %s, %s region. Address, directions, and phone, hours and Google rating shown live from Google.' % (e['name'], e['area_label'], RN[e['region']]), '%s, car workshop in %s. Address, directions, phone, hours and Google rating.' % (e['name'], e['area_label']), '%s, car workshop in %s.' % (e['name'], e['area_label'])) if len(d) <= 160)
+    page(path, fit_title('%s | %s Car Workshop' % (e['name'], e['area_label']), '%s | %s' % (e['name'], e['area_label']), e['name']), desc, body, [ld, dict(crld, **{'@context': 'https://schema.org'})], bar=bar, h1=e['name'])
 
 
 def tier_features():

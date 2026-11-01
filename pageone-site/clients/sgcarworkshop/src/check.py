@@ -58,10 +58,10 @@ def audit(a):
         'services_detail': len(re.findall(r'<li class="svc ', a)),
         'faqs': len(re.findall(r'<details class="faq">', a)),
         'gallery': jobs + illus,
-        'contact': bool(re.search(r'href="tel:\+\d+"[^>]*data-cta="call_dir_', a)) or bool(re.search(r'href="https://wa\.me/\d+\?text=[^"]*"[^>]*data-cta="whatsapp_dir_', a)),
+        'contact': 'data-live="contact"' in a or bool(re.search(r'href="tel:\+\d+"[^>]*data-cta="call_dir_', a)) or bool(re.search(r'href="https://wa\.me/\d+\?text=[^"]*"[^>]*data-cta="whatsapp_dir_', a)),
         'address': 'data-addr' in a,
         'map': 'data-map' in a,
-        'hours': 'class="hours"' in a,
+        'hours': 'class="hours"' in a or 'data-live="hours"' in a,
         'rating': 'class="reviews-line"' in a,
     }
 def both_buttons(a):
@@ -104,14 +104,17 @@ for e, r in rows:
 home_src = open(os.path.join(root, 'index.html'), encoding='utf-8').read()
 for e in ENTRIES:
     if e['tier'] == 'free':
-        m = re.search(r'<article class="card basic[^"]*"[^>]*>(?:(?!</article>).)*data-cta="(?:whatsapp|call)_dir_%s"(?:(?!</article>).)*href="[^"]*workshops/%s/"' % (e['slug'], e['slug']), home_src, re.S)
+        m = re.search(r'<article class="card basic[^"]*"[^>]*>(?:(?!</article>).)*data-cta="(?:whatsapp|call|contact)_dir_%s"(?:(?!</article>).)*href="[^"]*workshops/%s/"' % (e['slug'], e['slug']), home_src, re.S)
         if not m or 'Manage this listing' not in home_src: print('BASIC card incomplete (needs contact + View link)', e['slug']); bad += 1
         pg = open(os.path.join(root, 'workshops', e['slug'], 'index.html'), encoding='utf-8').read()
         ld = [json.loads(j) for j in re.findall(r'<script type="application/ld\+json">(.*?)</script>', pg, re.S)]
         biz = [x for x in ld if x.get('@type') != 'BreadcrumbList']
-        if len(biz) != 1 or set(biz[0]) - {'@context', '@type', 'name', 'url', 'address', 'telephone', 'openingHours', 'geo'}: print('BASIC schema not minimal', e['slug']); bad += 1
-        for needle in ('data-cta="claim_%s"' % e['slug'], 'Is this your workshop?', 'From the workshop', 'Rated '):
+        if len(biz) != 1 or set(biz[0]) - {'@context', '@type', 'name', 'url', 'address', 'geo'}: print('BASIC schema not minimal', e['slug']); bad += 1
+        for needle in ('data-cta="claim_%s"' % e['slug'], 'Is this your workshop?', 'data-live="contact"', 'data-live="hours"', 'data-live="rating"'):
             if needle not in pg: print('BASIC page missing', needle, e['slug']); bad += 1
+        for stored in ('tel:+', 'telephone', 'openingHours', 'ratingValue', 'reviewCount'):
+            if stored in pg: print('BASIC page stores a live-only field', stored, e['slug']); bad += 1
+        if re.search(r'wa\.me/\d', pg): print('BASIC page stores a phone number', e['slug']); bad += 1
         for banned in ('class="faq"', 'class="gal"', 'class="svc ', 'FAQPage', 'Review'):
             if banned in pg: print('BASIC page has Verified-only content', banned, e['slug']); bad += 1
 sm = open(os.path.join(root, 'sitemap.xml')).read(); lt = open(os.path.join(root, 'llms.txt')).read()

@@ -23,7 +23,7 @@ Last updated: 2026-11-01
 - [Mobile (island-wide)](https://pageonesingapore.com/preview/sgcarworkshop/areas/mobile/): Mobile car services that come to your car anywhere in Singapore. These listings have no single shopfront, so the work is done where your car is parked.
 
 ## Estates and industrial areas
-- [Kaki Bukit](https://pageonesingapore.com/preview/sgcarworkshop/areas/kaki-bukit/): Kaki Bukit is an industrial estate in the East region, around Kaki Bukit Avenue and Kaki Bukit Road, with many workshops, trade units and parts suppliers. 3 listings.
+- [Kaki Bukit](https://pageonesingapore.com/preview/sgcarworkshop/areas/kaki-bukit/): Kaki Bukit is an industrial estate in the East region, around Kaki Bukit Avenue and Kaki Bukit Road, with many workshops, trade units and parts suppliers. 21 listings.
 - [Ubi](https://pageonesingapore.com/preview/sgcarworkshop/areas/ubi/): Ubi is an industrial area near Paya Lebar, around Ubi Avenue and Ubi Road, with motor workshops mixed in among light industry. 1 listing.
 - [Woodlands](https://pageonesingapore.com/preview/sgcarworkshop/areas/woodlands/): Woodlands is the main industrial area in the north-west, around Woodlands Industrial Park and the Woodlands Avenue roads, close to the Causeway. 2 listings.
 - [Kranji](https://pageonesingapore.com/preview/sgcarworkshop/areas/kranji/): Kranji is an industrial area in the north-west, around Kranji Way, Jalan Lam Huat and Sungei Kadut. 1 listing.
@@ -47,6 +47,24 @@ Last updated: 2026-11-01
 - [Sonic Auto Garage](https://pageonesingapore.com/preview/sgcarworkshop/workshops/sonic-auto-garage/): General servicing and repair, Basic listing, Ubi
 - [Allen Motor Workshop](https://pageonesingapore.com/preview/sgcarworkshop/workshops/allen-motor-workshop/): General servicing and repair, Basic listing, Sin Ming
 - [JSS MotorWorkz](https://pageonesingapore.com/preview/sgcarworkshop/workshops/jss-motorworkz/): General servicing and repair, Basic listing, Toh Guan
+- [KH Kinetics Autocare. Night- Friendly Car Workshop](https://pageonesingapore.com/preview/sgcarworkshop/workshops/kh-kinetics-autocare-night-friendly/): General servicing and repair, Basic listing, Kaki Bukit
+- [Kang Car Repairers](https://pageonesingapore.com/preview/sgcarworkshop/workshops/kang-car-repairers/): General servicing and repair, Basic listing, Kaki Bukit
+- [Precise Auto Service](https://pageonesingapore.com/preview/sgcarworkshop/workshops/precise-auto-service/): General servicing and repair, Basic listing, Kaki Bukit
+- [MK Auto Workz](https://pageonesingapore.com/preview/sgcarworkshop/workshops/mk-auto-workz/): General servicing and repair, Basic listing, Kaki Bukit
+- [Join Motor & Engineering Works](https://pageonesingapore.com/preview/sgcarworkshop/workshops/join-motor-engineering-works/): General servicing and repair, Basic listing, Kaki Bukit
+- [Hussain & Sons Workshop](https://pageonesingapore.com/preview/sgcarworkshop/workshops/hussain-sons-workshop/): General servicing and repair, Basic listing, Kaki Bukit
+- [First East Centre](https://pageonesingapore.com/preview/sgcarworkshop/workshops/first-east-centre/): General servicing and repair, Basic listing, Kaki Bukit
+- [Nightservicingsg](https://pageonesingapore.com/preview/sgcarworkshop/workshops/nightservicingsg/): General servicing and repair, Basic listing, Kaki Bukit
+- [KAIZEN MOTORS PTE LTD](https://pageonesingapore.com/preview/sgcarworkshop/workshops/kaizen-motors/): General servicing and repair, Basic listing, Kaki Bukit
+- [Fong Motors](https://pageonesingapore.com/preview/sgcarworkshop/workshops/fong-motors/): General servicing and repair, Basic listing, Kaki Bukit
+- [Chin Tong Motor Repair Works](https://pageonesingapore.com/preview/sgcarworkshop/workshops/chin-tong-motor-repair-works/): General servicing and repair, Basic listing, Kaki Bukit
+- [FR Auto](https://pageonesingapore.com/preview/sgcarworkshop/workshops/fr-auto/): General servicing and repair, Basic listing, Kaki Bukit
+- [Ong Kian Seng Motor Repairs](https://pageonesingapore.com/preview/sgcarworkshop/workshops/ong-kian-seng-motor-repairs/): General servicing and repair, Basic listing, Kaki Bukit
+- [SK Garage @ Kaki Bukit](https://pageonesingapore.com/preview/sgcarworkshop/workshops/sk-garage-kaki-bukit/): General servicing and repair, Basic listing, Kaki Bukit
+- [KY Auto](https://pageonesingapore.com/preview/sgcarworkshop/workshops/ky-auto/): General servicing and repair, Basic listing, Kaki Bukit
+- [Trident Auto Service Centre Pte. Ltd.](https://pageonesingapore.com/preview/sgcarworkshop/workshops/trident-auto-service-centre/): General servicing and repair, Basic listing, Kaki Bukit
+- [Hanip Automobiles Pte. Ltd.](https://pageonesingapore.com/preview/sgcarworkshop/workshops/hanip-automobiles/): General servicing and repair, Basic listing, Kaki Bukit
+- [Boon Siong Vehicles Service](https://pageonesingapore.com/preview/sgcarworkshop/workshops/boon-siong-vehicles-service/): General servicing and repair, Basic listing, Kaki Bukit
 
 ## More
 - [List your workshop](https://pageonesingapore.com/preview/sgcarworkshop/list-your-workshop/)

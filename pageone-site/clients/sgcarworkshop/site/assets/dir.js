@@ -76,40 +76,89 @@ if(!sent&&window.fetch){fetch(url,{method:'POST',credentials:'omit',keepalive:tr
 }catch(x){}}
 })();
 
-/* Basic listings: one Google listing photo loaded live from Places API (New) in the visitor's browser, never copied or stored.
-   Shown with the photographer credit (linked) and a Google Maps attribution link, as the Places policy requires.
-   A listing with no stored place_id is found once by name + address (IDs only); the ID itself may be kept (localStorage). Failure leaves the letter tile. */
+/* Basic listings: everything from Google is loaded LIVE in the visitor's browser from Places API (New) with the referrer-restricted browser key.
+   Nothing is stored on our side except the place_id: photo (with linked photographer + Google Maps credit), phone (WhatsApp if mobile, else Call),
+   opening hours, rating, review count and website. If Places fails or a field is missing, the server-rendered fallback (link to the Google listing) stays.
+   A listing with no stored place_id is found once by name + address (IDs only); the ID may be kept in localStorage. Responses are kept only for this tab (sessionStorage). */
 (function () {
   var m = document.querySelector('meta[name="gmaps-key"]'); if (!m || !('IntersectionObserver' in window) || !window.fetch) return;
   var key = m.content, API = 'https://places.googleapis.com/v1/';
-  function ls(k, v) { try { if (v === undefined) return localStorage.getItem(k); localStorage.setItem(k, v); } catch (x) {} return null; }
+  function st(s, k, v) { try { if (v === undefined) return s.getItem(k); s.setItem(k, v); } catch (x) {} return null; }
   function findId(el) {
     var pid = el.getAttribute('data-place'); if (pid) return Promise.resolve(pid);
     var q = el.getAttribute('data-q'), ck = 'sgcw-pid:' + q; if (!q) return Promise.resolve(null);
-    var c = ls(ck); if (c) return Promise.resolve(c);
+    var c = st(localStorage, ck); if (c) return Promise.resolve(c);
     return fetch(API + 'places:searchText', { method: 'POST', headers: { 'Content-Type': 'application/json', 'X-Goog-Api-Key': key, 'X-Goog-FieldMask': 'places.id' },
       body: JSON.stringify({ textQuery: q, maxResultCount: 1, regionCode: 'SG' }) })
       .then(function (r) { return r.ok ? r.json() : null; })
-      .then(function (d) { var id = d && d.places && d.places[0] && d.places[0].id; if (id) ls(ck, id); return id || null; });
+      .then(function (d) { var id = d && d.places && d.places[0] && d.places[0].id; if (id) st(localStorage, ck, id); return id || null; });
+  }
+  function details(pid, full) {
+    var ck = 'sgcw-pl:' + pid + (full ? ':f' : ''), c = st(sessionStorage, ck);
+    if (c) { try { return Promise.resolve(JSON.parse(c)); } catch (x) {} }
+    var f = 'photos,nationalPhoneNumber' + (full ? ',regularOpeningHours,rating,userRatingCount,websiteUri' : '');
+    return fetch(API + 'places/' + encodeURIComponent(pid) + '?fields=' + f + '&key=' + key).then(function (r) { return r.ok ? r.json() : null; })
+      .then(function (d) { if (d) st(sessionStorage, ck, JSON.stringify(d)); return d; });
   }
   function link(href, text) { var a = document.createElement('a'); a.href = href; a.target = '_blank'; a.rel = 'noopener'; a.textContent = text; return a; }
+  function photo(el, d) {
+    var ph = d.photos && d.photos[0]; if (!ph) return;
+    var img = new Image(); img.alt = el.getAttribute('data-name') || ''; img.className = 'gph-img'; img.decoding = 'async';
+    img.src = API + ph.name + '/media?maxWidthPx=640&key=' + key;
+    img.onload = function () {
+      var a = (ph.authorAttributions || [])[0], cr = document.createElement('span'); cr.className = 'gph-credit';
+      if (a && a.displayName) cr.appendChild(a.uri ? link(a.uri, a.displayName) : document.createTextNode(a.displayName)); else cr.appendChild(document.createTextNode('Google'));
+      cr.appendChild(document.createTextNode(' · '));
+      cr.appendChild(link(el.getAttribute('data-maps') || 'https://www.google.com/maps', 'Google Maps'));
+      el.appendChild(img); el.appendChild(cr); el.classList.add('has-img');
+      var card = el.closest('.card'); if (card) card.classList.add('has-photo');
+    };
+  }
+  function digits(p) { return (p || '').replace(/\D/g, '').replace(/^65(?=\d{8}$)/, ''); }
+  function contact(root, d) {
+    var n = digits(d.nationalPhoneNumber); if (n.length !== 8) return;
+    var show = n.slice(0, 4) + ' ' + n.slice(4), wa = /^[89]/.test(n);
+    root.querySelectorAll('[data-live="contact"]').forEach(function (a) {
+      var slug = (a.getAttribute('data-cta') || '').replace(/^[a-z]+_dir_/, '');
+      a.href = wa ? 'https://wa.me/65' + n + '?text=' + encodeURIComponent(a.getAttribute('data-wa-msg') || '') : 'tel:+65' + n;
+      a.setAttribute('data-cta', (wa ? 'whatsapp_dir_' : 'call_dir_') + slug);
+      a.classList.toggle('wa', true);
+      var w = a.querySelector('.ic-wa'), c = a.querySelector('.ic-call'), l = a.querySelector('.lbl');
+      if (w) w.hidden = !wa; if (c) c.hidden = wa;
+      if (l) l.textContent = a.classList.contains('sm') ? (wa ? 'WhatsApp' : 'Call ' + show) : (wa ? 'WhatsApp ' : 'Call ') + show;
+    });
+    root.querySelectorAll('[data-live="phoneline"] span').forEach(function (s) { s.textContent = (wa ? 'WhatsApp ' : 'Call ') + show; });
+  }
+  var DAYS = { Monday: 'Mon', Tuesday: 'Tue', Wednesday: 'Wed', Thursday: 'Thu', Friday: 'Fri', Saturday: 'Sat', Sunday: 'Sun' };
+  function hours(root, d) {
+    var w = d.regularOpeningHours && d.regularOpeningHours.weekdayDescriptions; if (!w || !w.length) return;
+    root.querySelectorAll('[data-live="hours"]').forEach(function (el) {
+      var dl = document.createElement('dl'); dl.className = 'hours';
+      w.forEach(function (line) { var i = line.indexOf(': '); if (i < 0) return;
+        var dt = document.createElement('dt'), dd = document.createElement('dd');
+        dt.textContent = DAYS[line.slice(0, i)] || line.slice(0, i); dd.textContent = line.slice(i + 2).replace(/[  ]/g, ' ').replace(/\s*[–-]\s*/g, ' to '); dl.appendChild(dt); dl.appendChild(dd); });
+      el.replaceWith(dl);
+    });
+  }
+  function rating(root, d) {
+    if (!d.rating) return;
+    root.querySelectorAll('[data-live="rating"] a').forEach(function (a) {
+      a.textContent = 'Rated ' + d.rating + (d.userRatingCount ? ' from ' + d.userRatingCount + ' Google reviews' : ' on Google') + ' (live from Google)';
+    });
+  }
+  function site(root, d) {
+    if (!d.websiteUri) return;
+    root.querySelectorAll('[data-live="site"]').forEach(function (a) {
+      a.href = d.websiteUri; a.hidden = false;
+      var l = a.querySelector('.lbl'); if (l) l.textContent = d.websiteUri.replace(/^https?:\/\/(www\.)?/, '').replace(/\/$/, '');
+    });
+  }
   function show(el) {
-    findId(el).then(function (pid) {
-      if (!pid) return null;
-      return fetch(API + 'places/' + encodeURIComponent(pid) + '?fields=photos&key=' + key).then(function (r) { return r.ok ? r.json() : null; });
-    }).then(function (d) {
-      var ph = d && d.photos && d.photos[0]; if (!ph) return;
-      var img = new Image(); img.alt = el.getAttribute('data-name') || ''; img.className = 'gph-img'; img.decoding = 'async';
-      img.referrerPolicy = 'strict-origin-when-cross-origin';
-      img.src = API + ph.name + '/media?maxWidthPx=640&key=' + key;
-      img.onload = function () {
-        var a = (ph.authorAttributions || [])[0], cr = document.createElement('span'); cr.className = 'gph-credit';
-        if (a && a.displayName) cr.appendChild(a.uri ? link(a.uri, a.displayName) : document.createTextNode(a.displayName)); else cr.appendChild(document.createTextNode('Google'));
-        cr.appendChild(document.createTextNode(' · '));
-        cr.appendChild(link(el.getAttribute('data-maps') || 'https://www.google.com/maps', 'Google Maps'));
-        el.appendChild(img); el.appendChild(cr); el.classList.add('has-img');
-        var card = el.closest('.card'); if (card) card.classList.add('has-photo');
-      };
+    var root = el.closest('.card.basic, .basicpg') || el, full = root.classList.contains('basicpg');
+    findId(el).then(function (pid) { return pid ? details(pid, full) : null; }).then(function (d) {
+      if (!d) return;
+      photo(el, d); contact(full ? document : root, d);
+      if (full) { hours(root, d); rating(root, d); site(root, d); }
     }).catch(function () {});
   }
   var io = new IntersectionObserver(function (es) { es.forEach(function (en) { if (en.isIntersecting) { io.unobserve(en.target); show(en.target); } }); }, { rootMargin: '200px' });
