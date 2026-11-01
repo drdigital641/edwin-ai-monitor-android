@@ -119,7 +119,8 @@ def main():
         sys.exit(f"Records cover different date windows: {sorted(windows)}. Re-run the Case Study Stats workflow first.")
     through, s, e, ps, pe = windows.pop()
     data["data"] = {
-        "source": "Google Search Console (final data), collected by the Case Study Stats workflow into CaseStudyStats, SearchInsight Bridge app 6aa2d85827b1f2c2d43b241e",
+        # SHOWCASE_SOURCE names another collector (e.g. OpenSEO) when the Case Study Stats workflow cannot run.
+        "source": os.environ.get("SHOWCASE_SOURCE") or "Google Search Console (final data), collected by the Case Study Stats workflow into CaseStudyStats, SearchInsight Bridge app 6aa2d85827b1f2c2d43b241e",
         "generated_at": max(newest[c["gsc_site"]]["generated_at"] for c in data["clients"] if c["gsc_site"] in newest),
         "data_through": through, "window": [s, e], "prev_window": [ps, pe],
     }
