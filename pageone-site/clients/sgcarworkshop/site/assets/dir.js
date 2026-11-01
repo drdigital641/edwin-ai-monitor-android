@@ -2,10 +2,25 @@
 var d=document,els=d.querySelectorAll('.rv');
 if('IntersectionObserver' in window&&els.length){var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}})},{rootMargin:'0px 0px -6% 0px'});els.forEach(function(el){io.observe(el)})}
 else{els.forEach(function(el){el.classList.add('in')})}
-var q=d.getElementById('q');
-if(q){var cards=d.querySelectorAll('[data-search]'),em=d.getElementById('empty');
-function f(){var v=q.value.trim().toLowerCase(),n=0;cards.forEach(function(c){var ok=!v||c.getAttribute('data-search').indexOf(v)>-1;c.hidden=!ok;if(ok)n++});if(em)em.classList.toggle('show',!!v&&!n)}
-q.addEventListener('input',f);var fm=q.form;if(fm)fm.addEventListener('submit',function(e){e.preventDefault();f()})}
+var form=d.getElementById('finder');
+if(form){var cards=d.querySelectorAll('#results [data-search]'),em=d.getElementById('empty'),q=d.getElementById('q'),ct=d.getElementById('count');
+function f(){var sv=form.querySelector('input[name=svc]:checked'),svc=sv?sv.value:'',rg=[].map.call(form.querySelectorAll('input[name=reg]:checked'),function(i){return i.value}),v=q.value.trim().toLowerCase(),n=0;
+cards.forEach(function(c){var r=' '+c.getAttribute('data-regions')+' ',ok=(!svc||c.getAttribute('data-cat')===svc)&&(!rg.length||rg.some(function(x){return r.indexOf(' '+x+' ')>-1}))&&(!v||c.getAttribute('data-search').indexOf(v)>-1);c.hidden=!ok;if(ok)n++});
+if(ct)ct.innerHTML='<b>'+n+'</b> workshop'+(n==1?'':'s');if(em)em.classList.toggle('show',!n)}
+form.addEventListener('change',f);q.addEventListener('input',f);form.addEventListener('submit',function(e){e.preventDefault();f()});
+var rs=d.getElementById('reset');if(rs)rs.addEventListener('click',function(){HTMLFormElement.prototype.reset.call(form);f()});f()}
+/* Featured carousel: CSS scroll-snap row; glides on its own unless the visitor prefers reduced motion; pauses on hover, focus and touch. */
+var tr=d.getElementById('track');
+if(tr){var rm=window.matchMedia&&matchMedia('(prefers-reduced-motion: reduce)').matches,hold=false,vis=true,tm;
+function step(dir){var li=tr.querySelector('li');if(!li)return;var w=li.getBoundingClientRect().width+12,max=tr.scrollWidth-tr.clientWidth;
+if(dir>0&&tr.scrollLeft>=max-6)tr.scrollTo({left:0,behavior:rm?'auto':'smooth'});else if(dir<0&&tr.scrollLeft<=6)tr.scrollTo({left:max,behavior:rm?'auto':'smooth'});else tr.scrollBy({left:dir*w,behavior:rm?'auto':'smooth'})}
+var pv=d.getElementById('cprev'),nx=d.getElementById('cnext');if(pv)pv.addEventListener('click',function(){step(-1)});if(nx)nx.addEventListener('click',function(){step(1)});
+tr.addEventListener('keydown',function(e){if(e.key==='ArrowRight'){step(1);e.preventDefault()}else if(e.key==='ArrowLeft'){step(-1);e.preventDefault()}});
+if(!rm){var pause=function(){hold=true;clearTimeout(tm)},resume=function(ms){clearTimeout(tm);tm=setTimeout(function(){hold=false},ms||800)};
+tr.addEventListener('mouseenter',pause);tr.addEventListener('mouseleave',function(){resume(800)});tr.addEventListener('focusin',pause);tr.addEventListener('focusout',function(){resume(800)});
+tr.addEventListener('touchstart',pause,{passive:true});tr.addEventListener('touchend',function(){resume(6000)},{passive:true});tr.addEventListener('pointerdown',pause);
+if('IntersectionObserver' in window)new IntersectionObserver(function(es){vis=es[0].isIntersecting}).observe(tr);
+setInterval(function(){if(!hold&&vis&&!d.hidden)step(1)},4500)}}
 d.addEventListener('click',function(e){var a=e.target.closest&&e.target.closest('a[data-cta]');if(!a)return;var c=a.getAttribute('data-cta');try{if(window.dataLayer)window.dataLayer.push({event:'cta_click',cta:c})}catch(x){}track(a,c)});
 /* Lead counter: Page One Controller public write-only "track" function (same endpoint and payload as pageonesingapore.com main.js).
    Fires ONLY on the live directory domain, so preview clicks are not counted. WhatsApp and call taps on business listings only. */

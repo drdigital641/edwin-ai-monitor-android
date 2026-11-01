@@ -75,5 +75,11 @@ for e, r in rows:
     fail = e['tier'] != 'free' and (score < sum(baseline.values()) or score <= sum(FREE_CARD.values()) or bool(miss))
     if fail: bad += 1
     print('%-24s %-18s %s  %d/8 %s' % (e['name'], e['tier'], ' '.join('%-12s' % ('yes' if r[c] else 'NO') for c in CRIT), score, ('FAIL: missing ' + ', '.join(miss)) if fail else 'ok'))
+home_src = open(os.path.join(root, 'index.html'), encoding='utf-8').read()
+for e in ENTRIES:
+    if e['tier'] == 'free':
+        if os.path.exists(os.path.join(root, 'workshops', e['slug'])): print('FREE has own page', e['slug']); bad += 1
+        m = re.search(r'<article class="card basic"[^>]*>(?:(?!</article>).)*data-cta="(?:whatsapp|call)_dir_%s"' % e['slug'], home_src, re.S)
+        if not m or 'Claim or remove' not in home_src: print('BASIC card incomplete', e['slug']); bad += 1
 print('pages checked:', len(files), 'problems:', bad)
 sys.exit(1 if bad else 0)

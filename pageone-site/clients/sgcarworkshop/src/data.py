@@ -66,15 +66,17 @@ CATEGORIES = [
                "cooling, and ask for the fault explained and the price confirmed before work starts."),
 ]
 
-# area slug -> display name and a one-line fact about where it sits (only things we know from the entries)
-AREAS = {
-    "yishun": dict(name="Yishun", intro="Car workshops and services in and around Yishun. The workshops below are on Yishun industrial streets, and the battery "
-                   "service listed attends cars across the north of Singapore."),
-    "woodlands": dict(name="Woodlands", intro="Car workshops and services in Woodlands, including a gearbox workshop at Woodlands Industrial Park and an "
-                      "onsite battery service that covers Woodlands."),
-    "kaki-bukit": dict(name="Kaki Bukit", intro="Kaki Bukit has a cluster of car trade units. The listings below are a module repair workshop and a Kia and "
-                       "Hyundai parts shop, both on Kaki Bukit avenues."),
-    "ang-mo-kio": dict(name="Ang Mo Kio", intro="A car workshop in Ang Mo Kio for servicing and repairs, with its own website."),
+# Singapore's five URA planning regions (North, North-East, East, West, Central). A region page is built only if a listing covers it.
+REGIONS = {
+    "north": dict(name="North", intro="Car workshops and services in the North region of Singapore, which takes in Yishun, Woodlands, Sembawang and Kranji. "
+                  "Some listings here are mobile or onsite and come to your car."),
+    "north-east": dict(name="North-East", intro="Car workshops and services in the North-East region of Singapore, including Ang Mo Kio, Hougang, Sengkang, "
+                       "Punggol and Serangoon."),
+    "east": dict(name="East", intro="Car workshops and services in the East region of Singapore, which includes the Kaki Bukit and Bedok car trade units."),
+    "west": dict(name="West", intro="Car workshops and services in the West region of Singapore, including Bukit Batok, Bukit Panjang and Boon Lay. "
+                 "Listings here are mobile services or have an outlet in the west."),
+    "central": dict(name="Central", intro="Car workshops and services in the Central region of Singapore, including Toa Payoh, Bukit Timah, Upper Thomson "
+                    "and the Jervois and Havelock Road areas."),
 }
 
 
@@ -109,7 +111,7 @@ ENTRIES = [
     dict(
         slug="wei-car-spray-painting", tier="premium",
         name="Wei Car Spray Painting", legal="Wei Car Spray Painting Pte. Ltd.", uen="201215981N",
-        category="spray-painting-bodywork", areas=["yishun"], area_label="Yishun",
+        category="spray-painting-bodywork", regions=['north'], regions_note='Yishun is in the North region (URA). Address: Yishun Industrial Park A.', area_label="Yishun",
         title="Wei Car Spray Painting | Yishun Car Spray Painting",
         desc="Wei Car Spray Painting is a spray painting and bodywork workshop in Yishun for resprays, colour changes and body kits. WhatsApp 9638 3306.",
         card_img=dict(f="wei/jobs-mg-british-racing-green.webp", alt="MG sprayed in British Racing Green at Wei Car Spray Painting"),
@@ -167,7 +169,7 @@ ENTRIES = [
     ),
     dict(
         slug="sg-garage", tier="premium_leadgen", name="SG Garage", domain="sggarage.com", url="https://sggarage.com/",
-        category="general-servicing-repair", areas=["ang-mo-kio"], area_label="Ang Mo Kio",
+        category="general-servicing-repair", regions=['north-east'], regions_note='Ang Mo Kio is in the North-East region (URA). Address: Ang Mo Kio Industrial Park 2.', area_label="Ang Mo Kio",
         title="SG Garage | Car Servicing and Repair, Ang Mo Kio",
         desc="SG Garage (Edwin Garage) in Ang Mo Kio: servicing from $128, aircon, brakes, batteries and accident repair. WhatsApp 9785 6612, Mon to Sat.",
         card_img=dict(u=_SG + "edwin-garage-shopfront-01-295.webp", alt="SG Garage shopfront at Blk 5032 Ang Mo Kio Industrial Park 2"),
@@ -216,7 +218,7 @@ ENTRIES = [
     ),
     dict(
         slug="jacky-gearbox", tier="premium_leadgen", name="Jacky Gearbox", domain="jackygearbox.com", url="https://jackygearbox.com/",
-        category="gearbox-repair", areas=["woodlands"], area_label="Woodlands and Kranji",
+        category="gearbox-repair", regions=['north'], regions_note='Woodlands and Kranji are both in the North region (URA). Addresses: Woodlands Industrial Park E9 and Jalan Lam Huat.', area_label="Woodlands and Kranji",
         title="Jacky Gearbox | Gearbox Repair, Woodlands and Kranji",
         desc="Jacky Gearbox: gearbox diagnosis from S$30, repair, overhaul, servicing and upgrades at Woodlands and Kranji. 6-month warranty. WhatsApp 8430 9665.",
         card_img=dict(u=_JG + "hero-workshop.webp", alt="Jacky Gearbox workshop in Woodlands"),
@@ -262,7 +264,7 @@ ENTRIES = [
     ),
     dict(
         slug="the-ecu-clinic", tier="premium_leadgen", name="The ECU Clinic", domain="theecuclinicsg.com", url="https://theecuclinicsg.com/",
-        category="abs-ecu-module-repair", areas=["kaki-bukit"], area_label="Kaki Bukit",
+        category="abs-ecu-module-repair", regions=['east'], regions_note='Kaki Bukit is in the East region (URA). Address: 8 Kaki Bukit Avenue 4.', area_label="Kaki Bukit",
         title="The ECU Clinic | ABS and Module Repair, Kaki Bukit",
         desc="The ECU Clinic in Kaki Bukit repairs ABS pumps and modules, Mercedes gearbox control units and steering locks. 6-month warranty. WhatsApp 9893 1923.",
         card_img=dict(u=_ECU + "mercedes-esp-pumps.webp", alt="Mercedes-Benz ESP pumps on the repair bench"),
@@ -304,7 +306,7 @@ ENTRIES = [
     ),
     dict(
         slug="wrapstar-autostyle", tier="premium_leadgen", name="Wrapstar Autostyle", domain="wrapstarautostyle.com", url="https://wrapstarautostyle.com/",
-        category="car-wrap-ppf", areas=["yishun"], area_label="Yishun",
+        category="car-wrap-ppf", regions=['north'], regions_note='Yishun is in the North region (URA). Address: 9 Yishun Industrial Street 1.', area_label="Yishun",
         title="Wrapstar Autostyle | Car Wrap and PPF, Yishun",
         desc="Wrapstar Autostyle in Yishun: colour wraps from $1,588, colour and clear PPF, window film and dechrome. See past jobs and WhatsApp 9754 1833.",
         card_img=dict(u=_WS + "tesla-model-3-satin-black-rear.webp", alt="Tesla Model 3 in satin black colour PPF at the Wrapstar Autostyle studio"),
@@ -348,7 +350,7 @@ ENTRIES = [
     ),
     dict(
         slug="battery-rescue-sg", tier="premium_leadgen", name="Battery Rescue SG", domain="batteryrescue.sg", url="https://batteryrescue.sg/",
-        category="car-battery", areas=["yishun", "woodlands"], area_label="Onsite, north and north-east Singapore",
+        category="car-battery", regions=['north', 'north-east', 'west', 'central'], regions_note='Onsite areas on its site: Woodlands, Sembawang, Yishun, Yio Chu Kang (North); Ang Mo Kio, Hougang, Sengkang, Punggol (North-East). Its walk-in Motoserv outlets add Serangoon Garden (North-East), Toa Payoh, Upper Thomson, Bukit Timah, Jervois, Havelock Road (Central) and Bukit Batok, Bukit Panjang, Boon Lay (West). The Sembawang outlet is North.', area_label="Onsite, north and north-east Singapore",
         title="Battery Rescue SG | Onsite Car Battery Replacement",
         desc="Battery Rescue SG fits Delkor car batteries at your car in the north of Singapore, or walk in to 10 Motoserv outlets. Hotline 8125 9169, 24 hours.",
         card_img=dict(u=_BR + "battery-voltage-12-80v.jpg", alt="Battery voltage reading during a battery test"),
@@ -396,7 +398,7 @@ ENTRIES = [
     ),
     dict(
         slug="cleanic-detailing", tier="premium_leadgen", name="Cleanic Detailing", domain="cleanicdetailing.com", url="https://cleanicdetailing.com/",
-        category="car-detailing-coating", areas=[], area_label="Mobile service, island-wide",
+        category="car-detailing-coating", regions=['north', 'north-east', 'east', 'west', 'central'], regions_note='Mobile service. Its site says island-wide and 24/7 across Singapore, so all five regions.', area_label="Mobile service, island-wide",
         title="Cleanic Detailing | Mobile Car Fumigation, Singapore",
         desc="Cleanic Detailing comes to your carpark: car fumigation from $118, steam and interior cleaning from $148, 24/7 island-wide. WhatsApp or call 9108 6931.",
         card_img=dict(u=_CL + "cleanic-panamera-interior-clean2-1024x768.jpg", alt="Cleaned leather interior of a Porsche after a Cleanic job"),
@@ -438,7 +440,7 @@ ENTRIES = [
     ),
     dict(
         slug="autotex", tier="premium_leadgen", name="Autotex", domain="autotexautoparts.com.sg", url="https://autotexautoparts.com.sg/",
-        category="car-parts", areas=["kaki-bukit"], area_label="Kaki Bukit",
+        category="car-parts", regions=['east'], regions_note='Kaki Bukit is in the East region (URA). Address: 1 Kaki Bukit Avenue 6.', area_label="Kaki Bukit",
         title="Autotex | Kia and Hyundai Parts, Kaki Bukit",
         desc="Autotex is a Kia and Hyundai parts shop at AutoBay@Kaki Bukit. Browse parts by model, then ask price and stock on WhatsApp 9731 9547 or call 6747 9618.",
         card_img=None, tile_text="Kia and Hyundai parts",
@@ -480,3 +482,26 @@ ENTRIES = [
         left_out=["'direct from Korea' and 'distribution price' wording", "og.jpg card image", "sample part prices", "registered-since claim"],
     ),
 ]
+
+
+# ---- Basic (tier "free") listings: card only, no own page. Source: basic-run/2026-11-01.json (public Google business listings, checked 1 Nov 2026).
+# Fields shown on the card: name, desc, category, area + region, WhatsApp (only if a mobile number) or Call, Directions (Google Maps cid).
+BASIC = [
+    dict(slug="everest-garage", name="Everest Garage", area_label="Kaki Bukit", regions=["east"], category="general-servicing-repair",
+         phone="+6580400072", phone_show="8040 0072", whatsapp="6580400072", cid="10120069923614498455",
+         desc="Car repair and maintenance workshop in Kaki Bukit, on level 5 of 25 Kaki Bukit Road 4.",
+         source="Google business listing cid 10120069923614498455, checked 1 Nov 2026"),
+    dict(slug="hup-soon-lee-motor-service", name="Hup Soon Lee Motor Service", area_label="Yishun", regions=["north"], category="general-servicing-repair",
+         phone="+6562579387", phone_show="6257 9387", whatsapp=None, cid="10286641518694181113",
+         desc="Long-running car repair workshop in Yishun Industrial Park A that works on private and commercial vehicles, including Euro 4, 5 and 6 models.",
+         source="Google business listing cid 10286641518694181113, checked 1 Nov 2026"),
+    dict(slug="cys-automobile-services", name="CYS Automobile Services", area_label="Woodlands", regions=["north"], category="general-servicing-repair",
+         phone="+6562192098", phone_show="6219 2098", whatsapp=None, cid="10239000617827855461",
+         desc="Woodlands workshop for servicing and repairs that also handles accident reporting and motor insurance claims.",
+         source="Google business listing cid 10239000617827855461, checked 1 Nov 2026"),
+]
+for _b in BASIC:
+    _b.update(tier="free", services=[], regions_note="Region from the public listing area (URA planning regions).")
+ENTRIES.extend(BASIC)
+_RANK = {"premium_leadgen": 0, "premium": 1, "free": 2}
+ENTRIES.sort(key=lambda e: _RANK[e["tier"]])  # Premium, Verified, Basic (stable within a tier)
