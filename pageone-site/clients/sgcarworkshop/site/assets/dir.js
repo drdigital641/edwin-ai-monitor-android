@@ -5,7 +5,7 @@ else{els.forEach(function(el){el.classList.add('in')})}
 var form=d.getElementById('finder');
 var RM=!!(window.matchMedia&&matchMedia('(prefers-reduced-motion: reduce)').matches);
 if(form){var cards=d.querySelectorAll('#results [data-search]'),em=d.getElementById('empty'),q=d.getElementById('q'),ct=d.getElementById('count');
-var STOP=' in at near for the a an my and of to with need needs want looking car cars workshop workshops shop singapore sg around area please ',RG={north:'north',east:'east',west:'west',central:'central',ne:'north-east'};
+var STOP=' in at near for the a an my and of to with need needs want looking car cars workshop workshops shop singapore sg around area please ',RG={north:'north',east:'east',west:'west',central:'central',ne:'north-east',mobile:'mobile'};
 function parse(v){v=' '+v.toLowerCase().replace(/&/g,' and ').replace(/[^a-z0-9]+/g,' ')+' ';v=v.replace(/ north ?east /g,' ne ').replace(/ ne /g,' ne ');var t=v.trim().split(' '),w=[],r=[];
 t.forEach(function(x){if(!x||STOP.indexOf(' '+x+' ')>-1)return;if(RG[x])r.push(RG[x]);else w.push(x)});return{w:w,r:r}}
 function hit(s,x){return s.indexOf(' '+x)>-1||(x.length>3&&x.slice(-1)==='s'&&s.indexOf(' '+x.slice(0,-1))>-1)}

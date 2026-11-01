@@ -108,7 +108,8 @@ for e in ENTRIES:
         if not m or 'Manage this listing' not in home_src: print('BASIC card incomplete (needs contact + View link)', e['slug']); bad += 1
         pg = open(os.path.join(root, 'workshops', e['slug'], 'index.html'), encoding='utf-8').read()
         ld = [json.loads(j) for j in re.findall(r'<script type="application/ld\+json">(.*?)</script>', pg, re.S)]
-        if len(ld) != 1 or set(ld[0]) - {'@context', '@type', 'name', 'url', 'address', 'telephone', 'openingHours', 'geo'}: print('BASIC schema not minimal', e['slug']); bad += 1
+        biz = [x for x in ld if x.get('@type') != 'BreadcrumbList']
+        if len(biz) != 1 or set(biz[0]) - {'@context', '@type', 'name', 'url', 'address', 'telephone', 'openingHours', 'geo'}: print('BASIC schema not minimal', e['slug']); bad += 1
         for needle in ('data-cta="claim_%s"' % e['slug'], 'Is this your workshop?', 'From the workshop', 'Rated '):
             if needle not in pg: print('BASIC page missing', needle, e['slug']); bad += 1
         for banned in ('class="faq"', 'class="gal"', 'class="svc ', 'FAQPage', 'Review'):
@@ -126,5 +127,39 @@ for dp, _, fs in os.walk(root):
         if rel.startswith(('list-your-workshop', 'about')): continue
         if 'wa.me/%s?text=Hi%%20Page%%20One' % PAGE_ONE_WA in open(os.path.join(dp, fn), encoding='utf-8').read():
             print('Page One WhatsApp on a customer page:', rel); bad += 1
+# ---- Area structure (Edwin, 1 Nov 2026): regions -> estates -> service x estate, breadcrumbs on every workshop page, no confirmation claims.
+import areas as _ar
+_ar.annotate(ENTRIES)
+_regions, _est, _pairs = _ar.published(ENTRIES)
+def _ld(path):
+    return [json.loads(j) for j in re.findall(r'<script type="application/ld\+json">(.*?)</script>', open(os.path.join(root, path, 'index.html'), encoding='utf-8').read(), re.S)]
+_sitemap = open(os.path.join(root, 'sitemap.xml')).read()
+for k in _regions:
+    if not os.path.isfile(os.path.join(root, 'areas', k, 'index.html')): print('MISSING region page', k); bad += 1
+for k in _ar.ESTATES:
+    exists = os.path.isfile(os.path.join(root, 'areas', k, 'index.html'))
+    if k in _est and not exists: print('MISSING estate page', k); bad += 1
+    if k not in _est and (exists or '/areas/%s/' % k in _sitemap): print('EMPTY estate published or in sitemap', k); bad += 1
+for k, v in _est.items():
+    types = {x.get('@type') for x in _ld('areas/%s' % k)}
+    if not {'ItemList', 'BreadcrumbList'} <= types: print('estate schema missing', k, types); bad += 1
+    h = open(os.path.join(root, 'areas', k, 'index.html'), encoding='utf-8').read()
+    if h.count('<details>') < 3 or 'openstreetmap.org/export/embed' not in h: print('estate needs 3+ FAQs and a map', k); bad += 1
+    if len(re.findall(r'<article class="card', h)) - h.count('card list') < len(v): print('estate card count', k); bad += 1
+for (k, c), v in _pairs.items():
+    if len(v) < 2 or not os.path.isfile(os.path.join(root, 'areas', k, c, 'index.html')): print('L3 page missing or under 2 workshops', k, c); bad += 1
+for dp, _, fs in os.walk(os.path.join(root, 'areas')):
+    parts = os.path.relpath(dp, os.path.join(root, 'areas')).split(os.sep)
+    if len(parts) == 2 and 'index.html' in fs and (parts[0], parts[1]) not in _pairs: print('L3 page that should not exist', parts); bad += 1
+for e in ENTRIES:
+    t = [x for x in _ld('workshops/%s' % e['slug']) if x.get('@type') == 'BreadcrumbList']
+    names = [i['name'] for i in t[0]['itemListElement']] if t else []
+    want = ['Home', _ar.REGION_NAMES[e['region']]] + ([_ar.ESTATES[e['estates'][0]]['name']] if e['estates'] else []) + [e['name']]
+    if names != want: print('BREADCRUMB', e['slug'], names, 'want', want); bad += 1
+for dp, _, fs in os.walk(root):
+    for fn in fs:
+        if fn.endswith(('.html', '.txt')) and re.search(r'confirmed (with|by) (each|the) business|business confirms|checked with the business', open(os.path.join(dp, fn), encoding='utf-8').read(), re.I):
+            print('CONFIRMATION CLAIM in', os.path.relpath(os.path.join(dp, fn), root)); bad += 1
+if os.path.isdir(os.path.join(root, 'regions')) is False: print('old /regions/ redirect pages missing'); bad += 1
 print('pages checked:', len(files), 'problems:', bad)
 sys.exit(1 if bad else 0)

@@ -18,7 +18,8 @@ from urllib.parse import quote
 HERE = os.path.dirname(os.path.abspath(__file__))
 sys.path.insert(0, HERE)
 sys.path.insert(0, os.path.join(HERE, '..', '..', '..', 'builder'))
-from data import ENTRIES, CATEGORIES, REGIONS, PAGE_ONE_WA, PAGE_ONE_WA_SHOW, TIERS, PRICE_NOTE, FREE_EXAMPLE  # noqa: E402
+import areas  # noqa: E402
+from data import ENTRIES, CATEGORIES, PAGE_ONE_WA, PAGE_ONE_WA_SHOW, TIERS, PRICE_NOTE, FREE_EXAMPLE  # noqa: E402
 from PIL import Image  # noqa: E402
 
 SITE_NAME = 'SG Car Workshop'   # placeholder brand
@@ -34,9 +35,20 @@ E = html.escape
 CAT = {c['slug']: c for c in CATEGORIES}
 ENT = {e['slug']: e for e in ENTRIES}
 PAID = [e for e in ENTRIES if e['tier'] != 'free']
-REGION_LIST = [(k, r) for k, r in REGIONS.items() if any(k in e['regions'] for e in ENTRIES)]
 CAT_LIST = [c for c in CATEGORIES if any(e['category'] == c['slug'] for e in ENTRIES)]
-RN = {k: r['name'] for k, r in REGIONS.items()}
+RN = areas.REGION_NAMES
+ESTATES = areas.ESTATES
+areas.annotate(ENTRIES)
+PUB_REGIONS = PUB_ESTATES = PUB_PAIRS = None   # filled by setup_areas()
+
+
+def setup_areas():
+    """Decide which area pages exist: a region with a listing, an estate with 1+ listings, a service x estate pair with 2+."""
+    global PUB_REGIONS, PUB_ESTATES, PUB_PAIRS
+    PUB_REGIONS, PUB_ESTATES, PUB_PAIRS = areas.published(ENTRIES)
+
+
+setup_areas()
 
 ICONS = {
     'spray': '<path d="M4 9h8v6H4z"/><path d="M12 11h3l2-2"/><path d="M8 15v5"/><path d="M19 5h.01M21 8h.01M21 3h.01M18 2h.01"/>',
@@ -146,24 +158,26 @@ def crumbs(depth, trail):
 def header(depth):
     p = pre(depth)
     svc = ''.join('<li><a href="%sservices/%s/">%s</a></li>' % (p, c['slug'], E(c['short'])) for c in CAT_LIST)
-    reg = ''.join('<li><a href="%sregions/%s/">%s</a></li>' % (p, k, E(r['name'])) for k, r in REGION_LIST)
+    reg = ''.join('<li><a href="%sareas/%s/">%s</a></li>' % (p, k, E(RN[k])) for k in PUB_REGIONS)
+    est = ''.join('<li><a href="%sareas/%s/">%s</a></li>' % (p, k, E(ESTATES[k]['name'])) for k in PUB_ESTATES)
     return ('<a class="skip" href="#main">Skip to content</a><header class="top"><div class="w bar"><a class="brand" href="%s" aria-label="%s home">%s<span class="wm"><span><b>SG</b> Car Workshop</span><small>Singapore car workshop directory</small></span></a>'
             '<details class="menu"><summary aria-label="Menu">%s<span>Menu</span></summary><nav class="mpanel" aria-label="Main">'
             '<a class="mfind" href="%s#find">%s Find a workshop</a>'
-            '<div class="mcols"><div class="svc-col"><h3>Services</h3><ul>%s</ul></div><div><h3>Regions</h3><ul>%s</ul></div></div>'
-            '<a class="mabout" href="%sabout/">About</a></nav></details></div></header>') % (p, E(SITE_NAME), LOGO, ic('menu'), p, ic('search'), svc, reg, p)
+            '<div class="mcols"><div class="svc-col"><h3>Services</h3><ul>%s</ul></div><div><h3>Regions</h3><ul>%s</ul></div><div><h3>Estates</h3><ul>%s</ul></div></div>'
+            '<a class="mabout" href="%sabout/">About</a></nav></details></div></header>') % (p, E(SITE_NAME), LOGO, ic('menu'), p, ic('search'), svc, reg, est, p)
 
 
 def footer(depth):
     p = pre(depth)
     cats = ''.join('<li><a href="%sservices/%s/">%s</a></li>' % (p, c['slug'], E(c['short'])) for c in CAT_LIST)
-    reg = ''.join('<li><a href="%sregions/%s/">%s</a></li>' % (p, k, E(r['name'])) for k, r in REGION_LIST)
+    reg = ''.join('<li><a href="%sareas/%s/">%s</a></li>' % (p, k, E(RN[k])) for k in PUB_REGIONS)
+    est = ''.join('<li><a href="%sareas/%s/">%s</a></li>' % (p, k, E(ESTATES[k]['name'])) for k in PUB_ESTATES)
     return ('<footer class="ft"><div class="w cols"><div><h3>%s</h3><p>A directory of car workshops and car services in Singapore, run by '
-            '<a href="https://pageonesingapore.com/" rel="noopener">Page One Singapore</a>.</p><p class="fine">Listing details are confirmed with each business. '
+            '<a href="https://pageonesingapore.com/" rel="noopener">Page One Singapore</a>.</p><p class="fine">'
             'WhatsApp taps are counted and reported to the business. This is a preview and the brand name is a placeholder.</p></div>'
-            '<div><h3>Services</h3><ul>%s</ul></div><div><h3>Regions</h3><ul>%s</ul></div>'
+            '<div><h3>Services</h3><ul>%s</ul></div><div><h3>Regions</h3><ul>%s</ul><h3 class="h3b">Estates</h3><ul>%s</ul></div>'
             '<div><h3>Directory</h3><ul><li><a href="%sabout/">About</a></li><li><a href="%slist-your-workshop/">List your workshop</a></li>'
-            '<li><a href="%sllms.txt">llms.txt</a></li></ul></div></div></footer>') % (E(SITE_NAME), cats, reg, p, p, p)
+            '<li><a href="%sllms.txt">llms.txt</a></li></ul></div></div></footer>') % (E(SITE_NAME), cats, reg, est, p, p, p)
 
 
 def wabar(items):
@@ -232,23 +246,25 @@ def home():
     slides = ''.join(slide(e) for e in feats)
     cards = ''.join(card(e, 0, '') for e in ENTRIES)
     faqs = [
-        ('What is %s?' % SITE_NAME, 'A directory of car workshops and car services in Singapore. Each entry shows what the business does, where it is and how to contact it, using details confirmed by the business or taken from its public listing.'),
+        ('What is %s?' % SITE_NAME, 'A directory of car workshops and car services in Singapore. Each entry shows what the business does, where it is and how to contact it, using details from the business or its public listing.'),
         ('How do I contact a workshop?', 'Tap WhatsApp or Call on a card. The WhatsApp message is prefilled with the workshop name and says you found them on %s, so you only need to add your car and what you need.' % SITE_NAME),
         ('Do you rank or review workshops?', 'No. Entries are not ranked and we do not write reviews. Profile pages may show a rating line from a source people can open, with its link and the date we checked.'),
-        ('Which regions can I search?', 'Singapore has five planning regions: North, North-East, East, West and Central. Pick one or more in the search panel to see workshops that serve them. Mobile services can cover several regions.'),
+        ('How can I browse by area?', 'Pick a region (North, North-East, East, West, Central, or Mobile for services that come to you) in the search panel, or open an estate page such as Kaki Bukit or Yishun to see the workshops in that industrial area, a map and nearby areas.'),
     ]
     faq_html = ''.join('<details><summary>%s</summary><p>%s</p></details>' % (E(q), E(a)) for q, a in faqs)
     svc_opts = '<label class="opt"><input type="radio" name="svc" value="" checked><span>Any service</span></label>' + ''.join(
         '<label class="opt"><input type="radio" name="svc" value="%s"><span>%s</span></label>' % (c['slug'], E(c['short'])) for c in CAT_LIST)
-    reg_opts = ''.join('<label class="opt"><input type="checkbox" name="reg" value="%s"><span>%s</span></label>' % (k, E(r['name'])) for k, r in REGION_LIST)
+    reg_opts = ''.join('<label class="opt"><input type="checkbox" name="reg" value="%s"><span>%s</span></label>' % (k, E('Mobile' if k == 'mobile' else RN[k])) for k in PUB_REGIONS)
     svc_tiles = ''.join('<li><a href="services/%s/"><span class="ti">%s</span><span><b>%s</b><small>%d listing%s</small></span></a></li>' % (
         c['slug'], ic(c['icon']), E(c['short']), n, '' if n == 1 else 's') for c in CAT_LIST for n in [sum(1 for e in ENTRIES if e['category'] == c['slug'])])
-    reg_tiles = ''.join('<li><a href="regions/%s/"><span class="ti">%s</span><span><b>%s</b><small>%d listing%s</small></span></a></li>' % (
-        k, ic('pin'), E(r['name']), n, '' if n == 1 else 's') for k, r in REGION_LIST for n in [sum(1 for e in ENTRIES if k in e['regions'])])
+    reg_tiles = ''.join('<li><a href="areas/%s/"><span class="ti">%s</span><span><b>%s</b><small>%d listing%s</small></span></a></li>' % (
+        k, ic('pin'), E(RN[k]), n, '' if n == 1 else 's') for k in PUB_REGIONS for n in [sum(1 for e in ENTRIES if e['region'] == k)])
+    est_tiles = ''.join('<li><a href="areas/%s/"><span class="ti">%s</span><span><b>%s</b><small>%s &middot; %d listing%s</small></span></a></li>' % (
+        k, ic('pin'), E(ESTATES[k]['name']), E(RN[ESTATES[k]['region']]), len(v), '' if len(v) == 1 else 's') for k, v in PUB_ESTATES.items())
     tiers = tiers_strip()
     body = f'''<section class="finder" id="find"><div class="w"><div class="hero-t"><h1>Find a car workshop in Singapore</h1>
 <p>Search by service and area, then message the workshop directly on WhatsApp.</p></div>
-<p class="nojs">Browse by <a href="#services">service</a> or <a href="#regions">region</a> below.</p>
+<p class="nojs">Browse by <a href="#services">service</a> or <a href="#regions">area</a> below.</p>
 <form class="panel" id="finder" role="search" aria-label="Find a workshop" onsubmit="return false">
 <p class="shint" id="shint"><span class="pt" aria-hidden="true">&#128070;</span> Tap and type what you need and where, in any order</p>
 <label class="q"><span class="skip">Search workshops by service, area or name</span>{ic('search')}<input id="q" type="search" placeholder="e.g. gearbox repair Woodlands" autocomplete="off" autocapitalize="off" enterkeyhint="search"></label>
@@ -262,7 +278,7 @@ def home():
 <section id="workshops" class="lst"><div class="w"><div class="sec-h"><h2>All workshops</h2><a class="sec-link" href="#services">Browse by service</a></div><div class="grid" id="results">{cards}</div>
 <div class="empty" id="empty"><b>No workshops match.</b> Try fewer filters, or <a href="list-your-workshop/">list your workshop</a>.</div></div></section>
 <section class="alt" id="services"><div class="w"><h2>Browse by service</h2><ul class="tiles">{svc_tiles}</ul></div></section>
-<section id="regions"><div class="w"><h2>Browse by region</h2><ul class="tiles rg">{reg_tiles}</ul></div></section>
+<section id="regions"><div class="w"><h2>Browse by area</h2><ul class="tiles rg">{reg_tiles}</ul><h3 class="sub-h">Estates and industrial areas</h3><ul class="tiles est">{est_tiles}</ul></div></section>
 <section class="alt"><div class="w"><h2>How the listings work</h2>{tiers}</div></section>
 <section><div class="w nar"><h2>Questions</h2>{faq_html}</div></section>
 <section class="owner-sec"><div class="w"><p class="owner-note">For business owners: Own a car workshop? Basic listings are free. <a href="list-your-workshop/" data-cta="list_home">List or manage your workshop &rarr;</a></p></div></section>'''
@@ -286,21 +302,122 @@ def category(c):
 <section><div class="w"><h2 class="rv">Listings</h2><div class="grid">{''.join(card(e, depth, 'services/%s/' % c['slug']) for e in es)}{list_card(depth, c['short'].lower())}</div></div></section>'''
     itemlist = {'@context': 'https://schema.org', '@type': 'ItemList', 'name': c['name'] + ' in Singapore', 'numberOfItems': len(es),
                 'itemListElement': [{'@type': 'ListItem', 'position': i + 1, 'url': abs_url('workshops/%s/' % e['slug']), 'name': e['name']} for i, e in enumerate(es)]}
-    page('services/%s/' % c['slug'], '%s in Singapore | %s' % (c['name'], SITE_NAME), c['blurb'] + ' Browse Singapore listings with details confirmed by each business.',
+    page('services/%s/' % c['slug'], '%s in Singapore | %s' % (c['name'], SITE_NAME), c['blurb'] + ' Browse Singapore listings by area.',
          body, [itemlist, dict(crld, **{'@context': 'https://schema.org'})], h1=c['name'])
 
 
-def region(slug, a):
+def cap(t, n):
+    t = ' '.join(t.split())
+    if len(t) <= n:
+        return t
+    return t[:n - 1].rsplit(' ', 1)[0].rstrip(',;:.') + '.'
+
+
+def and_list(items):
+    items = list(items)
+    return items[0] if len(items) == 1 else ', '.join(items[:-1]) + ' and ' + items[-1]
+
+
+def fit_title(*options):
+    for o in options:
+        if len(o) <= 60:
+            return o
+    return options[-1][:60]
+
+
+def itemlist_ld(name, es):
+    return {'@context': 'https://schema.org', '@type': 'ItemList', 'name': name, 'numberOfItems': len(es),
+            'itemListElement': [{'@type': 'ListItem', 'position': i + 1, 'url': abs_url('workshops/%s/' % e['slug']), 'name': e['name']} for i, e in enumerate(es)]}
+
+
+def area_tile(depth, k, sub):
+    return '<li><a href="%sareas/%s/"><span class="ti">%s</span><span><b>%s</b><small>%s</small></span></a></li>' % (pre(depth), k, ic('pin'), E(sub[0]), E(sub[1]))
+
+
+def region(slug):
+    """Level 1: /areas/<region>/"""
     depth = 2
-    es = [e for e in ENTRIES if slug in e['regions']]
-    cr, crld = crumbs(depth, [(a['name'] + ' region', None)])
+    name = RN[slug]
+    es = [e for e in ENTRIES if e['region'] == slug]
+    mobile = slug == 'mobile'
+    h1 = 'Mobile car services across Singapore' if mobile else 'Car workshops in the %s region' % name
+    cr, crld = crumbs(depth, [(name, None)])
+    est = [(k, v) for k, v in PUB_ESTATES.items() if ESTATES[k]['region'] == slug and any(e['region'] == slug for e in v)]
+    tiles = ''.join(area_tile(depth, k, (ESTATES[k]['name'], '%d listing%s' % (len(v), '' if len(v) == 1 else 's'))) for k, v in est)
+    est_html = '<section class="alt"><div class="w"><h2>Estates and industrial areas</h2><ul class="tiles est">%s</ul></div></section>' % tiles if tiles else ''
+    mob_note = ''
+    if not mobile and 'mobile' in PUB_REGIONS:
+        mob_note = '<p class="fine" style="margin-top:14px">Looking for a service that comes to you? See <a href="%sareas/mobile/">mobile car services across Singapore</a>.</p>' % pre(depth)
     body = f'''<div class="w">{cr}</div>
-<section class="hero" style="padding-top:14px"><div class="w"><h1>Car workshops in the {E(a['name'])} region</h1><p class="lede">{E(a['intro'])}</p></div></section>
-<section><div class="w"><div class="grid">{''.join(card(e, depth, 'regions/%s/' % slug) for e in es)}{list_card(depth, 'car workshop in the ' + a['name'] + ' region')}</div></div></section>'''
-    itemlist = {'@context': 'https://schema.org', '@type': 'ItemList', 'name': 'Car workshops in the %s region' % a['name'], 'numberOfItems': len(es),
-                'itemListElement': [{'@type': 'ListItem', 'position': i + 1, 'url': abs_url('workshops/%s/' % e['slug']), 'name': e['name']} for i, e in enumerate(es)]}
-    page('regions/%s/' % slug, 'Car Workshops in %s Singapore | %s' % (a['name'], SITE_NAME), 'Car workshops and car services in the %s region of Singapore, with details confirmed by each business.' % a['name'],
-         body, [itemlist, dict(crld, **{'@context': 'https://schema.org'})], h1='Car workshops in the %s region' % a['name'])
+<section class="hero" style="padding-top:14px"><div class="w"><h1>{E(h1)}</h1><p class="lede">{E(areas.REGION_INTRO[slug])}</p></div></section>
+{est_html}
+<section><div class="w"><h2>{'Mobile listings' if mobile else 'All workshops in the %s region' % E(name)}</h2><div class="grid">{''.join(card(e, depth, 'areas/%s/' % slug) for e in es)}{list_card(depth, 'car workshop' if mobile else 'car workshop in the ' + name + ' region')}</div>{mob_note}</div></section>'''
+    title = fit_title('Mobile Car Services in Singapore | %s' % SITE_NAME) if mobile else fit_title('Car Workshops in %s Singapore | %s' % (name, SITE_NAME), 'Car Workshops in %s | %s' % (name, SITE_NAME))
+    desc = ('Mobile car services that come to your car anywhere in Singapore, such as onsite batteries and mobile detailing. Message them directly.' if mobile else
+            'Car workshops and car services in the %s region of Singapore, with estate pages and direct WhatsApp or call contact.' % name)
+    page('areas/%s/' % slug, title, cap(desc, 160), body, [itemlist_ld(h1, es), dict(crld, **{'@context': 'https://schema.org'})], h1=h1)
+
+
+def estate(slug, es):
+    """Level 2: /areas/<estate>/  (main local SEO page)"""
+    depth = 2
+    a = ESTATES[slug]
+    rname = RN[a['region']]
+    cr, crld = crumbs(depth, [(rname, 'areas/%s/' % a['region']), (a['name'], None)])
+    n = len(es)
+    intro = '%s %s lists %d workshop%s here: %s.' % (a['intro'], SITE_NAME, n, '' if n == 1 else 's', and_list(e['name'] for e in es))
+    svc_pairs = [(c, v) for (s_, c), v in PUB_PAIRS.items() if s_ == slug]
+    chips = ''
+    if svc_pairs:
+        chips = '<ul class="chips" aria-label="Browse by service in %s">%s</ul>' % (E(a['name']), ''.join(
+            '<li><a href="%s/">%s%s (%d)</a></li>' % (c, ic(CAT[c]['icon']), E(CAT[c]['short']), len(v)) for c, v in svc_pairs))
+    lat, lon = a['lat'], a['lon']
+    bbox = '%.4f,%.4f,%.4f,%.4f' % (lon - 0.011, lat - 0.007, lon + 0.011, lat + 0.007)
+    map_src = 'https://www.openstreetmap.org/export/embed.html?bbox=%s&layer=mapnik&marker=%.4f%%2C%.4f' % (bbox, lat, lon)
+    map_big = 'https://www.openstreetmap.org/?mlat=%.4f&mlon=%.4f#map=15/%.4f/%.4f' % (lat, lon, lat, lon)
+    near = [k for k in a['nearby'] if k in PUB_ESTATES]
+    near_tiles = ''.join(area_tile(depth, k, (ESTATES[k]['name'], '%s \u00b7 %d listing%s' % (RN[ESTATES[k]['region']], len(PUB_ESTATES[k]), '' if len(PUB_ESTATES[k]) == 1 else 's'))) for k in near)
+    near_tiles += area_tile(depth, a['region'], ('All of the %s region' % rname, 'Region page'))
+    cats = and_list(dict.fromkeys(CAT[e['category']]['name'] for e in es))
+    faqs = [
+        ('Which car workshops are in %s?' % a['name'], '%s currently lists %d workshop%s in %s: %s. Each has its own page with services, address and contact details.' % (SITE_NAME, n, '' if n == 1 else 's', a['name'], and_list(e['name'] for e in es))),
+        ('What car services can I find in %s?' % a['name'], 'Listings here cover %s. Open a workshop page to see the services it lists.' % cats.lower()),
+        ('How do I contact a workshop in %s?' % a['name'], 'Tap WhatsApp or Call on a workshop card or page. WhatsApp messages are prefilled with the workshop name and say you found them on %s, so you only need to add your car and what you need. Some listings show Call only.' % SITE_NAME),
+        ('Which region is %s in?' % a['name'], '%s is in the %s region of Singapore.%s Browse the <a href="%sareas/%s/">%s region page</a> for more workshops.' % (
+            a['name'], rname, (' Nearby areas on %s: %s.' % (SITE_NAME, and_list(ESTATES[k]['name'] for k in near))) if near else '', pre(depth), a['region'], E(rname))),
+    ]
+    faq_html = ''.join('<details><summary>%s</summary><p>%s</p></details>' % (E(q), t if '<a ' in t else E(t)) for q, t in faqs)
+    body = f'''<div class="w">{cr}</div>
+<section class="hero" style="padding-top:14px"><div class="w"><h1>Car workshops in {E(a['name'])}</h1><p class="lede">{E(intro)}</p>{chips}</div></section>
+<section><div class="w"><h2>Workshops in {E(a['name'])}</h2><div class="grid">{''.join(card(e, depth, 'areas/%s/' % slug) for e in es)}{list_card(depth, 'car workshop in ' + a['name'])}</div></div></section>
+<section class="alt"><div class="w"><h2>Map of {E(a['name'])}</h2>
+<div class="mapbox"><iframe src="{E(map_src)}" title="Map of {E(a['name'], True)}" loading="lazy" referrerpolicy="no-referrer"></iframe></div>
+<p class="fine">Approximate area map from OpenStreetMap. <a href="{E(map_big)}" target="_blank" rel="noopener">View a larger map</a>. Use the Directions button on a workshop for its exact address.</p></div></section>
+<section><div class="w"><h2>Nearby areas</h2><ul class="tiles est">{near_tiles}</ul></div></section>
+<section class="alt"><div class="w nar"><h2>Questions about {E(a['name'])}</h2>{faq_html}</div></section>'''
+    title = fit_title('Car Workshops in %s | %s' % (a['name'], SITE_NAME), '%s Car Workshops | %s' % (a['name'], SITE_NAME), 'Car Workshops in %s' % a['name'])
+    desc = 'Find car workshops in %s, %s region, Singapore: %s. Map, nearby areas and direct WhatsApp or call contact.' % (a['name'], rname, cats.lower())
+    ld = [itemlist_ld('Car workshops in %s' % a['name'], es), dict(crld, **{'@context': 'https://schema.org'})]
+    page('areas/%s/' % slug, title, cap(desc, 160), body, ld, h1='Car workshops in %s' % a['name'])
+
+
+def estate_service(slug, cat, es):
+    """Level 3: /areas/<estate>/<service>/  (only built when 2 or more workshops match)"""
+    depth = 3
+    a = ESTATES[slug]
+    c = CAT[cat]
+    rname = RN[a['region']]
+    cr, crld = crumbs(depth, [(rname, 'areas/%s/' % a['region']), (a['name'], 'areas/%s/' % slug), (c['name'], None)])
+    n = len(es)
+    h1 = '%s in %s' % (c['name'], a['name'])
+    intro = '%d workshops in %s are listed for %s: %s. Each page shows the address, hours and how to contact the workshop.' % (n, a['name'], c['name'].lower(), and_list(e['name'] for e in es))
+    body = f'''<div class="w">{cr}</div>
+<section class="hero" style="padding-top:14px"><div class="w"><h1>{E(h1)}</h1><p class="lede">{E(intro)}</p></div></section>
+<section><div class="w"><div class="grid">{''.join(card(e, depth, 'areas/%s/%s/' % (slug, cat)) for e in es)}</div>
+<p class="fine" style="margin-top:14px">More in this area: <a href="../">all workshops in {E(a['name'])}</a>, or <a href="{pre(depth)}services/{cat}/">{E(c['name'].lower())} across Singapore</a>.</p></div></section>'''
+    title = fit_title('%s in %s | %s' % (c['name'], a['name'], SITE_NAME), '%s in %s' % (c['name'], a['name']))
+    desc = '%s in %s, %s region: %s. Compare listings and contact a workshop directly.' % (c['name'], a['name'], rname, and_list(e['name'] for e in es))
+    page('areas/%s/%s/' % (slug, cat), title, cap(desc, 160), body, [itemlist_ld(h1, es), dict(crld, **{'@context': 'https://schema.org'})], h1=h1)
 
 
 def tier_badge(e_or_tier, cls=''):
@@ -347,11 +464,26 @@ def tile(e):
 
 
 def region_label(e):
-    rs = e['regions']
-    if len(rs) == 5:
-        return 'All regions (mobile)'
-    names = ', '.join(RN[r] for r in rs)
-    return '%s \u00b7 %s' % (e['area_label'], names) if len(rs) == 1 else names
+    if e['region'] == 'mobile':
+        return 'Mobile \u00b7 island-wide'
+    return '%s \u00b7 %s' % (e['area_label'], RN[e['region']])
+
+
+def area_link_html(e, up):
+    """' or workshops in <Estate>' / ' or mobile services' link for the foot of a workshop page."""
+    if e['region'] == 'mobile':
+        return ' or <a href="%sareas/mobile/">other mobile services</a>' % up
+    k = e['estates'][0]
+    return ' or <a href="%sareas/%s/">workshops in %s</a>' % (up, k, E(ESTATES[k]['name']))
+
+
+def workshop_trail(e):
+    """Home > Region > Estate > Workshop (mobile services: Home > Mobile > Workshop)."""
+    t = [(RN[e['region']], 'areas/%s/' % e['region'])]
+    if e['estates']:
+        k = e['estates'][0]
+        t.append((ESTATES[k]['name'], 'areas/%s/' % k))
+    return t + [(e['name'], None)]
 
 
 def call_icon(e, page_path):
@@ -482,10 +614,10 @@ def ld_business(e, url):
     ld['hasMap'] = e['map_url']
     if e.get('hours_ld'):
         ld['openingHoursSpecification'] = [{'@type': 'OpeningHoursSpecification', 'dayOfWeek': d, 'opens': o, 'closes': c} for d, o, c in e['hours_ld']]
-    if len(e['regions']) == 5:
+    if e['region'] == 'mobile':
         ld['areaServed'] = {'@type': 'Country', 'name': 'Singapore'}
     else:
-        ld['areaServed'] = [{'@type': 'Place', 'name': RN[r] + ' region, Singapore'} for r in e['regions']]
+        ld['areaServed'] = [{'@type': 'Place', 'name': ESTATES[k]['name'] + ', Singapore'} for k in e['estates']]
     ld['makesOffer'] = [{'@type': 'Offer', 'itemOffered': {'@type': 'Service', 'name': s['n']}} for s in e['services']]
     same = list(e.get('social') or [])
     if e['tier'] == 'premium_leadgen':
@@ -504,7 +636,7 @@ def listing(e):
     c = CAT[e['category']]
     path = 'workshops/%s/' % e['slug']
     url = abs_url(path)
-    cr, crld = crumbs(depth, [(c['name'], 'services/%s/' % c['slug']), (e['name'], None)])
+    cr, crld = crumbs(depth, workshop_trail(e))
     lead = e['tier'] == 'premium_leadgen'
     wa, call = wa_btn(e, path, 'big'), call_btn(e, path, 'big', 'Call ' + e['phone_show'])
     wa = wa.replace('WhatsApp</a>', 'WhatsApp %s</a>' % e.get('whatsapp_show', e['phone_show']))
@@ -550,6 +682,7 @@ def listing(e):
         ic('shield'), E(rv['text']), E(rv['url']), e['slug'], E(rv['label']))
     faqs = ''.join('<details class="faq"><summary>%s</summary><p>%s</p></details>' % (E(q), E(a)) for q, a in e['faqs'])
     price_note = '<p class="fine">%s</p>' % E(e['price_note']) if e.get('price_note') else ''
+    area_links = area_link_html(e, '../../')
     note = '<p class="fine disclose">%s</p>' % E(e['note']) if e.get('note') else ''
     body = f'''<div class="w nar prem">{cr}
 <div class="badges" style="margin-top:14px">{tier_badge(e)}<span class="tag">{E(c['short'])}</span></div>
@@ -574,7 +707,7 @@ def listing(e):
 <div class="cta rv" style="margin-top:26px"><div><h2>Ask {E(e['name'])}</h2><p>Message on WhatsApp or call. Say you found them on {E(SITE_NAME)}.</p></div><div class="acts">{wa}{call}</div></div>
 {('<div class="acts sec-acts" style="margin-top:12px">%s</div>' % sec[0]) if lead else ''}
 {note}
-<p class="fine">Details are checked with the business before the directory goes live. Last updated {UPDATED}. Browse more <a href="../../services/{c['slug']}/">{E(c['name'].lower())}</a> listings{' or <a href="../../regions/%s/">workshops in the %s region</a>' % (e['regions'][0], E(RN[e['regions'][0]]))}.</p>
+<p class="fine">Last updated {UPDATED}. Browse more <a href="../../services/{c['slug']}/">{E(c['name'].lower())}</a> listings{area_links}.</p>
 </div>'''
     bar = wabar([wa_btn(e, path), call_btn(e, path)])
     faq_ld = {'@context': 'https://schema.org', '@type': 'FAQPage', 'mainEntity': [{'@type': 'Question', 'name': q, 'acceptedAnswer': {'@type': 'Answer', 'text': a}} for q, a in e['faqs']]}
@@ -590,7 +723,7 @@ def basic_page(e):
     c = CAT[e['category']]
     path = 'workshops/%s/' % e['slug']
     url = abs_url(path)
-    cr, _ = crumbs(depth, [(c['name'], 'services/%s/' % c['slug']), (e['name'], None)])
+    cr, crld = crumbs(depth, workshop_trail(e))
     gurl = maps_url(e)
     if e.get('whatsapp'):
         contact_btn = wa_btn(e, path, 'big', 'WhatsApp ' + e['phone_show'])
@@ -609,6 +742,7 @@ def basic_page(e):
     reviews = '<p class="reviews-line">%s <a href="%s" target="_blank" rel="noopener" data-cta="reviews_%s" data-tier="free" data-page="%s">%s</a></p>' % (
         ic('shield'), E(gurl), e['slug'], E(page_label(path)), E(rating))
     claim = owner_note(e, depth, path)
+    area_links = area_link_html(e, '../../')
     site_btn = (' <a class="btn ghost" href="%s" target="_blank" rel="noopener" data-cta="website_%s" data-tier="free">%s %s</a>' % (
         E(e['site']), e['slug'], ic('out'), E(e['site'].split('//')[1].strip('/')))) if e.get('site') else ''
     body = f'''<div class="w nar basicpg">{cr}
@@ -628,7 +762,7 @@ def basic_page(e):
 <h3>Opening hours</h3><dl class="hours">{hours}</dl>
 </section>
 {reviews}
-<p class="fine">Checked on Google, 1 Nov 2026. More <a href="../../services/{c['slug']}/">{E(c['name'].lower())}</a> or <a href="../../regions/{e['regions'][0]}/">{E(RN[e['regions'][0]])} region</a> workshops.</p>
+<p class="fine">Checked on Google, 1 Nov 2026. More <a href="../../services/{c['slug']}/">{E(c['name'].lower())}</a>{area_links}.</p>
 {claim}
 </div>'''
     street, postal = e['address_public'].rsplit(', Singapore ', 1)
@@ -637,8 +771,8 @@ def basic_page(e):
           'telephone': e['phone'], 'openingHours': e['hours_ld']}
     bar = wabar([wa_btn(e, path) if e.get('whatsapp') else call_btn(e, path, 'wa'),
                  '<a class="btn" href="%s" target="_blank" rel="noopener" data-cta="directions_%s" data-tier="free" data-page="%s">%s Directions</a>' % (E(gurl), e['slug'], E(page_label(path)), ic('pin'))])
-    desc = '%s: car workshop in %s, %s region. Address, directions, hours and Google rating. %s.' % (e['name'], e['area_label'], RN[e['regions'][0]], contact_line)
-    page(path, '%s | %s Car Workshop' % (e['name'], e['area_label']), desc, body, [ld], bar=bar, h1=e['name'])
+    desc = '%s: car workshop in %s, %s region. Address, directions, hours and Google rating. %s.' % (e['name'], e['area_label'], RN[e['region']], contact_line)
+    page(path, '%s | %s Car Workshop' % (e['name'], e['area_label']), desc, body, [ld, dict(crld, **{'@context': 'https://schema.org'})], bar=bar, h1=e['name'])
 
 
 def tier_features():
@@ -649,7 +783,7 @@ def tier_features():
         ('Tap counts (WhatsApp and call) reported to you', 'yes', 'yes', 'yes'),
         ('Your own photos and a completed-job gallery', 'no', 'yes', 'yes'),
         ('Detailed services with short descriptions', 'no', 'yes', 'yes'),
-        ('Address, Directions link and opening hours (where confirmed)', 'yes', 'yes', 'yes'),
+        ('Address, Directions link and opening hours', 'yes', 'yes', 'yes'),
         ('Sticky contact bar on phones', 'yes', 'yes', 'yes'),
         ('Both WhatsApp and Call buttons', 'no', 'yes', 'yes'),
         ('Rating line from a source people can check, with link and date', 'yes', 'yes', 'yes'),
@@ -697,7 +831,7 @@ def list_page():
 <h2 style="margin-top:28px">What we need from you</h2>
 <ul class="tick"><li>Your agreement in writing (WhatsApp is fine) and permission to use your photos</li><li>Business name, area, phone or WhatsApp, and the services you really offer</li><li>For Verified: your address, opening hours, a few photos of real jobs, and a review source we can link to</li></ul>
 <h2>What we do not do</h2>
-<p>We do not rank workshops, use rating or review markup, or list car dealers or insurers. A rating line is shown only when it comes from a source people can open, with its link and the date we checked. Anything we cannot confirm with you stays off the page.</p>
+<p>We do not rank workshops, use rating or review markup, or list car dealers or insurers. A rating line is shown only when it comes from a source people can open, with its link and the date we checked.</p>
 <section id="claim" class="claim-sec"><h2>Already listed? Manage your listing</h2>
 <p>If your workshop is already on {E(SITE_NAME)}, message Page One to correct a detail, add your own photos, upgrade to Verified, or remove the listing. We check that you run the business before changing anything.</p>
 <p class="claim-for" id="claim-for" hidden>Listing: <b></b></p>
@@ -717,8 +851,8 @@ def about_page():
     body = f'''<div class="w nar">{cr}
 <h1 style="margin-top:14px">About {E(SITE_NAME)}</h1>
 <p class="lede" style="font-size:1rem">{E(SITE_NAME)} is a directory of car workshops and car services in Singapore, run by Page One Singapore, a web and SEO service for small businesses.</p>
-<h2>How entries are checked</h2>
-<p>Every fact on a page comes from the business or from its public records, and the business confirms it before the directory goes live. If a detail cannot be confirmed, such as a price or opening hours, we leave it out. We never copy a business's website text. We do not rank workshops or use rating markup; a rating line appears only with a source link and the date we checked.</p>
+<h2>Where the details come from</h2>
+<p>Every fact on a page comes from the business or from its public records. If a detail cannot be verified, such as a price or opening hours, we leave it out. We never copy a business's website text. We do not rank workshops or use rating markup; a rating line appears only with a source link and the date we checked.</p>
 <h2>Who we list</h2>
 <p>Car workshops and car services only: repair and servicing, gearbox, ABS and ECU modules, spray painting and bodywork, batteries, detailing and coating, wraps and PPF, and parts. Car dealers and insurance are not listed.</p>
 <h2>A note on one listing</h2>
@@ -729,7 +863,7 @@ def about_page():
 <a class="btn big" href="../list-your-workshop/">How listing works</a></div>
 </div>'''
     page('about/', 'About SG Car Workshop | Run by Page One Singapore',
-         'SG Car Workshop is a Singapore car workshop directory run by Page One Singapore. Details are confirmed by each business. Contact us on WhatsApp.',
+         'SG Car Workshop is a Singapore car workshop directory run by Page One Singapore. Contact us on WhatsApp.',
          body, [dict(crld, **{'@context': 'https://schema.org'}), {'@context': 'https://schema.org', '@type': 'AboutPage', 'name': 'About ' + SITE_NAME, 'url': abs_url('about/')}])
 
 
@@ -751,8 +885,12 @@ def build():
     home()
     for c in CAT_LIST:
         category(c)
-    for k, r in REGION_LIST:
-        region(k, r)
+    for k in PUB_REGIONS:
+        region(k)
+    for k, v in PUB_ESTATES.items():
+        estate(k, v)
+    for (k, cat), v in PUB_PAIRS.items():
+        estate_service(k, cat, v)
     for e in PAID:
         listing(e)
     for e in ENTRIES:
@@ -769,6 +907,7 @@ def build():
         os.makedirs(d, exist_ok=True)
         open(os.path.join(d, 'index.html'), 'w', encoding='utf-8').write(h)
     open(OUT + '/404.html', 'w', encoding='utf-8').write(not_found())
+    write_redirects()
     for f in ('dir.css', 'dir.js'):
         shutil.copy(os.path.join(HERE, f), OUT + '/assets/' + f)
     shutil.copytree(os.path.join(HERE, 'img'), OUT + '/assets/img', dirs_exist_ok=True)
@@ -783,17 +922,40 @@ def build():
     else:
         robots = 'User-agent: *\nDisallow: /\n'
     open(OUT + '/robots.txt', 'w').write(robots)
-    lines = ['# %s' % SITE_NAME, '', '> A directory of car workshops and car services in Singapore, run by Page One Singapore. Entries use details confirmed by each business. No rankings and no rating or review markup.', '',
+    lines = ['# %s' % SITE_NAME, '', '> A directory of car workshops and car services in Singapore, run by Page One Singapore. Entries use details from the business or its public listing. No rankings and no rating or review markup.', '',
              'Last updated: %s' % UPDATED, '', '## Services']
     lines += ['- [%s](%sservices/%s/): %s' % (c['name'], BASE, c['slug'], c['blurb']) for c in CATEGORIES]
-    lines += ['', '## Regions']
-    lines += ['- [%s region](%sregions/%s/): %s' % (r['name'], BASE, k, r['intro']) for k, r in REGION_LIST]
+    lines += ['', '## Areas (regions)']
+    lines += ['- [%s](%sareas/%s/): %s' % (RN[k], BASE, k, areas.REGION_INTRO[k]) for k in PUB_REGIONS]
+    lines += ['', '## Estates and industrial areas']
+    lines += ['- [%s](%sareas/%s/): %s %d listing%s.' % (ESTATES[k]['name'], BASE, k, ESTATES[k]['intro'], len(v), '' if len(v) == 1 else 's') for k, v in PUB_ESTATES.items()]
     lines += ['', '## Listings']
     for e in ENTRIES:
         lines.append('- [%s](%sworkshops/%s/): %s, %s%s' % (e['name'], BASE, e['slug'], CAT[e['category']]['name'] + ', ' + TIERS[e['tier']]['label'], e['area_label'], (' (own website: %s)' % e['url']) if e['tier'] == 'premium_leadgen' else ''))
     lines += ['', '## More', '- [List your workshop](%slist-your-workshop/)' % BASE, '- [About](%sabout/)' % BASE, '']
     open(OUT + '/llms.txt', 'w').write('\n'.join(lines))
     print('built %d pages + 404 into %s (LIVE=%s, v=%s)' % (len(PAGES), OUT, LIVE, V))
+
+
+OLD_REGIONS = ['north', 'north-east', 'east', 'west', 'central']
+
+
+def write_redirects():
+    """/regions/<r>/ moved to /areas/<r>/. The bridge cannot upload .htaccess, so the preview gets soft redirect pages
+    (meta refresh + canonical). redirects.htaccess holds the real 301 rules for Edwin to add on the live domain."""
+    for r in OLD_REGIONS:
+        d = os.path.join(OUT, 'regions', r)
+        os.makedirs(d, exist_ok=True)
+        new = '../../areas/%s/' % r
+        open(os.path.join(d, 'index.html'), 'w', encoding='utf-8').write(
+            '<!doctype html>\n<html lang="en-SG"><head><meta charset="utf-8"><title>Moved | %s</title>'
+            '<link rel="canonical" href="%s"><meta http-equiv="refresh" content="0; url=%s"></head>'
+            '<body><p>This page has moved to <a href="%s">%s</a>.</p></body></html>\n' % (E(SITE_NAME), E(abs_url('areas/%s/' % r)), new, new, E(RN[r] + ' region')))
+    rules = ['# 301 redirects for the SG Car Workshop area restructure (1 Nov 2026). Add to the .htaccess at the root of the live domain.',
+             '# The upload bridge cannot send .htaccess files, so this file is not part of the synced site folder.']
+    rules += ['Redirect 301 /regions/%s/ /areas/%s/' % (r, r) for r in OLD_REGIONS]
+    rules += ['Redirect 301 /regions/ /']
+    open(os.path.join(HERE, '..', 'redirects.htaccess'), 'w').write('\n'.join(rules) + '\n')
 
 
 def make_icons():

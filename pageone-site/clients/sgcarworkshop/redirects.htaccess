@@ -1,0 +1,8 @@
+# 301 redirects for the SG Car Workshop area restructure (1 Nov 2026). Add to the .htaccess at the root of the live domain.
+# The upload bridge cannot send .htaccess files, so this file is not part of the synced site folder.
+Redirect 301 /regions/north/ /areas/north/
+Redirect 301 /regions/north-east/ /areas/north-east/
+Redirect 301 /regions/east/ /areas/east/
+Redirect 301 /regions/west/ /areas/west/
+Redirect 301 /regions/central/ /areas/central/
+Redirect 301 /regions/ /

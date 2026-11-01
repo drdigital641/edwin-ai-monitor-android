@@ -1,6 +1,6 @@
 # SG Car Workshop
 
-> A directory of car workshops and car services in Singapore, run by Page One Singapore. Entries use details confirmed by each business. No rankings and no rating or review markup.
+> A directory of car workshops and car services in Singapore, run by Page One Singapore. Entries use details from the business or its public listing. No rankings and no rating or review markup.
 
 Last updated: 2026-11-01
 
@@ -14,12 +14,23 @@ Last updated: 2026-11-01
 - [Car parts](https://pageonesingapore.com/preview/sgcarworkshop/services/car-parts/): Parts shops for specific makes, with models and part types to browse.
 - [General servicing and repair](https://pageonesingapore.com/preview/sgcarworkshop/services/general-servicing-repair/): Everyday servicing and repairs: battery checks, alternators, aircon and more.
 
-## Regions
-- [North region](https://pageonesingapore.com/preview/sgcarworkshop/regions/north/): Car workshops and services in the North region of Singapore, which takes in Yishun, Woodlands, Sembawang and Kranji. Some listings here are mobile or onsite and come to your car.
-- [North-East region](https://pageonesingapore.com/preview/sgcarworkshop/regions/north-east/): Car workshops and services in the North-East region of Singapore, including Ang Mo Kio, Hougang, Sengkang, Punggol and Serangoon.
-- [East region](https://pageonesingapore.com/preview/sgcarworkshop/regions/east/): Car workshops and services in the East region of Singapore, which includes the Kaki Bukit and Bedok car trade units.
-- [West region](https://pageonesingapore.com/preview/sgcarworkshop/regions/west/): Car workshops and services in the West region of Singapore, including Bukit Batok, Bukit Panjang and Boon Lay. Listings here are mobile services or have an outlet in the west.
-- [Central region](https://pageonesingapore.com/preview/sgcarworkshop/regions/central/): Car workshops and services in the Central region of Singapore, including Toa Payoh, Bukit Timah, Upper Thomson and the Jervois and Havelock Road areas.
+## Areas (regions)
+- [North](https://pageonesingapore.com/preview/sgcarworkshop/areas/north/): Car workshops and car services in the North region of Singapore, covering Woodlands, Kranji, Yishun and the Sembawang and Admiralty areas.
+- [North-East](https://pageonesingapore.com/preview/sgcarworkshop/areas/north-east/): Car workshops and car services in the North-East region of Singapore, covering Ang Mo Kio, Serangoon North, Defu and Hougang, and Sengkang.
+- [East](https://pageonesingapore.com/preview/sgcarworkshop/areas/east/): Car workshops and car services in the East region of Singapore, covering Kaki Bukit, Ubi, Eunos, Bedok North and the Changi and Loyang areas.
+- [West](https://pageonesingapore.com/preview/sgcarworkshop/areas/west/): Car workshops and car services in the West region of Singapore, covering Toh Guan and Jurong East, Jurong West, Pandan Loop, Bukit Batok and Tuas.
+- [Central](https://pageonesingapore.com/preview/sgcarworkshop/areas/central/): Car workshops and car services in the Central region of Singapore, covering Sin Ming and Bishan, Toa Payoh, MacPherson, Jalan Besar and Kallang Bahru, and Alexandra and Bukit Merah.
+- [Mobile (island-wide)](https://pageonesingapore.com/preview/sgcarworkshop/areas/mobile/): Mobile car services that come to your car anywhere in Singapore. These listings have no single shopfront, so the work is done where your car is parked.
+
+## Estates and industrial areas
+- [Kaki Bukit](https://pageonesingapore.com/preview/sgcarworkshop/areas/kaki-bukit/): Kaki Bukit is an industrial estate in the East region, around Kaki Bukit Avenue and Kaki Bukit Road, with many workshops, trade units and parts suppliers. 3 listings.
+- [Ubi](https://pageonesingapore.com/preview/sgcarworkshop/areas/ubi/): Ubi is an industrial area near Paya Lebar, around Ubi Avenue and Ubi Road, with motor workshops mixed in among light industry. 1 listing.
+- [Woodlands](https://pageonesingapore.com/preview/sgcarworkshop/areas/woodlands/): Woodlands is the main industrial area in the north-west, around Woodlands Industrial Park and the Woodlands Avenue roads, close to the Causeway. 2 listings.
+- [Kranji](https://pageonesingapore.com/preview/sgcarworkshop/areas/kranji/): Kranji is an industrial area in the north-west, around Kranji Way, Jalan Lam Huat and Sungei Kadut. 1 listing.
+- [Yishun](https://pageonesingapore.com/preview/sgcarworkshop/areas/yishun/): Yishun has two main motor trade clusters, Yishun Industrial Park A and the Yishun Industrial Street 1 area around North Spring Bizhub. 3 listings.
+- [Ang Mo Kio](https://pageonesingapore.com/preview/sgcarworkshop/areas/ang-mo-kio/): Ang Mo Kio has a long-running industrial estate, Ang Mo Kio Industrial Park, with workshops serving the north-east. 1 listing.
+- [Sin Ming and Bishan](https://pageonesingapore.com/preview/sgcarworkshop/areas/sin-ming-bishan/): Sin Ming and Bishan take in the Sin Ming Industrial Estate and the Bishan area in the middle of Singapore. 1 listing.
+- [Toh Guan and Jurong East](https://pageonesingapore.com/preview/sgcarworkshop/areas/toh-guan-jurong-east/): Toh Guan and Jurong East are in the West region, around Toh Guan Road East and the Enterprise Hub industrial building. 1 listing.
 
 ## Listings
 - [SG Garage](https://pageonesingapore.com/preview/sgcarworkshop/workshops/sg-garage/): General servicing and repair, Premium, Ang Mo Kio (own website: https://sggarage.com/)
