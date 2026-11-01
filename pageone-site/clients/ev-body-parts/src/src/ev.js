@@ -496,26 +496,33 @@
     $$('[data-car]').forEach(function (tr) {
       var sec = tr.closest('section') || document, prev = $('[data-car-prev]', sec), next = $('[data-car-next]', sec);
       function step() { var c = tr.querySelector('li'); return c ? c.getBoundingClientRect().width + 16 : tr.clientWidth * 0.8; }
-      function upd() { if (prev) prev.disabled = tr.scrollLeft < 4; if (next) next.disabled = tr.scrollLeft + tr.clientWidth >= tr.scrollWidth - 4; }
-      function go(d) { tr.scrollBy({ left: d * step(), behavior: 'smooth' }); }
+      function upd() { if (tr.classList.contains('auto')) { if (prev) prev.disabled = false; if (next) next.disabled = false; return; } if (prev) prev.disabled = tr.scrollLeft < 4; if (next) next.disabled = tr.scrollLeft + tr.clientWidth >= tr.scrollWidth - 4; }
+      function go(d) { if (tr.classList.contains('auto') && d < 0 && tr.scrollLeft < step() + 4) tr.scrollLeft += tr.children[tr.children.length / 2].offsetLeft - tr.children[0].offsetLeft; tr.scrollBy({ left: d * step(), behavior: 'smooth' }); }
       if (prev) prev.addEventListener('click', function () { go(-1); });
       if (next) next.addEventListener('click', function () { go(1); });
       tr.addEventListener('keydown', function (ev) { if (ev.target !== tr) return; if (ev.key === 'ArrowRight') { ev.preventDefault(); go(1); } else if (ev.key === 'ArrowLeft') { ev.preventDefault(); go(-1); } });
       tr.addEventListener('scroll', debounce(upd, 60), { passive: true }); window.addEventListener('resize', debounce(upd, 120)); upd();
-      /* autoplay: keeps sliding while the page scrolls; only touching, dragging, hovering or the buttons pause it, then it resumes */
+      /* continuous slide: keeps moving while the page scrolls; touching, dragging, hovering or the buttons pause it, then it resumes */
       if (window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches) return;
-      var hold = 0, hover = false;
-      function pause() { hold = Date.now() + 6000; }
-      function tick() {
-        if (document.hidden || hover || Date.now() < hold || tr.scrollWidth <= tr.clientWidth + 4) return;
-        if (tr.scrollLeft + tr.clientWidth >= tr.scrollWidth - 4) tr.scrollTo({ left: 0, behavior: 'smooth' }); else go(1);
+      var orig = [].slice.call(tr.children); if (orig.length < 2) return;
+      orig.forEach(function (li) { var c = li.cloneNode(true); c.setAttribute('aria-hidden', 'true'); c.classList.add('fc-clone'); $$('a,button', c).forEach(function (x) { x.setAttribute('tabindex', '-1'); }); tr.appendChild(c); });
+      tr.classList.add('auto');
+      var hold = 0, hover = false, pos = tr.scrollLeft, last = 0, SPEED = 32; /* px per second */
+      function half() { return tr.children[orig.length].offsetLeft - tr.children[0].offsetLeft; }
+      function pause() { hold = Date.now() + 3000; }
+      function frame(t) {
+        var dt = last ? Math.min(t - last, 100) : 0; last = t;
+        if (!document.hidden && !hover && Date.now() >= hold) {
+          pos += SPEED * dt / 1000; var h = half(); if (h > 0 && pos >= h) pos -= h;
+          tr.scrollLeft = pos;
+        } else { pos = tr.scrollLeft; var h2 = half(); if (h2 > 0 && pos >= h2) { pos -= h2; tr.scrollLeft = pos; } }
+        upd(); requestAnimationFrame(frame);
       }
-      ['pointerdown', 'touchstart', 'wheel', 'keydown', 'focusin'].forEach(function (t) { tr.addEventListener(t, pause, { passive: true }); });
-      ['touchend', 'pointerup'].forEach(function (t) { tr.addEventListener(t, pause, { passive: true }); });
+      ['pointerdown', 'touchstart', 'touchmove', 'wheel', 'keydown', 'focusin', 'touchend', 'pointerup'].forEach(function (t) { tr.addEventListener(t, pause, { passive: true }); });
       tr.addEventListener('pointerenter', function (ev) { if (ev.pointerType === 'mouse') hover = true; });
       tr.addEventListener('pointerleave', function () { hover = false; });
-      [prev, next].forEach(function (b) { if (b) b.addEventListener('click', pause); });
-      setInterval(tick, 3500);
+      [prev, next].forEach(function (b) { if (b) b.addEventListener('click', function () { pause(); }); });
+      requestAnimationFrame(frame);
     });
   }
   function initCatalogue() {
