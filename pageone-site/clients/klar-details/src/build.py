@@ -247,18 +247,18 @@ NEUTRAL = ['bentley_wall', 'every_detail_counts', 'products_table', 'mercedes_he
 
 # each guide's photo matches its topic (Edwin, 1 Nov 2026); unlisted guides fall back to the rotation
 ART_PICK = {
-    'car-water-spot-removal-singapore': 'specialist_wipe', 'remove-bird-droppings-tree-sap-car-paint': 'klarshield_spray',
+    'car-water-spot-removal-singapore': 'water_beading', 'remove-bird-droppings-tree-sap-car-paint': 'specialist_wipe',
     'car-polishing-vs-waxing-vs-ceramic-coating': 'klarcoat_bottle', 'car-paint-oxidation-vs-clear-coat-damage': 'rupes_polish',
-    'leather-car-seat-cleaning-care-guide': 'steam_leather', 'car-wheel-cleaning-remove-brake-dust': 'klarcoat_range',
-    'how-to-wash-ceramic-coated-car': 'products_table', 'car-paint-swirl-marks-causes-prevention': 'rupes_white',
+    'leather-car-seat-cleaning-care-guide': 'steam_leather', 'car-wheel-cleaning-remove-brake-dust': 'wheel_clean',
+    'how-to-wash-ceramic-coated-car': 'foam_wash', 'car-paint-swirl-marks-causes-prevention': 'rupes_white',
     'new-car-detailing-singapore-guide': 'mercedes_headlight', 'interior-car-detailing-singapore-guide': 'steam_rear_cabin',
     'how-regular-car-detailing-protects-your-vehicles-resale-value-in-singapore': 'bentley_wall',
     '5-signs-your-car-needs-paint-correction': 'rupes_polish',
     'what-really-happens-during-a-professional-car-detailing-session-and-why-it-takes-hours': 'every_detail_counts',
     'why-professional-car-detailing-matters-in-singapores-harsh-climate': 'klarshield_spray',
-    'interior-car-detailing-why-its-more-than-just-a-deep-clean': 'vent_brush',
+    'interior-car-detailing-why-its-more-than-just-a-deep-clean': 'carpet_vacuum',
     'why-klar-details-is-the-go-to-choice-for-tesla-and-ev-owners-in-singapore': 'applicator_closeup',
-    'blog-pure-water-final-rinse': 'specialist_wipe', '5-reasons-your-car-needs-ceramic-coating-in-singapore': 'klarcoat_bottle',
+    'blog-pure-water-final-rinse': 'pure_rinse', '5-reasons-your-car-needs-ceramic-coating-in-singapore': 'coating_apply',
     'ceramic-coating-vs-graphene-coating-which-is-better-for-singapores-humid-climate': 'klarcoat_range',
     'graphene-coating-for-car-protect-in-singapore': 'graphene_apply',
 }
@@ -317,15 +317,18 @@ def related_services(slugs):
 
 def related_articles(slugs, heading='Guides that help you decide', avoid=()):
     # never show a photo the page already shows, and no two cards with the same photo
-    used, items = set(avoid), ''
+    used, items, row = set(avoid), '', set()
     for i, s in enumerate(x for x in slugs if x in ABY):
         k = art_img(ABY[s])
         if k in used:  # next photo on the same topic, then a neutral studio shot, never an unrelated one
             v = SVC_V.get(ABY[s].get('owner'), {})
             cands = v.get('pool', []) + [v.get('hero')] + v.get('steps', []) + NEUTRAL
             k = next((p for p in cands if p in IMG and p not in used), None)
+            if k is None:  # every card gets a photo: any unused one, else any not already in this row
+                k = next((p for p in list(LOCAL) if p in IMG and p not in used), None) or next(p for p in ART_POOL if p in IMG and p not in row)
         used.add(k)
-        items += acard(ABY[s], i, k if k else False)
+        row.add(k)
+        items += acard(ABY[s], i, k)
     return '<section class="sec"><div class="wrap"><h2>%s</h2><div class="grid3">%s</div></div></section>' % (E(heading), items) if items else ''
 
 

@@ -119,3 +119,6 @@ p{margin:0 0 1em}.wrap{max-width:var(--max);margin:0 auto;padding:0 20px}.narrow
 .acc details{background:#fff;border:1px solid var(--line);border-radius:14px;margin-bottom:10px;overflow:hidden}.acc summary{cursor:pointer;list-style:none;padding:18px 54px 18px 20px;position:relative}.acc summary::-webkit-details-marker{display:none}
 .acc summary h2{font-size:1.08rem;margin:0;line-height:1.35}.acc summary:after{content:"";position:absolute;right:22px;top:24px;width:10px;height:10px;border-right:2px solid var(--red);border-bottom:2px solid var(--red);transform:rotate(45deg);transition:transform .3s}
 .acc details[open] summary:after{transform:rotate(-135deg);top:28px}.acc-b{padding:0 20px 20px}.acc-b .rt>*:last-child{margin-bottom:0}.acc-b .inc{margin-bottom:16px}
+
+.card-pic,.gal-i,.ps-pic,.pic{position:relative}.card-pic img,.gal-i img,.ps-pic img,.pic img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.ps-pic .n{z-index:1}.card-pic{flex:none}
