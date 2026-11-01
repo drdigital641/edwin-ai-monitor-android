@@ -58,7 +58,7 @@ def audit(a):
         'services_detail': len(re.findall(r'<li class="svc ', a)),
         'faqs': len(re.findall(r'<details class="faq">', a)),
         'gallery': jobs + illus,
-        'contact': 'google.com/maps/place/?q=place_id:' in a or bool(re.search(r'href="tel:\+\d+"[^>]*data-cta="call_dir_', a)) or bool(re.search(r'href="https://wa\.me/\d+\?text=[^"]*"[^>]*data-cta="whatsapp_dir_', a)),
+        'contact': 'google.com/maps/search/?api=1&amp;query=' in a and 'query_place_id=' in a or bool(re.search(r'href="tel:\+\d+"[^>]*data-cta="call_dir_', a)) or bool(re.search(r'href="https://wa\.me/\d+\?text=[^"]*"[^>]*data-cta="whatsapp_dir_', a)),
         'address': 'data-addr' in a,
         'map': 'data-map' in a,
         'hours': 'class="hours"' in a or 'data-live="hours"' in a,
@@ -111,15 +111,21 @@ for e in ENTRIES:
         ld = [json.loads(j) for j in re.findall(r'<script type="application/ld\+json">(.*?)</script>', pg, re.S)]
         biz = [x for x in ld if x.get('@type') != 'BreadcrumbList']
         if len(biz) != 1 or set(biz[0]) - {'@context', '@type', 'name', 'url', 'address', 'geo'}: print('BASIC schema not minimal', e['slug']); bad += 1
-        for needle in ('data-cta="claim_%s"' % e['slug'], 'Is this your workshop?', 'google.com/maps/place/?q=place_id:%s' % e['place_id'], 'See photos, reviews &amp; hours on Google Maps'):
+        for needle in ('data-cta="claim_%s"' % e['slug'], 'Is this your workshop?', 'query_place_id=%s' % e['place_id'], 'See photos, reviews &amp; hours on Google Maps'):
             if needle not in pg: print('BASIC page missing', needle, e['slug']); bad += 1
         txt = re.sub(r'\s+', ' ', re.sub(r'<[^>]+>', ' ', re.sub(r'<(script|style).*?</\1>', '', pg, flags=re.S)))
         for w in re.findall(r'\b(partner\w*|verified|recommended by|trusted|confirmed|endorse\w*|official\w*|approved|authori[sz]ed|certified)\b', txt, re.I):
             print('BASIC page has endorsement wording', w, e['slug']); bad += 1
         if 'Remove my listing' not in pg or 'list-your-workshop/?w=%s#remove' % e['slug'] not in pg: print('BASIC page missing Remove my listing link', e['slug']); bad += 1
-        for stored in ('tel:+', 'telephone', 'openingHours', 'ratingValue', 'reviewCount'):
+        for stored in ('telephone', 'openingHours', 'ratingValue', 'reviewCount'):
             if stored in pg: print('BASIC page stores a live-only field', stored, e['slug']); bad += 1
-        if re.search(r'wa\.me/\d', pg): print('BASIC page stores a phone number', e['slug']); bad += 1
+        has_num = bool(re.search(r'href="tel:\+\d|wa\.me/\d', pg))
+        if has_num and not (e.get('phone') and (e.get('contact_source') or '').startswith('http')):
+            print('BASIC page shows a phone number with no stored own-site source URL', e['slug']); bad += 1
+        if e.get('phone') and has_num and ('class="livephone"' in pg or 'livephone.js' in pg): print('BASIC page with a stored number must not use the live fallback', e['slug']); bad += 1
+        if not e.get('phone') and ('class="livephone"' not in pg or 'livephone.js' not in pg): print('BASIC page without a stored number is missing the live fallback slot', e['slug']); bad += 1
+        if e.get('phone') and e.get('whatsapp') and not re.search(r'wa\.me/\d+\?text=Hi%2C%20I%20found%20you%20on%20SG%20Car%20Workshop%20%28pageonesingapore\.com%29', pg): print('BASIC WhatsApp prefill text wrong', e['slug']); bad += 1
+        if e.get('phone') and not e.get('whatsapp') and 'wa.me' in re.sub(r'list-your-workshop[^"]*', '', pg).split('id="main"')[1].split('</main>')[0]: print('BASIC landline listing shows WhatsApp', e['slug']); bad += 1
         for banned in ('class="faq"', 'class="gal"', 'class="svc ', 'FAQPage', 'Review'):
             if banned in pg: print('BASIC page has Verified-only content', banned, e['slug']); bad += 1
 sm = open(os.path.join(root, 'sitemap.xml')).read(); lt = open(os.path.join(root, 'llms.txt')).read()
@@ -178,12 +184,24 @@ about = open(os.path.join(root, 'about/index.html'), encoding='utf-8').read()
 if 'compiled from public Google data' not in about or 'removed on request' not in about: print('About page missing unclaimed-listing note'); bad += 1
 if 'id="remove"' not in open(os.path.join(root, 'list-your-workshop/index.html'), encoding='utf-8').read(): print('list page missing #remove section'); bad += 1
 if 'Sponsored' not in open(os.path.join(root, 'index.html'), encoding='utf-8').read(): print('home carousel not labelled Sponsored'); bad += 1
-# Zero Google API spend: no page, script or sheet may reference the Places API or carry a Google API key
+# Google API: the browser key and places.googleapis may appear ONLY in assets/livephone.js (URL) and in the data-key of the .livephone slot on Basic PROFILE pages with no stored number.
 for dp, dn, fns in os.walk(root):
     for fn in fns:
         if fn.endswith(('.html', '.js', '.css', '.txt', '.xml')):
+            rel = os.path.relpath(os.path.join(dp, fn), root)
             t = open(os.path.join(dp, fn), encoding='utf-8').read()
-            if 'places.googleapis' in t or re.search(r'AIza[0-9A-Za-z_-]{20,}', t) or 'gmaps-key' in t:
-                print('GOOGLE API REFERENCE in', os.path.relpath(os.path.join(dp, fn), root)); bad += 1
+            is_profile = re.match(r'workshops/[^/]+/index\.html$', rel) is not None
+            keys = re.findall(r'AIza[0-9A-Za-z_-]{20,}', t)
+            if rel == 'assets/livephone.js':
+                if keys or t.count('places.googleapis') != 1 or 'nationalPhoneNumber,internationalPhoneNumber' not in t or re.search(r'photos|rating|regularOpeningHours|reviews', t.split('fields=')[1].split('&')[0]):
+                    print('livephone.js must make exactly one Places URL with only the phone fields'); bad += 1
+                continue
+            if 'places.googleapis' in t or 'gmaps-key' in t:
+                print('GOOGLE API REFERENCE in', rel); bad += 1
+            if keys:
+                ok = is_profile and 'class="livephone"' in t and len(keys) == 1 and t.count('data-key="') == 1
+                if not ok: print('GOOGLE KEY outside a Basic profile fallback slot in', rel); bad += 1
+            if 'livephone.js' in t and not (is_profile and 'class="livephone"' in t):
+                print('livephone.js loaded outside a Basic profile fallback page', rel); bad += 1
 print('pages checked:', len(files), 'problems:', bad)
 sys.exit(1 if bad else 0)

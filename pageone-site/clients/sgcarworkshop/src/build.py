@@ -26,7 +26,10 @@ SITE_NAME = 'SG Car Workshop'   # placeholder brand
 DOMAIN = 'sgcarworkshop.sg'     # not bought yet
 LIVE = False
 # No Google API key anywhere (Edwin, 1 Nov 2026: zero Google API spend for Basic listings). Basic photos/phone/hours/rating are NOT loaded; profile pages link to Google Maps.
+# The ONLY Google key on the site: Edwin's referrer-restricted browser key, used by assets/livephone.js on Basic PROFILE pages with no stored number
+# (one Place Details call, nationalPhoneNumber + internationalPhoneNumber only, cached in sessionStorage, project quota capped at 30/day; nothing stored).
 GOOGLE_MAPS_KEY = None
+PLACES_BROWSER_KEY = 'AIzaSyAkMQs46QK9N2fiAqc1dmZch39hPHMzsnU'
 PREVIEW_BASE = 'https://pageonesingapore.com/preview/sgcarworkshop/'
 BASE = ('https://%s/' % DOMAIN) if LIVE else PREVIEW_BASE
 PATH_BASE = '/' if LIVE else '/preview/sgcarworkshop/'
@@ -89,7 +92,7 @@ MARK_SVG = ('<svg width="36" height="36" viewBox="0 0 48 48" aria-hidden="true">
 LOGO = MARK_SVG
 
 _h = hashlib.sha1()
-for _f in ('dir.css', 'dir.js'):
+for _f in ('dir.css', 'dir.js', 'livephone.js'):
     _h.update(open(os.path.join(HERE, _f), 'rb').read())
 V = _h.hexdigest()[:8]
 
@@ -185,7 +188,7 @@ def wabar(items):
     return '<div class="wabar" role="region" aria-label="Contact">%s</div>' % ''.join(items)
 
 
-def page(path, title, desc, body, schema=None, og=None, bar=None, h1=None):
+def page(path, title, desc, body, schema=None, og=None, bar=None, h1=None, extra_js=''):
     assert len(title) <= 60, (path, len(title), title)
     assert len(desc) <= 160, (path, len(desc))
     depth = path.count('/')
@@ -196,7 +199,7 @@ def page(path, title, desc, body, schema=None, og=None, bar=None, h1=None):
     ow, oh = (1200, 630) if og_rel in ('og-default.jpg', 'wei/og.jpg') else (None, None) if remote else imgsize(og_rel)
     ld = ''.join('<script type="application/ld+json">%s</script>\n' % json.dumps(s, ensure_ascii=False).replace('</', '<\\/') for s in (schema or []))
     p = pre(depth)
-    gk = '<meta name="gmaps-key" content="%s">\n' % E(GOOGLE_MAPS_KEY) if GOOGLE_MAPS_KEY else ''
+    gk = ''
     out = f'''<!doctype html>
 <html lang="en-SG">
 <head>
@@ -233,6 +236,7 @@ def page(path, title, desc, body, schema=None, og=None, bar=None, h1=None):
 {footer(depth)}
 {bar or ''}
 <script src="{p}assets/dir.js?v={V}" defer></script>
+{('<script src="%sassets/livephone.js?v=%s" defer></script>' % (p, V)) if extra_js else ''}
 </body>
 </html>
 '''
@@ -434,8 +438,24 @@ def page_label(page_path):
     return '/' + page_path
 
 
+SITE_HOST = 'pageonesingapore.com'   # shown in the prefill so workshops see where the lead came from
+BASIC_WA_MSG = 'Hi, I found you on %s (%s). I would like to ask about %s'
+
+
+def basic_contact_btn(e, page_path, cls='', short=False):
+    """One contact button from a STORED number (the business's own site/Facebook): WhatsApp for mobiles, Call for landlines. '' when unknown."""
+    if e.get('whatsapp'):
+        return wa_btn(e, page_path, cls)
+    if e.get('phone'):
+        return call_btn(e, page_path, cls)
+    return ''
+
+
 def wa_href(e, page_path):
     """Directory WhatsApp link: the prefilled message names the business, the directory and the page the lead came from."""
+    if e['tier'] == 'free':
+        msg = BASIC_WA_MSG % (SITE_NAME, SITE_HOST, ASK.get(e['slug'], 'servicing or repair for my car'))
+        return wa_link(e['whatsapp'], msg)
     msg = "Hi %s, I found you on %s (%s). I'd like to ask about %s." % (e['name'], SITE_NAME, page_label(page_path), ASK.get(e['slug'], 'my car'))
     return wa_link(e['whatsapp'], msg)
 
@@ -454,8 +474,8 @@ def call_btn(e, page_path, cls='', label='Call'):
 
 
 def gm_url(e):
-    """Free Google Maps link by place_id (no API key, no billable call)."""
-    return 'https://www.google.com/maps/place/?q=place_id:%s' % e['place_id']
+    """Official Google Maps URL format (no API key, no billable call): search by name + address, pinned to the place_id."""
+    return 'https://www.google.com/maps/search/?api=1&query=%s&query_place_id=%s' % (quote('%s %s' % (e['name'], e['address_public'])), e['place_id'])
 
 
 def gm_btn(e, page_path, cls='', short=False):
@@ -564,9 +584,9 @@ def card(e, depth, page_path=''):
         svc = ', '.join(e.get('services_public', [])[:3])
         return ('<article class="card basic" %s><div class="ph btile" style="%s">%s%s</div><div class="bd"><span class="tag">%s</span>'
                 '<h3><a href="%sworkshops/%s/">%s</a></h3>%s<p class="addr">%s</p><p class="tx full svcline">%s</p>'
-                '<div class="acts"><a class="btn sm" href="%sworkshops/%s/" data-cta="view_%s">View details</a></div>%s</div></article>') % (
+                '<div class="acts">%s<a class="btn sm" href="%sworkshops/%s/" data-cta="view_%s">View details</a></div>%s</div></article>') % (
             attrs, bt_style(e), gph_tile(e), tier_badge(e, 'on-ph'), E(c['short']), pre(depth), e['slug'], E(e['name']), rg, E(e['address_public']), E(svc),
-            pre(depth), e['slug'], e['slug'], owner_note(e, depth, page_path, 'claim'))
+            basic_contact_btn(e, page_path, 'sm'), pre(depth), e['slug'], e['slug'], owner_note(e, depth, page_path, 'claim'))
     ci = e.get('card_img')
     ph = photo_img(dict(ci, alt=ci['alt']), depth, lazy=True) if ci else tile(e)
     acts = wa_btn(e, page_path, 'sm') + (call_icon(e, page_path) if e.get('phone') else '')
@@ -597,7 +617,7 @@ def free_card(depth, ex=FREE_EXAMPLE):
 def tiers_strip():
     """Short three-tier summary for the home page. No prices."""
     items = [
-        ('free', 'A free card plus a short profile page: name, address, services and Directions, with a link to the workshop\'s Google Maps listing for photos, reviews and hours.'),
+        ('free', 'A free card plus a short profile page: name, address, services and Directions, with Call or WhatsApp where the workshop publishes its own number, and a link to its Google Maps listing for photos, reviews and hours.'),
         ('premium', 'A full page with real photos, services, address, map, reviews line and FAQs.'),
         ('premium_leadgen', 'Everything in Verified, plus the business\'s own website and local search work. Premium workshops are featured at the top.'),
     ]
@@ -734,12 +754,18 @@ def basic_page(e):
     url = abs_url(path)
     cr, crld = crumbs(depth, workshop_trail(e))
     gurl = maps_url(e)
-    contact_btn = gm_btn(e, path, 'big')
+    stored = basic_contact_btn(e, path, 'big')
+    live = '' if stored else ('<span class="livephone" data-pid="%s" data-key="%s" data-slug="%s" data-name="%s" data-page="%s" data-site="%s" data-host="%s" data-ask="%s" hidden></span>'
+                              % (e['place_id'], PLACES_BROWSER_KEY, e['slug'], E(e['name'], True), E(page_label(path)), E(SITE_NAME, True), SITE_HOST,
+                                 E(ASK.get(e['slug'], 'servicing or repair for my car'), True)))
+    contact_btn = stored + live + gm_btn(e, path, 'big' if not stored else 'big alt')
     photo = '<div class="hero-ph btile" style="%s">%s</div>' % (bt_style(e), gph_tile(e))
     svcs = ''.join('<li>%s</li>' % E(s) for s in e['services_public'])
     claim = owner_note(e, depth, path)
     area_links = area_link_html(e, '../../')
     site_btn = ''
+    note = ('Photos, reviews and opening hours are on the workshop\'s own Google Maps listing. The number is the one the workshop publishes itself. The button only opens a chat or call that you start; we never message workshops for you.' if stored else
+            'Photos, reviews, phone number and opening hours are on the workshop\'s own Google Maps listing. If it publishes a number there, a Call or WhatsApp button may appear above; it only opens a chat or call that you start.')
     body = f'''<div class="w nar basicpg">{cr}
 <div class="badges" style="margin-top:14px">{tier_badge(e)}<span class="tag">{E(c['short'])}</span></div>
 <h1 style="margin-top:8px">{E(e['name'])}</h1>
@@ -748,7 +774,7 @@ def basic_page(e):
 <p class="lede" style="font-size:1rem">{E(e['lede'])}</p>
 <p>{E(e['area_ctx'])}</p>
 <div class="acts main-acts">{contact_btn}</div>
-<p class="fine">Photos, reviews, phone number and opening hours are on the workshop's own Google Maps listing.</p>
+<p class="fine">{note}</p>
 <h2>Services</h2>
 <ul class="tick svc-plain">{svcs}</ul>
 <p class="fine">From the workshop's Google listing.</p>
@@ -764,18 +790,18 @@ def basic_page(e):
     ld = {'@context': 'https://schema.org', '@type': 'AutoRepair', 'name': e['name'], 'url': url,
           'address': {'@type': 'PostalAddress', 'streetAddress': street, 'postalCode': postal, 'addressLocality': 'Singapore', 'addressCountry': 'SG'},
           }
-    bar = wabar([gm_btn(e, path, '', True),
+    bar = wabar([(basic_contact_btn(e, path) or gm_btn(e, path, '', True)),
                  '<a class="btn" href="%s" target="_blank" rel="noopener" data-cta="directions_%s" data-tier="free" data-page="%s">%s Directions</a>' % (E(gurl), e['slug'], E(page_label(path)), ic('pin'))])
     desc = '%s: car workshop in %s, %s region. Address and directions, with a link to its Google Maps listing for photos, reviews and hours.' % (e['name'], e['area_label'], RN[e['region']])
     desc = desc if len(desc) <= 160 else '%s, car workshop in %s. Address and directions, with a link to its Google Maps listing.' % (e['name'], e['area_label'])
-    page(path, fit_title('%s | %s Car Workshop' % (e['name'], e['area_label']), '%s | %s' % (e['name'], e['area_label']), e['name']), desc, body, [ld, dict(crld, **{'@context': 'https://schema.org'})], bar=bar, h1=e['name'])
+    page(path, fit_title('%s | %s Car Workshop' % (e['name'], e['area_label']), '%s | %s' % (e['name'], e['area_label']), e['name']), desc, body, [ld, dict(crld, **{'@context': 'https://schema.org'})], bar=bar, h1=e['name'], extra_js=(not stored))
 
 
 def tier_features():
     return [
         ('Basic card and short profile page: name, short description, category, area, link to Google Maps', 'yes', 'yes', 'yes'),
         ('Link to your website', 'no', 'yes', 'yes (shown as a secondary button)'),
-        ('WhatsApp (or Call) button with the source tagged', 'no', 'yes', 'yes'),
+        ('WhatsApp (or Call) button with the source tagged', 'where its own number is published', 'yes', 'yes'),
         ('Tap counts (WhatsApp and call) reported to you', 'no', 'yes', 'yes'),
         ('Your own photos and a completed-job gallery', 'no', 'yes', 'yes'),
         ('Detailed services with short descriptions', 'no', 'yes', 'yes'),
@@ -913,7 +939,7 @@ def build():
         open(os.path.join(d, 'index.html'), 'w', encoding='utf-8').write(h)
     open(OUT + '/404.html', 'w', encoding='utf-8').write(not_found())
     write_redirects()
-    for f in ('dir.css', 'dir.js'):
+    for f in ('dir.css', 'dir.js', 'livephone.js'):
         shutil.copy(os.path.join(HERE, f), OUT + '/assets/' + f)
     shutil.copytree(os.path.join(HERE, 'img'), OUT + '/assets/img', dirs_exist_ok=True)
     make_icons()

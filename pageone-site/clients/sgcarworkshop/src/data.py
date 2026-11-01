@@ -524,21 +524,21 @@ _BX = {
         services_source="Google listing category + topics customers mention",
         whatsapp_source="WhatsApp number confirmed through the wa.link on its Google listing, 1 Nov 2026",
         lede=("Everest Garage is a car repair and maintenance workshop in Kaki Bukit, on the fifth floor of 25 Kaki Bukit Road 4. "
-              "Its Google listing shows servicing, oil change, aircon and general repairs. Message the workshop on WhatsApp, or tap Directions to find the unit."),
+              "Its Google listing shows servicing, oil change, aircon and general repairs. Tap Directions to find the unit."),
         area_ctx="Kaki Bukit is in the East planning region of Singapore, which also takes in the Bedok car trade units."),
     "hup-soon-lee-motor-service": dict(
         address_public="1018 Yishun Industrial Park A, #01-352, Singapore 768760",
         services_public=["Car repair and servicing", "Private and commercial vehicles", "Euro 4, 5 and 6 vehicles"],
         services_source="Google listing description",
         lede=("Hup Soon Lee Motor Service is a long-running car repair workshop at 1018 Yishun Industrial Park A. "
-              "According to its Google listing it works on private and commercial vehicles, including Euro 4, 5 and 6 models. Call to ask about your car."),
+              "According to its Google listing it works on private and commercial vehicles, including Euro 4, 5 and 6 models."),
         area_ctx="Yishun is in the North planning region of Singapore, alongside Woodlands, Sembawang and Kranji."),
     "cys-automobile-services": dict(
         address_public="38 Woodlands Industrial Park E1, #07-17, Singapore 757700",
         services_public=["Servicing and repair", "Accident reporting", "Motor insurance claims", "Vehicle inspection", "Vehicle rental"],
         services_source="Google listing description",
         lede=("CYS Automobile Services is a servicing and repair workshop on level 7 of 38 Woodlands Industrial Park E1. "
-              "Its Google listing also mentions accident reporting, motor insurance claims, vehicle inspection and vehicle rental. Call to ask which of these fits your car."),
+              "Its Google listing also mentions accident reporting, motor insurance claims, vehicle inspection and vehicle rental."),
         area_ctx="Woodlands is in the North planning region of Singapore, alongside Yishun, Sembawang and Kranji."),
     "sonic-auto-garage": dict(
         address_public="53 Ubi Ave 1, #01-21 Paya Ubi Industrial Park, Singapore 408934",
@@ -552,14 +552,14 @@ _BX = {
         services_public=["Car servicing", "Car repair"],
         services_source="Google listing, details from Edwin",
         lede=("Allen Motor Workshop is a car servicing and repair workshop at unit #01-127, 1 Sin Ming Industrial Estate Sector C. "
-              "Call to ask about servicing or a repair for your car, or tap Directions to find the unit."),
+              "Tap Directions to find the unit."),
         area_ctx="Sin Ming is in the Bishan planning area, part of the Central region of Singapore."),
     "jss-motorworkz": dict(
         address_public="48 Toh Guan Road East, #02-140 Enterprise Hub, Singapore 608586",
         services_public=["Servicing", "Engine repair and overhaul", "Gearbox repair and overhaul", "Diagnostics", "Car aircon", "Walnut blasting", "Tyres and batteries"],
         services_source="Google listing, details from Edwin",
         lede=("JSS MotorWorkz is a workshop on level 2 of Enterprise Hub, 48 Toh Guan Road East. "
-              "Its Google listing covers servicing, engine and gearbox repair and overhauls, diagnostics, aircon, walnut blasting, tyres and batteries. Message the workshop on WhatsApp to ask about your car."),
+              "Its Google listing covers servicing, engine and gearbox repair and overhauls, diagnostics, aircon, walnut blasting, tyres and batteries."),
         area_ctx="Toh Guan is in the Jurong East planning area, part of the West region of Singapore."),
 }
 for _b in BASIC:
@@ -588,7 +588,7 @@ def _auto_basic():
                         desc="Car workshop at " + street + ".", source="Google Places API (New) place_id %s" % r["place_id"],
                         addresses=[dict(label=None, street=street, postal=postal)], address_public=r["address"],
                         services_public=["Car repair and servicing"], services_source="Google listing category",
-                        lede="%s is a car workshop at %s. Tap Directions to find the unit, or use the contact button to get in touch." % (r["name"], street),
+                        lede="%s is a car workshop at %s. Tap Directions to find the unit." % (r["name"], street),
                         area_ctx="%s is in the %s region of Singapore." % (en, rg.replace("-", " ").title()),
                         tier="free", services=[], regions_note="Region from the public listing area (URA planning regions)."))
     return out
@@ -597,5 +597,24 @@ def _auto_basic():
 _AUTO = _auto_basic()
 BASIC.extend(_AUTO)
 ENTRIES.extend(BASIC)
+
+
+def _apply_basic_contact():
+    """Phone numbers for Basic listings, ONLY from the business's own website or Facebook page (basic_contact.json, with source URL).
+    Never from Google. Mobile numbers (8/9 prefix) get WhatsApp, landlines get Call. Unknown stays None (profile page may use the live fallback)."""
+    import json as _j, os as _os
+    p = _os.path.join(_os.path.dirname(_os.path.abspath(__file__)), "basic_contact.json")
+    cj = _j.load(open(p)) if _os.path.exists(p) else {}
+    for e in BASIC:
+        c = cj.get(e["slug"]) or {}
+        e["contact_source"] = c.get("source")
+        if c.get("phone"):
+            e["phone"] = c["phone"]
+            e["phone_show"] = c.get("phone_show")
+            if c["phone"][3:4] in ("8", "9"):
+                e["whatsapp"] = c["phone"].lstrip("+")
+
+
+_apply_basic_contact()
 _RANK = {"premium_leadgen": 0, "premium": 1, "free": 2}
 ENTRIES.sort(key=lambda e: (_RANK[e["tier"]], e["name"].lower() if e["tier"] == "free" else ""))  # Premium, Verified, then Basic A to Z (paid keep their set order)
