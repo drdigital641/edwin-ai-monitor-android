@@ -21,17 +21,6 @@ ready(function(){
     r.addEventListener('mousemove',function(e){if(down)r.scrollLeft=sl-(e.pageX-sx)});
     r.addEventListener('click',function(e){if(Math.abs(r.scrollLeft-sl)>6&&sl)e.preventDefault()},true);
   });
-  /* colour dots: slide the carousel to that job and highlight it */
-  var rail=d.querySelector('.hero [data-glide]'),now=d.querySelector('.pk-now');
-  [].forEach.call(d.querySelectorAll('.picker .sw'),function(b){b.addEventListener('click',function(){
-    if(!rail)return;var c=rail.querySelector('.job[data-k="'+b.getAttribute('data-job')+'"]');if(!c)return;
-    [].forEach.call(d.querySelectorAll('.picker .sw'),function(x){x.setAttribute('aria-pressed',x===b)});
-    if(rail.p1hold)rail.p1hold(8000);
-    var pad=parseFloat(getComputedStyle(rail.querySelector('.rail-track')).paddingLeft)||16;
-    rail.scrollTo({left:c.offsetLeft-pad,behavior:rm?'auto':'smooth'});
-    [].forEach.call(rail.querySelectorAll('.job.hl'),function(x){x.classList.remove('hl')});c.classList.add('hl');
-    if(now)now.innerHTML=b.getAttribute('aria-label')+' · <a href="'+c.getAttribute('href')+'">See job details →</a>';
-  })});
   /* before / after slider */
   [].forEach.call(d.querySelectorAll('.ba'),function(b){var i=b.querySelector('.ba-range');i.addEventListener('input',function(){b.style.setProperty('--x',i.value+'%')})});
   /* reveal on scroll: only opacity/transform, text is in the HTML */

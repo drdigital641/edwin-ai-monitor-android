@@ -243,3 +243,5 @@ background:radial-gradient(600px 260px at 100% 0,rgba(232,181,42,.28),transparen
 .hero .picker{margin:0 auto 16px}
 .pk-now{margin:10px 0 0;font-size:.92rem;color:var(--ink2);min-height:1.4em}.pk-now a{font-weight:700;color:var(--gd)}
 .job.hl{box-shadow:0 0 0 3px var(--g2),0 26px 44px -26px rgba(0,0,0,.5)}
+a.sw{display:inline-block}
+.work{scroll-margin-top:90px}.work:target{padding:20px;margin:-20px;border-radius:22px;background:#fff;box-shadow:0 0 0 3px var(--g2)}

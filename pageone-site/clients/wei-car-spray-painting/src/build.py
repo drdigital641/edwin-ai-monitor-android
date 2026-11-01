@@ -36,7 +36,7 @@ LIVE = False
 PREVIEW = 'https://pageonesingapore.com/preview/%s/' % SLUG
 SITE = ('https://%s/' % DOMAIN) if LIVE else PREVIEW
 UPDATED = '2026-11-01'
-V = '4'
+V = '5'
 INDEXNOW_KEY = '7c41e9a0d2b85f36a1e4c07b9d5f2e18'
 
 NAME = 'Wei Car Spray Painting'
@@ -463,8 +463,8 @@ def demo_car():
 
 
 def colour_picker():
-    sw = ''.join('<button type="button" class="sw" style="--c:%s" data-job="%s" aria-label="%s: %s" title="%s, %s"></button>' % (c, k, E(n), E(j), E(n), E(j)) for n, c, j, k in PAINTS)
-    return '<div class="wrap picker"><p class="pk-label">Tap a colour to see the real job</p><div class="sws" role="group" aria-label="Colours from our jobs">%s</div><p class="pk-now" aria-live="polite"></p></div>' % sw
+    sw = ''.join('<a class="sw" style="--c:%s" href="our-work/#%s" aria-label="%s: see the %s job" title="%s, %s"></a>' % (c, k, E(n), E(j), E(n), E(j)) for n, c, j, k in PAINTS)
+    return '<div class="wrap picker"><p class="pk-label">Tap a colour to see the real job</p><div class="sws" role="group" aria-label="Colours from our jobs">%s</div></div>' % sw
 
 
 def job_card(j, eager=False):
