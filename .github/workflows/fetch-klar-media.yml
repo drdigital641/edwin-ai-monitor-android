@@ -28,6 +28,15 @@ jobs:
           echo "http headers:"; curl -sI -m 15 http://klardetails.com.sg/ | head -12 || true
           echo "https headers (unverified, headers only):"; curl -sI -m 15 --insecure https://klardetails.com.sg/ | head -12 || true
 
+      - name: Resolver check
+        run: |
+          sudo apt-get install -y -qq dnsutils >/dev/null 2>&1 || true
+          for r in 8.8.8.8 1.1.1.1 9.9.9.9; do echo "A via $r: $(dig +short @$r klardetails.com.sg A | tr '\n' ' ') www: $(dig +short @$r www.klardetails.com.sg | tr '\n' ' ')"; done
+          echo "NS: $(dig +short @8.8.8.8 klardetails.com.sg NS | tr '\n' ' ')"
+          for ip in $(dig +short @8.8.8.8 klardetails.com.sg A) $(dig +short @1.1.1.1 www.klardetails.com.sg A | grep -E '^[0-9.]+$'); do
+            echo "== $ip"; curl -s -m 15 --resolve klardetails.com.sg:80:$ip http://klardetails.com.sg/ | grep -o '<title>[^<]*' | head -1 || true
+          done
+
       - name: Download
         run: |
           set -e
