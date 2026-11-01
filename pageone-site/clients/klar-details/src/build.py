@@ -25,12 +25,12 @@ LIVE = False
 PREVIEW = 'https://pageonesingapore.com/preview/%s/' % SLUG
 SITE = ('https://%s/' % DOMAIN) if LIVE else PREVIEW
 UPDATED = '2026-11-01'
-V = '11'
+V = '12'
 INDEXNOW_KEY = '3f8b2c6d9e14a7b05c2d8e6f1a4b9c73'
 
 # Homepage promo popup. Klar switches it off by setting PROMO['on'] = False and rebuilding;
 # it also hides itself after PROMO['ends'] with no rebuild. Visitors can close it; the close
-# is remembered on that device for PROMO['days'] days.
+# lasts for that browser session; it shows again on a new visit.
 PROMO = {
     'on': True,
     'id': 'graphene-2026',

@@ -11,16 +11,16 @@ ready(function(){
     [].forEach.call(els,function(e){var r=e.getBoundingClientRect();if(r.top<innerHeight*1.2&&r.bottom>0){e.classList.add('in')}else io.observe(e)});
     /* safety net: nothing stays hidden for a reader that never scrolls */
     setTimeout(function(){[].forEach.call(els,function(e){e.classList.add('in')})},2500)}
-  /* homepage promo: hides after its end date, remembers a close for N days */
+  /* homepage promo: hides after its end date, a close lasts for the browser session only; it comes back in a new visit */
   var pr=d.getElementById('promo');
   if(pr){var key='kd_promo_'+pr.getAttribute('data-id'),ends=new Date(pr.getAttribute('data-ends')+'T23:59:59+08:00'),days=+pr.getAttribute('data-days')||7,seen=0;
-    try{seen=+localStorage.getItem(key)||0}catch(e){}
-    function close(){pr.hidden=true;d.body.style.overflow='';try{localStorage.setItem(key,String(Date.now()))}catch(e){}var v=pr.querySelector('video');if(v)v.pause()}
+    try{seen=+sessionStorage.getItem(key)||0}catch(e){}
+    function close(){pr.hidden=true;d.body.style.overflow='';try{sessionStorage.setItem(key,String(Date.now()))}catch(e){}var v=pr.querySelector('video');if(v)v.pause()}
     if(Date.now()<=ends.getTime()&&Date.now()-seen>days*864e5){
       setTimeout(function(){pr.hidden=false;d.body.style.overflow='hidden';var v=pr.querySelector('video');if(v&&v.play){var k=v.play();if(k&&k.catch)k.catch(function(){})}var x=pr.querySelector('.promo-x');if(x)x.focus()},1400);
       pr.addEventListener('click',function(e){if(e.target.closest('[data-promo-close]'))close()});
       d.addEventListener('keydown',function(e){if(e.key==='Escape'&&!pr.hidden)close()});
-      [].forEach.call(pr.querySelectorAll('a.btn-wa'),function(a){a.addEventListener('click',function(){try{localStorage.setItem(key,String(Date.now()))}catch(e){}})});
+      [].forEach.call(pr.querySelectorAll('a.btn-wa'),function(a){a.addEventListener('click',function(){try{sessionStorage.setItem(key,String(Date.now()))}catch(e){}})});
     }
   }
   /* rails glide slowly; pause on touch, hover or sideways swipe */
