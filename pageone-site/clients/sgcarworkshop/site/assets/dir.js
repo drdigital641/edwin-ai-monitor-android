@@ -40,3 +40,27 @@ if(navigator.sendBeacon){try{sent=navigator.sendBeacon(url,new Blob([body],{type
 if(!sent&&window.fetch){fetch(url,{method:'POST',credentials:'omit',keepalive:true,headers:{'Content-Type':'application/json'},body:body}).catch(function(){})}
 }catch(x){}}
 })();
+
+/* Basic cards: 1 Google listing photo via Places API (New), shown with the photographer credit Google requires.
+   Runs only when a gmaps-key meta is present (added at go-live). Loads when the card scrolls into view. Nothing is cached. */
+(function () {
+  var m = document.querySelector('meta[name="gmaps-key"]'); if (!m || !('IntersectionObserver' in window)) return;
+  var key = m.content;
+  var io = new IntersectionObserver(function (es) {
+    es.forEach(function (en) {
+      if (!en.isIntersecting) return; io.unobserve(en.target);
+      var el = en.target, pid = el.getAttribute('data-place'); if (!pid) return;
+      fetch('https://places.googleapis.com/v1/places/' + encodeURIComponent(pid) + '?fields=photos&key=' + key)
+        .then(function (r) { return r.ok ? r.json() : null; })
+        .then(function (d) {
+          var ph = d && d.photos && d.photos[0]; if (!ph) return;
+          var img = new Image(); img.alt = ''; img.loading = 'lazy'; img.className = 'gph-img';
+          img.src = 'https://places.googleapis.com/v1/' + ph.name + '/media?maxWidthPx=480&key=' + key;
+          var a = (ph.authorAttributions || [])[0], cr = document.createElement('span'); cr.className = 'gph-credit';
+          cr.textContent = 'Photo: ' + (a ? a.displayName : 'Google') + ' via Google';
+          img.onload = function () { el.appendChild(img); el.appendChild(cr); el.classList.add('has-img'); };
+        }).catch(function () {});
+    });
+  }, { rootMargin: '200px' });
+  document.querySelectorAll('.gph[data-place]').forEach(function (el) { io.observe(el); });
+})();

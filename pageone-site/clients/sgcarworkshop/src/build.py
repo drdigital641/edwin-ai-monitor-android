@@ -24,6 +24,7 @@ from PIL import Image  # noqa: E402
 SITE_NAME = 'SG Car Workshop'   # placeholder brand
 DOMAIN = 'sgcarworkshop.sg'     # not bought yet
 LIVE = False
+GOOGLE_MAPS_KEY = None  # Edwin adds a browser key (referrer-restricted, Places API (New) only) at go-live; None = placeholder photo slots on Basic cards
 PREVIEW_BASE = 'https://pageonesingapore.com/preview/sgcarworkshop/'
 BASE = ('https://%s/' % DOMAIN) if LIVE else PREVIEW_BASE
 PATH_BASE = '/' if LIVE else '/preview/sgcarworkshop/'
@@ -177,6 +178,7 @@ def page(path, title, desc, body, schema=None, og=None, bar=None, h1=None):
     ow, oh = (1200, 630) if og_rel in ('og-default.jpg', 'wei/og.jpg') else (None, None) if remote else imgsize(og_rel)
     ld = ''.join('<script type="application/ld+json">%s</script>\n' % json.dumps(s, ensure_ascii=False).replace('</', '<\\/') for s in (schema or []))
     p = pre(depth)
+    gk = '<meta name="gmaps-key" content="%s">\n' % E(GOOGLE_MAPS_KEY) if GOOGLE_MAPS_KEY else ''
     out = f'''<!doctype html>
 <html lang="en-SG">
 <head>
@@ -204,7 +206,7 @@ def page(path, title, desc, body, schema=None, og=None, bar=None, h1=None):
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap">
 <link rel="stylesheet" href="{p}assets/dir.css?v={V}">
 <script>document.documentElement.className+=' js'</script>
-{ld}</head>
+{gk}{ld}</head>
 <body{' class="has-bar"' if bar else ''}>
 {header(depth)}
 <main id="main">
@@ -371,10 +373,10 @@ def card(e, depth, page_path=''):
     if e['tier'] == 'free':
         acts = wa_btn(e, page_path, 'sm') if e.get('whatsapp') else call_btn(e, page_path, 'sm wa', 'Call ' + e['phone_show'])
         acts += '<a class="btn sm ghost" href="https://www.google.com/maps?cid=%s" target="_blank" rel="noopener" data-cta="directions_%s">Directions</a>' % (e['cid'], e['slug'])
-        return ('<article class="card basic" %s><div class="ph"><div class="tile ini" aria-hidden="true"><b>%s</b></div>%s</div><div class="bd"><span class="tag">%s</span>'
+        return ('<article class="card basic" %s><div class="ph gph" data-place="%s"><div class="tile ini" aria-hidden="true"><b>%s</b><span class="gph-note">Google photo</span></div>%s</div><div class="bd"><span class="tag">%s</span>'
                 '<h3>%s</h3>%s<p class="tx full">%s</p><div class="acts">%s</div>'
                 '<a class="claim" href="%s" target="_blank" rel="noopener" data-cta="claim_%s">Is this your workshop? Claim or remove</a></div></article>') % (
-            attrs, E(e['name'][0]), tier_badge(e, 'on-ph'), E(c['short']), E(e['name']), rg, E(e['desc']), acts, E(claim_href(e, page_path)), e['slug'])
+            attrs, E(e.get('place_id', '')), E(e['name'][0]), tier_badge(e, 'on-ph'), E(c['short']), E(e['name']), rg, E(e['desc']), acts, E(claim_href(e, page_path)), e['slug'])
     ci = e.get('card_img')
     ph = photo_img(dict(ci, alt=ci['alt']), depth, lazy=True) if ci else tile(e)
     acts = wa_btn(e, page_path, 'sm') + (call_icon(e, page_path) if e.get('phone') else '')

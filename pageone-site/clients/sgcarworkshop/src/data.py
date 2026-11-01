@@ -487,15 +487,15 @@ ENTRIES = [
 # ---- Basic (tier "free") listings: card only, no own page. Source: basic-run/2026-11-01.json (public Google business listings, checked 1 Nov 2026).
 # Fields shown on the card: name, desc, category, area + region, WhatsApp (only if a mobile number) or Call, Directions (Google Maps cid).
 BASIC = [
-    dict(slug="everest-garage", name="Everest Garage", area_label="Kaki Bukit", regions=["east"], category="general-servicing-repair",
+    dict(slug="everest-garage", place_id="ChIJ6zFftrUX2jERlx4oI_q1cYw", name="Everest Garage", area_label="Kaki Bukit", regions=["east"], category="general-servicing-repair",
          phone="+6580400072", phone_show="8040 0072", whatsapp="6580400072", cid="10120069923614498455",
          desc="Car repair and maintenance workshop in Kaki Bukit, on level 5 of 25 Kaki Bukit Road 4.",
          source="Google business listing cid 10120069923614498455, checked 1 Nov 2026"),
-    dict(slug="hup-soon-lee-motor-service", name="Hup Soon Lee Motor Service", area_label="Yishun", regions=["north"], category="general-servicing-repair",
+    dict(slug="hup-soon-lee-motor-service", place_id="ChIJKcgic4gU2jER-SiN1fV9wY4", name="Hup Soon Lee Motor Service", area_label="Yishun", regions=["north"], category="general-servicing-repair",
          phone="+6562579387", phone_show="6257 9387", whatsapp=None, cid="10286641518694181113",
          desc="Long-running car repair workshop in Yishun Industrial Park A that works on private and commercial vehicles, including Euro 4, 5 and 6 models.",
          source="Google business listing cid 10286641518694181113, checked 1 Nov 2026"),
-    dict(slug="cys-automobile-services", name="CYS Automobile Services", area_label="Woodlands", regions=["north"], category="general-servicing-repair",
+    dict(slug="cys-automobile-services", place_id="ChIJSYwXNWsT2jERZWyiONA8GI4", name="CYS Automobile Services", area_label="Woodlands", regions=["north"], category="general-servicing-repair",
          phone="+6562192098", phone_show="6219 2098", whatsapp=None, cid="10239000617827855461",
          desc="Woodlands workshop for servicing and repairs that also handles accident reporting and motor insurance claims.",
          source="Google business listing cid 10239000617827855461, checked 1 Nov 2026"),
