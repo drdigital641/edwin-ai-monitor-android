@@ -477,3 +477,7 @@ mark{background:rgba(20,99,255,.1);box-shadow:none;color:inherit}
 .fc-x .btn{white-space:nowrap;padding:11px 10px}
 .hero{padding-bottom:20px}.hero+.feat{padding-top:20px}@media(min-width:900px){.hero{padding-bottom:64px;min-height:0}.hero+.feat{padding-top:40px}}
 .ftrack.auto{scroll-snap-type:none}
+.sres.on{background:#fff;border:1px solid var(--line2);box-shadow:0 12px 32px -18px rgba(11,27,58,.25);backdrop-filter:none}
+.weak,.pvn,.pill.st-order{color:#7A4B00;background:#FFF7E6;border-color:#F3D9A4}
+.pv{background:#FFF7E6;color:#7A4B00;border-bottom-color:#F3D9A4}
+.illus-t{color:#fff}

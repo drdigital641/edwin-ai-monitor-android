@@ -518,7 +518,15 @@
         } else { pos = tr.scrollLeft; var h2 = half(); if (h2 > 0 && pos >= h2) { pos -= h2; tr.scrollLeft = pos; } }
         upd(); requestAnimationFrame(frame);
       }
-      ['pointerdown', 'touchstart', 'touchmove', 'wheel', 'keydown', 'focusin', 'touchend', 'pointerup'].forEach(function (t) { tr.addEventListener(t, pause, { passive: true }); });
+      /* pause only for a hold or a sideways drag; an up/down page scroll that starts on the cards keeps it moving */
+      var tx = 0, ty = 0, touching = false, held = false, ht = 0;
+      tr.addEventListener('touchstart', function (ev) { var p = ev.touches[0]; tx = p.clientX; ty = p.clientY; touching = true; held = false; clearTimeout(ht); ht = setTimeout(function () { if (touching) { held = true; hover = true; } }, 350); }, { passive: true });
+      tr.addEventListener('touchmove', function (ev) { var p = ev.touches[0], dx = Math.abs(p.clientX - tx), dy = Math.abs(p.clientY - ty); if (dx > 8 && dx > dy) { held = true; hover = true; } else if (dy > 8) clearTimeout(ht); }, { passive: true });
+      function lift() { touching = false; clearTimeout(ht); if (held) { hover = false; pause(); } held = false; }
+      tr.addEventListener('touchend', lift, { passive: true }); tr.addEventListener('touchcancel', lift, { passive: true });
+      tr.addEventListener('pointerdown', function (ev) { if (ev.pointerType === 'mouse') pause(); });
+      tr.addEventListener('wheel', function (ev) { if (Math.abs(ev.deltaX) > Math.abs(ev.deltaY)) pause(); }, { passive: true });
+      tr.addEventListener('keydown', pause);
       tr.addEventListener('pointerenter', function (ev) { if (ev.pointerType === 'mouse') hover = true; });
       tr.addEventListener('pointerleave', function () { hover = false; });
       [prev, next].forEach(function (b) { if (b) b.addEventListener('click', function () { pause(); }); });
