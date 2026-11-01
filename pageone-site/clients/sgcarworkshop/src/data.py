@@ -598,4 +598,4 @@ _AUTO = _auto_basic()
 BASIC.extend(_AUTO)
 ENTRIES.extend(BASIC)
 _RANK = {"premium_leadgen": 0, "premium": 1, "free": 2}
-ENTRIES.sort(key=lambda e: _RANK[e["tier"]])  # Premium, Verified, Basic (stable within a tier)
+ENTRIES.sort(key=lambda e: (_RANK[e["tier"]], e["name"].lower() if e["tier"] == "free" else ""))  # Premium, Verified, then Basic A to Z (paid keep their set order)

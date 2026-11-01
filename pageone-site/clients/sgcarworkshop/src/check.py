@@ -58,7 +58,7 @@ def audit(a):
         'services_detail': len(re.findall(r'<li class="svc ', a)),
         'faqs': len(re.findall(r'<details class="faq">', a)),
         'gallery': jobs + illus,
-        'contact': 'data-live="contact"' in a or bool(re.search(r'href="tel:\+\d+"[^>]*data-cta="call_dir_', a)) or bool(re.search(r'href="https://wa\.me/\d+\?text=[^"]*"[^>]*data-cta="whatsapp_dir_', a)),
+        'contact': 'google.com/maps/place/?q=place_id:' in a or bool(re.search(r'href="tel:\+\d+"[^>]*data-cta="call_dir_', a)) or bool(re.search(r'href="https://wa\.me/\d+\?text=[^"]*"[^>]*data-cta="whatsapp_dir_', a)),
         'address': 'data-addr' in a,
         'map': 'data-map' in a,
         'hours': 'class="hours"' in a or 'data-live="hours"' in a,
@@ -82,7 +82,7 @@ for e, r in rows:
     v = lambda x: (str(x) if isinstance(x, int) and not isinstance(x, bool) else ('yes' if x else 'NO'))
     notes = []
     if e['tier'] == 'free':
-        for c in CONV[:4]:
+        for c in CONV[:3]:
             if not r[c]: notes.append('Basic missing ' + c)
         for c in FEAT:
             if wei and not r[c] < wei[c]: notes.append('Basic %s %s not < Verified %s' % (c, r[c], wei[c]))
@@ -105,13 +105,13 @@ home_src = open(os.path.join(root, 'index.html'), encoding='utf-8').read()
 for e in ENTRIES:
     if e['tier'] == 'free':
         m = re.search(r'<article class="card basic[^"]*"[^>]*>((?:(?!</article>).)*href="[^"]*workshops/%s/" data-cta="view_%s"(?:(?!</article>).)*)</article>' % (e['slug'], e['slug']), home_src, re.S)
-        if m and ('data-place' in m.group(1) or 'data-live' in m.group(1) or 'places.googleapis' in m.group(1)): print('BASIC card makes Places calls', e['slug']); bad += 1
+        if m and ('data-place' in m.group(1) or 'data-pid' in m.group(1) or 'data-live' in m.group(1) or 'data-rating' in m.group(1)): print('BASIC card has Places hooks', e['slug']); bad += 1
         if not m or 'Manage this listing' not in home_src: print('BASIC card incomplete (needs View details link)', e['slug']); bad += 1
         pg = open(os.path.join(root, 'workshops', e['slug'], 'index.html'), encoding='utf-8').read()
         ld = [json.loads(j) for j in re.findall(r'<script type="application/ld\+json">(.*?)</script>', pg, re.S)]
         biz = [x for x in ld if x.get('@type') != 'BreadcrumbList']
         if len(biz) != 1 or set(biz[0]) - {'@context', '@type', 'name', 'url', 'address', 'geo'}: print('BASIC schema not minimal', e['slug']); bad += 1
-        for needle in ('data-cta="claim_%s"' % e['slug'], 'Is this your workshop?', 'data-live="contact"', 'data-live="hours"', 'data-live="rating"'):
+        for needle in ('data-cta="claim_%s"' % e['slug'], 'Is this your workshop?', 'google.com/maps/place/?q=place_id:%s' % e['place_id'], 'See photos, reviews &amp; hours on Google Maps'):
             if needle not in pg: print('BASIC page missing', needle, e['slug']); bad += 1
         txt = re.sub(r'\s+', ' ', re.sub(r'<[^>]+>', ' ', re.sub(r'<(script|style).*?</\1>', '', pg, flags=re.S)))
         for w in re.findall(r'\b(partner\w*|verified|recommended by|trusted|confirmed|endorse\w*|official\w*|approved|authori[sz]ed|certified)\b', txt, re.I):
@@ -178,5 +178,12 @@ about = open(os.path.join(root, 'about/index.html'), encoding='utf-8').read()
 if 'compiled from public Google data' not in about or 'removed on request' not in about: print('About page missing unclaimed-listing note'); bad += 1
 if 'id="remove"' not in open(os.path.join(root, 'list-your-workshop/index.html'), encoding='utf-8').read(): print('list page missing #remove section'); bad += 1
 if 'Sponsored' not in open(os.path.join(root, 'index.html'), encoding='utf-8').read(): print('home carousel not labelled Sponsored'); bad += 1
+# Zero Google API spend: no page, script or sheet may reference the Places API or carry a Google API key
+for dp, dn, fns in os.walk(root):
+    for fn in fns:
+        if fn.endswith(('.html', '.js', '.css', '.txt', '.xml')):
+            t = open(os.path.join(dp, fn), encoding='utf-8').read()
+            if 'places.googleapis' in t or re.search(r'AIza[0-9A-Za-z_-]{20,}', t) or 'gmaps-key' in t:
+                print('GOOGLE API REFERENCE in', os.path.relpath(os.path.join(dp, fn), root)); bad += 1
 print('pages checked:', len(files), 'problems:', bad)
 sys.exit(1 if bad else 0)
