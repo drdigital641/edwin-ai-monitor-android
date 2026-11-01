@@ -11,6 +11,13 @@ Facts used (1 Nov 2026) and where they came from:
 - sgCarmart listing (photo shared on their Facebook, 8 Sep 2022): Blk 1017 Yishun Industrial Park A #01-242 S768759;
   opening hours 9am-7pm Mon-Fri, 9am-5pm Sat; phone 67593229 and 96383306; categories Repair & Servicing, Spray Painting.
   The shopfront photo shows the signboard with the Spies Hecker logo and an ICI Autocolor spray booth.
+- Facebook posts (screenshots from Edwin, 1 Nov 2026): Porsche Macan full body colour change to Fountain Blue Metallic (29 May 2025);
+  MG exterior respray British racing green (HGY), "4 day downtime" (10 Nov 2023); Honda Civic full in/out respray Aiika CS46, rooftop gloss
+  black, new spoiler (24 Nov 2023); Mini Cooper new colour, orange before / pink after (7 May 2022); Honda Spada respray new colour Aiika paint
+  (11 Feb 2026); Porsche Cayenne new-model bodykit installation imported from overseas (4 Feb 2026); Kia Cerato Forte "4th time customer"
+  (31 Mar 2023); team photo (26 Sep 2024); claims post (21 Sep 2024): "We provide insurance claim third party, personal injury claim,
+  replacement car, towing service, loss of income/use PHV, repair all damaged car accident/panel beating, 96383306 Wei"; poster (8 Apr 2026):
+  "Full respray $888 this month only", "9638 3306 (WhatsApp Now)" (expired offer, not shown).
 Not claimed anywhere: prices, durations, warranties, insurance or claims work, "best"/"cheapest", review text, rating schema.
 """
 import html
@@ -29,7 +36,7 @@ LIVE = False
 PREVIEW = 'https://pageonesingapore.com/preview/%s/' % SLUG
 SITE = ('https://%s/' % DOMAIN) if LIVE else PREVIEW
 UPDATED = '2026-11-01'
-V = '1'
+V = '2'
 INDEXNOW_KEY = '7c41e9a0d2b85f36a1e4c07b9d5f2e18'
 
 NAME = 'Wei Car Spray Painting'
@@ -38,7 +45,7 @@ UEN = '201215981N'
 FOUNDED = '2012-06-28'
 TEL1, TEL1_SHOW = '+6567593229', '6759 3229'
 TEL2, TEL2_SHOW = '+6596383306', '9638 3306'
-WA_NUM, WA_SHOW = '6596383306', '9638 3306'  # CONFIRM: mobile assumed to be on WhatsApp
+WA_NUM, WA_SHOW = '6596383306', '9638 3306'  # their own poster (8 Apr 2026): "9638 3306 (WhatsApp Now)"; insurance post: "96383306 Wei"
 WA_MSG = 'Hi Wei Car Spray Painting, I found your website. I would like a quote for '
 EMAIL = 'weileng619@yahoo.com'
 STREET, UNITS, POSTAL = 'Blk 1017 Yishun Industrial Park A', '#01-242/246/252', '768759'
@@ -55,13 +62,13 @@ HOURS_OK = False  # True once Wei confirms; adds hours to schema and drops the "
 
 CONFIRM = [
     'Current opening hours (sgCarmart 2022 listing says Mon-Fri 9am-7pm, Sat 9am-5pm; Sunday?)',
-    'Is 9638 3306 on WhatsApp? Which number should the WhatsApp buttons use?',
     'Services list: panel spray, full respray, scratch, dent, bumper repair, servicing and repairs: all done in-house?',
-    'Paint system: Spies Hecker logo on the signboard. Still the paint used today?',
-    'Insurance and accident claim work: do they handle it? (not mentioned on the site yet)',
+    'Insurance claims post is from 21 Sep 2024: still offering third-party claims, personal injury claims, replacement car, towing, loss of use for PHV?',
+    'Full respray $888 was an April 2026 "this month only" offer: any current from-price we can show?',
     'Prices "from" for panel spray and full respray (none shown until confirmed)',
     'Founder / boss name and how long they have been spraying (company registered 28 Jun 2012)',
-    'Real job photos (before/after) from their Facebook or Instagram, plus permission to quote 3-4 Facebook reviews',
+    'Job photos are cropped from Facebook screenshots (1 Nov 2026): send originals for sharper images; permission to quote 3-4 Facebook reviews',
+    'Paint brands: posts mention Aiika paint (2023, 2026); signboard shows Spies Hecker (2022). Which do they use now?',
     'Domain name for go-live',
 ]
 
@@ -89,6 +96,8 @@ ICONS = {
     'scratch': '<path d="M3 17 9 7"/><path d="M8 19l7-12"/><path d="M14 19l6-10"/>',
     'dent': '<path d="M3 7c4 0 5 2 9 2s5-2 9-2"/><path d="M3 15c4 0 4-4 9-4s5 4 9 4"/><path d="M3 20h18"/>',
     'bumper': '<path d="M3 10c2-2 16-2 18 0v5c-2 2-16 2-18 0z"/><path d="M7 12.5h10"/><path d="M5 6l2 2M19 6l-2 2"/>',
+    'claim': '<path d="M7 3h7l5 5v13H7z"/><path d="M14 3v5h5"/><path d="M10 13h6M10 17h4"/>',
+    'kit': '<path d="M3 16c1-3 3-5 7-5h6c2 0 4 1 5 3v2z"/><path d="M14 8l6-2"/><path d="M3 19h18"/>',
     'wrench': '<path d="M14.7 6.3a4 4 0 0 0 5 5L21 13l-8 8-3-3 8-8z" transform="rotate(0)"/><path d="M3 21l6-6"/><path d="M14.7 6.3 17 4l3 3-2.3 2.3"/>',
 }
 
@@ -139,6 +148,7 @@ def hours_line():
 # ------------------------------------------------------------------------------------------------
 SERVICES = [
     dict(slug='car-spray-painting', short='Panel spray painting', icon='spray', kw='car spray painting',
+         photo='porsche-macan-fountain-blue', cap='Porsche Macan after its respray in Fountain Blue Metallic, May 2025.',
          title='Car Spray Painting in Yishun | Wei Car Spray Painting',
          desc='Panel spray painting in Yishun: colour-matched paint for scratched, faded or repaired panels, done in a spray booth. WhatsApp photos for a quote.',
          h1='Car spray painting in Yishun',
@@ -157,11 +167,12 @@ SERVICES = [
               ('Do I need to respray the whole car?', 'Usually not. If only a few panels are damaged, a panel respray is enough. A full respray makes sense when the paint is faded or peeling all over, or you want a new colour.'),
               ('How do I get a price?', 'WhatsApp clear photos of the damage in daylight, plus your car model. We reply with what the job needs. The final price is confirmed after we see the car.'),
               ('Can I wash my car after a respray?', 'Yes, gentle washing is fine. Ask us before waxing, polishing or coating the new paint, as fresh paint needs time to harden fully.')]),
-    dict(slug='full-car-respray', short='Full car respray', icon='full', kw='full car respray',
-         title='Full Car Respray in Singapore | Wei Car Spray Painting',
-         desc='Full car respray in Yishun, Singapore: the whole car repainted in its original colour or a new one. Ask Wei Car Spray Painting what your car needs.',
-         h1='Full car respray',
-         card='Whole-car repaint for faded, peeling or tired paint, in the original colour or a new one.',
+    dict(slug='full-car-respray', short='Full respray & colour change', icon='full', kw='full car respray',
+         photo='mg-british-racing-green', cap='MG exterior respray in British Racing Green (HGY), November 2023. Their post: "4 day downtime".',
+         title='Full Car Respray & Colour Change | Wei Car Spray Painting',
+         desc='Full car respray and colour change in Yishun, Singapore: the whole car repainted in its original colour or a new one, like our Macan and MG jobs.',
+         h1='Full car respray and colour change',
+         card='Whole-car repaint in the same colour or a new one: Porsche Macan, MG, Honda Civic and more.',
          lede='A full respray repaints the whole body so the colour and shine are even from front to back. It suits older cars with faded or peeling paint, or owners who want a new colour.',
          answer=('A full car respray repaints every exterior panel of the car. Old paint is sanded, dents and rust spots are fixed, the body is primed and then sprayed '
                  'in colour and clear coat. It costs more than panel work, so we only recommend it when most panels need paint anyway.'),
@@ -173,10 +184,11 @@ SERVICES = [
                   ('Spray', 'Colour and clear coat are sprayed in the booth, panel by panel.'),
                   ('Refit and polish', 'Trims go back on, the paint is polished and checked in daylight before you collect.')],
          faq=[('Is a full respray better than panel spray?', 'Not always. If the damage is on a few panels, panel spray costs less and matches well. A full respray is worth it when the paint is tired all over.'),
-              ('Can I change my car colour?', 'A colour change is a vehicle modification in Singapore. Check the current LTA rules on OneMotoring before you decide, and tell us so we can plan the job with you.'),
+              ('Can I change my car colour?', 'Yes. We have changed cars to new colours, such as a Porsche Macan to Fountain Blue Metallic and a Mini Cooper from orange to pink. A colour change is a vehicle modification, so check the current LTA rules on OneMotoring and tell us when you book.'),
               ('Will you remove my lights and trims?', 'Where needed for a clean finish, yes. We agree what is removed and refitted when we inspect the car.'),
               ('How do I get a price?', 'WhatsApp photos of all four sides of the car in daylight plus the model and year. The final price is confirmed after inspection.')]),
     dict(slug='scratch-repair', short='Scratch repair', icon='scratch', kw='car scratch repair',
+         photo='honda-spada-white-side', cap='Honda Spada after a respray with Aiika paint, February 2026.',
          title='Car Scratch Repair in Yishun | Wei Car Spray Painting',
          desc='Car scratch repair in Yishun: light scratches polished out, deep scratches filled and spray painted to match. Send photos on WhatsApp.',
          h1='Car scratch repair',
@@ -195,6 +207,7 @@ SERVICES = [
               ('Should I fix a scratch quickly?', 'Yes if it shows bare metal. Exposed metal can start to rust in our wet weather, and rust spreads under the paint.'),
               ('How do I get a price?', 'WhatsApp a close photo and a wider photo of the scratch in daylight. We reply with what it needs.')]),
     dict(slug='dent-repair', short='Dent repair', icon='dent', kw='car dent repair',
+         photo='porsche-macan-primer', cap='Bodywork prepared and primed in the workshop before paint (Porsche Macan, May 2025).',
          title='Car Dent Repair in Yishun | Wei Car Spray Painting',
          desc='Car dent repair in Yishun: dents in doors, fenders and panels knocked out, filled and repainted to match. WhatsApp photos to Wei Car Spray Painting.',
          h1='Car dent repair',
@@ -213,6 +226,7 @@ SERVICES = [
               ('Will the repaired panel look different?', 'Paint is mixed to your colour code and blended where needed so the repair matches the panels around it.'),
               ('How do I get a price?', 'WhatsApp photos of the dent from straight on and from an angle, in daylight. The final price is confirmed after inspection.')]),
     dict(slug='bumper-repair', short='Bumper repair', icon='bumper', kw='car bumper repair',
+         photo='kia-cerato-four-colours', cap='One customer\'s Kia Cerato Forte front end over four visits, March 2023.',
          title='Car Bumper Repair & Respray | Wei Car Spray Painting',
          desc='Car bumper repair in Yishun: scuffed, scratched, cracked or dented bumpers repaired and spray painted to match. WhatsApp photos for a quote.',
          h1='Car bumper repair and respray',
@@ -231,6 +245,7 @@ SERVICES = [
               ('Why does bumper paint sometimes look different?', 'Plastic bumpers can take colour slightly differently from metal panels. Paint is mixed to your code and checked against the panel next to it.'),
               ('How do I get a price?', 'WhatsApp photos of the bumper damage in daylight plus your car model. The final price is confirmed after inspection.')]),
     dict(slug='car-servicing-repair', short='Servicing & repairs', icon='wrench', kw='car servicing yishun',
+         photo='team', cap='The Wei Car Spray Painting team at the workshop, September 2024.',
          title='Car Servicing & Repairs in Yishun | Wei Car Spray Painting',
          desc='Car servicing and repairs at Wei Car Spray Painting, Blk 1017 Yishun Industrial Park A. Call or WhatsApp to book a slot.',
          h1='Car servicing and repairs',
@@ -246,6 +261,43 @@ SERVICES = [
          faq=[('Can I do servicing and a paint job at the same time?', 'Ask us when you book. Doing both in one visit can save you a second trip.'),
               ('Do you service all makes?', 'Call or WhatsApp with your car model and we will confirm.'),
               ('How do I book?', 'Call %s or WhatsApp %s with your car model and the job.' % (TEL1_SHOW, WA_SHOW))]),
+    dict(slug='accident-repair-insurance-claims', short='Accident repair & claims', icon='claim', kw='accident repair insurance claim',
+         photo='porsche-macan-stripped', cap='Panels removed and bodywork under repair in the workshop (May 2025).',
+         title='Accident Repair & Insurance Claims Yishun | Wei Car',
+         desc='Accident repair and panel beating in Yishun, with help on third-party insurance claims, personal injury claims, towing and a replacement car.',
+         h1='Accident repair and insurance claims',
+         card='Panel beating after an accident, plus help with third-party claims, towing and a replacement car.',
+         lede='After an accident you need the car fixed and the claim sorted. We repair accident damage and help you with the claim paperwork.',
+         answer=('Wei Car Spray Painting repairs accident damage and panel beating, and has offered help with third-party insurance claims, personal injury claims, '
+                 'a replacement car, towing, and loss of income or loss of use claims for private-hire drivers (their post, September 2024). Call or WhatsApp Wei on 9638 3306 after an accident.'),
+         when=['Your car was hit and the other driver is at fault (third-party claim)', 'You need towing to the workshop', 'You need a replacement car while yours is repaired',
+               'You drive for a private-hire platform and lose income while the car is off the road', 'Panel beating and respray after any accident'],
+         process=[('Call or WhatsApp', 'Tell Wei what happened and send photos of the damage and the scene.'),
+                  ('Towing if needed', 'Ask about towing if the car cannot be driven.'),
+                  ('Report and claim', 'We help you with the report and the claim paperwork.'),
+                  ('Repair', 'Panel beating, parts and respray in the workshop.'),
+                  ('Collect', 'We let you know when the car is ready.')],
+         faq=[('Do you help with third-party insurance claims?', 'Yes. Wei Car Spray Painting has offered help with third-party claims, personal injury claims, replacement cars, towing and loss of use for private-hire drivers. Call 9638 3306 to check your case.'),
+              ('What should I do right after an accident?', 'Make sure everyone is safe, take photos of the cars, plates and scene, exchange details with the other driver, then call us. Report the accident to your insurer as your policy requires.'),
+              ('Can I get a replacement car?', 'Ask Wei when you call. A replacement car is one of the services listed for claims.'),
+              ('I drive private hire. Can I claim lost income?', 'Loss of income or loss of use claims for private-hire drivers are listed in our claims services. Call to check what applies to your case.')]),
+    dict(slug='body-kit-installation', short='Body kit installation', icon='kit', kw='body kit installation singapore',
+         photo='porsche-cayenne-bodykit-side', cap='Porsche Cayenne with a new-model body kit, imported from overseas and installed by us, February 2026.',
+         title='Body Kit Installation in Singapore | Wei Car Spray Painting',
+         desc='Body kit installation and spray painting in Yishun: bumpers, skirts and spoilers fitted and painted to match, like our Porsche Cayenne and Honda Civic jobs.',
+         h1='Body kit installation',
+         card='Bumpers, skirts, lips and spoilers fitted and painted to match the car.',
+         lede='A body kit only looks right when it fits well and the paint matches. We fit and spray kits in the same workshop.',
+         answer=('Wei Car Spray Painting fits body kits and spoilers and paints them to match. Recent jobs include a new-model body kit imported from overseas for a Porsche Cayenne '
+                 '(February 2026) and a new spoiler with a full respray and gloss black roof on a Honda Civic (November 2023).'),
+         when=['Fitting a facelift or new-model look kit', 'Adding a spoiler, lip or side skirts', 'Painting a kit you bought to match your car', 'Combining a kit with a full respray or colour change'],
+         process=[('Plan', 'Tell us the car and the kit. We check fit and what paint the kit needs.'),
+                  ('Test fit', 'Parts are offered up to the car and adjusted for gaps.'),
+                  ('Prepare and paint', 'Parts are sanded, primed and sprayed to match.'),
+                  ('Install', 'The kit is fitted and checked for gaps and alignment.')],
+         faq=[('Can you install a kit I bought myself?', 'Ask us with the kit details and photos. Fit quality differs between kits, so we check it first.'),
+              ('Will the kit match my car colour?', 'Kit parts are sprayed in your car colour, or a contrast colour if you want, like the gloss black roof on our Civic job.'),
+              ('Is a body kit legal in Singapore?', 'Body kits are a vehicle modification. Check the current LTA rules on OneMotoring before you buy, and tell us when you book.')]),
 ]
 SBY = {s['slug']: s for s in SERVICES}
 
@@ -319,15 +371,15 @@ ABY = {a['slug']: a for a in ARTICLES}
 HOME_FAQ = [
     ('Where is Wei Car Spray Painting?', 'At Blk 1017 Yishun Industrial Park A, units #01-242, #01-246 and #01-252, Singapore 768759, in the Yishun industrial estate.'),
     ('How do I get a quote for spray painting?', 'WhatsApp clear photos of the damage in daylight plus your car model to %s. We reply with what the job needs; the final price is confirmed after we see the car.' % WA_SHOW),
-    ('Do I need to respray the whole car?', 'Usually not. Scratches, dents and scuffs on a few panels only need those panels painted and colour-matched. A full respray suits paint that is faded or peeling all over.'),
-    ('Do you also do car servicing and repairs?', 'Yes. Besides spray painting, the workshop is listed for car repair and servicing. Call %s to ask about your car.' % TEL1_SHOW),
+    ('Can you change my car to a new colour?', 'Yes. Recent colour changes include a Porsche Macan in Fountain Blue Metallic and a Mini Cooper from orange to pink. For only a few damaged panels, a panel respray in your current colour is enough.'),
+    ('Can you help with an accident insurance claim?', 'Yes. We repair accident damage and help with third-party claims, towing and a replacement car. Call or WhatsApp Wei on %s.' % WA_SHOW),
 ]
 
 
 def business_schema():
     b = {'@type': 'AutoBodyShop', '@id': SITE + '#business', 'name': NAME, 'legalName': LEGAL, 'url': SITE,
          'telephone': [TEL1, TEL2], 'email': EMAIL, 'foundingDate': FOUNDED, 'taxID': UEN,
-         'logo': SITE + 'assets/icon-512.png', 'image': [SITE + 'assets/shopfront.jpg', SITE + 'assets/og.jpg'],
+         'logo': SITE + 'assets/logo.png', 'image': [SITE + 'assets/og.jpg', SITE + 'assets/jobs-porsche-macan-fountain-blue.webp', SITE + 'assets/shopfront.jpg'], 'employee': {'@type': 'Person', 'name': 'Wei', 'telephone': TEL2},
          'address': {'@type': 'PostalAddress', 'streetAddress': '1017 Yishun Industrial Park A, #01-242', 'addressLocality': 'Singapore', 'postalCode': POSTAL, 'addressCountry': 'SG'},
          'hasMap': MAP, 'areaServed': {'@type': 'Country', 'name': 'Singapore'}, 'sameAs': [FB, IG],
          'makesOffer': [{'@type': 'Offer', 'itemOffered': {'@type': 'Service', 'name': s['short'], 'url': SITE + 'services/%s/' % s['slug']}} for s in SERVICES]}
@@ -335,6 +387,98 @@ def business_schema():
         b['openingHoursSpecification'] = [{'@type': 'OpeningHoursSpecification', 'dayOfWeek': ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday'], 'opens': '09:00', 'closes': '19:00'},
                                           {'@type': 'OpeningHoursSpecification', 'dayOfWeek': 'Saturday', 'opens': '09:00', 'closes': '17:00'}]
     return b
+
+
+DIMS = json.load(open(os.path.join(HERE, 'dims.json')))
+
+
+def jimg(k, alt, cls='', eager=False):
+    w, h = DIMS[k]
+    return '<img src="assets/jobs-%s.webp" alt="%s" width="%d" height="%d"%s%s>' % (
+        k, E(alt), w, h, ' fetchpriority="high"' if eager else ' loading="lazy" decoding="async"', ' class="%s"' % cls if cls else '')
+
+
+# Real jobs from their Facebook page (screenshots from Edwin, 1 Nov 2026). Dates are the post dates.
+JOBS = [
+    dict(k='porsche-macan-fountain-blue', car='Porsche Macan', work='Full body colour change to Fountain Blue Metallic', date='May 2025', tag='Colour change',
+         more=['porsche-macan-stripped', 'porsche-macan-primer', 'porsche-macan-fountain-blue-2']),
+    dict(k='mg-british-racing-green', car='MG', work='Exterior respray in British Racing Green (HGY), 4 days downtime', date='November 2023', tag='Full respray',
+         more=['mg-british-racing-green-side']),
+    dict(k='honda-civic-grey-blue', car='Honda Civic', work='Full respray inside and out in Aiika CS46, gloss black roof, new spoiler', date='November 2023', tag='Respray + spoiler', more=[]),
+    dict(k='mini-cooper-pink', car='Mini Cooper', work='New colour: from orange to pink', date='May 2022', tag='Colour change', more=['mini-cooper-orange-before']),
+    dict(k='honda-spada-white', car='Honda Spada', work='Respray in a new colour with Aiika paint', date='February 2026', tag='Colour change',
+         more=['honda-spada-white-rear', 'honda-spada-white-side']),
+    dict(k='porsche-cayenne-bodykit-side', car='Porsche Cayenne', work='New-model body kit, imported from overseas, installed', date='February 2026', tag='Body kit', more=[]),
+    dict(k='kia-cerato-four-colours', car='Kia Cerato Forte', work='The same customer back for the 4th time: four looks over the years', date='March 2023', tag='Repeat customer', more=[]),
+]
+
+# Demo car colours: each one seen on a real Wei job. Hex values are on-screen approximations.
+PAINTS = [
+    ('Fountain Blue Metallic', '#8ea2c0', 'Porsche Macan, May 2025', 'porsche-macan-fountain-blue'),
+    ('British Racing Green', '#1f3b30', 'MG, November 2023', 'mg-british-racing-green'),
+    ('Aiika CS46 grey-blue', '#aab4c6', 'Honda Civic, November 2023', 'honda-civic-grey-blue'),
+    ('Pearl white', '#f2f0ea', 'Honda Spada, February 2026', 'honda-spada-white'),
+    ('Pink', '#f1a3c6', 'Mini Cooper, May 2022', 'mini-cooper-pink'),
+    ('Orange', '#ee8f1e', 'Mini Cooper (before), May 2022', 'mini-cooper-orange-before'),
+    ('Silver grey', '#a3a9b0', 'Porsche Cayenne, February 2026', 'porsche-cayenne-bodykit-side'),
+]
+
+CAR_BODY = ('M38 172 L38 146 Q40 122 72 115 L150 104 C188 72 232 58 300 56 C358 56 396 66 432 96 L500 108 C546 115 566 128 569 152 '
+            'L571 170 Q569 184 552 186 L506 186 A44 44 0 0 0 418 186 L192 186 A44 44 0 0 0 104 186 L58 186 Q40 184 38 172 Z')
+
+
+def demo_car():
+    """Side-view demo car: body fill comes from CSS var --paint; JS sprays a new colour across it."""
+    def car(cls):
+        gid = 'g' + cls.replace(' ', '-')
+        return f'''<svg class="{cls}" viewBox="0 0 610 240" aria-hidden="true">
+<defs><linearGradient id="{gid}" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#fff" stop-opacity=".55"/><stop offset=".38" stop-color="#fff" stop-opacity=".06"/><stop offset=".62" stop-color="#000" stop-opacity="0"/><stop offset="1" stop-color="#000" stop-opacity=".32"/></linearGradient></defs>
+<path class="body" d="{CAR_BODY}"/>
+<path d="{CAR_BODY}" fill="url(#{gid})"/>
+<path d="M60 130 C200 118 420 118 556 134" stroke="#fff" stroke-opacity=".35" stroke-width="2" fill="none"/>
+<path d="M168 104 C202 78 238 69 292 67 L298 67 L298 104 Z M310 67 C352 67 382 75 414 100 L310 104 Z" fill="#1c2128"/>
+<path d="M175 101 C205 80 236 72 288 70" stroke="#fff" stroke-opacity=".25" stroke-width="3" fill="none"/>
+<path d="M300 106 L302 180 M196 108 L192 176" stroke="#000" stroke-opacity=".18" stroke-width="1.5" fill="none"/>
+<path d="M548 128 Q562 132 566 146 L548 144 Z" fill="#fff6d8"/><path d="M40 136 L56 134 L56 150 L40 152 Z" fill="#c4262e"/>
+<rect x="250" y="118" width="22" height="4" rx="2" fill="#000" opacity=".25"/><rect x="360" y="118" width="22" height="4" rx="2" fill="#000" opacity=".25"/>
+</svg>'''
+    wheels = ''.join(f'<g transform="translate({x} 186)"><circle r="41" fill="#15171b"/><circle r="25" fill="#c9cdd3"/><circle r="25" fill="none" stroke="#8b9097" stroke-width="2"/>'
+                     + ''.join(f'<path d="M0 -6 L-4 -22 L4 -22 Z" fill="#8b9097" transform="rotate({a})"/>' for a in range(0, 360, 72)) + '<circle r="6" fill="#4b5058"/></g>'
+                     for x in (148, 462))
+    sw = ''.join('<button type="button" class="sw" style="--c:%s" data-c="%s" data-n="%s" data-j="%s" data-img="assets/jobs-%s.webp" aria-label="%s, seen on %s"%s></button>'
+                 % (c, c, E(n), E(j), k, E(n), E(j), ' aria-pressed="true"' if i == 0 else ' aria-pressed="false"') for i, (n, c, j, k) in enumerate(PAINTS))
+    n0, c0, j0, k0 = PAINTS[0]
+    return f'''<div class="studio" style="--paint:{c0}">
+<div class="stage">
+<div class="car-wrap">{car('car base')}<div class="coat">{car('car top')}</div><div class="mist" aria-hidden="true"></div>
+<svg class="wheels" viewBox="0 0 610 240" aria-hidden="true">{wheels}</svg></div>
+<div class="floor" aria-hidden="true"></div>
+</div>
+<div class="picker">
+<p class="pk-label">Tap a colour from our real jobs</p>
+<div class="sws" role="group" aria-label="Paint colours">{sw}</div>
+<a class="pk-job" href="our-work/"><img src="assets/jobs-{k0}.webp" alt="" width="56" height="40" loading="lazy"><span><b class="pk-n">{E(n0)}</b><small class="pk-j">Seen on our job: {E(j0)}</small></span></a>
+</div>
+</div>'''
+
+
+def job_card(j):
+    return ('<a class="job" href="our-work/#%s">%s<span class="job-tag">%s</span><span class="job-txt"><b>%s</b><span>%s</span><small>%s</small></span></a>'
+            % (j['k'], jimg(j['k'], '%s: %s (%s)' % (j['car'], j['work'], j['date'])), E(j['tag']), E(j['car']), E(j['work']), E(j['date'])))
+
+
+def jobs_rail():
+    return '<div class="rail" data-glide tabindex="0" aria-label="Recent jobs"><div class="rail-track">%s</div></div>' % ''.join(job_card(j) for j in JOBS)
+
+
+def before_after():
+    return f'''<div class="ba" style="--x:50%">
+<div class="ba-img ba-after">{jimg('mini-cooper-pink', 'Mini Cooper after: resprayed pink')}</div>
+<div class="ba-img ba-before">{jimg('mini-cooper-orange-before', 'Mini Cooper before: orange')}</div>
+<span class="ba-l">Before</span><span class="ba-r">After</span>
+<input class="ba-range" type="range" min="0" max="100" value="50" aria-label="Drag to compare before and after">
+<span class="ba-handle" aria-hidden="true"></span>
+</div>'''
 
 
 def svc_card(s):
@@ -347,72 +491,69 @@ def acard(a):
             % (a['slug'], car_svg('acar'), icon(a['icon']), E(a['h1']), E(a['lede'])))
 
 
-SWATCH = ['#0d0d0f', '#f4f4f2', '#9aa0a6', '#3a3f45', '#7a1f24', '#14305e', '#e3b23c', '#1d4a3a', '#c0c4c8', '#5b2a6e']
-
-
-def swatches():
-    return '<div class="swatches" aria-hidden="true">%s</div>' % ''.join('<span style="--c:%s"></span>' % c for c in SWATCH * 2)
-
-
 def proof_items():
     return ('<ul class="proof"><li><b>100%%</b><span>recommend on <a href="%s" target="_blank" rel="noopener">Facebook</a></span></li>'
             '<li><b>238</b><span>Facebook reviews</span></li><li><b>2012</b><span>registered as a Pte Ltd</span></li><li><b>3</b><span>units at Blk 1017 Yishun</span></li></ul>' % FB)
 
 
-# ------------------------------------------------------------------------------------------------
-# Pages
-# ------------------------------------------------------------------------------------------------
 def home():
     body = f'''
 <section class="hero">
 <div class="wrap hero-grid">
 <div class="hero-copy">
 <p class="kicker">Yishun Industrial Park A · Since 2012</p>
-<h1>Car spray painting in Yishun, <span>colour-matched to your car.</span></h1>
-<p class="lede">Wei Car Spray Painting repairs scratches, dents and scuffed bumpers and resprays panels or whole cars, in a spray booth at Blk 1017 Yishun Industrial Park A. Send photos on WhatsApp and we tell you what your car needs.</p>
+<h1>Car spray painting in Yishun, <span>any colour you want.</span></h1>
+<p class="lede">Resprays, colour changes, scratch, dent and bumper repair, body kits and accident claims at Blk 1017 Yishun Industrial Park A. WhatsApp photos and Wei tells you what your car needs.</p>
 <div class="cta-row">{wa_btn()}{tel_btn()}</div>
 <p class="rec">★ {REC} <small>({REC_DATE})</small></p>
 </div>
-<div class="hero-art" aria-hidden="true">
-<div class="booth"><div class="sweep"></div>{car_svg('hcar', draw=True)}<div class="mist"></div><div class="chips"><span>Spray booth</span><span>Paint-code colour match</span><span>Clear coat finish</span></div></div>
-{swatches()}
+{demo_car()}
 </div>
+</section>
+
+<section class="sec sec-tint">
+<div class="wrap">
+<div class="sec-head row"><div><p class="kicker">Our work</p><h2>Real cars from our workshop</h2></div><a class="link" href="our-work/">See all jobs <i aria-hidden="true">→</i></a></div>
 </div>
+{jobs_rail()}
 </section>
 
 <section class="sec">
 <div class="wrap">
-<div class="sec-head"><p class="kicker">What needs fixing?</p><h2>Pick the damage, see how we fix it</h2></div>
+<div class="sec-head"><p class="kicker">What needs fixing?</p><h2>Pick the job, see how we do it</h2></div>
 <div class="svc-grid">{''.join(svc_card(s) for s in SERVICES)}</div>
 </div>
 </section>
 
-<section class="sec sec-alt">
+<section class="sec sec-tint">
 <div class="wrap split">
-<figure class="shop"><img src="assets/shopfront.webp" alt="Wei Car Spray Painting workshop at Blk 1017 Yishun Industrial Park A, with the spray booth inside" width="673" height="370" loading="lazy" decoding="async"><figcaption>Our workshop at Blk 1017 Yishun Industrial Park A.</figcaption></figure>
+{before_after()}
 <div>
-<p class="kicker">The workshop</p>
-<h2>Three units, one spray booth, one job done properly</h2>
-<p>We work from units #01-242, #01-246 and #01-252 at Blk 1017 Yishun Industrial Park A. Panels are prepared in the workshop and painted inside the spray booth, so dust stays out of the wet paint.</p>
-<a class="link" href="about/">About Wei Car Spray Painting <i aria-hidden="true">→</i></a>
+<p class="kicker">Before and after</p>
+<h2>Orange Mini, now pink</h2>
+<p>Drag the slider. This Mini Cooper came in orange and left in a new colour (May 2022). A colour change means the whole body is prepared, primed and sprayed, not just the panels you see first.</p>
+<a class="link" href="services/full-car-respray/">Full respray and colour change <i aria-hidden="true">→</i></a>
 </div>
 </div>
 </section>
 
 <section class="sec">
-<div class="wrap">
-<div class="sec-head"><p class="kicker">How it works</p><h2>From photo to fresh paint</h2></div>
-{steps([('Send photos', 'WhatsApp the damage in daylight with your car model.'), ('We advise', 'We say if it needs polishing, panel paint or more.'), ('Bring the car in', 'We inspect it and confirm the work and price.'), ('Collect', 'Colour-matched, polished and checked in daylight.')])}
+<div class="wrap split">
+<figure class="photo">{jimg('team', 'The Wei Car Spray Painting team in the workshop at Blk 1017 Yishun Industrial Park A')}<figcaption>The team at the workshop, September 2024.</figcaption></figure>
+<div>
+<p class="kicker">The workshop</p>
+<h2>Three units, one team, one job done properly</h2>
+<p>We work from units #01-242, #01-246 and #01-252 at Blk 1017 Yishun Industrial Park A. Panels are prepared in the workshop and painted in the spray booth, so dust stays out of the wet paint.</p>
+{steps([('Send photos', 'WhatsApp the damage in daylight with your car model.'), ('We advise', 'Polish, panel paint, full respray or repair.'), ('Bring the car in', 'We inspect it and confirm the work and price.'), ('Collect', 'Colour-matched, polished and checked.')])}
+</div>
 </div>
 </section>
 
-<section class="sec sec-alt">
-<div class="wrap">
-<div class="trust">
-<div><p class="kicker">Proof</p><h2>Trusted by Yishun drivers</h2><p>Our customers rate us on Facebook. Read what they say, and see recent jobs on Instagram.</p>
-<div class="cta-row"><a class="btn btn-ghost" href="{FB}" target="_blank" rel="noopener">Read Facebook reviews</a><a class="btn btn-ghost" href="{IG}" target="_blank" rel="noopener">See jobs on Instagram</a></div></div>
+<section class="sec sec-tint">
+<div class="wrap trust">
+<div><p class="kicker">Proof</p><h2>Trusted by drivers, again and again</h2><p>One Kia Cerato owner has come back four times for a new look. Read our Facebook reviews and see new jobs on Instagram.</p>
+<div class="cta-row"><a class="btn btn-ghost" href="{FB}" target="_blank" rel="noopener">Read Facebook reviews</a><a class="btn btn-ghost" href="{IG}" target="_blank" rel="noopener">Instagram</a></div></div>
 {proof_items()}
-</div>
 </div>
 </section>
 
@@ -423,7 +564,7 @@ def home():
 </div>
 </section>
 
-<section class="sec sec-alt">
+<section class="sec sec-tint">
 <div class="wrap narrow">
 <div class="sec-head"><p class="kicker">Questions</p><h2>Quick answers</h2></div>
 {faq_html(HOME_FAQ)}
@@ -437,7 +578,7 @@ def home():
 <h2>Find us in Yishun</h2>
 <p class="addr">{'<br>'.join(ADDR)}</p>
 <p>Opening hours: {hours_line()}.</p>
-<p>Phone <a href="tel:{TEL1}">{TEL1_SHOW}</a> · Mobile <a href="tel:{TEL2}">{TEL2_SHOW}</a><br>Email <a href="mailto:{EMAIL}">{EMAIL}</a></p>
+<p>Phone <a href="tel:{TEL1}">{TEL1_SHOW}</a> · WhatsApp <a href="tel:{TEL2}">{TEL2_SHOW}</a> (Wei)<br>Email <a href="mailto:{EMAIL}">{EMAIL}</a></p>
 <div class="cta-row"><a class="btn btn-ghost" href="{E(MAP)}" target="_blank" rel="noopener">Open in Google Maps</a></div>
 </div>
 <div class="map"><iframe title="Map to Wei Car Spray Painting" src="{E(MAP_EMBED)}" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe></div>
@@ -445,8 +586,21 @@ def home():
 </section>
 '''
     page('', 'Car Spray Painting Yishun | Wei Car Spray Painting',
-         'Car spray painting, scratch, dent and bumper repair in Yishun, Singapore. Colour-matched in a spray booth. 100% recommend on Facebook (238 reviews).',
+         'Car spray painting, full resprays, colour changes, scratch, dent and bumper repair in Yishun. 100% recommend on Facebook (238 reviews).',
          'Car spray painting in Yishun', body, hero=False, schema=[faq_schema(HOME_FAQ)])
+
+
+def our_work():
+    items = []
+    for j in JOBS:
+        gal = ''.join('<figure>%s</figure>' % jimg(k, '%s, %s' % (j['car'], k.replace('-', ' '))) for k in [j['k']] + j['more'])
+        items.append('<article class="work" id="%s"><div class="work-gal">%s</div><div class="work-txt"><span class="job-tag">%s</span><h2>%s</h2><p>%s.</p><p class="muted">Posted on our Facebook page, %s.</p></div></article>'
+                     % (j['k'], gal, E(j['tag']), E(j['car']), E(j['work']), E(j['date'])))
+    body = '<section class="sec"><div class="wrap works">%s</div></section>' % ''.join(items)
+    page('our-work/', 'Car Respray Before & After | Wei Car Spray Painting',
+         'Real resprays, colour changes and body kits from our Yishun workshop: Porsche Macan, MG, Honda Civic, Mini Cooper, Honda Spada and more.',
+         'Our work', body, crumbs=[('our-work/', 'Our work')], lede='Real cars from our workshop, with the dates we posted them. More on our Facebook and Instagram.', kicker='Gallery',
+         schema=[{'@type': 'ImageGallery', 'name': 'Wei Car Spray Painting jobs', 'image': [SITE + 'assets/jobs-%s.webp' % j['k'] for j in JOBS]}])
 
 
 def services_index():
@@ -461,6 +615,7 @@ def service_page(s):
     body = f'''
 <section class="sec"><div class="wrap svc-layout">
 <article class="prose">
+<figure class="photo">{jimg(s['photo'], s['cap'], eager=True)}<figcaption>{E(s['cap'])}</figcaption></figure>
 <p class="answer">{E(s['answer'])}</p>
 <h2>When you need {E(s['short'].lower())}</h2>
 <ul class="ticks">{''.join('<li>%s</li>' % E(w) for w in s['when'])}</ul>
@@ -571,7 +726,7 @@ def privacy():
     page('privacy/', 'Privacy Policy | Wei Car Spray Painting', 'How Wei Car Spray Painting handles personal data under the PDPA.', 'Privacy policy', body, crumbs=[('privacy/', 'Privacy')], cta=False)
 
 
-NAV = [('services/', 'Services'), ('services/car-spray-painting/', 'Spray painting'), ('articles/', 'Guides'), ('about/', 'About'), ('contact/', 'Contact')]
+NAV = [('services/', 'Services'), ('our-work/', 'Our work'), ('services/accident-repair-insurance-claims/', 'Insurance claims'), ('articles/', 'Guides'), ('about/', 'About'), ('contact/', 'Contact')]
 
 
 def shell(path, p, robots_meta=''):
@@ -604,7 +759,7 @@ def shell(path, p, robots_meta=''):
                 '<p>WhatsApp photos in daylight with your car model. We tell you what it needs.</p></div><div class="cta-row">%s%s</div></div></div></section>' % (wa_btn('WhatsApp ' + WA_SHOW), tel_btn()))
     title = E(p['title'])
     body = fix(p['body'] + band)
-    brand = ('<a class="brand" href="%s" aria-label="%s, home page">%s<span><b>Wei Car</b><small>Spray Painting</small></span></a>' % (pre or './', NAME, car_svg('bcar')))
+    brand = ('<a class="brand" href="%s" aria-label="%s, home page"><img src="%sassets/logo.webp" alt="" width="44" height="44"><span><b>Wei Car</b><small>Spray Painting</small></span></a>' % (pre or './', NAME, pre))
     svc_links = ''.join('<li><a href="%sservices/%s/">%s</a></li>' % (pre, s['slug'], E(s['short'])) for s in SERVICES)
     og_type = 'article' if path.startswith('articles/') and path != 'articles/' else 'website'
     return f'''<!doctype html>
@@ -616,7 +771,7 @@ def shell(path, p, robots_meta=''):
 <meta name="description" content="{E(p['desc'])}">
 {robots_meta or '<meta name="robots" content="index,follow,max-image-preview:large">'}
 <meta name="p1-site" content="{SLUG}">
-<meta name="theme-color" content="#0b0b0c">
+<meta name="theme-color" content="#f7f5f0">
 <link rel="canonical" href="{url}">
 <meta property="og:type" content="{og_type}">
 <meta property="og:site_name" content="{NAME}">
@@ -687,7 +842,7 @@ def main():
     articles_index()
     for a in ARTICLES:
         article_page(a)
-    about(); contact(); privacy()
+    our_work(); about(); contact(); privacy()
     for path, p in PAGES.items():
         write(path + 'index.html', shell(path, p))
     nf = dict(title='Page not found | Wei Car Spray Painting', desc='This page does not exist.', h1='Page not found',
@@ -703,7 +858,7 @@ def main():
     bots = ['Googlebot', 'Bingbot', 'OAI-SearchBot', 'GPTBot', 'ChatGPT-User', 'PerplexityBot', 'ClaudeBot', 'Claude-SearchBot', 'Google-Extended', 'Applebot-Extended', 'DuckAssistBot']
     write('robots.txt', 'User-agent: *\nAllow: /\n\n' + ''.join('User-agent: %s\nAllow: /\n\n' % b for b in bots) + 'Sitemap: %ssitemap.xml\n' % SITE)
     write(INDEXNOW_KEY + '.txt', INDEXNOW_KEY)
-    write('site.webmanifest', json.dumps({'name': NAME, 'short_name': 'Wei Car', 'start_url': './', 'display': 'standalone', 'background_color': '#0b0b0c', 'theme_color': '#0b0b0c',
+    write('site.webmanifest', json.dumps({'name': NAME, 'short_name': 'Wei Car', 'start_url': './', 'display': 'standalone', 'background_color': '#f7f5f0', 'theme_color': '#f7f5f0',
                                           'icons': [{'src': 'assets/icon-192.png', 'sizes': '192x192', 'type': 'image/png'}, {'src': 'assets/icon-512.png', 'sizes': '512x512', 'type': 'image/png'}]}))
     llms = ['# %s' % NAME, '',
             '> %s is a car spray painting and repair workshop at Blk 1017 Yishun Industrial Park A, Singapore 768759: panel spray painting, full resprays, scratch, dent and bumper repair, plus car servicing and repairs. Registered 28 June 2012 (UEN %s).' % (LEGAL, UEN), '',
