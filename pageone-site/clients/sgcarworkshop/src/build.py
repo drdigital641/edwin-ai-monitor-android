@@ -243,20 +243,18 @@ def home():
     reg_tiles = ''.join('<li><a href="regions/%s/"><span class="ti">%s</span><span><b>%s</b><small>%d listing%s</small></span></a></li>' % (
         k, ic('pin'), E(r['name']), n, '' if n == 1 else 's') for k, r in REGION_LIST for n in [sum(1 for e in ENTRIES if k in e['regions'])])
     tiers = tiers_strip()
-    body = f'''<section class="intro"><div class="w"><h1>Find a car workshop in Singapore</h1>
-<p>Repair, gearbox, ABS and ECU, spray painting, batteries, detailing, wraps and parts. Contact a workshop on WhatsApp or call.</p></div></section>
-<section class="feat" aria-roledescription="carousel" aria-label="Featured Premium workshops"><div class="w"><div class="sec-h"><h2>Featured Premium workshops</h2>
-<div class="car-nav"><button type="button" id="cprev" aria-label="Previous">{ic('chev-l')}</button><button type="button" id="cnext" aria-label="Next">{ic('chev-r')}</button></div></div>
-<ul class="track" id="track" tabindex="0" aria-label="Featured workshops, swipe or use arrow keys">{slides}</ul></div></section>
-<section class="finder" id="find"><div class="w">
+    body = f'''<section class="finder" id="find"><div class="w"><h1 class="vh">Car workshops in Singapore</h1>
 <p class="nojs">Browse by <a href="#services">service</a> or <a href="#regions">region</a> below.</p>
 <form class="panel" id="finder" role="search" aria-label="Find a workshop" onsubmit="return false">
-<h2>Find a workshop</h2>
-<div class="frow"><span class="lab" id="lab-s">Service</span><div class="opts" role="radiogroup" aria-labelledby="lab-s">{svc_opts}</div></div>
-<div class="frow"><span class="lab" id="lab-r">Region <small>choose one or more</small></span><div class="opts" role="group" aria-labelledby="lab-r">{reg_opts}</div></div>
-<div class="fbar"><label class="q"><span class="skip">Search by name</span>{ic('search')}<input id="q" type="search" placeholder="Search by name" autocomplete="off"></label>
-<p id="count" aria-live="polite"><b>{len(ENTRIES)}</b> workshops</p><button type="button" class="linkbtn" id="reset">Clear</button></div>
+<p class="shint" id="shint"><span class="pt" aria-hidden="true">&#128070;</span> Tap and type what you need and where, in any order</p>
+<label class="q"><span class="skip">Search workshops by service, area or name</span>{ic('search')}<input id="q" type="search" placeholder="e.g. gearbox repair Woodlands" autocomplete="off" autocapitalize="off" enterkeyhint="search"></label>
+<div class="frow"><span class="lab" id="lab-s">Service <small>optional</small></span><div class="opts" role="radiogroup" aria-labelledby="lab-s">{svc_opts}</div></div>
+<div class="frow"><span class="lab" id="lab-r">Region <small>optional, choose one or more</small></span><div class="opts" role="group" aria-labelledby="lab-r">{reg_opts}</div></div>
+<div class="fbar"><p id="count" aria-live="polite"><b>{len(ENTRIES)}</b> workshops</p><button type="button" class="linkbtn" id="reset">Clear</button></div>
 </form></div></section>
+<section class="feat" aria-roledescription="carousel" aria-label="Featured Premium workshops"><div class="w"><div class="sec-h"><h2>Featured Premium workshops</h2>
+<div class="car-nav"><button type="button" id="cprev" aria-label="Previous">{ic('chev-l')}</button><button type="button" id="cnext" aria-label="Next">{ic('chev-r')}</button></div></div>
+<div class="marq" id="marq"><ul class="track" id="track" aria-label="Featured workshops">{slides}</ul></div></div></section>
 <section id="workshops" style="padding-top:14px"><div class="w"><div class="grid" id="results">{cards}</div>
 <div class="empty" id="empty"><b>No workshops match.</b> Try fewer filters, or <a href="list-your-workshop/">list your workshop</a>.</div></div></section>
 <section class="alt" id="services"><div class="w"><h2>Browse by service</h2><ul class="tiles">{svc_tiles}</ul></div></section>
@@ -361,9 +359,23 @@ def claim_href(e, page_path):
     return wa_link(PAGE_ONE_WA, "Hi Page One, I'm from %s, about my %s listing.\n\n(From %s)" % (e['name'], SITE_NAME, page_label(page_path)))
 
 
+SYN = {   # extra words people type for each service (search only, never shown)
+    'spray-painting-bodywork': 'spray paint painting respray resprayed colour color bodywork body dent scratch panel',
+    'gearbox-repair': 'gearbox transmission auto automatic gear shift cvt dsg',
+    'abs-ecu-module-repair': 'abs ecu module ecm tcm brake engine computer control unit electronics',
+    'car-battery': 'battery batteries replace replacement jump start flat alternator',
+    'car-detailing-coating': 'detailing detail coating ceramic polish polishing wash clean cleaning interior',
+    'car-wrap-ppf': 'wrap wraps wrapping ppf film protection tint sticker',
+    'car-parts': 'parts part spare accessories',
+    'general-servicing-repair': 'servicing service repair maintenance aircon air con ac cooling oil brake workshop mechanic',
+}
+
+
 def card_search(e):
     c = CAT[e['category']]
-    return ' '.join([e['name'], c['name'], e['area_label'], ' '.join(s['n'] for s in e['services']), e.get('domain', ''), ' '.join(RN[r] for r in e['regions'])]).lower()
+    t = ' '.join([e['name'], c['name'], SYN.get(c['slug'], ''), e['area_label'], e.get('desc', ''), ' '.join(e.get('card_text', [])[:1]),
+                  ' '.join(s['n'] for s in e['services']), e.get('domain', ''), e.get('regions_note', ''), e.get('service_area', '')]).lower()
+    return re.sub(r'[^a-z0-9]+', ' ', t).strip()
 
 
 def card(e, depth, page_path=''):
