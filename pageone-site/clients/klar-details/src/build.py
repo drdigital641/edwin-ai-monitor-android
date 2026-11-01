@@ -25,7 +25,7 @@ LIVE = False
 PREVIEW = 'https://pageonesingapore.com/preview/%s/' % SLUG
 SITE = ('https://%s/' % DOMAIN) if LIVE else PREVIEW
 UPDATED = '2026-11-01'
-V = '10'
+V = '11'
 INDEXNOW_KEY = '3f8b2c6d9e14a7b05c2d8e6f1a4b9c73'
 
 # Homepage promo popup. Klar switches it off by setting PROMO['on'] = False and rebuilding;
@@ -43,7 +43,7 @@ PROMO = {
     'fine': 'Booking and coating must both be completed by 31 December 2026 to enjoy the promotion.',
     'cta': 'WhatsApp to secure a slot',
     'topic': 'the S$300 off Graphene Coating promotion.',
-    'video': 'assets/promo-graphene.mp4',
+    'video': 'assets/promo-clip.mp4',
     'poster': 'assets/promo-poster.jpg',
 }
 
