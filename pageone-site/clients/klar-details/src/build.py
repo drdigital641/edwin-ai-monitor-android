@@ -25,7 +25,7 @@ LIVE = False
 PREVIEW = 'https://pageonesingapore.com/preview/%s/' % SLUG
 SITE = ('https://%s/' % DOMAIN) if LIVE else PREVIEW
 UPDATED = '2026-11-01'
-V = '8'
+V = '9'
 INDEXNOW_KEY = '3f8b2c6d9e14a7b05c2d8e6f1a4b9c73'
 
 NAME = 'Klar Details'
@@ -226,12 +226,9 @@ def home():
 </section>'''
     svcs = ''.join(svc_card(s, i) for i, s in enumerate(SERVICES))
     why = ''.join('<li class="rv" style="--d:%dms"><span class="n">%02d</span><h3>%s</h3><p>%s</p></li>' % (i * 70, i + 1, E(t), E(d)) for i, (t, d) in enumerate(H['why']))
-    vid = ''
-    if VIDEO:
-        poster = IMG[VIDEO['poster_key']]['url'] if VIDEO.get('poster_key') in IMG else ''
-        vid = ('<section class="sec dark"><div class="wrap split"><div><p class="eyebrow">Inside the studio</p><h2>Watch Klar Details at work</h2><p>Enclosed, dust-free bays, infrared curing lamps and a pure-water final rinse. '
-               'This is where every Signature treatment spends at least six man-hours.</p>%s</div><div class="video rv"><video controls preload="none" playsinline%s><source src="%s" type="video/mp4"></video></div></div></section>'
-               % (wa_btn('Book a free assessment'), (' poster="%s"' % E(poster)) if poster else '', E(VIDEO['url'])))
+    vid = ('<section class="sec dark"><div class="wrap split"><div><p class="eyebrow">Inside the studio</p><h2>Watch a Klar premium hand wash</h2><p>Enclosed, dust-free bays, a pure-water final rinse and a hand finish. '
+           'This is the same care every Signature treatment gets for at least six man-hours.</p>%s</div><div class="video portrait rv"><video controls preload="metadata" playsinline poster="assets/photos/klar-specialist-wipe.jpg"><source src="assets/premium-wash.mp4" type="video/mp4"></video></div></div></section>'
+           % wa_btn('Book a free assessment'))
     areas = ''.join('<a class="chip" href="areas/%s/">%s</a>' % (a['slug'], E(a['name'])) for a in AREAS)
     arts = ''.join(acard(a, i) for i, a in enumerate(ARTICLES[:3]))
     body = f'''
@@ -278,6 +275,7 @@ def service_page(s, i=0):
 <div class="rt">{s['intro']}<div class="cta-row">{wa_btn('WhatsApp for a free assessment', s['name'].lower() + '.')}{tel_btn()}</div></div>
 <div class="pic rv">{img(hk[0]) if hk else ''}</div>
 </div></section>
+{('<section class="sec dark"><div class="wrap split"><div><p class="eyebrow">Watch</p><h2>A Klar premium hand wash, start to finish</h2><p>Filmed in the Klar bays at Toh Guan Road East.</p></div><div class="video portrait rv"><video controls preload="metadata" playsinline poster="assets/photos/klar-specialist-wipe.jpg"><source src="assets/premium-wash.mp4" type="video/mp4"></video></div></div></section>') if s['slug'] == 'premium-hand-wash' else ''}
 <section class="sec alt"><div class="wrap"><h2>What {E(s['name'].lower())} at Klar includes</h2>{inc}{extra_pics(s['slug'])}</div></section>
 <section class="sec"><div class="wrap narrow"><h2>How it works</h2>{steps_html(s['steps'])}</div></section>
 <section class="sec alt"><div class="wrap narrow">{sections_html(s['sections'])}</div></section>
