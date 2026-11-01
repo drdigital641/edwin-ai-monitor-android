@@ -122,3 +122,5 @@ p{margin:0 0 1em}.wrap{max-width:var(--max);margin:0 auto;padding:0 20px}.narrow
 
 .card-pic,.gal-i,.ps-pic,.pic{position:relative}.card-pic img,.gal-i img,.ps-pic img,.pic img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
 .ps-pic .n{z-index:1}.card-pic{flex:none}
+
+.team .shot img{aspect-ratio:1/1}.shot.shop{width:auto;margin-top:16px}.shot.shop img{aspect-ratio:3/2}

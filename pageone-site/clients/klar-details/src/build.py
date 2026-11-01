@@ -25,7 +25,7 @@ LIVE = True
 PREVIEW = 'https://pageonesingapore.com/preview/%s/' % SLUG
 SITE = ('https://%s/' % DOMAIN) if LIVE else PREVIEW
 UPDATED = '2026-11-01'
-V = '19'
+V = '20'
 INDEXNOW_KEY = '3f8b2c6d9e14a7b05c2d8e6f1a4b9c73'
 
 # Homepage promo popup. Klar switches it off by setting PROMO['on'] = False and rebuilding;
@@ -99,6 +99,24 @@ LOCAL = {  # client's branding photos (Edwin, 1 Nov 2026), served from assets/ph
     'leather_wipe': ('leather-seat-wipe.webp', 'Microfibre cloth wiping a light leather seat', 'PROCESS'),
     'carpet_vacuum': ('carpet-vacuum-brush.webp', 'Brush vacuum lifting dust from a car floor carpet', 'PROCESS'),
     'rupes_white': ('rupes-polish-white-mustang.jpg', 'Machine polishing the bonnet of a white Ford Mustang with a RUPES polisher', 'GALLERY'),
+    # real Klar photos recovered from the old WordPress site (Edwin, 2 Nov 2026); preferred over the generic PROCESS close-ups
+    'coat_wall': ('klarcoat-applied-every-detail-wall.jpg', 'Klar specialist laying KlarCOAT on a black bonnet in front of the "because every detail counts" wall', 'GALLERY'),
+    'bmw_ir_lamp': ('bmw-infrared-lamp-klar-bay.jpg', 'BMW 5 Series under an infrared lamp in a Klar Details bay', 'GALLERY'),
+    'shopfront': ('klar-details-shopfront-02-124.webp', 'Klar Details signboard above unit #02-124 at Enterprise Hub, Toh Guan Road East', 'SHOP'),
+    'm6_inspection': ('bmw-m6-paint-inspection.webp', 'Klar detailer checking the paint beside the wing vent of a black BMW M6', 'GALLERY'),
+    'porsche_badge': ('porsche-bonnet-gloss.webp', 'Porsche crest on a deep-gloss dark grey bonnet after paint correction', 'GALLERY'),
+    'rupes_cap': ('rupes-polish-klar-specialist.webp', 'Klar specialist machine polishing a black car with a RUPES polisher', 'GALLERY'),
+    'suede_apply': ('coating-suede-applicator.webp', 'Gloved hand laying coating with a suede-wrapped applicator block', 'GALLERY'),
+    'consultant': ('klar-consultant.webp', 'Klar Consultant at the "because every detail counts" wall in the Klar studio', 'TEAM'),
+    'porsche_cayman': ('white-porsche-cayman.webp', 'White Porsche Cayman with a Klar Details plate in the Klar bay', 'GALLERY'),
+    'porsche_macan': ('grey-porsche-macan-gloss.webp', 'Studio lights reflected along the glossy side of a grey Porsche Macan', 'GALLERY'),
+    'jaguar_black': ('black-jaguar-f-type.webp', 'Black Jaguar F-Type convertible with a Klar Details plate', 'GALLERY'),
+    'jaguar_white': ('white-jaguar-f-type-coupe.webp', 'White Jaguar F-Type coupe with a Klar Details plate', 'GALLERY'),
+    'bentley_white': ('white-bentley-headlight-gloss.webp', 'Gloss finish on the wing and headlights of a white Bentley Continental GT', 'GALLERY'),
+    'klarcoat_6h': ('klarcoat-6h-glass-coating.webp', 'KlarCOAT 6H glass coating bottles, made in Japan', 'PRODUCT'),
+    'klarcoat_set': ('klarcoat-windscreen-rims-plastic.webp', 'KlarCOAT Windscreen, Rims, Si+ and Plastic coating bottles in the Klar studio', 'PRODUCT'),
+    'klarshield_bottle': ('klarshield-bottle.webp', 'KlarSHIELD KlarCoat Protector, 250 ml spray bottle', 'PRODUCT'),
+    'studio_wall': ('klar-studio-wall.webp', 'The Klar Details studio wall: "because every detail counts"', 'BRAND'),
 }
 IMG = {k: {'url': SITE + 'assets/photos/' + f, 'alt': a, 'use': u} for k, (f, a, u) in LOCAL.items()} | IMG
 # Client photos copied off the old WordPress host (assets/client/<same filename>); used whenever the copy exists.
@@ -128,7 +146,7 @@ SERVICE_IMG = {k: (v if v in IMG else SUBST[k]) for k, v in SERVICE_IMG.items()}
 # first three = the homepage's latest guides, chosen to be photos the homepage shows nowhere else
 ART_POOL = ['steam_leather', 'vent_brush', 'graphene_apply', 'bentley_wall', 'rupes_white', 'products_table', 'klarcoat_bottle', 'applicator_closeup', 'rupes_polish',
             'klarshield_spray', 'mercedes_headlight', 'klarcoat_range', 'steam_rear_cabin', 'every_detail_counts', 'fumigation_spray', 'specialist_wipe']
-HOME_WORK = ['bentley_wall', 'rupes_white', 'products_table']  # homepage 'our work' strip: photos not used by the hero or service cards
+HOME_WORK = ['porsche_cayman', 'jaguar_black', 'bentley_white', 'porsche_macan', 'jaguar_white', 'bentley_wall']  # homepage 'our work' strip: photos not used by the hero or service cards
 ART_POOL = [k for k in ART_POOL if k in IMG]
 VIDEO = M.VIDEOS[0] if M.VIDEOS else None
 
@@ -248,12 +266,12 @@ NEUTRAL = ['bentley_wall', 'every_detail_counts', 'products_table', 'mercedes_he
 # each guide's photo matches its topic (Edwin, 1 Nov 2026); unlisted guides fall back to the rotation
 ART_PICK = {
     'car-water-spot-removal-singapore': 'water_beading', 'remove-bird-droppings-tree-sap-car-paint': 'specialist_wipe',
-    'car-polishing-vs-waxing-vs-ceramic-coating': 'klarcoat_bottle', 'car-paint-oxidation-vs-clear-coat-damage': 'rupes_polish',
+    'car-polishing-vs-waxing-vs-ceramic-coating': 'klarcoat_bottle', 'car-paint-oxidation-vs-clear-coat-damage': 'porsche_badge',
     'leather-car-seat-cleaning-care-guide': 'steam_leather', 'car-wheel-cleaning-remove-brake-dust': 'wheel_clean',
     'how-to-wash-ceramic-coated-car': 'foam_wash', 'car-paint-swirl-marks-causes-prevention': 'rupes_white',
     'new-car-detailing-singapore-guide': 'mercedes_headlight', 'interior-car-detailing-singapore-guide': 'steam_rear_cabin',
     'how-regular-car-detailing-protects-your-vehicles-resale-value-in-singapore': 'bentley_wall',
-    '5-signs-your-car-needs-paint-correction': 'rupes_polish',
+    '5-signs-your-car-needs-paint-correction': 'm6_inspection',
     'what-really-happens-during-a-professional-car-detailing-session-and-why-it-takes-hours': 'every_detail_counts',
     'why-professional-car-detailing-matters-in-singapores-harsh-climate': 'klarshield_spray',
     'interior-car-detailing-why-its-more-than-just-a-deep-clean': 'carpet_vacuum',
@@ -352,7 +370,7 @@ def promo_html():
 
 def home():
     H = C.HOME
-    hero_k = 'every_detail_counts'
+    hero_k = 'coat_wall'
     hero = f'''<section class="hero">
 <div class="hero-media">{img(hero_k, eager=True)}</div>
 <div class="wrap hero-in">
@@ -386,8 +404,9 @@ def home():
 <div class="rv"><p class="eyebrow">West Singapore</p><h2>A short drive from Jurong East, Bukit Batok and Clementi</h2><p>Klar Details sits at Enterprise Hub on Toh Guan Road East, minutes from IMM and Jurong East MRT, with covered access and enclosed bays. Owners across the west book a free assessment and leave the car with us for the day.</p><div class="chips">{areas}</div></div>
 <div class="map rv"><iframe title="Map to Klar Details, 48 Toh Guan Road East" src="{MAP_EMBED}" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe></div>
 </div></section>
-<section class="sec"><div class="wrap sec-h rv"><p class="eyebrow">Guides</p><h2>Decide with facts, not sales talk</h2></div><div class="wrap grid3">{arts}</div><div class="wrap center"><a class="btn btn-ghost" href="articles/">All guides {ARROW}</a></div></section>
-<section class="sec alt"><div class="wrap narrow"><div class="sec-h rv"><p class="eyebrow">Questions</p><h2>Before you book</h2></div>{faq_html(C.HOME_FAQS)}<p class="center"><a href="faq/">More questions answered {ARROW}</a></p></div></section>
+{find_us()}
+<section class="sec alt"><div class="wrap sec-h rv"><p class="eyebrow">Guides</p><h2>Decide with facts, not sales talk</h2></div><div class="wrap grid3">{arts}</div><div class="wrap center"><a class="btn btn-ghost" href="articles/">All guides {ARROW}</a></div></section>
+<section class="sec"><div class="wrap narrow"><div class="sec-h rv"><p class="eyebrow">Questions</p><h2>Before you book</h2></div>{faq_html(C.HOME_FAQS)}<p class="center"><a href="faq/">More questions answered {ARROW}</a></p></div></section>
 '''
     page('', 'Car Detailing Singapore, Toh Guan | Klar Details', 'Premium car detailing centre at Toh Guan Road East, Jurong East: ceramic and graphene coating, paint correction, interior detailing. Since 2014. Free assessment',
          H['hero_h1'], hero + body, hero=None, schema=[faq_schema(C.HOME_FAQS)], cta=True)
@@ -427,45 +446,45 @@ def chip_ic(k):
 
 # hero photo, benefit chips (facts already on the page), one photo per step, matched photo pool for the gallery
 SVC_V = {
-    'ceramic-coating': dict(hero='bentley_wall', promise='In-house KlarCOAT ceramic, applied by hand and cured in an enclosed bay.',
+    'ceramic-coating': dict(hero='coat_wall', promise='In-house KlarCOAT ceramic, applied by hand and cured in an enclosed bay.',
         chips=[('shield', 'In-house KlarCOAT'), ('clock', '1 to 2 years with minimal upkeep'), ('bay', 'Enclosed, dust-free bay'), ('spark', 'Infrared curing')],
-        steps=['mercedes_headlight', 'foam_wash', 'rupes_polish', 'specialist_wipe', 'coating_apply', 'water_beading'],
-        pool=['coating_apply', 'applicator_closeup', 'water_beading', 'klarcoat_bottle', 'every_detail_counts', 'klarcoat_range', 'products_table']),
+        steps=['m6_inspection', 'foam_wash', 'rupes_polish', 'specialist_wipe', 'applicator_closeup', 'bmw_ir_lamp'],
+        pool=['porsche_cayman', 'jaguar_black', 'bentley_white', 'porsche_macan', 'klarcoat_6h', 'klarcoat_set', 'water_beading']),
     'graphene-coating': dict(hero='klarcoat_range', promise='KlarGRAPHENE: deeper gloss and water beading, rated up to 3 to 5 years with proper maintenance.', price='From S$88 bonnet trial',
         chips=[('shield', 'Up to 3 to 5 years, maintained'), ('drop', 'Water beading, easier washing'), ('tag', 'Try it first: S$88 bonnet trial'), ('bay', 'Enclosed bay')],
-        steps=['every_detail_counts', 'foam_wash', 'rupes_white', 'specialist_wipe', 'graphene_apply', 'water_beading'],
-        pool=['graphene_apply', 'coating_apply', 'water_beading', 'applicator_closeup', 'klarcoat_bottle', 'bentley_wall', 'products_table']),
-    'paint-correction': dict(hero='rupes_polish', promise='Swirls, etching and oxidation levelled by machine, after a test and a plan.',
+        steps=['m6_inspection', 'foam_wash', 'rupes_white', 'specialist_wipe', 'graphene_apply', 'bmw_ir_lamp'],
+        pool=['coat_wall', 'suede_apply', 'jaguar_white', 'porsche_badge', 'water_beading', 'klarcoat_bottle', 'products_table']),
+    'paint-correction': dict(hero='bmw_ir_lamp', promise='Swirls, etching and oxidation levelled by machine, after a test and a plan.',
         chips=[('search', 'Free paint assessment'), ('spark', 'Swirls, oxidation, water-spot etching'), ('check', 'Test and plan first'), ('tag', 'Fixed quote before work')],
-        steps=['mercedes_headlight', 'foam_wash', 'rupes_white', 'every_detail_counts', 'klarshield_spray'],
-        pool=['rupes_white', 'every_detail_counts', 'water_beading', 'specialist_wipe', 'bentley_wall', 'klarshield_spray', 'mercedes_headlight']),
+        steps=['mercedes_headlight', 'foam_wash', 'rupes_white', 'rupes_polish', 'klarshield_spray'],
+        pool=['m6_inspection', 'porsche_badge', 'rupes_cap', 'porsche_macan', 'jaguar_black', 'bentley_white']),
     'interior-detailing': dict(hero='steam_rear_cabin', promise='KlarINTERIOR: steam, shampoo, extraction and leather care for the whole cabin.',
         chips=[('steam', 'Controlled-pressure steam'), ('drop', 'Seat shampoo and extraction'), ('leaf', 'Leather cleaning and conditioning'), ('spark', 'Odour treatment')],
-        steps=['bentley_wall', 'carpet_vacuum', 'steam_leather', 'leather_wipe', 'fumigation_spray', 'vent_brush'],
-        pool=['steam_leather', 'leather_wipe', 'carpet_vacuum', 'vent_brush', 'fumigation_spray', 'products_table', 'specialist_wipe']),
+        steps=['consultant', 'carpet_vacuum', 'steam_leather', 'leather_wipe', 'fumigation_spray', 'vent_brush'],
+        pool=['products_table', 'specialist_wipe', 'studio_wall', 'bentley_wall']),
     'interior-pest-control': dict(hero='fumigation_spray', promise='NEA-approved, aviation-grade anti-bacterial fumigation after a deep clean.',
         chips=[('shield', 'NEA-approved fumigation'), ('spark', 'Aviation-grade anti-bacterial'), ('leaf', 'Targets bacteria and odour'), ('steam', 'Deep clean and steam first')],
-        steps=['bentley_wall', 'carpet_vacuum', 'steam_rear_cabin', 'fumigation_spray', 'vent_brush'],
-        pool=['carpet_vacuum', 'steam_rear_cabin', 'steam_leather', 'vent_brush', 'leather_wipe', 'products_table', 'every_detail_counts']),
+        steps=['consultant', 'carpet_vacuum', 'steam_leather', 'steam_rear_cabin', 'vent_brush'],
+        pool=['leather_wipe', 'products_table', 'studio_wall', 'bentley_wall']),
     'coating-maintenance': dict(hero='klarshield_spray', promise='KlarMAINTENANCE keeps a ceramic or graphene coating working, every six months.',
         chips=[('clock', 'Half-yearly programme'), ('shield', 'KlarSHIELD top layer'), ('drop', 'Pure-water final rinse'), ('check', 'For ceramic and graphene')],
-        steps=['water_beading', 'foam_wash', 'specialist_wipe', 'products_table', 'pure_rinse', 'carpet_vacuum'],
-        pool=['water_beading', 'pure_rinse', 'wheel_clean', 'foam_wash', 'products_table', 'klarcoat_range', 'specialist_wipe']),
+        steps=['water_beading', 'foam_wash', 'specialist_wipe', 'klarshield_bottle', 'pure_rinse', 'carpet_vacuum'],
+        pool=['suede_apply', 'porsche_macan', 'jaguar_white', 'wheel_clean', 'products_table', 'klarcoat_range']),
     'new-car-detailing': dict(hero='mercedes_headlight', promise='Protect a new car before its first months of wear. Paint inspected first.',
         chips=[('search', 'Paint inspected first'), ('shield', 'KlarCOAT or KlarGRAPHENE'), ('leaf', 'Interior protection'), ('check', 'Aftercare handover')],
-        steps=['bentley_wall', 'foam_wash', 'rupes_white', 'coating_apply', 'leather_wipe', 'every_detail_counts'],
-        pool=['coating_apply', 'water_beading', 'klarshield_spray', 'foam_wash', 'leather_wipe', 'applicator_closeup', 'klarcoat_range']),
+        steps=['m6_inspection', 'foam_wash', 'rupes_white', 'every_detail_counts', 'leather_wipe', 'consultant'],
+        pool=['porsche_cayman', 'jaguar_white', 'bentley_white', 'jaguar_black', 'klarcoat_set', 'water_beading']),
     'premium-hand-wash': dict(hero='specialist_wipe', promise='A careful hand wash and decontamination in an enclosed bay, by appointment.',
         chips=[('drop', 'Premium hand wash'), ('spark', 'Exterior decontamination'), ('check', 'Wheels and arches'), ('clock', 'By appointment')],
         steps=['pure_rinse', 'foam_wash', 'wheel_clean', 'products_table', 'water_beading'],
-        pool=['foam_wash', 'wheel_clean', 'pure_rinse', 'water_beading', 'products_table', 'mercedes_headlight', 'bentley_wall']),
+        pool=['porsche_macan', 'jaguar_white', 'porsche_cayman', 'bentley_white', 'jaguar_black', 'bentley_wall']),
 }
 
 
 def svc_gallery(slug):
     """6 photos matched to the service, most specific first; the hero photo is never repeated."""
     v = SVC_V[slug]
-    return [k for k in v['pool'] if k in IMG and k != v['hero']][:6]
+    return [k for k in v['pool'] if k in IMG and k != v['hero'] and k not in v['steps']][:6]
 
 
 def service_page(s, i=0):
@@ -618,14 +637,27 @@ def reviews_page():
          'Customer reviews', body, crumbs=[('reviews/', 'Reviews')], kicker='Reviews')
 
 
+def find_us(alt=''):
+    """Shopfront photo so first-time visitors recognise the unit (real photo, Edwin 2 Nov 2026)."""
+    return (f'<section class="sec{alt}"><div class="wrap split"><div class="pic rv">{img("shopfront")}</div>'
+            f'<div class="rt rv"><p class="eyebrow">Find us</p><h2>Look for the Klar signboard at #02-124</h2>'
+            f'<p>{"<br>".join(E(x) for x in ADDR)}</p><p>Klar Details is on level 2 of Enterprise Hub, a few minutes from IMM and Jurong East MRT. '
+            f'Visits are by appointment, so WhatsApp us before you drive over.</p>'
+            f'<div class="cta-row">{wa_btn("WhatsApp before you visit", "a visit to the studio.")}<a class="btn btn-ghost" href="{MAP}" target="_blank" rel="noopener">Open in Google Maps {ARROW}</a></div></div>'
+            f'</div></section>')
+
+
 def about():
     A = C.ABOUT
     facts = '<table class="facts"><tbody>%s</tbody></table>' % ''.join('<tr><th>%s</th><td>%s</td></tr>' % (E(l), E(v)) for l, v in A['facts'])
-    bk = pick(BRAND_KEYS, 1) or pick(HERO_KEYS, 1)
+    team = ''.join('<figure class="shot rv">%s<figcaption>%s</figcaption></figure>' % (img(k, sizes='(max-width: 700px) 100vw, 33vw'), E(c))
+                   for k, c in (('consultant', 'Your Klar Consultant'), ('studio_wall', 'The studio wall: because every detail counts'), ('coat_wall', 'KlarCOAT applied by hand')))
     body = f'''
-<section class="sec"><div class="wrap split"><div class="rt">{A['intro']}</div><div class="pic rv">{img(bk[0])}</div></div></section>
+<section class="sec"><div class="wrap split"><div class="rt">{A['intro']}</div><div class="pic rv">{img('bmw_ir_lamp')}</div></div></section>
 <section class="sec alt"><div class="wrap narrow">{sections_html(A['sections'])}</div></section>
-<section class="sec"><div class="wrap narrow"><h2>Klar Details at a glance</h2>{facts}</div></section>
+<section class="sec"><div class="wrap"><div class="sec-h rv"><p class="eyebrow">The studio</p><h2>The people and the place</h2></div><div class="grid3 pics team">{team}</div></div></section>
+<section class="sec alt"><div class="wrap narrow"><h2>Klar Details at a glance</h2>{facts}</div></section>
+{find_us()}
 '''
     page('about/', A['title'], A['desc'], A['h1'], body, crumbs=[('about/', 'About')], kicker='About')
 
@@ -658,7 +690,8 @@ def contact():
 <h2>Email</h2><p><a href="mailto:{EMAIL}">{EMAIL}</a></p>
 <h2>Follow</h2><p><a href="{FB}" target="_blank" rel="noopener">Facebook</a> · <a href="{IG}" target="_blank" rel="noopener">Instagram</a> · <a href="{TT}" target="_blank" rel="noopener">TikTok</a> · <a href="{YT}" target="_blank" rel="noopener">YouTube</a></p>
 </div>
-<div class="map tall rv"><iframe title="Map to Klar Details, 48 Toh Guan Road East" src="{MAP_EMBED}" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe></div>
+<div><div class="map tall rv"><iframe title="Map to Klar Details, 48 Toh Guan Road East" src="{MAP_EMBED}" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe></div>
+<figure class="shot shop rv">{img('shopfront', sizes='(max-width: 700px) 100vw, 45vw')}<figcaption>Look for the Klar Details signboard at unit #02-124.</figcaption></figure></div>
 </div></section>
 '''
     page('contact/', K['title'], K['desc'], K['h1'], body, crumbs=[('contact/', 'Contact')], kicker='Contact', cta=False)
@@ -681,6 +714,7 @@ def products_page():
 <div class="cta-row">{wa_btn('Register interest in Klar products', 'Klar products.')}</div></div>
 <div class="pic rv">{img(pick(BRAND_KEYS, 1, 1)[0] if BRAND_KEYS else pick(HERO_KEYS, 1)[0])}</div>
 </div></section>
+<section class="sec"><div class="wrap"><div class="sec-h rv"><p class="eyebrow">The lines</p><h2>KlarCOAT and KlarSHIELD, as used in the studio</h2></div><div class="grid3 pics">{''.join('<figure class="shot rv">%s<figcaption>%s</figcaption></figure>' % (img(k, sizes='(max-width: 700px) 100vw, 33vw'), E(c)) for k, c in (('klarcoat_6h', 'KlarCOAT glass coating'), ('klarcoat_set', 'KlarCOAT for windscreen, rims and plastics'), ('klarshield_bottle', 'KlarSHIELD coating protector')))}</div></div></section>
 <section class="sec alt"><div class="wrap narrow"><h2>Questions about Klar products</h2>{faq_html(faqs)}</div></section>
 {related_services(['coating-maintenance', 'premium-hand-wash', 'graphene-coating'])}
 '''
