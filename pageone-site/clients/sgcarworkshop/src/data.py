@@ -130,7 +130,8 @@ ENTRIES = [
         phone="+6596383306", phone_show="9638 3306", whatsapp="6596383306",
         addresses=[dict(label=None, street="Blk 1017 Yishun Industrial Park A, #01-242, #01-246 and #01-252", postal="768759")],
         map_url="https://www.google.com/maps/search/?api=1&query=Wei%20Car%20Spray%20Painting%2C%201017%20Yishun%20Industrial%20Park%20A%20%2301-242%20Singapore%20768759",
-        hours=None, hours_ld=[], hours_note="Opening hours are not listed here. Please call or WhatsApp before you visit.",
+        hours=[("Mon to Fri", "9am to 7pm"), ("Sat", "9am to 5:15pm"), ("Sun", "Closed")],  # Google business listing, checked 1 Nov 2026
+        hours_ld=[(WD, "09:00", "19:00"), (SAT, "09:00", "17:15")], hours_note="Hours from the workshop's Google listing (checked 1 Nov 2026). Call or WhatsApp to confirm before you visit.",
         social=["https://www.facebook.com/share/19YgRcqvBh/", "https://www.instagram.com/weicarspraypainting/"],
         reviews=dict(text="100% recommend on Facebook from 238 reviews (checked 1 November 2026)", url="https://www.facebook.com/share/19YgRcqvBh/", label="See the Facebook page"),
         photos=[
@@ -166,7 +167,7 @@ ENTRIES = [
             phone="Facebook page and own poster (8 Apr 2026): 9638 3306 (WhatsApp Now)",
             jobs="Facebook posts (screenshots from Edwin, 1 Nov 2026)",
             faqs="All FAQ answers restate facts already on this page"),
-        left_out=["opening hours (2022 sgCarmart listing only, unconfirmed)", "all prices", "scratch, dent, bumper repair, servicing and insurance-claim services (unconfirmed)",
+        left_out=["all prices", "scratch, dent, bumper repair, servicing and insurance-claim services (unconfirmed)",
                   "paint brands", "owner name", "second phone 6759 3229 (2022 listing)"],
     ),
     dict(

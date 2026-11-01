@@ -100,7 +100,7 @@ for e, r in rows:
             if r[c] < MINIMUM[c]: notes.append('Verified %s %s < %s' % (c, r[c], MINIMUM[c]))
     if notes: bad += 1
     print('%-28s %-16s %s %s' % (e['name'], e['tier'], ' '.join('%-15s' % v(r[c]) for c in cols), ('FAIL: ' + '; '.join(notes)) if notes else 'ok'))
-# Known gap, not a failure: Wei (Verified) shows no opening hours because they are unconfirmed, so Basic pages (hours from Google) show more on that one column.
+# Wei (Verified) hours now come from its Google listing (checked 1 Nov 2026), so every tier shows hours.
 home_src = open(os.path.join(root, 'index.html'), encoding='utf-8').read()
 for e in ENTRIES:
     if e['tier'] == 'free':
