@@ -1,3 +1,5 @@
+/* hard cap: no inline SVG can ever stretch to page width, even if a rule is missing or the stylesheet is stale */
+svg{max-width:64px;max-height:64px}
 :root{--ink:#111a2c;--muted:#5a6477;--bg:#f6f5f1;--card:#fff;--line:#e3e0d6;--brand:#0f1c33;--brand2:#22407a;--amber:#c9993a;--amber-d:#8a6414;--gold-bg:#f6eedb;--wa:#0f7a43;--r:10px;--sh:0 1px 2px rgba(15,28,51,.05),0 4px 14px rgba(15,28,51,.06)}
 *{box-sizing:border-box}html{scroll-behavior:smooth;scroll-padding-top:64px}
 body{margin:0;font:15px/1.55 Inter,system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;color:var(--ink);background:var(--bg);-webkit-text-size-adjust:100%}
@@ -259,3 +261,11 @@ details:not(.menu)[open]>summary:after{transform:rotate(-135deg);margin-top:4px}
 .card.basic .addr{margin:0;font-size:.8rem;color:var(--muted)}
 .card.basic .svcline{font-size:.8rem;margin:0}
 @media (max-width:639px){.grid .card.basic .ph.btile{aspect-ratio:auto;height:auto;min-height:150px}.btile .ini{width:48px;height:48px;font-size:1rem}}
+
+.chips svg{width:16px;height:16px;flex:none}.chips a{display:inline-flex;align-items:center;gap:6px}
+.btile .bt{position:relative;display:inline-block;width:46px;height:46px;flex:none}
+.btile .ini{width:46px;height:46px;font-size:1rem}
+.btile .cic{position:absolute;right:-9px;bottom:-7px;width:26px;height:26px;border-radius:50%;box-shadow:0 1px 3px rgba(0,0,0,.2)}
+.btile .cic svg{width:18px;height:18px;max-width:18px;max-height:18px}
+@media (max-width:639px){.btile .ini{width:46px;height:46px;font-size:1rem}}
+ul.chips{list-style:none;display:flex;flex-wrap:wrap;gap:8px;padding:0;margin:14px 0}ul.chips a{padding:6px 12px;border:1px solid var(--line);border-radius:999px;background:#fff;text-decoration:none;font-size:.88rem}
