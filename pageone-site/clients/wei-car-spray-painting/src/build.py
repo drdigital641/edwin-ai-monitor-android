@@ -36,7 +36,7 @@ LIVE = False
 PREVIEW = 'https://pageonesingapore.com/preview/%s/' % SLUG
 SITE = ('https://%s/' % DOMAIN) if LIVE else PREVIEW
 UPDATED = '2026-11-01'
-V = '3'
+V = '4'
 INDEXNOW_KEY = '7c41e9a0d2b85f36a1e4c07b9d5f2e18'
 
 NAME = 'Wei Car Spray Painting'
@@ -419,7 +419,7 @@ PAINTS = [
     ('Aiika CS46 grey-blue', '#aab4c6', 'Honda Civic, November 2023', 'honda-civic-grey-blue'),
     ('Pearl white', '#f2f0ea', 'Honda Spada, February 2026', 'honda-spada-white'),
     ('Pink', '#f1a3c6', 'Mini Cooper, May 2022', 'mini-cooper-pink'),
-    ('Orange', '#ee8f1e', 'Mini Cooper (before), May 2022', 'mini-cooper-orange-before'),
+    ('Orange (before)', '#ee8f1e', 'Mini Cooper, May 2022', 'mini-cooper-pink'),
     ('Silver grey', '#a3a9b0', 'Porsche Cayenne, February 2026', 'porsche-cayenne-bodykit-side'),
 ]
 
@@ -462,9 +462,14 @@ def demo_car():
 </div>'''
 
 
+def colour_picker():
+    sw = ''.join('<button type="button" class="sw" style="--c:%s" data-job="%s" aria-label="%s: %s" title="%s, %s"></button>' % (c, k, E(n), E(j), E(n), E(j)) for n, c, j, k in PAINTS)
+    return '<div class="wrap picker"><p class="pk-label">Tap a colour to see the real job</p><div class="sws" role="group" aria-label="Colours from our jobs">%s</div><p class="pk-now" aria-live="polite"></p></div>' % sw
+
+
 def job_card(j, eager=False):
-    return ('<a class="job" href="our-work/#%s">%s<span class="job-tag">%s</span><span class="job-txt"><b>%s</b><span>%s</span><small>%s</small></span></a>'
-            % (j['k'], jimg(j['k'], '%s: %s (%s)' % (j['car'], j['work'], j['date']), eager=eager), E(j['tag']), E(j['car']), E(j['work']), E(j['date'])))
+    return ('<a class="job" data-k="%s" href="our-work/#%s">%s<span class="job-tag">%s</span><span class="job-txt"><b>%s</b><span>%s</span><small>%s</small></span></a>'
+            % (j['k'], j['k'], jimg(j['k'], '%s: %s (%s)' % (j['car'], j['work'], j['date']), eager=eager), E(j['tag']), E(j['car']), E(j['work']), E(j['date'])))
 
 
 def jobs_rail(eager=False):
@@ -511,6 +516,7 @@ def home():
 <a class="link" href="our-work/">See all jobs <i aria-hidden="true">→</i></a>
 </div>
 </div>
+{colour_picker()}
 {jobs_rail(eager=True)}
 </section>
 
