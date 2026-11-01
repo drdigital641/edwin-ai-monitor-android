@@ -1030,47 +1030,6 @@
       "short": "Kia and Hyundai parts"
     },
     {
-      "key": "klar-details",
-      "name": "Klar Details",
-      "domain": "klardetails.com.sg",
-      "url": "https://klardetails.com.sg/",
-      "industry": "Premium car detailing and coating, Toh Guan, Singapore",
-      "schema_type": "AutoWash",
-      "img": "https://cdn.jsdelivr.net/gh/drdigital641/edwin-ai-monitor-android@1ad35a2d10daebf3c0f3437a110c6b035c48ee5d/site-assets/pageone/clients/klardetails.webp",
-      "gsc_site": "sc-domain:klardetails.com.sg",
-      "launched": "2026-11-01",
-      "brand_terms": [
-        "klar",
-        "klardetails",
-        "klar details"
-      ],
-      "skip_queries": [],
-      "built": [
-        "A page for each service: ceramic and graphene coating, paint correction, interior detailing and hand wash",
-        "Area pages for Jurong East, Jurong West, Clementi and Bukit Batok",
-        "Guides for car owners on coatings and car care"
-      ],
-      "articles": 20,
-      "gsc": {
-        "record_id": null,
-        "first_day": null,
-        "clicks": 0,
-        "impressions": 0,
-        "position": 0,
-        "prev_clicks": 0,
-        "prev_impressions": 0,
-        "prev_position": 0,
-        "queries": 0,
-        "page_one": 0,
-        "top3": 0,
-        "capped": false,
-        "monthly": [],
-        "best_query": null,
-        "top_queries": []
-      },
-      "short": "car detailing"
-    },
-    {
       "key": "ev-body-parts",
       "name": "EV Body Parts",
       "domain": "evbodyparts.sg",
@@ -1113,7 +1072,7 @@
   ],
   "pipeline": {
     "_readme": "Websites being built for signed-up clients that are not live on their own domain yet. Shown only as a count (never named) next to the live count. Set by showcase_refresh.py from the Controller Client export (status activating or preview, not yet a live site here, slug not in exclude); as_of is the day the count last changed. Put Client slugs that are not signed-up clients (e.g. a demo preview) in exclude.",
-    "building": 5,
+    "building": 6,
     "as_of": "2026-11-01",
     "exclude": [
       "nanyang-carpentry",
@@ -1121,6 +1080,7 @@
       "new-age-polish-paused-7q4k",
       "sgcarworkshop"
     ],
-    "_exclude_note": "Previews built to pitch a prospect, not signed-up clients. Remove a slug from exclude the day that business signs up. new-age-polish-paused-7q4k is a duplicate Controller row of new-age-polish (already counted). sgcarworkshop is Edwin's own directory project (1 Nov 2026), not a client."
+    "_exclude_note": "Previews built to pitch a prospect, not signed-up clients. Remove a slug from exclude the day that business signs up. new-age-polish-paused-7q4k is a duplicate Controller row of new-age-polish (already counted). sgcarworkshop is Edwin's own directory project (1 Nov 2026), not a client.",
+    "_building_note": "1 Nov 2026: 6 = 5 Controller previews + Klar Details (client confirmed, but klardetails.com.sg still served the old WordPress from outside at 11:31 UTC). Add Klar back to clients once its domain serves our build."
   }
 }
