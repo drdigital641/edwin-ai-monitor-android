@@ -223,11 +223,11 @@ details:not(.menu)>summary:after{content:"";flex:none;width:8px;height:8px;borde
 details:not(.menu)[open]>summary:after{transform:rotate(-135deg);margin-top:4px}
 @media (max-width:759px){.has-bar{padding-bottom:0}.has-bar footer.ft{padding-bottom:calc(100px + env(safe-area-inset-bottom))}}
 /* Basic listings with a Google listing photo */
-.card.basic.has-photo .ph{height:auto;aspect-ratio:3/2}
-.card.basic.has-photo .tier.on-ph{top:8px;transform:none}
+.card.basic .ph{height:auto;aspect-ratio:3/2}
+.card.basic .tier.on-ph{top:8px;transform:none}
 .gph .gph-img.fit{object-fit:contain;background:#fff;padding:6px}
 .gph .gph-credit{font-size:9px}
-@media (max-width:639px){.grid .card.basic.has-photo .ph{aspect-ratio:auto}.grid .card.basic.has-photo .tier.on-ph{top:6px}}
+@media (max-width:639px){.grid .card.basic .ph{aspect-ratio:auto}.grid .card.basic .tier.on-ph{top:6px}}
 /* ---- area pages (regions, estates) ---- */
 .mcols{grid-template-columns:1fr 1fr}
 @media (min-width:640px){.mcols{grid-template-columns:1.5fr 1fr 1fr}}
@@ -239,3 +239,7 @@ details:not(.menu)[open]>summary:after{transform:rotate(-135deg);margin-top:4px}
 .mapbox{border:1px solid var(--line);border-radius:var(--r);overflow:hidden;background:#e9e6dc;aspect-ratio:16/10;max-height:380px}
 .mapbox iframe{width:100%;height:100%;border:0;display:block}
 .hero .chips{margin-top:14px}
+/* Places attribution: linked photographer + Google Maps */
+.gph .gph-credit{left:0;right:0;bottom:0;border-radius:0;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;font-size:9px;line-height:1.5;padding:2px 6px;background:rgba(0,0,0,.55)}
+.gph .gph-credit a{color:#fff;text-decoration:underline}
+.hero-ph.gph .gph-credit{font-size:11px;padding:3px 8px}

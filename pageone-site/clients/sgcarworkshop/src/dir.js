@@ -76,28 +76,44 @@ if(!sent&&window.fetch){fetch(url,{method:'POST',credentials:'omit',keepalive:tr
 }catch(x){}}
 })();
 
-/* Basic cards: 1 Google listing photo via Places API (New), shown with the photographer credit Google requires.
-   Runs only when a gmaps-key meta is present (added at go-live). Loads when the card scrolls into view. Nothing is cached. */
+/* Basic listings: one Google listing photo loaded live from Places API (New) in the visitor's browser, never copied or stored.
+   Shown with the photographer credit (linked) and a Google Maps attribution link, as the Places policy requires.
+   A listing with no stored place_id is found once by name + address (IDs only); the ID itself may be kept (localStorage). Failure leaves the letter tile. */
 (function () {
-  var m = document.querySelector('meta[name="gmaps-key"]'); if (!m || !('IntersectionObserver' in window)) return;
-  var key = m.content;
-  var io = new IntersectionObserver(function (es) {
-    es.forEach(function (en) {
-      if (!en.isIntersecting) return; io.unobserve(en.target);
-      var el = en.target, pid = el.getAttribute('data-place'); if (!pid) return;
-      fetch('https://places.googleapis.com/v1/places/' + encodeURIComponent(pid) + '?fields=photos&key=' + key)
-        .then(function (r) { return r.ok ? r.json() : null; })
-        .then(function (d) {
-          var ph = d && d.photos && d.photos[0]; if (!ph) return;
-          var img = new Image(); img.alt = ''; img.loading = 'lazy'; img.className = 'gph-img';
-          img.src = 'https://places.googleapis.com/v1/' + ph.name + '/media?maxWidthPx=480&key=' + key;
-          var a = (ph.authorAttributions || [])[0], cr = document.createElement('span'); cr.className = 'gph-credit';
-          cr.textContent = 'Photo: ' + (a ? a.displayName : 'Google') + ' via Google';
-          img.onload = function () { el.appendChild(img); el.appendChild(cr); el.classList.add('has-img'); };
-        }).catch(function () {});
-    });
-  }, { rootMargin: '200px' });
-  document.querySelectorAll('.gph[data-place]').forEach(function (el) { io.observe(el); });
+  var m = document.querySelector('meta[name="gmaps-key"]'); if (!m || !('IntersectionObserver' in window) || !window.fetch) return;
+  var key = m.content, API = 'https://places.googleapis.com/v1/';
+  function ls(k, v) { try { if (v === undefined) return localStorage.getItem(k); localStorage.setItem(k, v); } catch (x) {} return null; }
+  function findId(el) {
+    var pid = el.getAttribute('data-place'); if (pid) return Promise.resolve(pid);
+    var q = el.getAttribute('data-q'), ck = 'sgcw-pid:' + q; if (!q) return Promise.resolve(null);
+    var c = ls(ck); if (c) return Promise.resolve(c);
+    return fetch(API + 'places:searchText', { method: 'POST', headers: { 'Content-Type': 'application/json', 'X-Goog-Api-Key': key, 'X-Goog-FieldMask': 'places.id' },
+      body: JSON.stringify({ textQuery: q, maxResultCount: 1, regionCode: 'SG' }) })
+      .then(function (r) { return r.ok ? r.json() : null; })
+      .then(function (d) { var id = d && d.places && d.places[0] && d.places[0].id; if (id) ls(ck, id); return id || null; });
+  }
+  function link(href, text) { var a = document.createElement('a'); a.href = href; a.target = '_blank'; a.rel = 'noopener'; a.textContent = text; return a; }
+  function show(el) {
+    findId(el).then(function (pid) {
+      if (!pid) return null;
+      return fetch(API + 'places/' + encodeURIComponent(pid) + '?fields=photos&key=' + key).then(function (r) { return r.ok ? r.json() : null; });
+    }).then(function (d) {
+      var ph = d && d.photos && d.photos[0]; if (!ph) return;
+      var img = new Image(); img.alt = el.getAttribute('data-name') || ''; img.className = 'gph-img'; img.decoding = 'async';
+      img.referrerPolicy = 'strict-origin-when-cross-origin';
+      img.src = API + ph.name + '/media?maxWidthPx=640&key=' + key;
+      img.onload = function () {
+        var a = (ph.authorAttributions || [])[0], cr = document.createElement('span'); cr.className = 'gph-credit';
+        if (a && a.displayName) cr.appendChild(a.uri ? link(a.uri, a.displayName) : document.createTextNode(a.displayName)); else cr.appendChild(document.createTextNode('Google'));
+        cr.appendChild(document.createTextNode(' · '));
+        cr.appendChild(link(el.getAttribute('data-maps') || 'https://www.google.com/maps', 'Google Maps'));
+        el.appendChild(img); el.appendChild(cr); el.classList.add('has-img');
+        var card = el.closest('.card'); if (card) card.classList.add('has-photo');
+      };
+    }).catch(function () {});
+  }
+  var io = new IntersectionObserver(function (es) { es.forEach(function (en) { if (en.isIntersecting) { io.unobserve(en.target); show(en.target); } }); }, { rootMargin: '200px' });
+  document.querySelectorAll('.gph[data-place],.gph[data-q]').forEach(function (el) { io.observe(el); });
 })();
 /* Owner section on the listing page: ?w=<slug> names the listing in the WhatsApp message to Page One. */
 (function(){var b=document.getElementById('claim-wa');if(!b)return;var m=/[?&]w=([a-z0-9-]+)/.exec(location.search);if(!m)return;

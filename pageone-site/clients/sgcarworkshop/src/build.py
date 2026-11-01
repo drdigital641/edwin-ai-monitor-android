@@ -25,7 +25,8 @@ from PIL import Image  # noqa: E402
 SITE_NAME = 'SG Car Workshop'   # placeholder brand
 DOMAIN = 'sgcarworkshop.sg'     # not bought yet
 LIVE = False
-GOOGLE_MAPS_KEY = None  # Edwin adds a browser key (referrer-restricted, Places API (New) only) at go-live; None = placeholder photo slots on Basic cards
+# Browser key (Edwin, 1 Nov 2026): restricted to pageonesingapore.com referrers and Places API (New) only, so safe to ship in page source.
+GOOGLE_MAPS_KEY = 'AIzaSyAkMQs46QK9N2fiAqc1dmZch39hPHMzsnU'
 PREVIEW_BASE = 'https://pageonesingapore.com/preview/sgcarworkshop/'
 BASE = ('https://%s/' % DOMAIN) if LIVE else PREVIEW_BASE
 PATH_BASE = '/' if LIVE else '/preview/sgcarworkshop/'
@@ -509,25 +510,15 @@ SYN = {   # extra words people type for each service (search only, never shown)
 }
 
 
-# Google Business Profile photos supplied by Edwin (1 Nov 2026) for Basic listings. Shown instead of the letter tile.
-GPHOTO = {
-    'everest-garage': ('basic/everest-garage.webp', 'Everest Garage workshop in Kaki Bukit with a Hyundai on the lift and new shock absorbers laid out', ''),
-    'hup-soon-lee-motor-service': ('basic/hup-soon-lee-motor-service.webp', 'Hup Soon Lee Motor Service shopfront signboard in Yishun', ''),
-    'cys-automobile-services': ('basic/cys-automobile-services.webp', 'CYS Automobile Services Pte Ltd logo and Woodlands address', 'fit'),
-    'sonic-auto-garage': ('basic/sonic-auto-garage.webp', 'Sonic Auto Garage', ''),
-    'allen-motor-workshop': ('basic/allen-motor-workshop.webp', 'Allen Motor Workshop', ''),
-    'jss-motorworkz': ('basic/jss-motorworkz.webp', 'JSS MotorWorkz', ''),
-}
-GPHOTO_CARD = {  # narrower crop for the small card slot
-    'cys-automobile-services': ('basic/cys-automobile-services-mark.webp', 'CYS Automobile Services logo', 'fit'),
-}
+def gph_attrs(e):
+    """Basic photos load live from Google Places (New) in the browser; nothing is self-hosted. Listings without a stored place_id are found by name + address."""
+    ad = (e.get('addresses') or [{}])[0]
+    q = '%s %s Singapore %s' % (e['name'], ad.get('street', ''), ad.get('postal', ''))
+    return 'data-place="%s" data-q="%s" data-name="%s" data-maps="%s"' % (E(e.get('place_id', '')), E(q, True), E(e['name'], True), E(maps_url(e), True))
 
 
-def gphoto_html(e, depth, lazy=True, card=False):
-    g = (card and GPHOTO_CARD.get(e['slug'])) or GPHOTO.get(e['slug'])
-    if not g:
-        return None
-    return img_tag(g[0], g[1], depth, lazy=lazy, cls='gph-img' + (' fit' if g[2] else '')) + '<span class="gph-credit">Google listing photo</span>'
+def gph_tile(e):
+    return '<div class="tile ini" aria-hidden="true"><b>%s</b></div>' % E(e['name'][0])
 
 
 def maps_url(e):
@@ -552,12 +543,10 @@ def card(e, depth, page_path=''):
         acts = wa_btn(e, page_path, 'sm') if e.get('whatsapp') else call_btn(e, page_path, 'sm wa', 'Call ' + e['phone_show'])
         acts += '<span class="minor"><a class="btn sm ghost" href="%s" target="_blank" rel="noopener" data-cta="directions_%s">Directions</a>' % (E(maps_url(e)), e['slug'])
         acts += '<a class="btn sm ghost" href="%sworkshops/%s/" data-cta="view_%s">View</a></span>' % (pre(depth), e['slug'], e['slug'])
-        gp = gphoto_html(e, depth, card=True)
-        inner = gp if gp else '<div class="tile ini" aria-hidden="true"><b>%s</b><span class="gph-note">Google photo</span></div>' % E(e['name'][0])
-        return ('<article class="card basic%s" %s><div class="ph gph%s" data-place="%s">%s%s</div><div class="bd"><span class="tag">%s</span>'
+        return ('<article class="card basic" %s><div class="ph gph" %s>%s%s</div><div class="bd"><span class="tag">%s</span>'
                 '<h3><a href="%sworkshops/%s/">%s</a></h3>%s<p class="tx full">%s</p><div class="acts">%s</div>'
                 '%s</div></article>') % (
-            ' has-photo' if gp else '', attrs, ' has-img' if gp else '', '' if gp else E(e.get('place_id', '')), inner, tier_badge(e, 'on-ph'), E(c['short']), pre(depth), e['slug'], E(e['name']), rg, E(e['desc']), acts, owner_note(e, depth, page_path, 'claim'))
+            attrs, gph_attrs(e), gph_tile(e), tier_badge(e, 'on-ph'), E(c['short']), pre(depth), e['slug'], E(e['name']), rg, E(e['desc']), acts, owner_note(e, depth, page_path, 'claim'))
     ci = e.get('card_img')
     ph = photo_img(dict(ci, alt=ci['alt']), depth, lazy=True) if ci else tile(e)
     acts = wa_btn(e, page_path, 'sm') + (call_icon(e, page_path) if e.get('phone') else '')
@@ -731,10 +720,7 @@ def basic_page(e):
     else:
         contact_btn = call_btn(e, path, 'big wa', 'Call ' + e['phone_show'])
         contact_line = 'Call %s' % e['phone_show']
-    gp = gphoto_html(e, depth, lazy=False)
-    photo = ('<div class="hero-ph gph has-img">%s</div>' % gp) if gp else (
-        '<div class="hero-ph gph" data-place="%s"><div class="tile ini" aria-hidden="true"><b>%s</b><span class="gph-note">Google photo</span></div></div>'
-        % (E(e['place_id']), E(e['name'][0])))
+    photo = '<div class="hero-ph gph" %s>%s</div>' % (gph_attrs(e), gph_tile(e))
     svcs = ''.join('<li>%s</li>' % E(s) for s in e['services_public'])
     hours = ''.join('<dt>%s</dt><dd>%s</dd>' % (E(a), E(b)) for a, b in e['hours_rows'])
     rating = ('Rated %s from %d Google reviews (checked %s)' % (e['rating'], e['reviews'], e['checked'])) if e.get('reviews') else (
