@@ -96,3 +96,8 @@ if(!sent&&window.fetch){fetch(url,{method:'POST',credentials:'omit',keepalive:tr
   }, { rootMargin: '200px' });
   document.querySelectorAll('.gph[data-place]').forEach(function (el) { io.observe(el); });
 })();
+/* Owner section on the listing page: ?w=<slug> names the listing in the WhatsApp message to Page One. */
+(function(){var b=document.getElementById('claim-wa');if(!b)return;var m=/[?&]w=([a-z0-9-]+)/.exec(location.search);if(!m)return;
+var n;try{n=JSON.parse(b.getAttribute('data-names'))[m[1]]}catch(e){}if(!n)return;
+var f=document.getElementById('claim-for');if(f){f.querySelector('b').textContent=n;f.hidden=false}
+b.href='https://wa.me/'+b.getAttribute('data-wa')+'?text='+encodeURIComponent("Hi Page One, I'm from "+n+", about my "+b.getAttribute('data-site')+" listing.\n\n(From "+location.href.split('#')[0]+")");b.setAttribute('data-cta','claim_'+m[1])})();

@@ -67,9 +67,13 @@ def ic(k, cls=''):
 WA_SVG = ('<svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2Zm0 18.2a8.2 8.2 0 0 1-4.2-1.1l-.3-.2-3 .8.8-2.9-.2-.3A8.2 '
           '8.2 0 1 1 12 20.2Zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8s-.4-.1-.6.1-.7.8-.8 1-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.3-.4.3-.4.8-1.4.1-.2 0-.3 0-.5l-.8-1.8c-.2-.5-.4-.4-.6-.4h-.5a1 1 0 0 0-.7.3 3 3 0 0 0-.9 2.2 '
           '5.2 5.2 0 0 0 1.1 2.7 11.9 11.9 0 0 0 4.5 4c1.7.7 2.3.8 3.2.6a2.7 2.7 0 0 0 1.8-1.3 2.2 2.2 0 0 0 .2-1.3c-.1-.1-.3-.2-.5-.3Z"/></svg>')
-LOGO = ('<svg viewBox="0 0 48 48" aria-hidden="true"><rect width="48" height="48" rx="12" fill="#0f1c33"/><path d="M8 29c3-1 4-5 8-7l8-2c5 0 9 3 12 6l4 1v4H8z" fill="#fff"/>'
-        '<circle cx="16" cy="33" r="4" fill="#0f1c33" stroke="#fff" stroke-width="2"/><circle cx="33" cy="33" r="4" fill="#0f1c33" stroke="#fff" stroke-width="2"/>'
-        '<path d="M6 40h36" stroke="#c9993a" stroke-width="3" stroke-dasharray="6 4" stroke-linecap="round"/></svg>')
+# Logo mark: navy tile, gold map pin holding a hex nut ("find a workshop"). Same shape drawn in make_icons().
+MARK_PATH = ('M24 41.5L14.1 27.3A12 12 0 1 1 33.9 27.3Z'
+             'M24 13.2L29.9 16.6L29.9 23.4L24 26.8L18.1 23.4L18.1 16.6Z'
+             'M24 17.4A2.6 2.6 0 1 0 24 22.6A2.6 2.6 0 1 0 24 17.4Z')
+MARK_SVG = ('<svg viewBox="0 0 48 48" aria-hidden="true"><rect width="48" height="48" rx="12" fill="#0f1c33"/>'
+            '<path fill="#d4a64a" fill-rule="evenodd" d="%s"/></svg>' % MARK_PATH)
+LOGO = MARK_SVG
 
 _h = hashlib.sha1()
 for _f in ('dir.css', 'dir.js'):
@@ -122,10 +126,9 @@ def chip_row(depth, active=None):
 
 def list_card(depth, what):
     return ('<article class="card list rv"><div class="bd"><span class="ic">%s</span><h3>List your workshop</h3>'
-            '<p class="tx">Run a %s business in Singapore? Get a listing here. Message Page One on WhatsApp to ask how.</p>'
-            '<div class="acts"><a class="btn sm wa" href="%s" target="_blank" rel="noopener" data-cta="whatsapp_list_%s">%s WhatsApp Page One</a>'
-            '<a class="btn sm" href="%slist-your-workshop/">How it works</a></div></div></article>') % (
-        ic('plus'), E(what), E(list_wa(depth, what)), re.sub(r'[^a-z0-9]+', '-', what.lower()).strip('-'), WA_SVG, pre(depth))
+            '<p class="tx">For business owners: run a %s business in Singapore? Basic listings are free.</p>'
+            '<div class="acts"><a class="btn sm ghost" href="%slist-your-workshop/" data-cta="list_%s">How listing works</a></div></div></article>') % (
+        ic('plus'), E(what), pre(depth), re.sub(r'[^a-z0-9]+', '-', what.lower()).strip('-'))
 
 
 def crumbs(depth, trail):
@@ -144,11 +147,11 @@ def header(depth):
     p = pre(depth)
     svc = ''.join('<li><a href="%sservices/%s/">%s</a></li>' % (p, c['slug'], E(c['short'])) for c in CAT_LIST)
     reg = ''.join('<li><a href="%sregions/%s/">%s</a></li>' % (p, k, E(r['name'])) for k, r in REGION_LIST)
-    return ('<a class="skip" href="#main">Skip to content</a><header class="top"><div class="w bar"><a class="brand" href="%s" aria-label="%s home">%s<span>%s</span></a>'
+    return ('<a class="skip" href="#main">Skip to content</a><header class="top"><div class="w bar"><a class="brand" href="%s" aria-label="%s home">%s<span class="wm"><span><b>SG</b> Car Workshop</span><small>Singapore car workshop directory</small></span></a>'
             '<details class="menu"><summary aria-label="Menu">%s<span>Menu</span></summary><nav class="mpanel" aria-label="Main">'
             '<a class="mfind" href="%s#find">%s Find a workshop</a>'
             '<div class="mcols"><div class="svc-col"><h3>Services</h3><ul>%s</ul></div><div><h3>Regions</h3><ul>%s</ul></div></div>'
-            '<a class="mabout" href="%sabout/">About</a></nav></details></div></header>') % (p, E(SITE_NAME), LOGO, E(SITE_NAME), ic('menu'), p, ic('search'), svc, reg, p)
+            '<a class="mabout" href="%sabout/">About</a></nav></details></div></header>') % (p, E(SITE_NAME), LOGO, ic('menu'), p, ic('search'), svc, reg, p)
 
 
 def footer(depth):
@@ -243,7 +246,8 @@ def home():
     reg_tiles = ''.join('<li><a href="regions/%s/"><span class="ti">%s</span><span><b>%s</b><small>%d listing%s</small></span></a></li>' % (
         k, ic('pin'), E(r['name']), n, '' if n == 1 else 's') for k, r in REGION_LIST for n in [sum(1 for e in ENTRIES if k in e['regions'])])
     tiers = tiers_strip()
-    body = f'''<section class="finder" id="find"><div class="w"><h1 class="vh">Car workshops in Singapore</h1>
+    body = f'''<section class="finder" id="find"><div class="w"><div class="hero-t"><h1>Find a car workshop in Singapore</h1>
+<p>Search by service and area, then message the workshop directly on WhatsApp.</p></div>
 <p class="nojs">Browse by <a href="#services">service</a> or <a href="#regions">region</a> below.</p>
 <form class="panel" id="finder" role="search" aria-label="Find a workshop" onsubmit="return false">
 <p class="shint" id="shint"><span class="pt" aria-hidden="true">&#128070;</span> Tap and type what you need and where, in any order</p>
@@ -255,14 +259,13 @@ def home():
 <section class="feat" aria-roledescription="carousel" aria-label="Featured Premium workshops"><div class="w"><div class="sec-h"><h2>Featured Premium workshops</h2>
 <div class="car-nav"><button type="button" id="cprev" aria-label="Previous">{ic('chev-l')}</button><button type="button" id="cnext" aria-label="Next">{ic('chev-r')}</button></div></div>
 <div class="marq" id="marq"><ul class="track" id="track" aria-label="Featured workshops">{slides}</ul></div></div></section>
-<section id="workshops" style="padding-top:14px"><div class="w"><div class="grid" id="results">{cards}</div>
+<section id="workshops" class="lst"><div class="w"><div class="sec-h"><h2>All workshops</h2><a class="sec-link" href="#services">Browse by service</a></div><div class="grid" id="results">{cards}</div>
 <div class="empty" id="empty"><b>No workshops match.</b> Try fewer filters, or <a href="list-your-workshop/">list your workshop</a>.</div></div></section>
 <section class="alt" id="services"><div class="w"><h2>Browse by service</h2><ul class="tiles">{svc_tiles}</ul></div></section>
 <section id="regions"><div class="w"><h2>Browse by region</h2><ul class="tiles rg">{reg_tiles}</ul></div></section>
 <section class="alt"><div class="w"><h2>How the listings work</h2>{tiers}</div></section>
 <section><div class="w nar"><h2>Questions</h2>{faq_html}</div></section>
-<section style="padding-top:0"><div class="w"><div class="owner"><div><h2>Own a workshop? List it here</h2><p>Car workshops and car services only. Basic listings are free.</p></div>
-<div class="acts"><a class="btn sm" href="list-your-workshop/">How listing works</a><a class="btn sm wa" href="{E(list_wa(0, 'general enquiry'))}" target="_blank" rel="noopener" data-cta="whatsapp_list_home">{WA_SVG} WhatsApp Page One</a></div></div></div></section>'''
+<section class="owner-sec"><div class="w"><p class="owner-note">For business owners: Own a car workshop? Basic listings are free. <a href="list-your-workshop/" data-cta="list_home">List or manage your workshop &rarr;</a></p></div></section>'''
     ld = [
         {'@context': 'https://schema.org', '@type': 'WebSite', 'name': SITE_NAME, 'url': abs_url(''), 'inLanguage': 'en-SG'},
         {'@context': 'https://schema.org', '@type': 'Organization', 'name': SITE_NAME, 'url': abs_url(''), 'parentOrganization': {'@type': 'Organization', 'name': 'Page One Singapore', 'url': 'https://pageonesingapore.com/'}},
@@ -355,8 +358,11 @@ def call_icon(e, page_path):
     return '<a class="btn sm ico" href="tel:%s" aria-label="Call %s" %s>%s</a>' % (e['phone'], E(e['name'], True), track_attrs('call', e, page_path), ic('phone'))
 
 
-def claim_href(e, page_path):
-    return wa_link(PAGE_ONE_WA, "Hi Page One, I'm from %s, about my %s listing.\n\n(From %s)" % (e['name'], SITE_NAME, page_label(page_path)))
+def owner_note(e, depth, page_path, cls='owner-note'):
+    """Small grey line for business owners. Links to the owner section of the listing page, never to a WhatsApp,
+    so customers only ever see the workshop's own WhatsApp on a listing."""
+    return ('<p class="%s">For business owners: Is this your workshop? <a href="%slist-your-workshop/?w=%s#claim" data-cta="claim_%s" data-page="%s">Manage this listing &rarr;</a></p>'
+            % (cls, pre(depth), e['slug'], e['slug'], E(page_label(page_path))))
 
 
 SYN = {   # extra words people type for each service (search only, never shown)
@@ -384,12 +390,12 @@ def card(e, depth, page_path=''):
     rg = '<p class="meta rg">%s<span>%s</span></p>' % (ic('pin'), E(region_label(e)))
     if e['tier'] == 'free':
         acts = wa_btn(e, page_path, 'sm') if e.get('whatsapp') else call_btn(e, page_path, 'sm wa', 'Call ' + e['phone_show'])
-        acts += '<a class="btn sm ghost" href="https://www.google.com/maps?cid=%s" target="_blank" rel="noopener" data-cta="directions_%s">Directions</a>' % (e['cid'], e['slug'])
-        acts += '<a class="btn sm ghost" href="%sworkshops/%s/" data-cta="view_%s">View</a>' % (pre(depth), e['slug'], e['slug'])
+        acts += '<span class="minor"><a class="btn sm ghost" href="https://www.google.com/maps?cid=%s" target="_blank" rel="noopener" data-cta="directions_%s">Directions</a>' % (e['cid'], e['slug'])
+        acts += '<a class="btn sm ghost" href="%sworkshops/%s/" data-cta="view_%s">View</a></span>' % (pre(depth), e['slug'], e['slug'])
         return ('<article class="card basic" %s><div class="ph gph" data-place="%s"><div class="tile ini" aria-hidden="true"><b>%s</b><span class="gph-note">Google photo</span></div>%s</div><div class="bd"><span class="tag">%s</span>'
                 '<h3><a href="%sworkshops/%s/">%s</a></h3>%s<p class="tx full">%s</p><div class="acts">%s</div>'
-                '<a class="claim" href="%s" target="_blank" rel="noopener" data-cta="claim_%s">Is this your workshop? Claim or remove</a></div></article>') % (
-            attrs, E(e.get('place_id', '')), E(e['name'][0]), tier_badge(e, 'on-ph'), E(c['short']), pre(depth), e['slug'], E(e['name']), rg, E(e['desc']), acts, E(claim_href(e, page_path)), e['slug'])
+                '%s</div></article>') % (
+            attrs, E(e.get('place_id', '')), E(e['name'][0]), tier_badge(e, 'on-ph'), E(c['short']), pre(depth), e['slug'], E(e['name']), rg, E(e['desc']), acts, owner_note(e, depth, page_path, 'claim'))
     ci = e.get('card_img')
     ph = photo_img(dict(ci, alt=ci['alt']), depth, lazy=True) if ci else tile(e)
     acts = wa_btn(e, page_path, 'sm') + (call_icon(e, page_path) if e.get('phone') else '')
@@ -569,9 +575,7 @@ def basic_page(e):
     rating = 'Rated %s from %d Google reviews (checked %s)' % (e['rating'], e['reviews'], e['checked'])
     reviews = '<p class="reviews-line">%s <a href="%s" target="_blank" rel="noopener" data-cta="reviews_%s" data-tier="free" data-page="%s">%s</a></p>' % (
         ic('shield'), E(gurl), e['slug'], E(page_label(path)), E(rating))
-    claim = ('<aside class="claimbox"><h2>Is this your workshop?</h2><p>Claim it free, add your own photos, job gallery and FAQs with a Verified listing.</p>'
-             '<a class="btn amber" href="%s" target="_blank" rel="noopener" data-cta="claim_%s" data-tier="free" data-page="%s">%s Message Page One on WhatsApp</a></aside>') % (
-        E(claim_href(e, path)), e['slug'], E(page_label(path)), WA_SVG)
+    claim = owner_note(e, depth, path)
     body = f'''<div class="w nar basicpg">{cr}
 <div class="badges" style="margin-top:14px">{tier_badge(e)}<span class="tag">{E(c['short'])}</span></div>
 <h1 style="margin-top:8px">{E(e['name'])}</h1>
@@ -589,14 +593,15 @@ def basic_page(e):
 <h3>Opening hours</h3><dl class="hours">{hours}</dl>
 </section>
 {reviews}
-{claim}
 <p class="fine">Checked on Google, 1 Nov 2026. More <a href="../../services/{c['slug']}/">{E(c['name'].lower())}</a> or <a href="../../regions/{e['regions'][0]}/">{E(RN[e['regions'][0]])} region</a> workshops.</p>
+{claim}
 </div>'''
     street, postal = e['address_public'].rsplit(', Singapore ', 1)
     ld = {'@context': 'https://schema.org', '@type': 'AutoRepair', 'name': e['name'], 'url': url,
           'address': {'@type': 'PostalAddress', 'streetAddress': street, 'postalCode': postal, 'addressLocality': 'Singapore', 'addressCountry': 'SG'},
           'telephone': e['phone'], 'openingHours': e['hours_ld']}
-    bar = wabar([wa_btn(e, path) if e.get('whatsapp') else call_btn(e, path, 'wa')])
+    bar = wabar([wa_btn(e, path) if e.get('whatsapp') else call_btn(e, path, 'wa'),
+                 '<a class="btn" href="%s" target="_blank" rel="noopener" data-cta="directions_%s" data-tier="free" data-page="%s">%s Directions</a>' % (E(gurl), e['slug'], E(page_label(path)), ic('pin'))])
     desc = '%s: car workshop in %s, %s region. Address, directions, hours and Google rating. %s.' % (e['name'], e['area_label'], RN[e['regions'][0]], contact_line)
     page(path, '%s | %s Car Workshop' % (e['name'], e['area_label']), desc, body, [ld], bar=bar, h1=e['name'])
 
@@ -643,6 +648,8 @@ def list_page():
     depth = 1
     cr, crld = crumbs(depth, [('List your workshop', None)])
     wa = E(list_wa(depth, 'general enquiry'))
+    claim_generic = E(wa_link(PAGE_ONE_WA, "Hi Page One, I'm a workshop owner, about my %s listing.\n\n(From %s)" % (SITE_NAME, BASE + 'list-your-workshop/')))
+    claim_names = E(json.dumps({e['slug']: e['name'] for e in ENTRIES}), True)
     body = f'''<div class="w">{cr}
 <h1 style="margin-top:14px">List your workshop</h1>
 <p class="lede" style="font-size:1rem;max-width:720px">{E(SITE_NAME)} lists car workshops and car services in Singapore: repair, gearbox, ABS and ECU modules, spray painting and bodywork, batteries, detailing and coating, wraps and PPF, and parts. Pick the tier that fits your business.</p>
@@ -656,6 +663,11 @@ def list_page():
 <ul class="tick"><li>Your agreement in writing (WhatsApp is fine) and permission to use your photos</li><li>Business name, area, phone or WhatsApp, and the services you really offer</li><li>For Verified: your address, opening hours, a few photos of real jobs, and a review source we can link to</li></ul>
 <h2>What we do not do</h2>
 <p>We do not rank workshops, use rating or review markup, or list car dealers or insurers. A rating line is shown only when it comes from a source people can open, with its link and the date we checked. Anything we cannot confirm with you stays off the page.</p>
+<section id="claim" class="claim-sec"><h2>Already listed? Manage your listing</h2>
+<p>If your workshop is already on {E(SITE_NAME)}, message Page One to correct a detail, add your own photos, upgrade to Verified, or remove the listing. We check that you run the business before changing anything.</p>
+<p class="claim-for" id="claim-for" hidden>Listing: <b></b></p>
+<a class="btn amber big" id="claim-wa" href="{claim_generic}" data-names="{claim_names}" data-wa="{PAGE_ONE_WA}" data-site="{E(SITE_NAME)}" target="_blank" rel="noopener" data-cta="claim_owner_page">{WA_SVG} WhatsApp Page One</a>
+<p class="fine">This WhatsApp is for workshop owners only. Customers, please use the WhatsApp button on the workshop's own listing.</p></section>
 <div class="cta rv" style="margin-top:22px"><div><h2>Ask on WhatsApp</h2><p>Tell us what your workshop does and we will reply with the next step.</p></div>
 <a class="btn amber big" href="{wa}" target="_blank" rel="noopener" data-cta="whatsapp_list_page">{WA_SVG} WhatsApp Page One</a></div>
 </div>'''
@@ -753,15 +765,24 @@ def make_icons():
     """Favicon, app icons and default share image, drawn with Pillow (no external files)."""
     from PIL import ImageDraw, ImageFont
 
-    def mark(sz):
-        im = Image.new('RGB', (sz, sz), '#0f1c33')
+    def mark(sz, bg=True):
+        """Pin + hex nut mark, drawn 8x large then scaled down for smooth edges."""
+        S = 8
+        k = sz * S / 48.0
+        im = Image.new('RGBA', (sz * S, sz * S), (0, 0, 0, 0))
         d = ImageDraw.Draw(im)
-        k = sz / 48.0
-        d.rounded_rectangle([0, 0, sz - 1, sz - 1], radius=int(12 * k), fill='#0f1c33')
-        d.polygon([(8 * k, 29 * k), (16 * k, 22 * k), (24 * k, 20 * k), (36 * k, 26 * k), (40 * k, 27 * k), (44 * k, 29 * k), (44 * k, 33 * k), (8 * k, 33 * k)], fill='white')
-        for cx in (16, 33):
-            d.ellipse([(cx - 4.5) * k, 28.5 * k, (cx + 4.5) * k, 37.5 * k], fill='#0f1c33', outline='white', width=max(1, int(2 * k)))
-        d.line([(6 * k, 41 * k), (42 * k, 41 * k)], fill='#c9993a', width=max(1, int(3 * k)))
+        if bg:
+            d.rounded_rectangle([0, 0, sz * S - 1, sz * S - 1], radius=int(12 * k), fill='#0f1c33')
+        gold, navy = '#d4a64a', '#0f1c33'
+        d.ellipse([12 * k, 8 * k, 36 * k, 32 * k], fill=gold)
+        d.polygon([(14.1 * k, 27.3 * k), (33.9 * k, 27.3 * k), (24 * k, 41.5 * k)], fill=gold)
+        d.polygon([(24 * k, 13.2 * k), (29.9 * k, 16.6 * k), (29.9 * k, 23.4 * k), (24 * k, 26.8 * k), (18.1 * k, 23.4 * k), (18.1 * k, 16.6 * k)], fill=navy)
+        d.ellipse([21.4 * k, 17.4 * k, 26.6 * k, 22.6 * k], fill=gold)
+        im = im.resize((sz, sz), Image.LANCZOS)
+        if bg:
+            out = Image.new('RGB', (sz, sz), '#ffffff')
+            out.paste(im, mask=im.split()[3])
+            return out
         return im
     mark(192).save(OUT + '/assets/icon-192.png')
     mark(180).save(OUT + '/assets/apple-touch-icon.png')
@@ -771,17 +792,23 @@ def make_icons():
     d = ImageDraw.Draw(im)
     for y in range(H):
         t = y / H
-        d.line([(0, y), (W, y)], fill=(int(15 + 12 * t), int(28 + 26 * t), int(51 + 50 * t)))
-    for x in range(0, W, 80):
-        d.rectangle([x, 560, x + 50, 566], fill='#c9993a')
-    try:
-        fb = ImageFont.truetype('/usr/share/fonts/truetype/dejavu/DejaVuSans-Bold.ttf', 84)
-        fs = ImageFont.truetype('/usr/share/fonts/truetype/dejavu/DejaVuSans.ttf', 38)
-    except OSError:
-        fb = fs = ImageFont.load_default()
-    d.text((80, 190), SITE_NAME, font=fb, fill='white')
-    d.text((80, 310), 'Car workshops and car services in Singapore', font=fs, fill='#c9993a')
-    d.text((80, 370), 'Details confirmed by each business', font=fs, fill='#cdd5e6')
+        d.line([(0, y), (W, y)], fill=(int(15 + 10 * t), int(28 + 20 * t), int(51 + 40 * t)))
+    def font(bold, size):
+        for f in (('/usr/share/fonts/opentype/inter/Inter-ExtraBold.otf', '/usr/share/fonts/truetype/dejavu/DejaVuSans-Bold.ttf') if bold else
+                  ('/usr/share/fonts/opentype/inter/Inter-Regular.otf', '/usr/share/fonts/truetype/dejavu/DejaVuSans.ttf')):
+            try:
+                return ImageFont.truetype(f, size)
+            except OSError:
+                pass
+        return ImageFont.load_default()
+    m = mark(150, bg=False)
+    im.paste(m, (80, 150), m)
+    fb, fs = font(True, 76), font(False, 34)
+    d.text((260, 170), 'SG', font=fb, fill='#d4a64a')
+    d.text((260 + d.textlength('SG ', font=fb), 170), 'Car Workshop', font=fb, fill='white')
+    d.text((262, 270), 'Singapore car workshop directory', font=fs, fill='#cdd5e6')
+    d.rounded_rectangle([80, 420, 1120, 422], radius=1, fill='#2a3c5f')
+    d.text((80, 455), 'Find a workshop by service and area. WhatsApp them directly.', font=font(False, 30), fill='#d4a64a')
     im.save(OUT + '/assets/img/og-default.jpg', quality=85)
 
 

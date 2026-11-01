@@ -165,3 +165,60 @@ footer.ft{background:var(--brand);color:#c3cce0;padding:26px 0 24px;margin-top:1
 .basicpg .svc-plain{margin:0 0 6px}.basicpg .reviews-line a{color:var(--brand);text-decoration:underline}
 .claimbox{margin-top:26px;background:var(--gold-bg);border:1px solid var(--line);border-radius:14px;padding:18px}.claimbox h2{margin:0 0 4px}.claimbox p{margin:0 0 12px;font-size:.92rem}
 .basicpg .main-acts{margin-bottom:10px}
+
+/* ---- polish pass (2 Nov 2026): brand, hero, neater cards, owner line ---- */
+.bar{min-height:58px}
+.brand{gap:10px}.brand svg{width:36px;height:36px}
+.brand .wm{display:flex;flex-direction:column;font-weight:800;font-size:1.02rem;letter-spacing:-.02em;line-height:1.1;color:var(--brand)}
+.brand .wm b{color:var(--amber);font-weight:800}
+.brand .wm small{font-size:.66rem;font-weight:500;letter-spacing:0;color:var(--muted);margin-top:2px}
+.btn{white-space:nowrap}
+/* hero search */
+.finder{background:linear-gradient(160deg,#0f1c33 0%,#1a2f57 100%);padding:24px 0 24px;color:#fff}
+.hero-t{margin:0 0 16px}.hero-t h1{color:#fff;margin:0 0 6px;font-size:clamp(1.5rem,5vw,2.2rem);font-weight:800;letter-spacing:-.025em}
+.hero-t p{margin:0;color:#cdd5e6;font-size:.95rem;max-width:560px}
+.finder .nojs a{color:#fff}
+.panel{border:0;border-radius:16px;padding:16px;box-shadow:0 12px 32px rgba(0,0,0,.22)}
+.frow{margin-bottom:12px}.fbar{padding-top:4px}
+.shint{font-size:.86rem}
+@media (max-width:639px){
+ .panel .opts{flex-wrap:nowrap;overflow-x:auto;margin:0 -16px;padding:0 16px 4px;scrollbar-width:none;-webkit-mask-image:linear-gradient(90deg,#000 88%,transparent);mask-image:linear-gradient(90deg,#000 88%,transparent)}
+ .panel .opts::-webkit-scrollbar{display:none}.panel .opt{flex:none}
+}
+.opt span{padding:6px 12px;font-size:.82rem}
+/* sections */
+.feat{padding:24px 0 8px}
+.lst{padding-top:16px}
+.sec-h{margin-bottom:12px}.sec-link{font-size:.84rem;font-weight:600;color:var(--brand2);white-space:nowrap}
+.grid{gap:12px}
+.card .bd{padding:12px;gap:6px}
+.card .acts{padding-top:8px}
+.card.basic .acts .btn.wa{flex:1 1 100%}
+.minor{display:flex;gap:6px;flex:1 1 100%}.minor .btn{flex:1}
+.claim{margin-top:8px;font-size:.72rem;color:var(--muted);line-height:1.4}.claim a{color:var(--muted);text-decoration:underline}
+/* phone: one column, photo on the left */
+@media (max-width:639px){
+ .grid{grid-template-columns:1fr;gap:10px}
+ .grid .card:not(.list):not(.free-card){flex-direction:row}
+ .grid .card .ph{flex:0 0 108px;aspect-ratio:auto;align-self:stretch;min-height:120px}
+ .grid .card .ph img{position:absolute;inset:0;height:100%;aspect-ratio:auto}
+ .grid .card .ph .tile{min-height:0;height:100%;padding:8px}.grid .card .ph .tile svg{width:24px;height:24px}.grid .card .ph .tile span:not(.gph-note){display:none}
+ .grid .card .tier.on-ph{left:6px;top:6px;font-size:.55rem;padding:2px 5px}
+ .grid .card.basic .ph{height:auto}.grid .card.basic .tile{flex-direction:column;justify-content:center;padding:0}
+ .grid .card.basic .tier.on-ph{top:6px;transform:none}
+ .grid .card .bd{min-width:0;padding:10px 12px}
+ .grid .card p.tx{-webkit-line-clamp:2}
+}
+/* owner line: grey, small, last thing on the page; no WhatsApp so customers never message the wrong number */
+.owner-note{font-size:.8rem;color:var(--muted);margin:24px 0 0;padding-top:12px;border-top:1px solid var(--line)}
+.owner-note a{color:var(--muted);text-decoration:underline;font-weight:600}
+.owner-sec{padding:0 0 24px}.owner-sec .owner-note{margin-top:0}
+.claim-sec{margin:28px 0 0;background:#fff;border:1px solid var(--line);border-radius:14px;padding:18px;scroll-margin-top:72px}
+.claim-sec h2{margin-top:0}.claim-for{background:var(--gold-bg);border-radius:8px;padding:8px 12px;font-size:.92rem}
+/* sticky contact bar: always two buttons, so the phone browser's own centre scroll button never hides the only label */
+@media (max-width:759px){.has-bar{padding-bottom:calc(76px + env(safe-area-inset-bottom))}.wabar{gap:12px}.wabar .btn{min-height:48px;font-size:.95rem}}
+footer.ft{margin-top:0}
+details>summary{list-style:none;display:flex;justify-content:space-between;align-items:center;gap:12px}details>summary::-webkit-details-marker{display:none}
+details:not(.menu)>summary:after{content:"";flex:none;width:8px;height:8px;border-right:2px solid var(--amber-d);border-bottom:2px solid var(--amber-d);transform:rotate(45deg);margin-top:-4px;transition:transform .2s}
+details:not(.menu)[open]>summary:after{transform:rotate(-135deg);margin-top:4px}
+@media (max-width:759px){.has-bar{padding-bottom:0}.has-bar footer.ft{padding-bottom:calc(100px + env(safe-area-inset-bottom))}}

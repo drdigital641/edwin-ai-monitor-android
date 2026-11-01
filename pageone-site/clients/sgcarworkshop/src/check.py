@@ -105,7 +105,7 @@ home_src = open(os.path.join(root, 'index.html'), encoding='utf-8').read()
 for e in ENTRIES:
     if e['tier'] == 'free':
         m = re.search(r'<article class="card basic"[^>]*>(?:(?!</article>).)*data-cta="(?:whatsapp|call)_dir_%s"(?:(?!</article>).)*href="[^"]*workshops/%s/"' % (e['slug'], e['slug']), home_src, re.S)
-        if not m or 'Claim or remove' not in home_src: print('BASIC card incomplete (needs contact + View link)', e['slug']); bad += 1
+        if not m or 'Manage this listing' not in home_src: print('BASIC card incomplete (needs contact + View link)', e['slug']); bad += 1
         pg = open(os.path.join(root, 'workshops', e['slug'], 'index.html'), encoding='utf-8').read()
         ld = [json.loads(j) for j in re.findall(r'<script type="application/ld\+json">(.*?)</script>', pg, re.S)]
         if len(ld) != 1 or set(ld[0]) - {'@context', '@type', 'name', 'url', 'address', 'telephone', 'openingHours', 'geo'}: print('BASIC schema not minimal', e['slug']); bad += 1
@@ -116,5 +116,15 @@ for e in ENTRIES:
 sm = open(os.path.join(root, 'sitemap.xml')).read(); lt = open(os.path.join(root, 'llms.txt')).read()
 for e in ENTRIES:
     if ('workshops/%s/' % e['slug']) not in sm or ('workshops/%s/' % e['slug']) not in lt: print('NOT in sitemap/llms.txt', e['slug']); bad += 1
+# (SG Garage shares Edwin's number, so match Page One's own prefill.)
+# Customers must only see the workshop's own WhatsApp: Page One's number may appear only on owner pages.
+from data import PAGE_ONE_WA
+for dp, _, fs in os.walk(root):
+    for fn in fs:
+        if not fn.endswith('.html'): continue
+        rel = os.path.relpath(os.path.join(dp, fn), root)
+        if rel.startswith(('list-your-workshop', 'about')): continue
+        if 'wa.me/%s?text=Hi%%20Page%%20One' % PAGE_ONE_WA in open(os.path.join(dp, fn), encoding='utf-8').read():
+            print('Page One WhatsApp on a customer page:', rel); bad += 1
 print('pages checked:', len(files), 'problems:', bad)
 sys.exit(1 if bad else 0)
