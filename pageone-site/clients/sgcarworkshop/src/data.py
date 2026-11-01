@@ -14,8 +14,8 @@ tier (PLAN.md "Tiers", Edwin 1 Nov 2026, permanent rule: a premium listing never
                      "Premium", website link as a SECONDARY button below WhatsApp/Call
 """
 
-PAGE_ONE_WA = "6597856612"  # pageone-site/builder/build.py: WA = "6597856612" (Edwin / Page One Singapore)
-PAGE_ONE_WA_SHOW = "9785 6612"
+PAGE_ONE_WA = "6589976612"  # Page One / admin WhatsApp (Edwin, 1 Nov 2026: +65 8997 6612). Not SG Garage's own number.
+PAGE_ONE_WA_SHOW = "8997 6612"
 
 CATEGORIES = [
     dict(slug="spray-painting-bodywork", name="Spray painting and bodywork", short="Spray painting",

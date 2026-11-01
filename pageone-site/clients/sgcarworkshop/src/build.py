@@ -567,8 +567,11 @@ def card(e, depth, page_path=''):
     rg = '<p class="meta rg">%s<span>%s</span></p>' % (ic('pin'), E(region_label(e)))
     if e['tier'] == 'free':
         svc = ', '.join(e.get('services_public', [])[:3])
+        es0 = ESTATES.get(e['estates'][0]) if e.get('estates') else None
+        if es0 and e.get('place_id'):   # rating lookup: ONE batched search per estate, matched by place_id (dir.js); nothing is stored
+            attrs += ' data-pid="%s" data-est="%s" data-en="%s" data-lat="%s" data-lon="%s"' % (E(e['place_id']), es0['slug'], E(es0['name'], True), es0['lat'], es0['lon'])
         return ('<article class="card basic" %s><div class="ph btile" style="%s">%s%s</div><div class="bd"><span class="tag">%s</span>'
-                '<h3><a href="%sworkshops/%s/">%s</a></h3>%s<p class="addr">%s</p><p class="tx full svcline">%s</p>'
+                '<h3><a href="%sworkshops/%s/">%s</a></h3>%s<p class="addr">%s</p><p class="grating" data-rating hidden></p><p class="tx full svcline">%s</p>'
                 '<div class="acts"><a class="btn sm" href="%sworkshops/%s/" data-cta="view_%s">View details</a></div>%s</div></article>') % (
             attrs, bt_style(e), gph_tile(e), tier_badge(e, 'on-ph'), E(c['short']), pre(depth), e['slug'], E(e['name']), rg, E(e['address_public']), E(svc),
             pre(depth), e['slug'], e['slug'], owner_note(e, depth, page_path, 'claim'))

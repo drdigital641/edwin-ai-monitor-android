@@ -269,3 +269,8 @@ details:not(.menu)[open]>summary:after{transform:rotate(-135deg);margin-top:4px}
 .btile .cic svg{width:18px;height:18px;max-width:18px;max-height:18px}
 @media (max-width:639px){.btile .ini{width:46px;height:46px;font-size:1rem}}
 ul.chips{list-style:none;display:flex;flex-wrap:wrap;gap:8px;padding:0;margin:14px 0}ul.chips a{padding:6px 12px;border:1px solid var(--line);border-radius:999px;background:#fff;text-decoration:none;font-size:.88rem}
+
+/* Google rating line on Basic cards (live, never stored) */
+.grating{margin:0;font-size:.82rem;display:flex;align-items:center;gap:5px;flex-wrap:wrap}.grating[hidden]{display:none}
+.grating .stars{--p:0%;font-size:.95rem;letter-spacing:1px;line-height:1;background:linear-gradient(90deg,#f5a623 var(--p),#d6d3c8 var(--p));-webkit-background-clip:text;background-clip:text;color:transparent;-webkit-text-fill-color:transparent}
+.grating .rc{color:var(--muted)}.grating .gsrc{margin-left:2px;font-size:.7rem;font-weight:600;color:var(--muted);letter-spacing:.02em}

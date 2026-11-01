@@ -165,6 +165,50 @@ if(!sent&&window.fetch){fetch(url,{method:'POST',credentials:'omit',keepalive:tr
   /* Profile pages only: cards on list and area pages make no Places calls. */
   document.querySelectorAll('.basicpg .gph[data-place],.basicpg .gph[data-q]').forEach(function (el) { io.observe(el); });
 })();
+/* Basic cards: live Google rating + sort. Google's terms do not allow storing ratings, so nothing is stored: for each estate on the page ONE searchText
+   request (field mask places.id, places.rating, places.userRatingCount) is matched to our stored place_ids; the reply is kept in sessionStorage for this visit only.
+   Basic cards are then sorted client-side: rating high to low, then review count, unrated last. Paid cards stay above and untouched.
+   Any failure leaves the current order and no stars. List and area pages make no per-card calls. */
+(function () {
+  var m = document.querySelector('meta[name="gmaps-key"]'), cards = [].slice.call(document.querySelectorAll('.card.basic[data-pid]'));
+  if (!m || !cards.length || !window.fetch) return;
+  var key = m.content, ests = {}, MAXC = 1;   /* MAXC = Places requests per page view (the estate with the most Basic cards first) */
+  cards.forEach(function (c) { var e = c.getAttribute('data-est'); if (!e) return; if (!ests[e]) ests[e] = { n: c.getAttribute('data-en'), lat: +c.getAttribute('data-lat'), lon: +c.getAttribute('data-lon'), k: 0 }; ests[e].k++; });
+  function st(k, v) { try { if (v === undefined) return sessionStorage.getItem(k); sessionStorage.setItem(k, v); } catch (x) {} return null; }
+  function load(slug) {
+    var ck = 'sgcw-rt:' + slug, c = st(ck), e = ests[slug];
+    if (c) { try { return Promise.resolve(JSON.parse(c)); } catch (x) {} }
+    return fetch('https://places.googleapis.com/v1/places:searchText', { method: 'POST', headers: { 'Content-Type': 'application/json', 'X-Goog-Api-Key': key, 'X-Goog-FieldMask': 'places.id,places.rating,places.userRatingCount' },
+      body: JSON.stringify({ textQuery: 'car workshop ' + e.n, regionCode: 'SG', pageSize: 20, locationBias: { circle: { center: { latitude: e.lat, longitude: e.lon }, radius: 2500 } } }) })
+      .then(function (r) { return r.ok ? r.json() : null; })
+      .then(function (d) { if (!d) return null; var o = {}; (d.places || []).forEach(function (p) { if (p.rating) o[p.id] = [p.rating, p.userRatingCount || 0]; }); st(ck, JSON.stringify(o)); return o; })
+      .catch(function () { return null; });
+  }
+  var slugs = Object.keys(ests).sort(function (a, b) { return ests[b].k - ests[a].k; }).slice(0, MAXC);
+  Promise.all(slugs.map(load)).then(function (res) {
+    var map = {}, any = false;
+    res.forEach(function (o) { if (o) { any = true; for (var k in o) map[k] = o[k]; } });
+    if (!any) return;
+    cards.forEach(function (c) {
+      var r = map[c.getAttribute('data-pid')], p = c.querySelector('[data-rating]'); c._r = r || null;
+      if (!r || !p) return;
+      p.innerHTML = '<span class="stars" style="--p:' + Math.round(r[0] / 5 * 100) + '%" role="img" aria-label="Rated ' + r[0] + ' out of 5 on Google">★★★★★</span> <b>' + r[0].toFixed(1) + '</b> <span class="rc">(' + r[1] + ')</span> <span class="gsrc">Google</span>';
+      p.hidden = false;
+    });
+    var grids = [];
+    cards.forEach(function (c) { if (grids.indexOf(c.parentNode) < 0) grids.push(c.parentNode); });
+    grids.forEach(function (g) {
+      var b = [].slice.call(g.children).filter(function (x) { return x.classList.contains('card') && x.classList.contains('basic'); });
+      if (b.length < 2) return;
+      var last = b[b.length - 1], after = last.nextSibling, idx = b.map(function (x, i) { x._i = i; return x; });
+      b.sort(function (x, y) {
+        var a = x._r, z = y._r; if (!a && !z) return x._i - y._i; if (!a) return 1; if (!z) return -1;
+        return (z[0] - a[0]) || (z[1] - a[1]) || (x._i - y._i);
+      });
+      b.forEach(function (x) { g.insertBefore(x, after); });
+    });
+  });
+})();
 /* Owner sections on the list page: ?w=<slug> names the listing in the WhatsApp message to Page One (claim and removal). */
 (function(){var m=/[?&]w=([a-z0-9-]+)/.exec(location.search);if(!m)return;
 [['claim-wa','claim-for',function(n,b){return "Hi Page One, I'm from "+n+", about my "+b.getAttribute('data-site')+" listing.\n\n(From "+location.href.split('#')[0]+")"},'claim_'],
