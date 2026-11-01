@@ -243,3 +243,8 @@ details:not(.menu)[open]>summary:after{transform:rotate(-135deg);margin-top:4px}
 .gph .gph-credit{left:0;right:0;bottom:0;border-radius:0;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;font-size:9px;line-height:1.5;padding:2px 6px;background:rgba(0,0,0,.55)}
 .gph .gph-credit a{color:#fff;text-decoration:underline}
 .hero-ph.gph .gph-credit{font-size:11px;padding:3px 8px}
+
+/* compliance labels */
+.spons{display:inline-block;vertical-align:middle;margin-left:8px;padding:2px 8px;border:1px solid currentColor;border-radius:999px;font-size:.62rem;font-weight:700;letter-spacing:.06em;text-transform:uppercase;opacity:.75}
+.adnote{margin:0 0 12px}
+.owner-note .sep{opacity:.5;margin:0 2px}.owner-note .rm{font-weight:600}

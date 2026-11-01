@@ -178,7 +178,7 @@ def footer(depth):
             'WhatsApp taps are counted and reported to the business. This is a preview and the brand name is a placeholder.</p></div>'
             '<div><h3>Services</h3><ul>%s</ul></div><div><h3>Regions</h3><ul>%s</ul><h3 class="h3b">Estates</h3><ul>%s</ul></div>'
             '<div><h3>Directory</h3><ul><li><a href="%sabout/">About</a></li><li><a href="%slist-your-workshop/">List your workshop</a></li>'
-            '<li><a href="%sllms.txt">llms.txt</a></li></ul></div></div></footer>') % (E(SITE_NAME), cats, reg, est, p, p, p)
+            '<li><a href="%slist-your-workshop/#remove">Remove my listing</a></li><li><a href="%sllms.txt">llms.txt</a></li></ul></div></div></footer>') % (E(SITE_NAME), cats, reg, est, p, p, p, p)
 
 
 def wabar(items):
@@ -273,10 +273,10 @@ def home():
 <div class="frow"><span class="lab" id="lab-r">Region <small>optional, choose one or more</small></span><div class="opts" role="group" aria-labelledby="lab-r">{reg_opts}</div></div>
 <div class="fbar"><p id="count" aria-live="polite"><b>{len(ENTRIES)}</b> workshops</p><button type="button" class="linkbtn" id="reset">Clear</button></div>
 </form></div></section>
-<section class="feat" aria-roledescription="carousel" aria-label="Featured Premium workshops"><div class="w"><div class="sec-h"><h2>Featured Premium workshops</h2>
+<section class="feat" aria-roledescription="carousel" aria-label="Featured Premium workshops"><div class="w"><div class="sec-h"><h2>Featured Premium workshops <span class="spons">Sponsored</span></h2>
 <div class="car-nav"><button type="button" id="cprev" aria-label="Previous">{ic('chev-l')}</button><button type="button" id="cnext" aria-label="Next">{ic('chev-r')}</button></div></div>
 <div class="marq" id="marq"><ul class="track" id="track" aria-label="Featured workshops">{slides}</ul></div></div></section>
-<section id="workshops" class="lst"><div class="w"><div class="sec-h"><h2>All workshops</h2><a class="sec-link" href="#services">Browse by service</a></div><div class="grid" id="results">{cards}</div>
+<section id="workshops" class="lst"><div class="w"><div class="sec-h"><h2>All workshops</h2><a class="sec-link" href="#services">Browse by service</a></div><p class="fine adnote">Premium and Verified listings are paid and shown first (sponsored). Basic listings are free and compiled from public Google data.</p><div class="grid" id="results">{cards}</div>
 <div class="empty" id="empty"><b>No workshops match.</b> Try fewer filters, or <a href="list-your-workshop/">list your workshop</a>.</div></div></section>
 <section class="alt" id="services"><div class="w"><h2>Browse by service</h2><ul class="tiles">{svc_tiles}</ul></div></section>
 <section id="regions"><div class="w"><h2>Browse by area</h2><ul class="tiles rg">{reg_tiles}</ul><h3 class="sub-h">Estates and industrial areas</h3><ul class="tiles est">{est_tiles}</ul></div></section>
@@ -503,8 +503,10 @@ def call_icon(e, page_path):
 def owner_note(e, depth, page_path, cls='owner-note'):
     """Small grey line for business owners. Links to the owner section of the listing page, never to a WhatsApp,
     so customers only ever see the workshop's own WhatsApp on a listing."""
-    return ('<p class="%s">For business owners: Is this your workshop? <a href="%slist-your-workshop/?w=%s#claim" data-cta="claim_%s" data-page="%s">Manage this listing &rarr;</a></p>'
-            % (cls, pre(depth), e['slug'], e['slug'], E(page_label(page_path))))
+    rm = (' <span class="sep">&middot;</span> <a class="rm" href="%slist-your-workshop/?w=%s#remove" data-cta="remove_%s" data-page="%s">Remove my listing</a>'
+          % (pre(depth), e['slug'], e['slug'], E(page_label(page_path)))) if e['tier'] == 'free' else ''
+    return ('<p class="%s">For business owners: Is this your workshop? <a href="%slist-your-workshop/?w=%s#claim" data-cta="claim_%s" data-page="%s">Manage this listing &rarr;</a>%s</p>'
+            % (cls, pre(depth), e['slug'], e['slug'], E(page_label(page_path)), rm))
 
 
 SYN = {   # extra words people type for each service (search only, never shown)
@@ -740,6 +742,7 @@ def basic_page(e):
 <p class="lede" style="font-size:1rem">{E(e['lede'])}</p>
 <p>{E(e['area_ctx'])}</p>
 <div class="acts main-acts">{contact_btn}</div>
+<p class="fine">The button opens a chat that you start, using the number the business publishes on its Google listing. We never message workshops.</p>
 <h2>Services</h2>
 <ul class="tick svc-plain">{svcs}</ul>
 <p class="fine">From the workshop's Google listing.</p>
@@ -806,6 +809,7 @@ def list_page():
     cr, crld = crumbs(depth, [('List your workshop', None)])
     wa = E(list_wa(depth, 'general enquiry'))
     claim_generic = E(wa_link(PAGE_ONE_WA, "Hi Page One, I'm a workshop owner, about my %s listing.\n\n(From %s)" % (SITE_NAME, BASE + 'list-your-workshop/')))
+    remove_generic = E(wa_link(PAGE_ONE_WA, "Hi Page One, please remove my workshop listing from %s. Business name: \n\n(From %s)" % (SITE_NAME, BASE + 'list-your-workshop/')))
     claim_names = E(json.dumps({e['slug']: e['name'] for e in ENTRIES}), True)
     body = f'''<div class="w">{cr}
 <h1 style="margin-top:14px">List your workshop</h1>
@@ -825,6 +829,11 @@ def list_page():
 <p class="claim-for" id="claim-for" hidden>Listing: <b></b></p>
 <a class="btn amber big" id="claim-wa" href="{claim_generic}" data-names="{claim_names}" data-wa="{PAGE_ONE_WA}" data-site="{E(SITE_NAME)}" target="_blank" rel="noopener" data-cta="claim_owner_page">{WA_SVG} WhatsApp Page One</a>
 <p class="fine">This WhatsApp is for workshop owners only. Customers, please use the WhatsApp button on the workshop's own listing.</p></section>
+<section id="remove" class="claim-sec"><h2>Remove my listing</h2>
+<p>Basic listings are compiled from public Google data and are not endorsed by or arranged with the business. If you run a workshop and want your listing taken down, send us a message and we will remove it. We check that you run the business first.</p>
+<p class="claim-for" id="remove-for" hidden>Listing: <b></b></p>
+<a class="btn big" id="remove-wa" href="{remove_generic}" data-names="{claim_names}" data-wa="{PAGE_ONE_WA}" data-site="{E(SITE_NAME)}" target="_blank" rel="noopener" data-cta="remove_owner_page">{WA_SVG} WhatsApp to remove my listing</a>
+<p class="fine">This WhatsApp is for workshop owners only. You start the chat; we never message workshops first.</p></section>
 <div class="cta rv" style="margin-top:22px"><div><h2>Ask on WhatsApp</h2><p>Tell us what your workshop does and we will reply with the next step.</p></div>
 <a class="btn amber big" href="{wa}" target="_blank" rel="noopener" data-cta="whatsapp_list_page">{WA_SVG} WhatsApp Page One</a></div>
 </div>'''
@@ -841,6 +850,8 @@ def about_page():
 <p class="lede" style="font-size:1rem">{E(SITE_NAME)} is a directory of car workshops and car services in Singapore, run by Page One Singapore, a web and SEO service for small businesses.</p>
 <h2>Where the details come from</h2>
 <p>Every fact on a page comes from the business or from its public records. If a detail cannot be verified, such as a price or opening hours, we leave it out. We never copy a business's website text. We do not rank workshops or use rating markup; a rating line appears only with a source link and the date we checked.</p>
+<h2>Unclaimed listings</h2>
+<p>Basic listings that the business has not claimed are compiled from public Google data. They are free, they are not endorsed by or arranged with the business, and they can be removed on request: use <a href="../list-your-workshop/#remove">Remove my listing</a>. Phone, opening hours and rating on these listings load live from Google. Verified and Premium listings are paid, signed-up businesses and are labelled as such.</p>
 <h2>Who we list</h2>
 <p>Car workshops and car services only: repair and servicing, gearbox, ABS and ECU modules, spray painting and bodywork, batteries, detailing and coating, wraps and PPF, and parts. Car dealers and insurance are not listed.</p>
 <h2>A note on one listing</h2>

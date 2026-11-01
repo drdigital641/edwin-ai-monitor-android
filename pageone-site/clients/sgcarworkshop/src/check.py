@@ -112,6 +112,10 @@ for e in ENTRIES:
         if len(biz) != 1 or set(biz[0]) - {'@context', '@type', 'name', 'url', 'address', 'geo'}: print('BASIC schema not minimal', e['slug']); bad += 1
         for needle in ('data-cta="claim_%s"' % e['slug'], 'Is this your workshop?', 'data-live="contact"', 'data-live="hours"', 'data-live="rating"'):
             if needle not in pg: print('BASIC page missing', needle, e['slug']); bad += 1
+        txt = re.sub(r'\s+', ' ', re.sub(r'<[^>]+>', ' ', re.sub(r'<(script|style).*?</\1>', '', pg, flags=re.S)))
+        for w in re.findall(r'\b(partner\w*|verified|recommended by|trusted|confirmed|endorse\w*|official\w*|approved|authori[sz]ed|certified)\b', txt, re.I):
+            print('BASIC page has endorsement wording', w, e['slug']); bad += 1
+        if 'Remove my listing' not in pg or 'list-your-workshop/?w=%s#remove' % e['slug'] not in pg: print('BASIC page missing Remove my listing link', e['slug']); bad += 1
         for stored in ('tel:+', 'telephone', 'openingHours', 'ratingValue', 'reviewCount'):
             if stored in pg: print('BASIC page stores a live-only field', stored, e['slug']); bad += 1
         if re.search(r'wa\.me/\d', pg): print('BASIC page stores a phone number', e['slug']); bad += 1
@@ -164,5 +168,14 @@ for dp, _, fs in os.walk(root):
         if fn.endswith(('.html', '.txt')) and re.search(r'confirmed (with|by) (each|the) business|business confirms|checked with the business', open(os.path.join(dp, fn), encoding='utf-8').read(), re.I):
             print('CONFIRMATION CLAIM in', os.path.relpath(os.path.join(dp, fn), root)); bad += 1
 if os.path.isdir(os.path.join(root, 'regions')) is False: print('old /regions/ redirect pages missing'); bad += 1
+
+# Compliance: footer + About + Sponsored labels
+for rel in ('index.html', 'about/index.html', 'list-your-workshop/index.html'):
+    t = open(os.path.join(root, rel), encoding='utf-8').read()
+    if 'list-your-workshop/#remove' not in t and rel != 'list-your-workshop/index.html': print('footer Remove my listing link missing', rel); bad += 1
+about = open(os.path.join(root, 'about/index.html'), encoding='utf-8').read()
+if 'compiled from public Google data' not in about or 'removed on request' not in about: print('About page missing unclaimed-listing note'); bad += 1
+if 'id="remove"' not in open(os.path.join(root, 'list-your-workshop/index.html'), encoding='utf-8').read(): print('list page missing #remove section'); bad += 1
+if 'Sponsored' not in open(os.path.join(root, 'index.html'), encoding='utf-8').read(): print('home carousel not labelled Sponsored'); bad += 1
 print('pages checked:', len(files), 'problems:', bad)
 sys.exit(1 if bad else 0)

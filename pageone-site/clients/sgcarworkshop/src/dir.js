@@ -164,8 +164,10 @@ if(!sent&&window.fetch){fetch(url,{method:'POST',credentials:'omit',keepalive:tr
   var io = new IntersectionObserver(function (es) { es.forEach(function (en) { if (en.isIntersecting) { io.unobserve(en.target); show(en.target); } }); }, { rootMargin: '200px' });
   document.querySelectorAll('.gph[data-place],.gph[data-q]').forEach(function (el) { io.observe(el); });
 })();
-/* Owner section on the listing page: ?w=<slug> names the listing in the WhatsApp message to Page One. */
-(function(){var b=document.getElementById('claim-wa');if(!b)return;var m=/[?&]w=([a-z0-9-]+)/.exec(location.search);if(!m)return;
-var n;try{n=JSON.parse(b.getAttribute('data-names'))[m[1]]}catch(e){}if(!n)return;
-var f=document.getElementById('claim-for');if(f){f.querySelector('b').textContent=n;f.hidden=false}
-b.href='https://wa.me/'+b.getAttribute('data-wa')+'?text='+encodeURIComponent("Hi Page One, I'm from "+n+", about my "+b.getAttribute('data-site')+" listing.\n\n(From "+location.href.split('#')[0]+")");b.setAttribute('data-cta','claim_'+m[1])})();
+/* Owner sections on the list page: ?w=<slug> names the listing in the WhatsApp message to Page One (claim and removal). */
+(function(){var m=/[?&]w=([a-z0-9-]+)/.exec(location.search);if(!m)return;
+[['claim-wa','claim-for',function(n,b){return "Hi Page One, I'm from "+n+", about my "+b.getAttribute('data-site')+" listing.\n\n(From "+location.href.split('#')[0]+")"},'claim_'],
+ ['remove-wa','remove-for',function(n,b){return "Hi Page One, please remove the "+n+" listing from "+b.getAttribute('data-site')+". I run this business.\n\n(From "+location.href.split('#')[0]+")"},'remove_']].forEach(function(c){
+var b=document.getElementById(c[0]);if(!b)return;var n;try{n=JSON.parse(b.getAttribute('data-names'))[m[1]]}catch(e){}if(!n)return;
+var f=document.getElementById(c[1]);if(f){f.querySelector('b').textContent=n;f.hidden=false}
+b.href='https://wa.me/'+b.getAttribute('data-wa')+'?text='+encodeURIComponent(c[2](n,b));b.setAttribute('data-cta',c[3]+m[1])})})();
