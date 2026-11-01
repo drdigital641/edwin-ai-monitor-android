@@ -1,0 +1,29 @@
+# SG Car Workshop
+
+> A directory of car workshops and car services in Singapore, run by Page One Singapore. Entries use details confirmed by each business. No ratings or reviews.
+
+Last updated: 2026-11-01
+
+## Services
+- [Spray painting and bodywork](https://pageonesingapore.com/preview/sgcarworkshop/services/spray-painting-bodywork/): Respray, colour change and body kit work in a spray booth.
+- [Gearbox repair](https://pageonesingapore.com/preview/sgcarworkshop/services/gearbox-repair/): Automatic gearbox diagnosis, repair, servicing and upgrades.
+- [ABS, ECU and module repair](https://pageonesingapore.com/preview/sgcarworkshop/services/abs-ecu-module-repair/): Repair of ABS pumps and control modules instead of costly replacement.
+- [Car battery replacement](https://pageonesingapore.com/preview/sgcarworkshop/services/car-battery/): Battery testing and replacement, at a workshop or where your car is.
+- [Car detailing and coating](https://pageonesingapore.com/preview/sgcarworkshop/services/car-detailing-coating/): Grooming, steam cleaning, fumigation and odour removal for your car.
+- [Car wrap and PPF](https://pageonesingapore.com/preview/sgcarworkshop/services/car-wrap-ppf/): Colour change wraps, paint protection film and window film.
+- [Car parts](https://pageonesingapore.com/preview/sgcarworkshop/services/car-parts/): Parts shops for specific makes, with models and part types to browse.
+- [General servicing and repair](https://pageonesingapore.com/preview/sgcarworkshop/services/general-servicing-repair/): Everyday servicing and repairs: battery checks, alternators, aircon and more.
+
+## Listings
+- [Wei Car Spray Painting](https://pageonesingapore.com/preview/sgcarworkshop/workshops/wei-car-spray-painting/): Spray painting and bodywork, Yishun
+- [SG Garage](https://pageonesingapore.com/preview/sgcarworkshop/workshops/sg-garage/): General servicing and repair, Ang Mo Kio (own website: https://sggarage.com/)
+- [Jacky Gearbox](https://pageonesingapore.com/preview/sgcarworkshop/workshops/jacky-gearbox/): Gearbox repair, Woodlands (own website: https://jackygearbox.com/)
+- [The ECU Clinic](https://pageonesingapore.com/preview/sgcarworkshop/workshops/the-ecu-clinic/): ABS, ECU and module repair, Kaki Bukit (own website: https://theecuclinicsg.com/)
+- [Wrapstar Autostyle](https://pageonesingapore.com/preview/sgcarworkshop/workshops/wrapstar-autostyle/): Car wrap and PPF, Yishun (own website: https://wrapstarautostyle.com/)
+- [Battery Rescue SG](https://pageonesingapore.com/preview/sgcarworkshop/workshops/battery-rescue-sg/): Car battery replacement, Onsite, north and north-east Singapore (own website: https://batteryrescue.sg/)
+- [Cleanic Detailing](https://pageonesingapore.com/preview/sgcarworkshop/workshops/cleanic-detailing/): Car detailing and coating, Mobile service (own website: https://cleanicdetailing.com/)
+- [Autotex](https://pageonesingapore.com/preview/sgcarworkshop/workshops/autotex/): Car parts, Kaki Bukit (own website: https://autotexautoparts.com.sg/)
+
+## More
+- [List your workshop](https://pageonesingapore.com/preview/sgcarworkshop/list-your-workshop/)
+- [About](https://pageonesingapore.com/preview/sgcarworkshop/about/)
