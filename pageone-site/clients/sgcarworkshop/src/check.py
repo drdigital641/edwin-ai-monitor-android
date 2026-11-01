@@ -54,7 +54,7 @@ def audit(a):
     jobs = len(re.findall(r'<figure class="rv job">', a))
     illus = len(re.findall(r'<figure class="rv illus">', a))
     return {
-        'photos': jobs + len(re.findall(r'class="hero-ph(?: gph)?"[^>]*>(?:<img|<div class="tile ini")', a)),
+        'photos': jobs + len(re.findall(r'class="hero-ph(?: gph)?(?: has-img)?"[^>]*>(?:<img|<div class="tile ini")', a)),
         'services_detail': len(re.findall(r'<li class="svc ', a)),
         'faqs': len(re.findall(r'<details class="faq">', a)),
         'gallery': jobs + illus,

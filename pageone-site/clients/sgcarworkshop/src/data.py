@@ -502,6 +502,19 @@ BASIC = [
          phone="+6562192098", phone_show="6219 2098", whatsapp=None, cid="10239000617827855461",
          desc="Woodlands workshop for servicing and repairs that also handles accident reporting and motor insurance claims.",
          source="Google business listing cid 10239000617827855461, checked 1 Nov 2026"),
+    # Added 1 Nov 2026 from details Edwin sent (Google business listings). WhatsApp only where Edwin said the number takes WhatsApp.
+    dict(slug="sonic-auto-garage", place_id="ChIJOdFuZBkZ2jERzzREQDSArDQ", name="Sonic Auto Garage", area_label="Ubi", regions=["central"], category="general-servicing-repair",
+         phone="+6588560121", phone_show="8856 0121", whatsapp=None, cid=None,
+         desc="Car servicing and repair workshop in Paya Ubi Industrial Park, with gearbox, aircon, tyre and battery work, plus towing and accident claims.",
+         source="Google business listing place_id ChIJOdFuZBkZ2jERzzREQDSArDQ, details from Edwin 1 Nov 2026"),
+    dict(slug="allen-motor-workshop", place_id="", name="Allen Motor Workshop", area_label="Sin Ming", regions=["central"], category="general-servicing-repair",
+         phone="+6594521771", phone_show="9452 1771", whatsapp=None, cid="4502333234277743988",
+         desc="Car servicing and repair workshop in Sin Ming Industrial Estate Sector C.",
+         source="Google business listing cid 4502333234277743988, details from Edwin 1 Nov 2026"),
+    dict(slug="jss-motorworkz", place_id="", name="JSS MotorWorkz", area_label="Toh Guan", regions=["west"], category="general-servicing-repair",
+         phone="+6583231517", phone_show="8323 1517", whatsapp="6583231517", cid="75407007477044089", site="https://jssmotorworkz.com/",
+         desc="Workshop at Enterprise Hub, Toh Guan, for servicing, engine and gearbox overhauls, diagnostics, aircon and walnut blasting.",
+         source="Google business listing cid 75407007477044089, details from Edwin 1 Nov 2026"),
 ]
 # Extra public facts from basic-run/2026-11-01.json (Google business listings, checked 1 Nov 2026). hours_rows is the display form; hours_ld the
 # schema.org openingHours form. Hup Soon Lee's Monday closing time is unclear on Google, so Monday is shown as "from 9am" and left out of the schema.
@@ -534,6 +547,33 @@ _BX = {
         lede=("CYS Automobile Services is a servicing and repair workshop on level 7 of 38 Woodlands Industrial Park E1. "
               "Its Google listing also mentions accident reporting, motor insurance claims, vehicle inspection and vehicle rental. Call to ask which of these fits your car."),
         area_ctx="Woodlands is in the North planning region of Singapore, alongside Yishun, Sembawang and Kranji."),
+    "sonic-auto-garage": dict(
+        address_public="53 Ubi Ave 1, #01-21 Paya Ubi Industrial Park, Singapore 408934", rating="5.0", reviews=26, checked="1 Nov 2026",
+        hours_rows=[("Mon to Sat", "9:30am to 6:30pm"), ("Sun", "Closed")],
+        hours_ld=["Mo-Sa 09:30-18:30"],
+        services_public=["General servicing and repair", "Brakes", "Diagnostics", "Gearbox", "Car aircon", "Tyres and batteries", "Towing and accident claims"],
+        services_source="Google listing, details from Edwin",
+        lede=("Sonic Auto Garage is a car servicing and repair workshop at unit #01-21 of Paya Ubi Industrial Park, 53 Ubi Avenue 1. "
+              "Its Google listing covers servicing, brakes, diagnostics, gearbox, aircon, tyres and batteries, as well as towing and accident claims. Call to book your car in."),
+        area_ctx="Ubi is in the Geylang planning area, part of the Central region of Singapore."),
+    "allen-motor-workshop": dict(
+        address_public="1 Sin Ming Industrial Estate Sector C, #01-127, Singapore 575636", rating="4.9", reviews=50, checked="1 Nov 2026",
+        hours_rows=[("Mon to Fri", "9am to 6pm"), ("Sat", "9am to 3pm"), ("Sun", "Closed")],
+        hours_ld=["Mo-Fr 09:00-18:00", "Sa 09:00-15:00"],
+        services_public=["Car servicing", "Car repair"],
+        services_source="Google listing, details from Edwin",
+        lede=("Allen Motor Workshop is a car servicing and repair workshop at unit #01-127, 1 Sin Ming Industrial Estate Sector C. "
+              "Call to ask about servicing or a repair for your car, or tap Directions to find the unit."),
+        area_ctx="Sin Ming is in the Bishan planning area, part of the Central region of Singapore."),
+    "jss-motorworkz": dict(
+        address_public="48 Toh Guan Road East, #02-140 Enterprise Hub, Singapore 608586", rating="4.9", reviews=None, checked="1 Nov 2026",
+        hours_rows=[("Mon to Sat", "9am to 6pm"), ("Sun", "Closed")],
+        hours_ld=["Mo-Sa 09:00-18:00"],
+        services_public=["Servicing", "Engine repair and overhaul", "Gearbox repair and overhaul", "Diagnostics", "Car aircon", "Walnut blasting", "Tyres and batteries"],
+        services_source="Google listing, details from Edwin",
+        lede=("JSS MotorWorkz is a workshop on level 2 of Enterprise Hub, 48 Toh Guan Road East. "
+              "Its Google listing covers servicing, engine and gearbox repair and overhauls, diagnostics, aircon, walnut blasting, tyres and batteries. Message the workshop on WhatsApp to ask about your car."),
+        area_ctx="Toh Guan is in the Jurong East planning area, part of the West region of Singapore."),
 }
 for _b in BASIC:
     _b.update(_BX[_b["slug"]])

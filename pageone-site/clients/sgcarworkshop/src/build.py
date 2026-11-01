@@ -308,7 +308,7 @@ def tier_badge(e_or_tier, cls=''):
     return '<span class="tier t-%s%s">%s</span>' % (t, (' ' + cls) if cls else '', E(TIERS[t]['badge']))
 
 
-ASK = {'everest-garage': 'servicing or repair for my car', 'hup-soon-lee-motor-service': 'servicing or repair for my car', 'cys-automobile-services': 'servicing or repair for my car', 'sg-garage': 'my car', 'cleanic-detailing': 'cleaning or fumigation for my car', 'autotex': 'a part for my car',
+ASK = {'sonic-auto-garage': 'servicing or repair for my car', 'allen-motor-workshop': 'servicing or repair for my car', 'jss-motorworkz': 'servicing or repair for my car', 'everest-garage': 'servicing or repair for my car', 'hup-soon-lee-motor-service': 'servicing or repair for my car', 'cys-automobile-services': 'servicing or repair for my car', 'sg-garage': 'my car', 'cleanic-detailing': 'cleaning or fumigation for my car', 'autotex': 'a part for my car',
        'battery-rescue-sg': 'a battery for my car', 'wei-car-spray-painting': 'a spray painting job'}
 
 
@@ -382,6 +382,9 @@ GPHOTO = {
     'everest-garage': ('basic/everest-garage.webp', 'Everest Garage workshop in Kaki Bukit with a Hyundai on the lift and new shock absorbers laid out', ''),
     'hup-soon-lee-motor-service': ('basic/hup-soon-lee-motor-service.webp', 'Hup Soon Lee Motor Service shopfront signboard in Yishun', ''),
     'cys-automobile-services': ('basic/cys-automobile-services.webp', 'CYS Automobile Services Pte Ltd logo and Woodlands address', 'fit'),
+    'sonic-auto-garage': ('basic/sonic-auto-garage.webp', 'Sonic Auto Garage', ''),
+    'allen-motor-workshop': ('basic/allen-motor-workshop.webp', 'Allen Motor Workshop', ''),
+    'jss-motorworkz': ('basic/jss-motorworkz.webp', 'JSS MotorWorkz', ''),
 }
 GPHOTO_CARD = {  # narrower crop for the small card slot
     'cys-automobile-services': ('basic/cys-automobile-services-mark.webp', 'CYS Automobile Services logo', 'fit'),
@@ -393,6 +396,13 @@ def gphoto_html(e, depth, lazy=True, card=False):
     if not g:
         return None
     return img_tag(g[0], g[1], depth, lazy=lazy, cls='gph-img' + (' fit' if g[2] else '')) + '<span class="gph-credit">Google listing photo</span>'
+
+
+def maps_url(e):
+    """Google Maps link for a Basic listing: by cid when we have it, else by place_id."""
+    if e.get('cid'):
+        return 'https://www.google.com/maps?cid=%s' % e['cid']
+    return 'https://www.google.com/maps/search/?api=1&query=%s&query_place_id=%s' % (quote(e['name']), e['place_id'])
 
 
 def card_search(e):
@@ -408,7 +418,7 @@ def card(e, depth, page_path=''):
     rg = '<p class="meta rg">%s<span>%s</span></p>' % (ic('pin'), E(region_label(e)))
     if e['tier'] == 'free':
         acts = wa_btn(e, page_path, 'sm') if e.get('whatsapp') else call_btn(e, page_path, 'sm wa', 'Call ' + e['phone_show'])
-        acts += '<span class="minor"><a class="btn sm ghost" href="https://www.google.com/maps?cid=%s" target="_blank" rel="noopener" data-cta="directions_%s">Directions</a>' % (e['cid'], e['slug'])
+        acts += '<span class="minor"><a class="btn sm ghost" href="%s" target="_blank" rel="noopener" data-cta="directions_%s">Directions</a>' % (E(maps_url(e)), e['slug'])
         acts += '<a class="btn sm ghost" href="%sworkshops/%s/" data-cta="view_%s">View</a></span>' % (pre(depth), e['slug'], e['slug'])
         gp = gphoto_html(e, depth, card=True)
         inner = gp if gp else '<div class="tile ini" aria-hidden="true"><b>%s</b><span class="gph-note">Google photo</span></div>' % E(e['name'][0])
@@ -581,7 +591,7 @@ def basic_page(e):
     path = 'workshops/%s/' % e['slug']
     url = abs_url(path)
     cr, _ = crumbs(depth, [(c['name'], 'services/%s/' % c['slug']), (e['name'], None)])
-    gurl = 'https://www.google.com/maps?cid=%s' % e['cid']
+    gurl = maps_url(e)
     if e.get('whatsapp'):
         contact_btn = wa_btn(e, path, 'big', 'WhatsApp ' + e['phone_show'])
         contact_line = 'WhatsApp %s' % e['phone_show']
@@ -594,10 +604,13 @@ def basic_page(e):
         % (E(e['place_id']), E(e['name'][0])))
     svcs = ''.join('<li>%s</li>' % E(s) for s in e['services_public'])
     hours = ''.join('<dt>%s</dt><dd>%s</dd>' % (E(a), E(b)) for a, b in e['hours_rows'])
-    rating = 'Rated %s from %d Google reviews (checked %s)' % (e['rating'], e['reviews'], e['checked'])
+    rating = ('Rated %s from %d Google reviews (checked %s)' % (e['rating'], e['reviews'], e['checked'])) if e.get('reviews') else (
+        'Rated %s on Google (checked %s)' % (e['rating'], e['checked']))
     reviews = '<p class="reviews-line">%s <a href="%s" target="_blank" rel="noopener" data-cta="reviews_%s" data-tier="free" data-page="%s">%s</a></p>' % (
         ic('shield'), E(gurl), e['slug'], E(page_label(path)), E(rating))
     claim = owner_note(e, depth, path)
+    site_btn = (' <a class="btn ghost" href="%s" target="_blank" rel="noopener" data-cta="website_%s" data-tier="free">%s %s</a>' % (
+        E(e['site']), e['slug'], ic('out'), E(e['site'].split('//')[1].strip('/')))) if e.get('site') else ''
     body = f'''<div class="w nar basicpg">{cr}
 <div class="badges" style="margin-top:14px">{tier_badge(e)}<span class="tag">{E(c['short'])}</span></div>
 <h1 style="margin-top:8px">{E(e['name'])}</h1>
@@ -611,7 +624,7 @@ def basic_page(e):
 <p class="fine">From the workshop's Google listing.</p>
 <section id="find" class="findus"><h2>Find us</h2>
 <ul class="facts"><li data-addr>{ic('pin')}<span>{E(e['address_public'])}</span></li><li>{ic('phone')}<span>{E(contact_line)}</span></li></ul>
-<p style="margin:10px 0"><a class="btn" href="{gurl}" target="_blank" rel="noopener" data-cta="directions_{e['slug']}" data-tier="free" data-page="{E(page_label(path))}" data-map>{ic('pin')} Directions</a></p>
+<p style="margin:10px 0"><a class="btn" href="{gurl}" target="_blank" rel="noopener" data-cta="directions_{e['slug']}" data-tier="free" data-page="{E(page_label(path))}" data-map>{ic('pin')} Directions</a>{site_btn}</p>
 <h3>Opening hours</h3><dl class="hours">{hours}</dl>
 </section>
 {reviews}
