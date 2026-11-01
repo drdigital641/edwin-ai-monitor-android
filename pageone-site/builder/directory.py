@@ -3,14 +3,14 @@
 # /directory/ hub and links to no directory URL. The listing template is standalone: builder/directory_listing.py.
 # Facts rule: no invented price, no promise of leads or rankings. Run from build.py (exec) after lead_gen.py.
 
-DIRECTORY_PRICE = None   # monthly price in S$ as a number (e.g. 30) once Edwin decides; None = "ask us on WhatsApp"
+DIRECTORY_PRICE = 20     # S$/month, Premium directory listing (Edwin, 1 Nov 2026). Not the old S$20 early-bird SEO plan. None = "ask us on WhatsApp"
 DIRECTORY_DOMAIN = None  # e.g. "sgcarworkshop.sg" once bought; None = not named on the site yet
 
 _DIR_WA_MSG = "Hi Edwin, I'd like to ask about the directory listing plan."
 
 
 def _dir_price_text():
-    return "Ask us for the directory price on WhatsApp" if DIRECTORY_PRICE is None else f"S${DIRECTORY_PRICE} a month"
+    return "Ask us for the directory price on WhatsApp" if DIRECTORY_PRICE is None else f"Premium listing S${DIRECTORY_PRICE}/month"
 
 
 def _dir_where():
@@ -29,7 +29,7 @@ def _dir_btns(source):
 DIR_URL = "/directory-listing/"
 DIR_FAQ = [
     ("How much does a directory listing cost?",
-     f"{_dir_price_text()}. The own-domain plan is S$50 a month."),
+     f"A basic listing card is free. The Premium listing page is S${DIRECTORY_PRICE} a month. This is the directory Premium listing, not the earlier S$20 early-bird SEO plan. The own-website plan is S$50 a month."),
     ("Do I need to buy a domain?",
      "No. We set up your listing page and keep it running. You don't buy, register or renew a domain for it."),
     ("Will a listing bring me enquiries?",
@@ -47,13 +47,13 @@ _dir_table = "\n".join(f'              <tr><th scope="row">{a}</th><td>{b}</td><
 
 page("directory-listing/index.html",
      "Directory Listing Plan: One Page for Your Business",
-     "No website or domain of your own? Get one listing page with your photos, services, hours and WhatsApp and call buttons. Ask us for the price.",
+     "No website or domain of your own? Get one listing page with your photos, services, hours and WhatsApp and call buttons. Premium listing S$20/month.",
      [_faq_ld(DIR_FAQ)],
      hero("Directory listing", "Directory listing plan",
           "No website of your own? Get a listing page instead.",
           "A directory listing is one page about your business: your photos, services, area and opening hours, with WhatsApp and call buttons. "
           "You don't buy a domain, and we look after the page.",
-          f'<p class="hero-price"><b>{_dir_price_text()}</b></p>',
+          f'<p class="hero-price"><b>{_dir_price_text()}</b> · free basic card · own website S$50/month</p>',
           buttons=False).replace('</p>\n      </div>\n    </section>', '</p>' + _dir_btns("directory, top") + '\n      </div>\n    </section>', 1) + f"""
 
     <section class="section">

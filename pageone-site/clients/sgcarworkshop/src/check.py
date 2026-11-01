@@ -42,5 +42,38 @@ for f in sorted(files):
         if not os.path.isfile(fp): print('BROKEN', rel, '->', l); bad += 1
     if rel == 'index.html': print('home visible words:', len(re.findall(r"\w+", txt)))
     if rel.startswith('workshops/wei'): print('wei visible words:', len(re.findall(r"\w+", txt)))
+
+# ---- Tier audit (PLAN.md Tiers, permanent rule): a premium page must never have less than Wei's page or than a free card.
+sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+from data import ENTRIES, TIERS
+CRIT = ['photos>=3', 'phone', 'whatsapp', 'address', 'map', 'services>=3', 'faqs>=3', 'reviews']
+def audit(html_src):
+    a = html_src
+    return {
+        'photos>=3': len(re.findall(r'<figure class="rv job">', a)) + (1 if 'class="hero-ph"><img' in a else 0) >= 3,
+        'phone': bool(re.search(r'href="tel:\+\d+"', a)),
+        'whatsapp': bool(re.search(r'href="https://wa\.me/\d+\?text=', a)),
+        'address': 'data-addr' in a,
+        'map': 'data-map' in a,
+        'services>=3': len(re.findall(r'<li class="svc ', a)) >= 3,
+        'faqs>=3': len(re.findall(r'<details class="faq">', a)) >= 3,
+        'reviews': 'class="reviews-line"' in a,
+    }
+FREE_CARD = {c: False for c in CRIT}   # a free card: name, description, categories, area, website link only
+rows, wei = [], None
+for e in ENTRIES:
+    f = os.path.join(root, 'workshops', e['slug'], 'index.html')
+    r = audit(open(f, encoding='utf-8').read()) if os.path.isfile(f) else {c: False for c in CRIT}
+    if e['tier'] == 'premium' and e['slug'].startswith('wei'): wei = r
+    rows.append((e, r))
+baseline = {c: (wei or {}).get(c, True) for c in CRIT}
+print('\nTier audit (columns: ' + ', '.join(CRIT) + ')')
+print('%-24s %-18s %s  %s' % ('listing', 'tier', ' '.join('%-12s' % c for c in CRIT), 'score'))
+for e, r in rows:
+    miss = [c for c in CRIT if not r[c]]
+    score = sum(r.values())
+    fail = e['tier'] != 'free' and (score < sum(baseline.values()) or score <= sum(FREE_CARD.values()) or bool(miss))
+    if fail: bad += 1
+    print('%-24s %-18s %s  %d/8 %s' % (e['name'], e['tier'], ' '.join('%-12s' % ('yes' if r[c] else 'NO') for c in CRIT), score, ('FAIL: missing ' + ', '.join(miss)) if fail else 'ok'))
 print('pages checked:', len(files), 'problems:', bad)
 sys.exit(1 if bad else 0)

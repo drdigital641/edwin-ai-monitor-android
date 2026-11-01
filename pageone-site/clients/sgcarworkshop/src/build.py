@@ -18,11 +18,7 @@ from urllib.parse import quote
 HERE = os.path.dirname(os.path.abspath(__file__))
 sys.path.insert(0, HERE)
 sys.path.insert(0, os.path.join(HERE, '..', '..', '..', 'builder'))
-from data import ENTRIES, CATEGORIES, AREAS, PAGE_ONE_WA, PAGE_ONE_WA_SHOW  # noqa: E402
-try:
-    from directory_listing import _jsonld as _base_jsonld  # reuse the shared LocalBusiness builder (no ratings)
-except ImportError:  # copy of this folder outside the repo
-    _base_jsonld = None
+from data import ENTRIES, CATEGORIES, AREAS, PAGE_ONE_WA, PAGE_ONE_WA_SHOW, TIERS, PRICE_NOTE, FREE_EXAMPLE  # noqa: E402
 from PIL import Image  # noqa: E402
 
 SITE_NAME = 'SG Car Workshop'   # placeholder brand
@@ -116,23 +112,6 @@ def chip_row(depth, active=None):
     return '<ul class="chips" aria-label="Browse by service">%s</ul>' % li
 
 
-def card(e, depth):
-    c = CAT[e['category']]
-    search = ' '.join([e['name'], c['name'], e['area_label'], ' '.join(e['services']), e.get('domain', ''), ' '.join(AREAS[a]['name'] for a in e['areas'])]).lower()
-    acts = '<a class="btn sm" href="%sworkshops/%s/">View details</a>' % (pre(depth), e['slug'])
-    if e['kind'] == 'card':
-        acts += '<a class="btn sm amber" href="%s" target="_blank" rel="noopener" data-cta="visit_%s">Visit website %s</a>' % (E(e['url']), e['slug'], ic('out'))
-    else:
-        acts += '<a class="btn sm wa" href="%s" target="_blank" rel="noopener" data-cta="whatsapp_%s">%s WhatsApp</a>' % (
-            E(wa_link(e['whatsapp'], 'Hi %s, I found your listing on %s and would like to ask about my car.\n\n(From %sworkshops/%s/)' % (e['name'], SITE_NAME, BASE, e['slug']))), e['slug'], WA_SVG)
-    tag = '<span class="tag%s">%s</span>' % (' full' if e['kind'] == 'listing' else '', E(c['short']))
-    return ('<article class="card rv" data-search="%s">'
-            '<div class="ph">%s</div><div class="bd">%s<h3><a href="%sworkshops/%s/">%s</a></h3>'
-            '<p class="meta">%s %s</p><p class="tx">%s<br>%s</p><div class="acts">%s</div></div></article>') % (
-        E(search, True), img_tag(e['card_img'], e['card_alt'], depth), tag, pre(depth), e['slug'], E(e['name']),
-        '', E(e['area_label']), E(e['card_text'][0]), E(e['card_text'][1]), acts)
-
-
 def list_card(depth, what):
     return ('<article class="card list rv"><div class="bd"><span class="ic">%s</span><h3>List your workshop</h3>'
             '<p class="tx">Run a %s business in Singapore? Get a listing here. Message Page One on WhatsApp to ask how.</p>'
@@ -181,8 +160,9 @@ def page(path, title, desc, body, schema=None, og=None, bar=None, h1=None):
     depth = path.count('/')
     url = abs_url(path)
     og_rel = og or 'og-default.jpg'
-    og_url = BASE + 'assets/img/' + og_rel
-    ow, oh = (1200, 630) if og_rel in ('og-default.jpg', 'wei/og.jpg') else imgsize(og_rel)
+    remote = og_rel.startswith('http')
+    og_url = og_rel if remote else BASE + 'assets/img/' + og_rel
+    ow, oh = (1200, 630) if og_rel in ('og-default.jpg', 'wei/og.jpg') else (None, None) if remote else imgsize(og_rel)
     ld = ''.join('<script type="application/ld+json">%s</script>\n' % json.dumps(s, ensure_ascii=False).replace('</', '<\\/') for s in (schema or []))
     p = pre(depth)
     out = f'''<!doctype html>
@@ -203,8 +183,7 @@ def page(path, title, desc, body, schema=None, og=None, bar=None, h1=None):
 <meta property="og:description" content="{E(desc, True)}">
 <meta property="og:url" content="{E(url)}">
 <meta property="og:image" content="{E(og_url)}">
-<meta property="og:image:width" content="{ow}">
-<meta property="og:image:height" content="{oh}">
+{('<meta property="og:image:width" content="%d">' + chr(10) + '<meta property="og:image:height" content="%d">') % (ow, oh) if ow else ''}
 <meta property="og:image:alt" content="{E(h1 or title, True)}">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:image" content="{E(og_url)}">
@@ -232,18 +211,18 @@ def page(path, title, desc, body, schema=None, og=None, bar=None, h1=None):
 # ------------------------------------------------------------------ pages
 def home():
     depth = 0
-    featured = ''.join(card(e, 0) for e in ENTRIES)
+    featured = ''.join(card(e, 0, '') for e in ENTRIES)
     faqs = [
         ('What is %s?' % SITE_NAME, 'A small directory of car workshops and car services in Singapore. Each entry shows what the business does, where it is and how to contact it, using details confirmed by the business.'),
-        ('How do I list my workshop?', 'Message Page One Singapore on WhatsApp. A business without its own website gets a full listing page. A business that already has a website gets a short profile card that links to it.'),
-        ('How much does a listing cost?', 'There is no fixed price yet. Ask us on WhatsApp for the current terms before you decide.'),
-        ('Do you rank or review workshops?', 'No. Entries are not ranked and we do not publish ratings or reviews. Each page shows plain facts so you can compare and then contact the workshop yourself.'),
+        ('How do I list my workshop?', 'Message Page One Singapore on WhatsApp. A free listing is a basic card. A Premium listing is a full page with photos, services, map, WhatsApp and Call buttons. Premium + Lead Generation adds your own Page One website.'),
+        ('How much does a listing cost?', 'A free listing costs nothing. The directory Premium listing is S$20 a month, and Premium + Lead Generation is S$50 a month. The S$20 is not the earlier S$20 early-bird SEO plan.'),
+        ('Do you rank or review workshops?', 'No. Entries are not ranked and we do not write reviews. Premium pages may show a rating line from a source people can open, with its link and the date we checked.'),
     ]
     faq_html = ''.join('<details><summary>%s</summary><p>%s</p></details>' % (E(q), E(a)) for q, a in faqs)
     body = f'''<section class="hero"><div class="w">
 <span class="eyebrow">Singapore car workshops</span>
 <h1>Find a trusted car workshop in Singapore</h1>
-<p class="lede">Repair, gearbox, ABS and ECU modules, spray painting, batteries, detailing, wraps and parts. Browse listings from businesses that confirmed their own details.</p>
+<p class="lede">Repair, gearbox, ABS and ECU modules, spray painting, batteries, detailing, wraps and parts. Browse listings from businesses that confirmed their own details, with WhatsApp and call buttons on each card.</p>
 <form class="search" role="search" action="#workshops" onsubmit="return false"><label><span class="skip">Search workshops</span>{ic('search')}<input id="q" type="search" placeholder="Search by name, service or area, e.g. gearbox, Yishun" autocomplete="off"></label></form>
 {chip_row(depth)}
 </div></section>
@@ -254,11 +233,7 @@ def home():
 <div class="grid">{''.join(f'<a class="card rv" style="text-decoration:none;color:inherit" href="services/{c["slug"]}/"><div class="bd"><span class="tag">{E(c["short"])}</span><h3>{E(c["name"])}</h3><p class="tx">{E(c["blurb"])}</p></div></a>' for c in CATEGORIES)}</div>
 </div></section>
 <section><div class="w"><h2 class="rv">How listings work</h2>
-<ol class="steps">
-<li class="rv"><span class="n">1</span><b>Full listing page</b>A business without its own website gets one page here with photos, services, area and WhatsApp and call buttons.</li>
-<li class="rv"><span class="n">2</span><b>Profile card</b>A business with its own website gets a short card and a button that opens its site.</li>
-<li class="rv"><span class="n">3</span><b>Checked facts</b>We only show details the business confirmed. No ratings, no reviews, no rankings.</li>
-</ol></div></section>
+{tiers_strip()}</div></section>
 <section class="alt"><div class="w"><div class="cta rv"><div><h2>List your workshop</h2><p>Car workshops and car services only. Ask Page One on WhatsApp how it works.</p></div>
 <a class="btn amber big" href="{E(list_wa(0, 'general enquiry'))}" target="_blank" rel="noopener" data-cta="whatsapp_list_home">{WA_SVG} WhatsApp Page One</a></div></div></section>
 <section><div class="w nar"><h2 class="rv">Questions</h2><div class="rv">{faq_html}</div></div></section>'''
@@ -279,7 +254,7 @@ def category(c):
     cr, crld = crumbs(depth, [('Services', 'services/' + c['slug'] + '/'), (c['name'], None)][1:])
     body = f'''<div class="w">{cr}</div>
 <section class="hero" style="padding-top:20px"><div class="w"><h1>{E(c['name'])} in Singapore</h1><p class="lede">{E(c['intro'])}</p>{chip_row(depth, c['slug'])}</div></section>
-<section><div class="w"><h2 class="rv">Listings</h2><div class="grid">{''.join(card(e, depth) for e in es)}{list_card(depth, c['short'].lower())}</div></div></section>'''
+<section><div class="w"><h2 class="rv">Listings</h2><div class="grid">{''.join(card(e, depth, 'services/%s/' % c['slug']) for e in es)}{list_card(depth, c['short'].lower())}</div></div></section>'''
     itemlist = {'@context': 'https://schema.org', '@type': 'ItemList', 'name': c['name'] + ' in Singapore', 'numberOfItems': len(es),
                 'itemListElement': [{'@type': 'ListItem', 'position': i + 1, 'url': abs_url('workshops/%s/' % e['slug']), 'name': e['name']} for i, e in enumerate(es)]}
     page('services/%s/' % c['slug'], '%s in Singapore | %s' % (c['name'], SITE_NAME), c['blurb'] + ' Browse Singapore listings with details confirmed by each business.',
@@ -292,170 +267,271 @@ def area(slug, a):
     cr, crld = crumbs(depth, [(a['name'], None)])
     body = f'''<div class="w">{cr}</div>
 <section class="hero" style="padding-top:20px"><div class="w"><h1>Car workshops in {E(a['name'])}</h1><p class="lede">{E(a['intro'])}</p></div></section>
-<section><div class="w"><div class="grid">{''.join(card(e, depth) for e in es)}{list_card(depth, 'car workshop in ' + a['name'])}</div></div></section>'''
+<section><div class="w"><div class="grid">{''.join(card(e, depth, 'areas/%s/' % slug) for e in es)}{list_card(depth, 'car workshop in ' + a['name'])}</div></div></section>'''
     itemlist = {'@context': 'https://schema.org', '@type': 'ItemList', 'name': 'Car workshops in ' + a['name'], 'numberOfItems': len(es),
                 'itemListElement': [{'@type': 'ListItem', 'position': i + 1, 'url': abs_url('workshops/%s/' % e['slug']), 'name': e['name']} for i, e in enumerate(es)]}
     page('areas/%s/' % slug, 'Car Workshops in %s | %s' % (a['name'], SITE_NAME), 'Car workshops and car services in %s, Singapore, with details confirmed by each business.' % a['name'],
          body, [itemlist, dict(crld, **{'@context': 'https://schema.org'})], h1='Car workshops in ' + a['name'])
 
 
+def tier_badge(e_or_tier, cls=''):
+    t = e_or_tier if isinstance(e_or_tier, str) else e_or_tier['tier']
+    return '<span class="tier t-%s%s">%s</span>' % (t, (' ' + cls) if cls else '', E(TIERS[t]['badge']))
+
+
+ASK = {'sg-garage': 'my car', 'cleanic-detailing': 'cleaning or fumigation for my car', 'autotex': 'a part for my car',
+       'battery-rescue-sg': 'a battery for my car', 'wei-car-spray-painting': 'a spray painting job'}
+
+
+def page_label(page_path):
+    return '/' + page_path
+
+
+def wa_href(e, page_path):
+    """Directory WhatsApp link: the prefilled message names the business, the directory and the page the lead came from."""
+    msg = "Hi %s, I found you on %s (%s). I'd like to ask about %s." % (e['name'], SITE_NAME, page_label(page_path), ASK.get(e['slug'], 'my car'))
+    return wa_link(e['whatsapp'], msg)
+
+
+def track_attrs(kind, e, page_path):
+    return 'data-cta="%s_dir_%s" data-tier="%s" data-page="%s"' % (kind, e['slug'], e['tier'], E(page_label(page_path)))
+
+
+def wa_btn(e, page_path, cls='', label='WhatsApp'):
+    return '<a class="btn wa%s" href="%s" target="_blank" rel="noopener" %s>%s %s</a>' % (
+        (' ' + cls) if cls else '', E(wa_href(e, page_path)), track_attrs('whatsapp', e, page_path), WA_SVG, E(label))
+
+
+def call_btn(e, page_path, cls='', label='Call'):
+    return '<a class="btn%s" href="tel:%s" %s>%s %s</a>' % ((' ' + cls) if cls else '', e['phone'], track_attrs('call', e, page_path), ic('phone'), E(label))
+
+
+def photo_img(p, depth, lazy=True, cls=''):
+    if p.get('f'):
+        return img_tag(p['f'], p['alt'], depth, lazy=lazy, cls=cls)
+    return '<img src="%s" alt="%s"%s decoding="async" referrerpolicy="no-referrer"%s>' % (
+        E(p['u'], True), E(p['alt'], True), ' loading="lazy"' if lazy else '', (' class="%s"' % cls) if cls else '')
+
+
+def tile(e):
+    return '<div class="tile" aria-hidden="true">%s<b>%s</b><span>%s</span></div>' % (ic(CAT[e['category']]['icon']), E(e['name']), E(e.get('tile_text', CAT[e['category']]['short'])))
+
+
+def card(e, depth, page_path=''):
+    c = CAT[e['category']]
+    search = ' '.join([e['name'], c['name'], e['area_label'], ' '.join(s['n'] for s in e['services']), e.get('domain', ''), TIERS[e['tier']]['label'],
+                       ' '.join(AREAS[a]['name'] for a in e['areas'])]).lower()
+    ci = e.get('card_img')
+    ph = photo_img(dict(ci, alt=ci['alt']), depth, lazy=True) if ci else tile(e)
+    acts = ''
+    if e.get('whatsapp'):
+        acts += wa_btn(e, page_path, 'sm')
+    if e.get('phone'):
+        acts += call_btn(e, page_path, 'sm')
+    acts += '<a class="btn sm" href="%sworkshops/%s/">Details</a>' % (pre(depth), e['slug'])
+    return ('<article class="card rv" data-search="%s" data-tier="%s">'
+            '<div class="ph">%s%s</div><div class="bd"><span class="tag">%s</span><h3><a href="%sworkshops/%s/">%s</a></h3>'
+            '<p class="meta">%s</p><p class="tx">%s<br>%s</p><div class="acts">%s</div></div></article>') % (
+        E(search, True), e['tier'], ph, tier_badge(e, 'on-ph'), E(c['short']), pre(depth), e['slug'], E(e['name']),
+        E(e['area_label']), E(e['card_text'][0]), E(e['card_text'][1]), acts)
+
+
+def free_card(depth, ex=FREE_EXAMPLE):
+    """Free-tier card: plain. No photo, no phone. Shown only as a labelled example (made-up name)."""
+    c = CAT[ex['category']]
+    return ('<article class="card free-card"><div class="bd"><span class="ex-flag">Example only, not a real business</span>%s<span class="tag">%s</span>'
+            '<h3>%s</h3><p class="meta">%s</p><p class="tx">%s</p><div class="acts">'
+            '<span class="btn sm wa ex" aria-disabled="true">%s WhatsApp</span><span class="btn sm ex" aria-disabled="true">Website: %s</span></div></div></article>') % (
+        tier_badge('free'), E(c['short']), E(ex['name']), E(ex['area_label']), E(ex['text']), WA_SVG, E(ex['site_label']))
+
+
+def tiers_strip():
+    """Short three-tier summary for the home page."""
+    items = [
+        ('free', 'A basic card: name, short description, categories, general area and a website link.'),
+        ('premium', 'A full landing page: real photos, job gallery, services, address, map, WhatsApp and Call, reviews line and FAQs.'),
+        ('premium_leadgen', 'Everything in Premium plus your own Page One website, local SEO and monthly tap reports.'),
+    ]
+    li = ''.join('<li class="rv">%s<b>%s</b><span class="pr">%s</span>%s</li>' % (tier_badge(t), E(TIERS[t]['tagline']), E(TIERS[t]['price_text']), E(txt)) for t, txt in items)
+    return '<ol class="steps tiers-strip">%s</ol><p class="fine">The S$20 is the directory Premium listing, not the earlier S$20 early-bird SEO plan. <a href="list-your-workshop/">Compare the three tiers</a>.</p>' % li
+
+
 def ld_business(e, url):
-    d = dict(name=e['name'], slug=e['slug'], trade=CAT[e['category']]['name'], area=e['area_label'], services=e['services'],
-             about=e.get('profile') or '', phone=e.get('phone_show'), whatsapp=e.get('whatsapp'), photos=[], hours=[])
-    if _base_jsonld:
-        ld = _base_jsonld(d, url)
-        ld.pop('areaServed', None)
-        ld.pop('description', None)
-    else:
-        ld = {'@context': 'https://schema.org', '@id': url + '#business', 'name': e['name'], 'url': url}
-        if e.get('services'):
-            ld['makesOffer'] = [{'@type': 'Offer', 'itemOffered': {'@type': 'Service', 'name': s}} for s in e['services']]
-    ld['@context'] = 'https://schema.org'
-    ld['@type'] = 'AutoRepair'
+    ld = {'@context': 'https://schema.org', '@type': 'AutoRepair', '@id': url + '#business', 'name': e['name'], 'url': url, 'mainEntityOfPage': url}
+    first = e['photos'][0] if e.get('photos') else e.get('card_img')
+    if first:
+        ld['image'] = [BASE + 'assets/img/' + first['f'] if first.get('f') else first['u']]
     if e.get('phone'):
         ld['telephone'] = e['phone']
-    ld['image'] = [BASE + 'assets/img/' + (e['photos'][0]['f'] if e.get('photos') else e['card_img'])]
-    if e.get('areas'):
-        ld['areaServed'] = [{'@type': 'Place', 'name': AREAS[a]['name']} for a in e['areas']]
-    if e['kind'] == 'listing':
-        ad = e['address']
-        ld['address'] = {'@type': 'PostalAddress', 'streetAddress': ad['street'], 'postalCode': ad['postal'], 'addressLocality': 'Singapore', 'addressCountry': 'SG'}
-        ld['hasMap'] = e['map_url']
-        ld['sameAs'] = [e['facebook'], e['instagram']]
+    adds = [a for a in e.get('addresses', []) if a.get('postal')]
+    if e['slug'] == 'battery-rescue-sg':
+        ld['location'] = [{'@type': 'Place', 'name': a['label'], 'address': {'@type': 'PostalAddress', 'streetAddress': a['street'], 'addressLocality': 'Singapore', 'addressCountry': 'SG'}} for a in e['addresses']]
+    elif e.get('addresses'):
+        a0 = e['addresses'][0]
+        ld['address'] = {'@type': 'PostalAddress', 'streetAddress': a0['street'], 'postalCode': a0['postal'], 'addressLocality': 'Singapore', 'addressCountry': 'SG'}
+        if len(e['addresses']) > 1:
+            ld['location'] = [{'@type': 'Place', 'name': a['label'], 'address': {'@type': 'PostalAddress', 'streetAddress': a['street'], 'postalCode': a['postal'], 'addressLocality': 'Singapore', 'addressCountry': 'SG'}} for a in e['addresses'][1:]]
+    ld['hasMap'] = e['map_url']
+    if e.get('hours_ld'):
+        ld['openingHoursSpecification'] = [{'@type': 'OpeningHoursSpecification', 'dayOfWeek': d, 'opens': o, 'closes': c} for d, o, c in e['hours_ld']]
+    if e.get('areas') or e.get('service_area'):
+        ld['areaServed'] = [{'@type': 'Place', 'name': AREAS[a]['name']} for a in e['areas']] or {'@type': 'Country', 'name': 'Singapore'}
+    ld['makesOffer'] = [{'@type': 'Offer', 'itemOffered': {'@type': 'Service', 'name': s['n']}} for s in e['services']]
+    same = list(e.get('social') or [])
+    if e['tier'] == 'premium_leadgen':
+        same.append(e['url'])
+    if same:
+        ld['sameAs'] = same
+    if e.get('legal'):
         ld['legalName'] = e['legal']
         ld['taxID'] = e['uen']
-        ld['foundingDate'] = '2012-06-28'
-    else:
-        ld['sameAs'] = [e['url']]
-        ld['url'] = url
-        ld['mainEntityOfPage'] = url
     return ld
 
 
 def listing(e):
+    """Premium and Premium + Lead Gen page. Same layout for both; the lead-gen tier adds the website button below WhatsApp and Call."""
     depth = 2
     c = CAT[e['category']]
     path = 'workshops/%s/' % e['slug']
     url = abs_url(path)
     cr, crld = crumbs(depth, [(c['name'], 'services/%s/' % c['slug']), (e['name'], None)])
-    wa = wa_link(e['whatsapp'], 'Hi %s, I found your listing on %s and would like a quote for my car.\n\n(From %s)' % (e['name'], SITE_NAME, url))
-    btns = ('<a class="btn wa big" href="%s" target="_blank" rel="noopener" data-cta="whatsapp_%s">%s WhatsApp %s</a>'
-            '<a class="btn big" href="tel:%s">%s Call %s</a>') % (E(wa), e['slug'], WA_SVG, e['phone_show'], e['phone'], ic('phone'), e['phone_show'])
-    gal = ''.join('<figure class="rv">%s<figcaption>%s</figcaption></figure>' % (img_tag(p['f'], p['alt'], depth, lazy=i > 0), E(p['cap'])) for i, p in enumerate(e['photos']))
-    ad = e['address']
-    body = f'''<div class="w nar">{cr}
-<span class="tag full" style="margin-top:14px">Full listing</span>
+    lead = e['tier'] == 'premium_leadgen'
+    wa, call = wa_btn(e, path, 'big'), call_btn(e, path, 'big', 'Call ' + e['phone_show'])
+    wa = wa.replace('WhatsApp</a>', 'WhatsApp %s</a>' % e.get('whatsapp_show', e['phone_show']))
+    sec = []
+    if lead:
+        sec.append('<a class="btn amber" href="%s" target="_blank" rel="noopener" data-cta="visit_%s" data-tier="%s" data-page="%s">Visit %s for full details %s</a>' % (
+            E(e['url']), e['slug'], e['tier'], E(page_label(path)), E(e['domain']), ic('out')))
+    if e.get('book_url'):
+        sec.append('<a class="btn" href="%s" target="_blank" rel="noopener" data-cta="book_%s">%s</a>' % (E(e['book_url']), e['slug'], E(e['book_label'])))
+    sec.append('<a class="btn" href="%s" target="_blank" rel="noopener" data-cta="map_%s" data-map>%s %s</a>' % (E(e['map_url']), e['slug'], ic('pin'), E(e.get('map_label', 'Open in Google Maps'))))
+    btns = '<div class="acts main-acts">%s%s</div><div class="acts sec-acts">%s</div>' % (wa, call, ''.join(sec))
+    photos = e.get('photos') or []
+    hero = '<div class="hero-ph">%s</div>' % (photo_img(photos[0], depth, lazy=False) if photos else tile(e))
+    if photos and len(photos) > 1:
+        gal = '<h2>Recent work</h2><div class="gal">%s</div>' % ''.join(
+            '<figure class="rv job">%s<figcaption>%s</figcaption></figure>' % (photo_img(p, depth), E(p['cap'])) for p in photos[1:])
+    else:
+        gal = ''
+    if e.get('illustrations'):
+        gal += '<h2>Parts range</h2><div class="gal">%s</div>' % ''.join(
+            '<figure class="rv illus">%s<figcaption>%s</figcaption></figure>' % (photo_img(p, depth), E(p['cap'])) for p in e['illustrations'])
+    svcs = ''.join('<li class="svc rv"><b>%s</b><span>%s</span>%s</li>' % (E(s['n']), E(s['d']), ('<em class="pr">%s</em>' % E(s['p'])) if s.get('p') else '') for s in e['services'])
+    extra = ''
+    for h, kind, items in e.get('sections', []):
+        extra += '<h2>%s</h2>' % E(h) + (('<ul class="tick">%s</ul>' % ''.join('<li>%s</li>' % E(i) for i in items)) if kind == 'ul' else ''.join('<p>%s</p>' % E(i) for i in items))
+    adds = ''.join('<li data-addr>%s<span>%s%s%s</span></li>' % (
+        ic('pin'), ('<b>%s</b><br>' % E(a['label'])) if a.get('label') else '', E(a['street']),
+        (', Singapore ' + a['postal']) if a.get('postal') else ', Singapore') for a in e.get('addresses', []))
+    if e.get('service_area') and not adds:
+        adds = '<li data-addr>%s<span>%s</span></li>' % (ic('pin'), E(e['service_area']))
+    elif e.get('service_area'):
+        adds += '<li>%s<span>%s</span></li>' % (ic('pin'), E(e['service_area']))
+    if e.get('addresses') and e['addresses'][0].get('note'):
+        adds += '<li>%s<span>%s</span></li>' % (ic('shield'), E(e['addresses'][0]['note']))
+    hours = ''
+    if e.get('hours'):
+        hours = '<h3>Opening hours</h3><dl class="hours">%s</dl>' % ''.join('<dt>%s</dt><dd>%s</dd>' % (E(a), E(b)) for a, b in e['hours'])
+    if e.get('hours_note'):
+        hours += '<p class="fine">%s</p>' % E(e['hours_note'])
+    contact = '<li>%s<span>Call %s or WhatsApp %s</span></li>' % (ic('phone'), e['phone_show'], e.get('whatsapp_show', e['phone_show']))
+    rv = e['reviews']
+    reviews = '<p class="reviews-line">%s <span>%s</span> <a href="%s" target="_blank" rel="noopener" data-cta="reviews_%s">%s</a></p>' % (
+        ic('shield'), E(rv['text']), E(rv['url']), e['slug'], E(rv['label']))
+    faqs = ''.join('<details class="faq"><summary>%s</summary><p>%s</p></details>' % (E(q), E(a)) for q, a in e['faqs'])
+    price_note = '<p class="fine">%s</p>' % E(e['price_note']) if e.get('price_note') else ''
+    note = '<p class="fine disclose">%s</p>' % E(e['note']) if e.get('note') else ''
+    body = f'''<div class="w nar prem">{cr}
+<div class="badges" style="margin-top:14px">{tier_badge(e)}<span class="tag">{E(c['short'])}</span></div>
 <h1 style="margin-top:8px">{E(e['name'])}</h1>
-<p class="lede" style="font-size:1.1rem">{E(e['name'])} is a spray painting and bodywork workshop at Blk 1017 Yishun Industrial Park A, Singapore. It resprays single panels and whole cars, changes car colours and fits body kits. WhatsApp or call {e['phone_show']} with photos of your car to ask about your job.</p>
-<div class="acts" style="display:flex;flex-wrap:wrap;gap:10px;margin:16px 0">{btns}</div>
-<div class="gal">{gal}</div>
-<h2>About the workshop</h2>
-<p>The company, {E(e['legal'])}, was incorporated in June 2012 (UEN {e['uen']}) and is registered for repair and maintenance of motor vehicles. The workshop is in Yishun Industrial Park A, across three adjoining units, and the shopfront photo shows its signboard with a spray booth behind it.</p>
-<p>Most of what the workshop posts on Facebook is paint work: full resprays, colour changes and the occasional body kit. One post, from March 2023, thanks a customer who was back for the fourth time.</p>
+<p class="meta">{E(e['area_label'])}</p>
+<p class="lede" style="font-size:1.1rem">{E(e['lede'])}</p>
+{btns}
+{hero}
 <h2>Services</h2>
-<ul class="tick">
-<li><b>Car spray painting.</b> Single panels or several panels resprayed in your car's colour.</li>
-<li><b>Full respray and colour change.</b> The whole car repainted in its own colour or a new one. Check the current LTA rules on OneMotoring before you change your car's colour.</li>
-<li><b>Body kit installation.</b> Kits and spoilers fitted to the car and painted to match.</li>
-</ul>
-<h2>Jobs the workshop has posted</h2>
-<ul class="tick">
-<li>Porsche Macan: full body colour change to Fountain Blue Metallic, May 2025.</li>
-<li>Porsche Cayenne: new-model body kit, imported from overseas and installed, February 2026.</li>
-<li>MG: exterior respray in British Racing Green, November 2023.</li>
-<li>Honda Civic: full respray inside and out, gloss black roof and a new spoiler, November 2023.</li>
-<li>Mini Cooper: new colour, from orange to pink, May 2022.</li>
-</ul>
-<h2>How to ask for a quote</h2>
-<p>Send clear photos of the car in daylight, with the model and year, and say what you want done. Prices are not listed on this page, so ask Wei directly on WhatsApp.</p>
-<h2>Find the workshop</h2>
-<ul class="facts">
-<li>{ic('pin')}<span>{E(ad['street'])}, Singapore {ad['postal']}. <a href="{E(e['map_url'])}" target="_blank" rel="noopener">Open in Google Maps</a></span></li>
-<li>{ic('phone')}<span>{e['phone_show']} (call or WhatsApp)</span></li>
-<li>{ic('shield')}<span>{E(e['fb_note'])}. <a href="{E(e['facebook'])}" target="_blank" rel="noopener">See the Facebook page</a>, or <a href="{E(e['instagram'])}" target="_blank" rel="noopener">Instagram</a>.</span></li>
-</ul>
-<p>Opening hours are not listed here. Please call or WhatsApp before you visit.</p>
-<div class="acts" style="display:flex;flex-wrap:wrap;gap:10px;margin:18px 0">{btns}</div>
-<p class="fine">Details on this page come from the company's public profile and ACRA records and are checked with the business before the directory goes live. Last updated {UPDATED}. Browse more <a href="../../services/{c['slug']}/">{E(c['name'].lower())}</a> listings or <a href="../../areas/yishun/">workshops in Yishun</a>.</p>
+<ul class="svcs">{svcs}</ul>
+{price_note}
+{gal}
+{extra}
+<section id="find" class="findus"><h2>{E(e.get('addr_heading', 'Find us'))}</h2>
+<ul class="facts">{adds}{contact}</ul>
+{hours}
+</section>
+<h2>Reviews</h2>
+{reviews}
+<h2>Questions</h2>
+<div class="faqs">{faqs}</div>
+<div class="cta rv" style="margin-top:26px"><div><h2>Ask {E(e['name'])}</h2><p>Message on WhatsApp or call. Say you found them on {E(SITE_NAME)}.</p></div><div class="acts">{wa}{call}</div></div>
+{('<div class="acts sec-acts" style="margin-top:12px">%s</div>' % sec[0]) if lead else ''}
+{note}
+<p class="fine">Details are checked with the business before the directory goes live. Last updated {UPDATED}. Browse more <a href="../../services/{c['slug']}/">{E(c['name'].lower())}</a> listings{(' or <a href="../../areas/%s/">workshops in %s</a>' % (e['areas'][0], E(AREAS[e['areas'][0]]['name']))) if e['areas'] else ''}.</p>
 </div>'''
-    bar = wabar(['<a class="btn wa" href="%s" target="_blank" rel="noopener" data-cta="whatsapp_%s">%s WhatsApp</a>' % (E(wa), e['slug'], WA_SVG),
-                 '<a class="btn" href="tel:%s">%s Call</a>' % (e['phone'], ic('phone'))])
-    ld = [dict(ld_business(e, url)), dict(crld, **{'@context': 'https://schema.org'})]
-    page(path, '%s | Yishun Car Spray Painting' % e['name'], 'Wei Car Spray Painting is a spray painting and bodywork workshop in Yishun for resprays, colour changes and body kits. WhatsApp 9638 3306.',
-         body, ld, og=e['og_img'], bar=bar, h1=e['name'])
+    bar = wabar([wa_btn(e, path), call_btn(e, path)])
+    faq_ld = {'@context': 'https://schema.org', '@type': 'FAQPage', 'mainEntity': [{'@type': 'Question', 'name': q, 'acceptedAnswer': {'@type': 'Answer', 'text': a}} for q, a in e['faqs']]}
+    ld = [ld_business(e, url), faq_ld, dict(crld, **{'@context': 'https://schema.org'})]
+    og = e.get('og_img') or (photos[0]['u'] if photos and photos[0].get('u') else None)
+    page(path, e['title'], e['desc'], body, ld, og=og, bar=bar, h1=e['name'])
 
 
-def profile(e):
-    depth = 2
-    c = CAT[e['category']]
-    path = 'workshops/%s/' % e['slug']
-    url = abs_url(path)
-    n = words(e['profile'])
-    assert 80 <= n <= 150, (e['slug'], n)
-    cr, crld = crumbs(depth, [(c['name'], 'services/%s/' % c['slug']), (e['name'], None)])
-    visit = ('<a class="btn amber big" href="%s" target="_blank" rel="noopener" data-cta="visit_%s">Visit %s %s</a>' % (E(e['url']), e['slug'], E(e['domain']), ic('out')))
-    contact = []
-    if e.get('whatsapp'):
-        contact.append('<a class="btn wa" href="%s" target="_blank" rel="noopener" data-cta="whatsapp_%s">%s WhatsApp %s</a>' % (
-            E(wa_link(e['whatsapp'], 'Hi %s, I found you on %s and would like to ask about my car.\n\n(From %s)' % (e['name'], SITE_NAME, url))), e['slug'], WA_SVG, e['phone_show']))
-    if e.get('phone'):
-        contact.append('<a class="btn" href="tel:%s" data-cta="call_%s">%s Call %s</a>' % (e['phone'], e['slug'], ic('phone'), e['phone_show']))
-    where = []
-    if e.get('extra_address'):
-        where.append('<li>%s<span>%s</span></li>' % (ic('pin'), E(e['extra_address'])))
-    where.append('<li>%s<span>%s</span></li>' % (ic('shield'), E('Area: ' + e['area_label'])))
-    areas = ''.join('<a href="../../areas/%s/">%s</a> ' % (a, E(AREAS[a]['name'])) for a in e['areas'])
-    body = f'''<div class="w nar">{cr}
-<span class="tag" style="margin-top:14px">{E(c['short'])}</span>
-<h1 style="margin-top:8px">{E(e['name'])}</h1>
-<p class="meta">{E(e['area_label'])} · {E(e['domain'])}</p>
-<div class="visit rv"><b>{E(e['name'])} runs its own website.</b>{visit}</div>
-<div class="shot rv">{img_tag(e['card_img'], e['card_alt'], depth, lazy=False)}</div>
-<p style="margin-top:18px">{E(e['profile'])}</p>
-<h2>What it does</h2>
-<ul class="tick">{''.join('<li>%s</li>' % E(s) for s in e['services'])}</ul>
-<h2>Where and how to reach them</h2>
-<ul class="facts">{''.join(where)}</ul>
-<div style="display:flex;flex-wrap:wrap;gap:10px;margin:16px 0">{''.join(contact)}</div>
-<div class="visit rv">{visit}<span class="fine">Opens {E(e['domain'])} in a new tab.</span></div>
-<p class="fine">This is a short profile written by {E(SITE_NAME)}. The workshop's own site is the full source of detail. More: <a href="../../services/{c['slug']}/">{E(c['name'].lower())}</a> {('· ' + areas) if areas else ''}</p>
-</div>'''
-    items = []
-    if e.get('whatsapp'):
-        items.append('<a class="btn wa" href="%s" target="_blank" rel="noopener" data-cta="whatsapp_%s">%s WhatsApp</a>' % (
-            E(wa_link(e['whatsapp'], 'Hi %s, I found you on %s and would like to ask about my car.\n\n(From %s)' % (e['name'], SITE_NAME, url))), e['slug'], WA_SVG))
-    elif e.get('phone'):
-        items.append('<a class="btn" href="tel:%s">%s Call</a>' % (e['phone'], ic('phone')))
-    items.append('<a class="btn amber" href="%s" target="_blank" rel="noopener" data-cta="visit_%s">Visit website</a>' % (E(e['url']), e['slug']))
-    ld = [dict(ld_business(e, url)), dict(crld, **{'@context': 'https://schema.org'})]
-    title = '%s | %s' % (e['name'], c['name'])
-    page(path, title if len(title) <= 60 else e['name'], (e['profile'][:150].rsplit(' ', 1)[0].rstrip(',;') + '.'), body, ld, og=e['card_img'], bar=wabar(items), h1=e['name'])
+def tier_features():
+    return [
+        ('Basic card: name, short description, categories, general area', 'yes', 'yes', 'yes'),
+        ('Link to your website', 'yes', 'yes', 'yes (shown as a secondary button)'),
+        ('WhatsApp button with the source tagged', 'yes', 'yes', 'yes'),
+        ('Tap counts (WhatsApp and call) reported to you', 'yes', 'yes', 'yes'),
+        ('Your own full page: real photos and a completed-job gallery', 'no', 'yes', 'yes'),
+        ('Detailed services with short descriptions', 'no', 'yes', 'yes'),
+        ('Full address, Google Maps link and opening hours', 'no', 'yes', 'yes'),
+        ('Phone, direct WhatsApp and Call buttons, sticky on phones', 'no', 'yes', 'yes'),
+        ('Reviews line from a source people can check, with link and date', 'no', 'yes', 'yes'),
+        ('3 to 5 local FAQs', 'no', 'yes', 'yes'),
+        ('LocalBusiness structured data', 'no', 'yes', 'yes'),
+        ('Your own website, local SEO, AI search optimisation, regular content', 'no', 'no', 'yes'),
+        ('Lead tracking and monthly reporting', 'no', 'no', 'yes'),
+    ]
+
+
+def tier_table():
+    def cell(v):
+        if v == 'yes':
+            return '<td class="y"><span aria-label="Included">%s</span></td>' % ic('shield')
+        if v == 'no':
+            return '<td class="n"><span aria-label="Not included">&ndash;</span></td>'
+        return '<td class="y">%s</td>' % E(v)
+    heads = ''.join('<th scope="col">%s<span class="pr">%s</span><small>%s</small></th>' % (tier_badge(t), E(TIERS[t]['price_text']), E(TIERS[t]['tagline'])) for t in TIERS)
+    rows = ''.join('<tr><th scope="row">%s</th>%s</tr>' % (E(f), cell(a) + cell(b) + cell(c)) for f, a, b, c in tier_features())
+    table = '<div class="tier-table"><table><thead><tr><th></th>%s</tr></thead><tbody>%s</tbody></table></div>' % (heads, rows)
+    cards = ''
+    for i, t in enumerate(TIERS):
+        li = ''.join('<li%s>%s</li>' % ('' if row[1 + i] != 'no' else ' class="no"', E(row[0])) for row in tier_features())
+        cards += ('<article class="card tier-card rv"><div class="bd">%s<h3>%s</h3><p class="pr">%s</p><p class="meta">%s</p><ul class="tick">%s</ul>'
+                  '<a class="btn amber" href="%s" target="_blank" rel="noopener" data-cta="whatsapp_list_tier_%s">%s Ask about %s</a></div></article>') % (
+            tier_badge(t), E(TIERS[t]['label']), E(TIERS[t]['price_text']), E(TIERS[t]['tagline']), li, E(list_wa(1, TIERS[t]['label'])), t, WA_SVG, E(TIERS[t]['label']))
+    return table + '<div class="tier-cards">%s</div>' % cards
 
 
 def list_page():
     depth = 1
     cr, crld = crumbs(depth, [('List your workshop', None)])
     wa = E(list_wa(depth, 'general enquiry'))
-    body = f'''<div class="w nar">{cr}
+    body = f'''<div class="w">{cr}
 <h1 style="margin-top:14px">List your workshop</h1>
-<p class="lede" style="font-size:1.1rem">{E(SITE_NAME)} lists car workshops and car services in Singapore: repair, gearbox, ABS and ECU modules, spray painting and bodywork, batteries, detailing and coating, wraps and PPF, and parts. Pick the option that fits your business. Price: ask us on WhatsApp.</p>
-<div class="grid" style="grid-template-columns:1fr;margin:22px 0">
-<article class="card rv"><div class="bd"><span class="tag full">No website yet</span><h2 style="margin:0">Full listing page</h2>
-<p>One page of about 500 words at {E(DOMAIN)}/workshops/your-name/, with photos, services, area, opening hours and WhatsApp and call buttons. It works as your website, with no domain of your own to buy.</p>
-<ul class="tick"><li>Photos of your own work</li><li>Services and area in plain words</li><li>WhatsApp taps counted and reported to you</li></ul></div></article>
-<article class="card rv"><div class="bd"><span class="tag">Already have a website</span><h2 style="margin:0">Profile card</h2>
-<p>A short card with your name, area, phone or WhatsApp and a few lines of fresh wording, plus a button that opens your own website. For businesses on a Page One website plan with their own domain.</p>
-<ul class="tick"><li>Links straight to your domain</li><li>Never copies your site text</li><li>Own website plan: <a href="https://pageonesingapore.com/" rel="noopener">pageonesingapore.com</a></li></ul></div></article>
-</div>
-<h2>What we need from you</h2>
-<ul class="tick"><li>Your agreement in writing (WhatsApp is fine) and permission to use your photos</li><li>Business name, area, phone or WhatsApp, and the services you really offer</li><li>Opening hours and prices only if you want them shown and they are current</li></ul>
+<p class="lede" style="font-size:1.1rem;max-width:720px">{E(SITE_NAME)} lists car workshops and car services in Singapore: repair, gearbox, ABS and ECU modules, spray painting and bodywork, batteries, detailing and coating, wraps and PPF, and parts. Pick the tier that fits your business.</p>
+<h2 style="margin-top:24px">Three tiers</h2>
+{tier_table()}
+<p class="fine">{E(PRICE_NOTE)} Prices are per month. Every tier gets WhatsApp taps counted and reported to you, and no tier promises a number of enquiries or a ranking.</p>
+<h2 style="margin-top:28px">What a free card looks like</h2>
+<p>A free listing is a plain card. Here is a made-up example with a made-up name, so you can see the style.</p>
+<div class="grid ex-grid">{free_card(depth)}</div>
+<h2 style="margin-top:28px">What we need from you</h2>
+<ul class="tick"><li>Your agreement in writing (WhatsApp is fine) and permission to use your photos</li><li>Business name, area, phone or WhatsApp, and the services you really offer</li><li>For Premium: your address, opening hours, a few photos of real jobs, and a review source we can link to</li></ul>
 <h2>What we do not do</h2>
-<p>We do not publish ratings, reviews or rankings, and we do not list car dealers or insurers. Anything we cannot confirm with you stays off the page.</p>
-<div class="cta rv" style="margin-top:22px"><div><h2>Ask on WhatsApp</h2><p>Tell us what your workshop does and we will reply with the next step and the price.</p></div>
+<p>We do not rank workshops, use rating or review markup, or list car dealers or insurers. A rating line is shown only when it comes from a source people can open, with its link and the date we checked. Anything we cannot confirm with you stays off the page.</p>
+<div class="cta rv" style="margin-top:22px"><div><h2>Ask on WhatsApp</h2><p>Tell us what your workshop does and we will reply with the next step.</p></div>
 <a class="btn amber big" href="{wa}" target="_blank" rel="noopener" data-cta="whatsapp_list_page">{WA_SVG} WhatsApp Page One</a></div>
 </div>'''
     page('list-your-workshop/', 'List Your Car Workshop | SG Car Workshop',
-         'List your car workshop or car service in Singapore: a full listing page if you have no website, or a profile card linking to your own site. Ask us on WhatsApp.',
+         'Free, Premium S$20/month or Premium + Lead Generation S$50/month: compare the three ways to list your car workshop in Singapore.',
          body, [dict(crld, **{'@context': 'https://schema.org'})])
 
 
@@ -466,7 +542,7 @@ def about_page():
 <h1 style="margin-top:14px">About {E(SITE_NAME)}</h1>
 <p class="lede" style="font-size:1.1rem">{E(SITE_NAME)} is a directory of car workshops and car services in Singapore, run by Page One Singapore, a web and SEO service for small businesses.</p>
 <h2>How entries are checked</h2>
-<p>Every fact on a page comes from the business or from its public records, and the business confirms it before the directory goes live. If a detail cannot be confirmed, such as a price or opening hours, we leave it out. We never copy a business's website text, and we do not publish ratings or reviews.</p>
+<p>Every fact on a page comes from the business or from its public records, and the business confirms it before the directory goes live. If a detail cannot be confirmed, such as a price or opening hours, we leave it out. We never copy a business's website text. We do not rank workshops or use rating markup; a rating line appears only with a source link and the date we checked.</p>
 <h2>Who we list</h2>
 <p>Car workshops and car services only: repair and servicing, gearbox, ABS and ECU modules, spray painting and bodywork, batteries, detailing and coating, wraps and PPF, and parts. Car dealers and insurance are not listed.</p>
 <h2>A note on one listing</h2>
@@ -504,7 +580,7 @@ def build():
         if any(s in e['areas'] for e in ENTRIES):
             area(s, a)
     for e in ENTRIES:
-        (listing if e['kind'] == 'listing' else profile)(e)
+        listing(e)
     list_page()
     about_page()
 
@@ -530,12 +606,12 @@ def build():
     else:
         robots = 'User-agent: *\nDisallow: /\n'
     open(OUT + '/robots.txt', 'w').write(robots)
-    lines = ['# %s' % SITE_NAME, '', '> A directory of car workshops and car services in Singapore, run by Page One Singapore. Entries use details confirmed by each business. No ratings or reviews.', '',
+    lines = ['# %s' % SITE_NAME, '', '> A directory of car workshops and car services in Singapore, run by Page One Singapore. Entries use details confirmed by each business. No rankings and no rating or review markup.', '',
              'Last updated: %s' % UPDATED, '', '## Services']
     lines += ['- [%s](%sservices/%s/): %s' % (c['name'], BASE, c['slug'], c['blurb']) for c in CATEGORIES]
     lines += ['', '## Listings']
     for e in ENTRIES:
-        lines.append('- [%s](%sworkshops/%s/): %s, %s%s' % (e['name'], BASE, e['slug'], CAT[e['category']]['name'], e['area_label'], (' (own website: %s)' % e['url']) if e['kind'] == 'card' else ''))
+        lines.append('- [%s](%sworkshops/%s/): %s, %s%s' % (e['name'], BASE, e['slug'], CAT[e['category']]['name'] + ', ' + TIERS[e['tier']]['label'], e['area_label'], (' (own website: %s)' % e['url']) if e['tier'] == 'premium_leadgen' else ''))
     lines += ['', '## More', '- [List your workshop](%slist-your-workshop/)' % BASE, '- [About](%sabout/)' % BASE, '']
     open(OUT + '/llms.txt', 'w').write('\n'.join(lines))
     print('built %d pages + 404 into %s (LIVE=%s, v=%s)' % (len(PAGES), OUT, LIVE, V))
