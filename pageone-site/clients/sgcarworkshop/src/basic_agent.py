@@ -1,13 +1,15 @@
 #!/usr/bin/env python3
-"""Basic-listing agent (Google Places API New). Cheapest path: ONE Text Search per estate, no Place Details calls at all.
+"""Basic-listing agent (Google Places API New). ONE Text Search per estate, plus ONE Place Details call (phone fields only) per candidate that passes every other filter.
 
   PLACES_SERVER_KEY=... python3 basic_agent.py --estates kaki-bukit [--cap 20] [--dry-run]
 
 Per estate: one Text Search ("car workshop <estate>"), up to 20 results, field mask
   places.id, displayName, formattedAddress, location, businessStatus, types, primaryType.
 Keeps a result only if: not already listed (hand-made entries or basic_auto.json), businessStatus == OPERATIONAL, a car-repair type, not a dealer/car wash/etc.,
-and its address maps to a known estate (postal code / address keywords, areas.py). Stops at --cap new listings.
-Stored in basic_auto.json: place_id (permanent) + name + address + our own slug and estate. NOT stored: phone, opening hours, rating, review count,
+and its address maps to a known estate (postal code / address keywords, areas.py). PHONE RULE (Edwin, 1 Nov 2026): a workshop is added ONLY if its Google profile lists a phone number
+(Details mask nationalPhoneNumber,internationalPhoneNumber, checked once per candidate, after the free filters, never for already-listed ids). No phone = skipped.
+The Google phone is NOT stored: only used as a yes/no test; display stays on the live profile fallback (assets/livephone.js). Stops at --cap new listings.
+Stored in basic_auto.json: place_id (permanent) + name + address + our own slug and estate. NOT stored: phone (tested yes/no only), opening hours, rating, review count,
 website, photos. dir.js loads those live in the browser from Places (browser key, referrer-restricted).
 The key is read from the environment only; it must never be written to the repo, built site or client JS.
 Then: python3 build.py && python3 check.py, commit, sync. Monthly: re-run to find new workshops; --refresh re-checks stored names/addresses/status.
@@ -21,7 +23,8 @@ API = 'https://places.googleapis.com/v1/'
 MASK = 'places.id,places.displayName,places.formattedAddress,places.location,places.businessStatus,places.types,places.primaryType'
 OK_TYPES = {'car_repair', 'auto_parts_store', 'car_repair_service'}
 SKIP = re.compile(r'\b(showroom|dealer|leasing|rental|rent a car|parking|car ?wash|insurance|driving|petrol|shell|esso|caltex|spc|sembcorp|tyre|tire|autobay)\b', re.I)
-CALLS = {'text_search': 0}
+DETAILS_MASK = 'nationalPhoneNumber,internationalPhoneNumber'
+CALLS = {'text_search': 0, 'details': 0}
 
 
 def search(est, key):
@@ -32,6 +35,15 @@ def search(est, key):
     CALLS['text_search'] += 1
     with urllib.request.urlopen(req, timeout=30) as r:
         return json.load(r).get('places', [])
+
+
+def has_phone(pid, key):
+    """One Place Details call, phone fields only. Returns True/False; the number itself is discarded."""
+    req = urllib.request.Request(API + 'places/' + pid, headers={'X-Goog-Api-Key': key, 'X-Goog-FieldMask': DETAILS_MASK})
+    CALLS['details'] += 1
+    with urllib.request.urlopen(req, timeout=30) as r:
+        j = json.load(r)
+    return bool(j.get('nationalPhoneNumber') or j.get('internationalPhoneNumber'))
 
 
 def slugify(n):
@@ -70,6 +82,8 @@ def main():
             elif not es: why = 'no estate for address'
             if why:
                 skipped.append((name, why)); continue
+            if not has_phone(pid, key):
+                skipped.append((name, 'no phone on Google profile')); continue
             s = slugify(name); n = 2
             while s in slugs: s = '%s-%d' % (slugify(name), n); n += 1
             slugs.add(s)
