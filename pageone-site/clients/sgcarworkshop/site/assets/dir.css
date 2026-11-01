@@ -222,3 +222,9 @@ details>summary{list-style:none;display:flex;justify-content:space-between;align
 details:not(.menu)>summary:after{content:"";flex:none;width:8px;height:8px;border-right:2px solid var(--amber-d);border-bottom:2px solid var(--amber-d);transform:rotate(45deg);margin-top:-4px;transition:transform .2s}
 details:not(.menu)[open]>summary:after{transform:rotate(-135deg);margin-top:4px}
 @media (max-width:759px){.has-bar{padding-bottom:0}.has-bar footer.ft{padding-bottom:calc(100px + env(safe-area-inset-bottom))}}
+/* Basic listings with a Google listing photo */
+.card.basic.has-photo .ph{height:auto;aspect-ratio:3/2}
+.card.basic.has-photo .tier.on-ph{top:8px;transform:none}
+.gph .gph-img.fit{object-fit:contain;background:#fff;padding:6px}
+.gph .gph-credit{font-size:9px}
+@media (max-width:639px){.grid .card.basic.has-photo .ph{aspect-ratio:auto}.grid .card.basic.has-photo .tier.on-ph{top:6px}}

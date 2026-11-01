@@ -104,7 +104,7 @@ for e, r in rows:
 home_src = open(os.path.join(root, 'index.html'), encoding='utf-8').read()
 for e in ENTRIES:
     if e['tier'] == 'free':
-        m = re.search(r'<article class="card basic"[^>]*>(?:(?!</article>).)*data-cta="(?:whatsapp|call)_dir_%s"(?:(?!</article>).)*href="[^"]*workshops/%s/"' % (e['slug'], e['slug']), home_src, re.S)
+        m = re.search(r'<article class="card basic[^"]*"[^>]*>(?:(?!</article>).)*data-cta="(?:whatsapp|call)_dir_%s"(?:(?!</article>).)*href="[^"]*workshops/%s/"' % (e['slug'], e['slug']), home_src, re.S)
         if not m or 'Manage this listing' not in home_src: print('BASIC card incomplete (needs contact + View link)', e['slug']); bad += 1
         pg = open(os.path.join(root, 'workshops', e['slug'], 'index.html'), encoding='utf-8').read()
         ld = [json.loads(j) for j in re.findall(r'<script type="application/ld\+json">(.*?)</script>', pg, re.S)]
