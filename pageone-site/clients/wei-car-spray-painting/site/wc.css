@@ -245,3 +245,6 @@ background:radial-gradient(600px 260px at 100% 0,rgba(232,181,42,.28),transparen
 .job.hl{box-shadow:0 0 0 3px var(--g2),0 26px 44px -26px rgba(0,0,0,.5)}
 a.sw{display:inline-block}
 .work{scroll-margin-top:90px}.work:target{padding:20px;margin:-20px;border-radius:22px;background:#fff;box-shadow:0 0 0 3px var(--g2)}
+.job-cue{position:absolute;right:14px;top:14px;font:700 .78rem var(--disp);color:#fff;background:var(--wa);padding:7px 11px;border-radius:999px;opacity:0;transform:translateY(-6px);transition:opacity .3s ease,transform .3s ease;pointer-events:none}
+.job.hl .job-cue{opacity:1;transform:none;animation:cue 1.4s ease-in-out 3}
+@keyframes cue{50%{transform:scale(1.08)}}

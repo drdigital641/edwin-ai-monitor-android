@@ -14,6 +14,7 @@ ready(function(){
     function step(ts){if(last&&!hold&&!d.hidden){acc+=(ts-last)*0.03;if(acc>=1){r.scrollLeft+=Math.floor(acc);acc-=Math.floor(acc)}}if(r.scrollLeft>=half())r.scrollLeft-=half();last=ts;requestAnimationFrame(step)}
     requestAnimationFrame(step);
     r.p1hold=function(ms){hold=1;clearTimeout(r.p1t);r.p1t=setTimeout(function(){hold=0},ms)};
+    r.p1hold=function(ms){hold=1;clearTimeout(r.p1t);r.p1t=setTimeout(function(){hold=0},ms)};
     r.addEventListener('mouseenter',function(){hold=1});r.addEventListener('mouseleave',function(){hold=0;down=0});
     /* phone: vertical page scrolls do not stop it; a held finger or a sideways swipe does */
     var tx=0,ty=0,tt=null,th=0;
@@ -27,6 +28,17 @@ ready(function(){
     r.addEventListener('mousemove',function(e){if(down)r.scrollLeft=sl-(e.pageX-sx)});
     r.addEventListener('click',function(e){if(Math.abs(r.scrollLeft-sl)>6&&sl)e.preventDefault()},true);
   });
+  /* colour dots: slide the top carousel to that job; the card itself opens the details */
+  var rail=d.querySelector('.hero [data-glide]');
+  [].forEach.call(d.querySelectorAll('.picker .sw'),function(b){b.addEventListener('click',function(e){
+    if(!rail)return;var k=b.getAttribute('href').split('#')[1],c=rail.querySelector('.job[data-k="'+k+'"]');if(!c)return;e.preventDefault();
+    [].forEach.call(d.querySelectorAll('.picker .sw'),function(x){x.setAttribute('aria-pressed',x===b)});
+    if(rail.p1hold)rail.p1hold(9000);
+    var pad=parseFloat(getComputedStyle(rail.querySelector('.rail-track')).paddingLeft)||16,to=c.offsetLeft-pad,from=rail.scrollLeft,t0=0,dur=rm?1:700;
+    (function anim(ts){if(!t0)t0=ts;var q=Math.min(1,(ts-t0)/dur),ez=q<.5?2*q*q:1-Math.pow(-2*q+2,2)/2;rail.scrollLeft=from+(to-from)*ez;if(q<1)requestAnimationFrame(anim)})(performance.now());
+    [].forEach.call(rail.querySelectorAll('.job.hl'),function(x){x.classList.remove('hl')});c.classList.add('hl');
+    var pk=d.querySelector('.hero .picker').getBoundingClientRect(),rb=rail.getBoundingClientRect().bottom;if(pk.top<70||rb>innerHeight-80)scrollBy({top:pk.top-82,behavior:rm?'auto':'smooth'});
+  })});
   /* before / after slider */
   [].forEach.call(d.querySelectorAll('.ba'),function(b){var i=b.querySelector('.ba-range');i.addEventListener('input',function(){b.style.setProperty('--x',i.value+'%')})});
   /* reveal on scroll: only opacity/transform, text is in the HTML */

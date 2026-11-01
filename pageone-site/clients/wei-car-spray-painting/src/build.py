@@ -36,7 +36,7 @@ LIVE = False
 PREVIEW = 'https://pageonesingapore.com/preview/%s/' % SLUG
 SITE = ('https://%s/' % DOMAIN) if LIVE else PREVIEW
 UPDATED = '2026-11-01'
-V = '6'
+V = '7'
 INDEXNOW_KEY = '7c41e9a0d2b85f36a1e4c07b9d5f2e18'
 
 NAME = 'Wei Car Spray Painting'
@@ -464,11 +464,11 @@ def demo_car():
 
 def colour_picker():
     sw = ''.join('<a class="sw" style="--c:%s" href="our-work/#%s" aria-label="%s: see the %s job" title="%s, %s"></a>' % (c, k, E(n), E(j), E(n), E(j)) for n, c, j, k in PAINTS)
-    return '<div class="wrap picker"><p class="pk-label">Tap a colour to see the real job</p><div class="sws" role="group" aria-label="Colours from our jobs">%s</div></div>' % sw
+    return '<div class="wrap picker"><p class="pk-label">Tap a colour to find the real job</p><div class="sws" role="group" aria-label="Colours from our jobs">%s</div></div>' % sw
 
 
 def job_card(j, eager=False):
-    return ('<a class="job" data-k="%s" href="our-work/#%s">%s<span class="job-tag">%s</span><span class="job-txt"><b>%s</b><span>%s</span><small>%s</small></span></a>'
+    return ('<a class="job" data-k="%s" href="our-work/#%s">%s<span class="job-tag">%s</span><span class="job-cue">Tap for details →</span><span class="job-txt"><b>%s</b><span>%s</span><small>%s</small></span></a>'
             % (j['k'], j['k'], jimg(j['k'], '%s: %s (%s)' % (j['car'], j['work'], j['date']), eager=eager), E(j['tag']), E(j['car']), E(j['work']), E(j['date'])))
 
 
