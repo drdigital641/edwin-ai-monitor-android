@@ -5,7 +5,9 @@ card wording is fresh (never copied from the client's site); no ratings or revie
 unless confirmed.
 
 tier (PLAN.md "Tiers", Edwin 1 Nov 2026, permanent rule: a premium listing never has less than a free one):
-  "free"             basic card only: name, short description, categories, general area, website link
+  "free"             Basic: card plus a SHORT profile page (/workshops/<slug>/): one Google photo slot, short text, plain service names,
+                     address + Directions, hours, Google rating line (text only), WhatsApp or Call. No gallery, FAQs, service
+                     descriptions, prices or carousel placement (those are Verified/Premium)
   "premium"          full page: real photos, job gallery, services, full address, phone, WhatsApp + Call, map, reviews line with
                      source link and date (no rating schema), FAQs, LocalBusiness data
   "premium_leadgen"  everything in premium, plus the business's own website (Page One own-domain clients): badge
@@ -484,7 +486,7 @@ ENTRIES = [
 ]
 
 
-# ---- Basic (tier "free") listings: card only, no own page. Source: basic-run/2026-11-01.json (public Google business listings, checked 1 Nov 2026).
+# ---- Basic (tier "free") listings: card + short profile page. Source: basic-run/2026-11-01.json (public Google business listings, checked 1 Nov 2026).
 # Fields shown on the card: name, desc, category, area + region, WhatsApp (only if a mobile number) or Call, Directions (Google Maps cid).
 BASIC = [
     dict(slug="everest-garage", place_id="ChIJ6zFftrUX2jERlx4oI_q1cYw", name="Everest Garage", area_label="Kaki Bukit", regions=["east"], category="general-servicing-repair",
@@ -500,7 +502,40 @@ BASIC = [
          desc="Woodlands workshop for servicing and repairs that also handles accident reporting and motor insurance claims.",
          source="Google business listing cid 10239000617827855461, checked 1 Nov 2026"),
 ]
+# Extra public facts from basic-run/2026-11-01.json (Google business listings, checked 1 Nov 2026). hours_rows is the display form; hours_ld the
+# schema.org openingHours form. Hup Soon Lee's Monday closing time is unclear on Google, so Monday is shown as "from 9am" and left out of the schema.
+_BX = {
+    "everest-garage": dict(
+        address_public="25 Kaki Bukit Rd 4, #05-81, Singapore 417800", rating="5.0", reviews=19, checked="1 Nov 2026",
+        hours_rows=[("Mon to Fri", "9:30am to 6:30pm"), ("Sat", "9:30am to 3pm"), ("Sun", "Closed")],
+        hours_ld=["Mo-Fr 09:30-18:30", "Sa 09:30-15:00"],
+        services_public=["Car servicing", "Oil change", "Car aircon", "General repairs"],
+        services_source="Google listing category + topics customers mention",
+        whatsapp_source="WhatsApp number confirmed through the wa.link on its Google listing, 1 Nov 2026",
+        lede=("Everest Garage is a car repair and maintenance workshop in Kaki Bukit, on the fifth floor of 25 Kaki Bukit Road 4. "
+              "Its Google listing shows servicing, oil change, aircon and general repairs. Message the workshop on WhatsApp, or tap Directions to find the unit."),
+        area_ctx="Kaki Bukit is in the East planning region of Singapore, which also takes in the Bedok car trade units."),
+    "hup-soon-lee-motor-service": dict(
+        address_public="1018 Yishun Industrial Park A, #01-352, Singapore 768760", rating="4.4", reviews=10, checked="1 Nov 2026",
+        hours_rows=[("Mon", "From 9am, call to confirm closing time"), ("Tue to Sat", "9am to 6pm"), ("Sun", "Closed")],
+        hours_ld=["Tu-Sa 09:00-18:00"],
+        services_public=["Car repair and servicing", "Private and commercial vehicles", "Euro 4, 5 and 6 vehicles"],
+        services_source="Google listing description",
+        lede=("Hup Soon Lee Motor Service is a long-running car repair workshop at 1018 Yishun Industrial Park A. "
+              "According to its Google listing it works on private and commercial vehicles, including Euro 4, 5 and 6 models. Call to ask about your car."),
+        area_ctx="Yishun is in the North planning region of Singapore, alongside Woodlands, Sembawang and Kranji."),
+    "cys-automobile-services": dict(
+        address_public="38 Woodlands Industrial Park E1, #07-17, Singapore 757700", rating="4.4", reviews=31, checked="1 Nov 2026",
+        hours_rows=[("Mon to Fri", "9am to 5pm"), ("Sat", "9am to 1pm"), ("Sun", "Closed")],
+        hours_ld=["Mo-Fr 09:00-17:00", "Sa 09:00-13:00"],
+        services_public=["Servicing and repair", "Accident reporting", "Motor insurance claims", "Vehicle inspection", "Vehicle rental"],
+        services_source="Google listing description",
+        lede=("CYS Automobile Services is a servicing and repair workshop on level 7 of 38 Woodlands Industrial Park E1. "
+              "Its Google listing also mentions accident reporting, motor insurance claims, vehicle inspection and vehicle rental. Call to ask which of these fits your car."),
+        area_ctx="Woodlands is in the North planning region of Singapore, alongside Yishun, Sembawang and Kranji."),
+}
 for _b in BASIC:
+    _b.update(_BX[_b["slug"]])
     _b.update(tier="free", services=[], regions_note="Region from the public listing area (URA planning regions).")
 ENTRIES.extend(BASIC)
 _RANK = {"premium_leadgen": 0, "premium": 1, "free": 2}

@@ -231,7 +231,7 @@ def home():
     faqs = [
         ('What is %s?' % SITE_NAME, 'A directory of car workshops and car services in Singapore. Each entry shows what the business does, where it is and how to contact it, using details confirmed by the business or taken from its public listing.'),
         ('How do I contact a workshop?', 'Tap WhatsApp or Call on a card. The WhatsApp message is prefilled with the workshop name and says you found them on %s, so you only need to add your car and what you need.' % SITE_NAME),
-        ('Do you rank or review workshops?', 'No. Entries are not ranked and we do not write reviews. Premium and Verified pages may show a rating line from a source people can open, with its link and the date we checked.'),
+        ('Do you rank or review workshops?', 'No. Entries are not ranked and we do not write reviews. Profile pages may show a rating line from a source people can open, with its link and the date we checked.'),
         ('Which regions can I search?', 'Singapore has five planning regions: North, North-East, East, West and Central. Pick one or more in the search panel to see workshops that serve them. Mobile services can cover several regions.'),
     ]
     faq_html = ''.join('<details><summary>%s</summary><p>%s</p></details>' % (E(q), E(a)) for q, a in faqs)
@@ -282,7 +282,7 @@ def category(c):
 <section class="hero" style="padding-top:20px"><div class="w"><h1>{E(c['name'])} in Singapore</h1><p class="lede">{E(c['intro'])}</p>{chip_row(depth, c['slug'])}</div></section>
 <section><div class="w"><h2 class="rv">Listings</h2><div class="grid">{''.join(card(e, depth, 'services/%s/' % c['slug']) for e in es)}{list_card(depth, c['short'].lower())}</div></div></section>'''
     itemlist = {'@context': 'https://schema.org', '@type': 'ItemList', 'name': c['name'] + ' in Singapore', 'numberOfItems': len(es),
-                'itemListElement': [{'@type': 'ListItem', 'position': i + 1, **({'url': abs_url('workshops/%s/' % e['slug'])} if e['tier'] != 'free' else {}), 'name': e['name']} for i, e in enumerate(es)]}
+                'itemListElement': [{'@type': 'ListItem', 'position': i + 1, 'url': abs_url('workshops/%s/' % e['slug']), 'name': e['name']} for i, e in enumerate(es)]}
     page('services/%s/' % c['slug'], '%s in Singapore | %s' % (c['name'], SITE_NAME), c['blurb'] + ' Browse Singapore listings with details confirmed by each business.',
          body, [itemlist, dict(crld, **{'@context': 'https://schema.org'})], h1=c['name'])
 
@@ -295,7 +295,7 @@ def region(slug, a):
 <section class="hero" style="padding-top:14px"><div class="w"><h1>Car workshops in the {E(a['name'])} region</h1><p class="lede">{E(a['intro'])}</p></div></section>
 <section><div class="w"><div class="grid">{''.join(card(e, depth, 'regions/%s/' % slug) for e in es)}{list_card(depth, 'car workshop in the ' + a['name'] + ' region')}</div></div></section>'''
     itemlist = {'@context': 'https://schema.org', '@type': 'ItemList', 'name': 'Car workshops in the %s region' % a['name'], 'numberOfItems': len(es),
-                'itemListElement': [{'@type': 'ListItem', 'position': i + 1, **({'url': abs_url('workshops/%s/' % e['slug'])} if e['tier'] != 'free' else {}), 'name': e['name']} for i, e in enumerate(es)]}
+                'itemListElement': [{'@type': 'ListItem', 'position': i + 1, 'url': abs_url('workshops/%s/' % e['slug']), 'name': e['name']} for i, e in enumerate(es)]}
     page('regions/%s/' % slug, 'Car Workshops in %s Singapore | %s' % (a['name'], SITE_NAME), 'Car workshops and car services in the %s region of Singapore, with details confirmed by each business.' % a['name'],
          body, [itemlist, dict(crld, **{'@context': 'https://schema.org'})], h1='Car workshops in the %s region' % a['name'])
 
@@ -374,7 +374,7 @@ SYN = {   # extra words people type for each service (search only, never shown)
 def card_search(e):
     c = CAT[e['category']]
     t = ' '.join([e['name'], c['name'], SYN.get(c['slug'], ''), e['area_label'], e.get('desc', ''), ' '.join(e.get('card_text', [])[:1]),
-                  ' '.join(s['n'] for s in e['services']), e.get('domain', ''), e.get('regions_note', ''), e.get('service_area', '')]).lower()
+                  ' '.join(s['n'] for s in e['services']), ' '.join(e.get('services_public', [])), e.get('domain', ''), e.get('regions_note', ''), e.get('service_area', '')]).lower()
     return re.sub(r'[^a-z0-9]+', ' ', t).strip()
 
 
@@ -385,10 +385,11 @@ def card(e, depth, page_path=''):
     if e['tier'] == 'free':
         acts = wa_btn(e, page_path, 'sm') if e.get('whatsapp') else call_btn(e, page_path, 'sm wa', 'Call ' + e['phone_show'])
         acts += '<a class="btn sm ghost" href="https://www.google.com/maps?cid=%s" target="_blank" rel="noopener" data-cta="directions_%s">Directions</a>' % (e['cid'], e['slug'])
+        acts += '<a class="btn sm ghost" href="%sworkshops/%s/" data-cta="view_%s">View</a>' % (pre(depth), e['slug'], e['slug'])
         return ('<article class="card basic" %s><div class="ph gph" data-place="%s"><div class="tile ini" aria-hidden="true"><b>%s</b><span class="gph-note">Google photo</span></div>%s</div><div class="bd"><span class="tag">%s</span>'
-                '<h3>%s</h3>%s<p class="tx full">%s</p><div class="acts">%s</div>'
+                '<h3><a href="%sworkshops/%s/">%s</a></h3>%s<p class="tx full">%s</p><div class="acts">%s</div>'
                 '<a class="claim" href="%s" target="_blank" rel="noopener" data-cta="claim_%s">Is this your workshop? Claim or remove</a></div></article>') % (
-            attrs, E(e.get('place_id', '')), E(e['name'][0]), tier_badge(e, 'on-ph'), E(c['short']), E(e['name']), rg, E(e['desc']), acts, E(claim_href(e, page_path)), e['slug'])
+            attrs, E(e.get('place_id', '')), E(e['name'][0]), tier_badge(e, 'on-ph'), E(c['short']), pre(depth), e['slug'], E(e['name']), rg, E(e['desc']), acts, E(claim_href(e, page_path)), e['slug'])
     ci = e.get('card_img')
     ph = photo_img(dict(ci, alt=ci['alt']), depth, lazy=True) if ci else tile(e)
     acts = wa_btn(e, page_path, 'sm') + (call_icon(e, page_path) if e.get('phone') else '')
@@ -419,7 +420,7 @@ def free_card(depth, ex=FREE_EXAMPLE):
 def tiers_strip():
     """Short three-tier summary for the home page. No prices."""
     items = [
-        ('free', 'A card with the name, a short description, service, area and region, and a WhatsApp or Call button.'),
+        ('free', 'A card plus a short profile page: one Google photo, address and Directions, opening hours, a Google rating line and a WhatsApp or Call button.'),
         ('premium', 'A full page with real photos, services, address, map, reviews line and FAQs.'),
         ('premium_leadgen', 'Everything in Verified, plus the business\'s own website and local search work. Premium workshops are featured at the top.'),
     ]
@@ -546,19 +547,74 @@ def listing(e):
     page(path, e['title'], e['desc'], body, ld, og=og, bar=bar, h1=e['name'])
 
 
+def basic_page(e):
+    """Basic (free) profile page: deliberately short. One Google photo slot, short text, plain service names, address + Directions, hours,
+    Google rating line (text only, no review schema), WhatsApp or Call, owner claim box. No gallery, FAQs, service descriptions or prices."""
+    depth = 2
+    c = CAT[e['category']]
+    path = 'workshops/%s/' % e['slug']
+    url = abs_url(path)
+    cr, _ = crumbs(depth, [(c['name'], 'services/%s/' % c['slug']), (e['name'], None)])
+    gurl = 'https://www.google.com/maps?cid=%s' % e['cid']
+    if e.get('whatsapp'):
+        contact_btn = wa_btn(e, path, 'big', 'WhatsApp ' + e['phone_show'])
+        contact_line = 'WhatsApp %s' % e['phone_show']
+    else:
+        contact_btn = call_btn(e, path, 'big wa', 'Call ' + e['phone_show'])
+        contact_line = 'Call %s' % e['phone_show']
+    photo = ('<div class="hero-ph gph" data-place="%s"><div class="tile ini" aria-hidden="true"><b>%s</b><span class="gph-note">Google photo</span></div></div>'
+             % (E(e['place_id']), E(e['name'][0])))
+    svcs = ''.join('<li>%s</li>' % E(s) for s in e['services_public'])
+    hours = ''.join('<dt>%s</dt><dd>%s</dd>' % (E(a), E(b)) for a, b in e['hours_rows'])
+    rating = 'Rated %s from %d Google reviews (checked %s)' % (e['rating'], e['reviews'], e['checked'])
+    reviews = '<p class="reviews-line">%s <a href="%s" target="_blank" rel="noopener" data-cta="reviews_%s" data-tier="free" data-page="%s">%s</a></p>' % (
+        ic('shield'), E(gurl), e['slug'], E(page_label(path)), E(rating))
+    claim = ('<aside class="claimbox"><h2>Is this your workshop?</h2><p>Claim it free, add your own photos, job gallery and FAQs with a Verified listing.</p>'
+             '<a class="btn amber" href="%s" target="_blank" rel="noopener" data-cta="claim_%s" data-tier="free" data-page="%s">%s Message Page One on WhatsApp</a></aside>') % (
+        E(claim_href(e, path)), e['slug'], E(page_label(path)), WA_SVG)
+    body = f'''<div class="w nar basicpg">{cr}
+<div class="badges" style="margin-top:14px">{tier_badge(e)}<span class="tag">{E(c['short'])}</span></div>
+<h1 style="margin-top:8px">{E(e['name'])}</h1>
+<p class="meta rg">{ic('pin')}<span>{E(region_label(e))}</span></p>
+{photo}
+<p class="lede" style="font-size:1rem">{E(e['lede'])}</p>
+<p>{E(e['area_ctx'])}</p>
+<div class="acts main-acts">{contact_btn}</div>
+<h2>Services</h2>
+<ul class="tick svc-plain">{svcs}</ul>
+<p class="fine">From the workshop's Google listing.</p>
+<section id="find" class="findus"><h2>Find us</h2>
+<ul class="facts"><li data-addr>{ic('pin')}<span>{E(e['address_public'])}</span></li><li>{ic('phone')}<span>{E(contact_line)}</span></li></ul>
+<p style="margin:10px 0"><a class="btn" href="{gurl}" target="_blank" rel="noopener" data-cta="directions_{e['slug']}" data-tier="free" data-page="{E(page_label(path))}" data-map>{ic('pin')} Directions</a></p>
+<h3>Opening hours</h3><dl class="hours">{hours}</dl>
+</section>
+{reviews}
+{claim}
+<p class="fine">Checked on Google, 1 Nov 2026. More <a href="../../services/{c['slug']}/">{E(c['name'].lower())}</a> or <a href="../../regions/{e['regions'][0]}/">{E(RN[e['regions'][0]])} region</a> workshops.</p>
+</div>'''
+    street, postal = e['address_public'].rsplit(', Singapore ', 1)
+    ld = {'@context': 'https://schema.org', '@type': 'AutoRepair', 'name': e['name'], 'url': url,
+          'address': {'@type': 'PostalAddress', 'streetAddress': street, 'postalCode': postal, 'addressLocality': 'Singapore', 'addressCountry': 'SG'},
+          'telephone': e['phone'], 'openingHours': e['hours_ld']}
+    bar = wabar([wa_btn(e, path) if e.get('whatsapp') else call_btn(e, path, 'wa')])
+    desc = '%s: car workshop in %s, %s region. Address, directions, hours and Google rating. %s.' % (e['name'], e['area_label'], RN[e['regions'][0]], contact_line)
+    page(path, '%s | %s Car Workshop' % (e['name'], e['area_label']), desc, body, [ld], bar=bar, h1=e['name'])
+
+
 def tier_features():
     return [
-        ('Basic card: name, short description, categories, general area', 'yes', 'yes', 'yes'),
+        ('Basic card and short profile page: name, short description, category, area, one Google photo', 'yes', 'yes', 'yes'),
         ('Link to your website', 'yes', 'yes', 'yes (shown as a secondary button)'),
-        ('WhatsApp button with the source tagged', 'yes', 'yes', 'yes'),
+        ('WhatsApp (or Call) button with the source tagged', 'yes', 'yes', 'yes'),
         ('Tap counts (WhatsApp and call) reported to you', 'yes', 'yes', 'yes'),
-        ('Your own full page: real photos and a completed-job gallery', 'no', 'yes', 'yes'),
+        ('Your own photos and a completed-job gallery', 'no', 'yes', 'yes'),
         ('Detailed services with short descriptions', 'no', 'yes', 'yes'),
-        ('Full address, Google Maps link and opening hours', 'no', 'yes', 'yes'),
-        ('Phone, direct WhatsApp and Call buttons, sticky on phones', 'no', 'yes', 'yes'),
-        ('Reviews line from a source people can check, with link and date', 'no', 'yes', 'yes'),
+        ('Address, Directions link and opening hours (where confirmed)', 'yes', 'yes', 'yes'),
+        ('Sticky contact bar on phones', 'yes', 'yes', 'yes'),
+        ('Both WhatsApp and Call buttons', 'no', 'yes', 'yes'),
+        ('Rating line from a source people can check, with link and date', 'yes', 'yes', 'yes'),
         ('3 to 5 local FAQs', 'no', 'yes', 'yes'),
-        ('LocalBusiness structured data', 'no', 'yes', 'yes'),
+        ('LocalBusiness structured data', 'yes', 'yes', 'yes'),
         ('Your own website, local SEO, AI search optimisation, regular content', 'no', 'no', 'yes'),
         ('Lead tracking and monthly reporting', 'no', 'no', 'yes'),
     ]
@@ -594,7 +650,7 @@ def list_page():
 {tier_table()}
 <p class="fine">{E(PRICE_NOTE)} Every tier gets WhatsApp taps counted and reported to you, and no tier promises a number of enquiries or a ranking.</p>
 <h2 style="margin-top:28px">What a free card looks like</h2>
-<p>A Basic listing is a plain card. Here is a made-up example with a made-up name, so you can see the style.</p>
+<p>A Basic listing is a plain card with a short profile page. Here is a made-up example with a made-up name, so you can see the style.</p>
 <div class="grid ex-grid">{free_card(depth)}</div>
 <h2 style="margin-top:28px">What we need from you</h2>
 <ul class="tick"><li>Your agreement in writing (WhatsApp is fine) and permission to use your photos</li><li>Business name, area, phone or WhatsApp, and the services you really offer</li><li>For Verified: your address, opening hours, a few photos of real jobs, and a review source we can link to</li></ul>
@@ -652,6 +708,9 @@ def build():
         region(k, r)
     for e in PAID:
         listing(e)
+    for e in ENTRIES:
+        if e['tier'] == 'free':
+            basic_page(e)
     list_page()
     about_page()
 
@@ -683,10 +742,8 @@ def build():
     lines += ['', '## Regions']
     lines += ['- [%s region](%sregions/%s/): %s' % (r['name'], BASE, k, r['intro']) for k, r in REGION_LIST]
     lines += ['', '## Listings']
-    for e in PAID:
+    for e in ENTRIES:
         lines.append('- [%s](%sworkshops/%s/): %s, %s%s' % (e['name'], BASE, e['slug'], CAT[e['category']]['name'] + ', ' + TIERS[e['tier']]['label'], e['area_label'], (' (own website: %s)' % e['url']) if e['tier'] == 'premium_leadgen' else ''))
-    lines += ['', '## Basic listings (card only, no own page)']
-    lines += ['- %s: %s, %s (%s region)' % (e['name'], CAT[e['category']]['name'], e['area_label'], ', '.join(RN[r] for r in e['regions'])) for e in ENTRIES if e['tier'] == 'free']
     lines += ['', '## More', '- [List your workshop](%slist-your-workshop/)' % BASE, '- [About](%sabout/)' % BASE, '']
     open(OUT + '/llms.txt', 'w').write('\n'.join(lines))
     print('built %d pages + 404 into %s (LIVE=%s, v=%s)' % (len(PAGES), OUT, LIVE, V))

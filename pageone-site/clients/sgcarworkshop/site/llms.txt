@@ -30,11 +30,9 @@ Last updated: 2026-11-01
 - [Cleanic Detailing](https://pageonesingapore.com/preview/sgcarworkshop/workshops/cleanic-detailing/): Car detailing and coating, Premium, Mobile service, island-wide (own website: https://cleanicdetailing.com/)
 - [Autotex](https://pageonesingapore.com/preview/sgcarworkshop/workshops/autotex/): Car parts, Premium, Kaki Bukit (own website: https://autotexautoparts.com.sg/)
 - [Wei Car Spray Painting](https://pageonesingapore.com/preview/sgcarworkshop/workshops/wei-car-spray-painting/): Spray painting and bodywork, Verified listing, Yishun
-
-## Basic listings (card only, no own page)
-- Everest Garage: General servicing and repair, Kaki Bukit (East region)
-- Hup Soon Lee Motor Service: General servicing and repair, Yishun (North region)
-- CYS Automobile Services: General servicing and repair, Woodlands (North region)
+- [Everest Garage](https://pageonesingapore.com/preview/sgcarworkshop/workshops/everest-garage/): General servicing and repair, Basic listing, Kaki Bukit
+- [Hup Soon Lee Motor Service](https://pageonesingapore.com/preview/sgcarworkshop/workshops/hup-soon-lee-motor-service/): General servicing and repair, Basic listing, Yishun
+- [CYS Automobile Services](https://pageonesingapore.com/preview/sgcarworkshop/workshops/cys-automobile-services/): General servicing and repair, Basic listing, Woodlands
 
 ## More
 - [List your workshop](https://pageonesingapore.com/preview/sgcarworkshop/list-your-workshop/)
