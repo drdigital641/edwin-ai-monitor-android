@@ -214,9 +214,9 @@ def home():
     featured = ''.join(card(e, 0, '') for e in ENTRIES)
     faqs = [
         ('What is %s?' % SITE_NAME, 'A small directory of car workshops and car services in Singapore. Each entry shows what the business does, where it is and how to contact it, using details confirmed by the business.'),
-        ('How do I list my workshop?', 'Message Page One Singapore on WhatsApp. A free listing is a basic card. A Premium listing is a full page with photos, services, map, WhatsApp and Call buttons. Premium + Lead Generation adds your own Page One website.'),
-        ('How much does a listing cost?', 'A free listing costs nothing. The directory Premium listing is S$20 a month, and Premium + Lead Generation is S$50 a month. The S$20 is not the earlier S$20 early-bird SEO plan.'),
-        ('Do you rank or review workshops?', 'No. Entries are not ranked and we do not write reviews. Premium pages may show a rating line from a source people can open, with its link and the date we checked.'),
+        ('How do I list my workshop?', 'Message Page One Singapore on WhatsApp. A Basic listing is a basic card. A Verified listing is a full page with photos, services, map, WhatsApp and Call buttons. Premium adds your own Page One website.'),
+        ('How much does a listing cost?', 'A Basic listing costs nothing. The Verified listing is S$20 a month, and Premium is S$50 a month. The S$20 is not the earlier S$20 early-bird SEO plan.'),
+        ('Do you rank or review workshops?', 'No. Entries are not ranked and we do not write reviews. Verified pages may show a rating line from a source people can open, with its link and the date we checked.'),
     ]
     faq_html = ''.join('<details><summary>%s</summary><p>%s</p></details>' % (E(q), E(a)) for q, a in faqs)
     body = f'''<section class="hero"><div class="w">
@@ -350,10 +350,10 @@ def tiers_strip():
     items = [
         ('free', 'A basic card: name, short description, categories, general area and a website link.'),
         ('premium', 'A full landing page: real photos, job gallery, services, address, map, WhatsApp and Call, reviews line and FAQs.'),
-        ('premium_leadgen', 'Everything in Premium plus your own Page One website, local SEO and monthly tap reports.'),
+        ('premium_leadgen', 'Everything in Verified plus your own Page One website, local SEO and monthly tap reports.'),
     ]
     li = ''.join('<li class="rv">%s<b>%s</b><span class="pr">%s</span>%s</li>' % (tier_badge(t), E(TIERS[t]['tagline']), E(TIERS[t]['price_text']), E(txt)) for t, txt in items)
-    return '<ol class="steps tiers-strip">%s</ol><p class="fine">The S$20 is the directory Premium listing, not the earlier S$20 early-bird SEO plan. <a href="list-your-workshop/">Compare the three tiers</a>.</p>' % li
+    return '<ol class="steps tiers-strip">%s</ol><p class="fine">The S$20 is the Verified listing, not the earlier S$20 early-bird SEO plan. <a href="list-your-workshop/">Compare the three tiers</a>.</p>' % li
 
 
 def ld_business(e, url):
@@ -389,7 +389,7 @@ def ld_business(e, url):
 
 
 def listing(e):
-    """Premium and Premium + Lead Gen page. Same layout for both; the lead-gen tier adds the website button below WhatsApp and Call."""
+    """Verified and Premium page. Same layout for both; the lead-gen tier adds the website button below WhatsApp and Call."""
     depth = 2
     c = CAT[e['category']]
     path = 'workshops/%s/' % e['slug']
@@ -521,17 +521,17 @@ def list_page():
 {tier_table()}
 <p class="fine">{E(PRICE_NOTE)} Prices are per month. Every tier gets WhatsApp taps counted and reported to you, and no tier promises a number of enquiries or a ranking.</p>
 <h2 style="margin-top:28px">What a free card looks like</h2>
-<p>A free listing is a plain card. Here is a made-up example with a made-up name, so you can see the style.</p>
+<p>A Basic listing is a plain card. Here is a made-up example with a made-up name, so you can see the style.</p>
 <div class="grid ex-grid">{free_card(depth)}</div>
 <h2 style="margin-top:28px">What we need from you</h2>
-<ul class="tick"><li>Your agreement in writing (WhatsApp is fine) and permission to use your photos</li><li>Business name, area, phone or WhatsApp, and the services you really offer</li><li>For Premium: your address, opening hours, a few photos of real jobs, and a review source we can link to</li></ul>
+<ul class="tick"><li>Your agreement in writing (WhatsApp is fine) and permission to use your photos</li><li>Business name, area, phone or WhatsApp, and the services you really offer</li><li>For Verified: your address, opening hours, a few photos of real jobs, and a review source we can link to</li></ul>
 <h2>What we do not do</h2>
 <p>We do not rank workshops, use rating or review markup, or list car dealers or insurers. A rating line is shown only when it comes from a source people can open, with its link and the date we checked. Anything we cannot confirm with you stays off the page.</p>
 <div class="cta rv" style="margin-top:22px"><div><h2>Ask on WhatsApp</h2><p>Tell us what your workshop does and we will reply with the next step.</p></div>
 <a class="btn amber big" href="{wa}" target="_blank" rel="noopener" data-cta="whatsapp_list_page">{WA_SVG} WhatsApp Page One</a></div>
 </div>'''
     page('list-your-workshop/', 'List Your Car Workshop | SG Car Workshop',
-         'Free, Premium S$20/month or Premium + Lead Generation S$50/month: compare the three ways to list your car workshop in Singapore.',
+         'Free, Verified S$20/month or Premium S$50/month: compare the three ways to list your car workshop in Singapore.',
          body, [dict(crld, **{'@context': 'https://schema.org'})])
 
 

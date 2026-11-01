@@ -9,7 +9,7 @@ tier (PLAN.md "Tiers", Edwin 1 Nov 2026, permanent rule: a premium listing never
   "premium"          full page: real photos, job gallery, services, full address, phone, WhatsApp + Call, map, reviews line with
                      source link and date (no rating schema), FAQs, LocalBusiness data
   "premium_leadgen"  everything in premium, plus the business's own website (Page One own-domain clients): badge
-                     "Premium + Lead Gen", website link as a SECONDARY button below WhatsApp/Call
+                     "Premium", website link as a SECONDARY button below WhatsApp/Call
 """
 
 PAGE_ONE_WA = "6597856612"  # pageone-site/builder/build.py: WA = "6597856612" (Edwin / Page One Singapore)
@@ -78,14 +78,14 @@ AREAS = {
 }
 
 
-# Tier names, badges and monthly prices (S$). Edwin set these on 1 Nov 2026. The Premium S$20 is the DIRECTORY Premium listing;
+# Tier names, badges and monthly prices (S$). Edwin set these on 1 Nov 2026. The Verified S$20 is the DIRECTORY Verified listing;
 # it is not Page One's older S$20 early-bird SEO plan. Prices live here so they change in one place.
 TIERS = {
-    "free": dict(label="Free listing", badge="Free listing", price=0, price_text="Free", tagline="Get found"),
-    "premium": dict(label="Premium listing", badge="Premium", price=20, price_text="S$20/month", tagline="Landing page"),
-    "premium_leadgen": dict(label="Premium + Lead Generation", badge="Premium + Lead Gen", price=50, price_text="S$50/month", tagline="Full Page One website setup"),
+    "free": dict(label="Basic listing", badge="Basic listing", price=0, price_text="Free", tagline="Get found"),
+    "premium": dict(label="Verified listing", badge="Verified", price=20, price_text="S$20/month", tagline="Landing page"),
+    "premium_leadgen": dict(label="Premium", badge="Premium", price=50, price_text="S$50/month", tagline="Full Page One website setup"),
 }
-PRICE_NOTE = "The S$20 is the directory Premium listing price. It is not the earlier S$20 early-bird SEO plan from Page One."
+PRICE_NOTE = "The S$20 is the Verified listing price. It is not the earlier S$20 early-bird SEO plan from Page One."
 
 # One clearly labelled example of the free tier, shown only on /list-your-workshop/ (made-up name, not a real business).
 FREE_EXAMPLE = dict(
