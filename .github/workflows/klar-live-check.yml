@@ -1,0 +1,26 @@
+name: Klar live photo check
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [ "claude/project-thread-mh5ubf" ]
+    paths: [ ".github/workflows/klar-live-check.yml", ".github/scripts/klar-live-check.js" ]
+
+jobs:
+  check:
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: claude/project-thread-mh5ubf
+      - name: Headers for one photo and the stylesheet
+        run: |
+          curl -sI https://klardetails.com.sg/assets/photos/klar-products-vouchers-800.webp | head -12
+          curl -sI "https://klardetails.com.sg/kd.css?v=17" | head -12
+      - name: Install Playwright with WebKit and Chromium
+        run: |
+          npm init -y >/dev/null
+          npm i playwright@1.48.2 >/dev/null
+          npx playwright install --with-deps webkit chromium >/dev/null
+      - name: Check guide photos in phone Safari and Chrome
+        run: node .github/scripts/klar-live-check.js
