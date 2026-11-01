@@ -1,0 +1,29 @@
+(function(){
+var d=document,h=d.documentElement,rm=window.matchMedia&&matchMedia('(prefers-reduced-motion: reduce)').matches;
+h.classList.add('js');
+d.addEventListener('click',function(e){var b=e.target.closest&&e.target.closest('.menu-btn');if(!b)return;var n=d.getElementById('mnav');var o=n.classList.toggle('open');b.setAttribute('aria-expanded',o)});
+function ready(f){d.readyState!=='loading'?f():d.addEventListener('DOMContentLoaded',f)}
+ready(function(){
+  /* reveal on scroll: decorates only, text is always in the HTML */
+  var els=d.querySelectorAll('.rv');
+  if(!('IntersectionObserver' in window)||rm){[].forEach.call(els,function(e){e.classList.add('in')})}
+  else{var io=new IntersectionObserver(function(es){es.forEach(function(x){if(x.isIntersecting){x.target.classList.add('in');io.unobserve(x.target)}})},{rootMargin:'0px 0px -8% 0px',threshold:.08});
+    [].forEach.call(els,function(e){var r=e.getBoundingClientRect();if(r.top<innerHeight*1.2&&r.bottom>0){e.classList.add('in')}else io.observe(e)});
+    /* safety net: nothing stays hidden for a reader that never scrolls */
+    setTimeout(function(){[].forEach.call(els,function(e){e.classList.add('in')})},2500)}
+  /* rails glide slowly; pause on touch, hover or sideways swipe */
+  [].forEach.call(d.querySelectorAll('[data-glide]'),function(r){
+    var t=r.querySelector('.rail-track');if(!t||rm)return;
+    if(t.scrollWidth<r.clientWidth*1.2)return;
+    [].slice.call(t.children).forEach(function(c){var k=c.cloneNode(true);k.setAttribute('aria-hidden','true');k.classList.add('in');[].forEach.call(k.querySelectorAll('a'),function(a){a.tabIndex=-1});t.appendChild(k)});
+    var speed=r.getAttribute('data-glide')==='slow'?0.018:0.03,hold=0,last=0,acc=0,tm;
+    function half(){return t.scrollWidth/2}
+    function step(ts){if(last&&!hold&&!d.hidden){acc+=(ts-last)*speed;if(acc>=1){r.scrollLeft+=Math.floor(acc);acc-=Math.floor(acc)}}if(r.scrollLeft>=half())r.scrollLeft-=half();last=ts;requestAnimationFrame(step)}
+    requestAnimationFrame(step);
+    function pause(ms){hold=1;clearTimeout(tm);tm=setTimeout(function(){hold=0},ms)}
+    r.addEventListener('mouseenter',function(){hold=1});r.addEventListener('mouseleave',function(){hold=0});
+    r.addEventListener('touchstart',function(){pause(4000)},{passive:true});r.addEventListener('touchmove',function(){pause(4000)},{passive:true});
+    r.addEventListener('focusin',function(){hold=1});r.addEventListener('focusout',function(){hold=0});
+  });
+});
+})();
