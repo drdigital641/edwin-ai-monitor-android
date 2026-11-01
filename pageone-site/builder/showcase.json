@@ -925,12 +925,91 @@
         "top_queries": []
       },
       "short": "shop fit-outs"
+    },
+    {
+      "key": "battery-rescue",
+      "name": "Battery Rescue SG",
+      "domain": "batteryrescue.sg",
+      "url": "https://batteryrescue.sg/",
+      "industry": "Onsite car battery replacement, Singapore",
+      "schema_type": "AutoRepair",
+      "img": "https://cdn.jsdelivr.net/gh/drdigital641/edwin-ai-monitor-android@be32622552f68f6c2ba1c6265f22cd2e176fbc1d/site-assets/pageone/clients/batteryrescue.webp",
+      "gsc_site": "sc-domain:batteryrescue.sg",
+      "launched": "2026-10-27",
+      "brand_terms": [
+        "battery rescue",
+        "batteryrescue"
+      ],
+      "skip_queries": [],
+      "built": [
+        "A battery finder: pick your car and see the right Delkor battery and its price",
+        "A page for each battery size and each car brand, plus rescue pages for each area covered",
+        "Walk-in prices at 10 outlets, and pages for jump-starts and towing"
+      ],
+      "articles": 5,
+      "gsc": {
+        "record_id": null,
+        "first_day": null,
+        "clicks": 0,
+        "impressions": 0,
+        "position": 0,
+        "prev_clicks": 0,
+        "prev_impressions": 0,
+        "prev_position": 0,
+        "queries": 0,
+        "page_one": 0,
+        "top3": 0,
+        "capped": false,
+        "monthly": [],
+        "best_query": null,
+        "top_queries": []
+      },
+      "short": "car battery rescue"
+    },
+    {
+      "key": "autotex",
+      "name": "Autotex",
+      "domain": "autotexautoparts.com.sg",
+      "url": "https://autotexautoparts.com.sg/",
+      "industry": "Kia and Hyundai parts, Kaki Bukit, Singapore",
+      "schema_type": "AutoPartsStore",
+      "img": "https://cdn.jsdelivr.net/gh/drdigital641/edwin-ai-monitor-android@be32622552f68f6c2ba1c6265f22cd2e176fbc1d/site-assets/pageone/clients/autotexautoparts.webp",
+      "gsc_site": "sc-domain:autotexautoparts.com.sg",
+      "launched": "2026-10-30",
+      "brand_terms": [
+        "autotex"
+      ],
+      "skip_queries": [],
+      "built": [
+        "A parts catalogue searched by car model and part, with prices shown",
+        "Pages for each Kia and Hyundai model sold in Singapore, and for each part",
+        "Orders by WhatsApp, and a staff dashboard to add parts and prices"
+      ],
+      "articles": 3,
+      "gsc": {
+        "record_id": null,
+        "first_day": null,
+        "clicks": 0,
+        "impressions": 0,
+        "position": 0,
+        "prev_clicks": 0,
+        "prev_impressions": 0,
+        "prev_position": 0,
+        "queries": 0,
+        "page_one": 0,
+        "top3": 0,
+        "capped": false,
+        "monthly": [],
+        "best_query": null,
+        "top_queries": []
+      },
+      "short": "Kia and Hyundai parts"
     }
   ],
   "pipeline": {
     "_readme": "Websites being built for signed-up clients that are not live on their own domain yet. Shown only as a count (never named) next to the live count. Set by showcase_refresh.py from the Controller Client export (status activating or preview, not yet a live site here, slug not in exclude); as_of is the day the count last changed. Put Client slugs that are not signed-up clients (e.g. a demo preview) in exclude.",
-    "building": 2,
-    "as_of": "2026-10-25",
+    "building": 4,
+    "as_of": "2026-11-01",
     "exclude": [
       "nanyang-carpentry",
       "new-zen-werkz",
