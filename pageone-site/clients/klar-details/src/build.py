@@ -25,8 +25,27 @@ LIVE = False
 PREVIEW = 'https://pageonesingapore.com/preview/%s/' % SLUG
 SITE = ('https://%s/' % DOMAIN) if LIVE else PREVIEW
 UPDATED = '2026-11-01'
-V = '9'
+V = '10'
 INDEXNOW_KEY = '3f8b2c6d9e14a7b05c2d8e6f1a4b9c73'
+
+# Homepage promo popup. Klar switches it off by setting PROMO['on'] = False and rebuilding;
+# it also hides itself after PROMO['ends'] with no rebuild. Visitors can close it; the close
+# is remembered on that device for PROMO['days'] days.
+PROMO = {
+    'on': True,
+    'id': 'graphene-2026',
+    'ends': '2026-12-31',
+    'days': 7,
+    'eyebrow': 'Pre-New Year sale',
+    'title': 'S$300 off KlarGRAPHENE coating',
+    'text': 'Why wait until 2027 to give your car the protection it deserves? Book before 31 December 2026 and save S$300 on the Graphene Coating Package.',
+    'points': ['Deeper gloss and enhanced shine', 'Excellent water repellency', 'Long-lasting paint protection', 'Easier cleaning and maintenance'],
+    'fine': 'Booking and coating must both be completed by 31 December 2026 to enjoy the promotion.',
+    'cta': 'WhatsApp to secure a slot',
+    'topic': 'the S$300 off Graphene Coating promotion.',
+    'video': 'assets/promo-graphene.mp4',
+    'poster': 'assets/promo-poster.jpg',
+}
 
 NAME = 'Klar Details'
 LEGAL = 'Klar Details'  # CONFIRM legal entity name and UEN
@@ -209,6 +228,24 @@ def related_services(slugs):
 def related_articles(slugs, heading='Guides that help you decide'):
     items = ''.join(acard(ABY[s], i) for i, s in enumerate(slugs) if s in ABY)
     return '<section class="sec"><div class="wrap"><h2>%s</h2><div class="grid3">%s</div></div></section>' % (E(heading), items) if items else ''
+
+
+def promo_html():
+    P = PROMO
+    if not P['on']:
+        return ''
+    pts = ''.join('<li>%s</li>' % E(x) for x in P['points'])
+    media = ('<div class="promo-media"><video autoplay muted loop playsinline preload="metadata" poster="%s"><source src="%s" type="video/mp4"></video></div>'
+             % (E(P['poster']), E(P['video']))) if P.get('video') else ''
+    return ('<div class="promo" id="promo" data-id="%s" data-ends="%s" data-days="%s" hidden>'
+            '<div class="promo-bg" data-promo-close></div>'
+            '<div class="promo-box" role="dialog" aria-modal="true" aria-labelledby="promo-t">'
+            '<button class="promo-x" type="button" data-promo-close aria-label="Close">&times;</button>'
+            '%s<div class="promo-body"><p class="eyebrow">%s</p><h2 id="promo-t">%s</h2><p>%s</p><ul class="ticks">%s</ul>'
+            '<p class="fine">%s</p><div class="cta-row">%s<button class="btn btn-ghost" type="button" data-promo-close>No thanks</button></div>'
+            '</div></div></div>'
+            % (E(P['id']), E(P['ends']), P['days'], media, E(P['eyebrow']), E(P['title']), E(P['text']), pts, E(P['fine']),
+               wa_btn(P['cta'], topic=P['topic'])))
 
 
 def home():
@@ -492,6 +529,7 @@ NAV = [('services/', 'Services'), ('graphene-bonnet-trial/', 'S$88 trial'), ('ou
 
 
 def shell(path, p, robots_meta=''):
+    promo = promo_html() if path == '' else ''
     pre = '../' * path.count('/')
     url = SITE + path
 
@@ -583,7 +621,7 @@ def shell(path, p, robots_meta=''):
 </div>
 <div class="ftr-legal"><span>© 2026 {NAME} · Because Every Detail Counts</span><span>Website &amp; SEO by <a href="https://pageonesingapore.com/">Page One Singapore</a></span></div>
 </div></footer>
-<div class="dock"><a class="dock-wa" href="{E(wa_url())}" target="_blank" rel="noopener" aria-label="WhatsApp Klar Details on {WA_SHOW}">{WA_SVG}<span>WhatsApp</span></a><a class="dock-c" href="tel:{TEL}">{TEL_SVG}<span>Call</span></a></div>
+{promo}<div class="dock"><a class="dock-wa" href="{E(wa_url())}" target="_blank" rel="noopener" aria-label="WhatsApp Klar Details on {WA_SHOW}">{WA_SVG}<span>WhatsApp</span></a><a class="dock-c" href="tel:{TEL}">{TEL_SVG}<span>Call</span></a></div>
 </body>
 </html>
 '''
