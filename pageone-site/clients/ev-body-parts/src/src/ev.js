@@ -482,7 +482,7 @@
     var id = form.getAttribute('data-search'), input = $('.sin', form), res = $('.sres', form);
     if (id === 'cq' || !res || !input) return;
     var home = id === 'hq';
-    var run = function () { renderSearch(res, input.value, { limit: 6, seeAll: ROOT + 'catalogue/' }); };
+    var run = function () { renderSearch(res, input.value, { pool: ALL, limit: 6, seeAll: ROOT + 'catalogue/' }); };
     input.addEventListener('input', debounce(run, 120));
     renderers.push(function () { if (norm(input.value)) run(); });
     guide(form, input, run); typePh(input);
