@@ -881,23 +881,32 @@ ARTS = [
    ("Is it safe to keep driving?", "A worn mounting lets the engine move more than it should, which strains hoses, wiring and the exhaust. Have it checked by a workshop and change the worn mount before other parts get damaged."),
    ("Which mounting do I need?", "Most cars have several mounts: an engine mount, a gearbox mount and a lower torque mount. Tell us the noise and where it comes from, with your car plate, and we will tell you which mount it usually is.")],
   "engine-mounting"),
+ ("signs-of-a-failing-ignition-coil", "Signs of a failing ignition coil on a Hyundai or Kia",
+  "A rough idle, a flashing check-engine light and a car that shakes under load can point to a weak ignition coil.",
+  [("What does an ignition coil do?", "The ignition coil turns the car battery's low voltage into the high voltage a spark plug needs to ignite the fuel and air in each cylinder. Many modern engines have one coil for each cylinder, mounted on top of the spark plug."),
+   ("What are the common signs of a failing ignition coil?", "<ul><li>A rough or shaky idle, especially when the engine is warm.</li><li>The car hesitates or jerks when you accelerate, or feels weak going uphill.</li><li>The check-engine light comes on, or flashes while the engine is misfiring.</li><li>Higher fuel use and a smell of unburnt fuel from the exhaust.</li></ul>"),
+   ("Is it the coil or the spark plug?", "Both cause a misfire, so a workshop usually reads the fault code first. It tells you which cylinder is misfiring. The mechanic can then swap that coil with a neighbouring cylinder to see if the misfire follows it. If it does, the coil is at fault. If not, check the spark plug."),
+   ("Is it safe to keep driving with a misfire?", "A flashing check-engine light means the engine is misfiring badly. Unburnt fuel can reach the exhaust and damage the catalytic converter, so have the car checked soon and avoid hard driving until then."),
+   ("Which coil do I need?", "Coils differ by model, generation and engine. Send us your car plate or chassis number and which cylinder is misfiring, and we will match the right coil. Many owners change the spark plugs at the same time, so ask us about both.")],
+  "ignition-coils", "2026-11-02"),
 ]
 
 def build_articles():
     cards = []
-    for slug, t, d, qa, cat in ARTS:
+    for slug, t, d, qa, cat, *_dt in ARTS:
+        adate = _dt[0] if _dt else "2026-10-29"
         r = "../../"
         c = C[cat]
         xs = [x for x in PRODUCTS if x["cat"]["id"] == cat][:4]
         more = (f'<section class="sec alt"><div class="wrap"><h2>{e(c["name"])} we stock</h2><div class="pgrid">{"".join(card(x, r) for x in xs)}</div></div></section>' if xs else "")
         sec = "".join(f'<h2>{e(q)}</h2>{a if a.startswith("<") else f"<p>{a}</p>"}' for q, a in qa)
         body = f'''<section class="ph"><div class="wrap narrow">{{{{CRUMBS}}}}<h1>{e(t)}</h1><p class="lead">{e(d)}</p>
-<p class="small muted">By Autotex · {datetime.date(2026, 10, 29).strftime("%-d %b %Y")}</p></div></section>
+<p class="small muted">By Autotex · {datetime.date.fromisoformat(adate).strftime("%-d %b %Y")}</p></div></section>
 <article class="sec art-b"><div class="wrap narrow">{sec}
 <div class="callout"><b>Need the part?</b> See <a href="{r}parts/{cat}/">{e(c["name"].lower())} for every Hyundai and Kia model</a>, or <a href="{wa_link("Hi Autotex, I read your guide and need a part. Car plate / chassis: ")}" rel="noopener">WhatsApp us your car plate</a>.</div>
 </div></article>
 {more}'''
-        art = {"@type": "Article", "headline": t, "description": d, "datePublished": "2026-10-29", "dateModified": TODAY,
+        art = {"@type": "Article", "headline": t, "description": d, "datePublished": adate, "dateModified": adate,
                "author": {"@id": BASE + "/#store"}, "publisher": {"@id": BASE + "/#store"}, "image": BASE + "/og.jpg",
                "mainEntityOfPage": BASE + f"/articles/{slug}/"}
         shell(f"articles/{slug}/index.html", (t + " | Autotex") if len(t) < 50 else t, d, body, crumbs=[("Guides", "articles/"), (t, f"articles/{slug}/")],
@@ -906,7 +915,7 @@ def build_articles():
     body = f'''<section class="ph"><div class="wrap">{{{{CRUMBS}}}}<h1>Guides for Hyundai and Kia owners</h1>
 <p class="lead">Short, practical guides to help you pick the right part.</p></div></section>
 <section class="sec"><div class="wrap agrid">{"".join(cards)}</div></section>'''
-    shell("articles/index.html", "Hyundai & Kia Parts Guides | Autotex", "Practical guides for Hyundai and Kia owners in Singapore: finding the right part, brakes, engine mounting and more.",
+    shell("articles/index.html", "Hyundai & Kia Parts Guides | Autotex", "Practical guides for Hyundai and Kia owners in Singapore: finding the right part, brakes, engine mounting, ignition coils and more.",
           body, crumbs=[("Guides", "articles/")], prio="0.6")
 
 # ---------------- data.js, static files, images ----------------
