@@ -104,8 +104,9 @@ for e, r in rows:
 home_src = open(os.path.join(root, 'index.html'), encoding='utf-8').read()
 for e in ENTRIES:
     if e['tier'] == 'free':
-        m = re.search(r'<article class="card basic[^"]*"[^>]*>(?:(?!</article>).)*data-cta="(?:whatsapp|call|contact)_dir_%s"(?:(?!</article>).)*href="[^"]*workshops/%s/"' % (e['slug'], e['slug']), home_src, re.S)
-        if not m or 'Manage this listing' not in home_src: print('BASIC card incomplete (needs contact + View link)', e['slug']); bad += 1
+        m = re.search(r'<article class="card basic[^"]*"[^>]*>((?:(?!</article>).)*href="[^"]*workshops/%s/" data-cta="view_%s"(?:(?!</article>).)*)</article>' % (e['slug'], e['slug']), home_src, re.S)
+        if m and ('data-place' in m.group(1) or 'data-live' in m.group(1) or 'places.googleapis' in m.group(1)): print('BASIC card makes Places calls', e['slug']); bad += 1
+        if not m or 'Manage this listing' not in home_src: print('BASIC card incomplete (needs View details link)', e['slug']); bad += 1
         pg = open(os.path.join(root, 'workshops', e['slug'], 'index.html'), encoding='utf-8').read()
         ld = [json.loads(j) for j in re.findall(r'<script type="application/ld\+json">(.*?)</script>', pg, re.S)]
         biz = [x for x in ld if x.get('@type') != 'BreadcrumbList']

@@ -79,7 +79,7 @@ if(!sent&&window.fetch){fetch(url,{method:'POST',credentials:'omit',keepalive:tr
 /* Basic listings: everything from Google is loaded LIVE in the visitor's browser from Places API (New) with the referrer-restricted browser key.
    Nothing is stored on our side except the place_id: photo (with linked photographer + Google Maps credit), phone (WhatsApp if mobile, else Call),
    opening hours, rating, review count and website. If Places fails or a field is missing, the server-rendered fallback (link to the Google listing) stays.
-   A listing with no stored place_id is found once by name + address (IDs only); the ID may be kept in localStorage. Responses are kept only for this tab (sessionStorage). */
+   Runs on profile pages only (one Places Details call per visit; list and area cards are static). A listing with no stored place_id is found once by name + address (IDs only); the ID may be kept in localStorage. Responses are kept only for this tab (sessionStorage). */
 (function () {
   var m = document.querySelector('meta[name="gmaps-key"]'); if (!m || !('IntersectionObserver' in window) || !window.fetch) return;
   var key = m.content, API = 'https://places.googleapis.com/v1/';
@@ -96,7 +96,7 @@ if(!sent&&window.fetch){fetch(url,{method:'POST',credentials:'omit',keepalive:tr
   function details(pid, full) {
     var ck = 'sgcw-pl:' + pid + (full ? ':f' : ''), c = st(sessionStorage, ck);
     if (c) { try { return Promise.resolve(JSON.parse(c)); } catch (x) {} }
-    var f = 'photos,nationalPhoneNumber' + (full ? ',regularOpeningHours,rating,userRatingCount,websiteUri' : '');
+    var f = 'photos,nationalPhoneNumber,regularOpeningHours,rating,userRatingCount';
     return fetch(API + 'places/' + encodeURIComponent(pid) + '?fields=' + f + '&key=' + key).then(function (r) { return r.ok ? r.json() : null; })
       .then(function (d) { if (d) st(sessionStorage, ck, JSON.stringify(d)); return d; });
   }
@@ -158,11 +158,12 @@ if(!sent&&window.fetch){fetch(url,{method:'POST',credentials:'omit',keepalive:tr
     findId(el).then(function (pid) { return pid ? details(pid, full) : null; }).then(function (d) {
       if (!d) return;
       photo(el, d); contact(full ? document : root, d);
-      if (full) { hours(root, d); rating(root, d); site(root, d); }
+      hours(root, d); rating(root, d);
     }).catch(function () {});
   }
   var io = new IntersectionObserver(function (es) { es.forEach(function (en) { if (en.isIntersecting) { io.unobserve(en.target); show(en.target); } }); }, { rootMargin: '200px' });
-  document.querySelectorAll('.gph[data-place],.gph[data-q]').forEach(function (el) { io.observe(el); });
+  /* Profile pages only: cards on list and area pages make no Places calls. */
+  document.querySelectorAll('.basicpg .gph[data-place],.basicpg .gph[data-q]').forEach(function (el) { io.observe(el); });
 })();
 /* Owner sections on the list page: ?w=<slug> names the listing in the WhatsApp message to Page One (claim and removal). */
 (function(){var m=/[?&]w=([a-z0-9-]+)/.exec(location.search);if(!m)return;

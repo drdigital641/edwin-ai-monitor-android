@@ -528,8 +528,23 @@ def gph_attrs(e):
     return 'data-place="%s" data-q="%s" data-name="%s" data-maps="%s"' % (E(e.get('place_id', '')), E(q, True), E(e['name'], True), E(maps_url(e), True))
 
 
+CAT_COLOR = {'general-servicing-repair': '#1d5fb8', 'spray-painting-bodywork': '#c0392b', 'gearbox-repair': '#d97706', 'abs-ecu-module-repair': '#7c3aed',
+             'car-battery': '#15803d', 'car-detailing-coating': '#0e8a8a', 'car-wrap-ppf': '#c026a3', 'car-parts': '#5b6472'}
+
+
+def initials(name):
+    w = [x for x in re.split(r'[^A-Za-z0-9]+', name) if x and x.lower() not in ('the', 'pte', 'ltd', 'and', 'of')]
+    return (''.join(x[0] for x in w[:2]) or name[:1]).upper()
+
+
+def bt_style(e):
+    return '--bc:%s' % CAT_COLOR.get(e['category'], '#1d5fb8')
+
+
 def gph_tile(e):
-    return '<div class="tile ini" aria-hidden="true"><b>%s</b></div>' % E(e['name'][0])
+    """Branded placeholder: workshop initials in a coloured circle + category icon (colour by category). Static, no Places call."""
+    c = CAT[e['category']]
+    return '<span class="ini" aria-hidden="true">%s</span><span class="cic" aria-hidden="true">%s</span>' % (E(initials(e['name'])), ic(c.get('icon', 'gear')))
 
 
 def maps_url(e):
@@ -551,13 +566,12 @@ def card(e, depth, page_path=''):
     attrs = 'data-search="%s" data-cat="%s" data-regions="%s" data-tier="%s"' % (E(card_search(e), True), c['slug'], ' '.join(e['regions']), e['tier'])
     rg = '<p class="meta rg">%s<span>%s</span></p>' % (ic('pin'), E(region_label(e)))
     if e['tier'] == 'free':
-        acts = live_contact(e, page_path, 'sm')
-        acts += '<span class="minor"><a class="btn sm ghost" href="%s" target="_blank" rel="noopener" data-cta="directions_%s">Directions</a>' % (E(maps_url(e)), e['slug'])
-        acts += '<a class="btn sm ghost" href="%sworkshops/%s/" data-cta="view_%s">View</a></span>' % (pre(depth), e['slug'], e['slug'])
-        return ('<article class="card basic" %s><div class="ph gph" %s>%s%s</div><div class="bd"><span class="tag">%s</span>'
-                '<h3><a href="%sworkshops/%s/">%s</a></h3>%s<p class="tx full">%s</p><div class="acts">%s</div>'
-                '%s</div></article>') % (
-            attrs, gph_attrs(e), gph_tile(e), tier_badge(e, 'on-ph'), E(c['short']), pre(depth), e['slug'], E(e['name']), rg, E(e['desc']), acts, owner_note(e, depth, page_path, 'claim'))
+        svc = ', '.join(e.get('services_public', [])[:3])
+        return ('<article class="card basic" %s><div class="ph btile" style="%s">%s%s</div><div class="bd"><span class="tag">%s</span>'
+                '<h3><a href="%sworkshops/%s/">%s</a></h3>%s<p class="addr">%s</p><p class="tx full svcline">%s</p>'
+                '<div class="acts"><a class="btn sm" href="%sworkshops/%s/" data-cta="view_%s">View details</a></div>%s</div></article>') % (
+            attrs, bt_style(e), gph_tile(e), tier_badge(e, 'on-ph'), E(c['short']), pre(depth), e['slug'], E(e['name']), rg, E(e['address_public']), E(svc),
+            pre(depth), e['slug'], e['slug'], owner_note(e, depth, page_path, 'claim'))
     ci = e.get('card_img')
     ph = photo_img(dict(ci, alt=ci['alt']), depth, lazy=True) if ci else tile(e)
     acts = wa_btn(e, page_path, 'sm') + (call_icon(e, page_path) if e.get('phone') else '')
@@ -726,14 +740,14 @@ def basic_page(e):
     cr, crld = crumbs(depth, workshop_trail(e))
     gurl = maps_url(e)
     contact_btn = live_contact(e, path, 'big')
-    photo = '<div class="hero-ph gph" %s>%s</div>' % (gph_attrs(e), gph_tile(e))
+    photo = '<div class="hero-ph gph btile" style="%s" %s>%s</div>' % (bt_style(e), gph_attrs(e), gph_tile(e))
     svcs = ''.join('<li>%s</li>' % E(s) for s in e['services_public'])
     hours = '<p class="fine" data-live="hours">See opening hours on the <a href="%s" target="_blank" rel="noopener">Google listing</a>.</p>' % E(gurl)
     reviews = '<p class="reviews-line" data-live="rating">%s <a href="%s" target="_blank" rel="noopener" data-cta="reviews_%s" data-tier="free" data-page="%s">See the Google rating and reviews</a></p>' % (
         ic('shield'), E(gurl), e['slug'], E(page_label(path)))
     claim = owner_note(e, depth, path)
     area_links = area_link_html(e, '../../')
-    site_btn = ' <a class="btn ghost" href="#" hidden target="_blank" rel="noopener" data-live="site" data-cta="website_%s" data-tier="free">%s <span class="lbl">Website</span></a>' % (e['slug'], ic('out'))
+    site_btn = ''
     body = f'''<div class="w nar basicpg">{cr}
 <div class="badges" style="margin-top:14px">{tier_badge(e)}<span class="tag">{E(c['short'])}</span></div>
 <h1 style="margin-top:8px">{E(e['name'])}</h1>

@@ -248,3 +248,14 @@ details:not(.menu)[open]>summary:after{transform:rotate(-135deg);margin-top:4px}
 .spons{display:inline-block;vertical-align:middle;margin-left:8px;padding:2px 8px;border:1px solid currentColor;border-radius:999px;font-size:.62rem;font-weight:700;letter-spacing:.06em;text-transform:uppercase;opacity:.75}
 .adnote{margin:0 0 12px}
 .owner-note .sep{opacity:.5;margin:0 2px}.owner-note .rm{font-weight:600}
+
+/* Basic card: static branded tile (no Places calls) */
+.card.basic .ph.btile,.hero-ph.btile{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:10px;background:color-mix(in srgb,var(--bc) 13%,#fff);border-bottom:3px solid var(--bc);position:relative}
+.card.basic .ph.btile{aspect-ratio:3/2;height:auto}
+.hero-ph.btile{aspect-ratio:16/9;border-radius:var(--r);overflow:hidden}
+.btile .ini{width:56px;height:56px;border-radius:50%;background:var(--bc);color:#fff;display:grid;place-items:center;font-weight:700;font-size:1.1rem;letter-spacing:.02em}
+.btile .cic{display:grid;place-items:center;width:28px;height:28px;border-radius:8px;background:#fff;color:var(--bc);border:1px solid color-mix(in srgb,var(--bc) 35%,#fff)}
+.btile .cic svg{width:16px;height:16px}
+.card.basic .addr{margin:0;font-size:.8rem;color:var(--muted)}
+.card.basic .svcline{font-size:.8rem;margin:0}
+@media (max-width:639px){.grid .card.basic .ph.btile{aspect-ratio:auto;height:auto;min-height:150px}.btile .ini{width:48px;height:48px;font-size:1rem}}
