@@ -1,0 +1,41 @@
+name: Fetch Klar Details client media
+
+# Downloads the client's own photos from their current WordPress site into the repo
+# so the new site no longer hotlinks them (the old host goes away at go-live).
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [ "claude/project-thread-mh5ubf" ]
+    paths: [ ".github/workflows/fetch-klar-media.yml" ]
+
+jobs:
+  fetch:
+    runs-on: ubuntu-24.04
+    permissions:
+      contents: write
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          ref: claude/project-thread-mh5ubf
+
+      - name: Download
+        run: |
+          set -e
+          D=pageone-site/clients/klar-details/src/assets/client
+          mkdir -p "$D"
+          while read -r u; do
+            [ -z "$u" ] && continue
+            f="$D/$(basename "$u")"
+            curl -fsSL --retry 3 -A "Mozilla/5.0 (PageOne media copy)" -o "$f" "$u" && echo "ok $f $(stat -c%s "$f")" || echo "FAIL $u"
+          done < pageone-site/clients/klar-details/src/client-media-urls.txt
+          ls -la "$D"
+
+      - name: Commit
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add pageone-site/clients/klar-details/src/assets/client
+          git diff --cached --quiet && echo "nothing new" || git commit -m "Klar Details: copy client photos into the repo for go-live"
+          git push origin HEAD:claude/project-thread-mh5ubf
