@@ -172,6 +172,17 @@ NEWEST = sorted(SC["clients"], key=_launch_key, reverse=True)
 FIRST_LAUNCH = month_long(min(c["launched"][:7] for c in SC["clients"]))
 LATEST_MONTH = NEWEST[0]["launched"][:7]
 N_LATEST_MONTH = sum(1 for c in SC["clients"] if c["launched"][:7] == LATEST_MONTH)
+# Early in a month the newest month can hold only a launch or two; then the growth line counts
+# from the start of the previous month, so it never reads smaller than the month before.
+_py, _pm = int(LATEST_MONTH[:4]), int(LATEST_MONTH[5:7])
+PREV_MONTH = f"{_py - 1}-12" if _pm == 1 else f"{_py}-{_pm - 1:02d}"
+N_PREV_MONTH = sum(1 for c in SC["clients"] if c["launched"][:7] == PREV_MONTH)
+if N_LATEST_MONTH < N_PREV_MONTH:
+    SPAN_START = PREV_MONTH
+    N_SPAN = N_LATEST_MONTH + N_PREV_MONTH
+    SPAN_TEXT = f"have gone live since 1 {month_long(PREV_MONTH)}"
+else:
+    SPAN_START, N_SPAN, SPAN_TEXT = LATEST_MONTH, N_LATEST_MONTH, f"went live in {month_long(LATEST_MONTH)} alone"
 LIVE_N = len(SC["clients"])
 
 
@@ -196,7 +207,7 @@ def growing_lead():
     return (f"Page One Singapore is new, and we say so openly: the first website on our system went live in {FIRST_LAUNCH}. "
             f"As of {GROWTH_AS_OF}, {LIVE_N} client websites are live on their own domains"
             + (f", {BUILDING} more are being built for clients who have signed up" if BUILDING else "")
-            + f", and {N_LATEST_MONTH} of the live ones went live in {month_long(LATEST_MONTH)} alone.")
+            + f", and {N_SPAN} of the live ones {SPAN_TEXT}.")
 
 
 def newest_cards(n=3):
@@ -466,7 +477,7 @@ def llms_sections():
     new = [c for c in new if not G[c["key"]]["pre_site"]]
     if new:
         lines.append("- " + names_list([f"{c['name']} ({c['domain']})" for c in new]) + ": launched "
-                     + names_list(sorted({month_long(c["launched"]) for c in new}, key=lambda x: x)) + ", no Search Console data yet.")
+                     + names_list([month_long(m) for m in sorted({c["launched"][:7] for c in new})]) + ", no Search Console data yet.")
     lines += ["- Full case studies: https://pageonesingapore.com/results/",
               "- Every client website with its numbers: https://pageonesingapore.com/clients/",
               "- Low price, real results: S$50 a month is low because a set of AI tools we designed does the daily SEO work that used to be billed by the hour; "
@@ -477,8 +488,8 @@ def llms_sections():
              f"(live count: {growth})" + (f", and is building {BUILDING} more for clients who have signed up." if BUILDING else ".")] + [f"- [{c['name']}]({c['url']}): {c['industry']}" + (f" (live since {date_long(c['launched'])})" if len(c['launched']) == 10 else f" (launched {month_long(c['launched'])})" if stage(c['key']) == "new" else "")
                                       for c in SC["clients"]] + [
              f"- New and growing: Page One Singapore is a young company; the first website on its system went live in {FIRST_LAUNCH}. "
-             f"{N_LATEST_MONTH} client websites went live in {month_long(LATEST_MONTH)} alone, newest first: "
-             + "; ".join(f"{c['name']} ({c['domain']}, live {date_long(c['launched']) if len(c['launched']) == 10 else month_long(c['launched'])})" for c in NEWEST if c["launched"][:7] == LATEST_MONTH) + ".",
+             f"{N_SPAN} client websites {SPAN_TEXT}, newest first: "
+             + "; ".join(f"{c['name']} ({c['domain']}, live {date_long(c['launched']) if len(c['launched']) == 10 else month_long(c['launched'])})" for c in NEWEST if c["launched"][:7] >= SPAN_START) + ".",
              "- Signed-up clients whose websites are still being built are counted but not named until their own domain is live."] + ["- All client websites with screenshots and dated results: https://pageonesingapore.com/clients/"]
     out = os.path.join(HERE, "..", "bridge")
     os.makedirs(out, exist_ok=True)
