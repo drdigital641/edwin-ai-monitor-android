@@ -25,7 +25,7 @@ LIVE = False
 PREVIEW = 'https://pageonesingapore.com/preview/%s/' % SLUG
 SITE = ('https://%s/' % DOMAIN) if LIVE else PREVIEW
 UPDATED = '2026-11-01'
-V = '4'
+V = '5'
 INDEXNOW_KEY = '3f8b2c6d9e14a7b05c2d8e6f1a4b9c73'
 
 NAME = 'Klar Details'
@@ -501,7 +501,7 @@ def shell(path, p, robots_meta=''):
             crumbs_html, '<p class="kicker">%s</p>' % E(p['kicker']) if p['kicker'] else '', E(p['h1']), '<p class="lede">%s</p>' % E(p['lede']) if p['lede'] else ''))
     title = E(p['title'])
     body = fix(p['body'] + (band() if p['cta'] else ''))
-    brand = ('<a class="brand" href="%s" aria-label="%s, home page"><img src="%sassets/logo.svg" alt="" width="40" height="40"><span><b>Klar</b> Details</span></a>' % (pre or './', NAME, pre))
+    brand = ('<a class="brand" href="%s" aria-label="%s, home page"><img src="%sassets/icon-96.png" alt="" width="40" height="40"><img class="wm" src="%sassets/wordmark.png" alt="Klar Details" width="125" height="40"></a>' % (pre or './', NAME, pre, pre))
     svc_links = ''.join('<li><a href="%sservices/%s/">%s</a></li>' % (pre, s['slug'], E(s['name'])) for s in SERVICES)
     area_links = ''.join('<li><a href="%sareas/%s/">%s</a></li>' % (pre, a['slug'], E(a['name'])) for a in AREAS)
     og_type = 'article' if path.startswith('articles/') and path != 'articles/' else 'website'
@@ -530,7 +530,6 @@ def shell(path, p, robots_meta=''):
 <meta name="twitter:image" content="{og}">
 <link rel="icon" href="{pre}favicon.ico" sizes="48x48">
 <link rel="icon" href="{pre}assets/icon-192.png" type="image/png" sizes="192x192">
-<link rel="icon" href="{pre}assets/logo.svg" type="image/svg+xml">
 <link rel="apple-touch-icon" href="{pre}assets/apple-touch-icon.png">
 <link rel="manifest" href="{pre}site.webmanifest">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
