@@ -400,6 +400,50 @@ def build_home():
     shell("index.html", "Kia & Hyundai Parts Singapore | Autotex", "Kia and Hyundai parts stockist in Kaki Bukit. Choose your car and part, see the price or ask on WhatsApp. Stock direct from Korea.",
           body, active="", schema=[fs, {"@type": "WebSite", "@id": BASE + "/#web", "url": BASE + "/", "name": "Autotex"}], prio="1.0")
 
+# ---------------- brand x part pages (e.g. /kia/front-brake-pads/) ----------------
+def brandpart_data():
+    out = {}
+    byk = {}
+    for x in PRODUCTS: byk.setdefault((x["m"], x["p"]), []).append(x)
+    for bid, bn in BRANDS:
+        for pt in PARTS:
+            pid = pt[0]
+            if pid == "other": continue
+            ms = [m for m in M.values() if m["b"] == bid and fits(m["fuel"], pt)]
+            if len(ms) < 3: continue
+            assert pid not in M, pid
+            rows = []
+            for m in sorted(ms, key=lambda m: (m["name"], m["code"])):
+                xs = byk.get((m["id"], pid), [])
+                xs = [x for x in xs if x.get("url")]
+                rows.append((m, xs[0] if xs else None))
+            out[(bid, pid)] = rows
+    return out
+
+def build_brandparts():
+    data = brandpart_data()
+    for (bid, pid), rows in data.items():
+        bn = BR[bid]; part = P[pid]; c = C.get(part["cat"]); r = "../../"
+        prices = [x["price"] for _, x in rows if x and show_price(x)]
+        low = f" from {money(min(prices))}" if prices else ""
+        lis = "".join(
+            f'<li><a href="{r}{x["url"]}"><b>{e(mpar(m))}</b> <span>{e(myears(m))}</span></a><em>{money(x["price"]) if show_price(x) else "Ask for price"}</em></li>'
+            if x else f'<li><a href="{r}{m["b"]}/{m["id"]}/"><b>{e(mpar(m))}</b> <span>{e(myears(m))}</span></a><em>Ask for price</em></li>'
+            for m, x in rows)
+        sib = "".join(f'<a class="chip" href="{r}{b2}/{pid}/">{e(BR[b2])} {e(part["name"].lower())}</a>' for b2, _ in BRANDS if b2 != bid and (b2, pid) in data)
+        rel = "".join(f'<a class="chip" href="{r}{bid}/{p2}/">{e(P[p2]["name"])}</a>' for (b2, p2) in data if b2 == bid and p2 != pid and P[p2]["cat"] == part["cat"])
+        unit = part["unit"]
+        body = f'''<section class="ph"><div class="wrap">{{{{CRUMBS}}}}
+<h1>{e(bn)} {e(part["name"].lower())} in Singapore</h1>
+<p class="lead">Autotex supplies {e(part["name"].lower())} for {len(rows)} {e(bn)} models{e(low)}. Sold per {e(unit)}. Pick your model below, then see the price or ask us on WhatsApp. We check the fit against your car plate or chassis number before you pay.</p></div></section>
+<section class="sec"><div class="wrap"><h2>{e(bn)} models with {e(part["name"].lower())}</h2><ul class="bplist">{lis}</ul>
+<p class="small">Your model is not listed? <a href="{wa_link(f"Hi Autotex, do you have {part['name'].lower()} for my {bn}? Model and year: ")}" rel="noopener">Ask us on WhatsApp</a>.</p></div></section>
+{f'<section class="sec alt"><div class="wrap"><h2>More {e(bn)} {e(c["name"].lower())}</h2><div class="chips">{rel}</div></div></section>' if rel else ""}
+{f'<section class="sec"><div class="wrap"><h2>{e(part["name"])} for other brands</h2><div class="chips">{sib}</div><p class="small"><a href="{r}parts/{part["cat"]}/">All {e(c["name"].lower())}</a></p></div></section>' if (sib and c) else ""}'''
+        title = f"{bn} {part['name']} Singapore | Autotex"
+        shell(f"{bid}/{pid}/index.html", title[:62], f"{bn} {part['name'].lower()} in Singapore for {len(rows)} models{low}. Pick your car, see the price or ask on WhatsApp. Autotex, Kaki Bukit.",
+              body, active=bid, crumbs=[(f"{bn} parts", f"{bid}/"), (f"{part['name']}", f"{bid}/{pid}/")], prio="0.8")
+
 # ---------------- brand pages ----------------
 def build_brands():
     for bid, bn in BRANDS:
@@ -408,12 +452,15 @@ def build_brands():
         tiles = "".join(model_tile(m, r) for m in ms)
         catlinks = "".join(f'<a class="chip" href="{r}parts/{c["id"]}/#{bid}">{e(bn)} {e(c["name"].lower() if c["id"] != "brake-discs" else "brake discs")}</a>' for c in C.values())
         names = ", ".join(dict.fromkeys(m["name"] for m in ms))[:90]
+        bpd = brandpart_data()
+        bplinks = "".join(f'<a class="chip" href="{r}{bid}/{pid}/">{e(P[pid]["name"])}</a>' for (b2, pid) in bpd if b2 == bid)
         body = f'''<section class="ph"><div class="wrap">{{{{CRUMBS}}}}
 <h1>{e(bn)} parts in Singapore</h1>
 <p class="lead">{e(bn)} parts for {len(ms)} models, from bumpers and headlamps to brake pads, engine mounting and ignition coils. Choose your model to see every part type we supply for it, then see the price or ask us on WhatsApp.</p>
 <div class="hero-f slim">{finder(r, b=bid)}</div></div></section>
 <section class="sec"><div class="wrap"><h2>{e(bn)} models</h2><div class="mgrid">{tiles}</div></div></section>
 <section class="sec alt"><div class="wrap"><h2>{e(bn)} parts by type</h2><div class="chips">{catlinks}</div>
+<h3 class="bph">All {e(bn)} part types</h3><div class="chips">{bplinks}</div>
 <p class="small">Your model is not here? <a href="{wa_link(f"Hi Autotex, do you have parts for my {bn}? Model and year: ")}" rel="noopener">Ask us on WhatsApp</a>.</p></div></section>'''
         shell(path, f"{bn} Parts Singapore: Order by Model | Autotex", f"{bn} spare parts in Singapore for {names}. See the price or ask on WhatsApp.",
               body, active=bid, crumbs=[(f"{bn} parts", f"{bid}/")], prio="0.9")
@@ -942,7 +989,7 @@ if __name__ == "__main__":
         shutil.rmtree(OUT)
     OUT.mkdir(parents=True)
     build_data()
-    build_home(); build_brands(); build_models(); build_products(); build_sets(); build_cats(); build_prices(); build_pages(); build_articles()
+    build_home(); build_brandparts(); build_brands(); build_models(); build_products(); build_sets(); build_cats(); build_prices(); build_pages(); build_articles()
     build_static()
     import pull_photos; pull_photos.run(OUT)
     cols = ["id", "title", "description", "link", "image_link", "availability", "price", "condition", "brand", "mpn", "identifier_exists", "google_product_category", "product_type", "shipping"]

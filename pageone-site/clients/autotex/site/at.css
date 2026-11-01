@@ -243,3 +243,10 @@ th{font-size:.76rem;text-transform:uppercase;letter-spacing:.6px;color:var(--mut
 
 .fguide{overflow:hidden}
 .fmore{margin-top:8px;font:700 .9rem/1 var(--font);color:var(--red,#D62B1F);background:none;border:0;padding:10px 4px;min-height:40px;cursor:pointer}
+
+.bplist{list-style:none;margin:0;padding:0;display:grid;gap:8px;grid-template-columns:1fr}
+.bplist li{display:flex;justify-content:space-between;align-items:center;gap:12px;border:1px solid var(--line,#E2E5EA);border-radius:12px;background:#fff}
+.bplist a{flex:1;padding:12px 14px;color:var(--ink);text-decoration:none;display:flex;flex-direction:column;gap:2px}.bplist a span{font-size:.8rem;color:var(--muted)}
+.bplist em{font-style:normal;font-weight:700;padding-right:14px;white-space:nowrap}
+.bph{margin:18px 0 8px;font-size:1rem}
+@media (min-width:700px){.bplist{grid-template-columns:1fr 1fr}}
