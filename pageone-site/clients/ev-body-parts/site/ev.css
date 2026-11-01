@@ -475,3 +475,4 @@ mark{color:var(--tx)}
 .bstrip .bchip{white-space:nowrap;max-width:none;overflow-wrap:normal}
 mark{background:rgba(20,99,255,.1);box-shadow:none;color:inherit}
 .fc-x .btn{white-space:nowrap;padding:11px 10px}
+.hero{padding-bottom:20px}.hero+.feat{padding-top:20px}@media(min-width:900px){.hero{padding-bottom:64px;min-height:0}.hero+.feat{padding-top:40px}}

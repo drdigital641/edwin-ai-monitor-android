@@ -1103,10 +1103,8 @@ def home():
 <h1>Body parts for China &amp; EV cars, <em>found fast.</em></h1>
 <p class="lead">One catalogue, many suppliers. Quote on WhatsApp.</p>
 {search_box("hq")}
-<p class="hero-cta">{wa_btn("a part for my car", "Get a quote on WhatsApp", "g")}</p>
 </div>{hero_visual()}
 </div></section>
-<section class="strip"><div class="wrap"><p class="strip-l">{len(BRANDS)} EV and China car brands in one catalogue &middot; <a href="{{{{R}}}}brands/">See all brands</a></p>{brandchips()}</div></section>
 {featured_html()}
 <section class="sec tight"><div class="wrap"><div class="sec-t rv"><h2>Browse by part</h2></div><div class="cgrid">{cats}</div></div></section>
 {popular_html()}

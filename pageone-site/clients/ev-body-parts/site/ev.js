@@ -502,6 +502,20 @@
       if (next) next.addEventListener('click', function () { go(1); });
       tr.addEventListener('keydown', function (ev) { if (ev.target !== tr) return; if (ev.key === 'ArrowRight') { ev.preventDefault(); go(1); } else if (ev.key === 'ArrowLeft') { ev.preventDefault(); go(-1); } });
       tr.addEventListener('scroll', debounce(upd, 60), { passive: true }); window.addEventListener('resize', debounce(upd, 120)); upd();
+      /* autoplay: keeps sliding while the page scrolls; only touching, dragging, hovering or the buttons pause it, then it resumes */
+      if (window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+      var hold = 0, hover = false;
+      function pause() { hold = Date.now() + 6000; }
+      function tick() {
+        if (document.hidden || hover || Date.now() < hold || tr.scrollWidth <= tr.clientWidth + 4) return;
+        if (tr.scrollLeft + tr.clientWidth >= tr.scrollWidth - 4) tr.scrollTo({ left: 0, behavior: 'smooth' }); else go(1);
+      }
+      ['pointerdown', 'touchstart', 'wheel', 'keydown', 'focusin'].forEach(function (t) { tr.addEventListener(t, pause, { passive: true }); });
+      ['touchend', 'pointerup'].forEach(function (t) { tr.addEventListener(t, pause, { passive: true }); });
+      tr.addEventListener('pointerenter', function (ev) { if (ev.pointerType === 'mouse') hover = true; });
+      tr.addEventListener('pointerleave', function () { hover = false; });
+      [prev, next].forEach(function (b) { if (b) b.addEventListener('click', pause); });
+      setInterval(tick, 3500);
     });
   }
   function initCatalogue() {
