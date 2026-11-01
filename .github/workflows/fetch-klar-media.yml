@@ -28,7 +28,14 @@ jobs:
           while read -r u; do
             [ -z "$u" ] && continue
             f="$D/$(basename "$u")"
-            curl -fsSL --retry 3 -A "Mozilla/5.0 (PageOne media copy)" -o "$f" "$u" && echo "ok $f $(stat -c%s "$f")" || echo "FAIL $u"
+            # their certificate does not cover the bare host (curl 60), so try the www host, then plain http
+            w="${u/https:\/\/klardetails.com.sg/https:\/\/www.klardetails.com.sg}"
+            h="${u/https:/http:}"
+            for src in "$w" "$h" "$u"; do
+              if curl -fsSL --retry 2 -A "Mozilla/5.0 (PageOne media copy)" -o "$f" "$src"; then echo "ok $f $(stat -c%s "$f") from $src"; break; fi
+              echo "miss $src"
+            done
+            [ -s "$f" ] || { rm -f "$f"; echo "FAIL $u"; }
           done < pageone-site/clients/klar-details/src/client-media-urls.txt
           ls -la "$D"
 
