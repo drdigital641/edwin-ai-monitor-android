@@ -25,7 +25,7 @@ LIVE = False
 PREVIEW = 'https://pageonesingapore.com/preview/%s/' % SLUG
 SITE = ('https://%s/' % DOMAIN) if LIVE else PREVIEW
 UPDATED = '2026-11-01'
-V = '5'
+V = '6'
 INDEXNOW_KEY = '3f8b2c6d9e14a7b05c2d8e6f1a4b9c73'
 
 NAME = 'Klar Details'
@@ -53,7 +53,7 @@ SBY = {s['slug']: s for s in SERVICES}
 ARTICLES = sorted(articles_a.ARTICLES + articles_b.ARTICLES, key=lambda a: a['date'], reverse=True)
 ABY = {a['slug']: a for a in ARTICLES}
 AREAS = C.AREAS
-IMG = M.IMAGES
+IMG = {k: v for k, v in M.IMAGES.items() if not (k.endswith('_full') and k[:-5] in M.IMAGES)}  # drop same-photo duplicates
 HERO_KEYS = [k for k, v in IMG.items() if v['use'] == 'HERO']
 GALLERY_KEYS = [k for k, v in IMG.items() if v['use'] == 'GALLERY']
 BRAND_KEYS = [k for k, v in IMG.items() if v['use'] == 'BRAND']
@@ -385,10 +385,9 @@ def reviews_page():
 def about():
     A = C.ABOUT
     facts = '<table class="facts"><tbody>%s</tbody></table>' % ''.join('<tr><th>%s</th><td>%s</td></tr>' % (E(l), E(v)) for l, v in A['facts'])
-    bk = pick(BRAND_KEYS, 2) or pick(HERO_KEYS, 2)
-    pics = ''.join('<div class="pic rv">%s</div>' % img(k) for k in bk)
+    bk = pick(BRAND_KEYS, 1) or pick(HERO_KEYS, 1)
     body = f'''
-<section class="sec"><div class="wrap split"><div class="rt">{A['intro']}</div><div class="pics">{pics}</div></div></section>
+<section class="sec"><div class="wrap split"><div class="rt">{A['intro']}</div><div class="pic rv">{img(bk[0])}</div></div></section>
 <section class="sec alt"><div class="wrap narrow">{sections_html(A['sections'])}</div></section>
 <section class="sec"><div class="wrap narrow"><h2>Klar Details at a glance</h2>{facts}</div></section>
 '''
