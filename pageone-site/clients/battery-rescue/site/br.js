@@ -52,13 +52,13 @@ function bindSearch(box){var inp=$('input',box),ul=$('.sug',box),x=$('.x',box),k
 $$('.carbox').forEach(bindSearch);
 /* ---------- stuck mode ---------- */
 var cur=null;
-function batLine(r){var k=r[4];return k?{k:k,name:'Delkor '+((D.name||{})[k]||k),ah:P[k][0],list:P[k][1]}:{k:null,name:r[3]}}
+function batLine(r){var k=r[4];return k?{k:k,name:'Delkor '+((D.name||{})[k]||k),ah:P[k][0],list:P[k][1],eq:r[5]?'Your car\'s size is '+r[3]+'. '+(D.eqn||[])[r[5]]:''}:{k:null,name:r[3]}}
 var sBox=$('#s-car'),sRes=$('#s-res');
 if(sBox)sBox.addEventListener('car',function(e){var r=e.detail,b=batLine(r);cur={r:r,b:b};var n=isNight();
  var h='<div class="bat"><div class="ic">'+D.bolt+'</div><div><span>'+esc(label(r))+' ('+esc(r[2])+') uses</span><b>'+esc(b.name)+'</b></div></div>';
  if(b.k){h+='<div class="tiers"><div class="tier day'+(n?'':' hl')+'"><div><div class="n">Fitted where you are'+(n?'':' · now')+'</div><div class="d">Before 10pm, incl. Sunday</div></div><div class="p">'+money(b.list+50)+'</div></div>'+
  '<div class="tier night'+(n?' hl':'')+'"><div><div class="n">Night & public holiday'+(n?' · now':'')+'</div><div class="d">10pm to 9am, and PH</div></div><div class="p">'+money(b.list+80)+'</div></div></div>'+
- '<p class="note">Battery + fitting at your location. GST included. 1-year warranty.</p>'}
+ '<p class="note">'+(b.eq?esc(b.eq)+' ':'')+'Battery + fitting at your location. GST included. 1-year warranty.</p>'}
  else h+='<div class="enq">We need to check stock for this size. Tap WhatsApp or Call and we will confirm the battery and price.</div>';
  sRes.innerHTML=h;sRes.classList.add('on');updWa()});
 function waMsg(loc){var m='Hi Battery Rescue, my car battery is flat. Please help.';if(cur){m+='\nCar: '+label(cur.r)+' ('+cur.r[2]+')\nBattery: '+cur.b.name}if(loc)m+='\nMy location: '+loc;m+='\n(Website source: '+location.href.split('#')[0]+')';return m}
@@ -86,7 +86,7 @@ if(cBox)cBox.addEventListener('car',function(e){var r=e.detail,b=batLine(r);ccur
  var h='<div class="bat"><div class="ic">'+D.bolt+'</div><div><span>'+esc(label(r))+' ('+esc(r[2])+') uses</span><b>'+esc(b.name)+(b.k?' · '+b.ah+'Ah':'')+'</b></div></div>';
  if(b.k)h+='<div class="tiers"><div class="tier walk hl"><div><div class="n">Walk-in at a Motoserv outlet</div><div class="d">With $20 web code · Mon-Sat 9am-6pm</div></div><div class="p">'+money(b.list-20)+'<s>'+money(b.list)+'</s></div></div>'+
  '<div class="tier day"><div><div class="n">Fitted at your location</div><div class="d">Before 10pm, incl. Sunday</div></div><div class="p">'+money(b.list+50)+'</div></div>'+
- '<div class="tier night"><div><div class="n">Night & public holiday</div><div class="d">10pm to 9am, and PH</div></div><div class="p">'+money(b.list+80)+'</div></div></div><p class="note">Delkor battery, fitting and GST included. 1-year warranty. Old battery taken away.</p>';
+ '<div class="tier night"><div><div class="n">Night & public holiday</div><div class="d">10pm to 9am, and PH</div></div><div class="p">'+money(b.list+80)+'</div></div></div><p class="note">'+(b.eq?esc(b.eq)+' ':'')+'Delkor battery, fitting and GST included. 1-year warranty. Old battery taken away.</p>';
  else h+='<div class="enq">This size needs a stock check. <a href="'+waLink('Hi Battery Rescue, price check please. Car: '+label(r)+' ('+r[2]+'), battery size '+r[3]+'.')+'">Ask on WhatsApp</a> and we will reply with the Delkor price.</div>';
  cRes.innerHTML=h;cRes.classList.add('on');drawOut()});
 drawOut();
