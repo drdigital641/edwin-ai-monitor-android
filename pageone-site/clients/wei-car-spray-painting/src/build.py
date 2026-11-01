@@ -36,7 +36,7 @@ LIVE = False
 PREVIEW = 'https://pageonesingapore.com/preview/%s/' % SLUG
 SITE = ('https://%s/' % DOMAIN) if LIVE else PREVIEW
 UPDATED = '2026-11-01'
-V = '5'
+V = '6'
 INDEXNOW_KEY = '7c41e9a0d2b85f36a1e4c07b9d5f2e18'
 
 NAME = 'Wei Car Spray Painting'

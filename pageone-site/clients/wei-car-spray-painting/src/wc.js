@@ -15,7 +15,13 @@ ready(function(){
     requestAnimationFrame(step);
     r.p1hold=function(ms){hold=1;clearTimeout(r.p1t);r.p1t=setTimeout(function(){hold=0},ms)};
     r.addEventListener('mouseenter',function(){hold=1});r.addEventListener('mouseleave',function(){hold=0;down=0});
-    r.addEventListener('touchstart',function(){hold=1},{passive:true});r.addEventListener('touchend',function(){setTimeout(function(){hold=0},1500)});
+    /* phone: vertical page scrolls do not stop it; a held finger or a sideways swipe does */
+    var tx=0,ty=0,tt=null,th=0;
+    r.addEventListener('touchstart',function(e){var p=e.touches[0];tx=p.clientX;ty=p.clientY;th=0;clearTimeout(tt);tt=setTimeout(function(){th=1;hold=1},350)},{passive:true});
+    r.addEventListener('touchmove',function(e){var p=e.touches[0],dx=Math.abs(p.clientX-tx),dy=Math.abs(p.clientY-ty);
+      if(dx>8&&dx>dy){th=1;hold=1;clearTimeout(tt)}else if(dy>8&&!th){clearTimeout(tt)}},{passive:true});
+    r.addEventListener('touchend',function(){clearTimeout(tt);if(th)setTimeout(function(){hold=0},1500)});
+    r.addEventListener('touchcancel',function(){clearTimeout(tt);if(th)setTimeout(function(){hold=0},1500)});
     r.addEventListener('mousedown',function(e){down=1;sx=e.pageX;sl=r.scrollLeft;e.preventDefault()});
     d.addEventListener('mouseup',function(){down=0});
     r.addEventListener('mousemove',function(e){if(down)r.scrollLeft=sl-(e.pageX-sx)});
