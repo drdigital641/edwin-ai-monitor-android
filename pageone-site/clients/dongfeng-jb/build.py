@@ -178,7 +178,7 @@ PHOTOS.update(VOYAH_PHOTOS)
 
 
 try:
-    IMGMAP = json.load(open(os.path.join(HERE, 'assets', 'img', 'map.json')))
+    IMGMAP = json.load(open(os.path.join(HERE, 'assets', 'img', 'map.json'))) if os.environ.get('DF_LOCAL_IMG') else {}
 except Exception:
     IMGMAP = {}
 
