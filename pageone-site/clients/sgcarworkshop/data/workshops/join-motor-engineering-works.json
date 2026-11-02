@@ -1,0 +1,15 @@
+{
+ "schema_version": 1,
+ "slug": "join-motor-engineering-works",
+ "place_id": "ChIJCYPTl-EX2jERtfsyOJCFGLU",
+ "name": null,
+ "phones": [],
+ "status": "pending",
+ "tier": "basic",
+ "google_screen": {
+  "passed": null,
+  "reason": "queued for Option B re-screen (2 Nov 2026)",
+  "checked_at": null
+ },
+ "note": "Stub: identity (name, address, services) must come from the workshop's own pages or a public record, never from Google; filled only if the Google profile shows an SG mobile."
+}

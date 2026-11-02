@@ -33,7 +33,8 @@
    "whatsapp": true,
    "evidence": "Own page: the Garage unit's WhatsApp link is wa.me/6593222338",
    "source_url": "https://revol.com.sg/contact-us-revol",
-   "checked_at": "2026-11-02"
+   "checked_at": "2026-11-02",
+   "source": "own_site"
   }
  ],
  "website_url": "https://revol.com.sg/contact-us-revol",

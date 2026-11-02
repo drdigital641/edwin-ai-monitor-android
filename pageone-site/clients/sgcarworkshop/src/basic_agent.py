@@ -4,7 +4,7 @@
 RULES (Edwin, 2 Nov 2026)
   * The only Google value stored is place_id (+ a pass/fail screen result and date). Never rating, reviews, photos, phone, hours, status, name, address, types, website, maps URL, cid.
   * Mobile-only: a workshop is listed only if it has an SG mobile (+65 8/9 + 7 digits).
-  * Option A: Google is ONLY the filter. The stored mobile must come from the workshop's own website / Facebook / WhatsApp Business page and MATCH the Google
+  * Option B (Edwin 2 Nov 2026): the SG mobile on the Google Business Profile qualifies and is stored once (source google_profile + checked_at); landline-only or no phone = skip. (Older Option A note follows.) Google is ONLY the filter. The stored mobile must come from the workshop's own website / Facebook / WhatsApp Business page and MATCH the Google
     mobile (compared in memory, never saved). Mobile only on Google -> data/pending.json, never live.
   * Private snapshots of the own pages used are kept in snapshots/<slug>/ (gitignored).
 
@@ -136,6 +136,9 @@ def stage(a):
 
 
 def screen(a, key):
+    sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+    global DATA_MOD
+    import data as DATA_MOD
     u, ut = usage_today(); wd = os.path.join(DATA, 'workshops'); out = []
     pend = jload('pending.json', [])
     for f in sorted(os.listdir(wd)):
@@ -153,18 +156,24 @@ def screen(a, key):
             raise
         gm = re.sub(r'\D', '', g.get('internationalPhoneNumber', ''))
         gm = '+' + gm if gm else ''
-        why = None
+        why = None; state = None
         if g.get('businessStatus') != 'OPERATIONAL': why = 'not OPERATIONAL'
         elif g.get('primaryType') not in OK_PRIMARY: why = 'primaryType is not car repair'
-        elif not re.match(r'^\+65[89]\d{7}$', gm): why = 'Google profile has no SG mobile'
-        elif gm not in {p['e164'] for p in r['phones']}: why = 'Google mobile does not match the own-source mobile'
-        r['google_screen'] = {'passed': why is None, 'reason': why or 'OPERATIONAL, car repair, SG mobile matches own source', 'checked_at': TODAY}
+        elif not re.match(r'^\+65[89]\d{7}$', gm): why = 'Google profile has no SG mobile (landline only or no phone)'
+        # Option B (Edwin, 2 Nov 2026): the SG mobile on the Google Business Profile qualifies; stored ONCE, source google_profile.
+        r['google_screen'] = {'passed': why is None, 'reason': why or 'OPERATIONAL, car repair, SG mobile on Google profile', 'checked_at': TODAY}
         r['place_id_checked_at'] = TODAY
         if why is None:
+            r['phones'] = [p for p in r.get('phones', []) if p['e164'] != gm] + [{'e164': gm, 'kind': 'mobile', 'whatsapp': True, 'source': 'google_profile', 'checked_at': TODAY}]
             r['status'] = 'active'
+            need = DATA_MOD.record_problems(r)
+            if need:   # passed the screen but the own-source name/address/services are not filled yet: stays hidden
+                r['status'] = 'pending'; state = 'passed, hidden, needs: ' + '; '.join(need[:4])
+            else:
+                state = 'active'
         else:
             pend.append({'place_id': r['place_id'], 'slug': r['slug'], 'reason': why, 'date': TODAY})
-        jsave('workshops/%s' % f, r); out.append((r['slug'], r['status'] if why is None else 'pending: ' + why))
+        jsave('workshops/%s' % f, r); out.append((r['slug'], state if why is None else 'pending: ' + why))
     q = jload('queue.json', {})
     for s, _ in out:
         pass

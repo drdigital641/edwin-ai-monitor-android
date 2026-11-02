@@ -38,7 +38,8 @@
    "whatsapp": true,
    "evidence": "Own page: the Toh Guan branch's WhatsApp link is wa.me/6593229331",
    "source_url": "https://revol.com.sg/contact-us-revol",
-   "checked_at": "2026-11-02"
+   "checked_at": "2026-11-02",
+   "source": "own_site"
   }
  ],
  "website_url": "https://revol.com.sg/contact-us-revol",

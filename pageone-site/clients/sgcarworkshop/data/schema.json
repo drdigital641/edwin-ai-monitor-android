@@ -1,19 +1,103 @@
 {
  "schema_version": 1,
  "title": "SG Car Workshop workshop record (data/workshops/<slug>.json)",
- "note": "The only Google value stored is place_id (+ pass/fail screen result). Everything else comes from the workshop's own website, Facebook or WhatsApp Business page, OneMap (coordinates) or our own fields. Page text, CTAs, WhatsApp prefill, Maps URLs and JSON-LD are built by templates from these fields; no display strings are stored.",
- "required": ["schema_version","slug","place_id","place_id_checked_at","name","name_source_url","address","postal_code","address_source_url","lat","lng","geo_source","planning_area","region","estate","categories","services","services_source_url","phones","google_screen","status","tier","first_seen_at","last_verified_at","collector_version"],
- "optional": ["uen","makes","email","website_url","facebook_url","instagram_url","hours","hours_source_url","claimed_at","consent_ref","photos","removed_at"],
+ "note": "The only Google value stored is place_id (+ pass/fail screen result). Everything else comes from the workshop's own website, Facebook or WhatsApp Business page, OneMap (coordinates) or our own fields. Page text, CTAs, WhatsApp prefill, Maps URLs and JSON-LD are built by templates from these fields; no display strings are stored. Option B (2 Nov 2026): the SG mobile may come from the Google Business Profile at screening (source google_profile); name and address still never come from Google.",
+ "required": [
+  "schema_version",
+  "slug",
+  "place_id",
+  "place_id_checked_at",
+  "name",
+  "name_source_url",
+  "address",
+  "postal_code",
+  "address_source_url",
+  "lat",
+  "lng",
+  "geo_source",
+  "planning_area",
+  "region",
+  "estate",
+  "categories",
+  "services",
+  "services_source_url",
+  "phones",
+  "google_screen",
+  "status",
+  "tier",
+  "first_seen_at",
+  "last_verified_at",
+  "collector_version"
+ ],
+ "optional": [
+  "uen",
+  "makes",
+  "email",
+  "website_url",
+  "facebook_url",
+  "instagram_url",
+  "hours",
+  "hours_source_url",
+  "claimed_at",
+  "consent_ref",
+  "photos",
+  "removed_at"
+ ],
  "fields": {
-  "address": {"block":"str","street":"str","unit":"str","building":"str"},
+  "address": {
+   "block": "str",
+   "street": "str",
+   "unit": "str",
+   "building": "str"
+  },
   "geo_source": "onemap",
   "categories": "codes from data/categories.json",
-  "phones": [{"e164":"+65[89]xxxxxxx for mobiles","kind":"mobile|landline","whatsapp":"bool","evidence":"quote or description of what the own source says","source_url":"own site / Facebook / WhatsApp Business URL","checked_at":"YYYY-MM-DD"}],
-  "google_screen": {"passed":"true|false|null (null = not yet screened)","reason":"str","checked_at":"YYYY-MM-DD|null"},
+  "phones": [
+   {
+    "e164": "+65[89]xxxxxxx for mobiles",
+    "kind": "mobile|landline",
+    "whatsapp": "bool",
+    "source": "google_profile (stored once at screening, Option B) | own_site (needs evidence + source_url)",
+    "evidence": "own_site only",
+    "source_url": "own_site only",
+    "checked_at": "YYYY-MM-DD"
+   }
+  ],
+  "google_screen": {
+   "passed": "true|false|null (null = not yet screened)",
+   "reason": "str",
+   "checked_at": "YYYY-MM-DD|null"
+  },
   "status": "active|pending|closed|removed",
   "tier": "basic|verified|premium",
-  "photos": [{"file":"str","rights_confirmed_at":"YYYY-MM-DD"}]
+  "photos": [
+   {
+    "file": "str",
+    "rights_confirmed_at": "YYYY-MM-DD"
+   }
+  ]
  },
- "forbidden_keys": ["rating","user_rating_count","reviews","phone_google","hours_google","business_status","display_name","formatted_address","types","primary_type","website_uri","google_maps_uri","cid","google_photos"],
- "live_rules": ["status == active", "google_screen.passed == true", "at least one phones[] with kind mobile, e164 matching ^\\+65[89]\\d{7}$, whatsapp true, evidence, source_url, checked_at", "place_id not in data/removed.json"]
+ "forbidden_keys": [
+  "rating",
+  "user_rating_count",
+  "reviews",
+  "phone_google",
+  "hours_google",
+  "business_status",
+  "display_name",
+  "formatted_address",
+  "types",
+  "primary_type",
+  "website_uri",
+  "google_maps_uri",
+  "cid",
+  "google_photos"
+ ],
+ "live_rules": [
+  "status == active",
+  "google_screen.passed == true (OPERATIONAL, car-repair primaryType, SG mobile on the Google profile)",
+  "at least one phones[] mobile matching ^\\+65[89]\\d{7}$ with whatsapp true, source google_profile|own_site, checked_at",
+  "name and address come from the workshop's own pages or a public record (name_source_url, address_source_url), never from Google",
+  "place_id not in data/removed.json"
+ ]
 }

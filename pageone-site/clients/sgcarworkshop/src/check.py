@@ -235,7 +235,9 @@ import subprocess
 live_pids = {e['place_id'] for e in ENTRIES if e.get('place_id')}
 for f in _data.workshop_files():
     r = json.load(open(f))
-    for p in _data.record_problems(r): print('RECORD', os.path.basename(f), p); bad += 1
+    _stub = r.get('status') == 'pending' and not r.get('name')       # queued for the Google screen; identity filled only if it passes
+    if _data.FORBIDDEN_KEYS & set(r): print('RECORD', os.path.basename(f), 'stores Google-only field(s)'); bad += 1
+    for p in ([] if _stub else _data.record_problems(r)): print('RECORD', os.path.basename(f), p); bad += 1
     if r['status'] != 'active' and r['place_id'] in live_pids: print('NON-ACTIVE record is live', r['slug']); bad += 1
 for r in _data._jload('pending.json', []):
     if r['place_id'] in live_pids or not r.get('reason') or not r.get('date'): print('pending.json entry live or incomplete', r.get('slug')); bad += 1

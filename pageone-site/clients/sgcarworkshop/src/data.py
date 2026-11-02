@@ -491,8 +491,8 @@ ENTRIES = [
 # Fields shown on the card: name, desc, category, area + region, WhatsApp (only if a mobile number) or Call, Directions (Google Maps cid).
 # ---------------------------------------------------------------------------------------------------------------------
 # Basic listings come from data/workshops/<slug>.json (schema: data/schema.json). Only place_id is kept from Google.
-# A record is LIVE only when: status == "active", google_screen.passed is true, it has a stored SG mobile (+65 8/9 + 7 digits) from the
-# workshop's OWN website / Facebook / WhatsApp Business page with whatsapp true + evidence + source_url + checked_at, and its place_id
+# A record is LIVE only when: status == "active", google_screen.passed is true, it has a stored SG mobile (+65 8/9 + 7 digits) with whatsapp true from the
+# Google Business Profile (source google_profile + checked_at, Option B, Edwin 2 Nov 2026) or the workshop's own pages (own_site + evidence + source_url), and its place_id
 # is not in data/removed.json. Everything shown on a page is built from these fields by build.py templates.
 # ---------------------------------------------------------------------------------------------------------------------
 import json as _json, os as _os, re as _re
@@ -544,11 +544,16 @@ def record_problems(r):
     for p in r.get("phones", []):
         if p.get("kind") == "mobile" and not MOBILE_RE.match(p.get("e164", "")):
             out.append("mobile not +65 8/9 + 7 digits: %s" % p.get("e164"))
-        for k in ("evidence", "source_url", "checked_at"):
-            if not p.get(k):
-                out.append("phone %s missing %s" % (p.get("e164"), k))
-        if not str(p.get("source_url", "")).startswith("http"):
-            out.append("phone source_url must be a URL")
+        if p.get("source") not in ("google_profile", "own_site"):
+            out.append("phone %s needs source google_profile or own_site" % p.get("e164"))
+        if not p.get("checked_at"):
+            out.append("phone %s missing checked_at" % p.get("e164"))
+        if p.get("source") == "own_site":
+            for k in ("evidence", "source_url"):
+                if not p.get(k):
+                    out.append("own_site phone %s missing %s" % (p.get("e164"), k))
+            if not str(p.get("source_url", "")).startswith("http"):
+                out.append("own_site phone source_url must be a URL")
     if r.get("status") == "active":
         if not mobiles or not any(p.get("whatsapp") is True for p in mobiles):
             out.append("ACTIVE record needs a mobile with whatsapp true")
@@ -572,8 +577,8 @@ def _from_record(r):
         estate=est, area_label=_ar.ESTATES[est]["name"], regions=[r["region"]], region=r["region"], planning_area=r["planning_area"],
         address_public=addr_public, street=street, postal=r["postal_code"], addresses=[dict(label=None, street=street, postal=r["postal_code"])],
         lat=r["lat"], lon=r["lng"], services_public=list(r["services"]), services=[], services_source=r["services_source_url"],
-        phone=m["e164"], phone_show="%s %s" % (m["e164"][3:7], m["e164"][7:]), whatsapp=m["e164"].lstrip("+"), contact_source=m["source_url"],
-        contact_evidence=m["evidence"], contact_checked=m["checked_at"],
+        phone=m["e164"], phone_show="%s %s" % (m["e164"][3:7], m["e164"][7:]), whatsapp=m["e164"].lstrip("+"), contact_source=m.get("source_url") or "google_profile",
+        contact_evidence=m.get("evidence") or "Google Business Profile", contact_checked=m["checked_at"],
         website_url=r.get("website_url"), facebook_url=r.get("facebook_url"), instagram_url=r.get("instagram_url"), email=r.get("email"),
         hours=(r.get("hours") or {}).get("text"), hours_source=r.get("hours_source_url"), name_source=r["name_source_url"], address_source=r["address_source_url"],
         uen=r.get("uen"), last_verified=r["last_verified_at"], regions_note="Region from the planning area (URA).")

@@ -40,7 +40,8 @@
    "whatsapp": true,
    "evidence": "Own site lists +65 8801 9393 as its 24/7 support number",
    "source_url": "https://ltm.sg",
-   "checked_at": "2026-11-02"
+   "checked_at": "2026-11-02",
+   "source": "own_site"
   }
  ],
  "website_url": "https://ltm.sg",
