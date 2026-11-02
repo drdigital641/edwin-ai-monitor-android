@@ -274,3 +274,9 @@ ul.chips{list-style:none;display:flex;flex-wrap:wrap;gap:8px;padding:0;margin:14
 .grating{margin:0;font-size:.82rem;display:flex;align-items:center;gap:5px;flex-wrap:wrap}.grating[hidden]{display:none}
 .grating .stars{--p:0%;font-size:.95rem;letter-spacing:1px;line-height:1;background:linear-gradient(90deg,#f5a623 var(--p),#d6d3c8 var(--p));-webkit-background-clip:text;background-clip:text;color:transparent;-webkit-text-fill-color:transparent}
 .grating .rc{color:var(--muted)}.grating .gsrc{margin-left:2px;font-size:.7rem;font-weight:600;color:var(--muted);letter-spacing:.02em}
+/* Basic profile: lazy Google Maps embed, on-click opening hours with text attribution */
+.mapembed{margin:12px 0;border:1px solid var(--line);border-radius:var(--r);overflow:hidden;background:#eef0f3}.mapembed iframe{display:block;width:100%;height:300px;border:0}
+.hoursbox{border:1px solid var(--line);border-radius:var(--r);padding:12px;margin:10px 0;background:#fff}.hoursbox .hrs{margin:8px 0 0;font-size:.92rem}.hoursbox .hrs p{margin:2px 0}
+.gattr{margin:8px 0 0;font:400 13px/1.3 Arial,Helvetica,sans-serif;color:#5E5E5E}.gmshort{margin-top:12px}.gmshort a{display:inline-flex;align-items:center;gap:6px;margin-right:12px;font-weight:600}.gmshort svg{width:16px;height:16px}
+.btn.alt{background:#fff;color:var(--ink);border:1px solid var(--line)}
+.main-acts .btn.big{width:100%;justify-content:center;white-space:normal;text-align:center}

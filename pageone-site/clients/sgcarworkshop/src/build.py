@@ -23,15 +23,14 @@ from data import ENTRIES, CATEGORIES, PAGE_ONE_WA, PAGE_ONE_WA_SHOW, TIERS, PRIC
 from PIL import Image  # noqa: E402
 
 SITE_NAME = 'SG Car Workshop'   # placeholder brand
-DOMAIN = 'sgcarworkshop.sg'     # not bought yet
+DOMAIN = 'sgcarworkshop.sg'
 LIVE = False
-# No Google API key anywhere (Edwin, 1 Nov 2026: zero Google API spend for Basic listings). Basic photos/phone/hours/rating are NOT loaded; profile pages link to Google Maps.
-# The ONLY Google key on the site: Edwin's referrer-restricted browser key, used by assets/livephone.js on Basic PROFILE pages with no stored number
-# (one Place Details call, nationalPhoneNumber + internationalPhoneNumber only, cached in sessionStorage, project quota capped at 30/day; nothing stored).
-GOOGLE_MAPS_KEY = None
+# Google usage (Edwin, 2 Nov 2026): the referrer-restricted BROWSER key appears only (a) in the Maps Embed iframe URL on profile pages (free) and
+# (b) as data-key on the on-click "Show opening hours" box, which assets/livephone.js uses for ONE Place Details call (businessStatus,
+# regularOpeningHours; sessionStorage cache; project quota capped at 30/day). Nothing else calls Places; nothing from Google is stored except place_id.
 PLACES_BROWSER_KEY = 'AIzaSyAkMQs46QK9N2fiAqc1dmZch39hPHMzsnU'
 PREVIEW_BASE = 'https://pageonesingapore.com/preview/sgcarworkshop/'
-BASE = ('https://%s/' % DOMAIN) if LIVE else PREVIEW_BASE
+BASE = 'https://%s/' % DOMAIN   # canonical, og:url, sitemap and llms.txt always name the real domain (Edwin, 2 Nov 2026), also while previewing
 PATH_BASE = '/' if LIVE else '/preview/sgcarworkshop/'
 UPDATED = '2026-11-01'
 OUT = os.path.abspath(sys.argv[1] if len(sys.argv) > 1 else os.path.join(HERE, '..', 'site'))
@@ -181,7 +180,7 @@ def footer(depth):
             'WhatsApp taps are counted and reported to the business. This is a preview and the brand name is a placeholder.</p></div>'
             '<div><h3>Services</h3><ul>%s</ul></div><div><h3>Regions</h3><ul>%s</ul><h3 class="h3b">Estates</h3><ul>%s</ul></div>'
             '<div><h3>Directory</h3><ul><li><a href="%sabout/">About</a></li><li><a href="%slist-your-workshop/">List your workshop</a></li>'
-            '<li><a href="%slist-your-workshop/#remove">Remove my listing</a></li><li><a href="%sllms.txt">llms.txt</a></li></ul></div></div></footer>') % (E(SITE_NAME), cats, reg, est, p, p, p, p)
+            '<li><a href="%slist-your-workshop/#remove">Remove my listing</a></li><li><a href="%sterms/">Terms</a></li><li><a href="%sprivacy/">Privacy</a></li><li><a href="%sllms.txt">llms.txt</a></li></ul></div></div></footer>') % (E(SITE_NAME), cats, reg, est, p, p, p, p, p, p)
 
 
 def wabar(items):
@@ -277,10 +276,10 @@ def home():
 <div class="frow"><span class="lab" id="lab-r">Region <small>optional, choose one or more</small></span><div class="opts" role="group" aria-labelledby="lab-r">{reg_opts}</div></div>
 <div class="fbar"><p id="count" aria-live="polite"><b>{len(ENTRIES)}</b> workshops</p><button type="button" class="linkbtn" id="reset">Clear</button></div>
 </form></div></section>
-<section class="feat" aria-roledescription="carousel" aria-label="Featured Premium workshops"><div class="w"><div class="sec-h"><h2>Featured Premium workshops <span class="spons">Sponsored</span></h2>
+<section class="feat" aria-roledescription="carousel" aria-label="Featured Premium workshops"><div class="w"><div class="sec-h"><h2>Featured Premium workshops <span class="spons">Featured (paid)</span></h2>
 <div class="car-nav"><button type="button" id="cprev" aria-label="Previous">{ic('chev-l')}</button><button type="button" id="cnext" aria-label="Next">{ic('chev-r')}</button></div></div>
 <div class="marq" id="marq"><ul class="track" id="track" aria-label="Featured workshops">{slides}</ul></div></div></section>
-<section id="workshops" class="lst"><div class="w"><div class="sec-h"><h2>All workshops</h2><a class="sec-link" href="#services">Browse by service</a></div><p class="fine adnote">Premium and Verified listings are paid and shown first (sponsored). Basic listings are free and compiled from public Google data.</p><div class="grid" id="results">{cards}</div>
+<section id="workshops" class="lst"><div class="w"><div class="sec-h"><h2>All workshops</h2><a class="sec-link" href="#services">Browse by service</a></div><p class="fine adnote">Premium workshops are shown first and are marked Featured (paid), then Verified, then Basic in A to Z order. Basic listings are compiled from information the business publishes itself (its website, Facebook or WhatsApp Business page) and link to its Google Maps listing. They are not endorsed by or arranged with the business.</p><div class="grid" id="results">{cards}</div>
 <div class="empty" id="empty"><b>No workshops match.</b> Try fewer filters, or <a href="list-your-workshop/">list your workshop</a>.</div></div></section>
 <section class="alt" id="services"><div class="w"><h2>Browse by service</h2><ul class="tiles">{svc_tiles}</ul></div></section>
 <section id="regions"><div class="w"><h2>Browse by area</h2><ul class="tiles rg">{reg_tiles}</ul><h3 class="sub-h">Estates and industrial areas</h3><ul class="tiles est">{est_tiles}</ul></div></section>
@@ -356,7 +355,7 @@ def region(slug):
     body = f'''<div class="w">{cr}</div>
 <section class="hero" style="padding-top:14px"><div class="w"><h1>{E(h1)}</h1><p class="lede">{E(areas.REGION_INTRO[slug])}</p></div></section>
 {est_html}
-<section><div class="w"><h2>{'Mobile listings' if mobile else 'All workshops in the %s region' % E(name)}</h2><div class="grid">{''.join(card(e, depth, 'areas/%s/' % slug) for e in es)}{list_card(depth, 'car workshop' if mobile else 'car workshop in the ' + name + ' region')}</div>{mob_note}</div></section>'''
+<section><div class="w"><h2>{'Mobile listings' if mobile else 'All workshops in the %s region' % E(name)}</h2><div class="grid">{''.join(card(e, depth, 'areas/%s/' % slug) for e in es)}{list_card(depth, 'car workshop' if mobile else 'car workshop in the ' + name + ' region')}</div>{shortlist_links(es, name)}{mob_note}</div></section>'''
     title = fit_title('Mobile Car Services in Singapore | %s' % SITE_NAME) if mobile else fit_title('Car Workshops in %s Singapore | %s' % (name, SITE_NAME), 'Car Workshops in %s | %s' % (name, SITE_NAME))
     desc = ('Mobile car services that come to your car anywhere in Singapore, such as onsite batteries and mobile detailing. Message them directly.' if mobile else
             'Car workshops and car services in the %s region of Singapore, with estate pages and direct WhatsApp or call contact.' % name)
@@ -394,7 +393,7 @@ def estate(slug, es):
     faq_html = ''.join('<details><summary>%s</summary><p>%s</p></details>' % (E(q), t if '<a ' in t else E(t)) for q, t in faqs)
     body = f'''<div class="w">{cr}</div>
 <section class="hero" style="padding-top:14px"><div class="w"><h1>Car workshops in {E(a['name'])}</h1><p class="lede">{E(intro)}</p>{chips}</div></section>
-<section><div class="w"><h2>Workshops in {E(a['name'])}</h2><div class="grid">{''.join(card(e, depth, 'areas/%s/' % slug) for e in es)}{list_card(depth, 'car workshop in ' + a['name'])}</div></div></section>
+<section><div class="w"><h2>Workshops in {E(a['name'])}</h2><div class="grid">{''.join(card(e, depth, 'areas/%s/' % slug) for e in es)}{list_card(depth, 'car workshop in ' + a['name'])}</div>{shortlist_links(es, a['name'])}</div></section>
 <section class="alt"><div class="w"><h2>Map of {E(a['name'])}</h2>
 <div class="mapbox"><iframe src="{E(map_src)}" title="Map of {E(a['name'], True)}" loading="lazy" referrerpolicy="no-referrer"></iframe></div>
 <p class="fine">Approximate area map from OpenStreetMap. <a href="{E(map_big)}" target="_blank" rel="noopener">View a larger map</a>. Use the Directions button on a workshop for its exact address.</p></div></section>
@@ -418,7 +417,7 @@ def estate_service(slug, cat, es):
     intro = '%d workshops in %s are listed for %s: %s. Each page shows the address, hours and how to contact the workshop.' % (n, a['name'], c['name'].lower(), and_list(e['name'] for e in es))
     body = f'''<div class="w">{cr}</div>
 <section class="hero" style="padding-top:14px"><div class="w"><h1>{E(h1)}</h1><p class="lede">{E(intro)}</p></div></section>
-<section><div class="w"><div class="grid">{''.join(card(e, depth, 'areas/%s/%s/' % (slug, cat)) for e in es)}</div>
+<section><div class="w"><div class="grid">{''.join(card(e, depth, 'areas/%s/%s/' % (slug, cat)) for e in es)}</div>{shortlist_links(es, a['name'])}
 <p class="fine" style="margin-top:14px">More in this area: <a href="../">all workshops in {E(a['name'])}</a>, or <a href="{pre(depth)}services/{cat}/">{E(c['name'].lower())} across Singapore</a>.</p></div></section>'''
     title = fit_title('%s in %s | %s' % (c['name'], a['name'], SITE_NAME), '%s in %s' % (c['name'], a['name']))
     desc = '%s in %s, %s region: %s. Compare listings and contact a workshop directly.' % (c['name'], a['name'], rname, and_list(e['name'] for e in es))
@@ -430,34 +429,21 @@ def tier_badge(e_or_tier, cls=''):
     return '<span class="tier t-%s%s">%s</span>' % (t, (' ' + cls) if cls else '', E(TIERS[t]['badge']))
 
 
-ASK = {'sonic-auto-garage': 'servicing or repair for my car', 'allen-motor-workshop': 'servicing or repair for my car', 'jss-motorworkz': 'servicing or repair for my car', 'everest-garage': 'servicing or repair for my car', 'hup-soon-lee-motor-service': 'servicing or repair for my car', 'cys-automobile-services': 'servicing or repair for my car', 'sg-garage': 'my car', 'cleanic-detailing': 'cleaning or fumigation for my car', 'autotex': 'a part for my car',
-       'battery-rescue-sg': 'a battery for my car', 'wei-car-spray-painting': 'a spray painting job'}
-
 
 def page_label(page_path):
     return '/' + page_path
 
 
-SITE_HOST = 'pageonesingapore.com'   # shown in the prefill so workshops see where the lead came from
-BASIC_WA_MSG = 'Hi, I found you on %s (%s). I would like to ask about %s'
-
-
-def basic_contact_btn(e, page_path, cls='', short=False):
-    """One contact button from a STORED number (the business's own site/Facebook): WhatsApp for mobiles, Call for landlines. '' when unknown."""
-    if e.get('whatsapp'):
-        return wa_btn(e, page_path, cls)
-    if e.get('phone'):
-        return call_btn(e, page_path, cls)
-    return ''
+SITE_HOST = DOMAIN   # shown in the prefill so workshops see where the lead came from
+WA_MSG = 'Hi, I found you on %s (%s). I would like to ask about %s for my car'
+SERVICE_PHRASE = {'general-servicing-repair': 'servicing or repair', 'spray-painting-bodywork': 'spray painting or bodywork', 'gearbox-repair': 'gearbox repair',
+                  'abs-ecu-module-repair': 'ABS or ECU repair', 'car-battery': 'a car battery', 'car-detailing-coating': 'detailing or coating',
+                  'car-wrap-ppf': 'a wrap or PPF', 'car-parts': 'car parts'}
 
 
 def wa_href(e, page_path):
-    """Directory WhatsApp link: the prefilled message names the business, the directory and the page the lead came from."""
-    if e['tier'] == 'free':
-        msg = BASIC_WA_MSG % (SITE_NAME, SITE_HOST, ASK.get(e['slug'], 'servicing or repair for my car'))
-        return wa_link(e['whatsapp'], msg)
-    msg = "Hi %s, I found you on %s (%s). I'd like to ask about %s." % (e['name'], SITE_NAME, page_label(page_path), ASK.get(e['slug'], 'my car'))
-    return wa_link(e['whatsapp'], msg)
+    """Directory WhatsApp link for ANY tier. Prefill names the directory and its domain so the workshop can see where the lead came from."""
+    return wa_link(e['whatsapp'], WA_MSG % (SITE_NAME, SITE_HOST, SERVICE_PHRASE[e['category']]))
 
 
 def track_attrs(kind, e, page_path):
@@ -469,19 +455,58 @@ def wa_btn(e, page_path, cls='', label='WhatsApp'):
         (' ' + cls) if cls else '', E(wa_href(e, page_path)), track_attrs('whatsapp', e, page_path), WA_SVG, E(label))
 
 
+def tel_of(e):
+    return e.get('phone') or ('+' + e['whatsapp'])
+
+
 def call_btn(e, page_path, cls='', label='Call'):
-    return '<a class="btn%s" href="tel:%s" %s>%s %s</a>' % ((' ' + cls) if cls else '', e['phone'], track_attrs('call', e, page_path), ic('phone'), E(label))
+    return '<a class="btn%s" href="tel:%s" %s>%s %s</a>' % ((' ' + cls) if cls else '', tel_of(e), track_attrs('call', e, page_path), ic('phone'), E(label))
+
+
+def contact_btns(e, page_path, cls=''):
+    """WhatsApp + Call on EVERY card and profile (rule 4)."""
+    return wa_btn(e, page_path, cls) + call_btn(e, page_path, cls)
+
+
+def call_icon(e, page_path):
+    return call_btn(e, page_path, 'sm')
 
 
 def gm_url(e):
-    """Official Google Maps URL format (no API key, no billable call): search by name + address, pinned to the place_id."""
+    """Official Google Maps search URL (no API key, no billable call): name + address, pinned to the place_id."""
     return 'https://www.google.com/maps/search/?api=1&query=%s&query_place_id=%s' % (quote('%s %s' % (e['name'], e['address_public'])), e['place_id'])
 
 
+def dir_url(e):
+    """Official Google Maps directions URL."""
+    return 'https://www.google.com/maps/dir/?api=1&destination=%s&destination_place_id=%s' % (quote('%s, %s' % (e['name'], e['address_public'])), e['place_id'])
+
+
 def gm_btn(e, page_path, cls='', short=False):
-    return ('<a class="btn%s" href="%s" target="_blank" rel="noopener" data-cta="maps_%s" data-tier="free" data-page="%s">%s %s</a>'
-            % ((' ' + cls) if cls else '', E(gm_url(e)), e['slug'], E(page_label(page_path)), ic('pin'),
+    return ('<a class="btn%s" href="%s" target="_blank" rel="noopener" data-cta="maps_%s" data-tier="%s" data-page="%s">%s %s</a>'
+            % ((' ' + cls) if cls else '', E(gm_url(e)), e['slug'], e['tier'], E(page_label(page_path)), ic('pin'),
                'Photos &amp; reviews' if short else 'See photos, reviews &amp; hours on Google Maps'))
+
+
+def dir_btn(e, page_path, cls=''):
+    return ('<a class="btn%s" href="%s" target="_blank" rel="noopener" data-cta="directions_%s" data-tier="%s" data-page="%s" data-map>%s Directions</a>'
+            % ((' ' + cls) if cls else '', E(dir_url(e)), e['slug'], e['tier'], E(page_label(page_path)), ic('pin')))
+
+
+def shortlist_url(es):
+    """'Open these workshops in Google Maps' (map_action=shortlist, max 20 place_ids per link). Only entries with a place_id."""
+    ids = [e['place_id'] for e in es if e.get('place_id')][:20]
+    return 'https://www.google.com/maps/search/?api=1&query=car%%20workshop&map_action=shortlist&place_ids=%s' % ','.join(ids) if ids else None
+
+
+def shortlist_links(es, label_area):
+    ids = [e for e in es if e.get('place_id')]
+    if not ids:
+        return ''
+    chunks = [ids[k:k + 20] for k in range(0, len(ids), 20)]
+    return '<p class="fine gmshort">%s</p>' % ' '.join(
+        '<a href="%s" target="_blank" rel="noopener" data-cta="maps_shortlist">%s Open these workshops in Google Maps%s</a>' % (
+            E(shortlist_url(c)), ic('pin'), (' (%d of %d)' % (n + 1, len(chunks))) if len(chunks) > 1 else '') for n, c in enumerate(chunks))
 
 
 def photo_img(p, depth, lazy=True, cls=''):
@@ -516,10 +541,6 @@ def workshop_trail(e):
         k = e['estates'][0]
         t.append((ESTATES[k]['name'], 'areas/%s/' % k))
     return t + [(e['name'], None)]
-
-
-def call_icon(e, page_path):
-    return '<a class="btn sm ico" href="tel:%s" aria-label="Call %s" %s>%s</a>' % (e['phone'], E(e['name'], True), track_attrs('call', e, page_path), ic('phone'))
 
 
 def owner_note(e, depth, page_path, cls='owner-note'):
@@ -562,13 +583,6 @@ def gph_tile(e):
     return '<span class="bt" aria-hidden="true"><span class="ini">%s</span><span class="cic">%s</span></span>' % (E(initials(e['name'])), ic(c.get('icon', 'gear')))
 
 
-def maps_url(e):
-    """Google Maps link for a Basic listing: by cid when we have it, else by place_id."""
-    if e.get('cid'):
-        return 'https://www.google.com/maps?cid=%s' % e['cid']
-    return 'https://www.google.com/maps/search/?api=1&query=%s&query_place_id=%s' % (quote(e['name']), e['place_id'])
-
-
 def card_search(e):
     c = CAT[e['category']]
     t = ' '.join([e['name'], c['name'], SYN.get(c['slug'], ''), e['area_label'], e.get('desc', ''), ' '.join(e.get('card_text', [])[:1]),
@@ -586,10 +600,10 @@ def card(e, depth, page_path=''):
                 '<h3><a href="%sworkshops/%s/">%s</a></h3>%s<p class="addr">%s</p><p class="tx full svcline">%s</p>'
                 '<div class="acts">%s<a class="btn sm" href="%sworkshops/%s/" data-cta="view_%s">View details</a></div>%s</div></article>') % (
             attrs, bt_style(e), gph_tile(e), tier_badge(e, 'on-ph'), E(c['short']), pre(depth), e['slug'], E(e['name']), rg, E(e['address_public']), E(svc),
-            basic_contact_btn(e, page_path, 'sm'), pre(depth), e['slug'], e['slug'], owner_note(e, depth, page_path, 'claim'))
+            contact_btns(e, page_path, 'sm'), pre(depth), e['slug'], e['slug'], owner_note(e, depth, page_path, 'claim'))
     ci = e.get('card_img')
     ph = photo_img(dict(ci, alt=ci['alt']), depth, lazy=True) if ci else tile(e)
-    acts = wa_btn(e, page_path, 'sm') + (call_icon(e, page_path) if e.get('phone') else '')
+    acts = contact_btns(e, page_path, 'sm')
     return ('<article class="card" %s>'
             '<div class="ph">%s%s</div><div class="bd"><span class="tag">%s</span><h3><a href="%sworkshops/%s/">%s</a></h3>'
             '%s<p class="tx">%s</p><div class="acts">%s</div></div></article>') % (
@@ -602,7 +616,7 @@ def slide(e):
     return ('<li><article class="card fc"><div class="ph">%s%s</div><div class="bd"><span class="tag">%s</span><h3><a href="workshops/%s/">%s</a></h3>'
             '<p class="meta rg">%s<span>%s</span></p><p class="tx">%s</p><div class="acts">%s<a class="btn sm" href="workshops/%s/">View</a></div></div></article></li>') % (
         photo_img(ci, 0, lazy=True) if ci else tile(e), tier_badge(e, 'on-ph'), E(c['short']), e['slug'], E(e['name']), ic('pin'), E(region_label(e)), E(e['card_text'][0]),
-        wa_btn(e, '', 'sm'), e['slug'])
+        contact_btns(e, '', 'sm'), e['slug'])
 
 
 def free_card(depth, ex=FREE_EXAMPLE):
@@ -617,7 +631,7 @@ def free_card(depth, ex=FREE_EXAMPLE):
 def tiers_strip():
     """Short three-tier summary for the home page. No prices."""
     items = [
-        ('free', 'A free card plus a short profile page: name, address, services and Directions, with Call or WhatsApp where the workshop publishes its own number, and a link to its Google Maps listing for photos, reviews and hours.'),
+        ('free', 'A free card and short profile page: name, address, services, WhatsApp and Call using the number the workshop publishes itself, Directions, and a link to its Google Maps listing.'),
         ('premium', 'A full page with real photos, services, address, map, reviews line and FAQs.'),
         ('premium_leadgen', 'Everything in Verified, plus the business\'s own website and local search work. Premium workshops are featured at the top.'),
     ]
@@ -745,63 +759,84 @@ def listing(e):
     page(path, e['title'], e['desc'], body, ld, og=og, bar=bar, h1=e['name'])
 
 
+def basic_texts():
+    """Basic page text is built here from the record fields; the records store no display strings."""
+    for e in ENTRIES:
+        if e['tier'] != 'free':
+            continue
+        svc = and_list(s[:1].lower() + s[1:] for s in e['services_public'][:3])
+        e['desc'] = 'Car workshop at %s.' % e['street']
+        e['lede'] = '%s is a car workshop at %s in %s. Its own website lists %s.' % (e['name'], e['street'], e['area_label'], svc)
+        e['area_ctx'] = '%s is in the %s planning area, part of the %s region of Singapore.' % (e['area_label'], e['planning_area'], RN[e['region']])
+
+
+def embed_url(e):
+    """Google Maps Embed API (free, key restricted to this site): name + address for Basic, place_id for Verified and Premium."""
+    q = ('place_id:%s' % e['place_id']) if e['tier'] != 'free' else ('%s %s Singapore' % (e['name'], e['address_public']))
+    return 'https://www.google.com/maps/embed/v1/place?key=%s&q=%s' % (PLACES_BROWSER_KEY, quote(q))
+
+
 def basic_page(e):
-    """Basic (free) profile page: deliberately short. Branded tile, short text, plain service names, address + Directions, hours,
-    Google rating line (text only, no review schema), WhatsApp or Call, owner claim box. No gallery, FAQs, service descriptions or prices."""
+    """Basic (free) profile page, built entirely from the workshop record. Lazy Google Maps embed, WhatsApp + Call from the number the workshop
+    publishes itself, Directions, a link to its Google Maps listing, on-click opening hours (Google, text attribution) and the owner claim/remove box.
+    No gallery, FAQs, prices, ratings or reviews."""
     depth = 2
     c = CAT[e['category']]
     path = 'workshops/%s/' % e['slug']
     url = abs_url(path)
     cr, crld = crumbs(depth, workshop_trail(e))
-    gurl = maps_url(e)
-    stored = basic_contact_btn(e, path, 'big')
-    live = '' if stored else ('<span class="livephone" data-pid="%s" data-key="%s" data-slug="%s" data-name="%s" data-page="%s" data-site="%s" data-host="%s" data-ask="%s" hidden></span>'
-                              % (e['place_id'], PLACES_BROWSER_KEY, e['slug'], E(e['name'], True), E(page_label(path)), E(SITE_NAME, True), SITE_HOST,
-                                 E(ASK.get(e['slug'], 'servicing or repair for my car'), True)))
-    contact_btn = stored + live + gm_btn(e, path, 'big' if not stored else 'big alt')
-    photo = '<div class="hero-ph btile" style="%s">%s</div>' % (bt_style(e), gph_tile(e))
+    embed = ('<div class="mapembed"><iframe src="%s" title="Map of %s" width="100%%" height="300" loading="lazy" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe></div>'
+             % (E(embed_url(e)), E(e['name'], True)))
+    contact_btn = contact_btns(e, path, 'big') + gm_btn(e, path, 'big alt')
     svcs = ''.join('<li>%s</li>' % E(s) for s in e['services_public'])
     claim = owner_note(e, depth, path)
     area_links = area_link_html(e, '../../')
-    site_btn = ''
-    note = ('Photos, reviews and opening hours are on the workshop\'s own Google Maps listing. The number is the one the workshop publishes itself. The button only opens a chat or call that you start; we never message workshops for you.' if stored else
-            'Photos, reviews, phone number and opening hours are on the workshop\'s own Google Maps listing. If it publishes a number there, a Call or WhatsApp button may appear above; it only opens a chat or call that you start.')
+    own_links = ' &middot; '.join('<a href="%s" target="_blank" rel="nofollow noopener">%s</a>' % (E(u), E(t)) for u, t in
+                        ((e.get('website_url'), 'Website'), (e.get('facebook_url'), 'Facebook'), (e.get('instagram_url'), 'Instagram')) if u)
+    own_hours = ('<li data-hours>%s<span><b>Opening hours:</b> %s <small>(from the workshop\'s website)</small></span></li>' % (ic('pin'), E(e['hours']))) if e.get('hours') else ''
+    hours_box = ('<div class="hoursbox" data-pid="%s" data-key="%s" data-slug="%s" data-page="%s"><button type="button" class="btn sm" data-cta="hours_%s" data-tier="free" data-page="%s">Show opening hours</button>'
+                 '<div class="hrs" hidden aria-live="polite"></div><p class="gattr">Opening hours from <span translate="no">Google Maps</span></p></div>'
+                 % (e['place_id'], PLACES_BROWSER_KEY, e['slug'], E(page_label(path)), e['slug'], E(page_label(path))))
     body = f'''<div class="w nar basicpg">{cr}
 <div class="badges" style="margin-top:14px">{tier_badge(e)}<span class="tag">{E(c['short'])}</span></div>
 <h1 style="margin-top:8px">{E(e['name'])}</h1>
 <p class="meta rg">{ic('pin')}<span>{E(region_label(e))}</span></p>
-{photo}
+{embed}
 <p class="lede" style="font-size:1rem">{E(e['lede'])}</p>
 <p>{E(e['area_ctx'])}</p>
 <div class="acts main-acts">{contact_btn}</div>
-<p class="fine">{note}</p>
+<p class="fine">The WhatsApp and call buttons use the number the workshop publishes on its own pages. They only open a chat or call that you start; we never message workshops for you. Photos and reviews are on its Google Maps listing.</p>
 <h2>Services</h2>
 <ul class="tick svc-plain">{svcs}</ul>
-<p class="fine">From the workshop's Google listing.</p>
+<p class="fine">From the workshop's own website.</p>
 <section id="find" class="findus"><h2>Find us</h2>
-<ul class="facts"><li data-addr>{ic('pin')}<span>{E(e['address_public'])}</span></li></ul>
-<p style="margin:10px 0"><a class="btn" href="{gurl}" target="_blank" rel="noopener" data-cta="directions_{e['slug']}" data-tier="free" data-page="{E(page_label(path))}" data-map>{ic('pin')} Directions</a>{site_btn}</p>
+<ul class="facts"><li data-addr>{ic('pin')}<span>{E(e['address_public'])}</span></li>{own_hours}</ul>
+{hours_box}
+<p style="margin:10px 0">{dir_btn(e, path)}</p>
+{('<p class="fine">Workshop\'s own pages: ' + own_links + '</p>') if own_links else ''}
 </section>
 <p class="fine">More <a href="../../services/{c['slug']}/">{E(c['name'].lower())}</a>{area_links}.</p>
 {claim}
 </div>'''
     _m = re.search(r'^(.*?)[, ]+(?:Singapore\s+)?(\d{6})\s*$', e['address_public'])
     street, postal = (_m.group(1), _m.group(2)) if _m else (e['address_public'], '')
+    same = [u for u in (e.get('website_url'), e.get('facebook_url'), e.get('instagram_url')) if u]
     ld = {'@context': 'https://schema.org', '@type': 'AutoRepair', 'name': e['name'], 'url': url,
           'address': {'@type': 'PostalAddress', 'streetAddress': street, 'postalCode': postal, 'addressLocality': 'Singapore', 'addressCountry': 'SG'},
-          }
-    bar = wabar([(basic_contact_btn(e, path) or gm_btn(e, path, '', True)),
-                 '<a class="btn" href="%s" target="_blank" rel="noopener" data-cta="directions_%s" data-tier="free" data-page="%s">%s Directions</a>' % (E(gurl), e['slug'], E(page_label(path)), ic('pin'))])
-    desc = '%s: car workshop in %s, %s region. Address and directions, with a link to its Google Maps listing for photos, reviews and hours.' % (e['name'], e['area_label'], RN[e['region']])
-    desc = desc if len(desc) <= 160 else '%s, car workshop in %s. Address and directions, with a link to its Google Maps listing.' % (e['name'], e['area_label'])
-    page(path, fit_title('%s | %s Car Workshop' % (e['name'], e['area_label']), '%s | %s' % (e['name'], e['area_label']), e['name']), desc, body, [ld, dict(crld, **{'@context': 'https://schema.org'})], bar=bar, h1=e['name'], extra_js=(not stored))
+          'geo': {'@type': 'GeoCoordinates', 'latitude': e['lat'], 'longitude': e['lon']}, 'telephone': tel_of(e), 'hasMap': gm_url(e)}
+    if same:
+        ld['sameAs'] = same
+    bar = wabar([wa_btn(e, path), call_btn(e, path)])
+    desc = '%s: car workshop in %s, %s region. Address, WhatsApp and call, with links to its own pages and Google Maps.' % (e['name'], e['area_label'], RN[e['region']])
+    desc = desc if len(desc) <= 160 else '%s, car workshop in %s. Address, WhatsApp, call and Directions.' % (e['name'], e['area_label'])
+    page(path, fit_title('%s | %s Car Workshop' % (e['name'], e['area_label']), '%s | %s' % (e['name'], e['area_label']), e['name']), desc, body, [ld, dict(crld, **{'@context': 'https://schema.org'})], bar=bar, h1=e['name'], extra_js=True)
 
 
 def tier_features():
     return [
         ('Basic card and short profile page: name, short description, category, area, link to Google Maps', 'yes', 'yes', 'yes'),
         ('Link to your website', 'no', 'yes', 'yes (shown as a secondary button)'),
-        ('WhatsApp (or Call) button with the source tagged', 'where its own number is published', 'yes', 'yes'),
+        ('WhatsApp and Call buttons with the source tagged', 'yes', 'yes', 'yes'),
         ('Tap counts (WhatsApp and call) reported to you', 'no', 'yes', 'yes'),
         ('Your own photos and a completed-job gallery', 'no', 'yes', 'yes'),
         ('Detailed services with short descriptions', 'no', 'yes', 'yes'),
@@ -862,7 +897,7 @@ def list_page():
 <a class="btn amber big" id="claim-wa" href="{claim_generic}" data-names="{claim_names}" data-wa="{PAGE_ONE_WA}" data-site="{E(SITE_NAME)}" target="_blank" rel="noopener" data-cta="claim_owner_page">{WA_SVG} WhatsApp Page One</a>
 <p class="fine">This WhatsApp is for workshop owners only. Customers, please use the WhatsApp button on the workshop's own listing.</p></section>
 <section id="remove" class="claim-sec"><h2>Remove my listing</h2>
-<p>Basic listings are compiled from public Google data and are not endorsed by or arranged with the business. If you run a workshop and want your listing taken down, send us a message and we will remove it. We check that you run the business first.</p>
+<p>Basic listings are compiled from information the business publishes itself (its website, Facebook or WhatsApp Business page) and link to its Google Maps listing. They are not endorsed by or arranged with the business. If you run a workshop and want your listing taken down, send us a message and we will remove it. We check that you run the business first.</p>
 <p class="claim-for" id="remove-for" hidden>Listing: <b></b></p>
 <a class="btn big" id="remove-wa" href="{remove_generic}" data-names="{claim_names}" data-wa="{PAGE_ONE_WA}" data-site="{E(SITE_NAME)}" target="_blank" rel="noopener" data-cta="remove_owner_page">{WA_SVG} WhatsApp to remove my listing</a>
 <p class="fine">This WhatsApp is for workshop owners only. You start the chat; we never message workshops first.</p></section>
@@ -881,9 +916,9 @@ def about_page():
 <h1 style="margin-top:14px">About {E(SITE_NAME)}</h1>
 <p class="lede" style="font-size:1rem">{E(SITE_NAME)} is a directory of car workshops and car services in Singapore, run by Page One Singapore, a web and SEO service for small businesses.</p>
 <h2>Where the details come from</h2>
-<p>Every fact on a page comes from the business or from its public records. If a detail cannot be verified, such as a price or opening hours, we leave it out. We never copy a business's website text. We do not rank workshops or use rating markup; a rating line appears only with a source link and the date we checked.</p>
-<h2>Unclaimed listings</h2>
-<p>Basic listings that the business has not claimed are compiled from public Google data. They are free, they are not endorsed by or arranged with the business, and they can be removed on request: use <a href="../list-your-workshop/#remove">Remove my listing</a>. Photos, reviews, phone and opening hours are on each workshop's own Google Maps listing, which every Basic page links to. Verified and Premium listings are paid, signed-up businesses and are labelled as such.</p>
+<p>Every fact on a page comes from the business itself or from public records. If a detail cannot be confirmed, such as a price or opening hours, we leave it out. We do not copy a business's website text, and we do not rank workshops or show ratings.</p>
+<h2>Basic listings</h2>
+<p>Basic listings are compiled from information the business publishes itself (its website, Facebook or WhatsApp Business page) and link to its Google Maps listing. They are not endorsed by or arranged with the business. They are free and can be removed on request: use <a href="../list-your-workshop/#remove">Remove my listing</a>. Verified and Premium listings are for businesses that signed up and supplied their own details.</p>
 <h2>Who we list</h2>
 <p>Car workshops and car services only: repair and servicing, gearbox, ABS and ECU modules, spray painting and bodywork, batteries, detailing and coating, wraps and PPF, and parts. Car dealers and insurance are not listed.</p>
 <h2>A note on one listing</h2>
@@ -896,6 +931,38 @@ def about_page():
     page('about/', 'About SG Car Workshop | Run by Page One Singapore',
          'SG Car Workshop is a Singapore car workshop directory run by Page One Singapore. Contact us on WhatsApp.',
          body, [dict(crld, **{'@context': 'https://schema.org'}), {'@context': 'https://schema.org', '@type': 'AboutPage', 'name': 'About ' + SITE_NAME, 'url': abs_url('about/')}])
+
+
+def legal_page(path, title, desc, h1, body_html):
+    depth = 1
+    cr, crld = crumbs(depth, [(h1, None)])
+    body = '<div class="w nar">%s<h1 style="margin-top:14px">%s</h1>%s</div>' % (cr, E(h1), body_html)
+    page(path, title, desc, body, [dict(crld, **{'@context': 'https://schema.org'})], h1=h1)
+
+
+GOOGLE_TERMS = 'https://maps.google.com/help/terms_maps/'
+GOOGLE_PRIVACY = 'https://policies.google.com/privacy'
+
+
+def terms_page():
+    legal_page('terms/', 'Terms | SG Car Workshop', 'Terms for using SG Car Workshop, a Singapore car workshop directory run by Page One Singapore.', 'Terms',
+               ('<p class="lede" style="font-size:1rem">By using %s you agree to these terms.</p>'
+                '<h2>What this site is</h2><p>%s lists car workshops and car services in Singapore. Basic listings are compiled from information the business publishes itself and link to its Google Maps listing. They are not endorsed by or arranged with the business. Premium workshops are marked Featured (paid).</p>'
+                '<h2>Using the contact buttons</h2><p>WhatsApp and Call buttons only open a chat or call that you start. We do not send messages to workshops on your behalf. Workshops are separate businesses: agree prices and work with them directly.</p>'
+                '<h2>Google Maps</h2><p>Some pages show maps, opening hours or links from Google Maps. Use of Google Maps content is subject to <a href="%s" target="_blank" rel="noopener">Google Maps Terms of Service</a>.</p>'
+                '<h2>Removing a listing</h2><p>If you run a workshop and want a listing removed or corrected, use <a href="../list-your-workshop/#remove">Remove my listing</a>.</p>'
+                '<h2>No promises</h2><p>We take care over the details but cannot promise that a workshop is open, available or suitable. Check with the workshop before you travel.</p>')
+               % (E(SITE_NAME), E(SITE_NAME), GOOGLE_TERMS))
+
+
+def privacy_page():
+    legal_page('privacy/', 'Privacy | SG Car Workshop', 'How SG Car Workshop handles data: what the site collects, Google Maps content, and how to ask for a listing to be removed.', 'Privacy',
+               ('<p class="lede" style="font-size:1rem">This page explains what %s collects and what it shows from other sources.</p>'
+                '<h2>Listing information</h2><p>Workshop pages show business details that the business publishes itself, such as its name, address, services and contact number. To correct or remove a listing, use <a href="../list-your-workshop/#remove">Remove my listing</a>.</p>'
+                '<h2>Taps on contact buttons</h2><p>When a live visitor taps WhatsApp, Call, Directions or a Google Maps link, we record the tap with the workshop, the page, a random visit identifier and the device type, so we can report results to the business. We do not record the message you write. Do-not-track browsers are not counted.</p>'
+                '<h2>Google Maps</h2><p>Some pages load a Google Maps embed, and the Show opening hours button asks Google Maps for opening hours when you press it. Google handles that data under its <a href="%s" target="_blank" rel="noopener">Privacy Policy</a> and the <a href="%s" target="_blank" rel="noopener">Google Maps Terms</a>. We do not store ratings, reviews, photos or phone numbers from Google.</p>'
+                '<h2>Contact</h2><p>Page One Singapore (Snap Commercial Pte. Ltd., UEN 202209904W). WhatsApp %s.</p>')
+               % (E(SITE_NAME), GOOGLE_PRIVACY, GOOGLE_TERMS, PAGE_ONE_WA_SHOW))
 
 
 def not_found():
@@ -913,6 +980,7 @@ def not_found():
 
 # ------------------------------------------------------------------ build
 def build():
+    basic_texts()
     home()
     for c in CAT_LIST:
         category(c)
@@ -929,6 +997,8 @@ def build():
             basic_page(e)
     list_page()
     about_page()
+    terms_page()
+    privacy_page()
 
     if os.path.isdir(OUT):
         shutil.rmtree(OUT)
@@ -963,7 +1033,7 @@ def build():
     lines += ['', '## Listings']
     for e in ENTRIES:
         lines.append('- [%s](%sworkshops/%s/): %s, %s%s' % (e['name'], BASE, e['slug'], CAT[e['category']]['name'] + ', ' + TIERS[e['tier']]['label'], e['area_label'], (' (own website: %s)' % e['url']) if e['tier'] == 'premium_leadgen' else ''))
-    lines += ['', '## More', '- [List your workshop](%slist-your-workshop/)' % BASE, '- [About](%sabout/)' % BASE, '']
+    lines += ['', '## More', '- [List your workshop](%slist-your-workshop/)' % BASE, '- [About](%sabout/)' % BASE, '- [Terms](%sterms/)' % BASE, '- [Privacy](%sprivacy/)' % BASE, '']
     open(OUT + '/llms.txt', 'w').write('\n'.join(lines))
     print('built %d pages + 404 into %s (LIVE=%s, v=%s)' % (len(PAGES), OUT, LIVE, V))
 
@@ -974,7 +1044,7 @@ OLD_REGIONS = ['north', 'north-east', 'east', 'west', 'central']
 def write_redirects():
     """/regions/<r>/ moved to /areas/<r>/. The bridge cannot upload .htaccess, so the preview gets soft redirect pages
     (meta refresh + canonical). redirects.htaccess holds the real 301 rules for Edwin to add on the live domain."""
-    for r in OLD_REGIONS:
+    for r in [x for x in OLD_REGIONS if x in PUB_REGIONS]:
         d = os.path.join(OUT, 'regions', r)
         os.makedirs(d, exist_ok=True)
         new = '../../areas/%s/' % r

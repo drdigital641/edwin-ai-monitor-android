@@ -1,97 +1,203 @@
 #!/usr/bin/env python3
-"""Basic-listing agent (Google Places API New). ONE Text Search per estate, plus ONE Place Details call (phone fields only) per candidate that passes every other filter.
+"""Basic-listing agent v3 (Google Places API New + the workshop's OWN pages).  Static site, no messaging feature (PDPA s48B).
 
-  PLACES_SERVER_KEY=... python3 basic_agent.py --estates kaki-bukit [--cap 20] [--dry-run]
+RULES (Edwin, 2 Nov 2026)
+  * The only Google value stored is place_id (+ a pass/fail screen result and date). Never rating, reviews, photos, phone, hours, status, name, address, types, website, maps URL, cid.
+  * Mobile-only: a workshop is listed only if it has an SG mobile (+65 8/9 + 7 digits).
+  * Option A: Google is ONLY the filter. The stored mobile must come from the workshop's own website / Facebook / WhatsApp Business page and MATCH the Google
+    mobile (compared in memory, never saved). Mobile only on Google -> data/pending.json, never live.
+  * Private snapshots of the own pages used are kept in snapshots/<slug>/ (gitignored).
 
-Per estate: one Text Search ("car workshop <estate>"), up to 20 results, field mask
-  places.id, displayName, formattedAddress, location, businessStatus, types, primaryType.
-Keeps a result only if: not already listed (hand-made entries or basic_auto.json), businessStatus == OPERATIONAL, a car-repair type, not a dealer/car wash/etc.,
-and its address maps to a known estate (postal code / address keywords, areas.py). PHONE RULE (Edwin, 1 Nov 2026): a workshop is added ONLY if its Google profile lists a phone number
-(Details mask nationalPhoneNumber,internationalPhoneNumber, checked once per candidate, after the free filters, never for already-listed ids). No phone = skipped.
-The Google phone is NOT stored: only used as a yes/no test; display stays on the live profile fallback (assets/livephone.js). Stops at --cap new listings.
-Stored in basic_auto.json: place_id (permanent) + name + address + our own slug and estate. NOT stored: phone (tested yes/no only), opening hours, rating, review count,
-website, photos. dir.js loads those live in the browser from Places (browser key, referrer-restricted).
-The key is read from the environment only; it must never be written to the repo, built site or client JS.
-Then: python3 build.py && python3 check.py, commit, sync. Monthly: re-run to find new workshops; --refresh re-checks stored names/addresses/status.
+COMMANDS  (PLACES_SERVER_KEY in the environment; never written anywhere)
+  discover  --estates kaki-bukit,ubi          Text Search, field mask places.id ONLY (free). Adds ids to data/queue.json (skips known, removed, pending, existing).
+  stage     --place-id ID --slug S --estate E --planning-area "Jurong East" --categories SERV,GEAR --name N --block 48 --street "Toh Guan Road East"
+            --unit "#02-140" --building "Enterprise Hub" --postal 608586 --services "a;b;c" --own-url URL [--own-url URL2] [--facebook URL] [--hours "text"]
+            Fetches the own page(s), saves the snapshot, checks the name and postal code appear on it, finds the mobile(s) on it, geocodes the postal code with OneMap,
+            and writes data/workshops/<slug>.json as status "pending" (google_screen.passed null). NO Google call.
+  screen    [--max-places 25]                 For every staged record: ONE Place Details call (nationalPhoneNumber,internationalPhoneNumber,businessStatus,primaryType).
+            Pass = OPERATIONAL + car-repair primaryType + SG mobile on Google that equals the stored own-source mobile -> status "active". Otherwise the record
+            stays pending with passed false and the reason (no Google data kept) and the place_id goes to data/pending.json.
+  resume                                      same as screen: picks up the queue where the daily cap stopped it.
+  closed    --refresh                         (monthly) re-screen live records; CLOSED_PERMANENTLY -> status "closed" (hidden at next build), flagged in the report.
+Daily cap: --max-places (default 25) Details calls per UTC day, tracked in data/usage.json; HTTP 429 stops the run cleanly and the rest stays queued.
+After any run: python3 build.py && python3 check.py, commit, sync.
 """
-import argparse, datetime as dt, json, os, re, sys, urllib.request
+import argparse, datetime as dt, json, os, re, sys, urllib.parse, urllib.request, urllib.error
 
 HERE = os.path.dirname(os.path.abspath(__file__))
 sys.path.insert(0, HERE)
-STORE = os.path.join(HERE, 'basic_auto.json')
+ROOT = os.path.abspath(os.path.join(HERE, '..'))
+DATA = os.environ.get('SGCW_DATA_DIR') or os.path.join(ROOT, 'data')
+SNAP = os.path.join(ROOT, 'snapshots')
 API = 'https://places.googleapis.com/v1/'
-MASK = 'places.id,places.displayName,places.formattedAddress,places.location,places.businessStatus,places.types,places.primaryType'
-OK_TYPES = {'car_repair', 'auto_parts_store', 'car_repair_service'}
-SKIP = re.compile(r'\b(showroom|dealer|leasing|rental|rent a car|parking|car ?wash|insurance|driving|petrol|shell|esso|caltex|spc|sembcorp|tyre|tire|autobay)\b', re.I)
-DETAILS_MASK = 'nationalPhoneNumber,internationalPhoneNumber'
-CALLS = {'text_search': 0, 'details': 0}
+OK_PRIMARY = {'car_repair', 'car_repair_service', 'auto_repair_shop', 'auto_body_shop', 'auto_electrician', 'mechanic'}
+TODAY = dt.date.today().isoformat()
+MOBILE = re.compile(r'(?<!\d)(?:\+?65[\s-]?)?([89]\d{3}[\s-]?\d{4})(?!\d)')
+WAME = re.compile(r'wa\.me/65([89]\d{7})')
+UA = {'User-Agent': 'Mozilla/5.0 (compatible; SGCarWorkshopDirectory/3; +https://sgcarworkshop.sg/)'}
 
 
-def search(est, key):
-    body = {'textQuery': 'car workshop ' + est['name'], 'regionCode': 'SG', 'pageSize': 20,
-            'locationBias': {'circle': {'center': {'latitude': est['lat'], 'longitude': est['lon']}, 'radius': 2500.0}}}
-    req = urllib.request.Request(API + 'places:searchText', data=json.dumps(body).encode(), method='POST',
-                                 headers={'X-Goog-Api-Key': key, 'X-Goog-FieldMask': MASK, 'Content-Type': 'application/json'})
-    CALLS['text_search'] += 1
+def jload(n, default):
+    p = os.path.join(DATA, n)
+    return json.load(open(p)) if os.path.exists(p) else default
+
+
+def jsave(n, obj):
+    json.dump(obj, open(os.path.join(DATA, n), 'w'), indent=1, ensure_ascii=False)
+
+
+def usage_today():
+    u = jload('usage.json', {})
+    return u, u.setdefault(TODAY, {'text_search': 0, 'details': 0})
+
+
+def gcall(url, key, mask, body=None):
+    req = urllib.request.Request(url, data=json.dumps(body).encode() if body else None, method='POST' if body else 'GET',
+                                 headers={'X-Goog-Api-Key': key, 'X-Goog-FieldMask': mask, 'Content-Type': 'application/json'})
     with urllib.request.urlopen(req, timeout=30) as r:
-        return json.load(r).get('places', [])
+        return json.load(r)
 
 
-def has_phone(pid, key):
-    """One Place Details call, phone fields only. Returns True/False; the number itself is discarded."""
-    req = urllib.request.Request(API + 'places/' + pid, headers={'X-Goog-Api-Key': key, 'X-Goog-FieldMask': DETAILS_MASK})
-    CALLS['details'] += 1
-    with urllib.request.urlopen(req, timeout=30) as r:
-        j = json.load(r)
-    return bool(j.get('nationalPhoneNumber') or j.get('internationalPhoneNumber'))
+def known_ids():
+    ids = set(jload('queue.json', {})) | {r['place_id'] for r in jload('pending.json', [])}
+    ids |= {r['place_id'] if isinstance(r, dict) else r for r in jload('removed.json', [])}
+    wd = os.path.join(DATA, 'workshops')
+    for f in os.listdir(wd) if os.path.isdir(wd) else []:
+        ids.add(json.load(open(os.path.join(wd, f)))['place_id'])
+    return ids
 
 
-def slugify(n):
-    s = re.sub(r'[^a-z0-9]+', '-', re.sub(r'\b(pte\.?|ltd\.?)\b', '', n.lower())).strip('-')
-    return s if len(s) <= 36 else s[:36].rsplit('-', 1)[0]
+def discover(a, key):
+    import areas
+    q = jload('queue.json', {}); u, ut = usage_today(); skip = known_ids(); new = 0
+    for sl in a.estates.split(','):
+        est = areas.ESTATES[sl]
+        body = {'textQuery': 'car workshop ' + est['name'], 'regionCode': 'SG', 'pageSize': 20,
+                'locationBias': {'circle': {'center': {'latitude': est['lat'], 'longitude': est['lon']}, 'radius': 2500.0}}}
+        ut['text_search'] += 1
+        for p in gcall(API + 'places:searchText', key, 'places.id', body).get('places', []):
+            if p['id'] not in skip:
+                q[p['id']] = {'estate': sl, 'state': 'discovered', 'date': TODAY}; skip.add(p['id']); new += 1
+    jsave('queue.json', q); jsave('usage.json', u)
+    print(json.dumps({'new_ids': new, 'text_search_calls_today': ut['text_search']}))
+
+
+def fetch(url):
+    return urllib.request.urlopen(urllib.request.Request(url, headers=UA), timeout=30).read().decode('utf-8', 'replace')
+
+
+def geocode(postal):
+    j = json.load(urllib.request.urlopen('https://www.onemap.gov.sg/api/common/elastic/search?searchVal=%s&returnGeom=Y&getAddrDetails=Y&pageNum=1' % postal, timeout=30))
+    r = j['results'][0]
+    return round(float(r['LATITUDE']), 7), round(float(r['LONGITUDE']), 7)
+
+
+def stage(a):
+    import areas
+    os.makedirs(os.path.join(SNAP, a.slug), exist_ok=True)
+    texts, mobiles = [], {}
+    for n, u in enumerate(a.own_url):
+        if a.snapshot_file:   # page text saved by the operator when this host cannot fetch the site directly
+            h = open(a.snapshot_file[min(n, len(a.snapshot_file) - 1)], encoding='utf-8').read()
+        else:
+            h = fetch(u)
+        open(os.path.join(SNAP, a.slug, 'page%d.html' % n), 'w', encoding='utf-8').write(h)
+        t = re.sub(r'\s+', ' ', re.sub(r'<[^>]+>', ' ', h)); texts.append(t)
+        for m in WAME.findall(h) + [re.sub(r'\D', '', x) for x in MOBILE.findall(h)]:
+            mobiles.setdefault('+65' + m[-8:], u)
+    if a.mobile:
+        mobiles = {}   # explicit --mobile means: only the number(s) named for THIS unit, not every number on a multi-branch page
+    for m in a.mobile:   # explicit mobile read from the own page (must still appear in the snapshot text)
+        if re.sub(r'\D', '', m)[-8:] not in re.sub(r'\D', ' ', ' '.join(texts)).replace(' ', '') and re.sub(r'\D', '', m)[-8:] not in re.sub(r'\D', '', ' '.join(texts)):
+            sys.exit('stage refused: mobile %s is not in the saved page text' % m)
+        mobiles.setdefault(m, a.own_url[0])
+    blob = ' '.join(texts).lower()
+    problems = []
+    if a.name.lower() not in blob: problems.append('name not found on the own page')
+    if a.postal not in blob.replace(' ', '') and a.postal not in blob: problems.append('postal code not found on the own page')
+    if not mobiles: problems.append('no SG mobile on the own page')
+    if problems: sys.exit('stage refused: ' + '; '.join(problems))
+    try: lat, lng = geocode(a.postal)
+    except Exception as e: sys.exit('OneMap geocode failed (%s); pass --lat/--lng from OneMap' % e) if a.lat is None else None
+    if a.lat is not None: lat, lng = a.lat, a.lng
+    est = areas.ESTATES[a.estate]
+    ph = [{'e164': k, 'kind': 'mobile', 'whatsapp': True, 'evidence': a.evidence or "Own page lists this mobile (snapshot %s)" % a.slug, 'source_url': u, 'checked_at': TODAY} for k, u in mobiles.items()]
+    rec = {'schema_version': 1, 'slug': a.slug, 'place_id': a.place_id, 'place_id_checked_at': TODAY, 'name': a.name, 'name_source_url': a.own_url[0],
+           'address': {'block': a.block, 'street': a.street, 'unit': a.unit, 'building': a.building}, 'postal_code': a.postal, 'address_source_url': a.own_url[0],
+           'lat': lat, 'lng': lng, 'geo_source': 'onemap', 'planning_area': a.planning_area, 'region': est['region'], 'estate': a.estate,
+           'categories': a.categories.split(','), 'services': [s.strip() for s in a.services.split(';') if s.strip()], 'services_source_url': a.own_url[0],
+           'phones': ph, 'website_url': a.own_url[0], 'google_screen': {'passed': None, 'reason': 'staged, waiting for the Google screen', 'checked_at': None},
+           'status': 'pending', 'tier': 'basic', 'first_seen_at': TODAY, 'last_verified_at': TODAY, 'collector_version': 'agent-v3'}
+    if a.facebook: rec['facebook_url'] = a.facebook
+    if a.hours: rec['hours'] = {'text': a.hours}; rec['hours_source_url'] = a.own_url[0]
+    jsave('workshops/%s.json' % a.slug, rec)
+    q = jload('queue.json', {}); q[a.place_id] = {'estate': a.estate, 'state': 'staged', 'slug': a.slug, 'date': TODAY}; jsave('queue.json', q)
+    print('staged', a.slug, 'mobiles', list(mobiles))
+
+
+def screen(a, key):
+    u, ut = usage_today(); wd = os.path.join(DATA, 'workshops'); out = []
+    pend = jload('pending.json', [])
+    for f in sorted(os.listdir(wd)):
+        r = json.load(open(os.path.join(wd, f)))
+        if r['status'] != 'pending' or (r['google_screen'] or {}).get('passed') is not None:
+            continue
+        if ut['details'] >= a.max_places:
+            out.append((r['slug'], 'daily cap reached, stays queued')); continue
+        ut['details'] += 1
+        try:
+            g = gcall(API + 'places/' + r['place_id'], key, 'nationalPhoneNumber,internationalPhoneNumber,businessStatus,primaryType')
+        except urllib.error.HTTPError as e:
+            if e.code == 429:
+                out.append((r['slug'], 'Google quota exhausted (429): stays queued')); ut['details'] -= 1; break
+            raise
+        gm = re.sub(r'\D', '', g.get('internationalPhoneNumber', ''))
+        gm = '+' + gm if gm else ''
+        why = None
+        if g.get('businessStatus') != 'OPERATIONAL': why = 'not OPERATIONAL'
+        elif g.get('primaryType') not in OK_PRIMARY: why = 'primaryType is not car repair'
+        elif not re.match(r'^\+65[89]\d{7}$', gm): why = 'Google profile has no SG mobile'
+        elif gm not in {p['e164'] for p in r['phones']}: why = 'Google mobile does not match the own-source mobile'
+        r['google_screen'] = {'passed': why is None, 'reason': why or 'OPERATIONAL, car repair, SG mobile matches own source', 'checked_at': TODAY}
+        r['place_id_checked_at'] = TODAY
+        if why is None:
+            r['status'] = 'active'
+        else:
+            pend.append({'place_id': r['place_id'], 'slug': r['slug'], 'reason': why, 'date': TODAY})
+        jsave('workshops/%s' % f, r); out.append((r['slug'], r['status'] if why is None else 'pending: ' + why))
+    q = jload('queue.json', {})
+    for s, _ in out:
+        pass
+    jsave('pending.json', pend); jsave('usage.json', u)
+    print(json.dumps({'results': out, 'details_calls_today': ut['details']}, indent=1))
+
+
+def refresh_closed(a, key):
+    """Monthly: live records whose Google businessStatus is CLOSED_PERMANENTLY become status closed (hidden at the next build)."""
+    u, ut = usage_today(); wd = os.path.join(DATA, 'workshops'); flagged = []
+    for f in sorted(os.listdir(wd)):
+        r = json.load(open(os.path.join(wd, f)))
+        if r['status'] != 'active' or ut['details'] >= a.max_places: continue
+        ut['details'] += 1
+        if gcall(API + 'places/' + r['place_id'], key, 'businessStatus').get('businessStatus') == 'CLOSED_PERMANENTLY':
+            r['status'] = 'closed'; r['last_verified_at'] = TODAY; jsave('workshops/%s' % f, r); flagged.append(r['slug'])
+    jsave('usage.json', u); print(json.dumps({'closed': flagged, 'details_calls_today': ut['details']}))
 
 
 def main():
-    ap = argparse.ArgumentParser()
-    ap.add_argument('--estates', required=True); ap.add_argument('--cap', type=int, default=20); ap.add_argument('--dry-run', action='store_true')
+    ap = argparse.ArgumentParser(); sub = ap.add_subparsers(dest='cmd', required=True)
+    d = sub.add_parser('discover'); d.add_argument('--estates', required=True)
+    s = sub.add_parser('stage')
+    for k in ('place-id', 'slug', 'estate', 'planning-area', 'categories', 'name', 'street', 'postal', 'services'): s.add_argument('--' + k, required=True)
+    for k in ('block', 'unit', 'building', 'facebook', 'hours', 'evidence'): s.add_argument('--' + k, default='')
+    s.add_argument('--own-url', action='append', required=True); s.add_argument('--snapshot-file', action='append', default=[]); s.add_argument('--mobile', action='append', default=[]); s.add_argument('--lat', type=float); s.add_argument('--lng', type=float)
+    for c in ('screen', 'resume', 'closed'):
+        x = sub.add_parser(c); x.add_argument('--max-places', type=int, default=25); x.add_argument('--refresh', action='store_true')
     a = ap.parse_args()
+    a.__dict__['place_id'] = a.__dict__.get('place_id'); a.__dict__['planning_area'] = a.__dict__.get('planning_area')
     key = os.environ.get('PLACES_SERVER_KEY')
-    if not key and not a.dry_run:
-        sys.exit('Set PLACES_SERVER_KEY in the environment (server key, Places API New only).')
-    import areas, data
-    store = json.load(open(STORE)) if os.path.exists(STORE) else {}
-    have_ids = {e['place_id'] for e in data.ENTRIES if e.get('place_id')} | set(store)
-    slugs = {e['slug'] for e in data.ENTRIES} | {v['slug'] for v in store.values()}
-    added, skipped = [], []
-    for sl in a.estates.split(','):
-        est = areas.ESTATES[sl]
-        if a.dry_run:
-            print('would search: car workshop', est['name']); continue
-        for p in search(est, key):
-            if len(added) >= a.cap:
-                break
-            pid, name, addr = p['id'], p.get('displayName', {}).get('text', ''), p.get('formattedAddress', '')
-            why = None
-            m = re.search(r'Singapore\s+(\d{6})', addr)
-            street = re.sub(r',?\s*Singapore\s+\d{6}\s*$', '', addr)
-            es = areas.estate_for(street, m.group(1) if m else '')
-            if pid in have_ids: why = 'already listed'
-            elif p.get('businessStatus') != 'OPERATIONAL': why = 'not operational'
-            elif not (set(p.get('types', [])) & OK_TYPES or p.get('primaryType') in OK_TYPES): why = 'not a car repair type'
-            elif SKIP.search(name): why = 'excluded name'
-            elif not es: why = 'no estate for address'
-            if why:
-                skipped.append((name, why)); continue
-            if not has_phone(pid, key):
-                skipped.append((name, 'no phone on Google profile')); continue
-            s = slugify(name); n = 2
-            while s in slugs: s = '%s-%d' % (slugify(name), n); n += 1
-            slugs.add(s)
-            store[pid] = dict(place_id=pid, name=name, address=addr, slug=s, estate=es, fetched_at=dt.datetime.now(dt.timezone.utc).isoformat(timespec='seconds'))
-            added.append((s, es, name))
-    if not a.dry_run:
-        json.dump(store, open(STORE, 'w'), indent=1, ensure_ascii=False)
-    print(json.dumps(dict(added=added, skipped=skipped, places_calls=CALLS), indent=1, ensure_ascii=False))
+    if a.cmd in ('discover', 'screen', 'resume', 'closed') and not key: sys.exit('Set PLACES_SERVER_KEY in the environment (server key, Places API New only).')
+    {'discover': lambda: discover(a, key), 'stage': lambda: stage(a), 'screen': lambda: screen(a, key), 'resume': lambda: screen(a, key), 'closed': lambda: refresh_closed(a, key)}[a.cmd]()
 
 
 if __name__ == '__main__':

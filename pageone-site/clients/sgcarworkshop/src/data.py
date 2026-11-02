@@ -489,132 +489,109 @@ ENTRIES = [
 
 # ---- Basic (tier "free") listings: card + short profile page. Source: basic-run/2026-11-01.json (public Google business listings, checked 1 Nov 2026).
 # Fields shown on the card: name, desc, category, area + region, WhatsApp (only if a mobile number) or Call, Directions (Google Maps cid).
-BASIC = [
-    dict(slug="everest-garage", place_id="ChIJ6zFftrUX2jERlx4oI_q1cYw", name="Everest Garage", area_label="Kaki Bukit", regions=["east"], category="general-servicing-repair",
-         cid="10120069923614498455",
-         desc="Car repair and maintenance workshop in Kaki Bukit, on level 5 of 25 Kaki Bukit Road 4.",
-         source="Google business listing cid 10120069923614498455, checked 1 Nov 2026"),
-    dict(slug="hup-soon-lee-motor-service", place_id="ChIJKcgic4gU2jER-SiN1fV9wY4", name="Hup Soon Lee Motor Service", area_label="Yishun", regions=["north"], category="general-servicing-repair",
-         cid="10286641518694181113",
-         desc="Long-running car repair workshop in Yishun Industrial Park A that works on private and commercial vehicles, including Euro 4, 5 and 6 models.",
-         source="Google business listing cid 10286641518694181113, checked 1 Nov 2026"),
-    dict(slug="cys-automobile-services", place_id="ChIJSYwXNWsT2jERZWyiONA8GI4", name="CYS Automobile Services", area_label="Woodlands", regions=["north"], category="general-servicing-repair",
-         cid="10239000617827855461",
-         desc="Woodlands workshop for servicing and repairs that also handles accident reporting and motor insurance claims.",
-         source="Google business listing cid 10239000617827855461, checked 1 Nov 2026"),
-    # Added 1 Nov 2026 from details Edwin sent (Google business listings). WhatsApp only where Edwin said the number takes WhatsApp.
-    dict(slug="sonic-auto-garage", place_id="ChIJOdFuZBkZ2jERzzREQDSArDQ", name="Sonic Auto Garage", area_label="Ubi", regions=["central"], category="general-servicing-repair",
-         cid=None,
-         desc="Car servicing and repair workshop in Paya Ubi Industrial Park, with gearbox, aircon, tyre and battery work, plus towing and accident claims.",
-         source="Google business listing place_id ChIJOdFuZBkZ2jERzzREQDSArDQ, details from Edwin 1 Nov 2026"),
-    dict(slug="allen-motor-workshop", place_id="ChIJjxxlECQX2jERdH2P4TiAez4", name="Allen Motor Workshop", area_label="Sin Ming", regions=["central"], category="general-servicing-repair",
-         cid="4502333234277743988",
-         desc="Car servicing and repair workshop in Sin Ming Industrial Estate Sector C.",
-         source="Google business listing cid 4502333234277743988, details from Edwin 1 Nov 2026"),
-    dict(slug="jss-motorworkz", place_id="ChIJeRLlTn4R2jEReZM-FkbmCwE", name="JSS MotorWorkz", area_label="Toh Guan", regions=["west"], category="general-servicing-repair",
-         cid="75407007477044089",
-         desc="Workshop at Enterprise Hub, Toh Guan, for servicing, engine and gearbox overhauls, diagnostics, aircon and walnut blasting.",
-         source="Google business listing cid 75407007477044089, details from Edwin 1 Nov 2026"),
-]
-# Public facts for Basic listings (address, plain services, wording). Phone, hours, rating and reviews are deliberately NOT stored: they load live from Google Places.
-_BX = {
-    "everest-garage": dict(
-        address_public="25 Kaki Bukit Rd 4, #05-81, Singapore 417800",
-        services_public=["Car servicing", "Oil change", "Car aircon", "General repairs"],
-        services_source="Google listing category + topics customers mention",
-        whatsapp_source="WhatsApp number confirmed through the wa.link on its Google listing, 1 Nov 2026",
-        lede=("Everest Garage is a car repair and maintenance workshop in Kaki Bukit, on the fifth floor of 25 Kaki Bukit Road 4. "
-              "Its Google listing shows servicing, oil change, aircon and general repairs. Tap Directions to find the unit."),
-        area_ctx="Kaki Bukit is in the East planning region of Singapore, which also takes in the Bedok car trade units."),
-    "hup-soon-lee-motor-service": dict(
-        address_public="1018 Yishun Industrial Park A, #01-352, Singapore 768760",
-        services_public=["Car repair and servicing", "Private and commercial vehicles", "Euro 4, 5 and 6 vehicles"],
-        services_source="Google listing description",
-        lede=("Hup Soon Lee Motor Service is a long-running car repair workshop at 1018 Yishun Industrial Park A. "
-              "According to its Google listing it works on private and commercial vehicles, including Euro 4, 5 and 6 models."),
-        area_ctx="Yishun is in the North planning region of Singapore, alongside Woodlands, Sembawang and Kranji."),
-    "cys-automobile-services": dict(
-        address_public="38 Woodlands Industrial Park E1, #07-17, Singapore 757700",
-        services_public=["Servicing and repair", "Accident reporting", "Motor insurance claims", "Vehicle inspection", "Vehicle rental"],
-        services_source="Google listing description",
-        lede=("CYS Automobile Services is a servicing and repair workshop on level 7 of 38 Woodlands Industrial Park E1. "
-              "Its Google listing also mentions accident reporting, motor insurance claims, vehicle inspection and vehicle rental."),
-        area_ctx="Woodlands is in the North planning region of Singapore, alongside Yishun, Sembawang and Kranji."),
-    "sonic-auto-garage": dict(
-        address_public="53 Ubi Ave 1, #01-21 Paya Ubi Industrial Park, Singapore 408934",
-        services_public=["General servicing and repair", "Brakes", "Diagnostics", "Gearbox", "Car aircon", "Tyres and batteries", "Towing and accident claims"],
-        services_source="Google listing, details from Edwin",
-        lede=("Sonic Auto Garage is a car servicing and repair workshop at unit #01-21 of Paya Ubi Industrial Park, 53 Ubi Avenue 1. "
-              "Its Google listing covers servicing, brakes, diagnostics, gearbox, aircon, tyres and batteries, as well as towing and accident claims. Call to book your car in."),
-        area_ctx="Ubi is in the Geylang planning area, part of the Central region of Singapore."),
-    "allen-motor-workshop": dict(
-        address_public="1 Sin Ming Industrial Estate Sector C, #01-127, Singapore 575636",
-        services_public=["Car servicing", "Car repair"],
-        services_source="Google listing, details from Edwin",
-        lede=("Allen Motor Workshop is a car servicing and repair workshop at unit #01-127, 1 Sin Ming Industrial Estate Sector C. "
-              "Tap Directions to find the unit."),
-        area_ctx="Sin Ming is in the Bishan planning area, part of the Central region of Singapore."),
-    "jss-motorworkz": dict(
-        address_public="48 Toh Guan Road East, #02-140 Enterprise Hub, Singapore 608586",
-        services_public=["Servicing", "Engine repair and overhaul", "Gearbox repair and overhaul", "Diagnostics", "Car aircon", "Walnut blasting", "Tyres and batteries"],
-        services_source="Google listing, details from Edwin",
-        lede=("JSS MotorWorkz is a workshop on level 2 of Enterprise Hub, 48 Toh Guan Road East. "
-              "Its Google listing covers servicing, engine and gearbox repair and overhauls, diagnostics, aircon, walnut blasting, tyres and batteries."),
-        area_ctx="Toh Guan is in the Jurong East planning area, part of the West region of Singapore."),
-}
-for _b in BASIC:
-    _b.update(_BX[_b["slug"]])
-    _b.update(tier="free", services=[], regions_note="Region from the public listing area (URA planning regions).")
+# ---------------------------------------------------------------------------------------------------------------------
+# Basic listings come from data/workshops/<slug>.json (schema: data/schema.json). Only place_id is kept from Google.
+# A record is LIVE only when: status == "active", google_screen.passed is true, it has a stored SG mobile (+65 8/9 + 7 digits) from the
+# workshop's OWN website / Facebook / WhatsApp Business page with whatsapp true + evidence + source_url + checked_at, and its place_id
+# is not in data/removed.json. Everything shown on a page is built from these fields by build.py templates.
+# ---------------------------------------------------------------------------------------------------------------------
+import json as _json, os as _os, re as _re
+
+DATA_DIR = _os.environ.get("SGCW_DATA_DIR") or _os.path.join(_os.path.dirname(_os.path.abspath(__file__)), "..", "data")
+MOBILE_RE = _re.compile(r"^\+65[89]\d{7}$")
+FORBIDDEN_KEYS = {"rating", "user_rating_count", "reviews", "phone_google", "hours_google", "business_status", "display_name", "formatted_address",
+                  "types", "primary_type", "website_uri", "google_maps_uri", "cid", "google_photos", "businessStatus", "displayName",
+                  "formattedAddress", "websiteUri", "googleMapsUri", "nationalPhoneNumber"}
+_CODES = _json.load(open(_os.path.join(DATA_DIR, "categories.json")))["codes"]
 
 
-def _auto_basic():
-    """Basic listings found by basic_agent.py (basic_auto.json). Stored: place_id + name + address + our own estate/slug only.
-    Phone, hours, rating, reviews, website and photos are never stored: dir.js loads them live from Google Places in the visitor's browser."""
-    import json as _j, os as _os, re as _re
-    import areas as _ar
-    p = _os.path.join(_os.path.dirname(_os.path.abspath(__file__)), "basic_auto.json")
-    if not _os.path.exists(p):
-        return []
+def _jload(name, default):
+    p = _os.path.join(DATA_DIR, name)
+    return _json.load(open(p)) if _os.path.exists(p) else default
+
+
+REMOVED = {r["place_id"] if isinstance(r, dict) else r for r in _jload("removed.json", [])}
+
+
+def workshop_files():
+    d = _os.path.join(DATA_DIR, "workshops")
+    return sorted(_os.path.join(d, f) for f in _os.listdir(d) if f.endswith(".json")) if _os.path.isdir(d) else []
+
+
+def record_problems(r):
+    """Schema + live-rule problems for one workshop record (check.py prints these; the loader refuses a bad ACTIVE record)."""
     out = []
-    for r in _j.load(open(p)).values():
-        m = _re.search(r"(\d{6})\s*$", r.get("address", ""))
-        postal = m.group(1) if m else ""
-        street = _re.sub(r",?\s*(?:Singapore\s+)?\d{6}\s*$", "", r["address"])
-        es = r.get("estate") or _ar.estate_for(street, postal)
-        if not es:
-            continue
-        en, rg = _ar.ESTATES[es]["name"], _ar.ESTATES[es]["region"]
-        out.append(dict(slug=r["slug"], place_id=r["place_id"], name=r["name"], area_label=en, regions=[rg], category="general-servicing-repair", cid=None,
-                        desc="Car workshop at " + street + ".", source="Google Places API (New) place_id %s" % r["place_id"],
-                        addresses=[dict(label=None, street=street, postal=postal)], address_public=r["address"],
-                        services_public=["Car repair and servicing"], services_source="Google listing category",
-                        lede="%s is a car workshop at %s. Tap Directions to find the unit." % (r["name"], street),
-                        area_ctx="%s is in the %s region of Singapore." % (en, rg.replace("-", " ").title()),
-                        tier="free", services=[], regions_note="Region from the public listing area (URA planning regions)."))
+    for k in ("slug", "place_id", "name", "name_source_url", "address", "postal_code", "address_source_url", "lat", "lng", "geo_source",
+              "planning_area", "region", "estate", "categories", "services", "services_source_url", "phones", "google_screen", "status", "tier",
+              "first_seen_at", "last_verified_at", "collector_version", "place_id_checked_at"):
+        if r.get(k) in (None, "", []) and k not in ("lat", "lng"):
+            out.append("missing " + k)
+    if r.get("schema_version") != 1:
+        out.append("schema_version must be 1")
+    bad = FORBIDDEN_KEYS & set(r)
+    if bad:
+        out.append("stores Google-only field(s) %s" % sorted(bad))
+    if r.get("geo_source") != "onemap":
+        out.append("geo_source must be onemap")
+    if r.get("status") not in ("active", "pending", "closed", "removed"):
+        out.append("bad status")
+    if r.get("tier") not in ("basic", "verified", "premium"):
+        out.append("bad tier")
+    for c in r.get("categories", []):
+        if c not in _CODES:
+            out.append("unknown category " + c)
+    mobiles = [p for p in r.get("phones", []) if p.get("kind") == "mobile"]
+    for p in r.get("phones", []):
+        if p.get("kind") == "mobile" and not MOBILE_RE.match(p.get("e164", "")):
+            out.append("mobile not +65 8/9 + 7 digits: %s" % p.get("e164"))
+        for k in ("evidence", "source_url", "checked_at"):
+            if not p.get(k):
+                out.append("phone %s missing %s" % (p.get("e164"), k))
+        if not str(p.get("source_url", "")).startswith("http"):
+            out.append("phone source_url must be a URL")
+    if r.get("status") == "active":
+        if not mobiles or not any(p.get("whatsapp") is True for p in mobiles):
+            out.append("ACTIVE record needs a mobile with whatsapp true")
+        if (r.get("google_screen") or {}).get("passed") is not True:
+            out.append("ACTIVE record has not passed the Google screen")
+        if r.get("place_id") in REMOVED:
+            out.append("place_id is in removed.json")
     return out
 
 
-_AUTO = _auto_basic()
-BASIC.extend(_AUTO)
+def _from_record(r):
+    m = [p for p in r["phones"] if p["kind"] == "mobile" and p.get("whatsapp")][0]
+    a = r["address"]
+    street = ", ".join(x for x in [(" ".join(x for x in [a.get("block"), a.get("street")] if x)), a.get("building")] if x)
+    addr_public = "%s%s, Singapore %s" % (street, (", " + a["unit"]) if a.get("unit") else "", r["postal_code"])
+    import areas as _ar
+    cat = _CODES[r["categories"][0]]
+    est = r["estate"]
+    return dict(
+        slug=r["slug"], place_id=r["place_id"], name=r["name"], tier="free", category=cat, categories=[_CODES[c] for c in r["categories"]],
+        estate=est, area_label=_ar.ESTATES[est]["name"], regions=[r["region"]], region=r["region"], planning_area=r["planning_area"],
+        address_public=addr_public, street=street, postal=r["postal_code"], addresses=[dict(label=None, street=street, postal=r["postal_code"])],
+        lat=r["lat"], lon=r["lng"], services_public=list(r["services"]), services=[], services_source=r["services_source_url"],
+        phone=m["e164"], phone_show="%s %s" % (m["e164"][3:7], m["e164"][7:]), whatsapp=m["e164"].lstrip("+"), contact_source=m["source_url"],
+        contact_evidence=m["evidence"], contact_checked=m["checked_at"],
+        website_url=r.get("website_url"), facebook_url=r.get("facebook_url"), instagram_url=r.get("instagram_url"), email=r.get("email"),
+        hours=(r.get("hours") or {}).get("text"), hours_source=r.get("hours_source_url"), name_source=r["name_source_url"], address_source=r["address_source_url"],
+        uen=r.get("uen"), last_verified=r["last_verified_at"], regions_note="Region from the planning area (URA).")
+
+
+BASIC = []
+PENDING_RECORDS = []
+for _f in workshop_files():
+    _r = _json.load(open(_f))
+    if _r.get("status") != "active":
+        PENDING_RECORDS.append(_r)
+        continue
+    _p = record_problems(_r)
+    if _p:
+        raise SystemExit("data/workshops/%s: %s" % (_os.path.basename(_f), "; ".join(_p)))
+    BASIC.append(_from_record(_r))
 ENTRIES.extend(BASIC)
 
 
-def _apply_basic_contact():
-    """Phone numbers for Basic listings, ONLY from the business's own website or Facebook page (basic_contact.json, with source URL).
-    Never from Google. Mobile numbers (8/9 prefix) get WhatsApp, landlines get Call. Unknown stays None (profile page may use the live fallback)."""
-    import json as _j, os as _os
-    p = _os.path.join(_os.path.dirname(_os.path.abspath(__file__)), "basic_contact.json")
-    cj = _j.load(open(p)) if _os.path.exists(p) else {}
-    for e in BASIC:
-        c = cj.get(e["slug"]) or {}
-        e["contact_source"] = c.get("source")
-        if c.get("phone"):
-            e["phone"] = c["phone"]
-            e["phone_show"] = c.get("phone_show")
-            if c["phone"][3:4] in ("8", "9"):
-                e["whatsapp"] = c["phone"].lstrip("+")
-
-
-_apply_basic_contact()
 _RANK = {"premium_leadgen": 0, "premium": 1, "free": 2}
 ENTRIES.sort(key=lambda e: (_RANK[e["tier"]], e["name"].lower() if e["tier"] == "free" else ""))  # Premium, Verified, then Basic A to Z (paid keep their set order)

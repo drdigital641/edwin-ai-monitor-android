@@ -86,7 +86,7 @@ for e, r in rows:
             if not r[c]: notes.append('Basic missing ' + c)
         for c in FEAT:
             if wei and not r[c] < wei[c]: notes.append('Basic %s %s not < Verified %s' % (c, r[c], wei[c]))
-        if r['both_buttons']: notes.append('Basic must have one contact button, not both')
+        if not r['both_buttons']: notes.append('Basic needs WhatsApp + Call')
     elif e['tier'] == 'premium_leadgen' and wei:
         for c in FEAT:   # Premium must reach Verified's level (capped at the thresholds below: 3 photos, 3 services, 3 FAQs, 1 gallery item)
             need = min(wei[c], MINIMUM[c])
@@ -102,32 +102,61 @@ for e, r in rows:
     print('%-28s %-16s %s %s' % (e['name'], e['tier'], ' '.join('%-15s' % v(r[c]) for c in cols), ('FAIL: ' + '; '.join(notes)) if notes else 'ok'))
 # Wei (Verified) hours now come from its Google listing (checked 1 Nov 2026), so every tier shows hours.
 home_src = open(os.path.join(root, 'index.html'), encoding='utf-8').read()
+import urllib.parse as _up
+import data as _data
+ENDORSE = re.compile(r'\b(partner\w*|verified|recommended|recommends|trusted|confirmed|endorse\w*|official\w*|approved|authori[sz]ed|certified|best|top|leading|number one)\b', re.I)
+CATPHRASE = {'general-servicing-repair': 'servicing or repair', 'spray-painting-bodywork': 'spray painting or bodywork', 'gearbox-repair': 'gearbox repair',
+             'abs-ecu-module-repair': 'ABS or ECU repair', 'car-battery': 'a car battery', 'car-detailing-coating': 'detailing or coating',
+             'car-wrap-ppf': 'a wrap or PPF', 'car-parts': 'car parts'}
+CANON = 'https://sgcarworkshop.sg/'
+def want_wa(e):
+    return 'https://wa.me/%s?text=%s' % (e['whatsapp'], _up.quote('Hi, I found you on SG Car Workshop (sgcarworkshop.sg). I would like to ask about %s for my car' % CATPHRASE[e['category']]))
+OSM = 'openstreetmap.org'
 for e in ENTRIES:
+    # RULE 2: every live record has a stored SG mobile with WhatsApp; RULE 4 prefill
+    if not re.match(r'^65[89]\d{7}$', str(e.get('whatsapp', ''))): print('LIVE RECORD WITHOUT STORED MOBILE', e['slug']); bad += 1
+    if not e.get('phone') and not e.get('whatsapp'): print('NO PHONE', e['slug']); bad += 1
     if e['tier'] == 'free':
-        m = re.search(r'<article class="card basic[^"]*"[^>]*>((?:(?!</article>).)*href="[^"]*workshops/%s/" data-cta="view_%s"(?:(?!</article>).)*)</article>' % (e['slug'], e['slug']), home_src, re.S)
-        if m and ('data-place' in m.group(1) or 'data-pid' in m.group(1) or 'data-live' in m.group(1) or 'data-rating' in m.group(1)): print('BASIC card has Places hooks', e['slug']); bad += 1
-        if not m or 'Manage this listing' not in home_src: print('BASIC card incomplete (needs View details link)', e['slug']); bad += 1
         pg = open(os.path.join(root, 'workshops', e['slug'], 'index.html'), encoding='utf-8').read()
         ld = [json.loads(j) for j in re.findall(r'<script type="application/ld\+json">(.*?)</script>', pg, re.S)]
         biz = [x for x in ld if x.get('@type') != 'BreadcrumbList']
-        if len(biz) != 1 or set(biz[0]) - {'@context', '@type', 'name', 'url', 'address', 'geo'}: print('BASIC schema not minimal', e['slug']); bad += 1
-        for needle in ('data-cta="claim_%s"' % e['slug'], 'Is this your workshop?', 'query_place_id=%s' % e['place_id'], 'See photos, reviews &amp; hours on Google Maps'):
+        if len(biz) != 1 or biz[0].get('@type') != 'AutoRepair' or set(biz[0]) - {'@context', '@type', 'name', 'url', 'address', 'geo', 'telephone', 'sameAs', 'hasMap'} or not {'name', 'address', 'geo', 'telephone', 'hasMap'} <= set(biz[0]):
+            print('BASIC schema must be AutoRepair with name, address, geo, telephone, hasMap (+ sameAs only)', e['slug']); bad += 1
+        for needle in ('data-cta="claim_%s"' % e['slug'], 'Is this your workshop?', 'query_place_id=%s' % e['place_id'], 'See photos, reviews &amp; hours on Google Maps',
+                       'maps/dir/?api=1&amp;destination=', 'destination_place_id=%s' % e['place_id'], 'From the workshop\'s own website', 'Show opening hours',
+                       '<span translate="no">Google Maps</span>', 'google.com/maps/embed/v1/place?key=', 'loading="lazy"', 'referrerpolicy="strict-origin-when-cross-origin"', 'height="300"',
+                       'class="hoursbox"', 'livephone.js'):
             if needle not in pg: print('BASIC page missing', needle, e['slug']); bad += 1
+        if not re.search(r'embed/v1/place\?key=[^&"]+&amp;q=%s' % re.escape(_up.quote('%s %s Singapore' % (e['name'], e['address_public']))), pg): print('BASIC embed q is not name + address + Singapore', e['slug']); bad += 1
+        if OSM in pg: print('BASIC page has an OSM map and Places content', e['slug']); bad += 1
         txt = re.sub(r'\s+', ' ', re.sub(r'<[^>]+>', ' ', re.sub(r'<(script|style).*?</\1>', '', pg, flags=re.S)))
-        for w in re.findall(r'\b(partner\w*|verified|recommended by|trusted|confirmed|endorse\w*|official\w*|approved|authori[sz]ed|certified)\b', txt, re.I):
-            print('BASIC page has endorsement wording', w, e['slug']); bad += 1
-        if 'Remove my listing' not in pg or 'list-your-workshop/?w=%s#remove' % e['slug'] not in pg: print('BASIC page missing Remove my listing link', e['slug']); bad += 1
-        for stored in ('telephone', 'openingHours', 'ratingValue', 'reviewCount'):
-            if stored in pg: print('BASIC page stores a live-only field', stored, e['slug']); bad += 1
-        has_num = bool(re.search(r'href="tel:\+\d|wa\.me/\d', pg))
-        if has_num and not (e.get('phone') and (e.get('contact_source') or '').startswith('http')):
-            print('BASIC page shows a phone number with no stored own-site source URL', e['slug']); bad += 1
-        if e.get('phone') and has_num and ('class="livephone"' in pg or 'livephone.js' in pg): print('BASIC page with a stored number must not use the live fallback', e['slug']); bad += 1
-        if not e.get('phone') and ('class="livephone"' not in pg or 'livephone.js' not in pg): print('BASIC page without a stored number is missing the live fallback slot', e['slug']); bad += 1
-        if e.get('phone') and e.get('whatsapp') and not re.search(r'wa\.me/\d+\?text=Hi%2C%20I%20found%20you%20on%20SG%20Car%20Workshop%20%28pageonesingapore\.com%29', pg): print('BASIC WhatsApp prefill text wrong', e['slug']); bad += 1
-        if e.get('phone') and not e.get('whatsapp') and 'wa.me' in re.sub(r'list-your-workshop[^"]*', '', pg).split('id="main"')[1].split('</main>')[0]: print('BASIC landline listing shows WhatsApp', e['slug']); bad += 1
+        for w in ENDORSE.findall(txt): print('BASIC page has endorsement wording', w, e['slug']); bad += 1
+        if 'Remove my listing' not in pg or 'list-your-workshop/?w=%s#remove' % e['slug'] not in pg or 'Manage this listing' not in pg: print('BASIC page missing Manage/Remove links', e['slug']); bad += 1
+        for stored in ('openingHours', 'ratingValue', 'reviewCount', 'aggregateRating', '"review"', 'maps?cid', 'cid='): 
+            if stored in pg: print('BASIC page has a forbidden Google-derived field', stored, e['slug']); bad += 1
+        if want_wa(e) not in pg: print('BASIC WhatsApp prefill wrong', e['slug']); bad += 1
         for banned in ('class="faq"', 'class="gal"', 'class="svc ', 'FAQPage', 'Review'):
             if banned in pg: print('BASIC page has Verified-only content', banned, e['slug']); bad += 1
+        # sticky bar on profiles has WhatsApp + Call
+        if not re.search(r'<div class="wabar"[^>]*>.*wa\.me/.*tel:\+65.*</div>', pg, re.S): print('BASIC sticky bar needs WhatsApp + Call', e['slug']); bad += 1
+
+# RULE 4: EVERY business card (home carousel and grid, area, service, search results) has WhatsApp + Call; the prefill is the one template
+for dp, _, fs in os.walk(root):
+    for fn in fs:
+        if not fn.endswith('.html') or 'workshops' + os.sep + fn in dp: continue
+        rel = os.path.relpath(os.path.join(dp, fn), root)
+        t = open(os.path.join(dp, fn), encoding='utf-8').read()
+        for m in re.finditer(r'<article class="card([^"]*)"[^>]*>(.*?)</article>', t, re.S):
+            cls, inner = m.group(1), m.group(2)
+            if 'free-card' in cls or 'list' in cls.split():
+                continue
+            slug = re.search(r'workshops/([a-z0-9-]+)/', inner)
+            if not slug: continue
+            s = slug.group(1)
+            if 'data-cta="whatsapp_dir_%s"' % s not in inner or 'data-cta="call_dir_%s"' % s not in inner or 'href="tel:+65' not in inner or 'wa.me/65' not in inner:
+                print('CARD WITHOUT WhatsApp + Call', rel, s); bad += 1
+            ent = [x for x in ENTRIES if x['slug'] == s]
+            if ent and want_wa(ent[0]) not in inner: print('CARD WhatsApp prefill wrong', rel, s); bad += 1
 sm = open(os.path.join(root, 'sitemap.xml')).read(); lt = open(os.path.join(root, 'llms.txt')).read()
 for e in ENTRIES:
     if ('workshops/%s/' % e['slug']) not in sm or ('workshops/%s/' % e['slug']) not in lt: print('NOT in sitemap/llms.txt', e['slug']); bad += 1
@@ -176,15 +205,45 @@ for dp, _, fs in os.walk(root):
             print('CONFIRMATION CLAIM in', os.path.relpath(os.path.join(dp, fn), root)); bad += 1
 if os.path.isdir(os.path.join(root, 'regions')) is False: print('old /regions/ redirect pages missing'); bad += 1
 
-# Compliance: footer + About + Sponsored labels
-for rel in ('index.html', 'about/index.html', 'list-your-workshop/index.html'):
+# Compliance: footer + About + Featured (paid) labels + legal pages + canonical domain
+for rel in ('index.html', 'about/index.html', 'list-your-workshop/index.html', 'terms/index.html', 'privacy/index.html'):
     t = open(os.path.join(root, rel), encoding='utf-8').read()
     if 'list-your-workshop/#remove' not in t and rel != 'list-your-workshop/index.html': print('footer Remove my listing link missing', rel); bad += 1
+    if 'terms/' not in t or 'privacy/' not in t: print('footer Terms/Privacy links missing', rel); bad += 1
+    if CANON not in t: print('canonical is not sgcarworkshop.sg', rel); bad += 1
 about = open(os.path.join(root, 'about/index.html'), encoding='utf-8').read()
-if 'compiled from public Google data' not in about or 'removed on request' not in about: print('About page missing unclaimed-listing note'); bad += 1
+if 'compiled from information the business publishes itself (its website, Facebook or WhatsApp Business page) and link to its Google Maps listing. They are not endorsed by or arranged with the business.' not in about: print('About page missing Basic-listing note'); bad += 1
+if 'https://maps.google.com/help/terms_maps/' not in open(os.path.join(root, 'terms/index.html'), encoding='utf-8').read(): print('Terms missing Google Maps terms link'); bad += 1
+if 'https://policies.google.com/privacy' not in open(os.path.join(root, 'privacy/index.html'), encoding='utf-8').read(): print('Privacy missing Google privacy link'); bad += 1
 if 'id="remove"' not in open(os.path.join(root, 'list-your-workshop/index.html'), encoding='utf-8').read(): print('list page missing #remove section'); bad += 1
-if 'Sponsored' not in open(os.path.join(root, 'index.html'), encoding='utf-8').read(): print('home carousel not labelled Sponsored'); bad += 1
-# Google API: the browser key and places.googleapis may appear ONLY in assets/livephone.js (URL) and in the data-key of the .livephone slot on Basic PROFILE pages with no stored number.
+if 'Featured (paid)' not in home_src or 'Sponsored' in home_src: print('home carousel must be labelled Featured (paid)'); bad += 1
+for rel in ('sitemap.xml', 'llms.txt'):
+    t = open(os.path.join(root, rel), encoding='utf-8').read()
+    if CANON not in t or 'pageonesingapore.com/preview' in t: print('not on sgcarworkshop.sg:', rel); bad += 1
+    for u in re.findall(r'<loc>([^<]+)</loc>', t):
+        if not u.startswith(CANON): print('sitemap URL off-domain', u); bad += 1
+if 'maps/dir' in open(os.path.join(root, 'index.html'), encoding='utf-8').read() and False: pass
+# dir.js tracker
+djs = open(os.path.join(root, 'assets', 'dir.js'), encoding='utf-8').read()
+if "LIVE_HOST='sgcarworkshop.sg'" not in djs or not all(k in djs for k in ('maps', 'directions', 'hours')): print('dir.js must count maps_/directions_/hours_ taps on sgcarworkshop.sg'); bad += 1
+# Sort: Premium, Verified, then Basic A to Z (never by rating)
+rank = {'premium_leadgen': 0, 'premium': 1, 'free': 2}
+order = [(rank[e['tier']], e['name'].lower() if e['tier'] == 'free' else '') for e in ENTRIES]
+if order != sorted(order): print('ENTRIES not sorted Premium, Verified, Basic A-Z'); bad += 1
+# DATA: every record file passes the schema; forbidden Google fields; removed/pending place_ids never live; snapshots stay private
+import subprocess
+live_pids = {e['place_id'] for e in ENTRIES if e.get('place_id')}
+for f in _data.workshop_files():
+    r = json.load(open(f))
+    for p in _data.record_problems(r): print('RECORD', os.path.basename(f), p); bad += 1
+    if r['status'] != 'active' and r['place_id'] in live_pids: print('NON-ACTIVE record is live', r['slug']); bad += 1
+for r in _data._jload('pending.json', []):
+    if r['place_id'] in live_pids or not r.get('reason') or not r.get('date'): print('pending.json entry live or incomplete', r.get('slug')); bad += 1
+if _data.REMOVED & live_pids: print('REMOVED place_id is live', _data.REMOVED & live_pids); bad += 1
+_ign = open(os.path.join(os.path.dirname(os.path.abspath(__file__)), '..', '.gitignore')).read() if os.path.exists(os.path.join(os.path.dirname(os.path.abspath(__file__)), '..', '.gitignore')) else ''
+if 'snapshots/' not in _ign: print('.gitignore must list snapshots/'); bad += 1
+# Google API: places.googleapis ONLY in assets/livephone.js (one URL, fields businessStatus,regularOpeningHours); the browser key ONLY on Basic profile pages
+# (Maps Embed iframe URL + data-key of the hours box); pages with an OSM map carry no Places content at all.
 for dp, dn, fns in os.walk(root):
     for fn in fns:
         if fn.endswith(('.html', '.js', '.css', '.txt', '.xml')):
@@ -192,16 +251,16 @@ for dp, dn, fns in os.walk(root):
             t = open(os.path.join(dp, fn), encoding='utf-8').read()
             is_profile = re.match(r'workshops/[^/]+/index\.html$', rel) is not None
             keys = re.findall(r'AIza[0-9A-Za-z_-]{20,}', t)
+            if 'maps?cid' in t or 'maps/place/?q=place_id' in t: print('OLD cid / place link in', rel); bad += 1
             if rel == 'assets/livephone.js':
-                if keys or t.count('places.googleapis') != 1 or 'nationalPhoneNumber,internationalPhoneNumber' not in t or re.search(r'photos|rating|regularOpeningHours|reviews', t.split('fields=')[1].split('&')[0]):
-                    print('livephone.js must make exactly one Places URL with only the phone fields'); bad += 1
+                if keys or t.count('places.googleapis') != 1 or 'fields=businessStatus,regularOpeningHours&' not in t or re.search(r'nationalPhoneNumber|internationalPhoneNumber|photos|rating|reviews|websiteUri', t):
+                    print('livephone.js must make exactly one Places URL with only businessStatus,regularOpeningHours'); bad += 1
                 continue
-            if 'places.googleapis' in t or 'gmaps-key' in t:
-                print('GOOGLE API REFERENCE in', rel); bad += 1
+            if 'places.googleapis' in t or 'gmaps-key' in t: print('GOOGLE API REFERENCE in', rel); bad += 1
             if keys:
-                ok = is_profile and 'class="livephone"' in t and len(keys) == 1 and t.count('data-key="') == 1
-                if not ok: print('GOOGLE KEY outside a Basic profile fallback slot in', rel); bad += 1
-            if 'livephone.js' in t and not (is_profile and 'class="livephone"' in t):
-                print('livephone.js loaded outside a Basic profile fallback page', rel); bad += 1
+                allowed = is_profile and len(set(keys)) == 1
+                if not allowed: print('GOOGLE KEY outside a profile page in', rel); bad += 1
+            if OSM in t and (keys or 'hoursbox' in t or 'livephone.js' in t or 'google.com/maps/embed' in t): print('OSM page carries Places content', rel); bad += 1
+            if 'livephone.js' in t and not (is_profile and 'class="hoursbox"' in t): print('livephone.js loaded outside a profile hours box', rel); bad += 1
 print('pages checked:', len(files), 'problems:', bad)
 sys.exit(1 if bad else 0)
