@@ -123,7 +123,7 @@ for e in ENTRIES:
         if len(biz) != 1 or biz[0].get('@type') != 'AutoRepair' or set(biz[0]) - {'@context', '@type', 'name', 'url', 'address', 'geo', 'telephone', 'sameAs', 'hasMap'} or not {'name', 'address', 'geo', 'telephone', 'hasMap'} <= set(biz[0]):
             print('BASIC schema must be AutoRepair with name, address, geo, telephone, hasMap (+ sameAs only)', e['slug']); bad += 1
         for needle in ('data-cta="claim_%s"' % e['slug'], 'Is this your workshop?', 'query_place_id=%s' % e['place_id'], 'See photos, reviews &amp; hours on Google Maps',
-                       'maps/dir/?api=1&amp;destination=', 'destination_place_id=%s' % e['place_id'], 'From the workshop\'s own website', 'Show opening hours',
+                       'maps/dir/?api=1&amp;destination=', 'destination_place_id=%s' % e['place_id'], ('Typical services for this type' if e['services_source'] == 'google_profile' else 'From the workshop\'s own website'), 'Show opening hours',
                        '<span translate="no">Google Maps</span>', 'google.com/maps/embed/v1/place?key=', 'loading="lazy"', 'referrerpolicy="strict-origin-when-cross-origin"', 'height="300"',
                        'class="hoursbox"', 'livephone.js'):
             if needle not in pg: print('BASIC page missing', needle, e['slug']); bad += 1

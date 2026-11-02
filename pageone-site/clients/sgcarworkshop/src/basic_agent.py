@@ -143,13 +143,15 @@ def screen(a, key):
     pend = jload('pending.json', [])
     for f in sorted(os.listdir(wd)):
         r = json.load(open(os.path.join(wd, f)))
-        if r['status'] != 'pending' or (r['google_screen'] or {}).get('passed') is not None:
+        gs = r['google_screen'] or {}
+        need_id = gs.get('passed') is True and not r.get('name')   # passed earlier, identity still missing
+        if r['status'] != 'pending' or (gs.get('passed') is not None and not need_id):
             continue
         if ut['details'] >= a.max_places:
             out.append((r['slug'], 'daily cap reached, stays queued')); continue
         ut['details'] += 1
         try:
-            g = gcall(API + 'places/' + r['place_id'], key, 'nationalPhoneNumber,internationalPhoneNumber,businessStatus,primaryType')
+            g = gcall(API + 'places/' + r['place_id'], key, 'nationalPhoneNumber,internationalPhoneNumber,businessStatus,primaryType' + (',displayName,formattedAddress' if not r.get('name') else ''))
         except urllib.error.HTTPError as e:
             if e.code == 429:
                 out.append((r['slug'], 'Google quota exhausted (429): stays queued')); ut['details'] -= 1; break
@@ -163,6 +165,15 @@ def screen(a, key):
         # Option B (Edwin, 2 Nov 2026): the SG mobile on the Google Business Profile qualifies; stored ONCE, source google_profile.
         r['google_screen'] = {'passed': why is None, 'reason': why or 'OPERATIONAL, car repair, SG mobile on Google profile', 'checked_at': TODAY}
         r['place_id_checked_at'] = TODAY
+        if why is None and not r.get('name') and g.get('displayName'):
+            # Edwin 2 Nov 2026: name and address MAY come from the Google profile for workshops that pass the mobile screen (source google_profile + date).
+            fa = re.sub(r',?\s*Singapore\s*\d{6}\s*$', '', g.get('formattedAddress', ''))
+            pc = re.search(r'(\d{6})\s*$', g.get('formattedAddress', ''))
+            r['name'] = g['displayName'].get('text', ''); r['name_source_url'] = 'google_profile'; r['name_checked_at'] = TODAY
+            r['address'] = {'block': '', 'street': fa, 'unit': '', 'building': ''}; r['postal_code'] = pc.group(1) if pc else ''
+            r['address_source_url'] = 'google_profile'; r['address_checked_at'] = TODAY
+            r.setdefault('categories', ['SERV']); r.setdefault('services', ['General servicing and repair']); r.setdefault('services_source_url', 'google_profile')
+            r.setdefault('first_seen_at', TODAY); r.setdefault('last_verified_at', TODAY); r.setdefault('collector_version', 'agent-v4')
         if why is None:
             r['phones'] = [p for p in r.get('phones', []) if p['e164'] != gm] + [{'e164': gm, 'kind': 'mobile', 'whatsapp': True, 'source': 'google_profile', 'checked_at': TODAY}]
             r['status'] = 'active'

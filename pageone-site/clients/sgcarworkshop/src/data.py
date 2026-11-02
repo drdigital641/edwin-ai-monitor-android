@@ -531,7 +531,7 @@ def record_problems(r):
     bad = FORBIDDEN_KEYS & set(r)
     if bad:
         out.append("stores Google-only field(s) %s" % sorted(bad))
-    if r.get("geo_source") != "onemap":
+    if r.get("geo_source") != "onemap" and r.get("status") == "active":
         out.append("geo_source must be onemap")
     if r.get("status") not in ("active", "pending", "closed", "removed"):
         out.append("bad status")

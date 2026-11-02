@@ -766,7 +766,7 @@ def basic_texts():
             continue
         svc = and_list(s[:1].lower() + s[1:] for s in e['services_public'][:3])
         e['desc'] = 'Car workshop at %s.' % e['street']
-        e['lede'] = '%s is a car workshop at %s in %s. Its own website lists %s.' % (e['name'], e['street'], e['area_label'], svc)
+        e['lede'] = '%s is a car workshop at %s in %s. %s %s.' % (e['name'], e['street'], e['area_label'], 'It offers' if e['services_source'] == 'google_profile' else 'Its own website lists', svc)
         e['area_ctx'] = '%s is in the %s planning area, part of the %s region of Singapore.' % (e['area_label'], e['planning_area'], RN[e['region']])
 
 
@@ -808,7 +808,7 @@ def basic_page(e):
 <p class="fine">The WhatsApp and call buttons use the number the workshop publishes on its own pages. They only open a chat or call that you start; we never message workshops for you. Photos and reviews are on its Google Maps listing.</p>
 <h2>Services</h2>
 <ul class="tick svc-plain">{svcs}</ul>
-<p class="fine">From the workshop's own website.</p>
+<p class="fine">{'Typical services for this type of workshop; ask the workshop for details.' if e['services_source'] == 'google_profile' else "From the workshop's own website."}</p>
 <section id="find" class="findus"><h2>Find us</h2>
 <ul class="facts"><li data-addr>{ic('pin')}<span>{E(e['address_public'])}</span></li>{own_hours}</ul>
 {hours_box}
