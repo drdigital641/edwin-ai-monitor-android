@@ -1249,4 +1249,36 @@ ARTICLES = [
              ('Does a used ABS unit need coding after fitting?', 'On some makes and models a replacement unit has to be coded or matched to the car, and on others it does not. Ask before you agree, and give us your car model and chassis number so we can check.'),
              ('Is there a warranty?', 'Yes. Our repairs come with a 6-month warranty.')],
     ),
+    dict(
+        # 3 Nov 2026: warning-light meaning intent (ABS light vs red brake light). General verifiable knowledge, hedged to the
+        # owner's manual; client facts only (ABS pump and module repair, 6-month warranty, pick-up and delivery). No prices or times.
+        slug='abs-light-vs-brake-warning-light-difference', service='abs-pump-repair', date='2026-11-03', img_site=True,
+        title='ABS Light vs Brake Warning Light: The Difference | The ECU Clinic',
+        desc='ABS light or red brake light? What each warning means, which one means stop driving, and what to do when both are on together.',
+        h1='ABS Light vs Brake Warning Light: What Is the Difference?',
+        lead='Two different brake lights can show on your dashboard. Here is what each one means and when to stop driving.',
+        photo='abs-module-in-car', alt='ABS module in a car’s engine bay', share='abs-unit-engine-bay-2.jpg',
+        body='''<p><strong>Short answer:</strong> the ABS light, usually amber, means the car has found a fault in its anti-lock braking system, and your normal brakes usually still work. The red brake warning light is more serious. It can mean the parking brake is on, the brake fluid is low, or there is a problem in the brake system itself. If the red light stays on with the parking brake released, or both lights are on together, do not keep driving and get the car checked. Colours and symbols vary by car, so check your owner’s manual.</p>
+<h2>What does the ABS light mean?</h2>
+<p>The ABS (anti-lock braking system) light tells you the car has detected a fault in the anti-lock system. The usual brakes normally still work, but the anti-lock function may be switched off, so the wheels can lock in a hard stop, especially on a wet road. Drive gently, leave extra distance and get the fault code read. Common causes are listed in our guide to <a href="../abs-warning-light-causes/">ABS warning light on? Common causes</a>.</p>
+<h2>What does the red brake warning light mean?</h2>
+<p>The red BRAKE light (often a circle with an exclamation mark) is the car’s main brake warning. The simplest cause is the parking brake still being on. If it stays on after you release the parking brake, the usual suspects are a low brake fluid level or a fault in the brake hydraulics. The pedal may feel soft or go lower than normal. Treat this as a reason to stop driving, not a message to ignore.</p>
+<h2>What if both lights are on together?</h2>
+<p>Do not keep driving. With both lights on, the car may have lost some of its brake function, and the pedal may feel different. Stop in a safe place and have the car checked or towed. Do not rely on the brakes to behave as they normally do.</p>
+<h2>How do the two lights compare?</h2>
+<ul class="ticks">
+<li><strong>Amber ABS light only:</strong> anti-lock fault. Normal brakes usually work. Drive carefully and get the code read soon.</li>
+<li><strong>Red brake light only, parking brake released:</strong> possible low fluid or a brake system fault. Stop driving and get it checked.</li>
+<li><strong>Red brake light and ABS light together:</strong> stop driving and get the car checked.</li>
+<li><strong>Stability or traction control light as well as the ABS light:</strong> these systems often share the ABS unit and the wheel speed signals, so one fault can switch them all on. See <a href="../mercedes-abs-esp-light-on/">ABS and ESP lights on a Mercedes</a> for one example.</li>
+</ul>
+<h2>When does the fault point to the ABS pump or module?</h2>
+<p>When the scan shows the fault inside the ABS pump or module, rather than a sensor or wiring. That is the part of the system we repair. A red brake light caused by low fluid, a leak or worn brake parts is a job for a brake workshop, so we will tell you if what you describe does not look like an ABS unit fault. For what happens next, see <a href="../abs-pump-repair-or-used-or-reconditioned-unit/">repair, used or reconditioned unit</a>.</p>
+<h2>What should you send us?</h2>
+<p>WhatsApp us the car model, the chassis number and the fault code, with a photo of the dashboard or the scan tool screen if you have one. Our repairs come with a 6-month warranty, and our pick-up and delivery service can collect the car if you would rather not drive it.</p>''',
+        faq=[('Is the ABS light the same as the brake warning light?', 'No. The ABS light points to a fault in the anti-lock system, and the normal brakes usually still work. The red brake warning light can mean the parking brake is on, the fluid is low or the brake system has a fault, and it is more serious.'),
+             ('Can I drive with the ABS light on?', 'Often the normal brakes still work, but the anti-lock function may be off, so the wheels can lock in a hard stop. Drive gently, keep extra distance and get the fault code read soon. If the red brake light is on too, do not keep driving.'),
+             ('What should I do if the red brake light and ABS light are both on?', 'Stop in a safe place and do not keep driving. Both lights together can mean the brake system has lost some function, so have the car checked or towed.'),
+             ('Why are the ABS and traction control lights on together?', 'On many cars the ABS and the stability or traction control share one unit and the same wheel speed signals, so one fault can switch on all the lights. Reading the fault code shows where the fault is.')],
+    ),
 ]

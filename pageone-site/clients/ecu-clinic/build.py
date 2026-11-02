@@ -62,7 +62,7 @@ BIZ = {
     'postal': '415875',
     'map': 'Premier @ Kaki Bukit, 8 Kaki Bukit Avenue 4, Singapore 415875',
 }
-WA_TEXT = 'I need help with my car. Car model: \nChassis no.: \nFault code: '
+WA_TEXT = 'I need help with my car.\nCar plate: \nCar model: \nChassis no.: \nFault code: '
 # Every WhatsApp link opens with the page and the button the visitor tapped (Edwin, 16 Oct 2026), so Ching
 # can see which page brought the enquiry. wa_link leaves WA_PAGE_MARK in the text; page() swaps in the page name.
 WA_PAGE_MARK = '\x00P1PAGE\x00'
