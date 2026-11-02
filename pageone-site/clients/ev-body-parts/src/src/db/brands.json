@@ -1,0 +1,160 @@
+[
+ {
+  "key": "mg",
+  "name": "MG",
+  "alias": [
+   "mg",
+   "morris garages"
+  ],
+  "order": 1,
+  "status": "published"
+ },
+ {
+  "key": "tesla",
+  "name": "Tesla",
+  "alias": [
+   "tesla"
+  ],
+  "order": 2,
+  "status": "published"
+ },
+ {
+  "key": "maxus",
+  "name": "Maxus",
+  "alias": [
+   "maxus",
+   "saic maxus"
+  ],
+  "order": 3,
+  "status": "published"
+ },
+ {
+  "key": "chery",
+  "name": "Chery",
+  "alias": [
+   "chery",
+   "cherry"
+  ],
+  "order": 4,
+  "status": "published"
+ },
+ {
+  "key": "byd",
+  "name": "BYD",
+  "alias": [
+   "byd",
+   "b y d"
+  ],
+  "order": 5,
+  "status": "published"
+ },
+ {
+  "key": "gac",
+  "name": "GAC",
+  "alias": [
+   "aion",
+   "gac",
+   "gac motor",
+   "gac aion"
+  ],
+  "order": 6,
+  "status": "published"
+ },
+ {
+  "key": "xpeng",
+  "name": "XPeng",
+  "alias": [
+   "x peng",
+   "xiaopeng",
+   "xpeng"
+  ],
+  "order": 7,
+  "status": "published"
+ },
+ {
+  "key": "foton",
+  "name": "Foton",
+  "alias": [
+   "foton"
+  ],
+  "order": 8,
+  "status": "published"
+ },
+ {
+  "key": "geely",
+  "name": "Geely",
+  "alias": [
+   "geely"
+  ],
+  "order": 9,
+  "status": "published"
+ },
+ {
+  "key": "zeekr",
+  "name": "Zeekr",
+  "alias": [
+   "zeekr",
+   "zeker"
+  ],
+  "order": 10,
+  "status": "published"
+ },
+ {
+  "key": "omoda",
+  "name": "Omoda",
+  "alias": [
+   "omoda"
+  ],
+  "order": 11,
+  "status": "published"
+ },
+ {
+  "key": "jaecoo",
+  "name": "Jaecoo",
+  "alias": [
+   "jaecoo",
+   "jaeco"
+  ],
+  "order": 12,
+  "status": "published"
+ },
+ {
+  "key": "denza",
+  "name": "Denza",
+  "alias": [
+   "denza"
+  ],
+  "order": 13,
+  "status": "published"
+ },
+ {
+  "key": "deepal",
+  "name": "Deepal",
+  "alias": [
+   "deepal",
+   "changan deepal"
+  ],
+  "order": 14,
+  "status": "published"
+ },
+ {
+  "key": "avatr",
+  "name": "Avatr",
+  "alias": [
+   "avatar",
+   "avatr"
+  ],
+  "order": 15,
+  "status": "published"
+ },
+ {
+  "key": "ora",
+  "name": "Ora",
+  "alias": [
+   "ora",
+   "gwm ora"
+  ],
+  "order": 16,
+  "status": "published"
+ }
+]

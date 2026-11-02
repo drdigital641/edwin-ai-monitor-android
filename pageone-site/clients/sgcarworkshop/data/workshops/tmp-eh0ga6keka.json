@@ -1,0 +1,21 @@
+{
+ "schema_version": 1,
+ "slug": "tmp-eh0ga6keka",
+ "place_id": "ChIJ0QauCwcY2jEROEh0gA6KeKA",
+ "name": null,
+ "phones": [],
+ "status": "pending",
+ "tier": "basic",
+ "categories": [
+  "SERV"
+ ],
+ "services": [
+  "General servicing and repair"
+ ],
+ "services_source_url": "google_profile",
+ "google_screen": {
+  "passed": null,
+  "reason": "discovered 2026-11-02 (changi-loyang), waiting for the Google screen",
+  "checked_at": null
+ }
+}

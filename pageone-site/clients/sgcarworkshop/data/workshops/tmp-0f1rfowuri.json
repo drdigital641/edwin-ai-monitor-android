@@ -1,0 +1,22 @@
+{
+ "schema_version": 1,
+ "slug": "tmp-0f1rfowuri",
+ "place_id": "ChIJh7PPi4IX2jERt0f1RfOWuRI",
+ "name": null,
+ "phones": [],
+ "status": "pending",
+ "tier": "basic",
+ "categories": [
+  "SERV"
+ ],
+ "services": [
+  "General servicing and repair"
+ ],
+ "services_source_url": "google_profile",
+ "google_screen": {
+  "passed": false,
+  "reason": "Google profile has no SG mobile (landline only or no phone)",
+  "checked_at": "2026-11-02"
+ },
+ "place_id_checked_at": "2026-11-02"
+}

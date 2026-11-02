@@ -1,0 +1,21 @@
+{
+ "schema_version": 1,
+ "slug": "tmp-pboftudm2y",
+ "place_id": "ChIJ1Xz8T_QX2jERppboFTUdm2Y",
+ "name": null,
+ "phones": [],
+ "status": "pending",
+ "tier": "basic",
+ "categories": [
+  "SERV"
+ ],
+ "services": [
+  "General servicing and repair"
+ ],
+ "services_source_url": "google_profile",
+ "google_screen": {
+  "passed": null,
+  "reason": "discovered 2026-11-02 (ubi), waiting for the Google screen",
+  "checked_at": null
+ }
+}

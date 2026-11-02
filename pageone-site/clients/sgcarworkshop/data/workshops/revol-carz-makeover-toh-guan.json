@@ -1,0 +1,61 @@
+{
+ "schema_version": 1,
+ "slug": "revol-carz-makeover-toh-guan",
+ "place_id": "ChIJRVpQWW0Q2jER1_czMekW0uk",
+ "place_id_checked_at": "2026-11-02",
+ "name": "Revol Carz Makeover",
+ "name_source_url": "https://revol.com.sg/contact-us-revol",
+ "address": {
+  "block": "42",
+  "street": "Toh Guan Road East",
+  "unit": "#01-75",
+  "building": "Enterprise Hub"
+ },
+ "postal_code": "608583",
+ "address_source_url": "https://revol.com.sg/contact-us-revol",
+ "lat": 1.3365941,
+ "lng": 103.7534652,
+ "geo_source": "onemap",
+ "planning_area": "Jurong East",
+ "region": "west",
+ "estate": "toh-guan-jurong-east",
+ "categories": [
+  "BODY",
+  "DETL"
+ ],
+ "services": [
+  "Spray painting and respray",
+  "Insurance claim repairs",
+  "Ceramic coating",
+  "Grooming and detailing",
+  "Car wash"
+ ],
+ "services_source_url": "https://revol.com.sg/contact-us-revol",
+ "phones": [
+  {
+   "e164": "+6593229331",
+   "kind": "mobile",
+   "whatsapp": true,
+   "evidence": "Own page: the Toh Guan branch's WhatsApp link is wa.me/6593229331",
+   "source_url": "https://revol.com.sg/contact-us-revol",
+   "checked_at": "2026-11-02",
+   "source": "own_site"
+  }
+ ],
+ "website_url": "https://revol.com.sg/contact-us-revol",
+ "google_screen": {
+  "passed": true,
+  "reason": "Google profile shows a landline only; the business itself publishes this SG mobile as a wa.me link on its own site (Edwin 2 Nov 2026 fallback)",
+  "checked_at": "2026-11-02",
+  "mobile_from": "own_site"
+ },
+ "status": "active",
+ "tier": "basic",
+ "first_seen_at": "2026-11-02",
+ "last_verified_at": "2026-11-02",
+ "collector_version": "agent-v3",
+ "hours": {
+  "text": "Open daily 8:30am to 6:30pm. Closed Tuesdays and public holidays."
+ },
+ "hours_source_url": "https://revol.com.sg/contact-us-revol"
+}

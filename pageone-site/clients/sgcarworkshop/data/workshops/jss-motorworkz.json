@@ -1,0 +1,63 @@
+{
+ "schema_version": 1,
+ "slug": "jss-motorworkz",
+ "place_id": "ChIJeRLlTn4R2jEReZM-FkbmCwE",
+ "place_id_checked_at": "2026-11-02",
+ "name": "JSS Motorworkz",
+ "name_source_url": "https://sites.google.com/jssmotorworkz.com/about-us/home",
+ "address": {
+  "block": "48",
+  "street": "Toh Guan Road East",
+  "unit": "#02-140",
+  "building": "Enterprise Hub"
+ },
+ "postal_code": "608586",
+ "address_source_url": "https://sites.google.com/jssmotorworkz.com/about-us/home",
+ "lat": 1.3367737,
+ "lng": 103.7543622,
+ "geo_source": "onemap",
+ "planning_area": "Jurong East",
+ "region": "west",
+ "estate": "toh-guan-jurong-east",
+ "categories": [
+  "SERV",
+  "GEAR",
+  "BODY"
+ ],
+ "services": [
+  "General servicing and maintenance",
+  "Engine and gearbox repair and overhaul",
+  "Aircon servicing and overhaul",
+  "Tyres, wheels and alignment",
+  "Walnut blasting",
+  "Accident repair and spray painting"
+ ],
+ "services_source_url": "https://sites.google.com/jssmotorworkz.com/about-us/home",
+ "email": "sales@jssmotorworkz.com",
+ "phones": [
+  {
+   "e164": "+6583231517",
+   "kind": "mobile",
+   "whatsapp": true,
+   "source": "google_profile",
+   "checked_at": "2026-11-02"
+  }
+ ],
+ "website_url": "https://sites.google.com/jssmotorworkz.com/about-us/home",
+ "facebook_url": "https://www.facebook.com/jssmotorworkz",
+ "instagram_url": "https://www.instagram.com/jss_motorworkz/",
+ "hours": {
+  "text": "Mon to Sat 10am to 7pm. Closed on Sundays and public holidays."
+ },
+ "hours_source_url": "https://sites.google.com/jssmotorworkz.com/about-us/home",
+ "google_screen": {
+  "passed": true,
+  "reason": "OPERATIONAL, car repair, SG mobile on Google profile",
+  "checked_at": "2026-11-02"
+ },
+ "status": "active",
+ "tier": "basic",
+ "first_seen_at": "2026-11-01",
+ "last_verified_at": "2026-11-02",
+ "collector_version": "agent-v3"
+}

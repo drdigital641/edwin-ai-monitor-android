@@ -1,0 +1,21 @@
+{
+ "schema_version": 1,
+ "slug": "tmp-_svpetm0my",
+ "place_id": "ChIJg0esmhET2jERa_svPETM0mY",
+ "name": null,
+ "phones": [],
+ "status": "pending",
+ "tier": "basic",
+ "categories": [
+  "SERV"
+ ],
+ "services": [
+  "General servicing and repair"
+ ],
+ "services_source_url": "google_profile",
+ "google_screen": {
+  "passed": null,
+  "reason": "discovered 2026-11-02 (woodlands), waiting for the Google screen",
+  "checked_at": null
+ }
+}

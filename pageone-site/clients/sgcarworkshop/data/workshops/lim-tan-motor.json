@@ -1,0 +1,60 @@
+{
+ "schema_version": 1,
+ "slug": "lim-tan-motor",
+ "place_id": "ChIJUfxiDSQX2jERmXeECgnr7qU",
+ "place_id_checked_at": "2026-11-02",
+ "name": "Lim Tan Motor",
+ "name_source_url": "https://ltm.sg",
+ "address": {
+  "block": "176",
+  "street": "Sin Ming Drive",
+  "unit": "#03-09",
+  "building": "Sin Ming Autocare"
+ },
+ "postal_code": "575721",
+ "address_source_url": "https://ltm.sg",
+ "lat": 1.3609019,
+ "lng": 103.839928,
+ "geo_source": "onemap",
+ "planning_area": "Bishan",
+ "region": "central",
+ "estate": "sin-ming-bishan",
+ "categories": [
+  "SERV",
+  "BODY"
+ ],
+ "services": [
+  "Diagnostic checks",
+  "Brake repair",
+  "Aircon repair and maintenance",
+  "Batteries",
+  "Wheel alignment",
+  "EV servicing and repair",
+  "Accident repairs and spray painting"
+ ],
+ "services_source_url": "https://ltm.sg",
+ "phones": [
+  {
+   "e164": "+6588019393",
+   "kind": "mobile",
+   "whatsapp": true,
+   "source": "google_profile",
+   "checked_at": "2026-11-02"
+  }
+ ],
+ "website_url": "https://ltm.sg",
+ "google_screen": {
+  "passed": true,
+  "reason": "OPERATIONAL, car repair, SG mobile on Google profile",
+  "checked_at": "2026-11-02"
+ },
+ "status": "active",
+ "tier": "basic",
+ "first_seen_at": "2026-11-02",
+ "last_verified_at": "2026-11-02",
+ "collector_version": "agent-v3",
+ "hours": {
+  "text": "Mon to Fri 9am to 6pm, Sat 9am to 1pm. Closed Sundays and public holidays."
+ },
+ "hours_source_url": "https://ltm.sg"
+}
