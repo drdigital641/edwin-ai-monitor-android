@@ -17,14 +17,14 @@ Last updated: 2026-11-01
 ## Areas (regions)
 - [North](https://sgcarworkshop.sg/areas/north/): Car workshops and car services in the North region of Singapore, covering Woodlands, Kranji, Yishun and the Sembawang and Admiralty areas.
 - [North-East](https://sgcarworkshop.sg/areas/north-east/): Car workshops and car services in the North-East region of Singapore, covering Ang Mo Kio, Serangoon North, Defu and Hougang, and Sengkang.
-- [East](https://sgcarworkshop.sg/areas/east/): Car workshops and car services in the East region of Singapore, covering Kaki Bukit, Ubi, Eunos, Bedok North and the Changi and Loyang areas.
+- [East](https://sgcarworkshop.sg/areas/east/): Car workshops and car services in the East region of Singapore, covering Kaki Bukit, Bedok North and the Changi and Loyang areas.
 - [West](https://sgcarworkshop.sg/areas/west/): Car workshops and car services in the West region of Singapore, covering Toh Guan and Jurong East, Jurong West, Pandan Loop, Bukit Batok and Tuas.
-- [Central](https://sgcarworkshop.sg/areas/central/): Car workshops and car services in the Central region of Singapore, covering Sin Ming and Bishan, Toa Payoh, MacPherson, Jalan Besar and Kallang Bahru, and Alexandra and Bukit Merah.
+- [Central](https://sgcarworkshop.sg/areas/central/): Car workshops and car services in the Central region of Singapore, covering Sin Ming and Bishan, Toa Payoh, Ubi, Eunos, MacPherson, Jalan Besar and Kallang Bahru, and Alexandra and Bukit Merah.
 - [Mobile (island-wide)](https://sgcarworkshop.sg/areas/mobile/): Mobile car services that come to your car anywhere in Singapore. These listings have no single shopfront, so the work is done where your car is parked.
 
 ## Estates and industrial areas
 - [Kaki Bukit](https://sgcarworkshop.sg/areas/kaki-bukit/): Kaki Bukit is an industrial estate in the East region, around Kaki Bukit Avenue and Kaki Bukit Road, with many workshops, trade units and parts suppliers. 14 listings.
-- [Ubi](https://sgcarworkshop.sg/areas/ubi/): Ubi is an industrial area near Paya Lebar, around Ubi Avenue and Ubi Road, with motor workshops mixed in among light industry. 1 listing.
+- [Ubi](https://sgcarworkshop.sg/areas/ubi/): Ubi is an industrial area near Paya Lebar in the Geylang planning area (Central region), around Ubi Avenue and Ubi Road, with motor workshops mixed in among light industry. 1 listing.
 - [Woodlands](https://sgcarworkshop.sg/areas/woodlands/): Woodlands is the main industrial area in the north-west, around Woodlands Industrial Park and the Woodlands Avenue roads, close to the Causeway. 1 listing.
 - [Kranji](https://sgcarworkshop.sg/areas/kranji/): Kranji is an industrial area in the north-west, around Kranji Way, Jalan Lam Huat and Sungei Kadut. 1 listing.
 - [Yishun](https://sgcarworkshop.sg/areas/yishun/): Yishun has two main motor trade clusters, Yishun Industrial Park A and the Yishun Industrial Street 1 area around North Spring Bizhub. 2 listings.

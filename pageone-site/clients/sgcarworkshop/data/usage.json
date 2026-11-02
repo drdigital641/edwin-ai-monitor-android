@@ -1,6 +1,6 @@
 {
  "2026-11-02": {
-  "text_search": 7,
+  "text_search": 8,
   "details": 29,
   "note": "manual searches this session (IDs-only text searches, 1 Details = Chen Jin screen); later Details calls returned HTTP 429, quota used up"
  }

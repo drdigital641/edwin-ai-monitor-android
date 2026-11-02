@@ -16,5 +16,53 @@
   "state": "staged",
   "slug": "lim-tan-motor",
   "date": "2026-11-02"
+ },
+ "ChIJm2-2tu8X2jERPY7NKfke7Cc": {
+  "estate": "kaki-bukit",
+  "cat": "SERV",
+  "state": "staged",
+  "date": "2026-11-02"
+ },
+ "ChIJzVwf8r4X2jERBK_567anBU8": {
+  "estate": "kaki-bukit",
+  "cat": "SERV",
+  "state": "staged",
+  "date": "2026-11-02"
+ },
+ "ChIJPbPX2-EX2jERM94Mavnf8TE": {
+  "estate": "kaki-bukit",
+  "cat": "SERV",
+  "state": "discovered",
+  "date": "2026-11-02"
+ },
+ "ChIJ_cyRNeIX2jER4rrQtPyP-bg": {
+  "estate": "kaki-bukit",
+  "cat": "SERV",
+  "state": "discovered",
+  "date": "2026-11-02"
+ },
+ "ChIJCYPTl-EX2jERnZci9GlkmC8": {
+  "estate": "kaki-bukit",
+  "cat": "SERV",
+  "state": "discovered",
+  "date": "2026-11-02"
+ },
+ "ChIJtxlrJe4X2jERMTrVxSXNFlo": {
+  "estate": "kaki-bukit",
+  "cat": "SERV",
+  "state": "discovered",
+  "date": "2026-11-02"
+ },
+ "ChIJERo5wF0X2jERIbyXBYKAe-I": {
+  "estate": "kaki-bukit",
+  "cat": "SERV",
+  "state": "discovered",
+  "date": "2026-11-02"
+ },
+ "ChIJI9IB76cX2jEROy3zYlORbtQ": {
+  "estate": "kaki-bukit",
+  "cat": "SERV",
+  "state": "discovered",
+  "date": "2026-11-02"
  }
 }

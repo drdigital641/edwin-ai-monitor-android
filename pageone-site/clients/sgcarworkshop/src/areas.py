@@ -21,9 +21,9 @@ REGION_ORDER = ['north', 'north-east', 'east', 'west', 'central', 'mobile']
 REGION_INTRO = {
     'north': 'Car workshops and car services in the North region of Singapore, covering Woodlands, Kranji, Yishun and the Sembawang and Admiralty areas.',
     'north-east': 'Car workshops and car services in the North-East region of Singapore, covering Ang Mo Kio, Serangoon North, Defu and Hougang, and Sengkang.',
-    'east': 'Car workshops and car services in the East region of Singapore, covering Kaki Bukit, Ubi, Eunos, Bedok North and the Changi and Loyang areas.',
+    'east': 'Car workshops and car services in the East region of Singapore, covering Kaki Bukit, Bedok North and the Changi and Loyang areas.',
     'west': 'Car workshops and car services in the West region of Singapore, covering Toh Guan and Jurong East, Jurong West, Pandan Loop, Bukit Batok and Tuas.',
-    'central': 'Car workshops and car services in the Central region of Singapore, covering Sin Ming and Bishan, Toa Payoh, MacPherson, Jalan Besar and Kallang Bahru, and Alexandra and Bukit Merah.',
+    'central': 'Car workshops and car services in the Central region of Singapore, covering Sin Ming and Bishan, Toa Payoh, Ubi, Eunos, MacPherson, Jalan Besar and Kallang Bahru, and Alexandra and Bukit Merah.',
     'mobile': 'Mobile car services that come to your car anywhere in Singapore. These listings have no single shopfront, so the work is done where your car is parked.',
 }
 
@@ -35,10 +35,10 @@ _E = [
     # ---- East
     ('kaki-bukit', 'Kaki Bukit', 'east', 1.3345, 103.9050, ['ubi', 'eunos', 'bedok-north'], ['415', '416', '417'], ['kaki bukit'],
      'Kaki Bukit is an industrial estate in the East region, around Kaki Bukit Avenue and Kaki Bukit Road, with many workshops, trade units and parts suppliers.'),
-    ('ubi', 'Ubi', 'east', 1.3300, 103.8970, ['kaki-bukit', 'eunos', 'macpherson'], ['408'], ['ubi ave', 'ubi road', 'ubi rd', 'paya ubi'],
-     'Ubi is an industrial area near Paya Lebar, around Ubi Avenue and Ubi Road, with motor workshops mixed in among light industry.'),
-    ('eunos', 'Eunos', 'east', 1.3190, 103.9040, ['ubi', 'kaki-bukit', 'bedok-north'], ['400', '401', '402', '403', '404', '405', '406', '407', '409'], ['eunos'],
-     'Eunos is a mixed residential and industrial area in the East region, close to Paya Lebar, Ubi and Kaki Bukit.'),
+    ('ubi', 'Ubi', 'central', 1.3300, 103.8970, ['kaki-bukit', 'eunos', 'macpherson'], ['408'], ['ubi ave', 'ubi road', 'ubi rd', 'paya ubi'],
+     'Ubi is an industrial area near Paya Lebar in the Geylang planning area (Central region), around Ubi Avenue and Ubi Road, with motor workshops mixed in among light industry.'),
+    ('eunos', 'Eunos', 'central', 1.3190, 103.9040, ['ubi', 'kaki-bukit', 'bedok-north'], ['400', '401', '402', '403', '404', '405', '406', '407', '409'], ['eunos'],
+     'Eunos is a mixed residential and industrial area in the Geylang planning area (Central region), close to Paya Lebar, Ubi and Kaki Bukit.'),
     ('bedok-north', 'Bedok North', 'east', 1.3350, 103.9310, ['kaki-bukit', 'eunos', 'changi-loyang'], ['46'], ['bedok north'],
      'Bedok North is an industrial pocket in the East region, around Bedok North Avenue and Bedok North Street.'),
     ('changi-loyang', 'Changi and Loyang', 'east', 1.3480, 103.9720, ['bedok-north', 'kaki-bukit'], ['486', '49', '50'], ['loyang', 'changi'],

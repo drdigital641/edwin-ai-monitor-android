@@ -18,6 +18,7 @@ COMMANDS  (PLACES_SERVER_KEY in the environment; never written anywhere)
             Pass = OPERATIONAL + car-repair primaryType + SG mobile on Google that equals the stored own-source mobile -> status "active". Otherwise the record
             stays pending with passed false and the reason (no Google data kept) and the place_id goes to data/pending.json.
   resume                                      same as screen: picks up the queue where the daily cap stopped it.
+  daily     [--max-places 25] [--max-search 60]  Whole daily run: free IDs-only discovery over every estate x car-repair category, stubs, then the screen (never above 30 Details/day), PROGRESS.md.
   closed    --refresh                         (monthly) re-screen live records; CLOSED_PERMANENTLY -> status "closed" (hidden at next build), flagged in the report.
 Daily cap: --max-places (default 25) Details calls per UTC day, tracked in data/usage.json; HTTP 429 stops the run cleanly and the rest stays queued.
 After any run: python3 build.py && python3 check.py, commit, sync.
@@ -139,7 +140,7 @@ def screen(a, key):
     sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
     global DATA_MOD
     import data as DATA_MOD
-    u, ut = usage_today(); wd = os.path.join(DATA, 'workshops'); out = []
+    u, ut = usage_today(); wd = os.path.join(DATA, 'workshops'); out = []; start = ut['details']
     pend = jload('pending.json', [])
     for f in sorted(os.listdir(wd)):
         r = json.load(open(os.path.join(wd, f)))
@@ -147,7 +148,9 @@ def screen(a, key):
         need_id = gs.get('passed') is True and not r.get('name')   # passed earlier, identity still missing
         if r['status'] != 'pending' or (gs.get('passed') is not None and not need_id):
             continue
-        if ut['details'] >= a.max_places:
+        if r['place_id'] in REMOVED_IDS():
+            out.append((r['slug'], 'in removed.json: never live')); continue
+        if ut['details'] - start >= a.max_places or ut['details'] >= HARD_CAP:
             out.append((r['slug'], 'daily cap reached, stays queued')); continue
         ut['details'] += 1
         try:
@@ -174,6 +177,7 @@ def screen(a, key):
             r['address_source_url'] = 'google_profile'; r['address_checked_at'] = TODAY
             r.setdefault('categories', ['SERV']); r.setdefault('services', ['General servicing and repair']); r.setdefault('services_source_url', 'google_profile')
             r.setdefault('first_seen_at', TODAY); r.setdefault('last_verified_at', TODAY); r.setdefault('collector_version', 'agent-v4')
+            auto_place(r)
         if why is None:
             r['phones'] = [p for p in r.get('phones', []) if p['e164'] != gm] + [{'e164': gm, 'kind': 'mobile', 'whatsapp': True, 'source': 'google_profile', 'checked_at': TODAY}]
             r['status'] = 'active'
@@ -184,12 +188,112 @@ def screen(a, key):
                 state = 'active'
         else:
             pend.append({'place_id': r['place_id'], 'slug': r['slug'], 'reason': why, 'date': TODAY})
+        if why is None and r['slug'].startswith('tmp-') and r.get('name'):
+            new = unique_slug(r['name']); os.remove(os.path.join(wd, f)); r['slug'] = new; f = new + '.json'
         jsave('workshops/%s' % f, r); out.append((r['slug'], state if why is None else 'pending: ' + why))
     q = jload('queue.json', {})
     for s, _ in out:
         pass
     jsave('pending.json', pend); jsave('usage.json', u)
     print(json.dumps({'results': out, 'details_calls_today': ut['details']}, indent=1))
+
+
+HARD_CAP = 30   # the project's Place Details quota per day; never exceeded (Edwin, 2 Nov 2026)
+PA_BY_ESTATE = {'kaki-bukit': 'Bedok', 'ubi': 'Geylang', 'eunos': 'Geylang', 'bedok-north': 'Bedok', 'woodlands': 'Woodlands', 'kranji': 'Sungei Kadut',
+                'yishun': 'Yishun', 'ang-mo-kio': 'Ang Mo Kio', 'serangoon-north': 'Serangoon', 'defu-hougang': 'Hougang', 'sengkang': 'Sengkang',
+                'sin-ming-bishan': 'Bishan', 'toa-payoh': 'Toa Payoh', 'macpherson': 'Geylang', 'alexandra-bukit-merah': 'Bukit Merah',
+                'toh-guan-jurong-east': 'Jurong East', 'jurong-west': 'Jurong West', 'pandan-loop': 'Clementi', 'bukit-batok': 'Bukit Batok', 'tuas': 'Tuas'}
+# URA Master Plan 2019 (checked 2 Nov 2026). Estates that span two planning areas (changi-loyang, sembawang-admiralty, jalan-besar-kallang-bahru) are left for a manual fix.
+QUERIES = [('car workshop', 'SERV'), ('car servicing and repair', 'SERV'), ('car aircon repair', 'SERV'), ('car spray painting and bodywork', 'BODY'),
+           ('gearbox repair', 'GEAR'), ('car ECU repair', 'ECU'), ('car battery replacement', 'BATT'), ('car detailing', 'DETL'), ('car wrap and PPF', 'WRAP')]
+DEFAULT_SERVICES = {'SERV': 'General servicing and repair', 'BODY': 'Spray painting and bodywork', 'GEAR': 'Gearbox repair', 'ECU': 'ECU and module repair',
+                    'BATT': 'Car battery replacement', 'DETL': 'Car detailing', 'WRAP': 'Car wrap and PPF', 'PART': 'Car parts'}
+
+
+def REMOVED_IDS():
+    return {r['place_id'] if isinstance(r, dict) else r for r in jload('removed.json', [])}
+
+
+def unique_slug(name):
+    base = re.sub(r'-+', '-', re.sub(r'[^a-z0-9]+', '-', name.lower())).strip('-')[:60] or 'workshop'
+    wd = os.path.join(DATA, 'workshops'); s, n = base, 2
+    while os.path.exists(os.path.join(wd, s + '.json')):
+        s = '%s-%d' % (base, n); n += 1
+    return s
+
+
+def auto_place(r):
+    """Fill estate, planning area, region and OneMap coordinates when they are unambiguous; otherwise the record stays hidden for a manual fix."""
+    import areas
+    est = areas.estate_for(r['address']['street'], r.get('postal_code'))
+    if est and est in PA_BY_ESTATE:
+        r['estate'] = est; r['planning_area'] = PA_BY_ESTATE[est]; r['region'] = areas.ESTATES[est]['region']
+    try:
+        r['lat'], r['lng'] = geocode(r['postal_code']); r['geo_source'] = 'onemap'
+    except Exception:
+        pass   # OneMap unreachable from this host: the daily session fills lat/lng with WebFetch
+
+
+def make_stubs(limit):
+    """Turn discovered ids (data/queue.json) into screen-only stubs. Only the place_id, the search category and the area are kept."""
+    q = jload('queue.json', {}); wd = os.path.join(DATA, 'workshops'); n = 0
+    have = {json.load(open(os.path.join(wd, f)))['place_id'] for f in os.listdir(wd)}
+    for pid, v in list(q.items()):
+        if n >= limit: break
+        if v.get('state') != 'discovered' or pid in have or pid in REMOVED_IDS(): continue
+        cat = v.get('cat', 'SERV')
+        r = {'schema_version': 1, 'slug': 'tmp-' + re.sub(r'\W', '', pid)[-10:].lower(), 'place_id': pid, 'name': None, 'phones': [], 'status': 'pending', 'tier': 'basic',
+             'categories': [cat], 'services': [DEFAULT_SERVICES[cat]], 'services_source_url': 'google_profile',
+             'google_screen': {'passed': None, 'reason': 'discovered %s (%s), waiting for the Google screen' % (TODAY, v.get('estate')), 'checked_at': None}}
+        jsave('workshops/%s.json' % r['slug'], r); v['state'] = 'staged'; n += 1
+    jsave('queue.json', q); return n
+
+
+def daily(a, key):
+    """Daily run (Edwin 2 Nov 2026): IDs-only discovery (free), stubs, then up to 25 Place Details (never above the 30/day project quota)."""
+    import areas
+    u, ut = usage_today(); prog = jload('progress.json', {'cursor': 0, 'days': {}})
+    combos = [(sl, qq, cc) for qq, cc in QUERIES for sl in areas.ESTATES]
+    q = jload('queue.json', {}); skip = known_ids(); new = 0; searches = 0
+    pending_stubs = sum(1 for v in q.values() if v.get('state') == 'discovered')
+    while searches < a.max_search and pending_stubs + new < a.max_places * 3 and prog['cursor'] < len(combos) * 100:
+        sl, qq, cc = combos[prog['cursor'] % len(combos)]; prog['cursor'] += 1; est = areas.ESTATES[sl]; searches += 1; ut['text_search'] += 1
+        body = {'textQuery': '%s %s' % (qq, est['name']), 'regionCode': 'SG', 'pageSize': 20,
+                'locationBias': {'circle': {'center': {'latitude': est['lat'], 'longitude': est['lon']}, 'radius': 2500.0}}}
+        try:
+            res = gcall(API + 'places:searchText', key, 'places.id', body).get('places', [])
+        except urllib.error.HTTPError as e:
+            print('text search stopped: HTTP', e.code); break
+        for p in res:
+            if p['id'] not in skip and p['id'] not in REMOVED_IDS():
+                q[p['id']] = {'estate': sl, 'cat': cc, 'state': 'discovered', 'date': TODAY}; skip.add(p['id']); new += 1
+    jsave('queue.json', q)
+    staged = make_stubs(a.max_places)
+    jsave('usage.json', u); jsave('progress.json', prog)
+    a.max_places = min(a.max_places, HARD_CAP)
+    before = dict(ut)
+    screen(a, key)
+    summarize(prog)
+
+
+def summarize(prog):
+    wd = os.path.join(DATA, 'workshops'); live = held = 0; hidden = {}
+    for f in os.listdir(wd):
+        r = json.load(open(os.path.join(wd, f))); gs = r.get('google_screen') or {}
+        if r['status'] == 'active': live += 1
+        elif gs.get('passed') is True: held += 1
+        elif gs.get('passed') is False:
+            k = gs.get('reason') or 'other'; hidden[k] = hidden.get(k, 0) + 1
+    u = jload('usage.json', {}); q = jload('queue.json', {})
+    waiting = sum(1 for f in os.listdir(wd) if (json.load(open(os.path.join(wd, f))).get('google_screen') or {}).get('passed') is None)
+    prog['days'][TODAY] = {'details_calls': u.get(TODAY, {}).get('details', 0), 'text_searches': u.get(TODAY, {}).get('text_search', 0), 'live_total': live,
+                           'passed_waiting_for_estate_or_geo': held, 'waiting_to_screen': waiting, 'hidden_by_reason': hidden, 'discovered_ids_total': len(q), 'search_cursor': prog['cursor']}
+    jsave('progress.json', prog)
+    lines = ['# SG Car Workshop screening progress', '', 'Updated %s. Live Basic listings: %d. Passed but hidden (need estate/geo): %d. Waiting to screen: %d.' % (TODAY, live, held, waiting), '',
+             '| Date | Place Details calls | Text searches (free) | Live total | Hidden by reason |', '|---|---|---|---|---|']
+    for d, v in sorted(prog['days'].items()):
+        lines.append('| %s | %s | %s | %s | %s |' % (d, v['details_calls'], v['text_searches'], v['live_total'], '; '.join('%s: %d' % kv for kv in v['hidden_by_reason'].items()) or '-'))
+    open(os.path.join(ROOT, 'PROGRESS.md'), 'w').write('\n'.join(lines) + '\n')
 
 
 def refresh_closed(a, key):
@@ -211,13 +315,14 @@ def main():
     for k in ('place-id', 'slug', 'estate', 'planning-area', 'categories', 'name', 'street', 'postal', 'services'): s.add_argument('--' + k, required=True)
     for k in ('block', 'unit', 'building', 'facebook', 'hours', 'evidence'): s.add_argument('--' + k, default='')
     s.add_argument('--own-url', action='append', required=True); s.add_argument('--snapshot-file', action='append', default=[]); s.add_argument('--mobile', action='append', default=[]); s.add_argument('--lat', type=float); s.add_argument('--lng', type=float)
+    dd = sub.add_parser('daily'); dd.add_argument('--max-places', type=int, default=25); dd.add_argument('--max-search', type=int, default=60)
     for c in ('screen', 'resume', 'closed'):
         x = sub.add_parser(c); x.add_argument('--max-places', type=int, default=25); x.add_argument('--refresh', action='store_true')
     a = ap.parse_args()
     a.__dict__['place_id'] = a.__dict__.get('place_id'); a.__dict__['planning_area'] = a.__dict__.get('planning_area')
     key = os.environ.get('PLACES_SERVER_KEY')
-    if a.cmd in ('discover', 'screen', 'resume', 'closed') and not key: sys.exit('Set PLACES_SERVER_KEY in the environment (server key, Places API New only).')
-    {'discover': lambda: discover(a, key), 'stage': lambda: stage(a), 'screen': lambda: screen(a, key), 'resume': lambda: screen(a, key), 'closed': lambda: refresh_closed(a, key)}[a.cmd]()
+    if a.cmd in ('discover', 'screen', 'resume', 'closed', 'daily') and not key: sys.exit('Set PLACES_SERVER_KEY in the environment (server key, Places API New only).')
+    {'discover': lambda: discover(a, key), 'stage': lambda: stage(a), 'screen': lambda: screen(a, key), 'resume': lambda: screen(a, key), 'closed': lambda: refresh_closed(a, key), 'daily': lambda: daily(a, key)}[a.cmd]()
 
 
 if __name__ == '__main__':

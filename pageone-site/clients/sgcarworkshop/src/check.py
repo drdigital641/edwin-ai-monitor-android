@@ -90,7 +90,9 @@ for e, r in rows:
     elif e['tier'] == 'premium_leadgen' and wei:
         for c in FEAT:   # Premium must reach Verified's level (capped at the thresholds below: 3 photos, 3 services, 3 FAQs, 1 gallery item)
             need = min(wei[c], MINIMUM[c])
-            if r[c] < need: notes.append('Premium %s %s < Verified minimum %s' % (c, r[c], need))
+            have = r[c]
+            if c == 'photos' and e.get('category') == 'car-parts': have = max(have, r['gallery'])   # parts shop: its catalogue part images count as pictures when no shop photos exist
+            if have < need: notes.append('Premium %s %s < Verified minimum %s' % (c, r[c], need))
         for c in ('contact', 'address', 'map', 'rating', 'both_buttons'):
             if wei[c] and not r[c]: notes.append('Premium missing ' + c)
     elif e['tier'] == 'premium':

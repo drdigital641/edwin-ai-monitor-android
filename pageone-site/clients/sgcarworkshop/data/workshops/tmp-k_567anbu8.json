@@ -1,0 +1,21 @@
+{
+ "schema_version": 1,
+ "slug": "tmp-k_567anbu8",
+ "place_id": "ChIJzVwf8r4X2jERBK_567anBU8",
+ "name": null,
+ "phones": [],
+ "status": "pending",
+ "tier": "basic",
+ "categories": [
+  "SERV"
+ ],
+ "services": [
+  "General servicing and repair"
+ ],
+ "services_source_url": "google_profile",
+ "google_screen": {
+  "passed": null,
+  "reason": "discovered 2026-11-02 (kaki-bukit), waiting for the Google screen",
+  "checked_at": null
+ }
+}

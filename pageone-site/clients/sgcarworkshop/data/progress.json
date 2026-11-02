@@ -1,0 +1,18 @@
+{
+ "cursor": 1,
+ "days": {
+  "2026-11-02": {
+   "details_calls": 29,
+   "text_searches": 8,
+   "live_total": 16,
+   "passed_waiting_for_estate_or_geo": 0,
+   "waiting_to_screen": 2,
+   "hidden_by_reason": {
+    "Google profile has no SG mobile (landline only or no phone)": 10,
+    "primaryType is not car repair": 1
+   },
+   "discovered_ids_total": 11,
+   "search_cursor": 1
+  }
+ }
+}
