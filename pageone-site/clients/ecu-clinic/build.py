@@ -647,7 +647,7 @@ def not_found():
 <a class="btn btn-line" href="/services/abs-pump-repair/">ABS pump repair</a>
 <a class="btn btn-line" href="/articles/">Articles</a>
 <a class="btn btn-wa" href="{wa_link(cta="Page not found")}" target="_blank" rel="noopener">WhatsApp {BIZ["tel_disp"]}</a></div>
-</div></section></main></body></html>
+</div></section></main><script src="/ecu.js?v={JS_V}" defer></script></body></html>
 '''.replace(quote(WA_PAGE_MARK), quote('Page not found'))
 
 
