@@ -1,0 +1,22 @@
+name: Klar 301 check
+
+on:
+  push:
+    branches: [ "claude/project-thread-zbfrt7" ]
+    paths: [ ".github/workflows/klar-301-check.yml" ]
+
+jobs:
+  check:
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+      - name: Old URLs and health checks
+        run: |
+          UA="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 Chrome/130.0 Safari/537.36"
+          while read -r u; do
+            [ -z "$u" ] && continue
+            r=$(curl -s -o /dev/null -A "$UA" -m 20 -w "%{http_code} -> %{redirect_url}" "$u")
+            f=$(curl -s -o /dev/null -L -A "$UA" -m 20 -w "%{http_code} hops=%{num_redirects}" "$u")
+            echo "CHK $u  $r  | final $f"
+          done < .github/probe/urls/klar.txt
+          echo "CHK 404 test: $(curl -s -o /dev/null -w '%{http_code}' https://klardetails.com.sg/no-such-page-xyz-999/)"
