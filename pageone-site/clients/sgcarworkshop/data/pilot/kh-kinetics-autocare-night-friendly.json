@@ -1,25 +1,49 @@
 {
- "lede": "KH Kinetics Autocare is a car workshop listed on Google Maps for general servicing and repair. Details such as makes and specialities were not found in public sources, so please ask the workshop directly.",
+ "lede": "KH Kinetics Autocare is a car workshop at Synergy@KB, 25 Kaki Bukit Road 4, that offers evening-friendly appointments. Its Carousell listings cover servicing, diagnosis, brakes, aircon, suspension and walnut blasting for all makes.",
  "chips": [
-  "General servicing and repair"
+  "Evening-friendly",
+  "OBD diagnosis",
+  "Walnut blasting"
  ],
  "services": [
-  "General servicing and repair"
+  "Servicing and engine oil",
+  "OBD diagnosis",
+  "ATF and CVT service",
+  "Brake pads, rotors and fluid flush",
+  "Aircon and compressor",
+  "Alternator and battery",
+  "Lower arm, absorbers, steering rack and mountings",
+  "Headlights",
+  "Walnut blasting",
+  "Engine and coolant flush"
  ],
+ "good_for": [
+  "Drivers who can only come after work",
+  "All makes, per its listings"
+ ],
+ "good_for_note": "Appointment-based. Please message to arrange a slot.",
  "faqs": [
   [
-   "What does KH Kinetics Autocare do?",
-   "Its Google Maps listing describes it as a workshop for general servicing and repair."
+   "Can I book outside office hours?",
+   "Its listings describe evening-friendly slots by appointment. Message the workshop to arrange one."
   ],
   [
    "Which cars does it work on?",
-   "This was not found in public sources. Please ask the workshop when you message."
+   "Its listings say all makes."
+  ],
+  [
+   "Does it do diagnosis?",
+   "OBD diagnosis is listed."
+  ],
+  [
+   "Does it do walnut blasting?",
+   "Yes, walnut blasting is listed among its services."
   ],
   [
    "What are the opening hours?",
    "Please see Google Maps for current hours."
   ]
  ],
- "sources": "its Google Maps listing",
+ "sources": "its Carousell listings and public business records",
  "stories": []
 }

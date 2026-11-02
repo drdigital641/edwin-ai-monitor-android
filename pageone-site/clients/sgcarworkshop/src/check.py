@@ -134,7 +134,8 @@ for e in ENTRIES:
                 if not su.startswith('https://'): print('PILOT story must link to the original post', e['slug']); bad += 1
             fj = os.path.join(root, '..', 'data', 'facts', e['slug'] + '.json')
             fs = json.load(open(fj))['stories'] if os.path.exists(fj) else []
-            if sorted(re.findall(r'<article class="story">.*?href="([^"]+)"', pg, re.S)) != sorted(x['source_url'] for x in fs): print('PILOT stories must match the fact file source URLs', e['slug']); bad += 1
+            import html as _h
+            if sorted(_h.unescape(u) for u in re.findall(r'<article class="story">.*?href="([^"]+)"', pg, re.S)) != sorted(x['source_url'] for x in fs): print('PILOT stories must match the fact file source URLs', e['slug']); bad += 1
         wa = re.findall(r'wa\.me/(\d+)', pg)
         if not wa or set(wa) != {str(e['whatsapp'])}: print('PILOT WhatsApp must be the stored mobile only', e['slug']); bad += 1
         tels = set(re.findall(r'tel:(\+\d+)', pg))

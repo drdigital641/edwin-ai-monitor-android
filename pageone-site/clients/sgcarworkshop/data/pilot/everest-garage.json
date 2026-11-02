@@ -1,25 +1,47 @@
 {
- "lede": "Everest Garage is a car workshop listed on Google Maps for general servicing and repair. Details such as makes and specialities were not found in public sources, so please ask the workshop directly.",
+ "lede": "Everest Garage is a Ford Everest specialist at Synergy@KB, 25 Kaki Bukit Road 4. Its website says it is dedicated to Ford Everest maintenance and has handled more than 6,000 Everests.",
  "chips": [
-  "General servicing and repair"
+  "Ford Everest maintenance",
+  "Heavy maintenance",
+  "Intake and EGR cleaning"
  ],
  "services": [
-  "General servicing and repair"
+  "Regular maintenance, yearly or every 10,000 km",
+  "Heavy maintenance: filters, fluids, belts and brakes",
+  "Intake and EGR cleaning"
+ ],
+ "good_for": [
+  "Ford Everest owners",
+  "Owners who want original parts or established brands, per its website"
  ],
  "faqs": [
   [
-   "What does Everest Garage do?",
-   "Its Google Maps listing describes it as a workshop for general servicing and repair."
+   "What does Everest Garage specialise in?",
+   "Its website says it is dedicated to Ford Everest maintenance."
   ],
   [
-   "Which cars does it work on?",
-   "This was not found in public sources. Please ask the workshop when you message."
+   "What services does it list?",
+   "Regular maintenance, heavy maintenance covering filters, fluids, belts and brakes, and intake and EGR cleaning."
+  ],
+  [
+   "How many Everests has it handled?",
+   "Its website says more than 6,000."
+  ],
+  [
+   "Which parts does it use?",
+   "Its website says original parts and established brands."
   ],
   [
    "What are the opening hours?",
    "Please see Google Maps for current hours."
   ]
  ],
- "sources": "its Google Maps listing",
- "stories": []
+ "sources": "its website (everestgarageservice.com) and public business records",
+ "stories": [
+  {
+   "title": "Ford Ranger 2.5 timing-belt failure",
+   "text": "The workshop's own public Facebook post covers a Ford Ranger 2.5 that suffered a timing-belt failure. Read the original post for the details.",
+   "url": "https://www.facebook.com/story.php?id=100069117125874&story_fbid=814583977522166"
+  }
+ ]
 }

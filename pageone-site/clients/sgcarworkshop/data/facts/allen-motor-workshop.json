@@ -1,11 +1,23 @@
 {
  "slug": "allen-motor-workshop",
  "researched_at": "2026-11-02",
- "researcher": "Claude (Sonnet)",
+ "researcher": "Claude (Sonnet), facts supplied by Edwin's research notes where marked",
  "facts": [
   {
-   "field": "category",
-   "value": "Car repair workshop: general servicing and repair",
+   "field": "registration",
+   "value": "Registered sole proprietorship \"Allen Motor Workshop Service & Repair\", registered Jun 2013 (Edwin research notes: companies.sg / recordowl)",
+   "source_url": "https://www.sgpbusiness.com/company/Allen-Motor-Workshop-Service-Repair",
+   "retrieved": "2026-11-02"
+  },
+  {
+   "field": "focus",
+   "value": "Focuses on Ford servicing and repairs; also works on other continental makes (Edwin research notes: recordowl / wherecrowded)",
+   "source_url": "https://www.sgpbusiness.com/company/Allen-Motor-Workshop-Service-Repair",
+   "retrieved": "2026-11-02"
+  },
+  {
+   "field": "address",
+   "value": "1 Sin Ming Industrial Estate Sector C #01-127, Singapore 575636",
    "source_url": "google_profile",
    "retrieved": "2026-11-02"
   }
@@ -13,10 +25,9 @@
  "conflicts": [],
  "not_found": [
   "own website",
-  "public Facebook/Instagram, SGCarMart or Carousell page with services, makes or job posts",
   "real job stories",
-  "opening hours (never stated)"
+  "services list beyond Ford focus"
  ],
  "stories": [],
- "phone_rule": "Phone = stored Google SG mobile only"
+ "phone_rule": "Stored Google SG mobile only; no second numbers or landlines"
 }

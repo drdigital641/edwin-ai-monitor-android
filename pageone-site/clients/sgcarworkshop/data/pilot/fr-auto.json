@@ -1,25 +1,48 @@
 {
- "lede": "FR Auto is a car workshop listed on Google Maps for general servicing and repair. Details such as makes and specialities were not found in public sources, so please ask the workshop directly.",
+ "lede": "FR Auto is a car workshop at 25 Kaki Bukit Road 4, units #06-83 and #06-84. It describes itself as a Subaru specialist that also services all makes, and SGCarMart gives its start year as 2013.",
  "chips": [
-  "General servicing and repair"
+  "Subaru specialist",
+  "Engine and transmission rebuild",
+  "Servicing and diagnostics"
  ],
  "services": [
-  "General servicing and repair"
+  "Basic and major servicing",
+  "Engine diagnostics",
+  "Engine rebuild and performance upgrades",
+  "Transmission rebuild and transmission maintenance",
+  "Undercarriage and brakes",
+  "Exhaust",
+  "Aircon",
+  "Wheel alignment and tyres",
+  "Electrical troubleshooting"
+ ],
+ "good_for": [
+  "Subaru owners",
+  "Owners of other makes, as it services all makes",
+  "Engine and transmission rebuild work"
  ],
  "faqs": [
   [
-   "What does FR Auto do?",
-   "Its Google Maps listing describes it as a workshop for general servicing and repair."
+   "Does FR Auto specialise in Subaru?",
+   "Its listings describe it as a Subaru specialist that also services all makes."
   ],
   [
-   "Which cars does it work on?",
-   "This was not found in public sources. Please ask the workshop when you message."
+   "Does it rebuild engines and transmissions?",
+   "Its website lists engine rebuild, performance upgrades and transmission rebuild."
+  ],
+  [
+   "What servicing does it offer?",
+   "Basic and major servicing, engine diagnostics, brakes, exhaust, aircon, alignment, tyres and electrical troubleshooting."
+  ],
+  [
+   "Since when has it operated?",
+   "SGCarMart lists it as established in 2013."
   ],
   [
    "What are the opening hours?",
    "Please see Google Maps for current hours."
   ]
  ],
- "sources": "its Google Maps listing",
+ "sources": "its website (frauto-sg.com) and SGCarMart",
  "stories": []
 }

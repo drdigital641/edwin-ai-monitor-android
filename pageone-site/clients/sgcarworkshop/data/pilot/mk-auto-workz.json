@@ -1,25 +1,30 @@
 {
- "lede": "MK Auto Workz is a car workshop listed on Google Maps for general servicing and repair. Details such as makes and specialities were not found in public sources, so please ask the workshop directly.",
+ "lede": "MK Auto Workz is a car workshop at Premier@Kaki Bukit, 8 Kaki Bukit Avenue 4. Public records list a motor vehicle repair and maintenance business under this name.",
  "chips": [
-  "General servicing and repair"
+  "Servicing",
+  "Shock absorbers",
+  "Clutch replacement"
  ],
  "services": [
-  "General servicing and repair"
+  "Servicing",
+  "Shock absorber replacement",
+  "Aircon gas refilling",
+  "Clutch replacement"
  ],
  "faqs": [
   [
-   "What does MK Auto Workz do?",
-   "Its Google Maps listing describes it as a workshop for general servicing and repair."
+   "What work is mentioned publicly?",
+   "Servicing, shock absorbers, aircon gas refilling and clutch replacement."
   ],
   [
    "Which cars does it work on?",
-   "This was not found in public sources. Please ask the workshop when you message."
+   "Not found in public sources. Please ask the workshop."
   ],
   [
    "What are the opening hours?",
    "Please see Google Maps for current hours."
   ]
  ],
- "sources": "its Google Maps listing",
+ "sources": "public business records and web mentions",
  "stories": []
 }

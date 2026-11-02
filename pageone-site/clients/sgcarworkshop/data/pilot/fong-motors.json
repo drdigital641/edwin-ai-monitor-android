@@ -1,25 +1,29 @@
 {
- "lede": "Fong Motors is a car workshop listed on Google Maps for general servicing and repair. Details such as makes and specialities were not found in public sources, so please ask the workshop directly.",
+ "lede": "Fong Motors is a car workshop at AutoBay@Kaki Bukit, 1 Kaki Bukit Avenue 6. Public records show a motor vehicle repair and maintenance business registered under this name since April 1975.",
  "chips": [
-  "General servicing and repair"
+  "Repair and maintenance"
  ],
  "services": [
-  "General servicing and repair"
+  "Motor vehicle repair and maintenance"
  ],
+ "good_for": [
+  "Drivers looking for a long-registered Kaki Bukit workshop"
+ ],
+ "good_for_note": "Public records list the business as registered since April 1975.",
  "faqs": [
   [
-   "What does Fong Motors do?",
-   "Its Google Maps listing describes it as a workshop for general servicing and repair."
+   "How long has Fong Motors been registered?",
+   "Public business records show it registered since April 1975."
   ],
   [
-   "Which cars does it work on?",
-   "This was not found in public sources. Please ask the workshop when you message."
+   "What does it do?",
+   "Public records list motor vehicle repair and maintenance. A detailed service list was not found, so please ask the workshop."
   ],
   [
    "What are the opening hours?",
    "Please see Google Maps for current hours."
   ]
  ],
- "sources": "its Google Maps listing",
+ "sources": "public business records and its Google Maps listing",
  "stories": []
 }

@@ -1,22 +1,43 @@
 {
  "slug": "fr-auto",
  "researched_at": "2026-11-02",
- "researcher": "Claude (Sonnet)",
+ "researcher": "Claude (Sonnet), facts supplied by Edwin's research notes where marked",
  "facts": [
   {
-   "field": "category",
-   "value": "Car repair workshop: general servicing and repair",
-   "source_url": "google_profile",
+   "field": "established",
+   "value": "Established 2013 (SGCarMart, per Edwin research notes)",
+   "source_url": "https://www.sgcarmart.com",
+   "retrieved": "2026-11-02"
+  },
+  {
+   "field": "focus",
+   "value": "Subaru specialist that also services all makes (own site and SGCarMart, per Edwin research notes)",
+   "source_url": "https://frauto-sg.com",
+   "retrieved": "2026-11-02"
+  },
+  {
+   "field": "services",
+   "value": "Basic and major servicing; engine diagnostics; engine rebuild and performance upgrades; transmission rebuild and automatic/manual transmission maintenance; undercarriage; brakes; exhaust; aircon; wheel alignment and tyres; electrical troubleshooting",
+   "source_url": "https://frauto-sg.com",
+   "retrieved": "2026-11-02"
+  },
+  {
+   "field": "address",
+   "value": "25 Kaki Bukit Rd 4 #06-83 & 84, Singapore 417800",
+   "source_url": "https://frauto-sg.com",
    "retrieved": "2026-11-02"
   }
  ],
- "conflicts": [],
+ "conflicts": [
+  {
+   "field": "Subaru focus",
+   "values": [],
+   "note": "Subaru focus not visible on the accessible home page excerpt; taken from Edwin's research notes (SGCarMart / own site)"
+  }
+ ],
  "not_found": [
-  "own website",
-  "public Facebook/Instagram, SGCarMart or Carousell page with services, makes or job posts",
-  "real job stories",
-  "opening hours (never stated)"
+  "real job stories"
  ],
  "stories": [],
- "phone_rule": "Phone = stored Google SG mobile only"
+ "phone_rule": "Stored Google SG mobile only; no second numbers or landlines"
 }

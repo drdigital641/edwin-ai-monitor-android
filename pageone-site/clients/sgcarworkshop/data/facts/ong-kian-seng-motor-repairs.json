@@ -1,22 +1,28 @@
 {
  "slug": "ong-kian-seng-motor-repairs",
  "researched_at": "2026-11-02",
- "researcher": "Claude (Sonnet)",
+ "researcher": "Claude (Sonnet), facts supplied by Edwin's research notes where marked",
  "facts": [
   {
-   "field": "category",
-   "value": "Car repair workshop: general servicing and repair",
-   "source_url": "google_profile",
+   "field": "registration",
+   "value": "Sole proprietorship registered 8 Apr 1986; registered address 1 Kaki Bukit Avenue 6 #01-21, Autobay @ Kaki Bukit, Singapore 417883 (matches Google address)",
+   "source_url": "https://scam.sg/companies/35790600D/ong-kian-seng-motor-repairs",
+   "retrieved": "2026-11-02"
+  },
+  {
+   "field": "activity",
+   "value": "Repair and maintenance of motor vehicles (including installation of parts and accessories)",
+   "source_url": "https://scam.sg/companies/35790600D/ong-kian-seng-motor-repairs",
    "retrieved": "2026-11-02"
   }
  ],
  "conflicts": [],
  "not_found": [
   "own website",
-  "public Facebook/Instagram, SGCarMart or Carousell page with services, makes or job posts",
-  "real job stories",
-  "opening hours (never stated)"
+  "service list",
+  "makes",
+  "real job stories"
  ],
  "stories": [],
- "phone_rule": "Phone = stored Google SG mobile only"
+ "phone_rule": "Stored Google SG mobile only; no second numbers or landlines"
 }
