@@ -337,7 +337,7 @@ SERVICE_PAGES = [
 # slug, title tag, meta desc, h1, lead, photo, alt, share photo, date, related service slug, body html
 ARTICLES = [
     dict(
-        slug='honda-yaw-rate-sensor-malfunction', service='abs-pump-repair', date='2026-10-14',
+        slug='honda-yaw-rate-sensor-malfunction', service='abs-pump-repair', date='2026-10-14', updated_iso='2026-11-02',
         title='Honda Yaw Rate Sensor Fault 81-19 | The ECU Clinic',
         desc='Honda yaw rate sensor and acceleration sensor faults inside the VSA modulator control unit (81-19, 81-20, C0063, C0062): what they mean and how they are repaired.',
         h1='Honda Yaw Rate Sensor Malfunction (81-19)',
@@ -374,7 +374,7 @@ ARTICLES = [
              ('Do repairs come with a warranty?', 'Yes. Our repairs come with a 6-month warranty.')],
     ),
     dict(
-        slug='bmw-cas-elv-fault-codes', service='bmw-cas-module-repair', date='2026-10-14', updated_iso='2026-10-27',
+        slug='bmw-cas-elv-fault-codes', service='bmw-cas-module-repair', date='2026-10-14', updated_iso='2026-11-02',
         title='BMW CAS Fault Codes A11E, A0AF, A0B4 | The ECU Clinic',
         desc='What BMW CAS fault codes such as A11E ELV Fault, A0AF Processor and A0B4 Engine Start mean, why the car may not start, and repairing the CAS module.',
         h1='BMW CAS Fault Codes: ELV Fault, Processor and Engine Start',
@@ -418,7 +418,7 @@ ARTICLES = [
              ('Is there a warranty?', 'Yes. Our repairs come with a 6-month warranty.')],
     ),
     dict(
-        slug='honda-vsa-solenoid-valve-malfunction', service='abs-pump-repair', date='2026-10-14',
+        slug='honda-vsa-solenoid-valve-malfunction', service='abs-pump-repair', date='2026-10-14', updated_iso='2026-11-02',
         title='Honda 121-11 VSA Solenoid Valve Fault | The ECU Clinic',
         desc='What the Honda VSA Solenoid Valve Malfunction code (121-11) means, why ABS, VSA, parking brake and steering warnings come on together, and how it is fixed.',
         h1='Honda VSA Solenoid Valve Malfunction (121-11)',
@@ -452,7 +452,7 @@ ARTICLES = [
              ('Is it safe to keep driving?', 'Normal braking usually still works, but anti-lock braking and stability control can be switched off. If the red brake light is on or the pedal feels different, stop driving and get the car checked.')],
     ),
     dict(
-        slug='mercedes-esp-control-unit-fault-n30-4', service='abs-pump-repair', date='2026-10-14',
+        slug='mercedes-esp-control-unit-fault-n30-4', service='abs-pump-repair', date='2026-10-14', updated_iso='2026-11-02',
         title='Mercedes ESP Fault N30/4 (5001) | The ECU Clinic',
         desc='What the Mercedes-Benz fault “internal fault in component N30/4 (Electronic Stability Program control unit)” means, the warnings it causes, and repairing the ESP unit.',
         h1='Mercedes ESP Control Unit Fault: N30/4 Internal Fault (5001)',
@@ -486,7 +486,7 @@ ARTICLES = [
              ('What should I send you?', 'Your car model, chassis number and the fault code, with a photo of the scan tool screen if you have one.')],
     ),
     dict(
-        slug='honda-millimeter-wave-radar-error-p2583', service='honda-radar-repair', date='2026-10-14',
+        slug='honda-millimeter-wave-radar-error-p2583', service='honda-radar-repair', date='2026-10-14', updated_iso='2026-11-02',
         title='Honda P2583 Millimeter Wave Radar Error | The ECU Clinic',
         desc='What the Honda P2583 Millimeter Wave Radar Function Error and Aiming Incomplete codes mean, why Honda Sensing switches off, and repairing the radar instead of replacing it.',
         h1='Honda Millimeter Wave Radar Function Error (P2583)',
@@ -549,7 +549,7 @@ ARTICLES = [
 <p>WhatsApp us your car model, chassis number and the fault code. A photo of the dashboard or the scan tool screen also helps. Our repairs come with a 6-month warranty.</p>''',
     ),
     dict(
-        slug='mercedes-active-brake-assist-functions-limited', service='abs-pump-repair', date='2026-10-13', updated_iso='2026-10-19',
+        slug='mercedes-active-brake-assist-functions-limited', service='abs-pump-repair', date='2026-10-13', updated_iso='2026-11-02',
         title='Active Brake Assist Functions Limited? | The ECU Clinic',
         desc='Mercedes “Active Brake Assist functions limited”? Often a dirty or knocked radar sensor. If it stays on or an ABS or ESP light shows, read the fault code.',
         h1='Mercedes “Active Brake Assist Functions Limited”: What It Means',
@@ -581,7 +581,7 @@ ARTICLES = [
              ('What should I send you?', 'A photo of the dashboard, your car model, chassis number and the fault code.')],
     ),
     dict(
-        slug='mercedes-7g-tronic-722-9-tcu-problems', service='mercedes-7g-9g-tcu-repair', date='2026-10-13',
+        slug='mercedes-7g-tronic-722-9-tcu-problems', service='mercedes-7g-9g-tcu-repair', date='2026-10-13', updated_iso='2026-11-02',
         title='Mercedes 7G-Tronic (722.9) TCU Problems: Signs and Repair | The ECU Clinic',
         desc='Signs of a failing TCU on the Mercedes 7G-Tronic 722.9 gearbox: limp mode, harsh shifts and gearbox warnings. What the conductor plate does and how it is repaired.',
         h1='Mercedes 7G-Tronic (722.9) TCU Problems: Signs and Repair',
@@ -617,7 +617,7 @@ ARTICLES = [
              ('Do you work on the 9-speed gearbox too?', 'Yes. We also work on the TCU of the 9-speed 9G-Tronic.')],
     ),
     dict(
-        slug='mercedes-steering-lock-elv-failure', service='mercedes-steering-lock-elv-repair', date='2026-10-13',
+        slug='mercedes-steering-lock-elv-failure', service='mercedes-steering-lock-elv-repair', date='2026-10-13', updated_iso='2026-11-02',
         title='Mercedes Steering Lock (ELV) Failure: Signs and Repair | The ECU Clinic',
         desc='Key won’t turn or Mercedes won’t start? Signs of a failing electronic steering lock (ELV/ESL), what it does, and how it is repaired in Singapore.',
         h1='Mercedes Steering Lock (ELV) Failure: Signs and Repair',
@@ -658,7 +658,7 @@ ARTICLES = [
              ('Is there a warranty on the repair?', 'Yes. Our repairs come with a 6-month warranty.')],
     ),
     dict(
-        slug='hybrid-battery-replacement-signs', service='hybrid-battery-replacement', date='2026-10-13',
+        slug='hybrid-battery-replacement-signs', service='hybrid-battery-replacement', date='2026-10-13', updated_iso='2026-11-02',
         title='Signs Your Hybrid Battery Needs Replacing | The ECU Clinic Singapore',
         desc='The common signs of a weak hybrid battery, what causes it, and replacing it with a brand-new OEM battery with a 1-year or 100,000 km warranty.',
         h1='Signs Your Hybrid Battery Needs Replacing',
@@ -694,7 +694,7 @@ ARTICLES = [
              ('How do I find out the price?', 'WhatsApp us your car model and year and we will check availability and price.')],
     ),
     dict(
-        slug='toyota-voxy-noah-sienta-abs-pump', service='abs-pump-repair', date='2026-10-13',
+        slug='toyota-voxy-noah-sienta-abs-pump', service='abs-pump-repair', date='2026-10-13', updated_iso='2026-11-02',
         title='Toyota Voxy, Noah & Sienta ABS Pump: Repair, Recon or Used | The ECU Clinic',
         desc='ABS pump and module options for the Toyota Voxy, Noah and Sienta in Singapore: repair, replace, used or recon, with plug and play available and a 6-month warranty.',
         h1='Toyota Voxy, Noah & Sienta ABS Pump: Repair, Recon or Used',
