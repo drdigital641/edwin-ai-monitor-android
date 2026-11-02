@@ -311,3 +311,5 @@ ul.chips{list-style:none;display:flex;flex-wrap:wrap;gap:8px;padding:0;margin:14
 .pilot .acts{display:flex;flex-wrap:wrap;gap:8px}.pilot .acts .btn{white-space:normal;text-align:center;max-width:100%;margin:0}
 .pilot .story{border:1px solid var(--line);border-radius:12px;padding:12px 14px;margin:0 0 10px;background:#fff}.pilot .story h3{margin:0 0 6px;font-size:1rem}.pilot .story p{margin:0 0 6px}
 .marq:not(.on){margin:0}
+
+.pl-google .hrs-list{list-style:none;padding:0;margin:6px 0}.pl-google .hrs-list li{padding:3px 0;border-bottom:1px solid #e6e9f0}.pl-google .gline{font-size:1.05rem}.pl-google .gattr{font-size:.8rem;color:#5b6475}

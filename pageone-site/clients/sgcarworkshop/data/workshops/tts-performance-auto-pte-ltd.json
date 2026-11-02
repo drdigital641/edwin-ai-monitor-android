@@ -2,7 +2,7 @@
  "schema_version": 1,
  "slug": "tts-performance-auto-pte-ltd",
  "place_id": "ChIJdYmf5rkV2jERt4frfgGTD3Y",
- "name": "TTS PERFORMANCE AUTO PTE LTD",
+ "name": "TTS Performance Auto",
  "phones": [
   {
    "e164": "+6580832021",
@@ -12,7 +12,7 @@
    "checked_at": "2026-11-02"
   }
  ],
- "status": "pending",
+ "status": "active",
  "tier": "basic",
  "categories": [
   "SERV"
@@ -43,5 +43,8 @@
  "collector_version": "agent-v4",
  "estate": "yishun",
  "planning_area": "Yishun",
- "region": "north"
+ "region": "north",
+ "lat": 1.440866897546579,
+ "lng": 103.83376229802,
+ "geo_source": "onemap"
 }

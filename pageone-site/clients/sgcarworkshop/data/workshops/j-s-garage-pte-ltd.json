@@ -2,7 +2,7 @@
  "schema_version": 1,
  "slug": "j-s-garage-pte-ltd",
  "place_id": "ChIJZUJqC20Q2jERW3Z9Ro0P1cY",
- "name": "J's Garage Pte Ltd",
+ "name": "J's Garage",
  "phones": [
   {
    "e164": "+6596648646",
@@ -12,7 +12,7 @@
    "checked_at": "2026-11-02"
   }
  ],
- "status": "pending",
+ "status": "active",
  "tier": "basic",
  "categories": [
   "SERV"
@@ -43,5 +43,8 @@
  "collector_version": "agent-v4",
  "estate": "woodlands",
  "planning_area": "Woodlands",
- "region": "north"
+ "region": "north",
+ "lat": 1.430875170022137,
+ "lng": 103.7523467761918,
+ "geo_source": "onemap"
 }

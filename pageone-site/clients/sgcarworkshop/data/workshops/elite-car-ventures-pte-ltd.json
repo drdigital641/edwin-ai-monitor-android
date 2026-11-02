@@ -2,7 +2,7 @@
  "schema_version": 1,
  "slug": "elite-car-ventures-pte-ltd",
  "place_id": "ChIJAQNc1uMX2jERR8jQv0yb4yY",
- "name": "Elite Car Ventures Pte. Ltd",
+ "name": "Elite Car Ventures",
  "phones": [
   {
    "e164": "+6597203979",
@@ -12,7 +12,7 @@
    "checked_at": "2026-11-02"
   }
  ],
- "status": "pending",
+ "status": "active",
  "tier": "basic",
  "categories": [
   "SERV"
@@ -43,5 +43,8 @@
  "collector_version": "agent-v4",
  "estate": "kaki-bukit",
  "planning_area": "Bedok",
- "region": "east"
+ "region": "east",
+ "lat": 1.339676875326561,
+ "lng": 103.9107992907692,
+ "geo_source": "onemap"
 }

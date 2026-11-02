@@ -2,7 +2,7 @@
  "schema_version": 1,
  "slug": "major-autolution-pte-ltd",
  "place_id": "ChIJL4CYD_QT2jERPAoaz4Rzzlw",
- "name": "Major Autolution Pte. Ltd.",
+ "name": "Major Autolution",
  "phones": [
   {
    "e164": "+6582925564",
@@ -12,7 +12,7 @@
    "checked_at": "2026-11-02"
   }
  ],
- "status": "pending",
+ "status": "active",
  "tier": "basic",
  "categories": [
   "SERV"
@@ -43,5 +43,8 @@
  "collector_version": "agent-v4",
  "estate": "woodlands",
  "planning_area": "Woodlands",
- "region": "north"
+ "region": "north",
+ "lat": 1.430875170022137,
+ "lng": 103.7523467761918,
+ "geo_source": "onemap"
 }

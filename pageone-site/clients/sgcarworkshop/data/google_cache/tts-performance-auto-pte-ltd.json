@@ -1,0 +1,36 @@
+{
+ "businessStatus": "OPERATIONAL",
+ "primaryType": "car_repair",
+ "types": [
+  "car_repair",
+  "tire_shop",
+  "auto_parts_store",
+  "store",
+  "point_of_interest",
+  "service",
+  "establishment"
+ ],
+ "rating": 5,
+ "userRatingCount": 51,
+ "websiteUri": "http://ttsperformanceauto.com/",
+ "paymentOptions": {
+  "acceptsCreditCards": true,
+  "acceptsNfc": true
+ },
+ "parkingOptions": null,
+ "editorialSummary": null,
+ "weekdayDescriptions": [
+  "Monday: 9:00\u202fAM\u2009\u2013\u20096:00\u202fPM",
+  "Tuesday: 9:00\u202fAM\u2009\u2013\u20096:00\u202fPM",
+  "Wednesday: 9:00\u202fAM\u2009\u2013\u20096:00\u202fPM",
+  "Thursday: 9:00\u202fAM\u2009\u2013\u20096:00\u202fPM",
+  "Friday: 9:00\u202fAM\u2009\u2013\u20096:00\u202fPM",
+  "Saturday: 9:00\u202fAM\u2009\u2013\u20096:00\u202fPM",
+  "Sunday: Closed"
+ ],
+ "review_count_seen": 5,
+ "review_themes": "Customers on Google Maps mention clear advice, wheel alignment, diagnosing undercarriage noises and affordable pricing.",
+ "fetched_at": "2026-11-02",
+ "place_id": "ChIJdYmf5rkV2jERt4frfgGTD3Y",
+ "source": "google_places"
+}

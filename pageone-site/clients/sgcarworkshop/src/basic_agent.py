@@ -309,6 +309,33 @@ def refresh_closed(a, key):
     jsave('usage.json', u); print(json.dumps({'closed': flagged, 'details_calls_today': ut['details']}))
 
 
+ENRICH_MASK = ('displayName,formattedAddress,businessStatus,primaryType,types,nationalPhoneNumber,internationalPhoneNumber,rating,userRatingCount,'
+               'regularOpeningHours,websiteUri,editorialSummary,paymentOptions,parkingOptions,reviews,location')
+
+
+def enrich(a, key):
+    """Volume mode (Edwin 3 Nov 2026): ONE Place Details call per slug with the full field mask. Raw reviews go to --raw-dir (scratch, never the repo);
+    data/google_cache/<slug>.json keeps only the non-review fields plus fetched_at (refresh within 30 days). place_id is the only permanent Google value."""
+    u, ut = usage_today(); wd = os.path.join(DATA, 'workshops'); cd = os.path.join(DATA, 'google_cache'); os.makedirs(cd, exist_ok=True); os.makedirs(a.raw_dir, exist_ok=True); out = []
+    for slug in a.slugs.split(','):
+        r = json.load(open(os.path.join(wd, slug + '.json')))
+        if ut['details'] >= HARD_CAP: out.append((slug, 'daily cap reached')); continue
+        ut['details'] += 1
+        try:
+            g = gcall(API + 'places/' + r['place_id'], key, ENRICH_MASK)
+        except urllib.error.HTTPError as e:
+            if e.code == 429: ut['details'] -= 1; out.append((slug, '429 quota exhausted')); break
+            raise
+        json.dump(g, open(os.path.join(a.raw_dir, slug + '.json'), 'w'), indent=1, ensure_ascii=False)
+        keep = {k: g.get(k) for k in ('businessStatus', 'primaryType', 'types', 'rating', 'userRatingCount', 'websiteUri', 'paymentOptions', 'parkingOptions')}
+        keep['editorialSummary'] = (g.get('editorialSummary') or {}).get('text')
+        keep['weekdayDescriptions'] = (g.get('regularOpeningHours') or {}).get('weekdayDescriptions')
+        keep['review_count_seen'] = len(g.get('reviews') or []); keep['review_themes'] = None   # filled by the writer in own words, never quotes
+        keep['fetched_at'] = TODAY; keep['place_id'] = r['place_id']; keep['source'] = 'google_places'
+        jsave('google_cache/%s.json' % slug, keep); out.append((slug, 'ok'))
+    jsave('usage.json', u); print(json.dumps({'results': out, 'details_calls_today': ut['details']}))
+
+
 def main():
     ap = argparse.ArgumentParser(); sub = ap.add_subparsers(dest='cmd', required=True)
     d = sub.add_parser('discover'); d.add_argument('--estates', required=True)
@@ -319,11 +346,12 @@ def main():
     dd = sub.add_parser('daily'); dd.add_argument('--max-places', type=int, default=25); dd.add_argument('--max-search', type=int, default=60)
     for c in ('screen', 'resume', 'closed'):
         x = sub.add_parser(c); x.add_argument('--max-places', type=int, default=25); x.add_argument('--refresh', action='store_true')
+    en = sub.add_parser('enrich'); en.add_argument('--slugs', required=True); en.add_argument('--raw-dir', required=True)
     a = ap.parse_args()
     a.__dict__['place_id'] = a.__dict__.get('place_id'); a.__dict__['planning_area'] = a.__dict__.get('planning_area')
     key = os.environ.get('PLACES_SERVER_KEY')
-    if a.cmd in ('discover', 'screen', 'resume', 'closed', 'daily') and not key: sys.exit('Set PLACES_SERVER_KEY in the environment (server key, Places API New only).')
-    {'discover': lambda: discover(a, key), 'stage': lambda: stage(a), 'screen': lambda: screen(a, key), 'resume': lambda: screen(a, key), 'closed': lambda: refresh_closed(a, key), 'daily': lambda: daily(a, key)}[a.cmd]()
+    if a.cmd in ('discover', 'screen', 'resume', 'closed', 'daily', 'enrich') and not key: sys.exit('Set PLACES_SERVER_KEY in the environment (server key, Places API New only).')
+    {'discover': lambda: discover(a, key), 'stage': lambda: stage(a), 'screen': lambda: screen(a, key), 'resume': lambda: screen(a, key), 'closed': lambda: refresh_closed(a, key), 'daily': lambda: daily(a, key), 'enrich': lambda: enrich(a, key)}[a.cmd]()
 
 
 if __name__ == '__main__':

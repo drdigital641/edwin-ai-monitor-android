@@ -12,7 +12,7 @@
    "checked_at": "2026-11-02"
   }
  ],
- "status": "pending",
+ "status": "active",
  "tier": "basic",
  "categories": [
   "SERV"
@@ -43,5 +43,8 @@
  "collector_version": "agent-v4",
  "estate": "yishun",
  "planning_area": "Yishun",
- "region": "north"
+ "region": "north",
+ "lat": 1.440582374844134,
+ "lng": 103.8339365159054,
+ "geo_source": "onemap"
 }

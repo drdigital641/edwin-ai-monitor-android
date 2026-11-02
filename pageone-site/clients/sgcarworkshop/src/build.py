@@ -853,6 +853,45 @@ if os.path.isdir(_pd):
             PILOT[_f[:-5]] = json.load(open(os.path.join(_pd, _f)))
 
 
+GCACHE = {}
+_gd = os.path.join(HERE, '..', 'data', 'google_cache')
+if os.path.isdir(_gd):
+    for _f in sorted(os.listdir(_gd)):
+        if _f.endswith('.json'):
+            GCACHE[_f[:-5]] = json.load(open(os.path.join(_gd, _f)))
+
+
+def google_section(e, pl):
+    """Volume mode (Edwin 3 Nov 2026): Google Places fields (rating, hours, payment, parking, website) with attribution, plus review THEMES in our own words (never quotes).
+    Fields come from data/google_cache/<slug>.json (fetched_at; refresh within 30 days)."""
+    g = GCACHE.get(e['slug'])
+    if not g:
+        return ''
+    clean = lambda t: t.replace('\u202f', ' ').replace('\u2009', ' ')
+    rows = []
+    if g.get('rating') and g.get('userRatingCount'):
+        rows.append('<p class="gline"><b>%s out of 5</b> from %s ratings on <span translate="no">Google Maps</span></p>' % (g['rating'], format(g['userRatingCount'], ',')))
+    if pl.get('themes'):
+        rows.append('<p>%s</p>' % E(pl['themes']))
+    hrs = g.get('weekdayDescriptions') or []
+    if hrs:
+        rows.append('<h3>Opening hours</h3><ul class="hrs-list">%s</ul>' % ''.join('<li>%s</li>' % E(clean(h)) for h in hrs))
+    po = g.get('paymentOptions') or {}
+    pay = [n for k, n in (('acceptsCreditCards', 'credit cards'), ('acceptsDebitCards', 'debit cards'), ('acceptsNfc', 'contactless')) if po.get(k)]
+    if pay:
+        rows.append('<p><b>Payment:</b> %s.</p>' % E(', '.join(pay)))
+    pk = g.get('parkingOptions') or {}
+    park = [n for k, n in (('freeParkingLot', 'free parking lot'), ('paidParkingLot', 'paid parking lot'), ('freeGarageParking', 'free garage parking'), ('paidGarageParking', 'paid garage parking'), ('freeStreetParking', 'free street parking'), ('paidStreetParking', 'paid street parking')) if pk.get(k)]
+    if park:
+        rows.append('<p><b>Parking:</b> %s.</p>' % E(', '.join(park)))
+    w = g.get('websiteUri')
+    if w:
+        w = w.split('?')[0]
+        rows.append('<p><a href="%s" rel="nofollow noopener noreferrer" target="_blank" data-cta="site_%s">Workshop website</a></p>' % (E(w, True), e['slug']))
+    return ('<section class="pl-sec pl-google" id="google"><h2>On Google Maps</h2>%s<p class="gattr">Details from <span translate="no">Google Maps</span>, checked %s. Review themes are summarised in our own words.</p></section>'
+            % (''.join(rows), E(g['fetched_at'])))
+
+
 def pilot_icon(t):
     t = t.lower()
     for keys, icon in (('aircon', 'snow'), (('ecu', 'diagnos', 'troubleshoot', 'engine'), 'chip'), (('spray', 'paint', 'panel beating'), 'spray'), (('claim', 'insurance'), 'shield'),
@@ -899,9 +938,10 @@ def pilot_page(e, pl):
 <p class="lede" style="font-size:1rem">{E(pl['lede'])}</p>
 <section class="pl-sec"><h2>Services</h2><ul class="svc-grid">{grid_}</ul><p class="fine">Compiled from {E(pl['sources'])} and its Google Maps listing. Please confirm details with the workshop.</p></section>
 {good_html}
+{google_section(e, pl)}
 {story_html}
 <section id="find" class="pl-sec findus"><h2>Location and directions</h2>
-<ul class="facts"><li data-addr>{ic('pin')}<span>{E(e['address_public'])}</span></li>{mrt}<li>{ic('pin')}<span><b>Opening hours:</b> see Google Maps for current hours.</span></li></ul>
+<ul class="facts"><li data-addr>{ic('pin')}<span>{E(e['address_public'])}</span></li>{mrt}<li>{ic('pin')}<span><b>Opening hours:</b> {'listed above from Google Maps; ' if e['slug'] in GCACHE else ''}see Google Maps for current hours.</span></li></ul>
 {embed}
 <p class="acts" style="margin:10px 0">{dir_btn(e, path)} {gm_btn(e, path, 'big alt')}</p>
 <p class="fine">{E(e['area_ctx'])}</p>

@@ -120,6 +120,22 @@ for e in ENTRIES:
         # Basic PILOT (Edwin 2 Nov 2026): single fixed-content page, no photo, hours say "see Google Maps", no ratings/reviews/second phones.
         pg = open(os.path.join(root, 'workshops', e['slug'], 'index.html'), encoding='utf-8').read()
         body = re.sub(r'<(script|style).*?</\1>', '', pg, flags=re.S)
+        gsec = re.search(r'<section class="pl-sec pl-google".*?</section>', body, re.S)
+        gj = os.path.join(root, '..', 'data', 'google_cache', e['slug'] + '.json')
+        if gsec:
+            body_g = gsec.group(0); body = body.replace(body_g, '')
+            gc = json.load(open(gj)) if os.path.exists(gj) else None
+            gtxt = re.sub(r'\s+', ' ', re.sub(r'<[^>]+>', ' ', body_g))
+            if not gc or gc.get('source') != 'google_places' or not gc.get('fetched_at'): print('PILOT google section needs a google_places cache with fetched_at', e['slug']); bad += 1
+            else:
+                import datetime as _dt
+                if (_dt.date.today() - _dt.date.fromisoformat(gc['fetched_at'])).days > 30: print('PILOT google cache older than 30 days', e['slug']); bad += 1
+                if 'Google Maps' not in gtxt: print('PILOT google section lacks attribution', e['slug']); bad += 1
+                if gc.get('rating') and ('%s out of 5' % gc['rating']) not in gtxt: print('PILOT google rating does not match cache', e['slug']); bad += 1
+                for h in (gc.get('weekdayDescriptions') or []):
+                    if h.replace('\u202f', ' ').replace('\u2009', ' ') not in gtxt: print('PILOT google hours do not match cache', e['slug']); bad += 1; break
+            if re.search(r'[\u201c\u201d]|<q>|<blockquote', body_g): print('PILOT google section must not quote reviews', e['slug']); bad += 1
+            if ENDORSE.search(gtxt): print('PILOT google section has endorsement wording', e['slug']); bad += 1
         txt = re.sub(r'\s+', ' ', re.sub(r'<[^>]+>', ' ', body))
         for needle in ('see Google Maps for current hours', 'maps/dir/?api=1&amp;destination=', 'google.com/maps/embed/v1/place?key=', 'Is this your workshop?', 'data-cta="whatsapp_dir_%s"' % e['slug'], 'data-cta="call_dir_%s"' % e['slug'], 'id="faqs"', 'data-cta="maps_%s"' % e['slug']):
             if needle not in pg: print('PILOT page missing', needle, e['slug']); bad += 1

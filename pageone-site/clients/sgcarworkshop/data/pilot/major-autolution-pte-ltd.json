@@ -1,0 +1,32 @@
+{
+ "lede": "Major Autolution is a car repair workshop at 60 Jln Lam Huat, #04-48 Carros Centre. Its Google Maps listing shows opening hours, payment options and customer ratings.",
+ "chips": [
+  "Car repair",
+  "Car parts"
+ ],
+ "services": [
+  "General servicing and repair",
+  "Car parts"
+ ],
+ "themes": "Customers on Google Maps mention aircon servicing, cooling coil replacement and under-car checks, with regular progress updates and quick turnaround.",
+ "faqs": [
+  [
+   "What does Major Autolution do?",
+   "Google Maps lists it as a car repair workshop."
+  ],
+  [
+   "How can I pay?",
+   "Google Maps lists credit cards, debit cards, contactless."
+  ],
+  [
+   "Does it have a website?",
+   "Yes, a link is shown above from its Google Maps listing."
+  ],
+  [
+   "What are the opening hours?",
+   "The hours are listed in the Google Maps section above. Please see Google Maps for current hours."
+  ]
+ ],
+ "sources": "its Google Maps listing",
+ "stories": []
+}
