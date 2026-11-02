@@ -1112,7 +1112,7 @@ def article_page(slug):
     pic = a.get('img', 'gearbox-teardown|Gearbox overhaul on the teardown bench').split('|')
     body = (page_hero(a['short'], e(a['h1']), e(a['desc']), parent=('Articles', 'articles/'))
             + '<section><div class="wrap article">'
-            + f'<p class="byline">By Jacky Gearbox · {nice_date(a["date"])}</p>'
+            + f'<p class="byline">By Jacky Gearbox · Last updated {nice_date(a["date"])}</p>'
             + img(pic[0], pic[1], 960, 540)
             + md(a['body'])
             + '<div class="callout"><h3>Not sure what your gearbox needs?</h3>'
@@ -1379,6 +1379,8 @@ def llms_txt():
 
 ## Common questions
 {faq}
+
+Last updated 2 November 2026.
 '''
 
 
