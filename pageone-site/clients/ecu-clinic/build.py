@@ -62,7 +62,7 @@ BIZ = {
     'postal': '415875',
     'map': 'Premier @ Kaki Bukit, 8 Kaki Bukit Avenue 4, Singapore 415875',
 }
-WA_TEXT = 'I need help with my car. Car model: \nChassis no.: \nFault code: '
+WA_TEXT = 'I need help with my car.\nCar plate: \nCar model: \nChassis no.: \nFault code: '
 # Every WhatsApp link opens with the page and the button the visitor tapped (Edwin, 16 Oct 2026), so Ching
 # can see which page brought the enquiry. wa_link leaves WA_PAGE_MARK in the text; page() swaps in the page name.
 WA_PAGE_MARK = '\x00P1PAGE\x00'
@@ -112,6 +112,7 @@ def u(path=''):
 
 
 def wa_link(text=WA_TEXT, cta='WhatsApp button'):
+    assert 'Car plate: ' in text, 'every WhatsApp message asks for the car plate (client request, 2 Nov 2026)'
     msg = f"Hi The ECU Clinic, I'm enquiring from your website (Page: {WA_PAGE_MARK}, Button: {html.unescape(cta)}). {text}"
     return f'https://wa.me/{BIZ["wa"]}?text={quote(msg)}'
 
@@ -228,7 +229,7 @@ def codes_section(alt=False):
     return f'''<section{' class="alt"' if alt else ''} id="fault-codes"><div class="wrap">
 <div class="sec-head"><h2>Fault codes we handle</h2><p>Common codes we repair at our workshop. Got a different warning light or code? WhatsApp us a photo of the scan tool or dashboard and we’ll tell you what we can do.</p></div>
 <div class="grid sym codes">{cards}</div>
-<p style="margin-top:20px"><a class="btn btn-wa" href="{wa_link("I have a fault code on my car. Car model: \nFault code: ", cta="WhatsApp us your fault code")}" target="_blank" rel="noopener">{ICON["wa"]}WhatsApp us your fault code</a></p>
+<p style="margin-top:20px"><a class="btn btn-wa" href="{wa_link("I have a fault code on my car.\nCar plate: \nCar model: \nFault code: ", cta="WhatsApp us your fault code")}" target="_blank" rel="noopener">{ICON["wa"]}WhatsApp us your fault code</a></p>
 </div></section>'''
 
 
@@ -484,7 +485,7 @@ def home():
 <span class="eyebrow" style="color:var(--blue)">Fault diagnosis</span>
 <h2>Warning light on the dashboard?</h2>
 <p>An ABS, ESP or brake warning can come from the pump, the module, a sensor or the wiring. We find the cause first, then tell you the options: repair, recon, used or new.</p>
-<a class="btn btn-wa" href="{wa_link("I have a warning light on my car. Car model: \nChassis no.: \nFault code / warning: ", cta="Send us a photo of the warning")}" target="_blank" rel="noopener">{ICON["wa"]}Send us a photo of the warning</a>
+<a class="btn btn-wa" href="{wa_link("I have a warning light on my car.\nCar plate: \nCar model: \nChassis no.: \nFault code / warning: ", cta="Send us a photo of the warning")}" target="_blank" rel="noopener">{ICON["wa"]}Send us a photo of the warning</a>
 </div>
 <div>{img("active-brake-assist-warning", "Mercedes-Benz dashboard showing Active Brake Assist functions limited")}</div>
 </div></section>
@@ -499,7 +500,7 @@ def home():
 <span class="eyebrow" style="color:var(--blue)">BMW temperature programming</span>
 <h2>BMW running hot at 120°C or more?</h2>
 <p>We reprogram your BMW to bring a high coolant temperature down to a stable 95°C or so, for steady performance and long-term engine protection.</p>
-<a class="btn btn-wa" href="{wa_link("I would like BMW temperature programming. Model and year: ", cta="Check my BMW")}" target="_blank" rel="noopener">{ICON["wa"]}Check my BMW</a>
+<a class="btn btn-wa" href="{wa_link("I would like BMW temperature programming.\nCar plate: \nModel and year: ", cta="Check my BMW")}" target="_blank" rel="noopener">{ICON["wa"]}Check my BMW</a>
 <p class="more"><a href="{u("services/bmw-temperature-programming/")}" aria-label="More details: BMW temperature programming">More details →</a></p>
 </div>
 <div>{img("bmw-fault-code-scan", "Scan tool reading BMW engine fault codes")}</div>
