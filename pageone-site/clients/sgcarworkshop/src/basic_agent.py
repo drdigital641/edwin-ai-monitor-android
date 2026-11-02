@@ -198,7 +198,7 @@ def screen(a, key):
     print(json.dumps({'results': out, 'details_calls_today': ut['details']}, indent=1))
 
 
-HARD_CAP = 30   # the project's Place Details quota per day; never exceeded (Edwin, 2 Nov 2026)
+HARD_CAP = int(os.environ.get('SGCW_HARD_CAP', '30'))   # project Place Details quota per day (30); Edwin raised it to 100 for 2 Nov 2026 only via the env var
 PA_BY_ESTATE = {'kaki-bukit': 'Bedok', 'ubi': 'Geylang', 'eunos': 'Geylang', 'bedok-north': 'Bedok', 'woodlands': 'Woodlands', 'kranji': 'Sungei Kadut',
                 'yishun': 'Yishun', 'ang-mo-kio': 'Ang Mo Kio', 'serangoon-north': 'Serangoon', 'defu-hougang': 'Hougang', 'sengkang': 'Sengkang',
                 'sin-ming-bishan': 'Bishan', 'toa-payoh': 'Toa Payoh', 'macpherson': 'Geylang', 'alexandra-bukit-merah': 'Bukit Merah',
