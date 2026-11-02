@@ -21,18 +21,9 @@ done < .github/probe/domains.txt
 fi
 for f in .github/probe/urls/*.txt; do
   [ -f "$f" ] || continue
-  [ "$(basename $f)" = "headers.txt" ] && continue
   echo "##### $f"
   while read -r u; do
     [ -z "$u" ] && continue
     echo "$u  $(hop "$u")"
   done < "$f"
 done
-if [ -f .github/probe/urls/headers.txt ]; then
-  echo "##### HEADERS (urls/headers.txt)"
-  while read -r u; do
-    [ -z "$u" ] && continue
-    echo "--- $u"
-    curl -sI -A "$UA" -m 20 "$u" | tr -d '\r' | grep -iE '^(HTTP|x-robots-tag|location|content-type)'
-  done < .github/probe/urls/headers.txt
-fi

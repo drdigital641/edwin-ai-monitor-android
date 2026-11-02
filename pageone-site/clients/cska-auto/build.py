@@ -830,7 +830,7 @@ ARTICLES = [
 LASTMOD = {'articles/%s/' % a['slug']: a['date'] for a in ARTICLES if a.get('date')}
 # Guides lists show the newest article first (Edwin, 20 Oct 2026); same-date articles keep their list order.
 ARTICLES_NEWEST = sorted(ARTICLES, key=lambda x: x.get('date', UPDATED), reverse=True)
-LASTMOD.update({'': '2026-11-02', 'articles/': '2026-11-02', 'products/': '2026-11-02', 'products/adas-calibration/': '2026-10-31', 'products/ev-diagnostic-tools/': '2026-10-30', 'products/lifts-and-jacks/': '2026-10-29', 'products/workshop-tools/': '2026-11-02', 'products/tpms-and-tyre-tools/': '2026-10-27', 'products/diagnostic-scanners/': '2026-10-25', 'products/battery-testers-and-jump-starters/': '2026-11-01', 'brands/thinkcar/': '2026-10-23', 'brands/topdon/': '2026-10-26', 'brands/sp-zone/': '2026-10-28',
+LASTMOD.update({'': '2026-11-02', 'articles/': '2026-11-02', 'products/adas-calibration/': '2026-10-31', 'products/ev-diagnostic-tools/': '2026-10-30', 'products/lifts-and-jacks/': '2026-10-29', 'products/workshop-tools/': '2026-11-02', 'products/tpms-and-tyre-tools/': '2026-10-27', 'products/diagnostic-scanners/': '2026-10-25', 'products/battery-testers-and-jump-starters/': '2026-11-01', 'brands/thinkcar/': '2026-10-23', 'brands/topdon/': '2026-10-26', 'brands/sp-zone/': '2026-10-28',
                 'products/aircon-service-machines/': '2026-10-25', 'brands/autel/': '2026-10-25', 'about/': '2026-10-25'})  # 25 Oct: Booster (scanners, aircon, Autel) + authorised wording removed (about, llms.txt)
 
 # ----------------------------------------------------------------------------------------------
@@ -928,7 +928,7 @@ def article_body(a):
     parts.append('<div class="card note"><h2>Talk to CSKA</h2><p>Tell us the cars you service and the jobs you do, and we will suggest the right tool.</p>%s<ul class="links">%s</ul></div>' % (wa_btn('WhatsApp +65 ' + WA_SHOW), links))
     return '''<section class="sec"><div class="wrap narrow"><article class="prose">
 <figure class="lead-fig">%s</figure>
-<p class="byline">By CSKA Auto Enterprise · Last updated %s</p>
+<p class="byline">By CSKA Auto Enterprise · Updated %s</p>
 %s
 </article></div></section>''' % (img(a['photo'], eager=True), a.get('date_text', UPDATED_TEXT), '\n'.join(parts))
 

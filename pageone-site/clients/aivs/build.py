@@ -55,6 +55,7 @@ def video(slug, controls=False):
 UPDATED = '2026-10-16'
 # Per-page last-modified dates (sitemap + WebPage dateModified); added 28 Oct 2026. Pages not listed fall back to UPDATED.
 LASTMOD = {'articles/which-phones-can-a-phone-case-printing-machine-print-for/': '2026-10-26', 'articles/can-you-run-a-vending-machine-business-part-time/': '2026-10-28'}
+LASTMOD.update({'services/': '2026-11-02', 'articles/': '2026-11-02'})  # hub intro + FAQ, 2 Nov 2026
 
 NAME = 'AIVS'
 FULL = 'AI Vending Solution'
@@ -545,6 +546,7 @@ def service_body(s):
 # ----------------------------------------------------------------------------------------------
 # Articles
 # ----------------------------------------------------------------------------------------------
+Raw = str  # sections are emitted unescaped on this site; Raw marks hand-written links
 ARTICLES = [
     dict(slug='how-much-does-a-vending-machine-cost-in-singapore', photo='printbox-mall',
          title='How Much Does a Vending Machine Cost in Singapore?',
@@ -576,7 +578,7 @@ ARTICLES = [
          faqs=[('Do I need a shop or staff?', 'No. Both AIVS machines are self-service and cashless, so no shop or staff is required.'),
                ('How long until the machine is running?', 'Typically a few weeks after you confirm the machine and the location.'),
                ('Do I need vending experience?', 'No. Training and ongoing support are included.')]),
-    dict(slug='print-a-custom-phone-case-in-3-minutes', photo='case-deer',
+    dict(slug='print-a-custom-phone-case-in-3-minutes', modified='2026-11-02', photo='case-deer',
          title='Where to Print a Custom Phone Case in 3 Minutes in Singapore',
          desc='Print your own photo on a phone case for S$%s in 3 minutes at AI Printbox. 13 locations including AMK Hub, Tampines 1, Parkway Parade and Changi Airport T3.' % CASE_PRICE,
          h1='Print a custom phone case in 3 minutes',
@@ -586,7 +588,10 @@ ARTICLES = [
              ('Good photos to use', ['Clear, well-lit photos with the subject in the middle work best, because the case is narrow and tall. Pets, couples, group shots and holiday skylines are the popular choices.']),
              ('Privacy and refunds', ['Uploaded photos are deleted from the system within 48 hours and are not stored or shared. Because each case is printed to order, purchases are non-refundable, and you are responsible for the content you print.']),
              ('Where to find a machine', ['See the full list with unit numbers on the AI Printbox locations page. Machines at mall entrances and the Changi Airport arrival hall are the easiest to find.']),
-         ],
+         
+                   ('What the process looks like at the machine', ['Select your phone model first, because the case is made for that exact phone. Then choose a design from the collection, add an AI filter, or upload your own photo. After you pay, the machine prints the design into the case while you wait, which takes about 3 minutes.']),
+                   ('Before you print', [Raw('Check that your phone model is listed on the machine screen, since the list follows the latest iPhone and Samsung models. Our guide on <a href="articles/which-phones-can-a-phone-case-printing-machine-print-for/">which phones a case printing machine can print for</a> explains how to check. Remember that each case is printed to order, so it cannot be refunded.')]),
+                   ('Making it a gift', ['A case printed with a favourite photo is easy to give: a pet, a couple, a group shot or a holiday view. Because the print is built into the case rather than stuck on, it is a practical gift and takes only a few minutes at the machine.'])],
          faqs=[('How much is a custom phone case at AI Printbox?', 'S$%s, as published by AIVS. Check the machine for the current price.' % CASE_PRICE),
                ('Can I print a photo from my phone?', 'Yes. Upload your own image at the machine, or choose from the design collection.'),
                ('Is the design a sticker?', 'No. The print is built into the case itself.')]),
@@ -619,7 +624,7 @@ ARTICLES = [
          faqs=[('Does AIVS find the location for me?', 'You choose and secure your own location; AIVS shares its experience and can help with site sourcing.'),
                ('Can a machine be moved if a site does not work?', 'Yes. Tell AIVS in advance and transport can be arranged.'),
                ('Do hosts charge rent?', 'Usually rent or a share of sales, agreed between you and the host.')]),
-    dict(slug='vending-machine-franchise-vs-owning-your-own-machine', photo='topi-franchise',
+    dict(slug='vending-machine-franchise-vs-owning-your-own-machine', modified='2026-11-02', photo='topi-franchise',
          title='Vending Machine Franchise vs Owning Your Own Machine',
          desc='A franchise charges a fee and a share of sales; AIVS sells you the machine outright with 0% royalties, cost-price stock and optional support. The comparison.',
          h1='Vending machine franchise vs owning your own machine',
@@ -630,11 +635,14 @@ ARTICLES = [
              ('When a franchise makes sense', ['When you want a fully prescribed system and are happy to pay for it on every sale. Some operators prefer that trade.']),
              ('When ownership makes sense', ['When you want to keep what the machine earns, control the location and the branding, and still have support on call. AIVS\'s model is built for this: you own the machine, AIVS supplies stock at cost price, trains you and maintains the machine under a monthly plan.']),
              ('What AIVS keeps', ['The AI Printbox and Topi Express artwork, branding and mascots stay AIVS intellectual property. If you re-wrap in your own brand, that wrap is yours.']),
-         ],
+         
+                   ('Questions to ask before you choose either route', ['Ask what you pay upfront, what you pay on every sale, who sets the price of stock, who chooses the location and who owns the machine if you stop. Get the answers in writing. The table above shows how AIVS ownership answers each one, and you can put the same questions to any franchisor to compare.']),
+                   ('Support when you own the machine', [Raw('Owning a machine does not mean running it alone. AIVS offers training and an optional monthly support plan from S$99, and you can read how maintenance works in <a href="articles/what-maintenance-does-a-vending-machine-need-each-week/">what maintenance a vending machine needs each week</a>. For the full price list, see the <a href="prices/">prices page</a>.')]),
+                   ('Next step', ['If you are weighing the two routes, WhatsApp AIVS with the location you have in mind and the machine that interests you. The team can explain the published prices and terms before you commit to anything.'])],
          faqs=[('Is AIVS a franchise?', 'AIVS describes its partners as franchise partners who own their machines with 0% royalties. In practice you buy the machine and keep the sales.'),
                ('Can I leave the AIVS brand later?', 'Yes. Re-wrap the machine in your own branding at your own cost.'),
                ('Is support included or optional?', 'Support is a monthly plan from S$%s. Ask AIVS whether it is required for your machine.' % SUPPORT)]),
-    dict(slug='ai-printbox-now-at-14-locations-across-singapore', photo='printbox-queue',
+    dict(slug='ai-printbox-now-at-14-locations-across-singapore', modified='2026-11-02', photo='printbox-queue',
          title='AI Printbox Is Now at 13 Locations Across Singapore',
          desc='From four malls in June 2025 to 13 locations including Changi Airport Terminal 3, AMK Hub, Parkway Parade and The Centrepoint: where to find AI Printbox now.',
          h1='AI Printbox is now at 13 locations across Singapore',
@@ -643,10 +651,14 @@ ARTICLES = [
              ('How it grew', ['In June 2025 AIVS announced AI Printbox at VivoCity, Sembawang Shopping Centre, Great World and Eastpoint Mall. The current list has 13 machines: AMK Hub, Bukit Panjang Plaza, Changi Airport T3 (Arrival Hall and Basement 2), Changi City Point, City Square Mall, Eastpoint Mall, Hillion Mall, Hougang Mall, Parkway Parade, Sembawang Shopping Centre, Tampines 1 and The Centrepoint.']),
              ('Why it spreads', ['A S$%s case printed with your own photo in 3 minutes is an easy gift and an easy treat, and the machine draws a crowd wherever it stands, as it did at a franchise exhibition where visitors queued to try it.' % CASE_PRICE]),
              ('For future owners', ['Every one of these machines is the same model you can own, from S$%s refurbished, with 0%% royalties.' % PB_PRICE]),
-         ],
+         
+                   ('What you can do at an AI Printbox', ['Choose your phone model, pick a design or upload your own photo, pay cashlessly and collect the printed case about 3 minutes later. AIVS publishes the price of a case as S$15. AI Printbox supports the latest iPhone and Samsung models.']),
+                   ('Why the location list changes', [Raw('Machines are placed with the owners of each site, so the list can change over time. Some sites named in the June 2025 announcement, such as VivoCity and Great World, are not on the current list. The <a href="locations/">locations page</a> always shows the current list with unit numbers, so check it before you travel to a mall.')]),
+                   ('Planning a visit', ['Two of the machines are at Changi Airport Terminal 3, one in the Arrival Hall and one at Basement 2, which suits travellers who want a case before a trip or on arrival. The others are in malls across the island, so the nearest one may be on your usual shopping route.']),
+                   ('If you want to run a machine yourself', [Raw('Each of these machines is the same model AIVS sells to owner-operators, from S$5,000 refurbished with 0% royalties and a 1-year hardware warranty (terms apply). Read <a href="articles/how-to-start-a-vending-machine-business-in-singapore/">how to start a vending machine business in Singapore</a> for the steps, or WhatsApp AIVS.')])],
          faqs=[('Is AI Printbox at VivoCity?', 'VivoCity and Great World were announced in June 2025 but are not on the current AIVS location list. Check the locations page for the live list.'),
                ('Which Changi Airport terminal has AI Printbox?', 'Terminal 3: the Arrival Hall (#01-VM4) and Basement 2 (iClaw, #B2-45).')]),
-    dict(slug='topi-express-helmet-cleaning-at-hodaka-motoworld', photo='topi-shop',
+    dict(slug='topi-express-helmet-cleaning-at-hodaka-motoworld', modified='2026-11-02', photo='topi-shop',
          title='Topi Express Now Runs 24 Hours at Hodaka Motoworld',
          desc='Since 22 August 2025 a Topi Express machine has run around the clock at Hodaka Motoworld, 10 Kaki Bukit Road 1: a 5-minute helmet clean at any hour.',
          h1='Topi Express runs 24 hours at Hodaka Motoworld',
@@ -655,7 +667,11 @@ ARTICLES = [
              ('Why Hodaka', ['Hodaka Motoworld is one of Singapore\'s best-known motorcycle names, especially among Honda riders, selling motorcycles, gear and accessories. Riders already stop there, which is exactly where a helmet cleaning machine belongs.']),
              ('What riders get', ['A 5-minute cycle that disinfects, deodorises and sterilises the helmet with UVC and an eco-friendly disinfectant mist, paid by QR code, at any hour.']),
              ('Other Topi Express machines', ['Wheels & Cycles (Woodlands), 345 Wash (Telok Blangah), Candy Motor and Gusto Broz Workshop (Kaki Bukit Road 4) and BW Motorsports (Old Toh Tuck Road).']),
-         ],
+         
+                   ('How a Topi Express cycle works', ['The machine cleans the helmet in about 5 minutes. It disinfects, deodorises and sterilises the helmet with UVC light and an eco-friendly disinfectant mist, and the rider pays by QR code at the machine. The price published by AIVS is S$5 per clean.']),
+                   ('Why a 24-hour machine helps riders', ["Because the machine runs 24 hours a day, a rider can clean a helmet before an early ride or after an evening one, including outside the shop's own opening hours. Nobody needs to book or wait for a staff member, since the machine takes payment by itself."]),
+                   ('A quick refresh, not a replacement for washing', [Raw('Hand washing the liner and wiping the shell takes time, because the liner can take a day to dry. A machine clean is a quick refresh between washes. Our guide on <a href="articles/how-to-clean-and-disinfect-a-motorcycle-helmet/">how to clean and disinfect a motorcycle helmet</a> explains both routes.')]),
+                   ('Thinking of owning a Topi Express?', [Raw('A refurbished Topi Express is published by AIVS from S$1,800, with a 6-month hardware warranty (terms apply), 0% royalties and an optional support plan from S$99 a month. See the <a href="prices/">prices page</a> for what is included, or WhatsApp AIVS to ask about a location like this one.')])],
          faqs=[('What are the hours at Hodaka Motoworld\'s Topi Express?', 'The machine runs 24 hours a day.'),
                ('How much is a helmet clean?', 'S$%s for about 5 minutes, as published by AIVS.' % WASH_PRICE)]),
     dict(slug='which-phones-can-a-phone-case-printing-machine-print-for', photo='case-dragon', date='2026-10-26',
@@ -693,6 +709,9 @@ ARTICLES = [
                ('Who fixes the machine if something goes wrong?', 'The optional support plan from S$%s a month covers maintenance and repairs, system support and 24/7 technical help.' % SUPPORT)]),
 ]
 ART = {a['slug']: a for a in ARTICLES}
+for _a in ARTICLES:  # 2 Nov 2026: 'modified' = true last edit; feeds sitemap lastmod, byline and dateModified
+    if _a.get('modified'):
+        LASTMOD['articles/%s/' % _a['slug']] = _a['modified']
 
 
 def article_body(a):
@@ -712,7 +731,7 @@ def article_body(a):
 {faq_html(a['faqs'])}
 <h2>The machines</h2>
 <div class="scards">{rel}</div>
-<p class="byline">By the AIVS team, {LEGAL}. Last updated {a.get('date', UPDATED)}. {a.get('byline', 'Facts from AIVS' + chr(39) + 's published machine details and location list.')}</p>
+<p class="byline">By the AIVS team, {LEGAL}. Last updated {a.get('modified', a.get('date', UPDATED))}. {a.get('byline', 'Facts from AIVS' + chr(39) + 's published machine details and location list.')}</p>
 </article>
 <aside class="side"><div class="card sticky"><h2>Ask AIVS</h2><p>Own a machine from S${TP_PRICE}, or host one at your site. WhatsApp {WA_SHOW}.</p>{wa_btn('WhatsApp us')}{enquire_btn(cls='btn btn-ghost')}
 <p class="small" style="margin-top:14px"><a href="prices/">Prices →</a><br><a href="locations/">Locations →</a><br><a href="articles/">All articles →</a></p></div></aside>
@@ -720,7 +739,7 @@ def article_body(a):
 
 
 def article_schema(a, path):
-    return {'@type': 'Article', 'headline': a['h1'], 'description': a['desc'], 'datePublished': a.get('date', UPDATED), 'dateModified': a.get('date', UPDATED),
+    return {'@type': 'Article', 'headline': a['h1'], 'description': a['desc'], 'datePublished': a.get('date', UPDATED), 'dateModified': a.get('modified', a.get('date', UPDATED)),
             'author': {'@type': 'Organization', 'name': LEGAL, 'url': SITE}, 'publisher': {'@id': SITE + '#business'},
             'image': (IMG_ABS or SITE + 'img/') + '%s.webp' % a['photo'], 'mainEntityOfPage': SITE + path, 'inLanguage': 'en-SG'}
 
@@ -1428,7 +1447,7 @@ def main():
                 'an optional support plan from S$%s a month and a live sales dashboard. 19 machines are live: 13 AI Printbox (AMK Hub, Bukit Panjang Plaza, Changi Airport T3 Arrival Hall and B2, '
                 'Changi City Point, City Square Mall, Eastpoint Mall, Hillion Mall, Hougang Mall, Parkway Parade, Sembawang Shopping Centre, Tampines 1, The Centrepoint) and '
                 '6 Topi Express (Wheels & Cycles Woodlands, 345 Wash Telok Blangah, Candy Motor, Gusto Broz Workshop and Hodaka Motoworld in Kaki Bukit, BW Motorsports Old Toh Tuck Road). '
-                'Office: %s, Singapore %s. WhatsApp +65 %s (machine purchase and business collaboration), +65 %s (technical support and refunds), %s. "AI" in the name stands for Automated Intelligence, not artificial intelligence.\n\n## Pages\n'
+                'Office: %s, Singapore %s. WhatsApp +65 %s (machine purchase and business collaboration), +65 %s (technical support and refunds), %s. "AI" in the name stands for Automated Intelligence, not artificial intelligence.\n\nLast updated: 2 November 2026. Visits to the office are by appointment; no fixed office hours are published.\n\n## Pages\n'
                 % (LEGAL, UEN, CASE_PRICE, PB_PRICE, WASH_PRICE, TP_PRICE, SUPPORT, ', '.join(ADDR[:1] + [BUILDING]), POSTAL, WA_SHOW, SUP_SHOW, EMAIL))
         for path, p in PAGES.items():
             f.write('- [%s](%s%s): %s\n' % (p['title'].split(' | ')[0], SITE, path, p['desc']))

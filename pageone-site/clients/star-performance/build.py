@@ -1018,7 +1018,7 @@ def main():
                 'Services: buy a used car, sell or trade in your car, consignment, export of cars near COE expiry, and sourcing of specific models. '
                 'Values: Sincere, Passionate, Mindful. Customers recommend it %s on Facebook from %s reviews (as at %s); reviewers name Zach, Celsius and Wei Kiat. '
                 'Live stock with prices is on sgcarmart (%s). Buyers can view and test drive at the showroom and book a pre-purchase inspection at their own workshop. '
-                'Showroom open %s; Google rating 5.0 from 110 reviews (as at 17 October 2026). WhatsApp or call +65 %s. Facebook %s, Instagram %s. Sister business in the same unit: Wrapstar Autostyle, car wraps and PPF, https://wrapstarautostyle.com/.\n\n## Pages\n'
+                'Showroom open %s; Google rating 5.0 from 110 reviews (as at 17 October 2026). WhatsApp or call +65 %s. Facebook %s, Instagram %s. Sister business in the same unit: Wrapstar Autostyle, car wraps and PPF, https://wrapstarautostyle.com/.\n\nLast updated: 2 November 2026.\n\n## Pages\n'
                 % (LEGAL, UEN, ', '.join(ADDR[:1] + [BUILDING]), POSTAL, REC, REC_N, REC_DATE, SGCM, HOURS, WA_SHOW, FB, IG))
         for path, p in PAGES.items():
             f.write('- [%s](%s%s): %s\n' % (p['title'].split(' | ')[0], SITE, path, p['desc']))

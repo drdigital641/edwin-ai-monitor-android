@@ -589,11 +589,13 @@ ARTICLES = [
               ('Should I remove dechrome film myself?', 'We recommend asking a studio to do it. Removal is easier to do cleanly when the person knows the film and checks the surface as it comes off.')]),
 ]
 ABY = {a['slug']: a for a in ARTICLES}
-LASTMOD = {'articles/should-you-remove-a-wrap-before-selling/': '2026-10-19',
+LASTMOD = {'services/': '2026-11-02', 'articles/': '2026-11-02',  # hub intro + FAQ, 2 Nov 2026
+           'articles/should-you-remove-a-wrap-before-selling/': '2026-10-19',
            'articles/how-long-does-a-car-wrap-last-in-singapore/': '2026-10-20',
            'services/dechrome/': '2026-10-19',
            'services/colour-ppf/': '2026-10-23',
            'articles/what-to-ask-before-booking-a-car-wrap-in-singapore/': '2026-10-26',
+           'articles/car-window-tint-rules-singapore/': '2026-11-01',
            'articles/can-dechrome-be-reversed/': '2026-10-28'}  # 23 Oct 2026 Booster: description on 'colour ppf singapore'
 #  # 19 Oct 2026: new article; Booster H1/description change on 'dechrome singapore'
 
@@ -872,7 +874,7 @@ def article_page(a):
     others = ''.join('<li><a href="articles/%s/">%s</a></li>' % (o['slug'], E(o['h1'])) for o in ARTICLES if o is not a)
     body = f'''<section class="sec" style="padding-top:40px"><div class="wrap"><div class="cols"><article class="prose">
 <figure class="pimg">{img(a['photo'], eager=True)}</figure>
-<p class="note">By {NAME} · {E(fmt_date(a['date']))}</p>
+<p class="note">By {NAME} · Last updated {E(fmt_date(LASTMOD.get('articles/%s/' % a['slug'], max(a['date'], UPDATED))))}</p>
 {render_blocks(a['body'])}
 <h2>Questions</h2>
 {faq_html(a['faq'])}
@@ -1114,6 +1116,7 @@ def main():
     write('site.webmanifest', json.dumps({'name': NAME, 'short_name': 'Wrapstar', 'start_url': './', 'display': 'standalone', 'background_color': '#070708', 'theme_color': '#070708',
                                           'icons': [{'src': IMG + 'icon-192.png', 'sizes': '192x192', 'type': 'image/png'}, {'src': IMG + 'icon-512.png', 'sizes': '512x512', 'type': 'image/png'}]}))
     llms = ['# %s' % NAME, '', '> Car wrap and film studio in Yishun, Singapore: colour change wraps, colour PPF, clear paint protection film, window film and dechrome, plus polishing and ceramic coating. "%s".' % TAGLINE, '',
+            'Last updated: 2 November 2026.', '',
             '- Address: 9 Yishun Industrial Street 1, #01-82, North Spring Bizhub, Singapore 768163 (same unit as sister business Star Performance Motor, %s)' % SISTER,
             '- WhatsApp / phone: +65 %s' % WA_SHOW, '- Opening hours: %s (Google Business Profile, 18 October 2026)' % HOURS, '- Google rating: %s' % GRATING, '- Registered: sole proprietorship, UEN %s, 3 November 2025 (ACRA)' % UEN,
             '- Facebook: %s (%s)' % (FB, REC), '- Instagram: %s' % IG, '- Google Business Profile: %s' % GBP, '- Map: %s (latitude %s, longitude %s)' % (MAP, GEO[0], GEO[1]),
