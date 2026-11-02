@@ -861,6 +861,13 @@ if os.path.isdir(_gd):
             GCACHE[_f[:-5]] = json.load(open(os.path.join(_gd, _f)))
 
 
+def mention_html(pl):
+    m = pl.get('mentioned_services') or []
+    if not m:
+        return ''
+    return '<h3 class="mh">Customers mention</h3><p class="fine">Pulled from the five most relevant Google Maps reviews, in our own words. Not a list the workshop gave us.</p><ul class="svc-grid">%s</ul>' % ''.join('<li><span class="si">%s</span><span>%s</span></li>' % (ic(pilot_icon(x)), E(x)) for x in m)
+
+
 def google_section(e, pl):
     """Volume mode (Edwin 3 Nov 2026): Google Places fields (rating, hours, payment, parking, website) with attribution, plus review THEMES in our own words (never quotes).
     Fields come from data/google_cache/<slug>.json (fetched_at; refresh within 30 days)."""
@@ -936,7 +943,7 @@ def pilot_page(e, pl):
 <div class="acts main-acts">{contact_btns(e, path, 'big')}</div>
 <p class="fine">Buttons use the mobile number on its Google listing. They only open a chat or call that you start.</p></header>
 <p class="lede" style="font-size:1rem">{E(pl['lede'])}</p>
-<section class="pl-sec"><h2>Services</h2><ul class="svc-grid">{grid_}</ul><p class="fine">Compiled from {E(pl['sources'])} and its Google Maps listing. Please confirm details with the workshop.</p></section>
+<section class="pl-sec"><h2>Services</h2><ul class="svc-grid">{grid_}</ul>{mention_html(pl)}<p class="fine">Compiled from {E(pl['sources']) if 'Google Maps listing' not in pl['sources'] else E(pl['sources'])}{'' if 'Google Maps listing' in pl['sources'] else ' and its Google Maps listing'}. Please confirm details with the workshop.</p></section>
 {good_html}
 {google_section(e, pl)}
 {story_html}

@@ -327,6 +327,13 @@ def enrich(a, key):
             if e.code == 429: ut['details'] -= 1; out.append((slug, '429 quota exhausted')); break
             raise
         json.dump(g, open(os.path.join(a.raw_dir, slug + '.json'), 'w'), indent=1, ensure_ascii=False)
+        gm = re.sub(r'\D', '', g.get('internationalPhoneNumber', '')); gm = '+' + gm if gm else ''
+        why = None
+        if g.get('businessStatus') != 'OPERATIONAL': why = 'closed or not OPERATIONAL on Google'
+        elif not re.match(r'^\+65[89]\d{7}$', gm): why = 'Google listing has no SG mobile (landline only or no phone)'
+        if why:   # Edwin 3 Nov 2026: skip and log; landline-only never appear in the directory
+            r['status'] = 'pending'; r['google_screen'] = {'passed': False, 'reason': why, 'checked_at': TODAY}; jsave('workshops/%s.json' % slug, r)
+            out.append((slug, 'SKIPPED: ' + why)); continue
         keep = {k: g.get(k) for k in ('businessStatus', 'primaryType', 'types', 'rating', 'userRatingCount', 'websiteUri', 'paymentOptions', 'parkingOptions')}
         keep['editorialSummary'] = (g.get('editorialSummary') or {}).get('text')
         keep['weekdayDescriptions'] = (g.get('regularOpeningHours') or {}).get('weekdayDescriptions')
