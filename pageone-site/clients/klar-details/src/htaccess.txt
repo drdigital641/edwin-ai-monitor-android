@@ -1,0 +1,74 @@
+# Klar Details (klardetails.com.sg). Document root of the addon domain = preview/klar-details/. Edwin uploads this as .htaccess via cPanel (the Bridge cannot write it).
+# Overrides the parent pageonesingapore.com .htaccess for this folder. Old WordPress URLs 301 straight to the https canonical (one hop).
+Options -Indexes
+DirectoryIndex index.html
+ErrorDocument 404 /404.html
+RewriteEngine On
+
+# Only on the client domain: the same folder is also served at pageonesingapore.com/preview/klar-details/ and must be left alone.
+RewriteCond %{HTTP_HOST} !^(www\.)?klardetails\.com\.sg$ [NC]
+RewriteRule ^ - [L]
+
+# Old WordPress URLs (best matching new page)
+RewriteRule ^about\-us/?$ https://klardetails.com.sg/about/ [L,R=301]
+RewriteRule ^blog/?$ https://klardetails.com.sg/articles/ [L,R=301]
+RewriteRule ^service\-klarcoat/?$ https://klardetails.com.sg/services/ceramic-coating/ [L,R=301]
+RewriteRule ^service\-klarinterior/?$ https://klardetails.com.sg/services/interior-detailing/ [L,R=301]
+RewriteRule ^service\-klarmaintenance/?$ https://klardetails.com.sg/services/coating-maintenance/ [L,R=301]
+RewriteRule ^service/klarcoat\-2/?$ https://klardetails.com.sg/services/ceramic-coating/ [L,R=301]
+RewriteRule ^service/klarinterior\-2/?$ https://klardetails.com.sg/services/interior-detailing/ [L,R=301]
+RewriteRule ^service/klarmaintenance/?$ https://klardetails.com.sg/services/coating-maintenance/ [L,R=301]
+RewriteRule ^prevent\-car\-water\-spots\-singapore/?$ https://klardetails.com.sg/articles/car-water-spot-removal-singapore/ [L,R=301]
+RewriteRule ^protect\-car\-paint\-bird\-droppings\-tree\-sap/?$ https://klardetails.com.sg/articles/remove-bird-droppings-tree-sap-car-paint/ [L,R=301]
+RewriteRule ^top\-5\-automotive\-workshops\-in\-singapore/?$ https://klardetails.com.sg/about/ [L,R=301]
+RewriteRule ^shopcar/?$ https://klardetails.com.sg/ [L,R=301]
+RewriteRule ^checkout/?$ https://klardetails.com.sg/ [L,R=301]
+RewriteRule ^search\-page/?$ https://klardetails.com.sg/ [L,R=301]
+RewriteRule ^category/uncategorized/?$ https://klardetails.com.sg/articles/ [L,R=301]
+RewriteRule ^author/klardetailuser/?$ https://klardetails.com.sg/articles/ [L,R=301]
+RewriteRule ^sitemap_index\.xml$ https://klardetails.com.sg/sitemap.xml [L,R=301]
+RewriteRule ^car\-water\-spot\-removal\-singapore/?$ https://klardetails.com.sg/articles/car-water-spot-removal-singapore/ [L,R=301]
+RewriteRule ^remove\-bird\-droppings\-tree\-sap\-car\-paint/?$ https://klardetails.com.sg/articles/remove-bird-droppings-tree-sap-car-paint/ [L,R=301]
+RewriteRule ^car\-polishing\-vs\-waxing\-vs\-ceramic\-coating/?$ https://klardetails.com.sg/articles/car-polishing-vs-waxing-vs-ceramic-coating/ [L,R=301]
+RewriteRule ^car\-paint\-oxidation\-vs\-clear\-coat\-damage/?$ https://klardetails.com.sg/articles/car-paint-oxidation-vs-clear-coat-damage/ [L,R=301]
+RewriteRule ^leather\-car\-seat\-cleaning\-care\-guide/?$ https://klardetails.com.sg/articles/leather-car-seat-cleaning-care-guide/ [L,R=301]
+RewriteRule ^car\-wheel\-cleaning\-remove\-brake\-dust/?$ https://klardetails.com.sg/articles/car-wheel-cleaning-remove-brake-dust/ [L,R=301]
+RewriteRule ^how\-to\-wash\-ceramic\-coated\-car/?$ https://klardetails.com.sg/articles/how-to-wash-ceramic-coated-car/ [L,R=301]
+RewriteRule ^car\-paint\-swirl\-marks\-causes\-prevention/?$ https://klardetails.com.sg/articles/car-paint-swirl-marks-causes-prevention/ [L,R=301]
+RewriteRule ^new\-car\-detailing\-singapore\-guide/?$ https://klardetails.com.sg/articles/new-car-detailing-singapore-guide/ [L,R=301]
+RewriteRule ^interior\-car\-detailing\-singapore\-guide/?$ https://klardetails.com.sg/articles/interior-car-detailing-singapore-guide/ [L,R=301]
+RewriteRule ^how\-regular\-car\-detailing\-protects\-your\-vehicles\-resale\-value\-in\-singapore/?$ https://klardetails.com.sg/articles/how-regular-car-detailing-protects-your-vehicles-resale-value-in-singapore/ [L,R=301]
+RewriteRule ^5\-signs\-your\-car\-needs\-paint\-correction/?$ https://klardetails.com.sg/articles/5-signs-your-car-needs-paint-correction/ [L,R=301]
+RewriteRule ^what\-really\-happens\-during\-a\-professional\-car\-detailing\-session\-and\-why\-it\-takes\-hours/?$ https://klardetails.com.sg/articles/what-really-happens-during-a-professional-car-detailing-session-and-why-it-takes-hours/ [L,R=301]
+RewriteRule ^why\-professional\-car\-detailing\-matters\-in\-singapores\-harsh\-climate/?$ https://klardetails.com.sg/articles/why-professional-car-detailing-matters-in-singapores-harsh-climate/ [L,R=301]
+RewriteRule ^interior\-car\-detailing\-why\-its\-more\-than\-just\-a\-deep\-clean/?$ https://klardetails.com.sg/articles/interior-car-detailing-why-its-more-than-just-a-deep-clean/ [L,R=301]
+RewriteRule ^why\-klar\-details\-is\-the\-go\-to\-choice\-for\-tesla\-and\-ev\-owners\-in\-singapore/?$ https://klardetails.com.sg/articles/why-klar-details-is-the-go-to-choice-for-tesla-and-ev-owners-in-singapore/ [L,R=301]
+RewriteRule ^blog\-pure\-water\-final\-rinse/?$ https://klardetails.com.sg/articles/blog-pure-water-final-rinse/ [L,R=301]
+RewriteRule ^5\-reasons\-your\-car\-needs\-ceramic\-coating\-in\-singapore/?$ https://klardetails.com.sg/articles/5-reasons-your-car-needs-ceramic-coating-in-singapore/ [L,R=301]
+RewriteRule ^ceramic\-coating\-vs\-graphene\-coating\-which\-is\-better\-for\-singapores\-humid\-climate/?$ https://klardetails.com.sg/articles/ceramic-coating-vs-graphene-coating-which-is-better-for-singapores-humid-climate/ [L,R=301]
+RewriteRule ^graphene\-coating\-for\-car\-protect\-in\-singapore/?$ https://klardetails.com.sg/articles/graphene-coating-for-car-protect-in-singapore/ [L,R=301]
+RewriteRule ^service/?$ https://klardetails.com.sg/services/ [L,R=301]
+RewriteRule ^tag/?$ https://klardetails.com.sg/articles/ [L,R=301]
+RewriteRule ^feed/?$ https://klardetails.com.sg/articles/ [L,R=301]
+RewriteRule ^comments/feed/?$ https://klardetails.com.sg/articles/ [L,R=301]
+RewriteRule ^wp\-sitemap\.xml$ https://klardetails.com.sg/sitemap.xml [L,R=301]
+RewriteRule ^post\-sitemap\.xml$ https://klardetails.com.sg/sitemap.xml [L,R=301]
+RewriteRule ^page\-sitemap\.xml$ https://klardetails.com.sg/sitemap.xml [L,R=301]
+RewriteRule ^category\-sitemap\.xml$ https://klardetails.com.sg/sitemap.xml [L,R=301]
+RewriteRule ^author\-sitemap\.xml$ https://klardetails.com.sg/sitemap.xml [L,R=301]
+RewriteRule ^(tag|author|category)/.*$ https://klardetails.com.sg/articles/ [L,R=301]
+
+# Canonical host and protocol: one 301 from http and from www
+RewriteCond %{HTTP_HOST} ^www\. [NC]
+RewriteRule ^(.*)$ https://klardetails.com.sg/$1 [L,R=301]
+RewriteCond %{HTTPS} off
+RewriteRule ^(.*)$ https://klardetails.com.sg/$1 [L,R=301]
+
+<IfModule mod_headers.c>
+<FilesMatch "\.(html)$">
+Header set Cache-Control "max-age=3600, public"
+</FilesMatch>
+<FilesMatch "\.(css|js|svg|png|ico|webp|jpg|jpeg|mp4)$">
+Header set Cache-Control "max-age=604800, public"
+</FilesMatch>
+</IfModule>
