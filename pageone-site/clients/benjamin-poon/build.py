@@ -73,11 +73,18 @@ def load(name):
     return m
 
 
+XTRA = load('seo_extra').EXTRA
 SV = load('services')
 LO = load('locations')
 GA, GB, GC, GD, GE = load('guides_a'), load('guides_b'), load('guides_c'), load('guides_d'), load('guides_e')
 SERVICES, LOCATIONS = SV.SERVICES, LO.LOCATIONS
 PX = dict(load('photos_client').PHOTOS_CLIENT, **load('photos_nirvana').PHOTOS_NV, **load('photos').PHOTOS_EXT, **load('photos_booklet').PHOTOS_BK)  # licensed stock / Commons photos, hotlinked for the preview (see content/photos.py)
+
+
+try:
+    IMGMAP = json.load(open(os.path.join(HERE, 'assets', 'img', 'map.json')))
+except Exception:
+    IMGMAP = {}
 
 
 def role(r):
@@ -191,6 +198,9 @@ def img(name, L, eager=False, cls='', small=False):
     else:
         f, w, h, alt = PHOTOS[name]
         src = IMG + f
+    if src in IMGMAP:  # compressed WebP copy hosted on this site (assets/img, built by the image-fetch workflow)
+        m = IMGMAP[src]
+        src, w, h = SITE + 'img/' + m['f'], m['w'], m['h']
     return '<img src="%s" alt="%s" width="%d" height="%d"%s%s>' % (E(src), E(t(alt, L)), w, h,
                                                                      ' fetchpriority="high"' if eager else ' loading="lazy" decoding="async"', ' class="%s"' % cls if cls else '')
 
@@ -766,7 +776,56 @@ def nb_body(L):
 PAGES = {}
 
 
+def fit_title(s):
+    """Titles <= 65 chars: shorten the brand suffix first, then drop it."""
+    if len(s) <= 65:
+        return s
+    s2 = s.replace(' | Benjamin Poon 潘国雄', ' | Ben Poon').replace(' | Benjamin Poon', ' | Ben Poon')
+    if len(s2) <= 65:
+        return s2
+    return s2.split(' | ')[0] if ' | ' in s2 and len(s2.split(' | ')[0]) <= 65 else s2
+
+
+def fit_desc(d, L):
+    """Meta descriptions: EN 120-160 chars; ZH at least 70 characters (CJK is denser)."""
+    if L == 'en':
+        if len(d) < 120:
+            for tail in (' WhatsApp Benjamin on +65 8932 9933.', ' English, Mandarin, Cantonese or Hokkien.'):
+                if len(d) < 120 and tail.strip() not in d:
+                    d += tail
+        if len(d) > 160:
+            cut = d[:159]
+            for sep in ('. ', ': ', '; ', ', ', ' '):
+                i = cut.rfind(sep)
+                if i >= 120:
+                    cut = cut[:i]
+                    break
+            d = cut.rstrip(' ,;:') + '.'
+    else:
+        if len(d) < 70:
+            for tail in ('潘国雄以华语、英语、广东话、福建话为您讲解，没有任何义务。', 'WhatsApp +65 8932 9933。'):
+                if len(d) < 70 and tail not in d and 'WhatsApp' not in tail or (len(d) < 70 and 'WhatsApp' in tail and 'WhatsApp' not in d):
+                    d += ('' if d.endswith(('。', '.')) else '。') + tail
+    return d
+
+
+TITLE_FIX = {'guides/sudden-passing-call-benjamin-nirvana/': 'Sudden Passing in Singapore: Call Benjamin Poon | Nirvana',
+             'guides/nirvana-fengshui-toad-lair-choa-chu-kang/': 'Nirvana Fengshui: the "Toad\'s Lair" in Choa Chu Kang'}
+
+
 def page(L, path, title, desc, h1, body, crumbs=None, lede='', schema=None, hero=True, cta=True, kind='website', photo=None):
+    title, desc = fit_title(TITLE_FIX.get(path, t(title, L)) if L == 'en' else t(title, L)), fit_desc(t(desc, L), L)
+    ex = XTRA.get(path)
+    schema = list(schema or [])
+    if ex:
+        pre_h = '<section class="sec"><div class="wrap"><div class="prose">%s</div></div></section>' % ''.join('<p>%s</p>' % rich(t(x, L)) for x in ex['intro']) if ex.get('intro') else ''
+        post_h = ''
+        if ex.get('more'):
+            post_h += '<section class="sec"><div class="wrap"><div class="prose">%s</div></div></section>' % ''.join('<p>%s</p>' % rich(t(x, L)) for x in ex['more'])
+        if ex.get('faqs'):
+            post_h += '<section class="sec"><div class="wrap"><div class="prose">%s</div></div></section>' % faq_html(ex['faqs'], L)
+            schema.append(faq_schema(ex['faqs'], L))
+        body = pre_h + body + post_h
     PAGES[(L, path)] = dict(title=t(title, L), desc=t(desc, L), h1=t(h1, L), body=body, crumbs=crumbs, lede=t(lede, L), schema=schema or [], hero=hero, cta=cta, kind=kind,
                             photo=photo or path_photo(path) if path else None)
 
@@ -1026,7 +1085,7 @@ def main():
         gdate = {'guides/%s/' % g['slug']: g.get('date', UPDATED) for g in GUIDES}
         newest = max([UPDATED] + list(gdate.values()))
         for (L, path) in PAGES:
-            mod = gdate.get(path) or (newest if path in ('', 'guides/') else UPDATED)  # real article dates, so the newest is easy to find
+            mod = gdate.get(path) or '2026-11-02'  # real article dates, so the newest is easy to find
             f.write('  <url><loc>%s%s%s</loc><lastmod>%s</lastmod>%s</url>\n' % (SITE, PFX[L], path, mod, ''.join(
                 '<xhtml:link rel="alternate" hreflang="%s" href="%s%s%s"/>' % (HREFLANG[l], SITE, PFX[l], path) for l in LANGS) +
                 '<xhtml:link rel="alternate" hreflang="x-default" href="%s%s"/>' % (SITE, path)))
@@ -1038,7 +1097,7 @@ def main():
                 'Venues: Nirvana Memorial Garden, 950 Old Choa Chu Kang Road, Singapore 699816; Lin San Temple (灵山寺), 27 Lorong 12 Geylang, Singapore 399004; '
                 'Thian Leng Chong Toh Tong (天灵总道堂), 472 Changi Road, Singapore 419890. He is named in the APG (Advance Planners) September 2025 Award, October 2025 Sales Award and May 2026 Sales Award. '
                 'Languages: English, Mandarin (华语), Cantonese (广东话), Hokkien (福建话); some Teochew (潮州话). WhatsApp or call +65 8932 9933, email %s. This is his personal website, not the official website of Nirvana (nirvana.com.sg) or any temple. '
-                'Prices and availability are given by Benjamin on request from the operators; none are published here.\n\n'
+                'Prices and availability are given by Benjamin on request from the operators; none are published here. Opening hours are not published: WhatsApp Benjamin to arrange a time.\n\n'
                 '## Pages (English; Chinese under /zh/)\n' % EMAIL)
         for (L, path), p in PAGES.items():
             if L == 'en':
@@ -1053,6 +1112,9 @@ def main():
     for fn in ('bp.css', 'bp.js'):
         shutil.copy(os.path.join(HERE, fn), os.path.join(OUT, fn))
     shutil.copy(os.path.join(HERE, 'nirvana-logo.png'), os.path.join(OUT, 'nirvana-logo.png'))
+    os.makedirs(os.path.join(OUT, 'img'), exist_ok=True)
+    for fn in {m['f'] for m in IMGMAP.values()}:
+        shutil.copy(os.path.join(HERE, 'assets', 'img', fn), os.path.join(OUT, 'img', fn))
     for fn in ('favicon.ico', 'icon-192.png', 'apple-touch-icon.png', 'icon-512.png'):
         shutil.copy(os.path.join(HERE, 'icons', fn), os.path.join(OUT, fn))
     print('built %d pages' % len(PAGES))
