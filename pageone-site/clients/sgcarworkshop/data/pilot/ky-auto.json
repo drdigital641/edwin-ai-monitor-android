@@ -1,0 +1,33 @@
+{
+ "lede": "KY Auto is a car workshop at Synergy@KB, 25 Kaki Bukit Road 4. The Motorist.sg directory lists repair and servicing, transmission and gearbox, accident repair, spray painting, tyres and rims, and towing.",
+ "chips": [
+  "Repair and servicing",
+  "Transmission and gearbox",
+  "Spray painting"
+ ],
+ "services": [
+  "Repair and servicing",
+  "Transmission and gearbox",
+  "Accident repair and claims",
+  "Spray painting",
+  "Paint protection",
+  "Tyres and rims",
+  "Towing and roadside assistance"
+ ],
+ "faqs": [
+  [
+   "What does KY Auto offer?",
+   "The Motorist.sg directory lists repair and servicing, transmission and gearbox, accident repair and claims, spray painting, paint protection, tyres and rims, and towing."
+  ],
+  [
+   "Which cars does it work on?",
+   "Not found in public sources. Please ask the workshop when you message."
+  ],
+  [
+   "What are the opening hours?",
+   "Please see Google Maps for current hours."
+  ]
+ ],
+ "sources": "the Motorist.sg directory",
+ "stories": []
+}
