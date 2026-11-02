@@ -641,6 +641,8 @@ def not_found():
 <h1>Page not found</h1>
 <p>This page doesn’t exist. Head back to the home page, or WhatsApp us your car model and fault code.</p>
 <div class="btns" style="justify-content:center"><a class="btn btn-line" href="/">Home page</a>
+<a class="btn btn-line" href="/services/abs-pump-repair/">ABS pump repair</a>
+<a class="btn btn-line" href="/articles/">Articles</a>
 <a class="btn btn-wa" href="{wa_link(cta="Page not found")}" target="_blank" rel="noopener">WhatsApp {BIZ["tel_disp"]}</a></div>
 </div></section></main></body></html>
 '''.replace(quote(WA_PAGE_MARK), quote('Page not found'))
@@ -800,7 +802,7 @@ def article(a):
     more = [x for x in ARTICLES if x is not a][:3]
     body = sub_hero(crumbs, 'Guide', a['h1'], a['lead'], a['photo'], a['alt'], buttons=False) + f'''
 <section><div class="wrap prose">
-<p class="meta">By The ECU Clinic · {a["date"][8:10].lstrip("0")} {["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"][int(a["date"][5:7])-1]} 2026</p>
+<p class="meta">By The ECU Clinic · Last updated {a["date"][8:10].lstrip("0")} {["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"][int(a["date"][5:7])-1]} 2026</p>
 {re.sub(r"\{img:([a-z0-9-]+)\}", lambda m: u(f"img/{m.group(1)}.webp"), a["body"].replace("{wa}", wa_link(cta="Article text")).replace("{img_cluster}", u("img/mercedes-airbag-warning-cluster.webp")))}
 <div class="btns" style="margin-top:22px"><a class="btn btn-wa" href="{wa_link(cta="Article end")}" target="_blank" rel="noopener">{ICON["wa"]}WhatsApp {BIZ["tel_disp"]}</a>
 {f'<a class="btn btn-line" href="{u(f"services/{sp['slug']}/")}">{e(sp["name"])}</a>' if sp else ''}</div>
