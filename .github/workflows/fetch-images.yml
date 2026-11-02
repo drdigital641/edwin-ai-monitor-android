@@ -1,20 +1,9 @@
 name: Fetch and compress images
 
 on:
-  workflow_dispatch:
-    inputs:
-      urls_file:
-        description: "Path of a text file with one image URL per line"
-        required: true
-      out_dir:
-        description: "Output folder in the repo (WebP files + map.json)"
-        required: true
-      max_kb:
-        description: "Max size per image in KB"
-        default: "140"
-      max_width:
-        description: "Max width in px"
-        default: "1280"
+  push:
+    branches: [ "claude/project-thread-zbfrt7" ]
+    paths: [ ".github/fetch/jobs/*.txt" ]
 
 permissions:
   contents: write
@@ -28,13 +17,18 @@ jobs:
           ref: claude/project-thread-zbfrt7
       - name: Install Pillow
         run: pip install pillow
-      - name: Fetch, resize, convert
-        run: python3 .github/fetch/fetch_images.py "${{ inputs.urls_file }}" "${{ inputs.out_dir }}" "${{ inputs.max_kb }}" "${{ inputs.max_width }}"
+      - name: Fetch, resize, convert (job file line 1 = out_dir max_kb max_width, then URLs)
+        run: |
+          for j in .github/fetch/jobs/*.txt; do
+            read -r OUT KB W < "$j"
+            tail -n +2 "$j" > /tmp/urls.txt
+            python3 .github/fetch/fetch_images.py /tmp/urls.txt "$OUT" "$KB" "$W"
+          done
       - name: Commit
         run: |
           git config user.name "claude-image-fetch"
           git config user.email "noreply@anthropic.com"
-          git add "${{ inputs.out_dir }}"
-          git diff --cached --quiet || git commit -m "Compressed WebP images for ${{ inputs.out_dir }}"
+          git add pageone-site
+          git diff --cached --quiet || git commit -m "Compressed WebP images (image fetch workflow)"
           git pull --rebase origin claude/project-thread-zbfrt7
           git push origin HEAD:claude/project-thread-zbfrt7
