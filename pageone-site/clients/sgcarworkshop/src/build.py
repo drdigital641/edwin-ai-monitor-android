@@ -115,7 +115,7 @@ MARK_SVG = ('<svg width="36" height="36" viewBox="0 0 48 48" aria-hidden="true">
 LOGO = MARK_SVG
 
 _h = hashlib.sha1()
-for _f in ('dir.css', 'dir.js', 'livephone.js'):
+for _f in ('dir.css', 'dir.js', 'livephone.js', 'ask.js'):
     _h.update(open(os.path.join(HERE, _f), 'rb').read())
 V = _h.hexdigest()[:8]
 
@@ -259,6 +259,7 @@ def page(path, title, desc, body, schema=None, og=None, bar=None, h1=None, extra
 {footer(depth)}
 {bar or ''}
 <script src="{p}assets/dir.js?v={V}" defer></script>
+{('<script src="%sassets/ask.js?v=%s" defer></script>' % (p, V)) if path == '' else ''}
 {('<script src="%sassets/livephone.js?v=%s" defer></script>' % (p, V)) if extra_js else ''}
 </body>
 </html>
@@ -289,10 +290,14 @@ def home():
         k, ic('pin'), E(RN[k]), n, '' if n == 1 else 's') for k in PUB_REGIONS for n in [sum(1 for e in ENTRIES if e['region'] == k)])
     est_tiles = ''.join('<li><a href="areas/%s/"><span class="ti">%s</span><span><b>%s</b><small>%s &middot; %d listing%s</small></span></a></li>' % (
         k, ic('pin'), E(ESTATES[k]['name']), E(RN[ESTATES[k]['region']]), len(v), '' if len(v) == 1 else 's') for k, v in PUB_ESTATES.items())
+    askdata = json.dumps({'cats': [{'slug': c['slug'], 'short': c['short'], 'blurb': c['blurb']} for c in CAT_LIST], 'areas': [{'slug': k, 'name': v['name'], 'region': v['region']} for k, v in ESTATES.items()]}).replace('</', '<\\/')
     tiers = tiers_strip()
     body = f'''<section class="finder" id="find"><div class="w"><div class="hero-t"><h1>Find a car workshop in Singapore</h1>
 <p>Search by service and area, then message the workshop directly on WhatsApp.</p></div>
 <p class="nojs">Browse by <a href="#services">service</a> or <a href="#regions">area</a> below.</p>
+<div class="panel askpanel"><form class="askbox" id="askform" role="search" aria-label="Describe your car problem"><label for="ask" class="asklab">Not sure what you need? Describe the problem in your own words</label>
+<div class="askrow"><input id="ask" type="text" maxlength="160" placeholder="e.g. my car idle is not stable" autocomplete="off" enterkeyhint="search"><button type="submit" class="btn">Find help</button></div>
+<p class="fine askhint">Works on this page only. We do not store your name or number, only the words you type, to improve this directory.</p></form></div>
 <form class="panel" id="finder" role="search" aria-label="Find a workshop" onsubmit="return false">
 <p class="shint" id="shint"><span class="pt" aria-hidden="true">&#128070;</span> Tap and type what you need and where, in any order</p>
 <label class="q"><span class="skip">Search workshops by service, area or name</span>{ic('search')}<input id="q" type="search" placeholder="e.g. gearbox repair Woodlands" autocomplete="off" autocapitalize="off" enterkeyhint="search"></label>
@@ -300,6 +305,8 @@ def home():
 <div class="frow"><span class="lab" id="lab-r">Region <small>optional, choose one or more</small></span><div class="opts" role="group" aria-labelledby="lab-r">{reg_opts}</div></div>
 <div class="fbar"><p id="count" aria-live="polite"><b>{len(ENTRIES)}</b> workshops</p><button type="button" class="linkbtn" id="reset">Clear</button></div>
 </form></div></section>
+<section class="askres" id="askres" hidden aria-live="polite"><div class="w" id="askbody"></div></section>
+<script type="application/json" id="askdata">{askdata}</script>
 <section class="feat" aria-roledescription="carousel" aria-label="Featured Premium workshops"><div class="w"><div class="sec-h"><h2>Featured Premium workshops <span class="spons">Featured (paid)</span></h2>
 <div class="car-nav"><button type="button" id="cprev" aria-label="Previous">{ic('chev-l')}</button><button type="button" id="cnext" aria-label="Next">{ic('chev-r')}</button></div></div>
 <div class="marq" id="marq"><ul class="track" id="track" aria-label="Featured workshops">{slides}</ul></div></div></section>
@@ -1072,7 +1079,7 @@ def build():
         open(os.path.join(d, 'index.html'), 'w', encoding='utf-8').write(h)
     open(OUT + '/404.html', 'w', encoding='utf-8').write(not_found())
     write_redirects()
-    for f in ('dir.css', 'dir.js', 'livephone.js'):
+    for f in ('dir.css', 'dir.js', 'livephone.js', 'ask.js'):
         shutil.copy(os.path.join(HERE, f), OUT + '/assets/' + f)
     shutil.copytree(os.path.join(HERE, 'img'), OUT + '/assets/img', dirs_exist_ok=True)
     make_icons()

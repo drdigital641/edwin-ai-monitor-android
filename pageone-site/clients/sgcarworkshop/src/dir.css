@@ -280,3 +280,17 @@ ul.chips{list-style:none;display:flex;flex-wrap:wrap;gap:8px;padding:0;margin:14
 .gattr{margin:8px 0 0;font:400 13px/1.3 Arial,Helvetica,sans-serif;color:#5E5E5E}.gmshort{margin-top:12px}.gmshort a{display:inline-flex;align-items:center;gap:6px;margin-right:12px;font-weight:600}.gmshort svg{width:16px;height:16px}
 .btn.alt{background:#fff;color:var(--ink);border:1px solid var(--line)}
 .main-acts .btn.big{width:100%;justify-content:center;white-space:normal;text-align:center}
+
+/* "Describe your problem" search (home) */
+.askbox{margin:0 0 14px;padding-bottom:14px;border-bottom:1px solid var(--line)}
+.asklab{display:block;font-weight:700;margin:0 0 8px;color:var(--ink)}
+.askrow{display:flex;gap:8px}.askrow input{flex:1 1 auto;min-width:0;min-height:52px;padding:12px 14px;border:2px solid var(--brand);border-radius:12px;font:inherit;font-size:1rem;background:#fff;color:var(--ink)}
+.askrow input:focus{outline:none;border-color:var(--amber);box-shadow:0 0 0 4px rgba(201,153,58,.28)}.askrow .btn{min-height:52px;flex:0 0 auto}
+.askhint{margin:6px 0 0}
+.askres{background:#fff;padding:18px 0;border-bottom:1px solid var(--line)}.askres[hidden]{display:none}
+.askres .ah{margin:0 0 10px}.achips{display:flex;flex-wrap:wrap;gap:8px;margin:0 0 12px}
+.achip{background:var(--gold-bg);border:1px solid var(--line);border-radius:999px;padding:5px 12px;font-size:.9rem}.achip small{color:var(--muted)}
+.likely{background:#f4f7fb;border-left:4px solid var(--amber);border-radius:8px;padding:12px 14px;margin:0 0 14px}
+.askres .sub{margin:14px 0 8px}.askres .dym{margin:14px 0}.askres .askmore{margin:12px 0}.askres .askclear{margin-top:14px}
+@media(max-width:480px){.askrow{flex-direction:column}.askrow .btn{width:100%}}
+.askpanel{margin-bottom:12px}.askpanel .askbox{margin:0;padding:0;border:0}
