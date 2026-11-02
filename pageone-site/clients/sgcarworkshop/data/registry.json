@@ -1,0 +1,551 @@
+[
+ {
+  "place_id": null,
+  "slug": "sg-garage",
+  "name_norm": "garage",
+  "postal_code": "569535",
+  "mobile": "+6597856612",
+  "status": "built",
+  "date": "2026-11-02"
+ },
+ {
+  "place_id": null,
+  "slug": "jacky-gearbox",
+  "name_norm": "jacky gearbox",
+  "postal_code": "757048",
+  "mobile": "+6584309665",
+  "status": "built",
+  "date": "2026-11-02"
+ },
+ {
+  "place_id": null,
+  "slug": "the-ecu-clinic",
+  "name_norm": "ecu clinic",
+  "postal_code": "415875",
+  "mobile": "+6598931923",
+  "status": "built",
+  "date": "2026-11-02"
+ },
+ {
+  "place_id": null,
+  "slug": "wrapstar-autostyle",
+  "name_norm": "wrapstar autostyle",
+  "postal_code": "768163",
+  "mobile": "+6597541833",
+  "status": "built",
+  "date": "2026-11-02"
+ },
+ {
+  "place_id": null,
+  "slug": "battery-rescue-sg",
+  "name_norm": "battery rescue",
+  "postal_code": "",
+  "mobile": "+6581259169",
+  "status": "built",
+  "date": "2026-11-02"
+ },
+ {
+  "place_id": null,
+  "slug": "cleanic-detailing",
+  "name_norm": "cleanic detailing",
+  "postal_code": "",
+  "mobile": "+6591086931",
+  "status": "built",
+  "date": "2026-11-02"
+ },
+ {
+  "place_id": null,
+  "slug": "autotex",
+  "name_norm": "autotex",
+  "postal_code": "417883",
+  "mobile": "+6597319547",
+  "status": "built",
+  "date": "2026-11-02"
+ },
+ {
+  "place_id": null,
+  "slug": "wei-car-spray-painting",
+  "name_norm": "wei car spray painting",
+  "postal_code": "768759",
+  "mobile": "+6596383306",
+  "status": "built",
+  "date": "2026-11-02"
+ },
+ {
+  "place_id": "ChIJjxxlECQX2jERdH2P4TiAez4",
+  "slug": "allen-motor-workshop",
+  "name_norm": "allen motor workshop",
+  "postal_code": "575636",
+  "mobile": "+6594521771",
+  "status": "built",
+  "date": "2026-11-02"
+ },
+ {
+  "place_id": "ChIJAQNc1uMX2jERR8jQv0yb4yY",
+  "slug": "elite-car-ventures-pte-ltd",
+  "name_norm": "elite car ventures",
+  "postal_code": "417800",
+  "mobile": "+6597203979",
+  "status": "built",
+  "date": "2026-11-02"
+ },
+ {
+  "place_id": "ChIJ6zFftrUX2jERlx4oI_q1cYw",
+  "slug": "everest-garage",
+  "name_norm": "everest garage",
+  "postal_code": "417800",
+  "mobile": "+6580400072",
+  "status": "built",
+  "date": "2026-11-02"
+ },
+ {
+  "place_id": "ChIJ65suP3YT2jERAAFHA1GJ_Lc",
+  "slug": "finzeo-car",
+  "name_norm": "finzeo car",
+  "postal_code": "737869",
+  "mobile": "+6591445781",
+  "status": "built",
+  "date": "2026-11-02"
+ },
+ {
+  "place_id": "ChIJ58nN5u4X2jERAXKr3EujJOM",
+  "slug": "first-east-centre",
+  "name_norm": "first east centre",
+  "postal_code": "417868",
+  "mobile": "+6597837908",
+  "status": "built",
+  "date": "2026-11-02"
+ },
+ {
+  "place_id": "ChIJAQAA6OEX2jERUq7p9tNykTA",
+  "slug": "fong-motors",
+  "name_norm": "fong motors",
+  "postal_code": "417883",
+  "mobile": "+6581820548",
+  "status": "built",
+  "date": "2026-11-02"
+ },
+ {
+  "place_id": "ChIJP5v91-MX2jERPao7cutCQCc",
+  "slug": "fr-auto",
+  "name_norm": "fr auto",
+  "postal_code": "417800",
+  "mobile": "+6594551357",
+  "status": "built",
+  "date": "2026-11-02"
+ },
+ {
+  "place_id": "ChIJZUJqC20Q2jERW3Z9Ro0P1cY",
+  "slug": "j-s-garage-pte-ltd",
+  "name_norm": "j s garage",
+  "postal_code": "737869",
+  "mobile": "+6596648646",
+  "status": "built",
+  "date": "2026-11-02"
+ },
+ {
+  "place_id": "ChIJeRLlTn4R2jEReZM-FkbmCwE",
+  "slug": "jss-motorworkz",
+  "name_norm": "jss motorworkz",
+  "postal_code": "608586",
+  "mobile": "+6583231517",
+  "status": "built",
+  "date": "2026-11-02"
+ },
+ {
+  "place_id": "ChIJp4FOWV892jER27Aj9fnv3PE",
+  "slug": "kaizen-motors",
+  "name_norm": "kaizen motors",
+  "postal_code": "417896",
+  "mobile": "+6588233366",
+  "status": "built",
+  "date": "2026-11-02"
+ },
+ {
+  "place_id": "ChIJ_cyRNeIX2jER4rrQtPyP-bg",
+  "slug": "kc-workshop",
+  "name_norm": "kc workshop",
+  "postal_code": "417807",
+  "mobile": "+6598510113",
+  "status": "built",
+  "date": "2026-11-02"
+ },
+ {
+  "place_id": "ChIJ7RvrZQkX2jERRytJMg974uY",
+  "slug": "kh-kinetics-autocare-night-friendly",
+  "name_norm": "kh kinetics autocare",
+  "postal_code": "417800",
+  "mobile": "+6581689939",
+  "status": "built",
+  "date": "2026-11-02"
+ },
+ {
+  "place_id": "ChIJawHUnbwX2jERyLmYP97wt9I",
+  "slug": "ky-auto",
+  "name_norm": "ky auto",
+  "postal_code": "417800",
+  "mobile": "+6580288693",
+  "status": "built",
+  "date": "2026-11-02"
+ },
+ {
+  "place_id": "ChIJUfxiDSQX2jERmXeECgnr7qU",
+  "slug": "lim-tan-motor",
+  "name_norm": "lim tan motor",
+  "postal_code": "575721",
+  "mobile": "+6588019393",
+  "status": "built",
+  "date": "2026-11-02"
+ },
+ {
+  "place_id": "ChIJL4CYD_QT2jERPAoaz4Rzzlw",
+  "slug": "major-autolution-pte-ltd",
+  "name_norm": "major autolution",
+  "postal_code": "737869",
+  "mobile": "+6582925564",
+  "status": "built",
+  "date": "2026-11-02"
+ },
+ {
+  "place_id": "ChIJIV4VU5IX2jERsJM-bFaJiDY",
+  "slug": "mk-auto-workz",
+  "name_norm": "mk auto workz",
+  "postal_code": "415875",
+  "mobile": "+6597263323",
+  "status": "built",
+  "date": "2026-11-02"
+ },
+ {
+  "place_id": "ChIJ_5YvDGMX2jERlMCBBoyqoJM",
+  "slug": "nightservicingsg",
+  "name_norm": "nightservicingsg",
+  "postal_code": "417800",
+  "mobile": "+6580420032",
+  "status": "built",
+  "date": "2026-11-02"
+ },
+ {
+  "place_id": "ChIJCYPTl-EX2jER4OKLgo56jw8",
+  "slug": "ong-kian-seng-motor-repairs",
+  "name_norm": "ong kian seng motor repairs",
+  "postal_code": "417883",
+  "mobile": "+6594879281",
+  "status": "built",
+  "date": "2026-11-02"
+ },
+ {
+  "place_id": "ChIJRVpQWW0Q2jERTbNOdeeVA3o",
+  "slug": "revol-carz-garage",
+  "name_norm": "revol carz garage",
+  "postal_code": "568047",
+  "mobile": "+6593222338",
+  "status": "built",
+  "date": "2026-11-02"
+ },
+ {
+  "place_id": "ChIJRVpQWW0Q2jER1_czMekW0uk",
+  "slug": "revol-carz-makeover-toh-guan",
+  "name_norm": "revol carz makeover",
+  "postal_code": "608583",
+  "mobile": "+6593229331",
+  "status": "built",
+  "date": "2026-11-02"
+ },
+ {
+  "place_id": "ChIJQfH6vFgW2jERfCKoZLKWBJ8",
+  "slug": "saaban-car-workshop",
+  "name_norm": "saaban car workshop",
+  "postal_code": "768159",
+  "mobile": "+6594507078",
+  "status": "built",
+  "date": "2026-11-02"
+ },
+ {
+  "place_id": "ChIJw5PT0csX2jERvFVgVjAwuRc",
+  "slug": "sk-garage-kaki-bukit",
+  "name_norm": "sk garage kaki bukit",
+  "postal_code": "417883",
+  "mobile": "+6593839132",
+  "status": "built",
+  "date": "2026-11-02"
+ },
+ {
+  "place_id": "ChIJOdFuZBkZ2jERzzREQDSArDQ",
+  "slug": "sonic-auto-garage",
+  "name_norm": "sonic auto garage",
+  "postal_code": "408934",
+  "mobile": "+6588560121",
+  "status": "built",
+  "date": "2026-11-02"
+ },
+ {
+  "place_id": "ChIJAQDAUuQX2jERoRZXr_Xk_xY",
+  "slug": "trident-auto-service-centre",
+  "name_norm": "trident auto service centre",
+  "postal_code": "415875",
+  "mobile": "+6596647615",
+  "status": "built",
+  "date": "2026-11-02"
+ },
+ {
+  "place_id": "ChIJdYmf5rkV2jERt4frfgGTD3Y",
+  "slug": "tts-performance-auto-pte-ltd",
+  "name_norm": "tts performance auto",
+  "postal_code": "768760",
+  "mobile": "+6580832021",
+  "status": "built",
+  "date": "2026-11-02"
+ },
+ {
+  "place_id": "ChIJIVnHcYgU2jERGaaXQmkN5RU",
+  "slug": "weng-kee-motor",
+  "name_norm": "weng kee motor",
+  "postal_code": "768761",
+  "mobile": "+6594381208",
+  "status": "built",
+  "date": "2026-11-02"
+ },
+ {
+  "place_id": "ChIJR6Sq07oX2jERP3PLNqseuDY",
+  "slug": "yigo-garage",
+  "name_norm": "yigo garage",
+  "postal_code": "408700",
+  "mobile": "+6582224907",
+  "status": "built",
+  "date": "2026-11-02"
+ },
+ {
+  "place_id": "ChIJPbPX2-EX2jERM94Mavnf8TE",
+  "slug": "yong-heng-motor-work",
+  "name_norm": "yong heng motor work",
+  "postal_code": "417883",
+  "mobile": "+6597113058",
+  "status": "built",
+  "date": "2026-11-02"
+ },
+ {
+  "place_id": "ChIJCYPTl-EX2jERIikfEI1aClw",
+  "slug": "boon-siong-vehicles-service",
+  "name_norm": "",
+  "postal_code": "",
+  "mobile": null,
+  "status": "rejected-not-car-repair",
+  "date": "2026-11-02"
+ },
+ {
+  "place_id": "ChIJCYPTl-EX2jER3eBD0ZAPsVs",
+  "slug": "chin-tong-motor-repair-works",
+  "name_norm": "",
+  "postal_code": "",
+  "mobile": null,
+  "status": "rejected-no-mobile",
+  "date": "2026-11-02"
+ },
+ {
+  "place_id": "ChIJSYwXNWsT2jERZWyiONA8GI4",
+  "slug": "cys-automobile-services",
+  "name_norm": "",
+  "postal_code": "",
+  "mobile": null,
+  "status": "rejected-no-mobile",
+  "date": "2026-11-02"
+ },
+ {
+  "place_id": "ChIJsQAHwOEX2jEReZapRaK2vkA",
+  "slug": "hanip-automobiles",
+  "name_norm": "",
+  "postal_code": "",
+  "mobile": null,
+  "status": "rejected-no-mobile",
+  "date": "2026-11-02"
+ },
+ {
+  "place_id": "ChIJKcgic4gU2jER-SiN1fV9wY4",
+  "slug": "hup-soon-lee-motor-service",
+  "name_norm": "",
+  "postal_code": "",
+  "mobile": null,
+  "status": "rejected-no-mobile",
+  "date": "2026-11-02"
+ },
+ {
+  "place_id": "ChIJk3JD3RgY2jERMBC39C1you8",
+  "slug": "hussain-sons-workshop",
+  "name_norm": "",
+  "postal_code": "",
+  "mobile": null,
+  "status": "rejected-no-mobile",
+  "date": "2026-11-02"
+ },
+ {
+  "place_id": "ChIJCYPTl-EX2jERtfsyOJCFGLU",
+  "slug": "join-motor-engineering-works",
+  "name_norm": "",
+  "postal_code": "",
+  "mobile": null,
+  "status": "rejected-no-mobile",
+  "date": "2026-11-02"
+ },
+ {
+  "place_id": "ChIJAQAA6OEX2jERCZ7QzuN463k",
+  "slug": "kang-car-repairers",
+  "name_norm": "",
+  "postal_code": "",
+  "mobile": null,
+  "status": "rejected-no-mobile",
+  "date": "2026-11-02"
+ },
+ {
+  "place_id": "ChIJCYPTl-EX2jERanVr43kWvEQ",
+  "slug": "precise-auto-service",
+  "name_norm": "",
+  "postal_code": "",
+  "mobile": null,
+  "status": "rejected-no-mobile",
+  "date": "2026-11-02"
+ },
+ {
+  "place_id": "ChIJh7PPi4IX2jERt0f1RfOWuRI",
+  "slug": "tmp-0f1rfowuri",
+  "name_norm": "",
+  "postal_code": "",
+  "mobile": null,
+  "status": "rejected-no-mobile",
+  "date": "2026-11-02"
+ },
+ {
+  "place_id": "ChIJIypZiBET2jERk0PCFMcSDWs",
+  "slug": "tmp-0pcfmcsdws",
+  "name_norm": "",
+  "postal_code": "",
+  "mobile": null,
+  "status": "rejected-no-mobile",
+  "date": "2026-11-02"
+ },
+ {
+  "place_id": "ChIJX1LEOPAX2jERV13V6J_s9fQ",
+  "slug": "tmp-13v6j_s9fq",
+  "name_norm": "",
+  "postal_code": "",
+  "mobile": null,
+  "status": "rejected-no-mobile",
+  "date": "2026-11-02"
+ },
+ {
+  "place_id": "ChIJschTNyU92jERP1F1jhMLqEM",
+  "slug": "tmp-1f1jhmlqem",
+  "name_norm": "",
+  "postal_code": "",
+  "mobile": null,
+  "status": "rejected-no-mobile",
+  "date": "2026-11-02"
+ },
+ {
+  "place_id": "ChIJMwPuINs82jER296tC8-z2Zo",
+  "slug": "tmp-296tc8z2zo",
+  "name_norm": "",
+  "postal_code": "",
+  "mobile": null,
+  "status": "rejected-no-mobile",
+  "date": "2026-11-02"
+ },
+ {
+  "place_id": "ChIJ_6hKxeEX2jERI4L_eu25WQ4",
+  "slug": "tmp-4l_eu25wq4",
+  "name_norm": "",
+  "postal_code": "",
+  "mobile": null,
+  "status": "rejected-no-mobile",
+  "date": "2026-11-02"
+ },
+ {
+  "place_id": "ChIJITpmw5IT2jERC4WFEBV7ESc",
+  "slug": "tmp-4wfebv7esc",
+  "name_norm": "",
+  "postal_code": "",
+  "mobile": null,
+  "status": "rejected-not-car-repair",
+  "date": "2026-11-02"
+ },
+ {
+  "place_id": "ChIJWSHxsX8T2jERX57MH2B1T4U",
+  "slug": "tmp-57mh2b1t4u",
+  "name_norm": "",
+  "postal_code": "",
+  "mobile": null,
+  "status": "rejected-not-car-repair",
+  "date": "2026-11-02"
+ },
+ {
+  "place_id": "ChIJm6GjBwAT2jERG6HETve0GM0",
+  "slug": "tmp-6hetve0gm0",
+  "name_norm": "",
+  "postal_code": "",
+  "mobile": null,
+  "status": "rejected-not-car-repair",
+  "date": "2026-11-02"
+ },
+ {
+  "place_id": "ChIJV4jLQOQ82jERE6t4fX2EiAw",
+  "slug": "tmp-6t4fx2eiaw",
+  "name_norm": "",
+  "postal_code": "",
+  "mobile": null,
+  "status": "rejected-not-car-repair",
+  "date": "2026-11-02"
+ },
+ {
+  "place_id": "ChIJ5e9vdQcY2jERY8o8xJU2xq4",
+  "slug": "tmp-8o8xju2xq4",
+  "name_norm": "",
+  "postal_code": "",
+  "mobile": null,
+  "status": "rejected-no-mobile",
+  "date": "2026-11-02"
+ },
+ {
+  "place_id": "ChIJg0esmhET2jERa_svPETM0mY",
+  "slug": "tmp-_svpetm0my",
+  "name_norm": "",
+  "postal_code": "",
+  "mobile": null,
+  "status": "rejected-no-mobile",
+  "date": "2026-11-02"
+ },
+ {
+  "place_id": "ChIJV4jLQOQ82jERabMcwYPpruk",
+  "slug": "tmp-bmcwyppruk",
+  "name_norm": "",
+  "postal_code": "",
+  "mobile": null,
+  "status": "rejected-no-mobile",
+  "date": "2026-11-02"
+ },
+ {
+  "place_id": "ChIJH460qPQX2jERtby4gyWtkSA",
+  "slug": "tmp-by4gywtksa",
+  "name_norm": "",
+  "postal_code": "",
+  "mobile": null,
+  "status": "rejected-no-mobile",
+  "date": "2026-11-02"
+ },
+ {
+  "place_id": "ChIJNW7IQfQX2jEReC6172dS6zg",
+  "slug": "tmp-c6172ds6zg",
+  "name_norm": "",
+  "postal_code": "",
+  "mobile": null,
+  "status": "rejected-no-mobile",
+  "date": "2026-11-02"
+ },
+ {
+  "place_id": "ChIJ2eKWeZ8X2jERlOuhGvPM9uI",
+  "slug": "chen-jin-workshop",
+  "name_norm": "",
+  "postal_code": "",
+  "mobile": null,
+  "status": "rejected-not-car-repair",
+  "date": "2026-11-02"
+ }
+]

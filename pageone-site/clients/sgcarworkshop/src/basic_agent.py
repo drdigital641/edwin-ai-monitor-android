@@ -343,6 +343,70 @@ def enrich(a, key):
     jsave('usage.json', u); print(json.dumps({'results': out, 'details_calls_today': ut['details']}))
 
 
+def queue_add(a, key):
+    """Add pre-screened candidates to data/candidate_queue.json. Each is checked against the registry first (place_id, mobile, name+postal); the place_id comes from a FREE ID-only Text Search."""
+    import registry as R
+    reg = R.load(); q = jload('candidate_queue.json', []); have = {c['place_id'] for c in q}; hm = {c['mobile_hint'] for c in q}; out = []
+    for c in json.loads(a.json):
+        m = re.sub(r'\D', '', c['mobile']); m = '+' + (m if m.startswith('65') else '65' + m)
+        e, why = R.match(reg, None, m, c['name'], c['postal'])
+        if e: out.append((c['name'], 'SKIPPED duplicate (%s) of %s' % (why, e['slug']))); continue
+        res = gcall(API + 'places:searchText', key, 'places.id', {'textQuery': '%s %s Singapore %s' % (c['name'], c['address'].split(',')[0], c['postal']), 'regionCode': 'SG', 'pageSize': 1}).get('places', [])
+        if not res: out.append((c['name'], 'SKIPPED no Google match')); continue
+        pid = res[0]['id']; e, why = R.match(reg, pid)
+        if e or pid in have: out.append((c['name'], 'SKIPPED duplicate (place_id) of %s' % (e and e['slug']))); continue
+        q.append(dict(place_id=pid, name_hint=c['name'], address_hint=c['address'], postal_code=str(c['postal']), mobile_hint=m, source='edwin_queue', added=TODAY)); have.add(pid); hm.add(m); out.append((c['name'], 'queued'))
+    jsave('candidate_queue.json', q); print(json.dumps({'results': out, 'queue_size': len(q)}, indent=1))
+
+
+def enrich_queue(a, key):
+    """Build-time confirmation: for up to --limit queued candidates, ONE Place Details call. Registry check first (no call if it matches). Pass = OPERATIONAL + SG mobile on Google;
+    the record is then written to data/workshops (Google mobile, source google_profile) and the cache; fail = registry entry (rejected-no-mobile / closed) and dropped from the queue."""
+    import registry as R
+    global DATA_MOD
+    import data as DATA_MOD
+    reg = R.load(); q = jload('candidate_queue.json', []); u, ut = usage_today(); keep = []; out = []; done = 0
+    os.makedirs(a.raw_dir, exist_ok=True); cd = os.path.join(DATA, 'google_cache'); os.makedirs(cd, exist_ok=True)
+    for c in q:
+        if done >= a.limit or ut['details'] >= HARD_CAP: keep.append(c); continue
+        e, why = R.match(reg, c['place_id'], None, c['name_hint'], c['postal_code'])
+        if e: out.append((c['name_hint'], 'SKIPPED duplicate of %s (%s), no Places call' % (e['slug'], why))); continue
+        ut['details'] += 1; done += 1
+        try: g = gcall(API + 'places/' + c['place_id'], key, ENRICH_MASK)
+        except urllib.error.HTTPError as ex:
+            if ex.code == 429: ut['details'] -= 1; done -= 1; keep.append(c); out.append((c['name_hint'], '429 quota exhausted, stays queued')); continue
+            raise
+        json.dump(g, open(os.path.join(a.raw_dir, c['place_id'] + '.json'), 'w'), indent=1, ensure_ascii=False)
+        gm = re.sub(r'\D', '', g.get('internationalPhoneNumber', '')); gm = '+' + gm if gm else ''
+        name = (g.get('displayName') or {}).get('text') or c['name_hint']; fa = g.get('formattedAddress', ''); pc = re.search(r'(\d{6})\s*$', fa); pc = pc.group(1) if pc else c['postal_code']
+        why = None; st = None
+        if g.get('businessStatus') != 'OPERATIONAL': why, st = 'closed or not OPERATIONAL on Google', 'closed'
+        elif not re.match(r'^\+65[89]\d{7}$', gm): why, st = 'Google listing has no SG mobile (landline only or no phone)', 'rejected-no-mobile'
+        elif g.get('primaryType') not in OK_PRIMARY: why, st = 'primaryType %s is not car repair' % g.get('primaryType'), 'rejected-not-car-repair'
+        else:
+            e, w = R.match(reg, c['place_id'], None, name, pc)
+            if e: why, st = 'Google data duplicates %s (%s)' % (e['slug'], w), None
+        if why:
+            if st: R.add(reg, c['place_id'], None, name, pc, None, st, TODAY)
+            out.append((name, 'DROPPED: ' + why)); continue
+        slug = unique_slug(name); street = re.sub(r',?\s*Singapore\s*\d{6}\s*$', '', fa)
+        r = {'schema_version': 1, 'slug': slug, 'place_id': c['place_id'], 'place_id_checked_at': TODAY, 'name': name, 'name_source_url': 'google_profile', 'name_checked_at': TODAY,
+             'address': {'block': '', 'street': street, 'unit': '', 'building': ''}, 'postal_code': pc, 'address_source_url': 'google_profile', 'address_checked_at': TODAY,
+             'categories': ['SERV'], 'services': ['General servicing and repair'], 'services_source_url': 'google_profile',
+             'phones': [{'e164': gm, 'kind': 'mobile', 'whatsapp': True, 'source': 'google_profile', 'checked_at': TODAY}],
+             'google_screen': {'passed': True, 'reason': 'OPERATIONAL, car repair, SG mobile on Google profile', 'checked_at': TODAY},
+             'status': 'pending', 'tier': 'basic', 'first_seen_at': TODAY, 'last_verified_at': TODAY, 'collector_version': 'agent-v5'}
+        auto_place(r)
+        jsave('workshops/%s.json' % slug, r)
+        kp = {k: g.get(k) for k in ('businessStatus', 'primaryType', 'types', 'rating', 'userRatingCount', 'websiteUri', 'paymentOptions', 'parkingOptions')}
+        kp['editorialSummary'] = (g.get('editorialSummary') or {}).get('text'); kp['weekdayDescriptions'] = (g.get('regularOpeningHours') or {}).get('weekdayDescriptions')
+        kp['review_count_seen'] = len(g.get('reviews') or []); kp['review_themes'] = None; kp['fetched_at'] = TODAY; kp['place_id'] = c['place_id']; kp['source'] = 'google_places'
+        jsave('google_cache/%s.json' % slug, kp)
+        R.add(reg, c['place_id'], slug, name, pc, gm, 'built', TODAY); out.append((slug, 'ok (Google mobile %s; Grok hint %s%s)' % (gm, c['mobile_hint'], '' if gm == c['mobile_hint'] else ' DIFFERS, Google wins')))
+    R.save(reg); jsave('candidate_queue.json', keep); jsave('usage.json', u)
+    print(json.dumps({'results': out, 'queue_left': len(keep), 'details_calls_today': ut['details']}, indent=1))
+
+
 def main():
     ap = argparse.ArgumentParser(); sub = ap.add_subparsers(dest='cmd', required=True)
     d = sub.add_parser('discover'); d.add_argument('--estates', required=True)
@@ -353,12 +417,15 @@ def main():
     dd = sub.add_parser('daily'); dd.add_argument('--max-places', type=int, default=25); dd.add_argument('--max-search', type=int, default=60)
     for c in ('screen', 'resume', 'closed'):
         x = sub.add_parser(c); x.add_argument('--max-places', type=int, default=25); x.add_argument('--refresh', action='store_true')
+    qa = sub.add_parser('queue-add'); qa.add_argument('--json', required=True, help='JSON list of {name,address,postal,mobile}')
+    eq = sub.add_parser('enrich-queue'); eq.add_argument('--limit', type=int, default=10); eq.add_argument('--raw-dir', required=True)
     en = sub.add_parser('enrich'); en.add_argument('--slugs', required=True); en.add_argument('--raw-dir', required=True)
     a = ap.parse_args()
     a.__dict__['place_id'] = a.__dict__.get('place_id'); a.__dict__['planning_area'] = a.__dict__.get('planning_area')
+    if a.cmd in ('discover', 'stage', 'screen', 'resume', 'daily'): sys.exit('Retired 3 Nov 2026 (rigid database rules): the workshop data holds only confirmed-mobile records. Candidates go in data/candidate_queue.json (queue-add) and are confirmed by enrich-queue at build time.')
     key = os.environ.get('PLACES_SERVER_KEY')
-    if a.cmd in ('discover', 'screen', 'resume', 'closed', 'daily', 'enrich') and not key: sys.exit('Set PLACES_SERVER_KEY in the environment (server key, Places API New only).')
-    {'discover': lambda: discover(a, key), 'stage': lambda: stage(a), 'screen': lambda: screen(a, key), 'resume': lambda: screen(a, key), 'closed': lambda: refresh_closed(a, key), 'daily': lambda: daily(a, key), 'enrich': lambda: enrich(a, key)}[a.cmd]()
+    if a.cmd in ('discover', 'screen', 'resume', 'closed', 'daily', 'enrich', 'queue-add', 'enrich-queue') and not key: sys.exit('Set PLACES_SERVER_KEY in the environment (server key, Places API New only).')
+    {'discover': lambda: discover(a, key), 'stage': lambda: stage(a), 'screen': lambda: screen(a, key), 'resume': lambda: screen(a, key), 'closed': lambda: refresh_closed(a, key), 'daily': lambda: daily(a, key), 'enrich': lambda: enrich(a, key), 'queue-add': lambda: queue_add(a, key), 'enrich-queue': lambda: enrich_queue(a, key)}[a.cmd]()
 
 
 if __name__ == '__main__':

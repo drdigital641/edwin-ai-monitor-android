@@ -304,12 +304,49 @@ import subprocess
 live_pids = {e['place_id'] for e in ENTRIES if e.get('place_id')}
 for f in _data.workshop_files():
     r = json.load(open(f))
-    _stub = r.get('status') == 'pending' and not r.get('name')       # queued for the Google screen; identity filled only if it passes
     if _data.FORBIDDEN_KEYS & set(r): print('RECORD', os.path.basename(f), 'stores Google-only field(s)'); bad += 1
-    for p in ([] if _stub else _data.record_problems(r)): print('RECORD', os.path.basename(f), p); bad += 1
+    for p in _data.record_problems(r): print('RECORD', os.path.basename(f), p); bad += 1
     if r['status'] != 'active' and r['place_id'] in live_pids: print('NON-ACTIVE record is live', r['slug']); bad += 1
-for r in _data._jload('pending.json', []):
-    if r['place_id'] in live_pids or not r.get('reason') or not r.get('date'): print('pending.json entry live or incomplete', r.get('slug')); bad += 1
+# RIGID DATABASE RULES (Edwin, 3 Nov 2026): (1) no record without a confirmed SG mobile; (2) no duplicates, tracked by the permanent registry
+import registry as _reg
+_REG = _reg.load()
+for f in _data.workshop_files():                       # every stored record, even pending, must hold a Google/own-site confirmed SG mobile and a passed screen
+    r = json.load(open(f))
+    if not any(p.get('kind') == 'mobile' and _reg.MOBILE_RE.match(p.get('e164', '')) and p.get('source') in ('google_profile', 'own_site') for p in r.get('phones', [])): print('RECORD', os.path.basename(f), 'has no confirmed SG mobile'); bad += 1
+    if (r.get('google_screen') or {}).get('passed') is not True: print('RECORD', os.path.basename(f), 'has not passed the Google screen (unscreened or failed records must not be stored)'); bad += 1
+for e in ENTRIES:
+    if not _reg.MOBILE_RE.match(e.get('phone') or ''): print('LISTING without SG mobile', e['slug']); bad += 1
+for _k in ('slug', 'place_id'):
+    _c = {}
+    for e in ENTRIES:
+        if e.get(_k): _c.setdefault(e[_k], []).append(e['slug'])
+    for _v, _l in _c.items():
+        if len(_l) > 1: print('DUPLICATE', _k, _v, _l); bad += 1
+_pc = {}
+for e in ENTRIES: _pc.setdefault(e.get('phone'), []).append(e['slug'])
+for _v, _l in _pc.items():
+    if len(_l) > 1: print('WARNING (not a failure): shared mobile', _v, _l)
+_seen = {}
+for x in _REG:
+    if x.get('status') not in _reg.STATUSES: print('registry bad status', x.get('slug')); bad += 1
+    if set(x) != {'place_id', 'slug', 'name_norm', 'postal_code', 'mobile', 'status', 'date'}: print('registry entry has wrong fields', x.get('slug')); bad += 1
+    if x.get('mobile') and not _reg.MOBILE_RE.match(x['mobile']): print('registry bad mobile', x.get('slug')); bad += 1
+    for _k in ('place_id', 'slug'):
+        if x.get(_k):
+            if (_k, x[_k]) in _seen: print('registry DUPLICATE', _k, x[_k]); bad += 1
+            _seen[(_k, x[_k])] = 1
+    if x['status'] != 'built' and x.get('place_id') in live_pids: print('registry says not built but listing is live', x['slug']); bad += 1
+_blt = {x['slug'] for x in _REG if x['status'] == 'built'}
+for e in ENTRIES:
+    if e['slug'] not in _blt: print('live listing missing from registry (run registry.py sync)', e['slug']); bad += 1
+_ids = {x['place_id'] for x in _REG if x.get('place_id')}; _mob = {x['mobile'] for x in _REG if x.get('mobile')}
+_cq = _data._jload('candidate_queue.json', [])
+_qm = set(); _qp = set()
+for c in _cq:
+    if c['place_id'] in _ids or c['place_id'] in _qp or _reg.match(_REG, None, None, c['name_hint'], c['postal_code'])[0] or c['place_id'] in {r.get('place_id') for r in map(lambda f: json.load(open(f)), _data.workshop_files())}:
+        print('QUEUE candidate duplicates the registry or itself', c['name_hint']); bad += 1
+    _qp.add(c['place_id']); _qm.add(c['mobile_hint'])
+    if set(c) != {'place_id', 'name_hint', 'address_hint', 'postal_code', 'mobile_hint', 'source', 'added'}: print('queue entry has wrong fields', c.get('name_hint')); bad += 1
 if _data.REMOVED & live_pids: print('REMOVED place_id is live', _data.REMOVED & live_pids); bad += 1
 _ign = open(os.path.join(os.path.dirname(os.path.abspath(__file__)), '..', '.gitignore')).read() if os.path.exists(os.path.join(os.path.dirname(os.path.abspath(__file__)), '..', '.gitignore')) else ''
 if 'snapshots/' not in _ign: print('.gitignore must list snapshots/'); bad += 1
