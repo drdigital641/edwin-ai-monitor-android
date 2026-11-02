@@ -12,7 +12,7 @@
    "checked_at": "2026-11-02"
   }
  ],
- "status": "pending",
+ "status": "active",
  "tier": "basic",
  "categories": [
   "SERV"
@@ -43,5 +43,8 @@
  "collector_version": "agent-v4",
  "estate": "kaki-bukit",
  "planning_area": "Bedok",
- "region": "east"
+ "region": "east",
+ "lat": 1.341364875381921,
+ "lng": 103.9124144900048,
+ "geo_source": "onemap"
 }

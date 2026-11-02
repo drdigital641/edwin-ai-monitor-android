@@ -23,7 +23,7 @@ Last updated: 2026-11-02
 - [Mobile (island-wide)](https://sgcarworkshop.sg/areas/mobile/): Mobile car services that come to your car anywhere in Singapore. These listings have no single shopfront, so the work is done where your car is parked.
 
 ## Estates and industrial areas
-- [Kaki Bukit](https://sgcarworkshop.sg/areas/kaki-bukit/): Kaki Bukit is an industrial estate in the East region, around Kaki Bukit Avenue and Kaki Bukit Road, with many workshops, trade units and parts suppliers. 16 listings.
+- [Kaki Bukit](https://sgcarworkshop.sg/areas/kaki-bukit/): Kaki Bukit is an industrial estate in the East region, around Kaki Bukit Avenue and Kaki Bukit Road, with many workshops, trade units and parts suppliers. 17 listings.
 - [Ubi](https://sgcarworkshop.sg/areas/ubi/): Ubi is an industrial area near Paya Lebar in the Geylang planning area (Central region), around Ubi Avenue and Ubi Road, with motor workshops mixed in among light industry. 2 listings.
 - [Woodlands](https://sgcarworkshop.sg/areas/woodlands/): Woodlands is the main industrial area in the north-west, around Woodlands Industrial Park and the Woodlands Avenue roads, close to the Causeway. 4 listings.
 - [Kranji](https://sgcarworkshop.sg/areas/kranji/): Kranji is an industrial area in the north-west, around Kranji Way, Jalan Lam Huat and Sungei Kadut. 1 listing.
@@ -68,6 +68,7 @@ Last updated: 2026-11-02
 - [TTS Performance Auto](https://sgcarworkshop.sg/workshops/tts-performance-auto-pte-ltd/): General servicing and repair, Basic listing, Yishun
 - [Weng Kee Motor](https://sgcarworkshop.sg/workshops/weng-kee-motor/): General servicing and repair, Basic listing, Yishun
 - [Yigo Garage](https://sgcarworkshop.sg/workshops/yigo-garage/): General servicing and repair, Basic listing, Ubi
+- [Yong Heng Motor Work](https://sgcarworkshop.sg/workshops/yong-heng-motor-work/): General servicing and repair, Basic listing, Kaki Bukit
 
 ## More
 - [List your workshop](https://sgcarworkshop.sg/list-your-workshop/)
