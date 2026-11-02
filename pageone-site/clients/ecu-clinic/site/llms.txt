@@ -1,0 +1,65 @@
+# The ECU Clinic
+
+> ABS pump and module repair and car electronics fault diagnosis in Kaki Bukit, Singapore. Also Honda front radar (Honda Sensing) repair, BMW CAS module repair, Mercedes 7G and 9G TCU repair, Mercedes steering lock (ELV) repair, brand-new OEM hybrid batteries and BMW temperature programming. Repairs come with a 6-month warranty. Many car workshops send their ABS and module repairs to us.
+
+- Address: Premier @ Kaki Bukit, 8 Kaki Bukit Avenue 4, #06-43, Singapore 415875
+- WhatsApp or call: +65 9893 1923 (ask for Ching). WhatsApp is the fastest way to reach us.
+- Hours: Monday to Friday, 9am to 7pm. Saturday, 9am to 3pm. Closed on Sundays and public holidays. WhatsApp enquiries are welcome 24/7, and after-hours appointments can be arranged.
+- Pick-up and delivery available. Hybrid battery warranty: 1 year or 100,000 km.
+- Website: https://theecuclinicsg.com/
+- Facebook: https://www.facebook.com/TheECUclinicSG
+
+## Services
+
+- [ABS Pump & Module Repair](https://theecuclinicsg.com/services/abs-pump-repair/): ABS pump and ABS module repair in Kaki Bukit. ABS, ESP and ESC units, used and recon pumps, Toyota Voxy, Noah and Sienta. 6-month warranty. WhatsApp 9893 1923.
+- [Mercedes 7G & 9G TCU Repair](https://theecuclinicsg.com/services/mercedes-7g-9g-tcu-repair/): Mercedes 7G-Tronic (722.9) TCU and conductor plate repair, done locally in Kaki Bukit: fault codes read first, new filter, gasket and oil on the same job. 9G-Tronic TCU too.
+- [Mercedes Steering Lock (ELV) Repair](https://theecuclinicsg.com/services/mercedes-steering-lock-elv-repair/): Key won’t turn or Mercedes won’t start? We test and repair the electronic steering lock (ELV/ESL), or fit an ELV emulator, in Kaki Bukit. Pick-up if your car can’t be driven.
+- [Hybrid Battery Replacement](https://theecuclinicsg.com/services/hybrid-battery-replacement/): Brand-new OEM hybrid battery replacement in Kaki Bukit, with a warranty of 1 year or 100,000 km. WhatsApp your car model and year: 9893 1923.
+- [Honda Front Radar (ADAS) Repair](https://theecuclinicsg.com/services/honda-radar-repair/): Honda front radar (millimeter wave radar) repair in Kaki Bukit. P2583 radar function error and Honda Sensing warnings. We repair your unit instead of replacing it. WhatsApp 9893 1923.
+- [BMW CAS Module Repair](https://theecuclinicsg.com/services/bmw-cas-module-repair/): BMW CAS (Car Access System) module repair in Kaki Bukit. Key not recognised, car won’t start or steering lock (ELV) faults. WhatsApp 9893 1923.
+- [Mercedes Engine ECU Repair](https://theecuclinicsg.com/services/mercedes-ecu-repair/): Mercedes-Benz engine ECU repair in Kaki Bukit. We test the ECU and repair your own unit on the bench, such as the Bosch MED17.7.2 on the M274 engine. WhatsApp 9893 1923.
+- [Audi ABS Pump & Module Repair](https://theecuclinicsg.com/services/audi-abs-repair/): Audi ABS pump and ABS module repair in Kaki Bukit. We read the brake electronics codes and repair your own ABS module. 6-month warranty. WhatsApp 9893 1923.
+- [BMW Temperature Programming](https://theecuclinicsg.com/services/bmw-temperature-programming/): BMW coolant temperature programming in Kaki Bukit: bring a high running temperature down to about 95°C. Most models 2010–2018. WhatsApp 9893 1923.
+
+## Fault codes we repair
+
+- 121-11 (Honda): VSA Solenoid Valve Malfunction
+- 81-19 / 81-20 (Honda): Yaw rate or acceleration sensor inside the VSA modulator
+- U0416 (Honda): VSA system or VSA modulator control unit malfunction
+- P2583 (Honda): Millimeter Wave Radar Function Error
+- U3000-49 (Honda): Camera unit / millimeter wave radar internal failure
+- 01276 / 16352 (Audi): ABS hydraulic pump and ABS control module defective
+- 5001 / 5944 (N30/4) (Mercedes-Benz): Internal fault in the ESP control unit
+- A11E / A0AF / A0B4 (BMW): CAS: ELV fault, processor, engine start
+- P001A / P002A (Mercedes-Benz): Camtronic solenoid circuit faults traced to the engine ECU
+
+Any other warning light or fault code: WhatsApp a photo of the scan tool or dashboard to +65 9893 1923.
+
+## Articles
+
+- [Honda Yaw Rate Sensor Malfunction (81-19)](https://theecuclinicsg.com/articles/honda-yaw-rate-sensor-malfunction/): Honda yaw rate sensor and acceleration sensor faults inside the VSA modulator control unit (81-19, 81-20, C0063, C0062): what they mean and how they are repaired.
+- [BMW CAS Fault Codes: ELV Fault, Processor and Engine Start](https://theecuclinicsg.com/articles/bmw-cas-elv-fault-codes/): What BMW CAS fault codes such as A11E ELV Fault, A0AF Processor and A0B4 Engine Start mean, why the car may not start, and repairing the CAS module.
+- [Honda VSA Solenoid Valve Malfunction (121-11)](https://theecuclinicsg.com/articles/honda-vsa-solenoid-valve-malfunction/): What the Honda VSA Solenoid Valve Malfunction code (121-11) means, why ABS, VSA, parking brake and steering warnings come on together, and how it is fixed.
+- [Mercedes ESP Control Unit Fault: N30/4 Internal Fault (5001)](https://theecuclinicsg.com/articles/mercedes-esp-control-unit-fault-n30-4/): What the Mercedes-Benz fault “internal fault in component N30/4 (Electronic Stability Program control unit)” means, the warnings it causes, and repairing the ESP unit.
+- [Honda Millimeter Wave Radar Function Error (P2583)](https://theecuclinicsg.com/articles/honda-millimeter-wave-radar-error-p2583/): What the Honda P2583 Millimeter Wave Radar Function Error and Aiming Incomplete codes mean, why Honda Sensing switches off, and repairing the radar instead of replacing it.
+- [ABS Warning Light On? Common Causes and What To Do](https://theecuclinicsg.com/articles/abs-warning-light-causes/): Why the ABS warning light comes on, what it means for your brakes, the common causes from sensors to the ABS pump and module, and what to do next.
+- [Mercedes “Active Brake Assist Functions Limited”: What It Means](https://theecuclinicsg.com/articles/mercedes-active-brake-assist-functions-limited/): Mercedes “Active Brake Assist functions limited”? Often a dirty or knocked radar sensor. If it stays on or an ABS or ESP light shows, read the fault code.
+- [Mercedes 7G-Tronic (722.9) TCU Problems: Signs and Repair](https://theecuclinicsg.com/articles/mercedes-7g-tronic-722-9-tcu-problems/): Signs of a failing TCU on the Mercedes 7G-Tronic 722.9 gearbox: limp mode, harsh shifts and gearbox warnings. What the conductor plate does and how it is repaired.
+- [Mercedes Steering Lock (ELV) Failure: Signs and Repair](https://theecuclinicsg.com/articles/mercedes-steering-lock-elv-failure/): Key won’t turn or Mercedes won’t start? Signs of a failing electronic steering lock (ELV/ESL), what it does, and how it is repaired in Singapore.
+- [Signs Your Hybrid Battery Needs Replacing](https://theecuclinicsg.com/articles/hybrid-battery-replacement-signs/): The common signs of a weak hybrid battery, what causes it, and replacing it with a brand-new OEM battery with a 1-year or 100,000 km warranty.
+- [Toyota Voxy, Noah & Sienta ABS Pump: Repair, Recon or Used](https://theecuclinicsg.com/articles/toyota-voxy-noah-sienta-abs-pump/): ABS pump and module options for the Toyota Voxy, Noah and Sienta in Singapore: repair, replace, used or recon, with plug and play available and a 6-month warranty.
+- [Why Are the ABS and ESC Lights On in My Hyundai or Kia?](https://theecuclinicsg.com/articles/hyundai-kia-abs-esc-light-on/): Why the ABS and ESC lights come on together in a Hyundai or Kia, whether it is safe to drive, the usual causes, and how the ESC unit is checked and repaired in Singapore.
+- [Why Are the ABS, VSC and TRC Lights On in My Toyota?](https://theecuclinicsg.com/articles/toyota-abs-vsc-trc-lights-on/): Why the ABS, VSC and TRC OFF lights come on together in a Toyota, if it is safe to drive, what to check first, and how the ABS unit is repaired in Singapore.
+- [Why Are the ABS, VDC and SLIP Lights On in My Nissan?](https://theecuclinicsg.com/articles/nissan-abs-vdc-slip-lights-on/): Why the ABS, VDC OFF and SLIP lights come on together in a Nissan, if it is safe to drive, what to check first, and how the ABS unit is repaired in Singapore.
+- [Why Are the ABS and ESP Lights On in My VW or Audi?](https://theecuclinicsg.com/articles/vw-audi-abs-esp-light-on/): Why the ABS and ESP (ESC) lights come on together in a VW, Audi or Skoda, if it is safe to drive, what to check first, and ABS unit repair in Singapore.
+- [Why Are the ABS and DSC Lights On in My BMW?](https://theecuclinicsg.com/articles/bmw-abs-dsc-light-on/): Why the ABS and DSC lights come on together in a BMW or Mini, whether it is safe to drive, what to check first, and BMW ABS unit repair in Singapore.
+- [Why Are the ABS and VSA Lights On in My Honda?](https://theecuclinicsg.com/articles/honda-abs-vsa-light-on/): Why the ABS and VSA lights come on together in a Honda, whether it is safe to drive, the simple causes to rule out first, and Honda ABS repair in Singapore.
+- [Why Are the ABS and Traction Control Lights On in My Chevrolet?](https://theecuclinicsg.com/articles/chevrolet-abs-esc-light-on/): Why the ABS and traction or stability control lights come on in a Chevrolet, whether it is safe to drive, what to check first, and ABS repair in Singapore.
+- [Why Are the ABS and DSTC Lights On in My Volvo?](https://theecuclinicsg.com/articles/volvo-abs-dstc-light-on/): Why the ABS and DSTC or stability and traction control lights come on in a Volvo, whether it is safe to drive, what to check first, and ABS module repair in Singapore.
+- [Why Are the ABS and ESP Lights On in My Mercedes-Benz?](https://theecuclinicsg.com/articles/mercedes-abs-esp-light-on/): Why the ABS and ESP lights come on in a Mercedes-Benz, whether it is safe to drive, what to check first, and ESP pump and ABS module repair in Singapore.
+- [Why Does My ABS Pump Buzz or Make Noise When Braking?](https://theecuclinicsg.com/articles/abs-pump-noise-buzzing-when-braking/): Why the ABS pump buzzes, clicks or pulses the brake pedal when braking, when that is normal, when it points to a fault, and what to do next in Singapore.
+- [Is It Normal for a BMW to Run at 120°C?](https://theecuclinicsg.com/articles/bmw-coolant-temperature-120-normal/): Is it normal for a BMW to show 100 to 120°C on the temperature display? What is usually normal, the warning signs, and what temperature programming does.
+- [Mercedes Airbag Light On: NECK-PRO Codes B1C1113 and B1C1713](https://theecuclinicsg.com/articles/mercedes-airbag-light-neck-pro-b1c1113/): A Mercedes C-Class with the airbag light on and "Front left malfunction, Consult workshop". What the NECK-PRO codes B1C1113 and B1C1713 mean and what to do.
+- [Toyota Alphard Hybrid C1391 “Abnormal Leak in Accumulator”: New Brake Actuator Fitted](https://theecuclinicsg.com/articles/toyota-alphard-hybrid-c1391-brake-actuator/): A 2020 Toyota Alphard / Vellfire Hybrid with C1391 "Abnormal Leak in Accumulator" and C13A9. What the codes mean and the new brake actuator 44510-30290 we fitted.
+- [Audi ABS Code 01276 “ABS Hydraulic Pump: Defective” and 16352 “Control Module”](https://theecuclinicsg.com/articles/audi-abs-fault-code-01276-hydraulic-pump/): An Audi A3 with ABS code 01276 "ABS Hydraulic Pump: Defective" and 16352 "Control Module: Defective" plus sensor codes. What they mean and how the ABS module was repaired.
+- [Toyota C-HR Hybrid Battery: Taken Out From Under the Rear Seat](https://theecuclinicsg.com/articles/toyota-chr-hybrid-battery-removal/): A Toyota C-HR Hybrid in our workshop: the Ni-MH hybrid battery under the rear seat, taken out and opened on the bench. What it looks like inside and what to know before replacing one.
