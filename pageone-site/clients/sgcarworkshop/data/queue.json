@@ -152,275 +152,857 @@
  "ChIJH8vAgfQX2jERfnuhQp4FfKo": {
   "estate": "ubi",
   "cat": "SERV",
-  "state": "discovered",
+  "state": "staged",
   "date": "2026-11-02"
  },
  "ChIJR6Sq07oX2jERP3PLNqseuDY": {
   "estate": "ubi",
   "cat": "SERV",
-  "state": "discovered",
+  "state": "staged",
   "date": "2026-11-02"
  },
  "ChIJH4iravQX2jER7DDNxVI4IQ8": {
   "estate": "ubi",
   "cat": "SERV",
-  "state": "discovered",
+  "state": "staged",
   "date": "2026-11-02"
  },
  "ChIJ1V7RaRMX2jERnj0nCMROLBY": {
   "estate": "ubi",
   "cat": "SERV",
-  "state": "discovered",
+  "state": "staged",
   "date": "2026-11-02"
  },
  "ChIJNW7IQfQX2jERPqoStfqSbvs": {
   "estate": "ubi",
   "cat": "SERV",
-  "state": "discovered",
+  "state": "staged",
   "date": "2026-11-02"
  },
  "ChIJ29j06GoX2jER7XYszjVz9bg": {
   "estate": "eunos",
   "cat": "SERV",
-  "state": "discovered",
+  "state": "staged",
   "date": "2026-11-02"
  },
  "ChIJX1LEOPAX2jERV13V6J_s9fQ": {
   "estate": "eunos",
   "cat": "SERV",
-  "state": "discovered",
+  "state": "staged",
   "date": "2026-11-02"
  },
  "ChIJA2eSDhYX2jERGNUzFwTetkA": {
   "estate": "eunos",
   "cat": "SERV",
-  "state": "discovered",
+  "state": "staged",
   "date": "2026-11-02"
  },
  "ChIJ44go8h0Y2jEReWXgQYTIehM": {
   "estate": "eunos",
   "cat": "SERV",
-  "state": "discovered",
+  "state": "staged",
   "date": "2026-11-02"
  },
  "ChIJ9yWuM7UX2jERML9885-LKQw": {
   "estate": "eunos",
   "cat": "SERV",
-  "state": "discovered",
+  "state": "staged",
   "date": "2026-11-02"
  },
  "ChIJ-S__JTcX2jEROH0yJLmydes": {
   "estate": "eunos",
   "cat": "SERV",
-  "state": "discovered",
+  "state": "staged",
   "date": "2026-11-02"
  },
  "ChIJTf_A6-EX2jERhlZJI6uZUQg": {
   "estate": "eunos",
   "cat": "SERV",
-  "state": "discovered",
+  "state": "staged",
   "date": "2026-11-02"
  },
  "ChIJU5comBg92jERRooyJvnOA48": {
   "estate": "bedok-north",
   "cat": "SERV",
-  "state": "discovered",
+  "state": "staged",
   "date": "2026-11-02"
  },
  "ChIJe3sSSiU92jERmZ-eBrzdL-Q": {
   "estate": "bedok-north",
   "cat": "SERV",
-  "state": "discovered",
+  "state": "staged",
   "date": "2026-11-02"
  },
  "ChIJU4nWyeUX2jER9w6Z8Iwg0xI": {
   "estate": "bedok-north",
   "cat": "SERV",
-  "state": "discovered",
+  "state": "staged",
   "date": "2026-11-02"
  },
  "ChIJV1VV5To92jERUIIHLKKCjjI": {
   "estate": "bedok-north",
   "cat": "SERV",
-  "state": "discovered",
+  "state": "staged",
   "date": "2026-11-02"
  },
  "ChIJiW9FMSU92jERjEWVTtHAqWQ": {
   "estate": "bedok-north",
   "cat": "SERV",
-  "state": "discovered",
+  "state": "staged",
   "date": "2026-11-02"
  },
  "ChIJ5-B3_Ho92jERNfOh3Af9LOQ": {
   "estate": "bedok-north",
   "cat": "SERV",
-  "state": "discovered",
+  "state": "staged",
   "date": "2026-11-02"
  },
  "ChIJRZ3wSyU92jERopG6Ib5Qsjw": {
   "estate": "bedok-north",
   "cat": "SERV",
-  "state": "discovered",
+  "state": "staged",
   "date": "2026-11-02"
  },
  "ChIJFW33bEw92jERlt2EbdMUwmQ": {
   "estate": "bedok-north",
   "cat": "SERV",
-  "state": "discovered",
+  "state": "staged",
   "date": "2026-11-02"
  },
  "ChIJg-Oh7bQX2jERMQ_K6hR_Dlo": {
   "estate": "bedok-north",
   "cat": "SERV",
-  "state": "discovered",
+  "state": "staged",
   "date": "2026-11-02"
  },
  "ChIJD-VFizE92jERPnZn9PXfuuQ": {
   "estate": "bedok-north",
   "cat": "SERV",
-  "state": "discovered",
+  "state": "staged",
   "date": "2026-11-02"
  },
  "ChIJAQNc1uMX2jERR8jQv0yb4yY": {
   "estate": "bedok-north",
   "cat": "SERV",
-  "state": "discovered",
+  "state": "staged",
   "date": "2026-11-02"
  },
  "ChIJ5VoJjSk92jERhkeqTD-KDQc": {
   "estate": "bedok-north",
   "cat": "SERV",
-  "state": "discovered",
+  "state": "staged",
   "date": "2026-11-02"
  },
  "ChIJschTNyU92jERP1F1jhMLqEM": {
   "estate": "bedok-north",
   "cat": "SERV",
-  "state": "discovered",
+  "state": "staged",
   "date": "2026-11-02"
  },
  "ChIJRZ3wSyU92jERQE_o7G-h3xQ": {
   "estate": "bedok-north",
   "cat": "SERV",
-  "state": "discovered",
+  "state": "staged",
   "date": "2026-11-02"
  },
  "ChIJRZ3wSyU92jERwioWvNmr9-0": {
   "estate": "bedok-north",
   "cat": "SERV",
-  "state": "discovered",
+  "state": "staged",
   "date": "2026-11-02"
  },
  "ChIJh_xO5-4X2jERYQB-_L1qLLU": {
   "estate": "bedok-north",
   "cat": "SERV",
-  "state": "discovered",
+  "state": "staged",
   "date": "2026-11-02"
  },
  "ChIJ_6hKxeEX2jERI4L_eu25WQ4": {
   "estate": "changi-loyang",
   "cat": "SERV",
-  "state": "discovered",
+  "state": "staged",
   "date": "2026-11-02"
  },
  "ChIJ5_kkLAA92jERjJyJBK3Rk0k": {
   "estate": "changi-loyang",
   "cat": "SERV",
-  "state": "discovered",
+  "state": "staged",
   "date": "2026-11-02"
  },
  "ChIJ8_WrlFE82jERwCxfuFje4Jc": {
   "estate": "changi-loyang",
   "cat": "SERV",
-  "state": "discovered",
+  "state": "staged",
   "date": "2026-11-02"
  },
  "ChIJofiNIdEX2jERYw3sG2pM460": {
   "estate": "changi-loyang",
   "cat": "SERV",
-  "state": "discovered",
+  "state": "staged",
   "date": "2026-11-02"
  },
  "ChIJRUGYIzg82jERjhaCqUcHNqM": {
   "estate": "changi-loyang",
   "cat": "SERV",
-  "state": "discovered",
+  "state": "staged",
   "date": "2026-11-02"
  },
  "ChIJb7VtqxIZ2jEREE5s5qQtEfA": {
   "estate": "changi-loyang",
   "cat": "SERV",
-  "state": "discovered",
+  "state": "staged",
   "date": "2026-11-02"
  },
  "ChIJMyncHRk92jERCDgq3frVxlM": {
   "estate": "changi-loyang",
   "cat": "SERV",
-  "state": "discovered",
+  "state": "staged",
   "date": "2026-11-02"
  },
  "ChIJMwPuINs82jER296tC8-z2Zo": {
   "estate": "changi-loyang",
   "cat": "SERV",
-  "state": "discovered",
+  "state": "staged",
   "date": "2026-11-02"
  },
  "ChIJxS5ewZU92jERlvA8IEKg0Bw": {
   "estate": "changi-loyang",
   "cat": "SERV",
-  "state": "discovered",
+  "state": "staged",
   "date": "2026-11-02"
  },
  "ChIJZ6p540Y82jERymsIQPPrLNs": {
   "estate": "changi-loyang",
   "cat": "SERV",
-  "state": "discovered",
+  "state": "staged",
   "date": "2026-11-02"
  },
  "ChIJV4jLQOQ82jERabMcwYPpruk": {
   "estate": "changi-loyang",
   "cat": "SERV",
-  "state": "discovered",
+  "state": "staged",
   "date": "2026-11-02"
  },
  "ChIJRcWi-kY82jERnJorb_ri2CY": {
   "estate": "changi-loyang",
   "cat": "SERV",
-  "state": "discovered",
+  "state": "staged",
   "date": "2026-11-02"
  },
  "ChIJ0QauCwcY2jEROEh0gA6KeKA": {
   "estate": "changi-loyang",
   "cat": "SERV",
-  "state": "discovered",
+  "state": "staged",
   "date": "2026-11-02"
  },
  "ChIJV4jLQOQ82jERE6t4fX2EiAw": {
   "estate": "changi-loyang",
   "cat": "SERV",
-  "state": "discovered",
+  "state": "staged",
   "date": "2026-11-02"
  },
  "ChIJ5e9vdQcY2jERY8o8xJU2xq4": {
   "estate": "changi-loyang",
   "cat": "SERV",
-  "state": "discovered",
+  "state": "staged",
   "date": "2026-11-02"
  },
  "ChIJ8_WrlFE82jERcve6XDpXPx4": {
   "estate": "changi-loyang",
   "cat": "SERV",
-  "state": "discovered",
+  "state": "staged",
   "date": "2026-11-02"
  },
  "ChIJoXDNIz892jERJTVnnkT1q1c": {
   "estate": "changi-loyang",
   "cat": "SERV",
-  "state": "discovered",
+  "state": "staged",
   "date": "2026-11-02"
  },
  "ChIJxYB0OOU82jERxhzIWrDprtg": {
   "estate": "changi-loyang",
+  "cat": "SERV",
+  "state": "staged",
+  "date": "2026-11-02"
+ },
+ "ChIJNWvL0YYT2jERyf5Gg3OX8kQ": {
+  "estate": "woodlands",
+  "cat": "SERV",
+  "state": "staged",
+  "date": "2026-11-02"
+ },
+ "ChIJvboQNWsT2jERLFh6PcNsUVs": {
+  "estate": "woodlands",
+  "cat": "SERV",
+  "state": "staged",
+  "date": "2026-11-02"
+ },
+ "ChIJXd7Y0xMT2jERkdgZ1NvEuQU": {
+  "estate": "woodlands",
+  "cat": "SERV",
+  "state": "staged",
+  "date": "2026-11-02"
+ },
+ "ChIJg0esmhET2jERa_svPETM0mY": {
+  "estate": "woodlands",
+  "cat": "SERV",
+  "state": "staged",
+  "date": "2026-11-02"
+ },
+ "ChIJV6icaGsT2jERiz0Lm2AkO1o": {
+  "estate": "woodlands",
+  "cat": "SERV",
+  "state": "staged",
+  "date": "2026-11-02"
+ },
+ "ChIJB4OucAAT2jER1scLxha_TQg": {
+  "estate": "woodlands",
+  "cat": "SERV",
+  "state": "staged",
+  "date": "2026-11-02"
+ },
+ "ChIJpWODsGET2jER3hq9gY_e_Sg": {
+  "estate": "woodlands",
+  "cat": "SERV",
+  "state": "staged",
+  "date": "2026-11-02"
+ },
+ "ChIJIypZiBET2jERk0PCFMcSDWs": {
+  "estate": "woodlands",
+  "cat": "SERV",
+  "state": "staged",
+  "date": "2026-11-02"
+ },
+ "ChIJKYWAL_oW2jERTX6ijWiVrQw": {
+  "estate": "woodlands",
+  "cat": "SERV",
+  "state": "staged",
+  "date": "2026-11-02"
+ },
+ "ChIJcTtBlxET2jERGl7HL0Vnphs": {
+  "estate": "woodlands",
+  "cat": "SERV",
+  "state": "staged",
+  "date": "2026-11-02"
+ },
+ "ChIJ82HPlRET2jERMU1GsmkndBQ": {
+  "estate": "woodlands",
+  "cat": "SERV",
+  "state": "staged",
+  "date": "2026-11-02"
+ },
+ "ChIJWSHxsX8T2jERX57MH2B1T4U": {
+  "estate": "woodlands",
+  "cat": "SERV",
+  "state": "staged",
+  "date": "2026-11-02"
+ },
+ "ChIJMcESLRIT2jERCcsGNjO0gCc": {
+  "estate": "woodlands",
+  "cat": "SERV",
+  "state": "staged",
+  "date": "2026-11-02"
+ },
+ "ChIJyTVSWQ0T2jERjU9NUw7aK0Y": {
+  "estate": "woodlands",
+  "cat": "SERV",
+  "state": "staged",
+  "date": "2026-11-02"
+ },
+ "ChIJl2XWQwAT2jERq1yqIAM-EHo": {
+  "estate": "woodlands",
+  "cat": "SERV",
+  "state": "staged",
+  "date": "2026-11-02"
+ },
+ "ChIJ____x6oT2jERSX4dOjBqdw0": {
+  "estate": "woodlands",
+  "cat": "SERV",
+  "state": "staged",
+  "date": "2026-11-02"
+ },
+ "ChIJCbVfkUkT2jERP-HbSzi7kXY": {
+  "estate": "woodlands",
+  "cat": "SERV",
+  "state": "staged",
+  "date": "2026-11-02"
+ },
+ "ChIJE1PjNW0T2jER0Ya92HCbCzI": {
+  "estate": "woodlands",
+  "cat": "SERV",
+  "state": "staged",
+  "date": "2026-11-02"
+ },
+ "ChIJYyt0ErvOLmsRDHeyHqoj6R0": {
+  "estate": "woodlands",
+  "cat": "SERV",
+  "state": "staged",
+  "date": "2026-11-02"
+ },
+ "ChIJNcosDBkT2jERNDNsSuUod-g": {
+  "estate": "woodlands",
+  "cat": "SERV",
+  "state": "staged",
+  "date": "2026-11-02"
+ },
+ "ChIJB2_rSywR2jERITOeHVR436w": {
+  "estate": "kranji",
+  "cat": "SERV",
+  "state": "staged",
+  "date": "2026-11-02"
+ },
+ "ChIJDVZRvzQT2jER4NtXrEdZsEE": {
+  "estate": "kranji",
+  "cat": "SERV",
+  "state": "staged",
+  "date": "2026-11-02"
+ },
+ "ChIJ0dxVbosR2jERmjsr27gGEmQ": {
+  "estate": "kranji",
+  "cat": "SERV",
+  "state": "staged",
+  "date": "2026-11-02"
+ },
+ "ChIJUVoH1_ET2jERXNVSzxx-J-I": {
+  "estate": "kranji",
+  "cat": "SERV",
+  "state": "staged",
+  "date": "2026-11-02"
+ },
+ "ChIJ04QjVMXWiC8RXjp1OAXEU1s": {
+  "estate": "kranji",
+  "cat": "SERV",
+  "state": "staged",
+  "date": "2026-11-02"
+ },
+ "ChIJTRJ67g1Xh6oReDldS_a6-k4": {
+  "estate": "kranji",
+  "cat": "SERV",
+  "state": "staged",
+  "date": "2026-11-02"
+ },
+ "ChIJZUJqC20Q2jERW3Z9Ro0P1cY": {
+  "estate": "kranji",
+  "cat": "SERV",
+  "state": "staged",
+  "date": "2026-11-02"
+ },
+ "ChIJFyl5DusT2jER3Y0wzjrTQ9Q": {
+  "estate": "kranji",
+  "cat": "SERV",
+  "state": "staged",
+  "date": "2026-11-02"
+ },
+ "ChIJITpmw5IT2jERC4WFEBV7ESc": {
+  "estate": "kranji",
+  "cat": "SERV",
+  "state": "staged",
+  "date": "2026-11-02"
+ },
+ "ChIJxdWe3uMT2jER-piOpZUU3SE": {
+  "estate": "kranji",
+  "cat": "SERV",
+  "state": "discovered",
+  "date": "2026-11-02"
+ },
+ "ChIJL4CYD_QT2jERPAoaz4Rzzlw": {
+  "estate": "kranji",
+  "cat": "SERV",
+  "state": "discovered",
+  "date": "2026-11-02"
+ },
+ "ChIJE3x4vtAT2jERovITiT-PviI": {
+  "estate": "kranji",
+  "cat": "SERV",
+  "state": "discovered",
+  "date": "2026-11-02"
+ },
+ "ChIJI6S_JnYT2jER7L8V1a7UCGg": {
+  "estate": "kranji",
+  "cat": "SERV",
+  "state": "discovered",
+  "date": "2026-11-02"
+ },
+ "ChIJN_4GCWgT2jERdYJXsJVqT6U": {
+  "estate": "kranji",
+  "cat": "SERV",
+  "state": "discovered",
+  "date": "2026-11-02"
+ },
+ "ChIJ65suP3YT2jERAAFHA1GJ_Lc": {
+  "estate": "kranji",
+  "cat": "SERV",
+  "state": "discovered",
+  "date": "2026-11-02"
+ },
+ "ChIJG_NeldIT2jERkys7JjNvwX4": {
+  "estate": "kranji",
+  "cat": "SERV",
+  "state": "discovered",
+  "date": "2026-11-02"
+ },
+ "ChIJfecL3XUZ2jERBcodqBxSOdk": {
+  "estate": "kranji",
+  "cat": "SERV",
+  "state": "discovered",
+  "date": "2026-11-02"
+ },
+ "ChIJS3wAxgUT2jERCjQTdwaqPhU": {
+  "estate": "kranji",
+  "cat": "SERV",
+  "state": "discovered",
+  "date": "2026-11-02"
+ },
+ "ChIJfRSTqb0T2jERXz7uiebMFR8": {
+  "estate": "kranji",
+  "cat": "SERV",
+  "state": "discovered",
+  "date": "2026-11-02"
+ },
+ "ChIJm6GjBwAT2jERG6HETve0GM0": {
+  "estate": "kranji",
+  "cat": "SERV",
+  "state": "discovered",
+  "date": "2026-11-02"
+ },
+ "ChIJQQbLL0wV2jER934RM34L1mA": {
+  "estate": "yishun",
+  "cat": "SERV",
+  "state": "discovered",
+  "date": "2026-11-02"
+ },
+ "ChIJoSvlrmYU2jERKxuFnXCKXpk": {
+  "estate": "yishun",
+  "cat": "SERV",
+  "state": "discovered",
+  "date": "2026-11-02"
+ },
+ "ChIJ9Z4cQ2AU2jER7fjTojfcUBA": {
+  "estate": "yishun",
+  "cat": "SERV",
+  "state": "discovered",
+  "date": "2026-11-02"
+ },
+ "ChIJo28NB1YV2jERKtezKQRwvaE": {
+  "estate": "yishun",
+  "cat": "SERV",
+  "state": "discovered",
+  "date": "2026-11-02"
+ },
+ "ChIJIVnHcYgU2jERGaaXQmkN5RU": {
+  "estate": "yishun",
+  "cat": "SERV",
+  "state": "discovered",
+  "date": "2026-11-02"
+ },
+ "ChIJQfH6vFgW2jERfCKoZLKWBJ8": {
+  "estate": "yishun",
+  "cat": "SERV",
+  "state": "discovered",
+  "date": "2026-11-02"
+ },
+ "ChIJAx10eYgU2jER8elylG2fFEw": {
+  "estate": "yishun",
+  "cat": "SERV",
+  "state": "discovered",
+  "date": "2026-11-02"
+ },
+ "ChIJ97e_e7IV2jERTiQdzmf3Edo": {
+  "estate": "yishun",
+  "cat": "SERV",
+  "state": "discovered",
+  "date": "2026-11-02"
+ },
+ "ChIJcwJnxHsV2jERgJUP2KlxhOM": {
+  "estate": "yishun",
+  "cat": "SERV",
+  "state": "discovered",
+  "date": "2026-11-02"
+ },
+ "ChIJe5Yl89UV2jERcSG44guH8KI": {
+  "estate": "yishun",
+  "cat": "SERV",
+  "state": "discovered",
+  "date": "2026-11-02"
+ },
+ "ChIJdYmf5rkV2jERt4frfgGTD3Y": {
+  "estate": "yishun",
+  "cat": "SERV",
+  "state": "discovered",
+  "date": "2026-11-02"
+ },
+ "ChIJ1y4Mjt8V2jERDRlVHyuJQ8k": {
+  "estate": "yishun",
+  "cat": "SERV",
+  "state": "discovered",
+  "date": "2026-11-02"
+ },
+ "ChIJZ5j1i0EU2jERqwQnDsyqCxo": {
+  "estate": "yishun",
+  "cat": "SERV",
+  "state": "discovered",
+  "date": "2026-11-02"
+ },
+ "ChIJIyX8e4gU2jERYYVYeUlzMx0": {
+  "estate": "yishun",
+  "cat": "SERV",
+  "state": "discovered",
+  "date": "2026-11-02"
+ },
+ "ChIJLU-nfogU2jER9DBPpBsZGv8": {
+  "estate": "yishun",
+  "cat": "SERV",
+  "state": "discovered",
+  "date": "2026-11-02"
+ },
+ "ChIJIVnHcYgU2jERqCVLawVE5QY": {
+  "estate": "yishun",
+  "cat": "SERV",
+  "state": "discovered",
+  "date": "2026-11-02"
+ },
+ "ChIJWSMOq-sV2jERfrtlmUrzXfM": {
+  "estate": "yishun",
+  "cat": "SERV",
+  "state": "discovered",
+  "date": "2026-11-02"
+ },
+ "ChIJodI8cYgU2jERBSJDKBDUxiQ": {
+  "estate": "yishun",
+  "cat": "SERV",
+  "state": "discovered",
+  "date": "2026-11-02"
+ },
+ "ChIJYzgKcogU2jERACKB5ZEVf6s": {
+  "estate": "yishun",
+  "cat": "SERV",
+  "state": "discovered",
+  "date": "2026-11-02"
+ },
+ "ChIJF7mRvVwT2jERldM1BoY-2u4": {
+  "estate": "sembawang-admiralty",
+  "cat": "SERV",
+  "state": "discovered",
+  "date": "2026-11-02"
+ },
+ "ChIJ7UpfSrQZ2jERnuZ-zC-FP7E": {
+  "estate": "sembawang-admiralty",
+  "cat": "SERV",
+  "state": "discovered",
+  "date": "2026-11-02"
+ },
+ "ChIJMTqelFwT2jERmue_hguC9fw": {
+  "estate": "sembawang-admiralty",
+  "cat": "SERV",
+  "state": "discovered",
+  "date": "2026-11-02"
+ },
+ "ChIJz5EnhVwT2jER0PpupP-4I5w": {
+  "estate": "sembawang-admiralty",
+  "cat": "SERV",
+  "state": "discovered",
+  "date": "2026-11-02"
+ },
+ "ChIJu1VC014T2jERr3__l8t6L7g": {
+  "estate": "sembawang-admiralty",
+  "cat": "SERV",
+  "state": "discovered",
+  "date": "2026-11-02"
+ },
+ "ChIJ5YQlfkQT2jERhrZWcVxS6rs": {
+  "estate": "sembawang-admiralty",
+  "cat": "SERV",
+  "state": "discovered",
+  "date": "2026-11-02"
+ },
+ "ChIJq6qqqyYX2jERgTe3oTxL1WE": {
+  "estate": "sembawang-admiralty",
+  "cat": "SERV",
+  "state": "discovered",
+  "date": "2026-11-02"
+ },
+ "ChIJTf_A6-EX2jERuBrnwcO80hk": {
+  "estate": "sembawang-admiralty",
+  "cat": "SERV",
+  "state": "discovered",
+  "date": "2026-11-02"
+ },
+ "ChIJgT1qxGUT2jER1T_WCUiJ4mE": {
+  "estate": "sembawang-admiralty",
+  "cat": "SERV",
+  "state": "discovered",
+  "date": "2026-11-02"
+ },
+ "ChIJuTQ261wT2jER0NINjX_mrUM": {
+  "estate": "sembawang-admiralty",
+  "cat": "SERV",
+  "state": "discovered",
+  "date": "2026-11-02"
+ },
+ "ChIJd4kjRNcT2jERDil3TH5iu_A": {
+  "estate": "sembawang-admiralty",
+  "cat": "SERV",
+  "state": "discovered",
+  "date": "2026-11-02"
+ },
+ "ChIJpdFAeGUT2jERkySqRkzKlcQ": {
+  "estate": "sembawang-admiralty",
+  "cat": "SERV",
+  "state": "discovered",
+  "date": "2026-11-02"
+ },
+ "ChIJ19sxX4AU2jERS409sVRXkeU": {
+  "estate": "sembawang-admiralty",
+  "cat": "SERV",
+  "state": "discovered",
+  "date": "2026-11-02"
+ },
+ "ChIJc-b06nYU2jERqtJ55dh5zR0": {
+  "estate": "sembawang-admiralty",
+  "cat": "SERV",
+  "state": "discovered",
+  "date": "2026-11-02"
+ },
+ "ChIJiebpPaQT2jER1GW6cu22GAU": {
+  "estate": "sembawang-admiralty",
+  "cat": "SERV",
+  "state": "discovered",
+  "date": "2026-11-02"
+ },
+ "ChIJH6I1tKEU2jERy60C2pUc854": {
+  "estate": "sembawang-admiralty",
+  "cat": "SERV",
+  "state": "discovered",
+  "date": "2026-11-02"
+ },
+ "ChIJJ_PlhVwT2jEREU4ZjQSJQRc": {
+  "estate": "sembawang-admiralty",
+  "cat": "SERV",
+  "state": "discovered",
+  "date": "2026-11-02"
+ },
+ "ChIJjd01TvgT2jERTpZgQ2zPZ84": {
+  "estate": "sembawang-admiralty",
+  "cat": "SERV",
+  "state": "discovered",
+  "date": "2026-11-02"
+ },
+ "ChIJfTttsFgW2jERiCL2XBwbAlI": {
+  "estate": "ang-mo-kio",
+  "cat": "SERV",
+  "state": "discovered",
+  "date": "2026-11-02"
+ },
+ "ChIJQfH6vFgW2jER2_MFpXNvYw0": {
+  "estate": "ang-mo-kio",
+  "cat": "SERV",
+  "state": "discovered",
+  "date": "2026-11-02"
+ },
+ "ChIJsa2FjvkW2jERnsmGD4xZfZw": {
+  "estate": "ang-mo-kio",
+  "cat": "SERV",
+  "state": "discovered",
+  "date": "2026-11-02"
+ },
+ "ChIJfTttsFgW2jERa2wbnC9ozXI": {
+  "estate": "ang-mo-kio",
+  "cat": "SERV",
+  "state": "discovered",
+  "date": "2026-11-02"
+ },
+ "ChIJQfH6vFgW2jER0ueH75nFHUE": {
+  "estate": "ang-mo-kio",
+  "cat": "SERV",
+  "state": "discovered",
+  "date": "2026-11-02"
+ },
+ "ChIJBeF48_kW2jERDH9o8JC2trw": {
+  "estate": "ang-mo-kio",
+  "cat": "SERV",
+  "state": "discovered",
+  "date": "2026-11-02"
+ },
+ "ChIJKYWAL_oW2jERGGddsf5gD4E": {
+  "estate": "ang-mo-kio",
+  "cat": "SERV",
+  "state": "discovered",
+  "date": "2026-11-02"
+ },
+ "ChIJQfH6vFgW2jERL6dyYeO_cU0": {
+  "estate": "ang-mo-kio",
+  "cat": "SERV",
+  "state": "discovered",
+  "date": "2026-11-02"
+ },
+ "ChIJ_cbOsFgW2jER9GL91QCOAcc": {
+  "estate": "ang-mo-kio",
+  "cat": "SERV",
+  "state": "discovered",
+  "date": "2026-11-02"
+ },
+ "ChIJSVNYpFgW2jER0YePQUt4c5Q": {
+  "estate": "ang-mo-kio",
+  "cat": "SERV",
+  "state": "discovered",
+  "date": "2026-11-02"
+ },
+ "ChIJEQPgvFgW2jERJuCuk-s5eEs": {
+  "estate": "ang-mo-kio",
+  "cat": "SERV",
+  "state": "discovered",
+  "date": "2026-11-02"
+ },
+ "ChIJH_ZSNJYW2jERjC0gpvLJEQ0": {
+  "estate": "ang-mo-kio",
+  "cat": "SERV",
+  "state": "discovered",
+  "date": "2026-11-02"
+ },
+ "ChIJQfH6vFgW2jER_0RBWxiBSqg": {
+  "estate": "ang-mo-kio",
+  "cat": "SERV",
+  "state": "discovered",
+  "date": "2026-11-02"
+ },
+ "ChIJBeF48_kW2jERo-zLaIow8KE": {
+  "estate": "ang-mo-kio",
+  "cat": "SERV",
+  "state": "discovered",
+  "date": "2026-11-02"
+ },
+ "ChIJSSQTO_oW2jERNsYMAZFvtUI": {
+  "estate": "ang-mo-kio",
+  "cat": "SERV",
+  "state": "discovered",
+  "date": "2026-11-02"
+ },
+ "ChIJZw4RvVgW2jERMjMJdqdReWc": {
+  "estate": "ang-mo-kio",
+  "cat": "SERV",
+  "state": "discovered",
+  "date": "2026-11-02"
+ },
+ "ChIJQfH6vFgW2jERHDU17JhKJQw": {
+  "estate": "ang-mo-kio",
+  "cat": "SERV",
+  "state": "discovered",
+  "date": "2026-11-02"
+ },
+ "ChIJ4WDTjfkW2jERCpM7gMWeqnQ": {
+  "estate": "ang-mo-kio",
+  "cat": "SERV",
+  "state": "discovered",
+  "date": "2026-11-02"
+ },
+ "ChIJQfH6vFgW2jERPI4csTMTEvE": {
+  "estate": "ang-mo-kio",
+  "cat": "SERV",
+  "state": "discovered",
+  "date": "2026-11-02"
+ },
+ "ChIJ4WDTjfkW2jER2zGcJTlAdGY": {
+  "estate": "ang-mo-kio",
   "cat": "SERV",
   "state": "discovered",
   "date": "2026-11-02"

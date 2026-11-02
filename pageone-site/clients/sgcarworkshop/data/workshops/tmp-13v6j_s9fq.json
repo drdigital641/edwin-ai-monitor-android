@@ -1,0 +1,21 @@
+{
+ "schema_version": 1,
+ "slug": "tmp-13v6j_s9fq",
+ "place_id": "ChIJX1LEOPAX2jERV13V6J_s9fQ",
+ "name": null,
+ "phones": [],
+ "status": "pending",
+ "tier": "basic",
+ "categories": [
+  "SERV"
+ ],
+ "services": [
+  "General servicing and repair"
+ ],
+ "services_source_url": "google_profile",
+ "google_screen": {
+  "passed": null,
+  "reason": "discovered 2026-11-02 (eunos), waiting for the Google screen",
+  "checked_at": null
+ }
+}

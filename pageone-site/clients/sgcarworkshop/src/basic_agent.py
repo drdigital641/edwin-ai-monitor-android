@@ -32,7 +32,8 @@ DATA = os.environ.get('SGCW_DATA_DIR') or os.path.join(ROOT, 'data')
 SNAP = os.path.join(ROOT, 'snapshots')
 API = 'https://places.googleapis.com/v1/'
 OK_PRIMARY = {'car_repair', 'car_repair_service', 'auto_repair_shop', 'auto_body_shop', 'auto_electrician', 'mechanic'}
-TODAY = dt.date.today().isoformat()
+# Google's Places quota day resets daily at 09:00 UTC (17:00 SGT; window_start_time in the 429 error, checked 2 Nov 2026). Key usage by that day, not the UTC date.
+TODAY = (dt.datetime.now(dt.timezone.utc) - dt.timedelta(hours=9)).date().isoformat()
 MOBILE = re.compile(r'(?<!\d)(?:\+?65[\s-]?)?([89]\d{3}[\s-]?\d{4})(?!\d)')
 WAME = re.compile(r'wa\.me/65([89]\d{7})')
 UA = {'User-Agent': 'Mozilla/5.0 (compatible; SGCarWorkshopDirectory/3; +https://sgcarworkshop.sg/)'}

@@ -1,0 +1,21 @@
+{
+ "schema_version": 1,
+ "slug": "tmp-q_k6hr_dlo",
+ "place_id": "ChIJg-Oh7bQX2jERMQ_K6hR_Dlo",
+ "name": null,
+ "phones": [],
+ "status": "pending",
+ "tier": "basic",
+ "categories": [
+  "SERV"
+ ],
+ "services": [
+  "General servicing and repair"
+ ],
+ "services_source_url": "google_profile",
+ "google_screen": {
+  "passed": null,
+  "reason": "discovered 2026-11-02 (bedok-north), waiting for the Google screen",
+  "checked_at": null
+ }
+}

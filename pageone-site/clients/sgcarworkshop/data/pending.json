@@ -58,5 +58,11 @@
   "slug": "precise-auto-service",
   "reason": "Google profile has no SG mobile (landline only or no phone)",
   "date": "2026-11-02"
+ },
+ {
+  "place_id": "ChIJh7PPi4IX2jERt0f1RfOWuRI",
+  "slug": "tmp-0f1rfowuri",
+  "reason": "Google profile has no SG mobile (landline only or no phone)",
+  "date": "2026-11-02"
  }
 ]
