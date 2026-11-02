@@ -13,3 +13,5 @@ jobs:
       - uses: actions/checkout@v4
       - name: Probe live sites
         run: bash .github/probe/probe.sh
+      - name: Audit sitemap pages
+        run: bash .github/probe/audit.sh
