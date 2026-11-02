@@ -547,5 +547,14 @@
   "mobile": null,
   "status": "rejected-not-car-repair",
   "date": "2026-11-02"
+ },
+ {
+  "place_id": "ChIJQQbLL0wV2jER934RM34L1mA",
+  "slug": "summer-motorworks",
+  "name_norm": "summer motorworks",
+  "postal_code": "768159",
+  "mobile": "+6594814922",
+  "status": "built",
+  "date": "2026-11-02"
  }
 ]
