@@ -228,6 +228,23 @@ if 'maps/dir' in open(os.path.join(root, 'index.html'), encoding='utf-8').read()
 # dir.js tracker
 djs = open(os.path.join(root, 'assets', 'dir.js'), encoding='utf-8').read()
 if "LIVE_HOST='sgcarworkshop.sg'" not in djs or not all(k in djs for k in ('maps', 'directions', 'hours')): print('dir.js must count maps_/directions_/hours_ taps on sgcarworkshop.sg'); bad += 1
+# TAP COUNTER (Edwin 2 Nov 2026): every WhatsApp and Call link must carry the tracking hook (data-cta + data-tier) so dir.js counts it per workshop.
+# Page One's own WhatsApp (owner boxes: claim/remove links) is the only exception and is counted by its own claim_/remove_ hook.
+from data import PAGE_ONE_WA as _P1
+for _root, _d, _fs in os.walk(sys.argv[1] if len(sys.argv) > 1 else '../site'):
+    for _fn in _fs:
+        if not _fn.endswith('.html'): continue
+        _p = os.path.join(_root, _fn); _h = open(_p, encoding='utf-8').read()
+        for _a in re.findall(r'<a\b[^>]*>', _h):
+            _m = re.search(r'href="([^"]*)"', _a)
+            if not _m: continue
+            _u = _m.group(1)
+            if _u.startswith('tel:'):
+                if 'data-cta="call_dir_' not in _a or 'data-tier="' not in _a: print('tel: link without the tap hook', _p, _u); bad += 1
+            elif 'wa.me/' in _u:
+                if re.search(r'wa\.me/%s' % re.escape(str(_P1)), _u): continue
+                if 'data-cta="whatsapp_dir_' not in _a or 'data-tier="' not in _a: print('wa.me link without the tap hook', _p, _u[:60]); bad += 1
+if not all(k in djs for k in ("sgcarworkshop-test", "cta_label", "sendBeacon", "functions/track")) or 'visitor_id' in djs: print('dir.js tap counter must send site/sgcarworkshop(-test), cta_label slug, use sendBeacon and send no visitor_id'); bad += 1
 # Sort: Premium, Verified, then Basic A to Z (never by rating)
 rank = {'premium_leadgen': 0, 'premium': 1, 'free': 2}
 order = [(rank[e['tier']], e['name'].lower() if e['tier'] == 'free' else '') for e in ENTRIES]

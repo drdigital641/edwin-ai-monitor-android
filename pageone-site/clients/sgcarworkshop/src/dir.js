@@ -58,18 +58,21 @@ mq.addEventListener('dragstart',function(e){e.preventDefault()});
 }}}
 d.addEventListener('click',function(e){var a=e.target.closest&&e.target.closest('a[data-cta]');if(!a)return;var c=a.getAttribute('data-cta');try{if(window.dataLayer)window.dataLayer.push({event:'cta_click',cta:c})}catch(x){}track(a,c)});
 /* Lead counter: Page One Controller public write-only "track" function (same endpoint and payload as pageonesingapore.com main.js).
-   Fires ONLY on the live directory domain, so preview clicks are not counted. WhatsApp, call, Google Maps, Directions and opening-hours taps on business listings only. */
+   Live domain taps are real; preview (pageonesingapore.com) taps are stored as site sgcarworkshop-test. WhatsApp, call, Google Maps, Directions and opening-hours taps on business listings only. */
 var LIVE_HOST='sgcarworkshop.sg',APP='6ac7f2548a9c3877449e2772';
 function rid(){return Math.random().toString(36).slice(2)+Date.now().toString(36)}
 function keep(st,k){try{var v=st.getItem(k);if(!v){v=rid();st.setItem(k,v)}return v}catch(x){return rid()}}
+function pagetype(p){return p==='/'?'home':/^\/workshops\//.test(p)?'profile':/^\/areas\//.test(p)?'area':/^\/services\//.test(p)?'service':/^\/regions\//.test(p)?'region':'other'}
 function track(a,c){try{
-if(location.hostname!==LIVE_HOST&&location.hostname!=='www.'+LIVE_HOST)return;
+var h=location.hostname.replace(/^www\./,''),site=h===LIVE_HOST?'sgcarworkshop':(h==='pageonesingapore.com'?'sgcarworkshop-test':'');
+if(!site)return;   /* live domain = real taps; the pageonesingapore.com preview = separate "test" taps; anything else is ignored */
 if(navigator.doNotTrack==='1'||window.doNotTrack==='1'||navigator.webdriver)return;
-var tier=a.getAttribute('data-tier');if(!tier||!/^(whatsapp_dir|call_dir|maps|directions|hours|closed_flag)_/.test(c))return;
-var slug=c.replace(/^(whatsapp_dir|call_dir|maps|directions|hours|closed_flag)_/,''),page=a.getAttribute('data-page')||location.pathname,ua=navigator.userAgent;
-var body=JSON.stringify({entity:'CtaClick',site:'sgcarworkshop',session_id:keep(sessionStorage,'sgcw-sid'),visitor_id:keep(localStorage,'sgcw-vid'),page_path:location.pathname,
+var tier=a.getAttribute('data-tier'),m=/^(whatsapp|call)_dir_(.+)$|^(maps|directions|hours|closed_flag)_(.+)$/.exec(c);if(!tier||!m)return;
+var kind=m[1]||m[3],slug=m[2]||m[4],ua=navigator.userAgent;
+/* Fields kept: which button (cta_type), which workshop (cta_label = slug), tier and page type (enquiry_ref), page, device, referrer. A random per-visit id only (session_id). No visitor id, no IP, nothing about the person. */
+var body=JSON.stringify({entity:'CtaClick',site:site,session_id:keep(sessionStorage,'sgcw-sid'),page_path:location.pathname,
 referrer:(document.referrer||'').slice(0,300),device_type:/Mobi|Android|iPhone/i.test(ua)?'mobile':/iPad|Tablet/i.test(ua)?'tablet':'desktop',
-cta_type:c,enquiry_ref:slug+'|'+tier+'|'+page});
+cta_type:kind,cta_label:slug.slice(0,60),enquiry_ref:tier+'|'+pagetype(location.pathname)});
 var url='https://base44.app/api/apps/'+APP+'/functions/track',sent=false;
 if(navigator.sendBeacon){try{sent=navigator.sendBeacon(url,new Blob([body],{type:'application/json'}))}catch(x){}}
 if(!sent&&window.fetch){fetch(url,{method:'POST',credentials:'omit',keepalive:true,headers:{'Content-Type':'application/json'},body:body}).catch(function(){})}
