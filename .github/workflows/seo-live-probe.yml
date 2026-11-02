@@ -1,0 +1,15 @@
+name: SEO live probe
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [ "claude/project-thread-zbfrt7" ]
+    paths: [ ".github/probe/**", ".github/workflows/seo-live-probe.yml" ]
+
+jobs:
+  probe:
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+      - name: Probe live sites
+        run: bash .github/probe/probe.sh
