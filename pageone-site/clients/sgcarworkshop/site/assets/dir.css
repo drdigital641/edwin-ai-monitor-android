@@ -43,7 +43,7 @@ details.menu>summary svg{width:18px;height:18px}
 .car-nav button{width:32px;height:32px;border-radius:50%;border:1px solid var(--line);background:#fff;color:var(--brand);display:grid;place-items:center;cursor:pointer}.car-nav button:hover{border-color:var(--brand)}.car-nav svg{width:16px;height:16px}
 .track{display:flex;gap:12px;list-style:none;margin:0 -16px;padding:2px 16px 12px;overflow-x:auto;scroll-snap-type:x mandatory;scroll-padding-inline:16px;-webkit-overflow-scrolling:touch;scrollbar-width:none;overscroll-behavior-x:contain}
 .track::-webkit-scrollbar{display:none}
-.track>li{flex:0 0 74%;max-width:300px;scroll-snap-align:start}
+.track>li{flex:0 0 81%;max-width:300px;scroll-snap-align:start}
 .fc{height:100%}
 .fc .ph{aspect-ratio:16/10}
 /* search panel */
@@ -310,3 +310,4 @@ ul.chips{list-style:none;display:flex;flex-wrap:wrap;gap:8px;padding:0;margin:14
 @media(max-width:380px){.pilot .svc-grid{grid-template-columns:1fr}}
 .pilot .acts{display:flex;flex-wrap:wrap;gap:8px}.pilot .acts .btn{white-space:normal;text-align:center;max-width:100%;margin:0}
 .pilot .story{border:1px solid var(--line);border-radius:12px;padding:12px 14px;margin:0 0 10px;background:#fff}.pilot .story h3{margin:0 0 6px;font-size:1rem}.pilot .story p{margin:0 0 6px}
+.marq:not(.on){margin:0}
