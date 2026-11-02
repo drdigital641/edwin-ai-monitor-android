@@ -22,3 +22,4 @@ https://batteryrescue.sg/this-page-should-404/
 http://batteryrescue.sg/
 http://www.batteryrescue.sg/
 https://www.batteryrescue.sg/
+https://batteryrescue.sg/llms.txt?probe=2
