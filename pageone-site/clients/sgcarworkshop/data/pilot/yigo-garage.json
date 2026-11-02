@@ -47,5 +47,17 @@
    "Sources differ, so please see Google Maps for current hours."
   ]
  ],
- "sources": "its public business listings"
+ "sources": "its public business listings",
+ "chips": [
+  "Servicing and repairs",
+  "Spray painting and panel beating",
+  "Car aircon"
+ ],
+ "good_for": [
+  "European and Asian cars, all brands",
+  "Van rear aircon and lorry aircon",
+  "Insurance claims, towing and online booking"
+ ],
+ "good_for_note": "Payment methods listed: credit card, GrabPay, PayNow, NETS, cash and Atome.",
+ "mrt": "Ubi MRT (DT27) is about 690 m away in a straight line."
 }

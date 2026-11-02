@@ -75,8 +75,8 @@ var api={analyse:analyse,norm:norm,RULES:RULES,MAKES:MAKES};
 if(typeof module!=='undefined'&&module.exports){module.exports=api}
 root.SGCWAsk=api;
 if(typeof document==='undefined')return;
-var d=document,form=d.getElementById('askform');if(!form)return;
-var inp=d.getElementById('ask'),out=d.getElementById('askres'),body=d.getElementById('askbody'),DATA={};
+var d=document,form=d.getElementById('finder');if(!form)return;
+var inp=d.getElementById('q'),out=d.getElementById('askres'),body=d.getElementById('askbody'),DATA={};
 try{DATA=JSON.parse(d.getElementById('askdata').textContent)}catch(e){return}
 var cards=[].slice.call(d.querySelectorAll('#results .card[data-cat]')),catName={};(DATA.cats||[]).forEach(function(c){catName[c.slug]=c});
 function el(tag,cls,txt){var e=d.createElement(tag);if(cls)e.className=cls;if(txt!=null)e.textContent=txt;return e}
@@ -114,7 +114,7 @@ function render(a,viaChip){body.textContent='';var chips=el('div','achips'),r=a.
  if(!shown||!r){body.appendChild(didYouMean(a,r?null:(a.make?'What does your '+MAKES[a.make]+' need?':'Did you mean...')));
   var p=popular(a).filter(function(c){return !shownSet[c.getAttribute('data-tier')+c.querySelector('h3').textContent]});if(p.length){body.appendChild(el('h3','sub','Popular workshops'));body.appendChild(grid(p,a,4))}}
  else if(a.second){var alt=a.second.r;var al=el('p','fine');al.appendChild(d.createTextNode('Could also be '+alt.label.toLowerCase()+'. '));var b=el('button','linkbtn','Show those workshops');b.type='button';b.addEventListener('click',function(){render(Object.assign({},a,{top:a.second,second:null,tier:a.second.dir?1:2}),true)});al.appendChild(b);body.appendChild(al)}
- var cl=el('button','linkbtn askclear','Clear this search');cl.type='button';cl.addEventListener('click',function(){inp.value='';out.hidden=true;inp.focus()});body.appendChild(cl);
+ var cl=el('button','linkbtn askclear','Clear this search');cl.type='button';cl.addEventListener('click',function(){inp.value='';var any=form.querySelector('input[name=svc][value=""]');if(any)any.checked=true;out.hidden=true;inp.focus()});body.appendChild(cl);
  out.hidden=false;if(!viaChip||true){try{out.scrollIntoView({behavior:window.matchMedia&&matchMedia('(prefers-reduced-motion: reduce)').matches?'auto':'smooth',block:'start'})}catch(e){}}
  body.setAttribute('tabindex','-1');
  if(!viaChip)log(a,r?r.id:'none');}
@@ -131,5 +131,11 @@ function log(a,rule){try{var h=location.hostname.replace(/^www\./,''),site=h===L
  var url='https://base44.app/api/apps/'+APP+'/functions/track',sent=false;
  if(navigator.sendBeacon){try{sent=navigator.sendBeacon(url,new Blob([body2],{type:'application/json'}))}catch(x){}}
  if(!sent&&window.fetch){fetch(url,{method:'POST',credentials:'omit',keepalive:true,headers:{'Content-Type':'application/json'},body:body2}).catch(function(){})}}catch(x){}}
-form.addEventListener('submit',function(e){e.preventDefault();var v=inp.value.trim();if(!v){inp.focus();return}render(analyse(v,DATA))});
+form.addEventListener('submit',function(e){e.preventDefault();var v=inp.value.trim();if(!v){inp.focus();return}
+ var any=form.querySelector('input[name=svc][value=""]');if(any&&!any.checked){any.checked=true}render(analyse(v,DATA))});
+inp.addEventListener('keydown',function(e){if(e.key==='Enter'&&!e.shiftKey){e.preventDefault();form.dispatchEvent(new Event('submit',{cancelable:true,bubbles:true}))}});
+/* Category chips run the same results panel (no typing needed). */
+form.addEventListener('change',function(e){var t=e.target;if(!t||t.name!=='svc')return;
+ if(!t.value){out.hidden=true;return}var c=catName[t.value];if(!c)return;inp.value='';
+ render({raw:'',toks:[],make:'',area:null,close:{},second:null,forced:true,tier:1,top:{r:{cat:c.slug,label:c.short,issue:c.blurb||''}}},true)});
 })(typeof window!=='undefined'?window:this);

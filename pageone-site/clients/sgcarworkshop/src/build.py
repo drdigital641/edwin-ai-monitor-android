@@ -94,6 +94,10 @@ ICONS = {
     'chev-r': '<path d="M9 18l6-6-6-6"/>',
     'plus': '<path d="M12 5v14M5 12h14"/>',
     'out': '<path d="M7 17L17 7M8 7h9v9"/>',
+    'snow': '<path d="M12 2v20M4.9 7l14.2 10M4.9 17L19.1 7"/>',
+    'wheel': '<circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="3"/><path d="M12 3v6M12 15v6M3 12h6M15 12h6"/>',
+    'drop': '<path d="M12 3s6 6.5 6 11a6 6 0 0 1-12 0c0-4.5 6-11 6-11z"/>',
+    'car': '<path d="M5 16V11l2-5h10l2 5v5M3 16h18v3H3z"/><circle cx="7.5" cy="19" r="1.2"/><circle cx="16.5" cy="19" r="1.2"/>',
     'shield': '<path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="M9 12l2 2 4-4"/>',
 }
 
@@ -281,7 +285,7 @@ def home():
         ('How can I browse by area?', 'Pick a region (North, North-East, East, West, Central, or Mobile for services that come to you) in the search panel, or open an estate page such as Kaki Bukit or Yishun to see the workshops in that industrial area, a map and nearby areas.'),
     ]
     faq_html = ''.join('<details><summary>%s</summary><p>%s</p></details>' % (E(q), E(a)) for q, a in faqs)
-    svc_opts = '<label class="opt"><input type="radio" name="svc" value="" checked><span>Any service</span></label>' + ''.join(
+    svc_opts = '<label class="opt"><input type="radio" name="svc" value="" checked><span>All</span></label>' + ''.join(
         '<label class="opt"><input type="radio" name="svc" value="%s"><span>%s</span></label>' % (c['slug'], E(c['short'])) for c in CAT_LIST)
     reg_opts = ''.join('<label class="opt"><input type="checkbox" name="reg" value="%s"><span>%s</span></label>' % (k, E('Mobile' if k == 'mobile' else RN[k])) for k in PUB_REGIONS)
     svc_tiles = ''.join('<li><a href="services/%s/"><span class="ti">%s</span><span><b>%s</b><small>%d listing%s</small></span></a></li>' % (
@@ -293,17 +297,12 @@ def home():
     askdata = json.dumps({'cats': [{'slug': c['slug'], 'short': c['short'], 'blurb': c['blurb']} for c in CAT_LIST], 'areas': [{'slug': k, 'name': v['name'], 'region': v['region']} for k, v in ESTATES.items()]}).replace('</', '<\\/')
     tiers = tiers_strip()
     body = f'''<section class="finder" id="find"><div class="w"><div class="hero-t"><h1>Find a car workshop in Singapore</h1>
-<p>Search by service and area, then message the workshop directly on WhatsApp.</p></div>
+<p>Describe the problem or type a service and area, then message the workshop on WhatsApp.</p></div>
 <p class="nojs">Browse by <a href="#services">service</a> or <a href="#regions">area</a> below.</p>
-<div class="panel askpanel"><form class="askbox" id="askform" role="search" aria-label="Describe your car problem"><label for="ask" class="asklab">Not sure what you need? Describe the problem in your own words</label>
-<div class="askrow"><input id="ask" type="text" maxlength="160" placeholder="e.g. my car idle is not stable" autocomplete="off" enterkeyhint="search"><button type="submit" class="btn">Find help</button></div>
-<p class="fine askhint">Works on this page only. We do not store your name or number, only the words you type, to improve this directory.</p></form></div>
-<form class="panel" id="finder" role="search" aria-label="Find a workshop" onsubmit="return false">
-<p class="shint" id="shint"><span class="pt" aria-hidden="true">&#128070;</span> Tap and type what you need and where, in any order</p>
-<label class="q"><span class="skip">Search workshops by service, area or name</span>{ic('search')}<input id="q" type="search" placeholder="e.g. gearbox repair Woodlands" autocomplete="off" autocapitalize="off" enterkeyhint="search"></label>
-<div class="frow"><span class="lab" id="lab-s">Service <small>optional</small></span><div class="opts" role="radiogroup" aria-labelledby="lab-s">{svc_opts}</div></div>
-<div class="frow"><span class="lab" id="lab-r">Region <small>optional, choose one or more</small></span><div class="opts" role="group" aria-labelledby="lab-r">{reg_opts}</div></div>
-<div class="fbar"><p id="count" aria-live="polite"><b>{len(ENTRIES)}</b> workshops</p><button type="button" class="linkbtn" id="reset">Clear</button></div>
+<form class="panel" id="finder" role="search" aria-label="Find a workshop or describe your car problem" onsubmit="return false">
+<div class="qrow"><label class="q"><span class="skip">Describe your car problem, or type a service, area or workshop name</span>{ic('search')}<textarea id="q" rows="2" maxlength="160" placeholder="Describe your car problem, e.g. knocking sound under my Mitsubishi" autocomplete="off" autocapitalize="off" enterkeyhint="search"></textarea></label><button type="submit" class="btn amber qgo">Search</button></div>
+<div class="opts chiprow" role="radiogroup" aria-label="Or pick a service">{svc_opts}</div>
+<p class="fine askhint">Type in your own words, in any order. We do not store your name or number, only the words you type.</p>
 </form></div></section>
 <section class="askres" id="askres" hidden aria-live="polite"><div class="w" id="askbody"></div></section>
 <script type="application/json" id="askdata">{askdata}</script>
@@ -854,9 +853,19 @@ if os.path.isdir(_pd):
             PILOT[_f[:-5]] = json.load(open(os.path.join(_pd, _f)))
 
 
+def pilot_icon(t):
+    t = t.lower()
+    for keys, icon in (('aircon', 'snow'), (('ecu', 'diagnos', 'troubleshoot', 'engine'), 'chip'), (('spray', 'paint', 'panel beating'), 'spray'), (('claim', 'insurance'), 'shield'),
+                       (('tyre', 'alignment', 'wheel'), 'wheel'), (('oil', 'servicing', 'service'), 'drop'), (('transmission', 'gearbox', 'suspension', 'absorber', 'drive shaft', 'lower arm', 'timing belt'), 'gear'),
+                       (('towing', 'tow'), 'out'), (('van', 'private-hire', 'commercial', 'vehicle'), 'car')):
+        if any(k in t for k in ([keys] if isinstance(keys, str) else keys)):
+            return icon
+    return 'wrench'
+
+
 def pilot_page(e, pl):
-    """Basic PILOT template (Edwin 2 Nov 2026, 3 workshops only): one fixed-content landing page, NO photo. Own wording from the facts in data/pilot/<slug>.json;
-    WhatsApp + Call use the stored Google mobile; directions, Google Maps link, hours say 'see Google Maps'. No ratings, review quotes, staff names or second numbers."""
+    """Basic PILOT template v2 (Edwin 2 Nov 2026, 3 workshops only): ONE fixed-content page, NO photo. Header (name, area, 3 chips, big WhatsApp + Call) then services grid,
+    good for, location + directions, FAQs, claim box. Own wording from the facts in data/pilot/<slug>.json; phone = stored Google mobile only; hours: see Google Maps."""
     depth = 2
     c = CAT[e['category']]
     path = 'workshops/%s/' % e['slug']
@@ -864,39 +873,43 @@ def pilot_page(e, pl):
     cr, crld = crumbs(depth, workshop_trail(e))
     embed = ('<div class="mapembed"><iframe src="%s" title="Map of %s" width="100%%" height="300" loading="lazy" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe></div>'
              % (E(embed_url(e)), E(e['name'], True)))
-    contact_btn = contact_btns(e, path, 'big') + gm_btn(e, path, 'big alt')
-    ul = lambda items: '<ul class="tick svc-plain">%s</ul>' % ''.join('<li>%s</li>' % E(x) for x in items)
-    spec = ('<h2>Specialties</h2>' + ul(pl['specialties'])) if pl.get('specialties') else ''
-    know = ('<h2>Good to know</h2>' + ul(pl['good_to_know'])) if pl.get('good_to_know') else ''
+    chips = ''.join('<li>%s</li>' % E(x) for x in pl['chips'])
+    grid_ = ''.join('<li><span class="si">%s</span><span>%s</span></li>' % (ic(pilot_icon(s)), E(s)) for s in pl['services'])
+    good = ''.join('<li>%s</li>' % E(x) for x in pl.get('good_for', []))
+    good_html = ('<section class="pl-sec"><h2>Good for</h2><ul class="tick svc-plain">%s</ul>%s</section>' % (good, ('<p class="fine">%s</p>' % E(pl['good_for_note'])) if pl.get('good_for_note') else '')) if good else ''
+    tips = ('<section class="pl-sec"><h2>Before you go</h2><p class="fine">General guidance, not claims about this workshop.</p><ul class="tick svc-plain">%s</ul></section>' % ''.join('<li>%s</li>' % E(x) for x in pl['tips'])) if pl.get('tips') else ''
     faqs = [(q, a) for q, a in pl['faqs']]
-    faq_html = '<section id="faqs"><h2>Questions</h2>' + ''.join('<details class="pq"><summary>%s</summary><p>%s</p></details>' % (E(q), E(a)) for q, a in faqs) + '</section>'
-    claim = owner_note(e, depth, path)
+    faq_html = '<section class="pl-sec" id="faqs"><h2>Questions</h2>' + ''.join('<details class="pq"><summary>%s</summary><p>%s</p></details>' % (E(q), E(a)) for q, a in faqs) + '</section>'
+    claim = ('<section class="pl-sec claimbox"><h2>Is this your workshop? Claim it</h2><p>Claim this listing to keep the details right and add more. Basic listings are compiled from public information.</p>'
+             '<p><a class="btn amber" href="%slist-your-workshop/?w=%s#claim" data-cta="claim_%s" data-page="%s">Claim this listing</a> <a class="rm" href="%slist-your-workshop/?w=%s#remove" data-cta="remove_%s" data-page="%s">Remove my listing</a></p></section>'
+             % (pre(depth), e['slug'], e['slug'], E(page_label(path)), pre(depth), e['slug'], e['slug'], E(page_label(path))))
     area_links = area_link_html(e, '../../')
+    mrt = ('<li>%s<span><b>Getting there:</b> %s</span></li>' % (ic('pin'), E(pl['mrt']))) if pl.get('mrt') else ''
     body = f'''<div class="w nar basicpg pilot">{cr}
-<div class="badges" style="margin-top:14px">{tier_badge(e)}<span class="tag">{E(c['short'])}</span></div>
-<h1 style="margin-top:8px">{E(e['name'])}</h1>
+<header class="pl-head"><div class="badges"><span class="tag">{E(c['short'])}</span>{tier_badge(e)}</div>
+<h1>{E(e['name'])}</h1>
 <p class="meta rg">{ic('pin')}<span>{E(region_label(e))}</span></p>
+<ul class="pl-chips" aria-label="Main work">{chips}</ul>
+<div class="acts main-acts">{contact_btns(e, path, 'big')}</div>
+<p class="fine">Buttons use the mobile number on its Google listing. They only open a chat or call that you start.</p></header>
 <p class="lede" style="font-size:1rem">{E(pl['lede'])}</p>
-<div class="acts main-acts">{contact_btn}</div>
-<p class="fine">The WhatsApp and call buttons use the mobile number on its Google listing. They only open a chat or call that you start; we never message workshops for you.</p>
-{spec}
-<h2>Services</h2>
-{ul(pl['services'])}
-<p class="fine">Compiled from {E(pl['sources'])} and its Google Maps listing. Please confirm details with the workshop.</p>
-{know}
-{faq_html}
-<section id="find" class="findus"><h2>Find us</h2>
-<ul class="facts"><li data-addr>{ic('pin')}<span>{E(e['address_public'])}</span></li><li>{ic('pin')}<span><b>Opening hours:</b> see Google Maps for current hours.</span></li></ul>
+<section class="pl-sec"><h2>Services</h2><ul class="svc-grid">{grid_}</ul><p class="fine">Compiled from {E(pl['sources'])} and its Google Maps listing. Please confirm details with the workshop.</p></section>
+{good_html}
+<section id="find" class="pl-sec findus"><h2>Location and directions</h2>
+<ul class="facts"><li data-addr>{ic('pin')}<span>{E(e['address_public'])}</span></li>{mrt}<li>{ic('pin')}<span><b>Opening hours:</b> see Google Maps for current hours.</span></li></ul>
 {embed}
-<p style="margin:10px 0">{dir_btn(e, path)}</p>
+<p class="acts" style="margin:10px 0">{dir_btn(e, path)} {gm_btn(e, path, 'big alt')}</p>
 <p class="fine">{E(e['area_ctx'])}</p>
 </section>
-<p class="fine">More <a href="../../services/{c['slug']}/">{E(c['name'].lower())}</a>{area_links}.</p>
+{tips}
+{faq_html}
 {claim}
+<p class="fine">More <a href="../../services/{c['slug']}/">{E(c['name'].lower())}</a>{area_links}.</p>
 </div>'''
     _m = re.search(r'^(.*?)[, ]+(?:Singapore\s+)?(\d{6})\s*$', e['address_public'])
     street, postal = (_m.group(1), _m.group(2)) if _m else (e['address_public'], '')
     ld = {'@context': 'https://schema.org', '@type': 'AutoRepair', 'name': e['name'], 'url': url,
+          'description': pl['lede'],
           'address': {'@type': 'PostalAddress', 'streetAddress': street, 'postalCode': postal, 'addressLocality': 'Singapore', 'addressCountry': 'SG'},
           'geo': {'@type': 'GeoCoordinates', 'latitude': e['lat'], 'longitude': e['lon']}, 'telephone': tel_of(e), 'hasMap': gm_url(e)}
     bar = wabar([wa_btn(e, path), call_btn(e, path)])

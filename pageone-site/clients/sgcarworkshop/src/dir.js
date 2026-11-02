@@ -12,14 +12,14 @@ function hit(s,x){return s.indexOf(' '+x)>-1||(x.length>3&&x.slice(-1)==='s'&&s.
 var feat=d.querySelector('section.feat'),wk=d.getElementById('workshops'),moved=false;
 /* While a search or filter is active, the Premium carousel sits below the results; clearing the search puts it back above the list. */
 function place(on){if(!feat||!wk||on===moved)return;moved=on;if(on)wk.parentNode.insertBefore(feat,wk.nextSibling);else wk.parentNode.insertBefore(feat,wk)}
-function f(){var sv=form.querySelector('input[name=svc]:checked'),svc=sv?sv.value:'',rg=[].map.call(form.querySelectorAll('input[name=reg]:checked'),function(i){return i.value}),p=parse(q.value),n=0;
+function f(){var sv=form.querySelector('input[name=svc]:checked'),svc=sv?sv.value:'',rg=[].map.call(form.querySelectorAll('input[name=reg]:checked'),function(i){return i.value}),p={w:[],r:[]},n=0;
 cards.forEach(function(c){var r=' '+c.getAttribute('data-regions')+' ',s=' '+c.getAttribute('data-search')+' ',
 ok=(!svc||c.getAttribute('data-cat')===svc)&&(!rg.length||rg.some(function(x){return r.indexOf(' '+x+' ')>-1}))&&p.r.every(function(x){return r.indexOf(' '+x+' ')>-1})&&p.w.every(function(x){return hit(s,x)});c.hidden=!ok;if(ok)n++});
-if(ct)ct.innerHTML='<b>'+n+'</b> workshop'+(n==1?'':'s');if(em)em.classList.toggle('show',!n);place(!!(q.value.trim()||svc||rg.length))}
-form.addEventListener('change',f);q.addEventListener('input',f);form.addEventListener('submit',function(e){e.preventDefault();f()});
-var rs=d.getElementById('reset');if(rs)rs.addEventListener('click',function(){HTMLFormElement.prototype.reset.call(form);q.value='';f()});f();
+if(ct)ct.innerHTML='<b>'+n+'</b> workshop'+(n==1?'':'s');if(em)em.classList.toggle('show',!n);place(!!(svc||rg.length))}
+form.addEventListener('change',f);form.addEventListener('submit',function(e){e.preventDefault();f()});
+f();
 /* Hint: bouncing finger + typed example placeholder. Both stop for good once the box is focused; static under reduced motion. */
-var EX=['gearbox repair Woodlands','aircon servicing north','spray paint Yishun','battery replacement north','ECU repair Kaki Bukit'],base='e.g. '+EX[0],done=RM,tmr;
+var EX=['gearbox repair Woodlands','aircon servicing north','spray paint Yishun','battery replacement north','ECU repair Kaki Bukit'],base=q.getAttribute('placeholder'),done=true,tmr;
 function stop(){done=true;clearTimeout(tmr);form.classList.add('hint-off');q.placeholder=base}
 q.addEventListener('focus',stop);q.addEventListener('pointerdown',stop);
 if(RM){form.classList.add('hint-off');q.placeholder=base}

@@ -281,16 +281,31 @@ ul.chips{list-style:none;display:flex;flex-wrap:wrap;gap:8px;padding:0;margin:14
 .btn.alt{background:#fff;color:var(--ink);border:1px solid var(--line)}
 .main-acts .btn.big{width:100%;justify-content:center;white-space:normal;text-align:center}
 
-/* "Describe your problem" search (home) */
-.askbox{margin:0 0 14px;padding-bottom:14px;border-bottom:1px solid var(--line)}
-.asklab{display:block;font-weight:700;margin:0 0 8px;color:var(--ink)}
-.askrow{display:flex;gap:8px}.askrow input{flex:1 1 auto;min-width:0;min-height:52px;padding:12px 14px;border:2px solid var(--brand);border-radius:12px;font:inherit;font-size:1rem;background:#fff;color:var(--ink)}
-.askrow input:focus{outline:none;border-color:var(--amber);box-shadow:0 0 0 4px rgba(201,153,58,.28)}.askrow .btn{min-height:52px;flex:0 0 auto}
-.askhint{margin:6px 0 0}
+/* One search box (home): free text + Search button, service chips below */
+.qrow{display:flex;gap:8px;align-items:stretch;margin:0 0 12px}.qrow .q{flex:1 1 auto;min-width:0;margin:0}.panel .qrow .q input{min-height:54px}
+.qgo{flex:0 0 auto;min-height:54px;padding:0 20px;font-size:1rem}
+.chiprow{margin:0 0 4px}.askhint{margin:8px 0 0;color:var(--muted)}
 .askres{background:#fff;padding:18px 0;border-bottom:1px solid var(--line)}.askres[hidden]{display:none}
 .askres .ah{margin:0 0 10px}.achips{display:flex;flex-wrap:wrap;gap:8px;margin:0 0 12px}
 .achip{background:var(--gold-bg);border:1px solid var(--line);border-radius:999px;padding:5px 12px;font-size:.9rem}.achip small{color:var(--muted)}
 .likely{background:#f4f7fb;border-left:4px solid var(--amber);border-radius:8px;padding:12px 14px;margin:0 0 14px}
 .askres .sub{margin:14px 0 8px}.askres .dym{margin:14px 0}.askres .askmore{margin:12px 0}.askres .askclear{margin-top:14px}
-@media(max-width:480px){.askrow{flex-direction:column}.askrow .btn{width:100%}}
-.askpanel{margin-bottom:12px}.askpanel .askbox{margin:0;padding:0;border:0}
+@media(max-width:380px){.qgo{padding:0 14px}}
+.panel .qrow .q textarea{width:100%;min-height:54px;padding:10px 12px 10px 44px;border:2px solid var(--brand);border-radius:12px;font:inherit;font-size:1rem;line-height:1.3;background:#fff;color:var(--ink);resize:none;box-shadow:0 0 0 4px var(--gold-bg);display:block}
+.panel .qrow .q textarea:focus{outline:none;border-color:var(--amber);box-shadow:0 0 0 4px rgba(201,153,58,.28)}
+.panel .qrow .q svg{top:22px;transform:none}
+@media(max-width:560px){.qrow{flex-direction:column}.qgo{width:100%}}
+@media(max-width:560px){.panel .qrow .q textarea{min-height:82px;font-size:.95rem}}
+
+/* Basic pilot page */
+.pilot .pl-head{margin:14px 0 6px}.pilot .pl-head h1{margin:8px 0 4px}.pilot .pl-chips{display:flex;flex-wrap:wrap;gap:8px;list-style:none;margin:12px 0;padding:0}
+.pilot .pl-chips li{background:var(--gold-bg);border:1px solid var(--line);border-radius:999px;padding:6px 13px;font-size:.88rem;font-weight:600;color:var(--brand)}
+.pilot .main-acts{display:flex;flex-wrap:wrap;gap:10px;margin:14px 0 6px}.pilot .main-acts .btn{flex:1 1 150px;justify-content:center}
+.pilot .pl-sec{margin:26px 0 0}.pilot .pl-sec h2{margin:0 0 10px;font-size:1.2rem}
+.pilot .svc-grid{list-style:none;margin:0 0 8px;padding:0;display:grid;grid-template-columns:repeat(2,1fr);gap:10px}
+.pilot .svc-grid li{display:flex;align-items:flex-start;gap:10px;padding:12px;border:1px solid var(--line);border-radius:12px;background:#fff;font-size:.9rem;line-height:1.3}
+.pilot .svc-grid .si{flex:none;width:30px;height:30px;border-radius:8px;background:var(--gold-bg);display:inline-flex;align-items:center;justify-content:center;color:var(--amber-d)}.pilot .svc-grid .si svg{width:18px;height:18px}
+.pilot .claimbox{padding:16px;border:1px dashed var(--amber);border-radius:12px;background:#fffaf0}.pilot .claimbox p{margin:0 0 10px}.pilot .claimbox .rm{margin-left:10px;font-size:.85rem}
+.pilot .acts .btn{margin:0 6px 6px 0}
+@media(max-width:380px){.pilot .svc-grid{grid-template-columns:1fr}}
+.pilot .acts{display:flex;flex-wrap:wrap;gap:8px}.pilot .acts .btn{white-space:normal;text-align:center;max-width:100%;margin:0}

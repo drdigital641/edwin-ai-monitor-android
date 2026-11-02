@@ -48,5 +48,16 @@
    "Sources differ, so please see Google Maps for current hours."
   ]
  ],
- "sources": "SGCarMart and Carousell listings"
+ "sources": "SGCarMart and Carousell listings",
+ "chips": [
+  "Diagnosis and troubleshooting",
+  "Transmission and gearbox",
+  "Aircon"
+ ],
+ "good_for": [
+  "All makes, including Japanese and Korean cars",
+  "Commercial vans: Hiace, NV200, NV350 and Dyna are listed",
+  "Private-hire vehicles"
+ ],
+ "mrt": "No MRT station is within 2 km. Marsiling MRT (NS8) is about 2.4 km away in a straight line, so check Google Maps for your route."
 }

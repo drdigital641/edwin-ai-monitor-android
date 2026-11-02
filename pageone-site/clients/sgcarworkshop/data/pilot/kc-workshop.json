@@ -13,9 +13,30 @@
    "Its listing in the Singapore Motor Workshop Association directory names accident claims, ECU programming, and engine diagnostics and troubleshooting."
   ],
   [
+   "Where is KC Workshop?",
+   "At 13 Kaki Bukit Road 4, #01-26 Bartley Biz Centre. Kaki Bukit MRT (DT28) is about 490 m away in a straight line."
+  ],
+  [
    "What are the opening hours?",
    "Sources differ, so please see Google Maps for current hours."
   ]
  ],
- "sources": "the Singapore Motor Workshop Association directory"
+ "sources": "the Singapore Motor Workshop Association directory",
+ "chips": [
+  "Accident claims",
+  "ECU programming",
+  "Engine diagnostics"
+ ],
+ "good_for": [
+  "Accident claims",
+  "ECU programming",
+  "Engine diagnostics and troubleshooting"
+ ],
+ "good_for_note": "Car makes served are not listed in the sources we found. Mention your car model when you message.",
+ "mrt": "Kaki Bukit MRT (DT28) is about 490 m away in a straight line.",
+ "tips": [
+  "Accident claims: have your insurer and claim details ready, and say which parts of the car were hit.",
+  "ECU programming: tell them your car model and year, what you want changed, and any fault codes you have.",
+  "Engine diagnostics: describe the symptom, when it happens and any warning lights, so the check is quicker."
+ ]
 }
