@@ -223,6 +223,30 @@ def faq_schema(faqs):
             'acceptedAnswer': {'@type': 'Answer', 'text': a}} for q, a in faqs]}
 
 
+CONCEPT_FAQS = [
+    ('How much would this design concept cost?', 'This website does not publish prices. What a concept like this costs depends on the size of the unit, how much needs removing, '
+     'the number of trades involved, the finish quality and how difficult access and working restrictions make the site. WhatsApp a floor plan and photos of your unit '
+     'and we will give a written scope and quotation that shows what is included and what is not.'),
+    ('How long would a fit-out like this take?', 'We do not promise a fixed timeline for a design idea. The schedule depends on the scope, the lead times for custom '
+     'joinery, glass, signage and special finishes, and the other trades involved. Carpentry is made in our own workshop, then trades are sequenced on site, and the schedule is agreed with you before work starts.'),
+    ('Do I need mall approval before starting work?', 'If your unit is in a mall or managed building, the landlord usually has its own fit-out guidelines. These commonly involve '
+     'submitting plans to the mall management, using contractors the management accepts or approves, and carrying out noisy work after hours. Requirements differ between landlords, '
+     'so check your tenancy documents and ask management; we also check landlord or mall rules at the site visit.'),
+]
+
+
+def concept_cost_section():
+    return ('<section class="sec"><div class="wrap prose"><h2>What it costs, how long it takes and mall rules</h2>'
+            '<p><strong>Cost.</strong> We do not publish prices on this website. The cost of a concept like this is driven by the size of the unit, how much needs removing, '
+            'the number of trades, the finish quality and how difficult access and working restrictions make the site. After we measure the unit, you receive a written scope and quotation '
+            'that shows what is included and what is not.</p>'
+            '<p><strong>Timeline.</strong> No fixed timeline is promised for a design idea. The schedule depends on the scope, the lead times for custom joinery, glass, signage and '
+            'special finishes, and other trades. Our own carpentry workshop makes the joinery before the trades are sequenced on site.</p>'
+            '<p><strong>Mall rules.</strong> In a mall or managed building, the landlord normally sets fit-out guidelines. These commonly involve submitting plans to the mall management, '
+            'using contractors the management accepts or approves, and doing noisy work after hours. Rules differ by landlord, so we check yours at the site visit before work starts.</p>'
+            '%s</div></section>') % faq_html(CONCEPT_FAQS)
+
+
 SPECIALTY = 'Design and build specialists for retail outlets and commercial spaces in Singapore'
 AUDIENCE = {'@type': 'BusinessAudience', 'name': 'Retail outlet and commercial space owners and tenants in Singapore',
             'audienceType': 'Shops, boutiques, offices, showrooms, F&B outlets, cafes and salons',
@@ -234,7 +258,7 @@ def org_schema():
     o = {'@type': ['Organization', 'GeneralContractor'], '@id': BASE + '#org', 'name': BRAND_FULL, 'alternateName': [BRAND, 'CommercialFitout.sg', 'SG Fitout'],
          'url': BASE, 'logo': BASE + 'icon-512.png', 'image': IMG + 'og-rc.jpg', 'slogan': SPECIALTY,
          'telephone': PHONE_DISPLAY, 'address': {'@type': 'PostalAddress', 'streetAddress': '113 Eunos Ave 3, #04-02, Gordon Ind Building', 'addressLocality': 'Singapore', 'postalCode': '409838', 'addressCountry': 'SG'},
-         'areaServed': SG, 'audience': AUDIENCE, 'hasMap': GOOGLE_REVIEWS,
+         'areaServed': SG, 'audience': AUDIENCE, 'hasMap': GOOGLE_REVIEWS, 'sameAs': [GOOGLE_REVIEWS],
          'knowsAbout': ['Retail shop fit-out', 'Commercial interior design and build', 'Shop renovation', 'Office renovation',
                         'Showroom fit-out', 'F&B counter and cafe fit-out', 'Salon fit-out', 'Commercial carpentry', 'Retail display shelving',
                         'Commercial electrical works', 'Commercial tiling and flooring', 'Audio, visual and lighting (AVL) for shops'],
@@ -425,17 +449,61 @@ def content_page(p, crumbs, kind='service'):
     write(path, head(path, p['title'], p['desc'], schema, og_img=((BASE + 'share/' + p['og']) if p.get('og') else None), og_alt=(p['image_alt'] if p.get('og') else None)) + header(path) + body + footer(path), p.get('date', TODAY))
 
 
+HUB_EXTRA = {
+    '/services/': ('SG Commercial Fitout is a Singapore design and build team for retail outlets and commercial spaces such as shops, boutiques, offices, showrooms, F&B outlets and salons. '
+                   'It has its own carpentry workshop, so counters, cabinets and shelving can be made to your measurements, and it also handles renovation, electrical works, tiling and flooring, '
+                   'painting and finishing, and audio, visual and lighting (AVL). Choose a service below to see its scope, options, budget drivers and what to prepare. '
+                   'Prices are not published on this website; each job is quoted from a written scope after we measure the unit.',
+                   [('Which services does SG Commercial Fitout offer?', 'Commercial carpentry, commercial renovation, commercial electrical works, tiling and flooring, painting and finishing, and audio, visual and lighting (AVL) for retail outlets and commercial spaces in Singapore.'),
+                    ('Does SG Commercial Fitout have its own workshop?', 'Yes. It has its own carpentry workshop, so counters, cabinets and shelving can be made to your measurements.'),
+                    ('How do I get a quotation?', 'WhatsApp +65 8659 4553 with a floor plan or unit layout, photos of the unit, what the space is for and your target opening date. We measure the unit and give a written scope and quotation that shows what is included and what is not.')]),
+    '/spaces/': ('Different businesses ask different things of a unit. A retail shop needs display, lighting and customer flow; a cafe or service counter needs a working counter and seating; an office or showroom needs reception, meeting and feature areas; a salon needs stations, mirrors and concealed storage. '
+                 'Each page below sets out the needs, the usual scope mix and the materials for that type of space, with design concepts to discuss. '
+                 'The concepts are AI design ideas, not completed projects, and can be adapted to your unit, brand and budget.',
+                 [('Which types of space does SG Commercial Fitout work on?', 'Retail shops and boutiques, cafes and service counters, offices and showrooms, and salons and beauty studios in Singapore.'),
+                  ('Are the design concepts completed projects?', 'No. Pictures marked "AI design concept" are ideas to discuss. Photos marked "Real project" show SG Commercial Fitout work.'),
+                  ('Can a concept be adapted to my unit?', 'Yes. We can design and build a concept for a new space, or revamp your current one, adapted to your unit, brand and budget.')]),
+    '/guides/': ('These planning guides are for owners and tenants preparing a shop, cafe, office or salon fit-out in Singapore. They cover how to brief a contractor, shelving materials, planning a custom counter, lighting a display, shopfront signage, background music, layout and customer flow, and a renovation checklist. '
+                 'They are written by SG Commercial Fitout as practical reading before you speak to any contractor, and they give general information rather than regulatory advice. '
+                 'Where landlord or mall guidelines apply, check them with the management office for your unit.',
+                 [('Who writes these guides?', 'SG Commercial Fitout, a Singapore design and build team for retail outlets and commercial spaces with its own carpentry workshop.'),
+                  ('Do the guides give prices?', 'No. They explain what drives cost and scope; prices are given in a written quotation after we measure the unit.'),
+                  ('Do the guides cover mall or landlord rules?', 'Only in general terms. Landlords and malls set their own fit-out guidelines, so check yours with the management office; we also check them at the site visit.')]),
+    '/design-concepts/': ('Every picture in this gallery is an AI design concept for a Singapore retail outlet or commercial space: boutiques, cafes and service counters, offices and showrooms, and salons. A new concept is added every day, and the gallery also holds a library of concepts you can filter by type of space. '
+                          'Tap a picture for its design ideas, the services involved and a short note on what it costs, how long it takes and mall rules. '
+                          'The concepts are ideas to discuss, not completed projects; real work is on the Projects page.',
+                          [('Are these real projects?', 'No. They are AI design concepts. Real project photos are labelled "Real project" on the Projects page.'),
+                           ('Can I get a free mockup of my own space?', 'Yes. WhatsApp a photo of your current space to SG Commercial Fitout and we will create a few AI 3D mockup designs for you to discuss, free and with no obligation.'),
+                           ('Can SG Commercial Fitout build a concept I like?', 'Yes. We can design and build it for a new space, or revamp your current one, adapted to your unit, brand and budget.')]),
+    '/design-concepts/concept-of-the-day/': ('Each day SG Commercial Fitout publishes a new AI interior concept for a different kind of Singapore business, with a dated page of its own. Browse every past concept as a photo album, or open a day to see its design ideas, the services involved and what drives cost, timeline and mall requirements. '
+                                             'The concepts are ideas to discuss, not completed projects.',
+                                             [('What is the AI concept of the day?', 'A new commercial interior concept published every day for a different kind of Singapore business. Anyone can browse them for design ideas.'),
+                                              ('Can I use an idea for my own space?', 'Yes, as inspiration. If you like one, WhatsApp us and we can design and build your new space or revamp an existing one.'),
+                                              ('Where can I see real work?', 'On the Projects page, where photos of real work are labelled "Real project".')]),
+}
+
+
+def hub_extra(path):
+    h = HUB_EXTRA.get(path)
+    if not h:
+        return '', None
+    return ('<section class="sec"><div class="wrap prose"><p>%s</p>%s</div></section>' % (E(h[0]), faq_html(h[1])), faq_schema(h[1]))
+
+
 # ---------- hub pages ----------
 def hub(path, title, desc, h1, kicker, intro, key, alt, inner, crumbs, extra_schema=None):
     schema = [org_schema(), crumbs_schema(crumbs), {'@type': 'CollectionPage', 'name': h1, 'url': abs_url(path), 'description': desc}]
     if extra_schema:
         schema += extra_schema
+    hx_html, hx_ld = hub_extra(path)
+    if hx_ld:
+        schema.append(hx_ld)
     body = '''%s
 <section class="phead"><div class="wrap">
 <div><span class="eyebrow">%s</span><h1>%s</h1><p class="answer">%s</p><div class="btns">%s</div></div>
 <div class="pic">%s</div></div></section>
 <section class="band sand"><div class="wrap">%s</div></section>
-%s''' % (crumbs_html(path, crumbs), E(kicker), E(h1), E(intro), cta(path), pic(key, alt, eager=True), inner, cta_band(path, 'my space'))
+%s%s''' % (crumbs_html(path, crumbs), E(kicker), E(h1), E(intro), cta(path), pic(key, alt, eager=True), inner, hx_html, cta_band(path, 'my space'))
     write(path, head(path, title, desc, schema) + header(path) + body + footer(path))
 
 
@@ -515,7 +583,8 @@ def build_concepts():
             '<section class="band sand"><div class="wrap"><div class="head"><h2>Plan by type of space</h2>'
             '<p>What each kind of business space needs, and how we fit it out.</p></div><div class="grid g4">%s</div></div></section>%s') % (
         crumbs_html(path, crumbs), len(items), mockup_box(path), chips, album_tiles(path, items), rel(path, '/projects/'), spaces,
-        cta_band(path, 'an idea from your design gallery'))
+        hub_extra(path)[0] + cta_band(path, 'an idea from your design gallery'))
+    schema.append(hub_extra(path)[1])
     write(path, head(path, 'Retail & Commercial Interior Design Gallery | SG Fitout',
                      'Browse AI interior design ideas for Singapore shops, F&B outlets, offices, showrooms and salons. A new commercial concept is added every day.',
                      schema, og_img=daily_url(DAILY[0])) + header(path) + body + footer(path), DAILY[0]['date'])
@@ -530,7 +599,7 @@ def build_concept_one(c):
     cat = cat_of(c['space'])
     sp = CAT_SPACE[cat]
     chips = ''.join('<li><a href="%s">%s</a></li>' % (rel(path, x), E(SHORT.get(x, x))) for x in c['services'] if x in SHORT)
-    schema = [org_schema(), crumbs_schema(crumbs),
+    schema = [org_schema(), crumbs_schema(crumbs), faq_schema(CONCEPT_FAQS),
               {'@type': 'ImageObject', 'contentUrl': img_url(c['image']), 'url': abs_url(path), 'name': c['title'],
                'caption': c['title'] + ' (AI design concept)', 'description': c['summary'], 'creditText': 'AI design concept by SG Commercial Fitout',
                'copyrightNotice': 'SG Commercial Fitout', 'creator': {'@type': 'Organization', 'name': BRAND}}]
@@ -547,7 +616,7 @@ def build_concept_one(c):
         crumbs_html(path, crumbs), img_url(c['image']), img_url(c['image'], True), img_url(c['image']), E(c['title']), rel(path, gp),
         E(c['space'].capitalize()), E(c['title']), E(c['summary']), ''.join('<li>%s</li>' % E(x) for x in c['elements']), chips,
         rel(path, sp), E(SHORT[sp].lower()), cta(path, 'the design concept "%s"' % c['title'], 'WhatsApp about this idea'),
-        cta_band(path, 'an idea from your design gallery'))
+        concept_cost_section() + cta_band(path, 'an idea from your design gallery'))
     title = '%s | AI Concept' % c['title']
     if len(title) > 60:
         title = c['title'][:60]
@@ -758,7 +827,8 @@ def build_daily():
     body = ('%s<section class="al-head"><div class="wrap"><span class="eyebrow">Daily &middot; %d concepts</span>'
             '<h1>AI concept of the day</h1><p>First in Singapore: a new design concept every day. Free to browse. AI ideas, not completed projects.</p>%s</div></section>'
             '<section class="album"><div class="wrap al-wrap"><div class="al-grid">%s</div><p class="al-foot"><a href="%s">See every design in the gallery &rarr;</a></p></div></section>%s') % (
-        crumbs_html(path, crumbs), len(DAILY), mockup_box(path), tiles, rel(path, '/design-concepts/'), cta_band(path, 'an idea from the concept of the day'))
+        crumbs_html(path, crumbs), len(DAILY), mockup_box(path), tiles, rel(path, '/design-concepts/'), hub_extra(path)[0] + cta_band(path, 'an idea from the concept of the day'))
+    schema.append(hub_extra(path)[1])
     write(path, head(path, 'AI Interior Concept of the Day | SG Commercial Fitout',
                      'A dated daily AI interior concept for Singapore shops, offices, F&B outlets and salons. Browse every past concept as a photo album.',
                      schema, og_img=daily_url(DAILY[0])) + header(path) + body + footer(path), DAILY[0]['date'])
@@ -770,7 +840,7 @@ def build_daily_one(x, newer, older):
     path = daily_path(x)
     gp = '/design-concepts/concept-of-the-day/'
     crumbs = [('/design-concepts/', 'Gallery'), (gp, 'AI concept of the day'), (path, nice_date(x['date']))]
-    schema = [org_schema(), crumbs_schema(crumbs),
+    schema = [org_schema(), crumbs_schema(crumbs), faq_schema(CONCEPT_FAQS),
               {'@type': 'ImageObject', 'contentUrl': daily_url(x), 'url': abs_url(path), 'name': x['title'], 'caption': x['alt'],
                'description': x['summary'], 'uploadDate': x['date'], 'creditText': 'AI design concept by SG Commercial Fitout',
                'copyrightNotice': 'SG Commercial Fitout', 'creator': {'@type': 'Organization', 'name': BRAND}}]
@@ -790,11 +860,11 @@ def build_daily_one(x, newer, older):
         crumbs_html(path, crumbs), daily_url(x), daily_url(x, True), daily_url(x), E(x['alt']), rel(path, '/design-concepts/'),
         nice_date(x['date']), E(x['space']), E(x['title']), E(x['summary']), ''.join('<li>%s</li>' % E(i) for i in x['ideas']),
         cta(path, 'this AI concept (%s)' % nice_date(x['date']), 'WhatsApp about this idea'),
-        nav(newer, 'new', '&larr; Newer'), nav(older, 'old', 'Older &rarr;'), cta_band(path, 'an idea from the concept of the day'))
+        nav(newer, 'new', '&larr; Newer'), nav(older, 'old', 'Older &rarr;'), concept_cost_section() + cta_band(path, 'an idea from the concept of the day'))
     title = '%s | AI Concept' % x['title']
     if len(title) > 60:
         title = x['title'][:60]
-    write(path, head(path, title, ('AI interior concept for %s, %s: %s' % (x['space'].lower(), nice_date(x['date']), concept_line(x)))[:158],
+    write(path, head(path, title, (lambda d: d if len(d) >= 120 else (d + ' Part of the daily AI design concept series by SG Commercial Fitout, Singapore.'))('AI interior concept for %s, %s: %s' % (x['space'].lower(), nice_date(x['date']), concept_line(x)))[:158],
                      schema, og_img=daily_url(x)) + header(path) + body + footer(path), x['date'])
 
 
@@ -893,7 +963,7 @@ def build_404():
 
 # ---------- machine files ----------
 def build_machine():
-    urls = ''.join('<url><loc>%s</loc><lastmod>%s</lastmod></url>' % (E(abs_url(p)), LASTMOD_OVERRIDE.get(p, m)) for p, m in sorted(PAGES_OUT))
+    urls = ''.join('<url><loc>%s</loc><lastmod>%s</lastmod></url>' % (E(abs_url(p)), '2026-11-02' if (p.startswith('/design-concepts/') or p in ('/services/', '/spaces/', '/guides/')) else LASTMOD_OVERRIDE.get(p, m)) for p, m in sorted(PAGES_OUT))
     with open(os.path.join(OUT, 'sitemap.xml'), 'w') as f:
         f.write('<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">%s</urlset>\n' % urls)
     bots = ['Googlebot', 'Googlebot-Image', 'Bingbot', 'OAI-SearchBot', 'GPTBot', 'ChatGPT-User', 'PerplexityBot', 'ClaudeBot',
@@ -917,6 +987,8 @@ def build_machine():
         lines.append('')
     lines += ['## Other', '- [Design gallery](%s): every AI design concept in one photo album (a new commercial concept added daily), each with its own page.' % abs_url('/design-concepts/'),
               '- [Projects & workshop](%s)' % abs_url('/projects/'), '- [AI concept of the day](%s): a new commercial interior concept every day for a different kind of Singapore business; free to browse for ideas' % abs_url('/design-concepts/concept-of-the-day/'), '- [About](%s)' % abs_url('/about/'), '- [Contact](%s)' % abs_url('/contact/'), '']
+    lines += ['', 'Opening hours: not published yet; WhatsApp %s to arrange a time. Prices are not published; each job is quoted from a written scope after the unit is measured.' % PHONE_DISPLAY,
+              '', 'Last updated 2 November 2026.']
     with open(os.path.join(OUT, 'llms.txt'), 'w') as f:
         f.write('\n'.join(lines))
     with open(os.path.join(OUT, INDEXNOW_KEY + '.txt'), 'w') as f:

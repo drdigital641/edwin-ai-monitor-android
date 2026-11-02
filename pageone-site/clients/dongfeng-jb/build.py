@@ -177,14 +177,24 @@ VOYAH_PHOTOS = {
 PHOTOS.update(VOYAH_PHOTOS)
 
 
+try:
+    IMGMAP = json.load(open(os.path.join(HERE, 'assets', 'img', 'map.json')))
+except Exception:
+    IMGMAP = {}
+
+
 def img_base(name):
     return IMG4 if name == 'hero' else IMG3 if name in VOYAH_PHOTOS else IMG2 if name in OFFICIAL else IMG
 
 
 def img(name, L, cls='', eager=False):
     w, h, alt = PHOTOS[name]
-    return '<img src="%s%s.webp" alt="%s" width="%d" height="%d"%s%s>' % (
-        img_base(name), name, E(t(alt, L)), w, h, ' fetchpriority="high"' if eager else ' loading="lazy" decoding="async"', ' class="%s"' % cls if cls else '')
+    src = '%s%s.webp' % (img_base(name), name)
+    if src in IMGMAP:  # compressed copy hosted on this site (assets/img, built by the image-fetch workflow)
+        m = IMGMAP[src]
+        src, w, h = SITE + 'img/' + m['f'], m['w'], m['h']
+    return '<img src="%s" alt="%s" width="%d" height="%d"%s%s>' % (
+        src, E(t(alt, L)), w, h, ' fetchpriority="high"' if eager else ' loading="lazy" decoding="async"', ' class="%s"' % cls if cls else '')
 
 
 WA_SVG = ('<svg viewBox="0 0 24 24" aria-hidden="true" fill="currentColor"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2Zm0 '
@@ -929,7 +939,56 @@ ROADSHOWS = [T('AEON Mall Bandar Dato\' Onn', 'AEON Mall Bandar Dato\' Onn', 'AE
 PAGES = {}  # (L, path) -> dict
 
 
+import importlib.util as _ilu
+_sp = _ilu.spec_from_file_location('seo_extra', os.path.join(HERE, 'seo_extra.py'))
+_sm = _ilu.module_from_spec(_sp)
+_sp.loader.exec_module(_sm)
+XTRA = _sm.EXTRA
+TAIL = {'en': ' WhatsApp +60 18-762 0828.', 'ms': ' WhatsApp +60 18-762 0828.', 'zh': 'WhatsApp +60 18-762 0828，欢迎预约试驾。'}
+
+
+def fit_title(s):
+    """Titles <= 65 chars: shorten the brand suffix first (Dongfeng Johor Bahru -> Dongfeng JB), then drop it."""
+    if len(s) <= 65:
+        return s
+    s2 = s.replace(' | Dongfeng Johor Bahru', ' | Dongfeng JB')
+    if len(s2) <= 65:
+        return s2
+    return s2.split(' | ')[0] if len(s2.split(' | ')[0]) <= 65 else s2
+
+
+def fit_desc(d, L):
+    """EN/BM 120-160 chars; ZH at least 70 characters (CJK is denser)."""
+    if L == 'zh':
+        if len(d) < 70:
+            d += ('' if d.endswith(('。', '.')) else '。') + TAIL['zh']
+        return d
+    if len(d) < 120 and TAIL[L].strip() not in d:
+        d += TAIL[L]
+    if len(d) > 160:
+        cut = d[:159]
+        for sep in ('. ', ': ', '; ', ', ', ' '):
+            i = cut.rfind(sep)
+            if i >= 120:
+                cut = cut[:i]
+                break
+        d = cut.rstrip(' ,;:') + '.'
+    return d
+
+
 def page(L, path, title, desc, h1, body, crumbs=None, lede='', schema=None, hero=True, cta=True, photo=None, kind='website'):
+    title, desc = fit_title(t(title, L)), fit_desc(t(desc, L), L)
+    schema = list(schema or [])
+    ex = XTRA.get(path)
+    if ex:
+        pre_h = '<section class="sec"><div class="wrap"><div class="prose">%s</div></div></section>' % ''.join('<p>%s</p>' % E(t(x, L)) for x in ex['intro']) if ex.get('intro') else ''
+        post_h = ''
+        if ex.get('more'):
+            post_h += '<section class="sec"><div class="wrap"><div class="prose">%s</div></div></section>' % ''.join('<p>%s</p>' % E(t(x, L)) for x in ex['more'])
+        if ex.get('faqs'):
+            post_h += '<section class="sec"><div class="wrap"><div class="prose"><h2>%s</h2>%s</div></div></section>' % (E(t(T('Common questions', 'Soalan lazim', '常见问题'), L)), faq_html(ex['faqs'], L))
+            schema.append(faq_schema(ex['faqs'], L))
+        body = pre_h + body + post_h
     PAGES[(L, path)] = dict(title=t(title, L), desc=t(desc, L), h1=t(h1, L), body=body, crumbs=crumbs, lede=t(lede, L) if lede else '',
                             schema=schema or [], hero=hero, cta=cta, photo=photo, kind=kind)
 
@@ -1468,7 +1527,7 @@ def render(L, path, p):
         crumbs_ld = {'@type': 'BreadcrumbList', 'itemListElement': [{'@type': 'ListItem', 'position': 1, 'name': t(W['home'], L), 'item': SITE + PFX[L]}] +
                      [{'@type': 'ListItem', 'position': i + 2, 'name': t(x, L), 'item': SITE + PFX[L] + h} for i, (h, x) in enumerate(p['crumbs'])]}
     graph = [business_schema(L), {'@type': 'WebPage', '@id': url + '#page', 'url': url, 'name': p['title'], 'description': p['desc'],
-                                  'inLanguage': LANG_ATTR[L], 'dateModified': LASTMOD.get(path, UPDATED), 'about': {'@id': SITE + '#business'},
+                                  'inLanguage': LANG_ATTR[L], 'dateModified': LASTMOD.get(path, '2026-11-02'), 'about': {'@id': SITE + '#business'},
                                   'primaryImageOfPage': img_base(p['photo'] or 'hero') + (p['photo'] or 'hero') + '.webp',
                                   'isPartOf': {'@type': 'WebSite', 'url': SITE, 'name': NAME, 'inLanguage': ['en-MY', 'ms-MY', 'zh-Hans-MY']}}]
     if crumbs_ld:
@@ -1611,7 +1670,7 @@ def main():
     with open(os.path.join(OUT, 'sitemap.xml'), 'w') as f:
         f.write('<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">\n')
         for (L, path) in PAGES:
-            f.write('  <url><loc>%s%s%s</loc><lastmod>%s</lastmod>%s</url>\n' % (SITE, PFX[L], path, LASTMOD.get(path, UPDATED), ''.join(
+            f.write('  <url><loc>%s%s%s</loc><lastmod>%s</lastmod>%s</url>\n' % (SITE, PFX[L], path, LASTMOD.get(path, '2026-11-02'), ''.join(
                 '<xhtml:link rel="alternate" hreflang="%s" href="%s%s%s"/>' % (HREFLANG[l], SITE, PFX[l], path) for l in LANGS)))
         f.write('</urlset>\n')
     with open(os.path.join(OUT, 'llms.txt'), 'w') as f:
@@ -1630,6 +1689,7 @@ def main():
         for (L, path), p in PAGES.items():
             if L == 'en':
                 f.write('- [%s](%s%s): %s\n' % (p['title'].split(' | ')[0], SITE, path, p['desc']))
+        f.write('\nLast updated 2 November 2026.\n')
     with open(os.path.join(OUT, 'site.webmanifest'), 'w') as f:
         json.dump({'name': NAME, 'short_name': 'Dongfeng JB', 'icons': [{'src': IMG + 'icon-192.png', 'sizes': '192x192', 'type': 'image/png'},
                                                                          {'src': IMG + 'icon-512.png', 'sizes': '512x512', 'type': 'image/png'}],
@@ -1638,6 +1698,10 @@ def main():
         f.write(HTACCESS.replace('{DOMAIN}', DOMAIN))
     for fn in ('df.css', 'df.js'):
         shutil.copy(os.path.join(HERE, fn), os.path.join(OUT, fn))
+    if IMGMAP:
+        os.makedirs(os.path.join(OUT, 'img'), exist_ok=True)
+        for fn in {m['f'] for m in IMGMAP.values()}:
+            shutil.copy(os.path.join(HERE, 'assets', 'img', fn), os.path.join(OUT, 'img', fn))
     print('built %d pages' % len(PAGES))
 
 
