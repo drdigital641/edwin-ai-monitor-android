@@ -114,7 +114,27 @@ CANON = 'https://sgcarworkshop.sg/'
 def want_wa(e):
     return 'https://wa.me/%s?text=%s' % (e['whatsapp'], _up.quote('Hi, I found you on SG Car Workshop (sgcarworkshop.sg). I would like to ask about %s for my car' % CATPHRASE[e['category']]))
 OSM = 'openstreetmap.org'
+PILOT_SLUGS = set(f[:-5] for f in os.listdir(os.path.join(root, '..', 'data', 'pilot'))) if os.path.isdir(os.path.join(root, '..', 'data', 'pilot')) else set()
 for e in ENTRIES:
+    if e['slug'] in PILOT_SLUGS:
+        # Basic PILOT (Edwin 2 Nov 2026): single fixed-content page, no photo, hours say "see Google Maps", no ratings/reviews/second phones.
+        pg = open(os.path.join(root, 'workshops', e['slug'], 'index.html'), encoding='utf-8').read()
+        body = re.sub(r'<(script|style).*?</\1>', '', pg, flags=re.S)
+        txt = re.sub(r'\s+', ' ', re.sub(r'<[^>]+>', ' ', body))
+        for needle in ('see Google Maps for current hours', 'maps/dir/?api=1&amp;destination=', 'google.com/maps/embed/v1/place?key=', 'Is this your workshop?', 'data-cta="whatsapp_dir_%s"' % e['slug'], 'data-cta="call_dir_%s"' % e['slug'], 'id="faqs"', 'data-cta="maps_%s"' % e['slug']):
+            if needle not in pg: print('PILOT page missing', needle, e['slug']); bad += 1
+        if '<img' in body or 'class="hoursbox"' in pg or 'livephone.js' in pg: print('PILOT page must have no photo and no hours box', e['slug']); bad += 1
+        for stored in ('openingHours', 'ratingValue', 'reviewCount', 'aggregateRating', '"review"'):
+            if stored in pg: print('PILOT page has a forbidden field', stored, e['slug']); bad += 1
+        if re.search(r'\b(review|reviews|rated|stars?|rating)\b', txt.replace('See photos, reviews & hours on Google Maps', '').replace('See photos, reviews &amp; hours on Google Maps', ''), re.I): print('PILOT page mentions reviews/ratings', e['slug']); bad += 1
+        if re.search(r'\b(Mon|Tue|Wed|Thu|Fri|Sat|Sun)\w*\s*[-:to]|\d{1,2}\s?(am|pm)\b', txt): print('PILOT page states opening hours', e['slug']); bad += 1
+        wa = re.findall(r'wa\.me/(\d+)', pg)
+        if not wa or set(wa) != {str(e['whatsapp'])}: print('PILOT WhatsApp must be the stored mobile only', e['slug']); bad += 1
+        tels = set(re.findall(r'tel:(\+\d+)', pg))
+        if tels != {'+' + str(e['whatsapp'])}: print('PILOT Call must be the stored mobile only', e['slug'], tels); bad += 1
+        for w in ENDORSE.findall(txt): print('PILOT page has endorsement wording', w, e['slug']); bad += 1
+        if want_wa(e) not in pg: print('PILOT WhatsApp prefill wrong', e['slug']); bad += 1
+        continue
     # RULE 2: every live record has a stored SG mobile with WhatsApp; RULE 4 prefill
     if not re.match(r'^65[89]\d{7}$', str(e.get('whatsapp', ''))): print('LIVE RECORD WITHOUT STORED MOBILE', e['slug']); bad += 1
     if not e.get('phone') and not e.get('whatsapp'): print('NO PHONE', e['slug']); bad += 1

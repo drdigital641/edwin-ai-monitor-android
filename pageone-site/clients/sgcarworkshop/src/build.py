@@ -846,7 +846,69 @@ def embed_url(e):
     return 'https://www.google.com/maps/embed/v1/place?key=%s&q=%s' % (PLACES_BROWSER_KEY, quote(q))
 
 
+PILOT = {}
+_pd = os.path.join(HERE, '..', 'data', 'pilot')
+if os.path.isdir(_pd):
+    for _f in sorted(os.listdir(_pd)):
+        if _f.endswith('.json'):
+            PILOT[_f[:-5]] = json.load(open(os.path.join(_pd, _f)))
+
+
+def pilot_page(e, pl):
+    """Basic PILOT template (Edwin 2 Nov 2026, 3 workshops only): one fixed-content landing page, NO photo. Own wording from the facts in data/pilot/<slug>.json;
+    WhatsApp + Call use the stored Google mobile; directions, Google Maps link, hours say 'see Google Maps'. No ratings, review quotes, staff names or second numbers."""
+    depth = 2
+    c = CAT[e['category']]
+    path = 'workshops/%s/' % e['slug']
+    url = abs_url(path)
+    cr, crld = crumbs(depth, workshop_trail(e))
+    embed = ('<div class="mapembed"><iframe src="%s" title="Map of %s" width="100%%" height="300" loading="lazy" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe></div>'
+             % (E(embed_url(e)), E(e['name'], True)))
+    contact_btn = contact_btns(e, path, 'big') + gm_btn(e, path, 'big alt')
+    ul = lambda items: '<ul class="tick svc-plain">%s</ul>' % ''.join('<li>%s</li>' % E(x) for x in items)
+    spec = ('<h2>Specialties</h2>' + ul(pl['specialties'])) if pl.get('specialties') else ''
+    know = ('<h2>Good to know</h2>' + ul(pl['good_to_know'])) if pl.get('good_to_know') else ''
+    faqs = [(q, a) for q, a in pl['faqs']]
+    faq_html = '<section id="faqs"><h2>Questions</h2>' + ''.join('<details class="pq"><summary>%s</summary><p>%s</p></details>' % (E(q), E(a)) for q, a in faqs) + '</section>'
+    claim = owner_note(e, depth, path)
+    area_links = area_link_html(e, '../../')
+    body = f'''<div class="w nar basicpg pilot">{cr}
+<div class="badges" style="margin-top:14px">{tier_badge(e)}<span class="tag">{E(c['short'])}</span></div>
+<h1 style="margin-top:8px">{E(e['name'])}</h1>
+<p class="meta rg">{ic('pin')}<span>{E(region_label(e))}</span></p>
+<p class="lede" style="font-size:1rem">{E(pl['lede'])}</p>
+<div class="acts main-acts">{contact_btn}</div>
+<p class="fine">The WhatsApp and call buttons use the mobile number on its Google listing. They only open a chat or call that you start; we never message workshops for you.</p>
+{spec}
+<h2>Services</h2>
+{ul(pl['services'])}
+<p class="fine">Compiled from {E(pl['sources'])} and its Google Maps listing. Please confirm details with the workshop.</p>
+{know}
+{faq_html}
+<section id="find" class="findus"><h2>Find us</h2>
+<ul class="facts"><li data-addr>{ic('pin')}<span>{E(e['address_public'])}</span></li><li>{ic('pin')}<span><b>Opening hours:</b> see Google Maps for current hours.</span></li></ul>
+{embed}
+<p style="margin:10px 0">{dir_btn(e, path)}</p>
+<p class="fine">{E(e['area_ctx'])}</p>
+</section>
+<p class="fine">More <a href="../../services/{c['slug']}/">{E(c['name'].lower())}</a>{area_links}.</p>
+{claim}
+</div>'''
+    _m = re.search(r'^(.*?)[, ]+(?:Singapore\s+)?(\d{6})\s*$', e['address_public'])
+    street, postal = (_m.group(1), _m.group(2)) if _m else (e['address_public'], '')
+    ld = {'@context': 'https://schema.org', '@type': 'AutoRepair', 'name': e['name'], 'url': url,
+          'address': {'@type': 'PostalAddress', 'streetAddress': street, 'postalCode': postal, 'addressLocality': 'Singapore', 'addressCountry': 'SG'},
+          'geo': {'@type': 'GeoCoordinates', 'latitude': e['lat'], 'longitude': e['lon']}, 'telephone': tel_of(e), 'hasMap': gm_url(e)}
+    bar = wabar([wa_btn(e, path), call_btn(e, path)])
+    desc = '%s: car workshop in %s. Services, questions answered, WhatsApp, call and directions.' % (e['name'], e['area_label'])
+    desc = desc if len(desc) <= 160 else '%s, car workshop in %s. WhatsApp, call and directions.' % (e['name'], e['area_label'])
+    page(path, fit_title('%s | %s Car Workshop' % (e['name'], e['area_label']), '%s | %s' % (e['name'], e['area_label']), e['name']), desc, body,
+         [ld, faq_ld(faqs), dict(crld, **{'@context': 'https://schema.org'})], bar=bar, h1=e['name'])
+
+
 def basic_page(e):
+    if e['slug'] in PILOT:
+        return pilot_page(e, PILOT[e['slug']])
     """Basic (free) profile page, built entirely from the workshop record. Lazy Google Maps embed, WhatsApp + Call from the number the workshop
     publishes itself, Directions, a link to its Google Maps listing, on-click opening hours (Google, text attribution) and the owner claim/remove box.
     No gallery, FAQs, prices, ratings or reviews."""
