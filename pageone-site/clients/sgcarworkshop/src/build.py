@@ -27,6 +27,7 @@ from PIL import Image  # noqa: E402
 SITE_NAME = 'SG Car Workshop'   # placeholder brand
 DOMAIN = 'sgcarworkshop.sg'
 LIVE_BOTS = ['Googlebot', 'Bingbot', 'OAI-SearchBot', 'GPTBot', 'ChatGPT-User', 'PerplexityBot', 'ClaudeBot', 'Claude-SearchBot', 'Google-Extended', 'Applebot-Extended', 'DuckAssistBot']
+INDEXNOW_KEY = '4e898a9c4ad17bbc9c447eb375b62f0a'   # IndexNow key (2 Nov 2026); key file is written by every build
 LIVE = os.environ.get('SGCW_LIVE') == '1'   # SGCW_LIVE=1 builds the real-domain copy (site-live/): open robots.txt, root-relative paths
 # Google usage (Edwin, 2 Nov 2026): the referrer-restricted BROWSER key appears only (a) in the Maps Embed iframe URL on profile pages (free) and
 # (b) as data-key on the on-click "Show opening hours" box, which assets/livephone.js uses for ONE Place Details call (businessStatus,
@@ -1086,6 +1087,7 @@ def build():
     else:
         robots = 'User-agent: *\nDisallow: /\n'
     open(OUT + '/robots.txt', 'w').write(robots)
+    open(OUT + '/%s.txt' % INDEXNOW_KEY, 'w').write(INDEXNOW_KEY)
     json.dump(LM_NEW, open(LM_FILE, 'w'), indent=0, sort_keys=True)
     # robots-live.txt always carries the crawlable live-domain rules; htaccess/.htaccess serves it as /robots.txt on sgcarworkshop.sg only
     live_robots = ''.join('User-agent: %s\nAllow: /\n\n' % b for b in LIVE_BOTS) + 'User-agent: *\nAllow: /\n\nSitemap: https://%s/sitemap.xml\n' % DOMAIN
