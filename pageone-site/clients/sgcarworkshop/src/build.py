@@ -6,6 +6,7 @@ llms.txt name that address, robots.txt says Disallow: / . Internal links and ass
 preview address and on the real domain. LIVE = True switches every absolute URL to https://sgcarworkshop.sg/ and opens robots.txt.
 Pages never carry a noindex tag: hiding the preview is done by a server header outside the pages (MASTER-RULES 4.3).
 """
+import datetime
 import hashlib
 import html
 import json
@@ -19,6 +20,7 @@ HERE = os.path.dirname(os.path.abspath(__file__))
 sys.path.insert(0, HERE)
 sys.path.insert(0, os.path.join(HERE, '..', '..', '..', 'builder'))
 import areas  # noqa: E402
+from area_copy import AREA_COPY, REGION_COPY  # noqa: E402
 from data import ENTRIES, CATEGORIES, PAGE_ONE_WA, PAGE_ONE_WA_SHOW, TIERS, PRICE_NOTE, FREE_EXAMPLE  # noqa: E402
 from PIL import Image  # noqa: E402
 
@@ -34,6 +36,26 @@ PREVIEW_BASE = 'https://pageonesingapore.com/preview/sgcarworkshop/'
 BASE = 'https://%s/' % DOMAIN   # canonical, og:url, sitemap and llms.txt always name the real domain (Edwin, 2 Nov 2026), also while previewing
 PATH_BASE = '/' if LIVE else '/preview/sgcarworkshop/'
 UPDATED = '2026-11-01'
+# sameAs for the directory's own Organization: no confirmed owned profiles exist yet (no Google Business Profile, Facebook or Instagram for the directory itself).
+ORG_SAMEAS = []
+import hashlib as _hl
+LM_FILE = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'lastmod.json')
+try:
+    LM = json.load(open(LM_FILE))
+except Exception:
+    LM = {}
+LM_NEW = {}
+TODAY = datetime.date.today().isoformat()
+
+
+def lastmod_of(path, html_text):
+    """True lastmod: moves only when the rendered page changes (asset cache-busters ignored)."""
+    h = _hl.sha1(re.sub(r'\?v=[0-9a-f]{8}', '', html_text).encode()).hexdigest()[:12]
+    old = LM.get(path)
+    d = old['d'] if old and old['h'] == h else TODAY
+    LM_NEW[path] = {'h': h, 'd': d}
+    return d
+
 OUT = os.path.abspath(sys.argv[1] if len(sys.argv) > 1 else os.path.join(HERE, '..', 'site'))
 E = html.escape
 CAT = {c['slug']: c for c in CATEGORIES}
@@ -289,7 +311,8 @@ def home():
 <section class="owner-sec"><div class="w"><p class="owner-note">For business owners: Own a car workshop? Basic listings are free. <a href="list-your-workshop/" data-cta="list_home">List or manage your workshop &rarr;</a></p></div></section>'''
     ld = [
         {'@context': 'https://schema.org', '@type': 'WebSite', 'name': SITE_NAME, 'url': abs_url(''), 'inLanguage': 'en-SG'},
-        {'@context': 'https://schema.org', '@type': 'Organization', 'name': SITE_NAME, 'url': abs_url(''), 'parentOrganization': {'@type': 'Organization', 'name': 'Page One Singapore', 'url': 'https://pageonesingapore.com/'}},
+        dict({'@context': 'https://schema.org', '@type': 'Organization', '@id': abs_url('') + '#org', 'name': SITE_NAME, 'url': abs_url(''),
+              'logo': {'@type': 'ImageObject', 'url': BASE + 'assets/icon-512.png', 'width': 512, 'height': 512}, 'parentOrganization': {'@type': 'Organization', 'name': 'Page One Singapore', 'url': 'https://pageonesingapore.com/'}}, **({'sameAs': ORG_SAMEAS} if ORG_SAMEAS else {})),
         {'@context': 'https://schema.org', '@type': 'FAQPage', 'mainEntity': [{'@type': 'Question', 'name': q, 'acceptedAnswer': {'@type': 'Answer', 'text': a}} for q, a in faqs]},
     ]
     page('', 'Car Workshops in Singapore | SG Car Workshop',
@@ -354,13 +377,31 @@ def region(slug):
     if not mobile and 'mobile' in PUB_REGIONS:
         mob_note = '<p class="fine" style="margin-top:14px">Looking for a service that comes to you? See <a href="%sareas/mobile/">mobile car services across Singapore</a>.</p>' % pre(depth)
     body = f'''<div class="w">{cr}</div>
-<section class="hero" style="padding-top:14px"><div class="w"><h1>{E(h1)}</h1><p class="lede">{E(areas.REGION_INTRO[slug])}</p></div></section>
+<section class="hero" style="padding-top:14px"><div class="w"><h1>{E(h1)}</h1><p class="lede">{E(areas.REGION_INTRO[slug])}</p><p>{E(REGION_COPY[slug])}</p></div></section>
 {est_html}
 <section><div class="w"><h2>{'Mobile listings' if mobile else 'All workshops in the %s region' % E(name)}</h2><div class="grid">{''.join(card(e, depth, 'areas/%s/' % slug) for e in es)}{list_card(depth, 'car workshop' if mobile else 'car workshop in the ' + name + ' region')}</div>{shortlist_links(es, name)}{mob_note}</div></section>'''
+    other_regions = ', '.join('<a href="%sareas/%s/">%s</a>' % (pre(depth), k, E(RN[k])) for k in PUB_REGIONS if k != slug)
+    rfaqs = [
+        ('Which areas does the %s page cover?' % name, areas.REGION_INTRO[slug]),
+        ('How do I contact a workshop in the %s?' % ('mobile list' if mobile else name + ' region'), 'Tap WhatsApp or Call on a workshop card or page. WhatsApp messages are prefilled with the workshop name and say you found them on %s, so you only need to add your car and what you need. Some listings show Call only.' % SITE_NAME),
+        ('Where can I look if there is nothing close to me?', ('Try another region: %s.' % other_regions) if other_regions else 'Use the search on the home page to filter by service and area.'),
+    ]
+    body = body.replace('</div></section>\n', '</div></section>\n', 1) + faq_block(rfaqs, 'Questions about this region')
     title = fit_title('Mobile Car Services in Singapore | %s' % SITE_NAME) if mobile else fit_title('Car Workshops in %s Singapore | %s' % (name, SITE_NAME), 'Car Workshops in %s | %s' % (name, SITE_NAME))
     desc = ('Mobile car services that come to your car anywhere in Singapore, such as onsite batteries and mobile detailing. Message them directly.' if mobile else
             'Car workshops and car services in the %s region of Singapore, with estate pages and direct WhatsApp or call contact.' % name)
-    page('areas/%s/' % slug, title, cap(desc, 160), body, [itemlist_ld(h1, es), dict(crld, **{'@context': 'https://schema.org'})], h1=h1)
+    page('areas/%s/' % slug, title, cap(desc, 160), body, [itemlist_ld(h1, es), dict(crld, **{'@context': 'https://schema.org'}), faq_ld(rfaqs)], h1=h1)
+
+
+def faq_ld(faqs):
+    """FAQPage JSON-LD that equals the visible FAQ (HTML tags stripped from answers)."""
+    return {'@context': 'https://schema.org', '@type': 'FAQPage', 'mainEntity': [
+        {'@type': 'Question', 'name': q, 'acceptedAnswer': {'@type': 'Answer', 'text': re.sub(r'<[^>]+>', '', t)}} for q, t in faqs]}
+
+
+def faq_block(faqs, title):
+    items = ''.join('<details><summary>%s</summary><p>%s</p></details>' % (E(q), t if '<a ' in t else E(t)) for q, t in faqs)
+    return '<section class="alt"><div class="w nar"><h2>%s</h2>%s</div></section>' % (E(title), items)
 
 
 def estate(slug, es):
@@ -391,10 +432,18 @@ def estate(slug, es):
         ('Which region is %s in?' % a['name'], '%s is in the %s region of Singapore.%s Browse the <a href="%sareas/%s/">%s region page</a> for more workshops.' % (
             a['name'], rname, (' Nearby areas on %s: %s.' % (SITE_NAME, and_list(ESTATES[k]['name'] for k in near))) if near else '', pre(depth), a['region'], E(rname))),
     ]
+    para, mrt, marks = AREA_COPY[slug]
+    faqs.insert(3, ('What is near %s?' % a['name'], 'Nearby MRT stations include %s. Local landmarks include %s.' % (and_list(mrt), and_list(marks))))
+    near_links = ', '.join('<a href="%sareas/%s/">%s</a>' % (pre(depth), k, E(ESTATES[k]['name'])) for k in near)
+    about_html = ('<section><div class="w nar"><h2>About %s</h2><p>%s</p>'
+                  '<p>%s lists the workshops it has for this area on one page, so you can compare services, open each workshop page for its address and contact details, and message a workshop directly on WhatsApp or by phone. Listings show %s.%s</p></div></section>') % (
+        E(a['name']), E(para), E(SITE_NAME), E(cats.lower()),
+        (' If you want to compare more options nearby, see %s.' % near_links) if near_links else '')
     faq_html = ''.join('<details><summary>%s</summary><p>%s</p></details>' % (E(q), t if '<a ' in t else E(t)) for q, t in faqs)
     body = f'''<div class="w">{cr}</div>
 <section class="hero" style="padding-top:14px"><div class="w"><h1>Car workshops in {E(a['name'])}</h1><p class="lede">{E(intro)}</p>{chips}</div></section>
-<section><div class="w"><h2>Workshops in {E(a['name'])}</h2><div class="grid">{''.join(card(e, depth, 'areas/%s/' % slug) for e in es)}{list_card(depth, 'car workshop in ' + a['name'])}</div>{shortlist_links(es, a['name'])}</div></section>
+{about_html}
+<section class="alt"><div class="w"><h2>Workshops in {E(a['name'])}</h2><div class="grid">{''.join(card(e, depth, 'areas/%s/' % slug) for e in es)}{list_card(depth, 'car workshop in ' + a['name'])}</div>{shortlist_links(es, a['name'])}</div></section>
 <section class="alt"><div class="w"><h2>Map of {E(a['name'])}</h2>
 <div class="mapbox"><iframe src="{E(map_src)}" title="Map of {E(a['name'], True)}" loading="lazy" referrerpolicy="strict-origin-when-cross-origin"></iframe></div>
 <p class="fine">Approximate area map from OpenStreetMap. <a href="{E(map_big)}" target="_blank" rel="noopener">View a larger map</a>. Use the Directions button on a workshop for its exact address.</p></div></section>
@@ -402,7 +451,7 @@ def estate(slug, es):
 <section class="alt"><div class="w nar"><h2>Questions about {E(a['name'])}</h2>{faq_html}</div></section>'''
     title = fit_title('Car Workshops in %s | %s' % (a['name'], SITE_NAME), '%s Car Workshops | %s' % (a['name'], SITE_NAME), 'Car Workshops in %s' % a['name'])
     desc = 'Find car workshops in %s, %s region, Singapore: %s. Map, nearby areas and direct WhatsApp or call contact.' % (a['name'], rname, cats.lower())
-    ld = [itemlist_ld('Car workshops in %s' % a['name'], es), dict(crld, **{'@context': 'https://schema.org'})]
+    ld = [itemlist_ld('Car workshops in %s' % a['name'], es), dict(crld, **{'@context': 'https://schema.org'}), faq_ld(faqs)]
     page('areas/%s/' % slug, title, cap(desc, 160), body, ld, h1='Car workshops in %s' % a['name'])
 
 
@@ -415,14 +464,26 @@ def estate_service(slug, cat, es):
     cr, crld = crumbs(depth, [(rname, 'areas/%s/' % a['region']), (a['name'], 'areas/%s/' % slug), (c['name'], None)])
     n = len(es)
     h1 = '%s in %s' % (c['name'], a['name'])
+    near_s = [k for k in a['nearby'] if (k, cat) in PUB_PAIRS]
+    near_a = [k for k in a['nearby'] if k in PUB_ESTATES]
+    near_html = ('Nearby areas on %s: %s.' % (E(SITE_NAME), ', '.join('<a href="%sareas/%s/">%s</a>' % (pre(depth), k, E(ESTATES[k]['name'])) for k in near_a))) if near_a else ''
+    if near_s:
+        near_html += ' %s is also listed in %s.' % (E(c['name']), ', '.join('<a href="%sareas/%s/%s/">%s</a>' % (pre(depth), k, cat, E(ESTATES[k]['name'])) for k in near_s))
+    sfaqs = [
+        ('Which workshops offer %s in %s?' % (c['name'].lower(), a['name']), '%s lists %s for %s in %s.' % (SITE_NAME, and_list(e['name'] for e in es), c['name'].lower(), a['name'])),
+        ('How do I contact a workshop in %s?' % a['name'], 'Tap WhatsApp or Call on a workshop card or page. WhatsApp messages are prefilled with the workshop name and say you found them on %s, so you only need to add your car and what you need.' % SITE_NAME),
+        ('What is near %s?' % a['name'], 'Nearby MRT stations include %s. Local landmarks include %s.' % (and_list(AREA_COPY[slug][1]), and_list(AREA_COPY[slug][2]))),
+    ]
     intro = '%d workshops in %s are listed for %s: %s. Each page shows the address, hours and how to contact the workshop.' % (n, a['name'], c['name'].lower(), and_list(e['name'] for e in es))
     body = f'''<div class="w">{cr}</div>
 <section class="hero" style="padding-top:14px"><div class="w"><h1>{E(h1)}</h1><p class="lede">{E(intro)}</p></div></section>
 <section><div class="w"><div class="grid">{''.join(card(e, depth, 'areas/%s/%s/' % (slug, cat)) for e in es)}</div>{shortlist_links(es, a['name'])}
-<p class="fine" style="margin-top:14px">More in this area: <a href="../">all workshops in {E(a['name'])}</a>, or <a href="{pre(depth)}services/{cat}/">{E(c['name'].lower())} across Singapore</a>.</p></div></section>'''
+<p class="fine" style="margin-top:14px">More in this area: <a href="../">all workshops in {E(a['name'])}</a>, or <a href="{pre(depth)}services/{cat}/">{E(c['name'].lower())} across Singapore</a>.</p></div></section>
+<section class="alt"><div class="w nar"><h2>About {E(c['name'].lower())} in {E(a['name'])}</h2><p>{E(AREA_COPY[slug][0])}</p><p>{near_html}</p></div></section>
+{faq_block(sfaqs, 'Questions about %s in %s' % (c['name'].lower(), a['name']))}'''
     title = fit_title('%s in %s | %s' % (c['name'], a['name'], SITE_NAME), '%s in %s' % (c['name'], a['name']))
     desc = '%s in %s, %s region: %s. Compare listings and contact a workshop directly.' % (c['name'], a['name'], rname, and_list(e['name'] for e in es))
-    page('areas/%s/%s/' % (slug, cat), title, cap(desc, 160), body, [itemlist_ld(h1, es), dict(crld, **{'@context': 'https://schema.org'})], h1=h1)
+    page('areas/%s/%s/' % (slug, cat), title, cap(desc, 160), body, [itemlist_ld(h1, es), dict(crld, **{'@context': 'https://schema.org'}), faq_ld(sfaqs)], h1=h1)
 
 
 def tier_badge(e_or_tier, cls=''):
@@ -974,7 +1035,7 @@ def not_found():
 <title>Page not found | {E(SITE_NAME)}</title><meta name="robots" content="noindex">
 <link rel="icon" href="{b}assets/favicon.ico" sizes="48x48"><link rel="stylesheet" href="{b}assets/dir.css?v={V}"></head>
 <body><main class="w nar" style="padding:60px 16px"><h1>That page is not here</h1><p>The page may have moved. Try the <a href="{b}">home page</a> or pick a service.</p>
-<ul class="tick">{cats}</ul><p><a class="btn amber" href="{b}">Back to {E(SITE_NAME)}</a></p></main></body></html>
+<ul class="tick">{cats}</ul><p>Read <a href="{b}about/">about {E(SITE_NAME)}</a> or <a href="{b}list-your-workshop/">list your workshop</a>.</p><p><a class="btn amber" href="{b}">Back to {E(SITE_NAME)}</a></p></main></body></html>
 '''
     return out
 
@@ -1017,7 +1078,7 @@ def build():
 
     urls = sorted(PAGES)
     open(OUT + '/sitemap.xml', 'w').write('<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n' +
-                                          ''.join('<url><loc>%s</loc><lastmod>%s</lastmod></url>\n' % (abs_url(p), UPDATED) for p in urls) + '</urlset>\n')
+                                          ''.join('<url><loc>%s</loc><lastmod>%s</lastmod></url>\n' % (abs_url(p), lastmod_of(p, PAGES[p])) for p in urls) + '</urlset>\n')
     if LIVE:
         bots = LIVE_BOTS
         _unused = ['Googlebot', 'Bingbot', 'OAI-SearchBot', 'GPTBot', 'ChatGPT-User', 'PerplexityBot', 'ClaudeBot', 'Claude-SearchBot', 'Google-Extended', 'Applebot-Extended', 'DuckAssistBot']
@@ -1025,11 +1086,12 @@ def build():
     else:
         robots = 'User-agent: *\nDisallow: /\n'
     open(OUT + '/robots.txt', 'w').write(robots)
+    json.dump(LM_NEW, open(LM_FILE, 'w'), indent=0, sort_keys=True)
     # robots-live.txt always carries the crawlable live-domain rules; htaccess/.htaccess serves it as /robots.txt on sgcarworkshop.sg only
     live_robots = ''.join('User-agent: %s\nAllow: /\n\n' % b for b in LIVE_BOTS) + 'User-agent: *\nAllow: /\n\nSitemap: https://%s/sitemap.xml\n' % DOMAIN
     open(OUT + '/robots-live.txt', 'w').write(live_robots)
     lines = ['# %s' % SITE_NAME, '', '> A directory of car workshops and car services in Singapore, run by Page One Singapore. Entries use details from the business or its public listing. No rankings and no rating or review markup.', '',
-             'Last updated: %s' % UPDATED, '', '## Services']
+             'Last updated: %s' % max([d['d'] for d in LM_NEW.values()] or [UPDATED]), '', '## Services']
     lines += ['- [%s](%sservices/%s/): %s' % (c['name'], BASE, c['slug'], c['blurb']) for c in CATEGORIES]
     lines += ['', '## Areas (regions)']
     lines += ['- [%s](%sareas/%s/): %s' % (RN[k], BASE, k, areas.REGION_INTRO[k]) for k in PUB_REGIONS]
@@ -1088,6 +1150,7 @@ def make_icons():
             return out
         return im
     mark(192).save(OUT + '/assets/icon-192.png')
+    mark(512).save(OUT + '/assets/icon-512.png')
     mark(180).save(OUT + '/assets/apple-touch-icon.png')
     mark(48).save(OUT + '/assets/favicon.ico', sizes=[(48, 48)])
     W, H = 1200, 630
