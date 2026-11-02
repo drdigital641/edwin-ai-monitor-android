@@ -1,0 +1,21 @@
+# Star Performance Motor (starperformancemotor.com). Document root for starperformancemotor.com; also served as
+# pageonesingapore.com/preview/star-performance/ before go-live. Overrides the parent pageonesingapore.com .htaccess.
+RewriteEngine On
+RewriteCond %{HTTP_HOST} ^www\.starperformancemotor\.com$ [NC]
+RewriteRule ^ https://starperformancemotor.com%{REQUEST_URI} [L,R=301]
+RewriteCond %{HTTPS} off
+RewriteRule ^ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
+RewriteCond %{THE_REQUEST} \s/(.*/)?index\.html[\s?] [NC]
+RewriteRule ^(.*/)?index\.html$ https://starperformancemotor.com/$1 [L,R=301]
+ErrorDocument 404 /404.html
+<IfModule mod_headers.c>
+# Preview host only: pageonesingapore.com/preview/star-performance/ stays out of Google; the real domain serves the same files without this header.
+SetEnvIfNoCase Host ^(www\.)?pageonesingapore\.com$ P1_PREVIEW=1
+Header set X-Robots-Tag "noindex, nofollow" env=P1_PREVIEW
+<FilesMatch "\.(html)$">
+Header set Cache-Control "max-age=3600, public"
+</FilesMatch>
+<FilesMatch "\.(webp|png|jpg|ico|css|js)$">
+Header set Cache-Control "max-age=2592000, public"
+</FilesMatch>
+</IfModule>
