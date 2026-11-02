@@ -1,0 +1,32 @@
+{
+ "schema_version": 1,
+ "slug": "jdm-autocare",
+ "place_id": "ChIJRbjv7hsY2jERPXjaSDYhY-8",
+ "name_hint": "JDM Autocare",
+ "address_hint": "1 Kaki Bukit Ave 6, #01-51, Singapore 417883",
+ "postal_code": "417883",
+ "phones": [
+  {
+   "e164": "+6597568698",
+   "kind": "mobile",
+   "whatsapp": true,
+   "source": "grok_research_queue",
+   "checked_at": "2026-11-03"
+  }
+ ],
+ "status": "pending",
+ "tier": "basic",
+ "categories": [
+  "SERV"
+ ],
+ "services": [
+  "General servicing and repair"
+ ],
+ "services_source_url": "google_profile",
+ "google_screen": {
+  "passed": true,
+  "reason": "queued from Edwin/Grok research 3 Nov 2026; Google confirms mobile and open status at build time",
+  "checked_at": "2026-11-03"
+ },
+ "queue_source": "edwin_grok_2026-11-03"
+}

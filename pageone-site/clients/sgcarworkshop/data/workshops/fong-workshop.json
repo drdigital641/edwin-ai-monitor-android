@@ -1,0 +1,32 @@
+{
+ "schema_version": 1,
+ "slug": "fong-workshop",
+ "place_id": "ChIJtQAbWCEX2jERTNVaFJ4pG_g",
+ "name_hint": "Fong Workshop",
+ "address_hint": "160 Sin Ming Drive, #08-06 Sin Ming AutoCity, Singapore 575722",
+ "postal_code": "575722",
+ "phones": [
+  {
+   "e164": "+6598191814",
+   "kind": "mobile",
+   "whatsapp": true,
+   "source": "grok_research_queue",
+   "checked_at": "2026-11-03"
+  }
+ ],
+ "status": "pending",
+ "tier": "basic",
+ "categories": [
+  "SERV"
+ ],
+ "services": [
+  "General servicing and repair"
+ ],
+ "services_source_url": "google_profile",
+ "google_screen": {
+  "passed": true,
+  "reason": "queued from Edwin/Grok research 3 Nov 2026; Google confirms mobile and open status at build time",
+  "checked_at": "2026-11-03"
+ },
+ "queue_source": "edwin_grok_2026-11-03"
+}

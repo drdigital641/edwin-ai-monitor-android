@@ -1,0 +1,32 @@
+{
+ "schema_version": 1,
+ "slug": "3b-garage",
+ "place_id": "ChIJFQexWKYX2jER7nRECOfazhg",
+ "name_hint": "3B Garage",
+ "address_hint": "101 Woodlands Ave 12, #03-28, Singapore 737719",
+ "postal_code": "737719",
+ "phones": [
+  {
+   "e164": "+6581027051",
+   "kind": "mobile",
+   "whatsapp": true,
+   "source": "grok_research_queue",
+   "checked_at": "2026-11-03"
+  }
+ ],
+ "status": "pending",
+ "tier": "basic",
+ "categories": [
+  "SERV"
+ ],
+ "services": [
+  "General servicing and repair"
+ ],
+ "services_source_url": "google_profile",
+ "google_screen": {
+  "passed": true,
+  "reason": "queued from Edwin/Grok research 3 Nov 2026; Google confirms mobile and open status at build time",
+  "checked_at": "2026-11-03"
+ },
+ "queue_source": "edwin_grok_2026-11-03"
+}

@@ -3,7 +3,15 @@
  "slug": "tmp-lhs7_rsyq0",
  "place_id": "ChIJ5b6ViVIZ2jERzLHs7_RsyQ0",
  "name": null,
- "phones": [],
+ "phones": [
+  {
+   "e164": "+6591616161",
+   "kind": "mobile",
+   "whatsapp": true,
+   "source": "grok_research_queue",
+   "checked_at": "2026-11-03"
+  }
+ ],
  "status": "pending",
  "tier": "basic",
  "categories": [
@@ -14,8 +22,12 @@
  ],
  "services_source_url": "google_profile",
  "google_screen": {
-  "passed": null,
-  "reason": "discovered 2026-11-02 (ubi), waiting for the Google screen",
-  "checked_at": null
- }
+  "passed": true,
+  "reason": "queued from Edwin/Grok research 3 Nov 2026; Google confirms mobile and open status at build time",
+  "checked_at": "2026-11-03"
+ },
+ "name_hint": "TT MotorSport @ Ubi",
+ "address_hint": "51 Ubi Ave 1, #01-28 Paya Ubi Industrial Park, Singapore 408933",
+ "postal_code": "408933",
+ "queue_source": "edwin_grok_2026-11-03"
 }

@@ -3,7 +3,15 @@
  "slug": "tmp-elylg2ffew",
  "place_id": "ChIJAx10eYgU2jER8elylG2fFEw",
  "name": null,
- "phones": [],
+ "phones": [
+  {
+   "e164": "+6581981887",
+   "kind": "mobile",
+   "whatsapp": true,
+   "source": "grok_research_queue",
+   "checked_at": "2026-11-03"
+  }
+ ],
  "status": "pending",
  "tier": "basic",
  "categories": [
@@ -14,8 +22,12 @@
  ],
  "services_source_url": "google_profile",
  "google_screen": {
-  "passed": null,
-  "reason": "discovered 2026-11-02 (yishun), waiting for the Google screen",
-  "checked_at": null
- }
+  "passed": true,
+  "reason": "queued from Edwin/Grok research 3 Nov 2026; Google confirms mobile and open status at build time",
+  "checked_at": "2026-11-03"
+ },
+ "name_hint": "Lee Beng Auto Services",
+ "address_hint": "1016 Yishun Industrial Park A, #01-230, Singapore 768758",
+ "postal_code": "768758",
+ "queue_source": "edwin_grok_2026-11-03"
 }

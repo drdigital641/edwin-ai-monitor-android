@@ -3,7 +3,15 @@
  "slug": "tmp-yvyeulzmx0",
  "place_id": "ChIJIyX8e4gU2jERYYVYeUlzMx0",
  "name": null,
- "phones": [],
+ "phones": [
+  {
+   "e164": "+6581852366",
+   "kind": "mobile",
+   "whatsapp": true,
+   "source": "grok_research_queue",
+   "checked_at": "2026-11-03"
+  }
+ ],
  "status": "pending",
  "tier": "basic",
  "categories": [
@@ -14,8 +22,12 @@
  ],
  "services_source_url": "google_profile",
  "google_screen": {
-  "passed": null,
-  "reason": "discovered 2026-11-02 (yishun), waiting for the Google screen",
-  "checked_at": null
- }
+  "passed": true,
+  "reason": "queued from Edwin/Grok research 3 Nov 2026; Google confirms mobile and open status at build time",
+  "checked_at": "2026-11-03"
+ },
+ "name_hint": "M6 Garage Pte Ltd",
+ "address_hint": "Blk 1017 Yishun Industrial Park A, #01-256, Singapore 768759",
+ "postal_code": "768759",
+ "queue_source": "edwin_grok_2026-11-03"
 }
