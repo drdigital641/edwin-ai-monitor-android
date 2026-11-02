@@ -1,0 +1,48 @@
+{
+ "lede": "Kaizen Motors is a car workshop at Ark@KB, 68 Kaki Bukit Avenue 6. Its website lists maintenance and repairs, inspections, computer diagnostics, accident repair and spray painting, for private cars and company vehicles.",
+ "chips": [
+  "Pre-purchase inspection",
+  "Computer diagnostics",
+  "Accident repair"
+ ],
+ "services": [
+  "Preventive maintenance",
+  "Corrective repairs",
+  "Pre-LTA inspection",
+  "Pre-purchase inspection",
+  "Computer diagnostics",
+  "Accident repair and claims",
+  "Spray painting",
+  "Tyres and alignment",
+  "Fleet vehicle maintenance"
+ ],
+ "good_for": [
+  "Japanese, Korean and Continental cars",
+  "Vans, lorries and company vehicles",
+  "Buyers who want a car checked before purchase"
+ ],
+ "faqs": [
+  [
+   "What does Kaizen Motors offer?",
+   "Its website lists preventive and corrective maintenance, pre-LTA and pre-purchase inspections, computer diagnostics, accident repair and claims, spray painting, and tyres and alignment."
+  ],
+  [
+   "Which vehicles does Kaizen Motors work on?",
+   "Its website says Japanese, Korean and Continental vehicles, and also vans, lorries and company vehicles."
+  ],
+  [
+   "Can I get a car inspected before buying?",
+   "Pre-purchase inspection is listed on its website. Ask the workshop how to book."
+  ],
+  [
+   "Does Kaizen Motors handle accident repairs?",
+   "Accident repair and claims, and spray painting, are listed on its website."
+  ],
+  [
+   "What are the opening hours?",
+   "Please see Google Maps for current hours."
+  ]
+ ],
+ "sources": "its website (kaizenmotors.com.sg)",
+ "stories": []
+}

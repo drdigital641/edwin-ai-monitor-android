@@ -1,0 +1,22 @@
+{
+ "slug": "sonic-auto-garage",
+ "researched_at": "2026-11-02",
+ "researcher": "Claude (Sonnet)",
+ "facts": [
+  {
+   "field": "category",
+   "value": "Car repair workshop: general servicing and repair",
+   "source_url": "google_profile",
+   "retrieved": "2026-11-02"
+  }
+ ],
+ "conflicts": [],
+ "not_found": [
+  "own website",
+  "public Facebook/Instagram, SGCarMart or Carousell page with services, makes or job posts",
+  "real job stories",
+  "opening hours (never stated)"
+ ],
+ "stories": [],
+ "phone_rule": "Phone = stored Google SG mobile only"
+}

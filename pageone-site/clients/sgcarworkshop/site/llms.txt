@@ -50,7 +50,7 @@ Last updated: 2026-11-02
 - [JSS Motorworkz](https://sgcarworkshop.sg/workshops/jss-motorworkz/): General servicing and repair, Basic listing, Toh Guan and Jurong East
 - [KAIZEN MOTORS PTE LTD](https://sgcarworkshop.sg/workshops/kaizen-motors/): General servicing and repair, Basic listing, Kaki Bukit
 - [KC Workshop](https://sgcarworkshop.sg/workshops/kc-workshop/): General servicing and repair, Basic listing, Kaki Bukit
-- [KH Kinetics Autocare. Night- Friendly Car Workshop](https://sgcarworkshop.sg/workshops/kh-kinetics-autocare-night-friendly/): General servicing and repair, Basic listing, Kaki Bukit
+- [KH Kinetics Autocare](https://sgcarworkshop.sg/workshops/kh-kinetics-autocare-night-friendly/): General servicing and repair, Basic listing, Kaki Bukit
 - [KY Auto](https://sgcarworkshop.sg/workshops/ky-auto/): General servicing and repair, Basic listing, Kaki Bukit
 - [Lim Tan Motor](https://sgcarworkshop.sg/workshops/lim-tan-motor/): General servicing and repair, Basic listing, Sin Ming and Bishan
 - [MK Auto Workz](https://sgcarworkshop.sg/workshops/mk-auto-workz/): General servicing and repair, Basic listing, Kaki Bukit
@@ -60,8 +60,8 @@ Last updated: 2026-11-02
 - [Revol Carz Makeover](https://sgcarworkshop.sg/workshops/revol-carz-makeover-toh-guan/): Spray painting and bodywork, Basic listing, Toh Guan and Jurong East
 - [Saaban Car Workshop](https://sgcarworkshop.sg/workshops/saaban-car-workshop/): General servicing and repair, Basic listing, Yishun
 - [SK Garage @ Kaki Bukit](https://sgcarworkshop.sg/workshops/sk-garage-kaki-bukit/): General servicing and repair, Basic listing, Kaki Bukit
-- [Sonic Auto Garage Pte Ltd](https://sgcarworkshop.sg/workshops/sonic-auto-garage/): General servicing and repair, Basic listing, Ubi
-- [Trident Auto Service Centre Pte. Ltd.](https://sgcarworkshop.sg/workshops/trident-auto-service-centre/): General servicing and repair, Basic listing, Kaki Bukit
+- [Sonic Auto Garage](https://sgcarworkshop.sg/workshops/sonic-auto-garage/): General servicing and repair, Basic listing, Ubi
+- [Trident Auto Service Centre](https://sgcarworkshop.sg/workshops/trident-auto-service-centre/): General servicing and repair, Basic listing, Kaki Bukit
 - [Yigo Garage](https://sgcarworkshop.sg/workshops/yigo-garage/): General servicing and repair, Basic listing, Ubi
 
 ## More

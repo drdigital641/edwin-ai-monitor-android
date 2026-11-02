@@ -1,0 +1,39 @@
+{
+ "slug": "kaizen-motors",
+ "researched_at": "2026-11-02",
+ "researcher": "Claude (Sonnet)",
+ "facts": [
+  {
+   "field": "services",
+   "value": "Preventive and corrective maintenance; pre-LTA inspection; pre-purchase inspection; computer diagnostics; accident repair and claims; spray painting; tyres and alignment; fleet vehicle maintenance",
+   "source_url": "https://www.kaizenmotors.com.sg",
+   "retrieved": "2026-11-02"
+  },
+  {
+   "field": "makes",
+   "value": "Japanese, Korean and Continental vehicles; vans, lorries and company vehicles",
+   "source_url": "https://www.kaizenmotors.com.sg",
+   "retrieved": "2026-11-02"
+  },
+  {
+   "field": "address",
+   "value": "68 Kaki Bukit Avenue 6, #02-12 Ark@KB, Singapore 417896",
+   "source_url": "https://www.kaizenmotors.com.sg",
+   "retrieved": "2026-11-02"
+  },
+  {
+   "field": "mobile",
+   "value": "+65 8823 3366 (matches stored Google mobile)",
+   "source_url": "https://www.kaizenmotors.com.sg",
+   "retrieved": "2026-11-02"
+  }
+ ],
+ "conflicts": [],
+ "not_found": [
+  "year established",
+  "real job stories: only Google reviews by customers exist, which are not the workshop's own posts (not used)",
+  "landline 6384 1956 not used (Google mobile only)"
+ ],
+ "stories": [],
+ "phone_rule": "Phone = stored Google SG mobile only"
+}

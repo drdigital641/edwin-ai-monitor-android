@@ -1,0 +1,73 @@
+{
+ "slug": "revol-carz-makeover-toh-guan",
+ "researched_at": "2026-11-02",
+ "researcher": "Claude (Sonnet)",
+ "facts": [
+  {
+   "field": "services",
+   "value": "Spray painting; paint protection / ceramic coating; workshop servicing and diagnostics; car wash",
+   "source_url": "https://revol.com.sg",
+   "retrieved": "2026-11-02"
+  },
+  {
+   "field": "makes",
+   "value": "BMW, Mercedes, Audi, Volkswagen",
+   "source_url": "https://revol.com.sg",
+   "retrieved": "2026-11-02"
+  },
+  {
+   "field": "address",
+   "value": "Blk 42 Toh Guan Road East #01-75, Enterprise Hub, Singapore 608583 (Toh Guan branch)",
+   "source_url": "https://revol.com.sg",
+   "retrieved": "2026-11-02"
+  },
+  {
+   "field": "mobile",
+   "value": "+65 9322 9331 (Toh Guan WhatsApp; matches stored Google mobile)",
+   "source_url": "https://revol.com.sg",
+   "retrieved": "2026-11-02"
+  },
+  {
+   "field": "established",
+   "value": "2003",
+   "source_url": "https://revol.com.sg",
+   "retrieved": "2026-11-02"
+  }
+ ],
+ "conflicts": [
+  {
+   "field": "services",
+   "values": [
+    {
+     "value": "insurance claim repairs, detailing",
+     "source_url": "https://revol.com.sg/contact-us-revol"
+    },
+    {
+     "value": "not listed on home page",
+     "source_url": "https://revol.com.sg"
+    }
+   ],
+   "note": "insurance claims and detailing not used"
+  },
+  {
+   "field": "locations",
+   "values": [
+    {
+     "value": "'3 Singapore locations'",
+     "source_url": "https://revol.com.sg"
+    },
+    {
+     "value": "'6 specialised facilities'",
+     "source_url": "https://revol.com.sg"
+    }
+   ],
+   "note": "count not used"
+  }
+ ],
+ "not_found": [
+  "real job stories (none; page has only a general customer quote)",
+  "opening hours not stated on page (page differs per branch; Google Maps referred)"
+ ],
+ "stories": [],
+ "phone_rule": "Phone = stored Google SG mobile only"
+}

@@ -1,0 +1,25 @@
+{
+ "lede": "Everest Garage is a car workshop listed on Google Maps for general servicing and repair. Details such as makes and specialities were not found in public sources, so please ask the workshop directly.",
+ "chips": [
+  "General servicing and repair"
+ ],
+ "services": [
+  "General servicing and repair"
+ ],
+ "faqs": [
+  [
+   "What does Everest Garage do?",
+   "Its Google Maps listing describes it as a workshop for general servicing and repair."
+  ],
+  [
+   "Which cars does it work on?",
+   "This was not found in public sources. Please ask the workshop when you message."
+  ],
+  [
+   "What are the opening hours?",
+   "Please see Google Maps for current hours."
+  ]
+ ],
+ "sources": "its Google Maps listing",
+ "stories": []
+}
