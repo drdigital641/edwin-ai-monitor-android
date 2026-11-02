@@ -1,0 +1,18 @@
+# Benjamin Poon (planwithben.sg). Document root for planwithben.sg; also served as
+# pageonesingapore.com/preview/benjamin-poon/ before go-live. Overrides the parent pageonesingapore.com .htaccess.
+RewriteEngine On
+RewriteCond %{HTTP_HOST} ^www\.(.+)$ [NC]
+RewriteRule ^ https://%1%{REQUEST_URI} [L,R=301]
+RewriteCond %{HTTPS} off
+RewriteRule ^ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
+RewriteCond %{THE_REQUEST} \s/(.*/)?index\.html[\s?] [NC]
+RewriteRule ^(.*/)?index\.html$ https://planwithben.sg/$1 [L,R=301]
+ErrorDocument 404 /404.html
+AddDefaultCharset UTF-8
+<IfModule mod_headers.c>
+SetEnvIfNoCase Host ^(www\.)?pageonesingapore\.com$ P1_PREVIEW=1
+Header set X-Robots-Tag "noindex, nofollow" env=P1_PREVIEW
+<FilesMatch "\.(html)$">
+Header set Cache-Control "max-age=3600, public"
+</FilesMatch>
+</IfModule>

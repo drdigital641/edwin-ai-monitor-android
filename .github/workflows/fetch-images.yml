@@ -1,0 +1,40 @@
+name: Fetch and compress images
+
+on:
+  workflow_dispatch:
+    inputs:
+      urls_file:
+        description: "Path of a text file with one image URL per line"
+        required: true
+      out_dir:
+        description: "Output folder in the repo (WebP files + map.json)"
+        required: true
+      max_kb:
+        description: "Max size per image in KB"
+        default: "140"
+      max_width:
+        description: "Max width in px"
+        default: "1280"
+
+permissions:
+  contents: write
+
+jobs:
+  fetch:
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: claude/project-thread-zbfrt7
+      - name: Install Pillow
+        run: pip install pillow
+      - name: Fetch, resize, convert
+        run: python3 .github/fetch/fetch_images.py "${{ inputs.urls_file }}" "${{ inputs.out_dir }}" "${{ inputs.max_kb }}" "${{ inputs.max_width }}"
+      - name: Commit
+        run: |
+          git config user.name "claude-image-fetch"
+          git config user.email "noreply@anthropic.com"
+          git add "${{ inputs.out_dir }}"
+          git diff --cached --quiet || git commit -m "Compressed WebP images for ${{ inputs.out_dir }}"
+          git pull --rebase origin claude/project-thread-zbfrt7
+          git push origin HEAD:claude/project-thread-zbfrt7
