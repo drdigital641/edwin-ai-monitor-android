@@ -24,7 +24,7 @@ from PIL import Image  # noqa: E402
 
 SITE_NAME = 'SG Car Workshop'   # placeholder brand
 DOMAIN = 'sgcarworkshop.sg'
-LIVE = False
+LIVE = os.environ.get('SGCW_LIVE') == '1'   # SGCW_LIVE=1 builds the real-domain copy (site-live/): open robots.txt, root-relative paths
 # Google usage (Edwin, 2 Nov 2026): the referrer-restricted BROWSER key appears only (a) in the Maps Embed iframe URL on profile pages (free) and
 # (b) as data-key on the on-click "Show opening hours" box, which assets/livephone.js uses for ONE Place Details call (businessStatus,
 # regularOpeningHours; sessionStorage cache; project quota capped at 30/day). Nothing else calls Places; nothing from Google is stored except place_id.

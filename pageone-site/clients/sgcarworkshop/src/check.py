@@ -289,5 +289,16 @@ for dp, dn, fns in os.walk(root):
                 if not allowed: print('GOOGLE KEY outside a profile page in', rel); bad += 1
             if OSM in t and (keys or 'hoursbox' in t or 'livephone.js' in t or 'google.com/maps/embed' in t): print('OSM page carries Places content', rel); bad += 1
             if 'livephone.js' in t and not (is_profile and 'class="hoursbox"' in t): print('livephone.js loaded outside a profile hours box', rel); bad += 1
+# robots.txt guard (Edwin 2 Nov 2026): the live-domain build (site-live/, SGCW_LIVE=1) must be crawlable; the preview copy must stay closed.
+_live = os.path.basename(root) == 'site-live' or os.environ.get('SGCW_LIVE') == '1'
+_rb = open(os.path.join(root, 'robots.txt')).read() if os.path.exists(os.path.join(root, 'robots.txt')) else ''
+_dis = [l.strip() for l in _rb.splitlines() if re.match(r'^\s*disallow\s*:\s*/\s*$', l, re.I)]
+if _live:
+    if _dis: print('LIVE robots.txt disallows /'); bad += 1
+    if not re.search(r'^User-agent:\s*\*\s*\nAllow:\s*/\s*$', _rb, re.M): print('LIVE robots.txt needs "User-agent: *" followed by "Allow: /"'); bad += 1
+    if 'Sitemap: https://sgcarworkshop.sg/sitemap.xml' not in _rb: print('LIVE robots.txt needs Sitemap: https://sgcarworkshop.sg/sitemap.xml'); bad += 1
+    if any(getattr(p, 'noindex', False) for p in []): pass
+elif not _dis:
+    print('PREVIEW robots.txt must keep Disallow: / (preview must not compete with the live domain)'); bad += 1
 print('pages checked:', len(files), 'problems:', bad)
 sys.exit(1 if bad else 0)
