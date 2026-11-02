@@ -456,7 +456,7 @@ def wa_btn(e, page_path, cls='', label='WhatsApp'):
 
 
 def tel_of(e):
-    return e.get('phone') or ('+' + e['whatsapp'])
+    return '+' + e['whatsapp']   # Call always uses the mobile (same number as WhatsApp), never a landline (Edwin 2 Nov 2026)
 
 
 def call_btn(e, page_path, cls='', label='Call'):
@@ -474,7 +474,7 @@ def call_icon(e, page_path):
 
 def gm_url(e):
     """Official Google Maps search URL (no API key, no billable call): name + address, pinned to the place_id."""
-    return 'https://www.google.com/maps/search/?api=1&query=%s&query_place_id=%s' % (quote('%s %s' % (e['name'], e['address_public'])), e['place_id'])
+    return 'https://www.google.com/maps/search/?api=1&query=%s&query_place_id=%s' % (quote('%s %s Singapore' % (e['name'], e['address_public'])), e['place_id'])
 
 
 def dir_url(e):

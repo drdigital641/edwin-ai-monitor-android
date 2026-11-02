@@ -230,6 +230,12 @@ if "LIVE_HOST='sgcarworkshop.sg'" not in djs or not all(k in djs for k in ('maps
 rank = {'premium_leadgen': 0, 'premium': 1, 'free': 2}
 order = [(rank[e['tier']], e['name'].lower() if e['tier'] == 'free' else '') for e in ENTRIES]
 if order != sorted(order): print('ENTRIES not sorted Premium, Verified, Basic A-Z'); bad += 1
+# Every tel: link anywhere in the site must be an SG mobile (+65 8/9 + 7 digits), the same number as WhatsApp (Edwin 2 Nov 2026)
+for _root, _d, _fs in os.walk(sys.argv[1] if len(sys.argv) > 1 else '../site'):
+    for _fn in _fs:
+        if _fn.endswith('.html'):
+            for _t in re.findall(r'href="tel:([^"]*)"', open(os.path.join(_root, _fn), encoding='utf-8').read()):
+                if not re.fullmatch(r'\+65[89]\d{7}', _t): print('tel: is not an SG mobile', _t, os.path.join(_root, _fn)); bad += 1
 # DATA: every record file passes the schema; forbidden Google fields; removed/pending place_ids never live; snapshots stay private
 import subprocess
 live_pids = {e['place_id'] for e in ENTRIES if e.get('place_id')}
