@@ -38,19 +38,17 @@
    "e164": "+6588019393",
    "kind": "mobile",
    "whatsapp": true,
-   "evidence": "Own site lists +65 8801 9393 as its 24/7 support number",
-   "source_url": "https://ltm.sg",
-   "checked_at": "2026-11-02",
-   "source": "own_site"
+   "source": "google_profile",
+   "checked_at": "2026-11-02"
   }
  ],
  "website_url": "https://ltm.sg",
  "google_screen": {
-  "passed": null,
-  "reason": "staged, waiting for the Google screen",
-  "checked_at": null
+  "passed": true,
+  "reason": "OPERATIONAL, car repair, SG mobile on Google profile",
+  "checked_at": "2026-11-02"
  },
- "status": "pending",
+ "status": "active",
  "tier": "basic",
  "first_seen_at": "2026-11-02",
  "last_verified_at": "2026-11-02",

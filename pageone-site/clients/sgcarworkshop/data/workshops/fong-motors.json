@@ -2,14 +2,50 @@
  "schema_version": 1,
  "slug": "fong-motors",
  "place_id": "ChIJAQAA6OEX2jERUq7p9tNykTA",
- "name": null,
- "phones": [],
- "status": "pending",
+ "name": "Fong Motors",
+ "phones": [
+  {
+   "e164": "+6581820548",
+   "kind": "mobile",
+   "whatsapp": true,
+   "source": "google_profile",
+   "checked_at": "2026-11-02"
+  }
+ ],
+ "status": "active",
  "tier": "basic",
  "google_screen": {
-  "passed": null,
-  "reason": "queued for Option B re-screen (2 Nov 2026)",
-  "checked_at": null
+  "passed": true,
+  "reason": "OPERATIONAL, car repair, SG mobile on Google profile",
+  "checked_at": "2026-11-02"
  },
- "note": "Stub: identity (name, address, services) must come from the workshop's own pages or a public record, never from Google; filled only if the Google profile shows an SG mobile."
+ "note": "Stub: identity (name, address, services) must come from the workshop's own pages or a public record, never from Google; filled only if the Google profile shows an SG mobile.",
+ "place_id_checked_at": "2026-11-02",
+ "name_source_url": "google_profile",
+ "name_checked_at": "2026-11-02",
+ "address": {
+  "block": "",
+  "street": "1 Kaki Bukit Ave 6, #01-45/#01-27",
+  "unit": "",
+  "building": ""
+ },
+ "postal_code": "417883",
+ "address_source_url": "google_profile",
+ "address_checked_at": "2026-11-02",
+ "categories": [
+  "SERV"
+ ],
+ "services": [
+  "General servicing and repair"
+ ],
+ "services_source_url": "google_profile",
+ "first_seen_at": "2026-11-02",
+ "last_verified_at": "2026-11-02",
+ "collector_version": "agent-v4",
+ "lat": 1.341364875381921,
+ "lng": 103.9124144900048,
+ "geo_source": "onemap",
+ "estate": "kaki-bukit",
+ "planning_area": "Bedok",
+ "region": "east"
 }

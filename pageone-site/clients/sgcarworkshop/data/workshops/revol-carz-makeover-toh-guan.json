@@ -44,9 +44,9 @@
  ],
  "website_url": "https://revol.com.sg/contact-us-revol",
  "google_screen": {
-  "passed": null,
-  "reason": "staged, waiting for the Google screen",
-  "checked_at": null
+  "passed": false,
+  "reason": "Google profile has no SG mobile (landline only or no phone)",
+  "checked_at": "2026-11-02"
  },
  "status": "pending",
  "tier": "basic",

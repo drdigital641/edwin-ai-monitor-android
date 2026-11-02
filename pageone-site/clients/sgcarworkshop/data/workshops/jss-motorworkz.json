@@ -39,10 +39,8 @@
    "e164": "+6583231517",
    "kind": "mobile",
    "whatsapp": true,
-   "evidence": "Own website: 'For Appointment Bookings: +65 8323 1517'; its 'Book Your Free Diagnostic on WhatsApp' buttons link to wa.me/6583231517",
-   "source_url": "https://sites.google.com/jssmotorworkz.com/about-us/home",
-   "checked_at": "2026-11-02",
-   "source": "own_site"
+   "source": "google_profile",
+   "checked_at": "2026-11-02"
   }
  ],
  "website_url": "https://sites.google.com/jssmotorworkz.com/about-us/home",
@@ -53,11 +51,11 @@
  },
  "hours_source_url": "https://sites.google.com/jssmotorworkz.com/about-us/home",
  "google_screen": {
-  "passed": null,
-  "reason": "Not screened yet: the Places Place Details daily quota was used up on 2 Nov 2026 (HTTP 429). Runs on the next quota reset.",
-  "checked_at": null
+  "passed": true,
+  "reason": "OPERATIONAL, car repair, SG mobile on Google profile",
+  "checked_at": "2026-11-02"
  },
- "status": "pending",
+ "status": "active",
  "tier": "basic",
  "first_seen_at": "2026-11-01",
  "last_verified_at": "2026-11-02",
