@@ -128,6 +128,13 @@ for e in ENTRIES:
             if stored in pg: print('PILOT page has a forbidden field', stored, e['slug']); bad += 1
         if re.search(r'\b(review|reviews|rated|stars?|rating)\b', txt.replace('See photos, reviews & hours on Google Maps', '').replace('See photos, reviews &amp; hours on Google Maps', ''), re.I): print('PILOT page mentions reviews/ratings', e['slug']); bad += 1
         if re.search(r'\b(Mon|Tue|Wed|Thu|Fri|Sat|Sun)\w*\s*[-:to]|\d{1,2}\s?(am|pm)\b', txt): print('PILOT page states opening hours', e['slug']); bad += 1
+        if '<article class="story">' in pg:
+            if pg.count('<article class="story">') > 2: print('PILOT page has more than 2 stories', e['slug']); bad += 1
+            for su in re.findall(r'<article class="story">.*?href="([^"]+)"', pg, re.S):
+                if not su.startswith('https://'): print('PILOT story must link to the original post', e['slug']); bad += 1
+            fj = os.path.join(root, '..', 'data', 'facts', e['slug'] + '.json')
+            fs = json.load(open(fj))['stories'] if os.path.exists(fj) else []
+            if sorted(re.findall(r'<article class="story">.*?href="([^"]+)"', pg, re.S)) != sorted(x['source_url'] for x in fs): print('PILOT stories must match the fact file source URLs', e['slug']); bad += 1
         wa = re.findall(r'wa\.me/(\d+)', pg)
         if not wa or set(wa) != {str(e['whatsapp'])}: print('PILOT WhatsApp must be the stored mobile only', e['slug']); bad += 1
         tels = set(re.findall(r'tel:(\+\d+)', pg))

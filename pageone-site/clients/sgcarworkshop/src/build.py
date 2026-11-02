@@ -878,6 +878,10 @@ def pilot_page(e, pl):
     good = ''.join('<li>%s</li>' % E(x) for x in pl.get('good_for', []))
     good_html = ('<section class="pl-sec"><h2>Good for</h2><ul class="tick svc-plain">%s</ul>%s</section>' % (good, ('<p class="fine">%s</p>' % E(pl['good_for_note'])) if pl.get('good_for_note') else '')) if good else ''
     tips = ('<section class="pl-sec"><h2>Before you go</h2><p class="fine">General guidance, not claims about this workshop.</p><ul class="tick svc-plain">%s</ul></section>' % ''.join('<li>%s</li>' % E(x) for x in pl['tips'])) if pl.get('tips') else ''
+    stories = pl.get('stories') or []
+    story_html = ('<section class="pl-sec" id="jobs"><h2>Recent jobs</h2><p class="fine">Summarised in our own words from the workshop\'s own published job write-ups. Open the original for the full post.</p>' + ''.join(
+        '<article class="story"><h3>%s</h3><p>%s</p><p><a href="%s" rel="noopener noreferrer" target="_blank" data-cta="story_%s">Read the original post</a></p></article>' % (E(s['title']), E(s['text']), E(s['url'], True), e['slug'])
+        for s in stories[:2]) + '</section>') if stories else ''
     faqs = [(q, a) for q, a in pl['faqs']]
     faq_html = '<section class="pl-sec" id="faqs"><h2>Questions</h2>' + ''.join('<details class="pq"><summary>%s</summary><p>%s</p></details>' % (E(q), E(a)) for q, a in faqs) + '</section>'
     claim = ('<section class="pl-sec claimbox"><h2>Is this your workshop? Claim it</h2><p>Claim this listing to keep the details right and add more. Basic listings are compiled from public information.</p>'
@@ -895,6 +899,7 @@ def pilot_page(e, pl):
 <p class="lede" style="font-size:1rem">{E(pl['lede'])}</p>
 <section class="pl-sec"><h2>Services</h2><ul class="svc-grid">{grid_}</ul><p class="fine">Compiled from {E(pl['sources'])} and its Google Maps listing. Please confirm details with the workshop.</p></section>
 {good_html}
+{story_html}
 <section id="find" class="pl-sec findus"><h2>Location and directions</h2>
 <ul class="facts"><li data-addr>{ic('pin')}<span>{E(e['address_public'])}</span></li>{mrt}<li>{ic('pin')}<span><b>Opening hours:</b> see Google Maps for current hours.</span></li></ul>
 {embed}
