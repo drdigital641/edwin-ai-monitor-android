@@ -1,0 +1,50 @@
+{
+ "schema_version": 1,
+ "slug": "finzeo-car",
+ "place_id": "ChIJ65suP3YT2jERAAFHA1GJ_Lc",
+ "name": "FINZEO CAR",
+ "phones": [
+  {
+   "e164": "+6591445781",
+   "kind": "mobile",
+   "whatsapp": true,
+   "source": "google_profile",
+   "checked_at": "2026-11-02"
+  }
+ ],
+ "status": "active",
+ "tier": "basic",
+ "categories": [
+  "SERV"
+ ],
+ "services": [
+  "General servicing and repair"
+ ],
+ "services_source_url": "google_profile",
+ "google_screen": {
+  "passed": true,
+  "reason": "OPERATIONAL, car repair, SG mobile on Google profile",
+  "checked_at": "2026-11-02"
+ },
+ "place_id_checked_at": "2026-11-02",
+ "name_source_url": "google_profile",
+ "name_checked_at": "2026-11-02",
+ "address": {
+  "block": "",
+  "street": "60 Jln Lam Huat, #03-57",
+  "unit": "",
+  "building": ""
+ },
+ "postal_code": "737869",
+ "address_source_url": "google_profile",
+ "address_checked_at": "2026-11-02",
+ "first_seen_at": "2026-11-02",
+ "last_verified_at": "2026-11-02",
+ "collector_version": "agent-v4",
+ "estate": "woodlands",
+ "planning_area": "Woodlands",
+ "region": "north",
+ "lat": 1.430875170022137,
+ "lng": 103.7523467761918,
+ "geo_source": "onemap"
+}

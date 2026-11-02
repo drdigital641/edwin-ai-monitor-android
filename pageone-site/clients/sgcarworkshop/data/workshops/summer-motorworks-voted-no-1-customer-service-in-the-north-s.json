@@ -1,0 +1,47 @@
+{
+ "schema_version": 1,
+ "slug": "summer-motorworks-voted-no-1-customer-service-in-the-north-s",
+ "place_id": "ChIJQQbLL0wV2jER934RM34L1mA",
+ "name": "Summer Motorworks | Voted No.1 Customer Service in the North | SERVICING AND REPAIR",
+ "phones": [
+  {
+   "e164": "+6594814922",
+   "kind": "mobile",
+   "whatsapp": true,
+   "source": "google_profile",
+   "checked_at": "2026-11-02"
+  }
+ ],
+ "status": "pending",
+ "tier": "basic",
+ "categories": [
+  "SERV"
+ ],
+ "services": [
+  "General servicing and repair"
+ ],
+ "services_source_url": "google_profile",
+ "google_screen": {
+  "passed": true,
+  "reason": "OPERATIONAL, car repair, SG mobile on Google profile",
+  "checked_at": "2026-11-02"
+ },
+ "place_id_checked_at": "2026-11-02",
+ "name_source_url": "google_profile",
+ "name_checked_at": "2026-11-02",
+ "address": {
+  "block": "",
+  "street": "2 Yishun Industrial Street 1, #01-25, S768159 768159",
+  "unit": "",
+  "building": ""
+ },
+ "postal_code": "768159",
+ "address_source_url": "google_profile",
+ "address_checked_at": "2026-11-02",
+ "first_seen_at": "2026-11-02",
+ "last_verified_at": "2026-11-02",
+ "collector_version": "agent-v4",
+ "estate": "yishun",
+ "planning_area": "Yishun",
+ "region": "north"
+}

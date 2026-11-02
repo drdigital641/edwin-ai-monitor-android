@@ -14,8 +14,9 @@
  ],
  "services_source_url": "google_profile",
  "google_screen": {
-  "passed": null,
-  "reason": "discovered 2026-11-02 (eunos), waiting for the Google screen",
-  "checked_at": null
- }
+  "passed": false,
+  "reason": "Google profile has no SG mobile (landline only or no phone)",
+  "checked_at": "2026-11-02"
+ },
+ "place_id_checked_at": "2026-11-02"
 }

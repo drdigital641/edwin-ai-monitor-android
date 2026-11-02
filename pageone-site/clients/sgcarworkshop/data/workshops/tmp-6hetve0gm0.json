@@ -1,7 +1,7 @@
 {
  "schema_version": 1,
- "slug": "tmp-8jqv0yb4yy",
- "place_id": "ChIJAQNc1uMX2jERR8jQv0yb4yY",
+ "slug": "tmp-6hetve0gm0",
+ "place_id": "ChIJm6GjBwAT2jERG6HETve0GM0",
  "name": null,
  "phones": [],
  "status": "pending",
@@ -14,8 +14,9 @@
  ],
  "services_source_url": "google_profile",
  "google_screen": {
-  "passed": null,
-  "reason": "discovered 2026-11-02 (bedok-north), waiting for the Google screen",
-  "checked_at": null
- }
+  "passed": false,
+  "reason": "primaryType is not car repair",
+  "checked_at": "2026-11-02"
+ },
+ "place_id_checked_at": "2026-11-02"
 }

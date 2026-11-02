@@ -3,5 +3,9 @@
   "text_search": 17,
   "details": 30,
   "note": "Quota window 1 Nov 09:00 UTC to 2 Nov 09:00 UTC (100/day project limit reached). Keyed by that window from 2 Nov."
+ },
+ "2026-11-02": {
+  "text_search": 1,
+  "details": 25
  }
 }

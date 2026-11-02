@@ -1,7 +1,7 @@
 {
  "schema_version": 1,
- "slug": "tmp-3plnqseudy",
- "place_id": "ChIJR6Sq07oX2jERP3PLNqseuDY",
+ "slug": "tmp-piopzuu3se",
+ "place_id": "ChIJxdWe3uMT2jER-piOpZUU3SE",
  "name": null,
  "phones": [],
  "status": "pending",
@@ -15,7 +15,7 @@
  "services_source_url": "google_profile",
  "google_screen": {
   "passed": null,
-  "reason": "discovered 2026-11-02 (ubi), waiting for the Google screen",
+  "reason": "discovered 2026-11-02 (kranji), waiting for the Google screen",
   "checked_at": null
  }
 }

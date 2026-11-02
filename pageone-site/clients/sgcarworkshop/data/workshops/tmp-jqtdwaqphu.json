@@ -1,0 +1,21 @@
+{
+ "schema_version": 1,
+ "slug": "tmp-jqtdwaqphu",
+ "place_id": "ChIJS3wAxgUT2jERCjQTdwaqPhU",
+ "name": null,
+ "phones": [],
+ "status": "pending",
+ "tier": "basic",
+ "categories": [
+  "SERV"
+ ],
+ "services": [
+  "General servicing and repair"
+ ],
+ "services_source_url": "google_profile",
+ "google_screen": {
+  "passed": null,
+  "reason": "discovered 2026-11-02 (kranji), waiting for the Google screen",
+  "checked_at": null
+ }
+}

@@ -524,7 +524,7 @@ def record_problems(r):
     for k in ("slug", "place_id", "name", "name_source_url", "address", "postal_code", "address_source_url", "lat", "lng", "geo_source",
               "planning_area", "region", "estate", "categories", "services", "services_source_url", "phones", "google_screen", "status", "tier",
               "first_seen_at", "last_verified_at", "collector_version", "place_id_checked_at"):
-        if r.get(k) in (None, "", []) and k not in ("lat", "lng"):
+        if r.get(k) in (None, "", []) and k not in ("lat", "lng") and not (k == "geo_source" and r.get("status") != "active"):  # coordinates are filled when a passed record is promoted
             out.append("missing " + k)
     if r.get("schema_version") != 1:
         out.append("schema_version must be 1")
