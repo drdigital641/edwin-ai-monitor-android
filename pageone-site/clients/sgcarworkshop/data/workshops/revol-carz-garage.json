@@ -39,11 +39,12 @@
  ],
  "website_url": "https://revol.com.sg/contact-us-revol",
  "google_screen": {
-  "passed": false,
-  "reason": "Google profile has no SG mobile (landline only or no phone)",
-  "checked_at": "2026-11-02"
+  "passed": true,
+  "reason": "Google profile shows a landline only; the business itself publishes this SG mobile as a wa.me link on its own site (Edwin 2 Nov 2026 fallback)",
+  "checked_at": "2026-11-02",
+  "mobile_from": "own_site"
  },
- "status": "pending",
+ "status": "active",
  "tier": "basic",
  "first_seen_at": "2026-11-02",
  "last_verified_at": "2026-11-02",
