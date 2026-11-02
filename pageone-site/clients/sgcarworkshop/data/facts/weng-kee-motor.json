@@ -61,5 +61,10 @@
   "real job stories"
  ],
  "stories": [],
- "phone_rule": "Stored Google SG mobile only"
+ "phone_rule": "Stored Google SG mobile only",
+ "review_service_support": {
+  "Dent repair": "3 of 5 reviews",
+  "Scratch repair and polishing": "1 of 5 reviews",
+  "Aircon servicing": "1 of 5 reviews"
+ }
 }

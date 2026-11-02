@@ -61,5 +61,9 @@
   "real job stories"
  ],
  "stories": [],
- "phone_rule": "Stored Google SG mobile only"
+ "phone_rule": "Stored Google SG mobile only",
+ "review_service_support": {
+  "Aircon repair": "1 of 5 reviews",
+  "Headlight repair": "1 of 5 reviews"
+ }
 }

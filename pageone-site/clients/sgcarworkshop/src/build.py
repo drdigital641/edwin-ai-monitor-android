@@ -659,9 +659,33 @@ def card_search(e):
     return re.sub(r'[^a-z0-9]+', ' ', t).strip()
 
 
+def card_profile(e):
+    """Search-index text for the AI-smart homepage search (Edwin 3 Nov 2026): chips, services, customer-mentioned services/brands, themes, payment/parking words.
+    Built only from the Basic profile data (pilot JSON + Google cache), so the search uses exactly what the profile page shows."""
+    pl = PILOT.get(e['slug'])
+    if not pl:
+        return '', ''
+    g = GCACHE.get(e['slug']) or {}
+    ment = [x for x in (pl.get('mentioned_services') or [])]
+    po = g.get('paymentOptions') or {}
+    pk = g.get('parkingOptions') or {}
+    words = list(pl.get('chips', [])) + list(pl.get('services', [])) + list(pl.get('good_for', [])) + ment + [pl.get('themes', ''), g.get('editorialSummary') or '']
+    if any(po.get(k) for k in ('acceptsCreditCards', 'acceptsDebitCards', 'acceptsNfc')):
+        words.append('card payment contactless')
+    if pk.get('freeParkingLot') or pk.get('freeGarageParking'):
+        words.append('free parking')
+    if pk.get('paidParkingLot') or pk.get('paidGarageParking'):
+        words.append('parking')
+    prof = re.sub(r'[^a-z0-9]+', ' ', ' '.join(words).lower()).strip()
+    return prof, '|'.join(ment)
+
+
 def card(e, depth, page_path=''):
     c = CAT[e['category']]
     attrs = 'data-search="%s" data-cat="%s" data-regions="%s" data-tier="%s"' % (E(card_search(e), True), c['slug'], ' '.join(e['regions']), e['tier'])
+    _prof, _ment = card_profile(e)
+    if _prof:
+        attrs += ' data-profile="%s" data-mention="%s"' % (E(_prof, True), E(_ment, True))
     rg = '<p class="meta rg">%s<span>%s</span></p>' % (ic('pin'), E(region_label(e)))
     if e['tier'] == 'free':
         svc = ', '.join(e.get('services_public', [])[:3])
@@ -865,7 +889,7 @@ def mention_html(pl):
     m = pl.get('mentioned_services') or []
     if not m:
         return ''
-    return '<h3 class="mh">Customers mention</h3><p class="fine">Pulled from the five most relevant Google Maps reviews, in our own words. Not a list the workshop gave us.</p><ul class="svc-grid">%s</ul>' % ''.join('<li><span class="si">%s</span><span>%s</span></li>' % (ic(pilot_icon(x)), E(x)) for x in m)
+    return '<h3 class="mh">Customers mention</h3><p class="fine">Taken from what customers say on Google Maps, in our own words. Not a list the workshop gave us.</p><ul class="svc-grid">%s</ul>' % ''.join('<li><span class="si">%s</span><span>%s</span></li>' % (ic(pilot_icon(x)), E(x)) for x in m)
 
 
 def google_section(e, pl):

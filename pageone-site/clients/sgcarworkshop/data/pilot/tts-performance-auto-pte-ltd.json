@@ -30,5 +30,10 @@
   ]
  ],
  "sources": "its Google Maps listing",
- "stories": []
+ "stories": [],
+ "mentioned_services": [
+  "Wheel alignment",
+  "Engine oil leak diagnosis",
+  "Undercarriage noise diagnosis"
+ ]
 }

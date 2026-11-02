@@ -61,5 +61,10 @@
   "real job stories"
  ],
  "stories": [],
- "phone_rule": "Stored Google SG mobile only"
+ "phone_rule": "Stored Google SG mobile only",
+ "review_service_support": {
+  "Wheel alignment": "2 of 5 reviews",
+  "Engine oil leak diagnosis": "1 of 5 reviews",
+  "Undercarriage noise diagnosis": "1 of 5 reviews"
+ }
 }

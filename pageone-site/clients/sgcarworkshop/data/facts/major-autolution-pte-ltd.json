@@ -61,5 +61,11 @@
   "real job stories"
  ],
  "stories": [],
- "phone_rule": "Stored Google SG mobile only"
+ "phone_rule": "Stored Google SG mobile only",
+ "review_service_support": {
+  "Aircon servicing": "1 of 5 reviews",
+  "Cooling coil replacement (Mercedes W213)": "1 of 5 reviews",
+  "Under-car inspection": "1 of 5 reviews",
+  "Radiator fan motor check": "1 of 5 reviews"
+ }
 }

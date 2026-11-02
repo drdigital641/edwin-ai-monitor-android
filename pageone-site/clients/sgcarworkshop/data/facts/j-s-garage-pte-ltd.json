@@ -61,5 +61,12 @@
   "real job stories"
  ],
  "stories": [],
- "phone_rule": "Stored Google SG mobile only"
+ "phone_rule": "Stored Google SG mobile only",
+ "review_service_support": {
+  "Honda cars": "2 of 5 reviews",
+  "Japanese and continental cars": "1 of 5 reviews",
+  "Engine rebuild": "1 of 5 reviews",
+  "Gearbox leak repair": "1 of 5 reviews",
+  "Tyres": "1 of 5 reviews"
+ }
 }

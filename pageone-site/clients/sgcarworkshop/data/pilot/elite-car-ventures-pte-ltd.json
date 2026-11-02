@@ -30,5 +30,9 @@
   ]
  ],
  "sources": "its Google Maps listing",
- "stories": []
+ "stories": [],
+ "mentioned_services": [
+  "Aircon repair",
+  "Headlight repair"
+ ]
 }

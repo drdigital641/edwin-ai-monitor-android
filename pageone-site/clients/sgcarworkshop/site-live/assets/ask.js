@@ -90,9 +90,18 @@ function nameMatch(a){var out2=[];cards.forEach(function(c){var n=norm((c.queryS
 function prefill(node,a){var wa=node.querySelector('a[href*="wa.me"]');if(!wa)return;var extra='';
  if(a.make)extra+='\nMy car: '+MAKES[a.make];if(a.raw)extra+='\nWhat I need: '+a.raw.trim().slice(0,160);if(!extra)return;
  try{var u=new URL(wa.href),t=u.searchParams.get('text')||'';u.searchParams.set('text',t+'\n'+extra);wa.href=u.toString()}catch(e){}}
-function clone(c,a){var n=c.cloneNode(true);n.hidden=false;n.removeAttribute('data-search');[].forEach.call(n.querySelectorAll('[id]'),function(x){x.removeAttribute('id')});prefill(n,a);return n}
+function pwords(c){var s=c.__pw;if(!s){s={};(c.getAttribute('data-profile')||'').split(' ').forEach(function(w){if(w){s[w]=1;stems(w).forEach(function(x){s[x]=1})}});c.__pw=s}return s}
+var GEN={car:1,cars:1,workshop:1,garage:1,repair:1,service:1,servicing:1,the:1,for:1,and:1,my:1,has:1,have:1,with:1,problem:1,need:1,fix:1,not:1,got:1};
+function qtoks(a){return a.toks.filter(function(t){return t.length>2&&!STOPSET[t]&&!GEN[t]})}
+function mentionHits(c,a){var m=(c.getAttribute('data-mention')||'').split('|').filter(Boolean),qt=qtoks(a),qs={};qt.forEach(function(t){qs[t]=1;stems(t).forEach(function(x){qs[x]=1})});
+ if(a.make)qs[a.make]=1;return m.filter(function(x){return norm(x).split(' ').some(function(w){return qs[w]||stems(w).some(function(y){return qs[y]})})})}
+function profScore(c,a){if(!c.getAttribute('data-profile'))return 0;var pw=pwords(c),sc=0;qtoks(a).forEach(function(t){if(pw[t]||stems(t).some(function(x){return pw[x]}))sc+=1});
+ if(a.make&&pw[a.make])sc+=3;sc+=mentionHits(c,a).length*3;return sc}
+function ranked(list,a){return list.map(function(c,i){return{c:c,s:profScore(c,a),i:i}}).sort(function(x,y){return y.s-x.s||x.i-y.i}).map(function(x){return x.c})}
+function why(n,c,a){var h=mentionHits(c,a);if(!h.length)return;var p=el('p','why');p.appendChild(el('b',null,'Customers mention: '));p.appendChild(d.createTextNode(h.slice(0,3).join(', ')));var bd=n.querySelector('.bd');if(bd){var acts=bd.querySelector('.acts');bd.insertBefore(p,acts||null)}}
+function clone(c,a){var n=c.cloneNode(true);why(n,c,a);n.hidden=false;n.removeAttribute('data-search');[].forEach.call(n.querySelectorAll('[id]'),function(x){x.removeAttribute('id')});prefill(n,a);return n}
 function chip(label,val){var s=el('span','achip');s.appendChild(el('small',null,label+': '));s.appendChild(el('b',null,val));return s}
-function grid(list,a,max){var g=el('div','grid'),extra=null;list.forEach(function(c,i){var n=clone(c,a);if(i>=max)n.hidden=true;g.appendChild(n)});
+function grid(list,a,max){var g=el('div','grid'),extra=null;list=ranked(list,a);list.forEach(function(c,i){var n=clone(c,a);if(i>=max)n.hidden=true;g.appendChild(n)});
  if(list.length>max){extra=el('button','btn alt askmore','Show all '+list.length+' workshops');extra.type='button';extra.addEventListener('click',function(){[].forEach.call(g.children,function(x){x.hidden=false});extra.hidden=true})}
  var w=el('div');w.appendChild(g);if(extra)w.appendChild(extra);return w}
 function popular(a){var p=cards.filter(function(c){return c.getAttribute('data-tier')==='premium_leadgen'});if(p.length<3)p=p.concat(cards.filter(function(c){return c.getAttribute('data-tier')==='premium'}));return p.slice(0,4)}
@@ -103,15 +112,18 @@ function didYouMean(a,note){var wrap=el('div','dym');wrap.appendChild(el('h3',nu
 function render(a,viaChip){body.textContent='';var chips=el('div','achips'),r=a.top&&a.top.r,cats=[],area=a.area;
  if(a.make)chips.appendChild(chip('Car',MAKES[a.make]));if(area)chips.appendChild(chip('Area',area.name));if(r)chips.appendChild(chip('Service',r.label));
  var nm=a.tier!==3||a.forced?nameMatch(a):[];
+ var pm=(!r&&!nm.length)?ranked(cards.filter(function(c){return profScore(c,a)>=(a.make?3:2)}),a).filter(function(c){return profScore(c,a)>0}).slice(0,9):[];
  if(r){cats=[r.cat].concat(r.alt?[r.alt]:[])}
- var head=el('h2','ah',(r||area||nm.length)?'Here is what we understood':'We could not match that exactly');body.appendChild(head);if(chips.children.length)body.appendChild(chips);
+ var head=el('h2','ah',(r||area||nm.length||pm.length)?'Here is what we understood':'We could not match that exactly');body.appendChild(head);if(chips.children.length)body.appendChild(chips);
  if(r&&r.issue){var it=el('p','likely');it.appendChild(el('b',null,'Likely issue: '));it.appendChild(d.createTextNode(r.issue+(a.forced?'':' This is a general guide, not a diagnosis. A workshop has to inspect the car to be sure.')));body.appendChild(it)}
  var shown=0,shownSet={};function mark(c){shownSet[c.getAttribute('data-tier')+c.querySelector('h3').textContent]=1}
  if(nm.length&&!r){body.appendChild(el('h3','sub','Matching workshop'));body.appendChild(grid(nm,a,6));shown=nm.length;nm.forEach(mark)}
+ else if(pm.length&&!r){body.appendChild(el('h3','sub','Matches from what customers mention'));body.appendChild(el('p','fine','Found by matching your words to each profile: services, car brands and what customers say.'));body.appendChild(grid(pm,a,6));shown=pm.length;pm.forEach(mark)}
  else if(cats.length||area){var c=cardsFor(cats.length?cats:(DATA.cats||[]).map(function(x){return x.slug}),area,true);
   if(c.relaxed)body.appendChild(el('p','fine','No listed workshop in '+area.name+' yet for this, so here are others you can message.'));
-  if(c.list.length){body.appendChild(el('h3','sub',(area&&!c.relaxed?'Workshops in '+area.name:'Workshops')+(r?' for '+r.label.toLowerCase():'')));body.appendChild(grid(c.list,a,6));shown=c.list.length;c.list.forEach(mark)}}
- if(!shown||!r){body.appendChild(didYouMean(a,r?null:(a.make?'What does your '+MAKES[a.make]+' need?':'Did you mean...')));
+  if(c.list.length){body.appendChild(el('h3','sub',(area&&!c.relaxed?'Workshops in '+area.name:'Workshops')+(r?' for '+r.label.toLowerCase():'')));body.appendChild(grid(c.list,a,6));shown=c.list.length;c.list.forEach(mark)}
+  var ex=cards.filter(function(x){return c.list.indexOf(x)<0&&mentionHits(x,a).length});if(ex.length){body.appendChild(el('h3','sub','Also mentioned by customers'));body.appendChild(grid(ex,a,3));ex.forEach(mark)}}
+ if(!shown||(!r&&!pm.length)){body.appendChild(didYouMean(a,r?null:(a.make?'What does your '+MAKES[a.make]+' need?':'Did you mean...')));
   var p=popular(a).filter(function(c){return !shownSet[c.getAttribute('data-tier')+c.querySelector('h3').textContent]});if(p.length){body.appendChild(el('h3','sub','Popular workshops'));body.appendChild(grid(p,a,4))}}
  else if(a.second){var alt=a.second.r;var al=el('p','fine');al.appendChild(d.createTextNode('Could also be '+alt.label.toLowerCase()+'. '));var b=el('button','linkbtn','Show those workshops');b.type='button';b.addEventListener('click',function(){render(Object.assign({},a,{top:a.second,second:null,tier:a.second.dir?1:2}),true)});al.appendChild(b);body.appendChild(al)}
  var cl=el('button','linkbtn askclear','Clear this search');cl.type='button';cl.addEventListener('click',function(){inp.value='';var any=form.querySelector('input[name=svc][value=""]');if(any)any.checked=true;out.hidden=true;inp.focus()});body.appendChild(cl);
