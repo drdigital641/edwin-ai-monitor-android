@@ -343,7 +343,8 @@ ARTICLES = [
         h1='Honda Yaw Rate Sensor Malfunction (81-19)',
         lead='A well-known Honda ABS fault: the yaw rate sensor inside the VSA modulator, and why it brings up so many other codes.',
         photo='honda-yaw-rate-codes', alt='Scan tool showing Honda codes 81-19 yaw rate sensor and 81-20 acceleration sensor inside the modulator control unit', share='honda-yaw-rate-sensor-codes.jpg',
-        body='''<p>The yaw rate sensor measures how fast the car is turning. Together with the acceleration sensor, it tells the VSA (Vehicle Stability Assist) system whether the car is going where the driver is steering. On many Honda models these sensors are built into the VSA modulator control unit, the ABS unit in the engine bay.</p>
+        body='''<p><strong>Short answer:</strong> On a Honda, codes 81-19 and 81-20 mean the yaw rate sensor and the acceleration sensor inside the VSA modulator control unit have an internal fault. They are part of the unit, so the fix is repairing or replacing the VSA modulator, not swapping a separate sensor. We read every code first.</p>
+<p>The yaw rate sensor measures how fast the car is turning. Together with the acceleration sensor, it tells the VSA (Vehicle Stability Assist) system whether the car is going where the driver is steering. On many Honda models these sensors are built into the VSA modulator control unit, the ABS unit in the engine bay.</p>
 <h2>The codes</h2>
 <p>The scan in the photo above shows how one fault spreads across several systems:</p>
 <ul class="ticks">
@@ -356,9 +357,21 @@ ARTICLES = [
 <p>The brake, parking brake and other systems log these codes because they rely on the sensor data from the VSA unit. The words “inside of modulator control unit” point to the unit itself, not to a separate sensor you can swap.</p>
 <h2>What you see on the dashboard</h2>
 <p>Usually the ABS, VSA and brake warning lights together, often with parking brake or driver assistance warnings as well.</p>
+<h2>Why one fault brings up so many codes</h2>
+<p>The stability system compares the car’s turning rate with the steering angle and the wheel speeds. If the yaw rate sensor reports a fault, the VSA unit cannot trust its own data, and other control units that depend on it log their own system malfunction codes. That is why the brake, electric parking brake and driver assistance systems can all complain at once, while the real fault sits in one place.</p>
+<h2>Why clearing the codes does not fix it</h2>
+<p>A scan tool can erase the codes, but if the sensor inside the modulator is faulty the codes come back as soon as the system checks itself again, usually on the next start or drive. Clearing them only hides the warning for a short time.</p>
+<h2>Is it safe to drive?</h2>
+<p>Normal braking usually still works, but anti-lock braking and stability control can be switched off. If the red brake light is on or the brake pedal feels different, stop driving and get the car checked.</p>
 <h2>How it is fixed</h2>
 <p>We read all the codes first, then repair the VSA modulator control unit, or supply a reconditioned, used or new one. Our repairs come with a 6-month warranty.</p>
+<h2>What to expect from us</h2>
+<p>We read all the codes first, explain what they point to, and tell you the options before any work starts: repair of your VSA modulator control unit, or a reconditioned, used or new one. Our repairs come with a 6-month warranty.</p>
 <p>WhatsApp us your car model, year and the fault codes. A photo of the scan tool screen helps.</p>''',
+        faq=[('What do Honda codes 81-19 and 81-20 mean?', '81-19 is a yaw rate sensor internal circuit malfunction and 81-20 is an acceleration sensor internal circuit malfunction, both inside the VSA modulator control unit.'),
+             ('Can the yaw rate sensor be replaced on its own?', 'The codes say the sensor is inside the modulator control unit, so it is not a separate sensor you can swap. We repair the VSA modulator control unit, or supply a reconditioned, used or new one.'),
+             ('Why are the brake and parking brake lights on as well?', 'Other systems take data from the VSA unit. When it has a fault they can log their own codes, so one fault can light several warnings.'),
+             ('Do repairs come with a warranty?', 'Yes. Our repairs come with a 6-month warranty.')],
     ),
     dict(
         slug='bmw-cas-elv-fault-codes', service='bmw-cas-module-repair', date='2026-10-14', updated_iso='2026-10-27',
@@ -367,7 +380,8 @@ ARTICLES = [
         h1='BMW CAS Fault Codes: ELV Fault, Processor and Engine Start',
         lead='Why a BMW shows a list of CAS and steering lock codes, and what to do when the car won’t start.',
         photo='bmw-cas-fault-codes', alt='Scan tool showing BMW CAS fault codes on a 2009 BMW 320i', share='bmw-cas-fault-codes.jpg',
-        body='''<p>On many BMWs, the CAS (Car Access System) module recognises the key, works with the immobiliser, allows the engine to start and controls the electric steering lock (ELV). Because it does so much, a CAS fault can show up as several codes at once.</p>
+        body='''<p><strong>Short answer:</strong> BMW CAS codes such as A11E (ELV fault), A0AF (processor) and A0B4 (engine start) point to the Car Access System module, which handles the key, immobiliser, engine start and electric steering lock. We read all the codes, check the steering lock supply, then repair the CAS module.</p>
+<p>On many BMWs, the CAS (Car Access System) module recognises the key, works with the immobiliser, allows the engine to start and controls the electric steering lock (ELV). Because it does so much, a CAS fault can show up as several codes at once.</p>
 <h2>The codes</h2>
 <p>The scan in the photo above, from a 2009 BMW 320i, listed these in the CAS:</p>
 <ul class="ticks">
@@ -387,9 +401,21 @@ ARTICLES = [
 </ul>
 <h2>CAS or steering lock?</h2>
 <p>The steering lock and the CAS work together, so codes from one often appear in the other. Reading all the codes, and checking power supply to the steering lock, helps tell which part is at fault before anything is replaced.</p>
+<h2>What the CAS does</h2>
+<p>The CAS checks that the key is valid, works with the immobiliser, releases the engine start and controls the electric steering lock (ELV). Because those jobs are tied together, one failing module can produce a list of codes in different areas, as in the 2009 BMW 320i above.</p>
+<h2>Why a no-start is not always the starter or the battery</h2>
+<p>A car that will not crank can have a weak battery or a starter fault, so those are worth ruling out. But when the key is not recognised, the steering stays locked, or codes such as A0B4 “Engine Start, Starter Operation” appear together with ELV and CAS codes, the CAS is a likely suspect.</p>
+<h2>Why we check before replacing anything</h2>
+<p>Because codes appear in both the CAS and the steering lock, we read everything and check the power supply to the steering lock first. That separates a CAS fault from a lock or supply fault before any part is changed.</p>
 <h2>How it is fixed</h2>
 <p>We diagnose the CAS and steering lock, then repair the CAS module. For the 320i in the photo, the car’s own CAS module was faulty, so we fitted a used E90 CAS3 module and matched it to the car’s own keys and engine control unit, and the car started again. If the car cannot be driven, our pick-up and delivery service can collect it. Our repairs come with a 6-month warranty.</p>
+<h2>What to send us</h2>
+<p>Your BMW model and year, the fault codes if you have them, and whether the key is not recognised, the engine does not crank or the steering is locked. If the car cannot be driven, our pick-up and delivery service can collect it.</p>
 <p>WhatsApp us your BMW model, year and the fault codes.</p>''',
+        faq=[('What do BMW CAS codes A11E and A0AF mean?', 'On the 2009 BMW 320i in this article, A11E and A11A were listed as CAS: ELV Fault and A0AF as CAS: Processor. They are fault codes stored in the CAS module.'),
+             ('Why will my BMW not start and the key is not recognised?', 'The CAS recognises the key and releases the engine start, so a CAS fault can stop both. A weak battery or starter can cause similar symptoms, so those are checked as well.'),
+             ('How was the BMW 320i in the photo fixed?', 'The car’s own CAS module was faulty, so we fitted a used E90 CAS3 module and matched it to the car’s own keys and engine control unit, and the car started again.'),
+             ('Is there a warranty?', 'Yes. Our repairs come with a 6-month warranty.')],
     ),
     dict(
         slug='honda-vsa-solenoid-valve-malfunction', service='abs-pump-repair', date='2026-10-14',
@@ -398,7 +424,8 @@ ARTICLES = [
         h1='Honda VSA Solenoid Valve Malfunction (121-11)',
         lead='One of the most common Honda ABS faults we see: what the code means and why so many warning lights come on at once.',
         photo='honda-vsa-fault-codes', alt='Scan tool showing Honda Vezel fault 121-11 VSA Solenoid Valve Malfunction', share='honda-vezel-vsa-fault-codes.jpg',
-        body='''<p>VSA (Vehicle Stability Assist) is Honda’s name for its stability control system. On Honda cars, the ABS and VSA share one unit in the engine bay, often called the VSA modulator: a hydraulic block with solenoid valves, a pump motor and an electronic control module.</p>
+        body='''<p><strong>Short answer:</strong> Honda code 121-11 “VSA Solenoid Valve Malfunction” means the valves inside the VSA modulator, the hydraulic block that runs ABS and stability control, have a fault. ABS, VSA, brake and parking brake lights can come on together. We read all codes, then repair the unit or supply a reconditioned, used or new one.</p>
+<p>VSA (Vehicle Stability Assist) is Honda’s name for its stability control system. On Honda cars, the ABS and VSA share one unit in the engine bay, often called the VSA modulator: a hydraulic block with solenoid valves, a pump motor and an electronic control module.</p>
 <p>When the scan tool shows <strong>121-11 “VSA Solenoid Valve Malfunction”</strong>, the car has found a fault with the valves in that unit. It is one of the Honda ABS faults we handle most often, including on the Honda Vezel.</p>
 <h2>Why so many warning lights come on</h2>
 <p>Other systems in the car take information from the VSA unit. When it has a fault, they can log their own codes too. On the Vezel in the photo above, the scan showed:</p>
@@ -408,11 +435,21 @@ ARTICLES = [
 <li><strong>U0416-68</strong> VSA System Malfunction (electric power steering)</li>
 </ul>
 <p>On the dashboard this can show up as the ABS, VSA, brake and parking brake lights together, and on cars with Honda Sensing, driver assistance warnings as well. The cause is often the single VSA unit, not several separate faults.</p>
+<h2>What is inside the VSA unit</h2>
+<p>The VSA modulator holds solenoid valves that open and close to control brake pressure at each wheel, a pump motor that restores pressure, and an electronic control module that decides when each valve moves. A fault in any of these parts can store a code, so the code number alone does not say which part has failed.</p>
+<h2>Why we read every code first</h2>
+<p>A sensor or wiring fault can light the same warnings. Reading all the codes, as on the Vezel above where 83-141 and U0416-68 appeared with 121-11, shows whether the VSA unit is the common cause before any work starts.</p>
 <h2>Is it safe to drive?</h2>
 <p>Normal braking usually still works, but anti-lock braking and stability control can be switched off. If the red brake light is on or the brake pedal feels different, stop driving and get the car checked.</p>
 <h2>How it is fixed</h2>
 <p>We read all the codes first, to confirm the fault is in the VSA unit and not in a sensor or wiring. Then we repair the unit, or supply a reconditioned, used or new one. Our repairs come with a 6-month warranty.</p>
+<h2>Honda models we see this on</h2>
+<p>This is one of the Honda ABS faults we handle most often, including on the Honda Vezel shown above. If your Honda shows 121-11 with other warnings, send the model, year and a photo of the scan tool screen.</p>
 <p>WhatsApp us your car model, year and the fault codes. A photo of the scan tool screen helps.</p>''',
+        faq=[('What does Honda code 121-11 mean?', '121-11 is “VSA Solenoid Valve Malfunction”: the car has found a fault with the solenoid valves in the VSA modulator unit.'),
+             ('Why are the parking brake and steering warnings on too?', 'Other systems take information from the VSA unit. On the Vezel in this article, 83-141 (electric parking brake) and U0416-68 (electric power steering) appeared with 121-11.'),
+             ('Do you repair the unit or replace it?', 'Both are possible. We repair the VSA unit, or supply a reconditioned, used or new one, and our repairs come with a 6-month warranty.'),
+             ('Is it safe to keep driving?', 'Normal braking usually still works, but anti-lock braking and stability control can be switched off. If the red brake light is on or the pedal feels different, stop driving and get the car checked.')],
     ),
     dict(
         slug='mercedes-esp-control-unit-fault-n30-4', service='abs-pump-repair', date='2026-10-14',
@@ -421,7 +458,8 @@ ARTICLES = [
         h1='Mercedes ESP Control Unit Fault: N30/4 Internal Fault (5001)',
         lead='What the N30/4 code means on a Mercedes-Benz, and your options for the ESP pump and module.',
         photo='mercedes-esp-fault-code', alt='Scan tool showing Mercedes-Benz fault 5001, internal fault in component N30/4 ESP control unit', share='mercedes-esp-n30-4-fault-code.jpg',
-        body='''<p>On a Mercedes-Benz, <strong>N30/4</strong> is the part number Mercedes uses for the ESP (Electronic Stability Program) control unit. It is fitted to the ESP pump in the engine bay, and it runs the anti-lock brakes, stability control and traction control.</p>
+        body='''<p><strong>Short answer:</strong> On a Mercedes-Benz, fault 5001 “internal fault in component N30/4” means the ESP control unit on the ESP pump has found a problem inside itself, not in a sensor or wire. We read the codes to confirm it, then repair the ESP pump and module or supply a reconditioned, used or new one.</p>
+<p>On a Mercedes-Benz, <strong>N30/4</strong> is the part number Mercedes uses for the ESP (Electronic Stability Program) control unit. It is fitted to the ESP pump in the engine bay, and it runs the anti-lock brakes, stability control and traction control.</p>
 <p>The scan in the photo above, from a Mercedes-Benz C 180 Kompressor (W204), shows <strong>5001: “There is an internal fault in component N30/4 (Electronic Stability Program control unit)”</strong>. An internal fault means the control unit itself has found a problem inside the unit, rather than with a sensor or wire outside it.</p>
 <h2>What you see on the dashboard</h2>
 <ul class="ticks">
@@ -429,11 +467,23 @@ ARTICLES = [
 <li>Brake or brake assist messages</li>
 <li>On newer models, messages such as “Active Brake Assist functions limited”</li>
 </ul>
+<h2>Internal fault or outside fault?</h2>
+<p>Many brake warnings come from outside the control unit, such as a wheel speed sensor or its wiring. Code 5001 is different: the wording “internal fault” means the unit itself is reporting the problem. That is why the fault code is read before any part is chosen, so the repair is aimed at the right place.</p>
+<h2>Warnings that can come with it</h2>
+<p>Because the ESP unit works with the brake system, a fault can appear as ABS and ESP lights and brake or brake assist messages. On newer models it can also appear as “Active Brake Assist functions limited”, which has other possible causes too, as our article on that message explains.</p>
 <h2>Is it safe to drive?</h2>
 <p>Normal braking usually still works, but anti-lock braking and stability control can be switched off. If the red brake light is on or the brake pedal feels different, stop driving and get the car checked.</p>
 <h2>How it is fixed</h2>
 <p>We read all the codes first, to confirm the fault is in the ESP unit. Then we repair your Mercedes ESP pump and module, or supply a reconditioned, used or new one. Our repairs come with a 6-month warranty.</p>
+<h2>Where the unit sits</h2>
+<p>The N30/4 control unit is fitted to the ESP pump in the engine bay, so the pump, valve block and electronics work as one assembly. That is why a fault inside the control unit can be dealt with as part of an ESP pump and module repair, and why the car’s brake warnings can look the same whether the cause is the unit or something outside it. A scan of the stored codes tells the two apart.</p>
+<h2>What we need from you</h2>
+<p>The model and year, the chassis number and the exact wording or number of the fault, ideally with a photo of the screen. This lets us tell you what we can do before you bring the car in.</p>
 <p>WhatsApp us your car model, chassis number and the fault code. A photo of the scan tool screen helps.</p>''',
+        faq=[('What is N30/4 on a Mercedes?', 'N30/4 is the part number Mercedes uses for the ESP (Electronic Stability Program) control unit, fitted to the ESP pump in the engine bay.'),
+             ('What does code 5001 mean?', 'It means there is an internal fault in component N30/4. The control unit has found a problem inside itself rather than with a sensor or wire outside it.'),
+             ('Do you repair the ESP pump and module?', 'Yes. We repair your Mercedes ESP pump and module, or supply a reconditioned, used or new one. Our repairs come with a 6-month warranty.'),
+             ('What should I send you?', 'Your car model, chassis number and the fault code, with a photo of the scan tool screen if you have one.')],
     ),
     dict(
         slug='honda-millimeter-wave-radar-error-p2583', service='honda-radar-repair', date='2026-10-14',
@@ -442,7 +492,8 @@ ARTICLES = [
         h1='Honda Millimeter Wave Radar Function Error (P2583)',
         lead='Why Honda Sensing switches off, what the radar codes mean, and how the front radar can be repaired.',
         photo='honda-radar-fault-codes', alt='Scan tool showing Honda Vezel codes P2583-4A and P2583-54', share='honda-vezel-radar-fault-codes.jpg',
-        body='''<p>Honda Sensing uses a millimeter wave radar at the front of the car to measure the distance to the vehicle ahead. Features such as collision mitigation braking and adaptive cruise control depend on it. When the radar has a fault, Honda Sensing warnings appear and those features can switch off.</p>
+        body='''<p><strong>Short answer:</strong> Honda P2583-4A means the millimeter wave radar behind the front of the car has a function error, and P2583-54 means it needs aiming. Honda Sensing features such as collision mitigation braking and adaptive cruise control can switch off. We repair the radar unit instead of replacing it.</p>
+<p>Honda Sensing uses a millimeter wave radar at the front of the car to measure the distance to the vehicle ahead. Features such as collision mitigation braking and adaptive cruise control depend on it. When the radar has a fault, Honda Sensing warnings appear and those features can switch off.</p>
 <h2>The codes</h2>
 <p>On the 2019 Honda Vezel in the photo above, the driver assistance system showed two codes:</p>
 <ul class="ticks">
@@ -459,9 +510,19 @@ ARTICLES = [
 <li>Front bumper or grille repairs</li>
 </ul>
 <p>These are worth ruling out first. If the radar unit itself has failed, clearing the code will not fix it.</p>
+<h2>What Honda Sensing does with the radar</h2>
+<p>The radar measures the distance to the vehicle ahead. Collision mitigation braking and adaptive cruise control rely on that measurement, so when the radar reports an error the car switches those features off and shows warnings rather than guessing.</p>
+<h2>Function error or aiming incomplete?</h2>
+<p>The two codes are different. P2583-4A says the radar unit itself has a fault. P2583-54 says the radar needs to be aimed, which can follow a knock to the front or bumper work. We tell you before any work starts whether the radar will also need aiming.</p>
+<h2>Check the simple things first</h2>
+<p>Dirt, mud or a sticker over the front emblem or grille, a knock to the front, or bumper and grille repairs can upset the radar. Rule these out first. If the radar unit itself has failed, clearing the code will not fix it.</p>
 <h2>Repair instead of replace</h2>
 <p>A new radar unit is an expensive part. We repair the existing radar unit instead of replacing it, and tell you before any work starts whether the radar will also need aiming. Our repairs come with a 6-month warranty.</p>
 <p>WhatsApp us your car model, year and the fault codes. A photo of the scan tool screen helps.</p>''',
+        faq=[('What does Honda code P2583 mean?', 'P2583-4A is a Millimeter Wave Radar Function Error and P2583-54 is Millimeter Wave Radar Aiming Incomplete.'),
+             ('Why did Honda Sensing switch off?', 'Features such as collision mitigation braking and adaptive cruise control depend on the front radar. When the radar has a fault, Honda Sensing warnings appear and those features can switch off.'),
+             ('Do I need a new radar?', 'Not necessarily. A new radar unit is an expensive part, so we repair the existing radar unit instead of replacing it.'),
+             ('Can the ABS unit be involved too?', 'Sometimes. Honda Sensing also uses information from the VSA (ABS) unit, so both can show faults together, and we read every code before deciding what to repair.')],
     ),
     dict(
         slug='abs-warning-light-causes', service='abs-pump-repair', date='2026-10-13', updated_iso='2026-10-22',
@@ -495,7 +556,8 @@ ARTICLES = [
         lead='Why this message appears on a Mercedes dashboard, and when it is more than a dirty sensor.',
         photo='active-brake-assist-warning', alt='Mercedes dashboard showing Active Brake Assist functions limited',
         share='mercedes-active-brake-assist-warning.jpg',
-        body='''<p>Active Brake Assist is the Mercedes-Benz system that watches the road ahead and can warn you, or help brake, if a collision is likely. When the dashboard says “Active Brake Assist functions limited”, the car is telling you the system cannot work fully right now.</p>
+        body='''<p><strong>Short answer:</strong> “Active Brake Assist functions limited” on a Mercedes-Benz often means a blocked or knocked radar sensor, or a fault in another system such as ESP. Clean the front of the car and the windscreen and restart. If the message stays on or an ABS or ESP light shows, read the fault code.</p>
+<p>Active Brake Assist is the Mercedes-Benz system that watches the road ahead and can warn you, or help brake, if a collision is likely. When the dashboard says “Active Brake Assist functions limited”, the car is telling you the system cannot work fully right now.</p>
 <h2>Common reasons for the message</h2>
 <ul class="ticks">
 <li><strong>Blocked sensor.</strong> Dirt, rain, snow or a sticker over the radar sensor in the front of the car, or the camera area of the windscreen, can limit the system for a while.</li>
@@ -504,9 +566,19 @@ ARTICLES = [
 </ul>
 <h2>What to check first</h2>
 <p>If the message appears in heavy rain or after the car gets dirty, clean the front of the car and the windscreen, then restart. If the message clears and stays away, it was most likely a temporary blockage.</p>
+<h2>Is the car safe to drive?</h2>
+<p>The message means the assist system is limited, not that the normal brakes have gone. If a red brake warning is on, or the pedal feels different, stop driving and get the car checked. Otherwise drive carefully and do not rely on the assist system until the cause is found.</p>
+<h2>How a brake system fault can limit it</h2>
+<p>Active Brake Assist relies on other systems such as ESP. If the ESP unit has a fault, for example code 5001 on N30/4 as in our Mercedes ESP article, the assist system can be limited too, and the message is only the visible sign.</p>
 <h2>When it needs a diagnosis</h2>
 <p>If the message stays on, keeps coming back, or appears with an ABS or ESP warning, the system has stored a fault code. Reading that code shows whether the cause is the sensor, the wiring, or a brake system unit such as the ESP module.</p>
-<p>We diagnose brake system warnings like this one and tell you what is causing it before any part is changed. WhatsApp us a photo of the dashboard, your car model, chassis number and the fault code.</p>''',
+<p>We diagnose brake system warnings like this one and tell you what is causing it before any part is changed. WhatsApp us a photo of the dashboard, your car model, chassis number and the fault code.</p><h2>What to send us</h2>
+<p>A photo of the dashboard message, your car model, chassis number and the fault code are the most useful. If the message appeared after a minor knock to the front of the car, or after the front was cleaned or repaired, mention that too, because it points to the radar sensor.</p>
+''',
+        faq=[('What does “Active Brake Assist functions limited” mean?', 'The car is telling you the Active Brake Assist system cannot work fully right now.'),
+             ('Can a dirty sensor cause it?', 'Yes. Dirt, rain, snow or a sticker over the radar sensor at the front, or the camera area of the windscreen, can limit the system for a while.'),
+             ('What if the message keeps coming back?', 'If it stays on, keeps returning or appears with an ABS or ESP warning, the system has stored a fault code. Reading it shows whether the cause is the sensor, the wiring or a unit such as the ESP module.'),
+             ('What should I send you?', 'A photo of the dashboard, your car model, chassis number and the fault code.')],
     ),
     dict(
         slug='mercedes-7g-tronic-722-9-tcu-problems', service='mercedes-7g-9g-tcu-repair', date='2026-10-13',
@@ -516,7 +588,8 @@ ARTICLES = [
         lead='How a gearbox control fault shows up on the Mercedes 7-speed, and why the fault code comes first.',
         photo='mercedes-7g-conductor-plate', alt='Mercedes 722.9 conductor plate with new filter, gasket and gearbox oil',
         share='mercedes-722-9-conductor-plate-kit.jpg',
-        body='''<p>The 7G-Tronic is the 7-speed automatic gearbox used in many Mercedes-Benz cars. Its gearbox code is 722.9. Unlike older designs, its transmission control unit (TCU) is mounted inside the gearbox, on a part called the conductor plate, which also carries speed sensors.</p>
+        body='''<p><strong>Short answer:</strong> signs of a failing TCU on the Mercedes 7G-Tronic (722.9) gearbox include limp mode, harsh or delayed shifts, a gearbox warning and gear display problems. The TCU sits inside the gearbox on the conductor plate. We read the fault codes first, then repair the TCU and conductor plate and fit a new filter, gasket and oil.</p>
+<p>The 7G-Tronic is the 7-speed automatic gearbox used in many Mercedes-Benz cars. Its gearbox code is 722.9. Unlike older designs, its transmission control unit (TCU) is mounted inside the gearbox, on a part called the conductor plate, which also carries speed sensors.</p>
 <h2>Common signs of a TCU or conductor plate fault</h2>
 <ul class="ticks">
 <li><strong>Limp mode.</strong> The gearbox stays in one gear to protect itself and will not shift up.</li>
@@ -527,9 +600,21 @@ ARTICLES = [
 <p>These signs can also come from low or old gearbox oil, wiring or mechanical problems, so they do not always mean the TCU has failed.</p>
 <h2>Why the fault code comes first</h2>
 <p>The TCU stores fault codes that point to the cause, such as a speed sensor or a solenoid circuit. Reading them tells us whether the TCU and conductor plate are the problem before the gearbox is opened.</p>
+<h2>Repair or replace the TCU?</h2>
+<p>In many cases the answer is repair. If the fault code and tests point to the TCU or conductor plate, we repair your own unit instead of replacing the whole gearbox. A replacement part is a bigger job, so it only makes sense when the unit cannot be repaired. If the fault is elsewhere, such as old gearbox oil, a wiring fault or a mechanical problem, repairing the TCU would not help, and we will tell you that after the diagnosis, before any part is changed.</p>
+<h2>What the conductor plate does</h2>
+<p>The conductor plate is the part inside the gearbox that carries the TCU and the speed sensors. Because the electronics live inside the gearbox, they work in the same oil and heat as the mechanical parts. A fault can therefore show up as a sensor or solenoid circuit code, as a shifting problem, or as a warning on the dashboard.</p>
+<h2>Why the pan, filter and oil are done together</h2>
+<p>The gearbox pan has to come off to reach the conductor plate. Since the pan is already off, we fit a new filter, pan gasket and gearbox oil on the same job rather than leaving old parts in a gearbox that has just been repaired.</p>
+<h2>9G-Tronic as well</h2>
+<p>We also work on the TCU of the 9-speed 9G-Tronic. See our Mercedes 7G and 9G TCU repair page for the service.</p>
 <h2>How we repair it</h2>
 <p>We work on the TCU and conductor plate. Because the gearbox pan has to come off, we fit a new filter, pan gasket and gearbox oil on the same job. We also work on the TCU of the 9-speed 9G-Tronic.</p>
 <p>WhatsApp us your car model, chassis number and the fault code. Our repairs come with a 6-month warranty.</p>''',
+        faq=[('Can a Mercedes 7G-Tronic TCU be repaired instead of replaced?', 'Often, yes, when the fault is in the TCU or conductor plate. We read the fault codes first, then repair your own unit and fit a new filter, pan gasket and gearbox oil on the same job. Repairs come with a 6-month warranty.'),
+             ('How do I know if it is the TCU or something else?', 'Limp mode, harsh shifts and gearbox warnings can also come from low or old gearbox oil, wiring or mechanical problems. The stored fault codes show which it is, so WhatsApp us your car model, chassis number and the fault code.'),
+             ('Where is the TCU on a 7G-Tronic?', 'On the 722.9 the transmission control unit is mounted inside the gearbox, on the conductor plate, which also carries the speed sensors.'),
+             ('Do you work on the 9-speed gearbox too?', 'Yes. We also work on the TCU of the 9-speed 9G-Tronic.')],
     ),
     dict(
         slug='mercedes-steering-lock-elv-failure', service='mercedes-steering-lock-elv-repair', date='2026-10-13',
@@ -538,7 +623,8 @@ ARTICLES = [
         h1='Mercedes Steering Lock (ELV) Failure: Signs and Repair',
         lead='When a Mercedes will not start and the key will not turn, the steering lock is one of the first things to check.',
         photo='elv-units', alt='Mercedes electronic steering lock units', share='elv-steering-lock-units.jpg',
-        body='''<p>Many Mercedes-Benz cars have an electronic steering lock, usually called the ELV or ESL. It is a small motorised lock on the steering column. When you switch off, it locks the steering. When you insert the key or press start, the car checks the key and the ELV unlocks.</p>
+        body='''<p><strong>Short answer:</strong> A failing Mercedes electronic steering lock (ELV or ESL) shows up as a key that will not turn, no crank or no start, or a steering wheel that stays locked. Weak batteries and ignition faults can look similar. We test the lock and repair it, and can collect the car if it cannot be driven.</p>
+<p>Many Mercedes-Benz cars have an electronic steering lock, usually called the ELV or ESL. It is a small motorised lock on the steering column. When you switch off, it locks the steering. When you insert the key or press start, the car checks the key and the ELV unlocks.</p>
 <h2>Signs of an ELV fault</h2>
 <ul class="ticks">
 <li><strong>The key will not turn</strong> in the ignition, even though it is the right key.</li>
@@ -547,9 +633,29 @@ ARTICLES = [
 <li><strong>It works sometimes.</strong> The car starts on one try and not the next, which often gets worse over time.</li>
 </ul>
 <p>A flat key battery, a weak car battery or an ignition switch fault can cause similar symptoms, so these are worth ruling out.</p>
+<h2>What the ELV does</h2>
+<p>The ELV is a small motor on the steering column. It locks the steering when you switch off and unlocks it after the car recognises your key. If the motor or its electronics fail, the lock may not release, and the car may refuse to start even though the key and battery are fine.</p>
+<h2>Why the problem often comes and goes</h2>
+<p>An ELV that works on one try and not the next is a common pattern, and it often gets worse over time. Waiting does not usually make it better, and a car that fails away from home is harder to deal with than one booked in.</p>
+<h2>Rule out the simple causes first</h2>
+<ul class="ticks">
+<li>A flat battery in the key</li>
+<li>A weak car battery</li>
+<li>An ignition switch fault</li>
+</ul>
+<h2>Repair or emulator</h2>
+<p>We repair the steering lock. We also sell Mercedes ELV emulators as an option, and we explain the choice for your car before any work starts. See our Mercedes steering lock (ELV) repair page for details.</p>
 <h2>How it is fixed</h2>
 <p>We test the steering lock and repair it. If your car cannot be driven, our pick-up and delivery service can collect it.</p>
+<h2>Do not force the key or the wheel</h2>
+<p>If the key will not turn, forcing the key or the steering wheel can damage the lock or the ignition. Check the key battery and the car battery, and if the problem remains, have the lock tested instead. We test the steering lock and repair it, and can collect a car that cannot be driven.</p>
+<h2>What to tell us</h2>
+<p>Your car model and what the car is doing: whether the key will not turn, the car does not crank, or the steering stays locked. Whether it happens every time or only sometimes helps us too.</p>
 <p>WhatsApp us your car model and what the car is doing. Our repairs come with a 6-month warranty.</p>''',
+        faq=[('What are the signs of a failing Mercedes ELV?', 'The key will not turn, the car will not crank or start, the steering stays locked after switching on, or it works sometimes and not others.'),
+             ('Could it just be a flat key battery?', 'Yes, a flat key battery, a weak car battery or an ignition switch fault can cause similar symptoms, so they are worth ruling out.'),
+             ('Can my car be collected if it cannot be driven?', 'Yes. Our pick-up and delivery service can collect it.'),
+             ('Is there a warranty on the repair?', 'Yes. Our repairs come with a 6-month warranty.')],
     ),
     dict(
         slug='hybrid-battery-replacement-signs', service='hybrid-battery-replacement', date='2026-10-13',
@@ -558,7 +664,8 @@ ARTICLES = [
         h1='Signs Your Hybrid Battery Needs Replacing',
         lead='How a tired hybrid battery shows up in daily driving, and what replacement involves.',
         photo='hybrid-battery-modules', alt='Hybrid battery pack with new modules', share='hybrid-battery-new-modules.jpg',
-        body='''<p>A hybrid car stores energy in a high-voltage battery pack made of many cells or modules. Like any rechargeable battery, it slowly loses capacity with age and use. When it can no longer hold enough charge, the car leans more on the petrol engine, and eventually the hybrid system flags a fault.</p>
+        body='''<p><strong>Short answer:</strong> Common signs of a weak hybrid battery are a hybrid system warning light, higher fuel use, the petrol engine running more often, a battery gauge that jumps and less pulling power. A scan tool diagnosis confirms it. We replace it with a brand-new OEM battery with a 1-year or 100,000 km warranty.</p>
+<p>A hybrid car stores energy in a high-voltage battery pack made of many cells or modules. Like any rechargeable battery, it slowly loses capacity with age and use. When it can no longer hold enough charge, the car leans more on the petrol engine, and eventually the hybrid system flags a fault.</p>
 <h2>Common signs of a weak hybrid battery</h2>
 <ul class="ticks">
 <li><strong>Hybrid system warning light</strong> on the dashboard.</li>
@@ -568,9 +675,23 @@ ARTICLES = [
 <li><strong>Less pulling power</strong> when you accelerate.</li>
 </ul>
 <p>These signs can have other causes too, so a diagnosis with a scan tool is the way to be sure.</p>
+<h2>Why a hybrid battery loses capacity</h2>
+<p>The pack is made of many cells or modules that age with use and time. As capacity falls, the car cannot store and release as much energy, so the petrol engine does more of the work. The effect is gradual, which is why many owners notice the symptoms only after they have been building for a while.</p>
+<h2>Why diagnose before replacing</h2>
+<p>The same signs can come from other causes. A scan tool reading of the hybrid system shows whether the battery is the problem. That avoids replacing a pack when the cause is elsewhere.</p>
+<h2>Why we fit a brand-new OEM battery</h2>
+<p>We fit brand-new OEM packs, not reconditioned ones, including removal and fitting. Each comes with a warranty of 1 year or 100,000 km.</p>
 <h2>Replacing the battery</h2>
 <p>We replace hybrid batteries with brand-new OEM packs, including removal and fitting. Each comes with a warranty of 1 year or 100,000 km.</p>
+<h2>What helps us give you a quick answer</h2>
+<p>Your car model and year, the warnings shown on the dashboard, and whether the fuel use or the battery gauge has changed. With that we can check availability and price for a brand-new OEM battery.</p>
+<h2>Workshop and hours</h2>
+<p>We are at Premier @ Kaki Bukit, open Monday to Friday 9am to 7pm and Saturday 9am to 3pm, closed on Sundays and public holidays. WhatsApp enquiries are welcome 24/7.</p>
 <p>WhatsApp us your car model and year, and we will check availability and price.</p>''',
+        faq=[('What are the signs of a weak hybrid battery?', 'A hybrid system warning light, higher fuel use, the engine running more often, a battery gauge that jumps and less pulling power.'),
+             ('How do I know it is the battery?', 'These signs can have other causes, so a diagnosis with a scan tool is the way to be sure.'),
+             ('What battery do you fit and what is the warranty?', 'A brand-new OEM hybrid battery, with a warranty of 1 year or 100,000 km.'),
+             ('How do I find out the price?', 'WhatsApp us your car model and year and we will check availability and price.')],
     ),
     dict(
         slug='toyota-voxy-noah-sienta-abs-pump', service='abs-pump-repair', date='2026-10-13',
@@ -579,7 +700,8 @@ ARTICLES = [
         h1='Toyota Voxy, Noah & Sienta ABS Pump: Repair, Recon or Used',
         lead='Your options when the ABS pump or module on a Voxy, Noah or Sienta gives trouble.',
         photo='abs-module-in-car', alt='ABS module in a car’s engine bay', share='abs-unit-engine-bay-2.jpg',
-        body='''<p>The Toyota Voxy, Noah and Sienta are common family cars in Singapore. Like any car with ABS, they can develop faults in the ABS pump or module, which usually shows up as warning lights on the dashboard.</p>
+        body='''<p><strong>Short answer:</strong> The Toyota Voxy, Noah and Sienta can develop ABS pump or module faults, shown as ABS and skid control (VSC) warning lights. We read the fault code first, then repair your pump or module, replace it, or supply a used or reconditioned unit. Plug and play is available, with a 6-month warranty on repairs.</p>
+<p>The Toyota Voxy, Noah and Sienta are common family cars in Singapore. Like any car with ABS, they can develop faults in the ABS pump or module, which usually shows up as warning lights on the dashboard.</p>
 <h2>Signs to look out for</h2>
 <ul class="ticks">
 <li>ABS warning light on</li>
@@ -596,8 +718,27 @@ ARTICLES = [
 <li>Supply a <strong>reconditioned</strong> unit</li>
 </ul>
 <p>Plug and play is available, and our repairs come with a 6-month warranty.</p>
+<h2>Why we read the fault code first</h2>
+<p>The same warning lights can come from a wheel speed sensor or wiring fault, which is a smaller job than a pump or module. The code shows whether the ABS actuator or pump motor is the problem, so you pay for the right repair.</p>
+<h2>Which option suits your car?</h2>
+<ul class="ticks">
+<li><strong>Repair</strong> keeps your own unit and fixes the fault.</li>
+<li><strong>Replace</strong> fits a different unit instead of your own.</li>
+<li><strong>Used or reconditioned</strong> units are supplied when you prefer that route.</li>
+</ul>
+<p>We explain the options before any work starts. Plug and play is available.</p>
+<h2>What to do while you wait</h2>
+<p>If the red brake light is on, or the brake pedal feels different, stop driving and have the car checked. If only the ABS and VSC lights are on, normal braking usually still works but anti-lock braking and stability control may be off, so drive with extra care. Our pick-up and delivery service can collect the car.</p>
 <h2>Get a quick answer</h2>
+<h2>What to send us</h2>
+<p>Your car model, chassis number and the fault code, with a photo of the warning lights. With those we can tell you which option fits before you bring the car in.</p>
+<h2>Workshop and hours</h2>
+<p>We are at Premier @ Kaki Bukit, open Monday to Friday 9am to 7pm and Saturday 9am to 3pm, closed on Sundays and public holidays. WhatsApp enquiries are welcome 24/7.</p>
 <p>WhatsApp us your car model, chassis number and the fault code. A photo of the warning lights also helps.</p>''',
+        faq=[('Which Toyota models does this cover?', 'This article is about the Toyota Voxy, Noah and Sienta, which are common family cars in Singapore.'),
+             ('What are the signs of an ABS pump fault?', 'The ABS warning light on, brake system or skid control (VSC) warnings at the same time, or a fault code for the ABS actuator or pump motor.'),
+             ('Can you repair my ABS pump instead of replacing it?', 'Yes. We can repair your existing ABS pump or module, replace it, or supply a used or reconditioned unit.'),
+             ('Is there a warranty?', 'Yes. Our repairs come with a 6-month warranty.')],
     ),
     dict(
         # EDGE daily article, 15 Oct 2026 (8pm run). Gap: the results for this question are US DIY pages (YOUCANIC),
