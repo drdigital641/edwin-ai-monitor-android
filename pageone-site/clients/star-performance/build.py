@@ -375,7 +375,7 @@ class Raw(str):
 
 
 ARTICLES = [
-    dict(slug='what-is-a-pre-purchase-inspection', photo='handover-bmw-520i', svc='buy-a-used-car',
+    dict(slug='what-is-a-pre-purchase-inspection', modified='2026-11-02', photo='handover-bmw-520i', svc='buy-a-used-car',
          title='What Is a Pre-Purchase Inspection (PPI)? | Star Performance',
          desc='A pre-purchase inspection is an independent workshop check of a used car before you buy. What it covers, when to book it and what to ask.',
          h1='What is a pre-purchase inspection (PPI) for a used car?',
@@ -383,7 +383,11 @@ ARTICLES = [
          sections=[('When should you book a PPI?', ['After the test drive and before you pay the full amount. Many buyers place a refundable or conditional deposit to hold the car while the inspection is arranged. Ask the dealer how the deposit works if the PPI finds a problem.']),
                    ('What does a PPI usually cover?', ['Most workshops read fault codes with a diagnostic scanner, check fluids and leaks, inspect the underside, test the brakes and suspension, look for signs of accident repair or flooding, and road test the car. Ask your workshop for a written list of findings.']),
                    ('Which workshop should do it?', ['A workshop you trust, ideally one that knows the make. One of our August 2026 buyers chose a workshop that turned out to have serviced that very Toyota Vellfire for years, which gave him its full history.']),
-                   ('What if the PPI finds something?', ['Small wear items are normal on a used car. Larger issues can be fixed before handover, reflected in the price, or be a reason to walk away. A good dealer talks you through the report rather than rushing you.'])],
+                   ('What if the PPI finds something?', ['Small wear items are normal on a used car. Larger issues can be fixed before handover, reflected in the price, or be a reason to walk away. A good dealer talks you through the report rather than rushing you.']),
+                   ('What to bring and what to ask', ["Bring the listing details, the registration details and the dealer's contact. Ask the workshop for its fee and how long the inspection takes, and ask for the findings in writing, with photos where possible. Tell the mechanic what worries you about the car so that it gets extra attention."]),
+                   ('How to read the report', ['Separate the findings into three groups: safety items such as brakes, tyres and steering, normal wear items, and cosmetic points. Safety items should be fixed before you pay in full. Wear items and cosmetic points are good grounds to talk about the price. A pattern of serious problems is a good reason to walk away.']),
+                   ('How the inspection fits with the other checks', [Raw('A PPI does not replace the test drive, and it does not show the yearly cost of owning the car. Use the <a href="articles/what-to-check-on-a-used-car-test-drive/">test drive checklist</a> first, compare cars with the <a href="articles/what-does-depreciation-mean-on-a-car-listing/">depreciation figure</a>, and then book the PPI on the car you want to buy.')]),
+                   ('Is a PPI worth it on a car that looks clean?', ['Yes. A clean car can still hide worn parts, past repairs or a fault that has not shown up yet, and a few hours with a mechanic costs far less than finding out after you have paid. The inspection also gives you something concrete to base your decision on, which makes the purchase calmer for both buyer and seller. Booking one is a sign of a careful buyer, and a good dealer welcomes it.'])],
          faqs=[('Who pays for the pre-purchase inspection?', 'Usually the buyer, because the workshop works for you. Ask the workshop for its fee when you book.'),
                ('Will a dealer let me do a PPI?', 'A transparent dealer will. At Star Performance Motor buyers can book a PPI at their own workshop, and we often go along.'),
                ('Is a PPI the same as an LTA inspection?', 'No. LTA\'s periodic inspection checks roadworthiness and emissions. A PPI is a wider condition check done for the buyer.')]),
@@ -401,7 +405,7 @@ ARTICLES = [
          faqs=[('Which way of selling gets the highest price?', 'Consignment often gets more because the car is sold to a private buyer, but it is not guaranteed and takes longer.'),
                ('Can I sell a car with an outstanding loan?', 'Yes. The loan is settled with the bank as part of the sale and you receive the balance.'),
                ('What details does a dealer need for an offer?', 'Model, registration date, mileage, COE expiry, service history and a few photos.')]),
-    dict(slug='car-near-coe-expiry-export-or-renew', photo='handover-toyota-vellfire', svc='car-export',
+    dict(slug='car-near-coe-expiry-export-or-renew', modified='2026-11-02', photo='handover-toyota-vellfire', svc='car-export',
          title='COE Expiring? Export, Scrap or Renew | Star Performance',
          desc='Your car\'s COE is ending. The three options in Singapore (renew, export or scrap) and what to compare before you decide.',
          h1='Car near the end of its COE: export, scrap or renew?',
@@ -409,11 +413,15 @@ ARTICLES = [
          sections=[('Option 1: renew the COE', ['You pay the Prevailing Quota Premium to extend the COE for 5 or 10 years. It suits a car you know well and want to keep. Check the current premium on LTA\'s OneMotoring site.']),
                    ('Option 2: export the car', ['An export buyer pays for the car and ships it overseas, and the car is deregistered in Singapore. Popular models in good condition often fetch more this way than through a local sale near COE expiry.']),
                    ('Option 3: scrap the car', ['The car is deregistered and scrapped. This is usually the choice for cars that are not worth exporting.']),
-                   ('Rebates on deregistration', ['When a car is deregistered, LTA pays any PARF rebate (for eligible cars) and a COE rebate for the unused part of the COE to the owner. Your car\'s figures are on LTA\'s OneMotoring site.'])],
+                   ('Rebates on deregistration', ['When a car is deregistered, LTA pays any PARF rebate (for eligible cars) and a COE rebate for the unused part of the COE to the owner. Your car\'s figures are on LTA\'s OneMotoring site.']),
+                   ('What to gather before you compare', ["Have your registration date, COE expiry date, mileage and a short description of the car's condition ready. With these a dealer that handles exports can give you an offer, and you can look up your rebates and the renewal cost on LTA OneMotoring. Ask for any offer in writing so you can compare the options on the same terms."]),
+                   ('When renewing makes sense', ['Renewing suits a car you know well, that is in good condition and that you plan to keep for the extra years. Think about the costs of keeping an older car, such as servicing and repairs, and compare the total with the net amount you would receive from exporting. If you plan to change cars soon anyway, exporting and buying another may be simpler.']),
+                   ('Timing and paperwork', [Raw('Deregistration is done with LTA, and any outstanding car loan has to be settled with the bank first, so start early rather than in the last days of the COE. Our guide on <a href="articles/what-do-you-need-to-sell-your-car-in-singapore/">what you need to sell your car in Singapore</a> lists the documents, and you can read how we handle this on our <a href="services/car-export/">car export page</a> or WhatsApp us your car details.')]),
+                   ('A simple way to decide', ['Put the three options side by side on one page: the net amount from exporting, the rebates from deregistering and scrapping, and the renewal cost plus what you expect to spend keeping the car running. The option with the best result for your own plans is usually clear once the numbers are written down. If you are unsure, WhatsApp us your car details and we will explain what an export would involve before you commit to anything.'])],
          faqs=[('How do I know my car\'s export value?', 'Ask a dealer that handles exports for an offer. Send the model, registration date, COE expiry and mileage.'),
                ('Can I export my car and buy another at the same time?', 'Yes. In August 2026 one of our customers exported his old car through us and bought a Toyota Vellfire.'),
                ('Where can I check my rebates?', 'On LTA\'s OneMotoring website, using your vehicle details.')]),
-    dict(slug='buying-your-first-used-car-in-singapore', photo='handover-vw-passat', svc='buy-a-used-car',
+    dict(slug='buying-your-first-used-car-in-singapore', modified='2026-11-02', photo='handover-vw-passat', svc='buy-a-used-car',
          title='Buying Your First Used Car in Singapore: Checklist',
          desc='First used car? A simple checklist: budget with depreciation, COE left, loan limits, insurance, test drive, inspection and the ownership transfer.',
          h1='Buying your first used car in Singapore: a checklist',
@@ -422,18 +430,26 @@ ARTICLES = [
                    ('2. Check the COE', ['How many years are left on the COE decides how long you can drive the car and how much its depreciation is.']),
                    ('3. Car loan', ['MAS sets the maximum loan amount and tenure for car loans. Check the current limits on the MAS website and ask the dealer or your bank for the rate.']),
                    ('4. Test drive and inspection', ['Drive the car on roads you know and book a pre-purchase inspection before you pay in full.']),
-                   ('5. Paperwork', ['The ownership transfer is done on LTA\'s OneMotoring. Make sure insurance starts from the day you take the car.'])],
+                   ('5. Paperwork', ['The ownership transfer is done on LTA\'s OneMotoring. Make sure insurance starts from the day you take the car.']),
+                   ('Questions to ask the dealer', ['Ask for the registration date, the COE expiry date, the number of previous owners and the service records. Ask whether the car has any outstanding loan and how the deposit works if the inspection finds a problem. A dealer who answers these clearly and in writing is easier to trust than one who rushes you.']),
+                   ('Mistakes first-time buyers make', ['The most common one is looking only at the monthly instalment instead of the total cost of owning the car. Others are ignoring how much COE is left, skipping the inspection because the car looks clean, and paying in full before the inspection is done. Taking your time on each step avoids most of them.']),
+                   ('On the day you collect the car', [Raw('Confirm that the ownership transfer has been completed, that your insurance starts from that day, and that you have received the keys and documents. Take photos of the car at handover. Our guide on <a href="articles/what-to-do-after-buying-a-used-car/">what to do after buying a used car</a> lists the follow-up steps, and our <a href="articles/what-is-a-pre-purchase-inspection/">pre-purchase inspection guide</a> explains the check to book beforehand.')]),
+                   ('Take it one step at a time', ['Buying a first car feels like many decisions at once, but they come in a clear order: decide what you can afford each year, shortlist cars with enough COE left, test drive, inspect, then agree the price and paperwork. You do not have to decide everything on the first visit. Many first-time buyers visit more than once, bring a family member or friend, and ask questions by WhatsApp in between. Our team is happy to answer them at +65 9742 7491.'])],
          faqs=[('How much should a first-time buyer budget for a used car?', 'Start from the depreciation you can afford each year, then add insurance, road tax and running costs. A dealer can show you cars that fit that number.'),
                ('Do I need a PPI for my first car?', 'It is strongly recommended. It tells you the real condition of the car before you commit.'),
                ('Can a dealer help a first-time buyer?', 'Yes. Many of our Facebook reviews are from first-time owners who were guided step by step.')]),
-    dict(slug='what-does-depreciation-mean-on-a-car-listing', photo='sold-mercedes-glb200', svc='buy-a-used-car',
+    dict(slug='what-does-depreciation-mean-on-a-car-listing', modified='2026-11-02', photo='sold-mercedes-glb200', svc='buy-a-used-car',
          title='What Is Depreciation on a Car Listing? | Star Performance',
          desc='Depreciation on a Singapore used car listing is the yearly cost of owning the car. How it is worked out and how to use it to compare cars.',
          h1='What does "depreciation" mean on a Singapore used car listing?',
          answer='On a Singapore used car listing, depreciation is roughly what the car costs you per year of COE remaining. It is the price minus what you would get back when the car is deregistered (such as the PARF rebate), divided by the years of COE left. A lower figure means cheaper ownership per year, which is why buyers compare it.',
          sections=[('How it is worked out', ['Take the selling price, subtract the rebate value you would expect when the COE ends, and divide by the remaining COE life in years. Listing sites show this figure for you.']),
                    ('Why it matters more than price', ['A cheaper car with little COE left can cost more per year than a dearer car with many years left. Depreciation puts them on the same footing.']),
-                   ('Low depreciation does not mean a bad car', ['A low figure can simply mean a well-priced car. In August 2026 one of our buyers chose a keenly priced Toyota Vellfire, and his independent inspection found it in excellent condition. Always inspect, whatever the price.'])],
+                   ('Low depreciation does not mean a bad car', ['A low figure can simply mean a well-priced car. In August 2026 one of our buyers chose a keenly priced Toyota Vellfire, and his independent inspection found it in excellent condition. Always inspect, whatever the price.']),
+                   ('A plain-language example', ['Take two cars listed at the same price. One has only a few years of COE left and the other has many. The same money is spread over fewer years on the first car, so its depreciation per year looks higher. The second car looks cheaper to own each year, even though the price on the listing is identical. That is the comparison the figure is built for.']),
+                   ('What the figure leaves out', ["Depreciation covers the car's value over its remaining COE only. Insurance, road tax, parking, fuel, servicing and any loan interest are on top, so add them when you work out what a car really costs you each month. The rebate values behind the figure are set by LTA and can change, so check your own numbers on LTA OneMotoring before you rely on them."]),
+                   ('How to use it when you shortlist cars', [Raw('Pick three or four cars you like and compare their depreciation side by side, then look at the things the figure cannot show: condition, mileage, service records and how the car feels on a test drive. Read our guides on <a href="articles/what-is-the-parf-rebate-and-how-is-it-calculated/">the PARF rebate</a> and on <a href="articles/should-you-buy-a-used-car-with-little-coe-left/">buying a car with little COE left</a>, then book a <a href="articles/what-is-a-pre-purchase-inspection/">pre-purchase inspection</a> on the car you choose. You can also WhatsApp us the cars you are comparing and we will give you our honest view.')]),
+                   ('Where the number comes from and who sets it', ["The depreciation on a listing is an estimate worked out from the asking price, the remaining COE and the rebate you would get on deregistration. Different listing sites may present it slightly differently, so compare cars on the same site. If a figure looks unusually low or high, ask the dealer how it was calculated and check the COE expiry date and registration date against the car's own documents. A dealer who is happy to explain the number is usually a dealer who is happy to explain the car."])],
          faqs=[('Is a lower depreciation always better?', 'It means lower cost per year, but condition still matters. Pair it with a pre-purchase inspection.'),
                ('Does depreciation include insurance and road tax?', 'No. It covers the car\'s value over its remaining COE only.'),
                ('Where can I compare depreciation?', 'On listing sites such as sgcarmart, which show the figure for each car.')]),
@@ -511,7 +527,7 @@ ARTICLES = [
                ('Can I still use my car while it is consigned?', 'Ask us when we agree the terms. It depends on how viewings will be arranged.')]),
 ]
 
-LASTMOD = {'articles/%s/' % a['slug']: a['date'] for a in ARTICLES if a.get('date')}
+LASTMOD = {'articles/%s/' % a['slug']: a.get('modified', a.get('date')) for a in ARTICLES if a.get('modified') or a.get('date')}
 LASTMOD['services/sell-your-car/'] = '2026-10-23'  # Booster 23 Oct 2026: title/H1/description on 'sell my car singapore'
 LASTMOD['services/car-consignment/'] = '2026-10-19'  # Booster 19 Oct 2026: H1 + first H2 on the term 'car consignment singapore'
 
@@ -532,7 +548,7 @@ def article_body(a):
 <p>Related: <a href="services/{s['slug']}/">{E(s['h1'])}</a>. Official rules and figures: <a href="{LTA}" target="_blank" rel="noopener">LTA OneMotoring</a>.</p>
 <h2>Frequently asked questions</h2>
 {faq_html(a['faqs'])}
-<p class="byline">By the team at {LEGAL}, Yishun. Last updated {a.get('date', UPDATED)}. General information only; check current rules with LTA.</p>
+<p class="byline">By the team at {LEGAL}, Yishun. Last updated {a.get('modified', a.get('date', UPDATED))}. General information only; check current rules with LTA.</p>
 </article>
 <aside class="side"><div class="card sticky"><h2>Ask us</h2><p>Buying, selling, consigning or exporting? WhatsApp +65 {WA_SHOW}.</p>{wa_btn('WhatsApp us')}{sgcm_btn('Cars on sgcarmart', 'btn btn-ghost')}
 <p class="small" style="margin-top:14px"><a href="services/">Services →</a><br><a href="reviews/">Reviews →</a><br><a href="articles/">All guides →</a></p></div></aside>
@@ -540,7 +556,7 @@ def article_body(a):
 
 
 def article_schema(a, path):
-    return {'@type': 'Article', 'headline': a['h1'], 'description': a['desc'], 'datePublished': a.get('date', UPDATED), 'dateModified': a.get('date', UPDATED),
+    return {'@type': 'Article', 'headline': a['h1'], 'description': a['desc'], 'datePublished': a.get('date', UPDATED), 'dateModified': a.get('modified', a.get('date', UPDATED)),
             'author': {'@type': 'Organization', 'name': LEGAL, 'url': SITE}, 'publisher': {'@id': SITE + '#business'},
             'image': (IMG_ABS or SITE + 'img/') + '%s.webp' % a['photo'], 'mainEntityOfPage': SITE + path, 'inLanguage': 'en-SG'}
 
