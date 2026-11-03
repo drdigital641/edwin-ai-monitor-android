@@ -1,5 +1,86 @@
 [
  {
+  "place_id": "ChIJx4nR_cR9WiERBhpI3G35BZc",
+  "name_hint": "Regnant Automotive Pte Ltd",
+  "address_hint": "53 Ubi Ave 1, #01-09",
+  "postal_code": "408934",
+  "mobile_hint": "+6596929668",
+  "source": "openseo_google_maps_2026-11-04 (Google Maps phone, Edwin asked)",
+  "added": "2026-11-04"
+ },
+ {
+  "place_id": "ChIJH4iravQX2jER7DDNxVI4IQ8",
+  "name_hint": "Ubi Automobile Services Pte Ltd",
+  "address_hint": "3018A Ubi Rd 1",
+  "postal_code": "408711",
+  "mobile_hint": "+6598315660",
+  "source": "openseo_google_maps_2026-11-04 (Google Maps phone, Edwin asked)",
+  "added": "2026-11-04"
+ },
+ {
+  "place_id": "ChIJoVPd6sAX2jER1CZzV07ZQQ8",
+  "name_hint": "Elites Performance",
+  "address_hint": "62 Kaki Bukit Ave 6, Ark@KB",
+  "postal_code": "417893",
+  "mobile_hint": "+6590999558",
+  "source": "openseo_google_maps_2026-11-04 (Google Maps phone, Edwin asked)",
+  "added": "2026-11-04"
+ },
+ {
+  "place_id": "ChIJ10ApCJcX2jERGQeeSiq6VZs",
+  "name_hint": "Ysk Auto Workshop",
+  "address_hint": "1 Kaki Bukit Ave 6, #01-71, AutoBay",
+  "postal_code": "417883",
+  "mobile_hint": "+6596402541",
+  "source": "openseo_google_maps_2026-11-04 (Google Maps phone, Edwin asked)",
+  "added": "2026-11-04"
+ },
+ {
+  "place_id": "ChIJm2-2tu8X2jERsVZu4PF9Np4",
+  "name_hint": "Ace Chrome & Restorations Pte Ltd",
+  "address_hint": "2 Kaki Bukit Ave 2, #02-24 AUTOHUB",
+  "postal_code": "417921",
+  "mobile_hint": "+6588240062",
+  "source": "openseo_google_maps_2026-11-04 (Google Maps phone, Edwin asked)",
+  "added": "2026-11-04"
+ },
+ {
+  "place_id": "ChIJs5BioWIX2jER89cxNltojp4",
+  "name_hint": "Concours Singapore",
+  "address_hint": "2 Kaki Bukit Ave 2, #01-07 Kaki Bukit Autohub",
+  "postal_code": "417921",
+  "mobile_hint": "+6589449985",
+  "source": "openseo_google_maps_2026-11-04 (Google Maps phone, Edwin asked)",
+  "added": "2026-11-04"
+ },
+ {
+  "place_id": "ChIJI3C76DIX2jERTa4TSHw1B58",
+  "name_hint": "SPECTRUM WERKS",
+  "address_hint": "25 Kaki Bukit Rd 4, #06-26/28",
+  "postal_code": "417800",
+  "mobile_hint": "+6581811201",
+  "source": "openseo_google_maps_2026-11-04 (Google Maps phone, Edwin asked)",
+  "added": "2026-11-04"
+ },
+ {
+  "place_id": "ChIJryMfeyoX2jERQVAYiIuvZ6M",
+  "name_hint": "Unimotor Company",
+  "address_hint": "1 Kaki Bukit Ave 6, #01-94",
+  "postal_code": "417883",
+  "mobile_hint": "+6597981616",
+  "source": "openseo_google_maps_2026-11-04 (Google Maps phone, Edwin asked)",
+  "added": "2026-11-04"
+ },
+ {
+  "place_id": "ChIJUR_esoE92jER1YkTFcPcJq8",
+  "name_hint": "TheCarWorkshop",
+  "address_hint": "15 Changi North Street 1, #01-14, I-LOFT@CHANGI",
+  "postal_code": "498765",
+  "mobile_hint": "+6580883016",
+  "source": "openseo_google_maps_2026-11-04 (Google Maps phone, Edwin asked)",
+  "added": "2026-11-04"
+ },
+ {
   "place_id": "ChIJQQaNu7IP2jERgRnZ1tGBPBY",
   "name_hint": "Ace Motorsports",
   "address_hint": "1 Soon Lee Street, #01-34 Pioneer Centre",
