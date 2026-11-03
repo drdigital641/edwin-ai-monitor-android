@@ -85,12 +85,49 @@ _E = [
      'Tuas is the industrial area at the far west of Singapore, around Tuas Avenue and Tuas South.'),
 ]
 
-ESTATES = {}
+# Town hubs (the old "estate clusters"): /areas/<town>/ lists the industrial estates in that town. Navigation, not a listing page.
+TOWNS = {}
 for _s, _n, _r, _la, _lo, _nb, _pre, _kw, _intro in _E:
-    ESTATES[_s] = dict(slug=_s, name=_n, region=_r, lat=_la, lon=_lo, nearby=_nb, prefixes=_pre, keywords=_kw, intro=_intro)
+    TOWNS[_s] = dict(slug=_s, name=_n, region=_r, lat=_la, lon=_lo, nearby=_nb, intro=_intro)
+
+# Industrial estates (Edwin 3 Nov 2026): the area unit, /areas/<industrial-estate>/. slug, name, town, address keywords, intro.
+# An address matches an estate by keyword (first match wins). If a new workshop matches none, add its estate here.
+_IE = [
+    ('amk-industrial-park-2', 'Ang Mo Kio Industrial Park 2', 'ang-mo-kio', ['ang mo kio industrial park'],
+     'Ang Mo Kio Industrial Park 2 is an industrial estate in Ang Mo Kio, including the AMK AutoPoint motor building, with workshops serving the north-east.'),
+    ('kaki-bukit-industrial-estate', 'Kaki Bukit Industrial Estate', 'kaki-bukit', ['kaki bukit'],
+     'Kaki Bukit is an industrial estate in the East region, around Kaki Bukit Avenue 4 and 6 and Kaki Bukit Road 2 and 4, with many workshops, trade units and parts suppliers.'),
+    ('sin-ming-industrial-estate', 'Sin Ming Industrial Estate', 'sin-ming-bishan', ['sin ming'],
+     'Sin Ming Industrial Estate, including Sin Ming Drive and the Sin Ming AutoCity and Autocare buildings, is in the middle of Singapore near Bishan.'),
+    ('toh-guan-enterprise-hub', 'Toh Guan Road East and Enterprise Hub', 'toh-guan-jurong-east', ['toh guan'],
+     'Toh Guan Road East and the Enterprise Hub industrial building are in the West region, near Jurong East.'),
+    ('corporation-drive-jurong-east', 'Corporation Drive, Jurong East', 'toh-guan-jurong-east', ['corporation dr'],
+     'Corporation Drive is an industrial road in Jurong East, in the West region.'),
+    ('paya-ubi-industrial-park', 'Paya Ubi Industrial Park', 'ubi', ['ubi ave 1', 'paya ubi'],
+     'Paya Ubi Industrial Park is around Ubi Avenue 1, near Paya Lebar in the Geylang planning area (Central region), with motor workshops mixed in among light industry.'),
+    ('ubi-road-1', 'Ubi Road 1', 'ubi', ['ubi rd 1', 'ubi road 1'],
+     'Ubi Road 1 is an industrial road in the Ubi area, near Paya Lebar in the Geylang planning area (Central region).'),
+    ('woodlands-industrial-park-e9', 'Woodlands Industrial Park E9', 'woodlands', ['woodlands industrial park'],
+     'Woodlands Industrial Park E9 is the main industrial park in the north-west, close to the Causeway.'),
+    ('carros-centre-jalan-lam-huat', 'Jalan Lam Huat and Carros Centre', 'woodlands', ['jln lam huat', 'jalan lam huat', 'carros'],
+     'Jalan Lam Huat, where Carros Centre stands, is an industrial road in the north-west of Singapore.'),
+    ('woodlands-avenue-12', 'Woodlands Avenue 12 (Polaris@Woodlands)', 'woodlands', ['woodlands ave 12', 'polaris'],
+     'Woodlands Avenue 12 and the Polaris@Woodlands industrial building are in the Woodlands area in the north.'),
+    ('yishun-industrial-park-a', 'Yishun Industrial Park A', 'yishun', ['yishun industrial park'],
+     'Yishun Industrial Park A is one of the two main motor trade clusters in Yishun, in the North region.'),
+    ('yishun-industrial-street-1', 'Yishun Industrial Street 1', 'yishun', ['yishun industrial street', 'yishun industrial st'],
+     'Yishun Industrial Street 1, around North Spring Bizhub and Northpoint Bizhub, is the second motor trade cluster in Yishun.'),
+]
+ESTATES = {}
+for _s, _n, _t, _kw, _intro in _IE:
+    _tw = TOWNS[_t]
+    ESTATES[_s] = dict(slug=_s, name=_n, town=_t, region=_tw['region'], lat=_tw['lat'], lon=_tw['lon'], prefixes=[], keywords=_kw, intro=_intro, nearby=[])
+for _s, _v in ESTATES.items():   # nearby = other estates in the same town, then estates in neighbouring towns
+    _sib = [k for k, w in ESTATES.items() if w['town'] == _v['town'] and k != _s]
+    _nbt = [k for k, w in ESTATES.items() if w['town'] in TOWNS[_v['town']]['nearby'] and k != _s]
+    _v['nearby'] = _sib + _nbt
 
 # Longest prefix first, so 757 (Woodlands Industrial Park) beats 75 (Sembawang) and 737 beats 73.
-_PREFIX = sorted(((p, s) for s, v in ESTATES.items() for p in v['prefixes']), key=lambda t: -len(t[0]))
 _KW = [(k, s) for s, v in ESTATES.items() for k in v['keywords']]
 
 
@@ -110,10 +147,6 @@ def estate_for(text, postal):
     for k, s in _KW:
         if k in t:
             return s
-    if postal:
-        for p, s in _PREFIX:
-            if postal.startswith(p):
-                return s
     return None
 
 

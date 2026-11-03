@@ -14,13 +14,19 @@ HERE = os.path.dirname(os.path.abspath(__file__))
 OUT = os.path.join(HERE, '..', 'data', 'taps.json')
 
 
+try:
+    REN = json.load(open(os.path.join(os.path.dirname(os.path.abspath(__file__)), '..', 'data', 'slug_redirects.json')))   # old slug -> new slug (3 Nov 2026)
+except Exception:
+    REN = {}
+
+
 def count(rows, today=None):
     seen = {}
     for r in rows:
         k = r.get('cta_type')
         if k not in ('whatsapp', 'call') or not r.get('cta_label'):
             continue
-        seen.setdefault((r['cta_label'], k), set()).add(r.get('session_id') or id(r))
+        seen.setdefault((REN.get(r['cta_label'], r['cta_label']), k), set()).add(r.get('session_id') or id(r))
     out = {}
     for (slug, k), ids in seen.items():
         out.setdefault(slug, {'whatsapp': 0, 'call': 0})[k] = len(ids)

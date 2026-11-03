@@ -574,7 +574,7 @@ def _from_record(r):
     est = r["estate"]
     return dict(
         slug=r["slug"], place_id=r["place_id"], name=r["name"], tier="free", category=cat, categories=[_CODES[c] for c in r["categories"]],
-        estate=est, area_label=_ar.ESTATES[est]["name"], regions=[r["region"]], region=r["region"], planning_area=r["planning_area"],
+        estate=est, area_label=_ar.TOWNS[_ar.ESTATES[est]["town"]]["name"], regions=[r["region"]], region=r["region"], planning_area=r["planning_area"],
         address_public=addr_public, street=street, postal=r["postal_code"], addresses=[dict(label=None, street=street, postal=r["postal_code"])],
         lat=r["lat"], lon=r["lng"], services_public=list(r["services"]), services=[], services_source=r["services_source_url"],
         phone=m["e164"], phone_show="%s %s" % (m["e164"][3:7], m["e164"][7:]), whatsapp=m["e164"].lstrip("+"), contact_source=m.get("source_url") or "google_profile",

@@ -67,13 +67,21 @@ CAT_LIST = [c for c in CATEGORIES if any(e['category'] == c['slug'] for e in ENT
 RN = areas.REGION_NAMES
 ESTATES = areas.ESTATES
 areas.annotate(ENTRIES)
-PUB_REGIONS = PUB_ESTATES = PUB_PAIRS = None   # filled by setup_areas()
+PUB_REGIONS = PUB_ESTATES = PUB_PAIRS = PUB_TOWNS = None   # filled by setup_areas()
+TOWNS = areas.TOWNS
 
 
 def setup_areas():
     """Decide which area pages exist: a region with a listing, an estate with 1+ listings, a service x estate pair with 2+."""
-    global PUB_REGIONS, PUB_ESTATES, PUB_PAIRS
+    global PUB_REGIONS, PUB_ESTATES, PUB_PAIRS, PUB_TOWNS
     PUB_REGIONS, PUB_ESTATES, PUB_PAIRS = areas.published(ENTRIES)
+    # Never an area x service page for general servicing, and none that repeats the whole area page (Edwin 3 Nov 2026): those are merged into the area page.
+    PUB_PAIRS = {(s, c): v for (s, c), v in PUB_PAIRS.items() if c != 'general-servicing-repair' and len(v) < len(PUB_ESTATES[s])}
+    PUB_TOWNS = {t: [k for k in PUB_ESTATES if ESTATES[k]['town'] == t] for t in TOWNS if any(ESTATES[k]['town'] == t for k in PUB_ESTATES)}
+
+
+def free_n(es):
+    return sum(1 for e in es if not is_paid(e))
 
 
 setup_areas()
@@ -137,6 +145,9 @@ V = _h.hexdigest()[:8]
 
 PAGES = {}   # path ('' = home, 'a/b/' ...) -> html
 META = {}    # path -> title (for llms/sitemap)
+FREECOUNT = {}   # path -> free workshops behind a thresholded page (check.py re-applies MIN_FREE)
+NOINDEX = {}   # path -> reason (thin pages, Edwin 3 Nov 2026); never in sitemap.xml
+MIN_FREE = 5   # an area, service or area x service page needs at least this many free workshops to be indexable
 _imgsz = {}
 
 
@@ -227,7 +238,7 @@ def wabar(items):
     return '<div class="wabar" role="region" aria-label="Contact">%s</div>' % ''.join(items)
 
 
-def page(path, title, desc, body, schema=None, og=None, bar=None, h1=None, extra_js=''):
+def page(path, title, desc, body, schema=None, og=None, bar=None, h1=None, extra_js='', index=True, why=''):
     assert len(title) <= 60, (path, len(title), title)
     assert len(desc) <= 160, (path, len(desc))
     depth = path.count('/')
@@ -246,7 +257,7 @@ def page(path, title, desc, body, schema=None, og=None, bar=None, h1=None, extra
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>{E(title)}</title>
 <meta name="description" content="{E(desc, True)}">
-<meta name="robots" content="index, follow, max-image-preview:large">
+<meta name="robots" content="{'index, follow, max-image-preview:large' if index else 'noindex, follow'}">
 <link rel="canonical" href="{E(url)}">
 <link rel="icon" href="{p}assets/favicon.ico" sizes="48x48">
 <link rel="icon" href="{p}assets/icon-192.png" type="image/png" sizes="192x192">
@@ -284,6 +295,15 @@ def page(path, title, desc, body, schema=None, og=None, bar=None, h1=None, extra
     out = out.replace('</body>', sprite(out) + '\n</body>', 1)
     PAGES[path] = out
     META[path] = title
+    if not index:
+        NOINDEX[path] = why
+
+
+def area_copy(slug):
+    """(paragraph, nearby MRT, landmarks). The paragraph is the industrial estate's own intro; MRT and landmarks come from its town."""
+    a = ESTATES[slug]
+    _p, mrt, marks = AREA_COPY[a['town']]
+    return a['intro'], mrt, marks
 
 
 # ------------------------------------------------------------------ pages
@@ -291,7 +311,12 @@ def home():
     depth = 0
     feats = [e for e in ENTRIES if is_paid(e)]
     slides = ''.join(slide(e) for e in feats)
-    cards = ''.join(card(e, 0, '') for e in ENTRIES)
+    # Home list: A to Z, no tier order (Edwin 3 Nov 2026). Paid Featured clients come last in the lazy part, still searchable; the first 12 are in the HTML.
+    ordered = sorted([e for e in ENTRIES if not is_paid(e)], key=lambda e: e['name'].lower()) + [e for e in ENTRIES if is_paid(e)]
+    first = ''.join(card(e, 0, '') for e in ordered[:12])
+    rest = ''.join(card(e, 0, '') for e in ordered[12:])
+    cards = first + ('<template id="more-cards">%s</template>' % rest) if rest else first
+    more_btn = ('<p id="more-btn-wrap" style="text-align:center;margin:18px 0 0;grid-column:1/-1"><button type="button" class="btn big" id="more-btn">Show all %d workshops</button></p>' % len(ordered)) if rest else ''
     faqs = [
         ('What is %s?' % SITE_NAME, 'A directory of car workshops and car services in Singapore. Each entry shows what the business does, where it is and how to contact it, using details from the business or its public listing.'),
         ('How do I contact a workshop?', 'Tap WhatsApp or Call on a card. The WhatsApp message is prefilled with the workshop name and says you found them on %s, so you only need to add your car and what you need.' % SITE_NAME),
@@ -308,7 +333,7 @@ def home():
         k, ic('pin'), E(RN[k]), n, '' if n == 1 else 's') for k in PUB_REGIONS for n in [sum(1 for e in ENTRIES if e['region'] == k)])
     est_tiles = ''.join('<li><a href="areas/%s/"><span class="ti">%s</span><span><b>%s</b><small>%s &middot; %d listing%s</small></span></a></li>' % (
         k, ic('pin'), E(ESTATES[k]['name']), E(RN[ESTATES[k]['region']]), len(v), '' if len(v) == 1 else 's') for k, v in PUB_ESTATES.items())
-    askdata = json.dumps({'cats': [{'slug': c['slug'], 'short': c['short'], 'blurb': c['blurb']} for c in CAT_LIST], 'areas': [{'slug': k, 'name': v['name'], 'region': v['region']} for k, v in ESTATES.items()], 'guides': [{'slug': g['slug'], 'h1': g['h1'], 'short': g['short'], 'kw': g['kw']} for g in _guides.GUIDES]}).replace('</', '<\\/')
+    askdata = json.dumps({'cats': [{'slug': c['slug'], 'short': c['short'], 'blurb': c['blurb']} for c in CAT_LIST], 'areas': [{'slug': k, 'name': v['name'], 'region': v['region']} for k, v in ESTATES.items()], 'guides': [{'slug': g['slug'], 'path': _guides.gpath(g), 'h1': g['h1'], 'short': g['short'], 'kw': g['kw']} for g in _guides.GUIDES]}).replace('</', '<\\/')
     tiers = tiers_strip()
     body = f'''<section class="finder" id="find"><div class="w"><div class="hero-t"><h1>Find a car workshop in Singapore</h1>
 <p>Describe the problem or type a service and area, then message the workshop on WhatsApp.</p></div>
@@ -323,7 +348,7 @@ def home():
 <section class="feat" aria-roledescription="carousel" aria-label="Featured Premium workshops"><div class="w"><div class="sec-h"><h2>Featured Premium workshops <span class="spons">Featured (paid)</span></h2>
 <div class="car-nav"><button type="button" id="cprev" aria-label="Previous">{ic('chev-l')}</button><button type="button" id="cnext" aria-label="Next">{ic('chev-r')}</button></div></div>
 <div class="marq" id="marq"><ul class="track" id="track" aria-label="Featured workshops">{slides}</ul></div></div></section>
-<section id="workshops" class="lst"><div class="w"><div class="sec-h"><h2>All workshops</h2><a class="sec-link" href="#services">Browse by service</a></div><p class="fine adnote">Premium workshops are shown first and are marked Featured (paid), then Verified, then Basic in A to Z order. Basic listings are built from the workshop's public Google Business Profile and, where available, what its customers mention in Google reviews, and link to its Google Maps listing. They are not endorsed by or arranged with the business.</p><div class="grid" id="results">{cards}</div>
+<section id="workshops" class="lst"><div class="w"><div class="sec-h"><h2>All workshops</h2><a class="sec-link" href="#services">Browse by service</a></div><p class="fine adnote">Workshops are listed A to Z with no boost for any tier. Paid Featured clients are in their own labelled block above and are marked Featured (paid). Basic listings are built from the workshop's public Google Business Profile and, where available, what its customers mention in Google reviews, and link to its Google Maps listing. They are not endorsed by or arranged with the business.</p><div class="grid" id="results">{cards}{more_btn}</div>
 <div class="empty" id="empty"><b>No workshops match.</b> Try fewer filters, or <a href="list-your-workshop/">list your workshop</a>.</div></div></section>
 <section class="alt" id="services"><div class="w"><h2>Browse by service</h2><ul class="tiles">{svc_tiles}</ul></div></section>
 <section id="regions"><div class="w"><h2>Browse by area</h2><ul class="tiles rg">{reg_tiles}</ul><h3 class="sub-h">Estates and industrial areas</h3><ul class="tiles est">{est_tiles}</ul></div></section>
@@ -351,8 +376,9 @@ def category(c):
 {featured_sec(es, depth, 'services/%s/' % c['slug'], 'in ' + c['short'].lower())}
 <section><div class="w"><h2 class="rv">Listings</h2><div class="grid">{''.join(card(e, depth, 'services/%s/' % c['slug']) for e in es if not is_paid(e))}{list_card(depth, c['short'].lower())}</div></div></section>'''
     itemlist = itemlist_ld(c['name'] + ' in Singapore', es)
+    FREECOUNT['services/%s/' % c['slug']] = free_n(es)
     page('services/%s/' % c['slug'], '%s in Singapore | %s' % (c['name'], SITE_NAME), c['blurb'] + ' Browse Singapore listings by area.',
-         body, [itemlist, dict(crld, **{'@context': 'https://schema.org'})], h1=c['name'])
+         body, [itemlist, dict(crld, **{'@context': 'https://schema.org'})], h1=c['name'], index=free_n(es) >= MIN_FREE, why='fewer than %d free workshops' % MIN_FREE)
 
 
 def cap(t, n):
@@ -423,7 +449,7 @@ def region(slug):
     title = fit_title('Mobile Car Services in Singapore | %s' % SITE_NAME) if mobile else fit_title('Car Workshops in %s Singapore | %s' % (name, SITE_NAME), 'Car Workshops in %s | %s' % (name, SITE_NAME))
     desc = ('Mobile car services that come to your car anywhere in Singapore, such as onsite batteries and mobile detailing. Message them directly.' if mobile else
             'Car workshops and car services in the %s region of Singapore, with estate pages and direct WhatsApp or call contact.' % name)
-    page('areas/%s/' % slug, title, cap(desc, 160), body, [itemlist_ld(h1, es), dict(crld, **{'@context': 'https://schema.org'}), faq_ld(rfaqs)], h1=h1)
+    page('areas/%s/' % slug, title, cap(desc, 160), body, [itemlist_ld(h1, es), dict(crld, **{'@context': 'https://schema.org'}), faq_ld(rfaqs)], h1=h1, index=False, why='region pages are navigation only')
 
 
 def faq_ld(faqs):
@@ -437,6 +463,26 @@ def faq_block(faqs, title):
     return '<section class="alt"><div class="w nar"><h2>%s</h2>%s</div></section>' % (E(title), items)
 
 
+def town_hub(slug):
+    """/areas/<town>/ : navigation page that lists the industrial estates in a town. Indexable only with 2+ estates and enough free workshops."""
+    depth = 2
+    t = TOWNS[slug]
+    ests = PUB_TOWNS[slug]
+    rname = RN[t['region']]
+    para, mrt, marks = AREA_COPY[slug]
+    cr, crld = crumbs(depth, [(rname, 'areas/%s/' % t['region']), (t['name'], None)])
+    tiles = ''.join(area_tile(depth, k, (ESTATES[k]['name'], '%d listing%s' % (len(PUB_ESTATES[k]), '' if len(PUB_ESTATES[k]) == 1 else 's'))) for k in ests)
+    total = sum(free_n(PUB_ESTATES[k]) for k in ests)
+    h1 = 'Car workshops in %s' % t['name']
+    body = f'''<div class="w">{cr}</div>
+<section class="hero" style="padding-top:14px"><div class="w"><h1>{E(h1)}</h1><p class="lede">{E(t['intro'])}</p><p>{E(para)}</p></div></section>
+<section class="alt"><div class="w"><h2>Industrial estates in {E(t['name'])}</h2><ul class="tiles est">{tiles}</ul>
+<p class="fine" style="margin-top:14px">Nearby MRT stations include {E(and_list(mrt))}. Landmarks include {E(and_list(marks))}. Back to the <a href="{pre(depth)}areas/{t['region']}/">{E(rname)} region</a>.</p></div></section>'''
+    desc = 'Car workshop areas in %s, %s region: %s. Pick an industrial estate to compare workshops and contact them on WhatsApp.' % (t['name'], rname, and_list(ESTATES[k]['name'] for k in ests))
+    page('areas/%s/' % slug, fit_title('Car Workshops in %s | %s' % (t['name'], SITE_NAME), 'Car Workshops in %s' % t['name']), cap(desc, 160), body,
+         [dict(crld, **{'@context': 'https://schema.org'})], h1=h1, index=len(ests) >= 2 and total >= MIN_FREE, why='town hub with one estate or fewer than %d free workshops' % MIN_FREE)
+
+
 def estate(slug, es):
     """Level 2: /areas/<estate>/  (main local SEO page)"""
     depth = 2
@@ -445,7 +491,7 @@ def estate(slug, es):
     ranked = [e for e in es if (FACTS.get(e['slug']) or {}).get('rank')]
     a = ESTATES[slug]
     rname = RN[a['region']]
-    cr, crld = crumbs(depth, [(rname, 'areas/%s/' % a['region']), (a['name'], None)])
+    cr, crld = crumbs(depth, [(rname, 'areas/%s/' % a['region']), (TOWNS[a['town']]['name'], 'areas/%s/' % a['town']), (a['name'], None)])
     n = len(es)
     intro = '%s %s lists %d workshop%s here: %s.' % (a['intro'], SITE_NAME, n, '' if n == 1 else 's', and_list(e['name'] for e in es))
     svc_pairs = [(c, v) for (s_, c), v in PUB_PAIRS.items() if s_ == slug]
@@ -468,7 +514,7 @@ def estate(slug, es):
         ('Which region is %s in?' % a['name'], '%s is in the %s region of Singapore.%s Browse the <a href="%sareas/%s/">%s region page</a> for more workshops.' % (
             a['name'], rname, (' Nearby areas on %s: %s.' % (SITE_NAME, and_list(ESTATES[k]['name'] for k in near))) if near else '', pre(depth), a['region'], E(rname))),
     ]
-    para, mrt, marks = AREA_COPY[slug]
+    para, mrt, marks = area_copy(slug)
     faqs.insert(3, ('What is near %s?' % a['name'], 'Nearby MRT stations include %s. Local landmarks include %s.' % (and_list(mrt), and_list(marks))))
     near_links = ', '.join('<a href="%sareas/%s/">%s</a>' % (pre(depth), k, E(ESTATES[k]['name'])) for k in near)
     about_html = ('<section><div class="w nar"><h2>About %s</h2><p>%s</p>'
@@ -503,7 +549,9 @@ def estate(slug, es):
     if len(desc) > 160:
         desc = 'Compare %d car workshops in %s with Google ratings, hours and distances. WhatsApp and call.' % (n, a['name'])
     ld = [itemlist_ld('Car workshops in %s' % a['name'], es), dict(crld, **{'@context': 'https://schema.org'}), faq_ld(faqs)]
-    page('areas/%s/' % slug, title, cap(desc, 160), body, ld, h1='Car workshops in %s' % a['name'])
+    _ix = free_n(es) >= MIN_FREE
+    FREECOUNT['areas/%s/' % slug] = free_n(es)
+    page('areas/%s/' % slug, title, cap(desc, 160), body, ld, h1='Car workshops in %s' % a['name'], index=_ix, why='fewer than %d free workshops' % MIN_FREE)
 
 
 def estate_service(slug, cat, es):
@@ -512,7 +560,7 @@ def estate_service(slug, cat, es):
     a = ESTATES[slug]
     c = CAT[cat]
     rname = RN[a['region']]
-    cr, crld = crumbs(depth, [(rname, 'areas/%s/' % a['region']), (a['name'], 'areas/%s/' % slug), (c['name'], None)])
+    cr, crld = crumbs(depth, [(rname, 'areas/%s/' % a['region']), (TOWNS[a['town']]['name'], 'areas/%s/' % a['town']), (a['name'], 'areas/%s/' % slug), (c['name'], None)])
     n = len(es)
     h1 = '%s in %s' % (c['name'], a['name'])
     near_s = [k for k in a['nearby'] if (k, cat) in PUB_PAIRS]
@@ -523,7 +571,7 @@ def estate_service(slug, cat, es):
     sfaqs = [
         ('Which workshops offer %s in %s?' % (c['name'].lower(), a['name']), '%s lists %s for %s in %s.' % (SITE_NAME, and_list(e['name'] for e in es), c['name'].lower(), a['name'])),
         ('How do I contact a workshop in %s?' % a['name'], 'Tap WhatsApp or Call on a workshop card or page. WhatsApp messages are prefilled with the workshop name and say you found them on %s, so you only need to add your car and what you need.' % SITE_NAME),
-        ('What is near %s?' % a['name'], 'Nearby MRT stations include %s. Local landmarks include %s.' % (and_list(AREA_COPY[slug][1]), and_list(AREA_COPY[slug][2]))),
+        ('What is near %s?' % a['name'], 'Nearby MRT stations include %s. Local landmarks include %s.' % (and_list(area_copy(slug)[1]), and_list(area_copy(slug)[2]))),
     ]
     intro = '%d workshops in %s are listed for %s: %s. Each page shows the address, hours and how to contact the workshop.' % (n, a['name'], c['name'].lower(), and_list(e['name'] for e in es))
     body = f'''<div class="w">{cr}</div>
@@ -531,11 +579,12 @@ def estate_service(slug, cat, es):
 {featured_sec(es, depth, 'areas/%s/%s/' % (slug, cat), 'in ' + a['name'])}
 <section><div class="w"><div class="grid">{''.join(card(e, depth, 'areas/%s/%s/' % (slug, cat)) for e in es if not is_paid(e))}</div>{shortlist_links(es, a['name'])}
 <p class="fine" style="margin-top:14px">More in this area: <a href="../">all workshops in {E(a['name'])}</a>, or <a href="{pre(depth)}services/{cat}/">{E(c['name'].lower())} across Singapore</a>.</p></div></section>
-<section class="alt"><div class="w nar"><h2>About {E(c['name'].lower())} in {E(a['name'])}</h2><p>{E(AREA_COPY[slug][0])}</p><p>{near_html}</p></div></section>
+<section class="alt"><div class="w nar"><h2>About {E(c['name'].lower())} in {E(a['name'])}</h2><p>{E(area_copy(slug)[0])}</p><p>{near_html}</p></div></section>
 {faq_block(sfaqs, 'Questions about %s in %s' % (c['name'].lower(), a['name']))}'''
+    FREECOUNT['areas/%s/%s/' % (slug, cat)] = free_n(es)
     title = fit_title('%s in %s | %s' % (c['name'], a['name'], SITE_NAME), '%s in %s' % (c['name'], a['name']))
     desc = '%s in %s, %s region: %s. Compare listings and contact a workshop directly.' % (c['name'], a['name'], rname, and_list(e['name'] for e in es))
-    page('areas/%s/%s/' % (slug, cat), title, cap(desc, 160), body, [itemlist_ld(h1, es), dict(crld, **{'@context': 'https://schema.org'}), faq_ld(sfaqs)], h1=h1)
+    page('areas/%s/%s/' % (slug, cat), title, cap(desc, 160), body, [itemlist_ld(h1, es), dict(crld, **{'@context': 'https://schema.org'}), faq_ld(sfaqs)], h1=h1, index=free_n(es) >= MIN_FREE, why='fewer than %d free workshops' % MIN_FREE)
 
 
 def is_paid(e):
@@ -675,6 +724,7 @@ def workshop_trail(e):
     t = [(RN[e['region']], 'areas/%s/' % e['region'])]
     if e['estates']:
         k = e['estates'][0]
+        t.append((TOWNS[ESTATES[k]['town']]['name'], 'areas/%s/' % ESTATES[k]['town']))
         t.append((ESTATES[k]['name'], 'areas/%s/' % k))
     return t + [(e['name'], None)]
 
@@ -1334,7 +1384,7 @@ def more_in(e, depth):
     gl = guides_for(e)
     gh = ''
     if gl:
-        gh = '<h3>Car problem and brand guides that fit</h3><ul class="tick svc-plain">%s</ul>' % ''.join('<li><a href="%sguides/%s/">%s</a></li>' % (pre(depth), g['slug'], E(g['h1'])) for g in gl[:4])
+        gh = '<h3>Car problem and brand guides that fit</h3><ul class="tick svc-plain">%s</ul>' % ''.join('<li><a href="%s%s">%s</a></li>' % (pre(depth), _guides.gpath(g), E(g['h1'])) for g in gl[:4])
     return ('<section class="pl-sec morein"><h2>More in %s</h2><ul class="tick svc-plain nearlist">%s</ul>'
             '<p class="fine"><a href="%sareas/%s/">All workshops in %s</a></p>%s</section>') % (E(est), li, pre(depth), e['estate'], E(est), gh)
 
@@ -1505,7 +1555,7 @@ def guide_matches(g):
 
 def guide_page(g):
     depth = 2
-    path = 'guides/%s/' % g['slug']
+    path = _guides.gpath(g)
     cr, crld = crumbs(depth, [('Guides', 'guides/'), (g['short'], None)])
     causes = ''.join('<li><h3>%s</h3><p>%s</p></li>' % (E(h), E(t)) for h, t in g['causes'])
     tell = ''.join('<li>%s</li>' % E(x) for x in g['tell'])
@@ -1520,7 +1570,7 @@ def guide_page(g):
     else:
         wk = '<p>No listed workshop has a matching customer mention yet. Browse <a href="../../services/general-servicing-repair/">all servicing and repair workshops</a>.</p>'
     cat_links = ' &middot; '.join('<a href="../../services/%s/">%s</a>' % (c, E(CAT[c]['short'])) for c in g['cats'] if c in CAT)
-    others = ''.join('<li><a href="../../guides/%s/">%s</a></li>' % (o['slug'], E(o['short'])) for o in _guides.GUIDES if o['slug'] != g['slug'])
+    others = ''.join('<li><a href="../../%s">%s</a></li>' % (_guides.gpath(o), E(o['short'])) for o in _guides.GUIDES if o['slug'] != g['slug'])
     faq_html = ''.join('<details><summary>%s</summary><p>%s</p></details>' % (E(q), E(a)) for q, a in g['faqs'])
     heading = 'Likely causes' if g['kind'] == 'problem' else 'What to know and ask'
     body = f'''<div class="w nar guidepg">{cr}
@@ -1544,7 +1594,7 @@ def guides_index():
     cr, crld = crumbs(depth, [('Guides', None)])
     probs = [g for g in _guides.GUIDES if g['kind'] == 'problem']
     brands = [g for g in _guides.GUIDES if g['kind'] == 'brand']
-    li = lambda gs: ''.join('<li><a href="%s/"><span><b>%s</b><small>%s</small></span></a></li>' % (g['slug'], E(g['h1']), E(g['desc'][:110].rsplit(' ', 1)[0] + '...')) for g in gs)
+    li = lambda gs: ''.join('<li><a href="../%s"><span><b>%s</b><small>%s</small></span></a></li>' % (_guides.gpath(g), E(g['h1']), E(g['desc'][:110].rsplit(' ', 1)[0] + '...')) for g in gs)
     body = f'''<div class="w">{cr}
 <h1 style="margin-top:14px">Car problem and brand guides</h1>
 <p class="lede" style="font-size:1rem;max-width:720px">Plain-word guides to common car problems and car brands, with what to tell the workshop and the workshops customers mention for each.</p>
@@ -1673,6 +1723,8 @@ def build():
         category(c)
     for k in PUB_REGIONS:
         region(k)
+    for t in PUB_TOWNS:
+        town_hub(t)
     for k, v in PUB_ESTATES.items():
         estate(k, v)
     for (k, cat), v in PUB_PAIRS.items():
@@ -1683,6 +1735,7 @@ def build():
         if e['tier'] == 'free':
             basic_page(e)
     guides_index()
+    hub_indexes()
     for _g in _guides.GUIDES:
         guide_page(_g)
     list_page()
@@ -1703,10 +1756,11 @@ def build():
         shutil.copy(os.path.join(HERE, f), OUT + '/assets/' + f)
     shutil.copytree(os.path.join(HERE, 'img'), OUT + '/assets/img', dirs_exist_ok=True)
     make_icons()
+    folder_fillers()
 
     urls = sorted(PAGES)
     open(OUT + '/sitemap.xml', 'w').write('<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n' +
-                                          ''.join('<url><loc>%s</loc><lastmod>%s</lastmod></url>\n' % (abs_url(p), lastmod_of(p, PAGES[p])) for p in urls) + '</urlset>\n')
+                                          ''.join('<url><loc>%s</loc><lastmod>%s</lastmod></url>\n' % (abs_url(p), lastmod_of(p, PAGES[p])) for p in urls if p not in NOINDEX) + '</urlset>\n')
     if LIVE:
         bots = LIVE_BOTS
         _unused = ['Googlebot', 'Bingbot', 'OAI-SearchBot', 'GPTBot', 'ChatGPT-User', 'PerplexityBot', 'ClaudeBot', 'Claude-SearchBot', 'Google-Extended', 'Applebot-Extended', 'DuckAssistBot']
@@ -1716,6 +1770,8 @@ def build():
     open(OUT + '/robots.txt', 'w').write(robots)
     open(OUT + '/%s.txt' % INDEXNOW_KEY, 'w').write(INDEXNOW_KEY)
     json.dump(LM_NEW, open(LM_FILE, 'w'), indent=0, sort_keys=True)
+    json.dump(dict(min_free=MIN_FREE, noindex=NOINDEX, free_count=FREECOUNT, redirects=REDIRECTS, sitemap=[p for p in urls if p not in NOINDEX]),
+              open(os.path.join(HERE, '..', 'build-manifest.json'), 'w'), indent=1, sort_keys=True)
     # robots-live.txt always carries the crawlable live-domain rules; htaccess/.htaccess serves it as /robots.txt on sgcarworkshop.sg only
     live_robots = ''.join('User-agent: %s\nAllow: /\n\n' % b for b in LIVE_BOTS) + 'User-agent: *\nAllow: /\n\nSitemap: https://%s/sitemap.xml\n' % DOMAIN
     open(OUT + '/robots-live.txt', 'w').write(live_robots)
@@ -1726,7 +1782,7 @@ def build():
     lines += ['- [%s](%sareas/%s/): %s' % (RN[k], BASE, k, areas.REGION_INTRO[k]) for k in PUB_REGIONS]
     lines += ['', '## Estates and industrial areas']
     lines += ['- [%s](%sareas/%s/): %s %d listing%s.' % (ESTATES[k]['name'], BASE, k, ESTATES[k]['intro'], len(v), '' if len(v) == 1 else 's') for k, v in PUB_ESTATES.items()]
-    lines += ['', '## Car problem and brand guides', '- [All guides](%sguides/)' % BASE] + ['- [%s](%sguides/%s/): %s' % (g['h1'], BASE, g['slug'], g['desc']) for g in _guides.GUIDES]
+    lines += ['', '## Car problem and brand guides', '- [All guides](%sguides/)' % BASE] + ['- [%s](%s%s): %s' % (g['h1'], BASE, _guides.gpath(g), g['desc']) for g in _guides.GUIDES]
     lines += ['', '## Listings']
     for e in ENTRIES:
         lines.append('- [%s](%sworkshops/%s/): %s, %s%s' % (e['name'], BASE, e['slug'], CAT[e['category']]['name'] + ', ' + TIERS[e['tier']]['label'], e['area_label'], (' (own website: %s)' % e['url']) if e['tier'] == 'premium_leadgen' else ''))
@@ -1738,22 +1794,99 @@ def build():
 OLD_REGIONS = ['north', 'north-east', 'east', 'west', 'central']
 
 
+def redirect_map():
+    """old path -> new path, every one a single hop (Edwin 3 Nov 2026). Targets must be real pages."""
+    r = {}
+    for old, new in json.load(open(os.path.join(HERE, '..', 'data', 'slug_redirects.json'))).items():
+        r['workshops/%s/' % old] = 'workshops/%s/' % new
+    for g in _guides.GUIDES:
+        if g.get('kind') == 'brand':
+            r['guides/%s/' % g['slug']] = _guides.gpath(g)
+    for t in TOWNS:    # old town-level pages /areas/<town>/<service>/ (only general servicing existed) -> the estate, or the town hub when it has several
+        old_pair = 'areas/%s/general-servicing-repair/' % t
+        if t in PUB_TOWNS:
+            ests = PUB_TOWNS[t]
+            r[old_pair] = 'areas/%s/' % (ests[0] if len(ests) == 1 else t)
+    r['areas/kranji/'] = 'areas/carros-centre-jalan-lam-huat/'   # the old Kranji page held the Jalan Lam Huat workshops
+    for reg in OLD_REGIONS:
+        if reg in PUB_REGIONS:
+            r['regions/%s/' % reg] = 'areas/%s/' % reg
+    r['regions/'] = ''
+    for old, new in r.items():
+        assert old not in PAGES, ('redirect source is a live page', old)
+        assert new == '' or new in PAGES, ('redirect target missing', old, new)
+    return r
+
+
+REDIRECTS = {}
+
+
 def write_redirects():
-    """/regions/<r>/ moved to /areas/<r>/. The bridge cannot upload .htaccess, so the preview gets soft redirect pages
-    (meta refresh + canonical). redirects.htaccess holds the real 301 rules for Edwin to add on the live domain."""
-    for r in [x for x in OLD_REGIONS if x in PUB_REGIONS]:
-        d = os.path.join(OUT, 'regions', r)
+    """Soft redirect pages (meta refresh + canonical) for every old URL, because the upload bridge cannot send .htaccess.
+    proposed.htaccess holds the real one-hop 301 and 410 rules, Options -Indexes included, for the publisher to pin and upload."""
+    global REDIRECTS
+    REDIRECTS = redirect_map()
+    for old, new in REDIRECTS.items():
+        d = os.path.join(OUT, old)
         os.makedirs(d, exist_ok=True)
-        new = '../../areas/%s/' % r
+        rel = '../' * old.count('/') + new
         open(os.path.join(d, 'index.html'), 'w', encoding='utf-8').write(
-            '<!doctype html>\n<html lang="en-SG"><head><meta charset="utf-8"><title>Moved | %s</title>'
+            '<!doctype html>\n<html lang="en-SG"><head><meta charset="utf-8"><title>Moved | %s</title><meta name="robots" content="noindex">'
             '<link rel="canonical" href="%s"><meta http-equiv="refresh" content="0; url=%s"></head>'
-            '<body><p>This page has moved to <a href="%s">%s</a>.</p></body></html>\n' % (E(SITE_NAME), E(abs_url('areas/%s/' % r)), new, new, E(RN[r] + ' region')))
-    rules = ['# 301 redirects for the SG Car Workshop area restructure (1 Nov 2026). Add to the .htaccess at the root of the live domain.',
-             '# The upload bridge cannot send .htaccess files, so this file is not part of the synced site folder.']
-    rules += ['Redirect 301 /regions/%s/ /areas/%s/' % (r, r) for r in OLD_REGIONS]
-    rules += ['Redirect 301 /regions/ /']
-    open(os.path.join(HERE, '..', 'redirects.htaccess'), 'w').write('\n'.join(rules) + '\n')
+            '<body><p>This page has moved to <a href="%s">%s</a>.</p></body></html>\n' % (E(SITE_NAME), E(abs_url(new)), rel or './', rel or './', E(abs_url(new))))
+    gone = []
+    try:
+        import registry as _reg
+        gone = sorted({x['slug'] for x in _reg.load() if x.get('status') in ('removed-on-request', 'closed') and x.get('slug')})
+    except Exception:
+        pass
+    for g in gone:
+        assert g not in {e['slug'] for e in ENTRIES}, ('removed slug reused', g)
+    rules = ['# Proposed .htaccess for sgcarworkshop.sg (3 Nov 2026). NOT yet pinned or uploaded: the bridge cannot send .htaccess files.',
+             '# Merge with htaccess/.htaccess (keep its RewriteEngine, Inherit and robots lines), then pin and upload through the publisher.',
+             'Options -Indexes', '']
+    rules += ['Redirect 301 /%s /%s' % (o, n) for o, n in sorted(REDIRECTS.items()) if o]
+    rules += ['Redirect 410 /workshops/%s/' % g for g in gone]
+    open(os.path.join(HERE, '..', 'htaccess', 'proposed.htaccess'), 'w').write('\n'.join(rules) + '\n')
+    open(os.path.join(HERE, '..', 'redirects.htaccess'), 'w').write('\n'.join(r for r in rules if r.startswith('Redirect')) + '\n')
+
+
+def hub_indexes():
+    """Real index pages for /areas/, /services/, /workshops/ and /brands/ so no folder shows a directory listing. Navigation only: noindex, not in the sitemap."""
+    depth = 1
+    def shell(path, h1, lead, inner, crumb):
+        cr, crld = crumbs(depth, [(crumb, None)])
+        body = '<div class="w nar">%s<h1 style="margin-top:14px">%s</h1><p class="lede" style="font-size:1rem">%s</p>%s</div>' % (cr, E(h1), E(lead), inner)
+        page(path, fit_title('%s | %s' % (h1, SITE_NAME), h1), cap(lead, 160), body, [dict(crld, **{'@context': 'https://schema.org'})], h1=h1, index=False, why='folder index, navigation only')
+    secs = ''
+    for r in PUB_REGIONS:
+        lis = ''
+        for t, ests in PUB_TOWNS.items():
+            if TOWNS[t]['region'] != r:
+                continue
+            lis += '<li><a href="../areas/%s/">%s</a><ul>%s</ul></li>' % (t, E(TOWNS[t]['name']), ''.join('<li><a href="../areas/%s/">%s</a></li>' % (k, E(ESTATES[k]['name'])) for k in ests))
+        secs += '<h2><a href="../areas/%s/">%s</a></h2>%s' % (r, E(RN[r]), ('<ul class="tick">%s</ul>' % lis) if lis else '')
+    shell('areas/', 'Car workshop areas in Singapore', 'Regions, towns and industrial estates that have car workshops listed on %s.' % SITE_NAME, secs, 'Areas')
+    shell('services/', 'Car services in Singapore', 'The kinds of car work listed on %s.' % SITE_NAME,
+          '<ul class="tick">%s</ul>' % ''.join('<li><a href="../services/%s/">%s</a></li>' % (c['slug'], E(c['name'])) for c in CAT_LIST), 'Services')
+    shell('brands/', 'Car brand guides', 'Plain-word guides for owners of common car brands.',
+          '<ul class="tick">%s</ul>' % ''.join('<li><a href="../%s">%s</a></li>' % (_guides.gpath(g), E(g['h1'])) for g in _guides.GUIDES if g.get('kind') == 'brand'), 'Brands')
+    shell('workshops/', 'All workshops A to Z', 'Every workshop listed on %s, in alphabetical order.' % SITE_NAME,
+          '<ul class="tick">%s</ul>' % ''.join('<li><a href="../workshops/%s/">%s</a> <small>%s</small></li>' % (e['slug'], E(e['name']), E(e['area_label'])) for e in sorted(ENTRIES, key=lambda e: e['name'].lower())), 'Workshops')
+
+
+def folder_fillers():
+    """Any other folder in the built site (assets, images, ...) gets a small noindex index page, so a server never lists its files."""
+    n = 0
+    for d, _dirs, files in os.walk(OUT):
+        if d == OUT or 'index.html' in files:
+            continue
+        rel = os.path.relpath(d, OUT)
+        open(os.path.join(d, 'index.html'), 'w', encoding='utf-8').write(
+            '<!doctype html>\n<html lang="en-SG"><head><meta charset="utf-8"><title>%s</title><meta name="robots" content="noindex"></head>'
+            '<body><p>This folder is not a page. <a href="%s">Go to %s</a>.</p></body></html>\n' % (E(SITE_NAME), '../' * (rel.count(os.sep) + 1), E(SITE_NAME)))
+        n += 1
+    return n
 
 
 def make_icons():

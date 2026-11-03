@@ -4,7 +4,11 @@ if('IntersectionObserver' in window&&els.length){var io=new IntersectionObserver
 else{els.forEach(function(el){el.classList.add('in')})}
 var form=d.getElementById('finder');
 var RM=!!(window.matchMedia&&matchMedia('(prefers-reduced-motion: reduce)').matches);
-if(form){var cards=d.querySelectorAll('#results [data-search]'),em=d.getElementById('empty'),q=d.getElementById('q'),ct=d.getElementById('count');
+/* Home page: only the first workshops are in the HTML; the rest wait in <template id="more-cards"> and are added on Show more, on any search or filter, or when the browser is idle. */
+var cards;function more(){var t=d.getElementById('more-cards');if(!t)return;var g=d.getElementById('results'),w=d.getElementById('more-btn-wrap');g.appendChild(t.content);t.parentNode.removeChild(t);if(w)w.parentNode.removeChild(w);cards=d.querySelectorAll('#results [data-search]');if(window.sgcwRefresh)window.sgcwRefresh()}
+window.sgcwMore=more;var mb=d.getElementById('more-btn');if(mb)mb.addEventListener('click',more);
+if(d.getElementById('more-cards')){(window.requestIdleCallback||function(f){setTimeout(f,2500)})(function(){setTimeout(more,1500)})}
+if(form){cards=d.querySelectorAll('#results [data-search]');var em=d.getElementById('empty'),q=d.getElementById('q'),ct=d.getElementById('count');
 var STOP=' in at near for the a an my and of to with need needs want looking car cars workshop workshops shop singapore sg around area please ',RG={north:'north',east:'east',west:'west',central:'central',ne:'north-east',mobile:'mobile'};
 function parse(v){v=' '+v.toLowerCase().replace(/&/g,' and ').replace(/[^a-z0-9]+/g,' ')+' ';v=v.replace(/ north ?east /g,' ne ').replace(/ ne /g,' ne ');var t=v.trim().split(' '),w=[],r=[];
 t.forEach(function(x){if(!x||STOP.indexOf(' '+x+' ')>-1)return;if(RG[x])r.push(RG[x]);else w.push(x)});return{w:w,r:r}}
@@ -12,7 +16,7 @@ function hit(s,x){return s.indexOf(' '+x)>-1||(x.length>3&&x.slice(-1)==='s'&&s.
 var feat=d.querySelector('section.feat'),wk=d.getElementById('workshops'),moved=false;
 /* While a search or filter is active, the Premium carousel sits below the results; clearing the search puts it back above the list. */
 function place(on){if(!feat||!wk||on===moved)return;moved=on;if(on)wk.parentNode.insertBefore(feat,wk.nextSibling);else wk.parentNode.insertBefore(feat,wk)}
-function f(){var sv=form.querySelector('input[name=svc]:checked'),svc=sv?sv.value:'',rg=[].map.call(form.querySelectorAll('input[name=reg]:checked'),function(i){return i.value}),p={w:[],r:[]},n=0;
+function f(){more();var sv=form.querySelector('input[name=svc]:checked'),svc=sv?sv.value:'',rg=[].map.call(form.querySelectorAll('input[name=reg]:checked'),function(i){return i.value}),p={w:[],r:[]},n=0;
 cards.forEach(function(c){var r=' '+c.getAttribute('data-regions')+' ',s=' '+c.getAttribute('data-search')+' ',
 ok=(!svc||c.getAttribute('data-cat')===svc)&&(!rg.length||rg.some(function(x){return r.indexOf(' '+x+' ')>-1}))&&p.r.every(function(x){return r.indexOf(' '+x+' ')>-1})&&p.w.every(function(x){return hit(s,x)});c.hidden=!ok;if(ok)n++});
 if(ct)ct.innerHTML='<b>'+n+'</b> workshop'+(n==1?'':'s');if(em)em.classList.toggle('show',!n);place(!!(svc||rg.length))}

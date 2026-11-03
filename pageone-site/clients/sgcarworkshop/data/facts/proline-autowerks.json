@@ -1,0 +1,74 @@
+{
+ "slug": "proline-autowerks",
+ "researched_at": "2026-11-03",
+ "researcher": "Claude (Sonnet), Google Places Details only (volume mode)",
+ "facts": [
+  {
+   "field": "rating",
+   "value": "4.9",
+   "source_url": "google_places",
+   "retrieved": "2026-11-03"
+  },
+  {
+   "field": "userRatingCount",
+   "value": "249",
+   "source_url": "google_places",
+   "retrieved": "2026-11-03"
+  },
+  {
+   "field": "websiteUri",
+   "value": "None",
+   "source_url": "google_places",
+   "retrieved": "2026-11-03"
+  },
+  {
+   "field": "paymentOptions",
+   "value": "{'acceptsCreditCards': True, 'acceptsDebitCards': True, 'acceptsNfc': True}",
+   "source_url": "google_places",
+   "retrieved": "2026-11-03"
+  },
+  {
+   "field": "parkingOptions",
+   "value": "None",
+   "source_url": "google_places",
+   "retrieved": "2026-11-03"
+  },
+  {
+   "field": "types",
+   "value": "['car_repair', 'point_of_interest', 'service', 'establishment']",
+   "source_url": "google_places",
+   "retrieved": "2026-11-03"
+  },
+  {
+   "field": "opening_hours",
+   "value": [
+    "Monday: 10:00 AM – 7:00 PM",
+    "Tuesday: 10:00 AM – 7:00 PM",
+    "Wednesday: 10:00 AM – 7:00 PM",
+    "Thursday: 10:00 AM – 7:00 PM",
+    "Friday: 10:00 AM – 7:00 PM",
+    "Saturday: 10:00 AM – 4:00 PM",
+    "Sunday: Closed"
+   ],
+   "source_url": "google_places",
+   "retrieved": "2026-11-03"
+  }
+ ],
+ "conflicts": [],
+ "not_found": [
+  "editorialSummary",
+  "own research (stopped by Edwin 3 Nov 2026)",
+  "real job stories"
+ ],
+ "stories": [],
+ "phone_rule": "Stored Google SG mobile only",
+ "review_service_support": {
+  "Aircon repair": "2 of 5 reviews",
+  "Audi A4 servicing": "1 of 5 reviews",
+  "Oil leak repair": "1 of 5 reviews",
+  "Driveshaft joint repair": "1 of 5 reviews",
+  "Transmission fluid change": "1 of 5 reviews",
+  "Rear brake work": "1 of 5 reviews",
+  "Walk-in repairs without appointment": "1 of 5 reviews"
+ }
+}

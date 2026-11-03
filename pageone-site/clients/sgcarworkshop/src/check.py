@@ -25,7 +25,10 @@ files = [os.path.join(d, f) for d, _, fs in os.walk(root) for f in fs if f.endsw
 for f in sorted(files):
     rel = os.path.relpath(f, root)
     p = P(); src = open(f, encoding='utf-8').read(); p.feed(src)
-    if p.noindex and rel != '404.html': print('NOINDEX in', rel); bad += 1
+    _mf = json.load(open(os.path.join(root, '..', 'build-manifest.json')))
+    _raw = open(f, encoding='utf-8').read()
+    _okni = rel == '404.html' or 'http-equiv="refresh"' in _raw or 'This folder is not a page' in _raw or (rel[:-10] if rel.endswith('index.html') else rel) in _mf['noindex']
+    if p.noindex and not _okni: print('NOINDEX in', rel); bad += 1
     for j in p.ld:
         try: json.loads(j)
         except Exception as e: print('BAD JSON-LD', rel, e); bad += 1
@@ -243,6 +246,7 @@ for dp, _, fs in os.walk(root):
 import areas as _ar
 _ar.annotate(ENTRIES)
 _regions, _est, _pairs = _ar.published(ENTRIES)
+_pairs = {(s, k): v for (s, k), v in _pairs.items() if k != 'general-servicing-repair' and len(v) < len(_est[s])}   # same merge rule as build.py
 def _ld(path):
     return [json.loads(j) for j in re.findall(r'<script type="application/ld\+json">(.*?)</script>', open(os.path.join(root, path, 'index.html'), encoding='utf-8').read(), re.S)]
 _sitemap = open(os.path.join(root, 'sitemap.xml')).read()
@@ -262,11 +266,11 @@ for (k, c), v in _pairs.items():
     if len(v) < 2 or not os.path.isfile(os.path.join(root, 'areas', k, c, 'index.html')): print('L3 page missing or under 2 workshops', k, c); bad += 1
 for dp, _, fs in os.walk(os.path.join(root, 'areas')):
     parts = os.path.relpath(dp, os.path.join(root, 'areas')).split(os.sep)
-    if len(parts) == 2 and 'index.html' in fs and (parts[0], parts[1]) not in _pairs: print('L3 page that should not exist', parts); bad += 1
+    if len(parts) == 2 and 'index.html' in fs and 'http-equiv="refresh"' not in open(os.path.join(dp, 'index.html'), encoding='utf-8').read() and (parts[0], parts[1]) not in _pairs: print('L3 page that should not exist', parts); bad += 1
 for e in ENTRIES:
     t = [x for x in _ld('workshops/%s' % e['slug']) if x.get('@type') == 'BreadcrumbList']
     names = [i['name'] for i in t[0]['itemListElement']] if t else []
-    want = ['Home', _ar.REGION_NAMES[e['region']]] + ([_ar.ESTATES[e['estates'][0]]['name']] if e['estates'] else []) + [e['name']]
+    want = ['Home', _ar.REGION_NAMES[e['region']]] + ([_ar.TOWNS[_ar.ESTATES[e['estates'][0]]['town']]['name'], _ar.ESTATES[e['estates'][0]]['name']] if e['estates'] else []) + [e['name']]
     if names != want: print('BREADCRUMB', e['slug'], names, 'want', want); bad += 1
 for dp, _, fs in os.walk(root):
     for fn in fs:
@@ -425,11 +429,11 @@ _bad0 = bad
 _sm = open(os.path.join(root, 'sitemap.xml')).read(); _ll = open(os.path.join(root, 'llms.txt')).read()
 if len(_gd.GUIDES) != 10: print('expected 10 guides'); bad += 1
 for _g in _gd.GUIDES:
-    _p = os.path.join(root, 'guides', _g['slug'], 'index.html')
+    _p = os.path.join(root, _gd.gpath(_g), 'index.html')
     if not os.path.exists(_p): print('guide page missing', _g['slug']); bad += 1; continue
     _t = open(_p, encoding='utf-8').read()
     _v = re.sub(r'<(script|style).*?</\1>', '', _t, flags=re.S); _v = re.sub(r'<[^>]+>', ' ', _v)
-    if 'guides/%s/' % _g['slug'] not in _sm or 'guides/%s/' % _g['slug'] not in _ll: print('guide not in sitemap/llms.txt', _g['slug']); bad += 1
+    if _gd.gpath(_g) not in _sm or _gd.gpath(_g) not in _ll: print('guide not in sitemap/llms.txt', _g['slug']); bad += 1
     if re.search(r'S\$|\$\s?\d|\bSGD\b|\d\s?dollars', _v): print('guide states a price', _g['slug']); bad += 1
     if re.search(r'\b(best|trusted|recommended|guaranteed|cheapest)\b', _v, re.I): print('guide has endorsement wording', _g['slug']); bad += 1
     for _l in re.findall(r'href="\.\./\.\./workshops/([a-z0-9-]+)/"', _t):
@@ -437,6 +441,25 @@ for _g in _gd.GUIDES:
 if 'guides/' not in _sm: print('guides index not in sitemap'); bad += 1
 if bad == _bad0: print('guides ok: 10 pages, in sitemap and llms.txt, no prices')
 
+# Thin-page and sitemap rules (Edwin 3 Nov 2026)
+_mf = json.load(open(os.path.join(root, '..', 'build-manifest.json')))
+_sm2 = open(os.path.join(root, 'sitemap.xml')).read()
+_locs = set(re.findall(r'<loc>https://[^/]+/(.*?)</loc>', _sm2))
+for _pth in _mf['noindex']:
+    _t = open(os.path.join(root, _pth, 'index.html'), encoding='utf-8').read()
+    if 'content="noindex, follow"' not in _t: print('manifest noindex page lacks the meta tag', _pth); bad += 1
+    if _pth in _locs: print('noindex page is in sitemap.xml', _pth); bad += 1
+for _pth, _n in _mf['free_count'].items():
+    if _n < _mf['min_free'] and _pth not in _mf['noindex']: print('thin page is indexable', _pth, _n); bad += 1
+    if _n >= _mf['min_free'] and _pth in _mf['noindex']: print('page with enough workshops is noindexed', _pth, _n); bad += 1
+for _pth in ('areas/north/', 'areas/north-east/', 'areas/east/', 'areas/west/', 'areas/central/', 'areas/mobile/'):
+    if os.path.exists(os.path.join(root, _pth, 'index.html')) and _pth not in _mf['noindex']: print('region page must be noindex', _pth); bad += 1
+for _pth in _locs:
+    if _pth and not os.path.exists(os.path.join(root, _pth, 'index.html')): print('sitemap URL has no page', _pth); bad += 1
+for _d, _ds, _fs in os.walk(root):
+    if _d != root and 'index.html' not in _fs: print('folder with no index page (directory listing risk)', os.path.relpath(_d, root)); bad += 1
+for _old, _new in _mf['redirects'].items():
+    if not os.path.exists(os.path.join(root, _new, 'index.html')) or (_new in _mf['redirects']): print('redirect is not one hop to a real page', _old, _new); bad += 1
 # Rating rule (Edwin 3 Nov 2026): a rating line needs a checked month-year and a See Google reviews link
 for _f in files:
     _t = open(_f, encoding='utf-8').read()

@@ -97,7 +97,7 @@ GUIDES = [
   urgent='If the temperature gauge enters the red or a warning shows, pull over safely and switch off. Do not open the radiator cap while the engine is hot. Do not keep driving, as it can cause expensive engine damage.',
   faqs=[('Can I top up with water?', 'In an emergency it may get you to a workshop, but the correct coolant mix protects the engine. Ask the workshop to check the level and find the leak.'), ('Is overheating always the radiator?', 'No. The fan, thermostat, water pump or a leak can all cause it, which is why a pressure test and a fan check help.')],
   match=r'radiator|cooling|coolant|fan', kw=['overheat','overheating','overheated','temperature','hot engine','steam','coolant','radiator','temp gauge','engine hot'], cats=['general-servicing-repair']),
- dict(slug='bmw-mercedes-workshops-singapore', kind='brand', short='BMW and Mercedes-Benz',
+ dict(slug='bmw-mercedes-workshops-singapore', brand='bmw-mercedes', kind='brand', short='BMW and Mercedes-Benz',
   title='BMW and Mercedes Servicing Guide | SG Car Workshop', h1='BMW and Mercedes-Benz servicing and repair',
   desc='What owners of BMW and Mercedes-Benz cars can ask an independent workshop, common maintenance topics, and workshops customers mention for these brands.',
   lede='BMW and Mercedes-Benz cars are well served by independent workshops, provided the workshop knows the model and has the right diagnostic equipment. These notes cover what to ask and what tends to need attention.',
@@ -111,7 +111,7 @@ GUIDES = [
   urgent='Do not ignore a red warning on the dashboard, a coolant or oil warning, or a loss of power. Stop safely and get it checked.',
   faqs=[('Is an independent workshop okay for a BMW or Mercedes?', 'Many owners use independent workshops after the warranty ends. Ask what experience the workshop has with your model and what tools they use.'), ('Do I need genuine parts?', 'It is your choice. Ask the workshop what options exist and what they recommend for each job.')],
   match=r'bmw|mercedes|continental', kw=['bmw','mercedes','benz','mercedes-benz','merc','continental','conti','german car','audi','mini cooper'], cats=['general-servicing-repair']),
- dict(slug='toyota-workshops-singapore', kind='brand', short='Toyota',
+ dict(slug='toyota-workshops-singapore', brand='toyota', kind='brand', short='Toyota',
   title='Toyota Servicing and Repair Guide | SG Car Workshop', h1='Toyota servicing and repair',
   desc='What Toyota owners can ask a workshop, maintenance topics for common models including hybrids, and workshops customers mention for Toyota cars.',
   lede='Toyotas are common on Singapore roads, so most workshops see them often. These notes help you ask the right questions, especially if you drive a hybrid.',
@@ -124,7 +124,7 @@ GUIDES = [
   urgent='A red warning light, overheating or a loss of braking performance should be checked before you drive further.',
   faqs=[('Can any workshop service a hybrid Toyota?', 'Basic servicing is similar, but work involving the hybrid system needs the right training and tools. Ask the workshop directly.'), ('How do I know what service my Toyota needs?', 'The owner\'s manual has the schedule. A good workshop will explain what each item is for and what can wait.')],
   match=r'toyota|harrier|vios|camry|corolla|alphard|prius', kw=['toyota','harrier','vios','camry','corolla','alphard','prius','altis','hilux','rav4','sienta'], cats=['general-servicing-repair']),
- dict(slug='honda-workshops-singapore', kind='brand', short='Honda',
+ dict(slug='honda-workshops-singapore', brand='honda', kind='brand', short='Honda',
   title='Honda Servicing and Repair Guide | SG Car Workshop', h1='Honda servicing and repair',
   desc='What Honda owners can ask a workshop, maintenance topics for common models, and workshops customers mention for Honda cars.',
   lede='Honda cars are widely used in Singapore. These notes cover what to ask the workshop and the maintenance topics that matter for many Honda models.',
@@ -139,3 +139,8 @@ GUIDES = [
   faqs=[('Does my Honda need special fluid?', 'Many Honda transmissions are specific about fluid. Check the manual and ask the workshop which fluid they use.'), ('Can an independent workshop service my Honda?', 'Yes, many owners use independent workshops. Ask about their experience with your model.')],
   match=r'honda', kw=['honda','civic','jazz','vezel','hr-v','hrv','accord','cr-v','crv','freed','odyssey'], cats=['general-servicing-repair']),
 ]
+
+
+def gpath(g):
+    """Public path: brand guides live under /brands/<brand>/, problem guides under /guides/<slug>/."""
+    return 'brands/%s/' % g['brand'] if g.get('kind') == 'brand' else 'guides/%s/' % g['slug']

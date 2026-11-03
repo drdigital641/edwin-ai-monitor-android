@@ -1,0 +1,57 @@
+{
+ "schema_version": 1,
+ "slug": "jl-auto-services",
+ "place_id": "ChIJH4XGl_QX2jERknXnzo0bS-o",
+ "place_id_checked_at": "2026-11-02",
+ "name": "JL Auto Services",
+ "name_source_url": "google_profile",
+ "name_checked_at": "2026-11-02",
+ "address": {
+  "block": "",
+  "street": "3006 Ubi Rd 1, #01-346",
+  "unit": "",
+  "building": ""
+ },
+ "postal_code": "408700",
+ "address_source_url": "google_profile",
+ "address_checked_at": "2026-11-02",
+ "categories": [
+  "SERV"
+ ],
+ "services": [
+  "General servicing and repair"
+ ],
+ "services_source_url": "google_profile",
+ "phones": [
+  {
+   "e164": "+6591885495",
+   "kind": "mobile",
+   "whatsapp": true,
+   "source": "google_profile",
+   "checked_at": "2026-11-02"
+  }
+ ],
+ "google_screen": {
+  "passed": true,
+  "reason": "OPERATIONAL, car repair, SG mobile on Google profile",
+  "checked_at": "2026-11-02"
+ },
+ "status": "active",
+ "tier": "basic",
+ "first_seen_at": "2026-11-02",
+ "last_verified_at": "2026-11-02",
+ "collector_version": "agent-v5",
+ "estate": "ubi-road-1",
+ "planning_area": "Geylang",
+ "region": "central",
+ "lat": 1.330449967497852,
+ "lng": 103.893007474871,
+ "geo_source": "onemap",
+ "google_rating": {
+  "rating": 4.6,
+  "count": 10,
+  "checked": "2026-11-02",
+  "source": "Google Places",
+  "source_date": "2026-11-02"
+ }
+}
