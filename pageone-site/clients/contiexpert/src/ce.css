@@ -227,3 +227,4 @@ h2{font-weight:500;font-size:clamp(1.6rem,3.6vw,2.4rem)}h3{font-weight:600}
 .phead .btn-wa,.ctaband .btn-wa,.aside .btn-wa{background:#111316;color:#fff}.phead .btn-wa:hover{color:#fff;background:#000}
 .ctaband .btn-wa{background:#fff;color:#111316}.ctaband .btn-wa:hover{color:#111316}
 .phimg img,.phead img,.cimg img,.jimg img,.splitimg img{border-radius:0!important}.breadcrumb a,.crumbs a{color:var(--muted)}
+.revs .rq blockquote{font-size:1.15rem;font-weight:500}.revs .marq.on .track>li{width:300px}
