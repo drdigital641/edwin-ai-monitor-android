@@ -358,17 +358,26 @@ def _g_rc(e):
     return None, 0
 
 
-def home_class(e):
-    """Homepage list groups (Edwin 3 Nov 2026): 0 Featured (paid), 1 listings with their own photos, 2 everyone else."""
+HOME_N = 4  # cards per group on the homepage (Edwin 3 Nov 2026: a fixed count per group so the page does not scroll forever)
+HOME_GROUPS = [('featured', 'Featured (paid)', 'Paid placements, marked Featured (paid).'),
+               ('verified', 'Verified', "Listings whose details the owner has confirmed."),
+               ('basic', 'Basic listings', "Free listings built from the workshop's public Google Business Profile.")]
+
+
+def home_group(e):
+    """Homepage groups (Edwin 3 Nov 2026): Featured (paid), Verified (owner-confirmed, incl. the founder's own), Basic (free)."""
     if is_paid(e):
-        return 0
-    return 1 if (e.get('card_img') or e.get('photos')) else 2
+        return 'featured'
+    if e['tier'] == 'premium' or e.get('founder_owned'):
+        return 'verified'
+    return 'basic'
 
 
-def home_order():
-    """Homepage 'All workshops': Featured (paid) first, then listings with photos, then the rest (Edwin 3 Nov 2026).
-    Inside each group: Google rating and number of ratings together (as if each workshop had RANK_PRIOR extra ratings at the
-    site-wide average), workshops without a Google rating last, then A to Z."""
+def home_class(e):
+    return [g[0] for g in HOME_GROUPS].index(home_group(e))
+
+
+def _score_fn():
     es = list(ENTRIES)
     rc = {e['slug']: _g_rc(e) for e in es}
     rated = [v for v in rc.values() if v[0] is not None and v[1] > 0]
@@ -376,10 +385,32 @@ def home_order():
     def score(e):
         r, n = rc[e['slug']]
         return None if r is None else (n / (n + RANK_PRIOR)) * r + (RANK_PRIOR / (n + RANK_PRIOR)) * avg
+    return score
+
+
+def home_order():
+    """Build-time (no-JS) homepage order: by group, then Google rating score, no rating last, then A to Z.
+    In the browser each group is reshuffled on every visit unless the visitor picks Top rated or Nearest."""
+    score = _score_fn()
     def key(e):
-        s = score(e)
-        return (home_class(e), 1 if s is None else 0, -(s or 0), e['name'].lower())
-    return sorted(es, key=key)
+        sc = score(e)
+        return (home_class(e), 1 if sc is None else 0, -(sc or 0), e['name'].lower())
+    return sorted(ENTRIES, key=key)
+
+
+def approx_ll(e):
+    """(lat, lon) for distance sorting: the workshop's own Google location, else the average location of Basic listings
+    that share the first 4 (then 3, then 2) digits of its postal code. None for services with no single base."""
+    if e.get('lat') is not None:
+        return float(e['lat']), float(e['lon']), True
+    pcs = [a.get('postal') for a in e.get('addresses', []) if a.get('postal')]
+    if not pcs or len(pcs) > 2:
+        return None
+    for k in (4, 3, 2):
+        near = [o for o in ENTRIES if o.get('lat') is not None and (o.get('postal') or '')[:k] == pcs[0][:k]]
+        if near:
+            return sum(float(o['lat']) for o in near) / len(near), sum(float(o['lon']) for o in near) / len(near), False
+    return None
 
 
 def home():
@@ -387,10 +418,28 @@ def home():
     feats = [e for e in ENTRIES if is_paid(e)]
     slides = ''.join(slide(e) for e in feats)
     ordered = home_order()
-    first = ''.join(card(e, 0, '') for e in ordered[:12])
-    rest = ''.join(card(e, 0, '') for e in ordered[12:])
-    cards = first + ('<template id="more-cards">%s</template>' % rest) if rest else first
-    more_btn = ('<p id="more-btn-wrap" style="text-align:center;margin:18px 0 0;grid-column:1/-1"><button type="button" class="btn big" id="more-btn">Show all %d workshops</button></p>' % len(ordered)) if rest else ''
+    score = _score_fn()
+    def hcard(e):
+        sc = score(e)
+        ll = approx_ll(e)
+        at = 'data-g="%s" data-score="%s"' % (home_group(e), ('%.4f' % sc) if sc is not None else '')
+        if ll:
+            at += ' data-ll="%.5f,%.5f"%s' % (ll[0], ll[1], '' if ll[2] else ' data-llx="1"')
+        return card(e, 0, '').replace('<article ', '<article %s ' % at, 1)
+    groups, rest = [], []
+    for g, label, note in HOME_GROUPS:
+        es = [e for e in ordered if home_group(e) == g]
+        if not es:
+            continue
+        rest += [hcard(e) for e in es[HOME_N:]]
+        more = ('<p class="hg-more"><button type="button" class="btn sm" data-hg-more>Show all %d</button></p>' % len(es)) if len(es) > HOME_N else ''
+        groups.append('<div class="hg" data-hg="%s"><h3 class="hg-h">%s <small>%d</small></h3><p class="fine hg-n">%s</p><div class="grid">%s</div>%s</div>' % (
+            g, E(label), len(es), E(note), ''.join(hcard(e) for e in es[:HOME_N]), more))
+    cards = ''.join(groups) + ('<template id="more-cards">%s</template>' % ''.join(rest) if rest else '')
+    sortbar = ('<div class="hsort" role="group" aria-label="Sort workshops"><span>Sort</span>'
+               '<button type="button" data-sort="mix" aria-pressed="true">Mixed</button><button type="button" data-sort="rating" aria-pressed="false">Top rated</button>'
+               '<button type="button" data-sort="near" aria-pressed="false">Nearest to me</button></div><p class="fine hsort-n" id="hsort-n" hidden></p>')
+    more_btn = '<p class="hg-all"><a class="btn" href="workshops/">See all %d workshops A to Z</a></p>' % len(ordered)
     faqs = [
         ('What is %s?' % SITE_NAME, 'A directory of car workshops and car services in Singapore. Each entry shows what the business does, where it is and how to contact it, using details from the business or its public listing.'),
         ('How do I contact a workshop?', 'Tap WhatsApp or Call on a card. The WhatsApp message is prefilled with the workshop name and says you found them on %s, so you only need to add your car and what you need.' % SITE_NAME),
@@ -422,8 +471,8 @@ def home():
 <section class="feat" aria-roledescription="carousel" aria-label="Featured Premium workshops"><div class="w"><div class="sec-h"><h2>Featured Premium workshops <span class="spons">Featured (paid)</span></h2>
 <div class="car-nav"><button type="button" id="cprev" aria-label="Previous">{ic('chev-l')}</button><button type="button" id="cnext" aria-label="Next">{ic('chev-r')}</button></div></div>
 <div class="marq" id="marq"><ul class="track" id="track" aria-label="Featured workshops">{slides}</ul></div></div></section>
-<section id="workshops" class="lst"><div class="w"><div class="sec-h"><h2>All workshops</h2><a class="sec-link" href="#services">Browse by service</a></div><p class="fine adnote">Order: Featured (paid) clients first, marked Featured (paid); then listings with their own photos; then the rest. Inside each group, by Google rating and number of ratings together (see <a href="about/">How we rank</a>), with workshops that have no Google rating last. Basic listings are built from the workshop's public Google Business Profile and, where available, what its customers mention in Google reviews, and link to its Google Maps listing. They are not endorsed by or arranged with the business.</p><div class="grid" id="results">{cards}{more_btn}</div>
-<div class="empty" id="empty"><b>No workshops match.</b> Try fewer filters, or <a href="list-your-workshop/">list your workshop</a>.</div></div></section>
+<section id="workshops" class="lst"><div class="w"><div class="sec-h"><h2>Workshops</h2><a class="sec-link" href="#services">Browse by service</a></div>{sortbar}<div id="results" class="hgroups" data-n="{HOME_N}">{cards}</div>
+<div class="empty" id="empty"><b>No workshops match.</b> Try fewer filters, or <a href="list-your-workshop/">list your workshop</a>.</div>{more_btn}<p class="fine adnote">Up to {HOME_N} workshops per group, mixed in a new random order on every visit. Top rated uses Google rating and number of ratings together (see <a href="about/">How we rank</a>); Nearest uses straight-line distance from your phone's location, which is not stored. Basic listings are built from the workshop's public Google Business Profile and, where available, what its customers mention in Google reviews, and link to its Google Maps listing. They are not endorsed by or arranged with the business.</p></div></section>
 <section class="alt" id="services"><div class="w"><h2>Browse by service</h2><ul class="tiles">{svc_tiles}</ul></div></section>
 <section id="regions"><div class="w"><h2>Browse by area</h2><ul class="tiles rg">{reg_tiles}</ul><h3 class="sub-h">Estates and industrial areas</h3><ul class="tiles est">{est_tiles}</ul></div></section>
 <section class="alt"><div class="w"><h2>How the listings work</h2>{tiers}</div></section>
@@ -1880,7 +1929,7 @@ def list_page():
 <section><h2>Not listed yet?</h2><p>{E(SITE_NAME)} lists car workshops and car services in Singapore: repair, gearbox, ABS and ECU modules, spray painting and bodywork, batteries, detailing and coating, wraps and PPF, and parts. Message us and we will list yours, free.</p>
 <p><a class="btn big" href="{wa}" target="_blank" rel="noopener" data-cta="whatsapp_list_page">{WA_SVG} WhatsApp Page One</a></p></section>
 <section><h2>How listings are ordered</h2>
-<p>We do not sell rankings. Claiming alone does not change any order (on the homepage, listings with the business's own photos are shown before listings without photos), and paid Featured workshops are shown in their own labelled block, never in a ranking. How we rank, where we do, is explained on the <a href="../about/">About page</a>.</p></section>
+<p>We do not sell rankings. Claiming alone does not change any order (on the homepage, owner-confirmed listings are shown in the Verified group, mixed in a random order like every group), and paid Featured workshops are shown in their own labelled block, never in a ranking. How we rank, where we do, is explained on the <a href="../about/">About page</a>.</p></section>
 <section id="remove" class="claim-sec"><h2>Remove my listing</h2>
 <p>Basic listings are built from the workshop's public Google Business Profile and, where available, what its customers mention in Google reviews, and link to its Google Maps listing. They are not endorsed by or arranged with the business. If you run a workshop and want your listing taken down, send us a message and we will remove it. We check that you run the business first.</p>
 <p class="claim-for" id="remove-for" hidden>Listing: <b></b></p>
@@ -1899,7 +1948,7 @@ def about_page():
 <h1 style="margin-top:14px">About {E(SITE_NAME)}</h1>
 <p class="lede" style="font-size:1rem">{E(SITE_NAME)} is a directory of car workshops and car services in Singapore, run by Page One Singapore, a web and SEO service for small businesses.</p>
 <h2>Where the details come from</h2>
-<p>Every fact on a page comes from the business itself or from public records. If a detail cannot be confirmed, such as a price or opening hours, we leave it out. We do not copy a business's website text, and we do not sell rankings. Where a Google Maps rating is shown, it is Google's, with its date.</p>\n<h2>How we rank</h2>\n<p>Only where an estate has at least 8 workshops with 20 or more Google ratings, we rank those by this score: (v / (v + 50)) x the workshop's rating + (50 / (v + 50)) x the estate's average rating, where v is its number of Google ratings. It pulls workshops with fewer ratings toward the average, so a 4.9 from 1,145 ratings can rank above a 5.0 from 59. Everywhere else we show no rank and list workshops A to Z. Paid Featured workshops are shown in their own block and are never part of a ranking.</p>\n<h2>Homepage order</h2>\n<p>The All workshops list on the homepage is shown in three groups: Featured (paid) clients, marked as such; then listings with the business's own photos; then the rest. Inside each group, workshops are ordered by the same score, using the average across the whole site, and workshops without a Google rating come last. This is a display order, not a ranking or a recommendation.</p>
+<p>Every fact on a page comes from the business itself or from public records. If a detail cannot be confirmed, such as a price or opening hours, we leave it out. We do not copy a business's website text, and we do not sell rankings. Where a Google Maps rating is shown, it is Google's, with its date.</p>\n<h2>How we rank</h2>\n<p>Only where an estate has at least 8 workshops with 20 or more Google ratings, we rank those by this score: (v / (v + 50)) x the workshop's rating + (50 / (v + 50)) x the estate's average rating, where v is its number of Google ratings. It pulls workshops with fewer ratings toward the average, so a 4.9 from 1,145 ratings can rank above a 5.0 from 59. Everywhere else we show no rank and list workshops A to Z. Paid Featured workshops are shown in their own block and are never part of a ranking.</p>\n<h2>Homepage order</h2>\n<p>The homepage shows up to 4 workshops in each of three groups: Featured (paid), marked as such; Verified listings whose details the owner has confirmed; and Basic listings. Inside each group the order is random and changes on every visit. A visitor can instead sort by Top rated (the same score as below, using the average across the whole site, with workshops without a Google rating last) or Nearest (straight-line distance from the visitor's location, which we do not store). This is a display order, not a ranking or a recommendation. The full A to Z list is on the All workshops page.</p>
 <h2>Basic listings</h2>
 <p>Basic listings are built from the workshop's public Google Business Profile and, where available, what its customers mention in Google reviews, and link to its Google Maps listing. They are not endorsed by or arranged with the business. They are free and can be removed on request: use <a href="../list-your-workshop/#remove">Remove my listing</a>. Verified and Premium listings are for businesses that signed up and supplied their own details.</p>
 <h2>Who we list</h2>

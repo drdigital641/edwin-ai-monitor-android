@@ -564,15 +564,23 @@ for _sub in ('google_cache', 'workshops'):
 if HOTLINK: print('NOTE: %d hotlinked images still pending a copy to sgcarworkshop.sg (hosts in settings.json image_hosts_pending)' % len(HOTLINK))
 _css = open(os.path.join(root, 'assets', 'dir.css'), encoding='utf-8').read()
 if re.search(r'\.rv[^{}]*\{[^}]*(opacity:\s*0\b|visibility:\s*hidden)', re.sub(r'/\*.*?\*/', '', _css, flags=re.S)): print('dir.css hides .rv blocks by default (scroll-reveal): blocks must be visible without scrolling'); bad += 1
-# Homepage list order (Edwin 3 Nov 2026): Featured (paid), then with photos, then the rest; each group by Google rating score
+# Homepage groups (Edwin 3 Nov 2026): Featured (paid), Verified, Basic; at most HOME_N cards each in the page, the rest in the template
 import build as _b
-_ho = [e['slug'] for e in _b.home_order()]
 _hs = re.search(r'<section id="workshops".*?</section>', open(os.path.join(root, 'index.html'), encoding='utf-8').read(), re.S).group(0)
-_seen = []
-for _s in re.findall(r'<article class="card[^"]*".*?<h3><a href="(?:\./)?workshops/([a-z0-9-]+)/"', _hs, re.S):
-    if _s not in _seen: _seen.append(_s)
-_cls = [_b.home_class(next(e for e in ENTRIES if e['slug'] == s)) for s in _seen]
-if _seen != _ho or _cls != sorted(_cls): print('homepage list is not in group order', _seen[:8]); bad += 1
-else: print('homepage order ok, groups (paid, with photos, rest):', [_cls.count(k) for k in (0, 1, 2)])
+_vis, _tpl = (_hs.split('<template id="more-cards">') + [''])[:2]
+_pat = r'<article data-g="([a-z]+)"[^>]*class="card[^"]*".*?<h3><a href="(?:\./)?workshops/([a-z0-9-]+)/"'
+_v = re.findall(_pat, _vis, re.S); _t = re.findall(_pat, _tpl, re.S)
+_order = [g[0] for g in _b.HOME_GROUPS]
+_gv = [g for g, _ in _v]
+_err = []
+if _gv != sorted(_gv, key=_order.index): _err.append('groups out of order')
+for _g in _order:
+    if _gv.count(_g) > _b.HOME_N: _err.append('%s shows %d > %d' % (_g, _gv.count(_g), _b.HOME_N))
+for _g, _s in _v + _t:
+    if _b.home_group(next(e for e in ENTRIES if e['slug'] == _s)) != _g: _err.append('%s in wrong group %s' % (_s, _g))
+if sorted(s2 for _, s2 in _v + _t) != sorted(e['slug'] for e in ENTRIES): _err.append('homepage does not hold every listing once')
+if 'data-sort="near"' not in _hs or 'data-sort="rating"' not in _hs: _err.append('sort bar missing')
+if _err: print('homepage groups:', _err[:6]); bad += 1
+else: print('homepage groups ok, shown/total:', [(_g, _gv.count(_g), _gv.count(_g) + [g for g, _ in _t].count(_g)) for _g in _order])
 print('pages checked:', len(files), 'problems:', bad)
 sys.exit(1 if bad else 0)

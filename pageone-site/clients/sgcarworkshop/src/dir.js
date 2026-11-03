@@ -5,7 +5,31 @@ else{els.forEach(function(el){el.classList.add('in')})}
 var form=d.getElementById('finder');
 var RM=!!(window.matchMedia&&matchMedia('(prefers-reduced-motion: reduce)').matches);
 /* Home page: only the first workshops are in the HTML; the rest wait in <template id="more-cards"> and are added on Show more, on any search or filter, or when the browser is idle. */
-var cards;function more(){var t=d.getElementById('more-cards');if(!t)return;var g=d.getElementById('results'),w=d.getElementById('more-btn-wrap');g.appendChild(t.content);t.parentNode.removeChild(t);if(w)w.parentNode.removeChild(w);cards=d.querySelectorAll('#results [data-search]');if(window.sgcwRefresh)window.sgcwRefresh()}
+var cards;function more(){var t=d.getElementById('more-cards');if(!t)return;var g=d.getElementById('results'),w=d.getElementById('more-btn-wrap');
+[].slice.call(t.content.children).forEach(function(c){var h=g.querySelector('[data-hg="'+c.getAttribute('data-g')+'"] .grid');(h||g).appendChild(c)});t.parentNode.removeChild(t);if(w)w.parentNode.removeChild(w);cards=d.querySelectorAll('#results [data-search]');lay();if(window.sgcwRefresh)window.sgcwRefresh()}
+/* Home page groups (Edwin 3 Nov 2026): Featured (paid), Verified, Basic; a fixed number per group (data-n), random order on every visit, or sort by Top rated / Nearest. */
+var HG=[].slice.call(d.querySelectorAll('#results .hg')),HN=+((d.getElementById('results')||{}).getAttribute?d.getElementById('results').getAttribute('data-n'):0)||4,smode='mix',here=null,hopen={};
+function hkm(c){var v=c.getAttribute('data-ll');if(!v||!here)return null;var a=v.split(','),R=Math.PI/180,la1=here[0]*R,la2=+a[0]*R,dl=(+a[1]-here[1])*R,dp=la2-la1;
+var h=Math.sin(dp/2)*Math.sin(dp/2)+Math.cos(la1)*Math.cos(la2)*Math.sin(dl/2)*Math.sin(dl/2);return 12742*Math.asin(Math.sqrt(h))}
+function lay(){HG.forEach(function(g){var gr=g.querySelector('.grid'),cs=[].slice.call(gr.querySelectorAll('.card[data-g]'));
+cs.forEach(function(c){if(c._r==null)c._r=Math.random();c._k=hkm(c);var k=c.querySelector('.rg .km');if(smode==='near'&&c._k!=null){if(!k){k=d.createElement('small');k.className='km';var r=c.querySelector('.rg');if(r)r.appendChild(k)}k.textContent=(c.getAttribute('data-llx')?' about ':' ')+(c._k<0.1?'under 0.1':c._k.toFixed(1))+' km'}else if(k)k.parentNode.removeChild(k)});
+cs.sort(function(a,b){if(smode==='rating'){var x=parseFloat(a.getAttribute('data-score')),y=parseFloat(b.getAttribute('data-score'));x=isNaN(x)?-1:x;y=isNaN(y)?-1:y;if(x!==y)return y-x}
+else if(smode==='near'){var p=a._k==null?1e9:a._k,q=b._k==null?1e9:b._k;if(p!==q)return p-q}return a._r-b._r});
+cs.forEach(function(c){gr.appendChild(c)});var ok=cs.filter(function(c){return c._ok!==false}),key=g.getAttribute('data-hg');
+cs.forEach(function(c){c.hidden=true});ok.forEach(function(c,i){c.hidden=!hopen[key]&&i>=HN});g.hidden=!ok.length;
+var b=g.querySelector('[data-hg-more]');if(b){b.parentNode.hidden=ok.length<=HN||hopen[key];b.textContent='Show all '+ok.length}
+var n=g.querySelector('.hg-h small');if(n)n.textContent=ok.length})}
+HG.forEach(function(g){var b=g.querySelector('[data-hg-more]');if(b)b.addEventListener('click',function(){more();hopen[g.getAttribute('data-hg')]=1;lay()})});
+var SB=d.querySelector('.hsort'),SN=d.getElementById('hsort-n');
+function setSort(m,msg){smode=m;[].forEach.call(SB.querySelectorAll('[data-sort]'),function(x){x.setAttribute('aria-pressed',x.getAttribute('data-sort')===m?'true':'false')});if(SN){SN.textContent=msg||'';SN.hidden=!msg}more();lay()}
+if(SB)SB.addEventListener('click',function(e){var b=e.target.closest('[data-sort]');if(!b)return;var m=b.getAttribute('data-sort');
+if(m!=='near'){setSort(m,m==='rating'?'Top rated: Google rating and number of ratings together. Workshops without a Google rating come last.':'');return}
+if(here){setSort('near','Nearest first, straight-line distance. Your location stays on your phone.');return}
+if(!navigator.geolocation){setSort('mix','Location is not available on this browser, so the order is mixed.');return}
+if(SN){SN.textContent='Finding your location...';SN.hidden=false}
+navigator.geolocation.getCurrentPosition(function(p){here=[p.coords.latitude,p.coords.longitude];setSort('near','Nearest first, straight-line distance. Your location stays on your phone.')},
+function(){setSort('mix','We could not get your location, so the order is mixed. Allow location for this site to sort by distance.')},{timeout:10000,maximumAge:600000})});
+lay();
 window.sgcwMore=more;var mb=d.getElementById('more-btn');if(mb)mb.addEventListener('click',more);
 if(d.getElementById('more-cards')){(window.requestIdleCallback||function(f){setTimeout(f,2500)})(function(){setTimeout(more,1500)})}
 if(form){cards=d.querySelectorAll('#results [data-search]');var em=d.getElementById('empty'),q=d.getElementById('q'),ct=d.getElementById('count');
@@ -18,7 +42,7 @@ var feat=d.querySelector('section.feat'),wk=d.getElementById('workshops'),moved=
 function place(on){if(!feat||!wk||on===moved)return;moved=on;if(on)wk.parentNode.insertBefore(feat,wk.nextSibling);else wk.parentNode.insertBefore(feat,wk)}
 function f(){more();var sv=form.querySelector('input[name=svc]:checked'),svc=sv?sv.value:'',rg=[].map.call(form.querySelectorAll('input[name=reg]:checked'),function(i){return i.value}),p={w:[],r:[]},n=0;
 cards.forEach(function(c){var r=' '+c.getAttribute('data-regions')+' ',s=' '+c.getAttribute('data-search')+' ',
-ok=(!svc||c.getAttribute('data-cat')===svc)&&(!rg.length||rg.some(function(x){return r.indexOf(' '+x+' ')>-1}))&&p.r.every(function(x){return r.indexOf(' '+x+' ')>-1})&&p.w.every(function(x){return hit(s,x)});c.hidden=!ok;if(ok)n++});
+ok=(!svc||c.getAttribute('data-cat')===svc)&&(!rg.length||rg.some(function(x){return r.indexOf(' '+x+' ')>-1}))&&p.r.every(function(x){return r.indexOf(' '+x+' ')>-1})&&p.w.every(function(x){return hit(s,x)});c.hidden=!ok;c._ok=ok;if(ok)n++});lay();
 if(ct)ct.innerHTML='<b>'+n+'</b> workshop'+(n==1?'':'s');if(em)em.classList.toggle('show',!n);place(!!(svc||rg.length))}
 form.addEventListener('change',f);form.addEventListener('submit',function(e){e.preventDefault();f()});
 f();

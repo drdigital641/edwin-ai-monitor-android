@@ -354,3 +354,16 @@ ul.chips{list-style:none;display:flex;flex-wrap:wrap;gap:8px;padding:0;margin:14
 }
 .claim-rm{margin:8px 0 0;font-size:.75rem}.claim-rm a{color:var(--muted)}
 .claimbtn{font-weight:500;font-size:.8rem;padding:7px 10px;text-decoration:underline}
+/* Homepage groups + sort (Edwin 3 Nov 2026) */
+.hsort{display:flex;flex-wrap:wrap;align-items:center;gap:6px;margin:0 0 6px}
+.hsort>span{font-size:.8rem;font-weight:600;color:var(--muted);margin-right:2px}
+.hsort button{font:inherit;font-size:.82rem;font-weight:500;padding:6px 12px;border-radius:999px;border:1px solid var(--line);background:#fff;color:var(--ink);cursor:pointer}
+.hsort button[aria-pressed=true]{background:var(--brand);border-color:var(--brand);color:#fff}
+.hsort-n{margin:0 0 4px}
+.hg{margin:18px 0 0}.hg[hidden]{display:none}
+.hg-h{display:flex;align-items:center;gap:8px;margin:0 0 2px;font-size:1.05rem}
+.hg-h small{font-size:.72rem;font-weight:600;color:var(--muted);background:#fff;border:1px solid var(--line);border-radius:999px;padding:1px 8px}
+.hg-n{margin:0 0 8px}
+.hg-more{text-align:center;margin:10px 0 0}.hg-more[hidden]{display:none}
+.hg-all{text-align:center;margin:22px 0 4px}
+.rg .km{font-weight:600;color:var(--brand);margin-left:4px;white-space:nowrap}
