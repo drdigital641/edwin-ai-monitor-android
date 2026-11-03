@@ -350,7 +350,7 @@ def home():
         {'q': 'Can I bring my own parts?', 'a': 'Yes. Send us the part details first and we fit it for labour only.'},
     ]
     body = f'''<section class="lux-hero"><div class="lux-img">{img('real-bay', 'Mercedes-Benz and BMW in the Volt Autocare bays, with an aircon service machine', eager=True, sizes='(max-width:820px) 100vw, 50vw')}
-<figure class="pip"><video class="pipv" src="/assets/video/find-us.mp4" poster="/assets/photos/poster-find-us.webp" muted loop playsinline autoplay preload="metadata" aria-label="Video: walking from the Shell station to the Volt Autocare bays"></video>
+<figure class="pip"><video class="pipv" src="https://cdn.jsdelivr.net/gh/drdigital641/edwin-ai-monitor-android@2fa39f7459c1cb68b17fb47aeaed9c66367aad38/pageone-site/clients/contiexpert/src/real/video/find-us.mp4" poster="/assets/photos/poster-find-us.webp" muted loop playsinline autoplay preload="metadata" aria-label="Video: walking from the Shell station to the Volt Autocare bays"></video>
 <button class="vsnd" type="button">&#9654; Sound</button><figcaption>Find us &middot; 0:31</figcaption></figure></div>
 <div class="wrap lux-copy"><span class="eyebrow">ContiExpert by Volt Autocare &middot; Newton</span>
 <h1>Continental car specialists<span>at Newton Circus</span></h1>
@@ -379,7 +379,7 @@ def home():
 <section class="sec5"><div class="wrap split rev"><div data-rv><span class="eyebrow">Starting prices</span><h2>Popular jobs</h2>
 <div class="prices">{prices}</div><p class="note">Confirm for your model on WhatsApp.</p></div>
 <div data-rv><span class="eyebrow">Hybrid &amp; EV</span><h2>Buying a used hybrid or EV?</h2><p>We check the battery&rsquo;s health with the Autel MS909EV before you pay, and clean hybrid battery fans.</p>
-<figure class="vcard"><video src="/assets/video/ev-ppi.mp4" poster="/assets/photos/poster-ev-ppi.webp" controls playsinline preload="none" aria-label="Video: Volt Autocare EV and hybrid pre-purchase inspection"></video><figcaption>Our EV/hybrid PPI &middot; 1 min</figcaption></figure>
+<figure class="vcard"><video src="https://cdn.jsdelivr.net/gh/drdigital641/edwin-ai-monitor-android@2fa39f7459c1cb68b17fb47aeaed9c66367aad38/pageone-site/clients/contiexpert/src/real/video/ev-ppi.mp4" poster="/assets/photos/poster-ev-ppi.webp" controls playsinline preload="none" aria-label="Video: Volt Autocare EV and hybrid pre-purchase inspection"></video><figcaption>Our EV/hybrid PPI &middot; 1 min</figcaption></figure>
 <p><a class="lnk" href="/services/hybrid-ev-servicing/">Hybrid and EV care &rarr;</a></p></div></div></section>
 
 <section class="sec5 grey"><div class="wrap split"><div data-rv><span class="eyebrow">Visit us</span><h2>Inside Shell, Newton Circus</h2>

@@ -31,9 +31,8 @@ dims['real-aircon'] = save(RB('bay'), 'real-aircon', 720, (0.42, 0.08, 1, 0.92))
 dims['real-bmw'] = save(RB('bay'), 'real-bmw', 720, (0.36, 0.10, 0.96, 0.72))
 # their own videos (Edwin uploaded 3 Nov 2026): copy as-is, posters to webp
 import shutil
-VD = os.path.join(sys.argv[2], 'video'); os.makedirs(VD, exist_ok=True)
+# videos are served from jsDelivr (Bluehost bridge cannot take large binaries)
 for v in ['find-us', 'ev-ppi']:
-    shutil.copy(os.path.join(RL, 'video', v + '.mp4'), os.path.join(VD, v + '.mp4'))
     dims['poster-' + v] = save(Image.open(os.path.join(RL, 'video', v + '.jpg')), 'poster-' + v, 360)
 json.dump(dims, open(os.path.join(OUT, 'dims.json'), 'w'))
 print(len(dims), 'photos', sum(os.path.getsize(os.path.join(OUT, f)) for f in os.listdir(OUT)) // 1024, 'KB')
