@@ -1,5 +1,5 @@
 {
- "slug": "mincent-car-auto",
+ "slug": "my-car-auto-workshop",
  "researched_at": "2026-11-03",
  "researcher": "Claude, Google Places Details only (public web search used only to find the candidate)",
  "facts": [
@@ -68,7 +68,7 @@
    "field": "name",
    "google": "My Car Auto Workshop Singapore | Carworkshop.com.sg",
    "other": "Mincent Car Auto (reviews, thebestsingapore.com)",
-   "resolution": "trading name used, keyword title dropped"
+   "resolution": "Google name used, website tag dropped (Edwin 4 Nov 2026)"
   }
  ],
  "not_found": [

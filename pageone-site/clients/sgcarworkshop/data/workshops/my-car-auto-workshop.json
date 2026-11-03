@@ -1,9 +1,9 @@
 {
  "schema_version": 1,
- "slug": "mincent-car-auto",
+ "slug": "my-car-auto-workshop",
  "place_id": "ChIJZRGKivYX2jERu4SeF-Z6-W0",
  "place_id_checked_at": "2026-11-03",
- "name": "Mincent Car Auto",
+ "name": "My Car Auto Workshop",
  "name_source_url": "google_profile",
  "name_checked_at": "2026-11-03",
  "address": {
@@ -41,7 +41,7 @@
  "first_seen_at": "2026-11-03",
  "last_verified_at": "2026-11-03",
  "collector_version": "agent-v5",
- "name_note": "Google Maps lists it as \"My Car Auto Workshop Singapore | Carworkshop.com.sg\" at this address; the customers in its Google reviews call it Mincent Car Auto/Mincent Car Workshop, so the trading name is used and the keyword title dropped.",
+ "name_note": "Google Maps name \"My Car Auto Workshop Singapore | Carworkshop.com.sg\" with the website tag dropped (Edwin 4 Nov 2026: Google Business Profile is the source of truth).",
  "lat": 1.357782753172708,
  "lng": 103.8383118409847,
  "geo_source": "onemap",

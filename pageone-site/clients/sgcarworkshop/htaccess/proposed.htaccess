@@ -28,6 +28,7 @@ RedirectMatch 301 ^/workshops/j\-s\-garage\-pte\-ltd/?$ /workshops/j-s-garage/
 RedirectMatch 301 ^/workshops/jl\-auto\-services\-pte\-ltd/?$ /workshops/jl-auto-services/
 RedirectMatch 301 ^/workshops/m6\-garage\-pte\-ltd/?$ /workshops/m6-garage/
 RedirectMatch 301 ^/workshops/major\-autolution\-pte\-ltd/?$ /workshops/major-autolution/
+RedirectMatch 301 ^/workshops/mincent\-car\-auto/?$ /workshops/my-car-auto-workshop/
 RedirectMatch 301 ^/workshops/proline\-autowerks\-pte\-ltd/?$ /workshops/proline-autowerks/
 RedirectMatch 301 ^/workshops/sg\-zoom\-garage\-pte\-ltd/?$ /workshops/sg-zoom-garage/
 RedirectMatch 301 ^/workshops/tts\-performance\-auto\-pte\-ltd/?$ /workshops/tts-performance-auto/
