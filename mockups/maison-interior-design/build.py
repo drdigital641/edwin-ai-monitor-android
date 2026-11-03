@@ -74,6 +74,29 @@ P = [
            "3D-Visual-Blk-296-Tampines-St-22-6-1-1024x683.jpg","3D-Visual-Blk-296-Tampines-St-22-1-1-1024x683.jpg"],
       lede="Six 3D visuals for an HDB home at Tampines Street 22."),
 ]
+B = BASE + "img/bedok/"   # Bedok Reservoir photos and home-tour video sent by the client
+BDIM = {'bedroom.jpg': (1600, 1066), 'bath-vanity.jpg': (1067, 1600), 'bath-niche.jpg': (1066, 1600), 'wardrobe.jpg': (1067, 1600), 'wc-niche.jpg': (1600, 899), 'garden-corner.jpg': (899, 1600), 'stone-niche.jpg': (1066, 1600), 'living-view.jpg': (1600, 899), 'flowers.jpg': (1067, 1600), 'living-doorway.jpg': (1600, 1067), 'tv-wall.jpg': (1600, 1066), 'tv-wall-angle.jpg': (1600, 1067), 'kitchen-doorway.jpg': (1066, 1600), 'entrance.jpg': (1600, 1067), 'living-bar.jpg': (1600, 1066), 'bath-cabinet.jpg': (1066, 1600), 'mirror-art.jpg': (1066, 1600), 'art-niche.jpg': (1066, 1600), 'kitchen-run.jpg': (1067, 1600), 'kitchen-sink.jpg': (1067, 1600), 'kitchen-window.jpg': (1600, 899), 'kitchen-wide.jpg': (1600, 1067), 'sofa-stone.jpg': (1600, 1067), 'dining-living.jpg': (1600, 1067), 'stone-wall.jpg': (1600, 1067), 'dining-window.jpg': (1600, 899)}
+LDIM.update(BDIM)
+BEDOK = dict(slug="bedok-reservoir-road", name="Bedok Reservoir", place="Blk 715", kind="Residential", type="HDB home",
+      status="Completed", hero=B+"dining-living.jpg", heroL=B+"dining-living.jpg", video=B+"home-tour.mp4", poster=B+"home-tour-poster.jpg",
+      gal=[B+"tv-wall-angle.jpg", B+"living-view.jpg", B+"bedroom.jpg", B+"kitchen-wide.jpg"],
+      lede="A whole-home design and build at Bedok Reservoir Road: one calm palette of stone, oak and charcoal, lit so the textures do the talking.",
+      story=[("A rock wall to dine by","The dining area is anchored by a full-height rock-textured feature wall, washed from above by a hidden light line. A veined stone island and table sit in front, softened by tan leather chairs."),
+             ("Oak, stone and soft light","Oak-tone panelling wraps the living room and hides the doors. The TV sits on a stone-look panel framed by a warm glow, over a floating console, with herringbone flooring running through the home."),
+             ("Light where you need it","Strip lights sit under every wall cabinet and inside each niche, so the kitchen, wardrobe and bathrooms read as quiet, evenly lit spaces rather than bright boxes.")],
+      rooms=[("Arrival", "A lit oak niche greets you at the door, and a stone-backed console holds the first arrangement of the home.",
+               ["entrance.jpg", "stone-niche.jpg", "flowers.jpg"]),
+             ("Living", "Oak panelling, a framed stone-look TV wall and a planted corner by the windows, with the green view kept open.",
+               ["living-doorway.jpg", "tv-wall.jpg", "living-view.jpg", "living-bar.jpg", "garden-corner.jpg"]),
+             ("Dining", "A rock-textured wall, a veined stone island and a long table that links kitchen and living.",
+               ["dining-living.jpg", "dining-window.jpg", "sofa-stone.jpg"]),
+             ("Kitchen", "Charcoal matt base cabinets, walnut-tone uppers and a stone-look backsplash lit along its full length.",
+               ["kitchen-wide.jpg", "kitchen-run.jpg", "kitchen-sink.jpg", "kitchen-window.jpg", "kitchen-doorway.jpg"]),
+             ("Bedroom and wardrobe", "An oak headboard wall that doubles as a divider, a dressing area with tinted glass doors and lit shelves, and an art niche lit like a small gallery.",
+               ["bedroom.jpg", "wardrobe.jpg", "art-niche.jpg"]),
+             ("Bathrooms", "Slate-look tiles floor to ceiling, recessed niches with their own light, and art placed to be caught in the mirror.",
+               ["wc-niche.jpg", "bath-vanity.jpg", "bath-niche.jpg", "bath-cabinet.jpg", "mirror-art.jpg"])])
+P.insert(1, BEDOK)
 BYSLUG = {p["slug"]: p for p in P}
 
 STEPS = [
@@ -121,7 +144,7 @@ def dims(f):
     return (1024, 683)
 
 LOGO = ('<a class="brand" href="{b}" aria-label="Maison Interior Design, home">'
-        '<span class="bm">MAISON</span><span class="br" aria-hidden="true"></span><span class="bs">Interior Design</span></a>').format(b=BASE)
+        '<span class="bm">MAISON</span><span class="bs">Interior Design</span></a>').format(b=BASE)
 
 NAV = [("portfolio/", "Portfolio"), ("services/", "Services"), ("landed-homes/", "Landed Homes"), ("about/", "About"), ("contact/", "Contact")]
 
@@ -249,7 +272,7 @@ def landed():
 
 # ---------------------------------------------------------------- home
 def home():
-    slides = [("52-commonwealth-3D-Master-Bedroom-View-1-Final.jpg", "Effortless luxury", "Commonwealth Road, 3D design", "commonwealth-road"),
+    slides = [(B+"dining-living.jpg", "Stone and oak", "Bedok Reservoir, completed home", "bedok-reservoir-road"),
               ("Jimmy-Monkey-Completed-7.jpg", "Effortless style", "Jimmy Monkey, One-North", "jimmy-monkey-one-north"),
               ("62-Havelock-Road-Living-Dining-1-small-scaled.jpg", "Space consciousness", "River Place, Havelock Road", "62-havelock-road-river-place")]
     sl = "".join(f'<div class="slide{" on" if i==0 else ""}" data-cap="{e(c)}" data-href="{BASE}portfolio/{s}/">{img(f, c, "kb", 1600, 1067, lazy=i>0)}</div>' for i, (f, t, c, s) in enumerate(slides))
@@ -285,6 +308,13 @@ def home():
 <p class="lead rv">Maison Interior Design was formed in 2018 to make a reality of the homes, commercial spaces and offices our clients picture. We seek out exclusive materials and textures, and we stay hands-on, on site, until the last detail is right.</p>
 <ul class="facts rv"><li><b>2018</b><span>Founded</span></li><li><b>3D</b><span>Every room drawn before work starts</span></li><li><b>2 yrs</b><span>Workmanship warranty</span></li><li><b>HDB</b><span>Renovation permit handled for you</span></li></ul>
 </div></section>
+
+<section class="sec bedok"><div class="wrap bk-in">
+<a class="bk-main rv" href="{BASE}portfolio/bedok-reservoir-road/">{img(B+"stone-wall.jpg", "Rock-textured feature wall and veined stone dining table, Bedok Reservoir home", w=1600, h=1067)}</a>
+<div class="bk-t"><p class="eyebrow rv">Just completed · Bedok Reservoir</p><h2 class="display rv">Stone, oak and <em>quiet light</em></h2>
+<p class="rv">A whole home built around one palette: a rock-textured dining wall, oak panelling, charcoal cabinetry and light tucked into every niche.</p>
+<div class="bk-d rv"><a href="{BASE}portfolio/bedok-reservoir-road/#kitchen">{img(B+"kitchen-sink.jpg", "Lit stone-look backsplash and black sink", w=1067, h=1600)}<span>Kitchen</span></a><a href="{BASE}portfolio/bedok-reservoir-road/#bathrooms">{img(B+"bath-vanity.jpg", "Slate-look bathroom with lit niche", w=1067, h=1600)}<span>Bath</span></a><a href="{BASE}portfolio/bedok-reservoir-road/#bedroom">{img(B+"wardrobe.jpg", "Dressing area with tinted glass doors", w=1067, h=1600)}<span>Wardrobe</span></a></div>
+<div class="bk-a rv"><a class="btn dark-b" href="{BASE}portfolio/bedok-reservoir-road/">See the home</a><a class="link" href="{BASE}portfolio/bedok-reservoir-road/#tour">Watch the home tour</a></div></div></div></section>
 
 <section class="sec works"><div class="wrap"><div class="sec-h"><div><p class="eyebrow rv">Selected works</p><h2 class="display rv">Spaces we have <em>shaped</em></h2></div>
 <a class="link rv" href="{BASE}portfolio/">View all projects</a></div>
@@ -340,10 +370,29 @@ def project(i, p):
     story = ""
     if p.get("story"):
         story = '<div class="pstory">' + "".join(f'<div class="ps rv"><span class="sn">0{k+1}</span><h2>{e(t)}</h2><p>{e(x)}</p></div>' for k, (t, x) in enumerate(p["story"])) + "</div>"
+    rooms_html = ""
+    if p.get("rooms"):
+        n = 1
+        parts = []
+        for k, (t, x, fs) in enumerate(p["rooms"]):
+            figs = []
+            for j, f in enumerate(fs):
+                w, h = dims(f)
+                figs.append(f'<a class="g rv{" wide" if j == 0 and w > h else ""}{" tall" if h > w else ""}" href="{B+f}" data-lb>{img(B+f, p["name"] + " " + t.lower() + ", photo " + str(n), w=w, h=h)}</a>')
+                n += 1
+            parts.append(f'<section class="room" id="{t.split()[0].lower()}"><div class="room-h rv"><span class="sn">{k+1:02d}</span><h2 class="display">{e(t)}</h2><p>{e(x)}</p></div><div class="rgal n{len(fs)}">{"".join(figs)}</div></section>')
+        idx = "".join(f'<a href="#{t.split()[0].lower()}">{e(t)}</a>' for t, x, fs in p["rooms"])
+        rooms_html = f'<section class="sec tight rooms"><div class="wrap"><nav class="room-idx rv" aria-label="Rooms">{idx}</nav>{"".join(parts)}</div></section>'
+    video_html = ""
+    if p.get("video"):
+        video_html = f'''<section class="sec tour dark" id="tour"><div class="wrap tour-in"><div class="tour-v rv"><video controls preload="none" playsinline poster="{p["poster"]}" width="480" height="848"><source src="{p["video"]}" type="video/mp4"></video></div>
+<div class="tour-t"><p class="eyebrow rv">Home tour</p><h2 class="display rv">Walk through it <em>with the designer</em></h2><p class="rv">Our designer takes you room by room through the finished home, from the entrance to the bedroom, and explains what changed and why.</p>
+<a class="btn light rv" href="{wa("Hi Maison, I watched the Bedok Reservoir home tour and would like to discuss my home.")}" data-cta="whatsapp">Talk to us about your home</a></div></div></section>'''
     mats = f'<div class="pmeta-row"><dt>Materials</dt><dd>{"<br>".join(e(m) for m in p["materials"])}</dd></div>' if p.get("materials") else ""
     title = f'{p["name"]} {p["place"]}'
     schema = {"@context": "https://schema.org", "@graph": [ORG, crumbs([("Home", ""), ("Portfolio", "portfolio/"), (title, "portfolio/" + p["slug"] + "/")]),
-              {"@type": "CreativeWork", "name": title, "about": p["type"], "creator": {"@id": DOMAIN + "/#business"}, "image": [absu(p["heroL"])] + [absu(f) for f in p["gal"][:4]]}]}
+              {"@type": "CreativeWork", "name": title, "about": p["type"], "creator": {"@id": DOMAIN + "/#business"}, "image": [absu(p["heroL"])] + [absu(f) for f in p["gal"][:4]]}]
+              + ([{"@type": "VideoObject", "name": title + " home tour", "description": "Room-by-room tour of the finished home by Maison Interior Design.", "thumbnailUrl": absu(p["poster"]), "contentUrl": absu(p["video"]), "uploadDate": "2026-11-03", "duration": "PT1M22S"}] if p.get("video") else [])}
     s = head(f'{title} | {p["type"]} Interior Design | Maison Interior Design',
              f'{p["lede"]} {p["kind"]} interior project by Maison Interior Design, Singapore.'[:158],
              f'portfolio/{p["slug"]}/', p["heroL"], schema)
@@ -355,7 +404,7 @@ def project(i, p):
 <p class="lead rv">{e(p["lede"])}</p>
 <dl class="pmeta rv"><div class="pmeta-row"><dt>Type</dt><dd>{e(p["type"])}</dd></div><div class="pmeta-row"><dt>Scope</dt><dd>{"Design &amp; build" if p["status"]=="Completed" else "3D design &amp; visualisation"}</dd></div>
 <div class="pmeta-row"><dt>Status</dt><dd>{e(p["status"])}</dd></div>{mats}</dl></div>{('<div class="wrap">'+story+'</div>') if story else ''}</section>
-<section class="sec tight"><div class="wrap"><div class="gal">{gal}</div></div></section>
+{rooms_html or f'<section class="sec tight"><div class="wrap"><div class="gal">{gal}</div></div></section>'}{video_html}
 <section class="next"><a href="{BASE}portfolio/{nxt["slug"]}/" class="next-a">{img(nxt["hero"], nxt["name"], w=dims(nxt["hero"])[0], h=dims(nxt["hero"])[1])}<span class="next-t"><span class="eyebrow light">Next project</span><b class="display">{e(nxt["name"])} <em>{e(nxt["place"])}</em></b></span></a></section>
 {cta_block()}
 <div class="lb" id="lb" hidden><button class="lb-x" aria-label="Close">×</button><button class="lb-p" aria-label="Previous">←</button><img alt=""><button class="lb-n" aria-label="Next">→</button></div>"""
