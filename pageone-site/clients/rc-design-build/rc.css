@@ -402,3 +402,15 @@ figure.real figcaption b{display:block;color:var(--char);font:600 1.05rem/1.3 va
 .mockup{margin:18px 0 0;max-width:760px;display:flex;flex-wrap:wrap;gap:12px 18px;align-items:center;padding:14px 16px;border:1px solid rgba(0,0,0,.12);border-radius:12px;background:rgba(255,255,255,.6)}.mockup p{margin:0;flex:1 1 280px;font-size:.95rem;line-height:1.55}.mockup .btn{flex:0 0 auto}
 .mockup-dark{border-color:rgba(255,255,255,.22);background:rgba(255,255,255,.06)}.mockup-dark p{color:#e8e1d2}.mockup-dark b{color:#fff}
 .mockup-panel{margin-top:16px;background:transparent}
+
+/* phones and tablets (iPhone shake fix, 3 Nov 2026): no live blur, no endless hero zoom, no edge mask on the moving strip.
+   These forced iOS Safari to repaint large layers every frame, so page scrolling stuttered and looked like shaking. */
+@media (hover:none),(max-width:760px){
+ .top{background:rgba(251,248,242,.985);-webkit-backdrop-filter:none;backdrop-filter:none}
+ .btn-onimg,.lux-cap{-webkit-backdrop-filter:none;backdrop-filter:none}
+ .btn-onimg{background:rgba(20,22,20,.35)}
+ .lux-cap{background:rgba(20,22,20,.6)}
+ .lux-bg img{animation:none;transform:scale(1.04)}
+ .lux-grad::after{animation:none}
+ .marq{-webkit-mask-image:none;mask-image:none}
+}

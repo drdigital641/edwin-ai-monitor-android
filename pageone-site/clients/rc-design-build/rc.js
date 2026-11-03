@@ -19,7 +19,7 @@
     function release(){held=false;resumeAt=performance.now()+1000;pos=mq.scrollLeft}
     function step(t){
       var dt=last?Math.min(t-last,50):16;last=t;
-      if(!held&&!reduce&&t>=resumeAt&&!d.hidden){
+      if(!held&&!reduce&&t>=resumeAt&&!d.hidden&&onScreen){
         pos+=speed*dt/16;
         if(pos>=half())pos-=half();
         mq.scrollLeft=pos;
@@ -43,6 +43,9 @@
     window.addEventListener('mouseup',function(){if(!drag)return;drag=null;mq.classList.remove('dragging');pos=mq.scrollLeft});
     mq.addEventListener('click',function(e){if(moved){e.preventDefault();e.stopPropagation();moved=false}},true);
     mq.addEventListener('focusin',hold);mq.addEventListener('focusout',release);
+    /* only move the strip while it is on screen (it still slides while the page scrolls) */
+    var onScreen=true;
+    if('IntersectionObserver' in window){new IntersectionObserver(function(es){var v=es[0].isIntersecting;if(v&&!onScreen)pos=mq.scrollLeft;onScreen=v}).observe(mq)}
     requestAnimationFrame(step);
     /* tap an archive picture: show it in the hero */
     var hero=d.querySelector('.lux'),himg=hero&&hero.querySelector('.lux-bg img'),hday=hero&&hero.querySelector('.lux-day'),back=hero&&hero.querySelector('.lux-back');
