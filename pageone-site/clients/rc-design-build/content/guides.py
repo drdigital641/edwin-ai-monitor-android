@@ -333,4 +333,37 @@ G10 = {
   'wa_topic': 'my shopfront sign and lighting',
 }
 
-PAGES = [G1, G2, G3, G4, G5, G6, G7, G8, G9, G10]
+G11 = {
+  'path': '/guides/shop-window-display-ideas/',
+  'title': 'Shop Window Display Ideas for Small Shops | R&C',
+  'desc': 'How to plan a shop window display in Singapore: what to show, layout and height, lighting and glare, fixtures, and how often to change it.',
+  'h1': 'Shop Window Display Ideas',
+  'kicker': 'Shopfront guide',
+  'answer': 'A good shop window display shows one clear idea to people walking past, at the height and distance they actually see it from. Pick a single message, group a few products around one focal point, light them against glare, and keep the fixtures easy to change.',
+  'card': 'Plan a shop window display: one clear message, focal point, height, lighting and glare, fixtures and when to change it.',
+  'image': 'hero-boutique',
+  'image_alt': 'Boutique interior with oak shelving and a display table beside a glass shopfront (AI design concept)',
+  'og': 'share-shop-window-display-ideas.jpg',
+  'date': '2026-11-04',
+  'owner': '/spaces/retail-shops-boutiques/',
+  'reading': '5 min read',
+  'sections': [
+    {'h2': 'What makes a shop window display work?', 'html': '<p>A window display works when a passer-by understands it in a few seconds and wants to look closer. It does one job, tells one story and does not try to show everything you sell.</p><ul><li>Choose one message, such as a new arrival, a season or a single product type.</li><li>Give the eye one focal point and let the rest support it.</li><li>Leave empty space around the products so each one can be seen.</li></ul>'},
+    {'h2': 'How do I choose what goes in the window?', 'html': '<p>Show the products that best explain what your shop is, not the cheapest or the most crowded. People should be able to guess your category from across the walkway.</p><ul><li>Pick a small group of items that belong together by use, colour or occasion.</li><li>Include something that shows scale, such as a styled table or a mannequin, so the display feels real.</li><li>Keep stock you can replace easily, so a sold item does not leave a gap.</li></ul>'},
+    {'h2': 'How should I arrange the display?', 'html': '<p>Arrange products in a simple shape, such as a triangle or a staggered line, with the eye-catching item slightly off-centre. Vary the heights so the display has depth rather than one flat row.</p><ul><li>Place key items between knee and eye level, where people naturally look.</li><li>Use risers, steps or a low table to create two or three levels.</li><li>Stand outside, across the walkway, and check the view before you finish.</li></ul>'},
+    {'h2': 'How do I light a window display and avoid glare?', 'html': '<p>Light the display so it stays brighter than the reflections on the glass. Daylight and bright scenes opposite can turn a window into a mirror, so test the view at different times of the day.</p><ul><li>Angle spotlights so their reflection does not land in the viewer&rsquo;s eyes.</li><li>Keep the interior behind the display softer than the display itself.</li><li>Plan the power and track position early, so cables are not on show. See also <a href="/guides/lighting-a-retail-display/">lighting a retail display</a>.</li></ul>'},
+    {'h2': 'Which fixtures and joinery suit a window display?', 'html': '<p>Choose fixtures that are stable, easy to move and finished to match the shop. A custom plinth, ledge or shelf made to the window width can look more deliberate than loose boxes, and it keeps the display tidy between changes.</p><ul><li>Use modular risers or plinths that can be rearranged without tools.</li><li>Choose sealed, wipe-clean finishes, because window surfaces gather dust and sun.</li><li>If you want built-in joinery, see our <a href="/services/commercial-carpentry/">commercial carpentry</a> page, and confirm fixing and weight limits on site.</li></ul>'},
+    {'h2': 'How often should I change the window display?', 'html': '<p>Change it often enough that regular passers-by notice something new, and keep it clean in between. A small refresh of one or two items is better than leaving a faded, dusty display in place.</p><ul><li>Set a simple rhythm, such as a change for each new season or product launch.</li><li>Wipe the glass and fixtures regularly, inside and out.</li><li>Take a photo of each display so you can see what drew attention.</li></ul>'},
+    {'h2': 'What should I check before planning a window display?', 'html': '<p>Check what your landlord or building management allows for the window and the shopfront, such as stickers, hanging items and lighting. Rules differ between buildings, so confirm them before you order any fixtures.</p><p>If you are planning the whole shop, the <a href="/spaces/retail-shops-boutiques/">retail shop and boutique</a> page shows how display, shelving and counter fit together.</p>'},
+  ],
+  'faqs': [
+    ('How many products should be in a shop window display?', 'Fewer than most people expect. A small group of related items around one focal point reads more clearly than a full window, and it is easier to keep tidy and refresh.'),
+    ('How do I stop glare on my shop window?', 'Make the display brighter than the reflections, angle the lights so they do not reflect towards viewers, and test the view from across the walkway at different times of day.'),
+    ('How often should I change a window display?', 'Often enough that regular passers-by notice, for example with each season or new product. Even a small change of one or two items helps, as long as the display stays clean.'),
+    ('Do I need landlord approval for window displays?', 'Sometimes. Rules on window stickers, hanging items and lighting differ between buildings and landlords, so ask what is allowed before ordering fixtures.'),
+  ],
+  'related': ['/spaces/retail-shops-boutiques/', '/guides/shopfront-signage-and-lighting/', '/guides/lighting-a-retail-display/', '/guides/retail-display-shelving-materials/', '/services/commercial-carpentry/'],
+  'wa_topic': 'my shop window display',
+}
+
+PAGES = [G1, G2, G3, G4, G5, G6, G7, G8, G9, G10, G11]
