@@ -138,13 +138,6 @@
  },
  "image_hosts_pending": {
   "note": "Edwin rule 3 Nov 2026: every image must be on sgcarworkshop.sg. These hosts still hotlink because the files could not be fetched from the build sandbox (network blocked). Copy them to src/img and remove the host here. Counted and printed on every check run.",
-  "hosts": [
-   "sggarage.com",
-   "cdn.jsdelivr.net",
-   "jackygearbox.com",
-   "batteryrescue.sg",
-   "autotexautoparts.com.sg",
-   "www.cleanicdetailing.com"
-  ]
+  "hosts": []
  }
 }

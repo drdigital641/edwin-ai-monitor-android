@@ -108,13 +108,6 @@ SAT = ["Saturday"]
 
 # Photos: "f" = file in src/img (copied to site/assets/img); "u" = absolute URL hotlinked from the client's own live pages (preview only).
 # Prose is written fresh (never copied from the client's site). Prices only where the client's own live page publishes them.
-_SG = "https://cdn.jsdelivr.net/gh/drdigital641/edwin-ai-monitor-android@ebdf067f4edf3a93c5ac6a73b1c127675dfa3eac/site-assets/sggarage/"
-_ECU = "https://cdn.jsdelivr.net/gh/drdigital641/edwin-ai-monitor-android@cee16fe230df8b19cf7d5b0562dd956c9d36b813/pageone-site/clients/ecu-clinic/site/img/"
-_WS = "https://cdn.jsdelivr.net/gh/drdigital641/edwin-ai-monitor-android@da2c02e/site-assets/wrapstar/"
-_CL = "https://www.cleanicdetailing.com/wp-content/uploads/cleanic-photos/"
-_JG = "https://jackygearbox.com/img/"
-_BR = "https://batteryrescue.sg/photos/"
-_AT = "https://autotexautoparts.com.sg/assets/parts/"
 
 ENTRIES = [
     dict(
@@ -182,7 +175,7 @@ ENTRIES = [
         category="general-servicing-repair", categories=["general-servicing-repair", "spray-painting-bodywork"], regions=['north-east'], regions_note='Ang Mo Kio is in the North-East region (URA). Address: Ang Mo Kio Industrial Park 2.', area_label="Ang Mo Kio",
         title="Edwin Garage | Car Servicing and Repair, Ang Mo Kio",
         desc="Edwin Garage in Ang Mo Kio: servicing from $128, brakes, batteries and accident repair. WhatsApp 9785 6612, Mon to Sat.",
-        card_img=dict(u=_SG + "edwin-garage-shopfront-01-295.webp", alt="Edwin Garage shopfront at Blk 5032 Ang Mo Kio Industrial Park 2"),
+        card_img=dict(f="sggarage-edwin-garage-shopfront-01-295.webp", alt="Edwin Garage shopfront at Blk 5032 Ang Mo Kio Industrial Park 2"),
         card_text=["Owner-run car workshop in Ang Mo Kio Industrial Park 2, open Monday to Saturday.",
                    "Servicing from $128, brakes, batteries and accident repair."],
         lede=("Edwin Garage is an owner-run workshop at unit #01-295, Ang Mo Kio Industrial Park 2. It services and repairs Japanese, Korean, "
@@ -206,11 +199,11 @@ ENTRIES = [
         social=[],
         google_rating=dict(rating=4.9, count=600, count_text="600+", checked="2026-11-01", url="https://share.google/hYkZhnKyoAEeERhWM", source="sggarage.com (owner's Google profile)"),
         photos=[
-            dict(u=_SG + "edwin-garage-shopfront-01-295.webp", alt="Edwin Garage shopfront with green signboard and cars parked outside", cap="The shopfront at unit #01-295."),
-            dict(u=_SG + "edwin-garage-workshop-bays.webp", alt="A Kia on the lift and a Tesla Model 3 in the Edwin Garage service bay", cap="Inside the bays: a Kia on the lift and a Tesla Model 3 being worked on."),
-            dict(u="https://sggarage.com/uploads/tesla-radiator-cleaning-hero.jpg", alt="Mechanic clearing dried leaves from a Tesla radiator", cap="Clearing dried leaves from a Tesla radiator."),
-            dict(u="https://sggarage.com/uploads/tesla-lca-1.jpg", alt="Tesla suspension arms laid out during a lower control arm replacement", cap="Tesla lower control arm job: the suspension arms laid out."),
-            dict(u="https://sggarage.com/uploads/tesla-lca-3.jpg", alt="Close-up of a worn Tesla control arm bushing", cap="A worn control arm bushing, close up."),
+            dict(f="sggarage-edwin-garage-shopfront-01-295.webp", alt="Edwin Garage shopfront with green signboard and cars parked outside", cap="The shopfront at unit #01-295."),
+            dict(f="sggarage-edwin-garage-workshop-bays.webp", alt="A Kia on the lift and a Tesla Model 3 in the Edwin Garage service bay", cap="Inside the bays: a Kia on the lift and a Tesla Model 3 being worked on."),
+            dict(f="sggarage-tesla-radiator-cleaning-hero.jpg", alt="Mechanic clearing dried leaves from a Tesla radiator", cap="Clearing dried leaves from a Tesla radiator."),
+            dict(f="sggarage-tesla-lca-1.jpg", alt="Tesla suspension arms laid out during a lower control arm replacement", cap="Tesla lower control arm job: the suspension arms laid out."),
+            dict(f="sggarage-tesla-lca-3.jpg", alt="Close-up of a worn Tesla control arm bushing", cap="A worn control arm bushing, close up."),
         ],
         note="Owned by the site's founder.",
         faqs=[
@@ -270,7 +263,7 @@ ENTRIES = [
         category="gearbox-repair", regions=['north'], regions_note='Woodlands and Kranji are both in the North region (URA). Addresses: Woodlands Industrial Park E9 and Jalan Lam Huat.', area_label="Woodlands and Kranji",
         title="Jacky Gearbox | Gearbox Repair, Woodlands and Kranji",
         desc="Jacky Gearbox: gearbox diagnosis from S$30, repair, overhaul, servicing and upgrades at Woodlands and Kranji. 6-month warranty. WhatsApp 8430 9665.",
-        card_img=dict(u=_JG + "hero-workshop.webp", alt="Jacky Gearbox workshop in Woodlands"),
+        card_img=dict(f="jackygearbox-hero-workshop.webp", alt="Jacky Gearbox workshop in Woodlands"),
         card_text=["Gearbox specialist with workshops in Woodlands and Kranji.",
                    "Diagnosis from S$30, repair, servicing and upgrades."],
         lede=("Jacky Gearbox is a gearbox and automatic transmission specialist with a main workshop at Woodlands Wave 9 and a second one in Kranji. "
@@ -294,12 +287,12 @@ ENTRIES = [
         hours_note=None, social=[],
         reviews=dict(text="Customer reviews are on Jacky's Google profile. His website does not state a rating or review count (checked 1 November 2026).", url="https://share.google/ZXSk6rE3VdUNgZyKS", label="Open the Google profile"),
         photos=[
-            dict(u=_JG + "hero-workshop.webp", alt="Jacky Gearbox workshop in Woodlands", cap="The Woodlands workshop."),
-            dict(u=_JG + "gearbox-teardown.webp", alt="Technician rebuilding an automatic gearbox on the teardown bench", cap="An automatic gearbox on the teardown bench."),
-            dict(u=_JG + "gearbox-parts.webp", alt="Gearbox clutch packs and gear sets laid out for inspection", cap="Clutch packs and gear sets laid out for inspection."),
-            dict(u=_JG + "diagnostics.webp", alt="Laptop running a transmission diagnostic test on a BMW", cap="A transmission diagnostic test running on a BMW."),
-            dict(u=_JG + "gearbox-removal.webp", alt="Gearbox being removed from a car on a transmission jack", cap="A gearbox coming out of a car on a transmission jack."),
-            dict(u=_JG + "workshop-lifts.webp", alt="Car lifts in the Jacky Gearbox workshop", cap="Lifts in the workshop."),
+            dict(f="jackygearbox-hero-workshop.webp", alt="Jacky Gearbox workshop in Woodlands", cap="The Woodlands workshop."),
+            dict(f="jackygearbox-gearbox-teardown.webp", alt="Technician rebuilding an automatic gearbox on the teardown bench", cap="An automatic gearbox on the teardown bench."),
+            dict(f="jackygearbox-gearbox-parts.webp", alt="Gearbox clutch packs and gear sets laid out for inspection", cap="Clutch packs and gear sets laid out for inspection."),
+            dict(f="jackygearbox-diagnostics.webp", alt="Laptop running a transmission diagnostic test on a BMW", cap="A transmission diagnostic test running on a BMW."),
+            dict(f="jackygearbox-gearbox-removal.webp", alt="Gearbox being removed from a car on a transmission jack", cap="A gearbox coming out of a car on a transmission jack."),
+            dict(f="jackygearbox-workshop-lifts.webp", alt="Car lifts in the Jacky Gearbox workshop", cap="Lifts in the workshop."),
         ],
         faqs=[
             ("How much does a gearbox repair cost?", "It depends on the car and the fault, so there are no blind quotes. The diagnostic (from S$30) finds the cause, then you get a clear price before the repair starts."),
@@ -316,7 +309,7 @@ ENTRIES = [
         category="abs-ecu-module-repair", regions=['east'], regions_note='Kaki Bukit is in the East region (URA). Address: 8 Kaki Bukit Avenue 4.', area_label="Kaki Bukit",
         title="The ECU Clinic | ABS and Module Repair, Kaki Bukit",
         desc="The ECU Clinic in Kaki Bukit repairs ABS pumps and modules, Mercedes gearbox control units and steering locks. 6-month warranty. WhatsApp 9893 1923.",
-        card_img=dict(u=_ECU + "mercedes-esp-pumps.webp", alt="Mercedes-Benz ESP pumps on the repair bench"),
+        card_img=dict(f="ecu-clinic-mercedes-esp-pumps.webp", alt="Mercedes-Benz ESP pumps on the repair bench"),
         card_text=["Repairs ABS pumps and control modules at a Kaki Bukit workshop.",
                    "Also Mercedes gearbox control units, steering locks and hybrid batteries."],
         lede=("The ECU Clinic repairs car electronics at Premier @ Kaki Bukit. When an ABS or brake warning light will not clear, the unit is tested and repaired on "
@@ -337,12 +330,12 @@ ENTRIES = [
         social=["https://www.facebook.com/TheECUclinicSG"],
         reviews=dict(text="Rated 5.0 on Google from 1 review so far, as stated on theecuclinicsg.com (checked 1 November 2026)", url="https://search.google.com/local/reviews?placeid=ChIJU8-75AAX2jERRmA8PvLfV7k", label="Read the Google reviews"),
         photos=[
-            dict(u=_ECU + "mercedes-esp-pumps.webp", alt="Mercedes-Benz ESP pumps on the repair bench", cap="Mercedes-Benz ESP pumps on the bench."),
-            dict(u=_ECU + "abs-esc-units-bench.webp", alt="ABS and ESC units on the repair bench", cap="ABS and ESC units waiting for repair."),
-            dict(u=_ECU + "mercedes-7g-conductor-plate.webp", alt="Mercedes 7-speed gearbox conductor plate with new filter, gasket and oil", cap="A Mercedes 7-speed gearbox job, with the new filter, gasket and oil."),
-            dict(u=_ECU + "mercedes-elv.webp", alt="Mercedes-Benz electronic steering lock on the bench", cap="A Mercedes electronic steering lock on the bench."),
-            dict(u=_ECU + "hybrid-battery-modules.webp", alt="Hybrid battery with new modules", cap="A hybrid battery fitted with new modules."),
-            dict(u=_ECU + "hyundai-kia-esc.webp", alt="Hyundai or Kia ESC unit on the bench", cap="A Hyundai or Kia ESC unit."),
+            dict(f="ecu-clinic-mercedes-esp-pumps.webp", alt="Mercedes-Benz ESP pumps on the repair bench", cap="Mercedes-Benz ESP pumps on the bench."),
+            dict(f="ecu-clinic-abs-esc-units-bench.webp", alt="ABS and ESC units on the repair bench", cap="ABS and ESC units waiting for repair."),
+            dict(f="ecu-clinic-mercedes-7g-conductor-plate.webp", alt="Mercedes 7-speed gearbox conductor plate with new filter, gasket and oil", cap="A Mercedes 7-speed gearbox job, with the new filter, gasket and oil."),
+            dict(f="ecu-clinic-mercedes-elv.webp", alt="Mercedes-Benz electronic steering lock on the bench", cap="A Mercedes electronic steering lock on the bench."),
+            dict(f="ecu-clinic-hybrid-battery-modules.webp", alt="Hybrid battery with new modules", cap="A hybrid battery fitted with new modules."),
+            dict(f="ecu-clinic-hyundai-kia-esc.webp", alt="Hyundai or Kia ESC unit on the bench", cap="A Hyundai or Kia ESC unit."),
         ],
         faqs=[
             ("Can you repair my ABS pump or module?", "Yes. ABS, ESP and ESC modules are repaired, and used or reconditioned pumps are supplied for makes such as Toyota, Honda, Mercedes-Benz, Hyundai, Kia, Volkswagen and Audi."),
@@ -358,7 +351,7 @@ ENTRIES = [
         category="car-wrap-ppf", regions=['north'], regions_note='Yishun is in the North region (URA). Address: 9 Yishun Industrial Street 1.', area_label="Yishun",
         title="Wrapstar Autostyle | Car Wrap and PPF, Yishun",
         desc="Wrapstar Autostyle in Yishun: colour wraps from $1,588, colour and clear PPF, window film and dechrome. See past jobs and WhatsApp 9754 1833.",
-        card_img=dict(u=_WS + "tesla-model-3-satin-black-rear.webp", alt="Tesla Model 3 in satin black colour PPF at the Wrapstar Autostyle studio"),
+        card_img=dict(f="wrapstar-tesla-model-3-satin-black-rear.webp", alt="Tesla Model 3 in satin black colour PPF at the Wrapstar Autostyle studio"),
         card_text=["Car wrap and film studio at North Spring Bizhub in Yishun.",
                    "Colour wraps from $1,588, PPF, window film and dechrome."],
         lede=("Wrapstar Autostyle is a car wrap and film studio at North Spring Bizhub in Yishun. It changes car colours with vinyl or colour PPF, protects paint "
@@ -381,12 +374,12 @@ ENTRIES = [
         social=["https://www.facebook.com/wrapstarautostyle", "https://www.instagram.com/wrapstar.autostyle/"],
         reviews=dict(text="100% recommend on Facebook from 24 reviews, as stated on wrapstarautostyle.com (checked 17 October 2026)", url="https://www.facebook.com/wrapstarautostyle/reviews", label="Read the Facebook reviews"),
         photos=[
-            dict(u=_WS + "tesla-model-3-satin-black-rear.webp", alt="Tesla Model 3 in satin black colour PPF inside the Wrapstar studio", cap="Tesla Model 3 in satin black colour PPF."),
-            dict(u=_WS + "mercedes-c-class-baby-blue-studio.webp", alt="Mercedes-Benz C-Class coupe being wrapped baby blue", cap="Mercedes-Benz C-Class coupe, mid-wrap in baby blue."),
-            dict(u=_WS + "byd-sealion-7-matte-green-front.webp", alt="BYD Sealion 7 in matte green", cap="BYD Sealion 7 in matte green."),
-            dict(u=_WS + "bmw-m4-stealth-grey-studio.webp", alt="BMW M4 in stealth matte grey under the studio lights", cap="BMW M4 in stealth matte grey."),
-            dict(u=_WS + "tesla-model-y-yellow-front.webp", alt="Bright yellow Tesla Model Y", cap="Tesla Model Y in bright yellow."),
-            dict(u=_WS + "installer-ppf-bonnet.webp", alt="Installer trimming film on a bonnet edge", cap="Trimming PPF along a bonnet edge."),
+            dict(f="wrapstar-tesla-model-3-satin-black-rear.webp", alt="Tesla Model 3 in satin black colour PPF inside the Wrapstar studio", cap="Tesla Model 3 in satin black colour PPF."),
+            dict(f="wrapstar-mercedes-c-class-baby-blue-studio.webp", alt="Mercedes-Benz C-Class coupe being wrapped baby blue", cap="Mercedes-Benz C-Class coupe, mid-wrap in baby blue."),
+            dict(f="wrapstar-byd-sealion-7-matte-green-front.webp", alt="BYD Sealion 7 in matte green", cap="BYD Sealion 7 in matte green."),
+            dict(f="wrapstar-bmw-m4-stealth-grey-studio.webp", alt="BMW M4 in stealth matte grey under the studio lights", cap="BMW M4 in stealth matte grey."),
+            dict(f="wrapstar-tesla-model-y-yellow-front.webp", alt="Bright yellow Tesla Model Y", cap="Tesla Model Y in bright yellow."),
+            dict(f="wrapstar-installer-ppf-bonnet.webp", alt="Installer trimming film on a bonnet edge", cap="Trimming PPF along a bonnet edge."),
         ],
         faqs=[
             ("How much does a car wrap cost?", "The studio's posted starting price for a full colour wrap is $1,588. Colour PPF, clear PPF, window film and dechrome are priced by car and film, so send your model on WhatsApp for a quote."),
@@ -402,7 +395,7 @@ ENTRIES = [
         category="car-battery", regions=['north', 'north-east', 'west', 'central'], regions_note='Onsite areas on its site: Woodlands, Sembawang, Yishun, Yio Chu Kang (North); Ang Mo Kio, Hougang, Sengkang, Punggol (North-East). Its walk-in Motoserv outlets add Serangoon Garden (North-East), Toa Payoh, Upper Thomson, Bukit Timah, Jervois, Havelock Road (Central) and Bukit Batok, Bukit Panjang, Boon Lay (West). The Sembawang outlet is North.', area_label="Onsite, north and north-east Singapore",
         title="Battery Rescue SG | Onsite Car Battery Replacement",
         desc="Battery Rescue SG fits Delkor car batteries at your car in the north of Singapore, or walk in to 10 Motoserv outlets. Hotline 8125 9169, 24 hours.",
-        card_img=dict(u=_BR + "battery-voltage-12-80v.jpg", alt="Battery voltage reading during a battery test"),
+        card_img=dict(f="batteryrescue-battery-voltage-12-80v.jpg", alt="Battery voltage reading during a battery test"),
         card_text=["Onsite car battery replacement that comes to where your car is stuck.",
                    "Delkor batteries with a one-year warranty, plus jump-start and towing."],
         lede=("Battery Rescue SG replaces car batteries where the car is stuck, so a flat battery does not mean waiting for a tow. Every battery fitted is a Delkor with "
@@ -430,9 +423,9 @@ ENTRIES = [
         social=["https://motoserv.sg/"],
         reviews=dict(text="5-star rating on Google, as stated on batteryrescue.sg (rating count not stated; checked 1 November 2026)", url="https://maps.app.goo.gl/VrQtHKzr6Yx2y8Wv5", label="See the Google reviews"),
         photos=[
-            dict(u=_BR + "battery-voltage-12-80v.jpg", alt="Battery voltage reading of 12.80 V during a test", cap="A battery test reading 12.80 V."),
-            dict(u=_BR + "new-alternator-fitted.jpg", alt="New alternator fitted in an engine bay", cap="A new alternator fitted."),
-            dict(u=_BR + "old-alternator.jpg", alt="Old alternator removed from a car", cap="The old alternator that was removed."),
+            dict(f="batteryrescue-battery-voltage-12-80v.jpg", alt="Battery voltage reading of 12.80 V during a test", cap="A battery test reading 12.80 V."),
+            dict(f="batteryrescue-new-alternator-fitted.jpg", alt="New alternator fitted in an engine bay", cap="A new alternator fitted."),
+            dict(f="batteryrescue-old-alternator.jpg", alt="Old alternator removed from a car", cap="The old alternator that was removed."),
         ],
         faqs=[
             ("Can you come to me if my car will not start?", "Yes, in Woodlands, Sembawang, Yishun, Ang Mo Kio, Yio Chu Kang, Hougang, Sengkang and Punggol. Call the 24-hour hotline or WhatsApp your location and car model."),
@@ -450,7 +443,7 @@ ENTRIES = [
         category="car-detailing-coating", regions=['north', 'north-east', 'east', 'west', 'central'], regions_note='Mobile service. Its site says island-wide and 24/7 across Singapore, so all five regions.', area_label="Mobile service, island-wide",
         title="Cleanic Detailing | Mobile Car Fumigation, Singapore",
         desc="Cleanic Detailing comes to your carpark: car fumigation from $118, steam and interior cleaning from $148, 24/7 island-wide. WhatsApp or call 9108 6931.",
-        card_img=dict(u=_CL + "cleanic-panamera-interior-clean2-1024x768.jpg", alt="Cleaned leather interior of a Porsche after a Cleanic job"),
+        card_img=dict(f="cleanic-panamera-interior-clean2.jpg", alt="Cleaned leather interior of a Porsche after a Cleanic job"),
         card_text=["Mobile car fumigation and interior cleaning that comes to you.",
                    "From $118, island-wide, any day of the week."],
         lede=("Cleanic Detailing is a mobile car fumigation and interior cleaning service run by Colin. The work is done where the car is parked, at an HDB, condo or office carpark "
@@ -472,11 +465,11 @@ ENTRIES = [
         social=["https://www.instagram.com/cleanicdetail/"],
         reviews=dict(text="Rated 5.0 from 400+ Google reviews, as stated on cleanicdetailing.com (checked 1 November 2026)", url="https://share.google/h5xraYa2f2jkMRdx7", label="Read the Google reviews"),
         photos=[
-            dict(u=_CL + "cleanic-door-panel.jpg", alt="Specialist steam cleaning a car seat", cap="Steam cleaning a car seat."),
-            dict(u=_CL + "cleanic-panamera-interior-clean2-1024x768.jpg", alt="Detailed leather interior after cleaning", cap="A Porsche leather interior after cleaning."),
-            dict(u=_CL + "cleanic-panamera-front.jpg", alt="Porsche at a Cleanic mobile detailing job", cap="A Porsche on a mobile job at a carpark."),
-            dict(u=_CL + "cleanic-real-mirakn-768x1024.jpg", alt="MIRAKN dry gas fumigation equipment", cap="The MIRAKN dry gas fumigation equipment."),
-            dict(u=_CL + "cleanic-real-steam-1024x768.jpg", alt="Steam cleaning equipment packed for mobile work", cap="Steam cleaning equipment used on mobile jobs."),
+            dict(f="cleanic-door-panel.jpg", alt="Specialist steam cleaning a car seat", cap="Steam cleaning a car seat."),
+            dict(f="cleanic-panamera-interior-clean2.jpg", alt="Detailed leather interior after cleaning", cap="A Porsche leather interior after cleaning."),
+            dict(f="cleanic-panamera-front.jpg", alt="Porsche at a Cleanic mobile detailing job", cap="A Porsche on a mobile job at a carpark."),
+            dict(f="cleanic-real-mirakn.jpg", alt="MIRAKN dry gas fumigation equipment", cap="The MIRAKN dry gas fumigation equipment."),
+            dict(f="cleanic-real-steam.jpg", alt="Steam cleaning equipment packed for mobile work", cap="Steam cleaning equipment used on mobile jobs."),
         ],
         faqs=[
             ("Do you work at night and on weekends?", "Yes, every day including public holidays, subject to availability. It is a 24-hour mobile service."),
@@ -515,10 +508,10 @@ ENTRIES = [
         reviews=dict(text="Rated 5.0 on Google from 4 reviews, as stated on autotexautoparts.com.sg (checked 1 November 2026)", url="https://www.google.com/maps/search/?api=1&query=Autotex+Aircon+Enterprise+1+Kaki+Bukit+Ave+6+%2301-42+Singapore+417883", label="See Autotex on Google Maps"),
         photos=[],
         illustrations=[
-            dict(u=_AT + "headlamp.svg", alt="Illustration of a headlamp", cap="Headlamps (illustration)."),
-            dict(u=_AT + "front-brake-pads.svg", alt="Illustration of front brake pads", cap="Brake pads (illustration)."),
-            dict(u=_AT + "side-mirror.svg", alt="Illustration of a side mirror", cap="Side mirrors (illustration)."),
-            dict(u=_AT + "front-bumper.svg", alt="Illustration of a front bumper", cap="Bumpers (illustration)."),
+            dict(f="autotex-headlamp.svg", alt="Illustration of a headlamp", cap="Headlamps (illustration)."),
+            dict(f="autotex-front-brake-pads.svg", alt="Illustration of front brake pads", cap="Brake pads (illustration)."),
+            dict(f="autotex-side-mirror.svg", alt="Illustration of a side mirror", cap="Side mirrors (illustration)."),
+            dict(f="autotex-front-bumper.svg", alt="Illustration of a front bumper", cap="Bumpers (illustration)."),
         ],
         faqs=[
             ("Do I need the part number?", "No. Pick your car model and the part, or send your car plate or chassis number on WhatsApp. The shop checks the exact part for your car before you pay."),

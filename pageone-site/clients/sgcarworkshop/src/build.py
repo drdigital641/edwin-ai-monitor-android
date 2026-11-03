@@ -188,14 +188,19 @@ _imgsz = {}
 
 def imgsize(rel):
     if rel not in _imgsz:
-        _imgsz[rel] = Image.open(os.path.join(HERE, 'img', rel)).size
+        if rel.endswith('.svg'):   # vector: take the size from the root element
+            _s = open(os.path.join(HERE, 'img', rel), encoding='utf-8').read(600)
+            _w, _h = re.search(r'\bwidth="(\d+)"', _s), re.search(r'\bheight="(\d+)"', _s)
+            _imgsz[rel] = (int(_w.group(1)), int(_h.group(1)))
+        else:
+            _imgsz[rel] = Image.open(os.path.join(HERE, 'img', rel)).size
     return _imgsz[rel]
 
 
 def img_tag(rel, alt, depth, lazy=True, cls=''):
     w, h = imgsize(rel)
-    return '<img src="%sassets/img/%s" alt="%s" width="%d" height="%d"%s%s decoding="async">' % (
-        pre(depth), rel, E(alt, True), w, h, ' loading="lazy"' if lazy else '', (' class="%s"' % cls) if cls else '')
+    return '<img src="%sassets/img/%s" alt="%s" width="%d" height="%d"%s%s%s>' % (
+        pre(depth), rel, E(alt, True), w, h, ' loading="lazy"' if lazy else '', (' class="%s"' % cls) if cls else '', ' decoding="async"' if lazy else '')   # eager images decode at once so they are painted in full-page screenshots
 
 
 def pre(depth):
@@ -907,7 +912,7 @@ def tiers_strip():
 
 def ld_business(e, url):
     ld = {'@context': 'https://schema.org', '@type': 'AutoRepair', '@id': url + '#business', 'name': e['name'], 'url': url, 'mainEntityOfPage': url}
-    first = e['photos'][0] if e.get('photos') else e.get('card_img')
+    first = next((p for p in (e.get('photos') or []) if not (p.get('f') or '').endswith('.svg')), None) or e.get('card_img')
     if first:
         ld['image'] = [BASE + 'assets/img/' + first['f'] if first.get('f') else first['u']]
     if e.get('phone'):
@@ -1585,10 +1590,10 @@ def pb_photos(x):
     gal = ''
     if photos and len(photos) > 1:
         gal = '<h2>Recent work</h2><div class="gal">%s</div>' % ''.join(
-            '<figure class="rv job">%s<figcaption>%s</figcaption></figure>' % (photo_img(p, depth), E(p['cap'])) for p in photos[1:])
+            '<figure class="rv job">%s<figcaption>%s</figcaption></figure>' % (photo_img(p, depth, lazy=False), E(p['cap'])) for p in photos[1:])
     if e.get('illustrations'):
         gal += '<h2>Parts range</h2><div class="gal">%s</div>' % ''.join(
-            '<figure class="rv illus">%s<figcaption>%s</figcaption></figure>' % (photo_img(p, depth), E(p['cap'])) for p in e['illustrations'])
+            '<figure class="rv illus">%s<figcaption>%s</figcaption></figure>' % (photo_img(p, depth, lazy=False), E(p['cap'])) for p in e['illustrations'])
     return gal
 
 
@@ -1659,7 +1664,8 @@ def listing(e):
     bar = wabar([wa_btn(e, path), call_btn(e, path)])
     faq_ld = {'@context': 'https://schema.org', '@type': 'FAQPage', 'mainEntity': [{'@type': 'Question', 'name': q, 'acceptedAnswer': {'@type': 'Answer', 'text': a}} for q, a in e['faqs']]}
     ld = [ld_business(e, url), faq_ld, dict(crld, **{'@context': 'https://schema.org'})]
-    og = e.get('og_img') or (photos[0]['u'] if photos and photos[0].get('u') else None)
+    _ph = next((p for p in photos if not (p.get('f') or '').endswith('.svg')), None)   # social preview must be a raster picture
+    og = e.get('og_img') or ((_ph.get('f') or _ph.get('u')) if _ph else None)
     page(path, e['title'], e['desc'], body, ld, og=og, bar=bar, h1=e['name'])
 
 

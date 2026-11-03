@@ -474,6 +474,12 @@ for _e in ENTRIES:
         if _req not in _names: print('workshop page lacks block', _req, _e['slug']); bad += 1
     for _n, _inner in _bl:
         if not re.search(r'[A-Za-z0-9]', re.sub(r'<[^>]+>', '', _inner)) and not re.search(r'<(img|iframe|svg)', _inner): print('empty block rendered', _n, _e['slug']); bad += 1
+        _nohead = re.sub(r'<h[1-6][^>]*>.*?</h[1-6]>', '', _inner, flags=re.S)
+        if not re.search(r'[A-Za-z0-9]', re.sub(r'<[^>]+>', '', _nohead)) and not re.search(r'<(img|iframe|svg)', _nohead): print('block has a heading but no visible content', _n, _e['slug']); bad += 1
+        for _im in re.findall(r'<img[^>]*>', _inner):
+            if ' width="' not in _im or ' height="' not in _im: print('image in block has no width/height (blank gap before it loads)', _n, _e['slug']); bad += 1
+            if 'decoding="async"' in _im and 'loading="lazy"' not in _im: print('eager image decodes async (can stay blank in full-page screenshots)', _n, _e['slug']); bad += 1
+            if 'loading="lazy"' in _im and _n in ('photos', 'gallery'): print('gallery image is lazy-loaded (blank before scrolling)', _n, _e['slug']); bad += 1
     _order = _e.get('blocks') or SET['block_order'][_e['tier']]
     if [n for n in _order if n in _names] != _names: print('block order differs from the data file', _e['slug'], _names); bad += 1
     _left = re.sub(r'<nav class="crumbs".*?</nav>', '', _left, flags=re.S)
@@ -554,5 +560,7 @@ for _sub in ('google_cache', 'workshops'):
             _txt2 = open(os.path.join(_gdir, _sub, _fn)).read()
             if re.search(r'"(reviews|authorAttribution|author_name|reviewer)"\s*:', _txt2): print('stored Google review text or reviewer name', _sub, _fn); bad += 1
 if HOTLINK: print('NOTE: %d hotlinked images still pending a copy to sgcarworkshop.sg (hosts in settings.json image_hosts_pending)' % len(HOTLINK))
+_css = open(os.path.join(root, 'assets', 'dir.css'), encoding='utf-8').read()
+if re.search(r'\.rv[^{}]*\{[^}]*(opacity:\s*0\b|visibility:\s*hidden)', re.sub(r'/\*.*?\*/', '', _css, flags=re.S)): print('dir.css hides .rv blocks by default (scroll-reveal): blocks must be visible without scrolling'); bad += 1
 print('pages checked:', len(files), 'problems:', bad)
 sys.exit(1 if bad else 0)
