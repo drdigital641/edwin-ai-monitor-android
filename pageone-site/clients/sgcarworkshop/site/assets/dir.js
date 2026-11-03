@@ -29,7 +29,7 @@ q.addEventListener('focus',stop);q.addEventListener('pointerdown',stop);
 if(RM){form.classList.add('hint-off');q.placeholder=base}
 else{var i=0,k=0,dir=1;(function tick(){if(done)return;if(q.value){q.placeholder=base;tmr=setTimeout(tick,1200);return}
 var w=EX[i],dl=70;k+=dir;q.placeholder='e.g. '+w.slice(0,k);if(k>=w.length){dir=-1;dl=1600}else if(k<=0){dir=1;i=(i+1)%EX.length;dl=300}else if(dir<0)dl=30;tmr=setTimeout(tick,dl)})()}}
-/* Featured carousel: seamless infinite marquee (rAF translateX). Never pauses on hover, scroll or visibility; stops only while pressed or dragged.
+/* Featured carousel: seamless infinite marquee (rAF translateX). Never pauses on hover, scroll or visibility; stops while pressed or dragged and for 2s after you let go.
    Reduced motion: static swipeable scroll-snap row with arrow buttons. */
 var tr=d.getElementById('track'),mq=d.getElementById('marq');
 if(tr&&mq){
@@ -38,24 +38,24 @@ if(dir>0&&tr.scrollLeft>=max-6)tr.scrollTo({left:0});else if(dir<0&&tr.scrollLef
 var pv=d.getElementById('cprev'),nx=d.getElementById('cnext');if(pv)pv.addEventListener('click',function(){step(-1)});if(nx)nx.addEventListener('click',function(){step(1)});
 tr.tabIndex=0;tr.addEventListener('keydown',function(e){if(e.key==='ArrowRight'){step(1);e.preventDefault()}else if(e.key==='ArrowLeft'){step(-1);e.preventDefault()}})}
 else{var kids=[].slice.call(tr.children),n=kids.length;
-if(n){var off=0,held=false,drag=false,sx=0,so=0,pid=null,moved=false,last=0,SP=38,sw=0;
+if(n){var off=0,tt=false,until=0,held=false,drag=false,sx=0,so=0,pid=null,moved=false,last=0,SP=38,sw=0;
 mq.classList.add('on');
 function addSet(){kids.forEach(function(li){var c=li.cloneNode(true);c.setAttribute('aria-hidden','true');[].forEach.call(c.querySelectorAll('a,button'),function(x){x.tabIndex=-1});tr.appendChild(c)})}
 addSet();var one=tr.children[n].offsetLeft-tr.children[0].offsetLeft;sw=one;
 while(one>0&&tr.children.length/n*one<mq.clientWidth+2*one){addSet()}
 function draw(){tr.style.transform='translate3d('+(-off).toFixed(2)+'px,0,0)'}
 function wrap(){if(sw>0){off=((off%sw)+sw)%sw}}
-function loop(t){var dt=last?Math.min(t-last,100):0;last=t;if(!held&&!drag){off+=SP*dt/1000;wrap();draw()}requestAnimationFrame(loop)}
+function loop(t){var dt=last?Math.min(t-last,100):0;last=t;if(!held&&!drag&&!tt&&t>until){off+=SP*dt/1000;wrap();draw()}requestAnimationFrame(loop)}
 requestAnimationFrame(loop);
 window.addEventListener('resize',function(){var o=tr.children[n].offsetLeft-tr.children[0].offsetLeft;if(o>0)sw=o;wrap();draw()});
-function release(){held=false;if(drag){drag=false;mq.classList.remove('drag');setTimeout(function(){moved=false},0)}if(pid!==null){try{mq.releasePointerCapture(pid)}catch(x){}pid=null}}
+function release(){held=false;until=performance.now()+2000;if(drag){drag=false;mq.classList.remove('drag');setTimeout(function(){moved=false},0)}if(pid!==null){try{mq.releasePointerCapture(pid)}catch(x){}pid=null}}
 mq.addEventListener('pointerdown',function(e){if(e.pointerType==='mouse'&&e.button!==0)return;held=true;drag=false;moved=false;sx=e.clientX;so=off;pid=e.pointerId});
 mq.addEventListener('pointermove',function(e){if(!held)return;var dx=e.clientX-sx;
 if(!drag&&Math.abs(dx)>6){drag=true;moved=true;mq.classList.add('drag');try{mq.setPointerCapture(e.pointerId)}catch(x){}}
 if(drag){off=so-dx;wrap();draw()}});
 ['pointerup','pointercancel','lostpointercapture'].forEach(function(ev){mq.addEventListener(ev,release)});
-mq.addEventListener('touchstart',function(){held=true},{passive:true});
-['touchend','touchcancel'].forEach(function(ev){mq.addEventListener(ev,function(){if(!drag)held=false},{passive:true})});
+mq.addEventListener('touchstart',function(){tt=true},{passive:true});
+['touchend','touchcancel'].forEach(function(ev){mq.addEventListener(ev,function(){tt=false;until=performance.now()+2000},{passive:true})});
 /* a drag must not count as a tap on a button or link */
 mq.addEventListener('click',function(e){if(moved){e.preventDefault();e.stopPropagation()}},true);
 mq.addEventListener('dragstart',function(e){e.preventDefault()});
