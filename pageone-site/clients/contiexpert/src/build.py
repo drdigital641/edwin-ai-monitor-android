@@ -259,25 +259,47 @@ AREAS = [a for a in AREAS if a[4] <= 10]
 
 LBL = {'Tanglin': ('end', -7, 4), 'Orchard': ('end', -7, 14), 'Farrer Park': ('middle', 0, -9), 'Kallang': ('start', 7, 10), 'Tiong Bahru': ('end', -7, 4), 'Thomson': ('end', -7, 4), 'River Valley': ('start', 7, 8), 'Bugis': ('start', 7, 2), 'Balestier': ('start', 7, -2), 'Novena': ('start', 7, 8), 'Bishan': ('start', 7, 4), 'Raffles Place': ('start', 7, 6)}
 def catchment_svg(size=600, labels=True, cls=''):
+    """Premium light catchment map (v9, 3 Nov 2026): labels placed with simple collision avoidance."""
     c = size / 2; pxkm = (size / 2 - 22) / 10.0
+    fs = max(11, size // 46); FONT = 'Manrope,system-ui,sans-serif'
     def xy(la, lo): return (c + (lo - LON) * 111.32 * math.cos(math.radians(LAT)) * pxkm, c - (la - LAT) * 110.57 * pxkm)
     s = ['<svg viewBox="0 0 %d %d" role="img" aria-label="Map of the 10 km circle around the Newton Circus workshop with nearby neighbourhoods" class="%s">' % (size, size, cls)]
-    s.append('<defs><radialGradient id="g" cx="50%" cy="50%" r="50%"><stop offset="0" stop-color="#21405f"/><stop offset="1" stop-color="#0b1b2b"/></radialGradient></defs>')
-    s.append('<rect width="%d" height="%d" fill="url(#g)" rx="14"/>' % (size, size))
-    for r, col in ((10, '#16314b'), (6, '#1c3a58'), (3, '#24486b')):
-        s.append('<circle cx="%.1f" cy="%.1f" r="%.1f" fill="%s" stroke="#3d6286" stroke-width="1.5" stroke-dasharray="4 5"/>' % (c, c, r * pxkm, col))
-        s.append('<text x="%.1f" y="%.1f" fill="#8fb0cf" font-size="%d" font-family="system-ui,sans-serif" text-anchor="middle">%d km</text>' % (c, c - r * pxkm + 16, max(11, size // 40), r))
-    for n, la, lo, g, d in AREAS:
-        if n == 'Newton': continue
-        x, y = xy(la, lo)
-        s.append('<circle cx="%.1f" cy="%.1f" r="4" fill="#7fd3ff"/>' % (x, y))
-        if labels is True or (labels and n in labels):
-            anchor = 'start' if x < c + size * 0.3 else 'end'; dx = 7 if anchor == 'start' else -7; dy = 4
-            if n in LBL: anchor, dx, dy = LBL[n]
-            s.append('<text x="%.1f" y="%.1f" fill="#dce9f5" font-size="%d" font-family="system-ui,sans-serif" text-anchor="%s">%s</text>' % (x + dx, y + dy, max(11, size // 46), anchor, E(n)))
-    s.append('<circle class="pulse" cx="%.1f" cy="%.1f" r="10" fill="#c8f031" opacity=".6"/>' % (c, c))
-    s.append('<circle cx="%.1f" cy="%.1f" r="9" fill="#c8f031" stroke="#0b1b2b" stroke-width="3"/>' % (c, c))
-    s.append('<text x="%.1f" y="%.1f" fill="#c8f031" font-weight="700" font-size="%d" font-family="system-ui,sans-serif" text-anchor="middle">Workshop</text>' % (c, c - 18, max(12, size // 40)))
+    s.append('<rect width="%d" height="%d" fill="#f4f4f1"/>' % (size, size))
+    for r, col in ((10, '#ffffff'), (6, '#f7f7f5'), (3, '#ececea')):
+        s.append('<circle cx="%.1f" cy="%.1f" r="%.1f" fill="%s" stroke="#b9bab6" stroke-width="1.2" stroke-dasharray="4 5"/>' % (c, c, r * pxkm, col))
+        s.append('<text x="%.1f" y="%.1f" fill="#6b6d70" font-size="%d" font-family="%s" text-anchor="middle">%d km</text>' % (c, c - r * pxkm + 16, fs, FONT, r))
+    wf = max(12, size // 40)
+    boxes = [(c - 13, c - 13, c + 13, c + 13)]  # the pin
+    for r in (10, 6, 3):  # ring labels
+        boxes.append((c - 22, c - r * pxkm + 4, c + 22, c - r * pxkm + 18))
+    pts = [(n, ) + xy(la, lo) for n, la, lo, g, d in AREAS if n != 'Newton']
+    for n, x, y in pts: boxes.append((x - 6, y - 6, x + 6, y + 6))
+    def hit(bx): return any(not (bx[2] < o[0] or bx[0] > o[2] or bx[3] < o[1] or bx[1] > o[3]) for o in boxes)
+    ww = 8 * wf * 0.66  # "Workshop" label: pick a free spot around the pin
+    wpos = (c, c + 16 + wf)
+    for tx, ty in ((c, c + 16 + wf), (c, c - 16), (c - 14 - ww / 2, c + wf * 0.35), (c + 14 + ww / 2, c + wf * 0.35), (c, c + 40 + wf), (c, c - 40)):
+        bx = (tx - ww / 2, ty - wf, tx + ww / 2, ty + 3)
+        if not hit(bx): wpos = (tx, ty); break
+    boxes.append((wpos[0] - ww / 2, wpos[1] - wf, wpos[0] + ww / 2, wpos[1] + 3))
+    for n, x, y in pts:
+        s.append('<circle cx="%.1f" cy="%.1f" r="4" fill="#111316"/>' % (x, y))
+        if not (labels is True or (labels and n in labels)): continue
+        w = len(n) * fs * 0.62
+        cands = [('start', x + 7, y + fs * 0.35), ('end', x - 7, y + fs * 0.35), ('middle', x, y - 8), ('middle', x, y + fs + 6),
+                 ('start', x + 7, y - 6), ('end', x - 7, y - 6), ('start', x + 7, y + fs + 2), ('end', x - 7, y + fs + 2)]
+        best = None
+        for anc, tx, ty in cands:
+            x0 = tx if anc == 'start' else tx - w if anc == 'end' else tx - w / 2
+            bx = (x0, ty - fs, x0 + w, ty + 2)
+            if bx[0] < 4 or bx[2] > size - 4: continue
+            if not hit(bx): best = (anc, tx, ty, bx); break
+        if not best:
+            anc, tx, ty = cands[0]; best = (anc, tx, ty, (tx, ty - fs, tx + w, ty + 2))
+        boxes.append(best[3])
+        s.append('<text x="%.1f" y="%.1f" fill="#2b2d31" font-size="%d" font-weight="500" font-family="%s" text-anchor="%s">%s</text>' % (best[1], best[2], fs, FONT, best[0], E(n)))
+    s.append('<circle class="pulse" cx="%.1f" cy="%.1f" r="10" fill="#111316" opacity=".25"/>' % (c, c))
+    s.append('<circle cx="%.1f" cy="%.1f" r="8" fill="#111316" stroke="#fff" stroke-width="3"/>' % (c, c))
+    s.append('<text x="%.1f" y="%.1f" fill="#111316" font-weight="800" font-size="%d" font-family="%s" text-anchor="middle">Workshop</text>' % (wpos[0], wpos[1], wf, FONT))
     s.append('</svg>')
     return ''.join(s)
 
@@ -390,7 +412,7 @@ def home():
 <div class="btns">{btn_dir('btn btn-dark')}{btn_wa('WhatsApp ' + PHONE, cls='btn btn-outline')}</div></div>
 <div class="mapbox" data-rv><iframe src="{EMBED}" title="Map of {BIZ} at 143 Bukit Timah Road" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe></div></div></section>
 
-<section class="sec5 grey"><div class="wrap narrow">{faq_html(faqs, 'Quick answers')}</div></section>'''
+<section class="sec5 faq5"><div class="wrap">{faq_html(faqs, 'Quick answers')}</div></section>'''
     page('/', 'Continental Car Specialist Newton, Inside Shell | ContiExpert',
          'Mercedes-Benz, BMW, Audi and VW servicing and repairs, plus hybrid and EV checks, inside Shell at 143 Bukit Timah Road, Newton. 5.0 from 22 Google reviews.',
          body, [faq_ld(faqs)])
