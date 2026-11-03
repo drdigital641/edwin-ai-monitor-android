@@ -349,7 +349,7 @@ def category(c):
     body = f'''<div class="w">{cr}</div>
 <section class="hero" style="padding-top:20px"><div class="w"><h1>{E(c['name'])} in Singapore</h1><p class="lede">{E(c['intro'])}</p>{chip_row(depth, c['slug'])}</div></section>
 {featured_sec(es, depth, 'services/%s/' % c['slug'], 'in ' + c['short'].lower())}
-<section><div class="w"><h2 class="rv">Listings</h2><div class="grid">{''.join(card(e, depth, 'services/%s/' % c['slug']) for e in es if e['tier'] == 'free')}{list_card(depth, c['short'].lower())}</div></div></section>'''
+<section><div class="w"><h2 class="rv">Listings</h2><div class="grid">{''.join(card(e, depth, 'services/%s/' % c['slug']) for e in es if e['tier'] != 'premium_leadgen')}{list_card(depth, c['short'].lower())}</div></div></section>'''
     itemlist = itemlist_ld(c['name'] + ' in Singapore', es)
     page('services/%s/' % c['slug'], '%s in Singapore | %s' % (c['name'], SITE_NAME), c['blurb'] + ' Browse Singapore listings by area.',
          body, [itemlist, dict(crld, **{'@context': 'https://schema.org'})], h1=c['name'])
@@ -375,15 +375,15 @@ def fit_title(*options):
 
 
 def itemlist_ld(name, es):
-    """ItemList of the listed (free) workshops only, in the order the page shows them. Paid Featured clients are never in it (Edwin 3 Nov 2026)."""
-    es = [e for e in es if e['tier'] == 'free']
+    """ItemList of the listed workshops (Basic and Verified), in the order the page shows them. Paid Featured (Premium) clients are never in it (Edwin 3 Nov 2026)."""
+    es = [e for e in es if e['tier'] != 'premium_leadgen']
     return {'@context': 'https://schema.org', '@type': 'ItemList', 'name': name, 'numberOfItems': len(es),
             'itemListElement': [{'@type': 'ListItem', 'position': i + 1, 'url': abs_url('workshops/%s/' % e['slug']), 'name': e['name']} for i, e in enumerate(es)]}
 
 
 def featured_sec(es, depth, page_path, where):
     """Paid Featured clients get their own clearly labelled block, away from the lists that are ranked or ordered."""
-    paid = [e for e in es if e['tier'] != 'free']
+    paid = [e for e in es if e['tier'] == 'premium_leadgen']
     if not paid:
         return ''
     return ('<section class="alt featblock"><div class="w"><h2>Featured (paid) %s</h2><p class="fine">Paid placements, shown on their own. They are not part of any ranking or order on this page.</p>'
@@ -412,7 +412,7 @@ def region(slug):
 <section class="hero" style="padding-top:14px"><div class="w"><h1>{E(h1)}</h1><p class="lede">{E(areas.REGION_INTRO[slug])}</p><p>{E(REGION_COPY[slug])}</p></div></section>
 {est_html}
 {featured_sec(es, depth, 'areas/%s/' % slug, 'in the mobile list' if mobile else 'in the %s region' % name)}
-<section><div class="w"><h2>{'Mobile listings' if mobile else 'All workshops in the %s region' % E(name)}</h2><div class="grid">{''.join(card(e, depth, 'areas/%s/' % slug) for e in es if e['tier'] == 'free')}{list_card(depth, 'car workshop' if mobile else 'car workshop in the ' + name + ' region')}</div>{shortlist_links(es, name)}{mob_note}</div></section>'''
+<section><div class="w"><h2>{'Mobile listings' if mobile else 'All workshops in the %s region' % E(name)}</h2><div class="grid">{''.join(card(e, depth, 'areas/%s/' % slug) for e in es if e['tier'] != 'premium_leadgen')}{list_card(depth, 'car workshop' if mobile else 'car workshop in the ' + name + ' region')}</div>{shortlist_links(es, name)}{mob_note}</div></section>'''
     other_regions = ', '.join('<a href="%sareas/%s/">%s</a>' % (pre(depth), k, E(RN[k])) for k in PUB_REGIONS if k != slug)
     rfaqs = [
         ('Which areas does the %s page cover?' % name, areas.REGION_INTRO[slug]),
@@ -440,7 +440,7 @@ def faq_block(faqs, title):
 def estate(slug, es):
     """Level 2: /areas/<estate>/  (main local SEO page)"""
     depth = 2
-    paid_es = [e for e in es if e['tier'] != 'free']
+    paid_es = [e for e in es if e['tier'] == 'premium_leadgen']
     es = rank_sorted(es) + paid_es   # free listings first in display order; paid Featured clients only feed the separate block and the counts
     ranked = [e for e in es if (FACTS.get(e['slug']) or {}).get('rank')]
     a = ESTATES[slug]
@@ -488,7 +488,7 @@ def estate(slug, es):
 <section class="hero" style="padding-top:14px"><div class="w"><h1>Car workshops in {E(a['name'])}</h1><p class="lede">{E(intro)}</p>{chips}</div></section>
 {about_html}
 {featured_sec(paid_es, depth, 'areas/%s/' % slug, 'in ' + a['name'])}
-<section class="alt"><div class="w"><h2>Workshops in {E(a['name'])}</h2>{order_note}{etools}<div class="grid" id="estate-grid">{''.join(card(e, depth, 'areas/%s/' % slug) for e in es if e['tier'] == 'free')}{list_card(depth, 'car workshop in ' + a['name'])}</div>{shortlist_links(es, a['name'])}</div></section>
+<section class="alt"><div class="w"><h2>Workshops in {E(a['name'])}</h2>{order_note}{etools}<div class="grid" id="estate-grid">{''.join(card(e, depth, 'areas/%s/' % slug) for e in es if e['tier'] != 'premium_leadgen')}{list_card(depth, 'car workshop in ' + a['name'])}</div>{shortlist_links(es, a['name'])}</div></section>
 <section class="alt"><div class="w"><h2>Map of {E(a['name'])}</h2>
 <div class="mapbox"><iframe src="{E(map_src)}" title="Map of {E(a['name'], True)}" loading="lazy" referrerpolicy="strict-origin-when-cross-origin"></iframe></div>
 <p class="fine">Approximate area map from OpenStreetMap. <a href="{E(map_big)}" target="_blank" rel="noopener">View a larger map</a>. Use the Directions button on a workshop for its exact address.</p></div></section>
@@ -529,7 +529,7 @@ def estate_service(slug, cat, es):
     body = f'''<div class="w">{cr}</div>
 <section class="hero" style="padding-top:14px"><div class="w"><h1>{E(h1)}</h1><p class="lede">{E(intro)}</p></div></section>
 {featured_sec(es, depth, 'areas/%s/%s/' % (slug, cat), 'in ' + a['name'])}
-<section><div class="w"><div class="grid">{''.join(card(e, depth, 'areas/%s/%s/' % (slug, cat)) for e in es if e['tier'] == 'free')}</div>{shortlist_links(es, a['name'])}
+<section><div class="w"><div class="grid">{''.join(card(e, depth, 'areas/%s/%s/' % (slug, cat)) for e in es if e['tier'] != 'premium_leadgen')}</div>{shortlist_links(es, a['name'])}
 <p class="fine" style="margin-top:14px">More in this area: <a href="../">all workshops in {E(a['name'])}</a>, or <a href="{pre(depth)}services/{cat}/">{E(c['name'].lower())} across Singapore</a>.</p></div></section>
 <section class="alt"><div class="w nar"><h2>About {E(c['name'].lower())} in {E(a['name'])}</h2><p>{E(AREA_COPY[slug][0])}</p><p>{near_html}</p></div></section>
 {faq_block(sfaqs, 'Questions about %s in %s' % (c['name'].lower(), a['name']))}'''
@@ -1144,7 +1144,7 @@ def compute_facts():
 def rank_sorted(es):
     """Free (Basic) listings only, in display order. Where the estate has 8+ comparable workshops: ranked ones by combined score, best first, then the rest A to Z.
     Everywhere else: A to Z, no ranking. Paid Featured clients are never part of this list (see featured_sec)."""
-    free = [e for e in es if e['tier'] == 'free']
+    free = [e for e in es if e['tier'] != 'premium_leadgen']   # Basic and Verified, same rules, no boost for Verified (Edwin 3 Nov 2026)
     sc = lambda e: (FACTS.get(e['slug']) or {}).get('score')
     ranked = sorted([e for e in free if sc(e) is not None], key=lambda e: (-sc(e), -(FACTS[e['slug']]['n']), e['name'].lower()))
     rest = sorted([e for e in free if sc(e) is None], key=lambda e: e['name'].lower())
