@@ -85,12 +85,14 @@ if(!sent&&window.fetch){fetch(url,{method:'POST',credentials:'omit',keepalive:tr
  ['remove-wa','remove-for',function(n,b){return "Hi Page One, please remove the "+n+" listing from "+b.getAttribute('data-site')+". I run this business.\n\n(From "+location.href.split('#')[0]+")"},'remove_']].forEach(function(c){
 var b=document.getElementById(c[0]);if(!b)return;var n;try{n=JSON.parse(b.getAttribute('data-names'))[m[1]]}catch(e){}if(!n)return;
 var f=document.getElementById(c[1]);if(f){f.querySelector('b').textContent=n;f.hidden=false}
-b.href='https://wa.me/'+b.getAttribute('data-wa')+'?text='+encodeURIComponent(c[2](n,b));b.setAttribute('data-cta',c[3]+m[1])})})();
+b.href='https://wa.me/'+b.getAttribute('data-wa')+'?text='+encodeURIComponent(c[2](n,b));b.setAttribute('data-cta',c[3]+m[1]);
+if(c[0]==='claim-wa'){var tp=document.getElementById('claim-taps'),t;try{t=JSON.parse(b.getAttribute('data-taps')||'{}')[m[1]]}catch(e){}if(tp&&t){tp.textContent=t+' drivers have WhatsApped this workshop via '+b.getAttribute('data-site');tp.hidden=false}}})})();
 
 /* Estate pages: filter (Open Sunday / Open late) and sort (highest Google rating) using data-* computed at build time. */
 (function(){var g=document.getElementById('estate-grid'),t=document.querySelector('.etools');if(!g||!t)return;
 var cards=[].slice.call(g.querySelectorAll('.card[data-search]')),order=cards.slice(),on={sun:false,late:false},note=t.querySelector('.et-n');
-function apply(){var any=on.sun||on.late;cards.forEach(function(c){var ok=!((on.sun&&c.getAttribute('data-sun')!=='1')||(on.late&&c.getAttribute('data-late')!=='1'));c.hidden=!ok});if(note)note.hidden=!any}
+function apply(){var any=on.sun||on.late,shown=0;cards.forEach(function(c){var ok=!((on.sun&&c.getAttribute('data-sun')!=='1')||(on.late&&c.getAttribute('data-late')!=='1'));c.hidden=!ok;if(ok)shown++});if(note){note.hidden=!any;var ec=note.querySelector('.et-c');if(ec)ec.textContent='Showing '+shown+' of '+cards.length+' workshops.'}}
+var clr=t.querySelector('[data-clear]');if(clr)clr.addEventListener('click',function(){on.sun=on.late=false;[].forEach.call(t.querySelectorAll('[data-f]'),function(b){b.setAttribute('aria-pressed','false')});apply()});
 [].forEach.call(t.querySelectorAll('[data-f]'),function(b){b.addEventListener('click',function(){var k=b.getAttribute('data-f');on[k]=!on[k];b.setAttribute('aria-pressed',on[k]?'true':'false');apply()})});
 var s=t.querySelector('[data-sort]');if(s)s.addEventListener('change',function(){var l=order.slice();if(s.value==='rating')l.sort(function(a,b){return (parseFloat(b.getAttribute('data-rating'))||0)-(parseFloat(a.getAttribute('data-rating'))||0)});
 var cta=g.querySelector('.card.list');l.forEach(function(c){g.insertBefore(c,cta)})})})();

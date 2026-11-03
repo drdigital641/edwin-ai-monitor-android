@@ -171,7 +171,7 @@ ENTRIES = [
                   "paint brands", "owner name", "second phone 6759 3229 (2022 listing)"],
     ),
     dict(
-        slug="sg-garage", tier="premium_leadgen", name="SG Garage", domain="sggarage.com", url="https://sggarage.com/",
+        slug="sg-garage", tier="premium_leadgen", founder_owned=True, name="SG Garage", domain="sggarage.com", url="https://sggarage.com/",
         category="general-servicing-repair", regions=['north-east'], regions_note='Ang Mo Kio is in the North-East region (URA). Address: Ang Mo Kio Industrial Park 2.', area_label="Ang Mo Kio",
         title="SG Garage | Car Servicing and Repair, Ang Mo Kio",
         desc="SG Garage (Edwin Garage) in Ang Mo Kio: servicing from $128, aircon, brakes, batteries and accident repair. WhatsApp 9785 6612, Mon to Sat.",
