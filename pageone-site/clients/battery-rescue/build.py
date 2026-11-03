@@ -146,6 +146,9 @@ for mk, model, yrs, code in json.load(open(HERE / "data" / "namwah-fit.json")):
 # Edwin 26 Oct 2026: Honda Shuttle follows Vezel
 if not any(r[0] == "Honda" and "Shuttle" in r[1] for r in rows):
     rows += [["Honda","Shuttle","2015-2022","55B24L","NS60L","edwin",0],["Honda","Shuttle Hybrid","2015-2022","M42L","M42","edwin",0]]
+# Edwin 3 Nov 2026: Toyota Yaris Cross non-hybrid uses DIN45
+if not any(r[0] == "Toyota" and "Yaris Cross" in r[1] for r in rows):
+    rows += [["Toyota","Yaris Cross (non-hybrid)","2020-now","DIN45L","DIN45L","edwin",0]]
 rows.sort(key=lambda r: (r[0], r[1], r[2]))
 MAKES = {}
 for r in rows: MAKES.setdefault(r[0], []).append(r)
@@ -360,7 +363,7 @@ for k, aka, ah, lp, t in PRICES:
     mk_count = {}
     for r in cars: mk_count[r[0]] = mk_count.get(r[0], 0) + 1
     popular = ", ".join(f"{mk}" for mk, _ in sorted(mk_count.items(), key=lambda x: -x[1])[:6])
-    sample = [r for r in cars if r[5] == "sg"][:40] or cars[:40]
+    sample = [r for r in cars if r[5] in ("sg", "edwin")][:40] or cars[:40]
     ctable = ("<div class='tblw'><table class='tbl'><tr><th>Car</th><th>Years</th></tr>" + "".join(f"<tr><td>{esc(r[0])} {esc(r[1])}{'<br><small>Replaces '+esc(r[3])+' (same size)</small>' if r[6] else ''}</td><td>{esc(r[2])}</td></tr>" for r in sample) + "</table></div>") if sample else "<p>Call us to check if this size fits your car.</p>"
     nm = NAME[k]
     body = f"""<h1 class="h1" style="margin-top:8px">Delkor {esc(nm)} battery price in Singapore</h1>
