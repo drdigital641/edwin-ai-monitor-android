@@ -328,3 +328,20 @@ html:not(.js) .q{opacity:1;transform:none;grid-area:auto;margin-bottom:40px}html
 .why .sn{color:var(--brass)}
 .ph-box{border:1px dashed var(--line);padding:56px 28px;text-align:center}
 .ph-box .lead{margin:0 auto;max-width:18em}
+/* landed photos */
+.landed-art{position:relative;display:block;padding:0 0 60px 0}
+.la-main{overflow:hidden;aspect-ratio:1095/937}
+.la-main img,.la-inset img{width:100%;height:100%;object-fit:cover;transition:transform 1.2s var(--ease)}
+.landed-art:hover .la-main img{transform:scale(1.03)}
+.la-inset{position:absolute;right:-6px;bottom:0;width:58%;aspect-ratio:1475/700;overflow:hidden;border:6px solid var(--dark2);box-shadow:0 20px 40px rgba(0,0,0,.35)}
+.la-cap{position:absolute;left:14px;top:14px;padding:9px 12px;background:rgba(20,17,14,.62);font:500 11px/1 var(--sans);letter-spacing:.2em;text-transform:uppercase;color:var(--brass2)}
+@media(min-width:900px){.la-inset{right:-40px;width:55%}}
+.lhero .hero-p{max-width:30em}
+.feat-g{display:grid;gap:34px}
+.feat-g figure{margin:0}
+.feat-g figure>img{width:100%;object-fit:cover;background:var(--bg2)}
+.fg-a img{aspect-ratio:1095/937}.fg-b img{aspect-ratio:1475/700}.fg-c img{aspect-ratio:1300/470}
+.feat-g figcaption{display:grid;grid-template-columns:44px 1fr;gap:2px 10px;margin-top:16px;color:var(--ink2);font-size:15.5px}
+.feat-g figcaption .sn{grid-row:span 2;font-size:28px;color:var(--brass)}
+.feat-g figcaption b{font:400 24px/1.15 var(--serif);color:var(--ink)}
+@media(min-width:900px){.feat-g{grid-template-columns:5fr 7fr;gap:40px 48px;align-items:start}.fg-a{grid-row:span 2}.fg-c{margin-top:0}}

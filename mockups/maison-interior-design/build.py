@@ -21,7 +21,17 @@ IG = "https://www.instagram.com/maison_interiordesign/"
 FB = "https://www.facebook.com/MaisonInteriorDesignSG"
 
 # ---------------------------------------------------------------- projects
+L = BASE + "img/landed/"   # landed build photos sent by the client (house number removed)
+LDIM = {"landed-front.jpg": (1600, 760), "landed-volumes.jpg": (1095, 937), "landed-canopy.jpg": (1475, 700),
+        "landed-gate.jpg": (1300, 470), "landed-angle.jpg": (1600, 900), "landed-side.jpg": (900, 1600), "landed-street.jpg": (1600, 900)}
 P = [
+ dict(slug="landed-home-holland", name="Landed Home", place="Holland", kind="Landed", type="Landed house",
+      status="Completed", hero=L+"landed-front.jpg", heroL=L+"landed-front.jpg",
+      gal=[L+"landed-volumes.jpg", L+"landed-canopy.jpg", L+"landed-angle.jpg", L+"landed-gate.jpg"],
+      lede="A landed home built as a stack of offset grey volumes, with a deep cantilevered canopy over the car porch and a roof terrace above.",
+      story=[("Layered volumes","The upper floors are set as offset boxes in two tones of grey, each stepping back to open a roof terrace. Full-height glazing in black frames brings light deep into the rooms."),
+             ("A canopy that shelters","A deep cantilevered roof reaches over the car porch, so arriving in the rain stays dry. Its warm timber-look soffit softens the grey and leads you to the front door."),
+             ("A calm street face","Slatted aluminium gates, louvred service doors and a stone-look boundary wall keep the frontage quiet and private, while still letting air and light through.")]),
  dict(slug="jimmy-monkey-one-north", name="Jimmy Monkey", place="One-North", kind="Commercial", type="Café",
       status="Completed", hero="Jimmy-Monkey-Completed-6-1024x775.jpg", heroL="Jimmy-Monkey-Completed-6.jpg",
       gal=["Jimmy-Monkey-Completed-7-1024x775.jpg","Jimmy-Monkey-Completed-10-775x1024.jpg","Jimmy-Monkey-Completed-9-1024x775.jpg",
@@ -92,12 +102,20 @@ FAQ = [
 
 e = html.escape
 
+def src(f):
+    return f if f.startswith(("http", "/")) else U + f
+
+def absu(f):
+    return "https://pageonesingapore.com" + f if f.startswith("/") else src(f)
+
 def img(f, alt, cls="", w=1024, h=683, lazy=True, sizes=None):
-    return (f'<img src="{U}{f}" alt="{e(alt)}" width="{w}" height="{h}"'
+    return (f'<img src="{src(f)}" alt="{e(alt)}" width="{w}" height="{h}"'
             + (' loading="lazy" decoding="async"' if lazy else ' fetchpriority="high"')
             + ' referrerpolicy="no-referrer"' + (f' class="{cls}"' if cls else "") + '>')
 
 def dims(f):
+    for a, b in LDIM.items():
+        if f.endswith(a): return b
     for a, b in (("775x1024", (775, 1024)), ("766x1024", (766, 1024)), ("1024x775", (1024, 775)), ("1024x682", (1024, 682))):
         if a in f: return b
     return (1024, 683)
@@ -118,7 +136,7 @@ def head(title, desc, path, og_img, schema):
 <title>{e(title)}</title><meta name="description" content="{e(desc)}">
 <link rel="canonical" href="{url}">
 <meta property="og:type" content="website"><meta property="og:title" content="{e(title)}"><meta property="og:description" content="{e(desc)}">
-<meta property="og:url" content="{url}"><meta property="og:image" content="{U}{og_img}"><meta name="twitter:card" content="summary_large_image">
+<meta property="og:url" content="{url}"><meta property="og:image" content="{('' if og_img.startswith('http') else 'https://pageonesingapore.com') + src(og_img) if og_img.startswith('/') else src(og_img)}"><meta name="twitter:card" content="summary_large_image">
 <meta name="theme-color" content="#f4efe8">
 <link rel="icon" href="{BASE}favicon.svg" type="image/svg+xml"><link rel="icon" href="{BASE}brand/favicon-48.png" sizes="48x48" type="image/png"><link rel="apple-touch-icon" href="{BASE}brand/apple-touch-icon.png">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -196,25 +214,35 @@ def landed_band():
     return f"""<section class="sec landed dark"><div class="wrap landed-in"><div class="landed-t">
 <p class="eyebrow rv">Builder</p><h2 class="display rv">Building a <em>landed home?</em></h2>
 <p class="rv">Beyond interiors, our builder team mainly builds landed houses. One team from the structure to the last cabinet, so the house and the interior are planned together from day one.</p>
-<a class="btn light rv" href="{BASE}landed-homes/">Landed house building</a></div><div class="landed-art rv">{HOUSE}</div></div></section>"""
+<a class="btn light rv" href="{BASE}landed-homes/">Landed house building</a></div>
+<a class="landed-art rv" href="{BASE}portfolio/landed-home-holland/"><figure class="la-main">{img(L+"landed-volumes.jpg", "Landed home by Maison: offset grey volumes and roof terrace", w=1095, h=937)}</figure>
+<figure class="la-inset">{img(L+"landed-canopy.jpg", "Cantilevered canopy over the car porch", w=1475, h=700)}</figure>
+<span class="la-cap">Featured build · Holland</span></a></div></section>"""
 
 def landed():
     schema = {"@context": "https://schema.org", "@graph": [ORG, crumbs([("Home", ""), ("Landed Homes", "landed-homes/")]),
               {"@type": "Service", "name": "Landed house building", "serviceType": "Landed house construction and interior design", "provider": {"@id": DOMAIN + "/#business"}, "areaServed": {"@type": "Country", "name": "Singapore"}}]}
     s = head("Landed House Builder Singapore | Design & Build | Maison Interior Design",
              "Maison Interior Design's builder team mainly builds landed houses in Singapore, with the interior planned together with the build by one team.",
-             "landed-homes/", "62-Havelock-Road-Living-Dining-1-small-scaled.jpg", schema)
-    s += header("landed-homes/")
-    s += f"""<section class="phead"><div class="wrap lh"><div><p class="eyebrow">Landed homes</p><h1 class="display">House and interior, <em>built as one</em></h1>
-<p class="ph-p">Alongside residential and commercial interior design, our builder team mainly builds landed houses in Singapore.</p>
-<div class="btns"><a class="btn dark-b" href="{wa("Hi Maison, I'd like to discuss building a landed house.")}" data-cta="whatsapp">Discuss your landed home</a></div></div>
-<div class="lh-art">{HOUSE}</div></div></section>
+             "landed-homes/", L+"landed-front.jpg", schema)
+    s += header("landed-homes/", over=True)
+    s += f"""<section class="phero lhero">{img(L+"landed-front.jpg", "Landed house with cantilevered canopy, built by Maison", "kb", 1600, 760, lazy=False)}<div class="hero-shade"></div>
+<div class="wrap phero-in"><p class="eyebrow light">Landed homes · Design &amp; build</p><h1 class="display hero-h">House and interior, <em>built as one</em></h1>
+<p class="hero-p">Alongside residential and commercial interiors, our builder team mainly builds landed houses in Singapore.</p>
+<div class="btns"><a class="btn light" href="{wa("Hi Maison, I'd like to discuss building a landed house.")}" data-cta="whatsapp">Discuss your landed home</a><a class="btn ghost-l" href="#featured">See a recent build</a></div></div></section>
 <section class="sec tight"><div class="wrap"><div class="why">
 <div class="rv"><span class="sn">01</span><h3>One team, start to finish</h3><p>The people who build the house also design and fit out the interior, so nothing is lost between contractor and designer.</p></div>
 <div class="rv"><span class="sn">02</span><h3>Interior planned early</h3><p>Layouts, storage and lighting are decided with the structure, not squeezed in after the walls are up.</p></div>
 <div class="rv"><span class="sn">03</span><h3>See it first in 3D</h3><p>Perspective 3D drawings and a colour proposal let you walk through the house before work starts.</p></div>
 <div class="rv"><span class="sn">04</span><h3>Dedicated project management</h3><p>One point of contact on site, an itemised quotation and post-sales service after handover.</p></div></div></div></section>
-<section class="sec tight"><div class="wrap"><div class="ph-box rv"><p class="eyebrow">Landed projects</p><p class="lead">Photos of completed landed houses will appear here.</p><p class="fnote">Mockup note: please send photos of 2 or 3 landed builds and what was done on each.</p></div></div></section>
+<section class="sec feat" id="featured"><div class="wrap">
+<div class="sec-h"><div><p class="eyebrow rv">Featured build · Holland</p><h2 class="display rv">Three moves that <em>shape the house</em></h2></div>
+<a class="link rv" href="{BASE}portfolio/landed-home-holland/">View the full project</a></div>
+<div class="feat-g">
+<figure class="fg-a rv">{img(L+"landed-volumes.jpg", "Offset grey volumes with full-height glazing and roof terrace", w=1095, h=937)}<figcaption><span class="sn">01</span><b>Layered volumes</b>Offset boxes in two greys step back to open a roof terrace.</figcaption></figure>
+<figure class="fg-b rv">{img(L+"landed-canopy.jpg", "Deep cantilevered canopy with timber-look soffit", w=1475, h=700)}<figcaption><span class="sn">02</span><b>A canopy that shelters</b>A deep cantilever keeps the car porch dry; the warm soffit leads you in.</figcaption></figure>
+<figure class="fg-c rv">{img(L+"landed-gate.jpg", "Slatted aluminium gate and stone-look boundary wall", w=1300, h=470)}<figcaption><span class="sn">03</span><b>A calm street face</b>Slatted gates and a stone-look wall: private, but never closed in.</figcaption></figure>
+</div></div></section>
 {cta_block()}"""
     s += footer()
     write("landed-homes/index.html", s)
@@ -226,7 +254,7 @@ def home():
               ("62-Havelock-Road-Living-Dining-1-small-scaled.jpg", "Space consciousness", "River Place, Havelock Road", "62-havelock-road-river-place")]
     sl = "".join(f'<div class="slide{" on" if i==0 else ""}" data-cap="{e(c)}" data-href="{BASE}portfolio/{s}/">{img(f, c, "kb", 1600, 1067, lazy=i>0)}</div>' for i, (f, t, c, s) in enumerate(slides))
     dots = "".join(f'<button class="hdot{" on" if i==0 else ""}" aria-label="Show {e(c)}"><i></i></button>' for i, (f, t, c, s) in enumerate(slides))
-    feat = [BYSLUG[s] for s in ("jimmy-monkey-one-north", "62-havelock-road-river-place", "teck-whye-crescent", "yaowarat-thai-kway-chap")]
+    feat = [BYSLUG[s] for s in ("landed-home-holland", "62-havelock-road-river-place", "teck-whye-crescent", "jimmy-monkey-one-north")]
     grid = "".join(card(p, "pc f%d" % i) for i, p in enumerate(feat))
     strip = []
     for p in P:
@@ -291,7 +319,7 @@ def home():
 
 # ---------------------------------------------------------------- portfolio
 def portfolio():
-    chips = "".join(f'<button class="chip{" on" if k=="All" else ""}" data-f="{k}" aria-pressed="{"true" if k=="All" else "false"}">{k}</button>' for k in ("All", "Residential", "Commercial", "3D Design"))
+    chips = "".join(f'<button class="chip{" on" if k=="All" else ""}" data-f="{k}" aria-pressed="{"true" if k=="All" else "false"}">{k}</button>' for k in ("All", "Landed", "Residential", "Commercial", "3D Design"))
     grid = "".join(card(p) for p in P)
     schema = {"@context": "https://schema.org", "@graph": [ORG, crumbs([("Home", ""), ("Portfolio", "portfolio/")]),
               {"@type": "CollectionPage", "name": "Interior design portfolio", "hasPart": [{"@type": "CreativeWork", "name": p["name"] + " " + p["place"], "url": DOMAIN + "/portfolio/" + p["slug"] + "/"} for p in P]}]}
@@ -308,14 +336,14 @@ def portfolio():
 
 def project(i, p):
     nxt = P[(i + 1) % len(P)]
-    gal = "".join(f'<a class="g rv" href="{U}{f}" data-lb>{img(f, p["name"] + " " + p["place"] + ", photo " + str(j+2), w=dims(f)[0], h=dims(f)[1])}</a>' for j, f in enumerate(p["gal"]))
+    gal = "".join(f'<a class="g rv" href="{src(f)}" data-lb>{img(f, p["name"] + " " + p["place"] + ", photo " + str(j+2), w=dims(f)[0], h=dims(f)[1])}</a>' for j, f in enumerate(p["gal"]))
     story = ""
     if p.get("story"):
         story = '<div class="pstory">' + "".join(f'<div class="ps rv"><span class="sn">0{k+1}</span><h2>{e(t)}</h2><p>{e(x)}</p></div>' for k, (t, x) in enumerate(p["story"])) + "</div>"
     mats = f'<div class="pmeta-row"><dt>Materials</dt><dd>{"<br>".join(e(m) for m in p["materials"])}</dd></div>' if p.get("materials") else ""
     title = f'{p["name"]} {p["place"]}'
     schema = {"@context": "https://schema.org", "@graph": [ORG, crumbs([("Home", ""), ("Portfolio", "portfolio/"), (title, "portfolio/" + p["slug"] + "/")]),
-              {"@type": "CreativeWork", "name": title, "about": p["type"], "creator": {"@id": DOMAIN + "/#business"}, "image": [U + p["heroL"]] + [U + f for f in p["gal"][:4]]}]}
+              {"@type": "CreativeWork", "name": title, "about": p["type"], "creator": {"@id": DOMAIN + "/#business"}, "image": [absu(p["heroL"])] + [absu(f) for f in p["gal"][:4]]}]}
     s = head(f'{title} | {p["type"]} Interior Design | Maison Interior Design',
              f'{p["lede"]} {p["kind"]} interior project by Maison Interior Design, Singapore.'[:158],
              f'portfolio/{p["slug"]}/', p["heroL"], schema)
@@ -439,7 +467,7 @@ Conceptualisation; itemised quotation with 3D drawings; HDB renovation permit an
 """ + "".join(f'- [{p["name"]} {p["place"]}]({DOMAIN}/portfolio/{p["slug"]}/): {p["kind"]}, {p["type"]}.\n' for p in P))
     write("favicon.svg", '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64"><rect width="64" height="64" fill="#1f1c19"/><text x="32" y="44" font-family="Georgia,serif" font-size="36" fill="#c9a979" text-anchor="middle">M</text></svg>')
     shutil.copy(os.path.join(HERE, "mid.css"), os.path.join(OUT, "mid.css"))
-    for d in ("brand", "logos"):
+    for d in ("brand", "logos", "img"):
         if os.path.isdir(os.path.join(HERE, d)): shutil.copytree(os.path.join(HERE, d), os.path.join(OUT, d))
     shutil.copy(os.path.join(HERE, "mid.js"), os.path.join(OUT, "mid.js"))
 
