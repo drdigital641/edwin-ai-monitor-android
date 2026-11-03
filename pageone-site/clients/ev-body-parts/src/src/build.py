@@ -877,11 +877,21 @@ ARTICLES = [
    ("What should I send us?", "Send the model name, the build month and year, the part and the side, plus one photo of the whole rear and one of the whole front. If a part is already off the car, add a photo of its back."),
    ("Does this apply to the Model 3?", "Yes, in the same way. We list the earlier Model 3 as 2021 to 2023 and the Highland as 2023 onwards. The same checks apply. Send the build month and year, and photos."),
    ("What happens next?", "We compare your photos with the part and confirm fitment before we reply. If the two versions do share a part, we say so. If they do not, we say that too. See the <a href=\"{{R}}brands/tesla/model-y/\">Tesla Model Y</a> and <a href=\"{{R}}brands/tesla/model-y-juniper/\">Model Y Juniper</a> pages.")]),
+ ("what-is-an-oe-part-number-body-parts", "What is an OE part number, and how do you find it on a body part?", "What Is an OE Part Number? | EV Body Parts",
+  "What an OE part number is, where to look for it on a lamp, bumper or mirror, and what to send if you cannot find it.", "charge",
+  [("The short version", "An OE number is the car maker's own reference number for a part. It helps match the exact part, but you do not need it to ask us. If you cannot find it, send the car model, build month and year, and photos instead."),
+   ("What does OE mean?", "OE stands for original equipment. The OE number is the reference the car maker gives a part, and many other sellers list the same number so a buyer can compare. It is a reference for matching, not a promise about where a part comes from."),
+   ("Where can I find the number?", "On a lamp, mirror or bumper bracket, look at the back of the part or on a label or moulded marking. On a part that is still on the car, it is often hidden, so you may need to see it once the part is removed. A workshop or the car's parts documents may also list it."),
+   ("What if the number is worn or missing?", "That is common. Numbers can fade, be painted over or be on a part that is already thrown away. Send photos of the part and the area around it, and the car's model, build month and year. We can still check fitment from those."),
+   ("Is the OE number enough to confirm a fit?", "Not on its own. The same model can come in different versions, and a part number does not tell us about your trim, sensors or market. We compare the number with your build date, trim and photos before we quote."),
+   ("What should I send us?", "The brand and model, build month and year, the part and the side, the OE number if you have it, and a photo of the old part or the damage."),
+   ("What happens next?", "We check what we can source and confirm fitment before we reply. You can also <a href=\"{{R}}catalogue/\">search the catalogue</a> by car and part, and tap Get a quote.")]),
 ]
 
-ART_DATES = {"tesla-model-y-juniper-or-older-how-to-tell": "2026-11-02"}   # first published
+ART_DATES = {"tesla-model-y-juniper-or-older-how-to-tell": "2026-11-02", "what-is-an-oe-part-number-body-parts": "2026-11-04"}   # first published
 ART_MOD = "2026-11-02"   # last updated: FAQ + direct answer added in the SEO pass
 ART_ANSWER = {
+ "what-is-an-oe-part-number-body-parts": "An OE number is the car maker's own reference number for a part, and it helps match the exact part. Look for it on the back of a lamp, mirror or bumper bracket, often on a label or moulding. You do not need it to ask us: send your car model, build month and year, and photos instead.",
  "tesla-model-y-tail-lamp-what-to-send": "To get a Tesla Model Y tail lamp matched, send the model, whether you need the left or right lamp (as seen from the driver's seat), and two photos of the old lamp: one on the car and, if it is off, one of the back. Add the year on your car documents. We confirm fitment before we reply.",
  "china-ev-body-parts-what-to-check": "Before you buy a body part for a China or EV car in Singapore, check five things: the exact model, left or right, any sensors or camera near the part, whether it is bare, primed or painted, and what is included. Ask about returns and warranty and get the answer in writing.",
  "which-part-is-it": "Body parts go by several names. The bumper is the large piece at the front or rear, the fender (or wing) sits beside the front wheel, and the rear reflector is the red panel low on the rear bumper, not the tail lamp. If you are unsure, send a photo and your car model and we name the part.",
@@ -889,6 +899,11 @@ ART_ANSWER = {
 }
 for _k, _v in ART_ANSWER.items(): assert 40 <= len(_v.split()) <= 60, (_k, len(_v.split()))
 ART_FAQ = {
+"what-is-an-oe-part-number-body-parts": [
+ ("What does OE mean on a car part?", "OE stands for original equipment. The OE number is the car maker's own reference number for a part, and other sellers often list the same number so you can compare."),
+ ("Do I need an OE number to get a quote?", "No. The number helps, but you can send the car model, build month and year, the part and photos instead. We check fitment from those before we quote."),
+ ("Where is the OE number on a lamp or bumper?", "Usually on the back of the part, on a label or as a moulded marking. On a part still fitted to the car it may be hidden, so it is often easier to read once the part is removed."),
+ ("Is the OE number enough to confirm that a part fits?", "Not on its own. We also compare your build date, trim and photos, because the same model can come in different versions.")],
 "tesla-model-y-tail-lamp-what-to-send": [
  ("Is the left lamp the one on the left as I look at the car?", "No. Left and right are as seen from the driver's seat, not from outside the car. If you are not sure, send a photo showing where the damage is."),
  ("How many photos do I need to send?", "Two are usually enough: one from outside showing the whole lamp and the area around it, and, if the lamp is already off the car, one of the back where any markings or numbers are."),
@@ -913,8 +928,9 @@ def articles():
     cards = ""
     for slug, h1, title, desc, ph, secs in ARTICLES:
         cards += f'<a class="tc rv" href="{{{{R}}}}articles/{slug}/"><div class="tc-ph">{pic(ph, "Mood image", 900, 600, "(min-width:900px) 30vw, 100vw")}</div><div class="tc-b"><p class="kick">Guide</p><h3>{h1.replace("&", "&amp;")}</h3><p>{e(desc)}</p><span class="more">Read the guide {UI["arrow"]}</span></div></a>'
-        paras = f'<p class="mu small">By {BRAND} &middot; Last updated {datetime.date.fromisoformat(ART_MOD).strftime("%-d %B %Y")}</p>' + "".join(f"<h2>{a}</h2><p>{b}</p>" for a, b in secs)
-        sch = [{"@type": "Article", "headline": h1, "description": desc, "datePublished": ART_DATES.get(slug, "2026-10-31"), "dateModified": ART_MOD,
+        amod = max(ART_MOD, ART_DATES.get(slug, ""))
+        paras = f'<p class="mu small">By {BRAND} &middot; Last updated {datetime.date.fromisoformat(amod).strftime("%-d %B %Y")}</p>' + "".join(f"<h2>{a}</h2><p>{b}</p>" for a, b in secs)
+        sch = [{"@type": "Article", "headline": h1, "description": desc, "datePublished": ART_DATES.get(slug, "2026-10-31"), "dateModified": amod,
                 "author": {"@id": BASE + "/#org"}, "publisher": {"@id": BASE + "/#org"}, "image": BASE + "/og.jpg", "mainEntityOfPage": f"{BASE}/articles/{slug}/"}]
         if slug in ART_FAQ:
             paras += "<h2>FAQ</h2>" + faq_html(ART_FAQ[slug])
