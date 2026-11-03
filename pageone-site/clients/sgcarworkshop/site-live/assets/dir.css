@@ -344,3 +344,13 @@ ul.chips{list-style:none;display:flex;flex-wrap:wrap;gap:8px;padding:0;margin:14
 .blk{display:contents}
 
 .ptab{width:100%;border-collapse:collapse;margin:0 0 8px}.ptab th,.ptab td{padding:9px 10px;border-bottom:1px solid var(--line);text-align:left;vertical-align:top;font-size:.92rem}.ptab thead th{background:#f4f2ec;font-size:.8rem}.ptab tbody th{font-weight:600}.ptab td b{color:#7a5710}
+/* Phone Basic card (no photo): slim coloured header strip instead of a wide empty left column (Edwin 3 Nov 2026) */
+@media (max-width:639px){
+ .grid .card.basic:not(.list){flex-direction:column}
+ .grid .card.basic .ph.btile{flex:none;min-height:0;height:50px;aspect-ratio:auto;flex-direction:row;justify-content:flex-start;padding:0 12px;border-bottom:3px solid var(--bc)}
+ .grid .card.basic .btile .bt,.grid .card.basic .btile .ini{width:32px;height:32px;font-size:.75rem}
+ .grid .card.basic .btile .cic{width:18px;height:18px;right:-6px;bottom:-5px}.grid .card.basic .btile .cic svg{width:12px;height:12px;max-width:12px;max-height:12px}
+ .grid .card.basic .tier.on-ph{left:auto;right:10px;top:50%;transform:translateY(-50%)}
+}
+.claim-rm{margin:8px 0 0;font-size:.75rem}.claim-rm a{color:var(--muted)}
+.claimbtn{font-weight:500;font-size:.8rem;padding:7px 10px;text-decoration:underline}

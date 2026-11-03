@@ -94,7 +94,7 @@ TIERS = {
     "free": dict(label="Basic listing", badge="Basic listing", price=0, price_text="Free", tagline="Get found"),
     "premium": dict(label="Verified listing", badge="Verified", price=20, price_text="Ask us on WhatsApp", tagline="Landing page"),
     "none": dict(label="Founder-owned listing", badge="Owned by the site's founder", price=0, price_text="Not for sale", tagline="Founder-owned"),
-    "premium_leadgen": dict(label="Premium", badge="Premium", price=50, price_text="Ask us on WhatsApp", tagline="Full Page One website setup"),
+    "premium_leadgen": dict(label="Premium", badge="Featured (paid)", price=50, price_text="Ask us on WhatsApp", tagline="Full Page One website setup"),
 }
 PRICE_NOTE = "Prices are not published: ask us on WhatsApp. Basic is free."  # Edwin 1 Nov 2026: Verified S$20/mo, Premium S$50/mo, internal only
 

@@ -543,6 +543,7 @@ for _f in files:
                     if _m2 and ENT_TIER.get(_m2.group(1)) == 'premium_leadgen': print('paid listing inside an ItemList', _rel, _m2.group(1)); bad += 1
     # A to Z: every card list that holds a founder-owned or Verified listing must be A to Z (the separate Featured (paid) block is the only exception)
     _body = re.sub(r'<section class="alt featblock">.*?</section>', '', _t, flags=re.S)
+    if _rel == 'index.html': _body = re.sub(r'<section id="workshops".*?</section>', '', _body, flags=re.S)   # homepage list has its own group order (Edwin 3 Nov 2026), checked below
     for _sec in re.findall(r'<section[^>]*>.*?</section>', _body, re.S):
         _cards = re.findall(r'<article class="card[^"]*"[^>]*data-tier="([^"]+)".*?<h3><a [^>]*>([^<]+)</a>', _sec, re.S)
         if len(_cards) > 1 and any(t in ('none', 'premium') for t, _n in _cards):  # paid cards, wherever they sit, are the Featured (paid) group
@@ -563,5 +564,15 @@ for _sub in ('google_cache', 'workshops'):
 if HOTLINK: print('NOTE: %d hotlinked images still pending a copy to sgcarworkshop.sg (hosts in settings.json image_hosts_pending)' % len(HOTLINK))
 _css = open(os.path.join(root, 'assets', 'dir.css'), encoding='utf-8').read()
 if re.search(r'\.rv[^{}]*\{[^}]*(opacity:\s*0\b|visibility:\s*hidden)', re.sub(r'/\*.*?\*/', '', _css, flags=re.S)): print('dir.css hides .rv blocks by default (scroll-reveal): blocks must be visible without scrolling'); bad += 1
+# Homepage list order (Edwin 3 Nov 2026): Featured (paid), then with photos, then the rest; each group by Google rating score
+import build as _b
+_ho = [e['slug'] for e in _b.home_order()]
+_hs = re.search(r'<section id="workshops".*?</section>', open(os.path.join(root, 'index.html'), encoding='utf-8').read(), re.S).group(0)
+_seen = []
+for _s in re.findall(r'<article class="card[^"]*".*?<h3><a href="(?:\./)?workshops/([a-z0-9-]+)/"', _hs, re.S):
+    if _s not in _seen: _seen.append(_s)
+_cls = [_b.home_class(next(e for e in ENTRIES if e['slug'] == s)) for s in _seen]
+if _seen != _ho or _cls != sorted(_cls): print('homepage list is not in group order', _seen[:8]); bad += 1
+else: print('homepage order ok, groups (paid, with photos, rest):', [_cls.count(k) for k in (0, 1, 2)])
 print('pages checked:', len(files), 'problems:', bad)
 sys.exit(1 if bad else 0)

@@ -347,12 +347,46 @@ def area_copy(slug):
 
 
 # ------------------------------------------------------------------ pages
+def _g_rc(e):
+    """(rating, count) from Google: the workshop's cached Google data, else the checked rating stored on the record."""
+    g = GCACHE.get(e['slug']) or {}
+    if g.get('rating'):
+        return float(g['rating']), int(g.get('userRatingCount') or 0)
+    gr = e.get('google_rating') or {}
+    if gr.get('rating'):
+        return float(gr['rating']), int(gr.get('count') or 0)
+    return None, 0
+
+
+def home_class(e):
+    """Homepage list groups (Edwin 3 Nov 2026): 0 Featured (paid), 1 listings with their own photos, 2 everyone else."""
+    if is_paid(e):
+        return 0
+    return 1 if (e.get('card_img') or e.get('photos')) else 2
+
+
+def home_order():
+    """Homepage 'All workshops': Featured (paid) first, then listings with photos, then the rest (Edwin 3 Nov 2026).
+    Inside each group: Google rating and number of ratings together (as if each workshop had RANK_PRIOR extra ratings at the
+    site-wide average), workshops without a Google rating last, then A to Z."""
+    es = list(ENTRIES)
+    rc = {e['slug']: _g_rc(e) for e in es}
+    rated = [v for v in rc.values() if v[0] is not None and v[1] > 0]
+    avg = (sum(r * n for r, n in rated) / sum(n for _, n in rated)) if rated else 4.5
+    def score(e):
+        r, n = rc[e['slug']]
+        return None if r is None else (n / (n + RANK_PRIOR)) * r + (RANK_PRIOR / (n + RANK_PRIOR)) * avg
+    def key(e):
+        s = score(e)
+        return (home_class(e), 1 if s is None else 0, -(s or 0), e['name'].lower())
+    return sorted(es, key=key)
+
+
 def home():
     depth = 0
     feats = [e for e in ENTRIES if is_paid(e)]
     slides = ''.join(slide(e) for e in feats)
-    # Home list: A to Z, no tier order (Edwin 3 Nov 2026). Paid Featured clients come last in the lazy part, still searchable; the first 12 are in the HTML.
-    ordered = sorted([e for e in ENTRIES if not is_paid(e)], key=lambda e: e['name'].lower()) + [e for e in ENTRIES if is_paid(e)]
+    ordered = home_order()
     first = ''.join(card(e, 0, '') for e in ordered[:12])
     rest = ''.join(card(e, 0, '') for e in ordered[12:])
     cards = first + ('<template id="more-cards">%s</template>' % rest) if rest else first
@@ -388,7 +422,7 @@ def home():
 <section class="feat" aria-roledescription="carousel" aria-label="Featured Premium workshops"><div class="w"><div class="sec-h"><h2>Featured Premium workshops <span class="spons">Featured (paid)</span></h2>
 <div class="car-nav"><button type="button" id="cprev" aria-label="Previous">{ic('chev-l')}</button><button type="button" id="cnext" aria-label="Next">{ic('chev-r')}</button></div></div>
 <div class="marq" id="marq"><ul class="track" id="track" aria-label="Featured workshops">{slides}</ul></div></div></section>
-<section id="workshops" class="lst"><div class="w"><div class="sec-h"><h2>All workshops</h2><a class="sec-link" href="#services">Browse by service</a></div><p class="fine adnote">Workshops are listed A to Z with no boost for any tier. Paid Featured clients are in their own labelled block above and are marked Featured (paid). Basic listings are built from the workshop's public Google Business Profile and, where available, what its customers mention in Google reviews, and link to its Google Maps listing. They are not endorsed by or arranged with the business.</p><div class="grid" id="results">{cards}{more_btn}</div>
+<section id="workshops" class="lst"><div class="w"><div class="sec-h"><h2>All workshops</h2><a class="sec-link" href="#services">Browse by service</a></div><p class="fine adnote">Order: Featured (paid) clients first, marked Featured (paid); then listings with their own photos; then the rest. Inside each group, by Google rating and number of ratings together (see <a href="about/">How we rank</a>), with workshops that have no Google rating last. Basic listings are built from the workshop's public Google Business Profile and, where available, what its customers mention in Google reviews, and link to its Google Maps listing. They are not endorsed by or arranged with the business.</p><div class="grid" id="results">{cards}{more_btn}</div>
 <div class="empty" id="empty"><b>No workshops match.</b> Try fewer filters, or <a href="list-your-workshop/">list your workshop</a>.</div></div></section>
 <section class="alt" id="services"><div class="w"><h2>Browse by service</h2><ul class="tiles">{svc_tiles}</ul></div></section>
 <section id="regions"><div class="w"><h2>Browse by area</h2><ul class="tiles rg">{reg_tiles}</ul><h3 class="sub-h">Estates and industrial areas</h3><ul class="tiles est">{est_tiles}</ul></div></section>
@@ -1846,7 +1880,7 @@ def list_page():
 <section><h2>Not listed yet?</h2><p>{E(SITE_NAME)} lists car workshops and car services in Singapore: repair, gearbox, ABS and ECU modules, spray painting and bodywork, batteries, detailing and coating, wraps and PPF, and parts. Message us and we will list yours, free.</p>
 <p><a class="btn big" href="{wa}" target="_blank" rel="noopener" data-cta="whatsapp_list_page">{WA_SVG} WhatsApp Page One</a></p></section>
 <section><h2>How listings are ordered</h2>
-<p>We do not sell rankings. Claiming does not change any order, and paid Featured workshops are shown in their own labelled block, never in a ranking. How we rank, where we do, is explained on the <a href="../about/">About page</a>.</p></section>
+<p>We do not sell rankings. Claiming alone does not change any order (on the homepage, listings with the business's own photos are shown before listings without photos), and paid Featured workshops are shown in their own labelled block, never in a ranking. How we rank, where we do, is explained on the <a href="../about/">About page</a>.</p></section>
 <section id="remove" class="claim-sec"><h2>Remove my listing</h2>
 <p>Basic listings are built from the workshop's public Google Business Profile and, where available, what its customers mention in Google reviews, and link to its Google Maps listing. They are not endorsed by or arranged with the business. If you run a workshop and want your listing taken down, send us a message and we will remove it. We check that you run the business first.</p>
 <p class="claim-for" id="remove-for" hidden>Listing: <b></b></p>
@@ -1865,7 +1899,7 @@ def about_page():
 <h1 style="margin-top:14px">About {E(SITE_NAME)}</h1>
 <p class="lede" style="font-size:1rem">{E(SITE_NAME)} is a directory of car workshops and car services in Singapore, run by Page One Singapore, a web and SEO service for small businesses.</p>
 <h2>Where the details come from</h2>
-<p>Every fact on a page comes from the business itself or from public records. If a detail cannot be confirmed, such as a price or opening hours, we leave it out. We do not copy a business's website text, and we do not sell rankings. Where a Google Maps rating is shown, it is Google's, with its date.</p>\n<h2>How we rank</h2>\n<p>Only where an estate has at least 8 workshops with 20 or more Google ratings, we rank those by this score: (v / (v + 50)) x the workshop's rating + (50 / (v + 50)) x the estate's average rating, where v is its number of Google ratings. It pulls workshops with fewer ratings toward the average, so a 4.9 from 1,145 ratings can rank above a 5.0 from 59. Everywhere else we show no rank and list workshops A to Z. Paid Featured workshops are shown in their own block and are never part of a ranking.</p>
+<p>Every fact on a page comes from the business itself or from public records. If a detail cannot be confirmed, such as a price or opening hours, we leave it out. We do not copy a business's website text, and we do not sell rankings. Where a Google Maps rating is shown, it is Google's, with its date.</p>\n<h2>How we rank</h2>\n<p>Only where an estate has at least 8 workshops with 20 or more Google ratings, we rank those by this score: (v / (v + 50)) x the workshop's rating + (50 / (v + 50)) x the estate's average rating, where v is its number of Google ratings. It pulls workshops with fewer ratings toward the average, so a 4.9 from 1,145 ratings can rank above a 5.0 from 59. Everywhere else we show no rank and list workshops A to Z. Paid Featured workshops are shown in their own block and are never part of a ranking.</p>\n<h2>Homepage order</h2>\n<p>The All workshops list on the homepage is shown in three groups: Featured (paid) clients, marked as such; then listings with the business's own photos; then the rest. Inside each group, workshops are ordered by the same score, using the average across the whole site, and workshops without a Google rating come last. This is a display order, not a ranking or a recommendation.</p>
 <h2>Basic listings</h2>
 <p>Basic listings are built from the workshop's public Google Business Profile and, where available, what its customers mention in Google reviews, and link to its Google Maps listing. They are not endorsed by or arranged with the business. They are free and can be removed on request: use <a href="../list-your-workshop/#remove">Remove my listing</a>. Verified and Premium listings are for businesses that signed up and supplied their own details.</p>
 <h2>Who we list</h2>
