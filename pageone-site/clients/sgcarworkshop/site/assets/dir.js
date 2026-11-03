@@ -49,14 +49,18 @@ function loop(t){var dt=last?Math.min(t-last,100):0;last=t;if(!held&&!drag&&!tt&
 requestAnimationFrame(loop);
 window.addEventListener('resize',function(){var o=tr.children[n].offsetLeft-tr.children[0].offsetLeft;if(o>0)sw=o;wrap();draw()});
 function release(){held=false;if(drag)until=performance.now()+2000;if(drag){drag=false;mq.classList.remove('drag');setTimeout(function(){moved=false},0)}if(pid!==null){try{mq.releasePointerCapture(pid)}catch(x){}pid=null}}
-mq.addEventListener('pointerdown',function(e){if(e.pointerType==='mouse'&&e.button!==0)return;held=true;drag=false;moved=false;sx=e.clientX;so=off;pid=e.pointerId});
+mq.addEventListener('pointerdown',function(e){if(e.pointerType!=='mouse'||e.button!==0)return;held=true;drag=false;moved=false;sx=e.clientX;so=off;pid=e.pointerId});
 mq.addEventListener('pointermove',function(e){if(!held)return;var dx=e.clientX-sx;
 if(!drag&&Math.abs(dx)>6){drag=true;moved=true;mq.classList.add('drag');try{mq.setPointerCapture(e.pointerId)}catch(x){}}
 if(drag){off=so-dx;wrap();draw()}});
 ['pointerup','pointercancel','lostpointercapture'].forEach(function(ev){mq.addEventListener(ev,release)});
-var ty=0,tx=0;mq.addEventListener('touchstart',function(e){var t=e.touches[0];tx=t.clientX;ty=t.clientY;tt=true},{passive:true});
-mq.addEventListener('touchmove',function(e){if(!tt)return;var t=e.touches[0];if(!drag&&Math.abs(t.clientY-ty)>8&&Math.abs(t.clientY-ty)>Math.abs(t.clientX-tx)){tt=false;held=false}},{passive:true});
-['touchend','touchcancel'].forEach(function(ev){mq.addEventListener(ev,function(){if(tt)until=performance.now()+2000;tt=false},{passive:true})});
+/* Touch: decide on the first 6px. Sideways = slide the carousel (page does not scroll); up/down = normal page scroll and the carousel keeps sliding. */
+var tx=0,ty=0,tso=0,mode='';
+mq.addEventListener('touchstart',function(e){var t=e.touches[0];tx=t.clientX;ty=t.clientY;tso=off;mode='';tt=true;moved=false},{passive:true});
+mq.addEventListener('touchmove',function(e){if(!tt)return;var t=e.touches[0],dx=t.clientX-tx,dy=t.clientY-ty;
+if(!mode){if(Math.abs(dx)<6&&Math.abs(dy)<6)return;mode=Math.abs(dx)>=Math.abs(dy)?'h':'v';if(mode==='v'){tt=false;return}drag=true;moved=true;mq.classList.add('drag')}
+if(mode==='h'){if(e.cancelable)e.preventDefault();off=tso-dx;wrap();draw()}},{passive:false});
+['touchend','touchcancel'].forEach(function(ev){mq.addEventListener(ev,function(){if(mode==='h'){drag=false;mq.classList.remove('drag');setTimeout(function(){moved=false},0)}if(tt)until=performance.now()+2000;tt=false;mode=''},{passive:true})});
 /* a drag must not count as a tap on a button or link */
 mq.addEventListener('click',function(e){if(moved){e.preventDefault();e.stopPropagation()}},true);
 mq.addEventListener('dragstart',function(e){e.preventDefault()});
