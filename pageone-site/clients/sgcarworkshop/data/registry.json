@@ -853,5 +853,41 @@
   "mobile": "+6596563622",
   "status": "built",
   "date": "2026-11-03"
+ },
+ {
+  "place_id": "ChIJXVIocowT2jERwhjNXdeHQn4",
+  "slug": "1-car-service",
+  "name_norm": "1 car service",
+  "postal_code": "575722",
+  "mobile": "+6580337708",
+  "status": "built",
+  "date": "2026-11-03"
+ },
+ {
+  "place_id": "ChIJd7BpB7cX2jERMmhRbyUQ8vo",
+  "slug": "team-autopro",
+  "name_norm": "team autopro",
+  "postal_code": "575722",
+  "mobile": "+6588799997",
+  "status": "built",
+  "date": "2026-11-03"
+ },
+ {
+  "place_id": "ChIJXyrQa7cX2jERhEF-0QXi304",
+  "slug": null,
+  "name_norm": "corsa motorworks",
+  "postal_code": "608586",
+  "mobile": null,
+  "status": "rejected-not-car-repair",
+  "date": "2026-11-03"
+ },
+ {
+  "place_id": "ChIJNRqki3gX2jER-R5bhkCjS3c",
+  "slug": "omni-autowerks",
+  "name_norm": "omni autowerks",
+  "postal_code": "415875",
+  "mobile": "+6590490880",
+  "status": "built",
+  "date": "2026-11-03"
  }
 ]

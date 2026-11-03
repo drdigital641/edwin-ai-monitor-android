@@ -1,0 +1,34 @@
+{
+ "businessStatus": "OPERATIONAL",
+ "primaryType": "car_repair",
+ "types": [
+  "car_repair",
+  "point_of_interest",
+  "service",
+  "establishment"
+ ],
+ "rating": 4.9,
+ "userRatingCount": 111,
+ "websiteUri": "http://teamauto.sg/",
+ "paymentOptions": {
+  "acceptsDebitCards": true,
+  "acceptsCashOnly": false,
+  "acceptsNfc": true
+ },
+ "parkingOptions": null,
+ "editorialSummary": null,
+ "weekdayDescriptions": [
+  "Monday: 9:30 AM – 6:00 PM",
+  "Tuesday: 9:30 AM – 6:00 PM",
+  "Wednesday: 9:30 AM – 6:00 PM",
+  "Thursday: 9:30 AM – 6:00 PM",
+  "Friday: 9:30 AM – 6:00 PM",
+  "Saturday: 9:30 AM – 5:30 PM",
+  "Sunday: Closed"
+ ],
+ "review_count_seen": 5,
+ "review_themes": "Customers on Google Maps mention honest servicing advice with no pressure to spend, patient explanations, and help with towing and insurance claims after accidents. One review questioned a part used during a service.",
+ "fetched_at": "2026-11-03",
+ "place_id": "ChIJd7BpB7cX2jERMmhRbyUQ8vo",
+ "source": "google_places"
+}

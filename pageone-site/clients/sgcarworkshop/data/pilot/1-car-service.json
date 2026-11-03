@@ -1,0 +1,30 @@
+{
+ "lede": "1 Car Service is a car repair workshop at 160 Sin Ming Dr, #03-07 Sin Ming Autocity. Its Google Maps listing shows opening hours, its website and customer ratings.",
+ "chips": [
+  "Car repair"
+ ],
+ "services": [
+  "General servicing and repair"
+ ],
+ "themes": "Customers on Google Maps mention careful diagnosis, clear updates and photos of worn parts before any work starts. Several mention Audi and Volvo cars, with jobs such as servicing, oil leaks, brakes, radiator fans and walnut blasting.",
+ "faqs": [
+  [
+   "What does 1 Car Service do?",
+   "Google Maps lists it as a car repair workshop."
+  ],
+  [
+   "What are the opening hours?",
+   "The hours are listed in the Google Maps section above. Please see Google Maps for current hours."
+  ]
+ ],
+ "sources": "its Google Maps listing",
+ "stories": [],
+ "mentioned_services": [
+  "Car servicing",
+  "Oil leak repair",
+  "Brake and rotor replacement",
+  "Radiator fan replacement",
+  "Walnut blasting",
+  "Audi and Volvo cars"
+ ]
+}

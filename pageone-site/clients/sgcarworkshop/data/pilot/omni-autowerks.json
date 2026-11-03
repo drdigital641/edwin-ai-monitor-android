@@ -1,0 +1,27 @@
+{
+ "lede": "Omni Autowerks is a car repair workshop at 8 Kaki Bukit Ave 4, #06-30 Premier@Kaki Bukit. Its Google Maps listing shows opening hours, its Instagram page and customer ratings.",
+ "chips": [
+  "Car repair"
+ ],
+ "services": [
+  "General servicing and repair"
+ ],
+ "themes": "Customers on Google Maps mention mechanics who explain what is urgent and what can wait, and fair prices. One review reports problems after an engine overhaul. Only 7 people have rated it so far.",
+ "faqs": [
+  [
+   "What does Omni Autowerks do?",
+   "Google Maps lists it as a car repair workshop."
+  ],
+  [
+   "What are the opening hours?",
+   "The hours are listed in the Google Maps section above. Please see Google Maps for current hours."
+  ]
+ ],
+ "sources": "its Google Maps listing",
+ "stories": [],
+ "mentioned_services": [
+  "Car servicing",
+  "Engine overhaul",
+  "Fault diagnosis"
+ ]
+}
