@@ -1,0 +1,24 @@
+name: ContiExpert research fetch
+on:
+  push:
+    branches: [ "claude/project-thread-h68h7z" ]
+    paths: [ ".github/ce/**" ]
+permissions:
+  contents: write
+jobs:
+  fetch:
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: claude/project-thread-h68h7z
+      - run: pip install pillow
+      - run: python3 .github/ce/fetch.py
+      - name: Commit
+        run: |
+          git config user.name "claude-research-fetch"
+          git config user.email "noreply@anthropic.com"
+          git add pageone-site
+          git diff --cached --quiet || git commit -m "ContiExpert research fetch (media, pages, social)"
+          git pull --rebase origin claude/project-thread-h68h7z
+          git push origin HEAD:claude/project-thread-h68h7z
