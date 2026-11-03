@@ -91,7 +91,8 @@ if(c[0]==='claim-wa'){var tp=document.getElementById('claim-taps'),t;try{t=JSON.
 /* Estate pages: filter (Open Sunday / Open late) and sort (highest Google rating) using data-* computed at build time. */
 (function(){var g=document.getElementById('estate-grid'),t=document.querySelector('.etools');if(!g||!t)return;
 var cards=[].slice.call(g.querySelectorAll('.card[data-search]')),order=cards.slice(),on={sun:false,late:false},note=t.querySelector('.et-n');
-function apply(){var any=on.sun||on.late;cards.forEach(function(c){var ok=!((on.sun&&c.getAttribute('data-sun')!=='1')||(on.late&&c.getAttribute('data-late')!=='1'));c.hidden=!ok});if(note)note.hidden=!any}
+function apply(){var any=on.sun||on.late,shown=0;cards.forEach(function(c){var ok=!((on.sun&&c.getAttribute('data-sun')!=='1')||(on.late&&c.getAttribute('data-late')!=='1'));c.hidden=!ok;if(ok)shown++});if(note){note.hidden=!any;var ec=note.querySelector('.et-c');if(ec)ec.textContent='Showing '+shown+' of '+cards.length+' workshops.'}}
+var clr=t.querySelector('[data-clear]');if(clr)clr.addEventListener('click',function(){on.sun=on.late=false;[].forEach.call(t.querySelectorAll('[data-f]'),function(b){b.setAttribute('aria-pressed','false')});apply()});
 [].forEach.call(t.querySelectorAll('[data-f]'),function(b){b.addEventListener('click',function(){var k=b.getAttribute('data-f');on[k]=!on[k];b.setAttribute('aria-pressed',on[k]?'true':'false');apply()})});
 var s=t.querySelector('[data-sort]');if(s)s.addEventListener('change',function(){var l=order.slice();if(s.value==='rating')l.sort(function(a,b){return (parseFloat(b.getAttribute('data-rating'))||0)-(parseFloat(a.getAttribute('data-rating'))||0)});
 var cta=g.querySelector('.card.list');l.forEach(function(c){g.insertBefore(c,cta)})})})();

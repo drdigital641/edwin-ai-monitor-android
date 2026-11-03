@@ -32,8 +32,8 @@ for f in sorted(files):
     txt = ' '.join(p.text)
     _bt = txt + ' '.join(p.ld)
     if re.fullmatch(r'areas/[a-z-]+/index\.html', rel) and '<title>Best Car Workshops in ' in src:
-        # Edwin 3 Nov 2026: estate titles may say "Best ... Top Rated" only when the page ranks workshops by Google rating (20+ ratings) and says so
-        if 'Ordered by Google rating among the' not in src: print('BEST title without a ranking basis', rel); bad += 1
+        # Edwin 3 Nov 2026: estate titles may say "Best ... Top Rated" only when the page ranks workshops by the combined score (8+ comparable workshops) and says so
+        if 'Ranked by a combined score of Google rating and number of ratings' not in src: print('BEST title without a ranking basis', rel); bad += 1
         _bt = _bt.replace('Best Car Workshops in', 'Car Workshops in', 1)
     for m in BAN.finditer(_bt): print('BANNED', rel, m.group(0)); bad += 1
     if '404.html' == rel: continue
