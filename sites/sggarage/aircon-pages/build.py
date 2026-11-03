@@ -22,7 +22,7 @@ CSS = """*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;font-
 
 NAV = """<header class="site-header"><nav class="nav-inner"><a href="/" class="nav-logo">Edwin Garage</a><ul class="nav-links"><li><a href="/">Home</a></li><li><a href="/car-servicing-repair/">Servicing &amp; Repair</a></li><li><a href="/car-aircon-repair/">Car Aircon</a></li><li><a href="/accident-claim-repair/">Accident Claim</a></li><li><a href="/prices/">Prices</a></li><li><a href="/about/">About</a></li><li><a href="/articles/">Articles</a></li></ul><a href="https://sggarageedwin.as.me/" class="nav-cta" target="_blank" rel="noopener">Book Now</a></nav></header>"""
 
-FOOTER = """<footer class="footer"><div class="footer-inner"><div class="footer-col"><strong>Edwin Garage</strong><p>Main workshop: Blk 5032 Ang Mo Kio Industrial Park 2 #01-295, Singapore 569535</p><p>Aircon unit (SG Garage): #01-309, same address</p><p>Mon–Sat 10am–8pm | Closed Sundays</p></div><div class="footer-col"><strong>Aircon</strong><ul><li><a href="/car-aircon-specialist-singapore/">Car Aircon Specialist</a></li><li><a href="/car-aircon-compressor-replacement/">Compressor Replacement</a></li><li><a href="/car-aircon-repair/">Car Aircon Repair</a></li><li><a href="/prices/">Starting prices</a></li></ul></div><div class="footer-col"><strong>Contact</strong><p>WhatsApp: <a href="https://wa.me/6597856612">9785 6612</a> (enquiries only)</p><p>Book: <a href="https://sggarageedwin.as.me/">sggarageedwin.as.me</a></p><p><a href="/about/">About Edwin Garage</a></p></div></div><div class="footer-bottom">© 2026 Edwin Garage Automotive Services Pte. Ltd. (UEN 201828727D). All rights reserved.</div></footer><script src="/p1-cta.js" defer></script>"""
+FOOTER = """<footer class="footer"><div class="footer-inner"><div class="footer-col"><strong>Edwin Garage</strong><p>Main workshop: Blk 5032 Ang Mo Kio Industrial Park 2 #01-295, Singapore 569535</p><p>Aircon unit (SG Garage): #01-309, same address</p><p>Mon–Sat 10am–8pm | Closed Sundays</p></div><div class="footer-col"><strong>Aircon</strong><ul><li><a href="/car-aircon-specialist-singapore/">Car Aircon Specialist</a></li><li><a href="/car-aircon-compressor-replacement/">Compressor Replacement</a></li><li><a href="/car-aircon-repair/">Car Aircon Repair</a></li><li><a href="/prices/">Starting prices</a></li></ul></div><div class="footer-col"><strong>Contact</strong><p>By appointment only</p><p>Book: <a href="https://sggarageedwin.as.me/">sggarageedwin.as.me</a></p><p><a href="/about/">About Edwin Garage</a></p></div></div><div class="footer-bottom">© 2026 Edwin Garage Automotive Services Pte. Ltd. (UEN 201828727D). All rights reserved.</div></footer><script src="/p1-cta.js" defer></script>"""
 
 
 def esc(s):
@@ -101,16 +101,15 @@ def page(p):
         f'<p class="eyebrow">{p["eyebrow"]}</p><h1>{p["h1"]}</h1>'
         f'<div class="answer"><p><strong>Quick answer:</strong> {p["answer"]}</p></div>'
         f'<div class="actions"><a class="btn" href="{BOOK}" target="_blank" rel="noopener">Book Online</a>'
-        f'<a class="btn alt" href="{WA}?text={p["wa_text"]}" target="_blank" rel="noopener">WhatsApp 9785 6612</a></div>'
+        '</div><p class="note">By appointment only. Book your slot through the booking link above.</p>'
         f'</div></section>{p["body"]}'
         f'<section class="section alt"><div class="wrap"><h2>Frequently asked questions</h2><div class="faq">{faq_html}</div></div></section>'
         f'<section class="section"><div class="wrap"><h2>Related aircon pages and guides</h2><ul class="links">'
         + "".join(f'<li><a href="{h}">{esc(t)} →</a></li>' for h, t in p["related"]) +
         '</ul></div></section>'
         '<section class="cta-band"><div class="wrap"><h2>Book your aircon check</h2>'
-        '<p>Book online at sggarageedwin.as.me. For enquiries, WhatsApp 9785 6612. By appointment only, Monday to Saturday, 10am to 8pm.</p>'
-        f'<div class="actions"><a class="btn" href="{BOOK}" target="_blank" rel="noopener">Book Now</a>'
-        f'<a class="btn alt" href="{WA}" target="_blank" rel="noopener">WhatsApp 9785 6612</a></div></div></section>'
+        '<p>By appointment only, Monday to Saturday, 10am to 8pm. Book your slot through the link at sggarageedwin.as.me.</p>'
+        f'<div class="actions"><a class="btn" href="{BOOK}" target="_blank" rel="noopener">Book an appointment</a></div></div></section>'
         f'</main>{FOOTER}</body></html>\n'
     )
     return head + body
@@ -131,11 +130,11 @@ SPEC_FAQS = [
      "From $20, after a leak check, including parts, labour and GST. If the system is leaking, we show you where and quote the repair "
      "before topping up, because gas added to a leaking system escapes again."),
     ("How much does a car aircon compressor or cooling coil cost?",
-     'Compressor replacement starts from $800 and cooling coil replacement from $600, including parts, labour and GST. The final price '
+     'Compressor replacement starts from $550 and cooling coil replacement from $600, including parts, labour and GST. The final price '
      'depends on the car and is confirmed after inspection. See <a href="/car-aircon-compressor-replacement/">compressor replacement</a>.'),
     ("Do I need an appointment for aircon repair?",
-     'Yes. Aircon work is by appointment only. Book a slot at <a href="https://sggarageedwin.as.me/">sggarageedwin.as.me</a>, or WhatsApp '
-     "9785 6612 if you have a question first. We are open Monday to Saturday, 10am to 8pm, and closed on Sundays."),
+     'Yes. Aircon work is by appointment only, booked through the link at <a href="https://sggarageedwin.as.me/">sggarageedwin.as.me</a>. '
+     "We are open Monday to Saturday, 10am to 8pm, and closed on Sundays."),
     ("What makes a car aircon specialist different from a general workshop?",
      "A specialist tests the whole aircon system before changing parts: pressures on both sides, leak tracing, compressor clutch and "
      "electrical checks, and airflow. That finds the real cause, so you are not paying for repeated gas top-ups or the wrong part."),
@@ -147,7 +146,7 @@ SPEC_BODY = f"""
 <div class="grid">
 <article class="card"><h3>Gas top-up</h3><p>Done after a leak check, so the gas stays in the system.</p><span class="price">From $20</span></article>
 <article class="card"><h3>Leak check</h3><p>We trace where the refrigerant is escaping before recommending any repair.</p><span class="price">Part of the inspection</span></article>
-<article class="card"><h3>Compressor</h3><p>Repair or replacement once tests confirm the compressor is the fault. <a href="/car-aircon-compressor-replacement/">Compressor replacement</a></p><span class="price">From $800</span></article>
+<article class="card"><h3>Compressor</h3><p>Repair or replacement once tests confirm the compressor is the fault. <a href="/car-aircon-compressor-replacement/">Compressor replacement</a></p><span class="price">From $550</span></article>
 <article class="card"><h3>Cooling coil</h3><p>Repair or replacement of a leaking or failed cooling coil behind the dashboard.</p><span class="price">From $600</span></article>
 <article class="card"><h3>Condenser</h3><p>Condenser repair or replacement when it leaks or cannot release heat.</p><span class="price">Quoted after inspection</span></article>
 <article class="card"><h3>Aircon odour</h3><p>Treatment for a musty or bad smell from the vents.</p><span class="price">Quoted after inspection</span></article>
@@ -170,7 +169,7 @@ SPEC_BODY = f"""
 <div class="tbl"><table class="facts"><thead><tr><th>Aircon job</th><th>Starting price (SGD)</th></tr></thead><tbody>
 <tr><td>Aircon gas top-up (after a leak check)</td><td><strong>From $20</strong></td></tr>
 <tr><td>Cooling coil replacement</td><td><strong>From $600</strong></td></tr>
-<tr><td><a href="/car-aircon-compressor-replacement/">Compressor replacement</a></td><td><strong>From $800</strong></td></tr>
+<tr><td><a href="/car-aircon-compressor-replacement/">Compressor replacement</a></td><td><strong>From $550</strong></td></tr>
 <tr><td>Condenser, leak repair, odour treatment</td><td><strong>Quoted after inspection</strong></td></tr>
 <tr><td>Diagnosis, if you don't go ahead with the repair</td><td><strong>$30</strong></td></tr>
 </tbody></table></div>
@@ -188,7 +187,7 @@ SPEC_BODY = f"""
 </div></div></section>
 
 <section class="section"><div class="wrap"><h2>Where is SG Garage and when is it open?</h2>
-<p class="intro">SG Garage, the aircon unit, is at <strong>{UNIT}</strong>, on the ground floor of the same block as the Edwin Garage main workshop (#01-295), about 5 to 10 minutes from Ang Mo Kio MRT. Open Monday to Saturday, 10am to 8pm; closed on Sundays. Book online first; WhatsApp 9785 6612 is for enquiries. We serve drivers from Ang Mo Kio, Hougang, Yio Chu Kang, Serangoon, Bishan, Toa Payoh and the rest of Singapore.</p>
+<p class="intro">SG Garage, the aircon unit, is at <strong>{UNIT}</strong>, on the ground floor of the same block as the Edwin Garage main workshop (#01-295), about 5 to 10 minutes from Ang Mo Kio MRT. Open Monday to Saturday, 10am to 8pm; closed on Sundays. By appointment only: book your slot through the link at sggarageedwin.as.me. We serve drivers from Ang Mo Kio, Hougang, Yio Chu Kang, Serangoon, Bishan, Toa Payoh and the rest of Singapore.</p>
 <p><a href="https://www.google.com/maps/search/?api=1&amp;query=5032%20Ang%20Mo%20Kio%20Industrial%20Park%202%20%2301-309%20Singapore%20569535" target="_blank" rel="noopener">Open in Google Maps</a> · <a href="/about/">About Edwin Garage</a></p>
 </div></section>
 """
@@ -196,13 +195,13 @@ SPEC_BODY = f"""
 SPEC = dict(
     path="/car-aircon-specialist-singapore/",
     title="Car Aircon Specialist Singapore | SG Garage, Ang Mo Kio",
-    desc="Aircon-only unit at #01-309 Ang Mo Kio: leak check, gas top-up from $20, compressor, cooling coil, condenser and odour. Book online or WhatsApp.",
+    desc="Aircon-only unit at #01-309 Ang Mo Kio: leak check, gas top-up from $20, compressor from $550, cooling coil, condenser, odour. By appointment only.",
     h1="Car aircon specialist in Singapore: aircon-only unit in Ang Mo Kio",
     crumb="Car Aircon Specialist",
     eyebrow="SG Garage · #01-309 Ang Mo Kio · Aircon only",
     answer=("SG Garage is the aircon-only unit of Edwin Garage, at #01-309 Ang Mo Kio Industrial Park 2. We check for leaks before "
-            "any top-up, then repair the cause: gas top-up from $20, cooling coil from $600 and compressor from $800, including "
-            "parts, labour and GST. The final price is confirmed after inspection. By appointment, Monday to Saturday, 10am to 8pm."),
+            "any top-up, then repair the cause: gas top-up from $20, cooling coil from $600 and compressor from $550, including "
+            "parts, labour and GST. The final price is confirmed after inspection. By appointment only, booked online."),
     og=OG, og_alt="Edwin Garage car aircon and repair workshop, Ang Mo Kio, Singapore",
     wa_text="Hi%20Edwin%2C%20I%27d%20like%20to%20ask%20about%20car%20aircon%20repair.",
     body=SPEC_BODY, faqs=SPEC_FAQS,
@@ -214,7 +213,7 @@ SPEC = dict(
                 "hasOfferCatalog": {"@type": "OfferCatalog", "name": "Car aircon starting prices", "itemListElement": [
                     offer("Car aircon gas top-up (after a leak check)", 20, BASE + "/car-aircon-specialist-singapore/"),
                     offer("Aircon cooling coil replacement", 600, BASE + "/car-aircon-specialist-singapore/"),
-                    offer("Aircon compressor replacement", 800, BASE + "/car-aircon-compressor-replacement/")]}},
+                    offer("Aircon compressor replacement", 550, BASE + "/car-aircon-compressor-replacement/")]}},
     related=[("/car-aircon-compressor-replacement/", "Car aircon compressor replacement"),
              ("/car-aircon-repair/", "Car aircon repair and servicing"),
              ("/articles/why-car-aircon-not-cold-singapore.html", "Why is my car aircon not cold?"),
@@ -226,7 +225,7 @@ SPEC = dict(
 # ---------------------------------------------------------------- page 2
 COMP_FAQS = [
     ("How much does car aircon compressor replacement cost in Singapore?",
-     "At SG Garage, compressor replacement starts from $800, including parts, labour and GST. The final price depends on the car, the "
+     "At SG Garage, compressor replacement starts from $550, including parts, labour and GST. The final price depends on the car, the "
      "compressor type and what else the inspection finds, and is confirmed before any work starts."),
     ("How do I know if my aircon compressor is failing?",
      "Common signs are warm air from the vents, cooling that cuts in and out, a grinding or rattling noise when the aircon is on, and a "
@@ -259,7 +258,7 @@ COMP_BODY = f"""
 </div></section>
 
 <section class="section alt"><div class="wrap"><h2>Is it really the compressor?</h2>
-<p class="intro">Several faults look like a dead compressor. We check these first, so you do not replace an $800 part when the cause is cheaper.</p>
+<p class="intro">Several faults look like a dead compressor. We check these first, so you do not replace an $550 part when the cause is cheaper.</p>
 <div class="tbl"><table class="facts"><thead><tr><th>Symptom</th><th>Could also be</th><th>What we check</th></tr></thead><tbody>
 <tr><td>No cold air at all</td><td>Low gas from a leak, blown fuse or relay, faulty pressure switch</td><td>Pressures, leak trace, compressor power supply</td></tr>
 <tr><td>Cold when driving, warm at idle</td><td>Weak condenser fan or blocked condenser</td><td>Fan operation, condenser airflow, pressures at idle</td></tr>
@@ -280,7 +279,7 @@ COMP_BODY = f"""
 <section class="section alt"><div class="wrap"><h2>New or remanufactured compressor?</h2>
 <p class="intro">Both can be the right choice. A new compressor suits cars that need a specific updated unit or owners who plan to keep the car for many years. A remanufactured compressor is a used unit that has been stripped, rebuilt with worn parts replaced and tested, and is usually a lower-cost option. We remanufacture compressors in-house where it suits the car, and we tell you which option we recommend and why before you decide.</p>
 <div class="tbl"><table class="facts"><thead><tr><th>Job</th><th>Starting price (SGD)</th></tr></thead><tbody>
-<tr><td>Aircon compressor replacement</td><td><strong>From $800</strong></td></tr>
+<tr><td>Aircon compressor replacement</td><td><strong>From $550</strong></td></tr>
 <tr><td>Aircon cooling coil replacement</td><td><strong>From $600</strong></td></tr>
 <tr><td>Aircon gas top-up (after a leak check)</td><td><strong>From $20</strong></td></tr>
 <tr><td>Diagnosis, if you don't go ahead with the repair</td><td><strong>$30</strong></td></tr>
@@ -302,13 +301,13 @@ COMP_BODY = f"""
 COMP = dict(
     path="/car-aircon-compressor-replacement/",
     title="Car Aircon Compressor Replacement Singapore | SG Garage",
-    desc="Car aircon compressor replacement in Ang Mo Kio from $800, incl. parts, labour and GST. We test first, then quote new or remanufactured. Book online.",
+    desc="Car aircon compressor replacement in Ang Mo Kio from $550, incl. parts, labour and GST. Tested first, new or remanufactured. By appointment only.",
     h1="Car aircon compressor replacement in Singapore",
     crumb="Compressor Replacement",
     eyebrow="SG Garage · #01-309 Ang Mo Kio · Aircon only",
-    answer=("Car aircon compressor replacement at SG Garage in Ang Mo Kio starts from $800, including parts, labour and GST. We "
+    answer=("Car aircon compressor replacement at SG Garage in Ang Mo Kio starts from $550, including parts, labour and GST. We "
             "first test pressures, the clutch and wiring, and trace leaks to confirm the compressor is the cause, then quote a new or "
-            "remanufactured unit. The final price is confirmed after inspection; diagnosis is $30 if you don't go ahead."),
+            "remanufactured unit. By appointment only. The final price is confirmed after inspection; diagnosis is $30 if you don't go ahead."),
     og=OG_COMP, og_alt="Car aircon compressors at Edwin Garage, Ang Mo Kio, Singapore",
     wa_text="Hi%20Edwin%2C%20I%27d%20like%20to%20ask%20about%20aircon%20compressor%20replacement.",
     body=COMP_BODY, faqs=COMP_FAQS,
@@ -317,7 +316,7 @@ COMP = dict(
                 "description": "Aircon compressor diagnosis and replacement (new or remanufactured where suitable) at the SG Garage aircon unit, #01-309 Ang Mo Kio Industrial Park 2.",
                 "provider": {"@id": BASE + "/#business"}, "areaServed": {"@type": "Country", "name": "Singapore"},
                 "url": BASE + "/car-aircon-compressor-replacement/",
-                "offers": offer("Aircon compressor replacement", 800, BASE + "/car-aircon-compressor-replacement/")},
+                "offers": offer("Aircon compressor replacement", 550, BASE + "/car-aircon-compressor-replacement/")},
     related=[("/car-aircon-specialist-singapore/", "Car aircon specialist (SG Garage)"),
              ("/car-aircon-repair/", "Car aircon repair and servicing"),
              ("/articles/car-aircon-compressor-failure-warning-signs-repair-costs.html", "Compressor failure warning signs"),

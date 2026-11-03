@@ -7,7 +7,7 @@ from html.parser import HTMLParser
 
 HERE = os.path.dirname(os.path.abspath(__file__))
 PAGES = ["car-aircon-specialist-singapore", "car-aircon-compressor-replacement"]
-ALLOWED_PRICES = {"$20", "$600", "$800", "$30"}
+ALLOWED_PRICES = {"$20", "$600", "$550", "$30"}
 # Paths that exist on the live server (checked via the Bridge, 3 Nov 2026) plus the two new pages.
 KNOWN = {"/", "/car-servicing-repair/", "/car-aircon-repair/", "/accident-claim-repair/", "/prices/", "/about/", "/articles/",
          "/car-aircon-specialist-singapore/", "/car-aircon-compressor-replacement/"}
@@ -65,6 +65,7 @@ def main():
         if p.h1 != 1: e(f"{p.h1} h1")
         body_text = " ".join(p.text)
         if re.search(r"walk[- ]?in", body_text, re.I): e("walk-in wording")
+        if re.search(r"whatsapp|wa\.me", s.split("</head>")[1], re.I): e("WhatsApp in body (Edwin 3 Nov: booking link only)")
         prices = set(re.findall(r"\$\d+(?:,\d{3})*", body_text))
         if prices - ALLOWED_PRICES: e(f"unexpected prices {prices - ALLOWED_PRICES}")
         if re.search(r"\$\s?\d+\s?[-–]\s?\$?\d+", body_text): e("price range")
