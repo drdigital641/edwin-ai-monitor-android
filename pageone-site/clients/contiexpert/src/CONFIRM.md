@@ -65,3 +65,6 @@
 63. [pre-purchase-car-inspection-singapore-your-ultimate-guide-to-buying-with-confidence] Confirm inspections can be done at the workshop vs at the seller's location.
 64. Prices on the homepage come from your own posts (Dec 2025 servicing packages from $118, TikTok aircon coil wash $168, Standard PPI $60). Are they still current, and what do the packages include? Prices for hybrid battery health check, battery fan cleaning and ATF change?
 65. Is Volt Autocare part of the Volt Auto group (Dongfeng distributor)? If yes, may we say so?
+66. Reviews: the homepage quotes short excerpts from your Google reviews (names as shown on Google). OK to show them? Customers name "Newt" and "An" - may we name them on the About page, with their roles?
+67. Bring your own parts: a Google review says you fit customer-supplied parts for labour only. Is that offered for all jobs? Any warranty difference?
+68. Car batteries: reviews mention battery replacement. Which brands do you stock, and from what price? Walk-in or appointment?
