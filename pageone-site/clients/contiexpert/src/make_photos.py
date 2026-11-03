@@ -28,6 +28,7 @@ dims['real-bay'] = save(RB('bay'), 'real-bay', 720)
 dims['real-front'] = save(RB('front'), 'real-front', 720)
 dims['real-mg4'] = save(RB('mg4-lift'), 'real-mg4', 452)
 dims['real-aircon'] = save(RB('bay'), 'real-aircon', 720, (0.42, 0.08, 1, 0.92))
+dims['real-shell'] = save(RB('shell'), 'real-shell', 480)  # station photo Edwin sent 3 Nov 2026: drivers recognise the Shell
 dims['real-bmw'] = save(RB('bay'), 'real-bmw', 720, (0.36, 0.10, 0.96, 0.72))
 # their own videos (Edwin uploaded 3 Nov 2026): copy as-is, posters to webp
 import shutil

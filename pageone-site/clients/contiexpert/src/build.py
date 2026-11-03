@@ -32,6 +32,7 @@ RATING = ('5.0', '22', '3 Nov 2026')
 SOCIAL = ['https://www.facebook.com/voltautocare/', 'https://www.instagram.com/voltautocare/', 'https://www.tiktok.com/@volt.autocare']
 
 CONFIRM = [
+    'Shell station photo in the homepage hero (sent by Edwin): confirm we may use it, or swap for a photo the client takes',
     'Public brand: "ContiExpert by Volt Autocare" (used in this preview), "Volt Autocare" only, or something else? Google lists "Volt Autocare @Bukit Timah".',
     'WhatsApp and call number +65 8221 5502 for every button (the old site WhatsApp buttons used +65 6264 3832, which no other source shows).',
     'Opening hours for Mon-Fri, Saturday, Sunday and public holidays (Google, Sgcarmart, AutoKaki and your own posts all differ). Preview says "WhatsApp to check".',
@@ -351,7 +352,8 @@ def home():
     ]
     body = f'''<section class="lux-hero"><div class="lux-img">{img('real-bay', 'Mercedes-Benz and BMW in the Volt Autocare bays, with an aircon service machine', eager=True, sizes='(max-width:820px) 100vw, 50vw')}
 <figure class="pip"><video class="pipv" src="https://cdn.jsdelivr.net/gh/drdigital641/edwin-ai-monitor-android@2fa39f7459c1cb68b17fb47aeaed9c66367aad38/pageone-site/clients/contiexpert/src/real/video/find-us.mp4" poster="/assets/photos/poster-find-us.webp" muted loop playsinline autoplay preload="metadata" aria-label="Video: walking from the Shell station to the Volt Autocare bays"></video>
-<button class="vsnd" type="button">&#9654; Sound</button><figcaption>Find us &middot; 0:31</figcaption></figure></div>
+<button class="vsnd" type="button">&#9654; Sound</button><figcaption>Find us &middot; 0:31</figcaption></figure>
+<a class="shellpip" href="{MAPS}" target="_blank" rel="noopener" data-cta="maps">{img('real-shell', 'The Shell station at Newton Circus, 143 Bukit Timah Road, where Volt Autocare is', sizes='240px')}<span>Look for this Shell &middot; Newton Circus</span></a></div>
 <div class="wrap lux-copy"><span class="eyebrow">ContiExpert by Volt Autocare &middot; Newton</span>
 <h1>Continental car specialists<span>at Newton Circus</span></h1>
 <p>Mercedes, BMW, Audi, VW, hybrids and EVs. We fix only what your car needs.</p>
