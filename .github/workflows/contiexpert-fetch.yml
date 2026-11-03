@@ -12,13 +12,14 @@ jobs:
       - uses: actions/checkout@v4
         with:
           ref: claude/project-thread-h68h7z
-      - run: pip install pillow
-      - run: python3 .github/ce/fetch.py
+      - run: sudo apt-get update -qq && sudo apt-get install -y -qq ffmpeg
+      - run: pip install pillow yt-dlp
+      - run: python3 .github/ce/fetch2.py
       - name: Commit
         run: |
           git config user.name "claude-research-fetch"
           git config user.email "noreply@anthropic.com"
           git add pageone-site
-          git diff --cached --quiet || git commit -m "ContiExpert research fetch (media, pages, social)"
+          git diff --cached --quiet || git commit -m "ContiExpert real-photo fetch (video frames, Google listing photos)"
           git pull --rebase origin claude/project-thread-h68h7z
           git push origin HEAD:claude/project-thread-h68h7z
