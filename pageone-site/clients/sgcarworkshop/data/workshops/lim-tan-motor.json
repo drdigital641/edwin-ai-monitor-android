@@ -56,5 +56,21 @@
  "hours": {
   "text": "Mon to Fri 9am to 6pm, Sat 9am to 1pm. Closed Sundays and public holidays."
  },
- "hours_source_url": "https://ltm.sg"
+ "hours_source_url": "https://ltm.sg",
+ "blocks": [
+  "hero",
+  "contact",
+  "services",
+  "good_for",
+  "problems",
+  "reviews",
+  "comparison",
+  "hours",
+  "stories",
+  "location",
+  "tips",
+  "faq",
+  "claim",
+  "sources"
+ ]
 }

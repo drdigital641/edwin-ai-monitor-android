@@ -11,6 +11,7 @@
   "areas/woodlands-avenue-12/": 1,
   "areas/woodlands-industrial-park-e9/": 2,
   "areas/yishun-industrial-park-a/": 6,
+  "areas/yishun-industrial-park-a/spray-painting-bodywork/": 2,
   "areas/yishun-industrial-street-1/": 2,
   "services/abs-ecu-module-repair/": 0,
   "services/car-battery/": 0,
@@ -18,8 +19,8 @@
   "services/car-parts/": 0,
   "services/car-wrap-ppf/": 0,
   "services/gearbox-repair/": 0,
-  "services/general-servicing-repair/": 47,
-  "services/spray-painting-bodywork/": 2
+  "services/general-servicing-repair/": 45,
+  "services/spray-painting-bodywork/": 4
  },
  "min_free": 5,
  "noindex": {
@@ -42,6 +43,7 @@
   "areas/west/": "region pages are navigation only",
   "areas/woodlands-avenue-12/": "fewer than 5 free workshops",
   "areas/woodlands-industrial-park-e9/": "fewer than 5 free workshops",
+  "areas/yishun-industrial-park-a/spray-painting-bodywork/": "fewer than 5 free workshops",
   "areas/yishun-industrial-street-1/": "fewer than 5 free workshops",
   "brands/": "folder index, navigation only",
   "services/": "folder index, navigation only",

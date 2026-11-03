@@ -47,5 +47,21 @@
  "geo_source": "onemap",
  "estate": "paya-ubi-industrial-park",
  "planning_area": "Geylang",
- "region": "central"
+ "region": "central",
+ "blocks": [
+  "hero",
+  "contact",
+  "services",
+  "good_for",
+  "problems",
+  "reviews",
+  "comparison",
+  "hours",
+  "stories",
+  "location",
+  "tips",
+  "faq",
+  "claim",
+  "sources"
+ ]
 }

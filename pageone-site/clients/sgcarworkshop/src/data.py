@@ -574,6 +574,7 @@ def _from_record(r):
     est = r["estate"]
     return dict(
         slug=r["slug"], place_id=r["place_id"], name=r["name"], tier="free", category=cat, categories=[_CODES[c] for c in r["categories"]],
+        blocks=r.get("blocks") or None, google_rating=r.get("google_rating"),
         estate=est, area_label=_ar.TOWNS[_ar.ESTATES[est]["town"]]["name"], regions=[r["region"]], region=r["region"], planning_area=r["planning_area"],
         address_public=addr_public, street=street, postal=r["postal_code"], addresses=[dict(label=None, street=street, postal=r["postal_code"])],
         lat=r["lat"], lon=r["lng"], services_public=list(r["services"]), services=[], services_source=r["services_source_url"],
@@ -600,3 +601,8 @@ ENTRIES.extend(BASIC)
 
 _RANK = {"premium_leadgen": 0, "premium": 1, "free": 2}
 ENTRIES.sort(key=lambda e: (_RANK[e["tier"]], e["name"].lower() if e["tier"] == "free" else ""))  # Premium, Verified, then Basic A to Z (paid keep their set order)
+
+
+# One shared tag list: tag every card and refile out of general servicing where customer mentions clearly support a specific service (tags.py).
+import tags as _tg
+REFILED = _tg.apply(ENTRIES, _os.path.join(_os.path.dirname(_os.path.abspath(__file__)), "..", "data", "pilot"))

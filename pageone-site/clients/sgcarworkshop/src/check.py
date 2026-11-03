@@ -4,7 +4,7 @@ import json, os, re, sys
 from html.parser import HTMLParser
 from urllib.parse import urlparse, urljoin, unquote
 root = os.path.abspath(sys.argv[1] if len(sys.argv) > 1 else os.path.join(os.path.dirname(__file__), '..', 'site'))
-BAN = re.compile(r"\b(best|no\.? ?1|#1|guaranteed?|aggregaterating|ratingvalue)\b", re.I)
+BAN = re.compile(r"\b(" + '|'.join(__import__('json').load(open(os.path.join(os.path.dirname(os.path.abspath(__file__)), 'settings.json')))['wording']['ban']) + r")\b", re.I)
 bad = 0
 class P(HTMLParser):
     def __init__(s): super().__init__(); s.links = []; s.ld = []; s.in_ld = False; s.text = []; s.skip = 0; s.noindex = False
@@ -128,10 +128,12 @@ for e in ENTRIES:
         # Basic PILOT (Edwin 2 Nov 2026): single fixed-content page, no photo, hours say "see Google Maps", no ratings/reviews/second phones.
         pg = open(os.path.join(root, 'workshops', e['slug'], 'index.html'), encoding='utf-8').read()
         body = re.sub(r'<(script|style).*?</\1>', '', pg, flags=re.S)
-        gsec = re.search(r'<section class="pl-sec pl-google".*?</section>', body, re.S)
+        _gs = re.findall(r'<section class="pl-sec pl-google".*?</section>', body, re.S)   # reviews, comparison and hours blocks
+        gsec = re.search(r'.', '') if False else (_gs[0] if _gs else None)
         gj = os.path.join(root, '..', 'data', 'google_cache', e['slug'] + '.json')
         if gsec:
-            body_g = gsec.group(0); body = body.replace(body_g, '')
+            body_g = ' '.join(_gs)
+            for _s in _gs: body = body.replace(_s, '')
             gc = json.load(open(gj)) if os.path.exists(gj) else None
             gtxt = re.sub(r'\s+', ' ', re.sub(r'<[^>]+>', ' ', body_g))
             if not gc or gc.get('source') != 'google_places' or not gc.get('fetched_at'): print('PILOT google section needs a google_places cache with fetched_at', e['slug']); bad += 1
@@ -139,7 +141,8 @@ for e in ENTRIES:
                 import datetime as _dt
                 if (_dt.date.today() - _dt.date.fromisoformat(gc['fetched_at'])).days > 30: print('PILOT google cache older than 30 days', e['slug']); bad += 1
                 if 'Google Maps' not in gtxt: print('PILOT google section lacks attribution', e['slug']); bad += 1
-                if gc.get('rating') and ('%s out of 5' % gc['rating']) not in gtxt: print('PILOT google rating does not match cache', e['slug']); bad += 1
+                _hero = re.search(r'<p class="rtg"><b>([0-9.]+)</b> \(([\d,]+) Google review', pg)
+                if gc.get('rating') and gc.get('userRatingCount') and (not _hero or _hero.group(1) != '%.1f' % float(gc['rating']) or _hero.group(2) != format(gc['userRatingCount'], ',')): print('PILOT hero rating does not match cache', e['slug']); bad += 1
                 for h in (gc.get('weekdayDescriptions') or []):
                     if h.replace('\u202f', ' ').replace('\u2009', ' ') not in gtxt: print('PILOT google hours do not match cache', e['slug']); bad += 1; break
             if re.search(r'[\u201c\u201d]|<q>|<blockquote', body_g): print('PILOT google section must not quote reviews', e['slug']); bad += 1
@@ -441,6 +444,37 @@ for _g in _gd.GUIDES:
 if 'guides/' not in _sm: print('guides index not in sitemap'); bad += 1
 if bad == _bad0: print('guides ok: 10 pages, in sitemap and llms.txt, no prices')
 
+# Template rules (Edwin 3 Nov 2026): shared header and footer everywhere, every workshop page is a stack of block templates
+SET = json.load(open(os.path.join(os.path.dirname(os.path.abspath(__file__)), 'settings.json')))
+def _blocks(h):
+    """[(name, inner html)] for each top-level block wrapper; also returns the html left over once the blocks are removed."""
+    out, rest, pos = [], [], 0
+    for m in re.finditer(r'<div class="blk" data-block="([a-z_]+)">', h):
+        if m.start() < pos: continue
+        depth, i = 1, m.end()
+        for t in re.finditer(r'<(/?)div\b', h[i:]):
+            depth += -1 if t.group(1) else 1
+            if depth == 0:
+                out.append((m.group(1), h[i:i + t.start()])); rest.append(h[pos:m.start()]); pos = i + t.end() + 1; break
+    rest.append(h[pos:])
+    return out, ''.join(rest)
+for _f in files:
+    _rel = os.path.relpath(_f, root); _h = open(_f, encoding='utf-8').read()
+    if 'http-equiv="refresh"' in _h or 'This folder is not a page' in _h or _rel == '404.html': continue
+    if '<header class="top">' not in _h or '<footer class="ft">' not in _h or '<main id="main">' not in _h: print('page lacks the shared header, main or footer', _rel); bad += 1
+for _e in ENTRIES:
+    _h = open(os.path.join(root, 'workshops', _e['slug'], 'index.html'), encoding='utf-8').read()
+    _m = re.search(r'<main id="main">(.*?)</main>', _h, re.S)
+    _bl, _left = _blocks(_m.group(1))
+    _names = [n for n, _ in _bl]
+    for _req in SET['required_blocks']:
+        if _req not in _names: print('workshop page lacks block', _req, _e['slug']); bad += 1
+    for _n, _inner in _bl:
+        if not re.search(r'[A-Za-z0-9]', re.sub(r'<[^>]+>', '', _inner)) and not re.search(r'<(img|iframe|svg)', _inner): print('empty block rendered', _n, _e['slug']); bad += 1
+    _order = _e.get('blocks') or SET['block_order'][_e['tier']]
+    if [n for n in _order if n in _names] != _names: print('block order differs from the data file', _e['slug'], _names); bad += 1
+    _left = re.sub(r'<nav class="crumbs".*?</nav>', '', _left, flags=re.S)
+    if re.sub(r'<[^>]+>|\s', '', _left.replace('<div class="w nar basicpg pilot">', '').replace('<div class="w nar prem">', '').replace('</div>', '')): print('hand-written markup outside the block templates', _e['slug']); bad += 1
 # Thin-page and sitemap rules (Edwin 3 Nov 2026)
 _mf = json.load(open(os.path.join(root, '..', 'build-manifest.json')))
 _sm2 = open(os.path.join(root, 'sitemap.xml')).read()

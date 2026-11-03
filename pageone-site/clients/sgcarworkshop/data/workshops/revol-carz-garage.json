@@ -52,5 +52,21 @@
  "hours": {
   "text": "Mon to Fri 9am to 6pm, Sat 9am to 4pm. Closed Sundays and public holidays."
  },
- "hours_source_url": "https://revol.com.sg/contact-us-revol"
+ "hours_source_url": "https://revol.com.sg/contact-us-revol",
+ "blocks": [
+  "hero",
+  "contact",
+  "services",
+  "good_for",
+  "problems",
+  "reviews",
+  "comparison",
+  "hours",
+  "stories",
+  "location",
+  "tips",
+  "faq",
+  "claim",
+  "sources"
+ ]
 }

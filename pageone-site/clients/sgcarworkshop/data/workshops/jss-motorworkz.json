@@ -59,5 +59,21 @@
  "tier": "basic",
  "first_seen_at": "2026-11-01",
  "last_verified_at": "2026-11-02",
- "collector_version": "agent-v3"
+ "collector_version": "agent-v3",
+ "blocks": [
+  "hero",
+  "contact",
+  "services",
+  "good_for",
+  "problems",
+  "reviews",
+  "comparison",
+  "hours",
+  "stories",
+  "location",
+  "tips",
+  "faq",
+  "claim",
+  "sources"
+ ]
 }

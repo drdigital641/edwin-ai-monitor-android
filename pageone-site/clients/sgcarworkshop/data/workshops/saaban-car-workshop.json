@@ -46,5 +46,21 @@
  "region": "north",
  "lat": 1.436188434554599,
  "lng": 103.8430976340242,
- "geo_source": "onemap"
+ "geo_source": "onemap",
+ "blocks": [
+  "hero",
+  "contact",
+  "services",
+  "good_for",
+  "problems",
+  "reviews",
+  "comparison",
+  "hours",
+  "stories",
+  "location",
+  "tips",
+  "faq",
+  "claim",
+  "sources"
+ ]
 }

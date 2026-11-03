@@ -1,0 +1,26 @@
+{
+ "brand": "SG Car Workshop",
+ "domain": "sgcarworkshop.sg",
+ "footer_about": "A directory of car workshops and car services in Singapore, run by",
+ "footer_note": "WhatsApp and Call taps are counted anonymously, with no personal data.",
+ "menu_links": [
+  {"label": "Car problem guides", "path": "guides/"},
+  {"label": "About", "path": "about/"},
+  {"label": "List your workshop", "path": "list-your-workshop/"},
+  {"label": "Remove my listing", "path": "list-your-workshop/#remove"},
+  {"label": "Terms", "path": "terms/"},
+  {"label": "Privacy", "path": "privacy/"},
+  {"label": "llms.txt", "path": "llms.txt"}
+ ],
+ "wording": {
+  "ban": ["best", "no.? ?1", "#1", "guaranteed?", "aggregaterating", "ratingvalue"],
+  "endorse": ["partner\\w*", "verified", "recommended", "recommends", "trusted", "confirmed", "endorse\\w*", "official\\w*", "approved", "authori[sz]ed", "certified", "best", "top", "leading", "number one"]
+ },
+ "min_free": 5,
+ "required_blocks": ["hero", "contact", "claim", "sources"],
+ "block_order": {
+  "free": ["hero", "contact", "services", "good_for", "problems", "reviews", "comparison", "hours", "stories", "location", "tips", "faq", "claim", "sources"],
+  "premium": ["hero", "contact", "services", "pricing", "photos", "details", "problems", "reviews", "hours", "location", "faq", "ask", "claim", "sources"],
+  "premium_leadgen": ["hero", "contact", "services", "pricing", "photos", "details", "problems", "reviews", "hours", "location", "faq", "ask", "claim", "sources"]
+ }
+}

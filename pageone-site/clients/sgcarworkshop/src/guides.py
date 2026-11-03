@@ -15,7 +15,7 @@ GUIDES = [
   tell=['Where it comes from: front or rear, left or right.', 'When it happens: only over humps, when turning, when braking, or on every bump.', 'The sound: a single clunk, a rattle or a creak.', 'How long it has been going on and whether it is getting louder.', 'Any recent work on the suspension, tyres or exhaust.', 'Ask for an under-car inspection on a lift.'],
   urgent='If the steering feels loose, the car pulls to one side, you see fluid leaking from a shock absorber, or a loud knock suddenly gets worse, have it checked before driving further.',
   faqs=[('Is a knock over humps dangerous?', 'It can be a small thing, such as a loose cover, or a worn part that affects how the car handles. Because you cannot tell which from the sound alone, it is worth having it inspected soon.'), ('Can I find the noise myself?', 'You can note where and when it happens, which helps the workshop a lot. Finding the exact part usually needs the car lifted and the suspension checked by hand.')],
-  match=r'undercarriage|suspension|absorber|stabiliser|noise|drive ?shaft|wear-and-tear', kw=['knock','knocking','clunk','clunking','rattle','hump','humps','bump','bumps','suspension','absorber','creak'], cats=['general-servicing-repair']),
+  kw=['knock','knocking','clunk','clunking','rattle','hump','humps','bump','bumps','suspension','absorber','creak'], cats=['general-servicing-repair']),
  dict(slug='car-aircon-not-cold', kind='problem', short='Aircon not cold',
   title='Car Aircon Not Cold: Causes | SG Car Workshop', h1='Car aircon not cold',
   desc='Why a car aircon blows warm or weak air, what to tell the workshop, and workshops customers mention for aircon servicing and repair.',
@@ -28,7 +28,7 @@ GUIDES = [
   tell=['Is the air warm, only cool, or cold but weak?', 'Does it get worse in traffic or when idling?', 'Do you hear the compressor switch on, or any unusual noise or smell?', 'When was the aircon last serviced?', 'Ask whether they will check for leaks, not only top up the gas.'],
   urgent='A burning smell, a loud grinding from the compressor, or a belt noise needs checking soon, as a failing compressor can damage the drive belt.',
   faqs=[('Why does my aircon get cold only when driving?', 'This can point to the condenser fan or airflow over the condenser. At speed, air passes through naturally; when standing, the fan has to do the work.'), ('Is an aircon flush the same as a gas top-up?', 'No. A flush cleans the system and a top-up adds gas. Which one you need depends on what the workshop finds, so ask them to explain.')],
-  match=r'aircon|air-?con|\bac\b', kw=['aircon','air con','aircond','air conditioning','cold','warm','cooling','not cold','blowing'], cats=['general-servicing-repair']),
+  kw=['aircon','air con','aircond','air conditioning','cold','warm','cooling','not cold','blowing'], cats=['general-servicing-repair']),
  dict(slug='car-wont-start-battery', kind='problem', short="Car won't start",
   title="Car Won't Start: Battery and Starter | SG Car Workshop", h1="Car won't start: battery, starter or something else?",
   desc="What the sounds mean when a car won't start, likely causes, what to tell the workshop, and workshops customers mention for starter and breakdown work.",
@@ -42,7 +42,7 @@ GUIDES = [
   tell=['What you hear: nothing, a click, slow cranking, or normal cranking.', 'Whether the dashboard lights come on bright or dim.', 'Whether a jump start worked.', 'Age of the battery and whether the car sat unused or did short trips.', 'Whether a battery or other warning light came on while driving.'],
   urgent='If the battery looks swollen, is leaking or smells of rotten eggs, do not jump start it. Call a workshop or breakdown service.',
   faqs=[('Can a jump start tell me if it is the battery?', 'Often yes. If it starts with a jump but dies again soon after, the alternator or a battery drain is more likely than the battery alone.'), ('Do I need a new battery or a new starter?', 'It depends on the symptoms, so the workshop should test before replacing anything.')],
-  match=r'starter|breakdown|battery', kw=['start','starting','wont start',"won't start",'cannot start','no start','battery','flat battery','dead battery','jump','starter','click','clicking'], cats=['car-battery']),
+  kw=['start','starting','wont start',"won't start",'cannot start','no start','battery','flat battery','dead battery','jump','starter','click','clicking'], cats=['car-battery']),
  dict(slug='gearbox-cvt-jerking', kind='problem', short='Gearbox or CVT jerking',
   title='Gearbox or CVT Jerking: Causes | SG Car Workshop', h1='Gearbox or CVT jerking, shuddering or slipping',
   desc='Why an automatic gearbox or CVT jerks, shudders or hesitates, what to tell the workshop, and workshops customers mention for gearbox and fluid work.',
@@ -55,7 +55,7 @@ GUIDES = [
   tell=['When it happens: cold start, pulling away, a particular speed, or when braking.', 'Whether it jerks in Drive only or also in Reverse.', 'Any warning lights or fluid leaks under the car.', 'When the gearbox fluid was last changed.', 'Ask for a scan for fault codes and a fluid check before any major work.'],
   urgent='If the gearbox slips badly, will not move the car, or you see a fluid leak or smell burning, avoid driving it and have it checked.',
   faqs=[('Does every jerk mean a gearbox rebuild?', 'No. Fluid, a sensor or an engine problem can cause similar symptoms. Ask for the cheaper checks first, such as a scan and a fluid inspection.'), ('Should I change CVT fluid?', 'Follow the maker\'s guidance for your model and ask the workshop which fluid is specified. CVTs are often fussy about the fluid used.')],
-  match=r'gearbox|transmission|clutch|cvt', kw=['gearbox','gear box','transmission','cvt','jerk','jerking','shudder','shuddering','slipping','auto gear','automatic'], cats=['gearbox-repair']),
+  kw=['gearbox','gear box','transmission','cvt','jerk','jerking','shudder','shuddering','slipping','auto gear','automatic'], cats=['gearbox-repair']),
  dict(slug='brake-squeal-noise', kind='problem', short='Brake squeal',
   title='Brake Squeal and Noise: Causes | SG Car Workshop', h1='Brake squeal, squeak or grinding',
   desc='Why brakes squeal, squeak or grind, which sounds can wait and which cannot, what to tell the workshop, and workshops customers mention for brake work.',
@@ -68,7 +68,7 @@ GUIDES = [
   tell=['Is it a squeal, a squeak or a grinding sound?', 'Does it happen when braking, when you release, or all the time?', 'Front or rear, and one side or both.', 'How the pedal feels and whether the car pulls to one side.', 'When the pads were last changed.'],
   urgent='A deep grinding sound, a soft or long brake pedal, or the car pulling hard to one side needs attention straight away. Do not keep driving on grinding brakes.',
   faqs=[('Why do my brakes squeal only in the morning?', 'Moisture on the discs overnight can cause a short squeal that clears after a few stops. If it stays, have the pads checked.'), ('Can I just change the pads?', 'Often yes, but the discs, calipers and slide pins should be checked at the same time.')],
-  match=r'brake', kw=['brake','brakes','squeal','squeak','squeaking','grinding','brake pad','brake pads','screech'], cats=['general-servicing-repair']),
+  kw=['brake','brakes','squeal','squeak','squeaking','grinding','brake pad','brake pads','screech'], cats=['general-servicing-repair']),
  dict(slug='engine-warning-light', kind='problem', short='Engine warning light',
   title='Engine Warning Light On: Causes | SG Car Workshop', h1='Engine warning light on',
   desc='What the engine or check-engine light can mean, which cases need action now, what to tell the workshop, and workshops customers mention for diagnosis.',
@@ -82,7 +82,7 @@ GUIDES = [
   tell=['Is the light steady or flashing, and what colour?', 'Any symptoms: rough idle, loss of power, higher fuel use, smoke or smells.', 'Whether it came on after refuelling.', 'If anyone has read the codes, the code numbers.', 'Ask the workshop to explain the code and what they check before replacing a part.'],
   urgent='A flashing light, a sudden loss of power, or a red oil pressure or temperature warning means you should stop driving and have it checked. A red oil pressure light means stop the engine at once.',
   faqs=[('Can I keep driving with the light on?', 'A steady light with the car driving normally can usually wait a short while for a check. A flashing light or loss of power should not be ignored.'), ('Will the workshop just clear the code?', 'Clearing a code does not fix the cause and the light will come back. Ask what they found and what they did.')],
-  match=r'fault|under-bonnet|sensor|throttle|diagnostics', kw=['engine light','check engine','warning light','engine warning','fault code','engine management','obd','scan','diagnostic','diagnosis','error code','orange light'], cats=['general-servicing-repair']),
+  kw=['engine light','check engine','warning light','engine warning','fault code','engine management','obd','scan','diagnostic','diagnosis','error code','orange light'], cats=['general-servicing-repair']),
  dict(slug='car-overheating', kind='problem', short='Car overheating',
   title='Car Overheating: Causes and What To Do | SG Car Workshop', h1='Car overheating',
   desc='Why a car overheats, what to do when the temperature gauge rises, what to tell the workshop, and workshops customers mention for cooling work.',
@@ -96,7 +96,7 @@ GUIDES = [
   tell=['When it runs hot: in traffic, on the highway, or with the aircon on.', 'Whether the coolant level has dropped and if you see leaks or puddles.', 'Steam, a sweet smell, or white smoke.', 'Whether the heater blows hot or cold.', 'Any recent work on the cooling system.'],
   urgent='If the temperature gauge enters the red or a warning shows, pull over safely and switch off. Do not open the radiator cap while the engine is hot. Do not keep driving, as it can cause expensive engine damage.',
   faqs=[('Can I top up with water?', 'In an emergency it may get you to a workshop, but the correct coolant mix protects the engine. Ask the workshop to check the level and find the leak.'), ('Is overheating always the radiator?', 'No. The fan, thermostat, water pump or a leak can all cause it, which is why a pressure test and a fan check help.')],
-  match=r'radiator|cooling|coolant|fan', kw=['overheat','overheating','overheated','temperature','hot engine','steam','coolant','radiator','temp gauge','engine hot'], cats=['general-servicing-repair']),
+  kw=['overheat','overheating','overheated','temperature','hot engine','steam','coolant','radiator','temp gauge','engine hot'], cats=['general-servicing-repair']),
  dict(slug='bmw-mercedes-workshops-singapore', brand='bmw-mercedes', kind='brand', short='BMW and Mercedes-Benz',
   title='BMW and Mercedes Servicing Guide | SG Car Workshop', h1='BMW and Mercedes-Benz servicing and repair',
   desc='What owners of BMW and Mercedes-Benz cars can ask an independent workshop, common maintenance topics, and workshops customers mention for these brands.',
@@ -110,7 +110,7 @@ GUIDES = [
   tell=['Model, year and engine, and the chassis or model code if you know it.', 'Service history and when it was last serviced.', 'Warning messages on the dashboard.', 'Whether you want genuine, OEM or other quality parts.', 'Ask whether the workshop works on your model regularly.'],
   urgent='Do not ignore a red warning on the dashboard, a coolant or oil warning, or a loss of power. Stop safely and get it checked.',
   faqs=[('Is an independent workshop okay for a BMW or Mercedes?', 'Many owners use independent workshops after the warranty ends. Ask what experience the workshop has with your model and what tools they use.'), ('Do I need genuine parts?', 'It is your choice. Ask the workshop what options exist and what they recommend for each job.')],
-  match=r'bmw|mercedes|continental', kw=['bmw','mercedes','benz','mercedes-benz','merc','continental','conti','german car','audi','mini cooper'], cats=['general-servicing-repair']),
+  kw=['bmw','mercedes','benz','mercedes-benz','merc','continental','conti','german car','audi','mini cooper'], cats=['general-servicing-repair']),
  dict(slug='toyota-workshops-singapore', brand='toyota', kind='brand', short='Toyota',
   title='Toyota Servicing and Repair Guide | SG Car Workshop', h1='Toyota servicing and repair',
   desc='What Toyota owners can ask a workshop, maintenance topics for common models including hybrids, and workshops customers mention for Toyota cars.',
@@ -123,7 +123,7 @@ GUIDES = [
   tell=['Model, year and whether it is petrol or hybrid.', 'Mileage and service history.', 'Symptoms: noises, warning lights, vibration, smells.', 'What you want done, so you can compare what is included.'],
   urgent='A red warning light, overheating or a loss of braking performance should be checked before you drive further.',
   faqs=[('Can any workshop service a hybrid Toyota?', 'Basic servicing is similar, but work involving the hybrid system needs the right training and tools. Ask the workshop directly.'), ('How do I know what service my Toyota needs?', 'The owner\'s manual has the schedule. A good workshop will explain what each item is for and what can wait.')],
-  match=r'toyota|harrier|vios|camry|corolla|alphard|prius', kw=['toyota','harrier','vios','camry','corolla','alphard','prius','altis','hilux','rav4','sienta'], cats=['general-servicing-repair']),
+  kw=['toyota','harrier','vios','camry','corolla','alphard','prius','altis','hilux','rav4','sienta'], cats=['general-servicing-repair']),
  dict(slug='honda-workshops-singapore', brand='honda', kind='brand', short='Honda',
   title='Honda Servicing and Repair Guide | SG Car Workshop', h1='Honda servicing and repair',
   desc='What Honda owners can ask a workshop, maintenance topics for common models, and workshops customers mention for Honda cars.',
@@ -137,10 +137,18 @@ GUIDES = [
   tell=['Model, year and engine or hybrid type.', 'Mileage and service history.', 'Symptoms: noises, shuddering, warning lights, smells.', 'Whether you want the work done to the maker\'s schedule or only fix the fault.'],
   urgent='A red warning light, overheating or a drop in braking performance should be checked before you drive further.',
   faqs=[('Does my Honda need special fluid?', 'Many Honda transmissions are specific about fluid. Check the manual and ask the workshop which fluid they use.'), ('Can an independent workshop service my Honda?', 'Yes, many owners use independent workshops. Ask about their experience with your model.')],
-  match=r'honda', kw=['honda','civic','jazz','vezel','hr-v','hrv','accord','cr-v','crv','freed','odyssey'], cats=['general-servicing-repair']),
+  kw=['honda','civic','jazz','vezel','hr-v','hrv','accord','cr-v','crv','freed','odyssey'], cats=['general-servicing-repair']),
 ]
 
 
 def gpath(g):
     """Public path: brand guides live under /brands/<brand>/, problem guides under /guides/<slug>/."""
     return 'brands/%s/' % g['brand'] if g.get('kind') == 'brand' else 'guides/%s/' % g['slug']
+
+
+# The match pattern of every guide comes from the shared tag list (tags.py), so a guide, a card and the search never disagree.
+import tags as _t
+for _g in GUIDES:
+    _tag = next(t for t in _t.TAGS if t['guide'] == _g['slug'] and t['kind'] == _g['kind'])
+    _g['tag'] = _tag['id']
+    _g['match'] = _tag['rx']

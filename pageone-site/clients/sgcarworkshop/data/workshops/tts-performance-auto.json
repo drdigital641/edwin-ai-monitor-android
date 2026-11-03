@@ -53,5 +53,21 @@
   "checked": "2026-11-02",
   "source": "Google Places",
   "source_date": "2026-11-02"
- }
+ },
+ "blocks": [
+  "hero",
+  "contact",
+  "services",
+  "good_for",
+  "problems",
+  "reviews",
+  "comparison",
+  "hours",
+  "stories",
+  "location",
+  "tips",
+  "faq",
+  "claim",
+  "sources"
+ ]
 }

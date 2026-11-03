@@ -47,5 +47,21 @@
  "geo_source": "onemap",
  "estate": "kaki-bukit-industrial-estate",
  "planning_area": "Bedok",
- "region": "east"
+ "region": "east",
+ "blocks": [
+  "hero",
+  "contact",
+  "services",
+  "good_for",
+  "problems",
+  "reviews",
+  "comparison",
+  "hours",
+  "stories",
+  "location",
+  "tips",
+  "faq",
+  "claim",
+  "sources"
+ ]
 }

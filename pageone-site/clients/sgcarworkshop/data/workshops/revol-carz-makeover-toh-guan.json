@@ -57,5 +57,21 @@
  "hours": {
   "text": "Open daily 8:30am to 6:30pm. Closed Tuesdays and public holidays."
  },
- "hours_source_url": "https://revol.com.sg/contact-us-revol"
+ "hours_source_url": "https://revol.com.sg/contact-us-revol",
+ "blocks": [
+  "hero",
+  "contact",
+  "services",
+  "good_for",
+  "problems",
+  "reviews",
+  "comparison",
+  "hours",
+  "stories",
+  "location",
+  "tips",
+  "faq",
+  "claim",
+  "sources"
+ ]
 }
