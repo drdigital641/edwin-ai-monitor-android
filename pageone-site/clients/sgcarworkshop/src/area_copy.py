@@ -30,6 +30,12 @@ AREA_COPY = {
         "pocket of light industry and trade units near Bedok Industrial Park. The Pan-Island Expressway and Tampines Expressway pass close by, so it is an easy drive from "
         "Tampines, Simei, Bedok and Kaki Bukit.",
         ['Bedok North', 'Bedok Reservoir', 'Bedok'], ['Bedok Reservoir', 'Bedok Mall', 'Bedok Industrial Park']),
+    'tampines': (
+        "Tampines is a large town in the east of Singapore. Tampines MRT station on the East West and Downtown Lines, with Tampines West and Tampines East stations on the Downtown Line, "
+        "serve the town, and Tampines Mall, Century Square and Our Tampines Hub are its main landmarks. Alongside the HDB estates there are light industrial parks "
+        "around Tampines Street 92 and 93, close to Bedok Reservoir. The Tampines Expressway and Pan-Island Expressway both run nearby, so it is an easy drive from "
+        "Bedok, Pasir Ris, Simei and Kaki Bukit.",
+        ['Tampines', 'Tampines West', 'Tampines East'], ['Tampines Mall', 'Our Tampines Hub', 'Bedok Reservoir']),
     'changi-loyang': (
         "Changi and Loyang make up the far east of Singapore, beyond Pasir Ris and Tampines. The area is best known for Changi Airport and Changi Business Park, "
         "with Changi Beach Park and the Changi Village hawker centre on the northern coast. Loyang Way, Loyang Avenue and Loyang Crescent hold an industrial estate of "

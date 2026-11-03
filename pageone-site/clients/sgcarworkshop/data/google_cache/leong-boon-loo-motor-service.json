@@ -1,0 +1,25 @@
+{
+ "businessStatus": "OPERATIONAL",
+ "primaryType": "car_repair",
+ "types": [
+  "car_repair",
+  "point_of_interest",
+  "service",
+  "establishment"
+ ],
+ "rating": 4.8,
+ "userRatingCount": 28,
+ "websiteUri": "https://www.facebook.com/p/Leong-boon-loo-motor-services-100065418342496/",
+ "paymentOptions": {
+  "acceptsDebitCards": true,
+  "acceptsCashOnly": false
+ },
+ "parkingOptions": null,
+ "editorialSummary": null,
+ "weekdayDescriptions": null,
+ "review_count_seen": 5,
+ "review_themes": "Customers on Google Maps mention fast accident and scratch repairs, often within one to three days, reasonable quotes and good paintwork. Some say they have come back for many years.",
+ "fetched_at": "2026-11-03",
+ "place_id": "ChIJ356t7T492jERP9V_UWZBkgY",
+ "source": "google_places"
+}

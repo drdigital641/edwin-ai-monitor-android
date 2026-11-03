@@ -1,0 +1,73 @@
+{
+ "schema_version": 1,
+ "slug": "hock-eng-automobile-workshop",
+ "place_id": "ChIJe3sSSiU92jERmZ-eBrzdL-Q",
+ "place_id_checked_at": "2026-11-03",
+ "name": "Hock Eng Automobile Workshop",
+ "name_source_url": "google_profile",
+ "name_checked_at": "2026-11-03",
+ "address": {
+  "block": "",
+  "street": "3012 Bedok North Ave 4, #01-2072 Bedok Industrial Park East",
+  "unit": "",
+  "building": ""
+ },
+ "postal_code": "489978",
+ "address_source_url": "google_profile",
+ "address_checked_at": "2026-11-03",
+ "categories": [
+  "SERV"
+ ],
+ "services": [
+  "General servicing and repair"
+ ],
+ "services_source_url": "google_profile",
+ "phones": [
+  {
+   "e164": "+6597622698",
+   "kind": "mobile",
+   "whatsapp": true,
+   "source": "google_profile",
+   "checked_at": "2026-11-03"
+  }
+ ],
+ "google_screen": {
+  "passed": true,
+  "reason": "OPERATIONAL, car repair, SG mobile on Google profile",
+  "checked_at": "2026-11-03"
+ },
+ "status": "active",
+ "tier": "basic",
+ "first_seen_at": "2026-11-03",
+ "last_verified_at": "2026-11-03",
+ "collector_version": "agent-v5",
+ "estate": "bedok-industrial-park-e",
+ "planning_area": "Bedok",
+ "region": "east",
+ "lat": 1.336748346517455,
+ "lng": 103.9499003882922,
+ "geo_source": "onemap",
+ "google_rating": {
+  "rating": 4.7,
+  "count": 88,
+  "checked": "2026-11-04",
+  "source": "Google Places",
+  "source_date": "2026-11-04"
+ },
+ "blocks": [
+  "hero",
+  "contact",
+  "services",
+  "good_for",
+  "problems",
+  "reviews",
+  "comparison",
+  "hours",
+  "stories",
+  "location",
+  "tips",
+  "faq",
+  "claim",
+  "sources"
+ ]
+}

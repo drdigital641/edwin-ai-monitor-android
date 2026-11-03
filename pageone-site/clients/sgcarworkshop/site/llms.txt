@@ -18,7 +18,7 @@ Last updated: 2026-11-03
 ## Areas (regions)
 - [North](https://sgcarworkshop.sg/areas/north/): Car workshops and car services in the North region of Singapore, covering Woodlands, Kranji, Yishun and the Sembawang and Admiralty areas.
 - [North-East](https://sgcarworkshop.sg/areas/north-east/): Car workshops and car services in the North-East region of Singapore, covering Ang Mo Kio, Serangoon North, Defu and Hougang, and Sengkang.
-- [East](https://sgcarworkshop.sg/areas/east/): Car workshops and car services in the East region of Singapore, covering Kaki Bukit, Bedok North and the Changi and Loyang areas.
+- [East](https://sgcarworkshop.sg/areas/east/): Car workshops and car services in the East region of Singapore, covering Kaki Bukit, Bedok North, Tampines and the Changi and Loyang areas.
 - [West](https://sgcarworkshop.sg/areas/west/): Car workshops and car services in the West region of Singapore, covering Toh Guan and Jurong East, Jurong West, Pandan Loop, Bukit Batok and Tuas.
 - [Central](https://sgcarworkshop.sg/areas/central/): Car workshops and car services in the Central region of Singapore, covering Sin Ming and Bishan, Toa Payoh, Ubi, Eunos, MacPherson, Jalan Besar and Kallang Bahru, and Alexandra and Bukit Merah.
 - [Mobile (island-wide)](https://sgcarworkshop.sg/areas/mobile/): Mobile car services that come to your car anywhere in Singapore. These listings have no single shopfront, so the work is done where your car is parked.
@@ -31,6 +31,8 @@ Last updated: 2026-11-03
 - [Corporation Drive, Jurong East](https://sgcarworkshop.sg/areas/corporation-drive-jurong-east/): Corporation Drive is an industrial road in Jurong East, in the West region. 3 listings.
 - [Paya Ubi Industrial Park](https://sgcarworkshop.sg/areas/paya-ubi-industrial-park/): Paya Ubi Industrial Park is around Ubi Avenue 1, near Paya Lebar in the Geylang planning area (Central region), with motor workshops mixed in among light industry. 4 listings.
 - [Ubi Road 1](https://sgcarworkshop.sg/areas/ubi-road-1/): Ubi Road 1 is an industrial road in the Ubi area, near Paya Lebar in the Geylang planning area (Central region). 2 listings.
+- [Bedok Industrial Park E](https://sgcarworkshop.sg/areas/bedok-industrial-park-e/): Bedok Industrial Park E is a block of trade units along Bedok North Avenue 4 in the East region, near Bedok Reservoir and Tampines. 2 listings.
+- [Tampines Industrial Park A](https://sgcarworkshop.sg/areas/tampines-industrial-park-a/): Tampines Industrial Park A is a light industrial estate along Tampines Street 92 and 93 in the East region. 1 listing.
 - [Woodlands Industrial Park E9](https://sgcarworkshop.sg/areas/woodlands-industrial-park-e9/): Woodlands Industrial Park E9 is the main industrial park in the north-west, close to the Causeway. 3 listings.
 - [Jalan Lam Huat and Carros Centre](https://sgcarworkshop.sg/areas/carros-centre-jalan-lam-huat/): Jalan Lam Huat, where Carros Centre stands, is an industrial road in the north-west of Singapore. 4 listings.
 - [Woodlands Avenue 12 (Polaris@Woodlands)](https://sgcarworkshop.sg/areas/woodlands-avenue-12/): Woodlands Avenue 12 and the Polaris@Woodlands industrial building are in the Woodlands area in the north. 1 listing.
@@ -71,14 +73,17 @@ Last updated: 2026-11-03
 - [Fong Workshop](https://sgcarworkshop.sg/workshops/fong-workshop/): General servicing and repair, Basic listing, Sin Ming and Bishan
 - [FR Auto](https://sgcarworkshop.sg/workshops/fr-auto/): General servicing and repair, Basic listing, Kaki Bukit
 - [Grand Auto Garage](https://sgcarworkshop.sg/workshops/grand-auto-garage/): General servicing and repair, Basic listing, Kaki Bukit
+- [Hock Eng Automobile Workshop](https://sgcarworkshop.sg/workshops/hock-eng-automobile-workshop/): General servicing and repair, Basic listing, Bedok North
 - [J's Garage](https://sgcarworkshop.sg/workshops/j-s-garage/): General servicing and repair, Basic listing, Woodlands
 - [JL Auto Services](https://sgcarworkshop.sg/workshops/jl-auto-services/): General servicing and repair, Basic listing, Ubi
 - [JSS Motorworkz](https://sgcarworkshop.sg/workshops/jss-motorworkz/): General servicing and repair, Basic listing, Toh Guan and Jurong East
 - [Kaizen Motors](https://sgcarworkshop.sg/workshops/kaizen-motors/): General servicing and repair, Basic listing, Kaki Bukit
 - [KC Workshop](https://sgcarworkshop.sg/workshops/kc-workshop/): General servicing and repair, Basic listing, Kaki Bukit
 - [KH Kinetics Autocare](https://sgcarworkshop.sg/workshops/kh-kinetics-autocare-night-friendly/): General servicing and repair, Basic listing, Kaki Bukit
+- [KT MotorWerk / Siang Motor](https://sgcarworkshop.sg/workshops/kt-motorwerk-siang-motor/): Spray painting and bodywork, Basic listing, Bedok North
 - [KY Auto](https://sgcarworkshop.sg/workshops/ky-auto/): General servicing and repair, Basic listing, Kaki Bukit
 - [Lee Beng Auto Services](https://sgcarworkshop.sg/workshops/lee-beng-auto-services/): General servicing and repair, Basic listing, Yishun
+- [Leong Boon Loo Motor Service](https://sgcarworkshop.sg/workshops/leong-boon-loo-motor-service/): Spray painting and bodywork, Basic listing, Tampines
 - [Lightning Motorsport](https://sgcarworkshop.sg/workshops/lightning-motorsport/): General servicing and repair, Basic listing, Toh Guan and Jurong East
 - [Lim Tan Motor](https://sgcarworkshop.sg/workshops/lim-tan-motor/): General servicing and repair, Basic listing, Sin Ming and Bishan
 - [M6 Garage](https://sgcarworkshop.sg/workshops/m6-garage/): General servicing and repair, Basic listing, Yishun

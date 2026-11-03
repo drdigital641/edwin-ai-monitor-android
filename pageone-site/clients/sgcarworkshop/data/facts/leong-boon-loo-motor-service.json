@@ -1,0 +1,57 @@
+{
+ "slug": "leong-boon-loo-motor-service",
+ "researched_at": "2026-11-04",
+ "researcher": "Claude, Google Places Details only (candidate from Edwin's queue; name from Google Business Profile)",
+ "facts": [
+  {
+   "field": "displayName",
+   "value": "Leong Boon Loo Motor Service",
+   "source_url": "google_places",
+   "retrieved": "2026-11-04"
+  },
+  {
+   "field": "rating",
+   "value": "4.8",
+   "source_url": "google_places",
+   "retrieved": "2026-11-04"
+  },
+  {
+   "field": "userRatingCount",
+   "value": "28",
+   "source_url": "google_places",
+   "retrieved": "2026-11-04"
+  },
+  {
+   "field": "websiteUri",
+   "value": "https://www.facebook.com/p/Leong-boon-loo-motor-services-100065418342496/",
+   "source_url": "google_places",
+   "retrieved": "2026-11-04"
+  },
+  {
+   "field": "types",
+   "value": "['car_repair', 'point_of_interest', 'service', 'establishment']",
+   "source_url": "google_places",
+   "retrieved": "2026-11-04"
+  },
+  {
+   "field": "primaryType",
+   "value": "car_repair",
+   "source_url": "google_places",
+   "retrieved": "2026-11-04"
+  }
+ ],
+ "conflicts": [],
+ "not_found": [
+  "editorialSummary",
+  "parkingOptions",
+  "weekdayDescriptions"
+ ],
+ "review_service_support": {
+  "Accident repair": 2,
+  "Scratch repair and spray painting": 3,
+  "Bumper spray painting": 2
+ },
+ "review_count_seen": 5,
+ "fetched_at": "2026-11-04",
+ "source": "google_places"
+}

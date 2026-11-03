@@ -826,5 +826,32 @@
   "mobile": "+6587777788",
   "status": "built",
   "date": "2026-11-03"
+ },
+ {
+  "place_id": "ChIJe3sSSiU92jERmZ-eBrzdL-Q",
+  "slug": "hock-eng-automobile-workshop",
+  "name_norm": "hock eng automobile workshop",
+  "postal_code": "489978",
+  "mobile": "+6597622698",
+  "status": "built",
+  "date": "2026-11-03"
+ },
+ {
+  "place_id": "ChIJU4nWyeUX2jER9w6Z8Iwg0xI",
+  "slug": "kt-motorwerk-siang-motor",
+  "name_norm": "kt motorwerk siang motor",
+  "postal_code": "489978",
+  "mobile": "+6593201043",
+  "status": "built",
+  "date": "2026-11-03"
+ },
+ {
+  "place_id": "ChIJ356t7T492jERP9V_UWZBkgY",
+  "slug": "leong-boon-loo-motor-service",
+  "name_norm": "leong boon loo motor service",
+  "postal_code": "528836",
+  "mobile": "+6596563622",
+  "status": "built",
+  "date": "2026-11-03"
  }
 ]

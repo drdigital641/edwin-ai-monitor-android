@@ -1,8 +1,8 @@
 {
 "": {
 "d": "2026-11-03",
-"h": "0141cea222bd",
-"h2": "0141cea222bd"
+"h": "a598caa8ac6b",
+"h2": "a598caa8ac6b"
 },
 "about/": {
 "d": "2026-11-03",
@@ -16,8 +16,8 @@
 },
 "areas/kaki-bukit-industrial-estate/": {
 "d": "2026-11-03",
-"h": "3a8c37e2c5b0",
-"h2": "3a8c37e2c5b0"
+"h": "4bec3bb74082",
+"h2": "4bec3bb74082"
 },
 "areas/toh-guan-jurong-east/": {
 "d": "2026-11-03",
@@ -71,18 +71,18 @@
 },
 "guides/car-aircon-not-cold/": {
 "d": "2026-11-03",
-"h": "2bdf99c79bb0",
-"h2": "2bdf99c79bb0"
+"h": "03f11ccb12ea",
+"h2": "03f11ccb12ea"
 },
 "guides/car-knocking-over-humps/": {
 "d": "2026-11-03",
-"h": "1133d8a49f5b",
-"h2": "1133d8a49f5b"
+"h": "11f288800ed1",
+"h2": "11f288800ed1"
 },
 "guides/car-overheating/": {
 "d": "2026-11-03",
-"h": "c2576380433d",
-"h2": "c2576380433d"
+"h": "03e687c82463",
+"h2": "03e687c82463"
 },
 "guides/car-wont-start-battery/": {
 "d": "2026-11-03",
@@ -101,8 +101,8 @@
 },
 "list-your-workshop/": {
 "d": "2026-11-03",
-"h": "f8a77fca4ba1",
-"h2": "f8a77fca4ba1"
+"h": "b3852f8b0982",
+"h2": "b3852f8b0982"
 },
 "privacy/": {
 "d": "2026-11-03",
@@ -111,13 +111,13 @@
 },
 "services/general-servicing-repair/": {
 "d": "2026-11-03",
-"h": "d72a615cbad3",
-"h2": "d72a615cbad3"
+"h": "99e3e594e91c",
+"h2": "99e3e594e91c"
 },
 "services/spray-painting-bodywork/": {
 "d": "2026-11-03",
-"h": "f0376fe36a3d",
-"h2": "f0376fe36a3d"
+"h": "7343f04de43b",
+"h2": "7343f04de43b"
 },
 "terms/": {
 "d": "2026-11-03",
@@ -209,6 +209,11 @@
 "h": "a9cc078750d7",
 "h2": "a9cc078750d7"
 },
+"workshops/hock-eng-automobile-workshop/": {
+"d": "2026-11-03",
+"h": "9cbc46142386",
+"h2": "9cbc46142386"
+},
 "workshops/j-s-garage/": {
 "d": "2026-11-02",
 "h": "9f747651b277",
@@ -244,6 +249,11 @@
 "h": "1a5c4d290dbd",
 "h2": "1a5c4d290dbd"
 },
+"workshops/kt-motorwerk-siang-motor/": {
+"d": "2026-11-03",
+"h": "16d9b929feba",
+"h2": "16d9b929feba"
+},
 "workshops/ky-auto/": {
 "d": "2026-11-02",
 "h": "1f463270a65d",
@@ -253,6 +263,11 @@
 "d": "2026-11-02",
 "h": "4b627bb4bd95",
 "h2": "4b627bb4bd95"
+},
+"workshops/leong-boon-loo-motor-service/": {
+"d": "2026-11-03",
+"h": "d9e613877dcb",
+"h2": "d9e613877dcb"
 },
 "workshops/lightning-motorsport/": {
 "d": "2026-11-02",
