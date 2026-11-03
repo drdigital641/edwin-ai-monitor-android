@@ -135,3 +135,22 @@ a.card,.card a.more{text-decoration:none}a.card{color:inherit}a.card:hover{trans
 .teamrow{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}.teamrow img{width:100%;height:260px;object-fit:cover;object-position:top;border-radius:14px}
 @media (max-width:600px){.teamrow img{height:180px}}
 @media (max-width:560px){.popular .job{flex-direction:row;align-items:center}.popular .jimg{flex:0 0 112px;aspect-ratio:1/1;align-self:stretch}.popular .jt{padding:12px 4px 12px 12px}.popular .jp{padding:0 12px 0 0;font-size:1rem}.popular .jt small{display:none}}
+/* v4: audience-led homepage */
+.hticks{list-style:none;margin:18px 0 0;padding:0;display:flex;flex-wrap:wrap;gap:8px 18px;font-size:.92rem;color:#cfd9e4}
+.hticks li{position:relative;padding-left:22px}
+.hticks li:before{content:"\2713";position:absolute;left:0;top:0;color:var(--volt);font-weight:800}
+.herophoto.wide{max-width:560px}.herophoto.wide img{aspect-ratio:4/3;object-fit:cover;object-position:60% 40%}
+a.hbadge{text-decoration:none}a.hbadge b{font-size:1.05rem;letter-spacing:.02em}
+.needs{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}
+@media (max-width:980px){.needs{grid-template-columns:1fr 1fr}}
+.need{display:flex;gap:12px;align-items:flex-start;padding:16px;border:1px solid var(--line);border-radius:16px;background:#fff;text-decoration:none;color:var(--ink);box-shadow:var(--sh);transition:transform .2s,border-color .2s}
+.need:hover{transform:translateY(-2px);border-color:var(--blue)}.need .ico{flex:0 0 auto;width:42px;height:42px}
+.need b{display:block;font-size:1rem;color:var(--navy)}.need small{display:block;color:var(--muted);font-size:.86rem;margin-top:3px;line-height:1.4}
+.need em{display:inline-block;margin-top:7px;font-style:normal;font-weight:700;font-size:.8rem;color:var(--blue);background:#eaf2ff;border-radius:999px;padding:2px 9px}
+@media (max-width:560px){.needs{grid-template-columns:1fr;gap:8px}.need{padding:12px 14px}.need small{font-size:.84rem}}
+.revs .marq.on .track>li{width:320px}.revs .marq .track>li{flex-basis:300px}
+.rq{margin:0;width:100%;background:#fff;border:1px solid var(--line);border-radius:16px;padding:18px;box-shadow:var(--sh);display:flex;flex-direction:column}
+.rstars{color:#e6a100;letter-spacing:2px}.rq blockquote{margin:8px 0 14px;font-size:.98rem;line-height:1.5;color:var(--ink);flex:1}
+.rq figcaption b{display:block;color:var(--navy)}.rq figcaption span{font-size:.8rem;color:var(--muted)}
+.why .card h3 em{font-style:normal;color:var(--blue)}
+.aq{margin:12px 0;padding:10px 16px;border-left:4px solid var(--volt);background:#f5f8fc;border-radius:0 10px 10px 0}.aq cite{display:block;font-size:.85rem;color:var(--muted);font-style:normal;margin-top:4px}
