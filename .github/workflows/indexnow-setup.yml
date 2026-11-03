@@ -1,0 +1,14 @@
+name: IndexNow setup
+
+on:
+  push:
+    branches: [ "claude/project-thread-zbfrt7" ]
+    paths: [ ".github/indexnow/**", ".github/workflows/indexnow-setup.yml" ]
+
+jobs:
+  run:
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+      - name: IndexNow
+        run: python3 .github/indexnow/run.py
