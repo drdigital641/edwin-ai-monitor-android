@@ -89,7 +89,7 @@ SVC_IMG = {'european-car-servicing': ('svc-servicing', 'Engine oil level being c
            'car-aircon-repair': ('svc-aircon', 'Aircon pressure gauges connected to a BMW engine bay'),
            'brake-suspension-repair': ('svc-brakes', 'Brake pad and disc being checked'),
            'gearbox-transmission-service': ('mechanic-under', 'Mechanic working under a car on a lift'),
-           'hybrid-ev-servicing': ('cataclean-hybrid', 'Cataclean Hybrid fuel and exhaust system cleaner posted by Volt Autocare'),
+           'hybrid-ev-servicing': ('svc-hybrid', 'Mechanic in front of an open hybrid engine bay'),
            'pre-purchase-inspection': ('svc-ppi', 'Car on a lift during an inspection'),
            'mercedes-benz': ('brand-mercedes', 'Mercedes-Benz SUV on a workshop lift'),
            'bmw': ('brand-bmw', 'BMW saloon in a workshop bay'),
@@ -141,8 +141,9 @@ def page(path, title, desc, body, lds=(), crumbs=None):
 <meta property="og:type" content="website"><meta property="og:site_name" content="{SITE} by {BIZ}"><meta property="og:title" content="{E(title)}">
 <meta property="og:description" content="{E(desc)}"><meta property="og:url" content="{canon}"><meta property="og:image" content="{DOMAIN}/assets/og.jpg">
 <meta property="og:image:width" content="1200"><meta property="og:image:height" content="630"><meta property="og:image:alt" content="{SITE} by {BIZ}, European car servicing at Newton Circus">
-<meta name="twitter:card" content="summary_large_image"><meta name="theme-color" content="#0b1b2b">
+<meta name="twitter:card" content="summary_large_image"><meta name="theme-color" content="#ffffff">
 <link rel="icon" href="/favicon.ico" sizes="48x48"><link rel="icon" type="image/png" sizes="192x192" href="/assets/icon-192.png"><link rel="apple-touch-icon" href="/assets/apple-touch-icon.png"><link rel="manifest" href="/site.webmanifest">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600;700&display=swap">
 <link rel="stylesheet" href="/ce.css?v={ver('ce.css')}">
 {''.join('<script type="application/ld+json">%s</script>' % json.dumps(x, ensure_ascii=False) for x in ld)}
 </head><body><a class="skip" href="#main">Skip to content</a>
@@ -336,75 +337,62 @@ ICONS['parts'] = '<path d="M21 8 12 3 3 8v8l9 5 9-5z"/><path d="M3 8l9 5 9-5M12 
 ICONS['quote'] = '<path d="M7 7h4v4c0 3-2 5-4 6M15 7h4v4c0 3-2 5-4 6"/>'
 
 def home():
-    pop = ''.join('<a class="job" href="%s" data-rv><span class="jimg">%s</span><span class="jt"><b>%s</b><small>%s</small></span><span class="jp">%s</span></a>' % (h, img(*SVC_IMG[i]), E(t), E(x), E(p)) for t, p, x, h, i in POPULAR)
-    igs = ''.join('<li><a class="igcard" href="%s" target="_blank" rel="noopener">%s</a></li>' % (SOCIAL[1], img(n, a)) for n, a in IG)
-    needs = ''.join('<a class="need" href="%s" data-rv>%s<span><b>%s</b><small>%s</small>%s</span></a>' % (h, ico(k), E(t), E(x), ('<em>%s</em>' % E(p)) if p else '') for k, t, x, h, p in NEEDS)
-    revs = ''.join('<li><figure class="rq"><div class="rstars">&#9733;&#9733;&#9733;&#9733;&#9733;</div><blockquote>&ldquo;%s&rdquo;</blockquote><figcaption><b>%s</b><span>%s &middot; %s &middot; Google</span></figcaption></figure></li>' % (E(q), E(n), E(job), E(d)) for n, d, job, q in REVIEWS)
-    art_cards = ''.join('<a class="card acard" href="/%s/" data-rv><div class="band-top"></div><span class="tag">%s</span><h3>%s</h3><p>%s</p><span class="more">Read the guide &rarr;</span></a>'
-                        % (a['slug'], E(a.get('brand') or 'Car care'), E(a['h1']), E(a['desc'][:110].rsplit(' ', 1)[0] + '...')) for a in ARTICLES[:6])
-    bands = {'0-3': [a for a in AREAS if a[4] <= 3 and a[0] != 'Newton'], '3-6': [a for a in AREAS if 3 < a[4] <= 6], '6-10': [a for a in AREAS if 6 < a[4] <= 10]}
+    tiles = ''.join('<a class="tile" href="/services/%s/" data-rv>%s<span class="tcap"><small>%s</small><b>%s</b></span></a>' % (
+        s['slug'], img(*SVC_IMG[s['slug']], sizes='(max-width:700px) 100vw, 380px'), ('0%d' % (i + 1)), E(s['name'])) for i, s in enumerate([x for x in SERVICES if x['slug'] != 'gearbox-transmission-service']))
+    revs = ''.join('<li><figure class="rq"><blockquote>&ldquo;%s&rdquo;</blockquote><figcaption><b>%s</b><span>%s &middot; %s</span></figcaption></figure></li>' % (E(q), E(n), E(job), E(d)) for n, d, job, q in REVIEWS)
+    prices = ''.join('<a class="prow" href="%s"><span>%s</span><b>%s</b></a>' % (h, E(t), E(p)) for t, p, x, h, i in POPULAR)
+    art_cards = ''.join('<a class="acard2" href="/%s/" data-rv><small>%s</small><h3>%s</h3><span>Read &rarr;</span></a>'
+                        % (a['slug'], E(a.get('brand') or 'Car care'), E(a['h1'])) for a in ARTICLES[:3])
+    logos = ''.join(img(l, l.replace('logo-', '').upper() + ' logo', 'blogo') for l in ['logo-mercedes', 'logo-bmw', 'logo-audi', 'logo-vw', 'logo-porsche', 'logo-mini'])
     faqs = [
         {'q': 'Where is the workshop?', 'a': 'Inside the Shell station at 143 Bukit Timah Road, Newton Circus, Singapore 229843. Search "Volt Autocare @Bukit Timah" in Google Maps or tap Directions.'},
         {'q': 'Will you replace parts I do not need?', 'a': 'No. We check the car, show you what we found and tell you what is urgent, what can wait and what does not need replacing. Work starts only after you agree to the price.'},
-        {'q': 'Which cars do you work on?', 'a': 'Continental cars such as Mercedes-Benz, BMW, Audi and Volkswagen are our speciality, and we look after hybrids, EVs and everyday Japanese and Korean cars too. WhatsApp us the model and year.'},
+        {'q': 'Which cars do you work on?', 'a': 'Continental cars such as Mercedes-Benz, BMW, Audi and Volkswagen are our speciality, and we look after hybrids, EVs and Japanese and Korean cars too. WhatsApp us the model and year.'},
         {'q': 'Can I bring my own parts?', 'a': 'Yes, customers bring their own parts and we fit them for labour only. Send us the part details first so we can check it suits your car.'},
         {'q': 'Is ContiExpert the same as Volt Autocare?', 'a': 'Yes. ContiExpert is the continental-car brand of Volt Autocare, and contiexpert.sg is the website of our Newton Circus workshop. Google Maps lists us as Volt Autocare @Bukit Timah.'},
     ]
-    body = f'''<section class="hero"><div class="wrap"><div><span class="kicker">Inside Shell &middot; 143 Bukit Timah Road, Newton</span>
-<h1>The car workshop at Newton that fixes only what your car needs</h1>
-<p class="lede">Continental, hybrid and everyday cars. We find the real fault, explain it in plain words and give you the price before we start. Batteries, brake pads and even aircon compressors are often done in the same visit.</p>
-<div class="btns">{btn_wa('WhatsApp ' + PHONE)}{btn_call()}{btn_dir()}</div>
-<ul class="hticks"><li>Honest advice, no unneeded parts</li><li>Clear price before work starts</li><li>Bring your own parts welcome</li></ul></div>
-<div class="herophoto wide">{img('hero-consult', 'A mechanic explaining a car problem to the owner beside the open bonnet', eager=True, sizes='(max-width:820px) 100vw, 560px')}
-<a class="hbadge" href="{MAPS}" target="_blank" rel="noopener" data-cta="maps"><b>{RATING[0]} &#9733;&#9733;&#9733;&#9733;&#9733;</b><span>{RATING[1]} Google reviews</span></a></div></div></section>
+    body = f'''<section class="lux-hero"><div class="lux-img">{img('hero-showroom', 'Silver Mercedes-Benz on a lift during a diagnostic check', eager=True, sizes='100vw')}</div>
+<div class="wrap lux-copy"><span class="eyebrow">ContiExpert by Volt Autocare &middot; Newton</span>
+<h1>Continental car specialists<span>at Newton Circus</span></h1>
+<p>Mercedes-Benz, BMW, Audi and Volkswagen, plus hybrids and EVs. We find the real fault, explain it clearly and fix only what your car needs.</p>
+<div class="btns">{btn_wa('Book on WhatsApp', cls='btn btn-dark')}<a class="btn btn-outline" href="tel:{TEL}" data-cta="call">Call {PHONE}</a></div></div></section>
 
-<section class="sec"><div class="wrap"><h2>What do you need today?</h2><p class="lead">Pick the closest one, or WhatsApp us a photo and a line about what the car is doing.</p>
-<div class="needs">{needs}</div></div></section>
+<section class="facts"><div class="wrap"><a href="{MAPS}" target="_blank" rel="noopener" data-cta="maps"><b>{RATING[0]} &#9733;</b><span>{RATING[1]} Google reviews</span></a>
+<div><b>Inside Shell</b><span>143 Bukit Timah Road</span></div><div><b>Clear prices</b><span>agreed before work starts</span></div><div><b>Own parts</b><span>welcome, labour only</span></div></div></section>
 
-<section class="sec alt revs"><div class="wrap"><h2>What drivers say after their visit</h2><p class="lead">{RATING[0]} stars from all {RATING[1]} Google reviews (checked {RATING[2]}). The same three things keep coming up: honest advice, clear explanations and quick work.</p>
-<div class="carwrap"><div class="marq"><ul class="track">{revs}</ul></div><div class="carbtns"><button class="cprev" aria-label="Previous">&larr;</button><button class="cnext" aria-label="Next">&rarr;</button></div></div>
-<p><a href="{MAPS}" target="_blank" rel="noopener" data-cta="maps">Read every review on Google &rarr;</a></p></div></section>
+<section class="sec5"><div class="wrap"><div class="head5"><span class="eyebrow">The makes we know</span><h2>European cars, looked after properly</h2></div>
+<div class="logorow">{logos}</div>
+<div class="chips5">{''.join('<a href="/brands/%s/">%s &rarr;</a>' % (b['slug'], E(b['name'])) for b in BRANDS)}</div></div></section>
 
-<section class="sec"><div class="wrap"><h2>Why central drivers come back</h2>
-<div class="grid g2 why">
-<div class="card" data-rv>{ico('pre-purchase-inspection')}<h3>We tell you what <em>not</em> to replace</h3><p>One customer came in expecting a new aircon coil. We showed him only the compressor had failed, and changed just that. Another was told certain parts did not need changing at all.</p></div>
-<div class="card" data-rv>{ico('book')}<h3>You understand the problem</h3><p>We show you the cause and the effect, what is urgent and what can wait, and agree the price with you before any work starts.</p></div>
-<div class="card" data-rv>{ico('car-diagnostics-warning-lights')}<h3>Quick turnaround</h3><p>Aircon compressors replaced on the spot, a wheel bearing done in under two hours, pre-purchase inspection reports on the same day.</p></div>
-<div class="card" data-rv>{ico('pin')}<h3>On your way, in the centre</h3><p>Inside the Shell at Newton Circus, minutes from Orchard, Novena and the CTE. Fill up, get the car checked, and carry on with your day.</p></div>
-</div></div></section>
+<section class="sec5 grey"><div class="wrap"><div class="head5"><span class="eyebrow">Services</span><h2>What we do</h2><a class="lnk" href="/services/">All services &rarr;</a></div>
+<div class="tiles">{tiles}</div></div></section>
 
-<section class="sec alt popular"><div class="wrap"><h2>Popular jobs and prices</h2><p class="lead">From our latest offers. WhatsApp us your model to confirm the price for your car.</p>
-<div class="jobs">{pop}</div></div></section>
+<section class="sec5"><div class="wrap split"><div class="splitimg" data-rv>{img('approach', 'Two technicians checking an Audi with a diagnostic tablet', sizes='(max-width:820px) 100vw, 560px')}</div>
+<div data-rv><span class="eyebrow">Our approach</span><h2>Honest advice comes first</h2>
+<ol class="steps5"><li><b>We find the real fault</b>Diagnostics first, so you do not pay for parts you do not need. One customer expected a new aircon coil; only the compressor had failed.</li>
+<li><b>We explain it plainly</b>What is wrong, what is urgent and what can wait, with the price agreed before we start.</li>
+<li><b>We work quickly</b>Batteries, brake pads and even aircon compressors are often done in the same visit.</li></ol></div></div></section>
 
-<section class="sec"><div class="wrap"><h2>Specialists in two kinds of car</h2>
-<div class="grid g2"><div class="spec" data-rv><span class="kicker2">ContiExpert</span><h3>Continental cars</h3><div class="blogos">{''.join(img(l, l.replace('logo-', '').upper() + ' logo', 'blogo') for l in ['logo-mercedes', 'logo-bmw', 'logo-audi', 'logo-vw', 'logo-porsche', 'logo-mini'])}</div><p>Mercedes-Benz, BMW, Audi and Volkswagen cost the most at the dealer. We do the same servicing, warning-light, aircon, brake, suspension and gearbox work, and explain each step.</p>
-<div class="chips">{''.join('<a class="chip" href="/brands/%s/">%s</a>' % (b['slug'], E(b['name'])) for b in BRANDS)}<a class="chip" href="/contact-us/">Porsche, MINI <small>ask us</small></a></div></div>
-<div class="spec ev" data-rv><div class="specimg">{img('cataclean-hybrid', 'Hybrid fuel and exhaust system cleaner at the Volt Autocare workshop')}</div><span class="kicker2">Volt</span><h3>Hybrids and EVs</h3><p>Buying a used hybrid or EV? We read the battery's state of health in a hybrid or EV pre-purchase inspection, and clean clogged hybrid battery fans that make the battery run hot.</p>
-<div class="chips"><a class="chip" href="/services/hybrid-ev-servicing/">Hybrid and EV care</a><a class="chip" href="/services/pre-purchase-inspection/">Hybrid/EV PPI</a></div></div></div></div></section>
+<section class="sec5 grey revs"><div class="wrap"><div class="head5"><span class="eyebrow">{RATING[0]} &#9733; from {RATING[1]} Google reviews</span><h2>In our customers&rsquo; words</h2><a class="lnk" href="{MAPS}" target="_blank" rel="noopener" data-cta="maps">All reviews on Google &rarr;</a></div>
+<div class="carwrap"><div class="marq"><ul class="track">{revs}</ul></div><div class="carbtns"><button class="cprev" aria-label="Previous">&larr;</button><button class="cnext" aria-label="Next">&rarr;</button></div></div></div></section>
 
-<section class="sec alt"><div class="wrap"><h2>How a visit works</h2>
-<ol class="steps"><li data-rv><b>WhatsApp us first</b>Model, year, mileage and what you noticed. A photo of any warning light helps.</li>
-<li data-rv><b>Drive into the Shell at Newton</b>143 Bukit Timah Road. Fill up while we check you in.</li>
-<li data-rv><b>We check and explain</b>What is wrong, what is urgent, what can wait, and the price.</li>
-<li data-rv><b>You decide</b>Work starts only once you agree. We message you when the car is ready.</li></ol></div></section>
+<section class="sec5"><div class="wrap split rev"><div data-rv><span class="eyebrow">Starting prices</span><h2>Popular jobs</h2>
+<div class="prices">{prices}</div><p class="note">From our latest offers. WhatsApp your model to confirm the price for your car.</p></div>
+<div data-rv><span class="eyebrow">Hybrid &amp; EV</span><h2>Buying a used hybrid or EV?</h2><p>Our hybrid and EV pre-purchase inspection reads the battery&rsquo;s state of health before you pay. We also clean clogged hybrid battery fans that make the battery run hot.</p>
+<p><a class="lnk" href="/services/hybrid-ev-servicing/">Hybrid and EV care &rarr;</a></p></div></div></section>
 
-<section class="sec ig"><div class="wrap"><h2>Car tips from our team</h2><p class="lead">Short tips we post for Singapore drivers. Tap one to see it on Instagram.</p>
-<div class="carwrap"><div class="marq"><ul class="track">{igs}</ul></div><div class="carbtns"><button class="cprev" aria-label="Previous">&larr;</button><button class="cnext" aria-label="Next">&rarr;</button></div></div></div></section>
+<section class="sec5 grey"><div class="wrap split"><div data-rv><span class="eyebrow">Visit us</span><h2>Inside the Shell at Newton Circus</h2>
+<address class="nap">{ADDR1}, {ADDR_NOTE}<br>{ADDR2}</address>
+<p>Minutes from Orchard, Novena, Toa Payoh and Bukit Timah. Fill up while we check you in. <a href="/areas-we-serve/">Getting here from your area &rarr;</a></p>
+<div class="btns">{btn_dir('btn btn-dark')}{btn_wa('WhatsApp ' + PHONE, cls='btn btn-outline')}</div></div>
+<div class="mapbox" data-rv><iframe src="{EMBED}" title="Map of {BIZ} at 143 Bukit Timah Road" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe></div></div></section>
 
-<section class="sec alt"><div class="wrap grid g2" style="align-items:center"><div><h2>For drivers within 10 km of Newton</h2>
-<p class="lead">Newton is close to the middle of Singapore, so most central and city-fringe estates are within 10 km in a straight line.</p>
-{''.join('<p class="band"><b>%s km:</b> %s</p>' % (k, E(', '.join(a[0] for a in v))) for k, v in bands.items())}
-<p><a class="btn btn-line" href="/areas-we-serve/">Getting here from your area &rarr;</a></p></div>
-<div class="catch" data-rv>{catchment_svg(560, labels={'Ang Mo Kio', 'Bishan', 'Toa Payoh', 'Novena', 'Bukit Timah', 'Holland Village', 'Orchard', 'Raffles Place', 'Kallang', 'Geylang', 'Clementi', 'Serangoon', 'HarbourFront', 'Queenstown'})}</div></div></section>
+<section class="sec5"><div class="wrap"><div class="head5"><span class="eyebrow">Guides</span><h2>Before you book</h2><a class="lnk" href="/article/">All guides &rarr;</a></div>
+<div class="arts">{art_cards}</div></div></section>
 
-<section class="sec"><div class="wrap"><h2>Car care guides</h2><p class="lead">Straight answers to what owners ask before they book.</p>
-<div class="grid g3">{art_cards}</div><p><a href="/article/">All guides &rarr;</a></p></div></section>
-
-<section class="sec alt"><div class="wrap grid g2" style="align-items:start"><div data-rv>{faq_html(faqs, 'Quick answers')}</div>
-<div data-rv><h2>Find us</h2><address class="nap">{ADDR1}, {ADDR_NOTE}<br>{ADDR2}</address>
-<div class="mapbox" style="margin-top:12px"><iframe src="{EMBED}" title="Map of {BIZ} at 143 Bukit Timah Road" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe></div></div></div></section>'''
-    page('/', 'Honest Car Workshop Newton, Inside Shell | ContiExpert',
-         'Continental, hybrid and everyday car repairs inside Shell at 143 Bukit Timah Road, Newton. 5.0 from 22 Google reviews. We fix only what is needed. WhatsApp 8221 5502.',
+<section class="sec5 grey"><div class="wrap narrow">{faq_html(faqs, 'Quick answers')}</div></section>'''
+    page('/', 'Continental Car Specialist Newton, Inside Shell | ContiExpert',
+         'Mercedes-Benz, BMW, Audi and VW servicing and repairs, plus hybrid and EV checks, inside Shell at 143 Bukit Timah Road, Newton. 5.0 from 22 Google reviews.',
          body, [faq_ld(faqs)])
 
 def services_hub():

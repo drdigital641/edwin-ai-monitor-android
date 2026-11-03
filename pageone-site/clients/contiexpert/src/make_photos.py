@@ -25,5 +25,7 @@ for key, n in {'svc-servicing': 38, 'svc-diagnostics': 47, 'svc-aircon': 72, 'sv
 for key, n in {'logo-bmw': 105, 'logo-mercedes': 106, 'logo-audi': 100, 'logo-vw': 98, 'logo-porsche': 101, 'logo-mini': 99}.items():
     dims[key] = save(Image.open(os.path.join(R, 'wp', wp[n])), key, 160)
 dims['hero-consult'] = save(Image.open(os.path.join(R, 'wp', wp[52])), 'hero-consult', 1200, (0.08, 0, 1, 1))
+dims['hero-showroom'] = save(Image.open(os.path.join(R, 'wp', wp[81])), 'hero-showroom', 1800)
+dims['approach'] = save(Image.open(os.path.join(R, 'wp', wp[73])), 'approach', 1100)
 json.dump(dims, open(os.path.join(OUT, 'dims.json'), 'w'))
 print(len(dims), 'photos', sum(os.path.getsize(os.path.join(OUT, f)) for f in os.listdir(OUT)) // 1024, 'KB')
