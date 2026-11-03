@@ -1051,6 +1051,15 @@ ARTS = [
    ("Is it safe to keep driving with a misfire?", "A flashing check-engine light means the engine is misfiring badly. Unburnt fuel can reach the exhaust and damage the catalytic converter, so have the car checked soon and avoid hard driving until then."),
    ("Which coil do I need?", "Coils differ by model, generation and engine. Send us your car plate or chassis number and which cylinder is misfiring, and we will match the right coil. Many owners change the spark plugs at the same time, so ask us about both.")],
   "ignition-coils", "2026-11-02"),
+ ("signs-of-worn-spark-plugs", "Signs your Hyundai or Kia needs new spark plugs",
+  "Hard starts, a rough idle and poor fuel economy can all point to worn spark plugs. Common signs, and how to tell them from a bad coil.",
+  [("What does a spark plug do?", "A spark plug creates the spark that ignites the fuel and air in each cylinder of a petrol engine. The electrodes wear down with use, so over time the spark gets weaker and the engine burns fuel less cleanly."),
+   ("What are the common signs of worn spark plugs?", "<ul><li>The engine is slower to start, or cranks for longer than before.</li><li>A rough or uneven idle, or a slight shake when stopped at a traffic light.</li><li>Hesitation or a flat spot when you accelerate.</li><li>Higher fuel use than usual.</li><li>A check-engine light that comes on with a misfire code.</li></ul>"),
+   ("When should spark plugs be changed?", "Follow the service schedule in your owner's manual, because the interval depends on the engine and the type of plug fitted. Your workshop can also pull the plugs, check the electrode wear and tell you whether they are due."),
+   ("Is it the spark plug or the ignition coil?", "Both cause a misfire, and they sit together in most engines. A workshop reads the fault code to find the cylinder, then checks the plug and the coil on that cylinder. If you are changing plugs on an older car, ask the workshop to look at the coils at the same time."),
+   ("Do all cars need spark plugs?", "No. Spark plugs are for petrol engines. Diesel engines do not use them and electric cars have no engine, so they are not listed for those models in our shop."),
+   ("Which spark plugs do I need?", "Plugs differ by engine, not just by model. Send us your car plate or chassis number and we will match the right set. Plugs are sold as a set for the number of cylinders your engine has.")],
+  "spark-plugs", "2026-11-04"),
 ]
 
 # 40-60 word direct answers shown under each article H1, and meta descriptions of 120-160 characters (2 Nov 2026 SEO pass)
@@ -1058,12 +1067,14 @@ ART_ANS = {
  "find-the-right-part-without-a-part-number": "To get the right Hyundai or Kia part first time, send three things: your car model with its generation or year, the part you need, and your chassis number from the vehicle log card. The chassis number settles the generation, facelift and engine, which decide the fit. A photo of the old part helps too.",
  "brake-pads-and-discs-when-to-change": "Change brake pads when they squeal, the car takes longer to stop or a warning light comes on. Change the discs too if they are worn below the minimum thickness stamped on them, deeply scored or warped. Pads and discs are changed in pairs on the same axle, so both sides brake evenly.",
  "signs-of-a-worn-engine-mounting": "A worn engine mounting usually shows as extra vibration at idle, a knock or clunk when you pull away or change gear, or an engine that visibly rocks when revved. The rubber wears with age and heat, so have a workshop check it and replace the worn mount before hoses and wiring are strained.",
+ "signs-of-worn-spark-plugs": "Worn spark plugs usually show as a slow or hard start, a rough idle, hesitation when you accelerate and higher fuel use. A misfire code can also appear. Follow the interval in your owner's manual, and have a workshop check the plugs and coils together, as both cause similar symptoms.",
  "signs-of-a-failing-ignition-coil": "A failing ignition coil usually shows as a rough idle, hesitation or jerking when you accelerate, or a check-engine light that comes on or flashes during a misfire. A workshop reads the fault code to find the cylinder, then swaps coils to confirm. Avoid hard driving while the light flashes.",
 }
 ART_DESC = {
  "find-the-right-part-without-a-part-number": "Most owners don't know their part numbers. Send your model, generation, chassis number and a photo of the old part and we match the right part.",
  "brake-pads-and-discs-when-to-change": "Pads wear first and discs wear slower. How to tell from the squeal, the pedal feel and the disc thickness whether your Hyundai or Kia needs pads, discs or both.",
  "signs-of-a-worn-engine-mounting": "Vibration at idle and a knock when you change gear can point to the engine mounts. Common signs of a worn engine mounting on a Hyundai or Kia.",
+ "signs-of-worn-spark-plugs": "Hard starts, a rough idle and poor fuel economy can point to worn spark plugs. Common signs on a Hyundai or Kia, and how to tell them from a bad ignition coil.",
  "signs-of-a-failing-ignition-coil": "A rough idle, a flashing check-engine light and a car that shakes under load can point to a weak ignition coil. Signs, and how to tell it from a spark plug.",
 }
 
