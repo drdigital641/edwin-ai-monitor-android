@@ -96,7 +96,7 @@ BEDOK = dict(slug="bedok-reservoir-road", name="Bedok Reservoir", place="Blk 715
                ["bedroom.jpg", "wardrobe.jpg", "art-niche.jpg"]),
              ("Bathrooms", "Slate-look tiles floor to ceiling, recessed niches with their own light, and art placed to be caught in the mirror.",
                ["wc-niche.jpg", "bath-vanity.jpg", "bath-niche.jpg", "bath-cabinet.jpg", "mirror-art.jpg"])])
-P.insert(1, BEDOK)
+P.insert(0, BEDOK)
 BYSLUG = {p["slug"]: p for p in P}
 
 STEPS = [
@@ -146,7 +146,7 @@ def dims(f):
 LOGO = ('<a class="brand" href="{b}" aria-label="Maison Interior Design, home">'
         '<span class="bm">MAISON</span><span class="bs">Interior Design</span></a>').format(b=BASE)
 
-NAV = [("portfolio/", "Portfolio"), ("services/", "Services"), ("landed-homes/", "Landed Homes"), ("about/", "About"), ("contact/", "Contact")]
+NAV = [("portfolio/", "Portfolio"), ("services/", "Services"), ("about/", "About"), ("contact/", "Contact")]
 
 def wa(text="Hi Maison Interior Design, I'd like to discuss my renovation."):
     from urllib.parse import quote
@@ -170,7 +170,14 @@ def head(title, desc, path, og_img, schema):
 </head>"""
 
 def header(cur, over=False):
-    links = "".join(f'<a href="{BASE}{h}"{" aria-current=page" if cur==h else ""}>{t}</a>' for h, t in NAV)
+    def nl(h, t):
+        on = cur == h or (h == "portfolio/" and cur == "landed-homes/")
+        a = f'<a href="{BASE}{h}"{" aria-current=page" if on else ""}>{t}</a>'
+        if h == "portfolio/":
+            return (f'<span class="nav-g">{a}<span class="nav-sub"><a class="sub-all" href="{BASE}portfolio/">All projects</a>'
+                    f'<a href="{BASE}portfolio/bedok-reservoir-road/">Bedok Reservoir</a><a href="{BASE}landed-homes/">Landed homes</a></span></span>')
+        return a
+    links = "".join(nl(h, t) for h, t in NAV)
     return f"""<body class="{'over' if over else 'solid'}"><a class="skip" href="#main">Skip to content</a>
 <header class="hd" id="hd"><div class="wrap hd-in">{LOGO}
 <nav class="nav" id="nav" aria-label="Main">{links}<a class="nav-cta" href="{wa()}" data-cta="whatsapp">Book a consultation</a></nav>
@@ -186,7 +193,7 @@ def cta_block():
 </div></section>"""
 
 def footer():
-    links = "".join(f'<a href="{BASE}{h}">{t}</a>' for h, t in NAV)
+    links = "".join(f'<a href="{BASE}{h}">{t}</a>' for h, t in NAV[:1] + [("landed-homes/", "Landed Homes")] + NAV[1:])
     return f"""</main><footer class="ft"><div class="wrap ft-in">
 <div class="ft-a">{LOGO}<p>Residential and commercial interior design, and landed house building, in Singapore since 2018.</p></div>
 <div class="ft-b"><h3>Studio</h3>{links}</div>
@@ -194,6 +201,7 @@ def footer():
 <p class="soc"><a href="{IG}" rel="noopener">Instagram</a><a href="{FB}" rel="noopener">Facebook</a><a href="{wa()}">WhatsApp</a></p></div>
 </div><div class="wrap ft-legal"><span>© 2026 Maison Interior Design</span><span>Redesign concept by Page One Singapore</span></div></footer>
 <a class="fab" href="{wa()}" data-cta="whatsapp" aria-label="WhatsApp Maison Interior Design"><svg viewBox="0 0 24 24" width="24" height="24" aria-hidden="true"><path fill="currentColor" d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2Zm0 18.2a8.2 8.2 0 0 1-4.2-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2Zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8-.2-.1-.4-.1-.6.1l-.8 1c-.1.2-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.3-.4.2-.4.7-1.3.1-.2 0-.3 0-.4l-.8-1.8c-.2-.5-.4-.4-.6-.4h-.5a1 1 0 0 0-.7.3 3 3 0 0 0-.9 2.2 5.2 5.2 0 0 0 1.1 2.7 11.8 11.8 0 0 0 4.5 4c1.7.7 2.3.8 3.2.6.5-.1 1.5-.6 1.7-1.2.2-.6.2-1.1.2-1.2-.1-.1-.3-.2-.5-.3Z"/></svg></a>
+<div class="vm" id="vm" hidden role="dialog" aria-modal="true" aria-label="Home tour video"><button class="vm-x" aria-label="Close video">×</button><video controls playsinline preload="none"></video></div>
 <script src="{BASE}mid.js" defer></script></body></html>"""
 
 ORG = {"@type": "HomeAndConstructionBusiness", "@id": DOMAIN + "/#business", "name": "Maison Interior Design",
@@ -277,7 +285,7 @@ def home():
               ("62-Havelock-Road-Living-Dining-1-small-scaled.jpg", "Space consciousness", "River Place, Havelock Road", "62-havelock-road-river-place")]
     sl = "".join(f'<div class="slide{" on" if i==0 else ""}" data-cap="{e(c)}" data-href="{BASE}portfolio/{s}/">{img(f, c, "kb", 1600, 1067, lazy=i>0)}</div>' for i, (f, t, c, s) in enumerate(slides))
     dots = "".join(f'<button class="hdot{" on" if i==0 else ""}" aria-label="Show {e(c)}"><i></i></button>' for i, (f, t, c, s) in enumerate(slides))
-    feat = [BYSLUG[s] for s in ("landed-home-holland", "62-havelock-road-river-place", "teck-whye-crescent", "jimmy-monkey-one-north")]
+    feat = [BYSLUG[s] for s in ("bedok-reservoir-road", "landed-home-holland", "62-havelock-road-river-place", "jimmy-monkey-one-north")]
     grid = "".join(card(p, "pc f%d" % i) for i, p in enumerate(feat))
     strip = []
     for p in P:
@@ -310,11 +318,12 @@ def home():
 </div></section>
 
 <section class="sec bedok"><div class="wrap bk-in">
-<a class="bk-main rv" href="{BASE}portfolio/bedok-reservoir-road/">{img(B+"stone-wall.jpg", "Rock-textured feature wall and veined stone dining table, Bedok Reservoir home", w=1600, h=1067)}</a>
-<div class="bk-t"><p class="eyebrow rv">Just completed · Bedok Reservoir</p><h2 class="display rv">Stone, oak and <em>quiet light</em></h2>
+<div class="bk-art rv"><a class="bk-main" href="{BASE}portfolio/bedok-reservoir-road/">{img(B+"stone-wall.jpg", "Rock-textured feature wall and veined stone dining table, Bedok Reservoir home", w=1600, h=1067)}</a>
+<button class="bk-vid" type="button" data-video="{B}home-tour.mp4" data-poster="{B}home-tour-poster.jpg" aria-label="Play the Bedok Reservoir home tour video, 1 minute 22 seconds"><video muted loop playsinline autoplay preload="metadata" poster="{B}home-tour-poster.jpg" width="360" height="636"><source src="{B}tour-teaser.mp4" type="video/mp4"></video><span class="bk-play"><i></i>Tour · 1:22</span></button></div>
+<div class="bk-t"><p class="eyebrow rv">Featured home · Bedok Reservoir</p><h2 class="display rv">Stone, oak and <em>quiet light</em></h2>
 <p class="rv">A whole home built around one palette: a rock-textured dining wall, oak panelling, charcoal cabinetry and light tucked into every niche.</p>
 <div class="bk-d rv"><a href="{BASE}portfolio/bedok-reservoir-road/#kitchen">{img(B+"kitchen-sink.jpg", "Lit stone-look backsplash and black sink", w=1067, h=1600)}<span>Kitchen</span></a><a href="{BASE}portfolio/bedok-reservoir-road/#bathrooms">{img(B+"bath-vanity.jpg", "Slate-look bathroom with lit niche", w=1067, h=1600)}<span>Bath</span></a><a href="{BASE}portfolio/bedok-reservoir-road/#bedroom">{img(B+"wardrobe.jpg", "Dressing area with tinted glass doors", w=1067, h=1600)}<span>Wardrobe</span></a></div>
-<div class="bk-a rv"><a class="btn dark-b" href="{BASE}portfolio/bedok-reservoir-road/">See the home</a><a class="link" href="{BASE}portfolio/bedok-reservoir-road/#tour">Watch the home tour</a></div></div></div></section>
+<div class="bk-a rv"><a class="btn dark-b" href="{BASE}portfolio/bedok-reservoir-road/">See the home</a><button class="link" type="button" data-video="{B}home-tour.mp4" data-poster="{B}home-tour-poster.jpg">Watch the home tour</button></div></div></div></section>
 
 <section class="sec works"><div class="wrap"><div class="sec-h"><div><p class="eyebrow rv">Selected works</p><h2 class="display rv">Spaces we have <em>shaped</em></h2></div>
 <a class="link rv" href="{BASE}portfolio/">View all projects</a></div>
@@ -359,7 +368,8 @@ def portfolio():
     s += header("portfolio/")
     s += f"""<section class="phead"><div class="wrap"><p class="eyebrow">Portfolio</p><h1 class="display">Homes, cafés <em>and everything between</em></h1>
 <p class="ph-p">Completed residential and commercial projects, and the 3D designs that come before every build.</p>
-<div class="chips" role="group" aria-label="Filter projects">{chips}</div></div></section>
+<div class="chips" role="group" aria-label="Filter projects">{chips}</div>
+<a class="ph-landed" href="{BASE}landed-homes/"><span class="eyebrow">Builder</span>Building a landed home? See how we design and build landed houses <b>→</b></a></div></section>
 <section class="sec tight"><div class="wrap"><div class="pgrid" id="pgrid">{grid}</div></div></section>{cta_block()}"""
     s += footer()
     write("portfolio/index.html", s)
@@ -386,7 +396,7 @@ def project(i, p):
     video_html = ""
     if p.get("video"):
         video_html = f'''<section class="sec tour dark" id="tour"><div class="wrap tour-in"><div class="tour-v rv"><video controls preload="none" playsinline poster="{p["poster"]}" width="480" height="848"><source src="{p["video"]}" type="video/mp4"></video></div>
-<div class="tour-t"><p class="eyebrow rv">Home tour</p><h2 class="display rv">Walk through it <em>with the designer</em></h2><p class="rv">Our designer takes you room by room through the finished home, from the entrance to the bedroom, and explains what changed and why.</p>
+<div class="tour-t"><p class="eyebrow rv">Home tour</p><h2 class="display rv">Walk through <em>the finished home</em></h2><p class="rv">A 1-minute 22-second tour, room by room, from the foyer to the bedroom, explaining what was changed and why.</p>
 <a class="btn light rv" href="{wa("Hi Maison, I watched the Bedok Reservoir home tour and would like to discuss my home.")}" data-cta="whatsapp">Talk to us about your home</a></div></div></section>'''
     mats = f'<div class="pmeta-row"><dt>Materials</dt><dd>{"<br>".join(e(m) for m in p["materials"])}</dd></div>' if p.get("materials") else ""
     title = f'{p["name"]} {p["place"]}'
@@ -404,7 +414,7 @@ def project(i, p):
 <p class="lead rv">{e(p["lede"])}</p>
 <dl class="pmeta rv"><div class="pmeta-row"><dt>Type</dt><dd>{e(p["type"])}</dd></div><div class="pmeta-row"><dt>Scope</dt><dd>{"Design &amp; build" if p["status"]=="Completed" else "3D design &amp; visualisation"}</dd></div>
 <div class="pmeta-row"><dt>Status</dt><dd>{e(p["status"])}</dd></div>{mats}</dl></div>{('<div class="wrap">'+story+'</div>') if story else ''}</section>
-{rooms_html or f'<section class="sec tight"><div class="wrap"><div class="gal">{gal}</div></div></section>'}{video_html}
+{video_html}{rooms_html or f'<section class="sec tight"><div class="wrap"><div class="gal">{gal}</div></div></section>'}
 <section class="next"><a href="{BASE}portfolio/{nxt["slug"]}/" class="next-a">{img(nxt["hero"], nxt["name"], w=dims(nxt["hero"])[0], h=dims(nxt["hero"])[1])}<span class="next-t"><span class="eyebrow light">Next project</span><b class="display">{e(nxt["name"])} <em>{e(nxt["place"])}</em></b></span></a></section>
 {cta_block()}
 <div class="lb" id="lb" hidden><button class="lb-x" aria-label="Close">×</button><button class="lb-p" aria-label="Previous">←</button><img alt=""><button class="lb-n" aria-label="Next">→</button></div>"""
@@ -495,7 +505,7 @@ def notfound():
     write("404.html", s)
 
 def extras():
-    urls = [""] + [h for h, _ in NAV] + [f'portfolio/{p["slug"]}/' for p in P]
+    urls = [""] + [h for h, _ in NAV] + ["landed-homes/"] + [f'portfolio/{p["slug"]}/' for p in P]
     sm = '<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n' + "".join(f"  <url><loc>{DOMAIN}/{u}</loc><lastmod>2026-11-03</lastmod></url>\n" for u in urls) + "</urlset>\n"
     write("sitemap.xml", sm)
     write("robots.txt", f"User-agent: *\nAllow: /\n\nSitemap: {DOMAIN}/sitemap.xml\n")

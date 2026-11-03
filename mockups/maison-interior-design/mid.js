@@ -80,4 +80,15 @@ if(mode==='h'){if(e.cancelable)e.preventDefault();off=tso-dx;wrap();draw()}},{pa
 ['touchend','touchcancel'].forEach(function(ev){mq.addEventListener(ev,function(){if(mode==='h'){drag=false;mq.classList.remove('drag');setTimeout(function(){moved=false},0)}if(tt)until=performance.now()+2000;tt=false;mode=''},{passive:true})});
 mq.addEventListener('click',function(e){if(moved){e.preventDefault();e.stopPropagation()}},true);
 mq.addEventListener('dragstart',function(e){e.preventDefault()});}}
+
+/* video modal: full home tour with sound */
+var vm=d.getElementById('vm');
+if(vm){var vv=vm.querySelector('video');
+function vclose(){vv.pause();vm.hidden=true;d.body.style.overflow=''}
+[].slice.call(d.querySelectorAll('[data-video]')).forEach(function(b){b.addEventListener('click',function(){vv.poster=b.getAttribute('data-poster')||'';if(vv.getAttribute('src')!==b.getAttribute('data-video'))vv.src=b.getAttribute('data-video');vm.hidden=false;d.body.style.overflow='hidden';var p=vv.play();if(p&&p.catch)p.catch(function(){})})});
+vm.querySelector('.vm-x').addEventListener('click',vclose);vm.addEventListener('click',function(e){if(e.target===vm)vclose()});
+d.addEventListener('keydown',function(e){if(!vm.hidden&&e.key==='Escape')vclose()})}
+/* teaser autoplay only when visible, never with reduced motion */
+[].slice.call(d.querySelectorAll('.bk-vid video')).forEach(function(v){if(RM){v.removeAttribute('autoplay');v.pause();return}
+if('IntersectionObserver' in window){new IntersectionObserver(function(es){es.forEach(function(en){if(en.isIntersecting){var p=v.play();if(p&&p.catch)p.catch(function(){})}else v.pause()})},{threshold:.2}).observe(v)}});
 })();
