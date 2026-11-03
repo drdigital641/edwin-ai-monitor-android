@@ -60,7 +60,9 @@ body.menu .hd::before{background:none!important;box-shadow:none!important;-webki
 .burger[aria-expanded=true] span:first-child{transform:translateY(4.5px) rotate(45deg)}
 .burger[aria-expanded=true] span:last-child{transform:translateY(-4.5px) rotate(-45deg)}
 @media(max-width:1099px){
-.nav{position:fixed;inset:0;top:0;background:var(--bg);display:flex;flex-direction:column;justify-content:center;gap:26px;padding:0 32px;opacity:0;visibility:hidden;transition:opacity .4s var(--ease),visibility .4s;z-index:-1}
+.nav{position:fixed;left:0;right:0;top:0;height:100vh;height:100dvh;background:var(--bg);display:flex;flex-direction:column;justify-content:safe center;gap:24px;padding:96px 32px 40px;overflow-y:auto;-webkit-overflow-scrolling:touch;opacity:0;visibility:hidden;transition:opacity .35s var(--ease),visibility .35s;z-index:1}
+.brand,.burger{position:relative;z-index:2}
+body.menu main,body.menu .ft,body.menu .fab{visibility:hidden}
 .nav a{font:300 34px/1.1 var(--serif);letter-spacing:0;text-transform:none;color:var(--ink)!important}
 .nav .nav-cta{font:500 13px/1 var(--sans)!important;letter-spacing:.14em!important;text-transform:uppercase!important;text-align:center;margin-top:14px;background:var(--ink);color:#f4efe8!important;padding:18px!important}
 .nav.open{opacity:1;visibility:visible}
@@ -394,7 +396,7 @@ button.link{background:none;border:0;border-bottom:1px solid currentColor;color:
 .ph-landed{display:flex;flex-wrap:wrap;align-items:baseline;gap:6px 14px;margin-top:26px;padding-top:20px;border-top:1px solid var(--line);color:var(--ink2);font-size:15.5px}
 .ph-landed .eyebrow{margin:0}.ph-landed b{color:var(--brass);font-weight:400}.ph-landed:hover{color:var(--ink)}
 /* nav: portfolio sub-menu */
-.nav-g{display:flex;flex-direction:column;gap:14px}
+.nav-g{display:flex;flex-direction:column;align-items:flex-start;gap:14px}.nav-sub{align-self:stretch}
 .nav-sub{display:flex;flex-direction:column;gap:12px;padding-left:16px;border-left:1px solid var(--brass)}
 .nav .nav-sub a{font:300 22px/1.1 var(--serif)!important;color:var(--ink2)!important}
 .nav .nav-sub .sub-all{display:none}
