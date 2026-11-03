@@ -1,0 +1,74 @@
+{
+ "schema_version": 1,
+ "slug": "mincent-car-auto",
+ "place_id": "ChIJZRGKivYX2jERu4SeF-Z6-W0",
+ "place_id_checked_at": "2026-11-03",
+ "name": "Mincent Car Auto",
+ "name_source_url": "google_profile",
+ "name_checked_at": "2026-11-03",
+ "address": {
+  "block": "",
+  "street": "10 Sin Ming Industrial Estate Sector C, #01-12",
+  "unit": "",
+  "building": ""
+ },
+ "postal_code": "575645",
+ "address_source_url": "google_profile",
+ "address_checked_at": "2026-11-03",
+ "categories": [
+  "SERV"
+ ],
+ "services": [
+  "General servicing and repair"
+ ],
+ "services_source_url": "google_profile",
+ "phones": [
+  {
+   "e164": "+6587487126",
+   "kind": "mobile",
+   "whatsapp": true,
+   "source": "google_profile",
+   "checked_at": "2026-11-03"
+  }
+ ],
+ "google_screen": {
+  "passed": true,
+  "reason": "OPERATIONAL, car repair, SG mobile on Google profile",
+  "checked_at": "2026-11-03"
+ },
+ "status": "active",
+ "tier": "basic",
+ "first_seen_at": "2026-11-03",
+ "last_verified_at": "2026-11-03",
+ "collector_version": "agent-v5",
+ "name_note": "Google Maps lists it as \"My Car Auto Workshop Singapore | Carworkshop.com.sg\" at this address; the customers in its Google reviews call it Mincent Car Auto/Mincent Car Workshop, so the trading name is used and the keyword title dropped.",
+ "lat": 1.357782753172708,
+ "lng": 103.8383118409847,
+ "geo_source": "onemap",
+ "google_rating": {
+  "rating": 5.0,
+  "count": 58,
+  "checked": "2026-11-03",
+  "source": "Google Places",
+  "source_date": "2026-11-03"
+ },
+ "blocks": [
+  "hero",
+  "contact",
+  "services",
+  "good_for",
+  "problems",
+  "reviews",
+  "comparison",
+  "hours",
+  "stories",
+  "location",
+  "tips",
+  "faq",
+  "claim",
+  "sources"
+ ],
+ "estate": "sin-ming-industrial-estate",
+ "planning_area": "Bishan",
+ "region": "central"
+}

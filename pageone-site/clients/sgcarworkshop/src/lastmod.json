@@ -1,8 +1,8 @@
 {
 "": {
 "d": "2026-11-03",
-"h": "dd5acce9b278",
-"h2": "dd5acce9b278"
+"h": "9048875e04ea",
+"h2": "9048875e04ea"
 },
 "about/": {
 "d": "2026-11-03",
@@ -11,8 +11,8 @@
 },
 "areas/amk-industrial-park-2/": {
 "d": "2026-11-03",
-"h": "252f679dbe85",
-"h2": "252f679dbe85"
+"h": "805e9c88d483",
+"h2": "805e9c88d483"
 },
 "areas/kaki-bukit-industrial-estate/": {
 "d": "2026-11-03",
@@ -91,8 +91,8 @@
 },
 "guides/engine-warning-light/": {
 "d": "2026-11-03",
-"h": "78e0ef8a8ee6",
-"h2": "78e0ef8a8ee6"
+"h": "37afc618a2e7",
+"h2": "37afc618a2e7"
 },
 "guides/gearbox-cvt-jerking/": {
 "d": "2026-11-03",
@@ -101,8 +101,8 @@
 },
 "list-your-workshop/": {
 "d": "2026-11-03",
-"h": "d6d4e35b4339",
-"h2": "d6d4e35b4339"
+"h": "0a2476e7ca2b",
+"h2": "0a2476e7ca2b"
 },
 "privacy/": {
 "d": "2026-11-03",
@@ -111,8 +111,8 @@
 },
 "services/general-servicing-repair/": {
 "d": "2026-11-03",
-"h": "47f9a38f3ef3",
-"h2": "47f9a38f3ef3"
+"h": "a5d5edd7ea65",
+"h2": "a5d5edd7ea65"
 },
 "services/spray-painting-bodywork/": {
 "d": "2026-11-03",
@@ -126,8 +126,8 @@
 },
 "workshops/allen-motor-workshop/": {
 "d": "2026-11-02",
-"h": "4c932bb4f13f",
-"h2": "4c932bb4f13f"
+"h": "0ad690fea3db",
+"h2": "0ad690fea3db"
 },
 "workshops/autotex/": {
 "d": "2026-11-03",
@@ -196,8 +196,8 @@
 },
 "workshops/fong-workshop/": {
 "d": "2026-11-02",
-"h": "e38bd0c67cee",
-"h2": "e38bd0c67cee"
+"h": "01dd0d869cd6",
+"h2": "01dd0d869cd6"
 },
 "workshops/fr-auto/": {
 "d": "2026-11-02",
@@ -261,8 +261,8 @@
 },
 "workshops/lim-tan-motor/": {
 "d": "2026-11-02",
-"h": "a182c036efe8",
-"h2": "a182c036efe8"
+"h": "6ab04001e374",
+"h2": "6ab04001e374"
 },
 "workshops/m6-garage/": {
 "d": "2026-11-02",
@@ -276,8 +276,13 @@
 },
 "workshops/merlin-motor-engineering-works/": {
 "d": "2026-11-02",
-"h": "e5ee493af9d9",
-"h2": "e5ee493af9d9"
+"h": "61b5688f74f6",
+"h2": "61b5688f74f6"
+},
+"workshops/mincent-car-auto/": {
+"d": "2026-11-03",
+"h": "593172e07fcc",
+"h2": "593172e07fcc"
 },
 "workshops/mk-auto-workz/": {
 "d": "2026-11-02",
@@ -316,8 +321,8 @@
 },
 "workshops/revol-carz-garage/": {
 "d": "2026-11-02",
-"h": "a91f94125149",
-"h2": "a91f94125149"
+"h": "d15b43a674fc",
+"h2": "d15b43a674fc"
 },
 "workshops/revol-carz-makeover-toh-guan/": {
 "d": "2026-11-02",
