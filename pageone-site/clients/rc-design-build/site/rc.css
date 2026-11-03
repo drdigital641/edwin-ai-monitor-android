@@ -414,3 +414,6 @@ figure.real figcaption b{display:block;color:var(--char);font:600 1.05rem/1.3 va
  .lux-grad::after{animation:none}
  .marq{-webkit-mask-image:none;mask-image:none}
 }
+/* "No job is too small" line (Edwin 4 Nov 2026) */
+.nosmall{margin:14px 0 0;display:inline-block;padding:8px 16px;border-radius:999px;background:var(--olive-l);color:var(--olive-d);font-size:1rem}
+.nosmall b{color:var(--char)}

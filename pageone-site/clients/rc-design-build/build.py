@@ -32,14 +32,14 @@ DOMAIN = 'commercialfitout.sg'   # Edwin 24 Oct 2026 12:08 UTC (no DNS yet on 24
 LIVE = True            # True only after Edwin's go-ahead and every PENDING item is confirmed
 WA_NUMBER = '6586594553'  # Edwin 24 Oct 2026
 PHONE_DISPLAY = '+65 8659 4553'
-ADDR_TEXT = '113 Eunos Ave 3, #04-02, Gordon Ind Building, Singapore 409838'  # Edwin 25 Oct 2026
-ADDR_HTML = '113 Eunos Ave 3, #04-02<br>Gordon Ind Building<br>Singapore 409838'
+ADDR_TEXT = '113 Eunos Ave 3, #04, Gordon Ind Building, Singapore 409838'  # Edwin 25 Oct 2026; floor only, no unit (Edwin 4 Nov 2026)
+ADDR_HTML = '113 Eunos Ave 3, #04<br>Gordon Ind Building<br>Singapore 409838'
 PREVIEW = 'https://pageonesingapore.com/preview/%s/' % SLUG
 BASE = ('https://%s/' % DOMAIN) if DOMAIN else PREVIEW
 ASSET_SHA = '8743123'
 IMG = os.environ.get('RC_IMG') or ('https://cdn.jsdelivr.net/gh/drdigital641/edwin-ai-monitor-android@%s/site-assets/%s/' % (ASSET_SHA, SLUG))
 TODAY = '2026-10-24'
-LASTMOD_OVERRIDE = {'/guides/': '2026-11-01'}  # pages whose content changed after TODAY (night article run)
+LASTMOD_OVERRIDE = {'/guides/': '2026-11-01', '/': '2026-11-04', '/services/': '2026-11-04', '/contact/': '2026-11-04', '/about/': '2026-11-04'}  # pages whose content changed after TODAY (night article run)
 INDEXNOW_KEY = '7d4c2a9e1f6b8035c4e2a7d9b1f60c38'
 BRAND = 'SG Commercial Fitout'
 BRAND_FULL = 'SG Commercial Fitout - Retail & Commercial Design & Build'
@@ -102,11 +102,12 @@ for d in (SVC, AVLP, SPC, GDE):
 
 SERVICE_ORDER = ['/retail-commercial-design-build/', '/services/commercial-carpentry/', '/services/commercial-renovation/',
                  '/services/commercial-electrical-works/', '/services/commercial-tiling-flooring/',
-                 '/services/commercial-painting-finishing/']
+                 '/services/commercial-painting-finishing/', '/services/commercial-partitioning/', '/services/commercial-soundproofing/']
 SHORT = {
     '/retail-commercial-design-build/': 'Design & Build', '/services/commercial-carpentry/': 'Carpentry',
     '/services/commercial-renovation/': 'Renovation', '/services/commercial-electrical-works/': 'Electrical works',
     '/services/commercial-tiling-flooring/': 'Tiling & flooring', '/services/commercial-painting-finishing/': 'Painting & finishing',
+    '/services/commercial-partitioning/': 'Partitioning', '/services/commercial-soundproofing/': 'Soundproofing',
     '/avl/': 'AVL overview', '/avl/commercial-audio-systems/': 'Audio systems', '/avl/display-visual-systems/': 'Displays & signage',
     '/avl/architectural-feature-lighting/': 'Feature lighting', '/spaces/retail-shops-boutiques/': 'Retail shops & boutiques',
     '/spaces/offices-showrooms/': 'Offices & showrooms', '/spaces/cafes-service-counters/': 'Cafes & service counters',
@@ -233,11 +234,11 @@ SG = {'@type': 'Country', 'name': 'Singapore', 'sameAs': 'https://en.wikipedia.o
 def org_schema():
     o = {'@type': ['Organization', 'GeneralContractor'], '@id': BASE + '#org', 'name': BRAND_FULL, 'alternateName': [BRAND, 'CommercialFitout.sg', 'SG Fitout'],
          'url': BASE, 'logo': BASE + 'icon-512.png', 'image': IMG + 'og-rc.jpg', 'slogan': SPECIALTY,
-         'telephone': PHONE_DISPLAY, 'address': {'@type': 'PostalAddress', 'streetAddress': '113 Eunos Ave 3, #04-02, Gordon Ind Building', 'addressLocality': 'Singapore', 'postalCode': '409838', 'addressCountry': 'SG'},
+         'telephone': PHONE_DISPLAY, 'address': {'@type': 'PostalAddress', 'streetAddress': '113 Eunos Ave 3, #04, Gordon Ind Building', 'addressLocality': 'Singapore', 'postalCode': '409838', 'addressCountry': 'SG'},
          'areaServed': SG, 'audience': AUDIENCE, 'hasMap': GOOGLE_REVIEWS,
          'knowsAbout': ['Retail shop fit-out', 'Commercial interior design and build', 'Shop renovation', 'Office renovation',
                         'Showroom fit-out', 'F&B counter and cafe fit-out', 'Salon fit-out', 'Commercial carpentry', 'Retail display shelving',
-                        'Commercial electrical works', 'Commercial tiling and flooring', 'Audio, visual and lighting (AVL) for shops'],
+                        'Commercial electrical works', 'Commercial tiling and flooring', 'Office and shop partitioning', 'Commercial soundproofing', 'Audio, visual and lighting (AVL) for shops'],
          'contactPoint': {'@type': 'ContactPoint', 'telephone': PHONE_DISPLAY, 'contactType': 'sales', 'areaServed': 'SG',
                           'availableLanguage': ['English']},
          'hasOfferCatalog': {'@type': 'OfferCatalog', 'name': 'Retail and commercial design and build services in Singapore',
@@ -245,7 +246,7 @@ def org_schema():
                                                                                      'url': abs_url(x)}} for x in SERVICE_ORDER]},
          'description': 'SG Commercial Fitout specialises in design and build for retail outlets and commercial spaces in Singapore, such as shops, '
                         'offices, showrooms, F&B outlets and salons, with its own carpentry workshop: carpentry, renovation, electrical works, '
-                        'tiling and flooring, painting and finishing, and audio, visual and lighting (AVL).'}
+                        'tiling and flooring, painting and finishing, partitioning, soundproofing, and audio, visual and lighting (AVL). No job is too small.'}
     return o
 
 
@@ -364,7 +365,7 @@ def footer(path):
 
 def cta_band(path, topic):
     return ('<div class="wrap"><div class="cta-band rv"><div><h2>Planning a shop, office, cafe or salon space?</h2>'
-            '<p>WhatsApp your floor plan, unit photos, what the space is for and your target opening date. We\'ll discuss your scope.</p></div>'
+            '<p><b>No job is too small.</b> WhatsApp your floor plan, unit photos, what the space is for and your target date. Enquiries are welcome.</p></div>'
             '<div>%s</div></div></div>') % cta(path, topic, 'WhatsApp Us', 'btn btn-light')
 
 
@@ -446,7 +447,7 @@ def build_hubs():
     inner += '<div class="head" style="margin-top:44px"><h2>Audio, visual and lighting</h2><p>Sound, screens and feature light planned with the fit-out.</p></div><div class="svc">%s</div>' % ''.join(
         svc_tile('/services/', s) for s in ['/avl/commercial-audio-systems/', '/avl/display-visual-systems/', '/avl/architectural-feature-lighting/'])
     hub('/services/', 'Retail & Commercial Renovation Services | R&C',
-        'Commercial carpentry, renovation, electrical works, tiling, flooring, painting and AVL for shops, offices, cafes and salons in Singapore.',
+        'Commercial carpentry, renovation, partitioning, soundproofing, electrical, flooring, painting and AVL for Singapore shops, offices, cafes and salons.',
         'Services for retail and commercial spaces', 'Services', C_SVC.SERVICES_INTRO, 'counter-joinery',
         'Custom oak shop counter with display niche (AI design concept)', inner, [('/services/', 'Services')])
     # spaces
@@ -562,7 +563,8 @@ HOME_FAQ = [
     ('Can I get a free design mockup of my space?', 'Yes. WhatsApp a photo of your current space to SG Commercial Fitout and we will create a few '
      'AI 3D mockup designs for you to discuss, free and with no obligation.'),
     ('What does SG Commercial Fitout do?', 'SG Commercial Fitout designs and builds retail and commercial spaces in Singapore: custom carpentry, renovation, '
-     'electrical works, tiling and flooring, painting and finishing, and audio, visual and lighting (AVL) for shops, offices, F&B outlets and salons.'),
+     'partitioning, soundproofing, electrical works, tiling and flooring, painting and finishing, and audio, visual and lighting (AVL) for shops, offices, F&B outlets and salons. '
+     'No job is too small: a single wall, room or counter is welcome.'),
     ('Do you have your own carpentry workshop?', 'Yes. SG Commercial Fitout has its own carpentry workshop, so counters, cabinets and shelving can be '
      'made to your measurements. Photos of real work are on the Projects page.'),
     ('Are the photos real?', 'Photos marked "Real project" show SG Commercial Fitout work. In the five built-in carpentry photos, decor items were added with AI styling; '
@@ -633,6 +635,7 @@ HOME_TPL = '''<section class="lux lux-full">
 <div class="intro-l"><span class="eyebrow">Singapore retail &amp; commercial specialists</span>
 <h1>Design &amp; Build for <em>Retail</em> and <em>Commercial</em> Spaces</h1></div>
 <div class="intro-r"><p class="lede">Shops, offices, F&amp;B and salons. Own carpentry workshop. One contact.</p>
+<p class="nosmall"><b>No job is too small.</b> Enquiries are welcome.</p>
 <div class="btns">{cta}<a class="btn btn-ghost" href="{services}">Explore Our Services</a></div></div>
 </div>
 <div class="wrap"><dl class="facts-line">{facts}</dl></div></section>
@@ -696,7 +699,7 @@ def build_home():
     path = '/'
     d = DAILY[0]
     dp = rel(path, '/design-concepts/concept-of-the-day/')
-    facts = [('What we do', 'Carpentry, renovation, electrical, flooring, AVL'),
+    facts = [('What we do', 'Carpentry, renovation, partitioning, soundproofing, electrical, flooring, AVL'),
              ('Google', '&#9733;&#9733;&#9733;&#9733;&#9733; 5 stars. <a href="%s" rel="noopener" target="_blank">Read reviews</a>' % GOOGLE_REVIEWS),
              ('Enquiries', 'WhatsApp <a href="%s" rel="noopener">%s</a>' % (E(wa_link('my space', path)), PHONE_DISPLAY))]
     body = HOME_TPL.format(
@@ -826,6 +829,7 @@ def build_static():
 <ul><li><a href="/retail-commercial-design-build/">Design &amp; build</a>: one point of contact from brief to handover.</li>
 <li><a href="/services/commercial-carpentry/">Carpentry</a>: counters, shelving, storage, display fixtures and reception joinery, made in our workshop.</li>
 <li><a href="/services/commercial-renovation/">Renovation</a>, <a href="/services/commercial-electrical-works/">electrical works</a>, <a href="/services/commercial-tiling-flooring/">tiling and flooring</a>, and <a href="/services/commercial-painting-finishing/">painting and finishing</a>.</li>
+<li><a href="/services/commercial-partitioning/">Partitioning</a> and <a href="/services/commercial-soundproofing/">soundproofing</a>: new rooms, glass or drywall walls, and quieter spaces.</li>
 <li><a href="/avl/">AVL</a>: audio, visual and lighting planned with the space.</li></ul>
 <h2>Our carpentry workshop</h2>
 <p>Counters, cabinets, shelving and display fixtures are cut and assembled in our own workshop, then installed on site.</p>
@@ -836,7 +840,7 @@ def build_static():
 <p>Address: %s. WhatsApp <a href="%s" rel="noopener">%s</a>. We serve businesses in Singapore. Customers rate us 5 stars on Google: <a href="%s" rel="noopener" target="_blank">read our Google reviews and find us on Google Maps</a>.</p>
 %s''' % (about_ws(), ADDR_TEXT, E(wa_link('my space', '/about/')), PHONE_DISPLAY, GOOGLE_REVIEWS, pending_box([('Operating company', 'registered name and UEN to be confirmed')]))
     simple('/about/', 'About SG Commercial Fitout | Design & Build Singapore', 'About SG Commercial Fitout: Singapore design and build for shops, offices, F&B outlets and salons, with our own carpentry workshop.',
-           'About SG Commercial Fitout', 'About', 'SG Commercial Fitout is a Singapore design and build company for shops, offices, showrooms, F&B outlets and salons. It has its own carpentry workshop and covers carpentry, renovation, electrical, flooring, painting and AVL.',
+           'About SG Commercial Fitout', 'About', 'SG Commercial Fitout is a Singapore design and build company for shops, offices, showrooms, F&B outlets and salons. It has its own carpentry workshop and covers carpentry, renovation, partitioning, soundproofing, electrical, flooring, painting and AVL.',
            about, [('/about/', 'About')], None, '',
            [{'@type': 'AboutPage', 'name': 'About SG Commercial Fitout', 'url': abs_url('/about/'), 'image': ws_img('6b3bb41', 'ws-floor')}],
            picture_html='<img src="%s" width="1400" height="788" alt="SG Commercial Fitout carpentry workshop with panel saw, board racks and dust extractors" fetchpriority="high"><span class="tag tag-real">Our workshop</span>' % ws_img('6b3bb41', 'ws-floor'))
@@ -853,9 +857,10 @@ def build_static():
 <li><strong>Target opening date</strong>, plus any handover or fit-out period in your lease.</li>
 <li><strong>Landlord or mall fit-out guidelines</strong>, if you have them.</li>
 <li><strong>Priorities</strong>: what must be right on day one, and what can wait.</li></ol>
+<p><b>No job is too small.</b> A single wall, room, counter or repair is welcome. Just ask.</p>
 <p class="note">Not sure where to begin? Read <a href="/guides/how-to-brief-a-shop-fit-out/">how to brief a shop fit-out</a> first.</p>''' % (PHONE_DISPLAY, E(w), WA_SVG, PHONE_DISPLAY, ADDR_TEXT)
     simple('/contact/', 'Contact SG Commercial Fitout | WhatsApp +65 8659 4553', 'WhatsApp SG Commercial Fitout at +65 8659 4553 about your shop, office, F&B or salon space. Send your floor plan, unit photos and opening date.',
-           'Contact us', 'Contact', 'WhatsApp SG Commercial Fitout at +65 8659 4553. Send a floor plan, a few photos of the unit, what the space is for and your target opening date, and we will discuss your scope.',
+           'Contact us', 'Contact', 'WhatsApp SG Commercial Fitout at +65 8659 4553. No job is too small, so enquiries are welcome. Send a floor plan, a few photos of the unit, what the space is for and your target date, and we will discuss your scope.',
            contact, [('/contact/', 'Contact')], 'office-reception', 'Office reception with a curved oak counter (AI design concept)',
            [{'@type': 'ContactPage', 'name': 'Contact SG Commercial Fitout', 'url': abs_url('/contact/')}])
     privacy = '''<p>Last updated 24 October 2026.</p>
@@ -905,7 +910,7 @@ def build_machine():
     lines = ['# %s' % BRAND_FULL, '', '> %s' % TAGLINE, '',
              'SG Commercial Fitout is a Singapore design and build company that specialises in retail outlets and commercial spaces, with its own carpentry workshop: shops and boutiques, offices and showrooms, '
              'cafes and service counters, salons and beauty studios. Services: integrated design and build, commercial carpentry, '
-             'renovation, electrical works, tiling and flooring, painting and finishing, and audio, visual and lighting (AVL).',
+             'renovation, electrical works, tiling and flooring, painting and finishing, partitioning, soundproofing, and audio, visual and lighting (AVL). No job is too small: enquiries for a single wall, room or counter are welcome.',
              '', 'Address: %s. Contact: WhatsApp %s. Photos marked Real project show its own work (decor added with AI styling in the five built-in carpentry photos); free AI 3D mockup designs from a photo of your current space, no obligation; AI design concept images are ideas, not completed work.' % (ADDR_TEXT, PHONE_DISPLAY), '']
     sections = [('Services', SERVICE_ORDER), ('AVL', [p['path'] for p in C_AVL.PAGES]), ('Spaces', [p['path'] for p in C_SPC.PAGES]),
                 ('Guides', [p['path'] for p in C_GDE.PAGES])]

@@ -1010,3 +1010,100 @@ PAGES = [{'path': '/retail-commercial-design-build/',
   'wa_topic': 'painting and finishing for my shop'}]
 
 SERVICES_INTRO = 'SG Commercial Fitout helps Singapore shop owners, office and showroom tenants, and cafe and salon operators plan their spaces. Each service below has its own page covering scope, options, budget drivers and planning factors, so you can see what a trade involves before you enquire. You can ask about a single trade, such as carpentry or flooring, or have the work planned together through design and build. Send us your floor plan and we will discuss your scope.'
+
+# Added 4 Nov 2026 (Edwin): soundproofing and partitioning. Lean copy (client asked for short wording).
+PAGES += [
+ {'path': '/services/commercial-soundproofing/',
+  'date': '2026-11-04',
+  'title': 'Commercial Soundproofing Singapore | R&C',
+  'desc': 'Soundproofing for Singapore offices, shops, studios, F&B and salons: acoustic panels, insulated walls, sealed doors and quieter meeting rooms.',
+  'h1': 'Soundproofing for Offices, Shops and Studios',
+  'kicker': 'Soundproofing',
+  'answer': 'Soundproofing cuts the noise that travels between rooms and units, and acoustic treatment cuts the echo inside a room. '
+            'We plan both into partitions, ceilings, doors and finishes for Singapore offices, shops, studios, F&B outlets and salons.',
+  'card': 'Quieter meeting rooms, studios and back rooms: insulated walls, sealed doors and acoustic panels for business spaces.',
+  'image': 'avl-audio',
+  'image_alt': 'Cafe interior with a wooden slatted acoustic ceiling and recessed ceiling speakers (AI design concept)',
+  'sections': [
+   {'h2': 'Who soundproofing suits',
+    'html': '<ul><li><strong>Offices</strong> that need private meeting rooms, phone booths or a quiet director\'s room.</li>\n'
+            '<li><strong>Studios and training rooms</strong> for music, recording, fitness or classes.</li>\n'
+            '<li><strong>Clinics, salons and spas</strong> where clients expect calm and privacy.</li>\n'
+            '<li><strong>Cafes and restaurants</strong> with hard surfaces that make the room loud.</li>\n'
+            '<li><strong>Units next to noisy neighbours</strong>, lifts, plant rooms or a busy corridor.</li></ul>'},
+   {'h2': 'Soundproofing or acoustic treatment?',
+    'html': '<p>They solve different problems, and many spaces need a little of both.</p>\n'
+            '<table><thead><tr><th>Soundproofing</th><th>Acoustic treatment</th></tr></thead><tbody>\n'
+            '<tr><td>Stops sound passing through walls, ceilings and doors</td><td>Reduces echo and noise inside the room</td></tr>\n'
+            '<tr><td>Mass, insulation and sealing gaps</td><td>Soft or slatted panels, baffles and ceiling treatment</td></tr>\n'
+            '<tr><td>For privacy and keeping noise in or out</td><td>For clearer speech and a calmer room</td></tr>\n'
+            '</tbody></table>'},
+   {'h2': 'What a soundproofing scope can include',
+    'html': '<ul><li>Insulated drywall <a href="/services/commercial-partitioning/">partitions</a> built full height to the slab.</li>\n'
+            '<li>Upgrading an existing wall with insulation and extra board layers.</li>\n'
+            '<li>Solid or acoustic-rated doors with seals and drop seals.</li>\n'
+            '<li>Sealing gaps around pipes, trunking and ceiling voids, where sound often leaks.</li>\n'
+            '<li>Acoustic wall panels, ceiling panels or slatted timber made in our own workshop.</li></ul>\n'
+            '<p>Air-conditioning ducts and landlord rules can affect what is possible, so we check these on site first.</p>'},
+   {'h2': 'What drives the cost',
+    'html': '<p>Room size, wall height, how quiet the room needs to be, the number of doors and glass panels, ceiling access and '
+            'whether the work is done in an occupied unit. A site visit gives a written scope you can compare line by line.</p>'},
+   {'h2': 'What to send us',
+    'html': '<p>WhatsApp a floor plan, photos of the room and the walls around it, what the noise problem is (for example "voices carry into '
+            'the next room") and when you need it done. No job is too small: a single meeting room or one wall is welcome.</p>'},
+  ],
+  'faqs': [
+   ('Can you soundproof just one room?', 'Yes. Many jobs are a single meeting room, booth or treatment room. No job is too small, so WhatsApp us with photos.'),
+   ('Will acoustic panels stop my neighbours hearing us?', 'Not on their own. Panels reduce echo inside the room. To stop sound passing through, the wall, ceiling void, door and gaps need treatment too.'),
+   ('Do glass walls work for a quiet meeting room?', 'They can help, but glass, door gaps and the ceiling void are usually the weak points. We discuss the trade-off between openness and privacy before work starts.'),
+   ('Can soundproofing be done in a running business?', 'Often, by planning noisy and dusty work outside opening hours. This depends on the landlord or mall rules for your unit.'),
+  ],
+  'related': ['/services/commercial-partitioning/', '/services/commercial-carpentry/', '/avl/commercial-audio-systems/', '/spaces/offices-showrooms/',
+              '/retail-commercial-design-build/'],
+  'wa_topic': 'soundproofing for my space'},
+ {'path': '/services/commercial-partitioning/',
+  'date': '2026-11-04',
+  'title': 'Office & Shop Partitioning Singapore | R&C',
+  'desc': 'Partitioning for Singapore offices, shops and showrooms: drywall partitions, glass partitions, back-of-house walls and new rooms, with doors and finishes.',
+  'h1': 'Partitioning for Offices, Shops and Showrooms',
+  'kicker': 'Partitioning',
+  'answer': 'Partitioning divides one open unit into the rooms your business needs: meeting rooms, offices, storerooms, fitting rooms or back-of-house areas. '
+            'We build drywall and glass partitions with doors, power points and finishes for Singapore offices, shops, showrooms, F&B outlets and salons.',
+  'card': 'Drywall and glass partitions to add meeting rooms, offices, storerooms or back-of-house areas to a business unit.',
+  'image': 'office-reception',
+  'image_alt': 'Office reception with an oak counter and full-height glass partitions to the meeting rooms (AI design concept)',
+  'sections': [
+   {'h2': 'Common partitioning jobs',
+    'html': '<ul><li>A meeting room or manager\'s office in an open-plan unit.</li>\n'
+            '<li>A storeroom or pantry behind a shop or cafe counter.</li>\n'
+            '<li>Fitting rooms, treatment rooms or private salon rooms.</li>\n'
+            '<li>Splitting a large unit into two, or changing an old layout.</li>\n'
+            '<li>Feature walls with built-in shelving or display niches.</li></ul>'},
+   {'h2': 'Which partition suits your space?',
+    'html': '<table><thead><tr><th>Type</th><th>Good for</th><th>Trade-off</th></tr></thead><tbody>\n'
+            '<tr><td>Drywall (board on a metal frame)</td><td>Most rooms; can be insulated for <a href="/services/commercial-soundproofing/">soundproofing</a></td><td>Solid look, no light through</td></tr>\n'
+            '<tr><td>Glass partition</td><td>Meeting rooms and offices that should feel open</td><td>Less privacy unless frosted or with film</td></tr>\n'
+            '<tr><td>Half-height or glass-top</td><td>Reception and work areas</td><td>Sound carries over the top</td></tr>\n'
+            '<tr><td>Carpentry partition</td><td>Shelving walls, display walls, feature screens</td><td>Mostly visual, not for privacy</td></tr>\n'
+            '</tbody></table>'},
+   {'h2': 'What a partitioning scope can include',
+    'html': '<p>The frame and boards or glass, insulation if needed, doors and locks, skirting, painting, and moving or adding '
+            '<a href="/services/commercial-electrical-works/">power points, switches and lights</a> for the new room. '
+            'Air-conditioning and sprinkler positions, and landlord or mall rules, are checked on site before the layout is fixed.</p>'},
+   {'h2': 'What drives the cost',
+    'html': '<p>The length and height of the walls, drywall or glass, insulation, the number and type of doors, electrical changes and finishes. '
+            'You get a written scope that shows what is included and what is not.</p>'},
+   {'h2': 'What to send us',
+    'html': '<p>WhatsApp your floor plan with a rough sketch of the rooms you want, a few photos of the unit and your target date. '
+            'No job is too small: one wall or one small room is welcome.</p>'},
+  ],
+  'faqs': [
+   ('Can you put up just one partition wall?', 'Yes. No job is too small, from a single wall or storeroom to a full office layout. WhatsApp us your floor plan and photos.'),
+   ('Glass or drywall for a meeting room?', 'Glass keeps the space bright and open; drywall gives more privacy and is easier to soundproof. Some rooms use both, for example a drywall room with a glass front.'),
+   ('Can partitions be soundproofed?', 'Yes. Drywall partitions can be insulated, built up to the slab and fitted with sealed doors. See our soundproofing page for the options.'),
+   ('Do I need landlord approval?', 'Most landlords and malls want to see the layout before partition works start. We check the rules for your unit and plan the work around them.'),
+  ],
+  'related': ['/services/commercial-soundproofing/', '/services/commercial-electrical-works/', '/services/commercial-carpentry/', '/spaces/offices-showrooms/',
+              '/retail-commercial-design-build/'],
+  'wa_topic': 'partitioning for my space'},
+]
