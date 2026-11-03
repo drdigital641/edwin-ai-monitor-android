@@ -103,7 +103,7 @@ def dims(f):
     return (1024, 683)
 
 LOGO = ('<a class="brand" href="{b}" aria-label="Maison Interior Design, home">'
-        '<span class="bm">MAISON</span><span class="bs">Interior Design</span></a>').format(b=BASE)
+        '<span class="bm">MAISON</span><span class="br" aria-hidden="true"></span><span class="bs">Interior Design</span></a>').format(b=BASE)
 
 NAV = [("portfolio/", "Portfolio"), ("services/", "Services"), ("landed-homes/", "Landed Homes"), ("about/", "About"), ("contact/", "Contact")]
 
@@ -120,7 +120,7 @@ def head(title, desc, path, og_img, schema):
 <meta property="og:type" content="website"><meta property="og:title" content="{e(title)}"><meta property="og:description" content="{e(desc)}">
 <meta property="og:url" content="{url}"><meta property="og:image" content="{U}{og_img}"><meta name="twitter:card" content="summary_large_image">
 <meta name="theme-color" content="#f4efe8">
-<link rel="icon" href="{BASE}favicon.svg" type="image/svg+xml">
+<link rel="icon" href="{BASE}favicon.svg" type="image/svg+xml"><link rel="icon" href="{BASE}brand/favicon-48.png" sizes="48x48" type="image/png"><link rel="apple-touch-icon" href="{BASE}brand/apple-touch-icon.png">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="{BASE}mid.css">
@@ -437,8 +437,10 @@ Conceptualisation; itemised quotation with 3D drawings; HDB renovation permit an
 
 ## Projects
 """ + "".join(f'- [{p["name"]} {p["place"]}]({DOMAIN}/portfolio/{p["slug"]}/): {p["kind"]}, {p["type"]}.\n' for p in P))
-    write("favicon.svg", '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64"><rect width="64" height="64" rx="12" fill="#1f1c19"/><text x="32" y="44" font-family="Georgia,serif" font-size="36" fill="#c9a979" text-anchor="middle">M</text></svg>')
+    write("favicon.svg", '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64"><rect width="64" height="64" fill="#1f1c19"/><text x="32" y="44" font-family="Georgia,serif" font-size="36" fill="#c9a979" text-anchor="middle">M</text></svg>')
     shutil.copy(os.path.join(HERE, "mid.css"), os.path.join(OUT, "mid.css"))
+    for d in ("brand", "logos"):
+        if os.path.isdir(os.path.join(HERE, d)): shutil.copytree(os.path.join(HERE, d), os.path.join(OUT, d))
     shutil.copy(os.path.join(HERE, "mid.js"), os.path.join(OUT, "mid.js"))
 
 if __name__ == "__main__":
