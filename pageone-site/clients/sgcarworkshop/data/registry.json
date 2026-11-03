@@ -556,5 +556,230 @@
   "mobile": "+6594814922",
   "status": "built",
   "date": "2026-11-02"
+ },
+ {
+  "place_id": "ChIJ_cbOsFgW2jER9GL91QCOAcc",
+  "slug": "merlin-motor-engineering-works",
+  "name_norm": "merlin motor engineering works",
+  "postal_code": "568047",
+  "mobile": "+6596327928",
+  "status": "built",
+  "date": "2026-11-03"
+ },
+ {
+  "place_id": "ChIJZw4RvVgW2jERMjMJdqdReWc",
+  "slug": null,
+  "name_norm": "o s k automotive",
+  "postal_code": "568047",
+  "mobile": null,
+  "status": "rejected-not-car-repair",
+  "date": "2026-11-02"
+ },
+ {
+  "place_id": "ChIJtQAbWCEX2jERTNVaFJ4pG_g",
+  "slug": "fong-workshop",
+  "name_norm": "fong workshop",
+  "postal_code": "575722",
+  "mobile": "+6598191814",
+  "status": "built",
+  "date": "2026-11-03"
+ },
+ {
+  "place_id": "ChIJJ55m0aMR2jERXkXirfUk-D4",
+  "slug": "da-sheng-motoring-private-ltd",
+  "name_norm": "da sheng motoring",
+  "postal_code": "608586",
+  "mobile": "+6587007040",
+  "status": "built",
+  "date": "2026-11-03"
+ },
+ {
+  "place_id": "ChIJ2YmVe3kF2jERP82OcTA_R_A",
+  "slug": null,
+  "name_norm": "initial v autosports 1 corporation drive west revv hub",
+  "postal_code": "619775",
+  "mobile": null,
+  "status": "rejected-no-mobile",
+  "date": "2026-11-02"
+ },
+ {
+  "place_id": "ChIJp1jhHI4X2jERJqOmitJGQQQ",
+  "slug": "lightning-motorsport",
+  "name_norm": "lightning motorsport",
+  "postal_code": "619775",
+  "mobile": "+6584241443",
+  "status": "built",
+  "date": "2026-11-03"
+ },
+ {
+  "place_id": "ChIJRXR2e4IF2jERQeftzo6Ap9g",
+  "slug": "palm-motorsports",
+  "name_norm": "palm motorsports",
+  "postal_code": "619775",
+  "mobile": "+6586848112",
+  "status": "built",
+  "date": "2026-11-03"
+ },
+ {
+  "place_id": "ChIJzSNHYtkF2jERYh-da8Pom34",
+  "slug": "proline-autowerks-pte-ltd",
+  "name_norm": "proline autowerks",
+  "postal_code": "619775",
+  "mobile": "+6581622813",
+  "status": "built",
+  "date": "2026-11-03"
+ },
+ {
+  "place_id": "ChIJyQcAThQX2jERhW4LYDCGINU",
+  "slug": null,
+  "name_norm": "car medic autowerkz",
+  "postal_code": "408700",
+  "mobile": null,
+  "status": "rejected-not-car-repair",
+  "date": "2026-11-02"
+ },
+ {
+  "place_id": "ChIJH4XGl_QX2jERknXnzo0bS-o",
+  "slug": "jl-auto-services-pte-ltd",
+  "name_norm": "jl auto services",
+  "postal_code": "408700",
+  "mobile": "+6591885495",
+  "status": "built",
+  "date": "2026-11-03"
+ },
+ {
+  "place_id": "ChIJY-vhhpwZ2jERfof2LK6CubY",
+  "slug": "sg-zoom-garage-pte-ltd",
+  "name_norm": "zoom garage",
+  "postal_code": "408934",
+  "mobile": "+6596552122",
+  "status": "built",
+  "date": "2026-11-03"
+ },
+ {
+  "place_id": "ChIJ5b6ViVIZ2jERzLHs7_RsyQ0",
+  "slug": "tt-motorsport-ubi-car-service",
+  "name_norm": "tt motorsport",
+  "postal_code": "408933",
+  "mobile": "+6591616161",
+  "status": "built",
+  "date": "2026-11-03"
+ },
+ {
+  "place_id": "ChIJFQexWKYX2jER7nRECOfazhg",
+  "slug": null,
+  "name_norm": "3b garage",
+  "postal_code": "737719",
+  "mobile": null,
+  "status": "rejected-not-car-repair",
+  "date": "2026-11-02"
+ },
+ {
+  "place_id": "ChIJ82HPlRET2jERMU1GsmkndBQ",
+  "slug": "dhm-otomotive-werkz-pte-ltd",
+  "name_norm": "dhm otomotive werkz",
+  "postal_code": "757047",
+  "mobile": "+6587339739",
+  "status": "built",
+  "date": "2026-11-03"
+ },
+ {
+  "place_id": "ChIJCbVfkUkT2jERP-HbSzi7kXY",
+  "slug": "mt-autoservice",
+  "name_norm": "mt autoservice",
+  "postal_code": "737719",
+  "mobile": "+6586681855",
+  "status": "built",
+  "date": "2026-11-03"
+ },
+ {
+  "place_id": "ChIJB8jd5h4T2jERPY8OkuBQlVk",
+  "slug": "zenetics-auto-pte-ltd",
+  "name_norm": "zenetics auto",
+  "postal_code": "757047",
+  "mobile": "+6597572555",
+  "status": "built",
+  "date": "2026-11-03"
+ },
+ {
+  "place_id": "ChIJLU-nfogU2jER9DBPpBsZGv8",
+  "slug": "ah-hwa-motor-servicing",
+  "name_norm": "ah hwa motor servicing",
+  "postal_code": "768758",
+  "mobile": "+6596528606",
+  "status": "rejected-not-car-repair",
+  "date": "2026-11-03"
+ },
+ {
+  "place_id": "ChIJAx10eYgU2jER8elylG2fFEw",
+  "slug": "lee-beng-auto-services",
+  "name_norm": "lee beng auto services",
+  "postal_code": "768758",
+  "mobile": "+6581981887",
+  "status": "built",
+  "date": "2026-11-03"
+ },
+ {
+  "place_id": "ChIJIyX8e4gU2jERYYVYeUlzMx0",
+  "slug": "m6-garage-pte-ltd",
+  "name_norm": "m6 garage",
+  "postal_code": "768759",
+  "mobile": "+6581852366",
+  "status": "built",
+  "date": "2026-11-03"
+ },
+ {
+  "place_id": "ChIJw32heIgU2jERXHNd3RCTom4",
+  "slug": "moon-star-auto-service",
+  "name_norm": "moon star auto service",
+  "postal_code": "768758",
+  "mobile": "+6596331917",
+  "status": "built",
+  "date": "2026-11-03"
+ },
+ {
+  "place_id": "ChIJp75cmYQX2jERbEXjQaSB-cM",
+  "slug": "cas-garage-pte-ltd",
+  "name_norm": "cas garage",
+  "postal_code": "417883",
+  "mobile": "+6590901222",
+  "status": "built",
+  "date": "2026-11-03"
+ },
+ {
+  "place_id": "ChIJTf_A6-EX2jERhlZJI6uZUQg",
+  "slug": null,
+  "name_norm": "autobay kaki bukit",
+  "postal_code": "417883",
+  "mobile": null,
+  "status": "rejected-no-mobile",
+  "date": "2026-11-02"
+ },
+ {
+  "place_id": "ChIJy3a7uQ4X2jER3UMMcH75wAk",
+  "slug": "focus-auto-pte-ltd",
+  "name_norm": "focus auto",
+  "postal_code": "417883",
+  "mobile": "+6597989799",
+  "status": "built",
+  "date": "2026-11-03"
+ },
+ {
+  "place_id": "ChIJB8chC-EX2jERpntqNQdW-rw",
+  "slug": "grand-auto-garage",
+  "name_norm": "grand auto garage",
+  "postal_code": "417883",
+  "mobile": "+6582928810",
+  "status": "built",
+  "date": "2026-11-03"
+ },
+ {
+  "place_id": "ChIJRbjv7hsY2jERPXjaSDYhY-8",
+  "slug": null,
+  "name_norm": "jdm autocare",
+  "postal_code": "417883",
+  "mobile": null,
+  "status": "rejected-not-car-repair",
+  "date": "2026-11-02"
  }
 ]

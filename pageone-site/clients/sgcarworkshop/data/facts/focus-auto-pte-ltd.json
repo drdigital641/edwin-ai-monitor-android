@@ -1,0 +1,71 @@
+{
+ "slug": "focus-auto-pte-ltd",
+ "researched_at": "2026-11-03",
+ "researcher": "Claude (Sonnet), Google Places Details only (volume mode)",
+ "facts": [
+  {
+   "field": "rating",
+   "value": "4.9",
+   "source_url": "google_places",
+   "retrieved": "2026-11-03"
+  },
+  {
+   "field": "userRatingCount",
+   "value": "91",
+   "source_url": "google_places",
+   "retrieved": "2026-11-03"
+  },
+  {
+   "field": "websiteUri",
+   "value": "https://sites.google.com/view/focusauto/home",
+   "source_url": "google_places",
+   "retrieved": "2026-11-03"
+  },
+  {
+   "field": "paymentOptions",
+   "value": "None",
+   "source_url": "google_places",
+   "retrieved": "2026-11-03"
+  },
+  {
+   "field": "parkingOptions",
+   "value": "None",
+   "source_url": "google_places",
+   "retrieved": "2026-11-03"
+  },
+  {
+   "field": "types",
+   "value": "['car_repair', 'point_of_interest', 'service', 'establishment']",
+   "source_url": "google_places",
+   "retrieved": "2026-11-03"
+  },
+  {
+   "field": "opening_hours",
+   "value": [
+    "Monday: 8:45 AM – 6:30 PM",
+    "Tuesday: 8:45 AM – 6:30 PM",
+    "Wednesday: 8:45 AM – 6:30 PM",
+    "Thursday: 8:45 AM – 6:30 PM",
+    "Friday: 8:45 AM – 6:30 PM",
+    "Saturday: 8:45 AM – 6:00 PM",
+    "Sunday: 2:00 – 5:00 PM"
+   ],
+   "source_url": "google_places",
+   "retrieved": "2026-11-03"
+  }
+ ],
+ "conflicts": [],
+ "not_found": [
+  "editorialSummary",
+  "own research (stopped by Edwin 3 Nov 2026)",
+  "real job stories"
+ ],
+ "stories": [],
+ "phone_rule": "Stored Google SG mobile only",
+ "review_service_support": {
+  "Accident and insurance claim repairs": "3 of 5 reviews",
+  "Replacement car during repairs": "1 of 5 reviews",
+  "Quick response to fault calls": "1 of 5 reviews",
+  "Car servicing": "1 of 5 reviews"
+ }
+}

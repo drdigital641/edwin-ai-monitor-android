@@ -137,6 +137,7 @@ for e in ENTRIES:
             if re.search(r'[\u201c\u201d]|<q>|<blockquote', body_g): print('PILOT google section must not quote reviews', e['slug']); bad += 1
             if ENDORSE.search(gtxt): print('PILOT google section has endorsement wording', e['slug']); bad += 1
         txt = re.sub(r'\s+', ' ', re.sub(r'<[^>]+>', ' ', body))
+        txt = txt.replace(e['name'], ' ')   # a workshop name such as 'Moon Star' must not trip the review/rating word check
         for needle in ('see Google Maps for current hours', 'maps/dir/?api=1&amp;destination=', 'google.com/maps/embed/v1/place?key=', 'Is this your workshop?', 'data-cta="whatsapp_dir_%s"' % e['slug'], 'data-cta="call_dir_%s"' % e['slug'], 'id="faqs"', 'data-cta="maps_%s"' % e['slug']):
             if needle not in pg: print('PILOT page missing', needle, e['slug']); bad += 1
         if '<img' in body or 'class="hoursbox"' in pg or 'livephone.js' in pg: print('PILOT page must have no photo and no hours box', e['slug']); bad += 1
@@ -258,7 +259,16 @@ for rel in ('index.html', 'about/index.html', 'list-your-workshop/index.html', '
     if 'terms/' not in t or 'privacy/' not in t: print('footer Terms/Privacy links missing', rel); bad += 1
     if CANON not in t: print('canonical is not sgcarworkshop.sg', rel); bad += 1
 about = open(os.path.join(root, 'about/index.html'), encoding='utf-8').read()
-if 'compiled from information the business publishes itself (its website, Facebook or WhatsApp Business page) and link to its Google Maps listing. They are not endorsed by or arranged with the business.' not in about: print('About page missing Basic-listing note'); bad += 1
+if "built from the workshop's public Google Business Profile" not in about or 'They are not endorsed by or arranged with the business.' not in about: print('About page missing Basic-listing note'); bad += 1
+# TRUST (Edwin 3 Nov 2026): no page may say preview/placeholder, or give the old wrong source (website, Facebook, WhatsApp Business page)
+for _r, _d, _fs in os.walk(root):
+    for _fn in _fs:
+        if _fn.endswith('.html'):
+            _t = open(os.path.join(_r, _fn), encoding='utf-8').read()
+            _vis = re.sub(r'<(script|style)\b.*?</\1>', '', _t, flags=re.S)
+            _vis = re.sub(r'<[^>]+>', ' ', _vis)
+            for _w in ('This is a preview', 'brand name is a placeholder', 'Facebook or WhatsApp Business page', 'publishes itself'):
+                if _w.lower() in _vis.lower(): print('WRONG/PLACEHOLDER TEXT "%s" in' % _w, os.path.relpath(os.path.join(_r, _fn), root)); bad += 1
 if 'https://maps.google.com/help/terms_maps/' not in open(os.path.join(root, 'terms/index.html'), encoding='utf-8').read(): print('Terms missing Google Maps terms link'); bad += 1
 if 'https://policies.google.com/privacy' not in open(os.path.join(root, 'privacy/index.html'), encoding='utf-8').read(): print('Privacy missing Google privacy link'); bad += 1
 if 'id="remove"' not in open(os.path.join(root, 'list-your-workshop/index.html'), encoding='utf-8').read(): print('list page missing #remove section'); bad += 1
@@ -386,5 +396,24 @@ _ht = os.path.join(root, '..', 'htaccess', '.htaccess')
 _h = open(_ht).read() if os.path.exists(_ht) else ''
 if not (re.search(r'^RewriteCond %\{HTTP_HOST\} \^\(www\\\.\)\?sgcarworkshop\\\.sg\$ \[NC\]$', _h, re.M) and re.search(r'^RewriteRule \^robots\\\.txt\$ robots-live\.txt \[END\]$', _h, re.M) and 'RewriteOptions Inherit' in _h):
     print('htaccess/.htaccess must rewrite /robots.txt to robots-live.txt only for (www.)sgcarworkshop.sg, with RewriteOptions Inherit'); bad += 1
+
+# GUIDES (Edwin 3 Nov 2026): 10 pages, in sitemap and llms.txt, no prices, no endorsement words, workshop links real
+import guides as _gd
+_bad0 = bad
+_sm = open(os.path.join(root, 'sitemap.xml')).read(); _ll = open(os.path.join(root, 'llms.txt')).read()
+if len(_gd.GUIDES) != 10: print('expected 10 guides'); bad += 1
+for _g in _gd.GUIDES:
+    _p = os.path.join(root, 'guides', _g['slug'], 'index.html')
+    if not os.path.exists(_p): print('guide page missing', _g['slug']); bad += 1; continue
+    _t = open(_p, encoding='utf-8').read()
+    _v = re.sub(r'<(script|style).*?</\1>', '', _t, flags=re.S); _v = re.sub(r'<[^>]+>', ' ', _v)
+    if 'guides/%s/' % _g['slug'] not in _sm or 'guides/%s/' % _g['slug'] not in _ll: print('guide not in sitemap/llms.txt', _g['slug']); bad += 1
+    if re.search(r'S\$|\$\s?\d|\bSGD\b|\d\s?dollars', _v): print('guide states a price', _g['slug']); bad += 1
+    if re.search(r'\b(best|trusted|recommended|guaranteed|cheapest)\b', _v, re.I): print('guide has endorsement wording', _g['slug']); bad += 1
+    for _l in re.findall(r'href="\.\./\.\./workshops/([a-z0-9-]+)/"', _t):
+        if not os.path.exists(os.path.join(root, 'workshops', _l, 'index.html')): print('guide links to a missing workshop', _l); bad += 1
+if 'guides/' not in _sm: print('guides index not in sitemap'); bad += 1
+if bad == _bad0: print('guides ok: 10 pages, in sitemap and llms.txt, no prices')
+
 print('pages checked:', len(files), 'problems:', bad)
 sys.exit(1 if bad else 0)

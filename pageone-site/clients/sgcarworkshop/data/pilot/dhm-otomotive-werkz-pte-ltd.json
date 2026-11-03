@@ -1,0 +1,32 @@
+{
+ "lede": "DHM Otomotive Werkz is a car repair workshop at 61 Woodlands Industrial Park E9, #01-20. Its Google Maps listing shows opening hours, payment options, parking and customer ratings.",
+ "chips": [
+  "Car repair"
+ ],
+ "services": [
+  "General servicing and repair"
+ ],
+ "faqs": [
+  [
+   "What does DHM Otomotive Werkz do?",
+   "Google Maps lists it as a car repair workshop."
+  ],
+  [
+   "What are the opening hours?",
+   "The hours are listed in the Google Maps section above. Please see Google Maps for current hours."
+  ]
+ ],
+ "sources": "its Google Maps listing",
+ "stories": [],
+ "mentioned_services": [
+  "Engine overhaul",
+  "Gearbox replacement",
+  "Fuel pump and injector changes",
+  "Spark plug changes",
+  "Breakdown recovery",
+  "Mini Cooper repairs",
+  "Motul oil servicing package",
+  "Private-hire car servicing"
+ ],
+ "themes": "Customers on Google Maps mention major repairs, an engine overhaul, gearbox, fuel pump and injector work, clear explanations before work starts and private-hire car servicing."
+}

@@ -1,0 +1,27 @@
+{
+ "lede": "SG Zoom Garage is a car repair workshop at 53 Ubi Ave 1, #01-43. Its Google Maps listing shows opening hours and customer ratings.",
+ "chips": [
+  "Car repair"
+ ],
+ "services": [
+  "General servicing and repair"
+ ],
+ "faqs": [
+  [
+   "What does SG Zoom Garage do?",
+   "Google Maps lists it as a car repair workshop."
+  ],
+  [
+   "What are the opening hours?",
+   "The hours are listed in the Google Maps section above. Please see Google Maps for current hours."
+  ]
+ ],
+ "sources": "its Google Maps listing",
+ "stories": [],
+ "mentioned_services": [
+  "Accident repair and insurance claims",
+  "Walk-in visits without appointment",
+  "Quick fault diagnosis"
+ ],
+ "themes": "Customers on Google Maps mention accident reporting, insurance claims and damage repair, fast diagnosis and walk-in visits."
+}

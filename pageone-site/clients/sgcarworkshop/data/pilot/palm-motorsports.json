@@ -1,0 +1,30 @@
+{
+ "lede": "Palm Motorsports is a car repair workshop at 1 Corporation Dr, #02-18. Its Google Maps listing shows opening hours, payment options and customer ratings.",
+ "chips": [
+  "Car repair"
+ ],
+ "services": [
+  "General servicing and repair"
+ ],
+ "faqs": [
+  [
+   "What does Palm Motorsports do?",
+   "Google Maps lists it as a car repair workshop."
+  ],
+  [
+   "What are the opening hours?",
+   "The hours are listed in the Google Maps section above. Please see Google Maps for current hours."
+  ]
+ ],
+ "sources": "its Google Maps listing",
+ "stories": [],
+ "mentioned_services": [
+  "Car servicing",
+  "Walnut blasting",
+  "Aircon flushing",
+  "Wear-and-tear components",
+  "Van servicing",
+  "Insurance advice"
+ ],
+ "themes": "Customers on Google Maps mention servicing, walnut blasting, aircon flushing, van servicing and insurance advice."
+}

@@ -1,0 +1,50 @@
+{
+ "schema_version": 1,
+ "slug": "dhm-otomotive-werkz-pte-ltd",
+ "place_id": "ChIJ82HPlRET2jERMU1GsmkndBQ",
+ "place_id_checked_at": "2026-11-02",
+ "name": "DHM Otomotive Werkz",
+ "name_source_url": "google_profile",
+ "name_checked_at": "2026-11-02",
+ "address": {
+  "block": "",
+  "street": "61 Woodlands Industrial Park E9, #01-20",
+  "unit": "",
+  "building": ""
+ },
+ "postal_code": "757047",
+ "address_source_url": "google_profile",
+ "address_checked_at": "2026-11-02",
+ "categories": [
+  "SERV"
+ ],
+ "services": [
+  "General servicing and repair"
+ ],
+ "services_source_url": "google_profile",
+ "phones": [
+  {
+   "e164": "+6587339739",
+   "kind": "mobile",
+   "whatsapp": true,
+   "source": "google_profile",
+   "checked_at": "2026-11-02"
+  }
+ ],
+ "google_screen": {
+  "passed": true,
+  "reason": "OPERATIONAL, car repair, SG mobile on Google profile",
+  "checked_at": "2026-11-02"
+ },
+ "status": "active",
+ "tier": "basic",
+ "first_seen_at": "2026-11-02",
+ "last_verified_at": "2026-11-02",
+ "collector_version": "agent-v5",
+ "estate": "woodlands",
+ "planning_area": "Woodlands",
+ "region": "north",
+ "lat": 1.449235811524299,
+ "lng": 103.7989544198211,
+ "geo_source": "onemap"
+}

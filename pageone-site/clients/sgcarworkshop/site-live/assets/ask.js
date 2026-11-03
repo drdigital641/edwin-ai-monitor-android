@@ -109,12 +109,15 @@ function didYouMean(a,note){var wrap=el('div','dym');wrap.appendChild(el('h3',nu
  var cats=(DATA.cats||[]).slice().sort(function(x,y){return (a.close[y.slug]||0)-(a.close[x.slug]||0)});var showN=Object.keys(a.close).length?Math.min(3,Math.max(1,Object.keys(a.close).length)):4;
  cats.slice(0,Math.max(showN,3)).forEach(function(c){var b=el('button','opt dymb',c.short);b.type='button';b.addEventListener('click',function(){render(Object.assign({},a,{top:{r:{cat:c.slug,label:c.short,issue:c.blurb||''}},tier:3,forced:true}),true)});row.appendChild(b)});
  wrap.appendChild(row);return wrap}
+function guidesFor(a){var n=' '+norm(a.raw||'')+' ',out=[];(DATA.guides||[]).forEach(function(g){var s=0;g.kw.forEach(function(k){var kk=norm(k);if(kk&&n.indexOf(' '+kk+' ')>=0)s+=kk.length>3?2:1});if(s)out.push({g:g,s:s})});out.sort(function(x,y){return y.s-x.s});return out.slice(0,2).map(function(x){return x.g})}
+function guideBox(list){var w=el('div','guidebox');w.appendChild(el('h3',null,'Read our guide'));list.forEach(function(g){var p=el('p');var a=el('a',null,g.h1);a.href='guides/'+g.slug+'/';a.setAttribute('data-cta','guide_'+g.slug);p.appendChild(a);w.appendChild(p)});return w}
 function render(a,viaChip){body.textContent='';var chips=el('div','achips'),r=a.top&&a.top.r,cats=[],area=a.area;
  if(a.make)chips.appendChild(chip('Car',MAKES[a.make]));if(area)chips.appendChild(chip('Area',area.name));if(r)chips.appendChild(chip('Service',r.label));
  var nm=a.tier!==3||a.forced?nameMatch(a):[];
  var pm=(!r&&!nm.length)?ranked(cards.filter(function(c){return profScore(c,a)>=(a.make?3:2)}),a).filter(function(c){return profScore(c,a)>0}).slice(0,9):[];
  if(r){cats=[r.cat].concat(r.alt?[r.alt]:[])}
  var head=el('h2','ah',(r||area||nm.length||pm.length)?'Here is what we understood':'We could not match that exactly');body.appendChild(head);if(chips.children.length)body.appendChild(chips);
+ var gl=guidesFor(a);if(gl.length)body.appendChild(guideBox(gl));
  if(r&&r.issue){var it=el('p','likely');it.appendChild(el('b',null,'Likely issue: '));it.appendChild(d.createTextNode(r.issue+(a.forced?'':' This is a general guide, not a diagnosis. A workshop has to inspect the car to be sure.')));body.appendChild(it)}
  var shown=0,shownSet={};function mark(c){shownSet[c.getAttribute('data-tier')+c.querySelector('h3').textContent]=1}
  if(nm.length&&!r){body.appendChild(el('h3','sub','Matching workshop'));body.appendChild(grid(nm,a,6));shown=nm.length;nm.forEach(mark)}

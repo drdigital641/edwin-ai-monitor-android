@@ -387,7 +387,7 @@ def enrich_queue(a, key):
             e, w = R.match(reg, c['place_id'], None, name, pc)
             if e: why, st = 'Google data duplicates %s (%s)' % (e['slug'], w), None
         if why:
-            if st: R.add(reg, c['place_id'], None, name, pc, None, st, TODAY)
+            if st: R.add(reg, c['place_id'], None, name, pc, None, st, dt.date.today().isoformat())
             out.append((name, 'DROPPED: ' + why)); continue
         slug = unique_slug(name); street = re.sub(r',?\s*Singapore\s*\d{6}\s*$', '', fa)
         r = {'schema_version': 1, 'slug': slug, 'place_id': c['place_id'], 'place_id_checked_at': TODAY, 'name': name, 'name_source_url': 'google_profile', 'name_checked_at': TODAY,
@@ -402,7 +402,7 @@ def enrich_queue(a, key):
         kp['editorialSummary'] = (g.get('editorialSummary') or {}).get('text'); kp['weekdayDescriptions'] = (g.get('regularOpeningHours') or {}).get('weekdayDescriptions')
         kp['review_count_seen'] = len(g.get('reviews') or []); kp['review_themes'] = None; kp['fetched_at'] = TODAY; kp['place_id'] = c['place_id']; kp['source'] = 'google_places'
         jsave('google_cache/%s.json' % slug, kp)
-        R.add(reg, c['place_id'], slug, name, pc, gm, 'built', TODAY); out.append((slug, 'ok (Google mobile %s; Grok hint %s%s)' % (gm, c['mobile_hint'], '' if gm == c['mobile_hint'] else ' DIFFERS, Google wins')))
+        R.add(reg, c['place_id'], slug, name, pc, gm, 'built', dt.date.today().isoformat()); out.append((slug, 'ok (Google mobile %s; Grok hint %s%s)' % (gm, c['mobile_hint'], '' if gm == c['mobile_hint'] else ' DIFFERS, Google wins')))
     R.save(reg); jsave('candidate_queue.json', keep); jsave('usage.json', u)
     print(json.dumps({'results': out, 'queue_left': len(keep), 'details_calls_today': ut['details']}, indent=1))
 

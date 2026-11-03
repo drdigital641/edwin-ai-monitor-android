@@ -313,3 +313,23 @@ ul.chips{list-style:none;display:flex;flex-wrap:wrap;gap:8px;padding:0;margin:14
 .marq:not(.on){margin:0}
 
 .pl-google .hrs-list{list-style:none;padding:0;margin:6px 0}.pl-google .hrs-list li{padding:3px 0;border-bottom:1px solid #e6e9f0}.pl-google .gline{font-size:1.05rem}.pl-google .gattr{font-size:.8rem;color:#5b6475}
+
+/* comparison facts, filters, claim button (3 Nov 2026) */
+.rankline{margin:6px 0 0;font-size:.84rem;font-weight:600;color:#0f1c33}
+.ctags{display:flex;flex-wrap:wrap;gap:6px;list-style:none;margin:6px 0 0;padding:0}
+.ctags .ct{font-size:.76rem;background:#e8f3ec;color:#14532d;border-radius:99px;padding:2px 9px}
+.mentline{margin:6px 0 0;font-size:.8rem;color:#475569}
+.cmp{margin:6px 0 4px;padding-left:18px}.cmp li{margin:3px 0}
+.etools{display:flex;flex-wrap:wrap;align-items:center;gap:8px;margin:6px 0 14px}.et-l{font-size:.82rem;color:#475569}
+.chip-b{border:1px solid #cbd5e1;background:#fff;border-radius:99px;padding:6px 13px;font:inherit;font-size:.85rem;cursor:pointer;min-height:36px}
+.chip-b[aria-pressed=true]{background:#0f1c33;color:#fff;border-color:#0f1c33}
+.et-s select{font:inherit;font-size:.85rem;padding:6px 8px;border-radius:8px;border:1px solid #cbd5e1;min-height:36px}.et-n{flex-basis:100%;margin:0}
+.card[hidden]{display:none}
+.claimbtn{display:block;text-align:center;margin-top:8px;background:#fff7e0;border:1px solid #f3c64b;color:#0f1c33;border-radius:10px;padding:8px 10px;font-size:.85rem;font-weight:600;text-decoration:none}
+
+/* guides (3 Nov 2026) */
+.guidepg .causes{list-style:decimal;padding-left:20px}.guidepg .causes h3{margin:10px 0 2px;font-size:1rem}.guidepg .causes p{margin:0 0 6px}
+.urgent{background:#fff3f0;border:1px solid #f5b5a8;border-radius:10px;padding:10px 12px;margin:16px 0}
+.gest{margin:16px 0 6px;font-size:1rem}.gwl{list-style:none;padding:0;margin:0}.gw{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:center;gap:8px;padding:10px 0;border-bottom:1px solid #e5e7eb}
+.gw .mentline{margin:2px 0 0}.guide-links{columns:2;padding-left:18px}.guide-tiles small{display:block;font-weight:400;color:#475569}
+.guidebox{background:#eef4ff;border:1px solid #bcd0f5;border-radius:12px;padding:10px 14px;margin:10px 0}.guidebox h3{margin:0 0 4px;font-size:.95rem}.guidebox p{margin:3px 0}

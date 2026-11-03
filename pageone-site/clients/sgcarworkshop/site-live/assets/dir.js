@@ -69,10 +69,10 @@ if(!site)return;   /* live domain = real taps; the pageonesingapore.com preview 
 if(navigator.doNotTrack==='1'||window.doNotTrack==='1'||navigator.webdriver)return;
 var tier=a.getAttribute('data-tier'),m=/^(whatsapp|call)_dir_(.+)$|^(maps|directions|hours|closed_flag)_(.+)$/.exec(c);if(!tier||!m)return;
 var kind=m[1]||m[3],slug=m[2]||m[4],ua=navigator.userAgent;
-/* Fields kept: which button (cta_type), which workshop (cta_label = slug), tier and page type (enquiry_ref), page, device, referrer. A random per-visit id only (session_id). No visitor id, no IP, nothing about the person. */
+/* Fields kept: which button (cta_type), which workshop (cta_label = slug), tier, page type and month (enquiry_ref), page, device. No referrer. A random per-visit id only (session_id). No visitor id, no IP, nothing about the person. */
 var body=JSON.stringify({entity:'CtaClick',site:site,session_id:keep(sessionStorage,'sgcw-sid'),page_path:location.pathname,
-referrer:(document.referrer||'').slice(0,300),device_type:/Mobi|Android|iPhone/i.test(ua)?'mobile':/iPad|Tablet/i.test(ua)?'tablet':'desktop',
-cta_type:kind,cta_label:slug.slice(0,60),enquiry_ref:tier+'|'+pagetype(location.pathname)});
+referrer:'',device_type:/Mobi|Android|iPhone/i.test(ua)?'mobile':/iPad|Tablet/i.test(ua)?'tablet':'desktop',
+cta_type:kind,cta_label:slug.slice(0,60),enquiry_ref:tier+'|'+pagetype(location.pathname)+'|'+new Date().toISOString().slice(0,7)});
 var url='https://base44.app/api/apps/'+APP+'/functions/track',sent=false;
 if(navigator.sendBeacon){try{sent=navigator.sendBeacon(url,new Blob([body],{type:'application/json'}))}catch(x){}}
 if(!sent&&window.fetch){fetch(url,{method:'POST',credentials:'omit',keepalive:true,headers:{'Content-Type':'application/json'},body:body}).catch(function(){})}
@@ -86,3 +86,11 @@ if(!sent&&window.fetch){fetch(url,{method:'POST',credentials:'omit',keepalive:tr
 var b=document.getElementById(c[0]);if(!b)return;var n;try{n=JSON.parse(b.getAttribute('data-names'))[m[1]]}catch(e){}if(!n)return;
 var f=document.getElementById(c[1]);if(f){f.querySelector('b').textContent=n;f.hidden=false}
 b.href='https://wa.me/'+b.getAttribute('data-wa')+'?text='+encodeURIComponent(c[2](n,b));b.setAttribute('data-cta',c[3]+m[1])})})();
+
+/* Estate pages: filter (Open Sunday / Open late) and sort (highest Google rating) using data-* computed at build time. */
+(function(){var g=document.getElementById('estate-grid'),t=document.querySelector('.etools');if(!g||!t)return;
+var cards=[].slice.call(g.querySelectorAll('.card[data-search]')),order=cards.slice(),on={sun:false,late:false},note=t.querySelector('.et-n');
+function apply(){var any=on.sun||on.late;cards.forEach(function(c){var ok=!((on.sun&&c.getAttribute('data-sun')!=='1')||(on.late&&c.getAttribute('data-late')!=='1'));c.hidden=!ok});if(note)note.hidden=!any}
+[].forEach.call(t.querySelectorAll('[data-f]'),function(b){b.addEventListener('click',function(){var k=b.getAttribute('data-f');on[k]=!on[k];b.setAttribute('aria-pressed',on[k]?'true':'false');apply()})});
+var s=t.querySelector('[data-sort]');if(s)s.addEventListener('change',function(){var l=order.slice();if(s.value==='rating')l.sort(function(a,b){return (parseFloat(b.getAttribute('data-rating'))||0)-(parseFloat(a.getAttribute('data-rating'))||0)});
+var cta=g.querySelector('.card.list');l.forEach(function(c){g.insertBefore(c,cta)})})})();
