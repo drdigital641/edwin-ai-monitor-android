@@ -29,7 +29,7 @@ Last updated: 2026-11-03
 - [Sin Ming Industrial Estate](https://sgcarworkshop.sg/areas/sin-ming-industrial-estate/): Sin Ming Industrial Estate, including Sin Ming Drive and the Sin Ming AutoCity and Autocare buildings, is in the middle of Singapore near Bishan. 4 listings.
 - [Toh Guan Road East and Enterprise Hub](https://sgcarworkshop.sg/areas/toh-guan-enterprise-hub/): Toh Guan Road East and the Enterprise Hub industrial building are in the West region, near Jurong East. 3 listings.
 - [Corporation Drive, Jurong East](https://sgcarworkshop.sg/areas/corporation-drive-jurong-east/): Corporation Drive is an industrial road in Jurong East, in the West region. 3 listings.
-- [Paya Ubi Industrial Park](https://sgcarworkshop.sg/areas/paya-ubi-industrial-park/): Paya Ubi Industrial Park is around Ubi Avenue 1, near Paya Lebar in the Geylang planning area (Central region), with motor workshops mixed in among light industry. 3 listings.
+- [Paya Ubi Industrial Park](https://sgcarworkshop.sg/areas/paya-ubi-industrial-park/): Paya Ubi Industrial Park is around Ubi Avenue 1, near Paya Lebar in the Geylang planning area (Central region), with motor workshops mixed in among light industry. 4 listings.
 - [Ubi Road 1](https://sgcarworkshop.sg/areas/ubi-road-1/): Ubi Road 1 is an industrial road in the Ubi area, near Paya Lebar in the Geylang planning area (Central region). 2 listings.
 - [Woodlands Industrial Park E9](https://sgcarworkshop.sg/areas/woodlands-industrial-park-e9/): Woodlands Industrial Park E9 is the main industrial park in the north-west, close to the Causeway. 3 listings.
 - [Jalan Lam Huat and Carros Centre](https://sgcarworkshop.sg/areas/carros-centre-jalan-lam-huat/): Jalan Lam Huat, where Carros Centre stands, is an industrial road in the north-west of Singapore. 4 listings.
@@ -87,6 +87,7 @@ Last updated: 2026-11-03
 - [MK Auto Workz](https://sgcarworkshop.sg/workshops/mk-auto-workz/): General servicing and repair, Basic listing, Kaki Bukit
 - [Moon Star Auto Service](https://sgcarworkshop.sg/workshops/moon-star-auto-service/): General servicing and repair, Basic listing, Yishun
 - [MT Autoservice](https://sgcarworkshop.sg/workshops/mt-autoservice/): General servicing and repair, Basic listing, Woodlands
+- [MTM Group](https://sgcarworkshop.sg/workshops/mtm-group/): General servicing and repair, Basic listing, Ubi
 - [My Car Auto Workshop](https://sgcarworkshop.sg/workshops/my-car-auto-workshop/): General servicing and repair, Basic listing, Sin Ming and Bishan
 - [Nightservicingsg](https://sgcarworkshop.sg/workshops/nightservicingsg/): General servicing and repair, Basic listing, Kaki Bukit
 - [Ong Kian Seng Motor Repairs](https://sgcarworkshop.sg/workshops/ong-kian-seng-motor-repairs/): General servicing and repair, Basic listing, Kaki Bukit

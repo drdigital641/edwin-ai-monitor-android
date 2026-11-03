@@ -4,7 +4,7 @@
   "areas/carros-centre-jalan-lam-huat/": 3,
   "areas/corporation-drive-jurong-east/": 3,
   "areas/kaki-bukit-industrial-estate/": 18,
-  "areas/paya-ubi-industrial-park/": 3,
+  "areas/paya-ubi-industrial-park/": 4,
   "areas/sin-ming-industrial-estate/": 4,
   "areas/toh-guan-enterprise-hub/": 3,
   "areas/toh-guan-enterprise-hub/spray-painting-bodywork/": 2,
@@ -21,7 +21,7 @@
   "services/car-parts/": 0,
   "services/car-wrap-ppf/": 0,
   "services/gearbox-repair/": 1,
-  "services/general-servicing-repair/": 48,
+  "services/general-servicing-repair/": 49,
   "services/spray-painting-bodywork/": 7
  },
  "hub_cards": {
@@ -29,7 +29,7 @@
   "areas/kaki-bukit/": 20,
   "areas/sin-ming-bishan/": 4,
   "areas/toh-guan-jurong-east/": 6,
-  "areas/ubi/": 5,
+  "areas/ubi/": 6,
   "areas/woodlands/": 7,
   "areas/yishun/": 9
  },
@@ -163,6 +163,7 @@
   "workshops/mk-auto-workz/",
   "workshops/moon-star-auto-service/",
   "workshops/mt-autoservice/",
+  "workshops/mtm-group/",
   "workshops/my-car-auto-workshop/",
   "workshops/nightservicingsg/",
   "workshops/ong-kian-seng-motor-repairs/",
