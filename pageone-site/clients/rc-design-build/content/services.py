@@ -1022,8 +1022,8 @@ PAGES += [
   'answer': 'Soundproofing cuts the noise that travels between rooms and units, and acoustic treatment cuts the echo inside a room. '
             'We plan both into partitions, ceilings, doors and finishes for Singapore offices, shops, studios, F&B outlets and salons.',
   'card': 'Quieter meeting rooms, studios and back rooms: insulated walls, sealed doors and acoustic panels for business spaces.',
-  'image': 'avl-audio',
-  'image_alt': 'Cafe interior with a wooden slatted acoustic ceiling and recessed ceiling speakers (AI design concept)',
+  'image': 'acoustic-meeting-room',
+  'image_alt': 'Meeting room with fabric acoustic wall panels, oak slatted acoustic wall, ceiling baffles and a sealed timber door (AI design concept)',
   'sections': [
    {'h2': 'Who soundproofing suits',
     'html': '<ul><li><strong>Offices</strong> that need private meeting rooms, phone booths or a quiet director\'s room.</li>\n'
