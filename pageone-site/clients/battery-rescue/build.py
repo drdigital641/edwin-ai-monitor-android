@@ -149,6 +149,9 @@ if not any(r[0] == "Honda" and "Shuttle" in r[1] for r in rows):
 # Edwin 3 Nov 2026: Toyota Yaris Cross non-hybrid uses DIN45
 if not any(r[0] == "Toyota" and "Yaris Cross" in r[1] for r in rows):
     rows += [["Toyota","Yaris Cross (non-hybrid)","2020-now","DIN45L","DIN45L","edwin",0]]
+# Edwin 3 Nov 2026: Honda N-Van uses M42L
+if not any(r[0] == "Honda" and "N-Van" in r[1] for r in rows):
+    rows += [["Honda","N-Van","2018-now","M42L","M42","edwin",0]]
 rows.sort(key=lambda r: (r[0], r[1], r[2]))
 MAKES = {}
 for r in rows: MAKES.setdefault(r[0], []).append(r)
