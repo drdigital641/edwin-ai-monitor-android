@@ -1,1 +1,74 @@
-[]
+[
+ {
+  "place_id": "ChIJXVIocowT2jERwhjNXdeHQn4",
+  "name_hint": "1 Car Service Workshop",
+  "address_hint": "160 Sin Ming Drive, #03-07 Sin Ming Auto City",
+  "postal_code": "575722",
+  "mobile_hint": "+6598578141",
+  "source": "claude_websearch_2026-11-04 (motorist.sg, thebestsingapore.com, thefunempire.com; Edwin asked)",
+  "added": "2026-11-03"
+ },
+ {
+  "place_id": "ChIJd7BpB7cX2jERMmhRbyUQ8vo",
+  "name_hint": "Team Auto Pro",
+  "address_hint": "160 Sin Ming Drive, #01-14 Sin Ming Autocity",
+  "postal_code": "575722",
+  "mobile_hint": "+6588799997",
+  "source": "claude_websearch_2026-11-04 (motorist.sg, thebestsingapore.com, thefunempire.com; Edwin asked)",
+  "added": "2026-11-03"
+ },
+ {
+  "place_id": "ChIJXyrQa7cX2jERhEF-0QXi304",
+  "name_hint": "Corsa Motorworks",
+  "address_hint": "48 Toh Guan Road East, #03-137 Enterprise Hub",
+  "postal_code": "608586",
+  "mobile_hint": "+6591505255",
+  "source": "claude_websearch_2026-11-04 (motorist.sg, thebestsingapore.com, thefunempire.com; Edwin asked)",
+  "added": "2026-11-03"
+ },
+ {
+  "place_id": "ChIJQQaNu7IP2jERgRnZ1tGBPBY",
+  "name_hint": "Ace Motorsports",
+  "address_hint": "1 Soon Lee Street, #01-34 Pioneer Centre",
+  "postal_code": "627605",
+  "mobile_hint": "+6596888112",
+  "source": "claude_websearch_2026-11-04 (motorist.sg, thebestsingapore.com, thefunempire.com; Edwin asked)",
+  "added": "2026-11-03"
+ },
+ {
+  "place_id": "ChIJF7mRvVwT2jERldM1BoY-2u4",
+  "name_hint": "GSC Auto Service",
+  "address_hint": "10 Admiralty Street, #01-12 Northlink Building",
+  "postal_code": "757695",
+  "mobile_hint": "+6581132370",
+  "source": "claude_websearch_2026-11-04 (motorist.sg, thebestsingapore.com, thefunempire.com; Edwin asked)",
+  "added": "2026-11-03"
+ },
+ {
+  "place_id": "ChIJNRqki3gX2jER-R5bhkCjS3c",
+  "name_hint": "Omni Autowerks",
+  "address_hint": "8 Kaki Bukit Avenue 4, #06-30 Premier @ Kaki Bukit",
+  "postal_code": "415875",
+  "mobile_hint": "+6590490880",
+  "source": "claude_websearch_2026-11-04 (motorist.sg, thebestsingapore.com, thefunempire.com; Edwin asked)",
+  "added": "2026-11-03"
+ },
+ {
+  "place_id": "ChIJ15PrDk4T2jEREb7pO7ATQRQ",
+  "name_hint": "Forza AutoHaus",
+  "address_hint": "39 Woodlands Close, #01-34/35 Mega@woodlands",
+  "postal_code": "737856",
+  "mobile_hint": "+6596775772",
+  "source": "claude_websearch_2026-11-04 (motorist.sg, thebestsingapore.com, thefunempire.com; Edwin asked)",
+  "added": "2026-11-03"
+ },
+ {
+  "place_id": "ChIJy5Llw0gT2jERA-taMrisMAI",
+  "name_hint": "Majesty Autoworks",
+  "address_hint": "1 Bukit Batok Crescent, #03-25 Wcega Plaza",
+  "postal_code": "658064",
+  "mobile_hint": "+6591549231",
+  "source": "claude_websearch_2026-11-04 (motorist.sg, thebestsingapore.com, thefunempire.com; Edwin asked)",
+  "added": "2026-11-03"
+ }
+]
