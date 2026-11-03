@@ -31,6 +31,8 @@ CHANGED_ARTS = {'blog-pure-water-final-rinse', 'why-professional-car-detailing-m
 
 
 def lastmod(path):
+    if path.startswith('articles/') and path.count('/') == 2 and ABY.get(path.split('/')[1], {}).get('date', '') > UPDATED:
+        return ABY[path.split('/')[1]]['date']  # guides written after the last site-wide update
     return SEO_DATE if (path in SEO_CHANGED or path.startswith('services/') or path in ('privacy/', 'reviews/') or (path.startswith('articles/') and path.split('/')[1] in CHANGED_ARTS)) else UPDATED
 V = '21'
 INDEXNOW_KEY = '3f8b2c6d9e14a7b05c2d8e6f1a4b9c73'
@@ -286,6 +288,7 @@ ART_PICK = {
     'blog-pure-water-final-rinse': 'pure_rinse', '5-reasons-your-car-needs-ceramic-coating-in-singapore': 'coating_apply',
     'ceramic-coating-vs-graphene-coating-which-is-better-for-singapores-humid-climate': 'klarcoat_range',
     'graphene-coating-for-car-protect-in-singapore': 'graphene_apply',
+    'how-to-prepare-your-car-for-ceramic-coating': 'm6_inspection',
 }
 
 
