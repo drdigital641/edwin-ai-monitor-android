@@ -30,7 +30,12 @@ for f in sorted(files):
         try: json.loads(j)
         except Exception as e: print('BAD JSON-LD', rel, e); bad += 1
     txt = ' '.join(p.text)
-    for m in BAN.finditer(txt + ' '.join(p.ld)): print('BANNED', rel, m.group(0)); bad += 1
+    _bt = txt + ' '.join(p.ld)
+    if re.fullmatch(r'areas/[a-z-]+/index\.html', rel) and '<title>Best Car Workshops in ' in src:
+        # Edwin 3 Nov 2026: estate titles may say "Best ... Top Rated" only when the page ranks workshops by Google rating (20+ ratings) and says so
+        if 'Ordered by Google rating among the' not in src: print('BEST title without a ranking basis', rel); bad += 1
+        _bt = _bt.replace('Best Car Workshops in', 'Car Workshops in', 1)
+    for m in BAN.finditer(_bt): print('BANNED', rel, m.group(0)); bad += 1
     if '404.html' == rel: continue
     base = '/' + rel.replace('index.html', '')
     for l in p.links:
@@ -136,12 +141,29 @@ for e in ENTRIES:
                     if h.replace('\u202f', ' ').replace('\u2009', ' ') not in gtxt: print('PILOT google hours do not match cache', e['slug']); bad += 1; break
             if re.search(r'[\u201c\u201d]|<q>|<blockquote', body_g): print('PILOT google section must not quote reviews', e['slug']); bad += 1
             if ENDORSE.search(gtxt): print('PILOT google section has endorsement wording', e['slug']); bad += 1
+        # Round 2 (Edwin 3 Nov 2026): the FAQ section may state Google hours (checked below against the cache); it is audited on its own, then removed from the text checks.
+        fsec = re.search(r'<section class="pl-sec" id="faqs">.*?</section>', body, re.S)
+        faq_txt = ''
+        if fsec:
+            body = body.replace(fsec.group(0), '')
+            faq_txt = re.sub(r'\s+', ' ', re.sub(r'<[^>]+>', ' ', fsec.group(0)))
+            for _o in ENTRIES: faq_txt = faq_txt.replace(_o['name'], ' ')
+            nq = fsec.group(0).count('<details')
+            if not 5 <= nq <= 7: print('PILOT FAQ must have 5 to 7 questions, has', nq, e['slug']); bad += 1
+            if re.search(r'\b(review|reviews|rated|stars?|rating|ratings)\b', faq_txt, re.I): print('PILOT FAQ mentions reviews/ratings', e['slug']); bad += 1
+            if ENDORSE.search(faq_txt): print('PILOT FAQ has endorsement wording', e['slug']); bad += 1
+            _gc = json.load(open(gj)) if os.path.exists(gj) else {}
+            _hh = re.sub(r'\s+', ' ', ' '.join(_gc.get('weekdayDescriptions') or []).replace('\u202f', ' ').replace('\u2009', ' '))
+            for _t in re.findall(r'\b\d{1,2}(?::\d{2})?\s?(?:AM|PM)\b', faq_txt):
+                if _t not in _hh: print('PILOT FAQ states a time that is not in the Google hours', _t, e['slug']); bad += 1
         txt = re.sub(r'\s+', ' ', re.sub(r'<[^>]+>', ' ', body))
         txt = txt.replace(e['name'], ' ')   # a workshop name such as 'Moon Star' must not trip the review/rating word check
+        for _o in ENTRIES:                  # neighbours' names appear in the More-in block
+            txt = txt.replace(_o['name'], ' ')
         for needle in ('see Google Maps for current hours', 'maps/dir/?api=1&amp;destination=', 'google.com/maps/embed/v1/place?key=', 'Is this your workshop?', 'data-cta="whatsapp_dir_%s"' % e['slug'], 'data-cta="call_dir_%s"' % e['slug'], 'id="faqs"', 'data-cta="maps_%s"' % e['slug']):
             if needle not in pg: print('PILOT page missing', needle, e['slug']); bad += 1
         if '<img' in body or 'class="hoursbox"' in pg or 'livephone.js' in pg: print('PILOT page must have no photo and no hours box', e['slug']); bad += 1
-        for stored in ('openingHours', 'ratingValue', 'reviewCount', 'aggregateRating', '"review"'):
+        for stored in ('"openingHours"', 'ratingValue', 'reviewCount', 'aggregateRating', '"review"'):
             if stored in pg: print('PILOT page has a forbidden field', stored, e['slug']); bad += 1
         if re.search(r'\b(review|reviews|rated|stars?|rating)\b', txt.replace('See photos, reviews & hours on Google Maps', '').replace('See photos, reviews &amp; hours on Google Maps', ''), re.I): print('PILOT page mentions reviews/ratings', e['slug']); bad += 1
         if re.search(r'\b(Mon|Tue|Wed|Thu|Fri|Sat|Sun)\w*\s*[-:to]|\d{1,2}\s?(am|pm)\b', txt): print('PILOT page states opening hours', e['slug']); bad += 1
