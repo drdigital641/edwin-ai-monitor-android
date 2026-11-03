@@ -244,7 +244,9 @@ ENTRIES = [
         hours_ld=[(WD + SAT, "10:00", "20:00")],
         hours_note="Opening hours: owner (Edwin, 3 Nov 2026). Same hours and booking link as Edwin Garage.",
         social=[],
-        photos=[],
+        photos=[
+            dict(f="sggarage-sg-garage-shopfront-01-309.webp", alt="SG Garage shopfront at #01-309, Ang Mo Kio, with registration directing to #01-295", cap="SG Garage at #01-309, registration at the Edwin Garage counter, #01-295", hero_cap=True),
+        ],
         note="Owned by the site's founder.",
         faqs=[
             ("How do I book?", "Message on WhatsApp at 9785 6612 or book a slot online."),

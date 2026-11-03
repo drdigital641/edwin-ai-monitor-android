@@ -1671,6 +1671,8 @@ def pb_hero(x):
     e = x.e
     photos = e.get('photos') or []
     hero = '<div class="hero-ph">%s</div>' % (photo_img(photos[0], x.depth, lazy=False) if photos else tile(e))
+    if photos and photos[0].get('hero_cap'):   # caption under the main photo, only where the owner asked for one
+        hero = '<figure class="hero-fig" style="margin:0">%s<figcaption class="fine" style="margin:-8px 2px 16px">%s</figcaption></figure>' % (hero, E(photos[0]['cap']))
     return (f'''<div class="badges" style="margin-top:14px">{tier_badge(e)}<span class="tag">{E(x.c['short'])}</span></div>
 <h1 style="margin-top:8px">{E(e['name'])}</h1>
 <p class="meta">{E(e['area_label'])}</p>
