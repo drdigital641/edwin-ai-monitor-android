@@ -46,5 +46,12 @@
  "region": "north",
  "lat": 1.430875170022137,
  "lng": 103.7523467761918,
- "geo_source": "onemap"
+ "geo_source": "onemap",
+ "google_rating": {
+  "rating": 4.7,
+  "count": 41,
+  "checked": "2026-11-02",
+  "source": "Google Places",
+  "source_date": "2026-11-02"
+ }
 }

@@ -596,6 +596,18 @@ def call_icon(e, page_path):
     return call_btn(e, page_path, 'sm')
 
 
+def rating_line(e):
+    """Edwin 3 Nov 2026: Google rating + review count + checked month-year + See Google reviews link. Skipped (empty) when there is no rating or checked date."""
+    g = GCACHE.get(e['slug']) or {}
+    gr = e.get('google_rating') or {}   # data/workshops/<slug>.json, source Google Places
+    n, r, fa = gr.get('count') or g.get('userRatingCount'), gr.get('rating') or g.get('rating'), gr.get('checked') or g.get('fetched_at')
+    if not (r and n and fa):
+        return ''
+    d = datetime.date.fromisoformat(fa)
+    return ('<p class="rtg"><b>%.1f</b> (%s Google review%s) (checked %s) <a href="%s" target="_blank" rel="noopener" data-cta="gr_%s">See Google reviews</a></p>'
+            % (float(r), format(n, ','), '' if n == 1 else 's', d.strftime('%B %Y'), E(gm_url(e)), e['slug']))
+
+
 def gm_url(e):
     """Official Google Maps search URL (no API key, no billable call): name + address, pinned to the place_id."""
     return 'https://www.google.com/maps/search/?api=1&query=%s&query_place_id=%s' % (quote('%s %s Singapore' % (e['name'], e['address_public'])), e['place_id'])
@@ -752,9 +764,9 @@ def card(e, depth, page_path=''):
     if e['tier'] == 'free':
         svc = ', '.join(e.get('services_public', [])[:3])
         return ('<article class="card basic" %s><div class="ph btile" style="%s">%s%s</div><div class="bd"><span class="tag">%s</span>'
-                '<h3><a href="%sworkshops/%s/">%s</a></h3>%s<p class="addr">%s</p><p class="tx full svcline">%s</p>%s'
+                '<h3><a href="%sworkshops/%s/">%s</a></h3>%s%s<p class="addr">%s</p><p class="tx full svcline">%s</p>%s'
                 '<div class="acts">%s<a class="btn sm" href="%sworkshops/%s/" data-cta="view_%s">View details</a></div>%s</div></article>') % (
-            attrs, bt_style(e), gph_tile(e), tier_badge(e, 'on-ph'), E(c['short']), pre(depth), e['slug'], E(e['name']), rg, E(e['address_public']), E(svc), card_facts(e) + tap_line(e),
+            attrs, bt_style(e), gph_tile(e), tier_badge(e, 'on-ph'), E(c['short']), pre(depth), e['slug'], E(e['name']), rg, rating_line(e), E(e['address_public']), E(svc), card_facts(e) + tap_line(e),
             contact_btns(e, page_path, 'sm'), pre(depth), e['slug'], e['slug'], owner_note(e, depth, page_path, 'claim'))
     ci = e.get('card_img')
     ph = photo_img(dict(ci, alt=ci['alt']), depth, lazy=True) if ci else tile(e)
@@ -1381,6 +1393,7 @@ def pilot_page(e, pl):
 <header class="pl-head"><div class="badges"><span class="tag">{E(c['short'])}</span>{tier_badge(e)}{('<span class="claimed-badge">Claimed by the owner</span>' if e['slug'] in CLAIMED else '')}</div>
 <h1>{E(e['name'])}</h1>
 <p class="meta rg">{ic('pin')}<span>{E(region_label(e))}</span></p>
+{rating_line(e)}
 <ul class="pl-chips" aria-label="Main work">{chips}</ul>
 <div class="acts main-acts">{contact_btns(e, path, 'big')}</div>
 <p class="fine">Buttons use the mobile number on its Google listing. They only open a chat or call that you start.</p>{tap_line(e)}</header>
@@ -1595,7 +1608,7 @@ def about_page():
 <h2>Who we list</h2>
 <p>Car workshops and car services only: repair and servicing, gearbox, ABS and ECU modules, spray painting and bodywork, batteries, detailing and coating, wraps and PPF, and parts. Car dealers and insurance are not listed.</p>
 <h2>A note on one listing</h2>
-<p>The founder of {E(SITE_NAME)} owns two car workshops: SG Garage (aircon repair) and Edwin Garage (car repair and accident work), in different units. They are listed by the same rules as every other workshop, in the normal A to Z lists with no boost, and each is labelled "Owned by the site's founder". The Featured (paid) block contains only paying clients.</p>
+<p>SG Garage (aircon repair) and Edwin Garage (car repair and accident work) are both owned by the founder of {E(SITE_NAME)}. They are in different units in Ang Mo Kio. They appear in the normal A to Z lists with an "Owned by the site's founder" label, are never in the Featured (paid) block, and get no boost in ordering.</p>
 <h2>Contact</h2>
 <p>Page One Singapore is a project of Snap Commercial Pte. Ltd. (UEN 202209904W). To list a workshop or correct a page, WhatsApp {PAGE_ONE_WA_SHOW}.</p>
 <div style="display:flex;flex-wrap:wrap;gap:10px"><a class="btn wa big" href="{E(list_wa(depth, 'general enquiry'))}" target="_blank" rel="noopener" data-cta="whatsapp_about">{WA_SVG} WhatsApp {PAGE_ONE_WA_SHOW}</a>

@@ -156,7 +156,7 @@ for e in ENTRIES:
             _hh = re.sub(r'\s+', ' ', ' '.join(_gc.get('weekdayDescriptions') or []).replace('\u202f', ' ').replace('\u2009', ' '))
             for _t in re.findall(r'\b\d{1,2}(?::\d{2})?\s?(?:AM|PM)\b', faq_txt):
                 if _t not in _hh: print('PILOT FAQ states a time that is not in the Google hours', _t, e['slug']); bad += 1
-        txt = re.sub(r'\s+', ' ', re.sub(r'<[^>]+>', ' ', body))
+        txt = re.sub(r'\s+', ' ', re.sub(r'<[^>]+>', ' ', re.sub(r'<p class="rtg">.*?</p>', ' ', body)))
         txt = txt.replace(e['name'], ' ')   # a workshop name such as 'Moon Star' must not trip the review/rating word check
         for _o in ENTRIES:                  # neighbours' names appear in the More-in block
             txt = txt.replace(_o['name'], ' ')
@@ -437,5 +437,13 @@ for _g in _gd.GUIDES:
 if 'guides/' not in _sm: print('guides index not in sitemap'); bad += 1
 if bad == _bad0: print('guides ok: 10 pages, in sitemap and llms.txt, no prices')
 
+# Rating rule (Edwin 3 Nov 2026): a rating line needs a checked month-year and a See Google reviews link
+for _f in files:
+    _t = open(_f, encoding='utf-8').read()
+    for _m in re.findall(r'<p class="rtg">.*?</p>', _t):
+        if not re.search(r'\(checked (January|February|March|April|May|June|July|August|September|October|November|December) 20\d\d\)', _m) or '>See Google reviews</a>' not in _m or 'maps' not in _m:
+            print('RATING line lacks checked date or See Google reviews link', _f); bad += 1
+    if re.search(r'\d\.\d\s*\(\d[\d,]* Google reviews?\)', re.sub(r'<p class="rtg">.*?</p>', '', _t)):
+        print('RATING shown outside the rating line', _f); bad += 1
 print('pages checked:', len(files), 'problems:', bad)
 sys.exit(1 if bad else 0)

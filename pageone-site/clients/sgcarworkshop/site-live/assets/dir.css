@@ -340,3 +340,4 @@ ul.chips{list-style:none;display:flex;flex-wrap:wrap;gap:8px;padding:0;margin:14
 .card{content-visibility:auto;contain-intrinsic-size:auto 420px}.feat .card,.guidepg .card{content-visibility:visible}
 
 .linkb{background:none;border:0;padding:0;color:var(--brand);text-decoration:underline;font:inherit;cursor:pointer}.et-c{font-weight:700}
+.rtg{margin:4px 0 8px;font-size:.9rem}.rtg a{margin-left:4px;white-space:nowrap}

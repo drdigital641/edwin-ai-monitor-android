@@ -46,5 +46,12 @@
  "region": "central",
  "lat": 1.325408139002763,
  "lng": 103.8966013359551,
- "geo_source": "onemap"
+ "geo_source": "onemap",
+ "google_rating": {
+  "rating": 4.9,
+  "count": 8,
+  "checked": "2026-11-02",
+  "source": "Google Places",
+  "source_date": "2026-11-02"
+ }
 }

@@ -46,5 +46,12 @@
  "region": "west",
  "lat": 1.3367737,
  "lng": 103.7543622,
- "geo_source": "onemap"
+ "geo_source": "onemap",
+ "google_rating": {
+  "rating": 5,
+  "count": 6,
+  "checked": "2026-11-02",
+  "source": "Google Places",
+  "source_date": "2026-11-02"
+ }
 }
