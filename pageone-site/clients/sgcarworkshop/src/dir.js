@@ -29,7 +29,7 @@ q.addEventListener('focus',stop);q.addEventListener('pointerdown',stop);
 if(RM){form.classList.add('hint-off');q.placeholder=base}
 else{var i=0,k=0,dir=1;(function tick(){if(done)return;if(q.value){q.placeholder=base;tmr=setTimeout(tick,1200);return}
 var w=EX[i],dl=70;k+=dir;q.placeholder='e.g. '+w.slice(0,k);if(k>=w.length){dir=-1;dl=1600}else if(k<=0){dir=1;i=(i+1)%EX.length;dl=300}else if(dir<0)dl=30;tmr=setTimeout(tick,dl)})()}}
-/* Featured carousel: seamless infinite marquee (rAF translateX). Never pauses on hover, scroll or visibility; stops while pressed or dragged and for 2s after you let go.
+/* Featured carousel: seamless infinite marquee (rAF translateX). Never pauses on hover, scroll or visibility; stops while held or slid sideways (and 2s after); a vertical scroll past it never stops it.
    Reduced motion: static swipeable scroll-snap row with arrow buttons. */
 var tr=d.getElementById('track'),mq=d.getElementById('marq');
 if(tr&&mq){
@@ -48,14 +48,15 @@ function wrap(){if(sw>0){off=((off%sw)+sw)%sw}}
 function loop(t){var dt=last?Math.min(t-last,100):0;last=t;if(!held&&!drag&&!tt&&t>until){off+=SP*dt/1000;wrap();draw()}requestAnimationFrame(loop)}
 requestAnimationFrame(loop);
 window.addEventListener('resize',function(){var o=tr.children[n].offsetLeft-tr.children[0].offsetLeft;if(o>0)sw=o;wrap();draw()});
-function release(){held=false;until=performance.now()+2000;if(drag){drag=false;mq.classList.remove('drag');setTimeout(function(){moved=false},0)}if(pid!==null){try{mq.releasePointerCapture(pid)}catch(x){}pid=null}}
+function release(){held=false;if(drag)until=performance.now()+2000;if(drag){drag=false;mq.classList.remove('drag');setTimeout(function(){moved=false},0)}if(pid!==null){try{mq.releasePointerCapture(pid)}catch(x){}pid=null}}
 mq.addEventListener('pointerdown',function(e){if(e.pointerType==='mouse'&&e.button!==0)return;held=true;drag=false;moved=false;sx=e.clientX;so=off;pid=e.pointerId});
 mq.addEventListener('pointermove',function(e){if(!held)return;var dx=e.clientX-sx;
 if(!drag&&Math.abs(dx)>6){drag=true;moved=true;mq.classList.add('drag');try{mq.setPointerCapture(e.pointerId)}catch(x){}}
 if(drag){off=so-dx;wrap();draw()}});
 ['pointerup','pointercancel','lostpointercapture'].forEach(function(ev){mq.addEventListener(ev,release)});
-mq.addEventListener('touchstart',function(){tt=true},{passive:true});
-['touchend','touchcancel'].forEach(function(ev){mq.addEventListener(ev,function(){tt=false;until=performance.now()+2000},{passive:true})});
+var ty=0,tx=0;mq.addEventListener('touchstart',function(e){var t=e.touches[0];tx=t.clientX;ty=t.clientY;tt=true},{passive:true});
+mq.addEventListener('touchmove',function(e){if(!tt)return;var t=e.touches[0];if(!drag&&Math.abs(t.clientY-ty)>8&&Math.abs(t.clientY-ty)>Math.abs(t.clientX-tx)){tt=false;held=false}},{passive:true});
+['touchend','touchcancel'].forEach(function(ev){mq.addEventListener(ev,function(){if(tt)until=performance.now()+2000;tt=false},{passive:true})});
 /* a drag must not count as a tap on a button or link */
 mq.addEventListener('click',function(e){if(moved){e.preventDefault();e.stopPropagation()}},true);
 mq.addEventListener('dragstart',function(e){e.preventDefault()});
