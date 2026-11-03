@@ -6,6 +6,9 @@ from urllib.parse import urlparse, urljoin, unquote
 root = os.path.abspath(sys.argv[1] if len(sys.argv) > 1 else os.path.join(os.path.dirname(__file__), '..', 'site'))
 BAN = re.compile(r"\b(" + '|'.join(__import__('json').load(open(os.path.join(os.path.dirname(os.path.abspath(__file__)), 'settings.json')))['wording']['ban']) + r")\b", re.I)
 bad = 0
+from html import unescape as html_unescape
+HOTLINK = set()
+SET_IMG = json.load(open(os.path.join(os.path.dirname(os.path.abspath(__file__)), 'settings.json')))['image_hosts_pending']
 class P(HTMLParser):
     def __init__(s): super().__init__(); s.links = []; s.ld = []; s.in_ld = False; s.text = []; s.skip = 0; s.noindex = False
     def handle_starttag(s, t, a):
@@ -55,6 +58,7 @@ for f in sorted(files):
 # Basic (free) now has a SHORT own page. Feature columns must satisfy  Basic < Verified <= Premium  (strict between Basic and Verified).
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 from data import ENTRIES, TIERS
+ENT_TIER = {_e['slug']: _e['tier'] for _e in ENTRIES}
 FEAT = ['photos', 'services_detail', 'faqs', 'gallery']          # numeric counts: Basic < Verified (Wei) <= Premium
 MINIMUM = {'photos': 3, 'services_detail': 3, 'faqs': 3, 'gallery': 1}
 CONV = ['contact', 'address', 'map', 'hours', 'rating']          # Basic must have all; hours/rating shown for information
@@ -70,7 +74,7 @@ def audit(a):
         'address': 'data-addr' in a,
         'map': 'data-map' in a,
         'hours': 'class="hours"' in a or 'data-live="hours"' in a,
-        'rating': 'class="reviews-line"' in a,
+        'rating': 'class="reviews-line"' in a or 'class="rtg"' in a,
     }
 def both_buttons(a):
     return bool(re.search(r'href="tel:\+\d+"[^>]*data-cta="call_dir_', a)) and bool(re.search(r'href="https://wa\.me/\d+\?text=[^"]*"[^>]*data-cta="whatsapp_dir_', a))
@@ -95,7 +99,7 @@ for e, r in rows:
         for c in FEAT:
             if wei and not r[c] < wei[c]: notes.append('Basic %s %s not < Verified %s' % (c, r[c], wei[c]))
         if not r['both_buttons']: notes.append('Basic needs WhatsApp + Call')
-    elif e['tier'] == 'premium_leadgen' and wei:
+    elif e['tier'] in ('premium_leadgen', 'none') and wei:
         for c in FEAT:   # Premium must reach Verified's level (capped at the thresholds below: 3 photos, 3 services, 3 FAQs, 1 gallery item)
             need = min(wei[c], MINIMUM[c])
             have = r[c]
@@ -141,7 +145,7 @@ for e in ENTRIES:
                 import datetime as _dt
                 if (_dt.date.today() - _dt.date.fromisoformat(gc['fetched_at'])).days > 30: print('PILOT google cache older than 30 days', e['slug']); bad += 1
                 if 'Google Maps' not in gtxt: print('PILOT google section lacks attribution', e['slug']); bad += 1
-                _hero = re.search(r'<p class="rtg"><b>([0-9.]+)</b> \(([\d,]+) Google review', pg)
+                _hero = re.search(r'<p class="rtg"><b>([0-9.]+)</b> \(([\d,]+)\+? Google rating', pg)
                 if gc.get('rating') and gc.get('userRatingCount') and (not _hero or _hero.group(1) != '%.1f' % float(gc['rating']) or _hero.group(2) != format(gc['userRatingCount'], ',')): print('PILOT hero rating does not match cache', e['slug']); bad += 1
                 for h in (gc.get('weekdayDescriptions') or []):
                     if h.replace('\u202f', ' ').replace('\u2009', ' ') not in gtxt: print('PILOT google hours do not match cache', e['slug']); bad += 1; break
@@ -329,9 +333,8 @@ for _root, _d, _fs in os.walk(sys.argv[1] if len(sys.argv) > 1 else '../site'):
                 if 'data-cta="whatsapp_dir_' not in _a or 'data-tier="' not in _a: print('wa.me link without the tap hook', _p, _u[:60]); bad += 1
 if not all(k in djs for k in ("sgcarworkshop-test", "cta_label", "sendBeacon", "functions/track")) or 'visitor_id' in djs: print('dir.js tap counter must send site/sgcarworkshop(-test), cta_label slug, use sendBeacon and send no visitor_id'); bad += 1
 # Sort: Premium, Verified, then Basic A to Z (never by rating)
-rank = {'premium_leadgen': 0, 'premium': 1, 'free': 2}
-order = [(rank[e['tier']], e['name'].lower() if e['tier'] == 'free' else '') for e in ENTRIES]
-if order != sorted(order): print('ENTRIES not sorted Premium, Verified, Basic A-Z'); bad += 1
+order = [(0, '') if e['tier'] == 'premium_leadgen' else (1, e['name'].lower()) for e in ENTRIES]
+if order != sorted(order): print('ENTRIES not sorted: paid Featured first, then everyone else A to Z'); bad += 1
 # Every tel: link anywhere in the site must be an SG mobile (+65 8/9 + 7 digits), the same number as WhatsApp (Edwin 2 Nov 2026)
 for _root, _d, _fs in os.walk(sys.argv[1] if len(sys.argv) > 1 else '../site'):
     for _fn in _fs:
@@ -484,8 +487,8 @@ for _pth in _mf['noindex']:
     if 'content="noindex, follow"' not in _t: print('manifest noindex page lacks the meta tag', _pth); bad += 1
     if _pth in _locs: print('noindex page is in sitemap.xml', _pth); bad += 1
 for _pth, _n in _mf['free_count'].items():
-    if _n < _mf['min_free'] and _pth not in _mf['noindex']: print('thin page is indexable', _pth, _n); bad += 1
-    if _n >= _mf['min_free'] and _pth in _mf['noindex']: print('page with enough workshops is noindexed', _pth, _n); bad += 1
+    if _n < _mf['min_free'] and _pth not in _mf['noindex'] and _pth not in _mf.get('index_exceptions', []): print('thin page is indexable', _pth, _n); bad += 1
+    if _n >= _mf['min_free'] and _pth in _mf['noindex'] and _pth not in _mf.get('index_exceptions', []): print('page with enough workshops is noindexed', _pth, _n); bad += 1
 for _pth in ('areas/north/', 'areas/north-east/', 'areas/east/', 'areas/west/', 'areas/central/', 'areas/mobile/'):
     if os.path.exists(os.path.join(root, _pth, 'index.html')) and _pth not in _mf['noindex']: print('region page must be noindex', _pth); bad += 1
 for _pth in _locs:
@@ -494,13 +497,62 @@ for _d, _ds, _fs in os.walk(root):
     if _d != root and 'index.html' not in _fs: print('folder with no index page (directory listing risk)', os.path.relpath(_d, root)); bad += 1
 for _old, _new in _mf['redirects'].items():
     if not os.path.exists(os.path.join(root, _new, 'index.html')) or (_new in _mf['redirects']): print('redirect is not one hop to a real page', _old, _new); bad += 1
-# Rating rule (Edwin 3 Nov 2026): a rating line needs a checked month-year and a See Google reviews link
+# Rating rule (Edwin 3 Nov 2026): the ONLY rating text is the standard rating line:
+#   <p class="rtg"><b>4.9</b> (600+ Google ratings) (checked November 2026) <a ...>See Google reviews</a></p>
+_STD = re.compile(r'<p class="rtg"><b>[0-5]\.\d</b> \([\d,]+\+? Google ratings?\) \(checked (January|February|March|April|May|June|July|August|September|October|November|December) 20\d\d\) <a href="[^"]+" target="_blank" rel="noopener" data-cta="gr_[a-z0-9-]+">See Google reviews</a></p>')
+_PAIDPG = {'workshops/%s/' % _e['slug'] for _e in ENTRIES if _e['tier'] == 'premium_leadgen'}
 for _f in files:
     _t = open(_f, encoding='utf-8').read()
     for _m in re.findall(r'<p class="rtg">.*?</p>', _t):
-        if not re.search(r'\(checked (January|February|March|April|May|June|July|August|September|October|November|December) 20\d\d\)', _m) or '>See Google reviews</a>' not in _m or 'maps' not in _m:
-            print('RATING line lacks checked date or See Google reviews link', _f); bad += 1
-    if re.search(r'\d\.\d\s*\(\d[\d,]* Google reviews?\)', re.sub(r'<p class="rtg">.*?</p>', '', _t)):
-        print('RATING shown outside the rating line', _f); bad += 1
+        if not _STD.fullmatch(_m): print('RATING text is not the standard rating line', _f, _m[:120]); bad += 1
+        elif 'maps' not in _m and 'share.google' not in _m: print('RATING line has no Google link', _f); bad += 1
+    _rest = re.sub(r'<p class="rtg">.*?</p>', '', _t)
+    _rel = os.path.relpath(_f, root)
+    if _rel[:-10] in _PAIDPG: continue   # a paying client's own page keeps its own reviews line (not touched)
+    _txt = re.sub(r'\s+', ' ', re.sub(r'<script.*?</script>|<style.*?</style>|<[^>]+>', ' ', _rest, flags=re.S))
+    if re.search(r'\b[0-5]\.\d\s*\(\s*\d[\d,]*\+?\s*(Google )?(reviews?|ratings?)|\bRated [0-5]\.\d|\b[0-5]\.\d\s*(out of 5|stars?)\b|\u2605', _txt):
+        print('RATING text outside the standard rating line', _f); bad += 1
+# Edwin 3 Nov 2026 rules
+for _f in files:
+    _t = open(_f, encoding='utf-8').read(); _rel = os.path.relpath(_f, root)
+    if re.search(r'like any other entry', _t, re.I): print('banned phrase "like any other entry"', _f); bad += 1
+    # images only on sgcarworkshop.sg (relative or the live domain); hotlinked hosts still pending a copy are counted below
+    for _u in re.findall(r'<img[^>]*?\bsrc="([^"]+)"|property="og:image" content="([^"]+)"|"image":\s*"([^"]+)"', _t):
+        _u = next(x for x in _u if x)
+        _h = urlparse(_u).netloc
+        if _h and _h not in ('sgcarworkshop.sg', 'www.sgcarworkshop.sg'):
+            if _h in SET_IMG['hosts']: HOTLINK.add(_u)
+            else: print('IMAGE not on sgcarworkshop.sg', _rel, _u[:90]); bad += 1
+    # no reviewer names or Google review text
+    if re.search(r'authorAttribution|reviewer|"author"\s*:\s*\{[^}]*"Person"|class="rv-google|relativePublishTimeDescription|Reviewed by', _t): print('reviewer name or Google review markup', _rel); bad += 1
+    # ItemList: no paid listing
+    for _blk in re.findall(r'<script type="application/ld\+json">(.*?)</script>', _t, re.S):
+        try: _j = json.loads(_blk)
+        except Exception: continue
+        for _o in (_j if isinstance(_j, list) else [_j]):
+            if isinstance(_o, dict) and _o.get('@type') == 'ItemList':
+                for _it in _o.get('itemListElement', []):
+                    _m2 = re.search(r'/workshops/([^/]+)/', _it.get('url', ''))
+                    if _m2 and ENT_TIER.get(_m2.group(1)) == 'premium_leadgen': print('paid listing inside an ItemList', _rel, _m2.group(1)); bad += 1
+    # A to Z: every card list that holds a founder-owned or Verified listing must be A to Z (the separate Featured (paid) block is the only exception)
+    _body = re.sub(r'<section class="alt featblock">.*?</section>', '', _t, flags=re.S)
+    for _sec in re.findall(r'<section[^>]*>.*?</section>', _body, re.S):
+        _cards = re.findall(r'<article class="card[^"]*"[^>]*data-tier="([^"]+)".*?<h3><a [^>]*>([^<]+)</a>', _sec, re.S)
+        if len(_cards) > 1 and any(t in ('none', 'premium') for t, _n in _cards):  # paid cards, wherever they sit, are the Featured (paid) group
+            _names = [html_unescape(n).lower() for t, n in _cards if t != 'premium_leadgen']
+            if _names != sorted(_names): print('founder or Verified listing out of A to Z order', _rel, _names[:6]); bad += 1
+# Town hub: indexable only if it shows every workshop card of its estates; one-estate towns index the estate page and noindex the hub
+for _pth, _n in _mf.get('hub_cards', {}).items():
+    _hp = open(os.path.join(root, _pth, 'index.html'), encoding='utf-8').read()
+    _shown = len(re.findall(r'<article class="card', re.sub(r'<section class="alt featblock">.*?</section>', lambda m: m.group(0), _hp, flags=re.S)))
+    if _pth not in _mf['noindex'] and _shown != _n: print('indexable town hub does not show every workshop card', _pth, _shown, _n); bad += 1
+# Reviewer names or copied review text must never be stored
+_gdir = os.path.join(os.path.dirname(os.path.abspath(__file__)), '..', 'data')
+for _sub in ('google_cache', 'workshops'):
+    for _fn in os.listdir(os.path.join(_gdir, _sub)):
+        if _fn.endswith('.json'):
+            _txt2 = open(os.path.join(_gdir, _sub, _fn)).read()
+            if re.search(r'"(reviews|authorAttribution|author_name|reviewer)"\s*:', _txt2): print('stored Google review text or reviewer name', _sub, _fn); bad += 1
+if HOTLINK: print('NOTE: %d hotlinked images still pending a copy to sgcarworkshop.sg (hosts in settings.json image_hosts_pending)' % len(HOTLINK))
 print('pages checked:', len(files), 'problems:', bad)
 sys.exit(1 if bad else 0)

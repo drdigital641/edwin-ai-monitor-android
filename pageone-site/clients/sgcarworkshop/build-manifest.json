@@ -22,10 +22,21 @@
   "services/general-servicing-repair/": 45,
   "services/spray-painting-bodywork/": 4
  },
+ "hub_cards": {
+  "areas/ang-mo-kio/": 3,
+  "areas/kaki-bukit/": 20,
+  "areas/sin-ming-bishan/": 3,
+  "areas/toh-guan-jurong-east/": 6,
+  "areas/ubi/": 5,
+  "areas/woodlands/": 7,
+  "areas/yishun/": 9
+ },
+ "index_exceptions": [
+  "areas/amk-industrial-park-2/"
+ ],
  "min_free": 5,
  "noindex": {
   "areas/": "folder index, navigation only",
-  "areas/amk-industrial-park-2/": "fewer than 5 free workshops",
   "areas/ang-mo-kio/": "town hub with one estate or fewer than 5 free workshops",
   "areas/carros-centre-jalan-lam-huat/": "fewer than 5 free workshops",
   "areas/central/": "region pages are navigation only",
@@ -91,6 +102,7 @@
  "sitemap": [
   "",
   "about/",
+  "areas/amk-industrial-park-2/",
   "areas/kaki-bukit-industrial-estate/",
   "areas/toh-guan-jurong-east/",
   "areas/ubi/",

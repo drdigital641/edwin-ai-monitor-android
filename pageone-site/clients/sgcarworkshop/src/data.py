@@ -87,6 +87,7 @@ REGIONS = {
 TIERS = {
     "free": dict(label="Basic listing", badge="Basic listing", price=0, price_text="Free", tagline="Get found"),
     "premium": dict(label="Verified listing", badge="Verified", price=20, price_text="Ask us on WhatsApp", tagline="Landing page"),
+    "none": dict(label="Founder-owned listing", badge="Owned by the site's founder", price=0, price_text="Not for sale", tagline="Founder-owned"),
     "premium_leadgen": dict(label="Premium", badge="Premium", price=50, price_text="Ask us on WhatsApp", tagline="Full Page One website setup"),
 }
 PRICE_NOTE = "Prices are not published: ask us on WhatsApp. Basic is free."  # Edwin 1 Nov 2026: Verified S$20/mo, Premium S$50/mo, internal only
@@ -171,7 +172,7 @@ ENTRIES = [
                   "paint brands", "owner name", "second phone 6759 3229 (2022 listing)"],
     ),
     dict(
-        slug="sg-garage", tier="premium_leadgen", founder_owned=True, name="SG Garage", domain="sggarage.com", url="https://sggarage.com/",
+        slug="sg-garage", tier="none", founder_owned=True, name="SG Garage", domain="sggarage.com", url="https://sggarage.com/",
         category="general-servicing-repair", regions=['north-east'], regions_note='Ang Mo Kio is in the North-East region (URA). Address: Ang Mo Kio Industrial Park 2.', area_label="Ang Mo Kio",
         title="SG Garage | Car Servicing and Repair, Ang Mo Kio",
         desc="SG Garage (Edwin Garage) in Ang Mo Kio: servicing from $128, aircon, brakes, batteries and accident repair. WhatsApp 9785 6612, Mon to Sat.",
@@ -198,7 +199,7 @@ ENTRIES = [
         hours_ld=[(WD + SAT, "10:00", "20:00")],
         hours_note="Servicing, repairs and diagnosis are by appointment. Battery replacement is walk-in, subject to stock.",
         social=[],
-        reviews=dict(text="Rated 4.9 from 600+ Google reviews, as stated on sggarage.com (checked 1 November 2026)", url="https://share.google/hYkZhnKyoAEeERhWM", label="Read the Google reviews"),
+        google_rating=dict(rating=4.9, count=600, count_text="600+", checked="2026-11-01", url="https://share.google/hYkZhnKyoAEeERhWM", source="sggarage.com (owner's Google profile)"),
         photos=[
             dict(u=_SG + "edwin-garage-shopfront-01-295.webp", alt="SG Garage shopfront with green signboard and cars parked outside", cap="The shopfront at unit #01-295."),
             dict(u=_SG + "edwin-garage-workshop-bays.webp", alt="A Kia on the lift and a Tesla Model 3 in the SG Garage service bay", cap="Inside the bays: a Kia on the lift and a Tesla Model 3 being worked on."),
@@ -206,7 +207,7 @@ ENTRIES = [
             dict(u="https://sggarage.com/uploads/tesla-lca-1.jpg", alt="Tesla suspension arms laid out during a lower control arm replacement", cap="Tesla lower control arm job: the suspension arms laid out."),
             dict(u="https://sggarage.com/uploads/tesla-lca-3.jpg", alt="Close-up of a worn Tesla control arm bushing", cap="A worn control arm bushing, close up."),
         ],
-        note="SG Garage belongs to the founder of Page One Singapore, who built this directory. We list it like any other entry and say so openly.",
+        note="Owned by the site's founder.",
         faqs=[
             ("Do I need an appointment?", "Yes for servicing, repairs and diagnosis: book a slot online or message on WhatsApp. Battery replacement is the exception, it is walk-in from Monday to Saturday, 10am to 8pm, subject to stock."),
             ("Are the listed prices the final price?", "They are starting prices that cover parts, labour and GST. The final price is confirmed after the car is inspected, and nothing starts until you agree. If you decide against the repair, diagnosis is $30."),
@@ -599,8 +600,8 @@ for _f in workshop_files():
 ENTRIES.extend(BASIC)
 
 
-_RANK = {"premium_leadgen": 0, "premium": 1, "free": 2}
-ENTRIES.sort(key=lambda e: (_RANK[e["tier"]], e["name"].lower() if e["tier"] == "free" else ""))  # Premium, Verified, then Basic A to Z (paid keep their set order)
+_paid = lambda e: e["tier"] == "premium_leadgen"
+ENTRIES.sort(key=lambda e: (0 if _paid(e) else 1, "" if _paid(e) else e["name"].lower()))  # Premium, Verified, then Basic A to Z (paid keep their set order)
 
 
 # One shared tag list: tag every card and refile out of general servicing where customer mentions clearly support a specific service (tags.py).

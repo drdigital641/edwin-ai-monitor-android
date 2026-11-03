@@ -14,6 +14,7 @@ import math
 import os
 import re
 import shutil
+import subprocess
 import sys
 from urllib.parse import quote
 
@@ -41,7 +42,7 @@ PATH_BASE = '/' if LIVE else '/preview/sgcarworkshop/'
 UPDATED = '2026-11-01'
 # sameAs for the directory's own Organization: no confirmed owned profiles exist yet (no Google Business Profile, Facebook or Instagram for the directory itself).
 ORG_SAMEAS = []
-import hashlib as _hl
+import hashlib as _hl, subprocess
 LM_FILE = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'lastmod.json')
 try:
     LM = json.load(open(LM_FILE))
@@ -51,12 +52,41 @@ LM_NEW = {}
 TODAY = datetime.date.today().isoformat()
 
 
+def _git_date():
+    """Date of the last commit that touched the generator or data (never 'today')."""
+    try:
+        r = subprocess.run(['git', 'log', '-1', '--format=%cs', '--', HERE, os.path.join(HERE, '..', 'data')], capture_output=True, text=True, cwd=HERE, timeout=20).stdout.strip()
+        return r or None
+    except Exception:
+        return None
+
+
+def seed_date(path):
+    """Seed for a new or changed page (Edwin 3 Nov 2026): the workshop record's last_verified_at for a workshop page, else the last git commit date."""
+    if path.startswith('workshops/'):
+        slug = path.split('/')[1]
+        f = os.path.join(HERE, '..', 'data', 'workshops', slug + '.json')
+        if os.path.exists(f):
+            v = json.load(open(f)).get('last_verified_at')
+            if v:
+                return v
+    return _git_date() or TODAY
+
+
+def main_content(html_text):
+    """The page without the shared header, menu and footer: those change on every page whenever a link is added, so they are left out of the change check."""
+    t = re.sub(r'<header class="top">.*?</header>', '', html_text, flags=re.S)
+    t = re.sub(r'<details class="menu".*?</details>', '', t, flags=re.S)
+    t = re.sub(r'<footer class="ft">.*?</footer>', '', t, flags=re.S)
+    return re.sub(r'\?v=[0-9a-f]{8}', '', t)
+
+
 def lastmod_of(path, html_text):
-    """True lastmod: moves only when the rendered page changes (asset cache-busters ignored)."""
-    h = _hl.sha1(re.sub(r'\?v=[0-9a-f]{8}', '', html_text).encode()).hexdigest()[:12]
+    """True lastmod: moves only when the main content changes (shared header, menu, footer and asset cache-busters ignored)."""
+    h = _hl.sha1(main_content(html_text).encode()).hexdigest()[:12]
     old = LM.get(path)
-    d = old['d'] if old and old['h'] == h else TODAY
-    LM_NEW[path] = {'h': h, 'd': d}
+    d = old['d'] if old and old.get('h2') == h else seed_date(path)
+    LM_NEW[path] = {'h': h, 'h2': h, 'd': d}
     return d
 
 OUT = os.path.abspath(sys.argv[1] if len(sys.argv) > 1 else os.path.join(HERE, '..', 'site'))
@@ -149,7 +179,9 @@ V = _h.hexdigest()[:8]
 PAGES = {}   # path ('' = home, 'a/b/' ...) -> html
 META = {}    # path -> title (for llms/sitemap)
 FREECOUNT = {}   # path -> free workshops behind a thresholded page (check.py re-applies MIN_FREE)
+HUBCARDS = {}   # town hub path -> number of workshop cards shown (a hub is indexable only if it shows every workshop in its estates)
 NOINDEX = {}   # path -> reason (thin pages, Edwin 3 Nov 2026); never in sitemap.xml
+INDEX_EXCEPTIONS = SETTINGS.get('index_exceptions', {})   # named pages indexable below MIN_FREE (Edwin-approved)
 MIN_FREE = SETTINGS['min_free']   # an area, service or area x service page needs at least this many free workshops to be indexable
 _imgsz = {}
 
@@ -476,11 +508,20 @@ def town_hub(slug):
     cr, crld = crumbs(depth, [(rname, 'areas/%s/' % t['region']), (t['name'], None)])
     tiles = ''.join(area_tile(depth, k, (ESTATES[k]['name'], '%d listing%s' % (len(PUB_ESTATES[k]), '' if len(PUB_ESTATES[k]) == 1 else 's'))) for k in ests)
     total = sum(free_n(PUB_ESTATES[k]) for k in ests)
+    _seen, hub_es = set(), []
+    for k in ests:
+        for e in PUB_ESTATES[k]:
+            if e['slug'] not in _seen:
+                _seen.add(e['slug']); hub_es.append(e)
+    hub_es.sort(key=lambda e: e['name'].lower())
+    HUBCARDS['areas/%s/' % slug] = len(hub_es)
     h1 = 'Car workshops in %s' % t['name']
     body = f'''<div class="w">{cr}</div>
 <section class="hero" style="padding-top:14px"><div class="w"><h1>{E(h1)}</h1><p class="lede">{E(t['intro'])}</p><p>{E(para)}</p></div></section>
 <section class="alt"><div class="w"><h2>Industrial estates in {E(t['name'])}</h2><ul class="tiles est">{tiles}</ul>
-<p class="fine" style="margin-top:14px">Nearby MRT stations include {E(and_list(mrt))}. Landmarks include {E(and_list(marks))}. Back to the <a href="{pre(depth)}areas/{t['region']}/">{E(rname)} region</a>.</p></div></section>'''
+<p class="fine" style="margin-top:14px">Nearby MRT stations include {E(and_list(mrt))}. Landmarks include {E(and_list(marks))}. Back to the <a href="{pre(depth)}areas/{t['region']}/">{E(rname)} region</a>.</p></div></section>
+{featured_sec(hub_es, depth, 'areas/%s/' % slug, 'in ' + t['name'])}
+<section><div class="w"><h2>All workshops in {E(t['name'])}</h2><div class="grid">{''.join(card(e, depth, 'areas/%s/' % slug) for e in hub_es if not is_paid(e))}</div></div></section>'''
     desc = 'Car workshop areas in %s, %s region: %s. Pick an industrial estate to compare workshops and contact them on WhatsApp.' % (t['name'], rname, and_list(ESTATES[k]['name'] for k in ests))
     page('areas/%s/' % slug, fit_title('Car Workshops in %s | %s' % (t['name'], SITE_NAME), 'Car Workshops in %s' % t['name']), cap(desc, 160), body,
          [dict(crld, **{'@context': 'https://schema.org'})], h1=h1, index=len(ests) >= 2 and total >= MIN_FREE, why='town hub with one estate or fewer than %d free workshops' % MIN_FREE)
@@ -552,7 +593,7 @@ def estate(slug, es):
     if len(desc) > 160:
         desc = 'Compare %d car workshops in %s with Google ratings, hours and distances. WhatsApp and call.' % (n, a['name'])
     ld = [itemlist_ld('Car workshops in %s' % a['name'], es), dict(crld, **{'@context': 'https://schema.org'}), faq_ld(faqs)]
-    _ix = free_n(es) >= MIN_FREE
+    _ix = free_n(es) >= MIN_FREE or ('areas/%s/' % slug) in INDEX_EXCEPTIONS
     FREECOUNT['areas/%s/' % slug] = free_n(es)
     page('areas/%s/' % slug, title, cap(desc, 160), body, ld, h1='Car workshops in %s' % a['name'], index=_ix, why='fewer than %d free workshops' % MIN_FREE)
 
@@ -649,15 +690,18 @@ def call_icon(e, page_path):
 
 
 def rating_line(e):
-    """Edwin 3 Nov 2026: Google rating + review count + checked month-year + See Google reviews link. Skipped (empty) when there is no rating or checked date."""
+    """Edwin 3 Nov 2026: Google rating + rating count + checked month-year + See Google reviews link. Skipped (empty) when there is no rating or checked date.
+    Wording is "Google ratings" (Edwin 3 Nov 2026); the link text stays "See Google reviews"."""
     g = GCACHE.get(e['slug']) or {}
-    gr = e.get('google_rating') or {}   # data/workshops/<slug>.json, source Google Places
+    gr = e.get('google_rating') or {}   # data/workshops/<slug>.json, source Google Places (founder listing: the owner's own Google profile, with count_text)
     n, r, fa = gr.get('count') or g.get('userRatingCount'), gr.get('rating') or g.get('rating'), gr.get('checked') or g.get('fetched_at')
     if not (r and n and fa):
         return ''
     d = datetime.date.fromisoformat(fa)
-    return ('<p class="rtg"><b>%.1f</b> (%s Google review%s) (checked %s) <a href="%s" target="_blank" rel="noopener" data-cta="gr_%s">See Google reviews</a></p>'
-            % (float(r), format(n, ','), '' if n == 1 else 's', d.strftime('%B %Y'), E(gm_url(e)), e['slug']))
+    ntxt = gr.get('count_text') or format(n, ',')
+    url = gr.get('url') or gm_url(e)
+    return ('<p class="rtg"><b>%.1f</b> (%s Google rating%s) (checked %s) <a href="%s" target="_blank" rel="noopener" data-cta="gr_%s">See Google reviews</a></p>'
+            % (float(r), ntxt, '' if n == 1 else 's', d.strftime('%B %Y'), E(url), e['slug']))
 
 
 def gm_url(e):
@@ -824,10 +868,11 @@ def card(e, depth, page_path=''):
     ci = e.get('card_img')
     ph = photo_img(dict(ci, alt=ci['alt']), depth, lazy=True) if ci else tile(e)
     acts = contact_btns(e, page_path, 'sm')
+    more = ('<a class="btn sm" href="%sworkshops/%s/" data-cta="view_%s">View details</a>' % (pre(depth), e['slug'], e['slug'])) if e.get('founder_owned') else ''
     return ('<article class="card" %s>'
             '<div class="ph">%s%s</div><div class="bd"><span class="tag">%s</span><h3><a href="%sworkshops/%s/">%s</a></h3>'
-            '%s<p class="tx">%s</p><div class="acts">%s</div></div></article>') % (
-        attrs, ph, tier_badge(e, 'on-ph'), E(c['short']), pre(depth), e['slug'], E(e['name']), rg, E(e['card_text'][0]), acts)
+            '%s%s<p class="tx">%s</p><div class="acts">%s%s</div></div></article>') % (
+        attrs, ph, tier_badge(e, 'on-ph'), E(c['short']), pre(depth), e['slug'], E(e['name']), rg, rating_line(e), E(e['card_text'][0]), acts, more)
 
 
 def slide(e):
@@ -883,7 +928,7 @@ def ld_business(e, url):
         ld['areaServed'] = [{'@type': 'Place', 'name': ESTATES[k]['name'] + ', Singapore'} for k in e['estates']]
     ld['makesOffer'] = [{'@type': 'Offer', 'itemOffered': {'@type': 'Service', 'name': s['n']}} for s in e['services']]
     same = list(e.get('social') or [])
-    if e['tier'] == 'premium_leadgen':
+    if e['tier'] in ('premium_leadgen', 'none'):
         same.append(e['url'])
     if same:
         ld['sameAs'] = same
@@ -1135,6 +1180,8 @@ def rank_sorted(es):
     Everywhere else: A to Z, no ranking. Paid Featured clients are never part of this list (see featured_sec)."""
     free = [e for e in es if not is_paid(e)]   # Basic and Verified, same rules, no boost for Verified (Edwin 3 Nov 2026)
     sc = lambda e: (FACTS.get(e['slug']) or {}).get('score')
+    if any(e['tier'] != 'free' for e in free):   # founder-owned or Verified present: plain A to Z for the whole list (Edwin 3 Nov 2026)
+        return sorted(free, key=lambda e: e['name'].lower())
     ranked = sorted([e for e in free if sc(e) is not None], key=lambda e: (-sc(e), -(FACTS[e['slug']]['n']), e['name'].lower()))
     rest = sorted([e for e in free if sc(e) is None], key=lambda e: e['name'].lower())
     return ranked + rest
@@ -1515,6 +1562,7 @@ def pb_hero(x):
     return (f'''<div class="badges" style="margin-top:14px">{tier_badge(e)}<span class="tag">{E(x.c['short'])}</span></div>
 <h1 style="margin-top:8px">{E(e['name'])}</h1>
 <p class="meta">{E(e['area_label'])}</p>
+{rating_line(e)}
 <p class="lede" style="font-size:1rem">{E(e['lede'])}</p>''') + '\n' + hero
 
 
@@ -1600,7 +1648,7 @@ PAID_BLOCKS = dict(hero=pb_hero, contact=pb_contact, services=pb_services, prici
 def listing(e):
     """Verified and Premium page: the same block stack as every page (TEMPLATE SYSTEM), with the paid blocks. The lead-gen tier adds the website button."""
     x = X(e)
-    x.lead = e['tier'] == 'premium_leadgen'
+    x.lead = e['tier'] in ('premium_leadgen', 'none')
     path = x.path
     url = abs_url(path)
     cr, crld = crumbs(x.depth, workshop_trail(e))
@@ -1905,7 +1953,7 @@ def build():
     open(OUT + '/robots.txt', 'w').write(robots)
     open(OUT + '/%s.txt' % INDEXNOW_KEY, 'w').write(INDEXNOW_KEY)
     json.dump(LM_NEW, open(LM_FILE, 'w'), indent=0, sort_keys=True)
-    json.dump(dict(min_free=MIN_FREE, noindex=NOINDEX, free_count=FREECOUNT, redirects=REDIRECTS, sitemap=[p for p in urls if p not in NOINDEX]),
+    json.dump(dict(min_free=MIN_FREE, index_exceptions=sorted(INDEX_EXCEPTIONS), hub_cards=HUBCARDS, noindex=NOINDEX, free_count=FREECOUNT, redirects=REDIRECTS, sitemap=[p for p in urls if p not in NOINDEX]),
               open(os.path.join(HERE, '..', 'build-manifest.json'), 'w'), indent=1, sort_keys=True)
     # robots-live.txt always carries the crawlable live-domain rules; htaccess/.htaccess serves it as /robots.txt on sgcarworkshop.sg only
     live_robots = ''.join('User-agent: %s\nAllow: /\n\n' % b for b in LIVE_BOTS) + 'User-agent: *\nAllow: /\n\nSitemap: https://%s/sitemap.xml\n' % DOMAIN
@@ -1980,10 +2028,11 @@ def write_redirects():
     rules = ['# Proposed .htaccess for sgcarworkshop.sg (3 Nov 2026). NOT yet pinned or uploaded: the bridge cannot send .htaccess files.',
              '# Merge with htaccess/.htaccess (keep its RewriteEngine, Inherit and robots lines), then pin and upload through the publisher.',
              'Options -Indexes', '']
-    rules += ['Redirect 301 /%s /%s' % (o, n) for o, n in sorted(REDIRECTS.items()) if o]
-    rules += ['Redirect 410 /workshops/%s/' % g for g in gone]
+    # Exact matches only (Edwin 3 Nov 2026): "Redirect 301 /regions/ /" prefix-matched /regions/north/ and sent it to the home page. ^/old/?$ also covers the no-trailing-slash URL.
+    rules += ['RedirectMatch 301 ^/%s/?$ /%s' % (re.escape(o.rstrip('/')), n) for o, n in sorted(REDIRECTS.items()) if o]
+    rules += ['RedirectMatch 410 ^/workshops/%s/?$' % re.escape(g) for g in gone]
     open(os.path.join(HERE, '..', 'htaccess', 'proposed.htaccess'), 'w').write('\n'.join(rules) + '\n')
-    open(os.path.join(HERE, '..', 'redirects.htaccess'), 'w').write('\n'.join(r for r in rules if r.startswith('Redirect')) + '\n')
+    open(os.path.join(HERE, '..', 'redirects.htaccess'), 'w').write('\n'.join(r for r in rules if r.startswith(('Redirect', 'RedirectMatch'))) + '\n')
 
 
 def hub_indexes():
