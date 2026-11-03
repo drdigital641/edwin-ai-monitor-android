@@ -85,7 +85,8 @@ if(!sent&&window.fetch){fetch(url,{method:'POST',credentials:'omit',keepalive:tr
  ['remove-wa','remove-for',function(n,b){return "Hi Page One, please remove the "+n+" listing from "+b.getAttribute('data-site')+". I run this business.\n\n(From "+location.href.split('#')[0]+")"},'remove_']].forEach(function(c){
 var b=document.getElementById(c[0]);if(!b)return;var n;try{n=JSON.parse(b.getAttribute('data-names'))[m[1]]}catch(e){}if(!n)return;
 var f=document.getElementById(c[1]);if(f){f.querySelector('b').textContent=n;f.hidden=false}
-b.href='https://wa.me/'+b.getAttribute('data-wa')+'?text='+encodeURIComponent(c[2](n,b));b.setAttribute('data-cta',c[3]+m[1])})})();
+b.href='https://wa.me/'+b.getAttribute('data-wa')+'?text='+encodeURIComponent(c[2](n,b));b.setAttribute('data-cta',c[3]+m[1]);
+if(c[0]==='claim-wa'){var tp=document.getElementById('claim-taps'),t;try{t=JSON.parse(b.getAttribute('data-taps')||'{}')[m[1]]}catch(e){}if(tp&&t){tp.textContent=t+' drivers have WhatsApped this workshop via '+b.getAttribute('data-site');tp.hidden=false}}})})();
 
 /* Estate pages: filter (Open Sunday / Open late) and sort (highest Google rating) using data-* computed at build time. */
 (function(){var g=document.getElementById('estate-grid'),t=document.querySelector('.etools');if(!g||!t)return;

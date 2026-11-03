@@ -956,7 +956,7 @@ def _ord(n):
 FACTS = {}   # slug -> dict(...). Recomputed on every build from data/google_cache + the records (Edwin 3 Nov 2026).
 RANK_MIN_RATINGS = 20   # Edwin 3 Nov 2026 (round 2): rank by Google rating only among workshops in the same estate with at least 20 Google ratings
 RANK_MIN_GROUP = 3      # ... and only when the estate has at least 3 of them
-TAPS = {}               # slug -> {'whatsapp': n, 'call': n} taps in the last 30 days (data/taps.json, written by src/taps.py from the Controller's CtaClick rows)
+TAPS = {}               # slug -> {'whatsapp': n, 'call': n} taps, all-time and never reset (data/taps.json, written by src/taps.py from the Controller's CtaClick rows)
 CLAIMED = set()          # data/claims.json: slugs whose owner has claimed the listing and been checked (verified badge, first in matching guides)
 TAP_SHOW_MIN = 5        # a card shows its WhatsApp tap count only from 5 taps
 _tf = os.path.join(HERE, '..', 'data', 'taps.json')
@@ -1215,11 +1215,11 @@ def pilot_icon(t):
 
 
 def tap_line(e):
-    """Public WhatsApp tap count (Edwin 3 Nov 2026): only from 5 taps in the last 30 days, anonymous visits counted, nothing about the person. Empty until then."""
+    """Public WhatsApp tap count (Edwin 3 Nov 2026): only from 5 total taps (all-time, never reset), anonymous visits counted, nothing about the person. Empty until then."""
     t = (TAPS.get(e['slug']) or {}).get('whatsapp') or 0
     if t < TAP_SHOW_MIN or e['tier'] != 'free':
         return ''
-    return '<p class="tapline">%d drivers WhatsApped this workshop via %s in the last 30 days</p>' % (t, E(SITE_NAME))
+    return '<p class="tapline">%d drivers have WhatsApped this workshop via %s</p>' % (t, E(SITE_NAME))
 
 
 def fact_faqs(e, pl):
@@ -1510,6 +1510,7 @@ def list_page():
     claim_generic = E(wa_link(PAGE_ONE_WA, "Hi Page One, I'm a workshop owner, about my %s listing.\n\n(From %s)" % (SITE_NAME, BASE + 'list-your-workshop/')))
     remove_generic = E(wa_link(PAGE_ONE_WA, "Hi Page One, please remove my workshop listing from %s. Business name: \n\n(From %s)" % (SITE_NAME, BASE + 'list-your-workshop/')))
     claim_names = E(json.dumps({e['slug']: e['name'] for e in ENTRIES}), True)
+    claim_taps = E(json.dumps({e['slug']: (TAPS.get(e['slug']) or {}).get('whatsapp') for e in ENTRIES if e['tier'] == 'free' and ((TAPS.get(e['slug']) or {}).get('whatsapp') or 0) >= TAP_SHOW_MIN}), True)
     body = f'''<div class="w nar">{cr}
 <h1 style="margin-top:14px">Claim your free workshop listing</h1>
 <p class="lede" style="font-size:1rem">Claiming your listing on {E(SITE_NAME)} is <b>free</b>. Drivers already find your workshop here, with your WhatsApp and Call buttons. Claim it to run it yourself.</p>
@@ -1519,13 +1520,14 @@ def list_page():
 <li><b>Your own photos, services and brands</b> added to your page, so drivers see what you really do.</li>
 <li><b>Correct hours and WhatsApp</b>, kept up to date by you.</li>
 <li><b>A featured spot in matching problem guides.</b> Claimed workshops are listed first in the <a href="../guides/">car problem and brand guides</a> that fit the work they do.</li>
-<li><b>An open count of drivers who tapped WhatsApp and Call</b> through {E(SITE_NAME)}. We show your WhatsApp tap count for the last 30 days on your card, like "12 drivers WhatsApped this workshop via {E(SITE_NAME)} in the last 30 days", once it reaches 5. Counts are anonymous and hold no personal data. We tell you your Call count too.</li>
+<li><b>An open count of drivers who tapped WhatsApp and Call</b> through {E(SITE_NAME)}. We show your total WhatsApp tap count, all-time and never reset, on your card and in the estate list, like "12 drivers have WhatsApped this workshop via {E(SITE_NAME)}", once it reaches 5. Counts are anonymous and hold no personal data. We tell you your Call count too.</li>
 </ul>
 <p class="fine">No fee, no contract, and you can ask us to remove your listing at any time. We do not promise a number of enquiries.</p></section>
 <section id="claim" class="claim-sec"><h2>Claim it on WhatsApp</h2>
 <p>Message Page One and tell us which workshop is yours. We check that you run the business first, then make the changes you ask for.</p>
 <p class="claim-for" id="claim-for" hidden>Listing: <b></b></p>
-<a class="btn amber big" id="claim-wa" href="{claim_generic}" data-names="{claim_names}" data-wa="{PAGE_ONE_WA}" data-site="{E(SITE_NAME)}" target="_blank" rel="noopener" data-cta="claim_owner_page">{WA_SVG} Claim this free listing</a>
+<p class="tapline" id="claim-taps" hidden></p>
+<a class="btn amber big" id="claim-wa" href="{claim_generic}" data-names="{claim_names}" data-taps="{claim_taps}" data-wa="{PAGE_ONE_WA}" data-site="{E(SITE_NAME)}" target="_blank" rel="noopener" data-cta="claim_owner_page">{WA_SVG} Claim this free listing</a>
 <p class="fine">This WhatsApp is for workshop owners only. Customers, please use the WhatsApp button on the workshop's own listing.</p></section>
 <section><h2>Not listed yet?</h2><p>{E(SITE_NAME)} lists car workshops and car services in Singapore: repair, gearbox, ABS and ECU modules, spray painting and bodywork, batteries, detailing and coating, wraps and PPF, and parts. Message us and we will list yours, free.</p>
 <p><a class="btn big" href="{wa}" target="_blank" rel="noopener" data-cta="whatsapp_list_page">{WA_SVG} WhatsApp Page One</a></p></section>
@@ -1592,7 +1594,7 @@ def privacy_page():
     legal_page('privacy/', 'Privacy | SG Car Workshop', 'How SG Car Workshop handles data: what the site collects, Google Maps content, and how to ask for a listing to be removed.', 'Privacy',
                ('<p class="lede" style="font-size:1rem">This page explains what %s collects and what it shows from other sources.</p>'
                 '<h2>Listing information</h2><p>Basic workshop pages show business details from the workshop\'s public Google Business Profile, such as its name, address, opening hours and mobile number. To correct or remove a listing, use <a href="../list-your-workshop/#remove">Remove my listing</a>.</p>'
-                '<h2>Taps on contact buttons</h2><p>When a live visitor taps WhatsApp, Call, Directions or a Google Maps link, we record the tap with the workshop, the page, a random visit identifier and the device type, so we can report results to the business. We do not record the message you write. Do-not-track browsers are not counted. The total of WhatsApp taps for each workshop over the last 30 days may be shown on that workshop\'s card once it reaches 5; it is a count of anonymous visits and says nothing about any person.</p>'
+                '<h2>Taps on contact buttons</h2><p>When a live visitor taps WhatsApp, Call, Directions or a Google Maps link, we record the tap with the workshop, the page, a random visit identifier and the device type, so we can report results to the business. We do not record the message you write. Do-not-track browsers are not counted. The all-time total of WhatsApp taps for each workshop may be shown on that workshop\'s card, in the estate list and on the claim page once it reaches 5; it is a count of anonymous visits and says nothing about any person.</p>'
                 '<h2>Google Maps</h2><p>Some pages load a Google Maps embed, and the Show opening hours button asks Google Maps for opening hours when you press it. Google handles that data under its <a href="%s" target="_blank" rel="noopener">Privacy Policy</a> and the <a href="%s" target="_blank" rel="noopener">Google Maps Terms</a>. We do not store ratings, reviews, photos or phone numbers from Google.</p>'
                 '<h2>Contact</h2><p>Page One Singapore (Snap Commercial Pte. Ltd., UEN 202209904W). WhatsApp %s.</p>')
                % (E(SITE_NAME), GOOGLE_PRIVACY, GOOGLE_TERMS, PAGE_ONE_WA_SHOW))
