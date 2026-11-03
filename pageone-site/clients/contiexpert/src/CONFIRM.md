@@ -63,3 +63,5 @@
 61. [pre-purchase-car-inspection-singapore-your-ultimate-guide-to-buying-with-confidence] Confirm the exact scope of the standard and hybrid/EV inspections (battery state-of-health method, what the report format is) before the page describes deliverables.
 62. [pre-purchase-car-inspection-singapore-your-ultimate-guide-to-buying-with-confidence] Confirm whether findings are delivered verbally, in writing, or both.
 63. [pre-purchase-car-inspection-singapore-your-ultimate-guide-to-buying-with-confidence] Confirm inspections can be done at the workshop vs at the seller's location.
+64. Prices on the homepage come from your own posts (Dec 2025 servicing packages from $118, TikTok aircon coil wash $168, Standard PPI $60). Are they still current, and what do the packages include? Prices for hybrid battery health check, battery fan cleaning and ATF change?
+65. Is Volt Autocare part of the Volt Auto group (Dongfeng distributor)? If yes, may we say so?

@@ -9,9 +9,11 @@ def bolt(d, x, y, s, fill):
     pts=[(0.58,0.04),(0.18,0.56),(0.46,0.56),(0.38,0.96),(0.82,0.40),(0.54,0.40),(0.66,0.04)]
     d.polygon([(x+px*s,y+py*s) for px,py in pts], fill=fill)
 def mark(n):
-    im=Image.new('RGBA',(n*4,n*4),(0,0,0,0)); d=ImageDraw.Draw(im)
-    d.rounded_rectangle([0,0,n*4-1,n*4-1], radius=int(n*4*0.22), fill=NAVY)
-    bolt(d, n*4*0.14, n*4*0.12, n*4*0.76, VOLT)
+    S=n*4; im=Image.new('RGBA',(S,S),(0,0,0,0)); d=ImageDraw.Draw(im)
+    d.rounded_rectangle([0,0,S-1,S-1], radius=int(S*0.22), fill=(255,255,255))
+    k=S/40.0
+    for x,y,c in ((8,12,(30,123,255)),(15,12,(90,165,255)),(25,12,(90,165,255)),(32,12,(30,123,255)),(11.5,19,(30,123,255)),(28.5,19,(30,123,255)),(15,26,(11,95,214)),(25,26,(11,95,214)),(20,32,(11,95,214))):
+        r=3*1.414*k; d.polygon([(x*k,y*k-r),(x*k+r,y*k),(x*k,y*k+r),(x*k-r,y*k)], fill=c)
     return im.resize((n,n), Image.LANCZOS)
 mark(512).save(os.path.join(out,'icon-512.png'))
 mark(192).save(os.path.join(out,'icon-192.png'))

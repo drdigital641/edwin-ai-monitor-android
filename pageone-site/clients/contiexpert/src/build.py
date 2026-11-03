@@ -75,7 +75,27 @@ def ico(k): return '<span class="ico" aria-hidden="true"><svg viewBox="0 0 24 24
 WA_SVG = '<svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm5.3 14.1c-.2.6-1.3 1.2-1.8 1.2-.5.1-1 .2-3.3-.7-2.8-1.1-4.5-4-4.7-4.2-.1-.2-1.1-1.5-1.1-2.8s.7-2 1-2.3c.2-.3.5-.3.7-.3h.5c.2 0 .4 0 .6.5l.8 2c.1.2.1.4 0 .5l-.3.5-.4.4c-.1.1-.3.3-.1.6.2.3.8 1.3 1.7 2.1 1.2 1 2.1 1.3 2.4 1.5.3.1.5.1.6-.1l.9-1c.2-.3.4-.2.6-.1l1.9.9c.3.1.5.2.5.3.1.2.1.7-.1 1.3z"/></svg>'
 CALL_SVG = '<svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .4 1.9.7 2.8a2 2 0 0 1-.5 2.1L8 9.9a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.8.7a2 2 0 0 1 1.7 2z"/></svg>'
 DIR_SVG = '<svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s7-6.2 7-12a7 7 0 0 0-14 0c0 5.8 7 12 7 12z"/><circle cx="12" cy="10" r="2.5"/></svg>'
-LOGO_SVG = '<svg viewBox="0 0 40 40" aria-hidden="true"><rect width="40" height="40" rx="9" fill="#c8f031"/><path d="M23 4 9 23h10l-2 13 14-19H21z" fill="#0b1b2b"/></svg>'
+LOGO_SVG = ('<svg viewBox="0 0 40 40" aria-hidden="true"><rect width="40" height="40" rx="9" fill="#fff"/>'
+            + ''.join('<rect x="%.1f" y="%.1f" width="6" height="6" transform="rotate(45 %.1f %.1f)" fill="%s"/>' % (x - 3, y - 3, x, y, c) for x, y, c in
+                      ((8, 12, '#1e7bff'), (15, 12, '#5aa5ff'), (25, 12, '#5aa5ff'), (32, 12, '#1e7bff'), (11.5, 19, '#1e7bff'), (28.5, 19, '#1e7bff'), (15, 26, '#0b5fd6'), (25, 26, '#0b5fd6'), (20, 32, '#0b5fd6')))
+            + '</svg>')
+
+PHOTOS = {}
+def img(key, alt, cls='', eager=False, sizes='(max-width:700px) 100vw, 600px'):
+    w, h = PHOTOS.get(key, (800, 600))
+    return '<img class="%s" src="/assets/photos/%s.webp" width="%d" height="%d" alt="%s"%s decoding="async">' % (cls, key, w, h, E(alt), '' if eager else ' loading="lazy"')
+SVC_IMG = {'european-car-servicing': ('svc-servicing', 'Engine oil level being checked during a car service'),
+           'car-diagnostics-warning-lights': ('svc-diagnostics', 'Technician running a diagnostic scan from the driver seat'),
+           'car-aircon-repair': ('svc-aircon', 'Aircon pressure gauges connected to a BMW engine bay'),
+           'brake-suspension-repair': ('svc-brakes', 'Brake pad and disc being checked'),
+           'gearbox-transmission-service': ('team-atf', 'Volt Autocare team member with transmission fluid at the Newton workshop'),
+           'hybrid-ev-servicing': ('cataclean-hybrid', 'Cataclean Hybrid fuel and exhaust system cleaner posted by Volt Autocare'),
+           'pre-purchase-inspection': ('svc-ppi', 'Car on a lift during an inspection'),
+           'mercedes-benz': ('brand-mercedes', 'Mercedes-Benz SUV on a workshop lift'),
+           'bmw': ('brand-bmw', 'BMW saloon in a workshop bay'),
+           'audi-volkswagen': ('brand-audi', 'Pressure test on an Audi engine cooling system')}
+SVC_IMG['hybrid-fan'] = ('team-outdoor', 'Volt Autocare team member with a service machine at the workshop')
+LOGOS = {'mercedes-benz': ['logo-mercedes'], 'bmw': ['logo-bmw'], 'audi-volkswagen': ['logo-audi', 'logo-vw']}
 
 def wa_link(text):
     import urllib.parse
@@ -126,7 +146,7 @@ def page(path, title, desc, body, lds=(), crumbs=None):
 <link rel="stylesheet" href="/ce.css?v={ver('ce.css')}">
 {''.join('<script type="application/ld+json">%s</script>' % json.dumps(x, ensure_ascii=False) for x in ld)}
 </head><body><a class="skip" href="#main">Skip to content</a>
-<header class="hdr"><div class="wrap"><a class="logo" href="/" aria-label="{SITE} by {BIZ} home">{LOGO_SVG}<span><b>{SITE}</b><small>by {BIZ} &middot; Newton</small></span></a>
+<header class="hdr"><div class="wrap"><a class="logo" href="/" aria-label="{SITE} by {BIZ} home">{LOGO_SVG}<span><b>{SITE}</b><small>a specialist brand of {BIZ}</small></span></a>
 <nav class="nav" id="nav" aria-label="Main">{navh}</nav>{btn_wa('WhatsApp', cls='btn btn-wa hide-sm')}
 <button class="burger" aria-label="Menu" aria-expanded="false" aria-controls="nav"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 6h18M3 12h18M3 18h18"/></svg></button></div></header>
 <main id="main">'''
@@ -164,7 +184,9 @@ def faq_html(faqs, h='Questions owners ask'):
         '<details><summary>%s</summary><p>%s</p></details>' % (E(f['q']), E(f['a'])) for f in faqs))
 
 def card(href, icon, title, text, more='More details'):
-    return '<a class="card" href="%s" data-rv>%s<h3>%s</h3><p>%s</p><span class="more">%s &rarr;</span></a>' % (href, ico(icon), E(title), E(text), more)
+    ph = SVC_IMG.get(icon)
+    top = '<span class="cimg">%s</span>' % img(ph[0], ph[1]) if ph else ico(icon)
+    return '<a class="card%s" href="%s" data-rv>%s<h3>%s</h3><p>%s</p><span class="more">%s &rarr;</span></a>' % (' pcard' if ph else '', href, top, E(title), E(text), more)
 
 URLNAME = {}
 def build_urlnames():
@@ -205,8 +227,11 @@ def detail_page(kind, p):
         lds.append({'@context': 'https://schema.org', '@type': 'Service', 'name': p['h1'], 'serviceType': p['name'], 'provider': {'@id': DOMAIN + '/#business'},
                     'areaServed': 'Singapore', 'url': DOMAIN + path})
         extra = ''
-    body = f'''<div class="phead"><div class="wrap">{crumbs_html(cr)}<h1>{E(p['h1'])}</h1>{meta}<p class="answer">{E(p['answer'])}</p>
-<div class="btns">{btn_wa('WhatsApp us about this', 'Hi Volt Autocare, I am asking about: ' + p['name'] if 'name' in p else 'Hi Volt Autocare, I read your guide: ' + p['h1'])}{btn_dir()}</div></div></div>
+    key = p['slug'] if kind != 'article' else (p.get('service') or '').strip('/').split('/')[-1]
+    ph = SVC_IMG.get(key, ('consult', 'Technician explaining findings to a car owner'))
+    logos = ''.join(img(l, l.replace('logo-', '').upper() + ' logo', 'blogo') for l in LOGOS.get(p['slug'], [])) if kind == 'brand' else ''
+    body = f'''<div class="phead ph2"><div class="wrap"><div>{crumbs_html(cr)}{('<div class="blogos">%s</div>' % logos) if logos else ''}<h1>{E(p['h1'])}</h1>{meta}<p class="answer">{E(p['answer'])}</p>
+<div class="btns">{btn_wa('WhatsApp us about this', 'Hi Volt Autocare, I am asking about: ' + p['name'] if 'name' in p else 'Hi Volt Autocare, I read your guide: ' + p['h1'])}{btn_dir()}</div></div><div class="phimg">{img(ph[0], ph[1], eager=True)}</div></div></div>
 <div class="sec"><div class="wrap layout"><article class="prose">{secs}
 <div data-rv>{faq_html(p['faqs'])}</div><div data-rv>{related_html(p.get('related', []))}</div></article>{aside(extra)}</div></div>'''
     page(path, p['title'], p['desc'], body, lds, cr)
@@ -264,51 +289,82 @@ GROUP = {
        'Drivers from the east usually take the PIE or CTE towards Bukit Timah Road. Farrer Park and Kallang are only a few kilometres away, so a visit fits into an ordinary weekday.'),
 }
 
+# Popular jobs with prices the business itself published (Instagram/TikTok/Facebook, Nov-Dec 2025). PREVIEW ONLY until the client confirms.
+POPULAR = [
+    ('Servicing packages', 'from $118', 'Oil and filter servicing packages for continental cars, with add-ons at the same visit.', '/services/european-car-servicing/', 'european-car-servicing'),
+    ('Aircon cooling-coil wash', 'from $168', 'For weak cooling, warm air or a musty smell. The coil is cleaned, not just the gas topped up.', '/services/car-aircon-repair/', 'car-aircon-repair'),
+    ('Standard pre-purchase inspection', '$60', 'A condition and safety check before you pay for a used car.', '/services/pre-purchase-inspection/', 'pre-purchase-inspection'),
+    ('Hybrid and EV battery health check', 'Ask us', 'State-of-health reading for hybrid and EV batteries, with a hybrid or EV pre-purchase inspection.', '/services/hybrid-ev-servicing/', 'hybrid-ev-servicing'),
+    ('Hybrid battery fan cleaning', 'Ask us', 'A clogged battery cooling fan makes a hybrid battery run hot. We clean it and check the airflow.', '/services/hybrid-ev-servicing/', 'hybrid-fan'),
+    ('Gearbox oil (ATF) change', 'Ask us', 'Fresh transmission fluid for smoother shifts, timed to your gearbox and how you drive.', '/services/gearbox-transmission-service/', 'gearbox-transmission-service'),
+]
+CONFIRM.append('Prices on the homepage come from your own posts (Dec 2025 servicing packages from $118, TikTok aircon coil wash $168, Standard PPI $60). Are they still current, and what do the packages include? Prices for hybrid battery health check, battery fan cleaning and ATF change?')
+CONFIRM.append('Is Volt Autocare part of the Volt Auto group (Dongfeng distributor)? If yes, may we say so?')
+
+IG = [('ig-2025-12-15b', 'Car A/C blowing warm air? Common causes, a Volt Autocare tip'), ('ig-2025-12-23b', 'Why brake pads wear out faster than you think'),
+      ('ig-2025-12-23a', 'Top 4 causes of bad fuel efficiency'), ('ig-2025-11-19', 'Tyre pressure and engine efficiency'),
+      ('ig-2025-12-15a', 'Service checklist for every car owner'), ('ig-2025-11-26', 'Prepping your EV for long drives')]
 def home():
+    pop = ''.join('<a class="job" href="%s" data-rv><span class="jimg">%s</span><span class="jt"><b>%s</b><small>%s</small></span><span class="jp">%s</span></a>' % (h, img(*SVC_IMG[i]), E(t), E(x), E(p)) for t, p, x, h, i in POPULAR)
+    igs = ''.join('<li><a class="igcard" href="%s" target="_blank" rel="noopener">%s</a></li>' % (SOCIAL[1], img(n, a)) for n, a in IG)
     svc_cards = ''.join('<li>%s</li>' % card('/services/%s/' % s['slug'], s['slug'], s['name'], s['card']) for s in SERVICES)
     art_cards = ''.join('<a class="card acard" href="/%s/" data-rv><div class="band-top"></div><span class="tag">%s</span><h3>%s</h3><p>%s</p><span class="more">Read the guide &rarr;</span></a>'
                         % (a['slug'], E(a.get('brand') or 'Car care'), E(a['h1']), E(a['desc'][:110].rsplit(' ', 1)[0] + '...')) for a in ARTICLES[:6])
     bands = {'0-3': [a for a in AREAS if a[4] <= 3 and a[0] != 'Newton'], '3-6': [a for a in AREAS if 3 < a[4] <= 6], '6-10': [a for a in AREAS if 6 < a[4] <= 10]}
     faqs = [
-        {'q': 'Where is the workshop?', 'a': 'We are inside the Shell station at 143 Bukit Timah Road, Newton Circus, Singapore 229843. Use the Directions button for Google Maps, and WhatsApp us if you are unsure where to stop when you arrive.'},
-        {'q': 'Which cars do you work on?', 'a': 'European cars are our main work, including Mercedes-Benz, BMW, Audi and Volkswagen, and we also do hybrid and EV checks. If you drive another make, WhatsApp us the model and year and we will tell you honestly whether we can help.'},
-        {'q': 'How do I get a quote?', 'a': 'WhatsApp us your make, model, year, mileage and what you have noticed. Most faults need the car to be checked first, so we explain what we find and agree the work and the cost with you before we start.'},
-        {'q': 'What are your opening hours?', 'a': 'Please WhatsApp us on +65 8221 5502 to check before you come, especially on Saturdays, Sundays and public holidays.'},
+        {'q': 'Where is the workshop?', 'a': 'Inside the Shell station at 143 Bukit Timah Road, Newton Circus, Singapore 229843. Search "Volt Autocare @Bukit Timah" in Google Maps or tap Directions.'},
+        {'q': 'Which cars do you work on?', 'a': 'Continental cars such as Mercedes-Benz, BMW, Audi and Volkswagen, and hybrids and EVs for battery health checks, battery fan cleaning, aircon, fluids and pre-purchase inspections. For any other car, WhatsApp us the model and year.'},
+        {'q': 'Is ContiExpert the same as Volt Autocare?', 'a': 'Yes. ContiExpert is the continental-car side of Volt Autocare, and contiexpert.sg is the website of our Newton Circus workshop. Google Maps lists us as Volt Autocare @Bukit Timah.'},
+        {'q': 'How do I book?', 'a': 'WhatsApp +65 8221 5502 with your car model, year, mileage and what you need. We reply with the price or the next step and a time to bring the car in.'},
     ]
-    body = f'''<section class="hero"><div class="wrap"><div><span class="kicker">Newton Circus &middot; inside Shell</span>
-<h1>European car servicing and repairs at Newton Circus</h1>
-<p class="lede">{BIZ} looks after Mercedes-Benz, BMW, Audi and Volkswagen owners from our workshop inside the Shell station at 143 Bukit Timah Road, with hybrid and EV checks too. Tell us what your car is doing and we will tell you the next step.</p>
+    body = f'''<section class="hero"><div class="wrap"><div><span class="kicker">Inside Shell &middot; Newton Circus</span>
+<h1>Continental and hybrid car specialist at Newton Circus</h1>
+<p class="lede">{SITE} is {BIZ}'s workshop inside the Shell station at 143 Bukit Timah Road. Servicing, aircon, pre-purchase inspections and repairs for Mercedes-Benz, BMW, Audi and Volkswagen, plus battery health checks and battery fan cleaning for hybrids and EVs.</p>
 <div class="btns">{btn_wa('WhatsApp ' + PHONE)}{btn_call()}{btn_dir()}</div>
 <div class="proof"><span><span class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</span> {RATING[0]} from {RATING[1]} Google reviews <small>(checked {RATING[2]})</small> &middot; <a href="{MAPS}" target="_blank" rel="noopener" data-cta="maps">read them</a></span></div></div>
-<div class="heromap floaty">{catchment_svg(520, labels={'Ang Mo Kio', 'Bishan', 'Toa Payoh', 'Novena', 'Bukit Timah', 'Holland Village', 'Orchard', 'Raffles Place', 'Kallang', 'Geylang', 'Clementi', 'Serangoon', 'HarbourFront', 'Queenstown'})}</div></div></section>
+<div class="herophoto">{img('team-coilwash', 'Volt Autocare team member at the Newton Circus workshop', eager=True)}
+<div class="hbadge"><b>{RATING[0]} &#9733;</b><span>{RATING[1]} Google reviews</span></div><div class="hbadge2">Inside Shell, Newton Circus</div></div></div></section>
 
-<section class="sec"><div class="wrap"><h2>Choose your make</h2><p class="lead">Start with your car. Each page covers the problems owners of that make ask us about most.</p>
-<div class="chips">{''.join('<a class="chip" href="/brands/%s/">%s %s</a>' % (b['slug'], ico('car').replace('ico"', 'ico" style="width:28px;height:28px;border-radius:8px"'), E(b['name'])) for b in BRANDS)}
-<a class="chip" href="/contact-us/">Other European make <small>ask us</small></a><a class="chip" href="/services/hybrid-ev-servicing/">Hybrid or EV <small>checks</small></a></div></div></section>
+<section class="sec popular"><div class="wrap"><h2>Popular at Newton</h2><p class="lead">The jobs owners book with us most. Prices are from our latest offers, so WhatsApp us to confirm for your model.</p>
+<div class="jobs">{pop}</div></div></section>
 
-<section class="sec alt"><div class="wrap"><h2>What we do</h2><p class="lead">One short card per service. Tap any card for the details, the process and common questions.</p>
-<div class="carwrap"><div class="marq"><ul class="track">{svc_cards}</ul></div><div class="carbtns"><button class="cprev" aria-label="Previous">&larr;</button><button class="cnext" aria-label="Next">&rarr;</button></div></div>
-<p><a href="/services/">See all services &rarr;</a></p></div></section>
+<section class="sec alt"><div class="wrap"><h2>Two specialisms, one workshop</h2>
+<div class="grid g2"><div class="spec" data-rv><span class="kicker2">ContiExpert</span><h3>Continental cars</h3><div class="blogos">{''.join(img(l, l.replace('logo-', '').upper() + ' logo', 'blogo') for l in ['logo-mercedes', 'logo-bmw', 'logo-audi', 'logo-vw', 'logo-porsche', 'logo-mini'])}</div><p>Servicing, warning lights, aircon, brakes, suspension and gearbox work for European cars.</p>
+<div class="chips">{''.join('<a class="chip" href="/brands/%s/">%s</a>' % (b['slug'], E(b['name'])) for b in BRANDS)}<a class="chip" href="/contact-us/">Porsche, MINI <small>ask us</small></a></div></div>
+<div class="spec ev" data-rv><div class="specimg">{img('team-atf', 'Volt Autocare team member with Toyota and Honda hybrid fluids')}</div><span class="kicker2">Volt</span><h3>Hybrids and EVs</h3><p>Hybrid and EV pre-purchase inspections, battery state-of-health checks and hybrid battery fan cleaning, plus the usual aircon, fluids and tyres-and-brakes checks.</p>
+<div class="chips"><a class="chip" href="/services/hybrid-ev-servicing/">Hybrid and EV care</a><a class="chip" href="/services/pre-purchase-inspection/">Hybrid/EV PPI</a></div></div></div></div></section>
+
+<section class="sec"><div class="wrap"><h2>Why a workshop inside a Shell station?</h2>
+<div class="grid g3"><div class="card" data-rv>{ico('pin')}<h3>Right in the centre</h3><p>Newton Circus is where Bukit Timah Road, Scotts Road and Newton Road meet, a few minutes from Orchard, Novena and the CTE.</p></div>
+<div class="card" data-rv>{ico('car')}<h3>Easy to find, easy to drive in</h3><p>Every navigation app knows the Shell at 143 Bukit Timah Road. Fill up, then drive into the workshop.</p></div>
+<div class="card" data-rv>{ico('book')}<h3>Drop off and carry on</h3><p>Newton MRT and Newton Food Centre are close by. Leave the car, and we WhatsApp you with what we found and when it is ready.</p></div></div></div></section>
+
+<section class="sec alt"><div class="wrap"><h2>All services</h2><p class="lead">Tap a card for the details, the process and common questions.</p>
+<div class="carwrap"><div class="marq"><ul class="track">{svc_cards}</ul></div><div class="carbtns"><button class="cprev" aria-label="Previous">&larr;</button><button class="cnext" aria-label="Next">&rarr;</button></div></div></div></section>
+
+<section class="sec ig"><div class="wrap"><h2>Tips from our Instagram</h2><p class="lead">Short car-care tips our team posts for Singapore drivers. Tap one to see it on Instagram.</p>
+<div class="carwrap"><div class="marq"><ul class="track">{igs}</ul></div><div class="carbtns"><button class="cprev" aria-label="Previous">&larr;</button><button class="cnext" aria-label="Next">&rarr;</button></div></div></div></section>
 
 <section class="sec"><div class="wrap"><h2>How a visit works</h2>
-<ol class="steps"><li data-rv><b>WhatsApp us first</b>Make, model, year, mileage and what you noticed. Photos of warning lights help.</li>
-<li data-rv><b>Bring the car to Newton</b>We check it at the workshop inside the Shell station on Bukit Timah Road.</li>
-<li data-rv><b>We explain and quote</b>You hear what we found, what is urgent and what can wait, before any work.</li>
-<li data-rv><b>You decide</b>Work starts only once you agree it. We tell you when the car is ready.</li></ol></div></section>
+<ol class="steps"><li data-rv><b>WhatsApp us first</b>Model, year, mileage and what you need or what you noticed.</li>
+<li data-rv><b>Bring the car to Newton</b>Drive into the Shell station at 143 Bukit Timah Road.</li>
+<li data-rv><b>We check and explain</b>You hear what we found, what is urgent and what can wait, with the price.</li>
+<li data-rv><b>You decide</b>Work starts once you agree. We message you when the car is ready.</li></ol></div></section>
 
-<section class="sec alt"><div class="wrap"><h2>A workshop for drivers within 10 km</h2>
-<p class="lead">Newton Circus sits close to the middle of Singapore, so a large part of the island is within 10 km in a straight line. These are some of the neighbourhoods in each band.</p>
-<div class="grid g3">{''.join('<div class="card band" data-rv><h3>%s km</h3><p>%s</p></div>' % (k, E(', '.join(a[0] for a in v))) for k, v in bands.items())}</div>
-<p style="margin-top:16px"><a class="btn btn-line" href="/areas-we-serve/">Getting here from your area &rarr;</a></p></div></section>
+<section class="sec"><div class="wrap grid g2" style="align-items:center"><div><h2>For drivers within 10 km of Newton</h2>
+<p class="lead">Newton is close to the middle of Singapore, so most central and city-fringe estates are within 10 km in a straight line.</p>
+{''.join('<p class="band"><b>%s km:</b> %s</p>' % (k, E(', '.join(a[0] for a in v))) for k, v in bands.items())}
+<p><a class="btn btn-line" href="/areas-we-serve/">Getting here from your area &rarr;</a></p></div>
+<div class="catch" data-rv>{catchment_svg(560, labels={'Ang Mo Kio', 'Bishan', 'Toa Payoh', 'Novena', 'Bukit Timah', 'Holland Village', 'Orchard', 'Raffles Place', 'Kallang', 'Geylang', 'Clementi', 'Serangoon', 'HarbourFront', 'Queenstown'})}</div></div></section>
 
-<section class="sec"><div class="wrap"><h2>Car care guides</h2><p class="lead">Straight answers to the questions owners ask before they book.</p>
+<section class="sec alt"><div class="wrap"><h2>Car care guides</h2><p class="lead">Straight answers to what owners ask before they book.</p>
 <div class="grid g3">{art_cards}</div><p><a href="/article/">All guides &rarr;</a></p></div></section>
 
-<section class="sec alt"><div class="wrap grid g2" style="align-items:start"><div data-rv>{faq_html(faqs, 'Quick answers')}</div>
+<section class="sec"><div class="wrap grid g2" style="align-items:start"><div data-rv>{faq_html(faqs, 'Quick answers')}</div>
 <div data-rv><h2>Find us</h2><address class="nap">{ADDR1}, {ADDR_NOTE}<br>{ADDR2}</address>
 <div class="mapbox" style="margin-top:12px"><iframe src="{EMBED}" title="Map of {BIZ} at 143 Bukit Timah Road" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe></div></div></div></section>'''
-    page('/', 'European Car Servicing Newton Circus | Volt Autocare',
-         'European car servicing and repairs at Newton Circus, inside Shell at 143 Bukit Timah Road. Mercedes, BMW, Audi, VW, hybrid and EV checks. WhatsApp 8221 5502.',
+    page('/', 'Continental & Hybrid Car Specialist Newton | ContiExpert',
+         'ContiExpert by Volt Autocare, inside Shell at 143 Bukit Timah Road, Newton. Continental car servicing and repairs, hybrid and EV checks. WhatsApp 8221 5502.',
          body, [faq_ld(faqs)])
 
 def services_hub():
@@ -316,7 +372,7 @@ def services_hub():
     body = f'''<div class="phead"><div class="wrap">{crumbs_html(cr)}<h1>Car servicing and repair services</h1>
 <p class="answer">{BIZ} services and repairs European cars, and checks hybrids and EVs, at our workshop inside the Shell station at 143 Bukit Timah Road, Newton Circus. Pick the service closest to your problem, or WhatsApp us what the car is doing and we will point you to the right one.</p></div></div>
 <div class="sec"><div class="wrap"><div class="grid g3">{''.join(card('/services/%s/' % s['slug'], s['slug'], s['name'], s['card']) for s in SERVICES)}</div>
-<h2>By make</h2><div class="grid g3">{''.join(card('/brands/%s/' % b['slug'], 'car', b['name'], b['card']) for b in BRANDS)}</div></div></div>'''
+<h2>By make</h2><div class="grid g3">{''.join(card('/brands/%s/' % b['slug'], b['slug'], b['name'], b['card']) for b in BRANDS)}</div></div></div>'''
     page('/services/', 'Car Repair & Servicing Services Newton | Volt Autocare',
          'European car servicing, diagnostics, aircon, brakes, suspension, gearbox, hybrid and EV checks and pre-purchase inspections at Newton Circus.', body, (), cr)
 
@@ -403,6 +459,8 @@ def about_page():
 <p class="answer">{BIZ} is a car workshop inside the Shell station at 143 Bukit Timah Road, Newton Circus. We service and repair European cars such as Mercedes-Benz, BMW, Audi and Volkswagen, and we check hybrids and EVs. contiexpert.sg is our website.</p></div></div>
 <div class="sec"><div class="wrap layout"><article class="prose">
 <section><h2>Who we are</h2><p>The workshop is run by {LEGAL} (UEN {UEN}). Google Maps lists us as Volt Autocare @Bukit Timah, and you can find us on <a href="{SOCIAL[0]}" target="_blank" rel="noopener">Facebook</a>, <a href="{SOCIAL[1]}" target="_blank" rel="noopener">Instagram</a> and <a href="{SOCIAL[2]}" target="_blank" rel="noopener">TikTok</a> as Volt Autocare.</p></section>
+<section><h2>Who you will meet</h2><div class="teamrow">{img('team-coilwash', 'Volt Autocare team member explaining an aircon coil wash')}{img('team-atf', 'Volt Autocare team member with transmission fluids')}{img('team-outdoor', 'Volt Autocare team member with a fluid service machine')}</div>
+<p>These photos are from our own TikTok and Instagram videos, filmed at the workshop. Our team explains each job on camera the same way we explain it to you at the counter.</p></section>
 <section><h2>How we work</h2><ol><li>You tell us what the car is doing, on WhatsApp or at the workshop.</li><li>We check the car and show you what we found.</li><li>We explain what is urgent and what can wait, and give you the cost.</li><li>We start only after you agree, and message you when the car is ready.</li></ol></section>
 <section><h2>Why a workshop at Newton?</h2><p>Newton Circus is close to the middle of Singapore. Owners from Novena, Orchard, Toa Payoh, Bukit Timah and the city can drop the car on the way to work, and Newton MRT is close by. See <a href="/areas-we-serve/">drivers within 10 km</a>.</p></section>
 <section><h2>What our customers say</h2><p>Our Google listing showed <strong>{RATING[0]} stars from {RATING[1]} reviews</strong> when we checked on {RATING[2]}. You can <a href="{MAPS}" target="_blank" rel="noopener" data-cta="maps">read every review on Google</a>.</p></section>
@@ -466,8 +524,35 @@ def extras():
     shutil.copy(os.path.join(HERE, 'wa-tap-counter.js'), os.path.join(OUT, 'wa-tap-counter.js'))
     subprocess.check_call([sys.executable, os.path.join(HERE, 'make_assets.py'), os.path.join(OUT, 'assets')], stdout=subprocess.DEVNULL)
     shutil.move(os.path.join(OUT, 'assets', 'favicon.ico'), os.path.join(OUT, 'favicon.ico'))
+    make_og()
     with open(os.path.join(HERE, 'CONFIRM.md'), 'w') as f:
         f.write('# ContiExpert / Volt Autocare: facts to confirm before go-live (auto-written by build.py)\n\n' + ''.join('%d. %s\n' % (i + 1, x) for i, x in enumerate(CONFIRM)))
+
+RF = os.environ.get('CE_RESEARCH', '/home/user/edwin-ai-monitor-android/pageone-site/clients/contiexpert/src/research-fetch')
+def photos():
+    subprocess.check_call([sys.executable, os.path.join(HERE, 'make_photos.py'), RF, os.path.join(OUT, 'assets')], stdout=subprocess.DEVNULL)
+    PHOTOS.update(json.load(open(os.path.join(OUT, 'assets', 'photos', 'dims.json'))))
+    os.remove(os.path.join(OUT, 'assets', 'photos', 'dims.json'))
+def make_og():
+    from PIL import Image, ImageDraw, ImageFont
+    F = '/usr/share/fonts/opentype/inter/Inter-%s.otf'
+    im = Image.new('RGB', (1200, 630), (12, 15, 20)); d = ImageDraw.Draw(im)
+    ph = Image.open(os.path.join(OUT, 'assets', 'photos', 'team-coilwash.webp')).convert('RGB'); ph = ph.resize((int(ph.size[0] * 630 / ph.size[1]), 630))
+    im.paste(ph, (1200 - ph.size[0], 0))
+    for x in range(1200 - ph.size[0], 1200 - ph.size[0] + 160):
+        a = 1 - (x - (1200 - ph.size[0])) / 160
+        for y in range(0, 630, 1): pass
+    grad = Image.new('L', (160, 630)); gd = ImageDraw.Draw(grad)
+    for x in range(160): gd.line([(x, 0), (x, 630)], fill=int(255 * (1 - x / 160)))
+    im.paste((12, 15, 20), (1200 - ph.size[0], 0, 1200 - ph.size[0] + 160, 630), grad)
+    d.text((64, 70), 'ContiExpert', font=ImageFont.truetype(F % 'Bold', 46), fill='white')
+    d.text((66, 126), 'a specialist brand of Volt Autocare', font=ImageFont.truetype(F % 'Medium', 24), fill=(90, 165, 255))
+    y = 220
+    for line in ('Continental and hybrid', 'car specialist at', 'Newton Circus'):
+        d.text((64, y), line, font=ImageFont.truetype(F % 'Bold', 54), fill='white'); y += 66
+    d.text((64, 460), 'Inside Shell, 143 Bukit Timah Road', font=ImageFont.truetype(F % 'Medium', 27), fill=(170, 182, 196))
+    d.text((64, 502), 'WhatsApp +65 8221 5502', font=ImageFont.truetype(F % 'SemiBold', 27), fill=(90, 165, 255))
+    im.save(os.path.join(OUT, 'assets', 'og.jpg'), quality=84, optimize=True)
 
 if __name__ == '__main__':
     if os.path.isdir(OUT): shutil.rmtree(OUT)
@@ -475,6 +560,7 @@ if __name__ == '__main__':
     # copy the tap counter first so ver() can hash it
     with open('/mnt/project-files/tracking/wa-tap-counter.js') as f: tc = f.read().replace("'SLUG'", "'contiexpert'")
     with open(os.path.join(HERE, 'wa-tap-counter.js'), 'w') as f: f.write(tc)
+    photos()
     build_urlnames()
     home(); services_hub()
     for s in SERVICES: detail_page('service', s)
