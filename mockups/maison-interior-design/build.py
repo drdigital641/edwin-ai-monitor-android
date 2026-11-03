@@ -7,7 +7,7 @@ uploads folder so nothing is copied or altered.
 
 Run: python3 build.py
 """
-import html, json, os, shutil
+import hashlib, html, json, os, shutil
 
 HERE = os.path.dirname(os.path.abspath(__file__))
 OUT = os.path.join(HERE, "site")
@@ -124,6 +124,7 @@ FAQ = [
 ]
 
 e = html.escape
+VER = hashlib.md5(open(os.path.join(HERE, "mid.css"), "rb").read() + open(os.path.join(HERE, "mid.js"), "rb").read()).hexdigest()[:8]
 
 def src(f):
     return f if f.startswith(("http", "/")) else U + f
@@ -164,7 +165,7 @@ def head(title, desc, path, og_img, schema):
 <link rel="icon" href="{BASE}favicon.svg" type="image/svg+xml"><link rel="icon" href="{BASE}brand/favicon-48.png" sizes="48x48" type="image/png"><link rel="apple-touch-icon" href="{BASE}brand/apple-touch-icon.png">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="{BASE}mid.css">
+<link rel="stylesheet" href="{BASE}mid.css?v={VER}">
 <script>document.documentElement.classList.add('js')</script>
 <script type="application/ld+json">{json.dumps(schema, ensure_ascii=False)}</script>
 </head>"""
@@ -202,7 +203,7 @@ def footer():
 </div><div class="wrap ft-legal"><span>© 2026 Maison Interior Design</span><span>Redesign concept by Page One Singapore</span></div></footer>
 <a class="fab" href="{wa()}" data-cta="whatsapp" aria-label="WhatsApp Maison Interior Design"><svg viewBox="0 0 24 24" width="24" height="24" aria-hidden="true"><path fill="currentColor" d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2Zm0 18.2a8.2 8.2 0 0 1-4.2-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2Zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8-.2-.1-.4-.1-.6.1l-.8 1c-.1.2-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.3-.4.2-.4.7-1.3.1-.2 0-.3 0-.4l-.8-1.8c-.2-.5-.4-.4-.6-.4h-.5a1 1 0 0 0-.7.3 3 3 0 0 0-.9 2.2 5.2 5.2 0 0 0 1.1 2.7 11.8 11.8 0 0 0 4.5 4c1.7.7 2.3.8 3.2.6.5-.1 1.5-.6 1.7-1.2.2-.6.2-1.1.2-1.2-.1-.1-.3-.2-.5-.3Z"/></svg></a>
 <div class="vm" id="vm" hidden role="dialog" aria-modal="true" aria-label="Home tour video"><button class="vm-x" aria-label="Close video">×</button><video controls playsinline preload="none"></video></div>
-<script src="{BASE}mid.js" defer></script></body></html>"""
+<script src="{BASE}mid.js?v={VER}" defer></script></body></html>"""
 
 ORG = {"@type": "HomeAndConstructionBusiness", "@id": DOMAIN + "/#business", "name": "Maison Interior Design",
        "url": DOMAIN + "/", "telephone": PHONE, "email": EMAIL, "foundingDate": "2018",
