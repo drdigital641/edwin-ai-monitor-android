@@ -33,7 +33,7 @@ var w=EX[i],dl=70;k+=dir;q.placeholder='e.g. '+w.slice(0,k);if(k>=w.length){dir=
    Reduced motion: static swipeable scroll-snap row with arrow buttons. */
 var tr=d.getElementById('track'),mq=d.getElementById('marq');
 if(tr&&mq){
-if(true){function step(dir){var li=tr.querySelector('li');if(!li)return;var w=li.getBoundingClientRect().width+12,max=tr.scrollWidth-tr.clientWidth;
+if(RM){function step(dir){var li=tr.querySelector('li');if(!li)return;var w=li.getBoundingClientRect().width+12,max=tr.scrollWidth-tr.clientWidth;
 if(dir>0&&tr.scrollLeft>=max-6)tr.scrollTo({left:0});else if(dir<0&&tr.scrollLeft<=6)tr.scrollTo({left:max});else tr.scrollBy({left:dir*w})}
 var pv=d.getElementById('cprev'),nx=d.getElementById('cnext');if(pv)pv.addEventListener('click',function(){step(-1)});if(nx)nx.addEventListener('click',function(){step(1)});
 tr.tabIndex=0;tr.addEventListener('keydown',function(e){if(e.key==='ArrowRight'){step(1);e.preventDefault()}else if(e.key==='ArrowLeft'){step(-1);e.preventDefault()}})}
