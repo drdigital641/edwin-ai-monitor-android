@@ -96,7 +96,7 @@ REFILED = REFILED   # cards moved out of general servicing because what customer
 CAT = {c['slug']: c for c in CATEGORIES}
 ENT = {e['slug']: e for e in ENTRIES}
 PAID = [e for e in ENTRIES if e['tier'] != 'free']
-CAT_LIST = [c for c in CATEGORIES if any(e['category'] == c['slug'] for e in ENTRIES)]
+CAT_LIST = [c for c in CATEGORIES if any(c['slug'] in e.get('categories', [e['category']]) for e in ENTRIES)]
 RN = areas.REGION_NAMES
 ESTATES = areas.ESTATES
 areas.annotate(ENTRIES)
@@ -363,7 +363,7 @@ def home():
         '<label class="opt"><input type="radio" name="svc" value="%s"><span>%s</span></label>' % (c['slug'], E(c['short'])) for c in CAT_LIST)
     reg_opts = ''.join('<label class="opt"><input type="checkbox" name="reg" value="%s"><span>%s</span></label>' % (k, E('Mobile' if k == 'mobile' else RN[k])) for k in PUB_REGIONS)
     svc_tiles = ''.join('<li><a href="services/%s/"><span class="ti">%s</span><span><b>%s</b><small>%d listing%s</small></span></a></li>' % (
-        c['slug'], ic(c['icon']), E(c['short']), n, '' if n == 1 else 's') for c in CAT_LIST for n in [sum(1 for e in ENTRIES if e['category'] == c['slug'])])
+        c['slug'], ic(c['icon']), E(c['short']), n, '' if n == 1 else 's') for c in CAT_LIST for n in [sum(1 for e in ENTRIES if c['slug'] in e.get('categories', [e['category']]))])
     reg_tiles = ''.join('<li><a href="areas/%s/"><span class="ti">%s</span><span><b>%s</b><small>%d listing%s</small></span></a></li>' % (
         k, ic('pin'), E(RN[k]), n, '' if n == 1 else 's') for k in PUB_REGIONS for n in [sum(1 for e in ENTRIES if e['region'] == k)])
     est_tiles = ''.join('<li><a href="areas/%s/"><span class="ti">%s</span><span><b>%s</b><small>%s &middot; %d listing%s</small></span></a></li>' % (
@@ -402,7 +402,7 @@ def home():
 
 def category(c):
     depth = 2
-    es = [e for e in ENTRIES if e['category'] == c['slug']]
+    es = [e for e in ENTRIES if c['slug'] in e.get('categories', [e['category']])]
     n = words(c['intro'])
     assert 40 <= n <= 60, (c['slug'], n)
     cr, crld = crumbs(depth, [('Services', 'services/' + c['slug'] + '/'), (c['name'], None)][1:])
@@ -654,7 +654,7 @@ def page_label(page_path):
 SITE_HOST = DOMAIN   # shown in the prefill so workshops see where the lead came from
 WA_MSG = 'Hi, I found you on %s (%s). I would like to ask about %s for my car'
 SERVICE_PHRASE = {'general-servicing-repair': 'servicing or repair', 'spray-painting-bodywork': 'spray painting or bodywork', 'gearbox-repair': 'gearbox repair',
-                  'abs-ecu-module-repair': 'ABS or ECU repair', 'car-battery': 'a car battery', 'car-detailing-coating': 'detailing or coating',
+                  'abs-ecu-module-repair': 'ABS or ECU repair', 'car-battery': 'a car battery', 'car-detailing-coating': 'detailing or coating', 'car-aircon-repair': 'car aircon repair',
                   'car-wrap-ppf': 'a wrap or PPF', 'car-parts': 'car parts'}
 
 
@@ -794,6 +794,7 @@ SYN = {   # extra words people type for each service (search only, never shown)
     'gearbox-repair': 'gearbox transmission auto automatic gear shift cvt dsg',
     'abs-ecu-module-repair': 'abs ecu module ecm tcm brake engine computer control unit electronics',
     'car-battery': 'battery batteries replace replacement jump start flat alternator',
+    'car-aircon-repair': 'aircon air con ac gas compressor condenser cooling coil cold leak smell odour',
     'car-detailing-coating': 'detailing detail coating ceramic polish polishing wash clean cleaning interior',
     'car-wrap-ppf': 'wrap wraps wrapping ppf film protection tint sticker',
     'car-parts': 'parts part spare accessories',
@@ -802,7 +803,7 @@ SYN = {   # extra words people type for each service (search only, never shown)
 
 
 CAT_COLOR = {'general-servicing-repair': '#1d5fb8', 'spray-painting-bodywork': '#c0392b', 'gearbox-repair': '#d97706', 'abs-ecu-module-repair': '#7c3aed',
-             'car-battery': '#15803d', 'car-detailing-coating': '#0e8a8a', 'car-wrap-ppf': '#c026a3', 'car-parts': '#5b6472'}
+             'car-battery': '#15803d', 'car-detailing-coating': '#0e8a8a', 'car-aircon-repair': '#0369a1', 'car-wrap-ppf': '#c026a3', 'car-parts': '#5b6472'}
 
 
 def initials(name):
@@ -1841,7 +1842,7 @@ def about_page():
 <h2>Who we list</h2>
 <p>Car workshops and car services only: repair and servicing, gearbox, ABS and ECU modules, spray painting and bodywork, batteries, detailing and coating, wraps and PPF, and parts. Car dealers and insurance are not listed.</p>
 <h2>A note on one listing</h2>
-<p>SG Garage (aircon repair) and Edwin Garage (car repair and accident work) are both owned by the founder of {E(SITE_NAME)}. They are in different units in Ang Mo Kio. They appear in the normal A to Z lists with an "Owned by the site's founder" label, are never in the Featured (paid) block, and get no boost in ordering.</p>
+<p>SG Garage (aircon repair, unit #01-309) and Edwin Garage (car repair and accident work, unit #01-295) are both owned by the founder of {E(SITE_NAME)}. They are in different units in Ang Mo Kio Industrial Park 2. They appear in the normal A to Z lists with an "Owned by the site's founder" label, are never in the Featured (paid) block, and get no boost in ordering.</p>
 <h2>Contact</h2>
 <p>Page One Singapore is a project of Snap Commercial Pte. Ltd. (UEN 202209904W). To list a workshop or correct a page, WhatsApp {PAGE_ONE_WA_SHOW}.</p>
 <div style="display:flex;flex-wrap:wrap;gap:10px"><a class="btn wa big" href="{E(list_wa(depth, 'general enquiry'))}" target="_blank" rel="noopener" data-cta="whatsapp_about">{WA_SVG} WhatsApp {PAGE_ONE_WA_SHOW}</a>

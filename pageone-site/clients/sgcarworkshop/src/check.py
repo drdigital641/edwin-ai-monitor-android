@@ -100,12 +100,12 @@ for e, r in rows:
             if wei and not r[c] < wei[c]: notes.append('Basic %s %s not < Verified %s' % (c, r[c], wei[c]))
         if not r['both_buttons']: notes.append('Basic needs WhatsApp + Call')
     elif e['tier'] in ('premium_leadgen', 'none') and wei:
-        for c in FEAT:   # Premium must reach Verified's level (capped at the thresholds below: 3 photos, 3 services, 3 FAQs, 1 gallery item)
+        for c in (FEAT if e['tier'] != 'none' else []):   # founder-owned: no invented photos or FAQs; contact, address, map and buttons still required   # Premium must reach Verified's level (capped at the thresholds below: 3 photos, 3 services, 3 FAQs, 1 gallery item)
             need = min(wei[c], MINIMUM[c])
             have = r[c]
             if c == 'photos' and e.get('category') == 'car-parts': have = max(have, r['gallery'])   # parts shop: its catalogue part images count as pictures when no shop photos exist
             if have < need: notes.append('Premium %s %s < Verified minimum %s' % (c, r[c], need))
-        for c in ('contact', 'address', 'map', 'rating', 'both_buttons'):
+        for c in (('contact', 'address', 'map', 'rating', 'both_buttons') if e['tier'] != 'none' else ('contact', 'address', 'map', 'both_buttons')):
             if wei[c] and not r[c]: notes.append('Premium missing ' + c)
     elif e['tier'] == 'premium':
         for c in ('contact', 'address', 'map', 'rating', 'both_buttons'):
@@ -120,7 +120,7 @@ import urllib.parse as _up
 import data as _data
 ENDORSE = re.compile(r'\b(partner\w*|verified|recommended|recommends|trusted|confirmed|endorse\w*|official\w*|approved|authori[sz]ed|certified|best|top|leading|number one)\b', re.I)
 CATPHRASE = {'general-servicing-repair': 'servicing or repair', 'spray-painting-bodywork': 'spray painting or bodywork', 'gearbox-repair': 'gearbox repair',
-             'abs-ecu-module-repair': 'ABS or ECU repair', 'car-battery': 'a car battery', 'car-detailing-coating': 'detailing or coating',
+             'abs-ecu-module-repair': 'ABS or ECU repair', 'car-battery': 'a car battery', 'car-detailing-coating': 'detailing or coating', 'car-aircon-repair': 'car aircon repair',
              'car-wrap-ppf': 'a wrap or PPF', 'car-parts': 'car parts'}
 CANON = 'https://sgcarworkshop.sg/'
 def want_wa(e):

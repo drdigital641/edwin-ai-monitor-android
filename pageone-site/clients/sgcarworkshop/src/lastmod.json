@@ -1,18 +1,18 @@
 {
 "": {
 "d": "2026-11-03",
-"h": "cf8ad2e56eb0",
-"h2": "cf8ad2e56eb0"
+"h": "58fab4b023dc",
+"h2": "58fab4b023dc"
 },
 "about/": {
 "d": "2026-11-03",
-"h": "0c039753d339",
-"h2": "0c039753d339"
+"h": "bcb0b1eeeaff",
+"h2": "bcb0b1eeeaff"
 },
 "areas/amk-industrial-park-2/": {
 "d": "2026-11-03",
-"h": "02d1945b8453",
-"h2": "02d1945b8453"
+"h": "7f688ac69bd4",
+"h2": "7f688ac69bd4"
 },
 "areas/kaki-bukit-industrial-estate/": {
 "d": "2026-11-03",
@@ -36,8 +36,8 @@
 },
 "areas/yishun-industrial-park-a/": {
 "d": "2026-11-03",
-"h": "44fc26c3b79c",
-"h2": "44fc26c3b79c"
+"h": "aed71da9c00f",
+"h2": "aed71da9c00f"
 },
 "areas/yishun/": {
 "d": "2026-11-03",
@@ -101,8 +101,8 @@
 },
 "list-your-workshop/": {
 "d": "2026-11-03",
-"h": "3d2ccf3823b6",
-"h2": "3d2ccf3823b6"
+"h": "914b316be152",
+"h2": "914b316be152"
 },
 "privacy/": {
 "d": "2026-11-03",
@@ -111,8 +111,13 @@
 },
 "services/general-servicing-repair/": {
 "d": "2026-11-03",
-"h": "04c7fde86ca8",
-"h2": "04c7fde86ca8"
+"h": "39ac12a15108",
+"h2": "39ac12a15108"
+},
+"services/spray-painting-bodywork/": {
+"d": "2026-11-03",
+"h": "a59e12edecd2",
+"h2": "a59e12edecd2"
 },
 "terms/": {
 "d": "2026-11-03",
@@ -153,6 +158,11 @@
 "d": "2026-11-02",
 "h": "16de84be711a",
 "h2": "16de84be711a"
+},
+"workshops/edwin-garage/": {
+"d": "2026-11-03",
+"h": "59ea53336f3d",
+"h2": "59ea53336f3d"
 },
 "workshops/elite-car-ventures/": {
 "d": "2026-11-02",
@@ -321,8 +331,8 @@
 },
 "workshops/sg-garage/": {
 "d": "2026-11-03",
-"h": "13eb19804015",
-"h2": "13eb19804015"
+"h": "05c6c6187537",
+"h2": "05c6c6187537"
 },
 "workshops/sg-zoom-garage/": {
 "d": "2026-11-02",

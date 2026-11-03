@@ -185,6 +185,7 @@ def published(entries):
     pairs = {}
     for s, v in est.items():
         for e in v:
-            pairs.setdefault((s, e['category']), []).append(e)
+            for _c in e.get('categories', [e['category']]):
+                pairs.setdefault((s, _c), []).append(e)
     pairs = {k: v for k, v in pairs.items() if len(v) >= 2}
     return regions, est, pairs

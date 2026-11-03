@@ -781,5 +781,14 @@
   "mobile": null,
   "status": "rejected-not-car-repair",
   "date": "2026-11-02"
+ },
+ {
+  "place_id": null,
+  "slug": "edwin-garage",
+  "name_norm": "edwin garage",
+  "postal_code": "569535",
+  "mobile": "+6597856612",
+  "status": "built",
+  "date": "2026-11-03"
  }
 ]
