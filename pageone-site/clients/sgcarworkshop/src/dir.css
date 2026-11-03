@@ -342,3 +342,5 @@ ul.chips{list-style:none;display:flex;flex-wrap:wrap;gap:8px;padding:0;margin:14
 .linkb{background:none;border:0;padding:0;color:var(--brand);text-decoration:underline;font:inherit;cursor:pointer}.et-c{font-weight:700}
 .rtg{margin:4px 0 8px;font-size:.9rem}.rtg a{margin-left:4px;white-space:nowrap}
 .blk{display:contents}
+
+.ptab{width:100%;border-collapse:collapse;margin:0 0 8px}.ptab th,.ptab td{padding:9px 10px;border-bottom:1px solid var(--line);text-align:left;vertical-align:top;font-size:.92rem}.ptab thead th{background:#f4f2ec;font-size:.8rem}.ptab tbody th{font-weight:600}.ptab td b{color:#7a5710}

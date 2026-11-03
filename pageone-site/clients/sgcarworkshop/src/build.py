@@ -1418,9 +1418,32 @@ def b_problems(x):
             % ''.join('<li><a href="../../%s">%s</a></li>' % (_guides.gpath(g), E(g['h1'])) for g in gl[:4])) if gl else ''
 
 
+def price_rows(e):
+    """Owner prices already in the record: (job, price text, [(label, price), ...] split). Never invented."""
+    rows = []
+    for s in e.get('services', []):
+        p = s.get('pt') or s.get('p')
+        if not p or not re.search(r'\$\s?\d', p):
+            continue
+        split = re.findall(r'\$([\d,]+) \(([^)]+)\)', p)
+        parts = None
+        if len(split) >= 2:
+            parts = [(lab.replace(', ', '/'), 'From $' + v) for v, lab in split]
+        rows.append((s['n'], p, parts))
+    return rows
+
+
 def b_pricing(x):
     e = x.e
-    return ('<section class="pl-sec"><h2>Pricing</h2><p class="fine">%s</p></section>' % E(e['price_note'])) if e.get('price_note') else ''
+    rows = price_rows(e)
+    if not rows:
+        return ''
+    body = ''
+    for job, p, parts in rows:
+        cell = '<br>'.join('%s: <b>%s</b>' % (E(l), E(v)) for l, v in parts) if parts else '<b>%s</b>' % E(p)
+        body += '<tr><th scope="row">%s</th><td>%s</td></tr>' % (E(job), cell)
+    return ('<section class="pl-sec"><h2>Pricing</h2><table class="ptab"><thead><tr><th>Job</th><th>Starting price</th></tr></thead><tbody>%s</tbody></table>'
+            '<p class="fine">These are the owner\'s own starting prices. The final price is confirmed after inspection.</p></section>' % body)
 
 
 def b_reviews(x):

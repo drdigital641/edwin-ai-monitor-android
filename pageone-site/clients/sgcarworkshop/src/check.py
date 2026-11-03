@@ -476,6 +476,7 @@ for _e in ENTRIES:
         if not re.search(r'[A-Za-z0-9]', re.sub(r'<[^>]+>', '', _inner)) and not re.search(r'<(img|iframe|svg)', _inner): print('empty block rendered', _n, _e['slug']); bad += 1
         _nohead = re.sub(r'<h[1-6][^>]*>.*?</h[1-6]>', '', _inner, flags=re.S)
         if not re.search(r'[A-Za-z0-9]', re.sub(r'<[^>]+>', '', _nohead)) and not re.search(r'<(img|iframe|svg)', _nohead): print('block has a heading but no visible content', _n, _e['slug']); bad += 1
+        if _n == 'pricing' and not re.search(r'<table class="ptab".*?<td>.*?\$\s?\d', _inner, re.S): print('Pricing block has no price table with prices', _e['slug']); bad += 1
         for _im in re.findall(r'<img[^>]*>', _inner):
             if ' width="' not in _im or ' height="' not in _im: print('image in block has no width/height (blank gap before it loads)', _n, _e['slug']); bad += 1
             if 'decoding="async"' in _im and 'loading="lazy"' not in _im: print('eager image decodes async (can stay blank in full-page screenshots)', _n, _e['slug']); bad += 1

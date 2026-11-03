@@ -228,7 +228,7 @@ ENTRIES = [
         lede=("SG Garage does car aircon repair at unit #01-309, Ang Mo Kio Industrial Park 2: gas top-up after a leak check, compressor, cooling coil and condenser "
               "work, and treatment for aircon odour. WhatsApp 9785 6612 to ask about your car."),
         services=[
-            dict(n="Aircon gas top-up", d="Gas is topped up after a leak check.", p="Aircon gas top-up from $20, after a leak check"),
+            dict(n="Aircon gas top-up", d="Gas is topped up after a leak check.", p="Aircon gas top-up from $20, after a leak check", pt="From $20, after a leak check"),
             dict(n="Aircon leak check", d="The aircon is checked for a gas leak before any top-up.", p=None),
             dict(n="Aircon compressor", d="Compressor repair or replacement.", p=None),
             dict(n="Aircon cooling coil", d="Cooling coil repair or replacement.", p=None),
@@ -242,7 +242,7 @@ ENTRIES = [
         map_url="https://www.google.com/maps/search/?api=1&query=SG%20Garage%2C%205032%20Ang%20Mo%20Kio%20Industrial%20Park%202%20%2301-309%20Singapore%20569535",
         hours=[("Mon to Sat", "10am to 8pm"), ("Sun", "Closed")],
         hours_ld=[(WD + SAT, "10:00", "20:00")],
-        hours_note="Opening hours are those on the owner's website, sggarage.com.",
+        hours_note="Opening hours: owner (Edwin, 3 Nov 2026). Same hours and booking link as Edwin Garage.",
         social=[],
         photos=[],
         note="Owned by the site's founder.",
