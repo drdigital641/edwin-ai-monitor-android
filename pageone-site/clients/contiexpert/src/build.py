@@ -84,17 +84,18 @@ PHOTOS = {}
 def img(key, alt, cls='', eager=False, sizes='(max-width:700px) 100vw, 600px'):
     w, h = PHOTOS.get(key, (800, 600))
     return '<img class="%s" src="/assets/photos/%s.webp" width="%d" height="%d" alt="%s"%s decoding="async">' % (cls, key, w, h, E(alt), '' if eager else ' loading="lazy"')
-SVC_IMG = {'european-car-servicing': ('svc-servicing', 'Engine oil level being checked during a car service'),
-           'car-diagnostics-warning-lights': ('svc-diagnostics', 'Technician running a diagnostic scan from the driver seat'),
-           'car-aircon-repair': ('svc-aircon', 'Aircon pressure gauges connected to a BMW engine bay'),
-           'brake-suspension-repair': ('svc-brakes', 'Brake pad and disc being checked'),
-           'gearbox-transmission-service': ('mechanic-under', 'Mechanic working under a car on a lift'),
-           'hybrid-ev-servicing': ('svc-hybrid', 'Mechanic in front of an open hybrid engine bay'),
-           'pre-purchase-inspection': ('svc-ppi', 'Car on a lift during an inspection'),
-           'mercedes-benz': ('brand-mercedes', 'Mercedes-Benz SUV on a workshop lift'),
-           'bmw': ('brand-bmw', 'BMW saloon in a workshop bay'),
-           'audi-volkswagen': ('brand-audi', 'Pressure test on an Audi engine cooling system')}
-SVC_IMG['hybrid-fan'] = ('svc-hybrid', 'Mechanic in front of an open hybrid engine bay')
+# Real Volt Autocare photos only (their Google listing photos, supplied by Edwin 3 Nov 2026)
+SVC_IMG = {'european-car-servicing': ('real-bay', 'Cars in the Volt Autocare service bays at the Shell station, Newton'),
+           'car-diagnostics-warning-lights': ('real-bmw', 'BMW with its bonnet open in the Volt Autocare bay'),
+           'car-aircon-repair': ('real-aircon', 'Aircon service machine connected to a BMW at Volt Autocare'),
+           'brake-suspension-repair': ('real-mg4', 'Car raised on a lift at Volt Autocare'),
+           'gearbox-transmission-service': ('real-mg4', 'Car raised on a lift at Volt Autocare'),
+           'hybrid-ev-servicing': ('real-mg4', 'Electric car raised on a lift at Volt Autocare'),
+           'pre-purchase-inspection': ('real-front', 'Volt Autocare workshop bays under the awning at the Shell station'),
+           'mercedes-benz': ('real-bay', 'Mercedes-Benz GLB and BMW in the Volt Autocare bays'),
+           'bmw': ('real-bmw', 'BMW in the Volt Autocare bay with the bonnet open'),
+           'audi-volkswagen': ('real-front', 'Volt Autocare workshop bays at the Shell station, Newton')}
+SVC_IMG['hybrid-fan'] = ('real-mg4', 'Electric car raised on a lift at Volt Autocare')
 LOGOS = {'mercedes-benz': ['logo-mercedes'], 'bmw': ['logo-bmw'], 'audi-volkswagen': ['logo-audi', 'logo-vw']}
 
 def wa_link(text):
@@ -124,7 +125,7 @@ def faq_ld(faqs):
 NAV = [('Services', '/services/'), ('Makes', '/brands/mercedes-benz/'), ('Near you', '/areas-we-serve/'), ('Guides', '/article/'), ('FAQs', '/faqs/'), ('Visit us', '/contact-us/')]
 
 def fix_links(s):
-    s = re.sub(r'(href|src)="/(?!/)', lambda m: '%s="%s/' % (m.group(1), BASE), s)
+    s = re.sub(r'(href|src|poster)="/(?!/)', lambda m: '%s="%s/' % (m.group(1), BASE), s)
     return s
 
 def page(path, title, desc, body, lds=(), crumbs=None):
@@ -229,7 +230,7 @@ def detail_page(kind, p):
                     'areaServed': 'Singapore', 'url': DOMAIN + path})
         extra = ''
     key = p['slug'] if kind != 'article' else (p.get('service') or '').strip('/').split('/')[-1]
-    ph = SVC_IMG.get(key, ('consult', 'Technician explaining findings to a car owner'))
+    ph = SVC_IMG.get(key, ('real-front', 'Volt Autocare workshop bays at the Shell station, Newton'))
     logos = ''.join(img(l, l.replace('logo-', '').upper() + ' logo', 'blogo') for l in LOGOS.get(p['slug'], [])) if kind == 'brand' else ''
     body = f'''<div class="phead ph2"><div class="wrap"><div>{crumbs_html(cr)}{('<div class="blogos">%s</div>' % logos) if logos else ''}<h1>{E(p['h1'])}</h1>{meta}<p class="answer">{E(p['answer'])}</p>
 <div class="btns">{btn_wa('WhatsApp us about this', 'Hi Volt Autocare, I am asking about: ' + p['name'] if 'name' in p else 'Hi Volt Autocare, I read your guide: ' + p['h1'])}{btn_dir()}</div></div><div class="phimg">{img(ph[0], ph[1], eager=True)}</div></div></div>
@@ -336,8 +337,8 @@ ICONS['parts'] = '<path d="M21 8 12 3 3 8v8l9 5 9-5z"/><path d="M3 8l9 5 9-5M12 
 ICONS['quote'] = '<path d="M7 7h4v4c0 3-2 5-4 6M15 7h4v4c0 3-2 5-4 6"/>'
 
 def home():
-    tiles = ''.join('<a class="tile" href="/services/%s/" data-rv>%s<span class="tcap"><small>%s</small><b>%s</b></span></a>' % (
-        s['slug'], img(*SVC_IMG[s['slug']], sizes='(max-width:700px) 100vw, 380px'), ('0%d' % (i + 1)), E(s['name'])) for i, s in enumerate([x for x in SERVICES if x['slug'] != 'gearbox-transmission-service']))
+    tiles = ''.join('<a class="svl" href="/services/%s/" data-rv><small>0%d</small><b>%s</b><span>&rarr;</span></a>' % (
+        s['slug'], i + 1, E(s['name'])) for i, s in enumerate(SERVICES))
     revs = ''.join('<li><figure class="rq"><blockquote>&ldquo;%s&rdquo;</blockquote><figcaption><b>%s</b><span>%s &middot; %s</span></figcaption></figure></li>' % (E(q), E(n), E(job), E(d)) for n, d, job, q in REVIEWS)
     prices = ''.join('<a class="prow" href="%s"><span>%s</span><b>%s</b></a>' % (h, E(t), E(p)) for t, p, x, h, i in POPULAR)
     _unused = ''.join('<a class="acard2" href="/%s/" data-rv><small>%s</small><h3>%s</h3><span>Read &rarr;</span></a>'
@@ -348,7 +349,9 @@ def home():
         {'q': 'Which cars do you work on?', 'a': 'Mercedes-Benz, BMW, Audi and VW mainly, plus hybrids, EVs, Japanese and Korean cars.'},
         {'q': 'Can I bring my own parts?', 'a': 'Yes. Send us the part details first and we fit it for labour only.'},
     ]
-    body = f'''<section class="lux-hero"><div class="lux-img">{img('hero-showroom', 'Silver Mercedes-Benz on a lift during a diagnostic check', eager=True, sizes='100vw')}</div>
+    body = f'''<section class="lux-hero"><div class="lux-img">{img('real-bay', 'Mercedes-Benz and BMW in the Volt Autocare bays, with an aircon service machine', eager=True, sizes='(max-width:820px) 100vw, 50vw')}
+<figure class="pip"><video class="pipv" src="/assets/video/find-us.mp4" poster="/assets/photos/poster-find-us.webp" muted loop playsinline autoplay preload="metadata" aria-label="Video: walking from the Shell station to the Volt Autocare bays"></video>
+<button class="vsnd" type="button">&#9654; Sound</button><figcaption>Find us &middot; 0:31</figcaption></figure></div>
 <div class="wrap lux-copy"><span class="eyebrow">ContiExpert by Volt Autocare &middot; Newton</span>
 <h1>Continental car specialists<span>at Newton Circus</span></h1>
 <p>Mercedes, BMW, Audi, VW, hybrids and EVs. We fix only what your car needs.</p>
@@ -362,9 +365,9 @@ def home():
 <div class="chips5">{''.join('<a href="/brands/%s/">%s &rarr;</a>' % (b['slug'], E(b['name'])) for b in BRANDS)}</div></div></section>
 
 <section class="sec5 grey"><div class="wrap"><div class="head5"><span class="eyebrow">Services</span><h2>What we do</h2><a class="lnk" href="/services/">All services &rarr;</a></div>
-<div class="tiles">{tiles}</div></div></section>
+<div class="svlist">{tiles}</div></div></section>
 
-<section class="sec5"><div class="wrap split"><div class="splitimg" data-rv>{img('approach', 'Two technicians checking an Audi with a diagnostic tablet', sizes='(max-width:820px) 100vw, 560px')}</div>
+<section class="sec5"><div class="wrap split"><div class="splitimg" data-rv>{img('real-front', 'Volt Autocare workshop bays under the awning at the Shell station, Newton', sizes='(max-width:820px) 100vw, 560px')}</div>
 <div data-rv><span class="eyebrow">Our approach</span><h2>Honest advice first</h2>
 <ol class="steps5"><li><b>We find the real fault</b>No parts you don't need.</li>
 <li><b>We explain it plainly</b>Price agreed before we start.</li>
@@ -375,7 +378,8 @@ def home():
 
 <section class="sec5"><div class="wrap split rev"><div data-rv><span class="eyebrow">Starting prices</span><h2>Popular jobs</h2>
 <div class="prices">{prices}</div><p class="note">Confirm for your model on WhatsApp.</p></div>
-<div data-rv><span class="eyebrow">Hybrid &amp; EV</span><h2>Buying a used hybrid or EV?</h2><p>We check the battery&rsquo;s health before you pay, and clean hybrid battery fans.</p>
+<div data-rv><span class="eyebrow">Hybrid &amp; EV</span><h2>Buying a used hybrid or EV?</h2><p>We check the battery&rsquo;s health with the Autel MS909EV before you pay, and clean hybrid battery fans.</p>
+<figure class="vcard"><video src="/assets/video/ev-ppi.mp4" poster="/assets/photos/poster-ev-ppi.webp" controls playsinline preload="none" aria-label="Video: Volt Autocare EV and hybrid pre-purchase inspection"></video><figcaption>Our EV/hybrid PPI &middot; 1 min</figcaption></figure>
 <p><a class="lnk" href="/services/hybrid-ev-servicing/">Hybrid and EV care &rarr;</a></p></div></div></section>
 
 <section class="sec5 grey"><div class="wrap split"><div data-rv><span class="eyebrow">Visit us</span><h2>Inside Shell, Newton Circus</h2>
@@ -560,7 +564,7 @@ def make_og():
     from PIL import Image, ImageDraw, ImageFont
     F = '/usr/share/fonts/opentype/inter/Inter-%s.otf'
     im = Image.new('RGB', (1200, 630), (12, 15, 20)); d = ImageDraw.Draw(im)
-    ph = Image.open(os.path.join(OUT, 'assets', 'photos', 'hero-consult.webp')).convert('RGB'); ph = ph.resize((int(ph.size[0] * 630 / ph.size[1]), 630))
+    ph = Image.open(os.path.join(OUT, 'assets', 'photos', 'real-bay.webp')).convert('RGB'); ph = ph.resize((int(ph.size[0] * 630 / ph.size[1]), 630))
     im.paste(ph, (1200 - ph.size[0], 0))
     for x in range(1200 - ph.size[0], 1200 - ph.size[0] + 160):
         a = 1 - (x - (1200 - ph.size[0])) / 160

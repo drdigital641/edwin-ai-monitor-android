@@ -35,3 +35,7 @@ mq.addEventListener('click',function(e){if(moved){e.preventDefault();e.stopPropa
 mq.addEventListener('dragstart',function(e){e.preventDefault()});
 });
 })();
+
+(function(){var v=document.querySelector('.pipv'),b=document.querySelector('.vsnd');if(!v)return;
+if(window.matchMedia&&matchMedia('(prefers-reduced-motion: reduce)').matches){v.removeAttribute('autoplay');v.pause()}
+if(b)b.addEventListener('click',function(){if(v.muted){v.muted=false;v.currentTime=0;v.controls=true;v.play();b.style.display='none'}});})();

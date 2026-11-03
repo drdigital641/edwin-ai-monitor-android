@@ -18,14 +18,22 @@ dims['team-outdoor'] = save(S('ig-2025-11-21-video'), 'team-outdoor', 360, (0, 0
 dims['cataclean-hybrid'] = save(S('fb-2026-04'), 'cataclean-hybrid', 526)
 for n in ['ig-2025-12-15b', 'ig-2025-12-23b', 'ig-2025-12-23a', 'ig-2025-11-19', 'ig-2025-12-15a', 'ig-2025-11-26', 'ig-2025-11-25', 'ig-2025-12-03']:
     dims[n] = save(S(n), n, 512)
-# topic photos from the client's current website media library
-for key, n in {'svc-servicing': 38, 'svc-diagnostics': 47, 'svc-aircon': 72, 'svc-brakes': 9, 'svc-ppi': 37, 'svc-hybrid': 177,
-               'brand-bmw': 57, 'brand-mercedes': 94, 'brand-audi': 31, 'consult': 48, 'mechanic-under': 186}.items():
-    dims[key] = save(Image.open(os.path.join(R, 'wp', wp[n])), key, 1000)
+# (stock/AI topic photos from their old WordPress site removed 3 Nov 2026: Edwin wants real photos only)
 for key, n in {'logo-bmw': 105, 'logo-mercedes': 106, 'logo-audi': 100, 'logo-vw': 98, 'logo-porsche': 101, 'logo-mini': 99}.items():
     dims[key] = save(Image.open(os.path.join(R, 'wp', wp[n])), key, 160)
-dims['hero-consult'] = save(Image.open(os.path.join(R, 'wp', wp[52])), 'hero-consult', 1200, (0.08, 0, 1, 1))
-dims['hero-showroom'] = save(Image.open(os.path.join(R, 'wp', wp[81])), 'hero-showroom', 1800)
-dims['approach'] = save(Image.open(os.path.join(R, 'wp', wp[73])), 'approach', 1100)
+# REAL photos: Volt Autocare's own Google listing photos, screenshots supplied by Edwin 3 Nov 2026 (src/real/)
+RL = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'real')
+RB = lambda n: Image.open(os.path.join(RL, n + '.jpg'))
+dims['real-bay'] = save(RB('bay'), 'real-bay', 720)
+dims['real-front'] = save(RB('front'), 'real-front', 720)
+dims['real-mg4'] = save(RB('mg4-lift'), 'real-mg4', 452)
+dims['real-aircon'] = save(RB('bay'), 'real-aircon', 720, (0.42, 0.08, 1, 0.92))
+dims['real-bmw'] = save(RB('bay'), 'real-bmw', 720, (0.36, 0.10, 0.96, 0.72))
+# their own videos (Edwin uploaded 3 Nov 2026): copy as-is, posters to webp
+import shutil
+VD = os.path.join(sys.argv[2], 'video'); os.makedirs(VD, exist_ok=True)
+for v in ['find-us', 'ev-ppi']:
+    shutil.copy(os.path.join(RL, 'video', v + '.mp4'), os.path.join(VD, v + '.mp4'))
+    dims['poster-' + v] = save(Image.open(os.path.join(RL, 'video', v + '.jpg')), 'poster-' + v, 360)
 json.dump(dims, open(os.path.join(OUT, 'dims.json'), 'w'))
 print(len(dims), 'photos', sum(os.path.getsize(os.path.join(OUT, f)) for f in os.listdir(OUT)) // 1024, 'KB')
