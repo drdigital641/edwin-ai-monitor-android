@@ -298,3 +298,40 @@ h2{font-weight:500;font-size:clamp(1.6rem,3.6vw,2.4rem)}h3{font-weight:600}
 @media (max-width:820px){.lux-hero{background:#fff}.lux-copy:before{display:none}}
 .svlist{border-top-color:var(--ce)}
 footer.ftr,.ftr{background:#08121f}
+/* v13 (client via Edwin 4 Nov 2026): darker backgrounds with pattern, creative but not fancy.
+   Dark navy "workshop blueprint" for hero, page headers, services and reviews; steel-blue grid for the light sections. */
+:root{--d0:#08111f;--d1:#0d1b2e;--d2:#132741;--ink-on-d:#e8f0fb;--mut-on-d:#a8bdd8;
+--grid:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='48' height='48'%3E%3Cpath d='M48 0H0V48' fill='none' stroke='%235aa5ff' stroke-opacity='.10'/%3E%3Crect x='19' y='19' width='10' height='10' transform='rotate(45 24 24)' fill='%231e7bff' fill-opacity='.16'/%3E%3C/svg%3E");
+--grid-l:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='48' height='48'%3E%3Cpath d='M48 0H0V48' fill='none' stroke='%230b5fd6' stroke-opacity='.08'/%3E%3Crect x='20' y='20' width='8' height='8' transform='rotate(45 24 24)' fill='%230b5fd6' fill-opacity='.08'/%3E%3C/svg%3E");
+--glow:radial-gradient(60% 80% at 15% 20%,rgba(30,123,255,.28),transparent 60%),radial-gradient(50% 70% at 90% 100%,rgba(11,95,214,.22),transparent 60%)}
+body{background:#e9eff7}
+/* dark blocks */
+.lux-hero,.phead,.ph2,.sec5.grey.svc5{background:var(--glow),var(--grid),linear-gradient(160deg,var(--d1),var(--d0))!important;color:var(--ink-on-d)}
+.lux-hero:before{background:linear-gradient(90deg,var(--d0) 0,rgba(8,17,31,.88) 36%,rgba(8,17,31,0) 64%)!important}
+.lux-copy:before{display:none}
+.lux-copy h1,.lux-hero h1 span,.phead h1{color:#fff!important}
+.lux-copy p,.phead .answer,.phead p{color:var(--mut-on-d)!important}
+.lux-hero .eyebrow,.phead .eyebrow{color:#8fbcff}
+.lux-hero .btn-dark,.phead .btn-wa{background:var(--ce)!important;color:#fff!important}.lux-hero .btn-dark:hover,.phead .btn-wa:hover{background:#3b8cff!important}
+.lux-hero .btn-outline,.phead .btn-ghost{border-color:rgba(255,255,255,.55)!important;color:#fff!important;background:transparent}
+.lux-hero .btn-outline:hover,.phead .btn-ghost:hover{background:#fff!important;color:var(--d1)!important}
+.crumbs a,.phead .crumbs a{color:var(--mut-on-d)!important}.crumbs span{color:#5d7696}.phead .crumbs{color:#fff}
+.phead .meta{color:var(--mut-on-d)}
+.phimg img{box-shadow:0 18px 40px rgba(0,0,0,.45);outline:1px solid rgba(255,255,255,.12)}
+.phead .blogos img{background:#fff;border-radius:50%}
+/* facts strip continues the dark hero */
+.facts{background:var(--d2);border-top:3px solid var(--ce);border-bottom:0}
+.facts .wrap>*{border-color:rgba(255,255,255,.1)!important;color:var(--ink-on-d)}
+.facts b{color:#fff!important}.facts .wrap>a:first-child b{color:#8fbcff!important}.facts span{color:var(--mut-on-d)}
+/* light sections: steel-blue blueprint grid instead of plain */
+.sec5,.sec{background-color:#eef3f9;background-image:var(--grid-l)}
+.sec5.grey{background-color:#dde7f3;background-image:var(--grid-l)}
+.sec5.faq5{background:#fff}
+/* services list on dark */
+.sec5.grey.svc5 h2{color:#fff}.svc5 .eyebrow{color:#8fbcff}.svc5 .lnk{color:#cfe2ff}
+.svc5 .svlist{border-top-color:var(--ce)}.svc5 .svl{color:#fff;border-bottom-color:rgba(255,255,255,.12)}
+.svc5 .svl small{color:#8fbcff}.svc5 .svl:hover b{color:#8fbcff}
+/* cards and quotes lift off the patterned background */
+.logorow{background:#fff}.prices,.prow{background:transparent}
+.aside .card,.aside>div{box-shadow:0 10px 30px rgba(13,27,46,.08)}
+@media (max-width:820px){.lux-hero{background:var(--glow),var(--grid),linear-gradient(160deg,var(--d1),var(--d0))!important}}

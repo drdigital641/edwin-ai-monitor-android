@@ -388,7 +388,7 @@ def home():
 <div class="logorow">{logos}</div>
 <div class="chips5">{''.join('<a href="/brands/%s/">%s &rarr;</a>' % (b['slug'], E(b['name'])) for b in BRANDS)}</div></div></section>
 
-<section class="sec5 grey"><div class="wrap"><div class="head5"><span class="eyebrow">Services</span><h2>What we do</h2><a class="lnk" href="/services/">All services &rarr;</a></div>
+<section class="sec5 grey svc5"><div class="wrap"><div class="head5"><span class="eyebrow">Services</span><h2>What we do</h2><a class="lnk" href="/services/">All services &rarr;</a></div>
 <div class="svlist">{tiles}</div></div></section>
 
 <section class="sec5"><div class="wrap split"><div class="splitimg" data-rv>{img('real-front', 'Volt Autocare workshop bays under the awning at the Shell station, Newton', sizes='(max-width:820px) 100vw, 560px')}</div>
