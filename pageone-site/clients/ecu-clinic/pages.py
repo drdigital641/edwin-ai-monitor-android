@@ -1421,7 +1421,7 @@ ARTICLES = [
 <li><strong>An AI reads your search the way you type it</strong>, such as &ldquo;Honda Vezel VSA light 81-19 near Kaki Bukit&rdquo;, and picks out the service, car make and area.</li>
 <li><strong>No paid rankings.</strong> Paid listings are labelled Featured and kept out of any ranking.</li>
 </ul>
-<p>Its aim is to become the most useful car workshop directory in Singapore by listening to the people on the ground. The <a href="https://sgcarworkshop.sg/services/abs-ecu-module-repair/">ABS and ECU module repair category on SG Car Workshop</a> lists workshops that do this kind of work, so you can compare more than one.</p>
+<p>Its aim is to become the most useful car workshop directory in Singapore by listening to the people on the ground. Its <a href="https://sgcarworkshop.sg/areas/kaki-bukit-industrial-estate/">list of car workshops in Kaki Bukit Industrial Estate</a> shows the workshops around us, so you can compare more than one.</p>
 <p>To be clear about it: The ECU Clinic has a Featured (paid) listing there, and both this website and the directory are run by Page One Singapore. Use it as a starting point and check every workshop, including us, against the list above.</p>
 <h2>What should I send before a quote?</h2>
 <p>WhatsApp the car model, year, chassis number and the fault codes, with a photo of the dashboard or scan tool screen if you have one. Say what the car does and when it started. With that, a specialist can usually tell you whether the fault points to the module or to something simpler, such as a wheel speed sensor, wiring or a weak battery. See <a href="../abs-warning-light-causes/">ABS warning light causes</a> for the common ones.</p>
