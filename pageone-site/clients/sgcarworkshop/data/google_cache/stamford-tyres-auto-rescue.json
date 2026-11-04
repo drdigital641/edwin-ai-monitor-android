@@ -1,0 +1,30 @@
+{
+ "businessStatus": "OPERATIONAL",
+ "primaryType": "car_repair",
+ "types": [
+  "car_repair",
+  "point_of_interest",
+  "service",
+  "establishment"
+ ],
+ "rating": 2.8,
+ "userRatingCount": 4,
+ "websiteUri": "http://www.starvans.com.sg/",
+ "paymentOptions": null,
+ "parkingOptions": null,
+ "editorialSummary": null,
+ "weekdayDescriptions": [
+  "Monday: Open 24 hours",
+  "Tuesday: Open 24 hours",
+  "Wednesday: Open 24 hours",
+  "Thursday: Open 24 hours",
+  "Friday: Open 24 hours",
+  "Saturday: Open 24 hours",
+  "Sunday: Open 24 hours"
+ ],
+ "review_count_seen": 4,
+ "review_themes": "Customers on Google Maps mention a recovery van fixing a puncture on site within 30 minutes. Some customers reported waiting and said the service is not 24 hours.",
+ "fetched_at": "2026-11-03",
+ "place_id": "ChIJCfZI6NoX2jERRGUvhb7Sc44",
+ "source": "google_places"
+}

@@ -7,7 +7,7 @@ import json, os, re, sys, datetime as dt
 
 HERE = os.path.dirname(os.path.abspath(__file__))
 DATA = os.environ.get('SGCW_DATA_DIR') or os.path.join(HERE, '..', 'data')
-STATUSES = ('built', 'rejected-no-mobile', 'rejected-not-car-repair', 'closed', 'removed-on-request')
+STATUSES = ('built', 'rejected-no-mobile', 'rejected-not-car-repair', 'rejected-no-address', 'closed', 'removed-on-request')   # no-address: Google gives no postal code (4 Nov 2026)
 MOBILE_RE = re.compile(r'^\+65[89]\d{7}$')
 STOP = {'pte', 'ltd', 'private', 'limited', 'singapore', 'sg', 'the', 'and', 'co', 'company', 'enterprise', 'enterprises'}
 

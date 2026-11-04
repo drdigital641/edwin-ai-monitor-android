@@ -1,0 +1,28 @@
+{
+ "lede": "AK Workshop is a car repair workshop at 10 Ang Mo Kio Industrial Park 2A, #04-10 AMK AUTO POINT. Its Google Maps listing shows opening hours and customer ratings.",
+ "chips": [
+  "Car repair"
+ ],
+ "services": [
+  "General servicing and repair"
+ ],
+ "themes": "Customers on Google Maps mention long-time servicing since 2012, suspension noise fixed for less than another quote, magic collar installs, BMW work and repairs on an older Porsche Boxster.",
+ "faqs": [
+  [
+   "What does AK Workshop do?",
+   "Google Maps lists it as a car repair workshop."
+  ],
+  [
+   "What are the opening hours?",
+   "The hours are listed in the Google Maps section above. Please see Google Maps for current hours."
+  ]
+ ],
+ "sources": "its Google Maps listing",
+ "stories": [],
+ "mentioned_services": [
+  "Suspension replacement",
+  "BMW cars",
+  "Older cars",
+  "Regular servicing"
+ ]
+}

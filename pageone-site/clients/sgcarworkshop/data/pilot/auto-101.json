@@ -1,0 +1,27 @@
+{
+ "lede": "Auto 101 is a car repair workshop at 2 Yishun Industrial Street 1, #02-01 Northpoint Bizhub. Its Google Maps listing shows opening hours and customer ratings.",
+ "chips": [
+  "Car repair"
+ ],
+ "services": [
+  "General servicing and repair"
+ ],
+ "themes": "Customers on Google Maps mention accident claims handled patiently, body repairs and paintwork, fleet maintenance, straightforward advice without upselling and original products at fair prices.",
+ "faqs": [
+  [
+   "What does Auto 101 do?",
+   "Google Maps lists it as a car repair workshop."
+  ],
+  [
+   "What are the opening hours?",
+   "The hours are listed in the Google Maps section above. Please see Google Maps for current hours."
+  ]
+ ],
+ "sources": "its Google Maps listing",
+ "stories": [],
+ "mentioned_services": [
+  "Accident repair and insurance claims",
+  "Spray painting",
+  "Regular servicing"
+ ]
+}

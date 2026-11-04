@@ -1,0 +1,30 @@
+{
+ "businessStatus": "OPERATIONAL",
+ "primaryType": "car_repair",
+ "types": [
+  "car_repair",
+  "point_of_interest",
+  "service",
+  "establishment"
+ ],
+ "rating": 5,
+ "userRatingCount": 1,
+ "websiteUri": null,
+ "paymentOptions": null,
+ "parkingOptions": null,
+ "editorialSummary": null,
+ "weekdayDescriptions": [
+  "Monday: 7:00 AM – 5:00 PM",
+  "Tuesday: 7:00 AM – 5:00 PM",
+  "Wednesday: 7:00 AM – 5:00 PM",
+  "Thursday: 7:00 AM – 5:00 PM",
+  "Friday: 7:00 AM – 5:00 PM",
+  "Saturday: 7:00 AM – 5:00 PM",
+  "Sunday: 8:00 AM – 3:00 PM"
+ ],
+ "review_count_seen": 1,
+ "review_themes": "Its one Google review mentions a rushed job done in time at a decent price.",
+ "fetched_at": "2026-11-03",
+ "place_id": "ChIJ70D5pv4X2jER64RmQmkNrcI",
+ "source": "google_places"
+}

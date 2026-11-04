@@ -1,0 +1,27 @@
+{
+ "lede": "TTS Eurocars Service Centre is a car repair workshop at 272 MacPherson Rd. Its Google Maps listing shows opening hours and customer ratings.",
+ "chips": [
+  "Car repair"
+ ],
+ "services": [
+  "General servicing and repair"
+ ],
+ "themes": "Customers on Google Maps mention servicing without upselling, quick fault finding and a minor aircon fix. One customer reported many problems with a new car bought from them.",
+ "faqs": [
+  [
+   "What does TTS Eurocars Service Centre do?",
+   "Google Maps lists it as a car repair workshop."
+  ],
+  [
+   "What are the opening hours?",
+   "The hours are listed in the Google Maps section above. Please see Google Maps for current hours."
+  ]
+ ],
+ "sources": "its Google Maps listing",
+ "stories": [],
+ "mentioned_services": [
+  "Car servicing",
+  "Fault diagnosis",
+  "Aircon repair"
+ ]
+}

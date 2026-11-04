@@ -1,0 +1,26 @@
+{
+ "lede": "Xing Wang Auto Services is a car repair workshop at 6 Gambas Way, #01-12 Ascent @ Gambas. Its Google Maps listing shows opening hours and customer ratings.",
+ "chips": [
+  "Car repair"
+ ],
+ "services": [
+  "General servicing and repair"
+ ],
+ "themes": "Customers on Google Maps mention servicing, dent repair with costs explained first, and help with hand controls for drivers with disabilities.",
+ "faqs": [
+  [
+   "What does Xing Wang Auto Services do?",
+   "Google Maps lists it as a car repair workshop."
+  ],
+  [
+   "What are the opening hours?",
+   "The hours are listed in the Google Maps section above. Please see Google Maps for current hours."
+  ]
+ ],
+ "sources": "its Google Maps listing",
+ "stories": [],
+ "mentioned_services": [
+  "Car servicing",
+  "Dent repair"
+ ]
+}
