@@ -433,7 +433,7 @@ def sweep(a, key):
                 e, why = R.match(reg, p['id'], None, name, pc)
                 if e or p['id'] in have: stats['known'] += 1; continue
                 q.append(dict(place_id=p['id'], name_hint=name, address_hint=re.sub(r',?\s*Singapore\s*\d{6}\s*$', '', fa), postal_code=pc, mobile_hint=gm,
-                              source='google_text_search_%s (Google phone, Edwin asked)' % TODAY, added=TODAY, rating=p.get('rating'), ratings=p.get('userRatingCount')))
+                              source='google_text_search_%s (Google phone, Edwin asked)' % TODAY, added=TODAY))
                 have.add(p['id']); stats['queued'].append('%s (%s, %s/%s)' % (name, town, p.get('rating'), p.get('userRatingCount')))
             tok = res.get('nextPageToken')
             if not tok: break
