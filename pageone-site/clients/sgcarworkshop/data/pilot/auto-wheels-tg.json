@@ -1,0 +1,27 @@
+{
+ "lede": "Auto Wheels TG is a car repair workshop at 48 Toh Guan Rd E, #04-142. Its Google Maps listing shows opening hours and customer ratings.",
+ "chips": [
+  "Car repair"
+ ],
+ "services": [
+  "General servicing and repair"
+ ],
+ "themes": "Customers on Google Maps mention clear explanations, quick diagnosis, fair pricing and performance part installs. One customer reported a loose pipe after a blow-off valve install that took several visits.",
+ "faqs": [
+  [
+   "What does Auto Wheels TG do?",
+   "Google Maps lists it as a car repair workshop."
+  ],
+  [
+   "What are the opening hours?",
+   "The hours are listed in the Google Maps section above. Please see Google Maps for current hours."
+  ]
+ ],
+ "sources": "its Google Maps listing",
+ "stories": [],
+ "mentioned_services": [
+  "Car servicing",
+  "Performance parts installation",
+  "Fault diagnosis"
+ ]
+}

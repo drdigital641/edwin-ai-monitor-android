@@ -1,0 +1,27 @@
+{
+ "lede": "AF & CARS is a car repair workshop at 48 Toh Guan Rd E, #01-141 Block No 48. Its Google Maps listing shows opening hours and customer ratings.",
+ "chips": [
+  "Car repair"
+ ],
+ "services": [
+  "General servicing and repair"
+ ],
+ "themes": "Customers on Google Maps mention lower prices than a large chain, advice to keep parts still in good condition and friendly service. One customer described a dispute over a rental hybrid car.",
+ "faqs": [
+  [
+   "What does AF & CARS do?",
+   "Google Maps lists it as a car repair workshop."
+  ],
+  [
+   "What are the opening hours?",
+   "The hours are listed in the Google Maps section above. Please see Google Maps for current hours."
+  ]
+ ],
+ "sources": "its Google Maps listing",
+ "stories": [],
+ "mentioned_services": [
+  "Car servicing",
+  "Hybrid cars",
+  "Car maintenance advice"
+ ]
+}

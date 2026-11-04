@@ -1,0 +1,29 @@
+{
+ "lede": "Squad Workshop is a car repair workshop at 48 Toh Guan Rd E, #04-131 Block No 48. Its Google Maps listing shows opening hours and customer ratings.",
+ "chips": [
+  "Car repair"
+ ],
+ "services": [
+  "General servicing and repair"
+ ],
+ "themes": "Customers on Google Maps mention Volkswagen, Audi and Skoda work, a pre-purchase inspection with DQ200 gearbox checks, fixing problems a dealer could not diagnose, MMI upgrades and aircon compressor replacement.",
+ "faqs": [
+  [
+   "What does Squad Workshop do?",
+   "Google Maps lists it as a car repair workshop."
+  ],
+  [
+   "What are the opening hours?",
+   "The hours are listed in the Google Maps section above. Please see Google Maps for current hours."
+  ]
+ ],
+ "sources": "its Google Maps listing",
+ "stories": [],
+ "mentioned_services": [
+  "Volkswagen, Audi and Skoda cars",
+  "Pre-purchase inspection",
+  "DSG gearbox checks",
+  "MMI upgrade",
+  "Aircon compressor replacement"
+ ]
+}

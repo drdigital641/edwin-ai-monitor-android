@@ -7,6 +7,23 @@ root = os.path.abspath(sys.argv[1] if len(sys.argv) > 1 else os.path.join(os.pat
 BAN = re.compile(r"\b(" + '|'.join(__import__('json').load(open(os.path.join(os.path.dirname(os.path.abspath(__file__)), 'settings.json')))['wording']['ban']) + r")\b", re.I)
 bad = 0
 from html import unescape as html_unescape
+
+# Edwin 3 Nov 2026 (PERMANENT): listings use the exact Google Business Profile name, so a workshop's own name
+# (e.g. "Best Auto Service @ Toh Guan") is masked before the wording checks; our own copy is still checked.
+class _NameMasked:
+    def __init__(s, rx):
+        import glob as _g, html as _h
+        s.rx = rx; s.names = []
+        for _f in _g.glob(os.path.join(os.path.dirname(os.path.abspath(__file__)), '..', 'data', 'workshops', '*.json')):
+            _r = json.load(open(_f)); _n = _r.get('name') or ''
+            if rx.search(_n): s.names += [_n, _h.escape(_n), _h.escape(_n, quote=False), __import__('urllib.parse').parse.quote(_n), _r.get('slug') or os.path.basename(_f)[:-5]]
+        s.names.sort(key=len, reverse=True)
+    def _m(s, t):
+        for _n in s.names: t = t.replace(_n, 'Workshop')
+        return t
+    def finditer(s, t): return s.rx.finditer(s._m(t))
+    def findall(s, t): return s.rx.findall(s._m(t))
+    def search(s, t): return s.rx.search(s._m(t))
 HOTLINK = set()
 SET_IMG = json.load(open(os.path.join(os.path.dirname(os.path.abspath(__file__)), 'settings.json')))['image_hosts_pending']
 class P(HTMLParser):
@@ -24,6 +41,7 @@ class P(HTMLParser):
     def handle_data(s, d):
         if s.in_ld: s.ld[-1] += d
         elif not s.skip: s.text.append(d)
+_BANM = _NameMasked(BAN)
 files = [os.path.join(d, f) for d, _, fs in os.walk(root) for f in fs if f.endswith('.html')]
 for f in sorted(files):
     rel = os.path.relpath(f, root)
@@ -41,7 +59,7 @@ for f in sorted(files):
         # Edwin 3 Nov 2026: estate titles may say "Best ... Top Rated" only when the page ranks workshops by the combined score (8+ comparable workshops) and says so
         if 'Ranked by a combined score of Google rating and number of ratings' not in src: print('BEST title without a ranking basis', rel); bad += 1
         _bt = _bt.replace('Best Car Workshops in', 'Car Workshops in', 1)
-    for m in BAN.finditer(_bt): print('BANNED', rel, m.group(0)); bad += 1
+    for m in _BANM.finditer(_bt): print("BANNED", rel, m.group(0)); bad += 1
     if '404.html' == rel: continue
     base = '/' + rel.replace('index.html', '')
     for l in p.links:
@@ -119,6 +137,7 @@ home_src = open(os.path.join(root, 'index.html'), encoding='utf-8').read()
 import urllib.parse as _up
 import data as _data
 ENDORSE = re.compile(r'\b(partner\w*|verified|recommended|recommends|trusted|confirmed|endorse\w*|official\w*|approved|authori[sz]ed|certified|best|top|leading|number one)\b', re.I)
+ENDORSE = _NameMasked(ENDORSE)
 CATPHRASE = {'general-servicing-repair': 'servicing or repair', 'spray-painting-bodywork': 'spray painting or bodywork', 'gearbox-repair': 'gearbox repair',
              'abs-ecu-module-repair': 'ABS or ECU repair', 'car-battery': 'a car battery', 'car-detailing-coating': 'detailing or coating', 'car-aircon-repair': 'car aircon repair',
              'car-wrap-ppf': 'a wrap or PPF', 'car-parts': 'car parts'}
@@ -441,7 +460,7 @@ for _g in _gd.GUIDES:
     _v = re.sub(r'<(script|style).*?</\1>', '', _t, flags=re.S); _v = re.sub(r'<[^>]+>', ' ', _v)
     if _gd.gpath(_g) not in _sm or _gd.gpath(_g) not in _ll: print('guide not in sitemap/llms.txt', _g['slug']); bad += 1
     if re.search(r'S\$|\$\s?\d|\bSGD\b|\d\s?dollars', _v): print('guide states a price', _g['slug']); bad += 1
-    if re.search(r'\b(best|trusted|recommended|guaranteed|cheapest)\b', _v, re.I): print('guide has endorsement wording', _g['slug']); bad += 1
+    if _NameMasked(re.compile(r'\b(best|trusted|recommended|guaranteed|cheapest)\b', re.I)).search(_v): print('guide has endorsement wording', _g['slug']); bad += 1
     for _l in re.findall(r'href="\.\./\.\./workshops/([a-z0-9-]+)/"', _t):
         if not os.path.exists(os.path.join(root, 'workshops', _l, 'index.html')): print('guide links to a missing workshop', _l); bad += 1
 if 'guides/' not in _sm: print('guides index not in sitemap'); bad += 1

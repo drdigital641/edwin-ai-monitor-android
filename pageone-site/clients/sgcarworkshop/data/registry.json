@@ -979,5 +979,338 @@
   "mobile": "+6582013846",
   "status": "built",
   "date": "2026-11-04"
+ },
+ {
+  "place_id": "ChIJZ4213S8X2jERZAZn6PtwNpM",
+  "slug": "gt-continental",
+  "name_norm": "gt continental",
+  "postal_code": "575722",
+  "mobile": "+6593259888",
+  "status": "built",
+  "date": "2026-11-04"
+ },
+ {
+  "place_id": "ChIJTyADmMIX2jERHfnASWGhRaM",
+  "slug": "braveries-garage",
+  "name_norm": "braveries garage",
+  "postal_code": "575721",
+  "mobile": "+6588793153",
+  "status": "built",
+  "date": "2026-11-04"
+ },
+ {
+  "place_id": "ChIJGfFjU4gX2jERGaqvugYegaQ",
+  "slug": "icar-motorwerkz",
+  "name_norm": "icar motorwerkz bmw mercedes benz workshop",
+  "postal_code": "575722",
+  "mobile": "+6597839483",
+  "status": "built",
+  "date": "2026-11-04"
+ },
+ {
+  "place_id": "ChIJPeTxlewX2jER1ld8eJo9wqU",
+  "slug": "shi-fu-automobile",
+  "name_norm": "shi fu automobile",
+  "postal_code": "575722",
+  "mobile": "+6596498393",
+  "status": "built",
+  "date": "2026-11-04"
+ },
+ {
+  "place_id": "ChIJ8cw9RiEX2jERiHL6qHfZb8g",
+  "slug": "ong-guan-choon-motor",
+  "name_norm": "ong guan choon motor",
+  "postal_code": "575721",
+  "mobile": "+6598380682",
+  "status": "built",
+  "date": "2026-11-04"
+ },
+ {
+  "place_id": "ChIJa_c2AbEX2jERtpzm7UyJ19M",
+  "slug": null,
+  "name_norm": "mirage garage",
+  "postal_code": "575722",
+  "mobile": null,
+  "status": "closed",
+  "date": "2026-11-04"
+ },
+ {
+  "place_id": "ChIJUR_esoE92jER1YkTFcPcJq8",
+  "slug": null,
+  "name_norm": "thecarworkshop",
+  "postal_code": "498765",
+  "mobile": null,
+  "status": "closed",
+  "date": "2026-11-04"
+ },
+ {
+  "place_id": "ChIJQQaNu7IP2jERgRnZ1tGBPBY",
+  "slug": null,
+  "name_norm": "pioneer centre",
+  "postal_code": "627605",
+  "mobile": null,
+  "status": "rejected-no-mobile",
+  "date": "2026-11-04"
+ },
+ {
+  "place_id": "ChIJF7mRvVwT2jERldM1BoY-2u4",
+  "slug": null,
+  "name_norm": "ag auto",
+  "postal_code": "757695",
+  "mobile": null,
+  "status": "rejected-no-mobile",
+  "date": "2026-11-04"
+ },
+ {
+  "place_id": "ChIJ15PrDk4T2jEREb7pO7ATQRQ",
+  "slug": null,
+  "name_norm": "forza autohaus",
+  "postal_code": "737856",
+  "mobile": null,
+  "status": "rejected-no-mobile",
+  "date": "2026-11-04"
+ },
+ {
+  "place_id": "ChIJy5Llw0gT2jERA-taMrisMAI",
+  "slug": "majesty-autoworks",
+  "name_norm": "majesty autoworks",
+  "postal_code": "658064",
+  "mobile": "+6591549231",
+  "status": "built",
+  "date": "2026-11-04"
+ },
+ {
+  "place_id": "ChIJ-doX7aAR2jER9p7xbECMjhk",
+  "slug": "tt-motorsport-jurong",
+  "name_norm": "tt motorsport jurong",
+  "postal_code": "608586",
+  "mobile": "+6591616161",
+  "status": "built",
+  "date": "2026-11-04"
+ },
+ {
+  "place_id": "ChIJEQMT538R2jERrTz9nSfuPXA",
+  "slug": "best-auto-service-toh-guan",
+  "name_norm": "best auto service p l toh guan",
+  "postal_code": "608586",
+  "mobile": "+6586557546",
+  "status": "built",
+  "date": "2026-11-04"
+ },
+ {
+  "place_id": "ChIJ3XHeh1IR2jER5sUoA10jTCQ",
+  "slug": "automotive-repair-centre-jurong",
+  "name_norm": "automotive repair centre jurong",
+  "postal_code": "608586",
+  "mobile": "+6589183288",
+  "status": "built",
+  "date": "2026-11-04"
+ },
+ {
+  "place_id": "ChIJKV9t9OUR2jERYbEa2aWerW8",
+  "slug": "lay-auto-garage",
+  "name_norm": "lay auto garage",
+  "postal_code": "608586",
+  "mobile": "+6593874666",
+  "status": "built",
+  "date": "2026-11-04"
+ },
+ {
+  "place_id": "ChIJh3QJL_oW2jER5T6u_egTcII",
+  "slug": "soon-huat-autoserv",
+  "name_norm": "soon huat autoserv",
+  "postal_code": "608586",
+  "mobile": "+6584025982",
+  "status": "built",
+  "date": "2026-11-04"
+ },
+ {
+  "place_id": "ChIJS1xLZUZ2uokRk7odmw3u6KQ",
+  "slug": "squad-workshop",
+  "name_norm": "squad workshop",
+  "postal_code": "608586",
+  "mobile": "+6586175555",
+  "status": "built",
+  "date": "2026-11-04"
+ },
+ {
+  "place_id": "ChIJ7fYYpgUR2jER3zx8_JT3E7M",
+  "slug": "af-cars",
+  "name_norm": "af cars",
+  "postal_code": "608586",
+  "mobile": "+6586118181",
+  "status": "built",
+  "date": "2026-11-04"
+ },
+ {
+  "place_id": "ChIJgcEUd20Q2jERMF7FecMbYQg",
+  "slug": "jc-wheel-dynamic",
+  "name_norm": "jc wheel dynamic",
+  "postal_code": "608586",
+  "mobile": "+6592209972",
+  "status": "built",
+  "date": "2026-11-04"
+ },
+ {
+  "place_id": "ChIJD_wOam0Q2jER7y3mdgDACzQ",
+  "slug": "tyreplus-toh-guan",
+  "name_norm": "tyreplus toh guan",
+  "postal_code": "608586",
+  "mobile": "+6593655498",
+  "status": "built",
+  "date": "2026-11-04"
+ },
+ {
+  "place_id": "ChIJT045e20Q2jERGcq8jHZ5EHs",
+  "slug": "auto-wheels-tg",
+  "name_norm": "auto wheels tg",
+  "postal_code": "608586",
+  "mobile": "+6588523456",
+  "status": "built",
+  "date": "2026-11-04"
+ },
+ {
+  "place_id": "ChIJzYJrWugR2jERkKjxLAj0L2k",
+  "slug": "tee-guan-trading-co",
+  "name_norm": "tee guan trading",
+  "postal_code": "608609",
+  "mobile": "+6596711071",
+  "status": "built",
+  "date": "2026-11-04"
+ },
+ {
+  "place_id": "ChIJG2_HTWgR2jERm3Ssgc-xhPE",
+  "slug": "supreme-autocare",
+  "name_norm": "supreme autocare",
+  "postal_code": "608586",
+  "mobile": "+6589385886",
+  "status": "built",
+  "date": "2026-11-04"
+ },
+ {
+  "place_id": "ChIJNWvL0YYT2jERyf5Gg3OX8kQ",
+  "slug": "88-auto-garage-woodlands",
+  "name_norm": "88 auto garage woodlands",
+  "postal_code": "757723",
+  "mobile": "+6589070707",
+  "status": "built",
+  "date": "2026-11-04"
+ },
+ {
+  "place_id": "ChIJB4OucAAT2jER1scLxha_TQg",
+  "slug": "l1-motorsports",
+  "name_norm": "l1 motorsports",
+  "postal_code": "737719",
+  "mobile": "+6586832626",
+  "status": "built",
+  "date": "2026-11-04"
+ },
+ {
+  "place_id": "ChIJpWODsGET2jER3hq9gY_e_Sg",
+  "slug": "sc-garage",
+  "name_norm": "sc garage",
+  "postal_code": "757514",
+  "mobile": "+6585000027",
+  "status": "built",
+  "date": "2026-11-04"
+ },
+ {
+  "place_id": "ChIJYyt0ErvOLmsRDHeyHqoj6R0",
+  "slug": "revup-auto",
+  "name_norm": "revup auto",
+  "postal_code": "737856",
+  "mobile": "+6589550108",
+  "status": "built",
+  "date": "2026-11-04"
+ },
+ {
+  "place_id": "ChIJedZ_eosR2jERD0YpUilf6No",
+  "slug": "chee-chai-motor-repairer",
+  "name_norm": "chee chai motor repairer",
+  "postal_code": "737869",
+  "mobile": "+6596650018",
+  "status": "built",
+  "date": "2026-11-04"
+ },
+ {
+  "place_id": "ChIJB2_rSywR2jERITOeHVR436w",
+  "slug": "jnk-workshop",
+  "name_norm": "jnk workshop llp",
+  "postal_code": "737869",
+  "mobile": "+6590944567",
+  "status": "built",
+  "date": "2026-11-04"
+ },
+ {
+  "place_id": "ChIJ0dxVbosR2jERmjsr27gGEmQ",
+  "slug": "ah-song-motor",
+  "name_norm": "ah song motor",
+  "postal_code": "737869",
+  "mobile": "+6590468128",
+  "status": "built",
+  "date": "2026-11-04"
+ },
+ {
+  "place_id": "ChIJW-pZm4wR2jERxv3yfJOH5X4",
+  "slug": "nam-bee-trading",
+  "name_norm": "nam bee trading",
+  "postal_code": "737869",
+  "mobile": "+6596478117",
+  "status": "built",
+  "date": "2026-11-04"
+ },
+ {
+  "place_id": "ChIJ04QjVMXWiC8RXjp1OAXEU1s",
+  "slug": "rk-one-stop-autohub",
+  "name_norm": "rk one stop autohub",
+  "postal_code": "737869",
+  "mobile": "+6593831164",
+  "status": "built",
+  "date": "2026-11-04"
+ },
+ {
+  "place_id": "ChIJDVZRvzQT2jER4NtXrEdZsEE",
+  "slug": "sct-auto-services",
+  "name_norm": "sct auto services",
+  "postal_code": "737869",
+  "mobile": "+6596729559",
+  "status": "built",
+  "date": "2026-11-04"
+ },
+ {
+  "place_id": "ChIJxdWe3uMT2jER-piOpZUU3SE",
+  "slug": "cars-n-such",
+  "name_norm": "cars n such",
+  "postal_code": "737869",
+  "mobile": "+6587870235",
+  "status": "built",
+  "date": "2026-11-04"
+ },
+ {
+  "place_id": "ChIJTRJ67g1Xh6oReDldS_a6-k4",
+  "slug": "98-auto-werkz",
+  "name_norm": "98 auto werkz",
+  "postal_code": "737869",
+  "mobile": "+6588188998",
+  "status": "built",
+  "date": "2026-11-04"
+ },
+ {
+  "place_id": "ChIJUVoH1_ET2jERXNVSzxx-J-I",
+  "slug": "sg-car-services",
+  "name_norm": "car services",
+  "postal_code": "737869",
+  "mobile": "+6597807960",
+  "status": "built",
+  "date": "2026-11-04"
+ },
+ {
+  "place_id": "ChIJS3wAxgUT2jERCjQTdwaqPhU",
+  "slug": "hahn-automotive",
+  "name_norm": "hahn automotive",
+  "postal_code": "737869",
+  "mobile": "+6598553956",
+  "status": "built",
+  "date": "2026-11-04"
  }
 ]

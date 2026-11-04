@@ -1,0 +1,29 @@
+{
+ "lede": "Lay Auto Garage is a car repair workshop at 48 Toh Guan Rd E, #02-103/104 Block No 48. Its Google Maps listing shows opening hours and customer ratings.",
+ "chips": [
+  "Car repair"
+ ],
+ "services": [
+  "General servicing and repair"
+ ],
+ "themes": "Customers on Google Maps mention towed-in breakdown repairs, coolant system fixes, detailed quotes before work starts and realistic advice on cost and timing. One customer was unhappy with a wait at an OBU installation appointment.",
+ "faqs": [
+  [
+   "What does Lay Auto Garage do?",
+   "Google Maps lists it as a car repair workshop."
+  ],
+  [
+   "What are the opening hours?",
+   "The hours are listed in the Google Maps section above. Please see Google Maps for current hours."
+  ]
+ ],
+ "sources": "its Google Maps listing",
+ "stories": [],
+ "mentioned_services": [
+  "Breakdown repair",
+  "Coolant system repair",
+  "MINI cars",
+  "OBU installation",
+  "Car servicing"
+ ]
+}

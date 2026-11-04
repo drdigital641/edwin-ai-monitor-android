@@ -1,0 +1,26 @@
+{
+ "lede": "Supreme Autocare is a car repair workshop at 48 Toh Guan Rd E, #04-120/121. Its Google Maps listing shows opening hours and customer ratings.",
+ "chips": [
+  "Car repair"
+ ],
+ "services": [
+  "General servicing and repair"
+ ],
+ "themes": "Customers on Google Maps mention regular servicing, a clean workshop with an air-conditioned waiting lounge, and a transmission housing reseal.",
+ "faqs": [
+  [
+   "What does Supreme Autocare do?",
+   "Google Maps lists it as a car repair workshop."
+  ],
+  [
+   "What are the opening hours?",
+   "The hours are listed in the Google Maps section above. Please see Google Maps for current hours."
+  ]
+ ],
+ "sources": "its Google Maps listing",
+ "stories": [],
+ "mentioned_services": [
+  "Car servicing",
+  "Transmission reseal"
+ ]
+}

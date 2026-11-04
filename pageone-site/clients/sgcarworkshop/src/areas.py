@@ -123,6 +123,10 @@ _IE = [
      'Yishun Industrial Park A is one of the two main motor trade clusters in Yishun, in the North region.'),
     ('yishun-industrial-street-1', 'Yishun Industrial Street 1', 'yishun', ['yishun industrial street', 'yishun industrial st'],
      'Yishun Industrial Street 1, around North Spring Bizhub and Northpoint Bizhub, is the second motor trade cluster in Yishun.'),
+    ('bukit-batok-crescent', 'Bukit Batok Crescent (WCEGA Plaza)', 'bukit-batok', ['bukit batok cres', 'bukit batok crescent', 'wcega'],
+     'Bukit Batok Crescent, home to the WCEGA Plaza and WCEGA Tower industrial buildings, is a light industrial area in the West region.'),
+    ('woodlands-close', 'Woodlands Close (MEGA@Woodlands)', 'woodlands', ['woodlands cl', 'woodlands close', 'mega@woodland'],
+     'Woodlands Close, where the MEGA@Woodlands industrial building stands, is a light industrial area in the north, near Woodlands Avenue 12.'),
 ]
 ESTATES = {}
 for _s, _n, _t, _kw, _intro in _IE:

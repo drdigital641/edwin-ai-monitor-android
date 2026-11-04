@@ -1,0 +1,28 @@
+{
+ "lede": "ICAR Motorwerkz is a car repair workshop at 160 Sin Ming Dr, #04-15 Sin Ming Auto City. Its Google Maps listing shows opening hours and customer ratings.",
+ "chips": [
+  "Car repair"
+ ],
+ "services": [
+  "General servicing and repair"
+ ],
+ "themes": "Customers on Google Maps mention BMW and Mercedes-Benz work, honest advice on aircon compressor replacement, an engine overhaul with progress updates, and sourcing hard-to-find parts from overseas.",
+ "faqs": [
+  [
+   "What does ICAR Motorwerkz do?",
+   "Google Maps lists it as a car repair workshop."
+  ],
+  [
+   "What are the opening hours?",
+   "The hours are listed in the Google Maps section above. Please see Google Maps for current hours."
+  ]
+ ],
+ "sources": "its Google Maps listing",
+ "stories": [],
+ "mentioned_services": [
+  "BMW and Mercedes-Benz cars",
+  "Aircon compressor replacement",
+  "Engine overhaul",
+  "Parts sourcing"
+ ]
+}

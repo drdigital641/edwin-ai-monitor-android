@@ -1,5 +1,6 @@
 RedirectMatch 301 ^/areas/ang\-mo\-kio/general\-servicing\-repair/?$ /areas/amk-industrial-park-2/
 RedirectMatch 301 ^/areas/bedok\-north/general\-servicing\-repair/?$ /areas/bedok-industrial-park-e/
+RedirectMatch 301 ^/areas/bukit\-batok/general\-servicing\-repair/?$ /areas/bukit-batok-crescent/
 RedirectMatch 301 ^/areas/kaki\-bukit/general\-servicing\-repair/?$ /areas/kaki-bukit-industrial-estate/
 RedirectMatch 301 ^/areas/kranji/?$ /areas/carros-centre-jalan-lam-huat/
 RedirectMatch 301 ^/areas/sin\-ming\-bishan/general\-servicing\-repair/?$ /areas/sin-ming-industrial-estate/

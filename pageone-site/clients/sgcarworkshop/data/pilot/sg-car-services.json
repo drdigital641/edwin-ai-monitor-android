@@ -1,0 +1,28 @@
+{
+ "lede": "SG Car Services is a car repair workshop at 60 Jln Lam Huat, #04-29 Carros Centre. Its Google Maps listing shows opening hours and customer ratings.",
+ "chips": [
+  "Car repair"
+ ],
+ "services": [
+  "General servicing and repair"
+ ],
+ "themes": "Customers on Google Maps mention a Mercedes-Benz focus, servicing with no hidden costs and personal updates from the owner, and fixing an ABS problem on a Honda.",
+ "faqs": [
+  [
+   "What does SG Car Services do?",
+   "Google Maps lists it as a car repair workshop."
+  ],
+  [
+   "What are the opening hours?",
+   "The hours are listed in the Google Maps section above. Please see Google Maps for current hours."
+  ]
+ ],
+ "sources": "its Google Maps listing",
+ "stories": [],
+ "mentioned_services": [
+  "Mercedes-Benz cars",
+  "Car servicing",
+  "ABS repair",
+  "Honda cars"
+ ]
+}

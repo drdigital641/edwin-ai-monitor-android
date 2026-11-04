@@ -1,0 +1,28 @@
+{
+ "lede": "Automotive Repair Centre [Jurong] is a car repair workshop at 48 Toh Guan Rd E, #02-145/146/147/148/149. Its Google Maps listing shows opening hours and customer ratings.",
+ "chips": [
+  "Car repair"
+ ],
+ "services": [
+  "General servicing and repair"
+ ],
+ "themes": "Customers on Google Maps mention accident repair handled through the other party’s insurance, help with accident reports, clear and timely updates, and cars returned within the promised time.",
+ "faqs": [
+  [
+   "What does Automotive Repair Centre [Jurong] do?",
+   "Google Maps lists it as a car repair workshop."
+  ],
+  [
+   "What are the opening hours?",
+   "The hours are listed in the Google Maps section above. Please see Google Maps for current hours."
+  ]
+ ],
+ "sources": "its Google Maps listing",
+ "stories": [],
+ "mentioned_services": [
+  "Accident repair",
+  "Insurance claims",
+  "Accident reporting",
+  "Car servicing"
+ ]
+}

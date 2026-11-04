@@ -1,0 +1,27 @@
+{
+ "lede": "SCT Auto Services is a car repair workshop at 60 Jln Lam Huat, #05-06 Carros Centre. Its Google Maps listing shows opening hours and customer ratings.",
+ "chips": [
+  "Car repair"
+ ],
+ "services": [
+  "General servicing and repair"
+ ],
+ "themes": "Customers on Google Maps mostly mention buying used cars and trade-ins here, including an MPV, plus repair work with prompt updates.",
+ "faqs": [
+  [
+   "What does SCT Auto Services do?",
+   "Google Maps lists it as a car repair workshop."
+  ],
+  [
+   "What are the opening hours?",
+   "The hours are listed in the Google Maps section above. Please see Google Maps for current hours."
+  ]
+ ],
+ "sources": "its Google Maps listing",
+ "stories": [],
+ "mentioned_services": [
+  "Used car sales",
+  "Car trade-in",
+  "Car repair"
+ ]
+}
