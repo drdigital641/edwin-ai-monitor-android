@@ -56,3 +56,8 @@
 .benefit-strip li{font-size:.85rem;font-weight:700;color:#fff;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.18);border-radius:999px;padding:6px 12px}
 .benefit-strip li:first-child{background:rgba(255,61,87,.22);border-color:rgba(255,61,87,.5)}
 .hero-ctas{margin-top:24px}
+.result-card .rc-big{font-size:1rem;margin:10px 0 2px}.result-card .rc-big b{font-family:var(--display);font-size:2.4rem;color:var(--ink);display:block;line-height:1.1}
+.result-card .rc-sub{font-size:.88rem;font-weight:700;color:var(--green);margin:0 0 14px}
+.result-card .rc-label{font-size:.78rem;color:var(--muted);font-weight:600;margin:0 0 4px}
+.rc-ranks{list-style:none;margin:0 0 14px;padding:0}.rc-ranks li{display:flex;justify-content:space-between;gap:12px;padding:7px 0;border-top:1px solid var(--line);font-size:.9rem}.rc-ranks b{color:var(--green);font-family:var(--display)}
+.offer-line{padding:36px 0;text-align:center;border-top:1px solid var(--line);border-bottom:1px solid var(--line)}.offer-line p{margin:0 auto;max-width:720px;font-size:1.05rem}.offer-line .offer-links{margin-top:10px}.offer-line .offer-links a{margin:0 10px}

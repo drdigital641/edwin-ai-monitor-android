@@ -94,6 +94,32 @@ page("how-it-works/index.html",
     </section>
 
     <section class="section alt">
+      <div class="wrap">
+        <p class="kicker reveal">What you get</p>
+        <h2 class="reveal">More than a website</h2>
+        <p class="section-lead reveal">We help your business get discovered, then make it easy to enquire.</p>
+        <div class="cards three plain-cards" style="margin-top:28px">
+          <a class="card reveal" href="/website/"><div class="emoji" aria-hidden="true">🖥️</div><h3>Website included</h3><p>Built for you, or yours fixed. Looked after daily.</p><span class="card-link">About the website →</span></a>
+          <a class="card reveal" href="/seo-aeo-geo-singapore/"><div class="emoji" aria-hidden="true">🔍</div><h3>Found on Google &amp; AI search</h3><p>SEO, AEO and GEO for Google Search, Maps and AI like ChatGPT.</p><span class="card-link">SEO, AEO and GEO →</span></a>
+          <a class="card reveal" href="/lead-generation-singapore/"><div class="emoji" aria-hidden="true">💬</div><h3>Visitors into enquiries</h3><p>Clear pages and one-tap WhatsApp enquiry buttons.</p><span class="card-link">How we win enquiries →</span></a>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="wrap">
+        <p class="kicker reveal">One simple plan</p>
+        <h2 class="reveal">Affordable, monthly, no lock-in</h2>
+        <div class="cards two" style="margin-top:32px">
+          <a class="card reveal" href="/get-found/"><p class="pill">The plan</p><h3>Get Found</h3><p>Website included, Google and AI search setup, daily audits, an article every 2 days.</p><span class="price-tag">S$50 <small>/month</small></span><br><span class="card-link">What's included →</span></a>
+          <a class="card reveal" href="/seo-boost/"><p class="pill">Optional top-up</p><h3>SEO Boost</h3><p>First-page competitor analysis for one search term, then your page improved.</p><span class="price-tag">S$10 <small>/run</small></span><br><span class="card-link">Learn more →</span></a>
+        </div>
+        <p class="note reveal" style="text-align:center">Register by 31 Dec 2026 for S$50 a month. No setup fee, no contract. <a class="card-link" href="/pricing/">Full pricing →</a></p>
+        <p class="note reveal" style="text-align:center"><a class="link" href="/industries/">Industries we help →</a> · <a class="link" href="/seo-services-singapore/">Compare SEO providers →</a></p>
+      </div>
+    </section>
+
+    <section class="section alt">
       <div class="wrap narrow">
         <p class="kicker reveal">Your part</p>
         <h2 class="reveal">What we need from you</h2>
@@ -121,7 +147,7 @@ page("how-it-works/index.html",
     </section>
 
 """ + _lg_cta("Ready to get found and get enquiries?", "Tell Edwin what you do and where. No obligation.", "how it works, bottom"),
-     crumb="How it works", updated="2026-10-28")
+     crumb="How it works", updated="2026-11-04")
 
 
 # ---------- /lead-generation-singapore/ ----------
