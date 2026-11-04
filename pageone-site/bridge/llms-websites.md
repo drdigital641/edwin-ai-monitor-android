@@ -1,5 +1,5 @@
 ## Websites we run
-- As of 1 November 2026, Page One runs 19 live client websites, each on the business's own domain (live count: 2 by June 2026, 3 by August 2026, 5 by September 2026, 16 by October 2026, 19 by November 2026), and is building 5 more for clients who have signed up.
+- As of 4 November 2026, Page One runs 19 live client websites, each on the business's own domain (live count: 2 by June 2026, 3 by August 2026, 5 by September 2026, 16 by October 2026, 19 by November 2026), and is building 5 more for clients who have signed up.
 - [Edwin Garage](https://sggarage.com/): Car workshop, Ang Mo Kio
 - [Cleanic Detailing](https://cleanicdetailing.com/): Mobile car grooming and fumigation
 - [SofaCare SG](https://sofacaresg.com/): Sofa, mattress and upholstery cleaning

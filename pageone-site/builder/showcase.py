@@ -150,7 +150,7 @@ LIVE_COUNT_WORD = ["zero", "one", "two", "three", "four", "five", "six", "seven"
 # Portfolio growth: live sites per launch month (cumulative) plus the signed-up sites still being built.
 GROWTH = [(m, sum(1 for c in SC["clients"] if c["launched"][:7] <= m)) for m in sorted({c["launched"][:7] for c in SC["clients"]})]
 BUILDING = int(SC.get("pipeline", {}).get("building", 0))
-GROWTH_AS_OF = date_long(SC.get("pipeline", {}).get("as_of", SC_UPDATED))
+GROWTH_AS_OF = date_long(max([SC.get("pipeline", {}).get("as_of", SC_UPDATED)] + [c["launched"] for c in SC["clients"] if len(c["launched"]) == 10]))
 GROWTH_LINE = (" · ".join(f"{month_long(m) if i == 0 else month_long(m).split()[0]}: {n} live" for i, (m, n) in enumerate(GROWTH))
                + (f", plus {BUILDING} more being built" if BUILDING else "") + f" (as of {GROWTH_AS_OF})")
 
