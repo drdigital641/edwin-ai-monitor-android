@@ -169,7 +169,7 @@ function log(a,rule){try{var h=location.hostname.replace(/^www\./,''),site=h===L
  var body2=JSON.stringify({entity:'CtaClick',site:site,session_id:keep('sgcw-sid'),page_path:location.pathname,referrer:(d.referrer||'').slice(0,300),
   device_type:/Mobi|Android|iPhone/i.test(ua)?'mobile':/iPad|Tablet/i.test(ua)?'tablet':'desktop',cta_type:'search',cta_label:q,enquiry_ref:ref});
  var url='https://base44.app/api/apps/'+APP+'/functions/track',sent=false;
- if(navigator.sendBeacon){try{sent=navigator.sendBeacon(url,new Blob([body2],{type:'application/json'}))}catch(x){}}
+ if(navigator.sendBeacon){try{sent=navigator.sendBeacon(url,new Blob([body2],{type:'text/plain;charset=UTF-8'}))}catch(x){}}
  if(!sent&&window.fetch){fetch(url,{method:'POST',credentials:'omit',keepalive:true,headers:{'Content-Type':'application/json'},body:body2}).catch(function(){})}}catch(x){}}
 /* Placeholder types example questions, like an AI search box. Stops while the box is in use; static for reduced motion. */
 (function(){var S=['My Honda Vezel aircon not cold, near Ubi','Knocking sound when I go over humps','Check engine light on my Toyota Altis','Gearbox jerking on my Mercedes C200','Scratch on my rear bumper, need respray in Yishun','Workshop open on Sunday in Kaki Bukit','Car cannot start, battery flat in Tampines','BMW servicing in Sin Ming','Ceramic coating for a new car','Where to fix ABS light on a Mazda 3'];

@@ -107,8 +107,8 @@ var body=JSON.stringify({entity:'CtaClick',site:site,session_id:keep(sessionStor
 referrer:'',device_type:/Mobi|Android|iPhone/i.test(ua)?'mobile':/iPad|Tablet/i.test(ua)?'tablet':'desktop',
 cta_type:kind,cta_label:slug.slice(0,60),enquiry_ref:tier+'|'+pagetype(location.pathname)+'|'+new Date().toISOString().slice(0,7)});
 var url='https://base44.app/api/apps/'+APP+'/functions/track',sent=false;
-if(navigator.sendBeacon){try{sent=navigator.sendBeacon(url,new Blob([body],{type:'application/json'}))}catch(x){}}
-if(!sent&&window.fetch){fetch(url,{method:'POST',credentials:'omit',keepalive:true,headers:{'Content-Type':'application/json'},body:body}).catch(function(){})}
+if(navigator.sendBeacon){try{sent=navigator.sendBeacon(url,new Blob([body],{type:'text/plain;charset=UTF-8'}))}catch(x){}}
+if(!sent&&window.fetch){fetch(url,{method:'POST',credentials:'omit',keepalive:true,headers:{'Content-Type':'text/plain;charset=UTF-8'},body:body}).catch(function(){})}
 }catch(x){}}
 })();
 
