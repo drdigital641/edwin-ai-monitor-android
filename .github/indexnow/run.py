@@ -1,7 +1,7 @@
 # IndexNow key-file check (mode=check) or full sitemap submit (mode=submit). Run on a GitHub runner.
 import json,re,sys,urllib.request,urllib.error
 UA='Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130.0 Safari/537.36'
-mode=open('.github/indexnow/mode').read().strip()
+mp=open('.github/indexnow/mode').read().split(); mode=mp[0]; only=mp[1:]  # optional host filter
 def get(u):
   return urllib.request.urlopen(urllib.request.Request(u,headers={'User-Agent':UA}),timeout=25).read().decode('utf-8','replace')
 def locs(x): return re.findall(r'<loc>\s*([^<\s]+)\s*</loc>',x)
@@ -9,6 +9,7 @@ for line in open('.github/indexnow/sites.txt'):
   p=line.split()
   if not p: continue
   host,key,sms=p[0],p[1],[s for s in p[2:] if s.endswith('.xml')]
+  if only and host not in only: continue
   try:
     body=get(f'https://{host}/{key}.txt').strip(); live='yes' if body==key else 'WRONG:'+body[:40]
   except urllib.error.HTTPError as e: live=f'no ({e.code})'
