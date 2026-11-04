@@ -407,11 +407,30 @@ def _kbar(a, b):
     return f'<div class="kbar" aria-hidden="true">{row(a[0], a[1], "was")}{row(b[0], b[1], "now")}</div>'
 
 
+def _result_cards():
+    """Homepage results: one card per client with a full case study (clicks, page-one searches, best searches)."""
+    out = []
+    for key in ("sggarage", "cleanic"):
+        c, f = SC_BY[key], G[key]
+        g = c["gsc"]
+        trend = f"up from {f['prev_clicks']}" if g["clicks"] > g["prev_clicks"] else f"compared with {f['prev_clicks']}"
+        ranks = sorted(g["top_queries"], key=lambda q: q["position"])[:3]
+        ranks_html = "".join(f'<li><span>{q["query"]}</span><b>#{q["position"]:.1f}</b></li>' for q in ranks)
+        out.append(
+            f'          <a class="card result-card reveal" href="{c.get("case_study", "/results/")}">'
+            f'<p class="pill">{c["industry"]}</p><h3>{c["name"]}</h3>'
+            f'<p class="rc-big"><b>{f["clicks"]}</b> clicks from Google in 28 days</p>'
+            f'<p class="rc-sub">{trend[0].upper() + trend[1:]} · on page one for {f["page_one"]} searches</p>'
+            f'<p class="rc-label">Where they rank (average Google position)</p><ul class="rc-ranks">{ranks_html}</ul>'
+            f'<span class="card-link">See the case study →</span></a>')
+    return "\n".join(out)
+
+
 HOME_TOKENS = {
     "{{PROOF_BOTH}}": PROOF_BOTH, "{{EG_PAGE_ONE}}": EG["page_one"], "{{EG_CLICKS}}": EG["clicks"], "{{EG_POS}}": EG["pos"], "{{EG_POS_FROM}}": (f' data-from="{EG["prev_pos"]}"' if float(EG["prev_pos"]) > float(EG["pos"]) else ""),
     "{{EG_LINK}}": f'<a class="link" href="{SC_BY["sggarage"]["url"]}" target="_blank" rel="noopener">Edwin Garage</a>',
     "{{CL_LINK}}": f'<a class="link" href="{SC_BY["cleanic"]["url"]}" target="_blank" rel="noopener">Cleanic Detailing</a>',
-    "{{THROUGH_SHORT}}": THROUGH_SHORT, "{{WINDOW}}": WINDOW, "{{PROOF_BARS}}": _proof_bars(), "{{MARQUEE}}": _marquee(),
+    "{{THROUGH_SHORT}}": THROUGH_SHORT, "{{WINDOW}}": WINDOW, "{{PROOF_BARS}}": _proof_bars(), "{{MARQUEE}}": _marquee(), "{{RESULT_CARDS}}": _result_cards(),
     "{{NEWEST}}": f"""    <section class="section newest" id="newest">
       <div class="wrap">
         <p class="kicker reveal">New clients, every week</p>
