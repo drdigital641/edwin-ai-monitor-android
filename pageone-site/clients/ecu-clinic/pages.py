@@ -1390,4 +1390,45 @@ ARTICLES = [
              ('Does a used ABS unit need coding after fitting?', 'On some makes and models a replacement unit has to be coded or matched to the car, and on others it does not. Ask before you agree, and give us your car model and chassis number so we can check.'),
              ('Is there a warranty?', 'Yes. Our repairs come with a 6-month warranty.')],
     ),
+    dict(
+        # 5 Nov 2026 (Edwin asked): how to find an ABS/ECU module specialist; one editorial link to the SG Car Workshop
+        # ABS and ECU category (Page One runs both, disclosed). Client facts only: 6-month repair warranty, pick-up and delivery,
+        # Premier @ Kaki Bukit, workshops send module repairs to us (soft wording, content.md). No prices.
+        slug='find-abs-ecu-module-specialist-singapore', service='abs-pump-repair', date='2026-11-05', img_site=True,
+        title='How to Find an ABS or ECU Specialist in Singapore | The ECU Clinic',
+        desc='How to find a workshop that repairs ABS pumps and ECU modules itself in Singapore, what to check, and what to send before you get a quote.',
+        h1='How to Find an ABS or ECU Module Specialist in Singapore',
+        lead='Many workshops can read a fault code. Fewer repair the module itself. Here is how to find one that does, and what to ask before you agree to a quote.',
+        photo='ecu-units-on-bench', alt='ECU and control modules on the repair bench', share='ecu-units-on-bench.jpg',
+        body='''<p><strong>Short answer:</strong> look for a workshop that repairs ABS pumps and ECU modules on its own bench, not one that only swaps parts. Check that its name and mobile number match its Google Business Profile, that customers mention module jobs like yours, and that it posts its own real repairs. Then send it your car model, chassis number and fault codes before you agree to anything.</p>
+<h2>Why is a module specialist hard to find?</h2>
+<p>Most workshops can plug in a scan tool and read a code. Repairing the ABS pump, the ESP control unit or an ECU board itself is narrower work, and many general workshops send it out. Many car workshops send their ABS and module repairs to us, for example. You can come direct and deal with the technician who does the repair.</p>
+<p>The trouble is that search results rarely show who does the bench work. A page that says &ldquo;ECU repair&rdquo; may mean a replacement part, a used unit or a repair, and the price and warranty are very different for each.</p>
+<h2>What should I check before I choose?</h2>
+<ol class="steps">
+<li><strong>The name and number match its Google Business Profile.</strong> Your WhatsApp then reaches the people doing the job.</li>
+<li><strong>Customers mention module work like yours.</strong> Look past the stars for reviews that name the fault, the car and whether it stayed fixed.</li>
+<li><strong>It posts its own real jobs.</strong> Photos of the actual unit and the fault codes are hard to fake. Our <a href="../toyota-alphard-hybrid-c1391-brake-actuator/">Toyota Alphard hybrid brake actuator job</a> is one example.</li>
+<li><strong>It tells you the options.</strong> Repair, used, reconditioned or new, and which needs coding after fitting.</li>
+<li><strong>The warranty is stated up front.</strong> Ours is 6 months on repairs.</li>
+</ol>
+<h2>Is there a directory that does these checks?</h2>
+<p>SG Car Workshop is a Singapore car workshop directory that is trying to. It is built on what workshops and drivers actually put in public, not on paid placements:</p>
+<ul class="ticks">
+<li><strong>Names and mobile numbers come from each workshop&rsquo;s Google Business Profile.</strong></li>
+<li><strong>Listings say what customers mention</strong> in their Google reviews, in the directory&rsquo;s own words, with no copied review text and no guessing.</li>
+<li><strong>Job stories appear only when the workshop posted them itself.</strong> None are invented.</li>
+<li><strong>An AI reads your search the way you type it</strong>, such as &ldquo;Honda Vezel VSA light 81-19 near Kaki Bukit&rdquo;, and picks out the service, car make and area.</li>
+<li><strong>No paid rankings.</strong> Paid listings are labelled Featured and kept out of any ranking.</li>
+</ul>
+<p>Its aim is to become the most useful car workshop directory in Singapore by listening to the people on the ground. The <a href="https://sgcarworkshop.sg/services/abs-ecu-module-repair/">ABS and ECU module repair category on SG Car Workshop</a> lists workshops that do this kind of work, so you can compare more than one.</p>
+<p>To be clear about it: The ECU Clinic has a Featured (paid) listing there, and both this website and the directory are run by Page One Singapore. Use it as a starting point and check every workshop, including us, against the list above.</p>
+<h2>What should I send before a quote?</h2>
+<p>WhatsApp the car model, year, chassis number and the fault codes, with a photo of the dashboard or scan tool screen if you have one. Say what the car does and when it started. With that, a specialist can usually tell you whether the fault points to the module or to something simpler, such as a wheel speed sensor, wiring or a weak battery. See <a href="../abs-warning-light-causes/">ABS warning light causes</a> for the common ones.</p>
+<p>You can bring the car, or just the unit, to Premier @ Kaki Bukit, or use our pick-up and delivery service. See <a href="../../services/abs-pump-repair/">ABS pump and module repair</a> for how the options compare.</p>''',
+        faq=[('Can a general workshop repair an ABS pump?', 'Many general workshops read the fault code and then replace the unit or send it to a specialist. Ask whether the unit will be repaired on site, replaced with a used or reconditioned one, or sent out.'),
+             ('How do I know a module specialist is genuine?', 'Check that the name and mobile number match its Google Business Profile, read reviews that mention module jobs, and look for its own photos of real repairs with fault codes.'),
+             ('Is The ECU Clinic listed on SG Car Workshop?', 'Yes, with a Featured (paid) listing. The directory and this website are both run by Page One Singapore.'),
+             ('What warranty do you give on module repairs?', 'Our repairs come with a 6-month warranty.')],
+    ),
 ]
