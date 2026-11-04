@@ -1,0 +1,26 @@
+{
+ "lede": "APEX Battery & Tyre is a car repair workshop at 21 Jurong West Ave 5. Its Google Maps listing shows opening hours and customer ratings.",
+ "chips": [
+  "Car repair"
+ ],
+ "services": [
+  "General servicing and repair"
+ ],
+ "themes": "Customers on Google Maps mention quick help when a car would not start, a video check to find a flat battery, and clear price information before the job.",
+ "faqs": [
+  [
+   "What does APEX Battery & Tyre do?",
+   "Google Maps lists it as a car repair workshop."
+  ],
+  [
+   "What are the opening hours?",
+   "The hours are listed in the Google Maps section above. Please see Google Maps for current hours."
+  ]
+ ],
+ "sources": "its Google Maps listing",
+ "stories": [],
+ "mentioned_services": [
+  "Battery replacement",
+  "Flat tyre help"
+ ]
+}

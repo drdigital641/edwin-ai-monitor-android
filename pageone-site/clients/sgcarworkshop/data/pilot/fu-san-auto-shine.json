@@ -1,0 +1,27 @@
+{
+ "lede": "Fu San Auto Shine is a car repair workshop at 1004 Bukit Merah Lane 3, #01-23. Its Google Maps listing shows opening hours and customer ratings.",
+ "chips": [
+  "Car repair"
+ ],
+ "services": [
+  "General servicing and repair"
+ ],
+ "themes": "Customers on Google Maps mention detailed checks during maintenance, finding worn tyres and a cracked fan, tracing a hard-to-find noise and long-term care of a VW Golf.",
+ "faqs": [
+  [
+   "What does Fu San Auto Shine do?",
+   "Google Maps lists it as a car repair workshop."
+  ],
+  [
+   "What are the opening hours?",
+   "The hours are listed in the Google Maps section above. Please see Google Maps for current hours."
+  ]
+ ],
+ "sources": "its Google Maps listing",
+ "stories": [],
+ "mentioned_services": [
+  "Car servicing",
+  "Noise diagnosis",
+  "Volkswagen cars"
+ ]
+}

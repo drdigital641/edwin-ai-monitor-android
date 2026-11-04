@@ -1,0 +1,27 @@
+{
+ "lede": "SK Garage is a car repair workshop at 7 Soon Lee St, #01-32. Its Google Maps listing shows opening hours and customer ratings.",
+ "chips": [
+  "Car repair"
+ ],
+ "services": [
+  "General servicing and repair"
+ ],
+ "themes": "Customers on Google Maps mention BMW transmission tuning and car tuning, with the boss test-driving cars to find faults. One customer reported hearing of poor workmanship and attitude.",
+ "faqs": [
+  [
+   "What does SK Garage do?",
+   "Google Maps lists it as a car repair workshop."
+  ],
+  [
+   "What are the opening hours?",
+   "The hours are listed in the Google Maps section above. Please see Google Maps for current hours."
+  ]
+ ],
+ "sources": "its Google Maps listing",
+ "stories": [],
+ "mentioned_services": [
+  "Car tuning",
+  "BMW cars",
+  "Fault diagnosis"
+ ]
+}

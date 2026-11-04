@@ -145,6 +145,14 @@ _IE = [
      'Tampines North Drive 1, home to the T-Space industrial building, is a light industrial area in the north of Tampines in the East region.'),
     ('yishun-ring-road', 'Yishun Ring Road', 'yishun', ['yishun ring rd', 'yishun ring road'],
      'Yishun Ring Road loops around the Yishun town centre in the North region; car service points here sit at petrol stations along the road.'),
+    ('soon-lee-street-pioneer', 'Soon Lee Street (Pioneer Point)', 'jurong-west', ['soon lee st', 'soon lee street', 'pioneer point', 'pioneer centre'],
+     'Soon Lee Street, with the Pioneer Point and Pioneer Centre industrial buildings, is a motor trade cluster in Pioneer, in the far west of Singapore.'),
+    ('jurong-west-avenue-5', 'Jurong West Avenue 5', 'jurong-west', ['jurong west ave 5', 'jurong west avenue 5'],
+     'Jurong West Avenue 5 runs through the Jurong West housing estate in the West region, with car service points along it.'),
+    ('bukit-merah-lane-3', 'Bukit Merah Lane 3', 'alexandra-bukit-merah', ['bukit merah lane 3', 'bukit merah ln 3'],
+     'Bukit Merah Lane 3 is a row of older light industrial blocks in Bukit Merah, in the central region, with several car workshops on its ground floors.'),
+    ('pandan-light-industries-park', 'Pandan Loop (Pandan Light Industries Park)', 'pandan-loop', ['pandan lp', 'pandan loop', 'pandan light industries'],
+     'Pandan Loop, with the Pandan Light Industries Park blocks, is a light industrial area in the west, near the Pandan Reservoir and the Ayer Rajah Expressway.'),
 ]
 ESTATES = {}
 for _s, _n, _t, _kw, _intro in _IE:

@@ -22,6 +22,7 @@ sys.path.insert(0, HERE)
 import areas  # noqa: E402
 
 SUFFIX = re.compile(r'\s*(\((s|pte)\)\s*)?\b(pte\.?\s*ltd\.?|private limited|ltd|p/l|llp|pte)(?![\w/])\.?|\s*\((s|pte)\)\s*ltd\.?', re.I)
+ESTATE_PA = {'soon-lee-street-pioneer': 'Pioneer', 'bukit-merah-lane-3': 'Bukit Merah', 'jurong-west-avenue-5': 'Jurong West'}
 TOWN_PA = {'toh-guan-jurong-east': 'Jurong East', 'sin-ming-bishan': 'Bishan', 'kaki-bukit': 'Bedok', 'ubi': 'Geylang', 'macpherson': 'Geylang', 'defu-hougang': 'Hougang', 'serangoon-north': 'Serangoon', 'kranji': 'Mandai', 'sembawang-admiralty': 'Sembawang', 'woodlands': 'Woodlands', 'yishun': 'Yishun', 'tampines': 'Tampines', 'toa-payoh': 'Toa Payoh'}
 
 
@@ -56,6 +57,7 @@ def listed():
 
 
 def town_pa(est):
+    if est in ESTATE_PA: return ESTATE_PA[est]
     t = areas.ESTATES[est]['town']
     for r in listed():
         if r['estate'] == est and r.get('planning_area'): return r['planning_area']

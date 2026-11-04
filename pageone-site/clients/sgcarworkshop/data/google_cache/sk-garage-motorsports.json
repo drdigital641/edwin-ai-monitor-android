@@ -1,0 +1,35 @@
+{
+ "businessStatus": "OPERATIONAL",
+ "primaryType": "car_repair",
+ "types": [
+  "car_repair",
+  "point_of_interest",
+  "service",
+  "establishment"
+ ],
+ "rating": 4.7,
+ "userRatingCount": 39,
+ "websiteUri": "https://sitelift.site/skgaragemotorsports/",
+ "paymentOptions": {
+  "acceptsCreditCards": true,
+  "acceptsDebitCards": true,
+  "acceptsCashOnly": false,
+  "acceptsNfc": true
+ },
+ "parkingOptions": null,
+ "editorialSummary": null,
+ "weekdayDescriptions": [
+  "Monday: 10:00 AM – 7:00 PM",
+  "Tuesday: 10:00 AM – 7:00 PM",
+  "Wednesday: 10:00 AM – 7:00 PM",
+  "Thursday: 10:00 AM – 7:00 PM",
+  "Friday: 10:00 AM – 7:00 PM",
+  "Saturday: 10:00 AM – 5:30 PM",
+  "Sunday: Closed"
+ ],
+ "review_count_seen": 5,
+ "review_themes": "Customers on Google Maps mention custom tuning, work on a Honda Civic FD2R, quick fault diagnosis and servicing.",
+ "fetched_at": "2026-11-04",
+ "place_id": "ChIJn1EHi44P2jER9gFf1UARa-I",
+ "source": "google_places"
+}

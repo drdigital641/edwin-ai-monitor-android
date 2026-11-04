@@ -1,0 +1,27 @@
+{
+ "lede": "S-Tech Automotive Services is a car repair workshop at 1002 Bukit Merah Lane 3. Its Google Maps listing shows opening hours and customer ratings.",
+ "chips": [
+  "Car repair"
+ ],
+ "services": [
+  "General servicing and repair"
+ ],
+ "themes": "Customers on Google Maps mention servicing and engine oil changes, long-time care of Mini Coopers and light replacement. One customer reported being overcharged for a simple job.",
+ "faqs": [
+  [
+   "What does S-Tech Automotive Services do?",
+   "Google Maps lists it as a car repair workshop."
+  ],
+  [
+   "What are the opening hours?",
+   "The hours are listed in the Google Maps section above. Please see Google Maps for current hours."
+  ]
+ ],
+ "sources": "its Google Maps listing",
+ "stories": [],
+ "mentioned_services": [
+  "Car servicing",
+  "Engine oil change",
+  "Mini cars"
+ ]
+}

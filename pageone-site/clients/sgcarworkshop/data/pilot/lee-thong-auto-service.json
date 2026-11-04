@@ -1,0 +1,27 @@
+{
+ "lede": "Lee Thong Auto Service is a car repair workshop at 1004 Bukit Merah Lane 3. Its Google Maps listing shows opening hours and customer ratings.",
+ "chips": [
+  "Car repair"
+ ],
+ "services": [
+  "General servicing and repair"
+ ],
+ "themes": "Customers on Google Maps mention half-yearly servicing, tyre and brake pad changes within a few hours, and progress videos sent on WhatsApp.",
+ "faqs": [
+  [
+   "What does Lee Thong Auto Service do?",
+   "Google Maps lists it as a car repair workshop."
+  ],
+  [
+   "What are the opening hours?",
+   "The hours are listed in the Google Maps section above. Please see Google Maps for current hours."
+  ]
+ ],
+ "sources": "its Google Maps listing",
+ "stories": [],
+ "mentioned_services": [
+  "Regular servicing",
+  "Tyre replacement",
+  "Brake replacement"
+ ]
+}

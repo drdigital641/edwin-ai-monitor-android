@@ -1,0 +1,30 @@
+{
+ "businessStatus": "OPERATIONAL",
+ "primaryType": "car_repair",
+ "types": [
+  "car_repair",
+  "point_of_interest",
+  "service",
+  "establishment"
+ ],
+ "rating": 5,
+ "userRatingCount": 101,
+ "websiteUri": null,
+ "paymentOptions": null,
+ "parkingOptions": null,
+ "editorialSummary": null,
+ "weekdayDescriptions": [
+  "Monday: 9:00 AM – 8:30 PM",
+  "Tuesday: 9:00 AM – 8:30 PM",
+  "Wednesday: 9:00 AM – 8:30 PM",
+  "Thursday: 9:00 AM – 8:30 PM",
+  "Friday: 9:00 AM – 8:30 PM",
+  "Saturday: 9:00 AM – 8:30 PM",
+  "Sunday: Closed"
+ ],
+ "review_count_seen": 5,
+ "review_themes": "Customers on Google Maps mention car spray painting with a smooth finish, side skirt repair on a new car and help with accident cases.",
+ "fetched_at": "2026-11-04",
+ "place_id": "ChIJlZxB95Qa2jERJrvs8DNYAhA",
+ "source": "google_places"
+}

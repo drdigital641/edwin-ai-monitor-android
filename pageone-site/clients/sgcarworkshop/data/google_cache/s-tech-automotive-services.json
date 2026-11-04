@@ -1,0 +1,33 @@
+{
+ "businessStatus": "OPERATIONAL",
+ "primaryType": "car_repair",
+ "types": [
+  "car_repair",
+  "point_of_interest",
+  "service",
+  "establishment"
+ ],
+ "rating": 4.9,
+ "userRatingCount": 69,
+ "websiteUri": null,
+ "paymentOptions": {
+  "acceptsDebitCards": true,
+  "acceptsNfc": true
+ },
+ "parkingOptions": null,
+ "editorialSummary": null,
+ "weekdayDescriptions": [
+  "Monday: 8:30 AM – 6:30 PM",
+  "Tuesday: 8:30 AM – 6:30 PM",
+  "Wednesday: 8:30 AM – 6:30 PM",
+  "Thursday: 8:30 AM – 6:30 PM",
+  "Friday: 8:30 AM – 6:30 PM",
+  "Saturday: 8:30 AM – 6:30 PM",
+  "Sunday: Closed"
+ ],
+ "review_count_seen": 5,
+ "review_themes": "Customers on Google Maps mention servicing and engine oil changes, long-time care of Mini Coopers and light replacement. One customer reported being overcharged for a simple job.",
+ "fetched_at": "2026-11-04",
+ "place_id": "ChIJ3UrxAswb2jERE_wY1cZ_MGY",
+ "source": "google_places"
+}

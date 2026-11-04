@@ -1,0 +1,33 @@
+{
+ "businessStatus": "OPERATIONAL",
+ "primaryType": "car_repair",
+ "types": [
+  "car_repair",
+  "point_of_interest",
+  "service",
+  "establishment"
+ ],
+ "rating": 4.9,
+ "userRatingCount": 115,
+ "websiteUri": "https://www.google.com/search?q=google+review+daiha+auto&oq=google+review&aqs=chrome.1.69i59j35i39j46i175i199i512j0i512l3j69i60l2.3644j0j4&sourceid=chrome&ie=UTF-8",
+ "paymentOptions": {
+  "acceptsCreditCards": true,
+  "acceptsCashOnly": false
+ },
+ "parkingOptions": null,
+ "editorialSummary": null,
+ "weekdayDescriptions": [
+  "Monday: 8:30 AM – 6:00 PM",
+  "Tuesday: 8:30 AM – 6:00 PM",
+  "Wednesday: 8:30 AM – 6:00 PM",
+  "Thursday: 8:30 AM – 6:00 PM",
+  "Friday: 8:30 AM – 6:00 PM",
+  "Saturday: 8:30 AM – 4:00 PM",
+  "Sunday: Closed"
+ ],
+ "review_count_seen": 5,
+ "review_themes": "Customers on Google Maps mention dent, scratch and bumper repairs quoted from photos sent on WhatsApp, early-morning drop-offs and quotes that were kept to.",
+ "fetched_at": "2026-11-04",
+ "place_id": "ChIJSbNLPcwb2jEROKUnM1KR-ac",
+ "source": "google_places"
+}

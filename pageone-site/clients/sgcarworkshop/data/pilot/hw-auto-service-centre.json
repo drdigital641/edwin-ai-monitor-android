@@ -1,0 +1,27 @@
+{
+ "lede": "HW AUTO SERVICE CENTRE is a car repair workshop at 25 Kaki Bukit Rd 4, #06-63 Synergy @ KB. Its Google Maps listing shows opening hours and customer ratings.",
+ "chips": [
+  "Car repair"
+ ],
+ "services": [
+  "General servicing and repair"
+ ],
+ "themes": "Customers on Google Maps mention VW group cars including SEAT, major servicing, finding a coolant leak and repairs done within an afternoon with the parts used recorded.",
+ "faqs": [
+  [
+   "What does HW AUTO SERVICE CENTRE do?",
+   "Google Maps lists it as a car repair workshop."
+  ],
+  [
+   "What are the opening hours?",
+   "The hours are listed in the Google Maps section above. Please see Google Maps for current hours."
+  ]
+ ],
+ "sources": "its Google Maps listing",
+ "stories": [],
+ "mentioned_services": [
+  "Volkswagen and Audi cars",
+  "Major servicing",
+  "Coolant leak repair"
+ ]
+}

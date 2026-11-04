@@ -1,0 +1,42 @@
+{
+ "businessStatus": "OPERATIONAL",
+ "primaryType": "car_repair",
+ "types": [
+  "car_wash",
+  "chauffeur_service",
+  "car_rental",
+  "insurance_agency",
+  "auto_parts_store",
+  "car_repair",
+  "store",
+  "transportation_service",
+  "point_of_interest",
+  "service",
+  "establishment"
+ ],
+ "rating": 4.6,
+ "userRatingCount": 237,
+ "websiteUri": "http://www.kgcworkshop.com.sg/",
+ "paymentOptions": {
+  "acceptsCreditCards": true,
+  "acceptsDebitCards": true,
+  "acceptsCashOnly": false,
+  "acceptsNfc": true
+ },
+ "parkingOptions": null,
+ "editorialSummary": null,
+ "weekdayDescriptions": [
+  "Monday: 9:30 AM – 6:30 PM",
+  "Tuesday: 9:30 AM – 6:30 PM",
+  "Wednesday: 9:30 AM – 6:30 PM",
+  "Thursday: 9:30 AM – 6:30 PM",
+  "Friday: 9:30 AM – 6:30 PM",
+  "Saturday: 9:30 AM – 3:30 PM",
+  "Sunday: Closed"
+ ],
+ "review_count_seen": 5,
+ "review_themes": "Customers on Google Maps mention help arranging a tow after a night breakdown, an Audi drive system fault fixed with an actuator change, and accident repair quotes.",
+ "fetched_at": "2026-11-04",
+ "place_id": "ChIJm02cCCQX2jERoktOXwgvTlo",
+ "source": "google_places"
+}
