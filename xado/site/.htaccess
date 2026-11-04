@@ -1,0 +1,39 @@
+# XADO Singapore brand site (xado-shop.sg). Folder: public_html/website_b1ec45f5/preview/xado
+# No X-Robots-Tag here on purpose: the preview copy on pageonesingapore.com is hidden by the parent
+# preview/.htaccess (noindex only when Host is pageonesingapore.com). Never add an unconditional noindex.
+<IfModule mod_headers.c>
+<FilesMatch "\.(html)$">
+Header set Cache-Control "max-age=3600, public"
+</FilesMatch>
+<FilesMatch "\.(webp|png|jpg|ico|css|js|mp4)$">
+Header set Cache-Control "max-age=2592000, public"
+</FilesMatch>
+</IfModule>
+DirectoryIndex index.html
+ErrorDocument 404 /404.html
+RewriteEngine On
+
+# The online shop moved to shop.xado-shop.sg (same Shopify store as xado-singapore.myshopify.com).
+# Old shop paths on xado-shop.sg go to the same path there; query strings are kept (no "?" in the target).
+RewriteCond %{HTTP_HOST} ^(www\.)?xado-shop\.sg$ [NC]
+RewriteRule ^(products|collections|pages|blogs|checkouts|policies|apps|cdn|discount)(/.*)?$ https://shop.xado-shop.sg/$1$2 [R=301,L]
+RewriteCond %{HTTP_HOST} ^(www\.)?xado-shop\.sg$ [NC]
+RewriteRule ^(cart|account|search)(/.*)?$ https://shop.xado-shop.sg/$1$2 [R=301,L]
+# Shopify checkout and order-status links look like /<store id>/checkouts/... and /<store id>/orders/...
+RewriteCond %{HTTP_HOST} ^(www\.)?xado-shop\.sg$ [NC]
+RewriteRule ^([0-9]+/(checkouts|orders)/.*)$ https://shop.xado-shop.sg/$1 [R=301,L]
+
+# www -> apex, http -> https
+RewriteCond %{HTTP_HOST} ^www\.xado-shop\.sg$ [NC]
+RewriteRule ^ https://xado-shop.sg%{REQUEST_URI} [L,R=301]
+RewriteCond %{HTTP_HOST} ^xado-shop\.sg$ [NC]
+RewriteCond %{HTTPS} off
+RewriteRule ^ https://xado-shop.sg%{REQUEST_URI} [L,R=301]
+# /index.html -> clean folder URL (stops the parent pageonesingapore.com rule from sending it to /preview/xado/)
+RewriteCond %{HTTP_HOST} ^xado-shop\.sg$ [NC]
+RewriteCond %{THE_REQUEST} \s/+(.*/)?index\.html[\s?]
+RewriteRule ^(.*/)?index\.html$ https://xado-shop.sg/$1 [L,R=301]
+
+# After DNS for xado-shop.sg points at Bluehost, send the old preview copy to the live site:
+# RewriteCond %{HTTP_HOST} ^(www\.)?pageonesingapore\.com$ [NC]
+# RewriteRule ^(.*)$ https://xado-shop.sg/$1 [L,R=301]

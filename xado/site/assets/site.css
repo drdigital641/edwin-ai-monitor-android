@@ -101,3 +101,5 @@ figure.side{float:none;width:100%;margin:20px 0}.inline-cta{flex-direction:colum
 .glide{display:flex;gap:18px;overflow-x:auto;scroll-snap-type:x proximity;padding:4px 22px 18px;margin:0 -22px;scrollbar-width:none;-webkit-overflow-scrolling:touch}
 .glide::-webkit-scrollbar{display:none}.glide.auto{scroll-snap-type:none}.glide>*{flex:0 0 min(82vw,380px);scroll-snap-align:start}
 .shopline{margin-top:6px}.dealer .btn.ghost,.pg .btn.ghost{color:var(--ink)!important}
+.shopbtn{display:none;margin-left:auto;margin-right:8px;background:var(--red);color:#fff!important;text-decoration:none;font-weight:700;font-size:.9rem;padding:8px 16px;border-radius:999px}
+@media(max-width:960px){.shopbtn{display:inline-block}}
