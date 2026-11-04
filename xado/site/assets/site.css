@@ -100,3 +100,4 @@ figure.side{float:none;width:100%;margin:20px 0}.inline-cta{flex-direction:colum
 @media(prefers-reduced-motion:reduce){.js .rv{opacity:1;transform:none;transition:none}}
 .glide{display:flex;gap:18px;overflow-x:auto;scroll-snap-type:x proximity;padding:4px 22px 18px;margin:0 -22px;scrollbar-width:none;-webkit-overflow-scrolling:touch}
 .glide::-webkit-scrollbar{display:none}.glide.auto{scroll-snap-type:none}.glide>*{flex:0 0 min(82vw,380px);scroll-snap-align:start}
+.shopline{margin-top:6px}.dealer .btn.ghost,.pg .btn.ghost{color:var(--ink)!important}
