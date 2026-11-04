@@ -268,3 +268,33 @@ h2{font-weight:500;font-size:clamp(1.6rem,3.6vw,2.4rem)}h3{font-weight:600}
 .phimg img{aspect-ratio:16/10;max-height:none!important;height:auto;object-fit:cover;object-position:50% 100%}
 .cimg img{object-position:50% 100%}
 @media (max-width:820px){.shellpip{top:14px;bottom:auto;left:14px;width:140px}.lux-copy{padding-top:52px}}
+/* v12 (Edwin 4 Nov 2026): background too plain - add ContiExpert brand blue (from the diamond logo), subtle, not fancy */
+:root{--ce:#1e7bff;--ce-d:#0b5fd6;--ce-n:#0c1a2c;--ce-tint:#f1f6fd;--grey:#f1f6fd;
+--dia:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='44' height='44'%3E%3Crect x='17' y='17' width='10' height='10' transform='rotate(45 22 22)' fill='%231e7bff' fill-opacity='.07'/%3E%3C/svg%3E")}
+.eyebrow{color:var(--ce-d)}
+.eyebrow:before{content:"";display:inline-block;width:7px;height:7px;background:var(--ce);transform:rotate(45deg);margin:0 9px 2px 1px;vertical-align:middle}
+.lux-hero{background:var(--ce-tint)}
+.lux-copy:before{content:"";position:absolute;left:0;top:0;bottom:0;width:50%;background:var(--dia);-webkit-mask:linear-gradient(120deg,#000 0,transparent 70%);mask:linear-gradient(120deg,#000 0,transparent 70%);z-index:-1;pointer-events:none}
+.lux-hero:before{background:linear-gradient(90deg,var(--ce-tint) 0,rgba(241,246,253,.92) 34%,rgba(241,246,253,0) 64%)}
+.lux-hero h1 span{color:var(--ce-n)}
+.facts{background:#fff;border-top:3px solid var(--ce)}
+.facts b{color:var(--ce-n)}.facts .wrap>a:first-child b{color:var(--ce-d)}
+.sec5.grey{background-color:var(--ce-tint);background-image:var(--dia)}
+.svl .n,.svlist .n,.svl small,.svlist small{color:var(--ce-d)}
+.svlist a:hover,.svl a:hover{color:var(--ce-d)}
+.steps5 li:before{color:var(--ce-d)}
+.btn-dark{background:var(--ce-n)}.btn-dark:hover{background:var(--ce-d)}
+.btn-outline:hover{border-color:var(--ce-d);color:var(--ce-d)}
+.lnk{color:var(--ce-d)}
+/* reviews band in deep brand navy for contrast */
+.sec5.grey.revs{background:var(--ce-n) var(--dia);color:#dbe6f5}
+.revs h2{color:#fff}.revs .eyebrow{color:#8fbcff}.revs .eyebrow:before{background:#5aa5ff}.revs .lnk{color:#cfe2ff;border-color:#5aa5ff}
+.revs .rq{border-top:3px solid var(--ce)}
+.ctaband{background:linear-gradient(120deg,var(--ce-n) 0,#0f2f5c 60%,var(--ce-d) 100%)}
+.phead,.ph2{background-color:var(--ce-tint);background-image:var(--dia)}
+.prose h2{border-left:3px solid var(--ce);padding-left:12px}
+.faq summary::after{color:var(--ce)}
+.prices .prow b,.prow b{color:var(--ce-n)}
+@media (max-width:820px){.lux-hero{background:#fff}.lux-copy:before{display:none}}
+.svlist{border-top-color:var(--ce)}
+footer.ftr,.ftr{background:#08121f}
