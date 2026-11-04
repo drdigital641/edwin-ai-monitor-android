@@ -1109,6 +1109,45 @@
         "top_queries": []
       },
       "short": "EV body parts"
+    },
+    {
+      "key": "xado",
+      "name": "XADO Singapore",
+      "domain": "xado-shop.sg",
+      "url": "https://xado-shop.sg/",
+      "industry": "Engine oil additive brand, sold through authorised workshops, Singapore",
+      "schema_type": "Organization",
+      "img": "https://cdn.jsdelivr.net/gh/drdigital641/edwin-ai-monitor-android@b6948ad8c8c7db29e2350aab152c451c7fdc6eda/site-assets/pageone/clients/xadoshop.webp",
+      "gsc_site": "sc-domain:xado-shop.sg",
+      "launched": "2026-11-04",
+      "brand_terms": [
+        "xado"
+      ],
+      "skip_queries": [],
+      "built": [
+        "Pages on how XADO Revitalizant works and a guide to each XADO product",
+        "A finder for the 11 authorised XADO workshops in Singapore, each with a WhatsApp button",
+        "A link to the XADO online shop on its own address, plus guides for Singapore drivers"
+      ],
+      "articles": 3,
+      "gsc": {
+        "record_id": null,
+        "first_day": null,
+        "clicks": 0,
+        "impressions": 0,
+        "position": 0,
+        "prev_clicks": 0,
+        "prev_impressions": 0,
+        "prev_position": 0,
+        "queries": 0,
+        "page_one": 0,
+        "top3": 0,
+        "capped": false,
+        "monthly": [],
+        "best_query": null,
+        "top_queries": []
+      },
+      "short": "XADO"
     }
   ],
   "pipeline": {
