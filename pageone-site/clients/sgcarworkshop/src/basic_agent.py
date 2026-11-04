@@ -407,6 +407,41 @@ def enrich_queue(a, key):
     print(json.dumps({'results': out, 'queue_left': len(keep), 'details_calls_today': ut['details']}, indent=1))
 
 
+def sweep(a, key):
+    """Edwin 4 Nov 2026 ("use option 1 google, paid call"): fill the queue from Google itself. One Text Search call returns up to 20
+    car_repair listings WITH their Google phone, so landline-only shops are skipped without any Details call. Queues only
+    OPERATIONAL listings with a +65 8/9 mobile and at least one rating that are not already in the registry or queue."""
+    import areas, registry as R
+    reg = R.load(); q = jload('candidate_queue.json', []); have = {c['place_id'] for c in q}; u, ut = usage_today(); ut.setdefault('sweep_calls', 0)
+    mask = 'places.id,places.displayName,places.internationalPhoneNumber,places.primaryType,places.rating,places.userRatingCount,places.formattedAddress,places.businessStatus,nextPageToken'
+    stats = {'calls': 0, 'seen': 0, 'queued': [], 'landline_or_none': 0, 'known': 0, 'other': 0}
+    for town in a.towns.split(','):
+        t = areas.TOWNS[town]; tok = None
+        for _ in range(a.pages):
+            if stats['calls'] >= a.max_calls: break
+            body = {'textQuery': 'car workshop in ' + t['name'], 'regionCode': 'SG', 'pageSize': 20, 'includedType': 'car_repair', 'strictTypeFiltering': True,
+                    'locationBias': {'circle': {'center': {'latitude': t['lat'], 'longitude': t['lon']}, 'radius': float(a.radius)}}}
+            if tok: body['pageToken'] = tok
+            stats['calls'] += 1; ut['sweep_calls'] += 1
+            res = gcall(API + 'places:searchText', key, mask, body)
+            for p in res.get('places', []):
+                stats['seen'] += 1
+                gm = re.sub(r'\D', '', p.get('internationalPhoneNumber', '')); gm = '+' + gm if gm else ''
+                name = (p.get('displayName') or {}).get('text', ''); fa = p.get('formattedAddress', ''); pc = re.search(r'(\d{6})\s*$', fa); pc = pc.group(1) if pc else ''
+                if not re.match(r'^\+65[89]\d{7}$', gm): stats['landline_or_none'] += 1; continue
+                if p.get('businessStatus') != 'OPERATIONAL' or p.get('primaryType') not in OK_PRIMARY or not p.get('userRatingCount'): stats['other'] += 1; continue
+                e, why = R.match(reg, p['id'], None, name, pc)
+                if e or p['id'] in have: stats['known'] += 1; continue
+                q.append(dict(place_id=p['id'], name_hint=name, address_hint=re.sub(r',?\s*Singapore\s*\d{6}\s*$', '', fa), postal_code=pc, mobile_hint=gm,
+                              source='google_text_search_%s (Google phone, Edwin asked)' % TODAY, added=TODAY, rating=p.get('rating'), ratings=p.get('userRatingCount')))
+                have.add(p['id']); stats['queued'].append('%s (%s, %s/%s)' % (name, town, p.get('rating'), p.get('userRatingCount')))
+            tok = res.get('nextPageToken')
+            if not tok: break
+    jsave('candidate_queue.json', q); jsave('usage.json', u)
+    stats['queue_size'] = len(q); stats['sweep_calls_today'] = ut['sweep_calls']
+    print(json.dumps(stats, indent=1, ensure_ascii=False))
+
+
 def main():
     ap = argparse.ArgumentParser(); sub = ap.add_subparsers(dest='cmd', required=True)
     d = sub.add_parser('discover'); d.add_argument('--estates', required=True)
@@ -418,14 +453,15 @@ def main():
     for c in ('screen', 'resume', 'closed'):
         x = sub.add_parser(c); x.add_argument('--max-places', type=int, default=25); x.add_argument('--refresh', action='store_true')
     qa = sub.add_parser('queue-add'); qa.add_argument('--json', required=True, help='JSON list of {name,address,postal,mobile}')
+    sw = sub.add_parser('sweep'); sw.add_argument('--towns', required=True); sw.add_argument('--pages', type=int, default=3); sw.add_argument('--max-calls', type=int, default=6); sw.add_argument('--radius', type=int, default=2500)
     eq = sub.add_parser('enrich-queue'); eq.add_argument('--limit', type=int, default=10); eq.add_argument('--raw-dir', required=True)
     en = sub.add_parser('enrich'); en.add_argument('--slugs', required=True); en.add_argument('--raw-dir', required=True)
     a = ap.parse_args()
     a.__dict__['place_id'] = a.__dict__.get('place_id'); a.__dict__['planning_area'] = a.__dict__.get('planning_area')
     if a.cmd in ('discover', 'stage', 'screen', 'resume', 'daily'): sys.exit('Retired 3 Nov 2026 (rigid database rules): the workshop data holds only confirmed-mobile records. Candidates go in data/candidate_queue.json (queue-add) and are confirmed by enrich-queue at build time.')
     key = os.environ.get('PLACES_SERVER_KEY')
-    if a.cmd in ('discover', 'screen', 'resume', 'closed', 'daily', 'enrich', 'queue-add', 'enrich-queue') and not key: sys.exit('Set PLACES_SERVER_KEY in the environment (server key, Places API New only).')
-    {'discover': lambda: discover(a, key), 'stage': lambda: stage(a), 'screen': lambda: screen(a, key), 'resume': lambda: screen(a, key), 'closed': lambda: refresh_closed(a, key), 'daily': lambda: daily(a, key), 'enrich': lambda: enrich(a, key), 'queue-add': lambda: queue_add(a, key), 'enrich-queue': lambda: enrich_queue(a, key)}[a.cmd]()
+    if a.cmd in ('discover', 'screen', 'resume', 'closed', 'daily', 'enrich', 'queue-add', 'enrich-queue', 'sweep') and not key: sys.exit('Set PLACES_SERVER_KEY in the environment (server key, Places API New only).')
+    {'discover': lambda: discover(a, key), 'stage': lambda: stage(a), 'screen': lambda: screen(a, key), 'resume': lambda: screen(a, key), 'closed': lambda: refresh_closed(a, key), 'daily': lambda: daily(a, key), 'enrich': lambda: enrich(a, key), 'queue-add': lambda: queue_add(a, key), 'enrich-queue': lambda: enrich_queue(a, key), 'sweep': lambda: sweep(a, key)}[a.cmd]()
 
 
 if __name__ == '__main__':
