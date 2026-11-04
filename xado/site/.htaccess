@@ -34,6 +34,6 @@ RewriteCond %{HTTP_HOST} ^xado-shop\.sg$ [NC]
 RewriteCond %{THE_REQUEST} \s/+(.*/)?index\.html[\s?]
 RewriteRule ^(.*/)?index\.html$ https://xado-shop.sg/$1 [L,R=301]
 
-# After DNS for xado-shop.sg points at Bluehost, send the old preview copy to the live site:
-# RewriteCond %{HTTP_HOST} ^(www\.)?pageonesingapore\.com$ [NC]
-# RewriteRule ^(.*)$ https://xado-shop.sg/$1 [L,R=301]
+# Live since 4 Nov 2026 (DNS moved): send the old preview copy to the live site.
+RewriteCond %{HTTP_HOST} ^(www\.)?pageonesingapore\.com$ [NC]
+RewriteRule ^(.*)$ https://xado-shop.sg/$1 [L,R=301]
