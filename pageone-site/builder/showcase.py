@@ -248,6 +248,7 @@ GROW_CSS = (".live-pill{background:rgba(22,163,74,.1)!important;color:#15803d!im
             ".launch-log li{display:grid;grid-template-columns:100px 1fr;gap:2px 14px;padding:10px 0;border-bottom:1px solid #e5eaf0}"
             ".launch-log time{grid-row:span 2;font-weight:700;color:var(--red-dark);font-size:.9rem;font-variant-numeric:tabular-nums}"
             ".launch-log a{font-weight:700;color:inherit}.launch-log span{color:var(--muted);font-size:.92rem}"
+            ".site-card h3 a{color:inherit;text-decoration:none}.site-card h3 a:hover{text-decoration:underline}"
             "@media (prefers-reduced-motion:reduce){.live-dot{animation:none}.js .grow:not(.in) .g i{transform:none}.grow .g i{transition:none}}")
 
 
@@ -273,6 +274,18 @@ def top3_examples(key, n=2):
     return " and ".join(f"&ldquo;{q['query']}&rdquo;" for q in qs)
 
 
+# Client card -> Page One industry page, so each case links to the matching "how we build it" page.
+INDUSTRY_PAGES = {
+    "sggarage": ("car-workshop", "car workshops"),
+    "jackygearbox": ("car-workshop", "car workshops"),
+    "cleanic": ("car-detailing", "car detailing"),
+    "klar-details": ("car-detailing", "car detailing"),
+    "sofacare": ("cleaning-services", "cleaning services"),
+    "alicia": ("property-agent", "property agents"),
+    "rc-design-build": ("renovation-contractor", "renovation contractors"),
+}
+
+
 def clients_page():
     cards = []
     for c in SC["clients"]:
@@ -282,11 +295,14 @@ def clients_page():
         links = f'<a class="card-link" href="{c["url"]}" target="_blank" rel="noopener">Visit {c["domain"]} ↗</a>'
         if c.get("case_study"):
             links += f' <a class="card-link" href="{c["case_study"]}">Read the case study →</a>'
+        ind = INDUSTRY_PAGES.get(k)
+        if ind:
+            links += f' <a class="card-link" href="/industries/{ind[0]}/">How we build websites for {ind[1]} →</a>'
         note = f'<p class="fine">{c["owner_note"]}</p>' if c.get("owner_note") else ""
         cards.append(f"""          <article class="card site-card reveal" id="{k}">
             <a class="browser" href="{c['url']}" target="_blank" rel="noopener"><span class="browser-bar"><i></i><i></i><i></i><span>{c['domain']}</span></span><img src="{c['img']}" width="640" height="400" alt="{c['name']} website homepage ({c['domain']})" loading="lazy" decoding="async"></a>
             <p class="pill">{pill(k)}</p>
-            <h3>{c['name']}</h3><p><b>{c['industry']}</b></p>{note}
+            <h3><a href="{c['url']}" target="_blank" rel="noopener">{c['name']}</a></h3><p><b>{c['industry']}</b></p>{note}
             <p>{result_text(k, built_follows=True)}</p>
             <ul class="ticks">{built}{arts}</ul>
             {links}
@@ -298,10 +314,12 @@ def clients_page():
         ("How can it be good if it only costs S$50 a month?", "The price is low because a set of AI tools we designed does the daily SEO work that used to be billed by the hour, not because steps are skipped. The websites and numbers on this page are the proof, not a promise: results vary by business, and newer sites show smaller numbers."),
         ("Is Page One Singapore a new company?", f"Yes. Page One Singapore is run by Snap Commercial Pte. Ltd., a Singapore company registered in 2022, and the first website on our SEO system went live in {FIRST_LAUNCH}. As of {GROWTH_AS_OF}, {LIVE_N} client websites are live on their own domains" + (f" and {BUILDING} more are being built for clients who have signed up" if BUILDING else "") + ". We add each new one to this page the day it goes live, so you can watch the portfolio grow."),
         ("Why are some clients not named?", "A website being built is only counted, never named, until it is live on the business's own domain. That protects our clients' plans and means every name on this page is a website you can open and check."),
-        ("How often is this page updated?", "Every day. The Search Console figures are refreshed daily, and each new client website is added the day it goes live on its own domain. The date of the data is always shown."),
+        ("How can I tell a website was built by Page One Singapore?", "Most client websites carry a small &ldquo;Website &amp; SEO by Page One Singapore&rdquo; credit in their footer that links back to this site, and every one of them is listed on this page with its own domain. Each card above links straight to the live website, so you can check both ways."),
+        ("How often is this page updated?", "Each new client website is added the day it goes live on its own domain, and the Search Console figures are refreshed when new final data is collected. The date of the data is always shown next to the numbers."),
     ]
     sites_ld = [{"@type": "ListItem", "position": i + 1,
-                 "item": dict({"@type": "WebSite", "name": c["name"], "url": c["url"], "description": c["industry"]},
+                 "item": dict({"@type": "WebSite", "@id": c["url"] + "#website", "name": c["name"], "url": c["url"],
+                               "description": c["industry"], "creator": PROVIDER, "maintainer": PROVIDER},
                               **({"dateCreated": c["launched"]} if len(c["launched"]) == 10 else {}))}
                 for i, c in enumerate(SC["clients"])]
     page("clients/index.html",
