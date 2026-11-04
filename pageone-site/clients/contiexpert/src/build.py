@@ -86,17 +86,17 @@ def img(key, alt, cls='', eager=False, sizes='(max-width:700px) 100vw, 600px'):
     w, h = PHOTOS.get(key, (800, 600))
     return '<img class="%s" src="/assets/photos/%s.webp" width="%d" height="%d" alt="%s"%s decoding="async">' % (cls, key, w, h, E(alt), '' if eager else ' loading="lazy"')
 # Real Volt Autocare photos only (their Google listing photos, supplied by Edwin 3 Nov 2026)
-SVC_IMG = {'european-car-servicing': ('real-bay', 'Cars in the Volt Autocare service bays at the Shell station, Newton'),
-           'car-diagnostics-warning-lights': ('real-bmw', 'BMW with its bonnet open in the Volt Autocare bay'),
-           'car-aircon-repair': ('real-aircon', 'Aircon service machine connected to a BMW at Volt Autocare'),
-           'brake-suspension-repair': ('real-mg4', 'Car raised on a lift at Volt Autocare'),
-           'gearbox-transmission-service': ('real-mg4', 'Car raised on a lift at Volt Autocare'),
-           'hybrid-ev-servicing': ('real-mg4', 'Electric car raised on a lift at Volt Autocare'),
-           'pre-purchase-inspection': ('real-front', 'Volt Autocare workshop bays under the awning at the Shell station'),
-           'mercedes-benz': ('real-bay', 'Mercedes-Benz GLB and BMW in the Volt Autocare bays'),
-           'bmw': ('real-bmw', 'BMW in the Volt Autocare bay with the bonnet open'),
-           'audi-volkswagen': ('real-front', 'Volt Autocare workshop bays at the Shell station, Newton')}
-SVC_IMG['hybrid-fan'] = ('real-mg4', 'Electric car raised on a lift at Volt Autocare')
+SVC_IMG = {'european-car-servicing': ('ce-lexus-bmw', 'Lexus and BMW in for servicing at ContiExpert, Shell Newton'),
+           'car-diagnostics-warning-lights': ('ce-battery-test', 'Battery and charging system tester reading on a car at ContiExpert'),
+           'car-aircon-repair': ('ce-vellfire-aircon', 'Aircon gauges and R1234yf refrigerant connected to a Toyota Vellfire at ContiExpert'),
+           'brake-suspension-repair': ('ce-porsche', 'Porsche 911 on the ramp at ContiExpert'),
+           'gearbox-transmission-service': ('ce-audi-amg', 'Audi and Mercedes-AMG with bonnets open in the ContiExpert bays'),
+           'hybrid-ev-servicing': ('real-mg4', 'Electric car raised on a lift at ContiExpert'),
+           'pre-purchase-inspection': ('ce-cla-golf', 'Mercedes CLA and Volkswagen Golf in the ContiExpert bays'),
+           'mercedes-benz': ('ce-sclass-eclass', 'Mercedes S-Class and E-Class at the ContiExpert bays, Shell Newton'),
+           'bmw': ('real-bmw', 'BMW with the bonnet open and an aircon service machine at ContiExpert'),
+           'audi-volkswagen': ('ce-alternators', 'Old and new alternator during a replacement at ContiExpert')}
+SVC_IMG['hybrid-fan'] = ('real-mg4', 'Electric car raised on a lift at ContiExpert')
 LOGOS = {'mercedes-benz': ['logo-mercedes'], 'bmw': ['logo-bmw'], 'audi-volkswagen': ['logo-audi', 'logo-vw']}
 
 def wa_link(text):
