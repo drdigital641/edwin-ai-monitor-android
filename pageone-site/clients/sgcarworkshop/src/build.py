@@ -16,6 +16,7 @@ import re
 import shutil
 import subprocess
 import sys
+from service_copy import COPY as SERVICE_COPY
 from urllib.parse import quote
 
 HERE = os.path.dirname(os.path.abspath(__file__))
@@ -497,10 +498,18 @@ def category(c):
 <section class="hero" style="padding-top:20px"><div class="w"><h1>{E(c['name'])} in Singapore</h1><p class="lede">{E(c['intro'])}</p>{chip_row(depth, c['slug'])}</div></section>
 {featured_sec(es, depth, 'services/%s/' % c['slug'], 'in ' + c['short'].lower())}
 <section><div class="w"><h2 class="rv">Listings</h2><div class="grid">{''.join(card(e, depth, 'services/%s/' % c['slug']) for e in es if not is_paid(e))}{list_card(depth, c['short'].lower())}</div></div></section>'''
+    sc = SERVICE_COPY.get(c['slug']); sfaqs = []
+    if sc:   # audit 4 Nov 2026: service pages get a guide section, not only listings
+        gl = [g for g in _guides.GUIDES if g['slug'] in sc['guides']]
+        gl_html = ('<h3>Related car problem guides</h3><ul class="tick">%s</ul>' % ''.join('<li><a href="%s%s">%s</a></li>' % (pre(depth), _guides.gpath(g), E(g['h1'])) for g in gl)) if gl else ''
+        body += f'''<section class="alt"><div class="w nar"><h2>What {E(c['name'].lower())} involves</h2><p>{E(sc['involves'])}</p>
+<h3>Signs you may need it</h3><ul class="tick">{''.join('<li>%s</li>' % E(x) for x in sc['signs'])}</ul>
+<h3>What to ask the workshop</h3><ul class="tick">{''.join('<li>%s</li>' % E(x) for x in sc['ask'])}</ul>{gl_html}</div></section>'''
+        sfaqs = sc['faqs']; body += faq_block(sfaqs, 'Questions about %s' % c['name'].lower())
     itemlist = itemlist_ld(c['name'] + ' in Singapore', es)
     FREECOUNT['services/%s/' % c['slug']] = free_n(es)
     page('services/%s/' % c['slug'], '%s in Singapore | %s' % (c['name'], SITE_NAME), c['blurb'] + ' Browse Singapore listings by area.',
-         body, [itemlist, dict(crld, **{'@context': 'https://schema.org'})], h1=c['name'], index=free_n(es) >= MIN_FREE, why='fewer than %d free workshops' % MIN_FREE)
+         body, [itemlist, dict(crld, **{'@context': 'https://schema.org'})] + ([faq_ld(sfaqs)] if sfaqs else []), h1=c['name'], index=free_n(es) >= MIN_FREE, why='fewer than %d free workshops' % MIN_FREE)
 
 
 def cap(t, n):
