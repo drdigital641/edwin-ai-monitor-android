@@ -456,15 +456,14 @@ def home():
         k, ic('pin'), E(RN[k]), n, '' if n == 1 else 's') for k in PUB_REGIONS for n in [sum(1 for e in ENTRIES if e['region'] == k)])
     est_tiles = ''.join('<li><a href="areas/%s/"><span class="ti">%s</span><span><b>%s</b><small>%s &middot; %d listing%s</small></span></a></li>' % (
         k, ic('pin'), E(ESTATES[k]['name']), E(RN[ESTATES[k]['region']]), len(v), '' if len(v) == 1 else 's') for k, v in PUB_ESTATES.items())
-    askdata = json.dumps({'cats': [{'slug': c['slug'], 'short': c['short'], 'blurb': c['blurb']} for c in CAT_LIST], 'areas': [{'slug': k, 'name': v['name'], 'region': v['region']} for k, v in ESTATES.items()], 'guides': [{'slug': g['slug'], 'path': _guides.gpath(g), 'h1': g['h1'], 'short': g['short'], 'kw': g['kw']} for g in _guides.GUIDES]}).replace('</', '<\\/')
+    askdata = json.dumps({'cats': [{'slug': c['slug'], 'short': c['short'], 'blurb': c['blurb']} for c in CAT_LIST], 'areas': [{'slug': k, 'name': v['name'], 'region': v['region'], 'town': v['town'], 'kw': v['keywords']} for k, v in ESTATES.items()], 'towns': [{'slug': t[0], 'name': t[1], 'region': t[2], 'kw': t[7]} for t in areas._E], 'guides': [{'slug': g['slug'], 'path': _guides.gpath(g), 'h1': g['h1'], 'short': g['short'], 'kw': g['kw']} for g in _guides.GUIDES]}).replace('</', '<\\/')
     tiers = tiers_strip()
-    body = f'''<section class="finder" id="find"><div class="w"><div class="hero-t"><h1>Find a car workshop in Singapore</h1>
-<p>Describe the problem or type a service and area, then message the workshop on WhatsApp.</p></div>
+    body = f'''<section class="finder" id="find"><div class="w"><div class="hero-t"><h1>Find a car workshop in Singapore</h1></div>
 <p class="nojs">Browse by <a href="#services">service</a> or <a href="#regions">area</a> below.</p>
 <form class="panel" id="finder" role="search" aria-label="Find a workshop or describe your car problem" onsubmit="return false">
-<div class="qrow"><label class="q"><span class="skip">Describe your car problem, or type a service, area or workshop name</span>{ic('search')}<textarea id="q" rows="2" maxlength="160" placeholder="Describe your car problem, e.g. knocking sound under my Mitsubishi" autocomplete="off" autocapitalize="off" enterkeyhint="search"></textarea></label><button type="submit" class="btn amber qgo">Search</button></div>
+<div class="qrow"><label class="q"><span class="skip">Describe your car problem, or type a service, area or workshop name</span>{ic('search')}<textarea id="q" rows="2" maxlength="160" placeholder="Ask anything, e.g. my Honda Vezel aircon not cold, near Ubi" autocomplete="off" autocapitalize="off" enterkeyhint="search"></textarea></label><button type="submit" class="btn amber qgo">Search</button></div>
 <div class="opts chiprow" role="radiogroup" aria-label="Or pick a service">{svc_opts}</div>
-<p class="fine askhint">Type in your own words, in any order. We do not store your name or number, only the words you type.</p>
+<details class="askpriv"><summary>Privacy</summary><p>Type in your own words, in any order. We do not store your name or number, only the words you type, to improve the search.</p></details>
 </form></div></section>
 <section class="askres" id="askres" hidden aria-live="polite"><div class="w" id="askbody"></div></section>
 <script type="application/json" id="askdata">{askdata}</script>
@@ -940,6 +939,8 @@ def card_profile(e):
 def card(e, depth, page_path=''):
     c = CAT[e['category']]
     attrs = 'data-search="%s" data-cat="%s" data-regions="%s" data-tier="%s"' % (E(card_search(e), True), c['slug'], ' '.join(e['regions']), e['tier'])
+    if e.get('estate') in ESTATES:
+        attrs += ' data-estate="%s" data-town="%s"' % (e['estate'], ESTATES[e['estate']]['town'])
     _prof, _ment = card_profile(e)
     _f = FACTS.get(e['slug'])
     if _f:

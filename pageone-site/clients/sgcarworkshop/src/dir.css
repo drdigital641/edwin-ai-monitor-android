@@ -286,6 +286,7 @@ ul.chips{list-style:none;display:flex;flex-wrap:wrap;gap:8px;padding:0;margin:14
 .qrow{display:flex;gap:8px;align-items:stretch;margin:0 0 12px}.qrow .q{flex:1 1 auto;min-width:0;margin:0}.panel .qrow .q input{min-height:54px}
 .qgo{flex:0 0 auto;min-height:54px;padding:0 20px;font-size:1rem}
 .chiprow{margin:0 0 4px}.askhint{margin:8px 0 0;color:var(--muted)}
+details.askpriv{background:none;border:0;border-radius:0;padding:0;margin:6px 0 0;font-size:.78rem}details.askpriv>summary{display:inline-flex;justify-content:flex-start;gap:6px;padding:2px 0;font-weight:500;font-size:.78rem;color:var(--muted)}details.askpriv>summary:after{width:5px;height:5px;border-width:0 1.5px 1.5px 0;border-color:var(--muted)}details.askpriv p{margin:2px 0 0;font-size:.78rem}
 .askres{background:#fff;padding:18px 0;border-bottom:1px solid var(--line)}.askres[hidden]{display:none}
 .askres .ah{margin:0 0 10px}.achips{display:flex;flex-wrap:wrap;gap:8px;margin:0 0 12px}
 .achip{background:var(--gold-bg);border:1px solid var(--line);border-radius:999px;padding:5px 12px;font-size:.9rem}.achip small{color:var(--muted)}
