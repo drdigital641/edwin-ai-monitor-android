@@ -368,3 +368,12 @@ details.askpriv{background:none;border:0;border-radius:0;padding:0;margin:6px 0 
 .hg-more{text-align:center;margin:10px 0 0}.hg-more[hidden]{display:none}
 .hg-all{text-align:center;margin:22px 0 4px}
 .rg .km{font-weight:600;color:var(--brand);margin-left:4px;white-space:nowrap}
+
+/* Search guidance (Edwin 4 Nov 2026): Search button pulses once the driver has typed; AI reading progress shows inside the box */
+.qgo.nudge{animation:qnudge 1.4s ease-in-out infinite}
+@keyframes qnudge{0%,100%{transform:scale(1);box-shadow:0 0 0 0 rgba(201,153,58,.55)}50%{transform:scale(1.05);box-shadow:0 0 0 8px rgba(201,153,58,0)}}
+@media(prefers-reduced-motion:reduce){.qgo.nudge{animation:none;box-shadow:0 0 0 3px rgba(201,153,58,.6)}}
+.aiprog{position:absolute;inset:2px;border-radius:10px;background:#fff;display:flex;flex-wrap:wrap;align-items:center;align-content:center;gap:4px 10px;padding:8px 14px 8px 44px;font-size:.95rem;color:var(--ink);transition:opacity .4s}
+.aiprog[hidden]{display:none}.aiprog.done{opacity:0}
+.aiprog-t{font-weight:600}.aiprog-t:after{content:'...'}.aiprog-p{margin-left:auto;font-variant-numeric:tabular-nums;color:var(--amber-d);font-weight:700}
+.aiprog-bar{flex:1 0 100%;height:6px;border-radius:3px;background:var(--gold-bg);overflow:hidden}.aiprog-bar i{display:block;height:100%;width:0;background:var(--amber);border-radius:3px;transition:width .2s linear}

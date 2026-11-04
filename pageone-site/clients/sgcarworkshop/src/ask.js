@@ -170,7 +170,7 @@ function log(a,rule){try{var h=location.hostname.replace(/^www\./,''),site=h===L
   device_type:/Mobi|Android|iPhone/i.test(ua)?'mobile':/iPad|Tablet/i.test(ua)?'tablet':'desktop',cta_type:'search',cta_label:q,enquiry_ref:ref});
  var url='https://base44.app/api/apps/'+APP+'/functions/track',sent=false;
  if(navigator.sendBeacon){try{sent=navigator.sendBeacon(url,new Blob([body2],{type:'text/plain;charset=UTF-8'}))}catch(x){}}
- if(!sent&&window.fetch){fetch(url,{method:'POST',credentials:'omit',keepalive:true,headers:{'Content-Type':'application/json'},body:body2}).catch(function(){})}}catch(x){}}
+ if(!sent&&window.fetch){fetch(url,{method:'POST',credentials:'omit',keepalive:true,headers:{'Content-Type':'text/plain;charset=UTF-8'},body:body2}).catch(function(){})}}catch(x){}}
 /* Placeholder types example questions, like an AI search box. Stops while the box is in use; static for reduced motion. */
 (function(){var S=['My Honda Vezel aircon not cold, near Ubi','Knocking sound when I go over humps','Check engine light on my Toyota Altis','Gearbox jerking on my Mercedes C200','Scratch on my rear bumper, need respray in Yishun','Workshop open on Sunday in Kaki Bukit','Car cannot start, battery flat in Tampines','BMW servicing in Sin Ming','Ceramic coating for a new car','Where to fix ABS light on a Mazda 3'];
  if(window.matchMedia&&matchMedia('(prefers-reduced-motion: reduce)').matches)return;var i=0,j=0,del=false,busy=false,t=null;
@@ -195,11 +195,22 @@ function askAI(a){var key=norm(a.raw);if(aiCache[key])return Promise.resolve(aiC
  var ctl=window.AbortController?new AbortController():null,tm=setTimeout(function(){if(ctl)ctl.abort()},7000);
  return fetch(AI_URL,{method:'POST',credentials:'omit',headers:{'Content-Type':'application/json'},body:JSON.stringify({q:a.raw.slice(0,160)}),signal:ctl?ctl.signal:undefined})
   .then(function(r){clearTimeout(tm);if(!r.ok)throw 0;return r.json()}).then(function(x){if(!x||x.error)throw 0;aiCache[key]=x;return x})}
+/* Edwin 4 Nov 2026: once the driver has typed, the Search button pulses to say "tap me"; after the tap, the box shows the AI reading
+   progress as a % bar, filling while the AI works and jumping to 100% when the answer is in. */
+var goBtn=form.querySelector('.qgo'),nudgeT=null,qbox=inp.parentNode,prog=d.createElement('div');
+prog.className='aiprog';prog.hidden=true;prog.setAttribute('aria-hidden','true');prog.innerHTML='<span class="aiprog-t">Reading your question</span><span class="aiprog-p">0%</span><span class="aiprog-bar"><i></i></span>';qbox.appendChild(prog);
+function nudge(on){if(goBtn)goBtn.classList.toggle('nudge',!!on)}
+inp.addEventListener('input',function(){nudge(false);clearTimeout(nudgeT);if(inp.value.trim().length>=3)nudgeT=setTimeout(function(){nudge(true)},900)});
+var progT=null;function progress(start){clearInterval(progT);var p=0,bar=prog.querySelector('i'),pc=prog.querySelector('.aiprog-p'),t0=Date.now();
+ function show(v){bar.style.width=v+'%';pc.textContent=Math.round(v)+'%'}
+ if(start){prog.hidden=false;prog.classList.remove('done');show(0);progT=setInterval(function(){var el2=(Date.now()-t0)/1000;p=Math.min(92,92*(1-Math.exp(-el2/1.3)));show(p)},60);return}
+ show(100);prog.classList.add('done');setTimeout(function(){prog.hidden=true;prog.classList.remove('done')},450)}
 form.addEventListener('submit',function(e){e.preventDefault();var v=inp.value.trim();if(!v){inp.focus();return}
+ nudge(false);clearTimeout(nudgeT);
  var any=form.querySelector('input[name=svc][value=""]');if(any&&!any.checked){any.checked=true}
- var a=analyse(v,DATA);
+ var a=analyse(v,DATA);progress(true);
  body.textContent='';body.appendChild(el('p','fine aithink','Reading your question...'));out.hidden=false;
- askAI(a).then(function(x){if(inp.value.trim()!==v)return;var b=fromAI(a,x);render(b);},function(){if(inp.value.trim()!==v)return;render(a)})});
+ askAI(a).then(function(x){progress(false);if(inp.value.trim()!==v)return;var b=fromAI(a,x);render(b);},function(){progress(false);if(inp.value.trim()!==v)return;render(a)})});
 inp.addEventListener('keydown',function(e){if(e.key==='Enter'&&!e.shiftKey){e.preventDefault();form.dispatchEvent(new Event('submit',{cancelable:true,bubbles:true}))}});
 /* Category chips run the same results panel (no typing needed). */
 form.addEventListener('change',function(e){var t=e.target;if(!t||t.name!=='svc')return;
