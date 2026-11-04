@@ -37,8 +37,9 @@
 - [Scan Tool Software Update Subscription Ends: What Happens?](https://cskatrading.com/articles/scan-tool-software-subscription-ends/): What a workshop scan tool can and cannot do when its free software update period ends, what to check before it runs out, and how to plan renewal.
 - [Hybrid Car Aircon Service: Why POE Oil Matters](https://cskatrading.com/articles/hybrid-car-aircon-service-poe-oil/): Why hybrid cars with an electric aircon compressor need POE oil, what goes wrong if PAG oil gets in, and how a workshop avoids mixing the two.
 - [Autel MS909 S2 vs MS908S3: Which Tablet for a Workshop?](https://cskatrading.com/articles/autel-ms909-s2-vs-ms908s3/): Autel MaxiSYS MS909 S2 or MS908S3? Screen, storage, protocols, programming and service functions compared, and how a workshop decides.
+- [THINKTOOL Master X2 vs Expert 391: Which Scanner?](https://cskatrading.com/articles/thinktool-master-x2-vs-expert-391/): THINKCAR THINKTOOL Master X2 or Expert 391? Screen, storage, J2534, 24V trucks, TPMS, online programming and EV coverage compared for a workshop.
 - [About CSKA Auto Enterprise Pte. Ltd.](https://cskatrading.com/about/): CSKA Auto Enterprise Pte. Ltd. (UEN 202127592M) supplies diagnostic tools and workshop equipment to car workshops in Singapore.
 - [Contact CSKA Auto Enterprise](https://cskatrading.com/contact/): WhatsApp Steven 9822 2629, Ah Kiat 8493 0068 or Alvis 9037 2820. 101 Woodlands Ave 12 #07-03B, Polaris @ Woodlands, Singapore 737719.
 - [Privacy Policy](https://cskatrading.com/privacy/): How CSKA Auto Enterprise handles personal data under Singapore's PDPA.
 
-Last updated 3 November 2026.
+Last updated 5 November 2026.
