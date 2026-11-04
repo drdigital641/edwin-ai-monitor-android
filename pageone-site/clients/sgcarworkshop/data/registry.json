@@ -889,5 +889,95 @@
   "mobile": "+6590490880",
   "status": "built",
   "date": "2026-11-03"
+ },
+ {
+  "place_id": "ChIJx4nR_cR9WiERBhpI3G35BZc",
+  "slug": "regnant-automotive",
+  "name_norm": "regnant automotive",
+  "postal_code": "408934",
+  "mobile": "+6596929668",
+  "status": "built",
+  "date": "2026-11-04"
+ },
+ {
+  "place_id": "ChIJH4iravQX2jER7DDNxVI4IQ8",
+  "slug": "ubi-automobile-services",
+  "name_norm": "ubi automobile services",
+  "postal_code": "408711",
+  "mobile": "+6598315660",
+  "status": "built",
+  "date": "2026-11-04"
+ },
+ {
+  "place_id": "ChIJoVPd6sAX2jER1CZzV07ZQQ8",
+  "slug": "elites-performance",
+  "name_norm": "elites performance",
+  "postal_code": "417893",
+  "mobile": "+6590999558",
+  "status": "built",
+  "date": "2026-11-04"
+ },
+ {
+  "place_id": "ChIJ10ApCJcX2jERGQeeSiq6VZs",
+  "slug": "ysk-auto-workshop",
+  "name_norm": "ysk auto workshop",
+  "postal_code": "417883",
+  "mobile": "+6596402541",
+  "status": "built",
+  "date": "2026-11-04"
+ },
+ {
+  "place_id": "ChIJm2-2tu8X2jERsVZu4PF9Np4",
+  "slug": "ace-chrome-restorations",
+  "name_norm": "ace chrome restorations",
+  "postal_code": "417921",
+  "mobile": "+6588240062",
+  "status": "built",
+  "date": "2026-11-04"
+ },
+ {
+  "place_id": "ChIJs5BioWIX2jER89cxNltojp4",
+  "slug": "concours-singapore",
+  "name_norm": "concours",
+  "postal_code": "417921",
+  "mobile": "+6589449985",
+  "status": "built",
+  "date": "2026-11-04"
+ },
+ {
+  "place_id": "ChIJI3C76DIX2jERTa4TSHw1B58",
+  "slug": "spectrum-werks",
+  "name_norm": "spectrum werks",
+  "postal_code": "417800",
+  "mobile": "+6581811201",
+  "status": "built",
+  "date": "2026-11-04"
+ },
+ {
+  "place_id": "ChIJryMfeyoX2jERQVAYiIuvZ6M",
+  "slug": "unimotor-company",
+  "name_norm": "unimotor",
+  "postal_code": "417883",
+  "mobile": "+6597981616",
+  "status": "built",
+  "date": "2026-11-04"
+ },
+ {
+  "place_id": "ChIJ26nB7SEX2jERsAMb2mPS-4w",
+  "slug": "m-werkz",
+  "name_norm": "m werkz",
+  "postal_code": "575721",
+  "mobile": "+6594239929",
+  "status": "built",
+  "date": "2026-11-04"
+ },
+ {
+  "place_id": "ChIJbVUuGSQX2jERyYUHyz7tcZM",
+  "slug": "sw-auto-transmission-solutions",
+  "name_norm": "sw auto transmission solutions",
+  "postal_code": "575722",
+  "mobile": "+6582013846",
+  "status": "built",
+  "date": "2026-11-04"
  }
 ]

@@ -1,0 +1,78 @@
+{
+ "slug": "m-werkz",
+ "researched_at": "2026-11-04",
+ "researcher": "Claude, Google Places Details only (candidate from Google Maps listing via OpenSEO, queued at Edwin's request; name from Google Business Profile)",
+ "facts": [
+  {
+   "field": "displayName",
+   "value": "M WERKZ PTE LTD",
+   "source_url": "google_places",
+   "retrieved": "2026-11-04"
+  },
+  {
+   "field": "rating",
+   "value": "4.6",
+   "source_url": "google_places",
+   "retrieved": "2026-11-04"
+  },
+  {
+   "field": "userRatingCount",
+   "value": "9",
+   "source_url": "google_places",
+   "retrieved": "2026-11-04"
+  },
+  {
+   "field": "websiteUri",
+   "value": "None",
+   "source_url": "google_places",
+   "retrieved": "2026-11-04"
+  },
+  {
+   "field": "types",
+   "value": "['car_repair', 'point_of_interest', 'service', 'establishment']",
+   "source_url": "google_places",
+   "retrieved": "2026-11-04"
+  },
+  {
+   "field": "primaryType",
+   "value": "car_repair",
+   "source_url": "google_places",
+   "retrieved": "2026-11-04"
+  },
+  {
+   "field": "opening_hours",
+   "value": [
+    "Monday: 9:30 AM – 7:00 PM",
+    "Tuesday: 9:30 AM – 7:00 PM",
+    "Wednesday: 9:30 AM – 7:00 PM",
+    "Thursday: 9:30 AM – 7:00 PM",
+    "Friday: 9:30 AM – 7:00 PM",
+    "Saturday: 9:30 AM – 4:00 PM",
+    "Sunday: Closed"
+   ],
+   "source_url": "google_places",
+   "retrieved": "2026-11-04"
+  }
+ ],
+ "conflicts": [
+  {
+   "field": "name",
+   "google": "M WERKZ PTE LTD",
+   "other": "M WERKZ",
+   "resolution": "Google name, \"Pte Ltd\" dropped"
+  }
+ ],
+ "not_found": [
+  "editorialSummary",
+  "parkingOptions"
+ ],
+ "review_service_support": {
+  "BMW and Mercedes-Benz cars": 2,
+  "Coolant leak repair": 1,
+  "Belt replacement": 2,
+  "Car servicing": 1
+ },
+ "review_count_seen": 5,
+ "fetched_at": "2026-11-04",
+ "source": "google_places"
+}

@@ -1,0 +1,78 @@
+{
+ "slug": "regnant-automotive",
+ "researched_at": "2026-11-04",
+ "researcher": "Claude, Google Places Details only (candidate from Google Maps listing via OpenSEO, queued at Edwin's request; name from Google Business Profile)",
+ "facts": [
+  {
+   "field": "displayName",
+   "value": "Regnant Automotive Pte Ltd",
+   "source_url": "google_places",
+   "retrieved": "2026-11-04"
+  },
+  {
+   "field": "rating",
+   "value": "5",
+   "source_url": "google_places",
+   "retrieved": "2026-11-04"
+  },
+  {
+   "field": "userRatingCount",
+   "value": "149",
+   "source_url": "google_places",
+   "retrieved": "2026-11-04"
+  },
+  {
+   "field": "websiteUri",
+   "value": "https://regnantauto.sg/",
+   "source_url": "google_places",
+   "retrieved": "2026-11-04"
+  },
+  {
+   "field": "types",
+   "value": "['car_repair', 'point_of_interest', 'service', 'establishment']",
+   "source_url": "google_places",
+   "retrieved": "2026-11-04"
+  },
+  {
+   "field": "primaryType",
+   "value": "car_repair",
+   "source_url": "google_places",
+   "retrieved": "2026-11-04"
+  },
+  {
+   "field": "opening_hours",
+   "value": [
+    "Monday: 9:00 AM – 6:00 PM",
+    "Tuesday: 9:00 AM – 6:00 PM",
+    "Wednesday: 9:00 AM – 6:00 PM",
+    "Thursday: 9:00 AM – 6:00 PM",
+    "Friday: 9:00 AM – 6:00 PM",
+    "Saturday: 9:00 AM – 2:00 PM",
+    "Sunday: Closed"
+   ],
+   "source_url": "google_places",
+   "retrieved": "2026-11-04"
+  }
+ ],
+ "conflicts": [
+  {
+   "field": "name",
+   "google": "Regnant Automotive Pte Ltd",
+   "other": "Regnant Automotive",
+   "resolution": "Google name, \"Pte Ltd\" dropped"
+  }
+ ],
+ "not_found": [
+  "editorialSummary",
+  "paymentOptions",
+  "parkingOptions"
+ ],
+ "review_service_support": {
+  "Accident repair and insurance claims": 4,
+  "Panel beating and spray painting": 1,
+  "Lorry repairs": 1
+ },
+ "review_count_seen": 5,
+ "fetched_at": "2026-11-04",
+ "source": "google_places"
+}
