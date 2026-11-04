@@ -134,7 +134,8 @@ function guideBox(list){var w=el('div','guidebox');w.appendChild(el('h3',null,'R
 function render(a,viaChip){body.textContent='';var chips=el('div','achips'),r=a.top&&a.top.r,cats=[],area=a.area;
  if(a.make)chips.appendChild(chip('Car',MAKES[a.make]));if(area)chips.appendChild(chip('Area',area.name));if(r)chips.appendChild(chip('Service',r.label));
  if(a.sun)chips.appendChild(chip('Open','Sundays'));if(a.late)chips.appendChild(chip('Open','Late'));
- var nm=a.raw?nameMatch(a):[];a.pcat=r?r.cat:'';
+ var nm=a.nm||(a.raw?nameMatch(a):[]);a.pcat=r?r.cat:'';
+ if(a.ai)chips.appendChild(chip('Read by','AI'));if(a.offTopic)body.appendChild(el('p','fine','This search is for cars and car workshops. Try describing your car problem.'));
  var pm=(!r&&!nm.length&&!area&&!a.sun&&!a.late)?ranked(cards.filter(function(c){return profScore(c,a)>=(a.make?3:2)}),a).filter(function(c){return profScore(c,a)>0}).slice(0,9):[];
  if(r){cats=[r.cat].concat(r.alt?[r.alt]:[])}else if(a.sun||a.late){cats=(DATA.cats||[]).map(function(x){return x.slug})}
  var head=el('h2','ah',(r||area||nm.length||pm.length||a.sun||a.late)?'Here is what we understood':'We could not match that exactly');body.appendChild(head);if(chips.children.length)body.appendChild(chips);
@@ -155,7 +156,7 @@ function render(a,viaChip){body.textContent='';var chips=el('div','achips'),r=a.
  var cl=el('button','linkbtn askclear','Clear this search');cl.type='button';cl.addEventListener('click',function(){inp.value='';var any=form.querySelector('input[name=svc][value=""]');if(any)any.checked=true;out.hidden=true;inp.focus()});body.appendChild(cl);
  out.hidden=false;if(!viaChip||true){try{out.scrollIntoView({behavior:window.matchMedia&&matchMedia('(prefers-reduced-motion: reduce)').matches?'auto':'smooth',block:'start'})}catch(e){}}
  body.setAttribute('tabindex','-1');
- if(!viaChip)log(a,r?r.id:'none');}
+ if(!viaChip)log(a,(a.ai?'ai-':'')+(r?r.id||r.cat:'none'));}
 /* Anonymous log: normalized words only (no word with 3+ digits, no @ or links), a random per-visit id, device and referrer. No IP, name or phone is stored. */
 var LIVE_HOST='sgcarworkshop.sg',APP='6ac7f2548a9c3877449e2772',seen={};
 function rid(){return Math.random().toString(36).slice(2)+Date.now().toString(36)}
@@ -177,8 +178,27 @@ function log(a,rule){try{var h=location.hostname.replace(/^www\./,''),site=h===L
   else{j=Math.max(0,j-3);inp.setAttribute('placeholder',w.slice(0,j));if(!j){del=false;i=(i+1)%S.length;t=setTimeout(step,350);return}t=setTimeout(step,18)}}
  inp.addEventListener('focus',function(){busy=true;inp.setAttribute('placeholder','Ask anything about your car, a workshop or an area')});
  inp.addEventListener('blur',function(){busy=false});t=setTimeout(step,600)})();
+/* Cheap AI reader (Edwin 4 Nov 2026: "use cheap AI power directly"): every typed search is read by AI first. It returns fields only
+   (service, car, area, hours, workshop name, likely issue); matching stays here, on the page. If AI fails or is slow, the free reader above answers. */
+var AI_URL='https://base44.app/api/apps/'+APP+'/functions/askSearch',aiCache={};
+function fromAI(a,x){var b=Object.assign({},a,{ai:true,tier:2});
+ if(x.off_topic){b.top=null}
+ if(x.service&&x.service!=='none'){var R=RULES.filter(function(r){return r.id===x.service})[0];if(R)b.top={r:Object.assign({},R,{issue:x.issue||R.issue}),dir:false,sc:2}}
+ if(!b.top&&!x.off_topic&&!x.workshop&&x.issue&&x.category&&catName[x.category]){var c=catName[x.category];b.top={r:{cat:c.slug,label:c.short,issue:x.issue},dir:false,sc:2}}
+ if(x.make){var mk=norm(x.make).replace(/ /g,'');mk=MAKE_ALIAS[mk]||mk;if(!MAKES[mk])mk=norm(x.make).split(' ')[0];if(MAKES[mk])b.make=mk}
+ if(x.area){var ar=findArea(norm(x.area),norm(x.area).split(' '),DATA);if(ar)b.area=ar}
+ b.sun=!!x.sunday||a.sun;b.late=!!x.late||a.late;
+ if(x.workshop){var w=norm(x.workshop),wm=nameMatch({s0:w,toks:w.split(' ')});if(wm.length)b.nm=wm}
+ if(x.off_topic&&!b.top)b.offTopic=true;return b}
+function askAI(a){var key=norm(a.raw);if(aiCache[key])return Promise.resolve(aiCache[key]);if(!window.fetch)return Promise.reject();
+ var ctl=window.AbortController?new AbortController():null,tm=setTimeout(function(){if(ctl)ctl.abort()},7000);
+ return fetch(AI_URL,{method:'POST',credentials:'omit',headers:{'Content-Type':'application/json'},body:JSON.stringify({q:a.raw.slice(0,160)}),signal:ctl?ctl.signal:undefined})
+  .then(function(r){clearTimeout(tm);if(!r.ok)throw 0;return r.json()}).then(function(x){if(!x||x.error)throw 0;aiCache[key]=x;return x})}
 form.addEventListener('submit',function(e){e.preventDefault();var v=inp.value.trim();if(!v){inp.focus();return}
- var any=form.querySelector('input[name=svc][value=""]');if(any&&!any.checked){any.checked=true}render(analyse(v,DATA))});
+ var any=form.querySelector('input[name=svc][value=""]');if(any&&!any.checked){any.checked=true}
+ var a=analyse(v,DATA);
+ body.textContent='';body.appendChild(el('p','fine aithink','Reading your question...'));out.hidden=false;
+ askAI(a).then(function(x){if(inp.value.trim()!==v)return;var b=fromAI(a,x);render(b);},function(){if(inp.value.trim()!==v)return;render(a)})});
 inp.addEventListener('keydown',function(e){if(e.key==='Enter'&&!e.shiftKey){e.preventDefault();form.dispatchEvent(new Event('submit',{cancelable:true,bubbles:true}))}});
 /* Category chips run the same results panel (no typing needed). */
 form.addEventListener('change',function(e){var t=e.target;if(!t||t.name!=='svc')return;
