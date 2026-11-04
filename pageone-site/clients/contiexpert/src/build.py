@@ -4,7 +4,7 @@ Content: content/services.py (SERVICES, BRANDS), content/articles.py (ARTICLES);
 Facts policy: only facts in BRIEF.md 'Verified'. Anything else goes in CONFIRM (CONFIRM.md is written on each build)."""
 import os, sys, json, math, shutil, html, runpy, re, hashlib, subprocess
 
-LIVE = False
+LIVE = True  # contiexpert.sg is live since 4 Nov 2026 (domain root = preview/contiexpert folder)
 DOMAIN = 'https://contiexpert.sg'
 BASE = '' if LIVE else '/preview/contiexpert'
 HERE = os.path.dirname(os.path.abspath(__file__))
