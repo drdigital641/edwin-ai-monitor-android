@@ -6,7 +6,7 @@ import re
 
 TAGS = [
     # ---- services
-    dict(id='aircon', kind='service', label='Aircon', rx=r'aircon|air-?con|\bac\b', cat=None, guide='car-aircon-not-cold'),
+    dict(id='aircon', kind='service', label='Aircon', rx=r'aircon|air-?con|\bac\b', cat='car-aircon-repair', guide='car-aircon-not-cold'),
     dict(id='brakes', kind='service', label='Brakes', rx=r'brake', cat=None, guide='brake-squeal-noise'),
     dict(id='suspension', kind='service', label='Suspension and undercarriage', rx=r'undercarriage|suspension|absorber|stabiliser|drive ?shaft|wear-and-tear|alignment', cat=None, guide='car-knocking-over-humps'),
     dict(id='gearbox', kind='service', label='Gearbox and transmission', rx=r'gearbox|transmission|clutch|cvt', cat='gearbox-repair', guide='gearbox-cvt-jerking'),
@@ -70,4 +70,13 @@ def apply(entries, pilot_dir):
             moved.append((e['slug'], e['category'], new))
             e['category'] = new
             e['categories'] = [new] + [c for c in e.get('categories', []) if c != new]
+        # Edwin 4 Nov 2026 (decision card): a card also appears on a service page (and its area x service page) when at least one
+        # customer mention in its Google reviews matches that service. The card then says "Customers mention ..." on that page.
+        for t in TAGS:
+            if t['kind'] != 'service' or not t['cat']:
+                continue
+            hit = [x for x in m if _RX[t['id']].search(x)]
+            if hit and t['cat'] not in e.get('categories', [e['category']]):
+                e['categories'] = list(e.get('categories', [e['category']])) + [t['cat']]
+                e.setdefault('mention_cats', {})[t['cat']] = hit[0]
     return moved

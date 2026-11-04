@@ -1,8 +1,8 @@
 {
 "": {
 "d": "2026-11-04",
-"h": "770e0183bb7d",
-"h2": "770e0183bb7d"
+"h": "300bf20199b7",
+"h2": "300bf20199b7"
 },
 "about/": {
 "d": "2026-11-03",
@@ -11,13 +11,13 @@
 },
 "areas/amk-industrial-park-2/": {
 "d": "2026-11-04",
-"h": "99425089d430",
-"h2": "99425089d430"
+"h": "c3cc4993a134",
+"h2": "c3cc4993a134"
 },
 "areas/carros-centre-jalan-lam-huat/": {
 "d": "2026-11-04",
-"h": "3f4ff48fd799",
-"h2": "3f4ff48fd799"
+"h": "b542f60dd20f",
+"h2": "b542f60dd20f"
 },
 "areas/defu-industrial-estate/": {
 "d": "2026-11-04",
@@ -26,18 +26,23 @@
 },
 "areas/kaki-bukit-industrial-estate/": {
 "d": "2026-11-04",
-"h": "51788c0593a2",
-"h2": "51788c0593a2"
+"h": "e6e9cfa761eb",
+"h2": "e6e9cfa761eb"
+},
+"areas/kaki-bukit-industrial-estate/spray-painting-bodywork/": {
+"d": "2026-11-04",
+"h": "eae60ac9dd15",
+"h2": "eae60ac9dd15"
 },
 "areas/macpherson-road/": {
 "d": "2026-11-04",
-"h": "10435989dfc0",
-"h2": "10435989dfc0"
+"h": "86117e00cb45",
+"h2": "86117e00cb45"
 },
 "areas/paya-ubi-industrial-park/": {
 "d": "2026-11-04",
-"h": "190ea24259c2",
-"h2": "190ea24259c2"
+"h": "6f1234b38b64",
+"h2": "6f1234b38b64"
 },
 "areas/sin-ming-industrial-estate/": {
 "d": "2026-11-04",
@@ -46,8 +51,8 @@
 },
 "areas/toh-guan-enterprise-hub/": {
 "d": "2026-11-04",
-"h": "c5a5e9345d62",
-"h2": "c5a5e9345d62"
+"h": "2ddb41397946",
+"h2": "2ddb41397946"
 },
 "areas/toh-guan-jurong-east/": {
 "d": "2026-11-04",
@@ -61,8 +66,8 @@
 },
 "areas/woodlands/": {
 "d": "2026-11-04",
-"h": "78353fa02e0a",
-"h2": "78353fa02e0a"
+"h": "f56668d2055f",
+"h2": "f56668d2055f"
 },
 "areas/yishun-industrial-park-a/": {
 "d": "2026-11-04",
@@ -71,8 +76,8 @@
 },
 "areas/yishun-industrial-street-1/": {
 "d": "2026-11-04",
-"h": "3cf99c408f38",
-"h2": "3cf99c408f38"
+"h": "e8bbdaf617ab",
+"h2": "e8bbdaf617ab"
 },
 "areas/yishun/": {
 "d": "2026-11-04",
@@ -81,8 +86,8 @@
 },
 "brands/bmw-mercedes/": {
 "d": "2026-11-04",
-"h": "831570d0e0b1",
-"h2": "831570d0e0b1"
+"h": "e84d1c083411",
+"h2": "e84d1c083411"
 },
 "brands/honda/": {
 "d": "2026-11-04",
@@ -106,8 +111,8 @@
 },
 "guides/car-aircon-not-cold/": {
 "d": "2026-11-04",
-"h": "fe578ca0109d",
-"h2": "fe578ca0109d"
+"h": "4255c6b8ba2e",
+"h2": "4255c6b8ba2e"
 },
 "guides/car-knocking-over-humps/": {
 "d": "2026-11-04",
@@ -121,8 +126,8 @@
 },
 "guides/car-wont-start-battery/": {
 "d": "2026-11-04",
-"h": "4718800654e9",
-"h2": "4718800654e9"
+"h": "5d9536724197",
+"h2": "5d9536724197"
 },
 "guides/engine-warning-light/": {
 "d": "2026-11-04",
@@ -144,15 +149,35 @@
 "h": "3be14bb4090a",
 "h2": "3be14bb4090a"
 },
+"services/car-aircon-repair/": {
+"d": "2026-11-04",
+"h": "5f4e2daaadbf",
+"h2": "5f4e2daaadbf"
+},
+"services/car-battery/": {
+"d": "2026-11-04",
+"h": "9eb096d1033e",
+"h2": "9eb096d1033e"
+},
+"services/car-detailing-coating/": {
+"d": "2026-11-04",
+"h": "7b813adf3e63",
+"h2": "7b813adf3e63"
+},
+"services/gearbox-repair/": {
+"d": "2026-11-04",
+"h": "a0aa4df5eef8",
+"h2": "a0aa4df5eef8"
+},
 "services/general-servicing-repair/": {
 "d": "2026-11-04",
-"h": "aa49954d87f9",
-"h2": "aa49954d87f9"
+"h": "3be6ef857224",
+"h2": "3be6ef857224"
 },
 "services/spray-painting-bodywork/": {
 "d": "2026-11-04",
-"h": "5749deeed8a1",
-"h2": "5749deeed8a1"
+"h": "3ac66a0a9c55",
+"h2": "3ac66a0a9c55"
 },
 "terms/": {
 "d": "2026-11-03",
@@ -176,13 +201,13 @@
 },
 "workshops/88-auto-garage-woodlands/": {
 "d": "2026-11-03",
-"h": "d011f073fd22",
-"h2": "d011f073fd22"
+"h": "5723c53a0613",
+"h2": "5723c53a0613"
 },
 "workshops/88-auto-garage/": {
 "d": "2026-11-03",
-"h": "11ebb5f507c2",
-"h2": "11ebb5f507c2"
+"h": "0c0e3858e8ab",
+"h2": "0c0e3858e8ab"
 },
 "workshops/98-auto-werkz/": {
 "d": "2026-11-03",

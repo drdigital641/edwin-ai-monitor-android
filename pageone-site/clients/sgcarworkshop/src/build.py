@@ -945,6 +945,15 @@ def card_profile(e):
     return prof, '|'.join(ment)
 
 
+def mention_line(e, page_path):
+    """On a service or area x service page, a card listed there only because its Google reviews mention that service says so."""
+    mc = e.get('mention_cats') or {}
+    for cat, phrase in mc.items():
+        if re.search(r'(^|/)(services/|areas/[^/]+/)%s/$' % re.escape(cat), page_path or ''):
+            return cat, '<p class="fine mention">Customers mention %s in Google reviews</p>' % E(phrase.lower())
+    return None, ''
+
+
 def card(e, depth, page_path=''):
     c = CAT[e['category']]
     attrs = 'data-search="%s" data-cat="%s" data-regions="%s" data-tier="%s"' % (E(card_search(e), True), c['slug'], ' '.join(e['regions']), e['tier'])
@@ -959,10 +968,15 @@ def card(e, depth, page_path=''):
     rg = '<p class="meta rg">%s<span>%s</span></p>' % (ic('pin'), E(region_label(e)))
     if e['tier'] == 'free':
         svc = ', '.join(e.get('services_public', [])[:3])
+        mcat, mline = mention_line(e, page_path)
+        facts_html = card_facts(e)
+        if mcat:   # listed here because of a customer mention: show this page's service on the tag, and the mention once
+            c = CAT[mcat]
+            if 'Customers mention' in facts_html: mline = ''
         return ('<article class="card basic" %s><div class="ph btile" style="%s">%s%s</div><div class="bd"><span class="tag">%s</span>'
                 '<h3><a href="%sworkshops/%s/">%s</a></h3>%s%s<p class="addr">%s</p><p class="tx full svcline">%s</p>%s'
                 '<div class="acts">%s<a class="btn sm" href="%sworkshops/%s/" data-cta="view_%s">View details</a></div>%s</div></article>') % (
-            attrs, bt_style(e), gph_tile(e), tier_badge(e, 'on-ph'), E(c['short']), pre(depth), e['slug'], E(e['name']), rg, rating_line(e), E(e['address_public']), E(svc), card_facts(e) + tap_line(e),
+            attrs, bt_style(e), gph_tile(e), tier_badge(e, 'on-ph'), E(c['short']), pre(depth), e['slug'], E(e['name']), rg, rating_line(e), E(e['address_public']), E(svc), mline + facts_html + tap_line(e),
             contact_btns(e, page_path, 'sm'), pre(depth), e['slug'], e['slug'], owner_note(e, depth, page_path, 'claim'))
     ci = e.get('card_img')
     ph = photo_img(dict(ci, alt=ci['alt']), depth, lazy=True) if ci else tile(e)

@@ -73,8 +73,8 @@ Last updated: 2026-11-04
 - [1 Car Service](https://sgcarworkshop.sg/workshops/1-car-service/): General servicing and repair, Basic listing, Sin Ming and Bishan
 - [1 Stop Garage](https://sgcarworkshop.sg/workshops/1-stop-garage/): General servicing and repair, Basic listing, Ang Mo Kio
 - [7 Garage](https://sgcarworkshop.sg/workshops/7-garage/): General servicing and repair, Basic listing, Yishun
-- [88 Auto Garage](https://sgcarworkshop.sg/workshops/88-auto-garage/): General servicing and repair, Basic listing, MacPherson
-- [88 Auto Garage @ Woodlands](https://sgcarworkshop.sg/workshops/88-auto-garage-woodlands/): General servicing and repair, Basic listing, Woodlands
+- [88 Auto Garage](https://sgcarworkshop.sg/workshops/88-auto-garage/): Car aircon repair, Basic listing, MacPherson
+- [88 Auto Garage @ Woodlands](https://sgcarworkshop.sg/workshops/88-auto-garage-woodlands/): Car aircon repair, Basic listing, Woodlands
 - [98 Auto Werkz](https://sgcarworkshop.sg/workshops/98-auto-werkz/): General servicing and repair, Basic listing, Woodlands
 - [Ace Chrome & Restorations](https://sgcarworkshop.sg/workshops/ace-chrome-restorations/): Spray painting and bodywork, Basic listing, Kaki Bukit
 - [ACM Service Center](https://sgcarworkshop.sg/workshops/acm-service-center/): General servicing and repair, Basic listing, Ang Mo Kio
