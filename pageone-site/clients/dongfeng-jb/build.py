@@ -906,7 +906,7 @@ ART = {a['slug']: a for a in ARTICLES}
 # Per-page lastmod (sitemap + WebPage dateModified): dated articles carry their own date; pages they change are listed here (21 Oct 2026).
 LASTMOD = {'articles/%s/' % a['slug']: a['date'] for a in ARTICLES if a.get('date')}
 LASTMOD['articles/'] = '2026-11-02'
-LASTMOD['test-drive/'] = '2026-10-28'  # FAQ question corrected (ChatGPT bridge draft)
+LASTMOD['test-drive/'] = '2026-11-05'  # title/desc + model/service links (GSC quick win)
 LASTMOD['service/'] = '2026-10-28'  # service-specific closing block (ChatGPT bridge draft)
 
 FAQ_HOME = [
@@ -1203,7 +1203,7 @@ def test_drive_body(L):
         E(t(T('Preferred day and time', 'Hari dan masa pilihan', '希望的日期和时间'), L)), E(t(T('When', 'Bila', '时间'), L)), E(t(T('e.g. Saturday morning', 'cth. Sabtu pagi', '例如：周六上午'), L)),
         E(t(T('Your name', 'Nama anda', '您的姓名'), L)), E(t(T('Name', 'Nama', '姓名'), L)), WA_SVG, E(t(T('Send on WhatsApp', 'Hantar di WhatsApp', '通过 WhatsApp 发送'), L)))
     return ('<section class="sec"><div class="wrap split"><div><span class="eyebrow">%s</span><h2>%s</h2><p class="answer">%s</p>%s</div><div>%s</div></div></section>'
-            '<section class="sec sec-white"><div class="wrap">%s<p>%s <a href="articles/ev-test-drive-checklist/">%s</a></p></div></section>'
+            '<section class="sec sec-white"><div class="wrap">%s<p>%s <a href="articles/ev-test-drive-checklist/">%s</a></p><p>%s <a href="models/vigo/">Dongfeng Vigo</a> · <a href="models/007/">Dongfeng 007</a> · <a href="service/">%s</a></p></div></section>'
             '<section class="sec"><div class="wrap">%s%s</div></section>') % (
         E(t(T('By appointment', 'Dengan temujanji', '预约制'), L)), E(t(T('How do I book a Dongfeng test drive in Johor Bahru?', 'Bagaimana tempah pandu uji Dongfeng di Johor Bahru?', '如何预约新山东风试驾？'), L)),
         E(t(T('Send us a WhatsApp with the model you want and a day and time that suit you. We confirm the slot and have the car charged and ready at our 3S centre in Taman Ekoperniagaan, Johor Bahru.',
@@ -1212,6 +1212,7 @@ def test_drive_body(L):
         steps(TD_STEPS, L), form,
         sec_head(T('Checklist', 'Senarai semak', '清单'), T('What to check on the drive', 'Apa perlu diperiksa semasa memandu', '试驾时要注意什么'), None, L),
         E(t(T('Our short guide:', 'Panduan ringkas kami:', '我们的简明指南：'), L)), E(t(ART['ev-test-drive-checklist']['h1'], L)),
+        E(t(T('Know the models first:', 'Kenali model dahulu:', '先了解车型：'), L)), E(t(T('Service at our 3S centre', 'Servis di pusat 3S kami', '3S 中心保养服务'), L)),
         sec_head(W['faq_h'], T('Test drive questions', 'Soalan pandu uji', '试驾常见问题'), None, L), faq_html(TD_FAQ, L))
 
 
@@ -1445,8 +1446,8 @@ def build_pages():
         vpath = 'models/%s/' % VOYAH['slug']
         page(L, vpath, VOYAH['title'], VOYAH['desc'], VOYAH['h1'], voyah_body(L), crumbs=[('models/', nav['models/']), (vpath, VOYAH['name'])], lede=VOYAH['lede'],
              photo=VOYAH['hero'], schema=[faq_schema(VOYAH['faqs'], L)])
-        page(L, 'test-drive/', T('Book a Dongfeng Test Drive in Johor Bahru | Dongfeng JB', 'Tempah Pandu Uji Dongfeng di Johor Bahru | Dongfeng JB', '预约新山东风试驾 | 东风新山 3S 中心'),
-             T('Test drive the Dongfeng Vigo or 007 in Johor Bahru. WhatsApp +60 18-762 0828 with the model and a time; we have the car charged and ready.',
+        page(L, 'test-drive/', T('Dongfeng Test Drive Johor Bahru: Vigo & 007 | Dongfeng JB', 'Tempah Pandu Uji Dongfeng di Johor Bahru | Dongfeng JB', '预约新山东风试驾 | 东风新山 3S 中心'),
+             T('Book a Dongfeng test drive in Johor Bahru: try the Vigo or 007 by WhatsApp appointment at our 3S centre. Car charged and ready; bring your licence.',
                'Pandu uji Dongfeng Vigo atau 007 di Johor Bahru. WhatsApp +60 18-762 0828 dengan model dan masa; kereta dicas dan sedia.',
                '在新山试驾东风 Vigo 或 007。WhatsApp +60 18-762 0828 告诉我们车型与时间，车会充好电等您。'),
              T('Book a test drive', 'Tempah pandu uji', '预约试驾'), test_drive_body(L), crumbs=[('test-drive/', nav['test-drive/'])], photo='vigo-showroom', schema=[faq_schema(TD_FAQ, L)],
