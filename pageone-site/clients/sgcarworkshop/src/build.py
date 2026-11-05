@@ -2057,6 +2057,17 @@ def privacy_page():
                % (E(SITE_NAME), GOOGLE_PRIVACY, GOOGLE_TERMS, PAGE_ONE_WA_SHOW))
 
 
+def contact_page():
+    """Simple contact page (Edwin 5 Nov 2026: /contact/ returned 404). Page One's number is shown as text only, as on Privacy;
+    the WhatsApp link to Page One stays on the claim page."""
+    legal_page('contact/', 'Contact | SG Car Workshop', 'How to contact a workshop listed on SG Car Workshop, and how owners can claim, correct or remove a listing.', 'Contact',
+               ('<p class="lede" style="font-size:1rem">%s is a free directory of car workshops in Singapore, run by Page One Singapore.</p>'
+                '<h2>To book or ask about a car repair</h2><p>Contact the workshop directly with the WhatsApp or Call button on its card. We do not take bookings or pass on messages. <a href="../">Find a workshop</a>.</p>'
+                '<h2>Workshop owners</h2><p>To claim your free listing, correct a detail or remove a listing, use <a href="../list-your-workshop/#claim">Claim your listing</a> or <a href="../list-your-workshop/#remove">Remove my listing</a>.</p>'
+                '<h2>Anything else</h2><p>Page One Singapore (Snap Commercial Pte. Ltd., UEN 202209904W). WhatsApp %s.</p>')
+               % (E(SITE_NAME), PAGE_ONE_WA_SHOW))
+
+
 def not_found():
     b = PATH_BASE
     cats = ''.join('<li><a href="%sservices/%s/">%s</a></li>' % (b, c['slug'], E(c['name'])) for c in CATEGORIES)
@@ -2097,7 +2108,7 @@ def build():
     list_page()
     about_page()
     terms_page()
-    privacy_page()
+    privacy_page(); contact_page()
 
     if os.path.isdir(OUT):
         shutil.rmtree(OUT)

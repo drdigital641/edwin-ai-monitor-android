@@ -621,5 +621,17 @@ for _f in sorted(os.listdir(os.path.join(root, '..', 'data', 'pilot'))):
     else:
         print('WARNING (not a failure): project folder not mounted, source logs not checked for', _sl)
 
+# POSITIVE ONLY (Edwin 5 Nov 2026): no complaint or negative review summary about any workshop, on any page, attribute, feed or data file.
+import positive_only as _PO
+for _dp, _dn, _fn in os.walk(root):
+    for _f in _fn:
+        if _f.endswith(('.html', '.json', '.txt', '.xml', '.js')):
+            for _s in _PO.page_hits(open(os.path.join(_dp, _f), errors='ignore').read())[:1]: print('NEGATIVE line on page (positive-only rule):', os.path.relpath(os.path.join(_dp, _f), root), _s); bad += 1
+for _g in ('pilot', 'google_cache'):
+    for _f in os.listdir(os.path.join(root, '..', 'data', _g)):
+        _d = json.load(open(os.path.join(root, '..', 'data', _g, _f)))
+        for _k in ('themes', 'review_themes', 'lede', 'good_for_note', 'good_to_know_note'):
+            if isinstance(_d.get(_k), str) and _PO.bad(_d[_k]): print('NEGATIVE line in data (positive-only rule):', _g, _f, _PO.bad(_d[_k])[0]); bad += 1
+
 print('pages checked:', len(files), 'problems:', bad)
 sys.exit(1 if bad else 0)
