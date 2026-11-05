@@ -8,7 +8,8 @@ RULES (Edwin, 2 Nov 2026)
     mobile (compared in memory, never saved). Mobile only on Google -> data/pending.json, never live.
   * Private snapshots of the own pages used are kept in snapshots/<slug>/ (gitignored).
 
-COMMANDS  (PLACES_SERVER_KEY in the environment; never written anywhere)
+COMMANDS  (Google key: ONLY the PLACES_SERVER_KEY environment variable of the project's Default cloud environment (Edwin 5 Nov 2026);
+          never copy it into a file, the repo or chat, never print, echo or log it)
   discover  --estates kaki-bukit,ubi          Text Search, field mask places.id ONLY (free). Adds ids to data/queue.json (skips known, removed, pending, existing).
   stage     --place-id ID --slug S --estate E --planning-area "Jurong East" --categories SERV,GEAR --name N --block 48 --street "Toh Guan Road East"
             --unit "#02-140" --building "Enterprise Hub" --postal 608586 --services "a;b;c" --own-url URL [--own-url URL2] [--facebook URL] [--hours "text"]
