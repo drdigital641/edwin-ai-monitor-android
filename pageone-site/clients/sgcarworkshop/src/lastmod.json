@@ -1,8 +1,8 @@
 {
 "": {
 "d": "2026-11-05",
-"h": "210f5ec10349",
-"h2": "210f5ec10349"
+"h": "cf52b581935c",
+"h2": "cf52b581935c"
 },
 "about/": {
 "d": "2026-11-03",
@@ -13,6 +13,11 @@
 "d": "2026-11-05",
 "h": "2273dbd6d2b0",
 "h2": "2273dbd6d2b0"
+},
+"areas/bukit-batok-crescent/": {
+"d": "2026-11-05",
+"h": "e65454b4e1a5",
+"h2": "e65454b4e1a5"
 },
 "areas/bukit-merah-lane-3/": {
 "d": "2026-11-05",
@@ -25,9 +30,9 @@
 "h2": "b542f60dd20f"
 },
 "areas/corporation-drive-jurong-east/": {
-"d": "2026-11-04",
-"h": "22e8bb5d12f2",
-"h2": "22e8bb5d12f2"
+"d": "2026-11-05",
+"h": "3655476b458e",
+"h2": "3655476b458e"
 },
 "areas/defu-industrial-estate/": {
 "d": "2026-11-05",
@@ -66,13 +71,13 @@
 },
 "areas/soon-lee-street-pioneer/": {
 "d": "2026-11-05",
-"h": "2bc8b5c329bd",
-"h2": "2bc8b5c329bd"
+"h": "a933ee37cc56",
+"h2": "a933ee37cc56"
 },
 "areas/toh-guan-enterprise-hub/": {
 "d": "2026-11-05",
-"h": "afce78a416e6",
-"h2": "afce78a416e6"
+"h": "24fe230a9389",
+"h2": "24fe230a9389"
 },
 "areas/toh-guan-jurong-east/": {
 "d": "2026-11-05",
@@ -135,19 +140,19 @@
 "h2": "df471726c80b"
 },
 "guides/car-aircon-not-cold/": {
-"d": "2026-11-04",
-"h": "91016946351e",
-"h2": "91016946351e"
+"d": "2026-11-05",
+"h": "d210b2a68d8c",
+"h2": "d210b2a68d8c"
 },
 "guides/car-knocking-over-humps/": {
-"d": "2026-11-04",
-"h": "3b2b6815e0d5",
-"h2": "3b2b6815e0d5"
+"d": "2026-11-05",
+"h": "76f58fcaa774",
+"h2": "76f58fcaa774"
 },
 "guides/car-overheating/": {
-"d": "2026-11-04",
-"h": "708956c3dd9d",
-"h2": "708956c3dd9d"
+"d": "2026-11-05",
+"h": "4143c6c6d95d",
+"h2": "4143c6c6d95d"
 },
 "guides/car-wont-start-battery/": {
 "d": "2026-11-04",
@@ -155,9 +160,9 @@
 "h2": "ae8a563ffa6f"
 },
 "guides/engine-warning-light/": {
-"d": "2026-11-04",
-"h": "e27cf851915b",
-"h2": "e27cf851915b"
+"d": "2026-11-05",
+"h": "4cf4fbedcccc",
+"h2": "4cf4fbedcccc"
 },
 "guides/gearbox-cvt-jerking/": {
 "d": "2026-11-04",
@@ -165,9 +170,9 @@
 "h2": "e2981bbb5a1c"
 },
 "list-your-workshop/": {
-"d": "2026-11-04",
-"h": "a0c0d374affb",
-"h2": "a0c0d374affb"
+"d": "2026-11-05",
+"h": "547c0bfa8c63",
+"h2": "547c0bfa8c63"
 },
 "privacy/": {
 "d": "2026-11-03",
@@ -176,8 +181,8 @@
 },
 "services/car-aircon-repair/": {
 "d": "2026-11-05",
-"h": "2f2dc8de900b",
-"h2": "2f2dc8de900b"
+"h": "25a020a4d30c",
+"h2": "25a020a4d30c"
 },
 "services/car-battery/": {
 "d": "2026-11-05",
@@ -196,13 +201,13 @@
 },
 "services/general-servicing-repair/": {
 "d": "2026-11-05",
-"h": "d53b80f6a525",
-"h2": "d53b80f6a525"
+"h": "c4d74a3a21ff",
+"h2": "c4d74a3a21ff"
 },
 "services/spray-painting-bodywork/": {
 "d": "2026-11-05",
-"h": "ebb2c74fba10",
-"h2": "ebb2c74fba10"
+"h": "e23f9bfa025b",
+"h2": "e23f9bfa025b"
 },
 "terms/": {
 "d": "2026-11-03",
@@ -313,6 +318,11 @@
 "d": "2026-11-03",
 "h": "87eaec6b12bd",
 "h2": "87eaec6b12bd"
+},
+"workshops/autowheels-motorworks-bukit-batok-wcega-plaza/": {
+"d": "2026-11-05",
+"h": "9461944e7685",
+"h2": "9461944e7685"
 },
 "workshops/battery-rescue-sg/": {
 "d": "2026-11-03",
@@ -479,6 +489,11 @@
 "h": "66f6ad062fde",
 "h2": "66f6ad062fde"
 },
+"workshops/garage-b/": {
+"d": "2026-11-05",
+"h": "5d2d0977de91",
+"h2": "5d2d0977de91"
+},
 "workshops/gma-automotive-services/": {
 "d": "2026-11-03",
 "h": "46fe8a60c1bb",
@@ -493,6 +508,11 @@
 "d": "2026-11-02",
 "h": "fdd661f2aea1",
 "h2": "fdd661f2aea1"
+},
+"workshops/gt-auto-garage/": {
+"d": "2026-11-05",
+"h": "8942d0da42cf",
+"h2": "8942d0da42cf"
 },
 "workshops/gt-continental/": {
 "d": "2026-11-03",
@@ -573,6 +593,11 @@
 "d": "2026-11-03",
 "h": "dec3d20e783f",
 "h2": "dec3d20e783f"
+},
+"workshops/jc-expert-autoworks/": {
+"d": "2026-11-05",
+"h": "b1e3042708b7",
+"h2": "b1e3042708b7"
 },
 "workshops/jc-wheel-dynamic/": {
 "d": "2026-11-03",
@@ -661,13 +686,13 @@
 },
 "workshops/li-hong-auto-services/": {
 "d": "2026-11-04",
-"h": "b30bbcc7c688",
-"h2": "b30bbcc7c688"
+"h": "4897650928f7",
+"h2": "4897650928f7"
 },
 "workshops/li-sheng-automotive-1999/": {
 "d": "2026-11-04",
-"h": "f694895c92ef",
-"h2": "f694895c92ef"
+"h": "65315a656ecf",
+"h2": "65315a656ecf"
 },
 "workshops/lightning-motorsport/": {
 "d": "2026-11-02",
@@ -696,8 +721,8 @@
 },
 "workshops/majesty-autoworks/": {
 "d": "2026-11-03",
-"h": "55b389f708ea",
-"h2": "55b389f708ea"
+"h": "626f6903f447",
+"h2": "626f6903f447"
 },
 "workshops/major-autolution/": {
 "d": "2026-11-02",
@@ -728,6 +753,11 @@
 "d": "2026-11-02",
 "h": "b5601f1a5072",
 "h2": "b5601f1a5072"
+},
+"workshops/motoserv-car-service-centre-bukit-batok/": {
+"d": "2026-11-05",
+"h": "80e09467dc05",
+"h2": "80e09467dc05"
 },
 "workshops/motoserv-car-service-centre-sembawang/": {
 "d": "2026-11-03",
@@ -831,8 +861,8 @@
 },
 "workshops/rio-motorworks/": {
 "d": "2026-11-04",
-"h": "1524d75c814f",
-"h2": "1524d75c814f"
+"h": "fa5999cdb420",
+"h2": "fa5999cdb420"
 },
 "workshops/rk-one-stop-autohub/": {
 "d": "2026-11-03",

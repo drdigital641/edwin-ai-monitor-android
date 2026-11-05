@@ -36,7 +36,7 @@
   "reason": "OPERATIONAL, car repair, SG mobile on Google profile",
   "checked_at": "2026-11-05"
  },
- "status": "pending",
+ "status": "active",
  "tier": "basic",
  "first_seen_at": "2026-11-05",
  "last_verified_at": "2026-11-05",
@@ -70,5 +70,5 @@
   "source": "Google Places",
   "source_date": "2026-11-05"
  },
- "hold": "v2 trial card built 5 Nov 2026, preview only, waiting for Edwin to approve before it goes live (set status active)"
+ "approved": "Edwin 5 Nov 2026 22:29 SGT"
 }
