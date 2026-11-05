@@ -70,8 +70,8 @@ G2 = {
 
 G3 = {
   'path': '/guides/planning-a-custom-shop-counter/',
-  'title': 'Planning a Custom Shop Counter | R&C',
-  'desc': 'Plan a custom shop counter: functions, typical heights as starting points, accessibility, materials, power and data points, and what to prepare.',
+  'title': 'Custom Shop Counter Planning Guide | R&C',
+  'desc': 'How to plan a custom shop counter in Singapore: functions, heights, accessibility, materials, and power and data points.',
   'h1': 'Planning a Custom Shop Counter',
   'kicker': 'Planning guide',
   'answer': 'Plan a shop counter around what happens at it: payment, packing, display, storage and cables. Decide the functions first, then the size, height, materials and power or data points. Typical dimensions are only starting points, so confirm them with your staff, equipment and the actual space.',

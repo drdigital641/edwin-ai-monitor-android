@@ -39,7 +39,7 @@ BASE = ('https://%s/' % DOMAIN) if DOMAIN else PREVIEW
 ASSET_SHA = '84af18a'
 IMG = os.environ.get('RC_IMG') or ('https://cdn.jsdelivr.net/gh/drdigital641/edwin-ai-monitor-android@%s/site-assets/%s/' % (ASSET_SHA, SLUG))
 TODAY = '2026-10-24'
-LASTMOD_OVERRIDE = {'/guides/': '2026-11-01', '/': '2026-11-04', '/services/': '2026-11-04', '/contact/': '2026-11-04', '/about/': '2026-11-04'}  # pages whose content changed after TODAY (night article run)
+LASTMOD_OVERRIDE = {'/guides/planning-a-custom-shop-counter/': '2026-11-05', '/guides/': '2026-11-01', '/': '2026-11-04', '/services/': '2026-11-05', '/contact/': '2026-11-04', '/about/': '2026-11-04'}  # pages whose content changed after TODAY (night article run)
 INDEXNOW_KEY = '7d4c2a9e1f6b8035c4e2a7d9b1f60c38'
 BRAND = 'SG Commercial Fitout'
 BRAND_FULL = 'SG Commercial Fitout - Retail & Commercial Design & Build'
@@ -449,7 +449,8 @@ def build_hubs():
     hub('/services/', 'Retail & Commercial Renovation Services | R&C',
         'Commercial carpentry, renovation, partitioning, soundproofing, electrical, flooring, painting and AVL for Singapore shops, offices, cafes and salons.',
         'Services for retail and commercial spaces', 'Services', C_SVC.SERVICES_INTRO, 'counter-joinery',
-        'Custom oak shop counter with display niche (AI design concept)', inner, [('/services/', 'Services')])
+        'Custom oak shop counter with display niche (AI design concept)',
+        inner + '<p style="margin-top:36px">Planning first? Read our <a href="%s">shop fit-out guides</a>, such as <a href="%s">planning a custom shop counter</a>.</p>' % (rel('/services/', '/guides/'), rel('/services/', '/guides/planning-a-custom-shop-counter/')), [('/services/', 'Services')])
     # spaces
     inner = '<div class="head"><h2>Choose your type of space</h2></div><div class="grid g4">%s</div>' % ''.join(
         card('/spaces/', p['path'], SHORT[p['path']], p['card'], p['image']) for p in C_SPC.PAGES)
