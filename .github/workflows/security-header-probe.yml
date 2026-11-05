@@ -1,0 +1,15 @@
+name: Security header probe
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [ "claude/project-thread-n4nm9m" ]
+    paths: [ ".github/secprobe/**", ".github/workflows/security-header-probe.yml" ]
+
+jobs:
+  probe:
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+      - name: Probe headers
+        run: bash .github/secprobe/probe.sh
