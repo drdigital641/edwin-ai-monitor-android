@@ -152,23 +152,23 @@ def steps(items):
 # Proof: reviews (Facebook, verbatim excerpts), handover stories (Facebook, Aug 2026), sold cars (Instagram, Mar 2022)
 # ----------------------------------------------------------------------------------------------
 REVIEWS = [
-    ('Alvin O.', 'Zach', 'September 2026', 'I highly recommend buying a car from Zach. He is sincere, transparent, and got me the best trade-in rate. When I found a minor issue two days after pickup, he immediately had his garage repair it completely free of charge.'),
-    ('Samuel G.', 'Zach', 'September 2026', 'Good experience with Zach. Chill and easy to work with. No fuss, no hidden fees, and upfront with communication.'),
-    ('Jaylene K.', 'Wei Kiat', 'June 2026', 'The transaction was hassle-free and the car was delivered in the exact condition promised, which gave me confidence throughout. He also went down with us for the PPI and ensured everything was clearly explained and understood.'),
-    ('Toh K. H.', 'Celsius', 'September 2026', 'Thank you my bro Celsius Toh for guiding me through this journey as a first time car owner. Initially, I was really worried and had so many questions to ask, but he patiently answer all my queries and gave me very detailed explanation and guiding me step by step in making the final decision.'),
-    ('Pearly T.', 'Zach', 'May 2026', 'There is definitely a reason why there are hundreds of 100% recommends. I\'m a returning customer and always pleasant to deal with Zach!'),
-    ('Kelvin L.', 'Celsius', 'April 2026', 'Celsius really went the extra mile, searching high and low to find a unit that matched both my budget and what I was looking for, while still ensuring it was a good, solid car.'),
-    ('Nicolas T.', 'Wei Kiat', 'June 2026', 'Dealt with Wei Kiat for the purchase of my vehicle and the entire process was seamless from start to finish. He was highly professional, efficient, and made sure everything went smoothly without any hassle.'),
-    ('Tony L.', 'Celsius', 'July 2026', 'Celsius went above and beyond to assist me with my car purchase within an exceptionally short timeframe. From the outset, he was responsive, patient, and consistently professional, which made the entire process smooth and stress-free.'),
-    ('Celeste N.', 'Celsius', 'April 2026', 'It was my first time buying a second-hand car, and Celcius provided top-notch service in helping me find the perfect one. He recommended several models suited to my needs, and I eventually found a car I was really happy with.'),
-    ('Jobs J.', 'Zach', 'September 2026', 'Buying a used car can be stressful, especially in an industry where some dealers may not honour their promises or stop responding after collecting the vehicle. Zach is different. From the beginning, he made sure the vehicle he was selling was in tip-top condition and was transparent throughout the process.'),
-    ('Yap H. H.', 'Zach', 'September 2026', 'Nice bro to deal with. Helpful throughout the purchase process. Thank you.'),
+    ('A. O.', 'Zach', 'September 2026', 'I highly recommend buying a car from Zach. He is sincere, transparent, and got me the best trade-in rate. When I found a minor issue two days after pickup, he immediately had his garage repair it completely free of charge.'),
+    ('S. G.', 'Zach', 'September 2026', 'Good experience with Zach. Chill and easy to work with. No fuss, no hidden fees, and upfront with communication.'),
+    ('J. K.', 'Wei Kiat', 'June 2026', 'The transaction was hassle-free and the car was delivered in the exact condition promised, which gave me confidence throughout. He also went down with us for the PPI and ensured everything was clearly explained and understood.'),
+    ('T. K. H.', 'Celsius', 'September 2026', 'Thank you my bro Celsius Toh for guiding me through this journey as a first time car owner. Initially, I was really worried and had so many questions to ask, but he patiently answer all my queries and gave me very detailed explanation and guiding me step by step in making the final decision.'),
+    ('P. T.', 'Zach', 'May 2026', 'There is definitely a reason why there are hundreds of 100% recommends. I\'m a returning customer and always pleasant to deal with Zach!'),
+    ('K. L.', 'Celsius', 'April 2026', 'Celsius really went the extra mile, searching high and low to find a unit that matched both my budget and what I was looking for, while still ensuring it was a good, solid car.'),
+    ('N. T.', 'Wei Kiat', 'June 2026', 'Dealt with Wei Kiat for the purchase of my vehicle and the entire process was seamless from start to finish. He was highly professional, efficient, and made sure everything went smoothly without any hassle.'),
+    ('T. L.', 'Celsius', 'July 2026', 'Celsius went above and beyond to assist me with my car purchase within an exceptionally short timeframe. From the outset, he was responsive, patient, and consistently professional, which made the entire process smooth and stress-free.'),
+    ('C. N.', 'Celsius', 'April 2026', 'It was my first time buying a second-hand car, and Celcius provided top-notch service in helping me find the perfect one. He recommended several models suited to my needs, and I eventually found a car I was really happy with.'),
+    ('J. J.', 'Zach', 'September 2026', 'Buying a used car can be stressful, especially in an industry where some dealers may not honour their promises or stop responding after collecting the vehicle. Zach is different. From the beginning, he made sure the vehicle he was selling was in tip-top condition and was transparent throughout the process.'),
+    ('Y. H. H.', 'Zach', 'September 2026', 'Nice bro to deal with. Helpful throughout the purchase process. Thank you.'),
 ]
 
 
 def rev_html(r):
     who, staff, when, text = r
-    return '<figure class="rev"><blockquote>%s</blockquote><figcaption><b>%s</b> · dealt with %s · Facebook, %s</figcaption></figure>' % (E(text), E(who), E(staff), E(when))
+    return '<figure class="rev"><blockquote>%s</blockquote><figcaption><b><a href="%s" target="_blank" rel="noopener">%s</a></b> · dealt with %s · Facebook, %s</figcaption></figure>' % (E(text), FB_REVIEWS, E(who), E(staff), E(when))
 
 
 def revs_carousel(n=8):
@@ -621,7 +621,7 @@ def mag_review(r):
     who, staff, when, text = r
     short = text if len(text) < 190 else text[:text.rfind(' ', 0, 185)] + '…'
     return ('<figure class="rev"><span class="rev-q" aria-hidden="true">&#8220;</span><blockquote>%s</blockquote>'
-            '<figcaption><b>%s</b><span>Dealt with %s · Facebook, %s</span></figcaption></figure>' % (E(short), E(who), E(staff), E(when)))
+            '<figcaption><b><a href="%s" target="_blank" rel="noopener">%s</a></b><span>Dealt with %s · Facebook, %s</span></figcaption></figure>' % (E(short), FB_REVIEWS, E(who), E(staff), E(when)))
 
 
 def mag_article(a):
@@ -705,7 +705,7 @@ def sold_body():
 def reviews_body():
     return f'''<section class="sec"><div class="wrap">
 <div class="proof" style="color:var(--ink)"><div><b>{REC}</b><span style="color:var(--muted)">recommend us on Facebook</span></div><div><b>{REC_N}</b><span style="color:var(--muted)">Facebook reviews, as at {REC_DATE}</span></div></div>
-<p>On Google, our profile shows {GOOGLE_RATING} (as at {REC_DATE}). Below are excerpts from recent Facebook reviews, quoted word for word with the reviewer\'s first name and initial. <a href="{FB_REVIEWS}" target="_blank" rel="noopener">Read every review on Facebook</a>.</p>
+<p>On Google, our profile shows {GOOGLE_RATING} (as at {REC_DATE}). Below are excerpts from recent Facebook reviews, quoted word for word with the reviewer\'s initials only. <a href="{FB_REVIEWS}" target="_blank" rel="noopener">Read every review on Facebook</a>.</p>
 <div class="revgrid">{''.join(rev_html(r) for r in REVIEWS)}</div>
 </div></section>
 <section class="sec sec-alt"><div class="wrap"><div class="sec-head"><h2>Recent handovers</h2></div><div class="stories">{''.join(story_html(x) for x in STORIES)}</div></div></section>'''
