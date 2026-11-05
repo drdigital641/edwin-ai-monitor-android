@@ -510,3 +510,89 @@ ARTICLES.append({
   "related": ["/services/pre-purchase-inspection/", "/services/hybrid-ev-servicing/", "/european-car-service-schedule-singapore/", "/dealer-vs-independent-workshop-singapore/"],
   "confirm": ["Confirm the exact scope of the standard and hybrid/EV inspections (battery state-of-health method, what the report format is) before the page describes deliverables.", "Confirm whether findings are delivered verbally, in writing, or both.", "Confirm inspections can be done at the workshop vs at the seller's location."]
 })
+
+ARTICLES.append({
+  "slug": "brake-warning-light-european-car-singapore",
+  "name": "Brake Warning Light",
+  "card": "What a brake warning light means on a BMW, Mercedes or Audi, which colours need action now, and how the cause is found.",
+  "title": "Brake Warning Light on: What It Means | Volt Autocare",
+  "desc": "Brake warning light on in your BMW, Mercedes or Audi? See what red and amber lights mean, when to stop driving, and how the cause is checked.",
+  "h1": "Brake Warning Light On: What It Means in a European Car",
+  "answer": "A brake warning light can mean worn pads, low brake fluid, a handbrake still applied, or a fault in the ABS or brake electronics. A red brake light with a soft pedal means stop safely and get help. An amber light with normal braking means book a check soon.",
+  "date": "2026-11-05",
+  "service": "/services/brake-suspension-repair/",
+  "minutes": 5,
+  "brand": "European cars",
+  "sections": [
+    {"h2": "What does a brake warning light mean?",
+     "html": """<p>Several different lights relate to the brakes. They do not all mean the same thing, so first work out which one you are looking at.</p>
+<ul>
+<li><strong>Red brake symbol or the word BRAKE.</strong> This can mean the handbrake is on, the brake fluid is low, or the system has found a fault. Treat it as urgent.</li>
+<li><strong>Amber or yellow brake pad symbol.</strong> This usually points to worn pads. The car still brakes, but the pads need attention.</li>
+<li><strong>Amber ABS light.</strong> The anti-lock system has a fault. Normal braking often still works, but the safety function may be off.</li>
+<li><strong>Message in the display.</strong> Many BMW, Mercedes-Benz and Audi models show a text message as well. Photograph it.</li>
+</ul>
+<p>The exact symbols and messages differ between models. Your owner's manual shows what each one looks like on your car.</p>"""},
+    {"h2": "Is it safe to keep driving with the brake light on?",
+     "html": """<p>It depends on the colour and on how the pedal feels. Use this table as a guide, not a rule.</p>
+<table><thead><tr><th>What you see</th><th>What it can suggest</th><th>What to do</th></tr></thead><tbody>
+<tr><td>Red light, pedal feels soft or sinks</td><td>Fluid loss or a hydraulic fault</td><td>Stop safely and call for help or a tow</td></tr>
+<tr><td>Red light, handbrake is off, pedal normal</td><td>Low fluid or a system fault</td><td>Drive gently only to a safe place, then get it checked</td></tr>
+<tr><td>Red light that goes off when you release the handbrake</td><td>Handbrake was still partly applied</td><td>Make sure it is fully released</td></tr>
+<tr><td>Amber pad symbol, braking feels normal</td><td>Pads wearing thin</td><td>Book an inspection soon</td></tr>
+<tr><td>Amber ABS light</td><td>Sensor or ABS fault</td><td>Brake earlier and gently, and book a scan</td></tr>
+</tbody></table>
+<p>If you are unsure, treat the light as more serious, not less. Brakes are not a part to test by driving on.</p>"""},
+    {"h2": "When should you stop driving straight away?",
+     "html": """<p>Pull over safely and switch off if you notice any of these:</p>
+<ul>
+<li>A red brake light together with a soft, spongy or sinking pedal.</li>
+<li>The car takes much longer to slow down.</li>
+<li>Grinding metal noise when you brake.</li>
+<li>A burning smell, or smoke from a wheel.</li>
+<li>The car pulls hard to one side under braking.</li>
+</ul>
+<p>Use your hazard lights and stop where it is safe. Arrange a tow instead of driving on. A brake that fails in stop-start traffic on Bukit Timah Road or at speed on an expressway is a far bigger problem than a tow.</p>"""},
+    {"h2": "Why is the brake pad warning light on?",
+     "html": """<p>Many European cars use a small sensor in the pads, or an electronic wear reading, to warn you before the friction material is used up. When the pad wears to a set point, the light comes on.</p>
+<p>The light is an early warning. It gives you time to plan, but it is not a reason to wait for weeks. Pads that wear all the way down can damage the discs, and that makes the repair larger.</p>
+<p>Sometimes the light stays on after new pads are fitted because the wear sensor was not replaced or has a wiring fault. If the light comes on soon after a brake job, mention that when you get it checked.</p>
+<p>Our <a href="/services/brake-suspension-repair/">brake and suspension repair page</a> lists what a pad and disc inspection covers.</p>"""},
+    {"h2": "What else can cause a brake light to appear?",
+     "html": """<p>The pads are only one possibility. The cause has to be confirmed by a check, not guessed from the symbol.</p>
+<table><thead><tr><th>Possible cause</th><th>What you may notice</th></tr></thead><tbody>
+<tr><td>Low brake fluid</td><td>Red light, sometimes a soft pedal. Fluid level drops slowly as pads wear, or faster if there is a leak.</td></tr>
+<tr><td>Brake fluid leak</td><td>Falling fluid level, a damp area near a wheel, a pedal that sinks</td></tr>
+<tr><td>Worn pads or a faulty pad sensor</td><td>Amber pad symbol, squealing or no other change</td></tr>
+<tr><td>Wheel speed sensor fault</td><td>ABS light, sometimes with the stability control light</td></tr>
+<tr><td>Electronic parking brake fault</td><td>Parking brake warning, handbrake will not apply or release</td></tr>
+<tr><td>Weak battery or charging problem</td><td>Several lights at once, slow starts</td></tr>
+</tbody></table>
+<p>A weak battery can trigger several unrelated warnings together. That is why a proper scan matters more than reading one symbol.</p>"""},
+    {"h2": "How is a brake warning light checked?",
+     "html": """<p>A good check goes further than reading a code. The usual steps look like this:</p>
+<ol>
+<li>Talk through when the light came on and how the pedal feels.</li>
+<li>Check the brake fluid level and condition.</li>
+<li>Scan the brake, ABS and related modules for stored fault codes.</li>
+<li>Remove the wheels and look at pad thickness, discs, calipers, hoses and lines.</li>
+<li>Check the wear sensor and wiring if a pad light is showing.</li>
+<li>Explain what was found, how urgent it is and the repair options before any work starts.</li>
+</ol>
+<p>A fault code points to a system, not always to the part. Replacing parts only because a code mentioned them can waste money and leave the real cause in place.</p>"""},
+    {"h2": "Can you top up brake fluid and carry on?",
+     "html": """<p>Topping up is not a fix. Brake fluid is in a closed system, so a level that has dropped means the pads have worn or fluid has leaked. Both need a proper look.</p>
+<p>Use only the fluid type your car specifies, and never top up while the car is unsafe to drive. If the level is far below the minimum mark, do not drive. Have it checked first.</p>
+<p>Also avoid clearing the light with a basic code reader and ignoring it. The light may return, and the stored data is useful for the diagnosis.</p>"""},
+    {"h2": "Where can you get a brake warning light checked near Newton?",
+     "html": """<p>Volt Autocare looks at brake and warning light faults at its Newton Circus workshop inside the Shell station at 143 Bukit Timah Road. Read about <a href="/services/car-diagnostics-warning-lights/">car diagnostics and warning lights</a> for how a scan works, then send the symbol, the car's make and model, and what the pedal feels like through <a href="/contact-us/">the contact page</a> or WhatsApp +65 8221 5502. If the pedal is soft right now, do not drive. Arrange a tow.</p>"""}
+  ],
+  "faqs": [
+    {"q": "Can I drive with the brake warning light on?", "a": "Only if the light is amber, the pedal feels normal and the car stops as usual, and then only gently to a workshop. If the light is red and the pedal is soft, or the car slows poorly, stop safely and get help."},
+    {"q": "Why is my brake light on but the pads are new?", "a": "The wear sensor may not have been replaced with the pads, or its wiring may be faulty. Low brake fluid, an ABS fault or a weak battery can also trigger a light. A scan and inspection find which it is."},
+    {"q": "What is the difference between the red brake light and the ABS light?", "a": "The red brake light covers the main braking system, such as low fluid or a handbrake still on. The amber ABS light means the anti-lock function has a fault. Normal braking often remains, but treat both as needing a check."},
+    {"q": "Will the brake light go off by itself?", "a": "Sometimes, if the cause was temporary, such as a handbrake not fully released. A light that returns or stays on points to a real fault, and the fault is usually still stored in the car, so a scan can read it."}
+  ],
+  "related": ["/services/brake-suspension-repair/", "/services/car-diagnostics-warning-lights/", "/bmw-check-engine-light-singapore/", "/european-car-service-schedule-singapore/"],
+  "confirm": ["Confirm the workshop can scan brake, ABS and electronic parking brake modules on the makes it accepts before the page promises it.", "Confirm whether towing can be arranged or only advised.", "Confirm whether brake fluid service and electronic parking brake work are done in-house."]
+})
