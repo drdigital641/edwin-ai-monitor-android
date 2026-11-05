@@ -616,7 +616,11 @@ for _f in sorted(os.listdir(os.path.join(root, '..', 'data', 'pilot'))):
         _lp = os.path.join(_CS, _sl + '.json')
         if not os.path.exists(_lp): print('v2 card has no private source log', _sl); bad += 1
         else:
-            for _c in json.load(open(_lp)).get('claims', []):
+            _log = json.load(open(_lp))
+            import finish_batch as _FB
+            _gc = json.load(open(os.path.join(root, '..', 'data', 'google_cache', _sl + '.json'))) if os.path.exists(os.path.join(root, '..', 'data', 'google_cache', _sl + '.json')) else {}
+            if _FB.bad_sources(_log, _gc): print('v2 card uses a source outside the rules (Google + own listed website only, no social pages)', _sl, _FB.bad_sources(_log, _gc)[:2]); bad += 1
+            for _c in _log.get('claims', []):
                 if not (_c.get('claim') and _c.get('source_url') and _c.get('checked') and _c.get('snippet')): print('source log claim incomplete', _sl, _c.get('claim')); bad += 1
     else:
         print('WARNING (not a failure): project folder not mounted, source logs not checked for', _sl)
