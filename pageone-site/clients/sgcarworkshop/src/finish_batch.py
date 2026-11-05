@@ -18,6 +18,10 @@ BATCH = '/tmp/claude-0/s/batch.json'
 # Coordinates come from OneMap (Google's lat/lng may not be stored; it is used only to suggest the nearest estate during prep).
 # OneMap is blocked from this host: run the curl loop in the Controller sandbox and save {postal: [lat, lng]} here.
 ONEMAP = '/tmp/claude-0/s/onemap_cache.json'
+# Card rules v2 (Edwin 5 Nov 2026): one PRIVATE source log per card (the repo is public), with a "pilot" section of own-words card fields
+# and "claims" [{claim, source_url, checked, snippet}]. Never copy these files into the repo or the site.
+CARD_SOURCES = '/mnt/project-files/sgcarworkshop/card_sources'
+V2_KEYS = ('lede', 'chips', 'services', 'services_note', 'specialties', 'makes', 'makes_note', 'good_to_know', 'good_to_know_note', 'faqs', 'sources', 'themes', 'mentioned_services')
 sys.path.insert(0, HERE)
 import areas  # noqa: E402
 
@@ -117,6 +121,10 @@ def apply(a):
             'faqs': [['What does %s do?' % n, 'Google Maps lists it as a car repair workshop.'],
                      ['What are the opening hours?', 'The hours are listed in the Google Maps section above. Please see Google Maps for current hours.']],
             'sources': 'its Google Maps listing', 'stories': [], 'mentioned_services': x['mentioned']})
+        v2 = jl(os.path.join(CARD_SOURCES, slug + '.json'))
+        if v2 and v2.get('pilot'):   # card rules v2 (Edwin 5 Nov 2026): own-website facts merged in; the log itself stays private
+            pl = jl('%s/pilot/%s.json' % (D, slug)); pl.update({k: v for k, v in v2['pilot'].items() if k in V2_KEYS}); pl['card_rules'] = '2026-11-05'
+            jw('%s/pilot/%s.json' % (D, slug), pl)
         F = lambda k, v: {'field': k, 'value': v, 'source_url': 'google_places', 'retrieved': day}
         jw('%s/facts/%s.json' % (D, slug), {'slug': slug, 'researched_at': day,
             'researcher': 'Claude, Google Places Details only (candidate from Google Places Text Search sweep at Edwin\'s request; name from Google Business Profile)',

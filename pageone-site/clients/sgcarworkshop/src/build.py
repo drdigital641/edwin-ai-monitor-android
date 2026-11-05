@@ -1483,8 +1483,21 @@ def b_hero(x):
 <h1>{E(e['name'])}</h1>
 <p class="meta rg">{ic('pin')}<span>{E(region_label(e))}</span></p>
 {rating_line(e)}
-<ul class="pl-chips" aria-label="Main work">{chips}</ul></header>
+<ul class="pl-chips" aria-label="Main work">{chips}</ul>{hours_tags(e) if pl.get('card_rules') else ''}</header>
 <p class="lede" style="font-size:1rem">{E(pl['lede'])}</p>''')
+
+
+def hours_tags(e):
+    """Opening tags on the workshop page, worked out from the Google Maps hours (card rules, Edwin 5 Nov 2026)."""
+    f = FACTS.get(e['slug'])
+    if not f:
+        return ''
+    t = []
+    if f['sunday']:
+        t.append('Open Sunday')
+    if f['late']:
+        t.append('Late hours')
+    return ('<ul class="ctags" aria-label="Opening">%s</ul>' % ''.join('<li class="ct open">%s</li>' % x for x in t)) if t else ''
 
 
 def b_contact(x):
@@ -1510,13 +1523,34 @@ def b_services(x):
     grid_ = ''.join('<li><span class="si">%s</span><span>%s</span></li>' % (ic(pilot_icon(s)), E(s)) for s in pl.get('services', []))
     tl = tag_list(x.e)
     tags = ('<h3 class="mh">Specialties and brands customers mention</h3><ul class="tick svc-plain">%s</ul>' % ''.join(tl)) if tl else ''
-    return ('<section class="pl-sec"><h2>Services</h2><ul class="svc-grid">%s</ul>%s%s</section>' % (grid_, mention_html(pl), tags)) if grid_ else ''
+    return ('<section class="pl-sec"><h2>Services</h2>%s<ul class="svc-grid">%s</ul>%s%s%s</section>' % (own_site_note(pl), grid_, specialty_html(pl), mention_html(pl), tags)) if grid_ else ''
+
+
+def own_site_note(pl):
+    """Services taken from the workshop's own website say so (card rules, Edwin 5 Nov 2026)."""
+    return '<p class="fine">%s</p>' % E(pl['services_note']) if pl.get('services_note') else ''
+
+
+def specialty_html(pl):
+    """Specialities and the car makes line, from the workshop's own website or a specific review detail, in our own words."""
+    out = ''
+    if not pl.get('card_rules'):   # new card rules (Edwin 5 Nov 2026) apply to cards built under them; older cards unchanged
+        return out
+    if pl.get('specialties'):
+        out += '<h3 class="mh">Specialities</h3><ul class="tick svc-plain">%s</ul>' % ''.join('<li>%s</li>' % E(x) for x in pl['specialties'])
+    if pl.get('makes'):
+        out += '<p class="makes"><b>Car makes:</b> %s.%s</p>' % (E(', '.join(pl['makes'])), (' <span class="fine">%s</span>' % E(pl['makes_note'])) if pl.get('makes_note') else '')
+    return out
 
 
 def b_good_for(x):
     pl = x.pl
     good = ''.join('<li>%s</li>' % E(t) for t in pl.get('good_for', []))
-    return ('<section class="pl-sec"><h2>Good for</h2><ul class="tick svc-plain">%s</ul>%s</section>' % (good, ('<p class="fine">%s</p>' % E(pl['good_for_note'])) if pl.get('good_for_note') else '')) if good else ''
+    gtk = ''.join('<li>%s</li>' % E(t) for t in pl.get('good_to_know', [])) if pl.get('card_rules') else ''
+    out = ('<section class="pl-sec"><h2>Good for</h2><ul class="tick svc-plain">%s</ul>%s</section>' % (good, ('<p class="fine">%s</p>' % E(pl['good_for_note'])) if pl.get('good_for_note') else '')) if good else ''
+    if gtk:
+        out += '<section class="pl-sec"><h2>Good to know</h2><ul class="tick svc-plain">%s</ul>%s</section>' % (gtk, ('<p class="fine">%s</p>' % E(pl['good_to_know_note'])) if pl.get('good_to_know_note') else '')
+    return out
 
 
 def b_problems(x):
