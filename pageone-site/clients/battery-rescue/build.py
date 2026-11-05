@@ -341,10 +341,11 @@ svc_tbl = '<section class="sec"><h2>Other onsite services</h2><div class="tblw">
 pbody = f"""<h1 class="h1" style="margin-top:8px">Delkor car battery prices in Singapore</h1>
 <div class="ans"><div class="k">QUICK ANSWER</div>Delkor car batteries cost from {m(walk('NS40ZL'))} (NS40ZL, walk-in with the $20 website code) to {m(night('AGM-LN5'))} (AGM LN5 fitted at night). Fitted at your location adds $50 to the list price before 10pm, or $80 from 10pm to 9am and on public holidays. GST and fitting included, 1-year warranty.</div>
 """ + "".join(f'<section class="sec"><h2>{esc(g)}</h2><div class="tblw"><table class="tbl">{PRICE_HEAD}{price_rows(ks)}</table></div></section>' for g, ks in groups) + PRICE_NOTE + svc_tbl + \
+ '<section class="sec"><h2>Next step</h2><ul class="menu"><li><a href="/rescue/">Onsite battery replacement at your location</a></li><li><a href="/walk-in/">Walk-in at a Motoserv outlet with $20 off</a></li><li><a href="/car-battery/">Find the battery for your car brand</a></li><li><a href="/#compare">Use the finder</a></li></ul></section>' + \
  f'<section class="sec"><h2>List prices</h2><p>The Delkor list price is the price at the Motoserv counter without the website code: ' + ", ".join(f"{NAME[k]} {m(P[k][1])}" for k in allk) + ".</p></section>"
 offers_ld = {"@type":"ItemList","name":"Delkor car battery prices","itemListElement":[{"@type":"ListItem","position":i+1,"url":f"{BASE}/battery/{slug(k)}/","name":f"Delkor {NAME[k]}"} for i,k in enumerate(allk)]}
-page("/prices/", "Delkor Car Battery Price List Singapore (2026) | Battery Rescue SG",
-     f"All 23 Delkor car battery prices in Singapore: walk-in from {m(walk('NS40ZL'))}, fitted at your location +$50, night and PH +$80. GST included, 1-year warranty.",
+page("/prices/", "Car Battery Price Singapore: Delkor List | Battery Rescue",
+     f"Car battery prices in Singapore: Delkor walk-in from {m(walk('NS40ZL'))}, fitted at your location +$50, night and PH +$80. 23 sizes, GST included, 1-year warranty.",
      pbody, [offers_ld], "Prices", [("Home","/"),("Prices","/prices/")], "0.9")
 
 # ================= OUTLETS =================
