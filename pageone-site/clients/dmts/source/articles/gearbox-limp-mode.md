@@ -32,7 +32,7 @@ The control unit switches to limp mode when a reading it relies on is missing or
 
 ## Is it safe to drive in limp mode?
 
-Only as far as a safe place to stop, and gently. Limp mode exists to protect the gearbox, so driving on in it can turn a small fault, such as a sensor or low fluid, into a bigger repair. Avoid the expressway if you can, because the car may not reach normal speed. If the car will not move, jerks badly or you smell burning, stop and do not force it. Jacky's free towing during office hours can bring the car in.
+Only as far as a safe place to stop, and gently. Limp mode exists to protect the gearbox, so driving on in it can turn a small fault, such as a sensor or low fluid, into a bigger repair. Avoid the expressway if you can, because the car may not reach normal speed. If the car will not move, jerks badly or you smell burning, stop and do not force it. Jacky's free towing during office hours can bring the car in, and if you arrange a tow yourself, read [can you tow an automatic car](/articles/can-you-tow-an-automatic-car/) first.
 
 ## Will restarting the car fix limp mode?
 

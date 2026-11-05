@@ -32,7 +32,7 @@ The gearbox is one of the most expensive parts of a car to repair, and many faul
 
 ## Do CVT and dual-clutch gearboxes feel different?
 
-Yes, so judge each type on its own terms. A **CVT** has no gear changes: the revs stay fairly steady while the car speeds up, which is normal, but a shudder, a whine or revs that surge are not. A **dual-clutch** gearbox can feel slightly hesitant at walking pace, but it should not judder, clunk or hesitate badly when moving off. Not sure which gearbox the car has? See [CVT, dual-clutch or automatic](/articles/cvt-dual-clutch-or-automatic-gearbox/).
+Yes, so judge each type on its own terms. A **CVT** has no gear changes: the revs stay fairly steady while the car speeds up, which is normal, but a shudder, a whine or revs that surge are not. A **dual-clutch** gearbox can feel slightly hesitant at walking pace, but it should not judder, clunk or hesitate badly when moving off. On a Honda hybrid, jerking from a stop can come with code P2857; see [what the odd clutch fault means](/articles/honda-hybrid-dct-p2857-odd-clutch/). Not sure which gearbox the car has? See [CVT, dual-clutch or automatic](/articles/cvt-dual-clutch-or-automatic-gearbox/).
 
 ## When should I walk away?
 

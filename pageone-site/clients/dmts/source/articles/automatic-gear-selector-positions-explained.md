@@ -13,7 +13,7 @@ problems: car-stuck-in-gear, gear-lever-stuck-in-park, car-wont-move-in-drive
 
 - **P (Park):** locks the gearbox output so the car cannot roll. Stop the car fully, press the brake, then select P. Use the handbrake as well on a slope.
 - **R (Reverse):** drives the car backwards. Change into it only when the car is stopped.
-- **N (Neutral):** disconnects the engine from the wheels. The car can roll freely, which is why it is used for towing on a flatbed and for some car washes. Check the manual for your car before you tow or wash it in N.
+- **N (Neutral):** disconnects the engine from the wheels. The car can roll freely, which is why it is used for towing on a flatbed and for some car washes. Check the manual for your car before you tow or wash it in N. See [can you tow an automatic car](/articles/can-you-tow-an-automatic-car/) for which wheels matter.
 - **D (Drive):** the normal forward position. The gearbox chooses the gear for you.
 
 ## What do S, L, 2 and 1 mean?

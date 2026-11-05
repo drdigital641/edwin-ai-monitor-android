@@ -19,7 +19,7 @@ A CVT has no fixed gears. It uses a steel belt or chain running between two pull
 
 ## What is a dual-clutch (DSG) gearbox?
 
-A dual-clutch gearbox is like two manual gearboxes in one, with one clutch for the odd gears and one for the even gears. A control unit, often called the mechatronic unit, changes gear by switching between the two clutches, so gear changes are very quick. Some dual-clutch gearboxes run their clutches in oil (wet), others run them dry.
+A dual-clutch gearbox is like two manual gearboxes in one, with one clutch for the odd gears and one for the even gears. A control unit, often called the mechatronic unit, changes gear by switching between the two clutches, so gear changes are very quick. Some dual-clutch gearboxes run their clutches in oil (wet), others run them dry. Honda’s hybrids use one too: see [Honda hybrid DCT code P2857](/articles/honda-hybrid-dct-p2857-odd-clutch/) for a real case.
 
 ## How can I tell which gearbox my car has?
 

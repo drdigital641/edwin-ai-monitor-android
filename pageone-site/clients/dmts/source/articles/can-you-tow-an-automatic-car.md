@@ -1,5 +1,5 @@
-title: Can You Tow an Automatic Car? Risks and Safe Options | Jacky
-desc: Is it safe to tow an automatic car with the wheels on the ground? Why it can damage the gearbox, when a flatbed is the safer choice, and what to do in Singapore.
+title: Can You Tow an Automatic Car in Neutral? | Jacky Gearbox
+desc: Can you tow an automatic car in Neutral? Usually only on a flatbed or with the driven wheels lifted. Why wheels-down towing can harm the gearbox.
 h1: Can You Tow an Automatic Car Without Damaging the Gearbox?
 short: Towing an automatic car
 date: 2026-10-27

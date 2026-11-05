@@ -1,5 +1,5 @@
-title: Milky or Pink Gearbox Fluid: What It Means | Jacky
-desc: Milky, pink or foamy automatic transmission fluid usually means water or coolant has got into the gearbox. Causes, why it is urgent and what to do next.
+title: Milky or Pink Gearbox Fluid: Causes and What to Do | Jacky
+desc: Milky, pink or foamy transmission fluid usually means water or coolant has got into the gearbox. Causes, why it is urgent and what to do next.
 h1: What Does Milky or Pink Gearbox Fluid Mean?
 short: Milky or pink gearbox fluid
 date: 2026-10-21

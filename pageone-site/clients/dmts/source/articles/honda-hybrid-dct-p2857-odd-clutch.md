@@ -1,5 +1,5 @@
-title: Honda Hybrid DCT P2857 Odd Clutch Fault | Jacky Gearbox
-desc: Honda Freed, Vezel, Shuttle or Fit hybrid jerking with code P2857? What the odd clutch fault means on the i-DCD gearbox and why it needs a DCT specialist.
+title: Honda P2857 Odd Clutch Fault (Hybrid DCT) | Jacky Gearbox
+desc: Honda hybrid code P2857: the odd clutch did not engage as expected on the 7-speed i-DCD gearbox. Models, causes and why a DCT specialist should test it.
 h1: Honda Hybrid DCT Code P2857: What the Odd Clutch Fault Means
 short: Honda hybrid DCT P2857
 date: 2026-10-25
@@ -7,6 +7,8 @@ img: honda-freed-p2857-scan|Scanner showing Honda Freed Hybrid 2019 code P2857, 
 services: gearbox-repair, gearbox-servicing
 problems: car-jerks-when-changing-gear, transmission-warning-light, car-hesitates-when-accelerating
 ---
+**Honda code P2857 means “odd clutch pressure engagement performance”: the gearbox control module saw that the clutch for the odd gears, including first, did not engage as expected.** It is a known code on Honda’s 7-speed hybrid dual-clutch gearbox, and the cause is not always the clutch, so each part is tested before any repair.
+
 A 2019 **Honda Freed Hybrid** came in, and Jacky's scan of the transmission control module showed **P2857: Odd clutch pressure engagement performance**. It is a common code on Honda's hybrid dual-clutch gearbox, and it is a good example of why this gearbox needs someone who knows it well: the code names the clutch, but the cause is not always the clutch.
 
 ## Which Honda hybrids use this gearbox?

@@ -28,7 +28,7 @@ You can't reliably tell by feel alone. Low or old gearbox oil, a worn clutch pac
 
 ## Is it safe to drive with a bad torque converter?
 
-Only gently and only as far as you need to. A slipping or overheating converter makes more heat, and heat breaks down the gearbox oil, which can spread the damage into the rest of the gearbox. If the car shudders badly, overheats, smells burnt or will not drive, stop and do not force it. Jacky's free towing during office hours can bring the car in.
+Only gently and only as far as you need to. A slipping or overheating converter makes more heat, and heat breaks down the gearbox oil, which can spread the damage into the rest of the gearbox. If the oil also looks milky or pink, see [what milky or pink gearbox fluid means](/articles/milky-or-pink-gearbox-fluid/). If the car shudders badly, overheats, smells burnt or will not drive, stop and do not force it. Jacky's free towing during office hours can bring the car in; before any other tow, see [can you tow an automatic car](/articles/can-you-tow-an-automatic-car/).
 
 ## What causes a torque converter to fail?
 
