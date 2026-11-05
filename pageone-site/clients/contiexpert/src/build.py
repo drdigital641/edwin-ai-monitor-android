@@ -521,7 +521,7 @@ def about_page():
 def article_hub():
     cr = [('Home', '/'), ('Guides', '/article/')]
     cards = ''.join('<a class="card acard" href="/%s/" data-rv><div class="band-top"></div><span class="tag">%s</span><h3>%s</h3><p>%s</p><span class="more">Read &rarr;</span></a>'
-                    % (a['slug'], E(a.get('brand') or 'Car care'), E(a['h1']), E(a['desc']), ) for a in ARTICLES)
+                    % (a['slug'], E(a.get('brand') or 'Car care'), E(a['h1']), E(a['desc']), ) for a in sorted(ARTICLES, key=lambda a: a.get('date', ''), reverse=True))  # newest first
     body = f'''<div class="phead"><div class="wrap">{crumbs_html(cr)}<h1>European car care guides</h1>
 <p class="answer">Plain answers for owners in Singapore: warning lights, overheating, aircon, service schedules, choosing a workshop and checking a used car before you buy. Written by the {BIZ} team at Newton Circus.</p></div></div>
 <div class="sec"><div class="wrap"><div class="grid g3">{cards}</div></div></div>'''
