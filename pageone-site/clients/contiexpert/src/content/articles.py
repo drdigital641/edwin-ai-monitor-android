@@ -259,16 +259,34 @@ ARTICLES.append({
 
 ARTICLES.append({
   "slug": "european-car-service-schedule-singapore",
-  "name": "European Car Service Schedule",
+  "name": "Car Maintenance Checklist",
   "card": "A practical guide to how often a European car needs servicing in Singapore and what each visit should cover.",
-  "title": "European Car Service Schedule Singapore | Volt Autocare",
-  "desc": "How often should a European car be serviced in Singapore? A practical guide to oil, filters, brakes, fluids and checks, by time and mileage.",
-  "h1": "European Car Service Schedule in Singapore: What and When",
-  "answer": "Most European cars follow a service interval set by the manufacturer, often based on both distance and time, and your service booklet or the car's service indicator is the reference. In Singapore's stop-start traffic and heat, many owners service more often than the maximum interval.",
+  "title": "Car Maintenance Checklist Singapore | Volt Autocare",
+  "desc": "Car maintenance checklist for Singapore drivers: oil, filters, brakes, fluids, tyres, battery and aircon, and how often a European car needs servicing.",
+  "h1": "Car Maintenance Checklist for Singapore Drivers: What and When",
+  "answer": "A car maintenance checklist for Singapore drivers covers engine oil and filters, brake fluid and coolant, brakes, tyres, lights, belts, the battery and a fault code scan. Your service booklet or service indicator sets the intervals, and stop-start traffic and heat lead many owners to service sooner.",
   "date": "2026-11-03",
+  "modified": "2026-11-05",
+  "updated": "5 Nov 2026",
   "service": "/services/european-car-servicing/",
   "minutes": 6,
   "sections": [
+    {"h2": "What is on a car maintenance checklist?",
+     "html": """<p>Use this checklist as a starting point and follow your own car's service booklet for the exact intervals. The items come from a typical service, explained in the sections below.</p>
+<ol>
+<li>Engine oil and oil filter, at each service per the manufacturer interval.</li>
+<li>Air filter and cabin filter, as due or when dirty.</li>
+<li>Brake fluid, which ages with time as it absorbs moisture.</li>
+<li>Coolant and cooling system hoses.</li>
+<li>Brake pads and discs, inspected at every service and replaced by wear.</li>
+<li>Tyres, lights, wipers and drive belts, checked visually.</li>
+<li>Spark plugs, at the longer intervals set for your engine.</li>
+<li>Gearbox fluid, at the intervals that suit your gearbox type.</li>
+<li>Battery health, especially on older cars with many electronic systems.</li>
+<li>Aircon performance and cabin filter.</li>
+<li>A scan for stored fault codes.</li>
+</ol>
+<p>Ask the workshop to separate what is due now from what is coming soon. Keep your invoices together so the service history is ready to show.</p>"""},
     {"h2": "How often should a European car be serviced in Singapore?",
      "html": """<p>The manufacturer sets the interval, usually as a distance or a time, whichever comes first. Many modern cars also have a service indicator that calculates it from how the car is driven.</p>
 <p>Singapore driving is mostly short trips, heavy traffic and heat. Engines that rarely reach a steady cruising speed and sit idling in jams are working in conditions often described as severe use, so oil and filters may need attention sooner than the maximum figure.</p>
@@ -349,6 +367,8 @@ ARTICLES.append({
   "h1": "Dealer vs Independent Workshop in Singapore: How to Choose",
   "answer": "Neither is right for every car. An authorised dealer usually makes sense while the manufacturer's new-car warranty applies, or for recalls and software campaigns. An independent workshop often suits out-of-warranty cars, second opinions and owners who want convenience. The right choice depends on your car's age and the job.",
   "date": "2026-11-03",
+  "modified": "2026-11-05",
+  "updated": "5 Nov 2026",
   "service": "/services/european-car-servicing/",
   "minutes": 6,
   "sections": [
@@ -409,7 +429,7 @@ ARTICLES.append({
     {"h2": "Can you use both?",
      "html": """<p>Many owners do. They use the dealer for recalls, warranty repairs and campaigns, and an independent workshop for routine servicing once the car is older. Others start with the dealer and move later.</p>
 <p>A common pattern is to stay with the dealer through the warranty years, then move to an independent workshop for routine work, going back to the dealer only for recalls or campaigns. There is no need to treat it as a permanent loyalty decision.</p>
-<p>Whichever route you take, keep all service records in one place. A consistent history helps with resale and with spotting repeat faults. Our <a href="/european-car-service-schedule-singapore/">service schedule guide</a> shows what a regular service should cover.</p>"""},
+<p>If you are weighing options for a Mercedes-Benz, our <a href="/brands/mercedes-benz/">Mercedes-Benz service centre guide</a> sets out both routes. Whichever route you take, keep all service records in one place. A consistent history helps with resale and with spotting repeat faults. Our <a href="/european-car-service-schedule-singapore/">car maintenance checklist</a> shows what a regular service should cover.</p>"""},
     {"h2": "Where can you get a second opinion near Newton?",
      "html": """<p>Volt Autocare is a workshop at Newton Circus, inside the Shell station at 143 Bukit Timah Road. Read about <a href="/services/european-car-servicing/">European car servicing</a>, or send your car's details and any quote you have through <a href="/contact-us/">the contact page</a> or WhatsApp +65 8221 5502.</p>"""}
   ],
@@ -427,11 +447,13 @@ ARTICLES.append({
   "slug": "pre-purchase-car-inspection-singapore-your-ultimate-guide-to-buying-with-confidence",
   "name": "Pre-Purchase Car Inspection",
   "card": "What a pre-purchase inspection checks, when to book it, and what you receive before you pay a deposit.",
-  "title": "Pre-Purchase Car Inspection Singapore | Volt Autocare",
-  "desc": "Buying a used car in Singapore? See what a pre-purchase inspection checks, when to book it before paying a deposit, and what findings you receive.",
+  "title": "Pre-Purchase Car Inspection Singapore Checklist",
+  "desc": "Buying a used car in Singapore? See the pre-purchase inspection checklist: body, engine, gearbox, brakes, electronics and records. Book before the deposit.",
   "h1": "Pre-Purchase Car Inspection in Singapore: Buy With Confidence",
   "answer": "A pre-purchase inspection is an independent check of a used car before you commit. It looks at body, engine, gearbox, suspension, brakes, tyres, electronics and service records, plus a test drive. Book it before paying a deposit so you can decide with facts.",
   "date": "2026-11-03",
+  "modified": "2026-11-05",
+  "updated": "5 Nov 2026",
   "service": "/services/pre-purchase-inspection/",
   "minutes": 6,
   "sections": [
@@ -497,7 +519,7 @@ ARTICLES.append({
     {"h2": "Is an inspection worth it for a car sold by a dealer?",
      "html": """<p>Yes, it still gives you a separate view. A dealer's own checks serve the dealer's sale, while an independent report is prepared for you.</p>
 <p>The same applies to cars sold privately. The more expensive or complex the car, the more value an independent look tends to add. A short, calm checklist before buying is far easier than a surprise afterwards.</p>
-<p>If you already own a car and are unsure of its condition, our <a href="/european-car-service-schedule-singapore/">service schedule guide</a> can help you plan.</p>"""},
+<p>If you already own a car and are unsure of its condition, our <a href="/european-car-service-schedule-singapore/">car maintenance checklist</a> can help you plan.</p>"""},
     {"h2": "Where can you book a pre-purchase inspection near Newton?",
      "html": """<p>Volt Autocare carries out pre-purchase inspections at its Newton Circus workshop inside the Shell station at 143 Bukit Timah Road. Read about the <a href="/services/pre-purchase-inspection/">pre-purchase inspection service</a>, then send the car's make, model and year through <a href="/contact-us/">the contact page</a> or WhatsApp +65 8221 5502.</p>"""}
   ],

@@ -173,8 +173,12 @@ def page(path, title, desc, body, lds=(), crumbs=None):
     os.makedirs(os.path.dirname(fp), exist_ok=True)
     with open(fp, 'w', encoding='utf-8') as f: f.write(out)
     if path != '/404': SITEMAP.append(path)
+    if path in MODIFIED: MOD[path] = MODIFIED[path]
 
 SITEMAP = []
+MODIFIED = {'/services/': '2026-11-05', '/brands/mercedes-benz/': '2026-11-05', '/european-car-service-schedule-singapore/': '2026-11-05',
+            '/pre-purchase-car-inspection-singapore-your-ultimate-guide-to-buying-with-confidence/': '2026-11-05', '/dealer-vs-independent-workshop-singapore/': '2026-11-05'}  # true lastmod for pages changed after TODAY
+MOD = {}
 
 def crumbs_html(items):
     parts = []
@@ -220,8 +224,8 @@ def detail_page(kind, p):
     meta = ''
     lds = [faq_ld(p['faqs'])]
     if kind == 'article':
-        meta = '<p class="meta">Updated %s &middot; %s min read &middot; By the %s team, Newton Circus</p>' % ('3 Nov 2026', p.get('minutes', 6), BIZ)
-        lds.append({'@context': 'https://schema.org', '@type': 'Article', 'headline': p['h1'], 'datePublished': p['date'], 'dateModified': p['date'],
+        meta = '<p class="meta">Updated %s &middot; %s min read &middot; By the %s team, Newton Circus</p>' % (p.get('updated', '3 Nov 2026'), p.get('minutes', 6), BIZ)
+        lds.append({'@context': 'https://schema.org', '@type': 'Article', 'headline': p['h1'], 'datePublished': p['date'], 'dateModified': p.get('modified', p['date']),
                     'author': {'@type': 'Organization', 'name': BIZ, 'url': DOMAIN + '/'}, 'publisher': {'@id': DOMAIN + '/#business'},
                     'image': DOMAIN + '/assets/og.jpg', 'mainEntityOfPage': DOMAIN + path})
         own = p.get('service')
@@ -422,9 +426,12 @@ def services_hub():
     body = f'''<div class="phead"><div class="wrap">{crumbs_html(cr)}<h1>Car servicing and repair services</h1>
 <p class="answer">{BIZ} services and repairs European cars, and checks hybrids and EVs, at our workshop inside the Shell station at 143 Bukit Timah Road, Newton Circus. Pick the service closest to your problem, or WhatsApp us what the car is doing and we will point you to the right one.</p></div></div>
 <div class="sec"><div class="wrap"><div class="grid g3">{''.join(card('/services/%s/' % s['slug'], s['slug'], s['name'], s['card']) for s in SERVICES)}</div>
-<h2>By make</h2><div class="grid g3">{''.join(card('/brands/%s/' % b['slug'], b['slug'], b['name'], b['card']) for b in BRANDS)}</div></div></div>'''
-    page('/services/', 'Car Repair & Servicing Services Newton | Volt Autocare',
-         'European car servicing, diagnostics, aircon, brakes, suspension, gearbox, hybrid and EV checks and pre-purchase inspections at Newton Circus.', body, (), cr)
+<h2>By make</h2><div class="grid g3">{''.join(card('/brands/%s/' % b['slug'], b['slug'], b['name'], b['card']) for b in BRANDS)}</div>
+<section data-rv><h2>How do you choose a car repair workshop in Singapore?</h2>
+<p>Repair cost depends on the model and what the inspection finds, so we give a quote after we look at the car and you approve it before work starts. Ask any workshop to explain the findings and separate urgent items from those that can wait. Our <a href="/dealer-vs-independent-workshop-singapore/">dealer vs independent workshop guide</a> lists the questions to ask.</p>
+<p>For common issues, start with the guides on the <a href="/bmw-check-engine-light-singapore/">BMW check engine light</a>, <a href="/mercedes-engine-overheating-singapore/">Mercedes overheating</a> and <a href="/audi-aircon-not-cold-repair-singapore/">Audi aircon problems</a>, and use the <a href="/european-car-service-schedule-singapore/">car maintenance checklist</a> to keep servicing on schedule. Buying a used car? Read about the <a href="/pre-purchase-car-inspection-singapore-your-ultimate-guide-to-buying-with-confidence/">pre-purchase car inspection</a> first.</p></section></div></div>'''
+    page('/services/', 'Car Repair Singapore: European Car Services | Volt Autocare',
+         'Car repair in Singapore for European cars: servicing, diagnostics, aircon, brakes, suspension, gearbox, hybrid and EV checks. Quote agreed before work.', body, (), cr)
 
 def areas_page():
     cr = [('Home', '/'), ('Drivers within 10 km', '/areas-we-serve/')]
@@ -544,7 +551,7 @@ def notfound():
 def extras():
     with open(os.path.join(OUT, 'sitemap.xml'), 'w') as f:
         f.write('<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n')
-        for p in SITEMAP: f.write('<url><loc>%s%s</loc><lastmod>%s</lastmod></url>\n' % (DOMAIN, p, TODAY))
+        for p in SITEMAP: f.write('<url><loc>%s%s</loc><lastmod>%s</lastmod></url>\n' % (DOMAIN, p, MOD.get(p, TODAY)))
         f.write('</urlset>\n')
     with open(os.path.join(OUT, 'robots.txt'), 'w') as f:
         f.write('User-agent: *\nAllow: /\n\n' + ''.join('User-agent: %s\nAllow: /\n\n' % b for b in

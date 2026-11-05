@@ -616,11 +616,16 @@ BRANDS = [
         "slug": "mercedes-benz",
         "name": "Mercedes-Benz",
         "card": "Servicing, warning lights, overheating, aircon and gearbox issues on Mercedes-Benz cars, checked and explained before any repair.",
-        "title": "Mercedes-Benz Service and Repair | Volt Autocare",
-        "desc": "Mercedes-Benz servicing and repair in Singapore. Common problems explained, with inspection first and work agreed with you before we start.",
-        "h1": "Mercedes-Benz Service and Repair in Singapore",
+        "title": "Mercedes-Benz Service Centre Singapore | Volt Autocare",
+        "desc": "Choosing a Mercedes-Benz service centre in Singapore? See how the authorised centre and an independent specialist compare, with inspection first at Newton.",
+        "h1": "Mercedes-Benz Service Centre in Singapore: Service and Repair",
         "answer": "Mercedes-Benz owners in Singapore usually come to us for scheduled servicing, warning lights, overheating, aircon faults and gearbox concerns. We inspect first, read the fault codes, explain what we find and quote the work. You approve it before we start.",
         "sections": [
+            {
+                "h2": "How do you choose a Mercedes-Benz service centre in Singapore?",
+                "html": """<p>Mercedes-Benz owners have two good routes: the authorised Mercedes-Benz service centre, such as the one at Pandan Loop, or an independent specialist. Many owners use the authorised centre while the new-car warranty applies and for recalls and campaigns, then choose an independent workshop for routine servicing and second opinions.</p>
+<p>An independent specialist such as Volt Autocare offers a convenient central location at Newton Circus, a clear explanation of what is found, and a quote you approve before work starts. Our <a href="/dealer-vs-independent-workshop-singapore/">dealer vs independent workshop guide</a> sets out when each route suits, and you can read the points to ask any workshop in it.</p>""",
+            },
             {
                 "h2": "Why is my Mercedes engine overheating?",
                 "html": """<p>Overheating usually points to the cooling system, such as a coolant leak, a weak water pump, a faulty thermostat, a failing fan or a blocked radiator. Low coolant is often the sign of a leak somewhere.</p>
