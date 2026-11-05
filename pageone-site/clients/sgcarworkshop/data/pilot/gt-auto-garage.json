@@ -1,0 +1,57 @@
+{
+ "lede": "GT Auto Garage is a car workshop at WCEGA Plaza in Bukit Batok. Its own website lists servicing, engine and transmission rebuilds, brakes and suspension, aircon work and pre-purchase inspections.",
+ "chips": [
+  "Car servicing",
+  "Engine and transmission",
+  "Pre-purchase inspection"
+ ],
+ "services": [
+  "Basic and major car servicing",
+  "Engine rebuilds and performance upgrades",
+  "Transmission rebuilds",
+  "Brakes and suspension repair",
+  "Aircon service",
+  "Electrical diagnostics and repairs",
+  "Exhaust, tyres and wheel alignment",
+  "Pre-purchase inspection"
+ ],
+ "themes": "Customers on Google Maps mention easy online booking with reminders, clear explanations without hard selling, prices agreed before work starts, quick servicing and a fast fix for a door handle that came loose.",
+ "faqs": [
+  [
+   "What does GT Auto Garage do?",
+   "Google Maps lists it as a car repair workshop."
+  ],
+  [
+   "What are the opening hours?",
+   "The hours are listed in the Google Maps section above. Please see Google Maps for current hours."
+  ]
+ ],
+ "sources": "its own website (gtautogarage.sg)",
+ "stories": [],
+ "mentioned_services": [
+  "Car servicing",
+  "Scratch repair",
+  "Door handle repair"
+ ],
+ "services_note": "Services as listed on the workshop's own website, gtautogarage.sg.",
+ "specialties": [
+  "Pre-purchase inspection with a written report",
+  "Engine and transmission rebuilds",
+  "Undercarriage and suspension work"
+ ],
+ "makes": [
+  "Toyota",
+  "Honda",
+  "Nissan",
+  "BMW",
+  "Mercedes-Benz",
+  "Audi",
+  "Subaru"
+ ],
+ "makes_note": "Named on its own website, which says it works on all makes and models.",
+ "good_to_know": [
+  "Appointments can be booked on its website",
+  "Payment by credit or debit card, cash or digital payment, according to its website"
+ ],
+ "card_rules": "2026-11-05"
+}

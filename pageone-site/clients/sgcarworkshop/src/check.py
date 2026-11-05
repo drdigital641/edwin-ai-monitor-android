@@ -601,5 +601,41 @@ if sorted(s2 for _, s2 in _v + _t) != sorted(e['slug'] for e in ENTRIES): _err.a
 if 'data-sort="near"' not in _hs or 'data-sort="rating"' not in _hs: _err.append('sort bar missing')
 if _err: print('homepage groups:', _err[:6]); bad += 1
 else: print('homepage groups ok, shown/total:', [(_g, _gv.count(_g), _gv.count(_g) + [g for g, _ in _t].count(_g)) for _g in _order])
+# Card rules v2 (Edwin 5 Nov 2026): source logs are PRIVATE (repo is public): never in the repo or the built site; every v2 card has one in the project folder.
+_CS = '/mnt/project-files/sgcarworkshop/card_sources'
+for _dp, _dn, _fn in os.walk(os.path.join(root, '..')):
+    if 'card_sources' in _dp.split(os.sep) or any('card_source' in f for f in _fn): print('source logs must not be in the repo or site:', _dp); bad += 1
+for _f in sorted(os.listdir(os.path.join(root, '..', 'data', 'pilot'))):
+    _pl = json.load(open(os.path.join(root, '..', 'data', 'pilot', _f)))
+    if not _pl.get('card_rules'): continue
+    _sl = _f[:-5]
+    if not _pl.get('services') or not (_pl.get('makes') or _pl.get('makes_note')): print('v2 card needs services and a car makes line', _sl); bad += 1
+    for _w in (_pl.get('themes', ''), ' '.join(_pl.get('specialties', [])), ' '.join(_pl.get('good_to_know', []))):
+        if re.search(r'[\u201c\u201d"]', _w): print('v2 card must not quote anyone', _sl); bad += 1
+    if os.path.isdir(_CS):
+        _lp = os.path.join(_CS, _sl + '.json')
+        if not os.path.exists(_lp): print('v2 card has no private source log', _sl); bad += 1
+        else:
+            _log = json.load(open(_lp))
+            import finish_batch as _FB
+            _gc = json.load(open(os.path.join(root, '..', 'data', 'google_cache', _sl + '.json'))) if os.path.exists(os.path.join(root, '..', 'data', 'google_cache', _sl + '.json')) else {}
+            if _FB.bad_sources(_log, _gc): print('v2 card uses a source outside the rules (Google + own listed website only, no social pages)', _sl, _FB.bad_sources(_log, _gc)[:2]); bad += 1
+            for _c in _log.get('claims', []):
+                if not (_c.get('claim') and _c.get('source_url') and _c.get('checked') and _c.get('snippet')): print('source log claim incomplete', _sl, _c.get('claim')); bad += 1
+    else:
+        print('WARNING (not a failure): project folder not mounted, source logs not checked for', _sl)
+
+# POSITIVE ONLY (Edwin 5 Nov 2026): no complaint or negative review summary about any workshop, on any page, attribute, feed or data file.
+import positive_only as _PO
+for _dp, _dn, _fn in os.walk(root):
+    for _f in _fn:
+        if _f.endswith(('.html', '.json', '.txt', '.xml', '.js')):
+            for _s in _PO.page_hits(open(os.path.join(_dp, _f), errors='ignore').read())[:1]: print('NEGATIVE line on page (positive-only rule):', os.path.relpath(os.path.join(_dp, _f), root), _s); bad += 1
+for _g in ('pilot', 'google_cache'):
+    for _f in os.listdir(os.path.join(root, '..', 'data', _g)):
+        _d = json.load(open(os.path.join(root, '..', 'data', _g, _f)))
+        for _k in ('themes', 'review_themes', 'lede', 'good_for_note', 'good_to_know_note'):
+            if isinstance(_d.get(_k), str) and _PO.bad(_d[_k]): print('NEGATIVE line in data (positive-only rule):', _g, _f, _PO.bad(_d[_k])[0]); bad += 1
+
 print('pages checked:', len(files), 'problems:', bad)
 sys.exit(1 if bad else 0)

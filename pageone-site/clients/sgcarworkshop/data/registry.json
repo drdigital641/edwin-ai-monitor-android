@@ -1942,5 +1942,50 @@
   "mobile": "+6588996965",
   "status": "built",
   "date": "2026-11-04"
+ },
+ {
+  "place_id": "ChIJlaLHTqsR2jERNOOxKal8cEI",
+  "slug": "gt-auto-garage",
+  "name_norm": "gt auto garage",
+  "postal_code": "658064",
+  "mobile": "+6591278892",
+  "status": "built",
+  "date": "2026-11-05"
+ },
+ {
+  "place_id": "ChIJKX7oCUoR2jEREoIkrDu7Fe8",
+  "slug": "motoserv-car-service-centre-bukit-batok",
+  "name_norm": "motoserv car service centre bukit batok",
+  "postal_code": "659760",
+  "mobile": "+6583325425",
+  "status": "built",
+  "date": "2026-11-05"
+ },
+ {
+  "place_id": "ChIJQ7dhyloR2jERiqbj11bRZb0",
+  "slug": "autowheels-motorworks-bukit-batok-wcega-plaza",
+  "name_norm": "autowheels motorworks bukit batok wcega plaza",
+  "postal_code": "658064",
+  "mobile": "+6590811197",
+  "status": "built",
+  "date": "2026-11-05"
+ },
+ {
+  "place_id": "ChIJzcGhi24Q2jERvf5r_B7tOGI",
+  "slug": "garage-b",
+  "name_norm": "garage b",
+  "postal_code": "658064",
+  "mobile": "+6593721526",
+  "status": "built",
+  "date": "2026-11-05"
+ },
+ {
+  "place_id": "ChIJawelHJsR2jERwmUQzV8yKLs",
+  "slug": "jc-expert-autoworks",
+  "name_norm": "jc expert autoworks",
+  "postal_code": "658064",
+  "mobile": "+6582662024",
+  "status": "built",
+  "date": "2026-11-05"
  }
 ]

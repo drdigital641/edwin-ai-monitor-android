@@ -18,12 +18,36 @@ BATCH = '/tmp/claude-0/s/batch.json'
 # Coordinates come from OneMap (Google's lat/lng may not be stored; it is used only to suggest the nearest estate during prep).
 # OneMap is blocked from this host: run the curl loop in the Controller sandbox and save {postal: [lat, lng]} here.
 ONEMAP = '/tmp/claude-0/s/onemap_cache.json'
+# Card rules v2 (Edwin 5 Nov 2026, sources narrowed 22:23 SGT): sources are Google Place Details plus the workshop's own website ONLY
+# when Google lists one (websiteUri), never Facebook/Carousell/Instagram/other social pages; a blocked or failed site is skipped with no
+# retries. One PRIVATE source log per card (the repo is public), with a "pilot" section of own-words card fields
+# and "claims" [{claim, source_url, checked, snippet}]. Never copy these files into the repo or the site.
+CARD_SOURCES = '/mnt/project-files/sgcarworkshop/card_sources'
+V2_KEYS = ('lede', 'chips', 'services', 'services_note', 'specialties', 'makes', 'makes_note', 'good_to_know', 'good_to_know_note', 'faqs', 'sources', 'themes', 'mentioned_services')
 sys.path.insert(0, HERE)
 import areas  # noqa: E402
+import positive_only  # noqa: E402
 
 SUFFIX = re.compile(r'\s*(\((s|pte)\)\s*)?\b(pte\.?\s*ltd\.?|private limited|ltd|p/l|llp|pte)(?![\w/])\.?|\s*\((s|pte)\)\s*ltd\.?', re.I)
 ESTATE_PA = {'soon-lee-street-pioneer': 'Pioneer', 'bukit-merah-lane-3': 'Bukit Merah', 'jurong-west-avenue-5': 'Jurong West'}
 TOWN_PA = {'toh-guan-jurong-east': 'Jurong East', 'sin-ming-bishan': 'Bishan', 'kaki-bukit': 'Bedok', 'ubi': 'Geylang', 'macpherson': 'Geylang', 'defu-hougang': 'Hougang', 'serangoon-north': 'Serangoon', 'kranji': 'Mandai', 'sembawang-admiralty': 'Sembawang', 'woodlands': 'Woodlands', 'yishun': 'Yishun', 'tampines': 'Tampines', 'toa-payoh': 'Toa Payoh'}
+
+
+SOCIAL = re.compile(r'(facebook\.com|fb\.com|fb\.me|carousell\.|instagram\.com|tiktok\.com|twitter\.com|x\.com/|linkedin\.com|youtube\.com|threads\.net|wa\.me|t\.me|xiaohongshu|lemon8)', re.I)
+
+
+def bad_sources(log, g):
+    """Sources allowed (Edwin 5 Nov 2026): Google Place Details and pages on the site Google lists as websiteUri, never social pages."""
+    import urllib.parse as up
+    site = (g or {}).get('websiteUri') or ''
+    host = up.urlparse(site).netloc.lower().removeprefix('www.') if site and not SOCIAL.search(site) else None
+    out = []
+    urls = [u for u in log.get('sources_used', []) if u.startswith('http')] + [c.get('source_url', '') for c in log.get('claims', [])]
+    for u in urls:
+        if not u.startswith('http') or 'google.com/maps' in u: continue
+        h = up.urlparse(u).netloc.lower().removeprefix('www.')
+        if SOCIAL.search(u) or not host or h != host: out.append(u)
+    return out
 
 
 def jl(p, d=None):
@@ -94,6 +118,8 @@ def apply(a):
     day = dt.date.today().isoformat(); B = jl(BATCH, [])
     blocks = jl(D + '/workshops/m-werkz.json')['blocks']; reg = jl(D + '/registry.json'); done = []; skip = []
     for x in B:
+        x['themes'] = positive_only.clean(x.get('themes'))   # positive-only rule (Edwin 5 Nov 2026): complaint sentences never reach a card
+        x['mentioned'] = [m for m in x.get('mentioned', []) if not positive_only.bad(m)]
         if not x.get('estate') or not x.get('themes'): skip.append(x['old']); continue
         r = jl('%s/workshops/%s.json' % (D, x['old'])); g = jl(os.path.join(a.raw_dir, r['place_id'] + '.json'))
         slug = x['slug']
@@ -117,6 +143,12 @@ def apply(a):
             'faqs': [['What does %s do?' % n, 'Google Maps lists it as a car repair workshop.'],
                      ['What are the opening hours?', 'The hours are listed in the Google Maps section above. Please see Google Maps for current hours.']],
             'sources': 'its Google Maps listing', 'stories': [], 'mentioned_services': x['mentioned']})
+        v2 = jl(os.path.join(CARD_SOURCES, slug + '.json'))
+        if v2 and bad_sources(v2, g): sys.exit('source log for %s uses a source outside the rules: %s' % (slug, bad_sources(v2, g)))
+        if v2 and v2.get('pilot'):   # card rules v2 (Edwin 5 Nov 2026): own-website facts merged in; the log itself stays private
+            pl = jl('%s/pilot/%s.json' % (D, slug)); pl.update({k: v for k, v in v2['pilot'].items() if k in V2_KEYS}); pl['card_rules'] = '2026-11-05'
+            pl['themes'] = positive_only.clean(pl.get('themes'))
+            jw('%s/pilot/%s.json' % (D, slug), pl)
         F = lambda k, v: {'field': k, 'value': v, 'source_url': 'google_places', 'retrieved': day}
         jw('%s/facts/%s.json' % (D, slug), {'slug': slug, 'researched_at': day,
             'researcher': 'Claude, Google Places Details only (candidate from Google Places Text Search sweep at Edwin\'s request; name from Google Business Profile)',

@@ -129,5 +129,6 @@ if __name__ == '__main__':
     a = ap.parse_args()
     if a.cmd == 'status': status(a)
     else:
+        # Google key: ONLY the PLACES_SERVER_KEY environment variable (Edwin 5 Nov 2026); never copy, print, echo or log it.
         key = os.environ.get('PLACES_SERVER_KEY') or sys.exit('Set PLACES_SERVER_KEY in the environment.')
         run(a, key)
