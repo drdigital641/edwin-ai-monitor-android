@@ -129,10 +129,10 @@ ARTICLES = [{'slug': 'graphene-coating-for-car-protect-in-singapore',
             'genuinely needs, with a fixed quote before work starts.')],
   'related': ['ceramic-coating-vs-graphene-coating-which-is-better-for-singapores-humid-climate']},
  {'slug': 'ceramic-coating-vs-graphene-coating-which-is-better-for-singapores-humid-climate',
-  'title': 'Ceramic vs Graphene Coating for Humid Singapore',
+  'title': 'Graphene Paint Coating vs Ceramic in Singapore',
   'date': '2025-09-09',
-  'desc': 'Ceramic or graphene coating for Singapore? Compare durability, heat, water repellency and upkeep, then '
-          'choose by your priorities.',
+  'desc': "Graphene paint coating or ceramic for Singapore's humid climate? Compare durability, heat, water "
+          'repellency and upkeep, then choose for your car.',
   'h1': "Ceramic Coating vs Graphene Coating: Which Suits Singapore's Humid Climate?",
   'owner': 'ceramic-coating',
   'intro': '<p>Both coatings protect paint well. Choose ceramic for a proven, glossy finish with simple upkeep over '

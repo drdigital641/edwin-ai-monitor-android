@@ -839,11 +839,11 @@ for a in ARTICLES:
     path = 'articles/%s/' % a['slug']
     page(path, a['title'], a['desc'], a['h1'], article_body(a), crumbs=[('articles/', 'Guides'), (path, a['h1'])], photo=a['photo'],
          schema=[article_schema(a, path), faq_schema(a['faqs'])])
-page('about/', 'About Star Performance Motor Pte. Ltd. | Yishun Car Dealer',
-     'Star Performance Motor Pte. Ltd. (UEN 202223232K), used car dealer at North Spring Bizhub, Yishun since 2022. Sincere, passionate, mindful.',
+page('about/', 'About Star Performance Motor | Yishun Used Car Dealer',
+     'Star Performance Motor Pte. Ltd. is a used car dealer at North Spring Bizhub, Yishun, Singapore. We help you buy, sell, consign or export a car.',
      'About us', about_body(), crumbs=[('about/', 'About')], lede='A Yishun car dealer built on three words: sincere, passionate, mindful.')
-page('contact/', 'Contact Star Performance Motor | WhatsApp 9742 7491',
-     'WhatsApp +65 9742 7491 or visit 9 Yishun Industrial Street 1, #01-82 North Spring Bizhub, Singapore 768163. Buy, sell, consign or export.',
+page('contact/', 'Contact Star Performance Motor | Yishun Used Cars',
+     'Contact Star Performance Motor: WhatsApp +65 9742 7491 or visit 9 Yishun Industrial Street 1, #01-82 North Spring Bizhub, S768163. Open 10am-8pm daily.',
      'Contact us', contact_body(), crumbs=[('contact/', 'Contact')], cta=False, lede='WhatsApp +65 %s or visit our showroom in Yishun.' % WA_SHOW)
 page('privacy/', 'Privacy Policy | Star Performance Motor', 'How Star Performance Motor Pte. Ltd. handles personal data under Singapore\'s PDPA.',
      'Privacy policy', privacy_body(), crumbs=[('privacy/', 'Privacy')], cta=False)

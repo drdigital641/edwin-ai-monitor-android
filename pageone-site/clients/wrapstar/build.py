@@ -297,8 +297,8 @@ SERVICES = [
               ('Does solar film help with a Tesla glass roof?', 'Yes. A heat-rejecting film on a panoramic glass roof cuts the heat that comes through it. See our guide on Tesla roof heat.'),
               ('How much is car window tint?', 'Our opening offer for nano ceramic solar film was $358 (usual price $428). WhatsApp your car model for today\'s price.')]),
     dict(slug='dechrome', short='Dechrome', photo='byd-seal-gloss-black-side',
-         title='Chrome Delete (Dechrome) in Singapore | Wrapstar Autostyle',
-         desc='Dechrome in Yishun: we turn chrome window trims, grilles and badges black with film. A sharper, sportier look that can be reversed. WhatsApp for a quote.',
+         title='Dechrome Singapore: Chrome Delete | Wrapstar Autostyle',
+         desc='Dechrome (chrome delete) in Yishun, Singapore: we turn chrome window trims, grilles and badges black with film. Can be reversed. WhatsApp for a quote.',
          h1='Dechrome in Singapore: chrome delete for trims, grilles and badges',
          gist='Turn shiny chrome trims and badges black for a sharper, sportier look.',
          lede='Chrome window lines, grille surrounds and badges date a car fast. Dechrome covers them in gloss or satin black film, so the car looks lower, cleaner and newer.',
@@ -383,8 +383,8 @@ ARTICLES = [
          faq=[('Is colour PPF better than a wrap?', 'It protects more, because the film is thicker TPU that absorbs stone chips and heals light swirls in heat. A vinyl wrap costs less and comes in more colours. Which is better depends on whether you want protection or just a new look.'),
               ('Which lasts longer, wrap or colour PPF?', 'Film life depends on the brand, the colour, and how the car is parked and washed. Ask us which film we would fit on your car and what its warranty covers.')]),
     dict(slug='car-window-tint-rules-singapore', photo='installer-window-film-2', svc='window-film', date='2026-10-17',
-         title='Car Window Tint Rules in Singapore (2026): 70% and 25%',
-         desc='How dark can car tint be in Singapore? Front windows need 70% visible light, rear windows 25%, per MOT on 7 April 2026. What that means for your car.',
+         title='Car Window Tint Rules Singapore (2026): 70% Front, 25% Rear',
+         desc='Car window tint rules in Singapore: front windows need 70% visible light, rear 25%, per MOT on 7 April 2026. Tint film needs no LTA approval.',
          h1='Car window tint rules in Singapore: the 70% and 25% light limits',
          card='How dark you can go, which windows count, and whether you need LTA approval.',
          body=[('h2', 'The rule in one line'),
@@ -831,8 +831,8 @@ def prices():
 <h2>Price questions</h2>
 {faq_html(PRICE_FAQ)}
 </div><aside class="side"><div class="box box-y"><h3>Today\'s price</h3><p>Send your car model and the service you want.</p>{wa_btn('WhatsApp ' + WA_SHOW, 'a price.', 'btn')}</div></aside></div></div></section>'''
-    page('prices/', 'Car Wrap Prices Singapore | Wrapstar Autostyle',
-         'Car wrap prices in Singapore: from $1,588 (our posted price). Dated offers on colour PPF, clear PPF and window film, and how to get a quote.',
+    page('prices/', 'Car Wrap Prices Singapore: From $1,588 | Wrapstar Autostyle',
+         'Car wrap prices in Singapore: from $1,588 (our posted price). Dated offers on colour PPF, clear PPF, window film. Yishun studio, WhatsApp for a quote.',
          'Car wrap prices in Singapore, plus PPF', body, crumbs=[('prices/', 'Prices')], schema=[faq_schema(PRICE_FAQ)],
          lede='Posted prices and recent offers, with dates, so you know what to expect before you ask.')
 

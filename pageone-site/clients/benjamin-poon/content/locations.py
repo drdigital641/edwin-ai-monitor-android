@@ -136,7 +136,8 @@ LOCATIONS = [
              'p': [T('We have not published bus or MRT directions for this venue, because the temple\'s own contact page does not give them and we only list what we have verified. Please ask Benjamin for directions and he will arrange a viewing with you.',
                      '本站没有列出前往此处的巴士或地铁路线，因为寺院的联络页面没有提供，我们只列出已核实的资料。请向 Benjamin 询问路线，他会与您安排参观。')]},
             {'h': T('What can Benjamin discuss for this venue?', 'Benjamin 在这里可以讨论哪些事项？'),
-             'p': [T('Benjamin can talk through <a href="services/columbarium-niches/">niche</a> and <a href="services/ancestral-tablets/">ancestral tablet</a> questions and help you decide what to ask the temple. Exactly which services he can arrange at Lin San Temple is being confirmed and will be stated once settled.',
+             'p': [T('Also in the east: <a href="guides/thian-leng-changi-road-niche-ancestral-tablet/">Thian Leng Chong Toh Tong (天灵总道堂) on Changi Road</a>.', '东部另有<a href="guides/thian-leng-changi-road-niche-ancestral-tablet/">樟宜路的天灵总道堂</a>。'),
+                  T('Benjamin can talk through <a href="services/columbarium-niches/">niche</a> and <a href="services/ancestral-tablets/">ancestral tablet</a> questions and help you decide what to ask the temple. Exactly which services he can arrange at Lin San Temple is being confirmed and will be stated once settled.',
                      'Benjamin 可以和您谈<a href="services/columbarium-niches/">福位</a>与<a href="services/ancestral-tablets/">神主牌</a>的问题，协助您整理要向寺方了解的事项。他在灵山寺具体能安排哪些服务，正在确认中，确认后会在这里说明。')]},
             {'h': T('How does a consultation and viewing work?', '咨询与参观是怎样进行的？'),
              'ol': True,
@@ -284,7 +285,7 @@ LOCATIONS = [
 ]
 
 HUB = {
-    'intro': T('Benjamin Poon discusses memorial options at three venues: one memorial park and two temples. The table below sets out the factual differences. Where something is not yet confirmed, ask Benjamin.',
+    'intro': T('Benjamin Poon discusses memorial options at three venues: one memorial park and two temples. The table below sets out the factual differences. Where something is not yet confirmed, ask Benjamin. For the Changi Road temple, read our <a href="guides/thian-leng-changi-road-niche-ancestral-tablet/">Thian Leng Chong Toh Tong (天灵总道堂) guide</a>.',
                '潘国雄可就三处场所讨论纪念安排：一处纪念园区和两座寺庙。下表列出事实上的差异；尚未确认的部分，请向 Benjamin 询问。'),
     'table': {
         'head': [T('', ''), T('Nirvana Memorial Garden 富贵山庄', '富贵山庄'),
