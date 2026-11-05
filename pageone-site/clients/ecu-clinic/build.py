@@ -312,14 +312,15 @@ def faq_ld():
         {'@type': 'Question', 'name': q, 'acceptedAnswer': {'@type': 'Answer', 'text': re.sub('<[^>]+>', '', a)}} for q, a in HOME_FAQ]}
 
 
-def page(path, title, desc, body, ld=None, share=('module-circuit-board.jpg', None), og_type='website', img_origin=None, wa_page=None):
+def page(path, title, desc, body, ld=None, share=('module-circuit-board.jpg', None), og_type='website', img_origin=None, wa_page=None, og_slug=None):
     wa_mark, wa_name = quote(WA_PAGE_MARK), quote(wa_page or wa_page_name(path, title, body))
     canonical = ORIGIN + BASE + path
     slug = path.strip('/').replace('/', '-') or 'home'
     headline = share[1] or title.split(' | ')[0]
-    SHARES[slug] = (share[0], headline)
+    if not og_slug:
+        SHARES[slug] = (share[0], headline)
     # img_origin: a share image added after IMG_COMMIT is served from the commit that added it (no site-wide re-pin).
-    og_img = f'{img_origin or IMG_ORIGIN}/img/share/{slug}.jpg'
+    og_img = f'{img_origin or IMG_ORIGIN}/img/share/{og_slug or slug}.jpg'
     ld = [schema()] + (ld or []) + [{'@context': 'https://schema.org', '@type': 'WebPage', '@id': canonical, 'url': canonical,
                                      'name': title, 'description': desc, 'about': {'@id': f'{ORIGIN}{BASE}#business'},
                                      'primaryImageOfPage': {'@type': 'ImageObject', 'url': og_img, 'width': 1200, 'height': 630}}]
@@ -404,7 +405,7 @@ def page(path, title, desc, body, ld=None, share=('module-circuit-board.jpg', No
 <ul>{''.join(f'<li><a href="{u(f"articles/{a['slug']}/")}">{e(a['h1'])}</a></li>' for a in ARTICLES[:4])}<li><a href="{u("articles/")}">All articles</a></li></ul>
 </div>
 </div>
-<div class="fine"><span>© 2026 The ECU Clinic. All rights reserved.</span><a href="https://pageonesingapore.com/">Website &amp; SEO by Page One Singapore</a></div>
+<div class="fine"><span>© 2026 The ECU Clinic. All rights reserved.</span><a href="{u("privacy/")}">Privacy</a><a href="https://pageonesingapore.com/">Website &amp; SEO by Page One Singapore</a></div>
 </div></footer>
 <div class="dock">
 <a class="btn btn-wa" href="{wa_link(cta="Sticky bar")}" target="_blank" rel="noopener">{ICON["wa"]}WhatsApp</a>
@@ -621,7 +622,7 @@ Last updated 2 November 2026.
 
 def all_paths():
     return ([''] + [f'services/{sp["slug"]}/' for sp in SERVICE_PAGES] + ['articles/']
-            + [f'articles/{a["slug"]}/' for a in ARTICLES])
+            + [f'articles/{a["slug"]}/' for a in ARTICLES] + ['privacy/'])
 
 
 def sitemap():
@@ -797,6 +798,33 @@ def articles_index():
                 body, ld=[crumbs_ld(crumbs), faq_ld_of(HUB_FAQ)], share=('control-board-repair-bench.jpg', 'Car Electronics Guides'))
 
 
+def privacy():
+    path = 'privacy/'
+    crumbs = [('Home', ''), ('Privacy', path)]
+    body = sub_hero(crumbs, 'Privacy', 'Privacy Policy', 'What we collect when you contact The ECU Clinic, and what we do with it.',
+                    'control-board-bench', 'Control board on the repair bench', buttons=False) + f'''
+<section><div class="wrap prose">
+<p class="meta">Last updated 5 November 2026</p>
+<h2>Who runs this site</h2>
+<p>This website is run by {BIZ["name"]}, {e(BIZ["street"])}, {BIZ["building"]}, Singapore {BIZ["postal"]}.</p>
+<h2>When you contact us</h2>
+<p>You can reach us by WhatsApp or by phone call on +65 {BIZ["tel_disp"]}. This site has no contact form. What you send us, such as your name, number, car model and fault code, is used only to reply to you and to give you the service you asked for.</p>
+<h2>Counting taps on our buttons</h2>
+<p>We count how often visitors tap the WhatsApp and Call buttons, so we can see which pages help people get in touch. Each tap sends one small record to our dashboard: which button type was tapped, the page it was tapped on, whether the device is a phone or a computer, the page you came from, and a random code that lasts only while your browser tab is open. The record is stored with the time of the tap.</p>
+<p>The tap counter does not send or store your name, phone number or message. The WhatsApp message and phone call themselves go through WhatsApp and your phone network, not through this counter. The counter does not use cookies.</p>
+<h2>Server logs</h2>
+<p>Our website host keeps standard server logs, such as IP address, browser type and the pages requested, to keep the site running and secure.</p>
+<h2>No selling of data</h2>
+<p>We do not sell your details or give them to advertisers.</p>
+<h2>Your rights under the PDPA</h2>
+<p>We handle personal data in line with Singapore's Personal Data Protection Act 2012. To ask for a copy of the details we hold about you, or to have them removed, WhatsApp us on <a href="{wa_link(text="I would like a copy of my details, or to have them removed.", cta="Privacy page")}" target="_blank" rel="noopener">+65 {BIZ["tel_disp"]}</a> or call the same number, and ask for {BIZ["contact"]}.</p>
+</div></section>
+''' + band('Questions about your details?', 'WhatsApp or call us and we will help.')
+    return page(path, 'Privacy Policy | The ECU Clinic',
+                'How The ECU Clinic handles your details: WhatsApp and phone enquiries, tap counting on our buttons, server logs and your rights under Singapore PDPA.',
+                body, ld=[crumbs_ld(crumbs)], share=('control-board-bench.jpg', 'Privacy Policy'), og_slug='home')
+
+
 def article(a):
     path = f'articles/{a["slug"]}/'
     sp = next((s for s in SERVICE_PAGES if s['slug'] == a['service']), None)
@@ -836,6 +864,7 @@ if __name__ == '__main__':
     for sp in SERVICE_PAGES:
         build(f'services/{sp["slug"]}/index.html', lambda sp=sp: service_page(sp))
     build('articles/index.html', articles_index)
+    build('privacy/index.html', privacy)
     for a in ARTICLES:
         build(f'articles/{a["slug"]}/index.html', lambda a=a: article(a))
     # Only read when theecuclinicsg.com serves this folder; pageonesingapore.com has its own root robots.txt.

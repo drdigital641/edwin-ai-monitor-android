@@ -247,15 +247,16 @@ def schema():
         + [location_ld(l) for l in LOCATIONS]}
 
 
-def page(path, title, desc, body, active='', extra_head='', ld=None, scripts='', share=('hero-workshop', None), wa_page=None):
+def page(path, title, desc, body, active='', extra_head='', ld=None, scripts='', share=('hero-workshop', None), wa_page=None, og_slug=None):
     from urllib.parse import quote
     wa_mark, wa_name = quote(WA_PAGE_MARK), quote(wa_page or wa_page_name(path, title, body))
     body = body.replace('<div class="sec-head">', f'<div class="sec-head"><span class="rule">{COG}</span>')
     canonical = ORIGIN + BASE + path
     slug = path.strip('/').replace('/', '-') or 'home'
     headline = share[1] or title.split(' | ')[0]
-    SHARES[slug] = (share[0], headline)
-    og_img = f'{IMG_ORIGIN}/img/share/{slug}.jpg'
+    if not og_slug:
+        SHARES[slug] = (share[0], headline)
+    og_img = f'{IMG_ORIGIN}/img/share/{og_slug or slug}.jpg'
     ld = (ld or []) + [{'@context': 'https://schema.org', '@type': 'WebPage', '@id': canonical, 'url': canonical, 'name': title,
                         'description': desc, 'isPartOf': {'@id': f'{ORIGIN}{BASE}#org'},
                         'primaryImageOfPage': {'@type': 'ImageObject', 'url': og_img, 'width': 1200, 'height': 630}}]
@@ -346,7 +347,7 @@ def page(path, title, desc, body, active='', extra_head='', ld=None, scripts='',
 <p class="hrs">Mon–Fri 9am–6pm<br>Sat 9am–3pm<br>Sun &amp; PH closed</p>
 </div>
 </div>
-<div class="fine"><span>© 2026 Jacky Gearbox</span><nav aria-label="Footer">{''.join(f'<a href="{u(p)}">{e(n)}</a>' for p, n in NAV[1:])}</nav><a href="https://pageonesingapore.com/">Website &amp; SEO by Page One Singapore</a></div>
+<div class="fine"><span>© 2026 Jacky Gearbox</span><nav aria-label="Footer">{''.join(f'<a href="{u(p)}">{e(n)}</a>' for p, n in NAV[1:])}<a href="{u("privacy/")}">Privacy</a></nav><a href="https://pageonesingapore.com/">Website &amp; SEO by Page One Singapore</a></div>
 </div></footer>
 <div class="dock">
 <a class="btn btn-wa" href="{wa_link(cta="Sticky bar")}" target="_blank" rel="noopener">{ICON["wa"]}WhatsApp</a>
@@ -1172,7 +1173,7 @@ def location_page(loc):
 
 def all_pages():
     return ([p for p, _ in NAV] + [f'services/{s}/' for s, *_ in SERVICES] + [f'gearbox-problems/{p["slug"]}/' for p in PROBLEMS]
-            + [f'articles/{a["slug"]}/' for a in ARTICLES] + [f'{l["slug"]}/' for l in LOCATIONS])
+            + [f'articles/{a["slug"]}/' for a in ARTICLES] + [f'{l["slug"]}/' for l in LOCATIONS] + ['privacy/'])
 
 
 def retired_estimator():
@@ -1256,6 +1257,32 @@ def about():
     return page('about/', 'About Jacky | Gearbox Specialist Singapore | Jacky Gearbox',
                 'Meet Jacky, a gearbox specialist and consultant in Singapore who diagnoses, inspects and road-tests every car himself.',
                 body, active='about/', ld=[crumbs_ld('About', 'about/'), faq_ld_of(FAQ)], share=('gearbox-teardown', 'Meet Jacky, Your Gearbox Specialist'))
+
+
+def privacy():
+    body = page_hero('Privacy', 'Privacy Policy', 'What we collect when you contact Jacky Gearbox, and what we do with it.') + f'''
+<section><div class="wrap" style="max-width:860px">
+<p class="muted">Last updated 5 November 2026</p>
+<h2>Who runs this site</h2>
+<p>This website is run by {BIZ["name"]}. Our workshops are at {e(BIZ["hq"]["street"])}, Singapore {BIZ["hq"]["postal"]}, and {e(BIZ["branch"]["street"])}, Singapore {BIZ["branch"]["postal"]}.</p>
+<h2>When you contact us</h2>
+<p>You can reach us by WhatsApp or by phone call on +65 {BIZ["tel_disp"]}. The "Book a diagnostic" form on our contact page does not send your details to us or to our server. It opens WhatsApp with your name, contact number, car and message already typed, and nothing is sent until you press send in WhatsApp. What you send us is used only to reply to you and to give you the service you asked for.</p>
+<h2>Counting taps on our buttons</h2>
+<p>We count how often visitors tap the WhatsApp and Call buttons, so we can see which pages help people get in touch. Each tap sends one small record to our dashboard: which button type was tapped, the page it was tapped on, whether the device is a phone or a computer, the page you came from, and a random code that lasts only while your browser tab is open. The record is stored with the time of the tap.</p>
+<p>The tap counter does not send or store your name, phone number or message. This includes the contact form: only the tap on the send button is counted, never what you typed. The counter does not use cookies.</p>
+<h2>Server logs</h2>
+<p>Our website host keeps standard server logs, such as IP address, browser type and the pages requested, to keep the site running and secure.</p>
+<h2>Map on the contact page</h2>
+<p>The contact page shows an embedded Google map of each workshop. Loading the map connects your browser to Google, which handles that data under its own privacy policy.</p>
+<h2>No selling of data</h2>
+<p>We do not sell your details or give them to advertisers.</p>
+<h2>Your rights under the PDPA</h2>
+<p>We handle personal data in line with Singapore's Personal Data Protection Act 2012. To ask for a copy of the details we hold about you, or to have them removed, WhatsApp Jacky on <a href="{wa_link(text="I would like a copy of my details, or to have them removed.", cta="Privacy page")}" target="_blank" rel="noopener">{BIZ["mobile_disp"]}</a> or call the same number.</p>
+</div></section>
+''' + band('Questions about your details?', 'WhatsApp or call Jacky and he will help.')
+    return page('privacy/', 'Privacy Policy | Jacky Gearbox',
+                'How Jacky Gearbox handles your details: WhatsApp and phone enquiries, tap counting on our buttons, server logs and your rights under Singapore PDPA.',
+                body, ld=[crumbs_ld('Privacy', 'privacy/')], share=('workshop-lifts', 'Privacy Policy'), og_slug='contact')
 
 
 def contact():
@@ -1409,6 +1436,7 @@ if __name__ == '__main__':
     build('gallery/index.html', gallery)
     build('about/index.html', about)
     build('contact/index.html', contact)
+    build('privacy/index.html', privacy)
     for loc in LOCATIONS:
         build(f'{loc["slug"]}/index.html', lambda loc=loc: location_page(loc))
     # Only read when jackygearbox.com serves this folder; pageonesingapore.com uses its own root robots.txt.
