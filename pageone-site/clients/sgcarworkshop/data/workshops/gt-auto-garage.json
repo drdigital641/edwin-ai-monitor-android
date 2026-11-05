@@ -40,5 +40,35 @@
  "tier": "basic",
  "first_seen_at": "2026-11-05",
  "last_verified_at": "2026-11-05",
- "collector_version": "agent-v5"
+ "collector_version": "agent-v5",
+ "estate": "bukit-batok-crescent",
+ "planning_area": "Bukit Batok",
+ "region": "west",
+ "lat": 1.339051107118691,
+ "lng": 103.7590387125838,
+ "geo_source": "onemap",
+ "blocks": [
+  "hero",
+  "contact",
+  "services",
+  "good_for",
+  "problems",
+  "reviews",
+  "comparison",
+  "hours",
+  "stories",
+  "location",
+  "tips",
+  "faq",
+  "claim",
+  "sources"
+ ],
+ "google_rating": {
+  "rating": 4.8,
+  "count": 328,
+  "checked": "2026-11-05",
+  "source": "Google Places",
+  "source_date": "2026-11-05"
+ },
+ "hold": "v2 trial card built 5 Nov 2026, preview only, waiting for Edwin to approve before it goes live (set status active)"
 }

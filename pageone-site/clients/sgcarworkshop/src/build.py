@@ -1540,6 +1540,8 @@ def specialty_html(pl):
         out += '<h3 class="mh">Specialities</h3><ul class="tick svc-plain">%s</ul>' % ''.join('<li>%s</li>' % E(x) for x in pl['specialties'])
     if pl.get('makes'):
         out += '<p class="makes"><b>Car makes:</b> %s.%s</p>' % (E(', '.join(pl['makes'])), (' <span class="fine">%s</span>' % E(pl['makes_note'])) if pl.get('makes_note') else '')
+    elif pl.get('makes_note'):
+        out += '<p class="makes"><b>Car makes:</b> %s</p>' % E(pl['makes_note'])
     return out
 
 

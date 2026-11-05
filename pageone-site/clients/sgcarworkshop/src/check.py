@@ -609,7 +609,7 @@ for _f in sorted(os.listdir(os.path.join(root, '..', 'data', 'pilot'))):
     _pl = json.load(open(os.path.join(root, '..', 'data', 'pilot', _f)))
     if not _pl.get('card_rules'): continue
     _sl = _f[:-5]
-    if not _pl.get('services') or not _pl.get('makes'): print('v2 card needs services and a car makes line', _sl); bad += 1
+    if not _pl.get('services') or not (_pl.get('makes') or _pl.get('makes_note')): print('v2 card needs services and a car makes line', _sl); bad += 1
     for _w in (_pl.get('themes', ''), ' '.join(_pl.get('specialties', [])), ' '.join(_pl.get('good_to_know', []))):
         if re.search(r'[\u201c\u201d"]', _w): print('v2 card must not quote anyone', _sl); bad += 1
     if os.path.isdir(_CS):
