@@ -64,7 +64,7 @@ SERVICE_PAGES = [
                '</div>'
                '<p style="margin-top:16px">Plug and play is available. We explain the options before any work starts, and our repairs come with a 6-month warranty.</p>')],
         visit=True,
-        related=['honda-vsa-solenoid-valve-malfunction', 'mercedes-esp-control-unit-fault-n30-4', 'abs-warning-light-causes'],
+        related=['honda-vsa-solenoid-valve-malfunction', 'honda-yaw-rate-sensor-malfunction', 'mercedes-esp-control-unit-fault-n30-4', 'mercedes-active-brake-assist-functions-limited', 'abs-warning-light-causes'],
     ),
     dict(
         slug='mercedes-7g-9g-tcu-repair', key='tcu', name='Mercedes 7G & 9G TCU Repair',
@@ -220,7 +220,7 @@ SERVICE_PAGES = [
              ('Which Honda models do you work on?', 'Honda models with Honda Sensing and a front millimeter wave radar, such as the Vezel. WhatsApp us your model and year to check.'),
              ('Is there a warranty?', 'Yes. Our repairs come with a 6-month warranty.'),
              ('What should I send you?', 'Your car model, year and the fault codes. A photo of the scan tool screen or the dashboard warning helps.')],
-        related=['honda-millimeter-wave-radar-error-p2583', 'honda-vsa-solenoid-valve-malfunction'],
+        related=['honda-millimeter-wave-radar-error-p2583', 'honda-vsa-solenoid-valve-malfunction', 'honda-yaw-rate-sensor-malfunction'],
         jobs=[('honda-radar-fault-codes', '2019 Honda Vezel: radar function error and aiming incomplete'),
               ('honda-abs-radar-codes', 'Honda Vezel with both the radar and the VSA (ABS) unit faulty')],
     ),
@@ -338,12 +338,12 @@ SERVICE_PAGES = [
 ARTICLES = [
     dict(
         slug='honda-yaw-rate-sensor-malfunction', service='abs-pump-repair', date='2026-10-14', updated_iso='2026-11-02',
-        title='Honda Yaw Rate Sensor Fault 81-19 | The ECU Clinic',
-        desc='Honda yaw rate sensor and acceleration sensor faults inside the VSA modulator control unit (81-19, 81-20, C0063, C0062): what they mean and how they are repaired.',
+        title='Honda 81-19 Yaw Rate Sensor Fault Code | The ECU Clinic',
+        desc='Honda 81-19 means a yaw rate sensor internal fault inside the VSA modulator. What 81-20, C0063 and C0062 mean, why warning lights come on, and the repair.',
         h1='Honda Yaw Rate Sensor Malfunction (81-19)',
         lead='A well-known Honda ABS fault: the yaw rate sensor inside the VSA modulator, and why it brings up so many other codes.',
         photo='honda-yaw-rate-codes', alt='Scan tool showing Honda codes 81-19 yaw rate sensor and 81-20 acceleration sensor inside the modulator control unit', share='honda-yaw-rate-sensor-codes.jpg',
-        body='''<p><strong>Short answer:</strong> On a Honda, codes 81-19 and 81-20 mean the yaw rate sensor and the acceleration sensor inside the VSA modulator control unit have an internal fault. They are part of the unit, so the fix is repairing or replacing the VSA modulator, not swapping a separate sensor. We read every code first.</p>
+        body='''<p><strong>Short answer:</strong> Honda code 81-19 means the yaw rate sensor inside the VSA modulator control unit has an internal circuit fault, and 81-20 means the same for the acceleration sensor. They are part of the unit, so the fix is repairing or replacing the VSA modulator, not swapping a separate sensor. We read every code first.</p>
 <p>The yaw rate sensor measures how fast the car is turning. Together with the acceleration sensor, it tells the VSA (Vehicle Stability Assist) system whether the car is going where the driver is steering. On many Honda models these sensors are built into the VSA modulator control unit, the ABS unit in the engine bay.</p>
 <h2>The codes</h2>
 <p>The scan in the photo above shows how one fault spreads across several systems:</p>
@@ -441,6 +441,8 @@ ARTICLES = [
 <p>A sensor or wiring fault can light the same warnings. Reading all the codes, as on the Vezel above where 83-141 and U0416-68 appeared with 121-11, shows whether the VSA unit is the common cause before any work starts.</p>
 <h2>Is it safe to drive?</h2>
 <p>Normal braking usually still works, but anti-lock braking and stability control can be switched off. If the red brake light is on or the brake pedal feels different, stop driving and get the car checked.</p>
+<h2>Other codes from the same unit</h2>
+<p>The yaw rate and acceleration sensors sit inside the same VSA modulator. If your scan also shows 81-19 or 81-20, read our guide to the <a href="../honda-yaw-rate-sensor-malfunction/">Honda 81-19 yaw rate sensor fault</a>.</p>
 <h2>How it is fixed</h2>
 <p>We read all the codes first, to confirm the fault is in the VSA unit and not in a sensor or wiring. Then we repair the unit, or supply a reconditioned, used or new one. Our repairs come with a 6-month warranty.</p>
 <h2>Honda models we see this on</h2>
@@ -465,7 +467,7 @@ ARTICLES = [
 <ul class="ticks">
 <li>ABS and ESP warning lights</li>
 <li>Brake or brake assist messages</li>
-<li>On newer models, messages such as “Active Brake Assist functions limited”</li>
+<li>On newer models, messages such as “Active Brake Assist functions limited” (see <a href="../mercedes-active-brake-assist-functions-limited/">what that message means</a>)</li>
 </ul>
 <h2>Internal fault or outside fault?</h2>
 <p>Many brake warnings come from outside the control unit, such as a wheel speed sensor or its wiring. Code 5001 is different: the wording “internal fault” means the unit itself is reporting the problem. That is why the fault code is read before any part is chosen, so the repair is aimed at the right place.</p>
@@ -550,8 +552,8 @@ ARTICLES = [
     ),
     dict(
         slug='mercedes-active-brake-assist-functions-limited', service='abs-pump-repair', date='2026-10-13', updated_iso='2026-11-02',
-        title='Active Brake Assist Functions Limited? | The ECU Clinic',
-        desc='Mercedes “Active Brake Assist functions limited”? Often a dirty or knocked radar sensor. If it stays on or an ABS or ESP light shows, read the fault code.',
+        title='Mercedes Active Brake Assist Functions Limited | ECU Clinic',
+        desc='Mercedes “Active Brake Assist functions limited”: causes such as a dirty or knocked radar sensor or ESP fault, what to check first and when to read the code.',
         h1='Mercedes “Active Brake Assist Functions Limited”: What It Means',
         lead='Why this message appears on a Mercedes dashboard, and when it is more than a dirty sensor.',
         photo='active-brake-assist-warning', alt='Mercedes dashboard showing Active Brake Assist functions limited',
