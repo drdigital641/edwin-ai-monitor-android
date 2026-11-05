@@ -1,50 +1,5 @@
 [
  {
-  "place_id": "ChIJlaLHTqsR2jERNOOxKal8cEI",
-  "name_hint": "GT Auto Garage",
-  "address_hint": "1 Bukit Batok Cres, #04-41 WCEGA PLAZA",
-  "postal_code": "658064",
-  "mobile_hint": "+6591278892",
-  "source": "google_text_search_2026-11-03 (Google phone, Edwin asked)",
-  "added": "2026-11-03"
- },
- {
-  "place_id": "ChIJKX7oCUoR2jEREoIkrDu7Fe8",
-  "name_hint": "Motoserv Car Service Centre @Bukit Batok",
-  "address_hint": "28 Bukit Batok East Ave 6",
-  "postal_code": "659760",
-  "mobile_hint": "+6583325425",
-  "source": "google_text_search_2026-11-03 (Google phone, Edwin asked)",
-  "added": "2026-11-03"
- },
- {
-  "place_id": "ChIJQ7dhyloR2jERiqbj11bRZb0",
-  "name_hint": "AutoWheels MotorWorks Pte Ltd (Bukit Batok Wcega Plaza)",
-  "address_hint": "1 Bukit Batok Cres, #02-40",
-  "postal_code": "658064",
-  "mobile_hint": "+6590811197",
-  "source": "google_text_search_2026-11-03 (Google phone, Edwin asked)",
-  "added": "2026-11-03"
- },
- {
-  "place_id": "ChIJzcGhi24Q2jERvf5r_B7tOGI",
-  "name_hint": "Garage B Pte Ltd",
-  "address_hint": "1 Bukit Batok Cres, #05-55 WCEGA Plaza",
-  "postal_code": "658064",
-  "mobile_hint": "+6593721526",
-  "source": "google_text_search_2026-11-03 (Google phone, Edwin asked)",
-  "added": "2026-11-03"
- },
- {
-  "place_id": "ChIJawelHJsR2jERwmUQzV8yKLs",
-  "name_hint": "JC Expert Autoworks Pte Ltd",
-  "address_hint": "1 Bukit Batok Cres, #04-21 WCEGA Plaza",
-  "postal_code": "658064",
-  "mobile_hint": "+6582662024",
-  "source": "google_text_search_2026-11-03 (Google phone, Edwin asked)",
-  "added": "2026-11-03"
- },
- {
   "place_id": "ChIJVUvHxYUR2jERKrvGNLcYMpM",
   "name_hint": "Absolut Budget Workshop Pte Ltd - Affordable | Reliable Car Workshop Singapore",
   "address_hint": "1 Bukit Batok Cres, #02-47 WCEGA Plaza",

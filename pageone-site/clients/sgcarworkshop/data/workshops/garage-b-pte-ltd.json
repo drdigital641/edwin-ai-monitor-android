@@ -1,0 +1,44 @@
+{
+ "schema_version": 1,
+ "slug": "garage-b-pte-ltd",
+ "place_id": "ChIJzcGhi24Q2jERvf5r_B7tOGI",
+ "place_id_checked_at": "2026-11-05",
+ "name": "Garage B Pte Ltd",
+ "name_source_url": "google_profile",
+ "name_checked_at": "2026-11-05",
+ "address": {
+  "block": "",
+  "street": "1 Bukit Batok Cres, #05-55 WCEGA Plaza",
+  "unit": "",
+  "building": ""
+ },
+ "postal_code": "658064",
+ "address_source_url": "google_profile",
+ "address_checked_at": "2026-11-05",
+ "categories": [
+  "SERV"
+ ],
+ "services": [
+  "General servicing and repair"
+ ],
+ "services_source_url": "google_profile",
+ "phones": [
+  {
+   "e164": "+6593721526",
+   "kind": "mobile",
+   "whatsapp": true,
+   "source": "google_profile",
+   "checked_at": "2026-11-05"
+  }
+ ],
+ "google_screen": {
+  "passed": true,
+  "reason": "OPERATIONAL, car repair, SG mobile on Google profile",
+  "checked_at": "2026-11-05"
+ },
+ "status": "pending",
+ "tier": "basic",
+ "first_seen_at": "2026-11-05",
+ "last_verified_at": "2026-11-05",
+ "collector_version": "agent-v5"
+}
