@@ -886,11 +886,21 @@ ARTICLES = [
    ("Is the OE number enough to confirm a fit?", "Not on its own. The same model can come in different versions, and a part number does not tell us about your trim, sensors or market. We compare the number with your build date, trim and photos before we quote."),
    ("What should I send us?", "The brand and model, build month and year, the part and the side, the OE number if you have it, and a photo of the old part or the damage."),
    ("What happens next?", "We check what we can source and confirm fitment before we reply. You can also <a href=\"{{R}}catalogue/\">search the catalogue</a> by car and part, and tap Get a quote.")]),
+ ("what-to-send-for-a-side-mirror", "Side mirror for a China or EV car: what to send us", "Side Mirror for China EV Cars: What to Send | EV Body Parts",
+  "How to get a side mirror matched for a China or EV car in Singapore: side, features such as folding and blind-spot lamp, cover or full unit, and photos.", "head",
+  [("The short version", "Send the brand and model, the build month and year, which side, and a photo of the mirror from outside and from the inside of the door. Tell us what the mirror does: folding, heated, camera or a blind-spot light. Say whether you need the whole mirror, the glass or only the cover."),
+   ("1. Say left or right", "Left and right are as seen from the driver's seat, not from outside the car. If you are not sure, a photo of the whole side of the car shows which mirror is damaged."),
+   ("2. Whole mirror, glass or cover?", "A side mirror is made of the housing and motor, the mirror glass and the outer cover. Tell us which part is broken. If the cover is cracked but the glass and motor work, a cover alone may be enough, but we confirm what is available before we reply."),
+   ("3. List what the mirror does", "Modern mirrors can fold electrically, heat the glass, carry a turn signal or a blind-spot light, hold a camera or lower when you reverse. Mirrors for the same model can come with different features, so tell us which of these yours has."),
+   ("4. Take two photos", "Take one photo from outside the car showing the whole mirror, and one from inside the car looking at the door panel and the mirror controls. If the mirror is already off, add a photo of the back, where any markings or numbers are."),
+   ("5. Give the car details", "Brand, model and the build month and year from your car documents. Say if the car has been repaired, repainted or fitted with a different mirror before, and whether the cover needs a colour match."),
+   ("What happens next", "We compare your photos with the part and confirm fitment before we reply. We do not guess from the model name alone, because versions and markets can differ. You can also <a href=\"{{R}}parts/mirrors/\">browse mirrors by car</a> and tap Get a quote.")]),
 ]
 
-ART_DATES = {"tesla-model-y-juniper-or-older-how-to-tell": "2026-11-02", "what-is-an-oe-part-number-body-parts": "2026-11-04"}   # first published
+ART_DATES = {"tesla-model-y-juniper-or-older-how-to-tell": "2026-11-02", "what-is-an-oe-part-number-body-parts": "2026-11-04", "what-to-send-for-a-side-mirror": "2026-11-06"}   # first published
 ART_MOD = "2026-11-02"   # last updated: FAQ + direct answer added in the SEO pass
 ART_ANSWER = {
+ "what-to-send-for-a-side-mirror": "To get a side mirror matched, send the model, the build month and year, left or right as seen from the driver's seat, and photos from outside and inside the door. Say what the mirror does, such as folding, heating, a camera or a blind-spot light, and whether you need the whole unit, the glass or the cover.",
  "what-is-an-oe-part-number-body-parts": "An OE number is the car maker's own reference number for a part, and it helps match the exact part. Look for it on the back of a lamp, mirror or bumper bracket, often on a label or moulding. You do not need it to ask us: send your car model, build month and year, and photos instead.",
  "tesla-model-y-tail-lamp-what-to-send": "To get a Tesla Model Y tail lamp matched, send the model, whether you need the left or right lamp (as seen from the driver's seat), and two photos of the old lamp: one on the car and, if it is off, one of the back. Add the year on your car documents. We confirm fitment before we reply.",
  "china-ev-body-parts-what-to-check": "Before you buy a body part for a China or EV car in Singapore, check five things: the exact model, left or right, any sensors or camera near the part, whether it is bare, primed or painted, and what is included. Ask about returns and warranty and get the answer in writing.",
@@ -899,6 +909,11 @@ ART_ANSWER = {
 }
 for _k, _v in ART_ANSWER.items(): assert 40 <= len(_v.split()) <= 60, (_k, len(_v.split()))
 ART_FAQ = {
+"what-to-send-for-a-side-mirror": [
+ ("Is the left mirror the one on my left as I face the car?", "No. Left and right are as seen from the driver's seat, not from outside the car. A photo of the whole side of the car shows which mirror is damaged."),
+ ("Can I replace only the mirror glass or cover?", "Sometimes. If the motor and housing work, the glass or the cover alone may be enough. Tell us which part is broken, and we confirm what is available before we reply."),
+ ("Why do you ask what features the mirror has?", "Mirrors for the same model can differ: folding, heated glass, turn signal, blind-spot light or camera. Knowing yours helps us match the right version."),
+ ("What photos should I send for a side mirror?", "One from outside showing the whole mirror, one from inside showing the door panel and mirror controls, and, if the mirror is off the car, one of the back.")],
 "what-is-an-oe-part-number-body-parts": [
  ("What does OE mean on a car part?", "OE stands for original equipment. The OE number is the car maker's own reference number for a part, and other sellers often list the same number so you can compare."),
  ("Do I need an OE number to get a quote?", "No. The number helps, but you can send the car model, build month and year, the part and photos instead. We check fitment from those before we quote."),

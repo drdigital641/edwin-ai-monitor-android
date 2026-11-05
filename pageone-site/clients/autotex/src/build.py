@@ -1060,6 +1060,15 @@ ARTS = [
    ("Do all cars need spark plugs?", "No. Spark plugs are for petrol engines. Diesel engines do not use them and electric cars have no engine, so they are not listed for those models in our shop."),
    ("Which spark plugs do I need?", "Plugs differ by engine, not just by model. Send us your car plate or chassis number and we will match the right set. Plugs are sold as a set for the number of cylinders your engine has.")],
   "spark-plugs", "2026-11-04"),
+ ("signs-of-a-failing-alternator", "Signs of a failing alternator on a Hyundai or Kia",
+  "A battery warning light, dim lights and a car that stalls or will not restart can point to the alternator, not just the battery. Common signs, and how to tell them apart.",
+  [("What does an alternator do?", "The alternator is driven by the engine and generates the electricity that runs the car's lights, wipers, infotainment and ignition while the engine is running. It also recharges the battery. When it weakens, the car starts to run on the battery alone until the battery goes flat."),
+   ("What are the common signs of a failing alternator?", "<ul><li>The battery or charging warning light comes on while you are driving.</li><li>Headlights and dashboard lights dim or flicker, especially at idle or when the aircon and other electrics are on.</li><li>The car is slow to start, or the battery goes flat again soon after a jump start or a new battery.</li><li>A whining or grinding noise from the engine bay that changes with engine speed.</li><li>Electrical items such as windows, the audio system or the aircon blower behave weakly or erratically.</li></ul>"),
+   ("Is it the alternator or the battery?", "Both give a car that will not start, so they are easy to confuse. A weak battery usually shows up when starting, while a failing alternator tends to show up while driving, with the warning light and dimming lights. A workshop can test the battery and the charging voltage in a few minutes. If you keep replacing batteries, have the alternator tested."),
+   ("Can I keep driving with a failing alternator?", "Not for long. The car runs on battery power until it runs flat, and then it can stall without warning, including on an expressway. If the warning light comes on, switch off unnecessary electrics, head for a safe place and have the car checked."),
+   ("Do all cars have an alternator?", "Petrol and diesel cars do. Fully electric cars have no engine-driven alternator, so it is not listed for those models in our shop."),
+   ("Which alternator do I need?", "Alternators differ by model, generation and engine. Send us your car plate or chassis number and we will match the right one. Ask about the drive belt at the same time, because a worn or loose belt can also cause charging problems.")],
+  "electrical", "2026-11-06"),
 ]
 
 # 40-60 word direct answers shown under each article H1, and meta descriptions of 120-160 characters (2 Nov 2026 SEO pass)
@@ -1068,6 +1077,7 @@ ART_ANS = {
  "brake-pads-and-discs-when-to-change": "Change brake pads when they squeal, the car takes longer to stop or a warning light comes on. Change the discs too if they are worn below the minimum thickness stamped on them, deeply scored or warped. Pads and discs are changed in pairs on the same axle, so both sides brake evenly.",
  "signs-of-a-worn-engine-mounting": "A worn engine mounting usually shows as extra vibration at idle, a knock or clunk when you pull away or change gear, or an engine that visibly rocks when revved. The rubber wears with age and heat, so have a workshop check it and replace the worn mount before hoses and wiring are strained.",
  "signs-of-worn-spark-plugs": "Worn spark plugs usually show as a slow or hard start, a rough idle, hesitation when you accelerate and higher fuel use. A misfire code can also appear. Follow the interval in your owner's manual, and have a workshop check the plugs and coils together, as both cause similar symptoms.",
+ "signs-of-a-failing-alternator": "A failing alternator usually shows as a battery or charging warning light, dim or flickering lights, a car that is slow to start or keeps flattening the battery, and sometimes a whine from the engine bay. A workshop can test the battery and charging voltage to tell the two apart quickly.",
  "signs-of-a-failing-ignition-coil": "A failing ignition coil usually shows as a rough idle, hesitation or jerking when you accelerate, or a check-engine light that comes on or flashes during a misfire. A workshop reads the fault code to find the cylinder, then swaps coils to confirm. Avoid hard driving while the light flashes.",
 }
 ART_DESC = {
@@ -1075,6 +1085,7 @@ ART_DESC = {
  "brake-pads-and-discs-when-to-change": "Pads wear first and discs wear slower. How to tell from the squeal, the pedal feel and the disc thickness whether your Hyundai or Kia needs pads, discs or both.",
  "signs-of-a-worn-engine-mounting": "Vibration at idle and a knock when you change gear can point to the engine mounts. Common signs of a worn engine mounting on a Hyundai or Kia.",
  "signs-of-worn-spark-plugs": "Hard starts, a rough idle and poor fuel economy can point to worn spark plugs. Common signs on a Hyundai or Kia, and how to tell them from a bad ignition coil.",
+ "signs-of-a-failing-alternator": "Battery warning light, dim lights or a car that stalls can point to a failing alternator. Signs on a Hyundai or Kia, and how to tell it from a flat battery.",
  "signs-of-a-failing-ignition-coil": "A rough idle, a flashing check-engine light and a car that shakes under load can point to a weak ignition coil. Signs, and how to tell it from a spark plug.",
 }
 

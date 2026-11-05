@@ -289,6 +289,7 @@ ART_PICK = {
     'ceramic-coating-vs-graphene-coating-which-is-better-for-singapores-humid-climate': 'klarcoat_range',
     'graphene-coating-for-car-protect-in-singapore': 'graphene_apply',
     'how-to-prepare-your-car-for-ceramic-coating': 'm6_inspection',
+    'why-does-my-car-smell-musty-in-singapore': 'fumigation_spray',
 }
 
 
@@ -632,7 +633,7 @@ def article_page(a, i=0):
                'image': IMG[hk[0]]['url'] if hk else SITE + 'assets/og.jpg'}]
     if a.get('faqs'):
         schema.append(faq_schema(a['faqs']))
-    page('articles/%s/' % a['slug'], a['title'], a['desc'], a['h1'], body, crumbs=[('articles/', 'Guides'), ('articles/%s/' % a['slug'], a['title'])], kicker='Guide', schema=schema, cta=True)
+    page('articles/%s/' % a['slug'], a['title'], a['desc'], a['h1'], body, crumbs=[('articles/', 'Guides'), ('articles/%s/' % a['slug'], a['title'])], kicker='Guide', schema=schema, cta=True, og=(SITE + a['og']) if a.get('og') else None)
 
 
 def our_work():
