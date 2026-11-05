@@ -793,7 +793,7 @@ def home_body():
 <div class="scards">{svc}</div>
 </div></section>
 <section class="sec" aria-labelledby="h-kw"><div class="wrap">
-<div class="sec-head"><p class="eyebrow">Looking for a machine?</p><h2 id="h-kw">One contact for AI and smart vending machines in Singapore</h2><p>AIVS sells its own refurbished machines and is building a network of partner suppliers for other machine types. Tell us what you want to sell and where, and we point you to the machine that fits. Supplier or distributor of AI or smart machines? <a href="partner-with-aivs/">Partner with AIVS</a>.</p></div>
+<div class="sec-head"><p class="eyebrow">Looking for a machine?</p><h2 id="h-kw">One contact for AI and smart vending machines in Singapore</h2><p>AIVS sells its own refurbished machines, the <a href="machines/ai-printbox/">AI Printbox phone case printer</a> and the <a href="machines/topi-express/">Topi Express helmet cleaner</a>, and is building a network of partner suppliers for other machine types. Tell us what you want to sell and where, and we point you to the machine that fits. Supplier or distributor of AI or smart machines? <a href="partner-with-aivs/">Partner with AIVS</a>.</p></div>
 <div class="scards">{kw}</div>
 </div></section>
 <section class="sec sec-dark" aria-labelledby="h-why"><div class="wrap split2">
@@ -1174,8 +1174,8 @@ page('partner-with-aivs/', 'Business Collaboration with AIVS | Smart Vending Sin
      photo='both-machines', cta=False, schema=[faq_schema(COLLAB_FAQ)])
 
 
-page('', 'AIVS | AI & Smart Vending Machines Singapore',
-     'AIVS (AI Vending Solution Pte. Ltd.) sells AI and smart vending machines in Singapore from S$%s with 0%% royalties, or finds you one from a partner supplier.' % TP_PRICE,
+page('', 'AI Vending Solution | AI & Smart Vending Machines Singapore',
+     'AI Vending Solution (AIVS) sells AI and smart vending machines in Singapore from S$%s with 0%% royalties, or finds you one from a partner supplier.' % TP_PRICE,
      FULL, home_body(), hero=False, schema=[faq_schema(FAQ_HOME)])
 for k in KEYWORD_PAGES:
     path = k['slug'] + '/'
