@@ -204,7 +204,7 @@ TFIX = {" | Size by Model": "", " | 24h Hotline": "", ": We Come to You": "", " 
 def short_title(t):
     for a, b in TFIX.items(): t = t.replace(a, b)
     return t
-def page(path, title, desc, body, ld=None, active="", cr=None, prio="0.6", img_alt="Battery Rescue SG: Delkor car battery replacement in Singapore"):
+def page(path, title, desc, body, ld=None, active="", cr=None, prio="0.6", img_alt="Battery Rescue SG: Delkor car battery replacement in Singapore", lean=False):
     title = short_title(title)
     assert len(title) <= 65, (path, len(title), title)
     assert path == "/404.html" or 120 <= len(desc) <= 160, (path, len(desc), desc)
@@ -228,15 +228,15 @@ def page(path, title, desc, body, ld=None, active="", cr=None, prio="0.6", img_a
 <meta name="twitter:card" content="summary_large_image"><meta name="twitter:image" content="{BASE}/og.jpg">
 <link rel="stylesheet" href="/br.css?v={h8(CSS)}">
 <script type="application/ld+json">{json.dumps({"@context":"https://schema.org","@graph":graph},ensure_ascii=False)}</script>
-</head><body>
+</head><body{' class="nobar"' if lean else ''}>
 <header class="top"><div class="wrap"><a class="logo" href="/" aria-label="Battery Rescue SG home">{BOLT}<span>Battery<b>Rescue</b>.sg<small>by Motoserv · Delkor batteries</small></span></a>
 <nav class="dnav"><a href="/">Rescue</a><a href="/#compare">Compare prices</a><a href="/prices/">Price list</a><a href="/outlets/">Outlets</a><a href="/delkor/">Why Delkor</a><a href="/more/">More</a></nav>
-<a class="hot" href="tel:{TEL}" data-ref="top">{I["phone"]}<span>{HOT}</span></a></div></header>
+{"" if lean else f'<a class="hot" href="tel:{TEL}" data-ref="top">{I["phone"]}<span>{HOT}</span></a>'}</div></header>
 <main class="wrap">{crumb}{body}
 <footer class="foot"><p><b>{BRAND}</b> is the car battery service of Motoserv, a CaseTrust-accredited group of neighbourhood car service centres. Every battery we fit is a Delkor with a 1-year warranty. Prices include GST, checked {CHECKED}.</p>
 <p>24-hour hotline <a href="tel:{TEL}" data-ref="foot">{HOT}</a> · <a href="/prices/">Prices</a> · <a href="/outlets/">Outlets</a> · <a href="/about/">About</a> · <a href="/privacy/">Privacy</a></p>
 <p>Website &amp; SEO by <a href="https://pageonesingapore.com/">Page One Singapore</a></p></footer></main>
-{actbar(slug(path) or "home")}{tab(active)}
+{"" if lean else actbar(slug(path) or "home")}{tab(active)}
 <div class="sheet" id="sheet" role="dialog" aria-modal="true" aria-label="Your walk-in code"><div class="in">
 <div class="h1" style="font-size:20px">Your $20 walk-in code</div><div class="code">BR-0000</div>
 <p><b id="sh-b"></b></p><p class="sub">Show this code at <b id="sh-o"></b> ({HOURS_WALK}). Walk-in only, one code per battery. Take a screenshot.</p>
@@ -287,20 +287,28 @@ PRICE_NOTE = f'<p class="note">*Walk-in price at any Motoserv outlet with the $2
 TOP = ["NS40ZL","NS60L","85D23L","100D26L","DIN45L","EFB-Q85L"]
 home_faq = [
  ("How much is a car battery replacement in Singapore?", f"At Battery Rescue SG a Delkor NS40ZL (most small Japanese cars) is {m(walk('NS40ZL'))} walk-in at a Motoserv outlet with the website code, {m(day('NS40ZL'))} fitted at your location before 10pm, and {m(night('NS40ZL'))} at night or on public holidays. Prices include the battery, fitting and GST."),
- ("Can you come to me if my car won't start?", f"Yes, in {AREA_TXT}. Call the 24-hour hotline {HOT} or WhatsApp us your location and car model. We bring the right Delkor battery and fit it where your car is. Elsewhere, walk in to any Motoserv outlet."),
+ ("Can you come to me if my car won't start?", f"Yes, islandwide, and fastest in the North and North-East ({AREA_TXT}). Call the 24-hour hotline {HOT} or WhatsApp us your location and car model. We bring the right Delkor battery and fit it where your car is."),
  ("Which battery brand do you fit?", 'Delkor, a Korean battery brand made by Clarios Delkor. Every battery comes with a 1-year warranty. <a href="/delkor/">More about Delkor</a>.'),
  ("Where can I walk in?", f'At any of 10 Motoserv outlets, {HOURS_WALK}. Get the $20 code on this page first. <a href="/outlets/">See all outlets</a>.'),
 ]
+HERO_SIREN = '<svg class="siren" viewBox="0 0 48 48" aria-hidden="true"><g class="beam"><path d="M24 22 2 8v28z" fill="#fff" opacity=".35"/><path d="M24 22 46 8v28z" fill="#fff" opacity=".35"/></g><rect x="10" y="36" width="28" height="6" rx="2" fill="#fff"/><path d="M14 36v-9a10 10 0 0 1 20 0v9z" fill="#ffd34d"/><path d="M19 27a5 5 0 0 1 5-5" stroke="#fff" stroke-width="2.5" stroke-linecap="round" fill="none"/></svg>'
+HERO_TICK = '<svg class="tick" viewBox="0 0 48 48" aria-hidden="true"><circle cx="24" cy="24" r="20" fill="#1faa53"/><path d="m15 24.5 6.5 6.5L34 18" stroke="#fff" stroke-width="4.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/></svg>'
+# Homepage hero redesign, approved by Edwin 6 Nov 2026 ("This is good"): two choice cards, trust strip, WhatsApp first.
 home = f"""<div id="app">
-<div class="segw"><div class="seg" role="tablist"><button class="sos" data-mode="stuck" role="tab" aria-selected="true">🚨 I'm stuck now</button><button data-mode="compare" role="tab" aria-selected="false">💲 Compare prices</button></div></div>
 <section data-panel="stuck" class="stk">
- <div class="card"><h1 class="h1">Car won't start? We come to you.</h1><p class="sub" style="font-weight:700;color:var(--ink)">Onsite car battery replacement in Singapore</p><p class="sub">Delkor battery fitted where your car is. Hotline open 24 hours. From <b>{m(day('NS40ZL'))}</b> fitted, GST included.</p>
- <p class="note" style="margin-top:6px">📍 We come to: <b>{AREA_TXT}</b>.</p>
- <a class="big c" href="tel:{TEL}" data-ref="stuck">{I["phone"]}<span class="t">Call {HOT}<small>Fastest. We answer 24 hours.</small></span></a>
+ <div class="hero"><h1 class="h1"><span class="kick">Onsite car battery replacement · Singapore</span>What's happening with your car?</h1>
+ <div class="pick">
+  <a class="pk red" href="#help" data-ref="hero-stuck">{HERO_SIREN}<b>My car won't start</b><span>We come to you, 24 hours ›</span></a>
+  <a class="pk grn" href="/#compare" data-ref="hero-compare">{HERO_TICK}<b>My car can start</b><span>See prices &amp; outlets ›</span></a>
+ </div>
+ <div class="trio"><div>{I["tag"]}<b>Fixed prices</b><span>No kena chop</span></div><div>{I["pin"]}<b>Send location</b><span>Get ETA</span></div><div>{I["shield"]}<b>By Motoserv</b><span>Outlets + warranty</span></div></div>
+ <p class="where">📍 <b>Islandwide</b> · Fastest in the North &amp; North-East · From <b>{m(day('NS40ZL'))}</b> fitted <a href="/#compare">Check my car price ›</a></p>
+ <div id="help">
  <a class="big w wa-dyn wa-loc" href="https://wa.me/{WA}" data-ref="stuck">{I["wa"]}<span class="t">WhatsApp + send my location<small>We get your car's exact spot</small></span></a>
+ <a class="big cl" href="tel:{TEL}" data-ref="stuck">{I["phone"]}<span class="t">Call {HOT}<small>Open 24 hours</small></span></a>
+ </div>
  <div class="enq" id="s-out" hidden></div>
- <div class="chips"><span class="chip">Delkor battery</span><span class="chip">1-year warranty</span><span class="chip">GST included</span><span class="chip">CaseTrust group</span></div>
- <p class="note" style="margin-top:10px"><a href="{GBP}" target="_blank" rel="noopener" data-ref="gbp-home" style="color:inherit;text-decoration:none"><span style="color:#f5a400">★★★★★</span> <b>5-star rating on Google</b> · <u>See our reviews</u></a></p></div>
+ <p class="note" style="margin-top:12px;text-align:center"><a href="{GBP}" target="_blank" rel="noopener" data-ref="gbp-home" style="color:inherit;text-decoration:none"><span style="color:#f5a400">★★★★★</span> <b>5-star rating on Google</b> · <u>See our reviews</u></a></p></div>
  <div class="card"><label class="l" for="s-in">Optional: your car, for the price</label>
  <div class="field carbox" id="s-car"><input id="s-in" type="search" placeholder="e.g. Honda Vezel, Altis" autocomplete="off" enterkeyhint="search"><button class="x" type="button" aria-label="Clear">×</button><ul class="sug"></ul></div>
  <div class="res" id="s-res" aria-live="polite"></div>
@@ -309,6 +317,7 @@ home = f"""<div id="app">
 </section>
 <section data-panel="compare" hidden>
  <div class="cmp"><div>
+ <a class="back" href="/">‹ Car won't start? Get help</a>
  <div class="card"><h2 class="h1" style="font-size:22px">Your car's battery and price</h2><p class="sub">Type your car. See the Delkor battery and all 3 prices.</p>
  <label class="l" for="c-in">Your car</label>
  <div class="field carbox" id="c-car"><input id="c-in" type="search" placeholder="e.g. Toyota Corolla Altis 2015" autocomplete="off" enterkeyhint="search"><button class="x" type="button" aria-label="Clear">×</button><ul class="sug"></ul></div>
@@ -327,10 +336,11 @@ home = f"""<div id="app">
 <p><a href="/car-battery/">All car brands →</a></p></section>
 <section class="sec rv"><h2>How it works</h2><ol><li><b>Call or WhatsApp</b> with your car model and location.</li><li><b>We bring the matching Delkor battery</b> and fit it where your car is, or you walk in to a Motoserv outlet.</li><li><b>Pay the price you saw here.</b> GST included, 1-year warranty, old battery taken away.</li></ol>
 <div class="trust">{I["shield"]}<div><b>Why Delkor?</b><br>Korean-made by Clarios Delkor. Every battery we fit is Delkor, with a 1-year warranty. <a href="/delkor/">About Delkor and its quality award</a></div></div></section>
-<section class="sec rv"><h2>Questions</h2>{faq_html(home_faq)}</section>"""
+<section class="sec rv"><h2>Questions</h2>{faq_html(home_faq)}</section>
+<section class="sec rv areas"><h2>Fastest response areas</h2><p>We cover all of Singapore. Our fastest response is in the North and North-East: {", ".join(f'<a href="/rescue/{slug(a)}/">{esc(a)}</a>' for a,_,_ in AREAS)}.</p></section>"""
 page("/", "Onsite Car Battery Replacement Singapore | Battery Rescue SG",
      f"Car won't start? Delkor battery fitted at your location, 24-hour hotline {HOT}, or walk in to 10 Motoserv outlets with $20 off.",
-     home, [faq_ld(home_faq)], "Rescue", prio="1.0")
+     home, [faq_ld(home_faq)], "Rescue", prio="1.0", lean=True)
 
 # ================= PRICES =================
 allk = [k for k, *_ in PRICES]

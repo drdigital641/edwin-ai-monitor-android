@@ -4,15 +4,18 @@ var D=window.BR||{},$=function(s,r){return(r||document).querySelector(s)},$$=fun
 var WA=D.wa||'6581259169',SITE='battery-rescue',HOST=location.hostname.replace(/^www\./,'');
 /* ---------- tap counter (Page One Controller "track"; live domain only) ---------- */
 var last={};
+/* Test mode (5 Nov 2026): open any page with ?p1test=1 and every tap in that browser tab is stored as a test (flag 'test'), so QA never counts in Edwin's numbers. */
+var P1T=(function(){var q=/[?&]p1test=1(&|$)/.test(location.search);try{if(q)sessionStorage.setItem('p1test','1');return sessionStorage.getItem('p1test')==='1'}catch(e){return q}})();
 function sid(){try{var k='p1cta_sid',v=sessionStorage.getItem(k);if(!v){v=Math.random().toString(36).slice(2)+Date.now().toString(36);sessionStorage.setItem(k,v)}return v}catch(e){return'na'}}
 function trk(type,ref){var n=Date.now();if(last[type]&&n-last[type]<1500)return;last[type]=n;
  if(HOST!==D.domain)return;
  try{fetch('https://base44.app/api/apps/6ac7f2548a9c3877449e2772/functions/track',{method:'POST',credentials:'omit',keepalive:true,headers:{'Content-Type':'application/json'},
  body:JSON.stringify({entity:'CtaClick',site:SITE,cta_type:type,enquiry_ref:String(ref||'').slice(0,40),session_id:sid(),page_path:location.pathname.slice(0,200),
- device_type:/Mobi|Android|iPhone/i.test(navigator.userAgent)?'mobile':'desktop',referrer:(document.referrer||'').slice(0,200)})}).catch(function(){})}catch(e){}}
+ device_type:/Mobi|Android|iPhone/i.test(navigator.userAgent)?'mobile':'desktop',referrer:(document.referrer||'').slice(0,200),test:P1T?1:undefined})}).catch(function(){})}catch(e){}}
 window.brTrk=trk;
 document.addEventListener('click',function(e){var a=e.target.closest&&e.target.closest('a[href]');if(!a)return;var h=a.getAttribute('href')||'';
- if(/^tel:/i.test(h))trk('call',a.getAttribute('data-ref')||'');else if(/wa\.me|whatsapp/i.test(h))trk('whatsapp',a.getAttribute('data-ref')||'')},true);
+ var ref=a.getAttribute('data-ref')||(a.closest('tr')?'price-table':'');
+ if(/^tel:/i.test(h))trk('call',ref);else if(/wa\.me|whatsapp/i.test(h))trk('whatsapp',ref);else if(/^mailto:/i.test(h))trk('email',ref)},true);
 /* ---------- helpers ---------- */
 function km(a,b){return km_(a,b)}
 function money(x){return'$'+x.toFixed(2)}
@@ -30,7 +33,7 @@ function setMode(m){$$('.seg button').forEach(function(b){b.setAttribute('aria-s
  try{history.replaceState(null,'',m==='compare'?'#compare':location.pathname)}catch(e){}}
 $$('.seg button').forEach(function(b){b.addEventListener('click',function(){setMode(b.dataset.mode)})});
 if(app)setMode(location.hash==='#compare'?'compare':'stuck');
-window.addEventListener('hashchange',function(){if(!app)return;setMode(location.hash==='#compare'?'compare':'stuck');scrollTo(0,0)});
+window.addEventListener('hashchange',function(){if(!app)return;var h=location.hash;setMode(h==='#compare'?'compare':'stuck');if(h==='#help'){var x=$('#help');if(x){x.scrollIntoView({behavior:'smooth',block:'center'});x.classList.remove('flash');void x.offsetWidth;x.classList.add('flash')}}else scrollTo(0,0)});
 $$('.tabs a').forEach(function(a){a.addEventListener('click',function(){if(a.pathname===location.pathname&&!a.hash){setMode('stuck')}})});
 /* ---------- car search ---------- */
 var FIT=D.fit||[],P=D.price||{};
@@ -70,7 +73,7 @@ $$('.wa-loc').forEach(function(a){a.addEventListener('click',function(e){if(a.da
  if(lbl)lbl.innerHTML='Getting your location…';
  function go(loc){if(done)return;done=true;if(lbl)lbl.innerHTML=old;trk('whatsapp',(cur&&cur.b.k||'rescue')+(loc?'|gps':''));location.href=waLink(waMsg(loc))}
  navigator.geolocation.getCurrentPosition(function(p){var la=p.coords.latitude,lo=p.coords.longitude,loc='https://maps.google.com/?q='+la.toFixed(5)+','+lo.toFixed(5),box=$('#s-out');
-  if(!inArea(la,lo)&&box){done=true;if(lbl)lbl.innerHTML=old;var o=nearestOut(la,lo);trk('out_of_area','');
+  if(!inArea(la,lo))trk('out_of_area','');if(false){done=true;if(lbl)lbl.innerHTML=old;var o=nearestOut(la,lo);trk('out_of_area','');
    box.innerHTML='<b>You seem to be outside our rescue area</b> ('+esc(D.areaTxt)+'). Call us to check, or walk in to the nearest outlet: <b>'+esc(o.name)+'</b>, '+esc(o.addr)+' (~'+km([la,lo],[o.lat,o.lng]).toFixed(1)+' km).<div class="row" style="display:flex;gap:8px;margin-top:10px"><a class="btn o" href="'+waLink(waMsg(loc))+'">WhatsApp anyway</a><a class="btn o" href="https://www.google.com/maps/search/?api=1&query='+encodeURIComponent(o.map)+'" target="_blank" rel="noopener">Map to outlet</a></div>';box.hidden=false;box.scrollIntoView({behavior:'smooth',block:'center'});return}
   go(loc)},function(){go('')},{enableHighAccuracy:true,timeout:7000,maximumAge:60000});
  setTimeout(function(){go('')},9000)})});
