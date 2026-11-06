@@ -72,6 +72,8 @@ def run(a, key):
     g, seen = load(); reg = R.load(); q = B.jload('candidate_queue.json', []); inq = {c['place_id'] for c in q}
     u, ut = B.usage_today(); ut.setdefault('sweep_calls', 0); ut.setdefault('free_id_calls', 0)
     score = priority(g); today = dt.date.today().isoformat()
+    if ut['sweep_calls'] or ut.get('text_search'): sys.exit('STOP: a paid Places sweep already ran this Google day (one per day, zero-spend rule, Edwin 6 Nov 2026).')
+    a.max_paid = min(a.max_paid, B.NIGHT_SWEEP_MAX_PAID)
     st = {'free_calls': 0, 'paid_calls': 0, 'squares_done': 0, 'squares_split': 0, 'listings_seen': 0, 'new_ids': 0, 'queued': [], 'landline_or_none': 0, 'other': 0}
     known = lambda pid: pid in seen or pid in inq or R.match(reg, pid)[0] is not None
     todo = sorted([c for c in g if due(g[c], a.recheck_days)], key=lambda c: (-score(c), c))

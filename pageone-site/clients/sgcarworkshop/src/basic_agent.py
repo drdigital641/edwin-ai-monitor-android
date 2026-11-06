@@ -54,7 +54,45 @@ def usage_today():
     return u, u.setdefault(TODAY, {'text_search': 0, 'details': 0})
 
 
+# ZERO EXTRA SPEND (Edwin, 6 Nov 2026 8:24am SGT): stay inside Google's free monthly caps (about 1000 per billable SKU), target $0 on
+# Cloud Billing. Soft ceiling 800 calls per billable SKU per month: Text Search Enterprise (paid searches) and Place Details
+# Enterprise + Atmosphere. IDs-only Text Search (Essentials) is free and not counted. Nightly caps: grid sweep --max-paid 20,
+# enrich-queue --limit 22 in Nov 2026 and 25 from Dec, HARD_CAP 100 Details a day; one Places-heavy sweep per Google day.
+# Never raise these caps, never enable paid overage or buy quota without Edwin's own-words OK via Website Manager.
+MONTHLY_SOFT_CAP = 800
+NIGHT_SWEEP_MAX_PAID = 20
+_RUN = {'text': 0, 'details': 0}   # calls made in this process (usage.json is saved at the end of a run)
+
+
+def night_card_limit():
+    return 22 if TODAY < '2026-12-01' else 25
+
+
+def month_totals(month=None):
+    """Month-to-date billable calls from data/usage.json (keys are Google days, 09:00 UTC windows), plus this run's calls."""
+    month = month or TODAY[:7]; u = jload('usage.json', {})
+    t = {'text': 0, 'details': 0, 'free_ids': 0}
+    for k, v in u.items():
+        if k.startswith(month):
+            t['text'] += v.get('text_search', 0) + v.get('sweep_calls', 0); t['details'] += v.get('details', 0); t['free_ids'] += v.get('free_id_calls', 0)
+    t['text'] += _RUN['text']; t['details'] += _RUN['details']
+    return t
+
+
+def _sku(url, mask, body):
+    if url.endswith('places:searchText'):
+        return None if set(mask.split(',')) <= {'places.id', 'nextPageToken'} else 'text'
+    return 'details'
+
+
 def gcall(url, key, mask, body=None):
+    sku = _sku(url, mask, body)
+    if sku:
+        mtd = month_totals()[sku]
+        if mtd >= MONTHLY_SOFT_CAP:
+            sys.exit('STOP (zero-spend rule, Edwin 6 Nov 2026): %s month-to-date is %d, at the %d soft ceiling. All Places calls paused; report to Edwin.' % (
+                {'text': 'Text Search Enterprise', 'details': 'Place Details Enterprise + Atmosphere'}[sku], mtd, MONTHLY_SOFT_CAP))
+        _RUN[sku] += 1
     req = urllib.request.Request(url, data=json.dumps(body).encode() if body else None, method='POST' if body else 'GET',
                                  headers={'X-Goog-Api-Key': key, 'X-Goog-FieldMask': mask, 'Content-Type': 'application/json'})
     with urllib.request.urlopen(req, timeout=30) as r:
@@ -200,7 +238,7 @@ def screen(a, key):
     print(json.dumps({'results': out, 'details_calls_today': ut['details']}, indent=1))
 
 
-HARD_CAP = int(os.environ.get('SGCW_HARD_CAP', '100'))   # project Place Details quota per day; Edwin raised 30 to 100 on 3 Nov 2026
+HARD_CAP = min(int(os.environ.get('SGCW_HARD_CAP', '100')), 100)   # never above 100 (Edwin 6 Nov 2026); Place Details quota per day; Edwin raised 30 to 100 on 3 Nov 2026
 PA_BY_ESTATE = {'kaki-bukit': 'Bedok', 'ubi': 'Geylang', 'eunos': 'Geylang', 'bedok-north': 'Bedok', 'woodlands': 'Woodlands', 'kranji': 'Sungei Kadut',
                 'yishun': 'Yishun', 'ang-mo-kio': 'Ang Mo Kio', 'serangoon-north': 'Serangoon', 'defu-hougang': 'Hougang', 'sengkang': 'Sengkang',
                 'sin-ming-bishan': 'Bishan', 'toa-payoh': 'Toa Payoh', 'macpherson': 'Geylang', 'alexandra-bukit-merah': 'Bukit Merah',
@@ -367,6 +405,9 @@ def enrich_queue(a, key):
     global DATA_MOD
     import data as DATA_MOD
     reg = R.load(); q = jload('candidate_queue.json', []); u, ut = usage_today(); keep = []; out = []; done = 0
+    if a.limit > night_card_limit(): print('limit capped at %d (zero-spend rule, Edwin 6 Nov 2026)' % night_card_limit()); a.limit = night_card_limit()
+    if ut['details'] >= night_card_limit(): sys.exit('STOP: %d Details calls already this Google day; nightly card cap is %d (zero-spend rule).' % (ut['details'], night_card_limit()))
+    a.limit = min(a.limit, night_card_limit() - ut['details'])
     os.makedirs(a.raw_dir, exist_ok=True); cd = os.path.join(DATA, 'google_cache'); os.makedirs(cd, exist_ok=True)
     for c in q:
         if done >= a.limit or ut['details'] >= HARD_CAP: keep.append(c); continue
@@ -414,6 +455,8 @@ def sweep(a, key):
     OPERATIONAL listings with a +65 8/9 mobile and at least one rating that are not already in the registry or queue."""
     import areas, registry as R
     reg = R.load(); q = jload('candidate_queue.json', []); have = {c['place_id'] for c in q}; u, ut = usage_today(); ut.setdefault('sweep_calls', 0)
+    if ut['sweep_calls'] or ut.get('text_search'): sys.exit('STOP: a Places sweep already ran this Google day (one per day, zero-spend rule).')
+    a.max_calls = min(a.max_calls, NIGHT_SWEEP_MAX_PAID)
     mask = 'places.id,places.displayName,places.internationalPhoneNumber,places.primaryType,places.rating,places.userRatingCount,places.formattedAddress,places.businessStatus,nextPageToken'
     stats = {'calls': 0, 'seen': 0, 'queued': [], 'landline_or_none': 0, 'known': 0, 'other': 0}
     for town in a.towns.split(','):
@@ -455,10 +498,12 @@ def main():
         x = sub.add_parser(c); x.add_argument('--max-places', type=int, default=25); x.add_argument('--refresh', action='store_true')
     qa = sub.add_parser('queue-add'); qa.add_argument('--json', required=True, help='JSON list of {name,address,postal,mobile}')
     sw = sub.add_parser('sweep'); sw.add_argument('--towns', required=True); sw.add_argument('--pages', type=int, default=3); sw.add_argument('--max-calls', type=int, default=6); sw.add_argument('--radius', type=int, default=2500)
+    sub.add_parser('usage');
     eq = sub.add_parser('enrich-queue'); eq.add_argument('--limit', type=int, default=10); eq.add_argument('--raw-dir', required=True)
     en = sub.add_parser('enrich'); en.add_argument('--slugs', required=True); en.add_argument('--raw-dir', required=True)
     a = ap.parse_args()
     a.__dict__['place_id'] = a.__dict__.get('place_id'); a.__dict__['planning_area'] = a.__dict__.get('planning_area')
+    if a.cmd == 'usage': t = month_totals(); print(json.dumps({'month': TODAY[:7], 'text_search_enterprise': t['text'], 'place_details_enterprise_atmosphere': t['details'], 'ids_only_free': t['free_ids'], 'soft_cap_per_sku': MONTHLY_SOFT_CAP, 'night_card_limit': night_card_limit()}, indent=1)); return
     if a.cmd in ('discover', 'stage', 'screen', 'resume', 'daily'): sys.exit('Retired 3 Nov 2026 (rigid database rules): the workshop data holds only confirmed-mobile records. Candidates go in data/candidate_queue.json (queue-add) and are confirmed by enrich-queue at build time.')
     key = os.environ.get('PLACES_SERVER_KEY')
     if a.cmd in ('discover', 'screen', 'resume', 'closed', 'daily', 'enrich', 'queue-add', 'enrich-queue', 'sweep') and not key: sys.exit('Set PLACES_SERVER_KEY in the environment (server key, Places API New only).')
