@@ -33,7 +33,9 @@ function setMode(m){$$('.seg button').forEach(function(b){b.setAttribute('aria-s
  try{history.replaceState(null,'',m==='compare'?'#compare':location.pathname)}catch(e){}}
 $$('.seg button').forEach(function(b){b.addEventListener('click',function(){setMode(b.dataset.mode)})});
 if(app)setMode(location.hash==='#compare'?'compare':'stuck');
-window.addEventListener('hashchange',function(){if(!app)return;var h=location.hash;setMode(h==='#compare'?'compare':'stuck');if(h==='#help'){var x=$('#help');if(x){x.scrollIntoView({behavior:'smooth',block:'center'});x.classList.remove('flash');void x.offsetWidth;x.classList.add('flash')}}else scrollTo(0,0)});
+function goPrice(){var c=$('#car-price');if(!c)return;c.scrollIntoView({behavior:'smooth',block:'center'});var i=$('#s-in');if(i)setTimeout(function(){try{i.focus({preventScroll:true})}catch(e){i.focus()}},350);c.classList.remove('flash');void c.offsetWidth;c.classList.add('flash')}
+document.addEventListener('click',function(e){var a=e.target.closest&&e.target.closest('a[href="#car-price"]');if(a&&location.hash==='#car-price'){e.preventDefault();goPrice()}});
+window.addEventListener('hashchange',function(){if(!app)return;var h=location.hash;setMode(h==='#compare'?'compare':'stuck');if(h==='#car-price'){goPrice()}else if(h==='#help'){var x=$('#help');if(x){x.scrollIntoView({behavior:'smooth',block:'center'});x.classList.remove('flash');void x.offsetWidth;x.classList.add('flash')}}else scrollTo(0,0)});
 $$('.tabs a').forEach(function(a){a.addEventListener('click',function(){if(a.pathname===location.pathname&&!a.hash){setMode('stuck')}})});
 /* ---------- car search ---------- */
 var FIT=D.fit||[],P=D.price||{};
