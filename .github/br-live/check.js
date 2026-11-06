@@ -22,6 +22,17 @@ await p.click('#help a[href^="tel:"]');await p.waitForTimeout(900);log('track be
 await p.click('.pk.red');await p.waitForTimeout(1000);log('after red tap, help in view: '+await p.evaluate(()=>{const r=document.querySelector('#help').getBoundingClientRect();return r.top>=0&&r.top<innerHeight}));
 await p.click('.pk.grn');await p.waitForTimeout(800);log('after green tap, compare visible: '+await p.evaluate(()=>{const c=document.querySelector('[data-panel=compare]');return c&&!c.hidden})+' hash '+await p.evaluate(()=>location.hash));
 await p.screenshot({path:'shots/live-390-compare.png'});
+await p.goto('https://batteryrescue.sg/?p1test=1&v=2'+Date.now(),{waitUntil:'networkidle'});await p.waitForTimeout(800);
+log('price link href: '+await p.getAttribute('.where a','href'));
+await p.click('.where a');await p.waitForTimeout(1300);
+log('after price link tap: box in view '+await p.evaluate(()=>{const r=document.querySelector('#car-price').getBoundingClientRect();return r.top>=0&&r.bottom<=innerHeight})+', input focused '+await p.evaluate(()=>document.activeElement&&document.activeElement.id)+', compare hidden '+await p.evaluate(()=>document.querySelector('[data-panel=compare]').hidden));
+await p.screenshot({path:'shots/live-390-price-link.png'});
+const raw=await (await fetch('https://batteryrescue.sg/?raw='+Date.now())).text();
+log('raw HTML has H1 text: '+/<h1[^>]*>[\s\S]*What.s happening with your car\?<\/h1>/.test(raw)+', robots noindex: '+/noindex/i.test(raw)+', canonical: '+(raw.match(/rel="canonical" href="([^"]+)"/)||[])[1]);
+const types=[...raw.matchAll(/"@type":\s*"([A-Za-z]+)"/g)].map(x=>x[1]);log('schema types on home: '+[...new Set(types)].join(','));
+log('NAP on home: name '+raw.includes('Battery Rescue SG')+', tel +6581259169 '+raw.includes('+6581259169')+', 8125 9169 '+raw.includes('8125 9169'));
+for(const u of ['rescue/','articles/','llms.txt']){const t=await (await fetch('https://batteryrescue.sg/'+u+'?r='+Date.now())).text();log(u+' islandwide wording: '+/all of Singapore|anywhere in Singapore|All of Singapore/.test(t)+', old 2027 line gone: '+!/More areas coming in 2027/.test(t))}
+const hdr=await fetch('https://batteryrescue.sg/');log('X-Robots-Tag header: '+hdr.headers.get('x-robots-tag'));
 log('page errors: '+JSON.stringify(errs));
 const rm=await b.newPage({viewport:{width:390,height:844},reducedMotion:'reduce'});await rm.goto('https://batteryrescue.sg/');log('reduced-motion red card animation: '+await rm.evaluate(()=>getComputedStyle(document.querySelector('.pk.red')).animationName));
 const d=await b.newPage({viewport:{width:1280,height:800}});await d.goto('https://batteryrescue.sg/');await d.waitForTimeout(800);await d.screenshot({path:'shots/live-desktop.png'});
