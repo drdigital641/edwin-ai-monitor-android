@@ -64,8 +64,19 @@ NIGHT_SWEEP_MAX_PAID = 20
 _RUN = {'text': 0, 'details': 0}   # calls made in this process (usage.json is saved at the end of a run)
 
 
+# One-night raises, only on Edwin's own words, keyed by Google day. 6 Nov 2026: "OK 40 cards tonight" (Text Search up to 36 that day, only as needed).
+NIGHT_OVERRIDES = {'2026-11-06': {'cards': 40, 'sweep_paid': 36}}
+
+
 def night_card_limit():
+    o = NIGHT_OVERRIDES.get(TODAY)
+    if o: return o['cards']
     return 22 if TODAY < '2026-12-01' else 25
+
+
+def night_sweep_paid():
+    o = NIGHT_OVERRIDES.get(TODAY)
+    return o['sweep_paid'] if o else NIGHT_SWEEP_MAX_PAID
 
 
 def month_totals(month=None):
@@ -456,7 +467,7 @@ def sweep(a, key):
     import areas, registry as R
     reg = R.load(); q = jload('candidate_queue.json', []); have = {c['place_id'] for c in q}; u, ut = usage_today(); ut.setdefault('sweep_calls', 0)
     if ut['sweep_calls'] or ut.get('text_search'): sys.exit('STOP: a Places sweep already ran this Google day (one per day, zero-spend rule).')
-    a.max_calls = min(a.max_calls, NIGHT_SWEEP_MAX_PAID)
+    a.max_calls = min(a.max_calls, night_sweep_paid())
     mask = 'places.id,places.displayName,places.internationalPhoneNumber,places.primaryType,places.rating,places.userRatingCount,places.formattedAddress,places.businessStatus,nextPageToken'
     stats = {'calls': 0, 'seen': 0, 'queued': [], 'landline_or_none': 0, 'known': 0, 'other': 0}
     for town in a.towns.split(','):
