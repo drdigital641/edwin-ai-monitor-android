@@ -1,19 +1,19 @@
 #!/usr/bin/env bash
-# Read-only header check: preview URLs must send X-Robots-Tag noindex; live client domains must send none.
+# Read-only live content checks (6 Nov 2026): reviewer initials, shortened quote, privacy footer links.
 UA="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130.0 Safari/537.36"
-echo "##### robots.txt"; curl -s -A "$UA" -m 20 https://pageonesingapore.com/robots.txt | grep -ciE '^disallow: /preview/' | sed 's/^/preview disallow lines: /'
-echo "##### PREVIEW (expect noindex)"
-while read -r u; do [ -z "$u" ] && continue
-  h=$(curl -sI -A "$UA" -m 20 "$u" | tr -d '\r')
-  echo "$u | $(echo "$h" | head -1) | $(echo "$h" | grep -i '^x-robots-tag' || echo 'NO X-Robots-Tag') | $(echo "$h" | grep -i '^location' )"
-done < .github/secprobe/preview.txt
-echo "##### LIVE (expect no X-Robots-Tag, no meta noindex)"
-while read -r d; do [ -z "$d" ] && continue
-  for u in "https://$d/" "https://$d/robots.txt"; do
-    h=$(curl -sIL -A "$UA" -m 20 "$u" | tr -d '\r')
-    xr=$(echo "$h" | grep -i '^x-robots-tag' | tr '\n' ' ')
-    echo "$u | $(echo "$h" | grep '^HTTP' | tail -1) | ${xr:-no X-Robots-Tag}"
-  done
-  m=$(curl -sL -A "$UA" -m 20 "https://$d/" | grep -oiE '<meta[^>]+name="robots"[^>]*>' | head -1)
-  echo "   meta robots: ${m:-none}"
-done < .github/secprobe/live.txt
+get() { curl -sL -A "$UA" -m 30 -H 'Cache-Control: no-cache' "$1?nc=$RANDOM"; }
+cnt() { grep -o -- "$2" <<<"$1" | wc -l; }
+h=$(get https://www.sggarage.com/)
+echo "##### sggarage.com"
+for s in "Wahlin Lee" "Meyan Lim" "Nurhayati Rahmad" "Derrick Khoo" "Rui Yang Chia" "Chuan Kiat Low" "Tarlo Gill" "previous workshop" "half the price" "W. L." "M. L." "N. R." "D. K." "R. Y. C." "C. K. L." "T. G."; do echo "$s: $(cnt "$h" "$s")"; done
+echo "##### cleanicdetailing.com home"
+h=$(get https://www.cleanicdetailing.com/)
+for s in "Azura A." "Shafiq Thair" "Idris Talib" "A. A." "S. T." "I. T."; do echo "$s: $(cnt "$h" "$s")"; done
+echo "##### cleanicdetailing.com/about/"
+h=$(get https://www.cleanicdetailing.com/about/)
+for s in "Azura" "Grace Pang" "Benjamin Loo" '"A. A."' '"G. P."' '"B. L."'; do echo "$s: $(cnt "$h" "$s")"; done
+echo "##### sofacaresg.com privacy footer link"
+for p in / /faq.html /pricing.html /contact.html /articles.html /sofa-cleaning-singapore.html; do
+  h=$(get "https://sofacaresg.com$p"); echo "$p: privacy links $(cnt "$h" 'href="/privacy.html"')"; done
+echo "privacy.html: $(curl -s -o /dev/null -w '%{http_code}' -A "$UA" https://sofacaresg.com/privacy.html)"
+echo "sitemap: $(cnt "$(get https://sofacaresg.com/sitemap.xml)" 'privacy.html')"
