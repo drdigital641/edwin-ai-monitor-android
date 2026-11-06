@@ -383,7 +383,7 @@ def home():
         {'q': 'Can I bring my own parts?', 'a': 'Yes. Send us the part details first and we fit it for labour only.'},
     ]
     body = f'''<section class="lux-hero"><div class="lux-img">{img('real-bay', 'Mercedes-Benz and BMW in the ContiExpert by Volt Autocare bays, with an aircon service machine', eager=True, sizes='(max-width:820px) 100vw, 50vw')}
-<figure class="pip"><video class="pipv" src="/assets/video/find-us.mp4" poster="/assets/photos/poster-find-us.webp" muted loop playsinline autoplay preload="metadata" aria-label="Video: walking from the Shell station to the ContiExpert by Volt Autocare bays"></video>
+<figure class="pip"><video class="pipv" src="/assets/video/find-us-sm.mp4" poster="/assets/photos/poster-find-us.webp" muted loop playsinline autoplay preload="metadata" aria-label="Video: walking from the Shell station to the ContiExpert by Volt Autocare bays"></video>
 <button class="vsnd" type="button">&#9654; Sound</button><figcaption>Find us &middot; 0:31</figcaption></figure>
 <a class="shellpip" href="{MAPS}" target="_blank" rel="noopener" data-cta="maps">{img('real-shell', 'The Shell station at Newton Circus, 143 Bukit Timah Road, where ContiExpert by Volt Autocare is', sizes='240px')}<span>Look for this Shell &middot; Newton Circus</span></a></div>
 <div class="wrap lux-copy"><span class="eyebrow">ContiExpert by Volt Autocare &middot; Newton</span>
@@ -413,7 +413,7 @@ def home():
 <section class="sec5"><div class="wrap split rev"><div data-rv><span class="eyebrow">Starting prices</span><h2>Popular jobs</h2>
 <div class="prices">{prices}</div><p class="note">Confirm for your model on WhatsApp.</p></div>
 <div data-rv><span class="eyebrow">Hybrid &amp; EV</span><h2>Buying a used hybrid or EV?</h2><p>We check the battery&rsquo;s health with the Autel MS909EV before you pay, and clean hybrid battery fans.</p>
-<figure class="vcard"><video src="/assets/video/ev-ppi.mp4" poster="/assets/photos/poster-ev-ppi.webp" controls playsinline preload="none" aria-label="Video: ContiExpert by Volt Autocare EV and hybrid pre-purchase inspection"></video><figcaption>Our EV/hybrid PPI &middot; 1 min</figcaption></figure>
+<figure class="vcard"><video src="/assets/video/ev-ppi-sm.mp4" poster="/assets/photos/poster-ev-ppi.webp" controls playsinline preload="none" aria-label="Video: ContiExpert by Volt Autocare EV and hybrid pre-purchase inspection"></video><figcaption>Our EV/hybrid PPI &middot; 1 min</figcaption></figure>
 <p><a class="lnk" href="/services/hybrid-ev-servicing/">Hybrid and EV care &rarr;</a></p></div></div></section>
 
 <section class="sec5 grey"><div class="wrap split"><div data-rv><span class="eyebrow">Visit us</span><h2>Inside Shell, Newton Circus</h2>
@@ -589,7 +589,7 @@ def extras():
     shutil.move(os.path.join(OUT, 'assets', 'favicon.ico'), os.path.join(OUT, 'favicon.ico'))
     make_og()
     os.makedirs(os.path.join(OUT, 'assets', 'video'), exist_ok=True)  # self-hosted videos (no GitHub/jsDelivr media)
-    for v in ('find-us.mp4', 'ev-ppi.mp4'): shutil.copy(os.path.join(HERE, 'real', 'video-web', v), os.path.join(OUT, 'assets', 'video', v))
+    for v in ('find-us', 'ev-ppi'): shutil.copy(os.path.join(HERE, 'real', 'video-web', v + '.mp4'), os.path.join(OUT, 'assets', 'video', v + '-sm.mp4'))  # new names: the Bridge cannot overwrite the old >1 MB files
     with open(os.path.join(HERE, 'CONFIRM.md'), 'w') as f:
         f.write('# ContiExpert / Volt Autocare: facts to confirm before go-live (auto-written by build.py)\n\n' + ''.join('%d. %s\n' % (i + 1, x) for i, x in enumerate(CONFIRM)))
 
