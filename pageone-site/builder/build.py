@@ -27,7 +27,6 @@ NAV = [
     ("/clients/", "Clients"),
     ("/about/", "About"),
     ("/faq/", "FAQ"),
-    ("/directory-listing/", "Directory"),  # second plan, low prominence (1 Nov 2026)
 ]
 
 CHAT_ICON = '<svg viewBox="0 0 24 24" width="28" height="28" aria-hidden="true"><path fill="currentColor" d="M4 4h16a2 2 0 0 1 2 2v10a2 2 0 0 1-2 2H9l-5 4v-4a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2zm3 6.5a1.5 1.5 0 1 0 0 .01zm5 0a1.5 1.5 0 1 0 0 .01zm5 0a1.5 1.5 0 1 0 0 .01z"/></svg>'
@@ -1535,8 +1534,6 @@ exec(open(os.path.join(HERE, "ai_seo.py"), encoding="utf-8").read())
 exec(open(os.path.join(HERE, "ads_compare.py"), encoding="utf-8").read())
 # Lead generation repositioning (28 Oct 2026): /how-it-works/ and /lead-generation-singapore/.
 exec(open(os.path.join(HERE, "lead_gen.py"), encoding="utf-8").read())
-# Directory listing plan explainer (1 Nov 2026): /directory-listing/. The listing template is separate (directory_listing.py).
-exec(open(os.path.join(HERE, "directory.py"), encoding="utf-8").read())
 
 page("index.html",
      "Get Found, Get Enquiries: Affordable SEO Singapore from S$50",
