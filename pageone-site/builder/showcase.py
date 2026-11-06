@@ -150,7 +150,7 @@ LIVE_COUNT_WORD = ["zero", "one", "two", "three", "four", "five", "six", "seven"
 # Portfolio growth: live sites per launch month (cumulative) plus the signed-up sites still being built.
 GROWTH = [(m, sum(1 for c in SC["clients"] if c["launched"][:7] <= m)) for m in sorted({c["launched"][:7] for c in SC["clients"]})]
 BUILDING = int(SC.get("pipeline", {}).get("building", 0))
-GROWTH_AS_OF = date_long(SC.get("pipeline", {}).get("as_of", SC_UPDATED))
+GROWTH_AS_OF = date_long(max([SC.get("pipeline", {}).get("as_of", SC_UPDATED)] + [c["launched"] for c in SC["clients"] if len(c["launched"]) == 10]))
 GROWTH_LINE = (" · ".join(f"{month_long(m) if i == 0 else month_long(m).split()[0]}: {n} live" for i, (m, n) in enumerate(GROWTH))
                + (f", plus {BUILDING} more being built" if BUILDING else "") + f" (as of {GROWTH_AS_OF})")
 
@@ -172,6 +172,17 @@ NEWEST = sorted(SC["clients"], key=_launch_key, reverse=True)
 FIRST_LAUNCH = month_long(min(c["launched"][:7] for c in SC["clients"]))
 LATEST_MONTH = NEWEST[0]["launched"][:7]
 N_LATEST_MONTH = sum(1 for c in SC["clients"] if c["launched"][:7] == LATEST_MONTH)
+# Early in a month the newest month can hold only a launch or two; then the growth line counts
+# from the start of the previous month, so it never reads smaller than the month before.
+_py, _pm = int(LATEST_MONTH[:4]), int(LATEST_MONTH[5:7])
+PREV_MONTH = f"{_py - 1}-12" if _pm == 1 else f"{_py}-{_pm - 1:02d}"
+N_PREV_MONTH = sum(1 for c in SC["clients"] if c["launched"][:7] == PREV_MONTH)
+if N_LATEST_MONTH < N_PREV_MONTH:
+    SPAN_START = PREV_MONTH
+    N_SPAN = N_LATEST_MONTH + N_PREV_MONTH
+    SPAN_TEXT = f"have gone live since 1 {month_long(PREV_MONTH)}"
+else:
+    SPAN_START, N_SPAN, SPAN_TEXT = LATEST_MONTH, N_LATEST_MONTH, f"went live in {month_long(LATEST_MONTH)} alone"
 LIVE_N = len(SC["clients"])
 
 
@@ -196,7 +207,7 @@ def growing_lead():
     return (f"Page One Singapore is new, and we say so openly: the first website on our system went live in {FIRST_LAUNCH}. "
             f"As of {GROWTH_AS_OF}, {LIVE_N} client websites are live on their own domains"
             + (f", {BUILDING} more are being built for clients who have signed up" if BUILDING else "")
-            + f", and {N_LATEST_MONTH} of the live ones went live in {month_long(LATEST_MONTH)} alone.")
+            + f", and {N_SPAN} of the live ones {SPAN_TEXT}.")
 
 
 def newest_cards(n=3):
@@ -237,6 +248,7 @@ GROW_CSS = (".live-pill{background:rgba(22,163,74,.1)!important;color:#15803d!im
             ".launch-log li{display:grid;grid-template-columns:100px 1fr;gap:2px 14px;padding:10px 0;border-bottom:1px solid #e5eaf0}"
             ".launch-log time{grid-row:span 2;font-weight:700;color:var(--red-dark);font-size:.9rem;font-variant-numeric:tabular-nums}"
             ".launch-log a{font-weight:700;color:inherit}.launch-log span{color:var(--muted);font-size:.92rem}"
+            ".site-card h3 a{color:inherit;text-decoration:none}.site-card h3 a:hover{text-decoration:underline}"
             "@media (prefers-reduced-motion:reduce){.live-dot{animation:none}.js .grow:not(.in) .g i{transform:none}.grow .g i{transition:none}}")
 
 
@@ -262,6 +274,28 @@ def top3_examples(key, n=2):
     return " and ".join(f"&ldquo;{q['query']}&rdquo;" for q in qs)
 
 
+# Client card -> Page One industry page, so each case links to the matching "how we build it" page.
+INDUSTRY_PAGES = {
+    "sggarage": ("car-workshop", "car workshops"),
+    "jackygearbox": ("car-workshop", "car workshops"),
+    "cleanic": ("car-detailing", "car detailing"),
+    "klar-details": ("car-detailing", "car detailing"),
+    "new-zen-werkz": ("car-workshop", "car workshops"),
+    "contiexpert": ("car-workshop", "car workshops"),
+    "sofacare": ("cleaning-services", "cleaning services"),
+    "alicia": ("property-agent", "property agents"),
+    "rc-design-build": ("renovation-contractor", "renovation contractors"),
+}
+
+
+def sgcw_badge(c):
+    """Small badge linking an automotive client to its premium card on sgcarworkshop.sg."""
+    if not c.get("sgcw"):
+        return ""
+    return (f' <a class="pill" style="background:rgba(11,95,255,.1);color:#0b4fb3;text-decoration:none" '
+            f'href="https://sgcarworkshop.sg/workshops/{c["sgcw"]}/">Premium on SG Car Workshop</a>')
+
+
 def clients_page():
     cards = []
     for c in SC["clients"]:
@@ -271,11 +305,14 @@ def clients_page():
         links = f'<a class="card-link" href="{c["url"]}" target="_blank" rel="noopener">Visit {c["domain"]} ↗</a>'
         if c.get("case_study"):
             links += f' <a class="card-link" href="{c["case_study"]}">Read the case study →</a>'
+        ind = INDUSTRY_PAGES.get(k)
+        if ind:
+            links += f' <a class="card-link" href="/industries/{ind[0]}/">How we build websites for {ind[1]} →</a>'
         note = f'<p class="fine">{c["owner_note"]}</p>' if c.get("owner_note") else ""
         cards.append(f"""          <article class="card site-card reveal" id="{k}">
             <a class="browser" href="{c['url']}" target="_blank" rel="noopener"><span class="browser-bar"><i></i><i></i><i></i><span>{c['domain']}</span></span><img src="{c['img']}" width="640" height="400" alt="{c['name']} website homepage ({c['domain']})" loading="lazy" decoding="async"></a>
-            <p class="pill">{pill(k)}</p>
-            <h3>{c['name']}</h3><p><b>{c['industry']}</b></p>{note}
+            <p class="pill">{pill(k)}</p>{sgcw_badge(c)}
+            <h3><a href="{c['url']}" target="_blank" rel="noopener">{c['name']}</a></h3><p><b>{c['industry']}</b></p>{note}
             <p>{result_text(k, built_follows=True)}</p>
             <ul class="ticks">{built}{arts}</ul>
             {links}
@@ -287,10 +324,12 @@ def clients_page():
         ("How can it be good if it only costs S$50 a month?", "The price is low because a set of AI tools we designed does the daily SEO work that used to be billed by the hour, not because steps are skipped. The websites and numbers on this page are the proof, not a promise: results vary by business, and newer sites show smaller numbers."),
         ("Is Page One Singapore a new company?", f"Yes. Page One Singapore is run by Snap Commercial Pte. Ltd., a Singapore company registered in 2022, and the first website on our SEO system went live in {FIRST_LAUNCH}. As of {GROWTH_AS_OF}, {LIVE_N} client websites are live on their own domains" + (f" and {BUILDING} more are being built for clients who have signed up" if BUILDING else "") + ". We add each new one to this page the day it goes live, so you can watch the portfolio grow."),
         ("Why are some clients not named?", "A website being built is only counted, never named, until it is live on the business's own domain. That protects our clients' plans and means every name on this page is a website you can open and check."),
-        ("How often is this page updated?", "Every day. The Search Console figures are refreshed daily, and each new client website is added the day it goes live on its own domain. The date of the data is always shown."),
+        ("How can I tell a website was built by Page One Singapore?", "Most client websites carry a small &ldquo;Website &amp; SEO by Page One Singapore&rdquo; credit in their footer that links back to this site, and every one of them is listed on this page with its own domain. Each card above links straight to the live website, so you can check both ways."),
+        ("How often is this page updated?", "Each new client website is added the day it goes live on its own domain, and the Search Console figures are refreshed when new final data is collected. The date of the data is always shown next to the numbers."),
     ]
     sites_ld = [{"@type": "ListItem", "position": i + 1,
-                 "item": dict({"@type": "WebSite", "name": c["name"], "url": c["url"], "description": c["industry"]},
+                 "item": dict({"@type": "WebSite", "@id": c["url"] + "#website", "name": c["name"], "url": c["url"],
+                               "description": c["industry"], "creator": PROVIDER, "maintainer": PROVIDER},
                               **({"dateCreated": c["launched"]} if len(c["launched"]) == 10 else {}))}
                 for i, c in enumerate(SC["clients"])]
     page("clients/index.html",
@@ -326,6 +365,7 @@ def clients_page():
       <div class="wrap">
         <p class="kicker reveal">Cheap can still be good</p>
         <h2 class="reveal">A low price, with the numbers to back it</h2>
+        <p class="reveal" style="margin:-4px 0 14px;font-weight:600">Eligible automotive clients also get a premium listing on <a class="link" href="https://sgcarworkshop.sg/">SG Car Workshop</a>, a directory of Singapore car workshops.</p>
         <p class="section-lead reveal">S$50 a month is low because a set of AI tools we designed does the daily SEO work that used to be billed by the hour, not because steps are skipped. Here is what the same system has done. Last 28 days (""" + WINDOW + """), compared with the 28 days before.</p>
         <div class="reveal">""" + kpis([
             ("Edwin Garage: clicks from Google", EG["clicks"], f"Up from {EG['prev_clicks']} · average position {EG['pos']}"),
@@ -396,11 +436,30 @@ def _kbar(a, b):
     return f'<div class="kbar" aria-hidden="true">{row(a[0], a[1], "was")}{row(b[0], b[1], "now")}</div>'
 
 
+def _result_cards():
+    """Homepage results: one card per client with a full case study (clicks, page-one searches, best searches)."""
+    out = []
+    for key in ("sggarage", "cleanic"):
+        c, f = SC_BY[key], G[key]
+        g = c["gsc"]
+        trend = f"up from {f['prev_clicks']}" if g["clicks"] > g["prev_clicks"] else f"compared with {f['prev_clicks']}"
+        ranks = sorted(g["top_queries"], key=lambda q: q["position"])[:3]
+        ranks_html = "".join(f'<li><span>{q["query"]}</span><b>#{q["position"]:.1f}</b></li>' for q in ranks)
+        out.append(
+            f'          <a class="card result-card reveal" href="{c.get("case_study", "/results/")}">'
+            f'<p class="pill">{c["industry"]}</p><h3>{c["name"]}</h3>'
+            f'<p class="rc-big"><b>{f["clicks"]}</b> clicks from Google in 28 days</p>'
+            f'<p class="rc-sub">{trend[0].upper() + trend[1:]} · on page one for {f["page_one"]} searches</p>'
+            f'<p class="rc-label">Where they rank (average Google position)</p><ul class="rc-ranks">{ranks_html}</ul>'
+            f'<span class="card-link">See the case study →</span></a>')
+    return "\n".join(out)
+
+
 HOME_TOKENS = {
     "{{PROOF_BOTH}}": PROOF_BOTH, "{{EG_PAGE_ONE}}": EG["page_one"], "{{EG_CLICKS}}": EG["clicks"], "{{EG_POS}}": EG["pos"], "{{EG_POS_FROM}}": (f' data-from="{EG["prev_pos"]}"' if float(EG["prev_pos"]) > float(EG["pos"]) else ""),
     "{{EG_LINK}}": f'<a class="link" href="{SC_BY["sggarage"]["url"]}" target="_blank" rel="noopener">Edwin Garage</a>',
     "{{CL_LINK}}": f'<a class="link" href="{SC_BY["cleanic"]["url"]}" target="_blank" rel="noopener">Cleanic Detailing</a>',
-    "{{THROUGH_SHORT}}": THROUGH_SHORT, "{{WINDOW}}": WINDOW, "{{PROOF_BARS}}": _proof_bars(), "{{MARQUEE}}": _marquee(),
+    "{{THROUGH_SHORT}}": THROUGH_SHORT, "{{WINDOW}}": WINDOW, "{{PROOF_BARS}}": _proof_bars(), "{{MARQUEE}}": _marquee(), "{{RESULT_CARDS}}": _result_cards(),
     "{{NEWEST}}": f"""    <section class="section newest" id="newest">
       <div class="wrap">
         <p class="kicker reveal">New clients, every week</p>
@@ -466,7 +525,7 @@ def llms_sections():
     new = [c for c in new if not G[c["key"]]["pre_site"]]
     if new:
         lines.append("- " + names_list([f"{c['name']} ({c['domain']})" for c in new]) + ": launched "
-                     + names_list(sorted({month_long(c["launched"]) for c in new}, key=lambda x: x)) + ", no Search Console data yet.")
+                     + names_list([month_long(m) for m in sorted({c["launched"][:7] for c in new})]) + ", no Search Console data yet.")
     lines += ["- Full case studies: https://pageonesingapore.com/results/",
               "- Every client website with its numbers: https://pageonesingapore.com/clients/",
               "- Low price, real results: S$50 a month is low because a set of AI tools we designed does the daily SEO work that used to be billed by the hour; "
@@ -477,8 +536,8 @@ def llms_sections():
              f"(live count: {growth})" + (f", and is building {BUILDING} more for clients who have signed up." if BUILDING else ".")] + [f"- [{c['name']}]({c['url']}): {c['industry']}" + (f" (live since {date_long(c['launched'])})" if len(c['launched']) == 10 else f" (launched {month_long(c['launched'])})" if stage(c['key']) == "new" else "")
                                       for c in SC["clients"]] + [
              f"- New and growing: Page One Singapore is a young company; the first website on its system went live in {FIRST_LAUNCH}. "
-             f"{N_LATEST_MONTH} client websites went live in {month_long(LATEST_MONTH)} alone, newest first: "
-             + "; ".join(f"{c['name']} ({c['domain']}, live {date_long(c['launched']) if len(c['launched']) == 10 else month_long(c['launched'])})" for c in NEWEST if c["launched"][:7] == LATEST_MONTH) + ".",
+             f"{N_SPAN} client websites {SPAN_TEXT}, newest first: "
+             + "; ".join(f"{c['name']} ({c['domain']}, live {date_long(c['launched']) if len(c['launched']) == 10 else month_long(c['launched'])})" for c in NEWEST if c["launched"][:7] >= SPAN_START) + ".",
              "- Signed-up clients whose websites are still being built are counted but not named until their own domain is live."] + ["- All client websites with screenshots and dated results: https://pageonesingapore.com/clients/"]
     out = os.path.join(HERE, "..", "bridge")
     os.makedirs(out, exist_ok=True)

@@ -133,7 +133,8 @@
           }
         ]
       },
-      "short": "car workshop"
+      "short": "car workshop",
+      "sgcw": "edwin-garage"
     },
     {
       "key": "cleanic",
@@ -249,7 +250,8 @@
           }
         ]
       },
-      "short": "car detailing"
+      "short": "car detailing",
+      "sgcw": "cleanic-detailing"
     },
     {
       "key": "sofacare",
@@ -466,7 +468,8 @@
         "best_query": null,
         "top_queries": []
       },
-      "short": "ABS and brake repair"
+      "short": "ABS and brake repair",
+      "sgcw": "the-ecu-clinic"
     },
     {
       "key": "jackygearbox",
@@ -513,7 +516,8 @@
         "best_query": null,
         "top_queries": []
       },
-      "short": "gearbox specialist"
+      "short": "gearbox specialist",
+      "sgcw": "jacky-gearbox"
     },
     {
       "key": "star-performance",
@@ -746,7 +750,8 @@
         "best_query": null,
         "top_queries": []
       },
-      "short": "car wraps and PPF"
+      "short": "car wraps and PPF",
+      "sgcw": "wrapstar-autostyle"
     },
     {
       "key": "cska-auto",
@@ -988,7 +993,8 @@
         "best_query": null,
         "top_queries": []
       },
-      "short": "car battery rescue"
+      "short": "car battery rescue",
+      "sgcw": "battery-rescue-sg"
     },
     {
       "key": "autotex",
@@ -1027,18 +1033,227 @@
         "best_query": null,
         "top_queries": []
       },
-      "short": "Kia and Hyundai parts"
+      "short": "Kia and Hyundai parts",
+      "sgcw": "autotex"
+    },
+    {
+      "key": "klar-details",
+      "name": "Klar Details",
+      "domain": "klardetails.com.sg",
+      "url": "https://klardetails.com.sg/",
+      "industry": "Premium car detailing and coating, Toh Guan, Singapore",
+      "schema_type": "AutoWash",
+      "img": "https://cdn.jsdelivr.net/gh/drdigital641/edwin-ai-monitor-android@1ad35a2d10daebf3c0f3437a110c6b035c48ee5d/site-assets/pageone/clients/klardetails.webp",
+      "gsc_site": "sc-domain:klardetails.com.sg",
+      "launched": "2026-11-01",
+      "brand_terms": [
+        "klar",
+        "klardetails",
+        "klar details"
+      ],
+      "skip_queries": [],
+      "built": [
+        "A page for each service: ceramic and graphene coating, paint correction, interior detailing and hand wash",
+        "Area pages for Jurong East, Jurong West, Clementi and Bukit Batok",
+        "Guides for car owners on coatings and car care"
+      ],
+      "articles": 20,
+      "gsc": {
+        "record_id": null,
+        "first_day": null,
+        "clicks": 0,
+        "impressions": 0,
+        "position": 0,
+        "prev_clicks": 0,
+        "prev_impressions": 0,
+        "prev_position": 0,
+        "queries": 0,
+        "page_one": 0,
+        "top3": 0,
+        "capped": false,
+        "monthly": [],
+        "best_query": null,
+        "top_queries": []
+      },
+      "short": "car detailing",
+      "sgcw": "klar-details"
+    },
+    {
+      "key": "ev-body-parts",
+      "name": "EV Body Parts",
+      "domain": "evbodyparts.sg",
+      "url": "https://evbodyparts.sg/",
+      "industry": "Body parts for China and EV cars, Singapore",
+      "schema_type": "AutoPartsStore",
+      "img": "https://cdn.jsdelivr.net/gh/drdigital641/edwin-ai-monitor-android@1ad35a2d10daebf3c0f3437a110c6b035c48ee5d/site-assets/pageone/clients/evbodyparts.webp",
+      "gsc_site": "sc-domain:evbodyparts.sg",
+      "launched": "2026-11-01",
+      "brand_terms": [
+        "ev body parts",
+        "evbodyparts"
+      ],
+      "skip_queries": [],
+      "built": [
+        "A parts catalogue for 16 China and EV car brands, searched by model and part",
+        "Pages for each car model and each part group, from lamps and bumpers to suspension",
+        "A WhatsApp quote for every part, for workshops and car owners"
+      ],
+      "articles": 3,
+      "gsc": {
+        "record_id": null,
+        "first_day": null,
+        "clicks": 0,
+        "impressions": 0,
+        "position": 0,
+        "prev_clicks": 0,
+        "prev_impressions": 0,
+        "prev_position": 0,
+        "queries": 0,
+        "page_one": 0,
+        "top3": 0,
+        "capped": false,
+        "monthly": [],
+        "best_query": null,
+        "top_queries": []
+      },
+      "short": "EV body parts",
+      "sgcw": "ev-body-parts"
+    },
+    {
+      "key": "xado",
+      "name": "XADO Singapore",
+      "domain": "xado-shop.sg",
+      "url": "https://xado-shop.sg/",
+      "industry": "Engine oil additive brand, sold through authorised workshops, Singapore",
+      "schema_type": "Organization",
+      "img": "https://cdn.jsdelivr.net/gh/drdigital641/edwin-ai-monitor-android@b6948ad8c8c7db29e2350aab152c451c7fdc6eda/site-assets/pageone/clients/xadoshop.webp",
+      "gsc_site": "sc-domain:xado-shop.sg",
+      "launched": "2026-11-04",
+      "brand_terms": [
+        "xado"
+      ],
+      "skip_queries": [],
+      "built": [
+        "Pages on how XADO Revitalizant works and a guide to each XADO product",
+        "A finder for the 11 authorised XADO workshops in Singapore, each with a WhatsApp button",
+        "A link to the XADO online shop on its own address, plus guides for Singapore drivers"
+      ],
+      "articles": 3,
+      "gsc": {
+        "record_id": null,
+        "first_day": null,
+        "clicks": 0,
+        "impressions": 0,
+        "position": 0,
+        "prev_clicks": 0,
+        "prev_impressions": 0,
+        "prev_position": 0,
+        "queries": 0,
+        "page_one": 0,
+        "top3": 0,
+        "capped": false,
+        "monthly": [],
+        "best_query": null,
+        "top_queries": []
+      },
+      "short": "XADO",
+      "sgcw": "xado-singapore"
+    },
+    {
+      "key": "contiexpert",
+      "name": "ContiExpert by Volt Autocare",
+      "domain": "contiexpert.sg",
+      "url": "https://contiexpert.sg/",
+      "industry": "Continental, hybrid and EV car workshop, Newton, Singapore",
+      "schema_type": "AutoRepair",
+      "img": "/images/clients/contiexpert.webp",
+      "gsc_site": "sc-domain:contiexpert.sg",
+      "launched": "2026-11-04",
+      "brand_terms": [
+        "contiexpert",
+        "conti expert",
+        "volt autocare"
+      ],
+      "skip_queries": [],
+      "gsc": {
+        "record_id": null,
+        "first_day": null,
+        "clicks": 0,
+        "impressions": 0,
+        "position": 0,
+        "prev_clicks": 0,
+        "prev_impressions": 0,
+        "prev_position": 0,
+        "queries": 0,
+        "page_one": 0,
+        "top3": 0,
+        "capped": false,
+        "monthly": [],
+        "best_query": null,
+        "top_queries": []
+      },
+      "built": [
+        "A page for each service, from European car servicing to hybrid and EV work and pre-purchase inspections",
+        "Pages for Mercedes-Benz, BMW and Audi or Volkswagen owners, plus an areas-we-serve page",
+        "Guides for continental car owners, with a WhatsApp button on every page"
+      ],
+      "articles": 8,
+      "short": "continental car repair",
+      "sgcw": "contiexpert-volt-autocare"
+    },
+    {
+      "key": "new-zen-werkz",
+      "name": "New Zen Werkz",
+      "domain": "newzenwerkz.com.sg",
+      "url": "https://newzenwerkz.com.sg/",
+      "industry": "Car workshop, Kaki Bukit, Singapore",
+      "schema_type": "AutoRepair",
+      "img": "/images/clients/newzenwerkz.webp",
+      "gsc_site": "sc-domain:newzenwerkz.com.sg",
+      "launched": "2026-11-06",
+      "brand_terms": [
+        "new zen werkz",
+        "zen werkz",
+        "newzenwerkz"
+      ],
+      "skip_queries": [],
+      "gsc": {
+        "record_id": null,
+        "first_day": null,
+        "clicks": 0,
+        "impressions": 0,
+        "position": 0,
+        "prev_clicks": 0,
+        "prev_impressions": 0,
+        "prev_position": 0,
+        "queries": 0,
+        "page_one": 0,
+        "top3": 0,
+        "capped": false,
+        "monthly": [],
+        "best_query": null,
+        "top_queries": []
+      },
+      "built": [
+        "A page for each service, from car servicing to engine and gearbox repair",
+        "Pages for the areas around Kaki Bukit, from Ubi and Bedok to Tampines",
+        "The whole site in English and Chinese, with WhatsApp and call buttons"
+      ],
+      "articles": 6,
+      "short": "car repair",
+      "sgcw": "new-zen-werkz"
     }
   ],
   "pipeline": {
     "_readme": "Websites being built for signed-up clients that are not live on their own domain yet. Shown only as a count (never named) next to the live count. Set by showcase_refresh.py from the Controller Client export (status activating or preview, not yet a live site here, slug not in exclude); as_of is the day the count last changed. Put Client slugs that are not signed-up clients (e.g. a demo preview) in exclude.",
-    "building": 4,
+    "building": 5,
     "as_of": "2026-11-01",
     "exclude": [
       "nanyang-carpentry",
       "new-zen-werkz",
-      "new-age-polish-paused-7q4k"
+      "new-age-polish-paused-7q4k",
+      "sgcarworkshop"
     ],
-    "_exclude_note": "Previews built to pitch a prospect, not signed-up clients. Remove a slug from exclude the day that business signs up. new-age-polish-paused-7q4k is a duplicate Controller row of new-age-polish (already counted)."
+    "_exclude_note": "Previews built to pitch a prospect, not signed-up clients. Remove a slug from exclude the day that business signs up. new-age-polish-paused-7q4k is a duplicate Controller row of new-age-polish (already counted). sgcarworkshop is Edwin's own directory project (1 Nov 2026), not a client."
   }
 }
