@@ -1,0 +1,23 @@
+name: Battery Rescue live check
+on:
+  push:
+    branches: [ "claude/battery-rescue-hero" ]
+    paths: [ ".github/br-live/*.js", ".github/br-live/*.py", ".github/workflows/br-live-check.yml" ]
+permissions:
+  contents: write
+jobs:
+  run:
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with: { node-version: 20 }
+      - run: npm i playwright@1.48.2 && npx playwright install --with-deps chromium
+      - run: node .github/br-live/check.js
+      - run: python3 .github/br-live/indexnow.py
+      - run: cat shots/result.txt
+      - name: Save results to branch
+        run: |
+          mkdir -p .github/br-live/out && cp shots/* .github/br-live/out/
+          git config user.name "github-actions[bot]"; git config user.email "41898+github-actions[bot]@users.noreply.github.com"
+          git add .github/br-live/out && git commit -m "Battery Rescue live check results" && git push
