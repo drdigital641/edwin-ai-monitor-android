@@ -1,0 +1,24 @@
+home status 200
+h1: Onsite car battery replacement · SingaporeWhat's happening with your car?
+phone pill: 0, sticky bar: 0, bottom nav links: 4
+cards: My car won't start We come to you, 24 hours › | My car can start See prices & outlets ›
+help buttons: big w wa-dyn wa-loc https://wa.me/6581259169?text=Hi%20Battery%20Rescue%2C%20my%20car%20battery%20is%20flat.%20Please%20help.%0A(Website%20source%3A%20https%3A%2F%2Fbatteryrescue.sg%2F) , big cl tel:+6581259169
+animations: spin/glow/hop
+track beacons after Call tap (test mode): 1
+after red tap, help in view: true
+after green tap, compare visible: true hash #compare
+page errors: []
+reduced-motion red card animation: none
+area woodlands 200
+area sembawang 200
+area yishun 200
+area ang-mo-kio 200
+area yio-chu-kang 200
+area hougang 200
+area sengkang 200
+area punggol 200
+rescue/ 200
+prices/ 200
+outlets/ 200
+sitemap.xml 200
+IndexNow ['https://batteryrescue.sg/']: 200
