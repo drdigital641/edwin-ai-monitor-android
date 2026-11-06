@@ -538,7 +538,8 @@ def llms_sections():
              f"- New and growing: Page One Singapore is a young company; the first website on its system went live in {FIRST_LAUNCH}. "
              f"{N_SPAN} client websites {SPAN_TEXT}, newest first: "
              + "; ".join(f"{c['name']} ({c['domain']}, live {date_long(c['launched']) if len(c['launched']) == 10 else month_long(c['launched'])})" for c in NEWEST if c["launched"][:7] >= SPAN_START) + ".",
-             "- Signed-up clients whose websites are still being built are counted but not named until their own domain is live."] + ["- All client websites with screenshots and dated results: https://pageonesingapore.com/clients/"]
+             "- Signed-up clients whose websites are still being built are counted but not named until their own domain is live."] + ["- All client websites with screenshots and dated results: https://pageonesingapore.com/clients/",
+             "- Eligible automotive clients also get a premium listing on SG Car Workshop, a directory of Singapore car workshops: https://sgcarworkshop.sg/"]
     out = os.path.join(HERE, "..", "bridge")
     os.makedirs(out, exist_ok=True)
     open(os.path.join(out, "llms-results.md"), "w", encoding="utf-8").write("\n".join(lines) + "\n")
