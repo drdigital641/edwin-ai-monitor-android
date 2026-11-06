@@ -70,8 +70,8 @@ ready(function(){
   // 6. stats band with count-up (home only, facts from records and Google)
   var svc=d.querySelector('section[aria-labelledby="h-svc"]');
   if(svc){var n=d.querySelectorAll('.scards .scard').length;
-    var band=d.createElement('section');band.className='stats';band.setAttribute('aria-label','Workshop at a glance');
-    band.innerHTML='<div class="wrap">'+[[2016,'At Eunos Technolink since','Blk 3 Kaki Bukit Road 1'],[n,'Workshop services','under one roof'],[13,'Years one customer has trusted Ah Mun','from a Google review'],[6,'Days a week','Mon to Sat']].map(function(s){return '<div class="stat"><b data-to="'+s[0]+'"'+(s[0]>1000?' data-from="1990"':'')+'>0</b><span>'+s[1]+'</span><small>'+s[2]+'</small></div>'}).join('')+'</div>';
+    var band=d.createElement('section');band.className='stats';band.setAttribute('aria-label',/^zh/.test(d.documentElement.lang)?'维修厂一览':'Workshop at a glance');
+    var zh=/^zh/.test(d.documentElement.lang);band.innerHTML='<div class="wrap">'+(zh?[[2016,'在 Eunos Technolink 营业始于','Blk 3 Kaki Bukit Road 1'],[n,'项维修服务','一站式办理'],[13,'年：一位顾客对 Ah Mun 的信任','来自 Google 评价'],[6,'天营业（每周）','周一至周六']]:[[2016,'At Eunos Technolink since','Blk 3 Kaki Bukit Road 1'],[n,'Workshop services','under one roof'],[13,'Years one customer has trusted Ah Mun','from a Google review'],[6,'Days a week','Mon to Sat']]).map(function(s){return '<div class="stat"><b data-to="'+s[0]+'"'+(s[0]>1000?' data-from="1990"':'')+'>0</b><span>'+s[1]+'</span><small>'+s[2]+'</small></div>'}).join('')+'</div>';
     svc.parentNode.insertBefore(band,svc.nextSibling);
     var io3=new IntersectionObserver(function(es){es.forEach(function(en){if(!en.isIntersecting)return;io3.disconnect();
       [].forEach.call(band.querySelectorAll('b'),function(b,i){var to=+b.dataset.to,fr=+(b.dataset.from||0),t0=null;

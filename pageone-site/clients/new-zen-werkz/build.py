@@ -132,8 +132,13 @@ def hours_html():
 def reviews_html(items):
     stars = '<span class="stars" aria-label="5 out of 5 stars">★★★★★</span>'
     return '<div class="reviews">%s</div>' % ''.join(
-        '<figure class="review">%s<blockquote>%s</blockquote><figcaption>%s%s · Google review</figcaption></figure>'
-        % (stars, E(q), E(n), (' · ' + E(t)) if t else '') for n, t, q in items)
+        '<figure class="review">%s<blockquote>%s</blockquote><figcaption><span>%s</span>%s · <a href="%s" target="_blank" rel="noopener">Google review</a></figcaption></figure>'
+        % (stars, E(q), E(initials(n)), (' · <span>%s</span>' % E(t)) if t else '', MAP) for n, t, q in items)
+
+
+def initials(name):
+    # Rule (Edwin, 5 Nov 2026): reviewer names as initials only, linked to the source reviews.
+    return ''.join(w[0].upper() + '.' for w in re.findall(r'[A-Za-z]+', name)) if ' ' in name else name[0].upper() + '.'
 
 
 def map_btn(label='Get directions', cls='btn btn-ghost'):
@@ -761,7 +766,7 @@ def render(path, p):
 <link rel="apple-touch-icon" href="{pre}apple-touch-icon.png">
 <link rel="manifest" href="{pre}site.webmanifest">
 <link rel="stylesheet" href="{pre}nzw.css?v=8">
-{INTRO if path == '' and not p.get('is404') else ''}<script src="{pre}nzw.js?v=6" defer></script>
+{INTRO if path == '' and not p.get('is404') else ''}<script src="{pre}nzw.js?v=7" defer></script>
 <script type="application/ld+json">{ld}</script>
 </head>
 <body>
