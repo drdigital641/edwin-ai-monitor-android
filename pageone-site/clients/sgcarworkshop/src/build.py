@@ -1060,6 +1060,7 @@ def basic_texts():
         e['desc'] = 'Car workshop at %s.' % e['street']
         e['lede'] = '%s is a car workshop at %s in %s. %s %s.' % (e['name'], e['street'], e['area_label'], 'It offers' if e['services_source'] == 'google_profile' else 'Its own website lists', svc)
         e['area_ctx'] = '%s is in the %s planning area, part of the %s region of Singapore.' % (e['area_label'], e['planning_area'], RN[e['region']])
+        if e.get('locality'): e['area_ctx'] = '%s is in the %s region of Singapore. We list it with the nearby %s workshops.' % (e['area_label'], RN[e['region']], areas.ESTATES[e['estate']]['name'])   # street shown, nearest listed estate kept (Website Manager, 6 Nov 2026)
 
 
 def embed_url(e):

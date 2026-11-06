@@ -8,7 +8,7 @@
  "name_checked_at": "2026-11-05",
  "address": {
   "block": "",
-  "street": "253 Jln Buroh",
+  "street": "253 Jalan Buroh",
   "unit": "",
   "building": ""
  },
@@ -69,5 +69,6 @@
   "checked": "2026-11-06",
   "source": "Google Places",
   "source_date": "2026-11-06"
- }
+ },
+ "locality": "Jalan Buroh"
 }
