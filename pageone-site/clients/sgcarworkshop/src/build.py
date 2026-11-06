@@ -272,8 +272,9 @@ def footer(depth):
     return ('<footer class="ft"><div class="w cols"><div><h3>%s</h3><p>%s '
             '<a href="https://pageonesingapore.com/" rel="noopener">Page One Singapore</a>.</p><p class="fine">'
             '%s</p></div>'
-            '<div><h3>Services</h3><ul>%s</ul></div><div><h3>Regions</h3><ul>%s</ul><h3 class="h3b">Estates</h3><ul>%s</ul></div>'
-            '<div><h3>Directory</h3><ul>%s</ul></div></div></footer>') % (E(SITE_NAME), E(SETTINGS['footer_about']), E(SETTINGS['footer_note']), cats, reg, est, links)
+            '<div><h3>Services</h3><ul>%s</ul></div><div><h3>Regions</h3><ul>%s</ul></div>'
+            '<div><h3>Directory</h3><ul>%s</ul></div><div class="ft-est"><h3>Estates and industrial areas</h3><ul>%s</ul></div></div></footer>') % (
+        E(SITE_NAME), E(SETTINGS['footer_about']), E(SETTINGS['footer_note']), cats, reg, links, est)
 
 
 def wabar(items):
