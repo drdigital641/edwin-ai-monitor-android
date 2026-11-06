@@ -32,6 +32,14 @@ TAGS = [
     dict(id='p-brake-squeal', kind='problem', label='Brake squeal', rx=r'brake', cat=None, guide='brake-squeal-noise'),
     dict(id='p-warning-light', kind='problem', label='Engine warning light', rx=r'fault|under-bonnet|sensor|throttle|diagnostics', cat=None, guide='engine-warning-light'),
     dict(id='p-overheating', kind='problem', label='Car overheating', rx=r'radiator|cooling|coolant|fan', cat=None, guide='car-overheating'),
+    # ---- driver guides (Edwin 6 Nov 2026: layman guides for what drivers search; matched from card data only)
+    dict(id='p-dent', kind='problem', label='Dents and scratches', rx=r'\bdent|scratch|bumper|panel beat|fender', cat=None, guide='dent-repair-singapore'),
+    dict(id='p-spray', kind='problem', label='Spray painting', rx=r'spray|respray|paint', cat=None, guide='car-spray-painting-singapore'),
+    dict(id='p-battery-dead', kind='problem', label='Battery dead', rx=r'battery|jump ?start', cat=None, guide='car-battery-dead'),
+    dict(id='p-dash-lights', kind='problem', label='Dashboard warning lights', rx=r'warning light|engine light|check engine|diagnos', cat=None, guide='dashboard-warning-lights'),
+    dict(id='h-choose', kind='howto', label='Choosing a workshop', rx=r'repair|diagnos|overhaul', cat=None, guide='how-to-choose-a-car-workshop'),
+    dict(id='h-servicing-cost', kind='howto', label='Servicing cost', rx=r'servicing|oil change|service package|maintenance', cat=None, guide='car-servicing-cost-singapore'),
+    dict(id='h-before-visit', kind='howto', label='Before a workshop visit', rx=r'pre-?purchase|inspection|diagnos|health check', cat=None, guide='before-a-workshop-visit'),
 ]
 BY_ID = {t['id']: t for t in TAGS}
 _RX = {t['id']: re.compile(t['rx'], re.I) for t in TAGS}

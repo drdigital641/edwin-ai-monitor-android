@@ -2000,13 +2000,18 @@ def guide_page(g):
     if gm:
         blocks = []
         for est, items in sorted(gm.items(), key=lambda kv: ESTATES[kv[0]]['name']):
+            more = len(items) - g['cap'] if g.get('cap') and len(items) > g['cap'] else 0
+            items = sorted(items, key=lambda x: x[0]['name'].lower())[:g['cap']] if more else items
             lis = ''.join('<li class="gw"><div><a href="../../workshops/%s/"><b>%s</b></a>%s<p class="mentline"><b>Customers mention:</b> %s</p></div><div class="acts">%s</div></li>'
                           % (e['slug'], E(e['name']), ' <span class="claimed-badge">Claimed by the owner</span>' if e['slug'] in CLAIMED else '', E(', '.join(ms)), contact_btns(e, path, 'sm')) for e, ms in sorted(items, key=lambda x: x[0]['name']))
-            blocks.append('<h3 class="gest"><a href="../../areas/%s/">%s</a></h3><ul class="gwl">%s</ul>' % (est, E(ESTATES[est]['name']), lis))
+            blocks.append('<h3 class="gest"><a href="../../areas/%s/">%s</a></h3><ul class="gwl">%s</ul>%s' % (est, E(ESTATES[est]['name']), lis,
+                          ('<p class="fine"><a href="../../areas/%s/">%d more in %s</a></p>' % (est, more, E(ESTATES[est]['name']))) if more else ''))
         wk = ('<p class="fine">Matched from what customers mention on Google Maps, in our own words. This is not an endorsement, and a workshop has to inspect the car to confirm any cause.</p>' + ''.join(blocks))
     else:
         wk = '<p>No listed workshop has a matching customer mention yet. Browse <a href="../../services/general-servicing-repair/">all servicing and repair workshops</a>.</p>'
     sm = guide_site_matches(g, {e['slug'] for v in gm.values() for e, _ in v})
+    if g.get('cap') and len(sm) > 4 * g['cap']:
+        sm = sm[:4 * g['cap']]
     if sm:
         wk += ('<h3 class="gest">Workshops whose own website lists this</h3><ul class="gwl">%s</ul><p class="fine">From each workshop\'s own website, as listed on its Google Maps profile. Ask the workshop to confirm it can help with your car.</p>' % ''.join(
             '<li class="gw"><div><a href="../../workshops/%s/"><b>%s</b></a> <span class="fine">%s</span><p class="mentline"><b>Its website lists:</b> %s</p></div><div class="acts">%s</div></li>'
@@ -2014,14 +2019,14 @@ def guide_page(g):
     cat_links = ' &middot; '.join('<a href="../../services/%s/">%s</a>' % (c, E(CAT[c]['short'])) for c in g['cats'] if c in CAT)
     others = ''.join('<li><a href="../../%s">%s</a></li>' % (_guides.gpath(o), E(o['short'])) for o in _guides.GUIDES if o['slug'] != g['slug'])
     faq_html = ''.join('<details><summary>%s</summary><p>%s</p></details>' % (E(q), E(a)) for q, a in g['faqs'])
-    heading = 'Likely causes' if g['kind'] == 'problem' else 'What to know and ask'
+    heading = g.get('heading') or ('Likely causes' if g['kind'] == 'problem' else 'What to know and ask')
     body = f'''<div class="w nar guidepg">{cr}
 <h1 style="margin-top:14px">{E(g['h1'])}</h1>
 <p class="lede" style="font-size:1rem">{E(g['lede'])}</p>
 <p class="fine">General guide in plain words. It is not a diagnosis and gives no prices: only a workshop that inspects your car can say what is wrong.</p>
 <h2>{E(heading)}</h2><ol class="causes">{causes}</ol>
-<h2>What to tell the workshop</h2><ul class="tick svc-plain">{tell}</ul>
-<div class="urgent"><b>Do not wait if:</b> {E(g['urgent'])}</div>
+<h2>{E(g.get('tell_h') or 'What to tell the workshop')}</h2><ul class="tick svc-plain">{tell}</ul>
+<div class="urgent"><b>{E(g.get('urgent_h') or 'Do not wait if:')}</b> {E(g['urgent'])}</div>
 <h2>Workshops customers mention for this</h2>{wk}
 <p class="fine">More: {cat_links}</p>
 <h2>Questions</h2>{faq_html}
@@ -2035,11 +2040,13 @@ def guides_index():
     depth = 1
     cr, crld = crumbs(depth, [('Guides', None)])
     probs = [g for g in _guides.GUIDES if g['kind'] == 'problem']
+    howto = [g for g in _guides.GUIDES if g['kind'] == 'howto']
     brands = [g for g in _guides.GUIDES if g['kind'] == 'brand']
     li = lambda gs: ''.join('<li><a href="../%s"><span><b>%s</b><small>%s</small></span></a></li>' % (_guides.gpath(g), E(g['h1']), E(g['desc'][:110].rsplit(' ', 1)[0] + '...')) for g in gs)
     body = f'''<div class="w">{cr}
 <h1 style="margin-top:14px">Car problem and brand guides</h1>
 <p class="lede" style="font-size:1rem;max-width:720px">Plain-word guides to common car problems and car brands, with what to tell the workshop and the workshops customers mention for each.</p>
+<h2>Driver guides</h2><ul class="tiles guide-tiles">{li(howto)}</ul>
 <h2>Common problems</h2><ul class="tiles guide-tiles">{li(probs)}</ul>
 <h2>By car brand</h2><ul class="tiles guide-tiles">{li(brands)}</ul>
 </div>'''

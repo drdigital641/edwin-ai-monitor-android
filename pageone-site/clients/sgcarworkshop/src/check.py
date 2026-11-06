@@ -452,7 +452,7 @@ if not (re.search(r'^RewriteCond %\{HTTP_HOST\} \^\(www\\\.\)\?sgcarworkshop\\\.
 import guides as _gd
 _bad0 = bad
 _sm = open(os.path.join(root, 'sitemap.xml')).read(); _ll = open(os.path.join(root, 'llms.txt')).read()
-if len(_gd.GUIDES) != 10: print('expected 10 guides'); bad += 1
+if len(_gd.GUIDES) != 17: print('expected 17 guides'); bad += 1
 for _g in _gd.GUIDES:
     _p = os.path.join(root, _gd.gpath(_g), 'index.html')
     if not os.path.exists(_p): print('guide page missing', _g['slug']); bad += 1; continue
@@ -464,7 +464,7 @@ for _g in _gd.GUIDES:
     for _l in re.findall(r'href="\.\./\.\./workshops/([a-z0-9-]+)/"', _t):
         if not os.path.exists(os.path.join(root, 'workshops', _l, 'index.html')): print('guide links to a missing workshop', _l); bad += 1
 if 'guides/' not in _sm: print('guides index not in sitemap'); bad += 1
-if bad == _bad0: print('guides ok: 10 pages, in sitemap and llms.txt, no prices')
+if bad == _bad0: print('guides ok: %d pages' % len(_gd.GUIDES) + ', in sitemap and llms.txt, no prices')
 
 # Template rules (Edwin 3 Nov 2026): shared header and footer everywhere, every workshop page is a stack of block templates
 SET = json.load(open(os.path.join(os.path.dirname(os.path.abspath(__file__)), 'settings.json')))
