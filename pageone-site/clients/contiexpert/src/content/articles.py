@@ -4,7 +4,7 @@ ARTICLES.append({
   "slug": "bmw-check-engine-light-singapore",
   "name": "BMW Check Engine Light",
   "card": "What a BMW engine warning light can mean, when it is safe to keep driving, and how the fault is found.",
-  "title": "BMW Check Engine Light: What to Do | Volt Autocare",
+  "title": "BMW Check Engine Light: What to Do | ContiExpert by Volt Autocare",
   "desc": "BMW check engine light on in Singapore? Learn what steady and flashing lights mean, common causes, and when to stop driving and get a scan.",
   "h1": "BMW Check Engine Light: What Should You Do in Singapore?",
   "answer": "A steady engine light means the car has stored a fault and should be scanned soon. A flashing light, or one with rough running or loss of power, means stop driving safely and get help. The light alone does not name the problem. Only a fault code scan, followed by checks, shows the cause.",
@@ -75,7 +75,7 @@ ARTICLES.append({
 </ul>
 <p>Singapore's heat and slow traffic put steady load on cooling, ignition and the battery, so mention how the car is mostly used. COE cars kept for ten years also tend to have wear that shows up as sensor and ignition faults, which is worth bringing up if the car has not had recent maintenance.</p>"""},
     {"h2": "Where can you get a BMW engine light checked near Newton?",
-     "html": """<p>Volt Autocare handles warning light checks and fault scans at its Newton Circus workshop inside the Shell station at 143 Bukit Timah Road. See the <a href="/services/car-diagnostics-warning-lights/">car diagnostics and warning lights service</a> for what a check covers, or send details through <a href="/contact-us/">the contact page</a> or WhatsApp +65 8221 5502.</p>"""}
+     "html": """<p>ContiExpert by Volt Autocare handles warning light checks and fault scans at its Newton Circus workshop inside the Shell station at 143 Bukit Timah Road. See the <a href="/services/car-diagnostics-warning-lights/">car diagnostics and warning lights service</a> for what a check covers, or send details through <a href="/contact-us/">the contact page</a> or WhatsApp +65 8221 5502.</p>"""}
   ],
   "faqs": [
     {"q": "Can I drive my BMW with the check engine light on?", "a": "If the light is steady and the car drives normally, short careful trips to a workshop are usually reasonable. If the light flashes, or the car loses power, shakes or overheats, stop safely and get help instead of driving on."},
@@ -91,7 +91,7 @@ ARTICLES.append({
   "slug": "mercedes-engine-overheating-singapore",
   "name": "Mercedes Engine Overheating",
   "card": "Why a Mercedes-Benz engine runs hot in Singapore, what to do on the road, and how the cause is found.",
-  "title": "Mercedes Engine Overheating: Causes | Volt Autocare",
+  "title": "Mercedes Engine Overheating: Causes | ContiExpert by Volt Autocare",
   "desc": "Mercedes-Benz engine overheating in Singapore? See what to do straight away, common causes from coolant leaks to the thermostat, and how it is checked.",
   "h1": "Mercedes Engine Overheating: Causes and What to Do in Singapore",
   "answer": "Engine overheating in a Mercedes-Benz is usually caused by low coolant from a leak, a stuck thermostat, a weak water pump, a failed cooling fan or a blocked radiator. Stop driving safely as soon as the temperature warning appears, because continued driving risks serious engine damage.",
@@ -162,7 +162,7 @@ ARTICLES.append({
 </ul>
 <p>COE cars kept for ten years benefit from checking rubber hoses and plastic cooling parts, since heat and age make them brittle. Our <a href="/european-car-service-schedule-singapore/">European car service schedule guide</a> shows where cooling checks fit in.</p>"""},
     {"h2": "Where can you get a Mercedes overheating problem checked?",
-     "html": """<p>If your Mercedes-Benz is running hot, Volt Autocare's Newton Circus workshop inside the Shell station at 143 Bukit Timah Road can look into it. Read about <a href="/services/car-diagnostics-warning-lights/">car diagnostics and warning lights</a>, then reach the team through <a href="/contact-us/">the contact page</a> or WhatsApp +65 8221 5502. If the car is overheating right now, stop driving first and arrange a tow.</p>"""}
+     "html": """<p>If your Mercedes-Benz is running hot, ContiExpert by Volt Autocare's Newton Circus workshop inside the Shell station at 143 Bukit Timah Road can look into it. Read about <a href="/services/car-diagnostics-warning-lights/">car diagnostics and warning lights</a>, then reach the team through <a href="/contact-us/">the contact page</a> or WhatsApp +65 8221 5502. If the car is overheating right now, stop driving first and arrange a tow.</p>"""}
   ],
   "faqs": [
     {"q": "Why is my Mercedes overheating but the coolant is full?", "a": "A full tank does not rule out problems. A stuck thermostat, a failing water pump, a weak fan, a blocked radiator or air trapped in the system can all cause overheating even when the level looks normal."},
@@ -178,7 +178,7 @@ ARTICLES.append({
   "slug": "audi-aircon-not-cold-repair-singapore",
   "name": "Audi Aircon Not Cold",
   "card": "Why an Audi aircon blows warm air, what to check first, and how the cause is found in Singapore's climate.",
-  "title": "Audi Aircon Not Cold: Causes and Fixes | Volt Autocare",
+  "title": "Audi Aircon Not Cold: Causes and Fixes | ContiExpert by Volt Autocare",
   "desc": "Audi aircon not cold in Singapore? Learn the common causes, from low refrigerant to a faulty compressor, plus quick checks and how it is diagnosed.",
   "h1": "Audi Aircon Not Cold: Causes and Repair in Singapore",
   "answer": "An Audi aircon that is not cold usually points to low refrigerant from a leak, a compressor or clutch fault, a blocked condenser, a blend door problem, a clogged cabin filter or a dirty evaporator. A gas top-up alone rarely solves it, because the cause has to be found first.",
@@ -245,7 +245,7 @@ ARTICLES.append({
 </ul>
 <p>Cooling system health also matters, as the aircon condenser sits in front of the radiator. See our guide on <a href="/mercedes-engine-overheating-singapore/">engine overheating</a> if you notice temperature problems as well.</p>"""},
     {"h2": "Where can you get an Audi aircon checked near Newton?",
-     "html": """<p>Volt Autocare looks after car aircon problems at its Newton Circus workshop inside the Shell station at 143 Bukit Timah Road. Read about the <a href="/services/car-aircon-repair/">car aircon repair service</a>, then use <a href="/contact-us/">the contact page</a> or WhatsApp +65 8221 5502 to describe what your Audi is doing.</p>"""}
+     "html": """<p>ContiExpert by Volt Autocare looks after car aircon problems at its Newton Circus workshop inside the Shell station at 143 Bukit Timah Road. Read about the <a href="/services/car-aircon-repair/">car aircon repair service</a>, then use <a href="/contact-us/">the contact page</a> or WhatsApp +65 8221 5502 to describe what your Audi is doing.</p>"""}
   ],
   "faqs": [
     {"q": "Why is my Audi aircon cold only when driving?", "a": "That pattern often points to poor airflow across the condenser, such as a weak cooling fan or a blocked condenser. At speed more air passes through, so cooling improves. It is worth having the fans and condenser checked."},
@@ -259,16 +259,34 @@ ARTICLES.append({
 
 ARTICLES.append({
   "slug": "european-car-service-schedule-singapore",
-  "name": "European Car Service Schedule",
+  "name": "Car Maintenance Checklist",
   "card": "A practical guide to how often a European car needs servicing in Singapore and what each visit should cover.",
-  "title": "European Car Service Schedule Singapore | Volt Autocare",
-  "desc": "How often should a European car be serviced in Singapore? A practical guide to oil, filters, brakes, fluids and checks, by time and mileage.",
-  "h1": "European Car Service Schedule in Singapore: What and When",
-  "answer": "Most European cars follow a service interval set by the manufacturer, often based on both distance and time, and your service booklet or the car's service indicator is the reference. In Singapore's stop-start traffic and heat, many owners service more often than the maximum interval.",
+  "title": "Car Maintenance Checklist Singapore | ContiExpert by Volt Autocare",
+  "desc": "Car maintenance checklist for Singapore drivers: oil, filters, brakes, fluids, tyres, battery and aircon, and how often a European car needs servicing.",
+  "h1": "Car Maintenance Checklist for Singapore Drivers: What and When",
+  "answer": "A car maintenance checklist for Singapore drivers covers engine oil and filters, brake fluid and coolant, brakes, tyres, lights, belts, the battery and a fault code scan. Your service booklet or service indicator sets the intervals, and stop-start traffic and heat lead many owners to service sooner.",
   "date": "2026-11-03",
+  "modified": "2026-11-05",
+  "updated": "5 Nov 2026",
   "service": "/services/european-car-servicing/",
   "minutes": 6,
   "sections": [
+    {"h2": "What is on a car maintenance checklist?",
+     "html": """<p>Use this checklist as a starting point and follow your own car's service booklet for the exact intervals. The items come from a typical service, explained in the sections below.</p>
+<ol>
+<li>Engine oil and oil filter, at each service per the manufacturer interval.</li>
+<li>Air filter and cabin filter, as due or when dirty.</li>
+<li>Brake fluid, which ages with time as it absorbs moisture.</li>
+<li>Coolant and cooling system hoses.</li>
+<li>Brake pads and discs, inspected at every service and replaced by wear.</li>
+<li>Tyres, lights, wipers and drive belts, checked visually.</li>
+<li>Spark plugs, at the longer intervals set for your engine.</li>
+<li>Gearbox fluid, at the intervals that suit your gearbox type.</li>
+<li>Battery health, especially on older cars with many electronic systems.</li>
+<li>Aircon performance and cabin filter.</li>
+<li>A scan for stored fault codes.</li>
+</ol>
+<p>Ask the workshop to separate what is due now from what is coming soon. Keep your invoices together so the service history is ready to show.</p>"""},
     {"h2": "How often should a European car be serviced in Singapore?",
      "html": """<p>The manufacturer sets the interval, usually as a distance or a time, whichever comes first. Many modern cars also have a service indicator that calculates it from how the car is driven.</p>
 <p>Singapore driving is mostly short trips, heavy traffic and heat. Engines that rarely reach a steady cruising speed and sit idling in jams are working in conditions often described as severe use, so oil and filters may need attention sooner than the maximum figure.</p>
@@ -328,7 +346,7 @@ ARTICLES.append({
 <p>If you are buying a used car, missing history is worth questioning. A pre-purchase check can look for signs that servicing was neglected. See the <a href="/pre-purchase-car-inspection-singapore-your-ultimate-guide-to-buying-with-confidence/">pre-purchase inspection guide</a> for what to ask.</p>
 <p>A good habit is to photograph each invoice with your phone and keep the files in one folder. If you change workshops later, or sell the car, the whole history is ready to show.</p>"""},
     {"h2": "Where can you get a European car serviced near Newton?",
-     "html": """<p>Volt Autocare services European cars at its Newton Circus workshop inside the Shell station at 143 Bukit Timah Road. Read about <a href="/services/european-car-servicing/">European car servicing</a>, or ask about your car's schedule through <a href="/contact-us/">the contact page</a> or WhatsApp +65 8221 5502.</p>"""}
+     "html": """<p>ContiExpert by Volt Autocare services European cars at its Newton Circus workshop inside the Shell station at 143 Bukit Timah Road. Read about <a href="/services/european-car-servicing/">European car servicing</a>, or ask about your car's schedule through <a href="/contact-us/">the contact page</a> or WhatsApp +65 8221 5502.</p>"""}
   ],
   "faqs": [
     {"q": "Should I service my car by distance or by time?", "a": "Both count. Manufacturers usually state a distance and a time, and the earlier one applies. A low-mileage car still needs time-based servicing because oil and fluids age, and rubber parts deteriorate in the heat."},
@@ -344,11 +362,13 @@ ARTICLES.append({
   "slug": "dealer-vs-independent-workshop-singapore",
   "name": "Dealer vs Independent Workshop",
   "card": "When an authorised dealer makes sense, when an independent workshop suits, and how to decide for your car.",
-  "title": "Dealer vs Independent Workshop Singapore | Volt Autocare",
+  "title": "Dealer vs Independent Workshop Singapore | ContiExpert by Volt Autocare",
   "desc": "Authorised dealer or independent workshop for your European car in Singapore? A fair look at when each makes sense, with questions to ask first.",
   "h1": "Dealer vs Independent Workshop in Singapore: How to Choose",
   "answer": "Neither is right for every car. An authorised dealer usually makes sense while the manufacturer's new-car warranty applies, or for recalls and software campaigns. An independent workshop often suits out-of-warranty cars, second opinions and owners who want convenience. The right choice depends on your car's age and the job.",
   "date": "2026-11-03",
+  "modified": "2026-11-05",
+  "updated": "5 Nov 2026",
   "service": "/services/european-car-servicing/",
   "minutes": 6,
   "sections": [
@@ -409,9 +429,9 @@ ARTICLES.append({
     {"h2": "Can you use both?",
      "html": """<p>Many owners do. They use the dealer for recalls, warranty repairs and campaigns, and an independent workshop for routine servicing once the car is older. Others start with the dealer and move later.</p>
 <p>A common pattern is to stay with the dealer through the warranty years, then move to an independent workshop for routine work, going back to the dealer only for recalls or campaigns. There is no need to treat it as a permanent loyalty decision.</p>
-<p>Whichever route you take, keep all service records in one place. A consistent history helps with resale and with spotting repeat faults. Our <a href="/european-car-service-schedule-singapore/">service schedule guide</a> shows what a regular service should cover.</p>"""},
+<p>If you are weighing options for a Mercedes-Benz, our <a href="/brands/mercedes-benz/">Mercedes-Benz service centre guide</a> sets out both routes. Whichever route you take, keep all service records in one place. A consistent history helps with resale and with spotting repeat faults. Our <a href="/european-car-service-schedule-singapore/">car maintenance checklist</a> shows what a regular service should cover.</p>"""},
     {"h2": "Where can you get a second opinion near Newton?",
-     "html": """<p>Volt Autocare is a workshop at Newton Circus, inside the Shell station at 143 Bukit Timah Road. Read about <a href="/services/european-car-servicing/">European car servicing</a>, or send your car's details and any quote you have through <a href="/contact-us/">the contact page</a> or WhatsApp +65 8221 5502.</p>"""}
+     "html": """<p>ContiExpert by Volt Autocare is a workshop at Newton Circus, inside the Shell station at 143 Bukit Timah Road. Read about <a href="/services/european-car-servicing/">European car servicing</a>, or send your car's details and any quote you have through <a href="/contact-us/">the contact page</a> or WhatsApp +65 8221 5502.</p>"""}
   ],
   "faqs": [
     {"q": "Should I service my new car at the dealer?", "a": "While the manufacturer's warranty applies, many owners choose the dealer for clarity. Check your warranty terms and ask the dealer what they require. Recalls and campaigns are handled through the dealer in any case."},
@@ -427,11 +447,13 @@ ARTICLES.append({
   "slug": "pre-purchase-car-inspection-singapore-your-ultimate-guide-to-buying-with-confidence",
   "name": "Pre-Purchase Car Inspection",
   "card": "What a pre-purchase inspection checks, when to book it, and what you receive before you pay a deposit.",
-  "title": "Pre-Purchase Car Inspection Singapore | Volt Autocare",
-  "desc": "Buying a used car in Singapore? See what a pre-purchase inspection checks, when to book it before paying a deposit, and what findings you receive.",
+  "title": "Pre-Purchase Car Inspection Singapore Checklist",
+  "desc": "Buying a used car in Singapore? See the pre-purchase inspection checklist: body, engine, gearbox, brakes, electronics and records. Book before the deposit.",
   "h1": "Pre-Purchase Car Inspection in Singapore: Buy With Confidence",
   "answer": "A pre-purchase inspection is an independent check of a used car before you commit. It looks at body, engine, gearbox, suspension, brakes, tyres, electronics and service records, plus a test drive. Book it before paying a deposit so you can decide with facts.",
   "date": "2026-11-03",
+  "modified": "2026-11-05",
+  "updated": "5 Nov 2026",
   "service": "/services/pre-purchase-inspection/",
   "minutes": 6,
   "sections": [
@@ -459,7 +481,7 @@ ARTICLES.append({
      "html": """<p>Hybrid and EV purchases have an additional concern: the high-voltage battery. Its state of health affects range, performance and future cost, and it cannot be judged by looking at the car.</p>
 <p>A hybrid or EV inspection adds a battery state-of-health check, high-voltage system checks and a scan of the related control modules, alongside the usual body and mechanical checks.</p>
 <p>The battery result should be explained in plain terms, including what it suggests for range or performance and what to ask the seller. Because replacement can be a significant expense, it is worth understanding before you commit.</p>
-<p>Volt Autocare offers standard and hybrid/EV pre-purchase inspections. See also the <a href="/services/hybrid-ev-servicing/">hybrid and EV servicing</a> page for ongoing care.</p>"""},
+<p>ContiExpert by Volt Autocare offers standard and hybrid/EV pre-purchase inspections. See also the <a href="/services/hybrid-ev-servicing/">hybrid and EV servicing</a> page for ongoing care.</p>"""},
     {"h2": "When should you book the inspection?",
      "html": """<p>Book it before you pay a deposit. Once money has changed hands, walking away can be difficult or costly, and the seller may have less reason to accommodate checks.</p>
 <p>Here is a sensible order to follow:</p>
@@ -497,9 +519,9 @@ ARTICLES.append({
     {"h2": "Is an inspection worth it for a car sold by a dealer?",
      "html": """<p>Yes, it still gives you a separate view. A dealer's own checks serve the dealer's sale, while an independent report is prepared for you.</p>
 <p>The same applies to cars sold privately. The more expensive or complex the car, the more value an independent look tends to add. A short, calm checklist before buying is far easier than a surprise afterwards.</p>
-<p>If you already own a car and are unsure of its condition, our <a href="/european-car-service-schedule-singapore/">service schedule guide</a> can help you plan.</p>"""},
+<p>If you already own a car and are unsure of its condition, our <a href="/european-car-service-schedule-singapore/">car maintenance checklist</a> can help you plan.</p>"""},
     {"h2": "Where can you book a pre-purchase inspection near Newton?",
-     "html": """<p>Volt Autocare carries out pre-purchase inspections at its Newton Circus workshop inside the Shell station at 143 Bukit Timah Road. Read about the <a href="/services/pre-purchase-inspection/">pre-purchase inspection service</a>, then send the car's make, model and year through <a href="/contact-us/">the contact page</a> or WhatsApp +65 8221 5502.</p>"""}
+     "html": """<p>ContiExpert by Volt Autocare carries out pre-purchase inspections at its Newton Circus workshop inside the Shell station at 143 Bukit Timah Road. Read about the <a href="/services/pre-purchase-inspection/">pre-purchase inspection service</a>, then send the car's make, model and year through <a href="/contact-us/">the contact page</a> or WhatsApp +65 8221 5502.</p>"""}
   ],
   "faqs": [
     {"q": "Should I book the inspection before or after paying a deposit?", "a": "Before. Once a deposit is paid, backing out can be difficult. Arrange the inspection first so that the findings can inform your decision, your negotiation or your choice to walk away."},
@@ -509,4 +531,90 @@ ARTICLES.append({
   ],
   "related": ["/services/pre-purchase-inspection/", "/services/hybrid-ev-servicing/", "/european-car-service-schedule-singapore/", "/dealer-vs-independent-workshop-singapore/"],
   "confirm": ["Confirm the exact scope of the standard and hybrid/EV inspections (battery state-of-health method, what the report format is) before the page describes deliverables.", "Confirm whether findings are delivered verbally, in writing, or both.", "Confirm inspections can be done at the workshop vs at the seller's location."]
+})
+
+ARTICLES.append({
+  "slug": "brake-warning-light-european-car-singapore",
+  "name": "Brake Warning Light",
+  "card": "What a brake warning light means on a BMW, Mercedes or Audi, which colours need action now, and how the cause is found.",
+  "title": "Brake Warning Light on: What It Means | ContiExpert by Volt Autocare",
+  "desc": "Brake warning light on in your BMW, Mercedes or Audi? See what red and amber lights mean, when to stop driving, and how the cause is checked.",
+  "h1": "Brake Warning Light On: What It Means in a European Car",
+  "answer": "A brake warning light can mean worn pads, low brake fluid, a handbrake still applied, or a fault in the ABS or brake electronics. A red brake light with a soft pedal means stop safely and get help. An amber light with normal braking means book a check soon.",
+  "date": "2026-11-05",
+  "service": "/services/brake-suspension-repair/",
+  "minutes": 5,
+  "brand": "European cars",
+  "sections": [
+    {"h2": "What does a brake warning light mean?",
+     "html": """<p>Several different lights relate to the brakes. They do not all mean the same thing, so first work out which one you are looking at.</p>
+<ul>
+<li><strong>Red brake symbol or the word BRAKE.</strong> This can mean the handbrake is on, the brake fluid is low, or the system has found a fault. Treat it as urgent.</li>
+<li><strong>Amber or yellow brake pad symbol.</strong> This usually points to worn pads. The car still brakes, but the pads need attention.</li>
+<li><strong>Amber ABS light.</strong> The anti-lock system has a fault. Normal braking often still works, but the safety function may be off.</li>
+<li><strong>Message in the display.</strong> Many BMW, Mercedes-Benz and Audi models show a text message as well. Photograph it.</li>
+</ul>
+<p>The exact symbols and messages differ between models. Your owner's manual shows what each one looks like on your car.</p>"""},
+    {"h2": "Is it safe to keep driving with the brake light on?",
+     "html": """<p>It depends on the colour and on how the pedal feels. Use this table as a guide, not a rule.</p>
+<table><thead><tr><th>What you see</th><th>What it can suggest</th><th>What to do</th></tr></thead><tbody>
+<tr><td>Red light, pedal feels soft or sinks</td><td>Fluid loss or a hydraulic fault</td><td>Stop safely and call for help or a tow</td></tr>
+<tr><td>Red light, handbrake is off, pedal normal</td><td>Low fluid or a system fault</td><td>Drive gently only to a safe place, then get it checked</td></tr>
+<tr><td>Red light that goes off when you release the handbrake</td><td>Handbrake was still partly applied</td><td>Make sure it is fully released</td></tr>
+<tr><td>Amber pad symbol, braking feels normal</td><td>Pads wearing thin</td><td>Book an inspection soon</td></tr>
+<tr><td>Amber ABS light</td><td>Sensor or ABS fault</td><td>Brake earlier and gently, and book a scan</td></tr>
+</tbody></table>
+<p>If you are unsure, treat the light as more serious, not less. Brakes are not a part to test by driving on.</p>"""},
+    {"h2": "When should you stop driving straight away?",
+     "html": """<p>Pull over safely and switch off if you notice any of these:</p>
+<ul>
+<li>A red brake light together with a soft, spongy or sinking pedal.</li>
+<li>The car takes much longer to slow down.</li>
+<li>Grinding metal noise when you brake.</li>
+<li>A burning smell, or smoke from a wheel.</li>
+<li>The car pulls hard to one side under braking.</li>
+</ul>
+<p>Use your hazard lights and stop where it is safe. Arrange a tow instead of driving on. A brake that fails in stop-start traffic on Bukit Timah Road or at speed on an expressway is a far bigger problem than a tow.</p>"""},
+    {"h2": "Why is the brake pad warning light on?",
+     "html": """<p>Many European cars use a small sensor in the pads, or an electronic wear reading, to warn you before the friction material is used up. When the pad wears to a set point, the light comes on.</p>
+<p>The light is an early warning. It gives you time to plan, but it is not a reason to wait for weeks. Pads that wear all the way down can damage the discs, and that makes the repair larger.</p>
+<p>Sometimes the light stays on after new pads are fitted because the wear sensor was not replaced or has a wiring fault. If the light comes on soon after a brake job, mention that when you get it checked.</p>
+<p>Our <a href="/services/brake-suspension-repair/">brake and suspension repair page</a> lists what a pad and disc inspection covers.</p>"""},
+    {"h2": "What else can cause a brake light to appear?",
+     "html": """<p>The pads are only one possibility. The cause has to be confirmed by a check, not guessed from the symbol.</p>
+<table><thead><tr><th>Possible cause</th><th>What you may notice</th></tr></thead><tbody>
+<tr><td>Low brake fluid</td><td>Red light, sometimes a soft pedal. Fluid level drops slowly as pads wear, or faster if there is a leak.</td></tr>
+<tr><td>Brake fluid leak</td><td>Falling fluid level, a damp area near a wheel, a pedal that sinks</td></tr>
+<tr><td>Worn pads or a faulty pad sensor</td><td>Amber pad symbol, squealing or no other change</td></tr>
+<tr><td>Wheel speed sensor fault</td><td>ABS light, sometimes with the stability control light</td></tr>
+<tr><td>Electronic parking brake fault</td><td>Parking brake warning, handbrake will not apply or release</td></tr>
+<tr><td>Weak battery or charging problem</td><td>Several lights at once, slow starts</td></tr>
+</tbody></table>
+<p>A weak battery can trigger several unrelated warnings together. That is why a proper scan matters more than reading one symbol.</p>"""},
+    {"h2": "How is a brake warning light checked?",
+     "html": """<p>A good check goes further than reading a code. The usual steps look like this:</p>
+<ol>
+<li>Talk through when the light came on and how the pedal feels.</li>
+<li>Check the brake fluid level and condition.</li>
+<li>Scan the brake, ABS and related modules for stored fault codes.</li>
+<li>Remove the wheels and look at pad thickness, discs, calipers, hoses and lines.</li>
+<li>Check the wear sensor and wiring if a pad light is showing.</li>
+<li>Explain what was found, how urgent it is and the repair options before any work starts.</li>
+</ol>
+<p>A fault code points to a system, not always to the part. Replacing parts only because a code mentioned them can waste money and leave the real cause in place.</p>"""},
+    {"h2": "Can you top up brake fluid and carry on?",
+     "html": """<p>Topping up is not a fix. Brake fluid is in a closed system, so a level that has dropped means the pads have worn or fluid has leaked. Both need a proper look.</p>
+<p>Use only the fluid type your car specifies, and never top up while the car is unsafe to drive. If the level is far below the minimum mark, do not drive. Have it checked first.</p>
+<p>Also avoid clearing the light with a basic code reader and ignoring it. The light may return, and the stored data is useful for the diagnosis.</p>"""},
+    {"h2": "Where can you get a brake warning light checked near Newton?",
+     "html": """<p>ContiExpert by Volt Autocare looks at brake and warning light faults at its Newton Circus workshop inside the Shell station at 143 Bukit Timah Road. Read about <a href="/services/car-diagnostics-warning-lights/">car diagnostics and warning lights</a> for how a scan works, then send the symbol, the car's make and model, and what the pedal feels like through <a href="/contact-us/">the contact page</a> or WhatsApp +65 8221 5502. If the pedal is soft right now, do not drive. Arrange a tow.</p>"""}
+  ],
+  "faqs": [
+    {"q": "Can I drive with the brake warning light on?", "a": "Only if the light is amber, the pedal feels normal and the car stops as usual, and then only gently to a workshop. If the light is red and the pedal is soft, or the car slows poorly, stop safely and get help."},
+    {"q": "Why is my brake light on but the pads are new?", "a": "The wear sensor may not have been replaced with the pads, or its wiring may be faulty. Low brake fluid, an ABS fault or a weak battery can also trigger a light. A scan and inspection find which it is."},
+    {"q": "What is the difference between the red brake light and the ABS light?", "a": "The red brake light covers the main braking system, such as low fluid or a handbrake still on. The amber ABS light means the anti-lock function has a fault. Normal braking often remains, but treat both as needing a check."},
+    {"q": "Will the brake light go off by itself?", "a": "Sometimes, if the cause was temporary, such as a handbrake not fully released. A light that returns or stays on points to a real fault, and the fault is usually still stored in the car, so a scan can read it."}
+  ],
+  "related": ["/services/brake-suspension-repair/", "/services/car-diagnostics-warning-lights/", "/bmw-check-engine-light-singapore/", "/european-car-service-schedule-singapore/"],
+  "confirm": ["Confirm the workshop can scan brake, ABS and electronic parking brake modules on the makes it accepts before the page promises it.", "Confirm whether towing can be arranged or only advised.", "Confirm whether brake fluid service and electronic parking brake work are done in-house."]
 })

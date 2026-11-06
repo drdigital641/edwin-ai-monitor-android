@@ -64,8 +64,11 @@
 62. [pre-purchase-car-inspection-singapore-your-ultimate-guide-to-buying-with-confidence] Confirm the exact scope of the standard and hybrid/EV inspections (battery state-of-health method, what the report format is) before the page describes deliverables.
 63. [pre-purchase-car-inspection-singapore-your-ultimate-guide-to-buying-with-confidence] Confirm whether findings are delivered verbally, in writing, or both.
 64. [pre-purchase-car-inspection-singapore-your-ultimate-guide-to-buying-with-confidence] Confirm inspections can be done at the workshop vs at the seller's location.
-65. Prices on the homepage come from your own posts (Dec 2025 servicing packages from $118, TikTok aircon coil wash $168, Standard PPI $60). Are they still current, and what do the packages include? Prices for hybrid battery health check, battery fan cleaning and ATF change?
-66. Is Volt Autocare part of the Volt Auto group (Dongfeng distributor)? If yes, may we say so?
-67. Reviews: the homepage quotes short excerpts from your Google reviews (names as shown on Google). OK to show them? Customers name "Newt" and "An" - may we name them on the About page, with their roles?
-68. Bring your own parts: a Google review says you fit customer-supplied parts for labour only. Is that offered for all jobs? Any warranty difference?
-69. Car batteries: reviews mention battery replacement. Which brands do you stock, and from what price? Walk-in or appointment?
+65. [brake-warning-light-european-car-singapore] Confirm the workshop can scan brake, ABS and electronic parking brake modules on the makes it accepts before the page promises it.
+66. [brake-warning-light-european-car-singapore] Confirm whether towing can be arranged or only advised.
+67. [brake-warning-light-european-car-singapore] Confirm whether brake fluid service and electronic parking brake work are done in-house.
+68. Prices on the homepage come from your own posts (Dec 2025 servicing packages from $118, TikTok aircon coil wash $168, Standard PPI $60). Are they still current, and what do the packages include? Prices for hybrid battery health check, battery fan cleaning and ATF change?
+69. Is Volt Autocare part of the Volt Auto group (Dongfeng distributor)? If yes, may we say so?
+70. Reviews: the homepage quotes short excerpts from your Google reviews (names as shown on Google). OK to show them? Customers name "Newt" and "An" - may we name them on the About page, with their roles?
+71. Bring your own parts: a Google review says you fit customer-supplied parts for labour only. Is that offered for all jobs? Any warranty difference?
+72. Car batteries: reviews mention battery replacement. Which brands do you stock, and from what price? Walk-in or appointment?
