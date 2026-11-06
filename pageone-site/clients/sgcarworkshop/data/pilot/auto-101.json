@@ -1,27 +1,39 @@
 {
- "lede": "Auto 101 is a car repair workshop at 2 Yishun Industrial Street 1, #02-01 Northpoint Bizhub. Its Google Maps listing shows opening hours and customer ratings.",
+ "lede": "Auto 101 is a car workshop in Yishun Industrial Street 1. Its own website lists engine servicing, air-con repair, panel beating and spray painting.",
  "chips": [
-  "Car repair"
+  "Engine servicing",
+  "Air-con repair",
+  "Panel beating"
  ],
  "services": [
-  "General servicing and repair"
+  "Engine servicing",
+  "Air-con repair",
+  "Panel beating",
+  "Spray painting",
+  "Accident repair and claims",
+  "Speed limiter fitting",
+  "ERP 2.0 OBU installation",
+  "Commercial vehicle servicing"
  ],
  "themes": "Customers on Google Maps mention accident claims handled patiently, body repairs and paintwork, fleet maintenance, straightforward advice without upselling and original products at fair prices.",
- "faqs": [
-  [
-   "What does Auto 101 do?",
-   "Google Maps lists it as a car repair workshop."
-  ],
-  [
-   "What are the opening hours?",
-   "The hours are listed in the Google Maps section above. Please see Google Maps for current hours."
-  ]
- ],
- "sources": "its Google Maps listing",
+ "sources": "its own website (auto101.com.sg)",
  "stories": [],
  "mentioned_services": [
   "Accident repair and insurance claims",
   "Spray painting",
   "Regular servicing"
+ ],
+ "services_note": "Services as listed on the workshop's own website, auto101.com.sg.",
+ "specialties": [
+  "Engine repair and maintenance",
+  "Air-conditioning repair",
+  "Panel beating and spray painting"
+ ],
+ "card_rules": "2026-11-06",
+ "makes": [],
+ "makes_note": "Not listed on its public pages. Ask the workshop about your car.",
+ "good_to_know": [
+  "Established in 2011, according to its website",
+  "Enquiries by WhatsApp, according to its website"
  ]
 }

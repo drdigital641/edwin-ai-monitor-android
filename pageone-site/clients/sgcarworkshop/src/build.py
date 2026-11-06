@@ -1918,6 +1918,21 @@ def guide_matches(g):
     return out
 
 
+def guide_site_matches(g, skip):
+    """Live Basic workshops whose OWN website (read under card rules v2, logged in card_sources) lists work or makes that match this guide.
+    Added 6 Nov 2026 (Edwin: enrich guide and brand pages from stored data only). Workshops already listed by customer mention are skipped."""
+    rx = re.compile(g['match'], re.I)
+    out = []
+    for e in ENTRIES:
+        pl = PILOT.get(e['slug']) or {}
+        if e['tier'] != 'free' or e['slug'] in skip or not pl.get('card_rules') or 'own website' not in (pl.get('sources') or ''):
+            continue
+        ms = [m for m in (list(pl.get('services') or []) + list(pl.get('specialties') or []) + list(pl.get('makes') or [])) if rx.search(m)]
+        if ms:
+            out.append((e, list(dict.fromkeys(ms))[:4]))
+    return sorted(out, key=lambda x: x[0]['name'].lower())
+
+
 def guide_page(g):
     depth = 2
     path = _guides.gpath(g)
@@ -1934,6 +1949,11 @@ def guide_page(g):
         wk = ('<p class="fine">Matched from what customers mention on Google Maps, in our own words. This is not an endorsement, and a workshop has to inspect the car to confirm any cause.</p>' + ''.join(blocks))
     else:
         wk = '<p>No listed workshop has a matching customer mention yet. Browse <a href="../../services/general-servicing-repair/">all servicing and repair workshops</a>.</p>'
+    sm = guide_site_matches(g, {e['slug'] for v in gm.values() for e, _ in v})
+    if sm:
+        wk += ('<h3 class="gest">Workshops whose own website lists this</h3><ul class="gwl">%s</ul><p class="fine">From each workshop\'s own website, as listed on its Google Maps profile. Ask the workshop to confirm it can help with your car.</p>' % ''.join(
+            '<li class="gw"><div><a href="../../workshops/%s/"><b>%s</b></a> <span class="fine">%s</span><p class="mentline"><b>Its website lists:</b> %s</p></div><div class="acts">%s</div></li>'
+            % (e['slug'], E(e['name']), E(ESTATES[e['estate']]['name']), E(', '.join(ms)), contact_btns(e, path, 'sm')) for e, ms in sm))
     cat_links = ' &middot; '.join('<a href="../../services/%s/">%s</a>' % (c, E(CAT[c]['short'])) for c in g['cats'] if c in CAT)
     others = ''.join('<li><a href="../../%s">%s</a></li>' % (_guides.gpath(o), E(o['short'])) for o in _guides.GUIDES if o['slug'] != g['slug'])
     faq_html = ''.join('<details><summary>%s</summary><p>%s</p></details>' % (E(q), E(a)) for q, a in g['faqs'])

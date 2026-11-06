@@ -1,28 +1,36 @@
 {
- "lede": "88 Auto Garage @ Woodlands is a car repair workshop at 32 Woodlands Industrial Park E1. Its Google Maps listing shows opening hours and customer ratings.",
+ "lede": "88 Auto Garage @ Woodlands is a car workshop in Woodlands Industrial Park E9. Its own website lists general repairs, service and maintenance, batteries and bodyworks.",
  "chips": [
-  "Car repair"
+  "General repairs",
+  "Service and maintenance",
+  "Batteries"
  ],
  "services": [
-  "General servicing and repair"
+  "General repairs",
+  "Service and maintenance",
+  "Batteries",
+  "Bodyworks",
+  "Air conditioning",
+  "Tyres and undercarriage"
  ],
  "themes": "Customers on Google Maps mention a test drive before repairs, battery replacement on a continental car at the quoted WhatsApp price, sourcing a used aircon compressor, and fixing noisy aircon.",
- "faqs": [
-  [
-   "What does 88 Auto Garage @ Woodlands do?",
-   "Google Maps lists it as a car repair workshop."
-  ],
-  [
-   "What are the opening hours?",
-   "The hours are listed in the Google Maps section above. Please see Google Maps for current hours."
-  ]
- ],
- "sources": "its Google Maps listing",
+ "sources": "its own website (88auto.sg)",
  "stories": [],
  "mentioned_services": [
   "Car aircon repair",
   "Aircon compressor replacement",
   "Battery replacement",
   "Continental cars"
+ ],
+ "services_note": "Services as listed on the workshop's own website, 88auto.sg.",
+ "specialties": [
+  "Aircon diagnostics",
+  "Tyre alignment diagnostics"
+ ],
+ "card_rules": "2026-11-06",
+ "makes": [],
+ "makes_note": "Not listed on its public pages. Ask the workshop about your car.",
+ "good_to_know": [
+  "Enquiries by WhatsApp, according to its website"
  ]
 }

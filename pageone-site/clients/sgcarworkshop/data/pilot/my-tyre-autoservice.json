@@ -1,27 +1,30 @@
 {
- "lede": "My Tyre Autoservice is a car repair workshop at 2 Yishun Industrial Street 1, #01-02 Northpoint Bizhub. Its Google Maps listing shows opening hours and customer ratings.",
+ "lede": "My Tyre Autoservice is a car workshop in Yishun Industrial Street 1. Its own website lists servicing and repair, tyres, battery testing and replacement and car detailing.",
  "chips": [
-  "Car repair"
+  "Servicing and repair",
+  "Tyres",
+  "Battery testing and replacement"
  ],
  "services": [
-  "General servicing and repair"
+  "Servicing and repair",
+  "Tyres",
+  "Battery testing and replacement",
+  "Car detailing",
+  "Grooming and polishing"
  ],
  "themes": "Customers on Google Maps mention quick tyre patching, oil changes and routine servicing, clear explanations and no unneeded work.",
- "faqs": [
-  [
-   "What does My Tyre Autoservice do?",
-   "Google Maps lists it as a car repair workshop."
-  ],
-  [
-   "What are the opening hours?",
-   "The hours are listed in the Google Maps section above. Please see Google Maps for current hours."
-  ]
- ],
- "sources": "its Google Maps listing",
+ "sources": "its own website (mytyreautoservice.sg)",
  "stories": [],
  "mentioned_services": [
   "Tyre puncture repair",
   "Engine oil change",
   "Regular servicing"
- ]
+ ],
+ "services_note": "Services as listed on the workshop's own website, mytyreautoservice.sg.",
+ "specialties": [
+  "Tyres and batteries"
+ ],
+ "card_rules": "2026-11-06",
+ "makes": [],
+ "makes_note": "Not listed on its public pages. Ask the workshop about your car."
 }

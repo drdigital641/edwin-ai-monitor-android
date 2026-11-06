@@ -1,28 +1,43 @@
 {
- "lede": "Team AutoPro is a car repair workshop at 160 Sin Ming Dr, #02-12 Sin Ming AutoCity. Its Google Maps listing shows opening hours, its website and customer ratings.",
+ "lede": "Team AutoPro is a car workshop in Sin Ming Industrial Estate. Its own website lists accident repair, insurance claims, vehicle inspection and EV servicing and repair.",
  "chips": [
-  "Car repair"
+  "Accident repair",
+  "Insurance claims",
+  "Vehicle inspection"
  ],
  "services": [
-  "General servicing and repair"
+  "Accident repair",
+  "Insurance claims",
+  "Vehicle inspection",
+  "EV servicing and repair",
+  "Spray painting",
+  "Aircon repair",
+  "Wheel alignment",
+  "Brake repair",
+  "Batteries",
+  "Diagnostic checks",
+  "Tyre repair",
+  "Fleet management"
  ],
  "themes": "Customers on Google Maps mention honest servicing advice with no pressure to spend, patient explanations, and help with towing and insurance claims after accidents.",
- "faqs": [
-  [
-   "What does Team AutoPro do?",
-   "Google Maps lists it as a car repair workshop."
-  ],
-  [
-   "What are the opening hours?",
-   "The hours are listed in the Google Maps section above. Please see Google Maps for current hours."
-  ]
- ],
- "sources": "its Google Maps listing",
+ "sources": "its own website (teamauto.sg)",
  "stories": [],
  "mentioned_services": [
   "Car servicing",
   "Accident repair and insurance claims",
   "Towing after accidents",
   "Rattle noise repair"
+ ],
+ "services_note": "Services as listed on the workshop's own website, teamauto.sg.",
+ "specialties": [
+  "Private and commercial garages",
+  "EV servicing"
+ ],
+ "card_rules": "2026-11-06",
+ "makes": [],
+ "makes_note": "Not listed on its public pages. Ask the workshop about your car.",
+ "good_to_know": [
+  "Its website mentions a warranty on its work",
+  "Online booking or enquiry form on its website"
  ]
 }

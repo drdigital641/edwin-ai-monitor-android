@@ -1,27 +1,42 @@
 {
- "lede": "Carswift Repair is a car repair workshop at 5 Soon Lee St, #01-56 Pioneer Point. Its Google Maps listing shows opening hours and customer ratings.",
+ "lede": "Carswift Repair is a car workshop in Soon Lee Street (Pioneer Point). Its own website lists mercedes-Benz servicing, commercial vehicle servicing, aircon servicing and wheel alignment.",
  "chips": [
-  "Car repair"
+  "Mercedes-Benz servicing",
+  "Commercial vehicle servicing",
+  "Aircon servicing"
  ],
  "services": [
-  "General servicing and repair"
+  "Mercedes-Benz servicing",
+  "Commercial vehicle servicing",
+  "Aircon servicing",
+  "Wheel alignment",
+  "Battery replacement",
+  "Engine oil change",
+  "Toyota servicing",
+  "BMW servicing",
+  "Honda servicing"
  ],
  "themes": "Customers on Google Maps mention servicing, an engine overhaul and a Mercedes fuel level sensor repair, in an indoor workshop on an upper floor.",
- "faqs": [
-  [
-   "What does Carswift Repair do?",
-   "Google Maps lists it as a car repair workshop."
-  ],
-  [
-   "What are the opening hours?",
-   "The hours are listed in the Google Maps section above. Please see Google Maps for current hours."
-  ]
- ],
- "sources": "its Google Maps listing",
+ "sources": "its own website (carswiftrepair.sg)",
  "stories": [],
  "mentioned_services": [
   "Car servicing",
   "Engine overhaul",
   "Mercedes-Benz cars"
+ ],
+ "services_note": "Services as listed on the workshop's own website, carswiftrepair.sg.",
+ "specialties": [
+  "All-brand servicing in Jurong"
+ ],
+ "card_rules": "2026-11-06",
+ "makes": [
+  "Mercedes-Benz",
+  "Toyota",
+  "BMW",
+  "Honda"
+ ],
+ "makes_note": "Named on its own website. Ask the workshop about other makes.",
+ "good_to_know": [
+  "Enquiries by WhatsApp, according to its website"
  ]
 }

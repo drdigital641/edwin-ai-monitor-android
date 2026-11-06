@@ -1,27 +1,35 @@
 {
- "lede": "ACM Service Center is a car repair workshop at 10 Ang Mo Kio Industrial Park 2A,, #03-16, AMK Autopoint. Its Google Maps listing shows opening hours and customer ratings.",
+ "lede": "ACM Service Center is a car workshop in Ang Mo Kio Industrial Park 2. Its own website lists car servicing, diagnostics, body repair and accident claims.",
  "chips": [
-  "Car repair"
+  "Car servicing",
+  "Diagnostics",
+  "Body repair"
  ],
  "services": [
-  "General servicing and repair"
+  "Car servicing",
+  "Diagnostics",
+  "Body repair",
+  "Accident claims",
+  "Automotive painting",
+  "Towing"
  ],
  "themes": "Customers on Google Maps mention years of regular servicing, on-time delivery, a quick boot latch repair and oil change packages bought online.",
- "faqs": [
-  [
-   "What does ACM Service Center do?",
-   "Google Maps lists it as a car repair workshop."
-  ],
-  [
-   "What are the opening hours?",
-   "The hours are listed in the Google Maps section above. Please see Google Maps for current hours."
-  ]
- ],
- "sources": "its Google Maps listing",
+ "sources": "its own website (acmautomotive.com.sg)",
  "stories": [],
  "mentioned_services": [
   "Regular servicing",
   "Oil change",
   "Servicing packages"
+ ],
+ "services_note": "Services as listed on the workshop's own website, acmautomotive.com.sg.",
+ "specialties": [
+  "Brakes, exhaust, steering and suspension repair",
+  "Accident repairs and insurance claims"
+ ],
+ "card_rules": "2026-11-06",
+ "makes": [],
+ "makes_note": "Not listed on its public pages. Ask the workshop about your car.",
+ "good_to_know": [
+  "Its website mentions a warranty on its work"
  ]
 }

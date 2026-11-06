@@ -1,26 +1,28 @@
 {
- "lede": "Mobil Sunguan Auto Centre is a car repair workshop at 611 Aljunied Rd. Its Google Maps listing shows opening hours and customer ratings.",
+ "lede": "Mobil Sunguan Auto Centre is a car workshop in MacPherson Road. Its own website lists oil change, repair service, car restoration and two-wheeler repair.",
  "chips": [
-  "Car repair"
+  "Oil change",
+  "Repair service",
+  "Car restoration"
  ],
  "services": [
-  "General servicing and repair"
+  "Oil change",
+  "Repair service",
+  "Car restoration",
+  "Two-wheeler repair"
  ],
  "themes": "Customers on Google Maps mention car maintenance, second opinions on repairs and parking space. One customer noted that payment is cash only.",
- "faqs": [
-  [
-   "What does Mobil Sunguan Auto Centre do?",
-   "Google Maps lists it as a car repair workshop."
-  ],
-  [
-   "What are the opening hours?",
-   "The hours are listed in the Google Maps section above. Please see Google Maps for current hours."
-  ]
- ],
- "sources": "its Google Maps listing",
+ "sources": "its own website (workshop.sea.mobil.com)",
  "stories": [],
  "mentioned_services": [
   "Car servicing",
   "Second opinion on repairs"
- ]
+ ],
+ "services_note": "Services as listed on the workshop's own website, workshop.sea.mobil.com.",
+ "specialties": [
+  "Mobil oil products"
+ ],
+ "card_rules": "2026-11-06",
+ "makes": [],
+ "makes_note": "Not listed on its public pages. Ask the workshop about your car."
 }

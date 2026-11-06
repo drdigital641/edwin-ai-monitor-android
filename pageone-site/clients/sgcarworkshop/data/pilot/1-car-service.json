@@ -1,23 +1,22 @@
 {
- "lede": "1 Car Service is a car repair workshop at 160 Sin Ming Dr, #03-07 Sin Ming Autocity. Its Google Maps listing shows opening hours, its website and customer ratings.",
+ "lede": "1 Car Service is a car workshop in Sin Ming Industrial Estate. Its own website lists gearbox overhaul, engine overhaul, diagnostics and electrical and car aircon service.",
  "chips": [
-  "Car repair"
+  "Gearbox overhaul",
+  "Engine overhaul",
+  "Diagnostics and electrical"
  ],
  "services": [
-  "General servicing and repair"
+  "Gearbox overhaul",
+  "Engine overhaul",
+  "Diagnostics and electrical",
+  "Car aircon service",
+  "Car servicing",
+  "Hybrid battery repair",
+  "ECU repair",
+  "Mechatronic unit repair"
  ],
  "themes": "Customers on Google Maps mention careful diagnosis, clear updates and photos of worn parts before any work starts. Several mention Audi and Volvo cars, with jobs such as servicing, oil leaks, brakes, radiator fans and walnut blasting.",
- "faqs": [
-  [
-   "What does 1 Car Service do?",
-   "Google Maps lists it as a car repair workshop."
-  ],
-  [
-   "What are the opening hours?",
-   "The hours are listed in the Google Maps section above. Please see Google Maps for current hours."
-  ]
- ],
- "sources": "its Google Maps listing",
+ "sources": "its own website (1car.sg)",
  "stories": [],
  "mentioned_services": [
   "Car servicing",
@@ -26,5 +25,26 @@
   "Radiator fan replacement",
   "Walnut blasting",
   "Audi and Volvo cars"
+ ],
+ "services_note": "Services as listed on the workshop's own website, 1car.sg.",
+ "specialties": [
+  "Continental cars",
+  "Gearbox rebuilds"
+ ],
+ "card_rules": "2026-11-06",
+ "makes": [
+  "Porsche",
+  "Mercedes",
+  "BMW",
+  "Audi",
+  "Volkswagen",
+  "Toyota",
+  "Honda",
+  "Lexus"
+ ],
+ "makes_note": "Named on its own website. Ask the workshop about other makes.",
+ "good_to_know": [
+  "Enquiries by WhatsApp, according to its website",
+  "Its website mentions a warranty on its work"
  ]
 }

@@ -1,27 +1,44 @@
 {
- "lede": "Caltex Havoline autoPro Workshop Yishun By Motoserv is a car repair workshop at Caltex, 3700 Yishun Ring Rd. Its Google Maps listing shows opening hours and customer ratings.",
+ "lede": "Caltex Havoline autoPro Workshop Yishun By Motoserv is a car workshop in Yishun Ring Road. Its own website lists maintenance packages, car repair, accident claim assistance and pick-up and drop-off.",
  "chips": [
-  "Car repair"
+  "Maintenance packages",
+  "Car repair",
+  "Accident claim assistance"
  ],
  "services": [
-  "General servicing and repair"
+  "Maintenance packages",
+  "Car repair",
+  "Accident claim assistance",
+  "Pick-up and drop-off",
+  "On-site battery replacement",
+  "Tyre patching"
  ],
  "themes": "Customers on Google Maps mention a workshop inside the petrol station with parking and an air-conditioned waiting lounge, undercarriage noise checks, idle vibration fixes and battery help.",
- "faqs": [
-  [
-   "What does Caltex Havoline autoPro Workshop Yishun By Motoserv do?",
-   "Google Maps lists it as a car repair workshop."
-  ],
-  [
-   "What are the opening hours?",
-   "The hours are listed in the Google Maps section above. Please see Google Maps for current hours."
-  ]
- ],
- "sources": "its Google Maps listing",
+ "sources": "its own website (autodgarage.com)",
  "stories": [],
  "mentioned_services": [
   "Undercarriage noise diagnosis",
   "Battery replacement",
   "Fault diagnosis"
+ ],
+ "services_note": "Services as listed on the workshop's own website, autodgarage.com.",
+ "specialties": [
+  "Genuine parts",
+  "All makes and models"
+ ],
+ "card_rules": "2026-11-06",
+ "makes": [
+  "Mercedes-Benz",
+  "Mini Cooper",
+  "Jaguar",
+  "Volvo",
+  "Kia",
+  "Porsche",
+  "BMW",
+  "Honda"
+ ],
+ "makes_note": "Named on its own website. Ask the workshop about other makes.",
+ "good_to_know": [
+  "Its website mentions a warranty on its work"
  ]
 }

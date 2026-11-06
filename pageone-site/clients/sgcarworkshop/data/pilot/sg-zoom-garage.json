@@ -1,27 +1,29 @@
 {
- "lede": "SG Zoom Garage is a car repair workshop at 53 Ubi Ave 1, #01-43. Its Google Maps listing shows opening hours and customer ratings.",
+ "lede": "SG Zoom Garage is a car workshop in Paya Ubi Industrial Park. Its own website lists accident claim repairs and panel beating.",
  "chips": [
-  "Car repair"
+  "Accident claim repairs",
+  "Panel beating"
  ],
  "services": [
-  "General servicing and repair"
+  "Accident claim repairs",
+  "Panel beating"
  ],
- "faqs": [
-  [
-   "What does SG Zoom Garage do?",
-   "Google Maps lists it as a car repair workshop."
-  ],
-  [
-   "What are the opening hours?",
-   "The hours are listed in the Google Maps section above. Please see Google Maps for current hours."
-  ]
- ],
- "sources": "its Google Maps listing",
+ "sources": "its own website (sgzoomgarage.com)",
  "stories": [],
  "mentioned_services": [
   "Accident repair and insurance claims",
   "Walk-in visits without appointment",
   "Quick fault diagnosis"
  ],
- "themes": "Customers on Google Maps mention accident reporting, insurance claims and damage repair, fast diagnosis and walk-in visits."
+ "themes": "Customers on Google Maps mention accident reporting, insurance claims and damage repair, fast diagnosis and walk-in visits.",
+ "services_note": "Services as listed on the workshop's own website, sgzoomgarage.com.",
+ "specialties": [
+  "Accident claims"
+ ],
+ "card_rules": "2026-11-06",
+ "makes": [],
+ "makes_note": "Not listed on its public pages. Ask the workshop about your car.",
+ "good_to_know": [
+  "Enquiries by WhatsApp, according to its website"
+ ]
 }

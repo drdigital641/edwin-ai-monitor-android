@@ -1,28 +1,38 @@
 {
- "lede": "TYREPLUS Toh Guan is a car repair workshop at 48 Toh Guan Rd E, #01-102. Its Google Maps listing shows opening hours and customer ratings.",
+ "lede": "TYREPLUS Toh Guan is a car workshop in Toh Guan Road East and Enterprise Hub. Its own website lists tyre replacement, puncture repair, wheel alignment and engine oil servicing.",
  "chips": [
-  "Car repair"
+  "Tyre replacement",
+  "Puncture repair",
+  "Wheel alignment"
  ],
  "services": [
-  "General servicing and repair"
+  "Tyre replacement",
+  "Puncture repair",
+  "Wheel alignment",
+  "Engine oil servicing",
+  "Car battery replacement",
+  "Brake servicing",
+  "Aircon chemical wash",
+  "Shock absorber replacement"
  ],
  "themes": "Customers on Google Maps mention fast tyre changes, help choosing tyres, tyre rotation and balancing, puncture checks at no charge when no repair was needed, and servicing without hard selling.",
- "faqs": [
-  [
-   "What does TYREPLUS Toh Guan do?",
-   "Google Maps lists it as a car repair workshop."
-  ],
-  [
-   "What are the opening hours?",
-   "The hours are listed in the Google Maps section above. Please see Google Maps for current hours."
-  ]
- ],
- "sources": "its Google Maps listing",
+ "sources": "its own website (citytyre.com.sg)",
  "stories": [],
  "mentioned_services": [
   "Tyre replacement",
   "Tyre rotation and balancing",
   "Puncture check",
   "Car servicing"
+ ],
+ "services_note": "Services as listed on the workshop's own website, citytyre.com.sg.",
+ "specialties": [
+  "Tyres",
+  "Brembo performance brakes"
+ ],
+ "card_rules": "2026-11-06",
+ "makes": [],
+ "makes_note": "Not listed on its public pages. Ask the workshop about your car.",
+ "good_to_know": [
+  "Enquiries by WhatsApp, according to its website"
  ]
 }

@@ -1,26 +1,30 @@
 {
- "lede": "Sunrise Auto Services is a car repair workshop at Blk 15 Defu Lane 10, #01-392. Its Google Maps listing shows opening hours and customer ratings.",
+ "lede": "Sunrise Auto Services is a car workshop in Defu Industrial Estate (Defu Lane). Its own website lists maintenance and servicing, diagnostics, gearbox repairs and overhauls and brake repairs.",
  "chips": [
-  "Car repair"
+  "Maintenance and servicing",
+  "Diagnostics",
+  "Gearbox repairs and overhauls"
  ],
  "services": [
-  "General servicing and repair"
+  "Maintenance and servicing",
+  "Diagnostics",
+  "Gearbox repairs and overhauls",
+  "Brake repairs",
+  "Engine repairs",
+  "Suspension and steering"
  ],
  "themes": "Customers on Google Maps mention clear explanations with prices upfront, a waiting lounge, help moving an OBU display that blocked the view, and a quick fix for a badly vibrating car.",
- "faqs": [
-  [
-   "What does Sunrise Auto Services do?",
-   "Google Maps lists it as a car repair workshop."
-  ],
-  [
-   "What are the opening hours?",
-   "The hours are listed in the Google Maps section above. Please see Google Maps for current hours."
-  ]
- ],
- "sources": "its Google Maps listing",
+ "sources": "its own website (sunriseauto.com.sg)",
  "stories": [],
  "mentioned_services": [
   "Fault diagnosis",
   "OBU installation"
- ]
+ ],
+ "services_note": "Services as listed on the workshop's own website, sunriseauto.com.sg.",
+ "specialties": [
+  "Gearbox overhauls"
+ ],
+ "card_rules": "2026-11-06",
+ "makes": [],
+ "makes_note": "Not listed on its public pages. Ask the workshop about your car."
 }

@@ -1,10 +1,20 @@
 {
- "lede": "MTM Group is a car repair workshop at 53 Ubi Ave 1, #01-23 Paya Ubi Industrial Park. Its Google Maps listing shows opening hours, its website and customer ratings.",
+ "lede": "MTM Group is a car workshop. Its own website calls it a one-stop car workshop, with servicing packages, repairs and maintenance, accident claims, spray painting, modifications and car sales.",
  "chips": [
-  "Car repair"
+  "Servicing",
+  "Accident claims",
+  "Performance mods"
  ],
  "services": [
-  "General servicing and repair"
+  "Car servicing packages",
+  "Repair and maintenance",
+  "Accident claims",
+  "Spray painting",
+  "Performance and aesthetic modifications",
+  "Tinting",
+  "Aircon servicing",
+  "Engine diagnostics",
+  "Car sales"
  ],
  "themes": "Customers on Google Maps mention efficient servicing and a clean, comfortable place to wait. Only 2 people have rated it so far.",
  "faqs": [
@@ -17,9 +27,21 @@
    "The hours are listed in the Google Maps section above. Please see Google Maps for current hours."
   ]
  ],
- "sources": "its Google Maps listing",
+ "sources": "its own website (mtm.sg)",
  "stories": [],
  "mentioned_services": [
   "Car servicing"
- ]
+ ],
+ "services_note": "Services as listed on the workshop's own website, mtm.sg.",
+ "specialties": [
+  "Performance modifications",
+  "Accident claims"
+ ],
+ "makes": [],
+ "makes_note": "Not listed on its public pages. Ask the workshop about your car.",
+ "good_to_know": [
+  "Its website mentions an MTM Warranty on repair and maintenance work",
+  "Also sells new and used cars, according to its website"
+ ],
+ "card_rules": "2026-11-06"
 }

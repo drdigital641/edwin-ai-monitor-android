@@ -1,27 +1,40 @@
 {
- "lede": "TTS Eurocars Service Centre is a car repair workshop at 272 MacPherson Rd. Its Google Maps listing shows opening hours and customer ratings.",
+ "lede": "TTS Eurocars Service Centre is a car workshop in MacPherson Road. Its own website lists after sales service, car wrap, detailing and leasing and rental.",
  "chips": [
-  "Car repair"
+  "After sales service",
+  "Car wrap",
+  "Detailing"
  ],
  "services": [
-  "General servicing and repair"
+  "After sales service",
+  "Car wrap",
+  "Detailing",
+  "Leasing and rental",
+  "Insurance",
+  "Financing"
  ],
  "themes": "Customers on Google Maps mention servicing without upselling, quick fault finding and a minor aircon fix.",
- "faqs": [
-  [
-   "What does TTS Eurocars Service Centre do?",
-   "Google Maps lists it as a car repair workshop."
-  ],
-  [
-   "What are the opening hours?",
-   "The hours are listed in the Google Maps section above. Please see Google Maps for current hours."
-  ]
- ],
- "sources": "its Google Maps listing",
+ "sources": "its own website (tts.com.sg)",
  "stories": [],
  "mentioned_services": [
   "Car servicing",
   "Fault diagnosis",
   "Aircon repair"
- ]
+ ],
+ "services_note": "Services as listed on the workshop's own website, tts.com.sg.",
+ "specialties": [
+  "Full-electric and plug-in hybrid cars"
+ ],
+ "card_rules": "2026-11-06",
+ "makes": [
+  "Porsche",
+  "Mercedes-Benz",
+  "BMW",
+  "Audi",
+  "Bentley",
+  "Mini",
+  "Honda",
+  "Toyota"
+ ],
+ "makes_note": "Named on its own website. Ask the workshop about other makes."
 }

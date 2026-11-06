@@ -1,27 +1,36 @@
 {
- "lede": "Sin Heng Long Motor Work is a car repair workshop at 5032 Ang Mo Kio Ind Park 2, #01-305. Its Google Maps listing shows opening hours and customer ratings.",
+ "lede": "Sin Heng Long Motor Work is a car workshop in Ang Mo Kio Industrial Park 2. Its own website lists car spray painting, auto body repair, accident repair and insurance claims.",
  "chips": [
-  "Car repair"
+  "Car spray painting",
+  "Auto body repair",
+  "Accident repair"
  ],
  "services": [
-  "General servicing and repair"
+  "Car spray painting",
+  "Auto body repair",
+  "Accident repair",
+  "Insurance claims",
+  "Car towing",
+  "Detailing and ceramic coating",
+  "Industrial spray painting"
  ],
  "themes": "Customers on Google Maps mention body repair and spray painting, accident resprays, wrap removal with a full respray, and clear explanations of the work and downtime.",
- "faqs": [
-  [
-   "What does Sin Heng Long Motor Work do?",
-   "Google Maps lists it as a car repair workshop."
-  ],
-  [
-   "What are the opening hours?",
-   "The hours are listed in the Google Maps section above. Please see Google Maps for current hours."
-  ]
- ],
- "sources": "its Google Maps listing",
+ "sources": "its own website (sinhenglong.com)",
  "stories": [],
  "mentioned_services": [
   "Spray painting",
   "Accident repair and repaint",
   "Full car respray"
+ ],
+ "services_note": "Services as listed on the workshop's own website, sinhenglong.com.",
+ "specialties": [
+  "Spray painting"
+ ],
+ "card_rules": "2026-11-06",
+ "makes": [],
+ "makes_note": "Not listed on its public pages. Ask the workshop about your car.",
+ "good_to_know": [
+  "Established in 1979, according to its website",
+  "Enquiries by WhatsApp, according to its website"
  ]
 }

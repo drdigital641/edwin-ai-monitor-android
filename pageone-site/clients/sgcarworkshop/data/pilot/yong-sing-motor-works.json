@@ -1,25 +1,26 @@
 {
- "lede": "Yong Sing Motor Works is a car repair workshop at Block 8 Defu South Street 1, #04-27. Its Google Maps listing shows opening hours and customer ratings.",
+ "lede": "Yong Sing Motor Works is a car workshop in Kaki Bukit Industrial Estate. Its own website lists engine repair and maintenance, spray painting, insurance claim services and accessory installation.",
  "chips": [
-  "Car repair"
+  "Engine repair and maintenance",
+  "Spray painting",
+  "Insurance claim services"
  ],
  "services": [
-  "General servicing and repair"
+  "Engine repair and maintenance",
+  "Spray painting",
+  "Insurance claim services",
+  "Accessory installation",
+  "Fabrication works"
  ],
  "themes": "Customers on Google Maps mention OBU installation, including on a Volkswagen Beetle, WhatsApp bookings, help on where to place the display and a window switch fix.",
- "faqs": [
-  [
-   "What does Yong Sing Motor Works do?",
-   "Google Maps lists it as a car repair workshop."
-  ],
-  [
-   "What are the opening hours?",
-   "The hours are listed in the Google Maps section above. Please see Google Maps for current hours."
-  ]
- ],
- "sources": "its Google Maps listing",
+ "sources": "its own website (yongsingmotor.com)",
  "stories": [],
  "mentioned_services": [
   "OBU installation"
- ]
+ ],
+ "services_note": "Services as listed on the workshop's own website, yongsingmotor.com.",
+ "specialties": [],
+ "card_rules": "2026-11-06",
+ "makes": [],
+ "makes_note": "Not listed on its public pages. Ask the workshop about your car."
 }

@@ -1,23 +1,21 @@
 {
- "lede": "Lay Auto Garage is a car repair workshop at 48 Toh Guan Rd E, #02-103/104 Block No 48. Its Google Maps listing shows opening hours and customer ratings.",
+ "lede": "Lay Auto Garage is a car workshop in Toh Guan Road East and Enterprise Hub. Its own website lists workshop servicing and repairs, diagnostics, pre-owned car sales and trade-ins.",
  "chips": [
-  "Car repair"
+  "Workshop servicing and repairs",
+  "Diagnostics",
+  "Pre-owned car sales"
  ],
  "services": [
-  "General servicing and repair"
+  "Workshop servicing and repairs",
+  "Diagnostics",
+  "Pre-owned car sales",
+  "Trade-ins",
+  "Leasing",
+  "Financing",
+  "Export"
  ],
  "themes": "Customers on Google Maps mention towed-in breakdown repairs, coolant system fixes, detailed quotes before work starts and realistic advice on cost and timing.",
- "faqs": [
-  [
-   "What does Lay Auto Garage do?",
-   "Google Maps lists it as a car repair workshop."
-  ],
-  [
-   "What are the opening hours?",
-   "The hours are listed in the Google Maps section above. Please see Google Maps for current hours."
-  ]
- ],
- "sources": "its Google Maps listing",
+ "sources": "its own website (layauto.sg)",
  "stories": [],
  "mentioned_services": [
   "Breakdown repair",
@@ -25,5 +23,14 @@
   "MINI cars",
   "OBU installation",
   "Car servicing"
+ ],
+ "services_note": "Services as listed on the workshop's own website, layauto.sg.",
+ "specialties": [],
+ "card_rules": "2026-11-06",
+ "makes": [],
+ "makes_note": "Not listed on its public pages. Ask the workshop about your car.",
+ "good_to_know": [
+  "Established in 1998, according to its website",
+  "Online booking or enquiry form on its website"
  ]
 }
