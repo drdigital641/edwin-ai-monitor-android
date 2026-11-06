@@ -494,6 +494,37 @@ def home():
          'Find car workshops in Singapore by service and region: repair, gearbox, ABS and ECU, spray painting, batteries, detailing, wraps and parts.', body, ld)
 
 
+def site_cat_matches(cat, skip=()):
+    """Live Basic cards whose OWN website (card rules v2) lists work for this service category, matched with the shared tag regex.
+    Added 6 Nov 2026 for internal links (Edwin: link /services/ and /areas/ pages to matching cards, from card data only)."""
+    tg = [t for t in _tags.TAGS if t['kind'] == 'service' and t.get('cat') == cat]
+    if not tg:
+        return []
+    rx = re.compile('|'.join('(?:%s)' % t['rx'] for t in tg), re.I)
+    out = []
+    for e in ENTRIES:
+        pl = PILOT.get(e['slug']) or {}
+        if e['tier'] != 'free' or e['slug'] in skip or not pl.get('card_rules') or 'own website' not in (pl.get('sources') or ''):
+            continue
+        if any(rx.search(x) for x in list(pl.get('services') or []) + list(pl.get('specialties') or [])):
+            out.append(e)
+    return out
+
+
+def links_by_estate(es, depth, cat=None):
+    """'<estate>: workshop, workshop' lines linking to each card, grouped by estate (internal links, 6 Nov 2026)."""
+    groups = {}
+    for e in es:
+        if e['tier'] == 'free' and e.get('estate') in ESTATES:
+            groups.setdefault(e['estate'], []).append(e)
+    rows = []
+    for k in sorted(groups, key=lambda k: ESTATES[k]['name']):
+        href = ('%sareas/%s/%s/' % (pre(depth), k, cat)) if cat and (k, cat) in PUB_PAIRS else '%sareas/%s/' % (pre(depth), k)
+        rows.append('<li><a href="%s"><b>%s</b></a>: %s</li>' % (href, E(ESTATES[k]['name']), ', '.join(
+            '<a href="%sworkshops/%s/">%s</a>' % (pre(depth), e['slug'], E(e['name'])) for e in sorted(groups[k], key=lambda x: x['name'].lower()))))
+    return '<ul class="tick svc-plain bylinks">%s</ul>' % ''.join(rows) if rows else ''
+
+
 def category(c):
     depth = 2
     es = [e for e in ENTRIES if c['slug'] in e.get('categories', [e['category']])]
@@ -504,6 +535,12 @@ def category(c):
 <section class="hero" style="padding-top:20px"><div class="w"><h1>{E(c['name'])} in Singapore</h1><p class="lede">{E(c['intro'])}</p>{chip_row(depth, c['slug'])}</div></section>
 {featured_sec(es, depth, 'services/%s/' % c['slug'], 'in ' + c['short'].lower())}
 <section><div class="w"><h2 class="rv">Listings</h2><div class="grid">{''.join(card(e, depth, 'services/%s/' % c['slug']) for e in es if not is_paid(e))}{list_card(depth, c['short'].lower())}</div></div></section>'''
+    _bl = links_by_estate(es, depth, c['slug'])
+    if _bl:
+        body += '<section><div class="w nar"><h2>%s workshops by area</h2><p>Every listed workshop for %s, grouped by industrial estate. Tap a name for its page with address, hours, WhatsApp and Call.</p>%s</div></section>' % (E(c['name']), E(c['name'].lower().replace('abs, ecu', 'ABS, ECU').replace('ppf', 'PPF')), _bl)
+    _sm = site_cat_matches(c['slug'], {e['slug'] for e in es})
+    if _sm:
+        body += '<section><div class="w nar"><h2>Also listed on their own websites</h2><p>These workshops are filed under another service here, but their own website includes %s among its services: %s.</p></div></section>' % (E(c['name'].lower().replace('abs, ecu', 'ABS, ECU').replace('ppf', 'PPF')), and_list('<a href="%sworkshops/%s/">%s</a> (%s)' % (pre(depth), e['slug'], E(e['name']), E(ESTATES[e['estate']]['name'])) for e in sorted(_sm, key=lambda x: x['name'].lower())))
     sc = SERVICE_COPY.get(c['slug']); sfaqs = []
     if sc:   # audit 4 Nov 2026: service pages get a guide section, not only listings
         gl = [g for g in _guides.GUIDES if g['slug'] in sc['guides']]
@@ -629,6 +666,25 @@ def town_hub(slug):
          [dict(crld, **{'@context': 'https://schema.org'})], h1=h1, index=len(ests) >= 2 and total >= MIN_FREE, why='town hub with one estate or fewer than %d free workshops' % MIN_FREE)
 
 
+def estate_by_service(slug, es, depth):
+    """Estate page: which listed workshops here cover each service, from card data (category, customer mentions, own website). 6 Nov 2026."""
+    a = ESTATES[slug]; free = [e for e in es if e['tier'] == 'free']; rows = []
+    for c in CATEGORIES:
+        cat = c['slug']
+        if cat == 'general-servicing-repair':
+            continue
+        hit = [e for e in free if cat in e.get('categories', [e['category']])]
+        site = [e for e in site_cat_matches(cat, {x['slug'] for x in hit}) if e.get('estate') == slug]
+        allx = sorted(hit + site, key=lambda x: x['name'].lower())
+        if not allx:
+            continue
+        lead = ('<a href="%s/">%s</a>' % (cat, E(c['name']))) if (slug, cat) in PUB_PAIRS else E(c['name'])
+        rows.append('<li><b>%s</b>: %s</li>' % (lead, ', '.join('<a href="%sworkshops/%s/">%s</a>' % (pre(depth), e['slug'], E(e['name'])) for e in allx)))
+    if not rows:
+        return ''
+    return ('<section><div class="w nar"><h2>Workshops in %s by service</h2><p>From each workshop\'s listing: its main service, what customers mention on Google Maps, or what its own website lists. Ask the workshop to confirm before you go.</p><ul class="tick svc-plain bylinks">%s</ul></div></section>') % (E(a['name']), ''.join(rows))
+
+
 def estate(slug, es):
     """Level 2: /areas/<estate>/  (main local SEO page)"""
     depth = 2
@@ -681,6 +737,7 @@ def estate(slug, es):
 {about_html}
 {featured_sec(paid_es, depth, 'areas/%s/' % slug, 'in ' + a['name'])}
 <section class="alt"><div class="w"><h2>Workshops in {E(a['name'])}</h2>{order_note}{etools}<div class="grid" id="estate-grid">{''.join(card(e, depth, 'areas/%s/' % slug) for e in es if not is_paid(e))}{list_card(depth, 'car workshop in ' + a['name'])}</div>{shortlist_links(es, a['name'])}</div></section>
+{estate_by_service(slug, es, depth)}
 <section class="alt"><div class="w"><h2>Map of {E(a['name'])}</h2>
 <div class="mapbox"><iframe src="{E(map_src)}" title="Map of {E(a['name'], True)}" loading="lazy" referrerpolicy="strict-origin-when-cross-origin"></iframe></div>
 <p class="fine">Approximate area map from OpenStreetMap. <a href="{E(map_big)}" target="_blank" rel="noopener">View a larger map</a>. Use the Directions button on a workshop for its exact address.</p></div></section>

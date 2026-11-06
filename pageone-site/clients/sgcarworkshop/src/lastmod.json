@@ -11,33 +11,33 @@
 },
 "areas/amk-industrial-park-2/": {
 "d": "2026-11-06",
-"h": "4aab5ea399cb",
-"h2": "4aab5ea399cb"
+"h": "cb6fa4f9c245",
+"h2": "cb6fa4f9c245"
 },
 "areas/bukit-batok-crescent/": {
 "d": "2026-11-06",
-"h": "6f53ef909831",
-"h2": "6f53ef909831"
+"h": "1eeaa42bff41",
+"h2": "1eeaa42bff41"
 },
 "areas/bukit-merah-lane-3/": {
 "d": "2026-11-06",
-"h": "545225eae1ce",
-"h2": "545225eae1ce"
+"h": "2d40e34755cc",
+"h2": "2d40e34755cc"
 },
 "areas/carros-centre-jalan-lam-huat/": {
 "d": "2026-11-06",
-"h": "92703264f453",
-"h2": "92703264f453"
+"h": "91d6dc350b17",
+"h2": "91d6dc350b17"
 },
 "areas/corporation-drive-jurong-east/": {
 "d": "2026-11-06",
-"h": "9fca099a1af5",
-"h2": "9fca099a1af5"
+"h": "997c26cce7de",
+"h2": "997c26cce7de"
 },
 "areas/defu-industrial-estate/": {
 "d": "2026-11-06",
-"h": "35fbe23daf55",
-"h2": "35fbe23daf55"
+"h": "098991a1efea",
+"h2": "098991a1efea"
 },
 "areas/jurong-west/": {
 "d": "2026-11-06",
@@ -46,8 +46,8 @@
 },
 "areas/kaki-bukit-industrial-estate/": {
 "d": "2026-11-06",
-"h": "0b6bde32c295",
-"h2": "0b6bde32c295"
+"h": "5cc688497aa2",
+"h2": "5cc688497aa2"
 },
 "areas/kaki-bukit-industrial-estate/car-aircon-repair/": {
 "d": "2026-11-06",
@@ -61,33 +61,33 @@
 },
 "areas/loyang-way/": {
 "d": "2026-11-06",
-"h": "62d76af62870",
-"h2": "62d76af62870"
+"h": "57bbb8577a75",
+"h2": "57bbb8577a75"
 },
 "areas/macpherson-road/": {
 "d": "2026-11-06",
-"h": "c34b6871b119",
-"h2": "c34b6871b119"
+"h": "0ebc4386b3d4",
+"h2": "0ebc4386b3d4"
 },
 "areas/paya-ubi-industrial-park/": {
 "d": "2026-11-06",
-"h": "01f9d7fd0c79",
-"h2": "01f9d7fd0c79"
+"h": "e4282c18acb4",
+"h2": "e4282c18acb4"
 },
 "areas/sin-ming-industrial-estate/": {
 "d": "2026-11-06",
-"h": "d1c6da62e104",
-"h2": "d1c6da62e104"
+"h": "231f85d05cfd",
+"h2": "231f85d05cfd"
 },
 "areas/soon-lee-street-pioneer/": {
 "d": "2026-11-06",
-"h": "c69475450f54",
-"h2": "c69475450f54"
+"h": "c1ef7810e699",
+"h2": "c1ef7810e699"
 },
 "areas/toh-guan-enterprise-hub/": {
 "d": "2026-11-06",
-"h": "95f33e43f98f",
-"h2": "95f33e43f98f"
+"h": "af1861561789",
+"h2": "af1861561789"
 },
 "areas/toh-guan-jurong-east/": {
 "d": "2026-11-06",
@@ -105,14 +105,14 @@
 "h2": "8dc695a2cfe3"
 },
 "areas/yishun-industrial-park-a/": {
-"d": "2026-11-04",
-"h": "8f551788655a",
-"h2": "8f551788655a"
+"d": "2026-11-06",
+"h": "a781f747cfc3",
+"h2": "a781f747cfc3"
 },
 "areas/yishun-industrial-street-1/": {
 "d": "2026-11-06",
-"h": "14cf9237e39c",
-"h2": "14cf9237e39c"
+"h": "fe3f05167630",
+"h2": "fe3f05167630"
 },
 "areas/yishun/": {
 "d": "2026-11-06",
@@ -191,33 +191,33 @@
 },
 "services/car-aircon-repair/": {
 "d": "2026-11-06",
-"h": "57577dc33d05",
-"h2": "57577dc33d05"
+"h": "ef695360d884",
+"h2": "ef695360d884"
 },
 "services/car-battery/": {
 "d": "2026-11-06",
-"h": "fa3786da4d98",
-"h2": "fa3786da4d98"
+"h": "527f5ae5546d",
+"h2": "527f5ae5546d"
 },
 "services/car-detailing-coating/": {
 "d": "2026-11-06",
-"h": "7d903a1aedc6",
-"h2": "7d903a1aedc6"
+"h": "b8c44685eb4d",
+"h2": "b8c44685eb4d"
 },
 "services/gearbox-repair/": {
 "d": "2026-11-06",
-"h": "8504b10e232e",
-"h2": "8504b10e232e"
+"h": "04d82bd63035",
+"h2": "04d82bd63035"
 },
 "services/general-servicing-repair/": {
 "d": "2026-11-06",
-"h": "caa2d1c5caf0",
-"h2": "caa2d1c5caf0"
+"h": "c18527288115",
+"h2": "c18527288115"
 },
 "services/spray-painting-bodywork/": {
 "d": "2026-11-06",
-"h": "b4c33b2f1d87",
-"h2": "b4c33b2f1d87"
+"h": "2d0643f9ad9a",
+"h2": "2d0643f9ad9a"
 },
 "terms/": {
 "d": "2026-11-03",
