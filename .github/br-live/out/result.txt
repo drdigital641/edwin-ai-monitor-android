@@ -7,6 +7,15 @@ animations: spin/glow/hop
 track beacons after Call tap (test mode): 1
 after red tap, help in view: true
 after green tap, compare visible: true hash #compare
+price link href: #car-price
+after price link tap: box in view true, input focused s-in, compare hidden true
+raw HTML has H1 text: true, robots noindex: false, canonical: https://batteryrescue.sg/
+schema types on home: AutomotiveBusiness,Country,Place,Organization,Brand,ContactPoint,OpeningHoursSpecification,FAQPage,Question,Answer,WebPage,WebSite
+NAP on home: name true, tel +6581259169 true, 8125 9169 true
+rescue/ islandwide wording: true, old 2027 line gone: true
+articles/ islandwide wording: true, old 2027 line gone: true
+llms.txt islandwide wording: true, old 2027 line gone: true
+X-Robots-Tag header: null
 page errors: []
 reduced-motion red card animation: none
 area woodlands 200
@@ -21,4 +30,4 @@ rescue/ 200
 prices/ 200
 outlets/ 200
 sitemap.xml 200
-IndexNow ['https://batteryrescue.sg/']: 200
+IndexNow ['https://batteryrescue.sg/', 'https://batteryrescue.sg/rescue/', 'https://batteryrescue.sg/services/jump-start/', 'https://batteryrescue.sg/services/towing/', 'https://batteryrescue.sg/articles/', 'https://batteryrescue.sg/articles/car-wont-start-what-to-do/', 'https://batteryrescue.sg/articles/efb-vs-agm-vs-standard-battery/', 'https://batteryrescue.sg/articles/car-battery-flat-every-morning/', 'https://batteryrescue.sg/llms.txt']: 200
