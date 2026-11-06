@@ -1,0 +1,39 @@
+# SG Car Workshop
+
+> A directory of car workshops and car services in Singapore, run by Page One Singapore. Entries use details confirmed by each business. No rankings and no rating or review markup.
+
+Last updated: 2026-11-01
+
+## Services
+- [Spray painting and bodywork](https://pageonesingapore.com/preview/sgcarworkshop/services/spray-painting-bodywork/): Respray, colour change and body kit work in a spray booth.
+- [Gearbox repair](https://pageonesingapore.com/preview/sgcarworkshop/services/gearbox-repair/): Automatic gearbox diagnosis, repair, servicing and upgrades.
+- [ABS, ECU and module repair](https://pageonesingapore.com/preview/sgcarworkshop/services/abs-ecu-module-repair/): Repair of ABS pumps and control modules instead of costly replacement.
+- [Car battery replacement](https://pageonesingapore.com/preview/sgcarworkshop/services/car-battery/): Battery testing and replacement, at a workshop or where your car is.
+- [Car detailing and coating](https://pageonesingapore.com/preview/sgcarworkshop/services/car-detailing-coating/): Grooming, steam cleaning, fumigation and odour removal for your car.
+- [Car wrap and PPF](https://pageonesingapore.com/preview/sgcarworkshop/services/car-wrap-ppf/): Colour change wraps, paint protection film and window film.
+- [Car parts](https://pageonesingapore.com/preview/sgcarworkshop/services/car-parts/): Parts shops for specific makes, with models and part types to browse.
+- [General servicing and repair](https://pageonesingapore.com/preview/sgcarworkshop/services/general-servicing-repair/): Everyday servicing and repairs: battery checks, alternators, aircon and more.
+
+## Regions
+- [North region](https://pageonesingapore.com/preview/sgcarworkshop/regions/north/): Car workshops and services in the North region of Singapore, which takes in Yishun, Woodlands, Sembawang and Kranji. Some listings here are mobile or onsite and come to your car.
+- [North-East region](https://pageonesingapore.com/preview/sgcarworkshop/regions/north-east/): Car workshops and services in the North-East region of Singapore, including Ang Mo Kio, Hougang, Sengkang, Punggol and Serangoon.
+- [East region](https://pageonesingapore.com/preview/sgcarworkshop/regions/east/): Car workshops and services in the East region of Singapore, which includes the Kaki Bukit and Bedok car trade units.
+- [West region](https://pageonesingapore.com/preview/sgcarworkshop/regions/west/): Car workshops and services in the West region of Singapore, including Bukit Batok, Bukit Panjang and Boon Lay. Listings here are mobile services or have an outlet in the west.
+- [Central region](https://pageonesingapore.com/preview/sgcarworkshop/regions/central/): Car workshops and services in the Central region of Singapore, including Toa Payoh, Bukit Timah, Upper Thomson and the Jervois and Havelock Road areas.
+
+## Listings
+- [SG Garage](https://pageonesingapore.com/preview/sgcarworkshop/workshops/sg-garage/): General servicing and repair, Premium, Ang Mo Kio (own website: https://sggarage.com/)
+- [Jacky Gearbox](https://pageonesingapore.com/preview/sgcarworkshop/workshops/jacky-gearbox/): Gearbox repair, Premium, Woodlands and Kranji (own website: https://jackygearbox.com/)
+- [The ECU Clinic](https://pageonesingapore.com/preview/sgcarworkshop/workshops/the-ecu-clinic/): ABS, ECU and module repair, Premium, Kaki Bukit (own website: https://theecuclinicsg.com/)
+- [Wrapstar Autostyle](https://pageonesingapore.com/preview/sgcarworkshop/workshops/wrapstar-autostyle/): Car wrap and PPF, Premium, Yishun (own website: https://wrapstarautostyle.com/)
+- [Battery Rescue SG](https://pageonesingapore.com/preview/sgcarworkshop/workshops/battery-rescue-sg/): Car battery replacement, Premium, Onsite, north and north-east Singapore (own website: https://batteryrescue.sg/)
+- [Cleanic Detailing](https://pageonesingapore.com/preview/sgcarworkshop/workshops/cleanic-detailing/): Car detailing and coating, Premium, Mobile service, island-wide (own website: https://cleanicdetailing.com/)
+- [Autotex](https://pageonesingapore.com/preview/sgcarworkshop/workshops/autotex/): Car parts, Premium, Kaki Bukit (own website: https://autotexautoparts.com.sg/)
+- [Wei Car Spray Painting](https://pageonesingapore.com/preview/sgcarworkshop/workshops/wei-car-spray-painting/): Spray painting and bodywork, Verified listing, Yishun
+- [Everest Garage](https://pageonesingapore.com/preview/sgcarworkshop/workshops/everest-garage/): General servicing and repair, Basic listing, Kaki Bukit
+- [Hup Soon Lee Motor Service](https://pageonesingapore.com/preview/sgcarworkshop/workshops/hup-soon-lee-motor-service/): General servicing and repair, Basic listing, Yishun
+- [CYS Automobile Services](https://pageonesingapore.com/preview/sgcarworkshop/workshops/cys-automobile-services/): General servicing and repair, Basic listing, Woodlands
+
+## More
+- [List your workshop](https://pageonesingapore.com/preview/sgcarworkshop/list-your-workshop/)
+- [About](https://pageonesingapore.com/preview/sgcarworkshop/about/)
