@@ -619,6 +619,23 @@ def make_og():
     d.text((64, 502), 'WhatsApp +65 8221 5502', font=ImageFont.truetype(F % 'SemiBold', 27), fill=(90, 165, 255))
     im.save(os.path.join(OUT, 'assets', 'og.jpg'), quality=84, optimize=True)
 
+def brand_check():
+    """Stop the build if any page breaks the one-brand rule (McAfee fix, 6 Nov 2026)."""
+    import re, glob
+    bad = []
+    for f in glob.glob(os.path.join(OUT, '**', '*'), recursive=True):
+        if not f.endswith(('.html', '.txt', '.xml', '.webmanifest', '.js', '.css')): continue
+        t = open(f, encoding='utf-8', errors='ignore').read(); rel = os.path.relpath(f, OUT)
+        if re.search(r'jsdelivr|githubusercontent|github\.com/drdigital', t): bad.append(rel + ': jsdelivr/GitHub link')
+        if re.search(r'(?<!by )Volt Autocare(?! @| Pte)', t): bad.append(rel + ': bare "Volt Autocare"')
+        if f.endswith('.html'):
+            m = re.search(r'<title>(.*?)</title>', t, re.S)
+            if m and not m.group(1).strip().endswith('| ' + BRAND) and rel != '404.html': bad.append(rel + ': title not ending "| ' + BRAND + '"')
+            if '"@type":"Article"' in t.replace(' ', '') and BRAND not in t.split('"author"', 1)[-1][:200]: bad.append(rel + ': article author is not ' + BRAND)
+            if '"@type":"Article"' in t.replace(' ', '') and 'By the ' + BRAND + ' team' not in t: bad.append(rel + ': article byline missing')
+    if bad: sys.exit('BRAND CHECK FAILED, do not upload:\n  ' + '\n  '.join(bad))
+    print('brand check OK: one brand, no jsdelivr/GitHub media')
+
 if __name__ == '__main__':
     if os.path.isdir(OUT): shutil.rmtree(OUT)
     os.makedirs(OUT)
@@ -634,4 +651,5 @@ if __name__ == '__main__':
     for a in ARTICLES: detail_page('article', a)
     areas_page(); contact_page(); faqs_page(); about_page(); privacy_page(); notfound()
     extras()
+    brand_check()
     print('built', len(SITEMAP), 'pages ->', OUT)
