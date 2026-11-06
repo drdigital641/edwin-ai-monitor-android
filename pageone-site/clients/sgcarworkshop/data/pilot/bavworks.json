@@ -1,0 +1,34 @@
+{
+ "lede": "Bavworks is a car repair workshop at 8 Kaki Bukit Ave 4, #06-54. Its Google Maps listing shows opening hours and customer ratings.",
+ "chips": [
+  "Car repair"
+ ],
+ "services": [
+  "General servicing and repair"
+ ],
+ "themes": "Customers on Google Maps mention strong diagnostic knowledge, pre-purchase inspections followed by wear-and-tear work, long-term care of a BMW M2, a clean and well-organised workshop, and accessories and performance upgrades for BMW and MINI.",
+ "faqs": [
+  [
+   "What does Bavworks do?",
+   "Google Maps lists it as a car repair workshop."
+  ],
+  [
+   "What are the opening hours?",
+   "The hours are listed in the Google Maps section above. Please see Google Maps for current hours."
+  ]
+ ],
+ "sources": "its Google Maps listing",
+ "stories": [],
+ "mentioned_services": [
+  "BMW and MINI servicing",
+  "Pre-purchase inspection",
+  "Wear-and-tear rectification",
+  "Performance upgrades"
+ ],
+ "makes": [
+  "BMW",
+  "MINI"
+ ],
+ "makes_note": "Named by customers on Google Maps. Ask the workshop about other makes.",
+ "card_rules": "2026-11-05"
+}

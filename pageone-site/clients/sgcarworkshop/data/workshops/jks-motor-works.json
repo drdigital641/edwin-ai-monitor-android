@@ -1,0 +1,47 @@
+{
+ "schema_version": 1,
+ "slug": "jks-motor-works",
+ "place_id": "ChIJO6DcN-IX2jERy7gEtT6vyU4",
+ "place_id_checked_at": "2026-11-06",
+ "name": "JKS Motor Works",
+ "name_source_url": "google_profile",
+ "name_checked_at": "2026-11-06",
+ "address": {
+  "block": "",
+  "street": "8 Kaki Bukit Ave 4, #03-45 MKS Garage Pte Ltd",
+  "unit": "",
+  "building": ""
+ },
+ "postal_code": "415875",
+ "address_source_url": "google_profile",
+ "address_checked_at": "2026-11-06",
+ "categories": [
+  "SERV"
+ ],
+ "services": [
+  "General servicing and repair"
+ ],
+ "services_source_url": "google_profile",
+ "phones": [
+  {
+   "e164": "+6588119996",
+   "kind": "mobile",
+   "whatsapp": true,
+   "source": "google_profile",
+   "checked_at": "2026-11-06"
+  }
+ ],
+ "google_screen": {
+  "passed": true,
+  "reason": "OPERATIONAL, car repair, SG mobile on Google profile",
+  "checked_at": "2026-11-06"
+ },
+ "status": "pending",
+ "tier": "basic",
+ "first_seen_at": "2026-11-06",
+ "last_verified_at": "2026-11-06",
+ "collector_version": "agent-v5",
+ "estate": "kaki-bukit-industrial-estate",
+ "planning_area": "Bedok",
+ "region": "east"
+}

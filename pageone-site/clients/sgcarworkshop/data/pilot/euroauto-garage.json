@@ -1,0 +1,58 @@
+{
+ "lede": "Euroauto Garage is a car workshop at Premier@Kaki Bukit. Its own website says it was established in 2016 and specialises in the servicing, maintenance and repair of luxury, exotic and high-performance cars.",
+ "chips": [
+  "Exotic cars",
+  "Engine and gearbox",
+  "Pre-purchase inspection"
+ ],
+ "services": [
+  "Pre-purchase inspection",
+  "Engine oil servicing",
+  "ECU and TCU tuning",
+  "Engine and gearbox rebuilds",
+  "Suspension works",
+  "Third-party accident claims",
+  "Bodykit installation",
+  "Spray painting and bodywork",
+  "Warranty programmes and car insurance"
+ ],
+ "themes": "Customers on Google Maps mention experience with performance and exotic cars including a Bentley Flying Spur and a Maserati GT, thorough checks, regular progress updates and professional, transparent service.",
+ "faqs": [
+  [
+   "What does Euroauto Garage do?",
+   "Google Maps lists it as a car repair workshop."
+  ],
+  [
+   "What are the opening hours?",
+   "The hours are listed in the Google Maps section above. Please see Google Maps for current hours."
+  ]
+ ],
+ "sources": "its own website (euroauto.com.sg)",
+ "stories": [],
+ "mentioned_services": [
+  "Exotic and performance car servicing",
+  "Car servicing",
+  "Fault check"
+ ],
+ "services_note": "Services as listed on the workshop's own website, euroauto.com.sg.",
+ "specialties": [
+  "Luxury, exotic and high-performance cars",
+  "Engine and gearbox rebuilds"
+ ],
+ "makes": [
+  "Maserati",
+  "Ferrari",
+  "Bentley",
+  "Lamborghini",
+  "Porsche",
+  "Rolls-Royce",
+  "McLaren"
+ ],
+ "makes_note": "Named on its own website.",
+ "good_to_know": [
+  "Established in 2016, according to its website",
+  "Engine and gearbox warranty programmes from 6 months to 3 years are offered, subject to terms, according to its website",
+  "Appointments can be booked on its website"
+ ],
+ "card_rules": "2026-11-05"
+}

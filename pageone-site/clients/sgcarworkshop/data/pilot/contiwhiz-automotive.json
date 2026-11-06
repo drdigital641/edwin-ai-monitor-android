@@ -1,0 +1,30 @@
+{
+ "lede": "Contiwhiz Automotive is a car repair workshop at 8 Kaki Bukit Ave 4, #07-25. Its Google Maps listing shows opening hours and customer ratings.",
+ "chips": [
+  "Car repair"
+ ],
+ "services": [
+  "General servicing and repair"
+ ],
+ "themes": "Customers on Google Maps mention a hands-on, knowledgeable boss, careful diagnosis, patient explanations, affordable prices across many brands and a suspension noise that was fixed.",
+ "faqs": [
+  [
+   "What does Contiwhiz Automotive do?",
+   "Google Maps lists it as a car repair workshop."
+  ],
+  [
+   "What are the opening hours?",
+   "The hours are listed in the Google Maps section above. Please see Google Maps for current hours."
+  ]
+ ],
+ "sources": "its Google Maps listing",
+ "stories": [],
+ "mentioned_services": [
+  "Fault diagnosis",
+  "Suspension noise",
+  "Car servicing"
+ ],
+ "makes": [],
+ "makes_note": "Not listed on its public pages. Ask the workshop about your car.",
+ "card_rules": "2026-11-05"
+}
