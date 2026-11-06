@@ -585,8 +585,17 @@ _css = open(os.path.join(root, 'assets', 'dir.css'), encoding='utf-8').read()
 if re.search(r'\.rv[^{}]*\{[^}]*(opacity:\s*0\b|visibility:\s*hidden)', re.sub(r'/\*.*?\*/', '', _css, flags=re.S)): print('dir.css hides .rv blocks by default (scroll-reveal): blocks must be visible without scrolling'); bad += 1
 # Homepage groups (Edwin 3 Nov 2026): Featured (paid), Verified, Basic; at most HOME_N cards each in the page, the rest in the template
 import build as _b
-_hs = re.search(r'<section id="workshops".*?</section>', open(os.path.join(root, 'index.html'), encoding='utf-8').read(), re.S).group(0)
-_vis, _tpl = (_hs.split('<template id="more-cards">') + [''])[:2]
+_hraw = open(os.path.join(root, 'index.html'), encoding='utf-8').read()
+_hs = re.search(r'<section id="workshops".*?</section>', _hraw, re.S).group(0)
+_vis = _hs
+_cj = os.path.join(root, 'assets', 'cards.json')
+_tpl = ''.join(json.load(open(_cj, encoding='utf-8'))['cards']) if os.path.exists(_cj) else ''
+if '<template id="more-cards">' in _hs: print('homepage still holds the hidden card template (cards past the first per group belong in assets/cards.json)'); bad += 1
+if _tpl and 'data-more="assets/cards.json' not in _hs: print('homepage does not point to assets/cards.json'); bad += 1
+# Page size (Edwin 6 Nov 2026): the Controller health check passes under 250 KB of raw homepage HTML
+_hb = len(_hraw.encode('utf-8'))
+if _hb > 250000: print('homepage HTML is %d bytes, over the 250 KB target' % _hb); bad += 1
+else: print('homepage HTML bytes:', _hb)
 _pat = r'<article data-g="([a-z]+)"[^>]*class="card[^"]*".*?<h3><a href="(?:\./)?workshops/([a-z0-9-]+)/"'
 _v = re.findall(_pat, _vis, re.S); _t = re.findall(_pat, _tpl, re.S)
 _order = [g[0] for g in _b.HOME_GROUPS]

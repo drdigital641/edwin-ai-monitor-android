@@ -177,6 +177,7 @@ for _f in ('dir.css', 'dir.js', 'livephone.js', 'ask.js'):
     _h.update(open(os.path.join(HERE, _f), 'rb').read())
 V = _h.hexdigest()[:8]
 
+HOME_MORE = []   # homepage cards past the first HOME_N per group: written to assets/cards.json (page-size fix, Edwin 6 Nov 2026)
 PAGES = {}   # path ('' = home, 'a/b/' ...) -> html
 META = {}    # path -> title (for llms/sitemap)
 FREECOUNT = {}   # path -> free workshops behind a thresholded page (check.py re-applies MIN_FREE)
@@ -436,11 +437,15 @@ def home():
         more = ('<p class="hg-more"><button type="button" class="btn sm" data-hg-more>Show all %d</button></p>' % len(es)) if len(es) > HOME_N else ''
         groups.append('<div class="hg" data-hg="%s"><h3 class="hg-h">%s <small>%d</small></h3><p class="fine hg-n">%s</p><div class="grid">%s</div>%s</div>' % (
             g, E(label), len(es), E(note), ''.join(hcard(e) for e in es[:HOME_N]), more))
-    cards = ''.join(groups) + ('<template id="more-cards">%s</template>' % ''.join(rest) if rest else '')
+    # Page size (Edwin 6 Nov 2026): only the cards shown first are in the HTML; the rest load from assets/cards.json.
+    # Every card is still a link on its service, area and A to Z pages, so Google finds them all.
+    HOME_MORE[:] = rest
+    cards = ''.join(groups)
     sortbar = ('<div class="hsort" role="group" aria-label="Sort workshops"><span>Sort</span>'
                '<button type="button" data-sort="mix" aria-pressed="true">Mixed</button><button type="button" data-sort="rating" aria-pressed="false">Top rated</button>'
                '<button type="button" data-sort="near" aria-pressed="false">Nearest to me</button></div><p class="fine hsort-n" id="hsort-n" hidden></p>')
-    more_btn = '<p class="hg-all"><a class="btn" href="workshops/">See all %d workshops A to Z</a></p>' % len(ordered)
+    more_btn = ('<p class="hg-all"><a class="btn" href="workshops/">See all %d workshops A to Z</a></p>'
+                '<p class="fine hg-by">See all workshops by <a href="#services">service</a> or by <a href="#regions">area</a>.</p>') % len(ordered)
     faqs = [
         ('What is %s?' % SITE_NAME, 'A directory of car workshops and car services in Singapore. Each entry shows what the business does, where it is and how to contact it, using details from the business or its public listing.'),
         ('How do I contact a workshop?', 'Tap WhatsApp or Call on a card. The WhatsApp message is prefilled with the workshop name and says you found them on %s, so you only need to add your car and what you need.' % SITE_NAME),
@@ -471,7 +476,7 @@ def home():
 <section class="feat" aria-roledescription="carousel" aria-label="Featured Premium workshops"><div class="w"><div class="sec-h"><h2>Featured Premium workshops <span class="spons">Featured (paid)</span></h2>
 <div class="car-nav"><button type="button" id="cprev" aria-label="Previous">{ic('chev-l')}</button><button type="button" id="cnext" aria-label="Next">{ic('chev-r')}</button></div></div>
 <div class="marq" id="marq"><ul class="track" id="track" aria-label="Featured workshops">{slides}</ul></div></div></section>
-<section id="workshops" class="lst"><div class="w"><div class="sec-h"><h2>Workshops</h2><a class="sec-link" href="#services">Browse by service</a></div>{sortbar}<div id="results" class="hgroups" data-n="{HOME_N}">{cards}</div>
+<section id="workshops" class="lst"><div class="w"><div class="sec-h"><h2>Workshops</h2><a class="sec-link" href="#services">Browse by service</a></div>{sortbar}<div id="results" class="hgroups" data-n="{HOME_N}"{(' data-more="assets/cards.json?v=%s"' % V) if rest else ''}>{cards}</div>
 <div class="empty" id="empty"><b>No workshops match.</b> Try fewer filters, or <a href="list-your-workshop/">list your workshop</a>.</div>{more_btn}<p class="fine adnote">Up to {HOME_N} workshops per group, mixed in a new random order on every visit. Top rated uses Google rating and number of ratings together (see <a href="about/">How we rank</a>); Nearest uses straight-line distance from your phone's location, which is not stored. Basic listings are built from the workshop's public Google Business Profile and, where available, what its customers mention in Google reviews, and link to its Google Maps listing. They are not endorsed by or arranged with the business.</p></div></section>
 <section class="alt" id="services"><div class="w"><h2>Browse by service</h2><ul class="tiles">{svc_tiles}</ul></div></section>
 <section id="regions"><div class="w"><h2>Browse by area</h2><ul class="tiles rg">{reg_tiles}</ul><h3 class="sub-h">Estates and industrial areas</h3><ul class="tiles est">{est_tiles}</ul></div></section>
@@ -2125,6 +2130,8 @@ def build():
     for f in ('dir.css', 'dir.js', 'livephone.js', 'ask.js'):
         shutil.copy(os.path.join(HERE, f), OUT + '/assets/' + f)
     shutil.copytree(os.path.join(HERE, 'img'), OUT + '/assets/img', dirs_exist_ok=True)
+    if HOME_MORE:
+        open(OUT + '/assets/cards.json', 'w', encoding='utf-8').write(json.dumps({'cards': HOME_MORE}, ensure_ascii=False, separators=(',', ':')))
     make_icons()
     folder_fillers()
 

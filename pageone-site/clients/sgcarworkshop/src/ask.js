@@ -210,10 +210,10 @@ form.addEventListener('submit',function(e){e.preventDefault();var v=inp.value.tr
  var any=form.querySelector('input[name=svc][value=""]');if(any&&!any.checked){any.checked=true}
  var a=analyse(v,DATA);progress(true);
  body.textContent='';body.appendChild(el('p','fine aithink','Reading your question...'));out.hidden=false;
- askAI(a).then(function(x){progress(false);if(inp.value.trim()!==v)return;var b=fromAI(a,x);render(b);},function(){progress(false);if(inp.value.trim()!==v)return;render(a)})});
+ Promise.all([askAI(a),window.sgcwReady]).then(function(xs){var x=xs[0];progress(false);if(inp.value.trim()!==v)return;var b=fromAI(a,x);render(b);},function(){(window.sgcwReady||Promise.resolve()).then(function(){progress(false);if(inp.value.trim()!==v)return;render(a)})})});
 inp.addEventListener('keydown',function(e){if(e.key==='Enter'&&!e.shiftKey){e.preventDefault();form.dispatchEvent(new Event('submit',{cancelable:true,bubbles:true}))}});
 /* Category chips run the same results panel (no typing needed). */
 form.addEventListener('change',function(e){var t=e.target;if(!t||t.name!=='svc')return;
  if(!t.value){out.hidden=true;return}var c=catName[t.value];if(!c)return;inp.value='';
- render({raw:'',toks:[],make:'',area:null,close:{},second:null,forced:true,tier:1,top:{r:{cat:c.slug,label:c.short,issue:c.blurb||''}}},true)});
+ (window.sgcwReady||Promise.resolve()).then(function(){render({raw:'',toks:[],make:'',area:null,close:{},second:null,forced:true,tier:1,top:{r:{cat:c.slug,label:c.short,issue:c.blurb||''}}},true)})});
 })(typeof window!=='undefined'?window:this);
