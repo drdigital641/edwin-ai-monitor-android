@@ -38,7 +38,7 @@ UPDATED = '2026-11-06'
 
 NAME = 'New Zen Werkz'
 LEGAL = 'New Zen Werkz Pte Ltd'
-FORMER = 'Zen Werkz LLP'
+FORMER = 'Zen Werkz LLP'          # Edwin 6 Nov 2026: never show on the site
 UEN = '201900125K'
 TEL, TEL_SHOW = '+6567428117', '6742 8117'
 WA_NUM, WA_SHOW = '6586781878', '+65 8678 1878'       # WhatsApp changed by Edwin, 6 Nov 2026 (was 8656 3133)
@@ -521,7 +521,6 @@ def article_card(a):
 FAQ_HOME = [
     ('Where is New Zen Werkz?', 'At Blk 3 Kaki Bukit Road 1, #03-04 Eunos Technolink, Singapore 415935, on the third floor of the Eunos Technolink building.'),
     ('What cars do you work on?', 'Continental cars such as Mercedes-Benz and Bentley are a regular part of our work, alongside Japanese makes such as Mazda and American vehicles.'),
-    ('Is New Zen Werkz the same workshop as Zen Werkz LLP?', 'Yes. Zen Werkz LLP was registered at this address in 2016. New Zen Werkz Pte Ltd was incorporated in January 2019 and runs the workshop at the same address today.'),
     ('What are your opening hours?', 'Monday to Friday 9:30am to 7pm, Saturday 9:30am to 4pm, closed on Sunday. WhatsApp +65 8678 1878 or call 6742 8117 with your car model and what you have noticed.'),
 ]
 
@@ -543,7 +542,7 @@ def home_body():
 <div><b>Workshop</b><span>Blk 3 Kaki Bukit Rd 1, #03-04</span></div>
 <div><b>WhatsApp / Call</b><a href="{E(wa_url())}" target="_blank" rel="noopener">{WA_SHOW}</a> · <a href="tel:{TEL}">{TEL_SHOW}</a></div>
 <div><b>Open</b><span>Mon–Fri 9:30–7 · Sat 9:30–4</span></div>
-<div><b>Formerly</b><span>{FORMER}</span></div>
+<div><b>Cars</b><span>Continental, Japanese, American</span></div>
 </div></div>
 <section class="sec" aria-labelledby="h-svc"><div class="wrap">
 <div class="sec-head"><p class="eyebrow">What we do</p><h2 id="h-svc">Workshop services</h2><p>Pick a service for the details.</p></div>
@@ -594,7 +593,7 @@ def about_body():
     return f'''<section class="sec"><div class="wrap split">
 <article class="prose">
 <figure class="lead-fig">{img('mercedes-hummer', eager=True)}</figure>
-<p>New Zen Werkz Pte Ltd is an independent car repair and servicing workshop at Eunos Technolink in Kaki Bukit, Singapore. The business started at this address as {FORMER}, registered in 2016, and New Zen Werkz Pte Ltd was incorporated in January 2019 to carry it on. Same workshop, same address: Blk 3 Kaki Bukit Road 1, #03-04.</p>
+<p>New Zen Werkz Pte Ltd is an independent car repair and servicing workshop at Eunos Technolink in Kaki Bukit, Singapore. New Zen Werkz Pte Ltd was incorporated in January 2019. The workshop is at Blk 3 Kaki Bukit Road 1, #03-04.</p>
 <h2>What we do</h2>
 <p>Routine servicing and oil changes, diagnostics, brake work and battery replacement, through to the jobs many workshops send elsewhere: taking engines and automatic gearboxes out of the car, stripping them down and rebuilding them.</p>
 <p>On any given day the workshop floor might have a Bentley, a Mercedes-Benz E-Class and a Hummer side by side, with a Mazda in the next bay. The photos on this site are from our own workshop.</p>
@@ -604,7 +603,7 @@ def about_body():
 {reviews_html(REVIEWS)}
 <figure>{img('workshop-entrance')}<figcaption>The entrance to the workshop at Blk 3, #03-04, Eunos Technolink.</figcaption></figure>
 <h2>Company details</h2>
-<p>{LEGAL} (UEN {UEN}), incorporated 2 January 2019. Registered activity: repair and maintenance of motor vehicles (SSIC 95301). Formerly {FORMER}.<br>{'<br>'.join(ADDR)}<br>Tel: <a href="tel:{TEL}">{TEL_SHOW}</a> · WhatsApp: <a href="{E(wa_url())}" target="_blank" rel="noopener">{WA_SHOW}</a></p>
+<p>{LEGAL} (UEN {UEN}), incorporated 2 January 2019. Registered activity: repair and maintenance of motor vehicles (SSIC 95301).<br>{'<br>'.join(ADDR)}<br>Tel: <a href="tel:{TEL}">{TEL_SHOW}</a> · WhatsApp: <a href="{E(wa_url())}" target="_blank" rel="noopener">{WA_SHOW}</a></p>
 </article>
 <aside class="side"><div class="card sticky"><h2>Visit or call</h2><p>{'<br>'.join(ADDR)}</p>{hours_html()}{wa_btn()}{call_btn(cls='btn btn-ghost')}{map_btn()}</div></aside>
 </div></section>'''
@@ -647,7 +646,7 @@ def areas_body():
 
 
 def business_schema():
-    return {'@type': 'AutoRepair', '@id': SITE + '#business', 'name': LEGAL, 'alternateName': [NAME, FORMER, 'Zen Werkz'],
+    return {'@type': 'AutoRepair', '@id': SITE + '#business', 'name': LEGAL, 'alternateName': [NAME],
             'url': SITE, 'telephone': TEL, 'openingHoursSpecification': HOURS_LD,
             'contactPoint': {'@type': 'ContactPoint', 'contactType': 'customer service', 'telephone': '+' + WA_NUM}, 'image': [IMG + n + '.webp' for n in ('workshop-lineup', 'engine-teardown', 'brake-work')],
             'logo': SITE + 'icon-512.png',
@@ -663,7 +662,7 @@ def business_schema():
 # Register pages
 # ----------------------------------------------------------------------------------------------
 page('', '%s | Car Repair & Servicing Workshop, Kaki Bukit Singapore' % LEGAL,
-     'New Zen Werkz (formerly Zen Werkz LLP): car servicing, engine and gearbox repair, brakes and diagnostics for continental and Japanese cars at Eunos Technolink, Kaki Bukit, near Eunos, Ubi, Bedok and Tampines. Call 6742 8117.',
+     'New Zen Werkz: car servicing, engine and gearbox repair, brakes and diagnostics for continental and Japanese cars at Eunos Technolink, Kaki Bukit, near Eunos, Ubi, Bedok and Tampines. Call 6742 8117.',
      'New Zen Werkz', home_body(), hero=False, schema=[faq_schema(FAQ_HOME)])
 page('services/', 'Car Workshop Services in Kaki Bukit | New Zen Werkz',
      'Car servicing, engine overhaul, gearbox repair, brakes, diagnostics, batteries and continental car repair at New Zen Werkz, Eunos Technolink, Kaki Bukit.',
@@ -686,10 +685,10 @@ for a in ARTICLES:
     path = 'articles/%s/' % a['slug']
     page(path, a['title'], a['desc'], a['h1'], article_body(a), crumbs=[('articles/', 'Articles'), (path, a['h1'])],
          photo=a['photo'], schema=[article_schema(a, path)])
-page('about/', 'About New Zen Werkz (formerly Zen Werkz LLP) | Kaki Bukit Car Workshop',
-     'New Zen Werkz Pte Ltd, formerly Zen Werkz LLP, is an independent car workshop at Eunos Technolink, Kaki Bukit, servicing and rebuilding continental, Japanese and American cars.',
+page('about/', 'About New Zen Werkz | Kaki Bukit Car Workshop',
+     'New Zen Werkz Pte Ltd is an independent car workshop at Eunos Technolink, Kaki Bukit, servicing and rebuilding continental, Japanese and American cars.',
      'About New Zen Werkz', about_body(), crumbs=[('about/', 'About')],
-     lede='An independent car workshop at Eunos Technolink, Kaki Bukit, formerly Zen Werkz LLP.')
+     lede='An independent car workshop at Eunos Technolink, Kaki Bukit.')
 page('contact/', 'Contact New Zen Werkz | Call 6742 8117, Eunos Technolink',
      'Call New Zen Werkz on 6742 8117 or visit the workshop at Blk 3 Kaki Bukit Road 1, #03-04 Eunos Technolink, Singapore 415935.',
      'Contact the workshop', contact_body(), crumbs=[('contact/', 'Contact')], cta=False,
@@ -762,7 +761,7 @@ def render(path, p):
 <link rel="apple-touch-icon" href="{pre}apple-touch-icon.png">
 <link rel="manifest" href="{pre}site.webmanifest">
 <link rel="stylesheet" href="{pre}nzw.css?v=8">
-{INTRO if path == '' and not p.get('is404') else ''}<script src="{pre}nzw.js?v=5" defer></script>
+{INTRO if path == '' and not p.get('is404') else ''}<script src="{pre}nzw.js?v=6" defer></script>
 <script type="application/ld+json">{ld}</script>
 </head>
 <body>
@@ -782,7 +781,7 @@ def render(path, p):
 <footer class="ftr"><div class="wrap">
 <div class="ftr-grid">
 <div><a class="brand" href="{pre or './'}">{MARK}<span><span class="brand-name">New Zen Werkz</span><span class="brand-sub">Car repair · Kaki Bukit</span></span></a>
-<p>Independent car workshop for continental, Japanese and American cars. Formerly {FORMER}.</p></div>
+<p>Independent car workshop for continental, Japanese and American cars.</p></div>
 <div><h3>Services</h3><ul>{''.join('<li><a href="%sservices/%s/">%s</a></li>' % (pre, s['slug'], E(s['short'])) for s in SERVICES)}</ul></div>
 <div><h3>Workshop</h3><ul>
 <li>{'<br>'.join(ADDR)}</li>
@@ -848,12 +847,12 @@ def main():
             f.write('  <url><loc>%s%s</loc><lastmod>%s</lastmod></url>\n' % (SITE, path, UPDATED))
         f.write('</urlset>\n')
     with open(os.path.join(OUT, 'llms.txt'), 'w') as f:
-        f.write('# %s (formerly %s), car workshop in Singapore\n\n'
+        f.write('# %s, car workshop in Singapore\n\n'
                 '> %s is an independent car repair and servicing workshop at %s, Singapore %s (UEN %s). '
                 'It services and repairs continental cars such as Mercedes-Benz and Bentley as well as Japanese and American cars, '
                 'including engine and automatic gearbox rebuilds, brakes, diagnostics and batteries. Tel %s, WhatsApp %s. '
                 'Open Monday to Friday 9:30am-7pm, Saturday 9:30am-4pm, closed Sunday.\n\n## Pages\n'
-                % (LEGAL, FORMER, LEGAL, STREET, POSTAL, UEN, TEL_SHOW, WA_SHOW))
+                % (LEGAL, LEGAL, STREET, POSTAL, UEN, TEL_SHOW, WA_SHOW))
         for path, p in PAGES.items():
             f.write('- [%s](%s%s): %s\n' % (p['title'].split(' | ')[0], SITE, path, p['desc']))
     with open(os.path.join(OUT, 'site.webmanifest'), 'w') as f:
