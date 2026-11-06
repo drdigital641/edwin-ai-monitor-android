@@ -37,7 +37,7 @@ AREA_COPY = {
         "Bedok, Pasir Ris, Simei and Kaki Bukit.",
         ['Tampines', 'Tampines West', 'Tampines East'], ['Tampines Mall', 'Our Tampines Hub', 'Bedok Reservoir']),
     'changi-loyang': (
-        "Changi and Loyang make up the far east of Singapore, beyond Pasir Ris and Tampines. The area is best known for Changi Airport and Changi Business Park, "
+        "Changi and Loyang make up the far east of Singapore, beyond Pasir Ris and Tampines. The area is known for Changi Airport and Changi Business Park, "
         "with Changi Beach Park and the Changi Village hawker centre on the northern coast. Loyang Way, Loyang Avenue and Loyang Crescent hold an industrial estate of "
         "trade units and warehouses, near the Loyang Offshore Marine Centre. Changi Airport MRT station and Tanah Merah MRT station are the nearest stations, "
         "and the East Coast Parkway runs along the southern edge, so it is a straightforward drive from the east coast and Pasir Ris.",

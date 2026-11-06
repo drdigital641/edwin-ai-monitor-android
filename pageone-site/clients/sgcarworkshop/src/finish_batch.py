@@ -29,7 +29,7 @@ import areas  # noqa: E402
 import positive_only  # noqa: E402
 
 SUFFIX = re.compile(r'\s*(\((s|pte)\)\s*)?\b(pte\.?\s*ltd\.?|private limited|ltd|p/l|llp|pte)(?![\w/])\.?|\s*\((s|pte)\)\s*ltd\.?', re.I)
-ESTATE_PA = {'soon-lee-street-pioneer': 'Pioneer', 'bukit-merah-lane-3': 'Bukit Merah', 'jurong-west-avenue-5': 'Jurong West'}
+ESTATE_PA = {'loyang-way': 'Pasir Ris', 'tuas-industrial-area': 'Tuas', 'soon-lee-street-pioneer': 'Pioneer', 'bukit-merah-lane-3': 'Bukit Merah', 'jurong-west-avenue-5': 'Jurong West'}
 TOWN_PA = {'toh-guan-jurong-east': 'Jurong East', 'sin-ming-bishan': 'Bishan', 'kaki-bukit': 'Bedok', 'ubi': 'Geylang', 'macpherson': 'Geylang', 'defu-hougang': 'Hougang', 'serangoon-north': 'Serangoon', 'kranji': 'Mandai', 'sembawang-admiralty': 'Sembawang', 'woodlands': 'Woodlands', 'yishun': 'Yishun', 'tampines': 'Tampines', 'toa-payoh': 'Toa Payoh'}
 
 

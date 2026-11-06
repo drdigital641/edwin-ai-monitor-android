@@ -1,0 +1,57 @@
+{
+ "slug": "mobil-yap-seng-motor-service-trading",
+ "researched_at": "2026-11-06",
+ "researcher": "Claude, Google Places Details only (candidate from Google Places Text Search sweep at Edwin's request; name from Google Business Profile)",
+ "facts": [
+  {
+   "field": "displayName",
+   "value": "Mobil Yap Seng Motor Service & Trading",
+   "source_url": "google_places",
+   "retrieved": "2026-11-06"
+  },
+  {
+   "field": "rating",
+   "value": "5",
+   "source_url": "google_places",
+   "retrieved": "2026-11-06"
+  },
+  {
+   "field": "userRatingCount",
+   "value": "25",
+   "source_url": "google_places",
+   "retrieved": "2026-11-06"
+  },
+  {
+   "field": "websiteUri",
+   "value": "https://workshop.sea.mobil.com/sg/mobil-yap-seng-motor-service-trading-oil-change-service-bukit-batok-st-23-singapore-537103/Home?utm_source=locator&utm_medium=googleplaces",
+   "source_url": "google_places",
+   "retrieved": "2026-11-06"
+  },
+  {
+   "field": "types",
+   "value": "['car_repair', 'point_of_interest', 'service', 'establishment']",
+   "source_url": "google_places",
+   "retrieved": "2026-11-06"
+  },
+  {
+   "field": "primaryType",
+   "value": "car_repair",
+   "source_url": "google_places",
+   "retrieved": "2026-11-06"
+  },
+  {
+   "field": "opening_hours",
+   "value": [
+    "Monday: 9:00 AM – 7:00 PM",
+    "Tuesday: 9:00 AM – 7:00 PM",
+    "Wednesday: 9:00 AM – 7:00 PM",
+    "Thursday: 9:00 AM – 7:00 PM",
+    "Friday: 9:00 AM – 7:00 PM",
+    "Saturday: 9:00 AM – 7:00 PM",
+    "Sunday: Closed"
+   ],
+   "source_url": "google_places",
+   "retrieved": "2026-11-06"
+  }
+ ]
+}

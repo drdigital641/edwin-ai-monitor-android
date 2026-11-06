@@ -1,0 +1,30 @@
+{
+ "businessStatus": "OPERATIONAL",
+ "primaryType": "car_repair",
+ "types": [
+  "car_repair",
+  "point_of_interest",
+  "service",
+  "establishment"
+ ],
+ "rating": 4.8,
+ "userRatingCount": 24,
+ "websiteUri": null,
+ "paymentOptions": null,
+ "parkingOptions": null,
+ "editorialSummary": null,
+ "weekdayDescriptions": [
+  "Monday: 10:00 AM – 6:00 PM",
+  "Tuesday: 10:00 AM – 6:00 PM",
+  "Wednesday: 10:00 AM – 6:00 PM",
+  "Thursday: 10:00 AM – 6:00 PM",
+  "Friday: 10:00 AM – 6:00 PM",
+  "Saturday: 10:00 AM – 5:00 PM",
+  "Sunday: Closed"
+ ],
+ "review_count_seen": 5,
+ "review_themes": "Customers on Google Maps mention patient, detailed explanations with photos and videos, a lot of MINI experience including an R56, no upselling, help with small quirks, and that customers may bring their own parts.",
+ "fetched_at": "2026-11-05",
+ "place_id": "ChIJA3wPrjYX2jERctzcTcRE52c",
+ "source": "google_places"
+}

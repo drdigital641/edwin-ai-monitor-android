@@ -1,0 +1,73 @@
+{
+ "schema_version": 1,
+ "slug": "conti-meister",
+ "place_id": "ChIJofiNIdEX2jERYw3sG2pM460",
+ "place_id_checked_at": "2026-11-05",
+ "name": "Conti Meister",
+ "name_source_url": "google_profile",
+ "name_checked_at": "2026-11-05",
+ "address": {
+  "block": "",
+  "street": "56 Loyang Wy, #02-02",
+  "unit": "",
+  "building": ""
+ },
+ "postal_code": "508740",
+ "address_source_url": "google_profile",
+ "address_checked_at": "2026-11-05",
+ "categories": [
+  "SERV"
+ ],
+ "services": [
+  "General servicing and repair"
+ ],
+ "services_source_url": "google_profile",
+ "phones": [
+  {
+   "e164": "+6596698014",
+   "kind": "mobile",
+   "whatsapp": true,
+   "source": "google_profile",
+   "checked_at": "2026-11-05"
+  }
+ ],
+ "google_screen": {
+  "passed": true,
+  "reason": "OPERATIONAL, car repair, SG mobile on Google profile",
+  "checked_at": "2026-11-05"
+ },
+ "status": "active",
+ "tier": "basic",
+ "first_seen_at": "2026-11-05",
+ "last_verified_at": "2026-11-05",
+ "collector_version": "agent-v5",
+ "estate": "loyang-way",
+ "planning_area": "Pasir Ris",
+ "region": "east",
+ "lat": 1.379613659533488,
+ "lng": 103.9767658648083,
+ "geo_source": "onemap",
+ "blocks": [
+  "hero",
+  "contact",
+  "services",
+  "good_for",
+  "problems",
+  "reviews",
+  "comparison",
+  "hours",
+  "stories",
+  "location",
+  "tips",
+  "faq",
+  "claim",
+  "sources"
+ ],
+ "google_rating": {
+  "rating": 4.9,
+  "count": 83,
+  "checked": "2026-11-06",
+  "source": "Google Places",
+  "source_date": "2026-11-06"
+ }
+}

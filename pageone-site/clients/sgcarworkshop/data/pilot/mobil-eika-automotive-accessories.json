@@ -1,0 +1,38 @@
+{
+ "lede": "Mobil Eika Automotive & Accessories is a car service point inside the Esso station at 253 Jalan Buroh, listed in Mobil's workshop network for oil changes, diagnostics and general maintenance.",
+ "chips": [
+  "Oil change",
+  "Car servicing",
+  "Car repair"
+ ],
+ "services": [
+  "Oil change service",
+  "Engine diagnostics",
+  "General servicing and repair"
+ ],
+ "themes": "Customers on Google Maps mention prompt replies, itemised costs, cheaper part options on request, good pricing and many years of repeat visits. It is inside the Esso station on Jalan Buroh.",
+ "faqs": [
+  [
+   "What does Mobil Eika Automotive & Accessories do?",
+   "Google Maps lists it as a car repair workshop."
+  ],
+  [
+   "What are the opening hours?",
+   "The hours are listed in the Google Maps section above. Please see Google Maps for current hours."
+  ]
+ ],
+ "sources": "its page in Mobil's workshop locator",
+ "stories": [],
+ "mentioned_services": [
+  "Car servicing",
+  "Car repair"
+ ],
+ "services_note": "Services as shown on the workshop's page in Mobil's workshop locator, the website Google lists for it.",
+ "good_to_know": [
+  "Payment by cash, credit or debit card or online payment, according to its Mobil workshop page",
+  "Free parking on site, according to its Mobil workshop page"
+ ],
+ "card_rules": "2026-11-05",
+ "makes": [],
+ "makes_note": "Not listed on its public pages. Ask the workshop about your car."
+}

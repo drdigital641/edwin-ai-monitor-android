@@ -151,6 +151,10 @@ _IE = [
      'Jurong West Avenue 5 runs through the Jurong West housing estate in the West region, with car service points along it.'),
     ('bukit-merah-lane-3', 'Bukit Merah Lane 3', 'alexandra-bukit-merah', ['bukit merah lane 3', 'bukit merah ln 3'],
      'Bukit Merah Lane 3 is a row of older light industrial blocks in Bukit Merah, in the central region, with several car workshops on its ground floors.'),
+    ('loyang-way', 'Loyang Way and Loyang Drive', 'changi-loyang', ['loyang wy', 'loyang way', 'loyang dr', 'loyang drive', 'loyang enterprise'],
+     'Loyang Way and Loyang Drive form the Loyang industrial estate in the far east of Singapore, near Pasir Ris and Changi, with motor workshops in its multi-storey factory blocks.'),
+    ('tuas-industrial-area', 'Tuas (Tuas Avenues and Tuas South)', 'tuas', ['tuas ave', 'tuas avenue', 'tuas south', 'tuas link', 'tuas'],
+     'Tuas is the large industrial area at the western tip of Singapore, around the Tuas Avenue and Tuas South roads, with motor workshops among its factories and warehouses.'),
     ('pandan-light-industries-park', 'Pandan Loop (Pandan Light Industries Park)', 'pandan-loop', ['pandan lp', 'pandan loop', 'pandan light industries'],
      'Pandan Loop, with the Pandan Light Industries Park blocks, is a light industrial area in the west, near the Pandan Reservoir and the Ayer Rajah Expressway.'),
 ]

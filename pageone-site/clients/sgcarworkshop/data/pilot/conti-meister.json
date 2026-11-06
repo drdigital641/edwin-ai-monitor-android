@@ -1,0 +1,56 @@
+{
+ "lede": "Conti Meister is a car workshop at Loyang Enterprise on Loyang Way. Its own website describes it as a continental car specialist for Mercedes-Benz and the Volkswagen group makes, with servicing, repairs, performance upgrades and bodywork.",
+ "chips": [
+  "Continental cars",
+  "Servicing packages",
+  "Performance upgrades"
+ ],
+ "services": [
+  "Routine servicing packages",
+  "Mechatronics and repairs",
+  "Engine overhauls",
+  "Turbocharger repairs and upgrades",
+  "Performance suspension and brake upgrades",
+  "Bodywork and spray painting",
+  "Towing",
+  "Pre-purchase inspection",
+  "Insurance and accident claims"
+ ],
+ "themes": "Customers on Google Maps mention a quick OBD scan when an engine warning light came on, help with an accident claim, gearbox and clutch advice, and fast replies even at weekends without pushing unneeded work.",
+ "faqs": [
+  [
+   "What does Conti Meister do?",
+   "Google Maps lists it as a car repair workshop."
+  ],
+  [
+   "What are the opening hours?",
+   "The hours are listed in the Google Maps section above. Please see Google Maps for current hours."
+  ]
+ ],
+ "sources": "its own website (contimeister.sg)",
+ "stories": [],
+ "mentioned_services": [
+  "Engine warning light diagnosis",
+  "Accident claim repairs",
+  "Gearbox and clutch",
+  "Car servicing"
+ ],
+ "services_note": "Services as listed on the workshop's own website, contimeister.sg.",
+ "specialties": [
+  "Mercedes-Benz and Volkswagen group cars",
+  "Suspension and chassis work",
+  "Performance upgrades"
+ ],
+ "makes": [
+  "Mercedes-Benz",
+  "Volkswagen",
+  "Audi",
+  "Skoda",
+  "SEAT"
+ ],
+ "makes_note": "Named on its own website.",
+ "good_to_know": [
+  "Towing is listed among its services"
+ ],
+ "card_rules": "2026-11-05"
+}

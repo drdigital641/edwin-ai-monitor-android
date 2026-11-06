@@ -21,7 +21,7 @@
  },
  "2026-11-05": {
   "text_search": 0,
-  "details": 5,
+  "details": 30,
   "sweep_calls": 20,
   "free_id_calls": 53
  }

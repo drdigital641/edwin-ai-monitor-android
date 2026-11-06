@@ -2,7 +2,7 @@
 
 > A directory of car workshops and car services in Singapore, run by Page One Singapore. Entries use details from the business or its public listing. Estate pages rank workshops only where there are at least 8 with 20 or more Google ratings, by rating and number of ratings together; paid Featured workshops are never ranked. No rating or review markup.
 
-Last updated: 2026-11-05
+Last updated: 2026-11-06
 
 ## Services
 - [Spray painting and bodywork](https://sgcarworkshop.sg/services/spray-painting-bodywork/): Respray, colour change and body kit work in a spray booth.
@@ -25,11 +25,11 @@ Last updated: 2026-11-05
 
 ## Estates and industrial areas
 - [Ang Mo Kio Industrial Park 2](https://sgcarworkshop.sg/areas/amk-industrial-park-2/): Ang Mo Kio Industrial Park 2 is an industrial estate in Ang Mo Kio, including the AMK AutoPoint motor building, with workshops serving the north-east. 13 listings.
-- [Kaki Bukit Industrial Estate](https://sgcarworkshop.sg/areas/kaki-bukit-industrial-estate/): Kaki Bukit is an industrial estate in the East region, around Kaki Bukit Avenue 4 and 6 and Kaki Bukit Road 2 and 4, with many workshops, trade units and parts suppliers. 30 listings.
+- [Kaki Bukit Industrial Estate](https://sgcarworkshop.sg/areas/kaki-bukit-industrial-estate/): Kaki Bukit is an industrial estate in the East region, around Kaki Bukit Avenue 4 and 6 and Kaki Bukit Road 2 and 4, with many workshops, trade units and parts suppliers. 36 listings.
 - [Sin Ming Industrial Estate](https://sgcarworkshop.sg/areas/sin-ming-industrial-estate/): Sin Ming Industrial Estate, including Sin Ming Drive and the Sin Ming AutoCity and Autocare buildings, is in the middle of Singapore near Bishan. 13 listings.
 - [Toh Guan Road East and Enterprise Hub](https://sgcarworkshop.sg/areas/toh-guan-enterprise-hub/): Toh Guan Road East and the Enterprise Hub industrial building are in the West region, near Jurong East. 15 listings.
 - [Corporation Drive, Jurong East](https://sgcarworkshop.sg/areas/corporation-drive-jurong-east/): Corporation Drive is an industrial road in Jurong East, in the West region. 5 listings.
-- [Paya Ubi Industrial Park](https://sgcarworkshop.sg/areas/paya-ubi-industrial-park/): Paya Ubi Industrial Park is around Ubi Avenue 1, near Paya Lebar in the Geylang planning area (Central region), with motor workshops mixed in among light industry. 6 listings.
+- [Paya Ubi Industrial Park](https://sgcarworkshop.sg/areas/paya-ubi-industrial-park/): Paya Ubi Industrial Park is around Ubi Avenue 1, near Paya Lebar in the Geylang planning area (Central region), with motor workshops mixed in among light industry. 7 listings.
 - [Ubi Road 1](https://sgcarworkshop.sg/areas/ubi-road-1/): Ubi Road 1 is an industrial road in the Ubi area, near Paya Lebar in the Geylang planning area (Central region). 4 listings.
 - [Bedok Industrial Park E](https://sgcarworkshop.sg/areas/bedok-industrial-park-e/): Bedok Industrial Park E is a block of trade units along Bedok North Avenue 4 in the East region, near Bedok Reservoir and Tampines. 2 listings.
 - [Tampines Industrial Park A](https://sgcarworkshop.sg/areas/tampines-industrial-park-a/): Tampines Industrial Park A is a light industrial estate along Tampines Street 92 and 93 in the East region. 1 listing.
@@ -38,7 +38,7 @@ Last updated: 2026-11-05
 - [Woodlands Avenue 12 (Polaris@Woodlands)](https://sgcarworkshop.sg/areas/woodlands-avenue-12/): Woodlands Avenue 12 and the Polaris@Woodlands industrial building are in the Woodlands area in the north. 3 listings.
 - [Yishun Industrial Park A](https://sgcarworkshop.sg/areas/yishun-industrial-park-a/): Yishun Industrial Park A is one of the two main motor trade clusters in Yishun, in the North region. 7 listings.
 - [Yishun Industrial Street 1](https://sgcarworkshop.sg/areas/yishun-industrial-street-1/): Yishun Industrial Street 1, around North Spring Bizhub and Northpoint Bizhub, is the second motor trade cluster in Yishun. 8 listings.
-- [Bukit Batok Crescent (WCEGA Plaza)](https://sgcarworkshop.sg/areas/bukit-batok-crescent/): Bukit Batok Crescent, home to the WCEGA Plaza and WCEGA Tower industrial buildings, is a light industrial area in the West region. 9 listings.
+- [Bukit Batok Crescent (WCEGA Plaza)](https://sgcarworkshop.sg/areas/bukit-batok-crescent/): Bukit Batok Crescent, home to the WCEGA Plaza and WCEGA Tower industrial buildings, is a light industrial area in the West region. 16 listings.
 - [Woodlands Close (MEGA@Woodlands)](https://sgcarworkshop.sg/areas/woodlands-close/): Woodlands Close, where the MEGA@Woodlands industrial building stands, is a light industrial area in the north, near Woodlands Avenue 12. 1 listing.
 - [Defu Industrial Estate (Defu Lane)](https://sgcarworkshop.sg/areas/defu-industrial-estate/): Defu Industrial Estate, laid out along the Defu Lane roads near Hougang, is one of the older light industrial estates in the north-east, with many motor workshops. 6 listings.
 - [MacPherson Road](https://sgcarworkshop.sg/areas/macpherson-road/): MacPherson Road runs through the MacPherson area in the central region, with a row of shophouse car workshops and service centres along it. 6 listings.
@@ -52,7 +52,9 @@ Last updated: 2026-11-05
 - [Soon Lee Street (Pioneer Point)](https://sgcarworkshop.sg/areas/soon-lee-street-pioneer/): Soon Lee Street, with the Pioneer Point and Pioneer Centre industrial buildings, is a motor trade cluster in Pioneer, in the far west of Singapore. 10 listings.
 - [Jurong West Avenue 5](https://sgcarworkshop.sg/areas/jurong-west-avenue-5/): Jurong West Avenue 5 runs through the Jurong West housing estate in the West region, with car service points along it. 1 listing.
 - [Bukit Merah Lane 3](https://sgcarworkshop.sg/areas/bukit-merah-lane-3/): Bukit Merah Lane 3 is a row of older light industrial blocks in Bukit Merah, in the central region, with several car workshops on its ground floors. 6 listings.
-- [Pandan Loop (Pandan Light Industries Park)](https://sgcarworkshop.sg/areas/pandan-light-industries-park/): Pandan Loop, with the Pandan Light Industries Park blocks, is a light industrial area in the west, near the Pandan Reservoir and the Ayer Rajah Expressway. 1 listing.
+- [Loyang Way and Loyang Drive](https://sgcarworkshop.sg/areas/loyang-way/): Loyang Way and Loyang Drive form the Loyang industrial estate in the far east of Singapore, near Pasir Ris and Changi, with motor workshops in its multi-storey factory blocks. 5 listings.
+- [Tuas (Tuas Avenues and Tuas South)](https://sgcarworkshop.sg/areas/tuas-industrial-area/): Tuas is the large industrial area at the western tip of Singapore, around the Tuas Avenue and Tuas South roads, with motor workshops among its factories and warehouses. 2 listings.
+- [Pandan Loop (Pandan Light Industries Park)](https://sgcarworkshop.sg/areas/pandan-light-industries-park/): Pandan Loop, with the Pandan Light Industries Park blocks, is a light industrial area in the west, near the Pandan Reservoir and the Ayer Rajah Expressway. 2 listings.
 
 ## Car problem and brand guides
 - [All guides](https://sgcarworkshop.sg/guides/)
@@ -80,7 +82,9 @@ Last updated: 2026-11-05
 - [7 Garage](https://sgcarworkshop.sg/workshops/7-garage/): General servicing and repair, Basic listing, Yishun
 - [88 Auto Garage](https://sgcarworkshop.sg/workshops/88-auto-garage/): Car aircon repair, Basic listing, MacPherson
 - [88 Auto Garage @ Woodlands](https://sgcarworkshop.sg/workshops/88-auto-garage-woodlands/): Car aircon repair, Basic listing, Woodlands
+- [89 Motorwerkz](https://sgcarworkshop.sg/workshops/89-motorwerkz/): General servicing and repair, Basic listing, Bukit Batok
 - [98 Auto Werkz](https://sgcarworkshop.sg/workshops/98-auto-werkz/): General servicing and repair, Basic listing, Woodlands
+- [Absolut Budget Workshop](https://sgcarworkshop.sg/workshops/absolut-budget-workshop/): General servicing and repair, Basic listing, Bukit Batok
 - [Accord AutoCare](https://sgcarworkshop.sg/workshops/accord-autocare/): General servicing and repair, Basic listing, Jurong West
 - [Ace Chrome & Restorations](https://sgcarworkshop.sg/workshops/ace-chrome-restorations/): Spray painting and bodywork, Basic listing, Kaki Bukit
 - [ACM Service Center](https://sgcarworkshop.sg/workshops/acm-service-center/): General servicing and repair, Basic listing, Ang Mo Kio
@@ -94,6 +98,7 @@ Last updated: 2026-11-05
 - [Auto Wheels TG](https://sgcarworkshop.sg/workshops/auto-wheels-tg/): General servicing and repair, Basic listing, Toh Guan and Jurong East
 - [AutoApp Singapore](https://sgcarworkshop.sg/workshops/autoapp-singapore/): General servicing and repair, Basic listing, Tampines
 - [Automotive Repair Centre [Jurong]](https://sgcarworkshop.sg/workshops/automotive-repair-centre-jurong/): Spray painting and bodywork, Basic listing, Toh Guan and Jurong East
+- [Autovalue Services](https://sgcarworkshop.sg/workshops/autovalue-services/): General servicing and repair, Basic listing, Tuas
 - [AutoWheels MotorWorks (Bukit Batok Wcega Plaza)](https://sgcarworkshop.sg/workshops/autowheels-motorworks-bukit-batok-wcega-plaza/): General servicing and repair, Basic listing, Bukit Batok
 - [Best Auto Service @ Toh Guan](https://sgcarworkshop.sg/workshops/best-auto-service-toh-guan/): General servicing and repair, Basic listing, Toh Guan and Jurong East
 - [Braveries Garage](https://sgcarworkshop.sg/workshops/braveries-garage/): General servicing and repair, Basic listing, Sin Ming and Bishan
@@ -103,10 +108,12 @@ Last updated: 2026-11-05
 - [Carfield Motor Services](https://sgcarworkshop.sg/workshops/carfield-motor-services/): General servicing and repair, Basic listing, Defu and Hougang
 - [Cars N Such](https://sgcarworkshop.sg/workshops/cars-n-such/): General servicing and repair, Basic listing, Woodlands
 - [Carswift Repair](https://sgcarworkshop.sg/workshops/carswift-repair/): General servicing and repair, Basic listing, Jurong West
+- [Cartisan](https://sgcarworkshop.sg/workshops/cartisan/): General servicing and repair, Basic listing, Changi and Loyang
 - [CAS Garage](https://sgcarworkshop.sg/workshops/cas-garage/): General servicing and repair, Basic listing, Kaki Bukit
 - [Chee Chai Motor Repairer](https://sgcarworkshop.sg/workshops/chee-chai-motor-repairer/): General servicing and repair, Basic listing, Woodlands
 - [Cheng Auto Bodyworks](https://sgcarworkshop.sg/workshops/cheng-auto-bodyworks/): Spray painting and bodywork, Basic listing, Jurong West
 - [Concours Singapore](https://sgcarworkshop.sg/workshops/concours-singapore/): Car detailing and coating, Basic listing, Kaki Bukit
+- [Conti Meister](https://sgcarworkshop.sg/workshops/conti-meister/): General servicing and repair, Basic listing, Changi and Loyang
 - [Da Sheng Motoring](https://sgcarworkshop.sg/workshops/da-sheng-motoring/): General servicing and repair, Basic listing, Toh Guan and Jurong East
 - [Daiha Auto Service](https://sgcarworkshop.sg/workshops/daiha-auto-service/): Spray painting and bodywork, Basic listing, Alexandra and Bukit Merah
 - [DHM Otomotive Werkz](https://sgcarworkshop.sg/workshops/dhm-otomotive-werkz/): General servicing and repair, Basic listing, Woodlands
@@ -117,8 +124,10 @@ Last updated: 2026-11-05
 - [Elites Performance](https://sgcarworkshop.sg/workshops/elites-performance/): General servicing and repair, Basic listing, Kaki Bukit
 - [Eng Seng Motor](https://sgcarworkshop.sg/workshops/eng-seng-motor/): Spray painting and bodywork, Basic listing, Pandan Loop
 - [ERA Auto](https://sgcarworkshop.sg/workshops/era-auto/): General servicing and repair, Basic listing, Jurong West
+- [Eunos Motor Service](https://sgcarworkshop.sg/workshops/eunos-motor-service/): General servicing and repair, Basic listing, Kaki Bukit
 - [Eurosports Garage](https://sgcarworkshop.sg/workshops/eurosports-garage/): General servicing and repair, Basic listing, Woodlands
 - [Everest Garage](https://sgcarworkshop.sg/workshops/everest-garage/): General servicing and repair, Basic listing, Kaki Bukit
+- [FC Auto Garage](https://sgcarworkshop.sg/workshops/fc-auto-garage/): General servicing and repair, Basic listing, Kaki Bukit
 - [Finzeo Car](https://sgcarworkshop.sg/workshops/finzeo-car/): General servicing and repair, Basic listing, Woodlands
 - [First East Centre](https://sgcarworkshop.sg/workshops/first-east-centre/): General servicing and repair, Basic listing, Kaki Bukit
 - [Focus Auto](https://sgcarworkshop.sg/workshops/focus-auto/): General servicing and repair, Basic listing, Kaki Bukit
@@ -157,6 +166,8 @@ Last updated: 2026-11-05
 - [KGC Workshop](https://sgcarworkshop.sg/workshops/kgc-workshop/): General servicing and repair, Basic listing, Toh Guan and Jurong East
 - [KH Kinetics Autocare](https://sgcarworkshop.sg/workshops/kh-kinetics-autocare-night-friendly/): General servicing and repair, Basic listing, Kaki Bukit
 - [Kim Wah Seng Auto Services](https://sgcarworkshop.sg/workshops/kim-wah-seng-auto-services/): General servicing and repair, Basic listing, Defu and Hougang
+- [KK AUTO M&E](https://sgcarworkshop.sg/workshops/kk-auto-m-e/): General servicing and repair, Basic listing, Changi and Loyang
+- [Kompressor Automotive Workshop](https://sgcarworkshop.sg/workshops/kompressor-automotive-workshop/): General servicing and repair, Basic listing, Kaki Bukit
 - [KT MotorWerk / Siang Motor](https://sgcarworkshop.sg/workshops/kt-motorwerk-siang-motor/): Spray painting and bodywork, Basic listing, Bedok North
 - [KY Auto](https://sgcarworkshop.sg/workshops/ky-auto/): General servicing and repair, Basic listing, Kaki Bukit
 - [L1 Motorsports](https://sgcarworkshop.sg/workshops/l1-motorsports/): General servicing and repair, Basic listing, Woodlands
@@ -174,9 +185,13 @@ Last updated: 2026-11-05
 - [Majesty Autoworks](https://sgcarworkshop.sg/workshops/majesty-autoworks/): General servicing and repair, Basic listing, Bukit Batok
 - [Major Autolution](https://sgcarworkshop.sg/workshops/major-autolution/): General servicing and repair, Basic listing, Woodlands
 - [Mao Yang](https://sgcarworkshop.sg/workshops/mao-yang/): General servicing and repair, Basic listing, MacPherson
+- [MD PRIME AUTO SERVICES](https://sgcarworkshop.sg/workshops/md-prime-auto-services/): General servicing and repair, Basic listing, Tuas
 - [Merlin Motor & Engineering Works](https://sgcarworkshop.sg/workshops/merlin-motor-engineering-works/): General servicing and repair, Basic listing, Ang Mo Kio
+- [Mirai Auto Performance](https://sgcarworkshop.sg/workshops/mirai-auto-performance/): General servicing and repair, Basic listing, Changi and Loyang
 - [MK Auto Workz](https://sgcarworkshop.sg/workshops/mk-auto-workz/): General servicing and repair, Basic listing, Kaki Bukit
+- [Mobil Eika Automotive & Accessories](https://sgcarworkshop.sg/workshops/mobil-eika-automotive-accessories/): General servicing and repair, Basic listing, Pandan Loop
 - [Mobil Sunguan Auto Centre](https://sgcarworkshop.sg/workshops/mobil-sunguan-auto-centre/): General servicing and repair, Basic listing, MacPherson
+- [Mobil Yap Seng Motor Service & Trading](https://sgcarworkshop.sg/workshops/mobil-yap-seng-motor-service-trading/): General servicing and repair, Basic listing, Bukit Batok
 - [Moon Star Auto Service](https://sgcarworkshop.sg/workshops/moon-star-auto-service/): General servicing and repair, Basic listing, Yishun
 - [Motoserv Car Service Centre @Bukit Batok](https://sgcarworkshop.sg/workshops/motoserv-car-service-centre-bukit-batok/): General servicing and repair, Basic listing, Bukit Batok
 - [Motoserv Car Service Centre @Sembawang](https://sgcarworkshop.sg/workshops/motoserv-car-service-centre-sembawang/): General servicing and repair, Basic listing, Yishun
@@ -184,16 +199,21 @@ Last updated: 2026-11-05
 - [MT Autoservice](https://sgcarworkshop.sg/workshops/mt-autoservice/): General servicing and repair, Basic listing, Woodlands
 - [MTM Group](https://sgcarworkshop.sg/workshops/mtm-group/): General servicing and repair, Basic listing, Ubi
 - [My Car Auto Workshop](https://sgcarworkshop.sg/workshops/my-car-auto-workshop/): General servicing and repair, Basic listing, Sin Ming and Bishan
+- [My Car Garage](https://sgcarworkshop.sg/workshops/my-car-garage/): General servicing and repair, Basic listing, Ubi
 - [My Tyre Autoservice](https://sgcarworkshop.sg/workshops/my-tyre-autoservice/): General servicing and repair, Basic listing, Yishun
 - [Nam Bee Trading](https://sgcarworkshop.sg/workshops/nam-bee-trading/): General servicing and repair, Basic listing, Woodlands
 - [Nightservicingsg](https://sgcarworkshop.sg/workshops/nightservicingsg/): General servicing and repair, Basic listing, Kaki Bukit
+- [OME Motor](https://sgcarworkshop.sg/workshops/ome-motor/): General servicing and repair, Basic listing, Bukit Batok
 - [Omni Autowerks](https://sgcarworkshop.sg/workshops/omni-autowerks/): General servicing and repair, Basic listing, Kaki Bukit
 - [ONE ZONE AUTOMOTIVE](https://sgcarworkshop.sg/workshops/one-zone-automotive/): Gearbox repair, Basic listing, Yishun
 - [Ong Guan Choon Motor](https://sgcarworkshop.sg/workshops/ong-guan-choon-motor/): General servicing and repair, Basic listing, Sin Ming and Bishan
 - [Ong Kian Seng Motor Repairs](https://sgcarworkshop.sg/workshops/ong-kian-seng-motor-repairs/): General servicing and repair, Basic listing, Kaki Bukit
 - [Palm Motorsports](https://sgcarworkshop.sg/workshops/palm-motorsports/): General servicing and repair, Basic listing, Toh Guan and Jurong East
+- [PH-AUTOHUAS](https://sgcarworkshop.sg/workshops/ph-autohuas/): Spray painting and bodywork, Basic listing, Changi and Loyang
 - [Proline Autowerks](https://sgcarworkshop.sg/workshops/proline-autowerks/): General servicing and repair, Basic listing, Toh Guan and Jurong East
 - [PTune](https://sgcarworkshop.sg/workshops/ptune/): General servicing and repair, Basic listing, Woodlands
+- [Q MotorWorkz](https://sgcarworkshop.sg/workshops/q-motorworkz/): General servicing and repair, Basic listing, Bukit Batok
+- [Rage Performance Technik](https://sgcarworkshop.sg/workshops/rage-performance-technik/): General servicing and repair, Basic listing, Kaki Bukit
 - [Regnant Automotive](https://sgcarworkshop.sg/workshops/regnant-automotive/): Spray painting and bodywork, Basic listing, Ubi
 - [Revol Carz Garage](https://sgcarworkshop.sg/workshops/revol-carz-garage/): General servicing and repair, Basic listing, Ang Mo Kio
 - [Revol Carz Makeover](https://sgcarworkshop.sg/workshops/revol-carz-makeover-toh-guan/): Spray painting and bodywork, Basic listing, Toh Guan and Jurong East
@@ -224,11 +244,14 @@ Last updated: 2026-11-05
 - [Sunrise Auto Services](https://sgcarworkshop.sg/workshops/sunrise-auto-services/): General servicing and repair, Basic listing, Defu and Hougang
 - [Supreme Autocare](https://sgcarworkshop.sg/workshops/supreme-autocare/): General servicing and repair, Basic listing, Toh Guan and Jurong East
 - [SW Auto Transmission Solutions](https://sgcarworkshop.sg/workshops/sw-auto-transmission-solutions/): Gearbox repair, Basic listing, Sin Ming and Bishan
+- [Swift Tyre Specialist](https://sgcarworkshop.sg/workshops/swift-tyre-specialist/): General servicing and repair, Basic listing, Kaki Bukit
 - [T7 Auto Care](https://sgcarworkshop.sg/workshops/t7-auto-care/): Spray painting and bodywork, Basic listing, Ang Mo Kio
 - [Team AutoPro](https://sgcarworkshop.sg/workshops/team-autopro/): Spray painting and bodywork, Basic listing, Sin Ming and Bishan
 - [Technic Autocare](https://sgcarworkshop.sg/workshops/technic-autocare/): General servicing and repair, Basic listing, Jurong West
+- [TECHWERKZ AUTOMOTIVE](https://sgcarworkshop.sg/workshops/techwerkz-automotive/): Spray painting and bodywork, Basic listing, Kaki Bukit
 - [Tee Guan Trading Co](https://sgcarworkshop.sg/workshops/tee-guan-trading-co/): General servicing and repair, Basic listing, Toh Guan and Jurong East
 - [TEUTONIC AUTOHAUS](https://sgcarworkshop.sg/workshops/teutonic-autohaus/): General servicing and repair, Basic listing, Ang Mo Kio
+- [The Local Workshop](https://sgcarworkshop.sg/workshops/the-local-workshop/): General servicing and repair, Basic listing, Bukit Batok
 - [Trident Auto Service Centre](https://sgcarworkshop.sg/workshops/trident-auto-service-centre/): General servicing and repair, Basic listing, Kaki Bukit
 - [TT MotorSport](https://sgcarworkshop.sg/workshops/tt-motorsport-ubi-car-service/): General servicing and repair, Basic listing, Ubi
 - [TT Motorsport @ Jurong](https://sgcarworkshop.sg/workshops/tt-motorsport-jurong/): General servicing and repair, Basic listing, Toh Guan and Jurong East
@@ -236,6 +259,7 @@ Last updated: 2026-11-05
 - [TTS Eurocars Service Centre](https://sgcarworkshop.sg/workshops/tts-eurocars-service-centre/): General servicing and repair, Basic listing, MacPherson
 - [TTS Performance Auto](https://sgcarworkshop.sg/workshops/tts-performance-auto/): General servicing and repair, Basic listing, Yishun
 - [TYREPLUS Toh Guan](https://sgcarworkshop.sg/workshops/tyreplus-toh-guan/): General servicing and repair, Basic listing, Toh Guan and Jurong East
+- [U Auto Care](https://sgcarworkshop.sg/workshops/u-auto-care/): General servicing and repair, Basic listing, Bukit Batok
 - [Ubi Automobile Services](https://sgcarworkshop.sg/workshops/ubi-automobile-services/): General servicing and repair, Basic listing, Ubi
 - [Unimotor Company](https://sgcarworkshop.sg/workshops/unimotor-company/): General servicing and repair, Basic listing, Kaki Bukit
 - [Wei Car Spray Painting](https://sgcarworkshop.sg/workshops/wei-car-spray-painting/): Spray painting and bodywork, Verified listing, Yishun

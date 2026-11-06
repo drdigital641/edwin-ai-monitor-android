@@ -1,0 +1,38 @@
+{
+ "businessStatus": "OPERATIONAL",
+ "primaryType": "car_repair",
+ "types": [
+  "tire_shop",
+  "auto_parts_store",
+  "car_repair",
+  "point_of_interest",
+  "store",
+  "service",
+  "establishment"
+ ],
+ "rating": 4.6,
+ "userRatingCount": 387,
+ "websiteUri": "https://swifttyrespecialist.sg/",
+ "paymentOptions": {
+  "acceptsCreditCards": true,
+  "acceptsDebitCards": true,
+  "acceptsCashOnly": false,
+  "acceptsNfc": true
+ },
+ "parkingOptions": null,
+ "editorialSummary": null,
+ "weekdayDescriptions": [
+  "Monday: 9:30 AM – 6:30 PM",
+  "Tuesday: 9:30 AM – 6:30 PM",
+  "Wednesday: 9:30 AM – 6:30 PM",
+  "Thursday: 9:30 AM – 6:30 PM",
+  "Friday: 9:30 AM – 6:30 PM",
+  "Saturday: 9:30 AM – 6:30 PM",
+  "Sunday: Closed"
+ ],
+ "review_count_seen": 5,
+ "review_themes": "Customers on Google Maps mention very fast WhatsApp replies, on-site puncture repair and tyre replacement, a car battery replacement, wheel alignment and coilover fitting at competitive prices.",
+ "fetched_at": "2026-11-05",
+ "place_id": "ChIJAQvOVPEX2jERLUypOk2kM_I",
+ "source": "google_places"
+}

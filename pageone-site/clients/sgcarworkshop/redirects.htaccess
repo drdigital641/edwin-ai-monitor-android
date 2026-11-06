@@ -2,6 +2,7 @@ RedirectMatch 301 ^/areas/alexandra\-bukit\-merah/general\-servicing\-repair/?$ 
 RedirectMatch 301 ^/areas/ang\-mo\-kio/general\-servicing\-repair/?$ /areas/amk-industrial-park-2/
 RedirectMatch 301 ^/areas/bedok\-north/general\-servicing\-repair/?$ /areas/bedok-industrial-park-e/
 RedirectMatch 301 ^/areas/bukit\-batok/general\-servicing\-repair/?$ /areas/bukit-batok-crescent/
+RedirectMatch 301 ^/areas/changi\-loyang/general\-servicing\-repair/?$ /areas/loyang-way/
 RedirectMatch 301 ^/areas/defu\-hougang/general\-servicing\-repair/?$ /areas/defu-industrial-estate/
 RedirectMatch 301 ^/areas/jurong\-west/general\-servicing\-repair/?$ /areas/jurong-west/
 RedirectMatch 301 ^/areas/kaki\-bukit/general\-servicing\-repair/?$ /areas/kaki-bukit-industrial-estate/
@@ -13,6 +14,7 @@ RedirectMatch 301 ^/areas/sin\-ming\-bishan/general\-servicing\-repair/?$ /areas
 RedirectMatch 301 ^/areas/tampines/general\-servicing\-repair/?$ /areas/tampines/
 RedirectMatch 301 ^/areas/toa\-payoh/general\-servicing\-repair/?$ /areas/toa-payoh-industrial-park/
 RedirectMatch 301 ^/areas/toh\-guan\-jurong\-east/general\-servicing\-repair/?$ /areas/toh-guan-jurong-east/
+RedirectMatch 301 ^/areas/tuas/general\-servicing\-repair/?$ /areas/tuas-industrial-area/
 RedirectMatch 301 ^/areas/ubi/general\-servicing\-repair/?$ /areas/ubi/
 RedirectMatch 301 ^/areas/woodlands/general\-servicing\-repair/?$ /areas/woodlands/
 RedirectMatch 301 ^/areas/yishun/general\-servicing\-repair/?$ /areas/yishun/
