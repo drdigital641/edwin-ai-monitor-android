@@ -185,3 +185,14 @@ html.intro .hero-in>*{animation-play-state:paused}
 .hdr-call{overflow:visible}.hdr-call:before{display:none}
 .scard img{filter:saturate(.9)}.scard:hover img{filter:saturate(1.15)}
 @media(prefers-reduced-motion:reduce){.splash,.streak{display:none}.wipe img{opacity:1;transform:none}.uline:after{transform:scaleX(1)}}
+
+/* EN | 中文 switch (6 Nov 2026) */
+.langsw{display:inline-flex;margin-left:auto;border:2px solid #14171c;border-radius:999px;overflow:hidden;font-weight:800;font-size:.92rem;flex:none}
+.langsw a{padding:8px 13px;color:#14171c;text-decoration:none;line-height:1}
+.langsw a[aria-current]{background:#14171c;color:#fff}
+.langsw a:not([aria-current]):hover{background:#f1f1f1}
+@media(max-width:860px){.hdr-call{margin-left:0}}
+@media(max-width:640px){.langsw a{padding:7px 9px;font-size:.84rem}}
+.strip a.lang{font-weight:800;text-decoration:underline}
+@media(max-width:640px){.hdr .wrap{gap:8px}.menu-btn{font-size:0;padding:6px 10px;line-height:1;white-space:nowrap}.menu-btn::before{content:"☰";font-size:20px;font-weight:700}.hdr-call{padding:8px 10px}.brand{gap:8px}.brand-mark{width:36px;height:36px}}
+@media(max-width:370px){.brand-name{font-size:.88rem}.langsw a{padding:6px 7px}.hdr .wrap{gap:6px}.brand-mark{width:32px;height:32px}}

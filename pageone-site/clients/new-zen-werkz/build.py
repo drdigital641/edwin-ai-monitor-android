@@ -765,7 +765,7 @@ def render(path, p):
 <link rel="icon" href="{pre}favicon.ico" sizes="48x48">
 <link rel="apple-touch-icon" href="{pre}apple-touch-icon.png">
 <link rel="manifest" href="{pre}site.webmanifest">
-<link rel="stylesheet" href="{pre}nzw.css?v=8">
+<link rel="stylesheet" href="{pre}nzw.css?v=9">
 {INTRO if path == '' and not p.get('is404') else ''}<script src="{pre}nzw.js?v=7" defer></script>
 <script type="application/ld+json">{ld}</script>
 </head>

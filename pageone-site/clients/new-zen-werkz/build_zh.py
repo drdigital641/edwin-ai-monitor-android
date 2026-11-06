@@ -64,6 +64,17 @@ def alternates(path):
             '<link rel="alternate" hreflang="x-default" href="%s%s">\n') % (SITE, path, SITE, path, SITE, path)
 
 
+def pill(path, depth, zh):
+    """Big EN | 中文 switch in the header (Edwin, 6 Nov 2026: make it more visible)."""
+    if zh:
+        en, cn = '../' * (depth + 1) + path, './'
+    else:
+        en, cn = './', '../' * depth + 'zh/' + path
+    return ('<div class="langsw" role="group" aria-label="Language / 语言">'
+            '<a href="%s" hreflang="en-SG" lang="en"%s>EN</a><a href="%s" hreflang="zh-Hans-SG" lang="zh-Hans"%s>中文</a></div>') % (
+        en or './', '' if zh else ' aria-current="true"', cn, ' aria-current="true"' if zh else '')
+
+
 def to_zh(h, path, depth):
     out = []
     for kind, t in split_parts(h):
@@ -86,6 +97,7 @@ def to_zh(h, path, depth):
     z = z.replace('text=' + quote(B.WA_MSG), 'text=' + quote(WA_ZH))
     en_link = '<a class="lang" href="%s%s" hreflang="en-SG" lang="en">English</a> · ' % ('../' * (depth + 1), path)
     z = z.replace('<span class="strip-r">', '<span class="strip-r">' + en_link, 1)
+    z = re.sub(r'<div class="langsw".*?</div>', lambda m: pill(path, depth, True), z, count=1, flags=re.S)
     return z
 
 
@@ -102,6 +114,8 @@ def main():
         if 'hreflang="zh-Hans-SG"' not in h:
             h = h.replace('<link rel="preconnect"', alternates(path) + '<link rel="preconnect"', 1)
             h = h.replace('<span class="strip-r">', '<span class="strip-r"><a class="lang" href="%szh/%s" hreflang="zh-Hans-SG" lang="zh-Hans">中文</a> · ' % ('../' * depth, path), 1)
+        if 'class="langsw"' not in h:
+            h = h.replace('<a class="btn btn-wa hdr-call"', pill(path, depth, False) + '<a class="btn btn-wa hdr-call"', 1)
             open(full, 'w').write(h)
         # Chinese side: the zh page links back to its English twin, so drop the 中文 link and add an English one
         src = h.replace('<a class="lang" href="%szh/%s" hreflang="zh-Hans-SG" lang="zh-Hans">中文</a> · ' % ('../' * depth, path), '')
