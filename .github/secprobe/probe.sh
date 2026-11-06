@@ -1,5 +1,6 @@
 #!/usr/bin/env bash
 # Read-only live content checks (6 Nov 2026): reviewer initials, shortened quote, privacy footer links.
+# rerun 6 Nov after SofaCare rebuild 00:17 UTC
 UA="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130.0 Safari/537.36"
 get() { curl -sL -A "$UA" -m 30 -H 'Cache-Control: no-cache' "$1?nc=$RANDOM"; }
 cnt() { grep -o -- "$2" <<<"$1" | wc -l; }
