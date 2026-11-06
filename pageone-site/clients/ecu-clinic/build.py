@@ -404,7 +404,7 @@ def page(path, title, desc, body, ld=None, share=('module-circuit-board.jpg', No
 <ul>{''.join(f'<li><a href="{u(f"articles/{a['slug']}/")}">{e(a['h1'])}</a></li>' for a in ARTICLES[:4])}<li><a href="{u("articles/")}">All articles</a></li></ul>
 </div>
 </div>
-<div class="fine"><span>© 2026 The ECU Clinic. All rights reserved.</span><a href="https://pageonesingapore.com/">Website &amp; SEO by Page One Singapore</a></div>
+<div class="fine"><span>© 2026 The ECU Clinic. All rights reserved.</span><nav aria-label="Footer"><a href="{u('privacy/')}">Privacy</a></nav><a href="https://pageonesingapore.com/">Website &amp; SEO by Page One Singapore</a></div>
 </div></footer>
 <div class="dock">
 <a class="btn btn-wa" href="{wa_link(cta="Sticky bar")}" target="_blank" rel="noopener">{ICON["wa"]}WhatsApp</a>

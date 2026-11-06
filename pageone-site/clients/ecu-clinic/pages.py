@@ -1322,4 +1322,45 @@ ARTICLES = [
              ('Should I replace the wheel speed sensor first?', 'Not before the code is read. Replacing a sensor on a guess can leave the light on if the fault is in the wiring or the ABS unit. Check the code, the sensor and its wiring first.'),
              ('Do you repair the ABS pump or module?', 'Yes. We repair ABS pumps and modules, and our repairs come with a 6-month warranty. WhatsApp us the car model, chassis number and fault code and we will tell you if the fault looks like an ABS unit fault.')],
     ),
+    dict(
+        # 7 Nov 2026: intermittent ABS light intent (light comes on and goes off by itself). General verifiable knowledge, hedged;
+        # client facts only (ABS pump and module repair, 6-month warranty, pick-up and delivery, send car model/chassis/code). No prices or times.
+        slug='abs-light-comes-on-and-goes-off-by-itself', service='abs-pump-repair', date='2026-11-07', img_site=True,
+        title='ABS Light On, Then Off by Itself: Causes | The ECU Clinic',
+        desc='ABS light comes on and goes off by itself? The common causes, why a light that went off is not fixed, what to check, and when the ABS unit is the cause.',
+        h1='Why Does the ABS Light Come On and Then Go Off by Itself?',
+        lead='An ABS light that comes and goes is still a stored fault. Here is what usually causes it and what to do before it stays on.',
+        photo='abs-module-in-car', alt='ABS module in a car’s engine bay', share='abs-unit-engine-bay-1.jpg',
+        body='''<p><strong>Short answer:</strong> the ABS control unit switched the light on because it saw a fault, then switched it off when the fault did not repeat. The usual causes are a wheel speed sensor signal that drops out, a loose or corroded connector, a weak battery or charging voltage, or an early fault inside the ABS pump or module. The fault is normally stored as a code even after the light goes off, so a scan tool can still read it. Do not wait for the light to stay on before you have it checked.</p>
+<h2>Why does the ABS light come and go?</h2>
+<p>The ABS unit checks itself and the wheel speed sensors every time the car starts and while it drives. If a reading is missing or implausible, it logs a code and lights the warning. If the next check passes, many cars switch the light off again but keep the code in memory. A fault that appears only sometimes is called an intermittent fault, and it is harder to find because it may not be present when the car is tested.</p>
+<h2>What are the common causes of an intermittent ABS light?</h2>
+<ul class="ticks">
+<li><strong>Wheel speed sensor signal:</strong> a dirty sensor tip, a damaged wire or a cracked or rusty sensor ring can drop the signal only at certain speeds or on bumpy roads. See <a href="../abs-wheel-speed-sensor-or-abs-pump-which-is-faulty/">ABS wheel speed sensor or ABS pump</a>.</li>
+<li><strong>Connectors and wiring:</strong> water, corrosion or a loose plug can break the signal for a moment, for example after rain or a car wash.</li>
+<li><strong>Low or unstable voltage:</strong> a weak battery or a charging fault can make the ABS unit report an error, often with other lights on at the same time.</li>
+<li><strong>The ABS pump or module itself:</strong> an internal fault can show up first as a light that appears now and then, and later stay on. Several codes at once, or the same code returning after it is cleared, make this more likely.</li>
+<li><strong>Work done recently:</strong> a light that started after a tyre, wheel, brake or battery job can point to a disturbed sensor, plug or connection.</li>
+</ul>
+<h2>Is the fault gone if the light goes off?</h2>
+<p>Not necessarily. The light going off only means the unit did not see the fault on the last check. The stored code usually remains until it is cleared, and the fault can return, often at a worse moment such as a hard stop on a wet road. Clearing the code without finding the cause hides the warning and does not repair anything.</p>
+<h2>What should you do when the ABS light flickers on?</h2>
+<ol class="steps">
+<li>Note when it happens: at start-up, over bumps, in rain, at certain speeds or after braking.</li>
+<li>Check that the red BRAKE light is not on. If it is, stop driving. See <a href="../abs-light-vs-brake-warning-light-difference/">ABS light vs brake warning light</a>.</li>
+<li>Have the battery and charging checked if other lights flicker too or the car has been slow to start.</li>
+<li>Have the fault codes read before they are cleared, and keep a photo of the codes.</li>
+<li>If the same code keeps returning, or the scan points inside the ABS pump or module, send us the details.</li>
+</ol>
+<h2>Is it safe to keep driving?</h2>
+<p>Often the normal brakes still work, but the anti-lock function may not be available when the light is on, so the wheels can lock in a hard stop. Drive gently, keep extra distance and get the code read soon. The causes of a steady ABS light are listed in <a href="../abs-warning-light-causes/">ABS warning light on? Common causes</a>.</p>
+<h2>When is the ABS pump or module the cause?</h2>
+<p>When the sensors, wiring and voltage check out and the fault keeps coming back, or the code names the pump motor, a valve or the control unit. That is the part we repair. If your scan points to a sensor, a plug or a brake part, we will tell you so and you can have it fixed at a workshop. See <a href="../abs-pump-repair-or-used-or-reconditioned-unit/">repair, used or reconditioned unit</a> for the options when the unit is at fault.</p>
+<h2>What should you send us?</h2>
+<p>WhatsApp us the car model, the chassis number and the fault code, with a photo of the dashboard or the scan tool screen. Tell us when the light comes on. Our repairs come with a 6-month warranty, and our pick-up and delivery service can collect the car if you would rather not drive it.</p>''',
+        faq=[('Why does my ABS light come on and then go off?', 'The ABS unit saw a fault, such as a missing wheel speed signal, and then the fault did not repeat on the next check. The code is normally still stored, so a scan tool can read it even though the light is off.'),
+             ('Can a weak battery turn the ABS light on and off?', 'Yes. Low or unstable voltage can make the ABS unit report an error, often with other warning lights. Have the battery and charging checked, then read the stored codes.'),
+             ('Is it safe to ignore an ABS light that goes off?', 'No. The fault is usually still stored and can return, and the anti-lock function may be off while the light is on. Get the code read soon, and stop driving if the red brake light is on.'),
+             ('When does an intermittent ABS light mean the ABS pump or module?', 'When the sensors, wiring and voltage are fine and the same code keeps returning, or the code names the pump, a valve or the control unit. We repair ABS pumps and modules, so send us the car model, chassis number and fault code.')],
+    ),
 ]
