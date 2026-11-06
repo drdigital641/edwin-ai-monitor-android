@@ -1,0 +1,14 @@
+name: ContiExpert live check + IndexNow
+on:
+  push:
+    branches: [ "claude/project-thread-8wm44f" ]
+    paths: [ ".github/ce-live/**", ".github/workflows/contiexpert-live.yml" ]
+jobs:
+  run:
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+      - name: Live check
+        run: python3 .github/ce-live/check.py
+      - name: IndexNow submit (contiexpert.sg sitemap)
+        run: python3 .github/ce-live/indexnow.py
