@@ -1,0 +1,49 @@
+{
+ "lede": "MCF Auto is a car workshop at Premier@Kaki Bukit. Its own website says it has helped owners care for their cars since 2014, with maintenance, diagnosis and repair, performance work, aircon and wheel alignment, and claims.",
+ "chips": [
+  "Car servicing",
+  "MINI",
+  "Diagnosis and repair"
+ ],
+ "services": [
+  "Auto maintenance services",
+  "Systems diagnosis and repair",
+  "Performance enhancement",
+  "Wheel alignment and aircon services",
+  "Third-party claims",
+  "Spray painting and grooming"
+ ],
+ "themes": "Customers on Google Maps mention a lot of MINI experience, a coolant system replacement after an overheating warning, seat belt and airbag warning light repairs, bulb changes, car camera installation, clear cost breakdowns and fair quotes.",
+ "faqs": [
+  [
+   "What does MCF Auto do?",
+   "Google Maps lists it as a car repair workshop."
+  ],
+  [
+   "What are the opening hours?",
+   "The hours are listed in the Google Maps section above. Please see Google Maps for current hours."
+  ]
+ ],
+ "sources": "its own website (mcfauto.biz)",
+ "stories": [],
+ "mentioned_services": [
+  "MINI servicing",
+  "Coolant system replacement",
+  "Warning light repair",
+  "Car camera installation",
+  "Drive shaft seal"
+ ],
+ "services_note": "Services as listed on the workshop's own website, mcfauto.biz.",
+ "specialties": [
+  "Preventive maintenance",
+  "MINI cars, as customers mention"
+ ],
+ "good_to_know": [
+  "Caring for cars since 2014, according to its website"
+ ],
+ "makes": [
+  "MINI"
+ ],
+ "makes_note": "Named by customers on Google Maps. Ask the workshop about other makes.",
+ "card_rules": "2026-11-05"
+}

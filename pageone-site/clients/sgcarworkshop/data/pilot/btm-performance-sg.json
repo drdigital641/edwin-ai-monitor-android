@@ -1,0 +1,51 @@
+{
+ "lede": "BTM Performance SG is a car workshop at Premier@Kaki Bukit. Its own website says it specialises in European premium car repair, with servicing, diagnostics, gearbox, engine, aircon and undercarriage work.",
+ "chips": [
+  "European cars",
+  "Diagnostics",
+  "Aircon"
+ ],
+ "services": [
+  "General maintenance service",
+  "Electronics and diagnostics programming",
+  "Automatic transmission repair and overhaul",
+  "Engine repair and overhaul",
+  "Cooling system repairs",
+  "Aircon diagnostics and parts replacement",
+  "Braking and suspension parts",
+  "Undercarriage repair",
+  "Pre-purchase inspection",
+  "Hybrid battery maintenance"
+ ],
+ "themes": "Customers on Google Maps mention honest advice with no hard selling, quick replies by WhatsApp, on-time appointments, an aircon issue investigated thoroughly, a broken third brake light fixed, and regular servicing for an Audi Q3.",
+ "faqs": [
+  [
+   "What does BTM Performance SG do?",
+   "Google Maps lists it as a car repair workshop."
+  ],
+  [
+   "What are the opening hours?",
+   "The hours are listed in the Google Maps section above. Please see Google Maps for current hours."
+  ]
+ ],
+ "sources": "its own website (btmperformance.sg)",
+ "stories": [],
+ "mentioned_services": [
+  "Car servicing",
+  "Aircon repair",
+  "Brake light repair"
+ ],
+ "services_note": "Services as listed on the workshop's own website, btmperformance.sg.",
+ "specialties": [
+  "European premium cars",
+  "BMW aircon servicing",
+  "Performance parts and upgrades"
+ ],
+ "makes": [
+  "BMW",
+  "Porsche"
+ ],
+ "makes_note": "Named on its own website.",
+ "good_to_know": [],
+ "card_rules": "2026-11-05"
+}

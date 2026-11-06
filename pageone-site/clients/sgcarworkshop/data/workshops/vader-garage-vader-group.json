@@ -1,0 +1,73 @@
+{
+ "schema_version": 1,
+ "slug": "vader-garage-vader-group",
+ "place_id": "ChIJFRig3ycX2jER8xj5P2ynglI",
+ "place_id_checked_at": "2026-11-06",
+ "name": "Vader Garage (Vader Group)",
+ "name_source_url": "google_profile",
+ "name_checked_at": "2026-11-06",
+ "address": {
+  "block": "",
+  "street": "8 Kaki Bukit Ave 4, #04-30",
+  "unit": "",
+  "building": ""
+ },
+ "postal_code": "415875",
+ "address_source_url": "google_profile",
+ "address_checked_at": "2026-11-06",
+ "categories": [
+  "SERV"
+ ],
+ "services": [
+  "General servicing and repair"
+ ],
+ "services_source_url": "google_profile",
+ "phones": [
+  {
+   "e164": "+6586614651",
+   "kind": "mobile",
+   "whatsapp": true,
+   "source": "google_profile",
+   "checked_at": "2026-11-06"
+  }
+ ],
+ "google_screen": {
+  "passed": true,
+  "reason": "OPERATIONAL, car repair, SG mobile on Google profile",
+  "checked_at": "2026-11-06"
+ },
+ "status": "active",
+ "tier": "basic",
+ "first_seen_at": "2026-11-06",
+ "last_verified_at": "2026-11-06",
+ "collector_version": "agent-v5",
+ "estate": "kaki-bukit-industrial-estate",
+ "planning_area": "Bedok",
+ "region": "east",
+ "lat": 1.33856684411249,
+ "lng": 103.9058766693191,
+ "geo_source": "onemap",
+ "blocks": [
+  "hero",
+  "contact",
+  "services",
+  "good_for",
+  "problems",
+  "reviews",
+  "comparison",
+  "hours",
+  "stories",
+  "location",
+  "tips",
+  "faq",
+  "claim",
+  "sources"
+ ],
+ "google_rating": {
+  "rating": 5,
+  "count": 14,
+  "checked": "2026-11-06",
+  "source": "Google Places",
+  "source_date": "2026-11-06"
+ }
+}
