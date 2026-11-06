@@ -12,6 +12,7 @@ RedirectMatch 301 ^/areas/jurong\-west/general\-servicing\-repair/?$ /areas/juro
 RedirectMatch 301 ^/areas/kaki\-bukit/general\-servicing\-repair/?$ /areas/kaki-bukit-industrial-estate/
 RedirectMatch 301 ^/areas/kranji/?$ /areas/carros-centre-jalan-lam-huat/
 RedirectMatch 301 ^/areas/macpherson/general\-servicing\-repair/?$ /areas/macpherson-road/
+RedirectMatch 301 ^/areas/newton\-novena/general\-servicing\-repair/?$ /areas/bukit-timah-road-newton/
 RedirectMatch 301 ^/areas/pandan\-loop/general\-servicing\-repair/?$ /areas/pandan-light-industries-park/
 RedirectMatch 301 ^/areas/serangoon\-north/general\-servicing\-repair/?$ /areas/serangoon-garden-way/
 RedirectMatch 301 ^/areas/sin\-ming\-bishan/general\-servicing\-repair/?$ /areas/sin-ming-industrial-estate/
@@ -42,6 +43,7 @@ RedirectMatch 301 ^/workshops/m6\-garage\-pte\-ltd/?$ /workshops/m6-garage/
 RedirectMatch 301 ^/workshops/major\-autolution\-pte\-ltd/?$ /workshops/major-autolution/
 RedirectMatch 301 ^/workshops/mincent\-car\-auto/?$ /workshops/my-car-auto-workshop/
 RedirectMatch 301 ^/workshops/proline\-autowerks\-pte\-ltd/?$ /workshops/proline-autowerks/
+RedirectMatch 301 ^/workshops/sg\-garage/?$ /workshops/edwin-garage/
 RedirectMatch 301 ^/workshops/sg\-zoom\-garage\-pte\-ltd/?$ /workshops/sg-zoom-garage/
 RedirectMatch 301 ^/workshops/tts\-performance\-auto\-pte\-ltd/?$ /workshops/tts-performance-auto/
 RedirectMatch 301 ^/workshops/zenetics\-auto\-pte\-ltd/?$ /workshops/zenetics-auto/

@@ -2572,5 +2572,50 @@
   "mobile": "+6587777788",
   "status": "built",
   "date": "2026-11-06"
+ },
+ {
+  "place_id": null,
+  "slug": "new-zen-werkz",
+  "name_norm": "new zen werkz",
+  "postal_code": "415935",
+  "mobile": "+6586781878",
+  "status": "built",
+  "date": "2026-11-06"
+ },
+ {
+  "place_id": null,
+  "slug": "contiexpert-volt-autocare",
+  "name_norm": "contiexpert by volt autocare",
+  "postal_code": "229843",
+  "mobile": "+6582215502",
+  "status": "built",
+  "date": "2026-11-06"
+ },
+ {
+  "place_id": null,
+  "slug": "klar-details",
+  "name_norm": "klar details",
+  "postal_code": "608586",
+  "mobile": "+6589173950",
+  "status": "built",
+  "date": "2026-11-06"
+ },
+ {
+  "place_id": null,
+  "slug": "xado-singapore",
+  "name_norm": "xado",
+  "postal_code": "",
+  "mobile": "+6593391185",
+  "status": "built",
+  "date": "2026-11-06"
+ },
+ {
+  "place_id": null,
+  "slug": "ev-body-parts",
+  "name_norm": "ev body parts",
+  "postal_code": "",
+  "mobile": "+6589976612",
+  "status": "built",
+  "date": "2026-11-06"
  }
 ]

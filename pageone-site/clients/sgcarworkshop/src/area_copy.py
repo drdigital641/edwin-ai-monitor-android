@@ -110,6 +110,11 @@ AREA_COPY = {
         "and Farrer Park is nearby. Jalan Besar is known for its shophouses and the Jalan Besar Stadium, while Kallang Bahru and Kallang Basin are close to the Singapore Sports Hub "
         "and the National Stadium. The Pan-Island Expressway and Kallang-Paya Lebar Expressway connect the area to the east and north of the island.",
         ['Jalan Besar', 'Lavender', 'Boon Keng'], ['Jalan Besar Stadium', 'Singapore Sports Hub', 'Kallang Basin']),
+    'newton-novena': (
+        "Newton and Novena are in the Central region, just north of Orchard Road. Newton MRT station on the Downtown Line and North South Line and Novena MRT station on the North South Line "
+        "serve the area. Newton Circus, with the Newton Food Centre, is where Bukit Timah Road, Scotts Road and Newton Road meet, and the Central Expressway passes close by, "
+        "so it is a short drive from Orchard, Toa Payoh and the city centre.",
+        ['Newton', 'Novena', 'Orchard'], ['Newton Food Centre', 'Newton Circus', 'Novena Square']),
     'alexandra-bukit-merah': (
         "Alexandra and Bukit Merah are in the south-west of the central region. Redhill MRT station and Queenstown MRT station on the East West Line serve the area, with Tiong Bahru MRT "
         "close by. Alexandra Road is home to Alexandra Hospital and the IKEA Alexandra store, and Henderson Road and Bukit Merah Central hold the local HDB estates and shops. "

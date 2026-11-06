@@ -121,9 +121,11 @@ for e, r in rows:
         for c in (FEAT if e['tier'] != 'none' else []):   # founder-owned: no invented photos or FAQs; contact, address, map and buttons still required   # Premium must reach Verified's level (capped at the thresholds below: 3 photos, 3 services, 3 FAQs, 1 gallery item)
             need = min(wei[c], MINIMUM[c])
             have = r[c]
+            if c in ('photos', 'gallery') and e.get('no_photos_reason'): continue   # logged reason (e.g. the brand's photos could not be copied yet); the card uses its logo
             if c == 'photos' and e.get('category') == 'car-parts': have = max(have, r['gallery'])   # parts shop: its catalogue part images count as pictures when no shop photos exist
             if have < need: notes.append('Premium %s %s < Verified minimum %s' % (c, r[c], need))
         for c in (('contact', 'address', 'map', 'rating', 'both_buttons') if e['tier'] != 'none' else ('contact', 'address', 'map', 'both_buttons')):
+            if c == 'map' and not e.get('map_url') and e.get('online_only'): continue   # online-only seller: no shop, so no map (its service area line stands in for the address)
             if wei[c] and not r[c]: notes.append('Premium missing ' + c)
     elif e['tier'] == 'premium':
         for c in ('contact', 'address', 'map', 'rating', 'both_buttons'):
@@ -359,6 +361,8 @@ for _root, _d, _fs in os.walk(sys.argv[1] if len(sys.argv) > 1 else '../site'):
     for _fn in _fs:
         if _fn.endswith('.html'):
             for _t in re.findall(r'href="tel:([^"]*)"', open(os.path.join(_root, _fn), encoding='utf-8').read()):
+                # Edwin 7 Nov 2026: a Page One client's office line, as published on its own website, may appear on that client's own card page only
+                if _t in {e.get('landline') for e in ENTRIES if e.get('landline')} and any(os.path.join('workshops', e['slug']) in _root for e in ENTRIES if e.get('landline') == _t): continue
                 if not re.fullmatch(r'\+65[89]\d{7}', _t): print('tel: is not an SG mobile', _t, os.path.join(_root, _fn)); bad += 1
 # DATA: every record file passes the schema; forbidden Google fields; removed/pending place_ids never live; snapshots stay private
 import subprocess

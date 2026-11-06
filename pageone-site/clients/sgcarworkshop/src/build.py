@@ -362,7 +362,7 @@ def _g_rc(e):
 
 
 HOME_N = 4  # cards per group on the homepage (Edwin 3 Nov 2026: a fixed count per group so the page does not scroll forever)
-HOME_GROUPS = [('featured', 'Featured (paid)', 'Paid placements, marked Featured (paid).'),
+HOME_GROUPS = [('featured', 'Featured', "Paid placements, marked Featured (paid), and the site founder's own workshop, marked as owned by the founder."),
                ('verified', 'Verified', "Listings whose details the owner has confirmed."),
                ('basic', 'Basic listings', "Free listings built from the workshop's public Google Business Profile.")]
 
@@ -791,8 +791,8 @@ def estate_service(slug, cat, es):
 
 
 def is_paid(e):
-    """Paying Featured client. Founder-owned listings are Premium-layout pages but not paid placements."""
-    return e['tier'] == 'premium_leadgen' and not e.get('founder_owned')
+    """Featured listing: a paying Page One client, or (Edwin 7 Nov 2026) the founder's own workshop, which keeps its "Owned by the site's founder" badge."""
+    return e['tier'] == 'premium_leadgen'
 
 
 FOUNDER_LABEL = "Owned by the site's founder"
@@ -1081,12 +1081,12 @@ def tiers_strip():
 
 
 def ld_business(e, url):
-    ld = {'@context': 'https://schema.org', '@type': 'AutoRepair', '@id': url + '#business', 'name': e['name'], 'url': url, 'mainEntityOfPage': url}
+    ld = {'@context': 'https://schema.org', '@type': {'car-parts': 'AutoPartsStore', 'car-detailing-coating': 'AutoWash'}.get(e['category'], 'AutoRepair'), '@id': url + '#business', 'name': e['name'], 'url': url, 'mainEntityOfPage': url}
     first = next((p for p in (e.get('photos') or []) if not (p.get('f') or '').endswith('.svg')), None) or e.get('card_img')
     if first:
         ld['image'] = [BASE + 'assets/img/' + first['f'] if first.get('f') else first['u']]
     if e.get('phone'):
-        ld['telephone'] = e['phone']
+        ld['telephone'] = e.get('landline') or e['phone']   # same main number as the business's own website schema (NAP match)
     adds = [a for a in e.get('addresses', []) if a.get('postal')]
     if e['slug'] == 'battery-rescue-sg':
         ld['location'] = [{'@type': 'Place', 'name': a['label'], 'address': {'@type': 'PostalAddress', 'streetAddress': a['street'], 'addressLocality': 'Singapore', 'addressCountry': 'SG'}} for a in e['addresses']]
@@ -1095,7 +1095,8 @@ def ld_business(e, url):
         ld['address'] = {'@type': 'PostalAddress', 'streetAddress': a0['street'], 'postalCode': a0['postal'], 'addressLocality': 'Singapore', 'addressCountry': 'SG'}
         if len(e['addresses']) > 1:
             ld['location'] = [{'@type': 'Place', 'name': a['label'], 'address': {'@type': 'PostalAddress', 'streetAddress': a['street'], 'postalCode': a['postal'], 'addressLocality': 'Singapore', 'addressCountry': 'SG'}} for a in e['addresses'][1:]]
-    ld['hasMap'] = e['map_url']
+    if e.get('map_url'):
+        ld['hasMap'] = e['map_url']
     if e.get('hours_ld'):
         ld['openingHoursSpecification'] = [{'@type': 'OpeningHoursSpecification', 'dayOfWeek': d, 'opens': o, 'closes': c} for d, o, c in e['hours_ld']]
     if e['region'] == 'mobile':
@@ -1787,7 +1788,8 @@ def paid_btns(x):
             E(e['url']), e['slug'], e['tier'], E(page_label(path)), E(e['domain']), ic('out')))
     if e.get('book_url'):
         sec.append('<a class="btn" href="%s" target="_blank" rel="noopener" data-cta="book_%s">%s</a>' % (E(e['book_url']), e['slug'], E(e['book_label'])))
-    sec.append('<a class="btn" href="%s" target="_blank" rel="noopener" data-cta="map_%s" data-map>%s %s</a>' % (E(e['map_url']), e['slug'], ic('pin'), E(e.get('map_label', 'Open in Google Maps'))))
+    if e.get('map_url'):   # online-only sellers with no shop to visit have no map (EV Body Parts)
+        sec.append('<a class="btn" href="%s" target="_blank" rel="noopener" data-cta="map_%s" data-map>%s %s</a>' % (E(e['map_url']), e['slug'], ic('pin'), E(e.get('map_label', 'Open in Google Maps'))))
     return wa, call, sec
 
 
@@ -1855,6 +1857,8 @@ def pb_location(x):
     if e.get('addresses') and e['addresses'][0].get('note'):
         adds += '<li>%s<span>%s</span></li>' % (ic('shield'), E(e['addresses'][0]['note']))
     contact = '<li>%s<span>Call %s or WhatsApp %s</span></li>' % (ic('phone'), e['phone_show'], e.get('whatsapp_show', e['phone_show']))
+    if e.get('landline'):   # the business's office line, as published on its own website (Edwin 7 Nov 2026)
+        contact += '<li>%s<span>Office line: <a href="tel:%s" %s>%s</a></span></li>' % (ic('phone'), e['landline'], track_attrs('call', e, x.path), e['landline_show'])
     return '<section id="find" class="findus"><h2>%s</h2><ul class="facts">%s%s</ul></section>%s' % (E(e.get('addr_heading', 'Find us')), adds, contact, more_in(e, x.depth))
 
 

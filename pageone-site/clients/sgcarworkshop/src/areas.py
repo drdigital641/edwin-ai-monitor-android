@@ -72,6 +72,8 @@ _E = [
      'MacPherson is an area in the Central region around MacPherson Road, close to Ubi and Paya Lebar.'),
     ('jalan-besar-kallang-bahru', 'Jalan Besar and Kallang Bahru', 'central', 1.3110, 103.8660, ['macpherson', 'toa-payoh', 'alexandra-bukit-merah'], ['19', '33', '34'], ['jalan besar', 'kallang'],
      'Jalan Besar and Kallang Bahru are central areas with a long history of motor trade units and workshops.'),
+    ('newton-novena', 'Newton and Novena', 'central', 1.3130, 103.8400, ['toa-payoh', 'jalan-besar-kallang-bahru', 'alexandra-bukit-merah'], ['22'], ['newton', 'novena'],
+     'Newton and Novena sit just north of Orchard Road in the Central region, around Newton Circus and Bukit Timah Road.'),
     ('alexandra-bukit-merah', 'Alexandra and Bukit Merah', 'central', 1.2860, 103.8130, ['jalan-besar-kallang-bahru', 'toa-payoh'], ['14', '15', '16'], ['alexandra', 'bukit merah', 'henderson'],
      'Alexandra and Bukit Merah cover the south side of the Central region, around Alexandra Road, Bukit Merah and Henderson.'),
     # ---- West
@@ -155,6 +157,8 @@ _IE = [
      'Loyang Way and Loyang Drive form the Loyang industrial estate in the far east of Singapore, near Pasir Ris and Changi, with motor workshops in its multi-storey factory blocks.'),
     ('tuas-industrial-area', 'Tuas (Tuas Avenues and Tuas South)', 'tuas', ['tuas ave', 'tuas avenue', 'tuas south', 'tuas link', 'tuas'],
      'Tuas is the large industrial area at the western tip of Singapore, around the Tuas Avenue and Tuas South roads, with motor workshops among its factories and warehouses.'),
+    ('bukit-timah-road-newton', 'Bukit Timah Road (Newton)', 'newton-novena', ['143 bukit timah', 'newton circus'],
+     'Bukit Timah Road at Newton Circus is a busy central road between Orchard and Novena, close to Newton MRT and the Central Expressway.'),
     ('pandan-light-industries-park', 'Pandan Loop (Pandan Light Industries Park)', 'pandan-loop', ['pandan lp', 'pandan loop', 'pandan light industries'],
      'Pandan Loop, with the Pandan Light Industries Park blocks, is a light industrial area in the west, near the Pandan Reservoir and the Ayer Rajah Expressway.'),
 ]
