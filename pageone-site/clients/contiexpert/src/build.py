@@ -9,7 +9,7 @@ DOMAIN = 'https://contiexpert.sg'
 BASE = '' if LIVE else '/preview/contiexpert'
 HERE = os.path.dirname(os.path.abspath(__file__))
 OUT = sys.argv[1] if len(sys.argv) > 1 else os.path.join(HERE, 'site')
-TODAY = '2026-11-06'  # sitemap lastmod: every page changed 6 Nov (one brand name, self-hosted video)
+TODAY = '2026-11-07'  # sitemap lastmod: every page re-published 7 Nov SGT (brand-name sweep)
 INDEXNOW_KEY = '6f1c2e9a4b7d48c3a05e9d21b8f3c7e4'
 
 BIZ = 'Volt Autocare'
@@ -492,7 +492,7 @@ FAQS = [
  ('Visiting', [
   {'q': 'Where exactly is the workshop?', 'a': 'Inside the Shell station at 143 Bukit Timah Road, Newton Circus, Singapore 229843. Search "Volt Autocare @Bukit Timah" in Google Maps or tap Directions on any page.'},
   {'q': 'Do I need an appointment?', 'a': 'Please WhatsApp us first. It lets us plan the bay and tell you how long the car is likely to stay, and saves you a wasted trip.'},
-  {'q': 'Is ContiExpert the same as Volt Autocare?', 'a': 'Yes. ContiExpert by Volt Autocare is our workshop at Newton Circus, and contiexpert.sg is its website. Google Maps lists us as Volt Autocare @Bukit Timah.'},
+  {'q': 'Is ContiExpert the same workshop as Volt Autocare @Bukit Timah on Google Maps?', 'a': 'Yes. ContiExpert by Volt Autocare is our workshop at Newton Circus, and contiexpert.sg is its website. Google Maps lists us as Volt Autocare @Bukit Timah.'},
  ]),
  ('Cars and services', [
   {'q': 'Which makes do you service?', 'a': 'European cars are our speciality, including Mercedes-Benz, BMW, Audi and Volkswagen. We also look after hybrids, EVs and Japanese and Korean cars, for example servicing, batteries, brakes, aircon and pre-purchase inspections. Send us the model and year first.'},

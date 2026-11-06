@@ -67,8 +67,9 @@
 65. [brake-warning-light-european-car-singapore] Confirm the workshop can scan brake, ABS and electronic parking brake modules on the makes it accepts before the page promises it.
 66. [brake-warning-light-european-car-singapore] Confirm whether towing can be arranged or only advised.
 67. [brake-warning-light-european-car-singapore] Confirm whether brake fluid service and electronic parking brake work are done in-house.
-68. Prices on the homepage come from your own posts (Dec 2025 servicing packages from $118, TikTok aircon coil wash $168, Standard PPI $60). Are they still current, and what do the packages include? Prices for hybrid battery health check, battery fan cleaning and ATF change?
-69. Is Volt Autocare part of the Volt Auto group (Dongfeng distributor)? If yes, may we say so?
-70. Reviews: the homepage quotes short excerpts from your Google reviews (names as shown on Google). OK to show them? Customers name "Newt" and "An" - may we name them on the About page, with their roles?
-71. Bring your own parts: a Google review says you fit customer-supplied parts for labour only. Is that offered for all jobs? Any warranty difference?
-72. Car batteries: reviews mention battery replacement. Which brands do you stock, and from what price? Walk-in or appointment?
+68. [bmw-mercedes-battery-replacement-registration-singapore] Confirm the workshop registers or adapts new batteries in-house on the BMW, Mercedes-Benz and Audi models it accepts, and with which tool.
+69. Prices on the homepage come from your own posts (Dec 2025 servicing packages from $118, TikTok aircon coil wash $168, Standard PPI $60). Are they still current, and what do the packages include? Prices for hybrid battery health check, battery fan cleaning and ATF change?
+70. Is Volt Autocare part of the Volt Auto group (Dongfeng distributor)? If yes, may we say so?
+71. Reviews: the homepage quotes short excerpts from your Google reviews (names as shown on Google). OK to show them? Customers name "Newt" and "An" - may we name them on the About page, with their roles?
+72. Bring your own parts: a Google review says you fit customer-supplied parts for labour only. Is that offered for all jobs? Any warranty difference?
+73. Car batteries: reviews mention battery replacement. Which brands do you stock, and from what price? Walk-in or appointment?

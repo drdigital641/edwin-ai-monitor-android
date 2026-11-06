@@ -618,3 +618,76 @@ ARTICLES.append({
   "related": ["/services/brake-suspension-repair/", "/services/car-diagnostics-warning-lights/", "/bmw-check-engine-light-singapore/", "/european-car-service-schedule-singapore/"],
   "confirm": ["Confirm the workshop can scan brake, ABS and electronic parking brake modules on the makes it accepts before the page promises it.", "Confirm whether towing can be arranged or only advised.", "Confirm whether brake fluid service and electronic parking brake work are done in-house."]
 })
+
+# Night article 7 Nov 2026 (first published live by the night run; moved into source 6 Nov 23:15 UTC)
+ARTICLES.append({
+ "slug": "bmw-mercedes-battery-replacement-registration-singapore",
+ "name": "Battery Replacement and Registration",
+ "card": "Changing the battery on a BMW, Mercedes-Benz or Audi in Singapore? Why the car may need the new battery registered, which type to fit, and what to check first.",
+ "title": "BMW and Mercedes Battery Replacement",
+ "desc": "Changing the battery on a BMW, Mercedes-Benz or Audi in Singapore? Why the car may need the new battery registered, which type to fit, and what to check first.",
+ "h1": "BMW and Mercedes Battery Replacement: Does the New Battery Need Registering?",
+ "answer": "On many BMW, Mercedes-Benz and Audi models, yes. These cars watch the battery and adjust charging to match it, so a new battery may need to be registered with the car using a diagnostic tool. Skipping it can shorten the new battery's life. It depends on the model and year, so check before you swap.",
+ "date": "2026-11-07",
+ "updated": "7 Nov 2026",
+ "service": "/services/car-diagnostics-warning-lights/",
+ "minutes": 5,
+ "brand": "BMW and Mercedes-Benz",
+ "sections": [
+  {
+   "h2": "Why would a new car battery need to be registered?",
+   "html": "<p>Many modern European cars do not simply charge the battery whenever the engine runs. A battery sensor, an energy management module, or both, track the battery's age and condition and decide how hard to charge it. They also decide when to switch off comforts to save power.</p>\n<p>If you fit a new battery and the car still believes the old one is in place, it may keep charging as if the battery were worn. Registering the new battery tells the car to start again from a fresh baseline.</p>\n<p>Whether this applies to your car depends on the make, model and year. Your owner's manual or a workshop with the right software can tell you.</p>"
+  },
+  {
+   "h2": "Which cars are affected?",
+   "html": "<p>This is common on BMW, MINI, Mercedes-Benz, Audi and Volkswagen group cars with start-stop systems or an electronic battery sensor. It is less common on older cars with a simple charging circuit.</p>\n<div class=\"tablewrap\"><table><thead><tr><th>Car type</th><th>What often applies</th></tr></thead><tbody>\n<tr><td>BMW and MINI with a battery sensor on the negative terminal</td><td>New battery is usually registered so charging adapts</td></tr>\n<tr><td>Mercedes-Benz with start-stop or an energy management system</td><td>Registration or an adaptation is often needed, depending on the model</td></tr>\n<tr><td>Audi and Volkswagen with start-stop</td><td>Battery adaptation is often done with a diagnostic tool</td></tr>\n<tr><td>Older cars with a basic alternator and no battery sensor</td><td>Usually a straight swap, but check the manual</td></tr>\n</tbody></table></div>\n<p>Treat the table as a guide, not a rule. Models and software change over the years.</p>"
+  },
+  {
+   "h2": "What happens if you skip registration?",
+   "html": "<p>The result varies by car. Some owners notice nothing for a while. Others see problems that look unrelated to the battery:</p>\n<ul>\n<li>The new battery wears faster than it should, because it is charged the wrong way.</li>\n<li>Start-stop stops working, or works less often.</li>\n<li>Warning lights or messages about the battery or charging.</li>\n<li>Comfort features switch off early to save power.</li>\n</ul>\n<p>None of these prove that registration was skipped, because a weak battery or a charging fault can cause the same signs. That is why a proper check matters before anyone buys another battery.</p>"
+  },
+  {
+   "h2": "Which battery type should you fit?",
+   "html": "<p>Cars with start-stop usually need an AGM or EFB battery, not a standard flooded one. Fitting the wrong type can shorten battery life and upset the charging system. The correct specification is usually printed on the old battery and listed in the manual.</p>\n<ul>\n<li>Match the type: standard, EFB or AGM.</li>\n<li>Match the size, capacity and terminal layout to the original.</li>\n<li>Do not downgrade an AGM car to a standard battery to save money.</li>\n</ul>\n<p>If the car's software was told the battery is AGM, the new one should be AGM too.</p>"
+  },
+  {
+   "h2": "What should you check before changing the battery?",
+   "html": "<p>A flat or weak battery is not always the battery's fault. Before you replace it, it helps to rule out other causes:</p>\n<ol>\n<li>Is the battery old? Many last a few years in Singapore's heat, so age matters.</li>\n<li>Does the car sit unused for long periods, or make mostly short trips?</li>\n<li>Is something draining the battery when the car is off, such as an accessory, a dashcam or a faulty module?</li>\n<li>Is the alternator charging properly? A scan and a charging test can show this.</li>\n<li>Are the terminals clean and tight?</li>\n</ol>\n<p>Replacing a battery that was killed by a charging fault or a drain only leads to another dead battery.</p>"
+  },
+  {
+   "h2": "What else should you plan for when the battery is disconnected?",
+   "html": "<p>On many modern cars, cutting power can reset things you use every day. Plan for it before the job starts:</p>\n<ul>\n<li>Windows may need to be re-learned so one-touch open and close works.</li>\n<li>The clock, radio presets and seat or mirror memory may be lost.</li>\n<li>Some cars need the steering angle or other sensors re-learned.</li>\n<li>Stored fault codes can be useful for diagnosis, so scan the car before the battery is disconnected if you suspect a fault.</li>\n</ul>\n<p>Never improvise with jump packs or by disconnecting terminals on a car you do not know. Check the manual first.</p>"
+  },
+  {
+   "h2": "Where can you get the battery and charging checked near Newton?",
+   "html": "<p>ContiExpert by Volt Autocare checks battery condition and charging output as part of its diagnostics and servicing work at the Newton Circus workshop inside the Shell station at 143 Bukit Timah Road. Read about <a href=\"/services/car-diagnostics-warning-lights/\">car diagnostics and warning lights</a> for how a scan works. Send your make, model, year and what the car is doing on WhatsApp, and we will tell you what we would check first.</p>"
+  }
+ ],
+ "faqs": [
+  {
+   "q": "Do I need to register a new battery on a BMW?",
+   "a": "On many BMW models, yes. The car tracks the battery and adjusts charging, so a new battery is usually registered with a diagnostic tool. It depends on the model and year, so check your manual or ask a workshop with the right software."
+  },
+  {
+   "q": "Can I just swap a Mercedes-Benz battery myself?",
+   "a": "You can physically swap it, but many Mercedes-Benz models with start-stop or energy management expect the new battery to be registered or adapted. Without that, the car may charge it wrongly. Check the manual first."
+  },
+  {
+   "q": "Can I fit a standard battery instead of AGM?",
+   "a": "Not if the car was built for AGM or EFB. Start-stop cars rely on these types, and a standard battery can wear out quickly and upset the charging system. Match the type, size and terminal layout of the original."
+  },
+  {
+   "q": "How do I know if it is the battery or the charging system?",
+   "a": "A battery test and a charging output check separate the two, and a scan can show stored faults. Replacing the battery without checking can mean the new one fails too, if the alternator or a drain is the real cause."
+  }
+ ],
+ "related": [
+  "/services/car-diagnostics-warning-lights/",
+  "/services/european-car-servicing/",
+  "/brake-warning-light-european-car-singapore/",
+  "/european-car-service-schedule-singapore/"
+ ],
+ "confirm": [
+  "Confirm the workshop registers or adapts new batteries in-house on the BMW, Mercedes-Benz and Audi models it accepts, and with which tool."
+ ]
+})
