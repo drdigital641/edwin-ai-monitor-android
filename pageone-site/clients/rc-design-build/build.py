@@ -350,7 +350,7 @@ def footer(path):
 <div><h3>Services</h3><ul>%s</ul></div>
 <div><h3>AVL &amp; spaces</h3><ul>%s</ul></div>
 <div><h3>Plan</h3><ul>%s</ul></div>
-<p class="small">Photos marked "Real project" show SG Commercial Fitout carpentry (decor added with AI styling). Photos marked "AI design concept" are ideas, not completed work. &copy; 2026 %s.</p>
+<p class="small">Photos marked "Real project" show SG Commercial Fitout carpentry (decor added with AI styling). Photos marked "AI design concept" are ideas, not completed work. &copy; 2026 %s. Website &amp; SEO by <a href="https://pageonesingapore.com/">Page One Singapore</a>.</p>
 </div></footer>
 <a class="wa-float" href="%s" rel="noopener" aria-label="WhatsApp SG Commercial Fitout">%s<span class="sr">WhatsApp %s</span></a>
 <script src="%src.js?v=%s" defer></script>
