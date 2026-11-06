@@ -13,7 +13,7 @@ Facts used (15 Oct 2026), and where they came from:
   brake work on Mercedes-Benz, Bentley, Hummer and Mazda cars (Edwin's workshop photos). Liqui Moly banner in the workshop.
 - Google Business Profile services list (Edwin, 15 Oct 2026): air & cabin filters, air conditioning, engine diagnostic, battery,
   brakes, oil change, steering & suspension, tyres, transmission. (Also lists car loan and rental cars: not on the site.)
-- WhatsApp +65 8656 3133 and no social media (Edwin, 15 Oct 2026). Hours and 5-star reviews from Google screenshots.
+- WhatsApp +65 8678 1878 (Edwin, 6 Nov 2026; was 8656 3133) and no social media. Hours and 5-star reviews from Google screenshots.
 Not claimed anywhere: prices, years in business, warranties, review quotes, brands we have not seen, opening hours.
 Things Edwin must confirm are listed in CONFIRM and in README.md.
 """
@@ -41,7 +41,7 @@ LEGAL = 'New Zen Werkz Pte Ltd'
 FORMER = 'Zen Werkz LLP'
 UEN = '201900125K'
 TEL, TEL_SHOW = '+6567428117', '6742 8117'
-WA_NUM, WA_SHOW = '6586563133', '+65 8656 3133'       # WhatsApp from Edwin, 15 Oct 2026
+WA_NUM, WA_SHOW = '6586781878', '+65 8678 1878'       # WhatsApp changed by Edwin, 6 Nov 2026 (was 8656 3133)
 WA_MSG = 'Hi New Zen Werkz, I found your website. I would like to ask about my car.'
 # Opening hours from the Google Business Profile (Edwin's screenshot, 15 Oct 2026)
 HOURS = [('Monday to Friday', '9:30am to 7pm'), ('Saturday', '9:30am to 4pm'), ('Sunday', 'Closed')]
@@ -69,7 +69,15 @@ CONFIRM = [
     'Email address (no social media for now, per Edwin)',
 ]
 
-NAV = [('services/', 'Services'), ('articles/', 'Articles'), ('about/', 'About'), ('contact/', 'Contact')]
+AREAS = [
+    ('Right next to us', ['Kaki Bukit', 'Eunos', 'Ubi', 'Kembangan', 'Bedok North', 'Bedok Reservoir', 'Chai Chee']),
+    ('East', ['Bedok', 'Tampines', 'Simei', 'Pasir Ris', 'Upper Changi', 'Siglap', 'Upper East Coast']),
+    ('South', ['Paya Lebar', 'Geylang', 'Joo Chiat', 'Katong', 'Marine Parade']),
+    ('West and north', ['MacPherson', 'Aljunied', 'Kallang', 'Hougang', 'Kovan', 'Serangoon', 'Sengkang']),
+]
+AREA_NAMES = [a for _, g in AREAS for a in g]
+AREA_LD = [{'@type': 'Place', 'name': a + ', Singapore'} for a in AREA_NAMES]
+NAV = [('services/', 'Services'), ('areas/', 'Areas'), ('articles/', 'Articles'), ('about/', 'About'), ('contact/', 'Contact')]
 E = html.escape
 
 PHOTOS = {  # name: (width, height, alt)
@@ -304,7 +312,7 @@ SERVICES = [
     dict(slug='aircon-repair', short='Car aircon repair', photo='mercedes-hummer',
          gist='Weak or warm aircon checked for leaks, gas level, compressor, fan and filter problems.',
          title='Car Aircon Repair & Servicing in Kaki Bukit | New Zen Werkz',
-         desc='Car aircon not cold? New Zen Werkz checks gas, leaks, compressor, fans and cabin filters at Eunos Technolink, Kaki Bukit. WhatsApp +65 8656 3133 or call 6742 8117.',
+         desc='Car aircon not cold? New Zen Werkz checks gas, leaks, compressor, fans and cabin filters at Eunos Technolink, Kaki Bukit. WhatsApp +65 8678 1878 or call 6742 8117.',
          h1='Car aircon repair and servicing',
          lede='In Singapore the aircon works every single drive. When it stops blowing cold, we find out why instead of just topping up the gas.',
          sections=[
@@ -324,7 +332,7 @@ SERVICES = [
     dict(slug='steering-suspension-repair', short='Steering & suspension', photo='workshop-lineup',
          gist='Knocks, clunks, pulling and a bouncy ride traced to shocks, bushes, joints or steering parts.',
          title='Steering & Suspension Repair Singapore | New Zen Werkz, Kaki Bukit',
-         desc='Steering and suspension repair in Singapore: shock absorbers, bushings, ball joints, links and steering racks. New Zen Werkz, Eunos Technolink. WhatsApp +65 8656 3133.',
+         desc='Steering and suspension repair in Singapore: shock absorbers, bushings, ball joints, links and steering racks. New Zen Werkz, Eunos Technolink. WhatsApp +65 8678 1878.',
          h1='Steering and suspension repair',
          lede='Worn suspension makes a car noisy, tiring to drive and slower to stop. We find the worn part and replace what actually needs replacing.',
          sections=[
@@ -344,7 +352,7 @@ SERVICES = [
     dict(slug='tyre-replacement', short='Tyres', photo='brake-work',
          gist='Tyre checks and replacement, with a look at what caused uneven wear.',
          title='Tyre Replacement & Tyre Checks in Kaki Bukit | New Zen Werkz',
-         desc='Tyre replacement and tyre checks at Eunos Technolink, Kaki Bukit: tread depth, uneven wear, punctures and tyre age. New Zen Werkz. WhatsApp +65 8656 3133.',
+         desc='Tyre replacement and tyre checks at Eunos Technolink, Kaki Bukit: tread depth, uneven wear, punctures and tyre age. New Zen Werkz. WhatsApp +65 8678 1878.',
          h1='Tyre replacement and tyre checks',
          lede='Tyres are the only part of the car touching the road. We check them at every service and tell you honestly when they are due.',
          sections=[
@@ -514,7 +522,7 @@ FAQ_HOME = [
     ('Where is New Zen Werkz?', 'At Blk 3 Kaki Bukit Road 1, #03-04 Eunos Technolink, Singapore 415935, on the third floor of the Eunos Technolink building.'),
     ('What cars do you work on?', 'Continental cars such as Mercedes-Benz and Bentley are a regular part of our work, alongside Japanese makes such as Mazda and American vehicles.'),
     ('Is New Zen Werkz the same workshop as Zen Werkz LLP?', 'Yes. Zen Werkz LLP was registered at this address in 2016. New Zen Werkz Pte Ltd was incorporated in January 2019 and runs the workshop at the same address today.'),
-    ('What are your opening hours?', 'Monday to Friday 9:30am to 7pm, Saturday 9:30am to 4pm, closed on Sunday. WhatsApp +65 8656 3133 or call 6742 8117 with your car model and what you have noticed.'),
+    ('What are your opening hours?', 'Monday to Friday 9:30am to 7pm, Saturday 9:30am to 4pm, closed on Sunday. WhatsApp +65 8678 1878 or call 6742 8117 with your car model and what you have noticed.'),
 ]
 
 
@@ -555,6 +563,11 @@ def home_body():
 <div class="sec-head"><p class="eyebrow">From Google reviews</p><h2 id="h-rev">What customers say</h2></div>
 {reviews_html(REVIEWS[:3])}
 <p style="margin-top:18px"><a class="btn btn-ghost" href="{MAP}" target="_blank" rel="noopener">Read all reviews on Google</a></p>
+</div></section>
+<section class="sec" aria-labelledby="h-area"><div class="wrap">
+<div class="sec-head"><p class="eyebrow">Near you</p><h2 id="h-area">Your car workshop in the East, within 8 km of Kaki Bukit</h2>
+<p>Drivers come to us from {', '.join(AREA_NAMES[:12])} and more.</p></div>
+<p><a class="btn btn-ghost" href="areas/">See all areas we serve</a></p>
 </div></section>
 <section class="sec" aria-labelledby="h-art"><div class="wrap">
 <div class="sec-head"><p class="eyebrow">Car care articles</p><h2 id="h-art">Know before you drive in</h2></div>
@@ -616,13 +629,30 @@ def contact_body():
 </div></section>'''
 
 
+def areas_body():
+    groups = ''.join('<h2>%s</h2><p>%s.</p>' % (E(t), E(', '.join(g))) for t, g in AREAS)
+    svc = ''.join('<li><a href="services/%s/">%s</a></li>' % (s['slug'], E(s['short'])) for s in SERVICES)
+    return f'''<section class="sec"><div class="wrap split">
+<div class="prose">
+<p>New Zen Werkz is at Blk 3 Kaki Bukit Road 1, #03-04 Eunos Technolink, Singapore 415935. All the areas below are within about 8 km of the workshop.</p>
+{groups}
+<h2>Before you drive over</h2>
+<p>WhatsApp {WA_SHOW} or call {TEL_SHOW} with your car model and what you have noticed, so we can tell you what to expect. The workshop is on the third floor of Eunos Technolink, unit #03-04.</p>
+<div class="cta-row">{wa_btn()}{call_btn(cls='btn btn-ghost')}{map_btn()}</div>
+<h2>Services at the workshop</h2>
+<ul>{svc}</ul>
+</div>
+<div class="mapbox"><iframe title="Map to New Zen Werkz at Eunos Technolink" src="{MAP_EMBED}" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe></div>
+</div></section>'''
+
+
 def business_schema():
     return {'@type': 'AutoRepair', '@id': SITE + '#business', 'name': LEGAL, 'alternateName': [NAME, FORMER, 'Zen Werkz'],
             'url': SITE, 'telephone': TEL, 'openingHoursSpecification': HOURS_LD,
             'contactPoint': {'@type': 'ContactPoint', 'contactType': 'customer service', 'telephone': '+' + WA_NUM}, 'image': [IMG + n + '.webp' for n in ('workshop-lineup', 'engine-teardown', 'brake-work')],
             'logo': SITE + 'icon-512.png',
             'address': {'@type': 'PostalAddress', 'streetAddress': STREET, 'addressLocality': 'Singapore', 'postalCode': POSTAL, 'addressCountry': 'SG'},
-            'hasMap': MAP, 'foundingDate': '2019-01-02', 'sameAs': ['https://www.sgpbusiness.com/company/New-Zen-Werkz-Pte-Ltd'], 'areaServed': {'@type': 'Country', 'name': 'Singapore'},
+            'hasMap': MAP, 'foundingDate': '2019-01-02', 'sameAs': ['https://www.sgpbusiness.com/company/New-Zen-Werkz-Pte-Ltd'], 'areaServed': AREA_LD,
             'identifier': {'@type': 'PropertyValue', 'propertyID': 'UEN', 'value': UEN},
             'knowsAbout': [s['h1'] for s in SERVICES] + ['Mercedes-Benz', 'Bentley', 'Automatic transmission'],
             'hasOfferCatalog': {'@type': 'OfferCatalog', 'name': 'Workshop services', 'itemListElement': [
@@ -633,7 +663,7 @@ def business_schema():
 # Register pages
 # ----------------------------------------------------------------------------------------------
 page('', '%s | Car Repair & Servicing Workshop, Kaki Bukit Singapore' % LEGAL,
-     'New Zen Werkz (formerly Zen Werkz LLP): car servicing, engine and gearbox repair, brakes and diagnostics for continental and Japanese cars at Eunos Technolink, Kaki Bukit. Call 6742 8117.',
+     'New Zen Werkz (formerly Zen Werkz LLP): car servicing, engine and gearbox repair, brakes and diagnostics for continental and Japanese cars at Eunos Technolink, Kaki Bukit, near Eunos, Ubi, Bedok and Tampines. Call 6742 8117.',
      'New Zen Werkz', home_body(), hero=False, schema=[faq_schema(FAQ_HOME)])
 page('services/', 'Car Workshop Services in Kaki Bukit | New Zen Werkz',
      'Car servicing, engine overhaul, gearbox repair, brakes, diagnostics, batteries and continental car repair at New Zen Werkz, Eunos Technolink, Kaki Bukit.',
@@ -643,7 +673,11 @@ for s in SERVICES:
     path = 'services/%s/' % s['slug']
     page(path, s['title'], s['desc'], s['h1'], service_body(s), crumbs=[('services/', 'Services'), (path, s['short'])], lede=s['lede'],
          photo=s['photo'], schema=[{'@type': 'Service', 'name': s['h1'], 'serviceType': s['short'], 'description': s['desc'], 'url': SITE + path,
-                                    'provider': provider(), 'areaServed': {'@type': 'Country', 'name': 'Singapore'}}, faq_schema(s['faqs'])])
+                                    'provider': provider(), 'areaServed': AREA_LD}, faq_schema(s['faqs'])])
+page('areas/', 'Car Workshop Near Bedok, Tampines, Eunos & Ubi | New Zen Werkz',
+     'Car workshop within 8 km of Kaki Bukit for drivers in Eunos, Ubi, Bedok, Tampines, Paya Lebar, Geylang, Hougang and Pasir Ris. WhatsApp +65 8678 1878.',
+     'Car workshop near you in the East', areas_body(), crumbs=[('areas/', 'Areas we serve')], cta=False,
+     lede='Servicing and repairs for drivers within about 8 km of Kaki Bukit.')
 page('articles/', 'Car Care Articles | New Zen Werkz, Singapore',
      'Plain-English car care guides from the New Zen Werkz workshop: gearbox warning signs, check engine lights, servicing intervals, brakes, engine overhauls and batteries.',
      'Car care articles', articles_index(), crumbs=[('articles/', 'Articles')],
@@ -659,7 +693,7 @@ page('about/', 'About New Zen Werkz (formerly Zen Werkz LLP) | Kaki Bukit Car Wo
 page('contact/', 'Contact New Zen Werkz | Call 6742 8117, Eunos Technolink',
      'Call New Zen Werkz on 6742 8117 or visit the workshop at Blk 3 Kaki Bukit Road 1, #03-04 Eunos Technolink, Singapore 415935.',
      'Contact the workshop', contact_body(), crumbs=[('contact/', 'Contact')], cta=False,
-     lede='WhatsApp +65 8656 3133, call 6742 8117 or visit us at Eunos Technolink, Kaki Bukit.')
+     lede='WhatsApp +65 8678 1878, call 6742 8117 or visit us at Eunos Technolink, Kaki Bukit.')
 
 
 # ----------------------------------------------------------------------------------------------
@@ -756,7 +790,7 @@ def render(path, p):
 <li><a href="tel:{TEL}">Tel {TEL_SHOW}</a></li>
 <li>Mon–Fri 9:30am–7pm · Sat 9:30am–4pm · Sun closed</li>
 <li><a href="{MAP}" target="_blank" rel="noopener">Google Maps</a></li>
-<li><a href="{pre}articles/">Articles</a> · <a href="{pre}about/">About</a> · <a href="{pre}contact/">Contact</a></li>
+<li><a href="{pre}areas/">Areas we serve</a> · <a href="{pre}articles/">Articles</a> · <a href="{pre}about/">About</a> · <a href="{pre}contact/">Contact</a></li>
 </ul></div>
 </div>
 <div class="ftr-legal"><span>{LEGAL} · UEN {UEN}</span><span>© 2026 {LEGAL} · Website &amp; SEO by <a href="https://pageonesingapore.com/">Page One Singapore</a></span></div>
