@@ -140,13 +140,13 @@ def suppliers(eyebrow_cls="eyebrow"):
         for ext in ("svg", "webp", "png"):
             fp = os.path.join(HERE, "img", "partners", f"{k}.{ext}")
             if os.path.exists(fp):
-                w, h = (160, 48)
+                w, h = (169, 22)
                 if ext != "svg":
                     with Image.open(fp) as im: w, h = im.size
                 logo = f'<img src="{BASE}img/partners/{k}.{ext}" alt="{e(name)} logo" width="{w}" height="{h}" loading="lazy" decoding="async">'
                 break
-        inner = logo + (f'<span class="sup-n">{e(name)}</span>' if (not logo or k == "stones") else "")
-        cells.append(f'<li><a class="sup{" has-logo" if logo else ""}" href="{url}" target="_blank" rel="noopener">{inner}</a></li>')
+        inner = logo + (f'<span class="sup-n">{e(name)}</span>' if (not logo or k in ("stones", "rigel")) else "")
+        cells.append(f'<li><a class="sup{" has-logo" if logo else ""} sup-{k}" href="{url}" target="_blank" rel="noopener">{inner}</a></li>')
     return (f'<section class="sec suppliers" aria-labelledby="sup-h"><div class="wrap"><p class="{eyebrow_cls} rv">Materials, flooring, lighting and furnishings</p>'
             f'<h2 class="display rv" id="sup-h">Our trusted <em>suppliers</em></h2><ul class="sup-g rv">{"".join(cells)}</ul>'
             f'<p class="sup-note rv">Maison works with these trusted Singapore suppliers for materials, flooring, lighting and furnishings.</p></div></section>')
