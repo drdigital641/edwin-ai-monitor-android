@@ -20,7 +20,7 @@ PICKER2 = {
                                    ("bedroom", "Main bedroom", .251, .308, "style"), ("bedroom-2", "Bedroom 2", .478, .278, "style")]),
 }
 
-PICKER2_V = "p2e"
+PICKER2_V = "p2f"
 PICKER2_CSS = """
 .vp2 [hidden]{display:none!important}
 .vp2 .sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
@@ -58,7 +58,7 @@ PICKER2_CSS = """
 .vp2-hs{position:absolute;transform:translate(-50%,-50%);width:34px;height:34px;border-radius:50%;border:2px solid #fff;background:#3f4a3c;color:#fff;font:600 15px/1 var(--sans);cursor:pointer;box-shadow:0 1px 4px rgba(0,0,0,.3);padding:0}
 .vp2-hs[aria-pressed="true"]{background:var(--brass);transform:translate(-50%,-50%) scale(1.15)}
 .vp2-off{font-size:15px;margin-top:10px}
-@media(min-width:900px){.vp2.vsec{padding-top:32px}.vp2-car,.vp2-chips{max-width:960px;margin-left:auto;margin-right:auto}.vp2-arw{display:flex}
+@media(min-width:900px){.vp2-ph,.vp2-arw{width:100%;max-height:max(300px,calc(100vh - 320px))}.vp2-ph img{object-position:50% 100%}.vp2.vsec{padding-top:32px}.vp2-car,.vp2-chips{max-width:960px;margin-left:auto;margin-right:auto}.vp2-arw{display:flex}
 .vp2-slide figcaption,.vp2-nav{padding-left:0;padding-right:0}.vp2-sty button.pill{flex:0 0 auto;padding:0 14px}
 .vp2-navw{display:grid;grid-template-columns:3fr 2fr;gap:32px;align-items:end}}
 """
@@ -143,12 +143,14 @@ T.rooms.forEach(function(r,i){var b=document.createElement('button');b.type='but
 rb+='<button type="button" data-i="'+i+'">'+(i+1)+'. '+r.label+'</button>'});
 q('.vp2-rooms').innerHTML=rb;q('.vp2-units').textContent=T.units;
 var s=q('.vp2-src'),a=s.querySelector('a');s.firstChild.textContent='AI concepts, for illustration only; all cabinetry, furnishings and finishes are proposed. '+T.note+' Source: ';a.href=T.src;bindRooms()}
-function toCar(){var c=q('.vp2-car').getBoundingClientRect();if(c.top<70||c.top>innerHeight*.5){scrollTo({top:c.top+scrollY-80,behavior:RM?'auto':'smooth'})}}
-function bindRooms(){qa('.vp2-rooms button,.vp2-hs').forEach(function(b){b.onclick=function(){hold(4000);go(+b.dataset.i);if(b.classList.contains('vp2-hs'))toCar()}})}
+/* after a tap, bring the photo fully into view just under the fixed header; no scroll if already fully visible */
+function toCar(){var h=document.getElementById('hd'),hb=h?Math.max(0,h.getBoundingClientRect().bottom):0,c=q('.vp2-ph').getBoundingClientRect();
+if(c.top<hb||c.bottom>innerHeight){scrollTo({top:Math.max(0,c.top+scrollY-hb-8),behavior:RM?'auto':'smooth'})}}
+function bindRooms(){qa('.vp2-rooms button,.vp2-hs').forEach(function(b){b.onclick=function(){hold(4000);go(+b.dataset.i);toCar()}})}
 function bindDots(){qa('.vp2-dots button').forEach(function(b){b.onclick=function(){hold(4000);go(+b.dataset.i)}})}
 qa('.vp2-slide').forEach(function(f,i){f.dataset.r=rooms()[i].id});
-qa('.vp2-type button').forEach(function(b){b.onclick=function(){if(st.t===b.dataset.t)return;var id=rooms()[st.i].id;st.t=b.dataset.t;press('.vp2-type button',{k:'t',v:st.t});buildType();build(id);hold(4000)}});
-qa('.vp2-sty button').forEach(function(b){b.onclick=function(){if(st.s===b.dataset.s)return;st.s=b.dataset.s;press('.vp2-sty button',{k:'s',v:st.s});build(rooms()[st.i].id);hold(4000)}});
+qa('.vp2-type button').forEach(function(b){b.onclick=function(){if(st.t===b.dataset.t)return;var id=rooms()[st.i].id;st.t=b.dataset.t;press('.vp2-type button',{k:'t',v:st.t});buildType();build(id);hold(4000);toCar()}});
+qa('.vp2-sty button').forEach(function(b){b.onclick=function(){if(st.s===b.dataset.s)return;st.s=b.dataset.s;press('.vp2-sty button',{k:'s',v:st.s});build(rooms()[st.i].id);hold(4000);toCar()}});
 q('.vp2-prev').onclick=function(){hold(4000);go(st.i-1)};q('.vp2-next').onclick=function(){hold(4000);go(st.i+1)};
 tr.addEventListener('keydown',function(e){if(e.key==='ArrowRight'){e.preventDefault();hold(4000);go(st.i+1)}else if(e.key==='ArrowLeft'){e.preventDefault();hold(4000);go(st.i-1)}});
 /* follow manual swipes */
