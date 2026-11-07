@@ -29,3 +29,12 @@
 .wa-float{transition:opacity .2s,transform .2s}.wa-float.wa-off{opacity:0;transform:scale(.6);pointer-events:none}
 @media(max-width:860px){.xref-c{grid-template-columns:1fr;gap:18px}}
 @media(max-width:600px){.ref-box .two{grid-template-columns:1fr;gap:0}.ref-box{padding:18px}.ref-box button,.nowsh .btn,.fw-wa,.own-ws .btn{width:100%;justify-content:center}.own-ws{padding:16px}.xref-band{padding-bottom:104px}}
+/* Layout fix (Edwin, 7 Nov 2026): text + "can't find a workshop" box on the left, form on the right; stacked up to 1024px
+   (text, then full-width form, then the box). No gap under the text, and room under the sticky header. */
+.xref-c{grid-template-columns:minmax(0,1fr) minmax(0,1fr);grid-template-areas:"intro form" "after form";column-gap:48px;row-gap:22px;align-items:start}
+.xref-c>div:first-child{grid-area:intro}.xref-c>.xlead{grid-area:form;max-width:none;width:100%}.xref-c>.xref-after{grid-area:after;grid-column:auto}
+.xref-after .nowsh{margin-top:0;max-width:none}
+main>.xref-band:first-child{padding-top:64px}
+#xado-at-your-workshop,#own-workshop{scroll-margin-top:92px}
+@media(max-width:1024px){.xref-c{grid-template-columns:minmax(0,1fr);grid-template-areas:"intro" "form" "after";row-gap:18px}}
+@media(max-width:600px){main>.xref-band:first-child{padding-top:40px}.xref-band{padding-top:40px}}

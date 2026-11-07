@@ -103,3 +103,16 @@ figure.side{float:none;width:100%;margin:20px 0}.inline-cta{flex-direction:colum
 .shopline{margin-top:6px}.dealer .btn.ghost,.pg .btn.ghost{color:var(--ink)!important}
 .shopbtn{display:none;margin-left:auto;margin-right:8px;background:var(--red);color:#fff!important;text-decoration:none;font-weight:700;font-size:.9rem;padding:8px 16px;border-radius:999px}
 @media(max-width:960px){.shopbtn{display:inline-block}}
+/* Header, hero and phone fixes (Edwin, 7 Nov 2026). Hamburger up to 1100px so the nav never wraps or crams
+   (also covers phones in "Desktop site" mode, which render at 980px); the header then shows logo + Find a XADO Workshop + menu. */
+.top nav a{white-space:nowrap}
+.findbtn{display:none;margin-left:auto;margin-right:6px;background:var(--red);color:#fff!important;text-decoration:none;font-weight:700;font-size:.88rem;line-height:1.2;padding:10px 14px;border-radius:999px;white-space:nowrap}
+@media(max-width:1100px){
+.top nav{display:none;position:absolute;top:68px;left:0;right:0;background:#0b0b0c;flex-direction:column;align-items:flex-start;padding:20px 22px;gap:16px;max-height:calc(100vh - 68px);overflow-y:auto;border-bottom:1px solid #222}
+.menu .top nav{display:flex}.burger{display:block}.top nav .btn.sm{display:none}
+.findbtn{display:inline-block}.shopbtn{display:none!important}
+}
+@media(max-width:400px){.brand img{height:32px}.findbtn{font-size:.8rem;padding:9px 11px;margin-right:2px}.nav{gap:6px}}
+.hero{min-height:min(88vh,760px)}
+@media(orientation:portrait){.hero{min-height:0}}
+@media(max-width:560px){.hero-in{padding:56px 22px 48px}}

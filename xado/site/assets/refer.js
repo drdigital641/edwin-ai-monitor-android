@@ -1,12 +1,12 @@
-/* Driver lead to XADO (Edwin, 7 Nov 2026): the driver sends Roland (XADO Singapore WhatsApp) their workshop's details,
-   and Roland contacts the workshop. Tap: driver_workshop_lead_to_roland. The no-workshop button is a plain link with
+/* Driver lead to XADO (Edwin, 7 Nov 2026): the driver sends XADO Singapore (WhatsApp) their workshop's details,
+   and XADO Singapore contacts the workshop. Tap: driver_workshop_lead_to_xado. The no-workshop button is a plain link with
    data-cta="driver_no_workshop_lead", counted by site.js. */
 (function(){
 var NUM='6593391185';
 function norm(v){var d=String(v||'').replace(/[\s().-]/g,'');if(d.charAt(0)==='+')d=d.slice(1);if(/^0065/.test(d))d=d.slice(2);
   if(/^[89]\d{7}$/.test(d))return'65'+d;if(/^65[89]\d{7}$/.test(d))return d;return null}
 function clean(v){return String(v||'').replace(/\s+/g,' ').trim().slice(0,80)}
-window.xadoLeadText=function(ws,num,name,car){var t='Hi Roland, please contact my workshop about XADO oil: '+ws+', WhatsApp '+num+'.';
+window.xadoLeadText=function(ws,num,name,car){var t='Hi XADO Singapore, please contact my workshop about XADO oil: '+ws+', WhatsApp '+num+'.';
   if(name&&car)t+=' Driver: '+name+', car: '+car+'.';else if(name)t+=' Driver: '+name+'.';else if(car)t+=' Car: '+car+'.';
   return t+' No min order, no obligation.'};
 window.xadoLeadLink=function(ws,raw,name,car){var n=norm(raw);ws=clean(ws);if(!n||!ws)return null;
@@ -23,7 +23,7 @@ window.xadoLeadLink=function(ws,raw,name,car){var n=norm(raw);ws=clean(ws);if(!n
     if(!norm(num.value))return fail(num,"That doesn't look like a Singapore mobile number. Please check it: 8 digits starting with 8 or 9, for example 9123 4567.");
     err.textContent='';ws.removeAttribute('aria-invalid');num.removeAttribute('aria-invalid');
     var link=window.xadoLeadLink(ws.value,num.value,nm&&nm.value,car&&car.value);
-    if(window.p1CtaTap)window.p1CtaTap('driver_workshop_lead_to_roland',go);
+    if(window.p1CtaTap)window.p1CtaTap('driver_workshop_lead_to_xado',go);
     var w=window.open(link,'_blank');if(w){try{w.opener=null}catch(e){}}else location.href=link});
 });
 /* Keep the floating WhatsApp bubble off the form: hide it while the form, its button/note or the

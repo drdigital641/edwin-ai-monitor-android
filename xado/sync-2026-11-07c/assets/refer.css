@@ -1,0 +1,40 @@
+/* Driver lead-to-Roland form + no-workshop button (7 Nov 2026) */
+.ref-box{background:var(--soft,#f5f5f4);border:1px solid var(--line,#e6e6e3);border-radius:18px;padding:24px;max-width:640px}
+.ref-box label{display:block;font-weight:700;margin:0 0 6px;color:var(--ink,#111214)}
+.ref-box .fld{margin-bottom:12px}.ref-box .opt{font-weight:500;color:var(--mut,#5b5f66)}
+.ref-box input{width:100%;font:inherit;font-size:1.05rem;padding:14px 16px;border:2px solid var(--line,#e6e6e3);border-radius:12px;background:#fff;color:var(--ink,#111214)}
+.ref-box input:focus{outline:none;border-color:#25d366}
+.ref-box input[aria-invalid=true]{border-color:var(--red,#e30613)}
+.ref-box .hint{font-size:.85rem;color:var(--mut,#5b5f66);margin:6px 0 0}
+.ref-box .two{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.lead-note{font-size:.9rem;color:#0b6b33;font-weight:600;margin:10px 0 0}
+.ref-err{color:var(--red,#e30613);font-weight:600;font-size:.92rem;margin:0 0 10px;min-height:1.2em}
+.ref-box button{cursor:pointer;font:inherit;font-weight:700}
+.btn.wa svg{width:20px;height:20px;flex:none}
+.ref-preview{font-size:.85rem;color:var(--mut,#5b5f66);background:#fff;border:1px dashed var(--line,#e6e6e3);border-radius:12px;padding:12px 14px;margin-top:16px}
+.nowsh{margin-top:18px;max-width:640px;border:1px solid #b6eccb;background:#f2fdf6;border-radius:18px;padding:18px 20px}
+.nowsh p{margin:0 0 12px;color:var(--ink,#111214)}
+.xref-band{padding:56px 0;border-top:1px solid var(--line,#e6e6e3);border-bottom:1px solid var(--line,#e6e6e3);background:#fff}
+.xref-c{display:grid;grid-template-columns:1fr 1fr;gap:36px;align-items:start}
+.xref-c h1,.xref-c h2{margin-top:0}
+.xref-after{grid-column:1/-1}.xref-after .more{margin-top:14px}
+.xref-c>*,.ref-box,.ref-box .two>*{min-width:0}
+/* Finder hero jump box + bubble spacing (7 Nov 2026) */
+.own-ws{margin-top:24px;max-width:560px;background:#18181b;border:2px solid #25d366;border-radius:18px;padding:18px 20px}
+.own-ws h2{font-size:1.5rem;margin:0 0 6px;color:#fff;line-height:1.15}
+.own-ws p{margin:0 0 14px;color:#d8d8d8}
+.own-ws .btn{min-height:48px}
+#own-workshop,#xado-at-your-workshop{scroll-margin-top:88px}
+.xref-band{padding-bottom:96px}.ref-box{margin-bottom:8px}
+.wa-float{transition:opacity .2s,transform .2s}.wa-float.wa-off{opacity:0;transform:scale(.6);pointer-events:none}
+@media(max-width:860px){.xref-c{grid-template-columns:1fr;gap:18px}}
+@media(max-width:600px){.ref-box .two{grid-template-columns:1fr;gap:0}.ref-box{padding:18px}.ref-box button,.nowsh .btn,.fw-wa,.own-ws .btn{width:100%;justify-content:center}.own-ws{padding:16px}.xref-band{padding-bottom:104px}}
+/* Layout fix (Edwin, 7 Nov 2026): text + "can't find a workshop" box on the left, form on the right; stacked up to 1024px
+   (text, then full-width form, then the box). No gap under the text, and room under the sticky header. */
+.xref-c{grid-template-columns:minmax(0,1fr) minmax(0,1fr);grid-template-areas:"intro form" "after form";column-gap:48px;row-gap:22px;align-items:start}
+.xref-c>div:first-child{grid-area:intro}.xref-c>.xlead{grid-area:form;max-width:none;width:100%}.xref-c>.xref-after{grid-area:after;grid-column:auto}
+.xref-after .nowsh{margin-top:0;max-width:none}
+main>.xref-band:first-child{padding-top:64px}
+#xado-at-your-workshop,#own-workshop{scroll-margin-top:92px}
+@media(max-width:1024px){.xref-c{grid-template-columns:minmax(0,1fr);grid-template-areas:"intro" "form" "after";row-gap:18px}}
+@media(max-width:600px){main>.xref-band:first-child{padding-top:40px}.xref-band{padding-top:40px}}
