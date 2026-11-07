@@ -1,33 +1,15 @@
-home status 200
-h1: Onsite car battery replacement · SingaporeWhat's happening with your car?
-phone pill: 0, sticky bar: 0, bottom nav links: 4
-cards: My car won't start We come to you, 24 hours › | My car can start See prices & outlets ›
-help buttons: big w wa-dyn wa-loc https://wa.me/6581259169?text=Hi%20Battery%20Rescue%2C%20my%20car%20battery%20is%20flat.%20Please%20help.%0A(Website%20source%3A%20https%3A%2F%2Fbatteryrescue.sg%2F) , big cl tel:+6581259169
-animations: spin/glow/hop
-track beacons after Call tap (test mode): 1
-after red tap, help in view: true
-after green tap, compare visible: true hash #compare
-price link href: #car-price
-after price link tap: box in view true, input focused s-in, compare hidden true
-raw HTML has H1 text: true, robots noindex: false, canonical: https://batteryrescue.sg/
-schema types on home: AutomotiveBusiness,Country,Place,Organization,Brand,ContactPoint,OpeningHoursSpecification,FAQPage,Question,Answer,WebPage,WebSite
-NAP on home: name true, tel +6581259169 true, 8125 9169 true
-rescue/ islandwide wording: true, old 2027 line gone: true
-articles/ islandwide wording: true, old 2027 line gone: true
-llms.txt islandwide wording: true, old 2027 line gone: true
-X-Robots-Tag header: null
-page errors: []
-reduced-motion red card animation: none
-area woodlands 200
-area sembawang 200
-area yishun 200
-area ang-mo-kio 200
-area yio-chu-kang 200
-area hougang 200
-area sengkang 200
-area punggol 200
-rescue/ 200
-prices/ 200
-outlets/ 200
-sitemap.xml 200
-IndexNow ['https://batteryrescue.sg/', 'https://batteryrescue.sg/rescue/', 'https://batteryrescue.sg/services/jump-start/', 'https://batteryrescue.sg/services/towing/', 'https://batteryrescue.sg/articles/', 'https://batteryrescue.sg/articles/car-wont-start-what-to-do/', 'https://batteryrescue.sg/articles/efb-vs-agm-vs-standard-battery/', 'https://batteryrescue.sg/articles/car-battery-flat-every-morning/', 'https://batteryrescue.sg/llms.txt']: 200
+sitemap urls 77
+non-200: 0
+hero line: 📍 Islandwide · Fastest in the North & North-East · From $169.90 $149.90 fitted Check my car price ›Launch promo: $20 off before 10pm, incl. Sunday
+calculator: Honda HR-V / Vezel (2015-2021) usesDelkor NS60LFitted where you are · nowLaunch promo: $20 off before 10pm, incl. Sunday$180.80 $160.80Night & public holiday10pm to 9am, and PH$210.80Battery + fitting at your location. GST included. 1-year warranty.
+NS40ZL tier: Fitted at your locationLaunch promo: $20 off before 10pm, incl. Sunday$169.90 $149.90
+NS60L tier: Fitted at your locationLaunch promo: $20 off before 10pm, incl. Sunday$180.80 $160.80
+AGM LN5 tier: Fitted at your locationLaunch promo: $20 off before 10pm, incl. Sunday$518.70 $498.70
+NS40ZL night: Night & public holiday10pm to 9am, and PH$199.90
+prices page scrollWidth 390
+ns40zl schema offers: ["Walk-in at Motoserv with website code=99.90","Fitted at your location (before 10pm)=149.90"]
+schema has <s> or was-price fields: false
+page errors: []sizes 23 collisions (was price equal to another valid price): {}
+files 78 issues 0
+
+IndexNow 71 URLs: 200
