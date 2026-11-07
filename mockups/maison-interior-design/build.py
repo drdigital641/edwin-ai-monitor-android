@@ -34,7 +34,7 @@ P = [
              ("A calm street face","Slatted aluminium gates, louvred service doors and a stone-look boundary wall keep the frontage quiet and private, while still letting air and light through.")]),
  dict(slug="jimmy-monkey-one-north", name="Jimmy Monkey", place="One-North", kind="Commercial", type="Café",
       status="Completed", hero="Jimmy-Monkey-Completed-6-1024x775.jpg", heroL="Jimmy-Monkey-Completed-6.jpg",
-      gal=["Jimmy-Monkey-Completed-7-1024x775.jpg","Jimmy-Monkey-Completed-10-775x1024.jpg","Jimmy-Monkey-Completed-9-1024x775.jpg",
+      gal=["Jimmy-Monkey-Completed-7-1024x775.jpg","Jimmy-Monkey-Completed-9-1024x775.jpg",
            "Jimmy-Monkey-Completed-8-775x1024.jpg","Jimmy-Monkey-Completed-5-775x1024.jpg","Jimmy-Monkey-Completed-4-775x1024.jpg",
            "Jimmy-Monkey-Completed-3-775x1024.jpg","Jimmy-Monkey-Completed-2-775x1024.jpg","Jimmy-Monkey-Completed-1-775x1024.jpg"],
       lede="A café among the greenery of a conserved former army barracks, reworked for more seats, more light and a calmer kitchen.",
@@ -341,7 +341,7 @@ def home():
 <a class="link light rv" href="{BASE}services/">See the full process</a></div><ol class="steps">{steps}</ol></div></section>
 
 <section class="sec story"><div class="wrap story-in">
-<figure class="story-img rv">{img("Jimmy-Monkey-Completed-10-775x1024.jpg", "Jimmy Monkey One-North lounge with tinted mirror wall", w=775, h=1024)}</figure>
+<figure class="story-img rv">{img("Jimmy-Monkey-Completed-7-1024x775.jpg", "Jimmy Monkey One-North pastry counter and herb shelves", w=1024, h=775)}</figure>
 <div class="story-t"><p class="eyebrow rv">Project story · Jimmy Monkey, One-North</p>
 <h2 class="display rv">A barracks café, <em>opened up to the greenery</em></h2>
 <p class="rv">{e(jm["story"][0][1])}</p>
