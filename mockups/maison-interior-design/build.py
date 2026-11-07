@@ -124,6 +124,32 @@ FAQ = [
 ]
 
 e = html.escape
+
+# Suppliers (Edwin approved 7 Nov 2026). Logos go in img/partners/<key>.webp|.svg|.png when available; until then the name is set in text.
+SUPPLIERS = [("kdpanels", "KD Panels", "https://www.kdpanels.com/"), ("chroma", "Chroma Living", "https://chromafurnishing.com/chromaliving"),
+             ("hafary", "Hafary", "https://www.hafary.com.sg/"), ("adoore", "ADOORE", "https://adoore.com.sg/"),
+             ("woodorigins", "Wood Origins", "https://woodorigins.sg/"), ("stones", "Stones Selection", "https://www.stonesselection.com.sg/"),
+             ("lambent", "Lambent", "https://www.lambent.sg/"), ("meerkat", "Meerkat Home", "https://www.meerkathome.sg/"),
+             ("rigel", "RIGEL", "https://www.rigel-group.com/")]
+
+def suppliers(eyebrow_cls="eyebrow"):
+    from PIL import Image
+    cells = []
+    for k, name, url in SUPPLIERS:
+        logo = ""
+        for ext in ("svg", "webp", "png"):
+            fp = os.path.join(HERE, "img", "partners", f"{k}.{ext}")
+            if os.path.exists(fp):
+                w, h = (160, 48)
+                if ext != "svg":
+                    with Image.open(fp) as im: w, h = im.size
+                logo = f'<img src="{BASE}img/partners/{k}.{ext}" alt="{e(name)} logo" width="{w}" height="{h}" loading="lazy" decoding="async">'
+                break
+        inner = logo + (f'<span class="sup-n">{e(name)}</span>' if (not logo or k == "stones") else "")
+        cells.append(f'<li><a class="sup{" has-logo" if logo else ""}" href="{url}" target="_blank" rel="noopener">{inner}</a></li>')
+    return (f'<section class="sec suppliers" aria-labelledby="sup-h"><div class="wrap"><p class="{eyebrow_cls} rv">Materials, flooring, lighting and furnishings</p>'
+            f'<h2 class="display rv" id="sup-h">Our trusted <em>suppliers</em></h2><ul class="sup-g rv">{"".join(cells)}</ul>'
+            f'<p class="sup-note rv">Maison works with these trusted Singapore suppliers for materials, flooring, lighting and furnishings.</p></div></section>')
 VER = hashlib.md5(open(os.path.join(HERE, "mid.css"), "rb").read() + open(os.path.join(HERE, "mid.js"), "rb").read()).hexdigest()[:8]
 
 def src(f):
@@ -352,7 +378,7 @@ def home():
 <div class="qnav"><button class="qb" id="qprev" aria-label="Previous review">←</button><button class="qb" id="qnext" aria-label="Next review">→</button></div></div></section>
 
 {faq_html()}
-<section class="partners"><div class="wrap"><p class="eyebrow">Partners &amp; materials we specify</p><ul><li>Panaplast</li><li>Hafary</li><li>Nippon Paint</li><li>Admira</li></ul></div></section>
+{suppliers()}
 {cta_block()}"""
     s += footer()
     write("index.html", s)
@@ -470,7 +496,7 @@ def about():
 <section class="sec values dark"><div class="wrap vals"><div class="rv"><span class="sn">01</span><h3>Effortless luxury</h3><p>Materials and textures chosen with care, so a space feels considered without feeling fussy.</p></div>
 <div class="rv"><span class="sn">02</span><h3>Effortless style</h3><p>A clear concept, carried through from the first 3D view to the last fitting.</p></div>
 <div class="rv"><span class="sn">03</span><h3>Space consciousness</h3><p>Every centimetre planned, from hidden storage to mirror walls that double a room.</p></div></div></section>
-<section class="sec"><div class="wrap"><p class="eyebrow rv">In their words</p><div class="aqs">{qs}</div></div></section>{cta_block()}"""
+<section class="sec"><div class="wrap"><p class="eyebrow rv">In their words</p><div class="aqs">{qs}</div></div></section>{suppliers()}{cta_block()}"""
     s += footer()
     write("about/index.html", s)
 
@@ -522,6 +548,9 @@ def extras():
 
 ## Process
 Conceptualisation; itemised quotation with 3D drawings; HDB renovation permit and renovation loan applications; design and build with dedicated project management; 2-year workmanship warranty and post-sales service.
+
+## Suppliers
+Maison works with these Singapore suppliers for materials, flooring, lighting and furnishings: """ + ", ".join(f"[{n}]({u})" for k, n, u in SUPPLIERS) + """.
 
 ## Projects
 """ + "".join(f'- [{p["name"]} {p["place"]}]({DOMAIN}/portfolio/{p["slug"]}/): {p["kind"]}, {p["type"]}.\n' for p in P))
