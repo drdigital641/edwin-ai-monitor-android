@@ -66,6 +66,12 @@ CATEGORIES = [
          intro="A car aircon that blows warm air often has low gas, a leak, or a worn part such as the compressor, cooling coil or condenser. "
                "A workshop usually checks for leaks first, then tops up the gas or repairs the part. Describe the symptom, such as weak cooling "
                "or a bad smell, and ask the cost first."),
+    dict(slug="car-tyres", name="Tyre shops", short="Tyres",
+         icon="wheel",
+         blurb="New tyres, tyre changes, puncture repair and wheel balancing.",
+         intro="A tyre shop fits new tyres, repairs punctures and balances the wheels so the car drives smoothly. Many also do wheel alignment "
+               "and batteries. Check your tyre size on the sidewall, ask which brands are in stock, and ask whether balancing and valves "
+               "are included before the job."),
     dict(slug="general-servicing-repair", name="General servicing and repair", short="Servicing",
          icon="wrench",
          blurb="Everyday servicing and repairs: battery checks, alternators, aircon and more.",
@@ -895,3 +901,8 @@ ENTRIES.sort(key=lambda e: (0 if _paid(e) else 1, "" if _paid(e) else e["name"].
 # One shared tag list: tag every card and refile out of general servicing where customer mentions clearly support a specific service (tags.py).
 import tags as _tg
 REFILED = _tg.apply(ENTRIES, _os.path.join(_os.path.dirname(_os.path.abspath(__file__)), "..", "data", "pilot"))
+# Tyre shops (Edwin 7 Nov 2026): filed under car-tyres only where the Google listing or the shop's own website clearly shows tyre work (data/tyre_shops.json).
+TYRE_SHOPS = _json.load(open(_os.path.join(_os.path.dirname(_os.path.abspath(__file__)), "..", "data", "tyre_shops.json")))["shops"]
+for _e in ENTRIES:
+    if _e["slug"] in TYRE_SHOPS and "car-tyres" not in _e.get("categories", [_e["category"]]):
+        _e["categories"] = list(_e.get("categories", [_e["category"]])) + ["car-tyres"]

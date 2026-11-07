@@ -18,7 +18,7 @@ TAGS = [
     dict(id='detailing', kind='service', label='Detailing and coating', rx=r'detailing|coating|polish|nano|car wash|snow foam', cat='car-detailing-coating', guide=None),
     dict(id='wrap-ppf', kind='service', label='Wrap and PPF', rx=r'wrap|\bppf\b', cat='car-wrap-ppf', guide=None),
     dict(id='oil-service', kind='service', label='Oil and servicing', rx=r'oil|servicing|full car service|spark plug', cat=None, guide=None),
-    dict(id='tyres', kind='service', label='Tyres', rx=r'tyre|tire', cat=None, guide=None),
+    dict(id='tyres', kind='service', label='Tyres', rx=r'tyre|tire|puncture|wheel balanc', cat=None, guide='tyre-shop-open-sunday-singapore'),
     # ---- brands (the three with a brand page also carry its guide)
     dict(id='bmw-mercedes', kind='brand', label='BMW and Mercedes-Benz', rx=r'bmw|mercedes|continental', cat=None, guide='bmw-mercedes-workshops-singapore'),
     dict(id='toyota', kind='brand', label='Toyota', rx=r'toyota|harrier|vios|camry|corolla|alphard|prius', cat=None, guide='toyota-workshops-singapore'),

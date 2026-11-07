@@ -43,6 +43,13 @@ COPY = {
         faqs=[('Is it safe to drive with the ABS light on?', 'Normal braking usually still works, but the anti-lock function may be off. Get it checked soon, especially before driving in the rain.'),
               ('Why repair a module instead of replacing it?', 'A failed solder joint or component can often be repaired on the bench. A specialist can tell you whether that applies to your unit.')],
         guides=['engine-warning-light']),
+    'car-tyres': dict(
+        involves='A tyre job starts with checking the damage and the tyre size. A small puncture in the tread can often be plugged or patched; a cut sidewall, a bulge or worn tread means a new tyre. After a new tyre is fitted, the wheel is balanced so it runs smoothly.',
+        signs=['A nail or screw in the tread', 'A tyre that keeps losing pressure', 'A cut or bulge on the sidewall', 'Worn tread or uneven wear', 'Vibration or shaking at speed'],
+        ask=['Whether the tyre can be repaired or must be replaced', 'Which brands and sizes are in stock', 'Whether balancing and new valves are included', 'Whether the other tyre on the same axle should be changed too'],
+        faqs=[('Where do I find my tyre size?', 'It is printed on the tyre sidewall, for example 195/65 R15. Send it to the shop with your car model.'),
+              ('Is wheel balancing the same as alignment?', 'No. Balancing stops a wheel from vibrating; alignment sets the angle of the wheels so the car drives straight and the tyres wear evenly.')],
+        guides=['tyre-shop-open-sunday-singapore']),
     'car-battery': dict(
         involves='A battery job usually starts with a test of the battery and the charging system. If the battery is weak it is replaced with one of the correct size and type for your car, and some cars need the new battery registered with the car\'s computer.',
         signs=['The engine cranks slowly or clicks when you turn the key', 'Dim lights or electrical glitches at start-up', 'A battery warning light',

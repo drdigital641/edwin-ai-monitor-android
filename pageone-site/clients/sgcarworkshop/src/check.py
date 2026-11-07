@@ -458,7 +458,7 @@ if not (re.search(r'^RewriteCond %\{HTTP_HOST\} \^\(www\\\.\)\?sgcarworkshop\\\.
 import guides as _gd
 _bad0 = bad
 _sm = open(os.path.join(root, 'sitemap.xml')).read(); _ll = open(os.path.join(root, 'llms.txt')).read()
-if len(_gd.GUIDES) != 17: print('expected 17 guides'); bad += 1
+if len(_gd.GUIDES) != 18: print('expected 18 guides'); bad += 1
 for _g in _gd.GUIDES:
     _p = os.path.join(root, _gd.gpath(_g), 'index.html')
     if not os.path.exists(_p): print('guide page missing', _g['slug']); bad += 1; continue

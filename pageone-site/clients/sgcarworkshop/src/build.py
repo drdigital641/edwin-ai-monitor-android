@@ -550,6 +550,8 @@ def category(c):
 <h3>What to ask the workshop</h3><ul class="tick">{''.join('<li>%s</li>' % E(x) for x in sc['ask'])}</ul>{gl_html}</div></section>'''
         sfaqs = sc['faqs']; body += faq_block(sfaqs, 'Questions about %s' % c['name'].lower())
     itemlist = itemlist_ld(c['name'] + ' in Singapore', es)
+    itemlist = {'@context': 'https://schema.org', '@type': 'CollectionPage', 'name': c['name'] + ' in Singapore', 'url': abs_url('services/%s/' % c['slug']), 'description': c['blurb'],
+                'mainEntity': {k: v for k, v in itemlist.items() if k != '@context'}}
     FREECOUNT['services/%s/' % c['slug']] = free_n(es)
     page('services/%s/' % c['slug'], '%s in Singapore | %s' % (c['name'], SITE_NAME), c['blurb'] + ' Browse Singapore listings by area.',
          body, [itemlist, dict(crld, **{'@context': 'https://schema.org'})] + ([faq_ld(sfaqs)] if sfaqs else []), h1=c['name'], index=free_n(es) >= MIN_FREE, why='fewer than %d free workshops' % MIN_FREE)
@@ -2045,6 +2047,17 @@ def guide_page(g):
         wk += ('<h3 class="gest">Workshops whose own website lists this</h3><ul class="gwl">%s</ul><p class="fine">From each workshop\'s own website, as listed on its Google Maps profile. Ask the workshop to confirm it can help with your car.</p>' % ''.join(
             '<li class="gw"><div><a href="../../workshops/%s/"><b>%s</b></a> <span class="fine">%s</span><p class="mentline"><b>Its website lists:</b> %s</p></div><div class="acts">%s</div></li>'
             % (e['slug'], E(e['name']), E(ESTATES[e['estate']]['name']), E(', '.join(ms)), contact_btns(e, path, 'sm')) for e, ms in sm))
+    sun_html = ''
+    if g.get('sunday_cat'):   # Edwin 7 Nov 2026: tyre shops whose Google Maps hours show Sunday open (Basic and Verified, never paid), A to Z
+        sun = sorted([e for e in ENTRIES if g['sunday_cat'] in e.get('categories', [e['category']]) and not is_paid(e) and (FACTS.get(e['slug']) or {}).get('sunday')], key=lambda e: e['name'].lower())
+        def _sunline(e):
+            d = [x for x in ((GCACHE.get(e['slug']) or {}).get('weekdayDescriptions') or []) if x.lower().startswith('sunday')]
+            return _clean_h(d[0].split(':', 1)[1]).strip() if d else ''
+        if sun:
+            sun_html = ('<h2>%s on Sunday, by Google Maps hours</h2><p>%d listed %s show Sunday opening hours on Google Maps. Hours were checked when each card was built and can change, so message the shop before you go.</p><ul class="gwl">%s</ul>' % (
+                E(CAT[g['sunday_cat']]['name']), len(sun), E(CAT[g['sunday_cat']]['name'].lower()), ''.join(
+                '<li class="gw"><div><a href="../../workshops/%s/"><b>%s</b></a> <span class="fine">%s</span><p class="mentline"><b>Sunday:</b> %s%s</p></div><div class="acts">%s</div></li>'
+                % (e['slug'], E(e['name']), E(ESTATES[e['estate']]['name']), E(_sunline(e)), (' &middot; %s' % E(daily_tag(e))) if daily_tag(e) else '', contact_btns(e, path, 'sm')) for e in sun)))
     cat_links = ' &middot; '.join('<a href="../../services/%s/">%s</a>' % (c, E(CAT[c]['short'])) for c in g['cats'] if c in CAT)
     others = ''.join('<li><a href="../../%s">%s</a></li>' % (_guides.gpath(o), E(o['short'])) for o in _guides.GUIDES if o['slug'] != g['slug'])
     faq_html = ''.join('<details><summary>%s</summary><p>%s</p></details>' % (E(q), E(a)) for q, a in g['faqs'])
@@ -2056,12 +2069,16 @@ def guide_page(g):
 <h2>{E(heading)}</h2><ol class="causes">{causes}</ol>
 <h2>{E(g.get('tell_h') or 'What to tell the workshop')}</h2><ul class="tick svc-plain">{tell}</ul>
 <div class="urgent"><b>{E(g.get('urgent_h') or 'Do not wait if:')}</b> {E(g['urgent'])}</div>
-<h2>Workshops customers mention for this</h2>{wk}
+{sun_html}<h2>Workshops customers mention for this</h2>{wk}
 <p class="fine">More: {cat_links}</p>
 <h2>Questions</h2>{faq_html}
 <h2>Other guides</h2><ul class="guide-links">{others}</ul>
 </div>'''
     ld = [dict(crld, **{'@context': 'https://schema.org'}), faq_ld(g['faqs'])]
+    if g.get('article'):
+        ld.append({'@context': 'https://schema.org', '@type': 'Article', 'headline': g['h1'], 'description': g['desc'], 'inLanguage': 'en-SG',
+                   'mainEntityOfPage': abs_url(path), 'datePublished': '2026-11-07', 'dateModified': '2026-11-07',
+                   'author': {'@type': 'Organization', 'name': SITE_NAME, 'url': BASE}, 'publisher': {'@type': 'Organization', 'name': SITE_NAME, 'url': BASE}})
     page(path, g['title'] if len(g['title']) <= 60 else fit_title(g['title'], g['h1'], g['short']), g['desc'], body, ld, h1=g['h1'])
 
 

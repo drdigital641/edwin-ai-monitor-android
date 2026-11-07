@@ -239,6 +239,23 @@ GUIDES = [
   urgent='a red warning light is on, the car is overheating, the brakes feel wrong or fluid is leaking. Ask the workshop about towing instead.',
   faqs=[('Do I need an appointment?', 'Many workshops take walk-ins, but booking ahead by WhatsApp saves waiting time. Check the opening hours on the workshop page.'), ('Should I wait at the workshop?', 'For a quick job you may be able to wait. For diagnosis or bigger repairs, ask how long it usually takes and whether you need to leave the car.'), ('What if the problem comes back?', 'Contact the workshop with your invoice. Many workshops give a warranty on their work, so ask about it when you collect the car.')],
   kw=['before workshop','workshop visit','checklist','what to ask','what to bring','first time','pre purchase','inspection'], cats=['general-servicing-repair']),
+ dict(slug='tyre-shop-open-sunday-singapore', kind='howto', tag_id='tyres', short='Tyre shop on Sunday', cap=4, sunday_cat='car-tyres', article=True,
+  title='Tyre Shop Open on Sunday in Singapore | SG Car Workshop', h1='Tyre shop open on Sunday in Singapore: what to check',
+  desc='Flat tyre on a Sunday in Singapore? What to check before you drive, what to ask a tyre shop, and listed tyre shops whose Google hours show Sunday open.',
+  lede='Many workshops in Singapore close on Sunday, so a flat or damaged tyre at the weekend can feel stuck. Some tyre shops do open on Sunday. A few checks before you drive over save a wasted trip and help you get the right tyre fitted.',
+  heading='Before you drive over', tell_h='What to ask the tyre shop', urgent_h='Do not drive on the tyre if:',
+  causes=[('Check how bad the damage is', 'A nail in the tread can often be repaired. A cut or bulge in the sidewall, or a tyre that has been driven flat, usually needs a new tyre. Take a clear photo of the damage.'),
+          ('Read your tyre size', 'The size is printed on the sidewall, for example 195/65 R15 91H. Send it to the shop so it can check stock before you come.'),
+          ('Fit the spare or use the repair kit if you can', 'If the car has a spare wheel, fitting it is usually the safest way to reach the shop. Some cars only carry a sealant kit; follow the instructions in the owner\'s manual.'),
+          ('Check the Sunday hours on the day', 'Sunday hours can change, and some shops close on certain public holidays. Message the shop first, even when its Google Maps hours show it open.'),
+          ('Know what you want', 'Decide whether you want to replace one tyre or a pair on the same axle, and whether you prefer a particular brand.')],
+  tell=['Your tyre size and car model, with a photo of the damage.', 'Whether the tyre can be repaired or needs replacing.', 'Which tyre brands and sizes are in stock today.', 'Whether wheel balancing and new valves are included.', 'Whether the other tyre on the same axle should be replaced too.', 'How long the job takes, so you know whether to wait.'],
+  urgent='the sidewall is cut or bulging, the tyre is flat or nearly flat, or the car pulls hard or shakes. Fit the spare or call for roadside help instead.',
+  faqs=[('Can a punctured tyre be repaired?', 'Often, if the hole is small and in the tread area. Damage in the sidewall or a tyre driven while flat usually means replacing it. Only an inspection can confirm it.'),
+        ('Do I need wheel balancing after a new tyre?', 'Yes, a wheel is normally balanced after a new tyre is fitted, so the car does not vibrate. Ask if it is included.'),
+        ('Should I replace tyres in pairs?', 'Many drivers replace both tyres on the same axle so they wear and grip evenly. Ask the shop about the tread left on the other tyre.'),
+        ('How do I know a shop is open on Sunday?', 'Check its Google Maps hours, then message it before you drive over. Hours can change on public holidays.')],
+  kw=['tyre','tyres','tire','tires','puncture','flat tyre','tyre shop','sunday tyre','wheel balancing'], cats=['car-tyres']),
 ]
 
 
@@ -250,6 +267,6 @@ def gpath(g):
 # The match pattern of every guide comes from the shared tag list (tags.py), so a guide, a card and the search never disagree.
 import tags as _t
 for _g in GUIDES:
-    _tag = next(t for t in _t.TAGS if t['guide'] == _g['slug'] and t['kind'] == _g['kind'])
+    _tag = next(t for t in _t.TAGS if t['guide'] == _g['slug'] and (t['kind'] == _g['kind'] or t['id'] == _g.get('tag_id')))
     _g['tag'] = _tag['id']
     _g['match'] = _tag['rx']
