@@ -1,0 +1,40 @@
+{
+ "lede": "FIX15 ENGINEERING at Toh Guan Enterprise Hub is a car diagnostics and transmission workshop.",
+ "chips": [
+  "Transmission",
+  "Coding",
+  "Diagnostics"
+ ],
+ "services": [
+  "Transmission repair",
+  "ECU and TCM coding",
+  "Diagnostics"
+ ],
+ "themes": "Customers on Google Maps praise honest, detailed explanations and careful troubleshooting, including complex transmission work and coding on Continental cars.",
+ "faqs": [
+  [
+   "What does FIX15 ENGINEERING do?",
+   "Google Maps lists it as a car repair workshop."
+  ],
+  [
+   "What are the opening hours?",
+   "The hours are listed in the Google Maps section above. Please see Google Maps for current hours."
+  ]
+ ],
+ "sources": "its Google Maps listing",
+ "stories": [],
+ "mentioned_services": [
+  "Transmission repair",
+  "ECU and TCM coding",
+  "Diagnostics"
+ ],
+ "services_note": "Services customers mention on Google Maps. Ask the workshop for its full list.",
+ "makes": [
+  "Volkswagen",
+  "Audi"
+ ],
+ "makes_note": "Named by customers on Google Maps. Ask the workshop about other makes.",
+ "specialties": [],
+ "good_to_know": [],
+ "card_rules": "2026-11-05"
+}

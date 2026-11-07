@@ -1,0 +1,37 @@
+{
+ "businessStatus": "OPERATIONAL",
+ "primaryType": "car_repair",
+ "types": [
+  "car_repair",
+  "tire_shop",
+  "auto_parts_store",
+  "store",
+  "point_of_interest",
+  "service",
+  "establishment"
+ ],
+ "rating": 5,
+ "userRatingCount": 3,
+ "websiteUri": "https://www.castrol.com/en_sg/singapore/home/product-finder.html?page=wheretobuy",
+ "paymentOptions": {
+  "acceptsCreditCards": true,
+  "acceptsDebitCards": true,
+  "acceptsNfc": true
+ },
+ "parkingOptions": null,
+ "editorialSummary": null,
+ "weekdayDescriptions": [
+  "Monday: 9:00 AM – 6:00 PM",
+  "Tuesday: 9:00 AM – 6:00 PM",
+  "Wednesday: 9:00 AM – 6:00 PM",
+  "Thursday: 9:00 AM – 6:00 PM",
+  "Friday: 9:00 AM – 6:00 PM",
+  "Saturday: 9:00 AM – 6:00 PM",
+  "Sunday: 9:00 AM – 6:00 PM"
+ ],
+ "review_count_seen": 3,
+ "review_themes": "Customers on Google Maps describe it as a one-stop Nissan GTR specialist with parts ready in stock and short waiting times.",
+ "fetched_at": "2026-11-07",
+ "place_id": "ChIJc8ypam0Q2jERdqVnmJ5N7Js",
+ "source": "google_places"
+}

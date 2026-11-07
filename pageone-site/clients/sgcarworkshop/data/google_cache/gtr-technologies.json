@@ -1,0 +1,30 @@
+{
+ "businessStatus": "OPERATIONAL",
+ "primaryType": "car_repair",
+ "types": [
+  "car_repair",
+  "point_of_interest",
+  "service",
+  "establishment"
+ ],
+ "rating": 5,
+ "userRatingCount": 4,
+ "websiteUri": null,
+ "paymentOptions": null,
+ "parkingOptions": null,
+ "editorialSummary": null,
+ "weekdayDescriptions": [
+  "Monday: 9:30 AM – 6:30 PM",
+  "Tuesday: 9:30 AM – 6:30 PM",
+  "Wednesday: 9:30 AM – 6:30 PM",
+  "Thursday: 9:30 AM – 6:30 PM",
+  "Friday: 9:30 AM – 6:30 PM",
+  "Saturday: 9:30 AM – 6:30 PM",
+  "Sunday: Closed"
+ ],
+ "review_count_seen": 4,
+ "review_themes": "Customers on Google Maps mention a sincere, honest team, long-time loyal customers and a careful classic car restoration.",
+ "fetched_at": "2026-11-07",
+ "place_id": "ChIJBVefw44P2jERH4X6sp8dASg",
+ "source": "google_places"
+}

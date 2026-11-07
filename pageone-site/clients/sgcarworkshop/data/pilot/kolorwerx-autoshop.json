@@ -1,0 +1,41 @@
+{
+ "lede": "Kolorwerx Autoshop at Toh Guan Enterprise Hub is a car spray painting and body shop.",
+ "chips": [
+  "Spray painting",
+  "Rim repair",
+  "Body kits"
+ ],
+ "services": [
+  "Spray painting",
+  "Paint touch-up",
+  "Rim repair",
+  "Body kit installation",
+  "Restoration"
+ ],
+ "themes": "Customers on Google Maps praise detailed paint preparation, seamless paint blending on touch-ups, rim kerb-rash repair and body kit installs, with clear explanations.",
+ "faqs": [
+  [
+   "What does Kolorwerx Autoshop do?",
+   "Google Maps lists it as a car repair workshop."
+  ],
+  [
+   "What are the opening hours?",
+   "The hours are listed in the Google Maps section above. Please see Google Maps for current hours."
+  ]
+ ],
+ "sources": "its Google Maps listing",
+ "stories": [],
+ "mentioned_services": [
+  "Spray painting",
+  "Paint touch-up",
+  "Rim repair",
+  "Body kit installation",
+  "Restoration"
+ ],
+ "services_note": "Services customers mention on Google Maps. Ask the workshop for its full list.",
+ "makes": [],
+ "makes_note": "Not listed on its public pages. Ask the workshop about your car.",
+ "specialties": [],
+ "good_to_know": [],
+ "card_rules": "2026-11-05"
+}

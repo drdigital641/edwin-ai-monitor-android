@@ -1,0 +1,30 @@
+{
+ "businessStatus": "OPERATIONAL",
+ "primaryType": "car_repair",
+ "types": [
+  "car_repair",
+  "service",
+  "point_of_interest",
+  "establishment"
+ ],
+ "rating": 3.9,
+ "userRatingCount": 8,
+ "websiteUri": null,
+ "paymentOptions": null,
+ "parkingOptions": null,
+ "editorialSummary": null,
+ "weekdayDescriptions": [
+  "Monday: Open 24 hours",
+  "Tuesday: Open 24 hours",
+  "Wednesday: Open 24 hours",
+  "Thursday: Open 24 hours",
+  "Friday: Open 24 hours",
+  "Saturday: Open 24 hours",
+  "Sunday: Open 24 hours"
+ ],
+ "review_count_seen": 5,
+ "review_themes": null,
+ "fetched_at": "2026-11-07",
+ "place_id": "ChIJAfVZI24Q2jERkozlVAwiAjY",
+ "source": "google_places"
+}
