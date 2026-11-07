@@ -528,14 +528,3 @@ button.link{background:none;border:0;border-bottom:1px solid currentColor;color:
 .vq a{color:var(--brass);text-decoration:underline;overflow-wrap:anywhere}.vq ul{padding-left:20px}
 .lc-img{padding:0;overflow:hidden}.lc-img figure{margin:0}.lc-img img{display:block;width:100%;height:auto;aspect-ratio:16/9}
 .lc-img .tag,.lc-img h3,.lc-img .more{margin:0 20px}.lc-img .more{margin-bottom:20px}
-.vsty-btns{display:flex;flex-wrap:wrap;gap:8px;margin:16px 0}
-.vsty-btns button{min-height:44px;padding:0 18px;border:1px solid var(--ink);background:transparent;color:var(--ink);font:500 13px/1 var(--sans);letter-spacing:.12em;text-transform:uppercase;cursor:pointer;flex:1 1 calc(50% - 8px)}
-.vsty-btns button[aria-pressed="true"]{background:var(--ink);color:#fff}
-@media(min-width:560px){.vsty-btns button{flex:0 0 auto}}
-.vsty-imgs{display:grid;gap:16px}
-.vsty-imgs figure{margin:0}.vsty-imgs img{display:block;width:100%;height:auto;aspect-ratio:16/9;background:var(--bg2)}
-.vsty-imgs figcaption{font-size:14px;color:var(--ink2);margin-top:8px}
-@media(min-width:900px){.vsty-imgs{grid-template-columns:1fr 1fr;gap:24px}}
-.vsty-src{font-size:13px;color:var(--mute);margin-top:12px}.vsty-src a,.vplan-link a{color:var(--brass);text-decoration:underline}
-.vplan{margin-top:14px}.vplan-img{display:block}.vplan-img img{display:block;width:100%;height:auto;aspect-ratio:1920/1640;border:1px solid var(--line);background:#f5f2ec}
-.vplan-link{margin-top:10px;font-size:15px}

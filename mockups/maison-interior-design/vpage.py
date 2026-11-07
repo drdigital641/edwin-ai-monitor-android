@@ -139,6 +139,8 @@ ICON = {"size": '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 3h18v18
 def wa_btn(slug, cls="btn dark-b"):
     return f'<a class="{cls} vwa" href="{VWA}" data-cta="whatsapp" data-ref="{slug}"><svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><path fill="currentColor" d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2Z"/></svg>WhatsApp Maison</a>'
 
+VSTY_CSS = '.vsty-btns{display:flex;flex-wrap:wrap;gap:8px;margin:16px 0}.vsty-btns button{min-height:44px;padding:0 18px;border:1px solid var(--ink);background:transparent;color:var(--ink);font:500 13px/1 var(--sans);letter-spacing:.12em;text-transform:uppercase;cursor:pointer;flex:1 1 calc(50% - 8px)}.vsty-btns button[aria-pressed="true"]{background:var(--ink);color:#fff}@media(min-width:560px){.vsty-btns button{flex:0 0 auto}}.vsty-imgs{display:grid;gap:16px}.vsty-imgs figure{margin:0}.vsty-imgs img{display:block;width:100%;height:auto;aspect-ratio:16/9;background:var(--bg2)}.vsty-imgs figcaption{font-size:14px;color:var(--ink2);margin-top:8px}@media(min-width:900px){.vsty-imgs{grid-template-columns:1fr 1fr;gap:24px}}.vsty-src{font-size:13px;color:var(--mute);margin-top:12px}.vsty-src a,.vplan-link a{color:var(--brass);text-decoration:underline}.vplan{margin-top:14px}.vplan-img{display:block}.vplan-img img{display:block;width:100%;height:auto;aspect-ratio:1920/1640;border:1px solid var(--line);background:#f5f2ec}.vplan-link{margin-top:10px;font-size:15px}'
+
 STYLES = ["Modern", "Luxury", "Scandi", "Japandi"]
 
 def style_picker(slug, cfg, h1):
@@ -150,7 +152,7 @@ def style_picker(slug, cfg, h1):
                 f'sizes="(min-width:900px) 45vw, 100vw" width="1920" height="1080" alt="AI concept: Modern style {alt} for {e(h1)}" '
                 f'data-room="{room}" data-alt="{alt}" decoding="async">'
                 f'<figcaption><span class="vs-n">Modern</span> · {label}</figcaption></figure>')
-    return (f'<section class="vsec vsty"><div class="wrap"><h2 class="vh2">Choose your style</h2>'
+    return (f'<style>{VSTY_CSS}</style><section class="vsec vsty"><div class="wrap"><h2 class="vh2">Choose your style</h2>'
             f'<p class="vsub">Same room, four styles. AI concepts, for illustration only; all cabinetry, furnishings and finishes are proposed.</p>'
             f'<div class="vsty-btns" role="group" aria-label="Interior style">{btns}</div>'
             f'<div class="vsty-imgs" data-base="{b}">{fig("living", "Living / dining", "living and dining")}{fig("bedroom", "Main bedroom", "main bedroom")}</div>'
