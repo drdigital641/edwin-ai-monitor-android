@@ -832,6 +832,8 @@ def wa_btn(e, page_path, cls='', label='WhatsApp'):
 
 
 def tel_of(e):
+    if e.get('call_landline'):   # one-off exception, Edwin 7 Nov 2026: a card Edwin verified in person calls the landline on its Google listing (WhatsApp stays on the mobile)
+        return e['landline']
     return '+' + e['whatsapp']   # Call always uses the mobile (same number as WhatsApp), never a landline (Edwin 2 Nov 2026)
 
 
@@ -1312,7 +1314,7 @@ def compute_facts():
     by_estate = {}; closes = {}
     for e in ENTRIES:
         g = GCACHE.get(e['slug'])
-        if e['tier'] != 'free' or not g:
+        if e['tier'] not in ('free', 'premium') or not g or not e.get('estate'):
             continue
         if g.get('rating') and (g.get('userRatingCount') or 0) >= RANK_MIN_RATINGS:
             by_estate.setdefault(e['estate'], []).append((e['slug'], float(g['rating']), int(g['userRatingCount'])))
@@ -1326,7 +1328,7 @@ def compute_facts():
             scores[est] = {sl: (v / (v + RANK_PRIOR)) * r + (RANK_PRIOR / (v + RANK_PRIOR)) * avg for sl, r, v in grp}
     for e in ENTRIES:
         g = GCACHE.get(e['slug'])
-        if e['tier'] != 'free' or not g:
+        if e['tier'] not in ('free', 'premium') or not g or not e.get('estate'):
             continue
         f = dict(rating=None, rank_text='', sunday=None, late=None, ment=[], n=g.get('userRatingCount') or 0, close=None, close_rank='', rank=None, rank_n=0, score=None)
         sun, late, cl = _hrs_facts(g.get('weekdayDescriptions'))
@@ -1370,7 +1372,9 @@ def card_facts(e):
     if not f:
         return ''
     tags = []
-    if f['sunday']:
+    if daily_tag(e):
+        tags.append('<li class="ct open">%s</li>' % E(daily_tag(e)))
+    elif f['sunday']:
         tags.append('<li class="ct open">Open Sunday</li>')
     if f['late']:
         tags.append('<li class="ct open">Open late on weekdays</li>')
@@ -1552,13 +1556,34 @@ def b_hero(x):
 <p class="lede" style="font-size:1rem">{E(pl['lede'])}</p>''')
 
 
+def daily_tag(e):
+    """'Open daily 8am-6pm (incl. Sunday)' when the Google Maps hours show all 7 days open with the same hours (Soon Kim, Edwin 7 Nov 2026). Only for entries with daily_tag=True."""
+    if not e.get('daily_tag'):
+        return ''
+    descs = (GCACHE.get(e['slug']) or {}).get('weekdayDescriptions') or []
+    rng = set()
+    for d in descs:
+        _, _, rest = d.partition(':')
+        r = _ranges(rest.strip())
+        if len(r) != 1:
+            return ''
+        rng.add(r[0])
+    if len(descs) != 7 or len(rng) != 1:
+        return ''
+    o, c = rng.pop()
+    t = lambda m: ('%d%s' % (((m // 60) - 1) % 12 + 1, 'am' if m < 720 else 'pm')) if m % 60 == 0 else ('%d:%02d%s' % (((m // 60) - 1) % 12 + 1, m % 60, 'am' if m < 720 else 'pm'))
+    return 'Open daily %s-%s (incl. Sunday)' % (t(o), t(c))
+
+
 def hours_tags(e):
     """Opening tags on the workshop page, worked out from the Google Maps hours (card rules, Edwin 5 Nov 2026)."""
     f = FACTS.get(e['slug'])
     if not f:
         return ''
     t = []
-    if f['sunday']:
+    if daily_tag(e):
+        t.append(daily_tag(e))
+    elif f['sunday']:
         t.append('Open Sunday')
     if f['late']:
         t.append('Late hours')
@@ -1780,7 +1805,7 @@ def pilot_page(e, pl):
 def paid_btns(x):
     """WhatsApp, Call and secondary buttons for a Verified or Premium page."""
     e, path = x.e, x.path
-    wa, call = wa_btn(e, path, 'big'), call_btn(e, path, 'big', 'Call ' + e['phone_show'])
+    wa, call = wa_btn(e, path, 'big'), call_btn(e, path, 'big', 'Call ' + (e['landline_show'] if e.get('call_landline') else e['phone_show']))
     wa = wa.replace('WhatsApp</a>', 'WhatsApp %s</a>' % e.get('whatsapp_show', e['phone_show']))
     sec = []
     if x.lead:
@@ -1799,11 +1824,11 @@ def pb_hero(x):
     hero = '<div class="hero-ph">%s</div>' % (photo_img(photos[0], x.depth, lazy=False) if photos else tile(e))
     if photos and photos[0].get('hero_cap'):   # caption under the main photo, only where the owner asked for one
         hero = '<figure class="hero-fig" style="margin:0">%s<figcaption class="fine" style="margin:-8px 2px 16px">%s</figcaption></figure>' % (hero, E(photos[0]['cap']))
-    return (f'''<div class="badges" style="margin-top:14px">{tier_badge(e)}<span class="tag">{E(x.c['short'])}</span></div>
+    return (f'''<div class="badges" style="margin-top:14px">{tier_badge(e)}<span class="tag">{E(x.c['short'])}</span></div>{hours_tags(e)}
 <h1 style="margin-top:8px">{E(e['name'])}</h1>
 <p class="meta">{E(e['area_label'])}</p>
 {rating_line(e)}
-<p class="lede" style="font-size:1rem">{E(e['lede'])}</p>''') + '\n' + hero
+<p class="lede" style="font-size:1rem">{E(e['lede'])}</p>''') + (('<p class="fine">%s</p>' % E(e['verified_note'])) if e.get('verified_note') else '') + '\n' + hero
 
 
 def pb_contact(x):
@@ -1823,8 +1848,8 @@ def pb_photos(x):
     photos = e.get('photos') or []
     gal = ''
     if photos and len(photos) > 1:
-        gal = '<h2>Recent work</h2><div class="gal">%s</div>' % ''.join(
-            '<figure class="rv job">%s<figcaption>%s</figcaption></figure>' % (photo_img(p, depth, lazy=False), E(p['cap'])) for p in photos[1:])
+        gal = '<h2>%s</h2><div class="gal">%s</div>' % (E(e.get('gallery_title', 'Recent work')), ''.join(
+            '<figure class="rv job">%s<figcaption>%s</figcaption></figure>' % (photo_img(p, depth, lazy=False), E(p['cap'])) for p in photos[1:]))
     if e.get('illustrations'):
         gal += '<h2>Parts range</h2><div class="gal">%s</div>' % ''.join(
             '<figure class="rv illus">%s<figcaption>%s</figcaption></figure>' % (photo_img(p, depth, lazy=False), E(p['cap'])) for p in e['illustrations'])
@@ -1857,7 +1882,7 @@ def pb_location(x):
     if e.get('addresses') and e['addresses'][0].get('note'):
         adds += '<li>%s<span>%s</span></li>' % (ic('shield'), E(e['addresses'][0]['note']))
     contact = '<li>%s<span>Call %s or WhatsApp %s</span></li>' % (ic('phone'), e['phone_show'], e.get('whatsapp_show', e['phone_show']))
-    if e.get('landline'):   # the business's office line, as published on its own website (Edwin 7 Nov 2026)
+    if e.get('landline') and not e.get('call_landline'):   # the business's office line, as published on its own website (Edwin 7 Nov 2026)
         contact += '<li>%s<span>Office line: <a href="tel:%s" %s>%s</a></span></li>' % (ic('phone'), e['landline'], track_attrs('call', e, x.path), e['landline_show'])
     return '<section id="find" class="findus"><h2>%s</h2><ul class="facts">%s%s</ul></section>%s' % (E(e.get('addr_heading', 'Find us')), adds, contact, more_in(e, x.depth))
 

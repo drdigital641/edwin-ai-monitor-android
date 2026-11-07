@@ -2,7 +2,7 @@
 
 > A directory of car workshops and car services in Singapore, run by Page One Singapore. Entries use details from the business or its public listing. Estate pages rank workshops only where there are at least 8 with 20 or more Google ratings, by rating and number of ratings together; paid Featured workshops are never ranked. No rating or review markup.
 
-Last updated: 2026-11-06
+Last updated: 2026-11-07
 
 ## Services
 - [Spray painting and bodywork](https://sgcarworkshop.sg/services/spray-painting-bodywork/): Respray, colour change and body kit work in a spray booth.
@@ -24,7 +24,7 @@ Last updated: 2026-11-06
 - [Mobile (island-wide)](https://sgcarworkshop.sg/areas/mobile/): Mobile car services that come to your car anywhere in Singapore. These listings have no single shopfront, so the work is done where your car is parked.
 
 ## Estates and industrial areas
-- [Ang Mo Kio Industrial Park 2](https://sgcarworkshop.sg/areas/amk-industrial-park-2/): Ang Mo Kio Industrial Park 2 is an industrial estate in Ang Mo Kio, including the AMK AutoPoint motor building, with workshops serving the north-east. 12 listings.
+- [Ang Mo Kio Industrial Park 2](https://sgcarworkshop.sg/areas/amk-industrial-park-2/): Ang Mo Kio Industrial Park 2 is an industrial estate in Ang Mo Kio, including the AMK AutoPoint motor building, with workshops serving the north-east. 13 listings.
 - [Kaki Bukit Industrial Estate](https://sgcarworkshop.sg/areas/kaki-bukit-industrial-estate/): Kaki Bukit is an industrial estate in the East region, around Kaki Bukit Avenue 4 and 6 and Kaki Bukit Road 2 and 4, with many workshops, trade units and parts suppliers. 68 listings.
 - [Sin Ming Industrial Estate](https://sgcarworkshop.sg/areas/sin-ming-industrial-estate/): Sin Ming Industrial Estate, including Sin Ming Drive and the Sin Ming AutoCity and Autocare buildings, is in the middle of Singapore near Bishan. 13 listings.
 - [Toh Guan Road East and Enterprise Hub](https://sgcarworkshop.sg/areas/toh-guan-enterprise-hub/): Toh Guan Road East and the Enterprise Hub industrial building are in the West region, near Jurong East. 21 listings.
@@ -276,6 +276,7 @@ Last updated: 2026-11-06
 - [Sonic Auto Garage](https://sgcarworkshop.sg/workshops/sonic-auto-garage/): General servicing and repair, Basic listing, Ubi
 - [Soon Huat Autoserv](https://sgcarworkshop.sg/workshops/soon-huat-autoserv/): General servicing and repair, Basic listing, Toh Guan and Jurong East
 - [Soon Huat Battery Co](https://sgcarworkshop.sg/workshops/soon-huat-battery-co/): Car battery replacement, Basic listing, Kaki Bukit
+- [Soon Kim Motor Workshop](https://sgcarworkshop.sg/workshops/soon-kim-motor-workshop/): General servicing and repair, Verified listing, Ang Mo Kio
 - [SPECTRUM WERKS](https://sgcarworkshop.sg/workshops/spectrum-werks/): Car detailing and coating, Basic listing, Kaki Bukit
 - [Speedy Auto Centre](https://sgcarworkshop.sg/workshops/speedy-auto-centre/): General servicing and repair, Basic listing, Defu and Hougang
 - [Squad Workshop](https://sgcarworkshop.sg/workshops/squad-workshop/): General servicing and repair, Basic listing, Toh Guan and Jurong East

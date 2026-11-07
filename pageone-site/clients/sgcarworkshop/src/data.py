@@ -171,6 +171,70 @@ ENTRIES = [
                   "paint brands", "owner name", "second phone 6759 3229 (2022 listing)"],
     ),
     dict(
+        # Verified card, NOT paid (Edwin 7 Nov 2026: he checked the shop in person). Google Places data of 7 Nov 2026 (1 Details call, place_id below).
+        # One-off phone exception (Edwin 7 Nov 2026): WhatsApp 9228 2188 given and checked by Edwin in person; Call = the landline on the Google listing.
+        slug="soon-kim-motor-workshop", tier="premium", place_id="ChIJKYWAL_oW2jERGGddsf5gD4E", name="Soon Kim Motor Workshop",
+        category="general-servicing-repair", categories=["general-servicing-repair", "car-battery", "car-aircon-repair"],
+        regions=['north-east'], region='north-east', regions_note='Ang Mo Kio is in the North-East region (URA). Address: Ang Mo Kio Industrial Park 2.', area_label="Ang Mo Kio",
+        estate="amk-industrial-park-2", lat=1.3715827, lon=103.8616233, daily_tag=True, call_landline=True, gallery_title="Inside the shop",
+        title="Soon Kim Motor Workshop | Tyres, Ang Mo Kio, Open Sunday",
+        desc="Soon Kim Motor Workshop, Ang Mo Kio: new tyres, tyre change, wheel balancing, batteries, aircon and repairs. Open daily 8am-6pm, incl. Sunday.",
+        card_img=dict(f="soon-kim/01-shopfront.webp", alt="Soon Kim Motor Repair Workshop shopfront with Falken and Continental signboard in Ang Mo Kio Industrial Park 2"),
+        card_text=["Tyre shop and car workshop in Ang Mo Kio Industrial Park 2, open every day including Sunday.",
+                   "New tyres, tyre change and wheel balancing, plus batteries, aircon and repairs."],
+        lede=("Soon Kim Motor Workshop is a tyre shop and car workshop at 5033 Ang Mo Kio Industrial Park 2. The signboard reads Soon Kim Motor Repair Workshop, "
+              "with Kim Ker Tyre Service inside. Tyres come first here: new tyres, tyre changes, puncture repairs and wheel balancing. Car batteries, aircon service "
+              "and general repairs are done in the same unit. It is open every day from 8am to 6pm, Sunday included. WhatsApp 9228 2188 or call 6481 9656."),
+        services=[
+            dict(n="New tyres", d="Tyres for cars and vans kept in stock on the shop's racks. Brands seen in the shop include Falken, Continental, Yokohama and Sincera.", p=None),
+            dict(n="Tyre change and puncture repair", d="Old tyres swapped for new ones, and punctures found and patched, often while you wait.", p=None),
+            dict(n="Wheel balancing", d="Wheels balanced on the shop's CEMB balancing machine after a tyre change, so the car runs smoothly.", p=None),
+            dict(n="Car battery replacement", d="Batteries in stock, with Amaron and Delkor seen in the shop.", p=None),
+            dict(n="Car aircon service", d="Aircon checks and service for cars that are not cooling well.", p=None),
+            dict(n="General motor repair", d="Servicing and everyday repairs, from brake lights to small fixes, in the same workshop.", p=None),
+        ],
+        price_note="Prices are not listed. WhatsApp your car model and tyre size for a quote.",
+        phone="+6592282188", phone_show="9228 2188", whatsapp="6592282188", landline="+6564819656", landline_show="6481 9656",
+        addresses=[dict(label=None, street="5033 Ang Mo Kio Industrial Park 2, #01-263", postal="569536",
+                        note="Look for the Falken and Continental signboard. The shop next door at #01-261 is a different business.")],
+        map_url="https://www.google.com/maps/search/?api=1&query=Soon%20Kim%20Motor%20Workshop&query_place_id=ChIJKYWAL_oW2jERGGddsf5gD4E",
+        hours=[("Mon to Sun", "8am to 6pm")],
+        hours_ld=[(WD + SAT + ["Sunday"], "08:00", "18:00")],
+        hours_note="Hours from its Google Maps listing (checked 7 November 2026). One Google review says it closes on the second day of Chinese New Year, so check before you visit on public holidays.",
+        social=[],
+        google_rating=dict(rating=4.8, count=44, checked="2026-11-07", url="https://www.google.com/maps/search/?api=1&query=Soon%20Kim%20Motor%20Workshop&query_place_id=ChIJKYWAL_oW2jERGGddsf5gD4E", source="Google Places"),
+        photos=[
+            dict(f="soon-kim/01-shopfront.webp", alt="Soon Kim Motor Repair Workshop shopfront at Ang Mo Kio Industrial Park 2, with Falken and Continental signboard and stacked tyres", cap="The shopfront, with the Falken and Continental signboard."),
+            dict(f="soon-kim/02-tyre-wall.webp", alt="Wall of new tyres on racks, a CEMB wheel balancing machine and Amaron and Delkor car batteries at Soon Kim", cap="The tyre wall, the wheel balancer and batteries in stock."),
+            dict(f="soon-kim/03-yokohama-bay.webp", alt="Workshop bay under the Yokohama Kim Ker Tyre Service sign, with a van in for tyre work", cap="The bay under the Kim Ker Tyre Service sign."),
+            dict(f="soon-kim/04-tyre-stacks.webp", alt="Stacks of tyres outside Soon Kim, including a Falken Sincera tyre", cap="Tyres stacked outside the shop."),
+        ],
+        sections=[
+            ("Tyres first", "p", [
+                "Most of the shop is tyres. Racks of new tyres line the walls and more are stacked outside, and a wheel balancing machine sits in the middle of the bay. "
+                "Bring the car in for a tyre change, a puncture check or balancing, or WhatsApp your tyre size first to check stock.",
+                "Batteries are kept in stock too, so a flat battery and a worn tyre can be sorted in one visit."]),
+            ("A tyre shop open on Sunday", "p", [
+                "Many workshops in Singapore close on Sunday. Soon Kim's Google Maps hours show it open every day from 8am to 6pm, and several Google reviews mention getting a "
+                "punctured tyre or a small fault fixed on a Sunday morning. If you need tyres on a Sunday in Ang Mo Kio, it is worth a message before you drive over."]),
+            ("What customers mention on Google", "p", [
+                "Customers on Google Maps mention quick puncture repairs, help on Sundays when other workshops were closed, fast small repairs such as brake lights, "
+                "friendly service without hard selling, and coming back for regular servicing. Google shows a rating of 4.8 from 44 reviews (checked 7 November 2026)."]),
+        ],
+        faqs=[
+            ("Is Soon Kim open on Sunday?", "Yes. Its Google Maps hours show it open every day, Monday to Sunday, from 8am to 6pm (checked 7 November 2026). One review says it closes on the second day of Chinese New Year."),
+            ("Which tyre brands does it carry?", "Brands seen in the shop include Falken, Continental, Yokohama and Sincera. WhatsApp your tyre size to check what is in stock."),
+            ("Can it balance my wheels after a tyre change?", "Yes. The shop has a CEMB wheel balancing machine for balancing wheels after new tyres are fitted."),
+            ("What else does it do besides tyres?", "Car battery replacement (Amaron and Delkor in stock), car aircon service and general motor repair."),
+            ("Where is it?", "5033 Ang Mo Kio Industrial Park 2, #01-263, Singapore 569536. Look for the Falken and Continental signboard; the shop next door at #01-261 is a different business."),
+        ],
+        verified_note="Verified: SG Car Workshop checked this shop in person on 7 November 2026. This is not a paid listing.",
+        source=dict(name="Google Places (place_id ChIJKYWAL_oW2jERGGddsf5gD4E), 7 Nov 2026", address="Google Places + shop signboard (Edwin's photo, 7 Nov 2026)",
+                    phone="WhatsApp 9228 2188: Edwin, in person, 7 Nov 2026; Call 6481 9656: Google Places", hours="Google Places, 7 Nov 2026",
+                    services="Edwin's in-person visit and photos, 7 Nov 2026", photos="Edwin's own photos, 7 Nov 2026"),
+        left_out=["all prices", "reviewer names and quotes", "owner names"],
+    ),
+    dict(
         slug="edwin-garage", tier="premium_leadgen", founder_owned=True, name="Edwin Garage", domain="sggarage.com", url="https://sggarage.com/",
         category="general-servicing-repair", categories=["general-servicing-repair", "spray-painting-bodywork", "car-aircon-repair", "car-battery", "abs-ecu-module-repair"], regions=['north-east'], regions_note='Ang Mo Kio is in the North-East region (URA). Address: Ang Mo Kio Industrial Park 2 (units #01-295 and #01-309).', area_label="Ang Mo Kio",
         title="Edwin Garage | Car Servicing, Aircon and Repair, Ang Mo Kio",

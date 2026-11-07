@@ -149,7 +149,7 @@ def want_wa(e):
 OSM = 'openstreetmap.org'
 PILOT_SLUGS = set(f[:-5] for f in os.listdir(os.path.join(root, '..', 'data', 'pilot'))) if os.path.isdir(os.path.join(root, '..', 'data', 'pilot')) else set()
 for e in ENTRIES:
-    if e['slug'] in PILOT_SLUGS:
+    if e['slug'] in PILOT_SLUGS and e['tier'] == 'free':   # pilot rules are for Basic pages only (a Verified card may keep a pilot file for its tags)
         # Basic PILOT (Edwin 2 Nov 2026): single fixed-content page, no photo, hours say "see Google Maps", no ratings/reviews/second phones.
         pg = open(os.path.join(root, 'workshops', e['slug'], 'index.html'), encoding='utf-8').read()
         body = re.sub(r'<(script|style).*?</\1>', '', pg, flags=re.S)
@@ -363,6 +363,8 @@ for _root, _d, _fs in os.walk(sys.argv[1] if len(sys.argv) > 1 else '../site'):
             for _t in re.findall(r'href="tel:([^"]*)"', open(os.path.join(_root, _fn), encoding='utf-8').read()):
                 # Edwin 7 Nov 2026: a Page One client's office line, as published on its own website, may appear on that client's own card page only
                 if _t in {e.get('landline') for e in ENTRIES if e.get('landline')} and any(os.path.join('workshops', e['slug']) in _root for e in ENTRIES if e.get('landline') == _t): continue
+                # Edwin 7 Nov 2026 (Soon Kim): on a card Edwin verified in person, Call may use the landline on the Google listing, everywhere the card shows
+                if _t in {e.get('landline') for e in ENTRIES if e.get('call_landline')}: continue
                 if not re.fullmatch(r'\+65[89]\d{7}', _t): print('tel: is not an SG mobile', _t, os.path.join(_root, _fn)); bad += 1
 # DATA: every record file passes the schema; forbidden Google fields; removed/pending place_ids never live; snapshots stay private
 import subprocess
