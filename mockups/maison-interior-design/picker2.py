@@ -20,7 +20,7 @@ PICKER2 = {
                                    ("bedroom", "Main bedroom", .251, .308, "style"), ("bedroom-2", "Bedroom 2", .478, .278, "style")]),
 }
 
-PICKER2_V = "p2f"
+PICKER2_V = "p2g"
 PICKER2_CSS = """
 .vp2 [hidden]{display:none!important}
 .vp2 .sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
