@@ -1,7 +1,7 @@
 name: Battery Rescue live check
 on:
   push:
-    branches: [ "claude/battery-rescue-hero" ]
+    branches: [ "claude/battery-rescue-promo" ]
     paths: [ ".github/br-live/*.js", ".github/br-live/*.py", ".github/workflows/br-live-check.yml" ]
 permissions:
   contents: write
@@ -14,6 +14,7 @@ jobs:
         with: { node-version: 20 }
       - run: npm i playwright@1.48.2 && npx playwright install --with-deps chromium
       - run: node .github/br-live/check.js
+      - run: python3 .github/br-live/promo_check.py pageone-site/clients/battery-rescue live | tee -a shots/result.txt
       - run: python3 .github/br-live/indexnow.py
       - run: cat shots/result.txt
       - name: Save results to branch
