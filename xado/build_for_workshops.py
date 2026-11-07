@@ -123,7 +123,7 @@ MAIN = """<main id="main">
 <section class="dark-band" id="offer-xado"><div class="wrap"><p class="kicker">For workshops</p><h2>Offer XADO at your workshop</h2>
 <p class="lead">XADO Singapore helps car workshops add XADO engine treatments and oils to their services. Message XADO Singapore on WhatsApp and XADO will take you through how it works.</p>
 <p class="nomin">No minimum order, no obligation</p>
-<p class="fw-jump"><a class="textlink" href="#ready-to-offer">How to get in touch with XADO Singapore ↓</a></p>
+<p class="fw-jump" data-nobub><a class="textlink" href="#ready-to-offer">How to get in touch with XADO Singapore ↓</a></p>
 </div></section>
 
 <section class="wrap"><h2>Why workshops offer XADO</h2>
