@@ -60,7 +60,7 @@ LAUNCHES = [
 
  dict(slug="norwood-grand", name="Norwood Grand", place="Woodlands", kind="condo", label="Private condominium",
   facts=[("Developer", "City Developments Limited (CDL)"), ("Town", "Woodlands (Champions Way)")],
-  date=("TOP", "Year only: around 2026. We could not confirm a TOP date on an official page we were able to read. Your developer's notice of vacant possession is the date that counts."),
+  date=("TOP", "TOP obtained August 2026 (CDL construction page). Individual key and access appointments are not confirmed."),
   sources=[("CDL 1H 2026 results release (lists Norwood Grand among CDL's Singapore projects)", CDL_1H26), ("CDL construction progress", CDL_CON)],
   lede="Norwood Grand is a CDL condominium on Champions Way in Woodlands. If your keys are coming soon, the time to plan the renovation is now, so work can start as soon as you have reported defects and the management has approved your plans.",
   paras=["Woodlands buyers are often families moving up from an HDB flat, and many have never renovated a condo before. The biggest difference is the rules: approval comes from the condo's management, not HDB, and the hours and deposits are set by the condo's by-laws.",
@@ -162,7 +162,7 @@ LAUNCHES = [
 
  dict(slug="towner-residences", name="Towner Residences", place="Kallang/Whampoa", kind="bto", label="HDB BTO · sample page",
   facts=[("Agency", "HDB"), ("Town", "Kallang/Whampoa (Towner Road)"), ("Units", "316 (as listed by a third-party tracker)"), ("Flat types", "3-room and 4-room (as listed by a third-party tracker)")],
-  date=("Completion", "Completion expected around late 2026 according to third-party project trackers, not an HDB-confirmed key collection date. HDB has not confirmed a project-wide key date on the pages we checked. Your HDB notification is the date that counts."),
+  date=("Completion", "No project-wide key date confirmed; confirm your own HDB handover. HDB has not confirmed a project-wide key date on the pages we checked. Your HDB notification is the date that counts."),
   sources=[("KeyDayKit BTO tracker (third-party)", KD), ("HDB roadshows page (checked; no project date)", ROADSHOW), ("HDB renovation guide", HDB_RENO)],
   lede="Towner Residences is a BTO project on Towner Road in Kallang/Whampoa, listed by a third-party tracker as 316 3-room and 4-room flats. A small, central BTO means fewer flats renovating at once, but city-fringe flat sizes that need careful planning.",
   paras=["3-room and 4-room flats in a mature, central town are often bought by young couples who want the home to work for years. Storage and flexible rooms matter more than statement pieces: a study that can become a nursery, and wardrobes that reach the ceiling.",

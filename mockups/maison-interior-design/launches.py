@@ -1,7 +1,10 @@
 # New launches hub, project pages and service guides (exec'd by build.py after its helpers).
 exec(open(os.path.join(HERE, "launches_guides.py"), encoding="utf-8").read())
 exec(open(os.path.join(HERE, "launches_projects.py"), encoding="utf-8").read())
-exec(open(os.path.join(HERE, "towner.py"), encoding="utf-8").read())
+exec(open(os.path.join(HERE, "vpage.py"), encoding="utf-8").read())
+LAUNCHES = [p for p in LAUNCHES if p["slug"] not in VPAGE_ON_HOLD]
+# visual pages first on the hub
+LAUNCHES.sort(key=lambda p: (p["slug"] not in VPAGES, list(VPAGES).index(p["slug"]) if p["slug"] in VPAGES else 0))
 
 KINDS = {"bto": ("BTO / HDB", "bto-renovation"), "ec": ("Executive condo", "new-condo-renovation"),
          "condo": ("Private condo", "new-condo-renovation"), "landed": ("Landed", "landed-renovation"),
@@ -146,8 +149,15 @@ HUB_FAQ = [("What is the difference between TOP and key collection?", "TOP (Temp
 def hub():
     order = ["bto", "ec", "condo", "landed", "office", "retail"]
     chips = "".join(f'<button class="chip{" on" if k=="All" else ""}" data-f="{k}" aria-pressed="{"true" if k=="All" else "false"}">{k}</button>' for k in ["All"] + [KINDS[k][0] for k in order])
-    cards = "".join(f'<a class="lc" href="{BASE}new-launches/{p["slug"]}/" data-kind="{KINDS[p["kind"]][0]}"><span class="tag">{e(p["label"])}</span>'
-                    f'<h3>{e(p["name"])} <em>{e(p["place"])}</em></h3><p>{e(p["date"][1].split(". ")[0])}.</p><span class="more">Read the guide</span></a>' for p in LAUNCHES)
+    def hcard(p):
+        if p["slug"] in VPAGES:
+            v = VPAGES[p["slug"]]
+            return (f'<a class="lc lc-img" href="{BASE}new-launches/{p["slug"]}/" data-kind="{KINDS[p["kind"]][0]}">'
+                    f'<figure>{vimg(p["slug"], v["hero"], "AI concept: " + p["name"] + " living and dining", sizes="(min-width:900px) 30vw, 100vw")}</figure>'
+                    f'<span class="tag">{e(v["tag"])}</span><h3>{e(p["name"])} <em>{e(p["place"])}</em></h3><span class="more">See the concepts</span></a>')
+        return (f'<a class="lc" href="{BASE}new-launches/{p["slug"]}/" data-kind="{KINDS[p["kind"]][0]}"><span class="tag">{e(p["label"])}</span>'
+                f'<h3>{e(p["name"])} <em>{e(p["place"])}</em></h3><p>{e(p["date"][1].split(". ")[0].rstrip("."))}.</p><span class="more">Read the guide</span></a>')
+    cards = "".join(hcard(p) for p in LAUNCHES)
     gcards = "".join(f'<a class="gc" href="{BASE}services/{g["slug"]}/"><h3>{e(g["short"])}</h3><p>{e(g["desc"])}</p><span class="more">Read the guide</span></a>' for g in GUIDES)
     schema = {"@context": "https://schema.org", "@graph": [ORG, crumbs([("Home", ""), ("New launches", "new-launches/")]),
               {"@type": "CollectionPage", "name": "New launches renovation and fit-out guides", "hasPart": [{"@type": "Article", "headline": p["name"] + " guide", "url": DOMAIN + "/new-launches/" + p["slug"] + "/"} for p in LAUNCHES]},
@@ -168,9 +178,11 @@ def hub():
     write("new-launches/index.html", s)
 
 def launches_build():
+    for sl in VPAGE_ON_HOLD:  # on hold (7 Nov): earlier pages were live, so point them to the hub
+        write(f"new-launches/{sl}/index.html", f'<!doctype html><html lang="en-SG"><head><meta charset="utf-8"><meta name="robots" content="noindex"><meta http-equiv="refresh" content="0;url={BASE}new-launches/"><link rel="canonical" href="{DOMAIN}/new-launches/"><title>New launches | Maison Interior Design</title></head><body><a href="{BASE}new-launches/">New launches</a></body></html>')
     for g in GUIDES: guide_page(g)
     for p in LAUNCHES:
-        if p["slug"] == "towner-residences": towner_page()
+        if p["slug"] in VPAGES: vpage(p["slug"])
         else: launch_page(p)
     hub()
 
