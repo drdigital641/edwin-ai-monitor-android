@@ -8,6 +8,10 @@ VWA = "https://wa.me/6593391185"
 VPAGES = {
  "towner-residences": dict(
   kind="bto", hero="towner-residences-living-dining", layout="towner-residences-layout-4room",
+  plan=("towner-residences-maison-plan", 1640, "Maison redrawn floor plan of a Towner Residences 4-room flat, for illustration",
+        "https://assets.hdb.gov.sg/community/towner_residences/index.html"),
+  styles=dict(note="4-room first arrangement, 90 sqm internal / 93 sqm incl. A/C ledge.",
+              src="https://btohq.sgp1.cdn.digitaloceanspaces.com/bto/aug-2021-bto/towner-residences.pdf#page=8"),
   tag="BTO · Kallang/Whampoa · Key date not yet confirmed",
   rooms=[("towner-residences-living-dining", "Living and dining: a clear route through a warm, compact layout."),
          ("towner-residences-kitchen", "Kitchen and service yard: follows the selected plan; joinery is a proposal."),
@@ -135,6 +139,28 @@ ICON = {"size": '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 3h18v18
 def wa_btn(slug, cls="btn dark-b"):
     return f'<a class="{cls} vwa" href="{VWA}" data-cta="whatsapp" data-ref="{slug}"><svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><path fill="currentColor" d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2Z"/></svg>WhatsApp Maison</a>'
 
+STYLES = ["Modern", "Luxury", "Scandi", "Japandi"]
+
+def style_picker(slug, cfg, h1):
+    st = cfg["styles"]
+    b = f"{BASE}images/new-launches/{slug}/{slug}"
+    btns = "".join(f'<button type="button" data-s="{x.lower()}" aria-pressed="{"true" if i == 0 else "false"}">{x}</button>' for i, x in enumerate(STYLES))
+    def fig(room, label, alt):
+        return (f'<figure><img src="{b}-modern-{room}.webp" srcset="{b}-modern-{room}-960.webp 960w, {b}-modern-{room}.webp 1920w" '
+                f'sizes="(min-width:900px) 45vw, 100vw" width="1920" height="1080" alt="AI concept: Modern style {alt} for {e(h1)}" '
+                f'data-room="{room}" data-alt="{alt}" decoding="async">'
+                f'<figcaption><span class="vs-n">Modern</span> · {label}</figcaption></figure>')
+    return (f'<section class="vsec vsty"><div class="wrap"><h2 class="vh2">Choose your style</h2>'
+            f'<p class="vsub">Same room, four styles. AI concepts, for illustration only; all cabinetry, furnishings and finishes are proposed.</p>'
+            f'<div class="vsty-btns" role="group" aria-label="Interior style">{btns}</div>'
+            f'<div class="vsty-imgs" data-base="{b}">{fig("living", "Living / dining", "living and dining")}{fig("bedroom", "Main bedroom", "main bedroom")}</div>'
+            f'<p class="vsty-src">{e(st["note"])} Source: <a href="{st["src"]}" target="_blank" rel="noopener">HDB brochure (archive copy)</a></p></div></section>'
+            """<script>(function(){var w=document.currentScript.previousElementSibling,g=w.querySelector('.vsty-imgs'),b=g.dataset.base;
+w.querySelectorAll('.vsty-btns button').forEach(function(t){t.addEventListener('click',function(){var s=t.dataset.s,n=t.textContent;
+w.querySelectorAll('.vsty-btns button').forEach(function(o){o.setAttribute('aria-pressed',o===t?'true':'false')});
+g.querySelectorAll('img').forEach(function(i){var r=i.dataset.room,f=b+'-'+s+'-'+r;i.srcset=f+'-960.webp 960w, '+f+'.webp 1920w';i.src=f+'.webp';i.alt='AI concept: '+n+' style '+i.dataset.alt+' for '+document.querySelector('h1').textContent});
+g.querySelectorAll('.vs-n').forEach(function(x){x.textContent=n})})})})()</script>""")
+
 def vpage(slug):
     c, cfg = parse_copy(slug), VPAGES[slug]
     path = f"new-launches/{slug}/"
@@ -146,6 +172,14 @@ def vpage(slug):
                      + (f'<li>{ICON["beds"]}<span>{e(g["beds"])}</span></li>' if g.get("beds") else "")
                      + f'<li>{ICON["idea"]}<span>{e(g["idea"])}</span></li></ul></article>' for g in cfg["glance"])
     plate = ('<ul class="vplate">' + "".join(f'<li>{ICON["size"]}<span>{e(x)}</span></li>' for x in cfg["plate"]) + '</ul>') if cfg.get("plate") else ""
+    if cfg.get("plan"):
+        pn, ph, palt, plink = cfg["plan"]
+        layout_html = (f'<div class="vplan"><a class="vplan-img" href="{BASE}images/new-launches/{slug}/{pn}.webp" target="_blank" rel="noopener">'
+                       f'{vimg(slug, pn, palt, sizes="(min-width:1240px) 1160px, 100vw", h=ph).replace("AI concept: ", "")}</a>'
+                       f'<p class="vplan-link"><a href="{plink}" target="_blank" rel="noopener">View official floor plan</a></p></div>')
+    else:
+        layout_html = (f'<figure class="vlay">{vimg(slug, cfg["layout"], "Simplified layout diagram for " + c["h1"], sizes="(min-width:1240px) 1160px, 100vw", h=1340)}'
+                       f'<figcaption>{e(cfg["layout_cap"])} ' + (('<a href="' + first_src.group(1) + '" target="_blank" rel="noopener">Source</a>') if first_src else '') + '</figcaption></figure>')
     steps = "".join(f'<li><span class="sn">{i+1:02d}</span><h3>{e(t)}</h3><p>{e(x)}</p></li>' for i, (t, x) in enumerate(cfg["steps"]))
     faqs = "".join(f'<details class="qa"><summary><h3>{e(q)}</h3><span class="pm" aria-hidden="true"></span></summary><div class="vq">{_links(a)}</div></details>' for q, a in c["faq"])
     notes = "".join(f"<h4>{e(k)}</h4>{_links(v)}" for k, v in c["rooms"])
@@ -153,7 +187,7 @@ def vpage(slug):
     schema = {"@context": "https://schema.org", "@graph": [ORG, crumbs([("Home", ""), ("New launches", "new-launches/"), (c["h1"], path)]),
               {"@type": "Article", "headline": c["h1"], "description": c["desc"], "datePublished": "2026-11-07", "dateModified": "2026-11-07",
                "author": {"@id": DOMAIN + "/#business"}, "publisher": {"@id": DOMAIN + "/#business"}, "mainEntityOfPage": DOMAIN + "/" + path,
-               "image": [DOMAIN + f"/images/new-launches/{slug}/{n}.webp" for n, _ in cfg["rooms"]] + [DOMAIN + f"/images/new-launches/{slug}/{cfg['layout']}.webp"],
+               "image": [DOMAIN + f"/images/new-launches/{slug}/{n}.webp" for n, _ in cfg["rooms"]] + [DOMAIN + f"/images/new-launches/{slug}/{(cfg['plan'][0] if cfg.get('plan') else cfg['layout'])}.webp"],
                "citation": _re.findall(r'href="(https://[^"]+)"', c["sources"])},
               {"@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": q, "acceptedAnswer": {"@type": "Answer", "text": _txt(a)}} for q, a in c["faq"]]}]}
     s = head(c["seo"], c["desc"], path, f"{BASE}images/new-launches/{slug}/{cfg['hero']}.webp", schema)
@@ -161,11 +195,11 @@ def vpage(slug):
     s += f"""<section class="vhero">{vimg(slug, cfg['hero'], "AI concept: " + cfg['rooms'][0][1].split(":")[0].lower() + " for " + c['h1'], cls="vh-img", lazy=False)}
 <div class="vh-txt"><div class="wrap"><p class="vh-tag">{e(cfg['tag'])}</p><h1>{e(c['h1'])}</h1></div></div></section>
 <div class="wrap vh-cta">{wa_btn(slug)}<a class="link" href="{BASE}services/{gs}/">{e(GBY[gs]['short'])} guide</a></div>
+{style_picker(slug, cfg, c['h1']) if cfg.get('styles') else ''}
 <section class="vsec"><div class="wrap"><h2 class="vh2">Four concept {"zones" if cfg.get("zones") else "rooms"}</h2><p class="vsub">Plan-informed style studies, not exact reconstructions. Swipe to see all four.</p>
 <div class="vgal">{gal}</div></div></section>
 <section class="vsec"><div class="wrap"><h2 class="vh2">{"Proposed zoning (not a lease plan)" if cfg.get("zones") else "The layout these concepts use"}</h2>
-<figure class="vlay">{vimg(slug, cfg['layout'], "Simplified layout diagram for " + c['h1'], sizes="(min-width:1240px) 1160px, 100vw", h=1340)}
-<figcaption>{e(cfg['layout_cap'])} {('<a href="' + first_src.group(1) + '" target="_blank" rel="noopener">Source</a>') if first_src else ''}</figcaption></figure></div></section>
+{layout_html}</div></section>
 <section class="vsec"><div class="wrap"><h2 class="vh2">{"Zones at a glance" if cfg.get("zones") else "Layout at a glance"}</h2>{plate}<div class="vgls">{glance}</div></div></section>
 <section class="vsec"><div class="wrap"><h2 class="vh2">{"From handover to move-in" if cfg.get("zones") else "From keys to move-in"}</h2><ol class="vsteps">{steps}</ol></div></section>
 <section class="vsec vfaq"><div class="wrap narrow"><h2 class="vh2">Details, caveats and sources</h2>
