@@ -19,7 +19,7 @@ PICKER2 = {
 FIXED_CAP = {"kitchen": "Kitchen concept (same for all styles)", "study": "Bedroom 3 as a study (same for all styles)"}
 EMPTY_TXT = "No verified concept for this room yet. Share your approved plan with Maison."
 
-PICKER2_V = "p2b"
+PICKER2_V = "p2c"
 PICKER2_CSS = """
 .vp2 [hidden]{display:none!important}
 .vp2 .vh2{margin-bottom:12px}
@@ -27,7 +27,9 @@ PICKER2_CSS = """
 .vp2-photo{position:relative;aspect-ratio:16/9;background:var(--bg2)}
 .vp2-photo img{display:block;width:100%;height:100%;object-fit:cover;transition:opacity .2s ease}
 .vp2-photo img.fade{opacity:0}
-.vp2-empty{position:absolute;inset:0;border:1px dashed var(--mute);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:12px;padding:16px;text-align:center;color:var(--ink2);background:#f1ebe2;font-size:14px}
+.vp2-photo img.vp2-next{position:absolute;inset:0;opacity:0;z-index:1;pointer-events:none}
+.vp2-photo img.vp2-next.on{opacity:1}
+.vp2-empty{position:absolute;inset:0;z-index:2;border:1px dashed var(--mute);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:12px;padding:16px;text-align:center;color:var(--ink2);background:#f1ebe2;font-size:14px}
 .vp2-empty p{margin:0}
 .vp2-cap{font-size:15px;color:var(--ink);margin-top:6px}
 .vp2-chips{margin-top:8px}
@@ -62,7 +64,7 @@ def picker2(slug, h1, wa):
     rooms = "".join(f'<button type="button" data-r="{r[0]}" aria-pressed="{"true" if i == 0 else "false"}">{i+1}. {r[1]}</button>' for i, r in enumerate(t["rooms"]))
     pl = f"{b}-{t['plan']}"
     img = (f'<img src="{b}-modern-living.webp?v={V}" srcset="{b}-modern-living-960.webp?v={V} 960w, {b}-modern-living.webp?v={V} 1920w" sizes="(min-width:900px) 58vw, 100vw" '
-           f'width="1920" height="1080" alt="AI concept: Modern style living and dining for a Towner Residences 4-room flat" decoding="async">')
+           f'width="1920" height="1080" alt="AI concept: Modern style living and dining for a Towner Residences 4-room flat" decoding="async"><img class="vp2-next" alt="" aria-hidden="true" width="1920" height="1080">')
     return (f'<style>{PICKER2_CSS}</style><section class="vsec vp2" id="choose"><div class="wrap"><h2 class="vh2">Choose your flat, style and room</h2>'
             f'<div class="vp2-top"><div class="vp2-view"><figure><div class="vp2-photo">{img}<div class="vp2-empty" hidden><p>{EMPTY_TXT}</p>{wa}</div></div>'
             f'<figcaption class="vp2-cap" aria-live="polite">Modern · Living/Dining</figcaption></figure></div>'
@@ -88,16 +90,25 @@ T.rooms.forEach(function(r,i){var b=document.createElement('button');b.type='but
 rb+='<button type="button" data-r="'+r.id+'">'+(i+1)+'. '+r.label+'</button>'});
 q('.vp2-rooms').innerHTML=rb;q('.vp2-units').textContent=T.units;
 var s=q('.vp2-src'),a=s.querySelector('a');s.firstChild.textContent='AI concepts, for illustration only; all cabinetry, furnishings and finishes are proposed. '+T.note+' Source: ';a.href=T.src;bindRooms()}
-function render(){var T=D[st.t],r=T.rooms.filter(function(x){return x.id===st.r})[0],img=q('.vp2-photo img'),em=q('.vp2-empty'),c=q('.vp2-cap'),S=cap(st.s),f,alt,txt,my=++tok;
+function big(){return innerWidth>960||devicePixelRatio>1.5&&innerWidth>480}
+function sz(f){return f+(big()?'.webp':'-960.webp')+Q}
+var C={};function pre(u){if(!C[u]){C[u]=new Promise(function(res){var i=new Image();i.onload=function(){if(i.decode){i.decode().then(res,res)}else res()};i.onerror=function(){res()};i.src=u})}return C[u]}
+function fileOf(t,s,r){var T=D[t];if(!r||!r.img)return null;return r.img==='style'?B+'-'+T.prefix+s+'-'+r.id:B+'-'+r.img}
+function roomOf(t,id){return D[t].rooms.filter(function(x){return x.id===id})[0]}
+function warm(){var T=D[st.t],r=roomOf(st.t,st.r),i=T.rooms.indexOf(r),n=T.rooms[(i+1)%T.rooms.length],f=fileOf(st.t,st.s,n);if(f)pre(sz(f));
+idle(function(){['modern','luxury','scandi','japandi'].forEach(function(x){var g=fileOf(st.t,x,r);if(g)pre(sz(g))})})}
+function idle(fn){(window.requestIdleCallback||function(c){setTimeout(c,600)})(fn)}
+function render(){var T=D[st.t],r=roomOf(st.t,st.r),img=q('.vp2-photo img'),nx=q('.vp2-next'),em=q('.vp2-empty'),c=q('.vp2-cap'),S=cap(st.s),f=fileOf(st.t,st.s,r),alt,txt,my=++tok;
 press('.vp2-type button','data-t',st.t);press('.vp2-sty button','data-s',st.s);press('.vp2-hs','data-r',st.r);press('.vp2-rooms button','data-r',st.r);
-if(r.img==='style'){f=B+'-'+T.prefix+st.s+'-'+r.id;txt=S+' · '+r.label;alt='AI concept: '+S+' style '+r.label.toLowerCase().replace('/',' and ')+' for a Towner Residences '+T.label+' flat'}
-else if(r.img){f=B+'-'+r.img;txt=F[r.img];alt='AI concept: '+F[r.img]+', Towner Residences '+T.label}
+if(r.img==='style'){txt=S+' · '+r.label;alt='AI concept: '+S+' style '+r.label.toLowerCase().replace('/',' and ')+' for a Towner Residences '+T.label+' flat'}
+else if(r.img){txt=F[r.img];alt='AI concept: '+F[r.img]+', Towner Residences '+T.label}
 else{txt=r.label+' · no concept yet'}
-c.textContent=txt;
-if(!f){img.classList.add('fade');em.hidden=false;return}
-em.hidden=true;img.classList.add('fade');
-var big=innerWidth>960||devicePixelRatio>1.5&&innerWidth>480,u=f+(big?'.webp':'-960.webp')+Q,pre=new Image();
-pre.onload=pre.onerror=function(){if(my!==tok)return;setTimeout(function(){img.srcset=f+'-960.webp'+Q+' 960w, '+f+'.webp'+Q+' 1920w';img.src=f+'.webp'+Q;img.alt=alt;
-requestAnimationFrame(function(){img.classList.remove('fade')})},120)};pre.src=u}
+warm();
+if(!f){c.textContent=txt;em.hidden=false;return}
+var u=sz(f);
+pre(u).then(function(){if(my!==tok)return;nx.src=u;return nx.decode?nx.decode().catch(function(){}):0}).then(function(){if(my!==tok)return;
+em.hidden=true;c.textContent=txt;nx.classList.add('on');
+setTimeout(function(){if(my!==tok)return;img.removeAttribute('srcset');img.src=u;img.alt=alt;
+(img.decode?img.decode().catch(function(){}):Promise.resolve()).then(function(){if(my!==tok)return;nx.style.transition='none';nx.classList.remove('on');void nx.offsetWidth;nx.style.transition=''})},230)})}
 qa('.vp2-type button').forEach(function(b){b.onclick=function(){if(st.t===b.dataset.t)return;st.t=b.dataset.t;st.r='living';buildType();render()}});
-qa('.vp2-sty button').forEach(function(b){b.onclick=function(){st.s=b.dataset.s;render()}});bindRooms()})()</script>""")
+qa('.vp2-sty button').forEach(function(b){b.onclick=function(){st.s=b.dataset.s;render()}});bindRooms();idle(warm)})()</script>""")
