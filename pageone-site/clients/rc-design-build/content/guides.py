@@ -399,4 +399,36 @@ G12 = {
   'wa_topic': 'my shop fitting room',
 }
 
-PAGES = [G1, G2, G3, G4, G5, G6, G7, G8, G9, G10, G11, G12]
+G13 = {
+  'path': '/guides/mall-kiosk-design-for-a-small-business/',
+  'title': 'Mall Kiosk Design for a Small Business | R&C',
+  'desc': 'How to plan a mall kiosk in Singapore: footprint, counter and storage, power, lighting, security and mall approvals, before you brief a contractor.',
+  'h1': 'Mall Kiosk Design for a Small Business',
+  'kicker': 'Retail kiosk guide',
+  'answer': 'A mall kiosk is a small counter that customers can reach from more than one side, so plan it around the footprint the mall gives you. Fit the counter, storage, power and lighting inside that space, make it easy to close up and stay tidy, and get the mall to approve the design before anything is built.',
+  'card': 'Plan a mall kiosk: footprint, counter and storage, power, lighting, closing up and mall approvals.',
+  'image': 'counter-joinery',
+  'image_alt': 'Close-up of a custom timber counter with a built-in payment area, the kind of counter planned for a small kiosk (AI design concept)',
+  'og': 'share-mall-kiosk-design-for-a-small-business.jpg',
+  'date': '2026-11-08',
+  'owner': '/services/commercial-carpentry/',
+  'reading': '5 min read',
+  'sections': [
+    {'h2': 'What makes a mall kiosk different from a shop?', 'html': '<p>A kiosk has no walls and no back room, so everything customers see, and everything you keep, sits inside one small footprint that the mall sets. Customers may approach from two, three or four sides, and your stock, cash or payment device, bags and cleaning items all share the same space.</p><ul><li>The footprint and height are usually decided by the mall, not by you.</li><li>There is no shopfront to hide behind, so every side of the kiosk is a display.</li><li>Storage has to be built into the counter, because there is nowhere else to put it.</li></ul><p>For a full shop, start with the <a href="/guides/small-shop-layout-and-customer-flow/">small shop layout and customer flow guide</a> instead.</p>'},
+    {'h2': 'How do I plan the footprint and counter?', 'html': '<p>Start from the exact footprint and any height limit the mall has given you, then decide which sides are for serving and which are for display. Draw the counter to scale and check that you can stand, reach and turn behind it before you finalise the design.</p><ul><li>Decide the serving side first, and keep the other sides for products, signage or a menu.</li><li>Leave room behind the counter for staff to move without bumping stock.</li><li>Keep the payment point where you can watch it and where customers can see it.</li></ul><p>The <a href="/guides/planning-a-custom-shop-counter/">custom shop counter planning guide</a> goes into counter height, depth and payment area in more detail.</p>'},
+    {'h2': 'Where does the storage go?', 'html': '<p>Build storage into the counter itself, under it and behind panels, so stock stays out of sight and the top stays clear. Think about what you refill each day and what you only restock weekly, and put the daily items within easy reach.</p><ul><li>Drawers or shelves under the counter for daily stock.</li><li>A lockable cupboard for valuables, devices and cleaning items.</li><li>A tidy place for waste, packaging and a bag or two.</li></ul><p>Built-in storage is carpentry work. See <a href="/services/commercial-carpentry/">commercial carpentry</a> for what it normally covers.</p>'},
+    {'h2': 'What about power and lighting?', 'html': '<p>List every device you will plug in, such as a payment terminal, tablet, display or small appliance, before the design is fixed, so sockets and cable routes are planned inside the kiosk. Then light the counter and the products so they stand out from the mall lighting around you.</p><ul><li>Ask the mall where your power supply can come from and who may connect it.</li><li>Hide cables inside the structure and keep sockets away from water or spills.</li><li>Use warm, even light on the products and avoid glare on screens and glass.</li></ul><p>See <a href="/guides/lighting-a-retail-display/">lighting a retail display</a> for layers, glare and colour. Electrical work in a mall is usually done by a licensed person, so confirm who may carry it out.</p>'},
+    {'h2': 'How do I make the kiosk easy to close and keep tidy?', 'html': '<p>Design the kiosk so it can be cleared, covered or locked quickly at the end of each day, and so it looks clean from every side. A kiosk that is awkward to close tends to look messy by evening.</p><ul><li>Plan how stock, devices and displays are locked away or covered when you leave.</li><li>Choose finishes that wipe clean and take knocks from trolleys and bags.</li><li>Check how the kiosk is moved or taken apart, if the mall may relocate or end the space.</li></ul>'},
+    {'h2': 'What should I confirm with the mall first?', 'html': '<p>Ask the mall management for its kiosk or fit-out guidelines before you design, and get your drawings approved before anything is built. Malls differ on size, height, materials, lighting, power, signage and working hours, so assume nothing carries over from another site.</p><p>Our <a href="/guides/small-shop-renovation-checklist/">small shop renovation checklist</a> shows the questions to ask, and <a href="/guides/how-to-brief-a-shop-fit-out/">how to brief a shop fit-out</a> helps you write the brief. When you have the mall guidelines and a rough layout, send them to us so we can discuss your scope.</p>'},
+  ],
+  'faqs': [
+    ('What size should a mall kiosk be?', 'The mall usually sets the footprint and height, so ask for these first. Then fit the counter, storage and power inside that space and check it to scale.'),
+    ('Where should storage go in a kiosk?', 'Inside the counter, under it and behind panels, so stock is out of sight and the top stays clear. Put daily items within reach and keep valuables in a lockable cupboard.'),
+    ('Do I need mall approval for a kiosk design?', 'Usually, yes. Malls have their own guidelines on size, materials, lighting, power and signage, so get your drawings approved before anything is built.'),
+    ('Can a kiosk be moved or reused?', 'It can be designed in sections so it is easier to move or take apart, which helps if the mall relocates the space or the arrangement ends. Plan this at the design stage.'),
+  ],
+  'related': ['/services/commercial-carpentry/', '/guides/planning-a-custom-shop-counter/', '/guides/small-shop-layout-and-customer-flow/', '/guides/lighting-a-retail-display/', '/guides/small-shop-renovation-checklist/'],
+  'wa_topic': 'my mall kiosk',
+}
+
+PAGES = [G1, G2, G3, G4, G5, G6, G7, G8, G9, G10, G11, G12, G13]
