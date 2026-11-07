@@ -1,0 +1,11 @@
+name: Privacy page live check
+on:
+  push:
+    branches: [ "claude/project-thread-ti1ccb" ]
+    paths: [ ".github/privacy-check/**", ".github/workflows/privacy-check.yml" ]
+jobs:
+  run:
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+      - run: bash .github/privacy-check/run.sh
