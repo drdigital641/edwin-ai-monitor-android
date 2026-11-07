@@ -156,3 +156,10 @@ body.nobar{padding-bottom:calc(var(--tab) + 16px + env(safe-area-inset-bottom))}
 .areas p a{white-space:nowrap}
 @media (min-width:900px){.hero{max-width:720px;margin:0 auto}.hero .h1{font-size:34px}.pk{min-height:170px;padding:20px}.pk b{font-size:22px}.pk:hover{transform:translateY(-2px)}}
 @media (prefers-reduced-motion:reduce){.pk.red,.siren .beam,.tick,#help.flash,#car-price.flash{animation:none}.pk,.pk:active{transition:none;transform:none}}
+/* Launch promo (7 Nov 2026): usual before-10pm price struck through, promo price beside it */
+.pp{white-space:nowrap}
+.pp s{color:var(--mut);font-weight:500;text-decoration-thickness:1.5px}
+.tbl .pp s,.tier .pp s{display:block;font-size:12px;line-height:1.2}
+.plbl{display:inline-block;font-size:12px;font-weight:700;line-height:1.3;color:#a3121f;background:#fff1f2;border:1px solid #f2c4c8;border-radius:999px;padding:2px 8px;margin-top:4px}
+.tbl th .plbl{display:block;background:none;border:0;padding:0;margin:2px 0 0;color:#ffd6da;font-size:11px;font-weight:600}
+.tier .d.promo{color:#a3121f;font-weight:700}

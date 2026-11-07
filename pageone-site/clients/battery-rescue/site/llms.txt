@@ -2,7 +2,7 @@
 
 > Car battery replacement in Singapore by Motoserv (CaseTrust-accredited group, 10 outlets). Every battery is a Delkor with a 1-year warranty. 24-hour hotline 8125 9169 (also WhatsApp). Prices include GST and fitting, checked 26 Oct 2026.
 
-Last updated: 2026-11-06
+Last updated: 2026-11-07
 
 ## Contact (NAP)
 - Name: Battery Rescue SG (by Motoserv), https://batteryrescue.sg/
@@ -19,33 +19,33 @@ Last updated: 2026-11-06
 
 ## Price rules
 - Walk-in at any Motoserv outlet (Mon-Sat 9am-6pm): Delkor list price minus $20 with the website code (walk-in only).
-- Fitted at your location before 10pm, including Sunday: list price + $50.
+- Fitted at your location before 10pm, including Sunday: list price + $30 (launch promo, normally + $50).
 - Fitted at your location 10pm-9am and on public holidays: list price + $80.
 
-## Delkor prices (walk-in with code / list / at your location by day / night & PH)
-- NS40ZL (38Ah, 42B20L): $99.90 / $119.90 / $169.90 / $199.90  https://batteryrescue.sg/battery/ns40zl/
-- NS60L (50Ah, 65B24L): $110.80 / $130.80 / $180.80 / $210.80  https://batteryrescue.sg/battery/ns60l/
-- NS60LS (50Ah, 65B24LS): $110.80 / $130.80 / $180.80 / $210.80  https://batteryrescue.sg/battery/ns60ls/
-- NS60ST (45Ah, 65B24R): $110.80 / $130.80 / $180.80 / $210.80  https://batteryrescue.sg/battery/ns60st/
-- 85D23L (65Ah): $154.40 / $174.40 / $224.40 / $254.40  https://batteryrescue.sg/battery/85d23l/
-- 100D26L (75Ah): $187.10 / $207.10 / $257.10 / $287.10  https://batteryrescue.sg/battery/100d26l/
-- 130D31L (100Ah): $219.80 / $239.80 / $289.80 / $319.80  https://batteryrescue.sg/battery/130d31l/
-- 130D31R (100Ah): $219.80 / $239.80 / $289.80 / $319.80  https://batteryrescue.sg/battery/130d31r/
-- DIN45L (45Ah, 54533): $132.60 / $152.60 / $202.60 / $232.60  https://batteryrescue.sg/battery/din45l/
-- DIN60L (60Ah, 56030): $187.10 / $207.10 / $257.10 / $287.10  https://batteryrescue.sg/battery/din60l/
-- DIN66L (66Ah, 56618): $198.00 / $218.00 / $268.00 / $298.00  https://batteryrescue.sg/battery/din66l/
-- DIN74L (74Ah, 57412): $219.80 / $239.80 / $289.80 / $319.80  https://batteryrescue.sg/battery/din74l/
-- M42 (40Ah, 60B20L): $154.40 / $174.40 / $224.40 / $254.40  https://batteryrescue.sg/battery/m42/
-- EFB-N55 (55Ah, 80B24L): $176.20 / $196.20 / $246.20 / $276.20  https://batteryrescue.sg/battery/efb-n55/
-- EFB-Q85L (70Ah, 115D23L): $208.90 / $228.90 / $278.90 / $308.90  https://batteryrescue.sg/battery/efb-q85l/
-- EFB-S95 (75Ah, 130D26L): $252.50 / $272.50 / $322.50 / $352.50  https://batteryrescue.sg/battery/efb-s95/
-- EFB-LN2 (60Ah, DIN60): $219.80 / $239.80 / $289.80 / $319.80  https://batteryrescue.sg/battery/efb-ln2/
-- EFB LN3 (70Ah, DIN75L): $241.60 / $261.60 / $311.60 / $341.60  https://batteryrescue.sg/battery/efb-ln3/
-- AGM LN1 (50Ah, DIN45L): $230.70 / $250.70 / $300.70 / $330.70  https://batteryrescue.sg/battery/agm-ln1/
-- AGM LN2 (60Ah, DIN55L): $263.40 / $283.40 / $333.40 / $363.40  https://batteryrescue.sg/battery/agm-ln2/
-- AGM LN3 (70Ah, DIN75L): $317.90 / $337.90 / $387.90 / $417.90  https://batteryrescue.sg/battery/agm-ln3/
-- AGM LN4 (80Ah, DIN80L): $394.20 / $414.20 / $464.20 / $494.20  https://batteryrescue.sg/battery/agm-ln4/
-- AGM LN5 (95Ah, DIN100L): $448.70 / $468.70 / $518.70 / $548.70  https://batteryrescue.sg/battery/agm-ln5/
+## Delkor prices (walk-in with code / list / at your location before 10pm, launch promo / night & PH)
+- NS40ZL (38Ah, 42B20L): $99.90 / $119.90 / $149.90 (launch promo, usually $169.90) / $199.90  https://batteryrescue.sg/battery/ns40zl/
+- NS60L (50Ah, 65B24L): $110.80 / $130.80 / $160.80 (launch promo, usually $180.80) / $210.80  https://batteryrescue.sg/battery/ns60l/
+- NS60LS (50Ah, 65B24LS): $110.80 / $130.80 / $160.80 (launch promo, usually $180.80) / $210.80  https://batteryrescue.sg/battery/ns60ls/
+- NS60ST (45Ah, 65B24R): $110.80 / $130.80 / $160.80 (launch promo, usually $180.80) / $210.80  https://batteryrescue.sg/battery/ns60st/
+- 85D23L (65Ah): $154.40 / $174.40 / $204.40 (launch promo, usually $224.40) / $254.40  https://batteryrescue.sg/battery/85d23l/
+- 100D26L (75Ah): $187.10 / $207.10 / $237.10 (launch promo, usually $257.10) / $287.10  https://batteryrescue.sg/battery/100d26l/
+- 130D31L (100Ah): $219.80 / $239.80 / $269.80 (launch promo, usually $289.80) / $319.80  https://batteryrescue.sg/battery/130d31l/
+- 130D31R (100Ah): $219.80 / $239.80 / $269.80 (launch promo, usually $289.80) / $319.80  https://batteryrescue.sg/battery/130d31r/
+- DIN45L (45Ah, 54533): $132.60 / $152.60 / $182.60 (launch promo, usually $202.60) / $232.60  https://batteryrescue.sg/battery/din45l/
+- DIN60L (60Ah, 56030): $187.10 / $207.10 / $237.10 (launch promo, usually $257.10) / $287.10  https://batteryrescue.sg/battery/din60l/
+- DIN66L (66Ah, 56618): $198.00 / $218.00 / $248.00 (launch promo, usually $268.00) / $298.00  https://batteryrescue.sg/battery/din66l/
+- DIN74L (74Ah, 57412): $219.80 / $239.80 / $269.80 (launch promo, usually $289.80) / $319.80  https://batteryrescue.sg/battery/din74l/
+- M42 (40Ah, 60B20L): $154.40 / $174.40 / $204.40 (launch promo, usually $224.40) / $254.40  https://batteryrescue.sg/battery/m42/
+- EFB-N55 (55Ah, 80B24L): $176.20 / $196.20 / $226.20 (launch promo, usually $246.20) / $276.20  https://batteryrescue.sg/battery/efb-n55/
+- EFB-Q85L (70Ah, 115D23L): $208.90 / $228.90 / $258.90 (launch promo, usually $278.90) / $308.90  https://batteryrescue.sg/battery/efb-q85l/
+- EFB-S95 (75Ah, 130D26L): $252.50 / $272.50 / $302.50 (launch promo, usually $322.50) / $352.50  https://batteryrescue.sg/battery/efb-s95/
+- EFB-LN2 (60Ah, DIN60): $219.80 / $239.80 / $269.80 (launch promo, usually $289.80) / $319.80  https://batteryrescue.sg/battery/efb-ln2/
+- EFB LN3 (70Ah, DIN75L): $241.60 / $261.60 / $291.60 (launch promo, usually $311.60) / $341.60  https://batteryrescue.sg/battery/efb-ln3/
+- AGM LN1 (50Ah, DIN45L): $230.70 / $250.70 / $280.70 (launch promo, usually $300.70) / $330.70  https://batteryrescue.sg/battery/agm-ln1/
+- AGM LN2 (60Ah, DIN55L): $263.40 / $283.40 / $313.40 (launch promo, usually $333.40) / $363.40  https://batteryrescue.sg/battery/agm-ln2/
+- AGM LN3 (70Ah, DIN75L): $317.90 / $337.90 / $367.90 (launch promo, usually $387.90) / $417.90  https://batteryrescue.sg/battery/agm-ln3/
+- AGM LN4 (80Ah, DIN80L): $394.20 / $414.20 / $444.20 (launch promo, usually $464.20) / $494.20  https://batteryrescue.sg/battery/agm-ln4/
+- AGM LN5 (95Ah, DIN100L): $448.70 / $468.70 / $498.70 (launch promo, usually $518.70) / $548.70  https://batteryrescue.sg/battery/agm-ln5/
 
 ## Common Singapore cars (battery size)
 - Honda Accord (2012-2019): NS60L
@@ -192,14 +192,14 @@ Last updated: 2026-11-06
 - 10 Motoserv Outlets for Car Batteries: https://batteryrescue.sg/outlets/ - Walk in to 10 Motoserv outlets (Mon-Sat 9am-6pm) for a Delkor battery with $20 off: Bukit Batok, Toa Payoh, Serangoon Garden, Upper Thomson and more.
 - Jump-start service Singapore: $50: https://batteryrescue.sg/services/jump-start/ - Jump-start service in Singapore by Battery Rescue SG (Motoserv): $50. $80 on public holidays. 24-hour hotline 8125 9169.
 - Emergency towing Singapore: From $80: https://batteryrescue.sg/services/towing/ - Emergency towing in Singapore by Battery Rescue SG (Motoserv): From $80. King dolly (4 wheels off the ground) from $120. 24-hour hotline 8125 9169.
-- Car Battery Replacement Ang Mo Kio: https://batteryrescue.sg/rescue/ang-mo-kio/ - Car won't start in Ang Mo Kio? We bring a Delkor battery and fit it where your car is. From $169.90 fitted, 24-hour hotline 8125 9169.
-- Car Battery Replacement Hougang: https://batteryrescue.sg/rescue/hougang/ - Car won't start in Hougang? We bring a Delkor battery and fit it where your car is. From $169.90 fitted, 24-hour hotline 8125 9169.
-- Car Battery Replacement Punggol: https://batteryrescue.sg/rescue/punggol/ - Car won't start in Punggol? We bring a Delkor battery and fit it where your car is. From $169.90 fitted, 24-hour hotline 8125 9169.
-- Car Battery Replacement Sembawang: https://batteryrescue.sg/rescue/sembawang/ - Car won't start in Sembawang? We bring a Delkor battery and fit it where your car is. From $169.90 fitted, 24-hour hotline 8125 9169.
-- Car Battery Replacement Sengkang: https://batteryrescue.sg/rescue/sengkang/ - Car won't start in Sengkang? We bring a Delkor battery and fit it where your car is. From $169.90 fitted, 24-hour hotline 8125 9169.
-- Car Battery Replacement Woodlands: https://batteryrescue.sg/rescue/woodlands/ - Car won't start in Woodlands? We bring a Delkor battery and fit it where your car is. From $169.90 fitted, 24-hour hotline 8125 9169.
-- Car Battery Replacement Yio Chu Kang: https://batteryrescue.sg/rescue/yio-chu-kang/ - Car won't start in Yio Chu Kang? We bring a Delkor battery and fit it where your car is. From $169.90 fitted, 24-hour hotline 8125 9169.
-- Car Battery Replacement Yishun: https://batteryrescue.sg/rescue/yishun/ - Car won't start in Yishun? We bring a Delkor battery and fit it where your car is. From $169.90 fitted, 24-hour hotline 8125 9169.
+- Car Battery Replacement Ang Mo Kio: https://batteryrescue.sg/rescue/ang-mo-kio/ - Car won't start in Ang Mo Kio? We bring a Delkor battery and fit it where your car is. From $149.90 (launch promo) fitted, 24-hour hotline 8125 9169.
+- Car Battery Replacement Hougang: https://batteryrescue.sg/rescue/hougang/ - Car won't start in Hougang? We bring a Delkor battery and fit it where your car is. From $149.90 (launch promo) fitted, 24-hour hotline 8125 9169.
+- Car Battery Replacement Punggol: https://batteryrescue.sg/rescue/punggol/ - Car won't start in Punggol? We bring a Delkor battery and fit it where your car is. From $149.90 (launch promo) fitted, 24-hour hotline 8125 9169.
+- Car Battery Replacement Sembawang: https://batteryrescue.sg/rescue/sembawang/ - Car won't start in Sembawang? We bring a Delkor battery and fit it where your car is. From $149.90 (launch promo) fitted, 24-hour hotline 8125 9169.
+- Car Battery Replacement Sengkang: https://batteryrescue.sg/rescue/sengkang/ - Car won't start in Sengkang? We bring a Delkor battery and fit it where your car is. From $149.90 (launch promo) fitted, 24-hour hotline 8125 9169.
+- Car Battery Replacement Woodlands: https://batteryrescue.sg/rescue/woodlands/ - Car won't start in Woodlands? We bring a Delkor battery and fit it where your car is. From $149.90 (launch promo) fitted, 24-hour hotline 8125 9169.
+- Car Battery Replacement Yio Chu Kang: https://batteryrescue.sg/rescue/yio-chu-kang/ - Car won't start in Yio Chu Kang? We bring a Delkor battery and fit it where your car is. From $149.90 (launch promo) fitted, 24-hour hotline 8125 9169.
+- Car Battery Replacement Yishun: https://batteryrescue.sg/rescue/yishun/ - Car won't start in Yishun? We bring a Delkor battery and fit it where your car is. From $149.90 (launch promo) fitted, 24-hour hotline 8125 9169.
 - Car Battery Tips Singapore: https://batteryrescue.sg/articles/ - Short guides: what to do when your car won't start, battery or alternator, EFB vs AGM batteries, and signs your battery is dying.
 - Battery or Alternator? How to Tell: https://batteryrescue.sg/articles/battery-or-alternator/ - A new battery won't fix a bad alternator. The simple voltage check, the warning signs, and what happens if your problem isn't the battery.
 - Why Does a Car Battery Go Flat Overnight?: https://batteryrescue.sg/articles/car-battery-flat-every-morning/ - Car battery dead every morning? Common causes of an overnight drain in Singapore, a simple check, and when to replace the battery or look at the charging side.

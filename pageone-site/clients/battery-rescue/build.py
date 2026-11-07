@@ -6,7 +6,7 @@ Facts: FACTS.md in this folder (Edwin, 24-26 Oct 2026). Prices: Delkor official 
 Fitment: data/sg-chart.csv (Bateriku/Astra 2023 chart, Asian makes) + data/namwah-fit.json (Nam Wah 2024 guide,
 other makes). Reference data only: we sell DELKOR, sizes are matched to the Delkor list; unmatched sizes = enquire.
 Price rules (confirmed): walk-in at Motoserv = list - $20 web code (walk-in only); fitted at your location
-before 10pm incl. Sunday = list + $50; 10pm-9am and public holidays = list + $80. 1-year warranty.
+before 10pm incl. Sunday = list + $30 (launch promo, normally + $50); 10pm-9am and public holidays = list + $80. 1-year warranty.
 Preview: pageonesingapore.com/preview/battery-rescue/ (hidden by the preview .htaccess header, no noindex in pages).
 """
 import csv, html, json, os, re, sys, hashlib, datetime
@@ -51,7 +51,14 @@ NAME = {k: k.replace("AGM-", "AGM ").replace("EFB-LN3", "EFB LN3") for k in P}
 def slug(s): return re.sub(r"[^a-z0-9]+", "-", s.lower()).strip("-")
 def m(x): return f"${x:,.2f}"
 def walk(k): return P[k][1] - 20
-def day(k): return P[k][1] + 50
+PROMO_LBL = "Launch promo: $20 off before 10pm, incl. Sunday"
+def day(k): return P[k][1] + 30   # launch promo (Edwin, 7 Nov 2026): $20 off the usual list + $50, before 10pm incl. Sunday
+def dayw(k): return P[k][1] + 50  # usual before-10pm price, shown struck through
+def md(k): return f"\u27ea{m(dayw(k))}|{m(day(k))}\u27eb"  # promo price token, rendered by promo_html / promo_txt
+PTOK = re.compile("\u27ea([^|\u27eb]+)\\|([^\u27eb]+)\u27eb")
+def promo_html(t): return PTOK.sub(lambda x: f'<span class="pp"><s>{x[1]}</s> {x[2]}</span>', t)
+def promo_txt(t): return PTOK.sub(lambda x: f'{x[2]} (launch promo, usually {x[1]})', t)
+def promo_short(t): return PTOK.sub(lambda x: f'{x[2]} (launch promo)', t)
 def night(k): return P[k][1] + 80
 
 # ---------------- outlets (Motoserv poster; coords approximate, for nearest-first sorting only) ----------------
@@ -206,7 +213,8 @@ def short_title(t):
     for a, b in TFIX.items(): t = t.replace(a, b)
     return t
 def page(path, title, desc, body, ld=None, active="", cr=None, prio="0.6", img_alt="Battery Rescue SG: Delkor car battery replacement in Singapore", lean=False):
-    title = short_title(title)
+    title = short_title(promo_short(title)); desc = promo_short(desc); body = promo_html(body)
+    assert PTOK.search(title + desc + body) is None, path
     assert len(title) <= 65, (path, len(title), title)
     assert path == "/404.html" or 120 <= len(desc) <= 160, (path, len(desc), desc)
     url = BASE + path
@@ -228,7 +236,7 @@ def page(path, title, desc, body, ld=None, active="", cr=None, prio="0.6", img_a
 {"" if path == "/404.html" else f'<meta property="og:url" content="{url}">'}<meta property="og:image" content="{BASE}/og.jpg"><meta property="og:image:width" content="1200"><meta property="og:image:height" content="630"><meta property="og:image:alt" content="{esc(img_alt)}">
 <meta name="twitter:card" content="summary_large_image"><meta name="twitter:image" content="{BASE}/og.jpg">
 <link rel="stylesheet" href="/br.css?v={h8(CSS)}">
-<script type="application/ld+json">{json.dumps({"@context":"https://schema.org","@graph":graph},ensure_ascii=False)}</script>
+<script type="application/ld+json">{promo_txt(json.dumps({"@context":"https://schema.org","@graph":graph},ensure_ascii=False))}</script>
 </head><body{' class="nobar"' if lean else ''}>
 <header class="top"><div class="wrap"><a class="logo" href="/" aria-label="Battery Rescue SG home">{BOLT}<span>Battery<b>Rescue</b>.sg<small>by Motoserv · Delkor batteries</small></span></a>
 <nav class="dnav"><a href="/">Rescue</a><a href="/#compare">Compare prices</a><a href="/prices/">Price list</a><a href="/outlets/">Outlets</a><a href="/delkor/">Why Delkor</a><a href="/more/">More</a></nav>
@@ -266,8 +274,8 @@ DATAJS = "window.BR=" + json.dumps({"domain":DOMAIN,"wa":WA,"hours":"Walk-in "+H
 
 def size_link(k): return f'<a href="/battery/{slug(k)}/">{esc(NAME[k])}</a>'
 def price_rows(keys):
-    return "".join(f'<tr><td class="s">{size_link(k)}</td><td class="num">{m(walk(k))}</td><td class="num">{m(day(k))}</td><td class="num">{m(night(k))}</td></tr>' for k in keys)
-PRICE_HEAD = '<tr><th>Delkor battery</th><th class="num">Walk-in*</th><th class="num">Fitted at you</th><th class="num">Night/PH</th></tr>'
+    return "".join(f'<tr><td class="s">{size_link(k)}</td><td class="num">{m(walk(k))}</td><td class="num">{md((k))}</td><td class="num">{m(night(k))}</td></tr>' for k in keys)
+PRICE_HEAD = '<tr><th>Delkor battery</th><th class="num">Walk-in*</th><th class="num">Fitted at you<br><small class="plbl">Launch promo</small></th><th class="num">Night/PH</th></tr>'
 DISCLAIMER = "If our technician comes to you and finds the problem is not battery-related, an onsite service fee of $50 to $80 applies. Final charges depend on location and service requirements."
 EXTRA = [  # client message via Edwin, 26 Oct 2026
  {"slug":"jump-start","name":"Jump-start service","short":"Jump-start","price":"$50","sub":"$80 on public holidays","from":50,
@@ -282,12 +290,12 @@ def svc_cards(ref):
         out += (f'<div class="tier day" style="margin-top:10px"><div><div class="n"><a href="/services/{e["slug"]}/" style="color:inherit">{esc(e["name"])}</a></div><div class="d">{esc(e["sub"])}</div></div><div class="p">{esc(e["price"])}</div></div>'
                 f'<a class="btn o" style="width:100%;margin-top:6px" href="{wa_url(e["wa"]+" (Website source: batteryrescue.sg)")}" data-ref="{e["slug"]}">{I["wa"]} WhatsApp for {esc(e["short"].lower())}</a>')
     return out + f'<p class="note"><b>Please note:</b> {DISCLAIMER}</p></div>'
-PRICE_NOTE = f'<p class="note">*Walk-in price at any Motoserv outlet with the $20 website code (list price minus $20, {HOURS_WALK}). "Fitted at you" = list price + $50, before 10pm including Sunday. Night/PH = list price + $80, 10pm to 9am and public holidays. Battery, fitting and GST included. Prices checked {CHECKED}.</p>'
+PRICE_NOTE = f'<p class="note">*Walk-in price at any Motoserv outlet with the $20 website code (list price minus $20, {HOURS_WALK}). "Fitted at you" = list price + $30 (launch promo, normally + $50), before 10pm including Sunday. Night/PH = list price + $80, 10pm to 9am and public holidays. Battery, fitting and GST included. Prices checked {CHECKED}.</p>'
 
 # ================= HOME (the app) =================
 TOP = ["NS40ZL","NS60L","85D23L","100D26L","DIN45L","EFB-Q85L"]
 home_faq = [
- ("How much is a car battery replacement in Singapore?", f"At Battery Rescue SG a Delkor NS40ZL (most small Japanese cars) is {m(walk('NS40ZL'))} walk-in at a Motoserv outlet with the website code, {m(day('NS40ZL'))} fitted at your location before 10pm, and {m(night('NS40ZL'))} at night or on public holidays. Prices include the battery, fitting and GST."),
+ ("How much is a car battery replacement in Singapore?", f"At Battery Rescue SG a Delkor NS40ZL (most small Japanese cars) is {m(walk('NS40ZL'))} walk-in at a Motoserv outlet with the website code, {md(('NS40ZL'))} fitted at your location before 10pm, and {m(night('NS40ZL'))} at night or on public holidays. Prices include the battery, fitting and GST."),
  ("Can you come to me if my car won't start?", f"Yes, islandwide, and fastest in the North and North-East ({AREA_TXT}). Call the 24-hour hotline {HOT} or WhatsApp us your location and car model. We bring the right Delkor battery and fit it where your car is."),
  ("Which battery brand do you fit?", 'Delkor, a Korean battery brand made by Clarios Delkor. Every battery comes with a 1-year warranty. <a href="/delkor/">More about Delkor</a>.'),
  ("Where can I walk in?", f'At any of 10 Motoserv outlets, {HOURS_WALK}. Get the $20 code on this page first. <a href="/outlets/">See all outlets</a>.'),
@@ -303,7 +311,7 @@ home = f"""<div id="app">
   <a class="pk grn" href="/#compare" data-ref="hero-compare">{HERO_TICK}<b>My car can start</b><span>See prices &amp; outlets ›</span></a>
  </div>
  <div class="trio"><div>{I["tag"]}<b>Fixed prices</b><span>No kena chop</span></div><div>{I["pin"]}<b>Send location</b><span>Get ETA</span></div><div>{I["shield"]}<b>By Motoserv</b><span>Outlets + warranty</span></div></div>
- <p class="where">📍 <b>Islandwide</b> · Fastest in the North &amp; North-East · From <b>{m(day('NS40ZL'))}</b> fitted <a href="#car-price" data-ref="hero-price">Check my car price ›</a></p>
+ <p class="where">📍 <b>Islandwide</b> · Fastest in the North &amp; North-East · From {md(('NS40ZL'))} fitted <a href="#car-price" data-ref="hero-price">Check my car price ›</a><br><span class="plbl">{PROMO_LBL}</span></p>
  <div id="help">
  <a class="big w wa-dyn wa-loc" href="https://wa.me/{WA}" data-ref="stuck">{I["wa"]}<span class="t">WhatsApp + send my location<small>We get your car's exact spot</small></span></a>
  <a class="big cl" href="tel:{TEL}" data-ref="stuck">{I["phone"]}<span class="t">Call {HOT}<small>Open 24 hours</small></span></a>
@@ -313,7 +321,7 @@ home = f"""<div id="app">
  <div class="card" id="car-price"><label class="l" for="s-in">Optional: your car, for the price</label>
  <div class="field carbox" id="s-car"><input id="s-in" type="search" placeholder="e.g. Honda Vezel, Altis" autocomplete="off" enterkeyhint="search"><button class="x" type="button" aria-label="Clear">×</button><ul class="sug"></ul></div>
  <div class="res" id="s-res" aria-live="polite"></div>
- <p class="note">Fitted at your location: battery price + $50 before 10pm (incl. Sunday), + $80 from 10pm to 9am and on public holidays.</p></div>
+ <p class="note">Fitted at your location: battery price + $30 (launch promo, normally + $50) before 10pm (incl. Sunday), + $80 from 10pm to 9am and on public holidays.</p></div>
  {svc_cards("home")}
 </section>
 <section data-panel="compare" hidden>
@@ -350,13 +358,13 @@ groups = [("Standard batteries (most Japanese and Korean cars)",[k for k in allk
 svc_tbl = '<section class="sec"><h2>Other onsite services</h2><div class="tblw"><table class="tbl"><tr><th>Service</th><th class="num">Price</th><th></th></tr>' + "".join(
     f'<tr><td><a href="/services/{e["slug"]}/">{esc(e["name"])}</a><br><small>{esc(e["sub"])}</small></td><td class="num"><b>{esc(e["price"])}</b></td><td><a href="{wa_url(e["wa"])}" data-ref="prices-{e["slug"]}">WhatsApp</a></td></tr>' for e in EXTRA) + f'</table></div><p class="note"><b>Please note:</b> {DISCLAIMER}</p></section>'
 pbody = f"""<h1 class="h1" style="margin-top:8px">Delkor car battery prices in Singapore</h1>
-<div class="ans"><div class="k">QUICK ANSWER</div>Delkor car batteries cost from {m(walk('NS40ZL'))} (NS40ZL, walk-in with the $20 website code) to {m(night('AGM-LN5'))} (AGM LN5 fitted at night). Fitted at your location adds $50 to the list price before 10pm, or $80 from 10pm to 9am and on public holidays. GST and fitting included, 1-year warranty.</div>
+<div class="ans"><div class="k">QUICK ANSWER</div>Delkor car batteries cost from {m(walk('NS40ZL'))} (NS40ZL, walk-in with the $20 website code) to {m(night('AGM-LN5'))} (AGM LN5 fitted at night). Fitted at your location adds $30 to the list price before 10pm (launch promo, normally $50), or $80 from 10pm to 9am and on public holidays. GST and fitting included, 1-year warranty.</div>
 """ + "".join(f'<section class="sec"><h2>{esc(g)}</h2><div class="tblw"><table class="tbl">{PRICE_HEAD}{price_rows(ks)}</table></div></section>' for g, ks in groups) + PRICE_NOTE + svc_tbl + \
  '<section class="sec"><h2>Next step</h2><ul class="menu"><li><a href="/rescue/">Onsite battery replacement at your location</a></li><li><a href="/walk-in/">Walk-in at a Motoserv outlet with $20 off</a></li><li><a href="/car-battery/">Find the battery for your car brand</a></li><li><a href="/#compare">Use the finder</a></li></ul></section>' + \
  f'<section class="sec"><h2>List prices</h2><p>The Delkor list price is the price at the Motoserv counter without the website code: ' + ", ".join(f"{NAME[k]} {m(P[k][1])}" for k in allk) + ".</p></section>"
 offers_ld = {"@type":"ItemList","name":"Delkor car battery prices","itemListElement":[{"@type":"ListItem","position":i+1,"url":f"{BASE}/battery/{slug(k)}/","name":f"Delkor {NAME[k]}"} for i,k in enumerate(allk)]}
 page("/prices/", "Car Battery Price Singapore: Delkor List | Battery Rescue",
-     f"Car battery prices in Singapore: Delkor walk-in from {m(walk('NS40ZL'))}, fitted at your location +$50, night and PH +$80. 23 sizes, GST included, 1-year warranty.",
+     f"Car battery prices in Singapore: Delkor walk-in from {m(walk('NS40ZL'))}, fitted at you +$30 (launch promo), night and PH +$80. 23 sizes, GST incl., 1-year warranty.",
      pbody, [offers_ld], "Prices", [("Home","/"),("Prices","/prices/")], "0.9")
 
 # ================= OUTLETS =================
@@ -382,9 +390,9 @@ for k, aka, ah, lp, t in PRICES:
     ctable = ("<div class='tblw'><table class='tbl'><tr><th>Car</th><th>Years</th></tr>" + "".join(f"<tr><td>{esc(r[0])} {esc(r[1])}{'<br><small>Replaces '+esc(r[3])+' (same size)</small>' if r[6] else ''}</td><td>{esc(r[2])}</td></tr>" for r in sample) + "</table></div>") if sample else "<p>Call us to check if this size fits your car.</p>"
     nm = NAME[k]
     body = f"""<h1 class="h1" style="margin-top:8px">Delkor {esc(nm)} battery price in Singapore</h1>
-<div class="ans"><div class="k">QUICK ANSWER</div>The Delkor {esc(nm)}{f" ({esc(aka)})" if aka else ""} is a {ah}Ah {esc(t.lower())} battery. Price: {m(walk(k))} walk-in at Motoserv with the $20 web code, {m(day(k))} fitted at your location before 10pm, {m(night(k))} at night or on public holidays. List price {m(lp)}. GST included, 1-year warranty.</div>
+<div class="ans"><div class="k">QUICK ANSWER</div>The Delkor {esc(nm)}{f" ({esc(aka)})" if aka else ""} is a {ah}Ah {esc(t.lower())} battery. Price: {m(walk(k))} walk-in at Motoserv with the $20 web code, {md((k))} fitted at your location before 10pm, {m(night(k))} at night or on public holidays. List price {m(lp)}. GST included, 1-year warranty.</div>
 <div class="tiers"><div class="tier walk"><div><div class="n">Walk-in at Motoserv</div><div class="d">$20 web code · {HOURS_WALK}</div></div><div class="p">{m(walk(k))}<s>{m(lp)}</s></div></div>
-<div class="tier day"><div><div class="n">Fitted at your location</div><div class="d">Before 10pm, incl. Sunday</div></div><div class="p">{m(day(k))}</div></div>
+<div class="tier day"><div><div class="n">Fitted at your location</div><div class="d promo">{PROMO_LBL}</div></div><div class="p">{md((k))}</div></div>
 <div class="tier night"><div><div class="n">Night & public holiday</div><div class="d">10pm to 9am, and PH</div></div><div class="p">{m(night(k))}</div></div></div>
 <section class="sec"><h2>Which cars use the {esc(nm)}?</h2><p>{f"Mostly {esc(popular)}. " if popular else ""}{len(cars)} models in our list match this size{" (first 40 shown)" if len(cars) > 40 else ""}. Always check against your current battery; we confirm before fitting.</p>{ctable}
 <p><a class="big y" href="/#compare">{I["tag"]}<span class="t">Check my exact car</span></a></p></section>"""
@@ -393,14 +401,14 @@ for k, aka, ah, lp, t in PRICES:
             "offers":[{"@type":"Offer","name":"Walk-in at Motoserv with website code","price":f"{walk(k):.2f}","priceCurrency":"SGD","availability":"https://schema.org/InStock","url":f"{BASE}/battery/{slug(k)}/","seller":{"@id":BASE+"/#org"}},
                       {"@type":"Offer","name":"Fitted at your location (before 10pm)","price":f"{day(k):.2f}","priceCurrency":"SGD","availability":"https://schema.org/InStock","url":f"{BASE}/battery/{slug(k)}/","seller":{"@id":BASE+"/#org"}}]}
     page(f"/battery/{slug(k)}/", f"Delkor {nm} Battery Price Singapore: {m(walk(k))} | Battery Rescue SG",
-         f"Delkor {nm} ({ah}Ah) price in Singapore: {m(walk(k))} walk-in, {m(day(k))} fitted at your location, {m(night(k))} night/PH. Which cars use it.",
+         f"Delkor {nm} ({ah}Ah) price in Singapore: {m(walk(k))} walk-in, {md((k))} fitted at your location, {m(night(k))} night/PH. Which cars use it.",
          body, [prod], "Prices", [("Home","/"),("Prices","/prices/"),(f"Delkor {nm}",f"/battery/{slug(k)}/")], "0.7")
 
 # ================= CAR BRAND PAGES =================
 def brand_table(rr):
-    out = "<div class='tblw'><table class='tbl'><tr><th>Model</th><th>Years</th><th>Battery</th><th class='num'>Walk-in*</th><th class='num'>At you</th></tr>"
+    out = "<div class='tblw'><table class='tbl'><tr><th>Model</th><th>Years</th><th>Battery</th><th class='num'>Walk-in*</th><th class='num'>At you<br><small class='plbl'>Launch promo</small></th></tr>"
     for r in rr:
-        if r[4]: out += f"<tr><td>{esc(r[1])}</td><td>{esc(r[2])}</td><td class='s'>{size_link(r[4])}{'<br><small>'+esc(EQN[r[6]])+'</small>' if r[6] else ''}</td><td class='num'>{m(walk(r[4]))}</td><td class='num'>{m(day(r[4]))}</td></tr>"
+        if r[4]: out += f"<tr><td>{esc(r[1])}</td><td>{esc(r[2])}</td><td class='s'>{size_link(r[4])}{'<br><small>'+esc(EQN[r[6]])+'</small>' if r[6] else ''}</td><td class='num'>{m(walk(r[4]))}</td><td class='num'>{md((r[4]))}</td></tr>"
         else: out += f"<tr><td>{esc(r[1])}</td><td>{esc(r[2])}</td><td class='s'>{esc(r[3])}</td><td class='num' colspan='2'><a href='https://wa.me/{WA}?text={html.escape(__import__('urllib.parse').parse.quote('Hi Battery Rescue, price for '+r[0]+' '+r[1]+' ('+r[2]+'), battery '+r[3]+'?'))}'>Ask</a></td></tr>"
     return out + "</table></div>"
 idx_tiles = ""
@@ -411,7 +419,7 @@ for mk in BRAND_PAGES:
     common = sorted(ks.items(), key=lambda x: -x[1])[:3]
     cheapest = min((walk(k) for k in ks), default=None)
     ans = (f"Most {esc(mk)} cars in our list use a Delkor " + ", ".join(f"{NAME[k]}" for k,_ in common) + ". " if common else "") + \
-          (f"Prices start at {m(cheapest)} walk-in at a Motoserv outlet with the $20 website code; fitted at your location is the list price + $50 before 10pm, + $80 at night and on public holidays. GST included." if cheapest else "Call us for the price of your model.")
+          (f"Prices start at {m(cheapest)} walk-in at a Motoserv outlet with the $20 website code; fitted at your location is the list price + $30 (launch promo, normally + $50) before 10pm, + $80 at night and on public holidays. GST included." if cheapest else "Call us for the price of your model.")
     body = f"""<h1 class="h1" style="margin-top:8px">{esc(mk)} car battery: size and price in Singapore</h1>
 <div class="ans"><div class="k">QUICK ANSWER</div>{ans}</div>
 <p><a class="big y" href="/#compare">{I["tag"]}<span class="t">Find my exact {esc(mk)}</span></a></p>
@@ -425,7 +433,7 @@ others = sorted(set(MAKES) - set(BRAND_PAGES))
 brand_faq = [
  ("How do I find the right battery for my car?", f"Open your brand below, find your model and year, and read the Delkor size and price next to it. Or type your car into the finder on our home page. If your car is not listed, call or WhatsApp {HOT} with your model and year."),
  ("Where do these battery sizes come from?", "From the Bateriku/Astra 2023 chart (Asian makes) and the Nam Wah 2024 application guide (other makes), matched to the Delkor sizes we sell. They are reference data, so we confirm the size with you before fitting. We sell Delkor batteries only."),
- ("What does it cost to have the battery fitted?", f"The Delkor list price + $50 at your location before 10pm (including Sunday), or + $80 from 10pm to 9am and on public holidays. Walk in to a Motoserv outlet with our website code ({HOURS_WALK}) and you pay the list price minus $20."),
+ ("What does it cost to have the battery fitted?", f"The Delkor list price + $30 (launch promo, normally + $50) at your location before 10pm (including Sunday), or + $80 from 10pm to 9am and on public holidays. Walk in to a Motoserv outlet with our website code ({HOURS_WALK}) and you pay the list price minus $20."),
 ]
 page("/car-battery/", "Car Battery by Car Brand | Battery Rescue SG", "Find the Delkor battery size and price for your car brand and model: Toyota, Honda, Nissan, Mazda, Mercedes-Benz, BMW and more.",
      f'<h1 class="h1" style="margin-top:8px">Car battery by brand</h1><section class="sec"><p>Pick your car brand to see the Delkor battery that fits each model and year, with three prices: walk-in at a Motoserv outlet with the $20 website code, fitted at your location before 10pm, and the night and public holiday rate. The lists cover {len(BRAND_PAGES)} brands and {len(rows):,} model entries, including the Japanese and Korean cars most common in Singapore. Every battery we fit is a Delkor with a 1-year warranty, and all prices include GST. Start-stop cars are matched to the EFB or AGM size they need. If your car is not listed, or the size shows as an enquiry, call or WhatsApp us on {CALLX} and we will confirm the right battery with you.</p></section>'
@@ -434,15 +442,15 @@ page("/car-battery/", "Car Battery by Car Brand | Battery Rescue SG", "Find the 
 
 # ================= SERVICE + TRUST PAGES =================
 rescue_faq = [
- ("How much does it cost to replace a flat battery at my location?", f"The Delkor battery list price + $50 before 10pm (including Sunday), or + $80 from 10pm to 9am and on public holidays. Example: NS40ZL {m(day('NS40ZL'))} by day, {m(night('NS40ZL'))} at night. Fitting and GST included."),
+ ("How much does it cost to replace a flat battery at my location?", f"The Delkor battery list price + $30 (launch promo, normally + $50) before 10pm (including Sunday), or + $80 from 10pm to 9am and on public holidays. Example: NS40ZL {md(('NS40ZL'))} by day, {m(night('NS40ZL'))} at night. Fitting and GST included."),
  ("Is the hotline open 24 hours?", f"Yes, {HOT} answers 24 hours."),
  ("What should I send on WhatsApp?", "Your car model and year, your location (the button on our home page attaches it), and a photo of the battery label if you can."),
  ("Do you take away the old battery?", "Yes, we take the old battery away when we fit the new one."),
 ]
 page("/rescue/", "Onsite Car Battery Replacement Singapore | 24h Hotline | Battery Rescue SG",
-     f"Car battery flat? We bring a Delkor battery and fit it at your location. Battery price + $50 before 10pm, + $80 night/PH. 24-hour hotline {HOT}.",
+     f"Car battery flat? We bring a Delkor battery and fit it where you are. Battery price + $30 before 10pm (launch promo), + $80 night/PH. 24-hour hotline {HOT}.",
      f"""<h1 class="h1" style="margin-top:8px">Onsite car battery replacement in Singapore</h1>
-<div class="ans"><div class="k">QUICK ANSWER</div>We cover {COVER_TXT}. Call {HOT} (24 hours) or WhatsApp your location. We bring a Delkor battery that fits your car and replace it on the spot. You pay the battery list price + $50 before 10pm, or + $80 from 10pm to 9am and on public holidays. 1-year warranty.</div>
+<div class="ans"><div class="k">QUICK ANSWER</div>We cover {COVER_TXT}. Call {HOT} (24 hours) or WhatsApp your location. We bring a Delkor battery that fits your car and replace it on the spot. You pay the battery list price + $30 (launch promo, normally + $50) before 10pm, or + $80 from 10pm to 9am and on public holidays. 1-year warranty.</div>
 <a class="big c" href="tel:{TEL}" data-ref="rescue">{I["phone"]}<span class="t">Call {HOT}</span></a><a class="big w wa-dyn wa-loc" href="https://wa.me/{WA}" data-ref="rescue">{I["wa"]}<span class="t">WhatsApp + send my location</span></a>
 <section class="sec"><h2>Where we come to</h2><div class="grid">{"".join(f'<a class="tile" href="/rescue/{slug(a)}/"><span>{esc(a)}<small>Battery rescue</small></span></a>' for a,_,_ in AREAS)}</div><p class="note">These are our fastest response areas. We come to you anywhere in Singapore, or you can walk in to any of the 10 <a href="/outlets/">Motoserv outlets</a>.</p></section>
 <section class="sec"><h2>Jump-start and towing</h2>{svc_cards("rescue")}</section>
@@ -464,7 +472,7 @@ for e in EXTRA:
 <a class="big w" href="{wa_url(e['wa']+' (Website source: batteryrescue.sg/services/'+e['slug']+'/)')}" data-ref="{e['slug']}">{I["wa"]}<span class="t">WhatsApp for {esc(e['short'].lower())}</span></a>
 <a class="big c" href="tel:{TEL}" data-ref="{e['slug']}">{I["phone"]}<span class="t">Call {HOT}</span></a>
 <div class="enq" style="margin-top:14px"><b>Please note:</b> {DISCLAIMER}</div>
-<section class="sec"><h2>Battery needs replacing?</h2><p>Our main service is onsite car battery replacement with a Delkor battery: from {m(day('NS40ZL'))} fitted where your car is. <a href="/rescue/">Onsite battery replacement</a> · <a href="/#compare">Find my battery and price</a></p></section>
+<section class="sec"><h2>Battery needs replacing?</h2><p>Our main service is onsite car battery replacement with a Delkor battery: from {md(('NS40ZL'))} fitted where your car is. <a href="/rescue/">Onsite battery replacement</a> · <a href="/#compare">Find my battery and price</a></p></section>
 <section class="sec"><h2>Questions</h2>{faq_html(jfaq)}</section>""",
          [faq_ld(jfaq), {"@type":"Service","name":e["name"],"provider":{"@id":BASE+"/#org"},"areaServed":[{"@type":"Country","name":"Singapore"}]+[{"@type":"Place","name":a+", Singapore"} for a,_,_ in AREAS],
            "offers":{"@type":"Offer","priceCurrency":"SGD","price":f"{e['from']:.2f}","description":e["sub"]}}],
@@ -472,12 +480,12 @@ for e in EXTRA:
 for a, la, lo in AREAS:
     near = sorted(OUTLETS, key=lambda o: dist((la,lo),(o[3],o[4])))[:2]
     afaq = [(f"How fast can you reach me in {a}?", f"Call {HOT} and tell us where your car is; we give you an arrival time on the call."),
-            (f"How much is a car battery replacement in {a}?", f"Fitted where your car is in {a}: the Delkor list price + $50 before 10pm (incl. Sunday), + $80 from 10pm to 9am and on public holidays. Example: NS40ZL {m(day('NS40ZL'))}, NS60L {m(day('NS60L'))}. GST included."),
+            (f"How much is a car battery replacement in {a}?", f"Fitted where your car is in {a}: the Delkor list price + $30 (launch promo, normally + $50) before 10pm (incl. Sunday), + $80 from 10pm to 9am and on public holidays. Example: NS40ZL {md(('NS40ZL'))}, NS60L {md(('NS60L'))}. GST included."),
             (f"Is there a Motoserv outlet near {a}?", "The nearest are " + " and ".join(f"Motoserv @ {o[0]} ({o[2]}, about {dist((la,lo),(o[3],o[4])):.0f} km)" for o in near) + f". Walk in {HOURS_WALK} for $20 off with our code.")]
     page(f"/rescue/{slug(a)}/", f"Car Battery Replacement {a}: We Come to You | Battery Rescue SG",
-         f"Car won't start in {a}? We bring a Delkor battery and fit it where your car is. From {m(day('NS40ZL'))} fitted, 24-hour hotline {HOT}.",
+         f"Car won't start in {a}? We bring a Delkor battery and fit it where your car is. From {md(('NS40ZL'))} fitted, 24-hour hotline {HOT}.",
          f"""<h1 class="h1" style="margin-top:8px">Car battery replacement in {esc(a)}</h1>
-<div class="ans"><div class="k">QUICK ANSWER</div>Battery flat in {esc(a)}? Call {HOT} (24 hours) or WhatsApp your location. We bring a Delkor battery and fit it where your car is: from {m(day('NS40ZL'))} before 10pm, {m(night('NS40ZL'))} at night or on public holidays (NS40ZL), GST included, 1-year warranty.</div>
+<div class="ans"><div class="k">QUICK ANSWER</div>Battery flat in {esc(a)}? Call {HOT} (24 hours) or WhatsApp your location. We bring a Delkor battery and fit it where your car is: from {md(('NS40ZL'))} before 10pm, {m(night('NS40ZL'))} at night or on public holidays (NS40ZL), GST included, 1-year warranty.</div>
 <a class="big c" href="tel:{TEL}" data-ref="{slug(a)}">{I["phone"]}<span class="t">Call {HOT}</span></a><a class="big w wa-dyn wa-loc" href="https://wa.me/{WA}" data-ref="{slug(a)}">{I["wa"]}<span class="t">WhatsApp + send my location</span></a>
 <section class="sec"><h2>Prices in {esc(a)}</h2><div class="tblw"><table class="tbl">{PRICE_HEAD}{price_rows(TOP)}</table></div>{PRICE_NOTE}<p><a href="/#compare">Find the price for your exact car →</a></p></section>
 <section class="sec"><h2>Questions from {esc(a)} drivers</h2>{faq_html(afaq)}</section>
@@ -523,7 +531,7 @@ ARTS = [
 <h2>1. Listen when you turn the key or press start</h2><ul><li><b>Rapid clicking, or nothing at all:</b> almost always a weak or flat battery.</li><li><b>Slow, heavy cranking:</b> the battery is weak; it may start once and fail again.</li><li><b>Normal cranking but no start:</b> probably not the battery (fuel, ignition or a sensor). Tell us before we come down.</li></ul>
 <h2>2. Stay safe</h2><p>If you are on a road, switch on the hazard lights and wait in a safe place. Don't try to jump-start a battery that is swollen, leaking or smells of rotten eggs.</p>
 <h2>3. Get help</h2><p>Call <a href="tel:{TEL}" data-ref="art">{HOT}</a> (24 hours) or WhatsApp your location from our <a href="/">home page</a>. Tell us your car model so we bring the right Delkor battery.</p>
-<h2>What does it cost?</h2><p>The battery list price + $50 before 10pm, + $80 from 10pm to 9am and on public holidays. A Delkor NS40ZL, which fits many small Japanese cars, is {m(day('NS40ZL'))} by day. See <a href="/prices/">all prices</a>.</p>"""),
+<h2>What does it cost?</h2><p>The battery list price + $30 (launch promo, normally + $50) before 10pm, + $80 from 10pm to 9am and on public holidays. A Delkor NS40ZL, which fits many small Japanese cars, is {md(('NS40ZL'))} by day. See <a href="/prices/">all prices</a>.</p>"""),
  ("efb-vs-agm-vs-standard-battery", "EFB vs AGM vs standard car battery: which does your car need?",
   "Start-stop cars need EFB or AGM batteries. How to tell which type your car uses, and Delkor prices for each in Singapore.",
   f"""<div class="ans"><div class="k">QUICK ANSWER</div>If your car has start-stop (the engine switches off at traffic lights), it needs the same type it came with: EFB or AGM. Cars without start-stop use a standard battery. Fitting a standard battery to a start-stop car shortens its life and can upset the car's charging system.</div>
@@ -553,7 +561,7 @@ ARTS = [
 <h2>How to tell yours is near the end</h2><p>You don't need to know its age. A slow crank on the first start of the day, dim headlights at idle, or start-stop that stops working are the usual hints. Read our guide to the <a href="/articles/signs-car-battery-is-dying/">6 signs your car battery is dying</a>. If the car keeps going flat even after a new battery, the problem may be the charging side: see <a href="/articles/battery-or-alternator/">battery or alternator</a>.</p>
 <h2>Ways to get more life from it</h2><ul><li>Take the car for a longer drive from time to time, so the alternator can recharge the battery.</li><li>Switch off lights and accessories before you turn the engine off.</li><li>Keep the terminals clean and tight.</li><li>If your car has start-stop, replace like with like: <a href="/articles/efb-vs-agm-vs-standard-battery/">EFB, AGM or standard</a>.</li></ul>
 <h2>Replacing it before it fails</h2><p>Replacing on your own schedule is cheaper and calmer than a breakdown. Walk in to any <a href="/outlets/">Motoserv outlet</a> ({HOURS_WALK}) with our web code for $20 off the Delkor list price. Example: a Delkor <a href="/battery/ns40zl/">NS40ZL</a> is {m(walk('NS40ZL'))} walk-in, against a list price of {m(P['NS40ZL'][1])}.</p>
-<h2>Already stuck?</h2><p>We fit the battery at your location: the list price + $50 before 10pm, or + $80 from 10pm to 9am and on public holidays. The same NS40ZL is {m(day('NS40ZL'))} by day and {m(night('NS40ZL'))} at night. Call <a href="tel:{TEL}" data-ref="art">{HOT}</a> (24 hours) or see the <a href="/rescue/">rescue areas</a> and <a href="/prices/">all prices</a>. Not sure of your size? Use the <a href="/#compare">finder</a>.</p>
+<h2>Already stuck?</h2><p>We fit the battery at your location: the list price + $30 (launch promo, normally + $50) before 10pm, or + $80 from 10pm to 9am and on public holidays. The same NS40ZL is {md(('NS40ZL'))} by day and {m(night('NS40ZL'))} at night. Call <a href="tel:{TEL}" data-ref="art">{HOT}</a> (24 hours) or see the <a href="/rescue/">rescue areas</a> and <a href="/prices/">all prices</a>. Not sure of your size? Use the <a href="/#compare">finder</a>.</p>
 <div class="enq"><b>Please note:</b> {DISCLAIMER}</div>"""),
 
  ("car-battery-flat-every-morning", "Why does my car battery go flat overnight? Causes and what to do",
@@ -565,7 +573,7 @@ ARTS = [
 <h2>3. The alternator is not charging</h2><p>The alternator recharges the battery while the engine runs. If it fails, the battery slowly runs down until the car won't start. A battery warning light on while driving, or a car that starts after a jump-start but dies again, points here. Read <a href="/articles/battery-or-alternator/">battery or alternator</a> for the simple voltage check.</p>
 <h2>4. The car is used for short trips only</h2><p>Starting the engine takes a lot of power, and a very short drive may not put it all back. Over weeks the battery can end up under-charged. A longer drive now and then helps. See <a href="/articles/how-long-does-a-car-battery-last-singapore/">how long a car battery lasts in Singapore</a>.</p>
 <h2>What to do this morning</h2><ol><li>Check that no lights are on and every door and the boot are shut.</li><li>If the car won't start, don't keep cranking: see <a href="/articles/car-wont-start-what-to-do/">what to do when your car won't start</a>.</li><li>Get it started with a <a href="/services/jump-start/">jump-start</a> ($50), or have a Delkor battery fitted where you are.</li><li>If it goes flat again within days, ask a workshop to test the charging and look for a drain, as a new battery will not fix those.</li></ol>
-<h2>If the battery needs replacing</h2><p>Walk in to any <a href="/outlets/">Motoserv outlet</a> ({HOURS_WALK}) with our web code: the Delkor list price minus $20. Example: a Delkor <a href="/battery/ns40zl/">NS40ZL</a> is {m(walk('NS40ZL'))} walk-in. We can also fit it at your location: the list price + $50 before 10pm, or + $80 from 10pm to 9am and on public holidays ({m(day('NS40ZL'))} and {m(night('NS40ZL'))} for the same NS40ZL). Call <a href="tel:{TEL}" data-ref="art">{HOT}</a> (24 hours) or find your size in the <a href="/#compare">finder</a>. Every Delkor has a 1-year warranty.</p>
+<h2>If the battery needs replacing</h2><p>Walk in to any <a href="/outlets/">Motoserv outlet</a> ({HOURS_WALK}) with our web code: the Delkor list price minus $20. Example: a Delkor <a href="/battery/ns40zl/">NS40ZL</a> is {m(walk('NS40ZL'))} walk-in. We can also fit it at your location: the list price + $30 (launch promo, normally + $50) before 10pm, or + $80 from 10pm to 9am and on public holidays ({md(('NS40ZL'))} and {m(night('NS40ZL'))} for the same NS40ZL). Call <a href="tel:{TEL}" data-ref="art">{HOT}</a> (24 hours) or find your size in the <a href="/#compare">finder</a>. Every Delkor has a 1-year warranty.</p>
 <div class="enq"><b>Please note:</b> {DISCLAIMER}</div>"""),
 ] 
 ART_DATES = {"car-wont-start-what-to-do":"2026-10-26","efb-vs-agm-vs-standard-battery":"2026-10-26","signs-car-battery-is-dying":"2026-10-26","battery-or-alternator":"2026-10-27","how-long-does-a-car-battery-last-singapore":"2026-10-30","car-battery-flat-every-morning":"2026-11-02"}
@@ -580,12 +588,12 @@ def cars_table(picks, note=""):
     body = ""
     for pk in picks:
         r = find_row(*pk[:3]); k = r[4]; label = pk[3] if len(pk) > 3 else f"{r[0]} {r[1]}"
-        body += f'<tr><td class="s">{esc(label)}</td><td>{esc(r[2])}</td><td>{size_link(k)}</td><td class="num">{m(walk(k))}</td><td class="num">{m(day(k))}</td></tr>'
-    return ('<div class="tblw"><table class="tbl"><tr><th>Car</th><th>Years</th><th>Delkor size</th><th class="num">Walk-in*</th><th class="num">Fitted at you</th></tr>' + body + '</table></div>'
-            f'<p class="note">*Walk-in = list price minus $20 with the website code, at a Motoserv outlet ({HOURS_WALK}). Fitted at you = list price + $50 before 10pm including Sunday; + $80 from 10pm to 9am and on public holidays. GST included, checked {CHECKED}. {note}{SRC_NOTE}</p>')
+        body += f'<tr><td class="s">{esc(label)}</td><td>{esc(r[2])}</td><td>{size_link(k)}</td><td class="num">{m(walk(k))}</td><td class="num">{md((k))}</td></tr>'
+    return ('<div class="tblw"><table class="tbl"><tr><th>Car</th><th>Years</th><th>Delkor size</th><th class="num">Walk-in*</th><th class="num">Fitted at you<br><small class="plbl">Launch promo</small></th></tr>' + body + '</table></div>'
+            f'<p class="note">*Walk-in = list price minus $20 with the website code, at a Motoserv outlet ({HOURS_WALK}). Fitted at you = list price + $30 (launch promo, normally + $50) before 10pm including Sunday; + $80 from 10pm to 9am and on public holidays. GST included, checked {CHECKED}. {note}{SRC_NOTE}</p>')
 def type_table(keys):
-    return ('<div class="tblw"><table class="tbl"><tr><th>Delkor battery</th><th>Type</th><th class="num">List price</th><th class="num">Walk-in*</th><th class="num">Fitted at you</th></tr>' +
-            "".join(f'<tr><td class="s">{size_link(k)}</td><td>{esc(TYPE[k])}</td><td class="num">{m(P[k][1])}</td><td class="num">{m(walk(k))}</td><td class="num">{m(day(k))}</td></tr>' for k in keys) + '</table></div>')
+    return ('<div class="tblw"><table class="tbl"><tr><th>Delkor battery</th><th>Type</th><th class="num">List price</th><th class="num">Walk-in*</th><th class="num">Fitted at you<br><small class="plbl">Launch promo</small></th></tr>' +
+            "".join(f'<tr><td class="s">{size_link(k)}</td><td>{esc(TYPE[k])}</td><td class="num">{m(P[k][1])}</td><td class="num">{m(walk(k))}</td><td class="num">{md((k))}</td></tr>' for k in keys) + '</table></div>')
 def plain_table(head, rws):
     return '<div class="tblw"><table class="tbl"><tr>' + "".join(f"<th>{h}</th>" for h in head) + "</tr>" + "".join("<tr>" + "".join(f'<td class="s">{c}</td>' if i == 0 else f"<td>{c}</td>" for i, c in enumerate(r)) + "</tr>" for r in rws) + "</table></div>"
 def fig(src, alt, w, h, cap):
@@ -605,14 +613,14 @@ top3 = sorted(size_count.items(), key=lambda kv: -kv[1])[:3]
 EFB_K = [k for k in allk if TYPE[k] == "EFB start-stop"]; AGM_K = [k for k in allk if TYPE[k] == "AGM"]
 efb_lo, efb_hi = min(P[k][1] for k in EFB_K), max(P[k][1] for k in EFB_K)
 agm_lo, agm_hi = min(P[k][1] for k in AGM_K), max(P[k][1] for k in AGM_K)
-DAY_NIGHT = f"the Delkor list price + $50 before 10pm (including Sunday), or + $80 from 10pm to 9am and on public holidays"
+DAY_NIGHT = f"the Delkor list price + $30 (launch promo, normally + $50) before 10pm (including Sunday), or + $80 from 10pm to 9am and on public holidays"
 CALLX = f'<a href="tel:{TEL}" data-ref="art">{HOT}</a>'
 
 X = {}  # slug -> dict(title, desc, ans, after, faq, drop_ans)
 
 X["car-wont-start-what-to-do"] = dict(
  title="Car Won't Start? What to Do in 5 Minutes | Battery Rescue SG",
- ans=f"Rapid clicking or silence when you start the car almost always means a flat or weak battery. Stay safe, then call our 24-hour hotline {HOT}. We fit a Delkor battery where you are for the list price + $50 before 10pm, or + $80 from 10pm to 9am and on public holidays.",
+ ans=f"Rapid clicking or silence when you start the car almost always means a flat or weak battery. Stay safe, then call our 24-hour hotline {HOT}. We fit a Delkor battery where you are for the list price + $30 (launch promo, normally + $50) before 10pm, or + $80 from 10pm to 9am and on public holidays.",
  after=f"""<h2>Battery or something else? A quick guide</h2>
 {plain_table(["What you notice","Most likely cause","What to do"],[
  ["Rapid clicking, or no sound at all","Weak or flat battery","Call us; a battery fitted where you are, or a jump-start, usually fixes it"],
@@ -624,7 +632,7 @@ X["car-wont-start-what-to-do"] = dict(
 {cars_table([("Toyota","Wish","2011-2015"),("Toyota","Sienta","2003-now"),("Toyota","Alphard","2013-2016"),("Toyota","Vellfire","2008-2018"),("Toyota","Harrier (XU30)","2003-now"),("Honda","Odyssey","2013-2017"),("Honda","Stream","2006-2014"),("Nissan","Serena Comfort/highway Star","2005-2010"),("Mitsubishi","Outlander","2001-now"),("Subaru","Forester","1997-now"),("Subaru","XV","2012-now")])}
 <div class="enq"><b>Please note:</b> {DISCLAIMER}</div>""",
  faq=[
-  ("How much does it cost to replace a flat battery where I am?", f"The Delkor battery list price + $50 before 10pm (including Sunday), or + $80 from 10pm to 9am and on public holidays. Example: a Delkor NS40ZL is {m(day(NS40))} by day and {m(night(NS40))} at night. Fitting and GST are included."),
+  ("How much does it cost to replace a flat battery where I am?", f"The Delkor battery list price + $30 (launch promo, normally + $50) before 10pm (including Sunday), or + $80 from 10pm to 9am and on public holidays. Example: a Delkor NS40ZL is {md((NS40))} by day and {m(night(NS40))} at night. Fitting and GST are included."),
   ("Can you just jump-start my car instead?", "Yes. Our jump-start service is $50, or $80 on public holidays. If the battery is worn out, it may fail again, so we can fit a new Delkor battery on the spot."),
   ("Which areas do you come to?", f"Our onsite rescue covers {COVER_TXT}. You can also walk in to any of the 10 Motoserv outlets ({HOURS_WALK}), or ask us to arrange a tow."),
   ("What if the problem is not the battery?", f"{DISCLAIMER} We can arrange a tow from $80 (king dolly from $120)."),
@@ -636,7 +644,7 @@ X["efb-vs-agm-vs-standard-battery"] = dict(
  ans=f"A start-stop car (the engine switches off at traffic lights) needs the battery type it came with: EFB or AGM. A car without start-stop uses a standard battery. Delkor EFB lists from {m(efb_lo)} to {m(efb_hi)} and AGM from {m(agm_lo)} to {m(agm_hi)}; the smallest standard is {m(P[NS40][1])}.",
  after=f"""<h2>Delkor prices by type</h2><p>Every battery we fit is Delkor. Here are the standard sizes our customers ask for most, then every EFB and AGM size on the Delkor list.</p>
 {type_table([NS40, NS60, D85] + EFB_K + AGM_K)}
-<p class="note">*Walk-in = list price minus $20 with the website code, at a Motoserv outlet ({HOURS_WALK}). Fitted at you = list price + $50 before 10pm including Sunday; + $80 from 10pm to 9am and on public holidays. GST included, checked {CHECKED}.</p>
+<p class="note">*Walk-in = list price minus $20 with the website code, at a Motoserv outlet ({HOURS_WALK}). Fitted at you = list price + $30 (launch promo, normally + $50) before 10pm including Sunday; + $80 from 10pm to 9am and on public holidays. GST included, checked {CHECKED}.</p>
 <h2>Cars that use EFB or AGM, from our fitment data</h2><p>These cars are listed in our fitment data with an EFB or AGM size. If your car is not here, use the <a href="/#compare">finder</a>.</p>
 {cars_table([("Mazda","3 HATCHBACK SEDAN (WITH i-STOP)","2015-now","Mazda 3 (with i-STOP)"),("Mazda","CX-5 WITH i-STOP (PETROL)","2013-now","Mazda CX-5 (with i-STOP, petrol)"),("Mazda","6 WITH i-STOP (PETROL)","2012-now","Mazda 6 (with i-STOP, petrol)"),("Honda","Odyssey","2018-now"),("Honda","Accord","2020-now"),("Honda","Civic FK8 Type R","2017-2019"),("Nissan","Almera Vlt/vlp/vl (N18)","2019-now","Nissan Almera (N18)"),("Nissan","Juke (F15)","2010-2020"),("Toyota","Alphard 3.5 (start Stop)","2018-now","Toyota Alphard 3.5 (start-stop)"),("Toyota","Camry","2017-2020"),("Toyota","Hilux N80","2016-now"),("Lexus","NX 200T (AGZ10)","2014-2022","Lexus NX 200T"),("Mazda","CX-9 (tc)","2016-now","Mazda CX-9 (tc)")],
    "Where the chart gives a size we do not list (for example DIN80L or DIN100L), the finder shows the Delkor AGM of the same case size. ")}
@@ -645,8 +653,8 @@ X["efb-vs-agm-vs-standard-battery"] = dict(
   ("What is the difference between EFB, AGM and a standard car battery?", "A standard (flooded, maintenance-free) battery suits most Japanese and Korean cars without start-stop. EFB (Enhanced Flooded Battery) is used in many start-stop Japanese cars and some European cars. AGM (Absorbent Glass Mat) is used in most European start-stop cars and many premium models."),
   ("Can I fit a standard battery in a start-stop car?", "We do not recommend it. A standard battery in a start-stop car shortens its life and can upset the car's charging system. Replace like with like: EFB with EFB, AGM with AGM."),
   ("How do I check which type my car has?", "Look at the label on your current battery, which says EFB or AGM, or type your car into our finder. If the label is unreadable, WhatsApp us your car model and year."),
-  ("How much do Delkor EFB and AGM batteries cost?", f"On the Delkor list, EFB batteries run from {m(efb_lo)} to {m(efb_hi)} and AGM from {m(agm_lo)} to {m(agm_hi)}. Walk in to a Motoserv outlet with our website code for $20 off, or have it fitted at your location for the list price + $50 before 10pm."),
-  ("Do you fit these at my location?", f"Yes, anywhere in Singapore (fastest in {AREA_TXT}), for the list price + $50 before 10pm including Sunday, or + $80 from 10pm to 9am and on public holidays. Every Delkor has a 1-year warranty."),
+  ("How much do Delkor EFB and AGM batteries cost?", f"On the Delkor list, EFB batteries run from {m(efb_lo)} to {m(efb_hi)} and AGM from {m(agm_lo)} to {m(agm_hi)}. Walk in to a Motoserv outlet with our website code for $20 off, or have it fitted at your location for the list price + $30 (launch promo, normally + $50) before 10pm."),
+  ("Do you fit these at my location?", f"Yes, anywhere in Singapore (fastest in {AREA_TXT}), for the list price + $30 (launch promo, normally + $50) before 10pm including Sunday, or + $80 from 10pm to 9am and on public holidays. Every Delkor has a 1-year warranty."),
  ])
 
 X["signs-car-battery-is-dying"] = dict(
@@ -660,12 +668,12 @@ X["signs-car-battery-is-dying"] = dict(
  ["Start-stop stops working","Many cars disable start-stop when the battery is weak","Replace like with like: <a href='/articles/efb-vs-agm-vs-standard-battery/'>EFB or AGM</a>"],
  ["White or green crust on the terminals","Corrosion at the terminals","Have the terminals cleaned and the battery checked"],
  ["Swollen or leaking case","The battery is damaged","Replace it now and do not jump-start it"]])}
-<h2>Replace on your terms, not at midnight</h2><p>The same battery costs different amounts depending on when and where you buy it. Take the Delkor NS60L, which fits many Japanese sedans: {m(walk(NS60))} as a walk-in with the website code, {m(day(NS60))} fitted at your location before 10pm, and {m(night(NS60))} from 10pm to 9am or on a public holiday. Replacing at the first signs lets you choose the cheapest option. Walk-in outlets are open {HOURS_WALK}; the full list is on the <a href="/outlets/">outlets page</a>.</p>
+<h2>Replace on your terms, not at midnight</h2><p>The same battery costs different amounts depending on when and where you buy it. Take the Delkor NS60L, which fits many Japanese sedans: {m(walk(NS60))} as a walk-in with the website code, {md((NS60))} fitted at your location before 10pm, and {m(night(NS60))} from 10pm to 9am or on a public holiday. Replacing at the first signs lets you choose the cheapest option. Walk-in outlets are open {HOURS_WALK}; the full list is on the <a href="/outlets/">outlets page</a>.</p>
 <h2>Sedans and hybrids: Delkor sizes from our fitment data</h2>
 {cars_table([("Toyota","Altis","2006-2018"),("Toyota","Altis","2018-now"),("Toyota","Camry","2010-2017"),("Toyota","Prius","2011-2021"),("Honda","Accord","2012-2019"),("Honda","Civic","2016-now"),("Honda","Insight","2009-2014"),("Mazda","3","2010-2013"),("Nissan","Sylphy","2012-now"),("Nissan","Teana 2.0 ,2.5","2003-now","Nissan Teana (2.0, 2.5)"),("Lexus","Lexus ES 300H (AXZH10)","2018-now","Lexus ES 300H"),("Mitsubishi","Lancer","1992-2016")])}""",
  faq=[
   ("How do I know my car battery is dying?", "Watch for a slow crank on the first start of the day, dim headlights at idle, a battery or charging warning light, start-stop that stops working, white or green crust on the terminals, and a swollen or leaking case."),
-  ("How much does a replacement cost?", f"It depends on the size. A Delkor NS40ZL is {m(walk(NS40))} as a walk-in with our website code and {m(day(NS40))} fitted at your location before 10pm. A Delkor NS60L is {m(walk(NS60))} walk-in and {m(day(NS60))} fitted. See the full <a href=\"/prices/\">price list</a>."),
+  ("How much does a replacement cost?", f"It depends on the size. A Delkor NS40ZL is {m(walk(NS40))} as a walk-in with our website code and {md((NS40))} fitted at your location before 10pm. A Delkor NS60L is {m(walk(NS60))} walk-in and {md((NS60))} fitted. See the full <a href=\"/prices/\">price list</a>."),
   ("Is it the battery or the alternator?", "A new or freshly charged battery that keeps going flat, or a battery light that stays on while you drive, points to the alternator. Our <a href=\"/articles/battery-or-alternator/\">battery or alternator guide</a> has a simple voltage check."),
   ("Is there a warranty on the new battery?", "Yes. Every battery we fit is a Delkor with a 1-year warranty."),
   ("Where can I walk in?", f"At any of the 10 Motoserv outlets, {HOURS_WALK}. Show the website code to take $20 off the Delkor list price."),
@@ -702,7 +710,7 @@ X["how-long-does-a-car-battery-last-singapore"] = dict(
  ans=f"A car battery typically lasts a few years, but there is no fixed number, and Singapore's heat, short trips and a car full of electronics can wear one out sooner. Watch for slow starts and replace it before it strands you. Every Delkor we fit has a 1-year warranty.",
  after=f"""<h2>What a replacement costs, by size</h2><p>Replacing on your own schedule is the cheapest route. Of the {n_sg:,} Japanese, Korean and other Asian model entries in our Bateriku/Astra-based fitment data that map to a Delkor size, the three sizes used most are {top3[0][0]} ({top3[0][1]} entries), {top3[1][0]} ({top3[1][1]}) and {top3[2][0]} ({top3[2][1]}). Their prices:</p>
 {type_table([k for k, _ in top3])}
-<p class="note">*Walk-in = list price minus $20 with the website code, at a Motoserv outlet ({HOURS_WALK}). Fitted at you = list price + $50 before 10pm including Sunday; + $80 from 10pm to 9am and on public holidays. GST included, checked {CHECKED}.</p>
+<p class="note">*Walk-in = list price minus $20 with the website code, at a Motoserv outlet ({HOURS_WALK}). Fitted at you = list price + $30 (launch promo, normally + $50) before 10pm including Sunday; + $80 from 10pm to 9am and on public holidays. GST included, checked {CHECKED}.</p>
 <h2>Small cars: Delkor sizes from our fitment data</h2>
 {cars_table([("Toyota","Vios","2019-now"),("Toyota","Yaris","2007-now"),("Toyota","Altis","2018-now"),("Honda","Jazz","2015-now"),("Honda","City","2004-2019"),("Honda","Freed","2016-now"),("Honda","HR-V / Vezel","2015-2021"),("Nissan","Almera (N17)","2011-now"),("Suzuki","Swift","2017-2020"),("Kia","Picanto","2004-2016"),("Hyundai","i10","2008-2013")])}
 <h2>A simple routine</h2><p>You do not need to know the battery's age. Use the signs in <a href="/articles/signs-car-battery-is-dying/">6 signs your car battery is dying</a> as your guide, and if the car is not starting at all, see <a href="/articles/car-wont-start-what-to-do/">what to do in the next 5 minutes</a>.</p>""",
@@ -711,7 +719,7 @@ X["how-long-does-a-car-battery-last-singapore"] = dict(
   ("Why do batteries wear out faster in Singapore?", "Constant high temperatures speed up wear inside a battery, and repeated short trips can leave it under-charged. A car full of electronics adds to the load."),
   ("How do I know when to replace mine?", "A slow crank on the first start of the day, dim headlights at idle or start-stop that stops working are the usual hints. See our guide to the 6 signs a battery is dying."),
   ("What warranty do you give?", "Every Delkor battery we fit has a 1-year warranty."),
-  ("How much is a replacement?", f"A Delkor NS40ZL is {m(walk(NS40))} as a walk-in with our website code, against a list price of {m(P[NS40][1])}. Fitted at your location it is {m(day(NS40))} before 10pm and {m(night(NS40))} from 10pm to 9am or on public holidays."),
+  ("How much is a replacement?", f"A Delkor NS40ZL is {m(walk(NS40))} as a walk-in with our website code, against a list price of {m(P[NS40][1])}. Fitted at your location it is {md((NS40))} before 10pm and {m(night(NS40))} from 10pm to 9am or on public holidays."),
  ])
 
 X["car-battery-flat-every-morning"] = dict(
@@ -753,7 +761,7 @@ for s_, t, d, b in ARTS:
 art_faq = [
  ("What do these guides cover?", "Six short guides on car batteries in Singapore: what to do when your car won't start, how to tell a battery from an alternator problem, why a battery goes flat overnight, the signs a battery is dying, how long a battery lasts, and EFB vs AGM vs standard batteries."),
  ("Where can I find the battery size and price for my car?", f"Use the finder on our home page, or open your brand under <a href=\"/car-battery/\">car battery by brand</a>. Every battery we fit is a Delkor, with a 1-year warranty. Prices include GST and were checked {CHECKED}."),
- ("What if I am stuck right now?", f"Call our 24-hour hotline {HOT} or WhatsApp your location. We fit a Delkor battery at your location anywhere in Singapore (fastest in {AREA_TXT}) for the list price + $50 before 10pm, or + $80 from 10pm to 9am and on public holidays."),
+ ("What if I am stuck right now?", f"Call our 24-hour hotline {HOT} or WhatsApp your location. We fit a Delkor battery at your location anywhere in Singapore (fastest in {AREA_TXT}) for the list price + $30 (launch promo, normally + $50) before 10pm, or + $80 from 10pm to 9am and on public holidays."),
 ]
 page("/articles/", "Car Battery Tips Singapore | Battery Rescue SG", "Short guides: what to do when your car won't start, battery or alternator, EFB vs AGM batteries, and signs your battery is dying.",
      f'<h1 class="h1" style="margin-top:8px">Car battery guides</h1><section class="sec"><p>These guides are written for Singapore drivers who want a straight answer about their car battery. They cover what to do when the car will not start, how to tell a flat battery from a charging fault, why a battery can go flat overnight, how long a battery lasts, and when you need an EFB or AGM battery instead of a standard one. Each guide shows the Delkor battery sizes and prices that apply to common cars, taken from the same fitment data and price list as our finder. Battery Rescue SG is the car battery service of Motoserv, and every battery we fit is a Delkor with a 1-year warranty. If you are stuck now, skip the reading and call {CALLX}.</p></section>'
@@ -814,15 +822,15 @@ Sitemap: {BASE}/sitemap.xml
 LLMS_UPDATED = max(LASTMOD.values())
 llms = [f"# {BRAND}", "", f"> Car battery replacement in Singapore by Motoserv (CaseTrust-accredited group, 10 outlets). Every battery is a Delkor with a 1-year warranty. 24-hour hotline {HOT} (also WhatsApp). Prices include GST and fitting, checked {CHECKED}.", "",
   f"Last updated: {LLMS_UPDATED}", "", "## Contact (NAP)", f"- Name: {BRAND} (by Motoserv), {BASE}/", f"- Phone / WhatsApp: {HOT} ({TEL})", "- Address: no single head office; 10 Motoserv walk-in outlets, listed under Outlets below", f"- Hours: hotline and onsite rescue 24 hours (night rate 10pm-9am and public holidays); walk-in outlets {HOURS_WALK}", "",
-  f"## On-site rescue area: {COVER_TXT}. Walk-in also at the 10 Motoserv outlets.", "", "## Other services", "- Jump-start: $50 ($80 on public holidays).", "- Emergency towing: from $80; king dolly (4-wheel) from $120.", f"- {DISCLAIMER}", "", "## Price rules", f"- Walk-in at any Motoserv outlet ({HOURS_WALK}): Delkor list price minus $20 with the website code (walk-in only).", "- Fitted at your location before 10pm, including Sunday: list price + $50.", "- Fitted at your location 10pm-9am and on public holidays: list price + $80.", "",
-  "## Delkor prices (walk-in with code / list / at your location by day / night & PH)"] + \
-  [f"- {NAME[k]} ({P[k][0]}Ah{', '+AKA[k] if AKA[k] else ''}): {m(walk(k))} / {m(P[k][1])} / {m(day(k))} / {m(night(k))}  {BASE}/battery/{slug(k)}/" for k in allk] + \
+  f"## On-site rescue area: {COVER_TXT}. Walk-in also at the 10 Motoserv outlets.", "", "## Other services", "- Jump-start: $50 ($80 on public holidays).", "- Emergency towing: from $80; king dolly (4-wheel) from $120.", f"- {DISCLAIMER}", "", "## Price rules", f"- Walk-in at any Motoserv outlet ({HOURS_WALK}): Delkor list price minus $20 with the website code (walk-in only).", "- Fitted at your location before 10pm, including Sunday: list price + $30 (launch promo, normally + $50).", "- Fitted at your location 10pm-9am and on public holidays: list price + $80.", "",
+  "## Delkor prices (walk-in with code / list / at your location before 10pm, launch promo / night & PH)"] + \
+  [f"- {NAME[k]} ({P[k][0]}Ah{', '+AKA[k] if AKA[k] else ''}): {m(walk(k))} / {m(P[k][1])} / {md((k))} / {m(night(k))}  {BASE}/battery/{slug(k)}/" for k in allk] + \
   ["", "## Common Singapore cars (battery size)"] + \
   [f"- {r[0]} {r[1]} ({r[2]}): {NAME[r[4]]}" + (f" (replaces {r[3]}, same case size)" if r[6] else "") for r in rows if r[5] in ("sg","edwin") and r[4] and r[0] in ("Toyota","Honda","Nissan","Mazda","Hyundai","Kia","Mitsubishi")][:120] + \
   ["", "## Outlets"] + [f"- Motoserv @ {n}: {a} ({STATION[s]})" for n,s,a,la,lo in OUTLETS] + \
   ["", "## Pages", f"- Finder (car to battery and price): {BASE}/", f"- Price list: {BASE}/prices/", f"- Battery rescue: {BASE}/rescue/", f"- Walk-in $20 off: {BASE}/walk-in/", f"- Car brands: {BASE}/car-battery/", f"- Why Delkor: {BASE}/delkor/", f"- About: {BASE}/about/"] + \
   [f"- {PTITLES[p].rsplit(' | ', 1)[0]}: {BASE}{p} - {PDESC[p]}" for p in ["/outlets/", "/services/jump-start/", "/services/towing/"] + sorted(q for q in PTITLES if q.startswith("/rescue/") and q != "/rescue/") + ["/articles/"] + sorted(q for q in PTITLES if q.startswith("/articles/") and q != "/articles/") + ["/more/"] if p in PTITLES]
-(OUT / "llms.txt").write_text("\n".join(llms) + "\n")
+(OUT / "llms.txt").write_text(promo_txt("\n".join(llms)) + "\n")
 (OUT / "photos").mkdir(exist_ok=True)
 for ph in (HERE / "assets" / "photos").glob("*.jpg"):
     im = Image.open(ph).convert("RGB")

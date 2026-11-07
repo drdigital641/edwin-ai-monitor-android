@@ -74,3 +74,10 @@ Matched by standard case size (EN L-sizes / JIS codes) to the nearest Delkor siz
 - NS60R / 46B24R / 55B24R / S46B24R -> NS60ST (65B24R); 85D26L -> 100D26L
 - "DIN60/70 AGM or EFB" -> AGM LN2/LN3 (AGM suits both)
 - Still "enquire" (63 rows): right-terminal D26/D23/B20 (NS70R, 80D26R, 85D23R, 42B20R, M42R), DIN45R/55R, N120, T110, DIN65L, twin-battery cars. No same-size Delkor on the price list. CONFIRM with Motoserv if they stock R-terminal D26/D23.
+
+## Launch promo (Edwin, 7 Nov 2026)
+- Fitted at your location before 10pm, incl. Sunday: list price + $30 (launch promo: $20 off the usual list + $50). Shown as the usual price struck through (<s>) with the promo price beside it, label "Launch promo: $20 off before 10pm, incl. Sunday".
+- Night 10pm-9am and public holidays: unchanged, list + $80, no promo.
+- Unchanged: walk-in $20 website code (list - $20, Motoserv Mon-Sat 9am-6pm), jump-start $50/$80 PH, towing, $50-$80 non-battery onsite fee.
+- No end date set. Schema Offer price = promo price, no "was" price in schema.
+- In build.py: day() = promo, dayw() = usual, md(k) = struck + promo token (promo_html/promo_txt/promo_short render it).
