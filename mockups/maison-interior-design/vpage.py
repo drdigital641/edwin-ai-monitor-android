@@ -169,6 +169,8 @@ def vpage(slug):
     path = f"new-launches/{slug}/"
     gal = "".join(f'<figure class="vg-card">{vimg(slug, n, "AI concept: " + cap.split(":")[0] + " for " + c["h1"], sizes="(min-width:900px) 45vw, 85vw")}'
                   f'<figcaption>{e(cap)} <span>AI concept, for illustration only</span></figcaption></figure>' for n, cap in cfg["rooms"])
+    gsec = "" if cfg.get("picker2") else (f'<section class="vsec"><div class="wrap"><h2 class="vh2">Four concept {"zones" if cfg.get("zones") else "rooms"}</h2><p class="vsub">Plan-informed style studies, not exact reconstructions. Swipe to see all four.</p>\n'
+                                          f'<div class="vgal">{gal}</div></div></section>')
     first_src = _re.search(r'href="([^"]+)"', c["lead"])
     glance = "".join(f'<article class="vgl"><h3>{e(g["name"])}</h3><ul>'
                      + (f'<li>{ICON["size"]}<span>{e(g["size"])}</span></li>' if g.get("size") else "")
@@ -201,8 +203,7 @@ def vpage(slug):
 <div class="vh-txt"><div class="wrap"><p class="vh-tag">{e(cfg['tag'])}</p><h1>{e(c['h1'])}</h1></div></div></section>
 <div class="wrap vh-cta">{wa_btn(slug)}<a class="link" href="{BASE}services/{gs}/">{e(GBY[gs]['short'])} guide</a></div>
 {picker2(slug, c['h1'], wa_btn(slug)) if cfg.get('picker2') else (style_picker(slug, cfg, c['h1']) if cfg.get('styles') else '')}
-<section class="vsec"><div class="wrap"><h2 class="vh2">Four concept {"zones" if cfg.get("zones") else "rooms"}</h2><p class="vsub">Plan-informed style studies, not exact reconstructions. Swipe to see all four.</p>
-<div class="vgal">{gal}</div></div></section>
+{gsec}
 {lsec}
 <section class="vsec"><div class="wrap"><h2 class="vh2">{"Zones at a glance" if cfg.get("zones") else "Layout at a glance"}</h2>{plate}<div class="vgls">{glance}</div></div></section>
 <section class="vsec"><div class="wrap"><h2 class="vh2">{"From handover to move-in" if cfg.get("zones") else "From keys to move-in"}</h2><ol class="vsteps">{steps}</ol></div></section>
