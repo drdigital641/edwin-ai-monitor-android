@@ -9,18 +9,18 @@ PICKER2 = {
            plan_alt="Maison redrawn floor plan of a Towner Residences 4-room flat (first p.12 arrangement), for illustration",
            src="https://btohq.sgp1.cdn.digitaloceanspaces.com/bto/aug-2021-bto/towner-residences.pdf#page=8",
            note="4-room first arrangement (the first of two on HDB brochure p.12): 90 sqm / approx. 93 sqm.",
-           prefix="", rooms=[("living", "Living/Dining", .30, .54, "style"), ("kitchen", "Kitchen", .438, .74, "style"),
-                             ("bedroom", "Main bedroom", .778, .39, "style"), ("bedroom-2", "Bedroom 2", .421, .31, "style"),
-                             ("bedroom-3", "Bedroom 3", .602, .31, "style")]),
+           prefix="", rooms=[("living", "Living/Dining", .30, .54, "style", .24, .36), ("kitchen", "Kitchen", .438, .74, "style", .365, .735),
+                             ("bedroom", "Main bedroom", .778, .39, "style", .78, .42), ("bedroom-2", "Bedroom 2", .421, .31, "style", .39, .355),
+                             ("bedroom-3", "Bedroom 3", .602, .31, "style", .63, .36)]),
  "3": dict(label="3-room", units="90 units · HDB p.14", plan="maison-plan-3room", ph=1640,
            plan_alt="Maison redrawn floor plan of a Towner Residences 3-room flat, for illustration",
            src="https://btohq.sgp1.cdn.digitaloceanspaces.com/bto/aug-2021-bto/towner-residences.pdf#page=7",
            note="3-room, HDB brochure p.10: 65 sqm / approx. 68 sqm.",
-           prefix="3room-", rooms=[("living", "Living/Dining", .684, .52, "style"), ("kitchen", "Kitchen", .484, .825, "style"),
-                                   ("bedroom", "Main bedroom", .284, .37, "style"), ("bedroom-2", "Bedroom 2", .478, .31, "style")]),
+           prefix="3room-", rooms=[("living", "Living/Dining", .684, .52, "style", .71, .33), ("kitchen", "Kitchen", .484, .825, "style", .47, .835),
+                                   ("bedroom", "Main bedroom", .284, .37, "style", .27, .40), ("bedroom-2", "Bedroom 2", .478, .31, "style", .52, .335)]),
 }
 
-PICKER2_V = "p3"
+PICKER2_V = "p3b"
 PICKER2_CSS = """
 .vp2 [hidden]{display:none!important}
 .vp2 .sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
@@ -55,9 +55,11 @@ PICKER2_CSS = """
 .vp2-tap{margin:0 0 10px;font-size:14px;color:var(--ink2)}
 .vp2-plan{position:relative;border:1px solid var(--line);background:#f5f2ec}
 .vp2-plan a{display:block}.vp2-plan img{display:block;width:100%;height:auto;aspect-ratio:1920/1640}
-.vp2-hs{position:absolute;transform:translate(-50%,-50%);width:34px;height:34px;border-radius:50%;border:2px solid #fff;background:#3f4a3c;color:#fff;font:600 15px/1 var(--sans);cursor:pointer;box-shadow:0 1px 4px rgba(0,0,0,.3);padding:0}
+.vp2-hs{position:absolute;left:var(--x);top:var(--y);transform:translate(-50%,-50%);width:34px;height:34px;border-radius:50%;border:2px solid #fff;background:#3f4a3c;color:#fff;font:600 15px/1 var(--sans);cursor:pointer;box-shadow:0 1px 4px rgba(0,0,0,.3);padding:0}
 .vp2-hs[aria-pressed="true"]{background:var(--brass);transform:translate(-50%,-50%) scale(1.15)}
 .vp2-off{font-size:15px;margin-top:10px}
+@media(max-width:599px){.vp2-hs{left:var(--mx);top:var(--my);width:28px;height:28px;font-size:12px;border-width:1.5px}.vp2-hs[aria-pressed="true"]{transform:translate(-50%,-50%) scale(1.1)}}
+@media(max-width:899px){body.vp2-fabaway .fab{opacity:0;visibility:hidden;transform:translateY(16px);transition:opacity .25s,transform .25s,visibility 0s .25s}}
 @media(min-width:900px){.vp2-ph,.vp2-arw{width:100%;max-height:max(300px,calc(100vh - 320px))}.vp2-ph img{object-position:50% 100%}.vp2.vsec{padding-top:32px}.vp2-car,.vp2-chips{max-width:960px;margin-left:auto;margin-right:auto}.vp2-arw{display:flex}
 .vp2-slide figcaption,.vp2-nav{padding-left:0;padding-right:0}.vp2-sty button.pill{flex:0 0 auto;padding:0 14px}
 .vp2-navw{display:grid;grid-template-columns:3fr 2fr;gap:32px;align-items:end}}
@@ -71,11 +73,11 @@ def picker2(slug, h1, wa):
     b = f"{BASE}images/new-launches/{slug}/{slug}"
     t = PICKER2["4"]
     data = {k: dict(label=v["label"], units=v["units"], plan=v["plan"], alt=v["plan_alt"], src=v["src"], note=v["note"], prefix=v["prefix"],
-                    rooms=[dict(id=r[0], label=r[1], x=r[2], y=r[3]) for r in _p2_slides(k)]) for k, v in PICKER2.items()}
+                    rooms=[dict(id=r[0], label=r[1], x=r[2], y=r[3], mx=r[5], my=r[6]) for r in _p2_slides(k)]) for k, v in PICKER2.items()}
     sl = _p2_slides("4")
     types = "".join(f'<button type="button" class="pill" data-t="{k}" aria-pressed="{"true" if k == "4" else "false"}">{v["label"]}</button>' for k, v in sorted(PICKER2.items()))
     styles = "".join(f'<button type="button" class="pill" data-s="{x.lower()}" aria-pressed="{"true" if i == 0 else "false"}">{x}</button>' for i, x in enumerate(STYLES))
-    hs = "".join(f'<button type="button" class="vp2-hs" data-i="{i}" style="left:{r[2]*100:.1f}%;top:{r[3]*100:.1f}%" aria-label="{i+1}. {r[1]}" aria-pressed="{"true" if i == 0 else "false"}">{i+1}</button>' for i, r in enumerate(sl))
+    hs = "".join(f'<button type="button" class="vp2-hs" data-i="{i}" style="--x:{r[2]*100:.1f}%;--y:{r[3]*100:.1f}%;--mx:{r[5]*100:.1f}%;--my:{r[6]*100:.1f}%" aria-label="{i+1}. {r[1]}" aria-pressed="{"true" if i == 0 else "false"}">{i+1}</button>' for i, r in enumerate(sl))
     rooms = "".join(f'<button type="button" data-i="{i}" aria-pressed="{"true" if i == 0 else "false"}">{i+1}. {r[1]}</button>' for i, r in enumerate(sl))
     def slide(i, r):
         f = f"{b}-modern-{r[0]}"
@@ -139,13 +141,14 @@ go(st.i,true)}
 function buildType(){var T=D[st.t],p=q('.vp2-plan'),rb='',pl=B+'-'+T.plan,im=p.querySelector('img');
 im.src=pl+'.webp'+Q;im.srcset=pl+'-960.webp'+Q+' 960w, '+pl+'.webp'+Q+' 1920w';im.alt=T.alt;p.querySelector('a').href=pl+'.webp'+Q;
 p.querySelectorAll('.vp2-hs').forEach(function(x){x.remove()});
-T.rooms.forEach(function(r,i){var b=document.createElement('button');b.type='button';b.className='vp2-hs';b.dataset.i=i;b.style.left=(r.x*100)+'%';b.style.top=(r.y*100)+'%';b.setAttribute('aria-label',(i+1)+'. '+r.label);b.textContent=i+1;p.appendChild(b);
+T.rooms.forEach(function(r,i){var b=document.createElement('button');b.type='button';b.className='vp2-hs';b.dataset.i=i;[['--x',r.x],['--y',r.y],['--mx',r.mx],['--my',r.my]].forEach(function(v){b.style.setProperty(v[0],(v[1]*100)+'%')});b.setAttribute('aria-label',(i+1)+'. '+r.label);b.textContent=i+1;p.appendChild(b);
 rb+='<button type="button" data-i="'+i+'">'+(i+1)+'. '+r.label+'</button>'});
 q('.vp2-rooms').innerHTML=rb;q('.vp2-units').textContent=T.units;
 var s=q('.vp2-src'),a=s.querySelector('a');s.firstChild.textContent='AI concepts, for illustration only; all cabinetry, furnishings and finishes are proposed. '+T.note+' Source: ';a.href=T.src;bindRooms()}
 /* after a tap, bring the photo fully into view just under the fixed header; no scroll if already fully visible */
 function toCar(){var h=document.getElementById('hd'),hb=h?Math.max(0,h.getBoundingClientRect().bottom):0,c=q('.vp2-ph').getBoundingClientRect();
 if(c.top<hb||c.bottom>innerHeight){scrollTo({top:Math.max(0,c.top+scrollY-hb-8),behavior:RM?'auto':'smooth'})}}
+(function(){var pl=q('.vp2-plan'),pend=0;if(!pl)return;function chk(){pend=0;var r=pl.getBoundingClientRect(),on=innerWidth<900&&r.bottom>innerHeight-90&&r.top<innerHeight-10;document.body.classList.toggle('vp2-fabaway',on)}function sch(){if(!pend){pend=1;requestAnimationFrame(chk)}}addEventListener('scroll',sch,{passive:true});addEventListener('resize',sch);chk()})();
 function bindRooms(){qa('.vp2-rooms button,.vp2-hs').forEach(function(b){b.onclick=function(){hold(4000);go(+b.dataset.i);toCar()}})}
 function bindDots(){qa('.vp2-dots button').forEach(function(b){b.onclick=function(){hold(4000);go(+b.dataset.i)}})}
 qa('.vp2-slide').forEach(function(f,i){f.dataset.r=rooms()[i].id});
