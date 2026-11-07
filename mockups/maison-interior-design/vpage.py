@@ -10,6 +10,7 @@ VPAGES = {
   kind="bto", hero="towner-residences-living-dining", layout="towner-residences-layout-4room",
   plan=("towner-residences-maison-plan", 1640, "Maison redrawn floor plan of a Towner Residences 4-room flat, for illustration",
         "https://assets.hdb.gov.sg/community/towner_residences/index.html"),
+  picker2=True,
   styles=dict(note="4-room first arrangement, 90 sqm internal / 93 sqm incl. A/C ledge.",
               src="https://btohq.sgp1.cdn.digitaloceanspaces.com/bto/aug-2021-bto/towner-residences.pdf#page=8"),
   tag="BTO · Kallang/Whampoa · Key date not yet confirmed",
@@ -182,6 +183,8 @@ def vpage(slug):
     else:
         layout_html = (f'<figure class="vlay">{vimg(slug, cfg["layout"], "Simplified layout diagram for " + c["h1"], sizes="(min-width:1240px) 1160px, 100vw", h=1340)}'
                        f'<figcaption>{e(cfg["layout_cap"])} ' + (('<a href="' + first_src.group(1) + '" target="_blank" rel="noopener">Source</a>') if first_src else '') + '</figcaption></figure>')
+    _lh = "Proposed zoning (not a lease plan)" if cfg.get("zones") else "The layout these concepts use"
+    lsec = "" if cfg.get("picker2") else f'<section class="vsec"><div class="wrap"><h2 class="vh2">{_lh}</h2>\n{layout_html}</div></section>'
     steps = "".join(f'<li><span class="sn">{i+1:02d}</span><h3>{e(t)}</h3><p>{e(x)}</p></li>' for i, (t, x) in enumerate(cfg["steps"]))
     faqs = "".join(f'<details class="qa"><summary><h3>{e(q)}</h3><span class="pm" aria-hidden="true"></span></summary><div class="vq">{_links(a)}</div></details>' for q, a in c["faq"])
     notes = "".join(f"<h4>{e(k)}</h4>{_links(v)}" for k, v in c["rooms"])
@@ -197,11 +200,10 @@ def vpage(slug):
     s += f"""<section class="vhero">{vimg(slug, cfg['hero'], "AI concept: " + cfg['rooms'][0][1].split(":")[0].lower() + " for " + c['h1'], cls="vh-img", lazy=False)}
 <div class="vh-txt"><div class="wrap"><p class="vh-tag">{e(cfg['tag'])}</p><h1>{e(c['h1'])}</h1></div></div></section>
 <div class="wrap vh-cta">{wa_btn(slug)}<a class="link" href="{BASE}services/{gs}/">{e(GBY[gs]['short'])} guide</a></div>
-{style_picker(slug, cfg, c['h1']) if cfg.get('styles') else ''}
+{picker2(slug, c['h1'], wa_btn(slug)) if cfg.get('picker2') else (style_picker(slug, cfg, c['h1']) if cfg.get('styles') else '')}
 <section class="vsec"><div class="wrap"><h2 class="vh2">Four concept {"zones" if cfg.get("zones") else "rooms"}</h2><p class="vsub">Plan-informed style studies, not exact reconstructions. Swipe to see all four.</p>
 <div class="vgal">{gal}</div></div></section>
-<section class="vsec"><div class="wrap"><h2 class="vh2">{"Proposed zoning (not a lease plan)" if cfg.get("zones") else "The layout these concepts use"}</h2>
-{layout_html}</div></section>
+{lsec}
 <section class="vsec"><div class="wrap"><h2 class="vh2">{"Zones at a glance" if cfg.get("zones") else "Layout at a glance"}</h2>{plate}<div class="vgls">{glance}</div></div></section>
 <section class="vsec"><div class="wrap"><h2 class="vh2">{"From handover to move-in" if cfg.get("zones") else "From keys to move-in"}</h2><ol class="vsteps">{steps}</ol></div></section>
 <section class="vsec vfaq"><div class="wrap narrow"><h2 class="vh2">Details, caveats and sources</h2>
