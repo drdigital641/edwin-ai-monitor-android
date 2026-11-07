@@ -99,7 +99,7 @@ def driver_box(prefix, full):
     tag = 'h1' if full else 'h2'
     intro = ('<p>Tell us which workshop you use and Roland from XADO Singapore will contact them about XADO oil. '
              'You keep your own mechanic. No minimum order and no obligation for the workshop.</p>')
-    form = ('<form class="ref-box xlead" novalidate onsubmit="return false" aria-label="Send your workshop to XADO Singapore">'
+    form = ('<form id="own-workshop" class="ref-box xlead" novalidate onsubmit="return false" aria-label="Send your workshop to XADO Singapore">'
             '<div class="fld"><label for="ld-ws">Workshop name</label><input id="ld-ws" name="ws" type="text" autocomplete="organization" required placeholder="e.g. ABC Motor Works"></div>'
             '<div class="fld"><label for="ld-num">Workshop WhatsApp number</label><input id="ld-num" name="wsnum" type="tel" inputmode="tel" autocomplete="off" required placeholder="e.g. 9123 4567">'
             '<p class="hint">Singapore mobile: 8 digits starting with 8 or 9. You can include +65.</p></div>'
