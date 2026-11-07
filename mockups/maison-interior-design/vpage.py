@@ -212,5 +212,8 @@ def vpage(slug):
 <details class="qa"><summary><h3>Sources</h3><span class="pm" aria-hidden="true"></span></summary><div class="vq">{_links(c['sources'])}</div></details>
 <div class="vh-cta end">{wa_btn(slug)}</div></div></section>"""
     s += footer()
+    if cfg.get("picker2"):
+        s = s.replace("mid.css?v=", "mid.css?v=" + PICKER2_V + "-").replace("mid.js?v=", "mid.js?v=" + PICKER2_V + "-")
+        s = _re.sub(r'(' + _re.escape(BASE) + r'images/new-launches/[\w/-]+\.webp)(?!\?)', r'\1?v=' + PICKER2_V, s)
     write(path + "index.html", s)
     return c
