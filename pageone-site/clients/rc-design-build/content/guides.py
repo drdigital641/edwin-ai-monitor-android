@@ -366,4 +366,37 @@ G11 = {
   'wa_topic': 'my shop window display',
 }
 
-PAGES = [G1, G2, G3, G4, G5, G6, G7, G8, G9, G10, G11]
+G12 = {
+  'path': '/guides/fitting-room-design-for-a-small-shop/',
+  'title': 'Fitting Room Design for a Small Shop | R&C',
+  'desc': 'How to plan a fitting room in a small Singapore shop: where to place it, size and door, mirror and lighting, hooks and seat, privacy and finishes.',
+  'h1': 'Fitting Room Design for a Small Shop',
+  'kicker': 'Retail layout guide',
+  'answer': 'A small-shop fitting room needs three things: a position where staff can see the queue without seeing inside, enough floor space to turn and sit, and a good mirror with even light. Plan the partition, door, hooks and seat together, then confirm fixing and approvals with your landlord.',
+  'card': 'Plan a fitting room for a small shop: position, size, door, mirror and lighting, hooks and seat, privacy and finishes.',
+  'image': 'hero-boutique',
+  'image_alt': 'Boutique interior with oak shelving and a display table, the kind of small shop where a fitting room is planned (AI design concept)',
+  'og': 'share-fitting-room-design-for-a-small-shop.jpg',
+  'date': '2026-11-06',
+  'owner': '/spaces/retail-shops-boutiques/',
+  'reading': '5 min read',
+  'sections': [
+    {'h2': 'Where should a fitting room go in a small shop?', 'html': '<p>Put the fitting room towards the back or the side of the shop, where customers walk past your products to reach it, but where staff at the counter can still see the entrance to it. A position close to the clothing rails saves customers carrying items across the shop.</p><ul><li>Keep it away from the door, so the inside is never visible from the walkway.</li><li>Leave a clear waiting space outside, so a queue does not block the aisle.</li><li>Check that staff can watch the entrance to the fitting room without standing next to it.</li></ul><p>The <a href="/guides/small-shop-layout-and-customer-flow/">small shop layout and customer flow guide</a> explains how to plan the routes that lead there.</p>'},
+    {'h2': 'How much space does a fitting room need?', 'html': '<p>A fitting room needs enough floor space for one person to turn around, change comfortably and set down a bag without touching the walls. Measure the space you can spare on site, then decide between one larger room or two smaller ones.</p><ul><li>Allow for the door swing, or choose a sliding door or curtain if space is tight.</li><li>Think about who you serve: customers with bags, children or a companion may need more room.</li><li>If your shop is small, one well-planned room is better than two cramped ones.</li></ul><p>Ask your contractor to confirm the dimensions on site before anything is made.</p>'},
+    {'h2': 'Which door or curtain works best?', 'html': '<p>Choose the door type that gives privacy without eating into floor space. A solid door gives the best privacy, a sliding door saves swing space, and a curtain is the lightest option but gives the least sound and sight privacy.</p><ul><li>Check the gap at the bottom and the sides, because gaps are where privacy is lost.</li><li>Use a lock or an occupied indicator so customers do not walk in.</li><li>Choose hardware that is easy to clean and tough enough for daily use.</li></ul>'},
+    {'h2': 'How do I plan the mirror and lighting?', 'html': '<p>Use a full-length mirror and light the person evenly from the front and sides, so colours look true and shadows do not fall across the face. Harsh light from directly above makes clothes look worse and can lose sales.</p><ul><li>Place the mirror where it can be seen straight on, not at an angle.</li><li>Use soft, even light with a colour that matches what customers will see outside the shop.</li><li>Avoid bright light behind the customer that turns the mirror into a glare.</li></ul><p>See <a href="/guides/lighting-a-retail-display/">lighting a retail display</a> for layers, glare and colour rendering.</p>'},
+    {'h2': 'What fittings should be inside?', 'html': '<p>Inside, customers need somewhere to hang items, somewhere to sit or rest a bag, and enough shelf space for small things. Plan these during design, not afterwards, because they affect the wall construction behind them.</p><ul><li>Two or three hooks at different heights.</li><li>A small seat or bench, if the floor space allows it.</li><li>A narrow shelf for phones, glasses or jewellery.</li></ul><p>Built-in seats and shelves are carpentry work. See <a href="/services/commercial-carpentry/">commercial carpentry</a> for what it normally covers.</p>'},
+    {'h2': 'What partition and finishes suit a fitting room?', 'html': '<p>Choose a partition that is solid enough to feel private and finishes that survive daily wear. Fitting rooms take scuffs from bags and shoes and marks from make-up and hands, so wipe-clean surfaces help.</p><ul><li>A full-height partition feels more private than a low one, but check ceiling height and ventilation.</li><li>Use a tough finish on the lower part of the walls.</li><li>Choose flooring that is quiet underfoot and easy to wipe.</li></ul><p>For dividing an open unit into rooms, see <a href="/services/commercial-partitioning/">commercial partitioning</a>.</p>'},
+    {'h2': 'What should I confirm with my landlord first?', 'html': '<p>Confirm with your landlord or building management whether you can build a partition, fix to the walls or ceiling and change the lighting or ventilation, before you order anything. Rules differ between buildings, and some works may need approvals.</p><p>Our <a href="/guides/small-shop-renovation-checklist/">small shop renovation checklist</a> lists what to ask. If you are planning the whole shop, see the <a href="/spaces/retail-shops-boutiques/">retail shop and boutique</a> page, then send us your floor plan so we can discuss your scope.</p>'},
+  ],
+  'faqs': [
+    ('How big should a fitting room be in a small shop?', 'Big enough for one person to turn, change and set down a bag comfortably. Measure what you can spare on site and confirm it with your contractor before building.'),
+    ('Should a small fitting room have a door or a curtain?', 'A solid or sliding door gives better privacy and sound control, while a curtain saves space and cost but is less private. Choose based on your floor space and how much privacy your customers expect.'),
+    ('What lighting is best for a fitting room mirror?', 'Soft, even light from the front and sides, so colours look true and there are no harsh shadows. Avoid strong light directly above or behind the customer.'),
+    ('Do I need landlord approval to build a fitting room?', 'Often, yes, if it involves a new partition, fixings or changes to lighting or ventilation. Rules differ between buildings, so ask before you order.'),
+  ],
+  'related': ['/spaces/retail-shops-boutiques/', '/guides/small-shop-layout-and-customer-flow/', '/guides/lighting-a-retail-display/', '/services/commercial-partitioning/', '/services/commercial-carpentry/'],
+  'wa_topic': 'my shop fitting room',
+}
+
+PAGES = [G1, G2, G3, G4, G5, G6, G7, G8, G9, G10, G11, G12]
