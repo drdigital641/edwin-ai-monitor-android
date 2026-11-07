@@ -38,3 +38,5 @@ main>.xref-band:first-child{padding-top:64px}
 #xado-at-your-workshop,#own-workshop{scroll-margin-top:92px}
 @media(max-width:1024px){.xref-c{grid-template-columns:minmax(0,1fr);grid-template-areas:"intro" "form" "after";row-gap:18px}}
 @media(max-width:600px){main>.xref-band:first-child{padding-top:40px}.xref-band{padding-top:40px}}
+.xref-band.xref-slim{padding:28px 0}.xref-slim .xref-after{max-width:820px;margin:0 auto}
+@media(max-width:600px){.xref-band.xref-slim{padding:22px 0}}
