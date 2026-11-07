@@ -77,7 +77,7 @@ LAUNCHES = [
 
  dict(slug="the-myst", name="The Myst", place="Upper Bukit Timah", kind="condo", label="Private condominium",
   facts=[("Developer", "City Developments Limited (CDL)"), ("District", "D23, Upper Bukit Timah Road"), ("Units", "408"), ("Unit types", "1-bedroom plus study (about 517 sq ft) to 5-bedroom (about 1,690 sq ft)"), ("Tenure", "Leasehold condominium")],
-  date=("TOP", "Year only: expected around 2026 to 2027. CDL's construction page that we could read gives an indicative TOP of Q1 2027; we could not confirm a TOP date on an official page. Your developer's notice of vacant possession is the date that counts."),
+  date=("TOP", "TOP obtained September 2026 (CDL construction page). Individual key and access appointments are not confirmed."),
   sources=[("CDL launch release, July 2023", "https://www.cdl.com.sg/newsroom/more-than-100-units-at-the-myst-picked-up-by-local-homebuyers-on-launch-weekend"), ("CDL construction progress", CDL_CON)],
   lede="The Myst is a 408-unit CDL condominium on Upper Bukit Timah Road, with homes from a 1-bedroom plus study of about 517 sq ft to a 5-bedroom of about 1,690 sq ft. That range means very different renovations under one roof.",
   paras=["A 517 sq ft 1-bedroom plus study and a 1,690 sq ft 5-bedroom need different plans. In the smaller units the study often becomes a guest room or home office with a wall bed and hidden storage. In the larger units the focus moves to family storage, a proper study and lighting that makes big rooms feel warm.",
@@ -94,7 +94,7 @@ LAUNCHES = [
 
  dict(slug="canninghill-piers", name="CanningHill Piers", place="River Valley Road", kind="condo", label="Private condominium",
   facts=[("Developers", "City Developments Limited (CDL) and CapitaLand Development"), ("District", "D6, 177 River Valley Road"), ("Units", "696"), ("Unit types", "1-bedroom (about 409 sq ft) to 5-bedroom premium (about 2,788 sq ft), plus one super penthouse")],
-  date=("TOP", "Year only: expected around 2026. CDL's construction page that we could read lists an indicative TOP of Q4 2026 and an expected vacant possession date of 30 June 2027 (a contractual date, not a key-collection date). Your developer's notice is the date that counts."),
+  date=("TOP", "TOP obtained October 2026 (CDL construction page). Individual key and access appointments are not confirmed."),
   sources=[("CDL launch release, November 2021", "https://cdl.com.sg/newsroom/canninghill-piers-is-best-selling-project-launch-in-the-central-area-this-year-538-units-sold-on-launch-weekend-with-total-sales-value-over-s-1-18-billion"), ("CDL construction progress", CDL_CON)],
   lede="CanningHill Piers is a 696-unit city-centre condominium by CDL and CapitaLand Development on River Valley Road, with homes from a 1-bedroom of about 409 sq ft to large 5-bedroom units and a super penthouse.",
   paras=["City-centre condos have two kinds of owners: people moving in, and investors preparing a unit for tenants. The renovation is different for each. Owners usually want personal storage and lighting; investors want durable finishes, simple furniture and a unit that photographs well for listing.",
