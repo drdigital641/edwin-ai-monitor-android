@@ -1,0 +1,63 @@
+{
+ "lede": "Finzeo Car is a car workshop at 60 Jalan Lam Huat, Carros Centre, in Woodlands. It has been running since 2016, and its founder has more than ten years of experience in the trade.",
+ "specialties": [
+  "Diagnosis and troubleshooting",
+  "Transmission and gearbox",
+  "Aircon",
+  "Suspension, lower arm and drive shaft"
+ ],
+ "services": [
+  "Servicing packages (Castrol, Liqui Moly and Motul oils are listed)",
+  "Brake pad replacement",
+  "Tyres and wheel alignment",
+  "Aircon cooling coil and valve replacement",
+  "Aircon flushing and odour treatment",
+  "Absorber and suspension replacement",
+  "Timing belt replacement",
+  "Commercial van servicing (Hiace, NV200, NV350 and Dyna are listed)",
+  "Private-hire vehicle servicing"
+ ],
+ "good_to_know": [
+  "Works on all makes, including Japanese and Korean cars",
+  "Commercial vehicles are welcome",
+  "Free diagnostics are offered, according to its SGCarMart and Carousell listings"
+ ],
+ "faqs": [
+  [
+   "What does Finzeo Car specialise in?",
+   "Its listings name diagnosis and troubleshooting, transmission and gearbox work, aircon, and suspension, lower arm and drive shaft repairs."
+  ],
+  [
+   "Which cars does Finzeo Car work on?",
+   "Its listings say all makes, including Japanese and Korean cars. Commercial vehicles are welcome too."
+  ],
+  [
+   "Does Finzeo Car service vans?",
+   "Its Carousell listing mentions commercial van servicing for the Hiace, NV200, NV350 and Dyna, and private-hire vehicle servicing."
+  ],
+  [
+   "Does Finzeo Car do aircon work?",
+   "Yes. Its listings include aircon cooling coil and valve replacement, aircon flushing and odour treatment."
+  ],
+  [
+   "Is diagnosis free?",
+   "Its SGCarMart and Carousell listings offer free diagnostics. Please confirm with the workshop when you message."
+  ],
+  [
+   "What are the opening hours?",
+   "Sources differ, so please see Google Maps for current hours."
+  ]
+ ],
+ "sources": "SGCarMart and Carousell listings",
+ "chips": [
+  "Diagnosis and troubleshooting",
+  "Transmission and gearbox",
+  "Aircon"
+ ],
+ "good_for": [
+  "All makes, including Japanese and Korean cars",
+  "Commercial vans: Hiace, NV200, NV350 and Dyna are listed",
+  "Private-hire vehicles"
+ ],
+ "mrt": "No MRT station is within 2 km. Marsiling MRT (NS8) is about 2.4 km away in a straight line, so check Google Maps for your route."
+}

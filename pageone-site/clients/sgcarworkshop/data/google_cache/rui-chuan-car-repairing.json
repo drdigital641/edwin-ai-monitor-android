@@ -1,0 +1,30 @@
+{
+ "businessStatus": "OPERATIONAL",
+ "primaryType": "car_repair",
+ "types": [
+  "car_repair",
+  "point_of_interest",
+  "service",
+  "establishment"
+ ],
+ "rating": 4.7,
+ "userRatingCount": 43,
+ "websiteUri": "https://linktr.ee/rccarrepairing",
+ "paymentOptions": null,
+ "parkingOptions": null,
+ "editorialSummary": null,
+ "weekdayDescriptions": [
+  "Monday: 8:00 AM – 5:00 PM",
+  "Tuesday: 8:00 AM – 5:00 PM",
+  "Wednesday: 8:00 AM – 5:00 PM",
+  "Thursday: 8:00 AM – 5:00 PM",
+  "Friday: 8:00 AM – 5:00 PM",
+  "Saturday: 8:00 AM – 12:00 PM",
+  "Sunday: Closed"
+ ],
+ "review_count_seen": 5,
+ "review_themes": "Customers on Google Maps mention servicing done within an hour, careful engine checks and parts changes explained before the work.",
+ "fetched_at": "2026-11-04",
+ "place_id": "ChIJH460qPQX2jERjDkUUvFJz1w",
+ "source": "google_places"
+}

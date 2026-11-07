@@ -1,0 +1,32 @@
+{
+ "lede": "AF & CARS is a car workshop in Toh Guan Road East and Enterprise Hub. Its own website lists air conditioning service, brake service, engine repair and accident repair.",
+ "chips": [
+  "Air conditioning service",
+  "Brake service",
+  "Engine repair"
+ ],
+ "services": [
+  "Air conditioning service",
+  "Brake service",
+  "Engine repair",
+  "Accident repair",
+  "Servicing and maintenance",
+  "Bodywork and spray painting",
+  "Towing"
+ ],
+ "themes": "Customers on Google Maps mention lower prices than a large chain, advice to keep parts still in good condition and friendly service. One customer described a dispute over a rental hybrid car.",
+ "sources": "its own website (afcars.com.sg)",
+ "stories": [],
+ "mentioned_services": [
+  "Car servicing",
+  "Hybrid cars",
+  "Car maintenance advice"
+ ],
+ "services_note": "Services as listed on the workshop's own website, afcars.com.sg.",
+ "specialties": [
+  "One-stop automotive solution"
+ ],
+ "card_rules": "2026-11-06",
+ "makes": [],
+ "makes_note": "Not listed on its public pages. Ask the workshop about your car."
+}

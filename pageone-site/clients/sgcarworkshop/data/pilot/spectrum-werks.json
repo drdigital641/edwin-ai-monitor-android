@@ -1,0 +1,36 @@
+{
+ "lede": "SPECTRUM WERKS is a car workshop in Kaki Bukit Industrial Estate. Its own website lists car spray painting, detailing and grooming, dent removal and rim restoration.",
+ "chips": [
+  "Car spray painting",
+  "Detailing and grooming",
+  "Dent removal"
+ ],
+ "services": [
+  "Car spray painting",
+  "Detailing and grooming",
+  "Dent removal",
+  "Rim restoration",
+  "Car body repair",
+  "Paint protection coating",
+  "Accident claims"
+ ],
+ "themes": "Customers on Google Maps mention coating packages, accident repaint of panels within a day, and long-term customers who keep coming back for fair prices.",
+ "sources": "its own website (spectrumwerks.sg)",
+ "stories": [],
+ "mentioned_services": [
+  "Ceramic coating",
+  "Accident repair and repaint",
+  "Car detailing"
+ ],
+ "services_note": "Services as listed on the workshop's own website, spectrumwerks.sg.",
+ "specialties": [
+  "Spray painting",
+  "Paint protection"
+ ],
+ "card_rules": "2026-11-06",
+ "makes": [],
+ "makes_note": "Not listed on its public pages. Ask the workshop about your car.",
+ "good_to_know": [
+  "Enquiries by WhatsApp, according to its website"
+ ]
+}

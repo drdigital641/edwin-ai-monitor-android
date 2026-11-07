@@ -1,0 +1,39 @@
+{
+ "lede": "Tee Guan Trading Co is a car workshop in Toh Guan Road East and Enterprise Hub. Its own website lists car servicing, car repair, alignment and accident repairs.",
+ "chips": [
+  "Car servicing",
+  "Car repair",
+  "Alignment"
+ ],
+ "services": [
+  "Car servicing",
+  "Car repair",
+  "Alignment",
+  "Accident repairs",
+  "Insurance claims",
+  "Aircon servicing",
+  "Tyre replacement",
+  "Battery replacement",
+  "Car grooming and body kits"
+ ],
+ "themes": "Customers on Google Maps mention tyre changes, rotation and puncture repair at competitive rates, help with dead batteries, and car servicing.",
+ "sources": "its own website (teeguan.com.sg)",
+ "stories": [],
+ "mentioned_services": [
+  "Tyre replacement",
+  "Puncture repair",
+  "Battery help",
+  "Car servicing"
+ ],
+ "services_note": "Services as listed on the workshop's own website, teeguan.com.sg.",
+ "specialties": [
+  "Diagnostics",
+  "Tyre advice"
+ ],
+ "card_rules": "2026-11-06",
+ "makes": [],
+ "makes_note": "Not listed on its public pages. Ask the workshop about your car.",
+ "good_to_know": [
+  "Established in 1975, according to its website"
+ ]
+}

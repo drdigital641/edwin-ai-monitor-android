@@ -1,0 +1,35 @@
+{
+ "businessStatus": "OPERATIONAL",
+ "primaryType": "car_repair",
+ "types": [
+  "car_repair",
+  "point_of_interest",
+  "service",
+  "establishment"
+ ],
+ "rating": 5,
+ "userRatingCount": 132,
+ "websiteUri": "https://gmaautomotiveservices.com/",
+ "paymentOptions": {
+  "acceptsCreditCards": false,
+  "acceptsCashOnly": true
+ },
+ "parkingOptions": {
+  "paidParkingLot": true
+ },
+ "editorialSummary": null,
+ "weekdayDescriptions": [
+  "Monday: 9:00 AM – 6:30 PM",
+  "Tuesday: 9:00 AM – 6:30 PM",
+  "Wednesday: 9:00 AM – 6:30 PM",
+  "Thursday: 9:00 AM – 6:30 PM",
+  "Friday: 9:00 AM – 6:30 PM",
+  "Saturday: 9:00 AM – 5:00 PM",
+  "Sunday: Closed"
+ ],
+ "review_count_seen": 5,
+ "review_themes": "Customers on Google Maps mention body kit and scratch repairs, minor paint touch-ups finished in about a day and a half, honest advice and no hard selling.",
+ "fetched_at": "2026-11-03",
+ "place_id": "ChIJd4kjRNcT2jERDil3TH5iu_A",
+ "source": "google_places"
+}

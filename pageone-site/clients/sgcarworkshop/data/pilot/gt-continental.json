@@ -1,0 +1,39 @@
+{
+ "lede": "GT Continental is a car workshop in Sin Ming Industrial Estate. Its own website lists servicing and repair, engine repair and overhaul, automatic transmission repair and aircon cleaning and repair.",
+ "chips": [
+  "Servicing and repair",
+  "Engine repair and overhaul",
+  "Automatic transmission repair"
+ ],
+ "services": [
+  "Servicing and repair",
+  "Engine repair and overhaul",
+  "Automatic transmission repair",
+  "Aircon cleaning and repair",
+  "Car electrical work",
+  "Undercarriage repair",
+  "Diagnostics"
+ ],
+ "themes": "Customers on Google Maps mention Mercedes-Benz servicing with genuine parts after the dealer warranty ends, fixing faults other workshops could not, such as parking sensors, and advice to keep parts that do not need changing.",
+ "sources": "its own website (gtcontinental.sg)",
+ "stories": [],
+ "mentioned_services": [
+  "Mercedes-Benz servicing",
+  "Continental cars",
+  "Parking sensor repair",
+  "Fault diagnosis"
+ ],
+ "services_note": "Services as listed on the workshop's own website, gtcontinental.sg.",
+ "specialties": [
+  "Continental cars"
+ ],
+ "card_rules": "2026-11-06",
+ "makes": [
+  "Mercedes-Benz",
+  "BMW"
+ ],
+ "makes_note": "Named on its own website. Ask the workshop about other makes.",
+ "good_to_know": [
+  "Established in 1989, according to its website"
+ ]
+}

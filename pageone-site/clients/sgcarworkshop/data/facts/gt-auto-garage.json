@@ -1,0 +1,57 @@
+{
+ "slug": "gt-auto-garage",
+ "researched_at": "2026-11-05",
+ "researcher": "Claude, Google Places Details only (candidate from Google Places Text Search sweep at Edwin's request; name from Google Business Profile)",
+ "facts": [
+  {
+   "field": "displayName",
+   "value": "GT Auto Garage",
+   "source_url": "google_places",
+   "retrieved": "2026-11-05"
+  },
+  {
+   "field": "rating",
+   "value": "4.8",
+   "source_url": "google_places",
+   "retrieved": "2026-11-05"
+  },
+  {
+   "field": "userRatingCount",
+   "value": "328",
+   "source_url": "google_places",
+   "retrieved": "2026-11-05"
+  },
+  {
+   "field": "websiteUri",
+   "value": "http://gtautogarage.sg/",
+   "source_url": "google_places",
+   "retrieved": "2026-11-05"
+  },
+  {
+   "field": "types",
+   "value": "['car_repair', 'point_of_interest', 'service', 'establishment']",
+   "source_url": "google_places",
+   "retrieved": "2026-11-05"
+  },
+  {
+   "field": "primaryType",
+   "value": "car_repair",
+   "source_url": "google_places",
+   "retrieved": "2026-11-05"
+  },
+  {
+   "field": "opening_hours",
+   "value": [
+    "Monday: 10:30 AM – 7:00 PM",
+    "Tuesday: 10:30 AM – 7:00 PM",
+    "Wednesday: 10:30 AM – 7:00 PM",
+    "Thursday: 10:30 AM – 7:00 PM",
+    "Friday: 10:30 AM – 7:00 PM",
+    "Saturday: 10:30 AM – 7:00 PM",
+    "Sunday: Closed"
+   ],
+   "source_url": "google_places",
+   "retrieved": "2026-11-05"
+  }
+ ]
+}

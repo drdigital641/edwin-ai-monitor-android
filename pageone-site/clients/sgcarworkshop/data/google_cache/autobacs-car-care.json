@@ -1,0 +1,30 @@
+{
+ "businessStatus": "OPERATIONAL",
+ "primaryType": "car_repair",
+ "types": [
+  "car_repair",
+  "service",
+  "point_of_interest",
+  "establishment"
+ ],
+ "rating": 4.5,
+ "userRatingCount": 25,
+ "websiteUri": "http://www.autobacs.com.sg/",
+ "paymentOptions": null,
+ "parkingOptions": null,
+ "editorialSummary": null,
+ "weekdayDescriptions": [
+  "Monday: 8:30 AM – 5:30 PM",
+  "Tuesday: 8:30 AM – 5:30 PM",
+  "Wednesday: 8:30 AM – 5:30 PM",
+  "Thursday: 8:30 AM – 5:30 PM",
+  "Friday: 8:30 AM – 5:30 PM",
+  "Saturday: 8:30 AM – 12:00 PM",
+  "Sunday: Closed"
+ ],
+ "review_count_seen": 5,
+ "review_themes": "Customers on Google Maps mention responsive, efficient accident repairs, help through the whole insurance claim from towing to collection, quick sourcing of parts, and repairs finished within the quoted time.",
+ "fetched_at": "2026-11-06",
+ "place_id": "ChIJU4nWyeUX2jEREDaHVWS8_f0",
+ "source": "google_places"
+}

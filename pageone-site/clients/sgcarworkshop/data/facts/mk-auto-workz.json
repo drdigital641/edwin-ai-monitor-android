@@ -1,0 +1,33 @@
+{
+ "slug": "mk-auto-workz",
+ "researched_at": "2026-11-02",
+ "researcher": "Claude (Sonnet), facts supplied by Edwin's research notes where marked",
+ "facts": [
+  {
+   "field": "registration",
+   "value": "Registered sole proprietorship, motor vehicle repair and maintenance (Edwin research notes: companies.sg / recordowl)",
+   "source_url": "https://acrawatch.sg/company/mk-auto-workz",
+   "retrieved": "2026-11-02"
+  },
+  {
+   "field": "work_mentioned",
+   "value": "Publicly mentioned work: servicing, shock absorbers, aircon gas top-up, clutch replacement (Edwin research notes: wherecrowded)",
+   "source_url": "https://acrawatch.sg/company/mk-auto-workz",
+   "retrieved": "2026-11-02"
+  },
+  {
+   "field": "address",
+   "value": "8 Kaki Bukit Ave 4 #02-53 Premier@Kaki Bukit, Singapore 415875",
+   "source_url": "google_profile",
+   "retrieved": "2026-11-02"
+  }
+ ],
+ "conflicts": [],
+ "not_found": [
+  "own website",
+  "real job stories",
+  "makes"
+ ],
+ "stories": [],
+ "phone_rule": "Stored Google SG mobile only; no second numbers or landlines"
+}

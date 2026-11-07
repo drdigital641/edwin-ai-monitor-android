@@ -1,0 +1,34 @@
+{
+ "lede": "Kompressor Automotive Workshop is a car repair workshop at 8 Kaki Bukit Ave 4, #02-46 Premier @ Kaki Bukit. Its Google Maps listing shows opening hours and customer ratings.",
+ "chips": [
+  "Car repair"
+ ],
+ "services": [
+  "General servicing and repair"
+ ],
+ "themes": "Customers on Google Maps mention help on a Sunday with a fuel door that would not open, servicing with a transmission oil change, clear advice on what must be fixed now and what can wait, and Mercedes-Benz cars including an E200 and a C180.",
+ "faqs": [
+  [
+   "What does Kompressor Automotive Workshop do?",
+   "Google Maps lists it as a car repair workshop."
+  ],
+  [
+   "What are the opening hours?",
+   "The hours are listed in the Google Maps section above. Please see Google Maps for current hours."
+  ]
+ ],
+ "sources": "its Google Maps listing",
+ "stories": [],
+ "mentioned_services": [
+  "Car servicing",
+  "Transmission oil change",
+  "Fuel door actuator",
+  "Bumper scratch polish",
+  "Mercedes-Benz"
+ ],
+ "makes": [
+  "Mercedes-Benz"
+ ],
+ "makes_note": "Named by customers on Google Maps. Ask the workshop about other makes.",
+ "card_rules": "2026-11-05"
+}

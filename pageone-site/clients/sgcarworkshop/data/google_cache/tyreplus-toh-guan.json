@@ -1,0 +1,45 @@
+{
+ "businessStatus": "OPERATIONAL",
+ "primaryType": "car_repair",
+ "types": [
+  "car_repair",
+  "tire_shop",
+  "auto_parts_store",
+  "point_of_interest",
+  "service",
+  "store",
+  "establishment"
+ ],
+ "rating": 4.9,
+ "userRatingCount": 1012,
+ "websiteUri": "https://citytyre.com.sg/tyre-shop-toh-guan/",
+ "paymentOptions": {
+  "acceptsCreditCards": true,
+  "acceptsDebitCards": true,
+  "acceptsCashOnly": false,
+  "acceptsNfc": true
+ },
+ "parkingOptions": {
+  "freeParkingLot": true,
+  "paidParkingLot": false,
+  "freeStreetParking": true,
+  "paidStreetParking": false,
+  "freeGarageParking": true,
+  "paidGarageParking": false
+ },
+ "editorialSummary": null,
+ "weekdayDescriptions": [
+  "Monday: 8:45 AM – 5:45 PM",
+  "Tuesday: 8:45 AM – 5:45 PM",
+  "Wednesday: 8:45 AM – 5:45 PM",
+  "Thursday: 8:45 AM – 5:45 PM",
+  "Friday: 8:45 AM – 5:45 PM",
+  "Saturday: 8:45 AM – 2:45 PM",
+  "Sunday: 9:30 AM – 1:30 PM"
+ ],
+ "review_count_seen": 5,
+ "review_themes": "Customers on Google Maps mention fast tyre changes, help choosing tyres, tyre rotation and balancing, puncture checks at no charge when no repair was needed, and servicing without hard selling.",
+ "fetched_at": "2026-11-03",
+ "place_id": "ChIJD_wOam0Q2jER7y3mdgDACzQ",
+ "source": "google_places"
+}

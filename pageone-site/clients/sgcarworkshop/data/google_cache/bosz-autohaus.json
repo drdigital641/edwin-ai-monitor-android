@@ -1,0 +1,30 @@
+{
+ "businessStatus": "OPERATIONAL",
+ "primaryType": "car_repair",
+ "types": [
+  "car_repair",
+  "point_of_interest",
+  "service",
+  "establishment"
+ ],
+ "rating": 5,
+ "userRatingCount": 12,
+ "websiteUri": null,
+ "paymentOptions": null,
+ "parkingOptions": null,
+ "editorialSummary": null,
+ "weekdayDescriptions": [
+  "Monday: 9:30 AM – 6:00 PM",
+  "Tuesday: 9:30 AM – 6:00 PM",
+  "Wednesday: 9:30 AM – 6:00 PM",
+  "Thursday: 9:30 AM – 6:00 PM",
+  "Friday: 9:30 AM – 6:00 PM",
+  "Saturday: 9:30 AM – 1:00 PM",
+  "Sunday: Closed"
+ ],
+ "review_count_seen": 5,
+ "review_themes": "Customers on Google Maps mention patient, upfront mechanics with no hard selling, cost-saving fixes tried first, servicing finished within the estimated time, and strong troubleshooting of engine warning lights.",
+ "fetched_at": "2026-11-06",
+ "place_id": "ChIJ91LomyIR2jERzvEzsgDCwC8",
+ "source": "google_places"
+}

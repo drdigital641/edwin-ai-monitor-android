@@ -1,0 +1,30 @@
+{
+ "lede": "Xin Yun Auto is a car repair workshop at BLK 8 Kaki Bukit Ave 4, #05-23 premier @kaki bukit. Its Google Maps listing shows opening hours and customer ratings.",
+ "chips": [
+  "Car repair"
+ ],
+ "services": [
+  "General servicing and repair"
+ ],
+ "themes": "Customers on Google Maps mention a trustworthy, efficient team with fair prices, follow-up after repairs, patient root-cause fixes, and long-time returning customers.",
+ "faqs": [
+  [
+   "What does Xin Yun Auto do?",
+   "Google Maps lists it as a car repair workshop."
+  ],
+  [
+   "What are the opening hours?",
+   "The hours are listed in the Google Maps section above. Please see Google Maps for current hours."
+  ]
+ ],
+ "sources": "its Google Maps listing",
+ "stories": [],
+ "mentioned_services": [
+  "Car servicing",
+  "Repairs",
+  "Car advisory"
+ ],
+ "makes": [],
+ "makes_note": "Not listed on its public pages. Ask the workshop about your car.",
+ "card_rules": "2026-11-05"
+}

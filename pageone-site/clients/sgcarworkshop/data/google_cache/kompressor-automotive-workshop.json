@@ -1,0 +1,33 @@
+{
+ "businessStatus": "OPERATIONAL",
+ "primaryType": "car_repair",
+ "types": [
+  "car_repair",
+  "point_of_interest",
+  "service",
+  "establishment"
+ ],
+ "rating": 4.3,
+ "userRatingCount": 64,
+ "websiteUri": null,
+ "paymentOptions": {
+  "acceptsDebitCards": true,
+  "acceptsNfc": true
+ },
+ "parkingOptions": null,
+ "editorialSummary": null,
+ "weekdayDescriptions": [
+  "Monday: 9:00 AM – 10:00 PM",
+  "Tuesday: 9:00 AM – 10:00 PM",
+  "Wednesday: 9:00 AM – 10:00 PM",
+  "Thursday: 9:00 AM – 10:00 PM",
+  "Friday: 9:00 AM – 10:00 PM",
+  "Saturday: 9:00 AM – 6:00 PM",
+  "Sunday: 11:00 AM – 6:00 PM"
+ ],
+ "review_count_seen": 5,
+ "review_themes": "Customers on Google Maps mention help on a Sunday with a fuel door that would not open, servicing with a transmission oil change, clear advice on what must be fixed now and what can wait, and Mercedes-Benz cars including an E200 and a C180.",
+ "fetched_at": "2026-11-05",
+ "place_id": "ChIJY0-dYyAY2jER4eg-x-OfmzU",
+ "source": "google_places"
+}

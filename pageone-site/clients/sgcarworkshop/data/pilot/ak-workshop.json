@@ -1,0 +1,42 @@
+{
+ "lede": "AK Workshop is a car workshop in Ang Mo Kio Industrial Park 2. Its own website lists engine repairs, servicing and oil changes, ECU works and EV and hybrid repairs.",
+ "chips": [
+  "Engine repairs",
+  "Servicing and oil changes",
+  "ECU works"
+ ],
+ "services": [
+  "Engine repairs",
+  "Servicing and oil changes",
+  "ECU works",
+  "EV and hybrid repairs",
+  "Diagnostics",
+  "Body work",
+  "Spray painting",
+  "Accident claim repairs"
+ ],
+ "themes": "Customers on Google Maps mention long-time servicing since 2012, suspension noise fixed for less than another quote, magic collar installs, BMW work and repairs on an older Porsche Boxster.",
+ "sources": "its own website (akworkshop.com)",
+ "stories": [],
+ "mentioned_services": [
+  "Suspension replacement",
+  "BMW cars",
+  "Older cars",
+  "Regular servicing"
+ ],
+ "services_note": "Services as listed on the workshop's own website, akworkshop.com.",
+ "specialties": [
+  "Hybrid and EV servicing",
+  "ECU tuning"
+ ],
+ "card_rules": "2026-11-06",
+ "makes": [
+  "BMW",
+  "Porsche"
+ ],
+ "makes_note": "Named by customers on Google Maps. Ask the workshop about other makes.",
+ "good_to_know": [
+  "Established in 2012, according to its website",
+  "Enquiries by WhatsApp, according to its website"
+ ]
+}

@@ -1,0 +1,36 @@
+{
+ "businessStatus": "OPERATIONAL",
+ "primaryType": "car_repair",
+ "types": [
+  "car_dealer",
+  "store",
+  "car_repair",
+  "point_of_interest",
+  "service",
+  "establishment"
+ ],
+ "rating": 5,
+ "userRatingCount": 5,
+ "websiteUri": null,
+ "paymentOptions": {
+  "acceptsCreditCards": true,
+  "acceptsDebitCards": true,
+  "acceptsNfc": true
+ },
+ "parkingOptions": null,
+ "editorialSummary": null,
+ "weekdayDescriptions": [
+  "Monday: 10:00 AM – 6:30 PM",
+  "Tuesday: 10:00 AM – 6:30 PM",
+  "Wednesday: 10:00 AM – 6:30 PM",
+  "Thursday: 10:00 AM – 6:30 PM",
+  "Friday: 10:00 AM – 6:30 PM",
+  "Saturday: 10:00 AM – 1:00 PM",
+  "Sunday: Closed"
+ ],
+ "review_count_seen": 5,
+ "review_themes": "Customers on Google Maps mention a hands-on, knowledgeable boss, careful diagnosis, patient explanations, affordable prices across many brands and a suspension noise that was fixed.",
+ "fetched_at": "2026-11-06",
+ "place_id": "ChIJYTjgvm4X2jERiem4n6D5n_0",
+ "source": "google_places"
+}

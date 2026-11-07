@@ -1,0 +1,73 @@
+{
+ "schema_version": 1,
+ "slug": "merlin-motor-engineering-works",
+ "place_id": "ChIJ_cbOsFgW2jER9GL91QCOAcc",
+ "place_id_checked_at": "2026-11-02",
+ "name": "Merlin Motor & Engineering Works",
+ "name_source_url": "google_profile",
+ "name_checked_at": "2026-11-02",
+ "address": {
+  "block": "",
+  "street": "10 Ang Mo Kio Industrial Park 2A, #03-13 AMK AutoPoint",
+  "unit": "",
+  "building": ""
+ },
+ "postal_code": "568047",
+ "address_source_url": "google_profile",
+ "address_checked_at": "2026-11-02",
+ "categories": [
+  "SERV"
+ ],
+ "services": [
+  "General servicing and repair"
+ ],
+ "services_source_url": "google_profile",
+ "phones": [
+  {
+   "e164": "+6596327928",
+   "kind": "mobile",
+   "whatsapp": true,
+   "source": "google_profile",
+   "checked_at": "2026-11-02"
+  }
+ ],
+ "google_screen": {
+  "passed": true,
+  "reason": "OPERATIONAL, car repair, SG mobile on Google profile",
+  "checked_at": "2026-11-02"
+ },
+ "status": "active",
+ "tier": "basic",
+ "first_seen_at": "2026-11-02",
+ "last_verified_at": "2026-11-02",
+ "collector_version": "agent-v5",
+ "estate": "amk-industrial-park-2",
+ "planning_area": "Ang Mo Kio",
+ "region": "north-east",
+ "lat": 1.3769868,
+ "lng": 103.8688624,
+ "geo_source": "onemap",
+ "google_rating": {
+  "rating": 4.6,
+  "count": 101,
+  "checked": "2026-11-02",
+  "source": "Google Places",
+  "source_date": "2026-11-02"
+ },
+ "blocks": [
+  "hero",
+  "contact",
+  "services",
+  "good_for",
+  "problems",
+  "reviews",
+  "comparison",
+  "hours",
+  "stories",
+  "location",
+  "tips",
+  "faq",
+  "claim",
+  "sources"
+ ]
+}

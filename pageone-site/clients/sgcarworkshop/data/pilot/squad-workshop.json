@@ -1,0 +1,45 @@
+{
+ "lede": "Squad Workshop is a car workshop in Toh Guan Road East and Enterprise Hub. Its own website lists car servicing and maintenance, gearbox diagnostics, diagnostics and troubleshooting and performance tuning.",
+ "chips": [
+  "Car servicing and maintenance",
+  "Gearbox diagnostics",
+  "Diagnostics and troubleshooting"
+ ],
+ "services": [
+  "Car servicing and maintenance",
+  "Gearbox diagnostics",
+  "Diagnostics and troubleshooting",
+  "Performance tuning",
+  "Pre-purchase inspection",
+  "Air-conditioning service",
+  "Accident claims support",
+  "Infotainment installation"
+ ],
+ "themes": "Customers on Google Maps mention Volkswagen, Audi and Skoda work, a pre-purchase inspection with DQ200 gearbox checks, fixing problems a dealer could not diagnose, MMI upgrades and aircon compressor replacement.",
+ "sources": "its own website (squadworkshop.com)",
+ "stories": [],
+ "mentioned_services": [
+  "Volkswagen, Audi and Skoda cars",
+  "Pre-purchase inspection",
+  "DSG gearbox checks",
+  "MMI upgrade",
+  "Aircon compressor replacement"
+ ],
+ "services_note": "Services as listed on the workshop's own website, squadworkshop.com.",
+ "specialties": [
+  "Multi-brand diagnostics",
+  "DSG and gearbox work",
+  "Pre-purchase inspections"
+ ],
+ "card_rules": "2026-11-06",
+ "makes": [
+  "European",
+  "Japanese",
+  "Performance",
+  "Exotic"
+ ],
+ "makes_note": "Named on its own website. Ask the workshop about other makes.",
+ "good_to_know": [
+  "Enquiries by WhatsApp, according to its website"
+ ]
+}

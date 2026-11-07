@@ -1,0 +1,50 @@
+{
+ "lede": "1 Car Service is a car workshop in Sin Ming Industrial Estate. Its own website lists gearbox overhaul, engine overhaul, diagnostics and electrical and car aircon service.",
+ "chips": [
+  "Gearbox overhaul",
+  "Engine overhaul",
+  "Diagnostics and electrical"
+ ],
+ "services": [
+  "Gearbox overhaul",
+  "Engine overhaul",
+  "Diagnostics and electrical",
+  "Car aircon service",
+  "Car servicing",
+  "Hybrid battery repair",
+  "ECU repair",
+  "Mechatronic unit repair"
+ ],
+ "themes": "Customers on Google Maps mention careful diagnosis, clear updates and photos of worn parts before any work starts. Several mention Audi and Volvo cars, with jobs such as servicing, oil leaks, brakes, radiator fans and walnut blasting.",
+ "sources": "its own website (1car.sg)",
+ "stories": [],
+ "mentioned_services": [
+  "Car servicing",
+  "Oil leak repair",
+  "Brake and rotor replacement",
+  "Radiator fan replacement",
+  "Walnut blasting",
+  "Audi and Volvo cars"
+ ],
+ "services_note": "Services as listed on the workshop's own website, 1car.sg.",
+ "specialties": [
+  "Continental cars",
+  "Gearbox rebuilds"
+ ],
+ "card_rules": "2026-11-06",
+ "makes": [
+  "Porsche",
+  "Mercedes",
+  "BMW",
+  "Audi",
+  "Volkswagen",
+  "Toyota",
+  "Honda",
+  "Lexus"
+ ],
+ "makes_note": "Named on its own website. Ask the workshop about other makes.",
+ "good_to_know": [
+  "Enquiries by WhatsApp, according to its website",
+  "Its website mentions a warranty on its work"
+ ]
+}

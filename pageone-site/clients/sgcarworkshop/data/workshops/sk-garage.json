@@ -1,0 +1,73 @@
+{
+ "schema_version": 1,
+ "slug": "sk-garage",
+ "place_id": "ChIJEQw28Y4P2jER869rLsaNLuI",
+ "place_id_checked_at": "2026-11-04",
+ "name": "SK Garage",
+ "name_source_url": "google_profile",
+ "name_checked_at": "2026-11-04",
+ "address": {
+  "block": "",
+  "street": "7 Soon Lee St, #01-32",
+  "unit": "",
+  "building": ""
+ },
+ "postal_code": "627608",
+ "address_source_url": "google_profile",
+ "address_checked_at": "2026-11-04",
+ "categories": [
+  "SERV"
+ ],
+ "services": [
+  "General servicing and repair"
+ ],
+ "services_source_url": "google_profile",
+ "phones": [
+  {
+   "e164": "+6593839132",
+   "kind": "mobile",
+   "whatsapp": true,
+   "source": "google_profile",
+   "checked_at": "2026-11-04"
+  }
+ ],
+ "google_screen": {
+  "passed": true,
+  "reason": "OPERATIONAL, car repair, SG mobile on Google profile",
+  "checked_at": "2026-11-04"
+ },
+ "status": "active",
+ "tier": "basic",
+ "first_seen_at": "2026-11-04",
+ "last_verified_at": "2026-11-04",
+ "collector_version": "agent-v5",
+ "estate": "soon-lee-street-pioneer",
+ "planning_area": "Pioneer",
+ "region": "west",
+ "lat": 1.333914708088815,
+ "lng": 103.7000417921542,
+ "geo_source": "onemap",
+ "blocks": [
+  "hero",
+  "contact",
+  "services",
+  "good_for",
+  "problems",
+  "reviews",
+  "comparison",
+  "hours",
+  "stories",
+  "location",
+  "tips",
+  "faq",
+  "claim",
+  "sources"
+ ],
+ "google_rating": {
+  "rating": 4.7,
+  "count": 101,
+  "checked": "2026-11-04",
+  "source": "Google Places",
+  "source_date": "2026-11-04"
+ }
+}

@@ -1,0 +1,28 @@
+{
+ "lede": "Focus Auto is a car repair workshop at 1 Kaki Bukit Ave 6, #02-48/50 AutoBay@Kaki Bukit. Its Google Maps listing shows opening hours and customer ratings.",
+ "chips": [
+  "Car repair"
+ ],
+ "services": [
+  "General servicing and repair"
+ ],
+ "faqs": [
+  [
+   "What does Focus Auto do?",
+   "Google Maps lists it as a car repair workshop."
+  ],
+  [
+   "What are the opening hours?",
+   "The hours are listed in the Google Maps section above. Please see Google Maps for current hours."
+  ]
+ ],
+ "sources": "its Google Maps listing",
+ "stories": [],
+ "mentioned_services": [
+  "Accident and insurance claim repairs",
+  "Replacement car during repairs",
+  "Quick response to fault calls",
+  "Car servicing"
+ ],
+ "themes": "Customers on Google Maps mention accident repairs, insurance claim handling, a replacement car while theirs was repaired and quick response to a fault call."
+}

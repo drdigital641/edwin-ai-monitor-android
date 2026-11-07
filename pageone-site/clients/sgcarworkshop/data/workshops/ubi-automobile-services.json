@@ -1,0 +1,73 @@
+{
+ "schema_version": 1,
+ "slug": "ubi-automobile-services",
+ "place_id": "ChIJH4iravQX2jER7DDNxVI4IQ8",
+ "place_id_checked_at": "2026-11-03",
+ "name": "Ubi Automobile Services",
+ "name_source_url": "google_profile",
+ "name_checked_at": "2026-11-03",
+ "address": {
+  "block": "",
+  "street": "3018A Ubi Rd 1",
+  "unit": "",
+  "building": ""
+ },
+ "postal_code": "408711",
+ "address_source_url": "google_profile",
+ "address_checked_at": "2026-11-03",
+ "categories": [
+  "SERV"
+ ],
+ "services": [
+  "General servicing and repair"
+ ],
+ "services_source_url": "google_profile",
+ "phones": [
+  {
+   "e164": "+6598315660",
+   "kind": "mobile",
+   "whatsapp": true,
+   "source": "google_profile",
+   "checked_at": "2026-11-03"
+  }
+ ],
+ "google_screen": {
+  "passed": true,
+  "reason": "OPERATIONAL, car repair, SG mobile on Google profile",
+  "checked_at": "2026-11-03"
+ },
+ "status": "active",
+ "tier": "basic",
+ "first_seen_at": "2026-11-03",
+ "last_verified_at": "2026-11-03",
+ "collector_version": "agent-v5",
+ "estate": "ubi-road-1",
+ "planning_area": "Geylang",
+ "region": "central",
+ "lat": 1.329779981756695,
+ "lng": 103.8955363217138,
+ "geo_source": "onemap",
+ "google_rating": {
+  "rating": 4.0,
+  "count": 5,
+  "checked": "2026-11-04",
+  "source": "Google Places",
+  "source_date": "2026-11-04"
+ },
+ "blocks": [
+  "hero",
+  "contact",
+  "services",
+  "good_for",
+  "problems",
+  "reviews",
+  "comparison",
+  "hours",
+  "stories",
+  "location",
+  "tips",
+  "faq",
+  "claim",
+  "sources"
+ ]
+}

@@ -1,0 +1,69 @@
+{
+ "slug": "jl-auto-services",
+ "researched_at": "2026-11-03",
+ "researcher": "Claude (Sonnet), Google Places Details only (volume mode)",
+ "facts": [
+  {
+   "field": "rating",
+   "value": "4.6",
+   "source_url": "google_places",
+   "retrieved": "2026-11-03"
+  },
+  {
+   "field": "userRatingCount",
+   "value": "10",
+   "source_url": "google_places",
+   "retrieved": "2026-11-03"
+  },
+  {
+   "field": "websiteUri",
+   "value": "None",
+   "source_url": "google_places",
+   "retrieved": "2026-11-03"
+  },
+  {
+   "field": "paymentOptions",
+   "value": "None",
+   "source_url": "google_places",
+   "retrieved": "2026-11-03"
+  },
+  {
+   "field": "parkingOptions",
+   "value": "None",
+   "source_url": "google_places",
+   "retrieved": "2026-11-03"
+  },
+  {
+   "field": "types",
+   "value": "['car_repair', 'point_of_interest', 'service', 'establishment']",
+   "source_url": "google_places",
+   "retrieved": "2026-11-03"
+  },
+  {
+   "field": "opening_hours",
+   "value": [
+    "Monday: 9:00 AM – 6:00 PM",
+    "Tuesday: 9:00 AM – 6:00 PM",
+    "Wednesday: 9:00 AM – 6:00 PM",
+    "Thursday: 9:00 AM – 6:00 PM",
+    "Friday: 9:00 AM – 6:00 PM",
+    "Saturday: 9:00 AM – 3:00 PM",
+    "Sunday: Closed"
+   ],
+   "source_url": "google_places",
+   "retrieved": "2026-11-03"
+  }
+ ],
+ "conflicts": [],
+ "not_found": [
+  "editorialSummary",
+  "own research (stopped by Edwin 3 Nov 2026)",
+  "real job stories"
+ ],
+ "stories": [],
+ "phone_rule": "Stored Google SG mobile only",
+ "review_service_support": {
+  "Aircon servicing": "2 of 5 reviews",
+  "Car servicing": "2 of 5 reviews"
+ }
+}

@@ -1,0 +1,48 @@
+{
+ "lede": "Q MotorWorkz is an independent car workshop at WCEGA Plaza in Bukit Batok. Its own website lists accident claims, diagnostics, repairs and aircon work for European, Japanese and Korean cars.",
+ "chips": [
+  "Accident claims",
+  "Diagnostics",
+  "Aircon"
+ ],
+ "services": [
+  "Accident claims",
+  "Servicing and maintenance",
+  "Diagnostics",
+  "Engine and transmission",
+  "Aircon and electrical",
+  "Inspection and pre-purchase checks"
+ ],
+ "themes": "Customers on Google Maps mention photos of old and new parts, transparent prices, a car overhaul, a clutch pump fix for a van, quick troubleshooting and fair prices for private hire drivers.",
+ "faqs": [
+  [
+   "What does Q MotorWorkz do?",
+   "Google Maps lists it as a car repair workshop."
+  ],
+  [
+   "What are the opening hours?",
+   "The hours are listed in the Google Maps section above. Please see Google Maps for current hours."
+  ]
+ ],
+ "sources": "its own website",
+ "stories": [],
+ "mentioned_services": [
+  "Engine stall diagnosis",
+  "Car overhaul",
+  "Clutch pump",
+  "Car servicing"
+ ],
+ "services_note": "Services as listed on the workshop's own website.",
+ "specialties": [
+  "Accident claims",
+  "Testing before quoting",
+  "Aircon"
+ ],
+ "makes": [],
+ "makes_note": "Its website says it works on European, Japanese and Korean makes.",
+ "good_to_know": [
+  "Book a slot by WhatsApp or phone, according to its website",
+  "Its website says no work starts until the customer approves it in writing or on WhatsApp"
+ ],
+ "card_rules": "2026-11-05"
+}

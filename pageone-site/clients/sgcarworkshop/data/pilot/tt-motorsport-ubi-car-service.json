@@ -1,0 +1,36 @@
+{
+ "lede": "TT MotorSport is a car workshop in Paya Ubi Industrial Park. Its own website lists service and maintenance, transmission and engine overhaul, battery replacement and accident claim consultancy.",
+ "chips": [
+  "Service and maintenance",
+  "Transmission and engine overhaul",
+  "Battery replacement"
+ ],
+ "services": [
+  "Service and maintenance",
+  "Transmission and engine overhaul",
+  "Battery replacement",
+  "Accident claim consultancy",
+  "Aircon service",
+  "BMW parts replacement"
+ ],
+ "sources": "its own website (ttmotorsport.sg)",
+ "stories": [],
+ "mentioned_services": [
+  "Brake pad replacement",
+  "Transmission fluid change",
+  "Stabiliser link replacement"
+ ],
+ "themes": "Customers on Google Maps mention brake pad, transmission fluid and stabiliser link work, updates during the job and fast turnaround.",
+ "services_note": "Services as listed on the workshop's own website, ttmotorsport.sg.",
+ "specialties": [
+  "BMW repair and servicing"
+ ],
+ "card_rules": "2026-11-06",
+ "makes": [
+  "BMW"
+ ],
+ "makes_note": "Named on its own website. Ask the workshop about other makes.",
+ "good_to_know": [
+  "Enquiries by WhatsApp, according to its website"
+ ]
+}

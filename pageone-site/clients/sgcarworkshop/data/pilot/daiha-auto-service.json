@@ -1,0 +1,27 @@
+{
+ "lede": "Daiha Auto Service is a car repair workshop at 1004 Bukit Merah Lane 3, #01-27. Its Google Maps listing shows opening hours and customer ratings.",
+ "chips": [
+  "Car repair"
+ ],
+ "services": [
+  "General servicing and repair"
+ ],
+ "themes": "Customers on Google Maps mention dent, scratch and bumper repairs quoted from photos sent on WhatsApp, early-morning drop-offs and quotes that were kept to.",
+ "faqs": [
+  [
+   "What does Daiha Auto Service do?",
+   "Google Maps lists it as a car repair workshop."
+  ],
+  [
+   "What are the opening hours?",
+   "The hours are listed in the Google Maps section above. Please see Google Maps for current hours."
+  ]
+ ],
+ "sources": "its Google Maps listing",
+ "stories": [],
+ "mentioned_services": [
+  "Dent repair",
+  "Scratch and dent repair",
+  "Spray painting"
+ ]
+}

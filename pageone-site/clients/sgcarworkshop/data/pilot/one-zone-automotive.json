@@ -1,0 +1,27 @@
+{
+ "lede": "ONE ZONE AUTOMOTIVE is a car repair workshop at 5 Yishun Industrial Street 1, BizHub, #01-20 North Spring. Its Google Maps listing shows opening hours and customer ratings.",
+ "chips": [
+  "Car repair"
+ ],
+ "services": [
+  "General servicing and repair"
+ ],
+ "themes": "Customers on Google Maps mention patient fault finding, photos and videos during the work, a reconditioned gearbox swap for a lurching car and air mass sensor faults.",
+ "faqs": [
+  [
+   "What does ONE ZONE AUTOMOTIVE do?",
+   "Google Maps lists it as a car repair workshop."
+  ],
+  [
+   "What are the opening hours?",
+   "The hours are listed in the Google Maps section above. Please see Google Maps for current hours."
+  ]
+ ],
+ "sources": "its Google Maps listing",
+ "stories": [],
+ "mentioned_services": [
+  "Fault diagnosis",
+  "Gearbox replacement",
+  "Automatic transmission repair"
+ ]
+}

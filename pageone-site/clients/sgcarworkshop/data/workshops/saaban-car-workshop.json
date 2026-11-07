@@ -1,0 +1,66 @@
+{
+ "schema_version": 1,
+ "slug": "saaban-car-workshop",
+ "place_id": "ChIJQfH6vFgW2jERfCKoZLKWBJ8",
+ "name": "Saaban Car Workshop",
+ "phones": [
+  {
+   "e164": "+6594507078",
+   "kind": "mobile",
+   "whatsapp": true,
+   "source": "google_profile",
+   "checked_at": "2026-11-02"
+  }
+ ],
+ "status": "active",
+ "tier": "basic",
+ "categories": [
+  "SERV"
+ ],
+ "services": [
+  "General servicing and repair"
+ ],
+ "services_source_url": "google_profile",
+ "google_screen": {
+  "passed": true,
+  "reason": "OPERATIONAL, car repair, SG mobile on Google profile",
+  "checked_at": "2026-11-02"
+ },
+ "place_id_checked_at": "2026-11-02",
+ "name_source_url": "google_profile",
+ "name_checked_at": "2026-11-02",
+ "address": {
+  "block": "",
+  "street": "2 Yishun Industrial Street 1, #08-17 Northpoint Bizhub",
+  "unit": "",
+  "building": ""
+ },
+ "postal_code": "768159",
+ "address_source_url": "google_profile",
+ "address_checked_at": "2026-11-02",
+ "first_seen_at": "2026-11-02",
+ "last_verified_at": "2026-11-02",
+ "collector_version": "agent-v4",
+ "estate": "yishun-industrial-street-1",
+ "planning_area": "Yishun",
+ "region": "north",
+ "lat": 1.436188434554599,
+ "lng": 103.8430976340242,
+ "geo_source": "onemap",
+ "blocks": [
+  "hero",
+  "contact",
+  "services",
+  "good_for",
+  "problems",
+  "reviews",
+  "comparison",
+  "hours",
+  "stories",
+  "location",
+  "tips",
+  "faq",
+  "claim",
+  "sources"
+ ]
+}

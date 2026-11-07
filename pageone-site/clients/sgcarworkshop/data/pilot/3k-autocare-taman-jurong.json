@@ -1,0 +1,28 @@
+{
+ "lede": "3K AutoCare @ Taman Jurong is a car repair workshop at 1 Corporation Dr, #04-08. Its Google Maps listing shows opening hours and customer ratings.",
+ "chips": [
+  "Car repair"
+ ],
+ "services": [
+  "General servicing and repair"
+ ],
+ "themes": "Customers on Google Maps mention aircon compressor and cooling coil replacement, fast replies on WhatsApp, Sunday work and help with a car that kept failing its LTA emissions test.",
+ "faqs": [
+  [
+   "What does 3K AutoCare @ Taman Jurong do?",
+   "Google Maps lists it as a car repair workshop."
+  ],
+  [
+   "What are the opening hours?",
+   "The hours are listed in the Google Maps section above. Please see Google Maps for current hours."
+  ]
+ ],
+ "sources": "its Google Maps listing",
+ "stories": [],
+ "mentioned_services": [
+  "Aircon compressor replacement",
+  "Car aircon repair",
+  "Emissions test repair",
+  "Fault diagnosis"
+ ]
+}

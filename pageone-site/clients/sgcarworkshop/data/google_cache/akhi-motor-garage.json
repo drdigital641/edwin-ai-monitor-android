@@ -1,0 +1,31 @@
+{
+ "businessStatus": "OPERATIONAL",
+ "primaryType": "car_repair",
+ "types": [
+  "car_repair",
+  "point_of_interest",
+  "service",
+  "store",
+  "establishment"
+ ],
+ "rating": 5,
+ "userRatingCount": 13,
+ "websiteUri": "https://www.facebook.com/akhi.motorgarage/",
+ "paymentOptions": null,
+ "parkingOptions": null,
+ "editorialSummary": null,
+ "weekdayDescriptions": [
+  "Monday: 11:00 AM – 9:00 PM",
+  "Tuesday: 11:00 AM – 9:00 PM",
+  "Wednesday: 11:00 AM – 9:00 PM",
+  "Thursday: 11:00 AM – 9:00 PM",
+  "Friday: 2:30 – 9:00 PM",
+  "Saturday: Closed",
+  "Sunday: Closed"
+ ],
+ "review_count_seen": 5,
+ "review_themes": "Customers on Google Maps mention a friendly, honest local boss, engine overhauls, Subaru cars and other makes, and free advice on an aircon problem.",
+ "fetched_at": "2026-11-03",
+ "place_id": "ChIJ5YQlfkQT2jERhrZWcVxS6rs",
+ "source": "google_places"
+}

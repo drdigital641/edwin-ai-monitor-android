@@ -1,0 +1,30 @@
+{
+ "businessStatus": "OPERATIONAL",
+ "primaryType": "car_repair",
+ "types": [
+  "car_repair",
+  "point_of_interest",
+  "service",
+  "establishment"
+ ],
+ "rating": 5,
+ "userRatingCount": 104,
+ "websiteUri": "https://apexrecovery.sg/",
+ "paymentOptions": null,
+ "parkingOptions": null,
+ "editorialSummary": null,
+ "weekdayDescriptions": [
+  "Monday: 7:30 AM – 12:00 AM",
+  "Tuesday: 7:30 AM – 12:00 AM",
+  "Wednesday: 7:30 AM – 12:00 AM",
+  "Thursday: 7:30 AM – 12:00 AM",
+  "Friday: 7:30 AM – 12:00 AM",
+  "Saturday: 7:30 AM – 12:00 AM",
+  "Sunday: 7:30 AM – 12:00 AM"
+ ],
+ "review_count_seen": 5,
+ "review_themes": "Customers on Google Maps mention quick help when a car would not start, a video check to find a flat battery, and clear price information before the job.",
+ "fetched_at": "2026-11-04",
+ "place_id": "ChIJN7riMe4P2jERFuIYCcQsE3c",
+ "source": "google_places"
+}

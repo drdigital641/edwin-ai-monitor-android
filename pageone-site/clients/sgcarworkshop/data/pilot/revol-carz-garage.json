@@ -1,0 +1,63 @@
+{
+ "lede": "Revol Carz Garage is a European car workshop at 10 Ang Mo Kio Industrial Park 2A, in the AMK AutoPoint building. Its website says it has been running since 2003 and services BMW, Mercedes-Benz, Audi and Volkswagen cars.",
+ "chips": [
+  "BMW",
+  "Mercedes-Benz",
+  "Audi and Volkswagen"
+ ],
+ "services": [
+  "Routine servicing",
+  "Engine repair",
+  "Transmission work",
+  "Electrical fault diagnosis",
+  "Brand-specific diagnostic tools",
+  "Factory-spec engine oil",
+  "Original replacement parts, with OEM parts as an option for older cars"
+ ],
+ "good_for": [
+  "BMW",
+  "Mercedes-Benz",
+  "Audi",
+  "Volkswagen",
+  "Its website states a minimum 1-year warranty on repairs"
+ ],
+ "faqs": [
+  [
+   "Which cars does Revol Carz Garage work on?",
+   "Its website lists European car servicing for BMW, Mercedes-Benz, Audi and Volkswagen."
+  ],
+  [
+   "What does the garage service?",
+   "Routine servicing, engine repair, transmission work and electrical fault diagnosis, using brand-specific diagnostic tools."
+  ],
+  [
+   "Does it use original parts?",
+   "Its website says original replacement parts are used, and suggests OEM parts as a cost-effective option for older cars."
+  ],
+  [
+   "Is there a warranty?",
+   "Its website states a minimum of 1 year on all repairs. Please confirm the terms with the workshop."
+  ],
+  [
+   "Where can I read about its past jobs?",
+   "The workshop publishes job write-ups on its own site. Two are summarised on this page, with links."
+  ],
+  [
+   "What are the opening hours?",
+   "Sources differ, so please see Google Maps for current hours."
+  ]
+ ],
+ "sources": "its website (revol.com.sg)",
+ "stories": [
+  {
+   "title": "BMW 730Li: front wheel bearing",
+   "text": "A 730Li came in with a hum that rose with road speed and a growl when cornering. The garage found a rough front wheel bearing on the driver side and fitted a new BMW-spec bearing. The write-up says the noise was gone after a short road test (job done 18 April 2026).",
+   "url": "https://www.revol.com.sg/case-studies/bmw-case-study-245-730li-wheel-bearing-replacement/"
+  },
+  {
+   "title": "BMW 116i: EVAP purge valve",
+   "text": "A 116i had a check engine light on for weeks, with a rough idle at traffic lights and slow cold starts. The garage traced it to a leaking EVAP purge valve using a smoke test and bench test, fitted a new valve and cleared the codes. The write-up says the idle was steady again (job done 2 May 2026).",
+   "url": "https://www.revol.com.sg/case-studies/bmw-case-study-247-116i-evap-valve-replacement/"
+  }
+ ]
+}

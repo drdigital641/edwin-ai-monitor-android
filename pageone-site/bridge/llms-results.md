@@ -1,0 +1,20 @@
+## Results (Google Search Console, 28 days 1 October to 28 October 2026, compared with 3 September to 30 September 2026)
+- Edwin Garage (sggarage.com): 2,508 clicks from Google (up from 2,238), average position steady at 6.2, on page one for 4,200+ different searches. Search Console data starts 26 June 2026.
+- Cleanic Detailing (cleanicdetailing.com): 479 clicks from Google (up from 474), average position 7.9 (from 10.4), on page one for 1,327 different searches. Search Console data starts 20 June 2026.
+- SofaCare SG (sofacaresg.com): shown on Google 5,340 times, on page one for 47 searches. Search Console data starts 4 September 2026. Still early.
+- Alicia Ong Property (aliciaongproperty.com): shown on Google 1,159 times, on page one for 42 searches. Search Console data starts 30 September 2026. Still early.
+- Danny Chua Financial (dannychuafinancial.com): shown on Google 8,748 times (up from 3,348), on page one for 140 searches. Still early.
+- The ECU Clinic (theecuclinicsg.com): Search Console data starts 12 October 2026; shown on Google 1,981 times, 18 clicks so far. Too early to report results.
+- Jacky Gearbox (jackygearbox.com): Search Console data starts 13 October 2026; shown on Google 743 times, 6 clicks so far. Too early to report results.
+- Star Performance Motor (starperformancemotor.com): Search Console data starts 16 October 2026; shown on Google 574 times, 14 clicks so far. Too early to report results.
+- Wrapstar Autostyle (wrapstarautostyle.com): Search Console data starts 17 October 2026; shown on Google 652 times, 8 clicks so far. Too early to report results.
+- CSKA Auto Enterprise (cskatrading.com): Search Console data starts 18 October 2026; shown on Google 340 times, 9 clicks so far. Too early to report results.
+- Dongfeng Johor Bahru (mykar.my): Search Console data starts 19 October 2026; shown on Google 294 times, 5 clicks so far. Too early to report results.
+- Benjamin Poon (planwithben.sg): Search Console data starts 23 October 2026; shown on Google 562 times, 6 clicks so far. Too early to report results.
+- SG Commercial Fitout (commercialfitout.sg): Search Console data starts 25 October 2026; shown on Google 123 times, 3 clicks so far. Too early to report results.
+- Battery Rescue SG (batteryrescue.sg): Search Console data starts 27 October 2026; shown on Google 30 times, 0 clicks so far. Too early to report results.
+- AI Vending Solution (aivs.sg): new website went live on 18 October 2026; its earlier Search Console data belongs to the previous website, so results are reported only from after our launch.
+- Autotex (autotexautoparts.com.sg), Klar Details (klardetails.com.sg), EV Body Parts (evbodyparts.sg), XADO Singapore (xado-shop.sg), ContiExpert by Volt Autocare (contiexpert.sg) and New Zen Werkz (newzenwerkz.com.sg): launched October 2026 and November 2026, no Search Console data yet.
+- Full case studies: https://pageonesingapore.com/results/
+- Every client website with its numbers: https://pageonesingapore.com/clients/
+- Low price, real results: S$50 a month is low because a set of AI tools we designed does the daily SEO work that used to be billed by the hour; the numbers above come from the same system.

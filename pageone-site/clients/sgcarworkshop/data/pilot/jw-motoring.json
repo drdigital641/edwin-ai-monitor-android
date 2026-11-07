@@ -1,0 +1,49 @@
+{
+ "lede": "JW Motoring is a car workshop in Kaki Bukit Industrial Estate. Its own website lists car servicing and maintenance, engine repair and overhaul, gearbox and transmission repair and aircon servicing and repair.",
+ "chips": [
+  "Car servicing and maintenance",
+  "Engine repair and overhaul",
+  "Gearbox and transmission repair"
+ ],
+ "services": [
+  "Car servicing and maintenance",
+  "Engine repair and overhaul",
+  "Gearbox and transmission repair",
+  "Aircon servicing and repair",
+  "Accident assessment and claim support",
+  "Coilover and suspension upgrades",
+  "Big brake kit upgrades",
+  "EV and hybrid maintenance",
+  "Pre-purchase inspection",
+  "Van servicing",
+  "Battery replacement"
+ ],
+ "themes": "Customers on Google Maps mention aircon system flushing, pre-purchase inspections with printed diagnostic results, and repairs explained without pressure.",
+ "sources": "its own website (jwmotoring.sg)",
+ "stories": [],
+ "mentioned_services": [
+  "Aircon flushing",
+  "Pre-purchase inspection",
+  "Car repair"
+ ],
+ "services_note": "Services as listed on the workshop's own website, jwmotoring.sg.",
+ "specialties": [
+  "Continental cars",
+  "Suspension and brake upgrades",
+  "EV and hybrid maintenance"
+ ],
+ "card_rules": "2026-11-06",
+ "makes": [
+  "BMW",
+  "Mercedes-Benz",
+  "Audi",
+  "Volkswagen",
+  "Porsche",
+  "Japanese",
+  "Korean"
+ ],
+ "makes_note": "Named on its own website. Ask the workshop about other makes.",
+ "good_to_know": [
+  "Enquiries by WhatsApp, according to its website"
+ ]
+}

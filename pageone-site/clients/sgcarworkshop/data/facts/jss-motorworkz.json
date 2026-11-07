@@ -1,0 +1,52 @@
+{
+ "slug": "jss-motorworkz",
+ "researched_at": "2026-11-02",
+ "researcher": "Claude (Sonnet)",
+ "facts": [
+  {
+   "field": "services",
+   "value": "General servicing and maintenance; engine and gearbox repair and overhaul; aircon servicing and overhaul; tyres, wheels and alignment; batteries; walnut blasting; accident repair and spray painting",
+   "source_url": "https://jssmotorworkz.com/services/",
+   "retrieved": "2026-11-02"
+  },
+  {
+   "field": "makes",
+   "value": "Continental, Japanese and Korean vehicles; makes named include BMW, Mercedes-Benz, Audi, Volkswagen, Porsche, MINI, Jaguar, Land Rover, Toyota, Honda, Nissan, Mazda, Subaru, Mitsubishi, Hyundai, Kia, Lexus, Volvo, Suzuki, Ford, Peugeot, Renault",
+   "source_url": "https://jssmotorworkz.com/",
+   "retrieved": "2026-11-02"
+  },
+  {
+   "field": "address",
+   "value": "48 Toh Guan Road East #02-140, Singapore 608586",
+   "source_url": "https://jssmotorworkz.com/",
+   "retrieved": "2026-11-02"
+  }
+ ],
+ "conflicts": [
+  {
+   "field": "warranty",
+   "values": [
+    {
+     "value": "12 months workmanship warranty on major repairs and overhauls",
+     "source_url": "https://sites.google.com/jssmotorworkz.com/about-us/home"
+    },
+    {
+     "value": "24 months / 40K",
+     "source_url": "https://sites.google.com/jssmotorworkz.com/about-us/home"
+    },
+    {
+     "value": "repair warranty for eligible repairs, no duration",
+     "source_url": "https://jssmotorworkz.com/"
+    }
+   ],
+   "note": "not used on the page"
+  }
+ ],
+ "not_found": [
+  "year established",
+  "payment methods (listed only on the old Google Sites page that says \"We have moved\"; not used)",
+  "real job stories: its blog posts are general advice articles, not customer jobs (https://jssmotorworkz.com/blog)"
+ ],
+ "stories": [],
+ "phone_rule": "Phone = the stored Google mobile only; other numbers are never published."
+}

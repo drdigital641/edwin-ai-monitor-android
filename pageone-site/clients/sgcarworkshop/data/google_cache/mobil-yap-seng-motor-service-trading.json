@@ -1,0 +1,30 @@
+{
+ "businessStatus": "OPERATIONAL",
+ "primaryType": "car_repair",
+ "types": [
+  "car_repair",
+  "point_of_interest",
+  "service",
+  "establishment"
+ ],
+ "rating": 5,
+ "userRatingCount": 25,
+ "websiteUri": "https://workshop.sea.mobil.com/sg/mobil-yap-seng-motor-service-trading-oil-change-service-bukit-batok-st-23-singapore-537103/Home?utm_source=locator&utm_medium=googleplaces",
+ "paymentOptions": null,
+ "parkingOptions": null,
+ "editorialSummary": null,
+ "weekdayDescriptions": [
+  "Monday: 9:00 AM – 7:00 PM",
+  "Tuesday: 9:00 AM – 7:00 PM",
+  "Wednesday: 9:00 AM – 7:00 PM",
+  "Thursday: 9:00 AM – 7:00 PM",
+  "Friday: 9:00 AM – 7:00 PM",
+  "Saturday: 9:00 AM – 7:00 PM",
+  "Sunday: Closed"
+ ],
+ "review_count_seen": 5,
+ "review_themes": "Customers on Google Maps mention a long-serving, knowledgeable boss, reasonable prices, servicing and repairs done within a day, help after working hours and roadside rescue, with some customers returning for many years.",
+ "fetched_at": "2026-11-05",
+ "place_id": "ChIJpbuRL2wQ2jERCENXu2B86Hc",
+ "source": "google_places"
+}

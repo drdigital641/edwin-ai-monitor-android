@@ -1,0 +1,37 @@
+{
+ "businessStatus": "OPERATIONAL",
+ "primaryType": "car_repair",
+ "types": [
+  "car_rental",
+  "car_repair",
+  "point_of_interest",
+  "car_dealer",
+  "store",
+  "service",
+  "establishment"
+ ],
+ "rating": 4.9,
+ "userRatingCount": 264,
+ "websiteUri": "http://www.mtm.sg/",
+ "paymentOptions": {
+  "acceptsDebitCards": true,
+  "acceptsCashOnly": false,
+  "acceptsNfc": true
+ },
+ "parkingOptions": null,
+ "editorialSummary": null,
+ "weekdayDescriptions": [
+  "Monday: 10:00 AM – 7:00 PM",
+  "Tuesday: 10:00 AM – 7:00 PM",
+  "Wednesday: 10:00 AM – 7:00 PM",
+  "Thursday: 10:00 AM – 7:00 PM",
+  "Friday: 10:00 AM – 7:00 PM",
+  "Saturday: 10:00 AM – 4:00 PM",
+  "Sunday: Closed"
+ ],
+ "review_count_seen": 5,
+ "review_themes": "Customers on Google Maps mention a smooth, no-pressure car buying process with clear paperwork, and careful measurement and neat workmanship on a big brake kit installation.",
+ "fetched_at": "2026-11-06",
+ "place_id": "ChIJY8aF8NoR2jERMkoX6v6pa00",
+ "source": "google_places"
+}

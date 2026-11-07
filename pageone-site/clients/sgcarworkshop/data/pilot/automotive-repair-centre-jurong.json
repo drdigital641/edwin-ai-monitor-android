@@ -1,0 +1,36 @@
+{
+ "lede": "Automotive Repair Centre [Jurong] is a car workshop in Toh Guan Road East and Enterprise Hub. Its own website lists accident claims and reporting, paint and body work, maintenance and repair and diagnostics.",
+ "chips": [
+  "Accident claims and reporting",
+  "Paint and body work",
+  "Maintenance and repair"
+ ],
+ "services": [
+  "Accident claims and reporting",
+  "Paint and body work",
+  "Maintenance and repair",
+  "Diagnostics",
+  "OBU installation enquiries"
+ ],
+ "themes": "Customers on Google Maps mention accident repair handled through the other party’s insurance, help with accident reports, clear and timely updates, and cars returned within the promised time.",
+ "sources": "its own website (automotiverepaircentre.com.sg)",
+ "stories": [],
+ "mentioned_services": [
+  "Accident repair",
+  "Insurance claims",
+  "Accident reporting",
+  "Car servicing"
+ ],
+ "services_note": "Services as listed on the workshop's own website, automotiverepaircentre.com.sg.",
+ "specialties": [
+  "Accident repair",
+  "Paint and body work"
+ ],
+ "card_rules": "2026-11-06",
+ "makes": [],
+ "makes_note": "Not listed on its public pages. Ask the workshop about your car.",
+ "good_to_know": [
+  "Its website mentions a warranty on its work",
+  "Enquiries by WhatsApp, according to its website"
+ ]
+}

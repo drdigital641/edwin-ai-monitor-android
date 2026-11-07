@@ -1,0 +1,37 @@
+{
+ "lede": "Palm Motorsports is a car workshop in Corporation Drive, Jurong East. Its own website lists general servicing and repair, aircon repair and maintenance, accident claims assistance and engine oil servicing.",
+ "chips": [
+  "General servicing and repair",
+  "Aircon repair and maintenance",
+  "Accident claims assistance"
+ ],
+ "services": [
+  "General servicing and repair",
+  "Aircon repair and maintenance",
+  "Accident claims assistance",
+  "Engine oil servicing",
+  "Aircon flushing",
+  "Brake kits"
+ ],
+ "sources": "its own website (palmmotorsports.com.sg)",
+ "stories": [],
+ "mentioned_services": [
+  "Car servicing",
+  "Walnut blasting",
+  "Aircon flushing",
+  "Wear-and-tear components",
+  "Van servicing",
+  "Insurance advice"
+ ],
+ "themes": "Customers on Google Maps mention servicing, walnut blasting, aircon flushing, van servicing and insurance advice.",
+ "services_note": "Services as listed on the workshop's own website, palmmotorsports.com.sg.",
+ "specialties": [
+  "Diagnostic equipment"
+ ],
+ "card_rules": "2026-11-06",
+ "makes": [],
+ "makes_note": "Not listed on its public pages. Ask the workshop about your car.",
+ "good_to_know": [
+  "Enquiries by WhatsApp, according to its website"
+ ]
+}

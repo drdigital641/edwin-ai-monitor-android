@@ -1,0 +1,51 @@
+{
+ "lede": "Redline Autoworks is a car workshop at Premier@Kaki Bukit. Its own website lists everyday servicing and repairs alongside performance work such as ECU tuning, exhausts, big brake kits and coilovers, for Japanese and European cars.",
+ "chips": [
+  "Performance upgrades",
+  "Car servicing",
+  "Diagnostics"
+ ],
+ "services": [
+  "ECU remapping and tuning",
+  "Performance exhaust systems",
+  "Performance brake upgrades",
+  "Performance suspension and coilovers",
+  "Diagnostics and fault finding",
+  "Routine servicing and maintenance",
+  "Brake, suspension and steering repairs",
+  "Aircon service and repair",
+  "Cooling, transmission and electrical repairs",
+  "Pre-purchase inspection"
+ ],
+ "themes": "Customers on Google Maps mention clear advice, accident claim help from start to finish, a clean and spacious workshop, transparent timelines and costs, and availability after hours.",
+ "faqs": [
+  [
+   "What does Redline Autoworks do?",
+   "Google Maps lists it as a car repair workshop."
+  ],
+  [
+   "What are the opening hours?",
+   "The hours are listed in the Google Maps section above. Please see Google Maps for current hours."
+  ]
+ ],
+ "sources": "its own website (redlineautoworks.com.sg)",
+ "stories": [],
+ "mentioned_services": [
+  "Car servicing",
+  "Accident claim repairs",
+  "Car repair"
+ ],
+ "services_note": "Services as listed on the workshop's own website, redlineautoworks.com.sg.",
+ "specialties": [
+  "Performance parts and tuning",
+  "Japanese and European cars",
+  "Diagnosis before quoting"
+ ],
+ "makes": [],
+ "makes_note": "Its website says it works on Japanese and European models.",
+ "good_to_know": [
+  "Bookings by WhatsApp or online, according to its website",
+  "Its website says it diagnoses before quoting and test drives before handover"
+ ],
+ "card_rules": "2026-11-05"
+}

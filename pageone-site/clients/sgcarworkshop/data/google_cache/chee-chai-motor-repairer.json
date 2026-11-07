@@ -1,0 +1,30 @@
+{
+ "businessStatus": "OPERATIONAL",
+ "primaryType": "car_repair",
+ "types": [
+  "car_repair",
+  "point_of_interest",
+  "service",
+  "establishment"
+ ],
+ "rating": 3.8,
+ "userRatingCount": 38,
+ "websiteUri": null,
+ "paymentOptions": null,
+ "parkingOptions": null,
+ "editorialSummary": null,
+ "weekdayDescriptions": [
+  "Monday: 8:15 AM – 6:00 PM",
+  "Tuesday: 8:15 AM – 6:00 PM",
+  "Wednesday: 8:15 AM – 6:00 PM",
+  "Thursday: 8:15 AM – 6:00 PM",
+  "Friday: 8:15 AM – 6:00 PM",
+  "Saturday: 8:15 AM – 5:30 PM",
+  "Sunday: Closed"
+ ],
+ "review_count_seen": 5,
+ "review_themes": "Customers on Google Maps mention photos of old parts after removal, calls to explain before work goes ahead, and open pricing. Some customers felt pushed on extra brake work or follow-up visits.",
+ "fetched_at": "2026-11-03",
+ "place_id": "ChIJedZ_eosR2jERD0YpUilf6No",
+ "source": "google_places"
+}

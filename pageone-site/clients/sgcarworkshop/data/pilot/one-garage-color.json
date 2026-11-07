@@ -1,0 +1,31 @@
+{
+ "lede": "One Garage & Color is a car repair workshop at 8 Kaki Bukit Ave 4, #03-33, #03-14 & #04-50 Premier@Kaki Bukit Gate 2. Its Google Maps listing shows opening hours and customer ratings.",
+ "chips": [
+  "Car repair"
+ ],
+ "services": [
+  "General servicing and repair"
+ ],
+ "themes": "Customers on Google Maps mention fast servicing by appointment, an alternator repair done within two hours at a reasonable charge, engine warning light checks and staff who make time to help with diagnostics.",
+ "faqs": [
+  [
+   "What does One Garage & Color do?",
+   "Google Maps lists it as a car repair workshop."
+  ],
+  [
+   "What are the opening hours?",
+   "The hours are listed in the Google Maps section above. Please see Google Maps for current hours."
+  ]
+ ],
+ "sources": "its Google Maps listing",
+ "stories": [],
+ "mentioned_services": [
+  "Car servicing",
+  "Alternator repair",
+  "Engine warning light check",
+  "Brake fluid change"
+ ],
+ "makes": [],
+ "makes_note": "Not listed on its public pages. Ask the workshop about your car.",
+ "card_rules": "2026-11-05"
+}

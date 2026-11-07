@@ -1,0 +1,51 @@
+{
+ "lede": "TG Auto is a car workshop at Premier@Kaki Bukit. Its own website says it specialises in Mercedes-Benz and BMW cars, with repairs, engine overhauls, diagnosis, bodywork, insurance claims and ECU performance tuning.",
+ "chips": [
+  "Mercedes-Benz and BMW",
+  "ECU tuning",
+  "Diagnosis"
+ ],
+ "services": [
+  "Mercedes-Benz and BMW repairs",
+  "Car insurance claims",
+  "Bodywork repair",
+  "Engine repair and overhaul",
+  "Performance tuning",
+  "Professional diagnosis",
+  "Aircon, brakes, tyres and wheel alignment",
+  "Oil change servicing"
+ ],
+ "themes": "Customers on Google Maps mention a friendly boss who explains what is needed without pushing extra repairs, cost-effective fixes, a brake fluid change, and scratch removal and paint work on a BMW.",
+ "faqs": [
+  [
+   "What does TG Auto do?",
+   "Google Maps lists it as a car repair workshop."
+  ],
+  [
+   "What are the opening hours?",
+   "The hours are listed in the Google Maps section above. Please see Google Maps for current hours."
+  ]
+ ],
+ "sources": "its own website (tgauto.com.sg)",
+ "stories": [],
+ "mentioned_services": [
+  "Car servicing",
+  "Brake fluid change",
+  "Scratch removal and paint"
+ ],
+ "services_note": "Services as listed on the workshop's own website, tgauto.com.sg.",
+ "specialties": [
+  "Mercedes-Benz and BMW cars",
+  "ECU performance tuning"
+ ],
+ "makes": [
+  "Mercedes-Benz",
+  "BMW"
+ ],
+ "makes_note": "Named on its own website, which says it accepts all makes and models.",
+ "good_to_know": [
+  "Same-day service for most repairs and maintenance, according to its website",
+  "Appointments by WhatsApp or its contact form"
+ ],
+ "card_rules": "2026-11-05"
+}

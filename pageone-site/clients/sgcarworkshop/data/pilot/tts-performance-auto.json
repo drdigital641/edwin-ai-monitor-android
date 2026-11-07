@@ -1,0 +1,39 @@
+{
+ "lede": "TTS Performance Auto is a car repair workshop at 1018 Yishun Industrial Park A, #01-346. Its Google Maps listing shows opening hours, payment options and customer ratings.",
+ "chips": [
+  "Car repair",
+  "Tyres and wheels",
+  "Car parts"
+ ],
+ "services": [
+  "General servicing and repair",
+  "Tyres and wheel services",
+  "Car parts"
+ ],
+ "themes": "Customers on Google Maps mention clear advice, wheel alignment, diagnosing undercarriage noises and affordable pricing.",
+ "faqs": [
+  [
+   "What does TTS Performance Auto do?",
+   "Google Maps lists it as a car repair workshop."
+  ],
+  [
+   "How can I pay?",
+   "Google Maps lists credit cards, contactless."
+  ],
+  [
+   "Does it have a website?",
+   "Yes, a link is shown above from its Google Maps listing."
+  ],
+  [
+   "What are the opening hours?",
+   "The hours are listed in the Google Maps section above. Please see Google Maps for current hours."
+  ]
+ ],
+ "sources": "its Google Maps listing",
+ "stories": [],
+ "mentioned_services": [
+  "Wheel alignment",
+  "Engine oil leak diagnosis",
+  "Undercarriage noise diagnosis"
+ ]
+}

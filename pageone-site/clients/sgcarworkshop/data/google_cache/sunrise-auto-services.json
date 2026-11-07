@@ -1,0 +1,30 @@
+{
+ "businessStatus": "OPERATIONAL",
+ "primaryType": "car_repair",
+ "types": [
+  "car_repair",
+  "point_of_interest",
+  "service",
+  "establishment"
+ ],
+ "rating": 4.8,
+ "userRatingCount": 44,
+ "websiteUri": "https://sunriseauto.com.sg/",
+ "paymentOptions": null,
+ "parkingOptions": null,
+ "editorialSummary": null,
+ "weekdayDescriptions": [
+  "Monday: 9:00 AM – 6:00 PM",
+  "Tuesday: 9:00 AM – 6:00 PM",
+  "Wednesday: 9:00 AM – 6:00 PM",
+  "Thursday: 9:00 AM – 6:00 PM",
+  "Friday: 9:00 AM – 6:00 PM",
+  "Saturday: 9:00 AM – 5:00 PM",
+  "Sunday: 10:00 AM – 5:00 PM"
+ ],
+ "review_count_seen": 5,
+ "review_themes": "Customers on Google Maps mention clear explanations with prices upfront, a waiting lounge, help moving an OBU display that blocked the view, and a quick fix for a badly vibrating car.",
+ "fetched_at": "2026-11-03",
+ "place_id": "ChIJN8B1VMgX2jERUGTW-cAPqBI",
+ "source": "google_places"
+}

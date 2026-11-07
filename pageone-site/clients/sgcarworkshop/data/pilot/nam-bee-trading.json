@@ -1,0 +1,27 @@
+{
+ "lede": "Nam Bee Trading is a car repair workshop at 60 Jln Lam Huat, #05-43. Its Google Maps listing shows opening hours and customer ratings.",
+ "chips": [
+  "Car repair"
+ ],
+ "services": [
+  "General servicing and repair"
+ ],
+ "themes": "Customers on Google Maps mention a long-running tyre shop, now on level 5 of Carros Centre, with competitive tyre prices and help with flat tyres.",
+ "faqs": [
+  [
+   "What does Nam Bee Trading do?",
+   "Google Maps lists it as a car repair workshop."
+  ],
+  [
+   "What are the opening hours?",
+   "The hours are listed in the Google Maps section above. Please see Google Maps for current hours."
+  ]
+ ],
+ "sources": "its Google Maps listing",
+ "stories": [],
+ "mentioned_services": [
+  "Tyre replacement",
+  "Flat tyre help",
+  "Tyre upgrades"
+ ]
+}

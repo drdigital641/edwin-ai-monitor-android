@@ -1,0 +1,27 @@
+{
+ "lede": "7 Garage is a car repair workshop at 2 Yishun Industrial Street 1, #02−06 Northpoint Bizhub. Its Google Maps listing shows opening hours and customer ratings.",
+ "chips": [
+  "Car repair"
+ ],
+ "services": [
+  "General servicing and repair"
+ ],
+ "themes": "Customers on Google Maps mention battery help after a breakdown, quick fault finding such as a blown fuse, and a mechanic sent out in an emergency.",
+ "faqs": [
+  [
+   "What does 7 Garage do?",
+   "Google Maps lists it as a car repair workshop."
+  ],
+  [
+   "What are the opening hours?",
+   "The hours are listed in the Google Maps section above. Please see Google Maps for current hours."
+  ]
+ ],
+ "sources": "its Google Maps listing",
+ "stories": [],
+ "mentioned_services": [
+  "Battery replacement",
+  "Fault diagnosis",
+  "Breakdown repair"
+ ]
+}

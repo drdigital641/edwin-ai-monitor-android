@@ -1,0 +1,27 @@
+{
+ "lede": "YS GARAGE is a car repair workshop at 286 MacPherson Rd. Its Google Maps listing shows opening hours and customer ratings.",
+ "chips": [
+  "Car repair"
+ ],
+ "services": [
+  "General servicing and repair"
+ ],
+ "themes": "Customers on Google Maps mention tyre and rim changes done within an hour, help choosing rims, honest advice and a careful check on a suspected gearbox problem.",
+ "faqs": [
+  [
+   "What does YS GARAGE do?",
+   "Google Maps lists it as a car repair workshop."
+  ],
+  [
+   "What are the opening hours?",
+   "The hours are listed in the Google Maps section above. Please see Google Maps for current hours."
+  ]
+ ],
+ "sources": "its Google Maps listing",
+ "stories": [],
+ "mentioned_services": [
+  "Tyre replacement",
+  "Tyre upgrades",
+  "Fault diagnosis"
+ ]
+}

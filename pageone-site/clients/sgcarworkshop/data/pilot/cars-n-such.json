@@ -1,0 +1,39 @@
+{
+ "lede": "Cars N Such is a car workshop in Jalan Lam Huat and Carros Centre. Its own website lists minor and major servicing, engine oil, transmission oil and repairs and maintenance.",
+ "chips": [
+  "Minor and major servicing",
+  "Engine oil",
+  "Transmission oil"
+ ],
+ "services": [
+  "Minor and major servicing",
+  "Engine oil",
+  "Transmission oil",
+  "Repairs and maintenance",
+  "Brake kits",
+  "Car accessories"
+ ],
+ "themes": "Customers on Google Maps mention careful diagnosis of error codes and fault lights explained in plain words, help with older cars, transparent quotes on WhatsApp and a respray of a Honda Civic.",
+ "sources": "its own website (carsnsuch-sg.com)",
+ "stories": [],
+ "mentioned_services": [
+  "Fault light diagnosis",
+  "Older cars",
+  "Spray painting",
+  "Car repair"
+ ],
+ "services_note": "Services as listed on the workshop's own website, carsnsuch-sg.com.",
+ "specialties": [
+  "Honda servicing and repairs",
+  "CNS Racing brake kits"
+ ],
+ "card_rules": "2026-11-06",
+ "makes": [
+  "Honda",
+  "All makes and models"
+ ],
+ "makes_note": "Named on its own website. Ask the workshop about other makes.",
+ "good_to_know": [
+  "Online booking or enquiry form on its website"
+ ]
+}

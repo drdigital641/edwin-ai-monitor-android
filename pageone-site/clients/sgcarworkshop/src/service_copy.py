@@ -1,0 +1,87 @@
+"""Service page guide copy (audit feedback Edwin shared 4 Nov 2026: service pages were listing-only).
+
+General mechanical knowledge only, the same rule as src/guides.py: no prices, no promises, no claims about any workshop,
+no endorsement words (check.py enforces). Each entry: what the job involves, warning signs, what to ask, FAQs, related guides."""
+
+COPY = {
+    'general-servicing-repair': dict(
+        involves='A routine service usually means an engine oil and filter change, a check of brakes, tyres, belts, hoses, lights and fluids, and a scan for stored fault codes. Repairs cover whatever that check or a warning sign turns up, from brake pads to suspension parts and leaks.',
+        signs=['A warning light on the dashboard, such as the engine or oil light', 'New noises: squeals when braking, knocks over humps or a whine from the engine bay',
+               'Leaks under the car, or a burning or sweet smell', 'The car pulls to one side, vibrates or feels less responsive', 'It is past the mileage or date on your last service sticker'],
+        ask=['Which items are included in the service, and which oil grade is used', 'Whether parts are original, OEM or aftermarket', 'How long the job will take and whether you will be told before extra work is done',
+             'Whether old parts can be returned to you'],
+        faqs=[('How often should a car be serviced?', 'Follow the interval in your car\'s handbook, usually given as a mileage or a number of months, whichever comes first. Cars driven mostly in stop-start traffic or on short trips may need servicing sooner.'),
+              ('What is the difference between a service and a repair?', 'A service is planned maintenance done at set intervals. A repair fixes a fault that has already appeared. Many workshops do both, and a service often finds small issues before they become repairs.'),
+              ('Can I go to any workshop instead of the dealer?', 'Yes. You can choose any workshop. If your car is still under a manufacturer warranty, check the warranty terms on servicing records and parts first.')],
+        guides=['engine-warning-light', 'brake-squeal-noise', 'car-knocking-over-humps', 'car-overheating', 'car-aircon-not-cold']),
+    'spray-painting-bodywork': dict(
+        involves='Bodywork repairs dents and damaged panels. Spray painting then sands the area, applies primer, and sprays colour and clear coat in a booth. Jobs range from a single bumper touch-up to a full respray or colour change.',
+        signs=['Scratches that go through to bare metal or primer', 'Dents from a minor knock or a parking incident', 'Paint that is fading, peeling or showing rust bubbles',
+               'Accident damage that also needs an insurance claim'],
+        ask=['Whether the quote covers one panel or blending into nearby panels for a colour match', 'How the colour is matched to your car', 'How long the car needs to stay for the paint to cure',
+             'Whether the workshop handles insurance claims if it is an accident repair'],
+        faqs=[('Do I need approval to change my car\'s colour?', 'A colour change must be registered with LTA. Check LTA\'s current rules before booking the job.'),
+              ('Why does a small scratch repair cover more than the scratch?', 'Paint is often blended into the panels around the repair so the new colour matches under different light.'),
+              ('How long does a panel respray take?', 'It depends on the damage and paint drying time. Ask the workshop for an estimate when you send photos of the car.')],
+        guides=[]),
+    'gearbox-repair': dict(
+        involves='Gearbox work starts with a diagnosis: reading fault codes, checking the fluid level and condition, and a test drive. The fix can be a fluid change, a valve body or solenoid repair, a software reset or a full overhaul.',
+        signs=['Jerking or a delay when shifting, especially from a stop', 'The engine revs rise but the car does not speed up (slipping)', 'A gearbox or check-engine warning light',
+               'Whining, clunking or burning smells from the gearbox', 'Fluid leaks under the middle of the car'],
+        ask=['What the diagnosis found and which fault codes were read', 'Whether a repair is possible before an overhaul or replacement', 'Which fluid type is used for your gearbox',
+             'What warranty is given on the work'],
+        faqs=[('Is a jerking CVT always a major fault?', 'Not always. Old fluid, a software issue or a sensor fault can cause similar symptoms. A proper diagnosis tells you which.'),
+              ('Should gearbox fluid be changed?', 'Many gearboxes have a service interval for fluid in the handbook. Ask the workshop which fluid your gearbox needs before it is changed.'),
+              ('Can I keep driving with a slipping gearbox?', 'It can make the damage worse. Book a check early and avoid hard driving until then.')],
+        guides=['gearbox-cvt-jerking']),
+    'abs-ecu-module-repair': dict(
+        involves='ABS and ECU work fixes the electronic units that control braking, the engine and the gearbox. A specialist reads fault codes, tests the unit, and repairs the pump or circuit board on the bench where possible instead of replacing it.',
+        signs=['ABS, traction control or brake warning lights that stay on', 'Engine running problems with module-related fault codes', 'Gearbox shifting faults linked to a control unit',
+               'Electrical faults that come and go'],
+        ask=['Which fault codes were found', 'Whether the unit can be repaired or must be replaced', 'Whether coding or programming is needed after refitting',
+             'What warranty is given on the repaired unit'],
+        faqs=[('Is it safe to drive with the ABS light on?', 'Normal braking usually still works, but the anti-lock function may be off. Get it checked soon, especially before driving in the rain.'),
+              ('Why repair a module instead of replacing it?', 'A failed solder joint or component can often be repaired on the bench. A specialist can tell you whether that applies to your unit.')],
+        guides=['engine-warning-light']),
+    'car-tyres': dict(
+        involves='A tyre job starts with checking the damage and the tyre size. A small puncture in the tread can often be plugged or patched; a cut sidewall, a bulge or worn tread means a new tyre. After a new tyre is fitted, the wheel is balanced so it runs smoothly.',
+        signs=['A nail or screw in the tread', 'A tyre that keeps losing pressure', 'A cut or bulge on the sidewall', 'Worn tread or uneven wear', 'Vibration or shaking at speed'],
+        ask=['Whether the tyre can be repaired or must be replaced', 'Which brands and sizes are in stock', 'Whether balancing and new valves are included', 'Whether the other tyre on the same axle should be changed too'],
+        faqs=[('Where do I find my tyre size?', 'It is printed on the tyre sidewall, for example 195/65 R15. Send it to the shop with your car model.'),
+              ('Is wheel balancing the same as alignment?', 'No. Balancing stops a wheel from vibrating; alignment sets the angle of the wheels so the car drives straight and the tyres wear evenly.')],
+        guides=['tyre-shop-open-sunday-singapore']),
+    'car-battery': dict(
+        involves='A battery job usually starts with a test of the battery and the charging system. If the battery is weak it is replaced with one of the correct size and type for your car, and some cars need the new battery registered with the car\'s computer.',
+        signs=['The engine cranks slowly or clicks when you turn the key', 'Dim lights or electrical glitches at start-up', 'A battery warning light',
+               'The battery is several years old or has a swollen case'],
+        ask=['Whether the battery and alternator are tested first', 'Which battery size and type fits your car, including start-stop (EFB or AGM) types', 'Whether battery registration is needed for your model',
+             'Whether the old battery is taken away'],
+        faqs=[('Can a flat battery be charged instead of replaced?', 'Sometimes. A test shows whether it holds charge. A battery that keeps going flat may also point to a charging or drain problem.'),
+              ('Do start-stop cars need a special battery?', 'Usually yes: EFB or AGM types. Fitting the wrong type can shorten its life.')],
+        guides=['car-wont-start-battery']),
+    'car-aircon-repair': dict(
+        involves='Aircon work begins with a check of pressures, leaks and the cooling fan. Common jobs are a gas top-up after a leak repair, cleaning the evaporator, and replacing the compressor, condenser or expansion valve.',
+        signs=['The air is not cold or only cools while driving', 'A musty smell from the vents', 'Water dripping inside the cabin', 'A noise when the aircon switches on'],
+        ask=['Whether the system is checked for leaks before gas is added', 'Which part has failed and why', 'Whether the evaporator needs cleaning', 'What warranty is given on parts'],
+        faqs=[('Why does my aircon only feel cold when the car is moving?', 'This often points to the cooling fan or a condenser problem. A check of pressures and the fan shows which.'),
+              ('Is adding gas enough?', 'If the gas has leaked out, the leak should be found and fixed first, or the system will lose gas again.')],
+        guides=['car-aircon-not-cold']),
+    'car-detailing-coating': dict(
+        involves='Detailing cleans and restores a car inside and out. Exterior jobs include washing, paint correction (polishing out swirls) and protective coatings. Interior jobs include cleaning seats, carpets and the cabin.',
+        signs=['Swirl marks or dull paint under sunlight', 'Water no longer beads on the paint', 'Stains or smells in the interior', 'Preparing a car for sale or after buying a used car'],
+        ask=['Whether paint correction is done before a coating', 'How the coating should be washed and maintained', 'How long the car needs to stay', 'Which products are used'],
+        faqs=[('What is the difference between polishing and coating?', 'Polishing removes fine marks from the paint. A coating is a protective layer applied on top, usually after polishing.')],
+        guides=[]),
+    'car-wrap-ppf': dict(
+        involves='A wrap changes the look of a car with vinyl film. Paint protection film (PPF) is a clear film that protects the paint from stone chips and light scratches. Both need clean, well-prepared paint before the film goes on.',
+        signs=['You want a new colour without a respray', 'Stone chips on the bonnet and bumper', 'Protecting a new car\'s paint'],
+        ask=['Which film brand and type is used', 'Which panels are covered', 'How edges and door jambs are handled', 'Whether a colour change needs LTA registration'],
+        faqs=[('Does a colour wrap need to be registered?', 'A wrap that changes the car\'s main colour may need to be registered with LTA. Check LTA\'s current rules first.')],
+        guides=[]),
+    'car-parts': dict(
+        involves='Car parts shops supply replacement parts such as filters, brakes, suspension, lights and body parts. Parts come as original (from the carmaker), OEM (from the same supplier) or aftermarket.',
+        signs=['You have a part number or a workshop has told you which part is needed', 'You are comparing original and aftermarket options'],
+        ask=['Whether the part is original, OEM or aftermarket', 'Whether it fits your exact model and year (have your chassis number ready)', 'What the return policy is'],
+        faqs=[('What is the difference between OEM and aftermarket parts?', 'OEM parts come from the same supplier that makes them for the carmaker. Aftermarket parts are made by other companies and vary in fit and quality.')],
+        guides=[]),
+}

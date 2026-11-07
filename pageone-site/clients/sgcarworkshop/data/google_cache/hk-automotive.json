@@ -1,0 +1,22 @@
+{
+ "businessStatus": "OPERATIONAL",
+ "primaryType": "car_repair",
+ "types": [
+  "car_repair",
+  "point_of_interest",
+  "service",
+  "establishment"
+ ],
+ "rating": 5,
+ "userRatingCount": 1,
+ "websiteUri": "https://www.facebook.com/hkautomotive0143/",
+ "paymentOptions": null,
+ "parkingOptions": null,
+ "editorialSummary": null,
+ "weekdayDescriptions": null,
+ "review_count_seen": 1,
+ "review_themes": "Its one Google review mentions car servicing with costs explained upfront.",
+ "fetched_at": "2026-11-04",
+ "place_id": "ChIJIy306I4P2jERhtgq74whfOo",
+ "source": "google_places"
+}

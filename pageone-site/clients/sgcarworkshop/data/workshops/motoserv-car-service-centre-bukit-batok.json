@@ -1,0 +1,74 @@
+{
+ "schema_version": 1,
+ "slug": "motoserv-car-service-centre-bukit-batok",
+ "place_id": "ChIJKX7oCUoR2jEREoIkrDu7Fe8",
+ "place_id_checked_at": "2026-11-05",
+ "name": "Motoserv Car Service Centre @Bukit Batok",
+ "name_source_url": "google_profile",
+ "name_checked_at": "2026-11-05",
+ "address": {
+  "block": "",
+  "street": "28 Bukit Batok East Ave 6",
+  "unit": "",
+  "building": ""
+ },
+ "postal_code": "659760",
+ "address_source_url": "google_profile",
+ "address_checked_at": "2026-11-05",
+ "categories": [
+  "SERV"
+ ],
+ "services": [
+  "General servicing and repair"
+ ],
+ "services_source_url": "google_profile",
+ "phones": [
+  {
+   "e164": "+6583325425",
+   "kind": "mobile",
+   "whatsapp": true,
+   "source": "google_profile",
+   "checked_at": "2026-11-05"
+  }
+ ],
+ "google_screen": {
+  "passed": true,
+  "reason": "OPERATIONAL, car repair, SG mobile on Google profile",
+  "checked_at": "2026-11-05"
+ },
+ "status": "active",
+ "tier": "basic",
+ "first_seen_at": "2026-11-05",
+ "last_verified_at": "2026-11-05",
+ "collector_version": "agent-v5",
+ "estate": "bukit-batok-crescent",
+ "planning_area": "Bukit Batok",
+ "region": "west",
+ "lat": 1.347626724210624,
+ "lng": 103.7648885361467,
+ "geo_source": "onemap",
+ "blocks": [
+  "hero",
+  "contact",
+  "services",
+  "good_for",
+  "problems",
+  "reviews",
+  "comparison",
+  "hours",
+  "stories",
+  "location",
+  "tips",
+  "faq",
+  "claim",
+  "sources"
+ ],
+ "google_rating": {
+  "rating": 4.9,
+  "count": 95,
+  "checked": "2026-11-05",
+  "source": "Google Places",
+  "source_date": "2026-11-05"
+ },
+ "approved": "Edwin 5 Nov 2026 22:29 SGT"
+}

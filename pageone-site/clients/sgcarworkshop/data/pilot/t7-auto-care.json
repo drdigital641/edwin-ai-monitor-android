@@ -1,0 +1,27 @@
+{
+ "lede": "T7 Auto Care is a car repair workshop at 5032 Ang Mo Kio Ind Park 2, #01-287. Its Google Maps listing shows opening hours and customer ratings.",
+ "chips": [
+  "Car repair"
+ ],
+ "services": [
+  "General servicing and repair"
+ ],
+ "themes": "Customers on Google Maps mention paint jobs with a good colour match, dent and scrape repairs often done within the day, and late-night drop-offs.",
+ "faqs": [
+  [
+   "What does T7 Auto Care do?",
+   "Google Maps lists it as a car repair workshop."
+  ],
+  [
+   "What are the opening hours?",
+   "The hours are listed in the Google Maps section above. Please see Google Maps for current hours."
+  ]
+ ],
+ "sources": "its Google Maps listing",
+ "stories": [],
+ "mentioned_services": [
+  "Scratch and dent repair",
+  "Spray painting",
+  "Bodywork repair"
+ ]
+}

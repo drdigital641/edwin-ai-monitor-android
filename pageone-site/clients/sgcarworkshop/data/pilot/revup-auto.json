@@ -1,0 +1,47 @@
+{
+ "lede": "RevUp Auto is a car workshop in Woodlands Close (MEGA@Woodlands). Its own website lists engine oil leak repairs, overheating repairs, engine diagnostics and servicing and maintenance.",
+ "chips": [
+  "Engine oil leak repairs",
+  "Overheating repairs",
+  "Engine diagnostics"
+ ],
+ "services": [
+  "Engine oil leak repairs",
+  "Overheating repairs",
+  "Engine diagnostics",
+  "Servicing and maintenance",
+  "Brake services",
+  "Suspension and steering",
+  "Aircon repairs",
+  "Transmission services"
+ ],
+ "themes": "Customers on Google Maps mention coolant leak and oil seal repairs, clutch replacement with OEM parts, BMW servicing and WhatsApp appointments.",
+ "sources": "its own website (revupautosg.com)",
+ "stories": [],
+ "mentioned_services": [
+  "Coolant leak repair",
+  "Oil seal and gasket replacement",
+  "Clutch replacement",
+  "BMW cars"
+ ],
+ "services_note": "Services as listed on the workshop's own website, revupautosg.com.",
+ "specialties": [
+  "European car repair",
+  "Oil leaks and overheating"
+ ],
+ "card_rules": "2026-11-06",
+ "makes": [
+  "BMW",
+  "Mercedes-Benz",
+  "Audi",
+  "Volkswagen",
+  "Porsche",
+  "Volvo",
+  "Jaguar",
+  "Land Rover"
+ ],
+ "makes_note": "Named on its own website. Ask the workshop about other makes.",
+ "good_to_know": [
+  "Enquiries by WhatsApp, according to its website"
+ ]
+}

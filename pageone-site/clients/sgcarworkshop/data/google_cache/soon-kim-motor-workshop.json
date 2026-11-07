@@ -1,0 +1,30 @@
+{
+ "businessStatus": "OPERATIONAL",
+ "primaryType": "car_repair",
+ "types": [
+  "car_repair",
+  "point_of_interest",
+  "service",
+  "establishment"
+ ],
+ "rating": 4.8,
+ "userRatingCount": 44,
+ "websiteUri": null,
+ "paymentOptions": null,
+ "parkingOptions": null,
+ "editorialSummary": null,
+ "weekdayDescriptions": [
+  "Monday: 8:00 AM – 6:00 PM",
+  "Tuesday: 8:00 AM – 6:00 PM",
+  "Wednesday: 8:00 AM – 6:00 PM",
+  "Thursday: 8:00 AM – 6:00 PM",
+  "Friday: 8:00 AM – 6:00 PM",
+  "Saturday: 8:00 AM – 6:00 PM",
+  "Sunday: 8:00 AM – 6:00 PM"
+ ],
+ "review_count_seen": 5,
+ "review_themes": "Customers on Google Maps mention quick tyre puncture repairs, help on Sundays when other workshops were closed, fast small repairs such as brake lights, friendly service without hard selling, and coming back for servicing.",
+ "fetched_at": "2026-11-07",
+ "place_id": "ChIJKYWAL_oW2jERGGddsf5gD4E",
+ "source": "google_places"
+}

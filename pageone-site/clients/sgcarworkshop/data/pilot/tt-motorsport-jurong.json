@@ -1,0 +1,39 @@
+{
+ "lede": "TT Motorsport @ Jurong is a car workshop in Toh Guan Road East and Enterprise Hub. Its own website lists service and maintenance, spray painting and panel beating, transmission and engine overhaul and accident claim repair.",
+ "chips": [
+  "Service and maintenance",
+  "Spray painting and panel beating",
+  "Transmission and engine overhaul"
+ ],
+ "services": [
+  "Service and maintenance",
+  "Spray painting and panel beating",
+  "Transmission and engine overhaul",
+  "Accident claim repair",
+  "Aircon servicing",
+  "Battery replacement",
+  "Servicing packages"
+ ],
+ "themes": "Customers on Google Maps mention wheel bearing and shock absorber replacement, accurate diagnosis of overheating and coolant leaks, major engine work such as camshaft and valves, and help arranging a tow truck.",
+ "sources": "its own website (ttmotorsport.sg)",
+ "stories": [],
+ "mentioned_services": [
+  "Wheel bearings and shock absorbers",
+  "Overheating and radiator repair",
+  "Engine repair",
+  "Subaru, BMW and Hyundai cars",
+  "Towing help"
+ ],
+ "services_note": "Services as listed on the workshop's own website, ttmotorsport.sg.",
+ "specialties": [
+  "BMW specialist"
+ ],
+ "card_rules": "2026-11-06",
+ "makes": [
+  "BMW"
+ ],
+ "makes_note": "Named on its own website. Ask the workshop about other makes.",
+ "good_to_know": [
+  "Enquiries by WhatsApp, according to its website"
+ ]
+}

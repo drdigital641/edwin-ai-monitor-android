@@ -1,0 +1,54 @@
+{
+ "lede": "Lim Tan Motor is a car workshop at 176 Sin Ming Drive, in the Sin Ming Autocare building in Sin Ming. Its website lists repair, inspection, accident and EV services, and it takes appointment requests online.",
+ "chips": [
+  "Diagnostic checks",
+  "EV servicing and repair",
+  "Accident repairs"
+ ],
+ "services": [
+  "Diagnostic checks",
+  "Brake repair",
+  "Aircon repair and maintenance",
+  "Batteries",
+  "Tyre repairs",
+  "Wheel alignment",
+  "Pre-purchase vehicle inspection",
+  "LTA pre-vehicle inspection",
+  "EV servicing and repair",
+  "Accident repairs",
+  "Insurance claims",
+  "Spray painting",
+  "Fleet management"
+ ],
+ "good_for": [
+  "Pre-purchase and LTA pre-vehicle inspections",
+  "Accident repairs, insurance claims and spray painting",
+  "Electric vehicle servicing and repair",
+  "Fleet management"
+ ],
+ "good_for_note": "Car makes served are not stated clearly on its website. Mention your car model when you message.",
+ "faqs": [
+  [
+   "What services does Lim Tan Motor list?",
+   "Diagnostic checks, brake repair, aircon repair and maintenance, batteries, tyre repairs, wheel alignment, pre-purchase and LTA pre-vehicle inspections, EV servicing and repair, accident repairs, insurance claims, spray painting and fleet management."
+  ],
+  [
+   "Does Lim Tan Motor do EV servicing?",
+   "Its website lists EV servicing and repair."
+  ],
+  [
+   "Can I request an appointment online?",
+   "Its website has an online appointment request form. You can also WhatsApp or call using the buttons on this page."
+  ],
+  [
+   "Does it handle accident repairs and insurance claims?",
+   "Both are listed on its website, along with spray painting."
+  ],
+  [
+   "What are the opening hours?",
+   "Sources differ, so please see Google Maps for current hours."
+  ]
+ ],
+ "sources": "its website (ltm.sg)",
+ "stories": []
+}

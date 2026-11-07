@@ -1,0 +1,73 @@
+{
+ "schema_version": 1,
+ "slug": "ak-workshop",
+ "place_id": "ChIJfTttsFgW2jERa2wbnC9ozXI",
+ "place_id_checked_at": "2026-11-03",
+ "name": "AK Workshop",
+ "name_source_url": "google_profile",
+ "name_checked_at": "2026-11-03",
+ "address": {
+  "block": "",
+  "street": "10 Ang Mo Kio Industrial Park 2A, #04-10 AMK AUTO POINT",
+  "unit": "",
+  "building": ""
+ },
+ "postal_code": "568047",
+ "address_source_url": "google_profile",
+ "address_checked_at": "2026-11-03",
+ "categories": [
+  "SERV"
+ ],
+ "services": [
+  "General servicing and repair"
+ ],
+ "services_source_url": "google_profile",
+ "phones": [
+  {
+   "e164": "+6593397780",
+   "kind": "mobile",
+   "whatsapp": true,
+   "source": "google_profile",
+   "checked_at": "2026-11-03"
+  }
+ ],
+ "google_screen": {
+  "passed": true,
+  "reason": "OPERATIONAL, car repair, SG mobile on Google profile",
+  "checked_at": "2026-11-03"
+ },
+ "status": "active",
+ "tier": "basic",
+ "first_seen_at": "2026-11-03",
+ "last_verified_at": "2026-11-03",
+ "collector_version": "agent-v5",
+ "estate": "amk-industrial-park-2",
+ "planning_area": "Ang Mo Kio",
+ "region": "north-east",
+ "lat": 1.376986796656552,
+ "lng": 103.8688623813267,
+ "geo_source": "onemap",
+ "blocks": [
+  "hero",
+  "contact",
+  "services",
+  "good_for",
+  "problems",
+  "reviews",
+  "comparison",
+  "hours",
+  "stories",
+  "location",
+  "tips",
+  "faq",
+  "claim",
+  "sources"
+ ],
+ "google_rating": {
+  "rating": 4.8,
+  "count": 46,
+  "checked": "2026-11-04",
+  "source": "Google Places",
+  "source_date": "2026-11-04"
+ }
+}

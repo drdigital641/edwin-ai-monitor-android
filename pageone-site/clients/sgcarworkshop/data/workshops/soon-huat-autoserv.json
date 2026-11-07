@@ -1,0 +1,73 @@
+{
+ "schema_version": 1,
+ "slug": "soon-huat-autoserv",
+ "place_id": "ChIJh3QJL_oW2jER5T6u_egTcII",
+ "place_id_checked_at": "2026-11-03",
+ "name": "Soon Huat Autoserv",
+ "name_source_url": "google_profile",
+ "name_checked_at": "2026-11-03",
+ "address": {
+  "block": "",
+  "street": "48 Toh Guan Road East #01-136 Enterprise Hub",
+  "unit": "",
+  "building": ""
+ },
+ "postal_code": "608586",
+ "address_source_url": "google_profile",
+ "address_checked_at": "2026-11-03",
+ "categories": [
+  "SERV"
+ ],
+ "services": [
+  "General servicing and repair"
+ ],
+ "services_source_url": "google_profile",
+ "phones": [
+  {
+   "e164": "+6584025982",
+   "kind": "mobile",
+   "whatsapp": true,
+   "source": "google_profile",
+   "checked_at": "2026-11-03"
+  }
+ ],
+ "google_screen": {
+  "passed": true,
+  "reason": "OPERATIONAL, car repair, SG mobile on Google profile",
+  "checked_at": "2026-11-03"
+ },
+ "status": "active",
+ "tier": "basic",
+ "first_seen_at": "2026-11-03",
+ "last_verified_at": "2026-11-03",
+ "collector_version": "agent-v5",
+ "estate": "toh-guan-enterprise-hub",
+ "planning_area": "Jurong East",
+ "region": "west",
+ "lat": 1.3367737,
+ "lng": 103.7543622,
+ "geo_source": "onemap",
+ "google_rating": {
+  "rating": 4.6,
+  "count": 38,
+  "checked": "2026-11-04",
+  "source": "Google Places",
+  "source_date": "2026-11-04"
+ },
+ "blocks": [
+  "hero",
+  "contact",
+  "services",
+  "good_for",
+  "problems",
+  "reviews",
+  "comparison",
+  "hours",
+  "stories",
+  "location",
+  "tips",
+  "faq",
+  "claim",
+  "sources"
+ ]
+}

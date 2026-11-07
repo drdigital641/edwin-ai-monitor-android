@@ -1,0 +1,71 @@
+{
+ "slug": "yong-heng-motor-work",
+ "researched_at": "2026-11-02",
+ "researcher": "Claude (Sonnet), Google Places Details only (volume mode)",
+ "facts": [
+  {
+   "field": "rating",
+   "value": "4.2",
+   "source_url": "google_places",
+   "retrieved": "2026-11-02"
+  },
+  {
+   "field": "userRatingCount",
+   "value": "10",
+   "source_url": "google_places",
+   "retrieved": "2026-11-02"
+  },
+  {
+   "field": "websiteUri",
+   "value": "None",
+   "source_url": "google_places",
+   "retrieved": "2026-11-02"
+  },
+  {
+   "field": "paymentOptions",
+   "value": "None",
+   "source_url": "google_places",
+   "retrieved": "2026-11-02"
+  },
+  {
+   "field": "parkingOptions",
+   "value": "None",
+   "source_url": "google_places",
+   "retrieved": "2026-11-02"
+  },
+  {
+   "field": "types",
+   "value": "['car_repair', 'point_of_interest', 'service', 'establishment']",
+   "source_url": "google_places",
+   "retrieved": "2026-11-02"
+  },
+  {
+   "field": "opening_hours",
+   "value": [
+    "Monday: 8:00 AM – 7:00 PM",
+    "Tuesday: 8:00 AM – 7:00 PM",
+    "Wednesday: 8:00 AM – 7:00 PM",
+    "Thursday: 8:00 AM – 7:00 PM",
+    "Friday: 8:00 AM – 7:00 PM",
+    "Saturday: 8:00 AM – 7:00 PM",
+    "Sunday: 8:00 AM – 2:00 PM"
+   ],
+   "source_url": "google_places",
+   "retrieved": "2026-11-02"
+  }
+ ],
+ "conflicts": [],
+ "not_found": [
+  "editorialSummary",
+  "own research (stopped by Edwin 3 Nov 2026)",
+  "real job stories"
+ ],
+ "stories": [],
+ "phone_rule": "Stored Google SG mobile only",
+ "review_service_support": {
+  "Dent repair": "1 of 5 reviews",
+  "Scratch repair": "1 of 5 reviews",
+  "BYD cars": "1 of 5 reviews",
+  "Toyota Harrier": "1 of 5 reviews"
+ }
+}

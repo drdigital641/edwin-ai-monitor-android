@@ -1,0 +1,73 @@
+{
+ "schema_version": 1,
+ "slug": "md-prime-auto-services",
+ "place_id": "ChIJeeYbCNIH2jERC5iE6s0LjPQ",
+ "place_id_checked_at": "2026-11-05",
+ "name": "MD PRIME AUTO SERVICES",
+ "name_source_url": "google_profile",
+ "name_checked_at": "2026-11-05",
+ "address": {
+  "block": "",
+  "street": "11 Tuas South Link 1, #01-24",
+  "unit": "",
+  "building": ""
+ },
+ "postal_code": "636901",
+ "address_source_url": "google_profile",
+ "address_checked_at": "2026-11-05",
+ "categories": [
+  "SERV"
+ ],
+ "services": [
+  "General servicing and repair"
+ ],
+ "services_source_url": "google_profile",
+ "phones": [
+  {
+   "e164": "+6590839522",
+   "kind": "mobile",
+   "whatsapp": true,
+   "source": "google_profile",
+   "checked_at": "2026-11-05"
+  }
+ ],
+ "google_screen": {
+  "passed": true,
+  "reason": "OPERATIONAL, car repair, SG mobile on Google profile",
+  "checked_at": "2026-11-05"
+ },
+ "status": "active",
+ "tier": "basic",
+ "first_seen_at": "2026-11-05",
+ "last_verified_at": "2026-11-05",
+ "collector_version": "agent-v5",
+ "estate": "tuas-industrial-area",
+ "planning_area": "Tuas",
+ "region": "west",
+ "lat": 1.27115946431748,
+ "lng": 103.6288343770835,
+ "geo_source": "onemap",
+ "blocks": [
+  "hero",
+  "contact",
+  "services",
+  "good_for",
+  "problems",
+  "reviews",
+  "comparison",
+  "hours",
+  "stories",
+  "location",
+  "tips",
+  "faq",
+  "claim",
+  "sources"
+ ],
+ "google_rating": {
+  "rating": 4.8,
+  "count": 8,
+  "checked": "2026-11-06",
+  "source": "Google Places",
+  "source_date": "2026-11-06"
+ }
+}

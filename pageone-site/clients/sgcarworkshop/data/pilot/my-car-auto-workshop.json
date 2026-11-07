@@ -1,0 +1,28 @@
+{
+ "lede": "My Car Auto Workshop is a car repair workshop at 10 Sin Ming Industrial Estate Sector C, #01-12. Its Google Maps listing shows opening hours and customer ratings.",
+ "chips": [
+  "Car repair"
+ ],
+ "services": [
+  "General servicing and repair"
+ ],
+ "themes": "Customers on Google Maps mention patient explanations of what is wrong and what it will cost, which first-time car owners appreciate, and careful work that is delivered on time.",
+ "faqs": [
+  [
+   "What does My Car Auto Workshop do?",
+   "Google Maps lists it as a car repair workshop."
+  ],
+  [
+   "What are the opening hours?",
+   "The hours are listed in the Google Maps section above. Please see Google Maps for current hours."
+  ]
+ ],
+ "sources": "its Google Maps listing",
+ "stories": [],
+ "mentioned_services": [
+  "Regular servicing",
+  "Pre-purchase car inspection",
+  "Wear and tear repairs",
+  "Finding the root cause of faults"
+ ]
+}

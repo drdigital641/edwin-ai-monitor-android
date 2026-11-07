@@ -1,0 +1,26 @@
+{
+ "lede": "Yong Sing Motor Works is a car workshop in Kaki Bukit Industrial Estate. Its own website lists engine repair and maintenance, spray painting, insurance claim services and accessory installation.",
+ "chips": [
+  "Engine repair and maintenance",
+  "Spray painting",
+  "Insurance claim services"
+ ],
+ "services": [
+  "Engine repair and maintenance",
+  "Spray painting",
+  "Insurance claim services",
+  "Accessory installation",
+  "Fabrication works"
+ ],
+ "themes": "Customers on Google Maps mention OBU installation, including on a Volkswagen Beetle, WhatsApp bookings, help on where to place the display and a window switch fix.",
+ "sources": "its own website (yongsingmotor.com)",
+ "stories": [],
+ "mentioned_services": [
+  "OBU installation"
+ ],
+ "services_note": "Services as listed on the workshop's own website, yongsingmotor.com.",
+ "specialties": [],
+ "card_rules": "2026-11-06",
+ "makes": [],
+ "makes_note": "Not listed on its public pages. Ask the workshop about your car."
+}

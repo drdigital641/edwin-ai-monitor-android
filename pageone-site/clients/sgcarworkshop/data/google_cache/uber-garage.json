@@ -1,0 +1,39 @@
+{
+ "businessStatus": "OPERATIONAL",
+ "primaryType": "car_repair",
+ "types": [
+  "auto_parts_store",
+  "medical_clinic",
+  "car_repair",
+  "health",
+  "point_of_interest",
+  "store",
+  "service",
+  "establishment"
+ ],
+ "rating": 4.7,
+ "userRatingCount": 23,
+ "websiteUri": "http://www.ubergarage.com.sg/",
+ "paymentOptions": {
+  "acceptsCreditCards": true,
+  "acceptsDebitCards": true,
+  "acceptsCashOnly": false,
+  "acceptsNfc": true
+ },
+ "parkingOptions": null,
+ "editorialSummary": null,
+ "weekdayDescriptions": [
+  "Monday: 10:00 AM – 6:30 PM",
+  "Tuesday: 10:00 AM – 6:30 PM",
+  "Wednesday: 10:00 AM – 6:30 PM",
+  "Thursday: 10:00 AM – 6:30 PM",
+  "Friday: 10:00 AM – 6:30 PM",
+  "Saturday: 10:00 AM – 5:00 PM",
+  "Sunday: Closed"
+ ],
+ "review_count_seen": 5,
+ "review_themes": "Customers on Google Maps mention patient, meticulous dyno runs, pre-purchase inspections, tyre balancing, regular servicing, custom work up to engine building, and owners who never upsell.",
+ "fetched_at": "2026-11-06",
+ "place_id": "ChIJnULzyNIb2jERQ1MT5cvWBbc",
+ "source": "google_places"
+}

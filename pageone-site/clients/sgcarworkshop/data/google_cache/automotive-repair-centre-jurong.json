@@ -1,0 +1,34 @@
+{
+ "businessStatus": "OPERATIONAL",
+ "primaryType": "car_repair",
+ "types": [
+  "auto_parts_store",
+  "car_repair",
+  "store",
+  "point_of_interest",
+  "service",
+  "establishment"
+ ],
+ "rating": 4.9,
+ "userRatingCount": 382,
+ "websiteUri": "https://automotiverepaircentre.com.sg/",
+ "paymentOptions": {
+  "acceptsCreditCards": false
+ },
+ "parkingOptions": null,
+ "editorialSummary": null,
+ "weekdayDescriptions": [
+  "Monday: 9:00 AM – 6:00 PM",
+  "Tuesday: 9:00 AM – 6:00 PM",
+  "Wednesday: 9:00 AM – 6:00 PM",
+  "Thursday: 9:00 AM – 6:00 PM",
+  "Friday: 9:00 AM – 6:00 PM",
+  "Saturday: 9:00 AM – 1:00 PM",
+  "Sunday: Closed"
+ ],
+ "review_count_seen": 5,
+ "review_themes": "Customers on Google Maps mention accident repair handled through the other party’s insurance, help with accident reports, clear and timely updates, and cars returned within the promised time.",
+ "fetched_at": "2026-11-03",
+ "place_id": "ChIJ3XHeh1IR2jER5sUoA10jTCQ",
+ "source": "google_places"
+}

@@ -1,0 +1,32 @@
+{
+ "businessStatus": "OPERATIONAL",
+ "primaryType": "car_repair",
+ "types": [
+  "car_repair",
+  "point_of_interest",
+  "service",
+  "establishment"
+ ],
+ "rating": 4.7,
+ "userRatingCount": 91,
+ "websiteUri": null,
+ "paymentOptions": {
+  "acceptsCreditCards": true
+ },
+ "parkingOptions": null,
+ "editorialSummary": null,
+ "weekdayDescriptions": [
+  "Monday: 9:30 AM – 7:30 PM",
+  "Tuesday: 9:30 AM – 7:30 PM",
+  "Wednesday: 9:30 AM – 7:30 PM",
+  "Thursday: 9:30 AM – 7:30 PM",
+  "Friday: 9:30 AM – 7:30 PM",
+  "Saturday: 9:30 AM – 3:30 PM",
+  "Sunday: Closed"
+ ],
+ "review_count_seen": 5,
+ "review_themes": "Customers on Google Maps mention its own workshop and mechanics for servicing and repairs, quick fixes with a replacement car when needed, a responsive boss, and car rental and leasing.",
+ "fetched_at": "2026-11-06",
+ "place_id": "ChIJW-PswMYX2jERtnHGvXikPmQ",
+ "source": "google_places"
+}

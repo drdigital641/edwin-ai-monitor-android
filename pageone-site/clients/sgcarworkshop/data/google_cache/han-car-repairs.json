@@ -1,0 +1,33 @@
+{
+ "businessStatus": "OPERATIONAL",
+ "primaryType": "car_repair",
+ "types": [
+  "car_repair",
+  "point_of_interest",
+  "service",
+  "establishment"
+ ],
+ "rating": 4.7,
+ "userRatingCount": 77,
+ "websiteUri": "https://www.instagram.com/hancarrepairs?igsh=djVveWFoYW1pdHAx&utm_source=qr",
+ "paymentOptions": {
+  "acceptsCreditCards": false,
+  "acceptsDebitCards": true
+ },
+ "parkingOptions": null,
+ "editorialSummary": null,
+ "weekdayDescriptions": [
+  "Monday: 8:00 AM – 6:00 PM",
+  "Tuesday: 8:00 AM – 6:00 PM",
+  "Wednesday: 8:00 AM – 6:00 PM",
+  "Thursday: 8:00 AM – 6:00 PM",
+  "Friday: 8:00 AM – 6:00 PM",
+  "Saturday: 8:00 AM – 2:00 PM",
+  "Sunday: Closed"
+ ],
+ "review_count_seen": 5,
+ "review_themes": "Customers on Google Maps mention a pre-purchase inspection of a used car, aircon cooling coil replacement, an engine light fault and a Mercedes boot repair.",
+ "fetched_at": "2026-11-04",
+ "place_id": "ChIJATNfnc4b2jERPpMn7Nj7i88",
+ "source": "google_places"
+}
