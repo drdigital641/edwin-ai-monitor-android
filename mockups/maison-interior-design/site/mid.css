@@ -424,3 +424,67 @@ button.link{background:none;border:0;border-bottom:1px solid currentColor;color:
 @media(max-width:380px){.sup-n{font-size:10.5px;letter-spacing:.12em}}
 .sup-adoore img,.sup-hafary img{max-height:60px}
 @media(max-width:899px){.sup-adoore img,.sup-hafary img{max-height:52px}}
+
+/* new launches + service guides */
+.phead .eyebrow a{color:inherit;text-decoration:underline;text-underline-offset:3px}
+.nl-body{display:block}
+.nl-body p{color:var(--ink2);margin:0 0 16px}
+.nl-sec{margin-top:56px}
+.nl-sec .display{font-size:clamp(28px,5vw,40px);margin-bottom:18px}
+.nl-sec .ticks{margin:0}
+.nl-facts{margin:0;display:grid;grid-template-columns:1fr;border-top:1px solid var(--line)}
+.nl-facts>div{display:grid;grid-template-columns:minmax(0,9em) minmax(0,1fr);gap:16px;padding:14px 0;border-bottom:1px solid var(--line)}
+.nl-facts dt{font:500 11.5px/1.6 var(--sans);letter-spacing:.16em;text-transform:uppercase;color:var(--mute)}
+.nl-facts dd{margin:0;color:var(--ink);overflow-wrap:anywhere}
+.nl-date dd{color:var(--ink2);font-size:15px}
+.nl-src{font-size:14px;margin-top:16px!important;overflow-wrap:anywhere}
+.nl-src a{color:var(--brass);text-decoration:underline;text-underline-offset:2px}
+.nl-indep{font-size:14px;margin-top:48px!important;padding:18px 20px;background:var(--bg2);color:var(--ink2)}
+.tl{list-style:none;margin:0;padding:0;border-top:1px solid var(--line)}
+.tl li{display:grid;grid-template-columns:44px minmax(0,1fr);gap:12px;padding:18px 0;border-bottom:1px solid var(--line)}
+.tl h3{font:400 22px/1.25 var(--serif);margin:0 0 4px}
+.tl small{font:500 11px/1 var(--sans);letter-spacing:.14em;text-transform:uppercase;color:var(--brass);margin-left:6px;white-space:nowrap}
+.tl p{margin:0!important;font-size:15px}
+.tl-note{margin-top:16px!important;font-size:15px}
+.nl-links{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:10px}
+.nl-links a{display:block;padding:14px 16px;border:1px solid var(--line);font-family:var(--serif);font-size:20px;line-height:1.2;transition:border-color .3s}
+.nl-links a:hover{border-color:var(--brass)}.nl-links span{display:block;font:400 13px/1.4 var(--sans);color:var(--mute);margin-top:4px}
+.lgrid,.ggrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,280px),1fr));gap:16px}
+.lc,.gc{display:flex;flex-direction:column;gap:10px;padding:24px;border:1px solid var(--line);background:rgba(255,255,255,.35);transition:border-color .3s,background .3s}
+.lc:hover,.gc:hover{border-color:var(--brass);background:rgba(255,255,255,.6)}
+.lc[hidden]{display:none}
+.lc h3,.gc h3{font:400 26px/1.15 var(--serif);margin:0}.lc h3 em{font-style:italic;color:var(--brass)}
+.lc p,.gc p{margin:0;font-size:15px;color:var(--ink2);flex:1}
+.nl-guides{border-top:1px solid var(--line)}.nl-guides .display{margin-bottom:32px}
+.nl-band{border-top:1px solid var(--line)}
+.nl-band-in{display:grid;gap:8px;align-items:end}
+.nl-band-in p{color:var(--ink2);max-width:40em;margin:0}
+@media(min-width:900px){.nl-band-in{grid-template-columns:1.4fr 1fr}.nl-band-in .btns{justify-content:flex-end;margin-top:0}}
+
+/* Towner Residences sample page */
+.tw-h1{font-size:clamp(36px,6vw,64px)!important;max-width:16em!important}
+.tw-intro p{margin:0 0 14px}.tw-intro strong{font-weight:400;color:var(--ink)}
+.tw-body h2{font:400 clamp(28px,5vw,40px)/1.15 var(--serif);margin:56px 0 18px}
+.tw-body h3{font:400 24px/1.25 var(--serif);margin:32px 0 10px}
+.tw-body p,.tw-body li{color:var(--ink2)}
+.tw-body ul,.tw-body ol{padding-left:22px;margin:0 0 16px}.tw-body li{margin-bottom:8px}
+.tw-body strong{font-weight:500;color:var(--ink)}
+.tw-body a:not(.btn){color:var(--brass);text-decoration:underline;text-underline-offset:2px;overflow-wrap:anywhere}
+.tw-body blockquote{margin:24px 0;padding:18px 20px;background:var(--bg2);border-left:2px solid var(--brass)}
+.tw-body blockquote p{margin:0}
+.tw{margin:16px 0 20px}
+.st{width:100%;border-collapse:collapse;font-size:15px}
+.st th{text-align:left;font:500 11px/1.4 var(--sans);letter-spacing:.14em;text-transform:uppercase;color:var(--mute);padding:10px 12px 10px 0;border-bottom:1px solid var(--line)}
+.st td{vertical-align:top;padding:12px 12px 12px 0;border-bottom:1px solid var(--line);color:var(--ink2)}
+@media(max-width:699px){.st thead{display:none}.st,.st tbody,.st tr,.st td{display:block;width:100%}
+.st tr{padding:12px 0;border-bottom:1px solid var(--line)}.st td{border:0;padding:4px 0}
+.st td::before{content:attr(data-label);display:block;font:500 10.5px/1.4 var(--sans);letter-spacing:.14em;text-transform:uppercase;color:var(--mute)}}
+.cgal{display:grid;grid-template-columns:1fr;gap:32px;margin-top:8px}
+@media(min-width:760px){.cgal{grid-template-columns:1fr 1fr;gap:32px 24px}}
+.cg-cell h3{margin-top:0!important}
+.cfig{margin:0}.cfig img{display:block;width:100%;height:auto;aspect-ratio:1152/864;background:var(--bg2)}
+.cfig figcaption{font-size:14px;line-height:1.55;color:var(--ink2);margin-top:10px}
+.tw-body .btns{margin-top:16px}
+@media(min-width:900px){.tw-sec .narrow{max-width:960px}}
+.phead+.tw-sec,.phead+.nl-s{padding-top:16px}
+@media(min-width:900px){.tw-hero .narrow{max-width:960px}}

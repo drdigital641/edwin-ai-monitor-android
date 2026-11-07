@@ -29,7 +29,7 @@ function q(i){qi=(i+qs.length)%qs.length;qs.forEach(function(x,k){x.classList.to
 if(qs.length){var qp=d.getElementById('qprev'),qn=d.getElementById('qnext');if(qp)qp.addEventListener('click',function(){q(qi-1)});if(qn)qn.addEventListener('click',function(){q(qi+1)});q(0)}
 
 /* portfolio filter */
-var chips=[].slice.call(d.querySelectorAll('.chip')),cards=[].slice.call(d.querySelectorAll('#pgrid .pc'));
+var chips=[].slice.call(d.querySelectorAll('.chip')),cards=[].slice.call(d.querySelectorAll('#pgrid .pc,#lgrid .lc'));
 chips.forEach(function(c){c.addEventListener('click',function(){var f=c.getAttribute('data-f');
 chips.forEach(function(x){var on=x===c;x.classList.toggle('on',on);x.setAttribute('aria-pressed',on?'true':'false')});
 cards.forEach(function(k){k.hidden=!(f==='All'||k.getAttribute('data-kind')===f)})})});

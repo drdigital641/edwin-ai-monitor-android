@@ -173,7 +173,7 @@ def dims(f):
 LOGO = ('<a class="brand" href="{b}" aria-label="Maison Interior Design, home">'
         '<span class="bm">MAISON</span><span class="bs">Interior Design</span></a>').format(b=BASE)
 
-NAV = [("portfolio/", "Portfolio"), ("services/", "Services"), ("about/", "About"), ("contact/", "Contact")]
+NAV = [("portfolio/", "Portfolio"), ("services/", "Services"), ("new-launches/", "New launches"), ("about/", "About"), ("contact/", "Contact")]
 
 def wa(text="Hi Maison Interior Design, I'd like to discuss my renovation."):
     from urllib.parse import quote
@@ -196,10 +196,16 @@ def head(title, desc, path, og_img, schema):
 <script type="application/ld+json">{json.dumps(schema, ensure_ascii=False)}</script>
 </head>"""
 
+SVC_SUB = [("bto-renovation", "BTO key collection"), ("new-condo-renovation", "New condo"), ("landed-renovation", "Landed renovation"),
+           ("office-fit-out", "Office fit-out"), ("retail-shop-fit-out", "Retail shop fit-out"), ("commercial-fit-out", "Commercial fit-out")]
+
 def header(cur, over=False):
     def nl(h, t):
         on = cur == h or (h == "portfolio/" and cur == "landed-homes/")
         a = f'<a href="{BASE}{h}"{" aria-current=page" if on else ""}>{t}</a>'
+        if h == "services/":
+            subs = "".join(f'<a href="{BASE}services/{sl}/">{st}</a>' for sl, st in SVC_SUB)
+            return f'<span class="nav-g">{a}<span class="nav-sub"><a class="sub-all" href="{BASE}services/">All services</a>{subs}</span></span>'
         if h == "portfolio/":
             return (f'<span class="nav-g">{a}<span class="nav-sub"><a class="sub-all" href="{BASE}portfolio/">All projects</a>'
                     f'<a href="{BASE}portfolio/bedok-reservoir-road/">Bedok Reservoir</a><a href="{BASE}landed-homes/">Landed homes</a></span></span>')
@@ -378,6 +384,9 @@ def home():
 <div class="qnav"><button class="qb" id="qprev" aria-label="Previous review">←</button><button class="qb" id="qnext" aria-label="Next review">→</button></div></div></section>
 
 {faq_html()}
+<section class="sec tight nl-band"><div class="wrap nl-band-in"><div><p class="eyebrow">New launches · 2026 to 2027</p><h2 class="display">Collecting keys <em>soon?</em></h2>
+<p>Guides for new BTO, condo, landed, office and shop projects: what to check at handover, the rules and a realistic timeline.</p></div>
+<div class="btns"><a class="btn dark-b" href="{BASE}new-launches/">See new launches</a><a class="btn ghost-d" href="{BASE}services/bto-renovation/">BTO key collection guide</a></div></div></section>
 {suppliers()}
 {cta_block()}"""
     s += footer()
@@ -532,8 +541,8 @@ def notfound():
     write("404.html", s)
 
 def extras():
-    urls = [""] + [h for h, _ in NAV] + ["landed-homes/"] + [f'portfolio/{p["slug"]}/' for p in P]
-    sm = '<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n' + "".join(f"  <url><loc>{DOMAIN}/{u}</loc><lastmod>2026-11-03</lastmod></url>\n" for u in urls) + "</urlset>\n"
+    urls = [""] + [h for h, _ in NAV] + ["landed-homes/"] + [f'portfolio/{p["slug"]}/' for p in P] + LAUNCH_URLS[1:]
+    sm = '<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n' + "".join(f"  <url><loc>{DOMAIN}/{u}</loc><lastmod>{'2026-11-07' if (u in LAUNCH_URLS or u == '') else '2026-11-03'}</lastmod></url>\n" for u in urls) + "</urlset>\n"
     write("sitemap.xml", sm)
     write("robots.txt", f"User-agent: *\nAllow: /\n\nSitemap: {DOMAIN}/sitemap.xml\n")
     write("llms.txt", f"""# Maison Interior Design
@@ -552,18 +561,26 @@ Conceptualisation; itemised quotation with 3D drawings; HDB renovation permit an
 ## Suppliers
 Maison works with these Singapore suppliers for materials, flooring, lighting and furnishings: """ + ", ".join(f"[{n}]({u})" for k, n, u in SUPPLIERS) + """.
 
+## Service guides
+""" + "".join(f'- [{g["short"]}]({DOMAIN}/services/{g["slug"]}/): {g["desc"]}\n' for g in GUIDES) + """
+## New launches (renovation and fit-out guides; facts from public sources, Maison is not appointed by any developer or HDB)
+- [New launches hub]({DOMAIN}/new-launches/)
+""" + "".join(f'- [{p["name"]}, {p["place"]}]({DOMAIN}/new-launches/{p["slug"]}/): {p["label"]}. {p["date"][1].split(". ")[0]}.\n' for p in LAUNCHES) + """
 ## Projects
 """ + "".join(f'- [{p["name"]} {p["place"]}]({DOMAIN}/portfolio/{p["slug"]}/): {p["kind"]}, {p["type"]}.\n' for p in P))
     write("favicon.svg", '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64"><rect width="64" height="64" fill="#1f1c19"/><text x="32" y="44" font-family="Georgia,serif" font-size="36" fill="#c9a979" text-anchor="middle">M</text></svg>')
     shutil.copy(os.path.join(HERE, "mid.css"), os.path.join(OUT, "mid.css"))
-    for d in ("brand", "logos", "img"):
+    for d in ("brand", "logos", "img", "images"):
         if os.path.isdir(os.path.join(HERE, d)): shutil.copytree(os.path.join(HERE, d), os.path.join(OUT, d))
     shutil.copy(os.path.join(HERE, "mid.js"), os.path.join(OUT, "mid.js"))
+
+exec(open(os.path.join(HERE, "launches.py"), encoding="utf-8").read())
 
 if __name__ == "__main__":
     if os.path.isdir(OUT): shutil.rmtree(OUT)
     os.makedirs(OUT)
     home(); portfolio(); services(); landed(); about(); contact(); notfound()
     for i, p in enumerate(P): project(i, p)
+    launches_build()
     extras()
     print("built", sum(len(f) for _, _, f in os.walk(OUT)), "files")

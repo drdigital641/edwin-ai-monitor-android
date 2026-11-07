@@ -14,6 +14,32 @@ Conceptualisation; itemised quotation with 3D drawings; HDB renovation permit an
 ## Suppliers
 Maison works with these Singapore suppliers for materials, flooring, lighting and furnishings: [KD Panels](https://www.kdpanels.com/), [Chroma Living](https://chromafurnishing.com/chromaliving), [Hafary](https://www.hafary.com.sg/), [ADOORE](https://adoore.com.sg/), [Wood Origins](https://woodorigins.sg/), [Stones Selection](https://www.stonesselection.com.sg/), [Lambent](https://www.lambent.sg/), [Meerkat Home](https://www.meerkathome.sg/), [RIGEL](https://www.rigel-group.com/).
 
+## Service guides
+- [BTO key collection renovation](https://maisoninteriordesign.sg/services/bto-renovation/): Collecting BTO keys soon? What to check in the first 30 days, HDB renovation rules and hours, the 3-year toilet tile rule, and a realistic keys-to-move-in timeline.
+- [New condo renovation](https://maisoninteriordesign.sg/services/new-condo-renovation/): Just got keys to a new condo or EC? What owners usually change, a handover defects checklist, how MCST renovation approval works, and a realistic timeline.
+- [Landed renovation](https://maisoninteriordesign.sg/services/landed-renovation/): Renovating a terrace, semi-detached, bungalow or strata landed home in Singapore: what the work involves, URA and BCA approvals, MCST rules for strata landed, and timelines.
+- [Office fit-out](https://maisoninteriordesign.sg/services/office-fit-out/): Fitting out a new office in Singapore: what the job involves, landlord fit-out rules, when fire safety and building approvals apply, and a realistic timeline to move-in.
+- [Retail shop fit-out](https://maisoninteriordesign.sg/services/retail-shop-fit-out/): Fitting out a shop, café or F&B unit in Singapore: what the job involves, landlord and HDB shop rules, food licensing, and a realistic timeline to opening day.
+- [Commercial fit-out](https://maisoninteriordesign.sg/services/commercial-fit-out/): Commercial interior design and fit-out in Singapore for offices, shops, cafés and showrooms: how the work runs, the approvals that apply and realistic timelines.
+
+## New launches (renovation and fit-out guides; facts from public sources, Maison is not appointed by any developer or HDB)
+- [New launches hub]({DOMAIN}/new-launches/)
+- [Parc Point, Tengah](https://maisoninteriordesign.sg/new-launches/parc-point-tengah/): Retail · HDB neighbourhood centre. HDB announced Parc Point would open in 1Q 2026, with the FairPrice supermarket and Gourmet Paradise food court first and the remaining shops opening progressively..
+- [Lumina Grand, Bukit Batok](https://maisoninteriordesign.sg/new-launches/lumina-grand/): Executive condominium. CDL reported that Lumina Grand obtained its Temporary Occupation Permit (TOP) in April 2026 and that most units have been handed over to purchasers..
+- [Shaw Tower, Beach Road](https://maisoninteriordesign.sg/new-launches/shaw-tower/): Office and retail. Lendlease announced on 6 July 2026 that the new Shaw Tower has secured its Temporary Occupation Permit (TOP)..
+- [Norwood Grand, Woodlands](https://maisoninteriordesign.sg/new-launches/norwood-grand/): Private condominium. Year only: around 2026.
+- [The Myst, Upper Bukit Timah](https://maisoninteriordesign.sg/new-launches/the-myst/): Private condominium. Year only: expected around 2026 to 2027.
+- [CanningHill Piers, River Valley Road](https://maisoninteriordesign.sg/new-launches/canninghill-piers/): Private condominium. Year only: expected around 2026.
+- [Orchard Sophia, Sophia Road](https://maisoninteriordesign.sg/new-launches/orchard-sophia/): Private condominium · freehold. Reported: 2026.
+- [Pollen Collection, Seletar](https://maisoninteriordesign.sg/new-launches/pollen-collection/): Landed homes. Reported: 2026.
+- [Grand Dunman, Dunman Road](https://maisoninteriordesign.sg/new-launches/grand-dunman/): Private condominium. Year only: the developer lists expected completion as 2028.
+- [Towner Residences, Kallang/Whampoa](https://maisoninteriordesign.sg/new-launches/towner-residences/): HDB BTO · sample page. Completion expected around late 2026 according to third-party project trackers, not an HDB-confirmed key collection date.
+- [39 Robinson Road, Raffles Place](https://maisoninteriordesign.sg/new-launches/39-robinson-road/): Office. Year only: expected 2026, as reported by EdgeProp.
+- [AMO Residence, Ang Mo Kio](https://maisoninteriordesign.sg/new-launches/amo-residence/): Private condominium. Year only: expected 2026, as reported by Stacked Homes.
+- [Keat Hong Grange, Choa Chu Kang](https://maisoninteriordesign.sg/new-launches/keat-hong-grange/): HDB BTO. Year only: estimated 2026, from a third-party tracker.
+- [Kent Heights, Kallang/Whampoa](https://maisoninteriordesign.sg/new-launches/kent-heights/): HDB BTO. Year only: estimated 2026, from a third-party tracker.
+- [Lakeside View, Jurong West](https://maisoninteriordesign.sg/new-launches/lakeside-view/): HDB BTO. Year only: estimated 2026, from a third-party tracker.
+
 ## Projects
 - [Bedok Reservoir Blk 715](https://maisoninteriordesign.sg/portfolio/bedok-reservoir-road/): Residential, HDB home.
 - [Landed Home Holland](https://maisoninteriordesign.sg/portfolio/landed-home-holland/): Landed, Landed house.
