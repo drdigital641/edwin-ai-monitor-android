@@ -123,7 +123,7 @@ MAIN = """<main id="main">
 <section class="dark-band" id="offer-xado"><div class="wrap"><p class="kicker">For workshops</p><h2>Offer XADO at your workshop</h2>
 <p class="lead">XADO Singapore helps car workshops add XADO engine treatments and oils to their services. Message XADO Singapore on WhatsApp and XADO will take you through how it works.</p>
 <p class="nomin">No minimum order, no obligation</p>
-<div class="hero-btns"><a class="btn wa fw-wa" href="{WSLINK}" target="_blank" rel="noopener" data-cta="workshop_wa_xado" data-ref="workshop_wa_xado">{SVG}WhatsApp XADO</a></div>
+<p class="fw-jump"><a class="textlink" href="#ready-to-offer">How to get in touch with XADO Singapore ↓</a></p>
 </div></section>
 
 <section class="wrap"><h2>Why workshops offer XADO</h2>
@@ -133,18 +133,17 @@ MAIN = """<main id="main">
 
 <section class="dark-band"><div class="wrap fw-split">
 <div><p class="kicker">How to start</p><h2>Talk to XADO Singapore first</h2>
-<ol class="big"><li>Tap the WhatsApp button and send the message with your workshop's name.</li><li>XADO Singapore replies to talk about the range, trade pricing, training and point-of-sale material.</li><li>Start with what suits your customers. There is no minimum order and no obligation.</li></ol>
+<ol class="big"><li>Message XADO Singapore on WhatsApp with your workshop's name, using the <a href="#ready-to-offer">button at the end of this page</a>.</li><li>XADO Singapore replies to talk about the range, trade pricing, training and point-of-sale material.</li><li>Start with what suits your customers. There is no minimum order and no obligation.</li></ol>
 <p class="nomin">No minimum order, no obligation</p>
-<div class="hero-btns"><a class="btn wa fw-wa" href="{WSLINK}" target="_blank" rel="noopener" data-cta="workshop_wa_xado" data-ref="workshop_wa_xado_2">{SVG}WhatsApp XADO</a></div>
 <p class="note">Prefer the distributor directly? Call Rev Solutions on <a href="tel:+6568761456">+65 6876 1456</a> or email <a href="mailto:enquiries@revsolutions.com.sg?subject=XADO%20for%20my%20workshop">enquiries@revsolutions.com.sg</a>.</p></div>
 <figure><picture><source type="image/webp" srcset="../assets/img/workshop/xado-1-stage-motor-oil-label-workshop.webp"><img src="../assets/img/workshop/xado-1-stage-motor-oil-label-workshop.jpg" alt="Mechanic holding a can of XADO 1 Stage full synthetic motor oil at an authorised XADO workshop in Singapore" width="900" height="1200" loading="lazy" decoding="async"></picture><figcaption>XADO 1 Stage full synthetic motor oil at an authorised XADO workshop in Singapore.</figcaption></figure>
 </div></section>
 
 <section class="wrap narrow"><h2>Questions from drivers and workshops</h2><div class="faq">{FAQ}</div></section>
 
-<section class="cta-band"><div class="wrap ctain"><div><h2>Ready to offer XADO?</h2><p>No minimum order, no obligation. Message XADO Singapore and XADO will get back to you.</p></div><div class="ctabtn"><a class="btn wa fw-wa" href="{WSLINK}" target="_blank" rel="noopener" data-cta="workshop_wa_xado" data-ref="workshop_wa_xado_3">{SVG}WhatsApp XADO</a><a class="btn ghost" href="../xado-products-guide.html">See the product range</a></div></div></section>
+<section class="cta-band" id="ready-to-offer" style="scroll-margin-top:92px"><div class="wrap ctain"><div><h2>Ready to offer XADO?</h2><p>No minimum order, no obligation. Message XADO Singapore and XADO will get back to you.</p></div><div class="ctabtn" data-nobub><a class="btn wa fw-wa" href="{WSLINK}" target="_blank" rel="noopener" data-cta="workshop_wa_xado" data-ref="workshop_wa_xado">{SVG}WhatsApp XADO about stocking it</a><a class="btn ghost" href="../xado-products-guide.html">See the product range</a></div></div></section>
 </main>
-<script src="../assets/refer.js?v=3" defer></script>
+<script src="../assets/refer.js?v=4" defer></script>
 """.replace('{DRIVER}', driver_box('../', True))
 
 def fill(t):

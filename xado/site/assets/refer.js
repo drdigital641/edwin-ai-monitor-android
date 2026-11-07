@@ -28,7 +28,7 @@ window.xadoLeadLink=function(ws,raw,name,car){var n=norm(raw);ws=clean(ws);if(!n
 });
 /* Keep the floating WhatsApp bubble off the form: hide it while the form, its button/note or the
    no-workshop box sits under it (7 Nov 2026). */
-var bub=document.querySelector('.wa-float'),zones=document.querySelectorAll('.xlead,.xref-after');
+var bub=document.querySelector('.wa-float'),zones=document.querySelectorAll('.xlead,.xref-after,[data-nobub]');
 if(bub&&zones.length){var tick=0;function chk(){tick=0;var cs=getComputedStyle(bub),vw=document.documentElement.clientWidth,vh=innerHeight,
     bR=vw-parseFloat(cs.right),bB=vh-parseFloat(cs.bottom),b={right:bR,bottom:bB,left:bR-bub.offsetWidth,top:bB-bub.offsetHeight},hit=false;
   [].forEach.call(zones,function(z){var r=z.getBoundingClientRect();if(r.top<b.bottom+12&&r.bottom>b.top-12&&r.left<b.right+12&&r.right>b.left-12)hit=true});
