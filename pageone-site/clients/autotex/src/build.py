@@ -32,6 +32,7 @@ ADDR2 = "AutoBay@Kaki Bukit, Singapore 417883"
 TEL = "6747 9618"; TEL_H = "+6567479618"
 WA = "6597319547"; WA_SHOW = "+65 9731 9547"
 HOURS = [("Monday to Friday", "9:30am to 5:30pm"), ("Saturday", "9:30am to 3:30pm"), ("Sunday", "closed")]
+PRIVACY_UPDATED = "8 November 2026"
 HOURS_LINE = "Mon-Fri 9:30am-5:30pm, Sat 9:30am-3:30pm, Sunday closed"
 GMAP = "https://www.google.com/maps/search/?api=1&query=Autotex+Aircon+Enterprise+1+Kaki+Bukit+Ave+6+%2301-42+Singapore+417883"
 INDEXNOW = "7d3e9a51c4b84f2e9a0c6b1d58e2f437"
@@ -281,7 +282,7 @@ def shell(path, title, desc, body, active="", crumbs=None, schema=None, js=("dat
 <div><h4>Visit</h4><p>{e(ADDR1)}<br>{e(ADDR2)}<br><a href="{GMAP}" rel="noopener">Directions</a></p></div>
 <div><h4>Opening hours</h4><p>Mon-Fri 9:30am-5:30pm<br>Sat 9:30am-3:30pm<br>Sunday closed</p></div>
 <div><h4>Talk to us</h4><p><a href="tel:{TEL_H}">Call {TEL}</a><br><a href="https://wa.me/{WA}" rel="noopener">WhatsApp {WA_SHOW}</a></p><p class="ft-links"><a href="{r}hyundai/">Hyundai parts</a> · <a href="{r}kia/">Kia parts</a> · <a href="{r}prices/">Price list</a> · <a href="{r}articles/">Guides</a> · <a href="{r}about/">About</a></p></div>
-</div><div class="wrap ft-b">© {datetime.date.today().year} {e(LEGAL)}. Hyundai and Kia are trademarks of their owners; Autotex is an independent parts stockist.</div></footer>
+</div><div class="wrap ft-b">© {datetime.date.today().year} {e(LEGAL)}. Hyundai and Kia are trademarks of their owners; Autotex is an independent parts stockist. <a href="{r}privacy-policy/">Privacy Policy</a> · Website &amp; SEO by <a href="https://pageonesingapore.com/">Page One Singapore</a></div></footer>
 <a class="wa-fab" href="https://wa.me/{WA}?text={e(quote('Hi Autotex, I need a part for my car.'))}" aria-label="WhatsApp Autotex" rel="noopener">{WA_SVG}</a>
 {scripts}
 </body>
@@ -1004,6 +1005,31 @@ def build_pages():
 </div><div class="wrap"><h2>Opening hours</h2>{hours_html("spec hours")}<p class="small">Please WhatsApp before you come down so we can check stock and get your parts ready.</p></div></section>'''
     shell("contact/index.html", "Contact Autotex | Kia & Hyundai Parts Kaki Bukit", f"WhatsApp {WA_SHOW} or call {TEL}. Autotex, {ADDR1}, Kaki Bukit, Singapore 417883. Open Mon to Sat.",
           body, active="contact", crumbs=[("Contact", "contact/")], prio="0.6")
+    # privacy policy (Singapore PDPA 2012), added 8 Nov 2026. Describes only what this site really collects (wa.js tap counter, at.js cart + live catalogue, Google Fonts, host logs).
+    body = f'''<section class="ph"><div class="wrap narrow">{{{{CRUMBS}}}}<h1>Privacy Policy</h1>
+<p class="lead">What we collect when you use this website or contact {e(LEGAL)}, and what we do with it.</p>
+<p class="small muted">Last updated {PRIVACY_UPDATED}</p></div></section>
+<article class="sec art-b"><div class="wrap narrow">
+<h2>Who runs this site</h2>
+<p>This website is run by {e(LEGAL)} (UEN {UEN}), {e(ADDR1)}, {e(ADDR2)}.</p>
+<h2>When you contact us</h2>
+<p>You can reach us by WhatsApp on {WA_SHOW} or by phone call on {TEL}. What you send us, such as your name, car plate or chassis number, the part you need and photos of the old part, is used only to reply to you, check the right part for your car and handle your order.</p>
+<h2>Your cart and order</h2>
+<p>Your cart is kept in your own browser on your device, not on our server. When you tap Send order on WhatsApp, the order form (your name, car plate or chassis number, collection choice and notes) is put into a WhatsApp message to us. Nothing is sent until you send that message in WhatsApp, and nothing is paid on this website. You can clear the cart at any time.</p>
+<h2>Prices and stock shown on the site</h2>
+<p>To show current prices, stock and photos, your browser loads our parts catalogue from our database provider. This only reads the catalogue; it does not send your details.</p>
+<h2>Counting taps on our WhatsApp buttons</h2>
+<p>We count how often visitors tap the WhatsApp buttons and send orders on WhatsApp, so we can see which pages help people get in touch. Each tap sends one small record to our dashboard: the page it was tapped on, the button text, whether the device is a phone or a computer, the site you came from and any campaign tag in the link, whether you came from an ad (not the ad click code), how many pages you viewed and how long you had been on the site, your screen size, time zone and browser language, and two random codes: one that lasts only while your browser tab is open, and one kept in your browser so repeat visits from the same browser can be counted. The record is stored with the time of the tap.</p>
+<p>The tap counter does not send or store your name, phone number or message. The WhatsApp message itself goes through WhatsApp, not through this counter. The counter does not use cookies.</p>
+<h2>Fonts and server logs</h2>
+<p>The text fonts on this site are loaded from Google Fonts, so your browser connects to Google to fetch them. Our website host keeps standard server logs, such as IP address, browser type and the pages requested, to keep the site running and secure.</p>
+<h2>No selling of data</h2>
+<p>We do not sell your details or give them to advertisers.</p>
+<h2>Your rights under the PDPA</h2>
+<p>We handle personal data in line with Singapore's Personal Data Protection Act 2012. To ask for a copy of the details we hold about you, or to have them corrected or removed, WhatsApp us on <a href="{wa_link("Hi Autotex, I would like a copy of my details, or to have them corrected or removed.")}" rel="noopener">{WA_SHOW}</a> or call <a href="tel:{TEL_H}">{TEL}</a>.</p>
+</div></article>'''
+    shell("privacy-policy/index.html", "Privacy Policy | Autotex", f"How {LEGAL} handles your details: WhatsApp and phone enquiries, your cart, tap counting on our buttons, server logs and your rights under Singapore PDPA.",
+          body, active="", crumbs=[("Privacy Policy", "privacy-policy/")], prio="0.3")
     # staff: tiny noindex redirect to the Base44 staff dashboard (not in sitemap)
     write("staff/index.html", f'''<!doctype html>
 <html lang="en-SG"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
@@ -1069,10 +1095,21 @@ ARTS = [
    ("Do all cars have an alternator?", "Petrol and diesel cars do. Fully electric cars have no engine-driven alternator, so it is not listed for those models in our shop."),
    ("Which alternator do I need?", "Alternators differ by model, generation and engine. Send us your car plate or chassis number and we will match the right one. Ask about the drive belt at the same time, because a worn or loose belt can also cause charging problems.")],
   "electrical", "2026-11-06"),
+ ("hyundai-kia-aircon-not-cold-which-parts", "Hyundai or Kia aircon not cold: which parts usually cause it",
+  'Aircon blowing warm on a Hyundai or Kia? The usual causes: low refrigerant, compressor, condenser, cooling fan and cabin filter, and what to check first.',
+  [('Why is my Hyundai or Kia aircon not cold?', 'The aircon needs three things to cool: enough refrigerant, a compressor that pumps it, and a condenser with airflow to release the heat. If any of the three fails, the air from the vents turns lukewarm or warm. Weak airflow is a different problem and usually points to the cabin filter or the blower.'),
+   ('What are the usual causes?', '<ul><li>Low refrigerant. The system is sealed, so low gas normally means a leak somewhere in the pipes, joints or condenser.</li><li>A compressor that does not engage, or that is noisy or worn.</li><li>A condenser that is blocked with dirt, or damaged by stones or a minor front impact.</li><li>A radiator or condenser fan that does not run, so the heat cannot escape, especially in slow traffic.</li><li>A choked cabin air filter, which cuts airflow rather than temperature.</li></ul>'),
+   ('Is it warm air or weak airflow?', 'Note which one you have. If the fan is strong but the air is not cold, look at the refrigerant, compressor, condenser and cooling fans. If the air is cold but weak, the cabin filter is the first thing to check, then the blower. Cold at highway speed but warm at traffic lights often points to a cooling fan that is not working.'),
+   ('Will a gas top-up fix it?', 'Only if the gas was low, and low gas means the leak is still there. A top-up without a leak test may last days or a few weeks before the aircon warms up again. Ask the workshop to find the leak, and replace the part that is leaking, often a condenser, a hose or a compressor seal.'),
+   ('Which aircon parts does Autotex supply?', 'For Hyundai and Kia models sold in Singapore we list the aircon compressor, the aircon condenser and the cabin air filter. The radiator fan is listed for petrol and diesel models. Refrigerant, leak testing and fitting are done by an aircon workshop, not by Autotex as the parts stockist.'),
+   ('Can I keep driving with the aircon off?', 'Usually yes, but get a noisy or seizing compressor checked soon. On belt-driven systems a failing compressor can load the drive belt that also turns other parts. If the engine temperature gauge rises as well, stop in a safe place: that is an engine cooling problem, not only an aircon one.'),
+   ('What should I send Autotex to get the right part?', 'Send your car plate or chassis number and the part you think you need. Compressors, condensers and fans differ by model, generation and engine, so the chassis number settles the match. A photo of the old part or the label on the compressor helps. If you are not sure which part has failed, have the aircon tested first.')],
+  "cooling-aircon", "2026-11-08"),
 ]
 
 # 40-60 word direct answers shown under each article H1, and meta descriptions of 120-160 characters (2 Nov 2026 SEO pass)
 ART_ANS = {
+ "hyundai-kia-aircon-not-cold-which-parts": 'If a Hyundai or Kia aircon is not cold, the usual causes are low refrigerant from a leak, a compressor that is not engaging, a blocked or damaged condenser, a cooling fan that is not running, or a clogged cabin filter. A workshop checks gas pressure and the compressor first, then the parts around them.',
  "find-the-right-part-without-a-part-number": "To get the right Hyundai or Kia part first time, send three things: your car model with its generation or year, the part you need, and your chassis number from the vehicle log card. The chassis number settles the generation, facelift and engine, which decide the fit. A photo of the old part helps too.",
  "brake-pads-and-discs-when-to-change": "Change brake pads when they squeal, the car takes longer to stop or a warning light comes on. Change the discs too if they are worn below the minimum thickness stamped on them, deeply scored or warped. Pads and discs are changed in pairs on the same axle, so both sides brake evenly.",
  "signs-of-a-worn-engine-mounting": "A worn engine mounting usually shows as extra vibration at idle, a knock or clunk when you pull away or change gear, or an engine that visibly rocks when revved. The rubber wears with age and heat, so have a workshop check it and replace the worn mount before hoses and wiring are strained.",
@@ -1081,6 +1118,7 @@ ART_ANS = {
  "signs-of-a-failing-ignition-coil": "A failing ignition coil usually shows as a rough idle, hesitation or jerking when you accelerate, or a check-engine light that comes on or flashes during a misfire. A workshop reads the fault code to find the cylinder, then swaps coils to confirm. Avoid hard driving while the light flashes.",
 }
 ART_DESC = {
+ "hyundai-kia-aircon-not-cold-which-parts": 'Aircon blowing warm on a Hyundai or Kia? The usual causes: low refrigerant, compressor, condenser, cooling fan and cabin filter, and what to check first.',
  "find-the-right-part-without-a-part-number": "Most owners don't know their part numbers. Send your model, generation, chassis number and a photo of the old part and we match the right part.",
  "brake-pads-and-discs-when-to-change": "Pads wear first and discs wear slower. How to tell from the squeal, the pedal feel and the disc thickness whether your Hyundai or Kia needs pads, discs or both.",
  "signs-of-a-worn-engine-mounting": "Vibration at idle and a knock when you change gear can point to the engine mounts. Common signs of a worn engine mounting on a Hyundai or Kia.",
@@ -1194,6 +1232,7 @@ Last updated: {UPDATED}
 - How to order: {BASE}/how-to-order/
 - About Autotex: {BASE}/about/
 - Contact and directions: {BASE}/contact/
+- Privacy policy: {BASE}/privacy-policy/
 
 ## Parts by type
 {cats}
