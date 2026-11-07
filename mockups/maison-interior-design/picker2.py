@@ -9,18 +9,18 @@ PICKER2 = {
            plan_alt="Maison redrawn floor plan of a Towner Residences 4-room flat (first p.12 arrangement), for illustration",
            src="https://btohq.sgp1.cdn.digitaloceanspaces.com/bto/aug-2021-bto/towner-residences.pdf#page=8",
            note="4-room first arrangement (the first of two on HDB brochure p.12): 90 sqm / approx. 93 sqm.",
-           prefix="", rooms=[("living", "Living/Dining", .365, .48, "style"), ("kitchen", "Kitchen", .44, .73, "style"),
-                             ("bedroom", "Main bedroom", .777, .33, "style"), ("bedroom-2", "Bedroom 2", .419, .29, "style"),
-                             ("bedroom-3", "Bedroom 3", .594, .29, "style")]),
+           prefix="", rooms=[("living", "Living/Dining", .30, .54, "style"), ("kitchen", "Kitchen", .438, .74, "style"),
+                             ("bedroom", "Main bedroom", .778, .39, "style"), ("bedroom-2", "Bedroom 2", .421, .31, "style"),
+                             ("bedroom-3", "Bedroom 3", .602, .31, "style")]),
  "3": dict(label="3-room", units="90 units · HDB p.14", plan="maison-plan-3room", ph=1640,
            plan_alt="Maison redrawn floor plan of a Towner Residences 3-room flat, for illustration",
            src="https://btohq.sgp1.cdn.digitaloceanspaces.com/bto/aug-2021-bto/towner-residences.pdf#page=7",
            note="3-room, HDB brochure p.10: 65 sqm / approx. 68 sqm.",
-           prefix="3room-", rooms=[("living", "Living/Dining", .697, .44, "style"), ("kitchen", "Kitchen", .447, .747, "style"),
-                                   ("bedroom", "Main bedroom", .251, .308, "style"), ("bedroom-2", "Bedroom 2", .478, .278, "style")]),
+           prefix="3room-", rooms=[("living", "Living/Dining", .684, .52, "style"), ("kitchen", "Kitchen", .484, .825, "style"),
+                                   ("bedroom", "Main bedroom", .284, .37, "style"), ("bedroom-2", "Bedroom 2", .478, .31, "style")]),
 }
 
-PICKER2_V = "p2g"
+PICKER2_V = "p3"
 PICKER2_CSS = """
 .vp2 [hidden]{display:none!important}
 .vp2 .sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
