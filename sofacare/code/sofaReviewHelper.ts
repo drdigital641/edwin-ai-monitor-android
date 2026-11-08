@@ -74,6 +74,7 @@ input[type=text]{width:100%;min-height:48px;padding:12px;border:1px solid #c9d3d
 <p class="ok" id="ok">✓ Copied! Just paste it on Google.</p>
 <p class="text" id="text"></p>
 <button class="btn again" id="again" type="button">Copy again</button>
+<button class="btn again" id="another" type="button">Write another version</button>
 <a class="btn open" id="open" target="_blank" rel="noopener">Open Google Review →</a>
 </section>
 
@@ -125,13 +126,48 @@ var CONFIG = {
   }
   var extra = document.getElementById("extra");
   extra.oninput = function () { document.getElementById("left").textContent = 120 - extra.value.length; };
+  // Wording varies on every Generate (Edwin 8 Nov: "the generated sentence must varies").
+  // Phrases only restate what the chip says. No prices, no other claims.
+  var PHRASES = {
+    "Good service": ["the service was good", "service was good from start to end", "service was really good", "they gave good service", "the service was very good overall"],
+    "Fair pricing": ["the price was fair", "pricing was fair", "the price was fair for the job", "the charges were reasonable", "the price was very fair"],
+    "Thorough cleaning": ["the cleaning was very thorough", "they cleaned everything properly", "they did a very thorough job", "they were thorough with the cleaning", "nothing was missed in the cleaning"],
+    "On time": ["they came on time", "arrived on time", "they came at the time given", "they were on time", "came right on schedule"],
+    "Friendly team": ["the team was friendly", "the team was friendly and polite", "the guys were very friendly", "the crew was friendly", "the cleaners were friendly"],
+    "Sofa looks like new": ["my sofa looks like new now", "the sofa looks almost new", "sofa came out looking like new", "my sofa looks so much newer", "the sofa looks brand new again"],
+    "Same-day service": ["they could come the same day", "I got same-day service", "I could book them for the same day", "came on the same day I asked", "they did it same day"]
+  };
+  var OPEN = ["", "Very happy with Sofa Care Singapore. ", "Booked Sofa Care Singapore for my sofa. ", "Good experience overall. ", "Used Sofa Care Singapore recently. ", "Satisfied with the job. "];
+  var JOIN = [
+    function (l) { return cap(list(l)) + "."; },
+    function (l) { return "What I liked: " + list(l) + "."; },
+    function (l) { return l.map(function (x) { return cap(x) + "."; }).join(" "); },
+    function (l) { return "Honestly, " + list(l) + "."; }
+  ];
+  var END5 = ["Highly recommended!", "Would book again.", "Will recommend to friends.", "Will use them again.", "Recommended!"];
+  var DEFAULTS = ["Great service, highly recommended!", "Good job overall, would book again.", "Very happy with the service. Recommended!", "Smooth experience from start to end. Will recommend to friends.", "Good service, will use them again."];
+  function pick(a) { return a[Math.floor(Math.random() * a.length)]; }
+  function cap(x) { return x.charAt(0).toUpperCase() + x.slice(1); }
+  function list(l) { return l.length < 2 ? l.join("") : l.slice(0, -1).join(", ") + " and " + l[l.length - 1]; }
+  function shuffle(a) { a = a.slice(); for (var i = a.length - 1; i > 0; i--) { var j = Math.floor(Math.random() * (i + 1)); var t = a[i]; a[i] = a[j]; a[j] = t; } return a; }
+  var last = "";
   function build() {
+    for (var tries = 0; tries < 8; tries++) {
+      var t = once();
+      if (t !== last) { last = t; return t; }
+    }
+    return last = once();
+  }
+  function once() {
     var s = extra.value.trim();
-    if (!picked.length && !s) return "Great service, highly recommended!";
+    if (!picked.length && !s) return stars === 5 ? pick(DEFAULTS) : pick(["Good service.", "The job was done.", "Service was okay."]);
     var parts = [];
-    if (picked.length) parts.push("What I liked: " + picked.map(function (p, i) { return i ? p.toLowerCase() : p.toLowerCase(); }).join(", ") + ".");
+    if (picked.length) {
+      var phrases = shuffle(picked).map(function (c) { return pick(PHRASES[c] || [c.toLowerCase()]); });
+      parts.push((pick(OPEN) + pick(JOIN)(phrases)).trim());
+    }
     if (s) parts.push(/[.!?]$/.test(s) ? s : s + ".");
-    if (stars === 5) parts.push("Highly recommended!");
+    if (stars === 5) parts.push(pick(END5));
     return parts.join(" ");
   }
   function copy(t) {
@@ -157,6 +193,7 @@ var CONFIG = {
     document.getElementById("out").scrollIntoView({ behavior: "smooth", block: "start" });
   };
   document.getElementById("again").onclick = function () { copy(current).then(show); };
+  document.getElementById("another").onclick = function () { current = build(); document.getElementById("text").textContent = current; copy(current).then(show); };
   drawStars(); drawChips();
 })();
 </script>
