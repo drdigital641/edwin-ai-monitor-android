@@ -4,6 +4,7 @@ var d=document,b=d.body,rm=window.matchMedia&&matchMedia('(prefers-reduced-motio
 var hdr=d.querySelector('.hdr'),tog=d.querySelector('.mtog');
 function sc(){if(hdr)hdr.classList.toggle('scrolled',window.scrollY>24)}sc();window.addEventListener('scroll',sc,{passive:true});
 function setMenu(o){hdr.classList.toggle('open',o);d.documentElement.classList.toggle('menu-open',o);tog.setAttribute('aria-expanded',o);tog.setAttribute('aria-label',o?'Close menu':'Open menu')}
+function opD(){var h=location.hash;if(h.length>1){var x=d.getElementById(h.slice(1));if(x&&x.tagName==='DETAILS')x.open=true}}window.addEventListener('hashchange',opD);opD();
 if(tog){tog.addEventListener('click',function(){setMenu(!hdr.classList.contains('open'))});d.querySelectorAll('#mainnav a').forEach(function(a){a.addEventListener('click',function(){setMenu(false)})});window.addEventListener('resize',function(){if(window.innerWidth>=1024&&hdr.classList.contains('open'))setMenu(false)})}
 d.addEventListener('keydown',function(e){if(e.key==='Escape'&&hdr&&hdr.classList.contains('open'))setMenu(false)});
 var els=[].slice.call(d.querySelectorAll('.rv'));
@@ -38,7 +39,7 @@ var items=[].slice.call(d.querySelectorAll('[data-lb]'));
 if(items.length){
 var lb=d.createElement('div');lb.className='lb';lb.setAttribute('role','dialog');lb.setAttribute('aria-modal','true');lb.setAttribute('aria-label','Photo viewer');lb.hidden=true;
 lb.innerHTML='<div class="lb-top"><span class="lb-n"></span><button type="button" class="lb-x" aria-label="Close photo viewer"><svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M6 6l12 12M18 6 6 18"/></svg></button></div>'+
-'<figure class="lb-fig"><div class="lb-st"><img class="lb-lo" alt="" aria-hidden="true"><img class="lb-hi" alt="" decoding="async"></div><figcaption></figcaption></figure>'+
+'<figure class="lb-fig"><div class="lb-st"><img class="lb-lo" alt="" aria-hidden="true" width="1600" height="1200"><img class="lb-hi" alt="" decoding="async" width="1600" height="1200"></div><figcaption></figcaption></figure>'+
 '<button type="button" class="lb-p" aria-label="Previous photo"><svg viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="m15 5-7 7 7 7"/></svg></button>'+
 '<button type="button" class="lb-nx" aria-label="Next photo"><svg viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="m9 5 7 7-7 7"/></svg></button>';
 b.appendChild(lb);
@@ -50,6 +51,24 @@ function open(i){last=d.activeElement;lb.hidden=false;b.classList.add('lb-on');s
 function close(){lb.hidden=true;b.classList.remove('lb-on');im.removeAttribute('src');if(last)last.focus()}
 var all=items;all.forEach(function(a){a.addEventListener('click',function(e){if(e.defaultPrevented)return;e.preventDefault();var st=a.closest('[data-lb-set]');items=st?[].slice.call(st.querySelectorAll('[data-lb]')):all;open(items.indexOf(a))})});
 d.querySelectorAll('[data-lb-open]').forEach(function(x){x.addEventListener('click',function(e){e.preventDefault();items=all;open(0)})});
+/* Around the house: category chips (all categories show without JS) */
+d.querySelectorAll('[data-ar]').forEach(function(w){w.classList.add('ar-js');var bs=[].slice.call(w.querySelectorAll('.ar-chips button')),cs=[].slice.call(w.querySelectorAll('.ar-cat'));
+bs.forEach(function(x){x.addEventListener('click',function(){var c=x.getAttribute('data-c');bs.forEach(function(y){y.setAttribute('aria-selected',y===x)});cs.forEach(function(z){z.classList.toggle('on',z.getAttribute('data-c')===c)})})})});
+/* enquiry form: builds the WhatsApp message (opens WhatsApp; never sends or stores anything) */
+d.querySelectorAll('form.enq').forEach(function(f){f.classList.add('enq-on');var alt=f.parentNode.querySelector('.enq-alt');if(alt)alt.classList.add('enq-hide');
+var ci=f.elements['in'],co=f.elements['out'],er=f.querySelector('.enq-err');try{var t=new Date();t.setMinutes(t.getMinutes()-t.getTimezoneOffset());ci.min=t.toISOString().slice(0,10)}catch(x){}
+ci.addEventListener('change',function(){co.min=ci.value||'';er.hidden=true});
+function fd(v){if(!v)return'not decided';var p=v.split('-'),m=['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];return (+p[2])+' '+m[+p[1]-1]+' '+p[0]}
+function nv(v){v=parseInt(v,10);return isNaN(v)||v<0?'not decided':String(v)}
+f.addEventListener('submit',function(ev){ev.preventDefault();if(ci.value&&co.value&&co.value<=ci.value){er.hidden=false;co.focus();return}
+var msg="Hi, I'm planning a JB stay from Singapore. [House: "+f.getAttribute('data-house')+"]. Check-in: "+fd(ci.value)+". Check-out: "+fd(co.value)+". Adults: "+nv(f.elements['ad'].value)+". Children: "+nv(f.elements['ch'].value)+". Please confirm availability, sleeping arrangement, final total in RM, payment options, deposit and cancellation terms. [Source: "+f.getAttribute("data-from")+"]";
+window.open('https://wa.me/6590062198?text='+encodeURIComponent(msg),'_blank','noopener')})});
+/* sticky bar: hide while the footer is visible or a form field is focused */
+var stk=[].slice.call(d.querySelectorAll('.stick')),ft=d.querySelector('.ftr');
+function stOff(o){stk.forEach(function(x){x.classList.toggle('st-off',o)})}
+if(stk.length&&ft&&'IntersectionObserver' in window){new IntersectionObserver(function(es){stOff(es[0].isIntersecting)},{rootMargin:'0px 0px -40px 0px'}).observe(ft)}
+d.addEventListener('focusin',function(e){if(e.target.matches&&e.target.matches('input,select,textarea'))b.classList.add('kb-on')});
+d.addEventListener('focusout',function(e){if(e.target.matches&&e.target.matches('input,select,textarea'))b.classList.remove('kb-on')});
 /* /stays: Prima | Landak switcher on phones (hash selects the house) */
 var hsw=d.querySelector('.hsw');if(hsw){var H=d.documentElement;
 function pick(k,scroll){H.setAttribute('data-house',k);hsw.querySelectorAll('a').forEach(function(a){var on=a.getAttribute('data-h')===k;a.classList.toggle('on',on);if(on)a.setAttribute('aria-current','true');else a.removeAttribute('aria-current')});
