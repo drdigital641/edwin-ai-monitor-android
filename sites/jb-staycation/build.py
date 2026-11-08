@@ -47,16 +47,19 @@ CONFIRM = [
 
 # ---------------------------------------------------------------- images (Edwin's real photos, self-hosted: site/img/ full size, site/thumb/ 800px)
 SRC_IMG = os.path.join(HERE, 'photos-real')   # Edwin's real photos (jb-photos.zip, 8 Nov 2026): <name>.webp (max 1600) + <name>-800.webp
-HERO_IMG = 'prima-hero-1600.webp'   # homepage hero: Edwin's real Prima living room (light touch-up only), 1600x900 + 800x450 + 800x1000 phone crop
-HERO_ALT = 'Living room with sofa and pool table at Prima, Iskandar Puteri'
+HERO_IMG = 'prima-hero-1600.webp'   # homepage hero ONLY: AI image Edwin chose 9 Nov 2026 (not Prima itself). Never use as a Prima photo, og:image or schema image.
+HERO_ALT = 'Friends and family enjoying a JB staycation house with pool table'
+HERO_V = '20261109'   # cache-buster for the hero files (same names were overwritten on the server)
+OG_DEFAULT = 'prima-living-room-1.webp'   # real photo for og:image / schema
 HERO_SET = {'desktop': 'prima-hero-1600.webp', 'small': 'prima-hero-800.webp', 'mobile': 'prima-hero-mobile-800.webp'}
 
 
 def hero_picture():
     """<picture>: 4:5 phone crop up to 600px, otherwise 800/1600 srcset. Eager, fetchpriority=high, real width/height."""
-    return ('<picture><source media="(max-width:600px)" srcset="{R}img/%s" width="800" height="1000">'
-            '<img src="{R}img/%s" srcset="{R}img/%s 800w, {R}img/%s 1600w" sizes="100vw" alt="%s" width="1600" height="900" fetchpriority="high" decoding="async"></picture>'
-            % (HERO_SET['mobile'], HERO_SET['desktop'], HERO_SET['small'], HERO_SET['desktop'], e(HERO_ALT)))
+    v = '?v=' + HERO_V
+    return ('<picture><source media="(max-width:600px)" srcset="{R}img/%s%s" width="800" height="1000">'
+            '<img src="{R}img/%s%s" srcset="{R}img/%s%s 800w, {R}img/%s%s 1600w" sizes="100vw" alt="%s" width="1600" height="900" fetchpriority="high" decoding="async"></picture>'
+            % (HERO_SET['mobile'], v, HERO_SET['desktop'], v, HERO_SET['small'], v, HERO_SET['desktop'], v, e(HERO_ALT)))
 
 # alt text per photo, written from the photo manifest (what is actually visible). Each house uses only its own photos.
 ALT = {
@@ -190,38 +193,28 @@ STAYS_IMG = {
                'landak-tv-games-1.webp', 'landak-bedroom-1.webp', 'landak-kitchen-breakfast-bar-1.webp', 'landak-bathroom-1.webp', 'landak-exterior-1.webp'],
 }
 STAYS_BAND_IMG = 'landak-living-daylight-angle-2.webp'
-# full albums on /stays (every real photo from jb-photos-v2 except prima-living-daylight-wide-1, the old layout), grouped by room
+# full albums on /stays (every real photo from jb-photos-v2 except prima-living-daylight-wide-1, the old layout), grouped by room; phones show each group as a swipe strip
 ALBUM = {
     'prima': [
-        ('Living room', ['prima-living-room-1.webp', 'prima-living-room-2.webp', 'prima-living-pool-table-2.webp', 'prima-living-pool-table-3.webp', 'prima-tv-wall-1.webp',
-                         'prima-living-entry-angle-1.webp', 'prima-entrance-console-1.webp', 'prima-blue-seating-wide-1.webp', 'prima-blue-seating-area-1.webp', 'prima-blue-seating-tv-1.webp']),
-        ('Games: pool table', ['prima-pool-table-dining-1.webp', 'prima-pool-table-1.webp', 'prima-pool-table-window-1.webp']),
-        ('Kitchen and dining', ['prima-dining-kitchen-wide-1.webp', 'prima-dining-room-1.webp', 'prima-dining-front-1.webp', 'prima-dining-kitchen-axis-1.webp',
-                                'prima-kitchen-fridge-1.webp', 'prima-kitchen-1.webp', 'prima-kitchen-sink-front-1.webp']),
-        ('Bedrooms and study', ['prima-bedroom-b-angle-3.webp', 'prima-bedroom-b-1.webp', 'prima-bedroom-b-angle-2.webp', 'prima-bedroom-b-seating-1.webp', 'prima-bedroom-a-1.webp',
-                                'prima-bedroom-a-angle-2.webp', 'prima-bedroom-a-bed-detail-1.webp', 'prima-dressing-area-1.webp', 'prima-study-desk-1.webp', 'prima-study-desk-angle-2.webp']),
+        ('Living, kitchen and dining', ['prima-living-room-1.webp', 'prima-living-room-2.webp', 'prima-living-pool-table-2.webp', 'prima-living-pool-table-3.webp', 'prima-tv-wall-1.webp', 'prima-living-entry-angle-1.webp', 'prima-entrance-console-1.webp', 'prima-blue-seating-wide-1.webp', 'prima-blue-seating-area-1.webp', 'prima-blue-seating-tv-1.webp', 'prima-dining-kitchen-wide-1.webp', 'prima-dining-room-1.webp', 'prima-dining-front-1.webp', 'prima-dining-kitchen-axis-1.webp', 'prima-kitchen-fridge-1.webp', 'prima-kitchen-1.webp', 'prima-kitchen-sink-front-1.webp']),
+        ('Bedrooms and study', ['prima-bedroom-b-angle-3.webp', 'prima-bedroom-b-1.webp', 'prima-bedroom-b-angle-2.webp', 'prima-bedroom-b-seating-1.webp', 'prima-bedroom-a-1.webp', 'prima-bedroom-a-angle-2.webp', 'prima-bedroom-a-bed-detail-1.webp', 'prima-dressing-area-1.webp', 'prima-study-desk-1.webp', 'prima-study-desk-angle-2.webp']),
         ('Bathrooms', ['prima-bathroom-wide-1.webp', 'prima-bathroom-1.webp', 'prima-shower-area-1.webp']),
-        ('Covered balcony', ['prima-covered-balcony-view-1.webp', 'prima-balcony-side-1.webp']),
+        ('Games: pool table', ['prima-pool-table-dining-1.webp', 'prima-pool-table-1.webp', 'prima-pool-table-window-1.webp']),
+        ('Outside: covered balcony', ['prima-covered-balcony-view-1.webp', 'prima-balcony-side-1.webp']),
     ],
     'landak': [
-        ('Living room', ['landak-living-room-1.webp', 'landak-living-daylight-angle-1.webp', 'landak-living-daylight-angle-2.webp', 'landak-living-tv-wide-1.webp',
-                         'landak-living-room-staircase-1.webp', 'landak-breakfast-bar-living-room-1.webp', 'landak-staircase-1.webp']),
-        ('Games: pool table, darts, foosball, TV arcade', ['landak-pool-table-darts-1.webp', 'landak-patio-bistro-pool-1.webp', 'landak-pool-table-length-1.webp', 'landak-pool-table-detail-1.webp',
-                         'landak-dartboards-detail-1.webp', 'landak-patio-view-1.webp', 'landak-foosball-table-1.webp', 'landak-dining-foosball-1.webp', 'landak-tv-games-1.webp',
-                         'landak-game-stick-detail-1.webp', 'landak-tv-remote-detail-1.webp']),
-        ('Kitchen and dining', ['landak-dining-room-wide-1.webp', 'landak-dining-table-detail-1.webp', 'landak-kitchen-breakfast-bar-1.webp', 'landak-breakfast-bar-portrait-1.webp',
-                                'landak-kitchen-sink-1.webp', 'landak-kitchen-sink-detail-1.webp', 'landak-kitchen-dishrack-1.webp', 'landak-kitchen-appliances-1.webp']),
+        ('Living, kitchen and dining', ['landak-living-room-1.webp', 'landak-living-daylight-angle-1.webp', 'landak-living-daylight-angle-2.webp', 'landak-living-tv-wide-1.webp', 'landak-living-room-staircase-1.webp', 'landak-breakfast-bar-living-room-1.webp', 'landak-staircase-1.webp', 'landak-dining-room-wide-1.webp', 'landak-dining-table-detail-1.webp', 'landak-kitchen-breakfast-bar-1.webp', 'landak-breakfast-bar-portrait-1.webp', 'landak-kitchen-sink-1.webp', 'landak-kitchen-sink-detail-1.webp', 'landak-kitchen-dishrack-1.webp', 'landak-kitchen-appliances-1.webp']),
         ('Bedroom', ['landak-bedroom-1.webp', 'landak-bedroom-1-angle-3.webp', 'landak-bedroom-1-angle-2.webp']),
         ('Bathrooms', ['landak-bathroom-1.webp', 'landak-bathroom-2.webp', 'landak-bathroom-portrait-1.webp']),
-        ('Laundry and utility', ['landak-covered-counter-wide-1.webp', 'landak-covered-work-counter-1.webp', 'landak-ironing-counter-detail-1.webp', 'landak-electrical-controls-1.webp']),
-        ('Outside', ['landak-exterior-1.webp']),
+        ('Games: pool table, darts, foosball, TV arcade', ['landak-pool-table-darts-1.webp', 'landak-patio-bistro-pool-1.webp', 'landak-pool-table-length-1.webp', 'landak-pool-table-detail-1.webp', 'landak-dartboards-detail-1.webp', 'landak-patio-view-1.webp', 'landak-foosball-table-1.webp', 'landak-dining-foosball-1.webp', 'landak-tv-games-1.webp', 'landak-game-stick-detail-1.webp', 'landak-tv-remote-detail-1.webp']),
+        ('Outside, laundry and utility', ['landak-exterior-1.webp', 'landak-covered-counter-wide-1.webp', 'landak-covered-work-counter-1.webp', 'landak-ironing-counter-detail-1.webp', 'landak-electrical-controls-1.webp']),
     ],
 }
 HOME_CTA_IMG = 'landak-living-room-1.webp'
 
 
 def _alt_for(f):
-    return ALT.get(f, HERO_ALT)
+    return ALT.get(f, 'JBStaycation holiday house in Johor Bahru')
 
 
 def used_images():
@@ -462,6 +455,7 @@ ICONS = {
     'party': '<path d="M3 21 8 8l8 8zM14 3c0 2 1 3 3 3M19 9h2M17 3l1-1M12 6l1-2"/>',
     'menu': '<path d="M4 7h16M4 12h16M4 17h16"/>',
     'x': '<path d="M6 6l12 12M18 6 6 18"/>',
+    'down': '<path d="m6 9 6 6 6-6"/>',
     'left': '<path d="m15 5-7 7 7 7"/>',
     'right': '<path d="m9 5 7 7-7 7"/>',
 }
@@ -533,7 +527,7 @@ def addr_ld(h):
 
 def org_ld():
     return {'@context': 'https://schema.org', '@type': 'LodgingBusiness', '@id': BASE + '#org', 'name': NAME,
-            'url': BASE, 'telephone': WA_SHOW, 'slogan': TAGLINE, 'image': abs_img(HERO_IMG),
+            'url': BASE, 'telephone': WA_SHOW, 'slogan': TAGLINE, 'image': abs_img(OG_DEFAULT),
             'logo': BASE + 'icon-512.png', 'priceRange': 'RM 500 per night', 'currenciesAccepted': 'MYR',
             'areaServed': 'Johor Bahru, Malaysia',
             'makesOffer': [{'@type': 'Offer', 'itemOffered': {'@type': 'LodgingBusiness', 'name': HOUSES[k]['full'], 'url': BASE + 'stays/%s/' % HOUSES[k]['slug']}} for k in ORDER]}
@@ -617,8 +611,9 @@ UI_JS = r"""/* JBStaycation UI: header, menu, reveal on scroll, carousels, light
 var d=document,b=d.body,rm=window.matchMedia&&matchMedia('(prefers-reduced-motion: reduce)').matches;
 var hdr=d.querySelector('.hdr'),tog=d.querySelector('.mtog');
 function sc(){if(hdr)hdr.classList.toggle('scrolled',window.scrollY>24)}sc();window.addEventListener('scroll',sc,{passive:true});
-if(tog)tog.addEventListener('click',function(){var o=!hdr.classList.contains('open');hdr.classList.toggle('open',o);tog.setAttribute('aria-expanded',o);tog.setAttribute('aria-label',o?'Close menu':'Open menu')});
-d.addEventListener('keydown',function(e){if(e.key==='Escape'&&hdr&&hdr.classList.contains('open')){hdr.classList.remove('open');tog.setAttribute('aria-expanded','false')}});
+function setMenu(o){hdr.classList.toggle('open',o);d.documentElement.classList.toggle('menu-open',o);tog.setAttribute('aria-expanded',o);tog.setAttribute('aria-label',o?'Close menu':'Open menu')}
+if(tog){tog.addEventListener('click',function(){setMenu(!hdr.classList.contains('open'))});d.querySelectorAll('#mainnav a').forEach(function(a){a.addEventListener('click',function(){setMenu(false)})});window.addEventListener('resize',function(){if(window.innerWidth>=1024&&hdr.classList.contains('open'))setMenu(false)})}
+d.addEventListener('keydown',function(e){if(e.key==='Escape'&&hdr&&hdr.classList.contains('open'))setMenu(false)});
 var els=[].slice.call(d.querySelectorAll('.rv'));
 setTimeout(function(){els.forEach(function(x){x.classList.add('in')})},1500);
 if('IntersectionObserver' in window&&!rm){var io=new IntersectionObserver(function(es){es.forEach(function(x){if(x.isIntersecting){x.target.classList.add('in');io.unobserve(x.target)}})},{rootMargin:'0px 0px -6% 0px'});els.forEach(function(x){io.observe(x)})}else{els.forEach(function(x){x.classList.add('in')})}
@@ -651,17 +646,25 @@ var items=[].slice.call(d.querySelectorAll('[data-lb]'));
 if(items.length){
 var lb=d.createElement('div');lb.className='lb';lb.setAttribute('role','dialog');lb.setAttribute('aria-modal','true');lb.setAttribute('aria-label','Photo viewer');lb.hidden=true;
 lb.innerHTML='<div class="lb-top"><span class="lb-n"></span><button type="button" class="lb-x" aria-label="Close photo viewer"><svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M6 6l12 12M18 6 6 18"/></svg></button></div>'+
-'<figure class="lb-fig"><img alt="" decoding="async"><figcaption></figcaption></figure>'+
+'<figure class="lb-fig"><div class="lb-st"><img class="lb-lo" alt="" aria-hidden="true"><img class="lb-hi" alt="" decoding="async"></div><figcaption></figcaption></figure>'+
 '<button type="button" class="lb-p" aria-label="Previous photo"><svg viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="m15 5-7 7 7 7"/></svg></button>'+
 '<button type="button" class="lb-nx" aria-label="Next photo"><svg viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="m9 5 7 7-7 7"/></svg></button>';
 b.appendChild(lb);
-var im=lb.querySelector('img'),cap=lb.querySelector('figcaption'),num=lb.querySelector('.lb-n'),cur=0,last=null;
-function show(i){cur=(i+items.length)%items.length;var a=items[cur],g=a.querySelector('img');im.src=a.getAttribute('href');im.alt=g?g.alt:'';cap.textContent=a.getAttribute('data-cap')||(g?g.alt:'');num.textContent=(cur+1)+' / '+items.length;
+var im=lb.querySelector('.lb-hi'),lo=lb.querySelector('.lb-lo'),cap=lb.querySelector('figcaption'),num=lb.querySelector('.lb-n'),cur=0,last=null;
+im.addEventListener('load',function(){im.classList.add('ok')});
+function show(i){cur=(i+items.length)%items.length;var a=items[cur],g=a.querySelector('img'),h=a.getAttribute('href');im.classList.remove('ok');lo.src=(g&&(g.currentSrc||g.src))||h.replace('/img/','/thumb/');im.removeAttribute('src');im.src=h;if(im.complete&&im.naturalWidth)im.classList.add('ok');im.alt=g?g.alt:'';cap.textContent=a.getAttribute('data-cap')||(g?g.alt:'');num.textContent=(cur+1)+' / '+items.length;
 var p=new Image();p.src=items[(cur+1)%items.length].getAttribute('href')}
 function open(i){last=d.activeElement;lb.hidden=false;b.classList.add('lb-on');show(i);lb.querySelector('.lb-x').focus()}
 function close(){lb.hidden=true;b.classList.remove('lb-on');im.removeAttribute('src');if(last)last.focus()}
-items.forEach(function(a,i){a.addEventListener('click',function(e){if(e.defaultPrevented)return;e.preventDefault();open(i)})});
-d.querySelectorAll('[data-lb-open]').forEach(function(x){x.addEventListener('click',function(e){e.preventDefault();open(0)})});
+var all=items;all.forEach(function(a){a.addEventListener('click',function(e){if(e.defaultPrevented)return;e.preventDefault();var st=a.closest('[data-lb-set]');items=st?[].slice.call(st.querySelectorAll('[data-lb]')):all;open(items.indexOf(a))})});
+d.querySelectorAll('[data-lb-open]').forEach(function(x){x.addEventListener('click',function(e){e.preventDefault();items=all;open(0)})});
+/* /stays: Prima | Landak switcher on phones (hash selects the house) */
+var hsw=d.querySelector('.hsw');if(hsw){var H=d.documentElement;
+function pick(k,scroll){H.setAttribute('data-house',k);hsw.querySelectorAll('a').forEach(function(a){var on=a.getAttribute('data-h')===k;a.classList.toggle('on',on);if(on)a.setAttribute('aria-current','true');else a.removeAttribute('aria-current')});
+if(scroll&&matchMedia('(max-width:767px)').matches){var y=hsw.getBoundingClientRect().top+window.scrollY-parseFloat(getComputedStyle(H).getPropertyValue('--hh')||64);var cur=hsw.getBoundingClientRect().top;if(window.scrollY>y)window.scrollTo(0,y)}}
+pick(H.getAttribute('data-house')||'prima',false);
+hsw.addEventListener('click',function(e){var a=e.target.closest('a');if(!a||!matchMedia('(max-width:767px)').matches)return;e.preventDefault();var k=a.getAttribute('data-h');history.replaceState(null,'','#'+k);pick(k,true)});
+window.addEventListener('hashchange',function(){var k=location.hash==='#landak'?'landak':location.hash==='#prima'?'prima':null;if(k)pick(k,false)})}
 lb.querySelector('.lb-x').addEventListener('click',close);lb.querySelector('.lb-p').addEventListener('click',function(){show(cur-1)});lb.querySelector('.lb-nx').addEventListener('click',function(){show(cur+1)});
 lb.addEventListener('click',function(e){if(e.target===lb||e.target.classList.contains('lb-fig'))close()});
 d.addEventListener('keydown',function(e){if(lb.hidden)return;if(e.key==='Escape')close();else if(e.key==='ArrowRight')show(cur+1);else if(e.key==='ArrowLeft')show(cur-1);else if(e.key==='Tab'){var f=[].slice.call(lb.querySelectorAll('button'));var k=f.indexOf(d.activeElement);e.preventDefault();f[(k+(e.shiftKey?-1:1)+f.length)%f.length].focus()}});
@@ -701,6 +704,7 @@ p{margin:0 0 1em}p,li{text-wrap:pretty}
 .btn-line{border-color:var(--line-strong);color:var(--ink);background:var(--surface)}.btn-line:hover{border-color:var(--ink);color:var(--ink)}
 .btn-sm{min-height:44px;padding:8px 16px;font-size:.9375rem}
 .link{display:inline-flex;align-items:center;gap:8px;font-weight:600;text-decoration:none;color:var(--ink);min-height:44px}.link .i{transition:transform .25s var(--ease)}.link:hover .i{transform:translateX(4px)}
+
 /* header */
 .hdr{position:fixed;inset:0 0 auto;z-index:50;height:var(--hh);color:var(--ink);background:rgba(247,248,249,.9);-webkit-backdrop-filter:saturate(1.4) blur(18px);backdrop-filter:saturate(1.4) blur(18px);border-bottom:1px solid var(--line);transition:background .3s,color .3s,border-color .3s}
 .hdr-in{height:100%;display:flex;align-items:center;gap:16px}
@@ -713,6 +717,7 @@ p{margin:0 0 1em}p,li{text-wrap:pretty}
 .js .nav{position:fixed;left:0;right:0;top:var(--hh);display:flex;flex-direction:column;padding:8px 16px 24px;background:var(--page);border-bottom:1px solid var(--line);box-shadow:0 30px 40px -30px rgba(10,31,56,.35);transform:translateY(-8px);opacity:0;visibility:hidden;transition:opacity .25s var(--ease),transform .25s var(--ease),visibility .25s}
 .js .nav a{font-size:1.25rem;padding:14px 4px;border-bottom:1px solid var(--line);border-radius:0;color:var(--ink)}
 .hdr.open .nav{opacity:1;transform:none;visibility:visible}
+.hdr.open{background:var(--page);-webkit-backdrop-filter:none;backdrop-filter:none}.js .nav{height:calc(100vh - var(--hh));height:calc(100dvh - var(--hh));overflow-y:auto;overscroll-behavior:contain;background:#f7f8f9}html.menu-open,html.menu-open body{overflow:hidden}.menu-open .stick{display:none}
 html:not(.js) .nav{display:flex;position:absolute;top:var(--hh);left:0;right:0;overflow-x:auto;gap:4px;padding:6px 16px;background:var(--page);border-bottom:1px solid var(--line)}html:not(.js) .mtog{display:none}}
 @media(min-width:1024px){.nav{display:flex;gap:2px;margin-right:auto}.brand{margin-right:28px}.mtog{display:none}}
 .js .home .hdr:not(.scrolled):not(.open){background:transparent;border-color:transparent;color:#fff;-webkit-backdrop-filter:none;backdrop-filter:none}
@@ -888,14 +893,14 @@ table{width:100%;border-collapse:collapse;background:var(--surface);font-size:1r
 .ami li{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:6px;text-align:center;padding:12px 6px;border:1px solid var(--line);border-radius:var(--r);background:var(--page);font-size:1rem;font-weight:500;line-height:1.25}
 .bestfor{margin:0;font-size:1.0625rem;line-height:1.5}.scb .rating{margin:0;display:flex;align-items:center;gap:6px;color:var(--ink-soft);font-size:1rem}.scb .rating .i{color:var(--amber)}
 .scta{margin-top:auto;display:grid;gap:10px;padding-top:6px}@media(min-width:480px){.scta{grid-template-columns:1fr auto}}.scta .btn{width:100%;justify-content:center}
-.cmp-sec{margin-top:clamp(44px,7vw,80px)}.cmp{border:1px solid var(--line);border-radius:var(--r);overflow:hidden;margin:0 0 20px}.cmp table{table-layout:fixed;width:100%;min-width:0;border-collapse:collapse}
+.cmp-sec{margin-top:clamp(44px,7vw,80px)}.cmp-sec+#faq{margin-top:clamp(48px,7vw,80px)}.cmp{border:1px solid var(--line);border-radius:var(--r);overflow:hidden;margin:0 0 20px}.cmp table{table-layout:fixed;width:100%;min-width:0;border-collapse:collapse}
 .cmp th,.cmp td{padding:12px 14px;vertical-align:top;border-bottom:1px solid var(--line);overflow-wrap:anywhere}.cmp tbody th{width:28%;font-weight:600;background:var(--page)}.cmp thead th{background:var(--sky);font-size:1rem;text-transform:uppercase;letter-spacing:.06em;color:var(--ink-soft)}
 .sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
 @media(max-width:599px){.cmp thead th:first-child{display:none}.cmp tr{display:grid;grid-template-columns:1fr 1fr}.cmp tbody th{grid-column:1/-1;width:auto;padding:10px 14px 4px;border-bottom:0;font-size:1rem;text-transform:uppercase;letter-spacing:.05em;color:var(--ink-soft);background:transparent}.cmp td{padding:4px 14px 12px}.cmp td:first-of-type{border-right:1px solid var(--line)}.cmp thead th{text-transform:none;letter-spacing:0;font-size:1rem;font-weight:700;color:var(--ink)}}
 .stays .band{margin-top:clamp(44px,7vw,80px)}
 .lb-on .stick{display:none}
 .after-gal,.after-faq{margin:20px 0 0}.after-faq .btn,.after-gal .btn{width:100%}@media(min-width:600px){.after-faq .btn,.after-gal .btn{width:auto}}
-.hcard .card-cta{width:100%;margin-top:6px}.nf .btn{margin-top:8px}
+.hcard .card-cta{position:relative;z-index:2;width:100%;min-height:48px;margin-top:6px}.btn-pri{background:var(--amber);color:var(--ink);box-shadow:0 8px 24px -8px rgba(232,163,61,.7)}.btn-pri:hover{background:#f0b252;color:var(--ink)}.nf .btn{margin-top:8px}
 /* lightbox */
 .lb{position:fixed;inset:0;z-index:100;background:#061221;display:flex;align-items:center;justify-content:center;color:#fff}
 .lb[hidden]{display:none}.lb-on{overflow:hidden}
@@ -904,7 +909,8 @@ table{width:100%;border-collapse:collapse;background:var(--surface);font-size:1r
 .lb button{width:48px;height:48px;border-radius:50%;border:0;background:rgba(255,255,255,.1);color:#fff;display:grid;place-items:center;cursor:pointer;transition:background .2s}.lb button:hover{background:rgba(255,255,255,.22)}
 .lb-p,.lb-nx{position:absolute;top:50%;transform:translateY(-50%);z-index:2}.lb-p{left:12px}.lb-nx{right:12px}
 .lb-fig{margin:0;width:100%;height:100%;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:64px 0 24px}
-.lb-fig img{max-width:min(100%,1400px);max-height:calc(100% - 48px);width:auto;height:auto;object-fit:contain}
+.lb-st{position:relative;width:min(100%,1400px);flex:1;min-height:0;overflow:hidden}.lb-st img{position:absolute;inset:0;width:100%;height:100%;object-fit:contain}
+.lb-lo{filter:blur(12px)}.lb-hi{opacity:0;transition:opacity .25s}.lb-hi.ok{opacity:1}
 .lb-fig figcaption{padding:14px 20px 0;text-align:center;color:rgba(255,255,255,.85);font-size:1rem}
 @media(min-width:768px){.lb-fig{padding:72px 80px 28px}}
 @media(max-width:767px){.lb-p,.lb-nx{top:auto;bottom:16px;transform:none}.lb-fig{padding-bottom:80px}}
@@ -983,6 +989,27 @@ html:not(.js) .rchips{display:none}
 }
 @media(max-width:1023px){.gal+.after-gal{display:none}}
 @media(min-width:768px){.cz .cbtn,.cz .cnt{display:none}}
+/* /stays phones: one house at a time (Prima | Landak), compact card, swipe strips per room */
+.sf{display:none}@media(max-width:767px){.sf{display:inline}}.hsw{display:none}.hpane{display:contents}.stick.st-h{display:none}
+.acc>summary{list-style:none;display:flex;align-items:center;justify-content:space-between;gap:12px}.acc>summary::-webkit-details-marker{display:none}.acc>summary h2{margin:0 0 16px}.acc-i{display:none}
+@media(min-width:768px){.acc>summary{pointer-events:none}}
+@media(max-width:767px){
+.js .hsw{display:flex;position:sticky;top:var(--hh);z-index:30;margin:0 -16px 14px;padding:8px 16px;background:var(--page);border-bottom:1px solid var(--line)}
+.hsw a{flex:1;display:grid;place-items:center;min-height:44px;font-weight:600;font-size:1rem;text-decoration:none;color:var(--ink);background:var(--surface);border:1px solid var(--line-strong)}
+.hsw a:first-child{border-radius:999px 0 0 999px;border-right:0}.hsw a:last-child{border-radius:0 999px 999px 0}.hsw a.on{background:var(--ink);border-color:var(--ink);color:#fff}
+.js .hpane{display:block}.js .hpane .scard{scroll-margin-top:calc(var(--hh) + 64px)}
+html.js[data-house=prima] .hpane[data-house=landak],html.js[data-house=landak] .hpane[data-house=prima]{display:none}
+.js .st-any{display:none}html.js[data-house=prima] .stick.st-h[data-house=prima],html.js[data-house=landak] .stick.st-h[data-house=landak]{display:flex}
+.scb{gap:10px;padding:16px 16px 18px}
+.kf{flex-wrap:nowrap;gap:0;font-size:1rem;white-space:nowrap}.kf li{min-height:24px;gap:0;flex:none}.kf .i,.kf .nm{display:none}.kf .lf{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)}.kf li+li::before{content:"\00b7";padding:0 6px;color:var(--ink-muted)}
+.ami{grid-template-columns:1fr 1fr;gap:6px 12px}.ami li{flex-direction:row;justify-content:flex-start;text-align:left;padding:4px 0;border:0;background:none;gap:8px;min-height:32px}.ami li .i{flex:none;color:var(--amber-deep)}
+.scta{padding-top:2px}
+.album{padding:16px 0 4px}.album h3{font-size:1.25rem;margin:0 0 10px}.ag{margin:0 0 14px}.ag h4{margin:0 0 6px}
+.agrid{display:flex;gap:8px;overflow-x:auto;scroll-snap-type:x mandatory;overscroll-behavior-x:contain;-webkit-overflow-scrolling:touch;scrollbar-width:none;margin:0 -16px;padding:0 16px;scroll-padding:0 16px}.agrid::-webkit-scrollbar{display:none}
+.agrid a{flex:0 0 44%;scroll-snap-align:start}.js .stays-band,.js .hpane .after-gal{display:none}
+.cmp-sec{margin-top:36px}.acc>summary{cursor:pointer;min-height:48px;padding:12px 16px;border:1px solid var(--line-strong);border-radius:var(--r);background:var(--surface)}.acc>summary h2{margin:0;font-size:1.25rem}.acc-i{display:block;flex:none;transition:transform .2s}.acc[open]>summary{margin-bottom:14px}.acc[open] .acc-i{transform:rotate(180deg)}
+}
+@media(max-width:374px){.kf{font-size:.9375rem}.kf li+li::before{padding:0 3px}}
 """
 
 
@@ -1009,6 +1036,9 @@ def page(path, title, desc, h1, body, crumbs=None, ld=None, lede='', og=None, ph
 
 
 def stick_bar(k):
+    if k == 'stays':                                     # /stays: phones show the bar for the selected house
+        return ''.join(stick_bar(x).replace('<div class="stick">', '<div class="stick%s">' % c, 1)
+                       for x, c in (('any', ' st-any'), ('prima', ' st-h" data-house="prima'), ('landak', ' st-h" data-house="landak')))
     if k not in HOUSES:
         return ('<div class="stick"><p class="price"><b>RM 500</b> <small>per night &middot; both houses</small></p>%s</div>'
                 % wa_btn('Check dates', wa_msg(), 'sticky-all'))
@@ -1020,7 +1050,7 @@ def stick_bar(k):
 def render(path, p):
     pre = '../' * path.count('/')
     url = BASE + path
-    og = p['og'] or HERO_IMG
+    og = p['og'] or OG_DEFAULT
     crumbs = p['crumbs']
     lds = list(p['ld']) + PENDING.get(path, [])
     if crumbs and len(crumbs) > 1:
@@ -1077,11 +1107,10 @@ def house_card(k, eager=False):
     return ('<article class="hcard rv"><div class="cimg cz" data-carousel aria-roledescription="carousel" aria-label="Photos of %s"><div class="track"><div class="ph slide">%s<span class="badge">%s</span></div><div class="strip">%s</div></div>'
             '<button class="cbtn prev" type="button" aria-label="Previous photo">%s</button><button class="cbtn next" type="button" aria-label="Next photo">%s</button><span class="cnt" aria-hidden="true">1 / %d</span></div>'
             '<div class="cb"><p class="area">%s%s</p><h3><a href="{R}stays/%s/">%s</a></h3>%s<ul class="sg">%s</ul>'
-            '<div class="price-row"><p class="price"><b>RM %d</b> <small>per night &middot; %s</small></p><span class="go">View house %s</span></div>%s</div></article>'
+            '<div class="price-row"><p class="price"><b>RM %d</b> <small>per night &middot; %s</small></p></div><a class="btn btn-pri card-cta" href="{R}stays/%s/">View house %s</a></div></article>'
             % (e(h['name']), pimg(imgs[0], sizes='(min-width:1200px) 560px, (min-width:800px) 46vw, 100vw', eager=eager, lazy=not eager), BADGE[k], strip, ico('left', 22), ico('right', 22), len(imgs),
                ico('pin', 16), e(AREA[k]), h['slug'], e(h['name']), specs(k), sg, h['price'],
-               'min. 1 night' if k == 'landak' else 'min. stay: ask us', ico('arrow', 18),
-               wa_btn('Check dates for %s' % h['name'].replace(' Kawan Fun House', ''), h['msg'], 'card-' + k, 'btn btn-wa card-cta')))
+               'min. 1 night' if k == 'landak' else 'min. stay: ask us', h['slug'], ico('arrow', 18)))
 
 
 HOME_FAQ = [
@@ -1230,7 +1259,8 @@ def stays_card(k):
     slides = ''.join('<div class="slide">%s</div>' % (
                      pimg(f, eager=True, lazy=False, sizes='(min-width:1024px) 600px, 100vw') if i == 0 else pimg800(f)) for i, f in enumerate(imgs))
     facts = [('users', '%d guests' % h['guests']), ('bed', '%d bedrooms' % h['beds'])] + ([('bed', '5 beds')] if k == 'landak' else []) + [('bath', '3 bathrooms'), ('cal', 'RM 500 / night')]
-    facts_html = ''.join('<li>%s%s</li>' % (ico(i, 20), e(t)) for i, t in facts)
+    short = {'%d guests' % h['guests']: '%d guests' % h['guests'], '%d bedrooms' % h['beds']: '%d bed' % h['beds'], '5 beds': None, '3 bathrooms': '3 bath', 'RM 500 / night': 'RM 500/night'}
+    facts_html = ''.join('<li%s>%s<span class="lf">%s</span>%s</li>' % ('' if short[t] else ' class="nm"', ico(i, 20), e(t), ('<span class="sf" aria-hidden="true">%s</span>' % e(short[t])) if short[t] else '') for i, t in facts)
     top = ''.join('<li>%s<span>%s</span></li>' % (ico(amen_icon(a), 24), e(a)) for a in h['top'])
     return ('<article class="scard rv" id="%s"><div class="scar cz" data-carousel data-dots aria-roledescription="carousel" aria-label="Photos of %s"><div class="track" tabindex="0">%s</div>'
             '<button class="cbtn prev" type="button" aria-label="Previous photo">%s</button><button class="cbtn next" type="button" aria-label="Next photo">%s</button>'
@@ -1254,15 +1284,21 @@ def album(k):
 
 
 def stays_body():
-    faq_html, faq_ld = faq_block(STAYS_FAQ, 'Questions about our houses', cta='<p class="after-faq">%s</p>' % wa_btn('Ask us on WhatsApp', wa_msg(), 'stays-faq'))
+    faq_html, faq_ld = faq_block(STAYS_FAQ, '')
+    faq_html = ('<details class="acc" open><summary><h2>Questions about our houses</h2>%s</summary>%s</details>'
+                '<script>if(matchMedia("(max-width:767px)").matches)document.currentScript.previousElementSibling.removeAttribute("open")</script>'
+                '<p class="after-faq">%s</p>' % (ico('down', 22, 'i acc-i'), faq_html, wa_btn('Ask us on WhatsApp', wa_msg(), 'stays-faq')))
     PENDING.setdefault('stays/', []).append(faq_ld)
     rows = ''.join('<tr><th scope="row">%s</th><td>%s</td><td>%s</td></tr>' % (e(a), e(b), e(c)) for a, b, c in CMP_ROWS)
-    return ('<div class="wrap body"><div class="scards">%s%s%s%s</div>'
-            '<section class="rv cmp-sec"><p class="eyebrow">Side by side</p><h2>Which house is right for you?</h2><div class="cmp"><table><thead><tr><th scope="col"><span class="sr">Detail</span></th><th scope="col">Prima</th><th scope="col">Landak Kawan Fun House</th></tr></thead><tbody>%s</tbody></table></div>'
-            '<p class="note">Drive and walk times are as stated by the host. Prices in RM.</p><div class="cmp-cta">%s%s</div></section>'
+    return ('<div class="wrap body"><nav class="hsw" aria-label="Choose a house"><a href="#prima" data-h="prima">Prima</a><a href="#landak" data-h="landak">Landak</a></nav>'
+            '<script>document.documentElement.setAttribute("data-house",location.hash==="#landak"?"landak":"prima")</script>'
+            '<div class="scards"><div class="hpane" data-house="prima" data-lb-set>%s%s</div><div class="hpane" data-house="landak" data-lb-set>%s%s</div></div>'
+            '<section class="rv cmp-sec"><p class="eyebrow">Side by side</p><details class="acc" open><summary><h2>Which house is right for you?</h2>%s</summary><div class="cmp"><table><thead><tr><th scope="col"><span class="sr">Detail</span></th><th scope="col">Prima</th><th scope="col">Landak Kawan Fun House</th></tr></thead><tbody>%s</tbody></table></div>'
+            '<p class="note">Drive and walk times are as stated by the host. Prices in RM.</p></details>'
+            '<script>if(matchMedia("(max-width:767px)").matches)document.currentScript.previousElementSibling.removeAttribute("open")</script><div class="cmp-cta">%s%s</div></section>'
             '<section class="rv" id="faq">%s</section></div>'
-            '<section class="sec band"><div class="bg">%s</div><div class="wrap rv"><p class="eyebrow">Book direct</p><h2>Tell us your dates and group size</h2><p>We reply on WhatsApp with the rate and availability for the house you pick.</p>%s</div></section>'
-            % (stays_card('prima'), album('prima'), stays_card('landak'), album('landak'), rows,
+            '<section class="sec band stays-band"><div class="bg">%s</div><div class="wrap rv"><p class="eyebrow">Book direct</p><h2>Tell us your dates and group size</h2><p>We reply on WhatsApp with the rate and availability for the house you pick.</p>%s</div></section>'
+            % (stays_card('prima'), album('prima'), stays_card('landak'), album('landak'), ico('down', 22, 'i acc-i'), rows,
                wa_btn('WhatsApp about Prima', HOUSES['prima']['msg'], 'cmp-prima'), wa_btn('WhatsApp about Landak', HOUSES['landak']['msg'], 'cmp-landak'), faq_html, pimg(STAYS_BAND_IMG, sizes='100vw'), wa_btn('Message us on WhatsApp', wa_msg(), 'stays-band')))
 
 
@@ -1471,7 +1507,7 @@ def build_pages():
     PAGES['']['body'] = home_body()
     page('stays/', 'JB Staycation House for Groups | JBStaycation', 'Two entire landed homes in Johor Bahru for groups of 10 to 20, RM 500 per night: Prima with a pool table, karaoke and BBQ pit, and Landak near KSL City Mall. Book on WhatsApp.',
          'JB staycation houses for big groups', stays_body(), [('Home', ''), ('Stays', 'stays/')],
-         lede='Both are entire landed homes in Johor Bahru at RM 500 per night, booked on WhatsApp.', og=STAYS_IMG['prima'][1],
+         lede='Both are entire landed homes in Johor Bahru at RM 500 per night, booked on WhatsApp.', og=STAYS_IMG['prima'][1], stick='stays',
          ld=[house_ld(HOUSES[k]) for k in ORDER] + [{'@context': 'https://schema.org', '@type': 'ItemList', 'itemListElement': [{'@type': 'ListItem', 'position': i + 1, 'url': BASE + 'stays/%s/' % HOUSES[k]['slug'], 'name': HOUSES[k]['full']} for i, k in enumerate(ORDER)]}])
     for k in ORDER:
         h = HOUSES[k]
