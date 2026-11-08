@@ -1,0 +1,11 @@
+# Rename to .htaccess in this folder via cPanel. Preview hiding is handled by the server outside the pages.
+RewriteEngine On
+RewriteCond %{HTTPS} !=on
+RewriteRule ^ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
+DirectoryIndex index.html
+ErrorDocument 404 /preview/jb-staycation/404.html
+<IfModule mod_headers.c>
+<FilesMatch "\.(html|xml|txt)$">
+Header set Cache-Control "public, max-age=3600"
+</FilesMatch>
+</IfModule>
