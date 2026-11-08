@@ -1,0 +1,71 @@
+diff --git a/pageone-site/clients/contiexpert/src/build.py b/pageone-site/clients/contiexpert/src/build.py
+index 9d95c2f2..b09d65a8 100644
+--- a/pageone-site/clients/contiexpert/src/build.py
++++ b/pageone-site/clients/contiexpert/src/build.py
+@@ -9,7 +9,7 @@ DOMAIN = 'https://contiexpert.sg'
+ BASE = '' if LIVE else '/preview/contiexpert'
+ HERE = os.path.dirname(os.path.abspath(__file__))
+ OUT = sys.argv[1] if len(sys.argv) > 1 else os.path.join(HERE, 'site')
+-TODAY = '2026-11-07'  # sitemap lastmod: every page re-published 7 Nov SGT (brand-name sweep)
++TODAY = '2026-11-09'
+ INDEXNOW_KEY = '6f1c2e9a4b7d48c3a05e9d21b8f3c7e4'
+ 
+ BIZ = 'Volt Autocare'
+diff --git a/pageone-site/clients/contiexpert/src/content/articles.py b/pageone-site/clients/contiexpert/src/content/articles.py
+index b4e4c9b4..93575601 100644
+--- a/pageone-site/clients/contiexpert/src/content/articles.py
++++ b/pageone-site/clients/contiexpert/src/content/articles.py
+@@ -691,3 +691,53 @@ ARTICLES.append({
+   "Confirm the workshop registers or adapts new batteries in-house on the BMW, Mercedes-Benz and Audi models it accepts, and with which tool."
+  ]
+ })
++
++
++ARTICLES.append({
++ "slug": "free-car-battery-test-bmw-mercedes-audi-singapore",
++ "name": "Free Car Battery Test",
++ "card": "Is your BMW, Mercedes-Benz or Audi slow to start? What a car battery test checks, when to get one, and what happens if the battery needs replacing.",
++ "title": "Free Car Battery Test for BMW, Mercedes and Audi",
++ "desc": "Car slow to start or start-stop not working? What a battery test checks, when to get one, and what happens next on a BMW, Mercedes-Benz or Audi in Singapore.",
++ "h1": "Free Car Battery Test in Singapore: What It Checks and When to Get One",
++ "answer": "A car battery test shows how well the battery holds charge and delivers starting power, and whether the charging system is topping it up. At ContiExpert the battery test is free. If the battery needs replacing, we fit and register the new one on BMW, Mercedes-Benz and Audi. Get tested early if the engine cranks slowly or start-stop stops working.",
++ "date": "2026-11-09",
++ "updated": "9 Nov 2026",
++ "service": "/services/car-diagnostics-warning-lights/",
++ "minutes": 4,
++ "brand": "BMW, Mercedes-Benz and Audi",
++ "sections": [
++  {
++   "h2": "What does a car battery test check?",
++   "html": "<p>A battery test measures the battery's condition: how much charge it holds and how much starting current it can still deliver. A good test also looks at the charging system, because a battery that keeps going flat is sometimes a charging fault, not a worn battery.</p>\n<ul>\n<li><strong>Battery condition:</strong> whether it can still hold charge and start the engine reliably.</li>\n<li><strong>Charging output:</strong> whether the alternator is charging the battery properly while the engine runs.</li>\n<li><strong>Stored faults:</strong> a scan can show battery or charging messages the car has logged.</li>\n</ul>\n<p>Ask the technician to explain the result in plain words, so you know whether the battery is fine, weak or due for replacement.</p>"
++  },
++  {
++   "h2": "Is the battery test really free at ContiExpert?",
++   "html": "<p>Yes. The battery test at ContiExpert by Volt Autocare is free. You do not need to commit to a replacement, and there is no charge for finding out where your battery stands.</p>\n<p>Message us on WhatsApp at +65 8221 5502 with your car model and what you have noticed, so we can tell you when to drop in. We are at 143 Bukit Timah Road, inside the Shell station.</p>"
++  },
++  {
++   "h2": "When should you get your battery tested?",
++   "html": "<p>Do not wait for a car that will not start. These signs are worth a quick test:</p>\n<ul>\n<li>The engine cranks more slowly than it used to, especially on a cold start after the car has sat.</li>\n<li>Start-stop stops working, or works less often than before.</li>\n<li>Battery or charging warning lights or messages appear on the dash.</li>\n<li>Headlights or interior lights dim at idle, or electrical features act up.</li>\n<li>The battery is several years old. Heat shortens battery life, and many last only a few years in Singapore.</li>\n<li>The car sits unused for weeks at a time.</li>\n</ul>\n<p>One of these signs does not prove the battery is the problem, which is why testing first beats guessing.</p>"
++  },
++  {
++   "h2": "What happens if the test says the battery needs replacing?",
++   "html": "<p>We fit and register batteries on BMW, Mercedes-Benz and Audi. Registration matters because many of these cars track the battery and adjust charging to suit it, so a new battery should be registered with a diagnostic tool. Our guide to <a href=\"/bmw-mercedes-battery-replacement-registration-singapore/\">BMW and Mercedes battery replacement and registration</a> explains why.</p>\n<p>The replacement should match the type your car was built for. Cars with start-stop usually need an AGM or EFB battery rather than a standard one, matched in size and terminal layout to the original.</p>"
++  },
++  {
++   "h2": "What if the battery tests fine but the car still struggles?",
++   "html": "<p>A healthy battery with a car that still will not start or keeps going flat points elsewhere: a charging fault, a drain that runs when the car is off, a loose or corroded connection, or a starter problem. Further diagnosis finds the real cause before parts are replaced. See our <a href=\"/services/car-diagnostics-warning-lights/\">car diagnostics and warning lights</a> service, or the <a href=\"/services/european-car-servicing/\">European car servicing</a> page if the car is also due for a service.</p>"
++  },
++  {
++   "h2": "How should you prepare before you visit?",
++   "html": "<ol>\n<li>Note the symptoms: when the car is slow to start, and any dash messages.</li>\n<li>Know roughly when the battery was last replaced.</li>\n<li>Avoid repeated jump-starts before the visit, and turn off the air-conditioning and lights when you try to start.</li>\n<li>Tell us your make, model and year so we know what the car needs.</li>\n</ol>"
++  }
++ ],
++ "faqs": [
++  {"q": "Is the car battery test free?", "a": "Yes. The battery test at ContiExpert by Volt Autocare is free, with no obligation to replace anything. Message us on WhatsApp at +65 8221 5502 with your car model and symptoms so we can tell you when to come by."},
++  {"q": "Do you fit and register batteries on BMW, Mercedes-Benz and Audi?", "a": "Yes. We fit and register batteries on BMW, Mercedes-Benz and Audi. Registration tells the car about the new battery so it can charge it correctly. The type must match what the car was built for."},
++  {"q": "How do I know if my battery is weak?", "a": "Slow cranking, start-stop that stops working, battery warnings, dimming lights, or an age of several years are common signs. A test confirms it, because a charging fault or a drain can cause the same symptoms."},
++  {"q": "Can a good battery still leave my car not starting?", "a": "Yes. A charging fault, a drain while parked, a poor connection or a starter problem can stop a car with a healthy battery. That is why the charging system and the wider car are checked, not just the battery."}
++ ],
++ "related": ["/bmw-mercedes-battery-replacement-registration-singapore/", "/services/car-diagnostics-warning-lights/", "/services/european-car-servicing/"],
++ "confirm": [],
++})
