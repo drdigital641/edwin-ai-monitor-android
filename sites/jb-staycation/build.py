@@ -303,7 +303,7 @@ HOUSES = {
         'short': 'Prima at Taman Nusantara Prima',
         'street': '19 Jalan Prima 3/1, Taman Nusantara Prima', 'locality': 'Iskandar Puteri', 'region': 'Johor', 'postal': '79200',
         'addr': '19 Jalan Prima 3/1, Taman Nusantara Prima, Iskandar Puteri, Johor 79200, Malaysia',
-        'guests': 20, 'price': 500, 'minstay': 'Minimum stay: ask us', 'beds': 3, 'rating': 'Rated 4.67 on Airbnb (6 reviews)',
+        'guests': 20, 'price': 500, 'minstay': 'Minimum stay: ask us', 'beds': 3, 'rating': 'Rated 4.67 from 6 Airbnb reviews',
         'tag': 'Big group house with a pool table, karaoke, mahjong and a BBQ pit',
         'card': 'A private house in Gelang Patah, Iskandar Puteri for up to 20 guests with a pool table in the living room, karaoke, a mahjong table and a BBQ pit, about 10 minutes from the Tuas Second Link (host estimate).',
         'bestfor': 'Best for big family and friends gatherings near LEGOLAND and Puteri Harbour, about 10 min from the Tuas Second Link',
@@ -330,7 +330,7 @@ HOUSES = {
         'short': 'Landak Kawan Fun House',
         'street': 'Jalan Landak Kawan 2, Taman Abad', 'locality': 'Johor Bahru', 'region': 'Johor', 'postal': '80250',
         'addr': 'Jalan Landak Kawan 2, Taman Abad, Johor Bahru, Johor 80250, Malaysia',
-        'guests': 10, 'price': 500, 'minstay': 'Minimum stay: ask us', 'beds': 3, 'rating': 'Rated 5.0 on Airbnb (4 reviews)',
+        'guests': 10, 'price': 500, 'minstay': 'Minimum stay: ask us', 'beds': 3, 'rating': 'Rated 5.0 from 4 Airbnb reviews',
         'tag': 'Games house a 5-minute walk from KSL City Mall',
         'bestfor': 'Best for groups who want to walk to KSL City Mall, food and the onsen',
         'top': ['Pool table', 'Foosball', 'Darts', 'TV arcade', '5-min walk to KSL City Mall'],
@@ -430,6 +430,16 @@ ARTICLES = [
         ],
     },
 ]
+
+
+# Airbnb listings (Edwin's team, 9 Nov 2026). Ratings recorded 8 Nov 2026; no review quotes.
+AIRBNB = {'prima': 'https://www.airbnb.co.uk/rooms/1712988048076930096', 'landak': 'https://www.airbnb.co.uk/rooms/1738320132895126027'}
+RATING_READ = '8 Nov 2026'
+
+
+def rating_link(k, text=None):
+    return ('<a class="rlink" href="%s" rel="nofollow noopener" target="_blank">%s</a> <span class="rdate">(read %s)</span>'
+            % (AIRBNB[k], html.escape(text or HOUSES[k]['rating']), RATING_READ))
 
 
 # ---------------------------------------------------------------- helpers
@@ -582,7 +592,7 @@ def house_ld(h):
     acc.update({'@type': 'Accommodation', 'additionalType': 'EntirePlace',
                 'amenityFeature': [{'@type': 'LocationFeatureSpecification', 'name': n, 'value': v} for n, v in am]})
     ld = {'@context': 'https://schema.org', '@type': 'VacationRental', '@id': url + '#rental', 'identifier': 'jb-' + k, 'name': h['name'], 'additionalType': 'House',
-          'url': url, 'description': h['card'], 'image': [abs_img(f) for f in gal], 'telephone': '+6590062198',
+          'url': url, 'sameAs': [AIRBNB[k]], 'description': h['card'], 'image': [abs_img(f) for f in gal], 'telephone': '+6590062198',
           'address': addr_ld(h), 'priceRange': 'RM500 per night', 'containsPlace': acc, 'petsAllowed': False, 'smokingAllowed': False,
           'brand': {'@id': BASE + '#org'}}
     if k == 'landak':
@@ -1114,7 +1124,7 @@ html.js[data-house=prima] .hpane[data-house=landak],html.js[data-house=landak] .
 .arc b{font-size:1.0625rem;line-height:1.3}.arc .why{color:var(--ink-soft);font-size:1rem;line-height:1.45;flex:1}.arc .t{display:flex;align-items:center;gap:6px;font-size:1rem;font-weight:600}.arc .t .i{color:var(--amber-deep)}
 .arc .map{display:inline-flex;align-items:center;gap:6px;min-height:44px;font-weight:600;color:var(--ink)}
 .acc2{border-top:1px solid var(--line);margin-top:8px}.acc2:last-child{border-bottom:1px solid var(--line)}.acc2>summary{list-style:none;display:flex;justify-content:space-between;align-items:center;gap:12px;min-height:52px;font-weight:600;font-size:1.0625rem;cursor:pointer}.acc2>summary::-webkit-details-marker{display:none}
-.rulesacc>summary h2{margin:0;font-size:inherit}.rulesacc>summary{font-size:1.375rem!important;min-height:56px}.rulesacc[open]>summary{margin-bottom:12px}.hub-h{margin:40px 0 16px}.hub .tips{padding-left:22px}.acc2 .acc-i{display:block;transition:transform .2s}.acc2[open] .acc-i{transform:rotate(180deg)}.plist,.tips{margin:0 0 10px;padding-left:20px;display:grid;gap:10px}
+.rulesacc>summary h2{margin:0;font-size:inherit}.rulesacc>summary{font-size:1.375rem!important;min-height:56px}.rulesacc[open]>summary{margin-bottom:12px}.hub-h{margin:40px 0 16px}.hub .tips{padding-left:22px}.rlink{color:inherit;text-decoration:underline;text-decoration-color:var(--amber);text-underline-offset:3px}.rdate{color:var(--ink-soft)}.acc2 .acc-i{display:block;transition:transform .2s}.acc2[open] .acc-i{transform:rotate(180deg)}.plist,.tips{margin:0 0 10px;padding-left:20px;display:grid;gap:10px}
 .answer+.htag{margin-top:18px}.intro .answer{margin:0}
 .sgd-s{margin:-6px 0 12px;color:var(--ink-soft)}
 .enq{display:none;margin:4px 0 12px;padding:14px;border:1px solid var(--line);border-radius:var(--r);background:var(--page)}.enq.enq-on{display:block}.enq-hide{display:none!important}
@@ -1675,9 +1685,9 @@ def home_body():
                % (pv % (L['slug'], 'Landak'), pv % (P['slug'], 'Prima'), pv % (P['slug'], 'Prima'), wa_btn('Ask us on WhatsApp', wa_msg(), 'home-chooser', 'btn btn-wa btn-sm')))
     trust = [('chat', 'Singapore-based host', 'One WhatsApp contact for planning and questions: %s.' % WA_SHOW),
              ('grid', 'Real photos of both houses', 'Every photo on the house pages is the actual house, room by room.'),
-             ('star', 'Airbnb ratings', 'Prima: %s. Landak: %s. Checked 8 Nov 2026.' % (P['rating'].replace('Rated ', 'rated '), L['rating'].replace('Rated ', 'rated '))),
+             ('star', 'Airbnb ratings', 'Prima: %s. Landak: %s.' % (rating_link('prima', P['rating'].replace('Rated ', 'rated ')), rating_link('landak', L['rating'].replace('Rated ', 'rated ')))),
              ('no', 'No swimming pool', 'Neither house has one. Both have a pool table and games for the group.')]
-    trust_html = ''.join('<li>%s<div><b>%s</b><span>%s</span></div></li>' % (ico(i, 24), e(t), e(d)) for i, t, d in trust)
+    trust_html = ''.join('<li>%s<div><b>%s</b><span>%s</span></div></li>' % (ico(i, 24), e(t), d if '<a ' in d else e(d)) for i, t, d in trust)
     plans = [('prima', 'Prima: a family weekend', 'Wee Hoi Kopitiam breakfast, a full day at LEGOLAND, groceries at Mall of Medini, then BBQ and karaoke back at the house.'),
              ('landak', 'Landak: a KSL weekend', 'Dinosaurs Alive water park, You Kee XO lunch at KSL, Souper Tang dinner, then pool table, foosball and darts at the house.')]
     plans_html = ''.join('<li><b>%s</b><span>%s</span><a class="link" href="{R}stays/%s/#around">What is around %s %s</a></li>'
@@ -1746,7 +1756,7 @@ def stays_card(k):
             % (k, e(h['name']), slides, ico('left', 22), ico('right', 22), len(imgs), k, ico('grid', 18), sum(len(fs) for _g, fs in ALBUM[k]),
                ico('pin', 16), e(AREA[k]), e(h['name']), facts_html, top, SGD_HOUSE, SGD_PP[k], h['guests'],
                '<p class="snote">Up to 20 guests: ask us to confirm the sleeping arrangement for your group.</p>' if k == 'prima' else '<p class="snote">No BBQ. Completed September 2026 (host-stated).</p>',
-               e(h['bestfor']), ico('star', 16), e(h['rating']),
+               e(h['bestfor']), ico('star', 16), '<span>%s</span>' % rating_link(k),
                wa_btn('Check dates for %s' % h['name'].replace(' Kawan Fun House', ''), h['msg'], 'stays-' + k), h['slug'], ico('arrow', 18), k, k))
 
 
@@ -1870,10 +1880,10 @@ def house_body(k):
     ok = 'landak' if k == 'prima' else 'prima'
     other = HOUSES[ok]
     side_items = [('users', 'Up to %d guests' % h['guests']), ('bed', '%d bedrooms, 3 bathrooms' % h['beds']), ('cal', h['minstay']), ('cal', '%s per person at %d guests (full house)' % (SGD_PP[k], h['guests'])),
-                  ('key', 'Self check-in after 3:00 pm' if k == 'landak' else 'Self check-in'), ('star', h['rating']), ('chat', 'Book directly on WhatsApp')]
+                  ('key', 'Self check-in after 3:00 pm' if k == 'landak' else 'Self check-in'), ('star', ('RAW', rating_link(k))), ('chat', 'Book directly on WhatsApp')]
     side = ('<aside class="side rv" id="book" aria-label="Rate and booking"><p class="price"><b>RM %d</b><small>/ night</small></p><p class="sgd-s">%s for the whole house</p>'
             '<ul>%s</ul>%s%s<p class="note">Prices are in RM. Message us for the rate and availability on your dates.</p>%s</aside>'
-            % (h['price'], SGD_HOUSE, ''.join('<li>%s%s</li>' % (ico(i, 18), e(t)) for i, t in side_items), enquiry_form(k), wa_btn('Check dates & rate', h['msg'], k, 'btn btn-wa enq-alt'), fx_note()))
+            % (h['price'], SGD_HOUSE, ''.join('<li>%s%s</li>' % (ico(i, 18), ('<span>%s</span>' % t[1]) if isinstance(t, tuple) else e(t)) for i, t in side_items), enquiry_form(k), wa_btn('Check dates & rate', h['msg'], k, 'btn btn-wa enq-alt'), fx_note()))
     return ('<div class="htop"><div class="wrap">%s<h1>%s</h1><ul class="hmeta">%s</ul><nav class="subnav" aria-label="On this page">%s</nav>%s%s</div></div>'
             '<div class="wrap hlay"><div class="hmain">'
             '<section class="intro rv"><p class="answer">%s</p><h2 class="htag">%s</h2><ul class="stats">%s</ul>%s</section>'
