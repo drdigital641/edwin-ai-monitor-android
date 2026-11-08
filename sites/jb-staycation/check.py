@@ -13,6 +13,14 @@ for f in files:
     if len(t)>60 or (d and len(d.group(1))>160): print('LEN',f,len(t),len(d.group(1)) if d else 0)
     if f!=S+'/404.html':
         if h.count('<h1')!=1: print('H1',f)
+    for tag in re.findall(r'<img [^>]*>',h):
+        if not all(a in tag for a in (' width="',' height="',' alt="')): print('IMG ATTR',f,tag[:120]);bad+=1
+    for ss in re.findall(r'srcset="([^"]+)"',h):
+        for part in ss.split(','):
+            u=part.strip().split(' ')[0]
+            if u.startswith('http'): continue
+            if not os.path.exists(os.path.normpath(os.path.join(os.path.dirname(f),u))): print('MISSING srcset',f,u);bad+=1
+    if 'jbstaycation.com/_astro' in h: print('HOTLINK',f);bad+=1
     for href in re.findall(r'(?:href|src)="([^"#]+)"',h):
         if href.startswith(('http','mailto','tel','data')): 
             if href.startswith(BASE):
