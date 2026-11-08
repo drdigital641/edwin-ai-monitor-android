@@ -31,6 +31,10 @@
   {
    "label": "llms.txt",
    "path": "llms.txt"
+  },
+  {
+   "label": "For AI agents",
+   "path": "for-ai-agents/"
   }
  ],
  "wording": {

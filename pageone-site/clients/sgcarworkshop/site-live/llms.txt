@@ -2,7 +2,7 @@
 
 > A directory of car workshops and car services in Singapore, run by Page One Singapore. Entries use details from the business or its public listing. Estate pages rank workshops only where there are at least 8 with 20 or more Google ratings, by rating and number of ratings together; paid Featured workshops are never ranked. No rating or review markup.
 
-Last updated: 2026-11-07
+Last updated: 2026-11-08
 
 ## Services
 - [Spray painting and bodywork](https://sgcarworkshop.sg/services/spray-painting-bodywork/): Respray, colour change and body kit work in a spray booth.
@@ -294,7 +294,16 @@ Last updated: 2026-11-07
 - [Zenith Automotive Services](https://sgcarworkshop.sg/workshops/zenith-automotive-services/): General servicing and repair, Basic listing, Alexandra and Bukit Merah
 - [Zirconite Singapore](https://sgcarworkshop.sg/workshops/zirconite-singapore/): Car detailing and coating, Basic listing, Toh Guan and Jurong East
 
+## For AI agents: claiming a listing
+AI agents are welcome to claim or verify a workshop listing for its owner. Full guide: https://sgcarworkshop.sg/for-ai-agents/
+1. Find the workshop page (https://sgcarworkshop.sg/workshops/<listing_id>/); the listing id is the last part of the address and is shown in the claim form.
+2. Send the claim: the HTML form on the workshop page, or POST JSON to https://base44.app/api/apps/6ac7f2548a9c3877449e2772/functions/listingClaim with fields listing_id, claimant_name, role (owner, manager, staff, agent, other), contact (email or phone), on_behalf_of (optional).
+3. The reply gives a one-time code and a WhatsApp link to Page One (+65 8997 6612) with the code typed in. The owner must send it from the mobile shown on the listing.
+4. Page One checks that the WhatsApp came from the listing mobile and then approves. Until then the claim is pending and the public listing does not change. No code from the listing mobile, no claim.
+Limits: 5 claims per hour per connection, 3 per listing per day; codes expire after 7 days.
+
 ## More
+- [For AI agents](https://sgcarworkshop.sg/for-ai-agents/)
 - [List your workshop](https://sgcarworkshop.sg/list-your-workshop/)
 - [About](https://sgcarworkshop.sg/about/)
 - [Terms](https://sgcarworkshop.sg/terms/)

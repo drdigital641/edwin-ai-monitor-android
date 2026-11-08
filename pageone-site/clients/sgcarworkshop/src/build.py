@@ -97,6 +97,7 @@ REFILED = REFILED   # cards moved out of general servicing because what customer
 CAT = {c['slug']: c for c in CATEGORIES}
 ENT = {e['slug']: e for e in ENTRIES}
 PAID = [e for e in ENTRIES if e['tier'] != 'free']
+BY_SLUG = {e['slug']: e for e in ENTRIES}
 CAT_LIST = [c for c in CATEGORIES if any(c['slug'] in e.get('categories', [e['category']]) for e in ENTRIES)]
 RN = areas.REGION_NAMES
 ESTATES = areas.ESTATES
@@ -279,6 +280,30 @@ def footer(depth):
 
 def wabar(items):
     return '<div class="wabar" role="region" aria-label="Contact">%s</div>' % ''.join(items)
+
+
+CLAIM_ENDPOINT = 'https://base44.app/api/apps/6ac7f2548a9c3877449e2772/functions/listingClaim'   # Controller function (Edwin 8 Nov 2026, route 2)
+CLAIM_ROLES = [('owner', 'Owner'), ('manager', 'Manager'), ('staff', 'Staff'), ('agent', 'Assistant or AI agent acting for the owner'), ('other', 'Other')]
+
+
+def claim_form(e, depth):
+    """Plain-HTML claim form on every workshop page (Edwin 8 Nov 2026): labelled fields, works without JavaScript, usable by people and AI agents.
+    It only creates a PENDING claim; the owner then WhatsApps the one-time code from the listing's mobile and Page One approves. Nothing here changes the card."""
+    sid = E(e['slug'])
+    opts = ''.join('<option value="%s">%s</option>' % (v, E(t)) for v, t in CLAIM_ROLES)
+    return ('<section class="pl-sec claimf" id="claim-form" aria-labelledby="claim-h"><h2 id="claim-h">Claim form (owners and AI agents)</h2>'
+            '<p>Are you the owner of %s, or helping the owner (including an AI assistant)? Send this form. You then get a one-time code that the owner sends on WhatsApp '
+            'from the mobile on this listing. We check the sender number, then the listing is marked as yours. <a href="%sfor-ai-agents/">How claiming works</a>.</p>'
+            '<form class="cf" method="post" action="%s" accept-charset="utf-8">'
+            '<label for="cf-id">Listing id</label><input id="cf-id" name="listing_id" value="%s" readonly>'
+            '<label for="cf-name">Your name</label><input id="cf-name" name="claimant_name" required maxlength="80" autocomplete="name">'
+            '<label for="cf-role">Your role</label><select id="cf-role" name="role" required>%s</select>'
+            '<label for="cf-contact">Your email or phone</label><input id="cf-contact" name="contact" required maxlength="120" autocomplete="email">'
+            '<label for="cf-for">Acting for (optional, if you are not the owner)</label><input id="cf-for" name="on_behalf_of" maxlength="120">'
+            '<div class="hp" aria-hidden="true"><label for="cf-hp">Leave this empty</label><input id="cf-hp" name="company_url" tabindex="-1" autocomplete="off"></div>'
+            '<button class="btn amber" type="submit">Send claim</button>'
+            '<p class="fine">A claim stays pending until we have checked the WhatsApp from the listing mobile, and nothing on this listing changes before then. Your contact details are private and never shown on the site.</p>'
+            '</form></section>') % (E(e['name']), pre(depth), CLAIM_ENDPOINT, sid, opts)
 
 
 def page(path, title, desc, body, schema=None, og=None, bar=None, h1=None, extra_js='', index=True, why=''):
@@ -1839,6 +1864,11 @@ def b_faq(x):
 
 
 def b_claim(x):
+    """Claim block: the existing claim box plus the plain-HTML claim form (Edwin 8 Nov 2026)."""
+    return _b_claim_box(x) + claim_form(x.e, x.depth)
+
+
+def _b_claim_box(x):
     e, depth, path = x.e, x.depth, x.path
     if e['tier'] == 'free':
         return ('<section class="pl-sec claimbox"><h2>Is this your workshop? Claim this free listing</h2><p>Claiming is free. Keep the details right, add your own photos, services and brands, and see how many drivers tapped WhatsApp and Call. You message Page One from the claim page; we check that you run the business first. Basic listings are built from public sources and can be removed on request.</p>'
@@ -2327,6 +2357,43 @@ def contact_page():
                % (E(SITE_NAME), PAGE_ONE_WA_SHOW))
 
 
+def agents_page():
+    """Plain guide for AI agents and owners on claiming a listing (Edwin 8 Nov 2026). Indexable, in the sitemap and llms.txt."""
+    ex_json = ('curl -X POST %s \\\n  -H "Content-Type: application/json" \\\n'
+               '  -d \'{"listing_id":"soon-kim-motor-workshop","claimant_name":"Alex Tan","role":"agent","contact":"alex@example.com","on_behalf_of":"Owner of Soon Kim Motor Workshop"}\'') % CLAIM_ENDPOINT
+    ex_reply = ('{"ok":true,"status":"pending","claim_ref":"3f9a1c2e","listing_id":"soon-kim-motor-workshop",\n "listing_name":"Soon Kim Motor Workshop","code":"SGCW-7KQ2MX","expires_at":"...",\n'
+                ' "whatsapp_link":"https://wa.me/6589976612?text=...","send_from":"+65 92xx xx88","next_step":"..."}')
+    rows = ''.join('<tr><td><code>%s</code></td><td>%s</td></tr>' % (k, E(v)) for k, v in [
+        ('listing_id', 'Required. The workshop\'s id: the last part of its address, for example soon-kim-motor-workshop in /workshops/soon-kim-motor-workshop/. It is also shown in the claim form.'),
+        ('claimant_name', 'Required. The name of the person sending the claim.'),
+        ('role', 'Required. One of: owner, manager, staff, agent (an assistant or AI agent acting for the owner), other.'),
+        ('contact', 'Required. An email address or phone number where Page One can reach the claimant. Kept private.'),
+        ('on_behalf_of', 'Optional. Who you act for, if you are not the owner.')])
+    body = ('<p class="lede" style="font-size:1rem">AI agents and assistants are welcome to claim or verify a workshop listing on %s for its owner. '
+            'This page explains the steps, the fields and what verification means. People can use the same steps.</p>'
+            '<h2>The steps</h2><ol>'
+            '<li>Open the workshop\'s page on this site. Each page ends with a <strong>Claim this listing</strong> form.</li>'
+            '<li>Send the claim with the form, or with the JSON endpoint below. The claim is saved as <strong>pending</strong>.</li>'
+            '<li>The reply shows a one-time code (for example SGCW-7KQ2MX) and a WhatsApp link to Page One Singapore (+65 8997 6612) with the code already typed in.</li>'
+            '<li>The workshop owner sends that message <strong>from the mobile number shown on the listing</strong>. An agent cannot do this step; pass the code and link to the owner.</li>'
+            '<li>Page One checks that the WhatsApp came from the listing\'s mobile with the same code, and approves the claim.</li></ol>'
+            '<h2>What verification means</h2><p>A claim is verified only when the one-time code arrives on WhatsApp from the mobile number on the listing, which is the number on the workshop\'s Google Business Profile. '
+            'No code from that number, no claim. A claim stays pending until Page One approves it, and nothing on the public listing changes while it is pending. Codes expire after 7 days. '
+            'Approval confirms that the claimant can reach the listing\'s own phone; it is not a review of the workshop\'s work.</p>'
+            '<h2>The fields</h2><div class="tblw"><table class="tbl"><thead><tr><th>Field</th><th>Meaning</th></tr></thead><tbody>%s</tbody></table></div>'
+            '<h2>HTML form</h2><p>Every workshop page has a plain HTML form (no JavaScript needed) that posts these fields to the endpoint below and answers with a page showing the code and the WhatsApp link.</p>'
+            '<h2>JSON endpoint</h2><p><code>POST %s</code> with <code>Content-Type: application/json</code>. A <code>GET</code> on the same address describes the fields.</p>'
+            '<pre class="code">%s</pre><p>A successful reply (HTTP 200):</p><pre class="code">%s</pre>'
+            '<p>Errors return <code>{"ok":false,"error":"..."}</code> with HTTP 400 (a field is missing or wrong), 404 (unknown listing_id) or 429 (rate limit).</p>'
+            '<h2>Limits and privacy</h2><ul><li>Up to 5 accepted claims per hour and 20 attempts per day from one connection, and 3 claims per listing per day.</li>'
+            '<li>Every attempt is logged (time, listing, claimant name, role, result) for Page One staff only. The connection is stored only as a scrambled code, never the raw IP address.</li>'
+            '<li>Claimant contact details are private and never appear on the site.</li></ul>'
+            '<h2>After approval</h2><p>Page One contacts the claimant to confirm any corrections. To remove a listing instead, see <a href="../list-your-workshop/#remove">Remove my listing</a>.</p>'
+            ) % (E(SITE_NAME), rows, CLAIM_ENDPOINT, E(ex_json), E(ex_reply))
+    legal_page('for-ai-agents/', 'For AI agents: claim a listing | SG Car Workshop', 'How AI agents and owners claim and verify a car workshop listing on SG Car Workshop: steps, fields, JSON endpoint and what verification means.',
+               'For AI agents: claim and verify a workshop listing', body)
+
+
 def not_found():
     b = PATH_BASE
     cats = ''.join('<li><a href="%sservices/%s/">%s</a></li>' % (b, c['slug'], E(c['name'])) for c in CATEGORIES)
@@ -2367,7 +2434,7 @@ def build():
     list_page()
     about_page()
     terms_page()
-    privacy_page(); contact_page()
+    privacy_page(); contact_page(); agents_page()
 
     if os.path.isdir(OUT):
         shutil.rmtree(OUT)
@@ -2381,6 +2448,9 @@ def build():
     for f in ('dir.css', 'dir.js', 'livephone.js', 'ask.js'):
         shutil.copy(os.path.join(HERE, f), OUT + '/assets/' + f)
     shutil.copytree(os.path.join(HERE, 'img'), OUT + '/assets/img', dirs_exist_ok=True)
+    # Listing id -> name + the mobile on the card, read by the Controller claim function (Edwin 8 Nov 2026). Same public numbers as the cards.
+    open(OUT + '/assets/claim-listings.json', 'w', encoding='utf-8').write(json.dumps(
+        {'listings': {e['slug']: {'n': e['name'], 'm': e['phone']} for e in ENTRIES if e.get('phone')}}, ensure_ascii=False, separators=(',', ':')))
     if HOME_MORE:
         open(OUT + '/assets/cards.json', 'w', encoding='utf-8').write(json.dumps({'cards': HOME_MORE}, ensure_ascii=False, separators=(',', ':')))
     make_icons()
@@ -2416,7 +2486,14 @@ def build():
         if 'workshops/%s/' % e['slug'] in NOINDEX:
             continue   # thin pages stay out of llms.txt until they have enough content
         lines.append('- [%s](%sworkshops/%s/): %s, %s%s' % (e['name'], BASE, e['slug'], CAT[e['category']]['name'] + ', ' + TIERS[e['tier']]['label'], e['area_label'], (' (own website: %s)' % e['url']) if e['tier'] == 'premium_leadgen' else ''))
-    lines += ['', '## More', '- [List your workshop](%slist-your-workshop/)' % BASE, '- [About](%sabout/)' % BASE, '- [Terms](%sterms/)' % BASE, '- [Privacy](%sprivacy/)' % BASE, '']
+    lines += ['', '## For AI agents: claiming a listing',
+              'AI agents are welcome to claim or verify a workshop listing for its owner. Full guide: %sfor-ai-agents/' % BASE,
+              '1. Find the workshop page (%sworkshops/<listing_id>/); the listing id is the last part of the address and is shown in the claim form.' % BASE,
+              '2. Send the claim: the HTML form on the workshop page, or POST JSON to %s with fields listing_id, claimant_name, role (owner, manager, staff, agent, other), contact (email or phone), on_behalf_of (optional).' % CLAIM_ENDPOINT,
+              '3. The reply gives a one-time code and a WhatsApp link to Page One (+65 8997 6612) with the code typed in. The owner must send it from the mobile shown on the listing.',
+              '4. Page One checks that the WhatsApp came from the listing mobile and then approves. Until then the claim is pending and the public listing does not change. No code from the listing mobile, no claim.',
+              'Limits: 5 claims per hour per connection, 3 per listing per day; codes expire after 7 days.']
+    lines += ['', '## More', '- [For AI agents](%sfor-ai-agents/)' % BASE, '- [List your workshop](%slist-your-workshop/)' % BASE, '- [About](%sabout/)' % BASE, '- [Terms](%sterms/)' % BASE, '- [Privacy](%sprivacy/)' % BASE, '']
     open(OUT + '/llms.txt', 'w').write('\n'.join(lines))
     print('built %d pages + 404 into %s (LIVE=%s, v=%s)' % (len(PAGES), OUT, LIVE, V))
 
