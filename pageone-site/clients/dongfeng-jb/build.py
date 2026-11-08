@@ -1449,6 +1449,12 @@ FAQ_DEALER = [
      X('Dongfeng passenger electric cars. Our showroom has the Dongfeng Vigo electric SUV and the Dongfeng 007 electric sedan, and the Voyah Dream MPV is listed as coming soon.')),
     (X('Are you open to petrol, hybrid and PHEV brands?'),
      X('Yes. We want to hear from passenger car brands with petrol, hybrid, plug-in hybrid or electric models, including SUVs. This page covers passenger cars, not commercial vehicles.')),
+    (X('Is MyKar World an EV dealership partner Johor brands can work with?'),
+     X('Yes. We already run the Dongfeng 3S centre in Johor Bahru for passenger electric cars, with sales, service and spare parts at one site, and we are open to talking with other EV brands.')),
+    (X('Does a Johor centre fit a plan for car dealer network expansion Malaysia-wide?'),
+     X('It can. A brand adding outlets across the country can talk to us about a 3S centre in Johor Bahru, at the southern end of Peninsular Malaysia.')),
+    (X('Are you a new car dealership partner Malaysia entrants can talk to?'),
+     X('Yes. Brands entering Malaysia, and brands adding Johor to an existing network, can contact Gavin, Sales Director, on +60 12-551 2820.')),
     (X('Where is your centre?'),
      X('No. 28, Jalan Ekoperniagaan 3/11, Taman Ekoperniagaan, 81100 Johor Bahru, Johor, Malaysia.')),
     (X('Can we visit before discussing terms?'),
@@ -1497,7 +1503,7 @@ def dealership_body(L):
     return ('<section class="sec"><div class="wrap">%s</div></section>'
             '<section class="sec"><div class="wrap split"><div><span class="eyebrow">Company profile</span><h2>Who is MyKar World?</h2>'
             '<p class="answer">MyKar World Sdn. Bhd. runs Dongfeng Johor Bahru, the first Dongfeng 3S centre in Johor Bahru. Our centre at Taman Ekoperniagaan handles new car sales, servicing and spare parts for Dongfeng passenger electric cars at one site.</p>'
-            '<p>We are open to new car dealership partnerships in Johor and Malaysia, and we want to talk to manufacturers, OEMs and passenger car distributors planning new car dealership or 3S dealer network expansion in Malaysia.</p></div>'
+            '<p>We are open to new dealership partnerships in Johor, and we want to talk to manufacturers, OEMs and passenger car distributors with passenger models for Malaysia.</p></div>'
             '<figure>%s</figure></div></section>'
             '<section class="sec sec-white"><div class="wrap">%s<div class="tbl"><table class="spec"><tbody>%s</tbody></table></div></div></section>'
             '<section class="sec"><div class="wrap">%s%s<p>Read more <a href="about/">about MyKar World</a>, see <a href="models/">the Dongfeng models we sell</a>, or check <a href="%s" target="_blank" rel="noopener">our Google reviews</a>.</p></div></section>'
@@ -1511,16 +1517,16 @@ def dealership_body(L):
         gavin_block(),
         img('showroom-front', L),
         sec_head(X('Company details'), X('MyKar World at a glance'), None, L), tbl,
-        sec_head(X('Dealership experience'), X('What we already run in Johor Bahru'), X('As a car dealership partner in Johor, this is the track record we can show today.'), L), ticks(track, L), E(GBP),
+        sec_head(X('Dealership experience'), X('Car dealership partner Johor: what we already run'), X('This is the track record we can show today, from our centre in Johor Bahru.'), L), ticks(track, L), E(GBP),
         sec_head(X('Showroom'), X('Our showroom in Johor Bahru'), X('Real photos from our showroom and events. Swipe to see more.'), L),
         glide(['showroom-front', 'vigo-showroom', '007-showroom', 'vigo-dash', 'merdeka-2026'], L, caps, X('MyKar World showroom photos')),
-        sec_head(X('3S capability'), X('Sales, service and spare parts at one site'), X('What a 3S dealer in Johor Bahru gives a brand: one partner for the whole ownership cycle.'), L),
+        sec_head(X('3S capability'), X('3S dealer Johor Bahru: sales, service and spare parts at one site'), X('What a 3S centre gives a brand: one partner for the whole ownership cycle.'), L),
         ''.join('<div class="card"><h3>%s</h3><p>%s</p></div>' % (E(t(a, L)), E(t(b, L))) for a, b in caps3),
         ticks(why, L), img('pair-skyline', L),
         sec_head(X('How it works'), X('Partnership process'), X('Five simple steps from first contact to launch.'), L), steps(proc, L),
         faq_html(FAQ_DEALER, L),
         gavin_block(),
-        sec_head(X('Enquiry form'), X('Tell us about your brand'), X('Fill in the details and Gavin receives them on WhatsApp.'), L), form)
+        sec_head(X('Enquiry form'), X('Passenger car distributor Johor Malaysia: tell us about your brand'), X('Fill in the details and Gavin receives them on WhatsApp.'), L), form)
 
 
 def about_body(L):
@@ -1748,7 +1754,7 @@ def render(L, path, p):
     def fix(s):
         return re.sub(r'(href|src|action)="(?!https?:|mailto:|tel:|#|\.\./|data:)([^"]*)"', lambda m: '%s="%s%s"' % (m.group(1), lpre, m.group(2)), s)
 
-    nav = ''.join('<a href="%s%s"%s>%s</a>' % (lpre, h, ' aria-current="page"' if path.startswith(h) else '', E(t(x, L))) for h, x in W['nav'])
+    nav = ''.join('<a href="%s%s"%s>%s</a>' % (lpre, h, ' aria-current="page"' if path.startswith(h) else '', E(t(x, L))) for h, x in W['nav'] if not (p.get('b2b') and h == 'test-drive/'))
     has = [l for l in LANGS if (l, path) in PAGES] or LANGS  # B2B page is English; its other-language links go to the partners page
     langs = ''.join('<a href="%s%s%s" hreflang="%s" lang="%s"%s>%s</a>' % (pre, PFX[l], path if l in has else 'partners/', HREFLANG[l], LANG_ATTR[l], ' aria-current="true"' if l == L else '', LANG_LABEL[l]) for l in LANGS)
     alts = ''.join('<link rel="alternate" hreflang="%s" href="%s%s%s">\n' % (HREFLANG[l], SITE, PFX[l], path) for l in has) + \
@@ -1782,7 +1788,9 @@ def render(L, path, p):
     body = fix(p['body'] + band)
     brand = brand_html(lpre)
     ftr_models = ''.join('<li><a href="%smodels/%s/">%s</a></li>' % (lpre, m['slug'], E(m['name'])) for m in MODELS) + \
-        ''.join('<li><a href="%s%s">%s</a></li>' % (lpre, h, E(t(x, L))) for h, x in [('test-drive/', W['nav'][1][1]), ('service/', W['nav'][2][1]), ('spare-parts/', T('Spare parts', 'Alat ganti', '零配件')), ('partners/', W['nav'][3][1])])
+        ''.join('<li><a href="%s%s">%s</a></li>' % (lpre, h, E(t(x, L))) for h, x in [('test-drive/', W['nav'][1][1]), ('service/', W['nav'][2][1]), ('spare-parts/', T('Spare parts', 'Alat ganti', '零配件')), ('partners/', W['nav'][3][1])] if not (p.get('b2b') and h == 'test-drive/'))
+    ftr_sales = ('<li>Dealership enquiries: <a href="%s" target="_blank" rel="noopener">WhatsApp Gavin %s</a></li>' % (E(GAVIN_WA), GAVIN_SHOW)) if p.get('b2b') else \
+        '<li>%s: <a href="%s" target="_blank" rel="noopener">WhatsApp %s</a></li>' % (E(t(W['sales'], L)), E(wa_url(L)), WA_SHOW)
     ftr_explore = ''.join('<li><a href="%s%s">%s</a></li>' % (lpre, h, E(t(x, L))) for h, x in [('articles/', W['nav'][4][1]), ('about/', W['nav'][5][1]), ('contact/', W['nav'][6][1]), ('privacy/', W['privacy'])])
     dock = '<div class="dock"><a class="dock-wa" href="%s" target="_blank" rel="noopener">%s<span>%s</span></a><a class="dock-alt" href="%s" target="_blank" rel="noopener">%s<span>%s</span></a></div>' % (
         E(wa_url(L)), WA_SVG, E(t(W['sales'], L)), E(wa_url(L, svc=True)), WA_SVG, E(t(W['svc'], L)))
@@ -1838,7 +1846,7 @@ def render(L, path, p):
 <div><h3>{E(t(W['models'], L))}</h3><ul>{ftr_models}</ul></div>
 <div><h3>{E(t(W['explore_h'], L))}</h3><ul>{ftr_explore}</ul></div>
 <div><h3>{E(t(W['contact_h'], L))}</h3><ul>
-<li>{E(t(W['sales'], L))}: <a href="{E(wa_url(L))}" target="_blank" rel="noopener">WhatsApp {WA_SHOW}</a></li>
+{ftr_sales}
 <li>{E(t(W['svc'], L))}: <a href="{E(wa_url(L, svc=True))}" target="_blank" rel="noopener">WhatsApp {SVC_SHOW}</a></li>
 <li><a href="mailto:{EMAIL}">{EMAIL}</a></li>
 <li><a href="mailto:{SVC_EMAIL}">{SVC_EMAIL}</a></li>
