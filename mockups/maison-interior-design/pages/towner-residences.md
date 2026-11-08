@@ -1,59 +1,23 @@
-SEO title: Towner Residences 4-Room Interior Design | Maison
-Meta description: Plan a Towner Residences 4-room home with HDB-plan-based concepts, a simplified layout and practical renovation checks.
+SEO title: Towner Residences BTO Interior Design & Renovation Ideas
+Meta description: Explore four Maison interior design themes for Towner Residences BTO living rooms, kitchens and bedrooms, plus HDB floor plans. WhatsApp to discuss your renovation.
 
-# Towner Residences 4-room interior design
+# Towner Residences BTO Interior Design & Renovation Ideas
 
-Four plan-informed concepts for the first 4-room arrangement. Confirm your own approved plan and OCS selections before adapting them.
-
-![Simplified Towner Residences 4-room interior design layout](images/towner-residences-layout-4room.png)
-
-Original simplified redraw based on [HDB brochure p.12](https://btohq.sgp1.cdn.digitaloceanspaces.com/bto/aug-2021-bto/towner-residences.pdf), archive-hosted by BTO HQ. Not to scale; room dimensions not stated.
-
-## Living and dining
-
-![Towner Residences 4-room interior design living and dining concept](concept-living-dining.png)
-
-Based on HDB’s 4-room first arrangement (90 sqm internal; 93 sqm including ledge), [brochure p.12](https://btohq.sgp1.cdn.digitaloceanspaces.com/bto/aug-2021-bto/towner-residences.pdf), HDB-authored and archive-hosted by BTO HQ; AI concept, for illustration only.
-
-Keep the living/dining route clear; this is a plan-informed styling study, not an exact reconstruction.
-
-## Kitchen and service yard
-
-![Towner Residences 4-room interior design kitchen and service yard concept](concept-kitchen.png)
-
-Based on HDB’s 4-room first arrangement (90 sqm internal; 93 sqm including ledge), [brochure p.12](https://btohq.sgp1.cdn.digitaloceanspaces.com/bto/aug-2021-bto/towner-residences.pdf), HDB-authored and archive-hosted by BTO HQ; AI concept, for illustration only.
-
-Kitchen opening and adjoining service yard follow the selected plan; new joinery is a proposal.
-
-## Main bedroom
-
-![Towner Residences 4-room interior design main bedroom concept](concept-master-bedroom.png)
-
-Based on HDB’s 4-room first arrangement (90 sqm internal; 93 sqm including ledge), [brochure p.12](https://btohq.sgp1.cdn.digitaloceanspaces.com/bto/aug-2021-bto/towner-residences.pdf), HDB-authored and archive-hosted by BTO HQ; AI concept, for illustration only.
-
-Use the rightmost bedroom arrangement as the starting point; verify your stack and measurements.
-
-## A common bedroom as a study
-
-![Towner Residences 4-room interior design a common bedroom as a study concept](concept-study.png)
-
-Based on HDB’s 4-room first arrangement (90 sqm internal; 93 sqm including ledge), [brochure p.12](https://btohq.sgp1.cdn.digitaloceanspaces.com/bto/aug-2021-bto/towner-residences.pdf), HDB-authored and archive-hosted by BTO HQ; AI concept, for illustration only.
-
-Adapt the middle common bedroom without treating the household shelter as a study.
+The four theme pictures on this page are AI-generated style concepts by Maison. They are not photos of an actual unit, not completed Maison projects and not surveyed layouts; layouts, fittings and views are illustrative. The floor plans are reproduced from the HDB-authored Towner Residences sales brochure ([archive copy](https://btohq.sgp1.cdn.digitaloceanspaces.com/bto/aug-2021-bto/towner-residences.pdf), printed p.10 and p.12). They are not construction drawings; confirm your own approved plan, stack and any mirroring before adapting an idea.
 
 ## FAQ and detailed planning notes
 
-### Which four-room area is correct?
-HDB’s brochure states 90 sqm internal and 93 sqm including the air-con ledge. The ledge is not usable living space. The selected plan is the first of two arrangements on printed p.12; confirm your own stack and any mirroring.
+### Which floor areas are correct?
+HDB’s brochure states 3-room: approx. 68 sqm including the air-con ledge (65 sqm internal), and 4-room: approx. 93 sqm including the air-con ledge (90 sqm internal). The ledge is not usable living space. Printed p.12 shows two 4-room arrangements; confirm your own stack and any mirroring.
 
-### How does this arrangement work?
-Three bedrooms line the plan-top edge. Living/dining sits plan-left, the shelter beside the lower-left entrance, kitchen at the bottom and service yard to its right; bathrooms are beside this service zone. These are diagram-relative directions, not compass facings.
+### How does the first 4-room arrangement work?
+In the first arrangement on p.12, three bedrooms line the plan-top edge. Living/dining sits plan-left, the shelter beside the lower-left entrance, kitchen at the bottom and service yard to its right; bathrooms are beside this service zone. These are diagram-relative directions, not compass facings.
 
 ### Which finishes are supplied?
 The specifications name aluminium-framed tinted windows, glazed porcelain kitchen floor/wall tiles and an aluminium-framed glazed service-yard door. Polished porcelain living floors and vinyl bedroom floors are optional OCS items, not universal supply. Render colours, cabinetry, counters, furniture and light fittings are design proposals.
 
 ### Are the pictures exact reconstructions?
-No. They use the selected plan’s room relationships and window/service-yard anchors, but AI geometry and perspectives are approximate. Individual room dimensions were not published. Check the approved owner plan and a measured survey before construction. The clean diagram is our own original schematic, not a traced or reproduced HDB drawing.
+No. They are AI-generated style concepts, not photos of a Towner Residences unit and not completed Maison projects. Room shapes, fittings, furniture and window views are illustrative. Individual room dimensions were not published, so check your approved owner plan and a measured survey before construction.
 
 ### Are keys officially confirmed for a particular month?
 No project-wide current key date was confirmed. Historical third-party estimates are not an appointment. Confirm your own HDB handover and defects process.

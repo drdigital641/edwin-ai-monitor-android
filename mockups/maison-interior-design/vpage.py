@@ -10,7 +10,7 @@ VPAGES = {
   kind="bto", hero="towner-residences-living-dining", layout="towner-residences-layout-4room",
   plan=("towner-residences-maison-plan", 1640, "Maison redrawn floor plan of a Towner Residences 4-room flat, for illustration",
         "https://assets.hdb.gov.sg/community/towner_residences/index.html"),
-  picker2=True,
+  v4=True,
   styles=dict(note="4-room first arrangement, 90 sqm internal / 93 sqm incl. A/C ledge.",
               src="https://btohq.sgp1.cdn.digitaloceanspaces.com/bto/aug-2021-bto/towner-residences.pdf#page=8"),
   tag="BTO · Kallang/Whampoa · Key date not yet confirmed",
@@ -19,8 +19,10 @@ VPAGES = {
          ("towner-residences-master-bedroom", "Main bedroom: starts from the plan; verify your stack and measurements."),
          ("towner-residences-study", "Common bedroom as a study: the household shelter stays a shelter.")],
   layout_cap="Simplified redraw based on HDB brochure p.12. Not to scale.",
-  glance=[dict(name="4-room, first brochure arrangement", size="90 sqm internal (93 sqm incl. ledge)", beds="3 bedrooms",
-               idea="Turn the middle common bedroom into a study; never use the household shelter as one.")],
+  glance=[dict(name="3-room", size="65 sqm internal (approx. 68 sqm incl. ledge)", beds="2 bedrooms",
+               idea="Keep the dry kitchen and kitchen/utility clear to work in; adapt storage to your actual unit."),
+          dict(name="4-room (two brochure arrangements)", size="90 sqm internal (approx. 93 sqm incl. ledge)", beds="3 bedrooms",
+               idea="A common bedroom can double as a study; never use the household shelter as one.")],
   steps=[("Keys", "Collect on your own HDB date. No project-wide key date is confirmed."),
          ("Defects", "Inspect and report defects, then coordinate rectification."),
          ("Survey", "Measure the home against your approved plan and OCS selections."),
@@ -165,6 +167,8 @@ g.querySelectorAll('img').forEach(function(i){var r=i.dataset.room,f=b+'-'+s+'-'
 g.querySelectorAll('.vs-n').forEach(function(x){x.textContent=n})})})})()</script>""")
 
 def vpage(slug):
+    if VPAGES[slug].get("v4"):
+        return vpage_v4(slug)
     c, cfg = parse_copy(slug), VPAGES[slug]
     path = f"new-launches/{slug}/"
     gal = "".join(f'<figure class="vg-card">{vimg(slug, n, "AI concept: " + cap.split(":")[0] + " for " + c["h1"], sizes="(min-width:900px) 45vw, 85vw")}'
