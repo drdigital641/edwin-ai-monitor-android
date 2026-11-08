@@ -22,6 +22,7 @@ for f in files:
             if not os.path.exists(os.path.normpath(os.path.join(os.path.dirname(f),u))): print('MISSING srcset',f,u);bad+=1
     if 'jbstaycation.com/_astro' in h: print('HOTLINK',f);bad+=1
     for href in re.findall(r'(?:href|src)="([^"#]+)"',h):
+        href=href.split('?')[0]  # ignore cache-buster query strings
         if href.startswith(('http','mailto','tel','data')): 
             if href.startswith(BASE):
                 p=href[len(BASE):]

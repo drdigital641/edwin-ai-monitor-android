@@ -877,6 +877,10 @@ PAGES = {}
 PENDING = {}
 
 
+import hashlib as _hl
+ASSET_V = _hl.sha256((CSS + UI_JS + CTA_JS).encode()).hexdigest()[:8]  # cache-buster: changes whenever css/js change
+
+
 def page(path, title, desc, h1, body, crumbs=None, ld=None, lede='', og=None, photo=None, stick=None, article=False, custom_top=False):
     PAGES[path] = dict(title=title, desc=desc, h1=h1, body=body, crumbs=crumbs, ld=ld or [], lede=lede, og=og, photo=photo, stick=stick,
                        article=article, custom_top=custom_top)
@@ -921,9 +925,9 @@ def render(path, p):
             '<meta property="og:type" content="{ogt}"><meta property="og:site_name" content="JBStaycation"><meta property="og:title" content="{title}">'
             '<meta property="og:description" content="{desc}"><meta property="og:url" content="{url}"><meta property="og:image" content="{ogi}"><meta property="og:image:width" content="{ogw}"><meta property="og:image:height" content="{ogh}"><meta property="og:image:alt" content="{oga}">'
             '<meta name="twitter:card" content="summary_large_image"><meta name="twitter:title" content="{title}"><meta name="twitter:image" content="{ogi}">'
-            '{headjs}{fonts}<link rel="stylesheet" href="{pre}jb.css">{lds}</head><body class="{bc}">'
+            '{headjs}{fonts}<link rel="stylesheet" href="{pre}jb.css?v={av}">{lds}</head><body class="{bc}">'
             '<a class="skip" href="#main">Skip to content</a>{hdr}<main id="main">{top}{content}</main>{ftr}{stick}'
-            '<script src="{pre}jb.js" defer></script><script src="{pre}cta.js" defer></script></body></html>').format(
+            '<script src="{pre}jb.js?v={av}" defer></script><script src="{pre}cta.js?v={av}" defer></script></body></html>').format(av=ASSET_V, 
         title=e(p['title']), desc=e(p['desc']), url=url, pre=pre, ogt='article' if p['article'] else 'website', ogi=e(abs_img(og)),
         ogw=w, ogh=h, oga=e(_alt_for(og)), headjs=HEAD_JS, fonts=FONT_LINKS, lds=''.join(jl(x) for x in lds), bc=bc, hdr=header_html(p['stick']), top=top,
         content=p['body'], ftr=footer_html(), stick=stick)
@@ -1391,8 +1395,8 @@ def main():
         open(os.path.join(d, 'index.html'), 'w', encoding='utf-8').write(render(path, p))
     # 404 (renders with absolute BASE paths so it works at any depth)
     nf = ('<!doctype html><html lang="en-SG"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Page not found | JBStaycation</title>'
-          '<meta name="robots" content="max-image-preview:large"><link rel="icon" href="%sicon.svg" type="image/svg+xml">%s%s<link rel="stylesheet" href="%sjb.css"></head><body class="inner has-stick">%s<main id="main"><div class="wrap nf"><p class="eyebrow">Error 404</p><h1>Page not found</h1><p class="lead">That page does not exist. Try our <a href="%s">home page</a>, the <a href="%sstays/">stays</a> or message us on WhatsApp.</p>%s</div></main>%s%s<script src="%sjb.js" defer></script><script src="%scta.js" defer></script></body></html>'
-          % (BASE, HEAD_JS, FONT_LINKS, BASE, header_html(), BASE, BASE, wa_btn('WhatsApp us', wa_msg(), '404'), footer_html(), stick_bar('any'), BASE, BASE))
+          '<meta name="robots" content="max-image-preview:large"><link rel="icon" href="%sicon.svg" type="image/svg+xml">%s%s<link rel="stylesheet" href="%sjb.css?v=%s"></head><body class="inner has-stick">%s<main id="main"><div class="wrap nf"><p class="eyebrow">Error 404</p><h1>Page not found</h1><p class="lead">That page does not exist. Try our <a href="%s">home page</a>, the <a href="%sstays/">stays</a> or message us on WhatsApp.</p>%s</div></main>%s%s<script src="%sjb.js?v=%s" defer></script><script src="%scta.js?v=%s" defer></script></body></html>'
+          % (BASE, HEAD_JS, FONT_LINKS, BASE, ASSET_V, header_html(), BASE, BASE, wa_btn('WhatsApp us', wa_msg(), '404'), footer_html(), stick_bar('any'), BASE, ASSET_V, BASE, ASSET_V))
     nf = nf.replace('{R}', BASE).replace('<main id="main">', '<main id="main" style="padding-top:0">')
     open(os.path.join(OUT, '404.html'), 'w', encoding='utf-8').write(nf)
     open(os.path.join(OUT, 'jb.css'), 'w').write(re.sub(r'\n+', '\n', CSS).strip() + '\n')
