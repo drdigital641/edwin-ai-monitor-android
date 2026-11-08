@@ -33,10 +33,9 @@ CONFIRM = [
     'Prima "Minimum 2": source gives no unit; page says "Minimum 2 (see WhatsApp for details)" and never "2 nights".',
     'Prima 900 sq ft (as stated by client) looks small for 20 guests; left off the page.',
     'Prima check-in/out times, quiet hours, deposit amount and house rules (none verified; pages say ask us on WhatsApp).',
-    'Review: only "Very nice place very clean" (Philip, Singapore) exists, from a stay at Lumina Glasshouse; shown with that label. Remove if Lumina is no longer offered.',
+    'No guest reviews are shown anywhere (Edwin, 8 Nov 2026): add only real, permitted reviews later.',
     'Deposit, cancellation and payment terms (client T&C is an unfilled template; no /terms/ page built).',
     'SGD equivalents: not shown until Edwin agrees.',
-    'Is Lumina Glasshouse still offered? (only in one review; not listed).',
     'Google Business Profile, Airbnb, social links, email (none known; no sameAs).',
     'Brand colours/fonts: v2 uses the client site tokens (navy #0a1f38, amber #e8a33d, page #f7f8f9) and Geist from Google Fonts.',
     'Photos are self-hosted in site/img/ (client files). img-1806 (brand hero, dusk bungalow) does not visibly match either house: confirm which house it is or if it is a render.',
@@ -250,7 +249,6 @@ HOUSES = {
 ORDER = ['prima', 'landak']
 H1S = {'prima': 'Prima: JB holiday house with karaoke for up to 20 guests', 'landak': 'Staycation near KSL City Mall: Landak Kawan Fun House'}
 
-REVIEW = ('Very nice place very clean', 'Philip, Singapore', 'stayed at Lumina Glasshouse (another JBStaycation house)')
 
 # ---------------------------------------------------------------- sources for travel facts (official only)
 SRC = {
@@ -330,9 +328,9 @@ def wa_url(msg):
 WA_SVG = ('<svg class="ico" viewBox="0 0 24 24" width="20" height="20" aria-hidden="true"><path fill="currentColor" d="M12 2a10 10 0 0 0-8.6 15L2 22l5.2-1.4A10 10 0 1 0 12 2zm5.2 13.9c-.2.6-1.3 1.2-1.8 1.2-.5.1-1 .2-3.3-.7-2.8-1.2-4.6-4-4.7-4.2-.1-.2-1.1-1.5-1.1-2.8s.7-2 1-2.3c.2-.3.5-.3.7-.3h.5c.2 0 .4 0 .6.5l.9 2.1c.1.2.1.4 0 .5l-.4.6-.3.4c-.1.1-.3.3-.1.6.2.3.8 1.3 1.7 2.1 1.2 1 2.1 1.4 2.4 1.5.3.1.5.1.6-.1l.9-1c.2-.3.4-.2.6-.1l2 1c.3.1.5.2.5.3.1.1.1.6-.1 1.2z"/></svg>')
 
 
-def wa_btn(label, msg, ref, cls='btn btn-wa'):
-    return ('<a class="%s" href="%s" data-cta="whatsapp" data-cta-label="%s" rel="noopener">%s<span>%s</span></a>'
-            % (cls, e(wa_url(msg)), e(ref), WA_SVG, e(label)))
+def wa_btn(label, msg, ref, cls='btn btn-wa', aria=None):
+    return ('<a class="%s" href="%s" data-cta="whatsapp" data-cta-label="%s" rel="noopener"%s>%s<span>%s</span></a>'
+            % (cls, e(wa_url(msg)), e(ref), (' aria-label="%s"' % e(aria)) if aria else '', WA_SVG, e(label)))
 
 
 # inline stroke icons (24x24, no external icon library)
@@ -481,7 +479,7 @@ def header_html(k=None):
     return ('<header class="hdr" id="top"><div class="wrap hdr-in"><a class="brand" href="{R}" aria-label="JBStaycation home">%s<span>JB<b>Staycation</b></span></a>'
             '<nav class="nav" id="mainnav" aria-label="Main">%s</nav>'
             '<div class="hdr-act">%s<button class="mtog" type="button" aria-expanded="false" aria-controls="mainnav" aria-label="Open menu">%s%s</button></div>'
-            '</div></header>' % (brand_mark(), nav, wa_btn('WhatsApp', wa_msg(k), 'header', 'btn btn-wa btn-sm'), ico('menu', 24, 'i i-open'), ico('x', 24, 'i i-close')))
+            '</div></header>' % (brand_mark(), nav, wa_btn('WhatsApp', wa_msg(k), 'header', 'btn btn-wa btn-sm hdr-wa', aria='Message us on WhatsApp'), ico('menu', 24, 'i i-open'), ico('x', 24, 'i i-close')))
 
 
 def footer_html():
@@ -529,12 +527,14 @@ function sc(){if(hdr)hdr.classList.toggle('scrolled',window.scrollY>24)}sc();win
 if(tog)tog.addEventListener('click',function(){var o=!hdr.classList.contains('open');hdr.classList.toggle('open',o);tog.setAttribute('aria-expanded',o);tog.setAttribute('aria-label',o?'Close menu':'Open menu')});
 d.addEventListener('keydown',function(e){if(e.key==='Escape'&&hdr&&hdr.classList.contains('open')){hdr.classList.remove('open');tog.setAttribute('aria-expanded','false')}});
 var els=[].slice.call(d.querySelectorAll('.rv'));
+setTimeout(function(){els.forEach(function(x){x.classList.add('in')})},1500);
 if('IntersectionObserver' in window&&!rm){var io=new IntersectionObserver(function(es){es.forEach(function(x){if(x.isIntersecting){x.target.classList.add('in');io.unobserve(x.target)}})},{rootMargin:'0px 0px -6% 0px'});els.forEach(function(x){io.observe(x)})}else{els.forEach(function(x){x.classList.add('in')})}
 /* carousels: auto-slide (keeps going while the page scrolls), pause only while held or dragged, restart 2 s after release */
 d.querySelectorAll('[data-carousel]').forEach(function(c){
-var t=c.querySelector('.track'),held=false,rt=null,drag=null,moved=false,cnt=c.querySelector('.cnt'),n=t.children.length;
+var t=c.querySelector('.track'),held=false,rt=null,drag=null,moved=false,cnt=c.querySelector('.cnt'),sl=t.querySelectorAll('.slide'),n=sl.length,chips=[].slice.call(c.querySelectorAll('.rchips button'));
 function idx(){return Math.round(t.scrollLeft/Math.max(1,t.clientWidth))}
-function upd(){if(cnt)cnt.textContent=(idx()+1)+' / '+n}
+function upd(){var i=Math.min(idx(),n-1);if(cnt)cnt.textContent=(i+1)+' / '+n;if(chips.length&&sl[i]){var r=sl[i].getAttribute('data-room');chips.forEach(function(b){var on=b.getAttribute('data-room')===r;b.classList.toggle('on',on);b.setAttribute('aria-pressed',on);if(on){var p=b.parentNode;p.scrollTo({left:b.offsetLeft-12,behavior:'auto'})}})}}
+chips.forEach(function(b){b.addEventListener('click',function(){hold();var i=+b.getAttribute('data-i');t.scrollTo({left:i*t.clientWidth,behavior:rm?'auto':'smooth'});release()})});
 function step(dir){var w=t.clientWidth,max=t.scrollWidth-w;if(max<=4)return;var x=t.scrollLeft+dir*w;if(x>max+4&&dir>0||t.scrollLeft>=max-4&&dir>0)x=0;else if(x<-4)x=max;t.scrollTo({left:x,behavior:rm?'auto':'smooth'})}
 function hold(){held=true;clearTimeout(rt)}
 function release(){clearTimeout(rt);rt=setTimeout(function(){held=false},2000)}
@@ -582,7 +582,7 @@ CSS = r"""
 --r:12px;--r-lg:18px;--ease:cubic-bezier(.23,1,.32,1);--sh:0 1px 2px rgba(10,31,56,.05),0 10px 30px -12px rgba(10,31,56,.22);--sh-lg:0 2px 4px rgba(10,31,56,.06),0 28px 60px -24px rgba(10,31,56,.38);--hh:64px;
 --font:"Geist",system-ui,-apple-system,"Segoe UI",Roboto,sans-serif}
 @media(min-width:1024px){:root{--hh:76px}}
-*{box-sizing:border-box}html{-webkit-text-size-adjust:100%;scroll-padding-top:calc(var(--hh) + 16px)}
+*{box-sizing:border-box}html{overflow-x:clip;-webkit-text-size-adjust:100%;scroll-padding-top:calc(var(--hh) + 16px)}
 @media(prefers-reduced-motion:no-preference){html{scroll-behavior:smooth}}
 body{margin:0;background:var(--page);color:var(--ink);font:400 1.0625rem/1.65 var(--font);font-feature-settings:"ss01","ss02";overflow-x:hidden;-webkit-font-smoothing:antialiased}
 img{max-width:100%;height:auto;display:block}
@@ -591,7 +591,7 @@ h1,h2,h3{line-height:1.12;font-weight:600;letter-spacing:-.025em;margin:0 0 .5em
 h1{font-size:clamp(2rem,5.6vw,3.5rem)}h2{font-size:clamp(1.75rem,4.4vw,2.9rem)}h3{font-size:1.3rem;letter-spacing:-.015em}
 p{margin:0 0 1em}p,li{text-wrap:pretty}
 .wrap{max-width:1200px;margin:0 auto;padding:0 16px}@media(min-width:768px){.wrap{padding:0 clamp(24px,4vw,48px)}}
-.sec{padding:clamp(64px,10vw,120px) 0}.sec-tight{padding:clamp(48px,7vw,80px) 0}
+.sec{padding:36px 0}.sec-tight{padding:36px 0}@media(min-width:768px){.sec{padding:clamp(64px,10vw,120px) 0}.sec-tight{padding:clamp(48px,7vw,80px) 0}}
 .eyebrow{display:inline-flex;align-items:center;gap:10px;font-size:.8125rem;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--amber-deep);margin:0 0 14px}
 .eyebrow::before{content:"";width:22px;height:1.5px;background:currentColor}
 .lead{font-size:clamp(1.0625rem,1.6vw,1.25rem);color:var(--ink-soft);max-width:60ch}
@@ -614,7 +614,7 @@ p{margin:0 0 1em}p,li{text-wrap:pretty}
 .hdr-act{display:flex;align-items:center;gap:8px}
 .mtog{width:44px;height:44px;display:grid;place-items:center;border:0;background:transparent;color:inherit;border-radius:10px;cursor:pointer;padding:0}.mtog .i-close{display:none}
 .hdr.open .mtog .i-open{display:none}.hdr.open .mtog .i-close{display:block}
-@media(max-width:1023px){.hdr .btn-sm{padding:8px 14px}
+@media(max-width:1023px){.hdr .hdr-wa{width:44px;min-width:44px;height:44px;min-height:44px;padding:0;border-radius:50%;flex:none}.hdr .hdr-wa span{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}.hdr .hdr-wa .ico{width:24px;height:24px}.hdr-in{gap:8px}.hdr-act{gap:4px;flex:none}.brand{min-width:0}.brand span{white-space:nowrap}
 .js .nav{position:fixed;left:0;right:0;top:var(--hh);display:flex;flex-direction:column;padding:8px 16px 24px;background:var(--page);border-bottom:1px solid var(--line);box-shadow:0 30px 40px -30px rgba(10,31,56,.35);transform:translateY(-8px);opacity:0;visibility:hidden;transition:opacity .25s var(--ease),transform .25s var(--ease),visibility .25s}
 .js .nav a{font-size:1.25rem;padding:14px 4px;border-bottom:1px solid var(--line);border-radius:0;color:var(--ink)}
 .hdr.open .nav{opacity:1;transform:none;visibility:visible}
@@ -627,7 +627,7 @@ main{display:block;position:relative;z-index:1;background:var(--page)}
 .inner main{padding-top:var(--hh)}
 /* home hero */
 .hero{position:relative;min-height:100vh;min-height:100svh;display:flex;align-items:flex-end;color:#fff;background:var(--panel-deep);overflow:hidden;isolation:isolate}
-.hero-bg{position:absolute;inset:0;z-index:-2}.hero-bg img{width:100%;height:100%;object-fit:cover;object-position:58% 50%}
+.hero-bg{position:absolute;inset:0;z-index:-2;overflow:hidden}.hero-bg img{width:100%;height:100%;object-fit:cover;object-position:58% 50%}
 @media(prefers-reduced-motion:no-preference){.hero-bg img{animation:kb 22s var(--ease) both}@keyframes kb{from{transform:scale(1.14)}to{transform:scale(1.02)}}}
 .hero::after{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(180deg,rgba(10,31,56,.62) 0,rgba(10,31,56,.12) 26%,rgba(10,31,56,.25) 48%,rgba(10,31,56,.86) 76%,rgba(10,31,56,.97) 100%)}
 @media(min-width:900px){.hero::after{background:linear-gradient(180deg,rgba(10,31,56,.55) 0,rgba(10,31,56,0) 22%),linear-gradient(90deg,rgba(10,31,56,.9) 0,rgba(10,31,56,.6) 40%,rgba(10,31,56,.05) 75%),linear-gradient(0deg,rgba(10,31,56,.7) 0,rgba(10,31,56,0) 40%)}}
@@ -680,7 +680,7 @@ main{display:block;position:relative;z-index:1;background:var(--page)}
 .quote cite{font-style:normal;color:rgba(255,255,255,.72);font-size:1rem}.quote cite b{color:#fff;font-weight:600}
 /* map */
 .mapcard{margin:0;background:var(--surface);border:1px solid var(--line);border-radius:var(--r-lg);padding:12px;box-shadow:var(--sh)}
-.mapcard svg{width:100%;height:auto;display:block}.mapcard .map-p{display:none}@media(max-width:599px){.mapcard .map-w{display:none}.mapcard .map-p{display:block}}.mapcard figcaption{font-size:.875rem;color:var(--ink-muted);padding:8px 8px 4px}
+.mapcard svg{width:100%;height:auto;display:block}.mapcard .rlist{display:none}@media(max-width:767px){.mapcard .map-w{display:none}.mapcard:not(.has-rl){display:none}.mapcard .rlist{display:grid}}.mapcard figcaption{font-size:.875rem;color:var(--ink-muted);padding:8px 8px 4px}
 .routes{list-style:none;padding:0;margin:0 0 24px;display:grid;gap:12px}.routes li{display:grid;grid-template-columns:40px 1fr;gap:12px;align-items:start}
 .routes .i{width:40px;height:40px;padding:9px;border-radius:10px;background:var(--sky);color:var(--panel)}.routes b{display:block}.routes span{color:var(--ink-soft);font-size:1rem}
 /* article cards */
@@ -734,7 +734,7 @@ table{width:100%;border-collapse:collapse;background:var(--surface);font-size:1r
 .gal-all:hover{color:var(--ink);background:var(--amber)}
 @media(min-width:768px){.gal .track{margin:0;display:grid;grid-template-columns:2fr 1fr 1fr;grid-template-rows:1fr 1fr;gap:8px;height:clamp(380px,44vw,560px);border-radius:var(--r-lg);overflow:hidden;cursor:default}
 .gal .slide{aspect-ratio:auto;min-height:0}.gal .slide:first-child{grid-row:span 2}.gal .slide a:hover img{transform:scale(1.04);filter:brightness(1.05)}.gal .cbtn,.gal .cnt{display:none}.gal .gal-all{right:16px;bottom:16px}}
-.hlay{display:grid;gap:40px;padding-block:clamp(32px,5vw,56px) clamp(64px,9vw,104px)}
+.hlay{display:grid;grid-template-columns:minmax(0,1fr);gap:40px;padding-block:clamp(32px,5vw,56px) clamp(64px,9vw,104px)}
 @media(min-width:1024px){.hlay{grid-template-columns:minmax(0,1fr) 360px;gap:64px;align-items:start}}
 .hmain>section{padding:clamp(32px,5vw,48px) 0;border-top:1px solid var(--line)}.hmain>section:first-child{border-top:0;padding-top:0}
 .hmain h2{font-size:clamp(1.6rem,3.4vw,2.2rem)}
@@ -799,16 +799,74 @@ table{width:100%;border-collapse:collapse;background:var(--surface);font-size:1r
 .wordmark span{color:rgba(232,163,61,.32)}
 .fsmall{margin-top:28px;padding-top:20px;border-top:1px solid rgba(255,255,255,.14);font-size:.9375rem;display:flex;gap:12px;justify-content:space-between;flex-wrap:wrap}
 /* reveal */
-@media(prefers-reduced-motion:no-preference){.js .rv{opacity:0;transform:translateY(22px);transition:opacity .7s var(--ease),transform .7s var(--ease)}.js .rv.in{opacity:1;transform:none}}
+@media(prefers-reduced-motion:no-preference) and (min-width:768px){.js .rv{opacity:0;transform:translateY(22px);transition:opacity .7s var(--ease),transform .7s var(--ease)}.js .rv.in,.rv-all .rv{opacity:1;transform:none}}
 .skip{position:absolute;left:-999px;top:8px;z-index:200}.skip:focus{left:8px;background:#fff;padding:10px 14px;border-radius:8px}
 :focus-visible{outline:2.5px solid var(--amber);outline-offset:3px;border-radius:6px}
 .nf{padding-block:calc(var(--hh) + 56px) 80px}
+
+/* v4 mobile pass */
+.cz{position:relative}
+.hero .kick{text-transform:none;letter-spacing:0;font-size:.9375rem;font-weight:500}
+.fold>summary{cursor:pointer;list-style:none;display:flex;justify-content:space-between;align-items:center;gap:16px;min-height:44px}.fold>summary::-webkit-details-marker{display:none}
+.fold>summary h2{margin:0}.fold>summary .eyebrow{margin-bottom:6px}.fold .pm{transform:rotate(45deg);transition:transform .3s var(--ease);color:var(--amber-deep);width:36px;height:36px;padding:6px;border-radius:50%;border:1.5px solid currentColor;flex:none}.fold[open]>summary .pm{transform:rotate(0)}
+.fold-body{padding-top:20px}.fold-body .arts{margin-bottom:12px}
+.gsec{padding-top:0}
+.rchips{display:none}
+.rl-card{background:var(--surface);border:1px solid var(--line);border-radius:var(--r);padding:14px 16px}.rl-h{margin:0 0 8px;font-weight:700;color:var(--amber-deep)}
+.rl{list-style:none;margin:0;padding:0 0 0 22px;position:relative}.rl::before{content:"";position:absolute;left:5px;top:12px;bottom:12px;width:2px;background:var(--line-strong)}
+.rl li{position:relative;padding:5px 0;line-height:1.35}.rl li::before{content:"";position:absolute;left:-22px;top:12px;width:12px;height:12px;border-radius:50%;background:var(--panel);border:2px solid var(--surface)}
+.rl li.t{color:var(--ink-soft);font-style:italic;padding:6px 0}.rl li.t::before{display:none}.rl li.end::before{background:var(--amber)}.rl li b,.rl li span{display:block}.rl li span{color:var(--ink-soft)}
+.mapcard.has-rl{padding:12px;display:block}.mapcard .rlist{gap:10px;margin-bottom:6px}
+@media(max-width:767px){
+body{line-height:1.5}.steps+.after-gal{display:none}.wordmark{display:none}.pts li{padding:14px 16px}
+.cz .track{display:flex;overflow-x:auto;scroll-snap-type:x mandatory;scrollbar-width:none;overscroll-behavior-x:contain;-webkit-overflow-scrolling:touch;border-radius:var(--r)}.cz .track::-webkit-scrollbar{display:none}
+.cz .slide{flex:0 0 100%;scroll-snap-align:center;min-width:0}
+.cz .mosaic{display:flex;aspect-ratio:auto;gap:0}.cz .mosaic .slide{aspect-ratio:16/10}.hcard .cimg .ph,.hcard .cimg .strip span{aspect-ratio:3/2}
+.hcard .cimg{z-index:2;border-radius:var(--r-lg) var(--r-lg) 0 0;overflow:hidden}.hcard .cimg .track{border-radius:0}.hcard .strip{display:contents}.hcard .strip span{border-radius:0}.hcard .sg{display:none}
+.hcard .cb{padding:16px 16px 18px;gap:10px}.hcard h3 a{display:flex;align-items:center;min-height:44px}.cards{gap:20px}
+.eyebrow,.fh{font-size:1rem;letter-spacing:.08em}
+.facts li,.area,.specs li,.sg li,.note,.adds li,.src li,.hmeta,.crumbs,.near li,.stats b{font-size:1rem}
+.hm{display:none}
+.sec-head{margin-bottom:18px}
+.hero{min-height:min(calc(100vh - 76px),680px);min-height:min(calc(100svh - 76px),680px)}
+.hero-in{padding-top:calc(var(--hh) + 24px);padding-bottom:20px}
+.hero h1{margin:0 0 12px}
+.hero .kick{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap;margin:0}
+.hero .display{font-size:2.25rem;line-height:1.04}
+.hero .sub{font-size:1.0625rem;line-height:1.5;margin:0 0 18px}.hero .sub .more{display:none}
+.hero::after{background:linear-gradient(180deg,rgba(10,31,56,.5) 0,rgba(10,31,56,0) 22%,rgba(10,31,56,.05) 42%,rgba(10,31,56,.82) 72%,rgba(10,31,56,.96) 100%)}
+.facts{margin:18px 0 0;padding-top:12px;display:flex;flex-wrap:wrap;gap:4px 22px}.facts li:nth-child(n+3){display:none}
+.hero .btn{width:100%}
+.pts li{padding:16px 18px;display:grid;grid-template-columns:30px 1fr;column-gap:14px;row-gap:2px}.pts .i{grid-row:span 2}
+.split2{gap:28px}.steps{gap:16px;margin-bottom:16px}.steps li{grid-template-columns:40px 1fr;gap:12px}.steps li::before{width:40px;height:40px}
+.after-gal{margin-top:16px}
+.band p{margin-bottom:20px}
+.faqgrid{gap:20px}.faq summary{padding:12px 0}.faq-a p{margin-bottom:14px}
+.ftr{padding:40px 0 20px}.ftr-top{gap:28px}.wordmark{margin-top:28px}
+.adds a,.fsmall a{display:inline-flex;align-items:center;min-height:44px}.adds{gap:6px}.fsmall{margin-top:20px}
+.crumbs a{display:inline-flex;align-items:center;justify-content:center;min-height:44px;min-width:44px;padding:0 4px}.crumbs{margin-bottom:6px;gap:0}
+.note a,.prose p a,.prose li a,.muted a,.src a,.hmain p a{display:inline-block;padding:11px 10px;margin:-11px -10px}
+.link{padding:0}
+.subnav{display:none}.htop{padding-top:4px}.hmeta{gap:2px 16px;margin-bottom:10px}.htop h1{margin-bottom:8px}.gal{margin-top:8px}
+.hlay{gap:24px;padding-top:20px}.hmain>section{padding:28px 0}.hmain>section:first-child{padding-top:0}
+.rooms .room{display:contents}.rooms .room-h{display:none}.rooms .rg{display:contents}
+.rooms .rg figure{flex:0 0 100%;scroll-snap-align:center;margin:0;grid-column:auto;position:relative;min-width:0}
+.rooms .rg figure a{aspect-ratio:4/3!important;flex:none!important;border-radius:0}
+.rooms .rg figcaption{border-radius:0}
+.rooms-wrap .cnt{top:12px;bottom:auto}
+.rchips{display:flex;gap:8px;overflow-x:auto;scrollbar-width:none;margin:0 -16px 10px;padding:0 16px 2px}.rchips::-webkit-scrollbar{display:none}
+html:not(.js) .rchips{display:none}
+.rchips button{flex:none;min-height:44px;padding:8px 16px;border:1px solid var(--line);border-radius:999px;background:var(--surface);font:500 1rem var(--font);color:var(--ink);cursor:pointer}.rchips button.on{background:var(--ink);color:#fff;border-color:var(--ink)}
+.rooms-wrap .cz .track{border-radius:var(--r)}
+}
+@media(max-width:1023px){.gal+.after-gal{display:none}}
+@media(min-width:768px){.cz .cbtn,.cz .cnt{display:none}}
 """
 
 
 FONT_LINKS = ('<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>'
               '<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Geist:wght@300..800&display=swap">')
-HEAD_JS = "<script>document.documentElement.className+=' js'</script>"
+HEAD_JS = "<script>document.documentElement.className+=' js';setTimeout(function(){document.documentElement.classList.add('rv-all')},1500)</script>"
 
 
 def jl(obj):
@@ -891,12 +949,13 @@ def specs(k, cls='specs'):
 def house_card(k, eager=False):
     h = HOUSES[k]
     imgs = CARD_IMG[k]
-    strip = ''.join('<span>%s</span>' % pimg(f, sizes='(min-width:1200px) 180px, 33vw') for f in imgs[1:])
+    strip = ''.join('<span class="slide">%s</span>' % pimg(f, sizes='(min-width:1200px) 180px, (min-width:800px) 15vw, 100vw') for f in imgs[1:])
     sg = ''.join('<li>%s%s</li>' % (ico(i, 16), e(t)) for i, t in SG_CHIPS[k])
-    return ('<article class="hcard rv"><div class="ph">%s<span class="badge">%s</span></div><div class="strip" aria-hidden="false">%s</div>'
+    return ('<article class="hcard rv"><div class="cimg cz" data-carousel aria-roledescription="carousel" aria-label="Photos of %s"><div class="track"><div class="ph slide">%s<span class="badge">%s</span></div><div class="strip">%s</div></div>'
+            '<button class="cbtn prev" type="button" aria-label="Previous photo">%s</button><button class="cbtn next" type="button" aria-label="Next photo">%s</button><span class="cnt" aria-hidden="true">1 / %d</span></div>'
             '<div class="cb"><p class="area">%s%s</p><h3><a href="{R}stays/%s/">%s</a></h3>%s<ul class="sg">%s</ul>'
             '<div class="price-row"><p class="price"><b>RM %d</b> <small>per night &middot; %s</small></p><span class="go">View house %s</span></div>%s</div></article>'
-            % (pimg(imgs[0], sizes='(min-width:1200px) 560px, (min-width:800px) 46vw, 100vw', eager=eager, lazy=not eager), BADGE[k], strip,
+            % (e(h['name']), pimg(imgs[0], sizes='(min-width:1200px) 560px, (min-width:800px) 46vw, 100vw', eager=eager, lazy=not eager), BADGE[k], strip, ico('left', 22), ico('right', 22), len(imgs),
                ico('pin', 16), e(AREA[k]), h['slug'], e(h['name']), specs(k), sg, h['price'],
                'min. 1 night' if k == 'landak' else 'min. stay: ask us', ico('arrow', 18),
                wa_btn('Check dates for %s' % h['name'].replace(' Kawan Fun House', ''), h['msg'], 'card-' + k, 'btn btn-wa card-cta')))
@@ -914,37 +973,20 @@ HOME_FAQ = [
 ]
 
 
-def route_map_portrait():
-    """Phone version of the route diagram (readable at 360 px). Decorative twin of the wide SVG, hidden from screen readers."""
-    return ('<svg class="map-p" viewBox="0 0 360 490" aria-hidden="true" font-family="Geist,system-ui,sans-serif">'
-            '<rect width="360" height="490" rx="12" fill="#f3f6f9"/>'
-            '<text x="18" y="32" font-size="12" font-weight="600" letter-spacing="1.4" fill="#7c8a9b">JOHOR BAHRU, MALAYSIA</text>'
-            '<path d="M0 268 C80 252 140 290 200 276 S300 252 360 266 V318 C300 304 240 334 180 322 S70 300 0 318 Z" fill="#cfdeec"/>'
-            '<text x="180" y="302" font-size="12" fill="#6b85a0" text-anchor="middle" font-style="italic">Strait of Johor</text>'
-            '<path d="M80 352 V262" stroke="#10304f" stroke-width="5" stroke-linecap="round"/>'
-            '<path d="M80 262 C80 210 78 170 78 134" stroke="#e8a33d" stroke-width="3.5" fill="none" stroke-dasharray="2 7" stroke-linecap="round"/>'
-            '<path d="M276 352 V262" stroke="#10304f" stroke-width="5" stroke-linecap="round"/>'
-            '<path d="M302 352 V266" stroke="#7c8a9b" stroke-width="2" stroke-dasharray="6 5"/>'
-            '<path d="M276 258 C276 230 282 210 290 190" stroke="#e8a33d" stroke-width="3.5" fill="none" stroke-dasharray="2 7" stroke-linecap="round"/>'
-            '<circle cx="276" cy="256" r="6" fill="#10304f"/><text x="262" y="252" font-size="12.5" font-weight="600" fill="#10304f" text-anchor="end">JB CIQ</text>'
-            '<rect x="30" y="182" width="100" height="26" rx="13" fill="#0a1f38"/><text x="80" y="199" font-size="12" font-weight="600" fill="#fff" text-anchor="middle">about 10 min</text>'
-            '<rect x="232" y="208" width="112" height="26" rx="13" fill="#0a1f38"/><text x="288" y="225" font-size="12" font-weight="600" fill="#fff" text-anchor="middle">10 min to CIQ</text>'
-            '<circle cx="78" cy="116" r="17" fill="#e8a33d"/><path d="M70 117 78 109l8 8h-2.5v7h-11v-7z" fill="#0a1f38"/>'
-            '<text x="102" y="111" font-size="15" font-weight="700" fill="#0a1f38">Prima</text><text x="102" y="128" font-size="12.5" fill="#45566b">Iskandar Puteri</text>'
-            '<circle cx="292" cy="172" r="17" fill="#e8a33d"/><path d="M284 173 292 165l8 8h-2.5v7h-11v-7z" fill="#0a1f38"/>'
-            '<text x="266" y="167" font-size="15" font-weight="700" fill="#0a1f38" text-anchor="end">Landak Kawan</text><text x="266" y="184" font-size="12.5" fill="#45566b" text-anchor="end">Taman Abad</text>'
-            '<path d="M298 155 C306 130 312 100 318 80" stroke="#a86d15" stroke-width="1.5" fill="none" stroke-dasharray="3 3"/>'
-            '<text x="342" y="58" font-size="12.5" font-weight="600" fill="#a86d15" text-anchor="end">KSL City Mall</text><text x="342" y="73" font-size="12" fill="#45566b" text-anchor="end">5-min walk</text>'
-            '<rect x="18" y="362" width="124" height="44" rx="10" fill="#fff" stroke="#dfe4e9"/><text x="30" y="381" font-size="13" font-weight="600" fill="#0a1f38">Second Link</text><text x="30" y="397" font-size="12" fill="#45566b">Tuas</text>'
-            '<rect x="214" y="362" width="128" height="44" rx="10" fill="#fff" stroke="#dfe4e9"/><text x="226" y="381" font-size="13" font-weight="600" fill="#0a1f38">Causeway</text><text x="226" y="397" font-size="12" fill="#45566b">Woodlands</text>'
-            '<path d="M214 432 h22" stroke="#7c8a9b" stroke-width="2" stroke-dasharray="6 5"/><text x="242" y="436" font-size="12" fill="#45566b">RTS Link</text>'
-            '<text x="342" y="453" font-size="12" fill="#7c8a9b" text-anchor="end">from Feb 2027 (expected)</text>'
-            '<text x="18" y="468" font-size="12" font-weight="600" letter-spacing="1.4" fill="#7c8a9b">SINGAPORE</text></svg>')
+def route_list():
+    """Phone version of the route diagram: plain vertical lists (the SVG shows from 768 px)."""
+    def chain(title, steps):
+        li = ''.join('<li class="%s">%s</li>' % (c, t) for c, t in steps)
+        return '<div class="rl-card"><p class="rl-h">%s</p><ol class="rl">%s</ol></div>' % (title, li)
+    return ('<div class="rlist">' +
+            chain('Second Link', [('', '<b>Singapore</b>'), ('', '<b>Tuas checkpoint</b>'), ('t', 'about 10 min'), ('end', '<b>Prima</b><span>Iskandar Puteri &middot; up to 20 guests</span>')]) +
+            chain('Causeway', [('', '<b>Singapore</b>'), ('', '<b>Woodlands checkpoint</b>'), ('', '<b>JB CIQ</b>'), ('t', 'about 10 min'), ('end', '<b>Landak Kawan Fun House</b><span>Taman Abad &middot; up to 10 guests &middot; 5-min walk to KSL City Mall</span>')]) +
+            chain('RTS Link (not running yet)', [('', '<b>Woodlands North</b>'), ('t', 'about 5 min by train'), ('end', '<b>Bukit Chagar</b><span>Expected from February 2027</span>')]) + '</div>')
 
 
-def route_map():
+def route_map(rl=False):
     """Schematic (not to scale) of Singapore -> Second Link / Causeway -> the two houses. Times are host-stated."""
-    return ('<figure class="mapcard rv">' + route_map_portrait() + '<svg class="map-w" viewBox="0 0 640 420" role="img" aria-labelledby="mapt mapd" font-family="Geist,system-ui,sans-serif">'
+    return ('<figure class="mapcard%s">' % (' has-rl' if rl else '') + (route_list() if rl else '') + '<svg class="map-w" viewBox="0 0 640 420" role="img" aria-labelledby="mapt mapd" font-family="Geist,system-ui,sans-serif">'
             '<title id="mapt">Route diagram from Singapore to the two JBStaycation houses</title>'
             '<desc id="mapd">Schematic, not to scale. From Singapore, the Second Link at Tuas leads to Prima in Iskandar Puteri, about 10 minutes as stated by the host. The Causeway at Woodlands leads to JB CIQ; Landak Kawan Fun House in Taman Abad is about 10 minutes from CIQ and a 5-minute walk from KSL City Mall. The RTS Link from Woodlands North to Bukit Chagar is expected from February 2027.</desc>'
             '<rect width="640" height="420" rx="12" fill="#f3f6f9"/>'
@@ -997,7 +1039,7 @@ def home_body():
              ('Message us your dates.', 'Send your group size and dates on WhatsApp and we will confirm the rate and availability.'),
              ('Cross with your passport.', 'Check ICA\'s traffic updates before you leave, then drive in and settle in. Landak has self check-in after 3:00 pm.')]
     steps_html = ''.join('<li><div><b>%s</b><span>%s</span></div></li>' % (e(a), e(b)) for a, b in steps)
-    mosaic = ''.join('<span>%s</span>' % pimg(f, sizes='(min-width:960px) 30vw, 60vw') for f in HOME_MOSAIC)
+    mosaic = ''.join('<span class="slide">%s</span>' % pimg(f, sizes='(min-width:960px) 30vw, 100vw') for f in HOME_MOSAIC)
     routes = [('car', 'By road: Woodlands or Tuas', 'Two land checkpoints. The host states Prima is about 10 minutes from Tuas and 15 from Woodlands.'),
               ('walk', 'Arriving on the city side', 'Landak Kawan Fun House is about 10 minutes from CIQ and a 5-minute walk from KSL City Mall.'),
               ('clock', 'By train: the RTS Link', 'Woodlands North to Bukit Chagar, expected to start passenger service in February 2027, subject to safety certification (LTA, 2 October 2026).')]
@@ -1007,36 +1049,36 @@ def home_body():
         # hero
         '<section class="hero"><div class="hero-bg">%s</div><div class="wrap hero-in">'
         '<h1><span class="kick">JB staycation for big groups: private holiday houses in Johor Bahru</span><span class="display">%s</span></h1>'
-        '<p class="sub">Two private holiday houses in Johor Bahru for groups from Singapore, both RM 500 per night: Prima sleeps up to 20 and Landak Kawan Fun House up to 10. The whole house is yours, booked directly on WhatsApp.</p>'
-        '<div class="cta-row">%s<a class="btn btn-ghost" href="#houses">See the houses</a></div>'
+        '<p class="sub">Two private holiday houses in Johor Bahru for groups from Singapore, both RM 500 per night.<span class="more"> Prima sleeps up to 20 and Landak Kawan Fun House up to 10. The whole house is yours, booked directly on WhatsApp.</span></p>'
+        '<div class="cta-row">%s</div>'
         '<ul class="facts" aria-label="At a glance">%s</ul></div></section>'
         # houses
         '<section class="sec" id="houses"><div class="wrap"><div class="sec-head split rv"><div><p class="eyebrow">Where you could be</p><h2>Two houses, one for every kind of group</h2></div>'
-        '<p class="lead">Choose Prima for a big group of up to 20, or Landak Kawan Fun House for up to 10 with games and a short walk to KSL City Mall.</p></div>'
+        '<p class="lead hm">Choose Prima for a big group of up to 20, or Landak Kawan Fun House for up to 10 with games and a short walk to KSL City Mall.</p></div>'
         '<div class="cards">%s%s</div><p class="note" style="margin-top:20px">Drive and walk times are as stated by the host. <a href="{R}stays/">Compare both houses</a></p></div></section>'
         # why
         '<section class="sec dark"><div class="wrap"><div class="sec-head rv"><p class="eyebrow">Why book with JBStaycation</p><h2>We keep it small on purpose.</h2></div>'
         '<ul class="pts rv">%s</ul></div></section>'
         # steps + mosaic
         '<section class="sec"><div class="wrap split2"><div class="rv"><p class="eyebrow">How it works</p><h2>Plan your weekend in three steps</h2><ol class="steps">%s</ol>'
-        '</div>'
-        '<div class="mosaic rv">%s<p class="after-gal">%s</p></div></div></section>'
-        # review
-        '<section class="sec dark panel"><div class="wrap"><blockquote class="quote rv"><span class="qm" aria-hidden="true">&ldquo;</span><p>%s</p><cite><b>%s</b> &middot; %s &middot; review on jbstaycation.com</cite></blockquote></div></section>'
+        '<p class="after-gal">%s</p></div>'
+        '<div class="rv cz" data-carousel aria-roledescription="carousel" aria-label="Photos of the houses"><div class="mosaic track">%s</div>'
+        '<button class="cbtn prev" type="button" aria-label="Previous photo">%s</button><button class="cbtn next" type="button" aria-label="Next photo">%s</button><span class="cnt" aria-hidden="true">1 / %d</span></div></div></section>'
         # getting there
         '<section class="sec"><div class="wrap split2"><div class="rv"><p class="eyebrow">Getting there</p><h2>Getting there from Singapore</h2><ul class="routes">%s</ul>'
         '<a class="btn btn-line" href="{R}getting-there/">Read the getting-there guide %s</a></div>%s</div></section>'
         # articles
-        '<section class="sec" style="padding-top:0"><div class="wrap"><div class="sec-head split rv"><div><p class="eyebrow">Guides</p><h2>Plan it like a local</h2></div>'
-        '<p class="lead">Practical answers for groups crossing from Singapore. <a href="{R}articles/">All guides</a></p></div><div class="arts">%s</div></div></section>'
+        '<section class="sec gsec"><div class="wrap"><details class="fold" id="guides"><summary><span class="st"><span class="eyebrow">Guides</span><h2>Plan it like a local</h2></span>%s</summary>'
+        '<div class="fold-body"><p class="lead">Practical answers for groups crossing from Singapore.</p><div class="arts">%s</div><p><a class="link" href="{R}articles/">All guides %s</a></p></div></details>'
+        '<script>if(innerWidth>=900)document.currentScript.previousElementSibling.open=true</script></div></section>'
         # faq
         '<section class="sec" style="background:#fff;border-top:1px solid var(--line)"><div class="wrap faqgrid"><div class="rv"><p class="eyebrow">Questions</p><h2>Frequently asked questions</h2>'
         '<p class="muted">Anything else? We reply on WhatsApp.</p><a class="link" href="{R}faq/">More questions and answers %s</a></div><div class="rv">%s</div></div></section>'
         # cta
         '<section class="sec band"><div class="bg">%s</div><div class="wrap rv"><p class="eyebrow">Book direct</p><h2>Ready to plan your stay?</h2><p>Tell us your dates and how many are coming. We will reply on WhatsApp.</p>%s</div></section>'
         % (pimg(HERO_IMG, HERO_ALT, eager=True, thumb=False), e(TAGLINE), wa_btn('Check dates on WhatsApp', msg, 'home-hero'), facts_html,
-           house_card('prima'), house_card('landak'), why_html, steps_html, mosaic, wa_btn('Check dates on WhatsApp', wa_msg(), 'home-gallery', 'btn btn-wa'), e(REVIEW[0]), e(REVIEW[1]), e(REVIEW[2]), routes_html, ico('arrow', 18), route_map(),
-           arts, ico('arrow', 18), faq_html, pimg(HOME_CTA_IMG, sizes='100vw'), wa_btn('Message us on WhatsApp', msg, 'home-cta')))
+           house_card('prima'), house_card('landak'), why_html, steps_html, wa_btn('Check dates on WhatsApp', wa_msg(), 'home-gallery', 'btn btn-wa'), mosaic, ico('left', 22), ico('right', 22), len(HOME_MOSAIC), routes_html, ico('arrow', 18), route_map(),
+           ico('x', 22, 'i pm'), arts, ico('arrow', 18), ico('arrow', 18), faq_html, pimg(HOME_CTA_IMG, sizes='100vw'), wa_btn('Message us on WhatsApp', msg, 'home-cta')))
 
 
 def stays_body():
@@ -1072,13 +1114,23 @@ def room_gallery(k):
                     cls.append('sd3')
                 elif rest == 2 and i == n - 1:
                     cls.append('sd2')
-            return (' class="%s"' % ' '.join(cls)) if cls else ''
-        figs = ''.join('<figure%s><a href="{R}img/%s" data-lb data-cap="%s">%s</a>%s</figure>'
-                       % (span(i), f, e(cap if is_client else '%s, %s' % (title, HOUSES[k]['name'])), pimg(f, sizes='(min-width:1024px) 300px, 50vw'),
+            return ' class="slide %s"' % ' '.join(cls)
+        ridx = len(out)
+        figs = ''.join('<figure%s data-room="%d"><a href="{R}img/%s" data-lb data-cap="%s">%s</a>%s</figure>'
+                       % (span(i), ridx, f, e(cap if is_client else '%s, %s' % (title, HOUSES[k]['name'])), pimg(f, sizes='(min-width:1024px) 300px, (min-width:768px) 33vw, 100vw'),
                           ('<figcaption>%s</figcaption>' % e(cap)) if is_client else '') for i, (f, cap, is_client) in enumerate(ph))
-        out.append('<div class="room rv"><div class="room-h"><h3>%s</h3><span>%s%d photo%s</span></div><div class="rg%s">%s</div></div>'
+        out.append('<div class="room"><div class="room-h"><h3>%s</h3><span>%s%d photo%s</span></div><div class="rg%s">%s</div></div>'
                    % (e(title), (e(note) + ' &middot; ') if note else '', n, '' if n == 1 else 's', ' n1' if n == 1 else (' n2' if n == 2 else ''), figs))
-    return ''.join(out)
+    chips, first, cnt = [], 0, 0
+    for i, (title, _n, ph) in enumerate(ROOMS[k]):
+        m = len([p for p in ph if p[0] not in BENTO[k]])
+        if m:
+            chips.append('<button type="button" data-room="%d" data-i="%d" aria-pressed="false">%s</button>' % (len(chips), cnt, e(title)))
+            cnt += m
+    return ('<div class="rooms-wrap" data-carousel aria-roledescription="carousel" aria-label="Photos by room"><nav class="rchips" aria-label="Rooms">%s</nav>'
+            '<div class="cz"><div class="rooms track" tabindex="0">%s</div>'
+            '<button class="cbtn prev" type="button" aria-label="Previous photo">%s</button><button class="cbtn next" type="button" aria-label="Next photo">%s</button><span class="cnt" aria-hidden="true">1 / %d</span></div></div>'
+            % (''.join(chips), ''.join(out), ico('left', 22), ico('right', 22), cnt))
 
 
 def total_photos(k):
@@ -1157,7 +1209,7 @@ def prices_body():
 def gt_body():
     srcs = ''.join('<li><a href="%s" rel="noopener">%s</a> (%s)</li>' % (e(u), e(t), e(n)) for t, u, n in [SRC[k] for k in ('lta_feb', 'lta_rts', 'ica_qr', 'ica_traffic')])
     return ('<div class="wrap body"><div class="prose"><div class="answer">There are two road crossings from Singapore, at Woodlands and Tuas. The RTS Link train from Woodlands North to Bukit Chagar is expected to start in February 2027. Prima is nearer Tuas; Landak Kawan Fun House is nearer CIQ and KSL City Mall.</div></div>'
-            '<div style="max-width:860px;margin:0 0 36px">%s</div><div class="prose">'
+            '<div class="gt-map" style="max-width:860px;margin:0 0 36px">%s</div><div class="prose">'
             '<div class="tw rv"><table><thead><tr><th>Route</th><th>What we can confirm</th><th>Suits</th></tr></thead><tbody>'
             '<tr><th>Woodlands (Causeway)</th><td>ICA operates the Woodlands land checkpoint. Host-stated drive time to Prima: about 15 minutes.</td><td>Prima, or Landak via CIQ</td></tr>'
             '<tr><th>Tuas (Second Link)</th><td>ICA operates the Tuas land checkpoint. Host-stated drive time to Prima: about 10 minutes.</td><td>Prima</td></tr>'
@@ -1171,7 +1223,7 @@ def gt_body():
             '<li><a href="{R}stays/landak-kawan-fun-house-taman-abad/">Landak Kawan Fun House</a>: host states about 10 minutes to CIQ and a 5-minute walk to KSL City Mall.</li></ul>'
             '<p>Read more in <a href="{R}articles/causeway-second-link-or-rts-which-way-to-jb-for-a-weekend-stay/">Causeway, Second Link or RTS: which way to JB</a>.</p>%s</section>'
             '<section class="rv src"><h2>Official sources</h2><ul>%s</ul></section></div></div>'
-            % (route_map(), SRC['ica_traffic'][1], SRC['ica_qr'][1], wa_btn('Ask us about your route', wa_msg(), 'getting-there'), srcs))
+            % (route_map(True), SRC['ica_traffic'][1], SRC['ica_qr'][1], wa_btn('Ask us about your route', wa_msg(), 'getting-there'), srcs))
 
 
 FAQ_ALL = [

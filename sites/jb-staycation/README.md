@@ -5,11 +5,11 @@ Existing site: https://jbstaycation.com/. Target preview: https://pageonesingapo
 ## Facts and sources
 Client site facts (8 Nov 2026): see build.py HOUSES. Photos: the client's own files from photos-src/, copied by build.py into site/img/ (same filenames) with 480px thumbs in site/img/thumb/ (needs Pillow; falls back to originals). Room groups, captions and picks are in ROOMS/BENTO/CARD_IMG in build.py. No hot-linking.
 Official travel sources (checked 8 Nov 2026): LTA RTS project page; LTA news release 2 Oct 2026 (RTS service now expected Feb 2027, subject to safety certification); ICA QR code clearance page (updated 27 Oct 2026; passport still required); ICA driving in and out of Singapore (link only).
-Left out: 89 happy stayers, Lumina Glasshouse, Prima bedroom count and 900 sq ft, SGD prices, ratings schema, RTS fares, /terms/.
+Left out: 89 happy stayers, Lumina Glasshouse, the 'Very nice place very clean' quote (removed 8 Nov 2026 at Edwin's request), Prima bedroom count and 900 sq ft, SGD prices, ratings schema, RTS fares, /terms/.
 CTA tap script (cta.js) copied from aivs.js v3 with site id jb-staycation; it does not run on pageonesingapore.com or localhost.
 
 ## v3 changes (8 Nov 2026)
-One FAQ per page (home: 8 host-stated questions, one visible H2, matching FAQPage); WhatsApp prefills "[House: Prima|Landak|not sure yet] Hi JBStaycation, I'd like to check dates. Group size: ___ Dates: ___" everywhere; sticky mobile WhatsApp bar on every page; CTA after each house card, gallery, FAQ; house pages: photo gallery then CTA first, long text in "About this house"; Prima bedrooms shown as "ask us", minimum "Minimum 2 (see WhatsApp for details)"; Landak amenity list per brief; review labelled as Lumina Glasshouse; keyword-led titles/H1/descriptions. `python3 wa_check.py` decodes every wa.me link and prints distinct prefills.
+One FAQ per page (home: 8 host-stated questions, one visible H2, matching FAQPage); WhatsApp prefills "[House: Prima|Landak|not sure yet] Hi JBStaycation, I'd like to check dates. Group size: ___ Dates: ___" everywhere; sticky mobile WhatsApp bar on every page; CTA after each house card, gallery, FAQ; house pages: photo gallery then CTA first, long text in "About this house"; Prima bedrooms shown as "ask us", minimum "Minimum 2 (see WhatsApp for details)"; Landak amenity list per brief; no guest quote or review shown; keyword-led titles/H1/descriptions. `python3 wa_check.py` decodes every wa.me link and prints distinct prefills.
 
 ## CONFIRM
 - Legal/business name of the host (kept off the site).
@@ -17,10 +17,9 @@ One FAQ per page (home: 8 host-stated questions, one visible H2, matching FAQPag
 - Prima "Minimum 2": source gives no unit; page says "Minimum 2 (see WhatsApp for details)" and never "2 nights".
 - Prima 900 sq ft (as stated by client) looks small for 20 guests; left off the page.
 - Prima check-in/out times, quiet hours, deposit amount and house rules (none verified; pages say ask us on WhatsApp).
-- Review: only "Very nice place very clean" (Philip, Singapore) exists, from a stay at Lumina Glasshouse; shown with that label. Remove if Lumina is no longer offered.
+- No guest reviews are shown (Edwin's call); add only real, permitted ones later.
 - Deposit, cancellation and payment terms (client T&C is an unfilled template; no /terms/ page built).
 - SGD equivalents: not shown until Edwin agrees.
-- Is Lumina Glasshouse still offered? (only in one review; not listed).
 - Google Business Profile, Airbnb, social links, email (none known; no sameAs).
 - Brand colours/fonts: v2 uses the client site tokens (navy #0a1f38, amber #e8a33d, page #f7f8f9) and Geist from Google Fonts.
 - Photos are self-hosted in site/img/ (client files). img-1806 (brand hero, dusk bungalow) does not visibly match either house: confirm which house it is or if it is a render.

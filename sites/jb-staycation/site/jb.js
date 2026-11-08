@@ -6,12 +6,14 @@ function sc(){if(hdr)hdr.classList.toggle('scrolled',window.scrollY>24)}sc();win
 if(tog)tog.addEventListener('click',function(){var o=!hdr.classList.contains('open');hdr.classList.toggle('open',o);tog.setAttribute('aria-expanded',o);tog.setAttribute('aria-label',o?'Close menu':'Open menu')});
 d.addEventListener('keydown',function(e){if(e.key==='Escape'&&hdr&&hdr.classList.contains('open')){hdr.classList.remove('open');tog.setAttribute('aria-expanded','false')}});
 var els=[].slice.call(d.querySelectorAll('.rv'));
+setTimeout(function(){els.forEach(function(x){x.classList.add('in')})},1500);
 if('IntersectionObserver' in window&&!rm){var io=new IntersectionObserver(function(es){es.forEach(function(x){if(x.isIntersecting){x.target.classList.add('in');io.unobserve(x.target)}})},{rootMargin:'0px 0px -6% 0px'});els.forEach(function(x){io.observe(x)})}else{els.forEach(function(x){x.classList.add('in')})}
 /* carousels: auto-slide (keeps going while the page scrolls), pause only while held or dragged, restart 2 s after release */
 d.querySelectorAll('[data-carousel]').forEach(function(c){
-var t=c.querySelector('.track'),held=false,rt=null,drag=null,moved=false,cnt=c.querySelector('.cnt'),n=t.children.length;
+var t=c.querySelector('.track'),held=false,rt=null,drag=null,moved=false,cnt=c.querySelector('.cnt'),sl=t.querySelectorAll('.slide'),n=sl.length,chips=[].slice.call(c.querySelectorAll('.rchips button'));
 function idx(){return Math.round(t.scrollLeft/Math.max(1,t.clientWidth))}
-function upd(){if(cnt)cnt.textContent=(idx()+1)+' / '+n}
+function upd(){var i=Math.min(idx(),n-1);if(cnt)cnt.textContent=(i+1)+' / '+n;if(chips.length&&sl[i]){var r=sl[i].getAttribute('data-room');chips.forEach(function(b){var on=b.getAttribute('data-room')===r;b.classList.toggle('on',on);b.setAttribute('aria-pressed',on);if(on){var p=b.parentNode;p.scrollTo({left:b.offsetLeft-12,behavior:'auto'})}})}}
+chips.forEach(function(b){b.addEventListener('click',function(){hold();var i=+b.getAttribute('data-i');t.scrollTo({left:i*t.clientWidth,behavior:rm?'auto':'smooth'});release()})});
 function step(dir){var w=t.clientWidth,max=t.scrollWidth-w;if(max<=4)return;var x=t.scrollLeft+dir*w;if(x>max+4&&dir>0||t.scrollLeft>=max-4&&dir>0)x=0;else if(x<-4)x=max;t.scrollTo({left:x,behavior:rm?'auto':'smooth'})}
 function hold(){held=true;clearTimeout(rt)}
 function release(){clearTimeout(rt);rt=setTimeout(function(){held=false},2000)}
