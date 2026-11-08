@@ -123,6 +123,13 @@ PHOTOS = {  # name: (w, h, alt)
     'showroom-front': (525, 385, T('Dongfeng MyKar World showroom front in Taman Ekoperniagaan, Johor Bahru',
                                    'Hadapan bilik pameran Dongfeng MyKar World di Taman Ekoperniagaan, Johor Bahru',
                                    '位于新山 Taman Ekoperniagaan 的东风 MyKar World 展厅外观')),
+    # Customer handover photos from the showroom (Edwin, 8 Nov 2026). People are not named.
+    'handover-sign': (720, 720, T('Customers holding a Dongfeng sign in front of their new orange Dongfeng Vigo at the Johor Bahru showroom',
+                                  'Pelanggan memegang papan tanda Dongfeng di hadapan Dongfeng Vigo oren baharu mereka di bilik pameran Johor Bahru',
+                                  '顾客在新山展厅举着东风牌子，站在新提的橙色东风 Vigo 前')),
+    'handover-bow': (720, 720, T('New orange Dongfeng Vigo with a red bow, handed over to customers at the Johor Bahru showroom',
+                                 'Dongfeng Vigo oren baharu berreben merah diserahkan kepada pelanggan di bilik pameran Johor Bahru',
+                                 '系着红色蝴蝶结的橙色东风 Vigo 新车，在新山展厅交付给顾客')),
     'merdeka-2026': (1000, 1000, T('Merdeka 2026 children\'s costume day at the Dongfeng Johor Bahru showroom',
                                    'Hari kostum kanak-kanak Merdeka 2026 di bilik pameran Dongfeng Johor Bahru',
                                    '2026 年国庆日儿童服装活动，在东风新山展厅举行')),
@@ -1522,6 +1529,7 @@ def dealership_body(L):
              X('A website and owner guides in English, Bahasa Melayu and Chinese.')]
     caps = [X('Showroom front, Taman Ekoperniagaan, Johor Bahru'), X('Dongfeng Vigo on the showroom floor'), X('Dongfeng 007 on the showroom floor'),
             X('Vigo cabin, new car in the showroom'), X('Merdeka 2026 costume day at the showroom')]
+    caps = caps[:1] + [X('Customer handover, Dongfeng Vigo, Johor Bahru showroom'), X('New Vigo with a red bow on handover day')] + caps[1:]
     caps3 = [(X('Sales'), X('A showroom open seven days a week, test drives by appointment, and mall roadshows that take the cars to shoppers across Johor.')),
              (X('Service'), X('An on-site workshop, open Monday to Friday 9am to 6pm and Saturday 9am to 1pm. Scheduled servicing every 10,000 km at Dongfeng list prices, with its own booking line.')),
              (X('Spare parts'), X('Genuine Dongfeng parts supplied through the centre at Dongfeng list prices, from the same site as sales and service.'))]
@@ -1561,8 +1569,8 @@ def dealership_body(L):
         img('showroom-front', L),
         sec_head(X('Company details'), X('MyKar World at a glance'), None, L), tbl,
         sec_head(X('Dealership experience'), X('Car dealership partner Johor: what we already run'), X('This is the track record we can show today, from our centre in Johor Bahru.'), L), ticks(track, L), E(GBP),
-        sec_head(X('Showroom'), X('Our showroom in Johor Bahru'), X('Real photos from our showroom and events. Swipe to see more.'), L),
-        glide(['showroom-front', 'vigo-showroom', '007-showroom', 'vigo-dash', 'merdeka-2026'], L, caps, X('MyKar World showroom photos')),
+        sec_head(X('Showroom'), X('Our showroom in Johor Bahru'), X('Real photos from our showroom, customer handovers and events. Swipe to see more.'), L),
+        glide(['showroom-front', 'handover-sign', 'handover-bow', 'vigo-showroom', '007-showroom', 'vigo-dash', 'merdeka-2026'], L, caps, X('MyKar World showroom photos')),
         sec_head(X('3S capability'), X('3S dealer Johor Bahru: sales, service and spare parts at one site'), X('What a 3S centre gives a brand: one partner for the whole ownership cycle.'), L),
         ''.join('<div class="card"><h3>%s</h3><p>%s</p></div>' % (E(t(a, L)), E(t(b, L))) for a, b in caps3),
         ticks(why, L), img('pair-skyline', L),
