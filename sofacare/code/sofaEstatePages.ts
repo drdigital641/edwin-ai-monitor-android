@@ -11,7 +11,7 @@ const esc = (s: string) => String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;'
 
 type Estate = {
   slug: string; name: string; area: string; parent: string; title: string; desc: string;
-  lede: string; around: string[]; homes: string[]; photos: [string, string]; faqs: [string, string][];
+  lede: string; around: string[]; homes: string[]; photos: [string, string]; guide: { h: string; ps: string[] }; faqs: [string, string][];
 };
 
 const CALLOUT = '3-hour call-out response within about 8 km of Punggol, Sengkang and Tampines. Same-day service for addresses beyond 8 km (the rest of Singapore).';
@@ -31,9 +31,15 @@ export const SOFA_ESTATES: Estate[] = [
       'New sofas pick up stains fast in the first few years: drinks, food on the arms, and body oil on the headrest. Cleaning early, before a stain has sat for months, usually gives the best result.',
     ],
     photos: ['grey-2seater-fabric-sofa', 'mattress-urine-stain'],
+    guide: { h: 'Looking after a newer fabric sofa', ps: [
+      'Vacuum the seats, the back and the gaps between the cushions every week or two. Crumbs and grit work into the fabric when people sit on them, and that is what makes a new sofa look tired early.',
+      'Blot spills straight away with a dry cloth or paper towel. Press, do not rub, and work from the outside of the mark inwards so it does not spread.',
+      'Turn and swap the loose cushions now and then so one seat does not take all the wear, and keep the sofa out of strong afternoon sun if you can, since sunlight fades fabric.',
+      'A washable throw over the headrest and arms catches most of the body oil. Wash the throw, not the sofa, and book a proper clean when the seats start to look dull.',
+    ] },
     faqs: [
-      ['Do you clean sofas and mattresses in Sumang?', 'Yes. We clean on-site at your home in Sumang and across Punggol. We are open 24/7, and the time is confirmed on WhatsApp before we come.'],
-      ['How fast can you come to Sumang?', 'Sumang is in Punggol, inside our 3-hour call-out area. Send your postal code and a photo on WhatsApp and we will confirm the earliest slot.'],
+      ['Can you clean before we move into our new flat?', 'Yes, if the sofa or mattress is already in the flat. Someone needs to let us in, and the time is confirmed on WhatsApp.'],
+      ['Is Sumang inside the 3-hour call-out area?', 'Yes. Sumang is in Punggol, so the 3-hour call-out applies. Send your postal code and we confirm the earliest slot.'],
       ['My sofa is quite new. Is it worth cleaning already?', 'Often, yes. Fresh stains and early body-oil marks usually lift much better than ones left for a long time. Send a photo and we will tell you what to expect.'],
       ['How much does it cost?', 'Sofa cleaning starts from $60 and mattress cleaning from $80. The full price table is on this page, and your final price is confirmed on WhatsApp.'],
     ],
@@ -52,9 +58,15 @@ export const SOFA_ESTATES: Estate[] = [
       'After we clean, keep air moving: a fan, or a window open for a while, helps more than leaving the air-con on in a closed room. Drying usually takes about 4 to 8 hours.',
     ],
     photos: ['cream-velvet-tufted-armchair', 'mattress-heart-pattern'],
+    guide: { h: 'Drying a sofa in a humid flat', ps: [
+      'Every wet clean leaves some moisture in the fabric and the cushion foam. In a flat that already feels humid, that moisture leaves slowly unless the air keeps moving.',
+      'Point a standing fan at the sofa and keep a window or the door to the corridor open if you can. Moving air dries fabric faster than cold, still air-con in a closed room.',
+      'Stand the loose seat cushions on their sides so air reaches both faces. Keep people, pets and laundry off the sofa until it feels dry to the touch, usually about 4 to 8 hours.',
+      'If a faint damp smell comes back on a rainy day, the foam is still holding water. More airflow usually sorts it out. If it does not, send us a photo on WhatsApp.',
+    ] },
     faqs: [
-      ['Do you come to homes near Waterway Point?', 'Yes. We clean on-site across Punggol Central, the Waterway and up to Punggol Point. We are open 24/7.'],
-      ['How fast can you get here?', 'Punggol is inside our 3-hour call-out area. Send your postal code and a photo on WhatsApp and we confirm the earliest slot.'],
+      ['Do you clean condo units near Waterway Point?', 'Yes, condos and HDB flats. If your condo needs visitors registered at the guardhouse, tell us on WhatsApp so we can bring the right details.'],
+      ['Is Punggol Central inside the 3-hour call-out area?', 'Yes. Punggol is inside our 3-hour call-out area. Send your postal code and a photo and we confirm the earliest slot.'],
       ['My flat is near the water and feels damp. Will the sofa dry?', 'Yes, it just needs airflow. Run a fan or open a window, and allow about 4 to 8 hours before heavy use.'],
       ['Can you clean a velvet armchair?', 'Yes, where the care label allows it. Velvet is cleaned with low moisture and brushed with the pile. Send a photo of the chair and its label.'],
     ],
@@ -66,16 +78,21 @@ export const SOFA_ESTATES: Estate[] = [
     lede: 'We clean sofas and mattresses on-site in Northshore, the newer estate along Punggol\'s northern shore. WhatsApp a photo and your postal code for a quote and the earliest slot. Open 24/7.',
     around: [
       'Northshore sits along Northshore Drive on Punggol\'s northern coast. Samudera and Punggol Point LRT stations serve the estate, and Northshore Plaza has shops and food.',
-      'Punggol Coast MRT station and the Punggol Digital District are close by.',
+      'Punggol Coast MRT station and the Punggol Digital District, home to the Singapore Institute of Technology\'s Punggol campus, are close by.',
     ],
     homes: [
       'Northshore is mostly newer HDB flats facing the sea. Many households are young families, so we often see milk and food spills on fabric seats and toilet-training accidents on children\'s mattresses.',
       'Sea air is humid. After cleaning, give the room airflow with a fan or an open window so the sofa or mattress dries well, usually in about 4 to 8 hours.',
     ],
     photos: ['grey-3seater-recliner-sofa', 'mattress-scallop-yellow-stain'],
+    guide: { h: 'Children\'s mattresses, spills and accidents', ps: [
+      'For a fresh wet patch on a mattress, strip the sheets, then blot with dry towels and press down hard to pull up as much liquid as possible. Do not pour water on it, which spreads the wet area deeper into the mattress.',
+      'Do not use hot water, an iron or a steamer on a urine or milk stain. Heat can set the stain and the smell into the fibres.',
+      'Let the mattress air with a fan on it, then send us a photo on WhatsApp. Tell us how old the stain is and whether it has happened before, since repeated accidents soak deeper.',
+      'After a clean, a waterproof, washable mattress protector is the simplest way to keep the next accident out of the mattress.',
+    ] },
     faqs: [
-      ['Do you clean in Northshore?', 'Yes. We clean on-site in Northshore and across Punggol, 24/7.'],
-      ['How fast can you come to Northshore?', 'Northshore is in Punggol, inside our 3-hour call-out area. Send your postal code and a photo and we confirm the earliest slot.'],
+      ['Northshore is at the edge of Punggol. Does the 3-hour call-out still apply?', 'Yes. Northshore is in Punggol, so it is inside our 3-hour call-out area. The exact time is confirmed on WhatsApp.'],
       ['Can you clean a child\'s mattress after accidents?', 'Yes. We treat the area and extract as much as the mattress allows. Old or repeated accidents may only partly improve, and we tell you that from your photos first.'],
       ['Can you clean a fabric recliner?', 'Yes. Fabric recliners are cleaned like other fabric sofas, with care around the moving parts. Leather recliners are quoted from photos.'],
     ],
@@ -87,16 +104,22 @@ export const SOFA_ESTATES: Estate[] = [
     lede: 'We clean sofas and mattresses on-site in Rivervale, on the east side of Sengkang. Send a photo and your postal code on WhatsApp and we confirm the price and the earliest slot. Open 24/7.',
     around: [
       'Rivervale is on the Sengkang East LRT loop, served by stations such as Rumbia, Bakau and Kangkar. Rivervale Mall and Rivervale Plaza are the neighbourhood shopping centres.',
-      'Sengkang MRT station and Compass One are a short LRT ride away.',
+      'Rivervale Drive and Rivervale Crescent run through the estate. Sengkang MRT station and Compass One are a short LRT ride away.',
     ],
     homes: [
       'Rivervale has many HDB flats that have been lived in for a good number of years, so sofas and mattresses here have often had years of daily use.',
       'Older fabric sofas usually have built-up body oil on the arms and headrests and general dulling across the seats. That usually improves well. Wear, fading and very old stains may not, and we tell you before we start.',
     ],
     photos: ['grey-2seater-fabric-sofa', 'mattress-pillowtop-stain'],
+    guide: { h: 'What cleaning can and cannot fix on an older sofa', ps: [
+      'Cleaning removes dirt, body oil, food and drink marks and most of the smell they cause. On a sofa that has been used every day for years, that alone often makes a big visible difference.',
+      'Cleaning cannot fix worn or pilled fabric, sun fading, flattened cushion foam or a broken frame. If those are the main problems, a clean will freshen the sofa but it will not look new.',
+      'Very old stains, especially ones that have been scrubbed with household products, may only lighten. We look at your photos first and tell you honestly what to expect.',
+      'A useful test: if the fabric is still in good shape but looks dull or grey on the seats and arms, cleaning is usually worth it before you think about replacing the sofa.',
+    ] },
     faqs: [
-      ['Do you clean in Rivervale?', 'Yes. We clean on-site in Rivervale and across Sengkang, 24/7.'],
-      ['How fast can you come to Rivervale?', 'Sengkang is inside our 3-hour call-out area. Send your postal code and a photo on WhatsApp and we confirm the earliest slot.'],
+      ['Should I clean my old sofa or replace it?', 'If the fabric and cushions are still in good shape and the problem is dirt, stains or smell, cleaning is usually worth trying first. If the fabric is worn through or the cushions have collapsed, cleaning will not fix that.'],
+      ['Is Rivervale inside the 3-hour call-out area?', 'Yes. Rivervale is in Sengkang, so the 3-hour call-out applies. Send your postal code and a photo and we confirm the earliest slot.'],
       ['My sofa is many years old. Is it worth cleaning?', 'Often, yes. Built-up dirt and body oil usually improve a lot. Fabric wear and fading do not, so we tell you what to expect from your photos.'],
       ['How much does a queen mattress cost?', 'A queen mattress is $87. Single and super single start from $80, and a king is $97.'],
     ],
@@ -115,9 +138,15 @@ export const SOFA_ESTATES: Estate[] = [
       'Yellow sweat marks on a mattress usually lighten a lot with cleaning. A washable mattress protector afterwards keeps it cleaner for longer.',
     ],
     photos: ['cream-velvet-tufted-armchair', 'mattress-urine-stain'],
+    guide: { h: 'Sweat marks on mattresses and sofas', ps: [
+      'Sweat and body oil soak into a mattress night after night and slowly turn into yellow patches, usually where the head and upper body lie.',
+      'On sofas the same thing shows as darker arms, headrests and seat fronts. It builds up gradually, so it is often only noticed when a cushion is turned over.',
+      'Cleaning lifts a lot of it. Patches that have been there for years usually lighten well but may not disappear completely.',
+      'To slow it down afterwards, use a washable mattress protector and wash it with your sheets, and put a throw on the part of the sofa where people lean their heads.',
+    ] },
     faqs: [
-      ['Do you clean in Anchorvale?', 'Yes. We clean on-site in Anchorvale and across Sengkang, 24/7.'],
-      ['How fast can you come to Anchorvale?', 'Sengkang is inside our 3-hour call-out area. Send your postal code and a photo and we confirm the earliest slot.'],
+      ['How often should a mattress be cleaned?', 'Many households clean a mattress once or twice a year. Homes with allergies, young children or pets often do it more often.'],
+      ['Is Anchorvale inside the 3-hour call-out area?', 'Yes. Anchorvale is in Sengkang, inside our 3-hour call-out area. Send your postal code and a photo and we confirm the earliest slot.'],
       ['Will yellow sweat marks come out of my mattress?', 'They usually lighten a lot. Very old marks may not disappear completely, and we tell you from your photos.'],
     ],
   },
@@ -134,11 +163,16 @@ export const SOFA_ESTATES: Estate[] = [
       'Tell us how many items you want cleaned. A sofa and a mattress can be done in the same visit.',
     ],
     photos: ['grey-3seater-recliner-sofa', 'mattress-heart-pattern'],
+    guide: { h: 'Getting your home ready for the visit', ps: [
+      'Clear the sofa of cushions you do not want cleaned, blankets, toys and anything in the gaps between the seats. Check under the seat cushions for coins and pens.',
+      'Move small tables and floor items away from the sofa so there is room to work around it. For a mattress, take off the sheets and the protector.',
+      'Keep pets and small children in another room while we work, and until the fabric is dry.',
+      'Plan to leave the sofa or mattress unused for about 4 to 8 hours afterwards. If you book an evening slot, a fan overnight helps it dry by the morning.',
+    ] },
     faqs: [
-      ['Do you clean in Compassvale?', 'Yes. We clean on-site in Compassvale and across Sengkang, 24/7.'],
+      ['Is Compassvale inside the 3-hour call-out area?', 'Yes. Compassvale is in Sengkang, so the 3-hour call-out applies. Send your postal code and a photo and we confirm the earliest slot.'],
       ['Can you come in the evening after work?', 'Yes. We are open 24/7. The exact time is confirmed on WhatsApp, depending on the job already running.'],
       ['Can you clean a sofa and a mattress in one visit?', 'Yes. Tell us both items when you ask for a quote and we price them together from the published table.'],
-      ['How fast can you come?', 'Sengkang is inside our 3-hour call-out area. Send your postal code and a photo and we confirm the earliest slot.'],
     ],
   },
   {
@@ -155,9 +189,15 @@ export const SOFA_ESTATES: Estate[] = [
       'If you have just moved in and bought a fabric sofa, check the care label under the cushions. It tells us which cleaning method is safe.',
     ],
     photos: ['grey-2seater-fabric-sofa', 'mattress-scallop-yellow-stain'],
+    guide: { h: 'Reading your sofa\'s care label', ps: [
+      'Most fabric sofas have a care label under a seat cushion or on the base. It often shows a cleaning code, and that code tells you which cleaning methods are safe.',
+      'W means water-based cleaning is fine. S means solvent-based cleaning only, with no water. W/S or WS means either can be used. X means vacuum only, with no wet cleaning at all.',
+      'If you have just moved into a new flat and bought a sofa, take a photo of the label now while it is easy to find, and keep the receipt or the product name.',
+      'Send the label photo with your quote request. If there is no label, tell us the brand or where it was bought, and we check the fabric before we start.',
+    ] },
     faqs: [
-      ['Do you clean in Tampines North?', 'Yes. We clean on-site in Tampines North and across Tampines, 24/7.'],
-      ['How fast can you come to Tampines North?', 'Tampines is inside our 3-hour call-out area. Send your postal code and a photo and we confirm the earliest slot.'],
+      ['What do the letters on my sofa care label mean?', 'W is water-based cleaning, S is solvent-based only, W/S means either, and X means vacuum only. Send us a photo of the label and we tell you which method we will use.'],
+      ['How fast can you come to Tampines North?', 'Tampines North is in Tampines, inside our 3-hour call-out area. Send your postal code and a photo and we confirm the earliest slot.'],
       ['What should I send for a quote?', 'A photo of the whole sofa or mattress, close-ups of the stains, the size, the care label if you can find it, and your postal code.'],
     ],
   },
@@ -175,9 +215,15 @@ export const SOFA_ESTATES: Estate[] = [
       'Velvet and chenille sofas need a low-moisture method worked with the pile. Send a close-up photo so we can check the fabric.',
     ],
     photos: ['cream-velvet-tufted-armchair', 'mattress-pillowtop-stain'],
+    guide: { h: 'Velvet and chenille sofas', ps: [
+      'Velvet and chenille have a raised pile. When it is pressed flat by sitting, or wet unevenly by a spill, the light catches it differently, and the sofa can look patchy even when it is clean.',
+      'For a spill, blot gently with a dry cloth. Do not rub, which crushes the pile in one direction and can leave a mark that is hard to even out.',
+      'These fabrics are cleaned with a low-moisture method, then brushed with the pile while damp so it dries standing up evenly.',
+      'Send a close-up photo of the fabric and the care label. Some velvets are marked for solvent cleaning only, and we check that before we start.',
+    ] },
     faqs: [
-      ['Do you clean in Tampines Central?', 'Yes. We clean on-site around Tampines Central and across Tampines, 24/7.'],
-      ['How fast can you come?', 'Tampines is inside our 3-hour call-out area. Send your postal code and a photo and we confirm the earliest slot.'],
+      ['Why does my velvet sofa look patchy after a spill?', 'Usually the pile has been pressed or dried in different directions, not because it is still dirty. Cleaning and brushing the pile evenly usually helps a lot.'],
+      ['How fast can you come to Tampines Central?', 'Tampines is inside our 3-hour call-out area. Send your postal code and a photo and we confirm the earliest slot.'],
       ['Can you clean a velvet sofa?', 'Yes, where the care label allows it. We use a low-moisture method and brush the pile back. Steam is only used if the label and a test allow it.'],
       ['Is there a hot steam option?', 'Yes, a hot steam add-on is +$20 where the material suits it. We tell you on WhatsApp if it is not suitable for yours.'],
     ],
@@ -196,9 +242,14 @@ export const SOFA_ESTATES: Estate[] = [
       'For urine, blot with paper towels and do not use hot water or a steamer, which can set the stain and smell. Then send us a photo.',
     ],
     photos: ['grey-3seater-recliner-sofa', 'mattress-urine-stain'],
+    guide: { h: 'Pet accidents on sofas and mattresses', ps: [
+      'Blot up as much as you can straight away with paper towels, pressing hard. The less urine that reaches the foam, the better the result.',
+      'Do not use hot water, a steamer or strong-smelling household sprays. Heat can set the stain and smell, and perfumes only cover the smell for a while.',
+      'Pets often go back to the same spot if they can still smell it. Cover the area until it has been cleaned.',
+      'Send us photos of the area and tell us roughly when it happened. Fresh accidents usually improve well. Urine that soaked deep into the foam can leave some smell on humid days, and we tell you that first.',
+    ] },
     faqs: [
-      ['Do you clean in Tampines West?', 'Yes. We clean on-site in Tampines West and across Tampines, 24/7.'],
-      ['How fast can you come to Tampines West?', 'Tampines is inside our 3-hour call-out area. Send your postal code and a photo and we confirm the earliest slot.'],
+      ['What should I do right after a pet accident?', 'Blot with paper towels, press hard, and do not use hot water or a steamer. Then send us a photo on WhatsApp.'],
       ['Can you remove pet urine smell from a sofa?', 'Fresh urine usually improves well. Urine that soaked deep into the foam can leave some smell on humid days, and we tell you what to expect from your photos.'],
       ['How much is a 3-seater sofa?', 'A 2 to 3-seater fabric sofa is $87. The full price table is on this page.'],
     ],
@@ -231,6 +282,7 @@ function main(e: Estate): string {
     + sec(`${eyebrow('Local area')}${h2(`Around ${e.name}`)}${e.around.map((p) => `<p>${esc(p)}</p>`).join('')}`)
     + sec(`${eyebrow('Call-out')}${h2('How fast we can come')}<p>${esc(CALLOUT)}</p><p>${esc(e.name)} is in ${esc(e.area)}, so the 3-hour call-out applies. The exact time is always confirmed on WhatsApp before we set off.</p>`)
     + sec(`${eyebrow('Local homes')}${h2(`Homes in ${e.name} and the jobs we see`)}${e.homes.map((p) => `<p>${esc(p)}</p>`).join('')}<div class="mt-6">${button(e, 'ESTATE_MID', 'WhatsApp a Photo')}</div>`)
+    + sec(`${eyebrow('Guide')}${h2(e.guide.h)}${e.guide.ps.map((p) => `<p>${esc(p)}</p>`).join('')}`)
     + sec(`${eyebrow('Real results')}${h2('Real before and after photos')}<p>These are real Sofa Care Singapore jobs. Where each job took place was not recorded, so they are examples of our work, not jobs in ${esc(e.name)}. Results vary with the material and the stain.</p><div class="sc-ba-list">${photos}</div>`)
     + `<section class="section-ozone py-16"><div class="container-prose"><div class="mx-auto max-w-2xl text-center">${eyebrow('Prices')}${h2('Prices')}<p class="mt-4 text-brand-slate/70">The same published prices as the rest of Singapore. Your final price is confirmed on WhatsApp from your photos.</p></div><div class="mx-auto mt-8 max-w-2xl overflow-x-auto rounded-2xl border border-brand-slate/10 bg-white shadow-sm"><table class="sofa-area-table"><thead><tr><th>Item</th><th>Price</th></tr></thead><tbody>${prices.map(([a, b]) => row(a, b)).join('')}<tr><td>Leather sofa</td><td>Photo quote</td></tr></tbody></table></div></div></section>`
     + `<section class="py-16"><div class="container-prose"><div class="mx-auto max-w-2xl text-center">${eyebrow('FAQ')}${h2(`${e.name}: common questions`)}</div><div class="mx-auto mt-10 max-w-3xl space-y-3">${faq}</div></div></section>`
@@ -240,7 +292,7 @@ function main(e: Estate): string {
 
 function head(e: Estate): string {
   const url = `${SITE}/${e.slug}`;
-  const place = { '@type': 'Place', name: `${e.name}, ${e.area}, Singapore` };
+  const place = [{ '@type': 'Place', name: `${e.name}, ${e.area}`, containedInPlace: { '@type': 'Place', name: `${e.area}, Singapore` } }, { '@type': 'Place', name: `${e.area}, Singapore` }];
   const offers = (name: string, min: number) => ({ '@type': 'Offer', name, priceCurrency: 'SGD', priceSpecification: { '@type': 'PriceSpecification', minPrice: min, priceCurrency: 'SGD' }, url: `${SITE}/pricing.html` });
   const name = `Sofa & Mattress Cleaning in ${e.name}, ${e.area}`;
   const ld = [

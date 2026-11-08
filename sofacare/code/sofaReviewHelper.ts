@@ -165,8 +165,9 @@ var CONFIG = {
       var phrases = shuffle(picked).map(function (c) { return pick(PHRASES[c] || [c.toLowerCase()]); });
       parts.push((pick(OPEN) + pick(JOIN)(phrases)).trim());
     }
-    if (s) parts.push(/[.!?]$/.test(s) ? s : s + ".");
+    // Customer's own sentence always goes last (Edwin check 4).
     if (stars === 5) parts.push(pick(END5));
+    if (s) parts.push(/[.!?]$/.test(s) ? s : s + ".");
     return parts.join(" ");
   }
   // Copy inside the tap itself, before Google opens, so it works on phones.
