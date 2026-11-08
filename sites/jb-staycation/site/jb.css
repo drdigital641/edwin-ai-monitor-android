@@ -47,10 +47,10 @@ main{display:block;position:relative;z-index:1;background:var(--page)}
 .inner main{padding-top:var(--hh)}
 /* home hero */
 .hero{position:relative;min-height:100vh;min-height:100svh;display:flex;align-items:flex-end;color:#fff;background:var(--panel-deep);overflow:hidden;isolation:isolate}
-.hero-bg{position:absolute;inset:0;z-index:-2;overflow:hidden}.hero-bg img{width:100%;height:100%;object-fit:cover;object-position:58% 50%}
+.hero-bg{position:absolute;inset:0;z-index:-2;overflow:hidden}.hero-bg picture,.hero-bg img{display:block;width:100%;height:100%}.hero-bg img{object-fit:cover;object-position:58% 50%}
 @media(prefers-reduced-motion:no-preference){.hero-bg img{animation:kb 22s var(--ease) both}@keyframes kb{from{transform:scale(1.14)}to{transform:scale(1.02)}}}
-.hero::after{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(180deg,rgba(10,31,56,.62) 0,rgba(10,31,56,.12) 26%,rgba(10,31,56,.25) 48%,rgba(10,31,56,.86) 76%,rgba(10,31,56,.97) 100%)}
-@media(min-width:900px){.hero::after{background:linear-gradient(180deg,rgba(10,31,56,.55) 0,rgba(10,31,56,0) 22%),linear-gradient(90deg,rgba(10,31,56,.9) 0,rgba(10,31,56,.6) 40%,rgba(10,31,56,.05) 75%),linear-gradient(0deg,rgba(10,31,56,.7) 0,rgba(10,31,56,0) 40%)}}
+.hero::after{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(180deg,rgba(10,31,56,.42) 0,rgba(10,31,56,0) 24%,rgba(10,31,56,0) 50%,rgba(10,31,56,.62) 78%,rgba(10,31,56,.86) 100%)}.hero h1,.hero .sub,.hero .facts{text-shadow:0 1px 2px rgba(0,0,0,.35)}.hero .kick{text-shadow:0 1px 3px rgba(0,0,0,.65)}
+@media(min-width:900px){.hero::after{background:linear-gradient(180deg,rgba(10,31,56,.4) 0,rgba(10,31,56,0) 20%),linear-gradient(90deg,rgba(10,31,56,.72) 0,rgba(10,31,56,.38) 34%,rgba(10,31,56,0) 62%),linear-gradient(0deg,rgba(10,31,56,.55) 0,rgba(10,31,56,0) 34%)}}
 .hero-in{width:100%;padding-top:calc(var(--hh) + 48px);padding-bottom:28px}
 .hero h1{margin:0 0 18px}
 .hero .kick{display:block;font-size:.8125rem;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--amber);margin-bottom:18px;max-width:none;line-height:1.5}
