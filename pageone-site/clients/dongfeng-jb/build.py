@@ -901,11 +901,119 @@ ARTICLES = [
                 T('No. We can answer questions about the cars and charging figures on our model pages. For tax, ask LHDN or a qualified tax adviser.',
                   'Tidak. Kami boleh menjawab soalan tentang kereta dan angka pengecasan di halaman model kami. Untuk cukai, tanya LHDN atau penasihat cukai yang bertauliah.',
                   '不提供。关于车辆和车型页面上的充电数据，我们可以解答。税务问题请咨询 LHDN 或合资格的税务顾问。'))]),
+    # Night article 4 Nov 2026 (every-2-days rule; queue #4 re-angled, MEDIUM). Official source: myTNB "Tariff" page (mytnb.com.my/tariff; the page shows no effective/modified date, read 4 Nov 2026).
+    # Only structure facts (ToU weekday peak 2-10 PM, off-peak otherwise, weekends off-peak all day, off-peak lower than peak); NO rates quoted (rate table did not load), no savings claims, no eligibility/switching claims, no public-holiday claim.
+    dict(slug='ev-charging-time-of-use-tariff-malaysia', photo='vigo-showroom', owner='models/', date='2026-11-04', share=True, checks_after=3,
+         source=('https://www.mytnb.com.my/tariff',
+                 T('Source: TNB (Tenaga Nasional Berhad), myTNB "Tariff" page, mytnb.com.my/tariff (the page shows no effective or last-updated date; read on 4 November 2026)',
+                   'Sumber: TNB (Tenaga Nasional Berhad), laman "Tariff" myTNB, mytnb.com.my/tariff (laman tidak menunjukkan tarikh berkuat kuasa atau kemas kini; dibaca pada 4 November 2026)',
+                   '来源：马来西亚国家能源公司 TNB，myTNB“Tariff”（电价）页面，mytnb.com.my/tariff（页面未标注生效或更新日期；2026 年 11 月 4 日查阅）')),
+         title=T('TNB Time-of-Use Tariff: When Is Off-Peak for EV Charging?', 'Tarif Time-of-Use TNB: Bila Waktu Bukan Puncak untuk Mengecas EV?', 'TNB 分时电价：电动车充电何时是非高峰？'),
+         h1=T('When is off-peak electricity in Malaysia, and does it matter for charging an EV at home?', 'Bila waktu bukan puncak elektrik di Malaysia, dan adakah ia penting untuk mengecas EV di rumah?', '马来西亚的电费非高峰时段是什么时候？在家给电动车充电要在意吗？'),
+         desc=T('TNB\'s Time-of-Use scheme: weekday peak 2 PM to 10 PM, off-peak otherwise, weekends off-peak all day. What it means for overnight home charging and what to check.',
+                'Skim Time-of-Use TNB: puncak hari bekerja 2 PTG hingga 10 mlm, selain itu bukan puncak, hujung minggu bukan puncak sepanjang hari. Maksudnya untuk mengecas di rumah waktu malam.',
+                'TNB 分时电价：工作日高峰时段下午 2 点至晚上 10 点，其余为非高峰，周末全天非高峰。对夜间家充意味着什么，以及需要核实什么。'),
+         answer=T('On TNB\'s Time-of-Use (ToU) scheme, the weekday peak is 2 PM to 10 PM and off-peak is 10 PM to 2 PM; Saturday and Sunday are off-peak all day. TNB says off-peak rates are lower than peak rates. Whether your account is on a ToU tariff, and the current rates, are for TNB to confirm in myTNB. This is our reading as of 4 November 2026, not advice.',
+                  'Di bawah skim Time-of-Use (ToU) TNB, waktu puncak hari bekerja ialah 2 PTG hingga 10 mlm dan bukan puncak ialah 10 mlm hingga 2 PTG; Sabtu dan Ahad bukan puncak sepanjang hari. TNB menyatakan kadar bukan puncak lebih rendah daripada kadar puncak. Sama ada akaun anda menggunakan tarif ToU, dan kadar semasa, perlu disahkan oleh TNB dalam myTNB. Ini bacaan kami setakat 4 November 2026, bukan nasihat.',
+                  'TNB 的分时电价（Time-of-Use，ToU）方案下，工作日高峰时段为下午 2 点至晚上 10 点，非高峰为晚上 10 点至次日下午 2 点；周六和周日全天非高峰。TNB 表示非高峰电价低于高峰电价。您的账户是否使用分时电价、当前电价是多少，请以 TNB 在 myTNB 中的确认为准。以上是我们截至 2026 年 11 月 4 日的理解，不构成建议。'),
+         sections=[(T('What are TNB\'s peak and off-peak hours?', 'Apakah waktu puncak dan bukan puncak TNB?', 'TNB 的高峰和非高峰时段是什么时候？'),
+                    T('On its Tariff page, TNB describes a Time-of-Use scheme with two time zones. From Monday to Friday, Peak is 2 PM to 10 PM and Off-Peak is 10 PM to 2 PM. On Saturday and Sunday, it is Off-Peak throughout the day (24 hours). The page also lists a Domestic General Tariff and a Domestic ToU Tariff, and says rates in the Off-Peak period will be lower than in the Peak period.',
+                      'Pada laman Tariff, TNB menerangkan skim Time-of-Use dengan dua zon masa. Dari Isnin hingga Jumaat, Puncak ialah 2 PTG hingga 10 mlm dan Bukan Puncak ialah 10 mlm hingga 2 PTG. Pada Sabtu dan Ahad, ia Bukan Puncak sepanjang hari (24 jam). Laman itu juga menyenaraikan Tarif Domestik Am dan Tarif Domestik ToU, dan menyatakan kadar pada waktu Bukan Puncak akan lebih rendah daripada waktu Puncak.',
+                      'TNB 在其电价页面介绍了分为两个时区的分时电价方案。周一至周五，高峰为下午 2 点至晚上 10 点，非高峰为晚上 10 点至次日下午 2 点；周六和周日全天为非高峰（24 小时）。该页面还列出“家用一般电价”和“家用分时电价”两类，并表示非高峰时段的电价会低于高峰时段。')),
+                   (T('Why might it matter if you charge an EV at home?', 'Mengapa ia mungkin penting jika anda mengecas EV di rumah?', '在家给电动车充电，为什么可能有关系？'),
+                    T('Most owners charge overnight, so the car is ready in the morning. Our Vigo guide says about 9 hours on a 6.6 kW wall box, so as a simple example a weekday charge that starts at 10 PM would finish before the 2 PM peak begins. Real charging time depends on the model, how empty the battery is, the charger and the weather, so treat that as an example, not a promise.',
+                      'Kebanyakan pemilik mengecas pada waktu malam supaya kereta sedia pada waktu pagi. Panduan Vigo kami menyatakan kira-kira 9 jam pada wall box 6.6 kW, jadi sebagai contoh mudah, pengecasan hari bekerja yang bermula pada 10 mlm akan siap sebelum waktu puncak 2 PTG bermula. Masa pengecasan sebenar bergantung pada model, tahap bateri, pengecas dan cuaca, jadi anggap ini contoh, bukan janji.',
+                      '大多数车主在夜间充电，这样早上车就准备好了。我们的 Vigo 指南提到 6.6 kW 家用充电盒大约需要 9 小时，所以举个简单的例子：工作日晚上 10 点开始充电，会在下午 2 点高峰开始之前完成。实际充电时间取决于车型、电池剩余电量、充电器和天气，所以这只是例子，不是承诺。')),
+                   (T('What does the TNB page not tell you?', 'Apa yang tidak diberitahu oleh laman TNB?', 'TNB 的页面没有告诉您什么？'),
+                    T('In the version we read, the rate tables did not load, so we do not quote any sen per kWh figure. The page also gave no eligibility rules or steps for switching to the ToU tariff, did not mention public holidays, and showed no effective date. It says the Fuel Adjustment is updated monthly. We do not know whether a ToU tariff would lower your bill, because that depends on when you use electricity, so we make no savings claim.',
+                      'Dalam versi yang kami baca, jadual kadar tidak dimuatkan, jadi kami tidak memetik sebarang angka sen per kWh. Laman itu juga tidak memberikan syarat kelayakan atau langkah untuk beralih ke tarif ToU, tidak menyebut cuti umum, dan tidak menunjukkan tarikh berkuat kuasa. Ia menyatakan Pelarasan Bahan Api dikemas kini setiap bulan. Kami tidak tahu sama ada tarif ToU akan menurunkan bil anda, kerana itu bergantung pada bila anda menggunakan elektrik, jadi kami tidak membuat dakwaan penjimatan.',
+                      '在我们阅读的版本中，电价表没有加载出来，所以我们不引用任何“仙/千瓦时”的数字。该页面也没有给出分时电价的资格规定或转换步骤，没有提到公共假期，也没有标注生效日期。页面表示燃料调整费每月更新。分时电价能否降低您的电费，取决于您什么时候用电，我们并不知道，所以不做任何省钱承诺。')),
+                   (T('How do you check your own account?', 'Bagaimana anda menyemak akaun anda sendiri?', '如何查看自己的账户情况？'),
+                    T('Only TNB can tell you which tariff your account is on and what the current rates are. Open the myTNB app or portal, read the Tariff page, or ask TNB. Before you decide anything, check these:',
+                      'Hanya TNB boleh memberitahu tarif mana yang digunakan oleh akaun anda dan apakah kadar semasa. Buka aplikasi atau portal myTNB, baca laman Tariff, atau tanya TNB. Sebelum membuat keputusan, semak perkara ini:',
+                      '只有 TNB 能告诉您账户目前使用哪种电价以及当前电价是多少。请打开 myTNB 应用或网站，阅读电价页面，或直接询问 TNB。做任何决定之前，请先确认：')),
+                   (T('Where does the dealership fit in?', 'Di mana peranan pengedar?', '经销商在其中扮演什么角色？'),
+                    T('We are a car centre, not an electricity provider, so we cannot tell you your tariff, your rates or your bill. We can tell you about the Dongfeng Vigo and 007 charging figures on our model pages, and our guide to charging an EV at home in Johor covers the practical side of a wall box.',
+                      'Kami ialah pusat kereta, bukan pembekal elektrik, jadi kami tidak boleh memberitahu tarif, kadar atau bil anda. Kami boleh menerangkan angka pengecasan Dongfeng Vigo dan 007 di halaman model kami, dan panduan kami tentang mengecas EV di rumah di Johor merangkumi sisi praktikal wall box.',
+                      '我们是汽车中心，不是电力供应商，所以无法告诉您电价类别、电价或电费。Vigo 和 007 的充电数据可以在我们的车型页面查到，我们那篇“在柔佛家里给电动车充电”的指南讲了家用充电盒的实际问题。'))],
+         checks=[T('Which tariff your account is on now (Domestic General or Domestic ToU)', 'Tarif mana yang digunakan akaun anda sekarang (Domestik Am atau Domestik ToU)', '账户目前的电价类别（家用一般电价或家用分时电价）'),
+                 T('The current peak and off-peak rates on TNB\'s own page', 'Kadar puncak dan bukan puncak semasa pada laman TNB sendiri', 'TNB 官方页面上的当前高峰与非高峰电价'),
+                 T('Whether you can switch and how (ask TNB, the page gave no steps)', 'Sama ada anda boleh beralih dan bagaimana (tanya TNB, laman tiada langkah)', '是否可以转换以及如何转换（请询问 TNB，页面没有给出步骤）'),
+                 T('When you usually plug in, on weekdays and at weekends', 'Bila anda biasanya mengecas, pada hari bekerja dan hujung minggu', '您通常什么时候插枪充电，工作日和周末分别如何'),
+                 T('Whether your charger or car can start a charge at a set time (check its manual)', 'Sama ada pengecas atau kereta anda boleh memulakan pengecasan pada masa tertentu (semak manual)', '您的充电器或车辆能否在设定时间开始充电（请查看说明书）')],
+         faqs=[(T('What are the peak hours for TNB Time-of-Use?', 'Apakah waktu puncak untuk Time-of-Use TNB?', 'TNB 分时电价的高峰时段是什么时候？'),
+                T('On TNB\'s Tariff page, Peak is 2 PM to 10 PM and Off-Peak is 10 PM to 2 PM, Monday to Friday.',
+                  'Pada laman Tariff TNB, Puncak ialah 2 PTG hingga 10 mlm dan Bukan Puncak ialah 10 mlm hingga 2 PTG, Isnin hingga Jumaat.',
+                  '在 TNB 的电价页面上，周一至周五的高峰为下午 2 点至晚上 10 点，非高峰为晚上 10 点至次日下午 2 点。')),
+               (T('Is the weekend off-peak all day?', 'Adakah hujung minggu bukan puncak sepanjang hari?', '周末是全天非高峰吗？'),
+                T('Yes, the page says Saturday and Sunday are Off-Peak throughout the day (24 hours). It does not mention public holidays.',
+                  'Ya, laman itu menyatakan Sabtu dan Ahad Bukan Puncak sepanjang hari (24 jam). Ia tidak menyebut cuti umum.',
+                  '是的，页面写明周六和周日全天（24 小时）为非高峰。页面没有提到公共假期。')),
+               (T('How much is the off-peak rate?', 'Berapakah kadar bukan puncak?', '非高峰电价是多少？'),
+                T('TNB says Off-Peak rates are lower than Peak rates. The rate tables did not load in the version we read, so we do not quote a figure. Check the current rates on TNB\'s own page or in myTNB.',
+                  'TNB menyatakan kadar Bukan Puncak lebih rendah daripada kadar Puncak. Jadual kadar tidak dimuatkan dalam versi yang kami baca, jadi kami tidak memetik angka. Semak kadar semasa pada laman TNB sendiri atau dalam myTNB.',
+                  'TNB 表示非高峰电价低于高峰电价。我们阅读的版本里电价表没有加载，所以不引用具体数字。请到 TNB 官方页面或 myTNB 查看当前电价。')),
+               (T('Does Dongfeng Johor Bahru advise on electricity tariffs?', 'Adakah Dongfeng Johor Bahru memberi nasihat tentang tarif elektrik?', '东风新山提供电费方案的建议吗？'),
+                T('No. We can answer questions about the cars and charging figures on our model pages. For your tariff, rates or bill, ask TNB.',
+                  'Tidak. Kami boleh menjawab soalan tentang kereta dan angka pengecasan di halaman model kami. Untuk tarif, kadar atau bil anda, tanya TNB.',
+                  '不提供。关于车辆和车型页面上的充电数据，我们可以解答。电价类别、电价或电费请咨询 TNB。'))]),
+    # Night article 6 Nov 2026 (every-2-days rule; MEDIUM-general / LOW: general EV education, no regulatory, tariff, warranty or price content). Road tax (queue #5) HELD: JPJ pages read 6 Nov 2026 gave no EV road tax page.
+    dict(slug='regenerative-braking-ev-explained', photo='vigo-dash', owner='test-drive/', date='2026-11-06', share=True, checks_after=4,
+         title=T('Regenerative Braking in an EV: What It Is and How It Feels', 'Brek Regeneratif EV: Apa Itu dan Bagaimana Rasanya', '电动车动能回收：是什么，开起来是什么感觉'),
+         h1=T('What is regenerative braking in an EV, and does it change how you drive?', 'Apakah brek regeneratif dalam EV, dan adakah ia mengubah cara anda memandu?', '电动车的动能回收是什么？会改变您的驾驶方式吗？'),
+         desc=T('Regenerative braking explained for new EV drivers in Johor Bahru: what it does, how it feels, what it does not replace and what to try on a test drive.',
+                'Brek regeneratif diterangkan untuk pemandu EV baharu di Johor Bahru: fungsinya, rasanya, apa yang tidak digantikannya dan apa yang perlu dicuba semasa pandu uji.',
+                '为新手电动车车主讲解动能回收：它的作用、驾驶感受、不能取代什么，以及试驾时可以试什么。'),
+         answer=T('Regenerative braking uses the electric motor to slow the car when you lift off the accelerator or press the brake, turning some of that motion back into battery charge. How strong it feels differs by car and by setting. The brakes are still there for stopping, so feel how a car behaves on a test drive.',
+                  'Brek regeneratif menggunakan motor elektrik untuk memperlahankan kereta apabila anda melepaskan pedal minyak atau menekan brek, dan menukar sebahagian gerakan itu kembali menjadi cas bateri. Kekuatannya berbeza mengikut kereta dan tetapan. Brek masih ada untuk berhenti, jadi rasai sendiri tingkah laku kereta semasa pandu uji.',
+                  '动能回收是指在您松开油门或踩刹车时，由电动机帮助车辆减速，并把一部分动能转回电池。回收力度因车型和设置而异。刹车系统依然负责停车，所以请在试驾时亲自感受这辆车的表现。'),
+         sections=[(T('What does regenerative braking do?', 'Apakah fungsi brek regeneratif?', '动能回收有什么作用？'),
+                    T('When you slow down in a petrol car, the brakes turn the car\'s motion into heat and it is lost. In an EV, the electric motor can run in reverse as a generator while the car slows, and send part of that energy back to the battery. The car slows down because the motor is doing some of the work.',
+                      'Apabila anda memperlahankan kereta petrol, brek menukar gerakan kereta menjadi haba dan ia hilang. Dalam EV, motor elektrik boleh berfungsi sebagai penjana semasa kereta diperlahankan, dan menghantar sebahagian tenaga itu kembali ke bateri. Kereta menjadi perlahan kerana motor melakukan sebahagian kerja itu.',
+                      '燃油车减速时，刹车把车辆的动能变成热量散掉。电动车减速时，电动机可以反向作为发电机运转，把一部分能量送回电池。车之所以变慢，是因为电动机分担了一部分工作。')),
+                   (T('Does it change how you drive?', 'Adakah ia mengubah cara anda memandu?', '会改变驾驶方式吗？'),
+                    T('Usually a little. When you lift your foot off the accelerator, an EV can slow down more firmly than a petrol car does, so many drivers find they use the brake pedal less in slow traffic. Some cars let you choose how strong this feels. We do not list the settings of each model in this guide, so ask us to show you how the car you are driving behaves.',
+                      'Biasanya sedikit. Apabila anda mengangkat kaki daripada pedal minyak, EV boleh menjadi perlahan dengan lebih tegas daripada kereta petrol, jadi ramai pemandu mendapati mereka kurang menggunakan pedal brek dalam trafik perlahan. Sesetengah kereta membenarkan anda memilih kekuatannya. Kami tidak menyenaraikan tetapan setiap model dalam panduan ini, jadi minta kami tunjukkan cara kereta yang anda pandu berfungsi.',
+                      '通常会有一点变化。松开油门后，电动车的减速可能比燃油车更明显，所以不少车主在缓行路段较少踩刹车。有些车可以选择回收力度的大小。本文不列出每个车型的具体设置，试驾时请让我们演示您所驾驶的这辆车的表现。')),
+                   (T('Does it add a lot of range?', 'Adakah ia menambah banyak jarak?', '能增加很多续航吗？'),
+                    T('It can recover some energy, most noticeably in stop-and-go traffic, but how much depends on your speed, the road, traffic and how you drive. We make no range claim for it. For the range figures on our model pages, see the Vigo and 007 pages, where they are labelled CLTC.',
+                      'Ia boleh memulihkan sedikit tenaga, paling ketara dalam trafik berhenti-dan-jalan, tetapi jumlahnya bergantung pada kelajuan, jalan, trafik dan cara anda memandu. Kami tidak membuat dakwaan jarak untuknya. Untuk angka jarak, lihat halaman Vigo dan 007 yang melabelkannya sebagai CLTC.',
+                      '它可以回收一部分能量，在走走停停的路况下最明显，但具体多少取决于车速、路况、交通和您的驾驶习惯。我们不对它的续航增益做任何承诺。续航数据请见 Vigo 和 007 车型页面，数据均标注为 CLTC。')),
+                   (T('Do you still need the brake pedal?', 'Adakah anda masih perlu pedal brek?', '还需要踩刹车吗？'),
+                    T('Yes. Regenerative braking helps to slow the car, but the brake pedal is what you use to stop firmly and in an emergency. In many EVs the regeneration can feel different when the battery is very full or the road is wet, so brake smoothly and leave extra distance in the rain. Try these on a test drive:',
+                      'Ya. Brek regeneratif membantu memperlahankan kereta, tetapi pedal brek ialah yang anda gunakan untuk berhenti dengan tegas dan dalam kecemasan. Dalam banyak EV, regenerasi boleh terasa berbeza apabila bateri hampir penuh atau jalan basah, jadi brek dengan lancar dan beri jarak tambahan semasa hujan. Cuba perkara ini semasa pandu uji:',
+                      '需要。动能回收能帮助减速，但真正需要稳稳停车或紧急刹车时，还是要靠刹车踏板。在不少电动车上，电池很满或路面湿滑时，回收的感觉可能不同，所以请平稳刹车，雨天多留一些车距。试驾时可以试试：')),
+                   (T('What about brake wear and servicing?', 'Bagaimana dengan kehausan brek dan servis?', '刹车磨损和保养怎么办？'),
+                    T('Because the motor does part of the slowing, the brake pads may be used less often than in a petrol car. The brakes still need to be inspected, and parts can still age. Our service interval is every 10,000 km, and our service team can tell you what is checked at each visit.',
+                      'Oleh kerana motor melakukan sebahagian pemperlahanan, pad brek mungkin kurang digunakan berbanding kereta petrol. Brek masih perlu diperiksa, dan komponen masih boleh menjadi usang. Selang servis kami ialah setiap 10,000 km, dan pasukan servis kami boleh memberitahu apa yang diperiksa pada setiap lawatan.',
+                      '由于电动机分担了一部分减速工作，刹车片的使用频率可能比燃油车低。但刹车系统仍然需要检查，零件也会老化。我们的保养间隔是每 10,000 公里，每次保养检查哪些项目，可以向我们的售后团队询问。'))],
+         checks=[T('Lift off the accelerator at low speed in a safe place and note how firmly the car slows', 'Angkat kaki daripada pedal minyak pada kelajuan rendah di tempat yang selamat dan perhatikan betapa tegas kereta menjadi perlahan', '在安全的地方低速松开油门，感受车辆减速的力度'),
+                 T('Ask which regeneration settings the car offers and how to change them', 'Tanya tetapan regenerasi yang ada pada kereta dan cara menukarnya', '询问这辆车有哪些回收力度设置，以及如何切换'),
+                 T('Stop smoothly with the brake pedal and see how it feels as the car comes to rest', 'Berhenti dengan lancar menggunakan pedal brek dan rasai ketika kereta berhenti', '用刹车踏板平稳停车，感受车辆停下时的脚感'),
+                 T('Drive a short stop-and-go stretch to see whether you prefer the feel', 'Pandu satu laluan berhenti-dan-jalan yang pendek untuk melihat sama ada anda suka rasanya', '开一小段走走停停的路，看自己是否习惯这种感觉'),
+                 T('Ask how the car behaves in the rain, and when the battery is very full', 'Tanya bagaimana kereta berfungsi semasa hujan, dan apabila bateri hampir penuh', '询问雨天以及电池很满时车辆的表现')],
+         faqs=[(T('Is regenerative braking the same as one-pedal driving?', 'Adakah brek regeneratif sama dengan pemanduan satu pedal?', '动能回收就是单踏板驾驶吗？'),
+                T('Not exactly. Regenerative braking is the motor slowing the car and recharging the battery. One-pedal driving is a setting in some cars where lifting off the accelerator slows the car strongly. Ask us which options the car you drive has.',
+                  'Tidak tepat. Brek regeneratif ialah motor memperlahankan kereta dan mengecas semula bateri. Pemanduan satu pedal ialah tetapan pada sesetengah kereta di mana mengangkat kaki daripada pedal minyak memperlahankan kereta dengan kuat. Tanya kami pilihan yang ada pada kereta yang anda pandu.',
+                  '不完全一样。动能回收是电动机帮助减速并给电池充电。单踏板驾驶是部分车型的一种设置，松开油门后车辆会明显减速。请向我们询问您所驾驶车型有哪些选项。')),
+               (T('Does regenerative braking charge the battery fully?', 'Adakah brek regeneratif mengecas bateri sepenuhnya?', '动能回收能把电池充满吗？'),
+                T('No. It recovers a small part of the energy while you slow down. You still charge the car at home or at a charger.',
+                  'Tidak. Ia memulihkan sebahagian kecil tenaga semasa anda memperlahankan kereta. Anda masih perlu mengecas kereta di rumah atau di pengecas.',
+                  '不能。它只在减速时回收一小部分能量，您仍然需要在家里或充电桩给车充电。')),
+               (T('Will the brake lights come on when the car slows by itself?', 'Adakah lampu brek menyala apabila kereta memperlahankan dirinya?', '车辆自己减速时刹车灯会亮吗？'),
+                T('This depends on the car. We do not state it for each model here, so ask us to explain it on a test drive.',
+                  'Ini bergantung pada kereta. Kami tidak menyatakannya bagi setiap model di sini, jadi minta kami terangkan semasa pandu uji.',
+                  '这取决于车型。我们没有在此逐一说明每个车型，试驾时请让我们为您讲解。')),
+               (T('Where can I feel it before I decide?', 'Di mana saya boleh merasainya sebelum membuat keputusan?', '在决定之前可以在哪里亲自体验？'),
+                T('On a test drive. WhatsApp us the model and a time that suits you, and we will have the car charged and ready.',
+                  'Semasa pandu uji. WhatsApp kami model dan masa yang sesuai, dan kami akan sediakan kereta yang sudah dicas.',
+                  '通过试驾。请 WhatsApp 告诉我们车型和方便的时间，我们会把车充好电等您。'))]),
 ]
 ART = {a['slug']: a for a in ARTICLES}
 # Per-page lastmod (sitemap + WebPage dateModified): dated articles carry their own date; pages they change are listed here (21 Oct 2026).
 LASTMOD = {'articles/%s/' % a['slug']: a['date'] for a in ARTICLES if a.get('date')}
-LASTMOD['articles/'] = '2026-11-02'
+LASTMOD['articles/'] = '2026-11-06'
+LASTMOD['dealership-partnership/'] = '2026-11-08'
 LASTMOD['test-drive/'] = '2026-10-28'  # FAQ question corrected (ChatGPT bridge draft)
 LASTMOD['service/'] = '2026-10-28'  # service-specific closing block (ChatGPT bridge draft)
 
@@ -976,7 +1084,7 @@ def fit_desc(d, L):
     return d
 
 
-def page(L, path, title, desc, h1, body, crumbs=None, lede='', schema=None, hero=True, cta=True, photo=None, kind='website'):
+def page(L, path, title, desc, h1, body, crumbs=None, lede='', schema=None, hero=True, cta=True, photo=None, kind='website', b2b=False):
     title, desc = fit_title(t(title, L)), fit_desc(t(desc, L), L)
     schema = list(schema or [])
     ex = XTRA.get(path)
@@ -990,7 +1098,7 @@ def page(L, path, title, desc, h1, body, crumbs=None, lede='', schema=None, hero
             schema.append(faq_schema(ex['faqs'], L))
         body = pre_h + body + post_h
     PAGES[(L, path)] = dict(title=t(title, L), desc=t(desc, L), h1=t(h1, L), body=body, crumbs=crumbs, lede=t(lede, L) if lede else '',
-                            schema=schema or [], hero=hero, cta=cta, photo=photo, kind=kind)
+                            schema=schema or [], hero=hero, cta=cta, photo=photo, kind=kind, b2b=b2b)
 
 
 def model_card(m, L):
@@ -1043,12 +1151,13 @@ def home_body(L):
         ''.join('<a class="card" href="%s"><span class="num">%s</span><h3>%s</h3><p>%s</p><span class="more">%s</span></a>' % (
             h, E(t(n, L)), E(t(a, L)), E(t(b, L)), E(t(W['more'], L))) for h, n, a, b in S3))
     partner = ('<section class="sec sec-white"><div class="wrap split"><figure>%s</figure><div><span class="eyebrow">%s</span><h2>%s</h2><p>%s</p>'
-               '<a class="btn btn-dark" href="partners/">%s</a></div></div></section>') % (
+               '%s<a class="btn btn-dark" href="partners/">%s</a></div></div></section>') % (
         img('showroom-front', L), E(t(T('Partners', 'Rakan niaga', '合作伙伴'), L)),
         E(t(T('Dealers and brands: work with us in Johor', 'Pengedar dan jenama: bekerjasama dengan kami di Johor', '经销商与品牌：与我们在柔佛合作'), L)),
         E(t(T('We run a brand 3S centre in Johor Bahru and take EVs to malls across the state. If you are a dealer or a brand looking for a partner in Johor, talk to us.',
               'Kami mengendalikan pusat 3S jenama di Johor Bahru dan membawa EV ke pusat beli-belah di seluruh negeri. Jika anda pengedar atau jenama yang mencari rakan di Johor, hubungi kami.',
               '我们在新山经营品牌 3S 中心，也把电动车带到柔佛各地商场巡展。如果您是寻找柔佛合作伙伴的经销商或品牌，欢迎联系。'), L)),
+        B2B_LINK if L == 'en' else '',
         E(t(T('Partner with us', 'Jadi rakan niaga', '洽谈合作'), L)))
     road = ('<section class="sec sec-dark"><div class="wrap split"><div><span class="eyebrow">%s</span><h2>%s</h2><p>%s</p><ul class="chips">%s</ul></div>'
             '<figure>%s</figure></div></section>') % (
@@ -1290,18 +1399,128 @@ def partners_body(L):
         E(t(T('Company', 'Syarikat', '公司'), L)), E(t(T('Company', 'Syarikat', '公司'), L)), E(t(T('Your name', 'Nama anda', '您的姓名'), L)), E(t(T('Name', 'Nama', '姓名'), L)),
         E(t(T('What you have in mind', 'Cadangan anda', '合作构想'), L)), E(t(T('Notes', 'Nota', '备注'), L)), WA_SVG, E(t(T('Send on WhatsApp', 'Hantar di WhatsApp', '通过 WhatsApp 发送'), L)),
         E(t(T('Prefer email?', 'Lebih suka e-mel?', '偏好电邮？'), L)), EMAIL, EMAIL)
-    return ('<section class="sec"><div class="wrap split"><div><span class="eyebrow">%s</span><h2>%s</h2><p class="answer">%s</p>%s</div><figure>%s</figure></div></section>'
+    return ('<section class="sec"><div class="wrap split"><div><span class="eyebrow">%s</span><h2>%s</h2><p class="answer">%s</p>%s%s</div><figure>%s</figure></div></section>'
             '<section class="sec sec-dark"><div class="wrap">%s<div class="cards">%s</div></div></section>'
             '<section class="sec"><div class="wrap split"><div>%s</div>%s</div></section>') % (
         E(t(T('Partnerships', 'Kerjasama', '合作'), L)), E(t(T('Partner with Dongfeng\'s 3S centre in Johor', 'Bekerjasama dengan pusat 3S Dongfeng di Johor', '与柔佛东风 3S 中心合作'), L)),
         E(t(T('MyKar World runs Johor\'s Dongfeng 3S centre in Johor Bahru. We are open to working with dealers who want to sell Dongfeng EVs in Johor, with brands looking for a partner in the state, and with companies planning EV fleets.',
               'MyKar World mengendalikan pusat 3S Dongfeng di Johor Bahru. Kami terbuka untuk bekerjasama dengan pengedar yang mahu menjual EV Dongfeng di Johor, jenama yang mencari rakan di negeri ini, dan syarikat yang merancang armada EV.',
               'MyKar World 在新山经营柔佛东风 3S 中心。我们欢迎想在柔佛销售东风电动车的经销商、在柔佛寻找合作伙伴的品牌，以及规划电动车队的企业与我们合作。'), L)),
-        ticks(offer, L), img('showroom-front', L),
+        ticks(offer, L), B2B_LINK if L == 'en' else '', img('showroom-front', L),
         sec_head(T('Who we work with', 'Dengan siapa kami bekerjasama', '合作对象'), T('Three ways to work together', 'Tiga cara bekerjasama', '三种合作方式'), None, L),
         ''.join('<div class="card"><h3>%s</h3><p>%s</p></div>' % (E(t(a, L)), E(t(b, L))) for a, b in who),
         sec_head(T('Talk to us', 'Hubungi kami', '联系我们'), T('Start the conversation', 'Mulakan perbincangan', '开始洽谈'),
                  T('Tell us who you are and what you have in mind. The form opens WhatsApp with your details filled in.', 'Beritahu siapa anda dan cadangan anda. Borang ini membuka WhatsApp dengan maklumat anda.', '告诉我们您是谁、有什么想法。表单会打开 WhatsApp 并自动填好资料。'), L), form)
+
+
+# ---------------------------------------------------------------------------------------------
+# B2B: Dealership & 3S partnership page (EN only). Client request from supplier Ktech via Edwin, 8 Nov 2026.
+# Audience: OEMs, Chinese auto brands, Malaysian passenger-car distributors. No retail CTAs (no header sales
+# button, no band, no dock). Facts only from this site. Contact text below is the client's exact wording.
+# ---------------------------------------------------------------------------------------------
+GAVIN_NUM, GAVIN_SHOW, GAVIN_TEL = '60125512820', '+60 12-551 2820', '+60125512820'
+GAVIN_WA = 'https://wa.me/%s?text=%s' % (GAVIN_NUM, quote('Dealership partnership enquiry'))
+B2B_LINK = ('<p>Car manufacturer, OEM or passenger car distributor? See our '
+            '<a href="dealership-partnership/">dealership and 3S partnership page for Johor</a>.</p>')
+
+
+def X(s):  # English-only text in the T() shape
+    return T(s, s, s)
+
+
+def gavin_btns(dark=True):
+    return ('<div class="cta-row"><a class="btn btn-red" href="%s" target="_blank" rel="noopener">%s<span>Discuss Dealership Partnership</span></a>'
+            '<a class="btn %s" href="tel:%s"><span>Call %s</span></a></div>') % (E(GAVIN_WA), WA_SVG, 'btn-ghost' if dark else 'btn-line', GAVIN_TEL, GAVIN_SHOW)
+
+
+def gavin_block(h='h2'):
+    return ('<div class="band"><div><%s>Business Development &amp; Dealership Enquiries</%s>'
+            '<p>Interested automotive manufacturers, OEMs and passenger car distributors seeking a 3S dealership partner in Johor, Malaysia, are welcome to contact:</p>'
+            '<p style="margin-top:14px"><strong style="color:#fff">Gavin – Sales Director, MyKar World</strong><br><a href="tel:%s" style="color:#fff">%s</a></p></div>%s</div>') % (
+        h, h, GAVIN_TEL, GAVIN_SHOW, gavin_btns())
+
+
+FAQ_DEALER = [
+    (X('Who is this page for?'),
+     X('Car manufacturers, OEMs, Chinese auto brands and Malaysian passenger car distributors, including dealer development managers, who are looking for a dealership or 3S partner in Johor Bahru.')),
+    (X('What does 3S mean?'),
+     X('3S stands for Sales, Service and Spare parts. A 3S centre sells the cars, services them in its own workshop and supplies parts, all at one site.')),
+    (X('Which brand do you represent today?'),
+     X('Dongfeng passenger electric cars. Our showroom has the Dongfeng Vigo electric SUV and the Dongfeng 007 electric sedan, and the Voyah Dream MPV is listed as coming soon.')),
+    (X('Are you open to petrol, hybrid and PHEV brands?'),
+     X('Yes. We want to hear from passenger car brands with petrol, hybrid, plug-in hybrid or electric models, including SUVs. This page covers passenger cars, not commercial vehicles.')),
+    (X('Where is your centre?'),
+     X('No. 28, Jalan Ekoperniagaan 3/11, Taman Ekoperniagaan, 81100 Johor Bahru, Johor, Malaysia.')),
+    (X('Can we visit before discussing terms?'),
+     X('Yes. Arrange a visit with Gavin to see the showroom, workshop and parts set-up. The showroom is open Monday to Saturday 9am to 6pm and Sunday 10am to 4pm.')),
+    (X('Who do we contact?'),
+     X('Gavin, Sales Director, MyKar World, on +60 12-551 2820 by phone or WhatsApp. You can also use the enquiry form on this page.')),
+    (X('Which languages can we use?'),
+     X('English, Bahasa Melayu or Chinese.')),
+]
+
+
+def dealership_body(L):
+    facts = [('Company', LEGAL), ('Company No.', REGNO), ('Trading as', NAME), ('Role', 'First Dongfeng 3S centre in Johor Bahru: sales, service and spare parts'),
+             ('Address', ', '.join(ADDR)), ('Showroom hours', 'Monday to Saturday 9am to 6pm, Sunday 10am to 4pm'),
+             ('Workshop hours', 'Monday to Friday 9am to 6pm, Saturday 9am to 1pm'), ('Languages', 'English, Bahasa Melayu, Chinese'), ('Website', 'mykar.my')]
+    tbl = ''.join('<tr><th scope="row">%s</th><td>%s</td></tr>' % (E(a), E(b)) for a, b in facts)
+    track = [X('The first Dongfeng 3S centre in Johor Bahru, with sales, service and spare parts under one roof in Taman Ekoperniagaan.'),
+             X('Current line-up: the Dongfeng Vigo electric SUV and the Dongfeng 007 electric sedan, with the Voyah Dream MPV listed as coming soon.'),
+             X('2026 mall roadshows across Johor: AEON Mall Bandar Dato\' Onn, Lotus\'s Tebrau, Sutera Mall and KIPMall Kota Tinggi.'),
+             X('Community events at the showroom, including a Merdeka 2026 costume day for children.'),
+             X('Separate WhatsApp lines and email addresses for sales and for service bookings, so each enquiry reaches the right team.'),
+             X('A website and owner guides in English, Bahasa Melayu and Chinese.')]
+    caps = [X('Showroom front, Taman Ekoperniagaan, Johor Bahru'), X('Dongfeng Vigo on the showroom floor'), X('Dongfeng 007 on the showroom floor'),
+            X('Vigo cabin, new car in the showroom'), X('Merdeka 2026 costume day at the showroom')]
+    caps3 = [(X('Sales'), X('A showroom open seven days a week, test drives by appointment, and mall roadshows that take the cars to shoppers across Johor.')),
+             (X('Service'), X('An on-site workshop, open Monday to Friday 9am to 6pm and Saturday 9am to 1pm. Scheduled servicing every 10,000 km at Dongfeng list prices, with its own booking line.')),
+             (X('Spare parts'), X('Genuine Dongfeng parts supplied through the centre at Dongfeng list prices, from the same site as sales and service.'))]
+    why = [X('Johor Bahru is the capital of Johor and the southern gateway of Peninsular Malaysia, linked to Singapore by the Causeway and the Second Link.'),
+           X('Our 2026 roadshows reached shoppers in Johor Bahru, Tebrau, Bandar Dato\' Onn and Kota Tinggi, so a partner brand is not limited to one showroom\'s walk-in traffic.'),
+           X('We already serve Johor customers in English, Bahasa Melayu and Chinese.'),
+           X('A partner brand would talk to a team that already runs a showroom, a workshop and a parts counter in Johor Bahru.')]
+    proc = [(X('Send an enquiry'), X('WhatsApp or call Gavin, or use the form below with your company, brand and country.')),
+            (X('First discussion'), X('Gavin, Sales Director, talks through your brand, your line-up and your plans for Johor.')),
+            (X('Visit the centre'), X('See the showroom, workshop and parts set-up at Taman Ekoperniagaan, Johor Bahru.')),
+            (X('Proposal and terms'), X('Both sides agree the scope of the partnership: sales, service and spare parts.')),
+            (X('Agreement and launch'), X('Sign the agreement and plan the brand\'s launch in Johor together.'))]
+    form = ('<form class="form" data-wa="%s" data-intro="Dealership partnership enquiry" data-cta="form_submit">'
+            '<label>Company<input name="c" data-label="Company" autocomplete="organization" required></label>'
+            '<label>Brand<input name="b" data-label="Brand"></label>'
+            '<label>Country<input name="o" data-label="Country" autocomplete="country-name"></label>'
+            '<label>Contact name<input name="n" data-label="Contact name" autocomplete="name" required></label>'
+            '<label>Email<input name="e" type="email" data-label="Email" autocomplete="email" required></label>'
+            '<label>Message<textarea name="x" data-label="Message"></textarea></label>'
+            '<button class="btn btn-red" type="submit">%s<span>Send to Gavin on WhatsApp</span></button>'
+            '<p class="note" style="margin:0">Submitting opens WhatsApp to Gavin, Sales Director, with your details filled in. Nothing is stored on this website.</p></form>') % (GAVIN_NUM, WA_SVG)
+    return ('<section class="sec"><div class="wrap">%s</div></section>'
+            '<section class="sec"><div class="wrap split"><div><span class="eyebrow">Company profile</span><h2>Who is MyKar World?</h2>'
+            '<p class="answer">MyKar World Sdn. Bhd. runs Dongfeng Johor Bahru, the first Dongfeng 3S centre in Johor Bahru. Our centre at Taman Ekoperniagaan handles new car sales, servicing and spare parts for Dongfeng passenger electric cars at one site.</p>'
+            '<p>We are open to new car dealership partnerships in Johor and Malaysia, and we want to talk to manufacturers, OEMs and passenger car distributors planning new car dealership or 3S dealer network expansion in Malaysia.</p></div>'
+            '<figure>%s</figure></div></section>'
+            '<section class="sec sec-white"><div class="wrap">%s<div class="tbl"><table class="spec"><tbody>%s</tbody></table></div></div></section>'
+            '<section class="sec"><div class="wrap">%s%s<p>Read more <a href="about/">about MyKar World</a>, see <a href="models/">the Dongfeng models we sell</a>, or check <a href="%s" target="_blank" rel="noopener">our Google reviews</a>.</p></div></section>'
+            '<section class="sec sec-dark"><div class="wrap">%s%s</div></section>'
+            '<section class="sec"><div class="wrap">%s<div class="cards">%s</div><p>Read more about <a href="service/">our service workshop</a>, <a href="spare-parts/">spare parts</a> and <a href="articles/what-is-a-3s-car-centre/">what a 3S centre is</a>.</p></div></section>'
+            '<section class="sec sec-white"><div class="wrap split"><div><span class="eyebrow">Location</span><h2>Why Johor Bahru?</h2>%s</div><figure>%s</figure></div></section>'
+            '<section class="sec"><div class="wrap">%s%s</div></section>'
+            '<section class="sec sec-white"><div class="wrap"><div class="prose"><h2>Partnership FAQ</h2>%s</div></div></section>'
+            '<section class="sec"><div class="wrap">%s</div></section>'
+            '<section class="sec"><div class="wrap split"><div>%s</div>%s</div></section>') % (
+        gavin_block(),
+        img('showroom-front', L),
+        sec_head(X('Company details'), X('MyKar World at a glance'), None, L), tbl,
+        sec_head(X('Dealership experience'), X('What we already run in Johor Bahru'), X('As a car dealership partner in Johor, this is the track record we can show today.'), L), ticks(track, L), E(GBP),
+        sec_head(X('Showroom'), X('Our showroom in Johor Bahru'), X('Real photos from our showroom and events. Swipe to see more.'), L),
+        glide(['showroom-front', 'vigo-showroom', '007-showroom', 'vigo-dash', 'merdeka-2026'], L, caps, X('MyKar World showroom photos')),
+        sec_head(X('3S capability'), X('Sales, service and spare parts at one site'), X('What a 3S dealer in Johor Bahru gives a brand: one partner for the whole ownership cycle.'), L),
+        ''.join('<div class="card"><h3>%s</h3><p>%s</p></div>' % (E(t(a, L)), E(t(b, L))) for a, b in caps3),
+        ticks(why, L), img('pair-skyline', L),
+        sec_head(X('How it works'), X('Partnership process'), X('Five simple steps from first contact to launch.'), L), steps(proc, L),
+        faq_html(FAQ_DEALER, L),
+        gavin_block(),
+        sec_head(X('Enquiry form'), X('Tell us about your brand'), X('Fill in the details and Gavin receives them on WhatsApp.'), L), form)
 
 
 def about_body(L):
@@ -1310,7 +1529,7 @@ def about_body(L):
             (T('Role', 'Peranan', '定位'), T('Dongfeng 3S centre for Johor: sales, service, spare parts', 'Pusat 3S Dongfeng untuk Johor: jualan, servis, alat ganti', '柔佛东风 3S 中心：销售、服务、配件')),
             (T('Address', 'Alamat', '地址'), ', '.join(ADDR)), (W['sales_wa'], WA_SHOW), (W['svc_wa'], SVC_SHOW), (W['sales_em'], EMAIL), (W['svc_em'], SVC_EMAIL), ('Facebook', 'facebook.com/dongfengjohorbahru')]
     tbl = ''.join('<tr><th scope="row">%s</th><td>%s</td></tr>' % (E(t(a, L)), E(t(b, L))) for a, b in rows)
-    return ('<section class="sec"><div class="wrap split"><div><span class="eyebrow">%s</span><h2>%s</h2><p class="answer">%s</p><p>%s</p></div><figure>%s</figure></div></section>'
+    return ('<section class="sec"><div class="wrap split"><div><span class="eyebrow">%s</span><h2>%s</h2><p class="answer">%s</p><p>%s</p>%s</div><figure>%s</figure></div></section>'
             '<section class="sec sec-white"><div class="wrap">%s<div class="tbl"><table class="spec"><tbody>%s</tbody></table></div></div></section>'
             '<section class="sec sec-dark"><div class="wrap split"><figure>%s</figure><div><span class="eyebrow">%s</span><h2>%s</h2><p>%s</p><ul class="chips">%s</ul></div></div></section>') % (
         E(t(T('About us', 'Tentang kami', '关于我们'), L)), E(t(T('Who runs Dongfeng in Johor Bahru?', 'Siapa mengendalikan Dongfeng di Johor Bahru?', '谁在新山经营东风？'), L)),
@@ -1320,7 +1539,7 @@ def about_body(L):
         E(t(T('We want Johor drivers to know there is a full Dongfeng centre right here, and we want to build the brand in the state together with dealers and partners.',
               'Kami mahu pemandu Johor tahu ada pusat Dongfeng lengkap di sini, dan kami mahu membina jenama ini di negeri ini bersama pengedar dan rakan niaga.',
               '我们希望柔佛车主知道，这里就有一家完整的东风中心；我们也希望与经销商和合作伙伴一起，在柔佛把品牌做大。'), L)),
-        img('showroom-front', L),
+        B2B_LINK if L == 'en' else '', img('showroom-front', L),
         sec_head(T('Company details', 'Butiran syarikat', '公司资料'), T('The facts', 'Fakta', '基本资料'), None, L), tbl,
         img('merdeka-2026', L), E(t(T('Community', 'Komuniti', '社区'), L)), E(t(T('Part of the neighbourhood', 'Sebahagian komuniti', '融入社区'), L)),
         E(t(T('Besides mall roadshows across Johor, we hosted a Merdeka 2026 costume day for children at the showroom.',
@@ -1498,6 +1717,19 @@ def build_pages():
         page(L, 'privacy/', T('Privacy Notice | Dongfeng Johor Bahru', 'Notis Privasi | Dongfeng Johor Bahru', '隐私声明 | 东风新山'),
              T('How Dongfeng Johor Bahru (MyKar World Sdn. Bhd.) handles personal data under the PDPA 2010.', 'Cara Dongfeng Johor Bahru (MyKar World Sdn. Bhd.) mengendalikan data peribadi di bawah PDPA 2010.', '东风新山（MyKar World Sdn. Bhd.）依据 PDPA 2010 处理个人资料的方式。'),
              T('Privacy notice', 'Notis privasi', '隐私声明'), privacy_body(L), crumbs=[('privacy/', t(W['privacy'], L))], cta=False)
+        if L == 'en':
+            page(L, 'dealership-partnership/', X('Car Dealership & 3S Partner in Johor Bahru | MyKar World'),
+                 X('MyKar World runs the first Dongfeng 3S centre in Johor Bahru. OEMs and passenger car distributors seeking a dealership or 3S partner in Johor: contact Gavin.'),
+                 X('Looking for a Passenger Car Dealership or 3S Partner in Johor, Malaysia?'), dealership_body(L),
+                 crumbs=[('partners/', nav['partners/']), ('dealership-partnership/', X('Dealership partnership'))], cta=False, photo='showroom-front', b2b=True,
+                 lede=X('MyKar World Sdn. Bhd. runs the first Dongfeng 3S centre in Johor Bahru and is open to new dealership partnerships with car brands, OEMs and distributors.'),
+                 schema=[faq_schema(FAQ_DEALER, L), {'@type': 'Organization', '@id': SITE + '#org', 'name': LEGAL, 'legalName': LEGAL, 'url': SITE,
+                         'telephone': TEL, 'email': EMAIL, 'logo': IMG + 'icon-512.png',
+                         'address': {'@type': 'PostalAddress', 'streetAddress': STREET, 'addressLocality': AREA + ', ' + CITY, 'postalCode': POSTAL, 'addressRegion': 'Johor', 'addressCountry': 'MY'},
+                         'identifier': {'@type': 'PropertyValue', 'propertyID': 'SSM company number', 'value': REGNO},
+                         'subOrganization': {'@id': SITE + '#business'}, 'sameAs': [FB, GBP],
+                         'contactPoint': {'@type': 'ContactPoint', 'contactType': 'business development', 'name': 'Gavin, Sales Director, MyKar World',
+                                          'telephone': GAVIN_TEL, 'areaServed': 'MY', 'availableLanguage': ['en', 'ms', 'zh']}}])
 
 
 # ---------------------------------------------------------------------------------------------
@@ -1517,8 +1749,9 @@ def render(L, path, p):
         return re.sub(r'(href|src|action)="(?!https?:|mailto:|tel:|#|\.\./|data:)([^"]*)"', lambda m: '%s="%s%s"' % (m.group(1), lpre, m.group(2)), s)
 
     nav = ''.join('<a href="%s%s"%s>%s</a>' % (lpre, h, ' aria-current="page"' if path.startswith(h) else '', E(t(x, L))) for h, x in W['nav'])
-    langs = ''.join('<a href="%s%s%s" hreflang="%s" lang="%s"%s>%s</a>' % (pre, PFX[l], path, HREFLANG[l], LANG_ATTR[l], ' aria-current="true"' if l == L else '', LANG_LABEL[l]) for l in LANGS)
-    alts = ''.join('<link rel="alternate" hreflang="%s" href="%s%s%s">\n' % (HREFLANG[l], SITE, PFX[l], path) for l in LANGS) + \
+    has = [l for l in LANGS if (l, path) in PAGES] or LANGS  # B2B page is English; its other-language links go to the partners page
+    langs = ''.join('<a href="%s%s%s" hreflang="%s" lang="%s"%s>%s</a>' % (pre, PFX[l], path if l in has else 'partners/', HREFLANG[l], LANG_ATTR[l], ' aria-current="true"' if l == L else '', LANG_LABEL[l]) for l in LANGS)
+    alts = ''.join('<link rel="alternate" hreflang="%s" href="%s%s%s">\n' % (HREFLANG[l], SITE, PFX[l], path) for l in has) + \
         '<link rel="alternate" hreflang="x-default" href="%s%s">\n' % (SITE, path)
     crumbs_html, crumbs_ld = '', None
     if p['crumbs']:
@@ -1544,12 +1777,15 @@ def render(L, path, p):
         band = '<section class="sec" style="padding-top:0"><div class="wrap"><div class="band"><div><h2>%s</h2><p>%s</p></div><div class="cta-row">%s</div></div></div></section>' % (
             E(t(W['band_h'], L)), E(t(W['band_p'], L)), wa_btn(L) + wa_btn(L, t(W['svc'], L), cls='btn btn-ghost', svc=True))
     title = E(p['title'])
-    preload = '<link rel="preload" as="image" href="%s%s.webp" fetchpriority="high">' % (img_base(p['photo'] or ''), p['photo']) if p['photo'] and (p['hero'] or path == '') else ''
+    _pl = '%s%s.webp' % (img_base(p['photo'] or ''), p['photo'])
+    preload = '<link rel="preload" as="image" href="%s" fetchpriority="high">' % (SITE + 'img/' + IMGMAP[_pl]['f'] if _pl in IMGMAP else _pl) if p['photo'] and (p['hero'] or path == '') else ''
     body = fix(p['body'] + band)
     brand = brand_html(lpre)
     ftr_models = ''.join('<li><a href="%smodels/%s/">%s</a></li>' % (lpre, m['slug'], E(m['name'])) for m in MODELS) + \
         ''.join('<li><a href="%s%s">%s</a></li>' % (lpre, h, E(t(x, L))) for h, x in [('test-drive/', W['nav'][1][1]), ('service/', W['nav'][2][1]), ('spare-parts/', T('Spare parts', 'Alat ganti', '零配件')), ('partners/', W['nav'][3][1])])
     ftr_explore = ''.join('<li><a href="%s%s">%s</a></li>' % (lpre, h, E(t(x, L))) for h, x in [('articles/', W['nav'][4][1]), ('about/', W['nav'][5][1]), ('contact/', W['nav'][6][1]), ('privacy/', W['privacy'])])
+    dock = '<div class="dock"><a class="dock-wa" href="%s" target="_blank" rel="noopener">%s<span>%s</span></a><a class="dock-alt" href="%s" target="_blank" rel="noopener">%s<span>%s</span></a></div>' % (
+        E(wa_url(L)), WA_SVG, E(t(W['sales'], L)), E(wa_url(L, svc=True)), WA_SVG, E(t(W['svc'], L)))
     return f'''<!doctype html>
 <html lang="{LANG_ATTR[L]}">
 <head>
@@ -1580,7 +1816,7 @@ def render(L, path, p):
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Jost:wght@300;400;500;600&display=swap">
 <link rel="stylesheet" href="{pre}df.css?v=2">
-<script src="{pre}df.js?v=3" defer></script>
+<script src="{pre}df.js?v=4" defer></script>
 <script type="application/ld+json">{ld}</script>
 </head>
 <body>
@@ -1589,7 +1825,7 @@ def render(L, path, p):
 {brand}
 <nav class="nav" id="mnav" aria-label="Main">{nav}</nav>
 <div class="lang" aria-label="Language">{langs}</div>
-{wa_btn(L, t(W['whatsapp'], L), cls='btn btn-red hdr-wa')}
+{('<a class="btn btn-red hdr-wa" href="%s" target="_blank" rel="noopener">%s<span>Dealership enquiry</span></a>' % (E(GAVIN_WA), WA_SVG)) if p.get('b2b') else wa_btn(L, t(W['whatsapp'], L), cls='btn btn-red hdr-wa')}
 <button class="menu-btn" type="button" aria-expanded="false" aria-controls="mnav">{E(t(W['menu'], L))}</button>
 </div></header>
 <main id="main">
@@ -1612,7 +1848,7 @@ def render(L, path, p):
 </div>
 <div class="ftr-legal"><span>© 2026 {LEGAL} · {E(t(W['reg'], L))} {REGNO}</span><span>{E(t(W['built'], L))} <a href="https://pageonesingapore.com/">Page One Singapore</a></span></div>
 </div></footer>
-<div class="dock"><a class="dock-wa" href="{E(wa_url(L))}" target="_blank" rel="noopener">{WA_SVG}<span>{E(t(W['sales'], L))}</span></a><a class="dock-alt" href="{E(wa_url(L, svc=True))}" target="_blank" rel="noopener">{WA_SVG}<span>{E(t(W['svc'], L))}</span></a></div>
+{'' if p.get('b2b') else dock}
 </body>
 </html>
 '''
@@ -1623,7 +1859,7 @@ def not_found():
     body = ('<section class="sec"><div class="wrap prose"><p>The page you were looking for has moved or does not exist. / Halaman tidak dijumpai. / 找不到该页面。</p>'
             '<ul>%s</ul></div></section>') % ''.join('<li><a href="%s">%s</a></li>' % (h or './', E(t(x, L))) for h, x in [('', W['home'])] + W['nav'])
     p = dict(title='Page not found | Dongfeng Johor Bahru', desc='This page could not be found.', h1='Sorry, that page is not here.', body=body,
-             crumbs=None, lede='', schema=[], hero=True, cta=True, photo=None, kind='website')
+             crumbs=None, lede='', schema=[], hero=True, cta=True, photo=None, kind='website', b2b=False)
     out = render(L, '', p).replace('content="index,follow,max-image-preview:large"', 'content="noindex"')
     base = '/' if LIVE else '/preview/%s/' % SLUG
     return re.sub(r'(href|src|action)="(?!https?:|mailto:|tel:|#|/|data:)([^"]*)"', lambda m: '%s="%s%s"' % (m.group(1), base, m.group(2) if m.group(2) != './' else ''), out)
@@ -1671,7 +1907,7 @@ def main():
         f.write('<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">\n')
         for (L, path) in PAGES:
             f.write('  <url><loc>%s%s%s</loc><lastmod>%s</lastmod>%s</url>\n' % (SITE, PFX[L], path, LASTMOD.get(path, '2026-11-02'), ''.join(
-                '<xhtml:link rel="alternate" hreflang="%s" href="%s%s%s"/>' % (HREFLANG[l], SITE, PFX[l], path) for l in LANGS)))
+                '<xhtml:link rel="alternate" hreflang="%s" href="%s%s%s"/>' % (HREFLANG[l], SITE, PFX[l], path) for l in LANGS if (l, path) in PAGES)))
         f.write('</urlset>\n')
     with open(os.path.join(OUT, 'llms.txt'), 'w') as f:
         f.write('# Dongfeng Johor Bahru (MyKar World), Dongfeng EV 3S centre in Johor Bahru, Malaysia\n\n'
