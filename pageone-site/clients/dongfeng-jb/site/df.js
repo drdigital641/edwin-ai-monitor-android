@@ -81,7 +81,7 @@ function esc(s){return String(s).replace(/[&<>"']/g,function(c){return'&#'+c.cha
 function dt(s){var p=s.split('-');return (+p[2])+' '+M[+p[1]-1]+' '+p[0]}
 function load(){fetch(ul.getAttribute('data-src'),{cache:'no-cache'}).then(function(r){return r.ok?r.json():null}).then(function(j){
 if(!j||!j.posts||!j.posts.length||j.updated===ul.getAttribute('data-updated'))return;
-ul.innerHTML=j.posts.map(function(p){var t=dt(p.date),c=p.caption&&!HIDE.test(p.caption)?'<p class="fbc-cap">'+esc(p.caption)+'</p>':'';
+var ps=j.posts.filter(function(p){return p.type!=='link'}).concat(j.posts.filter(function(p){return p.type==='link'}));ul.innerHTML=ps.map(function(p){var t=dt(p.date),c=p.caption&&!HIDE.test(p.caption)?'<p class="fbc-cap">'+esc(p.caption)+'</p>':'';
 return '<li class="fbc-item"><div class="fbc-img"><img src="'+esc(p.image)+'" alt="MyKar World Facebook post, '+t+'" width="'+(+p.width)+'" height="'+(+p.height)+'" loading="lazy" decoding="async"></div><div class="fbc-body"><time datetime="'+esc(p.date)+'">'+t+'</time>'+c+'<a href="'+esc(p.permalink)+'" target="_blank" rel="noopener">View on Facebook<span class="vh"> (post of '+t+')</span></a></div></li>'}).join('');
 ul.setAttribute('data-updated',j.updated||'');ul.scrollLeft=0;st()}).catch(function(){})}
 if('IntersectionObserver' in window){var io=new IntersectionObserver(function(e){if(e[0].isIntersecting){io.disconnect();load()}},{rootMargin:'300px'});io.observe(ul)}else load();

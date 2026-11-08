@@ -1146,7 +1146,10 @@ def fb_section(L):
         return ''
     data = json.load(open(FB_JSON, encoding='utf-8'))
     cards = []
-    for p in data['posts']:
+    # STANDING RULE (Website Manager, 8 Nov 2026): the JSON order is the display order; the first card must be a car or
+    # showroom photo. TikTok/link re-shares (type 'link') always go last; close-up selfies are placed last in the JSON.
+    posts = [p for p in data['posts'] if p.get('type') != 'link'] + [p for p in data['posts'] if p.get('type') == 'link']
+    for p in posts:
         dt = fb_date(p['date'])
         cap = p.get('caption') or ''
         cap_h = '<p class="fbc-cap">%s</p>' % E(cap) if cap and not FB_HIDE.search(cap) else ''
