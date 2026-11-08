@@ -1551,7 +1551,7 @@ page("index.html",
      fill_home(open(os.path.join(HERE, "home_body.html"), encoding="utf-8").read().rstrip("\n").replace("{{GLANCE_ANSWER}}", GLANCE_ANSWER).replace("{{HOME_FAQ}}", HOME_FAQ_HTML)
               .replace("{{WA_HERO}}", wa_src("Hi Edwin, I'd like more customer enquiries for my business.", "homepage, top"))
               .replace("{{WA_FINAL}}", wa_src("Hi Edwin, I'd like more customer enquiries for my business.", "homepage, bottom"))),
-     updated=max(SC_UPDATED, AIV_UPDATED, "2026-10-17"),
+     updated=max(SC_UPDATED, AIV_UPDATED, "2026-11-08"),
      head_extra="\n  <style>" + " ".join(open(os.path.join(HERE, "home_motion.css"), encoding="utf-8").read().split("\n")[1:]).strip() + GROW_CSS + "</style>",
      foot_extra='\n  <script src="/motion.js?v=4" defer></script>')
 

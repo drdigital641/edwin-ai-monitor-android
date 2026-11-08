@@ -61,3 +61,4 @@
 .result-card .rc-label{font-size:.78rem;color:var(--muted);font-weight:600;margin:0 0 4px}
 .rc-ranks{list-style:none;margin:0 0 14px;padding:0}.rc-ranks li{display:flex;justify-content:space-between;gap:12px;padding:7px 0;border-top:1px solid var(--line);font-size:.9rem}.rc-ranks b{color:var(--green);font-family:var(--display)}
 .offer-line{padding:36px 0;text-align:center;border-top:1px solid var(--line);border-bottom:1px solid var(--line)}.offer-line p{margin:0 auto;max-width:720px;font-size:1.05rem}.offer-line .offer-links{margin-top:10px}.offer-line .offer-links a{margin:0 10px}
+.listed-on{margin:0;padding:18px 16px;text-align:center;font-size:.9rem;color:var(--muted)}.listed-on a{color:inherit;text-decoration:underline;font-weight:600}
