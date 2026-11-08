@@ -131,10 +131,10 @@ var CONFIG = {
     "Good service": ["the service was good", "service was good from start to end", "service was really good", "they gave good service", "the service was very good overall"],
     "Fair pricing": ["the price was fair", "pricing was fair", "the price was fair for the job", "the charges were reasonable", "the price was very fair"],
     "Thorough cleaning": ["the cleaning was very thorough", "they cleaned everything properly", "they did a very thorough job", "they were thorough with the cleaning", "nothing was missed in the cleaning"],
-    "On time": ["they came on time", "arrived on time", "they came at the time given", "they were on time", "came right on schedule"],
+    "On time": ["they came on time", "they arrived on time", "they came at the time given", "they were on time", "they came right on schedule"],
     "Friendly team": ["the team was friendly", "the team was friendly and polite", "the guys were very friendly", "the crew was friendly", "the cleaners were friendly"],
     "Sofa looks like new": ["my sofa looks like new now", "the sofa looks almost new", "sofa came out looking like new", "my sofa looks so much newer", "the sofa looks brand new again"],
-    "Same-day service": ["they could come the same day", "I got same-day service", "I could book them for the same day", "came on the same day I asked", "they did it same day"]
+    "Same-day service": ["they could come the same day", "I got same-day service", "I could book them for the same day", "they came on the same day I asked", "they did it same day"]
   };
   var OPEN = ["", "Very happy with Sofa Care Singapore. ", "Booked Sofa Care Singapore for my sofa. ", "Good experience overall. ", "Used Sofa Care Singapore recently. ", "Satisfied with the job. "];
   var JOIN = [
