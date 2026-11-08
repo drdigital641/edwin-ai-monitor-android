@@ -1988,7 +1988,7 @@ def main():
     for sub in ('data', os.path.join('images', 'fb')):
         src = os.path.join(HERE, sub)
         if os.path.isdir(src):
-            shutil.copytree(src, os.path.join(OUT, sub), dirs_exist_ok=True)
+            shutil.copytree(src, os.path.join(OUT, sub), dirs_exist_ok=True, ignore=shutil.ignore_patterns('*.md'))
     if IMGMAP:
         os.makedirs(os.path.join(OUT, 'img'), exist_ok=True)
         for fn in {m['f'] for m in IMGMAP.values()}:
