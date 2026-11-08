@@ -74,7 +74,6 @@ input[type=text]{width:100%;min-height:48px;padding:12px;border:1px solid #c9d3d
 <p class="ok" id="ok">✓ Copied! Just paste it on Google.</p>
 <p class="text" id="text"></p>
 <button class="btn again" id="again" type="button">Copy again</button>
-<button class="btn again" id="another" type="button">Write another version</button>
 <a class="btn open" id="open" target="_blank" rel="noopener">Open Google Review →</a>
 </section>
 
@@ -193,7 +192,6 @@ var CONFIG = {
     document.getElementById("out").scrollIntoView({ behavior: "smooth", block: "start" });
   };
   document.getElementById("again").onclick = function () { copy(current).then(show); };
-  document.getElementById("another").onclick = function () { current = build(); document.getElementById("text").textContent = current; copy(current).then(show); };
   drawStars(); drawChips();
 })();
 </script>
