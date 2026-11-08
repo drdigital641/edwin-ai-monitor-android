@@ -12,11 +12,12 @@ if('IntersectionObserver' in window&&!rm){var io=new IntersectionObserver(functi
 d.querySelectorAll('[data-carousel]').forEach(function(c){
 var t=c.querySelector('.track'),held=false,rt=null,drag=null,moved=false,cnt=c.querySelector('.cnt'),sl=t.querySelectorAll('.slide'),n=sl.length,chips=[].slice.call(c.querySelectorAll('.rchips button'));
 function idx(){return Math.round(t.scrollLeft/Math.max(1,t.clientWidth))}
-function upd(){var i=Math.min(idx(),n-1);if(cnt)cnt.textContent=(i+1)+' / '+n;if(chips.length&&sl[i]){var r=sl[i].getAttribute('data-room');chips.forEach(function(b){var on=b.getAttribute('data-room')===r;b.classList.toggle('on',on);b.setAttribute('aria-pressed',on);if(on){var p=b.parentNode;p.scrollTo({left:b.offsetLeft-12,behavior:'auto'})}})}}
+function upd(){var i=Math.min(idx(),n-1);if(cnt)cnt.textContent=(i+1)+' / '+n;dots.forEach(function(b,j){b.classList.toggle('on',j===i)});if(chips.length&&sl[i]){var r=sl[i].getAttribute('data-room');chips.forEach(function(b){var on=b.getAttribute('data-room')===r;b.classList.toggle('on',on);b.setAttribute('aria-pressed',on);if(on){var p=b.parentNode;p.scrollTo({left:b.offsetLeft-12,behavior:'auto'})}})}}
 chips.forEach(function(b){b.addEventListener('click',function(){hold();var i=+b.getAttribute('data-i');t.scrollTo({left:i*t.clientWidth,behavior:rm?'auto':'smooth'});release()})});
 function step(dir){var w=t.clientWidth,max=t.scrollWidth-w;if(max<=4)return;var x=t.scrollLeft+dir*w;if(x>max+4&&dir>0||t.scrollLeft>=max-4&&dir>0)x=0;else if(x<-4)x=max;t.scrollTo({left:x,behavior:rm?'auto':'smooth'})}
 function hold(){held=true;clearTimeout(rt)}
 function release(){clearTimeout(rt);rt=setTimeout(function(){held=false},2000)}
+var dots=[],dw=c.querySelector('.dots');if(dw){for(var k=0;k<n;k++){var db=d.createElement('button');db.type='button';db.setAttribute('aria-label','Photo '+(k+1));(function(i){db.addEventListener('click',function(){hold();t.scrollTo({left:i*t.clientWidth,behavior:rm?'auto':'smooth'});release()})})(k);dw.appendChild(db);dots.push(db)}}
 var nx=c.querySelector('.next'),pv=c.querySelector('.prev');
 if(nx)nx.addEventListener('click',function(){hold();step(1);release()});
 if(pv)pv.addEventListener('click',function(){hold();step(-1);release()});

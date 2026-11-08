@@ -75,6 +75,48 @@ ALT = {
     'prima-bathroom-1.webp': 'Bathroom at Prima with toilet, basin and mirror',
     'prima-shower-area-1.webp': 'Shower area at Prima with an electric shower',
     'prima-entrance-console-1.webp': 'Entrance console and plant at Prima',
+    'prima-pool-table-dining-1.webp': 'Pool table in the foreground facing the dining area and kitchen at Prima',
+    'prima-living-pool-table-2.webp': 'Wide living room at Prima with the pool table behind the sofa',
+    'prima-pool-table-window-1.webp': 'Pool table facing the front window at Prima',
+    'prima-living-pool-table-3.webp': 'Living room and TV at Prima with the pool table in the centre',
+    'prima-dining-front-1.webp': 'Dining table and feature wall at Prima',
+    'prima-dining-kitchen-wide-1.webp': 'Dining area and kitchen at Prima with windows and fridge',
+    'prima-dining-kitchen-axis-1.webp': 'View from the dining table towards the kitchen at Prima',
+    'prima-kitchen-fridge-1.webp': 'Kitchen at Prima with fridge and two windows',
+    'prima-kitchen-sink-front-1.webp': 'Kitchen sink at Prima',
+    'prima-bedroom-a-angle-2.webp': 'Bedroom at Prima with mirror and clothes rail',
+    'prima-bedroom-a-bed-detail-1.webp': 'Bed and artwork in a bedroom at Prima',
+    'prima-bedroom-b-angle-2.webp': 'Bed against a brown feature wall in a bedroom at Prima',
+    'prima-bedroom-b-angle-3.webp': 'Bedroom at Prima with corner windows and balcony access',
+    'prima-bedroom-b-seating-1.webp': 'Blue chair and TV corner in a bedroom at Prima',
+    'prima-blue-seating-tv-1.webp': 'TV and round table in the blue seating area at Prima',
+    'prima-blue-seating-wide-1.webp': 'Wide view of the blue seating and TV area at Prima',
+    'prima-study-desk-angle-2.webp': 'Study desk and chair at Prima, seen from the side',
+    'prima-balcony-side-1.webp': 'Covered balcony at Prima from the side, with the neighbourhood beyond',
+    'prima-bathroom-wide-1.webp': 'Bathroom at Prima with basin, toilet and shower screen',
+    'prima-tv-wall-1.webp': 'TV wall and coffee table at Prima',
+    'prima-living-entry-angle-1.webp': 'Living room at Prima seen past the entry ledge',
+    'landak-patio-bistro-pool-1.webp': 'Patio bistro table and pool table at Landak Kawan Fun House',
+    'landak-pool-table-length-1.webp': 'View along the full length of the pool table at Landak Kawan Fun House',
+    'landak-dartboards-detail-1.webp': 'Two dartboards beside the pool table at Landak Kawan Fun House',
+    'landak-living-tv-wide-1.webp': 'Living room at Landak Kawan Fun House looking towards the TV and front curtains',
+    'landak-dining-room-wide-1.webp': 'Wide dining and kitchen view with the foosball table at Landak Kawan Fun House',
+    'landak-living-daylight-angle-1.webp': 'Daylight living room at Landak Kawan Fun House seen from the dining side',
+    'landak-living-daylight-angle-2.webp': 'Daylight living room at Landak Kawan Fun House looking towards the TV and window',
+    'landak-bedroom-1-angle-3.webp': 'Bedroom with two beds at Landak Kawan Fun House, seen past the doorway',
+    'landak-bathroom-portrait-1.webp': 'Bathroom at Landak Kawan Fun House with shower, toilet and basin',
+    'landak-covered-counter-wide-1.webp': 'Covered counter and stools at Landak Kawan Fun House',
+    'landak-staircase-1.webp': 'Staircase and covered roof at Landak Kawan Fun House',
+    'landak-dining-table-detail-1.webp': 'Dining table set for a meal at Landak Kawan Fun House',
+    'landak-breakfast-bar-portrait-1.webp': 'Kitchen breakfast bar at Landak Kawan Fun House',
+    'landak-kitchen-appliances-1.webp': 'Microwave and countertop appliances at Landak Kawan Fun House',
+    'landak-pool-table-detail-1.webp': 'Pool table felt, rack and balls at Landak Kawan Fun House',
+    'landak-game-stick-detail-1.webp': 'Game stick connected behind the TV at Landak Kawan Fun House',
+    'landak-tv-remote-detail-1.webp': 'TV remote at Landak Kawan Fun House',
+    'landak-ironing-counter-detail-1.webp': 'Ironing counter and iron at Landak Kawan Fun House',
+    'landak-kitchen-dishrack-1.webp': 'Dishes, sink and dish rack in the kitchen at Landak Kawan Fun House',
+    'landak-kitchen-sink-detail-1.webp': 'Sink and washing-up area at Landak Kawan Fun House',
+    'landak-electrical-controls-1.webp': 'Electrical panel and switches at Landak Kawan Fun House',
     'landak-living-room-1.webp': 'Wide living room at Landak Kawan Fun House opening to the dining area and kitchen',
     'landak-living-room-staircase-1.webp': 'Living room and staircase at Landak Kawan Fun House',
     'landak-breakfast-bar-living-room-1.webp': 'View across the breakfast counter to the living room at Landak Kawan Fun House',
@@ -100,24 +142,24 @@ def _r(k, title, note, files, caps=None):
 
 ROOMS = {
     'prima': [
-        _r('prima', 'Living room', '', ['prima-living-room-1.webp', 'prima-living-room-2.webp', 'prima-blue-seating-area-1.webp', 'prima-entrance-console-1.webp'],
-           {'prima-blue-seating-area-1.webp': 'Blue seating area', 'prima-entrance-console-1.webp': 'Entrance'}),
-        _r('prima', 'Pool table', '', ['prima-pool-table-1.webp']),
-        _r('prima', 'Dining and kitchen', '', ['prima-dining-room-1.webp', 'prima-kitchen-1.webp'], {'prima-kitchen-1.webp': 'Kitchen'}),
-        _r('prima', 'Bedrooms', '3 bedrooms', ['prima-bedroom-a-1.webp', 'prima-bedroom-b-1.webp', 'prima-dressing-area-1.webp'],
-           {'prima-bedroom-a-1.webp': 'Bedroom', 'prima-bedroom-b-1.webp': 'Bedroom', 'prima-dressing-area-1.webp': 'Dressing area'}),
+        _r('prima', 'Living room', '', ['prima-living-room-1.webp', 'prima-living-pool-table-3.webp', 'prima-living-pool-table-2.webp', 'prima-living-room-2.webp', 'prima-tv-wall-1.webp', 'prima-blue-seating-wide-1.webp', 'prima-blue-seating-area-1.webp', 'prima-living-entry-angle-1.webp', 'prima-entrance-console-1.webp'],
+           {'prima-blue-seating-wide-1.webp': 'Blue seating area', 'prima-blue-seating-area-1.webp': 'Blue seating area', 'prima-entrance-console-1.webp': 'Entrance', 'prima-tv-wall-1.webp': 'TV wall'}),
+        _r('prima', 'Pool table', 'In the living room', ['prima-pool-table-dining-1.webp', 'prima-pool-table-1.webp', 'prima-pool-table-window-1.webp']),
+        _r('prima', 'Dining and kitchen', '', ['prima-dining-kitchen-wide-1.webp', 'prima-dining-room-1.webp', 'prima-dining-front-1.webp', 'prima-kitchen-fridge-1.webp', 'prima-kitchen-1.webp'], {'prima-kitchen-fridge-1.webp': 'Kitchen', 'prima-kitchen-1.webp': 'Kitchen'}),
+        _r('prima', 'Bedrooms', '3 bedrooms', ['prima-bedroom-b-angle-3.webp', 'prima-bedroom-b-1.webp', 'prima-bedroom-b-angle-2.webp', 'prima-bedroom-a-1.webp', 'prima-bedroom-a-angle-2.webp', 'prima-dressing-area-1.webp'],
+           {'prima-bedroom-b-angle-3.webp': 'Bedroom', 'prima-bedroom-b-1.webp': 'Bedroom', 'prima-bedroom-b-angle-2.webp': 'Bedroom', 'prima-bedroom-a-1.webp': 'Bedroom', 'prima-bedroom-a-angle-2.webp': 'Bedroom', 'prima-dressing-area-1.webp': 'Dressing area'}),
         _r('prima', 'Study desk', '', ['prima-study-desk-1.webp']),
-        _r('prima', 'Bathrooms', '3 bathrooms', ['prima-bathroom-1.webp', 'prima-shower-area-1.webp'], {'prima-shower-area-1.webp': 'Shower area'}),
-        _r('prima', 'Balcony', 'Covered, with a bistro set', ['prima-covered-balcony-view-1.webp']),
+        _r('prima', 'Bathrooms', '3 bathrooms', ['prima-bathroom-wide-1.webp', 'prima-bathroom-1.webp', 'prima-shower-area-1.webp'], {'prima-shower-area-1.webp': 'Shower area'}),
+        _r('prima', 'Balcony', 'Covered, with a bistro set', ['prima-covered-balcony-view-1.webp', 'prima-balcony-side-1.webp']),
     ],
     'landak': [
-        _r('landak', 'Living and dining', '', ['landak-living-room-1.webp', 'landak-living-room-staircase-1.webp', 'landak-breakfast-bar-living-room-1.webp', 'landak-dining-foosball-1.webp']),
-        _r('landak', 'Games', 'Pool table, darts, foosball, TV with arcade', ['landak-pool-table-darts-1.webp', 'landak-patio-view-1.webp', 'landak-foosball-table-1.webp', 'landak-tv-games-1.webp'],
-           {'landak-pool-table-darts-1.webp': '8-ft pool table and two dartboards', 'landak-foosball-table-1.webp': 'Foosball table', 'landak-tv-games-1.webp': 'TV with game controllers'}),
-        _r('landak', 'Kitchen', 'For light cooking', ['landak-kitchen-breakfast-bar-1.webp', 'landak-kitchen-sink-1.webp']),
-        _r('landak', 'Bedrooms', '3 bedrooms, 1 king and 4 queen beds', ['landak-bedroom-1.webp', 'landak-bedroom-1-angle-2.webp'], {'landak-bedroom-1.webp': 'Bedroom', 'landak-bedroom-1-angle-2.webp': 'Bedroom, second angle'}),
-        _r('landak', 'Bathrooms', '3 bathrooms', ['landak-bathroom-1.webp', 'landak-bathroom-2.webp']),
-        _r('landak', 'Laundry counter', '', ['landak-covered-work-counter-1.webp']),
+        _r('landak', 'Living and dining', '', ['landak-living-room-1.webp', 'landak-living-daylight-angle-1.webp', 'landak-living-daylight-angle-2.webp', 'landak-living-tv-wide-1.webp', 'landak-living-room-staircase-1.webp', 'landak-dining-room-wide-1.webp', 'landak-dining-foosball-1.webp', 'landak-breakfast-bar-living-room-1.webp', 'landak-dining-table-detail-1.webp', 'landak-staircase-1.webp']),
+        _r('landak', 'Games', 'Pool table, darts, foosball, TV with arcade', ['landak-pool-table-darts-1.webp', 'landak-patio-bistro-pool-1.webp', 'landak-pool-table-length-1.webp', 'landak-dartboards-detail-1.webp', 'landak-patio-view-1.webp', 'landak-foosball-table-1.webp', 'landak-tv-games-1.webp'],
+           {'landak-pool-table-darts-1.webp': '8-ft pool table and two dartboards', 'landak-dartboards-detail-1.webp': 'Two dartboards', 'landak-foosball-table-1.webp': 'Foosball table', 'landak-tv-games-1.webp': 'TV with game controllers'}),
+        _r('landak', 'Kitchen', 'For light cooking', ['landak-kitchen-breakfast-bar-1.webp', 'landak-breakfast-bar-portrait-1.webp', 'landak-kitchen-sink-1.webp', 'landak-kitchen-appliances-1.webp']),
+        _r('landak', 'Bedrooms', '3 bedrooms, 1 king and 4 queen beds', ['landak-bedroom-1.webp', 'landak-bedroom-1-angle-3.webp', 'landak-bedroom-1-angle-2.webp'], {'landak-bedroom-1.webp': 'Bedroom', 'landak-bedroom-1-angle-3.webp': 'Bedroom, from the door', 'landak-bedroom-1-angle-2.webp': 'Bedroom, second angle'}),
+        _r('landak', 'Bathrooms', '3 bathrooms', ['landak-bathroom-1.webp', 'landak-bathroom-portrait-1.webp', 'landak-bathroom-2.webp']),
+        _r('landak', 'Laundry counter', '', ['landak-covered-counter-wide-1.webp', 'landak-covered-work-counter-1.webp']),
         _r('landak', 'Outside', 'Parking for 2 cars inside the gate', ['landak-exterior-1.webp']),
     ],
 }
@@ -140,6 +182,41 @@ PAGE_IMG = {
     'causeway-second-link-or-rts-which-way-to-jb-for-a-weekend-stay': 'landak-patio-view-1.webp',
 }
 HOME_MOSAIC = ['landak-pool-table-darts-1.webp', 'prima-dining-room-1.webp', 'landak-tv-games-1.webp']
+# /stays cards: 10 photos each, real photos only
+STAYS_IMG = {
+    'prima': ['prima-living-room-1.webp', 'prima-living-pool-table-3.webp', 'prima-pool-table-dining-1.webp', 'prima-dining-kitchen-wide-1.webp', 'prima-bedroom-b-angle-3.webp',
+              'prima-bedroom-a-1.webp', 'prima-blue-seating-wide-1.webp', 'prima-covered-balcony-view-1.webp', 'prima-kitchen-fridge-1.webp', 'prima-bathroom-wide-1.webp'],
+    'landak': ['landak-living-daylight-angle-1.webp', 'landak-pool-table-darts-1.webp', 'landak-patio-bistro-pool-1.webp', 'landak-dining-room-wide-1.webp', 'landak-foosball-table-1.webp',
+               'landak-tv-games-1.webp', 'landak-bedroom-1.webp', 'landak-kitchen-breakfast-bar-1.webp', 'landak-bathroom-1.webp', 'landak-exterior-1.webp'],
+}
+STAYS_BAND_IMG = 'landak-living-daylight-angle-2.webp'
+# full albums on /stays (every real photo from jb-photos-v2 except prima-living-daylight-wide-1, the old layout), grouped by room
+ALBUM = {
+    'prima': [
+        ('Living room', ['prima-living-room-1.webp', 'prima-living-room-2.webp', 'prima-living-pool-table-2.webp', 'prima-living-pool-table-3.webp', 'prima-tv-wall-1.webp',
+                         'prima-living-entry-angle-1.webp', 'prima-entrance-console-1.webp', 'prima-blue-seating-wide-1.webp', 'prima-blue-seating-area-1.webp', 'prima-blue-seating-tv-1.webp']),
+        ('Games: pool table', ['prima-pool-table-dining-1.webp', 'prima-pool-table-1.webp', 'prima-pool-table-window-1.webp']),
+        ('Kitchen and dining', ['prima-dining-kitchen-wide-1.webp', 'prima-dining-room-1.webp', 'prima-dining-front-1.webp', 'prima-dining-kitchen-axis-1.webp',
+                                'prima-kitchen-fridge-1.webp', 'prima-kitchen-1.webp', 'prima-kitchen-sink-front-1.webp']),
+        ('Bedrooms and study', ['prima-bedroom-b-angle-3.webp', 'prima-bedroom-b-1.webp', 'prima-bedroom-b-angle-2.webp', 'prima-bedroom-b-seating-1.webp', 'prima-bedroom-a-1.webp',
+                                'prima-bedroom-a-angle-2.webp', 'prima-bedroom-a-bed-detail-1.webp', 'prima-dressing-area-1.webp', 'prima-study-desk-1.webp', 'prima-study-desk-angle-2.webp']),
+        ('Bathrooms', ['prima-bathroom-wide-1.webp', 'prima-bathroom-1.webp', 'prima-shower-area-1.webp']),
+        ('Covered balcony', ['prima-covered-balcony-view-1.webp', 'prima-balcony-side-1.webp']),
+    ],
+    'landak': [
+        ('Living room', ['landak-living-room-1.webp', 'landak-living-daylight-angle-1.webp', 'landak-living-daylight-angle-2.webp', 'landak-living-tv-wide-1.webp',
+                         'landak-living-room-staircase-1.webp', 'landak-breakfast-bar-living-room-1.webp', 'landak-staircase-1.webp']),
+        ('Games: pool table, darts, foosball, TV arcade', ['landak-pool-table-darts-1.webp', 'landak-patio-bistro-pool-1.webp', 'landak-pool-table-length-1.webp', 'landak-pool-table-detail-1.webp',
+                         'landak-dartboards-detail-1.webp', 'landak-patio-view-1.webp', 'landak-foosball-table-1.webp', 'landak-dining-foosball-1.webp', 'landak-tv-games-1.webp',
+                         'landak-game-stick-detail-1.webp', 'landak-tv-remote-detail-1.webp']),
+        ('Kitchen and dining', ['landak-dining-room-wide-1.webp', 'landak-dining-table-detail-1.webp', 'landak-kitchen-breakfast-bar-1.webp', 'landak-breakfast-bar-portrait-1.webp',
+                                'landak-kitchen-sink-1.webp', 'landak-kitchen-sink-detail-1.webp', 'landak-kitchen-dishrack-1.webp', 'landak-kitchen-appliances-1.webp']),
+        ('Bedroom', ['landak-bedroom-1.webp', 'landak-bedroom-1-angle-3.webp', 'landak-bedroom-1-angle-2.webp']),
+        ('Bathrooms', ['landak-bathroom-1.webp', 'landak-bathroom-2.webp', 'landak-bathroom-portrait-1.webp']),
+        ('Laundry and utility', ['landak-covered-counter-wide-1.webp', 'landak-covered-work-counter-1.webp', 'landak-ironing-counter-detail-1.webp', 'landak-electrical-controls-1.webp']),
+        ('Outside', ['landak-exterior-1.webp']),
+    ],
+}
 HOME_CTA_IMG = 'landak-living-room-1.webp'
 
 
@@ -148,7 +225,7 @@ def _alt_for(f):
 
 
 def used_images():
-    s = {HERO_IMG, HOME_CTA_IMG} | set(HOME_MOSAIC) | set(PAGE_IMG.values())
+    s = {HERO_IMG, HOME_CTA_IMG, STAYS_BAND_IMG} | set(HOME_MOSAIC) | set(PAGE_IMG.values()) | set(STAYS_IMG['prima']) | set(STAYS_IMG['landak']) | {f for k in ALBUM for _g, fs in ALBUM[k] for f in fs}
     for k in ROOMS:
         for _t, _n, ph in ROOMS[k]:
             s |= {p[0] for p in ph}
@@ -194,13 +271,15 @@ HOUSES = {
         'street': '19 Jalan Prima 3/1, Taman Nusantara Prima', 'locality': 'Iskandar Puteri', 'region': 'Johor', 'postal': '79200',
         'addr': '19 Jalan Prima 3/1, Taman Nusantara Prima, Iskandar Puteri, Johor 79200, Malaysia',
         'guests': 20, 'price': 500, 'minstay': 'Minimum stay: ask us', 'beds': 3, 'rating': 'Rated 4.67 on Airbnb (6 reviews)',
-        'tag': 'Big group house with karaoke, mahjong and a BBQ pit',
-        'card': 'A private house for up to 20 guests with karaoke, a mahjong table, a BBQ pit, a pool table and a covered balcony, about 10 minutes from Tuas.',
+        'tag': 'Big group house with a pool table, karaoke, mahjong and a BBQ pit',
+        'card': 'A private house for up to 20 guests with a pool table in the living room, karaoke, a mahjong table and a BBQ pit, about 10 minutes from Tuas.',
+        'bestfor': 'Best for big family and friends gatherings near Legoland and Puteri Harbour, 10 min from Tuas Checkpoint',
+        'top': ['Pool table', 'Karaoke', 'Mahjong', 'BBQ pit', 'Big living room for gatherings'],
         'stats': [('Guests', 'Up to 20'), ('Bedrooms', '3'), ('Bathrooms', '3'), ('Rate', 'RM 500 per night')],
-        'intro': ['Prima is a private holiday house in Taman Nusantara Prima, Iskandar Puteri, for up to 20 guests at RM 500 per night. It has 3 bedrooms and 3 bathrooms, with karaoke, a mahjong table and a BBQ pit for group gatherings.',
+        'intro': ['Prima is a private holiday house in Taman Nusantara Prima, Iskandar Puteri, for up to 20 guests at RM 500 per night. It has 3 bedrooms and 3 bathrooms, with a pool table in the living room, karaoke, a mahjong table and a BBQ pit for group gatherings.',
                   'There is about 2,500 sq ft to spread out in: a living room with a pool table, a dining area and kitchen, a study desk, a dressing area and a covered balcony with a bistro set. Two TVs with Netflix, Wi-Fi, a washer and air conditioning are included, and parking is free.',
                   'The host states it is about 10 minutes to Tuas and about 15 minutes to Woodlands, which makes it a natural pick if you cross by the Second Link. LEGOLAND, Puteri Harbour, Johor Premium Outlets, Eco Botanic, GP Mall, XPark and AEON Bukit Indah are about 15 minutes away.'],
-        'amen': ['Karaoke set', 'Mahjong table', 'BBQ pit', 'Pool table', 'Wi-Fi', 'Air conditioning', 'Kitchen', 'Free parking',
+        'amen': ['Pool table', 'Karaoke set', 'Mahjong table', 'BBQ pit', 'Wi-Fi', 'Air conditioning', 'Kitchen', 'Free parking',
                  '2 TVs with Netflix', 'Washer', 'Covered balcony', 'Study desk', 'Self check-in'],
         'rules': ['Check-in and check-out times: ask us on WhatsApp and we will confirm before you book.', 'Self check-in.', 'No pets.', 'No smoking.',
                   'Quiet hours 11:00 pm to 7:00 am. Guests must not disturb neighbours.', 'Please send a copy of your ID by WhatsApp before check-in.',
@@ -227,6 +306,8 @@ HOUSES = {
         'addr': 'Jalan Landak Kawan 2, Taman Abad, Johor Bahru, Johor 80250, Malaysia',
         'guests': 10, 'price': 500, 'minstay': 'Minimum 1 night', 'beds': 3, 'rating': 'Rated 5.0 on Airbnb (4 reviews)',
         'tag': 'Games house a 5-minute walk from KSL City Mall',
+        'bestfor': 'Best for groups who want to walk to KSL City Mall, food and the onsen',
+        'top': ['Pool table', 'Foosball', 'Darts', 'TV arcade', '5-min walk to KSL City Mall'],
         'card': 'A new double-storey house for up to 10 guests with a pool table, foosball, darts and a TV with arcade games, a 5-minute walk from KSL City Mall.',
         'stats': [('Guests', 'Up to 10'), ('Bedrooms', '3'), ('Bathrooms', '3'), ('Rate', 'RM 500 per night')],
         'intro': ['Landak Kawan Fun House is a new double-storey house in Taman Abad, Johor Bahru, completed in September 2026, a 5-minute walk from KSL City Mall. It sleeps up to 10 guests at RM 500 per night, with 3 bedrooms, 3 bathrooms, a pool table, foosball and darts.',
@@ -278,7 +359,7 @@ ARTICLES = [
             ('Up to 10 guests: Landak Kawan Fun House', ['<a href="{R}stays/landak-kawan-fun-house-taman-abad/">Landak Kawan Fun House</a> in Taman Abad has 3 bedrooms, 3 bathrooms, 1 king bed and 4 queen beds (bedrooms 2 and 3 each have two queens). The rate is RM 500 per night with a 1-night minimum.',
                 'For entertainment it has an 8-foot pool table, a foosball table, two dartboards and a 55-inch smart TV with an arcade console. Wi-Fi is 100 Mbps. House rules: no smoking, pets, durian or BBQ, with quiet hours from 11:00 pm to 7:00 am.']),
             ('Up to 20 guests: Prima', ['<a href="{R}stays/prima-taman-nusantara-prima/">Prima</a> in Taman Nusantara Prima, Iskandar Puteri, sleeps up to 20 guests in 3 bedrooms with 3 bathrooms. The rate is RM 500 per night; ask us for the minimum stay on your dates.',
-                'It has a karaoke set, a mahjong table, a BBQ pit, a pool table, a study desk and a covered balcony, plus a kitchen, 2 TVs with Netflix and free parking, in about 2,500 sq ft.']),
+                'It has a pool table, a karaoke set, a mahjong table, a BBQ pit, a study desk and a covered balcony, plus a kitchen, 2 TVs with Netflix and free parking, in about 2,500 sq ft.']),
             ('Getting your group across', ['Many groups drive. The host states Prima is about 10 minutes from Tuas and 15 from Woodlands, and Landak is about 10 minutes from CIQ. See our <a href="{R}getting-there/">guide to getting to Johor Bahru</a> for the Causeway, Second Link and RTS Link options.']),
             ('How to ask about dates', ['Message us on WhatsApp with your group size and dates. Prices are in RM. We will reply with availability and the rate for your dates.']),
         ],
@@ -394,7 +475,7 @@ def ico(name, size=22, cls='i'):
 AMEN_ICON = [('wi-fi', 'wifi'), ('air con', 'snow'), ('kitchen', 'pot'), ('parking', 'parking'), ('smart tv', 'tv'), ('washer', 'washer'),
              ('karaoke', 'mic'), ('mahjong', 'tiles'), ('bbq', 'fire'), ('workspace', 'desk'), ('desk', 'desk'), ('playroom', 'slide'), ('pool table', 'cue'), ('board games', 'tiles'),
              ('games room', 'cue'), ('study', 'book'), ('family room', 'sofa'), ('rooftop', 'sun'), ('balcony', 'rail'), ('dressing', 'hanger'), ('netflix', 'tv'),
-             ('dartboard', 'target'), ('foosball', 'foos'), ('hair dryer', 'wind'), ('iron', 'iron'), ('check-in', 'key'), ('tv', 'tv'), ('washer', 'washer')]
+             ('dartboard', 'target'), ('darts', 'target'), ('foosball', 'foos'), ('arcade', 'tv'), ('ksl', 'walk'), ('karaoke', 'mic'), ('mahjong', 'tiles'), ('living room', 'sofa'), ('hair dryer', 'wind'), ('iron', 'iron'), ('check-in', 'key'), ('tv', 'tv'), ('washer', 'washer')]
 
 
 def amen_icon(a):
@@ -403,6 +484,12 @@ def amen_icon(a):
         if k in low:
             return v
     return 'check'
+
+
+def pimg800(f, alt=None):
+    """Album tile: the 800px file only (thumb/), lazy, async, real width/height. The 1600px file opens in the lightbox."""
+    w, h = tdims(f)
+    return '<img src="{R}thumb/%s" alt="%s" width="%d" height="%d" loading="lazy" decoding="async">' % (f, e(_alt_for(f) if alt is None else alt), w, h)
 
 
 def pimg(f, alt=None, cls='', eager=False, sizes='(min-width:1024px) 50vw, 100vw', thumb=True, lazy=True):
@@ -539,11 +626,12 @@ if('IntersectionObserver' in window&&!rm){var io=new IntersectionObserver(functi
 d.querySelectorAll('[data-carousel]').forEach(function(c){
 var t=c.querySelector('.track'),held=false,rt=null,drag=null,moved=false,cnt=c.querySelector('.cnt'),sl=t.querySelectorAll('.slide'),n=sl.length,chips=[].slice.call(c.querySelectorAll('.rchips button'));
 function idx(){return Math.round(t.scrollLeft/Math.max(1,t.clientWidth))}
-function upd(){var i=Math.min(idx(),n-1);if(cnt)cnt.textContent=(i+1)+' / '+n;if(chips.length&&sl[i]){var r=sl[i].getAttribute('data-room');chips.forEach(function(b){var on=b.getAttribute('data-room')===r;b.classList.toggle('on',on);b.setAttribute('aria-pressed',on);if(on){var p=b.parentNode;p.scrollTo({left:b.offsetLeft-12,behavior:'auto'})}})}}
+function upd(){var i=Math.min(idx(),n-1);if(cnt)cnt.textContent=(i+1)+' / '+n;dots.forEach(function(b,j){b.classList.toggle('on',j===i)});if(chips.length&&sl[i]){var r=sl[i].getAttribute('data-room');chips.forEach(function(b){var on=b.getAttribute('data-room')===r;b.classList.toggle('on',on);b.setAttribute('aria-pressed',on);if(on){var p=b.parentNode;p.scrollTo({left:b.offsetLeft-12,behavior:'auto'})}})}}
 chips.forEach(function(b){b.addEventListener('click',function(){hold();var i=+b.getAttribute('data-i');t.scrollTo({left:i*t.clientWidth,behavior:rm?'auto':'smooth'});release()})});
 function step(dir){var w=t.clientWidth,max=t.scrollWidth-w;if(max<=4)return;var x=t.scrollLeft+dir*w;if(x>max+4&&dir>0||t.scrollLeft>=max-4&&dir>0)x=0;else if(x<-4)x=max;t.scrollTo({left:x,behavior:rm?'auto':'smooth'})}
 function hold(){held=true;clearTimeout(rt)}
 function release(){clearTimeout(rt);rt=setTimeout(function(){held=false},2000)}
+var dots=[],dw=c.querySelector('.dots');if(dw){for(var k=0;k<n;k++){var db=d.createElement('button');db.type='button';db.setAttribute('aria-label','Photo '+(k+1));(function(i){db.addEventListener('click',function(){hold();t.scrollTo({left:i*t.clientWidth,behavior:rm?'auto':'smooth'});release()})})(k);dw.appendChild(db);dots.push(db)}}
 var nx=c.querySelector('.next'),pv=c.querySelector('.prev');
 if(nx)nx.addEventListener('click',function(){hold();step(1);release()});
 if(pv)pv.addEventListener('click',function(){hold();step(-1);release()});
@@ -586,7 +674,8 @@ lb.addEventListener('touchend',function(e){if(sx===null)return;var dx=e.changedT
 CSS = r"""
 :root{--page:#f7f8f9;--surface:#fff;--ink:#0a1f38;--ink-soft:#45566b;--ink-muted:#6b7a8c;--line:#dfe4e9;--line-strong:#c3ccd6;--panel:#10304f;--panel-deep:#0a1f38;--amber:#e8a33d;--amber-deep:#a86d15;--amber-soft:#fbf1e0;--sky:#e9eff5;
 --r:12px;--r-lg:18px;--ease:cubic-bezier(.23,1,.32,1);--sh:0 1px 2px rgba(10,31,56,.05),0 10px 30px -12px rgba(10,31,56,.22);--sh-lg:0 2px 4px rgba(10,31,56,.06),0 28px 60px -24px rgba(10,31,56,.38);--hh:64px;
---font:"Geist",system-ui,-apple-system,"Segoe UI",Roboto,sans-serif}
+--font:"Geist","Geist Fallback",system-ui,-apple-system,"Segoe UI",Roboto,sans-serif}
+@font-face{font-family:"Geist Fallback";src:local("Arial"),local("Arimo"),local("Liberation Sans"),local("Helvetica"),local("Roboto");size-adjust:90.5%}
 @media(min-width:1024px){:root{--hh:76px}}
 *{box-sizing:border-box}html{overflow-x:clip;-webkit-text-size-adjust:100%;scroll-padding-top:calc(var(--hh) + 16px)}
 @media(prefers-reduced-motion:no-preference){html{scroll-behavior:smooth}}
@@ -776,7 +865,34 @@ table{width:100%;border-collapse:collapse;background:var(--surface);font-size:1r
 @media(min-width:600px){.ocard{grid-template-columns:200px 1fr;padding:14px}.ocard span.ph{aspect-ratio:4/3}}
 .stick{position:fixed;left:0;right:0;bottom:0;z-index:40;padding:10px 16px calc(10px + env(safe-area-inset-bottom));background:rgba(255,255,255,.94);-webkit-backdrop-filter:blur(14px);backdrop-filter:blur(14px);border-top:1px solid var(--line);display:flex;align-items:center;justify-content:space-between;gap:12px;box-shadow:0 -10px 30px -18px rgba(10,31,56,.35)}
 .stick .price b{font-size:1.25rem}.stick .price small{font-size:.875rem;margin-top:2px}.stick .btn{min-height:48px;padding:10px 18px}
-.has-stick{padding-bottom:76px}@media(min-width:1024px){.stick{display:none}.has-stick{padding-bottom:0}}
+.has-stick{padding-bottom:92px}@media(min-width:1024px){.stick{display:none}.has-stick{padding-bottom:0}}
+/* /stays page */
+.scards{display:grid;gap:24px;align-items:stretch}@media(min-width:1024px){.scards{grid-template-columns:1fr 1fr;gap:32px}.scards .scard{grid-row:1}.scards .album{grid-column:1/-1}}
+.album{padding:4px 0 12px}.album h3{font-size:1.375rem;margin:0 0 14px}.album h3 span,.ag h4 span{color:var(--ink-soft);font-weight:500;font-size:1rem}
+.ag{margin:0 0 18px}.ag h4{font-size:1.0625rem;margin:0 0 8px}
+.agrid{display:grid;grid-template-columns:1fr 1fr;gap:6px}@media(min-width:700px){.agrid{grid-template-columns:repeat(3,1fr)}}@media(min-width:1024px){.agrid{grid-template-columns:repeat(4,1fr);gap:8px}}
+.agrid a{display:block;aspect-ratio:4/3;overflow:hidden;border-radius:8px;background:var(--sky)}.agrid img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .5s var(--ease)}.agrid a:hover img{transform:scale(1.04)}
+.cmp-cta{display:grid;gap:10px;margin-top:12px}@media(min-width:600px){.cmp-cta{grid-template-columns:auto auto;justify-content:start}}.cmp-cta .btn{justify-content:center}
+.scard{display:flex;flex-direction:column;background:var(--surface);border:1px solid var(--line);border-radius:var(--r-lg);overflow:hidden;box-shadow:var(--sh)}
+.scar{position:relative;background:var(--sky)}.scar .track{display:flex;overflow-x:auto;scroll-snap-type:x mandatory;scrollbar-width:none;overscroll-behavior-x:contain;-webkit-overflow-scrolling:touch}.scar .track::-webkit-scrollbar{display:none}
+.scar .slide{flex:0 0 100%;min-width:0;aspect-ratio:3/2;scroll-snap-align:center;overflow:hidden}.scar .slide img{width:100%;height:100%;object-fit:cover;display:block}
+.scar .cbtn{display:flex}.scar .prev{left:12px}.scar .next{right:12px}
+.scar .dots{display:none;position:absolute;left:0;right:0;bottom:12px;justify-content:center;gap:6px}.scar .dots{gap:0}.scar .dots button{position:relative;width:44px;height:44px;border:0;background:none;padding:0;cursor:pointer}.scar .dots button::before{content:"";position:absolute;left:17px;top:17px;width:10px;height:10px;border-radius:50%;background:rgba(255,255,255,.6);box-shadow:0 1px 3px rgba(0,0,0,.3)}.scar .dots button.on::before{background:#fff;transform:scale(1.3)}
+@media(max-width:767px){.scar .cbtn{display:none}}@media(min-width:768px){.scar .cbtn{display:flex}.scar .cnt{display:none}.scar .dots{display:flex}}
+.scar .seeall{position:absolute;right:12px;bottom:12px;display:inline-flex;align-items:center;gap:6px;min-height:44px;padding:0 14px;border-radius:999px;background:rgba(255,255,255,.94);color:var(--ink);font-weight:600;font-size:1rem;text-decoration:none;box-shadow:0 4px 14px rgba(10,31,56,.2)}
+@media(min-width:768px){.scar .seeall{bottom:52px}.scar .dots{bottom:2px}}
+.scb{display:flex;flex-direction:column;gap:14px;padding:20px 20px 24px;flex:1}@media(min-width:1024px){.scb{padding:26px 28px 30px}}
+.scb h2{margin:0;font-size:clamp(1.5rem,2.4vw,1.9rem)}.scb .area{margin:0;display:flex;align-items:center;gap:6px;color:var(--ink-soft);font-size:1rem}
+.kf{display:flex;flex-wrap:wrap;gap:8px 18px;margin:0;padding:0;list-style:none;font-weight:600}.kf li{display:flex;align-items:center;gap:7px;min-height:28px}
+.ami{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin:0;padding:0;list-style:none}@media(min-width:700px){.ami{grid-template-columns:repeat(5,1fr)}}
+.ami li{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:6px;text-align:center;padding:12px 6px;border:1px solid var(--line);border-radius:var(--r);background:var(--page);font-size:1rem;font-weight:500;line-height:1.25}
+.bestfor{margin:0;font-size:1.0625rem;line-height:1.5}.scb .rating{margin:0;display:flex;align-items:center;gap:6px;color:var(--ink-soft);font-size:1rem}.scb .rating .i{color:var(--amber)}
+.scta{margin-top:auto;display:grid;gap:10px;padding-top:6px}@media(min-width:480px){.scta{grid-template-columns:1fr auto}}.scta .btn{width:100%;justify-content:center}
+.cmp-sec{margin-top:clamp(44px,7vw,80px)}.cmp{border:1px solid var(--line);border-radius:var(--r);overflow:hidden;margin:0 0 20px}.cmp table{table-layout:fixed;width:100%;min-width:0;border-collapse:collapse}
+.cmp th,.cmp td{padding:12px 14px;vertical-align:top;border-bottom:1px solid var(--line);overflow-wrap:anywhere}.cmp tbody th{width:28%;font-weight:600;background:var(--page)}.cmp thead th{background:var(--sky);font-size:1rem;text-transform:uppercase;letter-spacing:.06em;color:var(--ink-soft)}
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+@media(max-width:599px){.cmp thead th:first-child{display:none}.cmp tr{display:grid;grid-template-columns:1fr 1fr}.cmp tbody th{grid-column:1/-1;width:auto;padding:10px 14px 4px;border-bottom:0;font-size:1rem;text-transform:uppercase;letter-spacing:.05em;color:var(--ink-soft);background:transparent}.cmp td{padding:4px 14px 12px}.cmp td:first-of-type{border-right:1px solid var(--line)}.cmp thead th{text-transform:none;letter-spacing:0;font-size:1rem;font-weight:700;color:var(--ink)}}
+.stays .band{margin-top:clamp(44px,7vw,80px)}
 .lb-on .stick{display:none}
 .after-gal,.after-faq{margin:20px 0 0}.after-faq .btn,.after-gal .btn{width:100%}@media(min-width:600px){.after-faq .btn,.after-gal .btn{width:auto}}
 .hcard .card-cta{width:100%;margin-top:6px}.nf .btn{margin-top:8px}
@@ -1038,11 +1154,11 @@ def home_body():
     facts = [('home', '2 private houses'), ('users', 'Sleeps 10 to 20'), ('car', 'About 10 min from Tuas'), ('walk', '5-min walk to KSL City Mall')]
     facts_html = ''.join('<li>%s%s</li>' % (ico(i, 20), e(t)) for i, t in facts)
     why = [('home', 'The whole house is yours', 'Private homes with kitchens, parking and space for the whole group to stay together.'),
-           ('party', 'Made for group gatherings', 'Prima has karaoke, a mahjong table, a BBQ pit and a pool table. Landak Kawan Fun House has a pool table, foosball, darts and an arcade TV.'),
+           ('party', 'Made for group gatherings', 'Prima has a pool table, karaoke, a mahjong table and a BBQ pit. Landak Kawan Fun House has a pool table, foosball, darts and an arcade TV.'),
            ('car', 'Close to the checkpoints', 'Host-stated drive times: Prima about 10 minutes to Tuas, Landak about 10 minutes to CIQ.'),
            ('chat', 'Simple booking', 'Message us on WhatsApp for dates and rates. Prices are in RM.')]
     why_html = ''.join('<li>%s<b>%s</b><span>%s</span></li>' % (ico(i, 30), t, d) for i, t, d in why)
-    steps = [('Pick a house.', 'Choose Prima for a big group of up to 20 with karaoke, mahjong and a BBQ pit, or Landak Kawan Fun House for up to 10 with games and a short walk to KSL City Mall.'),
+    steps = [('Pick a house.', 'Choose Prima for a big group of up to 20 with a pool table, karaoke, mahjong and a BBQ pit, or Landak Kawan Fun House for up to 10 with games and a short walk to KSL City Mall.'),
              ('Message us your dates.', 'Send your group size and dates on WhatsApp and we will confirm the rate and availability.'),
              ('Cross with your passport.', 'Check ICA\'s traffic updates before you leave, then drive in and settle in. Both houses have self check-in; Landak is after 3:00 pm.')]
     steps_html = ''.join('<li><div><b>%s</b><span>%s</span></div></li>' % (e(a), e(b)) for a, b in steps)
@@ -1088,17 +1204,66 @@ def home_body():
            ico('x', 22, 'i pm'), arts, ico('arrow', 18), ico('arrow', 18), faq_html, pimg(HOME_CTA_IMG, sizes='100vw'), wa_btn('Message us on WhatsApp', msg, 'home-cta')))
 
 
+STAYS_FAQ = [
+    ('How much does a night cost?', 'Both houses are RM 500 per night. Prices are in Malaysian ringgit (RM). Message us on WhatsApp for the rate on your dates.'),
+    ('Is there a minimum stay?', 'Landak Kawan Fun House has a minimum of 1 night. For Prima, ask us on WhatsApp for the minimum stay on your dates.'),
+    ('How do I book?', 'Message us on WhatsApp at %s with the house, your dates and group size. Bookings are made through WhatsApp only.' % WA_SHOW),
+    ('Is there parking?', 'Yes. Parking is free at Prima, and 2 cars park inside the gate at Landak Kawan Fun House.'),
+    ('What are the house rules?', 'No smoking and no pets at either house, with quiet hours from 11:00 pm to 7:00 am. Gatherings are welcome; larger gatherings need prior approval. Landak Kawan Fun House also has no BBQ, charcoal grilling or durian.'),
+    ('How far are the houses from Singapore?', 'The host states Prima is about 10 minutes from Tuas checkpoint and about 15 minutes from Woodlands. Landak Kawan Fun House is about 10 minutes from JB CIQ and a 5-minute walk from KSL City Mall.'),
+]
+CMP_ROWS = [
+    ('Area', 'Taman Nusantara Prima, Iskandar Puteri', 'Taman Abad, Johor Bahru'),
+    ('Guests', 'Up to 20', 'Up to 10'),
+    ('Bedrooms', '3', '3 (5 beds: 1 king, 4 queen)'),
+    ('Bathrooms', '3', '3'),
+    ('Price per night', 'RM 500', 'RM 500'),
+    ('Standout fun', 'Pool table, karaoke, mahjong, BBQ pit', 'Pool table, foosball, darts, TV arcade, board games'),
+    ('Nearby', 'Legoland, Puteri Harbour, about 10 min from Tuas', 'KSL City Mall 5-min walk, about 10 min from CIQ'),
+    ('Check-in / out', 'Ask us (self check-in)', 'Self check-in after 3:00 pm, out before 11:00 am'),
+]
+
+
+def stays_card(k):
+    h = HOUSES[k]
+    imgs = STAYS_IMG[k]
+    slides = ''.join('<div class="slide">%s</div>' % (
+                     pimg(f, eager=True, lazy=False, sizes='(min-width:1024px) 600px, 100vw') if i == 0 else pimg800(f)) for i, f in enumerate(imgs))
+    facts = [('users', '%d guests' % h['guests']), ('bed', '%d bedrooms' % h['beds'])] + ([('bed', '5 beds')] if k == 'landak' else []) + [('bath', '3 bathrooms'), ('cal', 'RM 500 / night')]
+    facts_html = ''.join('<li>%s%s</li>' % (ico(i, 20), e(t)) for i, t in facts)
+    top = ''.join('<li>%s<span>%s</span></li>' % (ico(amen_icon(a), 24), e(a)) for a in h['top'])
+    return ('<article class="scard rv" id="%s"><div class="scar cz" data-carousel data-dots aria-roledescription="carousel" aria-label="Photos of %s"><div class="track" tabindex="0">%s</div>'
+            '<button class="cbtn prev" type="button" aria-label="Previous photo">%s</button><button class="cbtn next" type="button" aria-label="Next photo">%s</button>'
+            '<span class="cnt" aria-hidden="true">1 / %d</span><div class="dots" aria-hidden="true"></div><a class="seeall" href="#album-%s">%sSee all %d photos</a></div>'
+            '<div class="scb"><p class="area">%s%s</p><h2>%s</h2><ul class="kf">%s</ul><ul class="ami">%s</ul>'
+            '<p class="bestfor">%s.</p><p class="rating">%s%s</p>'
+            '<div class="scta">%s<a class="btn btn-line" href="{R}stays/%s/">View house %s</a></div></div></article>'
+            % (k, e(h['name']), slides, ico('left', 22), ico('right', 22), len(imgs), k, ico('grid', 18), sum(len(fs) for _g, fs in ALBUM[k]),
+               ico('pin', 16), e(AREA[k]), e(h['name']), facts_html, top, e(h['bestfor']), ico('star', 16), e(h['rating']),
+               wa_btn('Check dates for %s' % h['name'].replace(' Kawan Fun House', ''), h['msg'], 'stays-' + k), h['slug'], ico('arrow', 18)))
+
+
+def album(k):
+    h = HOUSES[k]
+    n = sum(len(fs) for _g, fs in ALBUM[k])
+    groups = ''.join('<div class="ag"><h4>%s <span>%d</span></h4><div class="agrid">%s</div></div>'
+                     % (e(g), len(fs), ''.join('<a href="{R}img/%s" data-lb data-cap="%s">%s</a>' % (f, e(ALT[f]), pimg800(f))
+                                             for f in fs)) for g, fs in ALBUM[k])
+    return ('<section class="album" id="album-%s" aria-labelledby="alb-%s"><h3 id="alb-%s">Full photo album: %s <span>%d photos</span></h3>%s'
+            '<p class="after-gal">%s</p></section>' % (k, k, k, e(h['name']), n, groups, wa_btn('Check dates for %s' % h['name'].replace(' Kawan Fun House', ''), h['msg'], 'album-' + k)))
+
+
 def stays_body():
-    return ('<div class="wrap body"><div class="cards">%s%s</div>'
-            '<section class="rv" style="margin-top:clamp(48px,7vw,80px)"><p class="eyebrow">Side by side</p><h2>Which house is right for you?</h2><div class="tw"><table><thead><tr><th></th><th>Prima</th><th>Landak Kawan Fun House</th></tr></thead><tbody>'
-            '<tr><th>Area</th><td>Taman Nusantara Prima, Iskandar Puteri</td><td>Taman Abad, Johor Bahru</td></tr>'
-            '<tr><th>Guests</th><td>Up to 20</td><td>Up to 10</td></tr>'
-            '<tr><th>Bedrooms and bathrooms</th><td>3 bedrooms, 3 bathrooms</td><td>3 bedrooms, 3 bathrooms, 5 beds</td></tr>'
-            '<tr><th>Minimum stay</th><td>Ask us</td><td>1 night</td></tr>'
-            '<tr><th>Rate</th><td>RM 500 per night</td><td>RM 500 per night</td></tr>'
-            '<tr><th>Best for</th><td>Big groups, karaoke, mahjong, BBQ, pool table</td><td>Games nights: pool, foosball, darts, arcade TV, near KSL City Mall</td></tr>'
-            '<tr><th>Host-stated distance</th><td>About 10 min to Tuas, 15 min to Woodlands</td><td>5-minute walk to KSL City Mall, 10 min to CIQ</td></tr>'
-            '</tbody></table></div></section></div>' % (house_card('prima'), house_card('landak')))
+    faq_html, faq_ld = faq_block(STAYS_FAQ, 'Questions about our houses', cta='<p class="after-faq">%s</p>' % wa_btn('Ask us on WhatsApp', wa_msg(), 'stays-faq'))
+    PENDING.setdefault('stays/', []).append(faq_ld)
+    rows = ''.join('<tr><th scope="row">%s</th><td>%s</td><td>%s</td></tr>' % (e(a), e(b), e(c)) for a, b, c in CMP_ROWS)
+    return ('<div class="wrap body"><div class="scards">%s%s%s%s</div>'
+            '<section class="rv cmp-sec"><p class="eyebrow">Side by side</p><h2>Which house is right for you?</h2><div class="cmp"><table><thead><tr><th scope="col"><span class="sr">Detail</span></th><th scope="col">Prima</th><th scope="col">Landak Kawan Fun House</th></tr></thead><tbody>%s</tbody></table></div>'
+            '<p class="note">Drive and walk times are as stated by the host. Prices in RM.</p><div class="cmp-cta">%s%s</div></section>'
+            '<section class="rv" id="faq">%s</section></div>'
+            '<section class="sec band"><div class="bg">%s</div><div class="wrap rv"><p class="eyebrow">Book direct</p><h2>Tell us your dates and group size</h2><p>We reply on WhatsApp with the rate and availability for the house you pick.</p>%s</div></section>'
+            % (stays_card('prima'), album('prima'), stays_card('landak'), album('landak'), rows,
+               wa_btn('WhatsApp about Prima', HOUSES['prima']['msg'], 'cmp-prima'), wa_btn('WhatsApp about Landak', HOUSES['landak']['msg'], 'cmp-landak'), faq_html, pimg(STAYS_BAND_IMG, sizes='100vw'), wa_btn('Message us on WhatsApp', wa_msg(), 'stays-band')))
 
 
 def room_gallery(k):
@@ -1207,7 +1372,7 @@ def prices_body():
     rows = ''.join('<tr><th><a href="{R}stays/%s/">%s</a></th><td>RM %d per night</td><td>%s</td><td>Up to %d</td></tr>'
                    % (HOUSES[k]['slug'], e(HOUSES[k]['name']), HOUSES[k]['price'], e(HOUSES[k]['minstay']), HOUSES[k]['guests']) for k in ORDER)
     return ('<div class="wrap body prose"><div class="tw"><table><thead><tr><th>House</th><th>Rate</th><th>Minimum stay</th><th>Guests</th></tr></thead><tbody>%s</tbody></table></div>'
-            '<section class="rv"><h2>What is included</h2><p><b>Prima:</b> karaoke set, mahjong table, BBQ pit, pool table, Wi-Fi, air conditioning, kitchen, free parking, 2 TVs with Netflix, washer, covered balcony and a study desk. 3 bedrooms, 3 bathrooms, up to 20 guests.</p>'
+            '<section class="rv"><h2>What is included</h2><p><b>Prima:</b> pool table, karaoke set, mahjong table, BBQ pit, Wi-Fi, air conditioning, kitchen, free parking, 2 TVs with Netflix, washer, covered balcony and a study desk. 3 bedrooms, 3 bathrooms, up to 20 guests.</p>'
             '<p><b>Landak Kawan Fun House:</b> 8-ft pool table, foosball, two dartboards, 55-inch TV with arcade games, board games, kids\' playroom, 100 Mbps Wi-Fi, air conditioning, kitchen for light cooking, parking for 2 cars inside, washer, hair dryer and iron. 3 bedrooms, 3 bathrooms, 5 beds, up to 10 guests.</p></section>'
             '<section class="rv"><h2>Good to know</h2><ul><li>All prices are in Malaysian ringgit (RM).</li><li>Rates for your dates, deposits and payment details are confirmed on WhatsApp.</li>'
             '<li>Larger gatherings need prior approval; at Landak Kawan Fun House they may cost extra.</li></ul>%s</section></div>'
@@ -1304,15 +1469,15 @@ def build_pages():
          'Private Johor Bahru houses for groups of up to 20, RM 500 per night each. Message us on WhatsApp to check dates.',
          'JB staycation for big groups: Johor Bahru holiday houses', '', ld=[org_ld(), {'@context': 'https://schema.org', '@type': 'WebSite', 'name': NAME, 'url': BASE}])
     PAGES['']['body'] = home_body()
-    page('stays/', 'Johor Bahru Holiday Houses | JBStaycation', 'Compare Prima (up to 20 guests) and Landak Kawan Fun House (up to 10 guests): private holiday houses in Johor Bahru, RM 500 per night.',
-         'Our Johor Bahru holiday houses', stays_body(), [('Home', ''), ('Stays', 'stays/')],
-         lede='Two private houses, one for big groups and one for games nights near KSL City Mall.',
-         ld=[{'@context': 'https://schema.org', '@type': 'ItemList', 'itemListElement': [{'@type': 'ListItem', 'position': i + 1, 'url': BASE + 'stays/%s/' % HOUSES[k]['slug'], 'name': HOUSES[k]['full']} for i, k in enumerate(ORDER)]}])
+    page('stays/', 'JB Staycation House for Groups | JBStaycation', 'Two entire landed homes in Johor Bahru for groups of 10 to 20, RM 500 per night: Prima with a pool table, karaoke and BBQ pit, and Landak near KSL City Mall. Book on WhatsApp.',
+         'JB staycation houses for big groups', stays_body(), [('Home', ''), ('Stays', 'stays/')],
+         lede='Both are entire landed homes in Johor Bahru at RM 500 per night, booked on WhatsApp.', og=STAYS_IMG['prima'][1],
+         ld=[house_ld(HOUSES[k]) for k in ORDER] + [{'@context': 'https://schema.org', '@type': 'ItemList', 'itemListElement': [{'@type': 'ListItem', 'position': i + 1, 'url': BASE + 'stays/%s/' % HOUSES[k]['slug'], 'name': HOUSES[k]['full']} for i, k in enumerate(ORDER)]}])
     for k in ORDER:
         h = HOUSES[k]
         path = 'stays/%s/' % h['slug']
-        titles = {'prima': ('JB Holiday House with Karaoke | JBStaycation', 'Sing karaoke, play mahjong and BBQ with up to 20 guests at RM 500 a night. Message us on WhatsApp to check dates.', H1S['prima']),
-                  'landak': ('Staycation near KSL City Mall | JBStaycation', 'Walk to KSL City Mall, then play pool, foosball and darts for RM 500 a night. Message us on WhatsApp to check dates.', H1S['landak'])}[k]
+        titles = {'prima': ('JB Holiday House with Karaoke | JBStaycation', 'Pool table, karaoke, mahjong and BBQ for up to 20 guests at RM 500 a night. Message us on WhatsApp to check dates.', H1S['prima']),
+                  'landak': ('Staycation near KSL City Mall | JBStaycation', 'Walk to KSL City Mall, then play on the pool table, foosball and darts for RM 500 a night. Message us on WhatsApp to check dates.', H1S['landak'])}[k]
         page(path, titles[0], titles[1], titles[2], '', [('Home', ''), ('Stays', 'stays/'), (h['name'], path)], ld=[house_ld(h)],
              og=BENTO[k][0], stick=k, custom_top=True)
         PAGES[path]['body'] = house_body(k)
