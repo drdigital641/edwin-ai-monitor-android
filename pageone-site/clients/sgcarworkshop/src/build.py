@@ -687,6 +687,91 @@ def estate_by_service(slug, es, depth):
     return ('<section><div class="w nar"><h2>Workshops in %s by service</h2><p>From each workshop\'s listing: its main service, what customers mention on Google Maps, or what its own website lists. Ask the workshop to confirm before you go.</p><ul class="tick svc-plain bylinks">%s</ul></div></section>') % (E(a['name']), ''.join(rows))
 
 
+MRT = json.load(open(os.path.join(HERE, '..', 'data', 'mrt_stations.json')))   # OneMap station points (retrieved 8 Nov 2026), busiest estates only
+LINES = {'DT': 'Downtown Line', 'NS': 'North South Line', 'EW': 'East West Line', 'CC': 'Circle Line', 'NE': 'North East Line', 'TE': 'Thomson-East Coast Line', 'CR': 'Cross Island Line'}
+_BLD = re.compile(r'^\s*(?:Blk\s*)?(\d+[A-Z]?)\s+([^,#]+?)\s*(?:,|#|$)', re.I)
+
+
+_ABBR = [(r'\bRd\b', 'Road'), (r'\bAve\b', 'Avenue'), (r'\bJln\b', 'Jalan'), (r'\bDr\b', 'Drive'), (r'\bCres\b', 'Crescent'), (r'\bSt\b', 'Street'), (r'\bInd\b', 'Industrial'), (r'\bE$', 'East'), (r'\bW$', 'West'), (r'\bN$', 'North'), (r'\bS$', 'South')]
+MAKES = ['Alfa Romeo', 'Audi', 'BMW', 'BYD', 'Chevrolet', 'Citroen', 'Ferrari', 'Ford', 'Honda', 'Hyundai', 'Jaguar', 'Kia', 'Lamborghini', 'Land Rover', 'Lexus', 'Maserati', 'Mazda', 'McLaren', 'Mercedes-Benz', 'MINI', 'Mitsubishi', 'Nissan', 'Opel', 'Peugeot', 'Porsche', 'Renault', 'Rolls-Royce', 'Bentley', 'Skoda', 'Subaru', 'Suzuki', 'Tesla', 'Toyota', 'Volkswagen', 'Volvo']
+
+
+def _street(t):
+    t = re.sub(r'\s+', ' ', t.strip())
+    for a, b in _ABBR:
+        t = re.sub(a, b, t)
+    return t
+
+
+def _make(m):
+    m = {'mercedes': 'Mercedes-Benz', 'vw': 'Volkswagen', 'mini': 'MINI', 'land-rover': 'Land Rover'}.get(m.strip().lower(), m.strip())
+    return next((x for x in MAKES if x.lower() == m.lower()), None)
+
+
+def _dist_txt(km):
+    return ('about %d m' % (round(km * 1000 / 50) * 50)) if km < 1 else ('about %.1f km' % km)
+
+
+def estate_practical(slug, es, depth):
+    """Estate page 'Getting there and practical details' (Edwin, 8 Nov 2026): only facts anyone can check. MRT distances are straight-line from
+    OneMap station points to the middle of the listed workshops; buildings, hours, parking and payment are counted from the listings we hold."""
+    free = [e for e in es if e['tier'] == 'free' and e.get('lat')]
+    if slug not in MRT['estates'] or len(free) < 5:
+        return ''
+    a = ESTATES[slug]
+    mid = dict(lat=sum(float(e['lat']) for e in free) / len(free), lon=sum(float(e['lon']) for e in free) / len(free))
+    sts = sorted((_km(mid, s), s) for s in (MRT['stations'].get(n) for n in MRT['estates'][slug]) if s and not s['code'].startswith('CR'))
+    li = []
+    if sts:
+        def one(d, s):
+            codes = [c.strip() for c in s['code'].split('/')]
+            ln = and_list(dict.fromkeys(LINES[c[:2]] for c in codes if c[:2] in LINES))
+            return '%s (%s%s), %s' % (s['name'], s['code'], ', ' + ln if ln else '', _dist_txt(d))
+        li.append('<li><b>Nearest MRT:</b> %s. %s</li>' % (E(one(*sts[0])), ('Next nearest: %s.' % E(one(*sts[1]))) if len(sts) > 1 else ''))
+    blds = {}
+    for e in free:
+        m = _BLD.match(e['address_public'])
+        if m:
+            k = '%s %s' % (m.group(1), _street(m.group(2)))
+            blds.setdefault(k.lower(), [k, 0])[1] += 1
+    top = sorted(blds.values(), key=lambda x: (-x[1], x[0]))[:5]
+    if top and top[0][1] > 1:
+        li.append('<li><b>Where the workshops are:</b> %s. Many share one building, so check the unit number before you park.</li>' % E('; '.join('%s (%d)' % (k, n) for k, n in top if n > 1) or top[0][0]))
+    hrs = [e for e in free if (GCACHE.get(e['slug']) or {}).get('weekdayDescriptions')]
+    if len(hrs) >= 3:
+        sat = sum(1 for e in hrs if any(d.startswith('Saturday') and 'Closed' not in d for d in GCACHE[e['slug']]['weekdayDescriptions']))
+        sun = sum(1 for e in hrs if (FACTS.get(e['slug']) or {}).get('sunday'))
+        late = sum(1 for e in hrs if (FACTS.get(e['slug']) or {}).get('late'))
+        nn = lambda n: str(n) if n else 'none'
+        li.append('<li><b>Opening days:</b> of the %d workshops here with Google Maps hours, %s open on Saturday, %s on Sunday and %s open late on weekdays. Use the Open Sunday and Open late filters above.</li>' % (len(hrs), nn(sat), nn(sun), nn(late)))
+    pk, pay = {}, {}
+    for e in free:
+        g = GCACHE.get(e['slug']) or {}
+        for k, v in (g.get('parkingOptions') or {}).items():
+            if v: pk[k] = pk.get(k, 0) + 1
+        for k, v in (g.get('paymentOptions') or {}).items():
+            if v and k != 'acceptsCashOnly': pay[k] = pay.get(k, 0) + 1
+    PKN = dict(freeParkingLot='free parking lot', paidParkingLot='paid parking lot', freeGarageParking='free garage parking', paidGarageParking='paid garage parking', freeStreetParking='free street parking', paidStreetParking='paid street parking', valetParking='valet parking')
+    if pk:
+        _np = len([e for e in free if (GCACHE.get(e['slug']) or {}).get('parkingOptions')])
+        li.append('<li><b>Parking:</b> %s on Google Maps: %s. Parking rules differ by building, so check the signs at the entrance.</li>'
+                  % ('%d workshop%s list parking' % (_np, '' if _np == 1 else 's'), E(', '.join('%s (%d)' % (PKN.get(k, k), n) for k, n in sorted(pk.items(), key=lambda x: -x[1])))))
+    PYN = dict(acceptsCreditCards='credit cards', acceptsDebitCards='debit cards', acceptsNfc='contactless')
+    if pay:
+        li.append('<li><b>Payment:</b> on Google Maps, %s.</li>' % E(', '.join('%d accept %s' % (n, PYN.get(k, k)) for k, n in sorted(pay.items(), key=lambda x: -x[1]))))
+    mk = {}
+    for e in free:
+        for m_ in dict.fromkeys(filter(None, map(_make, (PILOT.get(e['slug']) or {}).get('makes', [])))):
+            mk[m_] = mk.get(m_, 0) + 1
+    if mk:
+        li.append('<li><b>Car makes named on their own websites:</b> %s.</li>' % E(', '.join('%s (%d)' % (k, n) for k, n in sorted(mk.items(), key=lambda x: (-x[1], x[0]))[:10])))
+    if not li:
+        return ''
+    return ('<section><div class="w nar"><h2>Getting there and practical details</h2><ul class="tick svc-plain">%s</ul>'
+            '<p class="fine">%sMRT points from OneMap (Singapore Land Authority), checked %s; distances are straight-line to the middle of the listed workshops, so the walk is longer. '
+            'Counts come from the %d workshop listings here and their Google Maps details. Confirm with the workshop before you go.</p></div></section>\n') % (''.join(li), '' if sts else 'No MRT distance is shown for this estate yet. ', MRT['retrieved'], len(free))
+
+
 def estate(slug, es):
     """Level 2: /areas/<estate>/  (main local SEO page)"""
     depth = 2
@@ -739,7 +824,7 @@ def estate(slug, es):
 {about_html}
 {featured_sec(paid_es, depth, 'areas/%s/' % slug, 'in ' + a['name'])}
 <section class="alt"><div class="w"><h2>Workshops in {E(a['name'])}</h2>{order_note}{etools}<div class="grid" id="estate-grid">{''.join(card(e, depth, 'areas/%s/' % slug) for e in es if not is_paid(e))}{list_card(depth, 'car workshop in ' + a['name'])}</div>{shortlist_links(es, a['name'])}</div></section>
-{estate_by_service(slug, es, depth)}
+{estate_practical(slug, es, depth)}{estate_by_service(slug, es, depth)}
 <section class="alt"><div class="w"><h2>Map of {E(a['name'])}</h2>
 <div class="mapbox"><iframe src="{E(map_src)}" title="Map of {E(a['name'], True)}" loading="lazy" referrerpolicy="strict-origin-when-cross-origin"></iframe></div>
 <p class="fine">Approximate area map from OpenStreetMap. <a href="{E(map_big)}" target="_blank" rel="noopener">View a larger map</a>. Use the Directions button on a workshop for its exact address.</p></div></section>
@@ -1782,6 +1867,40 @@ FREE_BLOCKS = dict(hero=b_hero, contact=b_contact, services=b_services, good_for
                    comparison=b_comparison, hours=b_hours, stories=b_stories, location=b_location, tips=b_tips, faq=b_faq, claim=b_claim, sources=b_sources)
 
 
+THIN_MIN_WORDS = 40   # workshop-specific words needed when Google has too little (Edwin, 8 Nov 2026, thin-page audit)
+THIN_MIN_RATINGS = 10
+
+
+def _wc(t):
+    return len(re.findall(r"[A-Za-z0-9][\w'-]*", str(t or '')))
+
+
+def specific_words(e, pl):
+    """Words on a workshop page that describe this workshop and nowhere else: own-website facts, specialities, makes, stories, a review summary
+    (only with THIN_MIN_RATINGS+ Google ratings) and Google's own summary. Template sentences (the Google-only lede) count zero."""
+    g = GCACHE.get(e['slug']) or {}
+    lede = pl.get('lede', '')
+    n = 0 if 'Its Google Maps listing shows' in lede else _wc(lede)
+    n += sum(_wc(x) for k in ('specialties', 'good_for', 'good_to_know') for x in pl.get(k, []))
+    n += _wc(' '.join(pl.get('makes', []))) + sum(_wc(x.get('text')) for x in pl.get('stories', []))
+    n += sum(_wc(x) for x in pl.get('services', []) if x != 'General servicing and repair')
+    if (g.get('userRatingCount') or 0) >= THIN_MIN_RATINGS:
+        n += _wc(pl.get('themes') or g.get('review_themes'))
+    n += _wc(g.get('editorialSummary'))
+    return n
+
+
+def thin_reason(e, pl):
+    """'' when a workshop page has enough of its own content to index; else why it stays out of Google (noindex, follow; off the sitemap and llms.txt).
+    Enough = Google hours + a review summary from THIN_MIN_RATINGS+ ratings, or THIN_MIN_WORDS+ workshop-specific words. Thin pages stay live and linked."""
+    g = GCACHE.get(e['slug']) or {}
+    if g.get('weekdayDescriptions') and (pl.get('themes') or g.get('review_themes')) and (g.get('userRatingCount') or 0) >= THIN_MIN_RATINGS:
+        return ''
+    if specific_words(e, pl) >= THIN_MIN_WORDS:
+        return ''
+    return 'thin workshop page: under %d Google ratings and under %d workshop-specific words' % (THIN_MIN_RATINGS, THIN_MIN_WORDS)
+
+
 def pilot_page(e, pl):
     """Basic workshop page: block stack (see TEMPLATE SYSTEM above). Own wording from data/pilot/<slug>.json; phone = stored Google mobile only."""
     x = X(e, pl)
@@ -1800,8 +1919,9 @@ def pilot_page(e, pl):
     if _hs:
         ld['openingHoursSpecification'] = _hs   # times exactly as on its Google Maps listing; no aggregateRating (the rating is Google's, not collected here)
     bar = wabar([wa_btn(e, path), call_btn(e, path)])
+    _thin = thin_reason(e, pl)
     page(path, card_title(e), card_desc(e), body,
-         [ld, faq_ld(x.faqs), dict(crld, **{'@context': 'https://schema.org'})], bar=bar, h1=e['name'])
+         [ld, faq_ld(x.faqs), dict(crld, **{'@context': 'https://schema.org'})], bar=bar, h1=e['name'], index=not _thin, why=_thin)
 
 
 def paid_btns(x):
@@ -2293,6 +2413,8 @@ def build():
     lines += ['', '## Car problem and brand guides', '- [All guides](%sguides/)' % BASE] + ['- [%s](%s%s): %s' % (g['h1'], BASE, _guides.gpath(g), g['desc']) for g in _guides.GUIDES]
     lines += ['', '## Listings']
     for e in ENTRIES:
+        if 'workshops/%s/' % e['slug'] in NOINDEX:
+            continue   # thin pages stay out of llms.txt until they have enough content
         lines.append('- [%s](%sworkshops/%s/): %s, %s%s' % (e['name'], BASE, e['slug'], CAT[e['category']]['name'] + ', ' + TIERS[e['tier']]['label'], e['area_label'], (' (own website: %s)' % e['url']) if e['tier'] == 'premium_leadgen' else ''))
     lines += ['', '## More', '- [List your workshop](%slist-your-workshop/)' % BASE, '- [About](%sabout/)' % BASE, '- [Terms](%sterms/)' % BASE, '- [Privacy](%sprivacy/)' % BASE, '']
     open(OUT + '/llms.txt', 'w').write('\n'.join(lines))

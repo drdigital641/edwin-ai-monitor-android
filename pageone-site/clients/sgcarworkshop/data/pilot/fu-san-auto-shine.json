@@ -1,27 +1,40 @@
 {
- "lede": "Fu San Auto Shine is a car repair workshop at 1004 Bukit Merah Lane 3, #01-23. Its Google Maps listing shows opening hours and customer ratings.",
+ "lede": "Fu San Auto Shine is a car workshop at Alexandra Village on Bukit Merah Lane 3. Its own website says it focuses on repair and maintenance of Continental and Japanese cars.",
  "chips": [
-  "Car repair"
+  "Car servicing",
+  "Car inspection",
+  "Auto air-con repair"
  ],
  "services": [
-  "General servicing and repair"
+  "Car servicing",
+  "Car inspection",
+  "Auto air-con repair",
+  "Car spray painting",
+  "Wheel alignment",
+  "Auto body repair"
  ],
  "themes": "Customers on Google Maps mention detailed checks during maintenance, finding worn tyres and a cracked fan, tracing a hard-to-find noise and long-term care of a VW Golf.",
  "faqs": [
-  [
-   "What does Fu San Auto Shine do?",
-   "Google Maps lists it as a car repair workshop."
-  ],
   [
    "What are the opening hours?",
    "The hours are listed in the Google Maps section above. Please see Google Maps for current hours."
   ]
  ],
- "sources": "its Google Maps listing",
+ "sources": "its own website (sitelift.site)",
  "stories": [],
  "mentioned_services": [
   "Car servicing",
   "Noise diagnosis",
   "Volkswagen cars"
- ]
+ ],
+ "specialties": [
+  "Continental and Japanese cars"
+ ],
+ "good_to_know": [
+  "Its website lists servicing, inspection, aircon repair, spray painting, wheel alignment and body repair",
+  "Its website has a request-a-call form"
+ ],
+ "services_note": "Services as listed on the workshop's own website, sitelift.site.",
+ "card_rules": "2026-11-05",
+ "makes_note": "Its website names Continental and Japanese cars. Ask the workshop about other makes."
 }

@@ -1,27 +1,43 @@
 {
- "lede": "SK Garage Motorsports is a car repair workshop at 5 Soon Lee St, #01-34 Pioneer Point. Its Google Maps listing shows opening hours and customer ratings.",
+ "lede": "SK Garage Motorsports is a car workshop at Pioneer Point on Soon Lee Street. Its own website says it focuses on servicing, suspension, alignment, tuning and crash repairs.",
  "chips": [
-  "Car repair"
+  "Car servicing",
+  "Suspension",
+  "Alignment"
  ],
  "services": [
-  "General servicing and repair"
+  "Car servicing",
+  "Suspension",
+  "Alignment",
+  "Tuning",
+  "Crash repairs",
+  "Pre-purchase inspection",
+  "Transmission work",
+  "ECU tuning"
  ],
  "themes": "Customers on Google Maps mention custom tuning, work on a Honda Civic FD2R, quick fault diagnosis and servicing.",
  "faqs": [
-  [
-   "What does SK Garage Motorsports do?",
-   "Google Maps lists it as a car repair workshop."
-  ],
   [
    "What are the opening hours?",
    "The hours are listed in the Google Maps section above. Please see Google Maps for current hours."
   ]
  ],
- "sources": "its Google Maps listing",
+ "sources": "its own website (sitelift.site)",
  "stories": [],
  "mentioned_services": [
   "Car tuning",
   "Honda cars",
   "Car servicing"
- ]
+ ],
+ "specialties": [
+  "Performance upgrades and tuning",
+  "Suspension and alignment"
+ ],
+ "good_to_know": [
+  "Its website lists parts and oil brands it carries, including 034 Motorsport, Racingline, Amsoil, Castrol and Motul",
+  "Pre-purchase inspection is listed on its website"
+ ],
+ "services_note": "Services as listed on the workshop's own website, sitelift.site.",
+ "card_rules": "2026-11-05",
+ "makes_note": "Its website does not name car makes. Ask the workshop about yours."
 }

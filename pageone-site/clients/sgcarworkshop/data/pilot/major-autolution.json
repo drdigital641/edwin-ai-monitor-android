@@ -1,19 +1,25 @@
 {
- "lede": "Major Autolution is a car repair workshop at 60 Jln Lam Huat, #04-48 Carros Centre. Its Google Maps listing shows opening hours, payment options and customer ratings.",
+ "lede": "Major Autolution is a car workshop at Carros Centre on Jalan Lam Huat. Its own website lists servicing, aircon, batteries, tyres and alignment, brake and gearbox work, bodywork and towing for Japanese, Korean and Continental cars.",
  "chips": [
-  "Car repair",
-  "Car parts"
+  "Car servicing",
+  "Aircon service and repair",
+  "Battery replacement"
  ],
  "services": [
-  "General servicing and repair",
-  "Car parts"
+  "Car servicing",
+  "Aircon service and repair",
+  "Battery replacement",
+  "Wheel alignment",
+  "Tyre fitting",
+  "Puncture repair",
+  "Engine oil servicing",
+  "Brake and gearbox work",
+  "Bodywork and dent repair",
+  "Pre-purchase inspection",
+  "24-hour towing"
  ],
  "themes": "Customers on Google Maps mention aircon servicing, cooling coil replacement and under-car checks, with regular progress updates and quick turnaround.",
  "faqs": [
-  [
-   "What does Major Autolution do?",
-   "Google Maps lists it as a car repair workshop."
-  ],
   [
    "How can I pay?",
    "Google Maps lists credit cards, debit cards, contactless."
@@ -27,12 +33,24 @@
    "The hours are listed in the Google Maps section above. Please see Google Maps for current hours."
   ]
  ],
- "sources": "its Google Maps listing",
+ "sources": "its own website (major-autolution.com.sg)",
  "stories": [],
  "mentioned_services": [
   "Aircon servicing",
   "Cooling coil replacement (Mercedes W213)",
   "Under-car inspection",
   "Radiator fan motor check"
- ]
+ ],
+ "specialties": [
+  "Japanese, Korean and Continental cars"
+ ],
+ "good_to_know": [
+  "Its website says each service and repair comes with a written warranty on parts and labour",
+  "Its website offers a free pick-up and return service",
+  "24-hour towing across Singapore is listed on its website",
+  "Bookings by contact form, WhatsApp or phone, according to its website"
+ ],
+ "services_note": "Services as listed on the workshop's own website, major-autolution.com.sg.",
+ "card_rules": "2026-11-05",
+ "makes_note": "Its website names Japanese, Korean and Continental cars."
 }

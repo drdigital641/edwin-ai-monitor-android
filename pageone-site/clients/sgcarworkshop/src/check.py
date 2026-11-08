@@ -258,8 +258,13 @@ for dp, _, fs in os.walk(root):
             ent = [x for x in ENTRIES if x['slug'] == s]
             if ent and want_wa(ent[0]) not in inner: print('CARD WhatsApp prefill wrong', rel, s); bad += 1
 sm = open(os.path.join(root, 'sitemap.xml')).read(); lt = open(os.path.join(root, 'llms.txt')).read()
+_thin = {k for k, v in json.load(open(os.path.join(root, '..', 'build-manifest.json')))['noindex'].items() if v.startswith('thin workshop page')}
 for e in ENTRIES:
-    if ('workshops/%s/' % e['slug']) not in sm or ('workshops/%s/' % e['slug']) not in lt: print('NOT in sitemap/llms.txt', e['slug']); bad += 1
+    _w = 'workshops/%s/' % e['slug']
+    if _w in _thin:   # thin-page rule (Edwin, 8 Nov 2026): noindex, follow; kept off the sitemap and llms.txt until it has enough content
+        if _w in sm or _w in lt: print('thin workshop page is in sitemap/llms.txt', e['slug']); bad += 1
+        continue
+    if _w not in sm or _w not in lt: print('NOT in sitemap/llms.txt', e['slug']); bad += 1
 # (SG Garage shares Edwin's number, so match Page One's own prefill.)
 # Customers must only see the workshop's own WhatsApp: Page One's number may appear only on owner pages.
 from data import PAGE_ONE_WA

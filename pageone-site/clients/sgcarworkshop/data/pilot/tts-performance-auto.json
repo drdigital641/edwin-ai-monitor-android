@@ -1,21 +1,21 @@
 {
- "lede": "TTS Performance Auto is a car repair workshop at 1018 Yishun Industrial Park A, #01-346. Its Google Maps listing shows opening hours, payment options and customer ratings.",
+ "lede": "TTS Performance Auto is a car workshop in Yishun Industrial Park A. Its own website lists servicing, repairs and diagnostics, aircon servicing, wheel alignment, tyres and brakes, for Japanese and Continental cars.",
  "chips": [
-  "Car repair",
-  "Tyres and wheels",
-  "Car parts"
+  "Car servicing",
+  "Repairs and diagnostics",
+  "Air-con servicing"
  ],
  "services": [
-  "General servicing and repair",
-  "Tyres and wheel services",
-  "Car parts"
+  "Car servicing",
+  "Repairs and diagnostics",
+  "Air-con servicing",
+  "Wheel alignment",
+  "Tyre services",
+  "Brake repairs",
+  "Vehicle safety check"
  ],
  "themes": "Customers on Google Maps mention clear advice, wheel alignment, diagnosing undercarriage noises and affordable pricing.",
  "faqs": [
-  [
-   "What does TTS Performance Auto do?",
-   "Google Maps lists it as a car repair workshop."
-  ],
   [
    "How can I pay?",
    "Google Maps lists credit cards, contactless."
@@ -29,11 +29,24 @@
    "The hours are listed in the Google Maps section above. Please see Google Maps for current hours."
   ]
  ],
- "sources": "its Google Maps listing",
+ "sources": "its own website (ttsperformanceauto.com)",
  "stories": [],
  "mentioned_services": [
   "Wheel alignment",
   "Engine oil leak diagnosis",
   "Undercarriage noise diagnosis"
- ]
+ ],
+ "specialties": [
+  "Servicing with Penrite and ELF oils, per its website",
+  "Wheel alignment on a Hunter alignment machine, per its website",
+  "Hybrid and EV work, per its website"
+ ],
+ "makes_note": "Its website names Japanese and Continental cars and says it handles all makes.",
+ "good_to_know": [
+  "Its website says it has more than 10 years of experience",
+  "Bookings by WhatsApp, according to its website",
+  "Its website lists a 14-point vehicle safety check"
+ ],
+ "services_note": "Services as listed on the workshop's own website, ttsperformanceauto.com.",
+ "card_rules": "2026-11-05"
 }
