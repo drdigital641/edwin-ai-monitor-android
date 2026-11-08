@@ -39,7 +39,8 @@ input[type=text]{width:100%;min-height:48px;padding:12px;border:1px solid #c9d3d
 .btn{display:flex;align-items:center;justify-content:center;width:100%;min-height:56px;border:0;border-radius:14px;font-size:1.1rem;font-weight:700;cursor:pointer;text-decoration:none}
 .gen{background:#123b5e;color:#fff}
 .again{background:#fff;color:#123b5e;border:1px solid #123b5e;margin-top:10px;min-height:48px;font-size:1rem}
-.open{background:#1e8e3e;color:#fff;margin-top:12px;font-size:1.2rem}
+.open{background:#1e8e3e;color:#fff;margin-top:4px;font-size:1.15rem}
+.linkbtn{background:none;border:0;color:#123b5e;text-decoration:underline;font-size:1rem;padding:12px 4px;min-height:44px;cursor:pointer}
 #out{display:none}
 .ok{color:#1e8e3e;font-weight:700;margin:0 0 8px}
 .text{white-space:pre-wrap;background:#f7faff;border:1px solid #dfe8f0;border-radius:12px;padding:12px;margin:0}
@@ -68,13 +69,13 @@ input[type=text]{width:100%;min-height:48px;padding:12px;border:1px solid #c9d3d
 <p class="hint"><span id="left">120</span> characters left</p>
 </section>
 
-<button class="btn gen" id="gen" type="button">Generate my review</button>
+<button class="btn open" id="go" type="button">Copy review &amp; open Google →</button>
+<p class="hint" style="text-align:center;margin-top:8px">One tap: your review is copied, then Google opens. Just paste and post.</p>
 
 <section class="card" id="out" aria-live="polite" style="margin-top:16px">
 <p class="ok" id="ok">✓ Copied! Just paste it on Google.</p>
 <p class="text" id="text"></p>
-<button class="btn again" id="again" type="button">Copy again</button>
-<a class="btn open" id="open" target="_blank" rel="noopener">Open Google Review →</a>
+<button class="linkbtn" id="again" type="button">Copy again</button>
 </section>
 
 <a class="back" href="/">← Back to Sofa Care Singapore</a>
@@ -93,7 +94,6 @@ var CONFIG = {
   var biz = CONFIG[key] || CONFIG.sofacare;
   var stars = 5, picked = [];
   document.getElementById("biz").textContent = biz.name;
-  document.getElementById("open").href = biz.googleReviewUrl;
   var starsEl = document.getElementById("stars");
   function drawStars() {
     starsEl.innerHTML = "";
@@ -169,29 +169,30 @@ var CONFIG = {
     if (stars === 5) parts.push(pick(END5));
     return parts.join(" ");
   }
-  function copy(t) {
-    function fallback() {
-      var ta = document.createElement("textarea");
-      ta.value = t; ta.setAttribute("readonly", ""); ta.style.position = "fixed"; ta.style.top = "-1000px";
-      document.body.appendChild(ta); ta.select(); ta.setSelectionRange(0, t.length);
-      var ok = false; try { ok = document.execCommand("copy"); } catch (e) {}
-      document.body.removeChild(ta); return ok;
-    }
-    if (navigator.clipboard && window.isSecureContext) return navigator.clipboard.writeText(t).then(function () { return true; }, fallback);
-    return Promise.resolve(fallback());
+  // Copy inside the tap itself, before Google opens, so it works on phones.
+  function copyNow(t) {
+    var ok = false;
+    var ta = document.createElement("textarea");
+    ta.value = t; ta.setAttribute("readonly", ""); ta.style.position = "fixed"; ta.style.top = "-1000px"; ta.style.fontSize = "16px";
+    document.body.appendChild(ta); ta.select(); ta.setSelectionRange(0, t.length);
+    try { ok = document.execCommand("copy"); } catch (e) {}
+    document.body.removeChild(ta);
+    try { if (navigator.clipboard && window.isSecureContext) { navigator.clipboard.writeText(t).catch(function () {}); ok = true; } } catch (e) {}
+    return ok;
   }
   var current = "";
   function show(ok) {
     document.getElementById("out").style.display = "block";
     document.getElementById("ok").textContent = ok ? "✓ Copied! Just paste it on Google." : "Copy did not work on this browser. Press and hold the text to copy it.";
   }
-  document.getElementById("gen").onclick = function () {
+  document.getElementById("go").onclick = function () {
     current = build();
     document.getElementById("text").textContent = current;
-    copy(current).then(show);
-    document.getElementById("out").scrollIntoView({ behavior: "smooth", block: "start" });
+    show(copyNow(current));
+    var w = window.open(biz.googleReviewUrl, "_blank");
+    if (w) { try { w.opener = null; } catch (e) {} } else location.href = biz.googleReviewUrl;
   };
-  document.getElementById("again").onclick = function () { copy(current).then(show); };
+  document.getElementById("again").onclick = function () { show(copyNow(current)); };
   drawStars(); drawChips();
 })();
 </script>
