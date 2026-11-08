@@ -266,7 +266,7 @@ a:hover .more::after,.more:hover::after{transform:translateX(4px)}
 .fbc-wrap{position:relative}
 .fbc{list-style:none;margin:0;padding:4px 2px 14px;display:flex;gap:16px;overflow-x:auto;scroll-snap-type:x mandatory;scroll-behavior:smooth;overscroll-behavior-x:contain;scrollbar-width:thin}
 .fbc:focus-visible{outline:2px solid var(--red);outline-offset:4px}
-.fbc-item{flex:0 0 calc((100% - 48px)/4);scroll-snap-align:start;background:var(--paper);border:1px solid var(--line);border-radius:var(--r);overflow:hidden;display:flex;flex-direction:column}
+.fbc-item{position:relative;flex:0 0 calc((100% - 48px)/4);scroll-snap-align:start;background:var(--paper);border:1px solid var(--line);border-radius:var(--r);overflow:hidden;display:flex;flex-direction:column}
 .fbc-img{aspect-ratio:4/5;background:var(--line);overflow:hidden}
 .fbc-img img{width:100%;height:100%;object-fit:cover;display:block}
 .fbc-body{padding:16px 18px 18px;display:flex;flex-direction:column;gap:8px;flex:1}
