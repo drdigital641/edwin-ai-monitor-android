@@ -1014,6 +1014,7 @@ ART = {a['slug']: a for a in ARTICLES}
 LASTMOD = {'articles/%s/' % a['slug']: a['date'] for a in ARTICLES if a.get('date')}
 LASTMOD['articles/'] = '2026-11-06'
 LASTMOD['dealership-partnership/'] = '2026-11-08'
+LASTMOD[''] = '2026-11-08'  # Latest from MyKar (Facebook) carousel
 LASTMOD['test-drive/'] = '2026-10-28'  # FAQ question corrected (ChatGPT bridge draft)
 LASTMOD['service/'] = '2026-10-28'  # service-specific closing block (ChatGPT bridge draft)
 
@@ -1121,6 +1122,43 @@ S3 = [  # the three S
 ]
 
 
+# ---------------------------------------------------------------------------------------------
+# "Latest from MyKar": Facebook posts carousel on the EN homepage (Edwin, 8 Nov 2026).
+# Data: data/fb-posts.json + images/fb/*.webp (self-hosted, nothing loads from facebook.com).
+# Weekly refresh = swap the JSON and images; df.js re-renders from /data/fb-posts.json, and the next
+# build refreshes the server-rendered cards. Captions are shown exactly as in the JSON, except captions
+# that quote a price or loan (site rule: no prices) are left out; df.js applies the same rule (FB_HIDE).
+# ---------------------------------------------------------------------------------------------
+FB_JSON = os.path.join(HERE, 'data', 'fb-posts.json')
+FB_HIDE = re.compile(r'RM\s?\d|\bOTR\b|rebate|月供|\$\d', re.I)
+MONTHS = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec']
+
+
+def fb_date(d):
+    y, m, dd = d.split('-')
+    return '%d %s %s' % (int(dd), MONTHS[int(m) - 1], y)
+
+
+def fb_section(L):
+    if L != 'en' or not os.path.exists(FB_JSON):
+        return ''
+    data = json.load(open(FB_JSON, encoding='utf-8'))
+    cards = []
+    for p in data['posts']:
+        dt = fb_date(p['date'])
+        cap = p.get('caption') or ''
+        cap_h = '<p class="fbc-cap">%s</p>' % E(cap) if cap and not FB_HIDE.search(cap) else ''
+        cards.append('<li class="fbc-item"><div class="fbc-img"><img src="%s" alt="MyKar World Facebook post, %s" width="%d" height="%d" loading="lazy" decoding="async"></div>'
+                     '<div class="fbc-body"><time datetime="%s">%s</time>%s<a href="%s" target="_blank" rel="noopener">View on Facebook<span class="vh"> (post of %s)</span></a></div></li>' % (
+                         E(p['image'].lstrip('/')), dt, p['width'], p['height'], p['date'], dt, cap_h, E(p['permalink']), dt))
+    return ('<section class="sec fb-sec" aria-labelledby="fb-h"><div class="wrap"><div class="sec-head"><span class="eyebrow">Facebook</span><h2 id="fb-h">Latest from MyKar</h2></div>'
+            '<div class="fbc-wrap"><button class="fbc-btn fbc-prev" type="button" aria-label="Previous posts" aria-controls="fbc-list" disabled>&#8249;</button>'
+            '<ul class="fbc" id="fbc-list" tabindex="0" aria-label="Latest Facebook posts from MyKar World" data-src="data/fb-posts.json" data-updated="%s">%s</ul>'
+            '<button class="fbc-btn fbc-next" type="button" aria-label="Next posts" aria-controls="fbc-list">&#8250;</button></div>'
+            '<p class="fbc-follow"><a href="https://www.facebook.com/dongfengjohorbahru/" target="_blank" rel="noopener">Follow us on Facebook</a></p></div></section>') % (
+        E(data.get('updated', '')), ''.join(cards))
+
+
 def home_body(L):
     facts = [(T('3S centre', 'Pusat 3S', '3S 中心'), T('Sales · Service · Spare parts', 'Jualan · Servis · Alat ganti', '销售 · 服务 · 配件')),
              (T('First in JB', 'Pertama di JB', '新山首家'), T('Dongfeng 3S centre in Johor Bahru', 'Pusat 3S Dongfeng di Johor Bahru', '东风 3S 中心')),
@@ -1172,7 +1210,7 @@ def home_body(L):
         ''.join(article_card(a, L) for a in ARTICLES[:3]))
     faq = '<section class="sec sec-white"><div class="wrap">%s%s</div></section>' % (
         sec_head(W['faq_h'], T('Good to know', 'Perlu tahu', '您可能想知道'), None, L), faq_html(FAQ_HOME, L))
-    return hero + models + gallery + s3 + partner + road + arts + faq + visit_block(L)
+    return hero + models + gallery + s3 + partner + road + fb_section(L) + arts + faq + visit_block(L)
 
 
 def visit_block(L):
@@ -1823,8 +1861,8 @@ def render(L, path, p):
 <link rel="manifest" href="{pre}site.webmanifest">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Jost:wght@300;400;500;600&display=swap">
-<link rel="stylesheet" href="{pre}df.css?v=2">
-<script src="{pre}df.js?v=4" defer></script>
+<link rel="stylesheet" href="{pre}df.css?v=3">
+<script src="{pre}df.js?v=5" defer></script>
 <script type="application/ld+json">{ld}</script>
 </head>
 <body>
@@ -1942,6 +1980,10 @@ def main():
         f.write(HTACCESS.replace('{DOMAIN}', DOMAIN))
     for fn in ('df.css', 'df.js'):
         shutil.copy(os.path.join(HERE, fn), os.path.join(OUT, fn))
+    for sub in ('data', os.path.join('images', 'fb')):
+        src = os.path.join(HERE, sub)
+        if os.path.isdir(src):
+            shutil.copytree(src, os.path.join(OUT, sub), dirs_exist_ok=True)
     if IMGMAP:
         os.makedirs(os.path.join(OUT, 'img'), exist_ok=True)
         for fn in {m['f'] for m in IMGMAP.values()}:

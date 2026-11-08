@@ -70,3 +70,19 @@ function send(ty,a){ty=ty||'whatsapp';var n=Date.now();if(last[ty]&&n-last[ty]<1
 window.p1WaTap=function(ty){send(ty)};window.p1CtaTap=function(type,a){send(type,a||null)};
 document.addEventListener('click',function(e){var a=e.target&&e.target.closest?e.target.closest('a[href]'):null;if(!a)return;var u=String(a.href||'');if(WA.test(u))send(/60182240828/.test(u)?'whatsapp_service':/60125512820/.test(u)?'whatsapp_dealership':'whatsapp_sales',a);else if(/^tel:/i.test(u))send('call',a);else if(/^mailto:/i.test(u))send('email',a)},true);
 document.addEventListener('submit',function(e){var f=e.target;if(f&&f.getAttribute&&(f.getAttribute('data-wa')||/wa\.me|whatsapp/i.test(f.getAttribute('action')||'')))send(f.getAttribute('data-cta')||'whatsapp_sales')},true)})();
+/* Latest from MyKar (Facebook posts, 8 Nov 2026): arrow buttons + refresh from /data/fb-posts.json (weekly swap needs no rebuild).
+   Cards are server-rendered; captions quoting a price or loan stay hidden (same rule as build.py FB_HIDE). Nothing loads from facebook.com. */
+(function(){var d=document,ul=d.getElementById('fbc-list');if(!ul)return;
+var wrap=ul.parentNode,prev=wrap.querySelector('.fbc-prev'),next=wrap.querySelector('.fbc-next'),HIDE=/RM\s?\d|\bOTR\b|rebate|月供|\$\d/i,M=['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
+function st(){var m=ul.scrollWidth-ul.clientWidth-2;prev.disabled=ul.scrollLeft<=2;next.disabled=ul.scrollLeft>=m}
+function go(k){var it=ul.querySelector('.fbc-item');var w=it?it.getBoundingClientRect().width+16:ul.clientWidth;ul.scrollBy({left:k*Math.max(w,Math.floor(ul.clientWidth/w)*w),behavior:'smooth'})}
+prev.addEventListener('click',function(){go(-1)});next.addEventListener('click',function(){go(1)});ul.addEventListener('scroll',st,{passive:true});addEventListener('resize',st);st();
+function esc(s){return String(s).replace(/[&<>"']/g,function(c){return'&#'+c.charCodeAt(0)+';'})}
+function dt(s){var p=s.split('-');return (+p[2])+' '+M[+p[1]-1]+' '+p[0]}
+function load(){fetch(ul.getAttribute('data-src'),{cache:'no-cache'}).then(function(r){return r.ok?r.json():null}).then(function(j){
+if(!j||!j.posts||!j.posts.length||j.updated===ul.getAttribute('data-updated'))return;
+ul.innerHTML=j.posts.map(function(p){var t=dt(p.date),c=p.caption&&!HIDE.test(p.caption)?'<p class="fbc-cap">'+esc(p.caption)+'</p>':'';
+return '<li class="fbc-item"><div class="fbc-img"><img src="'+esc(p.image)+'" alt="MyKar World Facebook post, '+t+'" width="'+(+p.width)+'" height="'+(+p.height)+'" loading="lazy" decoding="async"></div><div class="fbc-body"><time datetime="'+esc(p.date)+'">'+t+'</time>'+c+'<a href="'+esc(p.permalink)+'" target="_blank" rel="noopener">View on Facebook<span class="vh"> (post of '+t+')</span></a></div></li>'}).join('');
+ul.setAttribute('data-updated',j.updated||'');ul.scrollLeft=0;st()}).catch(function(){})}
+if('IntersectionObserver' in window){var io=new IntersectionObserver(function(e){if(e[0].isIntersecting){io.disconnect();load()}},{rootMargin:'300px'});io.observe(ul)}else load();
+})();
