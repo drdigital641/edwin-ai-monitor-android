@@ -1,0 +1,34 @@
+{
+ "businessStatus": "OPERATIONAL",
+ "primaryType": "car_repair",
+ "types": [
+  "car_repair",
+  "point_of_interest",
+  "service",
+  "establishment"
+ ],
+ "rating": 5,
+ "userRatingCount": 9,
+ "websiteUri": null,
+ "paymentOptions": {
+  "acceptsDebitCards": true,
+  "acceptsCashOnly": false,
+  "acceptsNfc": true
+ },
+ "parkingOptions": null,
+ "editorialSummary": null,
+ "weekdayDescriptions": [
+  "Monday: 11:00 AM – 8:00 PM",
+  "Tuesday: 11:00 AM – 8:00 PM",
+  "Wednesday: 11:00 AM – 8:00 PM",
+  "Thursday: 11:00 AM – 8:00 PM",
+  "Friday: 11:00 AM – 8:00 PM",
+  "Saturday: 11:00 AM – 8:00 PM",
+  "Sunday: Closed"
+ ],
+ "review_count_seen": 5,
+ "review_themes": "Customers on Google Maps mention practical repair advice on used cars, performance upgrades and builds, and patient, detailed explanations of wear-and-tear items.",
+ "fetched_at": "2026-11-08",
+ "place_id": "ChIJ-b1dR4gT2jERYeQBqp7fY78",
+ "source": "google_places"
+}

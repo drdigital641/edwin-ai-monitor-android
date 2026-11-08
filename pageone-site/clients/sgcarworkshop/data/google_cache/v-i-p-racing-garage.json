@@ -1,0 +1,30 @@
+{
+ "businessStatus": "OPERATIONAL",
+ "primaryType": "car_repair",
+ "types": [
+  "car_repair",
+  "point_of_interest",
+  "service",
+  "establishment"
+ ],
+ "rating": 5,
+ "userRatingCount": 6,
+ "websiteUri": null,
+ "paymentOptions": null,
+ "parkingOptions": null,
+ "editorialSummary": null,
+ "weekdayDescriptions": [
+  "Monday: 11:00 AM – 8:00 PM",
+  "Tuesday: 11:00 AM – 8:00 PM",
+  "Wednesday: 11:00 AM – 8:00 PM",
+  "Thursday: 11:00 AM – 8:00 PM",
+  "Friday: 11:00 AM – 8:00 PM",
+  "Saturday: 11:00 AM – 8:00 PM",
+  "Sunday: Closed"
+ ],
+ "review_count_seen": 5,
+ "review_themes": "Customers on Google Maps mention quick quotes and repairs, servicing and track preparation, accurate diagnosis and good advice on car condition.",
+ "fetched_at": "2026-11-08",
+ "place_id": "ChIJyz8262IT2jERx6a3nO43DRk",
+ "source": "google_places"
+}

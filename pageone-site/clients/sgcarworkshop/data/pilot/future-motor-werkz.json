@@ -1,0 +1,39 @@
+{
+ "lede": "Future Motor Werkz at Bukit Batok Crescent (WCEGA Plaza) is a car servicing and repair workshop.",
+ "chips": [
+  "Servicing",
+  "Diagnostics",
+  "Aircon"
+ ],
+ "services": [
+  "Servicing",
+  "Diagnostics",
+  "Aircon repair"
+ ],
+ "themes": "Customers on Google Maps describe friendly, honest staff with no pressure, quick diagnosis, prices that match the quote, and a fast aircon fix.",
+ "faqs": [
+  [
+   "What does Future Motor Werkz do?",
+   "Google Maps lists it as a car repair workshop."
+  ],
+  [
+   "What are the opening hours?",
+   "The hours are listed in the Google Maps section above. Please see Google Maps for current hours."
+  ]
+ ],
+ "sources": "its Google Maps listing",
+ "stories": [],
+ "mentioned_services": [
+  "Servicing",
+  "Diagnostics",
+  "Aircon repair"
+ ],
+ "services_note": "Services customers mention on Google Maps. Ask the workshop for its full list.",
+ "makes": [
+  "Opel"
+ ],
+ "makes_note": "Named by customers on Google Maps. Ask the workshop about other makes.",
+ "specialties": [],
+ "good_to_know": [],
+ "card_rules": "2026-11-05"
+}

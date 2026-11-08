@@ -1,0 +1,54 @@
+{
+ "lede": "Maximus Auto Services at Carros Centre is a car servicing and repair workshop. Its own website says it works on family cars and performance vehicles, from scheduled maintenance to engine and gearbox work.",
+ "chips": [
+  "Servicing",
+  "Diagnostics",
+  "Performance parts"
+ ],
+ "services": [
+  "Scheduled maintenance",
+  "Mechanical and electrical fault diagnosis",
+  "Engine repairs and overhauls",
+  "Transmission servicing and repairs",
+  "Brakes",
+  "Steering and suspension",
+  "Tyres and wheel alignment",
+  "Aircon service and repairs"
+ ],
+ "themes": "Customers on Google Maps praise extra checks on wear items during routine servicing, timely updates with photos, fixing a check-engine light, and quick aircon evaporator work.",
+ "faqs": [
+  [
+   "What does Maximus Auto Services do?",
+   "Google Maps lists it as a car repair workshop."
+  ],
+  [
+   "What are the opening hours?",
+   "The hours are listed in the Google Maps section above. Please see Google Maps for current hours."
+  ]
+ ],
+ "sources": "its own website (maximusautoservices.com)",
+ "stories": [],
+ "mentioned_services": [
+  "Servicing",
+  "Diagnostics",
+  "Aircon evaporator replacement",
+  "Performance parts"
+ ],
+ "services_note": "Services as listed on the workshop's own website, maximusautoservices.com.",
+ "makes": [
+  "Bentley",
+  "Porsche",
+  "Mercedes-Benz",
+  "Honda"
+ ],
+ "makes_note": "Named on its own website. Ask the workshop about other makes.",
+ "specialties": [
+  "Engine and gearbox work",
+  "Fuel injector flow testing and cleaning",
+  "Family and performance cars"
+ ],
+ "good_to_know": [
+  "Its website asks for your car's make, model, mileage and symptoms when you enquire, and says photos help"
+ ],
+ "card_rules": "2026-11-05"
+}
