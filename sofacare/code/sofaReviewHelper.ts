@@ -1,7 +1,7 @@
 // Google Review Helper (Edwin, 8 Nov 2026, "Try this for sofacaresg only").
 // One self-contained page, /review.html?business=sofacare: stars (default 5), up to 3 chips,
 // optional sentence (max 120), Generate copies the text, then the customer opens Google and posts
-// it themselves. No tracking, no cookies, nothing sent anywhere. noindex, follow; not in sitemap or llms.
+// it themselves. No tracking, no cookies, nothing sent anywhere. Hidden from Google (Edwin 8 Nov): noindex, nofollow; footer links rel=nofollow; not in sitemap, llms or IndexNow.
 // Place ID ChIJvXUIw95NrUkRsJKrhuwH3Xg = GBP feature 0x49ad4ddec30875bd:0x78dd07ec86ab92b0
 // (cid 8709125966857474736), checked with a free IDs-only Place Details call.
 
@@ -15,7 +15,7 @@ export const REVIEW_HTML = `<!doctype html>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Leave a Google Review | Sofa Care Singapore</title>
-<meta name="robots" content="noindex, follow">
+<meta name="robots" content="noindex, nofollow, noarchive, nosnippet">
 <meta name="description" content="Leave a Google review for Sofa Care Singapore.">
 <link rel="icon" href="/favicon.svg" type="image/svg+xml">
 <style>
@@ -202,7 +202,7 @@ var CONFIG = {
 `;
 
 // Footer link on every page, added once here (the site's pages are generated, so this is the shared footer step).
-export const REVIEW_FOOTER_LINK = '<a class="hover:text-white sc-greview" href="/review.html?business=sofacare" style="display:inline-flex;align-items:center;gap:6px"><img src="/images/google-g.svg" alt="" width="16" height="16" loading="lazy" decoding="async" style="width:16px;height:16px">Leave a Google Review</a>';
+export const REVIEW_FOOTER_LINK = '<a class="hover:text-white sc-greview" href="/review.html?business=sofacare" rel="nofollow" style="display:inline-flex;align-items:center;gap:6px"><img src="/images/google-g.svg" alt="" width="16" height="16" loading="lazy" decoding="async" style="width:16px;height:16px">Leave a Google Review</a>';
 
 export function addSofaReviewHelper(files: Record<string, string>): void {
   files[REVIEW_PAGE] = REVIEW_HTML;
