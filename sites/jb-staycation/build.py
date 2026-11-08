@@ -1074,7 +1074,7 @@ html.js[data-house=prima] .hpane[data-house=landak],html.js[data-house=landak] .
 @media(max-width:599px){.tw{overflow-x:visible}.tw table{min-width:0!important;width:100%;border:0}.tw thead{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)}
 .tw tr{display:block;border:1px solid var(--line);border-radius:12px;padding:10px 14px;margin:0 0 12px;background:var(--surface)}
 .tw th[scope=row]{display:block;padding:4px 0 8px;border:0;font-size:1.0625rem;background:none}
-.tw td{display:grid;grid-template-columns:40% 1fr;gap:10px;padding:6px 0;border:0;border-top:1px solid var(--line);overflow-wrap:anywhere}
+.tw td{display:grid;grid-template-columns:40% 1fr;gap:10px;padding:6px 0;border:0;border-top:1px solid var(--line);overflow-wrap:anywhere}.tw td>*{grid-column:2}
 .tw td::before{content:attr(data-label);font-weight:600;color:var(--ink-soft)}.tw{border:0;border-radius:0}
 .cmp thead{display:none}.cmp td::before{content:attr(data-label);display:block;font-size:.875rem;font-weight:600;letter-spacing:.04em;text-transform:uppercase;color:var(--ink-muted);margin-bottom:2px}}
 .tw th a{display:inline-flex;align-items:center;min-height:44px}
@@ -1518,7 +1518,7 @@ AROUND = {
 ],
 [
 "Top up Touch 'n Go.",
-"It pays the road charge and most tolls. Keep about RM50-100 in it, and carry some ringgit cash for night markets and kopitiams.",
+"It pays the road charge and most tolls. Top it up before you cross, and carry some ringgit cash for night markets and kopitiams.",
 "",
 ""
 ],
