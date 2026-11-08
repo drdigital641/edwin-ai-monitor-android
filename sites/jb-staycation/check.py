@@ -1,6 +1,7 @@
 import os,re,json,glob,xml.dom.minidom as md
 from html.parser import HTMLParser
-S='site'
+import os
+S=os.environ.get('JB_OUT') or 'site'
 BASE='https://pageonesingapore.com/preview/jb-staycation/'
 bad=0
 files=[f for f in glob.glob(S+'/**/*.html',recursive=True)]

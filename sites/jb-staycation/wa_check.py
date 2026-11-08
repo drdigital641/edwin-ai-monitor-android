@@ -1,14 +1,15 @@
 """Decode every wa.me link in site/ and print the distinct prefilled texts (sends nothing)."""
 import glob, html, re, sys
 from urllib.parse import urlparse, parse_qs
-S = 'site'
+import os
+S = os.environ.get('JB_OUT') or 'site'
 seen, bad = {}, 0
 for f in sorted(glob.glob(S + '/**/*.html', recursive=True)):
     for href in re.findall(r'href="(https://wa\.me/[^"]*)"', open(f, encoding='utf-8').read()):
         u = urlparse(html.unescape(href))
         q = parse_qs(u.query, keep_blank_values=True)
         txt = q.get('text', [''])[0]
-        if u.path != '/6590062198' or not txt.startswith('[House: ') or '___' not in txt or ' ' in u.query or '[' in u.query:
+        if u.path != '/6590062198' or '[House: ' not in txt or 'Please confirm availability' not in txt or 'undefined' in txt or ' ' in u.query or '[' in u.query:
             print('BAD', f, href); bad += 1
         seen.setdefault(txt, set()).add(f)
 for t, fs in sorted(seen.items()):
