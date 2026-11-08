@@ -1130,7 +1130,9 @@ S3 = [  # the three S
 # that quote a price or loan (site rule: no prices) are left out; df.js applies the same rule (FB_HIDE).
 # ---------------------------------------------------------------------------------------------
 FB_JSON = os.path.join(HERE, 'data', 'fb-posts.json')
-FB_HIDE = re.compile(r'RM\s?\d|\bOTR\b|rebate|月供|\$\d', re.I)
+# STANDING RULE (Edwin, 8 Nov 2026): a caption with a price, RM amount, rebate, monthly payment, loan figure or the
+# word "only" is never shown: the card keeps its photo, date and View on Facebook link. Keep df.js HIDE identical.
+FB_HIDE = re.compile(r'RM\s?\d|MYR|\$\s?\d|\b\d+(\.\d+)?\s?k\b|\d\s*万|\bOTR\b|rebate|monthly|per month|\/month|\/mth|sebulan|bulanan|instal+ment|ansuran|loan|pinjaman|down ?payment|deposit|月供|首付|分期|贷款|\bonly\b|sahaja|仅需|只需', re.I)
 MONTHS = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec']
 
 

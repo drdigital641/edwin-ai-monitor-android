@@ -73,7 +73,7 @@ document.addEventListener('submit',function(e){var f=e.target;if(f&&f.getAttribu
 /* Latest from MyKar (Facebook posts, 8 Nov 2026): arrow buttons + refresh from /data/fb-posts.json (weekly swap needs no rebuild).
    Cards are server-rendered; captions quoting a price or loan stay hidden (same rule as build.py FB_HIDE). Nothing loads from facebook.com. */
 (function(){var d=document,ul=d.getElementById('fbc-list');if(!ul)return;
-var wrap=ul.parentNode,prev=wrap.querySelector('.fbc-prev'),next=wrap.querySelector('.fbc-next'),HIDE=/RM\s?\d|\bOTR\b|rebate|月供|\$\d/i,M=['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
+var wrap=ul.parentNode,prev=wrap.querySelector('.fbc-prev'),next=wrap.querySelector('.fbc-next'),HIDE=/RM\s?\d|MYR|\$\s?\d|\b\d+(\.\d+)?\s?k\b|\d\s*万|\bOTR\b|rebate|monthly|per month|\/month|\/mth|sebulan|bulanan|instal+ment|ansuran|loan|pinjaman|down ?payment|deposit|月供|首付|分期|贷款|\bonly\b|sahaja|仅需|只需/i,M=['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
 function st(){var m=ul.scrollWidth-ul.clientWidth-2;prev.disabled=ul.scrollLeft<=2;next.disabled=ul.scrollLeft>=m}
 function go(k){var it=ul.querySelector('.fbc-item');var w=it?it.getBoundingClientRect().width+16:ul.clientWidth;ul.scrollBy({left:k*Math.max(w,Math.floor(ul.clientWidth/w)*w),behavior:'smooth'})}
 prev.addEventListener('click',function(){go(-1)});next.addEventListener('click',function(){go(1)});ul.addEventListener('scroll',st,{passive:true});addEventListener('resize',st);st();
