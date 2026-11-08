@@ -1663,5 +1663,14 @@
   "mobile_hint": "+6590188901",
   "source": "google_grid_sweep_2026-11-08 (Google phone, Edwin asked)",
   "added": "2026-11-08"
+ },
+ {
+  "place_id": "ChIJyz8262IT2jERx6a3nO43DRk",
+  "name_hint": "V.I.P RACING GARAGE",
+  "address_hint": "60 Jln Lam Huat, #03-08 Carros Centre",
+  "postal_code": "737869",
+  "mobile_hint": "+6598005147",
+  "source": "pulled_back_2026-11-08",
+  "added": "2026-11-08"
  }
 ]

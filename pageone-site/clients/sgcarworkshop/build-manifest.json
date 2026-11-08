@@ -14,7 +14,7 @@
   "areas/bukit-merah-lane-3/": 6,
   "areas/bukit-merah-lane-3/car-tyres/": 2,
   "areas/bukit-timah-road-newton/": 0,
-  "areas/carros-centre-jalan-lam-huat/": 18,
+  "areas/carros-centre-jalan-lam-huat/": 17,
   "areas/carros-centre-jalan-lam-huat/car-aircon-repair/": 4,
   "areas/carros-centre-jalan-lam-huat/gearbox-repair/": 1,
   "areas/corporation-drive-jurong-east/": 5,
@@ -75,7 +75,7 @@
   "services/car-tyres/": 29,
   "services/car-wrap-ppf/": 1,
   "services/gearbox-repair/": 20,
-  "services/general-servicing-repair/": 260,
+  "services/general-servicing-repair/": 259,
   "services/spray-painting-bodywork/": 59
  },
  "hub_cards": {
@@ -97,7 +97,7 @@
   "areas/toh-guan-jurong-east/": 43,
   "areas/tuas/": 2,
   "areas/ubi/": 11,
-  "areas/woodlands/": 34,
+  "areas/woodlands/": 33,
   "areas/yishun/": 16
  },
  "index_exceptions": [
@@ -231,7 +231,6 @@
   "workshops/ttk-automotive/": "thin workshop page: under 10 Google ratings and under 40 workshop-specific words",
   "workshops/ubi-automobile-services/": "thin workshop page: under 10 Google ratings and under 40 workshop-specific words",
   "workshops/unimotor-company/": "thin workshop page: under 10 Google ratings and under 40 workshop-specific words",
-  "workshops/v-i-p-racing-garage/": "thin workshop page: under 10 Google ratings and under 40 workshop-specific words",
   "workshops/x-solut-autoworks/": "thin workshop page: under 10 Google ratings and under 40 workshop-specific words",
   "workshops/xin-yun-auto/": "thin workshop page: under 10 Google ratings and under 40 workshop-specific words"
  },
