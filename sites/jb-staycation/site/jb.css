@@ -284,7 +284,7 @@ body{line-height:1.5}.steps+.after-gal{display:none}.wordmark{display:none}.pts 
 .hero .display{font-size:2.25rem;line-height:1.04}
 .hero .sub{font-size:1.0625rem;line-height:1.5;margin:0 0 18px}.hero .sub .more{display:none}
 .hero::after{background:linear-gradient(180deg,rgba(10,31,56,.5) 0,rgba(10,31,56,0) 22%,rgba(10,31,56,.05) 42%,rgba(10,31,56,.82) 72%,rgba(10,31,56,.96) 100%)}
-.facts{margin:18px 0 0;padding-top:12px;display:flex;flex-wrap:wrap;gap:4px 22px}.facts li:nth-child(n+3){display:none}
+.facts{margin:18px 0 0;padding-top:12px;display:flex;flex-direction:column;gap:4px 22px}.facts li:nth-child(n+3){display:none}
 .hero .btn{width:100%}
 .pts li{padding:16px 18px;display:grid;grid-template-columns:30px 1fr;column-gap:14px;row-gap:2px}.pts .i{grid-row:span 2}
 .split2{gap:28px}.steps{gap:16px;margin-bottom:16px}.steps li{grid-template-columns:40px 1fr;gap:12px}.steps li::before{width:40px;height:40px}
