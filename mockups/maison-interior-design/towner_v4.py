@@ -51,6 +51,21 @@ V4_PLANS = [
          area="Approx. 93 sqm including the air-con ledge (90 sqm internal). The brochure shows two arrangements.", page="printed p.12"),
 ]
 
+V4CFG = {
+ "towner-residences": dict(dir=V4_DIR, ref="towner-v4", hero=V4_HERO, themes=V4_THEMES, plans=V4_PLANS,
+   themes_h2="Four Towner Residences BTO interior design themes",
+   themes_sub="Four rooms, four different looks. Each is a starting point we adapt to your actual unit.",
+   plans_h2="Towner Residences 3-room and 4-room floor plans",
+   plans_sub="Original pages from the HDB sales brochure, with HDB’s suggested furniture layout. Not construction drawings; owners confirm their actual unit.",
+   plan_label="Floor plan: HDB brochure", plans_cls="v4-plans",
+   plans_src=f'Source: HDB-authored Towner Residences sales brochure, <a href="{V4_BROCHURE}" target="_blank" rel="noopener">archive copy hosted by BTO HQ</a>. '
+             f'For context, see HDB’s <a href="{V4_TOUR}" target="_blank" rel="noopener">Towner Residences virtual tour</a>.',
+   citation=[V4_BROCHURE, V4_TOUR], facts=None, css="",
+   end_msg=V4_HERO["msg"].replace("I like the Warm Japandi living room concept. ", "")),
+}
+for _p in V4_PLANS:
+    _p.setdefault("cap", f'{_p["title"]}, brochure {_p["page"]}. {_p["area"]}')
+
 V4_CSS = """
 .v4h{padding:22px 0 0}.v4h .wrap{max-width:1240px}
 .v4-eb{font:500 12px/1.4 var(--sans);letter-spacing:.14em;text-transform:uppercase;color:var(--brass);margin:0 0 10px}
@@ -88,11 +103,11 @@ body{padding-bottom:env(safe-area-inset-bottom)}
 
 WA_ICON = '<svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true"><path fill="currentColor" d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2Zm0 18.2a8.2 8.2 0 0 1-4.2-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2Z"/></svg>'
 
-def _v4src(name):
-    return f"{BASE}images/new-launches/{V4_DIR}/{name}.webp?v={V4_V}"
+def _v4src(name, d=V4_DIR):
+    return f"{BASE}images/new-launches/{d}/{name}.webp?v={V4_V}"
 
-def _v4img(name, alt, sizes, lazy=True):
-    b = f"{BASE}images/new-launches/{V4_DIR}/{name}"
+def _v4img(name, alt, sizes, lazy=True, d=V4_DIR):
+    b = f"{BASE}images/new-launches/{d}/{name}"
     return (f'<img src="{b}-1600.webp?v={V4_V}" srcset="{b}-900.webp?v={V4_V} 900w, {b}-1600.webp?v={V4_V} 1600w" sizes="{sizes}" '
             f'width="1600" height="900" alt="{e(alt)}" decoding="async"' + (' loading="lazy"' if lazy else ' fetchpriority="high"') + '>')
 
@@ -104,32 +119,36 @@ def _v4cap(extra=""):
     return f'<figcaption>{extra}<b>{V4_NOTE}</b><span>{V4_AI}</span></figcaption>'
 
 def vpage_v4(slug):
-    c, cfg = parse_copy(slug), VPAGES[slug]
+    c, cfg, v = parse_copy(slug), VPAGES[slug], V4CFG[slug]
     path = f"new-launches/{slug}/"
     gk, gs = KINDS[cfg["kind"]]
-    h = V4_HERO
-    t0 = V4_THEMES[0]
+    h, d, ref, themes_l = v["hero"], v["dir"], v["ref"], v["themes"]
+    t0 = themes_l[0]
     hero = (f'<section class="v4h"><div class="wrap v4h-g"><div class="v4h-t"><p class="v4-eb">{e(h["eyebrow"])}</p><h1>{e(c["h1"])}</h1>'
             f'<p class="v4-intro">{e(h["intro"])}</p></div>'
-            f'<figure class="v4-fig v4h-f">{_v4img(t0["img"], t0["alt"], "(min-width:1100px) 720px, 100vw", lazy=False)}{_v4cap()}</figure>'
-            f'<div class="v4-hero-cta">{_v4wa(h["btn"], h["msg"], "towner-v4-hero", t0["theme"], path)}'
+            f'<figure class="v4-fig v4h-f">{_v4img(t0["img"], t0["alt"], "(min-width:1100px) 720px, 100vw", lazy=False, d=d)}{_v4cap()}</figure>'
+            f'<div class="v4-hero-cta">{_v4wa(h["btn"], h["msg"], ref + "-hero", t0["theme"], path)}'
             f'<a class="link" href="{BASE}services/{gs}/">{e(GBY[gs]["short"])} guide</a></div></div></section>')
     cards = "".join(
-        f'<article class="v4-card" id="{t["key"]}"><figure class="v4-fig">{_v4img(t["img"], t["alt"], "(min-width:1240px) 580px, (min-width:900px) 46vw, 100vw")}{_v4cap()}</figure>'
+        f'<article class="v4-card" id="{t["key"]}"><figure class="v4-fig">{_v4img(t["img"], t["alt"], "(min-width:1240px) 580px, (min-width:900px) 46vw, 100vw", d=d)}{_v4cap()}</figure>'
         f'<p class="v4-th">{e(t["theme"])} · {e(t["room"])}</p><h3>{e(t["h3"])}</h3><p class="v4-cap">{e(t["cap"])}</p>'
-        f'{_v4wa(t["btn"], t["msg"], "towner-v4-" + t["key"], t["theme"], path)}</article>' for t in V4_THEMES)
-    themes = (f'<section class="vsec"><div class="wrap"><h2 class="vh2">Four Towner Residences BTO interior design themes</h2>'
-              f'<p class="vsub">Four rooms, four different looks. Each is a starting point we adapt to your actual unit.</p>'
+        f'{_v4wa(t["btn"], t["msg"], ref + "-" + t["key"], t["theme"], path)}</article>' for t in themes_l)
+    themes = (f'<section class="vsec"><div class="wrap"><h2 class="vh2">{e(v["themes_h2"])}</h2>'
+              f'<p class="vsub">{e(v["themes_sub"])}</p>'
               f'<div class="v4-cards">{cards}</div></div></section>')
     plans = "".join(
-        f'<figure class="v4-plan"><a class="v4-zoom" href="{_v4src(p["img"])}" target="_blank" rel="noopener" aria-label="Open the full-size {e(p["title"])} floor plan">'
-        f'<img src="{_v4src(p["img"])}" width="{p["w"]}" height="{p["h"]}" alt="{e(p["alt"])}" loading="lazy" decoding="async"><span class="v4-zl" aria-hidden="true">Tap to enlarge ↗</span></a>'
-        f'<figcaption><b>Floor plan: HDB brochure</b>{e(p["title"])}, brochure {e(p["page"])}. {e(p["area"])}</figcaption></figure>' for p in V4_PLANS)
-    plan_sec = (f'<section class="vsec"><div class="wrap"><h2 class="vh2">Towner Residences 3-room and 4-room floor plans</h2>'
-                f'<p class="vsub">Original pages from the HDB sales brochure, with HDB’s suggested furniture layout. Not construction drawings; owners confirm their actual unit.</p>'
-                f'<div class="v4-plans">{plans}</div>'
-                f'<p class="v4-src">Source: HDB-authored Towner Residences sales brochure, <a href="{V4_BROCHURE}" target="_blank" rel="noopener">archive copy hosted by BTO HQ</a>. '
-                f'For context, see HDB’s <a href="{V4_TOUR}" target="_blank" rel="noopener">Towner Residences virtual tour</a>.</p></div></section>')
+        f'<figure class="v4-plan"><a class="v4-zoom" href="{_v4src(p["img"], d)}" target="_blank" rel="noopener" aria-label="Open the full-size {e(p["title"])} floor plan">'
+        f'<img src="{_v4src(p["img"], d)}" width="{p["w"]}" height="{p["h"]}" alt="{e(p["alt"])}" loading="lazy" decoding="async"><span class="v4-zl" aria-hidden="true">Tap to enlarge ↗</span></a>'
+        f'<figcaption><b>{e(v["plan_label"])}</b>{e(p["cap"])}</figcaption></figure>' for p in v["plans"])
+    plan_sec = (f'<section class="vsec"><div class="wrap"><h2 class="vh2">{e(v["plans_h2"])}</h2>'
+                f'<p class="vsub">{e(v["plans_sub"])}</p>'
+                f'<div class="{v["plans_cls"]}">{plans}</div>'
+                f'<p class="v4-src">{v["plans_src"]}</p></div></section>')
+    if v["facts"]:
+        fh2, fitems, fnote = v["facts"]
+        plan_sec += (f'<section class="vsec"><div class="wrap"><h2 class="vh2">{e(fh2)}</h2><ul class="v4-facts">'
+                     + "".join(f'<li><span>{e(t)}</span> <a href="{u}" target="_blank" rel="noopener">{e(sl)}</a></li>' for t, sl, u in fitems)
+                     + f'</ul><p class="v4-src">{e(fnote)}</p></div></section>')
     glance = "".join(f'<article class="vgl"><h3>{e(g["name"])}</h3><ul>'
                      + (f'<li>{ICON["size"]}<span>{e(g["size"])}</span></li>' if g.get("size") else "")
                      + (f'<li>{ICON["beds"]}<span>{e(g["beds"])}</span></li>' if g.get("beds") else "")
@@ -142,20 +161,20 @@ def vpage_v4(slug):
              f'<section class="vsec vfaq"><div class="wrap narrow"><h2 class="vh2">Details, caveats and sources</h2>{faqs}'
              f'<details class="qa"><summary><h3>Sources</h3><span class="pm" aria-hidden="true"></span></summary><div class="vq">{_links(c["sources"])}</div></details>'
              f'<p class="v4-src">More BTO and condo projects: <a href="{BASE}new-launches/">New launches</a>.</p>'
-             f'<div class="vh-cta end">{_v4wa("WhatsApp Maison", V4_HERO["msg"].replace("I like the Warm Japandi living room concept. ", ""), "towner-v4-end", "general", path)}</div></div></section>')
-    og = f"https://pageonesingapore.com{BASE}images/new-launches/{V4_DIR}/{t0['img']}-1600.webp"
+             f'<div class="vh-cta end">{_v4wa("WhatsApp Maison", v["end_msg"], ref + "-end", "general", path)}</div></div></section>')
+    og = f"https://pageonesingapore.com{BASE}images/new-launches/{d}/{t0['img']}-1600.webp"
     schema = {"@context": "https://schema.org", "@graph": [ORG, crumbs([("Home", ""), ("New launches", "new-launches/"), (c["h1"], path)]),
               {"@type": "Article", "headline": c["h1"], "description": c["desc"], "datePublished": "2026-11-07", "dateModified": "2026-11-08",
                "author": {"@id": DOMAIN + "/#business"}, "publisher": {"@id": DOMAIN + "/#business"}, "mainEntityOfPage": DOMAIN + "/" + path,
-               "image": [DOMAIN + f"/images/new-launches/{V4_DIR}/{t['img']}-1600.webp" for t in V4_THEMES],
-               "citation": [V4_BROCHURE, V4_TOUR]},
+               "image": [DOMAIN + f"/images/new-launches/{d}/{t['img']}-1600.webp" for t in themes_l],
+               "citation": v["citation"]},
               {"@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": q, "acceptedAnswer": {"@type": "Answer", "text": _txt(a)}} for q, a in c["faq"]]}]}
     s = head(c["seo"], c["desc"], path, og, schema)
     s = s.replace('<meta name="twitter:card" content="summary_large_image">',
                   f'<meta name="twitter:card" content="summary_large_image"><meta name="twitter:title" content="{e(c["seo"])}">'
                   f'<meta name="twitter:description" content="{e(c["desc"])}"><meta name="twitter:image" content="{og}">'
                   f'<meta property="og:image:width" content="1600"><meta property="og:image:height" content="900"><meta property="og:image:alt" content="{e(t0["alt"])}">')
-    s = s.replace("</head>", f"<style>{V4_CSS}</style></head>")
+    s = s.replace("</head>", f"<style>{V4_CSS}{v['css']}</style></head>")
     s += header("new-launches/")
     s += hero + themes + plan_sec + lower
     s += footer()
