@@ -190,7 +190,7 @@ ALT = {
     'landak-pool-table-detail-1.webp': 'Pool table felt, rack and balls at Landak Kawan Fun House',
     'landak-game-stick-detail-1.webp': 'Game stick connected behind the TV at Landak Kawan Fun House',
     'landak-tv-remote-detail-1.webp': 'TV remote at Landak Kawan Fun House',
-    'landak-ironing-counter-detail-1.webp': 'Ironing counter and iron at Landak Kawan Fun House',
+    'landak-ironing-counter-detail-1.webp': 'Workspace counter with iron on the 2nd level at Landak Kawan Fun House',
     'landak-kitchen-dishrack-1.webp': 'Dishes, sink and dish rack in the kitchen at Landak Kawan Fun House',
     'landak-kitchen-sink-detail-1.webp': 'Sink and washing-up area at Landak Kawan Fun House',
     'landak-electrical-controls-1.webp': 'Electrical panel and switches at Landak Kawan Fun House',
@@ -213,6 +213,9 @@ ALT = {
 }
 
 # Each room: (title, note, [(file, caption, caption_shown)])
+DATA_CAP = {'landak-ironing-counter-detail-1.webp': 'Dedicated workspace (2nd level), workspace counter, Landak Kawan Fun House'}   # lightbox caption overrides (Edwin 9 Nov 5:27pm)
+
+
 def _r(k, title, note, files, caps=None):
     caps = caps or {}
     return (title, note, [(f, caps.get(f, title), f in caps) for f in files])
@@ -236,7 +239,7 @@ ROOMS = {
         _r('landak', 'Kitchen', 'For light cooking', ['landak-kitchen-breakfast-bar-1.webp', 'landak-breakfast-bar-portrait-1.webp', 'landak-kitchen-sink-1.webp', 'landak-kitchen-appliances-1.webp']),
         _r('landak', 'Bedrooms', '3 bedrooms, 1 king and 4 queen beds', ['landak-bedroom-1.webp', 'landak-bedroom-1-angle-3.webp', 'landak-bedroom-1-angle-2.webp'], {'landak-bedroom-1.webp': 'Bedroom', 'landak-bedroom-1-angle-3.webp': 'Bedroom, from the door', 'landak-bedroom-1-angle-2.webp': 'Bedroom, second angle'}),
         _r('landak', 'Bathrooms', '3 bathrooms (1 en-suite, 2 shared)', ['landak-bathroom-1.webp', 'landak-bathroom-portrait-1.webp', 'landak-bathroom-2.webp']),
-        _r('landak', 'Dedicated workspace (2nd level)', '', ['landak-covered-counter-wide-1.webp', 'landak-covered-work-counter-1.webp']),
+        _r('landak', 'Dedicated workspace (2nd level)', '', ['landak-covered-counter-wide-1.webp', 'landak-covered-work-counter-1.webp', 'landak-ironing-counter-detail-1.webp']),
         _r('landak', 'Outside', 'Parking for 2 cars inside the gate', ['landak-exterior-1.webp']),
     ],
 }
@@ -281,8 +284,8 @@ ALBUM = {
         ('Bedroom', ['landak-bedroom-1.webp', 'landak-bedroom-1-angle-3.webp', 'landak-bedroom-1-angle-2.webp']),
         ('Bathrooms', ['landak-bathroom-1.webp', 'landak-bathroom-2.webp', 'landak-bathroom-portrait-1.webp']),
         ('Games: pool table, darts, foosball, TV arcade', ['landak-pool-table-darts-1.webp', 'landak-patio-bistro-pool-1.webp', 'landak-pool-table-length-1.webp', 'landak-pool-table-detail-1.webp', 'landak-dartboards-detail-1.webp', 'landak-patio-view-1.webp', 'landak-foosball-table-1.webp', 'landak-dining-foosball-1.webp', 'landak-tv-games-1.webp', 'landak-game-stick-detail-1.webp', 'landak-tv-remote-detail-1.webp']),
-        ('Dedicated workspace (2nd level)', ['landak-covered-counter-wide-1.webp', 'landak-covered-work-counter-1.webp']),
-        ('Outside, laundry and utility', ['landak-exterior-1.webp', 'landak-ironing-counter-detail-1.webp', 'landak-electrical-controls-1.webp']),
+        ('Dedicated workspace (2nd level)', ['landak-covered-counter-wide-1.webp', 'landak-covered-work-counter-1.webp', 'landak-ironing-counter-detail-1.webp']),
+        ('Outside, laundry and utility', ['landak-exterior-1.webp', 'landak-electrical-controls-1.webp']),
     ],
 }
 HOME_CTA_IMG = 'landak-living-room-1.webp'
@@ -1913,7 +1916,7 @@ def album(k):
     h = HOUSES[k]
     n = sum(len(fs) for _g, fs in ALBUM[k])
     groups = ''.join('<div class="ag"><h4>%s <span>%d</span></h4><div class="agrid">%s</div></div>'
-                     % (e(g), len(fs), ''.join('<a href="{R}img/%s" data-lb data-cap="%s">%s</a>' % (f, e(ALT[f]), pimg800(f))
+                     % (e(g), len(fs), ''.join('<a href="{R}img/%s" data-lb data-cap="%s">%s</a>' % (f, e(DATA_CAP.get(f, ALT[f])), pimg800(f))
                                              for f in fs)) for g, fs in ALBUM[k])
     return ('<section class="album" id="album-%s" aria-labelledby="alb-%s"><h3 id="alb-%s">Full photo album: %s <span>%d photos</span></h3>%s'
             '<p class="after-gal">%s</p></section>' % (k, k, k, e(h['name']), n, groups, wa_btn('Check dates for %s' % h['name'].replace(' Kawan Fun House', ''), h['msg'], 'album-' + k)))
@@ -1963,7 +1966,7 @@ def room_gallery(k):
             return ' class="slide %s"' % ' '.join(cls)
         ridx = len(out)
         figs = ''.join('<figure%s data-room="%d"><a href="{R}img/%s" data-lb data-cap="%s">%s</a>%s</figure>'
-                       % (span(i), ridx, f, e(cap if is_client else '%s, %s' % (title, HOUSES[k]['name'])), pimg(f, sizes='(min-width:1024px) 300px, (min-width:768px) 33vw, 100vw'),
+                       % (span(i), ridx, f, e(DATA_CAP.get(f) or (cap if is_client else '%s, %s' % (title, HOUSES[k]['name']))), pimg(f, sizes='(min-width:1024px) 300px, (min-width:768px) 33vw, 100vw'),
                           ('<figcaption>%s</figcaption>' % e(cap)) if is_client else '') for i, (f, cap, is_client) in enumerate(ph))
         out.append('<div class="room"><div class="room-h"><h3>%s</h3><span>%s%d photo%s</span></div><div class="rg%s">%s</div></div>'
                    % (e(title), (e(note) + ' &middot; ') if note else '', n, '' if n == 1 else 's', ' n1' if n == 1 else (' n2' if n == 2 else ''), figs))
@@ -2293,7 +2296,7 @@ def main():
         d = os.path.join(OUT, path)
         os.makedirs(d, exist_ok=True)
         out_html = render(path, p)
-        if path not in ('stays/%s/' % HOUSES['prima']['slug'], 'stays/%s/' % HOUSES['landak']['slug']):
+        if path not in ('stays/', 'stays/%s/' % HOUSES['prima']['slug'], 'stays/%s/' % HOUSES['landak']['slug']):   # /stays/: house-named buttons keep their house (Edwin 9 Nov 5:27pm)
             out_html = general_wa_only(out_html)
         open(os.path.join(d, 'index.html'), 'w', encoding='utf-8').write(out_html)
     # 404 (renders with absolute BASE paths so it works at any depth)

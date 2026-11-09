@@ -1,5 +1,5 @@
 """Decode every wa.me link in the built site and check it equals Edwin's exact prefill (9 Nov 2026 5:09pm):
-general text everywhere, house text only on the two house pages. Also checks the raw ?text= value matches his encoded strings. Sends nothing."""
+general text everywhere, house text on the two house pages and on house-named /stays/ buttons. Also checks the raw ?text= value matches his encoded strings. Sends nothing."""
 import glob, html, os, re, sys
 from urllib.parse import urlparse, unquote
 S = os.environ.get('JB_OUT') or 'site'
@@ -14,8 +14,10 @@ for f in sorted(glob.glob(S + '/**/*.html', recursive=True)):
     rel = f[len(S):].lstrip('/')
     want = 'prima' if rel.startswith('stays/prima-') else 'landak' if rel.startswith('stays/landak-') else 'general'
     t = open(f, encoding='utf-8').read()
-    for href in re.findall(r'href="(https://wa\.me/[^"]*)"', t):
+    for href, lab in re.findall(r'href="(https://wa\.me/[^"]*)"[^>]*?data-cta-label="([^"]*)"', t):
         links += 1
+        if rel == 'stays/index.html':   # /stays/: house-named buttons carry their house (Edwin 9 Nov 5:27pm)
+            want = 'prima' if 'prima' in lab else 'landak' if 'landak' in lab else 'general'
         u = urlparse(html.unescape(href)); raw = u.query[5:] if u.query.startswith('text=') else None
         ok = u.path == '/6590062198' and raw == ENC[want] and unquote(raw) == TXT[want]
         if not ok: bad += 1; print('BAD', rel, href[:120])
