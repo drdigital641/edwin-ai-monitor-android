@@ -829,7 +829,7 @@ if (menuBtn && nav) {
   document.addEventListener("click", (e) => {
     const a = e.target.closest && e.target.closest('a[href*="wa.me/"]');
     if (!a) return;
-    const type = a.classList.contains("chat-reply") ? "whatsapp_chat_reply" : a.classList.contains("footer-wa") ? "footer_whatsapp"
+    const type = (a.dataset.cta && a.dataset.cta.indexOf("whatsapp") === 0) ? a.dataset.cta : a.classList.contains("chat-reply") ? "whatsapp_chat_reply" : a.classList.contains("footer-wa") ? "footer_whatsapp"
       : a.closest(".article-cta") ? "article_cta" : a.classList.contains("btn") ? "whatsapp_button" : "whatsapp_link";
     send("CtaClick", { cta_type: type });
   }, true);

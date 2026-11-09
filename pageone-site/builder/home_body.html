@@ -1,22 +1,18 @@
-    <!-- HERO (lean, 25 Oct 2026: one message, one action) -->
+    <!-- HERO (lead generation, 28 Oct 2026: one question, one outcome, one action) -->
     <section class="hero hero-lean">
       <span class="glow glow-1" aria-hidden="true"></span>
       <span class="glow glow-2" aria-hidden="true"></span>
       <div class="wrap hero-grid">
         <div>
-          <p class="eyebrow"><span class="live" aria-hidden="true"></span>Proven on real Singapore businesses</p>
-          <h1>Customers are searching for you on Google and ChatGPT. <span class="grad-text">Can they find you?</span></h1>
-          <p class="lead">We get your business found on Google, Google Maps and ChatGPT for <strong>S$50 a month</strong>, website included. No setup fee, no contract.</p>
-          <form class="hero-check" id="hero-check" action="/free-website-check/" method="get">
-            <label class="hero-check-label" for="hero-check-url"><span class="hero-check-tag">Free</span>Check your website's score</label>
-            <div class="hero-check-row">
-              <input id="hero-check-url" name="check" type="text" inputmode="url" autocomplete="url" autocapitalize="none" autocorrect="off" spellcheck="false" enterkeyhint="go" placeholder="yourbusiness.com.sg" required maxlength="300">
-              <input type="hidden" name="from" value="hero">
-              <button class="btn" type="submit">Check my score</button>
-            </div>
-            <p class="hero-check-note">Score out of 100 in under a minute. No sign-up (<a href="/privacy/">privacy</a>).</p>
-          </form>
-          <p class="hero-paths">No website yet? <a href="/new-business-website/">Get your first website →</a></p>
+          <p class="eyebrow"><span class="live" aria-hidden="true"></span>Real results, straight from Google</p>
+          <h1>Singapore businesses found on Google. Here's the proof.</h1>
+          <p class="hero-tagline grad-text">Get found. Get enquiries. Get more customers.</p>
+          <p class="lead">Edwin Garage got <strong>{{EG_CLICKS}} clicks from Google</strong> in 28 days and shows on page one for <strong>{{EG_PAGE_ONE}} searches</strong>. Your business gets the same system for <strong>S$50 a month</strong>. No setup fee, no contract.</p>
+          <div class="cta-row hero-ctas">
+            <a class="btn" href="{{WA_HERO}}" target="_blank" rel="noopener" data-cta="whatsapp_home_hero">Get more enquiries</a>
+            <a class="btn btn-ghost" href="/results/">See the results</a>
+          </div>
+          <p class="hero-paths">No website yet? <a href="/new-business-website/">Start here →</a> · Have one? <a href="#check">Check it free →</a></p>
         </div>
         <figure class="proof-card" aria-labelledby="proof-title">
           <span class="chip chip-1">📍 Page one for <b>{{EG_PAGE_ONE}}</b> searches</span>
@@ -45,61 +41,24 @@
       </div>
     </div>
 
-    <!-- WHAT IT IS: plain facts for people and AI assistants, then SEO + AEO + GEO in one line each -->
-    <section class="section" id="at-a-glance">
-      <div class="wrap">
-        <p class="kicker reveal">At a glance</p>
-        <h2 class="reveal">Found on Google, in its answers and in AI assistants</h2>
-        <p class="section-lead reveal">{{GLANCE_ANSWER}} <a class="link" href="/about/#at-a-glance">All the facts →</a></p>
-        <div class="cards three plain-cards" id="seo-aeo-geo" style="margin-top:28px">
-          <a class="card reveal" href="/seo-aeo-geo-singapore/#seo"><div class="emoji" aria-hidden="true">🔍</div><h3>SEO: rank on Google</h3><p>Show up in Google Search and Maps.</p><span class="card-link">More on SEO →</span></a>
-          <a class="card reveal" href="/seo-aeo-geo-singapore/#aeo"><div class="emoji" aria-hidden="true">💬</div><h3>AEO: be the answer</h3><p>Be the short answer Google shows first.</p><span class="card-link">More on AEO →</span></a>
-          <a class="card reveal" href="/seo-aeo-geo-singapore/#geo"><div class="emoji" aria-hidden="true">🤖</div><h3>GEO: get named by AI</h3><p>Help ChatGPT and Gemini describe you correctly.</p><span class="card-link">More on GEO →</span></a>
-        </div>
-      </div>
-    </section>
-
-    <!-- PROOF -->
-    <section class="section alt proof">
+    <!-- RESULTS (4 Nov 2026: the homepage shows results; the process lives on /how-it-works/) -->
+    <section class="section proof" id="results">
       <div class="wrap">
         <p class="kicker reveal">Real results</p>
         <h2 class="reveal">Numbers straight from Google Search Console</h2>
-        <p class="section-lead reveal">Last 28 days ({{WINDOW}}) vs the 28 days before, for {{EG_LINK}} and {{CL_LINK}}.</p>
-        <div class="kpis reveal">
-{{HOME_KPIS}}
+        <p class="section-lead reveal">Last 28 days ({{WINDOW}}) vs the 28 days before. Results vary; no guarantees.</p>
+        <div class="cards two result-cards" style="margin-top:28px">
+{{RESULT_CARDS}}
         </div>
-        <p class="note reveal"><a class="card-link" href="/results/">See the full case studies →</a></p>
+        <p class="note reveal" style="text-align:center"><a class="card-link" href="/clients/">See every client website and its numbers →</a></p>
       </div>
     </section>
 
-    <!-- WHO IT'S FOR -->
-    <section class="section">
+    <!-- OFFER: one line, detail on /pricing/ and /how-it-works/ -->
+    <section class="offer-line">
       <div class="wrap">
-        <p class="kicker reveal">Which one are you?</p>
-        <h2 class="reveal">Two ways we help</h2>
-        <div class="cards two" style="margin-top:28px">
-          <a class="card reveal" href="/new-business-website/"><p class="pill">Starting a business</p><h3>Your first website, found on Google from day one</h3><p>Website, Google Maps and Google set up for you, usually live within 7 days.</p><span class="card-link">Start the right way →</span></a>
-          <a class="card reveal" href="/seo-services-singapore/"><p class="pill">Looking for SEO</p><h3>Comparing SEO agencies, or hiring someone?</h3><p>An honest side-by-side: agency, in-house hire, or Page One.</p><span class="card-link">See how it compares →</span></a>
-        </div>
-        <p class="note reveal">Opening a <a class="link" href="/industries/home-bakery/">home bakery</a>, <a class="link" href="/industries/cafe/">cafe</a>, <a class="link" href="/industries/nail-lash-studio/">nail or lash studio</a> or <a class="link" href="/industries/fitness-studio/">fitness studio</a>? <a class="link" href="/industries/">All industries →</a></p>
-      </div>
-    </section>
-
-    <!-- PLAN + HOW IT WORKS -->
-    <section class="section alt">
-      <div class="wrap">
-        <p class="kicker reveal">One simple plan</p>
-        <h2 class="reveal">Three steps. No tech skills needed.</h2>
-        <ol class="steps" style="margin-top:72px">
-          <li class="reveal"><span>1</span><h3>Check where you stand</h3><p>New business, or <a class="link" href="#check">check your website free</a>.</p></li>
-          <li class="reveal"><span>2</span><h3>Chat with Edwin</h3><p>On WhatsApp: what you do, where, and a few photos.</p></li>
-          <li class="reveal"><span>3</span><h3>We do the rest</h3><p>Usually live within 7 days, on Google, Maps and Bing.</p></li>
-        </ol>
-        <div class="cards two" style="margin-top:40px">
-          <a class="card reveal" href="/get-found/"><div class="icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg></div><p class="pill">Basic subscription</p><h3>Get Found</h3><p>Website built free (or yours fixed), a daily technical audit and a new article every 2 days.</p><span class="price-tag">S$50 <small>/month</small></span><br><span class="card-link">Learn more →</span></a>
-          <a class="card reveal" href="/seo-boost/"><div class="icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2 4 14h7l-1 8 9-12h-7z"/></svg></div><p class="pill">Optional top-up</p><h3>SEO Boost</h3><p>First-page competitor analysis for one search term, then your page improved.</p><span class="price-tag">S$10 <small>/run</small></span><br><span class="card-link">Learn more →</span></a>
-        </div>
-        <p class="note reveal" style="text-align:center"><a class="card-link" href="/pricing/">See pricing →</a> · <a class="card-link" href="/seo-explained/">SEO explained simply →</a></p>
+        <p class="reveal"><b>One plan: S$50 a month.</b> Website included, worked on daily for Google and AI search. No setup fee, no contract.</p>
+        <p class="reveal offer-links"><a class="card-link" href="/how-it-works/">How it works →</a> <a class="card-link" href="/pricing/">Pricing →</a></p>
       </div>
     </section>
 
@@ -197,3 +156,19 @@
         <p class="note reveal" style="text-align:center">More in the <a class="link" href="/faq/">full FAQ</a> and our <a class="link" href="/articles/">SEO guides for Singapore businesses</a>. </p>
       </div>
     </section>
+
+    <!-- AS LISTED ON (homepage only, 8 Nov 2026: DesignRush checks this followed link) -->
+    <p class="listed-on">As listed on: <a href="https://www.designrush.com/agency/search-engine-optimization" target="_blank" rel="noopener">Check out our listing on DesignRush</a></p>
+
+    <!-- FINAL CTA -->
+    <section class="cta-band">
+      <div class="wrap">
+        <h2>Ready for more customer enquiries?</h2>
+        <p>Tell Edwin what you do and where, on WhatsApp. No obligation.</p>
+        <div class="cta-row center">
+          <a class="btn" href="{{WA_FINAL}}" target="_blank" rel="noopener" data-cta="whatsapp_home_final">Get more enquiries</a>
+          <a class="btn btn-ghost" href="/results/">See the results</a>
+        </div>
+      </div>
+    </section>
+
