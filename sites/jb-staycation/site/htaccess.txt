@@ -13,4 +13,7 @@ Redirect 301 /articles/big-group-staycation-jb-house-for-10-20-people/ https://j
 <FilesMatch "\.(html|xml|txt)$">
 Header set Cache-Control "public, max-age=3600"
 </FilesMatch>
+<Files "review.html">
+Header set X-Robots-Tag "noindex, nofollow, noarchive, nosnippet"
+</Files>
 </IfModule>
