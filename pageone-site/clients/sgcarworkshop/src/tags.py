@@ -23,6 +23,8 @@ TAGS = [
     dict(id='bmw-mercedes', kind='brand', label='BMW and Mercedes-Benz', rx=r'bmw|mercedes|continental', cat=None, guide='bmw-mercedes-workshops-singapore'),
     dict(id='toyota', kind='brand', label='Toyota', rx=r'toyota|harrier|vios|camry|corolla|alphard|prius', cat=None, guide='toyota-workshops-singapore'),
     dict(id='honda', kind='brand', label='Honda', rx=r'honda', cat=None, guide='honda-workshops-singapore'),
+    dict(id='tesla', kind='brand', label='Tesla', rx=r'tesla', cat=None, guide='tesla-workshops-singapore'),
+    dict(id='byd', kind='brand', label='BYD', rx=r'\bbyd\b|atto ?3', cat=None, guide='byd-workshops-singapore'),
     dict(id='volkswagen-audi', kind='brand', label='Volkswagen and Audi', rx=r'volkswagen|\bvw\b|audi', cat=None, guide=None),
     # ---- problems (what the customer notices)
     dict(id='p-knocking', kind='problem', label='Knocking over humps', rx=r'undercarriage|suspension|absorber|stabiliser|noise|drive ?shaft|wear-and-tear', cat=None, guide='car-knocking-over-humps'),
@@ -37,6 +39,7 @@ TAGS = [
     dict(id='p-spray', kind='problem', label='Spray painting', rx=r'spray|respray|paint', cat=None, guide='car-spray-painting-singapore'),
     dict(id='p-battery-dead', kind='problem', label='Battery dead', rx=r'battery|jump ?start', cat=None, guide='car-battery-dead'),
     dict(id='p-dash-lights', kind='problem', label='Dashboard warning lights', rx=r'warning light|engine light|check engine|diagnos', cat=None, guide='dashboard-warning-lights'),
+    dict(id='p-burning-smell', kind='problem', label='Burning smell', rx=r'burn|smell|oil leak|clutch|electrical fault', cat=None, guide='car-burning-smell'),
     dict(id='h-choose', kind='howto', label='Choosing a workshop', rx=r'repair|diagnos|overhaul', cat=None, guide='how-to-choose-a-car-workshop'),
     dict(id='h-servicing-cost', kind='howto', label='Servicing cost', rx=r'servicing|oil change|service package|maintenance', cat=None, guide='car-servicing-cost-singapore'),
     dict(id='h-before-visit', kind='howto', label='Before a workshop visit', rx=r'pre-?purchase|inspection|diagnos|health check', cat=None, guide='before-a-workshop-visit'),

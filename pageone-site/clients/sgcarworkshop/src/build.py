@@ -1592,6 +1592,11 @@ def guides_for(e):
     ments = (PILOT.get(e['slug']) or {}).get('mentioned_services') or []
     out = []
     have = set(_tags.card_tags(ments))
+    makes = (PILOT.get(e['slug']) or {}).get('makes') or []
+    svc = [x['n'] + ' ' + (x.get('d') or '') for x in e.get('services', [])] + [e.get('lede') or ''] if e['slug'] in {s for g in _guides.GUIDES for s in (g.get('paid') or [])} else []
+    for t in _tags.TAGS:   # 10 Nov 2026: brand guides also link from a card that names the make (card makes, or a labelled listing's own service text)
+        if t['id'] in ('tesla', 'byd') and any(re.search(t['rx'], m, re.I) for m in makes + svc):
+            have.add(t['id'])
     return [g for g in _guides.GUIDES if g['tag'] in have]
 
 
@@ -2175,7 +2180,10 @@ def guide_page(g):
     depth = 2
     path = _guides.gpath(g)
     cr, crld = crumbs(depth, [('Guides', 'guides/'), (g['short'], None)])
-    causes = ''.join('<li><h3>%s</h3><p>%s</p></li>' % (E(h), E(t)) for h, t in g['causes'])
+    def _cause(c):   # optional 3rd item (10 Nov 2026): where to go next for this cause, as (site path, label) pairs
+        nx = ('<p class="fine">Next: %s</p>' % ' &middot; '.join('<a href="../../%s">%s</a>' % (pp, E(lb)) for pp, lb in c[2])) if len(c) > 2 and c[2] else ''
+        return '<li><h3>%s</h3><p>%s</p>%s</li>' % (E(c[0]), E(c[1]), nx)
+    causes = ''.join(_cause(c) for c in g['causes'])
     tell = ''.join('<li>%s</li>' % E(x) for x in g['tell'])
     gm = guide_matches(g)
     if gm:
@@ -2197,6 +2205,36 @@ def guide_page(g):
         wk += ('<h3 class="gest">Workshops whose own website lists this</h3><ul class="gwl">%s</ul><p class="fine">From each workshop\'s own website, as listed on its Google Maps profile. Ask the workshop to confirm it can help with your car.</p>' % ''.join(
             '<li class="gw"><div><a href="../../workshops/%s/"><b>%s</b></a> <span class="fine">%s</span><p class="mentline"><b>Its website lists:</b> %s</p></div><div class="acts">%s</div></li>'
             % (e['slug'], E(e['name']), E(ESTATES[e['estate']]['name']), E(', '.join(ms)), contact_btns(e, path, 'sm')) for e, ms in sm))
+    if g.get('kind') == 'brand':   # 10 Nov 2026 (Edwin, Tesla/BYD pages): free cards whose own listing names the make, then own websites that list EV work
+        rx = re.compile(g['match'], re.I)
+        seen = {e['slug'] for v in gm.values() for e, _ in v} | {e['slug'] for e, _ in sm}
+        mk = sorted([e for e in ENTRIES if e['tier'] == 'free' and e['slug'] not in seen and any(rx.search(m) for m in ((PILOT.get(e['slug']) or {}).get('makes') or []))], key=lambda e: e['name'].lower())
+        if mk:
+            wk += ('<h3 class="gest">Workshops whose listing names %s</h3><ul class="gwl">%s</ul>' % (E(g['short']), ''.join(
+                '<li class="gw"><div><a href="../../workshops/%s/"><b>%s</b></a> <span class="fine">%s</span><p class="mentline"><b>Car makes on its card:</b> %s</p></div><div class="acts">%s</div></li>'
+                % (e['slug'], E(e['name']), E(ESTATES[e['estate']]['name']), E(', '.join(PILOT[e['slug']]['makes'])), contact_btns(e, path, 'sm')) for e in mk)))
+            seen |= {e['slug'] for e in mk}
+        if g.get('ev_rx'):
+            ev = [x for x in guide_site_matches(dict(match=g['ev_rx']), seen)]
+            if ev:
+                wk += ('<h3 class="gest">Workshops whose own website lists EV work</h3><ul class="gwl">%s</ul><p class="fine">These websites list work on electric cars in general, not %s by name. Ask the workshop whether it works on your model.</p>' % (''.join(
+                    '<li class="gw"><div><a href="../../workshops/%s/"><b>%s</b></a> <span class="fine">%s</span><p class="mentline"><b>Its website lists:</b> %s</p></div><div class="acts">%s</div></li>'
+                    % (e['slug'], E(e['name']), E(ESTATES[e['estate']]['name']), E(', '.join(ms)), contact_btns(e, path, 'sm')) for e, ms in ev), E(g['short'])))
+        pd = []
+        for slug in g.get('paid') or []:   # Featured (paid) or founder-owned listings, labelled; only when their own card text names the make
+            e = BY_SLUG.get(slug)
+            if not e:
+                continue
+            lines = ['%s: %s' % (x['n'], x['d']) for x in e.get('services', []) if rx.search(x['n'] + ' ' + (x.get('d') or ''))]
+            if not lines:   # else the first sentence of its own card lede that names the make
+                lines = [x for x in re.split(r'(?<=\.)\s+', e.get('lede') or '') if rx.search(x)][:1]
+            if lines:
+                pd.append('<li class="gw"><div><a href="../../workshops/%s/"><b>%s</b></a> %s <span class="fine">%s</span><p class="mentline"><b>Its listing says:</b> %s</p></div><div class="acts">%s</div></li>'
+                          % (slug, E(e['name']), tier_badge(e), E((e.get('area_label') or '') + (', online parts seller, not a workshop' if e.get('online_only') and e.get('category') == 'car-parts' else '')), E(' '.join(lines)), contact_btns(e, path, 'sm')))
+        if pd:
+            wk += '<h3 class="gest">Featured and founder-owned listings that mention %s</h3><ul class="gwl">%s</ul><p class="fine">Labelled listings are paid or owned by the founder of this site. They are shown here because their own listing names %s.</p>' % (E(g['short']), ''.join(pd), E(g['short']))
+        if g.get('few_note'):
+            wk += '<p class="fine">%s</p>' % E(g['few_note'])
     sun_html = ''
     if g.get('sunday_cat'):   # Edwin 7 Nov 2026: tyre shops whose Google Maps hours show Sunday open (Basic and Verified, never paid), A to Z
         sun = sorted([e for e in ENTRIES if g['sunday_cat'] in e.get('categories', [e['category']]) and not is_paid(e) and (FACTS.get(e['slug']) or {}).get('sunday')], key=lambda e: e['name'].lower())
@@ -2227,7 +2265,7 @@ def guide_page(g):
     ld = [dict(crld, **{'@context': 'https://schema.org'}), faq_ld(g['faqs'])]
     if g.get('article'):
         ld.append({'@context': 'https://schema.org', '@type': 'Article', 'headline': g['h1'], 'description': g['desc'], 'inLanguage': 'en-SG',
-                   'mainEntityOfPage': abs_url(path), 'datePublished': '2026-11-07', 'dateModified': '2026-11-07',
+                   'mainEntityOfPage': abs_url(path), 'datePublished': g.get('published', '2026-11-07'), 'dateModified': g.get('published', '2026-11-07'),
                    'author': {'@type': 'Organization', 'name': SITE_NAME, 'url': BASE}, 'publisher': {'@type': 'Organization', 'name': SITE_NAME, 'url': BASE}})
     page(path, g['title'] if len(g['title']) <= 60 else fit_title(g['title'], g['h1'], g['short']), g['desc'], body, ld, h1=g['h1'])
 

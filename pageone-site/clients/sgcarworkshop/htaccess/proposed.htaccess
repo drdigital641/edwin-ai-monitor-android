@@ -24,7 +24,9 @@ RedirectMatch 301 ^/areas/ubi/general\-servicing\-repair/?$ /areas/ubi/
 RedirectMatch 301 ^/areas/woodlands/general\-servicing\-repair/?$ /areas/woodlands/
 RedirectMatch 301 ^/areas/yishun/general\-servicing\-repair/?$ /areas/yishun/
 RedirectMatch 301 ^/guides/bmw\-mercedes\-workshops\-singapore/?$ /brands/bmw-mercedes/
+RedirectMatch 301 ^/guides/byd\-workshops\-singapore/?$ /brands/byd/
 RedirectMatch 301 ^/guides/honda\-workshops\-singapore/?$ /brands/honda/
+RedirectMatch 301 ^/guides/tesla\-workshops\-singapore/?$ /brands/tesla/
 RedirectMatch 301 ^/guides/toyota\-workshops\-singapore/?$ /brands/toyota/
 RedirectMatch 301 ^/regions/?$ /
 RedirectMatch 301 ^/regions/central/?$ /areas/central/
