@@ -1,4 +1,4 @@
-"""JBStaycation demo preview: builds every page into site/ (python3 build.py).
+"""JB Airbnb demo preview: builds every page into site/ (python3 build.py).
 
 Facts (client site jbstaycation.com, read 8 Nov 2026) and official travel sources are listed in README.md.
 Unknowns are NOT invented; see CONFIRM below. To go live change BASE (one constant) and rebuild.
@@ -13,10 +13,10 @@ from urllib.parse import quote
 HERE = os.path.dirname(os.path.abspath(__file__))
 OUT = os.environ.get('JB_OUT') or os.path.join(HERE, 'site')
 
-BASE = 'https://pageonesingapore.com/preview/jb-staycation/'   # single constant: change to the live domain at go-live
+BASE = 'https://jbairbnb.com/'   # live domain (Edwin 9 Nov 2026: official name JB Airbnb, domain jbairbnb.com); was pageonesingapore.com/preview/jb-staycation/
 TODAY = '2026-11-09'
 SITE_ID = 'jb-staycation'
-NAME = 'JBStaycation'
+NAME = 'JB Airbnb'
 TAGLINE = 'A quieter escape, just across the causeway.'
 WA_NUM, WA_SHOW = '6590062198', '+65 9006 2198'
 WA_BASE = 'https://wa.me/' + WA_NUM
@@ -252,7 +252,7 @@ HOME_CTA_IMG = 'landak-living-room-1.webp'
 
 
 def _alt_for(f):
-    return ALT.get(f, 'JBStaycation holiday house in Johor Bahru')
+    return ALT.get(f, 'JB Airbnb holiday house in Johor Bahru')
 
 
 def used_images():
@@ -404,7 +404,7 @@ ARTICLES = [
         'house': 'prima', 'img': 'prima',
         'sections': [
             ('Why a whole house suits a big group', ['One house keeps everyone together: one kitchen, one living area, one place to park. You split the nightly rate across the group, and nobody is booking six separate hotel rooms.',
-                'Both JBStaycation houses are private homes in Johor Bahru, not shared buildings.']),
+                'Both JB Airbnb houses are private homes in Johor Bahru, not shared buildings.']),
             ('Up to 10 guests: Landak Kawan Fun House', ['<a href="{R}stays/landak-kawan-fun-house-taman-abad/">Landak Kawan Fun House</a> in Taman Abad has 3 bedrooms, 3 bathrooms, 1 king bed and 4 queen beds (bedrooms 2 and 3 each have two queens), and the bathrooms have water heaters. It is ' + tiers_full('landak') + ' a night for the whole house, cleaning included, and the minimum stay is 1 night (2 over Christmas Eve and Christmas Day).',
                 'For entertainment it has an 8ft pool table, a foosball table, 2 dart boards, a mahjong table, a 55-inch TV arcade and a children\'s playroom, plus a dedicated workstation. Wi-Fi is 100 Mbps.']),
             ('Up to 12 guests: Prima', ['<a href="{R}stays/prima-taman-nusantara-prima/">Prima</a>, a landed house in Taman Nusantara Prima, Iskandar Puteri, takes up to 12 guests in 3 bedrooms with 3 bathrooms, including a ground-floor bedroom for elderly guests. It is ' + tiers_full('prima') + ' a night, cleaning included, and the minimum stay is 1 night (2 over Christmas Eve and Christmas Day).',
@@ -441,7 +441,7 @@ ARTICLES = [
         'slug': 'causeway-second-link-or-rts-which-way-to-jb-for-a-weekend-stay',
         'title': 'Causeway, Second Link or RTS: which way to JB for a weekend stay',
         'ttl': 'Causeway, Second Link or RTS: Which Way to JB?',
-        'desc': 'Woodlands Causeway, Tuas Second Link or the RTS Link? What official sources say, and which JBStaycation house suits each route.',
+        'desc': 'Woodlands Causeway, Tuas Second Link or the RTS Link? What official sources say, and which JB Airbnb house suits each route.',
         'h1': 'Causeway, Second Link or RTS: which way to JB for a weekend stay',
         'answer': 'By road, Singapore has two land checkpoints: Woodlands and Tuas. The RTS Link train between Woodlands North and Bukit Chagar is now expected to start passenger service in February 2027, subject to safety certification (LTA, 2 Oct 2026). Prima is closer to Tuas; Landak to the Causeway CIQ.',
         'house': 'landak', 'img': 'landak',
@@ -671,7 +671,7 @@ def brand_mark():
 
 def header_html(k=None):
     nav = ''.join('<a href="{R}%s">%s</a>' % (p, n) for n, p in NAV)
-    return ('<header class="hdr" id="top"><div class="wrap hdr-in"><a class="brand" href="{R}" aria-label="JBStaycation home">%s<span>JB<b>Staycation</b></span></a>'
+    return ('<header class="hdr" id="top"><div class="wrap hdr-in"><a class="brand" href="{R}" aria-label="JB Airbnb home">%s<span>JB <b>Airbnb</b></span></a>'
             '<nav class="nav" id="mainnav" aria-label="Main">%s</nav>'
             '<div class="hdr-act">%s<button class="mtog" type="button" aria-expanded="false" aria-controls="mainnav" aria-label="Open menu">%s%s</button></div>'
             '</div></header>' % (brand_mark(), nav, wa_btn('WhatsApp', wa_msg(k), 'header', 'btn btn-wa btn-sm hdr-wa', aria='Message us on WhatsApp'), ico('menu', 24, 'i i-open'), ico('x', 24, 'i i-close')))
@@ -684,7 +684,7 @@ def footer_html():
             '<p class="ftr-sub">Private holiday houses in Johor Bahru for Singapore families and groups.</p>%s</div>'
             '<div><p class="fh">Our houses</p><ul class="adds">%s</ul></div>'
             '<div><p class="fh">Explore</p><div class="flinks">%s</div></div></div>'
-            '<p class="wordmark" aria-hidden="true">JB<span>Staycation</span></p>'
+            '<p class="wordmark" aria-hidden="true">JB <span>Airbnb</span></p>'
             '<div class="fsmall"><span>Prices in RM. Host Daniel on WhatsApp: %s.</span> <a href="https://pageonesingapore.com/" rel="noopener">Website by Page One Singapore</a></div></div></footer>'
             % (e(TAGLINE), wa_btn('WhatsApp %s' % WA_SHOW, WA_HELLO, 'footer'), adds, links, WA_SHOW))
 
@@ -714,7 +714,7 @@ document.addEventListener('click',function(e){var t=e.target&&e.target.closest?e
 """
 
 
-UI_JS = r"""/* JBStaycation UI: header, menu, reveal on scroll, carousels, lightbox. Content is fully visible and usable without JS. */
+UI_JS = r"""/* JB Airbnb UI: header, menu, reveal on scroll, carousels, lightbox. Content is fully visible and usable without JS. */
 (function(){
 var d=document,b=d.body,rm=window.matchMedia&&matchMedia('(prefers-reduced-motion: reduce)').matches;
 var hdr=d.querySelector('.hdr'),tog=d.querySelector('.mtog');
@@ -1263,7 +1263,7 @@ def render(path, p):
             '<meta name="theme-color" content="#f7f8f9">'
             '<link rel="icon" href="{pre}favicon.ico" sizes="48x48"><link rel="icon" href="{pre}icon.svg" type="image/svg+xml"><link rel="icon" href="{pre}icon-192.png" sizes="192x192" type="image/png">'
             '<link rel="apple-touch-icon" href="{pre}apple-touch-icon.png"><link rel="manifest" href="{pre}site.webmanifest">'
-            '<meta property="og:type" content="{ogt}"><meta property="og:site_name" content="JBStaycation"><meta property="og:title" content="{title}">'
+            '<meta property="og:type" content="{ogt}"><meta property="og:site_name" content="JB Airbnb"><meta property="og:title" content="{title}">'
             '<meta property="og:description" content="{desc}"><meta property="og:url" content="{url}"><meta property="og:image" content="{ogi}"><meta property="og:image:width" content="{ogw}"><meta property="og:image:height" content="{ogh}"><meta property="og:image:alt" content="{oga}">'
             '<meta name="twitter:card" content="summary_large_image"><meta name="twitter:title" content="{title}"><meta name="twitter:image" content="{ogi}">'
             '{headjs}{fonts}<link rel="stylesheet" href="{pre}jb.css?v={av}">{lds}</head><body class="{bc}">'
@@ -1699,7 +1699,7 @@ def route_list():
 def route_map(rl=False):
     """Schematic (not to scale) of Singapore -> Second Link / Causeway -> the two houses. Times are host-stated."""
     return ('<figure class="mapcard%s">' % (' has-rl' if rl else '') + (route_list() if rl else '') + '<svg class="map-w" viewBox="0 0 640 420" role="img" aria-labelledby="mapt mapd" font-family="Geist,system-ui,sans-serif">'
-            '<title id="mapt">Route diagram from Singapore to the two JBStaycation houses</title>'
+            '<title id="mapt">Route diagram from Singapore to the two JB Airbnb houses</title>'
             '<desc id="mapd">Schematic, not to scale. From Singapore, the Second Link at Tuas leads to Prima in Iskandar Puteri, about 10 minutes as stated by the host. The Causeway at Woodlands leads to JB CIQ; Landak Kawan Fun House in Taman Abad is about 12 minutes from CIQ (host estimate) and a 5-minute walk from KSL City Mall. The RTS Link from Woodlands North to Bukit Chagar is expected from February 2027.</desc>'
             '<rect width="640" height="420" rx="12" fill="#f3f6f9"/>'
             '<path d="M0 215 C120 195 200 240 320 222 S520 196 640 214 V262 C520 246 430 276 320 266 S120 246 0 262 Z" fill="#cfdeec"/>'
@@ -2024,7 +2024,7 @@ def faq_body():
 
 
 def about_body():
-    return ('<div class="wrap body prose"><section class="rv"><h2>JBStaycation</h2><p>JBStaycation offers private holiday houses in Johor Bahru for families and groups, many of them travelling from Singapore. Our idea is simple: %s</p>'
+    return ('<div class="wrap body prose"><section class="rv"><h2>JB Airbnb</h2><p>JB Airbnb offers private holiday houses in Johor Bahru for families and groups, many of them travelling from Singapore. Our idea is simple: %s</p>'
             '<p>We have two houses, <a href="{R}stays/prima-taman-nusantara-prima/">Prima</a> in Taman Nusantara Prima, Iskandar Puteri, and <a href="{R}stays/landak-kawan-fun-house-taman-abad/">Landak Kawan Fun House</a> in Taman Abad, Johor Bahru.</p>'
             '<p>Your host is Daniel, based in Singapore and JB. He understands both cultures and speaks English, Malay and Chinese. Ask him anything on WhatsApp at %s. %s</p></section>'
             '<section class="rv"><h2>Addresses</h2><ul>%s</ul>%s</section></div>'
@@ -2048,7 +2048,7 @@ def privacy_body():
             '<p>We keep enquiry messages only as long as needed for the purposes above.</p></div>' % TODAY)
 
 
-HUB_ANSWER = ('Johor Bahru is in Malaysia, so every guest needs a passport, even for one night. JBStaycation has two private houses with pool tables: Prima near the Tuas Second Link for up to 12 guests, and Landak near KSL City Mall for up to 10. Prima is ' + tiers_rm('prima') + ', and Landak ' + tiers_rm('landak') + ', per night for the whole house with cleaning included.')
+HUB_ANSWER = ('Johor Bahru is in Malaysia, so every guest needs a passport, even for one night. JB Airbnb has two private houses with pool tables: Prima near the Tuas Second Link for up to 12 guests, and Landak near KSL City Mall for up to 10. Prima is ' + tiers_rm('prima') + ', and Landak ' + tiers_rm('landak') + ', per night for the whole house with cleaning included.')
 
 
 def articles_body():
@@ -2071,7 +2071,7 @@ def articles_body():
 def article_body(a):
     secs = ''.join('<section class="rv"><h2>%s</h2>%s</section>' % (e(h), ''.join('<p>%s</p>' % t for t in ps)) for h, ps in a['sections'])
     hh = HOUSES[a['house']]
-    return ('<div class="wrap body prose"><p class="byline">%sBy JBStaycation, %s</p><div class="answer">%s</div>%s'
+    return ('<div class="wrap body prose"><p class="byline">%sBy JB Airbnb, %s</p><div class="answer">%s</div>%s'
             '<section class="rv"><p>See the house: <a href="{R}stays/%s/">%s</a>.</p>%s</section></div>'
             % (ico('cal', 18), TODAY, e(a['answer']), secs, hh['slug'], e(hh['full']), wa_btn('Ask about dates', wa_msg(a.get('wa')), 'article-' + a['slug'][:30])))
 
@@ -2094,19 +2094,19 @@ def build_pages():
         page(path, titles[0], titles[1], titles[2], '', [('Home', ''), ('Stays', 'stays/'), (h['name'], path)], ld=[house_ld(h)],
              og=BENTO[k][0], stick=k, custom_top=True)
         PAGES[path]['body'] = house_body(k)
-    page('prices/', 'Prices from RM 450 a Night, Cleaning Included | JBStaycation', 'JBStaycation prices per night, cleaning included: Prima RM 450 to 750, Landak RM 550 to 1,000 for weekday, weekend and public holiday. Deposit and payment.',
+    page('prices/', 'Prices from RM 450 a Night, Cleaning Included | JB Airbnb', 'JB Airbnb prices per night, cleaning included: Prima RM 450 to 750, Landak RM 550 to 1,000 for weekday, weekend and public holiday. Deposit and payment.',
          'Prices (RM per night)', prices_body(), [('Home', ''), ('Prices', 'prices/')], lede='Per night for the whole house, cleaning included. Prima: ' + tiers_rm('prima') + '. Landak: ' + tiers_rm('landak') + '.', photo=PAGE_IMG['prices'], og=PAGE_IMG['prices'])
-    page('getting-there/', 'Getting to JB from Singapore by Road or RTS | JBStaycation', 'Woodlands, Tuas or the RTS Link to Johor Bahru? Official facts with sources and which JBStaycation house suits each route.',
+    page('getting-there/', 'Getting to JB from Singapore by Road or RTS | JB Airbnb', 'Woodlands, Tuas or the RTS Link to Johor Bahru? Official facts with sources and which JB Airbnb house suits each route.',
          'Getting to our Johor Bahru houses from Singapore', gt_body(), [('Home', ''), ('Getting there', 'getting-there/')],
          lede='Facts below come from official sources, with the date we checked them.', photo=PAGE_IMG['getting-there'], og=PAGE_IMG['getting-there'])
-    page('faq/', 'FAQ: Booking a JB Holiday House | JBStaycation', 'Answers on payment, check-in times, minimum stay, cleaning, gatherings, parking and crossing the border from Singapore to our two JB houses.',
+    page('faq/', 'FAQ: Booking a JB Holiday House | JB Airbnb', 'Answers on payment, check-in times, minimum stay, cleaning, gatherings, parking and crossing the border from Singapore to our two JB houses.',
          'Frequently asked questions', faq_body(), [('Home', ''), ('FAQ', 'faq/')], photo=PAGE_IMG['faq'], og=PAGE_IMG['faq'])
-    page('about/', 'About JBStaycation | Johor Bahru Holiday Houses', 'JBStaycation offers two private holiday houses in Johor Bahru for Singapore families and groups, booked directly on WhatsApp.',
-         'About JBStaycation', about_body(), [('Home', ''), ('About', 'about/')], lede=TAGLINE, photo=PAGE_IMG['about'],
+    page('about/', 'About JB Airbnb | Johor Bahru Holiday Houses', 'JB Airbnb offers two private holiday houses in Johor Bahru for Singapore families and groups, booked directly on WhatsApp.',
+         'About JB Airbnb', about_body(), [('Home', ''), ('About', 'about/')], lede=TAGLINE, photo=PAGE_IMG['about'],
          ld=[org_ld()])
-    page('contact/', 'Contact JBStaycation on WhatsApp', 'Book or ask a question on WhatsApp +65 9006 2198. Tell us the house, dates and group size.',
+    page('contact/', 'Contact JB Airbnb on WhatsApp', 'Book or ask a question on WhatsApp +65 9006 2198. Tell us the house, dates and group size.',
          'Contact us', contact_body(), [('Home', ''), ('Contact', 'contact/')], lede='WhatsApp is the fastest way to reach us.', photo=PAGE_IMG['contact'], og=PAGE_IMG['contact'])
-    page('privacy/', 'Privacy Notice | JBStaycation', 'How JBStaycation handles personal data from WhatsApp enquiries and website visits.', 'Privacy notice', privacy_body(), [('Home', ''), ('Privacy', 'privacy/')])
+    page('privacy/', 'Privacy Notice | JB Airbnb', 'How JB Airbnb handles personal data from WhatsApp enquiries and website visits.', 'Privacy notice', privacy_body(), [('Home', ''), ('Privacy', 'privacy/')])
     page('articles/', 'JB Guide for Singaporeans: Houses, Routes & Costs', 'Use this JB guide for Singaporeans to choose a house, plan the crossing and understand RM/SGD costs. Compare Prima and Landak for your group.',
          'JB guide for Singaporeans planning a short getaway', articles_body(), [('Home', ''), ('JB guide', 'articles/')], lede='Houses, the crossing, costs in SGD and first-time tips in one place.')
     for a in ARTICLES:
@@ -2171,7 +2171,7 @@ def main():
         os.makedirs(d, exist_ok=True)
         open(os.path.join(d, 'index.html'), 'w', encoding='utf-8').write(render(path, p))
     # 404 (renders with absolute BASE paths so it works at any depth)
-    nf = ('<!doctype html><html lang="en-SG"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Page not found | JBStaycation</title>'
+    nf = ('<!doctype html><html lang="en-SG"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Page not found | JB Airbnb</title>'
           '<meta name="robots" content="max-image-preview:large"><link rel="icon" href="%sicon.svg" type="image/svg+xml">%s%s<link rel="stylesheet" href="%sjb.css?v=%s"></head><body class="inner has-stick">%s<main id="main"><div class="wrap nf"><p class="eyebrow">Error 404</p><h1>Page not found</h1><p class="lead">That page does not exist. Try our <a href="%s">home page</a>, the <a href="%sstays/">stays</a> or message us on WhatsApp.</p>%s</div></main>%s%s<script src="%sjb.js?v=%s" defer></script><script src="%scta.js?v=%s" defer></script></body></html>'
           % (BASE, HEAD_JS, FONT_LINKS, BASE, ASSET_V, header_html(), BASE, BASE, wa_btn('WhatsApp us', wa_msg(), '404'), footer_html(), stick_bar('any'), BASE, ASSET_V, BASE, ASSET_V))
     nf = nf.replace('{R}', BASE).replace('<main id="main">', '<main id="main" style="padding-top:0">')
@@ -2189,7 +2189,7 @@ def main():
         'Allow: /\n\nSitemap: %ssitemap.xml\n' % BASE)
     open(os.path.join(OUT, 'site.webmanifest'), 'w').write(json.dumps({'name': NAME, 'short_name': NAME, 'start_url': BASE, 'display': 'browser', 'background_color': '#f7f8f9', 'theme_color': '#0a1f38',
         'icons': [{'src': 'icon-192.png', 'sizes': '192x192', 'type': 'image/png'}, {'src': 'icon-512.png', 'sizes': '512x512', 'type': 'image/png'}]}, indent=1))
-    ll = ['# JBStaycation', '', '> %s Private holiday houses in Johor Bahru, Malaysia, for Singapore families and groups. Host: Daniel (based in Singapore and JB; English, Malay and Chinese), WhatsApp %s (%s). Pay by %s.' % (TAGLINE, WA_SHOW, WA_BASE, PAY_SHORT), '', '## Booking terms', '- Prices per night for the whole house, cleaning included. Prima: ' + tiers_full('prima') + '. Landak Kawan Fun House: ' + tiers_full('landak') + '. SGD figures are estimates at RM1 = S$0.3158.', '- ' + DEPOSIT + ' Bank details are shared once a booking and its dates are confirmed.', '- Check-in 3pm, check-out 11am; self check-in details sent after a firm booking; early check-in or late checkout RM 100 an hour, subject to availability (waiver on request).', '- Minimum stay 1 night (2 nights over Christmas Eve and Christmas Day). No cancellation; dates can be changed once.', '- Gatherings need the host\'s approval. Visitors allowed; quiet hours 11pm to 7am. No BBQ, no pets; RM 500 penalty for smoking, vaping or eating durian indoors.', '- Prima has a ground-floor bedroom, so elderly guests do not need the stairs.', '- Professionally cleaned after every checkout; fresh linen, towels and toiletries provided. Fire extinguisher under the kitchen sink; outdoor CCTV; the host is the emergency contact.', '', '## Houses']
+    ll = ['# JB Airbnb', '', '> %s Private holiday houses in Johor Bahru, Malaysia, for Singapore families and groups. Host: Daniel (based in Singapore and JB; English, Malay and Chinese), WhatsApp %s (%s). Pay by %s.' % (TAGLINE, WA_SHOW, WA_BASE, PAY_SHORT), '', '## Booking terms', '- Prices per night for the whole house, cleaning included. Prima: ' + tiers_full('prima') + '. Landak Kawan Fun House: ' + tiers_full('landak') + '. SGD figures are estimates at RM1 = S$0.3158.', '- ' + DEPOSIT + ' Bank details are shared once a booking and its dates are confirmed.', '- Check-in 3pm, check-out 11am; self check-in details sent after a firm booking; early check-in or late checkout RM 100 an hour, subject to availability (waiver on request).', '- Minimum stay 1 night (2 nights over Christmas Eve and Christmas Day). No cancellation; dates can be changed once.', '- Gatherings need the host\'s approval. Visitors allowed; quiet hours 11pm to 7am. No BBQ, no pets; RM 500 penalty for smoking, vaping or eating durian indoors.', '- Prima has a ground-floor bedroom, so elderly guests do not need the stairs.', '- Professionally cleaned after every checkout; fresh linen, towels and toiletries provided. Fire extinguisher under the kitchen sink; outdoor CCTV; the host is the emergency contact.', '', '## Houses']
     for k in ORDER:
         h = HOUSES[k]
         ll.append('- [%s](%sstays/%s/): %s. Up to %d guests, %s per night, cleaning included. %s' % (h['full'], BASE, h['slug'], h['addr'], h['guests'], tiers_rm(k), h['card']))
@@ -2200,7 +2200,7 @@ def main():
     path_prefix = '/' + BASE.split('/', 3)[3]
     open(os.path.join(OUT, 'htaccess.txt'), 'w').write(
         '# Rename to .htaccess in this folder via cPanel. Preview hiding is handled by the server outside the pages.\n'
-        'RewriteEngine On\nRewriteCond %{HTTPS} !=on\nRewriteRule ^ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]\n'
+        'RewriteEngine On\nRewriteCond %{HTTP_HOST} ^www\\.jbairbnb\\.com$ [NC]\nRewriteRule ^ https://jbairbnb.com%{REQUEST_URI} [L,R=301]\nRewriteCond %{HTTPS} !=on\nRewriteRule ^ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]\n'
         'DirectoryIndex index.html\nErrorDocument 404 ' + path_prefix + '404.html\n'
         'Redirect 301 ' + path_prefix + 'articles/big-group-staycation-jb-house-for-10-20-people/ ' + BASE + 'articles/jb-homestay-for-big-groups-12-guests/\n'
         '<IfModule mod_headers.c>\n<FilesMatch "\\.(html|xml|txt)$">\nHeader set Cache-Control "public, max-age=3600"\n</FilesMatch>\n'
