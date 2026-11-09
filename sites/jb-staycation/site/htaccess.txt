@@ -1,11 +1,20 @@
-# Rename to .htaccess in this folder via cPanel. Preview hiding is handled by the server outside the pages.
+# Upload as .htaccess in public_html/website_b1ec45f5/preview/jb-staycation (back up any existing file first).
+# JB Staycations docroot .htaccess (9 Nov 2026). A child RewriteEngine On replaces the parent folder rewrites, so all rules live here.
 RewriteEngine On
+# 1. Old preview copy on the agency host -> same path on jbstaycations.com (only for pageonesingapore.com, so jbstaycations.com can never loop)
+RewriteCond %{HTTP_HOST} ^(www\.)?pageonesingapore\.com$ [NC]
+RewriteRule ^(.*)$ https://jbstaycations.com/$1 [R=301,L]
+# 2. Old domains and www -> https apex
 RewriteCond %{HTTP_HOST} ^(www\.)?jbairbnb\.com$ [NC]
 RewriteRule ^ https://jbstaycations.com%{REQUEST_URI} [L,R=301]
 RewriteCond %{HTTP_HOST} ^www\.jbstaycations\.com$ [NC]
 RewriteRule ^ https://jbstaycations.com%{REQUEST_URI} [L,R=301]
+# 3. http -> https
 RewriteCond %{HTTPS} !=on
 RewriteRule ^ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
+# 4. /index.html and /<folder>/index.html -> the folder URL (only when the visitor asked for index.html)
+RewriteCond %{THE_REQUEST} \s/(.*/)?index\.html[\s?] [NC]
+RewriteRule ^(.*/)?index\.html$ https://jbstaycations.com/$1 [L,R=301]
 DirectoryIndex index.html
 ErrorDocument 404 /404.html
 Redirect 301 /articles/big-group-staycation-jb-house-for-10-20-people/ https://jbstaycations.com/articles/jb-homestay-for-big-groups-12-guests/
