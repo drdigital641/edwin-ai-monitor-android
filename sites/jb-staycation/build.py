@@ -21,6 +21,11 @@ TODAY = '2026-11-09'
 SITE_ID = 'jb-staycation'
 NAME = 'JB Staycations'
 TAGLINE = 'A quieter escape, just across the causeway.'
+# Sitemap lastmod (tech SEO brief 9 Nov 2026): a page's date changes ONLY when its content changes. Bump SITE_LASTMOD
+# only for a site-wide content change; otherwise add {path: 'YYYY-MM-DD'} to LASTMOD for the pages you changed. Articles use their own date/updated.
+SITE_LASTMOD = '2026-11-09'
+LASTMOD = {}
+ANSWERS = {'home': 'JB Staycations has two private houses in Johor Bahru for Singapore groups. Prima, in Gelang Patah, sleeps up to 12, about 10 minutes from the Tuas Second Link (host estimate). Landak Kawan Fun House sleeps up to 10, a 5-minute walk from KSL City Mall. From RM 450 a night, cleaning included.', 'stays': 'Compare our two private JB houses. Prima, in Taman Nusantara Prima, Gelang Patah, sleeps up to 12 in 3 rooms, one on the ground floor for elderly guests. Landak Kawan Fun House, in Taman Abad, sleeps up to 10, a 5-minute walk from KSL City Mall. Prima from RM 450 and Landak from RM 550 a night, cleaning included.', 'prices': 'Prices are per night for the whole house, cleaning included. Prima: RM 450 weekday, RM 650 weekend, RM 750 public holiday. Landak Kawan Fun House: RM 550, RM 750 and RM 1,000. Every booking has a RM 1,000 refundable deposit, returned within 48 hours after checkout. Check-in is 3pm and check-out 11am.', 'gt': 'Prima is in Taman Nusantara Prima, Gelang Patah, Iskandar Puteri, about 10 minutes from the Tuas Second Link (host estimate). Landak Kawan Fun House is in Taman Abad, Johor Bahru, a 5-minute walk from KSL City Mall. Check-in is 3pm and check-out 11am. For the exact pin and parking, WhatsApp Daniel on +65 9006 2198.', 'faq': 'Quick answers for Singapore groups booking our two private JB houses. Prima sleeps up to 12 and Landak Kawan Fun House up to 10. Prices start at RM 450 a night, cleaning included, with a RM 1,000 refundable deposit returned within 48 hours after checkout. Check-in is 3pm, check-out 11am. Anything else? WhatsApp Daniel on +65 9006 2198.', 'about': 'JB Staycations offers two private houses in Johor Bahru for Singapore groups. Prima, in Taman Nusantara Prima, Gelang Patah, Iskandar Puteri, sleeps up to 12. Landak Kawan Fun House, in Taman Abad, sleeps up to 10, a 5-minute walk from KSL City Mall. Both are booked directly with the host: WhatsApp Daniel on +65 9006 2198.', 'big': 'For 10 people, Landak Kawan Fun House in Taman Abad sleeps up to 10, a 5-minute walk from KSL City Mall. For up to 12, Prima in Gelang Patah has 3 rooms, each with 1 queen bed and 2 single floor mattresses, one on the ground floor. Prima is RM 450 and Landak RM 550 a weekday night, cleaning included.'}   # tech SEO brief 9 Nov 2026: 40-60 word answer block under each H1, listed facts only
 WA_NUM, WA_SHOW = '6590062198', '+65 9006 2198'
 WA_BASE = 'https://wa.me/' + WA_NUM
 INDEXNOW_KEY = '8902a563f0e8890158ac4cf1b41cd50d'   # IndexNow key (jbstaycations.com; was jbairbnb.com) (9 Nov 2026), also in watchdog/indexnow.py SITES
@@ -94,6 +99,14 @@ HERO_ALT = 'Friends and family enjoying a JB staycation house with pool table'
 HERO_V = '20261109'   # cache-buster for the hero files (same names were overwritten on the server)
 OG_DEFAULT = 'prima-living-room-1.webp'   # real photo for og:image / schema
 HERO_SET = {'desktop': 'prima-hero-1600.webp', 'small': 'prima-hero-800.webp', 'mobile': 'prima-hero-mobile-800.webp'}
+
+
+def hero_preload():
+    """Preload the hero for each <picture> source, same files, srcset and sizes as hero_picture()."""
+    v = '?v=' + HERO_V
+    return ('<link rel="preload" as="image" href="{R}img/%s%s" media="(max-width:600px)" fetchpriority="high">'
+            '<link rel="preload" as="image" href="{R}img/%s%s" imagesrcset="{R}img/%s%s 800w, {R}img/%s%s 1600w" imagesizes="100vw" media="(min-width:601px)" fetchpriority="high">'
+            % (HERO_SET['mobile'], v, HERO_SET['desktop'], v, HERO_SET['small'], v, HERO_SET['desktop'], v))
 
 
 def hero_picture():
@@ -358,7 +371,7 @@ HOUSES = {
         'addr': 'Jalan Landak Kawan 2, Taman Abad, Johor Bahru, Johor 80250, Malaysia',
         'guests': 10, 'price': 550, 'minstay': 'Minimum stay: 1 night (2 over Christmas Eve and Day)', 'beds': 3, 'rating': 'Rated 5.0 from 4 Airbnb reviews',
         'tag': 'KSL landed fun house a 5-minute walk from KSL City Mall',
-        'bestfor': 'Best for groups who want to walk to KSL City Mall, food and the onsen',
+        'bestfor': 'Best for groups who want to walk to KSL City Mall and food',
         'top': ['8ft pool table', 'Foosball', '2 dart boards', 'Mahjong table', '5-min walk to KSL City Mall'],
         'card': 'A new double-storey landed fun house for up to 10 guests with an 8ft pool table, foosball, 2 dart boards, a mahjong table and a TV arcade, a 5-minute walk from KSL City Mall.',
         'stats': [('Guests', 'Up to 10'), ('Bedrooms', '3'), ('Bathrooms', '3'), ('Weekday', 'RM 550 a night')],
@@ -399,12 +412,12 @@ SRC = {
 # ---------------------------------------------------------------- articles
 ARTICLES = [
     {
-        'slug': 'jb-homestay-for-big-groups-12-guests',
+        'slug': 'jb-homestay-for-big-groups-12-guests', 'date': '2026-11-09',
         'title': 'JB homestay for big groups: planning for 10-12 guests',
         'ttl': 'JB Homestay for Big Groups: Plan a Group Stay of 10-12',
         'desc': 'Plan a JB homestay for big groups with honest guest limits, a whole-house cost split and bedding questions. Compare the two houses before enquiring.',
         'h1': 'JB homestay for big groups: planning for 10-12 guests',
-        'answer': 'For 10 people, Landak Kawan Fun House in Taman Abad sleeps up to 10 with 3 bedrooms and 5 beds. For up to 12, Prima, a landed house in Taman Nusantara Prima, has 3 bedrooms and 3 bathrooms, with a 7ft pool table and a mahjong table. Prima is RM 450 and Landak RM 550 a night on weekdays, cleaning included, booked on WhatsApp.',
+        'answer': ANSWERS['big'],
         'house': 'prima', 'img': 'prima',
         'sections': [
             ('Why a whole house suits a big group', ['One house keeps everyone together: one kitchen, one living area, one place to park. You split the nightly rate across the group, and nobody is booking six separate hotel rooms.',
@@ -423,11 +436,11 @@ ARTICLES = [
         ],
     },
     {
-        'slug': 'staying-near-ksl-city-mall-what-is-within-5-15-minutes',
-        'title': 'JB staycation near KSL: plan your weekend',
-        'ttl': 'JB Staycation near KSL: A Walkable Weekend Guide',
-        'desc': 'Plan a JB staycation near KSL with food, mall and map links from the Landak area. See the 10-guest house and ask about your weekend dates.',
-        'h1': 'JB staycation near KSL: plan your weekend',
+        'slug': 'staying-near-ksl-city-mall-what-is-within-5-15-minutes', 'date': '2026-11-09',
+        'title': 'Things to do near KSL City Mall, 5 to 15 minutes from Landak',
+        'ttl': 'Things to Do near KSL City Mall: Food & Shops in 5-15 Min',
+        'desc': 'Things to do near KSL City Mall: food, groceries and shops within 5 to 15 minutes of Landak Kawan Fun House, with map links and host times.',
+        'h1': 'Things to do near KSL City Mall, 5 to 15 minutes from Landak',
         'answer': 'Landak Kawan Fun House in Taman Abad is about a 5-minute walk to KSL City Mall and about 3 minutes on foot to the Yu Ee hawker stalls (host tip). Mid Valley Southkey is about a 10-minute drive, and JB City Square and the Causeway CIQ about 12 minutes (host estimate, excluding border queues).',
         'house': 'landak', 'img': 'landak', 'wa': 'landak',
         'sections': [
@@ -442,7 +455,7 @@ ARTICLES = [
         ],
     },
     {
-        'slug': 'causeway-second-link-or-rts-which-way-to-jb-for-a-weekend-stay',
+        'slug': 'causeway-second-link-or-rts-which-way-to-jb-for-a-weekend-stay', 'date': '2026-11-09',
         'title': 'Causeway, Second Link or RTS: which way to JB for a weekend stay',
         'ttl': 'Causeway, Second Link or RTS: Which Way to JB?',
         'desc': 'Woodlands Causeway, Tuas Second Link or the RTS Link? What official sources say, and which JB Staycations house suits each route.',
@@ -456,6 +469,7 @@ ARTICLES = [
                 'On 2 October 2026 LTA published that passenger service is now expected to start in February 2027, subject to independent safety certification and final approvals (<a href="' + SRC['lta_feb'][1] + '" rel="noopener">LTA news release</a>). Until it opens, plan on road or other existing routes.']),
             ('Which house for which route', ['<a href="{R}stays/prima-taman-nusantara-prima/">Prima</a> in Gelang Patah, Iskandar Puteri is about 10 minutes from the Tuas Second Link on the Malaysian side (host estimate, excluding queues), so it suits groups driving in via the Second Link.',
                 '<a href="{R}stays/landak-kawan-fun-house-taman-abad/">Landak Kawan Fun House</a> in Taman Abad is about 12 minutes from the Causeway CIQ (host estimate) and a 5-minute walk from KSL City Mall, so it suits groups arriving at the Johor Bahru city side.']),
+            ('Directions to each house', ['For the drive to each house after the crossing, see <a href="{R}getting-there/">Getting to Prima and Landak from Singapore</a>.']),
             ('Not yet confirmed', ['We have not listed RTS fares or the door-to-door time from Bukit Chagar to either house, because we have no official figure for them. Ask us on WhatsApp if you need help planning.']),
         ],
     },
@@ -463,6 +477,9 @@ ARTICLES = [
 
 
 # Airbnb listings (Edwin's team, 9 Nov 2026). Ratings recorded 8 Nov 2026; no review quotes.
+KSL_ART = 'staying-near-ksl-city-mall-what-is-within-5-15-minutes'
+GBP_URL = 'https://maps.app.goo.gl/oWWdqZMFiy926sS49'   # JB Staycations Google profile (managed by Daniel; link only)
+GBP_CID = 'https://maps.google.com/?cid=16507716049237242259'
 AIRBNB = {'prima': 'https://www.airbnb.co.uk/rooms/1712988048076930096', 'landak': 'https://www.airbnb.co.uk/rooms/1738320132895126027'}
 RATING_READ = '8 Nov 2026'
 
@@ -587,10 +604,11 @@ def amen_icon(a):
     return 'check'
 
 
-def pimg800(f, alt=None):
-    """Album tile: the 800px file only (thumb/), lazy, async, real width/height. The 1600px file opens in the lightbox."""
+def pimg800(f, alt=None, sizes='(min-width:1024px) 300px, (min-width:600px) 33vw, 50vw'):
+    """Album tile: 400w (thumb400/) and 800w (thumb/) files, lazy, async, real width/height. The 1600px file opens in the lightbox."""
     w, h = tdims(f)
-    return '<img src="{R}thumb/%s" alt="%s" width="%d" height="%d" loading="lazy" decoding="async">' % (f, e(_alt_for(f) if alt is None else alt), w, h)
+    return ('<img src="{R}thumb/%s" srcset="{R}thumb400/%s 400w, {R}thumb/%s %dw" sizes="%s" alt="%s" width="%d" height="%d" loading="lazy" decoding="async">'
+            % (f, f, f, w, sizes, e(_alt_for(f) if alt is None else alt), w, h))
 
 
 def pimg(f, alt=None, cls='', eager=False, sizes='(min-width:1024px) 50vw, 100vw', thumb=True, lazy=True):
@@ -601,7 +619,9 @@ def pimg(f, alt=None, cls='', eager=False, sizes='(min-width:1024px) 50vw, 100vw
     if f not in TDIM:
         thumb = False
     if HAS_THUMB and thumb:
-        srcset = ' srcset="{R}thumb/%s %dw, {R}img/%s %dw" sizes="%s"' % (f, tdims(f)[0], f, w, sizes)
+        tw = tdims(f)[0]
+        mid = ('{R}thumb/%s %dw' % (f, tw)) if tw >= 800 or w <= 800 else ('{R}thumb800/%s 800w' % f)   # portrait photos: an 800w file too
+        srcset = ' srcset="{R}thumb400/%s 400w, %s, {R}img/%s %dw" sizes="%s"' % (f, mid, f, w, sizes)
     load = ' fetchpriority="high"' if eager else (' loading="lazy"' if lazy else '')
     return ('<img src="{R}img/%s"%s alt="%s" width="%d" height="%d"%s decoding="async"%s>'
             % (f, srcset, e(alt), w, h, load, (' class="%s"' % cls) if cls else ''))
@@ -635,7 +655,8 @@ def addr_ld(h):
 def org_ld():
     return {'@context': 'https://schema.org', '@type': 'Organization', '@id': BASE + '#org', 'name': NAME, 'url': BASE, 'telephone': '+6590062198',
             'slogan': TAGLINE, 'logo': BASE + 'icon-512.png',
-            'contactPoint': {'@type': 'ContactPoint', 'telephone': '+6590062198', 'contactType': 'reservations', 'url': 'https://wa.me/6590062198'}}
+            'contactPoint': {'@type': 'ContactPoint', 'telephone': '+6590062198', 'contactType': 'reservations', 'url': 'https://wa.me/6590062198'},
+            'sameAs': [GBP_CID, AIRBNB['prima'], AIRBNB['landak']]}
 
 
 def house_ld(h):
@@ -675,7 +696,7 @@ def brand_mark():
 
 def header_html(k=None):
     nav = ''.join('<a href="{R}%s">%s</a>' % (p, n) for n, p in NAV)
-    return ('<header class="hdr" id="top"><div class="wrap hdr-in"><a class="brand" href="{R}" aria-label="JB Staycations home">%s<span>JB <b>Staycations</b></span></a>'
+    return ('<header class="hdr" id="top"><div class="wrap hdr-in"><a class="brand" href="/" aria-label="JB Staycations home">%s<span>JB <b>Staycations</b></span></a>'
             '<nav class="nav" id="mainnav" aria-label="Main">%s</nav>'
             '<div class="hdr-act">%s<button class="mtog" type="button" aria-expanded="false" aria-controls="mainnav" aria-label="Open menu">%s%s</button></div>'
             '</div></header>' % (brand_mark(), nav, wa_btn('WhatsApp', wa_msg(k), 'header', 'btn btn-wa btn-sm hdr-wa', aria='Message us on WhatsApp'), ico('menu', 24, 'i i-open'), ico('x', 24, 'i i-close')))
@@ -690,7 +711,7 @@ def footer_html():
             '<div><p class="fh">Explore</p><div class="flinks">%s</div></div></div>'
             '<p class="wordmark" aria-hidden="true">JB<span>Staycations</span></p>'
             '<div class="fsmall"><span>Prices in RM. Host Daniel on WhatsApp: %s.</span> %s <a href="https://pageonesingapore.com/" rel="noopener">Website by Page One Singapore</a></div></div></footer>'
-            % (e(TAGLINE), wa_btn('WhatsApp %s' % WA_SHOW, WA_HELLO, 'footer'), adds, links, WA_SHOW, review_helper.footer_link('{R}')))
+            % (e(TAGLINE), wa_btn('WhatsApp %s' % WA_SHOW, WA_HELLO, 'footer'), adds, links, WA_SHOW, review_helper.footer_link('{R}') + ' <a href="%s" rel="noopener" target="_blank">Find us on Google</a>' % GBP_URL))
 
 
 CTA_JS = r"""/* Page One CTA tap counter (copied approach from aivs.js v3, site id jb-staycation). Counts taps on WhatsApp/call/email links. ?p1test=1 = test mode. Does not run on pageonesingapore.com previews or localhost. */
@@ -810,6 +831,7 @@ CSS = r"""
 :root{--page:#f7f8f9;--surface:#fff;--ink:#0a1f38;--ink-soft:#45566b;--ink-muted:#4a5563;--icon-muted:#6b7a8c;--line:#dfe4e9;--line-strong:#c3ccd6;--panel:#10304f;--panel-deep:#0a1f38;--amber:#e8a33d;--amber-deep:#8a5a10;--icon-amber:#a86d15;--amber-soft:#fbf1e0;--sky:#e9eff5;
 --r:12px;--r-lg:18px;--ease:cubic-bezier(.23,1,.32,1);--sh:0 1px 2px rgba(10,31,56,.05),0 10px 30px -12px rgba(10,31,56,.22);--sh-lg:0 2px 4px rgba(10,31,56,.06),0 28px 60px -24px rgba(10,31,56,.38);--hh:64px;
 --font:"Geist","Geist Fallback",system-ui,-apple-system,"Segoe UI",Roboto,sans-serif}
+@font-face{font-family:"Geist";font-style:normal;font-weight:300 800;font-display:swap;src:url(fonts/geist-latin-var.woff2) format("woff2");unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}
 @font-face{font-family:"Geist Fallback";src:local("Arial"),local("Arimo"),local("Liberation Sans"),local("Helvetica"),local("Roboto");size-adjust:104%}
 @media(min-width:1024px){:root{--hh:76px}}
 *{box-sizing:border-box}html{-webkit-text-size-adjust:100%;scroll-padding-top:calc(var(--hh) + 16px)}
@@ -1207,8 +1229,9 @@ body,main{background-color:var(--page)}
 """
 
 
-FONT_LINKS = ('<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>'
-              '<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Geist:wght@300..800&display=swap">')
+# Geist is self-hosted (latin subset, variable 300-800, font-display swap): no render-blocking Google Fonts request (tech SEO brief 9 Nov 2026).
+FONT_FILE = 'fonts/geist-latin-var.woff2'
+FONT_LINKS = '<link rel="preload" href="{R}%s" as="font" type="font/woff2" crossorigin>' % FONT_FILE
 HEAD_JS = "<script>document.documentElement.className+=' js';setTimeout(function(){document.documentElement.classList.add('rv-all')},1500)</script>"
 
 
@@ -1224,8 +1247,8 @@ import hashlib as _hl
 ASSET_V = _hl.sha256((CSS + UI_JS + CTA_JS).encode()).hexdigest()[:8]  # cache-buster: changes whenever css/js change
 
 
-def page(path, title, desc, h1, body, crumbs=None, ld=None, lede='', og=None, photo=None, stick=None, article=False, custom_top=False):
-    PAGES[path] = dict(title=title, desc=desc, h1=h1, body=body, crumbs=crumbs, ld=ld or [], lede=lede, og=og, photo=photo, stick=stick,
+def page(path, title, desc, h1, body, crumbs=None, ld=None, lede='', og=None, photo=None, stick=None, article=False, custom_top=False, byline=''):
+    PAGES[path] = dict(title=title, desc=desc, h1=h1, body=body, crumbs=crumbs, ld=ld or [], lede=lede, og=og, photo=photo, stick=stick, byline=byline,
                        article=article, custom_top=custom_top)
 
 
@@ -1241,6 +1264,28 @@ def stick_bar(k):
             % (rm(PRICES[k][0]), rm(PRICES[k][1]), rm(PRICES[k][2]), wa_btn('Check dates', h['msg'], 'sticky-' + k)))
 
 
+SHARE_PAGES = {'': 'share-home', 'stays/': 'share-stays', 'stays/prima-taman-nusantara-prima/': 'share-prima', 'stays/landak-kawan-fun-house-taman-abad/': 'share-landak', 'prices/': 'share-prices'}
+
+
+def share_jpg(path, og):
+    """Cover-crop the page's existing real og photo to share/<name>-1200x630.jpg (new filename). Returns the site path or None."""
+    if path not in SHARE_PAGES:
+        return None
+    name = 'share/%s-1200x630.jpg' % SHARE_PAGES[path]
+    dst = os.path.join(OUT, name)
+    if not os.path.exists(dst):
+        from PIL import Image
+        os.makedirs(os.path.dirname(dst), exist_ok=True)
+        im = Image.open(os.path.join(OUT, 'img', og)).convert('RGB')
+        W, H = im.size; r = 1200 / 630
+        if W / H > r:
+            nw = int(H * r); im = im.crop(((W - nw) // 2, 0, (W - nw) // 2 + nw, H))
+        else:
+            nh = int(W / r); im = im.crop((0, (H - nh) // 2, W, (H - nh) // 2 + nh))
+        im.resize((1200, 630), Image.LANCZOS).save(dst, 'JPEG', quality=82, optimize=True, progressive=True)
+    return name
+
+
 def render(path, p):
     pre = '../' * path.count('/')
     url = BASE + path
@@ -1250,18 +1295,22 @@ def render(path, p):
     if crumbs and len(crumbs) > 1:
         lds.append(crumbs_ld(crumbs))
     lds.append({'@context': 'https://schema.org', '@type': 'WebPage', '@id': url + '#webpage', 'url': url, 'name': p['title'],
-                'description': p['desc'], 'dateModified': TODAY, 'inLanguage': 'en-SG', 'isPartOf': {'@type': 'WebSite', 'name': NAME, 'url': BASE},
+                'description': p['desc'], 'dateModified': LASTMOD.get(path, SITE_LASTMOD), 'inLanguage': 'en-SG', 'isPartOf': {'@type': 'WebSite', 'name': NAME, 'url': BASE},
                 'primaryImageOfPage': {'@type': 'ImageObject', 'url': abs_img(og)}})
     if path == '' or p['custom_top']:
         top = ''
     else:
-        top = ('<div class="ptop"><div class="wrap">%s<h1>%s</h1>%s%s</div></div>'
-               % (crumbs_html(crumbs) if crumbs and len(crumbs) > 1 else '', e(p['h1']),
+        top = ('<div class="ptop"><div class="wrap">%s<h1>%s</h1>%s%s%s</div></div>'
+               % (crumbs_html(crumbs) if crumbs and len(crumbs) > 1 else '', e(p['h1']), p['byline'],
                   ('<p class="lead">%s</p>' % p['lede']) if p['lede'] else '',
                   ('<div class="pphoto">%s</div>' % pimg(p['photo'], eager=True, sizes='(min-width:1248px) 1152px, 100vw')) if p['photo'] else ''))
     stick = stick_bar(p['stick'] or 'any')
     bc = ('home' if path == '' else 'inner') + (' has-stick' if stick else '')
     w, h = dims(og)
+    ogi, ogtype = abs_img(og), ''
+    sh = share_jpg(path, og)
+    if sh:   # 1200x630 JPG for chat apps that skip WebP previews (tech SEO brief 9 Nov 2026)
+        ogi, w, h, ogtype = BASE + sh, 1200, 630, '<meta property="og:image:type" content="image/jpeg">'
     body = ('<!doctype html><html lang="en-SG"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">'
             '<title>{title}</title><meta name="description" content="{desc}"><link rel="canonical" href="{url}">'
             '<meta name="robots" content="index,follow,max-image-preview:large">'
@@ -1270,11 +1319,11 @@ def render(path, p):
             '<link rel="apple-touch-icon" href="{pre}apple-touch-icon.png"><link rel="manifest" href="{pre}site.webmanifest">'
             '<meta property="og:type" content="{ogt}"><meta property="og:site_name" content="JB Staycations"><meta property="og:title" content="{title}">'
             '<meta property="og:description" content="{desc}"><meta property="og:url" content="{url}"><meta property="og:image" content="{ogi}"><meta property="og:image:width" content="{ogw}"><meta property="og:image:height" content="{ogh}"><meta property="og:image:alt" content="{oga}">'
-            '<meta name="twitter:card" content="summary_large_image"><meta name="twitter:title" content="{title}"><meta name="twitter:image" content="{ogi}">'
-            '{headjs}{fonts}<link rel="stylesheet" href="{pre}jb.css?v={av}">{lds}</head><body class="{bc}">'
+            '<meta name="twitter:card" content="summary_large_image"><meta name="twitter:title" content="{title}"><meta name="twitter:description" content="{desc}"><meta name="twitter:image" content="{ogi}">{ogtype}'
+            '{headjs}{hpre}{fonts}<link rel="stylesheet" href="{pre}jb.css?v={av}">{lds}</head><body class="{bc}">'
             '<a class="skip" href="#main">Skip to content</a>{hdr}<main id="main">{top}{content}</main>{ftr}{stick}'
             '<script src="{pre}jb.js?v={av}" defer></script><script src="{pre}cta.js?v={av}" defer></script></body></html>').format(av=ASSET_V, 
-        title=e(p['title']), desc=e(p['desc']), url=url, pre=pre, ogt='article' if p['article'] else 'website', ogi=e(abs_img(og)),
+        title=e(p['title']), desc=e(p['desc']), url=url, pre=pre, hpre=hero_preload() if path == '' else '', ogt='article' if p['article'] else 'website', ogi=e(ogi), ogtype=ogtype,
         ogw=w, ogh=h, oga=e(_alt_for(og)), headjs=HEAD_JS, fonts=FONT_LINKS, lds=''.join(jl(x) for x in lds), bc=bc, hdr=header_html(p['stick']), top=top,
         content=p['body'], ftr=footer_html(), stick=stick)
     return body.replace('{R}', pre)
@@ -1637,10 +1686,11 @@ def around_section(k):
     cats = ''.join('<div class="ar-cat%s" data-c="%d" role="tabpanel"><h3>%s</h3><ul class="ar-strip">%s</ul></div>' % (' on' if i == 0 else '', i, e(c), around_cards(it)) for i, (c, it) in enumerate(A['cats']))
     plans = ''.join('<li><b>%s:</b> %s</li>' % (e(t), e(b)) for t, b in A['plans'])
     tips = ''.join('<li><b>%s</b> %s%s</li>' % (e(t), e(b), (' <a href="%s" rel="noopener">%s</a>' % (e(u), e(l))) if u else '') for t, b, u, l in AROUND['tips'])
+    more = (' Read <a href="{R}articles/%s/">things to do near KSL City Mall</a>.' % KSL_ART) if k == 'landak' else ''
     return ('<section id="around" class="rv"><h2>Around the house</h2><p class="muted">%s</p><div class="ar" data-ar><div class="ar-chips" role="tablist" aria-label="Nearby places">%s</div>%s</div>'
             '<details class="acc2"><summary>Sample plans %s</summary><ul class="plist">%s</ul><p class="note">Ideas, not packages. No meals, tickets or transport are included.</p></details>'
             '<details class="acc2"><summary>First time in JB? 5 tips for Singaporeans %s</summary><ol class="tips">%s</ol><p class="note">Check current official rules before you travel.</p></details></section>'
-            % (e(AROUND_NOTE), chips, cats, ico('down', 20, 'i acc-i'), plans, ico('down', 20, 'i acc-i'), tips))
+            % (e(AROUND_NOTE) + more, chips, cats, ico('down', 20, 'i acc-i'), plans, ico('down', 20, 'i acc-i'), tips))
 
 
 def around_top3(k):
@@ -1773,7 +1823,7 @@ def home_body():
     return (
         '<section class="hero"><div class="hero-bg">%s</div><div class="wrap hero-in">'
         '<p class="kick">%s</p><h1><span class="display">JB staycation for Singapore groups</span></h1>'
-        '<p class="sub">Your whole group, one private house in JB, from RM 450 a night with cleaning included.<span class="more"> Prima for up to 12 near Tuas, or Landak for up to 10, a 5-minute walk from KSL.</span></p>'
+        '<p class="sub answer-hero">%s</p>'
         '<div class="cta-row"><a class="btn btn-pri" href="#houses">View houses %s</a></div>'
         '<ul class="facts" aria-label="At a glance">%s</ul></div><p class="hcap">AI-created atmosphere image; see real house photos below.</p></section>'
         '<section class="sec" id="houses"><div class="wrap"><div class="sec-head split rv"><div><p class="eyebrow">Two private houses</p><h2>Choose Prima or Landak</h2></div>'
@@ -1787,7 +1837,7 @@ def home_body():
         '<section class="sec gsec"><div class="wrap"><details class="fold" id="guides"><summary><span class="st"><span class="eyebrow">JB guide for Singaporeans</span><h2>Plan it like a local</h2></span>%s</summary>'
         '<div class="fold-body"><div class="arts">%s</div><p><a class="link" href="{R}articles/">The full JB guide for Singaporeans %s</a></p></div></details>'
         '<script>if(innerWidth>=900)document.currentScript.previousElementSibling.open=true</script></div></section>'
-        % (hero_picture(), e(TAGLINE), ico('arrow', 18), facts_html,
+        % (hero_picture(), e(TAGLINE), e(ANSWERS['home']), ico('arrow', 18), facts_html,
            house_card('prima'), house_card('landak'), chooser, fx_note(), trust_html, plans_html, steps_html, faq_html, ico('arrow', 18),
            ico('x', 22, 'i pm'), arts, ico('arrow', 18)))
 
@@ -1819,7 +1869,7 @@ def stays_card(k):
     h = HOUSES[k]
     imgs = STAYS_IMG[k]
     slides = ''.join('<div class="slide">%s</div>' % (
-                     pimg(f, eager=True, lazy=False, sizes='(min-width:1024px) 600px, 100vw') if i == 0 else pimg800(f)) for i, f in enumerate(imgs))
+                     pimg(f, eager=(k == 'prima'), lazy=(k != 'prima'), sizes='(min-width:1024px) 600px, 100vw') if i == 0 else pimg800(f, sizes='(min-width:1024px) 600px, 100vw')) for i, f in enumerate(imgs))
     facts = [('users', '%d guests' % h['guests']), ('bed', '%d bedrooms' % h['beds'])] + ([('bed', '5 beds')] if k == 'landak' else []) + [('bath', '3 bathrooms'), ('cal', 'From %s / night' % rm(PRICES[k][0]))]
     short = {'%d guests' % h['guests']: '%d guests' % h['guests'], '%d bedrooms' % h['beds']: '%d bed' % h['beds'], '5 beds': None, '3 bathrooms': '3 bath', 'From %s / night' % rm(PRICES[k][0]): 'From %s' % rm(PRICES[k][0])}
     facts_html = ''.join('<li%s>%s<span class="lf">%s</span>%s</li>' % ('' if short[t] else ' class="nm"', ico(i, 20), e(t), ('<span class="sf" aria-hidden="true">%s</span>' % e(short[t])) if short[t] else '') for i, t in facts)
@@ -1829,13 +1879,13 @@ def stays_card(k):
             '<span class="cnt" aria-hidden="true">1 / %d</span><div class="dots" aria-hidden="true"></div><a class="seeall" href="#album-%s">%sSee all %d photos</a></div>'
             '<div class="scb"><p class="area">%s%s</p><h2>%s</h2><ul class="kf">%s</ul><ul class="ami">%s</ul>'
             '%s<p class="sgd">Per night, whole house, cleaning included &middot; %s per person on a weekday at %d guests</p>%s'
-            '<p class="bestfor">%s.</p><p class="rating">%s%s</p>'
+            '<p class="bestfor">%s.%s</p><p class="rating">%s%s</p>'
             '<div class="scta">%s<a class="btn btn-line" href="{R}stays/%s/">View house %s</a></div>'
             '<nav class="jl" aria-label="Jump to"><a href="#album-%s">Photos</a><a href="#cmp">Essentials</a><a href="#around-%s">Around here</a></nav></div></article>'
             % (k, e(h['name']), slides, ico('left', 22), ico('right', 22), len(imgs), k, ico('grid', 18), sum(len(fs) for _g, fs in ALBUM[k]),
                ico('pin', 16), e(AREA[k]), e(h['name']), facts_html, top, tiers_html(k), PP_WEEKDAY[k], h['guests'],
                '<p class="snote">Up to 12 guests: 3 rooms, each with 1 queen bed and 2 single floor mattresses. Ground-floor bedroom for elderly guests. No BBQ.</p>' if k == 'prima' else '<p class="snote">No BBQ. Completed September 2026 (host-stated).</p>',
-               e(h['bestfor']), ico('star', 16), '<span>%s</span>' % rating_link(k),
+               e(h['bestfor']), (' See <a href="{R}articles/%s/">things to do near KSL City Mall</a>.' % KSL_ART) if k == 'landak' else '', ico('star', 16), '<span>%s</span>' % rating_link(k),
                wa_btn('Check dates for %s' % h['name'].replace(' Kawan Fun House', ''), h['msg'], 'stays-' + k), h['slug'], ico('arrow', 18), k, k))
 
 
@@ -1990,14 +2040,17 @@ def prices_body():
     return ('<div class="wrap body prose"><div class="tw"><table><thead><tr><th>House</th><th>Weekday</th><th>Weekend</th><th>Public holiday</th><th>Per person (weekday, full house)</th><th>Guests</th></tr></thead><tbody>%s</tbody></table></div>%s'
             '<section class="rv"><h2>What is included</h2><p><b>Prima (landed house):</b> ground-floor bedroom (no stairs needed), 7ft pool table, mahjong table, Wi-Fi, air conditioning, kitchen, parking for 2 cars inside and 6 outside, 2 TVs with Netflix, washer, covered balcony and a study desk. 3 rooms (each 1 queen bed and 2 single floor mattresses), 3 bathrooms, up to 12 guests.</p>'
             '<p><b>Landak Kawan Fun House (KSL landed fun house):</b> 8ft pool table, foosball, 2 dart boards, mahjong table, 55-inch TV arcade, board games, children\'s playroom, dedicated workstation, 100 Mbps Wi-Fi, air conditioning, kitchen for light cooking, parking for 2 cars inside, washer, hair dryer and iron. 3 bedrooms, 3 bathrooms with water heaters, 5 beds (1 king, 4 queens), up to 10 guests.</p></section>'
-            '<section class="rv"><h2>Good to know</h2><ul><li>All prices are in Malaysian ringgit (RM).</li><li>Prices are per night for the whole house, with weekday, weekend and public holiday rates. For your group size or a gathering, WhatsApp Daniel.</li><li>Cleaning is included in the nightly price.</li><li>Minimum stay: 1 night (2 over Christmas Eve and Christmas Day).</li><li>Per-person figures split the weekday whole-house rate at full occupancy; they are not bookable bed prices.</li><li>%s</li><li>%s</li><li>No cancellation, but you can change your dates once.</li><li>Gatherings need the host\'s approval.</li>'
+            '<section class="rv"><h2>Good to know</h2><ul><li>All prices are in Malaysian ringgit (RM).</li><li>Prices are per night for the whole house, with weekday, weekend and public holiday rates. For your group size or a gathering, WhatsApp Daniel.</li><li>Cleaning is included in the nightly price.</li><li>Minimum stay: 1 night (2 over Christmas Eve and Christmas Day). 24 and 25 Dec are charged at the public holiday rate (Prima RM 750, Landak RM 1,000).</li><li>Per-person figures split the weekday whole-house rate at full occupancy; they are not bookable bed prices.</li><li>%s</li><li>%s</li><li>No cancellation, but you can change your dates once.</li><li>Gatherings need the host\'s approval.</li>'
             '<li>Early check-in or late checkout: RM 100 an hour, subject to availability (you can ask for a waiver).</li><li>No BBQ at either house.</li></ul>%s</section></div>'
             % (rows, fx_note(), PAY, DEPOSIT, wa_btn('Message for dates and rates', wa_msg(), 'prices')))
 
 
 def gt_body():
     srcs = ''.join('<li><a href="%s" rel="noopener">%s</a> (%s)</li>' % (e(u), e(t), e(n)) for t, u, n in [SRC[k] for k in ('lta_feb', 'lta_rts', 'ica_qr', 'ica_traffic')])
-    return ('<div class="wrap body"><div class="prose"><div class="answer">There are two road crossings from Singapore, at Woodlands and Tuas. The RTS Link train from Woodlands North to Bukit Chagar is expected to start in February 2027. Prima is nearer Tuas; Landak Kawan Fun House is nearer CIQ and KSL City Mall.</div></div>'
+    return ('<div class="wrap body"><div class="prose"><section class="rv"><h2>Directions to each house</h2><ul>'
+            '<li><a href="{R}stays/prima-taman-nusantara-prima/">Prima</a>, Taman Nusantara Prima, Gelang Patah, Iskandar Puteri: about 10 minutes from the Tuas Second Link on the Malaysian side (host estimate, excluding queues).</li>'
+            '<li><a href="{R}stays/landak-kawan-fun-house-taman-abad/">Landak Kawan Fun House</a>, Taman Abad, Johor Bahru: about 12 minutes from the Causeway CIQ (host estimate, excluding queues) and a 5-minute walk from KSL City Mall.</li></ul>'
+            '<p>We send the exact pin, parking notes and self check-in details on WhatsApp after a firm booking. Comparing the crossings themselves? Read <a href="{R}articles/causeway-second-link-or-rts-which-way-to-jb-for-a-weekend-stay/">Causeway, Second Link or RTS: which way to JB for a weekend stay</a>.</p></section></div>'
             '<div class="gt-map" style="max-width:860px;margin:0 0 36px">%s</div><div class="prose">'
             '<div class="tw rv"><table><thead><tr><th>Route</th><th>What we can confirm</th><th>Suits</th></tr></thead><tbody>'
             '<tr><th scope="row">Woodlands (Causeway)</th><td data-label="What we can confirm">ICA operates the Woodlands land checkpoint. Host estimate from JB CIQ to Landak: about 12 minutes, excluding queues.</td><td data-label="Suits">Landak Kawan Fun House</td></tr>'
@@ -2023,7 +2076,7 @@ def faq_body():
         items += faqs(*keys)
     _f, ld = faq_block(items, '')
     PENDING.setdefault('faq/', []).append(ld)
-    return ('<div class="wrap body prose"><div class="answer">The 15 questions Singapore groups ask us most, from the SGD price to parking, payment and the crossing. For anything else, WhatsApp Daniel, the host.</div>%s'
+    return ('<div class="wrap body prose">%s'
             '<p style="margin-top:28px">%s</p><p class="note">Passport and border information comes from <a href="%s" rel="noopener">ICA</a> (checked 8 Nov 2026).</p>%s</div>') % (
         ''.join(out), wa_btn('Ask us on WhatsApp', wa_msg(), 'faq'), SRC['ica_qr'][1], fx_note())
 
@@ -2039,9 +2092,9 @@ def about_body():
 
 def contact_body():
     return ('<div class="wrap body prose"><section class="rv"><h2>Message Daniel on WhatsApp</h2><p>WhatsApp Daniel, the host, at <b>%s</b>. Tell him the house, your dates and how many people. %s %s</p>%s'
-            '<p style="margin-top:24px">Houses: %s</p></section></div>'
+            '<p style="margin-top:24px">Houses: %s</p><p>Find us on Google: <a href="%s" rel="noopener" target="_blank">JB Staycations Google profile</a>. Stayed with us? <a href="{R}review.html?business=jbstaycation" rel="nofollow">Leave a Google review</a>.</p></section></div>'
             % (WA_SHOW, PAY, DEPOSIT, wa_btn('Open WhatsApp', wa_msg(), 'contact'),
-               ' | '.join('<a href="{R}stays/%s/">%s</a>' % (HOUSES[k]['slug'], e(HOUSES[k]['name'])) for k in ORDER)))
+               ' | '.join('<a href="{R}stays/%s/">%s</a>' % (HOUSES[k]['slug'], e(HOUSES[k]['name'])) for k in ORDER), GBP_URL))
 
 
 def privacy_body():
@@ -2077,6 +2130,20 @@ def art_date(a):
     return a.get('date') or TODAY
 
 
+def art_updated(a):
+    return a.get('updated') or art_date(a)
+
+
+def nice_date(d):
+    import datetime as _dt
+    x = _dt.date.fromisoformat(d)
+    return '%d %s %d' % (x.day, x.strftime('%b'), x.year)
+
+
+def art_byline(a):
+    return '<p class="byline">%sBy JB Staycations team &middot; Published %s &middot; Updated %s</p>' % (ico('cal', 18), nice_date(art_date(a)), nice_date(art_updated(a)))
+
+
 def article_body(a):
     secs = ''.join('<section class="rv"><h2>%s</h2>%s</section>' % (e(h), ''.join('<p>%s</p>' % t for t in ps)) for h, ps in a['sections'])
     hh = HOUSES[a['house']]
@@ -2085,17 +2152,16 @@ def article_body(a):
         faq_html, faq_ld = faq_block(a['faqs'])
         PENDING.setdefault('articles/%s/' % a['slug'], []).append(faq_ld)
         faq_html = '<section class="rv">%s</section>' % faq_html
-    more = ''
-    if a.get('date'):   # night-run articles always link the hub and the stays page
-        more = '<p>Compare both houses on the <a href="{R}stays/">stays page</a>, or read more in the <a href="{R}articles/">JB guide for Singaporeans</a>.</p>'
+    # every article links the hub, /stays/, its house page (below) and /prices/ (tech SEO brief 9 Nov 2026)
+    more = '<p>Compare both houses on the <a href="{R}stays/">stays page</a>, see <a href="{R}prices/">prices per night</a>, or read more in the <a href="{R}articles/">JB guide for Singaporeans</a>.</p>'
     intro_cta = ''
-    if a.get('date'):   # night-run articles: WhatsApp CTA after the intro too (content plan, 9 Nov 2026)
+    if a.get('plan'):   # night-run articles: WhatsApp CTA after the intro too (content plan, 9 Nov 2026)
         intro_cta = '<p class="after-faq">%s</p>' % wa_btn('Ask about dates on WhatsApp', wa_msg(a.get('wa')), 'article-top-' + a['slug'][:26])
     if a.get('next'):   # (anchor text, path) of the next spoke in the content plan
         more += '<p>Next guide: <a href="{R}%s">%s</a>.</p>' % (a['next'][1], e(a['next'][0]))
-    return ('<div class="wrap body prose"><p class="byline">%sBy JB Staycations, %s</p><div class="answer">%s</div>%s%s%s'
+    return ('<div class="wrap body prose">%s%s%s'
             '<section class="rv"><p>See the house: <a href="{R}stays/%s/">%s</a>.</p>%s%s</section></div>'
-            % (ico('cal', 18), art_date(a), e(a['answer']), intro_cta, secs, faq_html, hh['slug'], e(hh['full']), more, wa_btn('Ask about dates', wa_msg(a.get('wa')), 'article-' + a['slug'][:30])))
+            % (intro_cta, secs, faq_html, hh['slug'], e(hh['full']), more, wa_btn('Ask about dates', wa_msg(a.get('wa')), 'article-' + a['slug'][:30])))
 
 
 # ---------------------------------------------------------------- assemble
@@ -2106,28 +2172,28 @@ def build_pages():
     PAGES['']['body'] = home_body()
     page('stays/', 'JB Homestay with Pool Table: 2 Houses from RM 450', 'Compare two JB homestays with pool tables for up to 10 or 12 guests: weekday, weekend and public holiday prices from RM 450, cleaning included.',
          'JB homestay with pool table: choose your house', stays_body(), [('Home', ''), ('Stays', 'stays/')],
-         lede='Two private houses with pool tables. Prima from RM 450 and Landak from RM 550 a night for the whole house, cleaning included.', og=STAYS_IMG['prima'][1], stick='stays',
+         lede=e(ANSWERS['stays']), og=STAYS_IMG['prima'][1], stick='stays',
          ld=[{'@context': 'https://schema.org', '@type': 'ItemList', 'itemListElement': [{'@type': 'ListItem', 'position': i + 1, 'item': {'@id': BASE + 'stays/%s/#rental' % HOUSES[k]['slug'], 'name': HOUSES[k]['name'], 'url': BASE + 'stays/%s/' % HOUSES[k]['slug']}} for i, k in enumerate(ORDER)]}])
     for k in ORDER:
         h = HOUSES[k]
         path = 'stays/%s/' % h['slug']
-        titles = {'prima': ('JB Homestay near Second Link: Prima, 12 Guests, RM 450+', 'Prima: landed JB group homestay near Tuas Second Link for 12 guests, 7ft pool table, parking for 8 cars. RM 450 weekday, RM 650 weekend, RM 750 public holiday.', H1S['prima']),
+        titles = {'prima': ('JB Homestay near Second Link: Prima, 12 Guests, RM 450+', 'JB homestay near Second Link: Prima, a landed house for 12 guests, 7ft pool table, parking for 8. RM 450 weekday, RM 650 weekend, RM 750 public holiday.', H1S['prima']),
                   'landak': ('JB Homestay near KSL: Landak for 10 Guests, RM 550+', 'Stay at Landak, a JB homestay near KSL: a 5-minute walk to the mall, games and space for 10. RM 550 weekday, RM 750 weekend, RM 1,000 public holiday.', H1S['landak'])}[k]
         page(path, titles[0], titles[1], titles[2], '', [('Home', ''), ('Stays', 'stays/'), (h['name'], path)], ld=[house_ld(h)],
              og=BENTO[k][0], stick=k, custom_top=True)
         PAGES[path]['body'] = house_body(k)
-    page('prices/', 'Prices from RM 450 a Night, Cleaning Included', 'JB Staycations prices per night, cleaning included: Prima RM 450 to 750, Landak RM 550 to 1,000 for weekday, weekend and public holiday. Deposit and payment.',
-         'Prices (RM per night)', prices_body(), [('Home', ''), ('Prices', 'prices/')], lede='Per night for the whole house, cleaning included. Prima: ' + tiers_rm('prima') + '. Landak: ' + tiers_rm('landak') + '.', photo=PAGE_IMG['prices'], og=PAGE_IMG['prices'])
-    page('getting-there/', 'Getting to JB from Singapore by Road or RTS | JB Staycations', 'Woodlands, Tuas or the RTS Link to Johor Bahru? Official facts with sources and which JB Staycations house suits each route.',
-         'Getting to our Johor Bahru houses from Singapore', gt_body(), [('Home', ''), ('Getting there', 'getting-there/')],
-         lede='Facts below come from official sources, with the date we checked them.', photo=PAGE_IMG['getting-there'], og=PAGE_IMG['getting-there'])
-    page('faq/', 'FAQ: Booking a JB Holiday House | JB Staycations', 'Answers on payment, check-in times, minimum stay, cleaning, gatherings, parking and crossing the border from Singapore to our two JB houses.',
-         'Frequently asked questions', faq_body(), [('Home', ''), ('FAQ', 'faq/')], photo=PAGE_IMG['faq'], og=PAGE_IMG['faq'])
+    page('prices/', 'JB Staycation Prices from RM 450 a Night, Cleaning Included', 'JB staycation prices per night, cleaning included: Prima RM 450-750, Landak RM 550-1,000 for weekday, weekend and public holiday. Deposit and payment.',
+         'JB staycation prices per night, cleaning included', prices_body(), [('Home', ''), ('Prices', 'prices/')], lede=e(ANSWERS['prices']), photo=PAGE_IMG['prices'], og=PAGE_IMG['prices'])
+    page('getting-there/', 'Getting to Prima and Landak from Singapore | JB Staycations', 'Directions to Prima in Gelang Patah and Landak Kawan Fun House in Taman Abad from Singapore, with host drive times and official crossing links.',
+         'Getting to Prima and Landak from Singapore', gt_body(), [('Home', ''), ('Getting there', 'getting-there/')],
+         lede=e(ANSWERS['gt']), photo=PAGE_IMG['getting-there'], og=PAGE_IMG['getting-there'])
+    page('faq/', 'JB Holiday House FAQ for Singapore Guests | JB Staycations', 'Answers on payment, check-in times, minimum stay, cleaning, gatherings, parking and crossing the border from Singapore to our two JB houses.',
+         'JB holiday house FAQ for Singapore guests', faq_body(), [('Home', ''), ('FAQ', 'faq/')], lede=e(ANSWERS['faq']), photo=PAGE_IMG['faq'], og=PAGE_IMG['faq'])
     page('about/', 'About JB Staycations | Johor Bahru Holiday Houses', 'JB Staycations offers two private holiday houses in Johor Bahru for Singapore families and groups, booked directly on WhatsApp.',
-         'About JB Staycations', about_body(), [('Home', ''), ('About', 'about/')], lede=TAGLINE, photo=PAGE_IMG['about'],
+         'About JB Staycations', about_body(), [('Home', ''), ('About', 'about/')], lede=e(ANSWERS['about']), photo=PAGE_IMG['about'],
          ld=[org_ld()])
     page('contact/', 'Contact JB Staycations on WhatsApp', 'Book or ask a question on WhatsApp +65 9006 2198. Tell us the house, dates and group size.',
-         'Contact us', contact_body(), [('Home', ''), ('Contact', 'contact/')], lede='WhatsApp is the fastest way to reach us.', photo=PAGE_IMG['contact'], og=PAGE_IMG['contact'])
+         'Contact JB Staycations on WhatsApp', contact_body(), [('Home', ''), ('Contact', 'contact/')], lede='WhatsApp is the fastest way to reach us.', photo=PAGE_IMG['contact'], og=PAGE_IMG['contact'])
     page('privacy/', 'Privacy Notice | JB Staycations', 'How JB Staycations handles personal data from WhatsApp enquiries and website visits.', 'Privacy notice', privacy_body(), [('Home', ''), ('Privacy', 'privacy/')])
     page('articles/', 'JB Guide for Singaporeans: Houses, Routes & Costs', 'Use this JB guide for Singaporeans to choose a house, plan the crossing and understand RM/SGD costs. Compare Prima and Landak for your group.',
          'JB guide for Singaporeans planning a short getaway', articles_body(), [('Home', ''), ('JB guide', 'articles/')], lede='Houses, the crossing, costs in SGD and first-time tips in one place.')
@@ -2135,10 +2201,17 @@ def build_pages():
         path = 'articles/%s/' % a['slug']
         ph = PAGE_IMG.get(a['slug']) or a['photo']
         page(path, a.get('ttl') or a['title'], a['desc'], a['h1'], article_body(a),
-             [('Home', ''), ('JB guide', 'articles/'), (a['title'], path)], photo=ph, article=True, og=ph,
-             ld=[{'@context': 'https://schema.org', '@type': 'Article', 'headline': a['title'], 'description': a['desc'], 'datePublished': art_date(a), 'dateModified': art_date(a),
+             [('Home', ''), ('JB guide', 'articles/'), (a['title'], path)], photo=ph, article=True, og=ph, lede=e(a['answer']), byline=art_byline(a),
+             ld=[{'@context': 'https://schema.org', '@type': 'Article', 'headline': a['title'], 'description': a['desc'], 'datePublished': art_date(a), 'dateModified': art_updated(a),
                   'author': {'@type': 'Organization', 'name': NAME, 'url': BASE}, 'publisher': {'@type': 'Organization', 'name': NAME, 'logo': {'@type': 'ImageObject', 'url': BASE + 'icon-512.png'}},
                   'image': abs_img(ph), 'mainEntityOfPage': BASE + path}])
+
+
+def make_400(src, dst):
+    from PIL import Image
+    im = Image.open(src)
+    w, h = im.size
+    im.resize((400, round(h * 400 / w)), Image.LANCZOS).save(dst, 'WEBP', quality=72, method=6)
 
 
 def copy_images():
@@ -2146,6 +2219,8 @@ def copy_images():
     global HAS_THUMB
     dst = os.path.join(OUT, 'img')
     tdir = os.path.join(OUT, 'thumb')
+    t4 = os.path.join(OUT, 'thumb400')   # 400w versions for small cards and tiles (tech SEO brief 9 Nov 2026)
+    os.makedirs(t4, exist_ok=True)
     os.makedirs(dst, exist_ok=True)
     os.makedirs(tdir, exist_ok=True)
     files = used_images()
@@ -2153,6 +2228,12 @@ def copy_images():
         shutil.copyfile(os.path.join(SRC_IMG, f), os.path.join(dst, f))
         if os.path.exists(os.path.join(SRC_IMG, f[:-5] + '-800.webp')):
             shutil.copyfile(os.path.join(SRC_IMG, f[:-5] + '-800.webp'), os.path.join(tdir, f))
+            make_400(os.path.join(tdir, f), os.path.join(t4, f))
+            from PIL import Image
+            fw, fh = Image.open(os.path.join(dst, f)).size
+            if Image.open(os.path.join(tdir, f)).size[0] < 800 < fw:
+                os.makedirs(os.path.join(OUT, 'thumb800'), exist_ok=True)
+                Image.open(os.path.join(dst, f)).resize((800, round(fh * 800 / fw)), Image.LANCZOS).save(os.path.join(OUT, 'thumb800', f), 'WEBP', quality=78, method=6)
     for f in HERO_SET.values():
         shutil.copyfile(os.path.join(SRC_IMG, f), os.path.join(dst, f))
     HAS_THUMB = True
@@ -2202,10 +2283,12 @@ def main():
     open(os.path.join(OUT, 'jb.js'), 'w').write(UI_JS)
     open(os.path.join(OUT, 'cta.js'), 'w').write(CTA_JS)
     make_icons()
+    os.makedirs(os.path.join(OUT, 'fonts'), exist_ok=True)
+    shutil.copyfile(os.path.join(os.path.dirname(os.path.abspath(__file__)), FONT_FILE), os.path.join(OUT, FONT_FILE))
     review_helper.write_review(OUT, NAME)   # Google Review Helper: noindex, never in sitemap/llms/IndexNow
     # sitemap
-    ADATE = {'articles/%s/' % a['slug']: art_date(a) for a in ARTICLES if a.get('date')}
-    urls = ''.join('<url><loc>%s</loc><lastmod>%s</lastmod></url>' % (BASE + p, ADATE.get(p, TODAY)) for p in PAGES)
+    ADATE = {'articles/%s/' % a['slug']: art_updated(a) for a in ARTICLES if a.get('date')}
+    urls = ''.join('<url><loc>%s</loc><lastmod>%s</lastmod></url>' % (BASE + p, ADATE.get(p) or LASTMOD.get(p, SITE_LASTMOD)) for p in PAGES)
     open(os.path.join(OUT, INDEXNOW_KEY + '.txt'), 'w').write(INDEXNOW_KEY)   # IndexNow key file at the site root
     open(os.path.join(OUT, 'sitemap.xml'), 'w').write('<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">%s</urlset>\n' % urls)
     open(os.path.join(OUT, 'robots.txt'), 'w').write(
@@ -2218,14 +2301,24 @@ def main():
     for k in ORDER:
         h = HOUSES[k]
         ll.append('- [%s](%sstays/%s/): %s. Up to %d guests, %s per night, cleaning included. %s' % (h['full'], BASE, h['slug'], h['addr'], h['guests'], tiers_rm(k), h['card']))
-    ll += ['', '## Pages', '- [Prices](%sprices/)' % BASE, '- [Getting there from Singapore](%sgetting-there/)' % BASE, '- [FAQ](%sfaq/)' % BASE, '- [About](%sabout/)' % BASE, '- [Contact](%scontact/)' % BASE, '- [Articles](%sarticles/)' % BASE]
+    ll += ['', '## Ratings and profiles', '- Google profile: %s' % GBP_URL, '- Airbnb: Prima 4.67 from 6 reviews, Landak 5.0 from 4 reviews (read 8 Nov 2026)', '', '## Pages', '- [Stays: compare both houses](%sstays/)' % BASE, '- [Prices](%sprices/)' % BASE, '- [Getting to Prima and Landak from Singapore](%sgetting-there/)' % BASE, '- [FAQ](%sfaq/)' % BASE, '- [About](%sabout/)' % BASE, '- [Contact](%scontact/)' % BASE, '- [Articles](%sarticles/)' % BASE]
     for a in ARTICLES:
         ll.append('  - [%s](%sarticles/%s/)' % (a['title'], BASE, a['slug']))
     open(os.path.join(OUT, 'llms.txt'), 'w').write('\n'.join(ll) + '\n')
     path_prefix = '/' + BASE.split('/', 3)[3]
     open(os.path.join(OUT, 'htaccess.txt'), 'w').write(
-        '# Rename to .htaccess in this folder via cPanel. Preview hiding is handled by the server outside the pages.\n'
-        'RewriteEngine On\nRewriteCond %{HTTP_HOST} ^(www\\.)?jbairbnb\\.com$ [NC]\nRewriteRule ^ https://jbstaycations.com%{REQUEST_URI} [L,R=301]\nRewriteCond %{HTTP_HOST} ^www\\.jbstaycations\\.com$ [NC]\nRewriteRule ^ https://jbstaycations.com%{REQUEST_URI} [L,R=301]\nRewriteCond %{HTTPS} !=on\nRewriteRule ^ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]\n'
+        '# Upload as .htaccess in public_html/website_b1ec45f5/preview/jb-staycation (back up any existing file first).\n'
+        '# JB Staycations docroot .htaccess (9 Nov 2026). A child RewriteEngine On replaces the parent folder rewrites, so all rules live here.\n'
+        'RewriteEngine On\n'
+        '# 1. Old preview copy on the agency host -> same path on jbstaycations.com (only for pageonesingapore.com, so jbstaycations.com can never loop)\n'
+        'RewriteCond %{HTTP_HOST} ^(www\\.)?pageonesingapore\\.com$ [NC]\nRewriteRule ^(.*)$ https://jbstaycations.com/$1 [R=301,L]\n'
+        '# 2. Old domains and www -> https apex\n'
+        'RewriteCond %{HTTP_HOST} ^(www\\.)?jbairbnb\\.com$ [NC]\nRewriteRule ^ https://jbstaycations.com%{REQUEST_URI} [L,R=301]\n'
+        'RewriteCond %{HTTP_HOST} ^www\\.jbstaycations\\.com$ [NC]\nRewriteRule ^ https://jbstaycations.com%{REQUEST_URI} [L,R=301]\n'
+        '# 3. http -> https\n'
+        'RewriteCond %{HTTPS} !=on\nRewriteRule ^ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]\n'
+        '# 4. /index.html and /<folder>/index.html -> the folder URL (only when the visitor asked for index.html)\n'
+        'RewriteCond %{THE_REQUEST} \\s/(.*/)?index\\.html[\\s?] [NC]\nRewriteRule ^(.*/)?index\\.html$ https://jbstaycations.com/$1 [L,R=301]\n'
         'DirectoryIndex index.html\nErrorDocument 404 ' + path_prefix + '404.html\n'
         'Redirect 301 ' + path_prefix + 'articles/big-group-staycation-jb-house-for-10-20-people/ ' + BASE + 'articles/jb-homestay-for-big-groups-12-guests/\n'
         '<IfModule mod_headers.c>\n<FilesMatch "\\.(html|xml|txt)$">\nHeader set Cache-Control "public, max-age=3600"\n</FilesMatch>\n'

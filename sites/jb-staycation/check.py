@@ -31,7 +31,7 @@ for f in files:
                 if p.endswith('/') or p=='': tgt=os.path.join(tgt,'index.html')
                 if not os.path.exists(tgt): print('MISSING abs',f,href);bad+=1
             continue
-        tgt=os.path.normpath(os.path.join(os.path.dirname(f),href))
+        tgt=os.path.normpath(os.path.join(S,href.lstrip('/')) if href.startswith('/') else os.path.join(os.path.dirname(f),href))
         if os.path.isdir(tgt): tgt=os.path.join(tgt,'index.html')
         if not os.path.exists(tgt): print('MISSING',f,href);bad+=1
 md.parse(S+'/sitemap.xml')
