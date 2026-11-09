@@ -50,7 +50,7 @@ CONTACT_POINT = {"@type": "ContactPoint", "contactType": "customer support", "te
 ORG_CORE = {"@type": "ProfessionalService", "@id": BIZ_ID, "name": "Page One Singapore",
             "alternateName": ["Page One SG", "PageOne Singapore"], "url": SITE + "/",
             "logo": {"@type": "ImageObject", "url": SITE + "/icon-512.png", "width": 512, "height": 512},
-            "image": SITE + "/images/og.png",
+            "image": SITE + "/images/og-50.png",
             "description": "Done-for-you website and SEO for Singapore small businesses: a website built free (or your current one fixed) and managed every day, set up so Google Search, Google Maps and AI assistants can find it, from S$50 a month. No setup fee, no contract.",
             "telephone": "+" + WA, "priceRange": "S$50 - S$100 per month",
             "address": {"@type": "PostalAddress", "addressCountry": "SG"},
@@ -93,7 +93,7 @@ def page(path, title, desc, schemas, body, crumb=None, robots="index, follow, ma
             "@context": "https://schema.org", "@type": "WebPage", "@id": SITE + current + "#webpage", "url": SITE + current, "name": title.replace("&amp;", "&"),
             "description": desc, "inLanguage": "en-SG", "isPartOf": {"@id": SITE + "/#website"},
             "about": {"@id": BIZ_ID}, "publisher": {"@id": BIZ_ID},
-            "primaryImageOfPage": {"@type": "ImageObject", "url": SITE + "/images/og.png", "width": 600, "height": 315},
+            "primaryImageOfPage": {"@type": "ImageObject", "url": SITE + "/images/og-50.png", "width": 1200, "height": 630},
             "dateModified": updated or UPDATED}]
         if path != "index.html":  # the homepage carries the full business description
             schemas = schemas + [{"@context": "https://schema.org", "@graph": [ORG_CORE, WEBSITE_NODE]}]
@@ -129,15 +129,15 @@ def page(path, title, desc, schemas, body, crumb=None, robots="index, follow, ma
   <meta property="og:title" content="{title}">
   <meta property="og:description" content="{desc}">
   <meta property="og:url" content="{SITE}{current}">
-  <meta property="og:image" content="{SITE}/images/og.png">
-  <meta property="og:image:width" content="600">
-  <meta property="og:image:height" content="315">
+  <meta property="og:image" content="{SITE}/images/og-50.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
   <meta property="og:image:alt" content="Page One Singapore: get found on Google and AI search from S$50 a month">
   <meta property="og:locale" content="en_SG">
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="{title}">
   <meta name="twitter:description" content="{desc}">
-  <meta name="twitter:image" content="{SITE}/images/og.png">
+  <meta name="twitter:image" content="{SITE}/images/og-50.png">
   <meta name="twitter:image:alt" content="Page One Singapore: get found on Google and AI search from S$50 a month">
   <meta name="theme-color" content="#060b18">
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -237,7 +237,7 @@ def service(name, url, desc, price):
         "description": desc,
         "provider": PROVIDER,
         "areaServed": {"@type": "Country", "name": "Singapore"},
-        "image": SITE + "/images/og.png",
+        "image": SITE + "/images/og-50.png",
         "offers": {"@type": "Offer", "price": price, "priceCurrency": "SGD", "url": SITE + url,
                    **({"priceSpecification": {"@type": "UnitPriceSpecification", "price": price, "priceCurrency": "SGD", "unitCode": "MON"}}
                       if price == "50" else {})},
