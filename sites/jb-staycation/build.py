@@ -1190,6 +1190,15 @@ html.js[data-house=prima] .hpane[data-house=landak],html.js[data-house=landak] .
 .enq-h{margin:0 0 10px;font-weight:700}.enq-g{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}.enq label{min-width:0}.enq input{box-sizing:border-box;max-width:100%;font-size:16px!important}.enq input[type=date]{-webkit-appearance:none;appearance:none;display:block;line-height:1.3;text-align:left}.enq input[type=date]::-webkit-date-and-time-value{text-align:left}@media(max-width:599px){.enq-g{grid-template-columns:minmax(0,1fr)}.enq input{min-height:48px}}.enq label{display:flex;flex-direction:column;gap:4px;font-size:.9375rem;font-weight:600;color:var(--ink-soft)}
 .enq input{min-height:44px;font:400 1rem var(--font);padding:8px 10px;border:1px solid var(--line-strong);border-radius:10px;background:#fff;color:var(--ink);width:100%;min-width:0}
 .enq .btn{width:100%;margin-top:12px}.enq-err{color:#b42318;margin:8px 0 0;font-weight:600}.enq-n{margin:8px 0 0;font-size:.875rem;color:var(--ink-muted)}
+/* background touch-up (Edwin 9 Nov 2026: "just plain white background need to touch up only"): warm tinted page and alternating section tints with a faint pattern instead of flat white/grey. Design, text colours and layout unchanged. */
+:root{--page:#f8f5ef;--tint-b:#f4ead8;
+--grid-l:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='48' height='48'%3E%3Cpath d='M48 0H0V48' fill='none' stroke='%230a1f38' stroke-opacity='.04'/%3E%3Crect x='21' y='21' width='6' height='6' transform='rotate(45 24 24)' fill='%23a86d15' fill-opacity='.09'/%3E%3C/svg%3E")}
+body,main{background-color:var(--page)}
+.home #houses,.home .gsec,.ptop,.htop,.body{background-image:var(--grid-l)}
+.home .trust-sec{background-color:var(--tint-b);background-image:var(--grid-l)}
+.home .trust-sec+.sec+.sec{background:#fffdf9!important;border-top-color:var(--line)}
+.trust-sec+.sec{background-color:var(--page)}
+.stick{background:rgba(255,253,249,.96)}
 """
 
 
