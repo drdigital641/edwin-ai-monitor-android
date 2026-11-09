@@ -1,0 +1,64 @@
+# Page One Singapore: speed and security settings
+# Paste into public_html/website_b1ec45f5/.htaccess (create the file if it doesn't exist)
+
+# One address only: https://pageonesingapore.com (no www, always https)
+RewriteEngine On
+RewriteCond %{HTTP_HOST} ^www\.(.+)$ [NC]
+RewriteRule ^ https://%1%{REQUEST_URI} [L,R=301]
+RewriteCond %{HTTPS} off
+RewriteRule ^ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
+# /index.html and /about/index.html -> the clean folder address
+RewriteCond %{THE_REQUEST} \s/(.*/)?index\.html[\s?] [NC]
+RewriteRule ^(.*/)?index\.html$ /$1 [L,R=301]
+
+# Show our own "page not found" page
+ErrorDocument 404 /404.html
+
+# Compress text files
+<IfModule mod_deflate.c>
+  AddOutputFilterByType DEFLATE text/html text/css application/javascript text/plain application/xml image/svg+xml application/manifest+json
+</IfModule>
+
+# Let browsers keep files so repeat visits load instantly.
+# CSS and JS are safe to cache for a year because every release changes their ?v= number.
+<IfModule mod_expires.c>
+  ExpiresActive On
+  ExpiresDefault "access plus 1 hour"
+  ExpiresByType text/html "access plus 10 minutes"
+  ExpiresByType text/css "access plus 1 year"
+  ExpiresByType application/javascript "access plus 1 year"
+  ExpiresByType text/javascript "access plus 1 year"
+  ExpiresByType image/webp "access plus 1 month"
+  ExpiresByType image/png "access plus 1 month"
+  ExpiresByType image/jpeg "access plus 1 month"
+  ExpiresByType image/svg+xml "access plus 1 month"
+  ExpiresByType image/x-icon "access plus 1 month"
+</IfModule>
+
+# Basic security headers
+<IfModule mod_headers.c>
+  Header always set Strict-Transport-Security "max-age=31536000"
+  Header always set X-Content-Type-Options "nosniff"
+  Header always set Referrer-Policy "strict-origin-when-cross-origin"
+</IfModule>
+
+# ---- Extra protection (added 12 Oct 2026) ----
+# Never show a folder's file list
+Options -Indexes
+# Don't advertise the server version on error pages
+ServerSignature Off
+# Page One is a static website: no PHP should ever run here, so a planted PHP "backdoor" file can't run either.
+<FilesMatch "\.(php|php[0-9]|phtml|phar|cgi|pl|py|sh)$">
+  Require all denied
+</FilesMatch>
+# Hide hidden files and leftovers (backups, archives, logs, notes)
+<FilesMatch "(^\.|\.(bak|old|orig|save|swp|sql|zip|tar|gz|tgz|7z|rar|log|ini|conf|env|md|yml|yaml)$)">
+  Require all denied
+</FilesMatch>
+# Stop other websites framing our pages (clickjacking) and switch off browser features we don't use
+<IfModule mod_headers.c>
+  Header always set X-Frame-Options "SAMEORIGIN"
+  Header always set Content-Security-Policy "frame-ancestors 'self'; base-uri 'self'; object-src 'none'"
+  Header always set Permissions-Policy "camera=(), microphone=(), geolocation=(), payment=(), usb=()"
+  Header always unset X-Powered-By
+</IfModule>
