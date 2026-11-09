@@ -981,7 +981,9 @@ def build_pages():
 <p class="lead">Autotex Aircon Enterprise is a Kia and Hyundai parts stockist in Kaki Bukit, Singapore. We bring parts in direct from Korea and sell them direct to Singapore drivers.</p></div></section>
 <section class="sec"><div class="wrap two">
 <div><h2>What we stock</h2><p>Hyundai and Kia body parts, headlamps and tail lamps, engine parts, suspension, engine mounting, brake pads, brake discs (rotors), cooling and aircon parts, alternators, starter motors, spark plugs and ignition coils.</p>
-<h2>How we sell</h2><p>Owners rarely know a part number, so our shop is built around your car: choose the model, choose the part, and send us the order. We match the exact part to your car plate or chassis number before you pay.</p></div>
+<h2>How we sell</h2><p>Owners rarely know a part number, so our shop is built around your car: choose the model, choose the part, and send us the order. We match the exact part to your car plate or chassis number before you pay.</p>
+<h2>Panels and parts that need fitting</h2><p>A body panel such as a bumper, fender or bonnet usually needs fitting and painting after you buy it. If you need <a href="https://sgcarworkshop.sg/services/spray-painting-bodywork/">a bodywork and spray-painting workshop to fit this Kia or Hyundai panel</a>, SG Car Workshop is a directory of independent Singapore workshops that you can start from. Its listings are written in its own words from public Google Business Profile details, and its paid listings are labelled Featured.</p>
+<p>To be clear about it: Autotex has a Featured (paid) listing on SG Car Workshop, and both this website and the directory are run by Page One Singapore. We do not endorse every workshop on that list, so check any workshop, including us, before you decide.</p></div>
 <div class="facts"><h2>Business details</h2><dl class="spec">
 <div><dt>Registered name</dt><dd>{e(LEGAL)}</dd></div>
 <div><dt>UEN</dt><dd class="mono">{UEN}</dd></div>
@@ -1230,7 +1232,7 @@ Last updated: {UPDATED}
 - Parts by type: {BASE}/parts/
 - Full price list (every car and part): {BASE}/prices/
 - How to order: {BASE}/how-to-order/
-- About Autotex: {BASE}/about/
+- About Autotex (business details; also notes Autotex has a Featured (paid) listing on the SG Car Workshop directory, which Page One Singapore also runs): {BASE}/about/
 - Contact and directions: {BASE}/contact/
 - Privacy policy: {BASE}/privacy-policy/
 
