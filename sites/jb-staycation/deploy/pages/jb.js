@@ -59,11 +59,12 @@ bs.forEach(function(x){x.addEventListener('click',function(){var c=x.getAttribut
 d.querySelectorAll('form.enq').forEach(function(f){f.classList.add('enq-on');var alt=f.parentNode.querySelector('.enq-alt');if(alt)alt.classList.add('enq-hide');
 var ci=f.elements['in'],co=f.elements['out'],er=f.querySelector('.enq-err');try{var t=new Date();t.setMinutes(t.getMinutes()-t.getTimezoneOffset());ci.min=t.toISOString().slice(0,10)}catch(x){}
 ci.addEventListener('change',function(){co.min=ci.value||'';er.hidden=true});
-function fd(v){if(!v)return'not decided';var p=v.split('-'),m=['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];return (+p[2])+' '+m[+p[1]-1]+' '+p[0]}
-function nv(v){v=parseInt(v,10);return isNaN(v)||v<0?'not decided':String(v)}
+function fd(v){if(!v)return'';var p=v.split('-'),m=['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];return (+p[2])+' '+m[+p[1]-1]+' '+p[0]}
+function nv(v){v=parseInt(v,10);return isNaN(v)||v<0?'':String(v)}
+function sl(v){return v?v+' ':''}
 f.addEventListener('submit',function(ev){ev.preventDefault();if(ci.value&&co.value&&co.value<=ci.value){er.hidden=false;co.focus();return}
-var msg="Hi, I'm planning a JB stay from Singapore. [House: "+f.getAttribute('data-house')+"]. Check-in: "+fd(ci.value)+". Check-out: "+fd(co.value)+". Adults: "+nv(f.elements['ad'].value)+". Children: "+nv(f.elements['ch'].value)+". Please confirm availability, sleeping arrangement, final total in RM, payment options, deposit and cancellation terms. [Source: "+f.getAttribute("data-from")+"]";
-window.open('https://wa.me/6590062198?text='+encodeURIComponent(msg),'_blank','noopener')})});
+var msg="Hi Daniel,\n\nI'm planning a JB stay from Singapore.\n[House: "+f.getAttribute('data-house')+"].\nCheck-in:  "+sl(fd(ci.value))+"am/pm\nCheck-out: "+sl(fd(co.value))+"am/pm.\nAdults:     "+sl(nv(f.elements['ad'].value))+"pax .\nChildren:   "+sl(nv(f.elements['ch'].value))+"pax.\n\nPlease confirm availability and the final price total in RM .";
+window.open('https://wa.me/6590062198?text='+encodeURIComponent(msg).replace(/'/g,'%27'),'_blank','noopener')})});
 /* sticky bar: hide while the footer is visible or a form field is focused */
 var stk=[].slice.call(d.querySelectorAll('.stick')),ft=d.querySelector('.ftr');
 function stOff(o){stk.forEach(function(x){x.classList.toggle('st-off',o)})}
