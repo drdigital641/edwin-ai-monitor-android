@@ -1,0 +1,137 @@
+{
+ "slug": "cleanic-detailing",
+ "tier": "premium_leadgen",
+ "name": "Cleanic Detailing",
+ "domain": "cleanicdetailing.com",
+ "url": "https://cleanicdetailing.com/",
+ "category": "car-detailing-coating",
+ "regions": [
+  "north",
+  "north-east",
+  "east",
+  "west",
+  "central"
+ ],
+ "regions_note": "Mobile service. Its site says island-wide and 24/7 across Singapore, so all five regions.",
+ "area_label": "Mobile service, island-wide",
+ "title": "Cleanic Detailing | Mobile Car Fumigation, Singapore",
+ "desc": "Cleanic Detailing comes to your carpark: car fumigation from $118, steam and interior cleaning from $148, 24/7 island-wide. WhatsApp or call 9108 6931.",
+ "card_img": {
+  "f": "cleanic-panamera-interior-clean2.jpg",
+  "alt": "Cleaned leather interior of a Porsche after a Cleanic job"
+ },
+ "card_text": [
+  "Mobile car fumigation and interior cleaning that comes to you.",
+  "From $118, island-wide, any day of the week."
+ ],
+ "lede": "Cleanic Detailing is a mobile car fumigation and interior cleaning service run by Colin. The work is done where the car is parked, at an HDB, condo or office carpark across Singapore. Send your car model, location and what you noticed to 9108 6931 and you get advice on the right service before you book.",
+ "services": [
+  {
+   "n": "MIRAKN Express fumigation",
+   "d": "A short pest-control treatment of about one hour. It does not include steam cleaning.",
+   "p": "$118"
+  },
+  {
+   "n": "Full MIRAKN dry gas fumigation",
+   "d": "The longer treatment for cockroach and other pest problems, about an hour and a half.",
+   "p": "From $180"
+  },
+  {
+   "n": "Hot dry steam cleaning",
+   "d": "For stained seats, spills and pet hair. Most full interior jobs take one to two hours.",
+   "p": "From $148"
+  },
+  {
+   "n": "Shampoo scrub cleaning",
+   "d": "A scrub clean of seats and carpets for dirty or neglected interiors.",
+   "p": "From $148"
+  },
+  {
+   "n": "Odour, damp and mould",
+   "d": "The source is found first, then the area is cleaned or treated.",
+   "p": null
+  }
+ ],
+ "price_note": "A small surcharge may apply for multi-storey carparks, condos or landed properties. Final advice comes after you describe the problem.",
+ "phone": "+6591086931",
+ "phone_show": "9108 6931",
+ "whatsapp": "6591086931",
+ "addresses": [],
+ "address": null,
+ "service_area": "Mobile service across Singapore. There is no shopfront: the work is done where your car is parked.",
+ "map_url": "https://share.google/h5xraYa2f2jkMRdx7",
+ "map_label": "Find Cleanic on Google",
+ "hours": [
+  [
+   "Every day",
+   "24 hours, including weekends and public holidays, subject to availability"
+  ]
+ ],
+ "hours_ld": [],
+ "hours_note": null,
+ "social": [
+  "https://www.instagram.com/cleanicdetail/"
+ ],
+ "reviews": {
+  "text": "Rated 5.0 from 400+ Google reviews, as stated on cleanicdetailing.com (checked 1 November 2026)",
+  "url": "https://share.google/h5xraYa2f2jkMRdx7",
+  "label": "Read the Google reviews"
+ },
+ "photos": [
+  {
+   "f": "cleanic-door-panel.jpg",
+   "alt": "Specialist steam cleaning a car seat",
+   "cap": "Steam cleaning a car seat."
+  },
+  {
+   "f": "cleanic-panamera-interior-clean2.jpg",
+   "alt": "Detailed leather interior after cleaning",
+   "cap": "A Porsche leather interior after cleaning."
+  },
+  {
+   "f": "cleanic-panamera-front.jpg",
+   "alt": "Porsche at a Cleanic mobile detailing job",
+   "cap": "A Porsche on a mobile job at a carpark."
+  },
+  {
+   "f": "cleanic-real-mirakn.jpg",
+   "alt": "MIRAKN dry gas fumigation equipment",
+   "cap": "The MIRAKN dry gas fumigation equipment."
+  },
+  {
+   "f": "cleanic-real-steam.jpg",
+   "alt": "Steam cleaning equipment packed for mobile work",
+   "cap": "Steam cleaning equipment used on mobile jobs."
+  }
+ ],
+ "faqs": [
+  [
+   "Do you work at night and on weekends?",
+   "Yes, every day including public holidays, subject to availability. It is a 24-hour mobile service."
+  ],
+  [
+   "How much does car fumigation cost?",
+   "The MIRAKN Express package is $118 and takes about an hour, without steam cleaning. Full MIRAKN dry gas fumigation starts from $180 and takes about an hour and a half."
+  ],
+  [
+   "How much is interior cleaning and how long does it take?",
+   "Hot dry steam cleaning and shampoo scrub cleaning each start from $148. Most full interior jobs take one to two hours on site."
+  ],
+  [
+   "Do I need to bring my car to a workshop?",
+   "No. The work is done where the car is parked, at an HDB, condo, office or other accessible location in Singapore."
+  ]
+ ],
+ "source": {
+  "name": "cleanicdetailing.com home page read via the Bluehost Bridge on 1 Nov 2026",
+  "photos": "the site's own /wp-content/uploads/cleanic-photos/ files"
+ },
+ "left_out": [
+  "street address (none: mobile service)",
+  "email address",
+  "customer review quotes (rating line only)",
+  "UEN",
+  "'500+ cars treated' claim"
+ ],
+ "_order": 7
+}

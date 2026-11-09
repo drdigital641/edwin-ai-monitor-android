@@ -1,0 +1,119 @@
+{
+ "slug": "ev-body-parts",
+ "tier": "premium_leadgen",
+ "founder_owned": true,
+ "name": "EV Body Parts",
+ "domain": "evbodyparts.sg",
+ "url": "https://evbodyparts.sg/",
+ "category": "car-parts",
+ "mobile": true,
+ "online_only": true,
+ "regions": [
+  "north",
+  "north-east",
+  "east",
+  "west",
+  "central"
+ ],
+ "regions_note": "Online parts seller serving workshops and car owners across Singapore; there is no shopfront.",
+ "area_label": "Island-wide",
+ "title": "EV Body Parts | China and EV Car Body Parts, Singapore",
+ "desc": "EV Body Parts sources body and suspension parts for Tesla, BYD, MG, Zeekr and other China and EV cars in Singapore. Quotes on WhatsApp 8997 6612.",
+ "card_img": {
+  "f": "evbodyparts-front-upper-control-arm.jpg",
+  "alt": "Illustration of a Tesla Model Y front upper control arm"
+ },
+ "card_text": [
+  "Body and suspension parts for China and EV cars.",
+  "Search the catalogue, then get a quote on WhatsApp after fitment is checked."
+ ],
+ "lede": "EV Body Parts finds body parts for China and EV cars in Singapore, such as Tesla, BYD, Denza, MG, Zeekr and XPeng. Search its catalogue by car and part, or send the car brand, model, year and a photo of the part on WhatsApp. Fitment is checked before you get a quote. It serves workshops and car owners.",
+ "services": [
+  {
+   "n": "Body parts",
+   "d": "Bumpers, bonnets, fenders, grilles and trims for China and EV cars.",
+   "p": null
+  },
+  {
+   "n": "Lamps and mirrors",
+   "d": "Headlamps, tail lamps and side mirrors, with left or right confirmed before the quote.",
+   "p": null
+  },
+  {
+   "n": "Suspension and wheel hubs",
+   "d": "Control arms, spring and damper assemblies, knuckles and wheel hubs, including Tesla Model Y parts.",
+   "p": null
+  },
+  {
+   "n": "Parts for workshops",
+   "d": "One catalogue and many suppliers, so workshops can ask for several parts in one message.",
+   "p": null
+  }
+ ],
+ "price_note": "Prices are quoted on WhatsApp after fitment is checked. Parts are sourced to order.",
+ "phone": "+6589976612",
+ "phone_show": "8997 6612",
+ "whatsapp": "6589976612",
+ "addresses": [],
+ "address": null,
+ "service_area": "Online only, for workshops and car owners across Singapore. There is no shopfront: send your car and part on WhatsApp.",
+ "hours": [],
+ "hours_ld": [],
+ "hours_note": null,
+ "social": [],
+ "reviews": {
+  "text": "No reviews or rating are shown on evbodyparts.sg yet (checked 7 November 2026).",
+  "url": "https://evbodyparts.sg/",
+  "label": "Visit evbodyparts.sg"
+ },
+ "photos": [],
+ "illustrations": [
+  {
+   "f": "evbodyparts-front-upper-control-arm.jpg",
+   "alt": "Illustration of a Tesla Model Y front upper control arm",
+   "cap": "Front upper control arm (illustration)."
+  },
+  {
+   "f": "evbodyparts-front-spring-damper.jpg",
+   "alt": "Illustration of a front spring and damper assembly",
+   "cap": "Front spring and damper (illustration)."
+  },
+  {
+   "f": "evbodyparts-front-suspension-knuckle.jpg",
+   "alt": "Illustration of a front suspension knuckle",
+   "cap": "Front suspension knuckle (illustration)."
+  },
+  {
+   "f": "evbodyparts-front-wheel-hub.jpg",
+   "alt": "Illustration of a front wheel hub assembly",
+   "cap": "Front wheel hub (illustration)."
+  }
+ ],
+ "faqs": [
+  [
+   "Which cars are covered?",
+   "China and EV cars such as Tesla, BYD, Denza, MG, Zeekr and XPeng. If your part is not in the catalogue, ask on WhatsApp anyway."
+  ],
+  [
+   "How do I get a price?",
+   "Send the car brand, model, build year, the part (and left or right) and a photo on WhatsApp. Fitment is checked first, then you get a quote."
+  ],
+  [
+   "Do you sell to workshops?",
+   "Yes. It serves both workshops and car owners in Singapore."
+  ],
+  [
+   "Are the pictures the actual parts?",
+   "No. The catalogue pictures are illustrations. The actual part and its fitment are confirmed before the quote."
+  ]
+ ],
+ "source": {
+  "name": "evbodyparts.sg home and contact pages (Page One copy of 1 Nov 2026) and Edwin's brief of 7 Nov 2026 (WhatsApp 8997 6612)",
+  "photos": "The site's own catalogue illustrations, captioned as illustrations"
+ },
+ "left_out": [
+  "prices (none published)",
+  "supplier names"
+ ],
+ "_order": 13
+}

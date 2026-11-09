@@ -66,11 +66,12 @@ def seed_date(path):
     """Seed for a new or changed page (Edwin 3 Nov 2026): the workshop record's last_verified_at for a workshop page, else the last git commit date."""
     if path.startswith('workshops/'):
         slug = path.split('/')[1]
-        f = os.path.join(HERE, '..', 'data', 'workshops', slug + '.json')
-        if os.path.exists(f):
-            v = json.load(open(f)).get('last_verified_at')
-            if v:
-                return v
+        for sub in ('workshops', 'listings'):   # free records and paid/founder listings both carry last_verified_at
+            f = os.path.join(HERE, '..', 'data', sub, slug + '.json')
+            if os.path.exists(f):
+                v = json.load(open(f)).get('last_verified_at')
+                if v:
+                    return v
     return _git_date() or TODAY
 
 

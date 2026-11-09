@@ -1,0 +1,101 @@
+{
+ "slug": "xado-singapore",
+ "tier": "premium_leadgen",
+ "name": "XADO Singapore",
+ "domain": "xado-shop.sg",
+ "url": "https://xado-shop.sg/",
+ "category": "car-parts",
+ "mobile": true,
+ "regions": [
+  "north",
+  "north-east",
+  "east",
+  "west",
+  "central"
+ ],
+ "regions_note": "Sold online and fitted at workshops across Singapore; there is no XADO shopfront to visit.",
+ "area_label": "Island-wide",
+ "title": "XADO Singapore | Engine Oil and Revitalizant Treatments",
+ "desc": "XADO Singapore: XADO engine oils and revitalizant engine treatments, sold online and fitted at workshops listed on xado-shop.sg. WhatsApp 9339 1185.",
+ "card_img": null,
+ "tile_text": "Engine oils and treatments",
+ "no_photos_reason": "XADO's own product photos are on xado-shop.sg but could not be copied to sgcarworkshop.sg from the build sandbox (7 Nov 2026); the card shows a text tile until they are copied",
+ "card_text": [
+  "XADO engine oils and revitalizant engine treatments in Singapore.",
+  "Buy online or ask for XADO at a listed workshop's oil change."
+ ],
+ "lede": "XADO Singapore sells XADO engine oils and revitalizant engine treatments. XADO is a car-care brand founded in 1991, and its products are made under German and Dutch licences. The treatment is added at an oil change, so you can buy it online or have it fitted at one of the workshops listed on xado-shop.sg. WhatsApp 9339 1185 or call 6876 1456 to ask which product suits your car.",
+ "services": [
+  {
+   "n": "Engine treatments (Atomic Metal Conditioner)",
+   "d": "Added to fresh oil at an oil change. XADO states the treatment forms a protective ceramic-metal layer on worn engine parts. Versions for new cars, high-mileage cars and turbo engines.",
+   "p": "Retail from $79"
+  },
+  {
+   "n": "Engine oils with revitalizant",
+   "d": "Fully synthetic oils with revitalizant blended in, including the Luxury Drive and Atomic Oil range and a 0W20 for many modern Japanese engines.",
+   "p": "Retail from $138 per 4L for the Black Edition oils"
+  },
+  {
+   "n": "Gearbox and power steering fluids",
+   "d": "Transmission and power steering fluids in the XADO range.",
+   "p": null
+  },
+  {
+   "n": "Help choosing a product",
+   "d": "Send your car model and mileage on WhatsApp and XADO Singapore points you to a product and a workshop near you.",
+   "p": null
+  }
+ ],
+ "price_note": "Prices are XADO Singapore's own retail prices as listed on its product guide; workshop fitting is priced by the workshop.",
+ "phone": "+6593391185",
+ "phone_show": "9339 1185",
+ "whatsapp": "6593391185",
+ "landline": "+6568761456",
+ "landline_show": "6876 1456",
+ "addresses": [],
+ "address": null,
+ "service_area": "Island-wide: sold online at shop.xado-shop.sg and fitted at the workshops listed on xado-shop.sg. There is no shopfront to visit.",
+ "map_url": "https://xado-shop.sg/find-a-xado-workshop.html",
+ "map_label": "Find a workshop that fits XADO",
+ "hours": [],
+ "hours_ld": [],
+ "hours_note": null,
+ "social": [
+  "https://shop.xado-shop.sg/"
+ ],
+ "reviews": {
+  "text": "Customer reviews are shown on xado-shop.sg. No overall rating is stated (checked 7 November 2026).",
+  "url": "https://xado-shop.sg/",
+  "label": "Read the reviews on xado-shop.sg"
+ },
+ "photos": [],
+ "faqs": [
+  [
+   "How is XADO used?",
+   "The treatment is added to fresh engine oil at an oil change, or you choose an XADO oil that already has revitalizant blended in. No engine strip-down is needed."
+  ],
+  [
+   "Where can I get it fitted?",
+   "At one of the workshops listed on the xado-shop.sg workshop finder. WhatsApp the workshop, give your car model and mileage, and ask for XADO."
+  ],
+  [
+   "Can I buy it online?",
+   "Yes, from the online shop at shop.xado-shop.sg."
+  ],
+  [
+   "Will it fix a broken engine part?",
+   "No. XADO describes the treatment as protecting and restoring worn friction surfaces, not repairing broken parts."
+  ]
+ ],
+ "source": {
+  "name": "xado-shop.sg home, about and product guide pages (Page One build of 4 Nov 2026) and Edwin's brief of 7 Nov 2026",
+  "photos": "None yet (see no_photos_reason)"
+ },
+ "left_out": [
+  "names of the listed workshops",
+  "lab-test claims",
+  "COE figures"
+ ],
+ "_order": 12
+}

@@ -1,0 +1,274 @@
+[
+ {
+  "id": "aircon",
+  "kind": "service",
+  "label": "Aircon",
+  "rx": "aircon|air-?con|\\bac\\b",
+  "cat": "car-aircon-repair",
+  "guide": "car-aircon-not-cold"
+ },
+ {
+  "id": "brakes",
+  "kind": "service",
+  "label": "Brakes",
+  "rx": "brake",
+  "cat": null,
+  "guide": "brake-squeal-noise"
+ },
+ {
+  "id": "suspension",
+  "kind": "service",
+  "label": "Suspension and undercarriage",
+  "rx": "undercarriage|suspension|absorber|stabiliser|drive ?shaft|wear-and-tear|alignment",
+  "cat": null,
+  "guide": "car-knocking-over-humps"
+ },
+ {
+  "id": "gearbox",
+  "kind": "service",
+  "label": "Gearbox and transmission",
+  "rx": "gearbox|transmission|clutch|cvt",
+  "cat": "gearbox-repair",
+  "guide": "gearbox-cvt-jerking"
+ },
+ {
+  "id": "diagnostics",
+  "kind": "service",
+  "label": "Fault diagnosis",
+  "rx": "fault|under-bonnet|sensor|throttle|diagnos",
+  "cat": null,
+  "guide": "engine-warning-light"
+ },
+ {
+  "id": "cooling",
+  "kind": "service",
+  "label": "Cooling",
+  "rx": "radiator|cooling|coolant|fan motor",
+  "cat": null,
+  "guide": "car-overheating"
+ },
+ {
+  "id": "battery",
+  "kind": "service",
+  "label": "Battery and starter",
+  "rx": "starter|battery",
+  "cat": "car-battery",
+  "guide": "car-wont-start-battery"
+ },
+ {
+  "id": "ecu-abs",
+  "kind": "service",
+  "label": "ABS and ECU",
+  "rx": "\\becu\\b|\\babs\\b",
+  "cat": "abs-ecu-module-repair",
+  "guide": null
+ },
+ {
+  "id": "bodywork",
+  "kind": "service",
+  "label": "Bodywork and dents",
+  "rx": "dent|bodywork|fender|scratch|spray|paint|accident",
+  "cat": "spray-painting-bodywork",
+  "guide": null
+ },
+ {
+  "id": "detailing",
+  "kind": "service",
+  "label": "Detailing and coating",
+  "rx": "detailing|coating|polish|nano|car wash|snow foam",
+  "cat": "car-detailing-coating",
+  "guide": null
+ },
+ {
+  "id": "wrap-ppf",
+  "kind": "service",
+  "label": "Wrap and PPF",
+  "rx": "wrap|\\bppf\\b",
+  "cat": "car-wrap-ppf",
+  "guide": null
+ },
+ {
+  "id": "oil-service",
+  "kind": "service",
+  "label": "Oil and servicing",
+  "rx": "oil|servicing|full car service|spark plug",
+  "cat": null,
+  "guide": null
+ },
+ {
+  "id": "tyres",
+  "kind": "service",
+  "label": "Tyres",
+  "rx": "tyre|tire|puncture|wheel balanc",
+  "cat": null,
+  "guide": "tyre-shop-open-sunday-singapore"
+ },
+ {
+  "id": "bmw-mercedes",
+  "kind": "brand",
+  "label": "BMW and Mercedes-Benz",
+  "rx": "bmw|mercedes|continental",
+  "cat": null,
+  "guide": "bmw-mercedes-workshops-singapore"
+ },
+ {
+  "id": "toyota",
+  "kind": "brand",
+  "label": "Toyota",
+  "rx": "toyota|harrier|vios|camry|corolla|alphard|prius",
+  "cat": null,
+  "guide": "toyota-workshops-singapore"
+ },
+ {
+  "id": "honda",
+  "kind": "brand",
+  "label": "Honda",
+  "rx": "honda",
+  "cat": null,
+  "guide": "honda-workshops-singapore"
+ },
+ {
+  "id": "tesla",
+  "kind": "brand",
+  "label": "Tesla",
+  "rx": "tesla",
+  "cat": null,
+  "guide": "tesla-workshops-singapore"
+ },
+ {
+  "id": "byd",
+  "kind": "brand",
+  "label": "BYD",
+  "rx": "\\bbyd\\b|atto ?3",
+  "cat": null,
+  "guide": "byd-workshops-singapore"
+ },
+ {
+  "id": "volkswagen-audi",
+  "kind": "brand",
+  "label": "Volkswagen and Audi",
+  "rx": "volkswagen|\\bvw\\b|audi",
+  "cat": null,
+  "guide": null
+ },
+ {
+  "id": "p-knocking",
+  "kind": "problem",
+  "label": "Knocking over humps",
+  "rx": "undercarriage|suspension|absorber|stabiliser|noise|drive ?shaft|wear-and-tear",
+  "cat": null,
+  "guide": "car-knocking-over-humps"
+ },
+ {
+  "id": "p-aircon-not-cold",
+  "kind": "problem",
+  "label": "Aircon not cold",
+  "rx": "aircon|air-?con|\\bac\\b",
+  "cat": null,
+  "guide": "car-aircon-not-cold"
+ },
+ {
+  "id": "p-wont-start",
+  "kind": "problem",
+  "label": "Car won't start",
+  "rx": "starter|breakdown|battery",
+  "cat": null,
+  "guide": "car-wont-start-battery"
+ },
+ {
+  "id": "p-gearbox-jerking",
+  "kind": "problem",
+  "label": "Gearbox or CVT jerking",
+  "rx": "gearbox|transmission|clutch|cvt",
+  "cat": null,
+  "guide": "gearbox-cvt-jerking"
+ },
+ {
+  "id": "p-brake-squeal",
+  "kind": "problem",
+  "label": "Brake squeal",
+  "rx": "brake",
+  "cat": null,
+  "guide": "brake-squeal-noise"
+ },
+ {
+  "id": "p-warning-light",
+  "kind": "problem",
+  "label": "Engine warning light",
+  "rx": "fault|under-bonnet|sensor|throttle|diagnostics",
+  "cat": null,
+  "guide": "engine-warning-light"
+ },
+ {
+  "id": "p-overheating",
+  "kind": "problem",
+  "label": "Car overheating",
+  "rx": "radiator|cooling|coolant|fan",
+  "cat": null,
+  "guide": "car-overheating"
+ },
+ {
+  "id": "p-dent",
+  "kind": "problem",
+  "label": "Dents and scratches",
+  "rx": "\\bdent|scratch|bumper|panel beat|fender",
+  "cat": null,
+  "guide": "dent-repair-singapore"
+ },
+ {
+  "id": "p-spray",
+  "kind": "problem",
+  "label": "Spray painting",
+  "rx": "spray|respray|paint",
+  "cat": null,
+  "guide": "car-spray-painting-singapore"
+ },
+ {
+  "id": "p-battery-dead",
+  "kind": "problem",
+  "label": "Battery dead",
+  "rx": "battery|jump ?start",
+  "cat": null,
+  "guide": "car-battery-dead"
+ },
+ {
+  "id": "p-dash-lights",
+  "kind": "problem",
+  "label": "Dashboard warning lights",
+  "rx": "warning light|engine light|check engine|diagnos",
+  "cat": null,
+  "guide": "dashboard-warning-lights"
+ },
+ {
+  "id": "p-burning-smell",
+  "kind": "problem",
+  "label": "Burning smell",
+  "rx": "burn|smell|oil leak|clutch|electrical fault",
+  "cat": null,
+  "guide": "car-burning-smell"
+ },
+ {
+  "id": "h-choose",
+  "kind": "howto",
+  "label": "Choosing a workshop",
+  "rx": "repair|diagnos|overhaul",
+  "cat": null,
+  "guide": "how-to-choose-a-car-workshop"
+ },
+ {
+  "id": "h-servicing-cost",
+  "kind": "howto",
+  "label": "Servicing cost",
+  "rx": "servicing|oil change|service package|maintenance",
+  "cat": null,
+  "guide": "car-servicing-cost-singapore"
+ },
+ {
+  "id": "h-before-visit",
+  "kind": "howto",
+  "label": "Before a workshop visit",
+  "rx": "pre-?purchase|inspection|diagnos|health check",
+  "cat": null,
+  "guide": "before-a-workshop-visit"
+ }
+]

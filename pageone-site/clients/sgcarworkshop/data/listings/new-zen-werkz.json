@@ -1,0 +1,177 @@
+{
+ "slug": "new-zen-werkz",
+ "tier": "premium_leadgen",
+ "name": "New Zen Werkz",
+ "domain": "newzenwerkz.com.sg",
+ "url": "https://newzenwerkz.com.sg/",
+ "category": "general-servicing-repair",
+ "categories": [
+  "general-servicing-repair",
+  "gearbox-repair",
+  "car-battery",
+  "car-aircon-repair"
+ ],
+ "regions": [
+  "east"
+ ],
+ "regions_note": "Kaki Bukit is in the East region (URA). Address: Eunos Technolink, Kaki Bukit Road 1.",
+ "area_label": "Kaki Bukit",
+ "title": "New Zen Werkz | Car Repair and Servicing, Kaki Bukit",
+ "desc": "New Zen Werkz in Kaki Bukit: car servicing, engine and gearbox repair, brakes and diagnostics for continental, Japanese and American cars. WhatsApp 8678 1878.",
+ "card_img": {
+  "f": "newzenwerkz-workshop-lineup.webp",
+  "alt": "Cars lined up inside the New Zen Werkz workshop at Eunos Technolink"
+ },
+ "card_text": [
+  "Independent car workshop at Eunos Technolink, Kaki Bukit.",
+  "Servicing, engine and gearbox repair for continental, Japanese and American cars."
+ ],
+ "lede": "New Zen Werkz is an independent car workshop at Eunos Technolink, Kaki Bukit Road 1. It services and repairs continental, Japanese and American cars, and rebuilds engines and gearboxes in its own workshop. The fault is diagnosed first and explained to you before work starts. WhatsApp 8678 1878 or call 6742 8117 to ask about your car.",
+ "services": [
+  {
+   "n": "Car servicing and oil change",
+   "d": "Scheduled servicing, engine oil and filter changes and fluid checks, following the car maker's schedule.",
+   "p": null
+  },
+  {
+   "n": "Engine repair and overhaul",
+   "d": "From oil leaks and misfires to a full engine strip-down and rebuild in the workshop.",
+   "p": null
+  },
+  {
+   "n": "Gearbox and transmission repair",
+   "d": "Diagnosis and repair of automatic gearboxes that slip, shift harshly, leak or go into limp mode.",
+   "p": null
+  },
+  {
+   "n": "Brake repair",
+   "d": "Brake pads, discs, calipers and brake fluid, checked and replaced when due.",
+   "p": null
+  },
+  {
+   "n": "Diagnostics",
+   "d": "Warning lights, odd noises and faults that come and go, traced to the cause before any repair.",
+   "p": null
+  },
+  {
+   "n": "Battery, aircon, steering and tyres",
+   "d": "Battery testing and replacement (including start-stop cars that need registering), aircon checks, steering and suspension work, and tyre replacement.",
+   "p": null
+  }
+ ],
+ "price_note": "Prices are not listed on the workshop's website. WhatsApp your car model and the problem for a quote.",
+ "phone": "+6586781878",
+ "phone_show": "8678 1878",
+ "whatsapp": "6586781878",
+ "landline": "+6567428117",
+ "landline_show": "6742 8117",
+ "addresses": [
+  {
+   "label": null,
+   "street": "Blk 3 Kaki Bukit Road 1, #03-04 Eunos Technolink",
+   "postal": "415935"
+  }
+ ],
+ "map_url": "https://www.google.com/maps/search/?api=1&query=New%20Zen%20Werkz%2C%203%20Kaki%20Bukit%20Road%201%20%2303-04%20Eunos%20Technolink%20Singapore%20415935",
+ "hours": [
+  [
+   "Mon to Fri",
+   "9:30am to 7pm"
+  ],
+  [
+   "Sat",
+   "9:30am to 4pm"
+  ],
+  [
+   "Sun",
+   "Closed"
+  ]
+ ],
+ "hours_ld": [
+  [
+   [
+    "Monday",
+    "Tuesday",
+    "Wednesday",
+    "Thursday",
+    "Friday"
+   ],
+   "09:30",
+   "19:00"
+  ],
+  [
+   [
+    "Saturday"
+   ],
+   "09:30",
+   "16:00"
+  ]
+ ],
+ "hours_note": null,
+ "social": [],
+ "reviews": {
+  "text": "Customer reviews are on the workshop's Google profile. Its website quotes some of them but does not state a rating or count (checked 7 November 2026).",
+  "url": "https://www.google.com/maps/search/?api=1&query=New%20Zen%20Werkz%2C%203%20Kaki%20Bukit%20Road%201%20Singapore%20415935",
+  "label": "Open the Google profile"
+ },
+ "photos": [
+  {
+   "f": "newzenwerkz-workshop-lineup.webp",
+   "alt": "Cars lined up inside the New Zen Werkz workshop",
+   "cap": "Cars in the workshop at Eunos Technolink."
+  },
+  {
+   "f": "newzenwerkz-workshop-entrance.webp",
+   "alt": "Entrance to the New Zen Werkz workshop unit",
+   "cap": "The workshop entrance, unit #03-04."
+  },
+  {
+   "f": "newzenwerkz-engine-teardown.webp",
+   "alt": "Engine stripped down on the bench",
+   "cap": "An engine stripped down for a rebuild."
+  },
+  {
+   "f": "newzenwerkz-engine-gearbox.webp",
+   "alt": "Engine and gearbox out of a car",
+   "cap": "An engine and gearbox out of the car."
+  },
+  {
+   "f": "newzenwerkz-brake-work.webp",
+   "alt": "Brake work on a car on the lift",
+   "cap": "Brake work on the lift."
+  },
+  {
+   "f": "newzenwerkz-mercedes-hummer.webp",
+   "alt": "A Mercedes-Benz and a Hummer in the workshop",
+   "cap": "A Mercedes-Benz and a Hummer in for work."
+  }
+ ],
+ "faqs": [
+  [
+   "Which cars does New Zen Werkz work on?",
+   "Continental, Japanese and American cars. Mercedes-Benz and Bentley work sits alongside Japanese and American makes."
+  ],
+  [
+   "Can engines and gearboxes be rebuilt there?",
+   "Yes. Engines and automatic gearboxes are stripped, inspected and rebuilt in the workshop, not only swapped for replacement units."
+  ],
+  [
+   "Will I know the cost before work starts?",
+   "Yes. The car is diagnosed first, and you hear what was found and your options before any work starts."
+  ],
+  [
+   "Where is it and when is it open?",
+   "Blk 3 Kaki Bukit Road 1, #03-04 Eunos Technolink, Singapore 415935. Open Monday to Friday 9:30am to 7pm and Saturday 9:30am to 4pm, closed on Sunday."
+  ]
+ ],
+ "source": {
+  "name": "newzenwerkz.com.sg home page (Page One build of 6 Nov 2026) and Edwin's brief of 7 Nov 2026 (WhatsApp 8678 1878, tel 6742 8117)",
+  "photos": "The workshop's own photos as used on newzenwerkz.com.sg"
+ },
+ "left_out": [
+  "owner's name",
+  "customer review quotes",
+  "former business name"
+ ],
+ "_order": 9
+}
