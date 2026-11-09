@@ -285,7 +285,7 @@ ALBUM = {
         ('Bathrooms', ['landak-bathroom-1.webp', 'landak-bathroom-2.webp', 'landak-bathroom-portrait-1.webp']),
         ('Games: pool table, darts, foosball, TV arcade', ['landak-pool-table-darts-1.webp', 'landak-patio-bistro-pool-1.webp', 'landak-pool-table-length-1.webp', 'landak-pool-table-detail-1.webp', 'landak-dartboards-detail-1.webp', 'landak-patio-view-1.webp', 'landak-foosball-table-1.webp', 'landak-dining-foosball-1.webp', 'landak-tv-games-1.webp', 'landak-game-stick-detail-1.webp', 'landak-tv-remote-detail-1.webp']),
         ('Dedicated workspace (2nd level)', ['landak-covered-counter-wide-1.webp', 'landak-covered-work-counter-1.webp', 'landak-ironing-counter-detail-1.webp']),
-        ('Outside, laundry and utility', ['landak-exterior-1.webp', 'landak-electrical-controls-1.webp']),
+        ('Outside and utility', ['landak-exterior-1.webp', 'landak-electrical-controls-1.webp']),
     ],
 }
 HOME_CTA_IMG = 'landak-living-room-1.webp'
