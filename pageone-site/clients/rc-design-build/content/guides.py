@@ -431,4 +431,36 @@ G13 = {
   'wa_topic': 'my mall kiosk',
 }
 
-PAGES = [G1, G2, G3, G4, G5, G6, G7, G8, G9, G10, G11, G12, G13]
+G14 = {
+  'path': '/guides/shop-reinstatement-at-lease-end/',
+  'title': 'Shop Reinstatement at Lease End | R&C',
+  'desc': 'What shop reinstatement at lease end means in Singapore, how to read the clause, what to record, and how to plan the works before you hand the unit back.',
+  'h1': 'Shop Reinstatement at Lease End: What to Plan For',
+  'kicker': 'Lease-end planning guide',
+  'answer': 'Reinstatement means returning the shop unit to the condition your lease requires when you leave, which can include removing what you added and making good the surfaces. Read the clause before you fit out, keep records of the unit as you found it, and agree the scope with the landlord early, so the works are planned instead of rushed.',
+  'card': 'Plan reinstatement at lease end: read the clause, keep records, agree the scope and schedule the works.',
+  'image': 'fitout-site',
+  'image_alt': 'A small shop unit mid fit-out with partly installed joinery and ceiling work (AI design concept)',
+  'og': 'share-shop-reinstatement-at-lease-end.jpg',
+  'date': '2026-11-10',
+  'owner': '/services/commercial-renovation/',
+  'reading': '5 min read',
+  'sections': [
+    {'h2': 'What does reinstatement mean at the end of a shop lease?', 'html': '<p>Reinstatement is the work of handing the unit back in the condition your lease asks for. Depending on the lease, that can mean removing partitions, counters, signage and fixtures you added, and making good the floor, walls and ceiling where they were fixed. Some leases ask for the unit to return to its original state, others accept it as it stands, so the wording matters.</p><p>It is not the same as normal cleaning or repainting, and it is often a separate cost from the fit-out itself.</p>'},
+    {'h2': 'Where do I find out what my lease requires?', 'html': '<p>Read the reinstatement or yield-up clause in your tenancy agreement, together with any approved fit-out drawings and landlord conditions you signed. Look for what must be removed, what may stay, the condition of the floor, walls and ceiling, and the deadline for completing the works.</p><ul><li>Note any item the landlord has already agreed may stay.</li><li>Check whether the landlord or building management has its own handover checklist.</li><li>If the wording is unclear, ask the landlord to confirm it in writing.</li></ul><p>This guide is general and not legal advice. Confirm the details of your own lease with the landlord or an adviser.</p>'},
+    {'h2': 'What records should I keep from the start?', 'html': '<p>Keep photos of the unit before you start work, the approved drawings, and a list of what you add. These records show what the unit looked like and what changed, which helps when you and the landlord agree the scope at the end.</p><ul><li>Dated photos of the empty unit: floor, walls, ceiling, doors and fixtures.</li><li>As-built drawings after the fit-out, including where services and fittings were fixed.</li><li>A list of fixtures, joinery and signage you added.</li></ul><p>Our <a href="/guides/small-shop-renovation-checklist/">small shop renovation checklist</a> covers when to collect these during the project.</p>'},
+    {'h2': 'What work usually sits inside reinstatement?', 'html': '<p>It depends on what you built and what the lease requires, but the work commonly falls into a few groups.</p><ul><li>Removing joinery, counters, shelving and display fixtures.</li><li>Taking out added partitions, signage and lighting, and making good the fixing points.</li><li>Repairing and repainting walls and ceilings, and repairing or replacing flooring where needed.</li><li>Disconnecting added electrical points safely, which is usually done by a licensed person.</li></ul><p>These overlap with <a href="/services/commercial-renovation/">commercial renovation</a>, <a href="/services/commercial-painting-finishing/">painting and finishing</a> and <a href="/services/commercial-tiling-flooring/">tiling and flooring</a>.</p>'},
+    {'h2': 'When should I plan and schedule the works?', 'html': '<p>Start before the lease ends. Agree the scope with the landlord, ask for quotations, and book the works so they finish by the handover date. Starting late leaves no time to fix surprises such as damaged flooring or a fixing that has left a hole.</p><ul><li>Confirm the handover date and the landlord\'s inspection date.</li><li>Check any building rules on working hours and approvals for the works.</li><li>Allow time for a final clean and a walk-through with the landlord.</li></ul>'},
+    {'h2': 'Can the original contractor help with reinstatement?', 'html': '<p>It is worth asking, because a contractor who built the fit-out knows how it was fixed and what lies behind it. Whoever does the work, ask for a written scope that matches the lease clause, and keep the final photos and any sign-off from the landlord. If you would like us to look at your scope, send us the clause and your as-built drawings, and we can discuss whether it fits our commercial renovation work.</p>'},
+  ],
+  'faqs': [
+    ('What is reinstatement in a shop lease?', 'It is returning the unit to the condition the lease requires when you leave. That can include removing what you added and making good the floor, walls and ceiling. The exact wording of your lease decides what applies.'),
+    ('Where do I find the reinstatement requirements?', 'In the reinstatement or yield-up clause of your tenancy agreement, together with approved fit-out drawings and any landlord conditions. If the wording is unclear, ask the landlord to confirm it in writing.'),
+    ('What should I record before I start renovating?', 'Take dated photos of the empty unit, keep the approved drawings, and note what you add. These help you and the landlord agree the scope at lease end.'),
+    ('When should I start planning reinstatement?', 'Before the lease ends. Agree the scope with the landlord, get quotations and book the works so they finish by the handover date, with time left for a final clean and walk-through.'),
+  ],
+  'related': ['/services/commercial-renovation/', '/guides/small-shop-renovation-checklist/', '/guides/how-to-brief-a-shop-fit-out/', '/services/commercial-painting-finishing/', '/services/commercial-tiling-flooring/'],
+  'wa_topic': 'reinstating my shop unit',
+}
+
+PAGES = [G1, G2, G3, G4, G5, G6, G7, G8, G9, G10, G11, G12, G13, G14]
