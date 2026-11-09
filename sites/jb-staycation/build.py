@@ -20,6 +20,7 @@ NAME = 'JB Airbnb'
 TAGLINE = 'A quieter escape, just across the causeway.'
 WA_NUM, WA_SHOW = '6590062198', '+65 9006 2198'
 WA_BASE = 'https://wa.me/' + WA_NUM
+INDEXNOW_KEY = '8902a563f0e8890158ac4cf1b41cd50d'   # jbairbnb.com IndexNow key (9 Nov 2026), also in watchdog/indexnow.py SITES
 
 
 def wa_msg(house=None):
@@ -2182,6 +2183,7 @@ def main():
     make_icons()
     # sitemap
     urls = ''.join('<url><loc>%s</loc><lastmod>%s</lastmod></url>' % (BASE + p, TODAY) for p in PAGES)
+    open(os.path.join(OUT, INDEXNOW_KEY + '.txt'), 'w').write(INDEXNOW_KEY)   # IndexNow key file at the site root
     open(os.path.join(OUT, 'sitemap.xml'), 'w').write('<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">%s</urlset>\n' % urls)
     open(os.path.join(OUT, 'robots.txt'), 'w').write(
         'User-agent: *\nUser-agent: OAI-SearchBot\nUser-agent: ChatGPT-User\nUser-agent: GPTBot\nUser-agent: Googlebot\nUser-agent: Bingbot\n'
