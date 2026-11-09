@@ -411,6 +411,26 @@ def service_body(s):
 # Articles (general, verifiable car-care knowledge; no client claims beyond the facts above)
 # ----------------------------------------------------------------------------------------------
 ARTICLES = [
+    dict(slug='car-pulling-to-one-side-steering-wheel-shaking', photo='workshop-lineup', services=['steering-suspension-repair'], date='2026-11-10',
+         h1='Car pulling to one side or steering wheel shaking: what causes it?',
+         title='Car Pulling to One Side or Steering Wheel Shaking | New Zen Werkz',
+         desc='Car pulling to one side or a shaking steering wheel? The common causes, from tyre pressure and alignment to worn suspension parts, and what a workshop checks.',
+         answer='A car that pulls to one side or a steering wheel that shakes usually comes from the tyres or wheels (uneven pressure, wear or balance), wheel alignment, a brake that drags, or worn suspension and steering parts. When it happens, such as at speed or when braking, points to the cause.',
+         body=[
+             ('Notice when it happens', 'A car that pulls at all speeds is different from a steering wheel that only shakes at highway speed or only when braking. Write down the speed, whether it happens on a straight road, under braking or when turning, and which side the car drifts to. It helps the workshop find the cause faster.'),
+             ('Tyres: pressure and wear', 'Uneven tyre pressure is the simplest cause of a pull, so check all four tyres first. A tyre that is worn unevenly, or has a damaged or bulging section, can also pull the car or shake the wheel. Wear on one edge of a tyre often points to alignment or worn suspension parts rather than the tyre itself.'),
+             ('Wheel alignment', 'When the wheel angles are out, the car drifts to one side and the steering wheel may sit off-centre on a straight road. A knock on a kerb or a pothole can change the angles. Alignment is checked on a machine, and it is usually needed after steering or suspension parts are replaced.'),
+             ('A shaking steering wheel', 'A steering wheel that shakes at certain speeds often points to a wheel that is out of balance or a tyre that is damaged. A shake or judder only when braking can point to the brakes. A shake together with a knock over bumps points to worn suspension or steering parts.'),
+             ('A brake that drags', 'If one brake does not release fully, the car can pull to that side and the wheel may feel hot after a drive. Pulling only when you press the brake pedal can mean uneven braking. Brake problems are a safety matter, so have them checked promptly.'),
+             ('Worn suspension and steering parts', 'Ball joints, tie rod ends, control arm bushings, wheel bearings and shock absorbers wear with age. When they get loose, the wheels no longer hold their angle and the car can wander, pull or shake. Loose steering, a clunk over bumps or uneven tyre wear are common companions.'),
+             ('What the workshop checks', 'A workshop checks tyre condition and pressures, looks for play in the steering and suspension parts, inspects the brakes and wheel bearings, and checks the alignment. Once the cause is found, only the part that needs repair or replacement is dealt with, so the car does not get repairs it does not need.'),
+         ],
+         faqs=[
+             ('Why does my car pull to one side?', 'The common causes are uneven tyre pressure, wheel alignment that is out, a brake that drags, or worn steering and suspension parts. A workshop checks them in turn to find which one it is.'),
+             ('Why does my steering wheel shake at speed?', 'A steering wheel that shakes at certain speeds often points to a wheel out of balance or a damaged tyre. If it comes with knocking over bumps, worn suspension or steering parts are also possible.'),
+             ('Is it safe to drive with the steering wheel shaking?', 'A mild shake may not be urgent, but it should be checked soon, because worn steering parts and brake problems affect safety. If the car pulls hard or the steering feels loose, have it checked before driving further.'),
+             ('Do I need a wheel alignment?', 'If the car drifts to one side on a straight road, the steering wheel sits off-centre or the tyres wear on one edge, alignment is worth checking. It is usually needed after steering or suspension parts are replaced.'),
+         ]),
     dict(slug='car-aircon-not-cold-singapore', photo='mercedes-hummer', services=['aircon-repair'], date='2026-11-08',
          h1='Car aircon not cold in Singapore? Common causes and what a workshop checks',
          title='Car Aircon Not Cold in Singapore: Causes & Checks | New Zen Werkz',
@@ -482,7 +502,16 @@ ARTICLES = [
              ('Pulling to one side', 'A seized caliper or slide pin, a collapsed brake hose or contaminated pads can make one side brake harder than the other. This also wears tyres unevenly.'),
              ('Soft or sinking pedal', 'Air or moisture in the brake fluid, a leak, or a failing master cylinder can make the pedal feel spongy. Treat this as urgent.'),
              ('Brake fluid', 'Brake fluid absorbs moisture from the air, which lowers its boiling point and corrodes parts over time. Many car makers specify a change every two years; your service booklet gives the interval for your car.'),
-         ]),
+             ('ABS warning light', 'An amber ABS light on its own usually means the anti-lock system has switched itself off while normal braking still works. Common causes are a wheel speed sensor, its wiring or a damaged sensor ring, which a scan and a few tests can find. If the red brake warning light is on as well, stop and get help. Sometimes the fault is inside the ABS control module itself.'),
+             ('When the fault is inside the ABS module',
+              'New Zen Werkz is a general repair and servicing workshop. Some jobs, such as bench repair of an ABS module, or cosmetic work like a vinyl wrap, are specialist work, and you may want to compare the specialists near us first. '
+              'Is there a directory that does these checks? The <a href="https://sgcarworkshop.sg/areas/kaki-bukit-industrial-estate/">car workshops listed in Kaki Bukit Industrial Estate</a> on SG Car Workshop are one place to start. '
+              'Names and mobile numbers there come from each workshop\'s Google Business Profile, listings are written in the directory\'s own words without invented job stories, and there are no paid rankings: paid listings are labelled Featured and kept out of the ranking. '
+              'To be clear about it: New Zen Werkz has a Featured (paid) listing there, and both this website and the directory are run by Page One Singapore. Being listed is not a recommendation from us, so check any workshop, including us, before you book.', True),
+         ],
+         updated='2026-11-10',
+         faqs=[('Can a bad wheel speed sensor turn on the ABS light?', 'Yes. A faulty wheel speed sensor, its wiring or a damaged sensor ring is a common cause. A scan shows which wheel reported the fault, and testing confirms it before any part is replaced.'),
+               ('Is New Zen Werkz listed on SG Car Workshop?', 'Yes, with a Featured (paid) listing. The directory and this website are both run by Page One Singapore.')]),
     dict(slug='engine-overhaul-explained', photo='engine-teardown', services=['engine-repair'],
          h1='Engine overhaul explained: what it involves and when it is worth it',
          title='Engine Overhaul Explained: What It Involves & When It Is Worth It | New Zen Werkz',
@@ -512,7 +541,8 @@ ART = {a['slug']: a for a in ARTICLES}
 
 
 def article_body(a):
-    secs = ''.join('<h2>%s</h2><p>%s</p>' % (E(h), E(p)) for h, p in a['body'])
+    # A body item may carry a third value True: its text is trusted HTML (used for one editorial link).
+    secs = ''.join('<h2>%s</h2><p>%s</p>' % (E(x[0]), x[1] if len(x) > 2 and x[2] else E(x[1])) for x in a['body'])
     svc_links = ''.join('<a class="mini" href="services/%s/">%s<span>%s</span></a>' % (s, img(SVC[s]['photo'], sm=True), E(SVC[s]['short']))
                         for s in a['services'])
     more = ''.join('<li><a href="articles/%s/">%s</a></li>' % (o['slug'], E(o['h1'])) for o in ARTICLES if o['slug'] != a['slug'])[:4000]
