@@ -1,0 +1,65 @@
+{
+ "workshop": {
+  "name": "New Zen Werkz Pte Ltd",
+  "addr": "3 Kaki Bukit Rd 1 #03-04 Eunos Technolink, Singapore 415935",
+  "lat": 1.3345076999999999,
+  "lng": 103.9013238,
+  "maps": "https://maps.google.com/?cid=17651274486098779479&g_mp=Cidnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLlNlYXJjaFRleHQQAhgEIAA"
+ },
+ "eunos-kaki-bukit": {
+  "name": "Eunos MRT Station (EW7)",
+  "addr": "30 Eunos Cres, Singapore 409423",
+  "lat": 1.3196998,
+  "lng": 103.90289399999999,
+  "maps": "https://maps.google.com/?cid=8579493913829345760&g_mp=Cidnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLlNlYXJjaFRleHQQAhgEIAA"
+ },
+ "ubi": {
+  "name": "Ubi",
+  "addr": "Singapore 408621",
+  "lat": 1.3299501,
+  "lng": 103.8989888,
+  "maps": "https://maps.google.com/?cid=2392770006966339807&g_mp=Cidnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLlNlYXJjaFRleHQQAhgEIAA"
+ },
+ "bedok": {
+  "name": "Bedok",
+  "addr": "315 New Upper Changi Rd, Singapore 467347",
+  "lat": 1.3239319,
+  "lng": 103.92964479999999,
+  "maps": "https://maps.google.com/?cid=7031159203418713711&g_mp=Cidnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLlNlYXJjaFRleHQQAhgEIAA"
+ },
+ "tampines": {
+  "name": "Tampines MRT Station (DT32)",
+  "addr": "15 Tampines Central 1, Singapore 529544",
+  "lat": 1.3544991,
+  "lng": 103.94275809999999,
+  "maps": "https://maps.google.com/?cid=3644172857920789602&g_mp=Cidnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLlNlYXJjaFRleHQQAhgEIAA"
+ },
+ "paya-lebar-macpherson": {
+  "name": "Paya Lebar MRT Station (CC9)",
+  "addr": "15 Paya Lebar Rd, Singapore 409049",
+  "lat": 1.3168487,
+  "lng": 103.8922072,
+  "maps": "https://maps.google.com/?cid=14982442997755740969&g_mp=Cidnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLlNlYXJjaFRleHQQAhgEIAA"
+ },
+ "geylang-aljunied": {
+  "name": "Aljunied",
+  "addr": "Singapore 388310",
+  "lat": 1.31643,
+  "lng": 103.88291,
+  "maps": "https://maps.google.com/?cid=12581801727621785080&g_mp=Cidnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLlNlYXJjaFRleHQQAhgEIAA"
+ },
+ "hougang-kovan": {
+  "name": "Hougang",
+  "addr": "Singapore 538758",
+  "lat": 1.371309,
+  "lng": 103.89238739999999,
+  "maps": "https://maps.google.com/?cid=16548755054507496170&g_mp=Cidnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLlNlYXJjaFRleHQQAhgEIAA"
+ },
+ "marine-parade-katong": {
+  "name": "Marine Parade MRT (TE26)",
+  "addr": "Marine Parade Rd, Singapore 449971",
+  "lat": 1.3027541999999999,
+  "lng": 103.9051181,
+  "maps": "https://maps.google.com/?cid=12764566422552431167&g_mp=Cidnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLlNlYXJjaFRleHQQAhgEIAA"
+ }
+}

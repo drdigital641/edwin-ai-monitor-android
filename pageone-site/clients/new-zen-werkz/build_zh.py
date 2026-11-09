@@ -16,8 +16,14 @@ import build as B  # noqa: E402
 SITE = B.SITE
 T = json.load(open(os.path.join(B.HERE, 'zh', 'strings_zh.json')))
 WA_ZH = '你好 New Zen Werkz，我在你们的网站上看到信息，想咨询我的车。'
-ASSETS = r'(nzw\.css|nzw\.js|favicon\.svg|favicon\.ico|apple-touch-icon\.png|site\.webmanifest)'
+ASSETS = r'(p1cta\.js|nzw\.css|nzw\.js|favicon\.svg|favicon\.ico|apple-touch-icon\.png|site\.webmanifest)'
 missing = set()
+LOCAL_SLUGS = [l['slug'] for l in B.LOCAL]
+LOCAL_RE = re.compile(r'(href)="((?:\.\./)*)(areas/(?:%s)/)"' % '|'.join(LOCAL_SLUGS))
+
+
+def zh_skip(path):
+    return any(path == 'areas/%s/' % s for s in LOCAL_SLUGS)
 
 
 def tr(s):
@@ -92,6 +98,7 @@ def to_zh(h, path, depth):
     z = ''.join(out)
     z = z.replace('<html lang="en-SG">', '<html lang="zh-Hans-SG">').replace('content="en_SG"', 'content="zh_SG"')
     z = re.sub(r'(href|src)="((?:\.\./)*)' + ASSETS, r'\1="../\2\3', z)
+    z = LOCAL_RE.sub(r'\1="../\2\3"', z)
     z = z.replace('href="%s%s"' % (SITE, path), 'href="%szh/%s"' % (SITE, path), 1)          # canonical
     z = z.replace('content="%s%s"' % (SITE, path), 'content="%szh/%s"' % (SITE, path))      # og:url
     z = z.replace('text=' + quote(B.WA_MSG), 'text=' + quote(WA_ZH))
@@ -107,6 +114,8 @@ def main():
         if rel == '404.html':
             continue
         path = rel[:-len('index.html')]
+        if zh_skip(path):
+            continue
         depth = path.count('/')
         full = os.path.join(SITE_DIR, rel)
         h = open(full).read()
@@ -127,11 +136,11 @@ def main():
     # sitemap: add the zh URLs
     sm = open(os.path.join(SITE_DIR, 'sitemap.xml')).read()
     if SITE + 'zh/' not in sm:
-        extra = ''.join('  <url><loc>%szh/%s</loc><lastmod>%s</lastmod></url>\n' % (SITE, p, B.UPDATED) for p in B.PAGES)
+        extra = ''.join('  <url><loc>%szh/%s</loc><lastmod>%s</lastmod></url>\n' % (SITE, p, B.page_date(p)) for p in B.PAGES if not zh_skip(p))
         open(os.path.join(SITE_DIR, 'sitemap.xml'), 'w').write(sm.replace('</urlset>', extra + '</urlset>'))
     ll = open(os.path.join(SITE_DIR, 'llms.txt')).read()
     if '## 中文' not in ll:
-        ll += '\n## 中文 (Chinese version)\n' + ''.join('- [%s](%szh/%s)\n' % (tr(B.PAGES[p]['title']).split(' | ')[0], SITE, p) for p in B.PAGES)
+        ll += '\n## 中文 (Chinese version)\n' + ''.join('- [%s](%szh/%s)\n' % (tr(B.PAGES[p]['title']).split(' | ')[0], SITE, p) for p in B.PAGES if not zh_skip(p))
         open(os.path.join(SITE_DIR, 'llms.txt'), 'w').write(ll)
     print('zh pages: %d, untranslated strings: %d' % (len(pages), len(missing)))
     for m in sorted(missing)[:20]:

@@ -1,0 +1,496 @@
+{
+ "source": "Google Places API (New) searchNearby, 900 m around each start point, 2026-11-06",
+ "places": {
+  "eunos-kaki-bukit": [
+   [
+    "Eunos",
+    "subway_station",
+    "30 Eunos Cres, Singapore"
+   ],
+   [
+    "THK Pan-Disability Centre @ Eunos",
+    "community_center",
+    "3 Eunos Cres, #01-2577, Singapore"
+   ],
+   [
+    "People's Action Party (Geylang Serai Branch)",
+    "community_center",
+    "37 Eunos Rd 2, #02-01, Singapore"
+   ],
+   [
+    "Kampong Ubi Community Club",
+    "community_center",
+    "10 Jln Ubi, #01-01, Singapore"
+   ],
+   [
+    "Kampong Ubi Toastmasters Club",
+    "community_center",
+    "Kampong Ubi Community Centre, Level 3 Conference Room, 10 Jln Ubi, Singapore"
+   ],
+   [
+    "Kampong Ubi Community Centre",
+    "community_center",
+    "10 Jln Ubi, #01-07, Singapore"
+   ],
+   [
+    "Jalan Yasin Interim Park",
+    "park",
+    "Jln Yasin, Singapore"
+   ],
+   [
+    "Icon @ Changi",
+    "shopping_mall",
+    "228 Changi Rd, Singapore"
+   ],
+   [
+    "El Bayan Institute",
+    "shopping_mall",
+    "Changi Rd, Icon@Changi 228, Singapore"
+   ],
+   [
+    "Eunos Village Residents' Network",
+    "community_center",
+    "38A Eunos Rd 2, Singapore"
+   ],
+   [
+    "Lorong Sarina Interim Park",
+    "park",
+    "Jln Yasin, Singapore"
+   ],
+   [
+    "Kembangan-Chai Chee Community Hub",
+    "community_center",
+    "11 Jln Ubi, Singapore"
+   ]
+  ],
+  "ubi": [
+   [
+    "Ubi",
+    "subway_station",
+    "Singapore"
+   ],
+   [
+    "WagTheDog",
+    "food_court",
+    "1 Ubi Ave 1, Block 302, Singapore"
+   ],
+   [
+    "JRS Food Place (Aircon)",
+    "food_court",
+    "320 Ubi Rd 3, Level 5 ComfortDelGro Automotive Hub, Singapore"
+   ],
+   [
+    "Mala Sensation",
+    "food_court",
+    "304 Ubi Ave 1, Block 304, Singapore"
+   ],
+   [
+    "communityze",
+    "community_center",
+    "71 Ubi Cres, #01-08 Excalibur Centre, Singapore"
+   ],
+   [
+    "Makchic Kitchen",
+    "food_court",
+    "Ubi Ave 1, Singapore"
+   ],
+   [
+    "Ah Lam Yong Tau Foo",
+    "restaurant",
+    "50 Ubi Ave 3, Frontier Building, Singapore"
+   ],
+   [
+    "Koufu",
+    "food_court",
+    "1 Kaki Bukit Rd 1, #01-18 UB One, Singapore"
+   ],
+   [
+    "666 Cai Fan (Kaki Bukit)",
+    "food_court",
+    "Enterprise one, 1 Kaki Bukit Rd 1, #415934 Koufu, Singapore"
+   ],
+   [
+    "V-Shop Paradise",
+    "shopping_mall",
+    "51 Ubi Ave 1, #03/04 -18, Singapore"
+   ],
+   [
+    "Great Sox",
+    "shopping_mall",
+    "10 Ubi Cres, #02-28, Singapore"
+   ],
+   [
+    "Bamayuan",
+    "shopping_mall",
+    "Ubi Ave 3, Singapore"
+   ]
+  ],
+  "bedok": [
+   [
+    "Bedok",
+    "subway_station",
+    "315 New Upper Changi Rd, Bedok MRT Station, Singapore"
+   ],
+   [
+    "Bedok Mall",
+    "shopping_mall",
+    "311 New Upper Changi Rd, Singapore"
+   ],
+   [
+    "Bedok Interchange Hawker Centre",
+    "food_court",
+    "208B New Upper Changi Rd, #01-26 Bedok Interchange, Singapore"
+   ],
+   [
+    "Encik Tan",
+    "halal_restaurant",
+    "Bedok Mall, 311 New Upper Changi Road #B1-41/42, Singapore"
+   ],
+   [
+    "Bedok Town Square",
+    "shopping_mall",
+    "208C New Upper Changi Rd, Singapore"
+   ],
+   [
+    "Chef Wei HK Cheong Fun Bedok",
+    "restaurant",
+    "209 New Upper Changi Rd, FoodHub #01-633, Singapore"
+   ],
+   [
+    "TASTY KEBABS Turkish and Delights",
+    "food_court",
+    "#01-66 MRT , Hawker Center, Singapore"
+   ],
+   [
+    "Djitsun Mall Bedok",
+    "shopping_mall",
+    "445 Bedok North Street 1, Singapore"
+   ],
+   [
+    "Xiong Kee Famous Carrot Cake (Bedok)",
+    "food_court",
+    "205 Bedok North Street 1, #01-357, Singapore"
+   ],
+   [
+    "Al-Ghaniyy Dine, Bedok 204(Indian Muslim Food)",
+    "food_court",
+    "204 Bedok North Street 1, Singapore"
+   ],
+   [
+    "Garden Hill Park",
+    "park",
+    "420 Bedok North Street 1, Singapore"
+   ],
+   [
+    "Bedok Library",
+    "library",
+    "11 Bedok North Street 1, #02-03 & #03-04 Heartbeat@Bedok, Bedok Sports & Fitness Center, Singapore"
+   ]
+  ],
+  "tampines": [
+   [
+    "Wellness Village",
+    "shopping_mall",
+    "15 Tampines Central 1, Singapore"
+   ],
+   [
+    "Tampines Mall",
+    "shopping_mall",
+    "Tampines Central 1, Singapore"
+   ],
+   [
+    "猛龙泡饭",
+    "food_court",
+    "8 Tampines Central 1, #01-18, Singapore"
+   ],
+   [
+    "Koufu @ Eastlink Mall",
+    "food_court",
+    "8 Tampines Central 1, #01-18, Singapore"
+   ],
+   [
+    "Koufu Tampines Interchange",
+    "food_court",
+    "9 Tampines Central 1, #01-08, Singapore"
+   ],
+   [
+    "Eastlink Mall",
+    "shopping_mall",
+    "8 Tampines Central 1, Singapore"
+   ],
+   [
+    "WARONG PAK SAPARI MEE REBUS. MEE SOTO",
+    "food_court",
+    "Warong Pak Sapari Century Square, #03-19 The Food Market, Singapore"
+   ],
+   [
+    "Century Square",
+    "shopping_mall",
+    "2 Tampines Central 5, Singapore"
+   ],
+   [
+    "A Po Hokkien Mee (Century Square)",
+    "food_court",
+    "Century Square, 2 Tampines Central 5, Singapore"
+   ],
+   [
+    "The Food Market by Food Junction",
+    "food_court",
+    "2 Tampines Central 5, #03-19 Century Square, Singapore"
+   ],
+   [
+    "Festive Mall",
+    "shopping_mall",
+    "1 Tampines Walk, Singapore"
+   ],
+   [
+    "Hill Street Hainanese Curry Rice",
+    "food_court",
+    "10 Tampines Central 1, #05-05/06/07 Tampines One, Singapore"
+   ]
+  ],
+  "paya-lebar-macpherson": [
+   [
+    "CHAR @ PLQ Kopitiam",
+    "food_court",
+    "10 Paya Lebar Rd, #04-11 R02 PLQ Mall, Singapore"
+   ],
+   [
+    "Pepper Kitchen - PLQ Mall",
+    "food_court",
+    "10 Paya Lebar Rd, #04-11 PLQ Mall, Singapore"
+   ],
+   [
+    "Kopitiam",
+    "food_court",
+    "10 Paya Lebar Rd, #04-11 PLQ Mall, Singapore"
+   ],
+   [
+    "EAT.",
+    "food_court",
+    "10 Paya Lebar Road, Paya Lebar Quarter, #B2-K2 PLQ Mall, Singapore"
+   ],
+   [
+    "粗粮渔粉 CU LIANG YU FEN (PLQ)",
+    "food_court",
+    "Paya Lebar Rd, #10-26, Singapore"
+   ],
+   [
+    "Hong Lim Curry Puff Paya Lebar Quarter Mall",
+    "food_court",
+    "10 Paya Lebar Rd, #04-11 PLQ Mall, Singapore"
+   ],
+   [
+    "Paya Lebar",
+    "subway_station",
+    "Paya Lebar Rd, 30 #15"
+   ],
+   [
+    "PLQ Mall",
+    "shopping_mall",
+    "10 Paya Lebar Rd, Singapore"
+   ],
+   [
+    "Cognitize AI",
+    "shopping_mall",
+    "60 Paya Lebar Rd, Paya Lebar Square, Singapore"
+   ],
+   [
+    "Hey! Pepper",
+    "food_court",
+    "60 Paya Lebar Rd, #B1-51 Paya Lebar Square, Singapore"
+   ],
+   [
+    "Azbe Craft",
+    "shopping_mall",
+    "60 Paya Lebar Rd, #07-54 Paya Lebar Square, Singapore"
+   ]
+  ],
+  "geylang-aljunied": [
+   [
+    "Aljunied",
+    "subway_station",
+    "Singapore"
+   ],
+   [
+    "Food Loft®",
+    "food_court",
+    "No. 56/58 Lor 25A Geylang, Singapore"
+   ],
+   [
+    "Stall.sg",
+    "restaurant",
+    "Singapore"
+   ],
+   [
+    "Access Church",
+    "community_center",
+    "37 Lor 23 Geylang, #02-03, Singapore"
+   ],
+   [
+    "People's Action Party",
+    "community_center",
+    "52 Sims Pl, Block 52, Singapore"
+   ],
+   [
+    "Geylang East Library",
+    "library",
+    "50 Geylang East Ave 1, Singapore"
+   ],
+   [
+    "FellasCube",
+    "coffee_shop",
+    "440 Geylang Rd, Singapore"
+   ],
+   [
+    "The Buddhist Library Geylang",
+    "library",
+    "2 Lor 24A Geylang, Singapore"
+   ],
+   [
+    "一品珍猪 (酸鲜回味) Yi Pin Zhen Zhu (433 Geylang Road)",
+    "food_court",
+    "433 Geylang Rd, Stall 5, Singapore"
+   ],
+   [
+    "Wendy-09",
+    "food_court",
+    "433 Geylang Rd, Singapore"
+   ],
+   [
+    "Sim avenue",
+    "park",
+    "Sims Ave, Singapore"
+   ],
+   [
+    "Graceview Paar Trading",
+    "shopping_mall",
+    "49 Sims Pl, Singapore"
+   ]
+  ],
+  "hougang-kovan": [
+   [
+    "Hougang",
+    "subway_station",
+    "Singapore"
+   ],
+   [
+    "Yasmine médié",
+    "park",
+    "Hougang MRT Station, Singapore"
+   ],
+   [
+    "NTWU Food Court",
+    "food_court",
+    "840 Hougang Central, Bus Interchange, Singapore"
+   ],
+   [
+    "Hougang Central Mall",
+    "shopping_mall",
+    "Hougang Central, Singapore"
+   ],
+   [
+    "Tai Wah Pork Noodles (Hougang Mall)",
+    "food_court",
+    "90 Hougang Ave 10, #04-11 HOUGANG MALL (FOODIES GARDEN, Singapore"
+   ],
+   [
+    "牛车水烧腊",
+    "food_court",
+    "90 Hougang Ave 10, #04-11 Hougang Mall, Singapore"
+   ],
+   [
+    "Hougang Mall",
+    "shopping_mall",
+    "90 Hougang Ave 10, #01 - 10 / 11, Singapore"
+   ],
+   [
+    "Kang Kar Mall",
+    "shopping_mall",
+    "100 Hougang Ave 10, Singapore"
+   ],
+   [
+    "Sampans@Hougang",
+    "park",
+    "811 Hougang Central, Singapore"
+   ],
+   [
+    "Cheng San Library",
+    "library",
+    "90 Hougang Avenue 10, #03-11 Hougang Mall, Singapore"
+   ],
+   [
+    "Xiaomi Store Hougang Mall",
+    "shopping_mall",
+    "90 Hougang Ave 10, #01-08, Singapore"
+   ],
+   [
+    "Tasty Wok Hougang Mall",
+    "food_court",
+    "90 Hougang Ave 10, #04-11 Hougang Mall, Singapore"
+   ]
+  ],
+  "marine-parade-katong": [
+   [
+    "Roxy Square",
+    "shopping_mall",
+    "50 E Coast Rd, Roxy Square, Singapore"
+   ],
+   [
+    "Marine Parade",
+    "subway_station",
+    "Singapore"
+   ],
+   [
+    "Nam Kee Teow Yong Tau Foo",
+    "food_court",
+    "84 Marine Parade Central, Singapore"
+   ],
+   [
+    "Joo Chiat Jetty park",
+    "park",
+    "60 Marine Parade Rd, Singapore"
+   ],
+   [
+    "Bash and Fest",
+    "shopping_mall",
+    "50 E Coast Rd, #02-70 Roxy Square, Singapore"
+   ],
+   [
+    "Fong Yong Tau Foo - Parkway Parade",
+    "food_court",
+    "80 Marine Parade Rd, B1 -85 to 87, B1 -112 to 146 Parkway Parade, Singapore"
+   ],
+   [
+    "Parkway Parade",
+    "shopping_mall",
+    "80 Marine Parade Rd, Singapore"
+   ],
+   [
+    "imall",
+    "shopping_mall",
+    "5 Marine Parade Central, IMALL, Singapore"
+   ],
+   [
+    "Qian Wei 千味",
+    "food_court",
+    "84 Marine Parade Central, #01-04, Singapore"
+   ],
+   [
+    "Chef Sham fish maw pig stomach chicken soup",
+    "food_court",
+    "B1-85 to 87 and #B1-112 to 146, Parkway Parade, 80 Marine Parade Rd, Singapore"
+   ],
+   [
+    "Confirm+Chop! Western Grill & Bar",
+    "bar_and_grill",
+    "80 Marine Parade Rd, B1-85 to 87 B1-112 to 146 Parkway Parade, Singapore"
+   ],
+   [
+    "Kopitiam Food Hall @ Parkway Parade",
+    "food_court",
+    "80 Marine Parade Rd, B1-85 to 87, B1-112 to 146 Parkway Parade, Singapore"
+   ]
+  ]
+ }
+}

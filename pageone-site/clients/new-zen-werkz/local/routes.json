@@ -1,0 +1,9 @@
+{"source":"OpenStreetMap OSRM router.project-osrm.org, fetched 2026-11-06, free-flow driving",
+"eunos-kaki-bukit":{"from":"Eunos MRT Station (EW7), Eunos Crescent","m":2325,"s":236,"roads":["Eunos Crescent","Jalan Eunos","Eunos Link","Kaki Bukit Avenue 1","Kaki Bukit Road 1"]},
+"ubi":{"from":"Ubi Avenue 2","m":898,"s":98,"roads":["Ubi Avenue 2","Kaki Bukit Avenue 1","Kaki Bukit Road 1"]},
+"bedok":{"from":"New Upper Changi Road, Bedok","m":5041,"s":426,"roads":["New Upper Changi Road","Bedok North Avenue 1","Bedok North Road","Pan-Island Expressway (PIE)","Jalan Eunos","Eunos Link","Kaki Bukit Avenue 1","Kaki Bukit Road 1"]},
+"tampines":{"from":"Tampines MRT Station, Tampines Central 1","m":6477,"s":521,"roads":["Tampines Central 1","Tampines Central 2","Tampines Avenue 5","Tampines Avenue 10","Bartley Road East","Kaki Bukit Avenue 4","Kaki Bukit Road 3","Kaki Bukit Avenue 2","Kaki Bukit Road 1"]},
+"paya-lebar-macpherson":{"from":"Paya Lebar MRT Station, Paya Lebar Road","m":3045,"s":285,"roads":["Paya Lebar Road","Ubi Avenue 2","Kaki Bukit Avenue 1","Kaki Bukit Road 1"]},
+"geylang-aljunied":{"from":"Aljunied Road, near Sims Avenue","m":4358,"s":446,"roads":["Aljunied Road","Sims Avenue","Geylang East Avenue 1","Geylang East Central","Paya Lebar Road","Ubi Avenue 2","Kaki Bukit Avenue 1","Kaki Bukit Road 1"]},
+"hougang-kovan":{"from":"Hougang Central","m":5411,"s":510,"roads":["Hougang Central","Hougang Avenue 4","Upper Serangoon Road","Hougang Avenue 3","Eunos Link","Kaki Bukit Avenue 2","Kaki Bukit Road 1"]},
+"marine-parade-katong":{"from":"Marine Parade Road, near Marine Parade MRT","m":4275,"s":386,"roads":["Marine Parade Road","Still Road South","Jalan Eunos","Eunos Link","Kaki Bukit Avenue 1","Kaki Bukit Road 1"]}}

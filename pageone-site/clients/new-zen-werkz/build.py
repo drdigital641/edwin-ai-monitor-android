@@ -154,9 +154,9 @@ INTRO = ('<script>try{if(!sessionStorage.getItem("nzw-intro")&&!matchMedia("(pre
          'setTimeout(function(){h.classList.remove("intro")},3500)}}catch(e){}</script>\n')
 
 
-def page(path, title, desc, h1, body, crumbs=None, lede='', schema=None, hero=True, cta=True, photo=None, kind='WebPage'):
+def page(path, title, desc, h1, body, crumbs=None, lede='', schema=None, hero=True, cta=True, photo=None, kind='WebPage', top='', date=None):
     PAGES[path] = dict(title=title, desc=desc, h1=h1, body=body, crumbs=crumbs, lede=lede, schema=schema or [],
-                       hero=hero, cta=cta, photo=photo, kind=kind)
+                       hero=hero, cta=cta, photo=photo, kind=kind, top=top, date=date)
 
 
 def faq_html(items):
@@ -411,6 +411,26 @@ def service_body(s):
 # Articles (general, verifiable car-care knowledge; no client claims beyond the facts above)
 # ----------------------------------------------------------------------------------------------
 ARTICLES = [
+    dict(slug='car-aircon-not-cold-singapore', photo='mercedes-hummer', services=['aircon-repair'], date='2026-11-08',
+         h1='Car aircon not cold in Singapore? Common causes and what a workshop checks',
+         title='Car Aircon Not Cold in Singapore: Causes & Checks | New Zen Werkz',
+         desc='Car aircon blowing warm or only cool? The common causes, from a gas leak to a dead fan or a blocked condenser, what you can check yourself, and what a workshop tests.',
+         answer='When car aircon is not cold, the usual causes are a refrigerant leak, a compressor or clutch that is not engaging, a cooling fan that is not running, or a blocked condenser. Weak airflow is often a clogged cabin filter. A pressure test shows which one it is, so the fix is not just a gas top-up.',
+         body=[
+             ('Notice when it is not cold', 'The pattern tells a mechanic a lot. Cold while driving but warm at traffic lights often points to a cooling fan or a blocked condenser. Cold for a while and then warm can be a system icing up or a compressor that keeps cutting out. Never cold at all usually means very little refrigerant or a compressor that is not engaging. Weak air from the vents, even on the highest fan speed, is a different problem: the air is not getting through.'),
+             ('A refrigerant leak', 'Car aircon is a sealed system. Refrigerant does not get used up, so if the level is low, it has leaked out somewhere: a hose, a joint, the condenser at the front of the car, or the evaporator behind the dashboard. Topping up the gas without finding the leak only buys time, and the aircon will go warm again.'),
+             ('The compressor or its clutch', 'The compressor is the pump that moves refrigerant around the system. On many cars you can hear a click under the bonnet when the aircon is switched on, as the compressor clutch engages. No click, a grinding or rattling noise, or a compressor that keeps switching on and off can all mean a compressor, clutch or control problem.'),
+             ('Cooling fans and the condenser', 'The condenser sits in front of the radiator and gets rid of the heat taken out of the cabin. It needs air flowing through it. At low speed and at idle that air comes from the electric cooling fan. A fan that is not running, or a condenser clogged with dirt and leaves, makes the aircon weak in traffic, which is exactly when you notice it most in Singapore.'),
+             ('Weak airflow and smells', 'If the air from the vents is cold but there is not much of it, the cabin filter may be clogged, or the blower fan may be failing. A musty smell usually means a dirty filter or mould on the evaporator. These are often simpler fixes than a leak or a compressor.'),
+             ('What you can check yourself', 'Make sure the temperature is set to cold, recirculation is on when it is very hot outside, and the fan works on every speed. With the engine running and the aircon on, look at the front of the car to see whether a cooling fan is spinning. Note any noises or smells. Don\'t open the aircon system or add refrigerant cans yourself: overfilling or using the wrong gas can damage the system.'),
+             ('What the workshop checks', 'A workshop checks the system pressures and refrigerant level, looks for leaks at the hoses, joints, condenser and evaporator, and tests the compressor, its clutch or control valve, and the cooling fans. The cabin filter and airflow are checked too. Once the cause is found, you can be told what needs doing before any work starts.'),
+         ],
+         faqs=[
+             ('Why is my car aircon cold when driving but warm at traffic lights?', 'This usually means not enough air is passing through the condenser when the car is stopped. A cooling fan that is not running or a dirty, blocked condenser are the common causes.'),
+             ('Will a gas top-up fix aircon that is not cold?', 'Only for a while if the gas level is low, because a low level means there is a leak. The leak should be found and repaired so the aircon stays cold.'),
+             ('Why is the air from my vents cold but weak?', 'Weak airflow is often a clogged cabin filter or a failing blower fan, not a problem with the cooling part of the system.'),
+             ('Is it safe to keep driving with aircon that is not cold?', 'The car is usually safe to drive, but a noisy compressor should be checked soon, and a cooling fan that is not running can also affect engine temperature. Watch the temperature gauge.'),
+         ]),
     dict(slug='signs-your-automatic-gearbox-is-failing', photo='engine-gearbox', services=['gearbox-repair', 'continental-car-repair'],
          h1='7 signs your automatic gearbox needs attention',
          title='7 Signs Your Automatic Gearbox Is Failing (Singapore Guide) | New Zen Werkz',
@@ -500,8 +520,8 @@ def article_body(a):
 <article class="prose">
 <figure class="lead-fig">{img(a['photo'], eager=True)}</figure>
 <p class="answer"><strong>Short answer:</strong> {E(a['answer'])}</p>
-{secs}
-<p class="byline">By the New Zen Werkz workshop team, Eunos Technolink, Singapore. Updated {UPDATED}. General guidance only: your owner's manual and a proper inspection come first.</p>
+{secs}{('<h2>Common questions</h2>' + faq_html(a['faqs'])) if a.get('faqs') else ''}
+<p class="byline">By the New Zen Werkz workshop team, Eunos Technolink, Singapore. Updated {art_mod(a)}. General guidance only: your owner's manual and a proper inspection come first.</p>
 </article>
 <aside class="side"><div class="card sticky"><h2>Need it checked?</h2><p>WhatsApp or call the workshop and tell us what you have noticed.</p>{wa_btn()}{call_btn(cls='btn btn-ghost')}{map_btn()}</div></aside>
 </div></section>
@@ -509,8 +529,17 @@ def article_body(a):
 <h2 style="margin-top:32px">More articles</h2><ul class="rel">{more}</ul></div></section>'''
 
 
+# Each article keeps its own dates (Edwin 7 Nov 2026: no fake date bumps). Launch articles have no 'date' and use UPDATED.
+def art_date(a):
+    return a.get('date', UPDATED)
+
+
+def art_mod(a):
+    return a.get('updated', art_date(a))
+
+
 def article_schema(a, path):
-    return {'@type': 'Article', 'headline': a['h1'], 'description': a['desc'], 'datePublished': UPDATED, 'dateModified': UPDATED,
+    return {'@type': 'Article', 'headline': a['h1'], 'description': a['desc'], 'datePublished': art_date(a), 'dateModified': art_mod(a),
             'image': IMG + a['photo'] + '.webp', 'mainEntityOfPage': SITE + path,
             'author': {'@type': 'Organization', 'name': LEGAL, '@id': SITE + '#business'}, 'publisher': {'@id': SITE + '#business'},
             'about': [SVC[s]['h1'] for s in a['services']]}
@@ -541,6 +570,7 @@ def home_body():
 <p class="eyebrow">Car workshop · Eunos Technolink, Kaki Bukit</p>
 <h1>Car repair and servicing in Kaki Bukit, from routine oil changes to engine and gearbox rebuilds.</h1>
 <p class="lede">New Zen Werkz is an independent car workshop for continental, Japanese and American cars. We diagnose properly, explain what we find, and do the work in our own workshop.</p>
+{addr_line()}
 <div class="cta-row">{wa_btn()}{call_btn()}{map_btn('Directions', 'btn btn-light')}</div>
 </div></section>
 <div class="facts"><div class="wrap">
@@ -571,7 +601,8 @@ def home_body():
 <section class="sec" aria-labelledby="h-area"><div class="wrap">
 <div class="sec-head"><p class="eyebrow">Near you</p><h2 id="h-area">Your car workshop in the East, within 8 km of Kaki Bukit</h2>
 <p>Drivers come to us from {', '.join(AREA_NAMES[:12])} and more.</p></div>
-<p><a class="btn btn-ghost" href="areas/">See all areas we serve</a></p>
+{local_links_html()}
+<p style="margin-top:16px"><a class="btn btn-ghost" href="areas/">See all areas we serve</a></p>
 </div></section>
 <section class="sec" aria-labelledby="h-art"><div class="wrap">
 <div class="sec-head"><p class="eyebrow">Car care articles</p><h2 id="h-art">Know before you drive in</h2></div>
@@ -639,6 +670,9 @@ def areas_body():
     return f'''<section class="sec"><div class="wrap split">
 <div class="prose">
 <p>New Zen Werkz is at Blk 3 Kaki Bukit Road 1, #03-04 Eunos Technolink, Singapore 415935. All the areas below are within about 8 km of the workshop.</p>
+<h2>Local guides: route, distance and time</h2>
+<p>Real driving routes to the workshop from the main estates around us.</p>
+{local_links_html()}
 {groups}
 <h2>Before you drive over</h2>
 <p>WhatsApp {WA_SHOW} or call {TEL_SHOW} with your car model and what you have noticed, so we can tell you what to expect. The workshop is on the third floor of Eunos Technolink, unit #03-04.</p>
@@ -648,6 +682,71 @@ def areas_body():
 </div>
 <div class="mapbox"><iframe title="Map to New Zen Werkz at Eunos Technolink" src="{MAP_EMBED}" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe></div>
 </div></section>'''
+
+
+from local_pages import LOCAL  # noqa: E402  (8 km local area pages, 6 Nov 2026)
+SVC = {s['slug']: s for s in SERVICES}
+
+
+def ref_btn(btn, ref):
+    """Same button, with a data-ref so the Controller tap log shows which page and position was tapped."""
+    return btn.replace('<a ', '<a data-ref="%s" ' % ref, 1)
+
+
+def local_cta(l, pos):
+    return '<div class="cta-row">%s%s</div>' % (ref_btn(call_btn(), 'area-%s-%s-call' % (l['slug'], pos)),
+                                               ref_btn(wa_btn('WhatsApp %s' % WA_SHOW), 'area-%s-%s-whatsapp' % (l['slug'], pos)))
+
+
+def addr_line(extra=''):
+    return ('<p class="addr-line">%s<span><a href="%s" target="_blank" rel="noopener">Blk 3 Kaki Bukit Road 1, #03-04 Eunos Technolink, Singapore %s</a>%s</span></p>'
+            % (PIN_SVG, MAP, POSTAL, extra))
+
+
+def local_top(l):
+    return addr_line('<span>%s km from %s</span>' % (l['km'], E(l['start']))) + local_cta(l, 'top')
+
+
+def local_dir_url(l):
+    from urllib.parse import quote
+    return 'https://www.google.com/maps/dir/?api=1&origin=%s&destination=%s' % (quote(l['start'] + ', Singapore'), MAPQ)
+
+
+def local_body(l):
+    steps = ''.join('<li>%s</li>' % E(x) for x in l['steps'])
+    marks = ''.join('<li>%s</li>' % E(x) for x in l['landmarks'])
+    focus = ''.join('<a class="mini" href="services/%s/">%s<span>%s</span></a>' % (k, img(SVC[k]['photo'], sm=True), E(SVC[k]['short'])) for k in l['focus'])
+    rest = ', '.join('<a href="services/%s/">%s</a>' % (s['slug'], E(s['short'].lower() if i else s['short'])) for i, s in enumerate(x for x in SERVICES if x['slug'] not in l['focus']))
+    others = ''.join('<li><a href="areas/%s/">%s</a></li>' % (o['slug'], E(o['name'])) for o in LOCAL if o['slug'] != l['slug'])
+    return f'''<section class="sec"><div class="wrap split">
+<article class="prose">
+{''.join('<p>%s</p>' % E(x) for x in l['intro'])}
+<h2>Getting here from {E(l['name'])}</h2>
+<div class="route">
+<div class="route-stats"><div><b>{l['km']} km</b><span>by road</span></div><div><b>about {l['mins']} min</b><span>outside peak hours</span></div></div>
+<p class="small">From {E(l['start'])}. Route and time from OpenStreetMap routing (free-flowing traffic); peak-hour traffic takes longer.</p>
+<ol class="steps">{steps}</ol>
+<p><a class="btn btn-ghost" href="{E(local_dir_url(l))}" target="_blank" rel="noopener">{PIN_SVG}<span>Open this route in Google Maps</span></a></p>
+</div>
+<h2>Landmarks near the start of your drive</h2>
+<ul>{marks}</ul>
+<h2>Services for {E(l['name'])} drivers</h2>
+<p>{E(l['focus_note'])}</p>
+<div class="minis">{focus}</div>
+<p>We also handle {rest}.</p>
+<h2>Questions from {E(l['name'])} drivers</h2>
+{faq_html(l['faqs'])}
+<h2>Other areas near the workshop</h2>
+<ul class="area-links">{others}</ul>
+</article>
+<aside class="side"><div class="card sticky"><h2>Visit or call</h2><p>{'<br>'.join(ADDR)}</p>{hours_html()}{ref_btn(wa_btn(), 'area-%s-side-whatsapp' % l['slug'])}{ref_btn(call_btn(cls='btn btn-ghost'), 'area-%s-side-call' % l['slug'])}{map_btn()}</div></aside>
+</div></section>
+<section class="sec"><div class="wrap"><div class="band"><div><h2>Driving over from {E(l['name'])}?</h2>
+<p>Call or WhatsApp first and tell us your car model and what you have noticed.</p></div>{local_cta(l, 'end')}</div></div></section>'''
+
+
+def local_links_html(cls='chips'):
+    return '<ul class="%s">%s</ul>' % (cls, ''.join('<li><a href="areas/%s/">%s</a></li>' % (l['slug'], E(l['name'])) for l in LOCAL))
 
 
 def business_schema():
@@ -682,6 +781,13 @@ page('areas/', 'Car Workshop Near Bedok, Tampines, Eunos & Ubi | New Zen Werkz',
      'Car workshop within 8 km of Kaki Bukit for drivers in Eunos, Ubi, Bedok, Tampines, Paya Lebar, Geylang, Hougang and Pasir Ris. WhatsApp +65 8678 1878.',
      'Car workshop near you in the East', areas_body(), crumbs=[('areas/', 'Areas we serve')], cta=False,
      lede='Servicing and repairs for drivers within about 8 km of Kaki Bukit.')
+for l in LOCAL:
+    path = 'areas/%s/' % l['slug']
+    page(path, l['title'], l['desc'], 'Car workshop near %s' % l['name'], local_body(l), crumbs=[('areas/', 'Areas we serve'), (path, l['name'])],
+         lede=l['lede'], cta=False, top=local_top(l),
+         schema=[{'@type': 'Service', 'name': 'Car repair and servicing near %s' % l['name'], 'serviceType': 'Car repair and servicing',
+                  'url': SITE + path, 'provider': provider(),
+                  'areaServed': [{'@type': 'Place', 'name': x + ', Singapore'} for x in l['places']]}, faq_schema(l['faqs'])])
 page('articles/', 'Car Care Articles | New Zen Werkz, Singapore',
      'Plain-English car care guides from the New Zen Werkz workshop: gearbox warning signs, check engine lights, servicing intervals, brakes, engine overhauls and batteries.',
      'Car care articles', articles_index(), crumbs=[('articles/', 'Articles')],
@@ -689,7 +795,7 @@ page('articles/', 'Car Care Articles | New Zen Werkz, Singapore',
 for a in ARTICLES:
     path = 'articles/%s/' % a['slug']
     page(path, a['title'], a['desc'], a['h1'], article_body(a), crumbs=[('articles/', 'Articles'), (path, a['h1'])],
-         photo=a['photo'], schema=[article_schema(a, path)])
+         photo=a['photo'], schema=[article_schema(a, path)] + ([faq_schema(a['faqs'])] if a.get('faqs') else []), date=art_mod(a))
 page('about/', 'About New Zen Werkz | Kaki Bukit Car Workshop',
      'New Zen Werkz Pte Ltd is an independent car workshop at Eunos Technolink, Kaki Bukit, servicing and rebuilding continental, Japanese and American cars.',
      'About New Zen Werkz', about_body(), crumbs=[('about/', 'About')],
@@ -697,12 +803,23 @@ page('about/', 'About New Zen Werkz | Kaki Bukit Car Workshop',
 page('contact/', 'Contact New Zen Werkz | Call 6742 8117, Eunos Technolink',
      'Call New Zen Werkz on 6742 8117 or visit the workshop at Blk 3 Kaki Bukit Road 1, #03-04 Eunos Technolink, Singapore 415935.',
      'Contact the workshop', contact_body(), crumbs=[('contact/', 'Contact')], cta=False,
+     top=addr_line() + '<div class="cta-row">%s%s</div>' % (call_btn(), wa_btn('WhatsApp %s' % WA_SHOW)),
      lede='WhatsApp +65 8678 1878, call 6742 8117 or visit us at Eunos Technolink, Kaki Bukit.')
 
 
 # ----------------------------------------------------------------------------------------------
 # Render
 # ----------------------------------------------------------------------------------------------
+def page_date(path):
+    # Real last change per page: an article's own date; the articles hub and home move only when a newer article is added.
+    p = PAGES.get(path) or {}
+    if p.get('date'):
+        return p['date']
+    if path in ('', 'articles/'):
+        return max([UPDATED] + [art_mod(a) for a in ARTICLES])
+    return UPDATED
+
+
 def render(path, p):
     pre = '../' * path.count('/')
     url = SITE + path
@@ -727,8 +844,8 @@ def render(path, p):
     ld = json.dumps({'@context': 'https://schema.org', '@graph': graph}, ensure_ascii=False).replace('</', '<\\/')
     head_hero = ''
     if p['hero']:
-        head_hero = '<section class="phero"><div class="wrap">%s<h1>%s</h1>%s</div></section>' % (
-            crumbs_html, E(p['h1']), '<p class="lede">%s</p>' % E(p['lede']) if p['lede'] else '')
+        head_hero = '<section class="phero"><div class="wrap">%s<h1>%s</h1>%s%s</div></section>' % (
+            crumbs_html, E(p['h1']), '<p class="lede">%s</p>' % E(p['lede']) if p['lede'] else '', fix(p.get('top', '')))
     band = ''
     if p['cta']:
         band = ('<section class="sec"><div class="wrap"><div class="band"><div><h2>Car not feeling right?</h2>'
@@ -765,8 +882,9 @@ def render(path, p):
 <link rel="icon" href="{pre}favicon.ico" sizes="48x48">
 <link rel="apple-touch-icon" href="{pre}apple-touch-icon.png">
 <link rel="manifest" href="{pre}site.webmanifest">
-<link rel="stylesheet" href="{pre}nzw.css?v=9">
+<link rel="stylesheet" href="{pre}nzw.css?v=10">
 {INTRO if path == '' and not p.get('is404') else ''}<script src="{pre}nzw.js?v=7" defer></script>
+<script src="{pre}p1cta.js?v=1" defer></script>
 <script type="application/ld+json">{ld}</script>
 </head>
 <body>
@@ -788,6 +906,7 @@ def render(path, p):
 <div><a class="brand" href="{pre or './'}">{MARK}<span><span class="brand-name">New Zen Werkz</span><span class="brand-sub">Car repair · Kaki Bukit</span></span></a>
 <p>Independent car workshop for continental, Japanese and American cars.</p></div>
 <div><h3>Services</h3><ul>{''.join('<li><a href="%sservices/%s/">%s</a></li>' % (pre, s['slug'], E(s['short'])) for s in SERVICES)}</ul></div>
+<div><h3>Areas</h3><ul>{''.join('<li><a href="%sareas/%s/">%s</a></li>' % (pre, l['slug'], E(l['name'])) for l in LOCAL)}<li><a href="{pre}areas/">All areas we serve</a></li></ul></div>
 <div><h3>Workshop</h3><ul>
 <li>{'<br>'.join(ADDR)}</li>
 <li><a href="{E(wa_url())}" target="_blank" rel="noopener">WhatsApp {WA_SHOW}</a></li>
@@ -849,7 +968,7 @@ def main():
     with open(os.path.join(OUT, 'sitemap.xml'), 'w') as f:
         f.write('<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n')
         for path in PAGES:
-            f.write('  <url><loc>%s%s</loc><lastmod>%s</lastmod></url>\n' % (SITE, path, UPDATED))
+            f.write('  <url><loc>%s%s</loc><lastmod>%s</lastmod></url>\n' % (SITE, path, page_date(path)))
         f.write('</urlset>\n')
     with open(os.path.join(OUT, 'llms.txt'), 'w') as f:
         f.write('# %s, car workshop in Singapore\n\n'
@@ -860,6 +979,11 @@ def main():
                 % (LEGAL, LEGAL, STREET, POSTAL, UEN, TEL_SHOW, WA_SHOW))
         for path, p in PAGES.items():
             f.write('- [%s](%s%s): %s\n' % (p['title'].split(' | ')[0], SITE, path, p['desc']))
+    # CTA tap tracking -> Page One Controller (tracker v3, /mnt/project-files/tracking/wa-tap-counter.js)
+    with open(os.path.join(HERE, '..', 'tracking', 'wa-tap-counter.js')) as src, open(os.path.join(OUT, 'p1cta.js'), 'w') as f:
+        js = src.read()
+        assert js.count("site:'SLUG'") == 1
+        f.write(js.replace("site:'SLUG'", "site:'%s'" % SLUG))
     with open(os.path.join(OUT, 'site.webmanifest'), 'w') as f:
         json.dump({'name': LEGAL, 'short_name': NAME, 'icons': [
             {'src': 'icon-192.png', 'sizes': '192x192', 'type': 'image/png'}, {'src': 'icon-512.png', 'sizes': '512x512', 'type': 'image/png'}],
