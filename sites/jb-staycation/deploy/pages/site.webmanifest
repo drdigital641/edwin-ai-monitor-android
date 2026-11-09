@@ -1,7 +1,7 @@
 {
- "name": "JB Airbnb",
- "short_name": "JB Airbnb",
- "start_url": "https://jbairbnb.com/",
+ "name": "JB Staycations",
+ "short_name": "JB Staycations",
+ "start_url": "https://jbstaycations.com/",
  "display": "browser",
  "background_color": "#f7f8f9",
  "theme_color": "#0a1f38",

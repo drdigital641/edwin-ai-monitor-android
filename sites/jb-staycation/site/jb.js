@@ -1,4 +1,4 @@
-/* JB Airbnb UI: header, menu, reveal on scroll, carousels, lightbox. Content is fully visible and usable without JS. */
+/* JB Staycations UI: header, menu, reveal on scroll, carousels, lightbox. Content is fully visible and usable without JS. */
 (function(){
 var d=document,b=d.body,rm=window.matchMedia&&matchMedia('(prefers-reduced-motion: reduce)').matches;
 var hdr=d.querySelector('.hdr'),tog=d.querySelector('.mtog');
