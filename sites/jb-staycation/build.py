@@ -1738,7 +1738,7 @@ def route_map(rl=False):
 
 def article_card(a, sizes='(min-width:760px) 33vw, 100vw'):
     return ('<article class="acard rv"><span class="ph">%s</span><div class="cb"><span class="tag">Guide</span><h3><a href="{R}articles/%s/">%s</a></h3><p>%s</p>'
-            '<span class="go">Read the guide %s</span></div></article>' % (pimg(PAGE_IMG[a['slug']], sizes=sizes), a['slug'], e(a['title']), e(a['desc']), ico('arrow', 18)))
+            '<span class="go">Read the guide %s</span></div></article>' % (pimg(PAGE_IMG.get(a['slug']) or a['photo'], sizes=sizes), a['slug'], e(a['title']), e(a['desc']), ico('arrow', 18)))
 
 
 def home_body():
@@ -2070,15 +2070,27 @@ def articles_body():
             '<section class="rv"><h2>5. Questions Singaporeans ask</h2><p>Payment, cancellation, safety, parking, children and more: read <a href="{R}faq/">all 15 questions and answers</a>.</p></section>'
             '</div><h2 class="hub-h">Guides</h2><div class="arts">%s</div><p class="after-faq">%s</p></div>'
             % (e(HUB_ANSWER), P['slug'], L['slug'], tiers_full('prima'), tiers_full('landak'), PP_WEEKDAY['prima'], PP_WEEKDAY['landak'], PAY_SHORT, fx_note(), tips,
-               ''.join(article_card(a) for a in ARTICLES), wa_btn('Ask us on WhatsApp', wa_msg(), 'hub')))
+               ''.join(article_card(a) for a in sorted(ARTICLES, key=lambda x: x.get('date', ''), reverse=True)), wa_btn('Ask us on WhatsApp', wa_msg(), 'hub')))
+
+
+def art_date(a):
+    return a.get('date') or TODAY
 
 
 def article_body(a):
     secs = ''.join('<section class="rv"><h2>%s</h2>%s</section>' % (e(h), ''.join('<p>%s</p>' % t for t in ps)) for h, ps in a['sections'])
     hh = HOUSES[a['house']]
-    return ('<div class="wrap body prose"><p class="byline">%sBy JB Staycations, %s</p><div class="answer">%s</div>%s'
-            '<section class="rv"><p>See the house: <a href="{R}stays/%s/">%s</a>.</p>%s</section></div>'
-            % (ico('cal', 18), TODAY, e(a['answer']), secs, hh['slug'], e(hh['full']), wa_btn('Ask about dates', wa_msg(a.get('wa')), 'article-' + a['slug'][:30])))
+    faq_html = ''
+    if a.get('faqs'):   # night-run articles: 3-5 (question, answer) pairs, shown on the page and marked up as FAQPage
+        faq_html, faq_ld = faq_block(a['faqs'])
+        PENDING.setdefault('articles/%s/' % a['slug'], []).append(faq_ld)
+        faq_html = '<section class="rv">%s</section>' % faq_html
+    more = ''
+    if a.get('date'):   # night-run articles always link the hub and the stays page
+        more = '<p>Compare both houses on the <a href="{R}stays/">stays page</a>, or read more in the <a href="{R}articles/">JB guide for Singaporeans</a>.</p>'
+    return ('<div class="wrap body prose"><p class="byline">%sBy JB Staycations, %s</p><div class="answer">%s</div>%s%s'
+            '<section class="rv"><p>See the house: <a href="{R}stays/%s/">%s</a>.</p>%s%s</section></div>'
+            % (ico('cal', 18), art_date(a), e(a['answer']), secs, faq_html, hh['slug'], e(hh['full']), more, wa_btn('Ask about dates', wa_msg(a.get('wa')), 'article-' + a['slug'][:30])))
 
 
 # ---------------------------------------------------------------- assemble
@@ -2116,10 +2128,10 @@ def build_pages():
          'JB guide for Singaporeans planning a short getaway', articles_body(), [('Home', ''), ('JB guide', 'articles/')], lede='Houses, the crossing, costs in SGD and first-time tips in one place.')
     for a in ARTICLES:
         path = 'articles/%s/' % a['slug']
-        ph = PAGE_IMG[a['slug']]
+        ph = PAGE_IMG.get(a['slug']) or a['photo']
         page(path, a.get('ttl') or a['title'], a['desc'], a['h1'], article_body(a),
              [('Home', ''), ('JB guide', 'articles/'), (a['title'], path)], photo=ph, article=True, og=ph,
-             ld=[{'@context': 'https://schema.org', '@type': 'Article', 'headline': a['title'], 'description': a['desc'], 'datePublished': TODAY, 'dateModified': TODAY,
+             ld=[{'@context': 'https://schema.org', '@type': 'Article', 'headline': a['title'], 'description': a['desc'], 'datePublished': art_date(a), 'dateModified': art_date(a),
                   'author': {'@type': 'Organization', 'name': NAME, 'url': BASE}, 'publisher': {'@type': 'Organization', 'name': NAME, 'logo': {'@type': 'ImageObject', 'url': BASE + 'icon-512.png'}},
                   'image': abs_img(ph), 'mainEntityOfPage': BASE + path}])
 
@@ -2187,7 +2199,8 @@ def main():
     make_icons()
     review_helper.write_review(OUT, NAME)   # Google Review Helper: noindex, never in sitemap/llms/IndexNow
     # sitemap
-    urls = ''.join('<url><loc>%s</loc><lastmod>%s</lastmod></url>' % (BASE + p, TODAY) for p in PAGES)
+    ADATE = {'articles/%s/' % a['slug']: art_date(a) for a in ARTICLES if a.get('date')}
+    urls = ''.join('<url><loc>%s</loc><lastmod>%s</lastmod></url>' % (BASE + p, ADATE.get(p, TODAY)) for p in PAGES)
     open(os.path.join(OUT, INDEXNOW_KEY + '.txt'), 'w').write(INDEXNOW_KEY)   # IndexNow key file at the site root
     open(os.path.join(OUT, 'sitemap.xml'), 'w').write('<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">%s</urlset>\n' % urls)
     open(os.path.join(OUT, 'robots.txt'), 'w').write(
