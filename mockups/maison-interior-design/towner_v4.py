@@ -106,10 +106,10 @@ WA_ICON = '<svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true"><p
 def _v4src(name, d=V4_DIR):
     return f"{BASE}images/new-launches/{d}/{name}.webp?v={V4_V}"
 
-def _v4img(name, alt, sizes, lazy=True, d=V4_DIR):
+def _v4img(name, alt, sizes, lazy=True, d=V4_DIR, w=1600):
     b = f"{BASE}images/new-launches/{d}/{name}"
-    return (f'<img src="{b}-1600.webp?v={V4_V}" srcset="{b}-900.webp?v={V4_V} 900w, {b}-1600.webp?v={V4_V} 1600w" sizes="{sizes}" '
-            f'width="1600" height="900" alt="{e(alt)}" decoding="async"' + (' loading="lazy"' if lazy else ' fetchpriority="high"') + '>')
+    return (f'<img src="{b}-{w}.webp?v={V4_V}" srcset="{b}-900.webp?v={V4_V} 900w, {b}-{w}.webp?v={V4_V} {w}w" sizes="{sizes}" '
+            f'width="{w}" height="{w * 9 // 16}" alt="{e(alt)}" decoding="async"' + (' loading="lazy"' if lazy else ' fetchpriority="high"') + '>')
 
 def _v4wa(label, msg, ref, theme, path):
     return (f'<a class="v4-wa" href="{wa(msg)}" data-cta="whatsapp" data-ref="{ref}" data-theme="{e(theme)}" '
@@ -122,19 +122,20 @@ def vpage_v4(slug):
     c, cfg, v = parse_copy(slug), VPAGES[slug], V4CFG[slug]
     path = f"new-launches/{slug}/"
     gk, gs = KINDS[cfg["kind"]]
-    h, d, ref, themes_l = v["hero"], v["dir"], v["ref"], v["themes"]
+    h, d, ref, themes_l, W = v["hero"], v["dir"], v["ref"], v["themes"], v.get("w", 1600)
     t0 = themes_l[0]
     hero = (f'<section class="v4h"><div class="wrap v4h-g"><div class="v4h-t"><p class="v4-eb">{e(h["eyebrow"])}</p><h1>{e(c["h1"])}</h1>'
             f'<p class="v4-intro">{e(h["intro"])}</p></div>'
-            f'<figure class="v4-fig v4h-f">{_v4img(t0["img"], t0["alt"], "(min-width:1100px) 720px, 100vw", lazy=False, d=d)}{_v4cap()}</figure>'
+            f'<figure class="v4-fig v4h-f">{_v4img(t0["img"], t0["alt"], "(min-width:1100px) 720px, 100vw", lazy=False, d=d, w=W)}{_v4cap()}</figure>'
             f'<div class="v4-hero-cta">{_v4wa(h["btn"], h["msg"], ref + "-hero", t0["theme"], path)}'
             f'<a class="link" href="{BASE}services/{gs}/">{e(GBY[gs]["short"])} guide</a></div></div></section>')
     cards = "".join(
-        f'<article class="v4-card" id="{t["key"]}"><figure class="v4-fig">{_v4img(t["img"], t["alt"], "(min-width:1240px) 580px, (min-width:900px) 46vw, 100vw", d=d)}{_v4cap()}</figure>'
+        f'<article class="v4-card" id="{t["key"]}"><figure class="v4-fig">{_v4img(t["img"], t["alt"], "(min-width:1240px) 580px, (min-width:900px) 46vw, 100vw", d=d, w=W)}{_v4cap()}</figure>'
         f'<p class="v4-th">{e(t["theme"])} · {e(t["room"])}</p><h3>{e(t["h3"])}</h3><p class="v4-cap">{e(t["cap"])}</p>'
         f'{_v4wa(t["btn"], t["msg"], ref + "-" + t["key"], t["theme"], path)}</article>' for t in themes_l)
     themes = (f'<section class="vsec"><div class="wrap"><h2 class="vh2">{e(v["themes_h2"])}</h2>'
               f'<p class="vsub">{e(v["themes_sub"])}</p>'
+              + (f'<p class="v4-src">{e(v["themes_note"])}</p>' if v.get("themes_note") else "") +
               f'<div class="v4-cards">{cards}</div></div></section>')
     plans = "".join(
         f'<figure class="v4-plan"><a class="v4-zoom" href="{_v4src(p["img"], d)}" target="_blank" rel="noopener" aria-label="Open the full-size {e(p["title"])} floor plan">'
@@ -143,6 +144,7 @@ def vpage_v4(slug):
     plan_sec = (f'<section class="vsec"><div class="wrap"><h2 class="vh2">{e(v["plans_h2"])}</h2>'
                 f'<p class="vsub">{e(v["plans_sub"])}</p>'
                 f'<div class="{v["plans_cls"]}">{plans}</div>'
+                + (f'<p class="v4-src">{e(v["plans_note"])}</p>' if v.get("plans_note") else "") +
                 f'<p class="v4-src">{v["plans_src"]}</p></div></section>')
     if v["facts"]:
         fh2, fitems, fnote = v["facts"]
@@ -156,24 +158,26 @@ def vpage_v4(slug):
     steps = "".join(f'<li><span class="sn">{i+1:02d}</span><h3>{e(t)}</h3><p>{e(x)}</p></li>' for i, (t, x) in enumerate(cfg["steps"]))
     faqs = "".join(f'<details class="qa"><summary><h3>{e(q)}</h3><span class="pm" aria-hidden="true"></span></summary><div class="vq">{_links(a)}</div></details>' for q, a in c["faq"])
     lower = (f'<section class="vsec"><div class="wrap"><h2 class="vh2">About these concepts and plans</h2><div class="v4-lead">{_links(c["lead"])}</div></div></section>'
-             f'<section class="vsec"><div class="wrap"><h2 class="vh2">Layout at a glance</h2><div class="vgls">{glance}</div></div></section>'
-             f'<section class="vsec"><div class="wrap"><h2 class="vh2">From keys to move-in</h2><ol class="vsteps">{steps}</ol></div></section>'
+             f'<section class="vsec"><div class="wrap"><h2 class="vh2">{e(v.get("glance_h2", "Layout at a glance"))}</h2><div class="vgls">{glance}</div>{f'<p class="v4-src">{e(v["glance_note"])}</p>' if v.get("glance_note") else ""}</div></section>'
+             + "".join(f'<section class="vsec"><div class="wrap"><h2 class="vh2">{e(xh)}</h2><div class="v4-lead"><p>{e(xt)}</p></div></div></section>' for xh, xt in v.get("extra", [])) +
+             f'<section class="vsec"><div class="wrap"><h2 class="vh2">{e(v.get("steps_h2", "From keys to move-in"))}</h2><ol class="vsteps">{steps}</ol></div></section>'
              f'<section class="vsec vfaq"><div class="wrap narrow"><h2 class="vh2">Details, caveats and sources</h2>{faqs}'
              f'<details class="qa"><summary><h3>Sources</h3><span class="pm" aria-hidden="true"></span></summary><div class="vq">{_links(c["sources"])}</div></details>'
              f'<p class="v4-src">More BTO and condo projects: <a href="{BASE}new-launches/">New launches</a>.</p>'
+             + (f'<p class="v4-lead">{e(v["end_note"])}</p>' if v.get("end_note") else "") +
              f'<div class="vh-cta end">{_v4wa("WhatsApp Maison", v["end_msg"], ref + "-end", "general", path)}</div></div></section>')
-    og = f"https://pageonesingapore.com{BASE}images/new-launches/{d}/{t0['img']}-1600.webp"
+    og = f"https://pageonesingapore.com{BASE}images/new-launches/{d}/{t0['img']}-{W}.webp"
     schema = {"@context": "https://schema.org", "@graph": [ORG, crumbs([("Home", ""), ("New launches", "new-launches/"), (c["h1"], path)]),
               {"@type": "Article", "headline": c["h1"], "description": c["desc"], "datePublished": "2026-11-07", "dateModified": "2026-11-08",
                "author": {"@id": DOMAIN + "/#business"}, "publisher": {"@id": DOMAIN + "/#business"}, "mainEntityOfPage": DOMAIN + "/" + path,
-               "image": [DOMAIN + f"/images/new-launches/{d}/{t['img']}-1600.webp" for t in themes_l],
+               "image": [DOMAIN + f"/images/new-launches/{d}/{t['img']}-{W}.webp" for t in themes_l],
                "citation": v["citation"]},
               {"@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": q, "acceptedAnswer": {"@type": "Answer", "text": _txt(a)}} for q, a in c["faq"]]}]}
     s = head(c["seo"], c["desc"], path, og, schema)
     s = s.replace('<meta name="twitter:card" content="summary_large_image">',
                   f'<meta name="twitter:card" content="summary_large_image"><meta name="twitter:title" content="{e(c["seo"])}">'
                   f'<meta name="twitter:description" content="{e(c["desc"])}"><meta name="twitter:image" content="{og}">'
-                  f'<meta property="og:image:width" content="1600"><meta property="og:image:height" content="900"><meta property="og:image:alt" content="{e(t0["alt"])}">')
+                  f'<meta property="og:image:width" content="{W}"><meta property="og:image:height" content="{W * 9 // 16}"><meta property="og:image:alt" content="{e(t0["alt"])}">')
     s = s.replace("</head>", f"<style>{V4_CSS}{v['css']}</style></head>")
     s += header("new-launches/")
     s += hero + themes + plan_sec + lower
