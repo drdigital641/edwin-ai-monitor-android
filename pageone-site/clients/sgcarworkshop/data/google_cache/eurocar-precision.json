@@ -1,0 +1,36 @@
+{
+ "businessStatus": "OPERATIONAL",
+ "primaryType": "car_repair",
+ "types": [
+  "auto_parts_store",
+  "car_repair",
+  "store",
+  "point_of_interest",
+  "service",
+  "establishment"
+ ],
+ "rating": 4.8,
+ "userRatingCount": 22,
+ "websiteUri": "https://www.eurocar.sg/?utm_source=google&utm_medium=wix_google_business_profile&utm_campaign=5618738325447115122",
+ "paymentOptions": {
+  "acceptsCreditCards": true,
+  "acceptsDebitCards": true,
+  "acceptsNfc": true
+ },
+ "parkingOptions": null,
+ "editorialSummary": null,
+ "weekdayDescriptions": [
+  "Monday: 10:00 AM – 6:00 PM",
+  "Tuesday: 10:00 AM – 6:00 PM",
+  "Wednesday: 10:00 AM – 6:00 PM",
+  "Thursday: 10:00 AM – 6:00 PM",
+  "Friday: 10:00 AM – 6:00 PM",
+  "Saturday: 10:00 AM – 2:00 PM",
+  "Sunday: Closed"
+ ],
+ "review_count_seen": 5,
+ "review_themes": "Customers on Google Maps mention precise digital wheel alignment that fixed problems left by another workshop, high-speed balancing, a big brake kit installed at short notice and a tyre nail found and repaired.",
+ "fetched_at": "2026-11-09",
+ "place_id": "ChIJGwfxK2kT2jER_Tc_g84h6oU",
+ "source": "google_places"
+}

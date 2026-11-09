@@ -1,0 +1,41 @@
+{
+ "lede": "96 JW Autohaus at Jalan Lam Huat and Carros Centre is a car servicing and repair workshop.",
+ "chips": [
+  "Servicing",
+  "Repairs"
+ ],
+ "services": [
+  "Car servicing",
+  "Starter motor replacement",
+  "Exhaust replacement",
+  "Parts sourcing"
+ ],
+ "themes": "Customers on Google Maps mention a starter motor replacement, servicing on a Volkswagen Beetle, an original exhaust sourced for a used Hyundai Getz, clear explanations with no hidden costs and reasonable pricing.",
+ "faqs": [
+  [
+   "What does 96 JW Autohaus do?",
+   "Google Maps lists it as a car repair workshop."
+  ],
+  [
+   "What are the opening hours?",
+   "The hours are listed in the Google Maps section above. Please see Google Maps for current hours."
+  ]
+ ],
+ "sources": "its Google Maps listing",
+ "stories": [],
+ "mentioned_services": [
+  "Car servicing",
+  "Starter motor replacement",
+  "Exhaust replacement",
+  "Parts sourcing"
+ ],
+ "services_note": "Services customers mention on Google Maps. Ask the workshop for its full list.",
+ "makes": [
+  "Volkswagen",
+  "Hyundai"
+ ],
+ "makes_note": "Named by customers on Google Maps. Ask the workshop about other makes.",
+ "specialties": [],
+ "good_to_know": [],
+ "card_rules": "2026-11-05"
+}

@@ -1,0 +1,38 @@
+{
+ "lede": "QUAN MOTORWORKS at Jalan Lam Huat and Carros Centre is a car servicing and repair workshop.",
+ "chips": [
+  "Servicing",
+  "Tuning"
+ ],
+ "services": [
+  "Car servicing",
+  "Fault diagnosis",
+  "Tuning",
+  "Accessory installation"
+ ],
+ "themes": "Customers on Google Maps mention thorough diagnosis, servicing and tuning, honest advice that avoids unnecessary repairs, a comfortable waiting room and a well-equipped workshop.",
+ "faqs": [
+  [
+   "What does QUAN MOTORWORKS do?",
+   "Google Maps lists it as a car repair workshop."
+  ],
+  [
+   "What are the opening hours?",
+   "The hours are listed in the Google Maps section above. Please see Google Maps for current hours."
+  ]
+ ],
+ "sources": "its Google Maps listing",
+ "stories": [],
+ "mentioned_services": [
+  "Car servicing",
+  "Fault diagnosis",
+  "Tuning",
+  "Accessory installation"
+ ],
+ "services_note": "Services customers mention on Google Maps. Ask the workshop for its full list.",
+ "makes": [],
+ "makes_note": "Not listed on its public pages. Ask the workshop about your car.",
+ "specialties": [],
+ "good_to_know": [],
+ "card_rules": "2026-11-05"
+}

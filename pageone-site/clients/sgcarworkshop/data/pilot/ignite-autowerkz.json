@@ -1,0 +1,36 @@
+{
+ "lede": "Ignite Autowerkz at Jalan Lam Huat and Carros Centre is a car repair workshop.",
+ "chips": [
+  "Electrical faults",
+  "Brakes"
+ ],
+ "services": [
+  "Brake repair",
+  "Electrical fault diagnosis",
+  "Car repair"
+ ],
+ "themes": "Customers on Google Maps mention a brake issue found and fixed on the same day, a complicated electrical fault traced with careful testing, detailed analysis and honest advice.",
+ "faqs": [
+  [
+   "What does Ignite Autowerkz do?",
+   "Google Maps lists it as a car repair workshop."
+  ],
+  [
+   "What are the opening hours?",
+   "The hours are listed in the Google Maps section above. Please see Google Maps for current hours."
+  ]
+ ],
+ "sources": "its Google Maps listing",
+ "stories": [],
+ "mentioned_services": [
+  "Brake repair",
+  "Electrical fault diagnosis",
+  "Car repair"
+ ],
+ "services_note": "Services customers mention on Google Maps. Ask the workshop for its full list.",
+ "makes": [],
+ "makes_note": "Not listed on its public pages. Ask the workshop about your car.",
+ "specialties": [],
+ "good_to_know": [],
+ "card_rules": "2026-11-05"
+}

@@ -1,0 +1,30 @@
+{
+ "businessStatus": "OPERATIONAL",
+ "primaryType": "car_repair",
+ "types": [
+  "car_repair",
+  "point_of_interest",
+  "service",
+  "establishment"
+ ],
+ "rating": 5,
+ "userRatingCount": 8,
+ "websiteUri": "https://workshop.sea.mobil.com/sg/mobil-lim-joo-kim-service-centre-oil-change-service-jalan-lam-huat-singapore-537100/Home?utm_source=locator&utm_medium=googleplaces",
+ "paymentOptions": null,
+ "parkingOptions": null,
+ "editorialSummary": null,
+ "weekdayDescriptions": [
+  "Monday: 9:00 AM – 6:00 PM",
+  "Tuesday: 9:00 AM – 6:00 PM",
+  "Wednesday: 9:00 AM – 6:00 PM",
+  "Thursday: 9:00 AM – 6:00 PM",
+  "Friday: 9:00 AM – 6:00 PM",
+  "Saturday: 9:00 AM – 4:00 PM",
+  "Sunday: Closed"
+ ],
+ "review_count_seen": 5,
+ "review_themes": "Customers on Google Maps mention a friendly family-run team, full checks before advising, advice on only what is needed for first-time customers and fast, efficient work.",
+ "fetched_at": "2026-11-09",
+ "place_id": "ChIJoUibZ1wS2jER8Z93pFH4-NQ",
+ "source": "google_places"
+}

@@ -1,203 +1,5 @@
 [
  {
-  "place_id": "ChIJQRPxNAAT2jERjWtxyfHxMz0",
-  "name_hint": "QUAN MOTORWORKS PTE LTD",
-  "address_hint": "60 Jln Lam Huat, #07-20 Carros Centre",
-  "postal_code": "737869",
-  "mobile_hint": "+6587200080",
-  "source": "google_grid_sweep_2026-11-05 (Google phone, Edwin asked)",
-  "added": "2026-11-05"
- },
- {
-  "place_id": "ChIJfRSTqb0T2jERXz7uiebMFR8",
-  "name_hint": "96 JW Autohaus Pte Ltd",
-  "address_hint": "60 Jln Lam Huat, #03-58 Carros Centre",
-  "postal_code": "737869",
-  "mobile_hint": "+6588871696",
-  "source": "google_grid_sweep_2026-11-05 (Google phone, Edwin asked)",
-  "added": "2026-11-05"
- },
- {
-  "place_id": "ChIJFf8kn-UT2jERov_iY39HXbM",
-  "name_hint": "Ignite Autowerkz Pte Ltd",
-  "address_hint": "60 Jln Lam Huat, Level 2 #02-42 Carros Centre",
-  "postal_code": "737869",
-  "mobile_hint": "+6586883899",
-  "source": "google_grid_sweep_2026-11-05 (Google phone, Edwin asked)",
-  "added": "2026-11-05"
- },
- {
-  "place_id": "ChIJ317CZc8T2jERHoaep3B5CDE",
-  "name_hint": "Invictus Autolution @ Carros Centre",
-  "address_hint": "60 Jln Lam Huat, #06-68 Carros Centre",
-  "postal_code": "737869",
-  "mobile_hint": "+6580966890",
-  "source": "google_grid_sweep_2026-11-05 (Google phone, Edwin asked)",
-  "added": "2026-11-05"
- },
- {
-  "place_id": "ChIJfecL3XUZ2jERBcodqBxSOdk",
-  "name_hint": "My Car Consultant @ Carros Centre",
-  "address_hint": "60 Jln Lam Huat, #05-21 Carros Centre",
-  "postal_code": "737869",
-  "mobile_hint": "+6597996323",
-  "source": "google_grid_sweep_2026-11-05 (Google phone, Edwin asked)",
-  "added": "2026-11-05"
- },
- {
-  "place_id": "ChIJpavDm9ET2jERrhGg4GVelxo",
-  "name_hint": "Aurum Performance Private Limited",
-  "address_hint": "60 Jln Lam Huat, #05-60 Carros Centre",
-  "postal_code": "737869",
-  "mobile_hint": "+6588982690",
-  "source": "google_grid_sweep_2026-11-05 (Google phone, Edwin asked)",
-  "added": "2026-11-05"
- },
- {
-  "place_id": "ChIJRbsavpsT2jERKv0P0L3vC6k",
-  "name_hint": "Ardent Research Concept",
-  "address_hint": "60 Jln Lam Huat, #04-18, #04-19",
-  "postal_code": "737869",
-  "mobile_hint": "+6593266969",
-  "source": "google_grid_sweep_2026-11-05 (Google phone, Edwin asked)",
-  "added": "2026-11-05"
- },
- {
-  "place_id": "ChIJG_NeldIT2jERkys7JjNvwX4",
-  "name_hint": "Tos Auto Motorwerk",
-  "address_hint": "60 Jln Lam Huat, #06-62/63 Carros Centre",
-  "postal_code": "737869",
-  "mobile_hint": "+6580568055",
-  "source": "google_grid_sweep_2026-11-05 (Google phone, Edwin asked)",
-  "added": "2026-11-05"
- },
- {
-  "place_id": "ChIJGwfxK2kT2jER_Tc_g84h6oU",
-  "name_hint": "EuroCar Precision",
-  "address_hint": "60 Jln Lam Huat, #03-47 Carros Centre",
-  "postal_code": "737869",
-  "mobile_hint": "+6580814870",
-  "source": "google_grid_sweep_2026-11-05 (Google phone, Edwin asked)",
-  "added": "2026-11-05"
- },
- {
-  "place_id": "ChIJMQTIGeAT2jERSb99ASBwln0",
-  "name_hint": "The Motor Parlour Pte Ltd",
-  "address_hint": "60 Jln Lam Huat, #03-25 Carros Centre",
-  "postal_code": "737869",
-  "mobile_hint": "+6585755553",
-  "source": "google_grid_sweep_2026-11-05 (Google phone, Edwin asked)",
-  "added": "2026-11-05"
- },
- {
-  "place_id": "ChIJX9wQNIMT2jERT6o-ULHy9AE",
-  "name_hint": "Rev District Autolutions Pte Ltd",
-  "address_hint": "60 Jln Lam Huat, #04-16 Carros Centre",
-  "postal_code": "737869",
-  "mobile_hint": "+6581551761",
-  "source": "google_grid_sweep_2026-11-05 (Google phone, Edwin asked)",
-  "added": "2026-11-05"
- },
- {
-  "place_id": "ChIJt0fA6t4T2jERge1BV7i_6QM",
-  "name_hint": "Kraftwerk Autohaus",
-  "address_hint": "60 Jln Lam Huat, #04-58 Carro Center",
-  "postal_code": "737869",
-  "mobile_hint": "+6580438666",
-  "source": "google_grid_sweep_2026-11-05 (Google phone, Edwin asked)",
-  "added": "2026-11-05"
- },
- {
-  "place_id": "ChIJMS8_XwAT2jERt5fVay9yT7Q",
-  "name_hint": "Accendo Performance Pte Ltd",
-  "address_hint": "60 Jln Lam Huat, #03-30 Carros Centre",
-  "postal_code": "737869",
-  "mobile_hint": "+6581551761",
-  "source": "google_grid_sweep_2026-11-05 (Google phone, Edwin asked)",
-  "added": "2026-11-05"
- },
- {
-  "place_id": "ChIJn4DGuxIT2jER_30kav1IM5k",
-  "name_hint": "626 Garage Pte Ltd",
-  "address_hint": "60 Jln Lam Huat, #06-26",
-  "postal_code": "737869",
-  "mobile_hint": "+6589960626",
-  "source": "google_grid_sweep_2026-11-05 (Google phone, Edwin asked)",
-  "added": "2026-11-05"
- },
- {
-  "place_id": "ChIJXfTBcmMT2jERF9jy7E_rhHE",
-  "name_hint": "M Autotools Pte Ltd",
-  "address_hint": "60 Jln Lam Huat, #03-69",
-  "postal_code": "737869",
-  "mobile_hint": "+6597779064",
-  "source": "google_grid_sweep_2026-11-05 (Google phone, Edwin asked)",
-  "added": "2026-11-05"
- },
- {
-  "place_id": "ChIJBSTOh3EX2jERXKvUXEeanPc",
-  "name_hint": "KATC Dunearn Pte Ltd",
-  "address_hint": "60 Jln Lam Huat, #02-44",
-  "postal_code": "737869",
-  "mobile_hint": "+6588207088",
-  "source": "google_grid_sweep_2026-11-05 (Google phone, Edwin asked)",
-  "added": "2026-11-05"
- },
- {
-  "place_id": "ChIJe0QJXUIT2jERJzGkRrhiqZQ",
-  "name_hint": "Top Fuel Automotive Pte Ltd",
-  "address_hint": "60 Jln Lam Huat, #03-03 Carros Centre",
-  "postal_code": "737869",
-  "mobile_hint": "+6591195269",
-  "source": "google_grid_sweep_2026-11-05 (Google phone, Edwin asked)",
-  "added": "2026-11-05"
- },
- {
-  "place_id": "ChIJMYcEkc4T2jERykktFmW2tQY",
-  "name_hint": "Route88",
-  "address_hint": "60 Jln Lam Huat, #03-12",
-  "postal_code": "737869",
-  "mobile_hint": "+6588656463",
-  "source": "google_grid_sweep_2026-11-05 (Google phone, Edwin asked)",
-  "added": "2026-11-05"
- },
- {
-  "place_id": "ChIJI6S_JnYT2jER7L8V1a7UCGg",
-  "name_hint": "Car Motor Club",
-  "address_hint": "60 Jln Lam Huat, #03-35/36",
-  "postal_code": "737869",
-  "mobile_hint": "+6582338868",
-  "source": "google_grid_sweep_2026-11-05 (Google phone, Edwin asked)",
-  "added": "2026-11-05"
- },
- {
-  "place_id": "ChIJv2i_3Z0T2jER14JnFgPaX_8",
-  "name_hint": "MR GEARBOX By Motoserv",
-  "address_hint": "60 Jln Lam Huat, #02-44",
-  "postal_code": "737869",
-  "mobile_hint": "+6588207088",
-  "source": "google_grid_sweep_2026-11-05 (Google phone, Edwin asked)",
-  "added": "2026-11-05"
- },
- {
-  "place_id": "ChIJ1-M9oGAX2jERVHxmXdnOM4I",
-  "name_hint": "Euroauto Bodywerkz Pte Ltd",
-  "address_hint": "60 Jln Lam Huat, #06-41/42, #07-41 Carros Centre",
-  "postal_code": "737869",
-  "mobile_hint": "+6590288806",
-  "source": "google_grid_sweep_2026-11-05 (Google phone, Edwin asked)",
-  "added": "2026-11-05"
- },
- {
-  "place_id": "ChIJoUibZ1wS2jER8Z93pFH4-NQ",
-  "name_hint": "Mobil Lim Joo Kim Service Centre",
-  "address_hint": "60 Jln Lam Huat, #02-06/07",
-  "postal_code": "728862",
-  "mobile_hint": "+6596622236",
-  "source": "google_grid_sweep_2026-11-05 (Google phone, Edwin asked)",
-  "added": "2026-11-05"
- },
- {
   "place_id": "ChIJrZP4NvoT2jERU1OvxIKGCfo",
   "name_hint": "Quek Hwa Heng Engineering Works",
   "address_hint": "60 Jln Lam Huat, #04-70 Carros Centre",
@@ -1672,5 +1474,518 @@
   "mobile_hint": "+6598005147",
   "source": "pulled_back_2026-11-08",
   "added": "2026-11-08"
+ },
+ {
+  "place_id": "ChIJL63M8QcX2jERmLxx4OR_0RY",
+  "name_hint": "Spectraworks",
+  "address_hint": "25 Kaki Bukit Rd 4, #01-60 Synergy @ KB",
+  "postal_code": "417800",
+  "mobile_hint": "+6596672926",
+  "source": "google_grid_sweep_2026-11-09 (Google phone, Edwin asked)",
+  "added": "2026-11-09"
+ },
+ {
+  "place_id": "ChIJT0AEgOEX2jERj3RhLQHO5iY",
+  "name_hint": "Doctor Gearbox Pte Ltd",
+  "address_hint": "DOCTOR GEARBOX PTE LTD, 13 Kaki Bukit Rd 4, #01-09 Bartley Biz Centre",
+  "postal_code": "417807",
+  "mobile_hint": "+6591162828",
+  "source": "google_grid_sweep_2026-11-09 (Google phone, Edwin asked)",
+  "added": "2026-11-09"
+ },
+ {
+  "place_id": "ChIJUSqxX2cT2jERgiattSTdau8",
+  "name_hint": "MAN SIEW AUTO PTE LTD",
+  "address_hint": "71 Woodlands Ave 10",
+  "postal_code": "737743",
+  "mobile_hint": "+6592348446",
+  "source": "google_grid_sweep_2026-11-09 (Google phone, Edwin asked)",
+  "added": "2026-11-09"
+ },
+ {
+  "place_id": "ChIJdVIQ-WcT2jERQ2tvXFTsjoU",
+  "name_hint": "8 Paragon Pte Ltd",
+  "address_hint": "71 Woodlands Ave 10, #01-06/ 10 Woodlands Industrial Xchange",
+  "postal_code": "737743",
+  "mobile_hint": "+6591125406",
+  "source": "google_grid_sweep_2026-11-09 (Google phone, Edwin asked)",
+  "added": "2026-11-09"
+ },
+ {
+  "place_id": "ChIJWVI1PgAb2jER6WKJsEkiFQg",
+  "name_hint": "Oh Ap Pee motorworks",
+  "address_hint": "Singapore, Bukit Merah Lane 3, 号, #01-43 1001",
+  "postal_code": "",
+  "mobile_hint": "+6596489323",
+  "source": "google_grid_sweep_2026-11-09 (Google phone, Edwin asked)",
+  "added": "2026-11-09"
+ },
+ {
+  "place_id": "ChIJ3UrxAswb2jERjKRL8fzpkjU",
+  "name_hint": "Hong San Hong Wei Pte Ltd",
+  "address_hint": "1002 Bukit Merah Lane 3",
+  "postal_code": "159719",
+  "mobile_hint": "+6591091660",
+  "source": "google_grid_sweep_2026-11-09 (Google phone, Edwin asked)",
+  "added": "2026-11-09"
+ },
+ {
+  "place_id": "ChIJeTh5R9gb2jERChMr_zXKyik",
+  "name_hint": "RUF Autowerkz Pte Ltd",
+  "address_hint": "1002 Bukit Merah Lane 3, #01-83",
+  "postal_code": "159719",
+  "mobile_hint": "+6586499237",
+  "source": "google_grid_sweep_2026-11-09 (Google phone, Edwin asked)",
+  "added": "2026-11-09"
+ },
+ {
+  "place_id": "ChIJCYNUJ44b2jERSp94MPJWmh4",
+  "name_hint": "Caltex Havoline autoPro Car Workshop Bukit Merah By Motoserv",
+  "address_hint": "3781 Jalan Bukit Merah, Inside Caltex Station",
+  "postal_code": "159463",
+  "mobile_hint": "+6597127445",
+  "source": "google_grid_sweep_2026-11-09 (Google phone, Edwin asked)",
+  "added": "2026-11-09"
+ },
+ {
+  "place_id": "ChIJ7cJvawAb2jERu2KY6jZ6wmM",
+  "name_hint": "F4 Concept (S) Pte Ltd, Speedy Care Bukit Merah",
+  "address_hint": "3800 Jalan Bukit Merah, Speedy Care",
+  "postal_code": "159464",
+  "mobile_hint": "+6598939193",
+  "source": "google_grid_sweep_2026-11-09 (Google phone, Edwin asked)",
+  "added": "2026-11-09"
+ },
+ {
+  "place_id": "ChIJSbNLPcwb2jERdknJ2kFp1pY",
+  "name_hint": "Car Body Repair",
+  "address_hint": "1004 Bukit Merah Lane 3, #01-29 Block 1004",
+  "postal_code": "159720",
+  "mobile_hint": "+6591129387",
+  "source": "google_grid_sweep_2026-11-09 (Google phone, Edwin asked)",
+  "added": "2026-11-09"
+ },
+ {
+  "place_id": "ChIJSbNLPcwb2jERHuaSCdZPMGI",
+  "name_hint": "Sam Wah Motors (1999)",
+  "address_hint": "Blk 1004 Bukit Merah Lane 3, #01-31",
+  "postal_code": "159720",
+  "mobile_hint": "+6596733334",
+  "source": "google_grid_sweep_2026-11-09 (Google phone, Edwin asked)",
+  "added": "2026-11-09"
+ },
+ {
+  "place_id": "ChIJhxVqitob2jER2g7bIOgZJtM",
+  "name_hint": "Stamford Tyres Auto Rescue",
+  "address_hint": "1004 Bukit Merah Lane 3, #01-17 & 01-19",
+  "postal_code": "159720",
+  "mobile_hint": "+6587973355",
+  "source": "google_grid_sweep_2026-11-09 (Google phone, Edwin asked)",
+  "added": "2026-11-09"
+ },
+ {
+  "place_id": "ChIJ3Y86MC0a2jER1GGysadXn3g",
+  "name_hint": "TECHNIC MOTORCARE PTE LTD",
+  "address_hint": "8 Kung Chong Rd",
+  "postal_code": "159145",
+  "mobile_hint": "+6590296874",
+  "source": "google_grid_sweep_2026-11-09 (Google phone, Edwin asked)",
+  "added": "2026-11-09"
+ },
+ {
+  "place_id": "ChIJ21N9P2cF2jERc1ut4aL9PfI",
+  "name_hint": "Technik Autolab",
+  "address_hint": "1 Corporation Dr, #04-04 Revv Building",
+  "postal_code": "619775",
+  "mobile_hint": "+6597664456",
+  "source": "google_grid_sweep_2026-11-09 (Google phone, Edwin asked)",
+  "added": "2026-11-09"
+ },
+ {
+  "place_id": "ChIJc1Mc5B0F2jERrlOJGwNLK2M",
+  "name_hint": "SVJ Autowerkz Pte Ltd",
+  "address_hint": "1 Corporation Dr, #03-16 Revv West Enterprise Hub",
+  "postal_code": "619775",
+  "mobile_hint": "+6588111121",
+  "source": "google_grid_sweep_2026-11-09 (Google phone, Edwin asked)",
+  "added": "2026-11-09"
+ },
+ {
+  "place_id": "ChIJKYL9TU4F2jEREHG-bxK2EOc",
+  "name_hint": "Joo Guan Seng Motor Service",
+  "address_hint": "27A Jurong Port Rd, #01-26",
+  "postal_code": "619101",
+  "mobile_hint": "+6596829844",
+  "source": "google_grid_sweep_2026-11-09 (Google phone, Edwin asked)",
+  "added": "2026-11-09"
+ },
+ {
+  "place_id": "ChIJi_-vNrkF2jERr5duKDo8A_8",
+  "name_hint": "Chronos Motorworks",
+  "address_hint": "1 Corporation Dr, #05-17 Revv Building",
+  "postal_code": "619775",
+  "mobile_hint": "+6583687777",
+  "source": "google_grid_sweep_2026-11-09 (Google phone, Edwin asked)",
+  "added": "2026-11-09"
+ },
+ {
+  "place_id": "ChIJXexlEQAF2jER1e0ASUYrK1c",
+  "name_hint": "Ignite Motorsports",
+  "address_hint": "1 Corporation Dr, #04-01 Rev Building",
+  "postal_code": "619775",
+  "mobile_hint": "+6585449848",
+  "source": "google_grid_sweep_2026-11-09 (Google phone, Edwin asked)",
+  "added": "2026-11-09"
+ },
+ {
+  "place_id": "ChIJO1JiMAAF2jERkxxsc-w9W68",
+  "name_hint": "JW Workshop",
+  "address_hint": "1 Corporation Dr, #02-09",
+  "postal_code": "619775",
+  "mobile_hint": "+6597225988",
+  "source": "google_grid_sweep_2026-11-09 (Google phone, Edwin asked)",
+  "added": "2026-11-09"
+ },
+ {
+  "place_id": "ChIJVTwQnVUF2jERjVRhE4MeH9k",
+  "name_hint": "W Autoworks LLP",
+  "address_hint": "1 Corporation Dr, #03-15 Revv",
+  "postal_code": "619775",
+  "mobile_hint": "+6580986600",
+  "source": "google_grid_sweep_2026-11-09 (Google phone, Edwin asked)",
+  "added": "2026-11-09"
+ },
+ {
+  "place_id": "ChIJ50vaOAAF2jERlp85LvkSnOk",
+  "name_hint": "Garage Wai Pte Ltd",
+  "address_hint": "1 Corporation Dr, #02-06 Revv Building",
+  "postal_code": "619775",
+  "mobile_hint": "+6589851179",
+  "source": "google_grid_sweep_2026-11-09 (Google phone, Edwin asked)",
+  "added": "2026-11-09"
+ },
+ {
+  "place_id": "ChIJ_-ZaAWkF2jERwv4mh01RQNE",
+  "name_hint": "Frents Autocare",
+  "address_hint": "1 Corporation Dr, #02-08",
+  "postal_code": "619775",
+  "mobile_hint": "+6582828083",
+  "source": "google_grid_sweep_2026-11-09 (Google phone, Edwin asked)",
+  "added": "2026-11-09"
+ },
+ {
+  "place_id": "ChIJUYFD5DoF2jERoGdQBat2b9w",
+  "name_hint": "Castrol Service - KGC Workshop PTE LTD",
+  "address_hint": "Corporation Dr, #04-05/12 Revv Building",
+  "postal_code": "619775",
+  "mobile_hint": "+6590297669",
+  "source": "google_grid_sweep_2026-11-09 (Google phone, Edwin asked)",
+  "added": "2026-11-09"
+ },
+ {
+  "place_id": "ChIJH4h2OMQF2jERJM1BiIMHFUw",
+  "name_hint": "Mobil Autofriend Service",
+  "address_hint": "No 27A Jurong Port Rd, #01/15",
+  "postal_code": "619101",
+  "mobile_hint": "+6590179024",
+  "source": "google_grid_sweep_2026-11-09 (Google phone, Edwin asked)",
+  "added": "2026-11-09"
+ },
+ {
+  "place_id": "ChIJgxEWWnS2h0MRLy2DlFhIKBw",
+  "name_hint": "44 Diesel Services Pte. Ltd.",
+  "address_hint": "1 Corporation Dr, #04-08",
+  "postal_code": "619775",
+  "mobile_hint": "+6582001516",
+  "source": "google_grid_sweep_2026-11-09 (Google phone, Edwin asked)",
+  "added": "2026-11-09"
+ },
+ {
+  "place_id": "ChIJESxNHbcT2jER54qH8yTxiJI",
+  "name_hint": "Genus Performance",
+  "address_hint": "39 Woodlands Cl, #03-03 Mega @ Woodlands",
+  "postal_code": "737856",
+  "mobile_hint": "+6581888399",
+  "source": "google_grid_sweep_2026-11-09 (Google phone, Edwin asked)",
+  "added": "2026-11-09"
+ },
+ {
+  "place_id": "ChIJc6yHNwgT2jERodKChOiQ75U",
+  "name_hint": "Edge Garage Pte Ltd",
+  "address_hint": "39 Woodlands Cl, #02-42 Mega @ Woodlands",
+  "postal_code": "737856",
+  "mobile_hint": "+6586882400",
+  "source": "google_grid_sweep_2026-11-09 (Google phone, Edwin asked)",
+  "added": "2026-11-09"
+ },
+ {
+  "place_id": "ChIJQwZe0AoT2jERoOnpqyRAXWg",
+  "name_hint": "CS Autoworks Pte Ltd",
+  "address_hint": "101 Woodlands Ave 12, #02-14 Polaris",
+  "postal_code": "737719",
+  "mobile_hint": "+6591420266",
+  "source": "google_grid_sweep_2026-11-09 (Google phone, Edwin asked)",
+  "added": "2026-11-09"
+ },
+ {
+  "place_id": "ChIJl2XWQwAT2jERq1yqIAM-EHo",
+  "name_hint": "Hong Heng Auto Service",
+  "address_hint": "Polaris@Woodlands, 101 Woodlands Ave 12, #01-26",
+  "postal_code": "737719",
+  "mobile_hint": "+6586681855",
+  "source": "google_grid_sweep_2026-11-09 (Google phone, Edwin asked)",
+  "added": "2026-11-09"
+ },
+ {
+  "place_id": "ChIJ_zrLpkoT2jERA4x4pEYF16U",
+  "name_hint": "Mohamed Automobile",
+  "address_hint": "39 Woodlands Cl, #02-39 MEGA@Woodlands",
+  "postal_code": "737856",
+  "mobile_hint": "+6581171127",
+  "source": "google_grid_sweep_2026-11-09 (Google phone, Edwin asked)",
+  "added": "2026-11-09"
+ },
+ {
+  "place_id": "ChIJOwz2LCYT2jERf_l9mlnbcC4",
+  "name_hint": "Tos Auto Spraywerk",
+  "address_hint": "101 Woodlands Ave 12, #08-24/25 Polaris @ Woodlands",
+  "postal_code": "737719",
+  "mobile_hint": "+6580968055",
+  "source": "google_grid_sweep_2026-11-09 (Google phone, Edwin asked)",
+  "added": "2026-11-09"
+ },
+ {
+  "place_id": "ChIJ65fHBiAT2jER-NlAL82gZnY",
+  "name_hint": "Genus Lee SprayPainting and bodyworkz",
+  "address_hint": "#03-04 MEGA@Woodlands",
+  "postal_code": "737856",
+  "mobile_hint": "+6590369979",
+  "source": "google_grid_sweep_2026-11-09 (Google phone, Edwin asked)",
+  "added": "2026-11-09"
+ },
+ {
+  "place_id": "ChIJT0AEgOEX2jERIgyttuwMF-M",
+  "name_hint": "Infinity Werkz Pte Ltd",
+  "address_hint": "39 Woodlands Close, 39, 号, #04-57 MEGA@Woodlands, Singapore/邮政",
+  "postal_code": "",
+  "mobile_hint": "+6597451479",
+  "source": "google_grid_sweep_2026-11-09 (Google phone, Edwin asked)",
+  "added": "2026-11-09"
+ },
+ {
+  "place_id": "ChIJtcwDQxIV2jERTFUa6NKe6fY",
+  "name_hint": "Mobil Autofriend Services",
+  "address_hint": "593 Sembawang Rd",
+  "postal_code": "758452",
+  "mobile_hint": "+6592953167",
+  "source": "google_grid_sweep_2026-11-09 (Google phone, Edwin asked)",
+  "added": "2026-11-09"
+ },
+ {
+  "place_id": "ChIJj8KWU4sX2jERB7vk7tlvlx8",
+  "name_hint": "SteadiAudio",
+  "address_hint": "6 Gambas Way, #03-19 Ascent@Gambas",
+  "postal_code": "756939",
+  "mobile_hint": "+6584033480",
+  "source": "google_grid_sweep_2026-11-09 (Google phone, Edwin asked)",
+  "added": "2026-11-09"
+ },
+ {
+  "place_id": "ChIJo6Nr5QUT2jERYCEPMg-Dww0",
+  "name_hint": "360 Motorcity Pte Ltd",
+  "address_hint": "3 Gambas Cres, #01-09 Nordcom One",
+  "postal_code": "757088",
+  "mobile_hint": "+6594838995",
+  "source": "google_grid_sweep_2026-11-09 (Google phone, Edwin asked)",
+  "added": "2026-11-09"
+ },
+ {
+  "place_id": "ChIJu7jZJ4wP2jERJJn3IOSLqqg",
+  "name_hint": "One Zone Autocare",
+  "address_hint": "7 Soon Lee St, #01-05",
+  "postal_code": "627608",
+  "mobile_hint": "+6592308294",
+  "source": "google_grid_sweep_2026-11-09 (Google phone, Edwin asked)",
+  "added": "2026-11-09"
+ },
+ {
+  "place_id": "ChIJkUILwB8P2jERVNgvWC-y21U",
+  "name_hint": "FrenchFellas Auto Service Centre PTE LTD",
+  "address_hint": "7 Soon Lee St, #01-36",
+  "postal_code": "627608",
+  "mobile_hint": "+6587216988",
+  "source": "google_grid_sweep_2026-11-09 (Google phone, Edwin asked)",
+  "added": "2026-11-09"
+ },
+ {
+  "place_id": "ChIJUb_ZJ4wP2jER2_91rK8-Si4",
+  "name_hint": "Supremo Auto Detailer",
+  "address_hint": "7 Soon Lee St, #02-01",
+  "postal_code": "627608",
+  "mobile_hint": "+6588289398",
+  "source": "google_grid_sweep_2026-11-09 (Google phone, Edwin asked)",
+  "added": "2026-11-09"
+ },
+ {
+  "place_id": "ChIJ29K0_UAX2jERbfOfnkLPdNc",
+  "name_hint": "Doctor Cars",
+  "address_hint": "15 Kim Chuan Terrace",
+  "postal_code": "537037",
+  "mobile_hint": "+6596245461",
+  "source": "google_grid_sweep_2026-11-09 (Google phone, Edwin asked)",
+  "added": "2026-11-09"
+ },
+ {
+  "place_id": "ChIJi32eSmUX2jER5AM1nYSwNo0",
+  "name_hint": "Castrol Auto Service - DrCar PTE LTD",
+  "address_hint": "15 Kim Chuan Terrace",
+  "postal_code": "537037",
+  "mobile_hint": "+6597824549",
+  "source": "google_grid_sweep_2026-11-09 (Google phone, Edwin asked)",
+  "added": "2026-11-09"
+ },
+ {
+  "place_id": "ChIJh_xO5-4X2jERYQB-_L1qLLU",
+  "name_hint": "MCS Garage",
+  "address_hint": "10 Kaki Bukit Rd 2, #03-25",
+  "postal_code": "417868",
+  "mobile_hint": "+6592700917",
+  "source": "google_grid_sweep_2026-11-09 (Google phone, Edwin asked)",
+  "added": "2026-11-09"
+ },
+ {
+  "place_id": "ChIJhQsv3O4X2jERYNkETqBM7ro",
+  "name_hint": "Paradise Garage",
+  "address_hint": "10 Kaki Bukit Rd 2, #03-23 First East Centre",
+  "postal_code": "417868",
+  "mobile_hint": "+6590218139",
+  "source": "google_grid_sweep_2026-11-09 (Google phone, Edwin asked)",
+  "added": "2026-11-09"
+ },
+ {
+  "place_id": "ChIJtxlrJe4X2jERtRNVP5ruMlc",
+  "name_hint": "889 Car Servicing Pte. Ltd.",
+  "address_hint": "10 Kaki Bukit Rd 2, #03-33",
+  "postal_code": "417868",
+  "mobile_hint": "+6596621885",
+  "source": "google_grid_sweep_2026-11-09 (Google phone, Edwin asked)",
+  "added": "2026-11-09"
+ },
+ {
+  "place_id": "ChIJh1W20mYX2jER1D1zp-GivEI",
+  "name_hint": "Empire Garage Pte Ltd",
+  "address_hint": "10 Kaki Bukit Rd 2, #01-35 First East Centre",
+  "postal_code": "417868",
+  "mobile_hint": "+6581269449",
+  "source": "google_grid_sweep_2026-11-09 (Google phone, Edwin asked)",
+  "added": "2026-11-09"
+ },
+ {
+  "place_id": "ChIJh_xO5-4X2jERj93zSqRiqKc",
+  "name_hint": "Mirage Motorwerkz Pte Ltd",
+  "address_hint": "10 Kaki Bukit Rd 2, #01-28/29 First East Centre",
+  "postal_code": "417868",
+  "mobile_hint": "+6590059279",
+  "source": "google_grid_sweep_2026-11-09 (Google phone, Edwin asked)",
+  "added": "2026-11-09"
+ },
+ {
+  "place_id": "ChIJh_xO5-4X2jERX2T7Eh1vjIg",
+  "name_hint": "EastWest Garage Pte Ltd",
+  "address_hint": "10 Kaki Bukit Rd 2, #03-36",
+  "postal_code": "417868",
+  "mobile_hint": "+6598477362",
+  "source": "google_grid_sweep_2026-11-09 (Google phone, Edwin asked)",
+  "added": "2026-11-09"
+ },
+ {
+  "place_id": "ChIJ7Sdw7-4X2jERMPl28JXPCuk",
+  "name_hint": "Vs Service Garage",
+  "address_hint": "10 Kaki Bukit Rd 2",
+  "postal_code": "417868",
+  "mobile_hint": "+6597942222",
+  "source": "google_grid_sweep_2026-11-09 (Google phone, Edwin asked)",
+  "added": "2026-11-09"
+ },
+ {
+  "place_id": "ChIJQRs66O4X2jERJSFA7wzqRlc",
+  "name_hint": "WestCoast Garage",
+  "address_hint": "10 Kaki Bukit Rd 2, #03-10",
+  "postal_code": "417868",
+  "mobile_hint": "+6598477362",
+  "source": "google_grid_sweep_2026-11-09 (Google phone, Edwin asked)",
+  "added": "2026-11-09"
+ },
+ {
+  "place_id": "ChIJM-PGgGwX2jERBdWl0ZANzGQ",
+  "name_hint": "EVS GARAGE PTE LTD",
+  "address_hint": "10 Kaki Bukit Rd 2, #01-15 First east centre",
+  "postal_code": "417868",
+  "mobile_hint": "+6586277682",
+  "source": "google_grid_sweep_2026-11-09 (Google phone, Edwin asked)",
+  "added": "2026-11-09"
+ },
+ {
+  "place_id": "ChIJ53OJwDQX2jERG8QVEOtgQF4",
+  "name_hint": "4forwheel Auto",
+  "address_hint": "10 Kaki Bukit Rd 2, #03-09 First East Centre",
+  "postal_code": "417868",
+  "mobile_hint": "+6586866656",
+  "source": "google_grid_sweep_2026-11-09 (Google phone, Edwin asked)",
+  "added": "2026-11-09"
+ },
+ {
+  "place_id": "ChIJa15P6e4X2jERVw9RhdVkYVs",
+  "name_hint": "Applied Performance",
+  "address_hint": "10 Kaki Bukit Rd 2, #03-04-05 First East Centre",
+  "postal_code": "417868",
+  "mobile_hint": "+6590664486",
+  "source": "google_grid_sweep_2026-11-09 (Google phone, Edwin asked)",
+  "added": "2026-11-09"
+ },
+ {
+  "place_id": "ChIJYyIJAjgX2jERHcEKTH_OYN8",
+  "name_hint": "Forward Auto Pte Ltd",
+  "address_hint": "10 Kaki Bukit Rd 2, #01-27 First East Centre",
+  "postal_code": "417868",
+  "mobile_hint": "+6598500681",
+  "source": "google_grid_sweep_2026-11-09 (Google phone, Edwin asked)",
+  "added": "2026-11-09"
+ },
+ {
+  "place_id": "ChIJI3q4qFUX2jERtTKFGbbKwY8",
+  "name_hint": "Our Bro Ray's Garage (Pte Ltd)",
+  "address_hint": "10 Kaki Bukit Rd 2, #01-30 First East Centre",
+  "postal_code": "417868",
+  "mobile_hint": "+6597776745",
+  "source": "google_grid_sweep_2026-11-09 (Google phone, Edwin asked)",
+  "added": "2026-11-09"
+ },
+ {
+  "place_id": "ChIJYULEw6AX2jERye9Po_aYHP0",
+  "name_hint": "Unicorn Automotive",
+  "address_hint": "10 Kaki Bukit Rd 2, #01-34",
+  "postal_code": "417868",
+  "mobile_hint": "+6598592312",
+  "source": "google_grid_sweep_2026-11-09 (Google phone, Edwin asked)",
+  "added": "2026-11-09"
+ },
+ {
+  "place_id": "ChIJsYdl5kgX2jERLK8G4JPNJmY",
+  "name_hint": "Profi Automotive",
+  "address_hint": "10 Kaki Bukit Rd 2, #01-05",
+  "postal_code": "417868",
+  "mobile_hint": "+6594335558",
+  "source": "google_grid_sweep_2026-11-09 (Google phone, Edwin asked)",
+  "added": "2026-11-09"
+ },
+ {
+  "place_id": "ChIJv9re6-sX2jERA2jGY459WU4",
+  "name_hint": "YS AUTO WERKZ",
+  "address_hint": "10 Kaki Bukit Rd 2, #01-03 First East Centre",
+  "postal_code": "417868",
+  "mobile_hint": "+6591349319",
+  "source": "google_grid_sweep_2026-11-09 (Google phone, Edwin asked)",
+  "added": "2026-11-09"
  }
 ]

@@ -1,0 +1,36 @@
+{
+ "lede": "Accendo Performance at Jalan Lam Huat and Carros Centre is a car servicing and repair workshop.",
+ "chips": [
+  "Servicing",
+  "Warranty checks"
+ ],
+ "services": [
+  "Car servicing",
+  "Engine and gearbox warranty check",
+  "Car repair"
+ ],
+ "themes": "Customers on Google Maps mention friendly and transparent mechanics, detailed explanations, engine and gearbox warranty checks, fast servicing and fair pricing.",
+ "faqs": [
+  [
+   "What does Accendo Performance do?",
+   "Google Maps lists it as a car repair workshop."
+  ],
+  [
+   "What are the opening hours?",
+   "The hours are listed in the Google Maps section above. Please see Google Maps for current hours."
+  ]
+ ],
+ "sources": "its Google Maps listing",
+ "stories": [],
+ "mentioned_services": [
+  "Car servicing",
+  "Engine and gearbox warranty check",
+  "Car repair"
+ ],
+ "services_note": "Services customers mention on Google Maps. Ask the workshop for its full list.",
+ "makes": [],
+ "makes_note": "Not listed on its public pages. Ask the workshop about your car.",
+ "specialties": [],
+ "good_to_know": [],
+ "card_rules": "2026-11-05"
+}
