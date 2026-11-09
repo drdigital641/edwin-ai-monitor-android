@@ -509,6 +509,32 @@ ARTICLES = [
             ('Not yet confirmed', ['We have not listed RTS fares or the door-to-door time from Bukit Chagar to either house, because we have no official figure for them. Ask us on WhatsApp if you need help planning.']),
         ],
     },
+    {
+        'slug': 'christmas-staycation-jb-2026-two-night-minimum', 'date': '2026-11-10', 'plan': True, 'photo': 'prima-living-room-2.webp',
+        'title': 'Christmas staycation JB 2026: 2-night minimum and public holiday rates',
+        'ttl': 'Christmas Staycation JB 2026: 2-Night Rates & Rules',
+        'desc': 'Christmas staycation JB 2026 with Prima or Landak: 2-night minimum over 24 and 25 Dec, public holiday rates in RM and SGD, and house rules.',
+        'h1': 'Christmas staycation JB 2026: 2-night minimum and public holiday rates',
+        'answer': 'For a Christmas staycation in JB, our two private houses need a minimum of 2 nights over Christmas Eve and Christmas Day, and both nights are charged at the public holiday rate: Prima RM 750 and Landak Kawan Fun House RM 1,000 a night, whole house, cleaning included.',
+        'house': 'prima',
+        'sections': [
+            ('What is different over Christmas', ['Over Christmas Eve and Christmas Day (24 and 25 December) the minimum stay is 2 nights instead of 1, and both nights are charged at the public holiday rate. The usual check-in is 3pm and check-out 11am. There is no cancellation, but you can change your dates once.']),
+            ('Christmas prices for the whole house', ['Prices are per night for the whole house, cleaning included. For 24 and 25 December together: <a href="{R}stays/prima-taman-nusantara-prima/">Prima</a> is 2 x ' + rm(PRICES['prima'][2]) + ' = ' + rm(2 * PRICES['prima'][2]) + ' (' + sgd_of(2 * PRICES['prima'][2]) + ' estimated), and <a href="{R}stays/landak-kawan-fun-house-taman-abad/">Landak Kawan Fun House</a> is 2 x ' + rm(PRICES['landak'][2]) + ' = ' + rm(2 * PRICES['landak'][2]) + ' (' + sgd_of(2 * PRICES['landak'][2]) + ' estimated).',
+                'At full occupancy that is about ' + 'S$%.2f' % (2 * PRICES['prima'][2] * FX['rate'] / 12) + ' per person at Prima (12 guests) and about ' + 'S$%.2f' % (2 * PRICES['landak'][2] * FX['rate'] / 10) + ' per person at Landak (10 guests) for the two nights. ' + FX_TEXT + ' Normal weekday, weekend and public holiday rates are on the <a href="{R}prices/">prices page</a>.']),
+            ('Which house for a Christmas group', ['Prima takes up to 12 guests in 3 rooms, each with 1 queen bed and 2 single floor mattresses, and has a ground-floor bedroom for elderly guests, a 7ft pool table, a mahjong table and parking for 2 cars inside and 6 outside.',
+                'Landak Kawan Fun House takes up to 10 guests in 3 bedrooms, has an 8ft pool table, foosball, 2 dart boards, a mahjong table, a TV arcade and a children\'s playroom, and is about a 5-minute walk from KSL City Mall.']),
+            ('Rules to know before you book', ['Quiet hours are 11pm to 7am, and there is a RM 500 penalty for smoking, vaping or eating durian indoors. No BBQ or grilling, no pets, and no sticking decorations on walls, so bring tabletop decorations only. Gatherings need the host\'s approval.',
+                DEPOSIT + ' ' + PAY]),
+            ('Getting there at Christmas', ['The host estimates Prima is about 10 minutes from the Tuas Second Link and Landak about 12 minutes from the Causeway CIQ, excluding border queues. Queues over holidays can be much longer, so check the ICA traffic updates before you leave. See <a href="{R}getting-there/">getting to Prima and Landak</a> and <a href="{R}articles/causeway-second-link-or-rts-which-way-to-jb-for-a-weekend-stay/">which way to cross</a>.']),
+        ],
+        'faqs': [
+            ('What is the minimum stay over Christmas at JB Staycations?', 'The minimum is 2 nights over Christmas Eve and Christmas Day. Outside that period the minimum is 1 night.'),
+            ('Which rate applies on 24 and 25 December?', 'Both nights are charged at the public holiday rate: ' + rm(PRICES['prima'][2]) + ' a night at Prima and ' + rm(PRICES['landak'][2]) + ' a night at Landak Kawan Fun House, whole house, cleaning included.'),
+            ('How many guests can stay?', 'Prima takes up to 12 guests and Landak Kawan Fun House up to 10.'),
+            ('Is a deposit needed?', DEPOSIT),
+            ('Can I cancel or change my dates?', 'There is no cancellation, but you can change your dates once. Message Daniel on WhatsApp +65 9006 2198 to check availability.'),
+        ],
+    },
 ]
 
 
