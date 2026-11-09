@@ -119,6 +119,11 @@ const MATTRESS_FAQ: [string, string][] = [
   ['Do I need to do anything before you arrive?', 'Strip the sheets, protector and any topper, and clear space around the bed so we can reach all sides. Let us know about anyone at home with allergies or sensitivities.'],
   ['When can you come?', 'We are open 24/7. Within about 8 km of Punggol, Sengkang and Tampines we offer a 3-hour call-out; the rest of Singapore is same-day. We confirm the time on WhatsApp.'],
 ];
+// Edwin 9 Nov 2026: yacht/boat mattress intent (old yacht article 301s here). Mattresses and cushions only, no marina names, no new prices or timings.
+export const YACHT_FAQ: [string, string] = ['Can you clean mattresses on a yacht or boat?', 'Yes. Our team is mobile, so we can clean mattresses and cushions on board yachts and boats at marinas in Singapore, using the same process as for mattresses at home. WhatsApp us photos, the sizes and where the boat is berthed, and we will arrange it with you.'];
+function yachtSection(): string {
+  return `<section class="py-14" id="yacht-mattresses" data-sc-yacht><div class="container-prose"><div class="sofa-depth"><p class="text-xs font-semibold uppercase tracking-widest text-brand-ochre-dark">On board</p><h2 class="mt-2 text-3xl font-bold text-brand-slate sm:text-4xl">Yacht and boat mattresses</h2><p>Our team is mobile, so we can also clean mattresses and cushions on board yachts and boats at marinas in Singapore. We use the same process as for mattresses at home: we check the mattress and its label, vacuum the surface and seams, pre-treat stains and odour areas, then clean and extract with as little moisture as the filling needs.</p><p>Cabins are often small and humid, so keep hatches or doors open, or run a fan, while the mattress dries. Please WhatsApp us photos of the mattresses and cushions, their sizes and where the boat is berthed, and we will arrange a time with you.</p></div></div></section>`;
+}
 function mattressProcess(): string {
   return `<section class="section-ozone py-16" id="mattress-process"><div class="container-prose"><div class="mx-auto max-w-2xl text-center"><p class="text-xs font-semibold uppercase tracking-widest text-brand-ochre-dark">The Process</p><h2 class="mt-2 text-3xl font-bold text-brand-slate sm:text-4xl">Our Mattress Cleaning Process</h2><p class="mt-4 text-lg text-brand-slate/70">Every mattress is checked first, then cleaned with as little moisture as the filling needs.</p></div><ol class="mt-12 grid gap-6 md:grid-cols-2 lg:grid-cols-3">${MATTRESS_STEPS.map(([t, d], i) => `<li class="relative rounded-2xl border border-brand-slate/10 bg-white p-6 shadow-sm"><span class="inline-flex h-9 w-9 items-center justify-center rounded-full bg-brand-slate text-sm font-bold text-white">${i + 1}</span><h3 class="mt-4 text-lg font-semibold text-brand-slate">${esc(t)}</h3><p class="mt-2 text-sm leading-relaxed text-brand-slate/70">${esc(d)}</p></li>`).join('')}</ol></div></section>`;
 }
@@ -145,11 +150,11 @@ function mattressDepth(): string {
 function mattressPage(h: string): string {
   h = setHead(h, 'Mattress Cleaning Singapore from $80 | Sofa Care Singapore', 'Mattress cleaning services in Singapore from $80 for a single or super single. WhatsApp photos for urine, stain and odour assessment and an available slot.', 'Mattress Cleaning Singapore');
   h = replaceRealResults(h, `<section class="sc-real" aria-labelledby="sc-real-h" data-sofacare-real-results data-sofacare-service-photo><div class="sc-real-in"><h2 id="sc-real-h">Real mattress cleaning results</h2><p class="sc-real-sub">Photos from real Sofa Care Singapore mattress jobs. Drag each slider to compare before and after.</p><div class="sc-ba-list">${JOBS.filter((j) => j.kind === 'mattress').map(slider).join('')}${oldSlider(2)}</div></div></section>`);
-  h = replaceSection(h, 'Our Sofa Cleaning Process', mattressProcess() + mattressDepth());
+  h = replaceSection(h, 'Our Sofa Cleaning Process', mattressProcess() + mattressDepth() + yachtSection());
   const f = h.indexOf('Mattress Cleaning FAQ');
   if (f === -1) throw Error('Head terms: mattress FAQ missing');
   const s = h.lastIndexOf('<section', f), e = h.indexOf('</section>', f);
-  const faqSec = h.slice(s, e + 10).replace(/(<div class="mx-auto mt-10 max-w-3xl space-y-3">)[\s\S]*(<\/div><\/div><\/section>)$/, (_m, a, b) => a + faqItems(MATTRESS_FAQ) + b);
+  const faqSec = h.slice(s, e + 10).replace(/(<div class="mx-auto mt-10 max-w-3xl space-y-3">)[\s\S]*(<\/div><\/div><\/section>)$/, (_m, a, b) => a + faqItems([...MATTRESS_FAQ, YACHT_FAQ]) + b);
   if (!faqSec.includes(MATTRESS_FAQ[1][0].slice(0, 20))) throw Error('Head terms: mattress FAQ layout changed');
   h = h.slice(0, s) + faqSec + h.slice(e + 10);
   return syncFaqSchema(h);
