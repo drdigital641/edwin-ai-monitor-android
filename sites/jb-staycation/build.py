@@ -25,7 +25,7 @@ TAGLINE = 'A quieter escape, just across the causeway.'
 # only for a site-wide content change; otherwise add {path: 'YYYY-MM-DD'} to LASTMOD for the pages you changed. Articles use their own date/updated.
 SITE_LASTMOD = '2026-11-09'
 LASTMOD = {}
-ANSWERS = {'home': 'JB Staycations has two private houses in Johor Bahru for Singapore groups. Prima, in Gelang Patah, sleeps up to 12, about 10 minutes from the Tuas Second Link (host estimate). Landak Kawan Fun House sleeps up to 10, a 5-minute walk from KSL City Mall. From RM 450 a night, cleaning included.', 'stays': 'Compare our two private JB houses. Prima, in Taman Nusantara Prima, Gelang Patah, sleeps up to 12 in 3 rooms, one on the ground floor for elderly guests. Landak Kawan Fun House, in Taman Abad, sleeps up to 10, a 5-minute walk from KSL City Mall. Prima from RM 450 and Landak from RM 550 a night, cleaning included.', 'prices': 'Prices are per night for the whole house, cleaning included. Prima: RM 450 weekday, RM 650 weekend, RM 750 public holiday. Landak Kawan Fun House: RM 550, RM 750 and RM 1,000. Every booking has a RM 1,000 refundable deposit, returned within 48 hours after checkout. Check-in is 3pm and check-out 11am.', 'gt': 'Prima is in Taman Nusantara Prima, Gelang Patah, Iskandar Puteri, about 10 minutes from the Tuas Second Link (host estimate). Landak Kawan Fun House is in Taman Abad, Johor Bahru, a 5-minute walk from KSL City Mall. Check-in is 3pm and check-out 11am. For the exact pin and parking, WhatsApp Daniel on +65 9006 2198.', 'faq': 'Quick answers for Singapore groups booking our two private JB houses. Prima sleeps up to 12 and Landak Kawan Fun House up to 10. Prices start at RM 450 a night, cleaning included, with a RM 1,000 refundable deposit returned within 48 hours after checkout. Check-in is 3pm, check-out 11am. Anything else? WhatsApp Daniel on +65 9006 2198.', 'about': 'JB Staycations offers two private houses in Johor Bahru for Singapore groups. Prima, in Taman Nusantara Prima, Gelang Patah, Iskandar Puteri, sleeps up to 12. Landak Kawan Fun House, in Taman Abad, sleeps up to 10, a 5-minute walk from KSL City Mall. Both are booked directly with the host: WhatsApp Daniel on +65 9006 2198.', 'big': 'For 10 people, Landak Kawan Fun House in Taman Abad sleeps up to 10, a 5-minute walk from KSL City Mall. For up to 12, Prima in Gelang Patah has 3 rooms, each with 1 queen bed and 2 single floor mattresses, one on the ground floor. Prima is RM 450 and Landak RM 550 a weekday night, cleaning included.'}   # tech SEO brief 9 Nov 2026: 40-60 word answer block under each H1, listed facts only
+ANSWERS = {'home': 'JB Staycations has two private houses in Johor Bahru for Singapore groups. Prima, in Gelang Patah, sleeps up to 12, about 10 minutes from the Tuas Second Link (host estimate). Landak Kawan Fun House sleeps up to 10, a 5-minute walk from KSL City Mall. From RM 450 a night, cleaning included.', 'stays': 'Compare our two private JB houses. Prima, in Taman Nusantara Prima, Gelang Patah, sleeps up to 12 in 3 rooms, one on the ground floor for elderly guests. Landak Kawan Fun House, in Taman Abad, sleeps up to 10, a 5-minute walk from KSL City Mall. Prima from RM 450 and Landak from RM 550 a night, cleaning included.', 'prices': 'Prices are per night for the whole house, cleaning included. Prima: RM 450 weekday, RM 650 weekend, RM 750 public holiday. Landak Kawan Fun House: RM 550, RM 750 and RM 1,000. There is no deposit for a normal gathering; catered gatherings have a RM 1,000 deposit, refunded within 48 hours after checkout. Check-in is 3pm and check-out 11am.', 'gt': 'Prima is in Taman Nusantara Prima, Gelang Patah, Iskandar Puteri, about 10 minutes from the Tuas Second Link (host estimate). Landak Kawan Fun House is in Taman Abad, Johor Bahru, a 5-minute walk from KSL City Mall. Check-in is 3pm and check-out 11am. For the exact pin and parking, WhatsApp Daniel on +65 9006 2198.', 'faq': 'Quick answers for Singapore groups booking our two private JB houses. Prima sleeps up to 12 and Landak Kawan Fun House up to 10. Prices start at RM 450 a night, cleaning included. No deposit for a normal gathering; RM 1,000 for catered gatherings. Check-in is 3pm, check-out 11am. Anything else? WhatsApp Daniel on +65 9006 2198.', 'about': 'JB Staycations offers two private houses in Johor Bahru for Singapore groups. Prima, in Taman Nusantara Prima, Gelang Patah, Iskandar Puteri, sleeps up to 12. Landak Kawan Fun House, in Taman Abad, sleeps up to 10, a 5-minute walk from KSL City Mall. Both are booked directly with the host: WhatsApp Daniel on +65 9006 2198.', 'big': 'For 10 people, Landak Kawan Fun House in Taman Abad sleeps up to 10, a 5-minute walk from KSL City Mall. For up to 12, Prima in Gelang Patah has 3 rooms, each with 1 queen bed and 2 single floor mattresses, one on the ground floor. Prima is RM 450 and Landak RM 550 a weekday night, cleaning included.'}   # tech SEO brief 9 Nov 2026: 40-60 word answer block under each H1, listed facts only
 WA_NUM, WA_SHOW = '6590062198', '+65 9006 2198'
 WA_BASE = 'https://wa.me/' + WA_NUM
 INDEXNOW_KEY = '8902a563f0e8890158ac4cf1b41cd50d'   # IndexNow key (jbstaycations.com; was jbairbnb.com) (9 Nov 2026), also in watchdog/indexnow.py SITES
@@ -62,7 +62,17 @@ def tiers_full(k):
 PP_WEEKDAY = {k: 'about S$%.2f' % (PRICES[k][0] * FX['rate'] / g) for k, g in (('prima', 12), ('landak', 10))}   # Prima 11.84, Landak 17.37
 def tiers_html(k, cls='tiers'):
     return '<ul class="%s">%s</ul>' % (cls, ''.join('<li><span>%s</span><b>%s</b><small>about %s</small></li>' % (t, rm(n), sgd_of(n)) for t, n in zip(TIER_NAMES, PRICES[k])))
-DEPOSIT = 'A RM 1,000 refundable deposit applies to every booking and is refunded within 48 hours after checkout.'
+# Deposit rule (Edwin 9 Nov 2026 4:52pm): no deposit for a normal gathering; RM 1,000 only for catered gatherings.
+DEPOSIT = ('No deposit for a normal gathering without food catering. A catered gathering (food catering, for example Lok Lok, or a birthday or shower gathering with catering) '
+           'has a RM 1,000 deposit, refunded within 48 hours after checkout if there is no damage or stains to the house or its contents.')
+DEPOSIT_FULL = DEPOSIT + ' No BBQ or grilling, and no sticking decorations on walls. Damage or stains to walls, fittings, fixtures or contents affect the refund.'
+DEPOSIT_SHORT = 'No deposit for a normal gathering; a RM 1,000 deposit for catered gatherings, refunded within 48 hours after checkout if there is no damage or stains.'
+DEPOSIT_RULES = ['Normal gathering with no food catering: no deposit.',
+                 'Catered gathering (food catering, for example Lok Lok, or a birthday or shower gathering with catering): RM 1,000 deposit, refunded within 48 hours after checkout if there is no damage or stains to the house or its contents.',
+                 'No BBQ or grilling.', 'No sticking decorations on walls.',
+                 'Damage or stains to walls, fittings, fixtures or contents affect the refund.']
+def deposit_list():
+    return '<ul class="rules one dep">%s</ul>' % ''.join('<li><span>%s</span></li>' % t for t in DEPOSIT_RULES)
 PAY = ('Singapore guests pay by PayNow or PayLah to the host\'s mobile, and a receipt is issued. Malaysian guests pay in RM by bank transfer or TNG eWallet. '
        'Bank details are shared once your booking and dates are confirmed. You can also book through the Airbnb listing.')
 PAY_SHORT = 'PayNow or PayLah from Singapore (receipt issued), bank transfer or TNG eWallet in RM from Malaysia, or the Airbnb listing'                 # brief figures: RM25 / RM50 per person at full occupancy
@@ -320,9 +330,9 @@ FAQ15 = {
     'car': ('What should I prepare before driving a Singapore car to JB?', 'Check JPJ’s official VEP portal for your vehicle’s registration and RFID requirements, and have valid road tax and insurance. Singapore Customs requires applicable fuel tanks to be at least three-quarters full when leaving by land. Foreign-registered petrol cars should use RON97, not subsidised RON95. Check current official rules before travel; tolls and road charges are separate from accommodation.'),
     'park': ('Where can we park?', 'Prima has parking for 2 cars inside and 6 cars outside. Landak has parking for 2 cars inside. Parking is not a guarantee against loss or damage.'),
     'pay': ('How do we pay?', PAY + ' An SGD estimate on this site is not an SGD price.'),
-    'cancel': ('Is there a deposit, and what happens if we cancel?', DEPOSIT + ' There is no cancellation, but you can change your dates once.'),
+    'cancel': ('Is there a deposit, and what happens if we cancel?', DEPOSIT_FULL + ' There is no cancellation, but you can change your dates once.'),
     'clean': ('How clean is the house, and are linen and towels included?', 'The house is professionally cleaned after every checkout, with fresh linen, towels and toiletries provided. Cleaning is included in the nightly price.'),
-    'gather': ('Can we celebrate a birthday or have a company gathering?', 'Yes, with the host\'s approval. Visitors are allowed, and quiet hours are 11pm to 7am. The RM 1,000 refundable deposit applies, as for every booking. WhatsApp Daniel with your group size and plans. These are homes with neighbours, not unrestricted venues.'),
+    'gather': ('Can we celebrate a birthday or have a company gathering?', 'Yes, with the host\'s approval. Visitors are allowed, and quiet hours are 11pm to 7am. ' + DEPOSIT_FULL + ' WhatsApp Daniel with your group size and plans. These are homes with neighbours, not unrestricted venues.'),
     'checkin': ('When can we check in, and is one night possible?', 'Both houses: check-in 3pm, check-out 11am. Self check-in details are sent after a firm booking. Early check-in and late checkout cost RM 100 an hour, subject to availability, and you can ask for a waiver. The minimum stay is 1 night, or 2 nights over Christmas Eve and Christmas Day.'),
     'nocar': ('Can we come without a car, and is there food nearby?', 'Landak is a 5-minute walk from KSL City Mall. Prima is in Gelang Patah, Iskandar Puteri. See the nearby-place guides and map links to plan food and outings. Check local Grab availability, fares and your onward transport before travelling; no pickup, shuttle or cross-border ride is included.'),
     'kids': ('Are the houses suitable for children and elderly guests?', 'Prima has a ground-floor bedroom, so elderly guests do not need to use the stairs. Landak has board games and a children\'s playroom, but is a double-storey house with stairs. WhatsApp Daniel to check cots, ground-floor rooms or mobility needs for your group. Neither house is advertised as wheelchair-accessible or childproof.'),
@@ -353,9 +363,9 @@ HOUSES = {
         'amen': ['7ft pool table', 'Mahjong table', 'Ground-floor bedroom (no stairs needed)', 'Wi-Fi', 'Air conditioning', 'Kitchen', 'Parking: 2 cars inside, 6 outside',
                  '2 TVs with Netflix', 'Washer', 'Covered balcony', 'Study desk', 'Self check-in'],
         'rules': ['Check-in 3:00 pm, check-out 11:00 am. Self check-in details are sent after a firm booking.', 'Early check-in or late checkout: RM 100 an hour, subject to availability. You can ask for a waiver.', 'No pets.',
-                  'No smoking or vaping indoors: RM 500 penalty.', 'No eating durian indoors: RM 500 penalty.', 'No BBQ.',
+                  'No smoking or vaping indoors: RM 500 penalty.', 'No eating durian indoors: RM 500 penalty.', 'No BBQ or grilling.',
                   'Visitors are allowed. Quiet hours 11:00 pm to 7:00 am. Guests must not disturb neighbours.', 'Please send a copy of your ID by WhatsApp before check-in.',
-                  'Gatherings need the host\'s approval.', DEPOSIT],
+                  'Gatherings need the host\'s approval.'] + [DEPOSIT_RULES[i] for i in (0, 1, 3, 4)],
         'near': [('Tuas Second Link', 'about 10 min drive'), ('LEGOLAND Malaysia', 'about 15 min drive'), ('Sunway Big Box', 'about 15 min drive'), ('Puteri Harbour', 'about 15-20 min drive')],
         'near_note': 'Drive times are estimates measured from the house on the Malaysian side; they exclude border queues and depend on traffic.',
         'faq': faqs('fit', 'checkin', 'park', 'gather', 'pool') + [
@@ -381,9 +391,9 @@ HOUSES = {
         'amen': ['8ft pool table', 'Foosball table', '2 dart boards', 'Mahjong table', '55-inch TV arcade', 'Board games', 'Children\'s playroom', 'Dedicated workstation', '3 bathrooms with water heaters', '100 Mbps Wi-Fi', 'Air conditioning',
                  'Kitchen for light cooking', 'Parking for 2 cars inside', 'Washer', 'Hair dryer', 'Iron', 'Self check-in'],
         'rules': ['Check-in 3:00 pm, check-out 11:00 am. Self check-in details are sent after a firm booking.', 'Early check-in or late checkout: RM 100 an hour, subject to availability. You can ask for a waiver.', 'No pets.',
-                  'No smoking or vaping indoors: RM 500 penalty.', 'No eating durian indoors: RM 500 penalty.', 'No BBQ.',
+                  'No smoking or vaping indoors: RM 500 penalty.', 'No eating durian indoors: RM 500 penalty.', 'No BBQ or grilling.',
                   'Visitors are allowed. Quiet hours 11:00 pm to 7:00 am. Guests must not disturb neighbours.',
-                  'Gatherings need the host\'s approval.', DEPOSIT],
+                  'Gatherings need the host\'s approval.'] + [DEPOSIT_RULES[i] for i in (0, 1, 3, 4)],
         'near': [('KSL City Mall', '5-min walk'), ('Yu Ee hawker (host tip)', 'about 3 min walk'), ('Mid Valley Southkey', 'about 10 min drive'), ('JB City Square and Causeway CIQ', 'about 12 min drive')],
         'near_note': 'Drive times are host estimates, excluding border queues and traffic.',
         'faq': faqs('checkin', 'park', 'kids', 'pool', 'nocar') + [
@@ -431,7 +441,7 @@ ARTICLES = [
             ('Bigger than 12?', ['Neither house takes more than 12 guests on its own. Booking both houses means two separate homes in different parts of JB, up to 22 guests in total, not one venue. Ask us what works for your group.']),
             ('Before you pay', [PAY + ' Cleaning is included in the nightly price.',
                 'House rules at both houses: check-in 3pm, check-out 11am; quiet hours 11pm to 7am; RM 500 penalty for smoking or vaping indoors, or eating durian indoors; no BBQ; no pets; cleaning included.',
-                DEPOSIT + ' There is no cancellation, but you can change your dates once. Gatherings need the host\'s approval. Visitors are allowed; quiet hours are 11pm to 7am.']),
+                DEPOSIT_FULL + ' There is no cancellation, but you can change your dates once. Gatherings need the host\'s approval. Visitors are allowed; quiet hours are 11pm to 7am.']),
             ('How to ask about dates', ['Message us on WhatsApp with your house choice, dates and the number of adults and children. Read the <a href="{R}articles/">JB guide for Singaporeans</a> for the crossing and first-time tips.']),
         ],
     },
@@ -1009,7 +1019,7 @@ table{width:100%;border-collapse:collapse;background:var(--surface);font-size:1r
 .rg.n1 figure:first-child{grid-column:1/-1;grid-row:auto}.rg.n1 figure:first-child a{aspect-ratio:16/9}
 .rg.n2 figure:first-child{grid-row:auto}.rg.n2 figure:first-child a{aspect-ratio:4/3;flex:none}@media(min-width:700px){.rg.n2{grid-template-columns:2fr 1fr}.rg.n2 figure:first-child{grid-column:auto}}
 .rules{list-style:none;margin:0;padding:0;display:grid;gap:10px}@media(min-width:700px){.rules{grid-template-columns:1fr 1fr}}
-.rules li{display:flex;gap:12px;align-items:flex-start;padding:14px 16px;background:var(--surface);border:1px solid var(--line);border-radius:var(--r);color:var(--ink)}.rules .i{color:var(--icon-amber);margin-top:1px}.rules.one{grid-template-columns:1fr}
+.rules li{display:flex;gap:12px;align-items:flex-start;padding:14px 16px;background:var(--surface);border:1px solid var(--line);border-radius:var(--r);color:var(--ink)}.rules .i{color:var(--icon-amber);margin-top:1px}.rules.one{grid-template-columns:1fr}.cmp-sec h3{margin:28px 0 12px}.dep{margin-top:12px}
 .near{list-style:none;margin:0 0 12px;padding:0;border:1px solid var(--line);border-radius:var(--r);background:var(--surface);overflow:hidden}
 .near li{display:flex;justify-content:space-between;align-items:center;gap:16px;padding:14px 18px;border-top:1px solid var(--line)}.near li:first-child{border-top:0}.near li span{display:flex;align-items:center;gap:10px}.near .i{color:var(--icon-muted)}.near b{white-space:nowrap;font-weight:600}
 .addr{display:flex;gap:10px;align-items:flex-start;color:var(--ink);margin-bottom:18px}.addr .i{color:var(--icon-amber);margin-top:2px}
@@ -1736,7 +1746,7 @@ HOME_FAQ = [
     ('What are the check-in and check-out times?', 'Both houses: check-in 3:00 pm, check-out 11:00 am, with self check-in details sent after a firm booking.'),
     ('Are pets, smoking and BBQ allowed?', 'No pets, and no smoking, vaping or durian indoors (RM 500 penalty). No BBQ at either house. Quiet hours at both houses are 11:00 pm to 7:00 am.'),
     ('Is there parking, and can we cook?', 'Prima has parking for 2 cars inside and 6 outside, and 2 cars park inside the gate at Landak Kawan Fun House. Prima has a kitchen; Landak Kawan Fun House has a kitchen for light cooking.'),
-    ('Can we hold a larger gathering, and what is the cancellation policy?', 'Gatherings need the host\'s approval. ' + DEPOSIT + ' There is no cancellation, but you can change your dates once.'),
+    ('Can we hold a larger gathering, and what is the cancellation policy?', 'Gatherings need the host\'s approval. ' + DEPOSIT_FULL + ' There is no cancellation, but you can change your dates once.'),
 ]
 
 
@@ -1816,7 +1826,7 @@ def home_body():
     plans_html = ''.join('<li><b>%s</b><span>%s</span><a class="link" href="{R}stays/%s/#around">What is around %s %s</a></li>'
                          % (e(t), e(d), HOUSES[k]['slug'], 'Prima' if k == 'prima' else 'Landak', ico('arrow', 18)) for k, t, d in plans)
     steps = [('Choose a house, send dates and group size.', 'Prima for up to 12 near Tuas, Landak for up to 10 near KSL. Message us on WhatsApp.'),
-             ('Book and pay.', 'PayNow or PayLah from Singapore, bank transfer or TNG eWallet from Malaysia, or the Airbnb listing. RM 1,000 refundable deposit. No cancellation, but you can change your dates once.'),
+             ('Book and pay.', 'PayNow or PayLah from Singapore, bank transfer or TNG eWallet from Malaysia, or the Airbnb listing. ' + DEPOSIT_SHORT + ' No cancellation, but you can change your dates once.'),
              ('Plan the crossing.', 'Self check-in details are sent after a firm booking. Check-in 3pm, check-out 11am. Bring your passport and check ICA traffic updates.')]
     steps_html = ''.join('<li><div><b>%s</b><span>%s</span></div></li>' % (e(a), e(b)) for a, b in steps)
     arts = ''.join(article_card(a) for a in ARTICLES)
@@ -1856,11 +1866,10 @@ CMP_ROWS = [
     ('Ground-floor bedroom', 'Yes, no stairs needed for elderly guests', 'Double-storey with stairs; WhatsApp Daniel to check'),
     ('Standout fun', '7ft pool table, mahjong', '8ft pool table, foosball, 2 dart boards, mahjong, TV arcade, children\'s playroom, dedicated workstation'),
     ('Nearby', 'LEGOLAND and Puteri Harbour about 15-20 min drive; about 10 min from Tuas Second Link', 'KSL City Mall 5-min walk; about 12 min from Causeway CIQ'),
-    ('BBQ', 'No BBQ', 'No BBQ'),
+    ('BBQ', 'No BBQ or grilling', 'No BBQ or grilling'),
     ('Check-in / out', 'Check-in 3:00 pm, check-out 11:00 am', 'Check-in 3:00 pm, check-out 11:00 am'),
     ('Minimum stay', '1 night (2 over Christmas Eve and Day)', '1 night (2 over Christmas Eve and Day)'),
     ('Cleaning', 'Included in the nightly price', 'Included in the nightly price'),
-    ('Deposit', 'RM 1,000 refundable, back within 48 hours after checkout', 'RM 1,000 refundable, back within 48 hours after checkout'),
     ('Cancellation', 'No cancellation; dates can be changed once', 'No cancellation; dates can be changed once'),
 ]
 
@@ -1910,11 +1919,11 @@ def stays_body():
             '<script>document.documentElement.setAttribute("data-house",location.hash==="#landak"?"landak":"prima")</script>'
             '<div class="scards"><div class="hpane" data-house="prima" data-lb-set>%s%s%s</div><div class="hpane" data-house="landak" data-lb-set>%s%s%s</div></div>'
             '<section class="rv cmp-sec" id="cmp"><p class="eyebrow">Side by side</p><details class="acc" open><summary><h2>Which house is right for you?</h2>%s</summary><div class="cmp"><table><thead><tr><th scope="col"><span class="sr">Detail</span></th><th scope="col">Prima</th><th scope="col">Landak Kawan Fun House</th></tr></thead><tbody>%s</tbody></table></div>'
-            '<p class="note">Drive times are host estimates, excluding border queues. Prices in RM; SGD is an estimate.</p>%s</details>'
+            '<p class="note">Drive times are host estimates, excluding border queues. Prices in RM; SGD is an estimate.</p>%s<h3>Deposit at both houses</h3>%s</details>'
             '<script>if(matchMedia("(max-width:767px)").matches)document.currentScript.previousElementSibling.removeAttribute("open")</script><div class="cmp-cta">%s%s</div></section>'
             '<section class="rv" id="faq">%s</section></div>'
             '<section class="sec band stays-band"><div class="bg">%s</div><div class="wrap rv"><p class="eyebrow">Book direct</p><h2>Tell us your dates and group size</h2><p>We reply on WhatsApp with the rate and availability for the house you pick.</p>%s</div></section>'
-            % (stays_card('prima'), album('prima'), around_top3('prima') + reviews_compact('prima'), stays_card('landak'), album('landak'), around_top3('landak') + reviews_compact('landak'), ico('down', 22, 'i acc-i'), rows, fx_note(),
+            % (stays_card('prima'), album('prima'), around_top3('prima') + reviews_compact('prima'), stays_card('landak'), album('landak'), around_top3('landak') + reviews_compact('landak'), ico('down', 22, 'i acc-i'), rows, fx_note(), deposit_list(),
                wa_btn('WhatsApp about Prima', HOUSES['prima']['msg'], 'cmp-prima'), wa_btn('WhatsApp about Landak', HOUSES['landak']['msg'], 'cmp-landak'), faq_html, pimg(STAYS_BAND_IMG, sizes='100vw'), wa_btn('Message us on WhatsApp', wa_msg(), 'stays-band')))
 
 
@@ -2010,9 +2019,9 @@ def house_body(k):
     other = HOUSES[ok]
     side_items = [('users', 'Up to %d guests' % h['guests']), ('bed', '%d bedrooms, 3 bathrooms' % h['beds']), ('cal', h['minstay']), ('cal', '%s per person on a weekday at %d guests (full house)' % (PP_WEEKDAY[k], h['guests'])),
                   ('key', 'Self check-in after 3:00 pm' if k == 'landak' else 'Self check-in'), ('star', ('RAW', rating_link(k))), ('chat', 'Book directly on WhatsApp')]
-    side = ('<aside class="side rv" id="book" aria-label="Rate and booking"><p class="side-h">Per night, whole house</p>%s<p class="sgd-s">Cleaning included. %s</p>'
+    side = ('<aside class="side rv" id="book" aria-label="Rate and booking"><p class="side-h">Per night, whole house</p>%s<p class="sgd-s">Cleaning included. %s <a href="#rules">Deposit rules</a>.</p>'
             '<ul>%s</ul>%s%s<p class="note">Prices are in RM. Message Daniel for availability on your dates.</p>%s</aside>'
-            % (tiers_html(k), DEPOSIT, ''.join('<li>%s%s</li>' % (ico(i, 18), ('<span>%s</span>' % t[1]) if isinstance(t, tuple) else e(t)) for i, t in side_items), enquiry_form(k), wa_btn('Check dates & rate', h['msg'], k, 'btn btn-wa enq-alt'), fx_note()))
+            % (tiers_html(k), DEPOSIT_SHORT, ''.join('<li>%s%s</li>' % (ico(i, 18), ('<span>%s</span>' % t[1]) if isinstance(t, tuple) else e(t)) for i, t in side_items), enquiry_form(k), wa_btn('Check dates & rate', h['msg'], k, 'btn btn-wa enq-alt'), fx_note()))
     return ('<div class="htop"><div class="wrap">%s<h1>%s</h1><ul class="hmeta">%s</ul><nav class="subnav" aria-label="On this page">%s</nav>%s%s</div></div>'
             '<div class="wrap hlay"><div class="hmain">'
             '<section class="intro rv"><p class="answer">%s</p><h2 class="htag">%s</h2><ul class="stats">%s</ul>%s</section>'
@@ -2040,9 +2049,9 @@ def prices_body():
     return ('<div class="wrap body prose"><div class="tw"><table><thead><tr><th>House</th><th>Weekday</th><th>Weekend</th><th>Public holiday</th><th>Per person (weekday, full house)</th><th>Guests</th></tr></thead><tbody>%s</tbody></table></div>%s'
             '<section class="rv"><h2>What is included</h2><p><b>Prima (landed house):</b> ground-floor bedroom (no stairs needed), 7ft pool table, mahjong table, Wi-Fi, air conditioning, kitchen, parking for 2 cars inside and 6 outside, 2 TVs with Netflix, washer, covered balcony and a study desk. 3 rooms (each 1 queen bed and 2 single floor mattresses), 3 bathrooms, up to 12 guests.</p>'
             '<p><b>Landak Kawan Fun House (KSL landed fun house):</b> 8ft pool table, foosball, 2 dart boards, mahjong table, 55-inch TV arcade, board games, children\'s playroom, dedicated workstation, 100 Mbps Wi-Fi, air conditioning, kitchen for light cooking, parking for 2 cars inside, washer, hair dryer and iron. 3 bedrooms, 3 bathrooms with water heaters, 5 beds (1 king, 4 queens), up to 10 guests.</p></section>'
-            '<section class="rv"><h2>Good to know</h2><ul><li>All prices are in Malaysian ringgit (RM).</li><li>Prices are per night for the whole house, with weekday, weekend and public holiday rates. For your group size or a gathering, WhatsApp Daniel.</li><li>Cleaning is included in the nightly price.</li><li>Minimum stay: 1 night (2 over Christmas Eve and Christmas Day). 24 and 25 Dec are charged at the public holiday rate (Prima RM 750, Landak RM 1,000).</li><li>Per-person figures split the weekday whole-house rate at full occupancy; they are not bookable bed prices.</li><li>%s</li><li>%s</li><li>No cancellation, but you can change your dates once.</li><li>Gatherings need the host\'s approval.</li>'
-            '<li>Early check-in or late checkout: RM 100 an hour, subject to availability (you can ask for a waiver).</li><li>No BBQ at either house.</li></ul>%s</section></div>'
-            % (rows, fx_note(), PAY, DEPOSIT, wa_btn('Message for dates and rates', wa_msg(), 'prices')))
+            '<section class="rv"><h2>Good to know</h2><ul><li>All prices are in Malaysian ringgit (RM).</li><li>Prices are per night for the whole house, with weekday, weekend and public holiday rates. For your group size or a gathering, WhatsApp Daniel.</li><li>Cleaning is included in the nightly price.</li><li>Minimum stay: 1 night (2 over Christmas Eve and Christmas Day). 24 and 25 Dec are charged at the public holiday rate (Prima RM 750, Landak RM 1,000).</li><li>Per-person figures split the weekday whole-house rate at full occupancy; they are not bookable bed prices.</li><li>%s</li><li>No cancellation, but you can change your dates once.</li><li>Gatherings need the host\'s approval.</li>'
+            '<li>Early check-in or late checkout: RM 100 an hour, subject to availability (you can ask for a waiver).</li><li>No BBQ or grilling at either house.</li></ul></section><section class="rv" id="deposit"><h2>Deposit</h2>%s%s</section></div>'
+            % (rows, fx_note(), PAY, deposit_list(), wa_btn('Message for dates and rates', wa_msg(), 'prices')))
 
 
 def gt_body():
@@ -2297,7 +2306,7 @@ def main():
         'Allow: /\n\nSitemap: %ssitemap.xml\n' % BASE)
     open(os.path.join(OUT, 'site.webmanifest'), 'w').write(json.dumps({'name': NAME, 'short_name': NAME, 'start_url': BASE, 'display': 'browser', 'background_color': '#f7f8f9', 'theme_color': '#0a1f38',
         'icons': [{'src': 'icon-192.png', 'sizes': '192x192', 'type': 'image/png'}, {'src': 'icon-512.png', 'sizes': '512x512', 'type': 'image/png'}]}, indent=1))
-    ll = ['# JB Staycations', '', '> %s Private holiday houses in Johor Bahru, Malaysia, for Singapore families and groups. Host: Daniel (based in Singapore and JB; English, Malay and Chinese), WhatsApp %s (%s). Pay by %s.' % (TAGLINE, WA_SHOW, WA_BASE, PAY_SHORT), '', '## Booking terms', '- Prices per night for the whole house, cleaning included. Prima: ' + tiers_full('prima') + '. Landak Kawan Fun House: ' + tiers_full('landak') + '. SGD figures are estimates at RM1 = S$0.3158.', '- ' + DEPOSIT + ' Bank details are shared once a booking and its dates are confirmed.', '- Check-in 3pm, check-out 11am; self check-in details sent after a firm booking; early check-in or late checkout RM 100 an hour, subject to availability (waiver on request).', '- Minimum stay 1 night (2 nights over Christmas Eve and Christmas Day). No cancellation; dates can be changed once.', '- Gatherings need the host\'s approval. Visitors allowed; quiet hours 11pm to 7am. No BBQ, no pets; RM 500 penalty for smoking, vaping or eating durian indoors.', '- Prima has a ground-floor bedroom, so elderly guests do not need the stairs.', '- Professionally cleaned after every checkout; fresh linen, towels and toiletries provided. Fire extinguisher under the kitchen sink; outdoor CCTV; the host is the emergency contact.', '', '## Houses']
+    ll = ['# JB Staycations', '', '> %s Private holiday houses in Johor Bahru, Malaysia, for Singapore families and groups. Host: Daniel (based in Singapore and JB; English, Malay and Chinese), WhatsApp %s (%s). Pay by %s.' % (TAGLINE, WA_SHOW, WA_BASE, PAY_SHORT), '', '## Booking terms', '- Prices per night for the whole house, cleaning included. Prima: ' + tiers_full('prima') + '. Landak Kawan Fun House: ' + tiers_full('landak') + '. SGD figures are estimates at RM1 = S$0.3158.', '- ' + DEPOSIT_FULL + ' Bank details are shared once a booking and its dates are confirmed.', '- Check-in 3pm, check-out 11am; self check-in details sent after a firm booking; early check-in or late checkout RM 100 an hour, subject to availability (waiver on request).', '- Minimum stay 1 night (2 nights over Christmas Eve and Christmas Day). No cancellation; dates can be changed once.', '- Gatherings need the host\'s approval. Visitors allowed; quiet hours 11pm to 7am. No BBQ, no pets; RM 500 penalty for smoking, vaping or eating durian indoors.', '- Prima has a ground-floor bedroom, so elderly guests do not need the stairs.', '- Professionally cleaned after every checkout; fresh linen, towels and toiletries provided. Fire extinguisher under the kitchen sink; outdoor CCTV; the host is the emergency contact.', '', '## Houses']
     for k in ORDER:
         h = HOUSES[k]
         ll.append('- [%s](%sstays/%s/): %s. Up to %d guests, %s per night, cleaning included. %s' % (h['full'], BASE, h['slug'], h['addr'], h['guests'], tiers_rm(k), h['card']))
