@@ -556,11 +556,13 @@ def category(c):
     es = [e for e in ENTRIES if c['slug'] in e.get('categories', [e['category']])]
     n = words(c['intro'])
     assert 40 <= n <= 60, (c['slug'], n)
+    _sl = top_rated(es, SHORTLIST_N)
+    _nest = len({e['estate'] for e in es if e.get('estate') in ESTATES})
     cr, crld = crumbs(depth, [('Services', 'services/' + c['slug'] + '/'), (c['name'], None)][1:])
     body = f'''<div class="w">{cr}</div>
-<section class="hero" style="padding-top:20px"><div class="w"><h1>{E(c['name'])} in Singapore</h1><p class="lede">{E(c['intro'])}</p>{chip_row(depth, c['slug'])}</div></section>
+<section class="hero" style="padding-top:20px"><div class="w"><h1>{E(c['name'])} in Singapore</h1>{answer_p('%d workshops on this site list %s, across %d industrial estates. The shortlist below shows %d with strong Google ratings; every one is listed by area further down.' % (len([e for e in es if not is_paid(e)]), c['name'].lower(), _nest, len(_sl)))}<p class="lede">{E(c['intro'])}</p>{chip_row(depth, c['slug'])}</div></section>
 {featured_sec(es, depth, 'services/%s/' % c['slug'], 'in ' + c['short'].lower())}
-<section><div class="w"><h2 class="rv">Listings</h2><div class="grid">{''.join(card(e, depth, 'services/%s/' % c['slug']) for e in es if not is_paid(e))}{list_card(depth, c['short'].lower())}</div></div></section>'''
+<section><div class="w"><h2 class="rv">Shortlist</h2>{shortlist_note(len(_sl), free_n(es) + sum(1 for e in es if not is_paid(e) and e['tier'] != 'free'), depth, es)}<div class="grid">{''.join(card(e, depth, 'services/%s/' % c['slug']) for e in _sl)}{list_card(depth, c['short'].lower())}</div></div></section>'''
     _bl = links_by_estate(es, depth, c['slug'])
     if _bl:
         body += '<section><div class="w nar"><h2>%s workshops by area</h2><p>Every listed workshop for %s, grouped by industrial estate. Tap a name for its page with address, hours, WhatsApp and Call.</p>%s</div></section>' % (E(c['name']), E(c['name'].lower().replace('abs, ecu', 'ABS, ECU').replace('ppf', 'PPF')), _bl)
@@ -578,7 +580,7 @@ def category(c):
 <h3>Signs you may need it</h3><ul class="tick">{''.join('<li>%s</li>' % E(x) for x in sc['signs'])}</ul>
 <h3>What to ask the workshop</h3><ul class="tick">{''.join('<li>%s</li>' % E(x) for x in sc['ask'])}</ul>{gl_html}</div></section>'''
         sfaqs = sc['faqs']; body += faq_block(sfaqs, 'Questions about %s' % c['name'].lower())
-    itemlist = itemlist_ld(c['name'] + ' in Singapore', es)
+    itemlist = itemlist_ld(c['name'] + ' in Singapore', _sl)   # bounded: the visible shortlist only
     itemlist = {'@context': 'https://schema.org', '@type': 'CollectionPage', 'name': c['name'] + ' in Singapore', 'url': abs_url('services/%s/' % c['slug']), 'description': c['blurb'],
                 'mainEntity': {k: v for k, v in itemlist.items() if k != '@context'}}
     FREECOUNT['services/%s/' % c['slug']] = free_n(es)
@@ -625,6 +627,66 @@ def area_tile(depth, k, sub):
     return '<li><a href="%sareas/%s/"><span class="ti">%s</span><span><b>%s</b><small>%s</small></span></a></li>' % (pre(depth), k, ic('pin'), E(sub[0]), E(sub[1]))
 
 
+
+# ---- Slim collection pages (Edwin 10 Nov 2026, ranking wave 1): a scored shortlist of full cards, the rest as light rows or estate links.
+SHORTLIST_N = 12
+
+
+SITE_AVG = 4.5   # replaced by the real site average in compute_facts()
+
+
+def gscore(e):
+    """Site-wide Top rated score (same formula as the homepage sort): rating pulled toward the site average by RANK_PRIOR ratings. None without a rating."""
+    f = FACTS.get(e['slug']) or {}
+    if not f.get('rating') or not f.get('n'):
+        return None
+    v, r = f['n'], float(f['rating'])
+    return (v / (v + RANK_PRIOR)) * r + (RANK_PRIOR / (v + RANK_PRIOR)) * SITE_AVG
+
+
+def az_rule(es):
+    """Edwin 3 Nov 2026: a list that holds a founder-owned or Verified listing is plain A to Z, so they get no boost."""
+    return any(e['tier'] != 'free' for e in es if not is_paid(e))
+
+
+def top_rated(es, n):
+    free = [e for e in es if not is_paid(e)]
+    if az_rule(free):
+        return sorted(free, key=lambda e: e['name'].lower())[:n]
+    return sorted(free, key=lambda e: (gscore(e) is None, -(gscore(e) or 0), -((FACTS.get(e['slug']) or {}).get('n') or 0), e['name'].lower()))[:n]
+
+
+def mini_card(e, depth, page_path):
+    """Light row for a workshop past the shortlist: name, area, Google rating, WhatsApp and Call. Same filter attributes as a full card."""
+    _f = FACTS.get(e['slug'])
+    attrs = 'data-search="%s"' % E(e['name'].lower(), True)
+    if _f:
+        attrs += ' data-rating="%s" data-sun="%d" data-late="%d"' % ((_f['rating'] or '') if _f['n'] >= RANK_MIN_RATINGS else '', 1 if _f['sunday'] else 0, 1 if _f['late'] else 0)
+    rk = '<p class="rankline">%s</p>' % E(_f['rank_text']) if _f and _f.get('rank_text') else ''
+    return ('<article class="card mini" %s><div class="bd"><h3><a href="%sworkshops/%s/">%s</a></h3><p class="meta rg">%s<span>%s</span></p>%s%s<div class="acts">%s</div></div></article>'
+            % (attrs, pre(depth), e['slug'], E(e['name']), ic('pin'), E(region_label(e)), rk, rating_line(e), contact_btns(e, page_path, 'sm')))
+
+
+def shortlist_note(shown, total, depth, es=()):
+    if az_rule(es):
+        return '<p class="fine">Showing %d of %d listed workshops, A to Z. Paid listings are never in it. Every workshop is listed by area further down this page.</p>' % (shown, total)
+    return ('<p class="fine">Shortlist: %d of %d listed workshops, ordered by Google rating and number of ratings together (the formula is on the <a href="%sabout/">About page</a>). '
+            'Paid listings are never in it. Every workshop is listed by area further down this page.</p>' % (shown, total, pre(depth)))
+
+
+def answer_p(text):
+    """Short direct answer at the top of a hub, built only from counts and names in the data."""
+    return '<p class="answer"><b>In short:</b> %s</p>' % E(text)
+
+
+def top_services(es, k=3):
+    cnt = {}
+    for e in es:
+        for c in e.get('categories', [e['category']]):
+            cnt[c] = cnt.get(c, 0) + 1
+    return [CAT[c]['name'].lower() for c, _ in sorted(cnt.items(), key=lambda x: (-x[1], x[0]))[:k] if c in CAT]
+
+
 def region(slug):
     """Level 1: /areas/<region>/"""
     depth = 2
@@ -634,16 +696,17 @@ def region(slug):
     h1 = 'Mobile car services across Singapore' if mobile else 'Car workshops in the %s region' % name
     cr, crld = crumbs(depth, [(name, None)])
     est = [(k, v) for k, v in PUB_ESTATES.items() if ESTATES[k]['region'] == slug and any(e['region'] == slug for e in v)]
+    _rsl = top_rated(es, 6)
     tiles = ''.join(area_tile(depth, k, (ESTATES[k]['name'], '%d listing%s' % (len(v), '' if len(v) == 1 else 's'))) for k, v in est)
     est_html = '<section class="alt"><div class="w"><h2>Estates and industrial areas</h2><ul class="tiles est">%s</ul></div></section>' % tiles if tiles else ''
     mob_note = ''
     if not mobile and 'mobile' in PUB_REGIONS:
         mob_note = '<p class="fine" style="margin-top:14px">Looking for a service that comes to you? See <a href="%sareas/mobile/">mobile car services across Singapore</a>.</p>' % pre(depth)
     body = f'''<div class="w">{cr}</div>
-<section class="hero" style="padding-top:14px"><div class="w"><h1>{E(h1)}</h1><p class="lede">{E(areas.REGION_INTRO[slug])}</p><p>{E(REGION_COPY[slug])}</p></div></section>
+<section class="hero" style="padding-top:14px"><div class="w"><h1>{E(h1)}</h1>{answer_p(('%d listings offer mobile car services across Singapore.' % len([e for e in es])) if mobile else ('%d workshops are listed in the %s region, across %d industrial estates. Pick an estate below, or start with the shortlist.' % (len([e for e in es if not is_paid(e)]), name, len(est))))}<p class="lede">{E(areas.REGION_INTRO[slug])}</p><p>{E(REGION_COPY[slug])}</p></div></section>
 {est_html}
 {featured_sec(es, depth, 'areas/%s/' % slug, 'in the mobile list' if mobile else 'in the %s region' % name)}
-<section><div class="w"><h2>{'Mobile listings' if mobile else 'All workshops in the %s region' % E(name)}</h2><div class="grid">{''.join(card(e, depth, 'areas/%s/' % slug) for e in es if not is_paid(e))}{list_card(depth, 'car workshop' if mobile else 'car workshop in the ' + name + ' region')}</div>{shortlist_links(es, name)}{mob_note}</div></section>'''
+<section><div class="w"><h2>{'Mobile listings' if mobile else 'Shortlist for the %s region' % E(name)}</h2>{shortlist_note(len(_rsl), len([e for e in es if not is_paid(e)]), depth, es).replace('further down this page', 'on its estate page')}<div class="grid">{''.join(card(e, depth, 'areas/%s/' % slug) for e in _rsl)}{list_card(depth, 'car workshop' if mobile else 'car workshop in the ' + name + ' region')}</div>{shortlist_links(es, name)}{mob_note}</div></section>'''
     other_regions = ', '.join('<a href="%sareas/%s/">%s</a>' % (pre(depth), k, E(RN[k])) for k in PUB_REGIONS if k != slug)
     rfaqs = [
         ('Which areas does the %s page cover?' % name, areas.REGION_INTRO[slug]),
@@ -654,7 +717,8 @@ def region(slug):
     title = fit_title('Mobile Car Services in Singapore | %s' % SITE_NAME) if mobile else fit_title('Car Workshops in %s Singapore | %s' % (name, SITE_NAME), 'Car Workshops in %s | %s' % (name, SITE_NAME))
     desc = ('Mobile car services that come to your car anywhere in Singapore, such as onsite batteries and mobile detailing. Message them directly.' if mobile else
             'Car workshops and car services in the %s region of Singapore, with estate pages and direct WhatsApp or call contact.' % name)
-    page('areas/%s/' % slug, title, cap(desc, 160), body, [itemlist_ld(h1, es), dict(crld, **{'@context': 'https://schema.org'}), faq_ld(rfaqs)], h1=h1, index=False, why='region pages are navigation only')
+    FREECOUNT['areas/%s/' % slug] = free_n(es)
+    page('areas/%s/' % slug, title, cap(desc, 160), body, [itemlist_ld(h1, _rsl), dict(crld, **{'@context': 'https://schema.org'}), faq_ld(rfaqs)], h1=h1, index=free_n(es) >= MIN_FREE, why='fewer than %d free workshops' % MIN_FREE)
 
 
 def faq_ld(faqs):
@@ -684,17 +748,18 @@ def town_hub(slug):
             if e['slug'] not in _seen:
                 _seen.add(e['slug']); hub_es.append(e)
     hub_es.sort(key=lambda e: e['name'].lower())
+    _tsl = top_rated(hub_es, SHORTLIST_N)
     HUBCARDS['areas/%s/' % slug] = len(hub_es)
     h1 = 'Car workshops in %s' % t['name']
     body = f'''<div class="w">{cr}</div>
-<section class="hero" style="padding-top:14px"><div class="w"><h1>{E(h1)}</h1><p class="lede">{E(t['intro'])}</p><p>{E(para)}</p></div></section>
+<section class="hero" style="padding-top:14px"><div class="w"><h1>{E(h1)}</h1>{answer_p('%d workshops are listed in %s, across %d industrial estates. The most common services here are %s.' % (len([e for e in hub_es if not is_paid(e)]), t['name'], len(ests), and_list(top_services(hub_es))))}<p class="lede">{E(t['intro'])}</p><p>{E(para)}</p></div></section>
 <section class="alt"><div class="w"><h2>Industrial estates in {E(t['name'])}</h2><ul class="tiles est">{tiles}</ul>
 <p class="fine" style="margin-top:14px">Nearby MRT stations include {E(and_list(mrt))}. Landmarks include {E(and_list(marks))}. Back to the <a href="{pre(depth)}areas/{t['region']}/">{E(rname)} region</a>.</p></div></section>
 {featured_sec(hub_es, depth, 'areas/%s/' % slug, 'in ' + t['name'])}
-<section><div class="w"><h2>All workshops in {E(t['name'])}</h2><div class="grid">{''.join(card(e, depth, 'areas/%s/' % slug) for e in hub_es if not is_paid(e))}</div></div></section>'''
+<section><div class="w"><h2>Workshops in {E(t['name'])}</h2>{shortlist_note(len(_tsl), len([e for e in hub_es if not is_paid(e)]), depth, hub_es).replace('listed by area further down this page', 'shown below, past the shortlist as a short row')}<div class="grid">{''.join(card(e, depth, 'areas/%s/' % slug) for e in _tsl)}{''.join(mini_card(e, depth, 'areas/%s/' % slug) for e in hub_es if not is_paid(e) and e not in _tsl)}</div></div></section>'''
     desc = 'Car workshop areas in %s, %s region: %s. Pick an industrial estate to compare workshops and contact them on WhatsApp.' % (t['name'], rname, and_list(ESTATES[k]['name'] for k in ests))
     page('areas/%s/' % slug, fit_title('Car Workshops in %s | %s' % (t['name'], SITE_NAME), 'Car Workshops in %s' % t['name']), cap(desc, 160), body,
-         [dict(crld, **{'@context': 'https://schema.org'})], h1=h1, index=len(ests) >= 2 and total >= MIN_FREE, why='town hub with one estate or fewer than %d free workshops' % MIN_FREE)
+         [dict(crld, **{'@context': 'https://schema.org'}), itemlist_ld(h1, _tsl)], h1=h1, index=len(ests) >= 2 and total >= MIN_FREE, why='town hub with one estate or fewer than %d free workshops' % MIN_FREE)
 
 
 def estate_by_service(slug, es, depth):
@@ -849,10 +914,10 @@ def estate(slug, es):
                   '<p class="fine et-n" hidden><b class="et-c"></b> <button type="button" class="linkb" data-clear>Clear filters</button><br>Filters use the Google Maps hours we hold. Workshops without hours are hidden while a filter is on.</p></div>')
     order_note = ('<p class="fine">Ranked by a combined score of Google rating and number of ratings, among the %d workshops here with %d or more Google ratings (the formula is on the <a href="%sabout/">About page</a>). The others follow A to Z. Ratings and hours are from Google Maps.</p>' % (len(ranked), RANK_MIN_RATINGS, pre(depth))) if ranked else '<p class="fine">Listed A to Z. Ratings and hours are from Google Maps.</p>'
     body = f'''<div class="w">{cr}</div>
-<section class="hero" style="padding-top:14px"><div class="w"><h1>Car workshops in {E(a['name'])}</h1><p class="lede">{E(intro)}</p>{chips}</div></section>
+<section class="hero" style="padding-top:14px"><div class="w"><h1>Car workshops in {E(a['name'])}</h1>{answer_p('%d car workshop%s %s listed in %s. The most common services here are %s.' % (free_n(es) + sum(1 for e in es if not is_paid(e) and e['tier'] != 'free'), '' if len([e for e in es if not is_paid(e)]) == 1 else 's', 'is' if len([e for e in es if not is_paid(e)]) == 1 else 'are', a['name'], and_list(top_services(es)))) if len(top_services(es)) else ''}<p class="lede">{E(intro)}</p>{chips}</div></section>
 {about_html}
 {featured_sec(paid_es, depth, 'areas/%s/' % slug, 'in ' + a['name'])}
-<section class="alt"><div class="w"><h2>Workshops in {E(a['name'])}</h2>{order_note}{etools}<div class="grid" id="estate-grid">{''.join(card(e, depth, 'areas/%s/' % slug) for e in es if not is_paid(e))}{list_card(depth, 'car workshop in ' + a['name'])}</div>{shortlist_links(es, a['name'])}</div></section>
+<section class="alt"><div class="w"><h2>Workshops in {E(a['name'])}</h2>{order_note}{etools}<div class="grid" id="estate-grid">{''.join((card(e, depth, 'areas/%s/' % slug) if i < SHORTLIST_N else mini_card(e, depth, 'areas/%s/' % slug)) for i, e in enumerate([x for x in es if not is_paid(x)]))}{list_card(depth, 'car workshop in ' + a['name'])}</div>{shortlist_links(es, a['name'])}</div></section>
 {estate_practical(slug, es, depth)}{estate_by_service(slug, es, depth)}
 <section class="alt"><div class="w"><h2>Map of {E(a['name'])}</h2>
 <div class="mapbox"><iframe src="{E(map_src)}" title="Map of {E(a['name'], True)}" loading="lazy" referrerpolicy="strict-origin-when-cross-origin"></iframe></div>
@@ -867,7 +932,7 @@ def estate(slug, es):
         desc = 'Find %d car workshop%s in %s, %s region, Singapore: %s. Map, nearby areas and direct WhatsApp or call.' % (n, '' if n == 1 else 's', a['name'], rname, cats.lower())
     if len(desc) > 160:
         desc = 'Compare %d car workshops in %s with Google ratings, hours and distances. WhatsApp and call.' % (n, a['name'])
-    ld = [itemlist_ld('Car workshops in %s' % a['name'], es), dict(crld, **{'@context': 'https://schema.org'}), faq_ld(faqs)]
+    ld = [itemlist_ld('Car workshops in %s' % a['name'], [x for x in es if not is_paid(x)][:SHORTLIST_N]), dict(crld, **{'@context': 'https://schema.org'}), faq_ld(faqs)]
     _ix = free_n(es) >= MIN_FREE or ('areas/%s/' % slug) in INDEX_EXCEPTIONS
     FREECOUNT['areas/%s/' % slug] = free_n(es)
     page('areas/%s/' % slug, title, cap(desc, 160), body, ld, h1='Car workshops in %s' % a['name'], index=_ix, why='fewer than %d free workshops' % MIN_FREE)
@@ -1469,6 +1534,9 @@ def compute_facts():
             if x >= 1:
                 f['close_rank'] = 'Closes later than %d of %d other %s workshops we list with Google Maps hours' % (x, len(others), nm)
         FACTS[e['slug']] = f
+    global SITE_AVG   # site-wide average Google rating, used by the Top rated shortlist (gscore)
+    _rs = [float(f['rating']) for f in FACTS.values() if f.get('rating')]
+    SITE_AVG = sum(_rs) / len(_rs) if _rs else 4.5
 
 
 def rank_sorted(es):
@@ -1891,6 +1959,16 @@ def _b_claim_box(x):
             % (pre(depth), e['slug'], e['slug'], E(page_label(path))))
 
 
+def refreshed_on(e, pl, g):
+    """Last real build or enrichment of this card, from the data: record last_verified_at, the enrichment date (card_rules) or the Google fetch date."""
+    rec = {}
+    f = os.path.join(HERE, '..', 'data', 'workshops', e['slug'] + '.json')
+    if os.path.exists(f):
+        rec = json.load(open(f))
+    ds = [str(d)[:10] for d in (rec.get('last_verified_at'), pl.get('card_rules') if isinstance(pl.get('card_rules'), str) else None, g.get('fetched_at')) if d]
+    return max(ds) if ds else UPDATED
+
+
 def b_sources(x):
     e, pl, g = x.e, x.pl, x.g
     src = pl.get('sources')
@@ -1901,7 +1979,7 @@ def b_sources(x):
         parts.append('Google Maps details checked %s.' % E(g['fetched_at']))
     if e.get('note') and e['tier'] != 'free':
         parts.append(E(e['note']))
-    parts.append('Last updated %s. Please confirm details with the workshop before you visit.' % UPDATED)
+    parts.append('Details last refreshed %s. Please confirm details with the workshop before you visit.' % refreshed_on(e, pl, g))
     c = x.c
     return '<p class="fine srcs">%s</p><p class="fine">More <a href="../../services/%s/">%s</a>%s.</p>' % (' '.join(parts), c['slug'], E(c['name'].lower()), area_link_html(e, '../../'))
 
@@ -1911,7 +1989,7 @@ FREE_BLOCKS = dict(hero=b_hero, contact=b_contact, services=b_services, good_for
 
 
 THIN_MIN_WORDS = 40   # workshop-specific words needed when Google has too little (Edwin, 8 Nov 2026, thin-page audit)
-THIN_MIN_RATINGS = 10
+THIN_MIN_RATINGS = 5
 
 
 def _wc(t):
@@ -1937,7 +2015,7 @@ def thin_reason(e, pl):
     """'' when a workshop page has enough of its own content to index; else why it stays out of Google (noindex, follow; off the sitemap and llms.txt).
     Enough = Google hours + a review summary from THIN_MIN_RATINGS+ ratings, or THIN_MIN_WORDS+ workshop-specific words. Thin pages stay live and linked."""
     g = GCACHE.get(e['slug']) or {}
-    if g.get('weekdayDescriptions') and (pl.get('themes') or g.get('review_themes')) and (g.get('userRatingCount') or 0) >= THIN_MIN_RATINGS:
+    if pl.get('mentioned_services') and (g.get('userRatingCount') or 0) >= THIN_MIN_RATINGS:   # Edwin 10 Nov 2026 (wave 1): 5+ Google ratings and a Customers mention block
         return ''
     if specific_words(e, pl) >= THIN_MIN_WORDS:
         return ''
@@ -2434,7 +2512,7 @@ def about_page():
 <h1 style="margin-top:14px">About {E(SITE_NAME)}</h1>
 <p class="lede" style="font-size:1rem">{E(SITE_NAME)} is made for drivers, by drivers. Page One Singapore runs this directory. We use AI to gather what real drivers say on the ground, in their Google reviews, together with what each workshop publishes on its own website, then we analyse those details and make the services searchable.</p>
 <h2>Where the details come from</h2>
-<p>Every fact on a page comes from a source we can point to: the workshop's public Google Business Profile, what drivers mention in Google reviews (written in our own words), the workshop's own website, or another public record. AI helps us read and group those details so a driver can search for the actual job they need. If a detail cannot be confirmed, such as a price or opening hours, we leave it out. We do not copy a business's website text, and we do not sell rankings. We do not claim to list every job a workshop does. Where a Google Maps rating is shown, it is Google's, with its date.</p>\n<h2>How we rank</h2>\n<p>Only where an estate has at least 8 workshops with 20 or more Google ratings, we rank those by this score: (v / (v + 50)) x the workshop's rating + (50 / (v + 50)) x the estate's average rating, where v is its number of Google ratings. It pulls workshops with fewer ratings toward the average, so a 4.9 from 1,145 ratings can rank above a 5.0 from 59. Everywhere else we show no rank and list workshops A to Z. Paid Featured workshops are shown in their own block and are never part of a ranking.</p>\n<h2>Homepage order</h2>\n<p>The homepage shows up to 4 workshops in each of three groups: Featured (paid), marked as such; Verified listings whose details the owner has confirmed; and Basic listings. Inside each group the order is random and changes on every visit. A visitor can instead sort by Top rated (the same score as below, using the average across the whole site, with workshops without a Google rating last) or Nearest (straight-line distance from the visitor's location, which we do not store). This is a display order, not a ranking or a recommendation. The full A to Z list is on the All workshops page.</p>
+<p>Every fact on a page comes from a source we can point to: the workshop's public Google Business Profile, what drivers mention in Google reviews (written in our own words), the workshop's own website, or another public record. AI helps us read and group those details so a driver can search for the actual job they need. If a detail cannot be confirmed, such as a price or opening hours, we leave it out. We do not copy a business's website text, and we do not sell rankings. We do not claim to list every job a workshop does. Where a Google Maps rating is shown, it is Google's, with its date.</p>\n<h2>How we rank</h2>\n<p>Only where an estate has at least 8 workshops with 20 or more Google ratings, we rank those by this score: (v / (v + 50)) x the workshop's rating + (50 / (v + 50)) x the estate's average rating, where v is its number of Google ratings. It pulls workshops with fewer ratings toward the average, so a 4.9 from 1,145 ratings can rank above a 5.0 from 59. Everywhere else we show no rank and list workshops A to Z. Paid Featured workshops are shown in their own block and are never part of a ranking. On large service, region and town pages we show a shortlist of up to 12 workshops ordered by the Top rated score below, and every workshop stays listed by area.</p>\n<h2>Homepage order</h2>\n<p>The homepage shows up to 4 workshops in each of three groups: Featured (paid), marked as such; Verified listings whose details the owner has confirmed; and Basic listings. Inside each group the order is random and changes on every visit. A visitor can instead sort by Top rated (the same score as below, using the average across the whole site, with workshops without a Google rating last) or Nearest (straight-line distance from the visitor's location, which we do not store). This is a display order, not a ranking or a recommendation. The full A to Z list is on the All workshops page.</p>
 <h2>Basic listings</h2>
 <p>Basic listings are built from the workshop's public Google Business Profile and, where available, what its customers mention in Google reviews, and link to its Google Maps listing. They are not endorsed by or arranged with the business. They are free and can be removed on request: use <a href="../list-your-workshop/#remove">Remove my listing</a>. Verified and Premium listings are for businesses that signed up and supplied their own details.</p>
 <h2>Who we list</h2>
@@ -2703,10 +2781,10 @@ def write_redirects():
 def hub_indexes():
     """Real index pages for /areas/, /services/, /workshops/ and /brands/ so no folder shows a directory listing. Navigation only: noindex, not in the sitemap."""
     depth = 1
-    def shell(path, h1, lead, inner, crumb):
+    def shell(path, h1, lead, inner, crumb, index=False):
         cr, crld = crumbs(depth, [(crumb, None)])
         body = '<div class="w nar">%s<h1 style="margin-top:14px">%s</h1><p class="lede" style="font-size:1rem">%s</p>%s</div>' % (cr, E(h1), E(lead), inner)
-        page(path, fit_title('%s | %s' % (h1, SITE_NAME), h1), cap(lead, 160), body, [dict(crld, **{'@context': 'https://schema.org'})], h1=h1, index=False, why='folder index, navigation only')
+        page(path, fit_title('%s | %s' % (h1, SITE_NAME), h1), cap(lead, 160), body, [dict(crld, **{'@context': 'https://schema.org'})], h1=h1, index=index, why='folder index, navigation only')
     secs = ''
     for r in PUB_REGIONS:
         lis = ''
@@ -2715,7 +2793,8 @@ def hub_indexes():
                 continue
             lis += '<li><a href="../areas/%s/">%s</a><ul>%s</ul></li>' % (t, E(TOWNS[t]['name']), ''.join('<li><a href="../areas/%s/">%s</a></li>' % (k, E(ESTATES[k]['name'])) for k in ests))
         secs += '<h2><a href="../areas/%s/">%s</a></h2>%s' % (r, E(RN[r]), ('<ul class="tick">%s</ul>' % lis) if lis else '')
-    shell('areas/', 'Car workshop areas in Singapore', 'Regions, towns and industrial estates that have car workshops listed on %s.' % SITE_NAME, secs, 'Areas')
+    _nf = len([e for e in ENTRIES if not is_paid(e)])
+    shell('areas/', 'Car workshop areas in Singapore', '%d car workshops are listed on %s, grouped by region, town and industrial estate. Pick the area closest to you.' % (_nf, SITE_NAME), secs, 'Areas', index=True)
     shell('services/', 'Car services in Singapore', 'The kinds of car work listed on %s.' % SITE_NAME,
           '<ul class="tick">%s</ul><h2>Specific jobs</h2><ul class="tick">%s</ul>' % (''.join('<li><a href="../services/%s/">%s</a></li>' % (c['slug'], E(c['name'])) for c in CAT_LIST), ''.join('<li><a href="../services/%s/">%s</a></li>' % (sp['slug'], E(sp['name'])) for sp in SPOKES)), 'Services')
     shell('brands/', 'Car brand guides', 'Plain-word guides for owners of common car brands.',

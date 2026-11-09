@@ -401,3 +401,4 @@ details.askpriv{background:none;border:0;border-radius:0;padding:0;margin:6px 0 
 pre.code{white-space:pre-wrap;word-break:break-word;background:#0f1b33;color:#e8ecf5;padding:12px;border-radius:8px;font-size:.85rem;overflow-x:auto}
 .tblw{overflow-x:auto}.tbl{border-collapse:collapse;width:100%}.tbl th,.tbl td{border-top:1px solid #e3e6ee;padding:8px 6px;text-align:left;vertical-align:top}
 .nar code{overflow-wrap:anywhere;word-break:break-word}.nar pre.code{max-width:100%}
+.answer{margin:0 0 10px;font-size:1rem}.hero .answer{color:inherit}.card.mini .bd{padding:10px 11px}.card.mini h3{font-size:.95rem}

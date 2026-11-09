@@ -527,7 +527,7 @@ for _pth, _n in _mf['free_count'].items():
     if _n < _mf['min_free'] and _pth not in _mf['noindex'] and _pth not in _mf.get('index_exceptions', []): print('thin page is indexable', _pth, _n); bad += 1
     if _n >= _mf['min_free'] and _pth in _mf['noindex'] and _pth not in _mf.get('index_exceptions', []): print('page with enough workshops is noindexed', _pth, _n); bad += 1
 for _pth in ('areas/north/', 'areas/north-east/', 'areas/east/', 'areas/west/', 'areas/central/', 'areas/mobile/'):
-    if os.path.exists(os.path.join(root, _pth, 'index.html')) and _pth not in _mf['noindex']: print('region page must be noindex', _pth); bad += 1
+    if os.path.exists(os.path.join(root, _pth, 'index.html')) and _pth not in _mf['noindex'] and _mf['free_count'].get(_pth, 0) < _mf['min_free']: print('thin region page is indexable', _pth); bad += 1   # Edwin 10 Nov 2026: regions with enough workshops are indexable
 for _pth in _locs:
     if _pth and not os.path.exists(os.path.join(root, _pth, 'index.html')): print('sitemap URL has no page', _pth); bad += 1
 for _d, _ds, _fs in os.walk(root):
