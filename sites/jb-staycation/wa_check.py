@@ -8,11 +8,12 @@ ENC = {
  'prima': 'Hi%20Daniel%2C%0A%0AI%27m%20planning%20a%20JB%20stay%20from%20Singapore.%0A%5BHouse%3A%20Prima%5D.%0ACheck-in%3A%20%20am%2Fpm%0ACheck-out%3A%20am%2Fpm.%0AAdults%3A%20%20%20%20%20pax%20.%0AChildren%3A%20%20%20pax.%0A%0APlease%20confirm%20availability%20and%20the%20final%20price%20total%20in%20RM%20.',
  'landak': 'Hi%20Daniel%2C%0A%0AI%27m%20planning%20a%20JB%20stay%20from%20Singapore.%0A%5BHouse%3A%20Landak%20Kawan%20Fun%20House%5D.%0ACheck-in%3A%20%20am%2Fpm%0ACheck-out%3A%20am%2Fpm.%0AAdults%3A%20%20%20%20%20pax%20.%0AChildren%3A%20%20%20pax.%0A%0APlease%20confirm%20availability%20and%20the%20final%20price%20total%20in%20RM%20.',
 }
+ENC['kl'] = ENC['general'].replace('from%20Singapore.', 'from%20%5BKL%20%2F%20other%20state%5D.')   # Edwin 10 Nov 2026 7:40am: KL page only
 TXT = {k: unquote(v) for k, v in ENC.items()}
 bad = links = 0; per = {}
 for f in sorted(glob.glob(S + '/**/*.html', recursive=True)):
     rel = f[len(S):].lstrip('/')
-    want = 'prima' if rel.startswith('stays/prima-') else 'landak' if rel.startswith('stays/landak-') else 'general'
+    want = 'prima' if rel.startswith('stays/prima-') else 'landak' if rel.startswith('stays/landak-') else 'kl' if rel.startswith('stay-in-jb-from-kl/') else 'general'
     t = open(f, encoding='utf-8').read()
     for href, lab in re.findall(r'href="(https://wa\.me/[^"]*)"[^>]*?data-cta-label="([^"]*)"', t):
         links += 1
