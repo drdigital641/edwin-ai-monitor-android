@@ -491,7 +491,7 @@ def home():
         k, ic('pin'), E(ESTATES[k]['name']), E(RN[ESTATES[k]['region']]), len(v), '' if len(v) == 1 else 's') for k, v in PUB_ESTATES.items())
     askdata = json.dumps({'cats': [{'slug': c['slug'], 'short': c['short'], 'blurb': c['blurb']} for c in CAT_LIST], 'areas': [{'slug': k, 'name': v['name'], 'region': v['region'], 'town': v['town'], 'kw': v['keywords']} for k, v in ESTATES.items()], 'towns': [{'slug': t[0], 'name': t[1], 'region': t[2], 'kw': t[7]} for t in areas._E], 'guides': [{'slug': g['slug'], 'path': _guides.gpath(g), 'h1': g['h1'], 'short': g['short'], 'kw': g['kw']} for g in _guides.GUIDES]}).replace('</', '<\\/')
     tiers = tiers_strip()
-    body = f'''<section class="finder" id="find"><div class="w"><div class="hero-t"><h1>Find a car workshop in Singapore</h1></div>
+    body = f'''<section class="finder" id="find"><div class="w"><div class="hero-t"><h1>Find a car workshop in Singapore</h1><p>Made for drivers, by drivers. We use AI to read what drivers actually say in their reviews, and what workshops publish on their own sites, then turn those real jobs into searchable pages, so you can find a shop that does the work you need, not only the category on its Google profile.</p></div>
 <p class="nojs">Browse by <a href="#services">service</a> or <a href="#regions">area</a> below.</p>
 <form class="panel" id="finder" role="search" aria-label="Find a workshop or describe your car problem" onsubmit="return false">
 <div class="qrow"><label class="q"><span class="skip">Describe your car problem, or type a service, area or workshop name</span>{ic('search')}<textarea id="q" rows="2" maxlength="160" placeholder="Ask anything, e.g. my Honda Vezel aircon not cold, near Ubi" autocomplete="off" autocapitalize="off" enterkeyhint="search"></textarea></label><button type="submit" class="btn amber qgo">Search</button></div>
@@ -567,6 +567,9 @@ def category(c):
     _sm = site_cat_matches(c['slug'], {e['slug'] for e in es})
     if _sm:
         body += '<section><div class="w nar"><h2>Also listed on their own websites</h2><p>These workshops are filed under another service here, but their own website includes %s among its services: %s.</p></div></section>' % (E(c['name'].lower().replace('abs, ecu', 'ABS, ECU').replace('ppf', 'PPF')), and_list('<a href="%sworkshops/%s/">%s</a> (%s)' % (pre(depth), e['slug'], E(e['name']), E(ESTATES[e['estate']]['name'])) for e in sorted(_sm, key=lambda x: x['name'].lower())))
+    _sps = [sp for sp in SPOKES if sp['parent'] == c['slug']]
+    if _sps:   # job pages under this service (10 Nov 2026), one plain link each
+        body += '<section><div class="w nar"><h2>Specific jobs</h2><ul class="tick">%s</ul></div></section>' % ''.join('<li><a href="../%s/">%s</a></li>' % (sp['slug'], E(sp['name'])) for sp in _sps)
     sc = SERVICE_COPY.get(c['slug']); sfaqs = []
     if sc:   # audit 4 Nov 2026: service pages get a guide section, not only listings
         gl = [g for g in _guides.GUIDES if g['slug'] in sc['guides']]
@@ -1765,8 +1768,12 @@ def b_good_for(x):
 
 def b_problems(x):
     gl = guides_for(x.e)
-    return ('<section class="pl-sec"><h2>Problems and brands we have a guide for</h2><ul class="tick svc-plain">%s</ul></section>'
-            % ''.join('<li><a href="../../%s">%s</a></li>' % (_guides.gpath(g), E(g['h1'])) for g in gl[:4])) if gl else ''
+    sl = spoke_links(x.e, 2)
+    if not gl and not sl:
+        return ''
+    return ('<section class="pl-sec"><h2>%s</h2>%s%s</section>'
+            % ('Problems and brands we have a guide for' if gl else 'Job pages that list this workshop',
+               ('<ul class="tick svc-plain">%s</ul>' % ''.join('<li><a href="../../%s">%s</a></li>' % (_guides.gpath(g), E(g['h1'])) for g in gl[:4])) if gl else '', sl))
 
 
 def price_rows(e):
@@ -2271,6 +2278,97 @@ def guide_page(g):
     page(path, g['title'] if len(g['title']) <= 60 else fit_title(g['title'], g['h1'], g['short']), g['desc'], body, ld, h1=g['h1'])
 
 
+# ---- Job pages (Edwin 10 Nov 2026, unlisted-services batch 1): jobs that drivers mention or workshops list on their own site,
+# even when it is not the workshop's Google category. Data: data/content/spokes.json (page copy, named workshops, match pattern).
+SPOKES = json.load(open(os.path.join(HERE, '..', 'data', 'content', 'spokes.json')))
+HOW_FOUND = ('How we found this: from what drivers mention in their Google reviews and what each workshop lists on its own website, read and grouped by AI. '
+             'It is not a complete list, and it does not mean a workshop\'s Google category is wrong. Confirm the job with the workshop before you book.')
+
+
+def spoke_evidence(e, rx):
+    """Source-faithful lines for one workshop: review mentions, its own website, or its listing text. Empty when nothing on the card matches."""
+    r = re.compile(rx, re.I)
+    if is_paid(e):
+        ls = ['%s: %s' % (x['n'], x['d']) if x.get('d') else x['n'] for x in e.get('services', []) if r.search(x['n'] + ' ' + (x.get('d') or ''))]
+        return [('Its listing says', ' '.join(ls))] if ls else []
+    pl = PILOT.get(e['slug']) or {}
+    out = []
+    m = [x for x in pl.get('mentioned_services') or [] if r.search(x)]
+    if m:
+        out.append(('Customers mention', ', '.join(m)))
+    w = list(dict.fromkeys(x for x in (pl.get('services') or []) + (pl.get('specialties') or []) if r.search(x)))
+    if w and not (m and set(w) <= set(m)):
+        out.append(('Also does, per its site' if 'website' in (pl.get('sources') or '') else 'Listed on its card', ', '.join(w)))
+    return out
+
+
+_SPM = {}
+
+
+def spoke_members(sp):
+    """[(group, [(entry, evidence)])] in the order of the data file; a named workshop without matching card data is left out."""
+    if sp['slug'] in _SPM:
+        return _SPM[sp['slug']]
+    res = _SPM[sp['slug']] = []
+    for g in sp['groups']:
+        items = []
+        for slug in g['slugs']:
+            e = BY_SLUG.get(slug)
+            ev = spoke_evidence(e, g['rx']) if e else []
+            if ev:
+                items.append((e, ev))
+        res.append((g, sorted(items, key=lambda x: x[0]['name'].lower())))
+    return res
+
+
+def spokes_for(e):
+    return [sp for sp in SPOKES if any(x[0]['slug'] == e['slug'] for _, its in spoke_members(sp) for x in its)]
+
+
+def spoke_page(sp):
+    depth = 2
+    path = 'services/%s/' % sp['slug']
+    cr, crld = crumbs(depth, [('Services', 'services/'), (sp['short'], None)])
+    mem = spoke_members(sp)
+    blocks = ''
+    for g, items in mem:
+        if not items:
+            continue
+        lis = ''.join('<li class="gw"><div><a href="../../workshops/%s/"><b>%s</b></a>%s <span class="fine">%s</span>%s</div><div class="acts">%s</div></li>'
+                      % (e['slug'], E(e['name']), (' ' + tier_badge(e)) if is_paid(e) or e.get('founder_owned') else '', E(ESTATES[e['estate']]['name'] if e.get('estate') in ESTATES else (e.get('area_label') or '')),
+                         ''.join('<p class="mentline"><b>%s:</b> %s</p>' % (E(k), E(v)) for k, v in ev), contact_btns(e, path, 'sm')) for e, ev in items)
+        blocks += '<h2>%s</h2>%s<ul class="gwl">%s</ul>' % (E(g['h']), ('<p class="fine">%s</p>' % E(g['note'])) if g.get('note') else '', lis)
+    if any(is_paid(e) or e.get('founder_owned') for _, its in mem for e, _ in its):
+        blocks += '<p class="fine">Labelled listings are paid (Featured) or owned by the founder of this site. They are listed here only because their own listing names this job.</p>'
+    par = CAT.get(sp['parent'])
+    allv = list(dict.fromkeys(e['slug'] for _, its in mem for e, _ in its))
+    nfree = sum(1 for s in allv if BY_SLUG[s]['tier'] == 'free')
+    body = f'''<div class="w nar guidepg">{cr}
+<h1 style="margin-top:14px">{E(sp['h1'])}</h1>
+<p class="lede" style="font-size:1rem">{E(sp['intro'])}</p>
+<p class="fine howfound">{E(HOW_FOUND)}</p>
+{blocks}
+<h2>What {E(sp['name'][0].lower() + sp['name'][1:])} involves</h2><p>{E(sp['involves'])}</p>
+<h2>Signs you may need it</h2><ul class="tick svc-plain">{''.join('<li>%s</li>' % E(x) for x in sp['signs'])}</ul>
+<h2>What to ask the workshop</h2><ul class="tick svc-plain">{''.join('<li>%s</li>' % E(x) for x in sp['ask'])}</ul>
+{('<p>More: <a href="../%s/">%s</a></p>' % (par['slug'], E(par['name']))) if par else ''}
+<h2>Questions</h2>{''.join('<details><summary>%s</summary><p>%s</p></details>' % (E(q), E(a)) for q, a in sp['faqs'])}
+</div>'''
+    il = itemlist_ld(sp['h1'], [BY_SLUG[s] for s in allv])   # paid listings are never in an ItemList
+    FREECOUNT[path] = nfree
+    page(path, sp['title'], sp['desc'], body, [dict(crld, **{'@context': 'https://schema.org'}), il, faq_ld(sp['faqs'])], h1=sp['h1'],
+         index=nfree >= MIN_FREE, why='fewer than %d free workshops' % MIN_FREE)
+
+
+def spoke_links(e, depth):
+    """Card-to-job-page links with varied anchors (picked per card, so the same words do not repeat across the site)."""
+    sps = spokes_for(e)
+    if not sps:
+        return ''
+    h = sum(map(ord, e['slug']))
+    return '<p>Also listed for %s.</p>' % and_list(['<a href="%sservices/%s/">%s</a>' % (pre(depth), sp['slug'], E(sp['anchors'][(h + i) % len(sp['anchors'])])) for i, sp in enumerate(sps)])
+
+
 def guides_index():
     depth = 1
     cr, crld = crumbs(depth, [('Guides', None)])
@@ -2334,9 +2432,9 @@ def about_page():
     cr, crld = crumbs(depth, [('About', None)])
     body = f'''<div class="w nar">{cr}
 <h1 style="margin-top:14px">About {E(SITE_NAME)}</h1>
-<p class="lede" style="font-size:1rem">{E(SITE_NAME)} is a directory of car workshops and car services in Singapore, run by Page One Singapore, a web and SEO service for small businesses.</p>
+<p class="lede" style="font-size:1rem">{E(SITE_NAME)} is made for drivers, by drivers. Page One Singapore runs this directory. We use AI to gather what real drivers say on the ground, in their Google reviews, together with what each workshop publishes on its own website, then we analyse those details and make the services searchable.</p>
 <h2>Where the details come from</h2>
-<p>Every fact on a page comes from the business itself or from public records. If a detail cannot be confirmed, such as a price or opening hours, we leave it out. We do not copy a business's website text, and we do not sell rankings. Where a Google Maps rating is shown, it is Google's, with its date.</p>\n<h2>How we rank</h2>\n<p>Only where an estate has at least 8 workshops with 20 or more Google ratings, we rank those by this score: (v / (v + 50)) x the workshop's rating + (50 / (v + 50)) x the estate's average rating, where v is its number of Google ratings. It pulls workshops with fewer ratings toward the average, so a 4.9 from 1,145 ratings can rank above a 5.0 from 59. Everywhere else we show no rank and list workshops A to Z. Paid Featured workshops are shown in their own block and are never part of a ranking.</p>\n<h2>Homepage order</h2>\n<p>The homepage shows up to 4 workshops in each of three groups: Featured (paid), marked as such; Verified listings whose details the owner has confirmed; and Basic listings. Inside each group the order is random and changes on every visit. A visitor can instead sort by Top rated (the same score as below, using the average across the whole site, with workshops without a Google rating last) or Nearest (straight-line distance from the visitor's location, which we do not store). This is a display order, not a ranking or a recommendation. The full A to Z list is on the All workshops page.</p>
+<p>Every fact on a page comes from a source we can point to: the workshop's public Google Business Profile, what drivers mention in Google reviews (written in our own words), the workshop's own website, or another public record. AI helps us read and group those details so a driver can search for the actual job they need. If a detail cannot be confirmed, such as a price or opening hours, we leave it out. We do not copy a business's website text, and we do not sell rankings. We do not claim to list every job a workshop does. Where a Google Maps rating is shown, it is Google's, with its date.</p>\n<h2>How we rank</h2>\n<p>Only where an estate has at least 8 workshops with 20 or more Google ratings, we rank those by this score: (v / (v + 50)) x the workshop's rating + (50 / (v + 50)) x the estate's average rating, where v is its number of Google ratings. It pulls workshops with fewer ratings toward the average, so a 4.9 from 1,145 ratings can rank above a 5.0 from 59. Everywhere else we show no rank and list workshops A to Z. Paid Featured workshops are shown in their own block and are never part of a ranking.</p>\n<h2>Homepage order</h2>\n<p>The homepage shows up to 4 workshops in each of three groups: Featured (paid), marked as such; Verified listings whose details the owner has confirmed; and Basic listings. Inside each group the order is random and changes on every visit. A visitor can instead sort by Top rated (the same score as below, using the average across the whole site, with workshops without a Google rating last) or Nearest (straight-line distance from the visitor's location, which we do not store). This is a display order, not a ranking or a recommendation. The full A to Z list is on the All workshops page.</p>
 <h2>Basic listings</h2>
 <p>Basic listings are built from the workshop's public Google Business Profile and, where available, what its customers mention in Google reviews, and link to its Google Maps listing. They are not endorsed by or arranged with the business. They are free and can be removed on request: use <a href="../list-your-workshop/#remove">Remove my listing</a>. Verified and Premium listings are for businesses that signed up and supplied their own details.</p>
 <h2>Who we list</h2>
@@ -2470,6 +2568,8 @@ def build():
     hub_indexes()
     for _g in _guides.GUIDES:
         guide_page(_g)
+    for _sp in SPOKES:
+        spoke_page(_sp)
     list_page()
     about_page()
     terms_page()
@@ -2515,6 +2615,8 @@ def build():
     lines = ['# %s' % SITE_NAME, '', '> A directory of car workshops and car services in Singapore, run by Page One Singapore. Entries use details from the business or its public listing. Estate pages rank workshops only where there are at least 8 with 20 or more Google ratings, by rating and number of ratings together; paid Featured workshops are never ranked. No rating or review markup.', '',
              'Last updated: %s' % max([d['d'] for d in LM_NEW.values()] or [UPDATED]), '', '## Services']
     lines += ['- [%s](%sservices/%s/): %s' % (c['name'], BASE, c['slug'], c['blurb']) for c in CATEGORIES]
+    lines += ['', '## Specific jobs (from driver reviews and workshop websites)']
+    lines += ['- [%s](%sservices/%s/): %s' % (sp['h1'], BASE, sp['slug'], sp['desc']) for sp in SPOKES if 'services/%s/' % sp['slug'] not in NOINDEX]
     lines += ['', '## Areas (regions)']
     lines += ['- [%s](%sareas/%s/): %s' % (RN[k], BASE, k, areas.REGION_INTRO[k]) for k in PUB_REGIONS]
     lines += ['', '## Estates and industrial areas']
@@ -2615,7 +2717,7 @@ def hub_indexes():
         secs += '<h2><a href="../areas/%s/">%s</a></h2>%s' % (r, E(RN[r]), ('<ul class="tick">%s</ul>' % lis) if lis else '')
     shell('areas/', 'Car workshop areas in Singapore', 'Regions, towns and industrial estates that have car workshops listed on %s.' % SITE_NAME, secs, 'Areas')
     shell('services/', 'Car services in Singapore', 'The kinds of car work listed on %s.' % SITE_NAME,
-          '<ul class="tick">%s</ul>' % ''.join('<li><a href="../services/%s/">%s</a></li>' % (c['slug'], E(c['name'])) for c in CAT_LIST), 'Services')
+          '<ul class="tick">%s</ul><h2>Specific jobs</h2><ul class="tick">%s</ul>' % (''.join('<li><a href="../services/%s/">%s</a></li>' % (c['slug'], E(c['name'])) for c in CAT_LIST), ''.join('<li><a href="../services/%s/">%s</a></li>' % (sp['slug'], E(sp['name'])) for sp in SPOKES)), 'Services')
     shell('brands/', 'Car brand guides', 'Plain-word guides for owners of common car brands.',
           '<ul class="tick">%s</ul>' % ''.join('<li><a href="../%s">%s</a></li>' % (_guides.gpath(g), E(g['h1'])) for g in _guides.GUIDES if g.get('kind') == 'brand'), 'Brands')
     shell('workshops/', 'All workshops A to Z', 'Every workshop listed on %s, in alphabetical order.' % SITE_NAME,

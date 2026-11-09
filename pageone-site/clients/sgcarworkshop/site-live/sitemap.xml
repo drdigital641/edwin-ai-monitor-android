@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 <url><loc>https://sgcarworkshop.sg/</loc><lastmod>2026-11-09</lastmod></url>
-<url><loc>https://sgcarworkshop.sg/about/</loc><lastmod>2026-11-03</lastmod></url>
+<url><loc>https://sgcarworkshop.sg/about/</loc><lastmod>2026-11-09</lastmod></url>
 <url><loc>https://sgcarworkshop.sg/areas/amk-industrial-park-2/</loc><lastmod>2026-11-08</lastmod></url>
 <url><loc>https://sgcarworkshop.sg/areas/bukit-batok-crescent/</loc><lastmod>2026-11-09</lastmod></url>
 <url><loc>https://sgcarworkshop.sg/areas/bukit-batok-crescent/car-tyres/</loc><lastmod>2026-11-08</lastmod></url>
@@ -57,9 +57,16 @@
 <url><loc>https://sgcarworkshop.sg/services/car-battery/</loc><lastmod>2026-11-09</lastmod></url>
 <url><loc>https://sgcarworkshop.sg/services/car-detailing-coating/</loc><lastmod>2026-11-08</lastmod></url>
 <url><loc>https://sgcarworkshop.sg/services/car-tyres/</loc><lastmod>2026-11-09</lastmod></url>
+<url><loc>https://sgcarworkshop.sg/services/ecu-tuning/</loc><lastmod>2026-11-09</lastmod></url>
+<url><loc>https://sgcarworkshop.sg/services/engine-carbon-cleaning/</loc><lastmod>2026-11-09</lastmod></url>
+<url><loc>https://sgcarworkshop.sg/services/engine-overhaul/</loc><lastmod>2026-11-09</lastmod></url>
 <url><loc>https://sgcarworkshop.sg/services/gearbox-repair/</loc><lastmod>2026-11-09</lastmod></url>
 <url><loc>https://sgcarworkshop.sg/services/general-servicing-repair/</loc><lastmod>2026-11-09</lastmod></url>
+<url><loc>https://sgcarworkshop.sg/services/hybrid-ev-servicing/</loc><lastmod>2026-11-09</lastmod></url>
+<url><loc>https://sgcarworkshop.sg/services/obu-installation/</loc><lastmod>2026-11-09</lastmod></url>
+<url><loc>https://sgcarworkshop.sg/services/pre-purchase-inspection/</loc><lastmod>2026-11-09</lastmod></url>
 <url><loc>https://sgcarworkshop.sg/services/spray-painting-bodywork/</loc><lastmod>2026-11-09</lastmod></url>
+<url><loc>https://sgcarworkshop.sg/services/wheel-alignment/</loc><lastmod>2026-11-09</lastmod></url>
 <url><loc>https://sgcarworkshop.sg/terms/</loc><lastmod>2026-11-03</lastmod></url>
 <url><loc>https://sgcarworkshop.sg/workshops/1-car-service/</loc><lastmod>2026-11-03</lastmod></url>
 <url><loc>https://sgcarworkshop.sg/workshops/3k-autocare-taman-jurong/</loc><lastmod>2026-11-04</lastmod></url>
@@ -115,7 +122,7 @@
 <url><loc>https://sgcarworkshop.sg/workshops/colourkraze-spray-painting-specialist-singapore/</loc><lastmod>2026-11-07</lastmod></url>
 <url><loc>https://sgcarworkshop.sg/workshops/concours-singapore/</loc><lastmod>2026-11-03</lastmod></url>
 <url><loc>https://sgcarworkshop.sg/workshops/conti-meister/</loc><lastmod>2026-11-05</lastmod></url>
-<url><loc>https://sgcarworkshop.sg/workshops/contiexpert-volt-autocare/</loc><lastmod>2026-11-07</lastmod></url>
+<url><loc>https://sgcarworkshop.sg/workshops/contiexpert-volt-autocare/</loc><lastmod>2026-11-09</lastmod></url>
 <url><loc>https://sgcarworkshop.sg/workshops/daiha-auto-service/</loc><lastmod>2026-11-04</lastmod></url>
 <url><loc>https://sgcarworkshop.sg/workshops/dhm-otomotive-werkz/</loc><lastmod>2026-11-02</lastmod></url>
 <url><loc>https://sgcarworkshop.sg/workshops/e-care-auto-services/</loc><lastmod>2026-11-04</lastmod></url>
@@ -264,7 +271,7 @@
 <url><loc>https://sgcarworkshop.sg/workshops/tee-guan-trading-co/</loc><lastmod>2026-11-03</lastmod></url>
 <url><loc>https://sgcarworkshop.sg/workshops/teutonic-autohaus/</loc><lastmod>2026-11-03</lastmod></url>
 <url><loc>https://sgcarworkshop.sg/workshops/tg-auto/</loc><lastmod>2026-11-06</lastmod></url>
-<url><loc>https://sgcarworkshop.sg/workshops/the-ecu-clinic/</loc><lastmod>2026-11-07</lastmod></url>
+<url><loc>https://sgcarworkshop.sg/workshops/the-ecu-clinic/</loc><lastmod>2026-11-09</lastmod></url>
 <url><loc>https://sgcarworkshop.sg/workshops/the-local-workshop/</loc><lastmod>2026-11-05</lastmod></url>
 <url><loc>https://sgcarworkshop.sg/workshops/top-fuel-automotive/</loc><lastmod>2026-11-09</lastmod></url>
 <url><loc>https://sgcarworkshop.sg/workshops/tos-auto-motorwerk/</loc><lastmod>2026-11-09</lastmod></url>
