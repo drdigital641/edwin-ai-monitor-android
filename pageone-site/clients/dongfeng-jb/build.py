@@ -1021,7 +1021,13 @@ ART = {a['slug']: a for a in ARTICLES}
 LASTMOD = {'articles/%s/' % a['slug']: a['date'] for a in ARTICLES if a.get('date')}
 LASTMOD['articles/'] = '2026-11-06'
 LASTMOD['dealership-partnership/'] = '2026-11-08'
-LASTMOD[''] = '2026-11-08'  # Latest from MyKar (Facebook) carousel
+LASTMOD[''] = '2026-11-08'  # BM/ZH homepages and 404 (unchanged by the carousel swaps)
+# The Facebook carousel is on the EN homepage only, so its weekly swap moves only the EN homepage's lastmod (no fake lastmod on BM/ZH).
+HOME_EN_LASTMOD = '2026-11-09'  # Latest from MyKar (Facebook) carousel, weekly refresh
+
+
+def lastmod(path, L):
+    return HOME_EN_LASTMOD if path == '' and L == 'en' else LASTMOD.get(path, '2026-11-02')
 LASTMOD['test-drive/'] = '2026-10-28'  # FAQ question corrected (ChatGPT bridge draft)
 LASTMOD['service/'] = '2026-10-28'  # service-specific closing block (ChatGPT bridge draft)
 
@@ -1817,7 +1823,7 @@ def render(L, path, p):
         crumbs_ld = {'@type': 'BreadcrumbList', 'itemListElement': [{'@type': 'ListItem', 'position': 1, 'name': t(W['home'], L), 'item': SITE + PFX[L]}] +
                      [{'@type': 'ListItem', 'position': i + 2, 'name': t(x, L), 'item': SITE + PFX[L] + h} for i, (h, x) in enumerate(p['crumbs'])]}
     graph = [business_schema(L), {'@type': 'WebPage', '@id': url + '#page', 'url': url, 'name': p['title'], 'description': p['desc'],
-                                  'inLanguage': LANG_ATTR[L], 'dateModified': LASTMOD.get(path, '2026-11-02'), 'about': {'@id': SITE + '#business'},
+                                  'inLanguage': LANG_ATTR[L], 'dateModified': lastmod(path, L), 'about': {'@id': SITE + '#business'},
                                   'primaryImageOfPage': img_base(p['photo'] or 'hero') + (p['photo'] or 'hero') + '.webp',
                                   'isPartOf': {'@type': 'WebSite', 'url': SITE, 'name': NAME, 'inLanguage': ['en-MY', 'ms-MY', 'zh-Hans-MY']}}]
     if crumbs_ld:
@@ -1920,6 +1926,7 @@ def not_found():
     p = dict(title='Page not found | Dongfeng Johor Bahru', desc='This page could not be found.', h1='Sorry, that page is not here.', body=body,
              crumbs=None, lede='', schema=[], hero=True, cta=True, photo=None, kind='website', b2b=False)
     out = render(L, '', p).replace('content="index,follow,max-image-preview:large"', 'content="noindex"')
+    out = out.replace('"dateModified": "%s"' % HOME_EN_LASTMOD, '"dateModified": "%s"' % LASTMOD[''])  # 404 is not the homepage
     base = '/' if LIVE else '/preview/%s/' % SLUG
     return re.sub(r'(href|src|action)="(?!https?:|mailto:|tel:|#|/|data:)([^"]*)"', lambda m: '%s="%s%s"' % (m.group(1), base, m.group(2) if m.group(2) != './' else ''), out)
 
@@ -1965,7 +1972,7 @@ def main():
     with open(os.path.join(OUT, 'sitemap.xml'), 'w') as f:
         f.write('<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">\n')
         for (L, path) in PAGES:
-            f.write('  <url><loc>%s%s%s</loc><lastmod>%s</lastmod>%s</url>\n' % (SITE, PFX[L], path, LASTMOD.get(path, '2026-11-02'), ''.join(
+            f.write('  <url><loc>%s%s%s</loc><lastmod>%s</lastmod>%s</url>\n' % (SITE, PFX[L], path, lastmod(path, L), ''.join(
                 '<xhtml:link rel="alternate" hreflang="%s" href="%s%s%s"/>' % (HREFLANG[l], SITE, PFX[l], path) for l in LANGS if (l, path) in PAGES)))
         f.write('</urlset>\n')
     with open(os.path.join(OUT, 'llms.txt'), 'w') as f:

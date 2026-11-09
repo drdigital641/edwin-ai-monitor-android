@@ -16,3 +16,5 @@ Close-up selfie posts and TikTok/link re-shares go last; the rest stay newest fi
 The code also moves any post with "type": "link" to the end (build.py fb_section, df.js), but choosing
 the lead photo and placing selfies last is done in the JSON. When the JSON changes, change its "updated"
 value too, so df.js re-renders cards in browsers that still hold the old homepage.
+
+Weekly swap date: set `HOME_EN_LASTMOD` in build.py to the swap date. It moves only the EN homepage's sitemap lastmod and dateModified (the carousel is EN-only), so BM/ZH homepages keep their real dates. Publish only index.html, sitemap.xml, data/fb-posts.json and the new images/fb/ files. The Bridge cannot delete files: old images/fb/ files need removing in cPanel File Manager.
