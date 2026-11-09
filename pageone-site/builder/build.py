@@ -1111,6 +1111,7 @@ page("results/index.html",
 """ + _others_html + """
         </div>
         <p class="note reveal"><a class="card-link" href="/clients/">See all the client websites →</a></p>
+        <p class="note reveal">We also run SG Car Workshop, a listings site for car workshops in Singapore. For owners, we explain <a class="link" href="/results/sg-car-workshop-directory/">how the workshop listings work and how to claim yours</a>, with no traffic or enquiry promises.</p>
       </div>
     </section>
 
@@ -1521,6 +1522,7 @@ exec(open(os.path.join(HERE, "affordable.py"), encoding="utf-8").read())
 exec(open(os.path.join(HERE, "budget.py"), encoding="utf-8").read())
 # Affordable SEO services owner page (/affordable-seo-services-singapore/), 25 Oct 2026.
 exec(open(os.path.join(HERE, "affordable_seo.py"), encoding="utf-8").read())
+exec(open(os.path.join(HERE, "directory_story.py"), encoding="utf-8").read())
 # Client showcase (/clients/), from showcase.json.
 clients_page()
 llms_sections()
