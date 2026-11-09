@@ -1,4 +1,4 @@
-# JBStaycation
+# JB Airbnb
 
 > A quieter escape, just across the causeway. Private holiday houses in Johor Bahru, Malaysia, for Singapore families and groups. Host: Daniel (based in Singapore and JB; English, Malay and Chinese), WhatsApp +65 9006 2198 (https://wa.me/6590062198). Pay by PayNow or PayLah from Singapore (receipt issued), bank transfer or TNG eWallet in RM from Malaysia, or the Airbnb listing.
 
@@ -12,16 +12,16 @@
 - Professionally cleaned after every checkout; fresh linen, towels and toiletries provided. Fire extinguisher under the kitchen sink; outdoor CCTV; the host is the emergency contact.
 
 ## Houses
-- [Prima, Taman Nusantara Prima](https://pageonesingapore.com/preview/jb-staycation/stays/prima-taman-nusantara-prima/): 19 Jalan Prima 3/1, Taman Nusantara Prima, Iskandar Puteri, Johor 79200, Malaysia. Up to 12 guests, RM 450 weekday, RM 650 weekend, RM 750 public holiday per night, cleaning included. A private landed house in Gelang Patah, Iskandar Puteri for up to 12 guests with a 7ft pool table in the living room, a mahjong table and parking for 8 cars, about 10 minutes from the Tuas Second Link (host estimate).
-- [Landak Kawan Fun House, Taman Abad](https://pageonesingapore.com/preview/jb-staycation/stays/landak-kawan-fun-house-taman-abad/): Jalan Landak Kawan 2, Taman Abad, Johor Bahru, Johor 80250, Malaysia. Up to 10 guests, RM 550 weekday, RM 750 weekend, RM 1,000 public holiday per night, cleaning included. A new double-storey landed fun house for up to 10 guests with an 8ft pool table, foosball, 2 dart boards, a mahjong table and a TV arcade, a 5-minute walk from KSL City Mall.
+- [Prima, Taman Nusantara Prima](https://jbairbnb.com/stays/prima-taman-nusantara-prima/): 19 Jalan Prima 3/1, Taman Nusantara Prima, Iskandar Puteri, Johor 79200, Malaysia. Up to 12 guests, RM 450 weekday, RM 650 weekend, RM 750 public holiday per night, cleaning included. A private landed house in Gelang Patah, Iskandar Puteri for up to 12 guests with a 7ft pool table in the living room, a mahjong table and parking for 8 cars, about 10 minutes from the Tuas Second Link (host estimate).
+- [Landak Kawan Fun House, Taman Abad](https://jbairbnb.com/stays/landak-kawan-fun-house-taman-abad/): Jalan Landak Kawan 2, Taman Abad, Johor Bahru, Johor 80250, Malaysia. Up to 10 guests, RM 550 weekday, RM 750 weekend, RM 1,000 public holiday per night, cleaning included. A new double-storey landed fun house for up to 10 guests with an 8ft pool table, foosball, 2 dart boards, a mahjong table and a TV arcade, a 5-minute walk from KSL City Mall.
 
 ## Pages
-- [Prices](https://pageonesingapore.com/preview/jb-staycation/prices/)
-- [Getting there from Singapore](https://pageonesingapore.com/preview/jb-staycation/getting-there/)
-- [FAQ](https://pageonesingapore.com/preview/jb-staycation/faq/)
-- [About](https://pageonesingapore.com/preview/jb-staycation/about/)
-- [Contact](https://pageonesingapore.com/preview/jb-staycation/contact/)
-- [Articles](https://pageonesingapore.com/preview/jb-staycation/articles/)
-  - [JB homestay for big groups: planning for 10-12 guests](https://pageonesingapore.com/preview/jb-staycation/articles/jb-homestay-for-big-groups-12-guests/)
-  - [JB staycation near KSL: plan your weekend](https://pageonesingapore.com/preview/jb-staycation/articles/staying-near-ksl-city-mall-what-is-within-5-15-minutes/)
-  - [Causeway, Second Link or RTS: which way to JB for a weekend stay](https://pageonesingapore.com/preview/jb-staycation/articles/causeway-second-link-or-rts-which-way-to-jb-for-a-weekend-stay/)
+- [Prices](https://jbairbnb.com/prices/)
+- [Getting there from Singapore](https://jbairbnb.com/getting-there/)
+- [FAQ](https://jbairbnb.com/faq/)
+- [About](https://jbairbnb.com/about/)
+- [Contact](https://jbairbnb.com/contact/)
+- [Articles](https://jbairbnb.com/articles/)
+  - [JB homestay for big groups: planning for 10-12 guests](https://jbairbnb.com/articles/jb-homestay-for-big-groups-12-guests/)
+  - [JB staycation near KSL: plan your weekend](https://jbairbnb.com/articles/staying-near-ksl-city-mall-what-is-within-5-15-minutes/)
+  - [Causeway, Second Link or RTS: which way to JB for a weekend stay](https://jbairbnb.com/articles/causeway-second-link-or-rts-which-way-to-jb-for-a-weekend-stay/)

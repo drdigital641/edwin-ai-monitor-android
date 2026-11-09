@@ -1,10 +1,12 @@
 # Rename to .htaccess in this folder via cPanel. Preview hiding is handled by the server outside the pages.
 RewriteEngine On
+RewriteCond %{HTTP_HOST} ^www\.jbairbnb\.com$ [NC]
+RewriteRule ^ https://jbairbnb.com%{REQUEST_URI} [L,R=301]
 RewriteCond %{HTTPS} !=on
 RewriteRule ^ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
 DirectoryIndex index.html
-ErrorDocument 404 /preview/jb-staycation/404.html
-Redirect 301 /preview/jb-staycation/articles/big-group-staycation-jb-house-for-10-20-people/ https://pageonesingapore.com/preview/jb-staycation/articles/jb-homestay-for-big-groups-12-guests/
+ErrorDocument 404 /404.html
+Redirect 301 /articles/big-group-staycation-jb-house-for-10-20-people/ https://jbairbnb.com/articles/jb-homestay-for-big-groups-12-guests/
 <IfModule mod_headers.c>
 <FilesMatch "\.(html|xml|txt)$">
 Header set Cache-Control "public, max-age=3600"

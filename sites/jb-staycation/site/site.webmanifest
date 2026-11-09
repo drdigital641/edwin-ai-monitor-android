@@ -1,7 +1,7 @@
 {
- "name": "JBStaycation",
- "short_name": "JBStaycation",
- "start_url": "https://pageonesingapore.com/preview/jb-staycation/",
+ "name": "JB Airbnb",
+ "short_name": "JB Airbnb",
+ "start_url": "https://jbairbnb.com/",
  "display": "browser",
  "background_color": "#f7f8f9",
  "theme_color": "#0a1f38",
