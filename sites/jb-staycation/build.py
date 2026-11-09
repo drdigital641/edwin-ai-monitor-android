@@ -716,7 +716,7 @@ def house_ld(h):
     else:
         am = [('Pool table (8ft)', True), ('Foosball', True), ('Dart boards', 2), ('Mahjong', True), ('TV arcade', True), ('Board games', True), ('Children\'s playroom', True), ('Dedicated workstation', True), ('Water heaters', True),
               ('wifi', True), ('Parking spaces', 2), ('outdoorGrill', False), ('Air conditioning', True), ('Kitchen', True)]
-        acc = {'numberOfBedrooms': 3, 'numberOfBathroomsTotal': 3, 'numberOfBeds': 5, 'occupancy': {'@type': 'QuantitativeValue', 'maxValue': 10}}
+        acc = {'numberOfBedrooms': 3, 'numberOfBathroomsTotal': 3, 'bed': [{'@type': 'BedDetails', 'numberOfBeds': 1, 'typeOfBed': 'King'}, {'@type': 'BedDetails', 'numberOfBeds': 4, 'typeOfBed': 'Queen'}], 'occupancy': {'@type': 'QuantitativeValue', 'maxValue': 10}}
     acc.update({'@type': 'Accommodation', 'additionalType': 'EntirePlace',
                 'amenityFeature': [{'@type': 'LocationFeatureSpecification', 'name': n, 'value': v} for n, v in am]})
     ld = {'@context': 'https://schema.org', '@type': 'VacationRental', '@id': url + '#rental', 'identifier': 'jb-' + k, 'name': h['name'], 'additionalType': 'House',
