@@ -263,7 +263,7 @@ BENTO = {
 # house cards (main photo + 3-photo strip), each house only its own photos
 CARD_IMG = {
     'prima': ['prima-living-room-2.webp', 'prima-pool-table-1.webp', 'prima-bedroom-a-1.webp', 'prima-covered-balcony-view-1.webp'],
-    'landak': ['landak-living-room-staircase-1.webp', 'landak-foosball-table-1.webp', 'landak-bedroom-1-angle-2.webp', 'landak-patio-view-1.webp'],
+    'landak': ['landak-living-room-staircase-1.webp', 'landak-foosball-table-1.webp', 'landak-bedroom-1-angle-2.webp', 'landak-pool-table-length-1.webp'],
 }
 # page and article photos
 PAGE_IMG = {
