@@ -2088,9 +2088,14 @@ def article_body(a):
     more = ''
     if a.get('date'):   # night-run articles always link the hub and the stays page
         more = '<p>Compare both houses on the <a href="{R}stays/">stays page</a>, or read more in the <a href="{R}articles/">JB guide for Singaporeans</a>.</p>'
-    return ('<div class="wrap body prose"><p class="byline">%sBy JB Staycations, %s</p><div class="answer">%s</div>%s%s'
+    intro_cta = ''
+    if a.get('date'):   # night-run articles: WhatsApp CTA after the intro too (content plan, 9 Nov 2026)
+        intro_cta = '<p class="after-faq">%s</p>' % wa_btn('Ask about dates on WhatsApp', wa_msg(a.get('wa')), 'article-top-' + a['slug'][:26])
+    if a.get('next'):   # (anchor text, path) of the next spoke in the content plan
+        more += '<p>Next guide: <a href="{R}%s">%s</a>.</p>' % (a['next'][1], e(a['next'][0]))
+    return ('<div class="wrap body prose"><p class="byline">%sBy JB Staycations, %s</p><div class="answer">%s</div>%s%s%s'
             '<section class="rv"><p>See the house: <a href="{R}stays/%s/">%s</a>.</p>%s%s</section></div>'
-            % (ico('cal', 18), art_date(a), e(a['answer']), secs, faq_html, hh['slug'], e(hh['full']), more, wa_btn('Ask about dates', wa_msg(a.get('wa')), 'article-' + a['slug'][:30])))
+            % (ico('cal', 18), art_date(a), e(a['answer']), intro_cta, secs, faq_html, hh['slug'], e(hh['full']), more, wa_btn('Ask about dates', wa_msg(a.get('wa')), 'article-' + a['slug'][:30])))
 
 
 # ---------------------------------------------------------------- assemble

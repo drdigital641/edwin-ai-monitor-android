@@ -10,7 +10,15 @@ ContiExpert runs on odd nights, so there is no clash. Run JB after the other eve
   "Launch JB Staycations site" thread and it is saved to the path above).
 - If the plan file is missing, or every row is done: SKIP. Write "skipped: no content plan" (or "plan finished")
   in the run summary and append one line to /mnt/project-files/jb-staycation/article-log.md. Never invent a topic.
-- Take the first plan row not yet in article-log.md. One article per even night.
+- Take the first plan row not yet in article-log.md. One article per even night. Edwin (9 Nov): use the plan's topics strictly
+  in order on the EVEN-night run; the plan's own dates (13, 15, 17 Nov...) are indicative only, the even-night slot wins.
+- Slot 0: no article until the tech SEO brief (9 Nov) is live (check memory jb-staycation-site / thread "Launch JB Staycations site").
+- Follow the plan's keyword OWNERSHIP MAP: never target a keyword owned by /, /stays/, a house page, /prices/, /getting-there/ or an existing article.
+- Proof gate: fewer than 2 real proof items = skip the slot and log it. Re-check Google SG page 1 for the keyword (web search) before writing.
+- Conditional rows: #7 only after the MOM + Johor 2027 holiday lists are published; #8 only if LTA has an official RTS opening date and fares (else skip, move #9 up).
+- HOLD (Edwin 9 Nov): never state a 24/25 Dec nightly rate (PH or not) until Edwin confirms with Daniel; say "WhatsApp Daniel for Christmas Eve and Christmas Day rates". The 2-night minimum over Christmas Eve and Christmas Day is a confirmed fact.
+- Author stays the Organization "JB Staycations" (no Person author unless Edwin approves).
+- Dict keys for plan rows: also set 'next': (anchor, path) to the next spoke once it exists (the build adds the link), and the build adds a WhatsApp CTA after the intro and at the end.
 
 ## 1. Facts (only these; anything else = leave it out)
 - Prima: Taman Nusantara Prima, Gelang Patah, Iskandar Puteri; up to 12 guests (never more); 3 rooms, each 1 queen + 2 single floor mattresses; ground-floor bedroom for elderly guests; 7ft pool table; mahjong; parking 2 inside + 6 outside; about 10 min from Tuas Second Link (host estimate).
