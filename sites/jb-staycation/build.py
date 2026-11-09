@@ -33,9 +33,18 @@ INDEXNOW_KEY = '8902a563f0e8890158ac4cf1b41cd50d'   # IndexNow key (jbstaycation
 
 def wa_msg(house=None):
     """Prefilled WhatsApp text (strategy brief 9 Nov 2026). house = 'prima', 'landak' or None (please recommend). The enquiry form builds the same text with dates and guests."""
-    label = {'prima': 'Prima', 'landak': 'Landak'}.get(house, 'Please recommend')
-    return ("Hi, I'm planning a JB stay from Singapore. [House: %s]. Check-in: not decided. Check-out: not decided. Adults: not decided. Children: not decided. "
-            "Please confirm availability and the final total in RM." % label)
+    # Exact text from Edwin (9 Nov 2026 5:09pm), spaces and full stops as given. House-specific text only on the two house pages (see general_wa_only).
+    label = WA_HOUSE_LABEL.get(house, 'Please recommend')
+    return ("Hi Daniel,\n\nI'm planning a JB stay from Singapore.\n[House: %s].\nCheck-in:  am/pm\nCheck-out: am/pm.\nAdults:     pax .\nChildren:   pax.\n\n"
+            "Please confirm availability and the final price total in RM ." % label)
+WA_HOUSE_LABEL = {'prima': 'Prima', 'landak': 'Landak Kawan Fun House'}
+
+
+def general_wa_only(htm):
+    """Pages other than the two house pages always use the general (Please recommend) text."""
+    for k in WA_HOUSE_LABEL:
+        htm = htm.replace(e(wa_url(wa_msg(k))), e(wa_url(wa_msg())))
+    return htm
 
 
 # ---- one source for the RM price and the SGD estimate (recheck by hand before go-live; no live FX)
@@ -173,7 +182,7 @@ ALT = {
     'landak-living-daylight-angle-2.webp': 'Daylight living room at Landak Kawan Fun House looking towards the TV and window',
     'landak-bedroom-1-angle-3.webp': 'Bedroom with two beds at Landak Kawan Fun House, seen past the doorway',
     'landak-bathroom-portrait-1.webp': 'Bathroom at Landak Kawan Fun House with shower, toilet and basin',
-    'landak-covered-counter-wide-1.webp': 'Covered counter and stools at Landak Kawan Fun House',
+    'landak-covered-counter-wide-1.webp': 'Dedicated workspace on the 2nd level with counter and stools at Landak Kawan Fun House',
     'landak-staircase-1.webp': 'Staircase and covered roof at Landak Kawan Fun House',
     'landak-dining-table-detail-1.webp': 'Dining table set for a meal at Landak Kawan Fun House',
     'landak-breakfast-bar-portrait-1.webp': 'Kitchen breakfast bar at Landak Kawan Fun House',
@@ -197,7 +206,7 @@ ALT = {
     'landak-kitchen-sink-1.webp': 'Kitchen sink, dish rack and utensils at Landak Kawan Fun House',
     'landak-bedroom-1.webp': 'Bedroom with two double beds and a window at Landak Kawan Fun House',
     'landak-bedroom-1-angle-2.webp': 'Bedroom at Landak Kawan Fun House seen from the door, with dressing mirror',
-    'landak-covered-work-counter-1.webp': 'Covered counter with iron and stools at Landak Kawan Fun House',
+    'landak-covered-work-counter-1.webp': 'Dedicated workspace on the 2nd level with counter, stools and iron at Landak Kawan Fun House',
     'landak-bathroom-1.webp': 'Bathroom with shower, toilet and round mirror at Landak Kawan Fun House',
     'landak-bathroom-2.webp': 'Compact shower and toilet with round mirror at Landak Kawan Fun House',
     'landak-exterior-1.webp': 'Front of the double-storey Landak Kawan Fun House with its gate',
@@ -227,7 +236,7 @@ ROOMS = {
         _r('landak', 'Kitchen', 'For light cooking', ['landak-kitchen-breakfast-bar-1.webp', 'landak-breakfast-bar-portrait-1.webp', 'landak-kitchen-sink-1.webp', 'landak-kitchen-appliances-1.webp']),
         _r('landak', 'Bedrooms', '3 bedrooms, 1 king and 4 queen beds', ['landak-bedroom-1.webp', 'landak-bedroom-1-angle-3.webp', 'landak-bedroom-1-angle-2.webp'], {'landak-bedroom-1.webp': 'Bedroom', 'landak-bedroom-1-angle-3.webp': 'Bedroom, from the door', 'landak-bedroom-1-angle-2.webp': 'Bedroom, second angle'}),
         _r('landak', 'Bathrooms', '3 bathrooms', ['landak-bathroom-1.webp', 'landak-bathroom-portrait-1.webp', 'landak-bathroom-2.webp']),
-        _r('landak', 'Laundry counter', '', ['landak-covered-counter-wide-1.webp', 'landak-covered-work-counter-1.webp']),
+        _r('landak', 'Dedicated workspace (2nd level)', '', ['landak-covered-counter-wide-1.webp', 'landak-covered-work-counter-1.webp']),
         _r('landak', 'Outside', 'Parking for 2 cars inside the gate', ['landak-exterior-1.webp']),
     ],
 }
@@ -272,7 +281,8 @@ ALBUM = {
         ('Bedroom', ['landak-bedroom-1.webp', 'landak-bedroom-1-angle-3.webp', 'landak-bedroom-1-angle-2.webp']),
         ('Bathrooms', ['landak-bathroom-1.webp', 'landak-bathroom-2.webp', 'landak-bathroom-portrait-1.webp']),
         ('Games: pool table, darts, foosball, TV arcade', ['landak-pool-table-darts-1.webp', 'landak-patio-bistro-pool-1.webp', 'landak-pool-table-length-1.webp', 'landak-pool-table-detail-1.webp', 'landak-dartboards-detail-1.webp', 'landak-patio-view-1.webp', 'landak-foosball-table-1.webp', 'landak-dining-foosball-1.webp', 'landak-tv-games-1.webp', 'landak-game-stick-detail-1.webp', 'landak-tv-remote-detail-1.webp']),
-        ('Outside, laundry and utility', ['landak-exterior-1.webp', 'landak-covered-counter-wide-1.webp', 'landak-covered-work-counter-1.webp', 'landak-ironing-counter-detail-1.webp', 'landak-electrical-controls-1.webp']),
+        ('Dedicated workspace (2nd level)', ['landak-covered-counter-wide-1.webp', 'landak-covered-work-counter-1.webp']),
+        ('Outside, laundry and utility', ['landak-exterior-1.webp', 'landak-ironing-counter-detail-1.webp', 'landak-electrical-controls-1.webp']),
     ],
 }
 HOME_CTA_IMG = 'landak-living-room-1.webp'
@@ -712,7 +722,7 @@ def header_html(k=None):
             '</div></header>' % (brand_mark(), nav, wa_btn('WhatsApp', wa_msg(k), 'header', 'btn btn-wa btn-sm hdr-wa', aria='Message us on WhatsApp'), ico('menu', 24, 'i i-open'), ico('x', 24, 'i i-close')))
 
 
-def footer_html():
+def footer_html(k=None):
     adds = ''.join('<li><a href="{R}stays/%s/">%s</a><span>%s</span></li>' % (HOUSES[k]['slug'], e(HOUSES[k]['name']), e(HOUSES[k]['addr'])) for k in ORDER)
     links = ''.join('<a href="{R}%s">%s</a>' % (p, n) for n, p in NAV[:5] + [('About', 'about/'), ('Contact', 'contact/'), ('Privacy', 'privacy/')])
     return ('<footer class="ftr"><div class="wrap"><div class="ftr-top"><div class="ftr-lead"><p class="ftr-tag">%s</p>'
@@ -721,7 +731,7 @@ def footer_html():
             '<div><p class="fh">Explore</p><div class="flinks">%s</div></div></div>'
             '<p class="wordmark" aria-hidden="true">JB<span>Staycations</span></p>'
             '<div class="fsmall"><span>Prices in RM. Host Daniel on WhatsApp: %s.</span> %s <a href="https://pageonesingapore.com/" rel="noopener">Website by Page One Singapore</a></div></div></footer>'
-            % (e(TAGLINE), wa_btn('WhatsApp %s' % WA_SHOW, WA_HELLO, 'footer'), adds, links, WA_SHOW, review_helper.footer_link('{R}') + ' <a href="%s" rel="noopener" target="_blank">Find us on Google</a>' % GBP_URL))
+            % (e(TAGLINE), wa_btn('WhatsApp %s' % WA_SHOW, wa_msg(k), 'footer'), adds, links, WA_SHOW, review_helper.footer_link('{R}') + ' <a href="%s" rel="noopener" target="_blank">Find us on Google</a>' % GBP_URL))
 
 
 CTA_JS = r"""/* Page One CTA tap counter (copied approach from aivs.js v3, site id jb-staycation). Counts taps on WhatsApp/call/email links. ?p1test=1 = test mode. Does not run on pageonesingapore.com previews or localhost. */
@@ -810,11 +820,12 @@ bs.forEach(function(x){x.addEventListener('click',function(){var c=x.getAttribut
 d.querySelectorAll('form.enq').forEach(function(f){f.classList.add('enq-on');var alt=f.parentNode.querySelector('.enq-alt');if(alt)alt.classList.add('enq-hide');
 var ci=f.elements['in'],co=f.elements['out'],er=f.querySelector('.enq-err');try{var t=new Date();t.setMinutes(t.getMinutes()-t.getTimezoneOffset());ci.min=t.toISOString().slice(0,10)}catch(x){}
 ci.addEventListener('change',function(){co.min=ci.value||'';er.hidden=true});
-function fd(v){if(!v)return'not decided';var p=v.split('-'),m=['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];return (+p[2])+' '+m[+p[1]-1]+' '+p[0]}
-function nv(v){v=parseInt(v,10);return isNaN(v)||v<0?'not decided':String(v)}
+function fd(v){if(!v)return'';var p=v.split('-'),m=['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];return (+p[2])+' '+m[+p[1]-1]+' '+p[0]}
+function nv(v){v=parseInt(v,10);return isNaN(v)||v<0?'':String(v)}
+function sl(v){return v?v+' ':''}
 f.addEventListener('submit',function(ev){ev.preventDefault();if(ci.value&&co.value&&co.value<=ci.value){er.hidden=false;co.focus();return}
-var msg="Hi, I'm planning a JB stay from Singapore. [House: "+f.getAttribute('data-house')+"]. Check-in: "+fd(ci.value)+". Check-out: "+fd(co.value)+". Adults: "+nv(f.elements['ad'].value)+". Children: "+nv(f.elements['ch'].value)+". Please confirm availability, sleeping arrangement, final total in RM, payment options, deposit and cancellation terms. [Source: "+f.getAttribute("data-from")+"]";
-window.open('https://wa.me/6590062198?text='+encodeURIComponent(msg),'_blank','noopener')})});
+var msg="Hi Daniel,\n\nI'm planning a JB stay from Singapore.\n[House: "+f.getAttribute('data-house')+"].\nCheck-in:  "+sl(fd(ci.value))+"am/pm\nCheck-out: "+sl(fd(co.value))+"am/pm.\nAdults:     "+sl(nv(f.elements['ad'].value))+"pax .\nChildren:   "+sl(nv(f.elements['ch'].value))+"pax.\n\nPlease confirm availability and the final price total in RM .";
+window.open('https://wa.me/6590062198?text='+encodeURIComponent(msg).replace(/'/g,'%27'),'_blank','noopener')})});
 /* sticky bar: hide while the footer is visible or a form field is focused */
 var stk=[].slice.call(d.querySelectorAll('.stick')),ft=d.querySelector('.ftr');
 function stOff(o){stk.forEach(function(x){x.classList.toggle('st-off',o)})}
@@ -1335,7 +1346,7 @@ def render(path, p):
             '<script src="{pre}jb.js?v={av}" defer></script><script src="{pre}cta.js?v={av}" defer></script></body></html>').format(av=ASSET_V, 
         title=e(p['title']), desc=e(p['desc']), url=url, pre=pre, hpre=hero_preload() if path == '' else '', ogt='article' if p['article'] else 'website', ogi=e(ogi), ogtype=ogtype,
         ogw=w, ogh=h, oga=e(_alt_for(og)), headjs=HEAD_JS, fonts=FONT_LINKS, lds=''.join(jl(x) for x in lds), bc=bc, hdr=header_html(p['stick']), top=top,
-        content=p['body'], ftr=footer_html(), stick=stick)
+        content=p['body'], ftr=footer_html(p['stick']), stick=stick)
     return body.replace('{R}', pre)
 
 
@@ -1980,7 +1991,7 @@ def enquiry_form(k):
             '<p class="enq-err" role="alert" hidden>Check-out must be after check-in.</p>'
             '<button type="submit" class="btn btn-wa" data-cta="whatsapp" data-cta-label="enquiry-%s">%s<span>Check dates for %s</span></button>'
             '<p class="enq-n">Optional. This opens WhatsApp with your message ready; nothing is sent until you press send.</p></form>'
-            % (nm, HOUSES[k]['guests'], HOUSES[k]['guests'], k, WA_SVG, nm))
+            % (e(WA_HOUSE_LABEL[k]), HOUSES[k]['guests'], HOUSES[k]['guests'], k, WA_SVG, nm))
 
 def house_body(k):
     h = HOUSES[k]
@@ -2281,7 +2292,10 @@ def main():
     for path, p in PAGES.items():
         d = os.path.join(OUT, path)
         os.makedirs(d, exist_ok=True)
-        open(os.path.join(d, 'index.html'), 'w', encoding='utf-8').write(render(path, p))
+        out_html = render(path, p)
+        if path not in ('stays/%s/' % HOUSES['prima']['slug'], 'stays/%s/' % HOUSES['landak']['slug']):
+            out_html = general_wa_only(out_html)
+        open(os.path.join(d, 'index.html'), 'w', encoding='utf-8').write(out_html)
     # 404 (renders with absolute BASE paths so it works at any depth)
     nf = ('<!doctype html><html lang="en-SG"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Page not found | JB Staycations</title>'
           '<meta name="robots" content="max-image-preview:large"><link rel="icon" href="%sicon.svg" type="image/svg+xml">%s%s<link rel="stylesheet" href="%sjb.css?v=%s"></head><body class="inner has-stick">%s<main id="main"><div class="wrap nf"><p class="eyebrow">Error 404</p><h1>Page not found</h1><p class="lead">That page does not exist. Try our <a href="%s">home page</a>, the <a href="%sstays/">stays</a> or message us on WhatsApp.</p>%s</div></main>%s%s<script src="%sjb.js?v=%s" defer></script><script src="%scta.js?v=%s" defer></script></body></html>'
