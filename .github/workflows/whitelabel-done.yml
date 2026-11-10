@@ -1,0 +1,18 @@
+name: White-label done check
+on:
+  push:
+    branches: [ "claude/project-thread-ete3gv" ]
+    paths: [ ".github/whitelabel/done.trigger" ]
+permissions:
+  contents: write
+jobs:
+  run:
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+      - run: python3 -u .github/whitelabel/donecheck.py
+      - run: npm i --no-save playwright@1.48.2 && npx playwright install --with-deps chromium
+      - run: node .github/whitelabel/shots.js
+      - run: |
+          git config user.name "github-actions[bot]"; git config user.email "41898299+github-actions[bot]@users.noreply.github.com"
+          git add whitelabel/20261110/donecheck.json whitelabel/20261110/screens && git commit -qm "White-label done check + footer screenshots ($(date -u +%FT%TZ))" && git pull -q --rebase origin claude/project-thread-ete3gv && git push origin HEAD:claude/project-thread-ete3gv
