@@ -1,0 +1,9 @@
+page ok https://contiexpert.sg/ 151634
+page ok https://contiexpert.sg/services/ 275754
+page fail https://voltauto.sg/ <urlopen error [SSL: UNEXPECTED_EOF_WHILE_READING] EOF occurred in violation of protocol (_ssl.c:1000)>
+page fail https://www.voltauto.sg/ <urlopen error [SSL: UNEXPECTED_EOF_WHILE_READING] EOF occurred in violation of protocol (_ssl.c:1000)>
+page fail https://voltautocare.sg/ <urlopen error [Errno -2] Name or service not known>
+media page 4 stop HTTP Error 400: Bad Request
+img fail https://contiexpert.sg/wp-content/uploads/2025/12/repair-svgrepo-com-1.svg cannot identify image file <_io.BytesIO object at 0x7f9ea5b2ade0>
+img fail https://contiexpert.sg/wp-content/uploads/2025/12/repair-svgrepo-com.svg cannot identify image file <_io.BytesIO object at 0x7f9ea5b2b0b0>
+wp images: 280, social: 19
