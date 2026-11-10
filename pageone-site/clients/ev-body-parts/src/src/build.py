@@ -108,7 +108,9 @@ ART_OF = {"front-bumper": "front-bumper", "front-bumper-bracket": "front-bumper"
           "tail-lamp": "tail-lamp", "inner-tail-lamp": "tail-lamp", "third-brake-light": "tail-lamp", "rear-reflector": "tail-lamp",
           "side-mirror": "side-mirror", "fender": "fender", "wheel-arch-trim": "fender", "rear-bumper": "rear-bumper", "rear-bumper-bracket": "rear-bumper", "rear-diffuser": "rear-bumper", "bumper-trim": "rear-bumper",
           "wheel-arch": "wheel-arch", "bonnet": "bonnet", "bonnet-hinge": "bonnet", "undertray": "underbody", "underbody-shield": "underbody", "jacking-pad": "underbody"}
-ART = {k: ART_BASE + ART_FILES[v] for k, v in ART_OF.items()}
+# Self-hosting (SEO pass 2 Nov 2026): if src/assets/art/<file> exists it is served from this domain instead of the Base44 media host.
+def _art(fn): return (BASE + "/assets/art/" + fn) if (HERE / "assets" / "art" / fn).exists() else ART_BASE + fn
+ART = {k: _art(ART_FILES[v]) for k, v in ART_OF.items()}
 ILLUS = "Illustrative image — actual part and fitment must be confirmed"
 # Parts that need a specialist check: never sold through the cart, always a WhatsApp quote
 SPECIAL = {"crash-structure", "radiator-support", "underbody-shield", "jacking-pad", "bumper-reinforcement", "windscreen"}
@@ -326,14 +328,28 @@ def asset(name):
     return f"{name}?v={VER[name]}"
 
 pages = []  # (url path, priority, lastmod)
+LM_FILE = HERE / "lastmod.json"
+try: LM = json.loads(LM_FILE.read_text())
+except Exception: LM = {}
+LM_NEW = {}
+def lm_for(path, doc):
+    """True lastmod: date moves only when the rendered page changes (asset cache-busters ignored)."""
+    h = hashlib.sha1(re.sub(r"\?v=[0-9a-f]{8}", "", doc).encode()).hexdigest()[:12]
+    old = LM.get(path)
+    d = old["d"] if old and old["h"] == h else TODAY
+    LM_NEW[path] = {"h": h, "d": d}
+    return d
 def logo_html(r):
     return (f'<a class="logo" href="{r}" aria-label="{BRAND} home"><img class="em" src="{r}logo-96.png" alt="" width="48" height="48">'
             f'<span class="wm"><b>EV BODY</b><b>PARTS</b><small>China &amp; EV cars &middot; Singapore</small></span></a>')
 
 ORG = {"@type": ["AutoPartsStore", "Organization"], "@id": BASE + "/#org", "name": BRAND, "url": BASE + "/", "slogan": TAG,
-       "logo": BASE + "/icon-512.png", "image": BASE + "/og.jpg",
+       "logo": {"@type": "ImageObject", "@id": BASE + "/#logo", "url": BASE + "/icon-512.png", "contentUrl": BASE + "/icon-512.png", "width": 512, "height": 512}, "image": BASE + "/og.jpg",
        "description": "Singapore seller of body parts for China and EV cars, for workshops and car owners.",
        "areaServed": {"@type": "Country", "name": "Singapore"}}
+# sameAs: no confirmed owned profiles yet (no Google Business Profile / Facebook / Instagram given by Edwin). Add URLs here when they exist.
+SAMEAS = []
+if SAMEAS: ORG["sameAs"] = SAMEAS
 if LEGAL: ORG["legalName"] = LEGAL
 if UEN: ORG["identifier"] = {"@type": "PropertyValue", "propertyID": "UEN", "value": UEN}
 if ADDRESS: ORG["address"] = {"@type": "PostalAddress", "streetAddress": ADDRESS, "addressLocality": "Singapore", "addressCountry": "SG"}
@@ -349,6 +365,12 @@ def faq_html(items):
     return '<div class="faq">' + "".join(f'<details class="rv"><summary>{e(q)}</summary><p>{e(a)}</p></details>' for q, a in items) + "</div>"
 def faq_ld(items):
     return {"@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": q, "acceptedAnswer": {"@type": "Answer", "text": a}} for q, a in items]}
+def prose_sec(paras):
+    return '<section class="sec tight"><div class="wrap narrow prose">' + "".join(f"<p>{p}</p>" for p in paras) + '</div></section>'
+def faq_sec(items, title="Common questions"):
+    return f'<section class="sec alt tight"><div class="wrap narrow"><div class="sec-t"><h2>{e(title)}</h2></div>{faq_html(items)}</div></section>'
+def add_after_head(body, extra):
+    return body.replace("</section>", "</section>" + extra, 1)
 def fit(*c):
     for t in c:
         if len(t) < 60: return t
@@ -586,7 +608,7 @@ PART_COPY = {
     "mirrors": ("Side mirrors for China & EV cars", "Side mirrors, mirror covers and mirror glass for China and EV cars in Singapore. Tell us your model and which side you need.",
         ["Owners ask for the whole mirror, only the cover, or only the glass. Tell us which one, and which side. Left and right are as seen from the driver's seat.",
          "A photo of the broken mirror from the outside and, if possible, the back helps us confirm the right part."]),
-    "body-panels": ("Body panels for China & EV cars", "Bonnets, fenders, door panels and tailgates for China and EV cars in Singapore. Send the model and we confirm fitment.",
+    "body-panels": ("Body panels for China & EV cars", "Bonnets, fenders, door panels and tailgates for China and EV cars in Singapore, sourced to order. Send the model and we confirm fitment.",
         ["Body panels are the big pieces: the bonnet (hood), the front fender (wing), door panels and the tailgate (boot lid). Panels are specific to the model, so we always check against your car.",
          "Tell us the model and the damage. A few photos from different angles are enough to start."]),
     "grilles-trims": ("Grilles & trims for China & EV cars", "Front grilles, bumper trim and wheel arch linings for China and EV cars in Singapore. Send your model and we confirm fitment.",
@@ -628,7 +650,7 @@ def brands_hub():
     body = f'''<section class="ph-hd"><div class="wrap">{{{{CRUMBS}}}}<p class="kick">Brands</p><h1>Car brands we list parts for</h1><p class="lead">The {len(BRANDS)} brands on our brand board. Brand names only describe which vehicle a part is for.</p></div></section>
 <section class="sec tight"><div class="wrap"><div class="cgrid">{cards}</div></div></section>'''
     shell("brands/index.html", "Car Brands | EV Body Parts Singapore",
-          "China and EV car brands we list body parts for: Tesla, BYD, Denza, MG, Maxus, Chery, Zeekr and more. Choose your brand.",
+          "China and EV car brands we list body parts for in Singapore: Tesla, BYD, Denza, MG, Maxus, Chery, Zeekr and more. Choose your brand to begin.",
           body, "brands", [("Brands", "brands/")], pri=0.8)
 
 def ml(names): return names[0] if len(names) == 1 else ", ".join(names[:-1]) + " and " + names[-1]
@@ -644,7 +666,7 @@ def brand_pages():
             modelsec = f'<h2>{e(name)} models</h2><ul class="mlist">{rows}</ul>'
         else:
             intro = b.get("intro") or f"{name} is on our brand board, but no {name} model is listed here yet. Tell us your model and the part, with a photo if you can, and we check what we can find."
-            desc = short(f"{name} body parts in Singapore: tell us your model and part and EV Body Parts checks what we can find.")
+            desc = short(f"{name} body parts in Singapore: tell us your model, build year and the part and EV Body Parts checks fitment and quotes on WhatsApp.")
             modelsec = f'<h2>{e(name)} parts</h2><p>No {e(name)} model is listed yet. Send us your model and the part and we check.</p>'
         title = fit(f"{name} Body Parts in Singapore | {BRAND}", f"{name} Body Parts in Singapore")
         others = "".join(f'<a class="bchip" href="{{{{R}}}}brands/{o["key"]}/">{e(o["name"])}</a>' for o in BRANDS if o["key"] != slug)
@@ -739,7 +761,7 @@ def audience_pages():
 <section class="sec tight"><div class="wrap two-c"><div class="prose">
 <h2>What to tell us</h2>
 <ul class="ticks"><li>Your car brand and model, for example Tesla Model Y or BYD Atto 3.</li><li>The part, or a photo of the damage if you do not know its name.</li><li>Left or right, if the part comes in pairs. Left and right are as seen from the driver's seat.</li></ul>
-<h2>Useful guides</h2><p><a href="{{{{R}}}}articles/tesla-model-y-tail-lamp-what-to-send/">Tesla Model Y tail lamp: what to send us</a><br><a href="{{{{R}}}}articles/china-ev-body-parts-what-to-check/">What to check before you buy body parts</a><br><a href="{{{{R}}}}articles/which-part-is-it/">Which part is it? Names explained</a></p>
+<h2>Useful guides</h2><p><a href="{{{{R}}}}articles/tesla-model-y-tail-lamp-what-to-send/">Tesla Model Y tail lamp: what to send us</a><br><a href="{{{{R}}}}articles/tesla-model-y-juniper-or-older-how-to-tell/">Tesla Model Y Juniper or older: how to tell</a><br><a href="{{{{R}}}}articles/china-ev-body-parts-what-to-check/">What to check before you buy body parts</a><br><a href="{{{{R}}}}articles/which-part-is-it/">Which part is it? Names explained</a></p>
 <h2>Terms</h2><p class="mu">Fitting, delivery and warranty terms are given on enquiry.</p>
 <div class="btns">{btn(enq("a part for my car"), "Send an enquiry " + UI["arrow"])}{btn("{{R}}catalogue/", "Search the catalogue", "g")}</div>{PVN}</div>
 <aside class="side"><div class="panel photo">{pic("matte", "Matte black electric car, mood image", 700, 520, "(min-width:900px) 30vw, 100vw")}</div></aside></div></section>
@@ -820,7 +842,7 @@ def privacy():
           body, "", [("Privacy", "privacy/")], pri=0.3)
 ARTICLES = [
  ("tesla-model-y-tail-lamp-what-to-send", "Tesla Model Y tail lamp: what to send us", "Tesla Model Y Tail Lamp: What to Send | EV Body Parts",
-  "Which photos and details help us match a Tesla Model Y tail lamp, and how to describe left or right. A short checklist.", "tail",
+  "Which photos and details help us match a Tesla Model Y tail lamp in Singapore, and how to describe left or right. A short checklist.", "tail",
   [("The short version", "Send the brand and model, which side you need, and two photos of the old lamp. That is usually enough for us to start checking."),
    ("1. Say left or right", "Left and right are as seen from the driver's seat, not from outside the car. If you are not sure, say where the damage is, for example &ldquo;the lamp on the side next to the fuel-side kerb&rdquo; is too vague, so a photo of the whole rear of the car is better."),
    ("2. Photograph the lamp", "Take one photo from outside the car showing the whole lamp and the area around it. If the lamp is already off the car, take a second photo of the back, where any markings or numbers are."),
@@ -837,7 +859,7 @@ ARTICLES = [
    ("What is included", "Ask whether brackets, clips, bulbs or fixings come with the part, and whether the part is new. Ask any seller, including us, about returns and warranty, and get the answer in writing. Ask us the same when you enquire."),
    ("Send photos", "Photos of the old part and the damaged area let the seller compare before you commit.")]),
  ("which-part-is-it", "Which part is it? Bumper, fender, reflector and trim names explained", "Car Part Names Explained: Bumper, Fender, Reflector",
-  "Plain-English names for car body parts: bumper, bumper trim, fender, bonnet, tailgate, reflector, grille and more.", "head",
+  "Plain-English names for car body parts: bumper, bumper trim, fender, bonnet, tailgate, reflector, grille and more, explained simply.", "head",
   [("Why names matter", "The same part can have several names. If you search or enquire with a name we also recognise, we can find it faster. Here are the common ones."),
    ("Bumper and bumper trim", "The bumper is the large piece at the front or rear of the car. Bumper trim covers the strips, lip and garnish attached to or around it. People also say bumper lip or sticker bumper."),
    ("Rear reflector", "A reflector is the red, lamp-like panel low on the rear bumper. It is not the tail lamp."),
@@ -846,30 +868,95 @@ ARTICLES = [
    ("Lamps", "Headlamp or headlight is at the front. Tail lamp or taillight is at the rear, and some people also say brake light. A fog lamp is a small extra lamp, usually low at the front."),
    ("Mirror, grille and arch", "The side mirror is also called a wing mirror. The grille is the vented panel at the front. The wheel arch lining is the liner inside the wheel arch."),
    ("Still not sure?", "Send a photo and the car model. We tell you the part name and check what we can find.")]),
+ ("tesla-model-y-juniper-or-older-how-to-tell", "Tesla Model Y Juniper or older Model Y: how to tell which one you have", "Tesla Model Y Juniper or Older? How to Tell | EV Body Parts",
+  "How to tell a 2025 Juniper Model Y from the earlier Model Y before you ask for a body part, and what to send if you are not sure.", "head",
+  [("The short answer", "Check the year on your car documents and look at the rear of the car. Our catalogue lists the earlier Model Y as 2021 to 2024 and the Juniper as 2025 onwards. If the rear has one light bar joining both tail lamps, it is most likely the newer car. Send photos if you are not sure."),
+   ("Why it matters for parts", "The Juniper is a refreshed Model Y. Lamps, bumpers and trims can differ between the two, so a part for one may not suit the other. We do not guess from the name Model Y alone."),
+   ("Which year is my car?", "Look at the year of manufacture or first registration on your car documents. Build month can matter near the change-over, so give the month and year if you have them."),
+   ("What can I see from outside?", "Stand behind the car. The earlier Model Y has two separate tail lamps. The Juniper usually shows a light bar running across the tailgate between them. At the front, the Juniper usually has a slimmer headlamp and a light bar across the nose. These are quick clues, not proof."),
+   ("What should I send us?", "Send the model name, the build month and year, the part and the side, plus one photo of the whole rear and one of the whole front. If a part is already off the car, add a photo of its back."),
+   ("Does this apply to the Model 3?", "Yes, in the same way. We list the earlier Model 3 as 2021 to 2023 and the Highland as 2023 onwards. The same checks apply. Send the build month and year, and photos."),
+   ("What happens next?", "We compare your photos with the part and confirm fitment before we reply. If the two versions do share a part, we say so. If they do not, we say that too. See the <a href=\"{{R}}brands/tesla/model-y/\">Tesla Model Y</a> and <a href=\"{{R}}brands/tesla/model-y-juniper/\">Model Y Juniper</a> pages.")]),
+ ("what-is-an-oe-part-number-body-parts", "What is an OE part number, and how do you find it on a body part?", "What Is an OE Part Number? | EV Body Parts",
+  "What an OE part number is, where to look for it on a lamp, bumper or mirror, and what to send if you cannot find it.", "charge",
+  [("The short version", "An OE number is the car maker's own reference number for a part. It helps match the exact part, but you do not need it to ask us. If you cannot find it, send the car model, build month and year, and photos instead."),
+   ("What does OE mean?", "OE stands for original equipment. The OE number is the reference the car maker gives a part, and many other sellers list the same number so a buyer can compare. It is a reference for matching, not a promise about where a part comes from."),
+   ("Where can I find the number?", "On a lamp, mirror or bumper bracket, look at the back of the part or on a label or moulded marking. On a part that is still on the car, it is often hidden, so you may need to see it once the part is removed. A workshop or the car's parts documents may also list it."),
+   ("What if the number is worn or missing?", "That is common. Numbers can fade, be painted over or be on a part that is already thrown away. Send photos of the part and the area around it, and the car's model, build month and year. We can still check fitment from those."),
+   ("Is the OE number enough to confirm a fit?", "Not on its own. The same model can come in different versions, and a part number does not tell us about your trim, sensors or market. We compare the number with your build date, trim and photos before we quote."),
+   ("What should I send us?", "The brand and model, build month and year, the part and the side, the OE number if you have it, and a photo of the old part or the damage."),
+   ("What happens next?", "We check what we can source and confirm fitment before we reply. You can also <a href=\"{{R}}catalogue/\">search the catalogue</a> by car and part, and tap Get a quote.")]),
 ]
+
+ART_DATES = {"tesla-model-y-juniper-or-older-how-to-tell": "2026-11-02", "what-is-an-oe-part-number-body-parts": "2026-11-04"}   # first published
+ART_MOD = "2026-11-02"   # last updated: FAQ + direct answer added in the SEO pass
+ART_ANSWER = {
+ "what-is-an-oe-part-number-body-parts": "An OE number is the car maker's own reference number for a part, and it helps match the exact part. Look for it on the back of a lamp, mirror or bumper bracket, often on a label or moulding. You do not need it to ask us: send your car model, build month and year, and photos instead.",
+ "tesla-model-y-tail-lamp-what-to-send": "To get a Tesla Model Y tail lamp matched, send the model, whether you need the left or right lamp (as seen from the driver's seat), and two photos of the old lamp: one on the car and, if it is off, one of the back. Add the year on your car documents. We confirm fitment before we reply.",
+ "china-ev-body-parts-what-to-check": "Before you buy a body part for a China or EV car in Singapore, check five things: the exact model, left or right, any sensors or camera near the part, whether it is bare, primed or painted, and what is included. Ask about returns and warranty and get the answer in writing.",
+ "which-part-is-it": "Body parts go by several names. The bumper is the large piece at the front or rear, the fender (or wing) sits beside the front wheel, and the rear reflector is the red panel low on the rear bumper, not the tail lamp. If you are unsure, send a photo and your car model and we name the part.",
+ "tesla-model-y-juniper-or-older-how-to-tell": "Check the year on your car documents. We list the earlier Model Y as 2021 to 2024 and the Juniper as 2025 onwards. A light bar joining both tail lamps at the rear usually points to the newer car. Lamps and bumpers can differ, so send photos if you are not sure.",
+}
+for _k, _v in ART_ANSWER.items(): assert 40 <= len(_v.split()) <= 60, (_k, len(_v.split()))
+ART_FAQ = {
+"what-is-an-oe-part-number-body-parts": [
+ ("What does OE mean on a car part?", "OE stands for original equipment. The OE number is the car maker's own reference number for a part, and other sellers often list the same number so you can compare."),
+ ("Do I need an OE number to get a quote?", "No. The number helps, but you can send the car model, build month and year, the part and photos instead. We check fitment from those before we quote."),
+ ("Where is the OE number on a lamp or bumper?", "Usually on the back of the part, on a label or as a moulded marking. On a part still fitted to the car it may be hidden, so it is often easier to read once the part is removed."),
+ ("Is the OE number enough to confirm that a part fits?", "Not on its own. We also compare your build date, trim and photos, because the same model can come in different versions.")],
+"tesla-model-y-tail-lamp-what-to-send": [
+ ("Is the left lamp the one on the left as I look at the car?", "No. Left and right are as seen from the driver's seat, not from outside the car. If you are not sure, send a photo showing where the damage is."),
+ ("How many photos do I need to send?", "Two are usually enough: one from outside showing the whole lamp and the area around it, and, if the lamp is already off the car, one of the back where any markings or numbers are."),
+ ("What else should I tell you besides the lamp?", "Tell us the brand, model and, if you can, the year on your car documents. Say if the car has been modified, repainted or repaired at the rear, and mention any bumper or reflector damage so we check those together."),
+ ("Do you guess the lamp from the model name?", "No. Lamps for the same model can differ, so we compare your photos with the part and confirm fitment before we reply.")],
+"china-ev-body-parts-what-to-check": [
+ ("What should I check before buying a body part for a China EV?", "The exact model, the side, any sensors, cameras or openings near the part, whether it is bare, primed or painted, and what is included such as brackets, clips and bulbs."),
+ ("Why does the side matter?", "Lamps, mirrors, fenders and doors come left and right. Left and right are as seen from the driver's seat."),
+ ("Should I ask about returns and warranty?", "Yes. Ask any seller, including us, about returns and warranty, and get the answer in writing."),
+ ("Are two models from the same brand interchangeable?", "Often not. Parts for two models from the same brand are frequently different, even when they look alike, so give the model name as written on the car.")],
+"which-part-is-it": [
+ ("What is the difference between a bumper and bumper trim?", "The bumper is the large piece at the front or rear of the car. Bumper trim covers the strips, lip and garnish attached to or around it."),
+ ("Is a rear reflector the same as a tail lamp?", "No. A reflector is the red, lamp-like panel low on the rear bumper. The tail lamp is the lamp at the rear of the body."),
+ ("What is a fender called in other places?", "The fender is also called the wing. It is the panel beside the front wheel. The bonnet is called the hood in some countries."),
+ ("What if I still cannot name the part?", "Send a photo and the car model on WhatsApp. We tell you the part name and check what we can find.")],
+"tesla-model-y-juniper-or-older-how-to-tell": [
+ ("How do I tell a Juniper Model Y from an older Model Y?", "Check the year on your car documents. Our catalogue lists the earlier Model Y as 2021 to 2024 and the Juniper as 2025 onwards. A light bar joining both tail lamps at the rear usually points to the newer car."),
+ ("Can I use an older Model Y part on a Juniper?", "Not safely assumed. Lamps, bumpers and trims can differ between the two, so we confirm fitment from your photos and build date before quoting."),
+ ("What should I send to get a quote?", "The model, build month and year, the part and the side, and photos of the whole front or rear of the car.")]}
 
 def articles():
     cards = ""
     for slug, h1, title, desc, ph, secs in ARTICLES:
         cards += f'<a class="tc rv" href="{{{{R}}}}articles/{slug}/"><div class="tc-ph">{pic(ph, "Mood image", 900, 600, "(min-width:900px) 30vw, 100vw")}</div><div class="tc-b"><p class="kick">Guide</p><h3>{h1.replace("&", "&amp;")}</h3><p>{e(desc)}</p><span class="more">Read the guide {UI["arrow"]}</span></div></a>'
-        paras = "".join(f"<h2>{a}</h2><p>{b}</p>" for a, b in secs)
-        sch = [{"@type": "Article", "headline": h1, "description": desc, "datePublished": "2026-10-31", "dateModified": "2026-10-31",
+        amod = max(ART_MOD, ART_DATES.get(slug, ""))
+        paras = f'<p class="mu small">By {BRAND} &middot; Last updated {datetime.date.fromisoformat(amod).strftime("%-d %B %Y")}</p>' + "".join(f"<h2>{a}</h2><p>{b}</p>" for a, b in secs)
+        sch = [{"@type": "Article", "headline": h1, "description": desc, "datePublished": ART_DATES.get(slug, "2026-10-31"), "dateModified": amod,
                 "author": {"@id": BASE + "/#org"}, "publisher": {"@id": BASE + "/#org"}, "image": BASE + "/og.jpg", "mainEntityOfPage": f"{BASE}/articles/{slug}/"}]
-        body = f'''<section class="ph-hd"><div class="wrap">{{{{CRUMBS}}}}<p class="kick">Guide</p><h1>{h1.replace("&", "&amp;")}</h1><p class="lead">{e(desc)}</p></div></section>
+        if slug in ART_FAQ:
+            paras += "<h2>FAQ</h2>" + faq_html(ART_FAQ[slug])
+            sch.append({"@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": q, "acceptedAnswer": {"@type": "Answer", "text": a}} for q, a in ART_FAQ[slug]]})
+        body = f'''<section class="ph-hd"><div class="wrap">{{{{CRUMBS}}}}<p class="kick">Guide</p><h1>{h1.replace("&", "&amp;")}</h1><p class="lead">{e(ART_ANSWER[slug])}</p></div></section>
 <section class="sec tight"><div class="wrap two-c"><article class="prose">{paras}
 <div class="btns">{btn(enq("a part"), "Send us your car and part " + UI["arrow"])}{btn("{{R}}catalogue/", "Search the catalogue", "g")}</div>{PVN}</article>
 <aside class="side"><div class="panel photo">{pic(ph, "Mood image only", 700, 520, "(min-width:900px) 30vw, 100vw")}</div></aside></div></section>'''
-        shell(f"articles/{slug}/index.html", title, desc, body, "", [("Guides", "articles/"), (h1, f"articles/{slug}/")], sch, og_type="article", pri=0.6, lastmod="2026-10-31")
+        shell(f"articles/{slug}/index.html", title, desc, body, "", [("Guides", "articles/"), (h1, f"articles/{slug}/")], sch, og_type="article", pri=0.6)
+    hub_faq = [("What do I send to get a body part matched?", "The car brand and model, the build month and year, the part, left or right if it has a side, and a photo of the old part or the damage."),
+               ("Do the guides replace asking you?", "No. They help you ask well. We still confirm fitment from your details and photos before we quote."),
+               ("How do I tell an older model from a newer one?", "Check the year on your car documents. Our Tesla Model Y guide shows how to tell the earlier Model Y from the 2025 Juniper.")]
     body = f'''<section class="ph-hd"><div class="wrap">{{{{CRUMBS}}}}<p class="kick">Guides</p><h1>Guides for buyers</h1><p class="lead">Short, practical notes on getting the right body part.</p></div></section>
+{prose_sec([f"These guides answer the questions we are asked most often about body parts for China and EV cars in Singapore. They cover what to send us when you want a part matched, what to check before you buy, how to tell two versions of the same model apart, and plain-English names for common body parts.", "Each guide is short and practical. If you already know the car and the part, you can skip the reading: search the catalogue, tap Get a quote, and we check fitment on WhatsApp before we reply. Every guide shows the date it was last updated."])}
 <section class="sec tight"><div class="wrap"><div class="two three">{cards}</div></div></section>'''
     shell("articles/index.html", "Guides | EV Body Parts Singapore",
           "Short guides on getting the right body part for China and EV cars in Singapore: what to send, what to check, part names.",
-          body, "", [("Guides", "articles/")], pri=0.6)
+          body + faq_sec(hub_faq), "", [("Guides", "articles/")], pri=0.6, faq=hub_faq)
 
 def notfound():
-    body = f'''<section class="ph-hd"><div class="wrap"><p class="kick">404</p><h1>Page not found</h1><p class="lead">The page may have moved. Search the catalogue, or go to the homepage.</p></div></section>
-<section class="sec tight"><div class="wrap">{search_box("nq", big=False, action="/catalogue/")}<p style="margin-top:24px"><a class="btn btn-g" href="/">Back to the homepage</a></p></div></section>'''
-    shell("404.html", "Page Not Found | EV Body Parts", "Page not found. Search the EV Body Parts catalogue or go to the homepage.", body, index=False)
+    links = "".join(f'<li><a href="{BASE}/{u}">{n}</a></li>' for u, n in [("catalogue/", "Search the catalogue"), ("parts/", "Parts by type"), ("brands/", "Car brands"), ("for-workshops/", "For workshops"), ("for-car-owners/", "For car owners"), ("articles/", "Guides"), ("contact/", "Contact")])
+    body = f'''<section class="ph-hd"><div class="wrap"><p class="kick">404</p><h1>Page not found</h1><p class="lead">The page may have moved. Search the catalogue, or pick a section below.</p></div></section>
+<section class="sec tight"><div class="wrap">{search_box("nq", big=False, action=BASE + "/catalogue/")}
+<ul class="ticks" style="margin-top:24px">{links}</ul>
+<p style="margin-top:24px"><a class="btn btn-g" href="{BASE}/">Back to the homepage</a> <a class="btn btn-p" href="https://wa.me/{WA}">WhatsApp us</a></p></div></section>'''
+    shell("404.html", "Page Not Found | EV Body Parts", "Page not found. Search the EV Body Parts catalogue, browse parts, brands and guides for China and EV cars, or contact us on WhatsApp.", body, index=False)
 
 # ------------------------------------------------------------------ data.js (snapshot for the browser; ev.js refreshes it live)
 def datajs():
@@ -891,6 +978,8 @@ def statics():
     shutil.copytree(HERE / "assets" / "featured", OUT / "assets" / "featured", dirs_exist_ok=True)
     for f in ("ev.css", "ev.js", "wa.js"):
         shutil.copy(HERE / f, OUT / f)
+    if (HERE / "assets" / "art").exists():
+        shutil.copytree(HERE / "assets" / "art", OUT / "assets" / "art", dirs_exist_ok=True)
     for g, (path, raw) in PHOTO_FILES.items():
         (OUT / path).parent.mkdir(parents=True, exist_ok=True); (OUT / path).write_bytes(raw)
     (OUT / "site.webmanifest").write_text(json.dumps({"name": BRAND, "short_name": BRAND, "icons": [
@@ -912,7 +1001,9 @@ def statics():
     L += ["", "## Brands (names used only to describe fitment)"] + [f"- {b['name']}: {BASE}/brands/{b['key']}/" for b in BRANDS] + \
          ["", "## Part types"] + [f"- {c[1]}: {BASE}/parts/{c[0]}/" for c in CATS] + \
          ["", "## Pages", f"- Catalogue search: {BASE}/catalogue/", f"- For workshops: {BASE}/for-workshops/", f"- For car owners: {BASE}/for-car-owners/",
-          f"- Guides: {BASE}/articles/", f"- Sitemap: {BASE}/sitemap.xml"]
+          f"- Guides: {BASE}/articles/", f"- About: {BASE}/about/", f"- Contact: {BASE}/contact/", f"- Sitemap: {BASE}/sitemap.xml"]
+    L += ["", "## Guides"] + [f"- [{a[1]}]({BASE}/articles/{a[0]}/): {a[3]}" for a in ARTICLES]
+    L += ["", "## Hours", "- Opening hours are not published. WhatsApp is the only contact.", "", f"Last updated: {ART_MOD}"]
     (OUT / "llms.txt").write_text("\n".join(L) + "\n")
     (OUT / "htaccess.txt").write_text(f"""# {BRAND} - go-live notes only (do NOT upload as .htaccess into the preview folder).
 # Preview URL: https://pageonesingapore.com/preview/ev-body-parts/ (hidden by a server header on the parent /preview/ folder; pages carry no noindex).
@@ -1028,7 +1119,7 @@ def shell(path, title, desc, body, active="", crumbs=None, schema=None, og_type=
     f.parent.mkdir(parents=True, exist_ok=True)
     f.write_text(doc)
     if index:
-        pages.append(("/" + ("" if path == "index.html" else path.replace("index.html", "")), pri, lastmod or TODAY))
+        pages.append(("/" + ("" if path == "index.html" else path.replace("index.html", "")), pri, lastmod or lm_for(path, doc)))
 
 def home_faq():
     return [("Can you find my part?", "Search your car and part. Not listed? Tap Get a quote anyway."),
@@ -1147,20 +1238,42 @@ def catalogue():
 <div class="sec-t" style="margin-top:44px"><h2>Browse by brand</h2></div>
 <div class="bchips">{links}</div>
 </div></section>'''
+    cat_faq = [("Can I buy and pay online?", "No. The catalogue lists parts we can source. Tap Get a quote and WhatsApp opens with the car and part filled in. We check fitment, then reply with a quote."),
+               ("What if my car or part is not listed?", "Ask anyway. WhatsApp us the car brand and model, the build year, the part and a photo, and we check what we can find."),
+               ("How do you check that a part fits?", "We compare your build month and year, the market, the trim and the OE number if you have it, together with your photos, before we quote.")]
+    cat_intro = prose_sec([f"The catalogue lists the body parts {BRAND} can source for China and EV cars sold in Singapore: {len(BRANDS)} brands and {len(CARS)} models, from Tesla and BYD to MG, Zeekr, Denza and more. Type a car and a part the way you would say it, for example Model Y back light, or use the brand, model and part filters.",
+                           "Each entry is a part we can source, not an item in a shop. There is no basket and no online checkout. Tap Get a quote and WhatsApp opens with the car and part filled in. We then check fitment against your build month and year, the market, the trim and the OE number if you have it, and reply with a quote. If your part is not listed, ask anyway."])
+    body = add_after_head(body, cat_intro) + faq_sec(cat_faq)
     ld = [{"@type": "ItemList", "name": f"Brands in the {BRAND} catalogue", "itemListElement": [
         {"@type": "ListItem", "position": i + 1, "name": f'{b["name"]} body parts', "url": f'{BASE}/brands/{b["key"]}/'} for i, b in enumerate(BRANDS)]}]
     shell("catalogue/index.html", "Catalogue | EV Body Parts Singapore",
           "Search China and EV car body parts by brand, model and part, like Tesla Model Y tail lamp. Then get a quote on WhatsApp.",
-          body, "cat", [("Catalogue", "catalogue/")], ld, pri=0.9)
+          body, "cat", [("Catalogue", "catalogue/")], ld, pri=0.9, faq=cat_faq)
 
 def parts_hub():
     cards = "".join(f'''<a class="cc rv" href="{{{{R}}}}parts/{c[0]}/"><span class="cc-ic">{ico(c[4])}</span><h3>{e(c[1])}</h3><p>{e(c[2])}</p></a>''' for c in CATS)
+    names = ", ".join(c[1].lower() for c in CATS[:-1]) + " and " + CATS[-1][1].lower()
+    pfaq = [("Which part types can you source?", f"We list {len(CATS)} groups: {names}. Each group page shows the parts inside it and how to ask for them."),
+            ("I do not know what the part is called. What do I do?", "Send a photo of the damage and your car model on WhatsApp. Our guide on part names also helps, and we tell you the name and check what we can find."),
+            ("Do you list parts for every brand?", "The groups apply to the brands in our catalogue. Suspension and wheel hub parts are listed for Tesla only for now. For other brands, ask us and we check.")]
     body = f'''<section class="ph-hd"><div class="wrap">{{{{CRUMBS}}}}<h1>Parts for China &amp; EV cars</h1><p class="lead">Pick a part type.</p></div></section>
-<section class="sec tight"><div class="wrap"><div class="cgrid">{cards}</div></div></section>'''
+{prose_sec([f"Parts are grouped by what you see on the car, so you can find the right group even if you do not know the exact name. The groups are: {names}. Each group page lists the parts inside it, with the names owners also use, for example headlight for headlamp or wing for fender.", "Every part is sourced to order from several EV parts suppliers and shown as one catalogue. Open a group, pick the part, and tap Get a quote. WhatsApp opens with the part filled in. Tell us the car model, the build month and year, and left or right if the part has a side. We check fitment before we quote."])}
+<section class="sec tight"><div class="wrap"><div class="cgrid">{cards}</div></div></section>
+{faq_sec(pfaq)}'''
     shell("parts/index.html", "Car Body Parts by Type | EV Body Parts",
           "Bumpers, lamps and lights, mirrors, body panels, grilles and trims for China and EV cars in Singapore. Choose a part type.",
-          body, "parts", [("Parts", "parts/")], pri=0.8)
+          body, "parts", [("Parts", "parts/")], pri=0.8, faq=pfaq)
 
+PART_Q3 = {
+ "suspension": ("Is a hub assembly the same as a wheel bearing?", "No. A hub assembly is not the same as a wheel bearing, and front and rear parts differ. Each link is also a different part. Send the side and a photo of the part or its label and we confirm the exact one."),
+ "bumpers": ("Is a bumper one piece?", "Usually not. There is the outer bumper cover and separate trim pieces such as the lower lip, strips and garnish. Tell us which piece you mean, and say front or rear."),
+ "lamps-lights": ("Which side is left and which is right?", "Left and right are as seen from the driver's seat, not from outside the car. A photo of the old lamp, front and back, is the quickest way for us to match it."),
+ "mirrors": ("Do you supply the whole mirror, the cover or only the glass?", "Tell us which one you need and which side. Owners ask for the whole mirror, only the cover or only the glass, and we check each separately."),
+ "body-panels": ("Are body panels the same across models?", "No. Panels are specific to the model, so we always check against your car. Tell us the model and the damage; a few photos from different angles are enough to start."),
+ "grilles-trims": ("Why is trim easy to get wrong?", "The shape changes between models. Send a photo of the piece, or of the place where it was fitted, and the car model."),
+ "glass-fittings": ("What should I tell you for a windscreen?", "Tell us if your car has a camera or sensor behind the glass. Glass with cameras needs the exact version and may need calibration after fitting."),
+ "other-parts": ("Why are these parts checked by hand?", "Structure, cooling and underbody parts are safety related, so we check each one individually. Send the car, the build year and photos on WhatsApp."),
+}
 def part_pages():
     for c in CATS:
         slug, name, line, ps, icon = c
@@ -1168,23 +1281,37 @@ def part_pages():
         title = fit(f"{name} for China & EV Cars | {BRAND}", f"{name} for China & EV Cars")
         chips = "".join(f'<a class="bchip" href="{{{{R}}}}catalogue/?part={p}">{e(PART[p][1])}</a>' for p in ps)
         items = [x for x in PRODS if x["p"] in ps]
+        pfq = [(f"How do I get a quote for {name.lower()}?", f"Tap Get a quote or Ask on WhatsApp. WhatsApp opens with the part filled in. Send the car model, the build month and year, left or right if it has a side, and a photo of the old part. We check fitment, then quote."),
+               (f"Do you check fitment before quoting {name.lower()}?", "Yes. We compare your build month and year, the market, the trim and your photos with the part before we reply. If the part is not a match we say so."),
+               PART_Q3[slug]]
         body = f'''<section class="ph-hd"><div class="wrap">{{{{CRUMBS}}}}<h1>{h1.replace("&", "&amp;")}</h1><p class="lead">{e(paras[0])}</p></div></section>
 <section class="sec tight"><div class="wrap"><div class="bchips" style="margin-bottom:28px">{chips}</div>
 <div class="sres full" data-list="parts:{','.join(ps)}" data-limit="9">{list_html(items, name)}</div>
-<p style="margin-top:28px">{wa_btn(name, "Ask on WhatsApp", "g")}</p></div></section>'''
-        shell(f"parts/{slug}/index.html", title, desc, body, "parts", [("Parts", "parts/"), (name, f"parts/{slug}/")], pri=0.8)
+<p style="margin-top:28px">{wa_btn(name, "Ask on WhatsApp", "g")}</p></div></section>
+{prose_sec(list(paras[1:]) + [f"This group covers: {', '.join(PART[p][1].lower() for p in ps)}. Brand names on this site describe fitment only."])}
+{faq_sec(pfq)}'''
+        shell(f"parts/{slug}/index.html", title, desc, body, "parts", [("Parts", "parts/"), (name, f"parts/{slug}/")], pri=0.8, faq=pfq)
 
 def brands_hub():
     def mod(b):
         cs = CARS_BY_BRAND[b["key"]]
         return ", ".join(c["name"] for c in cs) if cs else "Ask us for your model"
     cards = "".join(f'<a class="cc rv" href="{{{{R}}}}brands/{b["key"]}/"><span class="cc-ic bn">{e(b["name"][:2].upper())}</span><h3>{e(b["name"])}</h3><p>{e(mod(b))}</p></a>' for b in BRANDS)
+    bnames = ml([b["name"] for b in BRANDS])
+    bfaq = [("Which car brands do you list?", f"{bnames}. Brand names describe fitment only; {BRAND} is not affiliated with any car maker."),
+            ("My brand has no models listed. Can you still help?", "Yes. Some brands do not have models in the catalogue yet. Tell us the model, build year and the part, and we check what we can find."),
+            ("Why do some models have two versions?", "Some models have an older and a newer version with different bumpers and lamps. Pick the right version, or send the build year or a photo and we confirm.")]
     body = f'''<section class="ph-hd"><div class="wrap">{{{{CRUMBS}}}}<h1>Car brands</h1><p class="lead">Pick your brand.</p></div></section>
-<section class="sec tight"><div class="wrap"><div class="cgrid">{cards}</div></div></section>'''
+{prose_sec([f"{BRAND} lists body parts for {len(BRANDS)} China and EV car brands: {bnames}. Choose your brand to see its models, then pick the part you need. The card under each brand name shows the models in our catalogue; brands without models yet are still covered, and you can ask for your model on WhatsApp.", "Some models come in an older and a newer version, for example the Tesla Model Y and the Model Y Juniper. Lamps, bumpers and trims can differ between them, so check the version first. If you are unsure, send the build year or a photo and we confirm before we quote."])}
+<section class="sec tight"><div class="wrap"><div class="cgrid">{cards}</div></div></section>
+{faq_sec(bfaq)}'''
     shell("brands/index.html", "Car Brands | EV Body Parts Singapore",
-          "China and EV car brands we list body parts for: Tesla, BYD, Denza, MG, Maxus, Chery, Zeekr and more. Choose your brand.",
-          body, "brands", [("Brands", "brands/")], pri=0.8)
+          "China and EV car brands we list body parts for in Singapore: Tesla, BYD, Denza, MG, Maxus, Chery, Zeekr and more. Choose your brand to begin.",
+          body, "brands", [("Brands", "brands/")], pri=0.8, faq=bfaq)
 
+# SG Car Workshop mention (Edwin "Fix all", 10 Nov 2026, SGCW push 2): one editorial line on the Tesla and BYD brand pages only.
+WORKSHOP_LINK = {"tesla": ("https://sgcarworkshop.sg/brands/tesla/", "page of Singapore workshops that work on Tesla cars"),
+                 "byd": ("https://sgcarworkshop.sg/brands/byd/", "list of workshops that service BYD cars in Singapore")}
 def brand_pages():
     for b in BRANDS:
         slug, name = b["key"], b["name"]
@@ -1192,19 +1319,35 @@ def brand_pages():
         if cs:
             mnames = [c["name"] for c in cs]
             intro = b.get("intro") or (f"Pick your {name} first. Some models have an older and a newer version with different bumpers and lamps." if any(" — " in c["name"] for c in cs) else f"Body parts for {name} {ml(mnames)}. Pick your model.")
-            desc = short(f"{name} body parts in Singapore for {ml(mnames)}. Find your part and get a quote on WhatsApp.")
+            desc = short(f"{name} body parts in Singapore for {ml(mnames)}. Find your part, send your build year, and we check fitment before we quote it on WhatsApp.")
             chips = "".join(f'<a class="mtile" href="{{{{R}}}}{c["url"]}"><span class="mt-ic">{UI["car"]}</span><span class="mt-b"><b>{e(c["name"])}</b>{f'<small>{e(c["years"])}</small>' if c.get("years") else ''}</span>{UI["arrow"]}</a>' for c in cs)
         else:
             intro = b.get("intro") or f"We source {name} body parts to order: bumpers, lamps, mirrors, panels and trims. Tell us your {name} model, build year and the part, and we check fitment and quote."
-            desc = short(f"{name} body parts in Singapore: tell us your model and part and EV Body Parts checks what we can find.")
+            desc = short(f"{name} body parts in Singapore: tell us your model, build year and the part and EV Body Parts checks fitment and quotes on WhatsApp.")
             chips = ""
         title = fit(f"{name} Body Parts in Singapore | {BRAND}", f"{name} Body Parts in Singapore")
         items = [x for x in PRODS if x["car"]["b"] == slug]
+        bf = [(f"Which {name} models do you list?", (f"The catalogue lists {ml(mnames)}." if cs else f"No {name} models are in the catalogue yet. Tell us your model and build year and we check what we can find.")),
+              (f"Which {name} parts can you source?", "Bumpers, lamps and lights, mirrors, body panels, grilles and trims, and other body parts, sourced to order. Open a model to see the parts by area, or ask on WhatsApp."),
+              (f"How do I get a quote for a {name} part?", "Tap Get a quote or WhatsApp us the model, the build month and year, the part, the side and a photo. We check fitment, then reply with a quote.")]
+        bextra = prose_sec([f"{BRAND} sources {name} body parts to order and shows them in one catalogue with parts from several EV parts suppliers. {'Choose your model above, then the area of the car, then the part. ' if cs else ''}Every request is checked for fitment before we quote, using your build month and year, the market, the trim and your photos.",
+                            "Left and right are as seen from the driver's seat. For lamps, mirrors and fenders, say which side. A photo of the old part, or of the damaged area, helps most."])
+        ws = WORKSHOP_LINK.get(slug)
+        if ws:
+            bextra += ('<section class="sec tight"><div class="wrap narrow prose">'
+                       f'<h2>Find a workshop that works on your {e(name)}</h2>'
+                       f'<p>We source parts. When you also need a workshop to fit a part or look at your {e(name)}, SG Car Workshop has a <a href="{ws[0]}">{e(ws[1])}</a>. '
+                       'The directory takes workshop names and mobile numbers from their Google Business Profiles, writes each listing in its own words, does not sell ranking spots, and labels any paid listing as Featured. '
+                       f'Not every workshop there handles every {e(name)} model or job, so ask the workshop about your exact car before you book.</p>'
+                       f'<p>To be open about it: {BRAND} is owned by the person who founded SG Car Workshop, and it appears in the directory marked as the founder&#39;s own business. Use the directory as a starting point and check any workshop yourself.</p>'
+                       '</div></section>')
+            bf = bf + [("Is EV Body Parts connected to SG Car Workshop?", f"Yes. {BRAND} is owned by the person who founded SG Car Workshop, and it appears in the directory marked as the founder's own business. We source parts; check any workshop yourself before you book.")]
         body = f'''<section class="ph-hd"><div class="wrap">{{{{CRUMBS}}}}<h1>{e(name)} body parts</h1><p class="lead">{e(intro)}</p>{f'<h2 class="mt-h">Choose your {e(name)}</h2><div class="mtiles">{chips}</div>' if chips else ''}</div></section>
 <section class="sec tight"><div class="wrap">
 {f'<div class="sres full" data-list="brand:{slug}" data-limit="9" data-name="{e(name)}">{list_html(items, name)}</div>' if cs else f'<div class="sec-t"><h2>Parts we source for {e(name)}</h2></div><div class="bchips">{"".join(f"<a class=bchip href={{{{R}}}}parts/{c[0]}/>{e(c[1])}</a>" for c in CATS)}</div>'}
-<p style="margin-top:28px">{wa_btn(name + " part", "Get a " + name + " quote on WhatsApp", "p" if not cs else "g")}</p></div></section>'''
-        shell(f"brands/{slug}/index.html", title, desc, body, "brands", [("Brands", "brands/"), (name, f"brands/{slug}/")], pri=0.7)
+<p style="margin-top:28px">{wa_btn(name + " part", "Get a " + name + " quote on WhatsApp", "p" if not cs else "g")}</p></div></section>
+{bextra}{faq_sec(bf)}'''
+        shell(f"brands/{slug}/index.html", title, desc, body, "brands", [("Brands", "brands/"), (name, f"brands/{slug}/")], pri=0.7, faq=bf)
 
 def car_pages():
     for c in CARS:
@@ -1292,7 +1435,7 @@ def audience_pages():
 <div class="btns">{btn("{{R}}catalogue/", "Search the catalogue")}{wa_btn("parts for our workshop", "WhatsApp us", "g")}</div></div></section>
 <section class="sec alt tight"><div class="wrap narrow"><div class="sec-t"><h2>FAQ</h2></div>{faq_html(WS_FAQ)}</div></section>'''
     shell("for-workshops/index.html", "Parts for Workshops | EV Body Parts Singapore",
-          "China and EV car body parts for Singapore workshops. Search by car and part and get a quote on WhatsApp.",
+          "China and EV car body parts for Singapore workshops: search by brand, model and part, send a list, and get a quote on WhatsApp after a fitment check.",
           body, "ws", [("For workshops", "for-workshops/")], faq=WS_FAQ, pri=0.8)
     body = f'''<section class="ph-hd"><div class="wrap">{{{{CRUMBS}}}}<h1>Parts for your China or EV car</h1><p class="lead">Tell us the car and what is damaged.</p></div></section>
 <section class="sec tight"><div class="wrap narrow prose">
@@ -1300,7 +1443,7 @@ def audience_pages():
 <div class="btns">{btn("{{R}}catalogue/", "Search the catalogue")}{wa_btn("a part for my car", "WhatsApp us", "g")}</div></div></section>
 <section class="sec alt tight"><div class="wrap narrow"><div class="sec-t"><h2>FAQ</h2></div>{faq_html(OWN_FAQ)}</div></section>'''
     shell("for-car-owners/index.html", "Parts for Car Owners | EV Body Parts Singapore",
-          "Find body parts for your China or EV car in Singapore. Search by car and part, then get a quote on WhatsApp.",
+          "Find body parts for your China or EV car in Singapore. Search by car and part, then get a quote on WhatsApp after we check fitment.",
           body, "own", [("For car owners", "for-car-owners/")], faq=OWN_FAQ, pri=0.8)
 
 def about():
@@ -1318,6 +1461,9 @@ def about():
           body, "about", [("About", "about/")], pri=0.6)
 
 def contact():
+    cfq2 = [("How do I contact EV Body Parts?", f"By WhatsApp on {WA_DISPLAY}. It is our only contact. We do not publish a street address, phone number or email."),
+            ("What should I send in my first message?", "Your car brand, model and build year, the part, left or right if it has a side, and a photo of the damaged or old part."),
+            ("Do you have a shop I can visit?", "No shop address is published. The catalogue lists parts we can source, and quotes are given on WhatsApp after a fitment check.")]
     body = f'''<section class="ph-hd"><div class="wrap">{{{{CRUMBS}}}}<h1>Contact</h1><p class="lead">WhatsApp is the fastest way.</p></div></section>
 <section class="sec tight"><div class="wrap narrow prose">
 <dl class="facts"><div><dt>WhatsApp</dt><dd><a href="https://wa.me/{WA}">{WA_DISPLAY}</a></dd></div><div><dt>Serves</dt><dd>Workshops and car owners in Singapore</dd></div></dl>
@@ -1325,8 +1471,8 @@ def contact():
 <ul class="ticks"><li>Car brand, model and build year.</li><li>The part, and left or right if it has a side.</li><li>A photo of the damaged or old part.</li></ul>
 <div class="btns">{wa_btn("a part", "Message us on WhatsApp")}{btn("{{R}}catalogue/", "Search the catalogue", "g")}</div></div></section>'''
     shell("contact/index.html", "Contact | EV Body Parts Singapore",
-          "Contact EV Body Parts, Singapore, on WhatsApp. Send your car and part and we confirm fitment.",
-          body, "contact", [("Contact", "contact/")], pri=0.6)
+          "Contact EV Body Parts, Singapore, on WhatsApp. Send your car brand and model, the part and a photo, and we confirm fitment before we quote.",
+          body + faq_sec(cfq2), "contact", [("Contact", "contact/")], pri=0.6, faq=cfq2)
 
 def privacy():
     body = f'''<section class="ph-hd"><div class="wrap">{{{{CRUMBS}}}}<h1>Privacy notice (PDPA)</h1><p class="lead">How {BRAND} handles personal data.</p></div></section>
@@ -1337,7 +1483,7 @@ def privacy():
 <h2>Analytics</h2><p>We count taps on WhatsApp buttons. No other tracking.</p>
 </div></section>'''
     shell("privacy/index.html", "Privacy Notice | EV Body Parts Singapore",
-          "How EV Body Parts handles personal data from WhatsApp quote requests and messages, under Singapore's PDPA.",
+          "How EV Body Parts handles personal data from WhatsApp quote requests and messages in Singapore, under the PDPA, and how to ask to see or delete it.",
           body, "", [("Privacy", "privacy/")], pri=0.3)
 
 def terms():
@@ -1359,4 +1505,5 @@ if __name__ == "__main__":
     datajs()
     home(); catalogue(); parts_hub(); part_pages(); brands_hub(); brand_pages(); car_pages(); product_pages(); audience_pages(); about(); contact(); privacy(); terms(); articles()
     notfound(); statics()
+    LM_FILE.write_text(json.dumps(LM_NEW, indent=0, sort_keys=True))
     print(f"pages in sitemap {len(pages)}, brands {len(BRANDS)}, cars {len(CARS)}, products {len(PRODS)}, files {sum(1 for _ in OUT.rglob('*') if _.is_file())}")
