@@ -1,0 +1,36 @@
+{
+ "businessStatus": "OPERATIONAL",
+ "primaryType": "car_repair",
+ "types": [
+  "car_repair",
+  "auto_parts_store",
+  "service",
+  "point_of_interest",
+  "store",
+  "establishment"
+ ],
+ "rating": 5,
+ "userRatingCount": 61,
+ "websiteUri": "https://carfeels.com.sg/",
+ "paymentOptions": {
+  "acceptsCreditCards": true,
+  "acceptsDebitCards": true,
+  "acceptsNfc": true
+ },
+ "parkingOptions": null,
+ "editorialSummary": null,
+ "weekdayDescriptions": [
+  "Monday: 9:30 AM – 6:30 PM",
+  "Tuesday: 9:30 AM – 6:30 PM",
+  "Wednesday: 9:30 AM – 8:00 PM",
+  "Thursday: 9:30 AM – 6:30 PM",
+  "Friday: 9:30 AM – 6:30 PM",
+  "Saturday: 9:30 AM – 3:00 PM",
+  "Sunday: Closed"
+ ],
+ "review_count_seen": 5,
+ "review_themes": "Customers on Google Maps mention an emergency wheel and jerking problem sorted, a gearbox fixed with clear options and no pushing, a brake noise solved in one visit after other shops could not, and detailed servicing checks.",
+ "fetched_at": "2026-11-10",
+ "place_id": "ChIJgbMXcSMX2jERfG-0SSZAfVI",
+ "source": "google_places"
+}

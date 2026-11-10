@@ -1,203 +1,5 @@
 [
  {
-  "place_id": "ChIJrZP4NvoT2jERU1OvxIKGCfo",
-  "name_hint": "Quek Hwa Heng Engineering Works",
-  "address_hint": "60 Jln Lam Huat, #04-70 Carros Centre",
-  "postal_code": "737869",
-  "mobile_hint": "+6598528094",
-  "source": "google_grid_sweep_2026-11-05 (Google phone, Edwin asked)",
-  "added": "2026-11-05"
- },
- {
-  "place_id": "ChIJUyRzJnj1JokRRzSZx7tz--I",
-  "name_hint": "8337 Premium Motorworks",
-  "address_hint": "60 Jln Lam Huat, #04 - 41 Carros Centre",
-  "postal_code": "737869",
-  "mobile_hint": "+6597766118",
-  "source": "google_grid_sweep_2026-11-05 (Google phone, Edwin asked)",
-  "added": "2026-11-05"
- },
- {
-  "place_id": "ChIJCbm5czIR2jERNemKj_uxllU",
-  "name_hint": "Tec Auto Services | BMW , AUDI And Volkswagen Specialist Workshop",
-  "address_hint": "60 Jln Lam Huat, #04-61 Carros Centre",
-  "postal_code": "737869",
-  "mobile_hint": "+6593392769",
-  "source": "google_grid_sweep_2026-11-05 (Google phone, Edwin asked)",
-  "added": "2026-11-05"
- },
- {
-  "place_id": "ChIJUfxiDSQX2jER5t3upar9cWI",
-  "name_hint": "Ka Hup Motor Services",
-  "address_hint": "9 Sin Ming Industrial Estate Sector C",
-  "postal_code": "575644",
-  "mobile_hint": "+6590026337",
-  "source": "google_grid_sweep_2026-11-06 (Google phone, Edwin asked)",
-  "added": "2026-11-06"
- },
- {
-  "place_id": "ChIJszJ3l0kX2jERqnXTAsfHHj0",
-  "name_hint": "Hyper Garage Pte Ltd",
-  "address_hint": "10 Sin Ming Industrial Estate Sector C, #01-12",
-  "postal_code": "575645",
-  "mobile_hint": "+6591918385",
-  "source": "google_grid_sweep_2026-11-06 (Google phone, Edwin asked)",
-  "added": "2026-11-06"
- },
- {
-  "place_id": "ChIJccmD7yAX2jERgyoF3UQ6rMI",
-  "name_hint": "J2 Spec Automotive",
-  "address_hint": "9 Sin Ming Industrial Estate Sector C",
-  "postal_code": "575644",
-  "mobile_hint": "+6590296997",
-  "source": "google_grid_sweep_2026-11-06 (Google phone, Edwin asked)",
-  "added": "2026-11-06"
- },
- {
-  "place_id": "ChIJxXpu2VgW2jERqU1kTgfYhn8",
-  "name_hint": "BMS Tuning Pte Ltd",
-  "address_hint": "Sin Ming Industrial Estate Sector C, #01-40",
-  "postal_code": "575644",
-  "mobile_hint": "+6596935058",
-  "source": "google_grid_sweep_2026-11-06 (Google phone, Edwin asked)",
-  "added": "2026-11-06"
- },
- {
-  "place_id": "ChIJ79h_iucW2jERE3j4N7Jxrz8",
-  "name_hint": "Ding Auto Pte Ltd (Branch)",
-  "address_hint": "Blk 10 Sin Ming Industrial Estate Sector C, #01-20",
-  "postal_code": "575645",
-  "mobile_hint": "+6592313123",
-  "source": "google_grid_sweep_2026-11-06 (Google phone, Edwin asked)",
-  "added": "2026-11-06"
- },
- {
-  "place_id": "ChIJM-uGffMX2jERu_Jw61rFKvI",
-  "name_hint": "V8 Motor Werkz Pte. Ltd.",
-  "address_hint": "7 Sin Ming Industrial Estate Sector C, #01-92",
-  "postal_code": "575642",
-  "mobile_hint": "+6591442977",
-  "source": "google_grid_sweep_2026-11-06 (Google phone, Edwin asked)",
-  "added": "2026-11-06"
- },
- {
-  "place_id": "ChIJa7YnBiQX2jERajhQVU98bes",
-  "name_hint": "Alan's United Auto Pte Ltd",
-  "address_hint": "7 Sin Ming Industrial Estate Sector C, #01-76",
-  "postal_code": "575642",
-  "mobile_hint": "+6597128338",
-  "source": "google_grid_sweep_2026-11-06 (Google phone, Edwin asked)",
-  "added": "2026-11-06"
- },
- {
-  "place_id": "ChIJM8atDSQX2jERD9RjKkTGSFU",
-  "name_hint": "Servo Autowerkz Continental Car Specialist",
-  "address_hint": "8 Sin Ming Industrial Estate Sector C, #01-50",
-  "postal_code": "575643",
-  "mobile_hint": "+6597565985",
-  "source": "google_grid_sweep_2026-11-06 (Google phone, Edwin asked)",
-  "added": "2026-11-06"
- },
- {
-  "place_id": "ChIJbRDQqyYX2jERvyQLk_qinyg",
-  "name_hint": "OBS PRESTIGE PTE LTD",
-  "address_hint": "Sin Ming Road 160, Sin Ming Dr, #07-21",
-  "postal_code": "575722",
-  "mobile_hint": "+6591993334",
-  "source": "google_grid_sweep_2026-11-06 (Google phone, Edwin asked)",
-  "added": "2026-11-06"
- },
- {
-  "place_id": "ChIJqTSLvCQX2jERdlkf7YGzvIM",
-  "name_hint": "833Motorsports",
-  "address_hint": "160 Sin Ming Dr, #02-09 Sin Ming AutoCity",
-  "postal_code": "575722",
-  "mobile_hint": "+6583322833",
-  "source": "google_grid_sweep_2026-11-06 (Google phone, Edwin asked)",
-  "added": "2026-11-06"
- },
- {
-  "place_id": "ChIJgbMXcSMX2jERQUgA0poju5g",
-  "name_hint": "Chin Nam Hup Kee Motor",
-  "address_hint": "160 Sin Ming Dr, #07-18/19 Sin Ming AutoCity",
-  "postal_code": "575722",
-  "mobile_hint": "+6596866219",
-  "source": "google_grid_sweep_2026-11-06 (Google phone, Edwin asked)",
-  "added": "2026-11-06"
- },
- {
-  "place_id": "ChIJ7_dB_G4X2jER5YvIbTTV8ek",
-  "name_hint": "WEI'S ALIGNMENT SPECIALIST",
-  "address_hint": "160 Sin Ming Dr, #03-04 Sin Ming AutoCity",
-  "postal_code": "575722",
-  "mobile_hint": "+6592361010",
-  "source": "google_grid_sweep_2026-11-06 (Google phone, Edwin asked)",
-  "added": "2026-11-06"
- },
- {
-  "place_id": "ChIJl6IQcSMX2jERhz84Md87VQY",
-  "name_hint": "AT Performance",
-  "address_hint": "160 Sin Ming Dr, #07-19 Sin Ming AutoCity",
-  "postal_code": "575721",
-  "mobile_hint": "+6596866219",
-  "source": "google_grid_sweep_2026-11-06 (Google phone, Edwin asked)",
-  "added": "2026-11-06"
- },
- {
-  "place_id": "ChIJzbJ7EwAX2jERQgfppWBiu84",
-  "name_hint": "JP Conceptz Pte Ltd",
-  "address_hint": "160 Sin Ming Dr, #07-11/07",
-  "postal_code": "575722",
-  "mobile_hint": "+6590907011",
-  "source": "google_grid_sweep_2026-11-06 (Google phone, Edwin asked)",
-  "added": "2026-11-06"
- },
- {
-  "place_id": "ChIJy6OYeQAP2jER8wywCdauGUs",
-  "name_hint": "Eng Shing Mechanical Works",
-  "address_hint": "160 Sin Ming Dr, #06- 21 Sin Ming Auto City",
-  "postal_code": "575722",
-  "mobile_hint": "+6587936285",
-  "source": "google_grid_sweep_2026-11-06 (Google phone, Edwin asked)",
-  "added": "2026-11-06"
- },
- {
-  "place_id": "ChIJ7U9pZiMX2jERFHpBQeJwbwI",
-  "name_hint": "BVO Automotive Pte Ltd",
-  "address_hint": "160 Sin Ming Dr, #08-19 Sin Ming AutoCity",
-  "postal_code": "575722",
-  "mobile_hint": "+6596825571",
-  "source": "google_grid_sweep_2026-11-06 (Google phone, Edwin asked)",
-  "added": "2026-11-06"
- },
- {
-  "place_id": "ChIJR_XmhGEX2jERBwP7imsUM20",
-  "name_hint": "Carro Care (Sin Ming) - Workshop",
-  "address_hint": "160 Sin Ming Dr, #04-07",
-  "postal_code": "575722",
-  "mobile_hint": "+6594883147",
-  "source": "google_grid_sweep_2026-11-06 (Google phone, Edwin asked)",
-  "added": "2026-11-06"
- },
- {
-  "place_id": "ChIJgbMXcSMX2jERfG-0SSZAfVI",
-  "name_hint": "Carfeels Pte Ltd",
-  "address_hint": "#05-18 Sin Ming Autocity, 160 Sin Ming Drive",
-  "postal_code": "575722",
-  "mobile_hint": "+6588681518",
-  "source": "google_grid_sweep_2026-11-06 (Google phone, Edwin asked)",
-  "added": "2026-11-06"
- },
- {
-  "place_id": "ChIJ7dIYmSQX2jERI-2ka3fEYxk",
-  "name_hint": "Gim Teck Motor",
-  "address_hint": "160 Sin Ming Dr, #08-21 Sin Ming AutoCity",
-  "postal_code": "575722",
-  "mobile_hint": "+6593259888",
-  "source": "google_grid_sweep_2026-11-06 (Google phone, Edwin asked)",
-  "added": "2026-11-06"
- },
- {
   "place_id": "ChIJ7U9pZiMX2jERv-jjFMACb2s",
   "name_hint": "Yee Auto Service",
   "address_hint": "160 Sin Ming Drive #02-17 Sin Ming AutoCity",
@@ -1987,5 +1789,455 @@
   "mobile_hint": "+6591349319",
   "source": "google_grid_sweep_2026-11-09 (Google phone, Edwin asked)",
   "added": "2026-11-09"
+ },
+ {
+  "place_id": "ChIJX593OF492jERmMSh_G2YhBs",
+  "name_hint": "Stamford Tyres Auto Rescue",
+  "address_hint": "31 Loyang Wy",
+  "postal_code": "508729",
+  "mobile_hint": "+6587973355",
+  "source": "google_grid_sweep_2026-11-10 (Google phone, Edwin asked)",
+  "added": "2026-11-10"
+ },
+ {
+  "place_id": "ChIJZcb9MLM92jERfuqax41xpnc",
+  "name_hint": "Pan Pacific Van & Truck Leasing Pte Ltd",
+  "address_hint": "37 Loyang Wy",
+  "postal_code": "508734",
+  "mobile_hint": "+6584823003",
+  "source": "google_grid_sweep_2026-11-10 (Google phone, Edwin asked)",
+  "added": "2026-11-10"
+ },
+ {
+  "place_id": "ChIJ_9DLzL8T2jERyh7_ZQG-t7A",
+  "name_hint": "Keongkeong Auto",
+  "address_hint": "61 Woodlands Industrial Park E9, #01-28",
+  "postal_code": "757047",
+  "mobile_hint": "+6591378282",
+  "source": "google_grid_sweep_2026-11-10 (Google phone, Edwin asked)",
+  "added": "2026-11-10"
+ },
+ {
+  "place_id": "ChIJm19XiBET2jERJZNnH4w9VEI",
+  "name_hint": "D-Project Werkz",
+  "address_hint": "280 Woodlands Industrial Park E5, #01-28 Harvest @ Woodlands",
+  "postal_code": "757322",
+  "mobile_hint": "+6590922291",
+  "source": "google_grid_sweep_2026-11-10 (Google phone, Edwin asked)",
+  "added": "2026-11-10"
+ },
+ {
+  "place_id": "ChIJ5zhykUoT2jERJuYqva9c5uk",
+  "name_hint": "Supreme Performance Pte Ltd",
+  "address_hint": "61 Woodlands Industrial Park E9, E9, #01-38 Premium",
+  "postal_code": "757047",
+  "mobile_hint": "+6598533412",
+  "source": "google_grid_sweep_2026-11-10 (Google phone, Edwin asked)",
+  "added": "2026-11-10"
+ },
+ {
+  "place_id": "ChIJswtHG5wT2jERtH1-Gfr_JRs",
+  "name_hint": "Motoko Autohub Pte. Ltd.",
+  "address_hint": "61 Woodlands Industrial Park E9, #01-35 E9, Premium 757047",
+  "postal_code": "757047",
+  "mobile_hint": "+6580445359",
+  "source": "google_grid_sweep_2026-11-10 (Google phone, Edwin asked)",
+  "added": "2026-11-10"
+ },
+ {
+  "place_id": "ChIJHzpiEhET2jER4m0RYsQRSBE",
+  "name_hint": "Forza ColorHaus Pte Ltd",
+  "address_hint": "280 Woodlands Industrial Park E5, #01-18, Harvest@Woodlands 757322",
+  "postal_code": "757322",
+  "mobile_hint": "+6581133365",
+  "source": "google_grid_sweep_2026-11-10 (Google phone, Edwin asked)",
+  "added": "2026-11-10"
+ },
+ {
+  "place_id": "ChIJ2aQ_g68T2jERBo2TASZYKiQ",
+  "name_hint": "THCycle Motorcycle Repair & Servicing Workshop Singapore",
+  "address_hint": "61 Woodlands Industrial Park E9, #01-16",
+  "postal_code": "757047",
+  "mobile_hint": "+6587832882",
+  "source": "google_grid_sweep_2026-11-10 (Google phone, Edwin asked)",
+  "added": "2026-11-10"
+ },
+ {
+  "place_id": "ChIJBVRahY4T2jERE1wjrDomI4o",
+  "name_hint": "Ban Hong Motor Pte Ltd",
+  "address_hint": "61 Woodlands Industrial Park E9, #01-13 E9, PREMIUM 757047",
+  "postal_code": "757047",
+  "mobile_hint": "+6582681889",
+  "source": "google_grid_sweep_2026-11-10 (Google phone, Edwin asked)",
+  "added": "2026-11-10"
+ },
+ {
+  "place_id": "ChIJ_cbOsFgW2jERAj-Tqq7LlaI",
+  "name_hint": "Zhi Liang Spray Painting Service",
+  "address_hint": "475 Ang Mo Kio Ave 10, Block 475",
+  "postal_code": "560475",
+  "mobile_hint": "+6590283184",
+  "source": "google_grid_sweep_2026-11-10 (Google phone, Edwin asked)",
+  "added": "2026-11-10"
+ },
+ {
+  "place_id": "ChIJuX-YdS0X2jERu1BWyxJwGpk",
+  "name_hint": "Boss Motor Workz",
+  "address_hint": "4002 Ang Mo Kio Industrial Park 1, #01-20",
+  "postal_code": "569623",
+  "mobile_hint": "+6582928189",
+  "source": "google_grid_sweep_2026-11-10 (Google phone, Edwin asked)",
+  "added": "2026-11-10"
+ },
+ {
+  "place_id": "ChIJbxi71QIX2jER-B-ouY-ReAQ",
+  "name_hint": "Yeow Motor Trading Co",
+  "address_hint": "4002 Ang Mo Kio Industrial Park 1, #01-20",
+  "postal_code": "569623",
+  "mobile_hint": "+6596624583",
+  "source": "google_grid_sweep_2026-11-10 (Google phone, Edwin asked)",
+  "added": "2026-11-10"
+ },
+ {
+  "place_id": "ChIJ8zY18_kW2jERilS5AQpqHF4",
+  "name_hint": "Tian Yi Motor Service",
+  "address_hint": "5033 Ang Mo Kio Ind Park 2, #01-271",
+  "postal_code": "569536",
+  "mobile_hint": "+6593854020",
+  "source": "google_grid_sweep_2026-11-10 (Google phone, Edwin asked)",
+  "added": "2026-11-10"
+ },
+ {
+  "place_id": "ChIJSSQTO_oW2jERNsYMAZFvtUI",
+  "name_hint": "Kuo Li Auto Workshop",
+  "address_hint": "5035 Ang Mo Kio Ind Park 2",
+  "postal_code": "569538",
+  "mobile_hint": "+6596943328",
+  "source": "google_grid_sweep_2026-11-10 (Google phone, Edwin asked)",
+  "added": "2026-11-10"
+ },
+ {
+  "place_id": "ChIJd1-w56wX2jERrpomG48ZmQo",
+  "name_hint": "73 Automechanica",
+  "address_hint": "5033 Ang Mo Kio Ind Park 2, #01-259",
+  "postal_code": "569536",
+  "mobile_hint": "+6590222838",
+  "source": "google_grid_sweep_2026-11-10 (Google phone, Edwin asked)",
+  "added": "2026-11-10"
+ },
+ {
+  "place_id": "ChIJM4qB9ioZ2jERX2MfXHXExsg",
+  "name_hint": "BOSS Garage Singapore",
+  "address_hint": "5035 Ang Mo Kio Ind Park 2, #01-353",
+  "postal_code": "569538",
+  "mobile_hint": "+6598188106",
+  "source": "google_grid_sweep_2026-11-10 (Google phone, Edwin asked)",
+  "added": "2026-11-10"
+ },
+ {
+  "place_id": "ChIJudZQQfkX2jER5Fw-IFmgn3U",
+  "name_hint": "Lian Her Motors",
+  "address_hint": "5034 Ang Mo Kio Ind Park 2, #01-337",
+  "postal_code": "569537",
+  "mobile_hint": "+6585858555",
+  "source": "google_grid_sweep_2026-11-10 (Google phone, Edwin asked)",
+  "added": "2026-11-10"
+ },
+ {
+  "place_id": "ChIJn6H6KgAX2jERqmB6-4_GGIo",
+  "name_hint": "ECO SPORT PTE. LTD.",
+  "address_hint": "5034 Ang Mo Kio Ind Park 2, #01-315",
+  "postal_code": "569537",
+  "mobile_hint": "+6598151121",
+  "source": "google_grid_sweep_2026-11-10 (Google phone, Edwin asked)",
+  "added": "2026-11-10"
+ },
+ {
+  "place_id": "ChIJ--o6G14U2jERZBPmXxH_1SA",
+  "name_hint": "SgGarage Car Aircon Specialist",
+  "address_hint": "5032 Ang Mo Kio Ind Park 2, #01-309",
+  "postal_code": "569535",
+  "mobile_hint": "+6597856612",
+  "source": "google_grid_sweep_2026-11-10 (Google phone, Edwin asked)",
+  "added": "2026-11-10"
+ },
+ {
+  "place_id": "ChIJKYWAL_oW2jER71h5zUbvTBA",
+  "name_hint": "DrCar.SG by GLH Auto",
+  "address_hint": "Blk 5033 Ang Mo Kio Ind Park 2, #01-255",
+  "postal_code": "569536",
+  "mobile_hint": "+6597824549",
+  "source": "google_grid_sweep_2026-11-10 (Google phone, Edwin asked)",
+  "added": "2026-11-10"
+ },
+ {
+  "place_id": "ChIJ4WDTjfkW2jER3liGySym4jU",
+  "name_hint": "Choon Huat Tyre & Battery Co",
+  "address_hint": "5032 Ang Mo Kio Ind Park 2, #01-289",
+  "postal_code": "569535",
+  "mobile_hint": "+6593581737",
+  "source": "google_grid_sweep_2026-11-10 (Google phone, Edwin asked)",
+  "added": "2026-11-10"
+ },
+ {
+  "place_id": "ChIJE2LOO_oW2jERwjSfpRUQK6M",
+  "name_hint": "Peng Auto Care",
+  "address_hint": "5035 Ang Mo Kio Ind Park 2, #01-369",
+  "postal_code": "569538",
+  "mobile_hint": "+6598566756",
+  "source": "google_grid_sweep_2026-11-10 (Google phone, Edwin asked)",
+  "added": "2026-11-10"
+ },
+ {
+  "place_id": "ChIJBeF48_kW2jERQFxysOqAWDw",
+  "name_hint": "Meng Joo Auto Air-Conditioning Service",
+  "address_hint": "5034 Ang Mo Kio Ind Park 2, #01-329",
+  "postal_code": "569537",
+  "mobile_hint": "+6591599916",
+  "source": "google_grid_sweep_2026-11-10 (Google phone, Edwin asked)",
+  "added": "2026-11-10"
+ },
+ {
+  "place_id": "ChIJJ1NqmrMX2jEReYAc_riKK6o",
+  "name_hint": "JSspraywerks Pte. Ltd.",
+  "address_hint": "5035 Ang Mo Kio Ind Park 2, #01-355",
+  "postal_code": "569538",
+  "mobile_hint": "+6589091881",
+  "source": "google_grid_sweep_2026-11-10 (Google phone, Edwin asked)",
+  "added": "2026-11-10"
+ },
+ {
+  "place_id": "ChIJn_l2r_QX2jERRq5YV4W7J4M",
+  "name_hint": "Fantasy Garage Pte Ltd",
+  "address_hint": "5034 Ang Mo Kio Ind Park 2, #01-317",
+  "postal_code": "569537",
+  "mobile_hint": "+6598933583",
+  "source": "google_grid_sweep_2026-11-10 (Google phone, Edwin asked)",
+  "added": "2026-11-10"
+ },
+ {
+  "place_id": "ChIJFbXaOY4X2jERXuWOw210WPI",
+  "name_hint": "Onyx Motorwerks",
+  "address_hint": "Ang Mo Kio Ind Park 2, #01-355 Block 5035",
+  "postal_code": "569538",
+  "mobile_hint": "+6582996103",
+  "source": "google_grid_sweep_2026-11-10 (Google phone, Edwin asked)",
+  "added": "2026-11-10"
+ },
+ {
+  "place_id": "ChIJw8bpg8kX2jER5eKtsa6CDrA",
+  "name_hint": "G6 Autoworks",
+  "address_hint": "2 Kaki Bukit Ave 2, #01-30",
+  "postal_code": "413002",
+  "mobile_hint": "+6594563634",
+  "source": "google_grid_sweep_2026-11-10 (Google phone, Edwin asked)",
+  "added": "2026-11-10"
+ },
+ {
+  "place_id": "ChIJ9yWuM7UX2jERML9885-LKQw",
+  "name_hint": "ARC Motorworks",
+  "address_hint": "15A Kaki Bukit Rd 3, East Point Terrace",
+  "postal_code": "415885",
+  "mobile_hint": "+6598389048",
+  "source": "google_grid_sweep_2026-11-10 (Google phone, Edwin asked)",
+  "added": "2026-11-10"
+ },
+ {
+  "place_id": "ChIJL3-0DCkX2jERqS7cGpCGg3Q",
+  "name_hint": "Overdrive Auto Pte Ltd",
+  "address_hint": "2 Kaki Bukit Avenue 2, Kaki Bukit, #01-26 Autohub",
+  "postal_code": "417921",
+  "mobile_hint": "+6589001110",
+  "source": "google_grid_sweep_2026-11-10 (Google phone, Edwin asked)",
+  "added": "2026-11-10"
+ },
+ {
+  "place_id": "ChIJE5LYxe8X2jERHh3DU2Me0BI",
+  "name_hint": "Kaki Bukit AutoHub_P&H Autocare P/L",
+  "address_hint": "2 Kaki Bukit Ave 2, #01-01 AUTOHUB",
+  "postal_code": "417921",
+  "mobile_hint": "+6586661733",
+  "source": "google_grid_sweep_2026-11-10 (Google phone, Edwin asked)",
+  "added": "2026-11-10"
+ },
+ {
+  "place_id": "ChIJm2-2tu8X2jERLIju6H2ZgqU",
+  "name_hint": "Ibrahim Auto",
+  "address_hint": "2 Kaki Bukit Ave 2, #02-06",
+  "postal_code": "413002",
+  "mobile_hint": "+6593824541",
+  "source": "google_grid_sweep_2026-11-10 (Google phone, Edwin asked)",
+  "added": "2026-11-10"
+ },
+ {
+  "place_id": "ChIJBy0r5rQX2jERag6QoQsm8iE",
+  "name_hint": "Shan auto services pte ltd",
+  "address_hint": "2 Kaki Bukit Ave 2, #02-07 AUTOHUB",
+  "postal_code": "417921",
+  "mobile_hint": "+6597494687",
+  "source": "google_grid_sweep_2026-11-10 (Google phone, Edwin asked)",
+  "added": "2026-11-10"
+ },
+ {
+  "place_id": "ChIJXUCvgG8X2jERjUcf4Hc-62Y",
+  "name_hint": "D'auto Access Pte Ltd",
+  "address_hint": "9 Kaki Bukit Rd 3, East Point Terrace",
+  "postal_code": "417829",
+  "mobile_hint": "+6582877888",
+  "source": "google_grid_sweep_2026-11-10 (Google phone, Edwin asked)",
+  "added": "2026-11-10"
+ },
+ {
+  "place_id": "ChIJd5mgiPkX2jER_-fJt-MW9dM",
+  "name_hint": "Modtronic Pte Ltd",
+  "address_hint": "2 Kaki Bukit Ave 2, #02-17 Kaki Bukit Autohub",
+  "postal_code": "417921",
+  "mobile_hint": "+6584999053",
+  "source": "google_grid_sweep_2026-11-10 (Google phone, Edwin asked)",
+  "added": "2026-11-10"
+ },
+ {
+  "place_id": "ChIJE5LYxe8X2jER7iTkRpcshR0",
+  "name_hint": "Best Auto K Pte Ltd",
+  "address_hint": "01-11 Kaki Bukit Ave 2",
+  "postal_code": "417921",
+  "mobile_hint": "+6598438331",
+  "source": "google_grid_sweep_2026-11-10 (Google phone, Edwin asked)",
+  "added": "2026-11-10"
+ },
+ {
+  "place_id": "ChIJIc_Hbq0X2jERa-5cjVQY9_E",
+  "name_hint": "ACM Performance Pte Ltd",
+  "address_hint": "2 Kaki Bukit Ave 2, #02-09, Autohub 417921",
+  "postal_code": "417921",
+  "mobile_hint": "+6583836957",
+  "source": "google_grid_sweep_2026-11-10 (Google phone, Edwin asked)",
+  "added": "2026-11-10"
+ },
+ {
+  "place_id": "ChIJq1Q_seMX2jERDg4is6X0Og8",
+  "name_hint": "Alps Auto",
+  "address_hint": "2 Kaki Bukit Ave 2, #02 14 Autohub",
+  "postal_code": "417921",
+  "mobile_hint": "+6582186810",
+  "source": "google_grid_sweep_2026-11-10 (Google phone, Edwin asked)",
+  "added": "2026-11-10"
+ },
+ {
+  "place_id": "ChIJJV-i8PEX2jERm1UHoh_VBf4",
+  "name_hint": "MSP FAR EAST PTE LTD",
+  "address_hint": "Premier@Kaki, Blk 8 Kaki Bukit Ave 4, #8 floor, #08-20 Gate 2",
+  "postal_code": "415875",
+  "mobile_hint": "+6591402789",
+  "source": "google_grid_sweep_2026-11-10 (Google phone, Edwin asked)",
+  "added": "2026-11-10"
+ },
+ {
+  "place_id": "ChIJ00e1XSYX2jERSeBN54vJkdY",
+  "name_hint": "FastMod Singapore",
+  "address_hint": "Blk 2 Kaki Bukit Ave 2, #01-13 Kaki Bukit AutoHub",
+  "postal_code": "417921",
+  "mobile_hint": "+6591007718",
+  "source": "google_grid_sweep_2026-11-10 (Google phone, Edwin asked)",
+  "added": "2026-11-10"
+ },
+ {
+  "place_id": "ChIJk3JD3RgY2jERP-QTkHxy22k",
+  "name_hint": "Cheng Chuan Motor",
+  "address_hint": "2 Kaki Bukit Avenue 2, #02-20 Kaki bukit Autohub, #02-31 / #02-30 #02-26",
+  "postal_code": "417921",
+  "mobile_hint": "+6596345218",
+  "source": "google_grid_sweep_2026-11-10 (Google phone, Edwin asked)",
+  "added": "2026-11-10"
+ },
+ {
+  "place_id": "ChIJEymSBLYX2jERzzh7u52guko",
+  "name_hint": "VAITRIX Singapore",
+  "address_hint": "2 Kaki Bukit Ave 2, #01-13 Kaki Bukit AutoHub",
+  "postal_code": "417921",
+  "mobile_hint": "+6591007718",
+  "source": "google_grid_sweep_2026-11-10 (Google phone, Edwin asked)",
+  "added": "2026-11-10"
+ },
+ {
+  "place_id": "ChIJLcG6G8sX2jERVGJSFJWYHdg",
+  "name_hint": "Wheelers - The Hybrid Workshop",
+  "address_hint": "2 Kaki Bukit Ave 2, #01-14 Autohub@Kaki Bukit",
+  "postal_code": "417921",
+  "mobile_hint": "+6591282282",
+  "source": "google_grid_sweep_2026-11-10 (Google phone, Edwin asked)",
+  "added": "2026-11-10"
+ },
+ {
+  "place_id": "ChIJzwvGRmQX2jERttGMdFidDFI",
+  "name_hint": "Advance Auto Garage",
+  "address_hint": "1 Kaki Bukit Ave 6, #01-73",
+  "postal_code": "417883",
+  "mobile_hint": "+6590079247",
+  "source": "google_grid_sweep_2026-11-10 (Google phone, Edwin asked)",
+  "added": "2026-11-10"
+ },
+ {
+  "place_id": "ChIJd40R7hsY2jER8TVcvLOrV94",
+  "name_hint": "Hup Ley Huat Motor Spray Painting Services",
+  "address_hint": "1 Kaki Bukit Ave 6 autobay@kakibukit, #01-33/35",
+  "postal_code": "417883",
+  "mobile_hint": "+6581831183",
+  "source": "google_grid_sweep_2026-11-10 (Google phone, Edwin asked)",
+  "added": "2026-11-10"
+ },
+ {
+  "place_id": "ChIJX1LEOPAX2jEREW0eErvQvko",
+  "name_hint": "Car Doctor (Ferguson)",
+  "address_hint": "Blk 279 Tampines Street 22, #03-234",
+  "postal_code": "520279",
+  "mobile_hint": "+6594894845",
+  "source": "google_grid_sweep_2026-11-10 (Google phone, Edwin asked)",
+  "added": "2026-11-10"
+ },
+ {
+  "place_id": "ChIJv2JxNiU92jERY9bFQx3CJVE",
+  "name_hint": "Beng Hai Motor Service",
+  "address_hint": "3012 Bedok Industrial Park E, #01-2058",
+  "postal_code": "489978",
+  "mobile_hint": "+6596631569",
+  "source": "google_grid_sweep_2026-11-10 (Google phone, Edwin asked)",
+  "added": "2026-11-10"
+ },
+ {
+  "place_id": "ChIJq59dGvQ92jERXst0bJbT_nQ",
+  "name_hint": "HHMS (Huat Hock Motorsports)",
+  "address_hint": "3012 Bedok Industrial Park E, #01-2056",
+  "postal_code": "489978",
+  "mobile_hint": "+6582236988",
+  "source": "google_grid_sweep_2026-11-10 (Google phone, Edwin asked)",
+  "added": "2026-11-10"
+ },
+ {
+  "place_id": "ChIJV1VV5To92jERUIIHLKKCjjI",
+  "name_hint": "Kar Auto Care",
+  "address_hint": "3012 Bedok North Avenue 4, Bedok Industrial Park E, #01-2066",
+  "postal_code": "489978",
+  "mobile_hint": "+6596165668",
+  "source": "google_grid_sweep_2026-11-10 (Google phone, Edwin asked)",
+  "added": "2026-11-10"
+ },
+ {
+  "place_id": "ChIJoR9rSiU92jERb024ris43l8",
+  "name_hint": "King Auto Group",
+  "address_hint": "3011 Bedok Industrial Park E, #01-2000/2002",
+  "postal_code": "489977",
+  "mobile_hint": "+6584601880",
+  "source": "google_grid_sweep_2026-11-10 (Google phone, Edwin asked)",
+  "added": "2026-11-10"
+ },
+ {
+  "place_id": "ChIJm4QKNiU92jERYvwDBaCNGeQ",
+  "name_hint": "Green Star Spray Painting",
+  "address_hint": "3011 Bedok North Ave 4, Bedok Industrial Park E, #01-2004",
+  "postal_code": "489977",
+  "mobile_hint": "+6597946306",
+  "source": "google_grid_sweep_2026-11-10 (Google phone, Edwin asked)",
+  "added": "2026-11-10"
  }
 ]

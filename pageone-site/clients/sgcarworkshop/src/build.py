@@ -1742,7 +1742,7 @@ def b_hero(x):
 <p class="meta rg">{ic('pin')}<span>{E(region_label(e))}</span></p>
 {rating_line(e)}
 <ul class="pl-chips" aria-label="Main work">{chips}</ul>{hours_tags(e) if pl.get('card_rules') else ''}</header>
-<p class="lede" style="font-size:1rem">{E(pl['lede'])}</p>''')
+<p class="lede" style="font-size:1rem">{E(pl['lede'])}</p>{refreshed_line(x)}''')
 
 
 def daily_tag(e):
@@ -1969,6 +1969,21 @@ def refreshed_on(e, pl, g):
     return max(ds) if ds else UPDATED
 
 
+def refreshed_label(e, pl, g):
+    """'10 Nov 2026' from refreshed_on; the one place the card's refreshed date is formatted (Edwin 10 Nov 2026)."""
+    import datetime as _dt
+    d = refreshed_on(e, pl, g)
+    try:
+        return _dt.date.fromisoformat(d).strftime('%-d %b %Y')
+    except ValueError:
+        return d
+
+
+def refreshed_line(x):
+    """Shared 'Profile last refreshed' line shown on every workshop card (Edwin 10 Nov 2026). Change wording here only."""
+    return '<p class="fine refreshed">Profile last refreshed %s</p>' % refreshed_label(x.e, x.pl, x.g)
+
+
 def b_sources(x):
     e, pl, g = x.e, x.pl, x.g
     src = pl.get('sources')
@@ -1979,7 +1994,7 @@ def b_sources(x):
         parts.append('Google Maps details checked %s.' % E(g['fetched_at']))
     if e.get('note') and e['tier'] != 'free':
         parts.append(E(e['note']))
-    parts.append('Details last refreshed %s. Please confirm details with the workshop before you visit.' % refreshed_on(e, pl, g))
+    parts.append('Profile last refreshed %s. Please confirm details with the workshop before you visit.' % refreshed_label(e, pl, g))
     c = x.c
     return '<p class="fine srcs">%s</p><p class="fine">More <a href="../../services/%s/">%s</a>%s.</p>' % (' '.join(parts), c['slug'], E(c['name'].lower()), area_link_html(e, '../../'))
 

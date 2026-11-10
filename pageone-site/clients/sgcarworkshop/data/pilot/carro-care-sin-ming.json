@@ -1,0 +1,47 @@
+{
+ "lede": "Carro Care (Sin Ming) at Sin Ming Industrial Estate is a car servicing and repair centre.",
+ "chips": [
+  "Servicing",
+  "Absorbers"
+ ],
+ "services": [
+  "Periodic maintenance servicing",
+  "Body and paint (respray, dent repair)",
+  "Brake services",
+  "Tyre alignment, balancing and replacement",
+  "Aircon servicing",
+  "Leather upholstery and interior refurbishment",
+  "Gearbox oil change",
+  "Coolant and brake fluid flush"
+ ],
+ "themes": "Customers on Google Maps mention absorber replacement at a competitive price, patient technicians who explain the issues, servicing with extra parts handled smoothly, a neat and clean workshop and an air-conditioned customer lounge.",
+ "faqs": [
+  [
+   "What does Carro Care (Sin Ming) do?",
+   "Google Maps lists it as a car repair workshop."
+  ],
+  [
+   "What are the opening hours?",
+   "The hours are listed in the Google Maps section above. Please see Google Maps for current hours."
+  ]
+ ],
+ "sources": "its own website (carro.co)",
+ "stories": [],
+ "mentioned_services": [
+  "Car servicing",
+  "Absorber replacement",
+  "Car repair"
+ ],
+ "services_note": "Services as listed on the workshop's own website, carro.co.",
+ "makes": [],
+ "makes_note": "Not listed on its public pages. Ask the workshop about your car.",
+ "specialties": [
+  "Servicing packages",
+  "Body and paint",
+  "Interior refurbishment"
+ ],
+ "good_to_know": [
+  "Bookings through the Carro Care app, according to its website"
+ ],
+ "card_rules": "2026-11-05"
+}

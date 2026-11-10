@@ -1,0 +1,38 @@
+{
+ "lede": "Hyper Garage at Sin Ming Industrial Estate is a car and van servicing workshop.",
+ "chips": [
+  "Servicing",
+  "Batteries"
+ ],
+ "services": [
+  "Car servicing",
+  "Battery replacement",
+  "Fault diagnosis",
+  "Van servicing"
+ ],
+ "themes": "Customers on Google Maps mention thorough checks with clear explanations of what is needed and what can wait, no hard selling, reasonable pricing and a quick van battery replacement with advice on battery life.",
+ "faqs": [
+  [
+   "What does Hyper Garage do?",
+   "Google Maps lists it as a car repair workshop."
+  ],
+  [
+   "What are the opening hours?",
+   "The hours are listed in the Google Maps section above. Please see Google Maps for current hours."
+  ]
+ ],
+ "sources": "its Google Maps listing",
+ "stories": [],
+ "mentioned_services": [
+  "Car servicing",
+  "Battery replacement",
+  "Fault diagnosis",
+  "Van servicing"
+ ],
+ "services_note": "Services customers mention on Google Maps. Ask the workshop for its full list.",
+ "makes": [],
+ "makes_note": "Not listed on its public pages. Ask the workshop about your car.",
+ "specialties": [],
+ "good_to_know": [],
+ "card_rules": "2026-11-05"
+}

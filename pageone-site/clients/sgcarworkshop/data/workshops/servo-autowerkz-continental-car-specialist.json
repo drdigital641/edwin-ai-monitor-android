@@ -1,0 +1,73 @@
+{
+ "schema_version": 1,
+ "slug": "servo-autowerkz-continental-car-specialist",
+ "place_id": "ChIJM8atDSQX2jERD9RjKkTGSFU",
+ "place_id_checked_at": "2026-11-10",
+ "name": "Servo Autowerkz Continental Car Specialist",
+ "name_source_url": "google_profile",
+ "name_checked_at": "2026-11-10",
+ "address": {
+  "block": "",
+  "street": "8 Sin Ming Industrial Estate Sector C, #01-50",
+  "unit": "",
+  "building": ""
+ },
+ "postal_code": "575643",
+ "address_source_url": "google_profile",
+ "address_checked_at": "2026-11-10",
+ "categories": [
+  "SERV"
+ ],
+ "services": [
+  "General servicing and repair"
+ ],
+ "services_source_url": "google_profile",
+ "phones": [
+  {
+   "e164": "+6597565985",
+   "kind": "mobile",
+   "whatsapp": true,
+   "source": "google_profile",
+   "checked_at": "2026-11-10"
+  }
+ ],
+ "google_screen": {
+  "passed": true,
+  "reason": "OPERATIONAL, car repair, SG mobile on Google profile",
+  "checked_at": "2026-11-10"
+ },
+ "status": "active",
+ "tier": "basic",
+ "first_seen_at": "2026-11-10",
+ "last_verified_at": "2026-11-10",
+ "collector_version": "agent-v5",
+ "estate": "sin-ming-industrial-estate",
+ "planning_area": "Bishan",
+ "region": "central",
+ "lat": 1.358373794093958,
+ "lng": 103.8385972348009,
+ "geo_source": "onemap",
+ "blocks": [
+  "hero",
+  "contact",
+  "services",
+  "good_for",
+  "problems",
+  "reviews",
+  "comparison",
+  "hours",
+  "stories",
+  "location",
+  "tips",
+  "faq",
+  "claim",
+  "sources"
+ ],
+ "google_rating": {
+  "rating": 4.8,
+  "count": 126,
+  "checked": "2026-11-10",
+  "source": "Google Places",
+  "source_date": "2026-11-10"
+ }
+}

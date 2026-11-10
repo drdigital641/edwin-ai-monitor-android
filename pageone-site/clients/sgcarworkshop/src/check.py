@@ -103,7 +103,7 @@ for e in ENTRIES:
         print('MISSING PAGE', e['slug'], e['tier']); bad += 1; continue
     h = open(f, encoding='utf-8').read()
     r = audit(h); r['both_buttons'] = both_buttons(h)
-    if e['slug'].startswith('wei'): wei = r
+    if e['slug'] == 'wei-car-spray-painting': wei = r   # the Verified sample; a Basic card such as wei-s-alignment-specialist must not replace it
     rows.append((e, r))
 cols = FEAT + CONV + ['both_buttons']
 print('\nTier audit  (rule: Basic < Verified <= Premium on ' + ', '.join(FEAT) + '; Basic keeps contact, address, map, hours)')

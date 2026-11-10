@@ -1,0 +1,30 @@
+{
+ "businessStatus": "OPERATIONAL",
+ "primaryType": "car_repair",
+ "types": [
+  "car_repair",
+  "service",
+  "point_of_interest",
+  "establishment"
+ ],
+ "rating": 5,
+ "userRatingCount": 6,
+ "websiteUri": "http://facebook.com/J2Spec",
+ "paymentOptions": null,
+ "parkingOptions": null,
+ "editorialSummary": null,
+ "weekdayDescriptions": [
+  "Monday: 9:00 AM – 6:00 PM",
+  "Tuesday: 9:00 AM – 6:00 PM",
+  "Wednesday: 9:00 AM – 6:00 PM",
+  "Thursday: 9:00 AM – 6:00 PM",
+  "Friday: 9:00 AM – 6:00 PM",
+  "Saturday: 9:00 AM – 3:00 PM",
+  "Sunday: Closed"
+ ],
+ "review_count_seen": 5,
+ "review_themes": "Customers on Google Maps mention care of a 20-vehicle commercial fleet over eight years, a brake light issue solved in minutes, a Volkswagen Jetta fault fixed accurately, and servicing, repairs and preventive maintenance.",
+ "fetched_at": "2026-11-10",
+ "place_id": "ChIJccmD7yAX2jERgyoF3UQ6rMI",
+ "source": "google_places"
+}
