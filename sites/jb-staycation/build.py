@@ -25,7 +25,7 @@ TAGLINE = 'A quieter escape, just across the causeway.'
 # only for a site-wide content change; otherwise add {path: 'YYYY-MM-DD'} to LASTMOD for the pages you changed. Articles use their own date/updated.
 SITE_LASTMOD = '2026-11-10'
 LASTMOD = {}
-ANSWERS = {'kl': 'JB Staycations welcomes guests from KL and other Malaysian states. Our two private houses in Johor Bahru suit a one-night stopover before or after crossing to Singapore, or a short JB getaway. Prima, in Gelang Patah, sleeps up to 12; Landak Kawan Fun House, in Taman Abad, sleeps up to 10. From RM 450 a night, cleaning included.', 'home': 'JB Staycations has two private houses in Johor Bahru for Singapore groups. Prima, in Gelang Patah, sleeps up to 12, about 10 minutes from the Tuas Second Link (host estimate). Landak Kawan Fun House sleeps up to 10, a 5-minute walk from KSL City Mall. From RM 450 a night, cleaning included.', 'stays': 'Compare our two private JB houses. Prima, in Taman Nusantara Prima, Gelang Patah, sleeps up to 12 in 3 rooms, one on the ground floor for elderly guests. Landak Kawan Fun House, in Taman Abad, sleeps up to 10, a 5-minute walk from KSL City Mall. Prima from RM 450 and Landak from RM 550 a night, cleaning included.', 'prices': 'Prices are per night for the whole house, cleaning included. Prima: RM 450 weekday, RM 650 weekend, RM 750 public holiday. Landak Kawan Fun House: RM 550, RM 750 and RM 1,000. There is no deposit for a normal gathering; catered gatherings have a RM 1,000 deposit, refunded within 48 hours after checkout. Check-in is 3pm and check-out 11am.', 'gt': 'Prima is in Taman Nusantara Prima, Gelang Patah, Iskandar Puteri, about 10 minutes from the Tuas Second Link (host estimate). Landak Kawan Fun House is in Taman Abad, Johor Bahru, a 5-minute walk from KSL City Mall. Check-in is 3pm and check-out 11am. For the exact pin and parking, WhatsApp Daniel on +65 9006 2198.', 'faq': 'Quick answers for Singapore groups booking our two private JB houses. Prima sleeps up to 12 and Landak Kawan Fun House up to 10. Prices start at RM 450 a night, cleaning included. No deposit for a normal gathering; RM 1,000 for catered gatherings. Check-in is 3pm, check-out 11am. Anything else? WhatsApp Daniel on +65 9006 2198.', 'about': 'JB Staycations offers two private houses in Johor Bahru for Singapore groups. Prima, in Taman Nusantara Prima, Gelang Patah, Iskandar Puteri, sleeps up to 12. Landak Kawan Fun House, in Taman Abad, sleeps up to 10, a 5-minute walk from KSL City Mall. Both are booked directly with the host: WhatsApp Daniel on +65 9006 2198.', 'big': 'For 10 people, Landak Kawan Fun House in Taman Abad sleeps up to 10, a 5-minute walk from KSL City Mall. For up to 12, Prima in Gelang Patah has 3 rooms, each with 1 queen bed and 2 single floor mattresses, one on the ground floor. Prima is RM 450 and Landak RM 550 a weekday night, cleaning included.'}   # tech SEO brief 9 Nov 2026: 40-60 word answer block under each H1, listed facts only
+ANSWERS = {'kl': 'JB Staycations welcomes guests from KL and other Malaysian states. Our two private houses in Johor Bahru suit a one-night stopover before or after crossing to Singapore, or a short JB getaway. Prima, in Gelang Patah, sleeps up to 12; Landak Kawan Fun House, in Taman Abad, sleeps up to 10. From RM 450 a night, cleaning included.', 'home': 'JB Staycations has two private houses in Johor Bahru for Singapore groups. Prima, in Gelang Patah, sleeps up to 12, about 10 minutes from the Tuas Second Link (host estimate). Landak Kawan Fun House sleeps up to 10, a 5-minute walk from KSL City Mall. From RM 450 a night, cleaning included.', 'stays': 'Compare our two private JB houses. Prima, in Taman Nusantara Prima, Gelang Patah, sleeps up to 12 in 3 rooms, one on the ground floor for elderly guests. Landak Kawan Fun House, in Taman Abad, sleeps up to 10, a 5-minute walk from KSL City Mall. Prima from RM 450 and Landak from RM 550 a night, cleaning included.', 'prices': 'Prices are per night for the whole house, cleaning included. Prima: RM 450 weekday, RM 650 weekend, RM 750 public holiday. Landak Kawan Fun House: RM 550, RM 750 and RM 1,000. There is no deposit for a normal gathering; catered gatherings have a RM 1,000 deposit, refunded within 48 hours after checkout. Check-in is 3pm and check-out 11am.', 'gt': 'Prima is in Taman Nusantara Prima, Gelang Patah, Iskandar Puteri, about 10 minutes from the Tuas Second Link (host estimate). Landak Kawan Fun House is in Taman Abad, Johor Bahru, a 5-minute walk from KSL City Mall. Check-in is 3pm and check-out 11am. For the exact pin and parking, WhatsApp Daniel on +65 9006 2198.', 'faq': 'Quick answers for Singapore groups booking our two private JB houses. Prima sleeps up to 12 and Landak Kawan Fun House up to 10. Prices start at RM 450 a night, cleaning included. No deposit for a normal gathering; RM 1,000 for catered gatherings. Check-in is 3pm, check-out 11am. Anything else? WhatsApp Daniel on +65 9006 2198.', 'about': 'JB Staycations offers two private houses in Johor Bahru for Singapore groups. Prima, in Taman Nusantara Prima, Gelang Patah, Iskandar Puteri, sleeps up to 12. Landak Kawan Fun House, in Taman Abad, sleeps up to 10, a 5-minute walk from KSL City Mall. Both are booked directly with the host: WhatsApp Daniel on +65 9006 2198.', 'big': 'For 10 people, Landak Kawan Fun House in Taman Abad sleeps up to 10, a 5-minute walk from KSL City Mall. For up to 12, Prima in Gelang Patah has 3 rooms with 5 queen beds and 2 single floor mattresses, one room on the ground floor. Prima is RM 450 and Landak RM 550 a weekday night, cleaning included.'}   # tech SEO brief 9 Nov 2026: 40-60 word answer block under each H1, listed facts only
 WA_NUM, WA_SHOW = '6590062198', '+65 9006 2198'
 WA_BASE = 'https://wa.me/' + WA_NUM
 INDEXNOW_KEY = '8902a563f0e8890158ac4cf1b41cd50d'   # IndexNow key (jbstaycations.com; was jbairbnb.com) (9 Nov 2026), also in watchdog/indexnow.py SITES
@@ -250,7 +250,7 @@ ROOMS = {
         _r('prima', 'Bedrooms', '3 bedrooms', ['prima-bedroom-b-angle-3.webp', 'prima-bedroom-b-1.webp', 'prima-bedroom-b-angle-2.webp', 'prima-bedroom-a-1.webp', 'prima-bedroom-a-angle-2.webp', 'prima-dressing-area-1.webp'],
            {'prima-bedroom-b-angle-3.webp': 'Bedroom', 'prima-bedroom-b-1.webp': 'Bedroom', 'prima-bedroom-b-angle-2.webp': 'Bedroom', 'prima-bedroom-a-1.webp': 'Bedroom', 'prima-bedroom-a-angle-2.webp': 'Bedroom', 'prima-dressing-area-1.webp': 'Dressing area'}),
         _r('prima', 'Study desk', '', ['prima-study-desk-1.webp']),
-        _r('prima', 'Bathrooms', '3 bathrooms (1 en-suite, 2 shared)', ['prima-bathroom-wide-1.webp', 'prima-bathroom-1.webp', 'prima-shower-area-1.webp'], {'prima-shower-area-1.webp': 'Shower area'}),
+        _r('prima', 'Bathrooms', '3 bathrooms (1 en-suite, 2 shared) with water heaters', ['prima-bathroom-wide-1.webp', 'prima-bathroom-1.webp', 'prima-shower-area-1.webp'], {'prima-shower-area-1.webp': 'Shower area'}),
         _r('prima', 'Balcony', 'Covered, with a bistro set', ['prima-covered-balcony-view-1.webp', 'prima-balcony-side-1.webp']),
     ],
     'landak': [
@@ -259,7 +259,7 @@ ROOMS = {
            {'landak-pool-table-darts-1.webp': '8ft pool table and 2 dart boards', 'landak-dartboards-detail-1.webp': 'Two dartboards', 'landak-foosball-table-1.webp': 'Foosball table', 'landak-tv-games-1.webp': 'TV with game controllers'}),
         _r('landak', 'Kitchen', 'For light cooking', ['landak-kitchen-breakfast-bar-1.webp', 'landak-breakfast-bar-portrait-1.webp', 'landak-kitchen-sink-1.webp', 'landak-kitchen-appliances-1.webp']),
         _r('landak', 'Bedrooms', '3 bedrooms, 1 king and 4 queen beds', ['landak-bedroom-1.webp', 'landak-bedroom-1-angle-3.webp', 'landak-bedroom-1-angle-2.webp'], {'landak-bedroom-1.webp': 'Bedroom', 'landak-bedroom-1-angle-3.webp': 'Bedroom, from the door', 'landak-bedroom-1-angle-2.webp': 'Bedroom, second angle'}),
-        _r('landak', 'Bathrooms', '3 bathrooms (1 en-suite, 2 shared)', ['landak-bathroom-1.webp', 'landak-bathroom-portrait-1.webp', 'landak-bathroom-2.webp']),
+        _r('landak', 'Bathrooms', '3 bathrooms (1 en-suite, 2 shared) with water heaters', ['landak-bathroom-1.webp', 'landak-bathroom-portrait-1.webp', 'landak-bathroom-2.webp']),
         _r('landak', 'Dedicated workspace (2nd level)', '', ['landak-covered-counter-wide-1.webp', 'landak-covered-work-counter-1.webp', 'landak-ironing-counter-detail-1.webp']),
         _r('landak', 'Outside', 'Parking for 2 cars inside the gate', ['landak-exterior-1.webp']),
     ],
@@ -359,7 +359,7 @@ def abs_img(f):
 # ---- the 15 master FAQs (strategy brief 9 Nov 2026). Pages use subsets; FAQPage markup only lists what the page shows.
 FAQ15 = {
     'cost': ('How much does a whole house cost in SGD?', 'Prices are per night for the whole house, cleaning included. Prima: ' + tiers_full('prima') + '. Landak Kawan Fun House: ' + tiers_full('landak') + '. For your group size or a gathering, WhatsApp Daniel. The SGD figures are estimates using RM1 = S$0.3158, checked on 9 November 2026 SGT against the latest displayed market observation dated 6 November. Exchange rates vary.'),
-    'fit': ('Which house suits our group?', 'Prima, a landed house, takes up to 12 guests in 3 rooms, each with 1 queen bed and 2 single floor mattresses, with 3 bathrooms (1 en-suite, 2 shared), a 7ft pool table and a mahjong table. Landak Kawan Fun House takes up to 10 guests in 3 bedrooms with 5 beds (1 king, 4 queens) and 3 bathrooms (1 en-suite, 2 shared), with an 8ft pool table, darts, foosball, mahjong and a 5-minute walk to KSL City Mall.'),
+    'fit': ('Which house suits our group?', 'Prima, a landed house, takes up to 12 guests in 3 rooms with 5 queen beds and 2 single floor mattresses, with 3 bathrooms (1 en-suite, 2 shared) with water heaters, a 7ft pool table and a mahjong table. Landak Kawan Fun House takes up to 10 guests in 3 bedrooms with 5 beds (1 king, 4 queens) and 3 bathrooms (1 en-suite, 2 shared) with water heaters, plus an 8ft pool table, darts, foosball, mahjong and a 5-minute walk to KSL City Mall.'),
     'safe': ('Is this a safe stay, and who will we deal with?', 'You deal directly with Daniel, our host, who is based in Singapore and JB, understands both cultures and speaks English, Malay and Chinese. Daniel is your emergency contact during the stay. Each house has a fire extinguisher under the kitchen sink and outdoor CCTV. Self check-in details are sent after a firm booking.'),
     'time': ('How long does it take from Singapore, including CIQ queues?', 'Prima is about 10 minutes from the Tuas Second Link on the Malaysian side, according to the host. Landak is in Taman Abad, a 5-minute walk from KSL City Mall. These are not door-to-door journey times from Singapore. Border queues and traffic add time; check ICA and LTA traffic updates before leaving.'),
     'car': ('What should I prepare before driving a Singapore car to JB?', 'Check JPJ’s official VEP portal for your vehicle’s registration and RFID requirements, and have valid road tax and insurance. Singapore Customs requires applicable fuel tanks to be at least three-quarters full when leaving by land. Foreign-registered petrol cars should use RON97, not subsidised RON95. Check current official rules before travel; tolls and road charges are separate from accommodation.'),
@@ -392,12 +392,12 @@ HOUSES = {
         'tag': 'Group homestay with a 7ft pool table, mahjong and parking for 8 cars',
         'card': 'A private landed house in Gelang Patah, Iskandar Puteri for up to 12 guests with a 7ft pool table in the living room, a mahjong table and parking for 8 cars, about 10 minutes from the Tuas Second Link (host estimate).',
         'bestfor': 'Best for big family and friends gatherings near LEGOLAND and Puteri Harbour, about 10 min from the Tuas Second Link',
-        'top': ['7ft pool table', 'Mahjong', 'Parking for 8 cars', '3 queen beds + 6 floor mattresses', 'Ground-floor bedroom, no stairs'],
-        'stats': [('Guests', 'Up to 12'), ('Bedrooms', '3'), ('Bathrooms', '3 (1 en-suite, 2 shared)'), ('Weekday', 'RM 450 a night')],
-        'intro': ['Prima is a private landed holiday house in Taman Nusantara Prima, Gelang Patah, Iskandar Puteri, for up to 12 guests. It is RM 450 a night on weekdays, RM 650 on weekends and RM 750 on public holidays, cleaning included. It has 3 rooms, each with 1 queen bed and 2 single floor mattresses, and 3 bathrooms (1 en-suite, 2 shared), including a ground-floor bedroom so elderly guests do not need the stairs, with a 7ft pool table in the living room and a mahjong table for group gatherings.',
+        'top': ['7ft pool table', 'Mahjong', 'Parking for 8 cars', '5 queen beds + 2 floor mattresses', 'Ground-floor bedroom, no stairs'],
+        'stats': [('Guests', 'Up to 12'), ('Bedrooms', '3'), ('Bathrooms', '3 (1 en-suite, 2 shared), with water heaters'), ('Weekday', 'RM 450 a night')],
+        'intro': ['Prima is a private landed holiday house in Taman Nusantara Prima, Gelang Patah, Iskandar Puteri, for up to 12 guests. It is RM 450 a night on weekdays, RM 650 on weekends and RM 750 on public holidays, cleaning included. It has 3 rooms with 5 queen beds and 2 single floor mattresses, and 3 bathrooms (1 en-suite, 2 shared) with water heaters, including a ground-floor bedroom so elderly guests do not need the stairs, with a 7ft pool table in the living room and a mahjong table for group gatherings.',
                   'There is about 2,500 sq ft to spread out in: a living room with a 7ft pool table, a dining area and kitchen, a study desk, a dressing area and a covered balcony with a bistro set. Two TVs with Netflix, Wi-Fi, a washer and air conditioning are included, and there is parking for 2 cars inside and 6 cars outside.',
                   'The host estimates about 10 minutes from the Tuas Second Link on the Malaysian side, excluding border queues, which makes it a natural pick if you cross by the Second Link. LEGOLAND Malaysia and Sunway Big Box are about a 15-minute drive.'],
-        'amen': ['7ft pool table', 'Mahjong table', 'Ground-floor bedroom (no stairs needed)', 'Wi-Fi', 'Air conditioning', 'Kitchen', 'Parking: 2 cars inside, 6 outside',
+        'amen': ['7ft pool table', 'Mahjong table', 'Ground-floor bedroom (no stairs needed)', '3 bathrooms (1 en-suite, 2 shared) with water heaters', 'Wi-Fi', 'Air conditioning', 'Kitchen', 'Parking: 2 cars inside, 6 outside',
                  '2 TVs with Netflix', 'Washer', 'Covered balcony', 'Study desk', 'Self check-in'],
         'rules': ['Check-in 3:00 pm, check-out 11:00 am. Self check-in details are sent after a firm booking.', 'Early check-in or late checkout: RM 100 an hour, subject to availability. You can ask for a waiver.', 'No pets.',
                   'No smoking or vaping indoors: RM 500 penalty.', 'No eating durian indoors: RM 500 penalty.', 'No BBQ or grilling.',
@@ -406,7 +406,7 @@ HOUSES = {
         'near': [('Tuas Second Link', 'about 10 min drive'), ('LEGOLAND Malaysia', 'about 15 min drive'), ('Sunway Big Box', 'about 15 min drive'), ('Puteri Harbour', 'about 15-20 min drive')],
         'near_note': 'Drive times are estimates measured from the house on the Malaysian side; they exclude border queues and depend on traffic.',
         'faq': faqs('fit', 'checkin', 'park', 'gather', 'pool') + [
-            ('What are the beds at Prima?', 'Prima has 3 rooms, each with 1 queen bed and 2 single floor mattresses, for up to 12 guests.'),
+            ('What are the beds at Prima?', 'Prima has 3 rooms with 5 queen beds and 2 single floor mattresses, for up to 12 guests.'),
         ],
         'msg': wa_msg('prima'),
         'key': 'prima',
@@ -421,7 +421,7 @@ HOUSES = {
         'bestfor': 'Best for groups who want to walk to KSL City Mall and food',
         'top': ['8ft pool table', 'Foosball', '2 dart boards', 'Mahjong table', '5-min walk to KSL City Mall'],
         'card': 'A new double-storey landed fun house for up to 10 guests with an 8ft pool table, foosball, 2 dart boards, a mahjong table and a TV arcade, a 5-minute walk from KSL City Mall.',
-        'stats': [('Guests', 'Up to 10'), ('Bedrooms', '3'), ('Bathrooms', '3 (1 en-suite, 2 shared)'), ('Weekday', 'RM 550 a night')],
+        'stats': [('Guests', 'Up to 10'), ('Bedrooms', '3'), ('Bathrooms', '3 (1 en-suite, 2 shared), with water heaters'), ('Weekday', 'RM 550 a night')],
         'intro': ['Landak Kawan Fun House is a new double-storey house in Taman Abad, Johor Bahru, completed in September 2026, a 5-minute walk from KSL City Mall. It sleeps up to 10 guests at RM 550 a night on weekdays, RM 750 on weekends and RM 1,000 on public holidays, cleaning included, with 3 bedrooms, 3 bathrooms (1 en-suite, 2 shared) with water heaters, an 8ft pool table, foosball and 2 dart boards.',
                   'The 5 beds are 1 king plus 4 queens. The fun is built in: an 8ft pool table and 2 dart boards on the covered patio, a foosball table, a mahjong table, a 55-inch TV arcade, board games, a children\'s playroom and a dedicated workstation.',
                   'Wi-Fi is 100 Mbps, the kitchen is set up for light cooking, and 2 cars park inside the gate. The host estimates about 12 minutes by car to JB City Square and the Causeway CIQ, excluding border queues, and Mid Valley Southkey is about a 10-minute drive.'],
@@ -442,9 +442,9 @@ HOUSES = {
 }
 ORDER = ['prima', 'landak']
 H1S = {'prima': 'JB homestay near Tuas Second Link: Prima', 'landak': 'JB homestay near KSL: Landak Kawan Fun House'}
-ANSWER = {'prima': 'Prima is a private landed house in Gelang Patah, Iskandar Puteri for up to 12 guests, with 3 bedrooms and 3 bathrooms (1 en-suite, 2 shared). It has a 7ft pool table and a mahjong table, and a ground-floor bedroom for elderly guests, plus parking for 2 cars inside and 6 outside. The host estimates about 10 minutes from Tuas Second Link, excluding border queues. WhatsApp Daniel for your dates.',
-          'landak': 'Landak Kawan Fun House is a newly built September 2026 house in Taman Abad for up to 10 guests, with 3 bedrooms, 5 beds and 3 bathrooms (1 en-suite, 2 shared). It is a 5-minute walk from KSL City Mall and has an 8ft pool table, darts, foosball, mahjong, 100Mbps Wi-Fi and 2 parking spaces. No BBQ.'}
-SLEEP = {'prima': ['Up to 12 guests in 3 rooms with 3 bathrooms (1 en-suite, 2 shared).', 'Each room has 1 queen bed and 2 single floor mattresses.', 'One bedroom is on the ground floor, so elderly guests do not need the stairs.'],
+ANSWER = {'prima': 'Prima is a private landed house in Gelang Patah, Iskandar Puteri for up to 12 guests, with 3 bedrooms, 5 queen beds, 2 single floor mattresses and 3 bathrooms (1 en-suite, 2 shared) with water heaters. It has a 7ft pool table and a mahjong table, and a ground-floor bedroom for elderly guests, plus parking for 2 cars inside and 6 outside. The host estimates about 10 minutes from Tuas Second Link, excluding border queues. WhatsApp Daniel for your dates.',
+          'landak': 'Landak Kawan Fun House is a newly built September 2026 house in Taman Abad for up to 10 guests, with 3 bedrooms, 5 beds and 3 bathrooms (1 en-suite, 2 shared) with water heaters. It is a 5-minute walk from KSL City Mall and has an 8ft pool table, darts, foosball, mahjong, 100Mbps Wi-Fi and 2 parking spaces. No BBQ.'}
+SLEEP = {'prima': ['Up to 12 guests in 3 rooms with 3 bathrooms (1 en-suite, 2 shared) with water heaters.', '5 queen beds and 2 single floor mattresses across the 3 rooms.', 'One bedroom is on the ground floor, so elderly guests do not need the stairs.'],
          'landak': ['Up to 10 guests in 3 bedrooms with 3 bathrooms (1 en-suite, 2 shared) with water heaters.', '5 beds: 1 king and 4 queens (bedrooms 2 and 3 each have two queens).']}
 
 
@@ -469,10 +469,10 @@ ARTICLES = [
         'sections': [
             ('Why a whole house suits a big group', ['One house keeps everyone together: one kitchen, one living area, one place to park. You split the nightly rate across the group, and nobody is booking six separate hotel rooms.',
                 'Both JB Staycations houses are private homes in Johor Bahru, not shared buildings.']),
-            ('Up to 10 guests: Landak Kawan Fun House', ['<a href="{R}stays/landak-kawan-fun-house-taman-abad/">Landak Kawan Fun House</a> in Taman Abad has 3 bedrooms, 3 bathrooms (1 en-suite, 2 shared), 1 king bed and 4 queen beds (bedrooms 2 and 3 each have two queens), and the bathrooms have water heaters. It is ' + tiers_full('landak') + ' a night for the whole house, cleaning included, and the minimum stay is 1 night (2 over Christmas Eve and Christmas Day).',
+            ('Up to 10 guests: Landak Kawan Fun House', ['<a href="{R}stays/landak-kawan-fun-house-taman-abad/">Landak Kawan Fun House</a> in Taman Abad has 3 bedrooms, 3 bathrooms (1 en-suite, 2 shared) with water heaters, 1 king bed and 4 queen beds (bedrooms 2 and 3 each have two queens), and the bathrooms have water heaters. It is ' + tiers_full('landak') + ' a night for the whole house, cleaning included, and the minimum stay is 1 night (2 over Christmas Eve and Christmas Day).',
                 'For entertainment it has an 8ft pool table, a foosball table, 2 dart boards, a mahjong table, a 55-inch TV arcade and a children\'s playroom, plus a dedicated workstation. Wi-Fi is 100 Mbps.']),
-            ('Up to 12 guests: Prima', ['<a href="{R}stays/prima-taman-nusantara-prima/">Prima</a>, a landed house in Taman Nusantara Prima, Iskandar Puteri, takes up to 12 guests in 3 bedrooms with 3 bathrooms (1 en-suite, 2 shared), including a ground-floor bedroom for elderly guests. It is ' + tiers_full('prima') + ' a night, cleaning included, and the minimum stay is 1 night (2 over Christmas Eve and Christmas Day).',
-                'Each of the 3 rooms has 1 queen bed and 2 single floor mattresses. It has a 7ft pool table, a mahjong table, a study desk and a covered balcony, plus a kitchen, 2 TVs with Netflix and parking for 2 cars inside and 6 outside, in about 2,500 sq ft.']),
+            ('Up to 12 guests: Prima', ['<a href="{R}stays/prima-taman-nusantara-prima/">Prima</a>, a landed house in Taman Nusantara Prima, Iskandar Puteri, takes up to 12 guests in 3 bedrooms with 5 queen beds, 2 single floor mattresses and 3 bathrooms (1 en-suite, 2 shared) with water heaters, including a ground-floor bedroom for elderly guests. It is ' + tiers_full('prima') + ' a night, cleaning included, and the minimum stay is 1 night (2 over Christmas Eve and Christmas Day).',
+                'The 3 rooms have 5 queen beds and 2 single floor mattresses. It has a 7ft pool table, a mahjong table, a study desk and a covered balcony, plus a kitchen, 2 TVs with Netflix and parking for 2 cars inside and 6 outside, in about 2,500 sq ft.']),
             ('Getting your group across', ['Many groups drive. The host estimates Prima is about 10 minutes from the Tuas Second Link and Landak about 12 minutes from the Causeway CIQ, excluding border queues. See our <a href="{R}getting-there/">guide to getting to Johor Bahru</a> for the Causeway, Second Link and RTS Link options.']),
             ('Splitting the cost', ['Prices are per night for the whole house, cleaning included. On a weekday at full occupancy that is ' + PP_WEEKDAY['prima'] + ' per person at Prima (RM 450, 12 guests) and ' + PP_WEEKDAY['landak'] + ' at Landak (RM 550, 10 guests). Weekends and public holidays cost more; see <a href="{R}prices/">prices</a>. ' + FX_TEXT]),
             ('Bigger than 12?', ['Neither house takes more than 12 guests on its own. Booking both houses means two separate homes in different parts of JB, up to 22 guests in total, not one venue. Ask us what works for your group.']),
@@ -717,8 +717,8 @@ def house_ld(h):
     gal = gal[:16]
     if k == 'prima':
         am = [('ac', True), ('kitchen', True), ('wifi', True), ('tv', True), ('selfCheckinCheckout', True), ('outdoorGrill', False),
-              ('petsAllowed', False), ('smokingAllowed', False), ('Pool table (7ft)', True), ('Mahjong table', True), ('Ground-floor bedroom', True)]
-        acc = {'numberOfBedrooms': 3, 'numberOfBathroomsTotal': 3, 'bed': [{'@type': 'BedDetails', 'numberOfBeds': 3, 'typeOfBed': 'Queen'}],
+              ('petsAllowed', False), ('smokingAllowed', False), ('Pool table (7ft)', True), ('Mahjong table', True), ('Ground-floor bedroom', True), ('Water heaters', True)]
+        acc = {'numberOfBedrooms': 3, 'numberOfBathroomsTotal': 3, 'bed': [{'@type': 'BedDetails', 'numberOfBeds': 5, 'typeOfBed': 'Queen'}],
                'occupancy': {'@type': 'QuantitativeValue', 'value': 12}}
     else:
         am = [('ac', True), ('kitchen', True), ('wifi', True), ('tv', True), ('washerDryer', True), ('selfCheckinCheckout', True), ('outdoorGrill', False),
@@ -1781,7 +1781,7 @@ BADGE = {'prima': 'For big groups', 'landak': 'Games house'}
 
 def specs(k, cls='specs'):
     h = HOUSES[k]
-    items = [('users', 'Up to %d guests' % h['guests']), ('bed', '%d bedrooms' % h['beds']), ('bath', '3 bathrooms (1 en-suite, 2 shared)')]
+    items = [('users', 'Up to %d guests' % h['guests']), ('bed', '%d bedrooms' % h['beds']), ('bath', '3 bathrooms (1 en-suite, 2 shared) with water heaters')]
     return '<ul class="%s">%s</ul>' % (cls, ''.join('<li>%s%s</li>' % (ico(i, 18), e(t)) for i, t in items))
 
 
@@ -1885,7 +1885,7 @@ def home_body():
                '<div class="ch-opts" role="group" aria-label="Group size"><label for="gs1">1 to 10 guests</label><label for="gs2">11 or 12 guests</label><label for="gs3">13 or more</label></div>'
                '<div class="ch-res"><p class="r0">Tap your group size to see which house fits.</p>'
                '<div class="r1"><p>Both houses fit. Pick <b>Landak</b> for KSL City Mall on foot and a games room, or <b>Prima</b> for a 7ft pool table, mahjong and parking for 8 cars.</p><p class="ch-btns">%s%s</p></div>'
-               '<div class="r2"><p><b>Prima</b> is the one: up to 12 guests in 3 rooms, each with 1 queen bed and 2 single floor mattresses.</p><p class="ch-btns">%s</p></div>'
+               '<div class="r2"><p><b>Prima</b> is the one: up to 12 guests in 3 rooms with 5 queen beds and 2 single floor mattresses.</p><p class="ch-btns">%s</p></div>'
                '<div class="r3"><p>Neither house takes more than 12 guests. Booking both means two separate homes in different parts of JB (up to 22 guests in total), not one venue. Ask us what works for your group.</p><p class="ch-btns">%s</p></div></div></div>'
                % (pv % (L['slug'], 'Landak'), pv % (P['slug'], 'Prima'), pv % (P['slug'], 'Prima'), wa_btn('Ask us on WhatsApp', wa_msg(), 'home-chooser', 'btn btn-wa btn-sm')))
     trust = [('chat', 'Daniel, your host', 'Based in Singapore and JB, speaks English, Malay and Chinese. WhatsApp %s.' % WA_SHOW),
@@ -1928,9 +1928,9 @@ def home_body():
 STAYS_FAQ = faqs('cost', 'fit', 'pool', 'cancel', 'time')
 CMP_ROWS = [
     ('Area', 'Gelang Patah, Iskandar Puteri', 'Taman Abad, Johor Bahru'),
-    ('Guests', 'Up to 12 (3 rooms, each 1 queen + 2 floor mattresses)', 'Up to 10'),
-    ('Bedrooms', '3', '3 (5 beds: 1 king, 4 queen)'),
-    ('Bathrooms', '3 (1 en-suite, 2 shared)', '3 (1 en-suite, 2 shared), with water heaters'),
+    ('Guests', 'Up to 12', 'Up to 10'),
+    ('Bedrooms', '3 (5 queen beds + 2 single floor mattresses)', '3 (5 beds: 1 king, 4 queen)'),
+    ('Bathrooms', '3 (1 en-suite, 2 shared), with water heaters', '3 (1 en-suite, 2 shared), with water heaters'),
     ('Parking', '2 cars inside, 6 outside', '2 cars inside'),
     ('Weekday, per night', 'RM 450 (about S$142)', 'RM 550 (about S$174)'),
     ('Weekend, per night', 'RM 650 (about S$205)', 'RM 750 (about S$237)'),
@@ -1952,8 +1952,8 @@ def stays_card(k):
     imgs = STAYS_IMG[k]
     slides = ''.join('<div class="slide">%s</div>' % (
                      pimg(f, eager=(k == 'prima'), lazy=(k != 'prima'), sizes='(min-width:1024px) 600px, 100vw') if i == 0 else pimg800(f, sizes='(min-width:1024px) 600px, 100vw')) for i, f in enumerate(imgs))
-    facts = [('users', '%d guests' % h['guests']), ('bed', '%d bedrooms' % h['beds'])] + ([('bed', '5 beds')] if k == 'landak' else []) + [('bath', '3 bathrooms (1 en-suite, 2 shared)'), ('cal', 'From %s / night' % rm(PRICES[k][0]))]
-    short = {'%d guests' % h['guests']: '%d guests' % h['guests'], '%d bedrooms' % h['beds']: '%d bed' % h['beds'], '5 beds': None, '3 bathrooms (1 en-suite, 2 shared)': '3 bath (1 en-suite)', 'From %s / night' % rm(PRICES[k][0]): 'From %s' % rm(PRICES[k][0])}
+    facts = [('users', '%d guests' % h['guests']), ('bed', '%d bedrooms' % h['beds'])] + ([('bed', '5 beds')] if k == 'landak' else []) + [('bath', '3 bathrooms (1 en-suite, 2 shared) with water heaters'), ('cal', 'From %s / night' % rm(PRICES[k][0]))]
+    short = {'%d guests' % h['guests']: '%d guests' % h['guests'], '%d bedrooms' % h['beds']: '%d bed' % h['beds'], '5 beds': None, '3 bathrooms (1 en-suite, 2 shared) with water heaters': '3 bath (1 en-suite)', 'From %s / night' % rm(PRICES[k][0]): 'From %s' % rm(PRICES[k][0])}
     facts_html = ''.join('<li%s>%s<span class="lf">%s</span>%s</li>' % ('' if short[t] else ' class="nm"', ico(i, 20), e(t), ('<span class="sf" aria-hidden="true">%s</span>' % e(short[t])) if short[t] else '') for i, t in facts)
     top = ''.join('<li>%s<span>%s</span></li>' % (ico(amen_icon(a), 24), e(a)) for a in h['top'])
     return ('<article class="scard rv" id="%s"><div class="scar cz" data-carousel data-dots aria-roledescription="carousel" aria-label="Photos of %s"><div class="track" tabindex="0">%s</div>'
@@ -1966,7 +1966,7 @@ def stays_card(k):
             '<nav class="jl" aria-label="Jump to"><a href="#album-%s">Photos</a><a href="#cmp">Essentials</a><a href="#around-%s">Around here</a></nav></div></article>'
             % (k, e(h['name']), slides, ico('left', 22), ico('right', 22), len(imgs), k, ico('grid', 18), sum(len(fs) for _g, fs in ALBUM[k]),
                ico('pin', 16), e(AREA[k]), e(h['name']), facts_html, top, tiers_html(k), PP_WEEKDAY[k], h['guests'],
-               '<p class="snote">Up to 12 guests: 3 rooms, each with 1 queen bed and 2 single floor mattresses. Ground-floor bedroom for elderly guests. No BBQ.</p>' if k == 'prima' else '<p class="snote">No BBQ. Completed September 2026 (host-stated).</p>',
+               '<p class="snote">Up to 12 guests: 3 rooms with 5 queen beds and 2 single floor mattresses. Ground-floor bedroom for elderly guests. No BBQ.</p>' if k == 'prima' else '<p class="snote">No BBQ. Completed September 2026 (host-stated).</p>',
                e(h['bestfor']), (' See <a href="{R}articles/%s/">things to do near KSL City Mall</a>.' % KSL_ART) if k == 'landak' else '', ico('star', 16), '<span>%s</span>' % rating_link(k),
                wa_btn('Check dates for %s' % h['name'].replace(' Kawan Fun House', ''), h['msg'], 'stays-' + k), h['slug'], ico('arrow', 18), k, k))
 
@@ -2073,7 +2073,7 @@ def house_body(k):
            '<button class="cbtn prev" type="button" aria-label="Previous photo">%s</button><button class="cbtn next" type="button" aria-label="Next photo">%s</button>'
            '<span class="cnt" aria-hidden="true">1 / %d</span><a class="gal-all" href="#spaces" data-lb-open>%sView all %d photos</a></section>'
            % (e(h['name']), slides, ico('left', 22), ico('right', 22), len(BENTO[k]), ico('grid', 18), n_all))
-    meta = [('pin', AREA[k]), ('users', 'Up to %d guests' % h['guests']), ('bed', '%d bedrooms' % h['beds']), ('bath', '3 bathrooms (1 en-suite, 2 shared)')]
+    meta = [('pin', AREA[k]), ('users', 'Up to %d guests' % h['guests']), ('bed', '%d bedrooms' % h['beds']), ('bath', '3 bathrooms (1 en-suite, 2 shared) with water heaters')]
     meta_html = ''.join('<li>%s%s</li>' % (ico(i, 18), e(t)) for i, t in meta)
     sub = ''.join('<a href="#%s">%s</a>' % (a, b) for a, b in [('spaces', 'Photos'), ('amenities', 'Amenities'), ('sleep', 'Sleeping'), ('rules', 'House rules'), ('around', 'Around the house'), ('reviews', 'Reviews'), ('faq', 'FAQ'), ('book', 'Check dates &amp; rate')])
     stat_ic = {'Guests': 'users', 'Bedrooms': 'bed', 'Bathrooms': 'bath', 'Rate': 'cal'}
@@ -2085,12 +2085,12 @@ def house_body(k):
     intro = '<p>%s</p>' % e(h['intro'][0])
     more = ''.join('<p>%s</p>' % e(t) for t in h['intro'][1:])
     if k == 'prima':
-        more += '<p>Looking for a group homestay in JB near the Second Link? Prima is a landed house with 3 rooms and 3 bathrooms (1 en-suite, 2 shared) for up to 12 guests at %s a night, cleaning included.</p>' % tiers_full('prima')
+        more += '<p>Looking for a group homestay in JB near the Second Link? Prima is a landed house with 3 rooms, 5 queen beds, 2 single floor mattresses and 3 bathrooms (1 en-suite, 2 shared) with water heaters for up to 12 guests at %s a night, cleaning included.</p>' % tiers_full('prima')
     gal_cta = '<p class="after-gal">%s</p>' % wa_btn('Check dates on WhatsApp', h['msg'], 'gallery-' + k)
     spaces_cta = '<p class="after-gal">%s</p>' % wa_btn('Like what you see? Check dates', h['msg'], 'spaces-' + k)
     ok = 'landak' if k == 'prima' else 'prima'
     other = HOUSES[ok]
-    side_items = [('users', 'Up to %d guests' % h['guests']), ('bed', '%d bedrooms, 3 bathrooms (1 en-suite, 2 shared)' % h['beds']), ('cal', h['minstay']), ('cal', '%s per person on a weekday at %d guests (full house)' % (PP_WEEKDAY[k], h['guests'])),
+    side_items = [('users', 'Up to %d guests' % h['guests']), ('bed', '%d bedrooms, 3 bathrooms (1 en-suite, 2 shared)%s' % (h['beds'], ' with water heaters')), ('cal', h['minstay']), ('cal', '%s per person on a weekday at %d guests (full house)' % (PP_WEEKDAY[k], h['guests'])),
                   ('key', 'Self check-in after 3:00 pm' if k == 'landak' else 'Self check-in'), ('star', ('RAW', rating_link(k))), ('chat', 'Book directly on WhatsApp')]
     side = ('<aside class="side rv" id="book" aria-label="Rate and booking"><p class="side-h">Per night, whole house</p>%s<p class="sgd-s">Cleaning included. %s <a href="#rules">Deposit rules</a>.</p>'
             '<ul>%s</ul>%s%s<p class="note">Prices are in RM. Message Daniel for availability on your dates.</p>%s%s</aside>'
@@ -2120,7 +2120,7 @@ def prices_body():
                    % (HOUSES[k]['slug'], e(HOUSES[k]['name']), ''.join('<td data-label="%s">%s<br><small>about %s</small></td>' % (t, rm(n), sgd_of(n)) for t, n in zip(TIER_NAMES, PRICES[k])),
                       PP_WEEKDAY[k], HOUSES[k]['guests'], HOUSES[k]['guests']) for k in ORDER)
     return ('<div class="wrap body prose"><div class="tw"><table><thead><tr><th>House</th><th>Weekday</th><th>Weekend</th><th>Public holiday</th><th>Per person (weekday, full house)</th><th>Guests</th></tr></thead><tbody>%s</tbody></table></div>%s%s'
-            '<section class="rv"><h2>What is included</h2><p><b>Prima (landed house):</b> ground-floor bedroom (no stairs needed), 7ft pool table, mahjong table, Wi-Fi, air conditioning, kitchen, parking for 2 cars inside and 6 outside, 2 TVs with Netflix, washer, covered balcony and a study desk. 3 rooms (each 1 queen bed and 2 single floor mattresses), 3 bathrooms (1 en-suite, 2 shared), up to 12 guests.</p>'
+            '<section class="rv"><h2>What is included</h2><p><b>Prima (landed house):</b> ground-floor bedroom (no stairs needed), 7ft pool table, mahjong table, Wi-Fi, air conditioning, kitchen, parking for 2 cars inside and 6 outside, 2 TVs with Netflix, washer, covered balcony and a study desk. 3 rooms with 5 queen beds and 2 single floor mattresses, 3 bathrooms (1 en-suite, 2 shared) with water heaters, up to 12 guests.</p>'
             '<p><b>Landak Kawan Fun House (KSL landed fun house):</b> 8ft pool table, foosball, 2 dart boards, mahjong table, 55-inch TV arcade, board games, children\'s playroom, dedicated workstation, 100 Mbps Wi-Fi, air conditioning, kitchen for light cooking, parking for 2 cars inside, washer, hair dryer and iron. 3 bedrooms, 3 bathrooms (1 en-suite, 2 shared) with water heaters, 5 beds (1 king, 4 queens), up to 10 guests.</p></section>'
             '<section class="rv"><h2>Good to know</h2><ul><li>All prices are in Malaysian ringgit (RM).</li><li>Prices are per night for the whole house, with weekday, weekend and public holiday rates. For your group size or a gathering, WhatsApp Daniel.</li><li>Cleaning is included in the nightly price.</li><li>Minimum stay: 1 night (2 over Christmas Eve and Christmas Day). 24 and 25 Dec are charged at the public holiday rate (Prima RM 750, Landak RM 1,000).</li><li>Per-person figures split the weekday whole-house rate at full occupancy; they are not bookable bed prices.</li><li>%s</li><li>No cancellation, but you can change your dates once.</li><li>Gatherings need the host\'s approval.</li>'
             '<li>Early check-in or late checkout: RM 100 an hour, subject to availability (you can ask for a waiver).</li><li>No BBQ or grilling at either house.</li></ul></section><section class="rv" id="deposit"><h2>Deposit</h2>%s%s</section></div>'
@@ -2167,7 +2167,7 @@ def kl_body():
         return '<ul class="tiers">%s</ul>' % ''.join('<li><span>%s</span><b>%s</b></li>' % (t, rm(n)) for t, n in zip(TIER_NAMES, PRICES[k]))
     houses = ''.join('<div class="kl-h rv"><h3><a href="{R}stays/%s/">%s</a></h3><p>%s</p>%s<p class="cinc">Per night, whole house, cleaning included.</p><p><a class="link" href="{R}stays/%s/">See %s %s</a></p></div>'
                      % (HOUSES[k]['slug'], e(HOUSES[k]['name']), d, price_rows(k), HOUSES[k]['slug'], 'Prima' if k == 'prima' else 'Landak', ico('arrow', 18))
-                     for k, d in (('prima', 'A landed house in Gelang Patah for up to 12 guests in 3 rooms, with 3 bathrooms (1 en-suite, 2 shared), a ground-floor bedroom for elderly guests, a 7ft pool table and mahjong. Parking for 2 cars inside and 6 outside.'),
+                     for k, d in (('prima', 'A landed house in Gelang Patah for up to 12 guests in 3 rooms with 5 queen beds and 2 single floor mattresses, with 3 bathrooms (1 en-suite, 2 shared) with water heaters, a ground-floor bedroom for elderly guests, a 7ft pool table and mahjong. Parking for 2 cars inside and 6 outside.'),
                                   ('landak', 'A double-storey house in Taman Abad for up to 10 guests, with 3 bedrooms, 5 beds, 3 bathrooms (1 en-suite, 2 shared) with water heaters, an 8ft pool table, foosball, 2 dart boards and a children\'s playroom. A 5-minute walk from KSL City Mall. Parking for 2 cars inside.')))
     body = ('<div class="wrap body prose">'
             '<section class="rv"><h2>A one-night stopover before or after the crossing</h2>'
@@ -2452,7 +2452,7 @@ def main():
     ll = ['# JB Staycations', '', '> %s Private holiday houses in Johor Bahru, Malaysia, for Singapore families and groups. Host: Daniel (based in Singapore and JB; English, Malay and Chinese), WhatsApp %s (%s). Pay by %s.' % (TAGLINE, WA_SHOW, WA_BASE, PAY_SHORT), '', '## Booking terms', '- Prices per night for the whole house, cleaning included. Prima: ' + tiers_full('prima') + '. Landak Kawan Fun House: ' + tiers_full('landak') + '. SGD figures are estimates at RM1 = S$0.3158.', '- ' + DEPOSIT_FULL + ' Bank details are shared once a booking and its dates are confirmed.', '- Corporate short stays: ' + CORP, '- Malaysian guests from KL and other states are welcome, for one-night stopovers before or after crossing to Singapore or short JB getaways: %s%s' % (BASE, KL_PATH), '- ' + HOST_H + ': ' + HOST_P, '- Check-in 3pm, check-out 11am; self check-in details sent after a firm booking; early check-in or late checkout RM 100 an hour, subject to availability (waiver on request).', '- Minimum stay 1 night (2 nights over Christmas Eve and Christmas Day). No cancellation; dates can be changed once.', '- Gatherings need the host\'s approval. Visitors allowed; quiet hours 11pm to 7am. No BBQ, no pets; RM 500 penalty for smoking, vaping or eating durian indoors.', '- Prima has a ground-floor bedroom, so elderly guests do not need the stairs.', '- Professionally cleaned after every checkout; fresh linen, towels and toiletries provided. Fire extinguisher under the kitchen sink; outdoor CCTV; the host is the emergency contact.', '', '## Houses']
     for k in ORDER:
         h = HOUSES[k]
-        ll.append('- [%s](%sstays/%s/): %s. Up to %d guests, %s per night, cleaning included. %s %s.' % (h['full'], BASE, h['slug'], h['addr'], h['guests'], tiers_rm(k), h['card'], '3 bathrooms (1 en-suite, 2 shared) with water heaters' if k == 'landak' else '3 bathrooms (1 en-suite, 2 shared)'))
+        ll.append('- [%s](%sstays/%s/): %s. Up to %d guests, %s per night, cleaning included. %s %s.' % (h['full'], BASE, h['slug'], h['addr'], h['guests'], tiers_rm(k), h['card'], '3 bathrooms (1 en-suite, 2 shared) with water heaters'))
     ll += ['', '## Ratings and profiles', '- Google profile: %s' % GBP_URL, '- Airbnb: Prima 4.67 from 6 reviews, Landak 5.0 from 4 reviews (read 8 Nov 2026)', '', '## Pages', '- [Stays: compare both houses](%sstays/)' % BASE, '- [Prices](%sprices/)' % BASE, '- [Getting to Prima and Landak from Singapore](%sgetting-there/)' % BASE, '- [JB overnight stay for KL and Malaysian travellers](%s%s): one-night stopovers before or after crossing to Singapore, short JB getaways; both houses with RM prices' % (BASE, KL_PATH), '- [FAQ](%sfaq/)' % BASE, '- [About](%sabout/)' % BASE, '- [Contact](%scontact/)' % BASE, '- [Articles](%sarticles/)' % BASE]
     for a in ARTICLES:
         ll.append('  - [%s](%sarticles/%s/)' % (a['title'], BASE, a['slug']))
