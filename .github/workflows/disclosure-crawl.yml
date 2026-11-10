@@ -1,0 +1,17 @@
+name: Disclosure crawl
+on:
+  push:
+    branches: [ "claude/project-thread-ete3gv" ]
+    paths: [ ".github/disclosure/crawl.py", ".github/disclosure/crawl.trigger" ]
+permissions:
+  contents: write
+jobs:
+  run:
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+      - run: python3 -u .github/disclosure/crawl.py
+      - name: Save originals
+        run: |
+          git config user.name "github-actions"; git config user.email "actions@github.com"
+          git add .github/disclosure/orig && git commit -m "Disclosure reword: exact live originals (10 Nov 2026)" && git pull --rebase origin claude/project-thread-ete3gv && git push origin HEAD:claude/project-thread-ete3gv || true
