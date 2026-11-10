@@ -23,7 +23,7 @@ export async function sha256Hex(s: string): Promise<string> { return hex(await c
 export const canonical = (ts: string, nonce: string, bodyHash: string) => `site-feed-v1\n${ts}\n${nonce}\n${bodyHash}`;
 
 async function hmacHex(key: Uint8Array, msg: string): Promise<string> {
-  const k = await crypto.subtle.importKey('raw', key, { name: 'HMAC', hash: 'SHA-256' }, false, ['sign']);
+  const k = await crypto.subtle.importKey('raw', key as BufferSource, { name: 'HMAC', hash: 'SHA-256' }, false, ['sign']);
   return hex(await crypto.subtle.sign('HMAC', k, enc.encode(msg)));
 }
 
