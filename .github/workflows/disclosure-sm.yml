@@ -1,0 +1,11 @@
+name: Disclosure sitemap peek
+on:
+  push:
+    branches: [ "claude/project-thread-ete3gv" ]
+    paths: [ ".github/disclosure/sm.py", ".github/disclosure/sm.trigger" ]
+jobs:
+  run:
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+      - run: python3 -u .github/disclosure/sm.py
