@@ -1,0 +1,11 @@
+name: Disclosure IndexNow and live count
+on:
+  push:
+    branches: [ "claude/project-thread-ete3gv" ]
+    paths: [ ".github/disclosure/final.py", ".github/disclosure/final.trigger" ]
+jobs:
+  run:
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+      - run: python3 -u .github/disclosure/final.py
