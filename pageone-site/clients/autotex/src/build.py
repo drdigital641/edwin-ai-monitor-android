@@ -282,7 +282,7 @@ def shell(path, title, desc, body, active="", crumbs=None, schema=None, js=("dat
 <div><h4>Visit</h4><p>{e(ADDR1)}<br>{e(ADDR2)}<br><a href="{GMAP}" rel="noopener">Directions</a></p></div>
 <div><h4>Opening hours</h4><p>Mon-Fri 9:30am-5:30pm<br>Sat 9:30am-3:30pm<br>Sunday closed</p></div>
 <div><h4>Talk to us</h4><p><a href="tel:{TEL_H}">Call {TEL}</a><br><a href="https://wa.me/{WA}" rel="noopener">WhatsApp {WA_SHOW}</a></p><p class="ft-links"><a href="{r}hyundai/">Hyundai parts</a> · <a href="{r}kia/">Kia parts</a> · <a href="{r}prices/">Price list</a> · <a href="{r}articles/">Guides</a> · <a href="{r}about/">About</a></p></div>
-</div><div class="wrap ft-b">© {datetime.date.today().year} {e(LEGAL)}. Hyundai and Kia are trademarks of their owners; Autotex is an independent parts stockist. <a href="{r}privacy-policy/">Privacy Policy</a> · Website &amp; SEO by <a href="https://pageonesingapore.com/">Page One Singapore</a></div></footer>
+</div><div class="wrap ft-b">© {datetime.date.today().year} {e(LEGAL)}. Hyundai and Kia are trademarks of their owners; Autotex is an independent parts stockist. <a href="{r}privacy-policy/">Privacy Policy</a></div></footer>
 <a class="wa-fab" href="https://wa.me/{WA}?text={e(quote('Hi Autotex, I need a part for my car.'))}" aria-label="WhatsApp Autotex" rel="noopener">{WA_SVG}</a>
 {scripts}
 </body>
