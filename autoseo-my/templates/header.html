@@ -1,15 +1,16 @@
 <body class="{{body_class}}">
-  <a class="skip-link" href="#main">Skip to content</a>
+  <a class="skip-link" href="#main">{{skip}}</a>
   <header class="site-header">
     <div class="wrap header-inner">
-      <a class="logo" href="{{base}}" aria-label="{{brand_name}} home">
+      <a class="logo" href="{{home_url}}" aria-label="{{home_aria}}">
         <span class="logo-mark" aria-hidden="true">{{logo_letter}}</span><span>{{brand_name_html}}</span>
       </a>
-      <nav class="nav" id="nav" aria-label="Main">
+      <nav class="nav" id="nav" aria-label="{{nav_aria}}">
 {{nav_links}}
       </nav>
-      <a class="btn btn-small btn-wa" href="{{wa_general}}" target="_blank" rel="noopener" data-cta="whatsapp_header">WhatsApp us</a>
-      <button class="menu-btn" id="menu-btn" type="button" aria-label="Menu" aria-expanded="false" aria-controls="nav">☰</button>
+      <p class="lang-switch" aria-label="{{lang_aria}}">{{lang_links}}</p>
+      <a class="btn btn-small btn-wa" href="{{wa_general}}" target="_blank" rel="noopener" data-cta="whatsapp_header">{{whatsapp_us}}</a>
+      <button class="menu-btn" id="menu-btn" type="button" aria-label="{{menu}}" aria-expanded="false" aria-controls="nav">☰</button>
     </div>
   </header>
   <main id="main">

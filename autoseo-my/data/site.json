@@ -1,0 +1,94 @@
+{
+ "_readme": "Page structure shared by every language: order, slugs and icons. Text lives in strings/<lang>.json.",
+ "languages": [
+  {
+   "code": "en",
+   "prefix": ""
+  },
+  {
+   "code": "ms",
+   "prefix": "ms/"
+  },
+  {
+   "code": "zh",
+   "prefix": "zh/"
+  }
+ ],
+ "services": [
+  {
+   "slug": "automotive-seo",
+   "emoji": "🔍",
+   "n": 1
+  },
+  {
+   "slug": "aeo-answer-engine-optimisation",
+   "emoji": "💬",
+   "n": 2
+  },
+  {
+   "slug": "geo-ai-search-visibility",
+   "emoji": "🤖",
+   "n": 3
+  },
+  {
+   "slug": "automotive-website-design",
+   "emoji": "🖥️",
+   "n": 4
+  },
+  {
+   "slug": "google-maps-local-seo",
+   "emoji": "📍",
+   "n": 5
+  },
+  {
+   "slug": "automotive-content-marketing",
+   "emoji": "📝",
+   "n": 6
+  }
+ ],
+ "industries": [
+  {
+   "slug": "car-workshops",
+   "emoji": "🔧"
+  },
+  {
+   "slug": "car-dealerships",
+   "emoji": "🚗"
+  },
+  {
+   "slug": "tyre-shops",
+   "emoji": "🛞"
+  },
+  {
+   "slug": "car-accessories",
+   "emoji": "🎛️"
+  },
+  {
+   "slug": "car-aircon-specialists",
+   "emoji": "❄️"
+  },
+  {
+   "slug": "car-detailing",
+   "emoji": "✨"
+  },
+  {
+   "slug": "ev-hybrid-specialists",
+   "emoji": "🔋"
+  },
+  {
+   "slug": "battery-spare-parts",
+   "emoji": "⚙️"
+  },
+  {
+   "slug": "equipment-diagnostic-tools",
+   "emoji": "🧰"
+  }
+ ],
+ "why_emoji": [
+  "🔧",
+  "📍",
+  "🔍",
+  "📈"
+ ],
+ "home_faq_count": 4
+}

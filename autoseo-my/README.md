@@ -1,14 +1,16 @@
 # AutoSEO.my site (preview)
 
-Static site, rendered at build time. Preview address: `/preview/autoseo-my/` on the agency preview host (noindex).
+Static site in three languages, rendered at build time from one set of templates.
+English at `/preview/autoseo-my/`, Malay at `/preview/autoseo-my/ms/`, Chinese at `/preview/autoseo-my/zh/` (all noindex while previewing).
 
-- `data/brand.json` — the one file for brand facts: name, tagline, company, WhatsApp number, prefills, areas, base path, `preview` switch, `site_url`.
-- `data/content.py` — page text (client copy kept word for word, marked COPY).
-- `templates/` — shared parts used by every page: `head.html` (meta, robots, schema slot), `header.html` (logo + nav), `page_hero.html`, `faq_block.html`, `cta_band.html`, `footer.html` (footer + floating WhatsApp button).
+- `data/brand.json`: brand facts shared by every language (name, tagline, company, WhatsApp number, base path, `preview` switch, `site_url`).
+- `data/site.json`: languages, page order, slugs and icons.
+- `strings/en.json`, `strings/ms.json`, `strings/zh.json`: all visible text, meta, FAQ, schema text and WhatsApp prefills per language (same keys in each).
+- `templates/`: the shared header (with the EN | BM | 中文 switcher), page hero, FAQ block, CTA band and footer with the WhatsApp button. One edit changes all three languages.
 - `assets/base.css` + `assets/brand.css` → `site/assets/site.css`; `assets/site.js`. Links carry `?v=<hash>`.
-- `src/build.py` — builds `site/` and then runs `src/check.py`; the build stops if the check fails.
-- `src/check.py` — pre-upload grep against `data/blocklist.txt`, plus one H1, robots noindex,nofollow, schema parses with no phone/address/email, no sitemap.
+- `src/build.py`: builds `site/`, then runs `src/check.py`; the build stops if the check fails.
+- `src/check.py`: blocklist grep (`data/blocklist.txt`) over all output, plus checks for one H1, noindex, lang tags, canonical, hreflang, valid schema without phone/address/email, no sitemap, and no leftover English or placeholders on ms/zh pages.
 
 Build: `python3 autoseo-my/src/build.py`
 
-Going live later: set `preview` to false and `site_url` to the live domain in `brand.json`, set `base_path` to `/`, rebuild, and add a sitemap.
+To go live: set `preview` to false, set `site_url` to the domain (canonical and hreflang then become absolute) and `base_path` to `/`, rebuild, and add a sitemap.
