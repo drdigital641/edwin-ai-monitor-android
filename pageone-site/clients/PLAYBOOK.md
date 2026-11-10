@@ -32,7 +32,7 @@ The controller app's Clients page queues jobs on the `Client` record (`design_jo
   at 390 px, and check it with a real-viewport full-page screenshot (puppeteer-core), not just overflow.
 - All internal links relative (same files work at both addresses).
 - `<meta name="p1-site" content="<slug>">` on every page (the go-live check looks for it).
-- Footer credit: "Website & SEO by Page One Singapore" linking to https://pageonesingapore.com/.
+- NO footer credit (white-label, Edwin 10 Nov 2026): client sites carry no "Website (& SEO) by Page One Singapore" text or link. Never add it back.
 - WhatsApp tracker (same CtaClick snippet as dmts.js, `site: '<slug>'`), skipped on
   pageonesingapore.com.
 
