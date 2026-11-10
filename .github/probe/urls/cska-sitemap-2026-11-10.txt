@@ -1,0 +1,4 @@
+https://cskatrading.com/sitemap.xml
+https://cskatrading.com/robots.txt
+https://www.cskatrading.com/sitemap.xml
+http://cskatrading.com/sitemap.xml
