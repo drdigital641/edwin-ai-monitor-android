@@ -70,5 +70,6 @@ V4CFG["canninghill-piers"] = dict(
     extra=[("Views tips", "The developer describes a riverside 48-storey tower and a 24-storey tower facing Fort Canning Hill, linked at Level 24. No unit’s view is guaranteed: check your stack on the storey key plan, then plan blinds and glare control around your real outlook.")],
     steps_h2="Keys to move-in (planning guide)",
     end_note="WhatsApp Maison with your unit type, key date and wish list.",
+    src_labels={CP_BROCHURE: "CanningHill Piers e-brochure (PDF)"},
     css=V4CFG["norwood-grand"]["css"] + "@media(min-width:900px){.v4-wide .v4-plan:first-child{max-width:720px}}.v4-plan figcaption b a{color:inherit;text-decoration:underline}",
     end_msg="Hi Maison, I’m planning my CanningHill Piers renovation. Can we discuss my layout?")

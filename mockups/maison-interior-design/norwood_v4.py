@@ -60,6 +60,5 @@ V4CFG["norwood-grand"] = dict(
         ("Unit sizes from about 495 to 1,335 sq ft, depending on type.", "CDL brochure", NG_BROCHURE)],
         "Maison is an independent interior design firm, not affiliated with CDL. Key and access appointments are set per owner and are not confirmed here."),
     css=".v4-facts{margin:16px 0 0;padding:0 0 0 20px;max-width:72ch;font-size:16px;line-height:1.6;color:var(--ink2)}.v4-facts li{margin:0 0 10px}.v4-facts a{color:var(--brass);text-decoration:underline;white-space:nowrap}"
-        "@media(min-width:900px){.v4-plans.v4-wide{grid-template-columns:1fr;max-width:1100px}}"
-        "@media(max-width:899px){.v4-fig figcaption,.v4-plan figcaption{padding-right:68px}}",
+        "@media(min-width:900px){.v4-plans.v4-wide{grid-template-columns:1fr;max-width:1100px}}",
     end_msg="Hi Maison, I’m planning my Norwood Grand renovation. Can we discuss my layout?")

@@ -118,6 +118,12 @@ def _v4wa(label, msg, ref, theme, path):
 def _v4cap(extra=""):
     return f'<figcaption>{extra}<b>{V4_NOTE}</b><span>{V4_AI}</span></figcaption>'
 
+def _src_labels(h, labels):
+    # optional readable link text for a Sources URL: {url: label}; these links also get nofollow
+    for u, lab in labels.items():
+        h = h.replace(f'<a href="{u}" target="_blank" rel="noopener">{u}</a>', f'<a href="{u}" target="_blank" rel="nofollow noopener">{e(lab)}</a>')
+    return h
+
 def vpage_v4(slug):
     c, cfg, v = parse_copy(slug), VPAGES[slug], V4CFG[slug]
     path = f"new-launches/{slug}/"
@@ -162,7 +168,7 @@ def vpage_v4(slug):
              + "".join(f'<section class="vsec"><div class="wrap"><h2 class="vh2">{e(xh)}</h2><div class="v4-lead"><p>{e(xt)}</p></div></div></section>' for xh, xt in v.get("extra", [])) +
              f'<section class="vsec"><div class="wrap"><h2 class="vh2">{e(v.get("steps_h2", "From keys to move-in"))}</h2><ol class="vsteps">{steps}</ol></div></section>'
              f'<section class="vsec vfaq"><div class="wrap narrow"><h2 class="vh2">Details, caveats and sources</h2>{faqs}'
-             f'<details class="qa"><summary><h3>Sources</h3><span class="pm" aria-hidden="true"></span></summary><div class="vq">{_links(c["sources"])}</div></details>'
+             f'<details class="qa"><summary><h3>Sources</h3><span class="pm" aria-hidden="true"></span></summary><div class="vq">{_src_labels(_links(c["sources"]), v.get("src_labels", {}))}</div></details>'
              f'<p class="v4-src">More BTO and condo projects: <a href="{BASE}new-launches/">New launches</a>.</p>'
              + (f'<p class="v4-lead">{e(v["end_note"])}</p>' if v.get("end_note") else "") +
              f'<div class="vh-cta end">{_v4wa("WhatsApp Maison", v["end_msg"], ref + "-end", "general", path)}</div></div></section>')

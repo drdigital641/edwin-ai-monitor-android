@@ -528,6 +528,18 @@ button.link{background:none;border:0;border-bottom:1px solid currentColor;color:
 .vq a{color:var(--brass);text-decoration:underline;overflow-wrap:anywhere}.vq ul{padding-left:20px}
 .lc-img{padding:0;overflow:hidden}.lc-img figure{margin:0}.lc-img img{display:block;width:100%;height:auto;aspect-ratio:16/9}
 .lc-img .tag,.lc-img h3,.lc-img .more{margin:0 20px}.lc-img .more{margin-bottom:20px}
-/* floating WhatsApp button (56px + 18px offset): keep the last lines of the page and image captions clear of it on phones and tablets */
+/* floating WhatsApp button: keep every line of text, caption and tap target clear of it.
+   Desktop: 56px button, 18px offset; the footer gets bottom room. Phones and tablets: 44px button, 8px offset,
+   and the page content stops 60px from the right edge so the button sits in its own column. */
 .ft{padding-bottom:calc(30px + 90px + env(safe-area-inset-bottom))}
-@media(max-width:899px){.v4-fig figcaption,.v4-plan figcaption,.vsec .v4-src{padding-right:68px}}
+@media(max-width:899px){
+.fab{width:44px;height:44px;right:8px;bottom:calc(12px + env(safe-area-inset-bottom));box-shadow:0 6px 18px rgba(20,17,14,.22)}
+.fab svg{width:22px;height:22px}
+main .wrap,.ft .wrap{padding-right:60px}
+.vgal,.vsteps{margin-right:0}
+.marq{margin-right:60px}
+.next-t{padding:20px 60px}
+.ft{padding-bottom:calc(30px + 60px + env(safe-area-inset-bottom))}
+}
+/* desktop: on screens narrower than about 1330px the content column would reach under the 56px button */
+@media(min-width:900px){main .wrap,.ft .wrap{padding-right:max(40px,calc(96px - (100vw - 1240px) / 2))}.marq{margin-right:84px}.next-t{padding:20px 100px}}
