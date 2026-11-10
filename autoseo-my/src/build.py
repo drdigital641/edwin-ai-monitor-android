@@ -192,7 +192,7 @@ def page(L, path, title, description, body, current="", faqs=None, body_class=""
         + (' aria-current="true"' if l["code"] == L.code else "") + f'>{E(STR[l["code"]]["meta"]["switch_label"])}</a>' for l in LANGS)
     nav = "\n".join(f'        <a href="{L.url(p)}"' + (' aria-current="page"' if current == p else "") + f'>{E(ui["nav"][k])}</a>'
                     for p, k in [("services/", "services"), ("industries/", "industries"), ("how-it-works/", "how"), ("about/", "about"), ("faq/", "faq"), ("contact/", "contact")])
-    shared = dict(base=BASE, home_url=L.url(), brand_name_html=BRAND["name_html"], logo_letter=BRAND["logo_letter"], wa_general=L.wa("general"))
+    shared = dict(base=BASE, home_url=L.url(), brand_name_html=BRAND["name_html"], logo_letter=BRAND["logo_letter"], wa_general=L.wa("general"), wa_icon=TPL["wa_icon"].strip(), whatsapp_label=E(L.s["brand"]["whatsapp_label"]))
     doc = fill("head", lang=L.s["meta"]["html_lang"], title=E(title), description=E(description), robots=robots, canonical=canonical, hreflang=alts,
                og_url=og_url, og_locale=L.s["meta"]["og_locale"], asset_v=ASSET_V, schema=schema_tag(graph), base=BASE, brand_name=E(BRAND["name"]),
                font_extra="&family=Noto+Sans+SC:wght@400;600;700" if L.code == "zh" else "")
@@ -201,7 +201,7 @@ def page(L, path, title, description, body, current="", faqs=None, body_class=""
                 whatsapp_us=E(ui["whatsapp_us"]), menu=E(ui["menu"]), **shared)
     doc += body
     company = [("about/", ui["nav"]["about"]), ("how-it-works/", ui["nav"]["how"]), ("faq/", ui["nav"]["faq"]), ("contact/", ui["nav"]["contact"]), ("privacy/", ui["privacy"])]
-    doc += fill("footer", tagline=E(BRAND["tagline"]), tagline_tr=tagline_html(L), whatsapp_label=E(L.s["brand"]["whatsapp_label"]), year=date.today().year,
+    doc += fill("footer", tagline=E(BRAND["tagline"]), tagline_tr=tagline_html(L), year=date.today().year,
                 brand_line=E(L.s["brand"]["brand_line"]), areas_line=E(L.s["brand"]["areas_line"]),
                 h_services=E(ui["footer_services"]), h_industries=E(ui["footer_industries"]), h_company=E(ui["footer_company"]),
                 footer_services="\n".join(f'        <a href="{L.url("services/" + m["slug"] + "/")}">{E(L.s["services"][m["slug"]]["short"])}</a>' for m in SITE["services"]),
