@@ -1422,13 +1422,13 @@ ARTICLES = [
 <li><strong>No paid rankings.</strong> Paid listings are labelled Featured and kept out of any ranking.</li>
 </ul>
 <p>Its aim is to become the most useful car workshop directory in Singapore by listening to the people on the ground. Its <a href="https://sgcarworkshop.sg/areas/kaki-bukit-industrial-estate/">list of car workshops in Kaki Bukit Industrial Estate</a> shows the workshops around us, so you can compare more than one.</p>
-<p>To be clear about it: The ECU Clinic has a Featured (paid) listing there, and both this website and the directory are run by Page One Singapore. Use it as a starting point and check every workshop, including us, against the list above.</p>
+<p>To be clear about it: The ECU Clinic has a Featured (paid) listing there. This business supports SG Car Workshop (sgcarworkshop.sg), a driver-focused workshop directory run by Page One Singapore. Use it as a starting point and check every workshop, including us, against the list above.</p>
 <h2>What should I send before a quote?</h2>
 <p>WhatsApp the car model, year, chassis number and the fault codes, with a photo of the dashboard or scan tool screen if you have one. Say what the car does and when it started. With that, a specialist can usually tell you whether the fault points to the module or to something simpler, such as a wheel speed sensor, wiring or a weak battery. See <a href="../abs-warning-light-causes/">ABS warning light causes</a> for the common ones.</p>
 <p>You can bring the car, or just the unit, to Premier @ Kaki Bukit, or use our pick-up and delivery service. See <a href="../../services/abs-pump-repair/">ABS pump and module repair</a> for how the options compare.</p>''',
         faq=[('Can a general workshop repair an ABS pump?', 'Many general workshops read the fault code and then replace the unit or send it to a specialist. Ask whether the unit will be repaired on site, replaced with a used or reconditioned one, or sent out.'),
              ('How do I know a module specialist is genuine?', 'Check that the name and mobile number match its Google Business Profile, read reviews that mention module jobs, and look for its own photos of real repairs with fault codes.'),
-             ('Is The ECU Clinic listed on SG Car Workshop?', 'Yes, with a Featured (paid) listing. The directory and this website are both run by Page One Singapore.'),
+             ('Is The ECU Clinic listed on SG Car Workshop?', 'Yes, with a Featured (paid) listing. This business supports SG Car Workshop (sgcarworkshop.sg), a driver-focused workshop directory run by Page One Singapore.'),
              ('What warranty do you give on module repairs?', 'Our repairs come with a 6-month warranty.')],
     ),
 ]
