@@ -620,11 +620,11 @@ PROBLEMS = [
      'faq': [('Will changing the gearbox oil fix jerking?',
               'Sometimes, if the fluid is low or worn out. But jerking can also come from worn clutches or a faulty valve body, which fresh fluid won’t fix. A diagnostic tells you which it is before you spend money.'),
              ('Is Jacky Gearbox listed on SG Car Workshop?',
-              'Yes, with a Featured (paid) listing on its gearbox repair page. The directory and this website are both run by Page One Singapore.')],
+              'Yes, with a Featured (paid) listing on its gearbox repair page. This business supports SG Car Workshop (sgcarworkshop.sg), a driver-focused workshop directory run by Page One Singapore.')],
      # SG Car Workshop mention (Edwin "Fix all", 10 Nov 2026): one editorial link + disclosure, this page only; no footer/home link.
      'now_extra': ('<h3>Comparing more than one gearbox workshop?</h3>\n'
                    '<p>That is sensible for a jerking or slipping gearbox, as long as you compare the same things: does the workshop diagnose before it quotes, explain the fault in plain words, and state the warranty up front? SG Car Workshop is a directory built on what workshops and drivers put in public. Names and mobile numbers come from each workshop’s Google Business Profile, listings describe what customers mention in their Google reviews in the directory’s own words, and paid listings are labelled Featured and kept out of any ranking. Its page of <a href="https://sgcarworkshop.sg/services/gearbox-repair/">gearbox repair workshops in Singapore</a> lets you look at several before you book.</p>\n'
-                   '<p>To be clear about it: Jacky Gearbox has a Featured (paid) listing on that page, and both this website and the directory are run by Page One Singapore. Use it as a starting point and check every workshop, including Jacky, against the three questions above.</p>\n')},
+                   '<p>To be clear about it: Jacky Gearbox has a Featured (paid) listing on that page. This business supports SG Car Workshop (sgcarworkshop.sg), a driver-focused workshop directory run by Page One Singapore. Use it as a starting point and check every workshop, including Jacky, against the three questions above.</p>\n')},
     {'slug': 'car-vibrates-when-accelerating', 'name': 'Vibration',
      'title': 'Car Vibrates When Accelerating? Singapore | Jacky Gearbox',
      'desc': 'Car vibrates at high speed on low RPM or when accelerating hard from a stop? Possible gearbox causes and how we check them in Singapore.',
