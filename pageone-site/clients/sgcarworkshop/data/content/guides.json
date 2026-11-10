@@ -1627,5 +1627,146 @@
    "car-tyres",
    "gearbox-repair"
   ]
+ },
+ {
+  "slug": "car-vibration-steering-shake",
+  "kind": "problem",
+  "short": "Car vibration",
+  "cap": 4,
+  "article": true,
+  "published": "2026-11-11",
+  "title": "Car Vibrating or Steering Wheel Shaking? | SG Car Workshop",
+  "h1": "Car vibrating or steering wheel shaking: what it can mean",
+  "desc": "Why a car vibrates or the steering wheel shakes at speed, when braking or when idling, which checks a workshop does first and when to stop driving.",
+  "lede": "A shake you feel through the steering wheel, seat or pedal usually comes from the wheels and tyres, the brakes, worn steering or suspension parts, or the engine and its mounts. When it happens is the most useful clue: only at certain speeds, only when braking, or while standing still. If the shake is sudden and strong, stop somewhere safe and check the tyres before driving on.",
+  "heading": "What the vibration can mean",
+  "tell_h": "What to tell the workshop",
+  "urgent_h": "Stop driving when it is safe if:",
+  "causes": [
+   [
+    "Shake at certain speeds, often on the expressway",
+    "A wheel that is out of balance usually shakes the steering wheel in one speed range, then smooths out above it. A tyre with a bulge, uneven wear or a lost balance weight, or a bent rim after hitting a kerb or pothole, can feel the same.",
+    [
+     [
+      "services/car-tyres/",
+      "Tyre shops"
+     ],
+     [
+      "services/wheel-alignment/",
+      "Wheel alignment"
+     ]
+    ]
+   ],
+   [
+    "Shake or pulsing when you brake",
+    "A steering wheel that shakes, or a brake pedal that pulses, mainly when you brake from speed often points to uneven brake discs. Worn pads or a sticking caliper can add noise or a pull to one side.",
+    [
+     [
+      "guides/brake-squeal-noise/",
+      "Brake noise guide"
+     ],
+     [
+      "services/general-servicing-repair/",
+      "Servicing and repair workshops"
+     ]
+    ]
+   ],
+   [
+    "Car pulls to one side or the steering feels loose",
+    "Wheel alignment that is out, worn steering joints or tired suspension parts can make the car wander, pull or wobble over bumps. Tyres wearing on one edge are a common sign.",
+    [
+     [
+      "services/wheel-alignment/",
+      "Wheel alignment"
+     ],
+     [
+      "guides/car-knocking-over-humps/",
+      "Knocking over humps guide"
+     ]
+    ]
+   ],
+   [
+    "Vibration while idling or at a red light",
+    "If the whole car shakes while standing still, the engine may be running unevenly, for example from a misfire, or a worn engine mount may be letting normal engine movement through. A flashing engine light with shaking needs attention soon.",
+    [
+     [
+      "guides/engine-warning-light/",
+      "Engine warning light guide"
+     ],
+     [
+      "services/general-servicing-repair/",
+      "Servicing and repair workshops"
+     ]
+    ]
+   ],
+   [
+    "Shudder when pulling away or changing gear",
+    "A judder as the car moves off, or a shudder during gear changes, can come from the clutch, the gearbox or a worn drive shaft joint. A clicking sound on full lock in a car park is a common sign of a worn joint.",
+    [
+     [
+      "services/gearbox-repair/",
+      "Gearbox workshops"
+     ],
+     [
+      "guides/gearbox-cvt-jerking/",
+      "Gearbox or CVT jerking guide"
+     ]
+    ]
+   ]
+  ],
+  "tell": [
+   "When it shakes: at a certain speed, when braking, when idling, when pulling away or when turning.",
+   "Where you feel it: steering wheel, seat, brake pedal or the whole car.",
+   "Whether it started after hitting a kerb or pothole, a tyre change or a puncture repair.",
+   "Any warning lights, noises such as clicking or knocking, or the car pulling to one side.",
+   "When the tyres were last balanced, rotated or aligned, if you know."
+  ],
+  "urgent": "the shake starts suddenly and is strong, a tyre looks flat or has a bulge, the steering feels loose, the engine light flashes, or you hear grinding when braking. Pull over somewhere safe, switch on the hazard lights and check the tyres. If you are unsure, do not drive on: call for roadside help.",
+  "faqs": [
+   [
+    "Why does my steering wheel shake only at higher speeds?",
+    "A wheel out of balance is the most common reason. It often shows in one speed range and fades above it. A tyre shop can check the balance and look for tyre damage or a bent rim."
+   ],
+   [
+    "Is wheel balancing the same as wheel alignment?",
+    "No. Balancing evens out the weight around each wheel so it spins smoothly. Alignment sets the angle of the wheels so the car drives straight. A shake usually points to balance; a pull or uneven tyre wear usually points to alignment."
+   ],
+   [
+    "Why does the steering wheel shake when I brake?",
+    "Often the brake discs have worn unevenly. A workshop will check the discs and pads, and the calipers for sticking. Have it looked at soon, as braking is a safety system."
+   ],
+   [
+    "Can I keep driving with a vibration?",
+    "A mild shake that has been the same for a while can usually wait for a booked check, but drive gently. A sudden or strong shake, a damaged tyre or loose steering means stop safely first."
+   ],
+   [
+    "What does a workshop check first?",
+    "Usually the tyres, wheel balance and rims, then the brakes, steering and suspension joints, and engine mounts or misfires if it shakes when idling. Saying when the shake happens saves time."
+   ]
+  ],
+  "kw": [
+   "vibration",
+   "vibrating",
+   "vibrate",
+   "car shaking",
+   "shaking",
+   "shake",
+   "steering wheel shaking",
+   "steering shake",
+   "steering wheel vibration",
+   "wobble",
+   "wobbling",
+   "shudder",
+   "judder",
+   "wheel balancing",
+   "balancing",
+   "alignment",
+   "pulls to one side"
+  ],
+  "cats": [
+   "car-tyres",
+   "general-servicing-repair",
+   "gearbox-repair"
+  ]
  }
 ]

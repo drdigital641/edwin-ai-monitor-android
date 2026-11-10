@@ -270,5 +270,13 @@
   "rx": "pre-?purchase|inspection|diagnos|health check",
   "cat": null,
   "guide": "before-a-workshop-visit"
+ },
+ {
+  "id": "p-vibration",
+  "kind": "problem",
+  "label": "Vibration or steering shake",
+  "rx": "vibrat|shak|wobbl|shudder|judder|wheel balanc|alignment",
+  "cat": null,
+  "guide": "car-vibration-steering-shake"
  }
 ]
