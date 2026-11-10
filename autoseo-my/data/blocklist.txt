@@ -1,0 +1,75 @@
+# Pre-upload blocklist: the build stops if any line below appears (case-insensitive)
+# in any built file. White-label terms first, then Singapore markers, then real
+# client names and domains from the source agency site.
+Page One
+pageone
+Edwin
+Dr Digital
+drdigital
+sgcarworkshop
+SG Car Workshop
+S$
+SGD
++65
+wa.me/65
+Singapore
+Shaw Commercial
+# client names
+SG Garage
+sggarage
+Cleanic
+SofaCare
+Sofa Care
+Alicia Ong
+aliciaongproperty
+Danny Chua
+dannychuafinancial
+ECU Clinic
+theecuclinicsg
+Jacky Gearbox
+jackygearbox
+Star Performance
+starperformancemotor
+AI Vending
+aivs
+Wrapstar
+CSKA
+cskatrading
+Dongfeng
+mykar
+Benjamin Poon
+planwithben
+Commercial Fitout
+commercialfitout
+Battery Rescue
+batteryrescue
+Autotex
+Klar Details
+klardetails
+EV Body Parts
+evbodyparts
+XADO
+ContiExpert
+Volt Autocare
+Zen Werkz
+newzenwerkz
+JB Staycation
+jbstaycations
+Gforce
+GJourney
+Maison Interior
+EXN Lube
+Nam Wah
+Motoserv
+Partware
+Wei Car Spray
+KohDen
+Mega Power
+Ape Champs
+Cleeneo
+EC Coffee
+Ethel Zhang
+Evan Lee
+Nanyang Carpentry
+Star Performance
+DesignRush

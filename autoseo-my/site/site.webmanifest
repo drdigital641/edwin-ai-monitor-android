@@ -1,0 +1,15 @@
+{
+ "name": "AutoSEO.my",
+ "short_name": "AutoSEO.my",
+ "start_url": "/preview/autoseo-my/",
+ "display": "browser",
+ "background_color": "#060b18",
+ "theme_color": "#060b18",
+ "icons": [
+  {
+   "src": "/preview/autoseo-my/favicon.svg",
+   "sizes": "any",
+   "type": "image/svg+xml"
+  }
+ ]
+}
