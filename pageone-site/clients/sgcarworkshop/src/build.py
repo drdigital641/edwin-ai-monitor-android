@@ -619,8 +619,12 @@ def featured_sec(es, depth, page_path, where):
     paid = [e for e in es if is_paid(e)]
     if not paid:
         return ''
-    return ('<section class="alt featblock"><div class="w"><h2>Featured (paid) %s</h2><p class="fine">Paid placements, shown on their own. They are not part of any ranking or order on this page.</p>'
-            '<div class="grid">%s</div></div></section>') % (E(where), ''.join(card(e, depth, page_path) for e in paid))
+    if any(e.get('founder_owned') for e in paid):   # founder's own workshop is shown here but is not a paid placement, so the heading must not say paid
+        h, note = 'Featured %s', "Paid placements, marked Featured (paid), and the site founder's own workshop, marked as owned by the founder. Shown on their own, not part of any ranking or order on this page."
+    else:
+        h, note = 'Featured (paid) %s', 'Paid placements, shown on their own. They are not part of any ranking or order on this page.'
+    return ('<section class="alt featblock"><div class="w"><h2>' + h + '</h2><p class="fine">%s</p>'
+            '<div class="grid">%s</div></div></section>') % (E(where), E(note), ''.join(card(e, depth, page_path) for e in paid))
 
 
 def area_tile(depth, k, sub):
@@ -2559,7 +2563,7 @@ def about_page():
 <h2>Who we list</h2>
 <p>Car workshops and car services only: repair and servicing, gearbox, ABS and ECU modules, spray painting and bodywork, batteries, detailing and coating, wraps and PPF, and parts. Car dealers and insurance are not listed.</p>
 <h2>A note on one listing</h2>
-<p>SG Garage (aircon repair, unit #01-309) and Edwin Garage (car repair and accident work, unit #01-295) are both owned by the founder of {E(SITE_NAME)}. They are in different units in Ang Mo Kio Industrial Park 2. They appear in the normal A to Z lists with an "Owned by the site's founder" label, are never in the Featured (paid) block, and get no boost in ordering.</p>
+<p>SG Garage (aircon repair, unit #01-309) and Edwin Garage (car repair and accident work, unit #01-295) are both owned by the founder of {E(SITE_NAME)}. They are in different units in Ang Mo Kio Industrial Park 2. They carry an "Owned by the site's founder" label. Where they appear in a Featured block, it says so and they are not marked as paid; they are never part of a ranking.</p>
 <h2>Contact</h2>
 <p>Page One Singapore is a project of Snap Commercial Pte. Ltd. (UEN 202209904W). To list a workshop or correct a page, WhatsApp {PAGE_ONE_WA_SHOW}.</p>
 <div style="display:flex;flex-wrap:wrap;gap:10px"><a class="btn wa big" href="{E(list_wa(depth, 'general enquiry'))}" target="_blank" rel="noopener" data-cta="whatsapp_about">{WA_SVG} WhatsApp {PAGE_ONE_WA_SHOW}</a>
