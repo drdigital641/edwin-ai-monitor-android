@@ -1,0 +1,563 @@
+[
+ {
+  "slug": "pre-purchase-inspection",
+  "name": "Pre-purchase inspection",
+  "short": "Pre-purchase inspection",
+  "parent": "general-servicing-repair",
+  "title": "Pre-Purchase Car Inspection in Singapore | SG Car Workshop",
+  "keyword": "pre purchase inspection singapore",
+  "desc": "Singapore workshops that do pre-purchase inspections of used cars, from what drivers mention in reviews and what each workshop lists on its own site.",
+  "h1": "Pre-purchase car inspection in Singapore",
+  "intro": "Buying a used car? A pre-purchase inspection is a workshop check of the car before you pay, so you know what needs fixing. The workshops below do it, going by what drivers mention in their Google reviews and what the workshops list on their own sites. SG Car Workshop is made for drivers, by drivers: AI reads those real jobs and makes them searchable, even when a workshop's Google category only says car repair.",
+  "involves": "A mechanic checks the engine, gearbox, brakes, suspension, aircon and body, reads fault codes with a scan tool, and usually takes the car for a short drive. Some workshops add an underside check on a lift and a written report with photos.",
+  "signs": [
+   "You are buying a used car from a dealer or a private seller.",
+   "The car has a long or unclear service history.",
+   "You want a list of what needs fixing before you agree a price.",
+   "You are taking over a car from family or a friend and want a baseline check."
+  ],
+  "ask": [
+   "What is checked, and whether the car goes on a lift.",
+   "Whether they scan for stored fault codes.",
+   "Whether you get a written report or photos.",
+   "How long it takes, and whether the seller has to bring the car in."
+  ],
+  "faqs": [
+   [
+    "What does a pre-purchase inspection check?",
+    "Usually the engine, gearbox, brakes, suspension, aircon, body and fault codes, plus a short test drive. Ask each workshop for its own list, as it varies."
+   ],
+   [
+    "Can I bring a car that I have not bought yet?",
+    "Usually yes, with the seller's agreement. Arrange the time with both the seller and the workshop."
+   ]
+  ],
+  "groups": [
+   {
+    "h": "Workshops that do pre-purchase inspections",
+    "rx": "pre-?purchase",
+    "slugs": [
+     "accord-autocare",
+     "autobacs-car-care",
+     "bavworks",
+     "btm-performance-sg",
+     "car-motor-club",
+     "conti-meister",
+     "contiexpert-volt-autocare",
+     "euroauto-garage",
+     "eurocar-precision",
+     "eurosports-performance-tuning",
+     "gt-auto-garage",
+     "han-car-repairs",
+     "hon-win-motor",
+     "hybrid-automotive",
+     "jw-motoring",
+     "kaizen-motors",
+     "lim-tan-motor",
+     "major-autolution",
+     "my-car-auto-workshop",
+     "my-car-consultant-carros-centre",
+     "q-motorworkz",
+     "redline-autoworks",
+     "sk-garage-motorsports",
+     "squad-workshop",
+     "uber-garage",
+     "whitesnail-services"
+    ]
+   }
+  ],
+  "anchors": [
+   "pre-purchase inspection",
+   "used car checks before you buy",
+   "pre-purchase car inspection"
+  ],
+  "related": [
+   "New to workshops? Our guide on [how to choose a car workshop](guides/how-to-choose-a-car-workshop/) covers what to check first.",
+   "Buying a used hybrid or EV? Look for a shop on the [hybrid and EV servicing](services/hybrid-ev-servicing/) list, since the battery and inverter need their own checks."
+  ]
+ },
+ {
+  "slug": "wheel-alignment",
+  "name": "Wheel alignment",
+  "short": "Wheel alignment",
+  "parent": "car-tyres",
+  "title": "Wheel Alignment in Singapore | SG Car Workshop",
+  "keyword": "wheel alignment singapore",
+  "desc": "Singapore workshops that do wheel alignment, from what drivers mention in reviews and what each workshop lists on its own website. WhatsApp them directly.",
+  "h1": "Wheel alignment in Singapore",
+  "intro": "If your car pulls to one side or your steering wheel sits off-centre, it may need a wheel alignment. These workshops do alignment, based on what drivers say in their reviews and what the workshops publish on their own sites. We built this directory for drivers, by drivers, using AI to turn those real jobs into pages you can search.",
+  "involves": "The workshop measures the angles of the wheels against the maker's settings on an alignment machine, then adjusts the steering and suspension links so the wheels point the right way. It is often done with new tyres or after suspension work.",
+  "signs": [
+   "The car pulls to one side on a straight road.",
+   "The steering wheel is not straight when driving straight.",
+   "Tyres wear faster on the inner or outer edge.",
+   "You have just fitted new tyres or had suspension parts replaced."
+  ],
+  "ask": [
+   "Whether you get a before-and-after printout of the readings.",
+   "Whether they check for worn suspension parts first.",
+   "Whether alignment is front only or all four wheels for your car.",
+   "How long the job takes."
+  ],
+  "faqs": [
+   [
+    "Is wheel alignment the same as wheel balancing?",
+    "No. Alignment sets the angle of the wheels; balancing evens out the weight of each wheel and tyre to stop vibration. They are often done together with new tyres."
+   ],
+   [
+    "When should I do a wheel alignment?",
+    "When the car pulls, the steering is off-centre, tyres wear unevenly, or after new tyres or suspension work. Your owner's manual may also give an interval."
+   ]
+  ],
+  "groups": [
+   {
+    "h": "Workshops that do wheel alignment",
+    "rx": "alignment",
+    "slugs": [
+     "88-auto-garage-woodlands",
+     "98-auto-werkz",
+     "autobacs-car-care",
+     "braveries-garage",
+     "carswift-repair",
+     "eurocar-precision",
+     "fr-auto",
+     "fu-san-auto-shine",
+     "gt-auto-garage",
+     "jc-wheel-dynamic",
+     "jss-motorworkz",
+     "kaizen-motors",
+     "kim-wah-seng-auto-services",
+     "lim-tan-motor",
+     "major-autolution",
+     "maximus-auto-services",
+     "mcf-auto",
+     "mt-autoservice",
+     "sk-garage-motorsports",
+     "soon-huat-autoserv",
+     "swift-tyre-specialist",
+     "team-autopro",
+     "tee-guan-trading-co",
+     "tg-auto",
+     "tts-performance-auto",
+     "tyreplus-toh-guan"
+    ]
+   }
+  ],
+  "anchors": [
+   "wheel alignment",
+   "wheel alignment workshops",
+   "alignment work"
+  ],
+  "related": [
+   "A knock over road humps usually points to suspension parts rather than alignment. See [car knocking over humps](guides/car-knocking-over-humps/) for what to tell the workshop."
+  ]
+ },
+ {
+  "slug": "obu-installation",
+  "name": "OBU installation",
+  "short": "OBU installation",
+  "parent": "general-servicing-repair",
+  "title": "OBU Installation in Singapore | SG Car Workshop",
+  "keyword": "obu installation singapore",
+  "desc": "Singapore workshops whose customers mention OBU installation for ERP 2.0, or that list it on their own website. Check with the workshop before you go.",
+  "h1": "OBU installation in Singapore",
+  "intro": "Need the ERP 2.0 on-board unit fitted? These workshops have done OBU installation, going by what drivers mention in their Google reviews and what the workshops say on their own sites. SG Car Workshop is made for drivers, by drivers: AI gathers those real jobs so you can search for them.",
+  "involves": "The on-board unit (OBU) is the in-car device for ERP 2.0 in Singapore. For a car it is usually a processing unit, an antenna and an optional touchscreen, mounted and wired into the car. This list is from reviews and workshop websites; it is not a list of LTA-appointed installation centres.",
+  "signs": [
+   "Your car does not have an OBU fitted yet.",
+   "The OBU or its touchscreen was removed during other work and needs refitting.",
+   "The OBU shows a fault after a battery or wiring job."
+  ],
+  "ask": [
+   "Whether they fit the OBU themselves or only help you arrange it.",
+   "Whether there is a charge for your car, and what it covers.",
+   "Where the touchscreen and antenna will be mounted.",
+   "How long the job takes."
+  ],
+  "faqs": [
+   [
+    "Who pays for OBU installation?",
+    "It depends on the car and when it is fitted. Check the current rules on the LTA OneMotoring website, then ask the workshop what it charges, if anything."
+   ],
+   [
+    "Is every workshop on this page an LTA-appointed centre?",
+    "No. These workshops are listed because drivers mention OBU installation or the workshop lists it. Ask the workshop how it handles the job."
+   ]
+  ],
+  "groups": [
+   {
+    "h": "Workshops that have done OBU installation",
+    "rx": "\\bobu\\b",
+    "slugs": [
+     "a-e-auto-craft",
+     "auto-101",
+     "automotive-repair-centre-jurong",
+     "indeco-engineers",
+     "inspire-21",
+     "lay-auto-garage",
+     "lx-motors",
+     "my-car-consultant-carros-centre",
+     "sunrise-auto-services",
+     "yong-sing-motor-works"
+    ]
+   }
+  ],
+  "anchors": [
+   "OBU installation",
+   "ERP 2.0 OBU fitting",
+   "OBU installation workshops"
+  ]
+ },
+ {
+  "slug": "engine-overhaul",
+  "name": "Engine overhaul",
+  "short": "Engine overhaul",
+  "parent": "general-servicing-repair",
+  "title": "Engine Overhaul in Singapore | SG Car Workshop",
+  "keyword": "engine overhaul singapore",
+  "desc": "Singapore workshops that do engine overhauls and rebuilds, from what drivers mention in reviews and what each workshop lists on its own website.",
+  "h1": "Engine overhaul in Singapore",
+  "intro": "An engine overhaul strips the engine down, replaces worn internal parts and rebuilds it. These workshops do engine overhauls or rebuilds, based on what drivers say in reviews and what the workshops publish on their own sites. Made for drivers, by drivers, with AI reading those real jobs so you can find them here.",
+  "involves": "The engine is taken out or opened up, cleaned and measured, and worn parts such as piston rings, bearings, gaskets, seals and valves are replaced before it is rebuilt and tested. It is a big job, so a diagnosis first is normal.",
+  "signs": [
+   "Heavy oil burning or blue smoke from the exhaust.",
+   "Low compression or a knocking sound from inside the engine.",
+   "Coolant and oil mixing, or repeated overheating.",
+   "Power has dropped a lot, even after smaller repairs."
+  ],
+  "ask": [
+   "What the diagnosis found and why an overhaul is needed rather than a smaller repair.",
+   "Which parts will be replaced, and whether they are new.",
+   "How long the car will be in the workshop.",
+   "Whether the work carries a warranty."
+  ],
+  "faqs": [
+   [
+    "Is an overhaul always needed for a smoking or knocking engine?",
+    "Not always. A workshop should diagnose the cause first; some problems are fixed with a smaller repair."
+   ],
+   [
+    "How is this different from gearbox overhaul?",
+    "Gearbox work is on the transmission. See the gearbox repair page for workshops that overhaul gearboxes."
+   ]
+  ],
+  "groups": [
+   {
+    "h": "Workshops that do engine overhauls",
+    "rx": "engine.{0,20}(overhaul|rebuild)|(overhaul|rebuild).{0,25}engine",
+    "slugs": [
+     "1-car-service",
+     "98-auto-werkz",
+     "absolut-budget-workshop",
+     "akhi-motor-garage",
+     "carswift-repair",
+     "conti-meister",
+     "dhm-otomotive-werkz",
+     "fr-auto",
+     "gt-auto-garage",
+     "hon-win-motor",
+     "icar-motorwerkz",
+     "j-s-garage",
+     "tt-motorsport-ubi-car-service",
+     "tt-motorsport-jurong"
+    ]
+   }
+  ],
+  "anchors": [
+   "engine overhaul",
+   "engine rebuilds",
+   "engine overhaul workshops"
+  ],
+  "member_links": [
+   {
+    "cat": "gearbox-repair",
+    "before": "Its card is also listed for",
+    "anchor": "gearbox repair"
+   }
+  ]
+ },
+ {
+  "slug": "hybrid-ev-servicing",
+  "name": "Hybrid and EV servicing",
+  "short": "Hybrid and EV servicing",
+  "parent": "general-servicing-repair",
+  "title": "Hybrid Car Servicing in Singapore | SG Car Workshop",
+  "keyword": "hybrid car servicing singapore",
+  "desc": "Singapore workshops that service hybrid and electric cars, including hybrid battery work, from driver reviews and what each workshop lists on its site.",
+  "h1": "Hybrid and EV servicing in Singapore",
+  "intro": "Hybrid and electric cars need a workshop that knows the high-voltage system. These workshops work on hybrids or EVs, going by what drivers mention in reviews and what the workshops list on their own sites. SG Car Workshop is made for drivers, by drivers: AI gathers those real jobs and makes them searchable.",
+  "involves": "Servicing a hybrid covers the usual oil, filters and brakes, plus checks on the hybrid battery, its cooling fan and the inverter cooling. An EV has no engine oil, but tyres, brakes, suspension, aircon and fluids still need checks. High-voltage parts need trained staff and the right tools.",
+  "signs": [
+   "A hybrid system or battery warning on the dashboard.",
+   "The engine runs more often than usual, or fuel use rises.",
+   "The hybrid battery fan is loud, or the battery seems to lose charge fast.",
+   "Your hybrid or EV is due for its regular service."
+  ],
+  "ask": [
+   "Which hybrid and EV models they work on.",
+   "Whether staff are trained for high-voltage work.",
+   "Whether they can test the hybrid battery's health, and what the report shows.",
+   "For a battery replacement, whether the battery is new or reconditioned, and the warranty."
+  ],
+  "faqs": [
+   [
+    "Can a hybrid be serviced at a normal workshop?",
+    "Routine servicing is similar to a petrol car, but hybrid system work needs the right training and tools. Ask the workshop before you book."
+   ],
+   [
+    "Does an EV need servicing?",
+    "There is no engine oil to change, but tyres, brakes, suspension, the cabin filter and fluids still need checks."
+   ]
+  ],
+  "groups": [
+   {
+    "h": "Workshops that work on hybrids and EVs",
+    "rx": "hybrid|\\bevs?\\b|full-electric",
+    "slugs": [
+     "1-car-service",
+     "accord-autocare",
+     "ak-workshop",
+     "btm-performance-sg",
+     "car-motor-club",
+     "contiexpert-volt-autocare",
+     "edwin-garage",
+     "hon-win-motor",
+     "hybrid-automotive",
+     "jc-wheel-dynamic",
+     "jw-motoring",
+     "lim-tan-motor",
+     "my-car-consultant-carros-centre",
+     "team-autopro",
+     "the-ecu-clinic",
+     "tts-eurocars-service-centre",
+     "tts-performance-auto"
+    ]
+   },
+   {
+    "h": "Hybrid battery work",
+    "note": "These listings name hybrid battery work, such as health checks, repair or replacement.",
+    "rx": "battery",
+    "slugs": [
+     "1-car-service",
+     "btm-performance-sg",
+     "contiexpert-volt-autocare",
+     "hybrid-automotive",
+     "the-ecu-clinic"
+    ]
+   }
+  ],
+  "anchors": [
+   "hybrid and EV servicing",
+   "hybrid car servicing",
+   "hybrid and electric car work"
+  ],
+  "related": [
+   "Hybrids and EVs still use a normal 12V battery for start-up, and the [car battery](services/car-battery/) list covers shops that change it.",
+   "For brand notes, see the [Tesla](brands/tesla/) and [BYD](brands/byd/) guides."
+  ]
+ },
+ {
+  "slug": "engine-carbon-cleaning",
+  "name": "Engine carbon cleaning",
+  "short": "Engine carbon cleaning",
+  "parent": "general-servicing-repair",
+  "title": "Walnut Blasting and Carbon Cleaning | SG Car Workshop",
+  "keyword": "walnut blasting singapore",
+  "desc": "Singapore workshops that do walnut blasting and engine carbon cleaning, from what drivers mention in reviews and what workshops list on their own sites.",
+  "h1": "Walnut blasting and engine carbon cleaning in Singapore",
+  "intro": "Carbon can build up on the intake valves of many direct-injection engines, and walnut blasting is one way to clean it off. These workshops do carbon, throttle body or intake cleaning, based on what drivers mention in their reviews and what the workshops publish on their own sites. We made this for drivers, by drivers, with AI turning those real jobs into searchable pages.",
+  "involves": "In walnut blasting, the intake is opened and crushed walnut shell is blown at the valves to remove carbon without scratching the metal. Other methods clean the intake, throttle body or EGR valve with tools or cleaning agents. Which method suits depends on the engine.",
+  "signs": [
+   "Rough idle or shaking at a standstill.",
+   "Hesitation or loss of power when you accelerate.",
+   "A misfire or engine warning light on a direct-injection engine.",
+   "Higher fuel use than before."
+  ],
+  "ask": [
+   "Whether your engine is direct-injection and likely to build up carbon.",
+   "Which method they use: walnut blasting or another cleaning method.",
+   "Whether they show you before-and-after photos of the valves.",
+   "How long the car will be in the workshop."
+  ],
+  "faqs": [
+   [
+    "What is walnut blasting?",
+    "A way to clean carbon off the intake valves by blowing crushed walnut shell at them. The shell is hard enough to remove carbon but softer than the valve metal."
+   ],
+   [
+    "Does every car need carbon cleaning?",
+    "No. It mostly matters on direct-injection petrol engines with symptoms such as rough idle. Ask a workshop to check first."
+   ]
+  ],
+  "groups": [
+   {
+    "h": "Workshops that name walnut blasting",
+    "rx": "walnut",
+    "slugs": [
+     "1-car-service",
+     "jss-motorworkz",
+     "kh-kinetics-autocare-night-friendly",
+     "palm-motorsports"
+    ]
+   },
+   {
+    "h": "Other carbon cleaning",
+    "note": "These listings mention carbon cleaning but not walnut blasting by name.",
+    "rx": "carbon",
+    "slugs": [
+     "grand-auto-garage",
+     "mirai-auto-performance"
+    ]
+   },
+   {
+    "h": "Throttle body, intake and EGR cleaning",
+    "note": "These listings name throttle body cleaning or intake and EGR cleaning. They do not name walnut blasting, so ask which method the shop uses.",
+    "rx": "throttle body|intake and egr",
+    "slugs": [
+     "bosz-autohaus",
+     "everest-garage",
+     "xq-autoworks",
+     "zenetics-auto"
+    ]
+   }
+  ],
+  "anchors": [
+   "engine carbon cleaning",
+   "intake carbon cleaning",
+   "carbon and intake cleaning"
+  ],
+  "related": [
+   "An engine warning light can come on when carbon build-up upsets the air or fuel mix. See [what an engine warning light means](guides/engine-warning-light/) before you book.",
+   "Carbon cleaning is often done alongside a service, so the [general servicing and repair](services/general-servicing-repair/) list is worth a look too."
+  ]
+ },
+ {
+  "slug": "car-aircon-flushing",
+  "name": "Car aircon flushing",
+  "short": "Aircon flushing",
+  "parent": "car-aircon-repair",
+  "title": "Car Aircon Flushing in Singapore | SG Car Workshop",
+  "keyword": "car aircon flushing singapore",
+  "desc": "Singapore workshops that name car aircon flushing or related system work, from driver reviews and workshop listings. Part of our car aircon repair section.",
+  "h1": "Car aircon flushing in Singapore",
+  "intro": "An aircon flush cleans old oil and debris out of the car's aircon pipes and parts, often after a compressor failure. These workshops name aircon flushing or related aircon system work, going by what drivers mention in reviews and what the workshops list on their own sites. Made for drivers, by drivers: AI reads those real jobs and makes them searchable. For all aircon work, see car aircon repair.",
+  "involves": "The system is emptied of refrigerant, then a flushing agent is pushed through the pipes, condenser and cooling coil to carry out old oil and debris. Parts that cannot be flushed are usually replaced, then the system is refilled with the right oil and gas.",
+  "signs": [
+   "The aircon compressor has failed and is being replaced.",
+   "Metal debris or black oil was found in the system.",
+   "The aircon stays weak even after a gas top-up.",
+   "A workshop has advised a flush with a major aircon repair."
+  ],
+  "ask": [
+   "Why a flush is needed for your car.",
+   "Which parts are flushed and which are replaced.",
+   "Which refrigerant and oil your car uses.",
+   "Whether the work carries a warranty."
+  ],
+  "faqs": [
+   [
+    "Is a flush the same as a gas top-up?",
+    "No. A top-up adds refrigerant. A flush cleans the inside of the system, usually as part of a bigger repair."
+   ],
+   [
+    "Does every aircon repair need a flush?",
+    "No. It is mostly advised after a compressor failure or when the system is contaminated. Ask the workshop to explain."
+   ]
+  ],
+  "groups": [
+   {
+    "h": "Workshops whose listings name aircon flushing",
+    "rx": "aircon (system )?flush",
+    "slugs": [
+     "88-auto-garage",
+     "jw-motoring",
+     "palm-motorsports"
+    ]
+   },
+   {
+    "h": "Aircon system work, flushing not named",
+    "note": "These listings name cooling coil work but not flushing. Ask whether they flush the system when they change parts.",
+    "rx": "cooling coil",
+    "slugs": [
+     "contiexpert-volt-autocare",
+     "edwin-garage",
+     "hock-eng-automobile-workshop",
+     "major-autolution",
+     "motoserv-car-service-centre-serangoon-garden"
+    ]
+   },
+   {
+    "h": "Aircon chemical wash",
+    "note": "This listing names an aircon chemical wash. Ask what the wash covers and whether it includes a system flush.",
+    "rx": "chemical wash",
+    "slugs": [
+     "tyreplus-toh-guan"
+    ]
+   }
+  ],
+  "anchors": [
+   "aircon system work",
+   "aircon flushing and coil work",
+   "aircon system jobs"
+  ],
+  "related": [
+   "If the air is warm rather than smelly, start with [car aircon not cold](guides/car-aircon-not-cold/), which covers the usual causes."
+  ]
+ },
+ {
+  "slug": "ecu-tuning",
+  "name": "ECU tuning",
+  "short": "ECU tuning",
+  "parent": "abs-ecu-module-repair",
+  "title": "ECU Remap and Tuning in Singapore | SG Car Workshop",
+  "keyword": "ecu remap singapore",
+  "desc": "Singapore workshops that do ECU remapping, tuning and coding, from driver reviews and what each workshop lists. Not ECU repair: see ABS and ECU repair.",
+  "h1": "ECU remap and tuning in Singapore",
+  "intro": "ECU tuning changes the engine computer's software to alter how the engine performs; it is not the same as repairing a faulty ECU. These workshops do ECU tuning, remapping or coding, based on what drivers mention in reviews and what the workshops publish on their own sites. SG Car Workshop is made for drivers, by drivers, with AI making those real jobs searchable.",
+  "involves": "The workshop reads the engine computer's software, changes settings such as fuel and boost maps, and writes it back, often checking the result on a dyno or a road test. Coding switches car features on or off. Tuning can affect warranty, insurance and the car's legal status, so check before you go ahead.",
+  "signs": [
+   "You want more power or a different throttle response.",
+   "You have fitted performance parts that need matching software.",
+   "You want features coded on or off on a European car."
+  ],
+  "ask": [
+   "What changes they make and whether the original software is saved.",
+   "Whether the car is checked on a dyno or by data logging.",
+   "How it affects your warranty and insurance.",
+   "Whether the change meets LTA rules for your car."
+  ],
+  "faqs": [
+   [
+    "Is ECU tuning the same as ECU repair?",
+    "No. Tuning changes the software. A faulty ECU is repaired or replaced; see the ABS and ECU module repair page for that."
+   ],
+   [
+    "Can a tune be reversed?",
+    "Often, if the workshop saves the original software. Ask before the work starts."
+   ]
+  ],
+  "groups": [
+   {
+    "h": "Workshops that do ECU tuning, remapping or coding",
+    "rx": "remap|ecu|tcu|tcm|tuning|coding",
+    "slugs": [
+     "ak-workshop",
+     "codewerx",
+     "euroauto-garage",
+     "eurosports-performance-tuning",
+     "fix15-engineering",
+     "redline-autoworks",
+     "sk-garage-motorsports",
+     "squad-workshop",
+     "tg-auto",
+     "uber-garage"
+    ]
+   }
+  ],
+  "anchors": [
+   "ECU tuning",
+   "ECU remapping",
+   "ECU tuning and coding"
+  ]
+ }
+]

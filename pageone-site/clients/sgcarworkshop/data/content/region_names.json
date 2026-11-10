@@ -1,0 +1,8 @@
+{
+ "north": "North",
+ "north-east": "North-East",
+ "east": "East",
+ "west": "West",
+ "central": "Central",
+ "mobile": "Mobile (island-wide)"
+}

@@ -1,0 +1,36 @@
+{
+ "lede": "Kraftwerk Autohaus at Jalan Lam Huat and Carros Centre is a car servicing and repair workshop.",
+ "chips": [
+  "Servicing",
+  "Brakes"
+ ],
+ "services": [
+  "Car servicing",
+  "Brake replacement",
+  "Car repair"
+ ],
+ "themes": "Customers on Google Maps mention regular servicing, brake replacement, clear explanations with no pressure, transparent quotations with no unexpected charges and work done on time.",
+ "faqs": [
+  [
+   "What does Kraftwerk Autohaus do?",
+   "Google Maps lists it as a car repair workshop."
+  ],
+  [
+   "What are the opening hours?",
+   "The hours are listed in the Google Maps section above. Please see Google Maps for current hours."
+  ]
+ ],
+ "sources": "its Google Maps listing",
+ "stories": [],
+ "mentioned_services": [
+  "Car servicing",
+  "Brake replacement",
+  "Car repair"
+ ],
+ "services_note": "Services customers mention on Google Maps. Ask the workshop for its full list.",
+ "makes": [],
+ "makes_note": "Not listed on its public pages. Ask the workshop about your car.",
+ "specialties": [],
+ "good_to_know": [],
+ "card_rules": "2026-11-05"
+}

@@ -1,0 +1,30 @@
+{
+ "businessStatus": "OPERATIONAL",
+ "primaryType": "car_repair",
+ "types": [
+  "car_repair",
+  "point_of_interest",
+  "service",
+  "establishment"
+ ],
+ "rating": 4.8,
+ "userRatingCount": 36,
+ "websiteUri": "https://www.absolutbudgetworkshop.com/",
+ "paymentOptions": null,
+ "parkingOptions": null,
+ "editorialSummary": null,
+ "weekdayDescriptions": [
+  "Monday: 10:00 AM – 6:30 PM",
+  "Tuesday: 10:00 AM – 6:30 PM",
+  "Wednesday: 10:00 AM – 6:30 PM",
+  "Thursday: 10:00 AM – 6:30 PM",
+  "Friday: 10:00 AM – 6:30 PM",
+  "Saturday: 10:00 AM – 6:30 PM",
+  "Sunday: Closed"
+ ],
+ "review_count_seen": 5,
+ "review_themes": "Customers on Google Maps mention reasonable prices for routine servicing, a computer scan to find what needs doing, only the changes that are needed, a wheel bearing replacement and staff who are easy to talk to.",
+ "fetched_at": "2026-11-05",
+ "place_id": "ChIJVUvHxYUR2jERKrvGNLcYMpM",
+ "source": "google_places"
+}

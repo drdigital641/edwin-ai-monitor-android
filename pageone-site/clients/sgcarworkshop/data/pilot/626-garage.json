@@ -1,0 +1,36 @@
+{
+ "lede": "626 Garage at Jalan Lam Huat and Carros Centre is a car servicing and repair workshop.",
+ "chips": [
+  "VAG cars",
+  "Brakes"
+ ],
+ "services": [
+  "VAG car servicing",
+  "Brake fluid flush",
+  "Brake repairs"
+ ],
+ "themes": "Customers on Google Maps mention mechanics who know VAG cars well, honest feedback on what needs doing, and brake rotors found fitted on the wrong sides and swapped during a brake fluid flush.",
+ "faqs": [
+  [
+   "What does 626 Garage do?",
+   "Google Maps lists it as a car repair workshop."
+  ],
+  [
+   "What are the opening hours?",
+   "The hours are listed in the Google Maps section above. Please see Google Maps for current hours."
+  ]
+ ],
+ "sources": "its Google Maps listing",
+ "stories": [],
+ "mentioned_services": [
+  "VAG car servicing",
+  "Brake fluid flush",
+  "Brake repairs"
+ ],
+ "services_note": "Services customers mention on Google Maps. Ask the workshop for its full list.",
+ "makes": [],
+ "makes_note": "Not listed on its public pages. Ask the workshop about your car.",
+ "specialties": [],
+ "good_to_know": [],
+ "card_rules": "2026-11-05"
+}

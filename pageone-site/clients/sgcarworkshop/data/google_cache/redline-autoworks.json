@@ -1,0 +1,37 @@
+{
+ "businessStatus": "OPERATIONAL",
+ "primaryType": "car_repair",
+ "types": [
+  "car_repair",
+  "point_of_interest",
+  "service",
+  "establishment"
+ ],
+ "rating": 4.8,
+ "userRatingCount": 18,
+ "websiteUri": "https://redlineautoworks.com.sg/",
+ "paymentOptions": {
+  "acceptsCreditCards": true,
+  "acceptsDebitCards": true,
+  "acceptsNfc": true
+ },
+ "parkingOptions": {
+  "freeParkingLot": true,
+  "freeGarageParking": true
+ },
+ "editorialSummary": null,
+ "weekdayDescriptions": [
+  "Monday: 9:30 AM – 6:30 PM",
+  "Tuesday: 9:30 AM – 6:30 PM",
+  "Wednesday: 9:30 AM – 6:30 PM",
+  "Thursday: 9:30 AM – 6:30 PM",
+  "Friday: 9:30 AM – 6:30 PM",
+  "Saturday: 9:30 AM – 4:30 PM",
+  "Sunday: Closed"
+ ],
+ "review_count_seen": 5,
+ "review_themes": "Customers on Google Maps mention clear advice, accident claim help from start to finish, a clean and spacious workshop, transparent timelines and costs, and availability after hours.",
+ "fetched_at": "2026-11-06",
+ "place_id": "ChIJ7aN3Le8X2jERTUm8dVBJOfw",
+ "source": "google_places"
+}

@@ -1,0 +1,43 @@
+{
+ "lede": "Team AutoPro is a car workshop in Sin Ming Industrial Estate. Its own website lists accident repair, insurance claims, vehicle inspection and EV servicing and repair.",
+ "chips": [
+  "Accident repair",
+  "Insurance claims",
+  "Vehicle inspection"
+ ],
+ "services": [
+  "Accident repair",
+  "Insurance claims",
+  "Vehicle inspection",
+  "EV servicing and repair",
+  "Spray painting",
+  "Aircon repair",
+  "Wheel alignment",
+  "Brake repair",
+  "Batteries",
+  "Diagnostic checks",
+  "Tyre repair",
+  "Fleet management"
+ ],
+ "themes": "Customers on Google Maps mention honest servicing advice with no pressure to spend, patient explanations, and help with towing and insurance claims after accidents.",
+ "sources": "its own website (teamauto.sg)",
+ "stories": [],
+ "mentioned_services": [
+  "Car servicing",
+  "Accident repair and insurance claims",
+  "Towing after accidents",
+  "Rattle noise repair"
+ ],
+ "services_note": "Services as listed on the workshop's own website, teamauto.sg.",
+ "specialties": [
+  "Private and commercial garages",
+  "EV servicing"
+ ],
+ "card_rules": "2026-11-06",
+ "makes": [],
+ "makes_note": "Not listed on its public pages. Ask the workshop about your car.",
+ "good_to_know": [
+  "Its website mentions a warranty on its work",
+  "Online booking or enquiry form on its website"
+ ]
+}

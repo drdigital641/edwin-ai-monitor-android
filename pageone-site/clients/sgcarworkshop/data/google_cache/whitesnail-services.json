@@ -1,0 +1,34 @@
+{
+ "businessStatus": "OPERATIONAL",
+ "primaryType": "car_repair",
+ "types": [
+  "car_repair",
+  "point_of_interest",
+  "service",
+  "establishment"
+ ],
+ "rating": 4.8,
+ "userRatingCount": 33,
+ "websiteUri": "https://www.sgcarmart.com/directory/merchant.php?MID=13157",
+ "paymentOptions": {
+  "acceptsCreditCards": true,
+  "acceptsDebitCards": true,
+  "acceptsCashOnly": false
+ },
+ "parkingOptions": null,
+ "editorialSummary": null,
+ "weekdayDescriptions": [
+  "Monday: 10:30 AM – 6:00 PM",
+  "Tuesday: 10:30 AM – 6:00 PM",
+  "Wednesday: 10:30 AM – 6:00 PM",
+  "Thursday: 10:30 AM – 6:00 PM",
+  "Friday: 10:30 AM – 6:00 PM",
+  "Saturday: 10:30 AM – 2:00 PM",
+  "Sunday: Closed"
+ ],
+ "review_count_seen": 5,
+ "review_themes": "Customers on Google Maps mention a meticulous one-man workshop, clear explanations for every replacement, photo updates by text, old parts kept for the owner to see, and pre-purchase checks.",
+ "fetched_at": "2026-11-06",
+ "place_id": "ChIJxRWjrBoQBBARvo56-BQ_4ZI",
+ "source": "google_places"
+}

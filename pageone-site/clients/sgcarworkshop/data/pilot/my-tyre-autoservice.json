@@ -1,0 +1,30 @@
+{
+ "lede": "My Tyre Autoservice is a car workshop in Yishun Industrial Street 1. Its own website lists servicing and repair, tyres, battery testing and replacement and car detailing.",
+ "chips": [
+  "Servicing and repair",
+  "Tyres",
+  "Battery testing and replacement"
+ ],
+ "services": [
+  "Servicing and repair",
+  "Tyres",
+  "Battery testing and replacement",
+  "Car detailing",
+  "Grooming and polishing"
+ ],
+ "themes": "Customers on Google Maps mention quick tyre patching, oil changes and routine servicing, clear explanations and no unneeded work.",
+ "sources": "its own website (mytyreautoservice.sg)",
+ "stories": [],
+ "mentioned_services": [
+  "Tyre puncture repair",
+  "Engine oil change",
+  "Regular servicing"
+ ],
+ "services_note": "Services as listed on the workshop's own website, mytyreautoservice.sg.",
+ "specialties": [
+  "Tyres and batteries"
+ ],
+ "card_rules": "2026-11-06",
+ "makes": [],
+ "makes_note": "Not listed on its public pages. Ask the workshop about your car."
+}

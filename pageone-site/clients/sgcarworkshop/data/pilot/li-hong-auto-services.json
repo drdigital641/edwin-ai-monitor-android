@@ -1,0 +1,26 @@
+{
+ "lede": "Li Hong Auto Services is a car repair workshop at 1 Bukit Batok Cres, #03-58 WCEGA Plaza. Its Google Maps listing shows opening hours and customer ratings.",
+ "chips": [
+  "Car repair"
+ ],
+ "services": [
+  "General servicing and repair"
+ ],
+ "themes": "Customers on Google Maps mention long-time servicing, tyre work and small fixes such as a loose engine cover.",
+ "faqs": [
+  [
+   "What does Li Hong Auto Services do?",
+   "Google Maps lists it as a car repair workshop."
+  ],
+  [
+   "What are the opening hours?",
+   "The hours are listed in the Google Maps section above. Please see Google Maps for current hours."
+  ]
+ ],
+ "sources": "its Google Maps listing",
+ "stories": [],
+ "mentioned_services": [
+  "Car servicing",
+  "Tyres"
+ ]
+}

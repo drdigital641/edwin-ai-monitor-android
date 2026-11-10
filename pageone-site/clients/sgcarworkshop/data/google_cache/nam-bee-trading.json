@@ -1,0 +1,30 @@
+{
+ "businessStatus": "OPERATIONAL",
+ "primaryType": "car_repair",
+ "types": [
+  "car_repair",
+  "point_of_interest",
+  "service",
+  "establishment"
+ ],
+ "rating": 5,
+ "userRatingCount": 20,
+ "websiteUri": null,
+ "paymentOptions": null,
+ "parkingOptions": null,
+ "editorialSummary": null,
+ "weekdayDescriptions": [
+  "Monday: 8:00 AM – 6:15 PM",
+  "Tuesday: 8:15 AM – 6:15 PM",
+  "Wednesday: 8:15 AM – 6:15 PM",
+  "Thursday: 8:15 AM – 6:15 PM",
+  "Friday: 8:15 AM – 6:15 PM",
+  "Saturday: 8:15 AM – 6:15 PM",
+  "Sunday: Closed"
+ ],
+ "review_count_seen": 5,
+ "review_themes": "Customers on Google Maps mention a long-running tyre shop, now on level 5 of Carros Centre, with competitive tyre prices and help with flat tyres.",
+ "fetched_at": "2026-11-03",
+ "place_id": "ChIJW-pZm4wR2jERxv3yfJOH5X4",
+ "source": "google_places"
+}

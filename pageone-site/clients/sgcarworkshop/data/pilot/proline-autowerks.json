@@ -1,0 +1,31 @@
+{
+ "lede": "Proline Autowerks is a car repair workshop at 1 Corporation Dr, #03-19. Its Google Maps listing shows opening hours, payment options and customer ratings.",
+ "chips": [
+  "Car repair"
+ ],
+ "services": [
+  "General servicing and repair"
+ ],
+ "faqs": [
+  [
+   "What does Proline Autowerks do?",
+   "Google Maps lists it as a car repair workshop."
+  ],
+  [
+   "What are the opening hours?",
+   "The hours are listed in the Google Maps section above. Please see Google Maps for current hours."
+  ]
+ ],
+ "sources": "its Google Maps listing",
+ "stories": [],
+ "mentioned_services": [
+  "Aircon repair",
+  "Audi A4 servicing",
+  "Oil leak repair",
+  "Driveshaft joint repair",
+  "Transmission fluid change",
+  "Rear brake work",
+  "Walk-in repairs without appointment"
+ ],
+ "themes": "Customers on Google Maps mention aircon repair, oil leak and driveshaft joint work, transmission fluid change and walk-in repairs."
+}

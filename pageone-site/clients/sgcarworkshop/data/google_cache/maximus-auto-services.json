@@ -1,0 +1,39 @@
+{
+ "businessStatus": "OPERATIONAL",
+ "primaryType": "car_repair",
+ "types": [
+  "car_repair",
+  "auto_parts_store",
+  "point_of_interest",
+  "store",
+  "service",
+  "establishment"
+ ],
+ "rating": 4.7,
+ "userRatingCount": 65,
+ "websiteUri": "https://maximusautoservices.com/",
+ "paymentOptions": {
+  "acceptsCreditCards": true,
+  "acceptsDebitCards": true,
+  "acceptsNfc": true
+ },
+ "parkingOptions": {
+  "freeStreetParking": false,
+  "freeGarageParking": true
+ },
+ "editorialSummary": null,
+ "weekdayDescriptions": [
+  "Monday: 10:00 AM – 7:00 PM",
+  "Tuesday: 10:00 AM – 7:00 PM",
+  "Wednesday: 10:00 AM – 7:00 PM",
+  "Thursday: 10:00 AM – 7:00 PM",
+  "Friday: 10:00 AM – 7:00 PM",
+  "Saturday: 10:00 AM – 5:00 PM",
+  "Sunday: Closed"
+ ],
+ "review_count_seen": 5,
+ "review_themes": "Customers on Google Maps praise extra checks on wear items during routine servicing, timely updates with photos, fixing a check-engine light, and quick aircon evaporator work.",
+ "fetched_at": "2026-11-08",
+ "place_id": "ChIJ55DMm3IQ2jER1CDQ0HOzX6I",
+ "source": "google_places"
+}

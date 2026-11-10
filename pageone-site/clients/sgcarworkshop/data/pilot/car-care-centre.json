@@ -1,0 +1,28 @@
+{
+ "lede": "Car Care Centre is a car repair workshop at 07 Soon Lee St, #01-31. Its Google Maps listing shows opening hours and customer ratings.",
+ "chips": [
+  "Car repair"
+ ],
+ "services": [
+  "General servicing and repair"
+ ],
+ "themes": "Customers on Google Maps mention engine oil servicing done in under an hour, tyre patching and rotation, new tyres and a wheel bearing change.",
+ "faqs": [
+  [
+   "What does Car Care Centre do?",
+   "Google Maps lists it as a car repair workshop."
+  ],
+  [
+   "What are the opening hours?",
+   "The hours are listed in the Google Maps section above. Please see Google Maps for current hours."
+  ]
+ ],
+ "sources": "its Google Maps listing",
+ "stories": [],
+ "mentioned_services": [
+  "Engine oil change",
+  "Tyre puncture repair",
+  "Tyre replacement",
+  "Wheel bearing replacement"
+ ]
+}

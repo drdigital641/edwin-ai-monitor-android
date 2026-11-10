@@ -1,0 +1,39 @@
+{
+ "lede": "GT Auto SG at Jalan Lam Huat and Carros Centre is a car servicing and performance workshop.",
+ "chips": [
+  "Repairs",
+  "Performance upgrades"
+ ],
+ "services": [
+  "Repairs",
+  "Performance upgrades",
+  "Servicing"
+ ],
+ "themes": "Customers on Google Maps mention practical repair advice on used cars, performance upgrades and builds, and patient, detailed explanations of wear-and-tear items.",
+ "faqs": [
+  [
+   "What does GT Auto SG do?",
+   "Google Maps lists it as a car repair workshop."
+  ],
+  [
+   "What are the opening hours?",
+   "The hours are listed in the Google Maps section above. Please see Google Maps for current hours."
+  ]
+ ],
+ "sources": "its Google Maps listing",
+ "stories": [],
+ "mentioned_services": [
+  "Repairs",
+  "Performance upgrades",
+  "Servicing"
+ ],
+ "services_note": "Services customers mention on Google Maps. Ask the workshop for its full list.",
+ "makes": [
+  "Nissan",
+  "BMW"
+ ],
+ "makes_note": "Named by customers on Google Maps. Ask the workshop about other makes.",
+ "specialties": [],
+ "good_to_know": [],
+ "card_rules": "2026-11-05"
+}

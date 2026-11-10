@@ -1,0 +1,35 @@
+{
+ "businessStatus": "OPERATIONAL",
+ "primaryType": "car_repair",
+ "types": [
+  "car_repair",
+  "point_of_interest",
+  "service",
+  "establishment"
+ ],
+ "rating": 4.9,
+ "userRatingCount": 391,
+ "websiteUri": "https://www.sinhenglong.com/",
+ "paymentOptions": {
+  "acceptsCreditCards": true,
+  "acceptsDebitCards": true,
+  "acceptsCashOnly": false,
+  "acceptsNfc": true
+ },
+ "parkingOptions": null,
+ "editorialSummary": null,
+ "weekdayDescriptions": [
+  "Monday: 9:00 AM – 7:00 PM",
+  "Tuesday: 9:00 AM – 7:00 PM",
+  "Wednesday: 9:00 AM – 7:00 PM",
+  "Thursday: 9:00 AM – 7:00 PM",
+  "Friday: 9:00 AM – 7:00 PM",
+  "Saturday: 9:00 AM – 6:00 PM",
+  "Sunday: Closed"
+ ],
+ "review_count_seen": 5,
+ "review_themes": "Customers on Google Maps mention body repair and spray painting, accident resprays, wrap removal with a full respray, and clear explanations of the work and downtime.",
+ "fetched_at": "2026-11-03",
+ "place_id": "ChIJ4WDTjfkW2jER2zGcJTlAdGY",
+ "source": "google_places"
+}

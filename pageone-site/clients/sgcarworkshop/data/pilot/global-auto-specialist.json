@@ -1,0 +1,36 @@
+{
+ "lede": "Global Auto Specialist at Toh Guan Enterprise Hub is a car servicing and repair workshop.",
+ "chips": [
+  "Servicing",
+  "Repairs"
+ ],
+ "services": [
+  "Servicing",
+  "Repairs"
+ ],
+ "themes": "Customers on Google Maps mention a helpful, knowledgeable boss, years of dependable servicing, clear explanations and friendly, quick staff for most makes and models.",
+ "faqs": [
+  [
+   "What does Global Auto Specialist do?",
+   "Google Maps lists it as a car repair workshop."
+  ],
+  [
+   "What are the opening hours?",
+   "The hours are listed in the Google Maps section above. Please see Google Maps for current hours."
+  ]
+ ],
+ "sources": "its Google Maps listing",
+ "stories": [],
+ "mentioned_services": [
+  "Servicing",
+  "Repairs"
+ ],
+ "services_note": "Services customers mention on Google Maps. Ask the workshop for its full list.",
+ "makes": [
+  "Rolls-Royce"
+ ],
+ "makes_note": "Named by customers on Google Maps. Ask the workshop about other makes.",
+ "specialties": [],
+ "good_to_know": [],
+ "card_rules": "2026-11-05"
+}

@@ -1,0 +1,32 @@
+{
+ "businessStatus": "OPERATIONAL",
+ "primaryType": "car_repair",
+ "types": [
+  "car_repair",
+  "point_of_interest",
+  "service",
+  "establishment"
+ ],
+ "rating": 4.8,
+ "userRatingCount": 180,
+ "websiteUri": "https://spectrumwerks.sg/",
+ "paymentOptions": {
+  "acceptsCreditCards": true
+ },
+ "parkingOptions": null,
+ "editorialSummary": null,
+ "weekdayDescriptions": [
+  "Monday: 10:00 AM – 8:00 PM",
+  "Tuesday: 10:00 AM – 8:00 PM",
+  "Wednesday: 10:00 AM – 8:00 PM",
+  "Thursday: 10:00 AM – 8:00 PM",
+  "Friday: 10:00 AM – 8:00 PM",
+  "Saturday: 10:00 AM – 7:00 PM",
+  "Sunday: Closed"
+ ],
+ "review_count_seen": 5,
+ "review_themes": "Customers on Google Maps mention coating packages, accident repaint of panels within a day, and long-term customers who keep coming back for fair prices.",
+ "fetched_at": "2026-11-03",
+ "place_id": "ChIJI3C76DIX2jERTa4TSHw1B58",
+ "source": "google_places"
+}

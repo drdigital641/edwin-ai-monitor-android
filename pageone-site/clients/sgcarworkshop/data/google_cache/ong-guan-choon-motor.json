@@ -1,0 +1,37 @@
+{
+ "businessStatus": "OPERATIONAL",
+ "primaryType": "car_repair",
+ "types": [
+  "car_repair",
+  "point_of_interest",
+  "service",
+  "establishment"
+ ],
+ "rating": 4.9,
+ "userRatingCount": 13,
+ "websiteUri": null,
+ "paymentOptions": {
+  "acceptsDebitCards": true,
+  "acceptsNfc": true
+ },
+ "parkingOptions": {
+  "freeParkingLot": true,
+  "freeStreetParking": true,
+  "freeGarageParking": true
+ },
+ "editorialSummary": null,
+ "weekdayDescriptions": [
+  "Monday: 9:00 AM – 6:00 PM",
+  "Tuesday: 9:00 AM – 6:00 PM",
+  "Wednesday: 9:00 AM – 6:00 PM",
+  "Thursday: 9:00 AM – 6:00 PM",
+  "Friday: 9:00 AM – 6:00 PM",
+  "Saturday: 9:00 AM – 6:00 PM",
+  "Sunday: Closed"
+ ],
+ "review_count_seen": 5,
+ "review_themes": "Customers on Google Maps mention many years of loyal visits, thorough servicing including an engine wash, and advice to change only the parts that need it. They describe the workshop itself as simple and old-school.",
+ "fetched_at": "2026-11-03",
+ "place_id": "ChIJ8cw9RiEX2jERiHL6qHfZb8g",
+ "source": "google_places"
+}

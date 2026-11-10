@@ -1,0 +1,27 @@
+{
+ "lede": "Regnant Automotive is a car repair workshop at 53 Ubi Ave 1, #01-09. Its Google Maps listing shows opening hours, its website and customer ratings.",
+ "chips": [
+  "Car repair"
+ ],
+ "services": [
+  "General servicing and repair"
+ ],
+ "themes": "Customers on Google Maps mention help with accident repairs and insurance claims, regular updates during the repair, and good panel beating and spray painting. Some also brought in lorries.",
+ "faqs": [
+  [
+   "What does Regnant Automotive do?",
+   "Google Maps lists it as a car repair workshop."
+  ],
+  [
+   "What are the opening hours?",
+   "The hours are listed in the Google Maps section above. Please see Google Maps for current hours."
+  ]
+ ],
+ "sources": "its Google Maps listing",
+ "stories": [],
+ "mentioned_services": [
+  "Accident repair and insurance claims",
+  "Panel beating and spray painting",
+  "Lorry repairs"
+ ]
+}

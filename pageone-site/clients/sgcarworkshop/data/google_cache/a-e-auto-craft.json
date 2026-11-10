@@ -1,0 +1,26 @@
+{
+ "businessStatus": "OPERATIONAL",
+ "primaryType": "car_repair",
+ "types": [
+  "car_repair",
+  "point_of_interest",
+  "service",
+  "establishment"
+ ],
+ "rating": 4.6,
+ "userRatingCount": 10,
+ "websiteUri": null,
+ "paymentOptions": {
+  "acceptsDebitCards": true,
+  "acceptsCashOnly": false,
+  "acceptsNfc": true
+ },
+ "parkingOptions": null,
+ "editorialSummary": null,
+ "weekdayDescriptions": null,
+ "review_count_seen": 5,
+ "review_themes": "Customers on Google Maps mention friendly staff who explain details without being pushy, quick walk-in fixes and fast OBU installation.",
+ "fetched_at": "2026-11-08",
+ "place_id": "ChIJ57hhtyoR2jERBpwF53EeaDA",
+ "source": "google_places"
+}

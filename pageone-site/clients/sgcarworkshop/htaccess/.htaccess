@@ -1,0 +1,9 @@
+# SG Car Workshop: sgcarworkshop.sg and pageonesingapore.com/preview/sgcarworkshop serve THIS folder (Edwin, 2 Nov 2026).
+# On the live domain /robots.txt is answered by robots-live.txt (crawlable, with Sitemap); on every other host (the preview)
+# robots.txt stays "Disallow: /". The preview X-Robots-Tag noindex header is set in preview/.htaccess for pageonesingapore.com only.
+# RewriteOptions Inherit keeps the site-wide rules from the parent .htaccess (https, no-www, clean index.html URLs).
+# Deployed by the publisher (pinned sha256 in the bridge's PINNED_SERVER_CONFIG), never by hand. Source: pageone-site/clients/sgcarworkshop/htaccess/.htaccess
+RewriteEngine On
+RewriteOptions Inherit
+RewriteCond %{HTTP_HOST} ^(www\.)?sgcarworkshop\.sg$ [NC]
+RewriteRule ^robots\.txt$ robots-live.txt [END]

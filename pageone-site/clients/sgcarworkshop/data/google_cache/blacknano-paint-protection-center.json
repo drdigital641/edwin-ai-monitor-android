@@ -1,0 +1,37 @@
+{
+ "businessStatus": "OPERATIONAL",
+ "primaryType": "car_repair",
+ "types": [
+  "car_wash",
+  "car_repair",
+  "store",
+  "point_of_interest",
+  "service",
+  "establishment"
+ ],
+ "rating": 4.9,
+ "userRatingCount": 389,
+ "websiteUri": "http://blacknano.sg/",
+ "paymentOptions": {
+  "acceptsCreditCards": false,
+  "acceptsDebitCards": true,
+  "acceptsCashOnly": false,
+  "acceptsNfc": true
+ },
+ "parkingOptions": null,
+ "editorialSummary": null,
+ "weekdayDescriptions": [
+  "Monday: 9:00 AM – 6:00 PM",
+  "Tuesday: 9:00 AM – 6:00 PM",
+  "Wednesday: 9:00 AM – 6:00 PM",
+  "Thursday: 9:00 AM – 6:00 PM",
+  "Friday: 9:00 AM – 6:00 PM",
+  "Saturday: 9:00 AM – 6:00 PM",
+  "Sunday: Closed"
+ ],
+ "review_count_seen": 5,
+ "review_themes": "Customers on Google Maps praise clear explanations of the ceramic coating process and aftercare, a glossy finish that holds up for months, and smooth handover and yearly maintenance.",
+ "fetched_at": "2026-11-08",
+ "place_id": "ChIJ3WcZiW4Q2jERp3EgtjJHbZc",
+ "source": "google_places"
+}

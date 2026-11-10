@@ -1,0 +1,26 @@
+{
+ "lede": "Fong Workshop is a car repair workshop at 160 Sin Ming Drive, #08-06 Sin Ming AutoCity. Its Google Maps listing shows opening hours and customer ratings.",
+ "chips": [
+  "Car repair"
+ ],
+ "services": [
+  "General servicing and repair"
+ ],
+ "faqs": [
+  [
+   "What does Fong Workshop do?",
+   "Google Maps lists it as a car repair workshop."
+  ],
+  [
+   "What are the opening hours?",
+   "The hours are listed in the Google Maps section above. Please see Google Maps for current hours."
+  ]
+ ],
+ "sources": "its Google Maps listing",
+ "stories": [],
+ "mentioned_services": [
+  "Car servicing and repair",
+  "Volkswagen cars"
+ ],
+ "themes": "Customers on Google Maps mention long-term servicing and repair, clear answers about car problems and no unnecessary upselling."
+}

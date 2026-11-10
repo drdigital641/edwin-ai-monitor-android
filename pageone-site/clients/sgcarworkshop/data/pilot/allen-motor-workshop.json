@@ -1,0 +1,36 @@
+{
+ "lede": "Allen Motor Workshop is a car workshop at 1 Sin Ming Industrial Estate Sector C, in the Sin Ming and Bishan area. Public business records show a motor workshop registered there since June 2013, with a focus on Ford servicing and repairs.",
+ "chips": [
+  "Ford servicing and repairs",
+  "Continental makes"
+ ],
+ "services": [
+  "Ford servicing and repairs",
+  "Servicing and repairs for other continental makes"
+ ],
+ "good_for": [
+  "Ford owners",
+  "Owners of other continental cars"
+ ],
+ "good_for_note": "Based on public business directories. Please confirm your car with the workshop.",
+ "faqs": [
+  [
+   "Does Allen Motor Workshop work on Ford cars?",
+   "Public directories describe a focus on Ford servicing and repairs."
+  ],
+  [
+   "Does it work on other makes?",
+   "The same directories say it also works on other continental makes. Please confirm your car when you message."
+  ],
+  [
+   "How long has it been registered?",
+   "Public business records show it registered since June 2013."
+  ],
+  [
+   "What are the opening hours?",
+   "Please see Google Maps for current hours."
+  ]
+ ],
+ "sources": "public business directories and its Google Maps listing",
+ "stories": []
+}

@@ -1,0 +1,82 @@
+[
+ {
+  "slug": "spray-painting-bodywork",
+  "name": "Spray painting and bodywork",
+  "short": "Spray painting",
+  "icon": "spray",
+  "blurb": "Respray, colour change and body kit work in a spray booth.",
+  "intro": "Car spray painting covers panel respray, full respray and colour change. A workshop sands the old paint, fixes any dents, primes the panel and sprays colour and clear coat in a booth. Ask for a quote with photos of your car, and check LTA rules before changing your car's colour."
+ },
+ {
+  "slug": "gearbox-repair",
+  "name": "Gearbox repair",
+  "short": "Gearbox",
+  "icon": "gear",
+  "blurb": "Automatic gearbox diagnosis, repair, servicing and upgrades.",
+  "intro": "Gearbox repair starts with a diagnosis: reading the car's fault codes, checking the fluid and test driving it. From there a specialist can service, repair or overhaul the gearbox. Slipping gears, harsh shifts and warning lights are common reasons to book in early, before a small fault grows."
+ },
+ {
+  "slug": "abs-ecu-module-repair",
+  "name": "ABS, ECU and module repair",
+  "short": "ABS and ECU",
+  "icon": "chip",
+  "blurb": "Repair of ABS pumps and control modules instead of costly replacement.",
+  "intro": "ABS and ECU module repair fixes the electronic units that control braking, gearbox shifts and engine functions. Many warning lights come from a failed pump or circuit board, not the whole car. A specialist tests the unit, repairs it on the bench where possible and refits it. Ask for the car model and fault codes."
+ },
+ {
+  "slug": "car-battery",
+  "name": "Car battery replacement",
+  "short": "Car battery",
+  "icon": "battery",
+  "blurb": "Battery testing and replacement, at a workshop or where your car is.",
+  "intro": "A car battery that struggles to start the engine, or has been flat more than once, usually needs testing and often replacement. Some providers come to your car, others fit it at a workshop. Share your car model so the right battery size is matched, and ask about warranty before you pay."
+ },
+ {
+  "slug": "car-detailing-coating",
+  "name": "Car detailing and coating",
+  "short": "Detailing",
+  "icon": "sparkle",
+  "blurb": "Grooming, steam cleaning, fumigation and odour removal for your car.",
+  "intro": "Car detailing cleans and restores the inside and outside of a car beyond a normal wash. It can cover interior steam cleaning, fumigation, odour removal, polishing and protective coatings. Some detailers travel to you. Tell them what bothers you most, such as smell, stains or dull paint, so the job fits."
+ },
+ {
+  "slug": "car-wrap-ppf",
+  "name": "Car wrap and PPF",
+  "short": "Wrap and PPF",
+  "icon": "film",
+  "blurb": "Colour change wraps, paint protection film and window film.",
+  "intro": "A car wrap changes colour with vinyl, while paint protection film (PPF) is a clear or coloured layer that shields the paint from stone chips and scratches. Window film is a separate service. Ask what film is used, how long the job takes, and check current LTA rules before changing your car's colour."
+ },
+ {
+  "slug": "car-parts",
+  "name": "Car parts",
+  "short": "Car parts",
+  "icon": "parts",
+  "blurb": "Parts shops for specific makes, with models and part types to browse.",
+  "intro": "A car parts shop supplies the pieces a workshop or a driver needs for a repair, such as filters, brakes and suspension. Some shops focus on one maker, which helps when you need the correct part for a specific model. Bring your car model and plate details, or send photos of the old part."
+ },
+ {
+  "slug": "car-aircon-repair",
+  "name": "Car aircon repair",
+  "short": "Car aircon",
+  "icon": "snow",
+  "blurb": "Gas top-up, leak checks and aircon parts.",
+  "intro": "A car aircon that blows warm air often has low gas, a leak, or a worn part such as the compressor, cooling coil or condenser. A workshop usually checks for leaks first, then tops up the gas or repairs the part. Describe the symptom, such as weak cooling or a bad smell, and ask the cost first."
+ },
+ {
+  "slug": "car-tyres",
+  "name": "Tyre shops",
+  "short": "Tyres",
+  "icon": "wheel",
+  "blurb": "New tyres, tyre changes, puncture repair and wheel balancing.",
+  "intro": "A tyre shop fits new tyres, repairs punctures and balances the wheels so the car drives smoothly. Many also do wheel alignment and batteries. Check your tyre size on the sidewall, ask which brands are in stock, and ask whether balancing and valves are included before the job."
+ },
+ {
+  "slug": "general-servicing-repair",
+  "name": "General servicing and repair",
+  "short": "Servicing",
+  "icon": "wrench",
+  "blurb": "Everyday servicing and repairs: battery checks, alternators, aircon and more.",
+  "intro": "General servicing keeps a car reliable between the big repairs. A workshop checks fluids, the battery, charging system and aircon, then fixes what it finds. Tell the workshop your symptoms, such as a flat battery or weak cooling, and ask for the fault explained and the price confirmed before work starts."
+ }
+]

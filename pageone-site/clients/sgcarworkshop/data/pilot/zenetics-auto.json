@@ -1,0 +1,28 @@
+{
+ "lede": "Zenetics Auto is a car repair workshop at 61 Woodlands Industrial Park E9, #02-33. Its Google Maps listing shows opening hours and customer ratings.",
+ "chips": [
+  "Car repair"
+ ],
+ "services": [
+  "General servicing and repair"
+ ],
+ "faqs": [
+  [
+   "What does Zenetics Auto do?",
+   "Google Maps lists it as a car repair workshop."
+  ],
+  [
+   "What are the opening hours?",
+   "The hours are listed in the Google Maps section above. Please see Google Maps for current hours."
+  ]
+ ],
+ "sources": "its Google Maps listing",
+ "stories": [],
+ "mentioned_services": [
+  "Fault code diagnosis",
+  "MAF sensor cleaning",
+  "Throttle body cleaning",
+  "Car servicing"
+ ],
+ "themes": "Customers on Google Maps mention fault code diagnosis, sensor and throttle body cleaning, servicing and clear explanations."
+}

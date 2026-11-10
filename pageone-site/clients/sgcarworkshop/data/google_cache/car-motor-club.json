@@ -1,0 +1,30 @@
+{
+ "businessStatus": "OPERATIONAL",
+ "primaryType": "car_repair",
+ "types": [
+  "car_repair",
+  "point_of_interest",
+  "service",
+  "establishment"
+ ],
+ "rating": 5,
+ "userRatingCount": 37,
+ "websiteUri": "http://carmotorclubsg.wixstudio.com/carmotorclub",
+ "paymentOptions": null,
+ "parkingOptions": null,
+ "editorialSummary": null,
+ "weekdayDescriptions": [
+  "Monday: 10:00 AM – 6:30 PM",
+  "Tuesday: 10:00 AM – 6:30 PM",
+  "Wednesday: 10:00 AM – 6:30 PM",
+  "Thursday: 10:00 AM – 6:30 PM",
+  "Friday: 10:00 AM – 6:30 PM",
+  "Saturday: 10:00 AM – 3:30 PM",
+  "Sunday: Closed"
+ ],
+ "review_count_seen": 5,
+ "review_themes": "Customers on Google Maps mention a thorough 100-point used car inspection, parts shown and explained before replacement, a battery change with advice on the right size, and repairs finished within the promised time.",
+ "fetched_at": "2026-11-09",
+ "place_id": "ChIJI6S_JnYT2jER7L8V1a7UCGg",
+ "source": "google_places"
+}

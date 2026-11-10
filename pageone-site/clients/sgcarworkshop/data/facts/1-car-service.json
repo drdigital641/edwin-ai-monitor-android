@@ -1,0 +1,73 @@
+{
+ "slug": "1-car-service",
+ "researched_at": "2026-11-04",
+ "researcher": "Claude, Google Places Details only (candidate from the queue, found by web search at Edwin's request; name from Google Business Profile)",
+ "facts": [
+  {
+   "field": "rating",
+   "value": "4.9",
+   "source_url": "google_places",
+   "retrieved": "2026-11-04"
+  },
+  {
+   "field": "userRatingCount",
+   "value": "1857",
+   "source_url": "google_places",
+   "retrieved": "2026-11-04"
+  },
+  {
+   "field": "websiteUri",
+   "value": "https://1car.sg/visit/",
+   "source_url": "google_places",
+   "retrieved": "2026-11-04"
+  },
+  {
+   "field": "types",
+   "value": "['car_repair', 'point_of_interest', 'service', 'establishment']",
+   "source_url": "google_places",
+   "retrieved": "2026-11-04"
+  },
+  {
+   "field": "primaryType",
+   "value": "car_repair",
+   "source_url": "google_places",
+   "retrieved": "2026-11-04"
+  },
+  {
+   "field": "opening_hours",
+   "value": [
+    "Monday: 9:00 AM – 6:00 PM",
+    "Tuesday: 9:00 AM – 6:00 PM",
+    "Wednesday: 9:00 AM – 6:00 PM",
+    "Thursday: 9:00 AM – 6:00 PM",
+    "Friday: 9:00 AM – 6:00 PM",
+    "Saturday: 9:00 AM – 4:30 PM",
+    "Sunday: Closed"
+   ],
+   "source_url": "google_places",
+   "retrieved": "2026-11-04"
+  }
+ ],
+ "conflicts": [
+  {
+   "field": "mobile",
+   "google": "+6580337708",
+   "other": "+6598578141 (thebestsingapore.com)",
+   "resolution": "Google mobile used"
+  }
+ ],
+ "not_found": [
+  "editorialSummary"
+ ],
+ "review_service_support": {
+  "Car servicing": 3,
+  "Oil leak repair": 1,
+  "Brake and rotor replacement": 1,
+  "Radiator fan replacement": 1,
+  "Walnut blasting": 1,
+  "Audi and Volvo cars": 3
+ },
+ "review_count_seen": 5,
+ "fetched_at": "2026-11-04",
+ "source": "google_places"
+}

@@ -1,0 +1,39 @@
+{
+ "lede": "iRent Garage at WCEGA Plaza in Bukit Batok is a car repair workshop. Its company website lists car repair, servicing, routine maintenance, diagnostics and major repairs, alongside car rental.",
+ "chips": [
+  "Repairs",
+  "Servicing"
+ ],
+ "services": [
+  "Car repair",
+  "Car servicing",
+  "Routine maintenance",
+  "Diagnostics",
+  "Major repairs"
+ ],
+ "themes": "Customers on Google Maps mention honest, patient explanations, only the repairs needed with no hard selling, and a waiting area with a billiard table.",
+ "faqs": [
+  [
+   "What does iRent Garage do?",
+   "Google Maps lists it as a car repair workshop."
+  ],
+  [
+   "What are the opening hours?",
+   "The hours are listed in the Google Maps section above. Please see Google Maps for current hours."
+  ]
+ ],
+ "sources": "its own website (irentleasing.com)",
+ "stories": [],
+ "mentioned_services": [
+  "Repairs",
+  "Servicing"
+ ],
+ "services_note": "Services as listed on the workshop's own website, irentleasing.com.",
+ "makes": [],
+ "makes_note": "Not listed on its public pages. Ask the workshop about your car.",
+ "specialties": [],
+ "good_to_know": [
+  "Part of a company that also does car rental, scrapping and car buying and selling, according to its website"
+ ],
+ "card_rules": "2026-11-05"
+}

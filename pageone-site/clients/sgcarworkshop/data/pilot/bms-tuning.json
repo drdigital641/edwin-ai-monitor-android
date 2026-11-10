@@ -1,0 +1,48 @@
+{
+ "lede": "BMS Tuning at Sin Ming Industrial Estate is a car performance tuning workshop.",
+ "chips": [
+  "ECU tuning",
+  "Performance"
+ ],
+ "services": [
+  "ECU tuning",
+  "TCU (gearbox) tuning",
+  "Dyno tuning",
+  "Performance parts upgrades",
+  "Scheduled car servicing",
+  "Performance consultation"
+ ],
+ "themes": "Customers on Google Maps mention ECU tuning and re-tunes that make cars smoother and more responsive, gains even on small naturally aspirated engines such as a Honda Vezel, and a friendly boss who explains the options.",
+ "faqs": [
+  [
+   "What does BMS Tuning do?",
+   "Google Maps lists it as a car repair workshop."
+  ],
+  [
+   "What are the opening hours?",
+   "The hours are listed in the Google Maps section above. Please see Google Maps for current hours."
+  ]
+ ],
+ "sources": "its own website (bmstuning.sg)",
+ "stories": [],
+ "mentioned_services": [
+  "ECU tuning",
+  "Re-tuning",
+  "Performance upgrades"
+ ],
+ "services_note": "Services as listed on the workshop's own website, bmstuning.sg.",
+ "makes": [
+  "Honda"
+ ],
+ "makes_note": "Named by customers on Google Maps. Ask the workshop about other makes.",
+ "specialties": [
+  "ECU and TCU tuning",
+  "In-house dyno tuning",
+  "Performance upgrades"
+ ],
+ "good_to_know": [
+  "Tuning consultation before the tune, according to its website",
+  "Founded in Singapore in 2006, according to its website"
+ ],
+ "card_rules": "2026-11-05"
+}

@@ -1,0 +1,35 @@
+{
+ "businessStatus": "OPERATIONAL",
+ "primaryType": "car_repair",
+ "types": [
+  "building_materials_store",
+  "home_goods_store",
+  "store",
+  "car_repair",
+  "point_of_interest",
+  "service",
+  "establishment"
+ ],
+ "rating": 4.9,
+ "userRatingCount": 29,
+ "websiteUri": "https://www.youtube.com/@kolorwerxauto5944",
+ "paymentOptions": {
+  "acceptsCashOnly": true
+ },
+ "parkingOptions": null,
+ "editorialSummary": null,
+ "weekdayDescriptions": [
+  "Monday: 8:30 AM – 5:30 PM",
+  "Tuesday: 8:30 AM – 5:30 PM",
+  "Wednesday: 8:30 AM – 5:30 PM",
+  "Thursday: 8:30 AM – 5:30 PM",
+  "Friday: 8:30 AM – 5:30 PM",
+  "Saturday: 8:30 AM – 3:30 PM",
+  "Sunday: Closed"
+ ],
+ "review_count_seen": 5,
+ "review_themes": "Customers on Google Maps praise detailed paint preparation, seamless paint blending on touch-ups, rim kerb-rash repair and body kit installs, with clear explanations.",
+ "fetched_at": "2026-11-07",
+ "place_id": "ChIJgcEUd20Q2jERFSh716smC3A",
+ "source": "google_places"
+}

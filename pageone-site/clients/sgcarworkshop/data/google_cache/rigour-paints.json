@@ -1,0 +1,38 @@
+{
+ "businessStatus": "OPERATIONAL",
+ "primaryType": "car_repair",
+ "types": [
+  "car_repair",
+  "service",
+  "point_of_interest",
+  "establishment"
+ ],
+ "rating": 5,
+ "userRatingCount": 71,
+ "websiteUri": "http://www.rigourpaints.com/",
+ "paymentOptions": {
+  "acceptsCreditCards": true,
+  "acceptsDebitCards": true,
+  "acceptsCashOnly": false
+ },
+ "parkingOptions": {
+  "freeParkingLot": true,
+  "freeStreetParking": true,
+  "freeGarageParking": true
+ },
+ "editorialSummary": null,
+ "weekdayDescriptions": [
+  "Monday: 9:00 AM – 7:00 PM",
+  "Tuesday: 9:00 AM – 7:00 PM",
+  "Wednesday: 9:00 AM – 7:00 PM",
+  "Thursday: 9:00 AM – 7:00 PM",
+  "Friday: 9:00 AM – 7:00 PM",
+  "Saturday: 9:00 AM – 3:00 PM",
+  "Sunday: Closed"
+ ],
+ "review_count_seen": 5,
+ "review_themes": "Customers on Google Maps mention prompt replies, transparent quotes, a perfect paint match on scratches and dents, and fast turnaround.",
+ "fetched_at": "2026-11-07",
+ "place_id": "ChIJxfl5jjoR2jER2ANx07viMt4",
+ "source": "google_places"
+}

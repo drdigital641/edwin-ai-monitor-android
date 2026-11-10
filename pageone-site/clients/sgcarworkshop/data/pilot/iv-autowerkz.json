@@ -1,0 +1,27 @@
+{
+ "lede": "IV Autowerkz is a car repair workshop at 2 Yishun Industrial Street 1, #01-27 bizhub. Its Google Maps listing shows opening hours and customer ratings.",
+ "chips": [
+  "Car repair"
+ ],
+ "services": [
+  "General servicing and repair"
+ ],
+ "themes": "Customers on Google Maps mention clear explanations of what needs attention, a turbo problem fixed, and help with Vicom inspection, minor repairs and touch-ups.",
+ "faqs": [
+  [
+   "What does IV Autowerkz do?",
+   "Google Maps lists it as a car repair workshop."
+  ],
+  [
+   "What are the opening hours?",
+   "The hours are listed in the Google Maps section above. Please see Google Maps for current hours."
+  ]
+ ],
+ "sources": "its Google Maps listing",
+ "stories": [],
+ "mentioned_services": [
+  "Engine repair",
+  "Car repair advice",
+  "Scratch repair"
+ ]
+}

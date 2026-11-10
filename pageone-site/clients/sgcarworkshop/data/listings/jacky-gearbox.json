@@ -1,0 +1,172 @@
+{
+ "slug": "jacky-gearbox",
+ "tier": "premium_leadgen",
+ "name": "Jacky Gearbox",
+ "domain": "jackygearbox.com",
+ "url": "https://jackygearbox.com/",
+ "category": "gearbox-repair",
+ "regions": [
+  "north"
+ ],
+ "regions_note": "Woodlands and Kranji are both in the North region (URA). Addresses: Woodlands Industrial Park E9 and Jalan Lam Huat.",
+ "area_label": "Woodlands and Kranji",
+ "title": "Jacky Gearbox | Gearbox Repair, Woodlands and Kranji",
+ "desc": "Jacky Gearbox: gearbox diagnosis from S$30, repair, overhaul, servicing and upgrades at Woodlands and Kranji. 6-month warranty. WhatsApp 8430 9665.",
+ "card_img": {
+  "f": "jackygearbox-hero-workshop.webp",
+  "alt": "Jacky Gearbox workshop in Woodlands"
+ },
+ "card_text": [
+  "Gearbox specialist with workshops in Woodlands and Kranji.",
+  "Diagnosis from S$30, repair, servicing and upgrades."
+ ],
+ "lede": "Jacky Gearbox is a gearbox and automatic transmission specialist with a main workshop at Woodlands Wave 9 and a second one in Kranji. Jacky tests the gearbox himself, explains the fault, quotes before any work starts and road-tests the car before handing it back. WhatsApp or call 8430 9665.",
+ "services": [
+  {
+   "n": "Gearbox diagnostic",
+   "d": "Fault codes are read and the gearbox checked first, so the quote is based on the real cause.",
+   "p": "From S$30"
+  },
+  {
+   "n": "Gearbox repair and overhaul",
+   "d": "Repair or full overhaul of automatic gearboxes, with a standard 6-month warranty unless stated otherwise.",
+   "p": null
+  },
+  {
+   "n": "Gearbox upgrades",
+   "d": "Strengthening work to suit the power and torque of the car.",
+   "p": null
+  },
+  {
+   "n": "Gearbox (ATF) servicing",
+   "d": "Regular transmission servicing with the correct fluid for the gearbox.",
+   "p": null
+  },
+  {
+   "n": "Free towing and pick-up",
+   "d": "Free pick-up to the workshop for gearbox repairs during office hours, and a free tow if the car cannot move.",
+   "p": "Free"
+  }
+ ],
+ "price_note": "No blind quotes: the diagnostic comes first, then a clear price before any repair starts.",
+ "phone": "+6584309665",
+ "phone_show": "8430 9665",
+ "whatsapp": "6584309665",
+ "addresses": [
+  {
+   "label": "Woodlands (main workshop)",
+   "street": "71 Woodlands Industrial Park E9, #01-25 Wave 9",
+   "postal": "757048",
+   "map_url": "https://www.google.com/maps/search/?api=1&query=71%20Woodlands%20Industrial%20Park%20E9%20Wave%209%20Singapore"
+  },
+  {
+   "label": "Kranji (second workshop)",
+   "street": "60 Jalan Lam Huat, #05-48",
+   "postal": "737869",
+   "map_url": "https://www.google.com/maps/search/?api=1&query=60%20Jalan%20Lam%20Huat%20Singapore%20737869"
+  }
+ ],
+ "map_url": "https://www.google.com/maps/search/?api=1&query=71%20Woodlands%20Industrial%20Park%20E9%20Wave%209%20Singapore",
+ "hours": [
+  [
+   "Mon to Fri",
+   "9am to 6pm"
+  ],
+  [
+   "Sat",
+   "9am to 3pm"
+  ],
+  [
+   "Sun and public holidays",
+   "Closed"
+  ]
+ ],
+ "hours_ld": [
+  [
+   [
+    "Monday",
+    "Tuesday",
+    "Wednesday",
+    "Thursday",
+    "Friday"
+   ],
+   "09:00",
+   "18:00"
+  ],
+  [
+   [
+    "Saturday"
+   ],
+   "09:00",
+   "15:00"
+  ]
+ ],
+ "hours_note": null,
+ "social": [],
+ "reviews": {
+  "text": "Customer reviews are on Jacky's Google profile. His website does not state a rating or review count (checked 1 November 2026).",
+  "url": "https://share.google/ZXSk6rE3VdUNgZyKS",
+  "label": "Open the Google profile"
+ },
+ "photos": [
+  {
+   "f": "jackygearbox-hero-workshop.webp",
+   "alt": "Jacky Gearbox workshop in Woodlands",
+   "cap": "The Woodlands workshop."
+  },
+  {
+   "f": "jackygearbox-gearbox-teardown.webp",
+   "alt": "Technician rebuilding an automatic gearbox on the teardown bench",
+   "cap": "An automatic gearbox on the teardown bench."
+  },
+  {
+   "f": "jackygearbox-gearbox-parts.webp",
+   "alt": "Gearbox clutch packs and gear sets laid out for inspection",
+   "cap": "Clutch packs and gear sets laid out for inspection."
+  },
+  {
+   "f": "jackygearbox-diagnostics.webp",
+   "alt": "Laptop running a transmission diagnostic test on a BMW",
+   "cap": "A transmission diagnostic test running on a BMW."
+  },
+  {
+   "f": "jackygearbox-gearbox-removal.webp",
+   "alt": "Gearbox being removed from a car on a transmission jack",
+   "cap": "A gearbox coming out of a car on a transmission jack."
+  },
+  {
+   "f": "jackygearbox-workshop-lifts.webp",
+   "alt": "Car lifts in the Jacky Gearbox workshop",
+   "cap": "Lifts in the workshop."
+  }
+ ],
+ "faqs": [
+  [
+   "How much does a gearbox repair cost?",
+   "It depends on the car and the fault, so there are no blind quotes. The diagnostic (from S$30) finds the cause, then you get a clear price before the repair starts."
+  ],
+  [
+   "Can you collect a car that cannot move?",
+   "Yes. Pick-up to the workshop for gearbox repairs is free during office hours, and a tow truck is sent free of charge if the transmission has failed."
+  ],
+  [
+   "Which cars does Jacky work on?",
+   "Continental, Japanese and Korean cars, plus makes such as Land Rover, Jaguar, Volvo, Ford, Renault, Peugeot and Chevrolet."
+  ],
+  [
+   "Is there a warranty?",
+   "Repairs carry a standard 6-month warranty unless stated otherwise."
+  ]
+ ],
+ "source": {
+  "name": "Page One preview folder preview/dmts index (live domain jackygearbox.com), read via the Bluehost Bridge on 1 Nov 2026",
+  "photos": "Image paths as used by that page, hotlinked from jackygearbox.com/img/ (not fetchable from this sandbox, CONFIRM they load)"
+ },
+ "left_out": [
+  "customer review quotes (no source or date on the site)",
+  "'15 years combined experience' claim",
+  "any former company name or old email",
+  "rating and review count (not stated)"
+ ],
+ "_order": 3
+}

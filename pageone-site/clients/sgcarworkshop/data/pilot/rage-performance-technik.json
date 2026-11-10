@@ -1,0 +1,35 @@
+{
+ "lede": "Rage Performance Technik is a car repair workshop at 8 Kaki Bukit Ave 4, #03-25 Premier@Kaki Bukit. Its Google Maps listing shows opening hours and customer ratings.",
+ "chips": [
+  "Car repair"
+ ],
+ "services": [
+  "General servicing and repair"
+ ],
+ "themes": "Customers on Google Maps mention its own coilover and suspension kits, quick sourcing of absorbers, big brake kit upgrades, and coolant and brake pad work on a Mercedes-Benz W204.",
+ "faqs": [
+  [
+   "What does Rage Performance Technik do?",
+   "Google Maps lists it as a car repair workshop."
+  ],
+  [
+   "What are the opening hours?",
+   "The hours are listed in the Google Maps section above. Please see Google Maps for current hours."
+  ]
+ ],
+ "sources": "its Google Maps listing",
+ "stories": [],
+ "mentioned_services": [
+  "Coilovers",
+  "Suspension kits",
+  "Absorbers",
+  "Big brake kit",
+  "Brake pads",
+  "Coolant system"
+ ],
+ "card_rules": "2026-11-05",
+ "makes": [
+  "Mercedes-Benz"
+ ],
+ "makes_note": "Named by customers on Google Maps. Ask the workshop about other makes."
+}

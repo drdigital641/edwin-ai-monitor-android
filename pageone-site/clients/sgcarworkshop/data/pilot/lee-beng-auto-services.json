@@ -1,0 +1,27 @@
+{
+ "lede": "Lee Beng Auto Services is a car repair workshop at 1016 Yishun Industrial Park A, #01-230. Its Google Maps listing shows opening hours and customer ratings.",
+ "chips": [
+  "Car repair"
+ ],
+ "services": [
+  "General servicing and repair"
+ ],
+ "faqs": [
+  [
+   "What does Lee Beng Auto Services do?",
+   "Google Maps lists it as a car repair workshop."
+  ],
+  [
+   "What are the opening hours?",
+   "The hours are listed in the Google Maps section above. Please see Google Maps for current hours."
+  ]
+ ],
+ "sources": "its Google Maps listing",
+ "stories": [],
+ "mentioned_services": [
+  "Brake replacement",
+  "Car servicing",
+  "Honda cars"
+ ],
+ "themes": "Customers on Google Maps mention brake replacement, car servicing and Honda cars."
+}

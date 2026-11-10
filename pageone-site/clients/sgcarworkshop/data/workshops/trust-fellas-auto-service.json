@@ -1,0 +1,73 @@
+{
+ "schema_version": 1,
+ "slug": "trust-fellas-auto-service",
+ "place_id": "ChIJqV85bQAR2jERmmEpM_MN4RQ",
+ "place_id_checked_at": "2026-11-07",
+ "name": "Trust Fellas Auto Service",
+ "name_source_url": "google_profile",
+ "name_checked_at": "2026-11-07",
+ "address": {
+  "block": "",
+  "street": "40 Toh Guan Rd E, #01 65",
+  "unit": "",
+  "building": ""
+ },
+ "postal_code": "608582",
+ "address_source_url": "google_profile",
+ "address_checked_at": "2026-11-07",
+ "categories": [
+  "SERV"
+ ],
+ "services": [
+  "General servicing and repair"
+ ],
+ "services_source_url": "google_profile",
+ "phones": [
+  {
+   "e164": "+6590914483",
+   "kind": "mobile",
+   "whatsapp": true,
+   "source": "google_profile",
+   "checked_at": "2026-11-07"
+  }
+ ],
+ "google_screen": {
+  "passed": true,
+  "reason": "OPERATIONAL, car repair, SG mobile on Google profile",
+  "checked_at": "2026-11-07"
+ },
+ "status": "active",
+ "tier": "basic",
+ "first_seen_at": "2026-11-07",
+ "last_verified_at": "2026-11-07",
+ "collector_version": "agent-v5",
+ "estate": "toh-guan-enterprise-hub",
+ "planning_area": "Jurong East",
+ "region": "west",
+ "lat": 1.336155932607502,
+ "lng": 103.7542777527847,
+ "geo_source": "onemap",
+ "blocks": [
+  "hero",
+  "contact",
+  "services",
+  "good_for",
+  "problems",
+  "reviews",
+  "comparison",
+  "hours",
+  "stories",
+  "location",
+  "tips",
+  "faq",
+  "claim",
+  "sources"
+ ],
+ "google_rating": {
+  "rating": 5,
+  "count": 20,
+  "checked": "2026-11-07",
+  "source": "Google Places",
+  "source_date": "2026-11-07"
+ }
+}

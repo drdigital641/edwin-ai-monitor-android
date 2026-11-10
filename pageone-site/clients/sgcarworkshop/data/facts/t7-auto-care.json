@@ -1,0 +1,57 @@
+{
+ "slug": "t7-auto-care",
+ "researched_at": "2026-11-04",
+ "researcher": "Claude, Google Places Details only (candidate from Google Places Text Search sweep at Edwin's request; name from Google Business Profile)",
+ "facts": [
+  {
+   "field": "displayName",
+   "value": "T7 Auto Care Pte Ltd",
+   "source_url": "google_places",
+   "retrieved": "2026-11-04"
+  },
+  {
+   "field": "rating",
+   "value": "4.9",
+   "source_url": "google_places",
+   "retrieved": "2026-11-04"
+  },
+  {
+   "field": "userRatingCount",
+   "value": "31",
+   "source_url": "google_places",
+   "retrieved": "2026-11-04"
+  },
+  {
+   "field": "websiteUri",
+   "value": "https://sitelift.site/t7autocarepteltd/",
+   "source_url": "google_places",
+   "retrieved": "2026-11-04"
+  },
+  {
+   "field": "types",
+   "value": "['car_repair', 'point_of_interest', 'service', 'establishment']",
+   "source_url": "google_places",
+   "retrieved": "2026-11-04"
+  },
+  {
+   "field": "primaryType",
+   "value": "car_repair",
+   "source_url": "google_places",
+   "retrieved": "2026-11-04"
+  },
+  {
+   "field": "opening_hours",
+   "value": [
+    "Monday: Open 24 hours",
+    "Tuesday: Open 24 hours",
+    "Wednesday: Open 24 hours",
+    "Thursday: Open 24 hours",
+    "Friday: Open 24 hours",
+    "Saturday: Open 24 hours",
+    "Sunday: Open 24 hours"
+   ],
+   "source_url": "google_places",
+   "retrieved": "2026-11-04"
+  }
+ ]
+}

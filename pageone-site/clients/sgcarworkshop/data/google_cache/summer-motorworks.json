@@ -1,0 +1,37 @@
+{
+ "businessStatus": "OPERATIONAL",
+ "primaryType": "car_repair",
+ "types": [
+  "car_repair",
+  "point_of_interest",
+  "service",
+  "establishment"
+ ],
+ "rating": 4.8,
+ "userRatingCount": 245,
+ "websiteUri": "https://www.facebook.com/summermotorworks",
+ "paymentOptions": {
+  "acceptsCreditCards": true,
+  "acceptsDebitCards": true,
+  "acceptsNfc": true
+ },
+ "parkingOptions": {
+  "freeParkingLot": true,
+  "freeStreetParking": true
+ },
+ "editorialSummary": null,
+ "weekdayDescriptions": [
+  "Monday: 10:00 AM – 7:00 PM",
+  "Tuesday: 10:00 AM – 7:00 PM",
+  "Wednesday: 10:00 AM – 7:00 PM",
+  "Thursday: 10:00 AM – 7:00 PM",
+  "Friday: 10:00 AM – 7:00 PM",
+  "Saturday: 10:00 AM – 7:00 PM",
+  "Sunday: 11:00 AM – 7:30 PM"
+ ],
+ "review_count_seen": 5,
+ "review_themes": "Customers on Google Maps mention friendly, honest service with no pushy upselling, fair prices, aircon work and BMW and Mercedes-Benz know-how.",
+ "fetched_at": "2026-11-02",
+ "place_id": "ChIJQQbLL0wV2jER934RM34L1mA",
+ "source": "google_places"
+}

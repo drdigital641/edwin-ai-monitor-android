@@ -1,0 +1,32 @@
+{
+ "businessStatus": "OPERATIONAL",
+ "primaryType": "car_repair",
+ "types": [
+  "car_repair",
+  "point_of_interest",
+  "service",
+  "establishment"
+ ],
+ "rating": 4.9,
+ "userRatingCount": 34,
+ "websiteUri": null,
+ "paymentOptions": {
+  "acceptsCashOnly": false
+ },
+ "parkingOptions": null,
+ "editorialSummary": null,
+ "weekdayDescriptions": [
+  "Monday: 10:30 AM – 7:30 PM",
+  "Tuesday: 10:30 AM – 7:30 PM",
+  "Wednesday: 10:30 AM – 7:30 PM",
+  "Thursday: 10:30 AM – 7:30 PM",
+  "Friday: 10:30 AM – 7:30 PM",
+  "Saturday: 10:30 AM – 7:30 PM",
+  "Sunday: Closed"
+ ],
+ "review_count_seen": 5,
+ "review_themes": "Customers on Google Maps mention a brake issue found and fixed on the same day, a complicated electrical fault traced with careful testing, detailed analysis and honest advice.",
+ "fetched_at": "2026-11-09",
+ "place_id": "ChIJFf8kn-UT2jERov_iY39HXbM",
+ "source": "google_places"
+}

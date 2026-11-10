@@ -1,0 +1,27 @@
+{
+ "lede": "AutoApp Singapore is a car repair workshop at 1 Tampines North Dr. 1, #06-32. Its Google Maps listing shows opening hours and customer ratings.",
+ "chips": [
+  "Car repair"
+ ],
+ "services": [
+  "General servicing and repair"
+ ],
+ "themes": "Customers on Google Maps mention car pick-up so owners need not take leave, one contact person giving updates by WhatsApp, polishing and repainting.",
+ "faqs": [
+  [
+   "What does AutoApp Singapore do?",
+   "Google Maps lists it as a car repair workshop."
+  ],
+  [
+   "What are the opening hours?",
+   "The hours are listed in the Google Maps section above. Please see Google Maps for current hours."
+  ]
+ ],
+ "sources": "its Google Maps listing",
+ "stories": [],
+ "mentioned_services": [
+  "Car pick-up and delivery",
+  "Spray painting",
+  "Car detailing"
+ ]
+}

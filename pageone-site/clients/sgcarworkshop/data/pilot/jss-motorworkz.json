@@ -1,0 +1,46 @@
+{
+ "lede": "JSS Motorworkz is a car workshop at 48 Toh Guan Road East, in the Enterprise Hub building in Toh Guan. Its website lists general servicing, engine and gearbox work, aircon, tyres and accident repair, with a focus on continental, Japanese and Korean cars.",
+ "chips": [
+  "Engine and gearbox repair",
+  "Walnut blasting",
+  "Aircon servicing"
+ ],
+ "services": [
+  "General servicing and maintenance",
+  "Engine and gearbox repair and overhaul",
+  "Aircon servicing and overhaul",
+  "Tyres, wheels and alignment",
+  "Batteries",
+  "Walnut blasting",
+  "Accident repair and spray painting"
+ ],
+ "good_for": [
+  "Continental, Japanese and Korean cars",
+  "Makes named on its website include BMW, Mercedes-Benz, Audi, Volkswagen, Porsche, MINI, Toyota, Honda and Lexus",
+  "Engine and gearbox overhauls, and walnut blasting for carbon deposits"
+ ],
+ "faqs": [
+  [
+   "What does JSS Motorworkz specialise in?",
+   "Its website lists engine and gearbox repair and overhaul, aircon servicing and overhaul, tyres and alignment, walnut blasting, and accident repair with spray painting."
+  ],
+  [
+   "Which cars does JSS Motorworkz work on?",
+   "Its website says it focuses on continental, Japanese and Korean cars, and names makes such as BMW, Mercedes-Benz, Audi, Volkswagen, Porsche, Toyota, Honda and Lexus."
+  ],
+  [
+   "What is walnut blasting?",
+   "It is a carbon-cleaning method listed among its services. Ask the workshop whether it suits your engine."
+  ],
+  [
+   "Does JSS Motorworkz do accident repairs?",
+   "Accident repair and spray painting are listed on its website."
+  ],
+  [
+   "What are the opening hours?",
+   "Sources differ, so please see Google Maps for current hours."
+  ]
+ ],
+ "sources": "its website (jssmotorworkz.com)",
+ "stories": []
+}

@@ -1,0 +1,34 @@
+{
+ "lede": "JC Expert Autoworks is a car workshop at WCEGA Plaza in Bukit Batok.",
+ "chips": [
+  "Car servicing",
+  "Suspension",
+  "Car repair"
+ ],
+ "services": [
+  "General servicing and repair"
+ ],
+ "themes": "Customers on Google Maps mention coilover and wheel bearing faults found by listening to the car, a drive shaft problem spotted during servicing, a cost breakdown given before work and no pushing of extra repairs.",
+ "faqs": [
+  [
+   "What does JC Expert Autoworks do?",
+   "Google Maps lists it as a car repair workshop."
+  ],
+  [
+   "What are the opening hours?",
+   "The hours are listed in the Google Maps section above. Please see Google Maps for current hours."
+  ]
+ ],
+ "sources": "its Google Maps listing",
+ "stories": [],
+ "mentioned_services": [
+  "Suspension and coilover repair",
+  "Wheel bearing replacement",
+  "Drive shaft repair",
+  "Car servicing"
+ ],
+ "specialties": [],
+ "makes": [],
+ "makes_note": "Not listed on its public pages. Ask the workshop about your car.",
+ "card_rules": "2026-11-05"
+}

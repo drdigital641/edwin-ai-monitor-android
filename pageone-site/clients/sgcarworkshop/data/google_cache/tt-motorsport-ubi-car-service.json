@@ -1,0 +1,39 @@
+{
+ "businessStatus": "OPERATIONAL",
+ "primaryType": "car_repair",
+ "types": [
+  "car_repair",
+  "auto_parts_store",
+  "store",
+  "point_of_interest",
+  "service",
+  "establishment"
+ ],
+ "rating": 4.9,
+ "userRatingCount": 451,
+ "websiteUri": "https://www.ttmotorsport.sg/",
+ "paymentOptions": {
+  "acceptsCreditCards": true,
+  "acceptsDebitCards": true,
+  "acceptsNfc": true
+ },
+ "parkingOptions": {
+  "paidParkingLot": true,
+  "paidStreetParking": true
+ },
+ "editorialSummary": null,
+ "weekdayDescriptions": [
+  "Monday: 9:00 AM – 7:00 PM",
+  "Tuesday: 9:00 AM – 7:00 PM",
+  "Wednesday: 9:00 AM – 7:00 PM",
+  "Thursday: 9:00 AM – 7:00 PM",
+  "Friday: 9:00 AM – 7:00 PM",
+  "Saturday: 9:00 AM – 4:00 PM",
+  "Sunday: Closed"
+ ],
+ "review_count_seen": 5,
+ "review_themes": "Customers on Google Maps mention brake pad, transmission fluid and stabiliser link work, updates during the job and fast turnaround.",
+ "fetched_at": "2026-11-02",
+ "place_id": "ChIJ5b6ViVIZ2jERzLHs7_RsyQ0",
+ "source": "google_places"
+}

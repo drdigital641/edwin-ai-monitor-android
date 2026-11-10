@@ -1,0 +1,29 @@
+{
+ "lede": "KK AUTO M&E is a car repair workshop at 56 Loyang Wy, #01-15 Loyang Enterprise Building. Its Google Maps listing shows opening hours and customer ratings.",
+ "chips": [
+  "Car repair"
+ ],
+ "services": [
+  "General servicing and repair"
+ ],
+ "themes": "Customers on Google Maps mention friendly, professional servicing, efficient repairs at reasonable prices and help with an urgent breakdown.",
+ "faqs": [
+  [
+   "What does KK AUTO M&E do?",
+   "Google Maps lists it as a car repair workshop."
+  ],
+  [
+   "What are the opening hours?",
+   "The hours are listed in the Google Maps section above. Please see Google Maps for current hours."
+  ]
+ ],
+ "sources": "its Google Maps listing",
+ "stories": [],
+ "mentioned_services": [
+  "Car servicing",
+  "Breakdown help"
+ ],
+ "card_rules": "2026-11-05",
+ "makes": [],
+ "makes_note": "Not listed on its public pages. Ask the workshop about your car."
+}

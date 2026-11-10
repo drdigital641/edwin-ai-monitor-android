@@ -1,0 +1,36 @@
+{
+ "lede": "Ardent Research Concept at Jalan Lam Huat and Carros Centre is a car diagnosis and repair workshop.",
+ "chips": [
+  "Diagnosis",
+  "Repairs"
+ ],
+ "services": [
+  "Fault diagnosis",
+  "Car repair",
+  "Car servicing"
+ ],
+ "themes": "Customers on Google Maps mention patient explanations with options and their pros and cons, no pressure, regular updates, and a hard-to-find fault diagnosed after a dealership could not find it.",
+ "faqs": [
+  [
+   "What does Ardent Research Concept do?",
+   "Google Maps lists it as a car repair workshop."
+  ],
+  [
+   "What are the opening hours?",
+   "The hours are listed in the Google Maps section above. Please see Google Maps for current hours."
+  ]
+ ],
+ "sources": "its Google Maps listing",
+ "stories": [],
+ "mentioned_services": [
+  "Fault diagnosis",
+  "Car repair",
+  "Car servicing"
+ ],
+ "services_note": "Services customers mention on Google Maps. Ask the workshop for its full list.",
+ "makes": [],
+ "makes_note": "Not listed on its public pages. Ask the workshop about your car.",
+ "specialties": [],
+ "good_to_know": [],
+ "card_rules": "2026-11-05"
+}

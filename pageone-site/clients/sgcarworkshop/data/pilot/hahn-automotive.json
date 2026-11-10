@@ -1,0 +1,27 @@
+{
+ "lede": "HAHN AUTOMOTIVE is a car repair workshop at 60 Jln Lam Huat, #05-13. Its Google Maps listing shows opening hours and customer ratings.",
+ "chips": [
+  "Car repair"
+ ],
+ "services": [
+  "General servicing and repair"
+ ],
+ "themes": "Customers on Google Maps mention an honest owner, cost-saving fixes, engine oil service packages and checks that only flag worn parts.",
+ "faqs": [
+  [
+   "What does HAHN AUTOMOTIVE do?",
+   "Google Maps lists it as a car repair workshop."
+  ],
+  [
+   "What are the opening hours?",
+   "The hours are listed in the Google Maps section above. Please see Google Maps for current hours."
+  ]
+ ],
+ "sources": "its Google Maps listing",
+ "stories": [],
+ "mentioned_services": [
+  "Engine oil change",
+  "Car servicing",
+  "Car repair"
+ ]
+}

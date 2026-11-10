@@ -1,0 +1,33 @@
+{
+ "businessStatus": "OPERATIONAL",
+ "primaryType": "car_repair",
+ "types": [
+  "car_repair",
+  "service",
+  "point_of_interest",
+  "establishment"
+ ],
+ "rating": 5,
+ "userRatingCount": 30,
+ "websiteUri": null,
+ "paymentOptions": {
+  "acceptsDebitCards": true,
+  "acceptsNfc": true
+ },
+ "parkingOptions": null,
+ "editorialSummary": null,
+ "weekdayDescriptions": [
+  "Monday: 11:00 AM – 8:00 PM",
+  "Tuesday: 11:00 AM – 8:00 PM",
+  "Wednesday: 11:00 AM – 8:00 PM",
+  "Thursday: 11:00 AM – 8:00 PM",
+  "Friday: 11:00 AM – 8:00 PM",
+  "Saturday: 11:00 AM – 6:00 PM",
+  "Sunday: Closed"
+ ],
+ "review_count_seen": 5,
+ "review_themes": "Customers on Google Maps mention years of looking after several family cars, creative repair solutions, clear explanations, servicing and advice that makes the spend worthwhile.",
+ "fetched_at": "2026-11-10",
+ "place_id": "ChIJqTSLvCQX2jERdlkf7YGzvIM",
+ "source": "google_places"
+}

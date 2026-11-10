@@ -1,0 +1,30 @@
+{
+ "lede": "HT Automation is a car repair workshop at 8 Kaki Bukit Ave 4, #03-24. Its Google Maps listing shows opening hours and customer ratings.",
+ "chips": [
+  "Car repair"
+ ],
+ "services": [
+  "General servicing and repair"
+ ],
+ "themes": "Customers on Google Maps mention an honest boss who checks before advising on repairs, diagnostics with modern equipment, costs given before work with no hidden charges, and very reasonable prices.",
+ "faqs": [
+  [
+   "What does HT Automation do?",
+   "Google Maps lists it as a car repair workshop."
+  ],
+  [
+   "What are the opening hours?",
+   "The hours are listed in the Google Maps section above. Please see Google Maps for current hours."
+  ]
+ ],
+ "sources": "its Google Maps listing",
+ "stories": [],
+ "mentioned_services": [
+  "Fault diagnosis",
+  "Car servicing",
+  "Car repair"
+ ],
+ "makes": [],
+ "makes_note": "Not listed on its public pages. Ask the workshop about your car.",
+ "card_rules": "2026-11-05"
+}

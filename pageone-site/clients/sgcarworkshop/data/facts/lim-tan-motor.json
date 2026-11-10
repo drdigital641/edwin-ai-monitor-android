@@ -1,0 +1,64 @@
+{
+ "slug": "lim-tan-motor",
+ "researched_at": "2026-11-02",
+ "researcher": "Claude (Sonnet)",
+ "facts": [
+  {
+   "field": "services",
+   "value": "Diagnostic checks, tyre repairs, aircon repair and maintenance, batteries, brake repair, pre-purchase and LTA pre-vehicle inspection, wheel alignment, EV servicing and repair, accident repairs, insurance claims, spray painting, fleet management",
+   "source_url": "https://ltm.sg/",
+   "retrieved": "2026-11-02"
+  },
+  {
+   "field": "booking",
+   "value": "Online appointment request form",
+   "source_url": "https://ltm.sg/",
+   "retrieved": "2026-11-02"
+  },
+  {
+   "field": "address",
+   "value": "176 Sin Ming Drive, Sin Ming Autocare (units #03-09 main office, #03-06 spray painting, #03-10 servicing and EV centre)",
+   "source_url": "https://ltm.sg/",
+   "retrieved": "2026-11-02"
+  }
+ ],
+ "conflicts": [
+  {
+   "field": "established",
+   "values": [
+    {
+     "value": "since the 1960s / over six decades",
+     "source_url": "https://ltm.sg/"
+    },
+    {
+     "value": "since 1976",
+     "source_url": "https://ltm.sg/faq/"
+    }
+   ],
+   "note": "not used on the page"
+  },
+  {
+   "field": "phone",
+   "values": [
+    {
+     "value": "+65 6452 0893",
+     "source_url": "https://ltm.sg/"
+    },
+    {
+     "value": "+65 8801 9393",
+     "source_url": "https://ltm.sg/faq/"
+    }
+   ],
+   "note": "page uses the stored Google mobile only"
+  }
+ ],
+ "not_found": [
+  "car makes (FAQ says all makes but the FAQ also describes grooming services the site does not list, so it looks like boilerplate; not used)",
+  "payment methods (same FAQ; not used)",
+  "warranty terms",
+  "credentials such as \"EV-Ready\" recognition and insurer approvals: claims not verifiable, not used",
+  "real job stories: none on its website"
+ ],
+ "stories": [],
+ "phone_rule": "Phone = the stored Google mobile only; other numbers are never published."
+}

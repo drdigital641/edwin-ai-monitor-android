@@ -1,0 +1,29 @@
+{
+ "lede": "MD PRIME AUTO SERVICES is a car repair workshop at 11 Tuas South Link 1, #01-24. Its Google Maps listing shows opening hours and customer ratings.",
+ "chips": [
+  "Car repair"
+ ],
+ "services": [
+  "General servicing and repair"
+ ],
+ "themes": "Customers on Google Maps mention a friendly, patient mechanic who explains the problem clearly and resolved a car issue quickly.",
+ "faqs": [
+  [
+   "What does MD PRIME AUTO SERVICES do?",
+   "Google Maps lists it as a car repair workshop."
+  ],
+  [
+   "What are the opening hours?",
+   "The hours are listed in the Google Maps section above. Please see Google Maps for current hours."
+  ]
+ ],
+ "sources": "its Google Maps listing",
+ "stories": [],
+ "mentioned_services": [
+  "Car repair",
+  "Fault check"
+ ],
+ "card_rules": "2026-11-05",
+ "makes": [],
+ "makes_note": "Not listed on its public pages. Ask the workshop about your car."
+}

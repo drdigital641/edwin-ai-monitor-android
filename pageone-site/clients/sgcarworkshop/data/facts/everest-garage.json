@@ -1,0 +1,48 @@
+{
+ "slug": "everest-garage",
+ "researched_at": "2026-11-02",
+ "researcher": "Claude (Sonnet), facts supplied by Edwin's research notes where marked",
+ "facts": [
+  {
+   "field": "company",
+   "value": "Everest Motor Garage Pte Ltd, incorporated Aug 2021 (Edwin research notes: recordowl)",
+   "source_url": "https://recordowl.com",
+   "retrieved": "2026-11-02"
+  },
+  {
+   "field": "focus",
+   "value": "Dedicated to Ford Everest maintenance; says it has handled 6,000+ Everests; says it uses original parts and established brands",
+   "source_url": "https://everestgarageservice.com",
+   "retrieved": "2026-11-02"
+  },
+  {
+   "field": "services",
+   "value": "Regular maintenance (yearly or every 10,000 km); heavy maintenance (filters, fluids, belts, brakes); intake and EGR cleaning",
+   "source_url": "https://everestgarageservice.com",
+   "retrieved": "2026-11-02"
+  },
+  {
+   "field": "address",
+   "value": "25 Kaki Bukit Rd 4 #05-81 Synergy@KB, Singapore 417800",
+   "source_url": "google_profile",
+   "retrieved": "2026-11-02"
+  }
+ ],
+ "conflicts": [],
+ "not_found": [
+  "real job details beyond the post title"
+ ],
+ "stories": [
+  {
+   "title": "Ford Ranger 2.5 timing-belt failure",
+   "car": "Ford Ranger 2.5",
+   "problem": "timing-belt failure",
+   "action": "not stated in the accessible summary",
+   "job_date": "not stated",
+   "source_url": "https://www.facebook.com/story.php?id=100069117125874&story_fbid=814583977522166",
+   "retrieved": "2026-11-02",
+   "notes": "From Edwin's research notes; post body could not be fetched (Facebook blocks the fetcher); wording kept to what is known"
+  }
+ ],
+ "phone_rule": "Stored Google SG mobile only; no second numbers or landlines"
+}

@@ -1,0 +1,33 @@
+{
+ "lede": "XQ Autoworks is a car repair workshop at 8 Kaki Bukit Ave 4, #02-14 Premier@Kaki Bukit. Its Google Maps listing shows opening hours and customer ratings.",
+ "chips": [
+  "Car repair"
+ ],
+ "services": [
+  "General servicing and repair"
+ ],
+ "themes": "Customers on Google Maps mention honest advice without unnecessary repairs, a gearbox overhaul, same-day aircon repair for a hybrid, aircon compressor replacement, and fair, transparent pricing.",
+ "faqs": [
+  [
+   "What does XQ Autoworks do?",
+   "Google Maps lists it as a car repair workshop."
+  ],
+  [
+   "What are the opening hours?",
+   "The hours are listed in the Google Maps section above. Please see Google Maps for current hours."
+  ]
+ ],
+ "sources": "its Google Maps listing",
+ "stories": [],
+ "mentioned_services": [
+  "Gearbox overhaul",
+  "Aircon repair",
+  "Aircon compressor replacement",
+  "Throttle body cleaning"
+ ],
+ "makes": [
+  "Honda"
+ ],
+ "makes_note": "Named by customers on Google Maps. Ask the workshop about other makes.",
+ "card_rules": "2026-11-05"
+}

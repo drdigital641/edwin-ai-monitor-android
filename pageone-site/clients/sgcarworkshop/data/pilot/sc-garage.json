@@ -1,0 +1,27 @@
+{
+ "lede": "SC Garage is a car repair workshop at 184 Woodlands Industrial Park E5, #01-01. Its Google Maps listing shows opening hours and customer ratings.",
+ "chips": [
+  "Car repair"
+ ],
+ "services": [
+  "General servicing and repair"
+ ],
+ "themes": "Customers on Google Maps mention work done to the owner’s budget with no hard selling, clear pros and cons on parts, thorough wear-and-tear checks and a servicing package.",
+ "faqs": [
+  [
+   "What does SC Garage do?",
+   "Google Maps lists it as a car repair workshop."
+  ],
+  [
+   "What are the opening hours?",
+   "The hours are listed in the Google Maps section above. Please see Google Maps for current hours."
+  ]
+ ],
+ "sources": "its Google Maps listing",
+ "stories": [],
+ "mentioned_services": [
+  "Car servicing",
+  "Servicing packages",
+  "Car repair"
+ ]
+}

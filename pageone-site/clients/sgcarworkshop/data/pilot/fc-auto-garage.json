@@ -1,0 +1,32 @@
+{
+ "lede": "FC Auto Garage is a car repair workshop at 8 Kaki Bukit Ave 4, #02-15 Premier@KB. Its Google Maps listing shows opening hours and customer ratings.",
+ "chips": [
+  "Car repair"
+ ],
+ "services": [
+  "General servicing and repair"
+ ],
+ "themes": "Customers on Google Maps mention a knowledgeable boss and mechanics, fair and honest charges, fast response, and good support for Toyota Hiace vans and diesel engines.",
+ "faqs": [
+  [
+   "What does FC Auto Garage do?",
+   "Google Maps lists it as a car repair workshop."
+  ],
+  [
+   "What are the opening hours?",
+   "The hours are listed in the Google Maps section above. Please see Google Maps for current hours."
+  ]
+ ],
+ "sources": "its Google Maps listing",
+ "stories": [],
+ "mentioned_services": [
+  "Car servicing",
+  "Toyota Hiace",
+  "Diesel engine repair"
+ ],
+ "card_rules": "2026-11-05",
+ "makes": [
+  "Toyota"
+ ],
+ "makes_note": "Named by customers on Google Maps. Ask the workshop about other makes."
+}

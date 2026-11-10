@@ -1,0 +1,28 @@
+{
+ "lede": "Han Car Repairs is a car repair workshop at 1001 Bukit Merah Lane 3 #01-49 & #01-47. Its Google Maps listing shows opening hours and customer ratings.",
+ "chips": [
+  "Car repair"
+ ],
+ "services": [
+  "General servicing and repair"
+ ],
+ "themes": "Customers on Google Maps mention a pre-purchase inspection of a used car, aircon cooling coil replacement, an engine light fault and a Mercedes boot repair.",
+ "faqs": [
+  [
+   "What does Han Car Repairs do?",
+   "Google Maps lists it as a car repair workshop."
+  ],
+  [
+   "What are the opening hours?",
+   "The hours are listed in the Google Maps section above. Please see Google Maps for current hours."
+  ]
+ ],
+ "sources": "its Google Maps listing",
+ "stories": [],
+ "mentioned_services": [
+  "Pre-purchase inspection",
+  "Car aircon repair",
+  "Fault diagnosis",
+  "Mercedes-Benz cars"
+ ]
+}

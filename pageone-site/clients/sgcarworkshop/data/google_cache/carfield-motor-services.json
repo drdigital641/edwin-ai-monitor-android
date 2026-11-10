@@ -1,0 +1,32 @@
+{
+ "businessStatus": "OPERATIONAL",
+ "primaryType": "car_repair",
+ "types": [
+  "chauffeur_service",
+  "car_repair",
+  "transportation_service",
+  "point_of_interest",
+  "service",
+  "establishment"
+ ],
+ "rating": 4.1,
+ "userRatingCount": 8,
+ "websiteUri": null,
+ "paymentOptions": null,
+ "parkingOptions": null,
+ "editorialSummary": null,
+ "weekdayDescriptions": [
+  "Monday: 8:30 AM – 7:00 PM",
+  "Tuesday: 8:30 AM – 7:00 PM",
+  "Wednesday: 8:30 AM – 7:00 PM",
+  "Thursday: 8:30 AM – 7:00 PM",
+  "Friday: 8:30 AM – 7:00 PM",
+  "Saturday: 8:30 AM – 7:00 PM",
+  "Sunday: Closed"
+ ],
+ "review_count_seen": 5,
+ "review_themes": "Customers on Google Maps mention a plain-looking workshop with competitive prices, quick troubleshooting and faster repairs.",
+ "fetched_at": "2026-11-03",
+ "place_id": "ChIJ-bSN1ssX2jERHGNw1rqjG5U",
+ "source": "google_places"
+}

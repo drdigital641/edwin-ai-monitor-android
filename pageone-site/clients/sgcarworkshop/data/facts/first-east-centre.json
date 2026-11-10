@@ -1,0 +1,28 @@
+{
+ "slug": "first-east-centre",
+ "researched_at": "2026-11-02",
+ "researcher": "Claude (Sonnet)",
+ "facts": [
+  {
+   "field": "category",
+   "value": "Car repair workshop: general servicing and repair",
+   "source_url": "google_profile",
+   "retrieved": "2026-11-02"
+  }
+ ],
+ "conflicts": [
+  {
+   "field": "note",
+   "values": [],
+   "note": "Name matches an industrial building; Google lists it as a car repair workshop"
+  }
+ ],
+ "not_found": [
+  "own website",
+  "public social, SGCarMart or Carousell page with services or job posts",
+  "real job stories",
+  "opening hours (never stated)"
+ ],
+ "stories": [],
+ "phone_rule": "Google business profile mobile is the source of truth (Edwin, 2 Nov 2026)"
+}

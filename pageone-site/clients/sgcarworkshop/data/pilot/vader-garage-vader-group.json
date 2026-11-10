@@ -1,0 +1,32 @@
+{
+ "lede": "Vader Garage (Vader Group) is a car repair workshop at 8 Kaki Bukit Ave 4, #04-30. Its Google Maps listing shows opening hours and customer ratings.",
+ "chips": [
+  "Car repair"
+ ],
+ "services": [
+  "General servicing and repair"
+ ],
+ "themes": "Customers on Google Maps mention gearbox and wear-and-tear work on a Porsche Cayman done in two days, BMW brake pads, a transmission fluid change, a Mercedes-Benz supercharger fix and detailed explanations at competitive prices.",
+ "faqs": [
+  [
+   "What does Vader Garage (Vader Group) do?",
+   "Google Maps lists it as a car repair workshop."
+  ],
+  [
+   "What are the opening hours?",
+   "The hours are listed in the Google Maps section above. Please see Google Maps for current hours."
+  ]
+ ],
+ "sources": "its Google Maps listing",
+ "stories": [],
+ "mentioned_services": [
+  "Gearbox repair",
+  "Brake pads",
+  "Transmission fluid change",
+  "Supercharger repair",
+  "Car servicing"
+ ],
+ "makes": [],
+ "makes_note": "Not listed on its public pages. Ask the workshop about your car.",
+ "card_rules": "2026-11-05"
+}

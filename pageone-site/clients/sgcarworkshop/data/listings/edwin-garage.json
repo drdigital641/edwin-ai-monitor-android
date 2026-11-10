@@ -1,0 +1,193 @@
+{
+ "slug": "edwin-garage",
+ "tier": "premium_leadgen",
+ "founder_owned": true,
+ "name": "Edwin Garage",
+ "domain": "sggarage.com",
+ "url": "https://sggarage.com/",
+ "category": "general-servicing-repair",
+ "categories": [
+  "general-servicing-repair",
+  "spray-painting-bodywork",
+  "car-aircon-repair",
+  "car-battery",
+  "abs-ecu-module-repair"
+ ],
+ "regions": [
+  "north-east"
+ ],
+ "regions_note": "Ang Mo Kio is in the North-East region (URA). Address: Ang Mo Kio Industrial Park 2 (units #01-295 and #01-309).",
+ "area_label": "Ang Mo Kio",
+ "title": "Edwin Garage | Car Servicing, Aircon and Repair, Ang Mo Kio",
+ "desc": "Edwin Garage (SG Garage) in Ang Mo Kio: servicing from $128, aircon, brakes, batteries and accident repair. WhatsApp 9785 6612, Mon to Sat.",
+ "card_img": {
+  "f": "sggarage-edwin-garage-shopfront-01-295.webp",
+  "alt": "Edwin Garage shopfront at Blk 5032 Ang Mo Kio Industrial Park 2"
+ },
+ "card_text": [
+  "Owner-run car workshop in Ang Mo Kio Industrial Park 2, open Monday to Saturday.",
+  "Servicing from $128, aircon, brakes, batteries and accident repair."
+ ],
+ "lede": "Edwin Garage is an owner-run workshop at unit #01-295, Ang Mo Kio Industrial Park 2. It services and repairs Japanese, Korean, European and electric cars and handles accident repairs with the insurance paperwork. Car aircon work is done next door at unit #01-309, under the SG Garage name. Both units share one website, sggarage.com. WhatsApp 9785 6612 to ask about your car.",
+ "services": [
+  {
+   "n": "Car servicing",
+   "d": "Engine oil and filter service. A major service is priced after the car is inspected.",
+   "p": "From $128 (Japanese, Korean) / $148 (European)"
+  },
+  {
+   "n": "Brake pads",
+   "d": "Pad replacement, with the brakes checked before and after.",
+   "p": "From $120 (Japanese) / $140 (European)"
+  },
+  {
+   "n": "Car battery replacement",
+   "d": "Walk-in, Monday to Saturday 10am to 8pm, subject to stock. The battery, alternator and starter are tested first so the right part is replaced.",
+   "p": "From $120, AGM from $250"
+  },
+  {
+   "n": "ABS pump repair",
+   "d": "Repair of the ABS pump, with a new unit as the alternative.",
+   "p": "Repair from $950, new unit from $1,600"
+  },
+  {
+   "n": "Accident claim and spray painting",
+   "d": "Accident repair with help on the insurance claim, panel beating and spray painting.",
+   "p": "Quoted after inspection"
+  },
+  {
+   "n": "Tesla, hybrid and EV work",
+   "d": "Electric and hybrid cars are worked on in the same bays. Tesla jobs since 2019.",
+   "p": null
+  },
+  {
+   "n": "Car aircon repair (unit #01-309)",
+   "d": "Gas top-up after a leak check, plus compressor, cooling coil and condenser work and treatment for aircon odour.",
+   "p": "Aircon gas top-up from $20, after a leak check",
+   "pt": "From $20, after a leak check"
+  }
+ ],
+ "price_note": "Prices are starting prices and include parts, labour and GST. The final price is confirmed after inspection and before work starts. Diagnosis is $30 if you decide not to go ahead.",
+ "phone": "+6597856612",
+ "phone_show": "9785 6612",
+ "whatsapp": "6597856612",
+ "book_url": "https://sggarageedwin.as.me/",
+ "book_label": "Book a slot online",
+ "addresses": [
+  {
+   "label": "Edwin Garage (servicing, repairs and registration)",
+   "street": "Blk 5032 Ang Mo Kio Industrial Park 2, #01-295",
+   "postal": "569535",
+   "note": "Ground floor, look for the green Edwin Garage signboard. About 5 to 10 minutes from Ang Mo Kio MRT."
+  },
+  {
+   "label": "SG Garage (car aircon)",
+   "street": "Blk 5032 Ang Mo Kio Industrial Park 2, #01-309",
+   "postal": "569535"
+  }
+ ],
+ "map_url": "https://www.google.com/maps/search/?api=1&query=Edwin%20Garage%2C%205032%20Ang%20Mo%20Kio%20Industrial%20Park%202%20%2301-295%20Singapore%20569535",
+ "hours": [
+  [
+   "Mon to Sat",
+   "10am to 8pm"
+  ],
+  [
+   "Sun",
+   "Closed"
+  ]
+ ],
+ "hours_ld": [
+  [
+   [
+    "Monday",
+    "Tuesday",
+    "Wednesday",
+    "Thursday",
+    "Friday",
+    "Saturday"
+   ],
+   "10:00",
+   "20:00"
+  ]
+ ],
+ "hours_note": "Servicing, repairs and diagnosis are by appointment. Battery replacement is walk-in, subject to stock.",
+ "social": [],
+ "google_rating": {
+  "rating": 4.9,
+  "count": 600,
+  "count_text": "600+",
+  "checked": "2026-11-01",
+  "url": "https://share.google/hYkZhnKyoAEeERhWM",
+  "source": "sggarage.com (owner's Google profile)"
+ },
+ "photos": [
+  {
+   "f": "sggarage-edwin-garage-shopfront-01-295.webp",
+   "alt": "Edwin Garage shopfront with green signboard and cars parked outside",
+   "cap": "The shopfront at unit #01-295."
+  },
+  {
+   "f": "sggarage-edwin-garage-workshop-bays.webp",
+   "alt": "A Kia on the lift and a Tesla Model 3 in the Edwin Garage service bay",
+   "cap": "Inside the bays: a Kia on the lift and a Tesla Model 3 being worked on."
+  },
+  {
+   "f": "sggarage-tesla-radiator-cleaning-hero.jpg",
+   "alt": "Mechanic clearing dried leaves from a Tesla radiator",
+   "cap": "Clearing dried leaves from a Tesla radiator."
+  },
+  {
+   "f": "sggarage-tesla-lca-1.jpg",
+   "alt": "Tesla suspension arms laid out during a lower control arm replacement",
+   "cap": "Tesla lower control arm job: the suspension arms laid out."
+  },
+  {
+   "f": "sggarage-tesla-lca-3.jpg",
+   "alt": "Close-up of a worn Tesla control arm bushing",
+   "cap": "A worn control arm bushing, close up."
+  },
+  {
+   "f": "sggarage-sg-garage-shopfront-01-309.webp",
+   "alt": "SG Garage shopfront at #01-309, Ang Mo Kio",
+   "cap": "The aircon unit next door, SG Garage at #01-309. Registration is at the Edwin Garage counter, #01-295."
+  }
+ ],
+ "note": "Owned by the site's founder.",
+ "faqs": [
+  [
+   "Do I need an appointment?",
+   "Yes for servicing, repairs and diagnosis: book a slot online or message on WhatsApp. Battery replacement is the exception, it is walk-in from Monday to Saturday, 10am to 8pm, subject to stock."
+  ],
+  [
+   "Are the listed prices the final price?",
+   "They are starting prices that cover parts, labour and GST. The final price is confirmed after the car is inspected, and nothing starts until you agree. If you decide against the repair, diagnosis is $30."
+  ],
+  [
+   "Where is Edwin Garage and when is it open?",
+   "Blk 5032 Ang Mo Kio Industrial Park 2, #01-295, Singapore 569535, open Monday to Saturday, 10am to 8pm, closed on Sundays."
+  ],
+  [
+   "Which cars can it work on?",
+   "Japanese, Korean and European cars, hybrids and electric cars. Tesla work has been part of the mix since 2019."
+  ],
+  [
+   "How can I pay?",
+   "Cash or PayNow are preferred. Credit cards carry a 3% surcharge."
+  ],
+  [
+   "Is SG Garage the same business?",
+   "Yes. SG Garage at unit #01-309 is the car aircon side of Edwin Garage, on the same website, sggarage.com, with the same WhatsApp number and hours. Register at the Edwin Garage counter, #01-295."
+  ]
+ ],
+ "source": {
+  "name": "sggarage.com live pages (index, about, prices), read via the Bluehost Bridge on 1 Nov 2026; SG Garage card merged in (Edwin, 7 Nov 2026)",
+  "contact": "Site says enquiries by WhatsApp; the same number is the telephone in its LocalBusiness data, so a Call button is shown (CONFIRM with Edwin)",
+  "reviews": "Home and about pages: 4.9 stars, 600+ Google reviews, share.google link"
+ },
+ "left_out": [
+  "customer review quotes (rating line only)",
+  "towing partner number (third party)"
+ ],
+ "_order": 2
+}

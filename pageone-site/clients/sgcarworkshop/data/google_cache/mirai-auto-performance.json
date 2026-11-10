@@ -1,0 +1,35 @@
+{
+ "businessStatus": "OPERATIONAL",
+ "primaryType": "car_repair",
+ "types": [
+  "car_repair",
+  "point_of_interest",
+  "service",
+  "establishment"
+ ],
+ "rating": 4.7,
+ "userRatingCount": 68,
+ "websiteUri": "https://revu.website/156651/",
+ "paymentOptions": {
+  "acceptsCashOnly": false,
+  "acceptsNfc": true
+ },
+ "parkingOptions": {
+  "freeParkingLot": true
+ },
+ "editorialSummary": null,
+ "weekdayDescriptions": [
+  "Monday: 9:00 AM – 6:00 PM",
+  "Tuesday: 9:00 AM – 6:00 PM",
+  "Wednesday: 9:00 AM – 6:00 PM",
+  "Thursday: 9:00 AM – 6:00 PM",
+  "Friday: 9:00 AM – 6:00 PM",
+  "Saturday: 9:00 AM – 3:00 PM",
+  "Sunday: Closed"
+ ],
+ "review_count_seen": 5,
+ "review_themes": "Customers on Google Maps mention easy appointment booking, servicing done in about an hour, a 36-point checklist, a comfortable lounge while waiting, and spark plug and intake decarbonisation work after warning lights came on.",
+ "fetched_at": "2026-11-05",
+ "place_id": "ChIJb7VtqxIZ2jEREE5s5qQtEfA",
+ "source": "google_places"
+}

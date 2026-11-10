@@ -1,0 +1,26 @@
+{
+ "lede": "Ubi Automobile Services is a car repair workshop at 3018A Ubi Rd 1. Its Google Maps listing shows opening hours and customer ratings.",
+ "chips": [
+  "Car repair"
+ ],
+ "services": [
+  "General servicing and repair"
+ ],
+ "themes": "Customers on Google Maps mention a reasonable quote for bumper repair and sensible advice. Only 5 people have rated it so far.",
+ "faqs": [
+  [
+   "What does Ubi Automobile Services do?",
+   "Google Maps lists it as a car repair workshop."
+  ],
+  [
+   "What are the opening hours?",
+   "The hours are listed in the Google Maps section above. Please see Google Maps for current hours."
+  ]
+ ],
+ "sources": "its Google Maps listing",
+ "stories": [],
+ "mentioned_services": [
+  "Bumper repair",
+  "Car repair advice"
+ ]
+}

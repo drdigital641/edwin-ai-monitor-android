@@ -1,0 +1,30 @@
+{
+ "free": {
+  "label": "Basic listing",
+  "badge": "Basic listing",
+  "price": 0,
+  "price_text": "Free",
+  "tagline": "Get found"
+ },
+ "premium": {
+  "label": "Verified listing",
+  "badge": "Verified",
+  "price": 20,
+  "price_text": "Ask us on WhatsApp",
+  "tagline": "Landing page"
+ },
+ "none": {
+  "label": "Founder-owned listing",
+  "badge": "Owned by the site's founder",
+  "price": 0,
+  "price_text": "Not for sale",
+  "tagline": "Founder-owned"
+ },
+ "premium_leadgen": {
+  "label": "Premium",
+  "badge": "Featured (paid)",
+  "price": 50,
+  "price_text": "Ask us on WhatsApp",
+  "tagline": "Full Page One website setup"
+ }
+}

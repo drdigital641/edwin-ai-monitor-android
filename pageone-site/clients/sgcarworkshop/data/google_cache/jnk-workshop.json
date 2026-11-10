@@ -1,0 +1,35 @@
+{
+ "businessStatus": "OPERATIONAL",
+ "primaryType": "car_repair",
+ "types": [
+  "car_repair",
+  "point_of_interest",
+  "service",
+  "establishment"
+ ],
+ "rating": 5,
+ "userRatingCount": 57,
+ "websiteUri": "https://www.sgcarmart.com/directory/merchant.php?MID=18863&fbclid=IwY2xjawFPkTBleHRuA2FlbQIxMAABHdLPCaKZtOBdv_6raWEvynKM_Lyv8ohX6ORpDHcAl_tveTyIJSDwunTeVQ_aem_dw8ei8YnsRAlbGzbwypbZw",
+ "paymentOptions": {
+  "acceptsCreditCards": true,
+  "acceptsDebitCards": true,
+  "acceptsCashOnly": false,
+  "acceptsNfc": true
+ },
+ "parkingOptions": null,
+ "editorialSummary": null,
+ "weekdayDescriptions": [
+  "Monday: 10:00 AM – 7:00 PM",
+  "Tuesday: 10:00 AM – 7:00 PM",
+  "Wednesday: 10:00 AM – 7:00 PM",
+  "Thursday: 10:00 AM – 7:00 PM",
+  "Friday: 10:00 AM – 7:00 PM",
+  "Saturday: 10:00 AM – 5:00 PM",
+  "Sunday: Closed"
+ ],
+ "review_count_seen": 5,
+ "review_themes": "Customers on Google Maps mention help for first-time car owners, patient fixing of many error codes, a crankshaft repair, tyres and quick installs of modifications.",
+ "fetched_at": "2026-11-03",
+ "place_id": "ChIJB2_rSywR2jERITOeHVR436w",
+ "source": "google_places"
+}

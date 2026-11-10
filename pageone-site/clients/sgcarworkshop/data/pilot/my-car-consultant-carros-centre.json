@@ -1,0 +1,51 @@
+{
+ "lede": "My Car Consultant @ Carros Centre at Jalan Lam Huat and Carros Centre is a car servicing, repair and accident claims workshop.",
+ "chips": [
+  "Accident claims",
+  "Servicing"
+ ],
+ "services": [
+  "Accident claims and repairs",
+  "Servicing and diagnostics",
+  "General repair",
+  "Spray painting",
+  "Pre-purchase car evaluation",
+  "Hybrid car servicing",
+  "Towing and recovery",
+  "Fleet maintenance"
+ ],
+ "themes": "Customers on Google Maps mention help with accident repairs, servicing and inspection, OBU installation, battery replacement, pre-trip checks and a quick tow arranged after a breakdown.",
+ "faqs": [
+  [
+   "What does My Car Consultant @ Carros Centre do?",
+   "Google Maps lists it as a car repair workshop."
+  ],
+  [
+   "What are the opening hours?",
+   "The hours are listed in the Google Maps section above. Please see Google Maps for current hours."
+  ]
+ ],
+ "sources": "its own website (mycarholdings.asia)",
+ "stories": [],
+ "mentioned_services": [
+  "Accident repairs",
+  "Car servicing",
+  "Vehicle inspection",
+  "OBU installation",
+  "Battery replacement",
+  "Towing"
+ ],
+ "services_note": "Services as listed on the workshop's own website, mycarholdings.asia.",
+ "makes": [],
+ "makes_note": "Not listed on its public pages. Ask the workshop about your car.",
+ "specialties": [
+  "Accident and insurance claims",
+  "Hybrid and EV maintenance",
+  "Fleet maintenance"
+ ],
+ "good_to_know": [
+  "Works on all makes and models, according to its website",
+  "Also has a second workshop at AMK AutoPoint, according to its website"
+ ],
+ "card_rules": "2026-11-05"
+}

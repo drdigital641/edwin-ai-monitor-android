@@ -1,0 +1,527 @@
+[
+ {
+  "slug": "kaki-bukit",
+  "name": "Kaki Bukit",
+  "region": "east",
+  "lat": 1.3345,
+  "lon": 103.905,
+  "nearby": [
+   "ubi",
+   "eunos",
+   "bedok-north"
+  ],
+  "postal_prefixes": [
+   "415",
+   "416",
+   "417"
+  ],
+  "keywords": [
+   "kaki bukit"
+  ],
+  "intro": "Kaki Bukit is an industrial estate in the East region, around Kaki Bukit Avenue and Kaki Bukit Road, with many workshops, trade units and parts suppliers."
+ },
+ {
+  "slug": "ubi",
+  "name": "Ubi",
+  "region": "central",
+  "lat": 1.33,
+  "lon": 103.897,
+  "nearby": [
+   "kaki-bukit",
+   "eunos",
+   "macpherson"
+  ],
+  "postal_prefixes": [
+   "408"
+  ],
+  "keywords": [
+   "ubi ave",
+   "ubi road",
+   "ubi rd",
+   "paya ubi"
+  ],
+  "intro": "Ubi is an industrial area near Paya Lebar in the Geylang planning area (Central region), around Ubi Avenue and Ubi Road, with motor workshops mixed in among light industry."
+ },
+ {
+  "slug": "eunos",
+  "name": "Eunos",
+  "region": "central",
+  "lat": 1.319,
+  "lon": 103.904,
+  "nearby": [
+   "ubi",
+   "kaki-bukit",
+   "bedok-north"
+  ],
+  "postal_prefixes": [
+   "400",
+   "401",
+   "402",
+   "403",
+   "404",
+   "405",
+   "406",
+   "407",
+   "409"
+  ],
+  "keywords": [
+   "eunos"
+  ],
+  "intro": "Eunos is a mixed residential and industrial area in the Geylang planning area (Central region), close to Paya Lebar, Ubi and Kaki Bukit."
+ },
+ {
+  "slug": "bedok-north",
+  "name": "Bedok North",
+  "region": "east",
+  "lat": 1.335,
+  "lon": 103.931,
+  "nearby": [
+   "kaki-bukit",
+   "eunos",
+   "changi-loyang",
+   "tampines"
+  ],
+  "postal_prefixes": [
+   "46"
+  ],
+  "keywords": [
+   "bedok north"
+  ],
+  "intro": "Bedok North is an industrial pocket in the East region, around Bedok North Avenue and Bedok North Street."
+ },
+ {
+  "slug": "tampines",
+  "name": "Tampines",
+  "region": "east",
+  "lat": 1.353,
+  "lon": 103.944,
+  "nearby": [
+   "bedok-north",
+   "changi-loyang",
+   "kaki-bukit"
+  ],
+  "postal_prefixes": [
+   "52"
+  ],
+  "keywords": [
+   "tampines"
+  ],
+  "intro": "Tampines is a town in the East region with light industrial parks around Tampines Street 92 and 93."
+ },
+ {
+  "slug": "changi-loyang",
+  "name": "Changi and Loyang",
+  "region": "east",
+  "lat": 1.348,
+  "lon": 103.972,
+  "nearby": [
+   "bedok-north",
+   "kaki-bukit"
+  ],
+  "postal_prefixes": [
+   "486",
+   "49",
+   "50"
+  ],
+  "keywords": [
+   "loyang",
+   "changi"
+  ],
+  "intro": "Changi and Loyang cover the industrial areas at the east end of Singapore, around Loyang Way and Changi South."
+ },
+ {
+  "slug": "woodlands",
+  "name": "Woodlands",
+  "region": "north",
+  "lat": 1.444,
+  "lon": 103.793,
+  "nearby": [
+   "kranji",
+   "sembawang-admiralty",
+   "yishun"
+  ],
+  "postal_prefixes": [
+   "730",
+   "731",
+   "732",
+   "733",
+   "734",
+   "735",
+   "736",
+   "737",
+   "738",
+   "757"
+  ],
+  "keywords": [
+   "woodlands"
+  ],
+  "intro": "Woodlands is the main industrial area in the north-west, around Woodlands Industrial Park and the Woodlands Avenue roads, close to the Causeway."
+ },
+ {
+  "slug": "kranji",
+  "name": "Kranji",
+  "region": "north",
+  "lat": 1.42,
+  "lon": 103.762,
+  "nearby": [
+   "woodlands",
+   "sembawang-admiralty"
+  ],
+  "postal_prefixes": [
+   "72",
+   "739"
+  ],
+  "keywords": [
+   "kranji",
+   "jalan lam huat",
+   "sungei kadut"
+  ],
+  "intro": "Kranji is an industrial area in the north-west, around Kranji Way, Jalan Lam Huat and Sungei Kadut."
+ },
+ {
+  "slug": "yishun",
+  "name": "Yishun",
+  "region": "north",
+  "lat": 1.422,
+  "lon": 103.835,
+  "nearby": [
+   "sembawang-admiralty",
+   "woodlands",
+   "ang-mo-kio"
+  ],
+  "postal_prefixes": [
+   "76",
+   "77"
+  ],
+  "keywords": [
+   "yishun"
+  ],
+  "intro": "Yishun has two main motor trade clusters, Yishun Industrial Park A and the Yishun Industrial Street 1 area around North Spring Bizhub."
+ },
+ {
+  "slug": "sembawang-admiralty",
+  "name": "Sembawang and Admiralty",
+  "region": "north",
+  "lat": 1.44,
+  "lon": 103.817,
+  "nearby": [
+   "woodlands",
+   "yishun",
+   "kranji"
+  ],
+  "postal_prefixes": [
+   "750",
+   "751",
+   "752",
+   "753",
+   "754",
+   "755",
+   "756",
+   "758",
+   "759"
+  ],
+  "keywords": [
+   "sembawang",
+   "admiralty"
+  ],
+  "intro": "Sembawang and Admiralty are neighbourhoods in the north of Singapore, along roads such as Sembawang Road."
+ },
+ {
+  "slug": "ang-mo-kio",
+  "name": "Ang Mo Kio",
+  "region": "north-east",
+  "lat": 1.38,
+  "lon": 103.866,
+  "nearby": [
+   "serangoon-north",
+   "sin-ming-bishan",
+   "yishun"
+  ],
+  "postal_prefixes": [
+   "56"
+  ],
+  "keywords": [
+   "ang mo kio"
+  ],
+  "intro": "Ang Mo Kio has a long-running industrial estate, Ang Mo Kio Industrial Park, with workshops serving the north-east."
+ },
+ {
+  "slug": "serangoon-north",
+  "name": "Serangoon North",
+  "region": "north-east",
+  "lat": 1.368,
+  "lon": 103.87,
+  "nearby": [
+   "ang-mo-kio",
+   "defu-hougang",
+   "sin-ming-bishan"
+  ],
+  "postal_prefixes": [
+   "55"
+  ],
+  "keywords": [
+   "serangoon north"
+  ],
+  "intro": "Serangoon North is an industrial and residential area in the North-East region, around Serangoon North Avenue."
+ },
+ {
+  "slug": "defu-hougang",
+  "name": "Defu and Hougang",
+  "region": "north-east",
+  "lat": 1.36,
+  "lon": 103.89,
+  "nearby": [
+   "serangoon-north",
+   "sengkang",
+   "macpherson"
+  ],
+  "postal_prefixes": [
+   "53"
+  ],
+  "keywords": [
+   "defu",
+   "hougang",
+   "kovan"
+  ],
+  "intro": "Defu and Hougang cover the Defu Lane industrial area and the Hougang neighbourhood in the North-East region."
+ },
+ {
+  "slug": "sengkang",
+  "name": "Sengkang",
+  "region": "north-east",
+  "lat": 1.391,
+  "lon": 103.895,
+  "nearby": [
+   "defu-hougang",
+   "serangoon-north"
+  ],
+  "postal_prefixes": [
+   "54",
+   "82"
+  ],
+  "keywords": [
+   "sengkang",
+   "punggol"
+  ],
+  "intro": "Sengkang and nearby Punggol are newer residential towns in the North-East region."
+ },
+ {
+  "slug": "sin-ming-bishan",
+  "name": "Sin Ming and Bishan",
+  "region": "central",
+  "lat": 1.364,
+  "lon": 103.834,
+  "nearby": [
+   "ang-mo-kio",
+   "toa-payoh",
+   "serangoon-north"
+  ],
+  "postal_prefixes": [
+   "57"
+  ],
+  "keywords": [
+   "sin ming",
+   "bishan"
+  ],
+  "intro": "Sin Ming and Bishan take in the Sin Ming Industrial Estate and the Bishan area in the middle of Singapore."
+ },
+ {
+  "slug": "toa-payoh",
+  "name": "Toa Payoh",
+  "region": "central",
+  "lat": 1.333,
+  "lon": 103.856,
+  "nearby": [
+   "sin-ming-bishan",
+   "macpherson",
+   "jalan-besar-kallang-bahru"
+  ],
+  "postal_prefixes": [
+   "31",
+   "32"
+  ],
+  "keywords": [
+   "toa payoh"
+  ],
+  "intro": "Toa Payoh has an industrial park and trade units in the Central region, close to Bishan and MacPherson."
+ },
+ {
+  "slug": "macpherson",
+  "name": "MacPherson",
+  "region": "central",
+  "lat": 1.327,
+  "lon": 103.887,
+  "nearby": [
+   "toa-payoh",
+   "ubi",
+   "jalan-besar-kallang-bahru"
+  ],
+  "postal_prefixes": [
+   "36"
+  ],
+  "keywords": [
+   "macpherson"
+  ],
+  "intro": "MacPherson is an area in the Central region around MacPherson Road, close to Ubi and Paya Lebar."
+ },
+ {
+  "slug": "jalan-besar-kallang-bahru",
+  "name": "Jalan Besar and Kallang Bahru",
+  "region": "central",
+  "lat": 1.311,
+  "lon": 103.866,
+  "nearby": [
+   "macpherson",
+   "toa-payoh",
+   "alexandra-bukit-merah"
+  ],
+  "postal_prefixes": [
+   "19",
+   "33",
+   "34"
+  ],
+  "keywords": [
+   "jalan besar",
+   "kallang"
+  ],
+  "intro": "Jalan Besar and Kallang Bahru are central areas with a long history of motor trade units and workshops."
+ },
+ {
+  "slug": "newton-novena",
+  "name": "Newton and Novena",
+  "region": "central",
+  "lat": 1.313,
+  "lon": 103.84,
+  "nearby": [
+   "toa-payoh",
+   "jalan-besar-kallang-bahru",
+   "alexandra-bukit-merah"
+  ],
+  "postal_prefixes": [
+   "22"
+  ],
+  "keywords": [
+   "newton",
+   "novena"
+  ],
+  "intro": "Newton and Novena sit just north of Orchard Road in the Central region, around Newton Circus and Bukit Timah Road."
+ },
+ {
+  "slug": "alexandra-bukit-merah",
+  "name": "Alexandra and Bukit Merah",
+  "region": "central",
+  "lat": 1.286,
+  "lon": 103.813,
+  "nearby": [
+   "jalan-besar-kallang-bahru",
+   "toa-payoh"
+  ],
+  "postal_prefixes": [
+   "14",
+   "15",
+   "16"
+  ],
+  "keywords": [
+   "alexandra",
+   "bukit merah",
+   "henderson"
+  ],
+  "intro": "Alexandra and Bukit Merah cover the south side of the Central region, around Alexandra Road, Bukit Merah and Henderson."
+ },
+ {
+  "slug": "toh-guan-jurong-east",
+  "name": "Toh Guan and Jurong East",
+  "region": "west",
+  "lat": 1.334,
+  "lon": 103.743,
+  "nearby": [
+   "jurong-west",
+   "bukit-batok",
+   "pandan-loop"
+  ],
+  "postal_prefixes": [
+   "60",
+   "61"
+  ],
+  "keywords": [
+   "toh guan",
+   "jurong east",
+   "enterprise hub"
+  ],
+  "intro": "Toh Guan and Jurong East are in the West region, around Toh Guan Road East and the Enterprise Hub industrial building."
+ },
+ {
+  "slug": "jurong-west",
+  "name": "Jurong West",
+  "region": "west",
+  "lat": 1.34,
+  "lon": 103.705,
+  "nearby": [
+   "toh-guan-jurong-east",
+   "tuas",
+   "bukit-batok"
+  ],
+  "postal_prefixes": [
+   "64"
+  ],
+  "keywords": [
+   "jurong west"
+  ],
+  "intro": "Jurong West is a large area in the West region with industrial units alongside housing estates."
+ },
+ {
+  "slug": "pandan-loop",
+  "name": "Pandan Loop",
+  "region": "west",
+  "lat": 1.315,
+  "lon": 103.75,
+  "nearby": [
+   "toh-guan-jurong-east",
+   "bukit-batok"
+  ],
+  "postal_prefixes": [
+   "12"
+  ],
+  "keywords": [
+   "pandan"
+  ],
+  "intro": "Pandan Loop is a small industrial area in the West region, near Clementi and Jurong East."
+ },
+ {
+  "slug": "bukit-batok",
+  "name": "Bukit Batok",
+  "region": "west",
+  "lat": 1.356,
+  "lon": 103.752,
+  "nearby": [
+   "toh-guan-jurong-east",
+   "jurong-west",
+   "pandan-loop"
+  ],
+  "postal_prefixes": [
+   "65",
+   "66"
+  ],
+  "keywords": [
+   "bukit batok"
+  ],
+  "intro": "Bukit Batok has industrial parks in the West region, including Bukit Batok Industrial Park A."
+ },
+ {
+  "slug": "tuas",
+  "name": "Tuas",
+  "region": "west",
+  "lat": 1.3,
+  "lon": 103.64,
+  "nearby": [
+   "jurong-west"
+  ],
+  "postal_prefixes": [
+   "63"
+  ],
+  "keywords": [
+   "tuas"
+  ],
+  "intro": "Tuas is the industrial area at the far west of Singapore, around Tuas Avenue and Tuas South."
+ }
+]

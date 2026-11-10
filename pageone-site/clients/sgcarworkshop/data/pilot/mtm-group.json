@@ -1,0 +1,47 @@
+{
+ "lede": "MTM Group is a car workshop. Its own website calls it a one-stop car workshop, with servicing packages, repairs and maintenance, accident claims, spray painting, modifications and car sales.",
+ "chips": [
+  "Servicing",
+  "Accident claims",
+  "Performance mods"
+ ],
+ "services": [
+  "Car servicing packages",
+  "Repair and maintenance",
+  "Accident claims",
+  "Spray painting",
+  "Performance and aesthetic modifications",
+  "Tinting",
+  "Aircon servicing",
+  "Engine diagnostics",
+  "Car sales"
+ ],
+ "themes": "Customers on Google Maps mention efficient servicing and a clean, comfortable place to wait. Only 2 people have rated it so far.",
+ "faqs": [
+  [
+   "What does MTM Group do?",
+   "Google Maps lists it as a car repair workshop."
+  ],
+  [
+   "What are the opening hours?",
+   "The hours are listed in the Google Maps section above. Please see Google Maps for current hours."
+  ]
+ ],
+ "sources": "its own website (mtm.sg)",
+ "stories": [],
+ "mentioned_services": [
+  "Car servicing"
+ ],
+ "services_note": "Services as listed on the workshop's own website, mtm.sg.",
+ "specialties": [
+  "Performance modifications",
+  "Accident claims"
+ ],
+ "makes": [],
+ "makes_note": "Not listed on its public pages. Ask the workshop about your car.",
+ "good_to_know": [
+  "Its website mentions an MTM Warranty on repair and maintenance work",
+  "Also sells new and used cars, according to its website"
+ ],
+ "card_rules": "2026-11-06"
+}

@@ -1,0 +1,42 @@
+{
+ "businessStatus": "OPERATIONAL",
+ "primaryType": "car_repair",
+ "types": [
+  "car_repair",
+  "insurance_agency",
+  "point_of_interest",
+  "service",
+  "establishment"
+ ],
+ "rating": 4.9,
+ "userRatingCount": 197,
+ "websiteUri": "https://www.mycarholdings.asia/",
+ "paymentOptions": {
+  "acceptsCreditCards": true,
+  "acceptsDebitCards": true,
+  "acceptsNfc": true
+ },
+ "parkingOptions": {
+  "freeParkingLot": true,
+  "paidParkingLot": true,
+  "freeStreetParking": true,
+  "paidStreetParking": true,
+  "freeGarageParking": true,
+  "paidGarageParking": true
+ },
+ "editorialSummary": null,
+ "weekdayDescriptions": [
+  "Monday: 9:00 AM – 12:00 AM",
+  "Tuesday: 9:00 AM – 12:00 AM",
+  "Wednesday: 9:00 AM – 12:00 AM",
+  "Thursday: 9:00 AM – 12:00 AM",
+  "Friday: 9:00 AM – 12:00 AM",
+  "Saturday: 9:00 AM – 9:00 PM",
+  "Sunday: Closed"
+ ],
+ "review_count_seen": 5,
+ "review_themes": "Customers on Google Maps mention help with accident repairs, servicing and inspection, OBU installation, battery replacement, pre-trip checks and a quick tow arranged after a breakdown.",
+ "fetched_at": "2026-11-09",
+ "place_id": "ChIJfecL3XUZ2jERBcodqBxSOdk",
+ "source": "google_places"
+}

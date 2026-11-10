@@ -1,0 +1,48 @@
+{
+ "schema_version": 1,
+ "slug": "jp-conceptz-pte-ltd",
+ "place_id": "ChIJzbJ7EwAX2jERQgfppWBiu84",
+ "place_id_checked_at": "2026-11-10",
+ "name": "JP Conceptz Pte Ltd",
+ "name_source_url": "google_profile",
+ "name_checked_at": "2026-11-10",
+ "address": {
+  "block": "",
+  "street": "160 Sin Ming Dr, #07-11/07",
+  "unit": "",
+  "building": ""
+ },
+ "postal_code": "575722",
+ "address_source_url": "google_profile",
+ "address_checked_at": "2026-11-10",
+ "categories": [
+  "SERV"
+ ],
+ "services": [
+  "General servicing and repair"
+ ],
+ "services_source_url": "google_profile",
+ "phones": [
+  {
+   "e164": "+6590907011",
+   "kind": "mobile",
+   "whatsapp": true,
+   "source": "google_profile",
+   "checked_at": "2026-11-10"
+  }
+ ],
+ "google_screen": {
+  "passed": true,
+  "reason": "OPERATIONAL, car repair, SG mobile on Google profile",
+  "checked_at": "2026-11-10"
+ },
+ "status": "pending",
+ "tier": "basic",
+ "first_seen_at": "2026-11-10",
+ "last_verified_at": "2026-11-10",
+ "collector_version": "agent-v5",
+ "estate": "sin-ming-industrial-estate",
+ "planning_area": "Bishan",
+ "region": "central",
+ "hold": "hold: serious dishonesty accusation in sampled reviews; not featured"
+}

@@ -1,0 +1,30 @@
+{
+ "businessStatus": "OPERATIONAL",
+ "primaryType": "car_repair",
+ "types": [
+  "car_repair",
+  "point_of_interest",
+  "service",
+  "establishment"
+ ],
+ "rating": 4.9,
+ "userRatingCount": 91,
+ "websiteUri": "https://sites.google.com/view/focusauto/home",
+ "paymentOptions": null,
+ "parkingOptions": null,
+ "editorialSummary": null,
+ "weekdayDescriptions": [
+  "Monday: 8:45 AM – 6:30 PM",
+  "Tuesday: 8:45 AM – 6:30 PM",
+  "Wednesday: 8:45 AM – 6:30 PM",
+  "Thursday: 8:45 AM – 6:30 PM",
+  "Friday: 8:45 AM – 6:30 PM",
+  "Saturday: 8:45 AM – 6:00 PM",
+  "Sunday: 2:00 – 5:00 PM"
+ ],
+ "review_count_seen": 5,
+ "review_themes": "Customers on Google Maps mention accident repairs, insurance claim handling, a replacement car while theirs was repaired and quick response to a fault call.",
+ "fetched_at": "2026-11-02",
+ "place_id": "ChIJy3a7uQ4X2jER3UMMcH75wAk",
+ "source": "google_places"
+}

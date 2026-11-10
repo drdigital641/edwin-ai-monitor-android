@@ -1,0 +1,22 @@
+{
+ "businessStatus": "OPERATIONAL",
+ "primaryType": "car_repair",
+ "types": [
+  "car_repair",
+  "point_of_interest",
+  "service",
+  "establishment"
+ ],
+ "rating": 5,
+ "userRatingCount": 1,
+ "websiteUri": null,
+ "paymentOptions": null,
+ "parkingOptions": null,
+ "editorialSummary": null,
+ "weekdayDescriptions": null,
+ "review_count_seen": 1,
+ "review_themes": "Its one Google review mentions a fuss-free car battery change and Bosch batteries, so call first to check your battery model.",
+ "fetched_at": "2026-11-03",
+ "place_id": "ChIJv0uHh98X2jERrc7eV9ozKxI",
+ "source": "google_places"
+}

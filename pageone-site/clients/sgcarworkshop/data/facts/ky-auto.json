@@ -1,0 +1,44 @@
+{
+ "slug": "ky-auto",
+ "researched_at": "2026-11-02",
+ "researcher": "Claude (Sonnet)",
+ "facts": [
+  {
+   "field": "services",
+   "value": "Accident repair and claims; paint protection; repair and servicing; spray painting; towing and roadside assistance; transmission and gearbox; tyres and rims",
+   "source_url": "https://www.motorist.sg/merchant/939/ky-auto-pte-ltd",
+   "retrieved": "2026-11-02"
+  },
+  {
+   "field": "address",
+   "value": "25 Kaki Bukit Road 4 #05-23, Synergy@KB, Singapore 417800",
+   "source_url": "https://www.motorist.sg/merchant/939/ky-auto-pte-ltd",
+   "retrieved": "2026-11-02"
+  }
+ ],
+ "conflicts": [
+  {
+   "field": "phone",
+   "values": [
+    {
+     "value": "+65 8189 8979",
+     "source_url": "https://www.motorist.sg/merchant/939/ky-auto-pte-ltd"
+    },
+    {
+     "value": "stored Google mobile",
+     "source_url": "google_profile"
+    }
+   ],
+   "note": "Google profile used as source of truth per Edwin"
+  }
+ ],
+ "not_found": [
+  "own website or social profile",
+  "makes",
+  "year established",
+  "real job stories",
+  "opening hours (never stated)"
+ ],
+ "stories": [],
+ "phone_rule": "Google business profile mobile is the source of truth (Edwin, 2 Nov 2026)"
+}

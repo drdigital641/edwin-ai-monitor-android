@@ -1,0 +1,37 @@
+{
+ "lede": "ICAR Motorwerkz is a car workshop in Sin Ming Industrial Estate. Its own website lists mercedes-Benz A and B service, diagnostics, BMW repair and pick-up and drop-off.",
+ "chips": [
+  "Mercedes-Benz A and B service",
+  "Diagnostics",
+  "BMW repair"
+ ],
+ "services": [
+  "Mercedes-Benz A and B service",
+  "Diagnostics",
+  "BMW repair",
+  "Pick-up and drop-off"
+ ],
+ "themes": "Customers on Google Maps mention BMW and Mercedes-Benz work, honest advice on aircon compressor replacement, an engine overhaul with progress updates, and sourcing hard-to-find parts from overseas.",
+ "sources": "its own website (icarmotorwerkz.sg)",
+ "stories": [],
+ "mentioned_services": [
+  "BMW and Mercedes-Benz cars",
+  "Aircon compressor replacement",
+  "Engine overhaul",
+  "Parts sourcing"
+ ],
+ "services_note": "Services as listed on the workshop's own website, icarmotorwerkz.sg.",
+ "specialties": [
+  "European car repair"
+ ],
+ "card_rules": "2026-11-06",
+ "makes": [
+  "Mercedes-Benz",
+  "BMW"
+ ],
+ "makes_note": "Named on its own website. Ask the workshop about other makes.",
+ "good_to_know": [
+  "Its website mentions a warranty on its work",
+  "Online booking or enquiry form on its website"
+ ]
+}

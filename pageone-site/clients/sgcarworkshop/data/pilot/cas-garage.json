@@ -1,0 +1,38 @@
+{
+ "lede": "CAS Garage is a car workshop in Kaki Bukit Industrial Estate. Its own website lists inspection and servicing, maintenance and repair, accident claims and spray painting.",
+ "chips": [
+  "Inspection and servicing",
+  "Maintenance and repair",
+  "Accident claims"
+ ],
+ "services": [
+  "Inspection and servicing",
+  "Maintenance and repair",
+  "Accident claims",
+  "Spray painting",
+  "Panel beating"
+ ],
+ "sources": "its own website (casgarage.sg)",
+ "stories": [],
+ "mentioned_services": [
+  "Fuel tank repair",
+  "Starter motor repair",
+  "Used-car restoration",
+  "Car servicing and repairs"
+ ],
+ "themes": "Customers on Google Maps mention repairs on a cracked fuel tank and a starter motor, restoring a second-hand car, patient answers and a comfortable waiting lounge.",
+ "services_note": "Services as listed on the workshop's own website, casgarage.sg.",
+ "specialties": [
+  "Third-party accident claims"
+ ],
+ "card_rules": "2026-11-06",
+ "makes": [
+  "Continental",
+  "Japanese",
+  "Korean"
+ ],
+ "makes_note": "Named on its own website. Ask the workshop about other makes.",
+ "good_to_know": [
+  "Enquiries by WhatsApp, according to its website"
+ ]
+}

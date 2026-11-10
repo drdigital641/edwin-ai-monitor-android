@@ -1,0 +1,25 @@
+{
+ "lede": "Eurosports Garage is a car repair workshop at 10 Admiralty St, #01-25 Northlink Building. Its Google Maps listing shows opening hours and customer ratings.",
+ "chips": [
+  "Car repair"
+ ],
+ "services": [
+  "General servicing and repair"
+ ],
+ "themes": "Its two Google reviews mention an aircon system replacement and friendly staff at a fair price.",
+ "faqs": [
+  [
+   "What does Eurosports Garage do?",
+   "Google Maps lists it as a car repair workshop."
+  ],
+  [
+   "What are the opening hours?",
+   "The hours are listed in the Google Maps section above. Please see Google Maps for current hours."
+  ]
+ ],
+ "sources": "its Google Maps listing",
+ "stories": [],
+ "mentioned_services": [
+  "Aircon repair"
+ ]
+}

@@ -1,0 +1,38 @@
+{
+ "businessStatus": "OPERATIONAL",
+ "primaryType": "car_repair",
+ "types": [
+  "car_repair",
+  "insurance_agency",
+  "tire_shop",
+  "auto_parts_store",
+  "point_of_interest",
+  "store",
+  "service",
+  "establishment"
+ ],
+ "rating": 4.9,
+ "userRatingCount": 95,
+ "websiteUri": "https://motoserv.sg/products/car-servicing-in-singapore/",
+ "paymentOptions": {
+  "acceptsCreditCards": true,
+  "acceptsDebitCards": true,
+  "acceptsNfc": true
+ },
+ "parkingOptions": null,
+ "editorialSummary": null,
+ "weekdayDescriptions": [
+  "Monday: 9:00 AM – 6:00 PM",
+  "Tuesday: 9:00 AM – 6:00 PM",
+  "Wednesday: 9:00 AM – 6:00 PM",
+  "Thursday: 9:00 AM – 6:00 PM",
+  "Friday: 9:00 AM – 6:00 PM",
+  "Saturday: 9:00 AM – 6:00 PM",
+  "Sunday: Closed"
+ ],
+ "review_count_seen": 5,
+ "review_themes": "Customers on Google Maps mention help from towing through to billing, a car returned to its owner after repair, servicing done in under an hour with the work explained, a quick tyre puncture patch and thorough, friendly mechanics.",
+ "fetched_at": "2026-11-05",
+ "place_id": "ChIJKX7oCUoR2jEREoIkrDu7Fe8",
+ "source": "google_places"
+}

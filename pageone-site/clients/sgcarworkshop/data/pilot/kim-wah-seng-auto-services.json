@@ -1,0 +1,36 @@
+{
+ "lede": "Kim Wah Seng Auto Services is a car workshop in Defu Industrial Estate (Defu Lane). Its own website lists servicing and maintenance, mechanical and electrical repair, engine and transmission services and diagnostics.",
+ "chips": [
+  "Servicing and maintenance",
+  "Mechanical and electrical repair",
+  "Engine and transmission services"
+ ],
+ "services": [
+  "Servicing and maintenance",
+  "Mechanical and electrical repair",
+  "Engine and transmission services",
+  "Diagnostics",
+  "Tyres and alignment",
+  "Air-conditioning service",
+  "Fleet maintenance"
+ ],
+ "themes": "Customers on Google Maps mention problems other shops could not find, engine noise fixed, a quick battery call-out, WhatsApp bookings and drinks in the waiting area.",
+ "sources": "its own website (kws.sg)",
+ "stories": [],
+ "mentioned_services": [
+  "Noise diagnosis",
+  "Battery replacement",
+  "Fault diagnosis"
+ ],
+ "services_note": "Services as listed on the workshop's own website, kws.sg.",
+ "specialties": [
+  "Fleet maintenance",
+  "Commercial and private vehicles"
+ ],
+ "card_rules": "2026-11-06",
+ "makes": [],
+ "makes_note": "Not listed on its public pages. Ask the workshop about your car.",
+ "good_to_know": [
+  "Enquiries by WhatsApp, according to its website"
+ ]
+}

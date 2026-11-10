@@ -1,0 +1,38 @@
+{
+ "lede": "Mobil Lim Joo Kim Service Centre at Jalan Lam Huat and Carros Centre is a Mobil car servicing centre.",
+ "chips": [
+  "Oil change",
+  "Servicing"
+ ],
+ "services": [
+  "Oil change",
+  "Engine diagnostics",
+  "General vehicle maintenance"
+ ],
+ "themes": "Customers on Google Maps mention a friendly family-run team, full checks before advising, advice on only what is needed for first-time customers and fast, efficient work.",
+ "faqs": [
+  [
+   "What does Mobil Lim Joo Kim Service Centre do?",
+   "Google Maps lists it as a car repair workshop."
+  ],
+  [
+   "What are the opening hours?",
+   "The hours are listed in the Google Maps section above. Please see Google Maps for current hours."
+  ]
+ ],
+ "sources": "its own website (workshop.sea.mobil.com)",
+ "stories": [],
+ "mentioned_services": [
+  "Car servicing",
+  "Vehicle checks",
+  "Oil change"
+ ],
+ "services_note": "Services as listed on the workshop's own website, workshop.sea.mobil.com.",
+ "makes": [],
+ "makes_note": "Not listed on its public pages. Ask the workshop about your car.",
+ "specialties": [
+  "Servicing with Mobil engine oils"
+ ],
+ "good_to_know": [],
+ "card_rules": "2026-11-05"
+}

@@ -1,0 +1,78 @@
+{
+ "slug": "sw-auto-transmission-solutions",
+ "researched_at": "2026-11-04",
+ "researcher": "Claude, Google Places Details only (candidate from Google Maps listing via OpenSEO, queued at Edwin's request; name from Google Business Profile)",
+ "facts": [
+  {
+   "field": "displayName",
+   "value": "SW Auto Transmission Solutions Pte Ltd",
+   "source_url": "google_places",
+   "retrieved": "2026-11-04"
+  },
+  {
+   "field": "rating",
+   "value": "4.9",
+   "source_url": "google_places",
+   "retrieved": "2026-11-04"
+  },
+  {
+   "field": "userRatingCount",
+   "value": "9",
+   "source_url": "google_places",
+   "retrieved": "2026-11-04"
+  },
+  {
+   "field": "websiteUri",
+   "value": "None",
+   "source_url": "google_places",
+   "retrieved": "2026-11-04"
+  },
+  {
+   "field": "types",
+   "value": "['car_repair', 'store', 'point_of_interest', 'service', 'establishment']",
+   "source_url": "google_places",
+   "retrieved": "2026-11-04"
+  },
+  {
+   "field": "primaryType",
+   "value": "car_repair",
+   "source_url": "google_places",
+   "retrieved": "2026-11-04"
+  },
+  {
+   "field": "opening_hours",
+   "value": [
+    "Monday: 9:30 AM – 6:30 PM",
+    "Tuesday: 9:30 AM – 6:30 PM",
+    "Wednesday: 9:30 AM – 6:30 PM",
+    "Thursday: 9:30 AM – 6:30 PM",
+    "Friday: 9:30 AM – 6:30 PM",
+    "Saturday: 9:30 AM – 4:30 PM",
+    "Sunday: Closed"
+   ],
+   "source_url": "google_places",
+   "retrieved": "2026-11-04"
+  }
+ ],
+ "conflicts": [
+  {
+   "field": "name",
+   "google": "SW Auto Transmission Solutions Pte Ltd",
+   "other": "SW Auto Transmission Solutions",
+   "resolution": "Google name, \"Pte Ltd\" dropped"
+  }
+ ],
+ "not_found": [
+  "editorialSummary",
+  "paymentOptions",
+  "parkingOptions"
+ ],
+ "review_service_support": {
+  "Gearbox overhaul": 3,
+  "Automatic transmission repair": 1,
+  "Oil change": 1
+ },
+ "review_count_seen": 5,
+ "fetched_at": "2026-11-04",
+ "source": "google_places"
+}

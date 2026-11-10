@@ -1,0 +1,36 @@
+{
+ "businessStatus": "OPERATIONAL",
+ "primaryType": "car_repair",
+ "types": [
+  "tire_shop",
+  "auto_parts_store",
+  "car_repair",
+  "store",
+  "point_of_interest",
+  "service",
+  "establishment"
+ ],
+ "rating": 5,
+ "userRatingCount": 22,
+ "websiteUri": "https://mtautoservice.sg/",
+ "paymentOptions": null,
+ "parkingOptions": {
+  "paidParkingLot": true,
+  "freeStreetParking": true
+ },
+ "editorialSummary": null,
+ "weekdayDescriptions": [
+  "Monday: 9:00 AM – 6:00 PM",
+  "Tuesday: 9:00 AM – 6:00 PM",
+  "Wednesday: 9:00 AM – 6:00 PM",
+  "Thursday: 9:00 AM – 6:00 PM",
+  "Friday: 9:00 AM – 6:00 PM",
+  "Saturday: 9:00 AM – 6:00 PM",
+  "Sunday: 10:00 AM – 5:00 PM"
+ ],
+ "review_count_seen": 5,
+ "review_themes": "Customers on Google Maps mention drive shaft, absorber, alignment and tyre work, aircon repair and quick parts sourcing.",
+ "fetched_at": "2026-11-02",
+ "place_id": "ChIJCbVfkUkT2jERP-HbSzi7kXY",
+ "source": "google_places"
+}

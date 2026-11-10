@@ -1,0 +1,38 @@
+{
+ "lede": "V8 Motor Werkz at Sin Ming Industrial Estate is a car servicing and repair workshop.",
+ "chips": [
+  "Continental cars",
+  "Servicing"
+ ],
+ "services": [
+  "Car servicing",
+  "Car repair",
+  "Fault diagnosis",
+  "Car rental"
+ ],
+ "themes": "Customers on Google Maps mention diagnostic-based repairs with no pushing, transparent and fair pricing, continental cars looked after over the years and car rental as well as servicing.",
+ "faqs": [
+  [
+   "What does V8 Motor Werkz do?",
+   "Google Maps lists it as a car repair workshop."
+  ],
+  [
+   "What are the opening hours?",
+   "The hours are listed in the Google Maps section above. Please see Google Maps for current hours."
+  ]
+ ],
+ "sources": "its Google Maps listing",
+ "stories": [],
+ "mentioned_services": [
+  "Car servicing",
+  "Car repair",
+  "Fault diagnosis",
+  "Car rental"
+ ],
+ "services_note": "Services customers mention on Google Maps. Ask the workshop for its full list.",
+ "makes": [],
+ "makes_note": "Not listed on its public pages. Ask the workshop about your car.",
+ "specialties": [],
+ "good_to_know": [],
+ "card_rules": "2026-11-05"
+}

@@ -1,0 +1,28 @@
+{
+ "lede": "88 Auto Garage is a car repair workshop at 288 MacPherson Rd. Its Google Maps listing shows opening hours and customer ratings.",
+ "chips": [
+  "Car repair"
+ ],
+ "services": [
+  "General servicing and repair"
+ ],
+ "themes": "Customers on Google Maps mention clear explanations of aircon problems, aircon flushing, quick battery fixes for walk-ins and servicing packages bought online.",
+ "faqs": [
+  [
+   "What does 88 Auto Garage do?",
+   "Google Maps lists it as a car repair workshop."
+  ],
+  [
+   "What are the opening hours?",
+   "The hours are listed in the Google Maps section above. Please see Google Maps for current hours."
+  ]
+ ],
+ "sources": "its Google Maps listing",
+ "stories": [],
+ "mentioned_services": [
+  "Aircon flushing",
+  "Car aircon repair",
+  "Battery replacement",
+  "Servicing packages"
+ ]
+}

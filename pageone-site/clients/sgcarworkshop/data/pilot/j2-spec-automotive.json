@@ -1,0 +1,40 @@
+{
+ "lede": "J2 Spec Automotive at Sin Ming Industrial Estate is a car and commercial vehicle servicing workshop.",
+ "chips": [
+  "Fleet care",
+  "Servicing"
+ ],
+ "services": [
+  "Fleet maintenance",
+  "Brake light repair",
+  "Car servicing",
+  "Preventive maintenance"
+ ],
+ "themes": "Customers on Google Maps mention care of a 20-vehicle commercial fleet over eight years, a brake light issue solved in minutes, a Volkswagen Jetta fault fixed accurately, and servicing, repairs and preventive maintenance.",
+ "faqs": [
+  [
+   "What does J2 Spec Automotive do?",
+   "Google Maps lists it as a car repair workshop."
+  ],
+  [
+   "What are the opening hours?",
+   "The hours are listed in the Google Maps section above. Please see Google Maps for current hours."
+  ]
+ ],
+ "sources": "its Google Maps listing",
+ "stories": [],
+ "mentioned_services": [
+  "Fleet maintenance",
+  "Brake light repair",
+  "Car servicing",
+  "Preventive maintenance"
+ ],
+ "services_note": "Services customers mention on Google Maps. Ask the workshop for its full list.",
+ "makes": [
+  "Volkswagen"
+ ],
+ "makes_note": "Named by customers on Google Maps. Ask the workshop about other makes.",
+ "specialties": [],
+ "good_to_know": [],
+ "card_rules": "2026-11-05"
+}

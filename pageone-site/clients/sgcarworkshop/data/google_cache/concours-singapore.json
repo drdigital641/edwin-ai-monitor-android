@@ -1,0 +1,34 @@
+{
+ "businessStatus": "OPERATIONAL",
+ "primaryType": "car_repair",
+ "types": [
+  "car_repair",
+  "point_of_interest",
+  "service",
+  "establishment"
+ ],
+ "rating": 4.9,
+ "userRatingCount": 25,
+ "websiteUri": "http://instagr.am/concours.sg",
+ "paymentOptions": {
+  "acceptsCreditCards": true,
+  "acceptsDebitCards": true,
+  "acceptsNfc": true
+ },
+ "parkingOptions": null,
+ "editorialSummary": null,
+ "weekdayDescriptions": [
+  "Monday: 10:00 AM – 6:30 PM",
+  "Tuesday: 10:00 AM – 6:30 PM",
+  "Wednesday: 10:00 AM – 6:30 PM",
+  "Thursday: 10:00 AM – 6:30 PM",
+  "Friday: 10:00 AM – 6:30 PM",
+  "Saturday: 10:00 AM – 6:30 PM",
+  "Sunday: Closed"
+ ],
+ "review_count_seen": 5,
+ "review_themes": "Customers on Google Maps mention paint correction, ceramic coating and interior detailing, and say the team also handles servicing and repairs such as aircon.",
+ "fetched_at": "2026-11-03",
+ "place_id": "ChIJs5BioWIX2jER89cxNltojp4",
+ "source": "google_places"
+}

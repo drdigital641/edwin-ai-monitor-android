@@ -1,0 +1,53 @@
+{
+ "lede": "Antz Automobile is a car workshop at Premier@Kaki Bukit, its east service centre. Its own website says it has specialised in Peugeot, Citroën and Opel cars since 2013, and also welcomes Japanese and Korean cars.",
+ "chips": [
+  "Peugeot and Citroën",
+  "Diagnostics",
+  "Accident repairs"
+ ],
+ "services": [
+  "Routine servicing and preventive maintenance",
+  "Engine diagnostics",
+  "Gearbox repairs",
+  "Electrical troubleshooting",
+  "Aircon servicing",
+  "Accident repairs and bodywork",
+  "24-hour towing"
+ ],
+ "themes": "Customers on Google Maps mention deep knowledge of Peugeot and Citroën cars, on-the-spot troubleshooting, being upfront about risks, and a thorough check that found a failing BPGA battery control unit behind electrical and starting faults.",
+ "faqs": [
+  [
+   "What does Antz Automobile do?",
+   "Google Maps lists it as a car repair workshop."
+  ],
+  [
+   "What are the opening hours?",
+   "The hours are listed in the Google Maps section above. Please see Google Maps for current hours."
+  ]
+ ],
+ "sources": "its own website (antzauto.com.sg)",
+ "stories": [],
+ "mentioned_services": [
+  "Peugeot and Citroën repairs",
+  "Electrical fault diagnosis",
+  "Battery and starting issues",
+  "Car servicing"
+ ],
+ "services_note": "Services as listed on the workshop's own website, antzauto.com.sg.",
+ "specialties": [
+  "Peugeot, Citroën and Opel cars",
+  "Diagnostics and electrical faults"
+ ],
+ "makes": [
+  "Peugeot",
+  "Citroën",
+  "Opel"
+ ],
+ "makes_note": "Named on its own website, which also welcomes Japanese and Korean cars.",
+ "good_to_know": [
+  "Established in 2013, according to its website",
+  "Service bookings by WhatsApp or its online form",
+  "Upfront quotations before work begins, according to its website"
+ ],
+ "card_rules": "2026-11-05"
+}

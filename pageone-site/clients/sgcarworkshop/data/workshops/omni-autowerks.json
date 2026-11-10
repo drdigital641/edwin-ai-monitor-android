@@ -1,0 +1,73 @@
+{
+ "schema_version": 1,
+ "slug": "omni-autowerks",
+ "place_id": "ChIJNRqki3gX2jER-R5bhkCjS3c",
+ "place_id_checked_at": "2026-11-03",
+ "name": "Omni Autowerks",
+ "name_source_url": "google_profile",
+ "name_checked_at": "2026-11-03",
+ "address": {
+  "block": "",
+  "street": "8 Kaki Bukit Ave 4, #06-30 Premier@Kaki Bukit, Singapore",
+  "unit": "",
+  "building": ""
+ },
+ "postal_code": "415875",
+ "address_source_url": "google_profile",
+ "address_checked_at": "2026-11-03",
+ "categories": [
+  "SERV"
+ ],
+ "services": [
+  "General servicing and repair"
+ ],
+ "services_source_url": "google_profile",
+ "phones": [
+  {
+   "e164": "+6590490880",
+   "kind": "mobile",
+   "whatsapp": true,
+   "source": "google_profile",
+   "checked_at": "2026-11-03"
+  }
+ ],
+ "google_screen": {
+  "passed": true,
+  "reason": "OPERATIONAL, car repair, SG mobile on Google profile",
+  "checked_at": "2026-11-03"
+ },
+ "status": "active",
+ "tier": "basic",
+ "first_seen_at": "2026-11-03",
+ "last_verified_at": "2026-11-03",
+ "collector_version": "agent-v5",
+ "estate": "kaki-bukit-industrial-estate",
+ "planning_area": "Bedok",
+ "region": "east",
+ "lat": 1.33856684411249,
+ "lng": 103.9058766693191,
+ "geo_source": "onemap",
+ "google_rating": {
+  "rating": 3.9,
+  "count": 7,
+  "checked": "2026-11-04",
+  "source": "Google Places",
+  "source_date": "2026-11-04"
+ },
+ "blocks": [
+  "hero",
+  "contact",
+  "services",
+  "good_for",
+  "problems",
+  "reviews",
+  "comparison",
+  "hours",
+  "stories",
+  "location",
+  "tips",
+  "faq",
+  "claim",
+  "sources"
+ ]
+}

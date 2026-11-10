@@ -1,0 +1,32 @@
+{
+ "businessStatus": "OPERATIONAL",
+ "primaryType": "car_repair",
+ "types": [
+  "car_repair",
+  "point_of_interest",
+  "service",
+  "establishment"
+ ],
+ "rating": 5,
+ "userRatingCount": 19,
+ "websiteUri": "https://carswiftrepair.sg/",
+ "paymentOptions": {
+  "acceptsCreditCards": true
+ },
+ "parkingOptions": null,
+ "editorialSummary": null,
+ "weekdayDescriptions": [
+  "Monday: 9:00 AM – 6:00 PM",
+  "Tuesday: 9:00 AM – 6:00 PM",
+  "Wednesday: 9:00 AM – 6:00 PM",
+  "Thursday: 9:00 AM – 6:00 PM",
+  "Friday: 9:00 AM – 6:00 PM",
+  "Saturday: 9:00 AM – 6:00 PM",
+  "Sunday: Closed"
+ ],
+ "review_count_seen": 5,
+ "review_themes": "Customers on Google Maps mention servicing, an engine overhaul and a Mercedes fuel level sensor repair, in an indoor workshop on an upper floor.",
+ "fetched_at": "2026-11-04",
+ "place_id": "ChIJc2lFd58F2jERxDfN-KFd01o",
+ "source": "google_places"
+}
