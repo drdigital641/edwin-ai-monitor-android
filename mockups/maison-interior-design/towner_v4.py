@@ -125,7 +125,7 @@ def vpage_v4(slug):
     h, d, ref, themes_l, W = v["hero"], v["dir"], v["ref"], v["themes"], v.get("w", 1600)
     t0 = themes_l[0]
     hero = (f'<section class="v4h"><div class="wrap v4h-g"><div class="v4h-t"><p class="v4-eb">{e(h["eyebrow"])}</p><h1>{e(c["h1"])}</h1>'
-            f'<p class="v4-intro">{e(h["intro"])}</p></div>'
+            f'<p class="v4-intro">{h.get("intro_html") or e(h["intro"])}</p></div>'
             f'<figure class="v4-fig v4h-f">{_v4img(t0["img"], t0["alt"], "(min-width:1100px) 720px, 100vw", lazy=False, d=d, w=W)}{_v4cap()}</figure>'
             f'<div class="v4-hero-cta">{_v4wa(h["btn"], h["msg"], ref + "-hero", t0["theme"], path)}'
             f'<a class="link" href="{BASE}services/{gs}/">{e(GBY[gs]["short"])} guide</a></div></div></section>')

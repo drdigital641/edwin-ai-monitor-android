@@ -6,6 +6,7 @@ exec(open(os.path.join(HERE, "picker2.py"), encoding="utf-8").read())
 exec(open(os.path.join(HERE, "towner_v4.py"), encoding="utf-8").read())
 exec(open(os.path.join(HERE, "norwood_v4.py"), encoding="utf-8").read())
 exec(open(os.path.join(HERE, "myst_v4.py"), encoding="utf-8").read())
+exec(open(os.path.join(HERE, "canninghill_v4.py"), encoding="utf-8").read())
 LAUNCHES = [p for p in LAUNCHES if p["slug"] not in VPAGE_ON_HOLD]
 # visual pages first on the hub
 LAUNCHES.sort(key=lambda p: (p["slug"] not in VPAGES, list(VPAGES).index(p["slug"]) if p["slug"] in VPAGES else 0))
