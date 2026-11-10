@@ -157,8 +157,11 @@ def hub():
     def hcard(p):
         if p["slug"] in VPAGES:
             v = VPAGES[p["slug"]]
+            hb = globals().get("V4CFG", {}).get(p["slug"], {}).get("hub")
+            fig = (f'<img src="{BASE}images/new-launches/{V4CFG[p["slug"]]["dir"]}/{hb["img"]}.webp" width="{hb["w"]}" height="{hb["h"]}" alt="{e(hb["alt"])}" loading="lazy" decoding="async">'
+                   if hb else vimg(p["slug"], v["hero"], "AI concept: " + p["name"] + " living and dining", sizes="(min-width:900px) 30vw, 100vw"))
             return (f'<a class="lc lc-img" href="{BASE}new-launches/{p["slug"]}/" data-kind="{KINDS[p["kind"]][0]}">'
-                    f'<figure>{vimg(p["slug"], v["hero"], "AI concept: " + p["name"] + " living and dining", sizes="(min-width:900px) 30vw, 100vw")}</figure>'
+                    f'<figure>{fig}</figure>'
                     f'<span class="tag">{e(v["tag"])}</span><h3>{e(p["name"])} <em>{e(p["place"])}</em></h3><span class="more">See the concepts</span></a>')
         return (f'<a class="lc" href="{BASE}new-launches/{p["slug"]}/" data-kind="{KINDS[p["kind"]][0]}"><span class="tag">{e(p["label"])}</span>'
                 f'<h3>{e(p["name"])} <em>{e(p["place"])}</em></h3><p>{e(p["date"][1].split(". ")[0].rstrip("."))}.</p><span class="more">Read the guide</span></a>')

@@ -54,7 +54,10 @@ V4CFG["canninghill-piers"] = dict(
     plans_h2="CanningHill Piers floor plan",
     plans_sub="Official e-brochure plan copied as-is (crop and scale only, tap to enlarge).",
     plans_note="The brochure has plans for 1-bedroom to 5-bedroom premium types (PDF pp. 23-40); Sky Suites and the Super Penthouse are not shown in it. Brochure note: plans subject to change; areas include A/C ledge, balcony and void where applicable.",
-    plan_label=f"Floor plan: CanningHill Piers e-brochure, {CP_BROCHURE}", plans_cls="v4-plans v4-wide",
+    plan_label="Floor plan: CanningHill Piers e-brochure (source)", plans_cls="v4-plans v4-wide",
+    plan_label_html=f'Floor plan: <a href="{CP_BROCHURE}" target="_blank" rel="nofollow noopener">CanningHill Piers e-brochure</a> (source)',
+    hub=dict(img="canninghill-piers-v4-living-riverside-teak-modernist-900", w=900, h=506,
+             alt="CanningHill Piers living room concept by Maison: teak slat TV wall, built-in window bench and river view"),
     plans_src=f'Source: <a href="{CP_BROCHURE}" target="_blank" rel="noopener">CanningHill Piers e-brochure (PDF)</a>.',
     citation=[CP_BROCHURE, CP_RELEASE, CP_CON],
     facts=("CanningHill Piers project facts", [
@@ -67,5 +70,5 @@ V4CFG["canninghill-piers"] = dict(
     extra=[("Views tips", "The developer describes a riverside 48-storey tower and a 24-storey tower facing Fort Canning Hill, linked at Level 24. No unit’s view is guaranteed: check your stack on the storey key plan, then plan blinds and glare control around your real outlook.")],
     steps_h2="Keys to move-in (planning guide)",
     end_note="WhatsApp Maison with your unit type, key date and wish list.",
-    css=V4CFG["norwood-grand"]["css"] + "@media(min-width:900px){.v4-wide .v4-plan:first-child{max-width:720px}}.v4-plan figcaption b{overflow-wrap:anywhere}",
+    css=V4CFG["norwood-grand"]["css"] + "@media(min-width:900px){.v4-wide .v4-plan:first-child{max-width:720px}}.v4-plan figcaption b a{color:inherit;text-decoration:underline}",
     end_msg="Hi Maison, I’m planning my CanningHill Piers renovation. Can we discuss my layout?")

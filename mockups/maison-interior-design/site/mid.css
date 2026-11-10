@@ -528,3 +528,6 @@ button.link{background:none;border:0;border-bottom:1px solid currentColor;color:
 .vq a{color:var(--brass);text-decoration:underline;overflow-wrap:anywhere}.vq ul{padding-left:20px}
 .lc-img{padding:0;overflow:hidden}.lc-img figure{margin:0}.lc-img img{display:block;width:100%;height:auto;aspect-ratio:16/9}
 .lc-img .tag,.lc-img h3,.lc-img .more{margin:0 20px}.lc-img .more{margin-bottom:20px}
+/* floating WhatsApp button (56px + 18px offset): keep the last lines of the page and image captions clear of it on phones and tablets */
+.ft{padding-bottom:calc(30px + 90px + env(safe-area-inset-bottom))}
+@media(max-width:899px){.v4-fig figcaption,.v4-plan figcaption,.vsec .v4-src{padding-right:68px}}

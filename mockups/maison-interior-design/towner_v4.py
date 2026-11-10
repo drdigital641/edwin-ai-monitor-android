@@ -140,7 +140,7 @@ def vpage_v4(slug):
     plans = "".join(
         f'<figure class="v4-plan"><a class="v4-zoom" href="{_v4src(p["img"], d)}" target="_blank" rel="noopener" aria-label="Open the full-size {e(p["title"])} floor plan">'
         f'<img src="{_v4src(p["img"], d)}" width="{p["w"]}" height="{p["h"]}" alt="{e(p["alt"])}" loading="lazy" decoding="async"><span class="v4-zl" aria-hidden="true">Tap to enlarge ↗</span></a>'
-        f'<figcaption><b>{e(v["plan_label"])}</b>{e(p["cap"])}</figcaption></figure>' for p in v["plans"])
+        f'<figcaption><b>{v.get("plan_label_html") or e(v["plan_label"])}</b>{e(p["cap"])}</figcaption></figure>' for p in v["plans"])
     plan_sec = (f'<section class="vsec"><div class="wrap"><h2 class="vh2">{e(v["plans_h2"])}</h2>'
                 f'<p class="vsub">{e(v["plans_sub"])}</p>'
                 f'<div class="{v["plans_cls"]}">{plans}</div>'
