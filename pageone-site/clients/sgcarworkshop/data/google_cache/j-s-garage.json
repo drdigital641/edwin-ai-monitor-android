@@ -1,0 +1,35 @@
+{
+ "businessStatus": "OPERATIONAL",
+ "primaryType": "car_repair",
+ "types": [
+  "car_repair",
+  "point_of_interest",
+  "service",
+  "establishment"
+ ],
+ "rating": 4.7,
+ "userRatingCount": 41,
+ "websiteUri": "https://www.facebook.com/JsGaragePteLtd/",
+ "paymentOptions": {
+  "acceptsCreditCards": true
+ },
+ "parkingOptions": {
+  "freeParkingLot": true,
+  "freeGarageParking": true
+ },
+ "editorialSummary": null,
+ "weekdayDescriptions": [
+  "Monday: 11:00\u202fAM\u2009\u2013\u20098:00\u202fPM",
+  "Tuesday: 11:00\u202fAM\u2009\u2013\u20098:00\u202fPM",
+  "Wednesday: 11:00\u202fAM\u2009\u2013\u20098:00\u202fPM",
+  "Thursday: 11:00\u202fAM\u2009\u2013\u20098:00\u202fPM",
+  "Friday: 11:00\u202fAM\u2009\u2013\u20098:00\u202fPM",
+  "Saturday: 10:00\u202fAM\u2009\u2013\u20094:00\u202fPM",
+  "Sunday: Closed"
+ ],
+ "review_count_seen": 5,
+ "review_themes": "Customers on Google Maps mention Honda and other Japanese and continental cars, long-term repeat visits, fair prices and mechanics who take time to explain problems.",
+ "fetched_at": "2026-11-02",
+ "place_id": "ChIJZUJqC20Q2jERW3Z9Ro0P1cY",
+ "source": "google_places"
+}

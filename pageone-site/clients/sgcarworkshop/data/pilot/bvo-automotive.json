@@ -1,0 +1,40 @@
+{
+ "lede": "BVO Automotive at Sin Ming Industrial Estate is a car servicing and repair workshop.",
+ "chips": [
+  "Diagnosis",
+  "Servicing"
+ ],
+ "services": [
+  "Fault diagnosis",
+  "Car servicing",
+  "Sensor repair",
+  "MINI servicing"
+ ],
+ "themes": "Customers on Google Maps mention prompt WhatsApp replies, a thorough scan that found a faulty speed sensor, photos of defects, a MINI service with updates through the day and prices made clear beforehand.",
+ "faqs": [
+  [
+   "What does BVO Automotive do?",
+   "Google Maps lists it as a car repair workshop."
+  ],
+  [
+   "What are the opening hours?",
+   "The hours are listed in the Google Maps section above. Please see Google Maps for current hours."
+  ]
+ ],
+ "sources": "its Google Maps listing",
+ "stories": [],
+ "mentioned_services": [
+  "Fault diagnosis",
+  "Car servicing",
+  "Sensor repair",
+  "MINI servicing"
+ ],
+ "services_note": "Services customers mention on Google Maps. Ask the workshop for its full list.",
+ "makes": [
+  "MINI"
+ ],
+ "makes_note": "Named by customers on Google Maps. Ask the workshop about other makes.",
+ "specialties": [],
+ "good_to_know": [],
+ "card_rules": "2026-11-05"
+}

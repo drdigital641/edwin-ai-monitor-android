@@ -1,0 +1,27 @@
+{
+ "lede": "Shi Fu Automobile is a car repair workshop at 160 Sin Ming Dr, #08-15 Sin Ming AutoCity. Its Google Maps listing shows opening hours and customer ratings.",
+ "chips": [
+  "Car repair"
+ ],
+ "services": [
+  "General servicing and repair"
+ ],
+ "themes": "Customers on Google Maps mention honest and reasonable pricing, a car wash after every servicing, and patient diagnosis of jerking problems instead of replacing parts straight away.",
+ "faqs": [
+  [
+   "What does Shi Fu Automobile do?",
+   "Google Maps lists it as a car repair workshop."
+  ],
+  [
+   "What are the opening hours?",
+   "The hours are listed in the Google Maps section above. Please see Google Maps for current hours."
+  ]
+ ],
+ "sources": "its Google Maps listing",
+ "stories": [],
+ "mentioned_services": [
+  "Car servicing",
+  "Car wash after servicing",
+  "Jerking and noise diagnosis"
+ ]
+}

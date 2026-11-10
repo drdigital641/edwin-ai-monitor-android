@@ -1,0 +1,30 @@
+{
+ "businessStatus": "OPERATIONAL",
+ "primaryType": "car_repair",
+ "types": [
+  "car_repair",
+  "point_of_interest",
+  "service",
+  "establishment"
+ ],
+ "rating": 4.9,
+ "userRatingCount": 31,
+ "websiteUri": "https://sitelift.site/t7autocarepteltd/",
+ "paymentOptions": null,
+ "parkingOptions": null,
+ "editorialSummary": null,
+ "weekdayDescriptions": [
+  "Monday: Open 24 hours",
+  "Tuesday: Open 24 hours",
+  "Wednesday: Open 24 hours",
+  "Thursday: Open 24 hours",
+  "Friday: Open 24 hours",
+  "Saturday: Open 24 hours",
+  "Sunday: Open 24 hours"
+ ],
+ "review_count_seen": 5,
+ "review_themes": "Customers on Google Maps mention paint jobs with a good colour match, dent and scrape repairs often done within the day, and late-night drop-offs.",
+ "fetched_at": "2026-11-03",
+ "place_id": "ChIJLwwDvVgW2jERUEJXtu2Mkoc",
+ "source": "google_places"
+}

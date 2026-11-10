@@ -1,0 +1,30 @@
+{
+ "lede": "BOSZ AUTOHAUS is a car repair workshop at 48 Toh Guan Rd E, #03-132 Block No 48. Its Google Maps listing shows opening hours and customer ratings.",
+ "chips": [
+  "Car repair"
+ ],
+ "services": [
+  "General servicing and repair"
+ ],
+ "themes": "Customers on Google Maps mention patient, upfront mechanics with no hard selling, cost-saving fixes tried first, servicing finished within the estimated time, and strong troubleshooting of engine warning lights.",
+ "faqs": [
+  [
+   "What does BOSZ AUTOHAUS do?",
+   "Google Maps lists it as a car repair workshop."
+  ],
+  [
+   "What are the opening hours?",
+   "The hours are listed in the Google Maps section above. Please see Google Maps for current hours."
+  ]
+ ],
+ "sources": "its Google Maps listing",
+ "stories": [],
+ "mentioned_services": [
+  "Car servicing",
+  "Engine warning light diagnosis",
+  "Throttle body cleaning"
+ ],
+ "makes": [],
+ "makes_note": "Not listed on its public pages. Ask the workshop about your car.",
+ "card_rules": "2026-11-05"
+}

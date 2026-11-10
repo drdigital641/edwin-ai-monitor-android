@@ -1,0 +1,27 @@
+{
+ "lede": "Goodfellas Auto Service Centre is a car repair workshop at 7 Soon Lee St, #01-37. Its Google Maps listing shows opening hours and customer ratings.",
+ "chips": [
+  "Car repair"
+ ],
+ "services": [
+  "General servicing and repair"
+ ],
+ "themes": "Customers on Google Maps mention fixing an engine vibration and a front knocking sound that other workshops could not solve, plus tuning work.",
+ "faqs": [
+  [
+   "What does Goodfellas Auto Service Centre do?",
+   "Google Maps lists it as a car repair workshop."
+  ],
+  [
+   "What are the opening hours?",
+   "The hours are listed in the Google Maps section above. Please see Google Maps for current hours."
+  ]
+ ],
+ "sources": "its Google Maps listing",
+ "stories": [],
+ "mentioned_services": [
+  "Noise diagnosis",
+  "Fault diagnosis",
+  "Car tuning"
+ ]
+}

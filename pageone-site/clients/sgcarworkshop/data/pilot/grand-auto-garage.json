@@ -1,0 +1,30 @@
+{
+ "lede": "Grand Auto Garage is a car repair workshop at 1 Kaki Bukit Ave 6, #02-14 Blk E AutoBay@Kaki Bukit. Its Google Maps listing shows opening hours, payment options and customer ratings.",
+ "chips": [
+  "Car repair"
+ ],
+ "services": [
+  "General servicing and repair"
+ ],
+ "faqs": [
+  [
+   "What does Grand Auto Garage do?",
+   "Google Maps lists it as a car repair workshop."
+  ],
+  [
+   "What are the opening hours?",
+   "The hours are listed in the Google Maps section above. Please see Google Maps for current hours."
+  ]
+ ],
+ "sources": "its Google Maps listing",
+ "stories": [],
+ "mentioned_services": [
+  "Undercarriage wear-and-tear parts",
+  "Noise diagnosis",
+  "Toyota Harrier repairs",
+  "Fender damage repair",
+  "EGR, manifold and throttle decarbonisation",
+  "Performance and accessory upgrades"
+ ],
+ "themes": "Customers on Google Maps mention undercarriage wear-and-tear parts, noise diagnosis, fender repair and decarbonisation work."
+}

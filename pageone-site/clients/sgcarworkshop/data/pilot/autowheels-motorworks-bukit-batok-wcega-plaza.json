@@ -1,0 +1,36 @@
+{
+ "lede": "AutoWheels MotorWorks is a car workshop at WCEGA Plaza in Bukit Batok.",
+ "chips": [
+  "Car servicing",
+  "Car repair",
+  "Car aircon"
+ ],
+ "services": [
+  "General servicing and repair"
+ ],
+ "themes": "Customers on Google Maps mention a Skoda coolant leak fixed with parts found within an hour, an aircon gas refill on a Kia, honest advice not to replace parts too early, a big workshop and fast servicing.",
+ "faqs": [
+  [
+   "What does AutoWheels MotorWorks (Bukit Batok Wcega Plaza) do?",
+   "Google Maps lists it as a car repair workshop."
+  ],
+  [
+   "What are the opening hours?",
+   "The hours are listed in the Google Maps section above. Please see Google Maps for current hours."
+  ]
+ ],
+ "sources": "its Google Maps listing",
+ "stories": [],
+ "mentioned_services": [
+  "Coolant leak repair",
+  "Aircon gas refill",
+  "Car servicing"
+ ],
+ "specialties": [],
+ "makes": [
+  "Skoda",
+  "Kia"
+ ],
+ "makes_note": "Named by customers on Google Maps. Ask the workshop about other makes.",
+ "card_rules": "2026-11-05"
+}

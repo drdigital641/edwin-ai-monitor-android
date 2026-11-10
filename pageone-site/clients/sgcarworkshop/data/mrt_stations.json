@@ -1,0 +1,188 @@
+{
+ "_about": "MRT station locations from the OneMap search API (Singapore Land Authority, onemap.gov.sg), retrieved 2026-11-08. Used only for straight-line distances on estate pages. Stations not yet open (Cross Island Line) are left out; Ang Mo Kio is omitted because the search returned its future CR11 point.",
+ "source": "OneMap (onemap.gov.sg)",
+ "retrieved": "2026-11-08",
+ "stations": {
+  "Kaki Bukit": {
+   "name": "Kaki Bukit MRT",
+   "code": "DT28",
+   "lat": 1.334967,
+   "lon": 103.908459
+  },
+  "Bedok North": {
+   "name": "Bedok North MRT",
+   "code": "DT29",
+   "lat": 1.334742,
+   "lon": 103.917978
+  },
+  "Ubi": {
+   "name": "Ubi MRT",
+   "code": "DT27",
+   "lat": 1.329974,
+   "lon": 103.899227
+  },
+  "Bedok Reservoir": {
+   "name": "Bedok Reservoir MRT",
+   "code": "DT30",
+   "lat": 1.336608,
+   "lon": 103.932235
+  },
+  "Jurong East": {
+   "name": "Jurong East MRT",
+   "code": "EW24 / NS1",
+   "lat": 1.333028,
+   "lon": 103.74237
+  },
+  "Bukit Batok": {
+   "name": "Bukit Batok MRT",
+   "code": "NS2",
+   "lat": 1.349033,
+   "lon": 103.749566
+  },
+  "Chinese Garden": {
+   "name": "Chinese Garden MRT",
+   "code": "EW25",
+   "lat": 1.342353,
+   "lon": 103.732597
+  },
+  "Bukit Gombak": {
+   "name": "Bukit Gombak MRT",
+   "code": "NS3",
+   "lat": 1.358612,
+   "lon": 103.751791
+  },
+  "Kranji": {
+   "name": "Kranji MRT",
+   "code": "NS7",
+   "lat": 1.425087,
+   "lon": 103.762137
+  },
+  "Marsiling": {
+   "name": "Marsiling MRT",
+   "code": "NS8",
+   "lat": 1.432521,
+   "lon": 103.774075
+  },
+  "Marymount": {
+   "name": "Marymount MRT",
+   "code": "CC16",
+   "lat": 1.348707,
+   "lon": 103.839423
+  },
+  "Upper Thomson": {
+   "name": "Upper Thomson MRT",
+   "code": "TE8",
+   "lat": 1.354416,
+   "lon": 103.832898
+  },
+  "Bright Hill": {
+   "name": "Bright Hill MRT",
+   "code": "TE7",
+   "lat": 1.363283,
+   "lon": 103.832894
+  },
+  "Yio Chu Kang": {
+   "name": "Yio Chu Kang MRT",
+   "code": "NS15",
+   "lat": 1.381756,
+   "lon": 103.844947
+  },
+  "Mayflower": {
+   "name": "Mayflower MRT",
+   "code": "TE6",
+   "lat": 1.371463,
+   "lon": 103.836568
+  },
+  "Lentor": {
+   "name": "Lentor MRT",
+   "code": "TE5",
+   "lat": 1.385507,
+   "lon": 103.835744
+  },
+  "Pioneer": {
+   "name": "Pioneer MRT",
+   "code": "EW28",
+   "lat": 1.337587,
+   "lon": 103.697322
+  },
+  "Joo Koon": {
+   "name": "Joo Koon MRT",
+   "code": "EW29",
+   "lat": 1.327717,
+   "lon": 103.678375
+  },
+  "Boon Lay": {
+   "name": "Boon Lay MRT",
+   "code": "EW27",
+   "lat": 1.338604,
+   "lon": 103.706065
+  },
+  "Yishun": {
+   "name": "Yishun MRT",
+   "code": "NS13",
+   "lat": 1.429443,
+   "lon": 103.835005
+  },
+  "Khatib": {
+   "name": "Khatib MRT",
+   "code": "NS14",
+   "lat": 1.417383,
+   "lon": 103.83298
+  },
+  "Eunos": {
+   "name": "Eunos MRT",
+   "code": "EW7",
+   "lat": 1.319784,
+   "lon": 103.903226
+  },
+  "MacPherson": {
+   "name": "MacPherson MRT",
+   "code": "CC10",
+   "lat": 1.326078,
+   "lon": 103.890391
+  }
+ },
+ "estates": {
+  "kaki-bukit-industrial-estate": [
+   "Kaki Bukit",
+   "Bedok North",
+   "Ubi",
+   "Bedok Reservoir"
+  ],
+  "toh-guan-enterprise-hub": [
+   "Jurong East",
+   "Chinese Garden",
+   "Bukit Batok"
+  ],
+  "bukit-batok-crescent": [
+   "Bukit Batok",
+   "Bukit Gombak",
+   "Jurong East"
+  ],
+  "carros-centre-jalan-lam-huat": [
+   "Kranji",
+   "Marsiling"
+  ],
+  "sin-ming-industrial-estate": [
+   "Marymount",
+   "Upper Thomson",
+   "Bright Hill"
+  ],
+  "amk-industrial-park-2": [],
+  "soon-lee-street-pioneer": [
+   "Pioneer",
+   "Joo Koon",
+   "Boon Lay"
+  ],
+  "yishun-industrial-street-1": [
+   "Yishun",
+   "Khatib"
+  ],
+  "paya-ubi-industrial-park": [
+   "Ubi",
+   "Kaki Bukit",
+   "Eunos",
+   "MacPherson"
+  ]
+ }
+}

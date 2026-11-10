@@ -1,0 +1,31 @@
+{
+ "lede": "Uber Garage is a car repair workshop at 48 Toh Guan Rd E, #06-116 Enterprise Hub. Its Google Maps listing shows opening hours and customer ratings.",
+ "chips": [
+  "Car repair"
+ ],
+ "services": [
+  "General servicing and repair"
+ ],
+ "themes": "Customers on Google Maps mention patient, meticulous dyno runs, pre-purchase inspections, tyre balancing, regular servicing, custom work up to engine building, and owners who never upsell.",
+ "faqs": [
+  [
+   "What does Uber Garage do?",
+   "Google Maps lists it as a car repair workshop."
+  ],
+  [
+   "What are the opening hours?",
+   "The hours are listed in the Google Maps section above. Please see Google Maps for current hours."
+  ]
+ ],
+ "sources": "its Google Maps listing",
+ "stories": [],
+ "mentioned_services": [
+  "Dyno tuning",
+  "Pre-purchase inspection",
+  "Car servicing",
+  "Engine building"
+ ],
+ "makes": [],
+ "makes_note": "Not listed on its public pages. Ask the workshop about your car.",
+ "card_rules": "2026-11-05"
+}

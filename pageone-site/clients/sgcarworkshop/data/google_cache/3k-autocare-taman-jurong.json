@@ -1,0 +1,36 @@
+{
+ "businessStatus": "OPERATIONAL",
+ "primaryType": "car_repair",
+ "types": [
+  "car_repair",
+  "point_of_interest",
+  "service",
+  "establishment"
+ ],
+ "rating": 5,
+ "userRatingCount": 969,
+ "websiteUri": null,
+ "paymentOptions": {
+  "acceptsCreditCards": true,
+  "acceptsDebitCards": true,
+  "acceptsCashOnly": false
+ },
+ "parkingOptions": {
+  "paidParkingLot": true
+ },
+ "editorialSummary": null,
+ "weekdayDescriptions": [
+  "Monday: 10:00 AM – 10:00 PM",
+  "Tuesday: 10:00 AM – 10:00 PM",
+  "Wednesday: 10:00 AM – 10:00 PM",
+  "Thursday: 10:00 AM – 10:00 PM",
+  "Friday: 10:00 AM – 10:00 PM",
+  "Saturday: 10:00 AM – 10:00 PM",
+  "Sunday: 10:00 AM – 10:00 PM"
+ ],
+ "review_count_seen": 5,
+ "review_themes": "Customers on Google Maps mention aircon compressor and cooling coil replacement, fast replies on WhatsApp, Sunday work and help with a car that kept failing its LTA emissions test.",
+ "fetched_at": "2026-11-04",
+ "place_id": "ChIJcQ_61OQF2jERA6NPFDY0lX8",
+ "source": "google_places"
+}

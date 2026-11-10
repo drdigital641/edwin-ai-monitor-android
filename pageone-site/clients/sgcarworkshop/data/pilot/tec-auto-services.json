@@ -1,0 +1,56 @@
+{
+ "lede": "Tec Auto Services at Jalan Lam Huat and Carros Centre is a continental car servicing and tuning workshop.",
+ "chips": [
+  "Continental cars",
+  "Tuning"
+ ],
+ "services": [
+  "Servicing and maintenance",
+  "Engine repair and overhaul",
+  "DSG and DCT gearbox work",
+  "Aircon service",
+  "ECU and TCU tuning",
+  "Brakes and suspension",
+  "Spray painting and body repair",
+  "Hybrid and EV servicing"
+ ],
+ "themes": "Customers on Google Maps mention a complex Audi A3 electrical fault with warning lights and a stuck gearbox fixed, tuning and servicing, a side mirror bracket repair, clear explanations before work starts and transparent pricing.",
+ "faqs": [
+  [
+   "What does Tec Auto Services do?",
+   "Google Maps lists it as a car repair workshop."
+  ],
+  [
+   "What are the opening hours?",
+   "The hours are listed in the Google Maps section above. Please see Google Maps for current hours."
+  ]
+ ],
+ "sources": "its own website (tecauto.co)",
+ "stories": [],
+ "mentioned_services": [
+  "Electrical fault repair",
+  "Tuning",
+  "Car servicing",
+  "Side mirror repair"
+ ],
+ "services_note": "Services as listed on the workshop's own website, tecauto.co.",
+ "makes": [
+  "BMW",
+  "Audi",
+  "Mercedes-Benz",
+  "Volkswagen",
+  "Porsche",
+  "MINI"
+ ],
+ "makes_note": "Named on its own website. Ask the workshop about other makes.",
+ "specialties": [
+  "Continental cars",
+  "Hybrid and EV servicing",
+  "Stage 1 and 2 engine remapping"
+ ],
+ "good_to_know": [
+  "Free diagnostic scan before servicing, according to its website",
+  "Founded in 2019 at Carros Centre, according to its website"
+ ],
+ "card_rules": "2026-11-05"
+}

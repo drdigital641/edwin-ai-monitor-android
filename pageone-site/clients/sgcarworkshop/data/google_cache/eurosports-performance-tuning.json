@@ -1,0 +1,37 @@
+{
+ "businessStatus": "OPERATIONAL",
+ "primaryType": "car_repair",
+ "types": [
+  "auto_parts_store",
+  "car_repair",
+  "service",
+  "store",
+  "point_of_interest",
+  "establishment"
+ ],
+ "rating": 4.7,
+ "userRatingCount": 41,
+ "websiteUri": "http://www.eurosports.com.sg/",
+ "paymentOptions": {
+  "acceptsCreditCards": true,
+  "acceptsDebitCards": true,
+  "acceptsCashOnly": true,
+  "acceptsNfc": true
+ },
+ "parkingOptions": null,
+ "editorialSummary": null,
+ "weekdayDescriptions": [
+  "Monday: 10:00 AM – 7:00 PM",
+  "Tuesday: 10:00 AM – 7:00 PM",
+  "Wednesday: 10:00 AM – 7:00 PM",
+  "Thursday: 10:00 AM – 7:00 PM",
+  "Friday: 10:00 AM – 7:00 PM",
+  "Saturday: 10:00 AM – 2:00 PM",
+  "Sunday: Closed"
+ ],
+ "review_count_seen": 5,
+ "review_themes": "Customers on Google Maps praise in-depth ECU and gearbox tuning knowledge, patient explanations and smooth-driving results after a tune.",
+ "fetched_at": "2026-11-07",
+ "place_id": "ChIJodyceHIQ2jERvekEwwavjsw",
+ "source": "google_places"
+}

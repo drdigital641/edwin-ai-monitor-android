@@ -1,0 +1,35 @@
+{
+ "businessStatus": "OPERATIONAL",
+ "primaryType": "car_repair",
+ "types": [
+  "car_repair",
+  "point_of_interest",
+  "service",
+  "establishment"
+ ],
+ "rating": 5,
+ "userRatingCount": 33,
+ "websiteUri": "https://www.facebook.com/Teutonicautohaus/",
+ "paymentOptions": {
+  "acceptsCreditCards": true,
+  "acceptsDebitCards": true,
+  "acceptsCashOnly": false,
+  "acceptsNfc": true
+ },
+ "parkingOptions": null,
+ "editorialSummary": null,
+ "weekdayDescriptions": [
+  "Monday: 7:30 AM – 4:30 PM",
+  "Tuesday: 7:30 AM – 4:30 PM",
+  "Wednesday: 7:30 AM – 4:30 PM",
+  "Thursday: 7:30 AM – 4:30 PM",
+  "Friday: 7:30 AM – 4:30 PM",
+  "Saturday: 7:30 – 11:30 AM",
+  "Sunday: Closed"
+ ],
+ "review_count_seen": 5,
+ "review_themes": "Customers on Google Maps mention quick, accurate fault finding, a clean workshop and servicing for an older Porsche Boxster.",
+ "fetched_at": "2026-11-03",
+ "place_id": "ChIJMdDVNSgX2jERC3BsC8lP_Vk",
+ "source": "google_places"
+}

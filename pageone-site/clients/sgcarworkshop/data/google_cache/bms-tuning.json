@@ -1,0 +1,32 @@
+{
+ "businessStatus": "OPERATIONAL",
+ "primaryType": "car_repair",
+ "types": [
+  "car_repair",
+  "service",
+  "point_of_interest",
+  "establishment"
+ ],
+ "rating": 5,
+ "userRatingCount": 257,
+ "websiteUri": "http://bmstuning.sg/",
+ "paymentOptions": {
+  "acceptsNfc": true
+ },
+ "parkingOptions": null,
+ "editorialSummary": null,
+ "weekdayDescriptions": [
+  "Monday: 10:00 AM – 6:00 PM",
+  "Tuesday: 10:00 AM – 6:00 PM",
+  "Wednesday: 10:00 AM – 6:00 PM",
+  "Thursday: 10:00 AM – 6:00 PM",
+  "Friday: 10:00 AM – 6:00 PM",
+  "Saturday: 10:00 AM – 6:00 PM",
+  "Sunday: Closed"
+ ],
+ "review_count_seen": 5,
+ "review_themes": "Customers on Google Maps mention ECU tuning and re-tunes that make cars smoother and more responsive, gains even on small naturally aspirated engines such as a Honda Vezel, and a friendly boss who explains the options.",
+ "fetched_at": "2026-11-10",
+ "place_id": "ChIJxXpu2VgW2jERqU1kTgfYhn8",
+ "source": "google_places"
+}

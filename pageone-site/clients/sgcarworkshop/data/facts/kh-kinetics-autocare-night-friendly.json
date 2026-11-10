@@ -1,0 +1,43 @@
+{
+ "slug": "kh-kinetics-autocare-night-friendly",
+ "researched_at": "2026-11-02",
+ "researcher": "Claude (Sonnet), facts supplied by Edwin's research notes where marked",
+ "facts": [
+  {
+   "field": "registration",
+   "value": "Sole proprietorship registered Nov 2022 (Edwin research notes: companieshouse.sg)",
+   "source_url": "https://companieshouse.sg",
+   "retrieved": "2026-11-02"
+  },
+  {
+   "field": "booking",
+   "value": "Night-friendly evening slots and Saturday daytime, by appointment (own Carousell listings, per Edwin research notes); days/times NOT stated on the page",
+   "source_url": "https://www.carousell.sg/u/kh.kinetics/",
+   "retrieved": "2026-11-02"
+  },
+  {
+   "field": "services",
+   "value": "Servicing; OBD diagnosis; engine oil; ATF/CVT; brake pads, rotors and fluid flush; aircon and compressor; alternator; battery; lower arm; absorbers; steering rack; mountings; headlights; walnut blasting; engine and coolant flush",
+   "source_url": "https://www.carousell.sg/u/kh.kinetics/",
+   "retrieved": "2026-11-02"
+  },
+  {
+   "field": "makes",
+   "value": "All makes",
+   "source_url": "https://www.carousell.sg/u/kh.kinetics/",
+   "retrieved": "2026-11-02"
+  },
+  {
+   "field": "address",
+   "value": "25 Kaki Bukit Rd 4 #05-33 Synergy@KB, Singapore 417800",
+   "source_url": "google_profile",
+   "retrieved": "2026-11-02"
+  }
+ ],
+ "conflicts": [],
+ "not_found": [
+  "real job stories"
+ ],
+ "stories": [],
+ "phone_rule": "Stored Google SG mobile only; no second numbers or landlines"
+}

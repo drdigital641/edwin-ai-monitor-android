@@ -1,0 +1,28 @@
+{
+ "lede": "Soon Huat Autoserv is a car repair workshop at 48 Toh Guan Road East #01-136 Enterprise Hub. Its Google Maps listing shows opening hours and customer ratings.",
+ "chips": [
+  "Car repair"
+ ],
+ "services": [
+  "General servicing and repair"
+ ],
+ "themes": "Customers on Google Maps mention precise wheel alignment, tracing a shaking car to a damaged tyre, a test drive with the owner after work, and alignment after coilover and corner-weight tuning.",
+ "faqs": [
+  [
+   "What does Soon Huat Autoserv do?",
+   "Google Maps lists it as a car repair workshop."
+  ],
+  [
+   "What are the opening hours?",
+   "The hours are listed in the Google Maps section above. Please see Google Maps for current hours."
+  ]
+ ],
+ "sources": "its Google Maps listing",
+ "stories": [],
+ "mentioned_services": [
+  "Wheel alignment",
+  "Tyre replacement",
+  "Coilover setup",
+  "Car servicing"
+ ]
+}

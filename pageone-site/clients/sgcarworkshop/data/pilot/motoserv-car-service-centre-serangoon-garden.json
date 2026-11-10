@@ -1,0 +1,27 @@
+{
+ "lede": "Motoserv Car Service Centre @Serangoon Garden is a car repair workshop at 49 Serangoon Garden Wy. Its Google Maps listing shows opening hours and customer ratings.",
+ "chips": [
+  "Car repair"
+ ],
+ "services": [
+  "General servicing and repair"
+ ],
+ "themes": "Customers on Google Maps mention a small workshop in a petrol station, servicing where you can bring your own oil, tyre changes and an aircon fix cheaper than first quoted. One customer felt repair and parts prices were high.",
+ "faqs": [
+  [
+   "What does Motoserv Car Service Centre @Serangoon Garden do?",
+   "Google Maps lists it as a car repair workshop."
+  ],
+  [
+   "What are the opening hours?",
+   "The hours are listed in the Google Maps section above. Please see Google Maps for current hours."
+  ]
+ ],
+ "sources": "its Google Maps listing",
+ "stories": [],
+ "mentioned_services": [
+  "Car servicing",
+  "Tyre replacement",
+  "Aircon cooling coil replacement"
+ ]
+}

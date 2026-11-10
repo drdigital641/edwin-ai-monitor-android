@@ -1,0 +1,13 @@
+{
+ "schema_version": 1,
+ "codes": {
+  "SERV": "general-servicing-repair",
+  "BODY": "spray-painting-bodywork",
+  "GEAR": "gearbox-repair",
+  "ECU": "abs-ecu-module-repair",
+  "BATT": "car-battery",
+  "DETL": "car-detailing-coating",
+  "WRAP": "car-wrap-ppf",
+  "PART": "car-parts"
+ }
+}

@@ -1,0 +1,34 @@
+{
+ "businessStatus": "OPERATIONAL",
+ "primaryType": "car_repair",
+ "types": [
+  "car_repair",
+  "point_of_interest",
+  "service",
+  "establishment"
+ ],
+ "rating": 4.9,
+ "userRatingCount": 115,
+ "websiteUri": "http://mcfauto.biz/",
+ "paymentOptions": {
+  "acceptsCreditCards": true,
+  "acceptsDebitCards": true,
+  "acceptsNfc": true
+ },
+ "parkingOptions": null,
+ "editorialSummary": null,
+ "weekdayDescriptions": [
+  "Monday: 9:30 AM – 6:30 PM",
+  "Tuesday: 9:30 AM – 6:30 PM",
+  "Wednesday: 9:30 AM – 6:30 PM",
+  "Thursday: 9:30 AM – 6:30 PM",
+  "Friday: 9:30 AM – 6:30 PM",
+  "Saturday: 9:30 AM – 4:00 PM",
+  "Sunday: Closed"
+ ],
+ "review_count_seen": 5,
+ "review_themes": "Customers on Google Maps mention a lot of MINI experience, a coolant system replacement after an overheating warning, seat belt and airbag warning light repairs, bulb changes, car camera installation, clear cost breakdowns and fair quotes.",
+ "fetched_at": "2026-11-06",
+ "place_id": "ChIJT0AEgOEX2jERIkXBh-Vx0Ik",
+ "source": "google_places"
+}

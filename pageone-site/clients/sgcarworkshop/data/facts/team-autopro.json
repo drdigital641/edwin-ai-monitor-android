@@ -1,0 +1,72 @@
+{
+ "slug": "team-autopro",
+ "researched_at": "2026-11-04",
+ "researcher": "Claude, Google Places Details only (candidate from the queue, found by web search at Edwin's request; name from Google Business Profile)",
+ "facts": [
+  {
+   "field": "rating",
+   "value": "4.9",
+   "source_url": "google_places",
+   "retrieved": "2026-11-04"
+  },
+  {
+   "field": "userRatingCount",
+   "value": "111",
+   "source_url": "google_places",
+   "retrieved": "2026-11-04"
+  },
+  {
+   "field": "websiteUri",
+   "value": "http://teamauto.sg/",
+   "source_url": "google_places",
+   "retrieved": "2026-11-04"
+  },
+  {
+   "field": "types",
+   "value": "['car_repair', 'point_of_interest', 'service', 'establishment']",
+   "source_url": "google_places",
+   "retrieved": "2026-11-04"
+  },
+  {
+   "field": "primaryType",
+   "value": "car_repair",
+   "source_url": "google_places",
+   "retrieved": "2026-11-04"
+  },
+  {
+   "field": "opening_hours",
+   "value": [
+    "Monday: 9:30 AM – 6:00 PM",
+    "Tuesday: 9:30 AM – 6:00 PM",
+    "Wednesday: 9:30 AM – 6:00 PM",
+    "Thursday: 9:30 AM – 6:00 PM",
+    "Friday: 9:30 AM – 6:00 PM",
+    "Saturday: 9:30 AM – 5:30 PM",
+    "Sunday: Closed"
+   ],
+   "source_url": "google_places",
+   "retrieved": "2026-11-04"
+  }
+ ],
+ "conflicts": [
+  {
+   "field": "name",
+   "google": "Team AutoPro Pte Ltd",
+   "other": "Team AutoPro",
+   "resolution": "Google name, \"Pte Ltd\" dropped"
+  }
+ ],
+ "not_found": [
+  "editorialSummary",
+  "parkingOptions"
+ ],
+ "review_service_support": {
+  "Car servicing": 3,
+  "Accident repair and insurance claims": 2,
+  "Towing after accidents": 1,
+  "Rattle noise repair": 1
+ },
+ "review_count_seen": 5,
+ "fetched_at": "2026-11-04",
+ "source": "google_places"
+}

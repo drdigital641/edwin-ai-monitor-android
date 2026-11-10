@@ -1,0 +1,22 @@
+{
+ "businessStatus": "OPERATIONAL",
+ "primaryType": "car_repair",
+ "types": [
+  "car_repair",
+  "service",
+  "point_of_interest",
+  "establishment"
+ ],
+ "rating": 4.9,
+ "userRatingCount": 13,
+ "websiteUri": null,
+ "paymentOptions": null,
+ "parkingOptions": null,
+ "editorialSummary": null,
+ "weekdayDescriptions": null,
+ "review_count_seen": 5,
+ "review_themes": "Customers on Google Maps mention long-term servicing and repair, clear answers about car problems and no unnecessary upselling.",
+ "fetched_at": "2026-11-02",
+ "place_id": "ChIJtQAbWCEX2jERTNVaFJ4pG_g",
+ "source": "google_places"
+}

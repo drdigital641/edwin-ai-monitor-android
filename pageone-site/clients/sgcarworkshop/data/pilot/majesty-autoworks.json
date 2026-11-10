@@ -1,0 +1,27 @@
+{
+ "lede": "Majesty Autoworks is a car repair workshop at 1, #03-25 Bukit Batok Cres, WCEGA Plaza. Its Google Maps listing shows opening hours and customer ratings.",
+ "chips": [
+  "Car repair"
+ ],
+ "services": [
+  "General servicing and repair"
+ ],
+ "themes": "Customers on Google Maps mention a transparent owner who looks for ways to save cost, clear explanations before any part is changed, quick turnaround, and tyre puncture checks.",
+ "faqs": [
+  [
+   "What does Majesty Autoworks do?",
+   "Google Maps lists it as a car repair workshop."
+  ],
+  [
+   "What are the opening hours?",
+   "The hours are listed in the Google Maps section above. Please see Google Maps for current hours."
+  ]
+ ],
+ "sources": "its Google Maps listing",
+ "stories": [],
+ "mentioned_services": [
+  "Car servicing",
+  "Tyre puncture repair",
+  "Fault diagnosis"
+ ]
+}

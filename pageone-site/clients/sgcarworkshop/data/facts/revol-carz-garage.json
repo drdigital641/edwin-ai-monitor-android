@@ -1,0 +1,77 @@
+{
+ "slug": "revol-carz-garage",
+ "researched_at": "2026-11-02",
+ "researcher": "Claude (Sonnet)",
+ "facts": [
+  {
+   "field": "established",
+   "value": "Since 2003 (\"23+ years experience\")",
+   "source_url": "https://www.revol.com.sg/car-workshop/",
+   "retrieved": "2026-11-02"
+  },
+  {
+   "field": "makes",
+   "value": "BMW, Mercedes-Benz, Audi, Volkswagen",
+   "source_url": "https://revol.com.sg/contact-us-revol",
+   "retrieved": "2026-11-02"
+  },
+  {
+   "field": "services",
+   "value": "Routine servicing, engine repair, transmission work, electrical fault diagnosis; brand-specific diagnostic tools; factory-spec engine oil; original replacement parts with OEM suggested for older cars",
+   "source_url": "https://www.revol.com.sg/car-workshop/",
+   "retrieved": "2026-11-02"
+  },
+  {
+   "field": "warranty",
+   "value": "A minimum of 1 year on all repairs (stated on its website; terms not detailed)",
+   "source_url": "https://www.revol.com.sg/car-workshop/",
+   "retrieved": "2026-11-02"
+  }
+ ],
+ "conflicts": [
+  {
+   "field": "phone",
+   "values": [
+    {
+     "value": "6555-1171",
+     "source_url": "https://www.revol.com.sg/car-workshop/"
+    },
+    {
+     "value": "6555-1181",
+     "source_url": "https://www.revol.com.sg/car-workshop/"
+    },
+    {
+     "value": "WhatsApp 9322-2338",
+     "source_url": "https://www.revol.com.sg/car-workshop/"
+    }
+   ],
+   "note": "page uses the stored Google mobile (matches 9322 2338) only; landlines never published"
+  }
+ ],
+ "not_found": [
+  "payment methods"
+ ],
+ "stories": [
+  {
+   "title": "BMW 730Li: front wheel bearing",
+   "car": "BMW 730Li",
+   "problem": "Hum rising with road speed, growl when cornering",
+   "action": "Worn front wheel bearing replaced with a BMW-spec unit; short road test said to confirm noise gone",
+   "job_date": "2026-04-18",
+   "source_url": "https://www.revol.com.sg/case-studies/bmw-case-study-245-730li-wheel-bearing-replacement/",
+   "retrieved": "2026-11-02",
+   "notes": "no customer name or plate on the post; post has photos, not used"
+  },
+  {
+   "title": "BMW 116i: EVAP purge valve",
+   "car": "BMW 116i",
+   "problem": "Check engine light for weeks, rough idle, slow cold cranking",
+   "action": "Leaking EVAP purge valve found by smoke and bench test, new valve fitted, codes cleared, idle steady",
+   "job_date": "2026-05-02",
+   "source_url": "https://www.revol.com.sg/case-studies/bmw-case-study-247-116i-evap-valve-replacement/",
+   "retrieved": "2026-11-02",
+   "notes": "no customer name or plate on the post; post has photos, not used"
+  }
+ ],
+ "phone_rule": "Phone = the stored Google mobile only; other numbers are never published."
+}

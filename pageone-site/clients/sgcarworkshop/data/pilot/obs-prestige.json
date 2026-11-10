@@ -1,0 +1,36 @@
+{
+ "lede": "OBS PRESTIGE at Sin Ming Industrial Estate is a car and van servicing workshop.",
+ "chips": [
+  "Servicing",
+  "Repairs"
+ ],
+ "services": [
+  "Car servicing",
+  "Van servicing",
+  "Car repair"
+ ],
+ "themes": "Customers on Google Maps mention vans and family cars looked after for years, problems solved without pushing, regular updates during servicing and honest dealings.",
+ "faqs": [
+  [
+   "What does OBS PRESTIGE do?",
+   "Google Maps lists it as a car repair workshop."
+  ],
+  [
+   "What are the opening hours?",
+   "The hours are listed in the Google Maps section above. Please see Google Maps for current hours."
+  ]
+ ],
+ "sources": "its Google Maps listing",
+ "stories": [],
+ "mentioned_services": [
+  "Car servicing",
+  "Van servicing",
+  "Car repair"
+ ],
+ "services_note": "Services customers mention on Google Maps. Ask the workshop for its full list.",
+ "makes": [],
+ "makes_note": "Not listed on its public pages. Ask the workshop about your car.",
+ "specialties": [],
+ "good_to_know": [],
+ "card_rules": "2026-11-05"
+}

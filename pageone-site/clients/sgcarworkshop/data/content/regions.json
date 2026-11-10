@@ -1,0 +1,22 @@
+{
+ "north": {
+  "name": "North",
+  "intro": "Car workshops and services in the North region of Singapore, which takes in Yishun, Woodlands, Sembawang and Kranji. Some listings here are mobile or onsite and come to your car."
+ },
+ "north-east": {
+  "name": "North-East",
+  "intro": "Car workshops and services in the North-East region of Singapore, including Ang Mo Kio, Hougang, Sengkang, Punggol and Serangoon."
+ },
+ "east": {
+  "name": "East",
+  "intro": "Car workshops and services in the East region of Singapore, which includes the Kaki Bukit and Bedok car trade units."
+ },
+ "west": {
+  "name": "West",
+  "intro": "Car workshops and services in the West region of Singapore, including Bukit Batok, Bukit Panjang and Boon Lay. Listings here are mobile services or have an outlet in the west."
+ },
+ "central": {
+  "name": "Central",
+  "intro": "Car workshops and services in the Central region of Singapore, including Toa Payoh, Bukit Timah, Upper Thomson and the Jervois and Havelock Road areas."
+ }
+}

@@ -1,0 +1,73 @@
+{
+ "schema_version": 1,
+ "slug": "akhi-motor-garage",
+ "place_id": "ChIJ5YQlfkQT2jERhrZWcVxS6rs",
+ "place_id_checked_at": "2026-11-03",
+ "name": "Akhi motor garage",
+ "name_source_url": "google_profile",
+ "name_checked_at": "2026-11-03",
+ "address": {
+  "block": "",
+  "street": "71 Woodlands Ave 10, #02-05",
+  "unit": "",
+  "building": ""
+ },
+ "postal_code": "737743",
+ "address_source_url": "google_profile",
+ "address_checked_at": "2026-11-03",
+ "categories": [
+  "SERV"
+ ],
+ "services": [
+  "General servicing and repair"
+ ],
+ "services_source_url": "google_profile",
+ "phones": [
+  {
+   "e164": "+6593626595",
+   "kind": "mobile",
+   "whatsapp": true,
+   "source": "google_profile",
+   "checked_at": "2026-11-03"
+  }
+ ],
+ "google_screen": {
+  "passed": true,
+  "reason": "OPERATIONAL, car repair, SG mobile on Google profile",
+  "checked_at": "2026-11-03"
+ },
+ "status": "active",
+ "tier": "basic",
+ "first_seen_at": "2026-11-03",
+ "last_verified_at": "2026-11-03",
+ "collector_version": "agent-v5",
+ "estate": "woodlands-industrial-xchange",
+ "planning_area": "Woodlands",
+ "region": "north",
+ "lat": 1.457304419461519,
+ "lng": 103.8111175409817,
+ "geo_source": "onemap",
+ "blocks": [
+  "hero",
+  "contact",
+  "services",
+  "good_for",
+  "problems",
+  "reviews",
+  "comparison",
+  "hours",
+  "stories",
+  "location",
+  "tips",
+  "faq",
+  "claim",
+  "sources"
+ ],
+ "google_rating": {
+  "rating": 5,
+  "count": 13,
+  "checked": "2026-11-04",
+  "source": "Google Places",
+  "source_date": "2026-11-04"
+ }
+}

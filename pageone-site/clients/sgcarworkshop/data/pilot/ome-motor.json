@@ -1,0 +1,45 @@
+{
+ "lede": "OME Motor is a car workshop at 50 Bukit Batok Street 23. Its booking page lists car servicing, gearbox oil, aircon gas, tyres from stock and minor and major repairs.",
+ "chips": [
+  "Car servicing",
+  "Tyres",
+  "Gearbox oil"
+ ],
+ "services": [
+  "Car servicing",
+  "Gearbox and transmission oil",
+  "Aircon gas and coolant",
+  "New tyres from stock and other brands",
+  "Minor and major repairs and diagnosis"
+ ],
+ "themes": "Customers on Google Maps mention online booking for major servicing, thorough checks, tyre changes at good prices, knowledgeable mechanics who are not pushy, and a rest area with drinks while waiting.",
+ "faqs": [
+  [
+   "What does OME Motor do?",
+   "Google Maps lists it as a car repair workshop."
+  ],
+  [
+   "What are the opening hours?",
+   "The hours are listed in the Google Maps section above. Please see Google Maps for current hours."
+  ]
+ ],
+ "sources": "its own booking page (setmore)",
+ "stories": [],
+ "mentioned_services": [
+  "Major servicing",
+  "Tyres",
+  "Car servicing"
+ ],
+ "services_note": "Services as listed on the workshop's own booking page.",
+ "specialties": [
+  "Tyres kept in stock",
+  "Transmission fluid changes (ATF, CVT and DCT)"
+ ],
+ "makes": [],
+ "makes_note": "Not listed on its public pages. Ask the workshop about your car.",
+ "good_to_know": [
+  "Appointments can be booked online on its booking page or by WhatsApp",
+  "Final quotation given once the car is at the workshop, according to its booking page"
+ ],
+ "card_rules": "2026-11-05"
+}

@@ -1,0 +1,28 @@
+{
+ "lede": "Mobil Sunguan Auto Centre is a car workshop in MacPherson Road. Its own website lists oil change, repair service, car restoration and two-wheeler repair.",
+ "chips": [
+  "Oil change",
+  "Repair service",
+  "Car restoration"
+ ],
+ "services": [
+  "Oil change",
+  "Repair service",
+  "Car restoration",
+  "Two-wheeler repair"
+ ],
+ "themes": "Customers on Google Maps mention car maintenance, second opinions on repairs and parking space. One customer noted that payment is cash only.",
+ "sources": "its own website (workshop.sea.mobil.com)",
+ "stories": [],
+ "mentioned_services": [
+  "Car servicing",
+  "Second opinion on repairs"
+ ],
+ "services_note": "Services as listed on the workshop's own website, workshop.sea.mobil.com.",
+ "specialties": [
+  "Mobil oil products"
+ ],
+ "card_rules": "2026-11-06",
+ "makes": [],
+ "makes_note": "Not listed on its public pages. Ask the workshop about your car."
+}

@@ -1,0 +1,41 @@
+{
+ "lede": "J's Garage is a car repair workshop at 60 Jln Lam Huat, #03-48 Carros Centre. Its Google Maps listing shows opening hours, payment options and customer ratings.",
+ "chips": [
+  "Car repair"
+ ],
+ "services": [
+  "General servicing and repair"
+ ],
+ "themes": "Customers on Google Maps mention Honda and other Japanese and continental cars, long-term repeat visits, fair prices and mechanics who take time to explain problems.",
+ "faqs": [
+  [
+   "What does J's Garage do?",
+   "Google Maps lists it as a car repair workshop."
+  ],
+  [
+   "How can I pay?",
+   "Google Maps lists credit cards."
+  ],
+  [
+   "Is there parking?",
+   "Google Maps lists parking options, shown above."
+  ],
+  [
+   "Does it have a website?",
+   "Yes, a link is shown above from its Google Maps listing."
+  ],
+  [
+   "What are the opening hours?",
+   "The hours are listed in the Google Maps section above. Please see Google Maps for current hours."
+  ]
+ ],
+ "sources": "its Google Maps listing",
+ "stories": [],
+ "mentioned_services": [
+  "Honda cars",
+  "Japanese and continental cars",
+  "Engine rebuild",
+  "Gearbox leak repair",
+  "Tyres"
+ ]
+}

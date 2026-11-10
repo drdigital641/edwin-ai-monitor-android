@@ -1,0 +1,71 @@
+{
+ "slug": "cas-garage",
+ "researched_at": "2026-11-03",
+ "researcher": "Claude (Sonnet), Google Places Details only (volume mode)",
+ "facts": [
+  {
+   "field": "rating",
+   "value": "5",
+   "source_url": "google_places",
+   "retrieved": "2026-11-03"
+  },
+  {
+   "field": "userRatingCount",
+   "value": "59",
+   "source_url": "google_places",
+   "retrieved": "2026-11-03"
+  },
+  {
+   "field": "websiteUri",
+   "value": "https://www.casgarage.sg/",
+   "source_url": "google_places",
+   "retrieved": "2026-11-03"
+  },
+  {
+   "field": "paymentOptions",
+   "value": "{'acceptsCreditCards': True, 'acceptsDebitCards': True, 'acceptsCashOnly': False, 'acceptsNfc': True}",
+   "source_url": "google_places",
+   "retrieved": "2026-11-03"
+  },
+  {
+   "field": "parkingOptions",
+   "value": "None",
+   "source_url": "google_places",
+   "retrieved": "2026-11-03"
+  },
+  {
+   "field": "types",
+   "value": "['supplier', 'car_repair', 'service', 'point_of_interest', 'establishment']",
+   "source_url": "google_places",
+   "retrieved": "2026-11-03"
+  },
+  {
+   "field": "opening_hours",
+   "value": [
+    "Monday: 10:00 AM – 7:00 PM",
+    "Tuesday: 10:00 AM – 7:00 PM",
+    "Wednesday: 10:00 AM – 7:00 PM",
+    "Thursday: 10:00 AM – 7:00 PM",
+    "Friday: 10:00 AM – 7:00 PM",
+    "Saturday: 10:00 AM – 3:00 PM",
+    "Sunday: Closed"
+   ],
+   "source_url": "google_places",
+   "retrieved": "2026-11-03"
+  }
+ ],
+ "conflicts": [],
+ "not_found": [
+  "editorialSummary",
+  "own research (stopped by Edwin 3 Nov 2026)",
+  "real job stories"
+ ],
+ "stories": [],
+ "phone_rule": "Stored Google SG mobile only",
+ "review_service_support": {
+  "Fuel tank repair": "1 of 5 reviews",
+  "Starter motor repair": "1 of 5 reviews",
+  "Used-car restoration": "1 of 5 reviews",
+  "Car servicing and repairs": "2 of 5 reviews"
+ }
+}

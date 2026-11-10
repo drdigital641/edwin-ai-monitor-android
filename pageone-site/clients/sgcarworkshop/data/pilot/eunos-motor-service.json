@@ -1,0 +1,35 @@
+{
+ "lede": "Eunos Motor Service is a car repair workshop at 1 Kaki Bukit Ave 6, #01-64. Its Google Maps listing shows opening hours and customer ratings.",
+ "chips": [
+  "Car repair"
+ ],
+ "services": [
+  "General servicing and repair"
+ ],
+ "themes": "Customers on Google Maps mention reasonably priced, quick servicing, an aircon compressor change, engine mounting and brake pad work, help with private and parallel import cars, and a quarter glass replacement.",
+ "faqs": [
+  [
+   "What does Eunos Motor Service do?",
+   "Google Maps lists it as a car repair workshop."
+  ],
+  [
+   "What are the opening hours?",
+   "The hours are listed in the Google Maps section above. Please see Google Maps for current hours."
+  ]
+ ],
+ "sources": "its Google Maps listing",
+ "stories": [],
+ "mentioned_services": [
+  "Car servicing",
+  "Aircon compressor",
+  "Brake pads",
+  "Engine mounting",
+  "Quarter glass"
+ ],
+ "card_rules": "2026-11-05",
+ "makes": [
+  "Honda",
+  "Nissan"
+ ],
+ "makes_note": "Named by customers on Google Maps. Ask the workshop about other makes."
+}

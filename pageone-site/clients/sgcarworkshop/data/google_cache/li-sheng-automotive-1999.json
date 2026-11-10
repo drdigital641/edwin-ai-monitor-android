@@ -1,0 +1,32 @@
+{
+ "businessStatus": "OPERATIONAL",
+ "primaryType": "car_repair",
+ "types": [
+  "auto_parts_store",
+  "car_repair",
+  "store",
+  "point_of_interest",
+  "service",
+  "establishment"
+ ],
+ "rating": 4.4,
+ "userRatingCount": 16,
+ "websiteUri": "https://sitelift.site/lishengautomotive1999pteltd/",
+ "paymentOptions": null,
+ "parkingOptions": null,
+ "editorialSummary": null,
+ "weekdayDescriptions": [
+  "Monday: 7:30 AM – 7:00 PM",
+  "Tuesday: 7:30 AM – 7:00 PM",
+  "Wednesday: 7:30 AM – 7:00 PM",
+  "Thursday: 7:30 AM – 7:00 PM",
+  "Friday: 7:30 AM – 7:00 PM",
+  "Saturday: 7:30 AM – 7:00 PM",
+  "Sunday: Closed"
+ ],
+ "review_count_seen": 5,
+ "review_themes": "Customers on Google Maps mention oil servicing, servicing packages, light and fuse fixes after a failed inspection, and spray painting.",
+ "fetched_at": "2026-11-04",
+ "place_id": "ChIJh-QoFkIR2jERE2-MiXHyWpM",
+ "source": "google_places"
+}

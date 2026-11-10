@@ -1,0 +1,160 @@
+{
+ "slug": "the-ecu-clinic",
+ "tier": "premium_leadgen",
+ "name": "The ECU Clinic",
+ "domain": "theecuclinicsg.com",
+ "url": "https://theecuclinicsg.com/",
+ "category": "abs-ecu-module-repair",
+ "regions": [
+  "east"
+ ],
+ "regions_note": "Kaki Bukit is in the East region (URA). Address: 8 Kaki Bukit Avenue 4.",
+ "area_label": "Kaki Bukit",
+ "title": "The ECU Clinic | ABS and Module Repair, Kaki Bukit",
+ "desc": "The ECU Clinic in Kaki Bukit repairs ABS pumps and modules, Mercedes gearbox control units and steering locks. 6-month warranty. WhatsApp 9893 1923.",
+ "card_img": {
+  "f": "ecu-clinic-mercedes-esp-pumps.webp",
+  "alt": "Mercedes-Benz ESP pumps on the repair bench"
+ },
+ "card_text": [
+  "Repairs ABS pumps and control modules at a Kaki Bukit workshop.",
+  "Also Mercedes gearbox control units, steering locks and hybrid batteries."
+ ],
+ "lede": "The ECU Clinic repairs car electronics at Premier @ Kaki Bukit. When an ABS or brake warning light will not clear, the unit is tested and repaired on the bench where possible instead of simply replaced. WhatsApp the car model, chassis number and fault code to 9893 1923, or call.",
+ "services": [
+  {
+   "n": "ABS pump and module repair",
+   "d": "ABS, ESP and ESC units repaired, or a reconditioned or used unit supplied when that is the better route.",
+   "p": null
+  },
+  {
+   "n": "Mercedes 7-speed and 9-speed TCU repair",
+   "d": "Gearbox warnings, harsh shifts or a gear that sticks: the transmission control unit is diagnosed and repaired.",
+   "p": null
+  },
+  {
+   "n": "Mercedes steering lock (ELV) repair",
+   "d": "For a key that will not turn or a car that will not start because of the electronic steering lock.",
+   "p": null
+  },
+  {
+   "n": "Hybrid battery replacement",
+   "d": "A brand-new OEM hybrid battery, with a warranty of 1 year or 100,000 km.",
+   "p": null
+  }
+ ],
+ "price_note": "Prices are not listed. Send the fault code and car details by WhatsApp to get the options and a price.",
+ "phone": "+6598931923",
+ "phone_show": "9893 1923",
+ "whatsapp": "6598931923",
+ "addresses": [
+  {
+   "label": null,
+   "street": "Premier @ Kaki Bukit, 8 Kaki Bukit Avenue 4, #06-43",
+   "postal": "415875"
+  }
+ ],
+ "map_url": "https://www.google.com/maps/search/?api=1&query=Premier%20%40%20Kaki%20Bukit%2C%208%20Kaki%20Bukit%20Avenue%204%2C%20Singapore%20415875",
+ "hours": [
+  [
+   "Mon to Fri",
+   "9am to 7pm"
+  ],
+  [
+   "Sat",
+   "9am to 3pm"
+  ],
+  [
+   "Sun and public holidays",
+   "Closed"
+  ]
+ ],
+ "hours_ld": [
+  [
+   [
+    "Monday",
+    "Tuesday",
+    "Wednesday",
+    "Thursday",
+    "Friday"
+   ],
+   "09:00",
+   "19:00"
+  ],
+  [
+   [
+    "Saturday"
+   ],
+   "09:00",
+   "15:00"
+  ]
+ ],
+ "hours_note": "WhatsApp enquiries are welcome at any hour. Pick-up and delivery are available.",
+ "social": [
+  "https://www.facebook.com/TheECUclinicSG"
+ ],
+ "reviews": {
+  "text": "Rated 5.0 on Google from 1 review so far, as stated on theecuclinicsg.com (checked 1 November 2026)",
+  "url": "https://search.google.com/local/reviews?placeid=ChIJU8-75AAX2jERRmA8PvLfV7k",
+  "label": "Read the Google reviews"
+ },
+ "photos": [
+  {
+   "f": "ecu-clinic-mercedes-esp-pumps.webp",
+   "alt": "Mercedes-Benz ESP pumps on the repair bench",
+   "cap": "Mercedes-Benz ESP pumps on the bench."
+  },
+  {
+   "f": "ecu-clinic-abs-esc-units-bench.webp",
+   "alt": "ABS and ESC units on the repair bench",
+   "cap": "ABS and ESC units waiting for repair."
+  },
+  {
+   "f": "ecu-clinic-mercedes-7g-conductor-plate.webp",
+   "alt": "Mercedes 7-speed gearbox conductor plate with new filter, gasket and oil",
+   "cap": "A Mercedes 7-speed gearbox job, with the new filter, gasket and oil."
+  },
+  {
+   "f": "ecu-clinic-mercedes-elv.webp",
+   "alt": "Mercedes-Benz electronic steering lock on the bench",
+   "cap": "A Mercedes electronic steering lock on the bench."
+  },
+  {
+   "f": "ecu-clinic-hybrid-battery-modules.webp",
+   "alt": "Hybrid battery with new modules",
+   "cap": "A hybrid battery fitted with new modules."
+  },
+  {
+   "f": "ecu-clinic-hyundai-kia-esc.webp",
+   "alt": "Hyundai or Kia ESC unit on the bench",
+   "cap": "A Hyundai or Kia ESC unit."
+  }
+ ],
+ "faqs": [
+  [
+   "Can you repair my ABS pump or module?",
+   "Yes. ABS, ESP and ESC modules are repaired, and used or reconditioned pumps are supplied for makes such as Toyota, Honda, Mercedes-Benz, Hyundai, Kia, Volkswagen and Audi."
+  ],
+  [
+   "What should I send on WhatsApp?",
+   "The car model, chassis number and fault code. A photo of the scan tool screen or the dashboard warning helps."
+  ],
+  [
+   "Is there a warranty?",
+   "Repairs carry a 6-month warranty. New hybrid batteries carry 1 year or 100,000 km."
+  ],
+  [
+   "Do you collect cars?",
+   "Pick-up and delivery are available, and after-hours appointments can be arranged."
+  ]
+ ],
+ "source": {
+  "name": "preview/ecu-clinic index read via the Bluehost Bridge on 1 Nov 2026",
+  "photos": "jsDelivr URLs used by that page"
+ },
+ "left_out": [
+  "Honda radar, BMW CAS and temperature programming and engine ECU services (kept off the directory)",
+  "customer quotes"
+ ],
+ "_order": 4
+}

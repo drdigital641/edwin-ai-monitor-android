@@ -1,0 +1,155 @@
+{
+ "slug": "autotex",
+ "tier": "premium_leadgen",
+ "name": "Autotex",
+ "domain": "autotexautoparts.com.sg",
+ "url": "https://autotexautoparts.com.sg/",
+ "category": "car-parts",
+ "regions": [
+  "east"
+ ],
+ "regions_note": "Kaki Bukit is in the East region (URA). Address: 1 Kaki Bukit Avenue 6.",
+ "area_label": "Kaki Bukit",
+ "title": "Autotex | Kia and Hyundai Parts, Kaki Bukit",
+ "desc": "Autotex is a Kia and Hyundai parts shop at AutoBay@Kaki Bukit. Browse parts by model, then ask price and stock on WhatsApp or call 9731 9547.",
+ "card_img": null,
+ "tile_text": "Kia and Hyundai parts",
+ "card_text": [
+  "Kia and Hyundai parts shop in Kaki Bukit.",
+  "Browse parts by model and part type, then ask about price and stock."
+ ],
+ "lede": "Autotex is a parts shop for Kia and Hyundai cars at AutoBay@Kaki Bukit. Pick your model and part on its website, or send your car plate or chassis number on WhatsApp and the shop checks the exact part for your car before you pay. Collection is at the shop, so message first to have the parts ready.",
+ "services": [
+  {
+   "n": "Body parts and lamps",
+   "d": "Bumpers, bonnets, grilles, mirrors, wipers, and head, tail and fog lamps.",
+   "p": null
+  },
+  {
+   "n": "Brake pads and discs",
+   "d": "Front and rear pad sets, and discs sold in pairs.",
+   "p": null
+  },
+  {
+   "n": "Suspension and steering",
+   "d": "Absorbers, arms, links, tie rods and bearings, plus engine and gearbox mounts.",
+   "p": null
+  },
+  {
+   "n": "Engine and service parts",
+   "d": "Spark plugs, ignition coils, filters, belts and pumps, plus engine and transmission oil.",
+   "p": null
+  },
+  {
+   "n": "Cooling, aircon and electrical",
+   "d": "Radiators, fans, aircon parts, alternators and starter motors.",
+   "p": null
+  }
+ ],
+ "price_note": "Where the shop's site shows a price it is the price for the part listed. For other parts, ask on WhatsApp for price and stock.",
+ "phone": "+6597319547",
+ "phone_show": "9731 9547",
+ "whatsapp": "6597319547",
+ "whatsapp_show": "9731 9547",
+ "addresses": [
+  {
+   "label": null,
+   "street": "1 Kaki Bukit Avenue 6, #01-42, AutoBay@Kaki Bukit",
+   "postal": "417883"
+  }
+ ],
+ "map_url": "https://www.google.com/maps/search/?api=1&query=Autotex+Aircon+Enterprise+1+Kaki+Bukit+Ave+6+%2301-42+Singapore+417883",
+ "hours": [
+  [
+   "Mon to Fri",
+   "9:30am to 5:30pm"
+  ],
+  [
+   "Sat",
+   "9:30am to 3:30pm"
+  ],
+  [
+   "Sun",
+   "Closed"
+  ]
+ ],
+ "hours_ld": [
+  [
+   [
+    "Monday",
+    "Tuesday",
+    "Wednesday",
+    "Thursday",
+    "Friday"
+   ],
+   "09:30",
+   "17:30"
+  ],
+  [
+   [
+    "Saturday"
+   ],
+   "09:30",
+   "15:30"
+  ]
+ ],
+ "hours_note": "WhatsApp first so stock can be checked and the parts ready for collection.",
+ "social": [],
+ "reviews": {
+  "text": "Rated 5.0 on Google from 4 reviews, as stated on autotexautoparts.com.sg (checked 1 November 2026)",
+  "url": "https://www.google.com/maps/search/?api=1&query=Autotex+Aircon+Enterprise+1+Kaki+Bukit+Ave+6+%2301-42+Singapore+417883",
+  "label": "See Autotex on Google Maps"
+ },
+ "photos": [],
+ "illustrations": [
+  {
+   "f": "autotex-headlamp.svg",
+   "alt": "Illustration of a headlamp",
+   "cap": "Headlamps (illustration)."
+  },
+  {
+   "f": "autotex-front-brake-pads.svg",
+   "alt": "Illustration of front brake pads",
+   "cap": "Brake pads (illustration)."
+  },
+  {
+   "f": "autotex-side-mirror.svg",
+   "alt": "Illustration of a side mirror",
+   "cap": "Side mirrors (illustration)."
+  },
+  {
+   "f": "autotex-front-bumper.svg",
+   "alt": "Illustration of a front bumper",
+   "cap": "Bumpers (illustration)."
+  }
+ ],
+ "faqs": [
+  [
+   "Do I need the part number?",
+   "No. Pick your car model and the part, or send your car plate or chassis number on WhatsApp. The shop checks the exact part for your car before you pay."
+  ],
+  [
+   "Which cars are covered?",
+   "Hyundai and Kia only, for models sold in Singapore such as the Avante, Tucson, Kona, Ioniq, Cerato, Sportage, Sorento, Niro and Picanto. Ask if your model is not listed."
+  ],
+  [
+   "Where do I collect parts?",
+   "At 1 Kaki Bukit Avenue 6, #01-42, AutoBay@Kaki Bukit, Singapore 417883. Open Monday to Friday 9:30am to 5:30pm and Saturday 9:30am to 3:30pm."
+  ],
+  [
+   "Is the price on the website final?",
+   "A listed price is for the part shown. For everything else, ask for the price on WhatsApp. Stock and exact fit are confirmed before you pay."
+  ]
+ ],
+ "source": {
+  "name": "preview/autotex index read via the Bluehost Bridge on 1 Nov 2026; README (autotex.net is NOT theirs)",
+  "photos": "No real shop or product photos found on the live site: hero is a clean tile, gallery uses the site's part illustrations (not counted as photos)"
+ },
+ "left_out": [
+  "'direct from Korea' and 'distribution price' wording",
+  "og.jpg card image",
+  "sample part prices",
+  "registered-since claim"
+ ],
+ "_order": 8
+}

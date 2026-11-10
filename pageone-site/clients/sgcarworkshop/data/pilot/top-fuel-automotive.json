@@ -1,0 +1,38 @@
+{
+ "lede": "Top Fuel Automotive at Jalan Lam Huat and Carros Centre is a car servicing and repair workshop.",
+ "chips": [
+  "Engine repair",
+  "Clutch"
+ ],
+ "services": [
+  "Engine repair",
+  "Clutch replacement",
+  "Oil change",
+  "Car servicing"
+ ],
+ "themes": "Customers on Google Maps mention engine checks and repairs, a worn clutch plate replaced with a choice of original, used or OEM parts, oil and filter changes for continental cars and an air-conditioned waiting room.",
+ "faqs": [
+  [
+   "What does Top Fuel Automotive do?",
+   "Google Maps lists it as a car repair workshop."
+  ],
+  [
+   "What are the opening hours?",
+   "The hours are listed in the Google Maps section above. Please see Google Maps for current hours."
+  ]
+ ],
+ "sources": "its Google Maps listing",
+ "stories": [],
+ "mentioned_services": [
+  "Engine repair",
+  "Clutch replacement",
+  "Oil change",
+  "Car servicing"
+ ],
+ "services_note": "Services customers mention on Google Maps. Ask the workshop for its full list.",
+ "makes": [],
+ "makes_note": "Not listed on its public pages. Ask the workshop about your car.",
+ "specialties": [],
+ "good_to_know": [],
+ "card_rules": "2026-11-05"
+}

@@ -1,0 +1,31 @@
+{
+ "lede": "MT Autoservice is a car repair workshop at 101 Woodlands Ave 12, #01-26 Polaris@Woodlands. Its Google Maps listing shows opening hours, parking and customer ratings.",
+ "chips": [
+  "Car repair"
+ ],
+ "services": [
+  "General servicing and repair"
+ ],
+ "faqs": [
+  [
+   "What does MT Autoservice do?",
+   "Google Maps lists it as a car repair workshop."
+  ],
+  [
+   "What are the opening hours?",
+   "The hours are listed in the Google Maps section above. Please see Google Maps for current hours."
+  ]
+ ],
+ "sources": "its Google Maps listing",
+ "stories": [],
+ "mentioned_services": [
+  "Drive shaft replacement",
+  "Shock absorber replacement",
+  "Wheel alignment",
+  "Tyre replacement",
+  "Aircon repair",
+  "Opel cars",
+  "Quick parts sourcing"
+ ],
+ "themes": "Customers on Google Maps mention drive shaft, absorber, alignment and tyre work, aircon repair and quick parts sourcing."
+}

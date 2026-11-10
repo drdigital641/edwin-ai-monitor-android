@@ -1,0 +1,48 @@
+{
+ "schema_version": 1,
+ "slug": "ka-hup-motor-services",
+ "place_id": "ChIJUfxiDSQX2jER5t3upar9cWI",
+ "place_id_checked_at": "2026-11-10",
+ "name": "Ka Hup Motor Services",
+ "name_source_url": "google_profile",
+ "name_checked_at": "2026-11-10",
+ "address": {
+  "block": "",
+  "street": "9 Sin Ming Industrial Estate Sector C",
+  "unit": "",
+  "building": ""
+ },
+ "postal_code": "575644",
+ "address_source_url": "google_profile",
+ "address_checked_at": "2026-11-10",
+ "categories": [
+  "SERV"
+ ],
+ "services": [
+  "General servicing and repair"
+ ],
+ "services_source_url": "google_profile",
+ "phones": [
+  {
+   "e164": "+6590026337",
+   "kind": "mobile",
+   "whatsapp": true,
+   "source": "google_profile",
+   "checked_at": "2026-11-10"
+  }
+ ],
+ "google_screen": {
+  "passed": true,
+  "reason": "OPERATIONAL, car repair, SG mobile on Google profile",
+  "checked_at": "2026-11-10"
+ },
+ "status": "pending",
+ "tier": "basic",
+ "first_seen_at": "2026-11-10",
+ "last_verified_at": "2026-11-10",
+ "collector_version": "agent-v5",
+ "estate": "sin-ming-industrial-estate",
+ "planning_area": "Bishan",
+ "region": "central",
+ "hold": "hold: reviews are mainly about used car sales, not workshop work"
+}

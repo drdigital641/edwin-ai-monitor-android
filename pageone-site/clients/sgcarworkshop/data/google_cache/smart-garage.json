@@ -1,0 +1,36 @@
+{
+ "businessStatus": "OPERATIONAL",
+ "primaryType": "car_repair",
+ "types": [
+  "car_repair",
+  "auto_parts_store",
+  "store",
+  "point_of_interest",
+  "service",
+  "establishment"
+ ],
+ "rating": 5,
+ "userRatingCount": 79,
+ "websiteUri": "https://www.smartgarage.com.sg/",
+ "paymentOptions": {
+  "acceptsCreditCards": true,
+  "acceptsDebitCards": true,
+  "acceptsNfc": true
+ },
+ "parkingOptions": null,
+ "editorialSummary": null,
+ "weekdayDescriptions": [
+  "Monday: 9:00 AM – 5:00 PM",
+  "Tuesday: 9:00 AM – 5:00 PM",
+  "Wednesday: 9:00 AM – 5:00 PM",
+  "Thursday: 9:00 AM – 5:00 PM",
+  "Friday: 9:00 AM – 5:00 PM",
+  "Saturday: 9:00 AM – 1:00 PM",
+  "Sunday: Closed"
+ ],
+ "review_count_seen": 5,
+ "review_themes": "Customers on Google Maps mention quick, clear diagnosis, honest recommendations without pushing unnecessary repairs, work completed on time and reasonable pricing.",
+ "fetched_at": "2026-11-06",
+ "place_id": "ChIJYyAXa1oX2jER2nz9mOBe_ss",
+ "source": "google_places"
+}

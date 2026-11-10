@@ -1,0 +1,39 @@
+{
+ "lede": "Trust Fellas Auto Service at Toh Guan Enterprise Hub is a car servicing and accident repair workshop.",
+ "chips": [
+  "Accident claims",
+  "Servicing",
+  "Tyres"
+ ],
+ "services": [
+  "Accident repair",
+  "Insurance claims",
+  "Servicing",
+  "Tyres"
+ ],
+ "themes": "Customers on Google Maps mention friendly staff who guide them through accident claims, a replacement car arranged during repairs, clear explanations and on-time servicing.",
+ "faqs": [
+  [
+   "What does Trust Fellas Auto Service do?",
+   "Google Maps lists it as a car repair workshop."
+  ],
+  [
+   "What are the opening hours?",
+   "The hours are listed in the Google Maps section above. Please see Google Maps for current hours."
+  ]
+ ],
+ "sources": "its Google Maps listing",
+ "stories": [],
+ "mentioned_services": [
+  "Accident repair",
+  "Insurance claims",
+  "Servicing",
+  "Tyres"
+ ],
+ "services_note": "Services customers mention on Google Maps. Ask the workshop for its full list.",
+ "makes": [],
+ "makes_note": "Not listed on its public pages. Ask the workshop about your car.",
+ "specialties": [],
+ "good_to_know": [],
+ "card_rules": "2026-11-05"
+}

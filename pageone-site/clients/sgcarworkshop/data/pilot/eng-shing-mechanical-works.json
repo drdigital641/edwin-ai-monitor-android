@@ -1,0 +1,38 @@
+{
+ "lede": "Eng Shing Mechanical Works at Sin Ming Industrial Estate is a car servicing and repair workshop.",
+ "chips": [
+  "Servicing",
+  "Repairs"
+ ],
+ "services": [
+  "Car servicing",
+  "Grille replacement",
+  "Fault checks"
+ ],
+ "themes": "Customers on Google Maps mention servicing after the agent warranty ended, a car grille replaced efficiently, checks and servicing on a BMW F10, regulars of more than a decade and advance booking advised.",
+ "faqs": [
+  [
+   "What does Eng Shing Mechanical Works do?",
+   "Google Maps lists it as a car repair workshop."
+  ],
+  [
+   "What are the opening hours?",
+   "The hours are listed in the Google Maps section above. Please see Google Maps for current hours."
+  ]
+ ],
+ "sources": "its Google Maps listing",
+ "stories": [],
+ "mentioned_services": [
+  "Car servicing",
+  "Grille replacement",
+  "Fault checks"
+ ],
+ "services_note": "Services customers mention on Google Maps. Ask the workshop for its full list.",
+ "makes": [
+  "BMW"
+ ],
+ "makes_note": "Named by customers on Google Maps. Ask the workshop about other makes.",
+ "specialties": [],
+ "good_to_know": [],
+ "card_rules": "2026-11-05"
+}

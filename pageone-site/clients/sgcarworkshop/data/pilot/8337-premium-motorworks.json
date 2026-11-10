@@ -1,0 +1,40 @@
+{
+ "lede": "8337 Premium Motorworks at Jalan Lam Huat and Carros Centre is a Mercedes-Benz servicing and repair workshop.",
+ "chips": [
+  "Mercedes-Benz",
+  "Servicing"
+ ],
+ "services": [
+  "Mercedes-Benz servicing",
+  "Error code check",
+  "Parts replacement",
+  "Car servicing"
+ ],
+ "themes": "Customers on Google Maps mention Mercedes-Benz know-how including a W213 E-Class, error codes cleared, servicing and parts replacement, clear advice on what needs fixing and troubleshooting for other makes too.",
+ "faqs": [
+  [
+   "What does 8337 Premium Motorworks do?",
+   "Google Maps lists it as a car repair workshop."
+  ],
+  [
+   "What are the opening hours?",
+   "The hours are listed in the Google Maps section above. Please see Google Maps for current hours."
+  ]
+ ],
+ "sources": "its Google Maps listing",
+ "stories": [],
+ "mentioned_services": [
+  "Mercedes-Benz servicing",
+  "Error code check",
+  "Parts replacement",
+  "Car servicing"
+ ],
+ "services_note": "Services customers mention on Google Maps. Ask the workshop for its full list.",
+ "makes": [
+  "Mercedes-Benz"
+ ],
+ "makes_note": "Named by customers on Google Maps. Ask the workshop about other makes.",
+ "specialties": [],
+ "good_to_know": [],
+ "card_rules": "2026-11-05"
+}

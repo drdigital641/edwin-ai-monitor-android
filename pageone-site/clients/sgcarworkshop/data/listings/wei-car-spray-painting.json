@@ -1,0 +1,186 @@
+{
+ "slug": "wei-car-spray-painting",
+ "tier": "premium",
+ "name": "Wei Car Spray Painting",
+ "legal": "Wei Car Spray Painting Pte. Ltd.",
+ "uen": "201215981N",
+ "category": "spray-painting-bodywork",
+ "regions": [
+  "north"
+ ],
+ "regions_note": "Yishun is in the North region (URA). Address: Yishun Industrial Park A.",
+ "area_label": "Yishun",
+ "title": "Wei Car Spray Painting | Yishun Car Spray Painting",
+ "desc": "Wei Car Spray Painting is a spray painting and bodywork workshop in Yishun for resprays, colour changes and body kits. WhatsApp 9638 3306.",
+ "card_img": {
+  "f": "wei/jobs-mg-british-racing-green.webp",
+  "alt": "MG sprayed in British Racing Green at Wei Car Spray Painting"
+ },
+ "card_text": [
+  "Spray painting and bodywork at a Yishun industrial park workshop.",
+  "Colour changes, full resprays and body kit fitting."
+ ],
+ "lede": "Wei Car Spray Painting is a spray painting and bodywork workshop at Blk 1017 Yishun Industrial Park A, Singapore. It resprays single panels and whole cars, changes car colours and fits body kits. WhatsApp or call 9638 3306 with photos of your car to ask about your job.",
+ "services": [
+  {
+   "n": "Car spray painting",
+   "d": "Single panels or several panels resprayed in your car's colour.",
+   "p": null
+  },
+  {
+   "n": "Full respray and colour change",
+   "d": "The whole car repainted in its own colour or a new one. Check the current LTA rules on OneMotoring before you change your car's colour.",
+   "p": null
+  },
+  {
+   "n": "Body kit installation",
+   "d": "Kits and spoilers fitted to the car and painted to match.",
+   "p": null
+  }
+ ],
+ "price_note": "Prices are not listed. Ask Wei on WhatsApp with photos of your car.",
+ "phone": "+6596383306",
+ "phone_show": "9638 3306",
+ "whatsapp": "6596383306",
+ "addresses": [
+  {
+   "label": null,
+   "street": "Blk 1017 Yishun Industrial Park A, #01-242, #01-246 and #01-252",
+   "postal": "768759"
+  }
+ ],
+ "map_url": "https://www.google.com/maps/search/?api=1&query=Wei%20Car%20Spray%20Painting%2C%201017%20Yishun%20Industrial%20Park%20A%20%2301-242%20Singapore%20768759",
+ "hours": [
+  [
+   "Mon to Fri",
+   "9am to 7pm"
+  ],
+  [
+   "Sat",
+   "9am to 5:15pm"
+  ],
+  [
+   "Sun",
+   "Closed"
+  ]
+ ],
+ "hours_ld": [
+  [
+   [
+    "Monday",
+    "Tuesday",
+    "Wednesday",
+    "Thursday",
+    "Friday"
+   ],
+   "09:00",
+   "19:00"
+  ],
+  [
+   [
+    "Saturday"
+   ],
+   "09:00",
+   "17:15"
+  ]
+ ],
+ "hours_note": "Hours from the workshop's Google listing (checked 1 Nov 2026). Call or WhatsApp to confirm before you visit.",
+ "social": [
+  "https://www.facebook.com/share/19YgRcqvBh/",
+  "https://www.instagram.com/weicarspraypainting/"
+ ],
+ "reviews": {
+  "text": "100% recommend on Facebook from 238 reviews (checked 1 November 2026)",
+  "url": "https://www.facebook.com/share/19YgRcqvBh/",
+  "label": "See the Facebook page"
+ },
+ "photos": [
+  {
+   "f": "wei/shopfront.webp",
+   "alt": "Wei Car Spray Painting signboard and spray booth at Blk 1017 Yishun Industrial Park A",
+   "cap": "The workshop and spray booth."
+  },
+  {
+   "f": "wei/jobs-mg-british-racing-green.webp",
+   "alt": "MG after an exterior respray in British Racing Green",
+   "cap": "MG exterior respray in British Racing Green, November 2023."
+  },
+  {
+   "f": "wei/jobs-honda-civic-grey-blue.webp",
+   "alt": "Honda Civic after a full respray with a gloss black roof and a new spoiler",
+   "cap": "Honda Civic: full respray, gloss black roof and a new spoiler, November 2023."
+  },
+  {
+   "f": "wei/jobs-mini-cooper-pink.webp",
+   "alt": "Mini Cooper after a colour change to pink",
+   "cap": "Mini Cooper colour change from orange to pink, May 2022."
+  },
+  {
+   "f": "wei/jobs-porsche-cayenne-bodykit-front.webp",
+   "alt": "Porsche Cayenne with a new-model body kit installed",
+   "cap": "Porsche Cayenne with a new-model body kit imported from overseas, February 2026."
+  }
+ ],
+ "og_img": "wei/og.jpg",
+ "sections": [
+  [
+   "About the workshop",
+   "p",
+   [
+    "The company, Wei Car Spray Painting Pte. Ltd., was incorporated in June 2012 (UEN 201215981N) and is registered for repair and maintenance of motor vehicles. The workshop is in Yishun Industrial Park A, across three adjoining units, and the shopfront photo shows its signboard with a spray booth behind it.",
+    "Most of what the workshop posts on Facebook is paint work: full resprays, colour changes and the occasional body kit. One post, from March 2023, thanks a customer who was back for the fourth time."
+   ]
+  ],
+  [
+   "Jobs the workshop has posted",
+   "ul",
+   [
+    "Porsche Macan: full body colour change to Fountain Blue Metallic, May 2025.",
+    "Porsche Cayenne: new-model body kit, imported from overseas and installed, February 2026.",
+    "MG: exterior respray in British Racing Green, November 2023.",
+    "Honda Civic: full respray inside and out, gloss black roof and a new spoiler, November 2023.",
+    "Mini Cooper: new colour, from orange to pink, May 2022."
+   ]
+  ],
+  [
+   "How to ask for a quote",
+   "p",
+   [
+    "Send clear photos of the car in daylight, with the model and year, and say what you want done. Prices are not listed on this page, so ask Wei directly on WhatsApp."
+   ]
+  ]
+ ],
+ "faqs": [
+  [
+   "Where is Wei Car Spray Painting?",
+   "At Blk 1017 Yishun Industrial Park A, units #01-242, #01-246 and #01-252, Singapore 768759. The Google Maps link on this page opens the location."
+  ],
+  [
+   "What work does the workshop do?",
+   "Panel resprays, full resprays, colour changes and body kit installation with matching paint, done in a spray booth."
+  ],
+  [
+   "How do I get a quote?",
+   "WhatsApp or call 9638 3306 with clear daylight photos of the car, its model and year, and what you want done. Prices are not listed on this page."
+  ],
+  [
+   "Can I change my car's colour freely?",
+   "Check the current LTA rules on OneMotoring before you change your car's colour, and tell the workshop what you plan."
+  ]
+ ],
+ "source": {
+  "name": "ACRA (via acrawatch.sg / recordowl.com, data.gov.sg): WEI CAR SPRAY PAINTING PTE. LTD., UEN 201215981N, inc. 28 Jun 2012",
+  "address": "ACRA registered address + Facebook page (screenshot 1 Nov 2026)",
+  "phone": "Facebook page and own poster (8 Apr 2026): 9638 3306 (WhatsApp Now)",
+  "jobs": "Facebook posts (screenshots from Edwin, 1 Nov 2026)",
+  "faqs": "All FAQ answers restate facts already on this page"
+ },
+ "left_out": [
+  "all prices",
+  "scratch, dent, bumper repair, servicing and insurance-claim services (unconfirmed)",
+  "paint brands",
+  "owner name",
+  "second phone 6759 3229 (2022 listing)"
+ ],
+ "_order": 0
+}

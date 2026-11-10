@@ -1,0 +1,48 @@
+{
+ "schema_version": 1,
+ "slug": "precision-auto-diagnostics-sg",
+ "place_id": "ChIJgfA_jPwR2jERaQAH0gVTR3w",
+ "place_id_checked_at": "2026-11-08",
+ "name": "Precision Auto Diagnostics SG",
+ "name_source_url": "google_profile",
+ "name_checked_at": "2026-11-08",
+ "address": {
+  "block": "",
+  "street": "Bukit Batok East Ave 5",
+  "unit": "",
+  "building": ""
+ },
+ "postal_code": "650241",
+ "address_source_url": "google_profile",
+ "address_checked_at": "2026-11-08",
+ "categories": [
+  "SERV"
+ ],
+ "services": [
+  "General servicing and repair"
+ ],
+ "services_source_url": "google_profile",
+ "phones": [
+  {
+   "e164": "+6584904467",
+   "kind": "mobile",
+   "whatsapp": true,
+   "source": "google_profile",
+   "checked_at": "2026-11-08"
+  }
+ ],
+ "google_screen": {
+  "passed": true,
+  "reason": "OPERATIONAL, car repair, SG mobile on Google profile",
+  "checked_at": "2026-11-08"
+ },
+ "status": "pending",
+ "tier": "basic",
+ "first_seen_at": "2026-11-08",
+ "last_verified_at": "2026-11-08",
+ "collector_version": "agent-v5",
+ "estate": "bukit-batok-crescent",
+ "planning_area": "Bukit Batok",
+ "region": "west",
+ "hold": "hold: no workshop estate (address is an HDB block, likely mobile service)"
+}

@@ -1,0 +1,48 @@
+{
+ "schema_version": 1,
+ "slug": "m-autotools-pte-ltd",
+ "place_id": "ChIJXfTBcmMT2jERF9jy7E_rhHE",
+ "place_id_checked_at": "2026-11-09",
+ "name": "M Autotools Pte Ltd",
+ "name_source_url": "google_profile",
+ "name_checked_at": "2026-11-09",
+ "address": {
+  "block": "",
+  "street": "60 Jln Lam Huat, #03-69",
+  "unit": "",
+  "building": ""
+ },
+ "postal_code": "737869",
+ "address_source_url": "google_profile",
+ "address_checked_at": "2026-11-09",
+ "categories": [
+  "SERV"
+ ],
+ "services": [
+  "General servicing and repair"
+ ],
+ "services_source_url": "google_profile",
+ "phones": [
+  {
+   "e164": "+6597779064",
+   "kind": "mobile",
+   "whatsapp": true,
+   "source": "google_profile",
+   "checked_at": "2026-11-09"
+  }
+ ],
+ "google_screen": {
+  "passed": true,
+  "reason": "OPERATIONAL, car repair, SG mobile on Google profile",
+  "checked_at": "2026-11-09"
+ },
+ "status": "pending",
+ "tier": "basic",
+ "first_seen_at": "2026-11-09",
+ "last_verified_at": "2026-11-09",
+ "collector_version": "agent-v5",
+ "estate": "carros-centre-jalan-lam-huat",
+ "planning_area": "Woodlands",
+ "region": "north",
+ "hold": "hold: own website shows a workshop equipment supplier (Corghi), not a car workshop"
+}

@@ -1,0 +1,38 @@
+{
+ "businessStatus": "OPERATIONAL",
+ "primaryType": "car_repair",
+ "types": [
+  "car_repair",
+  "point_of_interest",
+  "service",
+  "establishment"
+ ],
+ "rating": 4.7,
+ "userRatingCount": 177,
+ "websiteUri": "https://www.auto101.com.sg/",
+ "paymentOptions": {
+  "acceptsCreditCards": true,
+  "acceptsDebitCards": true,
+  "acceptsCashOnly": false,
+  "acceptsNfc": true
+ },
+ "parkingOptions": {
+  "freeParkingLot": true,
+  "paidParkingLot": true
+ },
+ "editorialSummary": null,
+ "weekdayDescriptions": [
+  "Monday: 9:00 AM – 6:00 PM",
+  "Tuesday: 9:00 AM – 6:00 PM",
+  "Wednesday: 9:00 AM – 6:00 PM",
+  "Thursday: 9:00 AM – 6:00 PM",
+  "Friday: 9:00 AM – 6:00 PM",
+  "Saturday: 9:00 AM – 2:00 PM",
+  "Sunday: Closed"
+ ],
+ "review_count_seen": 5,
+ "review_themes": "Customers on Google Maps mention accident claims handled patiently, body repairs and paintwork, fleet maintenance, straightforward advice without upselling and original products at fair prices.",
+ "fetched_at": "2026-11-03",
+ "place_id": "ChIJoSvlrmYU2jERKxuFnXCKXpk",
+ "source": "google_places"
+}

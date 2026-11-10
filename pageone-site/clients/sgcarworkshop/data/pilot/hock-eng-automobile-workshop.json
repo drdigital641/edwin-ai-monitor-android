@@ -1,0 +1,38 @@
+{
+ "lede": "Hock Eng Automobile Workshop is a car workshop in Bedok Industrial Park E. Its own website lists car servicing, repairs, aircon repair and servicing and engine services.",
+ "chips": [
+  "Car servicing",
+  "Repairs",
+  "Aircon repair and servicing"
+ ],
+ "services": [
+  "Car servicing",
+  "Repairs",
+  "Aircon repair and servicing",
+  "Engine services",
+  "Parts and components",
+  "Japanese car servicing package"
+ ],
+ "themes": "Customers on Google Maps mention clear explanations, transparent pricing with no upselling and quick turnaround, often within a day. Several note it opens on Sundays and that the team speaks English, Mandarin and Cantonese.",
+ "sources": "its own website (hockengauto.com)",
+ "stories": [],
+ "mentioned_services": [
+  "Suspension and engine mount replacement",
+  "Aircon cooling coil replacement",
+  "Accident repair",
+  "Car servicing",
+  "Volvo cars"
+ ],
+ "services_note": "Services as listed on the workshop's own website, hockengauto.com.",
+ "specialties": [
+  "Original and aftermarket parts"
+ ],
+ "card_rules": "2026-11-06",
+ "makes": [
+  "Volvo"
+ ],
+ "makes_note": "Named by customers on Google Maps. Ask the workshop about other makes.",
+ "good_to_know": [
+  "Enquiries by WhatsApp, according to its website"
+ ]
+}

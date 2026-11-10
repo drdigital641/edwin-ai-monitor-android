@@ -1,0 +1,179 @@
+{
+ "slug": "battery-rescue-sg",
+ "tier": "premium_leadgen",
+ "name": "Battery Rescue SG",
+ "domain": "batteryrescue.sg",
+ "url": "https://batteryrescue.sg/",
+ "category": "car-battery",
+ "regions": [
+  "north",
+  "north-east",
+  "west",
+  "central"
+ ],
+ "regions_note": "Onsite areas on its site: Woodlands, Sembawang, Yishun, Yio Chu Kang (North); Ang Mo Kio, Hougang, Sengkang, Punggol (North-East). Its walk-in Motoserv outlets add Serangoon Garden (North-East), Toa Payoh, Upper Thomson, Bukit Timah, Jervois, Havelock Road (Central) and Bukit Batok, Bukit Panjang, Boon Lay (West). The Sembawang outlet is North.",
+ "area_label": "Onsite, north and north-east Singapore",
+ "title": "Battery Rescue SG | Onsite Car Battery Replacement",
+ "desc": "Battery Rescue SG fits Delkor car batteries at your car in the north of Singapore, or walk in to 10 Motoserv outlets. Hotline 8125 9169, 24 hours.",
+ "card_img": {
+  "f": "batteryrescue-battery-voltage-12-80v.jpg",
+  "alt": "Battery voltage reading during a battery test"
+ },
+ "card_text": [
+  "Onsite car battery replacement that comes to where your car is stuck.",
+  "Delkor batteries with a one-year warranty, plus jump-start and towing."
+ ],
+ "lede": "Battery Rescue SG replaces car batteries where the car is stuck, so a flat battery does not mean waiting for a tow. Every battery fitted is a Delkor with a one-year warranty. Call the 24-hour hotline on 8125 9169, or send your location and car model on WhatsApp.",
+ "services": [
+  {
+   "n": "Onsite battery replacement",
+   "d": "A matching Delkor battery fitted at your car in Woodlands, Sembawang, Yishun, Ang Mo Kio, Yio Chu Kang, Hougang, Sengkang and Punggol.",
+   "p": "Battery price + $50 (before 10pm), + $80 (10pm to 9am, public holidays)"
+  },
+  {
+   "n": "Walk-in replacement at Motoserv outlets",
+   "d": "Ten outlets, Monday to Saturday 9am to 6pm. A $20 website code takes $20 off the list price, for walk-ins only.",
+   "p": "Example: NS40ZL $99.90 instead of $119.90"
+  },
+  {
+   "n": "Jump-start",
+   "d": "A jump-start at your car when the battery is flat but may still be good.",
+   "p": "$50 ($80 on public holidays)"
+  },
+  {
+   "n": "Emergency towing",
+   "d": "Towing when the car cannot be started on the spot. King dolly lifts all four wheels off the ground.",
+   "p": "From $80, king dolly from $120"
+  }
+ ],
+ "price_note": "Prices include the battery, fitting and GST and were checked on 26 October 2026. If the technician attends and the fault is not the battery, an onsite fee of $50 to $80 applies.",
+ "phone": "+6581259169",
+ "phone_show": "8125 9169",
+ "whatsapp": "6581259169",
+ "addresses": [
+  {
+   "label": "Motoserv @ Sembawang",
+   "street": "595 Sembawang Rd",
+   "postal": null
+  },
+  {
+   "label": "Motoserv @ Toa Payoh",
+   "street": "248 Lorong 1 Toa Payoh",
+   "postal": null
+  },
+  {
+   "label": "Motoserv @ Serangoon Garden",
+   "street": "49 Serangoon Garden Way",
+   "postal": "555944"
+  },
+  {
+   "label": "Motoserv @ Upper Thomson",
+   "street": "553 Upper Thomson Rd",
+   "postal": "574416"
+  },
+  {
+   "label": "Motoserv @ Bukit Batok",
+   "street": "28 Bukit Batok East Ave 6",
+   "postal": null
+  },
+  {
+   "label": "Motoserv @ Bukit Panjang",
+   "street": "772 Upper Bukit Timah Rd",
+   "postal": null
+  },
+  {
+   "label": "Motoserv @ Bukit Timah",
+   "street": "219 Upper Bukit Timah Rd",
+   "postal": null
+  },
+  {
+   "label": "Motoserv @ Boon Lay",
+   "street": "2 Boon Lay Ave",
+   "postal": null
+  },
+  {
+   "label": "Motoserv @ Jervois",
+   "street": "2 Jervois Rd",
+   "postal": "248994"
+  },
+  {
+   "label": "Motoserv @ Havelock Road",
+   "street": "548 Havelock Rd",
+   "postal": "169637"
+  }
+ ],
+ "addr_heading": "Walk-in outlets (Motoserv)",
+ "service_area": "Onsite service: Woodlands, Sembawang, Yishun, Ang Mo Kio, Yio Chu Kang, Hougang, Sengkang and Punggol.",
+ "map_url": "https://maps.app.goo.gl/VrQtHKzr6Yx2y8Wv5",
+ "hours": [
+  [
+   "Hotline",
+   "24 hours"
+  ],
+  [
+   "Onsite fitting",
+   "Any day, 24 hours (night rate 10pm to 9am)"
+  ],
+  [
+   "Walk-in outlets",
+   "Mon to Sat, 9am to 6pm"
+  ]
+ ],
+ "hours_ld": [],
+ "hours_note": "Sundays and late nights: call and the battery is fitted at your car instead.",
+ "social": [
+  "https://motoserv.sg/"
+ ],
+ "reviews": {
+  "text": "5-star rating on Google, as stated on batteryrescue.sg (rating count not stated; checked 1 November 2026)",
+  "url": "https://maps.app.goo.gl/VrQtHKzr6Yx2y8Wv5",
+  "label": "See the Google reviews"
+ },
+ "photos": [
+  {
+   "f": "batteryrescue-battery-voltage-12-80v.jpg",
+   "alt": "Battery voltage reading of 12.80 V during a test",
+   "cap": "A battery test reading 12.80 V."
+  },
+  {
+   "f": "batteryrescue-new-alternator-fitted.jpg",
+   "alt": "New alternator fitted in an engine bay",
+   "cap": "A new alternator fitted."
+  },
+  {
+   "f": "batteryrescue-old-alternator.jpg",
+   "alt": "Old alternator removed from a car",
+   "cap": "The old alternator that was removed."
+  }
+ ],
+ "faqs": [
+  [
+   "Can you come to me if my car will not start?",
+   "Yes, in Woodlands, Sembawang, Yishun, Ang Mo Kio, Yio Chu Kang, Hougang, Sengkang and Punggol. Call the 24-hour hotline or WhatsApp your location and car model."
+  ],
+  [
+   "Which battery brand do you fit?",
+   "Delkor only, made by Clarios Delkor in Korea. Every battery carries a one-year warranty."
+  ],
+  [
+   "How is the onsite price worked out?",
+   "It is the battery price plus a $50 onsite fee before 10pm, or plus $80 from 10pm to 9am and on public holidays. Example for an NS40ZL: $169.90 by day, $199.90 at night."
+  ],
+  [
+   "Where can I walk in?",
+   "At any of 10 Motoserv outlets, Monday to Saturday 9am to 6pm. The $20 website code applies to walk-ins only."
+  ]
+ ],
+ "source": {
+  "name": "preview/battery-rescue index and outlets pages, plus FACTS.md, read 1 Nov 2026",
+  "contact": "WhatsApp on the hotline number is shown on the live preview but FACTS.md still marks it as assumed (CONFIRM)",
+  "photos": "batteryrescue.sg/photos/ files; captions kept neutral because the site does not say whose job they show"
+ },
+ "left_out": [
+  "Motoserv group name in headline",
+  "promo code value",
+  "CaseTrust wording",
+  "postal codes for 6 outlets"
+ ],
+ "_order": 6
+}

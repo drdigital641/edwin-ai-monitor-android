@@ -1,0 +1,73 @@
+{
+ "schema_version": 1,
+ "slug": "gtr-technologies",
+ "place_id": "ChIJBVefw44P2jERH4X6sp8dASg",
+ "place_id_checked_at": "2026-11-07",
+ "name": "GTR Technologies",
+ "name_source_url": "google_profile",
+ "name_checked_at": "2026-11-07",
+ "address": {
+  "block": "",
+  "street": "42 Toh Guan Rd E, #01-74 Enterprise Hub",
+  "unit": "",
+  "building": ""
+ },
+ "postal_code": "608583",
+ "address_source_url": "google_profile",
+ "address_checked_at": "2026-11-07",
+ "categories": [
+  "SERV"
+ ],
+ "services": [
+  "General servicing and repair"
+ ],
+ "services_source_url": "google_profile",
+ "phones": [
+  {
+   "e164": "+6587396663",
+   "kind": "mobile",
+   "whatsapp": true,
+   "source": "google_profile",
+   "checked_at": "2026-11-07"
+  }
+ ],
+ "google_screen": {
+  "passed": true,
+  "reason": "OPERATIONAL, car repair, SG mobile on Google profile",
+  "checked_at": "2026-11-07"
+ },
+ "status": "active",
+ "tier": "basic",
+ "first_seen_at": "2026-11-07",
+ "last_verified_at": "2026-11-07",
+ "collector_version": "agent-v5",
+ "estate": "toh-guan-enterprise-hub",
+ "planning_area": "Jurong East",
+ "region": "west",
+ "lat": 1.336594131045364,
+ "lng": 103.7534652072543,
+ "geo_source": "onemap",
+ "blocks": [
+  "hero",
+  "contact",
+  "services",
+  "good_for",
+  "problems",
+  "reviews",
+  "comparison",
+  "hours",
+  "stories",
+  "location",
+  "tips",
+  "faq",
+  "claim",
+  "sources"
+ ],
+ "google_rating": {
+  "rating": 5,
+  "count": 4,
+  "checked": "2026-11-07",
+  "source": "Google Places",
+  "source_date": "2026-11-07"
+ }
+}

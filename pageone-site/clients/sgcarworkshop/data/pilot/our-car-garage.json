@@ -1,0 +1,30 @@
+{
+ "lede": "Our Car Garage is a car repair workshop at 8 Kaki Bukit Ave 4, #02-43. Its Google Maps listing shows opening hours and customer ratings.",
+ "chips": [
+  "Car repair"
+ ],
+ "services": [
+  "General servicing and repair"
+ ],
+ "themes": "Customers on Google Maps mention an honest aircon diagnosis and fix, clear explanations without hard selling, efficient work at competitive prices and friendly staff.",
+ "faqs": [
+  [
+   "What does Our Car Garage do?",
+   "Google Maps lists it as a car repair workshop."
+  ],
+  [
+   "What are the opening hours?",
+   "The hours are listed in the Google Maps section above. Please see Google Maps for current hours."
+  ]
+ ],
+ "sources": "its Google Maps listing",
+ "stories": [],
+ "mentioned_services": [
+  "Aircon repair",
+  "Car servicing",
+  "Car repair"
+ ],
+ "makes": [],
+ "makes_note": "Not listed on its public pages. Ask the workshop about your car.",
+ "card_rules": "2026-11-05"
+}

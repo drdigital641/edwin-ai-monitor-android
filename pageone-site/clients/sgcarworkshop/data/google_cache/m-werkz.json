@@ -1,0 +1,33 @@
+{
+ "businessStatus": "OPERATIONAL",
+ "primaryType": "car_repair",
+ "types": [
+  "car_repair",
+  "point_of_interest",
+  "service",
+  "establishment"
+ ],
+ "rating": 4.6,
+ "userRatingCount": 9,
+ "websiteUri": null,
+ "paymentOptions": {
+  "acceptsDebitCards": true,
+  "acceptsNfc": true
+ },
+ "parkingOptions": null,
+ "editorialSummary": null,
+ "weekdayDescriptions": [
+  "Monday: 9:30 AM – 7:00 PM",
+  "Tuesday: 9:30 AM – 7:00 PM",
+  "Wednesday: 9:30 AM – 7:00 PM",
+  "Thursday: 9:30 AM – 7:00 PM",
+  "Friday: 9:30 AM – 7:00 PM",
+  "Saturday: 9:30 AM – 4:00 PM",
+  "Sunday: Closed"
+ ],
+ "review_count_seen": 5,
+ "review_themes": "Customers on Google Maps mention honest advice without pushing extra parts, Mercedes-Benz and BMW know-how, and fixes for coolant leaks and belt problems.",
+ "fetched_at": "2026-11-03",
+ "place_id": "ChIJ26nB7SEX2jERsAMb2mPS-4w",
+ "source": "google_places"
+}

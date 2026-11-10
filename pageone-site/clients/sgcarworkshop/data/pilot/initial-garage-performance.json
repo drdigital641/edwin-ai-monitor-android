@@ -1,0 +1,31 @@
+{
+ "lede": "Initial Garage Performance is a car repair workshop at Premier @ Kaki Bukit (Gate 2, Kaki Bukit Ave 4, #04-37. Its Google Maps listing shows opening hours and customer ratings.",
+ "chips": [
+  "Car repair"
+ ],
+ "services": [
+  "General servicing and repair"
+ ],
+ "themes": "Customers on Google Maps mention friendly staff, servicing packages at affordable prices even for continental cars, headlight and tail light changes, aircon and coolant fixes, and a Mercedes-Benz E250 and Mazda 6 serviced.",
+ "faqs": [
+  [
+   "What does Initial Garage Performance do?",
+   "Google Maps lists it as a car repair workshop."
+  ],
+  [
+   "What are the opening hours?",
+   "The hours are listed in the Google Maps section above. Please see Google Maps for current hours."
+  ]
+ ],
+ "sources": "its Google Maps listing",
+ "stories": [],
+ "mentioned_services": [
+  "Servicing packages",
+  "Headlight and tail light change",
+  "Aircon repair",
+  "Coolant system"
+ ],
+ "makes": [],
+ "makes_note": "Not listed on its public pages. Ask the workshop about your car.",
+ "card_rules": "2026-11-05"
+}

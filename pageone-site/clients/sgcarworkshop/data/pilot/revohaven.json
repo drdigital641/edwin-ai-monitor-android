@@ -1,0 +1,37 @@
+{
+ "lede": "Revohaven at Bukit Batok Crescent (WCEGA Plaza) is a car servicing and repair workshop.",
+ "chips": [
+  "Servicing",
+  "Brakes",
+  "Used car checks"
+ ],
+ "services": [
+  "Servicing",
+  "Brake repair",
+  "Used car checks"
+ ],
+ "themes": "Customers on Google Maps praise clear explanations, meticulous checks on used cars, help with brakes and sensors, and quick servicing.",
+ "faqs": [
+  [
+   "What does Revohaven do?",
+   "Google Maps lists it as a car repair workshop."
+  ],
+  [
+   "What are the opening hours?",
+   "The hours are listed in the Google Maps section above. Please see Google Maps for current hours."
+  ]
+ ],
+ "sources": "its Google Maps listing",
+ "stories": [],
+ "mentioned_services": [
+  "Servicing",
+  "Brake repair",
+  "Used car checks"
+ ],
+ "services_note": "Services customers mention on Google Maps. Ask the workshop for its full list.",
+ "makes": [],
+ "makes_note": "Not listed on its public pages. Ask the workshop about your car.",
+ "specialties": [],
+ "good_to_know": [],
+ "card_rules": "2026-11-05"
+}

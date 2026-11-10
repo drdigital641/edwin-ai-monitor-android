@@ -1,0 +1,35 @@
+{
+ "businessStatus": "OPERATIONAL",
+ "primaryType": "car_repair",
+ "types": [
+  "car_repair",
+  "point_of_interest",
+  "service",
+  "establishment"
+ ],
+ "rating": 4.8,
+ "userRatingCount": 39,
+ "websiteUri": "https://honwin.sg/",
+ "paymentOptions": {
+  "acceptsCreditCards": false,
+  "acceptsDebitCards": true,
+  "acceptsCashOnly": false,
+  "acceptsNfc": false
+ },
+ "parkingOptions": null,
+ "editorialSummary": null,
+ "weekdayDescriptions": [
+  "Monday: 10:00 AM – 7:00 PM",
+  "Tuesday: 10:00 AM – 7:00 PM",
+  "Wednesday: 10:00 AM – 7:00 PM",
+  "Thursday: 10:00 AM – 7:00 PM",
+  "Friday: 10:00 AM – 7:00 PM",
+  "Saturday: 10:00 AM – 3:00 PM",
+  "Sunday: Closed"
+ ],
+ "review_count_seen": 5,
+ "review_themes": "Customers on Google Maps mention Mercedes oil leak and coolant repairs, spray paint and repair work, full servicing and a classic open-air workshop in Defu Lane.",
+ "fetched_at": "2026-11-03",
+ "place_id": "ChIJ-bSN1ssX2jER-SbNNJfI4WM",
+ "source": "google_places"
+}

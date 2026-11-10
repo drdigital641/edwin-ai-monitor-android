@@ -1,0 +1,48 @@
+{
+ "schema_version": 1,
+ "slug": "sincere-lead-automotive",
+ "place_id": "ChIJqwUYuTkT2jERZgKH1Q3Rn9k",
+ "place_id_checked_at": "2026-11-07",
+ "name": "Sincere Lead Automotive",
+ "name_source_url": "google_profile",
+ "name_checked_at": "2026-11-07",
+ "address": {
+  "block": "",
+  "street": "48 Toh Guan Rd E, #02-122 Enterprise Hub",
+  "unit": "",
+  "building": ""
+ },
+ "postal_code": "608586",
+ "address_source_url": "google_profile",
+ "address_checked_at": "2026-11-07",
+ "categories": [
+  "SERV"
+ ],
+ "services": [
+  "General servicing and repair"
+ ],
+ "services_source_url": "google_profile",
+ "phones": [
+  {
+   "e164": "+6598158858",
+   "kind": "mobile",
+   "whatsapp": true,
+   "source": "google_profile",
+   "checked_at": "2026-11-07"
+  }
+ ],
+ "google_screen": {
+  "passed": true,
+  "reason": "OPERATIONAL, car repair, SG mobile on Google profile",
+  "checked_at": "2026-11-07"
+ },
+ "status": "pending",
+ "tier": "basic",
+ "first_seen_at": "2026-11-07",
+ "last_verified_at": "2026-11-07",
+ "collector_version": "agent-v5",
+ "estate": "toh-guan-enterprise-hub",
+ "planning_area": "Jurong East",
+ "region": "west",
+ "hold": "hold: complaint in a 3-review Google sample"
+}

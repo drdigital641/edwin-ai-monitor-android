@@ -1,0 +1,37 @@
+{
+ "lede": "Zirconite Singapore at Toh Guan Enterprise Hub is a car detailing and coating shop.",
+ "chips": [
+  "Car wash",
+  "Detailing",
+  "Ceramic coating"
+ ],
+ "services": [
+  "Car wash",
+  "Interior detailing",
+  "Ceramic coating"
+ ],
+ "themes": "Customers on Google Maps praise meticulous car washing and interior detailing, quick WhatsApp booking and well-finished ceramic and quartz coatings.",
+ "faqs": [
+  [
+   "What does Zirconite Singapore do?",
+   "Google Maps lists it as a car repair workshop."
+  ],
+  [
+   "What are the opening hours?",
+   "The hours are listed in the Google Maps section above. Please see Google Maps for current hours."
+  ]
+ ],
+ "sources": "its Google Maps listing",
+ "stories": [],
+ "mentioned_services": [
+  "Car wash",
+  "Interior detailing",
+  "Ceramic coating"
+ ],
+ "services_note": "Services customers mention on Google Maps. Ask the workshop for its full list.",
+ "makes": [],
+ "makes_note": "Not listed on its public pages. Ask the workshop about your car.",
+ "specialties": [],
+ "good_to_know": [],
+ "card_rules": "2026-11-05"
+}

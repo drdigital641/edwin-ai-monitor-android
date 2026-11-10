@@ -1,0 +1,45 @@
+{
+ "slug": "fong-motors",
+ "researched_at": "2026-11-02",
+ "researcher": "Claude (Sonnet), facts supplied by Edwin's research notes where marked",
+ "facts": [
+  {
+   "field": "registration",
+   "value": "Registered sole proprietorship since Apr 1975, motor vehicle repair and maintenance (Edwin research notes: companies.sg)",
+   "source_url": "https://straitsdata.com/companies/sg/fong-motors/06897200L",
+   "retrieved": "2026-11-02"
+  },
+  {
+   "field": "directory",
+   "value": "Listed in the SGCarMart directory (Edwin research notes)",
+   "source_url": "https://www.sgcarmart.com",
+   "retrieved": "2026-11-02"
+  },
+  {
+   "field": "description",
+   "value": "\"specialise on end-to-end service for all things car related\"",
+   "source_url": "https://www.autoyas.com/SG/Singapore/102755165229141/Fong-Motors",
+   "retrieved": "2026-11-02"
+  },
+  {
+   "field": "address",
+   "value": "1 Kaki Bukit Ave 6 #01-45/#01-27 AutoBay@Kaki Bukit, Singapore 417883",
+   "source_url": "google_profile",
+   "retrieved": "2026-11-02"
+  }
+ ],
+ "conflicts": [
+  {
+   "field": "related entity",
+   "values": [],
+   "note": "Fong Motors Rental Pte Ltd at same unit: separate business, not used"
+  }
+ ],
+ "not_found": [
+  "service list",
+  "makes",
+  "real job stories"
+ ],
+ "stories": [],
+ "phone_rule": "Stored Google SG mobile only; no second numbers or landlines"
+}

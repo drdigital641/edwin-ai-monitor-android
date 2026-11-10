@@ -1,0 +1,48 @@
+{
+ "schema_version": 1,
+ "slug": "at-performance",
+ "place_id": "ChIJl6IQcSMX2jERhz84Md87VQY",
+ "place_id_checked_at": "2026-11-10",
+ "name": "AT Performance",
+ "name_source_url": "google_profile",
+ "name_checked_at": "2026-11-10",
+ "address": {
+  "block": "",
+  "street": "160 Sin Ming Dr, #07-19 Sin Ming AutoCity",
+  "unit": "",
+  "building": ""
+ },
+ "postal_code": "575721",
+ "address_source_url": "google_profile",
+ "address_checked_at": "2026-11-10",
+ "categories": [
+  "SERV"
+ ],
+ "services": [
+  "General servicing and repair"
+ ],
+ "services_source_url": "google_profile",
+ "phones": [
+  {
+   "e164": "+6596866219",
+   "kind": "mobile",
+   "whatsapp": true,
+   "source": "google_profile",
+   "checked_at": "2026-11-10"
+  }
+ ],
+ "google_screen": {
+  "passed": true,
+  "reason": "OPERATIONAL, car repair, SG mobile on Google profile",
+  "checked_at": "2026-11-10"
+ },
+ "status": "pending",
+ "tier": "basic",
+ "first_seen_at": "2026-11-10",
+ "last_verified_at": "2026-11-10",
+ "collector_version": "agent-v5",
+ "estate": "sin-ming-industrial-estate",
+ "planning_area": "Bishan",
+ "region": "central",
+ "hold": "hold: Google mobile 9686 6219 is also on chin-nam-hup-kee-motor (#07-18/19, next unit); only 3 ratings; number kept on Chin Nam Hup Kee; recheck before rebuild"
+}

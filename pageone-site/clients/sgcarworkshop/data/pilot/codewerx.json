@@ -1,0 +1,48 @@
+{
+ "lede": "CodeWerx is a BMW and MINI specialist at Premier@Kaki Bukit. Its own website says it has been dedicated only to BMW and MINI cars since 2013, with servicing, repairs, tuning and coding.",
+ "chips": [
+  "BMW and MINI",
+  "Tuning",
+  "Coding"
+ ],
+ "services": [
+  "Servicing and repairs",
+  "Performance tuning",
+  "Software coding"
+ ],
+ "themes": "Customers on Google Maps mention careful diagnosis before replacing parts, deep knowledge of MINI and BMW cars, WhatsApp updates on parts being changed, and work completed on time, from oil leaks to gearbox overhauls.",
+ "faqs": [
+  [
+   "What does CodeWerx do?",
+   "Google Maps lists it as a car repair workshop."
+  ],
+  [
+   "What are the opening hours?",
+   "The hours are listed in the Google Maps section above. Please see Google Maps for current hours."
+  ]
+ ],
+ "sources": "its own website (codewerx.tech)",
+ "stories": [],
+ "mentioned_services": [
+  "MINI and BMW repairs",
+  "Gearbox overhaul",
+  "Oil leak repairs",
+  "Suspension and engine mounts"
+ ],
+ "makes": [
+  "BMW",
+  "MINI"
+ ],
+ "makes_note": "Named on its own website, which says it works on BMW and MINI only.",
+ "services_note": "Services as listed on the workshop's own website, codewerx.tech.",
+ "specialties": [
+  "BMW and MINI cars only",
+  "Coding and performance upgrades"
+ ],
+ "good_to_know": [
+  "Established in 2013, according to its website",
+  "Its website says its technicians include ex-BMW dealership techs",
+  "Visits booked online through its website"
+ ],
+ "card_rules": "2026-11-05"
+}

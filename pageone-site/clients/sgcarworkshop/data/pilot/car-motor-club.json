@@ -1,0 +1,43 @@
+{
+ "lede": "Car Motor Club at Jalan Lam Huat and Carros Centre is a car servicing and repair workshop.",
+ "chips": [
+  "Servicing packages",
+  "Inspections"
+ ],
+ "services": [
+  "Servicing packages",
+  "Hybrid servicing packages",
+  "Aircon servicing",
+  "Car batteries",
+  "Brake servicing",
+  "Inspection services"
+ ],
+ "themes": "Customers on Google Maps mention a thorough 100-point used car inspection, parts shown and explained before replacement, a battery change with advice on the right size, and repairs finished within the promised time.",
+ "faqs": [
+  [
+   "What does Car Motor Club do?",
+   "Google Maps lists it as a car repair workshop."
+  ],
+  [
+   "What are the opening hours?",
+   "The hours are listed in the Google Maps section above. Please see Google Maps for current hours."
+  ]
+ ],
+ "sources": "its own website (carmotorclubsg.wixstudio.com)",
+ "stories": [],
+ "mentioned_services": [
+  "Pre-purchase inspection",
+  "Battery replacement",
+  "Car repair",
+  "Car servicing"
+ ],
+ "services_note": "Services as listed on the workshop's own website, carmotorclubsg.wixstudio.com.",
+ "makes": [],
+ "makes_note": "Not listed on its public pages. Ask the workshop about your car.",
+ "specialties": [
+  "Tiered servicing packages",
+  "Hybrid servicing packages"
+ ],
+ "good_to_know": [],
+ "card_rules": "2026-11-05"
+}

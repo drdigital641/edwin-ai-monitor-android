@@ -1,0 +1,36 @@
+{
+ "businessStatus": "OPERATIONAL",
+ "primaryType": "car_repair",
+ "types": [
+  "car_wash",
+  "car_repair",
+  "point_of_interest",
+  "service",
+  "establishment"
+ ],
+ "rating": 4.9,
+ "userRatingCount": 179,
+ "websiteUri": "https://sitelift.site/zirconitesingapore/",
+ "paymentOptions": {
+  "acceptsCreditCards": true,
+  "acceptsDebitCards": true,
+  "acceptsCashOnly": false,
+  "acceptsNfc": true
+ },
+ "parkingOptions": null,
+ "editorialSummary": null,
+ "weekdayDescriptions": [
+  "Monday: Closed",
+  "Tuesday: 10:00 AM – 7:00 PM",
+  "Wednesday: 10:00 AM – 7:00 PM",
+  "Thursday: 10:00 AM – 7:00 PM",
+  "Friday: 10:00 AM – 7:00 PM",
+  "Saturday: 10:00 AM – 7:00 PM",
+  "Sunday: 10:00 AM – 7:00 PM"
+ ],
+ "review_count_seen": 5,
+ "review_themes": "Customers on Google Maps praise meticulous car washing and interior detailing, quick WhatsApp booking and well-finished ceramic and quartz coatings.",
+ "fetched_at": "2026-11-07",
+ "place_id": "ChIJP1X0eccR2jERAy330k66hvo",
+ "source": "google_places"
+}

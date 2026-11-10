@@ -1,0 +1,30 @@
+{
+ "businessStatus": "OPERATIONAL",
+ "primaryType": "car_repair",
+ "types": [
+  "car_repair",
+  "point_of_interest",
+  "service",
+  "establishment"
+ ],
+ "rating": 5,
+ "userRatingCount": 12,
+ "websiteUri": null,
+ "paymentOptions": null,
+ "parkingOptions": null,
+ "editorialSummary": null,
+ "weekdayDescriptions": [
+  "Monday: 9:30 AM – 6:30 PM",
+  "Tuesday: 9:30 AM – 6:30 PM",
+  "Wednesday: 9:30 AM – 6:30 PM",
+  "Thursday: 9:30 AM – 6:30 PM",
+  "Friday: 9:30 AM – 6:30 PM",
+  "Saturday: 9:30 AM – 4:30 PM",
+  "Sunday: Closed"
+ ],
+ "review_count_seen": 5,
+ "review_themes": "Customers on Google Maps mention problems found that other workshops could not diagnose, an engine misfire fixed, an aircon issue repaired with only the needed parts, servicing packages and transparent pricing.",
+ "fetched_at": "2026-11-09",
+ "place_id": "ChIJG_NeldIT2jERkys7JjNvwX4",
+ "source": "google_places"
+}

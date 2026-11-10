@@ -1,0 +1,30 @@
+{
+ "businessStatus": "OPERATIONAL",
+ "primaryType": "car_repair",
+ "types": [
+  "car_repair",
+  "point_of_interest",
+  "service",
+  "establishment"
+ ],
+ "rating": 5,
+ "userRatingCount": 44,
+ "websiteUri": "https://www.instagram.com/ardent.research.concept/",
+ "paymentOptions": null,
+ "parkingOptions": null,
+ "editorialSummary": null,
+ "weekdayDescriptions": [
+  "Monday: 10:30 AM – 7:30 PM",
+  "Tuesday: 10:30 AM – 7:30 PM",
+  "Wednesday: 10:30 AM – 7:30 PM",
+  "Thursday: 10:30 AM – 7:30 PM",
+  "Friday: 10:30 AM – 7:30 PM",
+  "Saturday: Closed",
+  "Sunday: Closed"
+ ],
+ "review_count_seen": 5,
+ "review_themes": "Customers on Google Maps mention patient explanations with options and their pros and cons, no pressure, regular updates, and a hard-to-find fault diagnosed after a dealership could not find it.",
+ "fetched_at": "2026-11-09",
+ "place_id": "ChIJRbsavpsT2jERKv0P0L3vC6k",
+ "source": "google_places"
+}

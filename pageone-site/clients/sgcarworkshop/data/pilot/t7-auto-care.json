@@ -1,0 +1,40 @@
+{
+ "lede": "T7 Auto Care is a paint and bodywork workshop in Ang Mo Kio Industrial Park 2. Its own website lists spray painting, accident painting, paint protection film, panel beating and insurance claim handling.",
+ "chips": [
+  "Car spray painting",
+  "Accident painting",
+  "Paint protection film (PPF)"
+ ],
+ "services": [
+  "Car spray painting",
+  "Accident painting",
+  "Paint protection film (PPF)",
+  "Panel beating",
+  "Bodywork",
+  "Insurance claim handling"
+ ],
+ "themes": "Customers on Google Maps mention paint jobs with a good colour match, dent and scrape repairs often done within the day, and late-night drop-offs.",
+ "faqs": [
+  [
+   "What are the opening hours?",
+   "The hours are listed in the Google Maps section above. Please see Google Maps for current hours."
+  ]
+ ],
+ "sources": "its own website (sitelift.site)",
+ "stories": [],
+ "mentioned_services": [
+  "Scratch and dent repair",
+  "Spray painting",
+  "Bodywork repair"
+ ],
+ "specialties": [
+  "Spray painting with computerised colour matching, per its website"
+ ],
+ "good_to_know": [
+  "Its website mentions a 1-year warranty",
+  "Insurance claim handling is listed on its website"
+ ],
+ "services_note": "Services as listed on the workshop's own website, sitelift.site.",
+ "card_rules": "2026-11-05",
+ "makes_note": "Its website does not name car makes. Ask the workshop about yours."
+}

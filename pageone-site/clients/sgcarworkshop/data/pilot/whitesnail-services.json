@@ -1,0 +1,33 @@
+{
+ "lede": "Whitesnail Services is a car repair workshop at 8 Kaki Bukit Ave 4, #06-30 Premier @Kaki Bukit. Its Google Maps listing shows opening hours and customer ratings.",
+ "chips": [
+  "Car repair"
+ ],
+ "services": [
+  "General servicing and repair"
+ ],
+ "themes": "Customers on Google Maps mention a meticulous one-man workshop, clear explanations for every replacement, photo updates by text, old parts kept for the owner to see, and pre-purchase checks.",
+ "faqs": [
+  [
+   "What does Whitesnail Services do?",
+   "Google Maps lists it as a car repair workshop."
+  ],
+  [
+   "What are the opening hours?",
+   "The hours are listed in the Google Maps section above. Please see Google Maps for current hours."
+  ]
+ ],
+ "sources": "its Google Maps listing",
+ "stories": [],
+ "mentioned_services": [
+  "Car servicing",
+  "Grounding kits",
+  "Pre-purchase inspection"
+ ],
+ "makes": [
+  "Toyota",
+  "Hyundai"
+ ],
+ "makes_note": "Named by customers on Google Maps. Ask the workshop about other makes.",
+ "card_rules": "2026-11-05"
+}

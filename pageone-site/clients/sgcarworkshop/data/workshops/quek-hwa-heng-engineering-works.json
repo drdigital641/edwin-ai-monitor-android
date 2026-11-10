@@ -1,0 +1,48 @@
+{
+ "schema_version": 1,
+ "slug": "quek-hwa-heng-engineering-works",
+ "place_id": "ChIJrZP4NvoT2jERU1OvxIKGCfo",
+ "place_id_checked_at": "2026-11-10",
+ "name": "Quek Hwa Heng Engineering Works",
+ "name_source_url": "google_profile",
+ "name_checked_at": "2026-11-10",
+ "address": {
+  "block": "",
+  "street": "60 Jln Lam Huat, #04-70 Carros Centre",
+  "unit": "",
+  "building": ""
+ },
+ "postal_code": "737869",
+ "address_source_url": "google_profile",
+ "address_checked_at": "2026-11-10",
+ "categories": [
+  "SERV"
+ ],
+ "services": [
+  "General servicing and repair"
+ ],
+ "services_source_url": "google_profile",
+ "phones": [
+  {
+   "e164": "+6598528094",
+   "kind": "mobile",
+   "whatsapp": true,
+   "source": "google_profile",
+   "checked_at": "2026-11-10"
+  }
+ ],
+ "google_screen": {
+  "passed": true,
+  "reason": "OPERATIONAL, car repair, SG mobile on Google profile",
+  "checked_at": "2026-11-10"
+ },
+ "status": "pending",
+ "tier": "basic",
+ "first_seen_at": "2026-11-10",
+ "last_verified_at": "2026-11-10",
+ "collector_version": "agent-v5",
+ "estate": "carros-centre-jalan-lam-huat",
+ "planning_area": "Woodlands",
+ "region": "north",
+ "hold": "hold: 1 rating and no written review"
+}

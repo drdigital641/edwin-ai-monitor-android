@@ -1,0 +1,33 @@
+{
+ "businessStatus": "OPERATIONAL",
+ "primaryType": "car_repair",
+ "types": [
+  "car_repair",
+  "point_of_interest",
+  "service",
+  "establishment"
+ ],
+ "rating": 4,
+ "userRatingCount": 13,
+ "websiteUri": null,
+ "paymentOptions": {
+  "acceptsDebitCards": true,
+  "acceptsCashOnly": false
+ },
+ "parkingOptions": null,
+ "editorialSummary": null,
+ "weekdayDescriptions": [
+  "Monday: 12:00 AM – 6:00 PM",
+  "Tuesday: 8:00 AM – 6:00 PM",
+  "Wednesday: 8:00 AM – 6:00 PM",
+  "Thursday: 8:00 AM – 6:00 PM",
+  "Friday: 8:00 AM – 6:00 PM",
+  "Saturday: 8:00 AM – 5:00 PM",
+  "Sunday: 8:00 PM – 12:00 AM"
+ ],
+ "review_count_seen": 5,
+ "review_themes": "Customers on Google Maps mention a workshop open on Sunday with parts in stock for a charging fault. Some customers felt battery and repair prices were high.",
+ "fetched_at": "2026-11-03",
+ "place_id": "ChIJKYWAL_oW2jER_DHSZvQyz-A",
+ "source": "google_places"
+}

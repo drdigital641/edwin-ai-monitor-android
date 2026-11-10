@@ -1,0 +1,39 @@
+{
+ "lede": "98 Auto Werkz is a car workshop at Carros Centre on Jalan Lam Huat. Its own website lists repairs, routine maintenance, aircon, gearbox repairs, diagnostics, engine overhauls and help with accident claims.",
+ "chips": [
+  "Car repairs",
+  "Routine maintenance",
+  "Aircon repairs"
+ ],
+ "services": [
+  "Car repairs",
+  "Routine maintenance",
+  "Aircon repairs",
+  "Gearbox repairs",
+  "Diagnostics",
+  "Engine overhauls",
+  "Accident claim assistance"
+ ],
+ "themes": "Customers on Google Maps mention regular servicing and alignment, detailed progress updates, warranty follow-up repairs and help with an insurance claim.",
+ "faqs": [
+  [
+   "What are the opening hours?",
+   "The hours are listed in the Google Maps section above. Please see Google Maps for current hours."
+  ]
+ ],
+ "sources": "its own website (sitelift.site)",
+ "stories": [],
+ "mentioned_services": [
+  "Car servicing",
+  "Wheel alignment",
+  "Insurance claims",
+  "Kia cars"
+ ],
+ "makes_note": "Its website says it works on all makes and models.",
+ "good_to_know": [
+  "Accident claim assistance is listed on its website",
+  "Its website has a request-a-call form"
+ ],
+ "services_note": "Services as listed on the workshop's own website, sitelift.site.",
+ "card_rules": "2026-11-05"
+}

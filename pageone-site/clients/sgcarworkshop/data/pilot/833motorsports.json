@@ -1,0 +1,36 @@
+{
+ "lede": "833Motorsports at Sin Ming Industrial Estate is a car servicing and repair workshop.",
+ "chips": [
+  "Servicing",
+  "Repairs"
+ ],
+ "services": [
+  "Car servicing",
+  "Car repair",
+  "Fault diagnosis"
+ ],
+ "themes": "Customers on Google Maps mention years of looking after several family cars, creative repair solutions, clear explanations, servicing and advice that makes the spend worthwhile.",
+ "faqs": [
+  [
+   "What does 833Motorsports do?",
+   "Google Maps lists it as a car repair workshop."
+  ],
+  [
+   "What are the opening hours?",
+   "The hours are listed in the Google Maps section above. Please see Google Maps for current hours."
+  ]
+ ],
+ "sources": "its Google Maps listing",
+ "stories": [],
+ "mentioned_services": [
+  "Car servicing",
+  "Car repair",
+  "Fault diagnosis"
+ ],
+ "services_note": "Services customers mention on Google Maps. Ask the workshop for its full list.",
+ "makes": [],
+ "makes_note": "Not listed on its public pages. Ask the workshop about your car.",
+ "specialties": [],
+ "good_to_know": [],
+ "card_rules": "2026-11-05"
+}

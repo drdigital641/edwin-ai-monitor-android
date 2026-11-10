@@ -1,0 +1,44 @@
+{
+ "lede": "Carfeels at Sin Ming Industrial Estate is a car servicing, repair and tuning workshop.",
+ "chips": [
+  "Servicing",
+  "Gearbox"
+ ],
+ "services": [
+  "Car servicing and maintenance",
+  "Performance tuning",
+  "Accident and insurance claims help",
+  "Fleet maintenance"
+ ],
+ "themes": "Customers on Google Maps mention an emergency wheel and jerking problem sorted, a gearbox fixed with clear options and no pushing, a brake noise solved in one visit after other shops could not, and detailed servicing checks.",
+ "faqs": [
+  [
+   "What does Carfeels do?",
+   "Google Maps lists it as a car repair workshop."
+  ],
+  [
+   "What are the opening hours?",
+   "The hours are listed in the Google Maps section above. Please see Google Maps for current hours."
+  ]
+ ],
+ "sources": "its own website (carfeels.com.sg)",
+ "stories": [],
+ "mentioned_services": [
+  "Car servicing",
+  "Gearbox repair",
+  "Brake noise repair",
+  "Emergency repair"
+ ],
+ "services_note": "Services as listed on the workshop's own website, carfeels.com.sg.",
+ "makes": [],
+ "makes_note": "Not listed on its public pages. Ask the workshop about your car.",
+ "specialties": [
+  "Performance tuning",
+  "Accident claims",
+  "Fleet maintenance"
+ ],
+ "good_to_know": [
+  "Online booking through its website, according to its website"
+ ],
+ "card_rules": "2026-11-05"
+}

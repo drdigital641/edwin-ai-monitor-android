@@ -1,0 +1,87 @@
+{
+ "slug": "my-car-auto-workshop",
+ "researched_at": "2026-11-03",
+ "researcher": "Claude, Google Places Details only (public web search used only to find the candidate)",
+ "facts": [
+  {
+   "field": "rating",
+   "value": "5",
+   "source_url": "google_places",
+   "retrieved": "2026-11-03"
+  },
+  {
+   "field": "userRatingCount",
+   "value": "58",
+   "source_url": "google_places",
+   "retrieved": "2026-11-03"
+  },
+  {
+   "field": "types",
+   "value": "['car_repair', 'point_of_interest', 'service', 'establishment']",
+   "source_url": "google_places",
+   "retrieved": "2026-11-03"
+  },
+  {
+   "field": "primaryType",
+   "value": "car_repair",
+   "source_url": "google_places",
+   "retrieved": "2026-11-03"
+  },
+  {
+   "field": "opening_hours",
+   "value": [
+    "Monday: 9:00 AM – 6:00 PM",
+    "Tuesday: 9:00 AM – 6:00 PM",
+    "Wednesday: 9:00 AM – 6:00 PM",
+    "Thursday: 9:00 AM – 6:00 PM",
+    "Friday: 9:00 AM – 6:00 PM",
+    "Saturday: 9:00 AM – 3:00 PM",
+    "Sunday: Closed"
+   ],
+   "source_url": "google_places",
+   "retrieved": "2026-11-03"
+  },
+  {
+   "field": "location",
+   "value": {
+    "latitude": 1.3576743999999998,
+    "longitude": 103.838268
+   },
+   "source_url": "google_places",
+   "retrieved": "2026-11-03"
+  },
+  {
+   "field": "paymentOptions",
+   "value": "{'acceptsDebitCards': True, 'acceptsCashOnly': False}",
+   "source_url": "google_places",
+   "retrieved": "2026-11-03"
+  }
+ ],
+ "conflicts": [
+  {
+   "field": "mobile",
+   "google": "+6587487126",
+   "other": "+6588332988 (thebestsingapore.com listing)",
+   "resolution": "Google wins"
+  },
+  {
+   "field": "name",
+   "google": "My Car Auto Workshop Singapore | Carworkshop.com.sg",
+   "other": "Mincent Car Auto (reviews, thebestsingapore.com)",
+   "resolution": "Google name used, website tag dropped (Edwin 4 Nov 2026)"
+  }
+ ],
+ "not_found": [
+  "editorialSummary",
+  "websiteUri",
+  "parkingOptions"
+ ],
+ "review_service_support": {
+  "Regular servicing": 2,
+  "Pre-purchase car inspection": 1,
+  "Wear and tear repairs": 1,
+  "Finding the root cause of faults": 1
+ },
+ "fetched_at": "2026-11-03",
+ "source": "google_places"
+}

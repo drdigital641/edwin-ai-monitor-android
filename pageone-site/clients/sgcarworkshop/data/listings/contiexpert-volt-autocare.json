@@ -1,0 +1,156 @@
+{
+ "slug": "contiexpert-volt-autocare",
+ "tier": "premium_leadgen",
+ "name": "ContiExpert by Volt Autocare",
+ "domain": "contiexpert.sg",
+ "url": "https://contiexpert.sg/",
+ "category": "general-servicing-repair",
+ "categories": [
+  "general-servicing-repair",
+  "car-aircon-repair",
+  "gearbox-repair"
+ ],
+ "regions": [
+  "central"
+ ],
+ "regions_note": "Newton is in the Central region (URA). Address: 143 Bukit Timah Road, inside the Shell station at Newton Circus.",
+ "area_label": "Newton",
+ "estate": "bukit-timah-road-newton",
+ "title": "ContiExpert by Volt Autocare | European Car Repair, Newton",
+ "desc": "ContiExpert by Volt Autocare, inside Shell at 143 Bukit Timah Road: servicing, diagnostics, aircon, gearbox, hybrid and EV checks. WhatsApp 8221 5502.",
+ "card_img": {
+  "f": "contiexpert-sclass-eclass.webp",
+  "alt": "Mercedes-Benz S-Class and E-Class in the ContiExpert bays"
+ },
+ "card_text": [
+  "European car workshop inside the Shell station at Newton Circus.",
+  "Servicing, diagnostics, aircon and gearbox work, plus hybrid and EV checks."
+ ],
+ "lede": "ContiExpert by Volt Autocare is a car workshop inside the Shell station at 143 Bukit Timah Road, Newton Circus. It services and repairs European cars such as Mercedes-Benz, BMW, Audi and Volkswagen, and checks hybrids and EVs. The car is inspected and the fault explained before any repair is agreed. Call or WhatsApp 8221 5502.",
+ "services": [
+  {
+   "n": "European car servicing",
+   "d": "Scheduled servicing, oil and filter changes and inspections for Mercedes-Benz, BMW, Audi, Volkswagen and other European cars.",
+   "p": null
+  },
+  {
+   "n": "Diagnostics and warning lights",
+   "d": "Fault codes read and the system tested, then the fault explained before any repair is agreed.",
+   "p": null
+  },
+  {
+   "n": "Car aircon repair",
+   "d": "Warm, smelly or weak aircon checked for leaks, the compressor and the cooling coil.",
+   "p": null
+  },
+  {
+   "n": "Brake and suspension repair",
+   "d": "Noisy brakes, a soft pedal, knocks over bumps or a car pulling to one side, inspected and quoted first.",
+   "p": null
+  },
+  {
+   "n": "Gearbox and transmission service",
+   "d": "ATF service and gearbox checks for jerky shifts, slipping, delays or warnings.",
+   "p": null
+  },
+  {
+   "n": "Hybrid and EV checks",
+   "d": "Battery state-of-health checks, hybrid battery fan cleaning, and pre-purchase inspections for hybrids and EVs.",
+   "p": null
+  },
+  {
+   "n": "Pre-purchase inspection",
+   "d": "A used car inspected before you buy, with a clear summary of what was found.",
+   "p": null
+  }
+ ],
+ "price_note": "Prices are not listed on the workshop's website. WhatsApp your car model and the problem for a quote.",
+ "phone": "+6582215502",
+ "phone_show": "8221 5502",
+ "whatsapp": "6582215502",
+ "addresses": [
+  {
+   "label": null,
+   "street": "143 Bukit Timah Road (inside the Shell station, Newton Circus)",
+   "postal": "229843",
+   "note": "The workshop is inside the Shell station. On a first visit, WhatsApp when you are a few minutes away."
+  }
+ ],
+ "map_url": "https://www.google.com/maps/place/Volt+Autocare+@Bukit+Timah/@1.3109645,103.8421669,17z/data=!3m1!4b1!4m6!3m5!1s0x31da19a1ff4674a3:0x2cd1ca1effa4a97b!8m2!3d1.3109645!4d103.8421669!16s%2Fg%2F11x64r1zbq",
+ "map_label": "Open in Google Maps",
+ "hours": [
+  [
+   "Opening hours",
+   "WhatsApp to check before you come, especially on weekends and public holidays"
+  ]
+ ],
+ "hours_ld": [],
+ "hours_note": null,
+ "social": [],
+ "reviews": {
+  "text": "Rated 5.0 on Google from 22 reviews, as stated on contiexpert.sg (Google Maps name: Volt Autocare @Bukit Timah, checked 3 November 2026)",
+  "url": "https://www.google.com/maps/place/Volt+Autocare+@Bukit+Timah/@1.3109645,103.8421669,17z/data=!3m1!4b1!4m6!3m5!1s0x31da19a1ff4674a3:0x2cd1ca1effa4a97b!8m2!3d1.3109645!4d103.8421669!16s%2Fg%2F11x64r1zbq",
+  "label": "See the Google reviews"
+ },
+ "photos": [
+  {
+   "f": "contiexpert-sclass-eclass.webp",
+   "alt": "Mercedes-Benz S-Class and E-Class in the workshop bays",
+   "cap": "A Mercedes-Benz S-Class and E-Class in the bays."
+  },
+  {
+   "f": "contiexpert-audi-amg-bays.webp",
+   "alt": "An Audi and a Mercedes-AMG in the workshop bays",
+   "cap": "An Audi and a Mercedes-AMG in for work."
+  },
+  {
+   "f": "contiexpert-glb-bmw-aircon.webp",
+   "alt": "Aircon work on a Mercedes GLB and a BMW",
+   "cap": "Aircon work on a Mercedes GLB and a BMW."
+  },
+  {
+   "f": "contiexpert-cla-golf-bays.webp",
+   "alt": "A Mercedes CLA and a Volkswagen Golf in the bays",
+   "cap": "A Mercedes CLA and a Volkswagen Golf."
+  },
+  {
+   "f": "contiexpert-porsche-911.webp",
+   "alt": "A Porsche 911 at the workshop",
+   "cap": "A Porsche 911 at the workshop."
+  },
+  {
+   "f": "contiexpert-battery-test.webp",
+   "alt": "Car battery test reading",
+   "cap": "A battery test before replacement."
+  }
+ ],
+ "faqs": [
+  [
+   "Where exactly is the workshop?",
+   "Inside the Shell station at 143 Bukit Timah Road, Newton Circus, Singapore 229843. On Google Maps it is listed as Volt Autocare @Bukit Timah."
+  ],
+  [
+   "Which cars does it work on?",
+   "European cars such as Mercedes-Benz, BMW, Audi and Volkswagen, plus hybrids and EVs for checks and pre-purchase inspections."
+  ],
+  [
+   "Will I know what is wrong before paying for a repair?",
+   "Yes. The car is inspected, the fault codes are read and the fault is explained before any repair is agreed."
+  ],
+  [
+   "What are the opening hours?",
+   "The website asks drivers to WhatsApp 8221 5502 to check before coming, especially on weekends and public holidays."
+  ]
+ ],
+ "source": {
+  "name": "contiexpert.sg llms.txt and contact page (live, read via the Bluehost Bridge on 7 Nov 2026) and Edwin's brief of 7 Nov 2026",
+  "photos": "The client's own photos (CONTIEXPERT watermark kept, images resized only, never cropped)"
+ },
+ "left_out": [
+  "staff names",
+  "old promotion prices",
+  "email address",
+  "any link to other businesses"
+ ],
+ "_order": 10
+}

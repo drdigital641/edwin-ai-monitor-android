@@ -1,0 +1,330 @@
+[
+ {
+  "slug": "amk-industrial-park-2",
+  "name": "Ang Mo Kio Industrial Park 2",
+  "town": "ang-mo-kio",
+  "keywords": [
+   "ang mo kio industrial park"
+  ],
+  "intro": "Ang Mo Kio Industrial Park 2 is an industrial estate in Ang Mo Kio, including the AMK AutoPoint motor building, with workshops serving the north-east."
+ },
+ {
+  "slug": "kaki-bukit-industrial-estate",
+  "name": "Kaki Bukit Industrial Estate",
+  "town": "kaki-bukit",
+  "keywords": [
+   "kaki bukit"
+  ],
+  "intro": "Kaki Bukit is an industrial estate in the East region, around Kaki Bukit Avenue 4 and 6 and Kaki Bukit Road 2 and 4, with many workshops, trade units and parts suppliers."
+ },
+ {
+  "slug": "sin-ming-industrial-estate",
+  "name": "Sin Ming Industrial Estate",
+  "town": "sin-ming-bishan",
+  "keywords": [
+   "sin ming"
+  ],
+  "intro": "Sin Ming Industrial Estate, including Sin Ming Drive and the Sin Ming AutoCity and Autocare buildings, is in the middle of Singapore near Bishan."
+ },
+ {
+  "slug": "toh-guan-enterprise-hub",
+  "name": "Toh Guan Road East and Enterprise Hub",
+  "town": "toh-guan-jurong-east",
+  "keywords": [
+   "toh guan"
+  ],
+  "intro": "Toh Guan Road East and the Enterprise Hub industrial building are in the West region, near Jurong East."
+ },
+ {
+  "slug": "corporation-drive-jurong-east",
+  "name": "Corporation Drive, Jurong East",
+  "town": "toh-guan-jurong-east",
+  "keywords": [
+   "corporation dr"
+  ],
+  "intro": "Corporation Drive is an industrial road in Jurong East, in the West region."
+ },
+ {
+  "slug": "paya-ubi-industrial-park",
+  "name": "Paya Ubi Industrial Park",
+  "town": "ubi",
+  "keywords": [
+   "ubi ave 1",
+   "paya ubi"
+  ],
+  "intro": "Paya Ubi Industrial Park is around Ubi Avenue 1, near Paya Lebar in the Geylang planning area (Central region), with motor workshops mixed in among light industry."
+ },
+ {
+  "slug": "ubi-road-1",
+  "name": "Ubi Road 1",
+  "town": "ubi",
+  "keywords": [
+   "ubi rd 1",
+   "ubi road 1"
+  ],
+  "intro": "Ubi Road 1 is an industrial road in the Ubi area, near Paya Lebar in the Geylang planning area (Central region)."
+ },
+ {
+  "slug": "bedok-industrial-park-e",
+  "name": "Bedok Industrial Park E",
+  "town": "bedok-north",
+  "keywords": [
+   "bedok industrial park e",
+   "bedok ind park e"
+  ],
+  "intro": "Bedok Industrial Park E is a block of trade units along Bedok North Avenue 4 in the East region, near Bedok Reservoir and Tampines."
+ },
+ {
+  "slug": "tampines-industrial-park-a",
+  "name": "Tampines Industrial Park A",
+  "town": "tampines",
+  "keywords": [
+   "tampines industrial park a"
+  ],
+  "intro": "Tampines Industrial Park A is a light industrial estate along Tampines Street 92 and 93 in the East region."
+ },
+ {
+  "slug": "woodlands-industrial-park-e9",
+  "name": "Woodlands Industrial Park E9",
+  "town": "woodlands",
+  "keywords": [
+   "woodlands industrial park"
+  ],
+  "intro": "Woodlands Industrial Park E9 is the main industrial park in the north-west, close to the Causeway."
+ },
+ {
+  "slug": "carros-centre-jalan-lam-huat",
+  "name": "Jalan Lam Huat and Carros Centre",
+  "town": "woodlands",
+  "keywords": [
+   "jln lam huat",
+   "jalan lam huat",
+   "carros"
+  ],
+  "intro": "Jalan Lam Huat, where Carros Centre stands, is an industrial road in the north-west of Singapore."
+ },
+ {
+  "slug": "woodlands-avenue-12",
+  "name": "Woodlands Avenue 12 (Polaris@Woodlands)",
+  "town": "woodlands",
+  "keywords": [
+   "woodlands ave 12",
+   "polaris"
+  ],
+  "intro": "Woodlands Avenue 12 and the Polaris@Woodlands industrial building are in the Woodlands area in the north."
+ },
+ {
+  "slug": "yishun-industrial-park-a",
+  "name": "Yishun Industrial Park A",
+  "town": "yishun",
+  "keywords": [
+   "yishun industrial park"
+  ],
+  "intro": "Yishun Industrial Park A is one of the two main motor trade clusters in Yishun, in the North region."
+ },
+ {
+  "slug": "yishun-industrial-street-1",
+  "name": "Yishun Industrial Street 1",
+  "town": "yishun",
+  "keywords": [
+   "yishun industrial street",
+   "yishun industrial st"
+  ],
+  "intro": "Yishun Industrial Street 1, around North Spring Bizhub and Northpoint Bizhub, is the second motor trade cluster in Yishun."
+ },
+ {
+  "slug": "bukit-batok-crescent",
+  "name": "Bukit Batok Crescent (WCEGA Plaza)",
+  "town": "bukit-batok",
+  "keywords": [
+   "bukit batok cres",
+   "bukit batok crescent",
+   "wcega"
+  ],
+  "intro": "Bukit Batok Crescent, home to the WCEGA Plaza and WCEGA Tower industrial buildings, is a light industrial area in the West region."
+ },
+ {
+  "slug": "woodlands-close",
+  "name": "Woodlands Close (MEGA@Woodlands)",
+  "town": "woodlands",
+  "keywords": [
+   "woodlands cl",
+   "woodlands close",
+   "mega@woodland"
+  ],
+  "intro": "Woodlands Close, where the MEGA@Woodlands industrial building stands, is a light industrial area in the north, near Woodlands Avenue 12."
+ },
+ {
+  "slug": "defu-industrial-estate",
+  "name": "Defu Industrial Estate (Defu Lane)",
+  "town": "defu-hougang",
+  "keywords": [
+   "defu lane",
+   "defu ind",
+   "defu avenue"
+  ],
+  "intro": "Defu Industrial Estate, laid out along the Defu Lane roads near Hougang, is one of the older light industrial estates in the north-east, with many motor workshops."
+ },
+ {
+  "slug": "macpherson-road",
+  "name": "MacPherson Road",
+  "town": "macpherson",
+  "keywords": [
+   "macpherson rd",
+   "macpherson road"
+  ],
+  "intro": "MacPherson Road runs through the MacPherson area in the central region, with a row of shophouse car workshops and service centres along it."
+ },
+ {
+  "slug": "woodlands-industrial-xchange",
+  "name": "Woodlands Avenue 10 (Woodlands Industrial Xchange)",
+  "town": "woodlands",
+  "keywords": [
+   "woodlands ave 10",
+   "woodlands avenue 10",
+   "woodlands industrial xchange"
+  ],
+  "intro": "Woodlands Avenue 10, home to the Woodlands Industrial Xchange building, is a light industrial area in Woodlands in the North region."
+ },
+ {
+  "slug": "admiralty-street",
+  "name": "Admiralty Street (Northlink Building)",
+  "town": "woodlands",
+  "keywords": [
+   "admiralty st",
+   "admiralty street",
+   "northlink"
+  ],
+  "intro": "Admiralty Street, with the Northlink Building and nearby industrial blocks, is a light industrial area on the Woodlands and Admiralty side of the North region."
+ },
+ {
+  "slug": "toa-payoh-industrial-park",
+  "name": "Toa Payoh Industrial Park and Lorong 4",
+  "town": "toa-payoh",
+  "keywords": [
+   "toa payoh industrial park",
+   "lor 4 toa payoh",
+   "lorong 4 toa payoh"
+  ],
+  "intro": "Toa Payoh Industrial Park and the Lorong 4 Toa Payoh blocks are small light industrial pockets in Toa Payoh in the central region, with car workshops among them."
+ },
+ {
+  "slug": "serangoon-garden-way",
+  "name": "Serangoon Garden Way",
+  "town": "serangoon-north",
+  "keywords": [
+   "serangoon garden wy",
+   "serangoon garden way"
+  ],
+  "intro": "Serangoon Garden Way runs through the Serangoon Gardens estate in the north-east, with a car service centre among its shops."
+ },
+ {
+  "slug": "mandai-estate",
+  "name": "Mandai Estate",
+  "town": "woodlands",
+  "keywords": [
+   "mandai estate"
+  ],
+  "intro": "Mandai Estate is a light industrial area off Mandai Road in the north of Singapore, between Kranji and Woodlands, with workshops in its terrace blocks."
+ },
+ {
+  "slug": "tampines-north-drive-1",
+  "name": "Tampines North Drive 1 (T-Space)",
+  "town": "tampines",
+  "keywords": [
+   "tampines north dr",
+   "tampines north drive",
+   "t-space"
+  ],
+  "intro": "Tampines North Drive 1, home to the T-Space industrial building, is a light industrial area in the north of Tampines in the East region."
+ },
+ {
+  "slug": "yishun-ring-road",
+  "name": "Yishun Ring Road",
+  "town": "yishun",
+  "keywords": [
+   "yishun ring rd",
+   "yishun ring road"
+  ],
+  "intro": "Yishun Ring Road loops around the Yishun town centre in the North region; car service points here sit at petrol stations along the road."
+ },
+ {
+  "slug": "soon-lee-street-pioneer",
+  "name": "Soon Lee Street (Pioneer Point)",
+  "town": "jurong-west",
+  "keywords": [
+   "soon lee st",
+   "soon lee street",
+   "pioneer point",
+   "pioneer centre"
+  ],
+  "intro": "Soon Lee Street, with the Pioneer Point and Pioneer Centre industrial buildings, is a motor trade cluster in Pioneer, in the far west of Singapore."
+ },
+ {
+  "slug": "jurong-west-avenue-5",
+  "name": "Jurong West Avenue 5",
+  "town": "jurong-west",
+  "keywords": [
+   "jurong west ave 5",
+   "jurong west avenue 5"
+  ],
+  "intro": "Jurong West Avenue 5 runs through the Jurong West housing estate in the West region, with car service points along it."
+ },
+ {
+  "slug": "bukit-merah-lane-3",
+  "name": "Bukit Merah Lane 3",
+  "town": "alexandra-bukit-merah",
+  "keywords": [
+   "bukit merah lane 3",
+   "bukit merah ln 3"
+  ],
+  "intro": "Bukit Merah Lane 3 is a row of older light industrial blocks in Bukit Merah, in the central region, with several car workshops on its ground floors."
+ },
+ {
+  "slug": "loyang-way",
+  "name": "Loyang Way and Loyang Drive",
+  "town": "changi-loyang",
+  "keywords": [
+   "loyang wy",
+   "loyang way",
+   "loyang dr",
+   "loyang drive",
+   "loyang enterprise"
+  ],
+  "intro": "Loyang Way and Loyang Drive form the Loyang industrial estate in the far east of Singapore, near Pasir Ris and Changi, with motor workshops in its multi-storey factory blocks."
+ },
+ {
+  "slug": "tuas-industrial-area",
+  "name": "Tuas (Tuas Avenues and Tuas South)",
+  "town": "tuas",
+  "keywords": [
+   "tuas ave",
+   "tuas avenue",
+   "tuas south",
+   "tuas link",
+   "tuas"
+  ],
+  "intro": "Tuas is the large industrial area at the western tip of Singapore, around the Tuas Avenue and Tuas South roads, with motor workshops among its factories and warehouses."
+ },
+ {
+  "slug": "bukit-timah-road-newton",
+  "name": "Bukit Timah Road (Newton)",
+  "town": "newton-novena",
+  "keywords": [
+   "143 bukit timah",
+   "newton circus"
+  ],
+  "intro": "Bukit Timah Road at Newton Circus is a busy central road between Orchard and Novena, close to Newton MRT and the Central Expressway."
+ },
+ {
+  "slug": "pandan-light-industries-park",
+  "name": "Pandan Loop (Pandan Light Industries Park)",
+  "town": "pandan-loop",
+  "keywords": [
+   "pandan lp",
+   "pandan loop",
+   "pandan light industries"
+  ],
+  "intro": "Pandan Loop, with the Pandan Light Industries Park blocks, is a light industrial area in the west, near the Pandan Reservoir and the Ayer Rajah Expressway."
+ }
+]

@@ -1,0 +1,48 @@
+{
+ "lede": "MTM Group at Toh Guan Enterprise Hub is a car workshop. Its own website calls it a one-stop car workshop, with servicing packages, repairs and maintenance, accident claims, spray painting, modifications and car sales.",
+ "chips": [
+  "Servicing",
+  "Accident claims",
+  "Performance mods"
+ ],
+ "services": [
+  "Car servicing packages",
+  "Repair and maintenance",
+  "Accident claims",
+  "Spray painting",
+  "Performance and aesthetic modifications",
+  "Tinting",
+  "Aircon servicing",
+  "Engine diagnostics",
+  "Car sales"
+ ],
+ "themes": "Customers on Google Maps mention a smooth, no-pressure car buying process with clear paperwork, and careful measurement and neat workmanship on a big brake kit installation.",
+ "faqs": [
+  [
+   "What does MTM GROUP do?",
+   "Google Maps lists it as a car repair workshop."
+  ],
+  [
+   "What are the opening hours?",
+   "The hours are listed in the Google Maps section above. Please see Google Maps for current hours."
+  ]
+ ],
+ "sources": "its own website (mtm.sg)",
+ "stories": [],
+ "mentioned_services": [
+  "Car sales",
+  "Big brake kit installation"
+ ],
+ "makes": [],
+ "makes_note": "Not listed on its public pages. Ask the workshop about your car.",
+ "services_note": "Services as listed on the workshop's own website, mtm.sg.",
+ "specialties": [
+  "Performance modifications",
+  "Accident claims"
+ ],
+ "good_to_know": [
+  "Its website mentions an MTM Warranty on repair and maintenance work",
+  "Also sells new and used cars, according to its website"
+ ],
+ "card_rules": "2026-11-05"
+}

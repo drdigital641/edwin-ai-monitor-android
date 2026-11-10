@@ -1,0 +1,32 @@
+{
+ "lede": "JC Wheel Dynamic is a car workshop in Toh Guan Road East and Enterprise Hub. Its own website lists car servicing, car repair, aircon servicing and repair and wheel alignment.",
+ "chips": [
+  "Car servicing",
+  "Car repair",
+  "Aircon servicing and repair"
+ ],
+ "services": [
+  "Car servicing",
+  "Car repair",
+  "Aircon servicing and repair",
+  "Wheel alignment",
+  "Engine diagnostics",
+  "Brake repairs"
+ ],
+ "themes": "Customers on Google Maps mention wheel alignment with follow-up adjustment, years of servicing without upselling, quick replies on WhatsApp and a no-frills shop.",
+ "sources": "its own website (jcwheeldynamic.com)",
+ "stories": [],
+ "mentioned_services": [
+  "Wheel alignment",
+  "Car servicing",
+  "Car repair"
+ ],
+ "services_note": "Services as listed on the workshop's own website, jcwheeldynamic.com.",
+ "specialties": [
+  "Hybrid aircon repair",
+  "Wheel alignment"
+ ],
+ "card_rules": "2026-11-06",
+ "makes": [],
+ "makes_note": "Not listed on its public pages. Ask the workshop about your car."
+}

@@ -1,0 +1,33 @@
+{
+ "businessStatus": "OPERATIONAL",
+ "primaryType": "car_repair",
+ "types": [
+  "car_repair",
+  "tire_shop",
+  "auto_parts_store",
+  "point_of_interest",
+  "store",
+  "service",
+  "establishment"
+ ],
+ "rating": 5,
+ "userRatingCount": 2,
+ "websiteUri": "https://www.castrol.com/en_sg/singapore/home/product-finder.html?page=wheretobuy",
+ "paymentOptions": null,
+ "parkingOptions": null,
+ "editorialSummary": null,
+ "weekdayDescriptions": [
+  "Monday: 8:30 AM – 6:30 PM",
+  "Tuesday: 8:30 AM – 6:30 PM",
+  "Wednesday: 8:30 AM – 6:30 PM",
+  "Thursday: 8:30 AM – 6:30 PM",
+  "Friday: 8:30 AM – 6:30 PM",
+  "Saturday: 8:30 AM – 6:30 PM",
+  "Sunday: Closed"
+ ],
+ "review_count_seen": 2,
+ "review_themes": "Customers on Google Maps mention helpful staff at the tyre counter, efficient service and a membership package with tyre rotation and balancing.",
+ "fetched_at": "2026-11-07",
+ "place_id": "ChIJFTXh8CcR2jERYGZvvs2u2UM",
+ "source": "google_places"
+}

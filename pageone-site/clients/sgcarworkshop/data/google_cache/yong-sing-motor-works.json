@@ -1,0 +1,39 @@
+{
+ "businessStatus": "OPERATIONAL",
+ "primaryType": "car_repair",
+ "types": [
+  "car_repair",
+  "point_of_interest",
+  "service",
+  "establishment"
+ ],
+ "rating": 4.9,
+ "userRatingCount": 262,
+ "websiteUri": "http://www.yongsingmotor.com/",
+ "paymentOptions": {
+  "acceptsDebitCards": true,
+  "acceptsCashOnly": false,
+  "acceptsNfc": true
+ },
+ "parkingOptions": {
+  "freeParkingLot": true,
+  "paidParkingLot": true,
+  "freeStreetParking": true,
+  "paidStreetParking": true
+ },
+ "editorialSummary": null,
+ "weekdayDescriptions": [
+  "Monday: 9:00 AM – 7:00 PM",
+  "Tuesday: 9:00 AM – 7:00 PM",
+  "Wednesday: 9:00 AM – 7:00 PM",
+  "Thursday: 9:00 AM – 7:00 PM",
+  "Friday: 9:00 AM – 7:00 PM",
+  "Saturday: 9:00 AM – 6:00 PM",
+  "Sunday: Closed"
+ ],
+ "review_count_seen": 5,
+ "review_themes": "Customers on Google Maps mention OBU installation, including on a Volkswagen Beetle, WhatsApp bookings, help on where to place the display and a window switch fix.",
+ "fetched_at": "2026-11-03",
+ "place_id": "ChIJHbVp2m0X2jERlK_LsynvcPQ",
+ "source": "google_places"
+}

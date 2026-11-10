@@ -1,0 +1,30 @@
+{
+ "businessStatus": "OPERATIONAL",
+ "primaryType": "car_repair",
+ "types": [
+  "car_repair",
+  "point_of_interest",
+  "service",
+  "establishment"
+ ],
+ "rating": 4.8,
+ "userRatingCount": 18,
+ "websiteUri": "https://revdistrictautolutionspteltd.com/",
+ "paymentOptions": null,
+ "parkingOptions": null,
+ "editorialSummary": null,
+ "weekdayDescriptions": [
+  "Monday: 9:30 AM – 6:30 PM",
+  "Tuesday: 9:30 AM – 6:30 PM",
+  "Wednesday: 9:30 AM – 6:30 PM",
+  "Thursday: 9:30 AM – 6:30 PM",
+  "Friday: 9:30 AM – 6:30 PM",
+  "Saturday: 9:30 AM – 3:00 PM",
+  "Sunday: Closed"
+ ],
+ "review_count_seen": 5,
+ "review_themes": "Customers on Google Maps mention absorber and water pump replacement, valve cover gasket work, servicing packages with photos of the work sent over, regular updates and transparent pricing.",
+ "fetched_at": "2026-11-09",
+ "place_id": "ChIJX9wQNIMT2jERT6o-ULHy9AE",
+ "source": "google_places"
+}

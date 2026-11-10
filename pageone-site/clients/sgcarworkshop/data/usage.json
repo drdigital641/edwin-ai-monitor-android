@@ -1,0 +1,58 @@
+{
+ "2026-11-01": {
+  "text_search": 17,
+  "details": 30,
+  "note": "Quota window 1 Nov 09:00 UTC to 2 Nov 09:00 UTC (100/day project limit reached). Keyed by that window from 2 Nov."
+ },
+ "2026-11-02": {
+  "text_search": 40,
+  "details": 57
+ },
+ "2026-11-03": {
+  "text_search": 0,
+  "details": 100,
+  "sweep_calls": 19
+ },
+ "2026-11-04": {
+  "text_search": 0,
+  "details": 29,
+  "sweep_calls": 6,
+  "free_id_calls": 19
+ },
+ "2026-11-05": {
+  "text_search": 0,
+  "details": 30,
+  "sweep_calls": 20,
+  "free_id_calls": 53
+ },
+ "2026-11-06": {
+  "text_search": 0,
+  "details": 41,
+  "sweep_calls": 20,
+  "free_id_calls": 59
+ },
+ "2026-11-07": {
+  "text_search": 0,
+  "details": 22,
+  "sweep_calls": 20,
+  "free_id_calls": 45
+ },
+ "2026-11-08": {
+  "text_search": 0,
+  "details": 22,
+  "sweep_calls": 20,
+  "free_id_calls": 48
+ },
+ "2026-11-09": {
+  "text_search": 0,
+  "details": 22,
+  "sweep_calls": 20,
+  "free_id_calls": 34
+ },
+ "2026-11-10": {
+  "text_search": 0,
+  "details": 22,
+  "sweep_calls": 20,
+  "free_id_calls": 29
+ }
+}

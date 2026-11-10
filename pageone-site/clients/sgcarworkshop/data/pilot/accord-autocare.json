@@ -1,0 +1,36 @@
+{
+ "lede": "Accord AutoCare is a car workshop in Soon Lee Street (Pioneer Point). Its own website lists servicing and maintenance, speed limiter installation, tyre and rims and pre-purchase inspection.",
+ "chips": [
+  "Servicing and maintenance",
+  "Speed limiter installation",
+  "Tyre and rims"
+ ],
+ "services": [
+  "Servicing and maintenance",
+  "Speed limiter installation",
+  "Tyre and rims",
+  "Pre-purchase inspection",
+  "Accident reporting centre",
+  "Ultrasonic combustion cleaning",
+  "Air-conditioning servicing"
+ ],
+ "themes": "Customers on Google Maps mention accident repair with help on insurance claims, including a Malaysian car case, turbo work on a VW Golf, servicing and battery replacement.",
+ "sources": "its own website (accordautocare.sg)",
+ "stories": [],
+ "mentioned_services": [
+  "Accident repair and insurance claims",
+  "Turbo repair",
+  "Car servicing",
+  "Battery replacement"
+ ],
+ "services_note": "Services as listed on the workshop's own website, accordautocare.sg.",
+ "specialties": [
+  "Hybrid and EV servicing"
+ ],
+ "card_rules": "2026-11-06",
+ "makes": [],
+ "makes_note": "Not listed on its public pages. Ask the workshop about your car.",
+ "good_to_know": [
+  "Online booking or enquiry form on its website"
+ ]
+}

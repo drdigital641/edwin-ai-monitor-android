@@ -1,0 +1,34 @@
+{
+ "businessStatus": "OPERATIONAL",
+ "primaryType": "car_repair",
+ "types": [
+  "auto_parts_store",
+  "store",
+  "car_repair",
+  "point_of_interest",
+  "service",
+  "establishment"
+ ],
+ "rating": 5,
+ "userRatingCount": 16,
+ "websiteUri": "https://revu.website/171200",
+ "paymentOptions": {
+  "acceptsCashOnly": false
+ },
+ "parkingOptions": null,
+ "editorialSummary": null,
+ "weekdayDescriptions": [
+  "Monday: 9:00 AM – 6:00 PM",
+  "Tuesday: 9:00 AM – 6:00 PM",
+  "Wednesday: 9:00 AM – 6:00 PM",
+  "Thursday: 9:00 AM – 6:00 PM",
+  "Friday: 9:00 AM – 6:00 PM",
+  "Saturday: 9:00 AM – 2:00 PM",
+  "Sunday: Closed"
+ ],
+ "review_count_seen": 5,
+ "review_themes": "Customers on Google Maps mention an honest boss who checks before advising on repairs, diagnostics with modern equipment, costs given before work with no hidden charges, and very reasonable prices.",
+ "fetched_at": "2026-11-06",
+ "place_id": "ChIJ8aslseUX2jERRFNG0KhIlL8",
+ "source": "google_places"
+}

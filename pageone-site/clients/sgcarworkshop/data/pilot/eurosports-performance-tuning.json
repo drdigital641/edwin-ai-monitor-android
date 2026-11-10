@@ -1,0 +1,60 @@
+{
+ "lede": "Eurosports Performance Tuning at Toh Guan Enterprise Hub is a car performance and repair workshop. Its own website describes it as a European and performance car repair specialist, with ECU tuning and an in-house dyno.",
+ "chips": [
+  "ECU tuning",
+  "Gearbox tuning"
+ ],
+ "services": [
+  "ECU tuning",
+  "General servicing and maintenance",
+  "Engine diagnostics and repair",
+  "Turbocharger repair and replacement",
+  "DSG and DCT gearbox servicing",
+  "Performance upgrades",
+  "Dyno testing",
+  "Pre-purchase inspection",
+  "Accident insurance claims"
+ ],
+ "themes": "Customers on Google Maps praise in-depth ECU and gearbox tuning knowledge, patient explanations and smooth-driving results after a tune.",
+ "faqs": [
+  [
+   "What does Eurosports Performance Tuning do?",
+   "Google Maps lists it as a car repair workshop."
+  ],
+  [
+   "What are the opening hours?",
+   "The hours are listed in the Google Maps section above. Please see Google Maps for current hours."
+  ]
+ ],
+ "sources": "its own website (eurosports.com.sg)",
+ "stories": [],
+ "mentioned_services": [
+  "ECU tuning",
+  "DSG and DCT tuning",
+  "Performance parts"
+ ],
+ "services_note": "Services as listed on the workshop's own website, eurosports.com.sg.",
+ "makes": [
+  "Audi",
+  "BMW",
+  "Mercedes-Benz",
+  "Volkswagen",
+  "Porsche",
+  "Mini",
+  "Skoda",
+  "SEAT",
+  "Land Rover",
+  "Jaguar"
+ ],
+ "makes_note": "Named on its own website. Ask the workshop about other makes.",
+ "specialties": [
+  "ECU tuning with in-house software",
+  "In-house dyno",
+  "European and performance cars"
+ ],
+ "good_to_know": [
+  "Offers pre-purchase inspection of used cars, according to its website",
+  "Helps with accident insurance claims, according to its website"
+ ],
+ "card_rules": "2026-11-05"
+}

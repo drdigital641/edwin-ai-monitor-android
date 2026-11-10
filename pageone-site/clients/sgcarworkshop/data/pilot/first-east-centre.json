@@ -1,0 +1,25 @@
+{
+ "lede": "First East Centre is a car workshop listed on Google Maps for general servicing and repair. Specialities and makes were not found in public sources, so please ask the workshop directly.",
+ "chips": [
+  "General servicing and repair"
+ ],
+ "services": [
+  "General servicing and repair"
+ ],
+ "faqs": [
+  [
+   "What does First East Centre do?",
+   "Its Google Maps listing describes it as a workshop for general servicing and repair."
+  ],
+  [
+   "Which cars does it work on?",
+   "Not found in public sources. Please ask the workshop when you message."
+  ],
+  [
+   "What are the opening hours?",
+   "Please see Google Maps for current hours."
+  ]
+ ],
+ "sources": "its Google Maps listing",
+ "stories": []
+}

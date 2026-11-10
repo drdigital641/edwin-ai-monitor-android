@@ -1,0 +1,36 @@
+{
+ "lede": "Li Sheng Automotive 1999 is a car workshop at WCEGA Plaza on Bukit Batok Crescent. Its own website describes a full-service workshop covering maintenance, battery replacement, spray painting, aircon and body repair.",
+ "chips": [
+  "Car maintenance",
+  "Battery replacement",
+  "Spray painting"
+ ],
+ "services": [
+  "Car maintenance",
+  "Battery replacement",
+  "Spray painting",
+  "Aircon servicing",
+  "Body repair"
+ ],
+ "themes": "Customers on Google Maps mention oil servicing, servicing packages, light and fuse fixes after a failed inspection, and spray painting.",
+ "faqs": [
+  [
+   "What are the opening hours?",
+   "The hours are listed in the Google Maps section above. Please see Google Maps for current hours."
+  ]
+ ],
+ "sources": "its own website (sitelift.site)",
+ "stories": [],
+ "mentioned_services": [
+  "Oil change",
+  "Servicing packages",
+  "Inspection failure repair",
+  "Spray painting"
+ ],
+ "good_to_know": [
+  "Its website mentions decades of hands-on experience"
+ ],
+ "services_note": "Services as listed on the workshop's own website, sitelift.site.",
+ "card_rules": "2026-11-05",
+ "makes_note": "Its website does not name car makes. Ask the workshop about yours."
+}

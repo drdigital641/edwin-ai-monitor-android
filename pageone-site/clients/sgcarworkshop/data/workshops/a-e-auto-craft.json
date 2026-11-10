@@ -1,0 +1,73 @@
+{
+ "schema_version": 1,
+ "slug": "a-e-auto-craft",
+ "place_id": "ChIJ57hhtyoR2jERBpwF53EeaDA",
+ "place_id_checked_at": "2026-11-08",
+ "name": "A&E Auto Craft",
+ "name_source_url": "google_profile",
+ "name_checked_at": "2026-11-08",
+ "address": {
+  "block": "",
+  "street": "1 Bukit Batok Cres, #06-29 WCEGA Plaza",
+  "unit": "",
+  "building": ""
+ },
+ "postal_code": "658064",
+ "address_source_url": "google_profile",
+ "address_checked_at": "2026-11-08",
+ "categories": [
+  "SERV"
+ ],
+ "services": [
+  "General servicing and repair"
+ ],
+ "services_source_url": "google_profile",
+ "phones": [
+  {
+   "e164": "+6594881536",
+   "kind": "mobile",
+   "whatsapp": true,
+   "source": "google_profile",
+   "checked_at": "2026-11-08"
+  }
+ ],
+ "google_screen": {
+  "passed": true,
+  "reason": "OPERATIONAL, car repair, SG mobile on Google profile",
+  "checked_at": "2026-11-08"
+ },
+ "status": "active",
+ "tier": "basic",
+ "first_seen_at": "2026-11-08",
+ "last_verified_at": "2026-11-08",
+ "collector_version": "agent-v5",
+ "estate": "bukit-batok-crescent",
+ "planning_area": "Bukit Batok",
+ "region": "west",
+ "lat": 1.339051107118691,
+ "lng": 103.7590387125838,
+ "geo_source": "onemap",
+ "blocks": [
+  "hero",
+  "contact",
+  "services",
+  "good_for",
+  "problems",
+  "reviews",
+  "comparison",
+  "hours",
+  "stories",
+  "location",
+  "tips",
+  "faq",
+  "claim",
+  "sources"
+ ],
+ "google_rating": {
+  "rating": 4.6,
+  "count": 10,
+  "checked": "2026-11-08",
+  "source": "Google Places",
+  "source_date": "2026-11-08"
+ }
+}

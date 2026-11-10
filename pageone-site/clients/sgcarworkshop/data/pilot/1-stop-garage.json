@@ -1,0 +1,25 @@
+{
+ "lede": "1 Stop Garage is a car repair workshop at 55 Serangoon North Ave 4, #02-10. Its Google Maps listing shows opening hours and customer ratings.",
+ "chips": [
+  "Car repair"
+ ],
+ "services": [
+  "General servicing and repair"
+ ],
+ "themes": "Its one Google review mentions a fuss-free car battery change and Bosch batteries, so call first to check your battery model.",
+ "faqs": [
+  [
+   "What does 1 Stop Garage do?",
+   "Google Maps lists it as a car repair workshop."
+  ],
+  [
+   "What are the opening hours?",
+   "The hours are listed in the Google Maps section above. Please see Google Maps for current hours."
+  ]
+ ],
+ "sources": "its Google Maps listing",
+ "stories": [],
+ "mentioned_services": [
+  "Battery replacement"
+ ]
+}

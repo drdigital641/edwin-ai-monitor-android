@@ -1,0 +1,39 @@
+{
+ "lede": "Auto 101 is a car workshop in Yishun Industrial Street 1. Its own website lists engine servicing, air-con repair, panel beating and spray painting.",
+ "chips": [
+  "Engine servicing",
+  "Air-con repair",
+  "Panel beating"
+ ],
+ "services": [
+  "Engine servicing",
+  "Air-con repair",
+  "Panel beating",
+  "Spray painting",
+  "Accident repair and claims",
+  "Speed limiter fitting",
+  "ERP 2.0 OBU installation",
+  "Commercial vehicle servicing"
+ ],
+ "themes": "Customers on Google Maps mention accident claims handled patiently, body repairs and paintwork, fleet maintenance, straightforward advice without upselling and original products at fair prices.",
+ "sources": "its own website (auto101.com.sg)",
+ "stories": [],
+ "mentioned_services": [
+  "Accident repair and insurance claims",
+  "Spray painting",
+  "Regular servicing"
+ ],
+ "services_note": "Services as listed on the workshop's own website, auto101.com.sg.",
+ "specialties": [
+  "Engine repair and maintenance",
+  "Air-conditioning repair",
+  "Panel beating and spray painting"
+ ],
+ "card_rules": "2026-11-06",
+ "makes": [],
+ "makes_note": "Not listed on its public pages. Ask the workshop about your car.",
+ "good_to_know": [
+  "Established in 2011, according to its website",
+  "Enquiries by WhatsApp, according to its website"
+ ]
+}

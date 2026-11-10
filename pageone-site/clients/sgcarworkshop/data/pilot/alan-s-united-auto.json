@@ -1,0 +1,40 @@
+{
+ "lede": "Alan's United Auto at Sin Ming Industrial Estate is a car repair and accident workshop.",
+ "chips": [
+  "Accident repairs",
+  "Servicing"
+ ],
+ "services": [
+  "Accident repairs",
+  "Bumper repair",
+  "Car repair",
+  "Car servicing"
+ ],
+ "themes": "Customers on Google Maps mention quick, clear replies, accident repairs, a bumper fixed in minutes for a regular customer, transparent quotes well below agent prices, a wash and interior clean after the job and car delivery to the workplace.",
+ "faqs": [
+  [
+   "What does Alan's United Auto do?",
+   "Google Maps lists it as a car repair workshop."
+  ],
+  [
+   "What are the opening hours?",
+   "The hours are listed in the Google Maps section above. Please see Google Maps for current hours."
+  ]
+ ],
+ "sources": "its Google Maps listing",
+ "stories": [],
+ "mentioned_services": [
+  "Accident repairs",
+  "Bumper repair",
+  "Car repair",
+  "Car servicing"
+ ],
+ "services_note": "Services customers mention on Google Maps. Ask the workshop for its full list.",
+ "makes": [
+  "Toyota"
+ ],
+ "makes_note": "Named by customers on Google Maps. Ask the workshop about other makes.",
+ "specialties": [],
+ "good_to_know": [],
+ "card_rules": "2026-11-05"
+}

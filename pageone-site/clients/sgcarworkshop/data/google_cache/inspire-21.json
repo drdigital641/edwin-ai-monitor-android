@@ -1,0 +1,30 @@
+{
+ "businessStatus": "OPERATIONAL",
+ "primaryType": "car_repair",
+ "types": [
+  "car_repair",
+  "point_of_interest",
+  "service",
+  "establishment"
+ ],
+ "rating": 4.5,
+ "userRatingCount": 14,
+ "websiteUri": null,
+ "paymentOptions": null,
+ "parkingOptions": null,
+ "editorialSummary": null,
+ "weekdayDescriptions": [
+  "Monday: Open 24 hours",
+  "Tuesday: Open 24 hours",
+  "Wednesday: Open 24 hours",
+  "Thursday: Open 24 hours",
+  "Friday: Open 24 hours",
+  "Saturday: Open 24 hours",
+  "Sunday: Open 24 hours"
+ ],
+ "review_count_seen": 5,
+ "review_themes": "Customers on Google Maps mention OBU installation, long-time servicing and a 200,000 km service. One customer was turned away over where the OBU display would go.",
+ "fetched_at": "2026-11-03",
+ "place_id": "ChIJQfH6vFgW2jEROsHlSjvmubo",
+ "source": "google_places"
+}

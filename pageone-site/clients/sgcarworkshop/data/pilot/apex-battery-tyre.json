@@ -1,0 +1,35 @@
+{
+ "lede": "APEX Battery & Tyre is a battery and tyre service based in Jurong West Avenue 5. Its own website lists car battery replacement, jump start, tyre puncture repair and tyre replacement.",
+ "chips": [
+  "Car battery replacement",
+  "Jump start",
+  "Tyre puncture repair"
+ ],
+ "services": [
+  "Car battery replacement",
+  "Jump start",
+  "Tyre puncture repair",
+  "Tyre replacement",
+  "Towing and accident recovery",
+  "Starter motor replacement",
+  "Spare tyre swap"
+ ],
+ "themes": "Customers on Google Maps mention quick help when a car would not start, a video check to find a flat battery, and clear price information before the job.",
+ "sources": "its own website (apexrecovery.sg)",
+ "stories": [],
+ "mentioned_services": [
+  "Battery replacement",
+  "Flat tyre help"
+ ],
+ "services_note": "Services as listed on the workshop's own website, apexrecovery.sg.",
+ "specialties": [
+  "Mobile roadside battery and tyre service"
+ ],
+ "card_rules": "2026-11-06",
+ "makes": [],
+ "makes_note": "Not listed on its public pages. Ask the workshop about your car.",
+ "good_to_know": [
+  "Its website mentions a warranty on its work",
+  "Enquiries by WhatsApp, according to its website"
+ ]
+}
