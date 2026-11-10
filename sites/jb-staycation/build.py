@@ -738,13 +738,13 @@ def house_ld(h):
           'checkinTime': '15:00:00+08:00', 'checkoutTime': '11:00:00+08:00',   # both houses: check-in 3pm, check-out 11am (host, 9 Nov 2026)
           'knowsLanguage': ['en', 'ms', 'zh'], 'containsPlace': acc, 'makesOffer': offers,
           'brand': {'@type': 'Brand', 'name': NAME}}
-    if HOUSE_GEO.get(k):                          # area-level pin (Edwin 10 Nov 2026 9:27am): neighbourhood, 3 decimals, never the house itself
+    if HOUSE_GEO.get(k):                          # area-level pin: neighbourhood centre, never the house itself
         ld['geo'] = {'@type': 'GeoCoordinates', 'latitude': HOUSE_GEO[k][0], 'longitude': HOUSE_GEO[k][1]}
     return ld
 
 
-HOUSE_GEO = {'prima': (1.480, 103.591),    # Google Maps place "Taman Nusantara Prima" (1.4800386, 103.5910967), rounded for privacy
-             'landak': (1.483, 103.760)}   # Google Maps place "Taman Abad, Johor Bahru" (1.4825434, 103.7595973), rounded for privacy
+HOUSE_GEO = {'prima': (1.480039, 103.591097),    # Google Maps place "Taman Nusantara Prima" estate centre, 6 decimals (Edwin 10 Nov 2026 9:43am; Google needs 5+)
+             'landak': (1.482543, 103.759597)}   # Google Maps place "Taman Abad, Johor Bahru" neighbourhood centre, 6 decimals; never a house pin
 
 
 # ---------------------------------------------------------------- shared shell (ONE header/footer for every page)
