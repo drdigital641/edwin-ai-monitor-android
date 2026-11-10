@@ -17,4 +17,4 @@
 - Autotex (autotexautoparts.com.sg), Klar Details (klardetails.com.sg), EV Body Parts (evbodyparts.sg), XADO Singapore (xado-shop.sg), ContiExpert by Volt Autocare (contiexpert.sg), New Zen Werkz (newzenwerkz.com.sg) and JB Staycations (jbstaycations.com): launched October 2026 and November 2026, no Search Console data yet.
 - Full case studies: https://pageonesingapore.com/results/
 - Every client website with its numbers: https://pageonesingapore.com/clients/
-- Low price, real results: S$50 a month is low because a set of AI tools we designed does the daily SEO work that used to be billed by the hour; the numbers above come from the same system.
+- Low price, real results: S$80 a month is low because a set of AI tools we designed does the daily SEO work that used to be billed by the hour; the numbers above come from the same system.
