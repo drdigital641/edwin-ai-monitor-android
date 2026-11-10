@@ -728,15 +728,12 @@ def house_ld(h):
                'occupancy': {'@type': 'QuantitativeValue', 'value': 10}}
     acc.update({'@type': 'Accommodation', 'additionalType': 'EntirePlace',
                 'amenityFeature': [{'@type': 'LocationFeatureSpecification', 'name': n, 'value': v} for n, v in am]})
-    offers = [{'@type': 'Offer', 'name': '%s night, whole house (cleaning included)' % t, 'price': n, 'priceCurrency': 'MYR', 'url': url,
-               'priceSpecification': {'@type': 'UnitPriceSpecification', 'price': n, 'priceCurrency': 'MYR', 'unitCode': 'DAY', 'unitText': 'night',
-                                      'referenceQuantity': {'@type': 'QuantitativeValue', 'value': 1, 'unitCode': 'DAY', 'unitText': 'night'}}}
-              for t, n in zip(TIER_NAMES, PRICES[k])]
+    # no makesOffer/Offer/priceSpecification: Google's VacationRental parser treats each Offer as a broken listing (Edwin 10 Nov 2026 9:53am). Prices stay visible on the page + priceRange.
     ld = {'@context': 'https://schema.org', '@type': 'VacationRental', '@id': url + '#rental', 'identifier': 'jb-' + k, 'name': h['name'], 'additionalType': 'House',
           'url': url, 'sameAs': [AIRBNB[k]], 'description': h['card'], 'image': [BASE + 'share/share-%s-1200x630.jpg' % k] + [abs_img(f) for f in gal], 'telephone': '+6590062198',
           'address': addr_ld(h), 'priceRange': '%s to %s per night, cleaning included' % (rm(PRICES[k][0]), rm(PRICES[k][2])),
           'checkinTime': '15:00:00+08:00', 'checkoutTime': '11:00:00+08:00',   # both houses: check-in 3pm, check-out 11am (host, 9 Nov 2026)
-          'knowsLanguage': ['en', 'ms', 'zh'], 'containsPlace': acc, 'makesOffer': offers,
+          'knowsLanguage': ['en', 'ms', 'zh'], 'containsPlace': acc,
           'brand': {'@type': 'Brand', 'name': NAME}}
     if HOUSE_GEO.get(k):                          # area-level pin: neighbourhood centre, never the house itself
         ld['geo'] = {'@type': 'GeoCoordinates', 'latitude': HOUSE_GEO[k][0], 'longitude': HOUSE_GEO[k][1]}
