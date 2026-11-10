@@ -1,0 +1,87 @@
+{
+ "klar-details": {
+  "changed": 51,
+  "span-creditx1": 51,
+  "crawled": 51
+ },
+ "autotex": {
+  "changed": 1984,
+  "autotex-homex1": 1,
+  "dot-creditx1": 1983,
+  "crawled": 3206
+ },
+ "battery-rescue": {
+  "changed": 79,
+  "p-creditx1": 79,
+  "crawled": 79
+ },
+ "rc-design-build": {
+  "changed": 64,
+  "rc-creditx1": 64,
+  "crawled": 64
+ },
+ "dongfeng-jb": {
+  "changed": 86,
+  "span-creditx1": 86,
+  "crawled": 86
+ },
+ "cska-auto": {
+  "changed": 41,
+  "span-creditx1": 41,
+  "crawled": 41
+ },
+ "aivs": {
+  "changed": 44,
+  "dot-creditx1": 44,
+  "crawled": 44
+ },
+ "wrapstar": {
+  "changed": 35,
+  "dot-creditx1": 35,
+  "crawled": 35
+ },
+ "star-performance": {
+  "changed": 33,
+  "dot-creditx1": 33,
+  "crawled": 33
+ },
+ "dmts": {
+  "changed": 46,
+  "anchor-creditx1": 46,
+  "crawled": 46
+ },
+ "ecu-clinic": {
+  "changed": 44,
+  "anchor-creditx1": 44,
+  "crawled": 45
+ },
+ "new-zen-werkz": {
+  "changed": 57,
+  "dot-creditx1": 57,
+  "crawled": 57
+ },
+ "benjamin-poon": {
+  "changed": 91,
+  "span-creditx1": 91,
+  "crawled": 91
+ },
+ "jb-staycation": {
+  "changed": 16,
+  "jb-creditx1": 16,
+  "crawled": 17
+ },
+ "ev-body-parts": {
+  "changed": 1,
+  "span-creditx1": 1,
+  "crawled": 92
+ },
+ "alicia": {
+  "crawled": 51
+ },
+ "xado": {
+  "changed": 4,
+  "xado-midx1": 1,
+  "xado-endx1": 3,
+  "crawled": 16
+ }
+}
