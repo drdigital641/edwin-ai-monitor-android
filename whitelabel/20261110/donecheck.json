@@ -1,0 +1,668 @@
+{
+ "klar-details": {
+  "base": "https://klardetails.com.sg",
+  "rows": [
+   {
+    "url": "https://klardetails.com.sg/",
+    "code": 200,
+    "footer_found": true,
+    "footer_pageonesingapore": 0,
+    "footer_page_one": 0,
+    "page_credit_links": 0
+   },
+   {
+    "url": "https://klardetails.com.sg/services/",
+    "code": 200,
+    "footer_found": true,
+    "footer_pageonesingapore": 0,
+    "footer_page_one": 0,
+    "page_credit_links": 0
+   },
+   {
+    "url": "https://klardetails.com.sg/areas/bukit-batok/",
+    "code": 200,
+    "footer_found": true,
+    "footer_pageonesingapore": 0,
+    "footer_page_one": 0,
+    "page_credit_links": 0
+   },
+   {
+    "url": "https://klardetails.com.sg/articles/graphene-coating-for-car-protect-in-singapore/",
+    "code": 200,
+    "footer_found": true,
+    "footer_pageonesingapore": 0,
+    "footer_page_one": 0,
+    "page_credit_links": 0
+   }
+  ]
+ },
+ "autotex": {
+  "base": "https://autotexautoparts.com.sg",
+  "rows": [
+   {
+    "url": "https://autotexautoparts.com.sg/",
+    "code": 200,
+    "footer_found": true,
+    "footer_pageonesingapore": 0,
+    "footer_page_one": 0,
+    "page_credit_links": 0
+   },
+   {
+    "url": "https://autotexautoparts.com.sg/hyundai/front-bumper/",
+    "code": 200,
+    "footer_found": true,
+    "footer_pageonesingapore": 0,
+    "footer_page_one": 0,
+    "page_credit_links": 0
+   },
+   {
+    "url": "https://autotexautoparts.com.sg/kia/starter-motor/",
+    "code": 200,
+    "footer_found": true,
+    "footer_pageonesingapore": 0,
+    "footer_page_one": 0,
+    "page_credit_links": 0
+   },
+   {
+    "url": "https://autotexautoparts.com.sg/articles/clunk-over-bumps-worn-suspension-parts-hyundai-kia/",
+    "code": 200,
+    "footer_found": true,
+    "footer_pageonesingapore": 0,
+    "footer_page_one": 0,
+    "page_credit_links": 0
+   }
+  ]
+ },
+ "battery-rescue": {
+  "base": "https://batteryrescue.sg",
+  "rows": [
+   {
+    "url": "https://batteryrescue.sg/",
+    "code": 200,
+    "footer_found": true,
+    "footer_pageonesingapore": 0,
+    "footer_page_one": 0,
+    "page_credit_links": 0
+   },
+   {
+    "url": "https://batteryrescue.sg/prices/",
+    "code": 200,
+    "footer_found": true,
+    "footer_pageonesingapore": 0,
+    "footer_page_one": 0,
+    "page_credit_links": 0
+   },
+   {
+    "url": "https://batteryrescue.sg/car-battery/land-rover/",
+    "code": 200,
+    "footer_found": true,
+    "footer_pageonesingapore": 0,
+    "footer_page_one": 0,
+    "page_credit_links": 0
+   },
+   {
+    "url": "https://batteryrescue.sg/articles/what-to-reset-after-changing-a-car-battery-singapore/",
+    "code": 200,
+    "footer_found": true,
+    "footer_pageonesingapore": 0,
+    "footer_page_one": 0,
+    "page_credit_links": 0
+   }
+  ]
+ },
+ "rc-design-build": {
+  "base": "https://commercialfitout.sg",
+  "rows": [
+   {
+    "url": "https://commercialfitout.sg/",
+    "code": 200,
+    "footer_found": true,
+    "footer_pageonesingapore": 0,
+    "footer_page_one": 0,
+    "page_credit_links": 0
+   },
+   {
+    "url": "https://commercialfitout.sg/about/",
+    "code": 200,
+    "footer_found": true,
+    "footer_pageonesingapore": 0,
+    "footer_page_one": 0,
+    "page_credit_links": 0
+   },
+   {
+    "url": "https://commercialfitout.sg/design-concepts/concept-of-the-day/2026-11-07/",
+    "code": 200,
+    "footer_found": true,
+    "footer_pageonesingapore": 0,
+    "footer_page_one": 0,
+    "page_credit_links": 0
+   },
+   {
+    "url": "https://commercialfitout.sg/guides/small-shop-renovation-checklist/",
+    "code": 200,
+    "footer_found": true,
+    "footer_pageonesingapore": 0,
+    "footer_page_one": 0,
+    "page_credit_links": 0
+   }
+  ]
+ },
+ "dongfeng-jb": {
+  "base": "https://mykar.my",
+  "rows": [
+   {
+    "url": "https://mykar.my/",
+    "code": 200,
+    "footer_found": true,
+    "footer_pageonesingapore": 0,
+    "footer_page_one": 0,
+    "page_credit_links": 0
+   },
+   {
+    "url": "https://mykar.my/models/",
+    "code": 200,
+    "footer_found": true,
+    "footer_pageonesingapore": 0,
+    "footer_page_one": 0,
+    "page_credit_links": 0
+   },
+   {
+    "url": "https://mykar.my/ms/spare-parts/",
+    "code": 200,
+    "footer_found": true,
+    "footer_pageonesingapore": 0,
+    "footer_page_one": 0,
+    "page_credit_links": 0
+   },
+   {
+    "url": "https://mykar.my/zh/articles/regenerative-braking-ev-explained/",
+    "code": 200,
+    "footer_found": true,
+    "footer_pageonesingapore": 0,
+    "footer_page_one": 0,
+    "page_credit_links": 0
+   }
+  ]
+ },
+ "cska-auto": {
+  "base": "https://cskatrading.com",
+  "rows": [
+   {
+    "url": "https://cskatrading.com/",
+    "code": 200,
+    "footer_found": true,
+    "footer_pageonesingapore": 0,
+    "footer_page_one": 0,
+    "page_credit_links": 0
+   },
+   {
+    "url": "https://cskatrading.com/products/",
+    "code": 200,
+    "footer_found": true,
+    "footer_pageonesingapore": 0,
+    "footer_page_one": 0,
+    "page_credit_links": 0
+   },
+   {
+    "url": "https://cskatrading.com/brands/",
+    "code": 200,
+    "footer_found": true,
+    "footer_pageonesingapore": 0,
+    "footer_page_one": 0,
+    "page_credit_links": 0
+   },
+   {
+    "url": "https://cskatrading.com/articles/tyre-tread-depth-gauge-or-laser-examiner/",
+    "code": 200,
+    "footer_found": true,
+    "footer_pageonesingapore": 0,
+    "footer_page_one": 0,
+    "page_credit_links": 0
+   }
+  ]
+ },
+ "aivs": {
+  "base": "https://aivs.sg",
+  "rows": [
+   {
+    "url": "https://aivs.sg/",
+    "code": 200,
+    "footer_found": true,
+    "footer_pageonesingapore": 0,
+    "footer_page_one": 0,
+    "page_credit_links": 0
+   },
+   {
+    "url": "https://aivs.sg/ai-vending-machine-singapore/",
+    "code": 200,
+    "footer_found": true,
+    "footer_pageonesingapore": 0,
+    "footer_page_one": 0,
+    "page_credit_links": 0
+   },
+   {
+    "url": "https://aivs.sg/services/host-a-machine/",
+    "code": 200,
+    "footer_found": true,
+    "footer_pageonesingapore": 0,
+    "footer_page_one": 0,
+    "page_credit_links": 0
+   },
+   {
+    "url": "https://aivs.sg/articles/is-a-vending-machine-profitable-in-singapore/",
+    "code": 200,
+    "footer_found": true,
+    "footer_pageonesingapore": 0,
+    "footer_page_one": 0,
+    "page_credit_links": 0
+   }
+  ]
+ },
+ "wrapstar": {
+  "base": "https://wrapstarautostyle.com",
+  "rows": [
+   {
+    "url": "https://wrapstarautostyle.com/",
+    "code": 200,
+    "footer_found": true,
+    "footer_pageonesingapore": 0,
+    "footer_page_one": 0,
+    "page_credit_links": 0
+   },
+   {
+    "url": "https://wrapstarautostyle.com/colours/",
+    "code": 200,
+    "footer_found": true,
+    "footer_pageonesingapore": 0,
+    "footer_page_one": 0,
+    "page_credit_links": 0
+   },
+   {
+    "url": "https://wrapstarautostyle.com/services/dechrome/",
+    "code": 200,
+    "footer_found": true,
+    "footer_pageonesingapore": 0,
+    "footer_page_one": 0,
+    "page_credit_links": 0
+   },
+   {
+    "url": "https://wrapstarautostyle.com/articles/do-you-need-to-tell-lta-or-your-insurer-about-a-car-wrap/",
+    "code": 200,
+    "footer_found": true,
+    "footer_pageonesingapore": 0,
+    "footer_page_one": 0,
+    "page_credit_links": 0
+   }
+  ]
+ },
+ "star-performance": {
+  "base": "https://starperformancemotor.com",
+  "rows": [
+   {
+    "url": "https://starperformancemotor.com/",
+    "code": 200,
+    "footer_found": true,
+    "footer_pageonesingapore": 0,
+    "footer_page_one": 0,
+    "page_credit_links": 0
+   },
+   {
+    "url": "https://starperformancemotor.com/cars-for-sale/",
+    "code": 200,
+    "footer_found": true,
+    "footer_pageonesingapore": 0,
+    "footer_page_one": 0,
+    "page_credit_links": 0
+   },
+   {
+    "url": "https://starperformancemotor.com/services/car-sourcing/",
+    "code": 200,
+    "footer_found": true,
+    "footer_pageonesingapore": 0,
+    "footer_page_one": 0,
+    "page_credit_links": 0
+   },
+   {
+    "url": "https://starperformancemotor.com/articles/how-much-is-my-used-car-worth-in-singapore/",
+    "code": 200,
+    "footer_found": true,
+    "footer_pageonesingapore": 0,
+    "footer_page_one": 0,
+    "page_credit_links": 0
+   }
+  ]
+ },
+ "dmts": {
+  "base": "https://jackygearbox.com",
+  "rows": [
+   {
+    "url": "https://jackygearbox.com/",
+    "code": 200,
+    "footer_found": true,
+    "footer_pageonesingapore": 0,
+    "footer_page_one": 0,
+    "page_credit_links": 0
+   },
+   {
+    "url": "https://jackygearbox.com/services/",
+    "code": 200,
+    "footer_found": true,
+    "footer_pageonesingapore": 0,
+    "footer_page_one": 0,
+    "page_credit_links": 0
+   },
+   {
+    "url": "https://jackygearbox.com/gearbox-problems/car-stuck-in-gear/",
+    "code": 200,
+    "footer_found": true,
+    "footer_pageonesingapore": 0,
+    "footer_page_one": 0,
+    "page_credit_links": 0
+   },
+   {
+    "url": "https://jackygearbox.com/articles/how-often-change-atf-singapore/",
+    "code": 200,
+    "footer_found": true,
+    "footer_pageonesingapore": 0,
+    "footer_page_one": 0,
+    "page_credit_links": 0
+   }
+  ]
+ },
+ "ecu-clinic": {
+  "base": "https://theecuclinicsg.com",
+  "rows": [
+   {
+    "url": "https://theecuclinicsg.com/",
+    "code": 200,
+    "footer_found": true,
+    "footer_pageonesingapore": 0,
+    "footer_page_one": 0,
+    "page_credit_links": 0
+   },
+   {
+    "url": "https://theecuclinicsg.com/services/abs-pump-repair/",
+    "code": 200,
+    "footer_found": true,
+    "footer_pageonesingapore": 0,
+    "footer_page_one": 0,
+    "page_credit_links": 0
+   },
+   {
+    "url": "https://theecuclinicsg.com/services/bmw-cas-module-repair/",
+    "code": 200,
+    "footer_found": true,
+    "footer_pageonesingapore": 0,
+    "footer_page_one": 0,
+    "page_credit_links": 0
+   },
+   {
+    "url": "https://theecuclinicsg.com/articles/find-abs-ecu-module-specialist-singapore/",
+    "code": 200,
+    "footer_found": true,
+    "footer_pageonesingapore": 0,
+    "footer_page_one": 0,
+    "page_credit_links": 0
+   }
+  ]
+ },
+ "danny": {
+  "base": "https://dannychuafinancial.com",
+  "rows": [
+   {
+    "url": "https://dannychuafinancial.com/",
+    "code": 200,
+    "footer_found": true,
+    "footer_pageonesingapore": 1,
+    "footer_page_one": 1,
+    "page_credit_links": 1
+   },
+   {
+    "url": "https://dannychuafinancial.com/about-danny",
+    "code": 200,
+    "footer_found": true,
+    "footer_pageonesingapore": 1,
+    "footer_page_one": 1,
+    "page_credit_links": 1
+   },
+   {
+    "url": "https://dannychuafinancial.com/family-protection-singapore",
+    "code": 200,
+    "footer_found": true,
+    "footer_pageonesingapore": 1,
+    "footer_page_one": 1,
+    "page_credit_links": 1
+   },
+   {
+    "url": "https://dannychuafinancial.com/insights/why-does-your-investment-time-horizon-matter",
+    "code": 200,
+    "footer_found": true,
+    "footer_pageonesingapore": 1,
+    "footer_page_one": 1,
+    "page_credit_links": 1
+   }
+  ]
+ },
+ "new-zen-werkz": {
+  "base": "https://newzenwerkz.com.sg",
+  "rows": [
+   {
+    "url": "https://newzenwerkz.com.sg/",
+    "code": 200,
+    "footer_found": true,
+    "footer_pageonesingapore": 0,
+    "footer_page_one": 0,
+    "page_credit_links": 0
+   },
+   {
+    "url": "https://newzenwerkz.com.sg/services/",
+    "code": 200,
+    "footer_found": true,
+    "footer_pageonesingapore": 0,
+    "footer_page_one": 0,
+    "page_credit_links": 0
+   },
+   {
+    "url": "https://newzenwerkz.com.sg/areas/hougang-kovan/",
+    "code": 200,
+    "footer_found": true,
+    "footer_pageonesingapore": 0,
+    "footer_page_one": 0,
+    "page_credit_links": 0
+   },
+   {
+    "url": "https://newzenwerkz.com.sg/zh/articles/car-battery-signs-singapore/",
+    "code": 200,
+    "footer_found": true,
+    "footer_pageonesingapore": 0,
+    "footer_page_one": 0,
+    "page_credit_links": 0
+   }
+  ]
+ },
+ "benjamin-poon": {
+  "base": "https://planwithben.sg",
+  "rows": [
+   {
+    "url": "https://planwithben.sg/",
+    "code": 200,
+    "footer_found": true,
+    "footer_pageonesingapore": 0,
+    "footer_page_one": 0,
+    "page_credit_links": 0
+   },
+   {
+    "url": "https://planwithben.sg/about-benjamin-poon/",
+    "code": 200,
+    "footer_found": true,
+    "footer_pageonesingapore": 0,
+    "footer_page_one": 0,
+    "page_credit_links": 0
+   },
+   {
+    "url": "https://planwithben.sg/zh/",
+    "code": 200,
+    "footer_found": true,
+    "footer_pageonesingapore": 0,
+    "footer_page_one": 0,
+    "page_credit_links": 0
+   },
+   {
+    "url": "https://planwithben.sg/zh/guides/preparing-for-a-memorial-planning-consultation/",
+    "code": 200,
+    "footer_found": true,
+    "footer_pageonesingapore": 0,
+    "footer_page_one": 0,
+    "page_credit_links": 0
+   }
+  ]
+ },
+ "jb-staycation": {
+  "base": "https://jbstaycations.com",
+  "rows": [
+   {
+    "url": "https://jbstaycations.com/",
+    "code": 200,
+    "footer_found": true,
+    "footer_pageonesingapore": 0,
+    "footer_page_one": 0,
+    "page_credit_links": 0
+   },
+   {
+    "url": "https://jbstaycations.com/stays/",
+    "code": 200,
+    "footer_found": true,
+    "footer_pageonesingapore": 0,
+    "footer_page_one": 0,
+    "page_credit_links": 0
+   },
+   {
+    "url": "https://jbstaycations.com/faq/",
+    "code": 200,
+    "footer_found": true,
+    "footer_pageonesingapore": 0,
+    "footer_page_one": 0,
+    "page_credit_links": 0
+   },
+   {
+    "url": "https://jbstaycations.com/articles/causeway-second-link-or-rts-which-way-to-jb-for-a-weekend-stay/",
+    "code": 200,
+    "footer_found": true,
+    "footer_pageonesingapore": 0,
+    "footer_page_one": 0,
+    "page_credit_links": 0
+   }
+  ]
+ },
+ "ev-body-parts": {
+  "base": "https://evbodyparts.sg",
+  "rows": [
+   {
+    "url": "https://evbodyparts.sg/",
+    "code": 200,
+    "footer_found": true,
+    "footer_pageonesingapore": 0,
+    "footer_page_one": 0,
+    "page_credit_links": 0
+   },
+   {
+    "url": "https://evbodyparts.sg/catalogue/",
+    "code": 200,
+    "footer_found": true,
+    "footer_pageonesingapore": 0,
+    "footer_page_one": 0,
+    "page_credit_links": 0
+   },
+   {
+    "url": "https://evbodyparts.sg/brands/deepal/q05/",
+    "code": 200,
+    "footer_found": true,
+    "footer_pageonesingapore": 0,
+    "footer_page_one": 0,
+    "page_credit_links": 0
+   },
+   {
+    "url": "https://evbodyparts.sg/articles/what-is-an-oe-part-number-body-parts/",
+    "code": 200,
+    "footer_found": true,
+    "footer_pageonesingapore": 0,
+    "footer_page_one": 0,
+    "page_credit_links": 0
+   }
+  ]
+ },
+ "alicia": {
+  "base": "https://aliciaongproperty.com",
+  "rows": [
+   {
+    "url": "https://aliciaongproperty.com/",
+    "code": 200,
+    "footer_found": true,
+    "footer_pageonesingapore": 0,
+    "footer_page_one": 0,
+    "page_credit_links": 0
+   },
+   {
+    "url": "https://aliciaongproperty.com/about/",
+    "code": 200,
+    "footer_found": true,
+    "footer_pageonesingapore": 0,
+    "footer_page_one": 0,
+    "page_credit_links": 0
+   },
+   {
+    "url": "https://aliciaongproperty.com/industrial-property/",
+    "code": 200,
+    "footer_found": true,
+    "footer_pageonesingapore": 0,
+    "footer_page_one": 0,
+    "page_credit_links": 0
+   },
+   {
+    "url": "https://aliciaongproperty.com/articles/office-space-rental-checklist-for-small-businesses-singapore/",
+    "code": 200,
+    "footer_found": true,
+    "footer_pageonesingapore": 0,
+    "footer_page_one": 0,
+    "page_credit_links": 0
+   }
+  ]
+ },
+ "xado": {
+  "base": "https://xado-shop.sg",
+  "rows": [
+   {
+    "url": "https://xado-shop.sg/",
+    "code": 200,
+    "footer_found": true,
+    "footer_pageonesingapore": 0,
+    "footer_page_one": 0,
+    "page_credit_links": 0
+   },
+   {
+    "url": "https://xado-shop.sg/how-xado-works.html",
+    "code": 200,
+    "footer_found": true,
+    "footer_pageonesingapore": 0,
+    "footer_page_one": 0,
+    "page_credit_links": 0
+   },
+   {
+    "url": "https://xado-shop.sg/find-a-xado-workshop.html",
+    "code": 200,
+    "footer_found": true,
+    "footer_pageonesingapore": 0,
+    "footer_page_one": 0,
+    "page_credit_links": 0
+   },
+   {
+    "url": "https://xado-shop.sg/articles/engine-noise-high-mileage-singapore.html",
+    "code": 200,
+    "footer_found": true,
+    "footer_pageonesingapore": 0,
+    "footer_page_one": 0,
+    "page_credit_links": 0
+   }
+  ]
+ }
+}
