@@ -707,28 +707,43 @@ def org_ld():
 
 
 def house_ld(h):
+    """Google VacationRental spec (Edwin 10 Nov 2026, GSC errors): Brand object, containsPlace.occupancy.value, Google amenity names with
+    boolean values, 8+ photos covering bedroom, bathroom and common areas. latitude/longitude left out: no confirmed map pin for either house."""
     k = h['key']
     url = BASE + 'stays/%s/' % h['slug']
-    gal = [f for _g, fs in ALBUM[k] for f in fs][:12]                        # real photos only, never the AI hero
+    gal = []
+    for _g, fs in ALBUM[k]:                       # up to 3 from every room group, so bedrooms and bathrooms are always in; real photos only
+        gal += fs[:3]
+    gal = gal[:16]
     if k == 'prima':
-        am = [('Pool table (7ft)', True), ('Mahjong', True), ('Ground-floor bedroom', True), ('wifi', True), ('outdoorGrill', False), ('Parking spaces inside', 2), ('Parking spaces outside', 6), ('Air conditioning', True), ('Kitchen', True)]
-        acc = {'numberOfBedrooms': 3, 'numberOfBathroomsTotal': 3, 'occupancy': {'@type': 'QuantitativeValue', 'maxValue': 12}}
+        am = [('ac', True), ('kitchen', True), ('wifi', True), ('tv', True), ('selfCheckinCheckout', True), ('outdoorGrill', False),
+              ('petsAllowed', False), ('smokingAllowed', False), ('Pool table (7ft)', True), ('Mahjong table', True), ('Ground-floor bedroom', True)]
+        acc = {'numberOfBedrooms': 3, 'numberOfBathroomsTotal': 3, 'bed': [{'@type': 'BedDetails', 'numberOfBeds': 3, 'typeOfBed': 'Queen'}],
+               'occupancy': {'@type': 'QuantitativeValue', 'value': 12}}
     else:
-        am = [('Pool table (8ft)', True), ('Foosball', True), ('Dart boards', 2), ('Mahjong', True), ('TV arcade', True), ('Board games', True), ('Children\'s playroom', True), ('Dedicated workstation', True), ('Water heaters', True),
-              ('wifi', True), ('Parking spaces', 2), ('outdoorGrill', False), ('Air conditioning', True), ('Kitchen', True)]
-        acc = {'numberOfBedrooms': 3, 'numberOfBathroomsTotal': 3, 'bed': [{'@type': 'BedDetails', 'numberOfBeds': 1, 'typeOfBed': 'King'}, {'@type': 'BedDetails', 'numberOfBeds': 4, 'typeOfBed': 'Queen'}], 'occupancy': {'@type': 'QuantitativeValue', 'maxValue': 10}}
+        am = [('ac', True), ('kitchen', True), ('wifi', True), ('tv', True), ('washerDryer', True), ('selfCheckinCheckout', True), ('outdoorGrill', False),
+              ('petsAllowed', False), ('smokingAllowed', False), ('Pool table (8ft)', True), ('Foosball table', True), ('Dart boards', True), ('Mahjong table', True),
+              ('TV arcade', True), ('Board games', True), ('Children\'s playroom', True), ('Dedicated workstation', True), ('Water heaters', True)]
+        acc = {'numberOfBedrooms': 3, 'numberOfBathroomsTotal': 3, 'bed': [{'@type': 'BedDetails', 'numberOfBeds': 1, 'typeOfBed': 'King'}, {'@type': 'BedDetails', 'numberOfBeds': 4, 'typeOfBed': 'Queen'}],
+               'occupancy': {'@type': 'QuantitativeValue', 'value': 10}}
     acc.update({'@type': 'Accommodation', 'additionalType': 'EntirePlace',
                 'amenityFeature': [{'@type': 'LocationFeatureSpecification', 'name': n, 'value': v} for n, v in am]})
+    offers = [{'@type': 'Offer', 'name': '%s night, whole house (cleaning included)' % t, 'price': n, 'priceCurrency': 'MYR', 'url': url,
+               'priceSpecification': {'@type': 'UnitPriceSpecification', 'price': n, 'priceCurrency': 'MYR', 'unitCode': 'DAY', 'unitText': 'night',
+                                      'referenceQuantity': {'@type': 'QuantitativeValue', 'value': 1, 'unitCode': 'DAY', 'unitText': 'night'}}}
+              for t, n in zip(TIER_NAMES, PRICES[k])]
     ld = {'@context': 'https://schema.org', '@type': 'VacationRental', '@id': url + '#rental', 'identifier': 'jb-' + k, 'name': h['name'], 'additionalType': 'House',
           'url': url, 'sameAs': [AIRBNB[k]], 'description': h['card'], 'image': [BASE + 'share/share-%s-1200x630.jpg' % k] + [abs_img(f) for f in gal], 'telephone': '+6590062198',
           'address': addr_ld(h), 'priceRange': '%s to %s per night, cleaning included' % (rm(PRICES[k][0]), rm(PRICES[k][2])),
-          'makesOffer': {'@type': 'Offer', 'name': 'Whole house, per night (cleaning included)', 'priceCurrency': 'MYR', 'price': PRICES[k][0], 'url': url,
-                         'priceSpecification': [{'@type': 'UnitPriceSpecification', 'name': t, 'price': n, 'priceCurrency': 'MYR', 'unitText': 'night'} for t, n in zip(TIER_NAMES, PRICES[k])]}, 'containsPlace': acc, 'petsAllowed': False, 'smokingAllowed': False,
-          'brand': {'@id': BASE + '#org'}}
-    if True:  # both houses (host, 9 Nov 2026)
-        ld['checkinTime'] = '15:00:00+08:00'
-        ld['checkoutTime'] = '11:00:00+08:00'
+          'checkinTime': '15:00:00+08:00', 'checkoutTime': '11:00:00+08:00',   # both houses: check-in 3pm, check-out 11am (host, 9 Nov 2026)
+          'knowsLanguage': ['en', 'ms', 'zh'], 'containsPlace': acc, 'makesOffer': offers,
+          'brand': {'@type': 'Brand', 'name': NAME}}
+    if HOUSE_GEO.get(k):                          # only a confirmed map pin, 5+ decimal places
+        ld['latitude'], ld['longitude'] = HOUSE_GEO[k]
     return ld
+
+
+HOUSE_GEO = {'prima': None, 'landak': None}   # no confirmed pin yet (10 Nov 2026): add (lat, lng) from the host's real Google Maps pin
 
 
 # ---------------------------------------------------------------- shared shell (ONE header/footer for every page)
