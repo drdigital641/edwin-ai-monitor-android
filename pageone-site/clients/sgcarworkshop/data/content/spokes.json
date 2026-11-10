@@ -70,6 +70,10 @@
    "pre-purchase inspection",
    "used car checks before you buy",
    "pre-purchase car inspection"
+  ],
+  "related": [
+   "New to workshops? Our guide on [how to choose a car workshop](guides/how-to-choose-a-car-workshop/) covers what to check first.",
+   "Buying a used hybrid or EV? Look for a shop on the [hybrid and EV servicing](services/hybrid-ev-servicing/) list, since the battery and inverter need their own checks."
   ]
  },
  {
@@ -143,6 +147,9 @@
    "wheel alignment",
    "wheel alignment workshops",
    "alignment work"
+  ],
+  "related": [
+   "A knock over road humps usually points to suspension parts rather than alignment. See [car knocking over humps](guides/car-knocking-over-humps/) for what to tell the workshop."
   ]
  },
  {
@@ -260,6 +267,13 @@
    "engine overhaul",
    "engine rebuilds",
    "engine overhaul workshops"
+  ],
+  "member_links": [
+   {
+    "cat": "gearbox-repair",
+    "before": "Its card is also listed for",
+    "anchor": "gearbox repair"
+   }
   ]
  },
  {
@@ -336,6 +350,10 @@
    "hybrid and EV servicing",
    "hybrid car servicing",
    "hybrid and electric car work"
+  ],
+  "related": [
+   "Hybrids and EVs still use a normal 12V battery for start-up, and the [car battery](services/car-battery/) list covers shops that change it.",
+   "For brand notes, see the [Tesla](brands/tesla/) and [BYD](brands/byd/) guides."
   ]
  },
  {
@@ -347,7 +365,7 @@
   "keyword": "walnut blasting singapore",
   "desc": "Singapore workshops that do walnut blasting and engine carbon cleaning, from what drivers mention in reviews and what workshops list on their own sites.",
   "h1": "Walnut blasting and engine carbon cleaning in Singapore",
-  "intro": "Carbon can build up on the intake valves of many direct-injection engines, and walnut blasting is one way to clean it off. These workshops do carbon cleaning, based on what drivers mention in their reviews and what the workshops publish on their own sites. We made this for drivers, by drivers, with AI turning those real jobs into searchable pages.",
+  "intro": "Carbon can build up on the intake valves of many direct-injection engines, and walnut blasting is one way to clean it off. These workshops do carbon, throttle body or intake cleaning, based on what drivers mention in their reviews and what the workshops publish on their own sites. We made this for drivers, by drivers, with AI turning those real jobs into searchable pages.",
   "involves": "In walnut blasting, the intake is opened and crushed walnut shell is blown at the valves to remove carbon without scratching the metal. Other methods clean the intake, throttle body or EGR valve with tools or cleaning agents. Which method suits depends on the engine.",
   "signs": [
    "Rough idle or shaking at a standstill.",
@@ -390,12 +408,27 @@
      "grand-auto-garage",
      "mirai-auto-performance"
     ]
+   },
+   {
+    "h": "Throttle body, intake and EGR cleaning",
+    "note": "These listings name throttle body cleaning or intake and EGR cleaning. They do not name walnut blasting, so ask which method the shop uses.",
+    "rx": "throttle body|intake and egr",
+    "slugs": [
+     "bosz-autohaus",
+     "everest-garage",
+     "xq-autoworks",
+     "zenetics-auto"
+    ]
    }
   ],
   "anchors": [
-   "walnut blasting",
    "engine carbon cleaning",
-   "intake carbon cleaning"
+   "intake carbon cleaning",
+   "carbon and intake cleaning"
+  ],
+  "related": [
+   "An engine warning light can come on when carbon build-up upsets the air or fuel mix. See [what an engine warning light means](guides/engine-warning-light/) before you book.",
+   "Carbon cleaning is often done alongside a service, so the [general servicing and repair](services/general-servicing-repair/) list is worth a look too."
   ]
  },
  {
@@ -405,9 +438,9 @@
   "parent": "car-aircon-repair",
   "title": "Car Aircon Flushing in Singapore | SG Car Workshop",
   "keyword": "car aircon flushing singapore",
-  "desc": "Singapore workshops that do car aircon flushing, from what drivers mention in reviews and what workshops list. Part of our car aircon repair section.",
+  "desc": "Singapore workshops that name car aircon flushing or related system work, from driver reviews and workshop listings. Part of our car aircon repair section.",
   "h1": "Car aircon flushing in Singapore",
-  "intro": "An aircon flush cleans old oil and debris out of the car's aircon pipes and parts, often after a compressor failure. These workshops do aircon flushing, going by what drivers mention in reviews and what the workshops list on their own sites. Made for drivers, by drivers: AI reads those real jobs and makes them searchable. For all aircon work, see car aircon repair.",
+  "intro": "An aircon flush cleans old oil and debris out of the car's aircon pipes and parts, often after a compressor failure. These workshops name aircon flushing or related aircon system work, going by what drivers mention in reviews and what the workshops list on their own sites. Made for drivers, by drivers: AI reads those real jobs and makes them searchable. For all aircon work, see car aircon repair.",
   "involves": "The system is emptied of refrigerant, then a flushing agent is pushed through the pipes, condenser and cooling coil to carry out old oil and debris. Parts that cannot be flushed are usually replaced, then the system is refilled with the right oil and gas.",
   "signs": [
    "The aircon compressor has failed and is being replaced.",
@@ -443,18 +476,32 @@
    },
    {
     "h": "Aircon system work, flushing not named",
-    "note": "These listings name cooling coil and compressor work but not flushing. Ask whether they flush the system.",
+    "note": "These listings name cooling coil work but not flushing. Ask whether they flush the system when they change parts.",
     "rx": "cooling coil",
     "slugs": [
      "contiexpert-volt-autocare",
-     "edwin-garage"
+     "edwin-garage",
+     "hock-eng-automobile-workshop",
+     "major-autolution",
+     "motoserv-car-service-centre-serangoon-garden"
+    ]
+   },
+   {
+    "h": "Aircon chemical wash",
+    "note": "This listing names an aircon chemical wash. Ask what the wash covers and whether it includes a system flush.",
+    "rx": "chemical wash",
+    "slugs": [
+     "tyreplus-toh-guan"
     ]
    }
   ],
   "anchors": [
-   "aircon flushing",
-   "car aircon flush",
-   "aircon system flushing"
+   "aircon system work",
+   "aircon flushing and coil work",
+   "aircon system jobs"
+  ],
+  "related": [
+   "If the air is warm rather than smelly, start with [car aircon not cold](guides/car-aircon-not-cold/), which covers the usual causes."
   ]
  },
  {

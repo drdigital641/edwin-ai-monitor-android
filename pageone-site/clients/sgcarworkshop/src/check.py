@@ -657,5 +657,12 @@ for _g in ('pilot', 'google_cache'):
         for _k in ('themes', 'review_themes', 'lede', 'good_for_note', 'good_to_know_note'):
             if isinstance(_d.get(_k), str) and _PO.bad(_d[_k]): print('NEGATIVE line in data (positive-only rule):', _g, _f, _PO.bad(_d[_k])[0]); bad += 1
 
+# job-page 'related' links must point at pages that exist in this build
+import json as _js
+for _sp in _js.load(open(os.path.join(os.path.dirname(os.path.abspath(__file__)), '..', 'data', 'content', 'spokes.json'))):
+    for _t in _sp.get('related') or []:
+        for _m in re.finditer(r'\]\(([a-z0-9/-]+)\)', _t):
+            if not os.path.exists(os.path.join(root, _m.group(1), 'index.html')):
+                print('related link target missing', _sp['slug'], _m.group(1)); bad += 1
 print('pages checked:', len(files), 'problems:', bad)
 sys.exit(1 if bad else 0)

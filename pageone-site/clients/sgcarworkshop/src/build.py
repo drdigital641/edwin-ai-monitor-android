@@ -2418,6 +2418,32 @@ def spokes_for(e):
     return [sp for sp in SPOKES if any(x[0]['slug'] == e['slug'] for _, its in spoke_members(sp) for x in its)]
 
 
+def member_xlinks(sp, e):
+    """Per-workshop link to another service page, only when that workshop's own card is listed under it (data: spokes.json member_links)."""
+    out = ''
+    for ml in sp.get('member_links') or []:
+        if ml['cat'] in (e.get('categories') or []):
+            out += '<p class="mentline">%s <a href="../%s/">%s</a>.</p>' % (E(ml['before']), ml['cat'], E(ml['anchor']))
+    return out
+
+
+_MDLINK = re.compile(r'\[([^\]]+)\]\(([a-z0-9/-]+)\)')
+
+
+def related_links(sp, depth):
+    """In-body related-page sentences from spokes.json 'related' ([anchor](site/path/) markup); every target must exist."""
+    rel = sp.get('related') or []
+    if not rel:
+        return ''
+    def one(t):
+        parts, last = [], 0
+        for m in _MDLINK.finditer(t):
+            parts.append(E(t[last:m.start()]) + '<a href="%s%s">%s</a>' % (pre(depth), m.group(2), E(m.group(1))))
+            last = m.end()
+        return ''.join(parts) + E(t[last:])
+    return '<h2>Related pages</h2>' + ''.join('<p>%s</p>' % one(t) for t in rel)
+
+
 def spoke_page(sp):
     depth = 2
     path = 'services/%s/' % sp['slug']
@@ -2429,7 +2455,7 @@ def spoke_page(sp):
             continue
         lis = ''.join('<li class="gw"><div><a href="../../workshops/%s/"><b>%s</b></a>%s <span class="fine">%s</span>%s</div><div class="acts">%s</div></li>'
                       % (e['slug'], E(e['name']), (' ' + tier_badge(e)) if is_paid(e) or e.get('founder_owned') else '', E(ESTATES[e['estate']]['name'] if e.get('estate') in ESTATES else (e.get('area_label') or '')),
-                         ''.join('<p class="mentline"><b>%s:</b> %s</p>' % (E(k), E(v)) for k, v in ev), contact_btns(e, path, 'sm')) for e, ev in items)
+                         ''.join('<p class="mentline"><b>%s:</b> %s</p>' % (E(k), E(v)) for k, v in ev) + member_xlinks(sp, e), contact_btns(e, path, 'sm')) for e, ev in items)
         blocks += '<h2>%s</h2>%s<ul class="gwl">%s</ul>' % (E(g['h']), ('<p class="fine">%s</p>' % E(g['note'])) if g.get('note') else '', lis)
     if any(is_paid(e) or e.get('founder_owned') for _, its in mem for e, _ in its):
         blocks += '<p class="fine">Labelled listings are paid (Featured) or owned by the founder of this site. They are listed here only because their own listing names this job.</p>'
@@ -2444,7 +2470,7 @@ def spoke_page(sp):
 <h2>What {E(sp['name'][0].lower() + sp['name'][1:])} involves</h2><p>{E(sp['involves'])}</p>
 <h2>Signs you may need it</h2><ul class="tick svc-plain">{''.join('<li>%s</li>' % E(x) for x in sp['signs'])}</ul>
 <h2>What to ask the workshop</h2><ul class="tick svc-plain">{''.join('<li>%s</li>' % E(x) for x in sp['ask'])}</ul>
-{('<p>More: <a href="../%s/">%s</a></p>' % (par['slug'], E(par['name']))) if par else ''}
+{related_links(sp, depth)}{('<p>More: <a href="../%s/">%s</a></p>' % (par['slug'], E(par['name']))) if par else ''}
 <h2>Questions</h2>{''.join('<details><summary>%s</summary><p>%s</p></details>' % (E(q), E(a)) for q, a in sp['faqs'])}
 </div>'''
     il = itemlist_ld(sp['h1'], [BY_SLUG[s] for s in allv])   # paid listings are never in an ItemList
