@@ -2,7 +2,7 @@ name: White-label footer check
 on:
   push:
     branches: [ "claude/project-thread-ete3gv" ]
-    paths: [ ".github/whitelabel/**", ".github/workflows/whitelabel-check.yml" ]
+    paths: [ ".github/whitelabel/inventory.py", ".github/whitelabel/check.trigger" ]
 jobs:
   run:
     runs-on: ubuntu-24.04

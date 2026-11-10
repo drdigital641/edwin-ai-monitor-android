@@ -1,0 +1,16 @@
+name: White-label footer build
+on:
+  push:
+    branches: [ "claude/project-thread-ete3gv" ]
+    paths: [ ".github/whitelabel/build_new.py", ".github/whitelabel/build.trigger" ]
+permissions:
+  contents: write
+jobs:
+  run:
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+      - run: python3 .github/whitelabel/build_new.py
+      - run: |
+          git config user.name "github-actions[bot]"; git config user.email "41898299+github-actions[bot]@users.noreply.github.com"
+          git add whitelabel && git commit -qm "White-label footer: live originals + credit-free copies (crawl $(date -u +%FT%TZ))" && git push origin HEAD:claude/project-thread-ete3gv
