@@ -770,7 +770,7 @@ def footer_html(k=None):
             '<div><p class="fh">Our houses</p><ul class="adds">%s</ul></div>'
             '<div><p class="fh">Explore</p><div class="flinks">%s</div></div></div>'
             '<p class="wordmark" aria-hidden="true">JB<span>Staycations</span></p>'
-            '<div class="fsmall"><span>Prices in RM. Host Daniel on WhatsApp: %s.</span> %s <a href="https://pageonesingapore.com/" rel="noopener">Website by Page One Singapore</a></div></div></footer>'
+            '<div class="fsmall"><span>Prices in RM. Host Daniel on WhatsApp: %s.</span> %s</div></div></footer>'
             % (e(TAGLINE), wa_btn('WhatsApp %s' % WA_SHOW, wa_msg(k), 'footer'), adds, links, WA_SHOW, review_helper.footer_link('{R}') + ' <a href="%s" rel="noopener" target="_blank">Find us on Google</a>' % GBP_URL))
 
 
