@@ -3,10 +3,10 @@
 
     python3 autoseo-clients/carzy-world/src/build.py
 
-Business facts: data/business.json. Page order, photos, reviews: data/site.json.
+Business facts: data/business.json. Page order, photos, clips: data/site.json.
 Every visible string: strings/<lang>.json (same keys in each).
 Shared parts (head, header, footer, mobile WhatsApp bar, page hero, trust strip,
-service card, review card, FAQ, CTA band, photo): templates/.
+service card, FAQ, CTA band, photo, video parts): templates/.
 Output is fully rendered static HTML in site/ (English at the root, Malay in
 ms/, Chinese in zh/). check.py runs at the end; a failed check stops the build.
 """
@@ -265,11 +265,10 @@ def service_cards(L, path, skip=None):
     return '        <div class="svc-grid">\n' + "\n".join(out) + "\n        </div>\n"
 
 
-def review_cards(L, limit=None):
-    out = [fill("review_card", stars_aria=E(L.ui["stars_aria"]), text=E(r["text"]), name=E(r["name"]), on_google=E(L.ui["on_google"])).rstrip("\n")
-           for r in SITE["reviews"][:limit]]
-    return ('        <div class="quotes">\n' + "\n".join(out) + "\n        </div>\n"
-            f'        <p class="note">{E(L.ui["review_note"])} <a class="link" href="{E(BIZ["maps_url"])}" target="_blank" rel="noopener">{E(L.ui["read_reviews"])} →</a></p>\n')
+def reviews_link(L):
+    """No review cards on the site: the rating line plus a link to the reviews on Google Maps."""
+    return (f'        <div class="cta-row"><a class="btn btn-outline-light" href="{E(BIZ["maps_url"])}" target="_blank" rel="noopener" data-cta="google_reviews">'
+            f'{E(L.ui["read_reviews"])} ↗</a></div>\n')
 
 
 def hours_table(L, cls="hours"):
@@ -365,6 +364,14 @@ def build_home(L):
                 phone_e164=BIZ["phone_e164"], call_label=L.call_label(), maps_url=E(BIZ["maps_url"]), stars_aria=E(ui["stars_aria"]),
                 rating_line=E(ui["rating_line"]), discount_badge=E(ui["discount_badge"]), wa_discount=L.wa("discount"))
     body += f'    <div class="ribbon">\n      <div class="wrap">\n{trust(L)}\n      </div>\n    </div>\n'
+    # signature story: the 190E restoration (self-hosted, click to play)
+    w201 = h["work"]["w201"]
+    body += section(f'        <div class="classic">\n          <div class="classic-video rv">{video_click(L, path, "classic190e", h["classic_video_label"], L.s["videos"]["classic190e"]["caption"])}</div>\n'
+                    f'          <div class="rv">\n            <p class="kicker">{E(h["classic_kicker"])}</p>\n            <h2>{E(h["classic_h2"])}</h2>\n'
+                    f'            <p class="section-lead">{E(h["classic_text"])}</p>\n            <p class="when-line">{E(w201["when"])} · {E(w201["title"])}</p>\n'
+                    f'            <div class="cta-row"><a class="btn btn-wa" href="{L.wa("service", L.s["services"]["classic-continental-cars"]["prefill_topic"])}" target="_blank" rel="noopener" data-cta="whatsapp_home_classic">{wa_icon()}<span>{E(ui["whatsapp_now"])}</span></a>'
+                    f'<a class="btn btn-outline-light" href="{L.url("services/classic-continental-cars/")}">{E(L.s["services"]["classic-continental-cars"]["short"])} →</a></div>\n'
+                    f'          </div>\n        </div>\n', alt="s-classic", sid="story")
     # services: every tile shows that service (photo, hosted clip still or branded graphic)
     body += section(f'        <div class="sec-head rv">\n          <p class="kicker">{E(h["services_kicker"])}</p>\n          <h2>{E(h["services_h2"])}</h2>\n'
                     f'          <p class="section-lead">{E(h["lead"])}</p>\n        </div>\n' + service_cards(L, path)
@@ -373,14 +380,6 @@ def build_home(L):
     body += section(f'        <div class="sec-head rv">\n          <p class="kicker">{E(h["reels_kicker"])}</p>\n          <h2>{E(h["reels_h2"])}</h2>\n'
                     f'          <p class="section-lead">{E(h["reels_lead"])}</p>\n        </div>\n'
                     + clip_strip(L, path, [c["id"] for c in SITE["embeds"]]), alt="s-reels", sid="videos")
-    # classic cars too (self-hosted, click to play)
-    w201 = h["work"]["w201"]
-    body += section(f'        <div class="classic">\n          <div class="classic-video rv">{video_click(L, path, "classic190e", h["classic_video_label"], L.s["videos"]["classic190e"]["caption"])}</div>\n'
-                    f'          <div class="rv">\n            <p class="kicker">{E(h["classic_kicker"])}</p>\n            <h2>{E(h["classic_h2"])}</h2>\n'
-                    f'            <p class="section-lead">{E(h["classic_text"])}</p>\n            <p class="when-line">{E(w201["when"])} · {E(w201["title"])}</p>\n'
-                    f'            <div class="cta-row"><a class="btn btn-wa" href="{L.wa("service", L.s["services"]["classic-continental-cars"]["prefill_topic"])}" target="_blank" rel="noopener" data-cta="whatsapp_home_classic">{wa_icon()}<span>{E(ui["whatsapp_now"])}</span></a>'
-                    f'<a class="btn btn-outline-light" href="{L.url("services/classic-continental-cars/")}">{E(L.s["services"]["classic-continental-cars"]["short"])} →</a></div>\n'
-                    f'          </div>\n        </div>\n', alt="s-classic")
     # recent works: real photos, card text says what the photo shows
     cards = "".join(f'          <a class="work-card rv" href="{L.url("services/" + w["service"] + "/")}"><span class="wc-img">{photo(L, w["photo"], "(max-width: 700px) 80vw, 33vw")}</span>'
                     f'<span class="wc-body"><h3>{E(h["works"][w["key"]]["title"])}</h3><span>{E(h["works"][w["key"]]["text"])}</span></span></a>\n' for w in SITE["works"])
@@ -394,7 +393,7 @@ def build_home(L):
     # reviews
     body += section(f'        <div class="reviews-head rv">\n          <p class="big-score"><span>5.0</span><span class="stars" aria-label="{E(ui["stars_aria"])}">★★★★★</span><span class="bs-sub">19 · Google</span></p>\n'
                     f'          <div>\n            <p class="kicker">{E(h["reviews_kicker"])}</p>\n            <h2>{E(h["reviews_h2"])}</h2>\n'
-                    f'            <p class="section-lead">{E(h["reviews_lead"])}</p>\n          </div>\n        </div>\n' + review_cards(L), alt="s-reviews", sid="reviews")
+                    f'            <p class="section-lead">{E(h["reviews_lead"])}</p>\n' + reviews_link(L) + '          </div>\n        </div>\n', alt="s-reviews", sid="reviews")
     body += section(f'        <div class="sec-head rv">\n          <p class="kicker">{E(h["visit_kicker"])}</p>\n          <h2>{E(h["visit_h2"])}</h2>\n'
                     f'          <p class="section-lead">{E(h["visit_text"])}</p>\n        </div>\n' + visit_block(L), alt="s-visit", sid="visit")
     faqs = s["faqs"][:SITE["home_faq_count"]]
@@ -453,7 +452,7 @@ def build_about(L):
                     f'          <div class="classic-video">{video_click(L, path, "signature", s["home"]["hero_video_label"], s["videos"]["signature"]["caption"])}</div>\n        </div>\n', alt="tint-a")
     vals = "".join(f'          <div class="card"><h3>{E(v["title"])}</h3><p>{E(v["text"])}</p></div>\n' for v in ap["values"])
     body += section(f'        <h2>{E(ap["values_h2"])}</h2>\n        <div class="cards cards-four">\n{vals}        </div>\n')
-    body += section(kh2(s["home"]["reviews_kicker"], s["home"]["reviews_h2"]) + review_cards(L, 3), alt="tint-b")
+    body += section(kh2(s["home"]["reviews_kicker"], s["home"]["reviews_h2"]) + f'        <p class="section-lead">{E(s["home"]["reviews_lead"])}</p>\n' + reviews_link(L), alt="tint-b")
     details = (f'        <h2>{E(ap["company_h2"])}</h2>\n        <dl class="facts">\n'
                f'          <dt>{E(BIZ["name"])}</dt><dd>{E(ui["company_label"])} {E(BIZ["company_no"])}</dd>\n'
                f'          <dt>{E(ui["address_label"])}</dt><dd>{E(BIZ["address_full"])}</dd>\n'

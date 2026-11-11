@@ -51,6 +51,11 @@ for p in pages:
     code = rel.parts[0] if rel.parts[0] in ("ms", "zh") else "en"
     h = p.read_text(encoding="utf-8")
     u = H.unescape(h)
+    if "<blockquote" in h or 'class="card review"' in h:
+        problems.append(f"{rel}: no individual review cards (rating line + Google Maps link only)")
+    for bad in ("1128044756568418", "1358776602985089"):
+        if bad in h:
+            problems.append(f"{rel}: dropped clip {bad} must not appear")
     if len(re.findall(r"<h1[\s>]", h)) != 1:
         problems.append(f"{rel}: needs exactly one <h1>")
     if BIZ["preview"] and '<meta name="robots" content="noindex,nofollow">' not in h:
@@ -86,7 +91,7 @@ for p in pages:
                 got = sorted((tuple(sorted(x.rsplit("/", 1)[-1] for x in s["dayOfWeek"])), s["opens"], s["closes"]) for s in node["openingHoursSpecification"])
                 if got != want_hours:
                     problems.append(f"{rel}: opening hours differ")
-                if "aggregateRating" in node or "review" in node:
+                if "aggregateRating" in node or "review" in node or "Review" in str(node.get("@type")):
                     problems.append(f"{rel}: no review markup for self-hosted reviews")
     if "AutoRepair" not in types:
         problems.append(f"{rel}: no AutoRepair schema")
@@ -142,7 +147,6 @@ for code in ("ms", "zh"):
     changed = [v for k, v in en.items() if len(v) >= 12 and other.get(k) != v]
     for p in sorted((SITE / code).rglob("*.html")):
         u = H.unescape(p.read_text(encoding="utf-8"))
-        u = re.sub(r'<blockquote lang="en">.*?</blockquote>', "", u, flags=re.S)  # reviews stay in English by design
         for v in changed:
             if v in u:
                 problems.append(f"{p.relative_to(SITE)}: leftover English {v[:60]!r}")

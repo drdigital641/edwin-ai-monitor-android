@@ -36,10 +36,8 @@
   "email_us": "E-mel kami",
   "directions": "Dapatkan arah",
   "open_maps": "Buka di Google Maps",
-  "read_reviews": "Baca semua ulasan di Google",
-  "on_google": "di Google",
+  "read_reviews": "Baca ulasan kami di Google Maps",
   "stars_aria": "5 bintang daripada 5",
-  "review_note": "Ulasan dipaparkan dalam bahasa Inggeris asal, seperti yang ditulis di Google.",
   "rating_line": "5.0 di Google · 19 ulasan",
   "rating_sub": "Semua ulasan 5 bintang",
   "hours_short": "Isnin–Jumaat 10 pagi–7 malam · Sabtu 10 pagi–4:30 petang",
@@ -111,12 +109,13 @@
   "logo": "Logo Carzy World",
   "bmw-in-workshop": "Sebuah kereta sedan BMW di bengkel Carzy World dengan minyak enjin sedia untuk diservis",
   "engine-work-closeup": "Gambar dekat kerja enjin sedang dijalankan di Carzy World, Klang",
-  "porsche-in-workshop": "Sebuah kereta sport Porsche merah di ruang servis Carzy World dengan minyak dan penapis baru",
-  "mazda-at-entrance": "Sebuah hatchback Mazda merah di pintu masuk bengkel Carzy World dengan minyak enjin untuk servis",
-  "isuzu-pickup-at-entrance": "Sebuah trak pikap Isuzu di ruang servis Carzy World dengan minyak dan gris yang baru",
-  "toyota-mpv-in-workshop": "Sebuah MPV Toyota di atas lif di Carzy World dengan alat ganti servis disusun",
-  "toyota-4x4-service-bay": "Sebuah Toyota 4x4 putih di ruang servis Carzy World",
-  "perodua-sedan-in-workshop": "Sebuah sedan Perodua hitam di bengkel Carzy World dengan minyak dan alat ganti untuk servis"
+  "porsche-in-workshop": "Porsche 911 merah di ruang servis Carzy World dengan minyak Mobil 1 dan penapis baru",
+  "isuzu-pickup-at-entrance": "Isuzu D-Max di pintu masuk Carzy World dengan bekas minyak dan gris untuk servis",
+  "tesla-model-3": "Tesla Model 3 putih di bengkel Carzy World dengan upper arm lama di lantai",
+  "mercedes-amg-cla45": "Mercedes-AMG CLA 45 S di ruang servis Carzy World dengan tali sawat dan alat ganti yang ditukar di hadapan",
+  "nissan-almera-brakes": "Nissan Almera perak di Carzy World dengan brake booster baru, alat ganti brek, ignition coil dan palam pencucuh",
+  "perodua-axia-service": "Perodua Axia biru gelap di atas lif di Carzy World dengan minyak enjin, penapis dan tali sawat untuk servis",
+  "perodua-myvi-aircond": "Perodua Myvi hitam di pintu masuk Carzy World dengan kotak alat ganti aircond di hadapan"
  },
  "home": {
   "title": "Bengkel Kereta & Servis Kereta di Klang | Carzy World",
@@ -156,8 +155,8 @@
   "suit_line": "Bos kami terkenal sebab buat kerja kereta dengan memakai sut. Itu caranya tunjuk yang setiap kerja dibuat dengan betul.",
   "gallery_h2": "Kereta di bengkel kami",
   "reviews_kicker": "Ulasan",
-  "reviews_h2": "Apa pelanggan kata di Google",
-  "reviews_lead": "5.0 daripada 19 ulasan Google, dan semuanya 5 bintang. Ini lima daripadanya.",
+  "reviews_h2": "Penilaian 5.0 di Google Maps",
+  "reviews_lead": "19 pelanggan telah menilai kami di Google Maps, dengan purata 5.0. Baca apa yang mereka tulis, dalam kata-kata mereka sendiri, di halaman Google kami.",
   "visit_kicker": "Singgah ke bengkel",
   "visit_h2": "Cari kami di Air Hitam, Klang",
   "visit_text": "Kami di Pusat Perniagaan Bestari, Taman Perindustrian Air Hitam, Klang. Cari papan tanda kuning. Hantar WhatsApp sebelum datang supaya kami boleh bersedia untuk kereta anda.",
@@ -171,16 +170,16 @@
   "reels_kicker": "Depan kamera",
   "reels_h2": "Tengok kami bekerja",
   "reels_lead": "Kerja sebenar dari bengkel kami. Tekan klip untuk main di sini.",
-  "classic_kicker": "Kereta klasik pun boleh",
-  "classic_h2": "Kereta klasik dan kereta Eropah dapat layanan yang sama",
+  "classic_kicker": "Kisah istimewa kami",
+  "classic_h2": "Menghidupkan semula Mercedes 190E 2.5-16 tahun 1988",
   "classic_text": "Pada November 2026 kami buat kerja pemulihan Mercedes 190E 2.5-16 tahun 1988. Kami juga terima kereta Eropah lama yang ada kebocoran, lampu amaran dan komponen haus.",
   "classic_video_label": "Kerja pemulihan Mercedes 190E 2.5-16 tahun 1988 di Carzy World",
   "pick_kicker": "Perkhidmatan",
   "pick_h2": "Pilih satu servis",
   "photos_h2": "Dalam bengkel kami",
   "works_kicker": "Kerja terkini",
-  "works_h2": "Baru turun dari ramp kami",
-  "works_lead": "Gambar sebenar dari bengkel kami.",
+  "works_h2": "Baru keluar dari bengkel",
+  "works_lead": "Gambar sebenar kerja sebenar, dari halaman Facebook kami.",
   "works_also": "Baru-baru ini juga di ramp kami",
   "suit_kicker": "Lelaki berkot",
   "suit_h2": "Kenapa bos kami baiki kereta pakai sut",
@@ -188,12 +187,12 @@
   "visit_btn": "Rancang kedatangan anda",
   "works": {
    "isuzu": {
-    "title": "Servis besar Isuzu D-Max",
-    "text": "Sebuah pikap kerja masuk untuk servis besar, dengan minyak hitam dan gris baru sedia."
+    "title": "Servis Isuzu D-Max",
+    "text": "Sebuah pikap kerja masuk untuk servis, dengan minyak dan gris baru sedia."
    },
    "porsche": {
-    "title": "Servis kereta sport Porsche",
-    "text": "Minyak enjin dan penapis baru disusun sebelum servis bermula."
+    "title": "Servis Porsche 911",
+    "text": "Minyak enjin Mobil 1 dan penapis baru, disusun sebelum servis."
    },
    "bmw": {
     "title": "Servis minyak sedan BMW",
@@ -203,13 +202,25 @@
     "title": "Kerja enjin sedang dibuat",
     "text": "Kerja enjin secara terus di ruang servis kami."
    },
-   "land": {
-    "title": "Toyota 4x4 di ruang servis",
-    "text": "Sebuah 4x4 bersaiz penuh di ruang servis untuk diperiksa."
+   "tesla": {
+    "title": "Repair Tesla Model 3",
+    "text": "Upper arm ditukar dan masalah pengecasan pantas diselesaikan."
    },
-   "mazda": {
-    "title": "Servis hatchback Mazda",
-    "text": "Minyak enjin sedia untuk servis hatchback Mazda."
+   "cla45": {
+    "title": "Mercedes-AMG CLA 45 S",
+    "text": "Alat ganti ditukar, dengan tali sawat lama disusun di hadapan."
+   },
+   "almera": {
+    "title": "Repair brek dan enjin Nissan Almera",
+    "text": "Masuk kerana masalah brek dan enjin. Brake booster, coil dan palam pencucuh baru."
+   },
+   "myvi": {
+    "title": "Servis aircond Perodua Myvi",
+    "text": "Masuk untuk servis aircond, dengan alat ganti baru sedia."
+   },
+   "axia": {
+    "title": "Servis dan baiki bunyi Perodua Axia",
+    "text": "Servis, dan bunyi yang mengganggu dikesan dan dibaiki."
    }
   }
  },
@@ -240,7 +251,7 @@
   },
   {
    "q": "Boleh baiki masalah pendawaian yang bengkel lain tak dapat selesaikan?",
-   "a": "Mengesan masalah elektrik dan pendawaian ialah salah satu kerja yang kami terkenal. Salah satu ulasan Google kami datang daripada seorang pemilik bengkel yang hantar kereta sendiri dan kereta pelanggannya kepada kami untuk masalah pendawaian dan masalah susah yang lain."
+   "a": "Ya, masalah elektrik dan pendawaian memang kerja biasa kami. Video kami tunjuk satu kerosakan yang asyik berulang, dan bateri yang asyik kong selepas dua bengkel lain tak jumpa puncanya. Beritahu kami melalui WhatsApp apa yang berlaku dan bila."
   }
  ],
  "services": {
@@ -287,7 +298,7 @@
    "meta_title": "Repair Enjin dan Gearbox di Klang",
    "meta_description": "Repair enjin dan gearbox di Carzy World, Air Hitam, Klang: kebocoran, lampu amaran, enjin kasar dan masalah gearbox. Semua jenama kereta. WhatsApp +60 17-693 3936.",
    "prefill_topic": "masalah enjin atau gearbox",
-   "intro": "Masalah enjin dan gearbox elok diperiksa awal, sebelum kerosakan kecil jadi repair besar. Pelanggan kata kami sentiasa maklumkan perkembangan sepanjang repair, jadi anda sentiasa tahu apa yang berlaku.",
+   "intro": "Masalah enjin dan gearbox elok diperiksa awal, sebelum kerosakan kecil jadi repair besar. WhatsApp kami apa yang anda perasan dan kami akan beritahu apa yang anda boleh jangka.",
    "covers_h2": "Apa kami buat",
    "covers": [
     "Repair enjin",
@@ -404,7 +415,7 @@
     "Fius yang asyik putus",
     "Bateri yang selalu habis"
    ],
-   "body": "Salah satu ulasan Google kami datang daripada seorang pemilik bengkel yang hantar kereta sendiri dan kereta pelanggannya kepada kami untuk masalah pendawaian dan masalah susah. Beritahu kami apa yang berlaku melalui WhatsApp, dan bila ia berlaku.",
+   "body": "Video kami tunjuk satu kerosakan yang asyik berulang, dan bateri yang asyik kong selepas dua bengkel lain tak jumpa puncanya. Beritahu kami apa yang berlaku melalui WhatsApp, dan bila ia berlaku.",
    "faqs": [
     {
      "q": "Bengkel lain tak jumpa puncanya. Boleh tolong?",
@@ -507,23 +518,23 @@
    "Kami servis dan repair semua jenama kereta: kereta harian, pikap, kereta Eropah, EV dan kereta klasik. Kerja terkini termasuk Tesla Model 3, Isuzu D-Max, Mercedes-Benz C230 dan Mercedes 190E 2.5-16 tahun 1988.",
    "Bos kami terkenal sebab buat kerja kereta dengan memakai sut. Itu caranya tunjuk yang setiap kerja dibuat dengan betul dan profesional."
   ],
-  "values_h2": "Apa yang paling pelanggan sebut",
+  "values_h2": "Cara kami bekerja",
   "values": [
    {
-    "title": "Harga yang jujur",
-    "text": "Pelanggan cakap pasal harga yang berpatutan dan jujur. WhatsApp kami untuk sebut harga."
+    "title": "Semua jenama kereta",
+    "text": "Kereta harian, pikap, kereta Eropah, EV dan kereta klasik."
    },
    {
-    "title": "Sentiasa dimaklumkan",
-    "text": "Kami maklumkan perkembangan sepanjang repair, jadi anda tahu apa yang berlaku pada kereta anda."
+    "title": "WhatsApp kami dulu",
+    "text": "Hantar model kereta dan masalah anda, dan kami akan beritahu apa yang anda boleh jangka."
    },
    {
-    "title": "Bengkel yang bersih",
-    "text": "Persekitaran yang bersih, staf yang mesra dan mekanik yang profesional."
+    "title": "Buat dengan betul",
+    "text": "Bos kami baiki kereta dengan memakai sut, tanda setiap kerja dibuat dengan betul."
    },
    {
     "title": "Masalah yang susah",
-    "text": "Pemilik bengkel lain pun hantar kereta kepada kami untuk masalah pendawaian dan masalah susah."
+    "text": "Kerosakan yang asyik berulang dan kereta yang bengkel lain tolak: tonton video kami."
    }
   ],
   "company_h2": "Maklumat syarikat",
@@ -551,7 +562,7 @@
   "hours": "Waktu operasi",
   "services": "Perkhidmatan",
   "pages": "Halaman",
-  "reviews": "Penilaian Google: 5.0 daripada 19 ulasan (semuanya 5 bintang), disemak November 2026.",
+  "reviews": "Penilaian Google: 5.0 daripada 19 penilaian, disemak 11 November 2026.",
   "offer": "Tawaran: pelanggan baru dapat diskaun 5% (tertakluk pada terma). Tiada harga lain diterbitkan; tanya di WhatsApp untuk sebut harga."
  },
  "videos": {
@@ -577,11 +588,6 @@
    "title": "Mengesan masalah misteri",
    "caption": "Guna diagnostik untuk cari masalah yang asyik berulang.",
    "topic": "masalah yang asyik berulang"
-  },
-  "1128044756568418": {
-   "title": "Servis minyak enjin",
-   "caption": "Tukar minyak enjin biasa, langkah demi langkah.",
-   "topic": "servis minyak enjin"
   },
   "1049619834456911": {
    "title": "Pakej servis minyak",

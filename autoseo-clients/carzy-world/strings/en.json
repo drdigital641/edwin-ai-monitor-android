@@ -1,5 +1,5 @@
 {
- "_readme": "Every visible English string. ms.json and zh.json have the same keys. Review text is NOT here: reviews stay in their original English (data/site.json).",
+ "_readme": "Every visible English string. ms.json and zh.json have the same keys.",
  "meta": {
   "html_lang": "en",
   "og_locale": "en_MY",
@@ -36,10 +36,8 @@
   "email_us": "Email us",
   "directions": "Get directions",
   "open_maps": "Open in Google Maps",
-  "read_reviews": "Read all reviews on Google",
-  "on_google": "on Google",
+  "read_reviews": "Read our reviews on Google Maps",
   "stars_aria": "5 out of 5 stars",
-  "review_note": "Reviews are shown in their original English, as written on Google.",
   "rating_line": "5.0 on Google · 19 reviews",
   "rating_sub": "Every review is 5 stars",
   "hours_short": "Mon–Fri 10am–7pm · Sat 10am–4:30pm",
@@ -111,12 +109,13 @@
   "logo": "Carzy World logo",
   "bmw-in-workshop": "A BMW sedan in the Carzy World workshop with engine oil ready for its service",
   "engine-work-closeup": "Close-up of engine work in progress at Carzy World, Klang",
-  "porsche-in-workshop": "A red Porsche sports car in the Carzy World service bay with new oil and filters",
-  "mazda-at-entrance": "A red Mazda hatchback at the Carzy World workshop entrance with engine oil for its service",
-  "isuzu-pickup-at-entrance": "An Isuzu pickup truck in the Carzy World service bay with fresh oil and grease",
-  "toyota-mpv-in-workshop": "A Toyota MPV on the lift at Carzy World with service parts laid out",
-  "toyota-4x4-service-bay": "A white Toyota 4x4 in the Carzy World service bay",
-  "perodua-sedan-in-workshop": "A black Perodua sedan in the Carzy World workshop with oil and parts for its service"
+  "porsche-in-workshop": "A red Porsche 911 in the Carzy World service bay with Mobil 1 oil and new filters",
+  "isuzu-pickup-at-entrance": "An Isuzu D-Max at the Carzy World entrance with oil and grease containers for its service",
+  "tesla-model-3": "A white Tesla Model 3 in the Carzy World workshop with its old upper arm on the floor",
+  "mercedes-amg-cla45": "A Mercedes-AMG CLA 45 S in the Carzy World service bay with the replaced belt and parts in front",
+  "nissan-almera-brakes": "A silver Nissan Almera at Carzy World with a new brake booster, brake parts, ignition coils and spark plugs",
+  "perodua-axia-service": "A dark blue Perodua Axia on the lift at Carzy World with engine oil, a filter and a belt for its service",
+  "perodua-myvi-aircond": "A black Perodua Myvi at the Carzy World entrance with boxed aircond parts in front"
  },
  "home": {
   "title": "Car Workshop & Car Service in Klang | Carzy World",
@@ -156,8 +155,8 @@
   "suit_line": "Our boss is known for working on cars in a suit. It's his way of showing that every job is done properly.",
   "gallery_h2": "Cars in our workshop",
   "reviews_kicker": "Reviews",
-  "reviews_h2": "What customers say on Google",
-  "reviews_lead": "5.0 from 19 Google reviews, and every one of them is 5 stars. Here are five of them.",
+  "reviews_h2": "Rated 5.0 on Google Maps",
+  "reviews_lead": "19 customers have rated us on Google Maps, and the average is 5.0. Read what they wrote, in their own words, on our Google listing.",
   "visit_kicker": "Visit us",
   "visit_h2": "Find us in Air Hitam, Klang",
   "visit_text": "We're at Pusat Perniagaan Bestari in Taman Perindustrian Air Hitam, Klang. Look for the yellow signboard. Send us a WhatsApp before you come so we can get ready for your car.",
@@ -171,8 +170,8 @@
   "reels_kicker": "On camera",
   "reels_h2": "Watch us work",
   "reels_lead": "Real jobs from our workshop. Tap a clip to play it here.",
-  "classic_kicker": "Classic cars too",
-  "classic_h2": "Classic and continental cars get the same care",
+  "classic_kicker": "Our signature story",
+  "classic_h2": "Bringing a 1988 Mercedes 190E 2.5-16 back to life",
   "classic_text": "In November 2026 we worked on restoring a 1988 Mercedes 190E 2.5-16. We also take on older European cars with leaks, warning lights and worn parts.",
   "classic_video_label": "Restoration work on a 1988 Mercedes 190E 2.5-16 at Carzy World",
   "pick_kicker": "Services",
@@ -180,15 +179,15 @@
   "photos_h2": "Inside the workshop",
   "works_kicker": "Recent works",
   "works_h2": "Fresh off our ramps",
-  "works_lead": "Real photos from our workshop.",
+  "works_lead": "Real photos of real jobs, from our Facebook page.",
   "works": {
    "isuzu": {
-    "title": "Isuzu D-Max major service",
-    "text": "A working pickup in for its major service, with fresh oil and grease ready."
+    "title": "Isuzu D-Max service",
+    "text": "A working pickup in for its service, with fresh oil and grease ready."
    },
    "porsche": {
-    "title": "Porsche sports car service",
-    "text": "New engine oil and filters laid out before the service starts."
+    "title": "Porsche 911 service",
+    "text": "Mobil 1 engine oil and new filters, laid out before the service."
    },
    "bmw": {
     "title": "BMW sedan oil service",
@@ -198,13 +197,25 @@
     "title": "Engine work in progress",
     "text": "Hands-on engine work in our service bay."
    },
-   "land": {
-    "title": "Toyota 4x4 in the bay",
-    "text": "A full-size 4x4 in the service bay for its check-up."
+   "tesla": {
+    "title": "Tesla Model 3 repair",
+    "text": "An upper arm replaced and a fast-charging issue sorted."
    },
-   "mazda": {
-    "title": "Mazda hatchback service",
-    "text": "Engine oil ready for a Mazda hatchback's service."
+   "cla45": {
+    "title": "Mercedes-AMG CLA 45 S",
+    "text": "Parts replaced, with the old belt laid out in front."
+   },
+   "almera": {
+    "title": "Nissan Almera brake and engine repair",
+    "text": "In for brake and engine issues. New brake booster, coils and plugs."
+   },
+   "myvi": {
+    "title": "Perodua Myvi aircond service",
+    "text": "In for an aircond service, with the new parts ready."
+   },
+   "axia": {
+    "title": "Perodua Axia service and noise fix",
+    "text": "A service plus a noise tracked down and fixed."
    }
   },
   "works_also": "Also on our ramps recently",
@@ -240,7 +251,7 @@
   },
   {
    "q": "Can you fix wiring problems other workshops couldn't?",
-   "a": "Electrical and wiring fault finding is one of the jobs we're known for. One of our Google reviews is from a workshop owner who sends his own car and his customers' cars to us for wiring and other difficult problems."
+   "a": "Yes, electrical and wiring faults are a regular job for us. Our videos show a fault that kept coming back, and batteries that kept dying after two other workshops couldn't find the cause. Tell us on WhatsApp what happens and when."
   }
  ],
  "services": {
@@ -287,7 +298,7 @@
    "meta_title": "Engine & Gearbox Repair in Klang",
    "meta_description": "Engine and gearbox repair at Carzy World, Air Hitam, Klang: leaks, warning lights, rough running and gearbox problems. All car brands. WhatsApp +60 17-693 3936.",
    "prefill_topic": "an engine or gearbox problem",
-   "intro": "Engine and gearbox problems are worth checking early, before a small fault turns into a big repair. Customers say we keep them updated throughout the repair, so you always know what's going on.",
+   "intro": "Engine and gearbox problems are worth checking early, before a small fault turns into a big repair. WhatsApp us what you're noticing and we'll tell you what to expect.",
    "covers_h2": "What we do",
    "covers": [
     "Engine repair",
@@ -404,7 +415,7 @@
     "Fuses that keep blowing",
     "A battery that keeps going flat"
    ],
-   "body": "One of our Google reviews is from a workshop owner who sends his own car and his customers' cars to us for wiring and difficult problems. Tell us what's happening on WhatsApp, and when it happens.",
+   "body": "Our videos show a fault that kept coming back, and batteries that kept dying after two other workshops couldn't find the cause. Tell us what's happening on WhatsApp, and when it happens.",
    "faqs": [
     {
      "q": "Other workshops couldn't find the fault. Can you help?",
@@ -507,23 +518,23 @@
    "We service and repair all car brands: everyday cars, pickups, continental cars, EVs and classics. Recent jobs include a Tesla Model 3, an Isuzu D-Max, a Mercedes-Benz C230 and a 1988 Mercedes 190E 2.5-16.",
    "Our boss is known for working on cars in a suit. It's his way of showing that every job is done properly and professionally."
   ],
-  "values_h2": "What customers mention most",
+  "values_h2": "How we work",
   "values": [
    {
-    "title": "Honest pricing",
-    "text": "Customers talk about reasonable, honest pricing. WhatsApp us for a quote."
+    "title": "All car brands",
+    "text": "Everyday cars, pickups, continental cars, EVs and classics."
    },
    {
-    "title": "Kept updated",
-    "text": "We keep you updated throughout the repair, so you know what's happening with your car."
+    "title": "WhatsApp us first",
+    "text": "Send your car model and the problem, and we'll tell you what to expect."
    },
    {
-    "title": "Clean workshop",
-    "text": "A clean environment, friendly staff and professional mechanics."
+    "title": "Done properly",
+    "text": "Our boss works on cars in a suit, to show that every job is done properly."
    },
    {
     "title": "Difficult problems",
-    "text": "Even another workshop owner sends cars to us for wiring and difficult problems."
+    "text": "Faults that keep coming back and cars other workshops turned down: see our videos."
    }
   ],
   "company_h2": "Company details",
@@ -551,7 +562,7 @@
   "hours": "Opening hours",
   "services": "Services",
   "pages": "Pages",
-  "reviews": "Google rating: 5.0 from 19 reviews (all 5-star), checked November 2026.",
+  "reviews": "Google rating: 5.0 from 19 ratings, checked 11 November 2026.",
   "offer": "Offer: new customers get a 5% discount (terms apply). No other prices are published; ask on WhatsApp for a quote."
  },
  "videos": {
@@ -577,11 +588,6 @@
    "title": "Tracing a mystery fault",
    "caption": "Using diagnostics to track down a fault that kept coming back.",
    "topic": "a fault that keeps coming back"
-  },
-  "1128044756568418": {
-   "title": "Engine oil service",
-   "caption": "A routine engine oil change, step by step.",
-   "topic": "an engine oil service"
   },
   "1049619834456911": {
    "title": "Oil service packages",

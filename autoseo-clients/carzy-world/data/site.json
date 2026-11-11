@@ -19,12 +19,11 @@
    "slug": "car-servicing-oil-change",
    "icon": "🛢️",
    "clips": [
-    "1128044756568418",
     "1049619834456911"
    ],
    "visual": {
     "type": "photo",
-    "key": "bmw-in-workshop"
+    "key": "porsche-in-workshop"
    }
   },
   {
@@ -44,8 +43,8 @@
    "icon": "❄️",
    "clips": [],
    "visual": {
-    "type": "graphic",
-    "icon": "aircond"
+    "type": "photo",
+    "key": "perodua-myvi-aircond"
    }
   },
   {
@@ -53,8 +52,8 @@
    "icon": "🛞",
    "clips": [],
    "visual": {
-    "type": "graphic",
-    "icon": "suspension"
+    "type": "photo",
+    "key": "nissan-almera-brakes"
    }
   },
   {
@@ -77,8 +76,8 @@
    "icon": "🔋",
    "clips": [],
    "visual": {
-    "type": "graphic",
-    "icon": "ev"
+    "type": "photo",
+    "key": "tesla-model-3"
    }
   },
   {
@@ -107,10 +106,6 @@
    "file": "carzy-world-logo.webp"
   },
   {
-   "key": "bmw-in-workshop",
-   "file": "carzy-world-bmw-in-workshop.webp"
-  },
-  {
    "key": "engine-work-closeup",
    "file": "carzy-world-engine-work-closeup.webp"
   },
@@ -119,24 +114,32 @@
    "file": "carzy-world-porsche-in-workshop.webp"
   },
   {
-   "key": "mazda-at-entrance",
-   "file": "carzy-world-mazda-at-entrance.webp"
-  },
-  {
    "key": "isuzu-pickup-at-entrance",
    "file": "carzy-world-isuzu-pickup-at-entrance.webp"
   },
   {
-   "key": "toyota-mpv-in-workshop",
-   "file": "carzy-world-toyota-mpv-in-workshop.webp"
+   "key": "bmw-in-workshop",
+   "file": "carzy-world-bmw-in-workshop.webp"
   },
   {
-   "key": "toyota-4x4-service-bay",
-   "file": "carzy-world-toyota-4x4-service-bay.webp"
+   "key": "tesla-model-3",
+   "file": "carzy-world-tesla-model-3-in-workshop.webp"
   },
   {
-   "key": "perodua-sedan-in-workshop",
-   "file": "carzy-world-perodua-sedan-in-workshop.webp"
+   "key": "mercedes-amg-cla45",
+   "file": "carzy-world-mercedes-amg-cla45-in-workshop.webp"
+  },
+  {
+   "key": "nissan-almera-brakes",
+   "file": "carzy-world-nissan-almera-brake-parts.webp"
+  },
+  {
+   "key": "perodua-axia-service",
+   "file": "carzy-world-perodua-axia-service.webp"
+  },
+  {
+   "key": "perodua-myvi-aircond",
+   "file": "carzy-world-perodua-myvi-aircond-service.webp"
   }
  ],
  "recent_work": [
@@ -161,28 +164,6 @@
    "service": "classic-continental-cars"
   }
  ],
- "reviews": [
-  {
-   "name": "Derrick H.",
-   "text": "Excellent service with friendly and professional staff. The pricing is very reasonable, and the workmanship is great. Highly recommend this workshop if you're looking for reliable service. Will definitely come back again!"
-  },
-  {
-   "name": "Charisse G.",
-   "text": "Excellent service! Very professional, reliable, and friendly team. Everything was smooth and hassle-free. Highly recommended!"
-  },
-  {
-   "name": "Siew T.",
-   "text": "Highly recommend to all of you. Honestly and sincerely even I am a workshop owner I also send my car and my client car to solve wiring and some difficult problem. This workshop boss was nice and kindful to help."
-  },
-  {
-   "name": "Khow J.",
-   "text": "First time trying this workshop. Clean environment, friendly staff, and professional mechanics. My car drives much better after service."
-  },
-  {
-   "name": "Sindy T.",
-   "text": "Excellent service, honest pricing, and professional workmanship. The staff are friendly, knowledgeable, and keep you updated throughout the repair process. Highly recommend Carzy World Sdn Bhd!"
-  }
- ],
  "home_faq_count": 5,
  "media_note": "Files under media/ are uploaded to the server by hand (11 Nov 2026) and are NOT in this repo or the upload. Pages link to them with page-relative paths. Never add other self-hosted videos (Bluehost space/inodes).",
  "server_media": [
@@ -193,8 +174,6 @@
   "fb-1045226281867426.jpg",
   "fb-1773614920220424.jpg",
   "fb-2553325481847062.jpg",
-  "fb-1128044756568418.jpg",
-  "fb-1358776602985089.jpg",
   "fb-1049619834456911.jpg",
   "fb-1534269351507322.jpg",
   "fb-1580829843577636.jpg",
@@ -253,15 +232,6 @@
    "service": "electrical-wiring-diagnosis"
   },
   {
-   "id": "1128044756568418",
-   "platform": "facebook",
-   "url": "https://www.facebook.com/61585571236048/videos/1128044756568418",
-   "thumb": "fb-1128044756568418.jpg",
-   "date": "2026-08",
-   "seconds": 28,
-   "service": "car-servicing-oil-change"
-  },
-  {
    "id": "1049619834456911",
    "platform": "facebook",
    "url": "https://www.facebook.com/61585571236048/videos/1049619834456911",
@@ -311,18 +281,38 @@
  "_visual_note": "Service image must show that service (brief 11 Nov): photo = real photo in photos/, media = file hosted by hand in media/, graphic = branded icon tile when no matching real photo exists.",
  "works": [
   {
+   "key": "tesla",
+   "photo": "tesla-model-3",
+   "service": "ev-repair"
+  },
+  {
+   "key": "porsche",
+   "photo": "porsche-in-workshop",
+   "service": "car-servicing-oil-change"
+  },
+  {
+   "key": "cla45",
+   "photo": "mercedes-amg-cla45",
+   "service": "classic-continental-cars"
+  },
+  {
+   "key": "almera",
+   "photo": "nissan-almera-brakes",
+   "service": "suspension-brakes-exhaust"
+  },
+  {
+   "key": "myvi",
+   "photo": "perodua-myvi-aircond",
+   "service": "car-aircond-service"
+  },
+  {
    "key": "isuzu",
    "photo": "isuzu-pickup-at-entrance",
    "service": "car-servicing-oil-change"
   },
   {
-   "key": "porsche",
-   "photo": "porsche-in-workshop",
-   "service": "classic-continental-cars"
-  },
-  {
-   "key": "bmw",
-   "photo": "bmw-in-workshop",
+   "key": "axia",
+   "photo": "perodua-axia-service",
    "service": "car-servicing-oil-change"
   },
   {
@@ -331,19 +321,14 @@
    "service": "engine-gearbox-repair"
   },
   {
-   "key": "land",
-   "photo": "toyota-4x4-service-bay",
-   "service": "car-servicing-oil-change"
-  },
-  {
-   "key": "mazda",
-   "photo": "mazda-at-entrance",
+   "key": "bmw",
+   "photo": "bmw-in-workshop",
    "service": "car-servicing-oil-change"
   }
  ],
  "works_also": [
-  "tesla",
   "c230"
  ],
- "_dropped_clips": "fb-1358776602985089 dropped 11 Nov: it is a past Merdeka/Malaysia Day promotion clip, not suspension work."
+ "_dropped_clips": "Dropped 11 Nov: fb-1358776602985089 (Merdeka promo reel, not a job); fb-1128044756568418 (hail dent removal credited to another business, not Carzy World). Their thumbs in media/ are unused.",
+ "_reviews_note": "No individual review cards or Review schema (verified brief 11 Nov): show the 5.0 / 19 rating line and link to the Google Maps reviews."
 }

@@ -36,10 +36,8 @@
   "email_us": "发电邮给我们",
   "directions": "查看路线",
   "open_maps": "在 Google Maps 打开",
-  "read_reviews": "到 Google 查看所有评价",
-  "on_google": "Google 评价",
+  "read_reviews": "到 Google Maps 看我们的评价",
   "stars_aria": "5 星(满分 5 星)",
-  "review_note": "评价以英文原文显示,与 Google 上的原文一致。",
   "rating_line": "Google 评分 5.0 · 19 则评价",
   "rating_sub": "每一则评价都是 5 星",
   "hours_short": "周一至周五 上午10点至晚上7点 · 周六 上午10点至下午4点30分",
@@ -111,12 +109,13 @@
   "logo": "Carzy World 标志",
   "bmw-in-workshop": "一辆 BMW 房车停在 Carzy World 车厂里,备好机油准备保养",
   "engine-work-closeup": "巴生 Carzy World 正在进行引擎维修的特写",
-  "porsche-in-workshop": "一辆红色 Porsche 跑车停在 Carzy World 维修车位,旁边备有新机油和机油滤芯",
-  "mazda-at-entrance": "一辆红色 Mazda 掀背车停在 Carzy World 车厂门口,备好机油准备保养",
-  "isuzu-pickup-at-entrance": "一辆 Isuzu 皮卡停在 Carzy World 维修车位,旁边备有新机油和黄油",
-  "toyota-mpv-in-workshop": "一辆 Toyota MPV 在 Carzy World 的举升机上,保养零件摆放在旁",
-  "toyota-4x4-service-bay": "一辆白色 Toyota 四驱车停在 Carzy World 维修车位",
-  "perodua-sedan-in-workshop": "一辆黑色 Perodua 房车停在 Carzy World 车厂里,备有机油和零件准备保养"
+  "porsche-in-workshop": "一辆红色 Porsche 911 停在 Carzy World 维修车位,旁边备有 Mobil 1 机油和新滤芯",
+  "isuzu-pickup-at-entrance": "一辆 Isuzu D-Max 停在 Carzy World 门口,前面摆着保养用的机油和黄油桶",
+  "tesla-model-3": "一辆白色 Tesla Model 3 停在 Carzy World 车厂,旧的上摆臂放在地上",
+  "mercedes-amg-cla45": "一辆 Mercedes-AMG CLA 45 S 停在 Carzy World 维修车位,前面摆着换下的皮带和零件",
+  "nissan-almera-brakes": "一辆银色 Nissan Almera 停在 Carzy World,前面摆着新的刹车助力器、刹车零件、点火线圈和火花塞",
+  "perodua-axia-service": "一辆深蓝色 Perodua Axia 在 Carzy World 的升降台上,备有机油、滤芯和皮带准备保养",
+  "perodua-myvi-aircond": "一辆黑色 Perodua Myvi 停在 Carzy World 门口,前面摆着冷气零件的箱子"
  },
  "home": {
   "title": "巴生汽车维修厂与汽车保养 | Carzy World",
@@ -156,8 +155,8 @@
   "suit_line": "我们的老板以穿着西装修车闻名。这是他表示每一份工作都认真做好的方式。",
   "gallery_h2": "我们车厂里的车子",
   "reviews_kicker": "评价",
-  "reviews_h2": "客户在 Google 上的评价",
-  "reviews_lead": "19 则 Google 评价,评分 5.0,每一则都是 5 星。这里是其中五则。",
+  "reviews_h2": "Google Maps 评分 5.0",
+  "reviews_lead": "19 位客户在 Google Maps 给我们评分,平均 5.0。到我们的 Google 页面看看他们亲笔写的评价。",
   "visit_kicker": "光临我们",
   "visit_h2": "在巴生 Air Hitam 找到我们",
   "visit_text": "我们在巴生 Taman Perindustrian Air Hitam 的 Pusat Perniagaan Bestari,请留意黄色招牌。来之前先 WhatsApp 我们,我们好为你的车子做准备。",
@@ -171,16 +170,16 @@
   "reels_kicker": "镜头前",
   "reels_h2": "看我们做事",
   "reels_lead": "来自我们车厂的真实工作。点按短片即可在这里播放。",
-  "classic_kicker": "经典老爷车也欢迎",
-  "classic_h2": "经典车和欧洲车,同样用心对待",
+  "classic_kicker": "我们的招牌故事",
+  "classic_h2": "让一辆 1988 年 Mercedes 190E 2.5-16 重现光彩",
   "classic_text": "2026年11月,我们修复了一辆 1988 年的 Mercedes 190E 2.5-16。我们也接手有渗漏、警告灯亮和零件磨损的欧洲旧车。",
   "classic_video_label": "Carzy World 修复 1988 年 Mercedes 190E 2.5-16 的过程",
   "pick_kicker": "服务",
   "pick_h2": "选择一项服务",
   "photos_h2": "车厂内部",
   "works_kicker": "近期作品",
-  "works_h2": "刚从我们的升降台下来",
-  "works_lead": "来自我们车厂的真实照片。",
+  "works_h2": "刚刚完工",
+  "works_lead": "真实工作的真实照片,来自我们的 Facebook 专页。",
   "works_also": "最近也上过我们升降台的车",
   "suit_kicker": "西装男",
   "suit_h2": "为什么我们的老板穿西装修车",
@@ -188,12 +187,12 @@
   "visit_btn": "安排你的到访",
   "works": {
    "isuzu": {
-    "title": "Isuzu D-Max 大保养",
-    "text": "一辆工作用皮卡进厂大保养,新机油和黄油已备好。"
+    "title": "Isuzu D-Max 保养",
+    "text": "一辆工作用皮卡进厂保养,新机油和黄油已备好。"
    },
    "porsche": {
-    "title": "Porsche 跑车保养",
-    "text": "保养开始前,新机油和滤芯已摆放好。"
+    "title": "Porsche 911 保养",
+    "text": "保养前摆好 Mobil 1 机油和新滤芯。"
    },
    "bmw": {
     "title": "BMW 轿车换机油",
@@ -203,13 +202,25 @@
     "title": "引擎维修进行中",
     "text": "在我们的维修位亲手处理引擎。"
    },
-   "land": {
-    "title": "Toyota 4x4 进厂检查",
-    "text": "一辆大型 4x4 在维修位接受检查。"
+   "tesla": {
+    "title": "Tesla Model 3 维修",
+    "text": "更换上摆臂,并解决快充问题。"
    },
-   "mazda": {
-    "title": "Mazda 掀背车保养",
-    "text": "为 Mazda 掀背车的保养准备好机油。"
+   "cla45": {
+    "title": "Mercedes-AMG CLA 45 S",
+    "text": "更换零件,换下的旧皮带摆在车前。"
+   },
+   "almera": {
+    "title": "Nissan Almera 刹车和引擎维修",
+    "text": "因刹车和引擎问题进厂,换上新的刹车助力器、线圈和火花塞。"
+   },
+   "myvi": {
+    "title": "Perodua Myvi 冷气保养",
+    "text": "进厂做冷气保养,新零件已备好。"
+   },
+   "axia": {
+    "title": "Perodua Axia 保养和异响处理",
+    "text": "做保养,同时找出并解决异响。"
    }
   }
  },
@@ -240,7 +251,7 @@
   },
   {
    "q": "其他车厂解决不了的线路问题,你们可以处理吗?",
-   "a": "电路和线路故障排查是我们出名的工作之一。我们其中一则 Google 评价来自一位车厂老板,他把自己的车子和客户的车子都送来我们这里处理线路和其他棘手的问题。"
+   "a": "可以,电路和线路故障是我们的日常工作。我们的视频里有一个反复出现的故障,还有一辆电池一直没电、两间车厂都找不到原因的车。请通过 WhatsApp 告诉我们发生什么事,以及什么时候发生。"
   }
  ],
  "services": {
@@ -287,7 +298,7 @@
    "meta_title": "巴生引擎与波箱维修",
    "meta_description": "Carzy World 位于巴生 Air Hitam,提供引擎和波箱维修:渗漏、警告灯、引擎抖动和波箱问题。欢迎各种品牌。WhatsApp +60 17-693 3936。",
    "prefill_topic": "引擎或波箱问题",
-   "intro": "引擎和波箱的问题最好及早检查,免得小故障变成大维修。客户说我们在整个维修过程中都会向他们报告进度,让你随时知道情况。",
+   "intro": "引擎和波箱的问题最好及早检查,免得小故障变成大维修。把你注意到的情况 WhatsApp 给我们,我们会告诉你大概的情况。",
    "covers_h2": "我们做什么",
    "covers": [
     "引擎维修",
@@ -404,7 +415,7 @@
     "保险丝一直烧断",
     "电池一直没电"
    ],
-   "body": "我们其中一则 Google 评价来自一位车厂老板,他把自己的车子和客户的车子都送来我们这里处理线路和棘手的问题。请通过 WhatsApp 告诉我们发生什么事,以及什么时候发生。",
+   "body": "我们的视频里有一个反复出现的故障,还有一辆电池一直没电、两间车厂都找不到原因的车。请通过 WhatsApp 告诉我们发生什么事,以及什么时候发生。",
    "faqs": [
     {
      "q": "其他车厂找不到故障,你们可以帮忙吗?",
@@ -507,23 +518,23 @@
    "我们保养和维修各种品牌的车子:日常代步车、皮卡、欧洲车、电动车和经典老爷车。近期的个案包括 Tesla Model 3、Isuzu D-Max、Mercedes-Benz C230 和一辆 1988 年的 Mercedes 190E 2.5-16。",
    "我们的老板以穿着西装修车闻名。这是他表示每一份工作都认真、专业地做好的方式。"
   ],
-  "values_h2": "客户最常提到的",
+  "values_h2": "我们的做事方式",
   "values": [
    {
-    "title": "价钱老实",
-    "text": "客户提到价钱合理、老实。请 WhatsApp 我们询问报价。"
+    "title": "各种车款",
+    "text": "日常用车、皮卡、欧洲车、电动车和经典车都可以。"
    },
    {
-    "title": "随时报告进度",
-    "text": "我们在整个维修过程中都会向你报告进度,让你知道车子的情况。"
+    "title": "先 WhatsApp 我们",
+    "text": "把车型和问题发给我们,我们会告诉你大概的情况。"
    },
    {
-    "title": "车厂干净",
-    "text": "环境干净,员工友善,技师专业。"
+    "title": "把工作做好",
+    "text": "我们的老板穿西装修车,表示每份工作都认真做好。"
    },
    {
     "title": "棘手的问题",
-    "text": "连另一间车厂的老板也把车子送来我们这里处理线路和棘手的问题。"
+    "text": "反复出现的故障、别间车厂不接的车:看看我们的视频。"
    }
   ],
   "company_h2": "公司资料",
@@ -551,7 +562,7 @@
   "hours": "营业时间",
   "services": "服务",
   "pages": "页面",
-  "reviews": "Google 评分:5.0,共 19 则评价(全部 5 星),2026年11月查看。",
+  "reviews": "Google 评分:5.0,共 19 个评分,2026年11月11日查看。",
   "offer": "优惠:新客户有 5% 折扣(须遵守条款)。没有公开其他价钱;请通过 WhatsApp 询问报价。"
  },
  "videos": {
@@ -577,11 +588,6 @@
    "title": "追查神秘故障",
    "caption": "用电脑诊断找出一个反复出现的故障。",
    "topic": "一个反复出现的故障"
-  },
-  "1128044756568418": {
-   "title": "引擎机油保养",
-   "caption": "一次例行的引擎机油更换,逐步介绍。",
-   "topic": "引擎机油保养"
   },
   "1049619834456911": {
    "title": "机油保养配套",
