@@ -24,7 +24,7 @@ def _lg_cta(title, text, source):
         <p>{text}</p>
         <div class="cta-row center">
           <a class="btn" href="{wa_src(_WA_MSG, source)}" target="_blank" rel="noopener" data-cta="whatsapp_{source.split(',')[0].replace(' ', '_')}_bottom">Get more enquiries</a>
-          <a class="btn btn-ghost" href="/signup/">Sign up from S$80/month</a>
+          <a class="btn btn-ghost" href="/signup/">Sign up from S$100/month</a>
         </div>
       </div>
     </section>"""
@@ -80,7 +80,7 @@ page("how-it-works/index.html",
      hero("How it works", "Three steps, no tech skills needed",
           "How it works: get found, then get enquiries.",
           "Page One helps Singapore small businesses reach more potential customers. Your website is included, we work on Google and AI search every day, "
-          "and every page is set up to turn visitors into WhatsApp enquiries. S$80 a month, no setup fee, no contract.",
+          "and every page is set up to turn visitors into WhatsApp enquiries. S$100 a month, no setup fee, no contract.",
           buttons=False) .replace('</p>\n      </div>\n    </section>', '</p>' + _lg_buttons("how it works, top") + '\n      </div>\n    </section>', 1) + f"""
 
     <section class="section">
@@ -111,10 +111,10 @@ page("how-it-works/index.html",
         <p class="kicker reveal">One simple plan</p>
         <h2 class="reveal">Affordable, monthly, no lock-in</h2>
         <div class="cards two" style="margin-top:32px">
-          <a class="card reveal" href="/get-found/"><p class="pill">The plan</p><h3>Get Found</h3><p>Website included, Google and AI search setup, daily audits, an article every 2 days.</p><span class="price-tag">S$80 <small>/month</small></span><br><span class="card-link">What's included →</span></a>
+          <a class="card reveal" href="/get-found/"><p class="pill">The plan</p><h3>Get Found</h3><p>Website included, Google and AI search setup, daily audits, an article every 2 days.</p><span class="price-tag">S$100 <small>/month</small></span><br><span class="card-link">What's included →</span></a>
           <a class="card reveal" href="/seo-boost/"><p class="pill">Optional top-up</p><h3>SEO Boost</h3><p>First-page competitor analysis for one search term, then your page improved.</p><span class="price-tag">S$10 <small>/run</small></span><br><span class="card-link">Learn more →</span></a>
         </div>
-        <p class="note reveal" style="text-align:center">Register by 31 Dec 2026 for S$80 a month. No setup fee, no contract. <a class="card-link" href="/pricing/">Full pricing →</a></p>
+        <p class="note reveal" style="text-align:center">Register by 31 Dec 2026 for S$100 a month. No setup fee, no contract. <a class="card-link" href="/pricing/">Full pricing →</a></p>
         <p class="note reveal" style="text-align:center"><a class="link" href="/industries/">Industries we help →</a> · <a class="link" href="/seo-services-singapore/">Compare SEO providers →</a></p>
       </div>
     </section>
@@ -158,7 +158,7 @@ LG_FAQ = [
     ("Is this the same as buying leads?",
      "No. We don't sell lists or contact details. Customers find your business, read your pages and choose to message you. Every enquiry comes straight to your own WhatsApp."),
     ("How much does it cost?",
-     "S$80 a month on the Get Found plan, for anyone who registers by 31 Dec 2026, with the website included. No setup fee, no contract. Optional SEO Boosts are S$10 per run."),
+     "S$100 a month on the Get Found plan, for anyone who registers by 31 Dec 2026, with the website included. No setup fee, no contract. Optional SEO Boosts are S$10 per run."),
     ("How many enquiries will I get?",
      "We can't promise a number. It depends on your trade, your area, how many people search for it and your competitors. We count WhatsApp taps on your site and show you the Google Search Console figures, so you can see what is happening."),
 ]
@@ -173,17 +173,17 @@ _lg_cards = "\n".join(
     for e, t, d, href, link in _lg_rows)
 
 page("lead-generation-singapore/index.html",
-     "Lead Generation Singapore for Small Businesses, S$80/month",
-     "Organic lead generation for Singapore small businesses: get found on Google and AI search, then turn visitors into WhatsApp enquiries. From S$80/month.",
+     "Lead Generation Singapore for Small Businesses, S$100/month",
+     "Organic lead generation for Singapore small businesses: get found on Google and AI search, then turn visitors into WhatsApp enquiries. From S$100/month.",
      [service("Organic lead generation for small businesses", LG_URL,
               "Website included, SEO for Google Search and Maps, AEO and GEO for AI search, and WhatsApp enquiry buttons on every page, "
-              "so Singapore small businesses can be found by customers and receive enquiries directly.", "80"),
+              "so Singapore small businesses can be found by customers and receive enquiries directly.", "100"),
       _faq_ld(LG_FAQ)],
      hero("Lead generation", "Organic lead generation",
           "More customer enquiries, without paying for every click.",
           "Page One helps Singapore small businesses get enquiries from people who are already searching: on Google, Google Maps and AI assistants like ChatGPT. "
-          "Your website is included, and every page is built to make enquiring easy. S$80 a month, no contract.",
-          '<p class="hero-price"><b>S$80</b>/month · <span class="intro-tag">Register by 31 Dec 2026</span> · website included</p>',
+          "Your website is included, and every page is built to make enquiring easy. S$100 a month, no contract.",
+          '<p class="hero-price"><b>S$100</b>/month · <span class="intro-tag">Register by 31 Dec 2026</span> · website included</p>',
           buttons=False).replace('</p>\n      </div>\n    </section>', '</p>' + _lg_buttons("lead generation, top") + '\n      </div>\n    </section>', 1) + f"""
 
     <section class="section">

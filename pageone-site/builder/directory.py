@@ -29,7 +29,7 @@ def _dir_btns(source):
 DIR_URL = "/directory-listing/"
 DIR_FAQ = [
     ("How much does a directory listing cost?",
-     "A Basic listing card is free. For a Verified listing page, ask us on WhatsApp for the price. The own-website plan is S$80 a month."),
+     "A Basic listing card is free. For a Verified listing page, ask us on WhatsApp for the price. The own-website plan is S$100 a month."),
     ("Do I need to buy a domain?",
      "No. We set up your listing page and keep it running. You don't buy, register or renew a domain for it."),
     ("Will a listing bring me enquiries?",
@@ -41,7 +41,7 @@ _dir_rows = [
     ("Pages", "A full website: homepage and a page for each service", "One listing page"),
     ("Articles", "A new article every 2 days", "None"),
     ("SEO work", "Daily technical audit and SEO work", "Light: the listing is added to the directory"),
-    ("Price", "S$80 a month, website included", _dir_price_text()),
+    ("Price", "S$100 a month, website included", _dir_price_text()),
 ]
 _dir_table = "\n".join(f'              <tr><th scope="row">{a}</th><td>{b}</td><td>{c}</td></tr>' for a, b, c in _dir_rows)
 
@@ -53,7 +53,7 @@ page("directory-listing/index.html",
           "No website of your own? Get a listing page instead.",
           "A directory listing is one page about your business: your photos, services, area and opening hours, with WhatsApp and call buttons. "
           "You don't buy a domain, and we look after the page.",
-          f'<p class="hero-price"><b>{_dir_price_text()}</b> · free basic card · own website S$80/month</p>',
+          f'<p class="hero-price"><b>{_dir_price_text()}</b> · free basic card · own website S$100/month</p>',
           buttons=False).replace('</p>\n      </div>\n    </section>', '</p>' + _dir_btns("directory, top") + '\n      </div>\n    </section>', 1) + f"""
 
     <section class="section">
