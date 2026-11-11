@@ -1,30 +1,120 @@
 {
  "_readme": "Page order, photos and reels. Text lives in strings/<lang>.json; business facts and the WhatsApp number in config.json.",
  "languages": [
-  {"code": "en", "prefix": ""},
-  {"code": "ms", "prefix": "ms/"},
-  {"code": "zh", "prefix": "zh/"}
+  {
+   "code": "en",
+   "prefix": ""
+  },
+  {
+   "code": "ms",
+   "prefix": "ms/"
+  },
+  {
+   "code": "zh",
+   "prefix": "zh/"
+  }
  ],
  "photos": [
-  {"key": "ecu-wired-test", "file": "emats-01-ecu-module-wired-test.webp"},
-  {"key": "bga-blue-jig", "file": "emats-02-bga-chip-on-blue-jig.webp"},
-  {"key": "ecu-stack", "file": "emats-03-ecu-stack-on-bench-mat.webp"},
-  {"key": "tricore-chip", "file": "emats-04-infineon-tricore-ecu-chip.webp"},
-  {"key": "bga-bench-mat", "file": "emats-05-bga-chip-on-bench-mat.webp"},
-  {"key": "ecu-case", "file": "emats-06-instrument-cluster-repair.webp", "_note": "File name says instrument cluster, but the photo shows an ECU in its metal case, so it is used as an ECU photo."},
-  {"key": "cluster-bench", "file": "emats-07-instrument-cluster-bench.webp"},
-  {"key": "ecu-open-case", "file": "emats-08-engine-ecu-open-case-board.webp"}
+  {
+   "key": "ecu-wired-test",
+   "file": "emats-01-ecu-module-wired-test.webp",
+   "_labels": "Car-brand labels blurred (Edwin 11 Nov: no car-brand labels on photos)."
+  },
+  {
+   "key": "bga-blue-jig",
+   "file": "emats-02-bga-chip-on-blue-jig.webp"
+  },
+  {
+   "key": "ecu-stack",
+   "file": "emats-03-ecu-stack-on-bench-mat.webp"
+  },
+  {
+   "key": "tricore-chip",
+   "file": "emats-04-infineon-tricore-ecu-chip.webp"
+  },
+  {
+   "key": "bga-bench-mat",
+   "file": "emats-05-bga-chip-on-bench-mat.webp"
+  },
+  {
+   "key": "ecu-case",
+   "file": "emats-06-instrument-cluster-repair.webp",
+   "_note": "File name says instrument cluster, but the photo shows an ECU in its metal case, so it is used as an ECU photo.",
+   "_labels": "Car-brand labels blurred (Edwin 11 Nov: no car-brand labels on photos)."
+  },
+  {
+   "key": "cluster-bench",
+   "file": "emats-07-instrument-cluster-bench.webp",
+   "_labels": "Car-brand labels blurred (Edwin 11 Nov: no car-brand labels on photos)."
+  },
+  {
+   "key": "ecu-open-case",
+   "file": "emats-08-engine-ecu-open-case-board.webp"
+  }
  ],
  "services": [
-  {"key": "ecu", "slug": "ecu-ecm-repair/", "hero": "tricore-chip", "photos": ["ecu-wired-test", "ecu-open-case", "ecu-case"], "art": "ecu"},
-  {"key": "abs", "slug": "abs-module-repair/", "hero": "", "photos": [], "art": "abs"},
-  {"key": "cluster", "slug": "instrument-cluster-repair/", "hero": "cluster-bench", "photos": [], "art": "cluster"},
-  {"key": "modules", "slug": "control-module-repair/", "hero": "", "photos": ["bga-blue-jig", "bga-bench-mat"], "art": "modules"},
-  {"key": "marine", "slug": "marine-electronics-repair/", "hero": "", "photos": [], "art": "marine"}
+  {
+   "key": "ecu",
+   "slug": "ecu-ecm-repair/",
+   "hero": "tricore-chip",
+   "photos": [
+    "ecu-wired-test",
+    "ecu-open-case",
+    "ecu-case"
+   ],
+   "art": "ecu"
+  },
+  {
+   "key": "abs",
+   "slug": "abs-module-repair/",
+   "hero": "",
+   "photos": [],
+   "art": "abs"
+  },
+  {
+   "key": "cluster",
+   "slug": "instrument-cluster-repair/",
+   "hero": "cluster-bench",
+   "photos": [],
+   "art": "cluster"
+  },
+  {
+   "key": "modules",
+   "slug": "control-module-repair/",
+   "hero": "",
+   "photos": [
+    "bga-blue-jig",
+    "bga-bench-mat"
+   ],
+   "art": "modules"
+  },
+  {
+   "key": "marine",
+   "slug": "marine-electronics-repair/",
+   "hero": "",
+   "photos": [],
+   "art": "marine"
+  }
  ],
- "home_photos": ["ecu-wired-test", "tricore-chip", "bga-blue-jig", "ecu-stack", "cluster-bench", "ecu-open-case", "bga-bench-mat", "ecu-case"],
- "workshops_photos": ["ecu-stack", "ecu-wired-test"],
- "about_photos": ["bga-blue-jig", "bga-bench-mat", "cluster-bench"],
+ "home_photos": [
+  "ecu-wired-test",
+  "tricore-chip",
+  "bga-blue-jig",
+  "ecu-stack",
+  "cluster-bench",
+  "ecu-open-case",
+  "bga-bench-mat",
+  "ecu-case"
+ ],
+ "workshops_photos": [
+  "ecu-stack",
+  "ecu-wired-test"
+ ],
+ "about_photos": [
+  "bga-blue-jig",
+  "bga-bench-mat",
+  "cluster-bench"
+ ],
  "og_photo": "tricore-chip",
  "reels": [
   "https://www.facebook.com/reel/1355389330048582",
