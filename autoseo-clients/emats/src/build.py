@@ -40,7 +40,8 @@ if CFG.get("whatsapp_number") and not re.fullmatch(r"\d{9,15}", CFG["whatsapp_nu
 
 CSS = (ROOT / "assets" / "site.css").read_text(encoding="utf-8")
 JS = (ROOT / "assets" / "site.js").read_text(encoding="utf-8")
-ASSET_V = hashlib.sha256((CSS + JS).encode()).hexdigest()[:10]
+CSS_V = hashlib.sha256(CSS.encode()).hexdigest()[:10]  # one cache-bust code per file
+JS_V = hashlib.sha256(JS.encode()).hexdigest()[:10]
 # Articles (11 Nov 2026): one JSON file per article in data/articles/, rendered by templates/article*.html.
 # Their CSS is a separate file loaded only on article pages, so a night run never changes site.css.
 ART_CSS = (ROOT / "assets" / "articles.css").read_text(encoding="utf-8")
@@ -265,7 +266,7 @@ def page(L, path, key, active, body, trail, extra_schema=(), body_class="", pg=N
     og = abs_url("", "img/" + PHOTO[SITE["og_photo"]]["file"][:-5] + "-1200.webp")
     doc = fill("head", lang=s["meta"]["html_lang"], title=E(pg["title"]), description=E(pg["description"]), robots=robots,
                canonical=abs_url(L.prefix, path), hreflang=alts, base=BASE, brand_name=E(CFG["short_name"]), og_image=og,
-               og_locale=s["meta"]["og_locale"], asset_v=ASSET_V, head_extra=head_extra, schema=schema(L, path, pg, trail, extra_schema))
+               og_locale=s["meta"]["og_locale"], css_v=CSS_V, js_v=JS_V, head_extra=head_extra, schema=schema(L, path, pg, trail, extra_schema))
     doc += fill("header", body_class=body_class, skip=E(L.ui["skip"]), home=L.url(), brand=E(CFG["short_name"]),
                 tagline=E(L.s["services"]["ecu"]["name"] + " · " + CFG["city"]), nav_label=E(L.ui["nav_label"]),
                 nav_items=nav_items(L, active), lang_label=E(L.ui["lang_label"]), switcher=switch, menu=E(L.ui["menu"]))
