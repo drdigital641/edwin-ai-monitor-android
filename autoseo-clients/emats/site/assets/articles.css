@@ -99,3 +99,37 @@
   @keyframes sweep { 0% { -webkit-mask-size: 0% 100%; mask-size: 0% 100%; } 70%, 100% { -webkit-mask-size: 100% 100%; mask-size: 100% 100%; } }
 }
 @media (prefers-reduced-motion: reduce) { .post-card { transition: none; } }
+
+
+/* Light-theme retune (11 Nov 2026): article body is light; .post-hero stays navy. */
+.post-hero { color: var(--hero-text);
+  background: radial-gradient(60% 90% at 88% 20%, rgba(42,168,184,.10), transparent 60%), var(--black); }
+.post-meta { color: var(--hero-muted); }
+.post-motif { -webkit-text-stroke-color: rgba(61,204,122,.18); }
+.post-osc { filter: drop-shadow(0 0 3px rgba(61,204,122,.45)); }
+.post-bench .post-hero-fig { background: linear-gradient(160deg, rgba(42,168,184,.08), transparent 50%), var(--hero-panel); border-color: var(--hero-trace); }
+.post-bench .post-hero-fig::before, .post-bench .post-hero-fig::after { border-color: var(--signal); }
+.post-terminal .post-hero-fig { background: #0e161c; border-color: var(--hero-trace); }
+.post-terminal .post-hero-fig::before { color: var(--hero-muted); background: var(--hero-panel); border-bottom-color: var(--hero-line); }
+
+.post-lead { color: var(--text) !important; }
+.post-answer { border: 1px solid var(--line); background: var(--paper); box-shadow: var(--shadow); }
+.post-answer p { color: var(--text) !important; }
+.post-answer .post-answer-k { color: var(--teal) !important; }
+.post-sec-n { color: var(--teal); }
+.post-pairs > div { background: #fff; border: 1px solid var(--line); border-left: 3px solid var(--green); }
+.post-pairs dt { color: var(--text); }
+.post-pairs dd { color: var(--muted); }
+.post-steps { border-left-color: var(--line); }
+.post-steps li { color: var(--text); }
+.post-steps li .mono { background: var(--btn-bg); color: var(--btn-fg); }
+.post-cta { background: #fff; border: 1px dashed var(--green); }
+.post-cta .post-cta-h { color: var(--text); }
+.post-owner-name a { color: var(--text); }
+
+.post-card { background: #fff; border: 1px solid var(--line); box-shadow: var(--shadow); color: var(--text); }
+.post-card:hover, .post-card:focus-visible { border-color: var(--green); box-shadow: var(--shadow); }
+.post-card-fig { background: var(--paper); }
+.post-card-k { color: var(--teal); }
+.post-card-x { color: var(--muted); }
+.post-card-more, .post-all a { color: var(--green); }

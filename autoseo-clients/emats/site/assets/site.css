@@ -1,21 +1,29 @@
-/* EMATS: black, white and signal green. Circuit traces, binary and data pulses. */
+/* EMATS: light professional body, dark navy hero, one primary green + teal accent. */
 :root{
   /* ---- EMATS palette: change colours here only ---- */
-  --black:#040806;--dark:#08120c;--panel:#0d1a12;--line:#1c3626;--trace:#1f4a30;
-  --neon:#39ff88;        /* brightest green: buttons, highlights */
-  --green:#22e07a;       /* main signal green */
-  --emerald:#10b981;     /* deeper green for gradients */
-  --teal:#2dd4bf;        /* kickers, secondary accents */
-  --cyan:#22d3ee;        /* data pulses */
-  --blue:#3b9eff;        /* electric-blue pulses */
-  --amber:#fbbf24;       /* status LEDs, ticks */
-  --amber-2:#f59e0b;
-  --text:#eaf6ee;--muted:#a9c4b3;
-  --paper:#eef5f0;--paper-2:#e3eee6;--ink:#0a1710;--ink-2:#36503f;--green-ink:#0a6f39;
-  --grad-btn:linear-gradient(135deg,var(--neon),var(--green) 45%,var(--emerald));
-  --grad-card:linear-gradient(160deg,rgba(45,212,191,.08),rgba(13,26,18,0) 45%),linear-gradient(0deg,var(--panel),var(--panel));
-  --glow-green:0 0 18px rgba(57,255,136,.35);
-  --glow-cyan:0 0 14px rgba(34,211,238,.45);
+  /* Hero / header (slightly lighter navy-charcoal than the old #040806) */
+  --black:#121a22;--dark:#18232d;
+  --hero-panel:#1c2833;--hero-line:#2c3d4c;--hero-trace:#2a5a44;
+  --hero-text:#e8eef2;--hero-muted:#9aabba;
+  --signal:#3dcc7a;--signal-teal:#2aa8b8;--signal-cyan:#3bb8d0;--signal-blue:#5aa0e8;--signal-amber:#e6b422;
+  /* Page: white / very light grey, dark-grey text, one green + teal */
+  --panel:#ffffff;--line:#d8dee4;--trace:#c5cdd6;
+  --neon:#0a6b3b;        /* aliased to primary so leftover refs stay professional */
+  --green:#0a6b3b;       /* ONE primary green */
+  --emerald:#085c33;
+  --teal:#0e7490;        /* small teal accent */
+  --cyan:#0e7490;        /* folded into teal on the light page */
+  --blue:#0e7490;
+  --amber:#0a6b3b;       /* folded into primary on the light page */
+  --amber-2:#085c33;
+  --text:#1f2933;--muted:#4b5563;
+  --paper:#f6f8fa;--paper-2:#eef1f4;--ink:#1f2933;--ink-2:#4b5563;--green-ink:#0a6b3b;
+  --btn-bg:#0a6b3b;--btn-fg:#ffffff;--btn-bg-hover:#085c33;
+  --grad-btn:var(--btn-bg);
+  --grad-card:var(--panel);
+  --glow-green:none;
+  --glow-cyan:none;
+  --shadow:0 1px 2px rgba(16,24,40,.06),0 4px 10px rgba(16,24,40,.06);
   --hdr-h:65px;          /* sticky header height (64px bar + 1px border): jump targets stop below it */
   --r:14px;--mono:ui-monospace,SFMono-Regular,Menlo,Consolas,"Liberation Mono",monospace;
   --sans:system-ui,-apple-system,"Segoe UI",Roboto,"Noto Sans","PingFang SC","Microsoft YaHei",sans-serif;
@@ -445,3 +453,237 @@ main>.wrap:first-child{position:relative}
 @media (min-width:1001px){.car-track{grid-auto-columns:calc((100% - 28px)/3)}}
 @media (max-width:520px){.car-ctrl{flex-wrap:wrap;gap:6px 24px}.car-dots{order:-1;width:100%;flex-wrap:nowrap}}
 @media (prefers-reduced-motion:reduce){.car-track{scroll-behavior:auto}}
+
+
+/* ========== Light-theme retune (11 Nov 2026) ==========
+   Body sections: white / #f6f8fa, #1f2933 text, primary #0a6b3b + teal #0e7490.
+   Hero, header and article heroes stay slightly lighter navy and keep the circuit animation.
+   Button green is --btn-bg so it is not remapped inside the dark hero/header. */
+
+body{background:var(--paper);color:var(--text)}
+a{color:var(--green)}
+:focus-visible{outline-color:var(--green)}
+
+/* Dark chrome: remap inherited tokens so hero/header/circuit keep light text + signal pulses */
+.hdr,.hero,.phero,.post-hero{
+  --text:var(--hero-text);--muted:var(--hero-muted);
+  --panel:var(--hero-panel);--line:var(--hero-line);--trace:var(--hero-trace);
+  --green:var(--signal);--teal:var(--signal-teal);--neon:var(--signal);
+  --cyan:var(--signal-cyan);--blue:var(--signal-blue);
+  --amber:var(--signal-amber);--amber-2:var(--signal-amber);
+  color:var(--hero-text);
+}
+
+/* Sections below the hero go light. Heroes also carry sec-black, so exclude them. */
+.sec-black{background:#fff;color:var(--text)}
+.sec-dark{background:var(--paper);color:var(--text)}
+.sec-paper{background:var(--paper);color:var(--text)}
+.cta-sec{background:#fff;color:var(--text)}
+.hero.sec-black,.phero.sec-black,.post-hero.sec-black{color:var(--hero-text)}
+
+.hero{
+  background:
+    radial-gradient(60% 70% at 85% 25%,rgba(42,168,184,.10),transparent 60%),
+    radial-gradient(50% 60% at 10% 90%,rgba(61,204,122,.10),transparent 60%),
+    var(--black);
+}
+.phero{
+  background:
+    radial-gradient(60% 90% at 90% 20%,rgba(42,168,184,.10),transparent 60%),
+    var(--black);
+}
+.post-hero{
+  background:
+    radial-gradient(60% 90% at 88% 20%,rgba(42,168,184,.10),transparent 60%),
+    var(--black);
+}
+
+/* Header + mobile nav stay navy to match the hero */
+.hdr{background:rgba(18,26,34,.94);border-bottom:1px solid var(--hero-line)}
+.logo{color:var(--hero-text)}
+.logo-txt small{color:var(--hero-muted)}
+.logo-chip{color:var(--signal);filter:none}
+.nav a,.nav summary{color:var(--hero-text)}
+.nav a:hover,.nav summary:hover{background:var(--hero-panel)}
+.nav a[aria-current=page]{color:var(--signal)}
+.nav summary::after{color:var(--signal)}
+.langs{border-color:var(--hero-line)}
+.langs a{color:var(--hero-muted)}
+.langs a[aria-current]{background:var(--btn-bg);color:var(--btn-fg);font-weight:700}
+.menu-btn{border-color:var(--hero-line);color:var(--hero-text)}
+.sub{background:var(--dark);border-color:var(--hero-line);box-shadow:0 18px 40px rgba(0,0,0,.4)}
+@media (max-width:960px){
+  .nav{background:var(--dark);border-bottom-color:var(--hero-line)}
+}
+
+/* Buttons: solid primary green, white text, soft shadow, no neon glow */
+.skip{background:var(--btn-bg);color:var(--btn-fg)}
+.btn-wa,.ftr .btn-wa{
+  background:var(--btn-bg);color:var(--btn-fg);box-shadow:var(--shadow);filter:none
+}
+.btn-wa:hover,.ftr .btn-wa:hover{background:var(--btn-bg-hover);filter:none}
+.btn-wa.is-soon,.btn-wa.is-soon:hover{background:transparent;color:var(--muted);border:1.5px dashed var(--line);box-shadow:none}
+.btn-ghost{
+  border:1px solid var(--green);color:var(--green);
+  background:transparent;box-shadow:none
+}
+.btn-ghost:hover{background:rgba(10,107,59,.06);box-shadow:none}
+.hero .btn-ghost,.phero .btn-ghost,.post-hero .btn-ghost,.hdr .btn-ghost{
+  border-color:var(--signal);color:var(--signal)
+}
+.hero .btn-ghost:hover,.phero .btn-ghost:hover,.post-hero .btn-ghost:hover,.hdr .btn-ghost:hover{
+  background:rgba(61,204,122,.12)
+}
+
+/* Kickers / leads in light sections */
+.kicker{color:var(--teal)}
+.lead,.note{color:var(--muted)}
+.more-link{color:var(--green)}
+.sec-paper .kicker,.sec-black .kicker,.sec-dark .kicker,.cta-sec .kicker{color:var(--teal)}
+.sec-paper .lead,.sec-paper p,.sec-black .lead,.sec-dark .lead{color:var(--muted)}
+.sec-paper h2,.sec-paper h3,.sec-black h2,.sec-black h3,.sec-dark h2,.sec-dark h3,.cta-sec h2{color:var(--text)}
+.hero .kicker,.phero .kicker,.post-hero .kicker{color:var(--signal-teal)}
+.hero .lead,.phero .lead,.post-hero .lead,.hero .tagline,.hero p,.phero p,.post-hero p{color:var(--hero-muted)}
+.hero-wow h1{
+  background:linear-gradient(90deg,#fff 0%,#e8eef2 42%,var(--signal) 100%);
+  -webkit-background-clip:text;background-clip:text;color:transparent
+}
+.hero h1 span,.phero h1 span{color:var(--signal)}
+
+/* Cards, tiles, steps, FAQ, contact: white, 1px border, soft shadow, no glow */
+.chip-card,.tile,.istep,.why,.faq details,.ccard,.panel,.post-card{
+  background:#fff;border:1px solid var(--line);box-shadow:var(--shadow)
+}
+.chip-card:hover,.tile:hover,.post-card:hover,.post-card:focus-visible{
+  border-color:var(--green);box-shadow:var(--shadow);transform:translateY(-2px)
+}
+.chip-grid.feat .chip-card:first-child{background:#fff}
+.chip-code{background:var(--btn-bg);color:var(--btn-fg)}
+.chip-card p,.tile-sub,.istep p,.why p,.faq p,.ccard p{color:var(--muted)}
+.chip-card,.chip-card h3,.tile,.tile-name,.istep h3,.why,.faq summary,.ccard{color:var(--text)}
+.chip-more{color:var(--teal)}
+.why{border-top:3px solid var(--green);background:#fff}
+.why>span{background:none;-webkit-background-clip:unset;background-clip:unset;color:var(--green)}
+.why:nth-child(2){border-top-color:var(--teal)}
+.why:nth-child(3){border-top-color:var(--green)}
+.pins{background:
+  repeating-linear-gradient(180deg,#8a97a3 0 3px,transparent 3px 14px) left/7px 100% no-repeat,
+  repeating-linear-gradient(180deg,#8a97a3 0 3px,transparent 3px 14px) right/7px 100% no-repeat}
+
+.tile-go{background:var(--btn-bg);color:var(--btn-fg)}
+.tile-media{background:var(--paper)}
+.istep-ico{
+  background:rgba(10,107,59,.08);color:var(--green);
+  border:1px solid var(--line);box-shadow:none
+}
+.istep-ico b{background:var(--teal);color:#fff}
+
+/* Send-in steps stay as light cards even inside .sec-dark */
+.trace-steps li,.sec-dark .trace-steps li{background:#fff;border:1px solid var(--line)}
+.trace-steps p,.sec-dark .trace-steps p{color:var(--muted)}
+.trace-steps .node,.sec-dark .trace-steps .node{
+  background:var(--btn-bg);color:var(--btn-fg);border-color:#fff
+}
+.trace-line,.sec-dark .trace-line{background:linear-gradient(90deg,var(--green),var(--teal))}
+.trace-line::after,.sec-dark .trace-line::after{background:linear-gradient(90deg,transparent,#fff,transparent)}
+@media (max-width:900px){
+  .trace-line::after,.sec-dark .trace-line::after{background:linear-gradient(180deg,transparent,#fff,transparent)}
+}
+
+/* Photos, gallery, carousel */
+.ph{background:#fff;border:1px solid var(--line)}
+.ph::before,.ph::after{border-color:var(--green)}
+.ph figcaption{background:rgba(18,26,34,.86);color:var(--hero-text)}
+.ph-art figcaption{background:none;color:var(--muted)}
+.gal-item,.car-slide{background:#fff;border:1px solid var(--line);box-shadow:var(--shadow)}
+.car-slide figcaption{color:var(--text)}
+.car-slide figcaption::before{color:var(--teal)}
+.gal-hint{color:var(--teal)}
+.car-btn{
+  border:1px solid var(--line);background:#fff;color:var(--green);box-shadow:var(--shadow)
+}
+.car-btn:hover{box-shadow:var(--shadow);border-color:var(--green)}
+.car-dot::after{background:#c5cdd6}
+.car-dot[aria-current="true"]::after{background:var(--btn-bg)}
+.gal-track{scrollbar-color:var(--teal) transparent}
+
+/* Reels keep a dark video frame (media UI); labels stay light-on-dark for contrast */
+.reel{border:1px solid var(--line)}
+.reel-play{background:var(--btn-bg);box-shadow:0 2px 8px rgba(16,24,40,.25)}
+.reel-play::after{border-left-color:var(--btn-fg)}
+.reel-lbl{color:var(--hero-text)}
+.reel-lbl .mono{color:var(--signal)}
+
+/* FAQ / inner page typography / panels */
+.faq summary::before{color:var(--teal)}
+.prose p{color:var(--muted)}
+.ticks li{border-bottom-color:var(--line);color:var(--text)}
+.ticks li::before{background:var(--green);box-shadow:5px 0 0 var(--green)}
+.checklist li{background:#fff;border:1px solid var(--line);color:var(--text)}
+.checklist li::before{background:var(--btn-bg);color:var(--btn-fg)}
+.mini-steps li{border-bottom-color:var(--line);color:var(--text)}
+.mini-steps .mono{color:var(--teal)}
+.panel{background:#fff;border:1px solid var(--line);box-shadow:var(--shadow)}
+.crumbs,.crumbs a{color:var(--muted)}
+.crumbs [aria-current]{color:var(--green)}
+.crumbs li+li::before{color:var(--line)}
+.hours{color:var(--muted)}
+.hours .mono{color:var(--teal)}
+
+/* CTA terminal becomes a clean light card */
+.term{background:#fff;border:1px solid var(--line);box-shadow:var(--shadow)}
+.term-bar{background:var(--paper);border-bottom:1px solid var(--line)}
+.term-bar i{background:#c5cdd6}
+.term-bar i:first-child{background:var(--green)}
+.term-bar i:nth-child(2){background:var(--teal)}
+.term-bar i:nth-child(3){background:#c5cdd6}
+.term-bar span,.term-body p{color:var(--muted)}
+.term-body h2{color:var(--text)}
+
+/* Footer + mobile dock: light */
+.ftr{background:var(--paper);border-top:1px solid var(--line);color:var(--muted)}
+.ftr-logo,.ftr-h{color:var(--text)}
+.ftr a{color:var(--muted)}
+.ftr a:hover{color:var(--green)}
+.ftr-base{border-top:1px solid var(--line)}
+.ftr .btn-ghost{color:var(--green);border-color:var(--green)}
+@media (max-width:760px){
+  .dock{background:#fff;border-top:1px solid var(--line);box-shadow:0 -4px 16px rgba(16,24,40,.06)}
+  .dock .btn-wa.is-soon{background:var(--paper)}
+}
+
+/* Hero circuit art: keep animation, slightly lighter board, less glow */
+.art{background:radial-gradient(circle at 50% 50%,#163024,#0c1814 70%);border-color:var(--hero-trace)}
+.trace{stroke:#2a5a44}
+.flow{filter:drop-shadow(0 0 2px var(--signal))}
+.flow.f0{stroke:var(--signal-cyan);filter:drop-shadow(0 0 2px var(--signal-cyan))}
+.flow.f1{stroke:var(--signal);filter:drop-shadow(0 0 2px var(--signal))}
+.flow.f2{stroke:var(--signal-blue);filter:drop-shadow(0 0 2px var(--signal-blue))}
+.flow.f3{stroke:var(--signal-teal);filter:drop-shadow(0 0 2px var(--signal-teal))}
+.flow.f4{stroke:var(--signal-cyan);filter:drop-shadow(0 0 2px var(--signal-cyan))}
+.flow.f5{stroke:var(--signal);filter:drop-shadow(0 0 2px var(--signal))}
+.g-chip{fill:#13261c;stroke:var(--signal);filter:drop-shadow(0 0 3px rgba(61,204,122,.28))}
+.g-core{fill:var(--signal)}
+.pad{fill:#0c1814;stroke:var(--signal)}
+.via{fill:var(--signal)}
+.via.led{fill:var(--signal-amber)}
+.via.led.l2{fill:var(--signal-cyan)}
+.g-lbl{fill:var(--hero-muted)}
+.console{background:rgba(18,26,34,.92);border:1px solid var(--hero-line);color:var(--hero-muted);box-shadow:none}
+.console .ok{color:var(--signal)}
+.badges li{border-color:rgba(42,168,184,.35);background:rgba(28,40,51,.8);color:var(--hero-text)}
+.badges li::before{color:var(--signal-amber)}
+.bstream{border-block-color:rgba(42,168,184,.18)}
+.bstream span{color:var(--signal-cyan)}
+.bstream span+span{color:var(--signal)}
+.binary pre{color:var(--signal-cyan)}
+
+/* Breadcrumbs sit in a wrap above the dark page hero; keep that band navy (full-bleed). */
+main>.wrap:first-child:has(.crumbs)::before{
+  content:"";position:absolute;inset:0 auto -1px auto;left:50%;width:100vw;margin-left:-50vw;
+  background:var(--black);z-index:-1;pointer-events:none;
+}
+main>.wrap:first-child:has(.crumbs) .crumbs,
+main>.wrap:first-child:has(.crumbs) .crumbs a{color:var(--hero-muted)}
+main>.wrap:first-child:has(.crumbs) .crumbs [aria-current]{color:var(--signal)}
+main>.wrap:first-child:has(.crumbs) .crumbs li+li::before{color:var(--hero-line)}
