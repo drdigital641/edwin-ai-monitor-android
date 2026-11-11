@@ -1,0 +1,310 @@
+{
+ "_readme": "One article. English is the source; ms and zh carry the same keys. Facts only from the site (strings/en.json, data/business.json). No prices, warranties or timings.",
+ "slug": "car-aircond-not-cold",
+ "published": "2026-11-11",
+ "updated": "2026-11-11",
+ "service": "car-aircond-service",
+ "keyword": "car aircond not cold",
+ "look": {
+  "variant": "banner",
+  "visual": {
+   "type": "photo",
+   "key": "perodua-myvi-aircond"
+  }
+ },
+ "cta_after": 2,
+ "en": {
+  "title": "Car Aircond Not Cold? Common Causes",
+  "description": "Car aircond not cold? The common causes, what each symptom points to, why a gas top-up alone rarely fixes it, and what a proper check covers. Klang workshop.",
+  "keyword": "car aircond not cold",
+  "motif": "COLD?",
+  "h1": "Car aircond not cold? The common causes, and what a proper check looks for",
+  "lead": "Car aircond not cold any more? The cause is usually one of a few things: refrigerant that has leaked out, a blocked cabin filter, a cooling fan or condenser that can't get rid of heat, or a compressor that isn't doing its job. In Klang's heat it's tempting to just top up the gas, but finding the real cause first saves you paying twice.",
+  "answer": "Most cars that stop blowing cold have a refrigerant leak, a blocked cabin filter, a weak cooling fan or condenser, or a compressor fault. A gas top-up on its own only hides a leak for a while, so the cold air fades again. A proper aircond check finds which part has failed before anything is replaced.",
+  "topic": "my car aircond not being cold",
+  "excerpt": "What each aircond symptom usually points to, why a top-up alone rarely lasts, and what a proper check covers.",
+  "sections": [
+   {
+    "h2": "What you notice, and what it usually points to",
+    "p": [
+     "The way the aircond fails is a useful clue. These are the patterns drivers describe most often, and the usual suspects behind each one:"
+    ],
+    "pairs": [
+     {
+      "t": "Never really cold, even on full",
+      "d": "Often low refrigerant from a leak, or a compressor that isn't switching on."
+     },
+     {
+      "t": "Cold at first, then warm after a while",
+      "d": "Can point to a cooling fan or condenser problem, or a system that's low on refrigerant."
+     },
+     {
+      "t": "Cold while driving, warm in traffic",
+      "d": "Usually airflow over the condenser: a cooling fan that's weak or not running when the car is stopped."
+     },
+     {
+      "t": "Weak airflow from the vents",
+      "d": "Often a clogged cabin air filter, or a blower fan problem, rather than the gas."
+     },
+     {
+      "t": "A bad smell when it's on",
+      "d": "Usually a dirty cabin filter or build-up in the system that needs cleaning."
+     },
+     {
+      "t": "A new noise when the aircond is on",
+      "d": "Worth checking soon: it can come from the compressor or a fan."
+     }
+    ]
+   },
+   {
+    "h2": "Why topping up the gas is rarely the fix",
+    "p": [
+     "Refrigerant runs in a sealed system. It doesn't get used up like fuel, so if the level is low, it has leaked out somewhere.",
+     "Topping it up without finding the leak brings the cold back for a while, then the same thing happens again. That's why we check the system first to find out why it isn't cooling, then service or repair what's needed."
+    ]
+   },
+   {
+    "h2": "Quick checks you can do yourself first",
+    "p": [
+     "None of these need tools, and they can save you a trip:"
+    ],
+    "list": [
+     "Check the aircond button is on and the temperature is set to cold, not just the fan",
+     "Try recirculation mode on a hot day: it cools the air already inside the car",
+     "Look at the front grille: leaves or dirt blocking the condenser stop it getting rid of heat",
+     "With the aircond on and the car parked, listen for the cooling fan behind the radiator",
+     "Think back to when the cabin filter was last changed"
+    ],
+    "p_after": [
+     "If the air is still not cold after these, the cause is inside the system and needs a proper check."
+    ]
+   },
+   {
+    "h2": "What a proper aircond check covers",
+    "p": [
+     "A good check works from the symptom back to the part, instead of guessing. It usually covers:"
+    ],
+    "steps": [
+     "Asking what the aircond is doing and when it started",
+     "Checking how cold the air is at the vents and how strong the airflow is",
+     "Checking the compressor, the cooling fans and the condenser are working",
+     "Looking for the cause of any lost refrigerant before refilling",
+     "Explaining what was found, and quoting before any repair"
+    ],
+    "p_after": [
+     "At Carzy World we do aircond diagnostics, aircond servicing and the repairs found during the check, for all car brands. A recent job was an aircond service on a Perodua Myvi."
+    ]
+   }
+  ],
+  "faqs": [
+   {
+    "q": "Can I keep driving with the aircond not cold?",
+    "a": "Usually yes, because the aircond is for comfort. But if the engine temperature gauge starts rising, or you smell burning, stop and get the car checked: on most cars the same cooling fan also cools the engine."
+   },
+   {
+    "q": "Is a gas top-up enough?",
+    "a": "Only if nothing has leaked, which is rare. Refrigerant isn't used up, so a low level normally means a leak. Finding it first stops the problem coming back."
+   },
+   {
+    "q": "Do you do aircond service for Perodua and other brands?",
+    "a": "Yes. All car brands are welcome. A recent job was an aircond service on a Perodua Myvi. WhatsApp us your car model and what the aircond is doing."
+   }
+  ]
+ },
+ "ms": {
+  "title": "Aircond Kereta Tak Sejuk? Punca Biasa",
+  "description": "Aircond kereta tak sejuk? Punca biasa, apa yang setiap simptom tunjukkan, kenapa tambah gas sahaja jarang berkesan, dan apa yang diperiksa. Bengkel Klang.",
+  "keyword": "aircond kereta tak sejuk",
+  "motif": "SEJUK?",
+  "h1": "Aircond kereta tak sejuk? Punca biasa, dan apa yang dicari dalam pemeriksaan yang betul",
+  "lead": "Kalau aircond kereta tak sejuk lagi, puncanya biasanya salah satu daripada beberapa perkara: bahan pendingin (gas) yang dah bocor, penapis kabin yang tersumbat, kipas penyejuk atau kondenser yang tak dapat buang haba, atau pemampat (compressor) yang tak berfungsi. Dalam cuaca panas di Klang, memang senang nak tambah gas sahaja, tapi cari punca sebenar dulu boleh elak anda bayar dua kali.",
+  "answer": "Kebanyakan kereta yang berhenti hembus angin sejuk ada kebocoran bahan pendingin, penapis kabin tersumbat, kipas penyejuk atau kondenser yang lemah, atau kerosakan pemampat. Tambah gas sahaja cuma sorokkan kebocoran buat sementara, jadi angin sejuk hilang semula. Pemeriksaan aircond yang betul akan cari bahagian mana yang rosak sebelum apa-apa diganti.",
+  "topic": "aircond kereta saya tak sejuk",
+  "excerpt": "Apa yang biasanya ditunjukkan oleh setiap simptom aircond, kenapa tambah gas sahaja jarang tahan lama, dan apa yang diperiksa.",
+  "sections": [
+   {
+    "h2": "Apa yang anda perasan, dan apa puncanya",
+    "p": [
+     "Cara aircond rosak adalah petunjuk yang berguna. Ini corak yang paling kerap diceritakan pemandu, dan punca biasa di sebalik setiap satu:"
+    ],
+    "pairs": [
+     {
+      "t": "Tak betul-betul sejuk, walaupun pada tahap maksimum",
+      "d": "Selalunya bahan pendingin rendah akibat bocor, atau pemampat yang tak hidup."
+     },
+     {
+      "t": "Sejuk pada mulanya, lepas tu jadi panas selepas beberapa lama",
+      "d": "Boleh jadi masalah kipas penyejuk atau kondenser, atau sistem yang kekurangan bahan pendingin."
+     },
+     {
+      "t": "Sejuk masa memandu, panas bila tersekat dalam trafik",
+      "d": "Biasanya aliran udara melalui kondenser: kipas penyejuk yang lemah atau tak berjalan bila kereta berhenti."
+     },
+     {
+      "t": "Angin dari ventilasi lemah",
+      "d": "Selalunya penapis udara kabin yang tersumbat, atau masalah kipas blower, bukan masalah gas."
+     },
+     {
+      "t": "Bau tak sedap bila aircond dipasang",
+      "d": "Biasanya penapis kabin yang kotor atau kotoran terkumpul dalam sistem yang perlu dibersihkan."
+     },
+     {
+      "t": "Bunyi baru bila aircond dipasang",
+      "d": "Elok diperiksa secepat mungkin: bunyi itu boleh datang daripada pemampat atau kipas."
+     }
+    ]
+   },
+   {
+    "h2": "Kenapa tambah gas jarang jadi penyelesaian",
+    "p": [
+     "Bahan pendingin berada dalam sistem tertutup. Ia tak habis seperti minyak petrol, jadi kalau paras rendah, maknanya ia dah bocor di mana-mana.",
+     "Kalau tambah tanpa cari kebocoran, sejuk akan datang balik buat sementara, lepas tu benda yang sama berulang. Sebab itu kami periksa sistem dulu untuk tahu kenapa ia tak sejuk, kemudian servis atau baiki apa yang perlu."
+    ]
+   },
+   {
+    "h2": "Semakan cepat yang boleh anda buat sendiri dulu",
+    "p": [
+     "Semuanya tak perlukan alat, dan boleh jimatkan satu perjalanan:"
+    ],
+    "list": [
+     "Pastikan butang aircond dipasang dan suhu ditetapkan ke sejuk, bukan kipas sahaja",
+     "Cuba mod edaran semula (recirculation) pada hari panas: ia menyejukkan udara yang dah ada dalam kereta",
+     "Tengok grill depan: daun atau kotoran yang menghalang kondenser akan menghalangnya membuang haba",
+     "Dengan aircond dipasang dan kereta diparkir, dengar kipas penyejuk di belakang radiator",
+     "Cuba ingat bila kali terakhir penapis kabin ditukar"
+    ],
+    "p_after": [
+     "Kalau angin masih tak sejuk selepas semua ini, puncanya di dalam sistem dan perlukan pemeriksaan yang betul."
+    ]
+   },
+   {
+    "h2": "Apa yang diliputi pemeriksaan aircond yang betul",
+    "p": [
+     "Pemeriksaan yang baik bermula dari simptom hingga ke bahagian yang rosak, bukan meneka. Biasanya ia meliputi:"
+    ],
+    "steps": [
+     "Tanya apa yang aircond buat dan bila ia mula",
+     "Periksa betapa sejuk angin di ventilasi dan betapa kuat aliran udara",
+     "Periksa pemampat, kipas penyejuk dan kondenser berfungsi",
+     "Cari punca bahan pendingin yang hilang sebelum diisi semula",
+     "Terangkan apa yang dijumpai, dan beri sebut harga sebelum sebarang pembaikan"
+    ],
+    "p_after": [
+     "Di Carzy World kami buat diagnostik aircond, servis aircond dan pembaikan yang dijumpai semasa pemeriksaan, untuk semua jenama kereta. Kerja terbaru ialah servis aircond untuk Perodua Myvi."
+    ]
+   }
+  ],
+  "faqs": [
+   {
+    "q": "Boleh saya terus memandu kalau aircond tak sejuk?",
+    "a": "Biasanya boleh, sebab aircond untuk keselesaan. Tapi kalau tolok suhu enjin mula naik, atau anda bau hangus, berhenti dan bawa kereta untuk diperiksa: pada kebanyakan kereta, kipas penyejuk yang sama juga menyejukkan enjin."
+   },
+   {
+    "q": "Cukupkah tambah gas sahaja?",
+    "a": "Hanya kalau tiada apa yang bocor, dan itu jarang berlaku. Bahan pendingin tak habis digunakan, jadi paras rendah biasanya bermakna ada kebocoran. Cari dulu supaya masalah tak berulang."
+   },
+   {
+    "q": "Adakah anda buat servis aircond untuk Perodua dan jenama lain?",
+    "a": "Ya. Semua jenama kereta dialu-alukan. Kerja terbaru ialah servis aircond untuk Perodua Myvi. WhatsApp kami model kereta anda dan apa yang aircond buat."
+   }
+  ]
+ },
+ "zh": {
+  "title": "汽车冷气不冷?常见原因",
+  "description": "汽车冷气不冷?常见原因、各种症状代表什么、为什么只补冷媒很难解决,以及完整检查包括什么。巴生车厂。",
+  "keyword": "汽车冷气不冷",
+  "motif": "不冷?",
+  "h1": "汽车冷气不冷?常见原因,以及完整检查要找什么",
+  "lead": "如果你的汽车冷气不冷了,原因通常是几种之一:冷媒(gas)漏掉了、冷气滤网(cabin filter)塞住了、冷却风扇或冷凝器无法散热,或是压缩机没有正常工作。在巴生这么热的天气,很容易想说直接补冷媒就好,但先找出真正的原因,可以避免你花两次钱。",
+  "answer": "大部分冷气不再吹冷风的车子,是冷媒泄漏、冷气滤网塞住、冷却风扇或冷凝器变弱,或是压缩机故障。只补冷媒只是暂时盖住泄漏,所以冷风过一阵子又变弱。完整的冷气检查会在更换任何零件之前,先找出是哪个部分坏了。",
+  "topic": "我的汽车冷气不冷",
+  "excerpt": "各种冷气症状通常代表什么、为什么只补冷媒很难持久,以及完整检查包括什么。",
+  "sections": [
+   {
+    "h2": "你察觉到的症状,以及通常代表什么",
+    "p": [
+     "冷气出问题的方式本身就是一个很有用的线索。以下是车主最常描述的情况,以及每一种背后常见的原因:"
+    ],
+    "pairs": [
+     {
+      "t": "开到最大也不是真的冷",
+      "d": "常见原因是冷媒泄漏导致不足,或是压缩机没有启动。"
+     },
+     {
+      "t": "一开始冷,过一阵子变热",
+      "d": "可能是冷却风扇或冷凝器有问题,或是系统冷媒不足。"
+     },
+     {
+      "t": "开车时冷,塞车时变热",
+      "d": "通常是冷凝器的空气流通不够:冷却风扇太弱,或车子停下来时没有转动。"
+     },
+     {
+      "t": "出风口风力很弱",
+      "d": "常见原因是冷气滤网堵塞,或鼓风机有问题,而不是冷媒的问题。"
+     },
+     {
+      "t": "开冷气时有异味",
+      "d": "通常是冷气滤网太脏,或系统里积了污垢,需要清洗。"
+     },
+     {
+      "t": "开冷气时出现新的声音",
+      "d": "值得尽快检查:声音可能来自压缩机或风扇。"
+     }
+    ]
+   },
+   {
+    "h2": "为什么补冷媒很少是解决办法",
+    "p": [
+     "冷媒是在密封的系统里循环的。它不像汽油那样会用完,所以如果冷媒不足,就是在某个地方漏掉了。",
+     "没有找出泄漏处就补冷媒,冷气会暂时回来,然后同样的情况再次发生。这就是为什么我们先检查系统,找出为什么不冷,再做需要的保养或维修。"
+    ]
+   },
+   {
+    "h2": "你可以先自己做的快速检查",
+    "p": [
+     "这些都不需要工具,说不定还能省你跑一趟:"
+    ],
+    "list": [
+     "确认冷气按钮已开,温度调到冷,而不只是开了风扇",
+     "大热天试试内循环模式:它会冷却车内已有的空气",
+     "看看车头前格栅:落叶或污垢挡住冷凝器,它就无法散热",
+     "开着冷气把车子停好,听听散热器后面的冷却风扇有没有转",
+     "回想一下冷气滤网上次是什么时候换的"
+    ],
+    "p_after": [
+     "如果做完这些冷气还是不冷,原因就在系统里面,需要做完整的检查。"
+    ]
+   },
+   {
+    "h2": "完整的冷气检查包括什么",
+    "p": [
+     "好的检查是从症状一路查到出问题的零件,而不是乱猜。通常包括:"
+    ],
+    "steps": [
+     "询问冷气的情况,以及是从什么时候开始的",
+     "检查出风口的冷度和风力强弱",
+     "检查压缩机、冷却风扇和冷凝器是否正常运作",
+     "补冷媒之前,先找出冷媒流失的原因",
+     "说明检查发现了什么,并在任何维修之前先报价"
+    ],
+    "p_after": [
+     "在 Carzy World,我们提供冷气检测、冷气保养,以及检查中发现的维修,欢迎各种品牌的车子。最近的一个个案是 Perodua Myvi 的冷气保养。"
+    ]
+   }
+  ],
+  "faqs": [
+   {
+    "q": "冷气不冷,我还可以继续开车吗?",
+    "a": "通常可以,因为冷气是为了舒适。但如果引擎温度表开始上升,或是闻到烧焦味,就要停车并把车子拿去检查:大部分车子的同一个冷却风扇也负责冷却引擎。"
+   },
+   {
+    "q": "只补冷媒就够了吗?",
+    "a": "只有在没有任何泄漏的情况下才够,而这种情况很少。冷媒不会被用完,所以冷媒不足通常代表有泄漏。先找出来,问题才不会再回来。"
+   },
+   {
+    "q": "你们有做 Perodua 和其他品牌的冷气保养吗?",
+    "a": "有。欢迎各种品牌的车子。最近的一个个案是 Perodua Myvi 的冷气保养。请把你的车型和冷气的情况 WhatsApp 给我们。"
+   }
+  ]
+ }
+}

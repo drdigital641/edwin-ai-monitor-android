@@ -1,0 +1,271 @@
+{
+ "_readme": "One article. English is the source; ms and zh carry the same keys. Facts only from the site (strings/en.json, config.json) plus general, checkable workshop knowledge. No prices, warranties, turnaround times, brands or address.",
+ "slug": "ecu-no-communication-checks",
+ "published": "2026-11-11",
+ "updated": "2026-11-11",
+ "service": "ecu",
+ "keyword": "ECU no communication",
+ "look": {
+  "variant": "scope",
+  "visual": {
+   "type": "photo",
+   "key": "ecu-wired-test"
+  }
+ },
+ "cta_after": 2,
+ "en": {
+  "title": "ECU No Communication? Checks Before Sending It In",
+  "description": "ECU no communication with the scan tool? The power, earth, fuse and CAN bus checks to do first, the signs that point to the module, and how to send it in.",
+  "keyword": "ECU no communication",
+  "motif": "NO COMM",
+  "h1": "ECU no communication with the scan tool? What to check before you blame the module",
+  "lead": "When a car shows ECU no communication on the scan tool, the module itself is only one of the possible causes. Power and earth to the ECU, a blown fuse or relay, the diagnostic socket and the CAN bus wiring all give the same symptom. Ruling those out first saves your customer a module that didn't need repairing, and tells you when it's time to send the ECU in.",
+  "answer": "No communication with the ECU is often a supply or network fault, not a dead module. Check battery voltage, the ECU fuses and main relay, power and earth at the ECU connector, the diagnostic socket and the CAN bus. If those are all good and the other modules talk but the ECU still doesn't, the ECU is worth checking on the bench.",
+  "topic": "car ECU with no communication",
+  "excerpt": "The supply, earth, socket and CAN bus checks to do first, and the signs that the ECU itself is the fault.",
+  "sections": [
+   {
+    "h2": "First, does anything on the car talk?",
+    "p": [
+     "Start by asking whether the problem is the ECU alone or the whole network. That one answer decides where you look next:"
+    ],
+    "pairs": [
+     {
+      "t": "No module answers at all",
+      "d": "Look at the diagnostic socket, its power and earth, and the scan tool and lead before the ECU."
+     },
+     {
+      "t": "Other modules answer, the ECU doesn't",
+      "d": "Look at the ECU's own fuses, main relay, power, earth and its CAN connection."
+     },
+     {
+      "t": "The ECU answers sometimes",
+      "d": "Look for a loose connector, a poor earth or corrosion, and note whether heat or vibration changes it."
+     },
+     {
+      "t": "The ECU answers but the car won't start",
+      "d": "A different fault: read the codes and check the sensor, injector and ignition circuits it reports."
+     }
+    ]
+   },
+   {
+    "h2": "The checks to do before you remove the ECU",
+    "p": [
+     "These are standard checks, and most of them only need a multimeter and the wiring diagram for the car:"
+    ],
+    "steps": [
+     "Battery voltage with the ignition on, and again while cranking: a low supply can stop the ECU from waking up",
+     "Every fuse and the main relay that feed the ECU, tested under load rather than by eye",
+     "Power and earth at the ECU connector itself, with the connector plugged in where you can back-probe it",
+     "The diagnostic socket: on an OBD-II socket, pin 16 should have battery voltage, and pins 4 and 5 should be good earths",
+     "The CAN bus: with the battery disconnected, a healthy high-speed CAN bus usually reads about 60 ohms between pins 6 and 14 at the socket",
+     "The ECU connector and pins for water, green corrosion, pushed-back pins or signs of a previous repair"
+    ]
+   },
+   {
+    "h2": "Signs the ECU itself is the fault",
+    "p": [
+     "When the supply, earth and network checks all pass, these are the signs that point back to the module. They match the reasons workshops usually send an ECU to our bench:"
+    ],
+    "list": [
+     "Good power and earth at the connector, but the ECU still doesn't answer",
+     "The other modules on the same bus answer normally",
+     "Water damage, corrosion or burnt parts visible on the board or in the case",
+     "Cut-outs or lost communication that follow the module, not the wiring",
+     "Faults that keep returning after the wiring has been checked and repaired"
+    ]
+   },
+   {
+    "h2": "How to send the ECU in",
+    "p": [
+     "Once you've done the checks, WhatsApp us the car model, the fault you saw and the part number from the module label. A photo of the label helps, and so does a note of what you've already checked.",
+     "You send or drop off the module in Johor Bahru. We check it on the bench and tell you the fault and the cost before any repair starts. Once you agree, we repair it at component level, test it on the bench and send it back for your workshop to refit."
+    ]
+   }
+  ],
+  "faqs": [
+   {
+    "q": "Can a flat or weak battery cause ECU no communication?",
+    "a": "Yes. If the supply drops too low, the ECU may not wake up or may drop off the network while cranking. Check battery voltage with the ignition on and while cranking before anything else."
+   },
+   {
+    "q": "What should a CAN bus read between pins 6 and 14?",
+    "a": "On most cars with high-speed CAN, about 60 ohms with the battery disconnected, because two 120 ohm resistors sit at the ends of the bus. A reading far from that points to a wiring or termination problem rather than one module."
+   },
+   {
+    "q": "Do you need the whole car to check the ECU?",
+    "a": "No. Your workshop removes the ECU and sends or drops it off. We check it on the bench and tell you the fault and the cost before any repair."
+   }
+  ]
+ },
+ "ms": {
+  "title": "ECU Tiada Komunikasi? Semakan Sebelum Hantar",
+  "description": "ECU tiada komunikasi dengan alat imbas? Semakan kuasa, ground, fius dan CAN bus yang patut dibuat dulu, tanda yang menunjuk pada modul, dan cara menghantarnya.",
+  "keyword": "ECU tiada komunikasi",
+  "motif": "NO COMM",
+  "h1": "ECU tiada komunikasi dengan alat imbas? Apa yang perlu diperiksa sebelum menyalahkan modul",
+  "lead": "Bila kereta menunjukkan ECU tiada komunikasi pada alat imbas, modul itu sendiri hanyalah satu daripada beberapa punca yang mungkin. Kuasa dan ground ke ECU, fius atau relay yang putus, soket diagnostik dan wayar CAN bus semuanya memberi simptom yang sama. Singkirkan semua itu dulu supaya pelanggan anda tak bayar untuk modul yang tak perlu dibaiki, dan anda tahu bila masanya untuk hantar ECU masuk.",
+  "answer": "Tiada komunikasi dengan ECU selalunya masalah bekalan atau rangkaian, bukan modul yang mati. Periksa voltan bateri, fius ECU dan relay utama, kuasa dan ground pada penyambung ECU, soket diagnostik dan CAN bus. Kalau semua itu baik dan modul lain boleh berkomunikasi tapi ECU masih tak boleh, ECU itu patut diperiksa di meja kerja.",
+  "topic": "ECU kereta yang tiada komunikasi",
+  "excerpt": "Semakan bekalan, ground, soket dan CAN bus yang patut dibuat dulu, dan tanda bahawa ECU itu sendiri yang rosak.",
+  "sections": [
+   {
+    "h2": "Pertama, ada apa-apa pada kereta yang berkomunikasi?",
+    "p": [
+     "Mulakan dengan bertanya sama ada masalahnya pada ECU sahaja atau seluruh rangkaian. Jawapan itu menentukan ke mana anda periksa seterusnya:"
+    ],
+    "pairs": [
+     {
+      "t": "Tiada modul langsung yang menjawab",
+      "d": "Periksa soket diagnostik, kuasa dan ground-nya, serta alat imbas dan kabelnya sebelum ECU."
+     },
+     {
+      "t": "Modul lain menjawab, ECU tidak",
+      "d": "Periksa fius ECU sendiri, relay utama, kuasa, ground dan sambungan CAN-nya."
+     },
+     {
+      "t": "ECU kadang-kadang menjawab",
+      "d": "Cari penyambung yang longgar, ground yang lemah atau karat, dan catat sama ada haba atau getaran mengubahnya."
+     },
+     {
+      "t": "ECU menjawab tapi kereta tak boleh hidup",
+      "d": "Kerosakan lain: baca kod dan periksa litar sensor, injektor dan pencucuhan yang dilaporkan."
+     }
+    ]
+   },
+   {
+    "h2": "Semakan yang perlu dibuat sebelum anda tanggalkan ECU",
+    "p": [
+     "Ini semakan standard, dan kebanyakannya hanya perlukan multimeter dan gambar rajah pendawaian kereta itu:"
+    ],
+    "steps": [
+     "Voltan bateri dengan suis pencucuhan dibuka, dan sekali lagi semasa starter berputar: bekalan yang rendah boleh menghalang ECU daripada bangun",
+     "Setiap fius dan relay utama yang membekalkan ECU, diuji di bawah beban, bukan sekadar dilihat dengan mata",
+     "Kuasa dan ground pada penyambung ECU itu sendiri, dengan penyambung dipasang supaya anda boleh back-probe",
+     "Soket diagnostik: pada soket OBD-II, pin 16 patut ada voltan bateri, dan pin 4 dan 5 patut menjadi ground yang baik",
+     "CAN bus: dengan bateri diputuskan, CAN bus berkelajuan tinggi yang sihat biasanya bacaan kira-kira 60 ohm antara pin 6 dan 14 pada soket",
+     "Penyambung dan pin ECU: cari air, karat hijau, pin yang tertolak ke belakang atau tanda pembaikan sebelum ini"
+    ]
+   },
+   {
+    "h2": "Tanda bahawa ECU itu sendiri yang rosak",
+    "p": [
+     "Bila semakan bekalan, ground dan rangkaian semuanya lulus, ini tanda yang menunjuk balik kepada modul. Ia sama dengan sebab bengkel biasanya hantar ECU ke meja kerja kami:"
+    ],
+    "list": [
+     "Kuasa dan ground baik pada penyambung, tapi ECU masih tak menjawab",
+     "Modul lain pada bas yang sama menjawab seperti biasa",
+     "Kerosakan air, karat atau komponen terbakar yang nampak pada papan atau dalam casing",
+     "Putus-putus atau hilang komunikasi yang mengikut modul, bukan pendawaian",
+     "Kerosakan yang terus berulang selepas pendawaian diperiksa dan dibaiki"
+    ]
+   },
+   {
+    "h2": "Cara menghantar ECU masuk",
+    "p": [
+     "Selepas semakan dibuat, WhatsApp kami model kereta, kerosakan yang anda nampak dan nombor bahagian pada label modul. Gambar label membantu, begitu juga catatan tentang apa yang anda dah periksa.",
+     "Anda hantar atau serahkan modul di Johor Bahru. Kami periksa di meja kerja dan beritahu kerosakan serta kosnya sebelum sebarang pembaikan bermula. Bila anda setuju, kami baiki pada peringkat komponen, uji di meja kerja dan hantar balik untuk bengkel anda pasang semula."
+    ]
+   }
+  ],
+  "faqs": [
+   {
+    "q": "Bolehkah bateri lemah atau habis menyebabkan ECU tiada komunikasi?",
+    "a": "Boleh. Kalau bekalan jatuh terlalu rendah, ECU mungkin tak bangun atau tercicir daripada rangkaian semasa starter berputar. Periksa voltan bateri dengan suis pencucuhan dibuka dan semasa starter berputar sebelum apa-apa lagi."
+   },
+   {
+    "q": "Berapakah bacaan CAN bus antara pin 6 dan 14?",
+    "a": "Pada kebanyakan kereta dengan CAN berkelajuan tinggi, kira-kira 60 ohm dengan bateri diputuskan, kerana dua perintang 120 ohm berada di hujung bas. Bacaan yang jauh berbeza menunjukkan masalah pendawaian atau penamatan, bukan satu modul."
+   },
+   {
+    "q": "Adakah anda perlukan seluruh kereta untuk periksa ECU?",
+    "a": "Tidak. Bengkel anda tanggalkan ECU dan hantar atau serahkannya. Kami periksa di meja kerja dan beritahu kerosakan serta kosnya sebelum sebarang pembaikan."
+   }
+  ]
+ },
+ "zh": {
+  "title": "ECU 无法通讯?寄修前先做这些检查",
+  "description": "ECU 无法通讯,诊断仪连不上?先查电源、接地、保险丝和 CAN bus,看哪些迹象指向模块,以及如何寄修。",
+  "keyword": "ECU 无法通讯",
+  "motif": "NO COMM",
+  "h1": "ECU 无法通讯,诊断仪连不上?怪模块之前先检查这些",
+  "lead": "当车子出现 ECU 无法通讯的情况,模块本身只是其中一个可能的原因。ECU 的电源和接地、烧断的保险丝或继电器、诊断插座,以及 CAN bus 线路,都会出现同样的症状。先排除这些,可以让您的客户不必为一个根本不用修的模块花钱,也让您知道什么时候该把 ECU 寄来维修。",
+  "answer": "ECU 无法通讯,常常是供电或网络的问题,而不是模块坏了。检查电池电压、ECU 保险丝和主继电器、ECU 插头的电源和接地、诊断插座以及 CAN bus。如果这些都正常,其他模块能通讯而 ECU 仍然不行,就值得把 ECU 拿到维修台检测。",
+  "topic": "无法通讯的汽车 ECU",
+  "excerpt": "应先做的供电、接地、插座和 CAN bus 检查,以及哪些迹象代表 ECU 本身有故障。",
+  "sections": [
+   {
+    "h2": "首先,车上有没有任何模块能通讯?",
+    "p": [
+     "先问清楚,问题是只出在 ECU,还是整个网络。这个答案决定您接下来要查哪里:"
+    ],
+    "pairs": [
+     {
+      "t": "完全没有模块回应",
+      "d": "先检查诊断插座及其电源和接地,还有诊断仪和连接线,然后才查 ECU。"
+     },
+     {
+      "t": "其他模块有回应,ECU 没有",
+      "d": "检查 ECU 自己的保险丝、主继电器、电源、接地和 CAN 连接。"
+     },
+     {
+      "t": "ECU 时有时无",
+      "d": "找找有没有插头松脱、接地不良或腐蚀,并记下热度或震动是否会改变情况。"
+     },
+     {
+      "t": "ECU 有回应,但车子无法启动",
+      "d": "这是另一种故障:读取故障码,检查它报告的传感器、喷油嘴和点火线路。"
+     }
+    ]
+   },
+   {
+    "h2": "拆下 ECU 之前要做的检查",
+    "p": [
+     "这些都是标准检查,大部分只需要一个万用表和该车的线路图:"
+    ],
+    "steps": [
+     "开启点火开关时的电池电压,以及启动马达转动时的电压:供电太低可能让 ECU 无法唤醒",
+     "供电给 ECU 的每一个保险丝和主继电器,要在带负载的情况下测试,不能只用眼睛看",
+     "ECU 插头本身的电源和接地,插头保持插上,这样才能从背面探测(back-probe)",
+     "诊断插座:OBD-II 插座的 16 号针脚应有电池电压,4 号和 5 号针脚应是良好的接地",
+     "CAN bus:拆下电池后,正常的高速 CAN bus 在插座的 6 号和 14 号针脚之间,通常读数约 60 ohm",
+     "检查 ECU 插头和针脚有没有进水、绿色锈蚀、针脚被推回去或曾经维修过的痕迹"
+    ]
+   },
+   {
+    "h2": "哪些迹象代表 ECU 本身有故障",
+    "p": [
+     "当供电、接地和网络检查都通过了,以下这些迹象就指向模块本身。它们也正是车厂通常把 ECU 寄到我们维修台的原因:"
+    ],
+    "list": [
+     "插头处的电源和接地都正常,但 ECU 仍然没有回应",
+     "同一条总线上的其他模块通讯正常",
+     "电路板上或外壳内能看到进水、腐蚀或烧焦的零件",
+     "断断续续或失去通讯的情况是跟着模块走,而不是跟着线路走",
+     "线路检查并修复之后,故障仍然反复出现"
+    ]
+   },
+   {
+    "h2": "如何把 ECU 寄来维修",
+    "p": [
+     "做完检查后,请把车型、您看到的故障,以及模块标签上的零件编号 WhatsApp 给我们。附上标签照片会更方便,把您已经检查过的项目一并告诉我们也有帮助。",
+     "您可以把模块寄来或亲自送到新山。我们在维修台上检测,维修开始之前先告诉您故障原因和费用。您同意后,我们做元件级维修,在维修台上测试,再寄回给您的车厂重新装回。"
+    ]
+   }
+  ],
+  "faqs": [
+   {
+    "q": "电池没电或电力不足,会造成 ECU 无法通讯吗?",
+    "a": "会。如果供电掉得太低,ECU 可能无法唤醒,或在启动马达转动时从网络中掉线。其他检查之前,先量电池电压:点火开关开启时和启动时各量一次。"
+   },
+   {
+    "q": "CAN bus 的 6 号和 14 号针脚之间应该读到多少?",
+    "a": "大部分使用高速 CAN 的车子,拆下电池后约 60 ohm,因为总线两端各有一个 120 ohm 的电阻。读数与此相差很大,代表是线路或终端电阻的问题,而不是单一模块的问题。"
+   },
+   {
+    "q": "检查 ECU 需要把整辆车送来吗?",
+    "a": "不需要。由您的车厂拆下 ECU,寄来或亲自送来。我们在维修台上检测,并在任何维修之前先告诉您故障原因和费用。"
+   }
+  ]
+ }
+}

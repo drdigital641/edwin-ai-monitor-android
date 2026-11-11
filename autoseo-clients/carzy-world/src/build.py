@@ -35,6 +35,12 @@ E = html.escape
 CSS = (ROOT / "assets" / "site.css").read_text(encoding="utf-8")
 JS = (ROOT / "assets" / "site.js").read_text(encoding="utf-8")
 ASSET_V = hashlib.sha256((CSS + JS).encode()).hexdigest()[:10]
+# Articles (11 Nov 2026): one JSON file per article in data/articles/, rendered by templates/article*.html.
+# Their CSS is a separate file loaded only on article pages, so a night run never changes site.css.
+ART_CSS = (ROOT / "assets" / "articles.css").read_text(encoding="utf-8")
+ART_V = hashlib.sha256(ART_CSS.encode()).hexdigest()[:10]
+ARTICLES = sorted((json.loads(f.read_text(encoding="utf-8")) for f in (ROOT / "data" / "articles").glob("*.json")),
+                  key=lambda a: (a["published"], a["slug"]), reverse=True)
 PHOTO = {p["key"]: p for p in SITE["photos"]}
 SIZES = {}  # key -> (w, h), filled by build_images()
 PAGES = []  # (path, html, lang)
@@ -321,7 +327,7 @@ def service_pills(L):
 
 
 # ------------------------------------------------------------------ page shell
-NAV = [("services/", "services"), ("#work", "work"), ("#reviews", "reviews"), ("about/", "about"), ("contact/", "contact")]
+NAV = [("services/", "services"), ("#work", "work"), ("#reviews", "reviews"), ("articles/", "articles"), ("about/", "about"), ("contact/", "contact")]
 
 
 def page(L, path, title, description, body, graph_extra=(), current="", body_class="", cta=None, preload=""):
@@ -342,7 +348,7 @@ def page(L, path, title, description, body, graph_extra=(), current="", body_cla
                 base=BASE, logo_alt=E(s["photos"]["logo"]), nav_aria=E(ui["nav_aria"]), nav_links=nav, lang_aria=E(ui["lang_aria"]),
                 lang_links=lang_links, wa_general=L.wa("general"), wa_icon=wa_icon(), whatsapp_us=E(ui["whatsapp_us"]), menu=E(ui["menu"]))
     doc += body
-    pages = [("", ui["nav"]["home"]), ("services/", ui["nav"]["services"]), ("about/", ui["nav"]["about"]), ("contact/", ui["nav"]["contact"])]
+    pages = [("", ui["nav"]["home"]), ("services/", ui["nav"]["services"]), ("articles/", ui["nav"]["articles"]), ("about/", ui["nav"]["about"]), ("contact/", ui["nav"]["contact"])]
     doc += fill("footer", cta_band=cta if cta is not None else cta_band(L, "page"), name=E(BIZ["name"]), tagline=E(BIZ["tagline"]),
                 company_label=E(ui["company_label"]), company_no=E(BIZ["company_no"]), facebook_url=E(BIZ["facebook_url"]), facebook=E(ui["facebook"]),
                 listing_url=E(BIZ["google_listing_url"]), find_on_maps=E(ui["find_on_maps"]), read_reviews=E(ui["read_reviews"]), h_visit=E(ui["footer_visit"]), address=E(BIZ["address_full"]),
@@ -478,9 +484,147 @@ def build_contact(L):
     page(L, "contact/", cp["title"], cp["description"], body, graph_extra=[crumbs_node(L, crumbs)], current="contact/", cta=cta_band(L, "contact"))
 
 
+
+# ------------------------------------------------------------------ articles
+# One shared template for every article (templates/article.html + article_cta.html + article_card.html).
+# A night run adds ONE file to data/articles/<slug>.json (en/ms/zh text) and rebuilds; nothing else is hand-edited.
+SVC_META = {m["slug"]: m for m in SITE["services"]}
+LOOKS = ("banner", "split", "poster")
+
+
+def art_date(L, iso):
+    y, m, d = iso.split("-")
+    if L.code == "zh":
+        return f"{y}年{int(m)}月{int(d)}日"
+    return f"{int(d)} {L.ui['months'][int(m) - 1]} {y}"
+
+
+def art_minutes(a):
+    words = sum(len(" ".join([x.get("lead", ""), x.get("answer", "")] + [" ".join(sec.get("p", []) + sec.get("list", []) + sec.get("steps", [])
+                + [p["t"] + " " + p["d"] for p in sec.get("pairs", [])]) for sec in x["sections"]]).split()) for x in [a["en"]])
+    return max(2, round(words / 200))
+
+
+def art_visual(L, path, a, sizes, eager=False):
+    v = a["look"]["visual"]
+    if v["type"] == "photo":
+        return photo(L, v["key"], sizes, eager=eager)
+    return visual(L, path, SVC_META[a["service"]], sizes)
+
+
+def art_image_url(a):
+    v = a["look"]["visual"]
+    if v["type"] == "photo":
+        return abs_url("", "img/" + PHOTO[v["key"]]["file"])
+    return abs_url("", "img/" + PHOTO["shop-exterior"]["file"])
+
+
+def art_section(sec):
+    out = f'          <section class="art-sec">\n            <h2>{E(sec["h2"])}</h2>\n'
+    out += "".join(f"            <p>{E(x)}</p>\n" for x in sec.get("p", []))
+    if sec.get("pairs"):
+        out += '            <dl class="art-pairs">' + "".join(f'<div><dt>{E(x["t"])}</dt><dd>{E(x["d"])}</dd></div>' for x in sec["pairs"]) + "</dl>\n"
+    if sec.get("steps"):
+        out += '            <ol class="art-steps">' + "".join(f"<li>{E(x)}</li>" for x in sec["steps"]) + "</ol>\n"
+    if sec.get("list"):
+        out += "            " + ticks(sec["list"]) + "\n"
+    for sub in sec.get("h3", []):
+        out += f'            <h3>{E(sub["h3"])}</h3>\n            <p>{E(sub["p"])}</p>\n'
+    for x in sec.get("p_after", []):
+        out += f"            <p>{E(x)}</p>\n"
+    return out + "          </section>\n"
+
+
+def art_card(L, a, here=""):
+    t = a[L.code]
+    sv = L.s["services"][a["service"]]
+    return fill("article_card", url=L.url(f"articles/{a['slug']}/"), visual=art_visual(L, here, a, "(max-width: 700px) 90vw, 33vw"),
+                kicker=E(sv["short"]), published_iso=a["published"], published=E(art_date(L, a["published"])), title=E(t["h1"]),
+                excerpt=E(t["excerpt"]), read_more=E(L.s["articles"]["read_more"])).rstrip("\n")
+
+
+def build_article(L, a):
+    s, ui, au = L.s, L.ui, L.s["articles"]
+    t = a[L.code]
+    path = f"articles/{a['slug']}/"
+    sv = s["services"][a["service"]]
+    svc_url = L.url(f"services/{a['service']}/")
+    wa = L.wa("service", t["topic"])
+    crumbs = [("", ui["nav"]["home"]), ("articles/", ui["nav"]["articles"]), (path, t["h1"])]
+    links = [f'<a href="{L.url(p)}">{E(n)}</a>' for p, n in crumbs[:-1]]
+    secs = ""
+    for i, sec in enumerate(t["sections"]):
+        secs += art_section(sec)
+        if i + 1 == a.get("cta_after", 2):
+            secs += fill("article_cta", heading=E(au["cta_h"]), text=E(au["cta_text"]), wa=wa, wa_icon=wa_icon(), whatsapp_now=E(ui["whatsapp_now"]))
+    others = [o for o in ARTICLES if o["slug"] != a["slug"]][:3]
+    more = ""
+    if others:
+        more = section(kh2(au["more_kicker"], au["more_h2"]) + '        <div class="art-cards">\n' + "\n".join(art_card(L, o, path) for o in others)
+                       + f'\n        </div>\n        <p class="center"><a class="link" href="{L.url("articles/")}">{E(au["all"])} →</a></p>\n', alt="tint-b")
+    body = fill("article", variant=a["look"]["variant"], hero_visual=art_visual(L, path, a, "100vw", eager=True), motif=E(t.get("motif", "")),
+                crumb_aria=E(ui["breadcrumb_aria"]), crumbs=" / ".join(links), service_url=svc_url, kicker=E(sv["short"]), h1=E(t["h1"]),
+                published_iso=a["published"], published=E(art_date(L, a["published"])),
+                read_time=E(au["read_time"].replace("{n}", str(art_minutes(a)))), byline=E(au["byline"]),
+                wa=wa, wa_icon=wa_icon(), whatsapp_now=E(ui["whatsapp_now"]), phone_e164=BIZ["phone_e164"], call_label=L.call_label(), trust=trust(L),
+                lead=E(t["lead"]), answer_label=E(au["answer"]), answer=E(t["answer"]), sections=secs.rstrip("\n"),
+                owner_kicker=E(au["owner_kicker"]), owner_visual=visual(L, path, SVC_META[a["service"]], "300px"), service_name=E(sv["title"]),
+                service_card=E(sv["card"]), owner_cta=E(au["owner_cta"]),
+                faq=faq_block(L, t["faqs"], au["faq_h2"], kicker=au["faq_kicker"], alt=True), more=more)
+    url = abs_url(L.prefix, path)
+    article = {"@type": "Article", "@id": url + "#article", "headline": t["h1"], "description": t["description"], "inLanguage": s["meta"]["schema_lang"],
+               "datePublished": a["published"], "dateModified": a.get("updated", a["published"]), "image": art_image_url(a),
+               "keywords": t.get("keyword", a["keyword"]), "mainEntityOfPage": url, "author": {"@id": BIZ["site_url"] + "#business"},
+               "publisher": {"@id": BIZ["site_url"] + "#business"}, "about": {"@type": "Service", "name": sv["title"], "url": abs_url(L.prefix, f"services/{a['service']}/")}}
+    css = f'  <link rel="stylesheet" href="{BASE}assets/articles.css?v={ART_V}">\n'
+    page(L, path, t["title"] + s["meta"]["title_suffix"], t["description"], body, graph_extra=[article, crumbs_node(L, crumbs), faq_node(L, t["faqs"])],
+         current="articles/", body_class="article-page", cta=cta_band(L, "article", wa), preload=css)
+
+
+def build_articles_index(L):
+    s, ui, au = L.s, L.ui, L.s["articles"]
+    path = "articles/"
+    crumbs = [("", ui["nav"]["home"]), (path, ui["nav"]["articles"])]
+    body = page_hero(L, crumbs, au["eyebrow"], au["h1"], au["lead"], "articles", L.wa("general"))
+    cards = "\n".join(art_card(L, a, path) for a in ARTICLES)
+    body += section(f'        <h2>{E(au["list_h2"])}</h2>\n        <div class="art-cards">\n{cards}\n        </div>\n', alt="tint-a")
+    items = [{"@type": "ListItem", "position": i + 1, "url": abs_url(L.prefix, f"articles/{a['slug']}/"), "name": a[L.code]["h1"]} for i, a in enumerate(ARTICLES)]
+    coll = {"@type": "CollectionPage", "name": au["h1"], "url": abs_url(L.prefix, path), "inLanguage": s["meta"]["schema_lang"],
+            "mainEntity": {"@type": "ItemList", "itemListElement": items}}
+    css = f'  <link rel="stylesheet" href="{BASE}assets/articles.css?v={ART_V}">\n'
+    page(L, path, au["title"], au["description"], body, graph_extra=[coll, crumbs_node(L, crumbs)], current="articles/", cta=cta_band(L, "articles"), preload=css)
+
+
+def check_articles():
+    """Stops the build on a broken article file: every language complete, real service, real photo, known look."""
+    need = ("title", "description", "h1", "lead", "answer", "sections", "faqs", "topic", "excerpt")
+    for a in ARTICLES:
+        for k in ("slug", "published", "service", "keyword", "look"):
+            if k not in a:
+                raise SystemExit(f"article {a.get('slug')}: missing {k}")
+        if a["service"] not in SVC_META:
+            raise SystemExit(f"article {a['slug']}: unknown service {a['service']}")
+        if a["look"]["variant"] not in LOOKS:
+            raise SystemExit(f"article {a['slug']}: look.variant must be one of {LOOKS}")
+        v = a["look"]["visual"]
+        if v["type"] == "photo" and v["key"] not in PHOTO:
+            raise SystemExit(f"article {a['slug']}: unknown photo {v['key']}")
+        for cfg in LANGS:
+            t = a.get(cfg["code"])
+            if not t or any(not t.get(k) for k in need):
+                raise SystemExit(f"article {a['slug']}: {cfg['code']} text incomplete (needs {', '.join(need)})")
+        if a["keyword"].lower() not in (a["en"]["title"] + " " + a["en"]["h1"]).lower() or a["keyword"].lower() not in a["en"]["lead"].lower():
+            raise SystemExit(f"article {a['slug']}: keyword '{a['keyword']}' must be in the English title or H1, and in the first paragraph")
+        for code in ("ms", "zh"):
+            if a[code]["lead"] == a["en"]["lead"] or a[code]["h1"] == a["en"]["h1"]:
+                raise SystemExit(f"article {a['slug']}: {code} text is still English")
+
+
 # ------------------------------------------------------------------ extras
 def page_paths():
-    return [""] + ["services/"] + [f"services/{m['slug']}/" for m in SITE["services"]] + ["about/", "contact/"]
+    # Articles join the sitemap only once the site is live on its own domain (preview false): previews stay out of every sitemap.
+    arts = [] if BIZ["preview"] else ["articles/"] + [f"articles/{a['slug']}/" for a in ARTICLES]
+    return [""] + ["services/"] + [f"services/{m['slug']}/" for m in SITE["services"]] + ["about/", "contact/"] + arts
 
 
 def build_sitemap():
@@ -504,6 +648,8 @@ def build_llms():
            f"- Company no.: {BIZ['company_no']}", f"- {t['reviews']}", f"- Google Business listing: {BIZ['google_listing_url']}", f"- Google Maps: {BIZ['maps_url']}", f"- Facebook: {BIZ['facebook_url']}",
            f"- {t['offer']}", "", f"## {t['services']}", ""]
     out += [f"- [{en['services'][m['slug']]['title']}]({live_url('', 'services/' + m['slug'] + '/')}): {en['services'][m['slug']]['intro']}" for m in SITE["services"]]
+    if not BIZ["preview"] and ARTICLES:
+        out += ["", "## Articles", ""] + [f"- [{a['en']['h1']}]({live_url('', 'articles/' + a['slug'] + '/')}): {a['en']['answer']}" for a in ARTICLES]
     out += ["", f"## {t['pages']}", ""]
     for cfg in LANGS:
         s = STR[cfg["code"]]
@@ -517,12 +663,16 @@ def main():
         shutil.rmtree(OUT)
     OUT.mkdir()
     build_images()
+    check_articles()
     for cfg in LANGS:
         L = Lang(cfg)
         build_home(L)
         build_services(L)
         build_about(L)
         build_contact(L)
+        build_articles_index(L)
+        for a in ARTICLES:
+            build_article(L, a)
     for path, doc, _ in PAGES:
         f = OUT / (path + "index.html")
         f.parent.mkdir(parents=True, exist_ok=True)
@@ -530,6 +680,7 @@ def main():
     (OUT / "assets").mkdir(exist_ok=True)
     (OUT / "assets" / "site.css").write_text(CSS, encoding="utf-8")
     (OUT / "assets" / "site.js").write_text(JS, encoding="utf-8")
+    (OUT / "assets" / "articles.css").write_text(ART_CSS, encoding="utf-8")
     build_sitemap()
     build_llms()
     print(f"built {len(PAGES)} pages into {OUT}")

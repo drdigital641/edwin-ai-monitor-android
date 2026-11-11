@@ -23,7 +23,8 @@
    "work": "近期作品",
    "reviews": "评价",
    "about": "关于我们",
-   "contact": "联络我们"
+   "contact": "联络我们",
+   "articles": "文章"
   },
   "nav_aria": "主菜单",
   "menu": "菜单",
@@ -615,5 +616,26 @@
    "caption": "修正 Audi TT 上不当的改装和磨损的避震。",
    "topic": "修复我的车子"
   }
+ },
+ "articles": {
+  "title": "巴生车厂的汽车保养文章 | Carzy World",
+  "description": "Carzy World(巴生 Air Hitam 车厂)的汽车保养文章,用简单的话讲解冷气、保养、刹车、电路故障、电动车和经典车。",
+  "eyebrow": "文章",
+  "h1": "来自巴生车厂的汽车保养文章",
+  "lead": "Carzy World 团队针对我们在巴生 Air Hitam 车厂常见的汽车问题,给出直接的解答。每篇文章都附上处理该问题的服务页面。",
+  "list_h2": "最新文章",
+  "read_more": "阅读文章",
+  "read_time": "约{n}分钟阅读",
+  "byline": "Carzy World 巴生",
+  "answer": "简短回答",
+  "owner_kicker": "相关服务",
+  "owner_cta": "查看服务",
+  "cta_h": "现在就遇到这个问题?",
+  "cta_text": "在 WhatsApp 发给我们车型、年份和车子的状况,我们会告诉你可能的原因并给你报价。",
+  "faq_kicker": "常见问题",
+  "faq_h2": "关于这个主题的问题",
+  "more_kicker": "继续阅读",
+  "more_h2": "更多车厂文章",
+  "all": "所有文章"
  }
 }

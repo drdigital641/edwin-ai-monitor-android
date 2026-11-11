@@ -18,7 +18,8 @@
    "services": "Repairs",
    "workshops": "For workshops",
    "about": "About",
-   "contact": "Contact"
+   "contact": "Contact",
+   "articles": "Articles"
   },
   "wa_cta": "WhatsApp us",
   "wa_cta_short": "WhatsApp",
@@ -512,5 +513,39 @@
   "ecu-case": "Engine control unit in metal case",
   "cluster-bench": "Instrument cluster powered up on bench",
   "ecu-open-case": "Engine ECU with case open"
+ },
+ "articles": {
+  "title": "ECU & Module Repair Articles for Workshops | EMATS Johor Bahru",
+  "description": "Bench notes for car workshops from EMATS in Johor Bahru: ECU/ECM, ABS module, instrument cluster and control module faults, and when a module is worth sending in.",
+  "title_suffix": " | EMATS",
+  "eyebrow": "Articles · for workshops",
+  "h1": "Bench notes for workshops",
+  "lead": "Practical notes from the EMATS bench in Johor Bahru on car electronic modules: what to check before you blame the module, and when sending it in for component-level repair makes sense.",
+  "list_h2": "Latest articles",
+  "read_more": "Read the article",
+  "read_time": "{n} min read",
+  "byline": "EMATS, Johor Bahru",
+  "answer": "Short answer",
+  "owner_kicker": "Repair for this",
+  "owner_cta": "See the repair page",
+  "cta_h": "Got a module that fits this?",
+  "cta_text": "WhatsApp us the car model, the fault and the part number from the module label. We check it on the bench and tell you the fault and the cost before any repair.",
+  "more_kicker": "More from the bench",
+  "more_h2": "More articles",
+  "all": "All articles",
+  "months": [
+   "Jan",
+   "Feb",
+   "Mar",
+   "Apr",
+   "May",
+   "Jun",
+   "Jul",
+   "Aug",
+   "Sep",
+   "Oct",
+   "Nov",
+   "Dec"
+  ]
  }
 }

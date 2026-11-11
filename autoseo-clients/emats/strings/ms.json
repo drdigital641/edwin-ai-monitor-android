@@ -18,7 +18,8 @@
    "services": "Pembaikan",
    "workshops": "Untuk bengkel",
    "about": "Tentang kami",
-   "contact": "Hubungi"
+   "contact": "Hubungi",
+   "articles": "Artikel"
   },
   "wa_cta": "WhatsApp kami",
   "wa_cta_short": "WhatsApp",
@@ -512,5 +513,39 @@
   "ecu-case": "Unit kawalan enjin dalam sarung logam",
   "cluster-bench": "Meter kluster dihidupkan di meja kerja",
   "ecu-open-case": "ECU enjin dengan sarung terbuka"
+ },
+ "articles": {
+  "title": "Artikel Baiki ECU & Modul untuk Bengkel | EMATS Johor Bahru",
+  "description": "Nota bangku kerja untuk bengkel kereta dari EMATS di Johor Bahru: kerosakan ECU/ECM, modul ABS, kluster meter dan modul kawalan, dan bila modul patut dihantar.",
+  "title_suffix": " | EMATS",
+  "eyebrow": "Artikel · untuk bengkel",
+  "h1": "Nota bangku kerja untuk bengkel",
+  "lead": "Nota praktikal dari bangku kerja EMATS di Johor Bahru tentang modul elektronik kereta: apa yang perlu diperiksa sebelum menyalahkan modul, dan bila menghantarnya untuk pembaikan tahap komponen berbaloi.",
+  "list_h2": "Artikel terkini",
+  "read_more": "Baca artikel",
+  "read_time": "{n} minit bacaan",
+  "byline": "EMATS, Johor Bahru",
+  "answer": "Jawapan ringkas",
+  "owner_kicker": "Pembaikan untuk ini",
+  "owner_cta": "Lihat halaman pembaikan",
+  "cta_h": "Ada modul yang sepadan dengan ini?",
+  "cta_text": "WhatsApp kami model kereta, kerosakan dan nombor part pada label modul. Kami periksa di bangku kerja dan beritahu kerosakan serta kosnya sebelum sebarang pembaikan.",
+  "more_kicker": "Lagi dari bangku kerja",
+  "more_h2": "Lagi artikel",
+  "all": "Semua artikel",
+  "months": [
+   "Jan",
+   "Feb",
+   "Mac",
+   "Apr",
+   "Mei",
+   "Jun",
+   "Jul",
+   "Ogo",
+   "Sep",
+   "Okt",
+   "Nov",
+   "Dis"
+  ]
  }
 }

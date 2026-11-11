@@ -23,7 +23,8 @@
    "work": "Kerja terkini",
    "reviews": "Ulasan",
    "about": "Tentang kami",
-   "contact": "Hubungi"
+   "contact": "Hubungi",
+   "articles": "Artikel"
   },
   "nav_aria": "Menu utama",
   "menu": "Menu",
@@ -615,5 +616,26 @@
    "caption": "Betulkan ubah suai yang teruk dan suspension yang haus pada sebuah Audi TT.",
    "topic": "pemulihan kereta saya"
   }
+ },
+ "articles": {
+  "title": "Artikel Penjagaan Kereta dari Bengkel Kami di Klang | Carzy World",
+  "description": "Artikel penjagaan kereta yang mudah difahami dari Carzy World, bengkel kereta di Air Hitam, Klang: aircond, servis, brek, elektrik, EV dan kereta klasik.",
+  "eyebrow": "Artikel",
+  "h1": "Artikel penjagaan kereta dari bengkel kami di Klang",
+  "lead": "Jawapan terus untuk masalah kereta yang kami jumpa di bengkel kami di Air Hitam, Klang, ditulis oleh pasukan Carzy World. Setiap artikel ada pautan ke servis yang membaikinya.",
+  "list_h2": "Artikel terkini",
+  "read_more": "Baca artikel",
+  "read_time": "{n} minit bacaan",
+  "byline": "Carzy World, Klang",
+  "answer": "Jawapan ringkas",
+  "owner_kicker": "Servis untuk masalah ini",
+  "owner_cta": "Lihat servis",
+  "cta_h": "Ada masalah ini sekarang?",
+  "cta_text": "Hantar model kereta, tahun dan apa yang berlaku melalui WhatsApp. Kami akan beritahu apa yang kami rasa puncanya dan beri sebut harga.",
+  "faq_kicker": "Soalan lazim",
+  "faq_h2": "Soalan tentang topik ini",
+  "more_kicker": "Baca lagi",
+  "more_h2": "Lagi dari bengkel kami",
+  "all": "Semua artikel"
  }
 }

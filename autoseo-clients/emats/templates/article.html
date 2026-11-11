@@ -1,0 +1,32 @@
+<article class="post post-{{variant}}" data-part="article">
+<header class="post-hero sec-black">
+  {{binary}}
+  <p class="post-motif mono" aria-hidden="true">{{motif}}</p>
+  <div class="wrap post-hero-grid">
+    <div class="post-hero-txt">
+      <p class="kicker mono"><a href="{{service_url}}">{{code}} · {{kicker}}</a></p>
+      <h1>{{h1}}</h1>
+      <p class="post-meta mono"><time datetime="{{published_iso}}">{{published}}</time> · {{read_time}} · {{byline}}</p>
+      <div class="cta-row">{{wa}}</div>
+    </div>
+    <div class="post-hero-fig"><div class="post-osc" aria-hidden="true"><i></i></div>{{visual}}</div>
+  </div>
+</header>
+<section class="sec sec-dark">
+  <div class="wrap sheet post-sheet">
+    <div class="prose post-body">
+      <p class="post-lead">{{lead}}</p>
+      <aside class="post-answer" aria-label="{{answer_label}}"><p class="post-answer-k mono">&gt; {{answer_label}}</p><p>{{answer}}</p></aside>
+{{sections}}    </div>
+    <aside class="panel post-owner">
+      <p class="kicker mono">{{owner_kicker}}</p>
+      <a class="post-owner-art" href="{{service_url}}" tabindex="-1" aria-hidden="true">{{owner_art}}</a>
+      <p class="post-owner-name"><a href="{{service_url}}">{{code}} · {{service_name}}</a></p>
+      <p class="small">{{service_card}}</p>
+      {{side_wa}}
+      <p class="small"><a href="{{service_url}}">{{owner_cta}} →</a><br><a href="{{workshops_url}}">{{workshops}} →</a></p>
+    </aside>
+  </div>
+</section>
+</article>
+{{faq}}{{more}}

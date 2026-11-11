@@ -41,6 +41,12 @@ if CFG.get("whatsapp_number") and not re.fullmatch(r"\d{9,15}", CFG["whatsapp_nu
 CSS = (ROOT / "assets" / "site.css").read_text(encoding="utf-8")
 JS = (ROOT / "assets" / "site.js").read_text(encoding="utf-8")
 ASSET_V = hashlib.sha256((CSS + JS).encode()).hexdigest()[:10]
+# Articles (11 Nov 2026): one JSON file per article in data/articles/, rendered by templates/article*.html.
+# Their CSS is a separate file loaded only on article pages, so a night run never changes site.css.
+ART_CSS = (ROOT / "assets" / "articles.css").read_text(encoding="utf-8")
+ART_V = hashlib.sha256(ART_CSS.encode()).hexdigest()[:10]
+ARTICLES = sorted((json.loads(f.read_text(encoding="utf-8")) for f in (ROOT / "data" / "articles").glob("*.json")),
+                  key=lambda a: (a["published"], a["slug"]), reverse=True)
 PHOTO = {p["key"]: p for p in SITE["photos"]}
 SVC = {s["key"]: s for s in SITE["services"]}
 SIZES = {}
@@ -241,14 +247,15 @@ def nav_items(L, active):
         f'        <li><a href="{L.url()}"{" aria-current=page" if active == "home" else ""}>{E(ui["home"])}</a></li>',
         f'        <li class="has-sub"><details><summary>{E(ui["services"])}</summary><ul class="sub">{sub}</ul></details></li>',
         f'        <li><a href="{L.url("for-workshops/")}"{" aria-current=page" if active == "workshops" else ""}>{E(ui["workshops"])}</a></li>',
+        f'        <li><a href="{L.url("articles/")}"{" aria-current=page" if active == "articles" else ""}>{E(ui["articles"])}</a></li>',
         f'        <li><a href="{L.url("about/")}"{" aria-current=page" if active == "about" else ""}>{E(ui["about"])}</a></li>',
         f'        <li><a href="{L.url("contact/")}"{" aria-current=page" if active == "contact" else ""}>{E(ui["contact"])}</a></li>',
     ]
     return "\n".join(items)
 
 
-def page(L, path, key, active, body, trail, extra_schema=(), body_class=""):
-    s, pg = L.s, L.s["pages"][key]
+def page(L, path, key, active, body, trail, extra_schema=(), body_class="", pg=None, head_extra=""):
+    s, pg = L.s, pg or L.s["pages"][key]
     robots = '  <meta name="robots" content="noindex,nofollow">\n' if CFG["preview"] else '  <meta name="robots" content="index,follow">\n'
     alts = "".join(f'  <link rel="alternate" hreflang="{STR[l["code"]]["meta"]["html_lang"]}" href="{abs_url(l["prefix"], path)}">\n' for l in LANGS)
     alts += f'  <link rel="alternate" hreflang="x-default" href="{abs_url("", path)}">\n'
@@ -258,7 +265,7 @@ def page(L, path, key, active, body, trail, extra_schema=(), body_class=""):
     og = abs_url("", "img/" + PHOTO[SITE["og_photo"]]["file"][:-5] + "-1200.webp")
     doc = fill("head", lang=s["meta"]["html_lang"], title=E(pg["title"]), description=E(pg["description"]), robots=robots,
                canonical=abs_url(L.prefix, path), hreflang=alts, base=BASE, brand_name=E(CFG["short_name"]), og_image=og,
-               og_locale=s["meta"]["og_locale"], asset_v=ASSET_V, schema=schema(L, path, pg, trail, extra_schema))
+               og_locale=s["meta"]["og_locale"], asset_v=ASSET_V, head_extra=head_extra, schema=schema(L, path, pg, trail, extra_schema))
     doc += fill("header", body_class=body_class, skip=E(L.ui["skip"]), home=L.url(), brand=E(CFG["short_name"]),
                 tagline=E(L.s["services"]["ecu"]["name"] + " · " + CFG["city"]), nav_label=E(L.ui["nav_label"]),
                 nav_items=nav_items(L, active), lang_label=E(L.ui["lang_label"]), switcher=switch, menu=E(L.ui["menu"]))
@@ -267,7 +274,7 @@ def page(L, path, key, active, body, trail, extra_schema=(), body_class=""):
         doc += crumbs(L, trail)
     doc += body
     rl = "\n".join(f'        <li><a href="{L.url(SVC[k]["slug"])}">{E(L.s["services"][k]["name"])}</a></li>' for k in SVC)
-    cl = "\n".join(f'        <li><a href="{L.url(p)}">{E(L.ui["nav"][n])}</a></li>' for n, p in (("workshops", "for-workshops/"), ("about", "about/"), ("contact", "contact/")))
+    cl = "\n".join(f'        <li><a href="{L.url(p)}">{E(L.ui["nav"][n])}</a></li>' for n, p in (("workshops", "for-workshops/"), ("articles", "articles/"), ("about", "about/"), ("contact", "contact/")))
     doc += fill("footer", brand=E(CFG["short_name"]), about=E(L.ui["footer_about"]), legal_name=E(CFG["name"]),
                 reg_label=E(L.ui["reg_label"]), reg_no=E(CFG["registration_no"]), city=E(STR[L.code]["meta"].get("city", CFG["city"])),
                 country=E(STR[L.code]["meta"].get("country", CFG["country"])), repairs_h=E(L.ui["footer_repairs"]), repair_links=rl,
@@ -560,9 +567,145 @@ def build_contact(L):
     page(L, path, "contact", "contact", body, trail, [{"@type": "ContactPage", "url": abs_url(L.prefix, path), "about": {"@id": CFG["site_url"] + "#business"}}])
 
 
+
+# ------------------------------------------------------------------ articles
+# One shared template for every article (templates/article.html + article_cta.html + article_card.html).
+# A night run adds ONE file to data/articles/<slug>.json (en/ms/zh text) and rebuilds; nothing else is hand-edited.
+LOOKS = ("scope", "bench", "terminal")
+
+
+def art_date(L, iso):
+    y, m, d = iso.split("-")
+    if L.code == "zh":
+        return f"{y}年{int(m)}月{int(d)}日"
+    return f"{int(d)} {L.s['articles']['months'][int(m) - 1]} {y}"
+
+
+def art_minutes(a):
+    t = a["en"]
+    parts = [t["lead"], t["answer"]]
+    for sec in t["sections"]:
+        parts += sec.get("p", []) + sec.get("list", []) + sec.get("steps", []) + sec.get("p_after", []) + [x["t"] + " " + x["d"] for x in sec.get("pairs", [])]
+    return max(2, round(len(" ".join(parts).split()) / 200))
+
+
+def art_visual(L, a, sizes, eager=False, label=True):
+    v = a["look"]["visual"]
+    if v["type"] == "photo":
+        return img_tag(L, v["key"], sizes, eager=eager)
+    return board_art(v["art"], L.s["services"][a["service"]]["name"] if label else "")
+
+
+def art_image_url(a):
+    v = a["look"]["visual"]
+    key = v["key"] if v["type"] == "photo" else SITE["og_photo"]
+    return abs_url("", "img/" + PHOTO[key]["file"][:-5] + "-1200.webp")
+
+
+def art_section(sec, n):
+    out = f'<section class="post-sec"><p class="post-sec-n mono" aria-hidden="true">{n:02d}</p><h2>{E(sec["h2"])}</h2>'
+    out += "".join(f"<p>{E(x)}</p>" for x in sec.get("p", []))
+    if sec.get("pairs"):
+        out += '<dl class="post-pairs">' + "".join(f'<div><dt>{E(x["t"])}</dt><dd>{E(x["d"])}</dd></div>' for x in sec["pairs"]) + "</dl>"
+    if sec.get("steps"):
+        out += '<ol class="post-steps">' + "".join(f'<li><span class="mono">{i:02d}</span>{E(x)}</li>' for i, x in enumerate(sec["steps"], 1)) + "</ol>"
+    if sec.get("list"):
+        out += '<ul class="ticks">' + "".join(f"<li>{E(x)}</li>" for x in sec["list"]) + "</ul>"
+    for sub in sec.get("h3", []):
+        out += f'<h3>{E(sub["h3"])}</h3><p>{E(sub["p"])}</p>'
+    out += "".join(f"<p>{E(x)}</p>" for x in sec.get("p_after", []))
+    return out + "</section>\n"
+
+
+def art_card(L, a):
+    t, sv = a[L.code], L.s["services"][a["service"]]
+    return fill("article_card", url=L.url(f"articles/{a['slug']}/"), visual=art_visual(L, a, "(max-width: 760px) 90vw, 33vw", label=False),
+                code=E(sv["code"]), kicker=E(sv["name"]), published_iso=a["published"], published=E(art_date(L, a["published"])),
+                title=E(t["h1"]), excerpt=E(t["excerpt"]), read_more=E(L.s["articles"]["read_more"])).rstrip("\n")
+
+
+ART_HEAD = '  <link rel="stylesheet" href="{base}assets/articles.css?v={v}">\n'
+
+
+def build_article(L, a):
+    s, ui, au = L.s, L.ui, L.s["articles"]
+    t, sv, cfg = a[L.code], L.s["services"][a["service"]], SVC[a["service"]]
+    path = f"articles/{a['slug']}/"
+    secs = ""
+    for i, sec in enumerate(t["sections"], 1):
+        secs += art_section(sec, i)
+        if i == a.get("cta_after", 2):
+            secs += fill("article_cta", heading=E(au["cta_h"]), text=E(au["cta_text"]), wa=wa(L, "service", sv["topic"]))
+    others = [o for o in ARTICLES if o["slug"] != a["slug"]][:3]
+    more = ""
+    if others:
+        more = (f'<section class="sec sec-black"><div class="wrap">{kh(au["more_kicker"], au["more_h2"])}<div class="post-cards">'
+                + "".join(art_card(L, o) for o in others) + f'</div><p class="post-all"><a href="{L.url("articles/")}">{E(au["all"])} →</a></p></div></section>\n')
+    body = fill("article", variant=a["look"]["variant"], binary=binary_bg(), visual=art_visual(L, a, "(max-width: 760px) 100vw, 45vw", eager=True),
+                code=E(sv["code"]), service_url=L.url(cfg["slug"]), kicker=E(sv["name"]), h1=E(t["h1"]), motif=E(t.get("motif", "")),
+                published_iso=a["published"], published=E(art_date(L, a["published"])), read_time=E(au["read_time"].replace("{n}", str(art_minutes(a)))),
+                byline=E(au["byline"]), wa=wa(L, "service", sv["topic"]) + tel(L), lead=E(t["lead"]), answer_label=E(au["answer"]), answer=E(t["answer"]),
+                sections=secs, owner_kicker=E(au["owner_kicker"]), owner_art=board_art(cfg["art"], ""), service_name=E(sv["name"]), service_card=E(sv["card"]),
+                owner_cta=E(au["owner_cta"]), side_wa=wa(L, "service", sv["topic"], extra_cls=" btn-block") + tel(L, "btn-ghost btn-block"),
+                workshops_url=L.url("for-workshops/"), workshops=E(ui["nav"]["workshops"]), faq=faq_block(L, t["faqs"]), more=more)
+    body += cta(L, au["cta_h"], "service", sv["topic"])
+    url = abs_url(L.prefix, path)
+    article = {"@type": "Article", "@id": url + "#article", "headline": t["h1"], "description": t["description"], "inLanguage": s["meta"]["schema_lang"],
+               "datePublished": a["published"], "dateModified": a.get("updated", a["published"]), "image": art_image_url(a),
+               "keywords": t.get("keyword", a["keyword"]), "mainEntityOfPage": url, "author": {"@id": CFG["site_url"] + "#business"},
+               "publisher": {"@id": CFG["site_url"] + "#business"}, "about": {"@type": "Service", "name": sv["name"], "url": abs_url(L.prefix, cfg["slug"])}}
+    trail = [(ui["nav"]["home"], ""), (ui["nav"]["articles"], "articles/"), (t["h1"], path)]
+    page(L, path, None, "articles", body, trail, [article, faq_node(t["faqs"])], body_class="article-page",
+         pg={"title": t["title"] + au["title_suffix"], "description": t["description"]}, head_extra=ART_HEAD.format(base=BASE, v=ART_V))
+
+
+def build_articles_index(L):
+    s, ui, au = L.s, L.ui, L.s["articles"]
+    path = "articles/"
+    cards = "".join(art_card(L, a) for a in ARTICLES)
+    body = (f'<section class="phero sec-black">\n  {binary_bg()}\n  <div class="wrap narrow">\n    <p class="kicker mono">{E(au["eyebrow"])}</p>\n'
+            f'    <h1>{E(au["h1"])}</h1>\n    <p class="lead">{E(au["lead"])}</p>\n    <div class="cta-row">{wa(L, "workshop")}{tel(L)}</div>\n  </div>\n</section>\n'
+            f'<section class="sec sec-dark"><div class="wrap"><h2>{E(au["list_h2"])}</h2><div class="post-cards">{cards}</div></div></section>\n')
+    body += cta(L)
+    items = [{"@type": "ListItem", "position": i + 1, "url": abs_url(L.prefix, f"articles/{a['slug']}/"), "name": a[L.code]["h1"]} for i, a in enumerate(ARTICLES)]
+    coll = {"@type": "CollectionPage", "name": au["h1"], "url": abs_url(L.prefix, path), "inLanguage": s["meta"]["schema_lang"],
+            "mainEntity": {"@type": "ItemList", "itemListElement": items}}
+    trail = [(ui["nav"]["home"], ""), (ui["nav"]["articles"], path)]
+    page(L, path, None, "articles", body, trail, [coll], pg={"title": au["title"], "description": au["description"]},
+         head_extra=ART_HEAD.format(base=BASE, v=ART_V))
+
+
+def check_articles():
+    """Stops the build on a broken article file: every language complete, real service, real photo, known look, keyword placed."""
+    need = ("title", "description", "h1", "lead", "answer", "sections", "faqs", "excerpt")
+    for a in ARTICLES:
+        for k in ("slug", "published", "service", "keyword", "look"):
+            if k not in a:
+                raise SystemExit(f"article {a.get('slug')}: missing {k}")
+        if a["service"] not in SVC:
+            raise SystemExit(f"article {a['slug']}: unknown service {a['service']} (use one of {', '.join(SVC)})")
+        if a["look"]["variant"] not in LOOKS:
+            raise SystemExit(f"article {a['slug']}: look.variant must be one of {LOOKS}")
+        v = a["look"]["visual"]
+        if (v["type"] == "photo" and v["key"] not in PHOTO) or (v["type"] == "art" and v["art"] not in GLYPH):
+            raise SystemExit(f"article {a['slug']}: unknown visual {v}")
+        for c in LANGS:
+            t = a.get(c["code"])
+            if not t or any(not t.get(k) for k in need):
+                raise SystemExit(f"article {a['slug']}: {c['code']} text incomplete (needs {', '.join(need)})")
+        kw = a["keyword"].lower()
+        if kw not in (a["en"]["title"] + " " + a["en"]["h1"]).lower() or kw not in a["en"]["lead"].lower():
+            raise SystemExit(f"article {a['slug']}: keyword '{a['keyword']}' must be in the English title or H1, and in the first paragraph")
+        for code in ("ms", "zh"):
+            if a[code]["lead"] == a["en"]["lead"] or a[code]["h1"] == a["en"]["h1"]:
+                raise SystemExit(f"article {a['slug']}: {code} text is still English")
+
+
 # ------------------------------------------------------------------ sitemap + llms (for the live domain later)
 def all_paths():
-    return [""] + [SVC[k]["slug"] for k in SVC] + ["for-workshops/", "about/", "contact/"]
+    # Articles join the sitemap only once the site is live on its own domain (preview false): previews stay out of every sitemap.
+    arts = [] if CFG["preview"] else ["articles/"] + [f"articles/{a['slug']}/" for a in ARTICLES]
+    return [""] + [SVC[k]["slug"] for k in SVC] + ["for-workshops/", "about/", "contact/"] + arts
 
 
 def write_sitemap():
@@ -595,6 +738,8 @@ def write_llms():
     lines += ["", "## Pages", ""]
     names = {"": en["ui"]["nav"]["home"], "for-workshops/": en["ui"]["nav"]["workshops"], "about/": en["ui"]["nav"]["about"], "contact/": en["ui"]["nav"]["contact"]}
     names.update({SVC[k]["slug"]: en["services"][k]["name"] for k in SVC})
+    names["articles/"] = en["articles"]["h1"]
+    names.update({f"articles/{a['slug']}/": a["en"]["h1"] for a in ARTICLES})
     for p in all_paths():
         lines.append(f"- [{names[p]}]({live_url('', p)})")
     lines += ["", "## Other languages", "", f"- Bahasa Melayu: {live_url('ms/')}", f"- 简体中文: {live_url('zh/')}", ""]
@@ -608,7 +753,9 @@ def main():
     (OUT / "assets").mkdir(parents=True)
     (OUT / "assets" / "site.css").write_text(CSS, encoding="utf-8")
     (OUT / "assets" / "site.js").write_text(JS, encoding="utf-8")
+    (OUT / "assets" / "articles.css").write_text(ART_CSS, encoding="utf-8")
     build_images()
+    check_articles()
     for cfg in LANGS:
         L = Lang(cfg)
         build_home(L)
@@ -617,6 +764,9 @@ def main():
         build_workshops(L)
         build_about(L)
         build_contact(L)
+        build_articles_index(L)
+        for a in ARTICLES:
+            build_article(L, a)
     for path, doc in PAGES:
         f = OUT / path / "index.html"
         f.parent.mkdir(parents=True, exist_ok=True)

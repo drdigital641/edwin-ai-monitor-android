@@ -23,7 +23,8 @@
    "work": "Recent work",
    "reviews": "Reviews",
    "about": "About",
-   "contact": "Contact"
+   "contact": "Contact",
+   "articles": "Articles"
   },
   "nav_aria": "Main menu",
   "menu": "Menu",
@@ -615,5 +616,26 @@
    "caption": "Putting right bad modifications and worn suspension on an Audi TT.",
    "topic": "restoring my car"
   }
+ },
+ "articles": {
+  "title": "Car Care Articles from Our Klang Workshop | Carzy World",
+  "description": "Plain-English car care articles from Carzy World, a car workshop in Air Hitam, Klang: aircond, servicing, brakes, electrical faults, EVs and classics.",
+  "eyebrow": "Articles",
+  "h1": "Car care articles from our Klang workshop",
+  "lead": "Straight answers to the car problems we see in our Air Hitam, Klang workshop, written by the Carzy World team. Each one links to the service that fixes it.",
+  "list_h2": "Latest articles",
+  "read_more": "Read the article",
+  "read_time": "{n} min read",
+  "byline": "Carzy World, Klang",
+  "answer": "Short answer",
+  "owner_kicker": "The service for this",
+  "owner_cta": "See the service",
+  "cta_h": "Got this problem right now?",
+  "cta_text": "Send us your car model, year and what it's doing on WhatsApp. We'll tell you what we think it is and give you a quote.",
+  "faq_kicker": "FAQ",
+  "faq_h2": "Questions about this topic",
+  "more_kicker": "Keep reading",
+  "more_h2": "More from the workshop",
+  "all": "All articles"
  }
 }

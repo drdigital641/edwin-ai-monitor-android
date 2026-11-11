@@ -18,7 +18,8 @@
    "services": "维修项目",
    "workshops": "车厂专区",
    "about": "关于我们",
-   "contact": "联系我们"
+   "contact": "联系我们",
+   "articles": "文章"
   },
   "wa_cta": "WhatsApp 联系我们",
   "wa_cta_short": "WhatsApp",
@@ -512,5 +513,39 @@
   "ecu-case": "金属外壳里的引擎控制单元",
   "cluster-bench": "仪表盘通电上台测试",
   "ecu-open-case": "开盖的引擎 ECU"
+ },
+ "articles": {
+  "title": "给车厂的 ECU 与模块维修文章 | EMATS 新山",
+  "description": "EMATS(新山)写给汽车车厂的维修台笔记:ECU/ECM、ABS 模块、仪表板和控制模块故障,以及什么时候值得把模块送修。",
+  "title_suffix": " | EMATS",
+  "eyebrow": "文章 · 写给车厂",
+  "h1": "写给车厂的维修台笔记",
+  "lead": "来自 EMATS 新山维修台的实用笔记,讲汽车电子模块:在怪罪模块之前该先检查什么,以及什么时候送来做元件级维修才划算。",
+  "list_h2": "最新文章",
+  "read_more": "阅读文章",
+  "read_time": "约{n}分钟阅读",
+  "byline": "EMATS 新山",
+  "answer": "简短回答",
+  "owner_kicker": "相关维修",
+  "owner_cta": "查看维修页面",
+  "cta_h": "手上有符合这个情况的模块?",
+  "cta_text": "在 WhatsApp 发给我们车型、故障和模块标签上的零件编号。我们会在维修台上检查,并在维修前告诉你故障和费用。",
+  "more_kicker": "更多维修台笔记",
+  "more_h2": "更多文章",
+  "all": "所有文章",
+  "months": [
+   "1月",
+   "2月",
+   "3月",
+   "4月",
+   "5月",
+   "6月",
+   "7月",
+   "8月",
+   "9月",
+   "10月",
+   "11月",
+   "12月"
+  ]
  }
 }

@@ -1,0 +1,35 @@
+    <article class="art art-{{variant}}">
+      <header class="art-hero">
+        <div class="art-hero-media">{{hero_visual}}</div>
+        <p class="art-motif" aria-hidden="true">{{motif}}</p>
+        <div class="wrap art-hero-in">
+          <nav class="crumbs" aria-label="{{crumb_aria}}">{{crumbs}}</nav>
+          <p class="eyebrow"><a href="{{service_url}}">{{kicker}}</a></p>
+          <h1>{{h1}}</h1>
+          <p class="art-meta"><time datetime="{{published_iso}}">{{published}}</time> · {{read_time}} · {{byline}}</p>
+          <div class="cta-row">
+            <a class="btn btn-wa" href="{{wa}}" target="_blank" rel="noopener" data-cta="whatsapp_article_top">{{wa_icon}}<span>{{whatsapp_now}}</span></a>
+            <a class="btn btn-outline-light" href="tel:{{phone_e164}}" data-cta="call_article_top">{{call_label}}</a>
+          </div>
+{{trust}}
+        </div>
+      </header>
+      <div class="wrap art-grid">
+        <div class="art-body">
+          <p class="art-lead">{{lead}}</p>
+          <aside class="art-answer" aria-label="{{answer_label}}"><p class="art-answer-k">{{answer_label}}</p><p>{{answer}}</p></aside>
+{{sections}}
+        </div>
+        <aside class="art-side">
+          <div class="art-owner">
+            <p class="kicker">{{owner_kicker}}</p>
+            <a class="art-owner-visual" href="{{service_url}}" tabindex="-1" aria-hidden="true">{{owner_visual}}</a>
+            <p class="art-owner-name"><a href="{{service_url}}">{{service_name}}</a></p>
+            <p>{{service_card}}</p>
+            <a class="btn btn-wa btn-block" href="{{wa}}" target="_blank" rel="noopener" data-cta="whatsapp_article_side">{{wa_icon}}<span>{{whatsapp_now}}</span></a>
+            <a class="link" href="{{service_url}}">{{owner_cta}} →</a>
+          </div>
+        </aside>
+      </div>
+    </article>
+{{faq}}{{more}}

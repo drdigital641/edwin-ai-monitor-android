@@ -1,0 +1,98 @@
+/* Carzy World articles: loaded only on /articles/ pages, on top of site.css (same dark/red palette).
+   Three hero looks (banner, split, poster) picked per article in data/articles/<slug>.json -> look.variant,
+   plus a per-article motif word, so each article looks like its own piece while sharing one template. */
+
+/* ---------- hero ---------- */
+.art-hero { position: relative; overflow: hidden; background: var(--bg-2); border-bottom: 1px solid var(--line); isolation: isolate; }
+.art-hero-in { position: relative; z-index: 2; padding-top: 40px; padding-bottom: 48px; }
+.art-hero h1 { font-size: clamp(32px, 5.2vw, 66px); max-width: 17ch; text-wrap: balance; }
+.art-hero .eyebrow a { color: inherit; text-decoration: none; }
+.art-meta { color: var(--text-2); font-size: 15px; margin: 0 0 22px; }
+.art-motif { position: absolute; z-index: 1; right: -2vw; bottom: -0.18em; margin: 0; font-weight: 900; line-height: .8; letter-spacing: -.05em;
+  font-size: clamp(110px, 22vw, 330px); color: transparent; -webkit-text-stroke: 2px rgba(225, 25, 47, .32); pointer-events: none; white-space: nowrap; user-select: none; }
+.art-hero-media img, .art-hero-media .svc-graphic { width: 100%; height: 100%; object-fit: cover; }
+
+/* banner: the photo fills the hero, text sits on a dark red-tinted fade */
+.art-banner .art-hero { min-height: min(78vh, 640px); display: flex; align-items: flex-end; }
+.art-banner .art-hero-media { position: absolute; inset: 0; z-index: 0; }
+.art-banner .art-hero-media::after { content: ""; position: absolute; inset: 0;
+  background: linear-gradient(180deg, rgba(11,11,12,.05) 0%, rgba(11,11,12,.35) 38%, rgba(11,11,12,.95) 78%), linear-gradient(90deg, rgba(225,25,47,.35), transparent 55%); }
+.art-banner .art-hero-in { padding-top: 160px; width: 100%; }
+
+/* split: text left, framed photo right with a red offset frame */
+.art-split .art-hero { background: radial-gradient(900px 480px at 90% 0%, rgba(225,25,47,.3), transparent 60%), var(--bg-2); }
+.art-split .art-hero-media { position: relative; z-index: 2; width: min(420px, 38vw); aspect-ratio: 4 / 5; margin: 40px 24px 0 auto; border-radius: var(--radius); overflow: visible; float: right; }
+.art-split .art-hero-media > * { border-radius: var(--radius); box-shadow: 18px 18px 0 var(--red); }
+.art-split .art-hero-in { min-height: 520px; display: flex; flex-direction: column; justify-content: center; }
+.art-split .art-hero::after { content: ""; display: block; clear: both; }
+
+/* poster: no hero photo, big type on a red diagonal; the photo moves down into the owner card */
+.art-poster .art-hero { background: linear-gradient(115deg, var(--bg) 0 58%, var(--red) 58% 61%, #2a0a0f 61%); }
+.art-poster .art-hero-media { display: none; }
+.art-poster .art-hero h1 { font-size: clamp(36px, 6.4vw, 86px); max-width: 15ch; }
+.art-poster .art-motif { -webkit-text-stroke-color: rgba(255,255,255,.12); }
+
+/* ---------- body ---------- */
+.art-grid { display: grid; grid-template-columns: minmax(0, 1fr) 320px; gap: 56px; padding-top: 56px; padding-bottom: 72px; align-items: start; }
+.art-body { max-width: 72ch; }
+.art-body p { color: var(--text-2); }
+.art-lead { font-size: clamp(19px, 2vw, 22px); color: var(--text) !important; line-height: 1.6; }
+.art-answer { margin: 28px 0 8px; padding: 22px 24px; border-radius: var(--radius); background: linear-gradient(135deg, rgba(225,25,47,.18), rgba(225,25,47,.04)); border: 1px solid rgba(225,25,47,.45); }
+.art-answer p { margin: 0; color: var(--text) !important; }
+.art-answer .art-answer-k { font-size: 13px; font-weight: 900; letter-spacing: .16em; text-transform: uppercase; color: var(--red-2) !important; margin-bottom: 8px; }
+.art-sec { margin-top: 44px; }
+.art-sec h2 { font-size: clamp(26px, 3.2vw, 38px); }
+.art-sec h3 { font-size: 21px; margin-top: 22px; letter-spacing: -.01em; }
+.art-pairs { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin: 18px 0 8px; }
+.art-pairs > div { background: var(--panel); border: 1px solid var(--line); border-left: 4px solid var(--red); border-radius: 14px; padding: 16px 18px; }
+.art-pairs dt { font-weight: 900; color: var(--text); margin-bottom: 6px; }
+.art-pairs dd { margin: 0; color: var(--text-2); font-size: 16px; }
+.art-steps { list-style: none; counter-reset: s; padding: 0; margin: 18px 0; }
+.art-steps li { counter-increment: s; position: relative; padding: 12px 0 12px 58px; color: var(--text-2); border-bottom: 1px solid var(--line); }
+.art-steps li::before { content: counter(s, decimal-leading-zero); position: absolute; left: 0; top: 10px; font-weight: 900; font-size: 22px; color: var(--red-2); }
+.art-cta { margin: 44px 0 0; padding: 26px; border-radius: var(--radius); background: var(--panel) var(--grain); border: 1px solid var(--line); }
+.art-cta .art-cta-h { font-size: 22px; font-weight: 900; color: var(--text); margin: 0 0 6px; }
+
+/* side card: the service page this article belongs to */
+.art-side { position: sticky; top: 92px; }
+.art-owner { background: var(--panel); border: 1px solid var(--line); border-radius: var(--radius); padding: 22px; }
+.art-owner-visual { display: block; position: relative; aspect-ratio: 4 / 3; border-radius: 12px; overflow: hidden; margin-bottom: 14px; background: var(--bg-2); }
+.art-owner-visual > img, .art-owner-visual > .svc-graphic { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; padding-bottom: 0; }
+.art-owner-name { font-size: 20px; font-weight: 900; margin: 0 0 6px; }
+.art-owner-name a { color: var(--text); text-decoration: none; }
+.art-owner p { color: var(--text-2); font-size: 16px; }
+.art-owner .btn-block { width: 100%; justify-content: center; margin: 4px 0 14px; }
+
+/* ---------- cards (index + more) ---------- */
+.art-cards { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 22px; margin-top: 24px; }
+.art-card { display: flex; flex-direction: column; background: var(--panel); border: 1px solid var(--line); border-radius: var(--radius); overflow: hidden; text-decoration: none; color: inherit;
+  transition: transform .3s ease, border-color .3s ease; }
+.art-card:hover, .art-card:focus-visible { transform: translateY(-4px); border-color: var(--red); }
+.art-card-img { position: relative; aspect-ratio: 16 / 10; overflow: hidden; background: var(--bg-2); }
+.art-card-img > img, .art-card-img > .svc-graphic { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; padding-bottom: 0; }
+.art-card-body { display: flex; flex-direction: column; gap: 8px; padding: 18px 20px 22px; }
+.art-card-body h3 { font-size: 21px; margin: 0; }
+.art-card-body > span:not(.link):not(.art-card-k) { color: var(--text-2); font-size: 16px; }
+.art-card-k { font-size: 12px; font-weight: 900; letter-spacing: .14em; text-transform: uppercase; color: var(--red-2); }
+
+/* ---------- phones first: 390px is the main view ---------- */
+@media (max-width: 960px) {
+  .art-grid { grid-template-columns: 1fr; gap: 36px; padding-top: 36px; }
+  .art-side { position: static; }
+  .art-cards { grid-template-columns: 1fr 1fr; }
+  .art-split .art-hero-media { float: none; width: auto; max-width: 420px; aspect-ratio: 16 / 11; margin: 28px 34px 0 16px; }
+  .art-split .art-hero-in { min-height: 0; padding-top: 34px; }
+}
+@media (max-width: 600px) {
+  .art-hero-in { padding-top: 26px; padding-bottom: 34px; }
+  .art-hero h1 { font-size: clamp(30px, 8.6vw, 40px); }
+  .art-banner .art-hero { min-height: 560px; }
+  .art-banner .art-hero-in { padding-top: 200px; }
+  .art-poster .art-hero { background: linear-gradient(160deg, var(--bg) 0 70%, var(--red) 70% 72%, #2a0a0f 72%); }
+  .art-motif { font-size: 120px; right: -10px; }
+  .art-pairs { grid-template-columns: 1fr; }
+  .art-cards { grid-template-columns: 1fr; }
+  .art-hero .cta-row .btn { flex: 1 1 100%; justify-content: center; }
+  .art-cta, .art-answer { padding: 20px; }
+}
+@media (prefers-reduced-motion: reduce) { .art-card { transition: none; } }
