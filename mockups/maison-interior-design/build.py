@@ -572,8 +572,8 @@ Maison works with these Singapore suppliers for materials, flooring, lighting an
 """ + "".join(f'- [{p["name"]} {p["place"]}]({DOMAIN}/portfolio/{p["slug"]}/): {p["kind"]}, {p["type"]}.\n' for p in P))
     write("favicon.svg", '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64"><rect width="64" height="64" fill="#1f1c19"/><text x="32" y="44" font-family="Georgia,serif" font-size="36" fill="#c9a979" text-anchor="middle">M</text></svg>')
     shutil.copy(os.path.join(HERE, "mid.css"), os.path.join(OUT, "mid.css"))
-    # logos/ (Page One logo-options page) is not part of the live site, so it is not shipped
-    for d in ("brand", "img", "images"):
+    # logos/ = the logo-options page Edwin keeps (11 Nov): shipped as it is, noindex, never in sitemap.xml or llms.txt
+    for d in ("brand", "img", "images", "logos"):
         if os.path.isdir(os.path.join(HERE, d)): shutil.copytree(os.path.join(HERE, d), os.path.join(OUT, d))
     shutil.copy(os.path.join(HERE, "mid.js"), os.path.join(OUT, "mid.js"))
 
@@ -582,7 +582,8 @@ def live_guard():
     the Page One credit, hotlinked WordPress images, a noindex or an .htaccess."""
     import re as _r
     bad = []
-    stubs = {"new-launches/parc-point-tengah/index.html"}  # redirect stubs
+    stubs = {"new-launches/parc-point-tengah/index.html", "logos/index.html"}  # redirect stub + kept noindex logo page
+    kept = {"logos/index.html"}  # Edwin keeps this page unchanged (11 Nov), including its own footer line
     for root, dirs, files in os.walk(OUT):
         for f in files:
             rel = os.path.relpath(os.path.join(root, f), OUT).replace(os.sep, "/")
@@ -591,7 +592,7 @@ def live_guard():
             t = open(os.path.join(root, f), encoding="utf-8").read()
             for pat, why in (("/preview/", "preview path"), ("pageonesingapore", "pageonesingapore.com URL"),
                              ("Redesign concept by Page One", "Page One credit"), ("Page One", "Page One mention")):
-                if pat in t: bad.append(f"{rel}: {why}")
+                if pat in t and not (rel in kept and pat == "Page One"): bad.append(f"{rel}: {why}")
             if "noindex" in t and rel not in stubs: bad.append(rel + ": noindex")
             if _r.search(r'(?:src|srcset|href|poster)="https?://maisoninteriordesign\.sg/wp-content/', t) or "url(https://maisoninteriordesign.sg" in t:
                 bad.append(rel + ": hotlinked wp-content image")
