@@ -17,7 +17,8 @@
    "home": "Utama",
    "services": "Perkhidmatan",
    "about": "Tentang Kami",
-   "contact": "Hubungi"
+   "contact": "Hubungi",
+   "articles": "Artikel"
   },
   "wa_cta": "WhatsApp kami",
   "wa_cta_short": "WhatsApp",
@@ -581,5 +582,38 @@
    "t": "Semakan akhir",
    "d": "Kami semak semuanya sebelum anda ambil kereta."
   }
- ]
+ ],
+ "articles": {
+  "title": "Artikel Kereta Hibrid JB | Hybrid World Specialist",
+  "description": "Jawapan mudah untuk pemilik kereta hibrid di Johor Bahru: bateri hibrid, amaran sistem hibrid, aircond, gearbox dan enjin, daripada Hybrid World Specialist.",
+  "eyebrow": "Panduan pemilik hibrid",
+  "h1": "Artikel kereta hibrid",
+  "lead": "Jawapan mudah kepada soalan yang pemilik kereta hibrid di Johor Bahru bawa ke bengkel kami di Taman Bukit Indah, ditulis daripada kerja harian kami.",
+  "list_h2": "Artikel terkini",
+  "read_more": "Baca artikel",
+  "read_time": "{n} minit bacaan",
+  "byline": "Bengkel Hybrid World Specialist",
+  "answer": "Jawapan ringkas",
+  "owner_kicker": "Perkhidmatan di sebalik artikel ini",
+  "owner_cta": "Buka halaman perkhidmatan",
+  "mid_h": "Tidak pasti apa yang kereta anda perlukan?",
+  "mid_p": "Hantar model kereta, tahun dan gambar amaran yang muncul. Kami balas di WhatsApp.",
+  "more_h2": "Artikel lain",
+  "all": "Semua artikel",
+  "date_fmt": "{d} {m} {y}",
+  "months": [
+   "Jan",
+   "Feb",
+   "Mac",
+   "Apr",
+   "Mei",
+   "Jun",
+   "Jul",
+   "Ogo",
+   "Sep",
+   "Okt",
+   "Nov",
+   "Dis"
+  ]
+ }
 }

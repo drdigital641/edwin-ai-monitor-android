@@ -1,0 +1,34 @@
+<article class="hw-ar hw-ar-{{look}}">
+<section class="hw-ar-hero" aria-labelledby="h1">
+  <p class="hw-ar-motif" aria-hidden="true">{{motif}}</p>
+  <div class="hw-shell hw-ar-hero-grid">
+    <div class="hw-ar-hero-txt">
+      <p class="hw-eyebrow"><span class="hw-eyebrow-ico">{{svc_icon}}</span><a href="{{svc_href}}">{{svc_name}}</a></p>
+      <h1 id="h1">{{h1}}</h1>
+      <p class="hw-ar-meta"><time datetime="{{date_iso}}">{{date}}</time> · {{minutes}} · {{byline}}</p>
+      <div class="hw-actions">{{wa}}{{tel}}</div>
+    </div>
+    <figure class="hw-ar-fig">
+      <div class="hw-ar-frame">{{visual}}<span class="hw-ar-rail" aria-hidden="true"><i></i></span></div>
+      <figcaption>{{caption}}</figcaption>
+    </figure>
+  </div>
+</section>
+<section class="hw-band hw-band-white">
+  <div class="hw-shell hw-split">
+    <div class="hw-read hw-ar-body">
+      <p class="hw-ar-lead">{{lead}}</p>
+      <div class="hw-ar-answer"><p class="hw-ar-answer-k">{{answer_k}}</p><p>{{answer}}</p></div>
+{{sections}}
+    </div>
+    <aside class="hw-side hw-ar-side">
+      <p class="hw-eyebrow">{{owner_k}}</p>
+      <p class="hw-ar-owner"><a href="{{svc_href}}"><span class="hw-svc-ico">{{svc_icon}}</span>{{svc_name}}</a></p>
+      <p>{{owner_card}}</p>
+      <p><a class="hw-more" href="{{svc_href}}">{{owner_cta}} →</a></p>
+      <div class="hw-actions">{{side_wa}}</div>
+      {{rating}}
+    </aside>
+  </div>
+</section>
+</article>

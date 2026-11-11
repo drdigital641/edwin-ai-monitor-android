@@ -17,7 +17,8 @@
    "home": "Home",
    "services": "Services",
    "about": "About",
-   "contact": "Contact"
+   "contact": "Contact",
+   "articles": "Articles"
   },
   "wa_cta": "WhatsApp us",
   "wa_cta_short": "WhatsApp",
@@ -581,5 +582,38 @@
    "t": "Final check",
    "d": "We check everything before you collect."
   }
- ]
+ ],
+ "articles": {
+  "title": "Hybrid Car Articles JB | Hybrid World Specialist",
+  "description": "Plain answers for hybrid owners in Johor Bahru: hybrid batteries, hybrid system warnings, aircon, gearbox and engine, from Hybrid World Specialist.",
+  "eyebrow": "Hybrid owners' guides",
+  "h1": "Hybrid car articles",
+  "lead": "Plain answers to the questions hybrid owners in Johor Bahru bring to our workshop in Taman Bukit Indah, written from the work we do every day.",
+  "list_h2": "Latest articles",
+  "read_more": "Read the article",
+  "read_time": "{n} min read",
+  "byline": "Hybrid World Specialist workshop",
+  "answer": "Short answer",
+  "owner_kicker": "The service behind this article",
+  "owner_cta": "Open the service page",
+  "mid_h": "Not sure what your car needs?",
+  "mid_p": "Send us your car model, year and a photo of any warning. We reply on WhatsApp.",
+  "more_h2": "More articles",
+  "all": "All articles",
+  "date_fmt": "{d} {m} {y}",
+  "months": [
+   "Jan",
+   "Feb",
+   "Mar",
+   "Apr",
+   "May",
+   "Jun",
+   "Jul",
+   "Aug",
+   "Sep",
+   "Oct",
+   "Nov",
+   "Dec"
+  ]
+ }
 }

@@ -17,7 +17,8 @@
    "home": "首页",
    "services": "服务",
    "about": "关于我们",
-   "contact": "联系我们"
+   "contact": "联系我们",
+   "articles": "文章"
   },
   "wa_cta": "WhatsApp 联系我们",
   "wa_cta_short": "WhatsApp",
@@ -581,5 +582,38 @@
    "t": "最终检查",
    "d": "交车前我们会做最后检查。"
   }
- ]
+ ],
+ "articles": {
+  "title": "新山混合动力车文章 | Hybrid World Specialist",
+  "description": "给新山混合动力车主的简单解答：混合动力电池、混合动力系统警告、冷气、变速箱和引擎，由 Hybrid World Specialist 撰写。",
+  "eyebrow": "混合动力车主指南",
+  "h1": "混合动力车文章",
+  "lead": "新山混合动力车主常带到我们 Taman Bukit Indah 维修厂的问题，我们根据每天的实际工作，用简单的话来解答。",
+  "list_h2": "最新文章",
+  "read_more": "阅读文章",
+  "read_time": "约 {n} 分钟阅读",
+  "byline": "Hybrid World Specialist 维修厂",
+  "answer": "简短回答",
+  "owner_kicker": "本文相关的服务",
+  "owner_cta": "打开服务页面",
+  "mid_h": "不确定您的车需要什么？",
+  "mid_p": "发送您的车型、年份和警告灯照片给我们，我们会在 WhatsApp 回复。",
+  "more_h2": "更多文章",
+  "all": "全部文章",
+  "date_fmt": "{y}年{mn}月{d}日",
+  "months": [
+   "1月",
+   "2月",
+   "3月",
+   "4月",
+   "5月",
+   "6月",
+   "7月",
+   "8月",
+   "9月",
+   "10月",
+   "11月",
+   "12月"
+  ]
+ }
 }

@@ -30,6 +30,7 @@ for line in (ROOT / "data" / "blocklist.txt").read_text(encoding="utf-8").splitl
     rules.append(re.compile(line[3:], re.I) if line.startswith("re:") else re.compile(re.escape(line), re.I))
 scan = [p for p in SITE.rglob("*") if p.suffix in (".html", ".css", ".js", ".txt", ".xml")]
 scan += list((ROOT / "templates").glob("*.html")) + list((ROOT / "strings").glob("*.json")) + list((ROOT / "assets").glob("*")) + [ROOT / "config.json"]
+scan += list((ROOT / "data" / "articles").glob("*.json"))
 for p in scan:
     t = p.read_text(encoding="utf-8")
     for r in rules:
@@ -94,7 +95,8 @@ def flat(o):
         yield o
 
 
-en_long = [s for s in flat(en) if isinstance(s, str) and len(s) > 24 and " " in s]
+ARTS = [json.loads(p.read_text(encoding="utf-8")) for p in sorted((ROOT / "data" / "articles").glob("*.json"))]
+en_long = [s for s in flat([en] + [a["en"] for a in ARTS]) if isinstance(s, str) and len(s) > 24 and " " in s]
 pages = sorted(SITE.rglob("index.html"))
 for f in pages:
     rel = f.relative_to(SITE).as_posix()
@@ -139,7 +141,12 @@ for f in pages:
                 err(f"{rel}: schema {k} {b.get(k)!r} != config")
         if b.get("sameAs") != [CFG["facebook_url"]]:
             err(f"{rel}: schema sameAs")
-        if not home and "contact" not in rel and "about" not in rel:
+        if rel.startswith(("articles/", "ms/articles/", "zh/articles/")):
+            need_types = ("CollectionPage", "BreadcrumbList") if rel.endswith("articles/index.html") else ("Article", "FAQPage", "BreadcrumbList")
+            for need in need_types:
+                if need not in types:
+                    err(f"{rel}: schema {need} missing")
+        elif not home and "contact" not in rel and "about" not in rel:
             for need in ("Service", "FAQPage", "BreadcrumbList"):
                 if need not in types:
                     err(f"{rel}: schema {need} missing")
@@ -191,7 +198,7 @@ for f in pages:
         body = t.split("<body", 1)[1]
         for r in REVIEW_TEXT:  # verbatim English quotes are allowed
             body = body.replace(html.escape(r), "")
-        same = set(flat(json.loads((ROOT / "strings" / (rel[:2] + ".json")).read_text(encoding="utf-8"))))
+        same = set(flat([json.loads((ROOT / "strings" / (rel[:2] + ".json")).read_text(encoding="utf-8"))] + [a[rel[:2]] for a in ARTS]))
         for s in en_long:
             if s in same:  # kept on purpose (car model names)
                 continue
@@ -221,6 +228,8 @@ for f in ("sitemap.xml", "llms.txt", "favicon.png", "apple-touch-icon.png", "img
         err(f"missing {f}")
 if "autoseo.my" in (SITE / "sitemap.xml").read_text() or "autoseo.my/preview" in (SITE / "llms.txt").read_text():
     err("sitemap/llms must name the planned domain, not the preview")
+if CFG["preview"] and ("/articles/" in (SITE / "sitemap.xml").read_text() or "/articles/" in (SITE / "llms.txt").read_text()):
+    err("preview: articles must stay out of sitemap.xml and llms.txt until move day")
 if any(SITE.rglob(".htaccess")) or (SITE / "media").exists():
     err("site/ must not contain .htaccess or media/")
 
