@@ -153,19 +153,30 @@ GLYPH = {
 
 
 def board_art(kind, label, hero=False):
-    """Inline SVG circuit board with data pulses running along the traces."""
+    """Inline SVG circuit board with data pulses (cyan + green) running along the traces and amber LEDs."""
     traces = [
         "M0 60H90L120 90H150", "M0 260H80L110 230H150", "M400 70H310L280 100H250", "M400 250H320L290 220H250",
         "M200 0V60L185 75V110", "M200 320V260L215 245V210", "M0 160H150", "M400 160H250",
+        "M0 20H40L60 40V90L80 110H150", "M400 20H360L340 40V95L320 115H250", "M0 300H50L70 280V230L90 210H150",
+        "M400 300H350L330 280V225L310 205H250", "M140 0V40L160 60V110", "M260 320V280L240 260V210",
     ]
     paths = "".join(f'<path d="{d}" class="trace"/>' for d in traces)
-    flows = "".join(f'<path d="{d}" class="flow f{i % 4}" pathLength="100"/>' for i, d in enumerate(traces))
+    flows = "".join(f'<path d="{d}" class="flow f{(i + k) % 6}" pathLength="100"/>' for i, d in enumerate(traces) for k in ((0, 3) if hero else (0,)))
     pads = "".join(f'<circle cx="{x}" cy="{y}" r="5" class="pad"/>' for x, y in ((0, 60), (0, 260), (400, 70), (400, 250), (200, 0), (200, 320), (0, 160), (400, 160)))
-    vias = "".join(f'<circle cx="{x}" cy="{y}" r="3.5" class="via"/>' for x, y in ((90, 60), (120, 90), (80, 260), (110, 230), (310, 70), (280, 100), (320, 250), (290, 220), (185, 75), (215, 245)))
+    vias = "".join(f'<circle cx="{x}" cy="{y}" r="3.5" class="via{" led l" + str(n % 3) if n % 2 == 0 else ""}"/>'
+                   for n, (x, y) in enumerate(((90, 60), (120, 90), (80, 260), (110, 230), (310, 70), (280, 100), (320, 250), (290, 220),
+                                               (185, 75), (215, 245), (60, 40), (340, 40), (70, 280), (330, 280))))
     lbl = f'<text x="200" y="300" text-anchor="middle" class="g-lbl">{E(label)}</text>' if label else ""
     cls = "art art-hero anim" if hero else "art anim"
     return (f'<svg class="{cls}" viewBox="0 0 400 320" role="img" aria-label="{E(label)}">'
             f'{paths}{flows}{vias}{pads}{GLYPH[kind]}{lbl}</svg>')
+
+
+def bit_stream():
+    """Two rows of binary that flow across the hero graphic (CSS moves them; decorative)."""
+    a = "".join("1" if (j * 5 + j // 3) % 3 else "0" for j in range(96))
+    b = "".join("0" if (j * 7 + j // 2) % 4 else "1" for j in range(96))
+    return f'<div class="bstream mono anim" aria-hidden="true"><span>{a}{a}</span><span>{b}{b}</span></div>'
 
 
 BINARY = "\n".join(
@@ -293,10 +304,17 @@ def card(L, k):
 
 
 def reel_wall(L):
+    """Reels from data/site.json "reels": self-hosted MP4 when has_mp4, else Facebook click-to-load."""
     out = []
-    for i, url in enumerate(SITE["reels"], 1):
+    for i, r in enumerate(SITE["reels"], 1):
+        url = f"https://www.facebook.com/reel/{r['id']}"
         embed = "https://www.facebook.com/plugins/video.php?href=" + quote(url, safe="") + "&show_text=false&autoplay=true&width=360"
-        out.append(fill("reel_facade", url=E(url), embed=E(embed), label=E(L.ui["reel_label"]), play=E(L.ui["reel_play"]), n=f"{i:02d}"))
+        if r.get("has_mp4"):
+            out.append(fill("reel_video", url=E(url), embed=E(embed), mp4=f"{BASE}media/reel-{r['id']}.mp4",
+                            poster=f"{BASE}media/reel-{r['id']}.jpg", label=E(L.ui["reel_video_label"]),
+                            play=E(L.ui["reel_video_play"]), n=f"{i:02d}"))
+        else:
+            out.append(fill("reel_facade", url=E(url), embed=E(embed), label=E(L.ui["reel_label"]), play=E(L.ui["reel_play"]), n=f"{i:02d}"))
     return '<div class="reels">\n' + "\n".join(out) + "\n</div>"
 
 
@@ -346,6 +364,7 @@ def build_home(L):
     </div>
     <div class="hero-art">
       {board_art("ecu", "", hero=True)}
+      {bit_stream()}
       <ol class="console mono" aria-hidden="true">{console}</ol>
     </div>
   </div>

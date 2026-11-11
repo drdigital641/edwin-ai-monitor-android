@@ -30,7 +30,7 @@
   "photo_label": "From the bench",
   "reel_label": "Repair reel on Facebook",
   "reel_play": "Play repair reel on Facebook",
-  "reel_note": "Reels stay on Facebook. Nothing from Facebook loads until you tap a reel.",
+  "reel_note": "Videos load only when you tap a reel.",
   "footer_about": "Component-level repair of car electronic control units in Johor Bahru, Malaysia. Send-in service for workshops.",
   "footer_repairs": "Repairs",
   "footer_company": "Company",
@@ -44,7 +44,9 @@
   "related_h2": "Other repairs on the bench",
   "call": "Call {phone}",
   "hours_label": "Hours",
-  "hours_text": "Daily, 10:30am to 7:00pm"
+  "hours_text": "Daily, 10:30am to 7:00pm",
+  "reel_video_label": "Repair reel",
+  "reel_video_play": "Play repair reel"
  },
  "prefills": {
   "general": "Hi EMATS, I have a module that needs checking. Fault: ... Part number: ...",
@@ -147,7 +149,7 @@
    "photos_p": "Real photos from the EMATS bench: modules under test, BGA chips on the jig and boards waiting their turn.",
    "reels_kicker": "Video",
    "reels_h2": "From the bench",
-   "reels_p": "Repair reels from the EMATS Facebook page. Tap one to play it on Facebook.",
+   "reels_p": "Repair reels from the EMATS bench, also on the EMATS Facebook page. Tap one to play it.",
    "why_kicker": "Why repair",
    "why_h2": "Why workshops repair modules instead of replacing them",
    "why": [

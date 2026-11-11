@@ -30,7 +30,7 @@
   "photo_label": "Dari meja kerja",
   "reel_label": "Reel pembaikan di Facebook",
   "reel_play": "Mainkan reel pembaikan di Facebook",
-  "reel_note": "Reel kekal di Facebook. Tiada apa-apa daripada Facebook dimuatkan sehingga anda tekan sesuatu reel.",
+  "reel_note": "Video hanya dimuatkan apabila anda tekan sesuatu reel.",
   "footer_about": "Pembaikan peringkat komponen untuk unit kawalan elektronik kereta di Johor Bahru, Malaysia. Servis hantar masuk untuk bengkel.",
   "footer_repairs": "Pembaikan",
   "footer_company": "Syarikat",
@@ -44,7 +44,9 @@
   "related_h2": "Pembaikan lain di meja kerja kami",
   "call": "Telefon {phone}",
   "hours_label": "Waktu operasi",
-  "hours_text": "Setiap hari, 10:30 pagi hingga 7:00 malam"
+  "hours_text": "Setiap hari, 10:30 pagi hingga 7:00 malam",
+  "reel_video_label": "Video pembaikan",
+  "reel_video_play": "Main video pembaikan"
  },
  "prefills": {
   "general": "Hi EMATS, saya ada modul yang perlu diperiksa. Kerosakan: ... Nombor bahagian: ...",
@@ -147,7 +149,7 @@
    "photos_p": "Gambar sebenar dari meja kerja EMATS: modul sedang diuji, cip BGA pada jig dan papan yang menunggu giliran.",
    "reels_kicker": "Video",
    "reels_h2": "Dari meja kerja",
-   "reels_p": "Reel pembaikan dari halaman Facebook EMATS. Tekan satu untuk menontonnya di Facebook.",
+   "reels_p": "Reel pembaikan dari meja kerja EMATS, juga di halaman Facebook EMATS. Tekan satu untuk menontonnya.",
    "why_kicker": "Kenapa baiki",
    "why_h2": "Kenapa bengkel baiki modul, bukan ganti",
    "why": [

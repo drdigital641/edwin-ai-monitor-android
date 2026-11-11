@@ -30,7 +30,7 @@
   "photo_label": "维修台实拍",
   "reel_label": "Facebook 维修短片",
   "reel_play": "在 Facebook 播放维修短片",
-  "reel_note": "短片都在 Facebook 上播放。点开短片之前，不会加载任何 Facebook 内容。",
+  "reel_note": "点开短片后才会加载视频。",
   "footer_about": "马来西亚新山汽车电子控制模块的元件级维修，提供车厂寄修服务。",
   "footer_repairs": "维修项目",
   "footer_company": "公司",
@@ -44,7 +44,9 @@
   "related_h2": "维修台上的其他维修项目",
   "call": "致电 {phone}",
   "hours_label": "营业时间",
-  "hours_text": "每天 上午10:30 至 晚上7:00"
+  "hours_text": "每天 上午10:30 至 晚上7:00",
+  "reel_video_label": "维修视频",
+  "reel_video_play": "播放维修视频"
  },
  "prefills": {
   "general": "你好 EMATS，我有一个模块想请你们检测。故障：... 零件编号：...",
@@ -147,7 +149,7 @@
    "photos_p": "EMATS 维修台的实拍照片：测试中的模块、治具上的 BGA 芯片，以及排队等待维修的电路板。",
    "reels_kicker": "视频",
    "reels_h2": "维修台实录",
-   "reels_p": "来自 EMATS Facebook 专页的维修短片。点开后会在 Facebook 播放。",
+   "reels_p": "来自 EMATS 维修台的维修短片，也可在 EMATS Facebook 专页观看。点开即可播放。",
    "why_kicker": "为什么选择维修",
    "why_h2": "车厂为什么选择修复模块，而不是更换",
    "why": [

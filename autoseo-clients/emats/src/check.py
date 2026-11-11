@@ -147,6 +147,8 @@ for f in pages:
         if not target.exists():
             err(f"{rel}: broken link {href}")
     for src in p.imgs:
+        if "/media/" in src:  # reel posters are uploaded by hand, not part of the build
+            continue
         if not (SITE / src[len(BASE):]).exists():
             err(f"{rel}: missing image {src}")
     for src in p.imgs_no_size:

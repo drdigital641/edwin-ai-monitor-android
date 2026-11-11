@@ -117,17 +117,54 @@
  ],
  "og_photo": "tricore-chip",
  "reels": [
-  "https://www.facebook.com/reel/1355389330048582",
-  "https://www.facebook.com/reel/995736153010295",
-  "https://www.facebook.com/reel/839141345321883",
-  "https://www.facebook.com/reel/1308558361332965",
-  "https://www.facebook.com/reel/3239641406244509",
-  "https://www.facebook.com/reel/872222872000790",
-  "https://www.facebook.com/reel/1518873209213265",
-  "https://www.facebook.com/reel/848787437861733",
-  "https://www.facebook.com/reel/726582903237207",
-  "https://www.facebook.com/reel/667186679496529",
-  "https://www.facebook.com/reel/1373412457257271",
-  "https://www.facebook.com/reel/712760211044792"
- ]
+  {
+   "id": "1355389330048582",
+   "has_mp4": true
+  },
+  {
+   "id": "995736153010295",
+   "has_mp4": true
+  },
+  {
+   "id": "839141345321883",
+   "has_mp4": true
+  },
+  {
+   "id": "1308558361332965",
+   "has_mp4": true
+  },
+  {
+   "id": "3239641406244509",
+   "has_mp4": true
+  },
+  {
+   "id": "872222872000790",
+   "has_mp4": true
+  },
+  {
+   "id": "1518873209213265",
+   "has_mp4": true
+  },
+  {
+   "id": "848787437861733",
+   "has_mp4": true
+  },
+  {
+   "id": "726582903237207",
+   "has_mp4": true
+  },
+  {
+   "id": "667186679496529",
+   "has_mp4": true
+  },
+  {
+   "id": "1373412457257271",
+   "has_mp4": true
+  },
+  {
+   "id": "712760211044792",
+   "has_mp4": true
+  }
+ ],
+ "_reels_note": "Reel wall. One entry per reel: id = Facebook reel id. has_mp4 true = play the self-hosted media/reel-<id>.mp4 with poster media/reel-<id>.jpg (uploaded by hand, not in the zip); if the MP4 fails to load, the page falls back to the Facebook embed. has_mp4 false = Facebook click-to-load embed only."
 }
