@@ -806,6 +806,8 @@
   "verdict_ok": "Beberapa asas penting perlu diperbaiki.",
   "verdict_poor": "Beberapa asas tiada, jadi pemandu mungkin sukar menemui anda.",
   "counts": "{fails} perlu dibaiki · {warns} perlu ditambah baik · {passes} baik",
+  "penalty": "Skor dihadkan pada {cap} kerana masalah serius: {items}. Baiki ini dahulu.",
+  "penalty_items": {"status": "halaman tidak dimuatkan", "indexable": "halaman disembunyikan daripada Google (noindex)", "https": "laman tidak menggunakan https", "title": "halaman tiada tajuk", "robots": "robots.txt menyekat Google"},
   "speed_label": "Kelajuan mudah alih (Google PageSpeed)",
   "speed_wait": "Mengukur kelajuan mudah alih…",
   "speed_na": "Kelajuan mudah alih tidak dapat diukur sekarang.",

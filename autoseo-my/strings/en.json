@@ -806,6 +806,8 @@
   "verdict_ok": "Some important basics need work.",
   "verdict_poor": "Several basics are missing, so motorists may not find you.",
   "counts": "{fails} to fix · {warns} to improve · {passes} good",
+  "penalty": "Score held at {cap} because of a serious problem: {items}. Fix this first.",
+  "penalty_items": {"status": "the page doesn't load", "indexable": "the page is hidden from Google (noindex)", "https": "the site isn't on https", "title": "the page has no title", "robots": "robots.txt blocks Google"},
   "speed_label": "Mobile speed (Google PageSpeed)",
   "speed_wait": "Measuring mobile speed…",
   "speed_na": "Mobile speed couldn't be measured right now.",

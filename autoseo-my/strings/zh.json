@@ -806,6 +806,8 @@
   "verdict_ok": "有些重要的基本项目需要改进。",
   "verdict_poor": "缺少好几项基本项目，车主可能找不到您。",
   "counts": "{fails} 项需修正 · {warns} 项可改进 · {passes} 项良好",
+  "penalty": "因存在严重问题，分数上限为 {cap}：{items}。请先修正这一项。",
+  "penalty_items": {"status": "页面无法打开", "indexable": "页面被设为不让 Google 收录（noindex）", "https": "网站未使用 https", "title": "页面没有标题", "robots": "robots.txt 阻止了 Google"},
   "speed_label": "手机版速度（Google PageSpeed）",
   "speed_wait": "正在测量手机版速度…",
   "speed_na": "暂时无法测量手机版速度。",

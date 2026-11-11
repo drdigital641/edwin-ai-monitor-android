@@ -97,7 +97,10 @@
     out.innerHTML = `<div class="checker-result">` +
       `<div class="checker-head"><div class="score-ring${tone}" style="--p:${score}"><b>${score}</b><small>/100</small></div>` +
       `<div><h3>${esc(fill(T.c.result_for, { site }))}</h3><p>${esc(verdict)}</p>` +
-      `<p class="hero-check-counts">${esc(fill(T.c.counts, { fails: n("fail"), warns: n("warn"), passes: n("pass") }))}</p></div></div>` +
+      `<p class="hero-check-counts">${esc(fill(T.c.counts, { fails: n("fail"), warns: n("warn"), passes: n("pass") }))}</p>` +
+      // A critical problem (page down, hidden from Google, no https, no title) caps the score; say which one.
+      (r.penalty && r.penalty.cap && T.c.penalty ? `<p class="hero-check-counts">${esc(fill(T.c.penalty, { cap: r.penalty.cap,
+        items: (r.penalty.ids || []).map((id) => (T.c.penalty_items && T.c.penalty_items[id]) || (T.c.items[id] && T.c.items[id].label) || id).join(", ") }))}</p>` : "") + `</div></div>` +
       waBlock(waLink("check", { site, score }), T.c.wa_text) +
       `<div class="checker-groups">${groups}</div>` +
       `<div class="checker-speed"><h4>${esc(T.c.speed_label)}</h4><p class="speed-line" id="site-check-speed">${esc(T.c.speed_wait)}</p></div>` +
