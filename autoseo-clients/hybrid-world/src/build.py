@@ -5,8 +5,8 @@
 
 Business facts: config.json. Page order, photos, reels, review quotes: data/site.json.
 Every visible string and the WhatsApp prefills: strings/<lang>.json (same keys).
-Shared parts (head, header, footer, WhatsApp/call buttons, sticky bar, service tile,
-step, carousel, reel, review, map facade, FAQ, CTA, breadcrumb): templates/.
+Shared parts (head, header, footer, WhatsApp/call buttons, floating buttons, filmstrip,
+story, quote, map facade, FAQ, CTA, breadcrumb): templates/. Fonts: fonts/ (self-hosted, OFL).
 Output is fully rendered static HTML in site/ (English at the root, Malay in ms/,
 Chinese in zh/). check.py runs at the end; a failed check stops the build.
 """
@@ -112,76 +112,58 @@ def build_images():
         im.save(OUT / name, "WEBP" if name.endswith("webp") else "PNG", **({"quality": 86} if name.endswith("webp") else {}))
 
 
-def img_tag(L, key, sizes, eager=False, cls=""):
+def img_tag(L, key, sizes, eager=False, cls="", alt=True):
     (bw, bh), (sw, sh) = SIZES[key]
     stem = PHOTO[key]["file"][:-5]
     srcset = f"{BASE}img/{stem}-640.webp {sw}w" + (f", {BASE}img/{stem}-1200.webp {bw}w" if bw > sw else "")
     extra = ' fetchpriority="high"' if eager else ""
     c = f' class="{cls}"' if cls else ""
+    a = E(L.s["photos"][key]) if alt else ""
     return (f'<img{c} src="{BASE}img/{stem}-640.webp" srcset="{srcset}" sizes="{sizes}" width="{sw}" height="{sh}" '
-            f'alt="{E(L.s["photos"][key])}" loading="{"eager" if eager else "lazy"}" decoding="async"{extra}>')
+            f'alt="{a}" loading="{"eager" if eager else "lazy"}" decoding="async"{extra}>')
 
 
 def figure(L, key, sizes="(max-width: 760px) 100vw, 560px", eager=False, cls=""):
-    return f'<figure class="ph{(" " + cls) if cls else ""}">{img_tag(L, key, sizes, eager)}<figcaption>{E(L.s["photo_caps"][key])}</figcaption></figure>'
+    return f'<figure class="hw-pic{(" " + cls) if cls else ""}">{img_tag(L, key, sizes, eager)}<figcaption>{E(L.s["photo_caps"][key])}</figcaption></figure>'
 
 
-# ------------------------------------------------------------------ graphics (no fake photos: icon art in the energy style)
+# ------------------------------------------------------------------ graphics (no fake photos: line icons in the site style)
 ICON = {
-    "battery": '<rect x="18" y="26" width="64" height="44" rx="7" class="i-line"/><rect x="82" y="40" width="7" height="16" rx="2" class="i-fill"/><rect x="26" y="34" width="10" height="28" rx="2" class="i-cell c1"/><rect x="40" y="34" width="10" height="28" rx="2" class="i-cell c2"/><rect x="54" y="34" width="10" height="28" rx="2" class="i-cell c3"/><rect x="68" y="34" width="8" height="28" rx="2" class="i-cell c4"/>',
-    "recon": '<path d="M50 14a34 34 0 1 1-30 18" class="i-line i-spin"/><path d="M14 18l6 14 14-5" class="i-line"/><path d="M54 30 42 52h12l-6 18 16-26H52l6-14Z" class="i-fill"/>',
-    "inverter": '<rect x="20" y="22" width="60" height="52" rx="8" class="i-line"/><path d="M30 48c5-12 10-12 15 0s10 12 15 0" class="i-line i-wave"/><path d="M8 40h12M8 56h12M80 40h12M80 56h12" class="i-line"/><path d="M62 30h10M67 25v10" class="i-line"/>',
-    "car": '<path d="M16 62V50l9-16c2-4 5-6 9-6h32c4 0 7 2 9 6l9 16v12" class="i-line"/><path d="M12 62h76" class="i-line"/><circle cx="30" cy="66" r="8" class="i-line"/><circle cx="70" cy="66" r="8" class="i-line"/><path d="M53 30 44 46h9l-5 12 12-18h-9l4-10Z" class="i-fill"/>',
-    "honda": '<circle cx="50" cy="48" r="32" class="i-line"/><path d="M50 16v8M50 72v8M18 48h8M74 48h8" class="i-line"/><path d="M53 28 40 52h11l-5 16 15-24H50l6-16Z" class="i-fill"/>',
-    "aircon": '<path d="M50 14v68M21 31l58 34M21 65l58-34" class="i-line"/><path d="M42 20l8 8 8-8M42 76l8-8 8 8M17 41l11-3-3-11M83 55l-11 3 3 11M17 55l11 3-3 11M83 41l-11-3 3-11" class="i-line"/><circle cx="50" cy="48" r="7" class="i-fill"/>',
-    "transmission": '<circle cx="38" cy="50" r="18" class="i-line"/><circle cx="38" cy="50" r="6" class="i-fill"/><circle cx="68" cy="30" r="12" class="i-line"/><circle cx="68" cy="30" r="4" class="i-fill"/>'
-                    + "".join(f'<path d="M{38 + 18 * c:.1f} {50 + 18 * s:.1f}l{5 * c:.1f} {5 * s:.1f}" class="i-line"/>' for c, s in ((1, 0), (0.7, 0.7), (0, 1), (-0.7, 0.7), (-1, 0), (-0.7, -0.7), (0, -1), (0.7, -0.7))),
-    "engine": '<path d="M22 38h12v-8h22v8h10l6 8h8v-6h6v24h-6v-6h-8l-6 10H34l-6-8h-6Z" class="i-line"/><path d="M14 44v16M14 52h8" class="i-line"/><path d="M50 40l-7 12h6l-3 9 9-13h-6l4-8Z" class="i-fill"/>',
-    "whatsapp": '<path d="M50 14a34 34 0 0 0-29 51l-5 17 18-5a34 34 0 1 0 16-63Z" class="i-line"/><path d="M38 36c2-3 5-3 6 0l2 6c0 2-2 3-3 4 2 5 6 9 11 11 1-1 2-3 4-3l6 2c3 1 3 4 0 6-3 3-9 4-18-2s-12-14-11-19c0-2 1-4 3-5Z" class="i-fill"/>',
-    "scan": '<circle cx="44" cy="44" r="24" class="i-line"/><path d="m62 62 18 18" class="i-line"/><path d="M28 44h8l4-8 6 16 4-8h8" class="i-line i-wave"/>',
-    "quote": '<path d="M26 14h36l14 14v56H26Z" class="i-line"/><path d="M36 40h30M36 52h30M36 64h18" class="i-line"/><path d="M60 64l6 6 12-14" class="i-line i-ok"/>',
-    "drive": '<circle cx="50" cy="50" r="32" class="i-line"/><circle cx="50" cy="50" r="8" class="i-fill"/><path d="M50 18v24M22 64l21-10M78 64 57 54" class="i-line"/>',
+    "battery": '<rect x="18" y="26" width="64" height="44" rx="7" class="hw-i-l"/><rect x="82" y="40" width="7" height="16" rx="2" class="hw-i-f"/><rect x="26" y="34" width="10" height="28" rx="2" class="hw-i-c"/><rect x="40" y="34" width="10" height="28" rx="2" class="hw-i-c"/><rect x="54" y="34" width="10" height="28" rx="2" class="hw-i-c"/><rect x="68" y="34" width="8" height="28" rx="2" class="hw-i-c hw-i-dim"/>',
+    "recon": '<path d="M50 14a34 34 0 1 1-30 18" class="hw-i-l"/><path d="M14 18l6 14 14-5" class="hw-i-l"/><path d="M54 30 42 52h12l-6 18 16-26H52l6-14Z" class="hw-i-f"/>',
+    "inverter": '<rect x="20" y="22" width="60" height="52" rx="8" class="hw-i-l"/><path d="M30 48c5-12 10-12 15 0s10 12 15 0" class="hw-i-l"/><path d="M8 40h12M8 56h12M80 40h12M80 56h12" class="hw-i-l"/><path d="M62 30h10M67 25v10" class="hw-i-l"/>',
+    "car": '<path d="M16 62V50l9-16c2-4 5-6 9-6h32c4 0 7 2 9 6l9 16v12" class="hw-i-l"/><path d="M12 62h76" class="hw-i-l"/><circle cx="30" cy="66" r="8" class="hw-i-l"/><circle cx="70" cy="66" r="8" class="hw-i-l"/><path d="M53 30 44 46h9l-5 12 12-18h-9l4-10Z" class="hw-i-f"/>',
+    "honda": '<circle cx="50" cy="48" r="32" class="hw-i-l"/><path d="M50 16v8M50 72v8M18 48h8M74 48h8" class="hw-i-l"/><path d="M53 28 40 52h11l-5 16 15-24H50l6-16Z" class="hw-i-f"/>',
+    "aircon": '<path d="M50 14v68M21 31l58 34M21 65l58-34" class="hw-i-l"/><path d="M42 20l8 8 8-8M42 76l8-8 8 8M17 41l11-3-3-11M83 55l-11 3 3 11M17 55l11 3-3 11M83 41l-11-3 3-11" class="hw-i-l"/><circle cx="50" cy="48" r="7" class="hw-i-f"/>',
+    "transmission": '<circle cx="38" cy="50" r="18" class="hw-i-l"/><circle cx="38" cy="50" r="6" class="hw-i-f"/><circle cx="68" cy="30" r="12" class="hw-i-l"/><circle cx="68" cy="30" r="4" class="hw-i-f"/>'
+                    + "".join(f'<path d="M{38 + 18 * c:.1f} {50 + 18 * s:.1f}l{5 * c:.1f} {5 * s:.1f}" class="hw-i-l"/>' for c, s in ((1, 0), (0.7, 0.7), (0, 1), (-0.7, 0.7), (-1, 0), (-0.7, -0.7), (0, -1), (0.7, -0.7))),
+    "engine": '<path d="M22 38h12v-8h22v8h10l6 8h8v-6h6v24h-6v-6h-8l-6 10H34l-6-8h-6Z" class="hw-i-l"/><path d="M14 44v16M14 52h8" class="hw-i-l"/><path d="M50 40l-7 12h6l-3 9 9-13h-6l4-8Z" class="hw-i-f"/>',
+    "wheel": '<circle cx="50" cy="48" r="32" class="hw-i-l"/><circle cx="50" cy="48" r="8" class="hw-i-f"/><path d="M50 16v24M22 64l21-10M78 64 57 54" class="hw-i-l"/>',
 }
 
 
-def icon_art(kind, label="", big=False):
+def icon_art(kind, label="", cls=""):
     role = f' role="img" aria-label="{E(label)}"' if label else ' aria-hidden="true"'
-    return (f'<svg class="iart{" iart-big" if big else ""} anim" viewBox="0 0 100 96"{role}>'
-            f'<defs><linearGradient id="ig-{kind}" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#a6e34f"/><stop offset="1" stop-color="#22b8ff"/></linearGradient></defs>'
-            f'<g style="--ig:url(#ig-{kind})">{ICON[kind]}</g></svg>')
+    return f'<svg class="hw-ico{(" " + cls) if cls else ""}" viewBox="0 0 100 96"{role}>{ICON[kind]}</svg>'
 
 
-def energy_flow(label):
-    """Hero animation: energy flows between battery cells, the hybrid core, an engine and a wheel."""
-    cells = "".join(f'<rect x="{30 + i * 15}" y="86" width="11" height="44" rx="3" class="cell cell{i}"/>' for i in range(5))
-    spokes = "".join(f'<path d="M300 158 L{300 + 24 * c:.1f} {158 + 24 * s:.1f}" class="spoke"/>' for c, s in ((1, 0), (0.5, 0.866), (-0.5, 0.866), (-1, 0), (-0.5, -0.866), (0.5, -0.866)))
-    flows = [("M106 108 C125 108 130 108 150 108", "fb"), ("M206 98 C232 88 240 60 262 56", "fg"),
-             ("M206 118 C232 128 244 150 268 156", "fb"), ("M300 82 V124", "fg"), ("M150 108 C130 108 125 108 106 108", "fg rev")]
-    tracks = "".join(f'<path d="{d}" class="track"/>' for d, _ in flows[:4])
-    runs = "".join(f'<path d="{d}" class="flow {c}" pathLength="100"/>' for d, c in flows)
-    sparks = "".join(f'<circle r="3.2" class="spark {c}"><animateMotion dur="{t}s" begin="{b}s" repeatCount="indefinite" path="{d}"/></circle>'
-                     for d, c, t, b in (("M106 108 C125 108 130 108 150 108", "sb", 1.6, 0), ("M206 98 C232 88 240 60 262 56", "sg", 1.9, 0),
-                                        ("M206 118 C232 128 244 150 268 156", "sb", 1.7, 0), ("M300 82 V124", "sg", 1.4, 0)))
-    return f'''<svg class="flowart anim" viewBox="0 0 360 200" role="img" aria-label="{E(label)}">
-  <defs>
-    <linearGradient id="gB" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#22b8ff"/><stop offset="1" stop-color="#7fe0ff"/></linearGradient>
-    <linearGradient id="gG" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#a6e34f"/><stop offset="1" stop-color="#d9ff7a"/></linearGradient>
-    <radialGradient id="gC"><stop offset="0" stop-color="#22b8ff" stop-opacity=".55"/><stop offset="1" stop-color="#22b8ff" stop-opacity="0"/></radialGradient>
-    <filter id="glow" x="-50%" y="-50%" width="200%" height="200%"><feGaussianBlur stdDeviation="2.4" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
-  </defs>
-  <g class="pack"><rect x="20" y="76" width="86" height="64" rx="10" class="shell"/><rect x="46" y="68" width="34" height="8" rx="3" class="shell-cap"/>{cells}</g>
-  {tracks}
-  <g filter="url(#glow)">{runs}{sparks}</g>
-  <circle cx="178" cy="108" r="46" fill="url(#gC)" class="core-halo"/>
-  <g class="core"><path d="M178 80 202 94v28l-24 14-24-14V94Z" class="hex"/><path d="M182 88 166 112h11l-5 18 17-26h-11l4-16Z" class="bolt"/></g>
-  <g class="engine"><path d="M262 40h12v-7h22v7h8l6 7h6v-5h5v21h-5v-5h-6l-6 9h-30l-5-7h-7Z" class="shell"/><circle cx="288" cy="54" r="5" class="piston"/></g>
-  <g class="wheel"><circle cx="300" cy="158" r="32" class="tyre"/><circle cx="300" cy="158" r="22" class="rim"/><g class="spokes">{spokes}</g><circle cx="300" cy="158" r="5" class="hub"/></g>
-</svg>'''
+def flow_line(L):
+    """Hero overlay: energy runs battery > inverter > motor > wheel (decorative; labels are plain text)."""
+    names = L.ui["flow"]
+    kinds = ["battery", "inverter", "engine", "wheel"]
+    xs = [40, 140, 240, 340]
+    nodes = "".join(f'<g class="hw-fl-node" style="--d:{i * .35}s"><circle cx="{x}" cy="40" r="22"/><svg x="{x - 15}" y="25" width="30" height="30" viewBox="0 0 100 96">{ICON[k]}</svg></g>'
+                    for i, (x, k) in enumerate(zip(xs, kinds)))
+    path = "M62 40 H118 M162 40 H218 M262 40 H318"
+    return (f'<div class="hw-flow hw-anim" aria-hidden="true"><svg viewBox="0 0 380 80" class="hw-flow-svg">'
+            f'<path d="{path}" class="hw-fl-track"/><path d="{path}" class="hw-fl-run" pathLength="100"/><path d="{path}" class="hw-fl-run hw-fl-run2" pathLength="100"/>{nodes}</svg>'
+            f'<ol class="hw-flow-names">' + "".join(f"<li>{E(n)}</li>" for n in names) + "</ol></div>")
 
 
-def charge_bar(label):
-    segs = "".join(f"<i style=\"--i:{i}\"></i>" for i in range(10))
-    return f'<div class="chargebar anim" aria-hidden="true"><span class="cb-lbl">{E(label)}</span><span class="cb-segs">{segs}</span><span class="cb-plug"></span></div>'
+def charge_meter(L):
+    return (f'<div class="hw-meter hw-anim" data-meter aria-hidden="true"><span class="hw-meter-lbl">{E(L.ui["charge_label"])}</span>'
+            f'<span class="hw-meter-bar"><i></i></span><span class="hw-meter-num" data-meter-num>100%</span></div>')
+
 
 
 # ------------------------------------------------------------------ schema
@@ -231,53 +213,52 @@ def schema(L, path, pg, trail, extra=()):
 # ------------------------------------------------------------------ shared page frame
 def nav_items(L, active):
     ui = L.ui["nav"]
-    sub = "".join(f'<li><a href="{L.url(SVC[k]["slug"])}"{" aria-current=page" if active == k else ""}>{E(L.s["services"][k]["name"])}</a></li>' for k in SVC)
     cur = lambda k: ' aria-current="page"' if active == k else ""
+    svc = "".join(f'<li><a href="{L.url(SVC[k]["slug"])}"{cur(k)}>{E(L.s["services"][k]["name"])}</a></li>' for k in SVC)
     return "\n".join([
         f'        <li><a href="{L.url()}"{cur("home")}>{E(ui["home"])}</a></li>',
-        f'        <li class="has-sub"><details><summary>{E(ui["services"])}</summary><ul class="sub">{sub}</ul></details></li>',
+        f'        <li class="hw-links-svc"><span class="hw-links-h">{E(ui["services"])}</span><ul>{svc}</ul></li>',
         f'        <li><a href="{L.url("about/")}"{cur("about")}>{E(ui["about"])}</a></li>',
         f'        <li><a href="{L.url("contact/")}"{cur("contact")}>{E(ui["contact"])}</a></li>',
     ])
 
 
-def page(L, path, key, active, body, trail, extra_schema=(), body_class=""):
+def page(L, path, key, active, body, trail, extra_schema=(), body_class="", preload=""):
     s, pg = L.s, L.s["pages"][key]
     robots = '  <meta name="robots" content="noindex,nofollow">\n' if CFG["preview"] else '  <meta name="robots" content="index,follow,max-image-preview:large">\n'
     alts = "".join(f'  <link rel="alternate" hreflang="{STR[l["code"]]["meta"]["html_lang"]}" href="{abs_url(l["prefix"], path)}">\n' for l in LANGS)
     alts += f'  <link rel="alternate" hreflang="x-default" href="{abs_url("", path)}">\n'
-    switch = "".join(
+    switch = " | ".join(
         f'<a href="{BASE + l["prefix"] + path}" hreflang="{STR[l["code"]]["meta"]["html_lang"]}" lang="{STR[l["code"]]["meta"]["html_lang"]}"'
         + (' aria-current="true"' if l["code"] == L.code else "") + f'>{E(STR[l["code"]]["meta"]["switch_name"])}</a>' for l in LANGS)
     doc = fill("head", lang=s["meta"]["html_lang"], title=E(pg["title"]), description=E(pg["description"]), robots=robots,
                canonical=abs_url(L.prefix, path), hreflang=alts, base=BASE, brand_name=E(CFG["brand"]),
                og_image=abs_url("", "img/og-1200x630.jpg"), og_alt=E(s["photos"][SITE["og_photo"]]), og_locale=s["meta"]["og_locale"],
-               asset_v=ASSET_V, schema=schema(L, path, pg, trail, extra_schema))
+               asset_v=ASSET_V, preload=preload, schema=schema(L, path, pg, trail, extra_schema))
     doc += fill("header", body_class=body_class, skip=E(L.ui["skip"]), home=L.url(), base=BASE, brand=E(CFG["brand"]), short=E(CFG["short_name"]),
-                tagline=E(L.ui["tagline"]), nav_label=E(L.ui["nav_label"]), nav_items=nav_items(L, active),
-                lang_label=E(L.ui["lang_label"]), switcher=switch, menu=E(L.ui["menu"]),
-                wa=wa(L, "header", short=True, cls=" btn-sm hdr-wa"))
+                nav_label=E(L.ui["nav_label"]), nav_items=nav_items(L, active), lang_label=E(L.ui["lang_label"]), switcher=switch,
+                menu=E(L.ui["menu_open"]), wa=wa(L, "header", short=True, cls=" hw-wa-pill"))
     doc += '<main id="main">\n'
     if len(trail) > 1:
         doc += crumbs(L, trail)
     doc += body
-    sl = "\n".join(f'        <li><a href="{L.url(SVC[k]["slug"])}">{E(L.s["services"][k]["name"])}</a></li>' for k in SVC)
-    cl = "\n".join(f'        <li><a href="{L.url(p)}">{E(L.ui["nav"][n])}</a></li>' for n, p in (("home", ""), ("about", "about/"), ("contact", "contact/")))
+    sl = "\n".join(f'          <li><a href="{L.url(SVC[k]["slug"])}">{E(L.s["services"][k]["name"])}</a></li>' for k in SVC)
+    cl = " · ".join(f'<a href="{L.url(p)}">{E(L.ui["nav"][n])}</a>' for n, p in (("home", ""), ("about", "about/"), ("contact", "contact/")))
     doc += fill("footer", base=BASE, brand=E(CFG["brand"]), about=E(L.ui["footer_about"]), legal_name=E(CFG["name"]),
                 reg_label=E(L.ui["reg_label"]), reg_no=E(CFG["registration_no"]), services_h=E(L.ui["footer_services"]), service_links=sl,
-                company_h=E(L.ui["footer_company"]), company_links=cl, visit_h=E(L.ui["footer_visit"]), address=E(CFG["address_display"]),
+                company_links=cl, visit_h=E(L.ui["footer_visit"]), talk_h=E(L.ui["phone_label"]), address=E(CFG["address_display"]),
                 hours_label=E(L.ui["hours_label"]), hours=E(L.ui["hours_text"]), wa_href=E(wa_href(L)), phone=E(CFG["phone_display"]),
                 phone_e164=CFG["phone_e164"], call_short=E(L.ui["call_short"]), email=E(CFG["email"]), maps_url=E(CFG["maps_url"]),
                 map_open=E(L.ui["map_open"]), facebook_url=E(CFG["facebook_url"]), facebook=E(L.ui["facebook"]), year=YEAR,
                 rights=E(L.ui["rights"]), credit_url=E(CFG["credit_url"]), credit=E(CFG["credit"]),
-                sticky=fill("sticky", wa=wa(L, "mobile_bar", cls=" dock-wa"), tel=tel(L, "mobile_bar", short=True, cls=" dock-tel")))
+                wa=wa(L, "mobile_bar", short=True, cls=" hw-fab-wa"), tel=tel(L, "mobile_bar", short=True, cls=" hw-fab-call"))
     PAGES.append((L.prefix + path, doc))
 
 
 def crumbs(L, trail):
     items = "".join(f'<li aria-current="page">{E(n)}</li>' if i == len(trail) - 1 else f'<li><a href="{L.url(p)}">{E(n)}</a></li>'
                     for i, (n, p) in enumerate(trail))
-    return '<div class="wrap">' + fill("crumbs", label=E(L.ui["breadcrumb_label"]), items=items) + "</div>\n"
+    return '<div class="hw-shell">' + fill("crumbs", label=E(L.ui["breadcrumb_label"]), items=items) + "</div>\n"
 
 
 def faq_block(L, faq):
@@ -286,213 +267,279 @@ def faq_block(L, faq):
 
 
 def cta(L, place, key="general", topic=""):
-    return fill("cta_band", kicker=E(L.ui["cta_kicker"]), h2=E(L.ui["cta_h2"]), p=E(L.ui["cta_p"]),
-                wa=wa(L, place, key, topic), tel=tel(L, place, cls=" btn-ghost"))
+    return fill("cta", kicker=E(L.ui["cta_kicker"]), h2=E(L.ui["cta_h2"]), p=E(L.ui["cta_p"]),
+                wa=wa(L, place, key, topic), tel=tel(L, place, cls=" hw-call-line"))
 
 
-def tile(L, k):
-    sv, c = L.s["services"][k], SVC[k]
-    media = img_tag(L, c["tile_photo"], "(max-width: 760px) 50vw, 300px") if c.get("tile_photo") else icon_art(c["icon"])
-    return fill("service_tile", href=L.url(c["slug"]), media=media, name=E(sv["name"]), sub=E(sv["tile"]))
-
-
-STEP_ICONS = ["whatsapp", "scan", "quote", "drive"]
-
-
-def steps(L):
-    return '<ol class="isteps">' + "".join(fill("step_icon", icon=icon_art(STEP_ICONS[i]), n=i + 1, t=E(st["t"]), d=E(st["d"]))
-                                             for i, st in enumerate(L.s["steps4"])) + "</ol>"
-
-
-def carousel(L, keys, label):
+def filmstrip(L, keys, label):
     n = len(keys)
-    items = "".join(f'<figure class="car-slide" role="group" aria-roledescription="slide" aria-label="{i + 1} / {n}">'
-                    f'{img_tag(L, k, "(max-width: 760px) 86vw, 400px")}<figcaption>{E(L.s["photo_caps"][k])}</figcaption></figure>'
+    items = "".join(f'<figure class="hw-frame" role="group" aria-roledescription="slide" aria-label="{i + 1} / {n}">'
+                    f'{img_tag(L, k, "(max-width: 760px) 92vw, 380px")}<figcaption>{E(L.s["photo_caps"][k])}</figcaption></figure>'
                     for i, k in enumerate(keys))
-    dots = "".join(f'<button class="car-dot" type="button" aria-label="{E(L.ui["car_dot"].replace("{n}", str(i + 1)))}"></button>' for i in range(n))
-    return fill("carousel", label=E(label), items=items, dots=dots, prev=E(L.ui["car_prev"]), next=E(L.ui["car_next"]))
+    dots = "".join(f'<button class="hw-dot" type="button" aria-label="{E(L.ui["car_dot"].replace("{n}", str(i + 1)))}"></button>' for i in range(n))
+    return fill("filmstrip", label=E(label), items=items, dots=dots, prev=E(L.ui["car_prev"]), next=E(L.ui["car_next"]))
 
 
-def reel_wall(L):
+def stories(L):
     out = []
     for r in SITE["reels"]:
         land = r["shape"] == "landscape"
-        cap = L.s["reels"][r["id"]]
-        out.append(fill("reel", shape=r["shape"], poster=f'{BASE}media/reel-{r["id"]}.jpg', mp4=f'{BASE}media/reel-{r["id"]}.mp4',
-                        w=640 if land else 360, h=360 if land else 640, caption=E(cap), play=E(L.ui["reel_play"]),
+        out.append(fill("story", shape=r["shape"], poster=f'{BASE}media/reel-{r["id"]}.jpg', mp4=f'{BASE}media/reel-{r["id"]}.mp4',
+                        w=640 if land else 360, h=360 if land else 640, caption=E(L.s["reels"][r["id"]]), play=E(L.ui["reel_play"]),
                         time=f'{r["seconds"] // 60}:{r["seconds"] % 60:02d}'))
-    return '<div class="reels">\n' + "\n".join(out) + "\n</div>"
+    player = (f'<dialog class="hw-player" aria-label="{E(L.ui["reel_label"])}"><div class="hw-player-box"></div>'
+              f'<p class="hw-player-cap"></p><button class="hw-round hw-player-x" type="button" aria-label="{E(L.ui["close"])}">✕</button></dialog>')
+    return '<ul class="hw-stories">\n' + "\n".join(out) + "\n</ul>" + player
 
 
-def reviews(L, order=None):
+def gauge(L, place):
+    # 4.5 of 5 = 90% of the arc; shown as text, never as rating schema
+    return (f'<li class="hw-gauge"><a href="{E(CFG["maps_url"])}" target="_blank" rel="noopener" data-cta="google_reviews_{place}">'
+            f'<svg viewBox="0 0 120 70" aria-hidden="true"><path d="M10 62a50 50 0 0 1 100 0" class="hw-g-track"/><path d="M10 62a50 50 0 0 1 100 0" class="hw-g-fill" pathLength="100"/></svg>'
+            f'<span class="hw-g-num" aria-hidden="true">{CFG["rating"]}</span><span class="hw-g-lbl">{E(L.ui["gauge_label"])}</span>'
+            f'<span class="hw-g-txt">{E(L.ui["rating"])}</span><span class="hw-g-more">{E(L.ui["rating_link"])} ↗</span></a></li>')
+
+
+def quotes(L, place, order=None):
     revs = SITE["reviews"]
     if order:
         revs = sorted(revs, key=lambda r: order.index(r["name"]) if r["name"] in order else 99)
-    note = f'<p class="small muted">{E(L.ui["review_lang_note"])}</p>' if L.ui.get("review_lang_note") else ""
-    return '<div class="reviews">' + "".join(fill("review", text=E(r["text"]), name=E(r["name"])) for r in revs) + "</div>" + note
+    note = f'<p class="hw-fine">{E(L.ui["review_lang_note"])}</p>' if L.ui.get("review_lang_note") else ""
+    return ('<ul class="hw-quotes">' + gauge(L, place) + "".join(fill("quote", text=E(r["text"]), name=E(r["name"])) for r in revs)
+            + "</ul>" + note)
 
 
-def rating_badge(L, place):
-    return (f'<a class="rating" href="{E(CFG["maps_url"])}" target="_blank" rel="noopener" data-cta="google_reviews_{place}">'
-            f'<span class="stars" aria-hidden="true">★★★★<span class="half">★</span></span><span>{E(L.ui["rating"])}</span></a>')
+def rating_link(L, place):
+    return (f'<a class="hw-rate" href="{E(CFG["maps_url"])}" target="_blank" rel="noopener" data-cta="google_reviews_{place}">'
+            f'<span class="hw-rate-star" aria-hidden="true">★</span>{E(L.ui["rating"])}</a>')
 
 
 def map_block(L, place):
     return fill("map_facade", embed=E(CFG["maps_embed"]), map_title=E(CFG["brand"]), map_load=E(L.ui["map_load"]), place=place,
                 brand=E(CFG["brand"]), address=E(CFG["address_display"]), hours_label=E(L.ui["hours_label"]), hours=E(L.ui["hours_text"]),
-                wa=wa(L, place), tel=tel(L, place, cls=" btn-ghost"), maps_url=E(CFG["maps_url"]), map_open=E(L.ui["map_open"]),
+                wa=wa(L, place), tel=tel(L, place, cls=" hw-call-line"), maps_url=E(CFG["maps_url"]), map_open=E(L.ui["map_open"]),
                 email=E(CFG["email"]), email_label=E(L.ui["email"]), map_note=E(L.ui["map_note"]))
 
 
 def models_list(L, only=None):
     ms = L.s["models"] if only is None else [L.s["models"][i] for i in only]
-    return f'<h3>{E(L.ui["models_h3"])}</h3><ul class="chips">' + "".join(f"<li>{E(m)}</li>" for m in ms) + "</ul>"
+    return f'<h3>{E(L.ui["models_h3"])}</h3><ul class="hw-tags">' + "".join(f"<li>{E(m)}</li>" for m in ms) + "</ul>"
 
 
 def sections_html(secs):
     return "".join(f'<h2>{E(x["h2"])}</h2>' + "".join(f"<p>{E(p)}</p>" for p in x["p"]) for x in secs)
 
 
-def sec_head(h2, hid, p=""):
-    return f'<h2 id="{hid}">{E(h2)}</h2>' + (f'<p class="lead">{E(p)}</p>' if p else "")
+def svc_links(L, skip=None):
+    return ('<ul class="hw-svc-list">' + "".join(
+        f'<li><a href="{L.url(SVC[k]["slug"])}"><span class="hw-svc-ico">{icon_art(SVC[k]["icon"])}</span><span>{E(L.s["services"][k]["name"])}</span></a></li>'
+        for k in SVC if k != skip) + "</ul>")
+
+
+# The interactive hybrid system: node -> services shown in its panel, and the photo or icon used.
+NODES = [("battery", ["battery", "recon"], "battery-pack", "battery", (64, 62)),
+         ("inverter", ["inverter"], None, "inverter", (40, 38)),
+         ("engine", ["engine"], None, "engine", (22, 50)),
+         ("gearbox", ["transmission"], None, "transmission", (36, 66)),
+         ("aircon", ["aircon"], None, "aircon", (52, 30))]
+
+
+def system_diagram(L):
+    chips, spots, panels = [], [], []
+    for i, (node, svcs, photo, icon, (x, y)) in enumerate(NODES):
+        sel = "true" if i == 0 else "false"
+        chips.append(f'<button class="hw-node" type="button" id="hw-node-{node}" aria-expanded="{sel}" aria-controls="hw-panel-{node}" data-node="{node}">'
+                     f'<span class="hw-node-ico">{icon_art(icon)}</span>{E(L.ui["nodes"][node])}</button>')
+        spots.append(f'<span class="hw-spot" data-node="{node}" style="left:{x}%;top:{y}%"><i></i></span>')
+        media = img_tag(L, photo, "(max-width: 760px) 92vw, 420px") if photo else f'<div class="hw-panel-art">{icon_art(icon, L.ui["nodes"][node])}</div>'
+        body = "".join(f'<h3><a href="{L.url(SVC[k]["slug"])}">{E(L.s["services"][k]["name"])}</a></h3><p>{E(L.s["services"][k]["card"])}</p>'
+                       f'<p><a class="hw-more" href="{L.url(SVC[k]["slug"])}">{E(L.ui["open_page"])} →</a></p>' for k in svcs)
+        panels.append(f'<div class="hw-panel{" is-on" if i == 0 else ""}" id="hw-panel-{node}" role="region" aria-labelledby="hw-node-{node}">'
+                      f'<div class="hw-panel-media">{media}</div><div class="hw-panel-txt">{body}</div></div>')
+    car = ('<svg class="hw-car" viewBox="0 0 400 180" aria-hidden="true">'
+           '<path d="M28 128c-6 0-10-4-10-10v-14c0-8 5-14 13-16l44-12 50-36c8-6 18-9 28-9h104c12 0 23 5 31 13l34 34 36 8c10 2 16 10 16 20v12c0 6-4 10-10 10Z" class="hw-car-body"/>'
+           '<path d="M140 46h56v40h-96Zm72 0h52c8 0 15 3 21 9l25 31h-98Z" class="hw-car-glass"/>'
+           '<path d="M62 120 C120 120 150 112 172 112 S256 116 300 108" class="hw-car-wire" pathLength="100"/>'
+           '<circle cx="92" cy="132" r="26" class="hw-car-tyre"/><circle cx="92" cy="132" r="11" class="hw-car-hub"/>'
+           '<circle cx="318" cy="132" r="26" class="hw-car-tyre"/><circle cx="318" cy="132" r="11" class="hw-car-hub"/></svg>')
+    return (f'<div class="hw-system" data-part="diagram" data-system>'
+            f'<div class="hw-system-stage">{car}{"".join(spots)}</div>'
+            f'<div class="hw-nodes" role="group">{"".join(chips)}</div>'
+            f'<div class="hw-panels">{"".join(panels)}</div></div>')
+
+
+def process(L):
+    li = "".join(f'<li style="--p:{(i + 1) * 25}"><span class="hw-pct">{(i + 1) * 25}%</span><h3>{E(st["t"])}</h3><p>{E(st["d"])}</p></li>'
+                 for i, st in enumerate(L.s["process"]))
+    return f'<div class="hw-charge hw-anim" data-part="process"><div class="hw-charge-bar" aria-hidden="true"><i></i></div><ol>{li}</ol></div>'
+
+
+def head2(h2, hid, p=""):
+    return f'<h2 id="{hid}">{E(h2)}</h2>' + (f'<p class="hw-sub">{E(p)}</p>' if p else "")
+
+
+def hero_preload(key, mobile_w=640):
+    stem = PHOTO[key]["file"][:-5]
+    return (f'  <link rel="preload" as="image" href="{BASE}img/{stem}-640.webp" imagesrcset="{BASE}img/{stem}-640.webp 640w, {BASE}img/{stem}-1200.webp 1200w" imagesizes="100vw">\n')
+
+
+def hero_preload_home():
+    p, d = PHOTO[HERO_PHONE]["file"][:-5], PHOTO[HERO_PHOTO]["file"][:-5]
+    return (f'  <link rel="preload" as="image" href="{BASE}img/{p}-640.webp" media="(max-width: 699px)">\n'
+            f'  <link rel="preload" as="image" href="{BASE}img/{d}-1200.webp" imagesrcset="{BASE}img/{d}-640.webp 640w, {BASE}img/{d}-1200.webp 1200w" imagesizes="100vw" media="(min-width: 700px)">\n')
 
 
 # ------------------------------------------------------------------ pages
+HERO_PHOTO = "battery-pack"   # desktop (landscape, 1280 px)
+HERO_PHONE = "chr-lift"        # phones (portrait)
+
+
+def hero_picture(L):
+    """Real photo hero: the C-HR on the lift on phones, the battery pack on wider screens."""
+    p, d = PHOTO[HERO_PHONE]["file"][:-5], PHOTO[HERO_PHOTO]["file"][:-5]
+    (dw, dh), _ = SIZES[HERO_PHOTO]
+    return (f'<picture><source media="(max-width: 699px)" srcset="{BASE}img/{p}-640.webp">'
+            f'<img src="{BASE}img/{d}-1200.webp" srcset="{BASE}img/{d}-640.webp 640w, {BASE}img/{d}-1200.webp {dw}w" sizes="100vw" '
+            f'width="{dw}" height="{dh}" alt="{E(L.ui["hero_alt"])}" fetchpriority="high" decoding="async"></picture>')
+
+
 def build_home(L):
     h = L.s["pages"]["home"]
-    tiles = "".join(tile(L, k) for k in SVC)
-    body = f'''<section class="hero" aria-labelledby="h1">
-  <div class="hero-bg" aria-hidden="true"></div>
-  <div class="wrap hero-grid">
-    <div class="hero-art">{energy_flow(L.s["art"]["hero"])}{charge_bar(h["charge"])}</div>
-    <div class="hero-txt">
-      <h1 id="h1">{E(h["h1"])}</h1>
-      <p class="hero-line">{E(h["tagline"])}</p>
-      <div class="cta-row">{wa(L, "home_hero", cls=" btn-lg")}{tel(L, "home_hero", cls=" btn-ghost hide-sm")}</div>
-      {rating_badge(L, "hero")}
-    </div>
+    body = f'''<section class="hw-hero" aria-labelledby="h1">
+  <div class="hw-hero-photo">{hero_picture(L)}</div>
+  <div class="hw-hero-scrim" aria-hidden="true"></div>
+  <div class="hw-shell hw-hero-in">
+    {flow_line(L)}
+    {charge_meter(L)}
+    <h1 id="h1">{E(h["h1"])}</h1>
+    <p class="hw-hero-line">{E(h["tagline"])}</p>
+    <div class="hw-actions">{wa(L, "home_hero", cls=" hw-wa-big")}{tel(L, "home_hero", cls=" hw-call-glass hw-wide-only")}</div>
+    {rating_link(L, "hero")}
   </div>
 </section>
-<section class="sec sec-a" id="services" aria-labelledby="svc-h">
-  <div class="wrap">{sec_head(h["services_h2"], "svc-h")}<div class="tiles">{tiles}</div></div>
+<section class="hw-band hw-band-white" id="services" aria-labelledby="svc-h">
+  <div class="hw-shell">{head2(h["system_h2"], "svc-h", L.ui["system_hint"])}{system_diagram(L)}
+  <h3 class="hw-list-h">{E(L.ui["all_services"])}</h3>{svc_links(L)}</div>
 </section>
-<section class="sec sec-b" id="steps" aria-labelledby="steps-h">
-  <div class="wrap">{sec_head(h["steps_h2"], "steps-h")}{steps(L)}</div>
+<section class="hw-band hw-band-mist" id="reels" aria-labelledby="reels-h">
+  <div class="hw-shell">{head2(h["reels_h2"], "reels-h", h["reels_p"])}{stories(L)}
+  <p class="hw-after"><a class="hw-ghost" href="{E(CFG["facebook_url"])}" target="_blank" rel="noopener">{E(L.ui["more_reels"])} ↗</a></p></div>
 </section>
-<section class="sec sec-a" id="photos" aria-labelledby="ph-h">
-  <div class="wrap">{sec_head(h["photos_h2"], "ph-h")}{carousel(L, SITE["carousel"], h["photos_h2"])}</div>
+<section class="hw-band hw-band-white" id="process" aria-labelledby="pr-h">
+  <div class="hw-shell">{head2(h["process_h2"], "pr-h")}{process(L)}</div>
 </section>
-<section class="sec sec-b" id="reels" aria-labelledby="reels-h">
-  <div class="wrap">{sec_head(h["reels_h2"], "reels-h", h["reels_p"])}{reel_wall(L)}
-  <p class="more"><a class="btn btn-ghost" href="{E(CFG["facebook_url"])}" target="_blank" rel="noopener">{E(L.ui["more_reels"])}</a></p></div>
+<section class="hw-band hw-band-blue" id="reviews" aria-labelledby="rev-h">
+  <div class="hw-shell">{head2(h["reviews_h2"], "rev-h")}{quotes(L, "reviews")}</div>
 </section>
-<section class="sec sec-a" id="reviews" aria-labelledby="rev-h">
-  <div class="wrap">{sec_head(h["reviews_h2"], "rev-h")}{rating_badge(L, "reviews")}{reviews(L)}</div>
+<section class="hw-band hw-band-white" id="photos" aria-labelledby="ph-h">
+  <div class="hw-shell">{head2(h["photos_h2"], "ph-h")}{filmstrip(L, SITE["carousel"], h["photos_h2"])}</div>
 </section>
-<section class="sec sec-b" id="visit" aria-labelledby="visit-h">
-  <div class="wrap">{sec_head(h["visit_h2"], "visit-h")}{map_block(L, "home")}</div>
+<section class="hw-band hw-band-mist" id="visit" aria-labelledby="visit-h">
+  <div class="hw-shell">{head2(h["visit_h2"], "visit-h")}{map_block(L, "home")}</div>
 </section>
-<section class="sec sec-a" id="about" aria-labelledby="about-h">
-  <div class="wrap two">
-    <div class="prose">{sec_head(h["about_h2"], "about-h")}{"".join(f"<p>{E(p)}</p>" for p in h["about"])}</div>
-    <div class="prose">{models_list(L)}</div>
+<section class="hw-band hw-band-white" id="about" aria-labelledby="about-h">
+  <div class="hw-shell hw-split">
+    <div class="hw-read">{head2(h["about_h2"], "about-h")}{"".join(f"<p>{E(p)}</p>" for p in h["about"])}</div>
+    <div class="hw-side">{models_list(L)}</div>
   </div>
 </section>
 {faq_block(L, h["faq"])}{cta(L, "home_bottom")}'''
-    page(L, "", "home", "home", body, [(L.ui["nav"]["home"], "")], [faq_node(h["faq"])], body_class="home")
+    page(L, "", "home", "home", body, [(L.ui["nav"]["home"], "")], [faq_node(h["faq"])], body_class="hw-home", preload=hero_preload_home())
 
 
 def build_service(L, k):
     c, sv, pg = SVC[k], L.s["services"][k], L.s["pages"][k]
     path = c["slug"]
     trail = [(L.ui["nav"]["home"], ""), (sv["name"], path)]
-    hero = figure(L, c["hero"], eager=True, cls="ph-hero") if c.get("hero") else f'<div class="art-hero">{icon_art(c["icon"], L.s["art"].get(k, sv["name"]), big=True)}</div>'
-    gal = ""
+    media = figure(L, c["hero"], eager=True, cls="hw-pic-hero") if c.get("hero") else f'<div class="hw-art-panel">{icon_art(c["icon"], L.s["art"].get(k, sv["name"]))}<span class="hw-art-wire" aria-hidden="true"></span></div>'
     ph = c.get("photos", [])
+    film = side_pics = ""
     if len(ph) >= 3:
-        gal = f'<section class="sec sec-b" aria-labelledby="g-h"><div class="wrap"><h2 id="g-h">{E(L.ui["photo_label"])}</h2>{carousel(L, ph, sv["name"])}</div></section>'
+        film = f'<section class="hw-band hw-band-mist" aria-labelledby="g-h"><div class="hw-shell"><h2 id="g-h">{E(L.ui["photo_label"])}</h2>{filmstrip(L, ph, sv["name"])}</div></section>'
     elif ph:
-        gal = '<div class="side-ph">' + "".join(figure(L, p) for p in ph) + "</div>"
+        side_pics = "".join(figure(L, p) for p in ph)
     models = ""
-    if k in ("battery", "recon", "toyota", "inverter"):
-        models = models_list(L, None if k != "toyota" else [0, 1, 2, 3, 4, 5])
+    if k in ("battery", "recon", "inverter"):
+        models = models_list(L)
+    elif k == "toyota":
+        models = models_list(L, [0, 1, 2, 3, 4, 5])
     elif k == "honda":
         models = models_list(L, [6])
-    rel = "".join(tile(L, o) for o in SVC if o != k)
     order = ["David"] if k == "honda" else None
-    body = f'''<section class="phero" aria-labelledby="h1">
-  <div class="wrap phero-grid">
-    <div class="phero-txt">
+    body = f'''<section class="hw-intro" aria-labelledby="h1">
+  <div class="hw-shell hw-intro-grid">
+    <div class="hw-intro-txt">
+      <p class="hw-eyebrow"><span class="hw-eyebrow-ico">{icon_art(c["icon"])}</span>{E(CFG["brand"])}</p>
       <h1 id="h1">{E(pg["h1"])}</h1>
-      <p class="intro">{E(pg["intro"])}</p>
-      <div class="cta-row">{wa(L, "service_" + k, "service", sv["name"])}{tel(L, "service_" + k, cls=" btn-ghost")}</div>
-      {rating_badge(L, "service")}
+      <p class="hw-lede">{E(pg["intro"])}</p>
+      <div class="hw-actions">{wa(L, "service_" + k, "service", sv["name"])}{tel(L, "service_" + k, cls=" hw-call-line")}</div>
+      {rating_link(L, "service")}
     </div>
-    <div class="phero-fig">{hero}</div>
+    <div class="hw-intro-media">{media}</div>
   </div>
 </section>
-<section class="sec sec-a">
-  <div class="wrap two">
-    <div class="prose">{sections_html(pg["sections"])}</div>
-    <aside class="prose aside">{models}{gal if gal.startswith('<div') else ""}</aside>
+<section class="hw-band hw-band-white">
+  <div class="hw-shell hw-split">
+    <div class="hw-read">{sections_html(pg["sections"])}</div>
+    <aside class="hw-side">{models}{side_pics}</aside>
   </div>
 </section>
-{gal if gal.startswith('<section') else ""}
-<section class="sec sec-b" aria-labelledby="rv-h"><div class="wrap"><h2 id="rv-h">{E(L.s["pages"]["home"]["reviews_h2"])}</h2>{reviews(L, order)}</div></section>
+{film}
+<section class="hw-band hw-band-blue" aria-labelledby="rv-h"><div class="hw-shell"><h2 id="rv-h">{E(L.s["pages"]["home"]["reviews_h2"])}</h2>{quotes(L, "service", order)}</div></section>
 {faq_block(L, pg["faq"])}
-<section class="sec sec-a" aria-labelledby="rel-h"><div class="wrap"><h2 id="rel-h">{E(L.ui["related_h2"])}</h2><div class="tiles tiles-sm">{rel}</div></div></section>
+<section class="hw-band hw-band-white" aria-labelledby="rel-h"><div class="hw-shell"><h2 id="rel-h">{E(L.ui["related_h2"])}</h2>{svc_links(L, skip=k)}</div></section>
 {cta(L, "service_" + k + "_bottom", "service", sv["name"])}'''
     svc = {"@type": "Service", "@id": abs_url(L.prefix, path) + "#service", "name": sv["name"], "serviceType": sv["name"],
            "description": pg["description"], "provider": {"@id": CFG["site_url"] + "#business"},
            "areaServed": {"@type": "City", "name": "Johor Bahru"}, "url": abs_url(L.prefix, path)}
-    page(L, path, k, k, body, trail, [svc, faq_node(pg["faq"])], body_class="svc")
+    pre = hero_preload(c["hero"]) if c.get("hero") else ""
+    page(L, path, k, k, body, trail, [svc, faq_node(pg["faq"])], body_class="hw-svc", preload=pre)
+
+
+def facts_dl(L, place):
+    return (f'<dl class="hw-facts">'
+            f'<dt>{E(L.ui["reg_label"])}</dt><dd>{E(CFG["name"])} ({E(CFG["registration_no"])})</dd>'
+            f'<dt>{E(L.ui["address_label"])}</dt><dd>{E(CFG["address_display"])}</dd>'
+            f'<dt>{E(L.ui["hours_label"])}</dt><dd>{E(L.ui["hours_text"])}</dd>'
+            f'<dt>{E(L.ui["phone_label"])}</dt><dd><a href="{E(wa_href(L))}" target="_blank" rel="noopener" data-cta="whatsapp_{place}_card">WhatsApp {E(CFG["phone_display"])}</a><br>'
+            f'<a href="tel:{CFG["phone_e164"]}" data-cta="call_{place}_card">{E(L.ui["call_short"])} {E(CFG["phone_display"])}</a></dd>'
+            f'<dt>{E(L.ui["email_label"])}</dt><dd><a href="mailto:{CFG["email"]}" data-cta="email_{place}_card">{E(CFG["email"])}</a></dd>'
+            f'<dt>Facebook</dt><dd><a href="{E(CFG["facebook_url"])}" target="_blank" rel="noopener">{E(L.ui["facebook"])}</a></dd></dl>')
 
 
 def build_about(L):
     pg = L.s["pages"]["about"]
     trail = [(L.ui["nav"]["home"], ""), (L.ui["nav"]["about"], "about/")]
-    facts = [(L.ui["reg_label"], f'{CFG["name"]} ({CFG["registration_no"]})'), (L.ui["address_label"], CFG["address_display"]),
-             (L.ui["hours_label"], L.ui["hours_text"])]
-    dl = "".join(f"<dt>{E(a)}</dt><dd>{E(b)}</dd>" for a, b in facts)
-    dl += (f'<dt>{E(L.ui["phone_label"])}</dt><dd><a href="{E(wa_href(L))}" target="_blank" rel="noopener" data-cta="whatsapp_about">{E(CFG["phone_display"])}</a></dd>'
-           f'<dt>{E(L.ui["email_label"])}</dt><dd><a href="mailto:{CFG["email"]}" data-cta="email_about">{E(CFG["email"])}</a></dd>'
-           f'<dt>Facebook</dt><dd><a href="{E(CFG["facebook_url"])}" target="_blank" rel="noopener">{E(L.ui["facebook"])}</a></dd>')
     figs = "".join(figure(L, p, eager=(i == 0)) for i, p in enumerate(SITE["about_photos"]))
-    body = f'''<section class="phero" aria-labelledby="h1">
-  <div class="wrap"><h1 id="h1">{E(pg["h1"])}</h1><p class="intro">{E(pg["intro"])}</p>
-  <div class="cta-row">{wa(L, "about_top")}{tel(L, "about_top", cls=" btn-ghost")}</div>{rating_badge(L, "about")}</div>
+    body = f'''<section class="hw-intro" aria-labelledby="h1">
+  <div class="hw-shell"><h1 id="h1">{E(pg["h1"])}</h1><p class="hw-lede">{E(pg["intro"])}</p>
+  <div class="hw-actions">{wa(L, "about_top")}{tel(L, "about_top", cls=" hw-call-line")}</div>{rating_link(L, "about")}</div>
 </section>
-<section class="sec sec-a"><div class="wrap"><div class="photo-row">{figs}</div></div></section>
-<section class="sec sec-b"><div class="wrap two">
-  <div class="prose">{sections_html(pg["sections"])}</div>
-  <div class="prose"><h2>{E(pg["company_h2"])}</h2><dl class="facts">{dl}</dl></div>
+<section class="hw-band hw-band-mist"><div class="hw-shell"><div class="hw-mosaic">{figs}</div></div></section>
+<section class="hw-band hw-band-white"><div class="hw-shell hw-split">
+  <div class="hw-read">{sections_html(pg["sections"])}</div>
+  <div class="hw-side"><h2>{E(pg["company_h2"])}</h2>{facts_dl(L, "about")}</div>
 </div></section>
 {cta(L, "about_bottom")}'''
-    page(L, "about/", "about", "about", body, trail)
+    page(L, "about/", "about", "about", body, trail, preload=hero_preload(SITE["about_photos"][0]))
 
 
 def build_contact(L):
     pg = L.s["pages"]["contact"]
     trail = [(L.ui["nav"]["home"], ""), (L.ui["nav"]["contact"], "contact/")]
-    body = f'''<section class="phero" aria-labelledby="h1">
-  <div class="wrap"><h1 id="h1">{E(pg["h1"])}</h1><p class="intro">{E(pg["intro"])}</p>
-  <div class="cta-row">{wa(L, "contact_top", cls=" btn-lg")}{tel(L, "contact_top", cls=" btn-ghost")}</div></div>
+    body = f'''<section class="hw-intro" aria-labelledby="h1">
+  <div class="hw-shell"><h1 id="h1">{E(pg["h1"])}</h1><p class="hw-lede">{E(pg["intro"])}</p>
+  <div class="hw-actions">{wa(L, "contact_top", cls=" hw-wa-big")}{tel(L, "contact_top", cls=" hw-call-line")}</div></div>
 </section>
-<section class="sec sec-a" id="contact"><div class="wrap">{map_block(L, "contact")}</div></section>
-<section class="sec sec-b"><div class="wrap two">
+<section class="hw-band hw-band-mist" id="contact"><div class="hw-shell">{map_block(L, "contact")}</div></section>
+<section class="hw-band hw-band-white"><div class="hw-shell hw-split">
   <div>{figure(L, "shopfront")}</div>
-  <div class="prose"><dl class="facts">
-    <dt>{E(L.ui["phone_label"])}</dt><dd><a href="{E(wa_href(L))}" target="_blank" rel="noopener" data-cta="whatsapp_contact_card">WhatsApp {E(CFG["phone_display"])}</a><br><a href="tel:{CFG["phone_e164"]}" data-cta="call_contact_card">{E(L.ui["call_short"])} {E(CFG["phone_display"])}</a></dd>
-    <dt>{E(L.ui["email_label"])}</dt><dd><a href="mailto:{CFG["email"]}" data-cta="email_contact_card">{E(CFG["email"])}</a></dd>
-    <dt>{E(L.ui["address_label"])}</dt><dd>{E(CFG["address_display"])}</dd>
-    <dt>{E(L.ui["hours_label"])}</dt><dd>{E(L.ui["hours_text"])}</dd>
-    <dt>Facebook</dt><dd><a href="{E(CFG["facebook_url"])}" target="_blank" rel="noopener">{E(L.ui["facebook"])}</a></dd>
-  </dl>{rating_badge(L, "contact")}</div>
+  <div class="hw-side">{facts_dl(L, "contact")}{rating_link(L, "contact")}</div>
 </div></section>'''
     page(L, "contact/", "contact", "contact", body, trail)
 
 
-# ------------------------------------------------------------------ sitemap + llms.txt (written for the planned domain)
+
 def all_paths():
     return [""] + [SVC[k]["slug"] for k in SVC] + ["about/", "contact/"]
 
@@ -531,6 +578,7 @@ def main():
     (OUT / "assets").mkdir(parents=True)
     (OUT / "assets" / "site.css").write_text(CSS, encoding="utf-8")
     (OUT / "assets" / "site.js").write_text(JS, encoding="utf-8")
+    shutil.copytree(ROOT / "fonts", OUT / "fonts", ignore=shutil.ignore_patterns("*.txt"))
     build_images()
     for cfg in LANGS:
         L = Lang(cfg)

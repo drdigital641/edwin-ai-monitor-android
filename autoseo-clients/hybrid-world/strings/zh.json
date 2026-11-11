@@ -56,7 +56,28 @@
   "reg_label": "公司注册号",
   "rights": "版权所有。",
   "photo_label": "我们维修厂的照片",
-  "models_h3": "我们处理的混合动力车"
+  "models_h3": "我们处理的混合动力车",
+  "flow": [
+   "电池",
+   "逆变器",
+   "电机",
+   "车轮"
+  ],
+  "charge_label": "电池电量",
+  "system_hint": "点一个部件，看看我们在那里修什么。",
+  "all_services": "全部服务",
+  "close": "关闭",
+  "gauge_label": "Google 评分",
+  "open_page": "打开页面",
+  "nodes": {
+   "battery": "电池",
+   "inverter": "逆变器",
+   "engine": "引擎",
+   "gearbox": "变速箱",
+   "aircon": "冷气"
+  },
+  "menu_open": "菜单",
+  "hero_alt": "Hybrid World Specialist 新山车间的混合动力车维修：升降机上的 Toyota C-HR 和混合动力电池组"
  },
  "prefills": {
   "general": "你好 Hybrid World，我想咨询我的混合动力车。车型和年份：",
@@ -105,24 +126,6 @@
    "card": "引擎大修工作在我们自己的维修厂完成。"
   }
  },
- "steps4": [
-  {
-   "t": "WhatsApp 联系我们",
-   "d": "发送您的车型、年份和看到的警告。"
-  },
-  {
-   "t": "检测",
-   "d": "我们检查车辆和混合动力系统。"
-  },
-  {
-   "t": "报价与维修",
-   "d": "先给您报价，然后才维修。"
-  },
-  {
-   "t": "取车上路",
-   "d": "取回爱车，继续上路。"
-  }
- ],
  "photos": {
   "chr-lift": "Toyota C-HR 在 Hybrid World Specialist 的双柱举升机上，引擎盖打开",
   "shopfront": "Hybrid World Specialist 维修厂门面，Taman Bukit Indah",
@@ -229,7 +232,9 @@
      "q": "维修厂在哪里？什么时候营业？",
      "a": "No 5, Jalan Indah 16/6, Taman Bukit Indah, 79100 Iskandar Puteri, Johor Bahru。我们周一至周六上午9点至晚上7点营业，周日休息。"
     }
-   ]
+   ],
+   "system_h2": "您的混合动力车，逐个部件看",
+   "process_h2": "从检查到满电"
   },
   "battery": {
    "title": "新山混合动力电池更换 | 全新原厂电池组 | HWS",
@@ -559,5 +564,23 @@
    "intro": "最快联系我们的方式是 WhatsApp。请发送您的车型、年份和需要的服务，以及仪表板上任何警告的照片。",
    "sections": []
   }
- }
+ },
+ "process": [
+  {
+   "t": "检查",
+   "d": "先 WhatsApp 我们，再来检查车子。"
+  },
+  {
+   "t": "诊断",
+   "d": "在混合动力系统中找出原因。"
+  },
+  {
+   "t": "维修",
+   "d": "先给您报价，再动手维修。"
+  },
+  {
+   "t": "路试",
+   "d": "交车前我们会先试车。"
+  }
+ ]
 }

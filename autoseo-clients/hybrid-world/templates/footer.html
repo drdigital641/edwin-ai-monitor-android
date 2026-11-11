@@ -1,36 +1,36 @@
 </main>
-<footer class="ftr" data-part="footer">
-  <div class="wrap ftr-grid">
-    <div class="ftr-brand">
-      <p class="ftr-logo"><img src="{{base}}img/logo-96.webp" width="48" height="48" alt="" loading="lazy"> {{brand}}</p>
-      <p>{{about}}</p>
-      <p class="small">{{legal_name}}<br>{{reg_label}}: {{reg_no}}</p>
-    </div>
-    <div>
-      <p class="ftr-h">{{services_h}}</p>
-      <ul>
+<footer class="hw-foot" data-part="footer">
+  <div class="hw-shell">
+    <p class="hw-foot-mark"><img src="{{base}}img/logo-96.webp" width="56" height="56" alt="" loading="lazy"><span>{{brand}}</span></p>
+    <p class="hw-foot-about">{{about}}</p>
+    <div class="hw-foot-cards">
+      <div class="hw-foot-card">
+        <p class="hw-foot-h">{{visit_h}}</p>
+        <address>{{address}}</address>
+        <p><b>{{hours_label}}</b> {{hours}}</p>
+        <p><a href="{{maps_url}}" target="_blank" rel="noopener" data-cta="map_footer">{{map_open}} ↗</a></p>
+      </div>
+      <div class="hw-foot-card">
+        <p class="hw-foot-h">{{talk_h}}</p>
+        <p><a href="{{wa_href}}" target="_blank" rel="noopener" data-cta="whatsapp_footer">WhatsApp {{phone}}</a></p>
+        <p><a href="tel:{{phone_e164}}" data-cta="call_footer">{{call_short}} {{phone}}</a></p>
+        <p><a href="mailto:{{email}}" data-cta="email_footer">{{email}}</a></p>
+        <p><a href="{{facebook_url}}" target="_blank" rel="noopener">{{facebook}} ↗</a></p>
+      </div>
+      <div class="hw-foot-card">
+        <p class="hw-foot-h">{{services_h}}</p>
+        <ul class="hw-foot-list">
 {{service_links}}
-      </ul>
+        </ul>
+      </div>
     </div>
-    <div>
-      <p class="ftr-h">{{company_h}}</p>
-      <ul>
-{{company_links}}
-      </ul>
+    <div class="hw-foot-base">
+      <p>© {{year}} {{legal_name}} · {{reg_label}} {{reg_no}} · {{rights}}</p>
+      <p class="hw-foot-nav">{{company_links}}</p>
+      <p><a href="{{credit_url}}" rel="noopener">{{credit}}</a></p>
     </div>
-    <div>
-      <p class="ftr-h">{{visit_h}}</p>
-      <address class="small">{{address}}</address>
-      <p class="small"><span class="lbl">{{hours_label}}</span> {{hours}}</p>
-      <p class="small"><a href="{{wa_href}}" target="_blank" rel="noopener" data-cta="whatsapp_footer">WhatsApp {{phone}}</a><br><a href="tel:{{phone_e164}}" data-cta="call_footer">{{call_short}} {{phone}}</a><br><a href="mailto:{{email}}" data-cta="email_footer">{{email}}</a></p>
-      <p class="small"><a href="{{maps_url}}" target="_blank" rel="noopener" data-cta="map_footer">{{map_open}}</a> · <a href="{{facebook_url}}" target="_blank" rel="noopener">{{facebook}}</a></p>
-    </div>
-  </div>
-  <div class="wrap ftr-base">
-    <p>© {{year}} {{legal_name}}. {{rights}}</p>
-    <p><a href="{{credit_url}}" rel="noopener">{{credit}}</a></p>
   </div>
 </footer>
-{{sticky}}
+<div class="hw-fab" data-part="sticky">{{tel}}{{wa}}</div>
 </body>
 </html>

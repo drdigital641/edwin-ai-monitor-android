@@ -56,7 +56,28 @@
   "reg_label": "Company no.",
   "rights": "All rights reserved.",
   "photo_label": "Photo from our workshop",
-  "models_h3": "Hybrids we work on"
+  "models_h3": "Hybrids we work on",
+  "flow": [
+   "Battery",
+   "Inverter",
+   "Motor",
+   "Wheel"
+  ],
+  "charge_label": "Battery charge",
+  "system_hint": "Tap a part to see what we fix there.",
+  "all_services": "All services",
+  "close": "Close",
+  "gauge_label": "Google rating",
+  "open_page": "Open the page",
+  "nodes": {
+   "battery": "Battery",
+   "inverter": "Inverter",
+   "engine": "Engine",
+   "gearbox": "Gearbox",
+   "aircon": "Aircon"
+  },
+  "menu_open": "Menu",
+  "hero_alt": "Hybrid car work at Hybrid World Specialist, Johor Bahru: a Toyota C-HR on the lift and a hybrid battery pack"
  },
  "prefills": {
   "general": "Hi Hybrid World, I'd like to ask about my hybrid car. Model and year: ",
@@ -105,24 +126,6 @@
    "card": "Engine rebuild work done in our own workshop."
   }
  },
- "steps4": [
-  {
-   "t": "WhatsApp us",
-   "d": "Send your model, year and the warning you see."
-  },
-  {
-   "t": "Diagnose",
-   "d": "We check the car and the hybrid system."
-  },
-  {
-   "t": "Quote and fix",
-   "d": "You get a quote first, then we fix it."
-  },
-  {
-   "t": "Drive away",
-   "d": "Collect your car and drive on."
-  }
- ],
  "photos": {
   "chr-lift": "Toyota C-HR on a two-post lift with the bonnet open at Hybrid World Specialist",
   "shopfront": "Hybrid World Specialist workshop front, Taman Bukit Indah",
@@ -229,7 +232,9 @@
      "q": "Where is the workshop and when are you open?",
      "a": "No 5, Jalan Indah 16/6, Taman Bukit Indah, 79100 Iskandar Puteri, Johor Bahru. We are open Monday to Saturday, 9am to 7pm, and closed on Sunday."
     }
-   ]
+   ],
+   "system_h2": "Your hybrid, part by part",
+   "process_h2": "From check to fully charged"
   },
   "battery": {
    "title": "Hybrid Battery Replacement JB | New Original Sets | HWS",
@@ -559,5 +564,23 @@
    "intro": "The fastest way to reach us is WhatsApp. Send your car model, year and what you need, and a photo of any warning on the dashboard.",
    "sections": []
   }
- }
+ },
+ "process": [
+  {
+   "t": "Check",
+   "d": "WhatsApp us, then we check the car."
+  },
+  {
+   "t": "Diagnose",
+   "d": "We find the cause in the hybrid system."
+  },
+  {
+   "t": "Repair",
+   "d": "You get the quote first, then we fix it."
+  },
+  {
+   "t": "Road test",
+   "d": "We test drive it before you collect."
+  }
+ ]
 }

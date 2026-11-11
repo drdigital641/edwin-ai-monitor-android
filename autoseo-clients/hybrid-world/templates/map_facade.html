@@ -1,14 +1,14 @@
-<div class="mapcard" data-part="map">
-  <div class="map-art" data-map="{{embed}}" data-title="{{map_title}}">
-    <svg viewBox="0 0 400 220" aria-hidden="true" preserveAspectRatio="xMidYMid slice"><defs><linearGradient id="mg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#0e2230"/><stop offset="1" stop-color="#0b1a14"/></linearGradient></defs><rect width="400" height="220" fill="url(#mg)"/><path d="M-10 150 Q120 120 200 140 T410 110" class="m-road"/><path d="M60 -10 L120 230" class="m-road m-thin"/><path d="M260 -10 Q240 100 300 230" class="m-road m-thin"/><path d="M-10 60 H410" class="m-road m-thin"/><circle cx="200" cy="112" r="34" class="m-pulse"/><path d="M200 70c-15 0-26 11-26 25 0 19 26 43 26 43s26-24 26-43c0-14-11-25-26-25Z" class="m-pin"/><circle cx="200" cy="95" r="9" fill="#071017"/></svg>
-    <button class="btn btn-ghost map-load" type="button" data-cta="map_load_{{place}}">{{map_load}}</button>
+<div class="hw-visit" data-part="map">
+  <div class="hw-mapbox" data-map="{{embed}}" data-title="{{map_title}}">
+    <svg viewBox="0 0 400 240" aria-hidden="true" preserveAspectRatio="xMidYMid slice"><rect width="400" height="240" fill="#e9f0f8"/><path d="M-10 170 Q120 140 200 160 T410 120" class="hw-m-road"/><path d="M70 -10 L130 250" class="hw-m-lane"/><path d="M270 -10 Q250 110 310 250" class="hw-m-lane"/><path d="M-10 70 H410" class="hw-m-lane"/><circle cx="200" cy="118" r="38" class="hw-m-ping"/><path d="M200 74c-15 0-26 11-26 25 0 19 26 43 26 43s26-24 26-43c0-14-11-25-26-25Z" fill="#0a6cff"/><circle cx="200" cy="99" r="9" fill="#fff"/></svg>
+    <button class="hw-ghost hw-map-load" type="button" data-cta="map_load_{{place}}">{{map_load}}</button>
   </div>
-  <div class="map-info">
-    <p class="map-name">{{brand}}</p>
+  <div class="hw-visit-info">
+    <p class="hw-visit-name">{{brand}}</p>
     <address>{{address}}</address>
-    <p><span class="lbl">{{hours_label}}</span> {{hours}}</p>
-    <div class="cta-row">{{wa}}{{tel}}</div>
-    <p class="map-links"><a class="btn btn-ghost" href="{{maps_url}}" target="_blank" rel="noopener" data-cta="map_{{place}}">{{map_open}}</a> <a class="btn btn-ghost" href="mailto:{{email}}" data-cta="email_{{place}}">{{email_label}}</a></p>
-    <p class="small muted">{{map_note}}</p>
+    <p><b>{{hours_label}}</b> {{hours}}</p>
+    <div class="hw-actions">{{wa}}{{tel}}</div>
+    <p class="hw-visit-links"><a class="hw-ghost" href="{{maps_url}}" target="_blank" rel="noopener" data-cta="map_{{place}}">{{map_open}}</a><a class="hw-ghost" href="mailto:{{email}}" data-cta="email_{{place}}">{{email_label}}</a></p>
+    <p class="hw-fine">{{map_note}}</p>
   </div>
 </div>

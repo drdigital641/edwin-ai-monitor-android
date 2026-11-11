@@ -56,7 +56,28 @@
   "reg_label": "No. syarikat",
   "rights": "Hak cipta terpelihara.",
   "photo_label": "Foto dari bengkel kami",
-  "models_h3": "Kereta hibrid yang kami uruskan"
+  "models_h3": "Kereta hibrid yang kami uruskan",
+  "flow": [
+   "Bateri",
+   "Inverter",
+   "Motor",
+   "Roda"
+  ],
+  "charge_label": "Cas bateri",
+  "system_hint": "Tekan satu bahagian untuk lihat apa yang kami baiki.",
+  "all_services": "Semua servis",
+  "close": "Tutup",
+  "gauge_label": "Penilaian Google",
+  "open_page": "Buka halaman",
+  "nodes": {
+   "battery": "Bateri",
+   "inverter": "Inverter",
+   "engine": "Enjin",
+   "gearbox": "Gearbox",
+   "aircon": "Aircond"
+  },
+  "menu_open": "Menu",
+  "hero_alt": "Kerja kereta hibrid di Hybrid World Specialist, Johor Bahru: Toyota C-HR di atas lif dan pek bateri hibrid"
  },
  "prefills": {
   "general": "Hi Hybrid World, saya nak tanya tentang kereta hibrid saya. Model dan tahun: ",
@@ -105,24 +126,6 @@
    "card": "Kerja bina semula enjin dilakukan di bengkel kami sendiri."
   }
  },
- "steps4": [
-  {
-   "t": "WhatsApp kami",
-   "d": "Hantar model, tahun dan amaran yang anda nampak."
-  },
-  {
-   "t": "Diagnosis",
-   "d": "Kami periksa kereta dan sistem hibrid."
-  },
-  {
-   "t": "Sebut harga dan baiki",
-   "d": "Anda dapat sebut harga dahulu, kemudian kami baiki."
-  },
-  {
-   "t": "Bawa pulang",
-   "d": "Ambil kereta anda dan teruskan perjalanan."
-  }
- ],
  "photos": {
   "chr-lift": "Toyota C-HR di atas lif dua tiang dengan bonet terbuka di Hybrid World Specialist",
   "shopfront": "Hadapan bengkel Hybrid World Specialist, Taman Bukit Indah",
@@ -229,7 +232,9 @@
      "q": "Di mana bengkel dan bila anda buka?",
      "a": "No 5, Jalan Indah 16/6, Taman Bukit Indah, 79100 Iskandar Puteri, Johor Bahru. Kami buka Isnin hingga Sabtu, 9 pagi hingga 7 malam, dan tutup pada hari Ahad."
     }
-   ]
+   ],
+   "system_h2": "Kereta hibrid anda, bahagian demi bahagian",
+   "process_h2": "Dari semakan hingga cas penuh"
   },
   "battery": {
    "title": "Penggantian Bateri Hibrid JB | Set Original | HWS",
@@ -559,5 +564,23 @@
    "intro": "Cara paling cepat untuk menghubungi kami ialah WhatsApp. Hantar model kereta, tahun dan apa yang anda perlukan, serta foto sebarang amaran pada papan pemuka.",
    "sections": []
   }
- }
+ },
+ "process": [
+  {
+   "t": "Semak",
+   "d": "WhatsApp kami, kemudian kami semak kereta."
+  },
+  {
+   "t": "Diagnosis",
+   "d": "Kami cari punca dalam sistem hibrid."
+  },
+  {
+   "t": "Baiki",
+   "d": "Anda dapat sebut harga dulu, baru kami baiki."
+  },
+  {
+   "t": "Uji jalan",
+   "d": "Kami uji pandu sebelum anda ambil kereta."
+  }
+ ]
 }

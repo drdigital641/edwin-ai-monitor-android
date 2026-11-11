@@ -108,7 +108,7 @@ for f in pages:
     if not home:
         want.add("crumbs")
     if home:
-        want |= {"service-tile", "step", "carousel", "reel", "review", "map", "faq"}
+        want |= {"diagram", "process", "carousel", "reel", "review", "map", "faq"}
     if rel.endswith("contact/index.html"):
         want.add("map")
     miss = want - p.parts
@@ -153,6 +153,8 @@ for f in pages:
         if href.startswith(("http", "mailto:", "tel:", "#")):
             continue
         path = href.split("#")[0].split("?")[0]
+        if "/media/reel-" in path:  # reels are on the server already, not part of the build
+            continue
         if not path.startswith(BASE):
             err(f"{rel}: link outside base {href}")
             continue
