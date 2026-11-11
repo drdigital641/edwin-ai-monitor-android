@@ -11,41 +11,40 @@
   const fab = () => document.body.classList.toggle("hw-scrolled", window.scrollY > 320);
   window.addEventListener("scroll", fab, { passive: true }); fab();
 
-  // Menu (phones): full-height drawer with a close button, scroll lock and focus kept inside.
+  // Menu (phones): drawer is CSS-fixed to the viewport; JS adds the close button, scroll lock and focus.
   const menu = document.getElementById("hw-menu");
   const links = document.getElementById("hw-links");
   if (menu && links) {
-    let x = links.querySelector(".hw-menu-x");
-    if (!x) {
-      const lang = (document.documentElement.lang || "en").slice(0, 2);
-      x = document.createElement("button");
-      x.type = "button";
-      x.className = "hw-menu-x";
-      x.setAttribute("aria-label", { ms: "Tutup menu", zh: "关闭菜单" }[lang] || "Close menu");
-      x.innerHTML = '<span aria-hidden="true">x</span>';
-      links.prepend(x);
+    const lang = document.documentElement.lang || "en";
+    const closeLabel = lang.startsWith("zh") ? "关闭菜单" : lang === "ms" ? "Tutup menu" : "Close menu";
+    let closeBtn = links.querySelector(".hw-menu-x");
+    if (!closeBtn) {
+      closeBtn = document.createElement("button");
+      closeBtn.type = "button";
+      closeBtn.className = "hw-menu-x";
+      closeBtn.setAttribute("aria-label", closeLabel);
+      closeBtn.innerHTML = '<span aria-hidden="true">×</span>';
+      links.insertBefore(closeBtn, links.firstChild);
     }
-    const isOpen = () => links.classList.contains("is-open");
+    const items = () => [closeBtn, ...links.querySelectorAll("a")];
     const set = (open) => {
-      if (open === isOpen()) return;
       links.classList.toggle("is-open", open);
-      document.body.classList.toggle("hw-menu-open", open);
       menu.setAttribute("aria-expanded", open ? "true" : "false");
-      (open ? x : menu).focus();
+      document.body.classList.toggle("hw-menu-open", open);
+      if (open) closeBtn.focus();
+      else menu.focus();
     };
-    menu.addEventListener("click", () => set(!isOpen()));
-    x.addEventListener("click", () => set(false));
+    menu.addEventListener("click", () => set(!links.classList.contains("is-open")));
+    closeBtn.addEventListener("click", () => set(false));
     links.addEventListener("click", (e) => { if (e.target.closest("a")) set(false); });
     document.addEventListener("keydown", (e) => {
-      if (!isOpen()) return;
+      if (!links.classList.contains("is-open")) return;
       if (e.key === "Escape") { set(false); return; }
       if (e.key !== "Tab") return;
-      const f = [...links.querySelectorAll("a[href], button")].filter((el) => el.offsetParent !== null);
-      if (!f.length) return;
-      const first = f[0], last = f[f.length - 1];
+      const all = items();
+      const first = all[0], last = all[all.length - 1];
       if (e.shiftKey && document.activeElement === first) { e.preventDefault(); last.focus(); }
       else if (!e.shiftKey && document.activeElement === last) { e.preventDefault(); first.focus(); }
-      else if (!links.contains(document.activeElement)) { e.preventDefault(); first.focus(); }
     });
   }
 
