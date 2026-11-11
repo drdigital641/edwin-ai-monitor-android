@@ -18,57 +18,83 @@
   {
    "slug": "car-servicing-oil-change",
    "icon": "🛢️",
-   "photo": "bmw-in-workshop",
    "clips": [
     "1128044756568418",
     "1049619834456911"
-   ]
+   ],
+   "visual": {
+    "type": "photo",
+    "key": "bmw-in-workshop"
+   }
   },
   {
    "slug": "engine-gearbox-repair",
    "icon": "⚙️",
-   "photo": "engine-work-closeup",
    "clips": [
-    "1534269351507322",
-    "1580829843577636"
-   ]
+    "1580829843577636",
+    "1534269351507322"
+   ],
+   "visual": {
+    "type": "photo",
+    "key": "engine-work-closeup"
+   }
   },
   {
    "slug": "car-aircond-service",
    "icon": "❄️",
-   "photo": "toyota-mpv-in-workshop",
-   "clips": []
+   "clips": [],
+   "visual": {
+    "type": "graphic",
+    "icon": "aircond"
+   }
   },
   {
    "slug": "suspension-brakes-exhaust",
    "icon": "🛞",
-   "photo": "perodua-sedan-in-workshop",
-   "clips": [
-    "1358776602985089"
-   ]
+   "clips": [],
+   "visual": {
+    "type": "graphic",
+    "icon": "suspension"
+   }
   },
   {
    "slug": "electrical-wiring-diagnosis",
    "icon": "🔌",
-   "photo": "engine-work-closeup",
    "clips": [
     "2553325481847062",
     "1491106668688179"
-   ]
+   ],
+   "visual": {
+    "type": "media",
+    "file": "fb-2553325481847062.jpg",
+    "w": 360,
+    "h": 640,
+    "alt_from": "2553325481847062"
+   }
   },
   {
    "slug": "ev-repair",
    "icon": "🔋",
-   "photo": "toyota-4x4-service-bay",
-   "clips": []
+   "clips": [],
+   "visual": {
+    "type": "graphic",
+    "icon": "ev"
+   }
   },
   {
    "slug": "classic-continental-cars",
    "icon": "🏁",
-   "photo": "porsche-in-workshop",
    "clips": [
     "997369159356181"
-   ]
+   ],
+   "visual": {
+    "type": "media",
+    "file": "carzy-classic-190e-poster.jpg",
+    "w": 540,
+    "h": 960,
+    "alt_from": "classic190e"
+   },
+   "hero_video": "classic190e"
   }
  ],
  "photos": [
@@ -112,16 +138,6 @@
    "key": "perodua-sedan-in-workshop",
    "file": "carzy-world-perodua-sedan-in-workshop.webp"
   }
- ],
- "gallery": [
-  "porsche-in-workshop",
-  "bmw-in-workshop",
-  "toyota-4x4-service-bay",
-  "isuzu-pickup-at-entrance",
-  "mazda-at-entrance",
-  "toyota-mpv-in-workshop",
-  "perodua-sedan-in-workshop",
-  "engine-work-closeup"
  ],
  "recent_work": [
   {
@@ -246,15 +262,6 @@
    "service": "car-servicing-oil-change"
   },
   {
-   "id": "1358776602985089",
-   "platform": "facebook",
-   "url": "https://www.facebook.com/61585571236048/videos/1358776602985089",
-   "thumb": "fb-1358776602985089.jpg",
-   "date": "2026-08",
-   "seconds": 42,
-   "service": "suspension-brakes-exhaust"
-  },
-  {
    "id": "1049619834456911",
    "platform": "facebook",
    "url": "https://www.facebook.com/61585571236048/videos/1049619834456911",
@@ -300,5 +307,43 @@
    "service": "classic-continental-cars"
   }
  ],
- "facebook_videos_url": "https://www.facebook.com/61585571236048/videos"
+ "facebook_videos_url": "https://www.facebook.com/61585571236048/videos",
+ "_visual_note": "Service image must show that service (brief 11 Nov): photo = real photo in photos/, media = file hosted by hand in media/, graphic = branded icon tile when no matching real photo exists.",
+ "works": [
+  {
+   "key": "isuzu",
+   "photo": "isuzu-pickup-at-entrance",
+   "service": "car-servicing-oil-change"
+  },
+  {
+   "key": "porsche",
+   "photo": "porsche-in-workshop",
+   "service": "classic-continental-cars"
+  },
+  {
+   "key": "bmw",
+   "photo": "bmw-in-workshop",
+   "service": "car-servicing-oil-change"
+  },
+  {
+   "key": "engine",
+   "photo": "engine-work-closeup",
+   "service": "engine-gearbox-repair"
+  },
+  {
+   "key": "land",
+   "photo": "toyota-4x4-service-bay",
+   "service": "car-servicing-oil-change"
+  },
+  {
+   "key": "mazda",
+   "photo": "mazda-at-entrance",
+   "service": "car-servicing-oil-change"
+  }
+ ],
+ "works_also": [
+  "tesla",
+  "c230"
+ ],
+ "_dropped_clips": "fb-1358776602985089 dropped 11 Nov: it is a past Merdeka/Malaysia Day promotion clip, not suspension work."
 }

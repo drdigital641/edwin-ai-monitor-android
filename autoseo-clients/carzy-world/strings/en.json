@@ -102,7 +102,9 @@
   "clip_aria": "Video clips from our workshop",
   "seconds": "{n}s",
   "service_tag": "Service",
-  "see_service": "About this service"
+  "see_service": "About this service",
+  "watch_fb": "Watch on Facebook",
+  "scroll_hint": "Swipe for more"
  },
  "photos": {
   "shop-exterior": "Carzy World Sdn Bhd shop front in Pusat Perniagaan Bestari, Air Hitam, Klang, with the yellow signboard and open service bay",
@@ -120,11 +122,11 @@
   "title": "Car Workshop & Car Service in Klang | Carzy World",
   "description": "Carzy World Sdn Bhd is a car workshop in Air Hitam, Klang: car service, oil change, engine and gearbox, aircond, brakes, wiring faults, EV and classic car repair. 5.0 on Google. WhatsApp +60 17-693 3936.",
   "eyebrow": "Automotive Specialists Service Centre · Klang",
-  "h1": "Car workshop in Klang for car service and repairs you can trust",
+  "h1": "The car workshop in Klang that does it properly",
   "lead": "Carzy World Sdn Bhd is a car workshop in Air Hitam, Klang. We handle servicing and oil changes, engine and gearbox repair, aircond, brakes and suspension, difficult wiring faults, EVs and classic cars. All car brands are welcome.",
   "hero_note": "WhatsApp us your car model and the problem. We'll tell you what to expect.",
-  "services_kicker": "What we do",
-  "services_h2": "Services for every car brand",
+  "services_kicker": "What we fix",
+  "services_h2": "Seven ways we keep your car right",
   "services_lead": "Seven groups of work, from a quick oil change to tracing a wiring fault other shops couldn't find.",
   "work_kicker": "Recent work",
   "work_h2": "Cars we've worked on recently",
@@ -163,19 +165,53 @@
   "faq_h2": "Questions we often get",
   "cta_h2": "Tell us what your car needs",
   "cta_text": "WhatsApp us your car model, year and the problem. Calls are welcome too during opening hours.",
-  "hero_lead": "Carzy World Sdn Bhd is a car workshop in Air Hitam, Klang, for car service, repairs and difficult faults. All car brands welcome.",
+  "hero_lead": "Carzy World is a car workshop in Air Hitam, Klang for servicing, repairs and difficult faults. All car brands welcome.",
   "hero_video_label": "Our boss at work in a suit, at the Carzy World workshop in Klang",
   "intro_h2": "One workshop for servicing, repairs and the hard jobs",
-  "reels_kicker": "Watch the work",
-  "reels_h2": "Real jobs from our workshop, on video",
-  "reels_lead": "Each clip shows a job we did. Tap one to watch it, or ask us about that service on WhatsApp.",
+  "reels_kicker": "On camera",
+  "reels_h2": "Watch us work",
+  "reels_lead": "Real jobs from our workshop. Tap a clip to play it here.",
   "classic_kicker": "Classic cars too",
   "classic_h2": "Classic and continental cars get the same care",
   "classic_text": "In November 2026 we worked on restoring a 1988 Mercedes 190E 2.5-16. We also take on older European cars with leaks, warning lights and worn parts.",
   "classic_video_label": "Restoration work on a 1988 Mercedes 190E 2.5-16 at Carzy World",
   "pick_kicker": "Services",
   "pick_h2": "Pick a service",
-  "photos_h2": "Inside the workshop"
+  "photos_h2": "Inside the workshop",
+  "works_kicker": "Recent works",
+  "works_h2": "Fresh off our ramps",
+  "works_lead": "Real photos from our workshop.",
+  "works": {
+   "isuzu": {
+    "title": "Isuzu D-Max major service",
+    "text": "A working pickup in for its major service, with fresh oil and grease ready."
+   },
+   "porsche": {
+    "title": "Porsche sports car service",
+    "text": "New engine oil and filters laid out before the service starts."
+   },
+   "bmw": {
+    "title": "BMW sedan oil service",
+    "text": "Fresh engine oil and a new filter for a BMW sedan."
+   },
+   "engine": {
+    "title": "Engine work in progress",
+    "text": "Hands-on engine work in our service bay."
+   },
+   "land": {
+    "title": "Toyota 4x4 in the bay",
+    "text": "A full-size 4x4 in the service bay for its check-up."
+   },
+   "mazda": {
+    "title": "Mazda hatchback service",
+    "text": "Engine oil ready for a Mazda hatchback's service."
+   }
+  },
+  "works_also": "Also on our ramps recently",
+  "suit_kicker": "The man in the suit",
+  "suit_h2": "Why our boss fixes cars in a suit",
+  "suit_text": "It's his way of showing that every job is done properly and professionally, from an oil change to a restoration.",
+  "visit_btn": "Plan your visit"
  },
  "faqs": [
   {
@@ -533,8 +569,8 @@
    "topic": "the new customer discount"
   },
   "1773614920220424": {
-   "title": "Heavy accident damage",
-   "caption": "Repairing a car with heavy accident damage that other workshops turned down.",
+   "title": "The boss on heavy accident repairs",
+   "caption": "Our boss talks about a car with heavy accident damage that other workshops turned down.",
    "topic": "accident damage repair"
   },
   "2553325481847062": {
@@ -546,11 +582,6 @@
    "title": "Engine oil service",
    "caption": "A routine engine oil change, step by step.",
    "topic": "an engine oil service"
-  },
-  "1358776602985089": {
-   "title": "Suspension work",
-   "caption": "Checking and replacing worn suspension parts.",
-   "topic": "suspension repair"
   },
   "1049619834456911": {
    "title": "Oil service packages",

@@ -1,5 +1,7 @@
 // Small helpers only: all page content is already in the HTML.
 (() => {
+  const reduced = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
   // Menu
   const btn = document.getElementById("menu-btn");
   const nav = document.getElementById("nav");
@@ -9,7 +11,14 @@
     nav.addEventListener("click", (e) => { if (e.target.closest("a")) set(false); });
   }
 
-  // Hero video: muted autoplay loop, unless the visitor prefers reduced motion (then poster + play button).
+  // Reveal on scroll (CSS does the motion; skipped when reduced motion is set)
+  const rv = document.querySelectorAll(".rv");
+  if (!reduced && "IntersectionObserver" in window) {
+    const io = new IntersectionObserver((es) => es.forEach((e) => { if (e.isIntersecting) { e.target.classList.add("in"); io.unobserve(e.target); } }), { rootMargin: "0px 0px -8% 0px" });
+    rv.forEach((el) => io.observe(el));
+  } else rv.forEach((el) => el.classList.add("in"));
+
+  // Hero reel: muted autoplay loop. Poster only for reduced motion or Save-Data / 2G (a play button stays).
   const v = document.getElementById("hero-video");
   if (v) {
     const toggle = document.querySelector("[data-toggle]");
@@ -28,8 +37,9 @@
       sound.setAttribute("aria-pressed", v.muted ? "false" : "true");
       sound.querySelector(".lbl").textContent = v.muted ? sound.dataset.on : sound.dataset.off;
     });
-    const reduced = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-    if (!reduced) { const p = v.play(); if (p && p.catch) p.catch(() => {}); }
+    const c = navigator.connection || {};
+    const slow = c.saveData || /(^|-)2g$/.test(c.effectiveType || "");
+    if (!reduced && !slow) { const p = v.play(); if (p && p.catch) p.catch(() => {}); }
   }
 
   // Click-to-load clips: nothing from the video platform loads until the visitor taps.

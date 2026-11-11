@@ -102,7 +102,9 @@
   "clip_aria": "我们车厂的视频短片",
   "seconds": "{n}秒",
   "service_tag": "服务",
-  "see_service": "了解这项服务"
+  "see_service": "了解这项服务",
+  "watch_fb": "到 Facebook 观看",
+  "scroll_hint": "滑动看更多"
  },
  "photos": {
   "shop-exterior": "Carzy World Sdn Bhd 位于巴生 Air Hitam Pusat Perniagaan Bestari 的店面,可见黄色招牌和开放的维修车位",
@@ -120,11 +122,11 @@
   "title": "巴生汽车维修厂与汽车保养 | Carzy World",
   "description": "Carzy World Sdn Bhd 是位于巴生 Air Hitam 的汽车维修厂:汽车保养、换机油、引擎和波箱、冷气、刹车、线路故障、电动车及经典老爷车维修。Google 评分 5.0。WhatsApp +60 17-693 3936。",
   "eyebrow": "汽车专业服务中心 · 巴生",
-  "h1": "巴生汽车维修厂,值得信赖的汽车保养与维修",
+  "h1": "巴生修车厂,每份工作都做对",
   "lead": "Carzy World Sdn Bhd 是位于巴生 Air Hitam 的汽车车厂。我们处理保养和换机油、引擎和波箱维修、冷气、刹车和避震、棘手的线路故障、电动车以及经典老爷车。欢迎各种品牌的车子。",
   "hero_note": "把你的车型和问题 WhatsApp 给我们,我们会告诉你大概的情况。",
   "services_kicker": "我们的服务",
-  "services_h2": "适合各种品牌的服务",
+  "services_h2": "我们照顾你爱车的七种方式",
   "services_lead": "共七大类工作,从简单的换机油,到找出其他车厂找不到的线路故障。",
   "work_kicker": "近期作品",
   "work_h2": "我们近期处理过的车子",
@@ -163,19 +165,53 @@
   "faq_h2": "大家常问的问题",
   "cta_h2": "告诉我们你的车子需要什么",
   "cta_text": "把你的车型、年份和问题 WhatsApp 给我们。营业时间内也欢迎直接打电话。",
-  "hero_lead": "Carzy World Sdn Bhd 是位于巴生 Air Hitam 的汽车维修厂,提供汽车保养、维修和棘手故障的处理。欢迎各种品牌的车子。",
+  "hero_lead": "Carzy World 是位于巴生 Air Hitam 的汽车维修厂,处理保养、维修和棘手的故障。欢迎各种品牌的车子。",
   "hero_video_label": "我们的老板穿着西装在巴生 Carzy World 车厂修车",
   "intro_h2": "保养、维修和疑难工作,一间车厂搞定",
-  "reels_kicker": "看看我们的工作",
-  "reels_h2": "车厂里的真实个案,视频为证",
-  "reels_lead": "每段短片都是我们做过的一份工作。点按即可观看,或通过 WhatsApp 咨询那项服务。",
+  "reels_kicker": "镜头前",
+  "reels_h2": "看我们做事",
+  "reels_lead": "来自我们车厂的真实工作。点按短片即可在这里播放。",
   "classic_kicker": "经典老爷车也欢迎",
   "classic_h2": "经典车和欧洲车,同样用心对待",
   "classic_text": "2026年11月,我们修复了一辆 1988 年的 Mercedes 190E 2.5-16。我们也接手有渗漏、警告灯亮和零件磨损的欧洲旧车。",
   "classic_video_label": "Carzy World 修复 1988 年 Mercedes 190E 2.5-16 的过程",
   "pick_kicker": "服务",
   "pick_h2": "选择一项服务",
-  "photos_h2": "车厂内部"
+  "photos_h2": "车厂内部",
+  "works_kicker": "近期作品",
+  "works_h2": "刚从我们的升降台下来",
+  "works_lead": "来自我们车厂的真实照片。",
+  "works_also": "最近也上过我们升降台的车",
+  "suit_kicker": "西装男",
+  "suit_h2": "为什么我们的老板穿西装修车",
+  "suit_text": "这是他表示每一份工作都做得认真又专业的方式,从换机油到整修都一样。",
+  "visit_btn": "安排你的到访",
+  "works": {
+   "isuzu": {
+    "title": "Isuzu D-Max 大保养",
+    "text": "一辆工作用皮卡进厂大保养,新机油和黄油已备好。"
+   },
+   "porsche": {
+    "title": "Porsche 跑车保养",
+    "text": "保养开始前,新机油和滤芯已摆放好。"
+   },
+   "bmw": {
+    "title": "BMW 轿车换机油",
+    "text": "为一辆 BMW 轿车换上新机油和新滤芯。"
+   },
+   "engine": {
+    "title": "引擎维修进行中",
+    "text": "在我们的维修位亲手处理引擎。"
+   },
+   "land": {
+    "title": "Toyota 4x4 进厂检查",
+    "text": "一辆大型 4x4 在维修位接受检查。"
+   },
+   "mazda": {
+    "title": "Mazda 掀背车保养",
+    "text": "为 Mazda 掀背车的保养准备好机油。"
+   }
+  }
  },
  "faqs": [
   {
@@ -533,8 +569,8 @@
    "topic": "新客户折扣"
   },
   "1773614920220424": {
-   "title": "严重的车祸损坏",
-   "caption": "修复一辆被其他车厂拒绝的严重车祸损坏车。",
+   "title": "老板谈严重车祸维修",
+   "caption": "老板讲述一辆车祸严重受损、被其他修车厂拒绝的车子。",
    "topic": "车祸损坏维修"
   },
   "2553325481847062": {
@@ -546,11 +582,6 @@
    "title": "引擎机油保养",
    "caption": "一次例行的引擎机油更换,逐步介绍。",
    "topic": "引擎机油保养"
-  },
-  "1358776602985089": {
-   "title": "避震工作",
-   "caption": "检查并更换磨损的避震零件。",
-   "topic": "避震维修"
   },
   "1049619834456911": {
    "title": "机油保养配套",

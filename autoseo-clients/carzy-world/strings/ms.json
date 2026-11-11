@@ -102,7 +102,9 @@
   "clip_aria": "Klip video dari bengkel kami",
   "seconds": "{n}s",
   "service_tag": "Servis",
-  "see_service": "Tentang servis ini"
+  "see_service": "Tentang servis ini",
+  "watch_fb": "Tonton di Facebook",
+  "scroll_hint": "Leret untuk lagi"
  },
  "photos": {
   "shop-exterior": "Bahagian hadapan kedai Carzy World Sdn Bhd di Pusat Perniagaan Bestari, Air Hitam, Klang, dengan papan tanda kuning dan ruang servis yang terbuka",
@@ -120,11 +122,11 @@
   "title": "Bengkel Kereta & Servis Kereta di Klang | Carzy World",
   "description": "Carzy World Sdn Bhd ialah bengkel kereta di Air Hitam, Klang: servis kereta, tukar minyak hitam, enjin dan gearbox, aircond, brek, masalah pendawaian, repair kereta EV dan kereta klasik. 5.0 di Google. WhatsApp +60 17-693 3936.",
   "eyebrow": "Pusat Servis Pakar Automotif · Klang",
-  "h1": "Bengkel kereta di Klang untuk servis kereta dan repair yang boleh dipercayai",
+  "h1": "Bengkel kereta di Klang yang buat kerja dengan betul",
   "lead": "Carzy World Sdn Bhd ialah bengkel kereta di Air Hitam, Klang. Kami buat servis dan tukar minyak hitam, repair enjin dan gearbox, aircond, brek dan suspension, masalah pendawaian yang susah, kereta EV dan kereta klasik. Semua jenama kereta dialu-alukan.",
   "hero_note": "WhatsApp model kereta dan masalah anda. Kami akan beritahu apa yang anda boleh jangka.",
   "services_kicker": "Apa kami buat",
-  "services_h2": "Perkhidmatan untuk semua jenama kereta",
+  "services_h2": "Tujuh cara kami jaga kereta anda",
   "services_lead": "Tujuh kumpulan kerja, dari tukar minyak hitam yang cepat sampai mengesan masalah pendawaian yang bengkel lain tak jumpa.",
   "work_kicker": "Kerja terkini",
   "work_h2": "Kereta yang kami uruskan baru-baru ini",
@@ -163,19 +165,53 @@
   "faq_h2": "Soalan yang selalu ditanya",
   "cta_h2": "Beritahu kami apa yang kereta anda perlukan",
   "cta_text": "WhatsApp model kereta, tahun dan masalahnya. Boleh telefon juga waktu operasi.",
-  "hero_lead": "Carzy World Sdn Bhd ialah bengkel kereta di Air Hitam, Klang, untuk servis kereta, repair dan masalah yang susah. Semua jenama kereta dialu-alukan.",
+  "hero_lead": "Carzy World ialah bengkel kereta di Air Hitam, Klang untuk servis, repair dan masalah yang susah dikesan. Semua jenama kereta dialu-alukan.",
   "hero_video_label": "Bos kami sedang buat kerja dengan memakai sut, di bengkel Carzy World di Klang",
   "intro_h2": "Satu bengkel untuk servis, repair dan kerja yang susah",
-  "reels_kicker": "Tengok kerja kami",
-  "reels_h2": "Kerja sebenar dari bengkel kami, dalam video",
-  "reels_lead": "Setiap klip tunjuk satu kerja yang kami buat. Tekan untuk tonton, atau tanya kami pasal servis itu di WhatsApp.",
+  "reels_kicker": "Depan kamera",
+  "reels_h2": "Tengok kami bekerja",
+  "reels_lead": "Kerja sebenar dari bengkel kami. Tekan klip untuk main di sini.",
   "classic_kicker": "Kereta klasik pun boleh",
   "classic_h2": "Kereta klasik dan kereta Eropah dapat layanan yang sama",
   "classic_text": "Pada November 2026 kami buat kerja pemulihan Mercedes 190E 2.5-16 tahun 1988. Kami juga terima kereta Eropah lama yang ada kebocoran, lampu amaran dan komponen haus.",
   "classic_video_label": "Kerja pemulihan Mercedes 190E 2.5-16 tahun 1988 di Carzy World",
   "pick_kicker": "Perkhidmatan",
   "pick_h2": "Pilih satu servis",
-  "photos_h2": "Dalam bengkel kami"
+  "photos_h2": "Dalam bengkel kami",
+  "works_kicker": "Kerja terkini",
+  "works_h2": "Baru turun dari ramp kami",
+  "works_lead": "Gambar sebenar dari bengkel kami.",
+  "works_also": "Baru-baru ini juga di ramp kami",
+  "suit_kicker": "Lelaki berkot",
+  "suit_h2": "Kenapa bos kami baiki kereta pakai sut",
+  "suit_text": "Itu caranya tunjuk yang setiap kerja dibuat dengan betul dan profesional, dari tukar minyak hitam sampai pemulihan kereta.",
+  "visit_btn": "Rancang kedatangan anda",
+  "works": {
+   "isuzu": {
+    "title": "Servis besar Isuzu D-Max",
+    "text": "Sebuah pikap kerja masuk untuk servis besar, dengan minyak hitam dan gris baru sedia."
+   },
+   "porsche": {
+    "title": "Servis kereta sport Porsche",
+    "text": "Minyak enjin dan penapis baru disusun sebelum servis bermula."
+   },
+   "bmw": {
+    "title": "Servis minyak sedan BMW",
+    "text": "Minyak enjin segar dan penapis baru untuk sedan BMW."
+   },
+   "engine": {
+    "title": "Kerja enjin sedang dibuat",
+    "text": "Kerja enjin secara terus di ruang servis kami."
+   },
+   "land": {
+    "title": "Toyota 4x4 di ruang servis",
+    "text": "Sebuah 4x4 bersaiz penuh di ruang servis untuk diperiksa."
+   },
+   "mazda": {
+    "title": "Servis hatchback Mazda",
+    "text": "Minyak enjin sedia untuk servis hatchback Mazda."
+   }
+  }
  },
  "faqs": [
   {
@@ -533,8 +569,8 @@
    "topic": "diskaun pelanggan baru"
   },
   "1773614920220424": {
-   "title": "Kerosakan kemalangan yang teruk",
-   "caption": "Repair kereta yang rosak teruk akibat kemalangan, yang ditolak oleh bengkel lain.",
+   "title": "Bos kami tentang repair kemalangan teruk",
+   "caption": "Bos kami bercerita tentang kereta yang rosak teruk akibat kemalangan, yang bengkel lain tolak.",
    "topic": "repair kerosakan kemalangan"
   },
   "2553325481847062": {
@@ -546,11 +582,6 @@
    "title": "Servis minyak enjin",
    "caption": "Tukar minyak enjin biasa, langkah demi langkah.",
    "topic": "servis minyak enjin"
-  },
-  "1358776602985089": {
-   "title": "Kerja suspension",
-   "caption": "Periksa dan tukar komponen suspension yang haus.",
-   "topic": "repair suspension"
   },
   "1049619834456911": {
    "title": "Pakej servis minyak",
