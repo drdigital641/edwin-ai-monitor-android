@@ -19,7 +19,7 @@ NL_DEFAULT_OG = "62-Havelock-Road-Living-1-small-1024x683.jpg"
 # field -> (kind, required). kind: str, list, int, "img" (image object), "list:<item fields>"
 NL_REQ = ["name", "slug", "type", "area", "region", "developer", "tenure", "top", "unit_mix", "official_site",
           "sources", "nearby_hints", "intro", "faq", "keywords"]
-NL_OPT = ["district", "label", "top_label", "facts", "facts_note", "title", "description", "whatsapp_text", "hero_whatsapp_text", "hero",
+NL_OPT = ["h1", "eyebrow", "hero_whatsapp_label", "facts_after", "district", "label", "top_label", "facts", "facts_note", "title", "description", "whatsapp_text", "hero_whatsapp_text", "hero",
           "renders", "renders_heading", "renders_intro", "renders_note",
           "floor_plans", "plans_heading", "plans_intro", "plans_note",
           "unit_tips", "unit_tips_heading", "unit_tips_note", "sections", "gallery", "gallery_heading",
@@ -40,7 +40,7 @@ NL_BLANK_OK = ("developer", "tenure", "top", "unit_mix", "official_site")  # may
 
 def _nl_h1(p):
     # homes: "Renovation & Interior Design"; shops, offices and other commercial space: "Fit-Out & Interior Design"
-    return f'{p["name"]} {"Fit-Out" if _nl_work(p) == "fit-out" else "Renovation"} & Interior Design'
+    return p.get("h1") or f'{p["name"]} {"Fit-Out" if _nl_work(p) == "fit-out" else "Renovation"} & Interior Design'
 
 def _nl_title(p):
     return p.get("title") or f'{_nl_h1(p)} | {p["area"]} | Maison'
@@ -229,12 +229,12 @@ def nl_page(p, projects):
     hero_fig = (f'<figure class="nlp-hero-f">{_nl_img(hero, "(min-width:1100px) 680px, 100vw", lazy=False)}'
                 + (f'<figcaption><b>{NL_NOTE}</b><span>{NL_AI}</span></figcaption>' if hero in p.get("renders", []) else
                    (f'<figcaption>{e(hero.get("caption", ""))}</figcaption>' if hero.get("caption") else "")) + '</figure>') if hero else ""
-    eb = " · ".join(x for x in (p.get("label") or p["type"], p["area"] if p["area"] != p["region"] else "", p["region"] + ("" if p["region"] == "Islandwide" else " region")) if x)
+    eb = p.get("eyebrow") or " · ".join(x for x in (p.get("label") or p["type"], p["area"] if p["area"] != p["region"] else "", p["region"] + ("" if p["region"] == "Islandwide" else " region")) if x)
     s_hero = (f'<nav class="wrap nlp-crumbs" aria-label="Breadcrumb"><a href="{BASE}">Home</a><span aria-hidden="true">/</span>'
               f'<a href="{BASE}new-launches/">New launches</a><span aria-hidden="true">/</span><span aria-current="page">{e(name)}</span></nav>'
               f'<section class="nlp-hero{" nlp-hero-img" if hero else ""}"><div class="wrap nlp-hero-g"><div class="nlp-hero-t">'
               f'<p class="nlp-eb">{e(eb)}</p><h1>{e(h1)}</h1><div class="nlp-intro">{_nl_md(p["intro"])}</div>'
-              f'<div class="nlp-cta-row">{_nl_wa("WhatsApp Maison about " + name, p.get("hero_whatsapp_text") or msg, slug + "-hero", p)}'
+              f'<div class="nlp-cta-row">{_nl_wa(p.get("hero_whatsapp_label") or ("WhatsApp Maison about " + name), p.get("hero_whatsapp_text") or msg, slug + "-hero", p)}'
               f'<a class="link" href="{BASE}services/{gslug}/">{e(GBY[gslug]["short"])} guide</a></div></div>{hero_fig}</div></section>')
     # key facts (definition list of cards: stacks on phones, no tables)
     rows = [("Type", p.get("label") or p["type"]), ("Developer", p["developer"]), ("Tenure", p["tenure"]),
@@ -351,7 +351,8 @@ def nl_page(p, projects):
     if hero: tw += f'<meta property="og:image:width" content="{hero["width"]}"><meta property="og:image:height" content="{hero["height"]}"><meta property="og:image:alt" content="{e(hero["alt"])}">'
     s = s.replace('<meta name="twitter:card" content="summary_large_image">', tw)
     s += header("new-launches/")
-    s += f'<div class="nlp">{s_hero}{s_facts}{s_rend}{s_plans}{s_tips}{s_secs}{s_gal}{s_plan}{s_faq}{s_src}{s_near}</div>{s_cta}'
+    body = (f"{s_rend}{s_plans}{s_tips}{s_secs}{s_facts}" if p.get("facts_after") else f"{s_facts}{s_rend}{s_plans}{s_tips}{s_secs}")  # facts_after: picture-first V4 order
+    s += f'<div class="nlp">{s_hero}{body}{s_gal}{s_plan}{s_faq}{s_src}{s_near}</div>{s_cta}'
     s += footer()
     write(path + "index.html", s)
 

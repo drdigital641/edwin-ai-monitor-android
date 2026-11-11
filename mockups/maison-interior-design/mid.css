@@ -628,3 +628,4 @@ main .wrap,.ft .wrap{padding-right:60px}
 .nlp-near-g{margin-top:6px}
 .nlh-chips .chip span{margin-left:6px;opacity:.6;font-size:.9em}
 .chip[disabled]{opacity:.4;cursor:default}
+.nlp-plan:only-child{grid-column:1/-1}
