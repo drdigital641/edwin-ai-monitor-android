@@ -81,10 +81,7 @@ def org_graph(L):
                          "availableLanguage": [STR[l["code"]]["meta"]["lang_name"] for l in LANGS]},
     }
     site = {"@type": "WebSite", "@id": "#website", "name": BRAND["name"], "inLanguage": s["meta"]["schema_lang"], "publisher": {"@id": "#organization"}}
-    if BRAND["site_url"]:
-        root = BRAND["site_url"].rstrip("/") + "/"
-        org.update({"url": root, "@id": root + "#organization"})
-        site.update({"url": root + L.prefix, "@id": root + L.prefix + "#website", "publisher": {"@id": root + "#organization"}})
+    # Schema @id values stay page-relative, as on the live site (11 Nov 2026).
     return [org, site]
 
 
@@ -180,7 +177,8 @@ def page(L, path, title, description, body, current="", faqs=None, body_class=""
     graph = org_graph(L)
     if faqs:
         graph.append(faq_schema(L, faqs))
-    robots = '  <meta name="robots" content="noindex,nofollow">\n' if BRAND["preview"] else '  <meta name="robots" content="index, follow, max-image-preview:large">\n'
+    noindex = BRAND["preview"] or path == "404.html"
+    robots = '  <meta name="robots" content="noindex,nofollow">\n' if noindex else '  <meta name="robots" content="index,follow">\n'
     canonical = f'  <link rel="canonical" href="{page_url(L.prefix, path)}">\n'
     alts = "".join(f'  <link rel="alternate" hreflang="{STR[l["code"]]["meta"]["html_lang"]}" href="{page_url(l["prefix"], path)}">\n' for l in LANGS)
     alts += f'  <link rel="alternate" hreflang="x-default" href="{page_url("", path)}">\n'
@@ -362,6 +360,11 @@ def build_company(L):
 
 
 # ------------------------------------------------------------------ extras
+def abs_url(path):
+    """Absolute link once the site is live on its own domain (llms.txt, sitemap)."""
+    return BRAND["site_url"].rstrip("/") + path if BRAND["site_url"] else path
+
+
 def build_llms():
     out = [f"# {BRAND['name']}", ""]
     for cfg in LANGS:
@@ -370,14 +373,33 @@ def build_llms():
         out += [f"## {s['meta']['lang_name']}", "", f"> {s['brand']['positioning']}{s['meta']['full_stop']}{BRAND['tagline']}", "", s["about_paras"][0], "", s["goal"], "",
                 f"{s['brand']['is_brand_of']} {t['areas']}: {', '.join(s['brand']['areas'])}, {t['and_other']}.", f"{t['contact']}: WhatsApp https://wa.me/{BRAND['whatsapp_number']}", "",
                 f"### {t['services']}"]
-        out += [f"- [{s['services'][m['slug']]['title']}]({L.url('services/' + m['slug'] + '/')}): {s['services'][m['slug']]['text']}" for m in SITE["services"]]
-        out += ["", f"### {t['industries']}"] + [f"- [{s['industries'][m['slug']]['label']}]({L.url('industries/' + m['slug'] + '/')})" for m in SITE["industries"]] + [f"- {s['other_industry']}"]
-        out += ["", f"### {t['company']}"] + [f"- [{L.ui['nav'][k]}]({L.url(p)})" for p, k in [("about/", "about"), ("how-it-works/", "how"), ("faq/", "faq"), ("contact/", "contact")]] + [""]
+        out += [f"- [{s['services'][m['slug']]['title']}]({abs_url(L.url('services/' + m['slug'] + '/'))}): {s['services'][m['slug']]['text']}" for m in SITE["services"]]
+        out += ["", f"### {t['industries']}"] + [f"- [{s['industries'][m['slug']]['label']}]({abs_url(L.url('industries/' + m['slug'] + '/'))})" for m in SITE["industries"]] + [f"- {s['other_industry']}"]
+        out += ["", f"### {t['company']}"] + [f"- [{L.ui['nav'][k]}]({abs_url(L.url(p))})" for p, k in [("about/", "about"), ("how-it-works/", "how"), ("faq/", "faq"), ("contact/", "contact")]] + [""]
     (OUT / "llms.txt").write_text("\n".join(out), encoding="utf-8")
+
+
+def build_sitemap():
+    """Live only: robots.txt and sitemap.xml (every page except 404, with hreflang twins)."""
+    if BRAND["preview"] or not BRAND["site_url"]:
+        return
+    root = BRAND["site_url"].rstrip("/")
+    (OUT / "robots.txt").write_text(f"User-agent: *\nAllow: /\nSitemap: {root}/sitemap.xml\n", encoding="utf-8")
+    out = ['<?xml version="1.0" encoding="UTF-8"?>', '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"', '        xmlns:xhtml="http://www.w3.org/1999/xhtml">']
+    for cfg in LANGS:
+        paths = sorted(p for p, _ in PAGES if p.startswith(cfg["prefix"]) and p[len(cfg["prefix"]):].split("/")[0] not in ("ms", "zh") and not p.endswith("404.html"))
+        for p in sorted(paths, key=lambda x: x + "index.html"):
+            rest = p[len(cfg["prefix"]):]
+            out += ["  <url>", f"    <loc>{page_url(cfg['prefix'], rest)}</loc>"]
+            out += [f'    <xhtml:link rel="alternate" hreflang="{STR[l["code"]]["meta"]["html_lang"]}" href="{page_url(l["prefix"], rest)}"/>' for l in LANGS]
+            out += [f'    <xhtml:link rel="alternate" hreflang="x-default" href="{page_url("", rest)}"/>', "  </url>"]
+    out.append("</urlset>")
+    (OUT / "sitemap.xml").write_text("\n".join(out) + "\n", encoding="utf-8")
 
 
 def build_extras():
     build_llms()
+    build_sitemap()
     manifest = {"name": BRAND["name"], "short_name": BRAND["name"], "start_url": BASE, "display": "browser", "background_color": "#060b18", "theme_color": "#060b18",
                 "icons": [{"src": BASE + "favicon.svg", "sizes": "any", "type": "image/svg+xml"}]}
     (OUT / "site.webmanifest").write_text(json.dumps(manifest, indent=1), encoding="utf-8")

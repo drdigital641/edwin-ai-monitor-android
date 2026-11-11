@@ -7,9 +7,9 @@
  "company": "K Tech Auto Solution Sdn Bhd",
  "whatsapp_number": "60189492820",
  "country": "Malaysia",
- "base_path": "/preview/autoseo-my/",
- "site_url": "",
+ "base_path": "/",
+ "site_url": "https://autoseo.my",
  "_site_url_note": "Empty while this is a preview: canonical, hreflang and og:url use root-relative paths and schema has no url. Set to the live domain, e.g. https://example.my, when it goes live; they then become absolute.",
- "preview": true,
+ "preview": false,
  "_preview_note": "true = every page carries <meta name=robots content=noindex,nofollow>. Set false only when the site goes live on its own domain."
 }

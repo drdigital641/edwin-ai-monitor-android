@@ -99,9 +99,19 @@ for p in pages:
         if f'hreflang="{hl}" href=' not in h:
             problems.append(f"{rel}: no hreflang {hl}")
 
-for name in ("sitemap.xml", "sitemap.txt", "robots.txt"):
-    if (SITE / name).exists():
-        problems.append(f"{name} must not be in the preview")
+if BRAND["preview"]:
+    for name in ("sitemap.xml", "sitemap.txt", "robots.txt"):
+        if (SITE / name).exists():
+            problems.append(f"{name} must not be in the preview")
+else:
+    for name in ("sitemap.xml", "robots.txt"):
+        if not (SITE / name).exists():
+            problems.append(f"{name} missing on the live build")
+    for p in pages:
+        h = p.read_text(encoding="utf-8")
+        want = "noindex,nofollow" if p.name == "404.html" else "index,follow"
+        if f'<meta name="robots" content="{want}">' not in h:
+            problems.append(f"{p.relative_to(SITE)}: robots should be {want}")
 
 print(f"checked {len(pages)} pages, {len(scan)} files, {len(terms)} blocked terms")
 print(f"blocklist hits: {len(hits)}")
