@@ -1,0 +1,40 @@
+{
+ "_readme": "EMATS site config. Facts from the 11 Nov 2026 brief only. Change a value here once, run src/build.py, and every page, schema block, sitemap and llms.txt picks it up.",
+ "whatsapp_number": "60108202063",
+ "_whatsapp_number_note": "THE ONE WhatsApp switch. Digits only with country code, no + or spaces, e.g. 60123456789. Empty = every button says 'WhatsApp number coming soon' and points to the Contact page. Filled = every button, the sticky mobile button and schema telephone use it; message prefills come from strings/<lang>.json -> prefills.",
+ "phone_e164": "+60108202063",
+ "phone_display": "+60 10-820 2063",
+ "_phone_note": "Secondary CTA (tel: link) and schema telephone. Empty = no call button. From the 11 Nov 2026 contact update.",
+ "hours": [
+  {
+   "days": [
+    "Monday",
+    "Tuesday",
+    "Wednesday",
+    "Thursday",
+    "Friday",
+    "Saturday",
+    "Sunday"
+   ],
+   "opens": "10:30",
+   "closes": "19:00"
+  }
+ ],
+ "_hours_note": "Schema openingHoursSpecification. The visible wording is strings/<lang>.json ui.hours_text; change both together (check.py compares them).",
+ "name": "EMATS TECHNOLOGY SALES AND SERVICE",
+ "short_name": "EMATS",
+ "registration_no": "RA0076024-T",
+ "city": "Johor Bahru",
+ "state": "Johor",
+ "country": "Malaysia",
+ "country_code": "MY",
+ "facebook_url": "https://www.facebook.com/kam.jackie.52",
+ "base_path": "/preview/emats/",
+ "site_url": "https://autoseo.my/preview/emats/",
+ "_site_url_note": "Where these pages are served now. Canonical, hreflang, og:url and schema use it. Move day: site_url = live_site_url, base_path = /, preview = false, rebuild.",
+ "live_site_url": "https://ecumats.my/",
+ "_live_site_url_note": "Planned domain (no DNS yet, 11 Nov 2026). sitemap.xml and llms.txt are written for it so they are ready on move day.",
+ "preview": true,
+ "credit": "Website by AutoSEO.my",
+ "credit_url": "https://autoseo.my/"
+}

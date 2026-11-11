@@ -1,0 +1,516 @@
+{
+ "meta": {
+  "html_lang": "ms",
+  "og_locale": "ms_MY",
+  "lang_name": "Bahasa Melayu",
+  "schema_lang": "ms",
+  "switch_name": "BM",
+  "country": "Malaysia",
+  "city": "Johor Bahru"
+ },
+ "ui": {
+  "skip": "Terus ke kandungan",
+  "menu": "Menu",
+  "nav_label": "Menu utama",
+  "lang_label": "Bahasa",
+  "nav": {
+   "home": "Utama",
+   "services": "Pembaikan",
+   "workshops": "Untuk bengkel",
+   "about": "Tentang kami",
+   "contact": "Hubungi"
+  },
+  "wa_cta": "WhatsApp kami",
+  "wa_cta_short": "WhatsApp",
+  "wa_soon": "Nombor WhatsApp akan datang",
+  "wa_soon_short": "WhatsApp akan datang",
+  "facebook": "Facebook",
+  "breadcrumb_label": "Navigasi halaman",
+  "read_more": "Lihat pembaikan ini",
+  "photo_label": "Dari meja kerja",
+  "reel_label": "Reel pembaikan di Facebook",
+  "reel_play": "Mainkan reel pembaikan di Facebook",
+  "reel_note": "Video hanya dimuatkan apabila anda tekan sesuatu reel.",
+  "footer_about": "Pembaikan peringkat komponen untuk unit kawalan elektronik kereta di Johor Bahru, Malaysia. Servis hantar masuk untuk bengkel.",
+  "footer_repairs": "Pembaikan",
+  "footer_company": "Syarikat",
+  "footer_follow": "Ikuti meja kerja kami",
+  "reg_label": "No. pendaftaran",
+  "rights": "Hak cipta terpelihara.",
+  "cta_kicker": "Servis hantar masuk untuk bengkel",
+  "cta_h2": "Ada modul di bengkel anda yang tak boleh berkomunikasi?",
+  "cta_p": "Mesej EMATS dengan kerosakan dan nombor bahagian. Kami periksa modul dahulu dan beritahu kerosakan serta kosnya sebelum sebarang pembaikan.",
+  "faq_h2": "Soalan yang bengkel tanya",
+  "related_h2": "Pembaikan lain di meja kerja kami",
+  "call": "Telefon {phone}",
+  "hours_label": "Waktu operasi",
+  "hours_text": "Setiap hari, 10:30 pagi hingga 7:00 malam",
+  "reel_video_label": "Video pembaikan",
+  "reel_video_play": "Main video pembaikan",
+  "car_prev": "Foto sebelumnya",
+  "car_next": "Foto seterusnya",
+  "car_dot": "Foto {n}"
+ },
+ "prefills": {
+  "general": "Hi EMATS, saya ada modul yang perlu diperiksa. Kerosakan: ... Nombor bahagian: ...",
+  "service": "Hi EMATS, saya ingin hantar {topic}. Kerosakan: ... Nombor bahagian: ...",
+  "workshop": "Hi EMATS, kami sebuah bengkel dan ingin hantar modul. Model kereta: ... Kerosakan: ... Nombor bahagian: ..."
+ },
+ "photos": {
+  "ecu-wired-test": "Modul ECU kereta disambung pada set ujian di meja kerja EMATS",
+  "bga-blue-jig": "Cip BGA diletakkan pada jig biru untuk pembaikan papan litar peringkat cip",
+  "ecu-stack": "Timbunan papan ECU di atas tikar meja kerja menunggu pembaikan",
+  "tricore-chip": "Gambar dekat pemproses Infineon TriCore pada papan ECU kereta",
+  "bga-bench-mat": "Cip BGA di atas tikar meja kerja hijau semasa pembaikan peringkat komponen",
+  "ecu-case": "Unit kawalan enjin kereta dalam casing logam di atas meja kerja",
+  "cluster-bench": "Meter kluster dihidupkan di meja kerja untuk ujian",
+  "ecu-open-case": "ECU enjin dengan casing terbuka di meja pembaikan"
+ },
+ "services": {
+  "ecu": {
+   "code": "U1",
+   "name": "Pembaikan ECU / ECM",
+   "topic": "ECU / ECM",
+   "card": "Unit kawalan enjin dan papan ECM dibaiki pada peringkat komponen, diperiksa di meja kerja sebelum dan selepas.",
+   "tile": "Papan ECU & ECM enjin",
+   "tile_name": "ECU / ECM"
+  },
+  "abs": {
+   "code": "U2",
+   "name": "Pembaikan modul ABS",
+   "topic": "modul ABS",
+   "card": "Modul kawalan ABS diperiksa dan dibaiki, supaya lampu amaran tidak semestinya bermakna kena beli unit baru.",
+   "tile": "Modul kawalan ABS",
+   "tile_name": "ABS"
+  },
+  "cluster": {
+   "code": "U3",
+   "name": "Pembaikan meter kluster",
+   "topic": "meter kluster",
+   "card": "Meter kluster dengan tolok mati, masalah paparan atau masalah lampu dibaiki di meja kerja.",
+   "tile": "Jarum meter, skrin, lampu",
+   "tile_name": "Meter kluster"
+  },
+  "modules": {
+   "code": "U4",
+   "name": "Modul kawalan lain",
+   "topic": "modul kawalan",
+   "card": "TCM/TCU, kawalan badan (body control) dan papan elektronik kereta yang lain diperiksa satu persatu.",
+   "tile": "TCM, kawalan badan & papan lain",
+   "tile_name": "Papan litar"
+  },
+  "marine": {
+   "code": "U5",
+   "name": "Pembaikan elektronik marin",
+   "topic": "kawalan elektronik marin",
+   "card": "Kawalan elektronik bot diperiksa dan dibaiki pada peringkat papan litar, cara yang sama seperti modul kereta.",
+   "tile": "Kawalan elektronik bot",
+   "tile_name": "Marin"
+  }
+ },
+ "steps": [
+  {
+   "t": "WhatsApp dahulu",
+   "d": "Hantar model kereta, kerosakan yang anda nampak dan nombor bahagian pada label modul. Gambar label sangat membantu."
+  },
+  {
+   "t": "Hantar atau serahkan modul",
+   "d": "Pos modul kepada kami melalui kurier atau serahkan terus di Johor Bahru."
+  },
+  {
+   "t": "Diagnosis sebelum sebut harga",
+   "d": "Kami periksa modul di meja kerja dan beritahu kerosakan serta kosnya sebelum sebarang pembaikan bermula."
+  },
+  {
+   "t": "Baiki dan ujian di meja kerja",
+   "d": "Setelah anda setuju, kami baiki pada peringkat komponen dan uji modul di meja kerja."
+  },
+  {
+   "t": "Pulangkan",
+   "d": "Modul dihantar balik ke bengkel anda, siap untuk dipasang semula pada kereta."
+  }
+ ],
+ "pages": {
+  "home": {
+   "title": "Baiki ECU Johor Bahru untuk Bengkel | EMATS",
+   "description": "Baiki ECU Johor Bahru untuk bengkel kereta: pembaikan peringkat komponen untuk ECU/ECM, modul ABS dan meter kluster. Diagnosis sebelum sebut harga. Servis hantar masuk.",
+   "kicker": "Pembaikan peringkat komponen · Johor Bahru",
+   "h1": "Baiki ECU & Modul ABS, Johor Bahru",
+   "intro": "EMATS baiki ECU Johor Bahru pada peringkat komponen: kami buka modul, cari bahagian yang rosak pada papan litar dan baikinya. Bengkel kereta hantar papan ECU/ECM, modul ABS, meter kluster dan modul kawalan lain kepada kami, dan kami beritahu kerosakan serta kosnya sebelum sebarang pembaikan.",
+   "badges": [
+    "Diagnosis sebelum sebut harga",
+    "Baiki, bukan ganti",
+    "Servis hantar masuk untuk bengkel"
+   ],
+   "console": [
+    "modul diterima",
+    "dihidupkan di meja kerja",
+    "kerosakan dikesan",
+    "sebut harga dihantar",
+    "baiki + ujian meja kerja",
+    "sedia dipulangkan"
+   ],
+   "services_kicker": "Apa yang kami baiki",
+   "services_h2": "Unit kawalan elektronik kereta, dibaiki pada peringkat papan litar",
+   "services_p": "Pembaikan ECU kereta untuk bengkel ialah kerja utama kami, tetapi meja kerja yang sama boleh uruskan kebanyakan papan elektronik dalam kereta. Pilih modul yang anda ada.",
+   "process_kicker": "Untuk bengkel",
+   "process_h2": "Cara servis hantar masuk berfungsi",
+   "process_p": "Lima langkah dari meja kerja anda ke meja kerja kami dan balik semula. Anda sentiasa tahu kerosakan dan kosnya sebelum kami baiki apa-apa.",
+   "process_link": "Panduan penuh hantar masuk untuk bengkel",
+   "photos_kicker": "Gambar sebenar",
+   "photos_h2": "Kerja sebenar di meja kerja",
+   "photos_p": "Gambar sebenar dari meja kerja EMATS: modul sedang diuji, cip BGA pada jig dan papan yang menunggu giliran.",
+   "reels_kicker": "Video",
+   "reels_h2": "Dari meja kerja",
+   "reels_p": "Reel pembaikan dari meja kerja EMATS, juga di halaman Facebook EMATS. Tekan satu untuk menontonnya.",
+   "why_kicker": "Kenapa baiki",
+   "why_h2": "Kenapa bengkel baiki modul, bukan ganti",
+   "why": [
+    {
+     "t": "Kerosakan selalunya satu bahagian sahaja",
+     "d": "Modul yang berhenti berfungsi biasanya ada komponen yang rosak, sambungan pateri yang retak atau trek yang rosak, bukan papan yang rosak sepenuhnya."
+    },
+    {
+     "t": "Pelanggan anda kekalkan unit asal",
+     "d": "Membaiki modul yang dikeluarkan dari kereta mengelakkan anda mencari unit pengganti yang mungkin perlu disetkan semula untuk kereta itu."
+    },
+    {
+     "t": "Anda buat keputusan berdasarkan fakta",
+     "d": "Diagnosis sebelum sebut harga bermakna anda dapat kerosakan dan kosnya dahulu, kemudian putuskan bersama pelanggan sama ada mahu teruskan."
+    }
+   ],
+   "faq": [
+    {
+     "q": "Adakah anda baiki ECU kereta untuk bengkel di Johor Bahru?",
+     "a": "Ya. EMATS ialah servis hantar masuk untuk bengkel. Anda WhatsApp kerosakan dan nombor bahagian, hantar atau serahkan modul, dan kami periksa sebelum sebut harga."
+    },
+    {
+     "q": "Apa maksud pembaikan peringkat komponen?",
+     "a": "Kami baiki papan litar di dalam modul: cip, komponen, sambungan pateri atau trek yang rosak. Kami tidak sekadar tukar keseluruhan unit."
+    },
+    {
+     "q": "Adakah saya akan tahu kos sebelum anda baiki?",
+     "a": "Ya. Kami periksa modul di meja kerja dan beritahu kerosakan serta kosnya sebelum sebarang pembaikan bermula."
+    },
+    {
+     "q": "Modul apa yang boleh anda periksa?",
+     "a": "Papan ECU/ECM, modul ABS, meter kluster serta papan elektronik dan modul kawalan kereta yang lain. Kami juga pernah baiki kawalan elektronik marin (bot). Hantar nombor bahagian dan kami akan beritahu sama ada kami boleh periksa."
+    },
+    {
+     "q": "Bolehkah pemilik kereta hantar modul juga?",
+     "a": "Pelanggan utama kami ialah bengkel, tetapi pemilik kereta juga boleh mesej kami. Bengkel anda biasanya perlu tanggal dan pasang semula modul itu."
+    }
+   ],
+   "tagline": "Bengkel hantar modul. Kami diagnosis, beri sebut harga, kemudian baiki.",
+   "tiles_h2": "Apa yang kami baiki",
+   "steps_h2": "Cara ia berfungsi",
+   "swipe": "Leret untuk lagi"
+  },
+  "ecu": {
+   "title": "Baiki ECU & ECM Johor Bahru untuk Bengkel | EMATS",
+   "description": "Baiki ECU dan ECM Johor Bahru pada peringkat komponen. Pembaikan ECU kereta untuk bengkel: diagnosis sebelum sebut harga, baiki dan ujian meja kerja, servis hantar masuk.",
+   "kicker": "U1 · Kawalan enjin",
+   "h1": "Pembaikan ECU dan ECM di Johor Bahru",
+   "intro": "Pembaikan ECU kereta untuk bengkel: EMATS baiki unit kawalan enjin (ECU) dan papan ECM pada peringkat komponen di Johor Bahru. Bila kereta tak boleh hidup, tak boleh berkomunikasi dengan alat imbas atau terus keluar kod kerosakan yang sama selepas pendawaian disahkan elok, modul itu sendiri mungkin puncanya, dan selalunya ia boleh dibaiki, bukan diganti.",
+   "sections": [
+    {
+     "h2": "Bila bengkel hantar ECU kepada kami",
+     "p": [
+      "Bengkel biasanya hantar ECU selepas semakan asas selesai: kuasa, earth, fius dan pendawaian elok, tetapi kerosakan masih ada. Ini antara sebab biasa modul sampai ke meja kerja kami:"
+     ],
+     "list": [
+      "Tiada komunikasi dengan alat diagnostik",
+      "Enjin berputar tetapi tak hidup, walaupun kuasa dan pendawaian sudah disahkan",
+      "Kerosakan litar injektor, pencucuhan atau sensor yang menunjuk balik kepada ECU",
+      "Kerosakan air, karat atau bahagian terbakar pada papan litar",
+      "Putus-putus sekejap yang mengikut modul, bukan pendawaian"
+     ]
+    },
+    {
+     "h2": "Apa yang berlaku di meja kerja",
+     "p": [
+      "Kami buka casing, periksa papan litar dan hidupkan modul pada set ujian. Itu membolehkan kami kesan bahagian yang rosak, sama ada cip pemacu, komponen bekalan kuasa, sambungan pateri yang retak atau trek yang rosak.",
+      "Sebelum apa-apa dibaiki, anda dapat kerosakan dan kosnya. Jika anda setuju, kami baiki papan litar pada peringkat komponen dan uji semula modul di meja kerja sebelum ia dipulangkan."
+     ]
+    },
+    {
+     "h2": "Pembaikan ECM, bukan penggantian",
+     "p": [
+      "ECM yang berhenti berfungsi selalunya ada satu kawasan yang rosak, bukan papan yang mati. Membaiki unit asal bermakna ia kekal modul yang dikeluarkan dari kereta itu, dan anda tak perlu mencari unit pengganti yang mungkin masih perlu disetkan."
+     ]
+    }
+   ],
+   "faq": [
+    {
+     "q": "Adakah ECU dan ECM benda yang sama?",
+     "a": "Kedua-dua nama digunakan untuk unit kawalan enjin, komputer yang menjalankan enjin. Kami baiki kedua-duanya pada peringkat komponen."
+    },
+    {
+     "q": "Apa yang perlu saya hantar bersama ECU?",
+     "a": "Modul sahaja, bersama model kereta, kerosakan yang anda nampak dan nombor bahagian pada label. Lihat panduan bengkel untuk senarai penuh."
+    },
+    {
+     "q": "Adakah anda akan beritahu kos dahulu?",
+     "a": "Ya. Diagnosis dibuat sebelum sebut harga, dan tiada pembaikan bermula sehingga anda setuju."
+    }
+   ],
+   "cta_h2": "Hantar ECU atau ECM"
+  },
+  "abs": {
+   "title": "Baiki Modul ABS Malaysia | Johor Bahru | EMATS",
+   "description": "Baiki modul ABS Malaysia dari Johor Bahru: modul kawalan ABS diperiksa dan dibaiki pada peringkat komponen untuk bengkel. Diagnosis sebelum sebut harga.",
+   "kicker": "U2 · Kawalan brek",
+   "h1": "Baiki Modul ABS di Malaysia",
+   "intro": "Baiki modul ABS Malaysia untuk bengkel, dibuat di meja kerja di Johor Bahru. Bila lampu amaran ABS terus menyala dan sensor, pendawaian serta pam sudah diperiksa elok, kerosakan selalunya di dalam modul kawalan ABS. EMATS periksa modul dan baiki papan litar pada peringkat komponen, jadi jawapannya tak semestinya unit baru.",
+   "sections": [
+    {
+     "h2": "Tanda modul ABS itu sendiri yang rosak",
+     "p": [
+      "Kami terima modul ABS dari bengkel selepas semakan biasa dibuat. Sebab-sebab lazim ia dihantar:"
+     ],
+     "list": [
+      "Lampu amaran ABS atau traksi terus menyala selepas semakan sensor dan pendawaian",
+      "Tiada komunikasi dengan modul ABS pada alat imbas",
+      "Kod kerosakan berkaitan modul yang kembali selepas dipadam",
+      "Kerosakan putus-putus yang datang dan pergi dengan haba atau getaran"
+     ]
+    },
+    {
+     "h2": "Cara kami baiki modul kawalan ABS",
+     "p": [
+      "Bahagian elektronik unit ABS diperiksa di meja kerja. Kami cari komponen yang rosak, sambungan pateri yang retak dan trek yang rosak pada papan litar, kemudian beritahu anda kerosakan serta kosnya sebelum sebarang pembaikan.",
+      "Setelah anda setuju, papan litar dibaiki pada peringkat komponen dan modul diuji di meja kerja sebelum dipulangkan ke bengkel anda."
+     ]
+    },
+    {
+     "h2": "Tanggal dan pasang semula kekal dengan bengkel anda",
+     "p": [
+      "Bengkel anda tanggal modul, hantar masuk dan pasang semula selepas pembaikan. Tanya kami di WhatsApp dahulu dengan nombor bahagian, dan kami akan beritahu dengan tepat apa yang perlu dihantar."
+     ]
+    }
+   ],
+   "faq": [
+    {
+     "q": "Adakah anda baiki keseluruhan unit ABS?",
+     "a": "Kami kerjakan modul kawalan elektronik, iaitu papan litar yang mengawal ABS. Hantar nombor bahagian dahulu dan kami akan sahkan apa yang perlu dihantar."
+    },
+    {
+     "q": "Bolehkah anda periksa modul ABS sebelum saya beli yang baru?",
+     "a": "Ya. Itulah gunanya diagnosis sebelum sebut harga: anda tahu kerosakan dan kos pembaikan dahulu, kemudian baru putuskan."
+    }
+   ],
+   "cta_h2": "Hantar modul ABS"
+  },
+  "cluster": {
+   "title": "Baiki Meter Kluster Johor Bahru | EMATS",
+   "description": "Baiki meter kluster (instrument cluster) Johor Bahru: tolok mati, masalah paparan dan lampu dibaiki pada peringkat komponen untuk bengkel. Diagnosis sebelum sebut harga.",
+   "kicker": "U3 · Papan pemuka",
+   "h1": "Baiki Meter Kluster (Instrument Cluster) di Johor Bahru",
+   "intro": "Baiki meter kluster (instrument cluster) Johor Bahru untuk bengkel dan pemilik kereta. Bila tolok berhenti bergerak, paparan jadi kosong atau lampu kluster tak menyala, kerosakan biasanya pada papan litar kluster. EMATS hidupkan kluster di meja kerja, cari bahagian yang rosak dan baikinya pada peringkat komponen.",
+   "sections": [
+    {
+     "h2": "Kerosakan kluster yang kami periksa",
+     "p": [
+      "Ini sebab biasa meter kluster sampai ke meja kerja:"
+     ],
+     "list": [
+      "Speedometer, tolok RPM, bahan api atau suhu tersekat atau mati",
+      "Paparan kosong, malap atau ada segmen yang hilang",
+      "Lampu kluster atau lampu amaran tak berfungsi",
+      "Kluster mati sepenuhnya atau asyik reset"
+     ]
+    },
+    {
+     "h2": "Ujian kluster di meja kerja",
+     "p": [
+      "Kami hidupkan kluster di meja kerja, di luar kereta, supaya kerosakan boleh dikesan pada papan litar itu sendiri. Anda dapat kerosakan dan kosnya sebelum sebarang pembaikan, dan kluster diuji semula di meja kerja selepas dibaiki."
+     ]
+    },
+    {
+     "h2": "Kekalkan kluster asal",
+     "p": [
+      "Membaiki kluster yang dikeluarkan dari kereta bermakna unit asal kekal dalam kereta, jadi anda tak perlu mencari dan menyetkan unit pengganti."
+     ]
+    }
+   ],
+   "faq": [
+    {
+     "q": "Perlukah saya hantar keseluruhan kluster?",
+     "a": "Ya, hantar meter kluster seperti yang dikeluarkan dari papan pemuka, bersama model kereta dan kerosakan yang anda nampak."
+    },
+    {
+     "q": "Adakah pemilik kereta menggunakan servis ini?",
+     "a": "Kebanyakannya bengkel yang hantar kluster, tetapi pemilik kereta juga boleh mesej kami. Bengkel biasanya akan tanggal dan pasang semula."
+    }
+   ],
+   "cta_h2": "Hantar meter kluster"
+  },
+  "modules": {
+   "title": "Baiki Modul TCM, Body & Kawalan Johor Bahru | EMATS",
+   "description": "Pembaikan modul kawalan kereta lain di Johor Bahru: TCM/TCU, kawalan badan (body control) dan papan elektronik lain, diperiksa satu persatu. Diagnosis sebelum sebut harga.",
+   "kicker": "U4 · Modul lain",
+   "h1": "Pembaikan Modul Kawalan Kereta: TCM, Body dan Papan Lain",
+   "intro": "Selain pembaikan ECU, EMATS juga periksa modul kawalan elektronik kereta yang lain di Johor Bahru: unit kawalan transmisi (TCM/TCU), modul kawalan badan (body control) dan papan elektronik lain. Setiap modul berbeza, jadi kami periksa satu persatu dan beritahu anda dahulu sama ada ia boleh dibaiki.",
+   "sections": [
+    {
+     "h2": "Modul yang boleh kami periksa",
+     "p": [
+      "Kereta moden ada banyak modul kawalan. Hantar nombor bahagian dan kerosakan, dan kami akan beritahu sama ada kami boleh periksa. Contohnya:"
+     ],
+     "list": [
+      "Unit kawalan transmisi (TCM/TCU)",
+      "Modul kawalan badan (body control)",
+      "Papan elektronik dan modul kawalan lain dalam kereta"
+     ]
+    },
+    {
+     "h2": "Kaedah sama untuk setiap modul",
+     "p": [
+      "Apa pun modulnya, proses tak berubah: WhatsApp dahulu, hantar modul, diagnosis sebelum sebut harga, kemudian baiki dan ujian di meja kerja selepas anda setuju."
+     ]
+    }
+   ],
+   "faq": [
+    {
+     "q": "Modul saya tiada dalam senarai. Boleh tak anda periksa juga?",
+     "a": "Mungkin boleh. Mesej kami nombor bahagian dan kerosakan, dan kami akan beritahu dengan jujur sama ada kami boleh periksa."
+    }
+   ],
+   "cta_h2": "Tanya tentang modul kawalan"
+  },
+  "marine": {
+   "title": "Pembaikan Elektronik Marin Johor Bahru, Malaysia | EMATS",
+   "description": "Pembaikan elektronik marin dari Johor Bahru: kawalan elektronik bot diperiksa dan dibaiki pada peringkat papan litar. Diagnosis sebelum sebut harga.",
+   "kicker": "U5 · Marin",
+   "h1": "Pembaikan Elektronik Marin di Johor Bahru",
+   "intro": "EMATS juga pernah buat pembaikan elektronik marin, mengerjakan kawalan elektronik bot pada peringkat papan litar di Johor Bahru. Kaedah di meja kerja sama seperti modul kereta: kami periksa papan kawalan, cari bahagian yang rosak dan beritahu anda kerosakan serta kosnya sebelum sebarang pembaikan.",
+   "sections": [
+    {
+     "h2": "Kawalan elektronik bot",
+     "p": [
+      "Papan kawalan marin berdepan haba, lembapan dan getaran, dan kerosakan selalunya muncul sebagai karat, komponen rosak atau sambungan pateri patah pada papan litar. Hantar butiran bahagian dan kerosakan dahulu, dan kami akan beritahu sama ada kami boleh periksa."
+     ]
+    },
+    {
+     "h2": "Cara ia berfungsi",
+     "p": [
+      "Mesej kami dengan kerosakan dan nombor bahagian, hantar atau serahkan unit kawalan, dan kami periksa di meja kerja. Anda dapat kerosakan dan kosnya sebelum sebarang pembaikan bermula."
+     ]
+    }
+   ],
+   "faq": [
+    {
+     "q": "Adakah anda baiki kawalan elektronik bot?",
+     "a": "Kami pernah baiki kawalan elektronik marin (bot). Setiap unit diperiksa satu persatu, jadi mesej kami butirannya dahulu."
+    }
+   ],
+   "cta_h2": "Tanya tentang unit kawalan marin"
+  },
+  "workshops": {
+   "title": "Pembaikan ECU Kereta untuk Bengkel: Hantar Masuk | EMATS",
+   "description": "Pembaikan ECU kereta untuk bengkel di Johor Bahru: cara servis hantar masuk berfungsi, apa yang perlu disertakan bersama modul, dan kenapa baiki, bukan ganti.",
+   "kicker": "Servis hantar masuk",
+   "h1": "Pembaikan ECU Kereta untuk Bengkel: Cara Hantar Masuk",
+   "intro": "EMATS dibina berasaskan pembaikan ECU kereta untuk bengkel. Anda kekalkan pelanggan dan kereta; kami ambil modul, cari kerosakan pada peringkat komponen dan baikinya di Johor Bahru. Beginilah servis hantar masuk berfungsi dari mesej pertama sehingga modul dipulangkan.",
+   "steps_h2": "Lima langkah, dari meja kerja anda ke meja kerja kami",
+   "include_h2": "Apa yang perlu disertakan bersama modul",
+   "include": [
+    "Buatan, model dan tahun kereta",
+    "Kerosakan yang anda nampak dan sebarang kod kerosakan",
+    "Nombor bahagian pada label modul (gambar pun boleh)",
+    "Apa yang sudah diperiksa, seperti pendawaian, kuasa dan earth",
+    "Nama bengkel anda dan nombor untuk dihubungi bagi pemulangan"
+   ],
+   "why_h2": "Kenapa baiki, bukan ganti",
+   "why_p": [
+    "Modul yang rosak selalunya ada satu bahagian, sambungan atau trek yang rosak, bukan papan yang mati. Membaikinya mengekalkan unit asal bersama kereta.",
+    "Oleh sebab diagnosis dibuat sebelum sebut harga, anda boleh tunjuk kerosakan dan kosnya kepada pelanggan dahulu, dan putuskan bersama sama ada mahu baiki."
+   ],
+   "faq": [
+    {
+     "q": "Perlukah saya telefon sebelum hantar modul?",
+     "a": "Ya, sila WhatsApp dahulu dengan kerosakan dan nombor bahagian supaya kami boleh sahkan apa yang perlu dihantar."
+    },
+    {
+     "q": "Boleh saya serahkan modul terus, bukannya hantar?",
+     "a": "Boleh. Anda boleh hantar atau serahkan di Johor Bahru. Mesej kami dahulu untuk aturkannya."
+    },
+    {
+     "q": "Siapa yang tanggal dan pasang semula modul?",
+     "a": "Bengkel anda. Kami baiki dan uji modul di meja kerja, kemudian pulangkan kepada anda."
+    }
+   ],
+   "cta_h2": "Sedia untuk hantar modul?"
+  },
+  "about": {
+   "title": "Tentang EMATS | Baiki ECU Johor Bahru",
+   "description": "Tentang EMATS Technology Sales and Service, Johor Bahru: pembaikan peringkat komponen untuk unit kawalan elektronik kereta oleh juruteknik berlatar belakang kejuruteraan.",
+   "kicker": "Tentang kami",
+   "h1": "Tentang EMATS",
+   "intro": "EMATS TECHNOLOGY SALES AND SERVICE ialah perniagaan di Johor Bahru yang baiki unit kawalan elektronik kereta pada peringkat komponen. Kebanyakan kerja kami datang daripada bengkel kereta yang hantar papan ECU/ECM, modul ABS, meter kluster dan modul kawalan lain.",
+   "sections": [
+    {
+     "h2": "Berlatar belakang kejuruteraan, kerja di meja kerja",
+     "p": [
+      "Pembaikan dibuat oleh juruteknik yang berlatar belakang kejuruteraan. EMATS diuruskan oleh Jackie Sky, yang memegang Diploma Siswazah dalam Kejuruteraan. Kerja berlaku di meja kerja: membuka modul, mengujinya, dan membaiki papan litar itu sendiri."
+     ]
+    },
+    {
+     "h2": "Cara kami bekerja",
+     "p": [
+      "Diagnosis sebelum sebut harga: kami periksa modul dan beritahu kerosakan serta kosnya sebelum sebarang pembaikan. Baiki, bukan ganti: kami betulkan bahagian yang rosak pada papan litar, bukan tukar keseluruhan unit. Servis hantar masuk untuk bengkel: anda hantar atau serahkan modul, dan kami pulangkan selepas dibaiki dan diuji di meja kerja."
+     ]
+    },
+    {
+     "h2": "Bukan setakat kereta",
+     "p": [
+      "Kemahiran meja kerja yang sama juga pernah digunakan pada kawalan elektronik marin (bot)."
+     ]
+    }
+   ],
+   "cta_h2": "Bercakap dengan meja kerja kami"
+  },
+  "contact": {
+   "title": "Hubungi EMATS | Baiki ECU Johor Bahru",
+   "description": "Hubungi EMATS di Johor Bahru untuk pembaikan ECU, modul ABS dan meter kluster. WhatsApp dahulu dengan kerosakan dan nombor bahagian, atau cari kami di Facebook.",
+   "kicker": "Hubungi",
+   "h1": "Hubungi EMATS",
+   "intro": "Cara paling cepat untuk mulakan pembaikan ECU di Johor Bahru ialah mesej WhatsApp dengan model kereta, kerosakan dan nombor bahagian. Anda juga boleh hubungi EMATS di Facebook.",
+   "wa_h2": "WhatsApp",
+   "wa_p": "WhatsApp ialah cara utama untuk hubungi kami. Hantar kerosakan dan nombor bahagian, serta gambar label modul jika boleh.",
+   "wa_soon_p": "Nombor WhatsApp kami akan ditambah di sini tidak lama lagi. Sementara itu, sila mesej kami di Facebook.",
+   "fb_h2": "Facebook",
+   "fb_p": "Lihat kerja terkini dari meja kerja dan hantar mesej kepada kami di Facebook.",
+   "loc_h2": "Lokasi",
+   "loc_p": "Johor Bahru, Malaysia. Sila mesej kami dahulu untuk mengatur penghantaran atau penyerahan modul."
+  }
+ },
+ "steps4": [
+  {
+   "t": "Hantar",
+   "d": "WhatsApp kerosakan, kemudian hantar modul."
+  },
+  {
+   "t": "Kami diagnosis",
+   "d": "Kami cari kerosakan di meja kerja."
+  },
+  {
+   "t": "Sebut harga",
+   "d": "Anda tahu kerosakan dan kos dahulu."
+  },
+  {
+   "t": "Baiki + uji",
+   "d": "Dibaiki, diuji, dihantar semula."
+  }
+ ],
+ "photo_caps": {
+  "ecu-wired-test": "ECU disambung untuk ujian di meja kerja",
+  "bga-blue-jig": "Cip BGA pada jig biru",
+  "ecu-stack": "Timbunan papan ECU di meja kerja",
+  "tricore-chip": "Pemproses TriCore pada papan ECU",
+  "bga-bench-mat": "Cip BGA di atas tikar meja kerja",
+  "ecu-case": "Unit kawalan enjin dalam sarung logam",
+  "cluster-bench": "Meter kluster dihidupkan di meja kerja",
+  "ecu-open-case": "ECU enjin dengan sarung terbuka"
+ }
+}

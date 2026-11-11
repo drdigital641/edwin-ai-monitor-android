@@ -1,0 +1,175 @@
+{
+ "_readme": "Page order, photos and reels. Text lives in strings/<lang>.json; business facts and the WhatsApp number in config.json.",
+ "languages": [
+  {
+   "code": "en",
+   "prefix": ""
+  },
+  {
+   "code": "ms",
+   "prefix": "ms/"
+  },
+  {
+   "code": "zh",
+   "prefix": "zh/"
+  }
+ ],
+ "photos": [
+  {
+   "key": "ecu-wired-test",
+   "file": "emats-01-ecu-module-wired-test.webp",
+   "_labels": "Car-brand labels blurred (Edwin 11 Nov: no car-brand labels on photos)."
+  },
+  {
+   "key": "bga-blue-jig",
+   "file": "emats-02-bga-chip-on-blue-jig.webp"
+  },
+  {
+   "key": "ecu-stack",
+   "file": "emats-03-ecu-stack-on-bench-mat.webp"
+  },
+  {
+   "key": "tricore-chip",
+   "file": "emats-04-infineon-tricore-ecu-chip.webp"
+  },
+  {
+   "key": "bga-bench-mat",
+   "file": "emats-05-bga-chip-on-bench-mat.webp"
+  },
+  {
+   "key": "ecu-case",
+   "file": "emats-06-instrument-cluster-repair.webp",
+   "_note": "File name says instrument cluster, but the photo shows an ECU in its metal case, so it is used as an ECU photo.",
+   "_labels": "Car-brand labels blurred (Edwin 11 Nov: no car-brand labels on photos)."
+  },
+  {
+   "key": "cluster-bench",
+   "file": "emats-07-instrument-cluster-bench.webp",
+   "_labels": "Car-brand labels blurred (Edwin 11 Nov: no car-brand labels on photos)."
+  },
+  {
+   "key": "ecu-open-case",
+   "file": "emats-08-engine-ecu-open-case-board.webp"
+  }
+ ],
+ "services": [
+  {
+   "key": "ecu",
+   "slug": "ecu-ecm-repair/",
+   "hero": "tricore-chip",
+   "photos": [
+    "ecu-wired-test",
+    "ecu-open-case",
+    "ecu-case"
+   ],
+   "art": "ecu",
+   "tile_photo": "tricore-chip"
+  },
+  {
+   "key": "abs",
+   "slug": "abs-module-repair/",
+   "hero": "",
+   "photos": [],
+   "art": "abs",
+   "tile_photo": ""
+  },
+  {
+   "key": "cluster",
+   "slug": "instrument-cluster-repair/",
+   "hero": "cluster-bench",
+   "photos": [],
+   "art": "cluster",
+   "tile_photo": "cluster-bench"
+  },
+  {
+   "key": "modules",
+   "slug": "control-module-repair/",
+   "hero": "",
+   "photos": [
+    "bga-blue-jig",
+    "bga-bench-mat"
+   ],
+   "art": "modules",
+   "tile_photo": "bga-blue-jig"
+  },
+  {
+   "key": "marine",
+   "slug": "marine-electronics-repair/",
+   "hero": "",
+   "photos": [],
+   "art": "marine",
+   "tile_photo": ""
+  }
+ ],
+ "home_photos": [
+  "ecu-wired-test",
+  "tricore-chip",
+  "bga-blue-jig",
+  "ecu-stack",
+  "cluster-bench",
+  "ecu-open-case",
+  "bga-bench-mat",
+  "ecu-case"
+ ],
+ "workshops_photos": [
+  "ecu-stack",
+  "ecu-wired-test"
+ ],
+ "about_photos": [
+  "bga-blue-jig",
+  "bga-bench-mat",
+  "cluster-bench"
+ ],
+ "og_photo": "tricore-chip",
+ "reels": [
+  {
+   "id": "1355389330048582",
+   "has_mp4": true
+  },
+  {
+   "id": "995736153010295",
+   "has_mp4": true
+  },
+  {
+   "id": "839141345321883",
+   "has_mp4": true
+  },
+  {
+   "id": "1308558361332965",
+   "has_mp4": true
+  },
+  {
+   "id": "3239641406244509",
+   "has_mp4": true
+  },
+  {
+   "id": "872222872000790",
+   "has_mp4": true
+  },
+  {
+   "id": "1518873209213265",
+   "has_mp4": true
+  },
+  {
+   "id": "848787437861733",
+   "has_mp4": true
+  },
+  {
+   "id": "726582903237207",
+   "has_mp4": true
+  },
+  {
+   "id": "667186679496529",
+   "has_mp4": true
+  },
+  {
+   "id": "1373412457257271",
+   "has_mp4": true
+  },
+  {
+   "id": "712760211044792",
+   "has_mp4": true
+  }
+ ],
+ "_reels_note": "Reel wall. One entry per reel: id = Facebook reel id. has_mp4 true = play the self-hosted media/reel-<id>.mp4 with poster media/reel-<id>.jpg (uploaded by hand, not in the zip); if the MP4 fails to load, the page falls back to the Facebook embed. has_mp4 false = Facebook click-to-load embed only."
+}

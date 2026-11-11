@@ -1,0 +1,19 @@
+<body class="{{body_class}}">
+<a class="skip" href="#main">{{skip}}</a>
+<header class="hdr" data-part="header">
+  <div class="wrap hdr-in">
+    <a class="logo" href="{{home}}" aria-label="{{brand}}">
+      <svg class="logo-chip" viewBox="0 0 32 32" width="30" height="30" aria-hidden="true"><rect x="8" y="8" width="16" height="16" rx="2.5" fill="none" stroke="currentColor" stroke-width="2"/><rect x="12.5" y="12.5" width="7" height="7" rx="1" fill="currentColor"/><path d="M12 8V3M16 8V3M20 8V3M12 29v-5M16 29v-5M20 29v-5M8 12H3M8 16H3M8 20H3M29 12h-5M29 16h-5M29 20h-5" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+      <span class="logo-txt"><b>{{brand}}</b><small>{{tagline}}</small></span>
+    </a>
+    <nav class="nav" id="nav" aria-label="{{nav_label}}">
+      <ul>
+{{nav_items}}
+      </ul>
+    </nav>
+    <div class="hdr-end">
+      <div class="langs" role="group" aria-label="{{lang_label}}">{{switcher}}</div>
+      <button class="menu-btn" id="menu-btn" type="button" aria-expanded="false" aria-controls="nav"><span aria-hidden="true">☰</span><span class="sr">{{menu}}</span></button>
+    </div>
+  </div>
+</header>
