@@ -31,6 +31,7 @@
    "icon": "⚙️",
    "clips": [
     "1580829843577636",
+    "1308116057801952",
     "1534269351507322"
    ],
    "visual": {
@@ -84,6 +85,9 @@
    "slug": "classic-continental-cars",
    "icon": "🏁",
    "clips": [
+    "1691603952271668",
+    "1000676125661619",
+    "1732306897734918",
     "997369159356181"
    ],
    "visual": {
@@ -178,7 +182,11 @@
   "fb-1534269351507322.jpg",
   "fb-1580829843577636.jpg",
   "fb-1491106668688179.jpg",
-  "fb-997369159356181.jpg"
+  "fb-997369159356181.jpg",
+  "fb-1691603952271668.jpg",
+  "fb-1000676125661619.jpg",
+  "fb-1732306897734918.jpg",
+  "fb-1308116057801952.jpg"
  ],
  "self_videos": [
   {
@@ -202,8 +210,44 @@
    "source": "https://www.facebook.com/61585571236048/videos/1146721151078018"
   }
  ],
- "_embeds_note": "Click-to-load clips. One entry per clip: platform (facebook now; youtube/tiktok builders exist in build.py), url, thumb in media/, date, seconds, service slug ('' = no service page) and prefill topic key. Newest first.",
+ "_embeds_note": "Click-to-load clips, in display order. One entry per clip: platform (facebook now; youtube/tiktok builders exist in build.py), url, thumb in media/ (thumb_w/thumb_h when not 360x640; a landscape thumb gets the blurred-fill tile), optional date (YYYY-MM) and seconds (shown only when known), service slug ('' = no service page).",
  "embeds": [
+  {
+   "id": "1691603952271668",
+   "platform": "facebook",
+   "url": "https://www.facebook.com/reel/1691603952271668/",
+   "thumb": "fb-1691603952271668.jpg",
+   "thumb_w": 540,
+   "thumb_h": 960,
+   "service": "classic-continental-cars"
+  },
+  {
+   "id": "1000676125661619",
+   "platform": "facebook",
+   "url": "https://www.facebook.com/reel/1000676125661619/",
+   "thumb": "fb-1000676125661619.jpg",
+   "thumb_w": 540,
+   "thumb_h": 960,
+   "service": "classic-continental-cars"
+  },
+  {
+   "id": "1732306897734918",
+   "platform": "facebook",
+   "url": "https://www.facebook.com/reel/1732306897734918/",
+   "thumb": "fb-1732306897734918.jpg",
+   "thumb_w": 540,
+   "thumb_h": 959,
+   "service": "classic-continental-cars"
+  },
+  {
+   "id": "1308116057801952",
+   "platform": "facebook",
+   "url": "https://www.facebook.com/reel/1308116057801952/",
+   "thumb": "fb-1308116057801952.jpg",
+   "thumb_w": 540,
+   "thumb_h": 306,
+   "service": "engine-gearbox-repair"
+  },
   {
    "id": "1045226281867426",
    "platform": "facebook",

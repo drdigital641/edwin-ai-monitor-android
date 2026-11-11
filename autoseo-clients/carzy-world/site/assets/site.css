@@ -158,6 +158,8 @@ p { margin: 0 0 1em; }
 .clip-actions .link { font-size: 13px; }
 .facade, .embed-frame { position: relative; display: block; aspect-ratio: 9 / 16; background: #000; overflow: hidden; }
 .facade img { width: 100%; height: 100%; object-fit: cover; transition: transform .5s; }
+.facade.wide img { object-fit: contain; position: relative; z-index: 0; }
+.facade.wide .facade-bg { position: absolute; inset: -20px; background: center / cover no-repeat; filter: blur(18px) brightness(.55); }
 .facade::after { content: ""; position: absolute; inset: 0; background: linear-gradient(0deg, rgba(0,0,0,.55), transparent 40%); }
 .facade:hover img { transform: scale(1.05); }
 .facade .play { position: absolute; left: 50%; top: 50%; width: 66px; height: 66px; margin: -33px 0 0 -33px; border-radius: 50%; background: rgba(225, 25, 47, .95); box-shadow: 0 0 0 10px rgba(225, 25, 47, .25); z-index: 1; transition: transform .25s; }

@@ -180,9 +180,15 @@ def month(L, ym):
 
 
 def facade(L, path, clip):
+    """Click-to-load tile. Portrait thumbs fill the 9:16 tile; a landscape thumb sits centred on a blurred copy of itself."""
     v = L.s["videos"][clip["id"]]
-    return fill("embed_facade", url=E(clip["url"]), embed=E(EMBED[clip["platform"]](clip["url"])), title=E(v["title"]),
-                play_clip=E(L.ui["play_clip"]), thumb=media(L, path, clip["thumb"]), dur=E(L.ui["seconds"].replace("{n}", str(clip["seconds"])))).strip()
+    tw, th = clip.get("thumb_w", 360), clip.get("thumb_h", 640)
+    thumb = media(L, path, clip["thumb"])
+    wide = tw > th
+    dur = f'<span class="dur">{E(L.ui["seconds"].replace("{n}", str(clip["seconds"])))}</span>' if clip.get("seconds") else ""
+    return fill("embed_facade", cls=" wide" if wide else "", url=E(clip["url"]), embed=E(EMBED[clip["platform"]](clip["url"])), title=E(v["title"]),
+                play_clip=E(L.ui["play_clip"]), thumb=thumb, tw=tw, th=th, alt=E(v["caption"]), dur=dur,
+                bg=f'<span class="facade-bg" style="background-image:url({thumb})" aria-hidden="true"></span>' if wide else "").strip()
 
 
 def clip_card(L, path, clip, show_more=True):
@@ -190,11 +196,12 @@ def clip_card(L, path, clip, show_more=True):
     tag = more = ""
     if clip["service"]:
         sv = L.s["services"][clip["service"]]
-        tag = f' · <span class="tag">{E(sv["short"])}</span>'
+        tag = f'<span class="tag">{E(sv["short"])}</span>'
         if show_more:
             more = f' <a class="link" href="{L.url("services/" + clip["service"] + "/")}">{E(L.ui["see_service"])} →</a>'
     more += f' <a class="link fb-link" href="{E(clip["url"])}" target="_blank" rel="noopener">{E(L.ui["watch_fb"])} ↗</a>'
-    return fill("clip_card", facade=facade(L, path, clip), date=E(month(L, clip["date"])), tag=tag, title=E(v["title"]), caption=E(v["caption"]),
+    meta = " · ".join(x for x in (E(month(L, clip["date"])) if clip.get("date") else "", tag) if x)
+    return fill("clip_card", facade=facade(L, path, clip), meta=meta, title=E(v["title"]), caption=E(v["caption"]),
                 wa=L.wa("service", v["topic"]), id=clip["id"], wa_icon=wa_icon(), ask_this=E(L.ui["ask_this"]), more=more).rstrip("\n")
 
 
