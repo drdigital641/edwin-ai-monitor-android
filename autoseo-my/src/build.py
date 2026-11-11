@@ -76,7 +76,7 @@ def page_url(lang_prefix, path):
 def org_graph(L):
     s = L.s
     org = {
-        "@type": "Organization", "@id": "#organization", "name": BRAND["name"], "slogan": BRAND["tagline"],
+        "@type": "Organization", "@id": "#organization", "name": BRAND["name"], "slogan": tagline(L),
         "description": s["brand"]["org_description"],
         "parentOrganization": {"@type": "Organization", "name": BRAND["company"]},
         "areaServed": [{"@type": "Country", "name": BRAND["country"]}] + [{"@type": "Place", "name": a} for a in s["brand"]["areas"]],
@@ -168,9 +168,9 @@ def mission(L):
 '''
 
 
-def tagline_html(L):
-    tr = L.s["brand"]["tagline_translation"]
-    return f'<span class="tagline-tr">{E(tr)}</span>' if tr else ""
+def tagline(L):
+    """The tagline in the page's own language: English on EN pages, the BM / 中文 tagline on /ms/ and /zh/ (Edwin, 11 Nov 2026)."""
+    return L.s["brand"]["tagline_translation"] or BRAND["tagline"]
 
 
 # ------------------------------------------------------------------ page shell
@@ -205,7 +205,7 @@ def page(L, path, title, description, body, current="", faqs=None, body_class=""
                 whatsapp_us=E(ui["whatsapp_us"]), menu=E(ui["menu"]), **shared)
     doc += body
     company = [("about/", ui["nav"]["about"]), ("how-it-works/", ui["nav"]["how"]), ("faq/", ui["nav"]["faq"]), ("contact/", ui["nav"]["contact"]), ("privacy/", ui["privacy"])]
-    doc += fill("footer", tagline=E(BRAND["tagline"]), tagline_tr=tagline_html(L), year=date.today().year,
+    doc += fill("footer", tagline=E(tagline(L)), year=date.today().year,
                 brand_line=E(L.s["brand"]["brand_line"]), areas_line=E(L.s["brand"]["areas_line"]),
                 h_services=E(ui["footer_services"]), h_industries=E(ui["footer_industries"]), h_company=E(ui["footer_company"]),
                 footer_services="\n".join(f'        <a href="{L.url("services/" + m["slug"] + "/")}">{E(L.s["services"][m["slug"]]["short"])}</a>' for m in SITE["services"]),
@@ -230,7 +230,6 @@ def build_home(L):
     items = [s["industries"][m["slug"]]["label"] for m in SITE["industries"]] + [s["other_industry"]]
     marquee_items = "".join(f'<span><span class="dot"></span>{E(i)}</span>' for i in items)
     chan_html = "".join(f"<li><span>{E(c)}</span><b>{E(t)}</b></li>" for c, t in h["channels"])
-    tr = s["brand"]["tagline_translation"]
     body = f'''    <section class="hero hero-lean">
       <span class="glow glow-1" aria-hidden="true"></span>
       <span class="glow glow-2" aria-hidden="true"></span>
@@ -238,8 +237,8 @@ def build_home(L):
         <div>
           <p class="eyebrow"><span class="live" aria-hidden="true"></span>{E(h["hero_lines"][0])}</p>
           <h1>{E(h["hero_h1"])}</h1>
-          <p class="hero-tagline grad-text">{E(BRAND["tagline"])}</p>
-{f'          <p class="hero-tagline-tr">{E(tr)}</p>' + chr(10) if tr else ""}          <p class="lead">{E(s["brand"]["positioning"])}{E(s["meta"]["full_stop"])}{E(h["hero_lines"][1])}</p>
+          <p class="hero-tagline grad-text">{E(tagline(L))}</p>
+          <p class="lead">{E(s["brand"]["positioning"])}{E(s["meta"]["full_stop"])}{E(h["hero_lines"][1])}</p>
 {hero_check(L)}          <div class="cta-row hero-ctas">
             <a class="btn" href="{L.wa("audit")}" target="_blank" rel="noopener" data-cta="whatsapp_home_audit">{E(s["btn_audit"])}</a>
             <a class="btn btn-ghost" href="{L.wa("specialist")}" target="_blank" rel="noopener" data-cta="whatsapp_home_specialist">{E(s["btn_specialist"])}</a>
