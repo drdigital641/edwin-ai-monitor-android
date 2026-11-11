@@ -87,6 +87,20 @@ def wa(L, key="general", topic="", short=False, extra_cls=""):
                 attrs=' aria-disabled="true"', label=E(label))
 
 
+def tel(L, cls="btn-ghost"):
+    """Secondary CTA: phone call. Empty phone in config = no button."""
+    if not CFG.get("phone_e164"):
+        return ""
+    return (f'<a class="{cls} btn-tel" href="tel:{E(CFG["phone_e164"])}" data-part="tel">'
+            f'{E(L.ui["call"].replace("{phone}", CFG["phone_display"]))}</a>')
+
+
+def hours_line(L):
+    if not CFG.get("hours"):
+        return ""
+    return f'<p class="hours" data-part="hours"><span class="mono">{E(L.ui["hours_label"])}</span> {E(L.ui["hours_text"])}</p>'
+
+
 # ------------------------------------------------------------------ images
 def build_images():
     dst = OUT / "img"
@@ -174,8 +188,12 @@ def business_node(L):
         "sameAs": [CFG["facebook_url"]],
         "knowsLanguage": [STR[l["code"]]["meta"]["schema_lang"] for l in LANGS],
     }
-    if WA_NUM:
-        node["telephone"] = "+" + WA_NUM
+    if CFG.get("phone_e164") or WA_NUM:
+        node["telephone"] = CFG.get("phone_e164") or "+" + WA_NUM
+    if CFG.get("hours"):
+        node["openingHoursSpecification"] = [
+            {"@type": "OpeningHoursSpecification", "dayOfWeek": [f"https://schema.org/{d}" for d in h["days"]],
+             "opens": h["opens"], "closes": h["closes"]} for h in CFG["hours"]]
     return node
 
 
@@ -240,10 +258,10 @@ def page(L, path, key, active, body, trail, extra_schema=(), body_class=""):
     rl = "\n".join(f'        <li><a href="{L.url(SVC[k]["slug"])}">{E(L.s["services"][k]["name"])}</a></li>' for k in SVC)
     cl = "\n".join(f'        <li><a href="{L.url(p)}">{E(L.ui["nav"][n])}</a></li>' for n, p in (("workshops", "for-workshops/"), ("about", "about/"), ("contact", "contact/")))
     doc += fill("footer", brand=E(CFG["short_name"]), about=E(L.ui["footer_about"]), legal_name=E(CFG["name"]),
-                reg_label=E(L.ui["reg_label"]), reg_no=E(CFG["registration_no"]), city=E(CFG["city"]),
+                reg_label=E(L.ui["reg_label"]), reg_no=E(CFG["registration_no"]), city=E(STR[L.code]["meta"].get("city", CFG["city"])),
                 country=E(STR[L.code]["meta"].get("country", CFG["country"])), repairs_h=E(L.ui["footer_repairs"]), repair_links=rl,
                 company_h=E(L.ui["footer_company"]), company_links=cl, follow_h=E(L.ui["footer_follow"]),
-                facebook_url=E(CFG["facebook_url"]), facebook=E(L.ui["facebook"]), wa=wa(L), year=YEAR,
+                facebook_url=E(CFG["facebook_url"]), facebook=E(L.ui["facebook"]), wa=wa(L) + tel(L, "btn-ghost btn-block") + hours_line(L), year=YEAR,
                 rights=E(L.ui["rights"]), credit_url=E(CFG["credit_url"]), credit=E(CFG["credit"]),
                 sticky=fill("wa_sticky", button=wa(L, short=False)))
     PAGES.append((L.prefix + path, doc))
@@ -266,7 +284,7 @@ def faq_block(L, faq):
 
 def cta(L, h2=None, key="workshop", topic=""):
     return fill("cta_band", kicker=E(L.ui["cta_kicker"]), h2=E(h2 or L.ui["cta_h2"]), p=E(L.ui["cta_p"]),
-                wa=wa(L, key, topic), facebook_url=E(CFG["facebook_url"]), facebook=E(L.ui["facebook"]))
+                wa=wa(L, key, topic) + tel(L), facebook_url=E(CFG["facebook_url"]), facebook=E(L.ui["facebook"]))
 
 
 def card(L, k):
@@ -323,7 +341,8 @@ def build_home(L):
       <h1>{E(h["h1"])}</h1>
       <p class="lead">{E(h["intro"])}</p>
       <ul class="badges mono">{badges}</ul>
-      <div class="cta-row">{wa(L, "workshop")}<a class="btn-ghost" href="{L.url("for-workshops/")}">{E(h["process_link"])}</a></div>
+      <div class="cta-row">{wa(L, "workshop")}{tel(L)}</div>
+      <p class="more-link"><a href="{L.url("for-workshops/")}">{E(h["process_link"])} →</a></p>
     </div>
     <div class="hero-art">
       {board_art("ecu", "", hero=True)}
@@ -387,7 +406,7 @@ def inner_hero(L, pg, figure):
 def side_panel(L, key, topic):
     li = "".join(f'<li><span class="mono">{i:02d}</span>{E(st["t"])}</li>' for i, st in enumerate(L.s["steps"], 1))
     return (f'<aside class="panel"><p class="kicker mono">{E(L.ui["cta_kicker"])}</p><ol class="mini-steps">{li}</ol>'
-            f'{wa(L, key, topic)}<p class="small"><a href="{L.url("for-workshops/")}">{E(L.ui["nav"]["workshops"])} →</a></p></aside>')
+            f'{wa(L, key, topic)}{tel(L, "btn-ghost btn-block")}<p class="small"><a href="{L.url("for-workshops/")}">{E(L.ui["nav"]["workshops"])} →</a></p></aside>')
 
 
 def build_service(L, k):
@@ -397,7 +416,7 @@ def build_service(L, k):
         fig = photo(L, cfg["hero"], 1, sizes="(max-width: 760px) 100vw, 45vw", eager=True, cls="ph-hero")
     else:
         fig = '<figure class="ph ph-art">' + board_art(cfg["art"], sv["name"]) + f'<figcaption class="mono">{E(sv["code"])} · {E(sv["name"])}</figcaption></figure>'
-    body = inner_hero(L, pg, fig).replace("{WA}", wa(L, "service", sv["topic"]))
+    body = inner_hero(L, pg, fig).replace("{WA}", wa(L, "service", sv["topic"]) + tel(L))
     body += f'''<section class="sec sec-dark">
   <div class="wrap sheet">
     <div class="prose">{sections_html(pg["sections"])}</div>
@@ -420,7 +439,7 @@ def build_workshops(L):
     pg = L.s["pages"]["workshops"]
     path = "for-workshops/"
     fig = photo(L, SITE["workshops_photos"][0], 1, sizes="(max-width: 760px) 100vw, 45vw", eager=True, cls="ph-hero")
-    body = inner_hero(L, pg, fig).replace("{WA}", wa(L, "workshop"))
+    body = inner_hero(L, pg, fig).replace("{WA}", wa(L, "workshop") + tel(L))
     body += f'''<section class="sec sec-dark"><div class="wrap"><h2>{E(pg["steps_h2"])}</h2>{steps_html(L, big=True)}</div></section>
 <section class="sec sec-paper"><div class="wrap two">
   <div><h2>{E(pg["include_h2"])}</h2><ul class="checklist">{"".join(f"<li>{E(x)}</li>" for x in pg["include"])}</ul></div>
@@ -440,7 +459,7 @@ def build_about(L):
     pg = L.s["pages"]["about"]
     path = "about/"
     fig = photo(L, SITE["about_photos"][0], 1, sizes="(max-width: 760px) 100vw, 45vw", eager=True, cls="ph-hero")
-    body = inner_hero(L, pg, fig).replace("{WA}", wa(L))
+    body = inner_hero(L, pg, fig).replace("{WA}", wa(L) + tel(L))
     body += f'''<section class="sec sec-dark"><div class="wrap narrow prose">{sections_html(pg["sections"])}</div></section>
 <section class="sec sec-black"><div class="wrap"><div class="bench-row">{"".join(photo(L, p, i, sizes="(max-width: 760px) 100vw, 33vw") for i, p in enumerate(SITE["about_photos"][1:], 2))}</div></div></section>
 '''
@@ -463,9 +482,9 @@ def build_contact(L):
 </section>
 <section class="sec sec-dark" id="contact">
   <div class="wrap contact-grid">
-    <div class="ccard"><p class="mono kicker">01</p><h2>{E(pg["wa_h2"])}</h2><p>{E(wa_p)}</p>{wa(L)}</div>
+    <div class="ccard"><p class="mono kicker">01</p><h2>{E(pg["wa_h2"])}</h2><p>{E(wa_p)}</p>{wa(L)}{tel(L, "btn-ghost btn-block")}</div>
     <div class="ccard"><p class="mono kicker">02</p><h2>{E(pg["fb_h2"])}</h2><p>{E(pg["fb_p"])}</p><a class="btn-ghost" href="{E(CFG["facebook_url"])}" target="_blank" rel="noopener">{E(L.ui["facebook"])}</a></div>
-    <div class="ccard"><p class="mono kicker">03</p><h2>{E(pg["loc_h2"])}</h2><p>{E(pg["loc_p"])}</p><p class="mono small">{E(CFG["name"])}<br>{E(L.ui["reg_label"])}: {E(CFG["registration_no"])}</p></div>
+    <div class="ccard"><p class="mono kicker">03</p><h2>{E(pg["loc_h2"])}</h2><p>{E(pg["loc_p"])}</p>{hours_line(L)}<p class="mono small">{E(CFG["name"])}<br>{E(L.ui["reg_label"])}: {E(CFG["registration_no"])}</p></div>
   </div>
 </section>
 '''
@@ -501,6 +520,10 @@ def write_llms():
              f"- Facebook: {CFG['facebook_url']}"]
     if WA_NUM:
         lines.append(f"- WhatsApp: https://wa.me/{WA_NUM}")
+    if CFG.get("phone_e164"):
+        lines.append(f"- Phone: {CFG['phone_display']}")
+    if CFG.get("hours"):
+        lines.append(f"- Hours: {en['ui']['hours_text']}")
     lines += ["", "## Pages", ""]
     names = {"": en["ui"]["nav"]["home"], "for-workshops/": en["ui"]["nav"]["workshops"], "about/": en["ui"]["nav"]["about"], "contact/": en["ui"]["nav"]["contact"]}
     names.update({SVC[k]["slug"]: en["services"][k]["name"] for k in SVC})

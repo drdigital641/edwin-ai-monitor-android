@@ -5,7 +5,8 @@
   "lang_name": "简体中文",
   "schema_lang": "zh-Hans",
   "switch_name": "中文",
-  "country": "马来西亚"
+  "country": "马来西亚",
+  "city": "新山"
  },
  "ui": {
   "skip": "跳到主要内容",
@@ -40,7 +41,10 @@
   "cta_h2": "手上有模块没反应，检测不到？",
   "cta_p": "把故障情况和零件编号发给 EMATS。我们先检测模块，维修之前先告诉您故障原因和费用。",
   "faq_h2": "车厂常问的问题",
-  "related_h2": "维修台上的其他维修项目"
+  "related_h2": "维修台上的其他维修项目",
+  "call": "致电 {phone}",
+  "hours_label": "营业时间",
+  "hours_text": "每天 上午10:30 至 晚上7:00"
  },
  "prefills": {
   "general": "你好 EMATS，我有一个模块想请你们检测。故障：... 零件编号：...",

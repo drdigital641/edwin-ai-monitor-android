@@ -278,3 +278,13 @@ main>.wrap:first-child{position:relative}
   html{scroll-behavior:auto}
   .flow{stroke-dasharray:none;opacity:.35}
 }
+
+/* ---------- phone + hours */
+.btn-block{width:100%;margin-top:10px}
+.hours{margin:12px 0 0;font-size:.9rem;color:var(--muted)}
+.hours .mono{color:var(--green);font-size:.75rem;letter-spacing:.1em;text-transform:uppercase;margin-right:6px}
+.hero .more-link{margin-top:1em}
+.ftr .btn-wa{color:#03140a}
+.ftr .btn-ghost{color:var(--green)}
+.btn-tel{white-space:nowrap}
+@media (max-width:860px){.ftr-grid>div:last-child{grid-column:1/-1}.ftr-cta{max-width:360px}}

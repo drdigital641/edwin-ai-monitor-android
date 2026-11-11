@@ -5,7 +5,8 @@
   "lang_name": "Bahasa Melayu",
   "schema_lang": "ms",
   "switch_name": "BM",
-  "country": "Malaysia"
+  "country": "Malaysia",
+  "city": "Johor Bahru"
  },
  "ui": {
   "skip": "Terus ke kandungan",
@@ -40,7 +41,10 @@
   "cta_h2": "Ada modul di bengkel anda yang tak boleh berkomunikasi?",
   "cta_p": "Mesej EMATS dengan kerosakan dan nombor bahagian. Kami periksa modul dahulu dan beritahu kerosakan serta kosnya sebelum sebarang pembaikan.",
   "faq_h2": "Soalan yang bengkel tanya",
-  "related_h2": "Pembaikan lain di meja kerja kami"
+  "related_h2": "Pembaikan lain di meja kerja kami",
+  "call": "Telefon {phone}",
+  "hours_label": "Waktu operasi",
+  "hours_text": "Setiap hari, 10:30 pagi hingga 7:00 malam"
  },
  "prefills": {
   "general": "Hi EMATS, saya ada modul yang perlu diperiksa. Kerosakan: ... Nombor bahagian: ...",

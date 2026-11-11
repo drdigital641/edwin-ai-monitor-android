@@ -5,7 +5,8 @@
   "lang_name": "English",
   "schema_lang": "en",
   "switch_name": "EN",
-  "country": "Malaysia"
+  "country": "Malaysia",
+  "city": "Johor Bahru"
  },
  "ui": {
   "skip": "Skip to content",
@@ -40,7 +41,10 @@
   "cta_h2": "Got a module on your bench that will not talk?",
   "cta_p": "Message EMATS with the fault and the part number. We check the module first and tell you the fault and the cost before any repair.",
   "faq_h2": "Questions workshops ask",
-  "related_h2": "Other repairs on the bench"
+  "related_h2": "Other repairs on the bench",
+  "call": "Call {phone}",
+  "hours_label": "Hours",
+  "hours_text": "Daily, 10:30am to 7:00pm"
  },
  "prefills": {
   "general": "Hi EMATS, I have a module that needs checking. Fault: ... Part number: ...",

@@ -124,12 +124,18 @@ for f in pages:
         biz = [n for n in g["@graph"] if n.get("@id", "").endswith("#business")]
         if not biz:
             err(f"{rel}: no business node")
-        elif WA and biz[0].get("telephone") != "+" + WA:
-            err(f"{rel}: schema telephone does not match config")
-        elif not WA and "telephone" in biz[0]:
-            err(f"{rel}: schema telephone while whatsapp_number is empty")
+        else:
+            want_tel = CFG.get("phone_e164") or ("+" + WA if WA else None)
+            if biz[0].get("telephone") != want_tel:
+                err(f"{rel}: schema telephone {biz[0].get('telephone')!r} does not match config {want_tel!r}")
+            if CFG.get("hours"):
+                ohs = biz[0].get("openingHoursSpecification") or []
+                if [(o["opens"], o["closes"], len(o["dayOfWeek"])) for o in ohs] != [(h["opens"], h["closes"], len(h["days"])) for h in CFG["hours"]]:
+                    err(f"{rel}: openingHoursSpecification does not match config")
+            if "address" in biz[0] or "hasMap" in biz[0]:
+                err(f"{rel}: address/map in schema (not given)")
     for href in p.links:
-        if href.startswith(("http", "mailto:", "#")):
+        if href.startswith(("http", "mailto:", "tel:", "#")):
             continue
         path = href.split("#")[0].split("?")[0]
         if not path.startswith(BASE):
@@ -145,6 +151,10 @@ for f in pages:
             err(f"{rel}: missing image {src}")
     for src in p.imgs_no_size:
         err(f"{rel}: image without width/height/alt {src}")
+    if CFG.get("phone_e164") and f'href="tel:{CFG["phone_e164"]}"' not in t:
+        err(f"{rel}: no tel: link")
+    if CFG.get("hours") and 'data-part="hours"' not in t.split('data-part="footer"', 1)[-1]:
+        err(f"{rel}: hours missing in footer")
     if WA:
         if "is-soon" in t:
             err(f"{rel}: coming-soon button while number is set")
@@ -159,6 +169,12 @@ for f in pages:
         for s in en_long:
             if s in body or s.replace("'", "&#x27;") in body:
                 err(f"{rel}: English text left: {s[:60]!r}")
+for l in ("en", "ms", "zh"):
+    s = json.loads((ROOT / "strings" / f"{l}.json").read_text(encoding="utf-8"))
+    pre = "" if l == "en" else l + "/"
+    c = (SITE / pre / "contact" / "index.html").read_text(encoding="utf-8")
+    if CFG.get("hours") and c.count(s["ui"]["hours_text"]) < 2:
+        err(f"{pre}contact: hours not shown on the page and footer")
 for rel, n in owner_hits.items():
     if not rel.endswith("about/index.html") or n > 1:
         err(f"owner name on {rel} x{n} (only once, About page)")

@@ -29,7 +29,6 @@ re:\bRM ?\d
 same day
 same-day
 24 hours
-openingHours
 streetAddress
 AggregateRating
 re:\bJalan\b
