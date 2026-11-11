@@ -1,0 +1,12 @@
+{
+ "_readme": "Customer number plates blurred by Edwin's team (11 Nov 2026). These source photos must keep exactly these files; never put the unblurred originals back. check.py compares the hashes.",
+ "files": {
+  "fb-01-toyota-voxy-engine-bay-bonnet-open.webp": "87363c17f594a5a0687359ee3f17211e514fe8063f83b1b43e98059db0e24775",
+  "fb-02-toyota-voxy-on-two-post-lift-front-view.webp": "c6c9b83c916759057094503c40badb5a82994adf824be896010fef586a56596f",
+  "fb-03-toyota-voxy-on-lift-rear-view.webp": "3106b9f483239b4517d42bc0975ffc3a6213cb4c135ae47b55a23d5077112dc6",
+  "fb-07-steering-rack-and-suspension-parts-laid-out.webp": "cef90aa892d15b142e4f2d89bc138c83333934fccca8b04e8ab752856808bcfe",
+  "gmaps-01-toyota-chr-on-lift-bonnet-open.webp": "c57a35001a8f3f626439b5dab2728f02320d76a04a671a9a4dbad518e3468077",
+  "gmaps-02-shop-front-hybrid-world-signboard.webp": "cc269b782207a1c20260ac75ec964bd97e0a9242fe80afbcc9a565fcfc27cad5",
+  "gmaps-03-car-underbody-on-two-post-lift.webp": "0028e183cee5de1214cf69409cd287e8667f4a817dbaaa5b57ab866790ce8b71"
+ }
+}

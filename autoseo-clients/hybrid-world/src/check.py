@@ -224,6 +224,12 @@ if "autoseo.my" in (SITE / "sitemap.xml").read_text() or "autoseo.my/preview" in
 if any(SITE.rglob(".htaccess")) or (SITE / "media").exists():
     err("site/ must not contain .htaccess or media/")
 
+# customer plates: the blurred source photos must stay in place
+import hashlib
+for name, h in json.loads((ROOT / "data" / "blurred-photos.json").read_text())["files"].items():
+    if hashlib.sha256((ROOT / "photos" / name).read_bytes()).hexdigest() != h:
+        err(f"photos/{name} is not the blurred version (customer plate)")
+
 if errors:
     print("CHECK FAILED")
     for e in errors:
