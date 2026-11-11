@@ -1,0 +1,465 @@
+{
+ "meta": {
+  "html_lang": "en",
+  "og_locale": "en_MY",
+  "lang_name": "English",
+  "schema_lang": "en",
+  "switch_name": "EN",
+  "country": "Malaysia"
+ },
+ "ui": {
+  "skip": "Skip to content",
+  "menu": "Menu",
+  "nav_label": "Main menu",
+  "lang_label": "Language",
+  "nav": {
+   "home": "Home",
+   "services": "Repairs",
+   "workshops": "For workshops",
+   "about": "About",
+   "contact": "Contact"
+  },
+  "wa_cta": "WhatsApp us",
+  "wa_cta_short": "WhatsApp",
+  "wa_soon": "WhatsApp number coming soon",
+  "wa_soon_short": "WhatsApp soon",
+  "facebook": "Facebook",
+  "breadcrumb_label": "Breadcrumb",
+  "read_more": "See this repair",
+  "photo_label": "From the bench",
+  "reel_label": "Repair reel on Facebook",
+  "reel_play": "Play repair reel on Facebook",
+  "reel_note": "Reels stay on Facebook. Nothing from Facebook loads until you tap a reel.",
+  "footer_about": "Component-level repair of car electronic control units in Johor Bahru, Malaysia. Send-in service for workshops.",
+  "footer_repairs": "Repairs",
+  "footer_company": "Company",
+  "footer_follow": "Follow the bench",
+  "reg_label": "Registration no.",
+  "rights": "All rights reserved.",
+  "cta_kicker": "Send-in service for workshops",
+  "cta_h2": "Got a module on your bench that will not talk?",
+  "cta_p": "Message EMATS with the fault and the part number. We check the module first and tell you the fault and the cost before any repair.",
+  "faq_h2": "Questions workshops ask",
+  "related_h2": "Other repairs on the bench"
+ },
+ "prefills": {
+  "general": "Hi EMATS, I have a module that needs checking. Fault: ... Part number: ...",
+  "service": "Hi EMATS, I would like to send in a {topic}. Fault: ... Part number: ...",
+  "workshop": "Hi EMATS, we are a workshop and want to send in a module. Car model: ... Fault: ... Part number: ..."
+ },
+ "photos": {
+  "ecu-wired-test": "Car ECU module wired up on a test setup on the EMATS bench",
+  "bga-blue-jig": "BGA chip held on a blue jig for chip-level board repair",
+  "ecu-stack": "Stack of ECU boards on the bench mat waiting for repair",
+  "tricore-chip": "Close-up of an Infineon TriCore processor on a car ECU board",
+  "bga-bench-mat": "BGA chip on the green bench mat during component-level repair",
+  "ecu-case": "Car engine control unit in its metal case on the bench",
+  "cluster-bench": "Instrument cluster powered up on the bench for testing",
+  "ecu-open-case": "Engine ECU with its case open on the repair bench"
+ },
+ "services": {
+  "ecu": {
+   "code": "U1",
+   "name": "ECU / ECM repair",
+   "topic": "ECU / ECM",
+   "card": "Engine control units and ECM boards repaired at component level, checked on the bench before and after."
+  },
+  "abs": {
+   "code": "U2",
+   "name": "ABS module repair",
+   "topic": "ABS module",
+   "card": "ABS control modules checked and repaired, so a warning light does not have to mean a new unit."
+  },
+  "cluster": {
+   "code": "U3",
+   "name": "Instrument cluster repair",
+   "topic": "instrument cluster",
+   "card": "Instrument clusters with dead gauges, display faults or lighting problems repaired on the bench."
+  },
+  "modules": {
+   "code": "U4",
+   "name": "Other control modules",
+   "topic": "control module",
+   "card": "TCM/TCU, body control and other car electronic boards looked at case by case."
+  },
+  "marine": {
+   "code": "U5",
+   "name": "Marine electronics repair",
+   "topic": "marine electronic control",
+   "card": "Boat electronic controls checked and repaired at board level, the same way as car modules."
+  }
+ },
+ "steps": [
+  {
+   "t": "WhatsApp first",
+   "d": "Send the car model, the fault you see and the part number on the module label. A photo of the label helps."
+  },
+  {
+   "t": "Send or drop the module",
+   "d": "Courier the module to us or drop it off in Johor Bahru."
+  },
+  {
+   "t": "Diagnosis before quote",
+   "d": "We check the module on the bench and tell you the fault and the cost before any repair starts."
+  },
+  {
+   "t": "Repair and bench test",
+   "d": "Once you agree, we repair at component level and test the module on the bench."
+  },
+  {
+   "t": "Return",
+   "d": "The module goes back to your workshop, ready to refit in the car."
+  }
+ ],
+ "pages": {
+  "home": {
+   "title": "ECU Repair Johor Bahru for Workshops | EMATS",
+   "description": "ECU repair in Johor Bahru for car workshops: component-level repair of ECU/ECM, ABS modules and instrument clusters. Diagnosis before quote. Send-in service.",
+   "kicker": "Component-level repair · Johor Bahru",
+   "h1": "ECU Repair in Johor Bahru for Workshops",
+   "intro": "EMATS does ECU repair in Johor Bahru at component level: we open the module, find the failed part on the board and repair it. Car workshops send us ECU/ECM boards, ABS modules, instrument clusters and other control modules, and we tell them the fault and the cost before any repair.",
+   "badges": [
+    "Diagnosis before quote",
+    "Repair, not replace",
+    "Send-in service for workshops"
+   ],
+   "console": [
+    "module received",
+    "power-up on bench",
+    "fault located",
+    "quote sent",
+    "repair + bench test",
+    "ready to return"
+   ],
+   "services_kicker": "What we repair",
+   "services_h2": "Car electronic control units, repaired at board level",
+   "services_p": "Car ECU repair for workshops is the core of the work, but the same bench handles most electronic boards in a car. Pick the module you have.",
+   "process_kicker": "For workshops",
+   "process_h2": "How the send-in service works",
+   "process_p": "Five steps from your bench to ours and back. You always know the fault and the cost before we repair anything.",
+   "process_link": "Full send-in guide for workshops",
+   "photos_kicker": "Real photos",
+   "photos_h2": "Real work on the bench",
+   "photos_p": "Real photos from the EMATS bench: modules under test, BGA chips on the jig and boards waiting their turn.",
+   "reels_kicker": "Video",
+   "reels_h2": "From the bench",
+   "reels_p": "Repair reels from the EMATS Facebook page. Tap one to play it on Facebook.",
+   "why_kicker": "Why repair",
+   "why_h2": "Why workshops repair modules instead of replacing them",
+   "why": [
+    {
+     "t": "The fault is often one part",
+     "d": "A module that has stopped working usually has a failed component, a cracked joint or a damaged track, not a board that is gone completely."
+    },
+    {
+     "t": "Your customer keeps the original unit",
+     "d": "Repairing the module that came out of the car avoids sourcing a replacement unit that may then need setting up for the car."
+    },
+    {
+     "t": "You decide with the facts",
+     "d": "Diagnosis before quote means you get the fault and the cost first, then decide with your customer whether to go ahead."
+    }
+   ],
+   "faq": [
+    {
+     "q": "Do you repair car ECUs for workshops in Johor Bahru?",
+     "a": "Yes. EMATS is a send-in service for workshops. You WhatsApp the fault and part number, send or drop the module, and we check it before quoting."
+    },
+    {
+     "q": "What does component-level repair mean?",
+     "a": "We repair the board inside the module: the failed chip, component, solder joint or track. We do not just swap the whole unit."
+    },
+    {
+     "q": "Will I know the cost before you repair?",
+     "a": "Yes. We check the module on the bench and tell you the fault and the cost before any repair starts."
+    },
+    {
+     "q": "Which modules can you look at?",
+     "a": "ECU/ECM boards, ABS modules, instrument clusters and other car electronic boards and control modules. We have also repaired marine (boat) electronic controls. Send the part number and we will tell you if we can check it."
+    },
+    {
+     "q": "Can car owners send a module too?",
+     "a": "Our main customers are workshops, but car owners can also message us. Your workshop will usually need to remove and refit the module."
+    }
+   ]
+  },
+  "ecu": {
+   "title": "ECM & ECU Repair Johor Bahru | Car ECU Repair for Workshops | EMATS",
+   "description": "ECM and ECU repair in Johor Bahru at component level. Car ECU repair for workshops: diagnosis before quote, repair and bench test, send-in service.",
+   "kicker": "U1 · Engine control",
+   "h1": "ECU and ECM Repair in Johor Bahru",
+   "intro": "Car ECU repair for workshops: EMATS repairs engine control units (ECU) and ECM boards at component level in Johor Bahru. When a car will not start, will not talk to the scan tool or keeps throwing the same fault after the wiring checks out, the module itself may be the problem, and it can often be repaired rather than replaced.",
+   "sections": [
+    {
+     "h2": "When a workshop sends us an ECU",
+     "p": [
+      "Workshops usually send an ECU once the obvious checks are done: power, earth, fuses and wiring are good, but the fault stays. These are common reasons a module comes to our bench:"
+     ],
+     "list": [
+      "No communication with the diagnostic tool",
+      "Car cranks but will not start, with power and wiring confirmed",
+      "Injector, ignition or sensor circuit faults that point back to the ECU",
+      "Water damage, corrosion or burnt parts on the board",
+      "Intermittent cut-outs that follow the module, not the wiring"
+     ]
+    },
+    {
+     "h2": "What happens on the bench",
+     "p": [
+      "We open the case, inspect the board and power the module up on a test setup. That lets us find the failed part, whether it is a driver chip, a power supply component, a cracked solder joint or a damaged track.",
+      "Before anything is repaired, you get the fault and the cost. If you go ahead, we repair the board at component level and test the module again on the bench before it goes back."
+     ]
+    },
+    {
+     "h2": "ECM repair, not replacement",
+     "p": [
+      "An ECM that has stopped working often has one failed area, not a dead board. Repairing the original unit means it stays the module that came out of that car, and you avoid hunting for a replacement that may still need setting up."
+     ]
+    }
+   ],
+   "faq": [
+    {
+     "q": "Is an ECU and an ECM the same thing?",
+     "a": "Both names are used for the engine control unit, the computer that runs the engine. We repair both at component level."
+    },
+    {
+     "q": "What should I send with the ECU?",
+     "a": "Just the module, with the car model, the fault you saw and the part number from the label. See the workshop guide for the full list."
+    },
+    {
+     "q": "Will you tell me the cost first?",
+     "a": "Yes. Diagnosis comes before the quote, and no repair starts until you agree."
+    }
+   ],
+   "cta_h2": "Send in an ECU or ECM"
+  },
+  "abs": {
+   "title": "ABS Module Repair Malaysia | Johor Bahru | EMATS",
+   "description": "ABS module repair in Malaysia from Johor Bahru: ABS control modules checked and repaired at component level for workshops. Diagnosis before quote.",
+   "kicker": "U2 · Brake control",
+   "h1": "ABS Module Repair in Malaysia",
+   "intro": "ABS module repair in Malaysia for workshops, done on the bench in Johor Bahru. When the ABS warning light stays on and the sensors, wiring and pump have checked out, the fault is often inside the ABS control module. EMATS checks the module and repairs the board at component level, so the answer does not always have to be a new unit.",
+   "sections": [
+    {
+     "h2": "Signs the ABS module itself is at fault",
+     "p": [
+      "We see ABS modules from workshops after the usual checks. Typical reasons they come in:"
+     ],
+     "list": [
+      "ABS or traction warning light that stays on after sensor and wiring checks",
+      "No communication with the ABS module on the scan tool",
+      "Module-related fault codes that return after clearing",
+      "Intermittent faults that come and go with heat or vibration"
+     ]
+    },
+    {
+     "h2": "How we repair an ABS control module",
+     "p": [
+      "The electronic part of the ABS unit is checked on the bench. We look for failed components, cracked solder joints and damaged tracks on the board, then tell you the fault and the cost before any repair.",
+      "Once you agree, the board is repaired at component level and the module is tested on the bench before it goes back to your workshop."
+     ]
+    },
+    {
+     "h2": "Remove and refit stays with your workshop",
+     "p": [
+      "Your workshop removes the module, sends it in and refits it after the repair. Ask us on WhatsApp first with the part number, and we will tell you exactly what to send."
+     ]
+    }
+   ],
+   "faq": [
+    {
+     "q": "Do you repair the whole ABS unit?",
+     "a": "We work on the electronic control module, the board that controls the ABS. Send the part number first and we will confirm what to send."
+    },
+    {
+     "q": "Can you check an ABS module before I buy a new one?",
+     "a": "Yes. That is what diagnosis before quote is for: you learn the fault and the repair cost first, then decide."
+    }
+   ],
+   "cta_h2": "Send in an ABS module"
+  },
+  "cluster": {
+   "title": "Instrument Cluster Repair Johor Bahru | EMATS",
+   "description": "Instrument cluster repair in Johor Bahru: dead gauges, display and lighting faults repaired at component level for workshops. Diagnosis before quote.",
+   "kicker": "U3 · Dashboard",
+   "h1": "Instrument Cluster Repair in Johor Bahru",
+   "intro": "Instrument cluster repair in Johor Bahru for workshops and car owners. When gauges stop moving, the display goes blank or the cluster lighting fails, the fault is usually on the cluster board. EMATS powers the cluster up on the bench, finds the failed part and repairs it at component level.",
+   "sections": [
+    {
+     "h2": "Cluster faults we look at",
+     "p": [
+      "These are common reasons an instrument cluster comes to the bench:"
+     ],
+     "list": [
+      "Speedometer, rev counter, fuel or temperature gauge stuck or dead",
+      "Display that is blank, dim or missing segments",
+      "Cluster lighting or warning lights not working",
+      "Cluster that is completely dead or keeps resetting"
+     ]
+    },
+    {
+     "h2": "Bench testing a cluster",
+     "p": [
+      "We power the cluster on the bench, outside the car, so the fault can be found on the board itself. You get the fault and the cost before any repair, and the cluster is tested again on the bench after the repair."
+     ]
+    },
+    {
+     "h2": "Keep the original cluster",
+     "p": [
+      "Repairing the cluster that came out of the car keeps the original unit in the car, so you do not need to source and set up a replacement."
+     ]
+    }
+   ],
+   "faq": [
+    {
+     "q": "Do I need to send the whole cluster?",
+     "a": "Yes, send the instrument cluster as it came out of the dashboard, with the car model and the fault you saw."
+    },
+    {
+     "q": "Do car owners use this service?",
+     "a": "Mostly workshops send clusters in, but car owners can message us too. A workshop will usually remove and refit it."
+    }
+   ],
+   "cta_h2": "Send in an instrument cluster"
+  },
+  "modules": {
+   "title": "TCM, Body and Control Module Repair Johor Bahru | EMATS",
+   "description": "Repair of other car control modules in Johor Bahru: TCM/TCU, body control and other electronic boards, checked case by case. Diagnosis before quote.",
+   "kicker": "U4 · Other modules",
+   "h1": "Car Control Module Repair: TCM, Body and Other Boards",
+   "intro": "Beyond ECU repair, EMATS looks at other car electronic control modules in Johor Bahru: transmission control units (TCM/TCU), body control modules and other electronic boards. Every module is different, so we check each one case by case and tell you first whether it can be repaired.",
+   "sections": [
+    {
+     "h2": "Modules we can look at",
+     "p": [
+      "Modern cars have many control modules. Send us the part number and the fault, and we will tell you if we can check it. Examples:"
+     ],
+     "list": [
+      "Transmission control units (TCM/TCU)",
+      "Body control modules",
+      "Other electronic boards and control modules in the car"
+     ]
+    },
+    {
+     "h2": "Same method for every module",
+     "p": [
+      "Whatever the module, the process does not change: WhatsApp first, send the module, diagnosis before quote, then repair and bench test once you agree."
+     ]
+    }
+   ],
+   "faq": [
+    {
+     "q": "My module is not listed. Can you still check it?",
+     "a": "Possibly. Message us the part number and the fault, and we will tell you honestly whether we can look at it."
+    }
+   ],
+   "cta_h2": "Ask about a control module"
+  },
+  "marine": {
+   "title": "Marine Electronics Repair Johor Bahru, Malaysia | EMATS",
+   "description": "Marine electronics repair from Johor Bahru: boat electronic controls checked and repaired at board level. Diagnosis before quote.",
+   "kicker": "U5 · Marine",
+   "h1": "Marine Electronics Repair in Johor Bahru",
+   "intro": "EMATS has also done marine electronics repair, working on boat electronic controls at board level in Johor Bahru. The bench method is the same as for car modules: we check the control board, find the failed part and tell you the fault and the cost before any repair.",
+   "sections": [
+    {
+     "h2": "Boat electronic controls",
+     "p": [
+      "Marine control boards face heat, moisture and vibration, and faults often show up as corrosion, failed components or broken joints on the board. Send us the part details and the fault first, and we will tell you if we can check it."
+     ]
+    },
+    {
+     "h2": "How it works",
+     "p": [
+      "Message us with the fault and the part number, send or drop the control unit, and we check it on the bench. You get the fault and the cost before any repair starts."
+     ]
+    }
+   ],
+   "faq": [
+    {
+     "q": "Do you repair boat electronic controls?",
+     "a": "We have repaired marine (boat) electronic controls before. Each unit is checked case by case, so message us the details first."
+    }
+   ],
+   "cta_h2": "Ask about a marine control unit"
+  },
+  "workshops": {
+   "title": "Car ECU Repair for Workshops: Send-in Service | EMATS Johor Bahru",
+   "description": "Car ECU repair for workshops in Johor Bahru: how the send-in service works, what to include with the module, and why repair rather than replace.",
+   "kicker": "Send-in service",
+   "h1": "Car ECU Repair for Workshops: How Send-in Works",
+   "intro": "EMATS is built around car ECU repair for workshops. You keep the customer and the car; we take the module, find the fault at component level and repair it in Johor Bahru. Here is how the send-in service works from first message to return.",
+   "steps_h2": "Five steps, from your bench to ours",
+   "include_h2": "What to include with the module",
+   "include": [
+    "Car make, model and year",
+    "The fault you saw and any fault codes",
+    "Part number from the module label (a photo is fine)",
+    "What has already been checked, such as wiring, power and earth",
+    "Your workshop name and a contact for the return"
+   ],
+   "why_h2": "Why repair rather than replace",
+   "why_p": [
+    "A module that has failed often has one damaged part, joint or track, not a dead board. Repairing it keeps the original unit with the car.",
+    "Because diagnosis comes before the quote, you can show your customer the fault and the cost first, and decide together whether to repair."
+   ],
+   "faq": [
+    {
+     "q": "Do I need to call before sending a module?",
+     "a": "Yes, please WhatsApp first with the fault and the part number so we can confirm what to send."
+    },
+    {
+     "q": "Can I drop the module off instead of sending it?",
+     "a": "Yes. You can send it or drop it off in Johor Bahru. Message us first to arrange it."
+    },
+    {
+     "q": "Who removes and refits the module?",
+     "a": "Your workshop does. We repair and bench test the module and return it to you."
+    }
+   ],
+   "cta_h2": "Ready to send in a module?"
+  },
+  "about": {
+   "title": "About EMATS | ECU Repair Johor Bahru",
+   "description": "About EMATS Technology Sales and Service, Johor Bahru: component-level repair of car electronic control units by an engineering-trained technician.",
+   "kicker": "About",
+   "h1": "About EMATS",
+   "intro": "EMATS TECHNOLOGY SALES AND SERVICE is a Johor Bahru business that repairs car electronic control units at component level. Most of our work comes from car workshops that send in ECU/ECM boards, ABS modules, instrument clusters and other control modules.",
+   "sections": [
+    {
+     "h2": "Engineering-trained, bench-based",
+     "p": [
+      "Repairs are done by an engineering-trained technician. EMATS is run by Jackie Sky, who holds a Graduate Diploma in Engineering. The work happens at the bench: opening modules, testing them, and repairing the board itself."
+     ]
+    },
+    {
+     "h2": "How we work",
+     "p": [
+      "Diagnosis before quote: we check the module and tell you the fault and the cost before any repair. Repair, not replace: we fix the failed part on the board rather than swapping the whole unit. Send-in service for workshops: you send or drop the module, and we return it after repair and bench test."
+     ]
+    },
+    {
+     "h2": "Beyond cars",
+     "p": [
+      "The same bench skills have also been used on marine (boat) electronic controls."
+     ]
+    }
+   ],
+   "cta_h2": "Talk to the bench"
+  },
+  "contact": {
+   "title": "Contact EMATS | ECU Repair Johor Bahru",
+   "description": "Contact EMATS in Johor Bahru for ECU, ABS module and instrument cluster repair. WhatsApp first with the fault and part number, or find us on Facebook.",
+   "kicker": "Contact",
+   "h1": "Contact EMATS",
+   "intro": "The quickest way to start an ECU repair in Johor Bahru is a WhatsApp message with the car model, the fault and the part number. You can also reach EMATS on Facebook.",
+   "wa_h2": "WhatsApp",
+   "wa_p": "WhatsApp is the main way to reach us. Send the fault and the part number, and a photo of the module label if you can.",
+   "wa_soon_p": "Our WhatsApp number will be added here soon. Until then, please message us on Facebook.",
+   "fb_h2": "Facebook",
+   "fb_p": "See recent work from the bench and send us a message on Facebook.",
+   "loc_h2": "Location",
+   "loc_p": "Johor Bahru, Malaysia. Please message us first to arrange sending or dropping off a module."
+  }
+ }
+}

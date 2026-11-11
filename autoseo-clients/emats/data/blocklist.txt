@@ -1,0 +1,53 @@
+# The build stops if any line below appears (case-insensitive) in any built or source file.
+# Lines starting with "re:" are regular expressions.
+# White label: no agency or other-client names.
+Page One
+pageone
+Edwin
+Dr Digital
+drdigital
+sgcarworkshop
+sggarage
+Carzy
+Singapore
+S$
++65
+# Claims and facts we do not have (brief, 11 Nov 2026)
+re:\bbest\b
+No.1
+No. 1
+cheapest
+certified
+authorised
+authorized
+dealer
+OEM
+warranty
+guarantee
+turnaround
+re:\bRM ?\d
+same day
+same-day
+24 hours
+openingHours
+streetAddress
+AggregateRating
+re:\bJalan\b
+Jln
+maps.google
+google.com/maps
+terbaik
+termurah
+bertauliah
+waranti
+jaminan
+最好
+re:第一(?!次)
+最便宜
+认证
+原厂
+保修
+# Car brands on the photos (brands supported are not known)
+Bosch
+Mercedes
+Maserati
