@@ -1,4 +1,7 @@
 # autoseo.my/preview/.htaccess  (keeps every client preview out of Google)
+# Only on the autoseo.my host, so a client folder that later becomes a live domain is never hidden.
 <IfModule mod_headers.c>
-  Header set X-Robots-Tag "noindex, nofollow"
+  <If "%{HTTP_HOST} =~ /(^|\.)autoseo\.my$/">
+    Header set X-Robots-Tag "noindex, nofollow"
+  </If>
 </IfModule>

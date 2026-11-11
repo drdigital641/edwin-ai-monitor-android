@@ -17,7 +17,14 @@
  },
  "ui": {
   "skip": "Skip to content",
-  "nav": {"home": "Home", "services": "Services", "work": "Recent work", "reviews": "Reviews", "about": "About", "contact": "Contact"},
+  "nav": {
+   "home": "Home",
+   "services": "Services",
+   "work": "Recent work",
+   "reviews": "Reviews",
+   "about": "About",
+   "contact": "Contact"
+  },
   "nav_aria": "Main menu",
   "menu": "Menu",
   "lang_aria": "Language",
@@ -39,8 +46,16 @@
   "location_short": "Air Hitam, Klang",
   "brands_short": "All car brands welcome",
   "hours_title": "Opening hours",
-  "days": {"mon_fri": "Monday – Friday", "sat": "Saturday", "sun": "Sunday"},
-  "times": {"mon_fri": "10:00am – 7:00pm", "sat": "10:00am – 4:30pm", "sun": "Closed"},
+  "days": {
+   "mon_fri": "Monday – Friday",
+   "sat": "Saturday",
+   "sun": "Sunday"
+  },
+  "times": {
+   "mon_fri": "10:00am – 7:00pm",
+   "sat": "10:00am – 4:30pm",
+   "sun": "Closed"
+  },
   "address_label": "Address",
   "phone_label": "Phone and WhatsApp",
   "email_label": "Email",
@@ -61,7 +76,33 @@
   "map_title": "Map showing Carzy World in Air Hitam, Klang",
   "map_load": "Show the map",
   "price_note": "We don't publish prices because every car and problem is different. Send us your car model and the problem on WhatsApp for a quote.",
-  "brands_note": "All car brands are welcome."
+  "brands_note": "All car brands are welcome.",
+  "months": [
+   "Jan",
+   "Feb",
+   "Mar",
+   "Apr",
+   "May",
+   "Jun",
+   "Jul",
+   "Aug",
+   "Sep",
+   "Oct",
+   "Nov",
+   "Dec"
+  ],
+  "sound_on": "Tap for sound",
+  "sound_off": "Sound off",
+  "pause": "Pause video",
+  "play": "Play video",
+  "play_clip": "Play clip",
+  "video_note": "Clips play from our Facebook page when you tap them.",
+  "watch_more": "Watch more on Facebook",
+  "ask_this": "Ask about this",
+  "clip_aria": "Video clips from our workshop",
+  "seconds": "{n}s",
+  "service_tag": "Service",
+  "see_service": "About this service"
  },
  "photos": {
   "shop-exterior": "Carzy World Sdn Bhd shop front in Pusat Perniagaan Bestari, Air Hitam, Klang, with the yellow signboard and open service bay",
@@ -76,10 +117,10 @@
   "perodua-sedan-in-workshop": "A black Perodua sedan in the Carzy World workshop with oil and parts for its service"
  },
  "home": {
-  "title": "Car Servicing & Repair Workshop in Klang | Carzy World",
-  "description": "Carzy World Sdn Bhd in Air Hitam, Klang: car servicing, oil change, engine and gearbox, aircond, brakes, wiring faults, EV and classic car repair. 5.0 on Google. WhatsApp +60 17-693 3936.",
+  "title": "Car Workshop & Car Service in Klang | Carzy World",
+  "description": "Carzy World Sdn Bhd is a car workshop in Air Hitam, Klang: car service, oil change, engine and gearbox, aircond, brakes, wiring faults, EV and classic car repair. 5.0 on Google. WhatsApp +60 17-693 3936.",
   "eyebrow": "Automotive Specialists Service Centre · Klang",
-  "h1": "Car servicing and repairs in Klang you can trust",
+  "h1": "Car workshop in Klang for car service and repairs you can trust",
   "lead": "Carzy World Sdn Bhd is a car workshop in Air Hitam, Klang. We handle servicing and oil changes, engine and gearbox repair, aircond, brakes and suspension, difficult wiring faults, EVs and classic cars. All car brands are welcome.",
   "hero_note": "WhatsApp us your car model and the problem. We'll tell you what to expect.",
   "services_kicker": "What we do",
@@ -89,10 +130,26 @@
   "work_h2": "Cars we've worked on recently",
   "work_lead": "A few real jobs from our workshop, posted on our Facebook page.",
   "work": {
-   "tesla": {"title": "Tesla Model 3", "text": "Upper arm replacement, plus a fast-charging fault checked and sorted.", "when": "Oct 2026"},
-   "dmax": {"title": "Isuzu D-Max", "text": "Major service on a working pickup truck.", "when": "Recent"},
-   "c230": {"title": "Mercedes-Benz C230", "text": "Coolant and oil leaks fixed, and the warning lights on the dashboard checked.", "when": "Recent"},
-   "w201": {"title": "Mercedes 190E 2.5-16 (1988)", "text": "Restoration work on a classic Mercedes.", "when": "Nov 2026"}
+   "tesla": {
+    "title": "Tesla Model 3",
+    "text": "Upper arm replacement, plus a fast-charging fault checked and sorted.",
+    "when": "Oct 2026"
+   },
+   "dmax": {
+    "title": "Isuzu D-Max",
+    "text": "Major service on a working pickup truck.",
+    "when": "Recent"
+   },
+   "c230": {
+    "title": "Mercedes-Benz C230",
+    "text": "Coolant and oil leaks fixed, and the warning lights on the dashboard checked.",
+    "when": "Recent"
+   },
+   "w201": {
+    "title": "Mercedes 190E 2.5-16 (1988)",
+    "text": "Restoration work on a classic Mercedes.",
+    "when": "Nov 2026"
+   }
   },
   "suit_line": "Our boss is known for working on cars in a suit. It's his way of showing that every job is done properly.",
   "gallery_h2": "Cars in our workshop",
@@ -105,16 +162,50 @@
   "faq_kicker": "FAQ",
   "faq_h2": "Questions we often get",
   "cta_h2": "Tell us what your car needs",
-  "cta_text": "WhatsApp us your car model, year and the problem. Calls are welcome too during opening hours."
+  "cta_text": "WhatsApp us your car model, year and the problem. Calls are welcome too during opening hours.",
+  "hero_lead": "Carzy World Sdn Bhd is a car workshop in Air Hitam, Klang, for car service, repairs and difficult faults. All car brands welcome.",
+  "hero_video_label": "Our boss at work in a suit, at the Carzy World workshop in Klang",
+  "intro_h2": "One workshop for servicing, repairs and the hard jobs",
+  "reels_kicker": "Watch the work",
+  "reels_h2": "Real jobs from our workshop, on video",
+  "reels_lead": "Each clip shows a job we did. Tap one to watch it, or ask us about that service on WhatsApp.",
+  "classic_kicker": "Classic cars too",
+  "classic_h2": "Classic and continental cars get the same care",
+  "classic_text": "In November 2026 we worked on restoring a 1988 Mercedes 190E 2.5-16. We also take on older European cars with leaks, warning lights and worn parts.",
+  "classic_video_label": "Restoration work on a 1988 Mercedes 190E 2.5-16 at Carzy World",
+  "pick_kicker": "Services",
+  "pick_h2": "Pick a service",
+  "photos_h2": "Inside the workshop"
  },
  "faqs": [
-  {"q": "Where is Carzy World?", "a": "We're at 137-G, Jln Permata 1/KS09, Pusat Perniagaan Bestari, Taman Perindustrian Air Hitam Phase 1 & 2, 42000 Klang, Selangor. Tap 'Get directions' to open it in Google Maps."},
-  {"q": "What are your opening hours?", "a": "Monday to Friday 10am to 7pm, and Saturday 10am to 4:30pm. We're closed on Sunday."},
-  {"q": "Which car brands do you work on?", "a": "All car brands are welcome. Recent jobs include a Tesla Model 3, an Isuzu D-Max, a Mercedes-Benz C230 and a 1988 Mercedes 190E 2.5-16."},
-  {"q": "How much will my repair cost?", "a": "We don't publish prices because every car and problem is different. WhatsApp us your car model, year and the problem and we'll give you a quote. New customers get a 5% discount (terms apply)."},
-  {"q": "How do I book my car in?", "a": "The quickest way is WhatsApp on +60 17-693 3936. You can also call the same number during opening hours or email yc.carzyworld@gmail.com."},
-  {"q": "Do you repair electric cars?", "a": "Yes. In October 2026 we replaced an upper arm on a Tesla Model 3 and sorted out a fast-charging fault on it."},
-  {"q": "Can you fix wiring problems other workshops couldn't?", "a": "Electrical and wiring fault finding is one of the jobs we're known for. One of our Google reviews is from a workshop owner who sends his own car and his customers' cars to us for wiring and other difficult problems."}
+  {
+   "q": "Where is Carzy World?",
+   "a": "We're at 137-G, Jln Permata 1/KS09, Pusat Perniagaan Bestari, Taman Perindustrian Air Hitam Phase 1 & 2, 42000 Klang, Selangor. Tap 'Get directions' to open it in Google Maps."
+  },
+  {
+   "q": "What are your opening hours?",
+   "a": "Monday to Friday 10am to 7pm, and Saturday 10am to 4:30pm. We're closed on Sunday."
+  },
+  {
+   "q": "Which car brands do you work on?",
+   "a": "All car brands are welcome. Recent jobs include a Tesla Model 3, an Isuzu D-Max, a Mercedes-Benz C230 and a 1988 Mercedes 190E 2.5-16."
+  },
+  {
+   "q": "How much will my repair cost?",
+   "a": "We don't publish prices because every car and problem is different. WhatsApp us your car model, year and the problem and we'll give you a quote. New customers get a 5% discount (terms apply)."
+  },
+  {
+   "q": "How do I book my car in?",
+   "a": "The quickest way is WhatsApp on +60 17-693 3936. You can also call the same number during opening hours or email yc.carzyworld@gmail.com."
+  },
+  {
+   "q": "Do you repair electric cars?",
+   "a": "Yes. In October 2026 we replaced an upper arm on a Tesla Model 3 and sorted out a fast-charging fault on it."
+  },
+  {
+   "q": "Can you fix wiring problems other workshops couldn't?",
+   "a": "Electrical and wiring fault finding is one of the jobs we're known for. One of our Google reviews is from a workshop owner who sends his own car and his customers' cars to us for wiring and other difficult problems."
+  }
  ],
  "services": {
   "car-servicing-oil-change": {
@@ -127,13 +218,29 @@
    "prefill_topic": "a car service or oil change",
    "intro": "Regular servicing keeps your car reliable and helps catch small problems early. We do normal services, major services and oil changes for all car brands, from city cars to pickups and continental cars.",
    "covers_h2": "What we do",
-   "covers": ["Car servicing and major service", "Engine oil and oil filter change", "General repairs and maintenance found during the service", "Pickups and 4x4s, such as a recent Isuzu D-Max major service"],
+   "covers": [
+    "Car servicing and major service",
+    "Engine oil and oil filter change",
+    "General repairs and maintenance found during the service",
+    "Pickups and 4x4s, such as a recent Isuzu D-Max major service"
+   ],
    "signs_h2": "When to bring your car in",
-   "signs": ["Your service reminder or sticker says it's due", "The oil warning light comes on", "The engine sounds rougher or louder than usual", "You're planning a long drive and want the car checked first"],
+   "signs": [
+    "Your service reminder or sticker says it's due",
+    "The oil warning light comes on",
+    "The engine sounds rougher or louder than usual",
+    "You're planning a long drive and want the car checked first"
+   ],
    "body": "Tell us your car model, year and mileage on WhatsApp, and we'll let you know what the service should include and give you a quote. We keep you updated while your car is with us.",
    "faqs": [
-    {"q": "What's the difference between a normal service and a major service?", "a": "A normal service is mainly the oil and oil filter change with basic checks. A major service usually adds more items such as other filters, fluids and spark plugs, depending on your car's schedule. WhatsApp us your car model and mileage and we'll tell you which one is due."},
-    {"q": "Do you service pickups and 4x4s?", "a": "Yes. All car brands are welcome, and we recently did a major service on an Isuzu D-Max."}
+    {
+     "q": "What's the difference between a normal service and a major service?",
+     "a": "A normal service is mainly the oil and oil filter change with basic checks. A major service usually adds more items such as other filters, fluids and spark plugs, depending on your car's schedule. WhatsApp us your car model and mileage and we'll tell you which one is due."
+    },
+    {
+     "q": "Do you service pickups and 4x4s?",
+     "a": "Yes. All car brands are welcome, and we recently did a major service on an Isuzu D-Max."
+    }
    ]
   },
   "engine-gearbox-repair": {
@@ -146,13 +253,29 @@
    "prefill_topic": "an engine or gearbox problem",
    "intro": "Engine and gearbox problems are worth checking early, before a small fault turns into a big repair. Customers say we keep them updated throughout the repair, so you always know what's going on.",
    "covers_h2": "What we do",
-   "covers": ["Engine repair", "Gearbox repair", "Oil and coolant leaks, like a recent Mercedes-Benz C230", "Checking dashboard warning lights"],
+   "covers": [
+    "Engine repair",
+    "Gearbox repair",
+    "Oil and coolant leaks, like a recent Mercedes-Benz C230",
+    "Checking dashboard warning lights"
+   ],
    "signs_h2": "Signs to get checked",
-   "signs": ["Engine warning light on the dashboard", "Oil or coolant drips under the car", "Rough idle, shaking or loss of power", "Gears slipping, jerking or slow to engage"],
+   "signs": [
+    "Engine warning light on the dashboard",
+    "Oil or coolant drips under the car",
+    "Rough idle, shaking or loss of power",
+    "Gears slipping, jerking or slow to engage"
+   ],
    "body": "Send us a short video or a description of the problem on WhatsApp. It helps us understand what's going on before you bring the car in.",
    "faqs": [
-    {"q": "Can I keep driving with the engine warning light on?", "a": "If the light is flashing, or the car feels very different, stop driving and get it checked, because it can mean a serious fault. If it's steady and the car drives normally, book a check soon. Either way, WhatsApp us and we'll advise you."},
-    {"q": "Do you fix oil and coolant leaks?", "a": "Yes. We recently fixed coolant and oil leaks on a Mercedes-Benz C230 and checked the warning lights it was showing."}
+    {
+     "q": "Can I keep driving with the engine warning light on?",
+     "a": "If the light is flashing, or the car feels very different, stop driving and get it checked, because it can mean a serious fault. If it's steady and the car drives normally, book a check soon. Either way, WhatsApp us and we'll advise you."
+    },
+    {
+     "q": "Do you fix oil and coolant leaks?",
+     "a": "Yes. We recently fixed coolant and oil leaks on a Mercedes-Benz C230 and checked the warning lights it was showing."
+    }
    ]
   },
   "car-aircond-service": {
@@ -165,13 +288,28 @@
    "prefill_topic": "my car aircond",
    "intro": "In Malaysian weather, a weak aircond makes every drive uncomfortable. We check the system to find out why it isn't cooling properly, then service or repair what's needed.",
    "covers_h2": "What we do",
-   "covers": ["Aircond diagnostics to find the cause", "Aircond service", "Repairs found during the check"],
+   "covers": [
+    "Aircond diagnostics to find the cause",
+    "Aircond service",
+    "Repairs found during the check"
+   ],
    "signs_h2": "Signs to get checked",
-   "signs": ["Air isn't as cold as it used to be", "Cold at first, then warm after a while", "Weak airflow from the vents", "A bad smell or strange noise when the aircond is on"],
+   "signs": [
+    "Air isn't as cold as it used to be",
+    "Cold at first, then warm after a while",
+    "Weak airflow from the vents",
+    "A bad smell or strange noise when the aircond is on"
+   ],
    "body": "Tell us on WhatsApp what the aircond is doing and when it started. We'll check the system and let you know what we find.",
    "faqs": [
-    {"q": "Why is my car aircond not cold?", "a": "Common causes include low refrigerant from a leak, a blocked filter, a cooling fan problem or a faulty compressor. A proper check finds the real cause, so you don't pay for parts you don't need."},
-    {"q": "Do you only top up the gas?", "a": "We check the system first to find out why it isn't cooling, then service or repair what's needed. Topping up without finding a leak usually means the problem comes back."}
+    {
+     "q": "Why is my car aircond not cold?",
+     "a": "Common causes include low refrigerant from a leak, a blocked filter, a cooling fan problem or a faulty compressor. A proper check finds the real cause, so you don't pay for parts you don't need."
+    },
+    {
+     "q": "Do you only top up the gas?",
+     "a": "We check the system first to find out why it isn't cooling, then service or repair what's needed. Topping up without finding a leak usually means the problem comes back."
+    }
    ]
   },
   "suspension-brakes-exhaust": {
@@ -184,13 +322,28 @@
    "prefill_topic": "suspension, brakes or exhaust",
    "intro": "Brakes and suspension keep you safe and the car comfortable. We check and repair suspension, brakes and exhaust systems for all car brands.",
    "covers_h2": "What we do",
-   "covers": ["Suspension repair, such as the upper arm we replaced on a Tesla Model 3", "Brake checks and repair", "Exhaust system repair"],
+   "covers": [
+    "Suspension repair, such as the upper arm we replaced on a Tesla Model 3",
+    "Brake checks and repair",
+    "Exhaust system repair"
+   ],
    "signs_h2": "Signs to get checked",
-   "signs": ["Squealing or grinding when you brake", "The car pulls to one side or the steering shakes", "Knocking over bumps or a bouncy ride", "A louder exhaust, rattles or exhaust smell in the cabin"],
+   "signs": [
+    "Squealing or grinding when you brake",
+    "The car pulls to one side or the steering shakes",
+    "Knocking over bumps or a bouncy ride",
+    "A louder exhaust, rattles or exhaust smell in the cabin"
+   ],
    "body": "Brake and suspension problems can get worse quickly. If something feels wrong, WhatsApp us and bring the car in for a check.",
    "faqs": [
-    {"q": "My brakes squeal. Is it urgent?", "a": "A squeal can mean worn brake pads, and grinding usually means they're worn right down. Get them checked soon, because worn brakes take longer to stop the car."},
-    {"q": "Why is my exhaust suddenly louder?", "a": "A louder exhaust usually means a leak or a damaged part in the exhaust system. It's worth checking, especially if you can smell exhaust inside the car."}
+    {
+     "q": "My brakes squeal. Is it urgent?",
+     "a": "A squeal can mean worn brake pads, and grinding usually means they're worn right down. Get them checked soon, because worn brakes take longer to stop the car."
+    },
+    {
+     "q": "Why is my exhaust suddenly louder?",
+     "a": "A louder exhaust usually means a leak or a damaged part in the exhaust system. It's worth checking, especially if you can smell exhaust inside the car."
+    }
    ]
   },
   "electrical-wiring-diagnosis": {
@@ -203,13 +356,28 @@
    "prefill_topic": "an electrical or wiring problem",
    "intro": "Electrical faults can be hard to pin down: a warning light that comes and goes, or something that only fails sometimes. Tracing difficult wiring problems is work we're known for.",
    "covers_h2": "What we do",
-   "covers": ["Electrical fault finding", "Wiring repair", "Warning lights and difficult problems other shops couldn't solve"],
+   "covers": [
+    "Electrical fault finding",
+    "Wiring repair",
+    "Warning lights and difficult problems other shops couldn't solve"
+   ],
    "signs_h2": "Problems we look into",
-   "signs": ["Warning lights that come and go", "Electrical parts that work sometimes and not others", "Fuses that keep blowing", "A battery that keeps going flat"],
+   "signs": [
+    "Warning lights that come and go",
+    "Electrical parts that work sometimes and not others",
+    "Fuses that keep blowing",
+    "A battery that keeps going flat"
+   ],
    "body": "One of our Google reviews is from a workshop owner who sends his own car and his customers' cars to us for wiring and difficult problems. Tell us what's happening on WhatsApp, and when it happens.",
    "faqs": [
-    {"q": "Other workshops couldn't find the fault. Can you help?", "a": "Difficult wiring and electrical problems are what we're known for. WhatsApp us what you've already tried and what the car is doing, and we'll take a look."},
-    {"q": "My battery keeps going flat. Is it the battery?", "a": "Not always. A flat battery can also come from a charging problem or something drawing power when the car is off. A check finds the cause, so you don't replace parts for nothing."}
+    {
+     "q": "Other workshops couldn't find the fault. Can you help?",
+     "a": "Difficult wiring and electrical problems are what we're known for. WhatsApp us what you've already tried and what the car is doing, and we'll take a look."
+    },
+    {
+     "q": "My battery keeps going flat. Is it the battery?",
+     "a": "Not always. A flat battery can also come from a charging problem or something drawing power when the car is off. A check finds the cause, so you don't replace parts for nothing."
+    }
    ]
   },
   "ev-repair": {
@@ -222,13 +390,28 @@
    "prefill_topic": "my electric car (EV)",
    "intro": "Electric cars still need suspension, brake and general repairs, and sometimes help with charging problems. We work on EVs as well as petrol and diesel cars.",
    "covers_h2": "Recent EV work",
-   "covers": ["Tesla Model 3 upper arm replacement (Oct 2026)", "Tesla Model 3 fast-charging fault (Oct 2026)", "Suspension, brakes and general repairs on electric cars"],
+   "covers": [
+    "Tesla Model 3 upper arm replacement (Oct 2026)",
+    "Tesla Model 3 fast-charging fault (Oct 2026)",
+    "Suspension, brakes and general repairs on electric cars"
+   ],
    "signs_h2": "When to get your EV checked",
-   "signs": ["Knocks or clunks from the suspension", "Charging is slow, stops or won't start", "A warning message on the screen", "Tyres wearing unevenly"],
+   "signs": [
+    "Knocks or clunks from the suspension",
+    "Charging is slow, stops or won't start",
+    "A warning message on the screen",
+    "Tyres wearing unevenly"
+   ],
    "body": "Tell us your EV model and what's happening on WhatsApp. If it's a charging problem, let us know where and how you were charging when it happened.",
    "faqs": [
-    {"q": "Do you work on Tesla?", "a": "Yes. In October 2026 we replaced an upper arm on a Tesla Model 3 and sorted out a fast-charging fault on the same car."},
-    {"q": "Do you only repair electric cars?", "a": "No. We work on all car brands, petrol, diesel and electric."}
+    {
+     "q": "Do you work on Tesla?",
+     "a": "Yes. In October 2026 we replaced an upper arm on a Tesla Model 3 and sorted out a fast-charging fault on the same car."
+    },
+    {
+     "q": "Do you only repair electric cars?",
+     "a": "No. We work on all car brands, petrol, diesel and electric."
+    }
    ]
   },
   "classic-continental-cars": {
@@ -241,13 +424,28 @@
    "prefill_topic": "a classic or continental car",
    "intro": "Older and European cars need patience and care. We take on classic restoration work and continental car repairs.",
    "covers_h2": "Recent work",
-   "covers": ["1988 Mercedes 190E 2.5-16 restoration (Nov 2026)", "Mercedes-Benz C230 coolant and oil leaks, and warning lights", "Servicing and repairs on continental cars"],
+   "covers": [
+    "1988 Mercedes 190E 2.5-16 restoration (Nov 2026)",
+    "Mercedes-Benz C230 coolant and oil leaks, and warning lights",
+    "Servicing and repairs on continental cars"
+   ],
    "signs_h2": "Good reasons to bring it in",
-   "signs": ["Leaks, smells or new noises on an older car", "Warning lights on a continental car", "A classic car that's been sitting and needs to be brought back", "A car you want looked after properly"],
+   "signs": [
+    "Leaks, smells or new noises on an older car",
+    "Warning lights on a continental car",
+    "A classic car that's been sitting and needs to be brought back",
+    "A car you want looked after properly"
+   ],
    "body": "Send us photos of your car and tell us what you'd like done on WhatsApp. For restoration work, let us know the car's history if you have it.",
    "faqs": [
-    {"q": "Do you restore classic cars?", "a": "Yes. In November 2026 we worked on restoring a 1988 Mercedes 190E 2.5-16."},
-    {"q": "Do you work on continental cars?", "a": "Yes. All car brands are welcome. Recent continental work includes coolant and oil leaks and warning lights on a Mercedes-Benz C230."}
+    {
+     "q": "Do you restore classic cars?",
+     "a": "Yes. In November 2026 we worked on restoring a 1988 Mercedes 190E 2.5-16."
+    },
+    {
+     "q": "Do you work on continental cars?",
+     "a": "Yes. All car brands are welcome. Recent continental work includes coolant and oil leaks and warning lights on a Mercedes-Benz C230."
+    }
    ]
   }
  },
@@ -275,12 +473,26 @@
   ],
   "values_h2": "What customers mention most",
   "values": [
-   {"title": "Honest pricing", "text": "Customers talk about reasonable, honest pricing. WhatsApp us for a quote."},
-   {"title": "Kept updated", "text": "We keep you updated throughout the repair, so you know what's happening with your car."},
-   {"title": "Clean workshop", "text": "A clean environment, friendly staff and professional mechanics."},
-   {"title": "Difficult problems", "text": "Even another workshop owner sends cars to us for wiring and difficult problems."}
+   {
+    "title": "Honest pricing",
+    "text": "Customers talk about reasonable, honest pricing. WhatsApp us for a quote."
+   },
+   {
+    "title": "Kept updated",
+    "text": "We keep you updated throughout the repair, so you know what's happening with your car."
+   },
+   {
+    "title": "Clean workshop",
+    "text": "A clean environment, friendly staff and professional mechanics."
+   },
+   {
+    "title": "Difficult problems",
+    "text": "Even another workshop owner sends cars to us for wiring and difficult problems."
+   }
   ],
-  "company_h2": "Company details"
+  "company_h2": "Company details",
+  "video_h2": "Why the suit?",
+  "video_text": "Our boss works on cars in a suit. It's his way of showing that every job is done properly and professionally. Here he is at work."
  },
  "contact_page": {
   "title": "Contact Carzy World | Car Workshop in Air Hitam, Klang",
@@ -305,5 +517,65 @@
   "pages": "Pages",
   "reviews": "Google rating: 5.0 from 19 reviews (all 5-star), checked November 2026.",
   "offer": "Offer: new customers get a 5% discount (terms apply). No other prices are published; ask on WhatsApp for a quote."
+ },
+ "videos": {
+  "signature": {
+   "title": "Our boss at work in a suit",
+   "caption": "A day at the workshop with our boss, who works on cars in a suit."
+  },
+  "classic190e": {
+   "title": "1988 Mercedes 190E 2.5-16 restoration",
+   "caption": "Restoration work on a classic 1988 Mercedes 190E 2.5-16."
+  },
+  "1045226281867426": {
+   "title": "New to Carzy World?",
+   "caption": "A quick look at our workshop for first-time customers, who get a 5% new customer discount (terms apply).",
+   "topic": "the new customer discount"
+  },
+  "1773614920220424": {
+   "title": "Heavy accident damage",
+   "caption": "Repairing a car with heavy accident damage that other workshops turned down.",
+   "topic": "accident damage repair"
+  },
+  "2553325481847062": {
+   "title": "Tracing a mystery fault",
+   "caption": "Using diagnostics to track down a fault that kept coming back.",
+   "topic": "a fault that keeps coming back"
+  },
+  "1128044756568418": {
+   "title": "Engine oil service",
+   "caption": "A routine engine oil change, step by step.",
+   "topic": "an engine oil service"
+  },
+  "1358776602985089": {
+   "title": "Suspension work",
+   "caption": "Checking and replacing worn suspension parts.",
+   "topic": "suspension repair"
+  },
+  "1049619834456911": {
+   "title": "Oil service packages",
+   "caption": "What goes into our oil service packages, from the oil to the filter.",
+   "topic": "an oil service package"
+  },
+  "1534269351507322": {
+   "title": "Warning light and hidden damage",
+   "caption": "A warning light led us to crash damage hidden under the car.",
+   "topic": "a warning light on my dashboard"
+  },
+  "1580829843577636": {
+   "title": "Proton X70 engine overhaul",
+   "caption": "Overhauling a high-mileage Proton X70 1.8 TGDI engine.",
+   "topic": "an engine overhaul"
+  },
+  "1491106668688179": {
+   "title": "Batteries keep dying",
+   "caption": "Finding the electrical fault behind dead batteries that two other workshops couldn't fix.",
+   "topic": "a battery or electrical fault"
+  },
+  "997369159356181": {
+   "title": "Audi TT restoration",
+   "caption": "Putting right bad modifications and worn suspension on an Audi TT.",
+   "topic": "restoring my car"
+  }
  }
 }

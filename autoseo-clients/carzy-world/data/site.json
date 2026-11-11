@@ -1,44 +1,304 @@
 {
  "_readme": "Page structure shared by every language: order, slugs, icons and photos. Text lives in strings/<lang>.json.",
  "languages": [
-  {"code": "en", "prefix": ""},
-  {"code": "ms", "prefix": "ms/"},
-  {"code": "zh", "prefix": "zh/"}
+  {
+   "code": "en",
+   "prefix": ""
+  },
+  {
+   "code": "ms",
+   "prefix": "ms/"
+  },
+  {
+   "code": "zh",
+   "prefix": "zh/"
+  }
  ],
  "services": [
-  {"slug": "car-servicing-oil-change", "icon": "🛢️", "photo": "bmw-in-workshop"},
-  {"slug": "engine-gearbox-repair", "icon": "⚙️", "photo": "engine-work-closeup"},
-  {"slug": "car-aircond-service", "icon": "❄️", "photo": "toyota-mpv-in-workshop"},
-  {"slug": "suspension-brakes-exhaust", "icon": "🛞", "photo": "perodua-sedan-in-workshop"},
-  {"slug": "electrical-wiring-diagnosis", "icon": "🔌", "photo": "engine-work-closeup"},
-  {"slug": "ev-repair", "icon": "🔋", "photo": "toyota-4x4-service-bay"},
-  {"slug": "classic-continental-cars", "icon": "🏁", "photo": "porsche-in-workshop"}
+  {
+   "slug": "car-servicing-oil-change",
+   "icon": "🛢️",
+   "photo": "bmw-in-workshop",
+   "clips": [
+    "1128044756568418",
+    "1049619834456911"
+   ]
+  },
+  {
+   "slug": "engine-gearbox-repair",
+   "icon": "⚙️",
+   "photo": "engine-work-closeup",
+   "clips": [
+    "1534269351507322",
+    "1580829843577636"
+   ]
+  },
+  {
+   "slug": "car-aircond-service",
+   "icon": "❄️",
+   "photo": "toyota-mpv-in-workshop",
+   "clips": []
+  },
+  {
+   "slug": "suspension-brakes-exhaust",
+   "icon": "🛞",
+   "photo": "perodua-sedan-in-workshop",
+   "clips": [
+    "1358776602985089"
+   ]
+  },
+  {
+   "slug": "electrical-wiring-diagnosis",
+   "icon": "🔌",
+   "photo": "engine-work-closeup",
+   "clips": [
+    "2553325481847062",
+    "1491106668688179"
+   ]
+  },
+  {
+   "slug": "ev-repair",
+   "icon": "🔋",
+   "photo": "toyota-4x4-service-bay",
+   "clips": []
+  },
+  {
+   "slug": "classic-continental-cars",
+   "icon": "🏁",
+   "photo": "porsche-in-workshop",
+   "clips": [
+    "997369159356181"
+   ]
+  }
  ],
  "photos": [
-  {"key": "shop-exterior", "file": "carzy-world-shop-exterior.webp"},
-  {"key": "logo", "file": "carzy-world-logo.webp"},
-  {"key": "bmw-in-workshop", "file": "carzy-world-bmw-in-workshop.webp"},
-  {"key": "engine-work-closeup", "file": "carzy-world-engine-work-closeup.webp"},
-  {"key": "porsche-in-workshop", "file": "carzy-world-porsche-in-workshop.webp"},
-  {"key": "mazda-at-entrance", "file": "carzy-world-mazda-at-entrance.webp"},
-  {"key": "isuzu-pickup-at-entrance", "file": "carzy-world-isuzu-pickup-at-entrance.webp"},
-  {"key": "toyota-mpv-in-workshop", "file": "carzy-world-toyota-mpv-in-workshop.webp"},
-  {"key": "toyota-4x4-service-bay", "file": "carzy-world-toyota-4x4-service-bay.webp"},
-  {"key": "perodua-sedan-in-workshop", "file": "carzy-world-perodua-sedan-in-workshop.webp"}
+  {
+   "key": "shop-exterior",
+   "file": "carzy-world-shop-exterior.webp"
+  },
+  {
+   "key": "logo",
+   "file": "carzy-world-logo.webp"
+  },
+  {
+   "key": "bmw-in-workshop",
+   "file": "carzy-world-bmw-in-workshop.webp"
+  },
+  {
+   "key": "engine-work-closeup",
+   "file": "carzy-world-engine-work-closeup.webp"
+  },
+  {
+   "key": "porsche-in-workshop",
+   "file": "carzy-world-porsche-in-workshop.webp"
+  },
+  {
+   "key": "mazda-at-entrance",
+   "file": "carzy-world-mazda-at-entrance.webp"
+  },
+  {
+   "key": "isuzu-pickup-at-entrance",
+   "file": "carzy-world-isuzu-pickup-at-entrance.webp"
+  },
+  {
+   "key": "toyota-mpv-in-workshop",
+   "file": "carzy-world-toyota-mpv-in-workshop.webp"
+  },
+  {
+   "key": "toyota-4x4-service-bay",
+   "file": "carzy-world-toyota-4x4-service-bay.webp"
+  },
+  {
+   "key": "perodua-sedan-in-workshop",
+   "file": "carzy-world-perodua-sedan-in-workshop.webp"
+  }
  ],
- "gallery": ["porsche-in-workshop", "bmw-in-workshop", "toyota-4x4-service-bay", "isuzu-pickup-at-entrance", "mazda-at-entrance", "toyota-mpv-in-workshop", "perodua-sedan-in-workshop", "engine-work-closeup"],
+ "gallery": [
+  "porsche-in-workshop",
+  "bmw-in-workshop",
+  "toyota-4x4-service-bay",
+  "isuzu-pickup-at-entrance",
+  "mazda-at-entrance",
+  "toyota-mpv-in-workshop",
+  "perodua-sedan-in-workshop",
+  "engine-work-closeup"
+ ],
  "recent_work": [
-  {"key": "tesla", "icon": "🔋", "service": "ev-repair"},
-  {"key": "dmax", "icon": "🛻", "service": "car-servicing-oil-change"},
-  {"key": "c230", "icon": "💧", "service": "classic-continental-cars"},
-  {"key": "w201", "icon": "🏁", "service": "classic-continental-cars"}
+  {
+   "key": "tesla",
+   "icon": "🔋",
+   "service": "ev-repair"
+  },
+  {
+   "key": "dmax",
+   "icon": "🛻",
+   "service": "car-servicing-oil-change"
+  },
+  {
+   "key": "c230",
+   "icon": "💧",
+   "service": "classic-continental-cars"
+  },
+  {
+   "key": "w201",
+   "icon": "🏁",
+   "service": "classic-continental-cars"
+  }
  ],
  "reviews": [
-  {"name": "Derrick H.", "text": "Excellent service with friendly and professional staff. The pricing is very reasonable, and the workmanship is great. Highly recommend this workshop if you're looking for reliable service. Will definitely come back again!"},
-  {"name": "Charisse G.", "text": "Excellent service! Very professional, reliable, and friendly team. Everything was smooth and hassle-free. Highly recommended!"},
-  {"name": "Siew T.", "text": "Highly recommend to all of you. Honestly and sincerely even I am a workshop owner I also send my car and my client car to solve wiring and some difficult problem. This workshop boss was nice and kindful to help."},
-  {"name": "Khow J.", "text": "First time trying this workshop. Clean environment, friendly staff, and professional mechanics. My car drives much better after service."},
-  {"name": "Sindy T.", "text": "Excellent service, honest pricing, and professional workmanship. The staff are friendly, knowledgeable, and keep you updated throughout the repair process. Highly recommend Carzy World Sdn Bhd!"}
+  {
+   "name": "Derrick H.",
+   "text": "Excellent service with friendly and professional staff. The pricing is very reasonable, and the workmanship is great. Highly recommend this workshop if you're looking for reliable service. Will definitely come back again!"
+  },
+  {
+   "name": "Charisse G.",
+   "text": "Excellent service! Very professional, reliable, and friendly team. Everything was smooth and hassle-free. Highly recommended!"
+  },
+  {
+   "name": "Siew T.",
+   "text": "Highly recommend to all of you. Honestly and sincerely even I am a workshop owner I also send my car and my client car to solve wiring and some difficult problem. This workshop boss was nice and kindful to help."
+  },
+  {
+   "name": "Khow J.",
+   "text": "First time trying this workshop. Clean environment, friendly staff, and professional mechanics. My car drives much better after service."
+  },
+  {
+   "name": "Sindy T.",
+   "text": "Excellent service, honest pricing, and professional workmanship. The staff are friendly, knowledgeable, and keep you updated throughout the repair process. Highly recommend Carzy World Sdn Bhd!"
+  }
  ],
- "home_faq_count": 5
+ "home_faq_count": 5,
+ "media_note": "Files under media/ are uploaded to the server by hand (11 Nov 2026) and are NOT in this repo or the upload. Pages link to them with page-relative paths. Never add other self-hosted videos (Bluehost space/inodes).",
+ "server_media": [
+  "carzy-signature-suit-boss.mp4",
+  "carzy-signature-suit-boss-poster.jpg",
+  "carzy-classic-190e.mp4",
+  "carzy-classic-190e-poster.jpg",
+  "fb-1045226281867426.jpg",
+  "fb-1773614920220424.jpg",
+  "fb-2553325481847062.jpg",
+  "fb-1128044756568418.jpg",
+  "fb-1358776602985089.jpg",
+  "fb-1049619834456911.jpg",
+  "fb-1534269351507322.jpg",
+  "fb-1580829843577636.jpg",
+  "fb-1491106668688179.jpg",
+  "fb-997369159356181.jpg"
+ ],
+ "self_videos": [
+  {
+   "key": "signature",
+   "file": "carzy-signature-suit-boss.mp4",
+   "poster": "carzy-signature-suit-boss-poster.jpg",
+   "w": 540,
+   "h": 960,
+   "duration": "PT55S",
+   "upload_date": "2026-11-05",
+   "source": "https://www.facebook.com/61585571236048/videos/1160334643197330"
+  },
+  {
+   "key": "classic190e",
+   "file": "carzy-classic-190e.mp4",
+   "poster": "carzy-classic-190e-poster.jpg",
+   "w": 540,
+   "h": 960,
+   "duration": "PT40S",
+   "upload_date": "2026-11-08",
+   "source": "https://www.facebook.com/61585571236048/videos/1146721151078018"
+  }
+ ],
+ "_embeds_note": "Click-to-load clips. One entry per clip: platform (facebook now; youtube/tiktok builders exist in build.py), url, thumb in media/, date, seconds, service slug ('' = no service page) and prefill topic key. Newest first.",
+ "embeds": [
+  {
+   "id": "1045226281867426",
+   "platform": "facebook",
+   "url": "https://www.facebook.com/61585571236048/videos/1045226281867426",
+   "thumb": "fb-1045226281867426.jpg",
+   "date": "2026-10",
+   "seconds": 35,
+   "service": ""
+  },
+  {
+   "id": "1773614920220424",
+   "platform": "facebook",
+   "url": "https://www.facebook.com/61585571236048/videos/1773614920220424",
+   "thumb": "fb-1773614920220424.jpg",
+   "date": "2026-09",
+   "seconds": 72,
+   "service": ""
+  },
+  {
+   "id": "2553325481847062",
+   "platform": "facebook",
+   "url": "https://www.facebook.com/61585571236048/videos/2553325481847062",
+   "thumb": "fb-2553325481847062.jpg",
+   "date": "2026-09",
+   "seconds": 83,
+   "service": "electrical-wiring-diagnosis"
+  },
+  {
+   "id": "1128044756568418",
+   "platform": "facebook",
+   "url": "https://www.facebook.com/61585571236048/videos/1128044756568418",
+   "thumb": "fb-1128044756568418.jpg",
+   "date": "2026-08",
+   "seconds": 28,
+   "service": "car-servicing-oil-change"
+  },
+  {
+   "id": "1358776602985089",
+   "platform": "facebook",
+   "url": "https://www.facebook.com/61585571236048/videos/1358776602985089",
+   "thumb": "fb-1358776602985089.jpg",
+   "date": "2026-08",
+   "seconds": 42,
+   "service": "suspension-brakes-exhaust"
+  },
+  {
+   "id": "1049619834456911",
+   "platform": "facebook",
+   "url": "https://www.facebook.com/61585571236048/videos/1049619834456911",
+   "thumb": "fb-1049619834456911.jpg",
+   "date": "2026-08",
+   "seconds": 49,
+   "service": "car-servicing-oil-change"
+  },
+  {
+   "id": "1534269351507322",
+   "platform": "facebook",
+   "url": "https://www.facebook.com/61585571236048/videos/1534269351507322",
+   "thumb": "fb-1534269351507322.jpg",
+   "date": "2026-08",
+   "seconds": 61,
+   "service": "engine-gearbox-repair"
+  },
+  {
+   "id": "1580829843577636",
+   "platform": "facebook",
+   "url": "https://www.facebook.com/reel/1580829843577636",
+   "thumb": "fb-1580829843577636.jpg",
+   "date": "2026-08",
+   "seconds": 71,
+   "service": "engine-gearbox-repair"
+  },
+  {
+   "id": "1491106668688179",
+   "platform": "facebook",
+   "url": "https://www.facebook.com/reel/1491106668688179",
+   "thumb": "fb-1491106668688179.jpg",
+   "date": "2026-06",
+   "seconds": 57,
+   "service": "electrical-wiring-diagnosis"
+  },
+  {
+   "id": "997369159356181",
+   "platform": "facebook",
+   "url": "https://www.facebook.com/reel/997369159356181",
+   "thumb": "fb-997369159356181.jpg",
+   "date": "2026-06",
+   "seconds": 46,
+   "service": "classic-continental-cars"
+  }
+ ],
+ "facebook_videos_url": "https://www.facebook.com/61585571236048/videos"
 }

@@ -1,13 +1,16 @@
-    <section class="page-hero">
-      <div class="wrap">
-        <nav class="crumbs" aria-label="{{crumb_aria}}">{{crumbs}}</nav>
-        <p class="eyebrow">{{eyebrow}}</p>
-        <h1>{{h1}}</h1>
-        <p class="lead">{{lead}}</p>
-        <div class="cta-row">
-          <a class="btn btn-wa" href="{{wa_primary}}" target="_blank" rel="noopener" data-cta="whatsapp_{{cta_id}}_top">{{wa_icon}}<span>{{whatsapp_now}}</span></a>
-          <a class="btn btn-ghost" href="tel:{{phone_e164}}" data-cta="call_{{cta_id}}_top">{{call_label}}</a>
-        </div>
+    <section class="page-hero{{hero_cls}}">
+      <div class="wrap ph-grid">
+        <div class="ph-text">
+          <nav class="crumbs" aria-label="{{crumb_aria}}">{{crumbs}}</nav>
+          <p class="eyebrow">{{eyebrow}}</p>
+          <h1>{{h1}}</h1>
+          <p class="lead">{{lead}}</p>
+          <div class="cta-row">
+            <a class="btn btn-wa" href="{{wa_primary}}" target="_blank" rel="noopener" data-cta="whatsapp_{{cta_id}}_top">{{wa_icon}}<span>{{whatsapp_now}}</span></a>
+            <a class="btn btn-outline-light" href="tel:{{phone_e164}}" data-cta="call_{{cta_id}}_top">{{call_label}}</a>
+          </div>
 {{trust}}
+        </div>
+{{side}}
       </div>
     </section>

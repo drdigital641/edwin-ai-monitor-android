@@ -76,7 +76,33 @@
   "map_title": "地图显示 Carzy World 位于巴生 Air Hitam",
   "map_load": "显示地图",
   "price_note": "我们没有公开价钱,因为每辆车和每个问题都不一样。请通过 WhatsApp 把车型和问题发给我们,我们会给你报价。",
-  "brands_note": "欢迎各种品牌的车子。"
+  "brands_note": "欢迎各种品牌的车子。",
+  "months": [
+   "1月",
+   "2月",
+   "3月",
+   "4月",
+   "5月",
+   "6月",
+   "7月",
+   "8月",
+   "9月",
+   "10月",
+   "11月",
+   "12月"
+  ],
+  "sound_on": "点按开启声音",
+  "sound_off": "声音已关闭",
+  "pause": "暂停视频",
+  "play": "播放视频",
+  "play_clip": "播放短片",
+  "video_note": "点按后,短片会从我们的 Facebook 专页播放。",
+  "watch_more": "到 Facebook 看更多",
+  "ask_this": "咨询这项服务",
+  "clip_aria": "我们车厂的视频短片",
+  "seconds": "{n}秒",
+  "service_tag": "服务",
+  "see_service": "了解这项服务"
  },
  "photos": {
   "shop-exterior": "Carzy World Sdn Bhd 位于巴生 Air Hitam Pusat Perniagaan Bestari 的店面,可见黄色招牌和开放的维修车位",
@@ -91,10 +117,10 @@
   "perodua-sedan-in-workshop": "一辆黑色 Perodua 房车停在 Carzy World 车厂里,备有机油和零件准备保养"
  },
  "home": {
-  "title": "巴生汽车保养与维修车厂 | Carzy World",
-  "description": "Carzy World Sdn Bhd 位于巴生 Air Hitam:汽车保养、换机油、引擎和波箱、冷气、刹车、线路故障、电动车及经典老爷车维修。Google 评分 5.0。WhatsApp +60 17-693 3936。",
+  "title": "巴生汽车维修厂与汽车保养 | Carzy World",
+  "description": "Carzy World Sdn Bhd 是位于巴生 Air Hitam 的汽车维修厂:汽车保养、换机油、引擎和波箱、冷气、刹车、线路故障、电动车及经典老爷车维修。Google 评分 5.0。WhatsApp +60 17-693 3936。",
   "eyebrow": "汽车专业服务中心 · 巴生",
-  "h1": "巴生值得信赖的汽车保养与维修",
+  "h1": "巴生汽车维修厂,值得信赖的汽车保养与维修",
   "lead": "Carzy World Sdn Bhd 是位于巴生 Air Hitam 的汽车车厂。我们处理保养和换机油、引擎和波箱维修、冷气、刹车和避震、棘手的线路故障、电动车以及经典老爷车。欢迎各种品牌的车子。",
   "hero_note": "把你的车型和问题 WhatsApp 给我们,我们会告诉你大概的情况。",
   "services_kicker": "我们的服务",
@@ -136,7 +162,20 @@
   "faq_kicker": "常见问题",
   "faq_h2": "大家常问的问题",
   "cta_h2": "告诉我们你的车子需要什么",
-  "cta_text": "把你的车型、年份和问题 WhatsApp 给我们。营业时间内也欢迎直接打电话。"
+  "cta_text": "把你的车型、年份和问题 WhatsApp 给我们。营业时间内也欢迎直接打电话。",
+  "hero_lead": "Carzy World Sdn Bhd 是位于巴生 Air Hitam 的汽车维修厂,提供汽车保养、维修和棘手故障的处理。欢迎各种品牌的车子。",
+  "hero_video_label": "我们的老板穿着西装在巴生 Carzy World 车厂修车",
+  "intro_h2": "保养、维修和疑难工作,一间车厂搞定",
+  "reels_kicker": "看看我们的工作",
+  "reels_h2": "车厂里的真实个案,视频为证",
+  "reels_lead": "每段短片都是我们做过的一份工作。点按即可观看,或通过 WhatsApp 咨询那项服务。",
+  "classic_kicker": "经典老爷车也欢迎",
+  "classic_h2": "经典车和欧洲车,同样用心对待",
+  "classic_text": "2026年11月,我们修复了一辆 1988 年的 Mercedes 190E 2.5-16。我们也接手有渗漏、警告灯亮和零件磨损的欧洲旧车。",
+  "classic_video_label": "Carzy World 修复 1988 年 Mercedes 190E 2.5-16 的过程",
+  "pick_kicker": "服务",
+  "pick_h2": "选择一项服务",
+  "photos_h2": "车厂内部"
  },
  "faqs": [
   {
@@ -451,7 +490,9 @@
     "text": "连另一间车厂的老板也把车子送来我们这里处理线路和棘手的问题。"
    }
   ],
-  "company_h2": "公司资料"
+  "company_h2": "公司资料",
+  "video_h2": "为什么穿西装?",
+  "video_text": "我们的老板穿着西装修车。这是他表示每一份工作都认真、专业地做好的方式。这就是他工作时的样子。"
  },
  "contact_page": {
   "title": "联络 Carzy World | 巴生 Air Hitam 汽车车厂",
@@ -476,5 +517,65 @@
   "pages": "页面",
   "reviews": "Google 评分:5.0,共 19 则评价(全部 5 星),2026年11月查看。",
   "offer": "优惠:新客户有 5% 折扣(须遵守条款)。没有公开其他价钱;请通过 WhatsApp 询问报价。"
+ },
+ "videos": {
+  "signature": {
+   "title": "我们的老板穿西装修车",
+   "caption": "和穿着西装修车的老板一起,度过车厂的一天。"
+  },
+  "classic190e": {
+   "title": "1988 年 Mercedes 190E 2.5-16 修复",
+   "caption": "一辆 1988 年经典 Mercedes 190E 2.5-16 的修复工作。"
+  },
+  "1045226281867426": {
+   "title": "第一次来 Carzy World?",
+   "caption": "为首次光临的客户快速介绍我们的车厂,首次客户可享 5% 新客户折扣(须遵守条款)。",
+   "topic": "新客户折扣"
+  },
+  "1773614920220424": {
+   "title": "严重的车祸损坏",
+   "caption": "修复一辆被其他车厂拒绝的严重车祸损坏车。",
+   "topic": "车祸损坏维修"
+  },
+  "2553325481847062": {
+   "title": "追查神秘故障",
+   "caption": "用电脑诊断找出一个反复出现的故障。",
+   "topic": "一个反复出现的故障"
+  },
+  "1128044756568418": {
+   "title": "引擎机油保养",
+   "caption": "一次例行的引擎机油更换,逐步介绍。",
+   "topic": "引擎机油保养"
+  },
+  "1358776602985089": {
+   "title": "避震工作",
+   "caption": "检查并更换磨损的避震零件。",
+   "topic": "避震维修"
+  },
+  "1049619834456911": {
+   "title": "机油保养配套",
+   "caption": "我们的机油保养配套包含什么,从机油到机油滤清器。",
+   "topic": "机油保养配套"
+  },
+  "1534269351507322": {
+   "title": "警告灯与隐藏的损坏",
+   "caption": "一盏警告灯,让我们发现了藏在车底的撞击损坏。",
+   "topic": "仪表板上的警告灯"
+  },
+  "1580829843577636": {
+   "title": "Proton X70 引擎大修",
+   "caption": "大修一辆跑了很多公里的 Proton X70 1.8 TGDI 引擎。",
+   "topic": "引擎大修"
+  },
+  "1491106668688179": {
+   "title": "电池一直没电",
+   "caption": "找出电池一直没电背后的电路故障,另外两间车厂都没能解决。",
+   "topic": "电池或电路故障"
+  },
+  "997369159356181": {
+   "title": "Audi TT 修复",
+   "caption": "修正 Audi TT 上不当的改装和磨损的避震。",
+   "topic": "修复我的车子"
+  }
  }
 }

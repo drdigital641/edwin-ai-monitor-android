@@ -158,17 +158,75 @@ def wa_icon():
     return TPL["wa_icon"].strip()
 
 
+# ------------------------------------------------------------------ video components
+SELF = {v["key"]: v for v in SITE["self_videos"]}
+CLIPS = {c["id"]: c for c in SITE["embeds"]}
+# One builder per platform: add a platform here once, then clips are one data entry each.
+EMBED = {
+    "facebook": lambda url: "https://www.facebook.com/plugins/video.php?href=" + quote(url, safe="") + "&show_text=false&autoplay=true&width=360",
+    "youtube": lambda url: "https://www.youtube-nocookie.com/embed/" + url.rstrip("/").split("/")[-1].split("v=")[-1] + "?autoplay=1",
+    "tiktok": lambda url: "https://www.tiktok.com/embed/v2/" + url.rstrip("/").split("/")[-1],
+}
+
+
+def media(L, path, file):
+    """Page-relative link into media/ (files uploaded to the server by hand)."""
+    return "../" * (L.prefix + path).count("/") + "media/" + file
+
+
+def month(L, ym):
+    y, m = ym.split("-")
+    return L.ui["months"][int(m) - 1] + " " + y
+
+
+def facade(L, path, clip):
+    v = L.s["videos"][clip["id"]]
+    return fill("embed_facade", url=E(clip["url"]), embed=E(EMBED[clip["platform"]](clip["url"])), title=E(v["title"]),
+                play_clip=E(L.ui["play_clip"]), thumb=media(L, path, clip["thumb"]), dur=E(L.ui["seconds"].replace("{n}", str(clip["seconds"])))).strip()
+
+
+def clip_card(L, path, clip, show_more=True):
+    v = L.s["videos"][clip["id"]]
+    tag = more = ""
+    if clip["service"]:
+        sv = L.s["services"][clip["service"]]
+        tag = f' · <span class="tag">{E(sv["short"])}</span>'
+        if show_more:
+            more = f' <a class="link" href="{L.url("services/" + clip["service"] + "/")}">{E(L.ui["see_service"])} →</a>'
+    return fill("clip_card", facade=facade(L, path, clip), date=E(month(L, clip["date"])), tag=tag, title=E(v["title"]), caption=E(v["caption"]),
+                wa=L.wa("service", v["topic"]), id=clip["id"], wa_icon=wa_icon(), ask_this=E(L.ui["ask_this"]), more=more).rstrip("\n")
+
+
+def clip_strip(L, path, ids, show_more=True):
+    cards = "\n".join(clip_card(L, path, CLIPS[i], show_more) for i in ids)
+    return (f'        <div class="reels" role="region" aria-label="{E(L.ui["clip_aria"])}" tabindex="0">\n{cards}\n        </div>\n'
+            f'        <p class="note">{E(L.ui["video_note"])} <a class="link" href="{E(SITE["facebook_videos_url"])}" target="_blank" rel="noopener">{E(L.ui["watch_more"])} →</a></p>\n')
+
+
+def video_click(L, path, key, label, caption):
+    v = SELF[key]
+    return fill("video_click", poster=media(L, path, v["poster"]), label=E(label), src=media(L, path, v["file"]), caption=E(caption)).strip()
+
+
+def video_node(L, key):
+    v, t = SELF[key], L.s["videos"][key]
+    return {"@type": "VideoObject", "name": t["title"], "description": t["caption"], "thumbnailUrl": abs_url("", "media/" + v["poster"]),
+            "contentUrl": abs_url("", "media/" + v["file"]), "uploadDate": v["upload_date"], "duration": v["duration"],
+            "inLanguage": L.s["meta"]["schema_lang"], "publisher": {"@id": BIZ["site_url"] + "#business"}}
+
+
+# ------------------------------------------------------------------ shared blocks
 def trust(L):
     ui = L.ui
     return fill("trust_strip", maps_url=E(BIZ["maps_url"]), stars_aria=E(ui["stars_aria"]), rating_line=E(ui["rating_line"]),
                 hours_short=E(ui["hours_short"]), location_short=E(ui["location_short"]), brands_short=E(ui["brands_short"])).rstrip("\n")
 
 
-def page_hero(L, crumbs, eyebrow, h1, lead, cta_id, wa):
+def page_hero(L, crumbs, eyebrow, h1, lead, cta_id, wa, side=""):
     links = [f'<a href="{L.url(p)}">{E(t)}</a>' for p, t in crumbs[:-1]] + [f'<span aria-current="page">{E(crumbs[-1][1])}</span>']
-    return fill("page_hero", crumb_aria=E(L.ui["breadcrumb_aria"]), crumbs=" / ".join(links), eyebrow=E(eyebrow), h1=E(h1), lead=E(lead),
-                cta_id=cta_id, wa_primary=wa, wa_icon=wa_icon(), whatsapp_now=E(L.ui["whatsapp_now"]), phone_e164=BIZ["phone_e164"],
-                call_label=L.call_label(), trust=trust(L))
+    return fill("page_hero", hero_cls=" has-side" if side else "", crumb_aria=E(L.ui["breadcrumb_aria"]), crumbs=" / ".join(links), eyebrow=E(eyebrow),
+                h1=E(h1), lead=E(lead), cta_id=cta_id, wa_primary=wa, wa_icon=wa_icon(), whatsapp_now=E(L.ui["whatsapp_now"]),
+                phone_e164=BIZ["phone_e164"], call_label=L.call_label(), trust=trust(L), side=f'        <div class="ph-side">{side}</div>' if side else "")
 
 
 def cta_band(L, cta_id, wa=None):
@@ -197,7 +255,7 @@ def service_cards(L, skip=None):
 def review_cards(L, limit=None):
     out = [fill("review_card", stars_aria=E(L.ui["stars_aria"]), text=E(r["text"]), name=E(r["name"]), on_google=E(L.ui["on_google"])).rstrip("\n")
            for r in SITE["reviews"][:limit]]
-    return ('        <div class="cards cards-reviews">\n' + "\n".join(out) + "\n        </div>\n"
+    return ('        <div class="quotes">\n' + "\n".join(out) + "\n        </div>\n"
             f'        <p class="note">{E(L.ui["review_note"])} <a class="link" href="{E(BIZ["maps_url"])}" target="_blank" rel="noopener">{E(L.ui["read_reviews"])} →</a></p>\n')
 
 
@@ -222,7 +280,7 @@ def kh2(kicker, h2):
 
 
 def visit_block(L, with_map=False):
-    ui, h = L.ui, L.s["home"]
+    ui = L.ui
     left = (f'          <div class="visit-info">\n'
             f'            <p><b>{E(ui["address_label"])}</b><br><span class="addr">{E(BIZ["address_full"])}</span></p>\n'
             f'            <p><b>{E(ui["phone_label"])}</b><br><a class="link" href="{L.wa("general")}" target="_blank" rel="noopener" data-cta="whatsapp_visit">{E(BIZ["phone_display"])}</a></p>\n'
@@ -237,6 +295,17 @@ def visit_block(L, with_map=False):
     else:
         right = f'          <a class="visit-photo" href="{E(BIZ["maps_url"])}" target="_blank" rel="noopener">{photo(L, "shop-exterior")}</a>\n'
     return f'        <div class="split visit">\n{left}{right}        </div>\n'
+
+
+def photo_strip(L):
+    figs = "".join(f'          <figure>{photo(L, k, "(max-width: 700px) 60vw, 25vw")}</figure>\n' for k in SITE["gallery"])
+    return f'        <div class="photo-strip">\n{figs}        </div>\n'
+
+
+def service_pills(L):
+    pills = "".join(f'          <a class="pill-link" href="{L.url("services/" + m["slug"] + "/")}"><span aria-hidden="true">{m["icon"]}</span>{E(L.s["services"][m["slug"]]["title"])}</a>\n'
+                    for m in SITE["services"])
+    return f'        <div class="pill-grid">\n{pills}        </div>\n'
 
 
 # ------------------------------------------------------------------ page shell
@@ -276,43 +345,40 @@ def page(L, path, title, description, body, graph_extra=(), current="", body_cla
 # ------------------------------------------------------------------ pages
 def build_home(L):
     s, h, ui = L.s, L.s["home"], L.ui
-    hero_img = PHOTO["shop-exterior"]["file"][:-5]
-    preload = (f'  <link rel="preload" as="image" href="{BASE}img/{hero_img}.webp" imagesrcset="{BASE}img/{hero_img}-640.webp 640w, '
-               f'{BASE}img/{hero_img}.webp {SIZES["shop-exterior"][0]}w" imagesizes="(max-width: 860px) 100vw, 50vw" fetchpriority="high">\n')
-    body = f'''    <section class="hero">
-      <div class="wrap hero-grid">
-        <div class="hero-text">
-          <p class="eyebrow">{E(h["eyebrow"])}</p>
-          <h1>{E(h["h1"])}</h1>
-          <p class="lead">{E(h["lead"])}</p>
-          <div class="cta-row">
-            <a class="btn btn-wa btn-big" href="{L.wa("general")}" target="_blank" rel="noopener" data-cta="whatsapp_home_hero">{wa_icon()}<span>{E(ui["whatsapp_now"])}</span></a>
-            <a class="btn btn-ghost" href="tel:{BIZ["phone_e164"]}" data-cta="call_home_hero">{L.call_label()}</a>
-          </div>
-          <p class="hero-note">{E(h["hero_note"])}</p>
-          <p class="offer-pill"><b>{E(ui["discount_badge"])}</b> · <a href="{L.wa("discount")}" target="_blank" rel="noopener" data-cta="whatsapp_home_discount">{E(ui["discount_terms"])}</a></p>
-        </div>
-        <figure class="hero-photo">{photo(L, "shop-exterior", "(max-width: 860px) 100vw, 50vw", eager=True)}</figure>
-      </div>
-      <div class="wrap">
-{trust(L)}
-      </div>
-    </section>
-'''
-    body += section(kh2(h["services_kicker"], h["services_h2"]) + f'        <p class="section-lead">{E(h["services_lead"])}</p>\n' + service_cards(L)
-                    + f'        <p class="note center"><a class="link" href="{L.url("services/")}">{E(ui["all_services"])} →</a></p>\n', alt="tint-a")
-    work = "".join(f'          <a class="card work" href="{L.url("services/" + w["service"] + "/")}"><span class="svc-icon" aria-hidden="true">{w["icon"]}</span>'
-                   f'<p class="when">{E(h["work"][w["key"]]["when"])}</p><h3>{E(h["work"][w["key"]]["title"])}</h3><p>{E(h["work"][w["key"]]["text"])}</p></a>\n'
+    path = ""
+    sig = SELF["signature"]
+    preload = f'  <link rel="preload" as="image" href="{media(L, path, sig["poster"])}" fetchpriority="high">\n'
+    body = fill("hero_video", poster=media(L, path, sig["poster"]), video_label=E(h["hero_video_label"]), src=media(L, path, sig["file"]),
+                sound_on=E(ui["sound_on"]), sound_off=E(ui["sound_off"]), play=E(ui["play"]), pause=E(ui["pause"]), eyebrow=E(h["eyebrow"]),
+                h1=E(h["h1"]), lead=E(h["hero_lead"]), wa=L.wa("general"), wa_icon=wa_icon(), whatsapp_now=E(ui["whatsapp_now"]),
+                phone_e164=BIZ["phone_e164"], call_label=L.call_label(), discount_badge=E(ui["discount_badge"]),
+                discount_terms=E(ui["discount_terms"]), wa_discount=L.wa("discount"))
+    body += f'    <div class="ribbon">\n      <div class="wrap">\n{trust(L)}\n      </div>\n    </div>\n'
+    body += section(f'        <div class="intro">\n          <div>\n            <h2>{E(h["intro_h2"])}</h2>\n            <p class="section-lead">{E(h["lead"])}</p>\n'
+                    f'            <p class="hero-note">{E(h["hero_note"])}</p>\n          </div>\n          <div>\n            <p class="kicker">{E(h["pick_kicker"])}</p>\n'
+                    f'            <h3>{E(h["pick_h2"])}</h3>\n{service_pills(L)}          </div>\n        </div>\n', alt="tint-a")
+    body += section(kh2(h["reels_kicker"], h["reels_h2"]) + f'        <p class="section-lead">{E(h["reels_lead"])}</p>\n'
+                    + clip_strip(L, path, [c["id"] for c in SITE["embeds"]]), alt="dark", sid="videos")
+    w201 = h["work"]["w201"]
+    body += section(f'        <div class="classic">\n          <div class="classic-video">{video_click(L, path, "classic190e", h["classic_video_label"], L.s["videos"]["classic190e"]["caption"])}</div>\n'
+                    f'          <div>\n            <p class="kicker">{E(h["classic_kicker"])}</p>\n            <h2>{E(h["classic_h2"])}</h2>\n'
+                    f'            <p>{E(h["classic_text"])}</p>\n            <p class="when-line">{E(w201["when"])} · {E(w201["title"])}</p>\n'
+                    f'            <div class="cta-row"><a class="btn btn-wa" href="{L.wa("service", L.s["services"]["classic-continental-cars"]["prefill_topic"])}" target="_blank" rel="noopener" data-cta="whatsapp_home_classic">{wa_icon()}<span>{E(ui["whatsapp_now"])}</span></a>'
+                    f'<a class="btn btn-ghost" href="{L.url("services/classic-continental-cars/")}">{E(L.s["services"]["classic-continental-cars"]["short"])} →</a></div>\n'
+                    f'          </div>\n        </div>\n', alt="tint-b")
+    work = "".join(f'          <li><a href="{L.url("services/" + w["service"] + "/")}"><span class="wl-when">{E(h["work"][w["key"]]["when"])}</span>'
+                   f'<span class="wl-body"><b>{E(h["work"][w["key"]]["title"])}</b> {E(h["work"][w["key"]]["text"])}</span></a></li>\n'
                    for w in SITE["recent_work"])
-    gallery = "".join(f'          <figure>{photo(L, k, "(max-width: 700px) 50vw, 25vw")}</figure>\n' for k in SITE["gallery"])
-    body += section(kh2(h["work_kicker"], h["work_h2"]) + f'        <p class="section-lead">{E(h["work_lead"])}</p>\n'
-                    f'        <div class="cards cards-work">\n{work}        </div>\n        <p class="suit">{E(h["suit_line"])}</p>\n'
-                    f'        <h3 class="gallery-h">{E(h["gallery_h2"])}</h3>\n        <div class="gallery">\n{gallery}        </div>\n', sid="work")
-    body += section(kh2(h["reviews_kicker"], h["reviews_h2"]) + f'        <p class="section-lead">{E(h["reviews_lead"])}</p>\n' + review_cards(L), alt="tint-b", sid="reviews")
+    body += section(kh2(h["work_kicker"], h["work_h2"]) + f'        <ol class="worklog">\n{work}        </ol>\n        <p class="suit">{E(h["suit_line"])}</p>\n'
+                    f'        <h3 class="gallery-h">{E(h["photos_h2"])}</h3>\n' + photo_strip(L), sid="work")
+    body += section(f'        <div class="reviews-head">\n          <p class="big-score"><span>5.0</span><span class="stars" aria-label="{E(ui["stars_aria"])}">★★★★★</span></p>\n'
+                    f'          <div>\n            <p class="kicker">{E(h["reviews_kicker"])}</p>\n            <h2>{E(h["reviews_h2"])}</h2>\n'
+                    f'            <p class="section-lead">{E(h["reviews_lead"])}</p>\n          </div>\n        </div>\n' + review_cards(L), alt="tint-a", sid="reviews")
     body += section(kh2(h["visit_kicker"], h["visit_h2"]) + f'        <p class="section-lead">{E(h["visit_text"])}</p>\n' + visit_block(L), sid="visit")
     faqs = s["faqs"][:SITE["home_faq_count"]]
     body += faq_block(L, faqs, h["faq_h2"], alt=True)
-    page(L, "", h["title"], h["description"], body, graph_extra=[faq_node(L, faqs)], body_class="home", cta=cta_band(L, "home"), preload=preload)
+    page(L, path, h["title"], h["description"], body, graph_extra=[faq_node(L, faqs), video_node(L, "signature"), video_node(L, "classic190e")],
+         body_class="home", cta=cta_band(L, "home"), preload=preload)
 
 
 def build_services(L):
@@ -320,6 +386,7 @@ def build_services(L):
     crumbs = [("", ui["nav"]["home"]), ("services/", ui["nav"]["services"])]
     body = page_hero(L, crumbs, sp["eyebrow"], sp["h1"], sp["lead"], "services", L.wa("booking"))
     body += section(f'        <h2>{E(sp["list_h2"])}</h2>\n' + service_cards(L) + f'        <p class="note center">{E(ui["price_note"])}</p>\n', alt="tint-a")
+    body += section(kh2(s["home"]["reels_kicker"], s["home"]["reels_h2"]) + clip_strip(L, "services/", [c["id"] for c in SITE["embeds"] if c["service"]]), alt="dark")
     page(L, "services/", sp["title"], sp["description"], body, graph_extra=[crumbs_node(L, crumbs)], current="services/", cta=cta_band(L, "services"))
 
     for m in SITE["services"]:
@@ -328,12 +395,18 @@ def build_services(L):
         cid = "svc_" + m["slug"].replace("-", "_")
         wa = L.wa("service", sv["prefill_topic"])
         crumbs_p = crumbs + [(path, sv["short"])]
-        body = page_hero(L, crumbs_p, sp["eyebrow"], sv["h1"], sv["intro"], cid, wa)
-        inner = (f'        <div class="split">\n          <div>\n            <h2>{E(sv["covers_h2"])}</h2>\n            {ticks(sv["covers"])}\n'
-                 f'            <h2>{E(sv["signs_h2"])}</h2>\n            {ticks(sv["signs"])}\n            <p>{E(sv["body"])}</p>\n'
-                 f'            <p class="note">{E(ui["brands_note"])} {E(ui["price_note"])}</p>\n          </div>\n'
-                 f'          <figure class="side-photo">{photo(L, m["photo"])}</figure>\n        </div>\n')
+        clips = m["clips"]
+        side = (f'<figure class="clip-solo">{facade(L, path, CLIPS[clips[0]])}<figcaption>{E(L.s["videos"][clips[0]]["caption"])}</figcaption></figure>'
+                if clips else f'<figure class="side-photo">{photo(L, m["photo"])}</figure>')
+        body = page_hero(L, crumbs_p, sp["eyebrow"], sv["h1"], sv["intro"], cid, wa, side=side)
+        inner = (f'        <div class="split">\n          <div>\n            <h2>{E(sv["covers_h2"])}</h2>\n            {ticks(sv["covers"])}\n          </div>\n'
+                 f'          <div>\n            <h2>{E(sv["signs_h2"])}</h2>\n            {ticks(sv["signs"])}\n          </div>\n        </div>\n'
+                 f'        <p class="section-lead">{E(sv["body"])}</p>\n        <p class="note">{E(ui["brands_note"])} {E(ui["price_note"])}</p>\n')
         body += section(inner, alt="tint-a")
+        if len(clips) > 1:
+            body += section(kh2(s["home"]["reels_kicker"], sv["title"]) + clip_strip(L, path, clips[1:], show_more=False), alt="dark")
+        elif clips:
+            body += section(f'        <figure class="photo-wide">{photo(L, m["photo"], "(max-width: 860px) 100vw, 1100px")}</figure>\n', narrow=True)
         body += faq_block(L, sv["faqs"], sp["faq_h2"].replace("{name}", sv["short"]))
         body += section(kh2(ui["related_kicker"], ui["related_h2"]) + service_cards(L, skip=m["slug"]), alt="tint-b")
         service = {"@type": "Service", "name": sv["title"], "serviceType": sv["title"], "description": sv["intro"],
@@ -344,11 +417,14 @@ def build_services(L):
 
 def build_about(L):
     s, ui, ap = L.s, L.ui, L.s["about_page"]
-    crumbs = [("", ui["nav"]["home"]), ("about/", ui["nav"]["about"])]
-    body = page_hero(L, crumbs, ap["eyebrow"], ap["h1"], ap["lead"], "about", L.wa("general"))
+    path = "about/"
+    crumbs = [("", ui["nav"]["home"]), (path, ui["nav"]["about"])]
+    body = page_hero(L, crumbs, ap["eyebrow"], ap["h1"], ap["lead"], "about", L.wa("general"),
+                     side=f'<figure class="side-photo">{photo(L, "shop-exterior", eager=True)}</figure>')
     story = "".join(f"            <p>{E(p)}</p>\n" for p in ap["paras"])
-    body += section(f'        <div class="split">\n          <div>\n            <h2>{E(ap["story_h2"])}</h2>\n{story}          </div>\n'
-                    f'          <figure class="side-photo">{photo(L, "shop-exterior")}</figure>\n        </div>\n', alt="tint-a")
+    body += section(f'        <div class="split">\n          <div>\n            <h2>{E(ap["story_h2"])}</h2>\n{story}'
+                    f'            <h3>{E(ap["video_h2"])}</h3>\n            <p>{E(ap["video_text"])}</p>\n          </div>\n'
+                    f'          <div class="classic-video">{video_click(L, path, "signature", s["home"]["hero_video_label"], s["videos"]["signature"]["caption"])}</div>\n        </div>\n', alt="tint-a")
     vals = "".join(f'          <div class="card"><h3>{E(v["title"])}</h3><p>{E(v["text"])}</p></div>\n' for v in ap["values"])
     body += section(f'        <h2>{E(ap["values_h2"])}</h2>\n        <div class="cards cards-four">\n{vals}        </div>\n')
     body += section(kh2(s["home"]["reviews_kicker"], s["home"]["reviews_h2"]) + review_cards(L, 3), alt="tint-b")
@@ -358,7 +434,7 @@ def build_about(L):
                f'          <dt>{E(ui["phone_label"])}</dt><dd>{E(BIZ["phone_display"])}</dd>\n'
                f'          <dt>{E(ui["email_label"])}</dt><dd>{E(BIZ["email"])}</dd>\n        </dl>\n')
     body += section(details, narrow=True)
-    page(L, "about/", ap["title"], ap["description"], body, graph_extra=[crumbs_node(L, crumbs)], current="about/", cta=cta_band(L, "about"))
+    page(L, path, ap["title"], ap["description"], body, graph_extra=[crumbs_node(L, crumbs), video_node(L, "signature")], current="about/", cta=cta_band(L, "about"))
 
 
 def build_contact(L):

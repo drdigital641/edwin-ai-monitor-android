@@ -76,7 +76,33 @@
   "map_title": "Peta menunjukkan Carzy World di Air Hitam, Klang",
   "map_load": "Papar peta",
   "price_note": "Kami tak letak harga di sini sebab setiap kereta dan masalah lain-lain. Hantar model kereta dan masalah anda melalui WhatsApp untuk dapatkan sebut harga.",
-  "brands_note": "Semua jenama kereta dialu-alukan."
+  "brands_note": "Semua jenama kereta dialu-alukan.",
+  "months": [
+   "Jan",
+   "Feb",
+   "Mac",
+   "Apr",
+   "Mei",
+   "Jun",
+   "Jul",
+   "Ogo",
+   "Sep",
+   "Okt",
+   "Nov",
+   "Dis"
+  ],
+  "sound_on": "Tekan untuk bunyi",
+  "sound_off": "Bunyi dimatikan",
+  "pause": "Jeda video",
+  "play": "Main video",
+  "play_clip": "Main klip",
+  "video_note": "Klip dimainkan dari laman Facebook kami bila anda tekan.",
+  "watch_more": "Tonton lagi di Facebook",
+  "ask_this": "Tanya pasal ini",
+  "clip_aria": "Klip video dari bengkel kami",
+  "seconds": "{n}s",
+  "service_tag": "Servis",
+  "see_service": "Tentang servis ini"
  },
  "photos": {
   "shop-exterior": "Bahagian hadapan kedai Carzy World Sdn Bhd di Pusat Perniagaan Bestari, Air Hitam, Klang, dengan papan tanda kuning dan ruang servis yang terbuka",
@@ -91,10 +117,10 @@
   "perodua-sedan-in-workshop": "Sebuah sedan Perodua hitam di bengkel Carzy World dengan minyak dan alat ganti untuk servis"
  },
  "home": {
-  "title": "Bengkel Servis dan Repair Kereta di Klang | Carzy World",
-  "description": "Carzy World Sdn Bhd di Air Hitam, Klang: servis kereta, tukar minyak hitam, enjin dan gearbox, aircond, brek, masalah pendawaian, repair kereta EV dan kereta klasik. 5.0 di Google. WhatsApp +60 17-693 3936.",
+  "title": "Bengkel Kereta & Servis Kereta di Klang | Carzy World",
+  "description": "Carzy World Sdn Bhd ialah bengkel kereta di Air Hitam, Klang: servis kereta, tukar minyak hitam, enjin dan gearbox, aircond, brek, masalah pendawaian, repair kereta EV dan kereta klasik. 5.0 di Google. WhatsApp +60 17-693 3936.",
   "eyebrow": "Pusat Servis Pakar Automotif · Klang",
-  "h1": "Servis dan pembaikan kereta di Klang yang boleh dipercayai",
+  "h1": "Bengkel kereta di Klang untuk servis kereta dan repair yang boleh dipercayai",
   "lead": "Carzy World Sdn Bhd ialah bengkel kereta di Air Hitam, Klang. Kami buat servis dan tukar minyak hitam, repair enjin dan gearbox, aircond, brek dan suspension, masalah pendawaian yang susah, kereta EV dan kereta klasik. Semua jenama kereta dialu-alukan.",
   "hero_note": "WhatsApp model kereta dan masalah anda. Kami akan beritahu apa yang anda boleh jangka.",
   "services_kicker": "Apa kami buat",
@@ -136,7 +162,20 @@
   "faq_kicker": "Soalan lazim",
   "faq_h2": "Soalan yang selalu ditanya",
   "cta_h2": "Beritahu kami apa yang kereta anda perlukan",
-  "cta_text": "WhatsApp model kereta, tahun dan masalahnya. Boleh telefon juga waktu operasi."
+  "cta_text": "WhatsApp model kereta, tahun dan masalahnya. Boleh telefon juga waktu operasi.",
+  "hero_lead": "Carzy World Sdn Bhd ialah bengkel kereta di Air Hitam, Klang, untuk servis kereta, repair dan masalah yang susah. Semua jenama kereta dialu-alukan.",
+  "hero_video_label": "Bos kami sedang buat kerja dengan memakai sut, di bengkel Carzy World di Klang",
+  "intro_h2": "Satu bengkel untuk servis, repair dan kerja yang susah",
+  "reels_kicker": "Tengok kerja kami",
+  "reels_h2": "Kerja sebenar dari bengkel kami, dalam video",
+  "reels_lead": "Setiap klip tunjuk satu kerja yang kami buat. Tekan untuk tonton, atau tanya kami pasal servis itu di WhatsApp.",
+  "classic_kicker": "Kereta klasik pun boleh",
+  "classic_h2": "Kereta klasik dan kereta Eropah dapat layanan yang sama",
+  "classic_text": "Pada November 2026 kami buat kerja pemulihan Mercedes 190E 2.5-16 tahun 1988. Kami juga terima kereta Eropah lama yang ada kebocoran, lampu amaran dan komponen haus.",
+  "classic_video_label": "Kerja pemulihan Mercedes 190E 2.5-16 tahun 1988 di Carzy World",
+  "pick_kicker": "Perkhidmatan",
+  "pick_h2": "Pilih satu servis",
+  "photos_h2": "Dalam bengkel kami"
  },
  "faqs": [
   {
@@ -451,7 +490,9 @@
     "text": "Pemilik bengkel lain pun hantar kereta kepada kami untuk masalah pendawaian dan masalah susah."
    }
   ],
-  "company_h2": "Maklumat syarikat"
+  "company_h2": "Maklumat syarikat",
+  "video_h2": "Kenapa pakai sut?",
+  "video_text": "Bos kami buat kerja kereta dengan memakai sut. Itu caranya tunjuk yang setiap kerja dibuat dengan betul dan profesional. Ini dia sedang buat kerja."
  },
  "contact_page": {
   "title": "Hubungi Carzy World | Bengkel Kereta di Air Hitam, Klang",
@@ -476,5 +517,65 @@
   "pages": "Halaman",
   "reviews": "Penilaian Google: 5.0 daripada 19 ulasan (semuanya 5 bintang), disemak November 2026.",
   "offer": "Tawaran: pelanggan baru dapat diskaun 5% (tertakluk pada terma). Tiada harga lain diterbitkan; tanya di WhatsApp untuk sebut harga."
+ },
+ "videos": {
+  "signature": {
+   "title": "Bos kami sedang buat kerja dengan memakai sut",
+   "caption": "Sehari di bengkel bersama bos kami, yang buat kerja kereta dengan memakai sut."
+  },
+  "classic190e": {
+   "title": "Pemulihan Mercedes 190E 2.5-16 tahun 1988",
+   "caption": "Kerja pemulihan sebuah Mercedes 190E 2.5-16 klasik tahun 1988."
+  },
+  "1045226281867426": {
+   "title": "Baru dengan Carzy World?",
+   "caption": "Tengok sekejap bengkel kami untuk pelanggan kali pertama, yang dapat diskaun 5% pelanggan baru (tertakluk pada terma).",
+   "topic": "diskaun pelanggan baru"
+  },
+  "1773614920220424": {
+   "title": "Kerosakan kemalangan yang teruk",
+   "caption": "Repair kereta yang rosak teruk akibat kemalangan, yang ditolak oleh bengkel lain.",
+   "topic": "repair kerosakan kemalangan"
+  },
+  "2553325481847062": {
+   "title": "Mengesan masalah misteri",
+   "caption": "Guna diagnostik untuk cari masalah yang asyik berulang.",
+   "topic": "masalah yang asyik berulang"
+  },
+  "1128044756568418": {
+   "title": "Servis minyak enjin",
+   "caption": "Tukar minyak enjin biasa, langkah demi langkah.",
+   "topic": "servis minyak enjin"
+  },
+  "1358776602985089": {
+   "title": "Kerja suspension",
+   "caption": "Periksa dan tukar komponen suspension yang haus.",
+   "topic": "repair suspension"
+  },
+  "1049619834456911": {
+   "title": "Pakej servis minyak",
+   "caption": "Apa yang ada dalam pakej servis minyak kami, dari minyak sampai penapis.",
+   "topic": "pakej servis minyak"
+  },
+  "1534269351507322": {
+   "title": "Lampu amaran dan kerosakan tersembunyi",
+   "caption": "Lampu amaran bawa kami kepada kerosakan akibat rempuhan yang tersembunyi di bawah kereta.",
+   "topic": "lampu amaran di dashboard saya"
+  },
+  "1580829843577636": {
+   "title": "Overhaul enjin Proton X70",
+   "caption": "Overhaul enjin Proton X70 1.8 TGDI yang dah banyak jarak perjalanan.",
+   "topic": "overhaul enjin"
+  },
+  "1491106668688179": {
+   "title": "Bateri asyik mati",
+   "caption": "Cari punca masalah elektrik di sebalik bateri yang asyik mati, yang dua bengkel lain tak dapat selesaikan.",
+   "topic": "masalah bateri atau elektrik"
+  },
+  "997369159356181": {
+   "title": "Pemulihan Audi TT",
+   "caption": "Betulkan ubah suai yang teruk dan suspension yang haus pada sebuah Audi TT.",
+   "topic": "pemulihan kereta saya"
+  }
  }
 }

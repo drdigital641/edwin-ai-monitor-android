@@ -21,6 +21,7 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parent.parent
 SITE = ROOT / "site"
 BIZ = json.loads((ROOT / "data" / "business.json").read_text(encoding="utf-8"))
+SITE_DATA = json.loads((ROOT / "data" / "site.json").read_text(encoding="utf-8"))
 STR = {p.stem: json.loads(p.read_text(encoding="utf-8")) for p in (ROOT / "strings").glob("*.json")}
 terms = [t.strip() for t in (ROOT / "data" / "blocklist.txt").read_text(encoding="utf-8").splitlines() if t.strip() and not t.startswith("#")]
 problems, hits = [], []
@@ -96,8 +97,21 @@ for p in pages:
         if not alt or not alt.group(1).strip():
             problems.append(f"{rel}: image without alt: {img[:80]}")
         src = re.search(r'src="([^"?]+)', img).group(1)
-        if not (SITE / src[len(BIZ["base_path"]):]).exists():
+        if "media/" in src:
+            if src.split("media/")[-1] not in SITE_DATA["server_media"]:
+                problems.append(f"{rel}: media file not on the server list: {src}")
+        elif not (SITE / src[len(BIZ["base_path"]):]).exists():
             problems.append(f"{rel}: missing image {src}")
+    # media links: page-relative, resolve to <site>/media/<known file>
+    depth = len(rel.parts) - 1
+    for m in re.findall(r'(?:src|poster|href)="((?:\.\./)*)media/([^"]+)"', h):
+        if len(m[0]) // 3 != depth or m[1] not in SITE_DATA["server_media"]:
+            problems.append(f"{rel}: bad media link {m[0]}media/{m[1]}")
+    # facades: no third-party video request before a tap
+    if re.search(r'<(?:iframe|script)[^>]+src="https://[^"]*(facebook|youtube|tiktok)', h):
+        problems.append(f"{rel}: video platform loads before a tap")
+    if rel.name == "index.html" and len(rel.parts) <= 2 and rel.parts[0] in ("index.html", "ms", "zh") and "VideoObject" not in types:
+        problems.append(f"{rel}: homepage without VideoObject")
     for ref in re.findall(r'(?:href|src)="([^"]+\.(?:css|js)[^"]*)"', h):
         if "?v=" not in ref:
             problems.append(f"{rel}: asset without ?v= {ref}")

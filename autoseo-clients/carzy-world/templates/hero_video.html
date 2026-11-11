@@ -1,0 +1,19 @@
+    <section class="vhero">
+      <div class="vhero-media">
+        <video class="vhero-video" id="hero-video" muted loop playsinline preload="none" poster="{{poster}}" width="540" height="960" aria-label="{{video_label}}"><source src="{{src}}" type="video/mp4"></video>
+        <div class="vid-controls">
+          <button type="button" class="vid-btn" data-sound data-on="{{sound_on}}" data-off="{{sound_off}}" aria-pressed="false"><span aria-hidden="true">🔊</span> <span class="lbl">{{sound_on}}</span></button>
+          <button type="button" class="vid-btn vid-toggle" data-toggle data-play="{{play}}" data-pause="{{pause}}" aria-label="{{play}}"><span aria-hidden="true">▶</span></button>
+        </div>
+      </div>
+      <div class="vhero-text">
+        <p class="eyebrow">{{eyebrow}}</p>
+        <h1>{{h1}}</h1>
+        <p class="lead">{{lead}}</p>
+        <div class="cta-row">
+          <a class="btn btn-wa btn-big" href="{{wa}}" target="_blank" rel="noopener" data-cta="whatsapp_home_hero">{{wa_icon}}<span>{{whatsapp_now}}</span></a>
+          <a class="btn btn-outline-light" href="tel:{{phone_e164}}" data-cta="call_home_hero">{{call_label}}</a>
+        </div>
+        <p class="offer-pill"><b>{{discount_badge}}</b> · <a href="{{wa_discount}}" target="_blank" rel="noopener" data-cta="whatsapp_home_discount">{{discount_terms}}</a></p>
+      </div>
+    </section>
