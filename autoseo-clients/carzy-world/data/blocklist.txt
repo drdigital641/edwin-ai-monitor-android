@@ -1,0 +1,27 @@
+# The build stops if any line below appears (case-insensitive) in any built or source file.
+# White label: no agency or other-client names.
+Page One
+pageone
+Edwin
+Dr Digital
+drdigital
+sgcarworkshop
+SG Garage
+sggarage
+Singapore
+S$
++65
+wa.me/65
+# Claims we must not make (brief, 11 Nov 2026)
+No.1
+No. 1
+cheapest
+best workshop
+authorised
+authorized
+certified
+warranty-approved
+dealer
+# Brand names on the signboard that are not in the brief
+Alpine
+Mr Jon

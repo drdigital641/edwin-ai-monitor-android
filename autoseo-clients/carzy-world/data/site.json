@@ -1,0 +1,44 @@
+{
+ "_readme": "Page structure shared by every language: order, slugs, icons and photos. Text lives in strings/<lang>.json.",
+ "languages": [
+  {"code": "en", "prefix": ""},
+  {"code": "ms", "prefix": "ms/"},
+  {"code": "zh", "prefix": "zh/"}
+ ],
+ "services": [
+  {"slug": "car-servicing-oil-change", "icon": "🛢️", "photo": "bmw-in-workshop"},
+  {"slug": "engine-gearbox-repair", "icon": "⚙️", "photo": "engine-work-closeup"},
+  {"slug": "car-aircond-service", "icon": "❄️", "photo": "toyota-mpv-in-workshop"},
+  {"slug": "suspension-brakes-exhaust", "icon": "🛞", "photo": "perodua-sedan-in-workshop"},
+  {"slug": "electrical-wiring-diagnosis", "icon": "🔌", "photo": "engine-work-closeup"},
+  {"slug": "ev-repair", "icon": "🔋", "photo": "toyota-4x4-service-bay"},
+  {"slug": "classic-continental-cars", "icon": "🏁", "photo": "porsche-in-workshop"}
+ ],
+ "photos": [
+  {"key": "shop-exterior", "file": "carzy-world-shop-exterior.webp"},
+  {"key": "logo", "file": "carzy-world-logo.webp"},
+  {"key": "bmw-in-workshop", "file": "carzy-world-bmw-in-workshop.webp"},
+  {"key": "engine-work-closeup", "file": "carzy-world-engine-work-closeup.webp"},
+  {"key": "porsche-in-workshop", "file": "carzy-world-porsche-in-workshop.webp"},
+  {"key": "mazda-at-entrance", "file": "carzy-world-mazda-at-entrance.webp"},
+  {"key": "isuzu-pickup-at-entrance", "file": "carzy-world-isuzu-pickup-at-entrance.webp"},
+  {"key": "toyota-mpv-in-workshop", "file": "carzy-world-toyota-mpv-in-workshop.webp"},
+  {"key": "toyota-4x4-service-bay", "file": "carzy-world-toyota-4x4-service-bay.webp"},
+  {"key": "perodua-sedan-in-workshop", "file": "carzy-world-perodua-sedan-in-workshop.webp"}
+ ],
+ "gallery": ["porsche-in-workshop", "bmw-in-workshop", "toyota-4x4-service-bay", "isuzu-pickup-at-entrance", "mazda-at-entrance", "toyota-mpv-in-workshop", "perodua-sedan-in-workshop", "engine-work-closeup"],
+ "recent_work": [
+  {"key": "tesla", "icon": "🔋", "service": "ev-repair"},
+  {"key": "dmax", "icon": "🛻", "service": "car-servicing-oil-change"},
+  {"key": "c230", "icon": "💧", "service": "classic-continental-cars"},
+  {"key": "w201", "icon": "🏁", "service": "classic-continental-cars"}
+ ],
+ "reviews": [
+  {"name": "Derrick H.", "text": "Excellent service with friendly and professional staff. The pricing is very reasonable, and the workmanship is great. Highly recommend this workshop if you're looking for reliable service. Will definitely come back again!"},
+  {"name": "Charisse G.", "text": "Excellent service! Very professional, reliable, and friendly team. Everything was smooth and hassle-free. Highly recommended!"},
+  {"name": "Siew T.", "text": "Highly recommend to all of you. Honestly and sincerely even I am a workshop owner I also send my car and my client car to solve wiring and some difficult problem. This workshop boss was nice and kindful to help."},
+  {"name": "Khow J.", "text": "First time trying this workshop. Clean environment, friendly staff, and professional mechanics. My car drives much better after service."},
+  {"name": "Sindy T.", "text": "Excellent service, honest pricing, and professional workmanship. The staff are friendly, knowledgeable, and keep you updated throughout the repair process. Highly recommend Carzy World Sdn Bhd!"}
+ ],
+ "home_faq_count": 5
+}

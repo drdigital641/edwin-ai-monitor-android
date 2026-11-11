@@ -1,0 +1,480 @@
+{
+ "_readme": "Every visible English string. ms.json and zh.json have the same keys. Review text is NOT here: reviews stay in their original English (data/site.json).",
+ "meta": {
+  "html_lang": "zh-Hans",
+  "og_locale": "zh_CN",
+  "lang_name": "中文",
+  "switch_label": "中文",
+  "schema_lang": "zh-Hans",
+  "title_suffix": " | Carzy World 巴生"
+ },
+ "prefills": {
+  "general": "你好 Carzy World,我在你们的网站看到你们,想咨询一下我的车子。",
+  "service": "你好 Carzy World,我想咨询{topic}。我的车子是(车型和年份):",
+  "booking": "你好 Carzy World,我想预约把车子送去你们那里。我的车子是(车型和年份):",
+  "discount": "你好 Carzy World,我是新客户,看到新客户5%折扣。我的车子是(车型和年份):",
+  "directions": "你好 Carzy World,我正在前往你们的车厂,可以发位置给我吗?"
+ },
+ "ui": {
+  "skip": "跳到主要内容",
+  "nav": {
+   "home": "首页",
+   "services": "服务",
+   "work": "近期作品",
+   "reviews": "评价",
+   "about": "关于我们",
+   "contact": "联络我们"
+  },
+  "nav_aria": "主菜单",
+  "menu": "菜单",
+  "lang_aria": "语言",
+  "home_aria": "Carzy World 首页",
+  "whatsapp_us": "WhatsApp 我们",
+  "whatsapp_now": "马上 WhatsApp 我们",
+  "call": "致电",
+  "call_us": "致电 {phone}",
+  "email_us": "发电邮给我们",
+  "directions": "查看路线",
+  "open_maps": "在 Google Maps 打开",
+  "read_reviews": "到 Google 查看所有评价",
+  "on_google": "Google 评价",
+  "stars_aria": "5 星(满分 5 星)",
+  "review_note": "评价以英文原文显示,与 Google 上的原文一致。",
+  "rating_line": "Google 评分 5.0 · 19 则评价",
+  "rating_sub": "每一则评价都是 5 星",
+  "hours_short": "周一至周五 上午10点至晚上7点 · 周六 上午10点至下午4点30分",
+  "location_short": "巴生 Air Hitam",
+  "brands_short": "欢迎各种品牌的车子",
+  "hours_title": "营业时间",
+  "days": {
+   "mon_fri": "星期一至星期五",
+   "sat": "星期六",
+   "sun": "星期日"
+  },
+  "times": {
+   "mon_fri": "上午10:00 至 晚上7:00",
+   "sat": "上午10:00 至 下午4:30",
+   "sun": "休息"
+  },
+  "address_label": "地址",
+  "phone_label": "电话和 WhatsApp",
+  "email_label": "电邮",
+  "company_label": "公司注册号",
+  "facebook": "Facebook 专页",
+  "more_details": "更多详情",
+  "all_services": "查看所有服务",
+  "discount_badge": "新客户:5% 折扣",
+  "discount_terms": "须遵守条款。请通过 WhatsApp 询问我们。",
+  "photo_kicker": "车厂内部",
+  "related_kicker": "其他服务",
+  "related_h2": "我们也可以帮你处理",
+  "breadcrumb_aria": "页面路径",
+  "footer_services": "服务",
+  "footer_visit": "光临我们",
+  "footer_pages": "页面",
+  "credit": "网站由 AutoSEO.my 制作",
+  "map_title": "地图显示 Carzy World 位于巴生 Air Hitam",
+  "map_load": "显示地图",
+  "price_note": "我们没有公开价钱,因为每辆车和每个问题都不一样。请通过 WhatsApp 把车型和问题发给我们,我们会给你报价。",
+  "brands_note": "欢迎各种品牌的车子。"
+ },
+ "photos": {
+  "shop-exterior": "Carzy World Sdn Bhd 位于巴生 Air Hitam Pusat Perniagaan Bestari 的店面,可见黄色招牌和开放的维修车位",
+  "logo": "Carzy World 标志",
+  "bmw-in-workshop": "一辆 BMW 房车停在 Carzy World 车厂里,备好机油准备保养",
+  "engine-work-closeup": "巴生 Carzy World 正在进行引擎维修的特写",
+  "porsche-in-workshop": "一辆红色 Porsche 跑车停在 Carzy World 维修车位,旁边备有新机油和机油滤芯",
+  "mazda-at-entrance": "一辆红色 Mazda 掀背车停在 Carzy World 车厂门口,备好机油准备保养",
+  "isuzu-pickup-at-entrance": "一辆 Isuzu 皮卡停在 Carzy World 维修车位,旁边备有新机油和黄油",
+  "toyota-mpv-in-workshop": "一辆 Toyota MPV 在 Carzy World 的举升机上,保养零件摆放在旁",
+  "toyota-4x4-service-bay": "一辆白色 Toyota 四驱车停在 Carzy World 维修车位",
+  "perodua-sedan-in-workshop": "一辆黑色 Perodua 房车停在 Carzy World 车厂里,备有机油和零件准备保养"
+ },
+ "home": {
+  "title": "巴生汽车保养与维修车厂 | Carzy World",
+  "description": "Carzy World Sdn Bhd 位于巴生 Air Hitam:汽车保养、换机油、引擎和波箱、冷气、刹车、线路故障、电动车及经典老爷车维修。Google 评分 5.0。WhatsApp +60 17-693 3936。",
+  "eyebrow": "汽车专业服务中心 · 巴生",
+  "h1": "巴生值得信赖的汽车保养与维修",
+  "lead": "Carzy World Sdn Bhd 是位于巴生 Air Hitam 的汽车车厂。我们处理保养和换机油、引擎和波箱维修、冷气、刹车和避震、棘手的线路故障、电动车以及经典老爷车。欢迎各种品牌的车子。",
+  "hero_note": "把你的车型和问题 WhatsApp 给我们,我们会告诉你大概的情况。",
+  "services_kicker": "我们的服务",
+  "services_h2": "适合各种品牌的服务",
+  "services_lead": "共七大类工作,从简单的换机油,到找出其他车厂找不到的线路故障。",
+  "work_kicker": "近期作品",
+  "work_h2": "我们近期处理过的车子",
+  "work_lead": "几个来自我们车厂的真实个案,已发布在我们的 Facebook 专页。",
+  "work": {
+   "tesla": {
+    "title": "Tesla Model 3",
+    "text": "更换上叉臂,并检查和解决快速充电的故障。",
+    "when": "2026年10月"
+   },
+   "dmax": {
+    "title": "Isuzu D-Max",
+    "text": "为一辆工作用皮卡做大保养。",
+    "when": "近期"
+   },
+   "c230": {
+    "title": "Mercedes-Benz C230",
+    "text": "修好冷却液和机油渗漏,并检查仪表板上的警告灯。",
+    "when": "近期"
+   },
+   "w201": {
+    "title": "Mercedes 190E 2.5-16 (1988)",
+    "text": "一辆经典 Mercedes 的修复工作。",
+    "when": "2026年11月"
+   }
+  },
+  "suit_line": "我们的老板以穿着西装修车闻名。这是他表示每一份工作都认真做好的方式。",
+  "gallery_h2": "我们车厂里的车子",
+  "reviews_kicker": "评价",
+  "reviews_h2": "客户在 Google 上的评价",
+  "reviews_lead": "19 则 Google 评价,评分 5.0,每一则都是 5 星。这里是其中五则。",
+  "visit_kicker": "光临我们",
+  "visit_h2": "在巴生 Air Hitam 找到我们",
+  "visit_text": "我们在巴生 Taman Perindustrian Air Hitam 的 Pusat Perniagaan Bestari,请留意黄色招牌。来之前先 WhatsApp 我们,我们好为你的车子做准备。",
+  "faq_kicker": "常见问题",
+  "faq_h2": "大家常问的问题",
+  "cta_h2": "告诉我们你的车子需要什么",
+  "cta_text": "把你的车型、年份和问题 WhatsApp 给我们。营业时间内也欢迎直接打电话。"
+ },
+ "faqs": [
+  {
+   "q": "Carzy World 在哪里?",
+   "a": "我们在 137-G, Jln Permata 1/KS09, Pusat Perniagaan Bestari, Taman Perindustrian Air Hitam Phase 1 & 2, 42000 Klang, Selangor(雪兰莪巴生)。点“查看路线”就可以在 Google Maps 打开。"
+  },
+  {
+   "q": "你们的营业时间是什么时候?",
+   "a": "星期一至星期五上午10点到晚上7点,星期六上午10点到下午4点30分。星期日休息。"
+  },
+  {
+   "q": "你们处理哪些品牌的车子?",
+   "a": "欢迎各种品牌的车子。近期的个案包括 Tesla Model 3、Isuzu D-Max、Mercedes-Benz C230 和一辆 1988 年的 Mercedes 190E 2.5-16。"
+  },
+  {
+   "q": "我的车子维修要多少钱?",
+   "a": "我们没有公开价钱,因为每辆车和每个问题都不一样。请把车型、年份和问题 WhatsApp 给我们,我们会给你报价。新客户有 5% 折扣(须遵守条款)。"
+  },
+  {
+   "q": "我要怎么预约?",
+   "a": "最快的方法是 WhatsApp +60 17-693 3936。营业时间内你也可以打同一个号码,或发电邮到 yc.carzyworld@gmail.com。"
+  },
+  {
+   "q": "你们修电动车吗?",
+   "a": "修。2026年10月,我们为一辆 Tesla Model 3 更换了上叉臂,也解决了它的快速充电故障。"
+  },
+  {
+   "q": "其他车厂解决不了的线路问题,你们可以处理吗?",
+   "a": "电路和线路故障排查是我们出名的工作之一。我们其中一则 Google 评价来自一位车厂老板,他把自己的车子和客户的车子都送来我们这里处理线路和其他棘手的问题。"
+  }
+ ],
+ "services": {
+  "car-servicing-oil-change": {
+   "short": "保养与换机油",
+   "title": "汽车保养与换机油",
+   "card": "各种品牌的定期保养、大保养和换机油。",
+   "h1": "巴生汽车保养与换机油",
+   "meta_title": "巴生汽车保养与换机油",
+   "meta_description": "Carzy World 位于巴生 Air Hitam,提供汽车保养、大保养和换机油。欢迎各种品牌。WhatsApp +60 17-693 3936 询问报价。",
+   "prefill_topic": "汽车保养或换机油",
+   "intro": "定期保养能让你的车子更可靠,也有助于及早发现小问题。我们为各种品牌的车子做一般保养、大保养和换机油,从小型车、皮卡到欧洲车都可以。",
+   "covers_h2": "我们做什么",
+   "covers": [
+    "汽车保养和大保养",
+    "更换引擎机油和机油滤芯",
+    "保养时发现的一般维修和保养",
+    "皮卡和四驱车,例如近期的 Isuzu D-Max 大保养"
+   ],
+   "signs_h2": "什么时候该把车子送来",
+   "signs": [
+    "保养提示或贴纸显示已到期",
+    "机油警告灯亮起",
+    "引擎声音比平时粗糙或更大声",
+    "你打算长途驾驶,想先检查一下车子"
+   ],
+   "body": "请通过 WhatsApp 告诉我们你的车型、年份和里程数,我们会告诉你这次保养应该包括什么,并给你报价。车子在我们这里时,我们会随时向你报告进度。",
+   "faqs": [
+    {
+     "q": "一般保养和大保养有什么不同?",
+     "a": "一般保养主要是换机油和机油滤芯,加上基本检查。大保养通常会多一些项目,例如其他滤芯、各种油水和火花塞,视你的车子的保养时间表而定。把你的车型和里程数 WhatsApp 给我们,我们会告诉你该做哪一种。"
+    },
+    {
+     "q": "你们保养皮卡和四驱车吗?",
+     "a": "保养。欢迎各种品牌的车子,我们近期也为一辆 Isuzu D-Max 做了大保养。"
+    }
+   ]
+  },
+  "engine-gearbox-repair": {
+   "short": "引擎与波箱",
+   "title": "引擎与波箱维修",
+   "card": "引擎问题、渗漏、警告灯和波箱维修。",
+   "h1": "巴生引擎与波箱维修",
+   "meta_title": "巴生引擎与波箱维修",
+   "meta_description": "Carzy World 位于巴生 Air Hitam,提供引擎和波箱维修:渗漏、警告灯、引擎抖动和波箱问题。欢迎各种品牌。WhatsApp +60 17-693 3936。",
+   "prefill_topic": "引擎或波箱问题",
+   "intro": "引擎和波箱的问题最好及早检查,免得小故障变成大维修。客户说我们在整个维修过程中都会向他们报告进度,让你随时知道情况。",
+   "covers_h2": "我们做什么",
+   "covers": [
+    "引擎维修",
+    "波箱维修",
+    "机油和冷却液渗漏,例如近期的 Mercedes-Benz C230",
+    "检查仪表板警告灯"
+   ],
+   "signs_h2": "出现这些情况要检查",
+   "signs": [
+    "仪表板上的引擎警告灯亮起",
+    "车底有机油或冷却液滴漏",
+    "怠速不稳、抖动或动力减弱",
+    "换挡打滑、顿挫或反应迟缓"
+   ],
+   "body": "请通过 WhatsApp 把问题的短视频或描述发给我们。这能帮助我们在你把车子送来之前先了解大概的情况。",
+   "faqs": [
+    {
+     "q": "引擎警告灯亮着,我还可以继续开吗?",
+     "a": "如果警告灯在闪烁,或者车子的感觉很不一样,请停车并尽快检查,因为这可能代表严重的故障。如果灯是长亮而车子开起来正常,请尽快预约检查。不论哪一种情况,都欢迎 WhatsApp 我们,我们会给你意见。"
+    },
+    {
+     "q": "你们修机油和冷却液渗漏吗?",
+     "a": "修。我们近期修好了一辆 Mercedes-Benz C230 的冷却液和机油渗漏,也检查了它出现的警告灯。"
+    }
+   ]
+  },
+  "car-aircond-service": {
+   "short": "冷气",
+   "title": "汽车冷气检测与保养",
+   "card": "冷气不冷、风力弱或有异味:我们找出原因。",
+   "h1": "巴生汽车冷气保养与检测",
+   "meta_title": "巴生汽车冷气保养与检测",
+   "meta_description": "车子冷气不冷?巴生 Air Hitam 的 Carzy World 为各种品牌的车子检查和保养冷气。WhatsApp +60 17-693 3936。",
+   "prefill_topic": "我的车子冷气",
+   "intro": "在马来西亚的天气下,冷气不够冷会让每一趟驾驶都不舒服。我们会检查整个系统,找出为什么不够冷,然后保养或维修需要处理的部分。",
+   "covers_h2": "我们做什么",
+   "covers": [
+    "冷气检测,找出原因",
+    "冷气保养",
+    "检查时发现的维修"
+   ],
+   "signs_h2": "出现这些情况要检查",
+   "signs": [
+    "冷气没有以前那么冷",
+    "一开始很冷,过一阵子就变暖",
+    "出风口风力很弱",
+    "开冷气时有异味或奇怪的声音"
+   ],
+   "body": "请通过 WhatsApp 告诉我们冷气出现什么状况,以及从什么时候开始的。我们会检查系统,并告诉你检查的结果。",
+   "faqs": [
+    {
+     "q": "为什么我的车子冷气不冷?",
+     "a": "常见的原因包括渗漏导致冷媒不足、滤网阻塞、风扇故障或压缩机有问题。好好检查才能找出真正的原因,这样你就不用花钱换不需要的零件。"
+    },
+    {
+     "q": "你们只是补冷媒吗?",
+     "a": "我们会先检查系统,找出为什么不够冷,然后保养或维修需要处理的部分。如果没有找出渗漏就只是补冷媒,问题通常会再出现。"
+    }
+   ]
+  },
+  "suspension-brakes-exhaust": {
+   "short": "避震、刹车与排气管",
+   "title": "避震、刹车与排气管",
+   "card": "刹车有声音、行驶颠簸或排气管很吵,都能处理。",
+   "h1": "巴生避震、刹车和排气管维修",
+   "meta_title": "巴生避震、刹车与排气管维修",
+   "meta_description": "Carzy World 位于巴生 Air Hitam,提供避震、刹车和排气管系统维修。欢迎各种品牌。WhatsApp +60 17-693 3936。",
+   "prefill_topic": "避震、刹车或排气管",
+   "intro": "刹车和避震让你行车安全,也让车子坐起来舒服。我们为各种品牌的车子检查和维修避震、刹车和排气管系统。",
+   "covers_h2": "我们做什么",
+   "covers": [
+    "避震维修,例如我们为 Tesla Model 3 更换的上叉臂",
+    "刹车检查和维修",
+    "排气管系统维修"
+   ],
+   "signs_h2": "出现这些情况要检查",
+   "signs": [
+    "踩刹车时有尖叫声或磨擦声",
+    "车子往一边偏,或方向盘抖动",
+    "过坑时有撞击声,或车身弹跳",
+    "排气管声音变大、有嘎嘎声,或车厢里闻到排气味"
+   ],
+   "body": "刹车和避震的问题可能很快就恶化。如果感觉不对劲,请 WhatsApp 我们,并把车子送来检查。",
+   "faqs": [
+    {
+     "q": "我的刹车会尖叫,很紧急吗?",
+     "a": "尖叫声可能代表刹车片已经磨损,如果是磨擦声,通常代表已经磨到很薄了。请尽快检查,因为磨损的刹车会让车子需要更长的距离才能停下来。"
+    },
+    {
+     "q": "为什么我的排气管突然变得更吵?",
+     "a": "排气管变吵通常代表排气系统有渗漏或零件损坏。最好检查一下,尤其是如果你在车厢里闻到排气味。"
+    }
+   ]
+  },
+  "electrical-wiring-diagnosis": {
+   "short": "电路与线路",
+   "title": "电路与线路故障排查",
+   "card": "棘手的线路和电路故障,我们追查并修好。",
+   "h1": "巴生汽车电路与线路检测",
+   "meta_title": "巴生汽车线路与电路故障检测",
+   "meta_description": "Carzy World 位于巴生 Air Hitam,追查并修好棘手的汽车线路和电路故障。连其他车厂也把车子送来我们这里。WhatsApp +60 17-693 3936。",
+   "prefill_topic": "电路或线路问题",
+   "intro": "电路故障可能很难锁定:例如时亮时灭的警告灯,或只是偶尔才失灵的东西。追查棘手的线路问题是我们出名的工作。",
+   "covers_h2": "我们做什么",
+   "covers": [
+    "电路故障排查",
+    "线路维修",
+    "警告灯和其他车厂解决不了的棘手问题"
+   ],
+   "signs_h2": "我们处理的问题",
+   "signs": [
+    "时亮时灭的警告灯",
+    "有时可以用、有时不能用的电器零件",
+    "保险丝一直烧断",
+    "电池一直没电"
+   ],
+   "body": "我们其中一则 Google 评价来自一位车厂老板,他把自己的车子和客户的车子都送来我们这里处理线路和棘手的问题。请通过 WhatsApp 告诉我们发生什么事,以及什么时候发生。",
+   "faqs": [
+    {
+     "q": "其他车厂找不到故障,你们可以帮忙吗?",
+     "a": "棘手的线路和电路问题是我们出名的工作。请 WhatsApp 告诉我们你已经试过什么,以及车子出现什么状况,我们会帮你看看。"
+    },
+    {
+     "q": "我的电池一直没电,是电池的问题吗?",
+     "a": "不一定。电池没电也可能是充电系统的问题,或是车子熄火后有东西在耗电。检查之后才能找出原因,这样你就不用白白换零件。"
+    }
+   ]
+  },
+  "ev-repair": {
+   "short": "电动车维修",
+   "title": "电动车维修",
+   "card": "电动车维修,从避震到充电故障。",
+   "h1": "巴生电动车维修",
+   "meta_title": "巴生电动车维修:电动车车厂",
+   "meta_description": "Carzy World 位于巴生 Air Hitam,提供电动车维修。近期个案:Tesla Model 3 更换上叉臂和快速充电故障。WhatsApp +60 17-693 3936。",
+   "prefill_topic": "我的电动车(EV)",
+   "intro": "电动车同样需要避震、刹车和一般维修,有时也需要帮忙处理充电问题。我们除了汽油车和柴油车,也处理电动车。",
+   "covers_h2": "近期的电动车个案",
+   "covers": [
+    "Tesla Model 3 更换上叉臂(2026年10月)",
+    "Tesla Model 3 快速充电故障(2026年10月)",
+    "电动车的避震、刹车和一般维修"
+   ],
+   "signs_h2": "什么时候该检查你的电动车",
+   "signs": [
+    "避震传来撞击声或咯咯声",
+    "充电很慢、中途停止或无法开始",
+    "屏幕上出现警告信息",
+    "轮胎磨损不均匀"
+   ],
+   "body": "请通过 WhatsApp 告诉我们你的电动车车型和发生什么事。如果是充电问题,也请告诉我们出问题时你在哪里、怎样充电。",
+   "faqs": [
+    {
+     "q": "你们修 Tesla 吗?",
+     "a": "修。2026年10月,我们为一辆 Tesla Model 3 更换了上叉臂,也解决了同一辆车的快速充电故障。"
+    },
+    {
+     "q": "你们只修电动车吗?",
+     "a": "不是。我们处理各种品牌的车子,不论是汽油车、柴油车还是电动车。"
+    }
+   ]
+  },
+  "classic-continental-cars": {
+   "short": "经典老爷车与欧洲车",
+   "title": "经典老爷车与欧洲车",
+   "card": "老车和欧洲车,从渗漏到修复工作。",
+   "h1": "巴生经典老爷车与欧洲车维修",
+   "meta_title": "巴生经典老爷车与欧洲车维修",
+   "meta_description": "Carzy World 位于巴生 Air Hitam,提供经典老爷车和欧洲车维修:1988 年 Mercedes 190E 2.5-16 修复和 Mercedes-Benz C230 渗漏维修。WhatsApp +60 17-693 3936。",
+   "prefill_topic": "经典老爷车或欧洲车",
+   "intro": "老车和欧洲车需要耐心和细心。我们承接经典老爷车的修复工作和欧洲车的维修。",
+   "covers_h2": "近期作品",
+   "covers": [
+    "1988 年 Mercedes 190E 2.5-16 修复(2026年11月)",
+    "Mercedes-Benz C230 冷却液和机油渗漏,以及警告灯",
+    "欧洲车的保养和维修"
+   ],
+   "signs_h2": "适合把车子送来的情况",
+   "signs": [
+    "老车出现渗漏、异味或新的噪音",
+    "欧洲车出现警告灯",
+    "一辆停放了很久、需要重新恢复的经典老爷车",
+    "一辆你希望好好照顾的车子"
+   ],
+   "body": "请通过 WhatsApp 把你的车子的照片发给我们,并告诉我们你想做什么。如果是修复工作,有这辆车的历史资料的话,也请告诉我们。",
+   "faqs": [
+    {
+     "q": "你们修复经典老爷车吗?",
+     "a": "修复。2026年11月,我们处理了一辆 1988 年 Mercedes 190E 2.5-16 的修复工作。"
+    },
+    {
+     "q": "你们处理欧洲车吗?",
+     "a": "处理。欢迎各种品牌的车子。近期的欧洲车个案包括一辆 Mercedes-Benz C230 的冷却液和机油渗漏以及警告灯。"
+    }
+   ]
+  }
+ },
+ "services_page": {
+  "title": "巴生汽车维修与保养服务 | Carzy World",
+  "description": "Carzy World 在巴生 Air Hitam 的所有服务:保养和换机油、引擎和波箱、冷气、避震和刹车、线路故障、电动车及经典老爷车。",
+  "eyebrow": "服务",
+  "h1": "我们在巴生的汽车服务",
+  "lead": "从换机油到棘手的线路故障,这些就是我们做的工作。欢迎各种品牌的车子。",
+  "list_h2": "选择服务",
+  "covers_kicker": "简单来说",
+  "faq_h2": "关于{name}的问题"
+ },
+ "about_page": {
+  "title": "关于 Carzy World Sdn Bhd | 巴生汽车车厂",
+  "description": "关于 Carzy World Sdn Bhd,一间位于巴生 Air Hitam 的汽车服务中心。为各种品牌的车子提供可靠的保养和维修。Google 评分 5.0,共 19 则评价。",
+  "eyebrow": "关于我们",
+  "h1": "关于 Carzy World",
+  "lead": "可靠、值得信赖的汽车保养与维修。",
+  "story_h2": "认真做事的车厂",
+  "paras": [
+   "Carzy World Sdn Bhd 是一间汽车服务中心,位于巴生 Taman Perindustrian Air Hitam 的 Pusat Perniagaan Bestari。",
+   "我们保养和维修各种品牌的车子:日常代步车、皮卡、欧洲车、电动车和经典老爷车。近期的个案包括 Tesla Model 3、Isuzu D-Max、Mercedes-Benz C230 和一辆 1988 年的 Mercedes 190E 2.5-16。",
+   "我们的老板以穿着西装修车闻名。这是他表示每一份工作都认真、专业地做好的方式。"
+  ],
+  "values_h2": "客户最常提到的",
+  "values": [
+   {
+    "title": "价钱老实",
+    "text": "客户提到价钱合理、老实。请 WhatsApp 我们询问报价。"
+   },
+   {
+    "title": "随时报告进度",
+    "text": "我们在整个维修过程中都会向你报告进度,让你知道车子的情况。"
+   },
+   {
+    "title": "车厂干净",
+    "text": "环境干净,员工友善,技师专业。"
+   },
+   {
+    "title": "棘手的问题",
+    "text": "连另一间车厂的老板也把车子送来我们这里处理线路和棘手的问题。"
+   }
+  ],
+  "company_h2": "公司资料"
+ },
+ "contact_page": {
+  "title": "联络 Carzy World | 巴生 Air Hitam 汽车车厂",
+  "description": "联络 Carzy World Sdn Bhd:WhatsApp 或致电 +60 17-693 3936、电邮、巴生 Air Hitam 的地址、营业时间和地图。",
+  "eyebrow": "联络我们",
+  "h1": "联络 Carzy World",
+  "lead": "WhatsApp 是最快联络我们的方法。请告诉我们你的车型、年份和问题。",
+  "ways_h2": "联络方式",
+  "whatsapp_text": "回复最快。可以发问题的照片或短视频。",
+  "call_text": "营业时间内。",
+  "email_text": "适合不紧急的事项。",
+  "find_h2": "找到车厂"
+ },
+ "schema": {
+  "description": "位于雪兰莪巴生 Air Hitam 的汽车服务中心。提供汽车保养和换机油、引擎和波箱维修、冷气、避震、刹车和排气管、电路和线路故障排查、电动车维修,以及经典老爷车和欧洲车。欢迎各种品牌的车子。"
+ },
+ "llms": {
+  "summary": "位于马来西亚雪兰莪巴生 Air Hitam 的汽车车厂(汽车维修店)。欢迎各种品牌的车子。",
+  "contact": "联络方式",
+  "hours": "营业时间",
+  "services": "服务",
+  "pages": "页面",
+  "reviews": "Google 评分:5.0,共 19 则评价(全部 5 星),2026年11月查看。",
+  "offer": "优惠:新客户有 5% 折扣(须遵守条款)。没有公开其他价钱;请通过 WhatsApp 询问报价。"
+ }
+}

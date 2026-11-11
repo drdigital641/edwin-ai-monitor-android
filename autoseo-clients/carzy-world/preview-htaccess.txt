@@ -1,0 +1,4 @@
+# autoseo.my/preview/.htaccess  (keeps every client preview out of Google)
+<IfModule mod_headers.c>
+  Header set X-Robots-Tag "noindex, nofollow"
+</IfModule>
