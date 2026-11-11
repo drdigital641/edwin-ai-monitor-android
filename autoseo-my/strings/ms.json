@@ -39,7 +39,9 @@
   "industry": "Hi AutoSEO.my, saya menjalankan {topic} dan saya ingin dapatkan audit SEO automotif percuma.",
   "quote": "Hi AutoSEO.my, saya ingin minta sebut harga SEO automotif untuk perniagaan saya.",
   "check": "Hi AutoSEO.my, saya sudah cuba semakan laman web percuma untuk {site} dan dapat {score}/100. Sila hantarkan senarai perkara yang perlu dibaiki dahulu.",
-  "check_failed": "Hi AutoSEO.my, saya cuba semakan laman web percuma untuk {site} tetapi ia tidak dapat disiapkan. Boleh tolong semak laman web saya?"
+  "check_failed": "Hi AutoSEO.my, saya cuba semakan laman web percuma untuk {site} tetapi ia tidak dapat disiapkan. Boleh tolong semak laman web saya?",
+  "partner": "Saya ingin menyertai program rakan kongsi AutoSEO",
+  "partner_question": "Hi AutoSEO.my, saya ada soalan tentang program rakan kongsi AutoSEO."
  },
  "ui": {
   "skip": "Terus ke kandungan",
@@ -52,7 +54,8 @@
    "how": "Cara Kerja",
    "about": "Tentang",
    "faq": "Soalan",
-   "contact": "Hubungi"
+   "contact": "Hubungi",
+   "partners": "Rakan Kongsi"
   },
   "whatsapp_us": "WhatsApp kami",
   "more_details": "Butiran lanjut →",
@@ -774,6 +777,117 @@
   "h1": "Maaf, halaman itu tiada di sini",
   "lead": "Pautan mungkin lama atau tersalah taip. Cuba halaman perkhidmatan atau industri, atau tanya kami di WhatsApp."
  },
+ "partners_page": {
+  "_note": "Halaman program rakan kongsi (/ms/partners/). Jumlah, kadar dan terma bayaran komisen BELUM disahkan: jangan tambah nombor, peratus, tempoh bayaran atau contoh.",
+  "title": "Program Rujukan SEO Automotif Malaysia | AutoSEO.my",
+  "description": "Sertai program rujukan SEO automotif AutoSEO.my di Malaysia. Kenalkan perniagaan kereta yang perlukan SEO, AEO, GEO atau laman web, dan dapatkan komisen.",
+  "crumb": "Program rakan kongsi",
+  "eyebrow": "Program rakan kongsi",
+  "h1": "Program Rujukan SEO Automotif di Malaysia",
+  "hero_line": "Anda kenal orang yang tepat. Kami uruskan carian.",
+  "lead": "Ini program rujukan SEO automotif Malaysia untuk pemilik bengkel, perunding, pekerja bebas dan kenalan industri: kenalkan perniagaan automotif yang perlu ditemui di Google, Google Maps atau carian AI, dan kami uruskan selebihnya.",
+  "btn_apply": "Mohon di WhatsApp",
+  "btn_how": "Lihat cara kerja",
+  "commission_note": "Butiran komisen dikongsi apabila anda memohon.",
+  "route_label": "Laluan rujukan anda",
+  "route_aria": "Laluan rujukan: anda kenalkan, kami bentang dan tutup jualan, anda dapat komisen",
+  "who_kicker": "Untuk siapa",
+  "who_h2": "Untuk orang yang sudah dipercayai dalam industri automotif",
+  "who": [
+   {
+    "title": "Pemilik bengkel",
+    "text": "Anda berbual dengan pemilik kedai lain setiap minggu. Kenalkan mereka yang perlukan lebih banyak pertanyaan kepada kami."
+   },
+   {
+    "title": "Perunding automotif",
+    "text": "Anda sudah menasihati perniagaan automotif. Tambah keterlihatan carian dalam bantuan yang anda tawarkan."
+   },
+   {
+    "title": "Pekerja bebas",
+    "text": "Pereka, jurugambar dan pemasar yang ada pelanggan automotif yang perlukan SEO, AEO atau GEO dibuat dengan betul."
+   },
+   {
+    "title": "Kenalan industri",
+    "text": "Pembekal, pengedar dan sesiapa sahaja yang mengenali pemilik perniagaan automotif secara peribadi."
+   }
+  ],
+  "how_kicker": "Cara kerja",
+  "how_h2": "Tiga langkah. Anda hanya buat langkah pertama.",
+  "steps": [
+   {
+    "title": "Anda kenalkan",
+    "text": "Beritahu kami tentang perniagaan automotif yang perlukan lebih banyak pertanyaan, dan maklumkan pemiliknya bahawa kami akan menghubungi mereka. Hanya perkenalan mesra."
+   },
+   {
+    "title": "Kami bentang dan tutup jualan",
+    "text": "Pasukan kami berbincang dengan pemilik, menyemak kedudukan mereka di Google, Google Maps dan carian AI, menerangkan pelan dan menyediakan sebut harga."
+   },
+   {
+    "title": "Anda dapat komisen",
+    "text": "Apabila perniagaan itu mendaftar, anda menerima komisen. Butiran komisen dikongsi apabila anda memohon."
+   }
+  ],
+  "refer_kicker": "Apa yang boleh dirujuk",
+  "refer_h2": "Setiap perkhidmatan AutoSEO.my dikira",
+  "refer_lead": "Kenalkan perniagaan untuk mana-mana perkhidmatan kami:",
+  "refer_ind": "Untuk mana-mana perniagaan automotif, contohnya:",
+  "why_kicker": "Kenapa AutoSEO.my",
+  "why_h2": "Mudah dikenalkan, kerana semuanya automotif",
+  "rules_kicker": "Peraturan mudah",
+  "rules_h2": "Empat peraturan supaya setiap perkenalan dialu-alukan",
+  "rules": [
+   {
+    "title": "Perkenalan mesra sahaja",
+    "text": "Kenalkan orang yang anda kenal, yang mengenali anda, dan yang sudi dihubungi oleh kami."
+   },
+   {
+    "title": "Tiada spam",
+    "text": "Tiada spam dalam apa jua bentuk: jangan siarkan pautan kami di kumpulan, ruangan komen atau forum yang tidak mengalu-alukannya."
+   },
+   {
+    "title": "Tiada mesej pukal kepada orang asing",
+    "text": "Tiada hantaran pukal WhatsApp, SMS, e-mel atau DM kepada senarai orang yang tidak dikenali atas nama kami."
+   },
+   {
+    "title": "Tiada janji bagi pihak kami",
+    "text": "Jangan sebut harga atau janjikan ranking, hasil atau tempoh masa. Pasukan kami yang akan menerangkannya selepas menyemak perniagaan itu."
+   }
+  ],
+  "faq_h2": "Soalan tentang program rakan kongsi",
+  "faqs": [
+   {
+    "q": "Siapa yang boleh menyertai program rakan kongsi?",
+    "a": "Pemilik bengkel, perunding automotif, pekerja bebas dan kenalan industri di Malaysia yang mengenali pemilik perniagaan automotif secara peribadi. Ceritakan sedikit tentang diri anda di WhatsApp dan kami uruskan selebihnya."
+   },
+   {
+    "q": "Bagaimana komisen berfungsi?",
+    "a": "Anda menerima komisen apabila perniagaan yang anda kenalkan menjadi pelanggan AutoSEO.my. Butiran komisen dikongsi apabila anda memohon."
+   },
+   {
+    "q": "Adakah saya perlu menjual?",
+    "a": "Tidak. Anda hanya membuat perkenalan mesra. Pasukan kami menerangkan perkhidmatan, menyediakan pelan dan sebut harga, dan menutup jualan. Anda tidak perlu membentang atau menyebut harga."
+   },
+   {
+    "q": "Bagaimana saya dibayar?",
+    "a": "Cara dan masa pembayaran komisen diterangkan bersama butiran komisen apabila anda memohon."
+   },
+   {
+    "q": "Bolehkah saya merujuk perniagaan di luar industri automotif?",
+    "a": "AutoSEO.my hanya bekerja dengan perniagaan automotif: bengkel, pusat jualan kereta, kedai tayar, aksesori, aircon, detailing, EV dan hybrid, bateri, alat ganti dan peralatan. Jika tidak pasti sesuatu perniagaan sesuai, tanya kami di WhatsApp sebelum membuat perkenalan."
+   },
+   {
+    "q": "Kawasan mana yang anda liputi?",
+    "a": "Perniagaan automotif di seluruh Malaysia, termasuk Kuala Lumpur, Selangor, Johor Bahru dan Penang."
+   },
+   {
+    "q": "Bolehkah saya beritahu pemilik perniagaan berapa kosnya?",
+    "a": "Tolong jangan. Harga bergantung pada keperluan setiap perniagaan, jadi pasukan kami menyediakan sebut harga selepas berbincang dengan pemiliknya."
+   }
+  ],
+  "cta_h2": "Kenal perniagaan automotif yang patut lebih mudah ditemui?",
+  "cta_text": "Mohon di WhatsApp. Butiran komisen dikongsi apabila anda memohon.",
+  "btn_question": "Tanya soalan dahulu"
+ },
  "llms": {
   "services": "Perkhidmatan",
   "industries": "Industri",
@@ -807,7 +921,13 @@
   "verdict_poor": "Beberapa asas tiada, jadi pemandu mungkin sukar menemui anda.",
   "counts": "{fails} perlu dibaiki · {warns} perlu ditambah baik · {passes} baik",
   "penalty": "Skor dihadkan pada {cap} kerana masalah serius: {items}. Baiki ini dahulu.",
-  "penalty_items": {"status": "halaman tidak dimuatkan", "indexable": "halaman disembunyikan daripada Google (noindex)", "https": "laman tidak menggunakan https", "title": "halaman tiada tajuk", "robots": "robots.txt menyekat Google"},
+  "penalty_items": {
+   "status": "halaman tidak dimuatkan",
+   "indexable": "halaman disembunyikan daripada Google (noindex)",
+   "https": "laman tidak menggunakan https",
+   "title": "halaman tiada tajuk",
+   "robots": "robots.txt menyekat Google"
+  },
   "speed_label": "Kelajuan mudah alih (Google PageSpeed)",
   "speed_wait": "Mengukur kelajuan mudah alih…",
   "speed_na": "Kelajuan mudah alih tidak dapat diukur sekarang.",

@@ -107,6 +107,13 @@
     <xhtml:link rel="alternate" hreflang="x-default" href="https://autoseo.my/industries/tyre-shops/"/>
   </url>
   <url>
+    <loc>https://autoseo.my/partners/</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://autoseo.my/partners/"/>
+    <xhtml:link rel="alternate" hreflang="ms" href="https://autoseo.my/ms/partners/"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://autoseo.my/zh/partners/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://autoseo.my/partners/"/>
+  </url>
+  <url>
     <loc>https://autoseo.my/privacy/</loc>
     <xhtml:link rel="alternate" hreflang="en" href="https://autoseo.my/privacy/"/>
     <xhtml:link rel="alternate" hreflang="ms" href="https://autoseo.my/ms/privacy/"/>
@@ -268,6 +275,13 @@
     <xhtml:link rel="alternate" hreflang="x-default" href="https://autoseo.my/industries/tyre-shops/"/>
   </url>
   <url>
+    <loc>https://autoseo.my/ms/partners/</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://autoseo.my/partners/"/>
+    <xhtml:link rel="alternate" hreflang="ms" href="https://autoseo.my/ms/partners/"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://autoseo.my/zh/partners/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://autoseo.my/partners/"/>
+  </url>
+  <url>
     <loc>https://autoseo.my/ms/privacy/</loc>
     <xhtml:link rel="alternate" hreflang="en" href="https://autoseo.my/privacy/"/>
     <xhtml:link rel="alternate" hreflang="ms" href="https://autoseo.my/ms/privacy/"/>
@@ -427,6 +441,13 @@
     <xhtml:link rel="alternate" hreflang="ms" href="https://autoseo.my/ms/industries/tyre-shops/"/>
     <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://autoseo.my/zh/industries/tyre-shops/"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://autoseo.my/industries/tyre-shops/"/>
+  </url>
+  <url>
+    <loc>https://autoseo.my/zh/partners/</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://autoseo.my/partners/"/>
+    <xhtml:link rel="alternate" hreflang="ms" href="https://autoseo.my/ms/partners/"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://autoseo.my/zh/partners/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://autoseo.my/partners/"/>
   </url>
   <url>
     <loc>https://autoseo.my/zh/privacy/</loc>

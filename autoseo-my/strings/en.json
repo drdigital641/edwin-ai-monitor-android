@@ -39,7 +39,9 @@
   "industry": "Hi AutoSEO.my, I run {topic} and I'd like a free automotive SEO audit.",
   "quote": "Hi AutoSEO.my, I'd like a quote for automotive SEO for my business.",
   "check": "Hi AutoSEO.my, I ran the free website check on {site} and got {score}/100. Please send me the list of what to fix first.",
-  "check_failed": "Hi AutoSEO.my, I tried the free website check on {site} but it couldn't finish. Could you check my website for me?"
+  "check_failed": "Hi AutoSEO.my, I tried the free website check on {site} but it couldn't finish. Could you check my website for me?",
+  "partner": "I want to join the AutoSEO partner programme",
+  "partner_question": "Hi AutoSEO.my, I have a question about the AutoSEO partner programme."
  },
  "ui": {
   "skip": "Skip to content",
@@ -52,7 +54,8 @@
    "how": "How it works",
    "about": "About",
    "faq": "FAQ",
-   "contact": "Contact"
+   "contact": "Contact",
+   "partners": "Partners"
   },
   "whatsapp_us": "WhatsApp us",
   "more_details": "More details →",
@@ -774,6 +777,117 @@
   "h1": "Sorry, that page isn’t here",
   "lead": "The link may be old or mistyped. Try the services or industries pages, or ask us on WhatsApp."
  },
+ "partners_page": {
+  "_note": "Partner programme page (/partners/). Commission amount, rate and payout terms are NOT confirmed: never add numbers, percentages, payout times or examples.",
+  "title": "Automotive SEO Referral Programme Malaysia | AutoSEO.my",
+  "description": "Join the AutoSEO.my automotive SEO referral programme in Malaysia. Introduce car businesses that need SEO, AEO, GEO or a website, and earn commission.",
+  "crumb": "Partner programme",
+  "eyebrow": "Partner programme",
+  "h1": "Automotive SEO Referral Programme in Malaysia",
+  "hero_line": "You know the right people. We do the search work.",
+  "lead": "This is the automotive SEO referral programme Malaysia's workshop owners, consultants, freelancers and industry contacts can join: introduce an automotive business that needs to be found on Google, Google Maps or AI search, and we take it from there.",
+  "btn_apply": "Apply on WhatsApp",
+  "btn_how": "See how it works",
+  "commission_note": "Commission details shared when you apply.",
+  "route_label": "Your referral route",
+  "route_aria": "Referral route: you introduce, we pitch and close, you earn",
+  "who_kicker": "Who it's for",
+  "who_h2": "For people the motor trade already trusts",
+  "who": [
+   {
+    "title": "Workshop owners",
+    "text": "You talk to other shop owners every week. Point the ones who need more enquiries our way."
+   },
+   {
+    "title": "Automotive consultants",
+    "text": "You already advise automotive businesses. Add search visibility to what you can help them with."
+   },
+   {
+    "title": "Freelancers",
+    "text": "Designers, photographers and marketers with automotive clients who need SEO, AEO or GEO done properly."
+   },
+   {
+    "title": "Industry contacts",
+    "text": "Suppliers, distributors and anyone else who knows automotive business owners personally."
+   }
+  ],
+  "how_kicker": "How it works",
+  "how_h2": "Three steps. You only do the first one.",
+  "steps": [
+   {
+    "title": "You introduce",
+    "text": "Tell us about an automotive business that needs more enquiries, and let the owner know we will be in touch. A warm introduction, nothing more."
+   },
+   {
+    "title": "We pitch and close",
+    "text": "Our team talks to the owner, looks at how they show up on Google, Google Maps and AI search, explains the plan and handles the quote."
+   },
+   {
+    "title": "You earn",
+    "text": "When the business signs up, you earn a commission. Commission details shared when you apply."
+   }
+  ],
+  "refer_kicker": "What you can refer",
+  "refer_h2": "Every AutoSEO.my service counts",
+  "refer_lead": "Introduce a business for any of our services:",
+  "refer_ind": "For any automotive business, for example:",
+  "why_kicker": "Why AutoSEO.my",
+  "why_h2": "Easy to introduce, because it's all automotive",
+  "rules_kicker": "Simple rules",
+  "rules_h2": "Four rules that keep every introduction welcome",
+  "rules": [
+   {
+    "title": "Warm introductions only",
+    "text": "Introduce people you know, who know you, and who are happy to hear from us."
+   },
+   {
+    "title": "No spam",
+    "text": "No spam of any kind: don't post our links in groups, comment sections or forums where they aren't welcome."
+   },
+   {
+    "title": "No cold mass messaging",
+    "text": "No bulk WhatsApp, SMS, email or DM blasts to lists of strangers in our name."
+   },
+   {
+    "title": "No promises on our behalf",
+    "text": "Don't quote prices or promise rankings, results or timelines. Our team covers that after looking at the business."
+   }
+  ],
+  "faq_h2": "Partner programme questions",
+  "faqs": [
+   {
+    "q": "Who can join the partner programme?",
+    "a": "Workshop owners, automotive consultants, freelancers and industry contacts in Malaysia who personally know automotive business owners. Tell us a little about yourself on WhatsApp and we'll take it from there."
+   },
+   {
+    "q": "How does commission work?",
+    "a": "You earn a commission when a business you introduced becomes an AutoSEO.my client. Commission details shared when you apply."
+   },
+   {
+    "q": "Do I need to sell anything?",
+    "a": "No. You make a warm introduction. Our team explains the services, prepares the plan and quote, and closes. You never need to pitch or quote prices."
+   },
+   {
+    "q": "How am I paid?",
+    "a": "How and when commission is paid is explained together with the commission details when you apply."
+   },
+   {
+    "q": "Can I refer businesses outside automotive?",
+    "a": "AutoSEO.my works only with automotive businesses: workshops, dealerships, tyre shops, accessories, aircon, detailing, EV and hybrid, batteries, spare parts and equipment. If you're not sure a business fits, ask us on WhatsApp before you introduce them."
+   },
+   {
+    "q": "Which areas do you cover?",
+    "a": "Automotive businesses across Malaysia, including Kuala Lumpur, Selangor, Johor Bahru and Penang."
+   },
+   {
+    "q": "Can I tell a business owner what it will cost?",
+    "a": "Please don't. Pricing depends on what each business needs, so our team prepares the quote after talking to the owner."
+   }
+  ],
+  "cta_h2": "Know an automotive business that should be easier to find?",
+  "cta_text": "Apply on WhatsApp. Commission details shared when you apply.",
+  "btn_question": "Ask a question first"
+ },
  "llms": {
   "services": "Services",
   "industries": "Industries",
@@ -807,7 +921,13 @@
   "verdict_poor": "Several basics are missing, so motorists may not find you.",
   "counts": "{fails} to fix · {warns} to improve · {passes} good",
   "penalty": "Score held at {cap} because of a serious problem: {items}. Fix this first.",
-  "penalty_items": {"status": "the page doesn't load", "indexable": "the page is hidden from Google (noindex)", "https": "the site isn't on https", "title": "the page has no title", "robots": "robots.txt blocks Google"},
+  "penalty_items": {
+   "status": "the page doesn't load",
+   "indexable": "the page is hidden from Google (noindex)",
+   "https": "the site isn't on https",
+   "title": "the page has no title",
+   "robots": "robots.txt blocks Google"
+  },
   "speed_label": "Mobile speed (Google PageSpeed)",
   "speed_wait": "Measuring mobile speed…",
   "speed_na": "Mobile speed couldn't be measured right now.",

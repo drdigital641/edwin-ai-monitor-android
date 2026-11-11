@@ -36,6 +36,8 @@ ASSET_V = hashlib.sha256((CSS + JS).encode()).hexdigest()[:10]
 CHECK_JS = (ROOT / "assets" / "check.js").read_text(encoding="utf-8")
 CHECK_V = hashlib.sha256(CHECK_JS.encode()).hexdigest()[:10]
 CHECK_CSS = re.sub(r"/\*.*?\*/\s*", "", (ROOT / "assets" / "check.css").read_text(encoding="utf-8"), flags=re.S).strip()
+# Partner programme page only: inlined on /partners/ so site.css (and every other page) stays unchanged.
+PARTNERS_CSS = re.sub(r"/\*.*?\*/\s*", "", (ROOT / "assets" / "partners.css").read_text(encoding="utf-8"), flags=re.S).strip()
 
 
 def fill(tpl, **kw):
@@ -177,8 +179,9 @@ def tagline(L):
 PAGES = []
 
 
-def page(L, path, title, description, body, current="", faqs=None, body_class="", head_extra=""):
+def page(L, path, title, description, body, current="", faqs=None, body_class="", head_extra="", extra_graph=None):
     graph = org_graph(L)
+    graph += extra_graph or []
     if faqs:
         graph.append(faq_schema(L, faqs))
     noindex = BRAND["preview"] or path == "404.html"
@@ -204,7 +207,7 @@ def page(L, path, title, description, body, current="", faqs=None, body_class=""
                 nav_aria=E(ui["nav_aria"]), lang_aria=E(ui["lang_switch_aria"]), lang_links=lang_links,
                 whatsapp_us=E(ui["whatsapp_us"]), menu=E(ui["menu"]), **shared)
     doc += body
-    company = [("about/", ui["nav"]["about"]), ("how-it-works/", ui["nav"]["how"]), ("faq/", ui["nav"]["faq"]), ("contact/", ui["nav"]["contact"]), ("privacy/", ui["privacy"])]
+    company = [("about/", ui["nav"]["about"]), ("how-it-works/", ui["nav"]["how"]), ("partners/", ui["nav"]["partners"]), ("faq/", ui["nav"]["faq"]), ("contact/", ui["nav"]["contact"]), ("privacy/", ui["privacy"])]
     doc += fill("footer", tagline=E(tagline(L)), year=date.today().year,
                 brand_line=E(L.s["brand"]["brand_line"]), areas_line=E(L.s["brand"]["areas_line"]),
                 h_services=E(ui["footer_services"]), h_industries=E(ui["footer_industries"]), h_company=E(ui["footer_company"]),
@@ -375,6 +378,85 @@ def build_company(L):
     page(L, "404.html", np["title"], np["description"], body)
 
 
+# ------------------------------------------------------------------ partner programme
+RULE_SIGNS = [("ok", "🤝"), ("no", "📢"), ("no", "📨"), ("no", "🏷️")]
+
+
+def build_partners(L):
+    """Affiliate & referral partner programme page (/partners/), its own layout: a referral route, plates, a road and road signs."""
+    s, ui, pp = L.s, L.ui, L.s["partners_page"]
+    path = "partners/"
+    apply_wa = L.wa("partner")
+    crumbs = f'<a href="{L.url()}">{E(ui["home"])}</a> / {E(pp["crumb"])}'
+    route = "".join(f'<li><span class="pt-node">{i}</span><b>{E(st["title"])}</b></li>' for i, st in enumerate(pp["steps"], 1))
+    body = f'''    <section class="pt-hero">
+      <span class="glow glow-1" aria-hidden="true"></span>
+      <span class="glow glow-2" aria-hidden="true"></span>
+      <div class="wrap pt-hero-grid">
+        <div>
+          <p class="crumbs">{crumbs}</p>
+          <p class="eyebrow"><span class="live" aria-hidden="true"></span>{E(pp["eyebrow"])}</p>
+          <h1>{E(pp["h1"])}</h1>
+          <p class="pt-hero-line grad-text">{E(pp["hero_line"])}</p>
+          <p class="lead">{E(pp["lead"])}</p>
+          <div class="cta-row hero-ctas">
+            <a class="btn" href="{apply_wa}" target="_blank" rel="noopener" data-cta="whatsapp_partners_apply_top">{E(pp["btn_apply"])}</a>
+            <a class="btn btn-ghost" href="#how">{E(pp["btn_how"])}</a>
+          </div>
+          <p class="pt-commission"><span aria-hidden="true">💬</span>{E(pp["commission_note"])}</p>
+        </div>
+        <figure class="pt-route" aria-label="{E(pp["route_aria"])}">
+          <p class="pt-route-label">{E(pp["route_label"])}</p>
+          <ol class="pt-route-list">{route}</ol>
+          <span class="pt-car" aria-hidden="true">🚗</span>
+        </figure>
+      </div>
+    </section>
+'''
+    plates = "\n".join(f'          <div class="pt-plate-card reveal"><p class="pt-plate"><span>{E(w["title"])}</span></p><p>{E(w["text"])}</p></div>' for w in pp["who"])
+    body += section(kicker_h2(pp["who_kicker"], pp["who_h2"]) + f'        <div class="pt-plates">\n{plates}\n        </div>')
+
+    stops = "\n".join(f'          <li class="pt-stop reveal"><span class="pt-stop-n">{i:02d}</span><h3>{E(st["title"])}</h3><p>{E(st["text"])}</p></li>' for i, st in enumerate(pp["steps"], 1))
+    body += f'''    <section class="section dark pt-how" id="how">
+      <div class="wrap">
+{kicker_h2(pp["how_kicker"], pp["how_h2"])}        <ol class="pt-road">
+{stops}
+        </ol>
+      </div>
+    </section>
+'''
+    svcs = "\n".join(f'          <a class="pt-svc reveal" href="{L.url("services/" + m["slug"] + "/")}"><span class="pt-svc-ic" aria-hidden="true">{m["emoji"]}</span><span>{E(s["services"][m["slug"]]["short"])}</span><span class="pt-svc-go" aria-hidden="true">→</span></a>' for m in SITE["services"])
+    inds = "".join(f'<li><span aria-hidden="true">{m["emoji"]}</span>{E(s["industries"][m["slug"]]["short"])}</li>' for m in SITE["industries"])
+    body += section(kicker_h2(pp["refer_kicker"], pp["refer_h2"]) + f'''        <p class="section-lead reveal">{E(pp["refer_lead"])}</p>
+        <div class="pt-svcs">
+{svcs}
+        </div>
+        <p class="pt-ind-lead reveal">{E(pp["refer_ind"])}</p>
+        <ul class="pt-inds reveal">{inds}</ul>''', alt=True)
+
+    why = "\n".join(f'          <li class="reveal"><h3>{E(w["title"])}</h3><p>{E(w["text"])}</p></li>' for w in s["why"])
+    body += section(kicker_h2(pp["why_kicker"], pp["why_h2"]) + f'        <ol class="pt-why">\n{why}\n        </ol>')
+
+    rules = "\n".join(f'          <div class="pt-rule reveal"><span class="pt-sign pt-sign-{kind}" aria-hidden="true">{ic}</span><h3>{E(r["title"])}</h3><p>{E(r["text"])}</p></div>'
+                      for r, (kind, ic) in zip(pp["rules"], RULE_SIGNS))
+    body += section(kicker_h2(pp["rules_kicker"], pp["rules_h2"]) + f'        <div class="pt-rules">\n{rules}\n        </div>', dark=True)
+
+    body += faq_block(L, pp["faqs"], pp["faq_h2"], alt=True)
+    body += fill("cta_band", heading=E(pp["cta_h2"]), text=E(pp["cta_text"]), cta_id="partners", wa_primary=apply_wa, btn_primary=E(pp["btn_apply"]),
+                 wa_secondary=L.wa("partner_question"), btn_secondary=E(pp["btn_question"]))
+
+    here, home = page_url(L.prefix, path), page_url(L.prefix, "")
+    graph = [
+        {"@type": "WebPage", "@id": "#webpage", "url": here, "name": pp["h1"], "description": pp["description"], "inLanguage": s["meta"]["schema_lang"],
+         "isPartOf": {"@id": "#website"}, "about": {"@id": "#organization"}, "breadcrumb": {"@id": "#breadcrumb"}},
+        {"@type": "BreadcrumbList", "@id": "#breadcrumb", "itemListElement": [
+            {"@type": "ListItem", "position": 1, "name": ui["home"], "item": home},
+            {"@type": "ListItem", "position": 2, "name": pp["crumb"], "item": here}]},
+    ]
+    page(L, path, pp["title"], pp["description"], body, current=path, faqs=pp["faqs"], body_class="partners", extra_graph=graph,
+         head_extra=f'  <style>\n{PARTNERS_CSS}\n  </style>\n')
+
+
 # ------------------------------------------------------------------ extras
 def abs_url(path):
     """Absolute link once the site is live on its own domain (llms.txt, sitemap)."""
@@ -391,7 +473,7 @@ def build_llms():
                 f"### {t['services']}"]
         out += [f"- [{s['services'][m['slug']]['title']}]({abs_url(L.url('services/' + m['slug'] + '/'))}): {s['services'][m['slug']]['text']}" for m in SITE["services"]]
         out += ["", f"### {t['industries']}"] + [f"- [{s['industries'][m['slug']]['label']}]({abs_url(L.url('industries/' + m['slug'] + '/'))})" for m in SITE["industries"]] + [f"- {s['other_industry']}"]
-        out += ["", f"### {t['company']}"] + [f"- [{L.ui['nav'][k]}]({abs_url(L.url(p))})" for p, k in [("about/", "about"), ("how-it-works/", "how"), ("faq/", "faq"), ("contact/", "contact")]] + [""]
+        out += ["", f"### {t['company']}"] + [f"- [{L.ui['nav'][k]}]({abs_url(L.url(p))})" for p, k in [("about/", "about"), ("how-it-works/", "how"), ("partners/", "partners"), ("faq/", "faq"), ("contact/", "contact")]] + [""]
     (OUT / "llms.txt").write_text("\n".join(out), encoding="utf-8")
 
 
@@ -440,6 +522,7 @@ def main():
         build_services(L)
         build_industries(L)
         build_company(L)
+        build_partners(L)
     for path, doc in PAGES:
         f = OUT / (path if path.endswith(".html") else path + "index.html")
         f.parent.mkdir(parents=True, exist_ok=True)
