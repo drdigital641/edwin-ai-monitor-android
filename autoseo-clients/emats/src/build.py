@@ -374,8 +374,15 @@ def steps_icons(L):
 
 
 def gallery(L, keys):
-    items = "".join(f'<figure class="gal-item">{img_tag(L, k, "(max-width: 760px) 80vw, 300px")}</figure>' for k in keys)
-    return fill("gallery", label=E(L.s["pages"]["home"]["photos_h2"]), items=items, hint=E(L.s["pages"]["home"]["swipe"]))
+    """Shared carousel: scroll-snap track, captions, dots and arrows (assets/site.js drives auto-slide)."""
+    n = len(keys)
+    items = "".join(
+        f'<figure class="car-slide" role="group" aria-roledescription="slide" aria-label="{i + 1} / {n}">'
+        f'{img_tag(L, k, "(max-width: 760px) 92vw, 380px", eager=(i == 0))}<figcaption>{E(L.s["photo_caps"][k])}</figcaption></figure>'
+        for i, k in enumerate(keys))
+    dots = "".join(f'<button class="car-dot" type="button" aria-label="{E(L.ui["car_dot"].replace("{n}", str(i + 1)))}"></button>' for i in range(n))
+    return fill("gallery", label=E(L.s["pages"]["home"]["photos_h2"]), items=items, dots=dots,
+                prev=E(L.ui["car_prev"]), next=E(L.ui["car_next"]))
 
 
 def build_home(L):

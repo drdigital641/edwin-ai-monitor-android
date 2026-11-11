@@ -1,4 +1,8 @@
-<div class="gallery" data-part="gallery">
-  <div class="gal-track" tabindex="0" aria-label="{{label}}">{{items}}</div>
-  <p class="gal-hint mono" aria-hidden="true">← {{hint}} →</p>
+<div class="carousel" data-part="gallery" data-carousel aria-roledescription="carousel" aria-label="{{label}}">
+  <div class="car-track" tabindex="0">{{items}}</div>
+  <div class="car-ctrl">
+    <button class="car-btn car-prev" type="button" aria-label="{{prev}}">‹</button>
+    <div class="car-dots">{{dots}}</div>
+    <button class="car-btn car-next" type="button" aria-label="{{next}}">›</button>
+  </div>
 </div>

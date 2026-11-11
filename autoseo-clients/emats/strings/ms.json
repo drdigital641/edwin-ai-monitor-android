@@ -46,7 +46,10 @@
   "hours_label": "Waktu operasi",
   "hours_text": "Setiap hari, 10:30 pagi hingga 7:00 malam",
   "reel_video_label": "Video pembaikan",
-  "reel_video_play": "Main video pembaikan"
+  "reel_video_play": "Main video pembaikan",
+  "car_prev": "Foto sebelumnya",
+  "car_next": "Foto seterusnya",
+  "car_dot": "Foto {n}"
  },
  "prefills": {
   "general": "Hi EMATS, saya ada modul yang perlu diperiksa. Kerosakan: ... Nombor bahagian: ...",
@@ -499,5 +502,15 @@
    "t": "Baiki + uji",
    "d": "Dibaiki, diuji, dihantar semula."
   }
- ]
+ ],
+ "photo_caps": {
+  "ecu-wired-test": "ECU disambung untuk ujian di meja kerja",
+  "bga-blue-jig": "Cip BGA pada jig biru",
+  "ecu-stack": "Timbunan papan ECU di meja kerja",
+  "tricore-chip": "Pemproses TriCore pada papan ECU",
+  "bga-bench-mat": "Cip BGA di atas tikar meja kerja",
+  "ecu-case": "Unit kawalan enjin dalam sarung logam",
+  "cluster-bench": "Meter kluster dihidupkan di meja kerja",
+  "ecu-open-case": "ECU enjin dengan sarung terbuka"
+ }
 }

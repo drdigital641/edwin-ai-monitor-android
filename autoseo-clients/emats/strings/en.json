@@ -46,7 +46,10 @@
   "hours_label": "Hours",
   "hours_text": "Daily, 10:30am to 7:00pm",
   "reel_video_label": "Repair reel",
-  "reel_video_play": "Play repair reel"
+  "reel_video_play": "Play repair reel",
+  "car_prev": "Previous photo",
+  "car_next": "Next photo",
+  "car_dot": "Photo {n}"
  },
  "prefills": {
   "general": "Hi EMATS, I have a module that needs checking. Fault: ... Part number: ...",
@@ -499,5 +502,15 @@
    "t": "Repair + test",
    "d": "Repaired, bench tested, sent back."
   }
- ]
+ ],
+ "photo_caps": {
+  "ecu-wired-test": "ECU wired up for bench testing",
+  "bga-blue-jig": "BGA chip on a blue jig",
+  "ecu-stack": "Stack of ECU boards on the bench",
+  "tricore-chip": "TriCore processor on an ECU board",
+  "bga-bench-mat": "BGA chip on the bench mat",
+  "ecu-case": "Engine control unit in metal case",
+  "cluster-bench": "Instrument cluster powered up on bench",
+  "ecu-open-case": "Engine ECU with case open"
+ }
 }

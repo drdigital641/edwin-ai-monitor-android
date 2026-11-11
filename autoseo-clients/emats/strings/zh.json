@@ -46,7 +46,10 @@
   "hours_label": "营业时间",
   "hours_text": "每天 上午10:30 至 晚上7:00",
   "reel_video_label": "维修视频",
-  "reel_video_play": "播放维修视频"
+  "reel_video_play": "播放维修视频",
+  "car_prev": "上一张",
+  "car_next": "下一张",
+  "car_dot": "第 {n} 张"
  },
  "prefills": {
   "general": "你好 EMATS，我有一个模块想请你们检测。故障：... 零件编号：...",
@@ -499,5 +502,15 @@
    "t": "维修 + 测试",
    "d": "修好、上台测试、寄回。"
   }
- ]
+ ],
+ "photo_caps": {
+  "ecu-wired-test": "ECU 接线上台测试",
+  "bga-blue-jig": "蓝色治具上的 BGA 芯片",
+  "ecu-stack": "维修台上的一叠 ECU 电路板",
+  "tricore-chip": "ECU 电路板上的 TriCore 处理器",
+  "bga-bench-mat": "维修台垫上的 BGA 芯片",
+  "ecu-case": "金属外壳里的引擎控制单元",
+  "cluster-bench": "仪表盘通电上台测试",
+  "ecu-open-case": "开盖的引擎 ECU"
+ }
 }
