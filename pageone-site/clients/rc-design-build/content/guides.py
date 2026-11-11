@@ -463,4 +463,37 @@ G14 = {
   'wa_topic': 'reinstating my shop unit',
 }
 
-PAGES = [G1, G2, G3, G4, G5, G6, G7, G8, G9, G10, G11, G12, G13, G14]
+G15 = {
+  'path': '/guides/small-showroom-layout-planning/',
+  'title': 'Small Showroom Layout Planning | R&C',
+  'desc': 'How to plan a small showroom layout in Singapore: entrance, hero display, product zones, consultation area, storage, lighting and walkways.',
+  'h1': 'How to Plan a Small Showroom Layout in Singapore',
+  'kicker': 'Showroom planning guide',
+  'answer': 'Plan a small showroom as a short route: a clear entrance, one hero display that draws people in, product zones in a logical order, a small consultation area and hidden storage. Mark the walkways first, then fit displays, lighting and power around them, so visitors can browse comfortably and staff can serve without clutter.',
+  'card': 'Plan a small showroom: entrance, hero display, product zones, consultation area, storage, lighting and walkways.',
+  'image': 'office-reception',
+  'image_alt': 'Office reception with a curved oak counter and olive feature wall (AI design concept)',
+  'og': 'share-small-showroom-layout-planning.jpg',
+  'date': '2026-11-12',
+  'owner': '/spaces/offices-showrooms/',
+  'reading': '5 min read',
+  'sections': [
+    {'h2': 'What should a small showroom layout achieve?', 'html': '<p>A showroom has two jobs: let visitors see the products clearly, and give staff a place to talk through options. In a small unit, every square metre has to do one of those jobs. A good layout makes the route obvious, shows the best products first and keeps the working areas, such as storage and the desk, out of the way.</p>'},
+    {'h2': 'Where should the entrance and the hero display go?', 'html': '<p>Keep the entrance clear and open, so visitors can see into the space before they step in. Place one hero display in the first sightline, such as a feature product, a sample wall or a lit display, so it draws people further in.</p><ul><li>Leave room just inside the door to pause and look.</li><li>Avoid putting the counter or a tall display right in the doorway.</li><li>Check the view from the door, not only from inside.</li></ul><p>For the front of the unit, see <a href="/guides/shop-window-display-ideas/">shop window display ideas</a>.</p>'},
+    {'h2': 'How do you arrange the product zones?', 'html': '<p>Group products so that a visitor moves from one idea to the next: for example, by type, by use or by level of detail. Keep the most important products at eye level and the samples that people need to touch within reach.</p><ul><li>Decide the order of the route before choosing furniture.</li><li>Keep products of one kind together, so comparing them is easy.</li><li>Leave empty wall or floor space; a crowded showroom hides what it sells.</li></ul><p>Our guide to <a href="/guides/retail-display-shelving-materials/">display shelving materials</a> helps with the fixtures, and <a href="/guides/small-shop-layout-and-customer-flow/">small shop layout and customer flow</a> covers walkways in more detail.</p>'},
+    {'h2': 'Do you need a consultation area?', 'html': '<p>If customers choose by talking through options, give them a small seated spot with a table or a counter edge, close to the products but out of the main walkway. It lets a conversation or a sample review happen without blocking others.</p><ul><li>Place a surface for samples, brochures or a tablet.</li><li>Plan sockets or screens here if you will show drawings or videos.</li><li>Keep it away from the entrance queue and the storage door.</li></ul><p>Counters are covered in <a href="/guides/planning-a-custom-shop-counter/">planning a custom shop counter</a>.</p>'},
+    {'h2': 'Where does storage go?', 'html': '<p>Stock, packaging and cleaning items should have a closed place, ideally behind a panel or door in the same finish as the walls. Joinery that doubles as display on the front and storage behind is a common way to save space in a small unit. See <a href="/services/commercial-carpentry/">commercial carpentry</a>.</p>'},
+    {'h2': 'How do lighting and power fit into the layout?', 'html': '<p>Decide the layout first, then place lights and sockets to suit it. Light the hero display and the product zones more strongly than the walkways, avoid glare on glossy surfaces, and put power where displays and screens will actually stand.</p><p>Lighting is covered in <a href="/guides/lighting-a-retail-display/">lighting a retail display</a>. Rules for the unit itself, such as landlord or building approvals, vary, so check them before you start building.</p>'},
+    {'h2': 'What should you send to get help with a showroom plan?', 'html': '<p>Send us a floor plan or unit layout, a few photos of the unit, what you sell and your target opening date. See <a href="/spaces/offices-showrooms/">office and showroom fit-out</a>, or the brief checklist in <a href="/guides/how-to-brief-a-shop-fit-out/">how to brief a shop fit-out</a>.</p>'},
+  ],
+  'faqs': [
+    ('How do I plan a small showroom layout?', 'Start with the entrance and route, place one hero display in the first sightline, group products in a logical order, add a small consultation area and hide storage. Then fit lighting and power around the layout.'),
+    ('What goes at the front of a showroom?', 'A clear entrance and one hero display in the first sightline, so visitors can see into the space and are drawn further in.'),
+    ('Does a small showroom need a consultation area?', 'If customers choose by talking through options, yes. A small seated spot or counter edge near the products, out of the main walkway, lets staff and customers talk without blocking others.'),
+    ('Should I plan lighting before or after the layout?', 'After. Decide where the walkways, displays and counters go, then place lights and power to suit them.'),
+  ],
+  'related': ['/spaces/offices-showrooms/', '/guides/small-shop-layout-and-customer-flow/', '/guides/lighting-a-retail-display/', '/guides/planning-a-custom-shop-counter/', '/guides/retail-display-shelving-materials/'],
+  'wa_topic': 'planning my showroom layout',
+}
+
+PAGES = [G1, G2, G3, G4, G5, G6, G7, G8, G9, G10, G11, G12, G13, G14, G15]
