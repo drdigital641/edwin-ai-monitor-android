@@ -1,0 +1,563 @@
+{
+ "meta": {
+  "html_lang": "en",
+  "og_locale": "en_MY",
+  "schema_lang": "en",
+  "switch_name": "EN",
+  "city": "Johor Bahru",
+  "country": "Malaysia"
+ },
+ "ui": {
+  "skip": "Skip to content",
+  "nav_label": "Main menu",
+  "menu": "Menu",
+  "lang_label": "Language",
+  "tagline": "Hybrid & battery workshop, JB",
+  "nav": {
+   "home": "Home",
+   "services": "Services",
+   "about": "About",
+   "contact": "Contact"
+  },
+  "wa_cta": "WhatsApp us",
+  "wa_cta_short": "WhatsApp",
+  "call": "Call {phone}",
+  "call_short": "Call",
+  "email": "Email us",
+  "hours_label": "Hours",
+  "hours_text": "Mon–Sat 9am–7pm · Sunday closed",
+  "address_label": "Address",
+  "phone_label": "WhatsApp & phone",
+  "email_label": "Email",
+  "map_open": "Open in Google Maps",
+  "map_load": "Show the map here",
+  "map_note": "The map loads from Google only when you tap.",
+  "facebook": "Facebook page",
+  "more_reels": "More reels on Facebook",
+  "rating": "4.5 on Google (22 reviews)",
+  "rating_link": "Read our Google reviews",
+  "review_lang_note": "",
+  "read_more": "More details",
+  "faq_h2": "Questions owners ask",
+  "breadcrumb_label": "Breadcrumb",
+  "car_prev": "Previous photo",
+  "car_next": "Next photo",
+  "car_dot": "Show photo {n}",
+  "reel_play": "Play reel",
+  "reel_label": "Reel",
+  "related_h2": "Other hybrid services",
+  "cta_kicker": "Fully charged",
+  "cta_h2": "Hybrid warning light on? Send us a WhatsApp.",
+  "cta_p": "Tell us your car model, year and what you see on the dashboard. A photo of the warning helps.",
+  "footer_about": "Hybrid car and hybrid battery workshop in Taman Bukit Indah, Johor Bahru, for Toyota, Lexus and Honda hybrids.",
+  "footer_services": "Services",
+  "footer_company": "Workshop",
+  "footer_visit": "Visit & contact",
+  "reg_label": "Company no.",
+  "rights": "All rights reserved.",
+  "photo_label": "Photo from our workshop",
+  "models_h3": "Hybrids we work on"
+ },
+ "prefills": {
+  "general": "Hi Hybrid World, I'd like to ask about my hybrid car. Model and year: ",
+  "service": "Hi Hybrid World, I'd like to ask about {topic}. My car model and year: ",
+  "reel": "Hi Hybrid World, I saw your reel and I'd like to ask about my hybrid. Model and year: "
+ },
+ "services": {
+  "battery": {
+   "name": "Hybrid battery replacement",
+   "tile": "New original battery sets",
+   "card": "New original/OEM hybrid battery sets, fitted as complete assembled units."
+  },
+  "recon": {
+   "name": "Hybrid battery reconditioning",
+   "tile": "Conditioned on our rack",
+   "card": "Your existing hybrid battery pack checked and reconditioned on our battery rack."
+  },
+  "inverter": {
+   "name": "Hybrid system & inverter repair",
+   "tile": "Warning lights, inverter faults",
+   "card": "Hybrid system warnings and inverter faults traced and repaired."
+  },
+  "toyota": {
+   "name": "Toyota & Lexus hybrid service",
+   "tile": "Prius, C-HR, Camry, Lexus",
+   "card": "Maintenance and repair for Toyota and Lexus hybrids, from servicing to steering and suspension."
+  },
+  "honda": {
+   "name": "Honda hybrid service",
+   "tile": "Shuttle Hybrid and more",
+   "card": "Hybrid system checks, maintenance and repair for Honda hybrids."
+  },
+  "aircon": {
+   "name": "Aircon service",
+   "tile": "Incl. system flushing",
+   "card": "Car aircon service, including aircon system flushing."
+  },
+  "transmission": {
+   "name": "Transmission repair",
+   "tile": "Auto gearbox repair",
+   "card": "Auto transmission repair for the cars we look after."
+  },
+  "engine": {
+   "name": "Engine rebuild",
+   "tile": "Strip, rebuild, refit",
+   "card": "Engine rebuild work done in our own workshop."
+  }
+ },
+ "steps4": [
+  {
+   "t": "WhatsApp us",
+   "d": "Send your model, year and the warning you see."
+  },
+  {
+   "t": "Diagnose",
+   "d": "We check the car and the hybrid system."
+  },
+  {
+   "t": "Quote and fix",
+   "d": "You get a quote first, then we fix it."
+  },
+  {
+   "t": "Drive away",
+   "d": "Collect your car and drive on."
+  }
+ ],
+ "photos": {
+  "chr-lift": "Toyota C-HR on a two-post lift with the bonnet open at Hybrid World Specialist",
+  "shopfront": "Hybrid World Specialist workshop front, Taman Bukit Indah",
+  "underbody": "Car underbody on a two-post lift in the Hybrid World workshop",
+  "battery-pack": "Hybrid battery pack with the cover off and cells exposed on the workbench",
+  "battery-rack": "Hybrid battery conditioning rack and laptop in the battery room",
+  "voxy-bay": "Toyota Voxy hybrid with the bonnet open for servicing",
+  "voxy-front": "Toyota Voxy hybrid on a two-post lift, front view",
+  "voxy-rear": "Toyota Voxy hybrid on the lift, rear view",
+  "rack-floor": "Old steering rack and suspension parts removed from a car",
+  "rack-subframe": "New steering rack fitted on a front subframe",
+  "strut-brake": "Front suspension strut and brake seen from underneath",
+  "parts-laid": "Old and new steering racks with suspension parts laid out",
+  "parts-layout": "Steering racks, struts and bushings laid out before fitting",
+  "underbody-susp": "Front underbody and suspension check",
+  "wheel-off": "Wheel off with the strut and brake disc in view",
+  "lower-arm": "Front underbody with lower arm and drive shaft",
+  "steer-shafts": "New steering intermediate shafts ready to fit"
+ },
+ "photo_caps": {
+  "chr-lift": "Toyota C-HR on the lift",
+  "shopfront": "Our workshop front, Taman Bukit Indah",
+  "underbody": "Underbody check on the lift",
+  "battery-pack": "Hybrid battery pack, cover off",
+  "battery-rack": "Our battery conditioning rack",
+  "voxy-bay": "Toyota Voxy hybrid service",
+  "voxy-front": "Toyota Voxy hybrid service",
+  "voxy-rear": "Toyota Voxy hybrid service",
+  "rack-floor": "Steering and suspension repair",
+  "rack-subframe": "Steering and suspension repair",
+  "strut-brake": "Steering and suspension repair",
+  "parts-laid": "Steering and suspension repair",
+  "parts-layout": "Steering and suspension repair",
+  "underbody-susp": "Steering and suspension repair",
+  "wheel-off": "Steering and suspension repair",
+  "lower-arm": "Steering and suspension repair",
+  "steer-shafts": "Steering and suspension repair"
+ },
+ "reels": {
+  "3590804401132363": "Camry Hybrid battery sets, reconditioning in progress",
+  "913009320191079": "Toyota Hybrid in the house",
+  "247718808165266": "Toyota Estima Hybrid battery sets, reconditioning in progress",
+  "1997784040607881": "Toyota Camry Hybrid battery reconditioning in progress",
+  "3698249173743111": "Prius C",
+  "1043418970146526": "Aircon system flushing in progress",
+  "1409707422923024": "Toyota Alphard Hybrid battery reconditioning in progress",
+  "1511233039613802": "Full house again: a workshop full of hybrids",
+  "1261488171143483": "Toyota & Lexus hybrid family in the house",
+  "782658250126168": "Guess what model it is? (dashboard)",
+  "1386231112061897": "New Toyota hybrid battery, part label close-up",
+  "939639247865591": "Brand-new OEM hybrid battery units"
+ },
+ "models": [
+  "Toyota Prius / Prius C",
+  "Toyota C-HR",
+  "Toyota Camry Hybrid",
+  "Toyota Corolla Cross Hybrid",
+  "Toyota Estima / Alphard / Voxy Hybrid",
+  "Lexus CT200h / ES / NX",
+  "Honda hybrids, e.g. Shuttle Hybrid"
+ ],
+ "art": {
+  "inverter": "Hybrid inverter graphic",
+  "honda": "Hybrid system graphic",
+  "aircon": "Aircon graphic",
+  "transmission": "Transmission gear graphic",
+  "engine": "Engine graphic",
+  "hero": "Energy flowing between a hybrid battery, an engine and a wheel"
+ },
+ "pages": {
+  "home": {
+   "title": "Hybrid Car Specialist Johor Bahru | Hybrid World (HWS)",
+   "description": "Hybrid car specialist in Johor Bahru for Toyota, Lexus and Honda hybrids: new hybrid battery sets, battery reconditioning, inverter repair. WhatsApp us.",
+   "h1": "Hybrid Car & Battery Specialist, Johor Bahru",
+   "tagline": "Toyota, Lexus and Honda hybrids. Batteries, inverters, full service.",
+   "charge": "Hybrid system",
+   "services_h2": "What we fix",
+   "steps_h2": "How it works",
+   "photos_h2": "Inside the workshop",
+   "reels_h2": "From the workshop",
+   "reels_p": "Short clips from our Facebook page. Tap to play.",
+   "reviews_h2": "What owners say",
+   "visit_h2": "Visit the workshop",
+   "about_h2": "Hybrid car specialist in Johor Bahru",
+   "about": [
+    "Hybrid World Specialist (HWS) is a hybrid car specialist in Johor Bahru, at Taman Bukit Indah in Iskandar Puteri. We work on Toyota, Lexus and Honda hybrids: hybrid battery replacement, hybrid battery reconditioning, hybrid system and inverter faults, and the everyday maintenance every car needs.",
+    "For hybrid battery replacement in JB we fit new original/OEM battery sets. They come only as complete assembled units, never as single cells. If your pack can be saved, we can recondition it on our battery rack instead.",
+    "We also do aircon service (including aircon system flushing), auto transmission repair, engine rebuilds and general car maintenance, so one workshop can look after the whole car."
+   ],
+   "faq": [
+    {
+     "q": "Which hybrid cars do you work on?",
+     "a": "Toyota and Lexus hybrids such as the Prius and Prius C, C-HR, Camry Hybrid, Corolla Cross Hybrid, Estima, Alphard and Voxy Hybrid, Lexus CT200h, ES and NX, and Honda hybrids such as the Shuttle Hybrid."
+    },
+    {
+     "q": "Do you replace single cells in a hybrid battery?",
+     "a": "No. For battery replacement we fit new original/OEM hybrid battery sets, and they are sold only as complete assembled units. If your pack is still worth saving, ask us about reconditioning."
+    },
+    {
+     "q": "How much does a hybrid battery cost?",
+     "a": "It depends on the model and on what the check finds. WhatsApp us your car model and year and we will tell you the options and the price before any work starts."
+    },
+    {
+     "q": "Where is the workshop and when are you open?",
+     "a": "No 5, Jalan Indah 16/6, Taman Bukit Indah, 79100 Iskandar Puteri, Johor Bahru. We are open Monday to Saturday, 9am to 7pm, and closed on Sunday."
+    }
+   ]
+  },
+  "battery": {
+   "title": "Hybrid Battery Replacement JB | New Original Sets | HWS",
+   "description": "Hybrid battery replacement in JB with new original/OEM battery sets, complete assembled units for Prius, Camry, C-HR, Lexus and Honda hybrids.",
+   "h1": "Hybrid Battery Replacement in JB",
+   "intro": "Hybrid battery replacement in JB at Hybrid World Specialist means a new original/OEM hybrid battery set, fitted as one complete assembled unit. We never sell single cells. Owners come to us for a Prius hybrid battery in JB, and for Camry, C-HR, Estima, Alphard, Voxy, Lexus and Honda hybrid batteries too.",
+   "sections": [
+    {
+     "h2": "When a hybrid battery needs replacing",
+     "p": [
+      "A tired hybrid battery usually shows up as a hybrid system warning on the dashboard, the engine running more than it used to, or the car feeling weak when you pull away. These signs can have other causes too, so we check the car before we recommend a new battery.",
+      "If the check shows the pack can still be saved, we will tell you, and hybrid battery reconditioning may be the better choice."
+     ]
+    },
+    {
+     "h2": "New original/OEM battery sets, complete units only",
+     "p": [
+      "We fit new original/OEM hybrid battery sets. They come as complete assembled units, ready to go into the car, never as loose single cells. That keeps the whole pack matched from day one.",
+      "You can see brand-new battery units and a part label close-up in our reels on the home page."
+     ]
+    },
+    {
+     "h2": "Prius hybrid battery in JB",
+     "p": [
+      "The Toyota Prius and Prius C are among the hybrids we see most. The same goes for the Camry Hybrid, C-HR, Corolla Cross Hybrid and the Estima, Alphard and Voxy Hybrid. WhatsApp us your model and year and we will tell you what is possible for your car."
+     ]
+    }
+   ],
+   "faq": [
+    {
+     "q": "Do you sell single hybrid battery cells?",
+     "a": "No. Our new original/OEM hybrid battery sets are sold only as complete assembled units, never as single cells."
+    },
+    {
+     "q": "Should I replace or recondition my hybrid battery?",
+     "a": "It depends on the condition of your pack. We check the car first and then tell you whether reconditioning or a new battery set makes more sense."
+    },
+    {
+     "q": "How much is a hybrid battery replacement?",
+     "a": "The price depends on the car model. WhatsApp us your model and year and we will quote you before any work starts."
+    }
+   ]
+  },
+  "recon": {
+   "title": "Hybrid Battery Reconditioning JB | Hybrid World (HWS)",
+   "description": "Hybrid battery reconditioning in Johor Bahru on our own battery rack, for Toyota Camry, Estima, Alphard, Prius and other hybrids. WhatsApp us.",
+   "h1": "Hybrid Battery Reconditioning in Johor Bahru",
+   "intro": "Hybrid battery reconditioning gives your existing hybrid battery pack another chance before you think about a new one. At Hybrid World Specialist in Johor Bahru we recondition packs on our own battery conditioning rack, in a separate battery room inside the workshop.",
+   "sections": [
+    {
+     "h2": "What hybrid battery reconditioning is",
+     "p": [
+      "A hybrid battery pack is made of many cells working together. Reconditioning works on your existing pack on a conditioning rack, instead of replacing it.",
+      "Not every pack is worth reconditioning. We check it first and tell you honestly whether reconditioning or a new battery set is the better choice."
+     ]
+    },
+    {
+     "h2": "Our battery room",
+     "p": [
+      "Packs are connected to our battery conditioning rack, with a laptop alongside, in a room of its own. Our reels show Camry Hybrid, Estima Hybrid and Alphard Hybrid battery sets being reconditioned there."
+     ]
+    },
+    {
+     "h2": "When to ask about reconditioning",
+     "p": [
+      "If your hybrid shows a battery warning, or the engine seems to run more than before, WhatsApp us your model and year. We will tell you what the next step is."
+     ]
+    }
+   ],
+   "faq": [
+    {
+     "q": "Can every hybrid battery be reconditioned?",
+     "a": "No. We check the pack first. If reconditioning is not the right choice, we will explain why and talk you through a new original/OEM battery set."
+    },
+    {
+     "q": "Which models have you reconditioned?",
+     "a": "Our reels show Toyota Camry Hybrid, Estima Hybrid and Alphard Hybrid battery sets being reconditioned. Ask us about your own model on WhatsApp."
+    },
+    {
+     "q": "How do I start?",
+     "a": "Send us a WhatsApp with your car model, year and the warning you see, and we will arrange a check."
+    }
+   ]
+  },
+  "inverter": {
+   "title": "Hybrid Inverter Repair JB | Hybrid System Faults | HWS",
+   "description": "Hybrid inverter repair and hybrid system fault repair in Johor Bahru for Toyota, Lexus and Honda hybrids. Check first, quote before work.",
+   "h1": "Hybrid System & Inverter Repair, Johor Bahru",
+   "intro": "Hybrid inverter repair and hybrid system fault repair for Toyota, Lexus and Honda hybrids in Johor Bahru. When the hybrid system warning comes on, we trace the fault first, then explain it and quote before we fix it.",
+   "sections": [
+    {
+     "h2": "What the inverter does",
+     "p": [
+      "The inverter sits between the hybrid battery and the electric motor. It turns the battery's power into the form the motor uses, and back again when the car recharges itself. When it has a fault, the car may show a hybrid system warning or lose electric drive."
+     ]
+    },
+    {
+     "h2": "Hybrid system warnings we look at",
+     "p": [
+      "A hybrid system warning can come from the battery, the inverter, cooling, wiring or sensors. That is why we check the whole hybrid system before we name the part, so you do not pay for the wrong repair."
+     ]
+    },
+    {
+     "h2": "Bring the details",
+     "p": [
+      "WhatsApp us your car model, year and a photo of the dashboard warning. It helps us prepare before you come in."
+     ]
+    }
+   ],
+   "faq": [
+    {
+     "q": "Is it safe to drive with a hybrid system warning?",
+     "a": "Every case is different. Send us a photo of the warning and your car details on WhatsApp, and we will advise you on the next step."
+    },
+    {
+     "q": "Do you repair inverters on Honda hybrids too?",
+     "a": "We work on Toyota, Lexus and Honda hybrid systems. WhatsApp us your model and year to check."
+    },
+    {
+     "q": "Will you tell me the price first?",
+     "a": "Yes. We check the car, explain what we found and give you a quote before we fix it."
+    }
+   ]
+  },
+  "toyota": {
+   "title": "Toyota Hybrid Repair Johor Bahru | Lexus Hybrid JB | HWS",
+   "description": "Toyota hybrid repair in Johor Bahru and Lexus hybrid repair in JB: Prius, C-HR, Camry, Corolla Cross, Estima, Alphard, Voxy, Lexus CT200h, ES, NX.",
+   "h1": "Toyota & Lexus Hybrid Service, Johor Bahru",
+   "intro": "Toyota hybrid repair in Johor Bahru and Lexus hybrid repair in JB, from routine servicing to hybrid battery and hybrid system work. We look after the hybrid parts and the rest of the car too, including steering and suspension.",
+   "sections": [
+    {
+     "h2": "Toyota hybrids we work on",
+     "p": [
+      "We work on the Toyota Prius and Prius C, C-HR, Camry Hybrid, Corolla Cross Hybrid, and the Estima, Alphard and Voxy Hybrid. The photos below show a Toyota Voxy hybrid service and a Toyota C-HR on our lift."
+     ]
+    },
+    {
+     "h2": "Lexus hybrid repair in JB",
+     "p": [
+      "We also work on Lexus hybrids, including the CT200h, ES and NX. Lexus hybrids share many hybrid parts with Toyota, so the same checks apply."
+     ]
+    },
+    {
+     "h2": "Servicing, steering and suspension",
+     "p": [
+      "A hybrid still needs everything a normal car needs: servicing, brakes, steering and suspension. Our photos show steering racks, struts and bushings being replaced in the workshop.",
+      "Tell us what you notice, such as noise over bumps or a heavy steering feel, and we will check it."
+     ]
+    }
+   ],
+   "faq": [
+    {
+     "q": "Do you service the normal parts of a Toyota hybrid too?",
+     "a": "Yes. Besides hybrid battery and hybrid system work, we do general maintenance and steering and suspension repairs."
+    },
+    {
+     "q": "Do you work on Lexus hybrids?",
+     "a": "Yes, including the Lexus CT200h, ES and NX."
+    },
+    {
+     "q": "How do I book?",
+     "a": "WhatsApp us your car model, year and what you need. We are open Monday to Saturday, 9am to 7pm."
+    }
+   ]
+  },
+  "honda": {
+   "title": "Honda Hybrid Repair JB | Shuttle Hybrid & More | HWS",
+   "description": "Honda hybrid repair in JB: hybrid system checks, hybrid battery work and maintenance for Honda hybrids such as the Shuttle Hybrid. WhatsApp us.",
+   "h1": "Honda Hybrid Service & Repair in JB",
+   "intro": "Honda hybrid repair in JB at Hybrid World Specialist covers hybrid system checks, hybrid battery work and general maintenance for Honda hybrids such as the Shuttle Hybrid.",
+   "sections": [
+    {
+     "h2": "Honda hybrid system issues",
+     "p": [
+      "When a Honda hybrid shows a warning or stops driving on electric power the way it used to, we check the hybrid system first. Then we explain the fault and quote before we repair it."
+     ]
+    },
+    {
+     "h2": "Battery and maintenance for Honda hybrids",
+     "p": [
+      "We can look at the hybrid battery, from reconditioning to a new complete battery set, and take care of the regular servicing your Honda needs."
+     ]
+    },
+    {
+     "h2": "Tell us about your Honda",
+     "p": [
+      "WhatsApp us your model, year and what you notice. A photo of the dashboard warning helps."
+     ]
+    }
+   ],
+   "faq": [
+    {
+     "q": "Which Honda hybrids do you work on?",
+     "a": "Honda hybrids such as the Shuttle Hybrid. WhatsApp us your model and year to check yours."
+    },
+    {
+     "q": "Can you fix a Honda hybrid system warning?",
+     "a": "We check the hybrid system to find the cause first, then quote before the repair."
+    },
+    {
+     "q": "Do you also do normal servicing for Honda hybrids?",
+     "a": "Yes, we do general maintenance as well as hybrid system and battery work."
+    }
+   ]
+  },
+  "aircon": {
+   "title": "Car Aircon Service JB | Aircon Flushing | Hybrid World",
+   "description": "Car aircon service in Johor Bahru, including aircon system flushing, at Hybrid World Specialist, Taman Bukit Indah. WhatsApp us.",
+   "h1": "Car Aircon Service in Johor Bahru",
+   "intro": "Car aircon service in Johor Bahru, including aircon system flushing, for hybrids and other cars. If your aircon is not as cold as it was, or smells, WhatsApp us and we will check it.",
+   "sections": [
+    {
+     "h2": "Aircon system flushing",
+     "p": [
+      "Flushing cleans the inside of the aircon system. One of our reels shows aircon system flushing in progress at the workshop."
+     ]
+    },
+    {
+     "h2": "Signs your aircon needs a check",
+     "p": [
+      "Air that is not cold enough, a bad smell, or noise when the aircon is on are all reasons to have it checked."
+     ]
+    }
+   ],
+   "faq": [
+    {
+     "q": "Do you service aircon on hybrid cars?",
+     "a": "Yes. We service car aircon, including aircon system flushing."
+    },
+    {
+     "q": "How much is an aircon service?",
+     "a": "It depends on what the car needs. WhatsApp us your model and year for a quote."
+    }
+   ]
+  },
+  "transmission": {
+   "title": "Auto Transmission Repair JB | Hybrid World Specialist",
+   "description": "Auto transmission repair in Johor Bahru at Hybrid World Specialist, Taman Bukit Indah. Check first, quote before work. WhatsApp us.",
+   "h1": "Auto Transmission Repair in Johor Bahru",
+   "intro": "Auto transmission repair in Johor Bahru at Hybrid World Specialist. If your car slips, jerks or hesitates when it changes gear, WhatsApp us and we will check it before we quote.",
+   "sections": [
+    {
+     "h2": "Signs of a transmission problem",
+     "p": [
+      "Jerky or late gear changes, slipping, a warning light or new noises from the gearbox are signs to have the transmission checked early."
+     ]
+    },
+    {
+     "h2": "Check first, then quote",
+     "p": [
+      "We check the car, explain what we found and give you a quote before any repair."
+     ]
+    }
+   ],
+   "faq": [
+    {
+     "q": "Do you repair automatic transmissions?",
+     "a": "Yes, we do auto transmission repair."
+    },
+    {
+     "q": "How do I get a quote?",
+     "a": "WhatsApp us your car model, year and what you notice, and we will arrange a check."
+    }
+   ]
+  },
+  "engine": {
+   "title": "Engine Rebuild JB | Hybrid World Specialist",
+   "description": "Engine rebuild in Johor Bahru at Hybrid World Specialist, Taman Bukit Indah. We check the engine first and quote before work. WhatsApp us.",
+   "h1": "Engine Rebuild in Johor Bahru",
+   "intro": "Engine rebuild in Johor Bahru at Hybrid World Specialist. When an engine is worn out, a rebuild can bring it back. We check it first and talk you through the options and the quote.",
+   "sections": [
+    {
+     "h2": "When an engine rebuild makes sense",
+     "p": [
+      "Heavy oil use, loss of power, knocking noises or low compression can point to a worn engine. A check shows whether a rebuild is the right choice for your car."
+     ]
+    },
+    {
+     "h2": "Quote before work",
+     "p": [
+      "We explain what we found and give you a quote before the engine comes apart."
+     ]
+    }
+   ],
+   "faq": [
+    {
+     "q": "Do you rebuild engines?",
+     "a": "Yes, engine rebuilds are one of our services."
+    },
+    {
+     "q": "How do I start?",
+     "a": "WhatsApp us your car model, year and the symptoms you notice."
+    }
+   ]
+  },
+  "about": {
+   "title": "About Hybrid World Specialist (HWS), Johor Bahru",
+   "description": "About Hybrid World Specialist (HWS), a hybrid car and hybrid battery workshop in Taman Bukit Indah, Johor Bahru, run by HYBRID WORLD (M) SDN BHD.",
+   "h1": "About Hybrid World Specialist",
+   "intro": "Hybrid World Specialist (HWS) is a hybrid car specialist in Johor Bahru, run by HYBRID WORLD (M) SDN BHD. Our workshop is in Taman Bukit Indah, Iskandar Puteri.",
+   "sections": [
+    {
+     "h2": "What we do",
+     "p": [
+      "We focus on Toyota, Lexus and Honda hybrids: hybrid battery replacement with new original/OEM battery sets, hybrid battery reconditioning, hybrid system and inverter faults, and general maintenance. We also do aircon service, auto transmission repair and engine rebuilds."
+     ]
+    },
+    {
+     "h2": "Our workshop",
+     "p": [
+      "The workshop front carries the HYBRID WORLD (M) SDN BHD banner over the door. Inside are our lifts and a separate battery room with our battery conditioning rack."
+     ]
+    },
+    {
+     "h2": "What owners say",
+     "p": [
+      "Owners rate us 4.5 on Google from 22 reviews. You can read some of their reviews, in their own words, on our home page and all of them on Google."
+     ]
+    }
+   ],
+   "company_h2": "Company details"
+  },
+  "contact": {
+   "title": "Contact Hybrid World Specialist | Taman Bukit Indah, JB",
+   "description": "WhatsApp or call Hybrid World Specialist on +60 14-298 5155. No 5, Jalan Indah 16/6, Taman Bukit Indah, Iskandar Puteri, Johor Bahru. Mon-Sat 9am-7pm.",
+   "h1": "Contact Hybrid World Specialist",
+   "intro": "The fastest way to reach us is WhatsApp. Send your car model, year and what you need, and a photo of any warning on the dashboard.",
+   "sections": []
+  }
+ }
+}

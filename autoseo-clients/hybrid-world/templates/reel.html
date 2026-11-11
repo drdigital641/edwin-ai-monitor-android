@@ -1,0 +1,7 @@
+<figure class="reel reel-{{shape}}" data-part="reel">
+  <div class="reel-box">
+    <video controls playsinline preload="none" poster="{{poster}}" width="{{w}}" height="{{h}}" title="{{caption}}"><source src="{{mp4}}" type="video/mp4"></video>
+    <button class="reel-cover" type="button" aria-label="{{play}}: {{caption}}"><img src="{{poster}}" width="{{w}}" height="{{h}}" alt="" loading="lazy" decoding="async" onerror="this.style.visibility='hidden'"><span class="reel-play" aria-hidden="true"></span><span class="reel-time">{{time}}</span></button>
+  </div>
+  <figcaption>{{caption}}</figcaption>
+</figure>

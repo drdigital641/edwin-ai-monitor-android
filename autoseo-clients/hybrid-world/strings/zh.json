@@ -1,0 +1,563 @@
+{
+ "meta": {
+  "html_lang": "zh-Hans",
+  "og_locale": "zh_CN",
+  "schema_lang": "zh-Hans",
+  "switch_name": "中文",
+  "city": "新山",
+  "country": "马来西亚"
+ },
+ "ui": {
+  "skip": "跳到主要内容",
+  "nav_label": "主菜单",
+  "menu": "菜单",
+  "lang_label": "语言",
+  "tagline": "新山混合动力车与电池维修厂",
+  "nav": {
+   "home": "首页",
+   "services": "服务",
+   "about": "关于我们",
+   "contact": "联系我们"
+  },
+  "wa_cta": "WhatsApp 联系我们",
+  "wa_cta_short": "WhatsApp",
+  "call": "致电 {phone}",
+  "call_short": "致电",
+  "email": "电邮联系我们",
+  "hours_label": "营业时间",
+  "hours_text": "周一至周六 上午9点–晚上7点 · 周日休息",
+  "address_label": "地址",
+  "phone_label": "WhatsApp 与电话",
+  "email_label": "电邮",
+  "map_open": "在 Google Maps 打开",
+  "map_load": "在此显示地图",
+  "map_note": "只有您点击后，才会从 Google 加载地图。",
+  "facebook": "Facebook 专页",
+  "more_reels": "在 Facebook 看更多短视频",
+  "rating": "Google 评分 4.5（22 则评论）",
+  "rating_link": "查看我们的 Google 评论",
+  "review_lang_note": "评论为英文原文。",
+  "read_more": "详细了解",
+  "faq_h2": "车主常问的问题",
+  "breadcrumb_label": "页面路径",
+  "car_prev": "上一张照片",
+  "car_next": "下一张照片",
+  "car_dot": "显示第 {n} 张照片",
+  "reel_play": "播放短视频",
+  "reel_label": "短视频",
+  "related_h2": "其他混合动力服务",
+  "cta_kicker": "电力充足",
+  "cta_h2": "混合动力警告灯亮了？WhatsApp 我们。",
+  "cta_p": "告诉我们您的车型、年份，以及仪表板上看到的情况。附上警告灯的照片会更有帮助。",
+  "footer_about": "位于新山 Taman Bukit Indah 的混合动力车与混合动力电池维修厂，服务 Toyota、Lexus 和 Honda 混合动力车。",
+  "footer_services": "服务",
+  "footer_company": "维修厂",
+  "footer_visit": "到访与联系",
+  "reg_label": "公司注册号",
+  "rights": "版权所有。",
+  "photo_label": "我们维修厂的照片",
+  "models_h3": "我们处理的混合动力车"
+ },
+ "prefills": {
+  "general": "你好 Hybrid World，我想咨询我的混合动力车。车型和年份：",
+  "service": "你好 Hybrid World，我想咨询{topic}。我的车型和年份：",
+  "reel": "你好 Hybrid World，我看了你们的短视频，想咨询我的混合动力车。车型和年份："
+ },
+ "services": {
+  "battery": {
+   "name": "混合动力电池更换",
+   "tile": "全新原厂电池组",
+   "card": "全新原厂/OEM 混合动力电池组，以完整组装好的整套单元安装。"
+  },
+  "recon": {
+   "name": "混合动力电池修复",
+   "tile": "在我们的设备上修复",
+   "card": "您原有的混合动力电池组，在我们的电池修复设备上检测并修复。"
+  },
+  "inverter": {
+   "name": "混合动力系统与逆变器维修",
+   "tile": "警告灯、逆变器故障",
+   "card": "查出并修复混合动力系统警告和逆变器故障。"
+  },
+  "toyota": {
+   "name": "Toyota 与 Lexus 混合动力车保养维修",
+   "tile": "Prius、C-HR、Camry、Lexus",
+   "card": "Toyota 和 Lexus 混合动力车的保养与维修，从定期保养到转向和悬挂系统。"
+  },
+  "honda": {
+   "name": "Honda 混合动力车保养维修",
+   "tile": "Shuttle Hybrid 等",
+   "card": "Honda 混合动力车的混合动力系统检查、保养与维修。"
+  },
+  "aircon": {
+   "name": "冷气保养",
+   "tile": "包括冷气系统冲洗",
+   "card": "汽车冷气保养，包括冷气系统冲洗。"
+  },
+  "transmission": {
+   "name": "变速箱维修",
+   "tile": "自动变速箱维修",
+   "card": "为我们处理的车款维修自动变速箱。"
+  },
+  "engine": {
+   "name": "引擎大修",
+   "tile": "拆解、重组、装回",
+   "card": "引擎大修工作在我们自己的维修厂完成。"
+  }
+ },
+ "steps4": [
+  {
+   "t": "WhatsApp 联系我们",
+   "d": "发送您的车型、年份和看到的警告。"
+  },
+  {
+   "t": "检测",
+   "d": "我们检查车辆和混合动力系统。"
+  },
+  {
+   "t": "报价与维修",
+   "d": "先给您报价，然后才维修。"
+  },
+  {
+   "t": "取车上路",
+   "d": "取回爱车，继续上路。"
+  }
+ ],
+ "photos": {
+  "chr-lift": "Toyota C-HR 在 Hybrid World Specialist 的双柱举升机上，引擎盖打开",
+  "shopfront": "Hybrid World Specialist 维修厂门面，Taman Bukit Indah",
+  "underbody": "Hybrid World 维修厂内，双柱举升机上的车底",
+  "battery-pack": "工作台上打开外壳、电芯外露的混合动力电池组",
+  "battery-rack": "电池房内的混合动力电池修复设备和笔记本电脑",
+  "voxy-bay": "引擎盖打开、正在保养的 Toyota Voxy 混合动力车",
+  "voxy-front": "双柱举升机上的 Toyota Voxy 混合动力车，前视图",
+  "voxy-rear": "举升机上的 Toyota Voxy 混合动力车，后视图",
+  "rack-floor": "从车上拆下的旧转向齿条和悬挂零件",
+  "rack-subframe": "安装在前副车架上的全新转向齿条",
+  "strut-brake": "从下方看到的前悬挂减震器和刹车",
+  "parts-laid": "新旧转向齿条和悬挂零件摆放在一起",
+  "parts-layout": "安装前摆放好的转向齿条、减震器和衬套",
+  "underbody-susp": "前车底和悬挂检查",
+  "wheel-off": "拆下轮胎后，可见减震器和刹车碟",
+  "lower-arm": "前车底，可见下摆臂和传动轴",
+  "steer-shafts": "准备安装的全新转向中间轴"
+ },
+ "photo_caps": {
+  "chr-lift": "举升机上的 Toyota C-HR",
+  "shopfront": "我们的维修厂门面，Taman Bukit Indah",
+  "underbody": "在举升机上检查车底",
+  "battery-pack": "混合动力电池组，已打开外壳",
+  "battery-rack": "我们的电池修复设备",
+  "voxy-bay": "Toyota Voxy 混合动力车保养",
+  "voxy-front": "Toyota Voxy 混合动力车保养",
+  "voxy-rear": "Toyota Voxy 混合动力车保养",
+  "rack-floor": "转向与悬挂系统维修",
+  "rack-subframe": "转向与悬挂系统维修",
+  "strut-brake": "转向与悬挂系统维修",
+  "parts-laid": "转向与悬挂系统维修",
+  "parts-layout": "转向与悬挂系统维修",
+  "underbody-susp": "转向与悬挂系统维修",
+  "wheel-off": "转向与悬挂系统维修",
+  "lower-arm": "转向与悬挂系统维修",
+  "steer-shafts": "转向与悬挂系统维修"
+ },
+ "reels": {
+  "3590804401132363": "Camry Hybrid 电池组，修复进行中",
+  "913009320191079": "Toyota 混合动力车来到维修厂",
+  "247718808165266": "Toyota Estima Hybrid 电池组，修复进行中",
+  "1997784040607881": "Toyota Camry Hybrid 电池修复进行中",
+  "3698249173743111": "Prius C",
+  "1043418970146526": "冷气系统冲洗进行中",
+  "1409707422923024": "Toyota Alphard Hybrid 电池修复进行中",
+  "1511233039613802": "又爆满了：维修厂里全是混合动力车",
+  "1261488171143483": "Toyota 与 Lexus 混合动力车来到维修厂",
+  "782658250126168": "猜猜是什么车型？（仪表板）",
+  "1386231112061897": "全新 Toyota 混合动力电池，零件标签特写",
+  "939639247865591": "全新 OEM 混合动力电池单元"
+ },
+ "models": [
+  "Toyota Prius / Prius C",
+  "Toyota C-HR",
+  "Toyota Camry Hybrid",
+  "Toyota Corolla Cross Hybrid",
+  "Toyota Estima / Alphard / Voxy Hybrid",
+  "Lexus CT200h / ES / NX",
+  "Honda 混合动力车，例如 Shuttle Hybrid"
+ ],
+ "art": {
+  "inverter": "混合动力逆变器图示",
+  "honda": "混合动力系统图示",
+  "aircon": "冷气图示",
+  "transmission": "变速箱齿轮图示",
+  "engine": "引擎图示",
+  "hero": "能量在混合动力电池、引擎和车轮之间流动"
+ },
+ "pages": {
+  "home": {
+   "title": "新山混合动力车专家 | Hybrid World (HWS)",
+   "description": "新山混合动力车专家，服务 Toyota、Lexus 和 Honda 混合动力车：全新混合动力电池组、电池修复、逆变器维修。欢迎 WhatsApp 联系。",
+   "h1": "新山混合动力车与电池专家",
+   "tagline": "Toyota、Lexus、Honda 混合动力车。电池、逆变器、全面保养。",
+   "charge": "混合动力系统",
+   "services_h2": "我们维修什么",
+   "steps_h2": "流程如何进行",
+   "photos_h2": "维修厂内部",
+   "reels_h2": "来自维修厂",
+   "reels_p": "来自我们 Facebook 专页的短片。点击播放。",
+   "reviews_h2": "车主怎么说",
+   "visit_h2": "欢迎到访维修厂",
+   "about_h2": "新山混合动力车专家",
+   "about": [
+    "Hybrid World Specialist (HWS) 是新山的混合动力车专家，位于 Iskandar Puteri 的 Taman Bukit Indah。我们处理 Toyota、Lexus 和 Honda 混合动力车：混合动力电池更换、混合动力电池修复、混合动力系统与逆变器故障，以及每辆车都需要的日常保养。",
+    "在新山更换混合动力电池，我们安装全新原厂/OEM 电池组。它们只以完整组装好的整套单元供应，绝不是单颗电芯。如果您的电池组还能挽救，我们可以改在电池修复设备上为它修复。",
+    "我们也做冷气保养（包括冷气系统冲洗）、自动变速箱维修、引擎大修和一般汽车保养，让一间维修厂就能照顾整辆车。"
+   ],
+   "faq": [
+    {
+     "q": "你们处理哪些混合动力车？",
+     "a": "Toyota 和 Lexus 混合动力车，例如 Prius 和 Prius C、C-HR、Camry Hybrid、Corolla Cross Hybrid、Estima、Alphard 和 Voxy Hybrid、Lexus CT200h、ES 和 NX，以及 Honda 混合动力车，例如 Shuttle Hybrid。"
+    },
+    {
+     "q": "你们会更换混合动力电池里的单颗电芯吗？",
+     "a": "不会。更换电池时，我们安装全新原厂/OEM 混合动力电池组，而且只以完整组装好的整套单元出售。如果您的电池组还值得挽救，欢迎询问修复服务。"
+    },
+    {
+     "q": "混合动力电池要多少钱？",
+     "a": "视车型和检查结果而定。请 WhatsApp 告诉我们您的车型和年份，开始维修前我们会先告知选项和价格。"
+    },
+    {
+     "q": "维修厂在哪里？什么时候营业？",
+     "a": "No 5, Jalan Indah 16/6, Taman Bukit Indah, 79100 Iskandar Puteri, Johor Bahru。我们周一至周六上午9点至晚上7点营业，周日休息。"
+    }
+   ]
+  },
+  "battery": {
+   "title": "新山混合动力电池更换 | 全新原厂电池组 | HWS",
+   "description": "新山混合动力电池更换，采用全新原厂/OEM 电池组，完整组装好的整套单元，适用于 Prius、Camry、C-HR、Lexus 和 Honda 混合动力车。",
+   "h1": "新山混合动力电池更换",
+   "intro": "在 Hybrid World Specialist 更换新山混合动力电池，指的是安装全新原厂/OEM 混合动力电池组，以一整套完整组装好的单元装上车。我们绝不出售单颗电芯。车主来找我们换 Prius 混合动力电池，也来换 Camry、C-HR、Estima、Alphard、Voxy、Lexus 和 Honda 的混合动力电池。",
+   "sections": [
+    {
+     "h2": "混合动力电池何时需要更换",
+     "p": [
+      "混合动力电池衰弱时，通常会在仪表板出现混合动力系统警告，引擎比以前更常运转，或起步时车子感觉无力。这些迹象也可能有其他原因，所以我们会先检查车辆，再建议是否换新电池。",
+      "如果检查显示电池组还能挽救，我们会告诉您，混合动力电池修复可能是更好的选择。"
+     ]
+    },
+    {
+     "h2": "全新原厂/OEM 电池组，只提供完整单元",
+     "p": [
+      "我们安装全新原厂/OEM 混合动力电池组。它们是完整组装好的单元，可直接装进车里，绝不是零散的单颗电芯。这样整组电池从第一天起就是互相匹配的。",
+      "您可以在首页的短视频里看到全新电池单元和零件标签特写。"
+     ]
+    },
+    {
+     "h2": "新山 Prius 混合动力电池",
+     "p": [
+      "Toyota Prius 和 Prius C 是我们最常见的混合动力车之一。Camry Hybrid、C-HR、Corolla Cross Hybrid，以及 Estima、Alphard 和 Voxy Hybrid 也一样。请 WhatsApp 告诉我们您的车型和年份，我们会告知您的车可以怎么做。"
+     ]
+    }
+   ],
+   "faq": [
+    {
+     "q": "你们出售单颗混合动力电池电芯吗？",
+     "a": "不出售。我们的全新原厂/OEM 混合动力电池组只以完整组装好的整套单元出售，绝不是单颗电芯。"
+    },
+    {
+     "q": "我的混合动力电池应该更换还是修复？",
+     "a": "视电池组的状况而定。我们先检查车辆，再告诉您修复还是换新电池组更合适。"
+    },
+    {
+     "q": "更换混合动力电池要多少钱？",
+     "a": "价格视车型而定。请 WhatsApp 告诉我们您的车型和年份，开始维修前我们会先报价。"
+    }
+   ]
+  },
+  "recon": {
+   "title": "新山混合动力电池修复 | Hybrid World (HWS)",
+   "description": "新山混合动力电池修复，在我们自己的电池设备上进行，适用于 Toyota Camry、Estima、Alphard、Prius 等混合动力车。欢迎 WhatsApp 联系。",
+   "h1": "新山混合动力电池修复",
+   "intro": "混合动力电池修复，让您原有的混合动力电池组在考虑换新之前多一次机会。在新山的 Hybrid World Specialist，我们用自己的电池修复设备为电池组修复，设备放在维修厂内独立的电池房里。",
+   "sections": [
+    {
+     "h2": "什么是混合动力电池修复",
+     "p": [
+      "混合动力电池组由许多电芯一起运作。修复是把您原有的电池组放在修复设备上处理，而不是更换它。",
+      "不是每个电池组都值得修复。我们会先检查，并如实告诉您修复还是换新电池组更合适。"
+     ]
+    },
+    {
+     "h2": "我们的电池房",
+     "p": [
+      "电池组接到我们的电池修复设备上，旁边放着笔记本电脑，在一个独立的房间里进行。我们的短视频可以看到 Camry Hybrid、Estima Hybrid 和 Alphard Hybrid 电池组在那里修复。"
+     ]
+    },
+    {
+     "h2": "什么时候该询问修复",
+     "p": [
+      "如果您的混合动力车出现电池警告，或引擎看起来比以前更常运转，请 WhatsApp 告诉我们您的车型和年份。我们会告诉您下一步该怎么做。"
+     ]
+    }
+   ],
+   "faq": [
+    {
+     "q": "每个混合动力电池都能修复吗？",
+     "a": "不能。我们先检查电池组。如果修复不是合适的选择，我们会说明原因，并向您介绍全新原厂/OEM 电池组。"
+    },
+    {
+     "q": "你们修复过哪些车型？",
+     "a": "我们的短视频可以看到 Toyota Camry Hybrid、Estima Hybrid 和 Alphard Hybrid 电池组的修复过程。您自己的车型，欢迎 WhatsApp 询问。"
+    },
+    {
+     "q": "要怎么开始？",
+     "a": "WhatsApp 发送您的车型、年份和看到的警告，我们会安排检查。"
+    }
+   ]
+  },
+  "inverter": {
+   "title": "混合动力逆变器维修 | 新山混合动力系统故障 | HWS",
+   "description": "新山混合动力逆变器维修和混合动力系统故障维修，服务 Toyota、Lexus 和 Honda 混合动力车。先检查，维修前先报价。",
+   "h1": "新山混合动力系统与逆变器维修",
+   "intro": "在新山为 Toyota、Lexus 和 Honda 混合动力车提供混合动力逆变器维修和混合动力系统故障维修。混合动力系统警告亮起时，我们先查出故障，再向您说明并报价，然后才维修。",
+   "sections": [
+    {
+     "h2": "逆变器的作用",
+     "p": [
+      "逆变器位于混合动力电池和电动马达之间。它把电池的电力转换成马达使用的形式，车子自行充电时再转换回来。逆变器出现故障时，车子可能显示混合动力系统警告，或失去电动驱动。"
+     ]
+    },
+    {
+     "h2": "我们检查的混合动力系统警告",
+     "p": [
+      "混合动力系统警告可能来自电池、逆变器、冷却系统、线路或传感器。所以我们会先检查整个混合动力系统，再指出是哪个零件，免得您为错误的维修付费。"
+     ]
+    },
+    {
+     "h2": "请带上详细资料",
+     "p": [
+      "请 WhatsApp 告诉我们您的车型、年份，并附上仪表板警告的照片。这能让我们在您来之前先做好准备。"
+     ]
+    }
+   ],
+   "faq": [
+    {
+     "q": "出现混合动力系统警告时还能开车吗？",
+     "a": "每个情况都不同。请用 WhatsApp 发送警告照片和您的车辆资料，我们会告诉您下一步该怎么做。"
+    },
+    {
+     "q": "Honda 混合动力车的逆变器你们也修吗？",
+     "a": "我们处理 Toyota、Lexus 和 Honda 的混合动力系统。请 WhatsApp 告诉我们您的车型和年份来确认。"
+    },
+    {
+     "q": "你们会先告诉我价钱吗？",
+     "a": "会。我们先检查车辆，说明发现的问题，并在维修前给您报价。"
+    }
+   ]
+  },
+  "toyota": {
+   "title": "新山 Toyota 混合动力车维修 | Lexus 混合动力车 | HWS",
+   "description": "新山 Toyota 混合动力车维修和 Lexus 混合动力车维修：Prius、C-HR、Camry、Corolla Cross、Estima、Alphard、Voxy、Lexus CT200h、ES、NX。",
+   "h1": "新山 Toyota 与 Lexus 混合动力车保养维修",
+   "intro": "新山 Toyota 混合动力车维修和 Lexus 混合动力车维修，从定期保养到混合动力电池和混合动力系统的工作。我们既照顾混合动力部分，也照顾车子的其他部分，包括转向和悬挂系统。",
+   "sections": [
+    {
+     "h2": "我们处理的 Toyota 混合动力车",
+     "p": [
+      "我们处理 Toyota Prius 和 Prius C、C-HR、Camry Hybrid、Corolla Cross Hybrid，以及 Estima、Alphard 和 Voxy Hybrid。下面的照片是 Toyota Voxy 混合动力车保养，以及举升机上的 Toyota C-HR。"
+     ]
+    },
+    {
+     "h2": "新山 Lexus 混合动力车维修",
+     "p": [
+      "我们也处理 Lexus 混合动力车，包括 CT200h、ES 和 NX。Lexus 混合动力车与 Toyota 有许多相同的混合动力零件，所以适用同样的检查。"
+     ]
+    },
+    {
+     "h2": "保养、转向与悬挂",
+     "p": [
+      "混合动力车仍然需要普通车该有的一切：保养、刹车、转向和悬挂。我们的照片可以看到维修厂更换转向齿条、减震器和衬套。",
+      "请告诉我们您的感觉，例如过颠簸路面有声响或方向盘变重，我们会检查。"
+     ]
+    }
+   ],
+   "faq": [
+    {
+     "q": "Toyota 混合动力车的普通部分你们也保养吗？",
+     "a": "会。除了混合动力电池和混合动力系统，我们也做一般保养，以及转向和悬挂系统维修。"
+    },
+    {
+     "q": "你们处理 Lexus 混合动力车吗？",
+     "a": "处理，包括 Lexus CT200h、ES 和 NX。"
+    },
+    {
+     "q": "要怎么预约？",
+     "a": "WhatsApp 告诉我们您的车型、年份和需要的服务。我们周一至周六上午9点至晚上7点营业。"
+    }
+   ]
+  },
+  "honda": {
+   "title": "新山 Honda 混合动力车维修 | Shuttle Hybrid 等 | HWS",
+   "description": "新山 Honda 混合动力车维修：混合动力系统检查、混合动力电池工作，以及 Shuttle Hybrid 等 Honda 混合动力车的保养。欢迎 WhatsApp 联系。",
+   "h1": "新山 Honda 混合动力车保养维修",
+   "intro": "在 Hybrid World Specialist 进行新山 Honda 混合动力车维修，包括混合动力系统检查、混合动力电池工作，以及 Shuttle Hybrid 等 Honda 混合动力车的一般保养。",
+   "sections": [
+    {
+     "h2": "Honda 混合动力系统问题",
+     "p": [
+      "Honda 混合动力车出现警告，或不再像以前那样用电力行驶时，我们先检查混合动力系统。然后向您说明故障，并在维修前报价。"
+     ]
+    },
+    {
+     "h2": "Honda 混合动力车的电池与保养",
+     "p": [
+      "我们可以检查混合动力电池，从修复到全新的完整电池组，也负责您的 Honda 所需的定期保养。"
+     ]
+    },
+    {
+     "h2": "告诉我们您的 Honda",
+     "p": [
+      "请 WhatsApp 告诉我们您的车型、年份和您的感觉。附上仪表板警告的照片会有帮助。"
+     ]
+    }
+   ],
+   "faq": [
+    {
+     "q": "你们处理哪些 Honda 混合动力车？",
+     "a": "Honda 混合动力车，例如 Shuttle Hybrid。请 WhatsApp 告诉我们您的车型和年份来确认。"
+    },
+    {
+     "q": "Honda 混合动力系统警告你们能修吗？",
+     "a": "我们先检查混合动力系统找出原因，再在维修前报价。"
+    },
+    {
+     "q": "Honda 混合动力车的普通保养你们也做吗？",
+     "a": "做，我们除了混合动力系统和电池工作，也做一般保养。"
+    }
+   ]
+  },
+  "aircon": {
+   "title": "新山汽车冷气保养 | 冷气系统冲洗 | Hybrid World",
+   "description": "新山汽车冷气保养，包括冷气系统冲洗，在 Taman Bukit Indah 的 Hybrid World Specialist 进行。欢迎 WhatsApp 联系。",
+   "h1": "新山汽车冷气保养",
+   "intro": "新山汽车冷气保养，包括冷气系统冲洗，混合动力车和其他车款都可以。如果您的冷气不如以前冷，或有异味，请 WhatsApp 我们，我们会检查。",
+   "sections": [
+    {
+     "h2": "冷气系统冲洗",
+     "p": [
+      "冲洗是清洁冷气系统的内部。我们的一段短视频可以看到维修厂正在进行冷气系统冲洗。"
+     ]
+    },
+    {
+     "h2": "冷气需要检查的迹象",
+     "p": [
+      "出风不够冷、有异味，或开冷气时有声响，都是该检查的理由。"
+     ]
+    }
+   ],
+   "faq": [
+    {
+     "q": "混合动力车的冷气你们也保养吗？",
+     "a": "保养。我们做汽车冷气保养，包括冷气系统冲洗。"
+    },
+    {
+     "q": "冷气保养要多少钱？",
+     "a": "视车子需要什么而定。请 WhatsApp 告诉我们您的车型和年份来报价。"
+    }
+   ]
+  },
+  "transmission": {
+   "title": "新山自动变速箱维修 | Hybrid World Specialist",
+   "description": "新山自动变速箱维修，在 Taman Bukit Indah 的 Hybrid World Specialist 进行。先检查，维修前先报价。欢迎 WhatsApp 联系。",
+   "h1": "新山自动变速箱维修",
+   "intro": "在新山的 Hybrid World Specialist 维修自动变速箱。如果您的车换档时打滑、顿挫或迟疑，请 WhatsApp 我们，我们会先检查再报价。",
+   "sections": [
+    {
+     "h2": "变速箱问题的迹象",
+     "p": [
+      "换档顿挫或太迟、打滑、警告灯亮起，或变速箱出现新的声响，都是应尽早检查变速箱的迹象。"
+     ]
+    },
+    {
+     "h2": "先检查，再报价",
+     "p": [
+      "我们检查车辆，说明发现的问题，并在任何维修前给您报价。"
+     ]
+    }
+   ],
+   "faq": [
+    {
+     "q": "你们维修自动变速箱吗？",
+     "a": "维修，我们做自动变速箱维修。"
+    },
+    {
+     "q": "怎样取得报价？",
+     "a": "WhatsApp 告诉我们您的车型、年份和您的感觉，我们会安排检查。"
+    }
+   ]
+  },
+  "engine": {
+   "title": "新山引擎大修 | Hybrid World Specialist",
+   "description": "新山引擎大修，在 Taman Bukit Indah 的 Hybrid World Specialist 进行。我们先检查引擎，维修前先报价。欢迎 WhatsApp 联系。",
+   "h1": "新山引擎大修",
+   "intro": "在新山的 Hybrid World Specialist 做引擎大修。引擎磨损严重时，大修可以让它恢复。我们先检查，再向您说明各种选择和报价。",
+   "sections": [
+    {
+     "h2": "什么时候适合引擎大修",
+     "p": [
+      "机油消耗大、动力下降、有敲击声或压缩压力低，可能表示引擎磨损。检查之后就知道大修是否适合您的车。"
+     ]
+    },
+    {
+     "h2": "维修前先报价",
+     "p": [
+      "我们说明发现的问题，并在拆引擎之前给您报价。"
+     ]
+    }
+   ],
+   "faq": [
+    {
+     "q": "你们做引擎大修吗？",
+     "a": "做，引擎大修是我们的服务之一。"
+    },
+    {
+     "q": "要怎么开始？",
+     "a": "WhatsApp 告诉我们您的车型、年份和您感觉到的症状。"
+    }
+   ]
+  },
+  "about": {
+   "title": "关于新山 Hybrid World Specialist (HWS)",
+   "description": "关于 Hybrid World Specialist (HWS)，位于新山 Taman Bukit Indah 的混合动力车与混合动力电池维修厂，由 HYBRID WORLD (M) SDN BHD 经营。",
+   "h1": "关于 Hybrid World Specialist",
+   "intro": "Hybrid World Specialist (HWS) 是新山的混合动力车专家，由 HYBRID WORLD (M) SDN BHD 经营。我们的维修厂位于 Iskandar Puteri 的 Taman Bukit Indah。",
+   "sections": [
+    {
+     "h2": "我们做什么",
+     "p": [
+      "我们专注于 Toyota、Lexus 和 Honda 混合动力车：以全新原厂/OEM 电池组更换混合动力电池、混合动力电池修复、混合动力系统与逆变器故障，以及一般保养。我们也做冷气保养、自动变速箱维修和引擎大修。"
+     ]
+    },
+    {
+     "h2": "我们的维修厂",
+     "p": [
+      "维修厂门口上方挂着 HYBRID WORLD (M) SDN BHD 的横幅。里面有我们的举升机，以及设有电池修复设备的独立电池房。"
+     ]
+    },
+    {
+     "h2": "车主怎么说",
+     "p": [
+      "车主在 Google 给我们 4.5 分，共 22 则评论。您可以在我们的首页看到其中一些车主的原话，全部评论则可在 Google 查看。"
+     ]
+    }
+   ],
+   "company_h2": "公司资料"
+  },
+  "contact": {
+   "title": "联系 Hybrid World Specialist | 新山 Taman Bukit Indah",
+   "description": "WhatsApp 或致电 Hybrid World Specialist：+60 14-298 5155。No 5, Jalan Indah 16/6, Taman Bukit Indah, Iskandar Puteri, Johor Bahru。周一至周六上午9点至晚上7点。",
+   "h1": "联系 Hybrid World Specialist",
+   "intro": "最快联系我们的方式是 WhatsApp。请发送您的车型、年份和需要的服务，以及仪表板上任何警告的照片。",
+   "sections": []
+  }
+ }
+}

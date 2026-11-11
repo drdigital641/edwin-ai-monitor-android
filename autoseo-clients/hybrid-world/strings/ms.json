@@ -1,0 +1,563 @@
+{
+ "meta": {
+  "html_lang": "ms",
+  "og_locale": "ms_MY",
+  "schema_lang": "ms",
+  "switch_name": "BM",
+  "city": "Johor Bahru",
+  "country": "Malaysia"
+ },
+ "ui": {
+  "skip": "Terus ke kandungan",
+  "nav_label": "Menu utama",
+  "menu": "Menu",
+  "lang_label": "Bahasa",
+  "tagline": "Bengkel hibrid & bateri, JB",
+  "nav": {
+   "home": "Utama",
+   "services": "Perkhidmatan",
+   "about": "Tentang Kami",
+   "contact": "Hubungi"
+  },
+  "wa_cta": "WhatsApp kami",
+  "wa_cta_short": "WhatsApp",
+  "call": "Telefon {phone}",
+  "call_short": "Telefon",
+  "email": "E-mel kami",
+  "hours_label": "Waktu operasi",
+  "hours_text": "Isn–Sab 9 pagi–7 malam · Ahad tutup",
+  "address_label": "Alamat",
+  "phone_label": "WhatsApp & telefon",
+  "email_label": "E-mel",
+  "map_open": "Buka di Google Maps",
+  "map_load": "Papar peta di sini",
+  "map_note": "Peta dimuatkan dari Google hanya apabila anda tekan.",
+  "facebook": "Halaman Facebook",
+  "more_reels": "Lagi reel di Facebook",
+  "rating": "4.5 di Google (22 ulasan)",
+  "rating_link": "Baca ulasan Google kami",
+  "review_lang_note": "Ulasan asal dalam Bahasa Inggeris.",
+  "read_more": "Butiran lanjut",
+  "faq_h2": "Soalan yang pemilik kereta tanya",
+  "breadcrumb_label": "Laluan halaman",
+  "car_prev": "Foto sebelumnya",
+  "car_next": "Foto seterusnya",
+  "car_dot": "Papar foto {n}",
+  "reel_play": "Mainkan reel",
+  "reel_label": "Reel",
+  "related_h2": "Perkhidmatan hibrid lain",
+  "cta_kicker": "Bateri penuh",
+  "cta_h2": "Lampu amaran hibrid menyala? WhatsApp kami.",
+  "cta_p": "Beritahu kami model kereta, tahun dan apa yang anda nampak pada papan pemuka. Foto amaran itu sangat membantu.",
+  "footer_about": "Bengkel kereta hibrid dan bateri hibrid di Taman Bukit Indah, Johor Bahru, untuk kereta hibrid Toyota, Lexus dan Honda.",
+  "footer_services": "Perkhidmatan",
+  "footer_company": "Bengkel",
+  "footer_visit": "Lawati & hubungi",
+  "reg_label": "No. syarikat",
+  "rights": "Hak cipta terpelihara.",
+  "photo_label": "Foto dari bengkel kami",
+  "models_h3": "Kereta hibrid yang kami uruskan"
+ },
+ "prefills": {
+  "general": "Hi Hybrid World, saya nak tanya tentang kereta hibrid saya. Model dan tahun: ",
+  "service": "Hi Hybrid World, saya nak tanya tentang {topic}. Model dan tahun kereta saya: ",
+  "reel": "Hi Hybrid World, saya nampak reel anda dan nak tanya tentang kereta hibrid saya. Model dan tahun: "
+ },
+ "services": {
+  "battery": {
+   "name": "Penggantian bateri hibrid",
+   "tile": "Set bateri baharu original",
+   "card": "Set bateri hibrid baharu original/OEM, dipasang sebagai unit lengkap yang telah dipasang."
+  },
+  "recon": {
+   "name": "Pemulihan bateri hibrid",
+   "tile": "Dirawat di rak kami",
+   "card": "Pek bateri hibrid sedia ada anda diperiksa dan dipulihkan di rak bateri kami."
+  },
+  "inverter": {
+   "name": "Baiki sistem hibrid & inverter",
+   "tile": "Lampu amaran, kerosakan inverter",
+   "card": "Amaran sistem hibrid dan kerosakan inverter dijejak dan dibaiki."
+  },
+  "toyota": {
+   "name": "Servis hibrid Toyota & Lexus",
+   "tile": "Prius, C-HR, Camry, Lexus",
+   "card": "Penyelenggaraan dan pembaikan untuk kereta hibrid Toyota dan Lexus, daripada servis sehingga stereng dan suspensi."
+  },
+  "honda": {
+   "name": "Servis hibrid Honda",
+   "tile": "Shuttle Hybrid dan lain-lain",
+   "card": "Pemeriksaan sistem hibrid, penyelenggaraan dan pembaikan untuk kereta hibrid Honda."
+  },
+  "aircon": {
+   "name": "Servis aircond",
+   "tile": "Termasuk flushing sistem",
+   "card": "Servis aircond kereta, termasuk flushing sistem aircond."
+  },
+  "transmission": {
+   "name": "Baiki transmisi",
+   "tile": "Baiki gearbox auto",
+   "card": "Pembaikan transmisi auto untuk kereta yang kami uruskan."
+  },
+  "engine": {
+   "name": "Bina semula enjin",
+   "tile": "Buka, bina semula, pasang",
+   "card": "Kerja bina semula enjin dilakukan di bengkel kami sendiri."
+  }
+ },
+ "steps4": [
+  {
+   "t": "WhatsApp kami",
+   "d": "Hantar model, tahun dan amaran yang anda nampak."
+  },
+  {
+   "t": "Diagnosis",
+   "d": "Kami periksa kereta dan sistem hibrid."
+  },
+  {
+   "t": "Sebut harga dan baiki",
+   "d": "Anda dapat sebut harga dahulu, kemudian kami baiki."
+  },
+  {
+   "t": "Bawa pulang",
+   "d": "Ambil kereta anda dan teruskan perjalanan."
+  }
+ ],
+ "photos": {
+  "chr-lift": "Toyota C-HR di atas lif dua tiang dengan bonet terbuka di Hybrid World Specialist",
+  "shopfront": "Hadapan bengkel Hybrid World Specialist, Taman Bukit Indah",
+  "underbody": "Bahagian bawah kereta di atas lif dua tiang di bengkel Hybrid World",
+  "battery-pack": "Pek bateri hibrid tanpa penutup dengan sel kelihatan di atas meja kerja",
+  "battery-rack": "Rak rawatan bateri hibrid dan komputer riba di bilik bateri",
+  "voxy-bay": "Toyota Voxy hibrid dengan bonet terbuka untuk diservis",
+  "voxy-front": "Toyota Voxy hibrid di atas lif dua tiang, pandangan depan",
+  "voxy-rear": "Toyota Voxy hibrid di atas lif, pandangan belakang",
+  "rack-floor": "Rak stereng dan alat ganti suspensi lama yang dikeluarkan dari kereta",
+  "rack-subframe": "Rak stereng baharu dipasang pada subframe depan",
+  "strut-brake": "Strat suspensi depan dan brek dilihat dari bawah",
+  "parts-laid": "Rak stereng lama dan baharu dengan alat ganti suspensi disusun",
+  "parts-layout": "Rak stereng, strat dan bush disusun sebelum dipasang",
+  "underbody-susp": "Pemeriksaan bahagian bawah depan dan suspensi",
+  "wheel-off": "Tayar ditanggalkan dengan strat dan cakera brek kelihatan",
+  "lower-arm": "Bahagian bawah depan dengan lower arm dan aci pemacu",
+  "steer-shafts": "Aci perantara stereng baharu sedia untuk dipasang"
+ },
+ "photo_caps": {
+  "chr-lift": "Toyota C-HR di atas lif",
+  "shopfront": "Hadapan bengkel kami, Taman Bukit Indah",
+  "underbody": "Pemeriksaan bahagian bawah di atas lif",
+  "battery-pack": "Pek bateri hibrid, tanpa penutup",
+  "battery-rack": "Rak rawatan bateri kami",
+  "voxy-bay": "Servis Toyota Voxy hibrid",
+  "voxy-front": "Servis Toyota Voxy hibrid",
+  "voxy-rear": "Servis Toyota Voxy hibrid",
+  "rack-floor": "Pembaikan stereng dan suspensi",
+  "rack-subframe": "Pembaikan stereng dan suspensi",
+  "strut-brake": "Pembaikan stereng dan suspensi",
+  "parts-laid": "Pembaikan stereng dan suspensi",
+  "parts-layout": "Pembaikan stereng dan suspensi",
+  "underbody-susp": "Pembaikan stereng dan suspensi",
+  "wheel-off": "Pembaikan stereng dan suspensi",
+  "lower-arm": "Pembaikan stereng dan suspensi",
+  "steer-shafts": "Pembaikan stereng dan suspensi"
+ },
+ "reels": {
+  "3590804401132363": "Set bateri Camry Hybrid, pemulihan sedang dijalankan",
+  "913009320191079": "Toyota Hybrid sudah sampai di bengkel",
+  "247718808165266": "Set bateri Toyota Estima Hybrid, pemulihan sedang dijalankan",
+  "1997784040607881": "Pemulihan bateri Toyota Camry Hybrid sedang dijalankan",
+  "3698249173743111": "Prius C",
+  "1043418970146526": "Flushing sistem aircond sedang dijalankan",
+  "1409707422923024": "Pemulihan bateri Toyota Alphard Hybrid sedang dijalankan",
+  "1511233039613802": "Penuh lagi: bengkel penuh dengan kereta hibrid",
+  "1261488171143483": "Keluarga hibrid Toyota & Lexus sudah sampai di bengkel",
+  "782658250126168": "Teka model apa? (papan pemuka)",
+  "1386231112061897": "Bateri hibrid Toyota baharu, gambar dekat label alat ganti",
+  "939639247865591": "Unit bateri hibrid OEM yang baharu"
+ },
+ "models": [
+  "Toyota Prius / Prius C",
+  "Toyota C-HR",
+  "Toyota Camry Hybrid",
+  "Toyota Corolla Cross Hybrid",
+  "Toyota Estima / Alphard / Voxy Hybrid",
+  "Lexus CT200h / ES / NX",
+  "Kereta hibrid Honda, contohnya Shuttle Hybrid"
+ ],
+ "art": {
+  "inverter": "Grafik inverter hibrid",
+  "honda": "Grafik sistem hibrid",
+  "aircon": "Grafik aircond",
+  "transmission": "Grafik gear transmisi",
+  "engine": "Grafik enjin",
+  "hero": "Tenaga mengalir antara bateri hibrid, enjin dan roda"
+ },
+ "pages": {
+  "home": {
+   "title": "Pakar Kereta Hibrid Johor Bahru | Hybrid World (HWS)",
+   "description": "Pakar kereta hibrid di Johor Bahru untuk hibrid Toyota, Lexus dan Honda: set bateri hibrid baharu, pemulihan bateri, baiki inverter. WhatsApp kami.",
+   "h1": "Pakar Kereta & Bateri Hibrid, Johor Bahru",
+   "tagline": "Hibrid Toyota, Lexus dan Honda. Bateri, inverter, servis penuh.",
+   "charge": "Sistem hibrid",
+   "services_h2": "Apa yang kami baiki",
+   "steps_h2": "Cara ia berjalan",
+   "photos_h2": "Dalam bengkel",
+   "reels_h2": "Dari bengkel",
+   "reels_p": "Klip pendek dari halaman Facebook kami. Tekan untuk main.",
+   "reviews_h2": "Kata pemilik kereta",
+   "visit_h2": "Datang ke bengkel",
+   "about_h2": "Pakar kereta hibrid di Johor Bahru",
+   "about": [
+    "Hybrid World Specialist (HWS) ialah pakar kereta hibrid di Johor Bahru, di Taman Bukit Indah, Iskandar Puteri. Kami menguruskan kereta hibrid Toyota, Lexus dan Honda: penggantian bateri hibrid, pemulihan bateri hibrid, kerosakan sistem hibrid dan inverter, serta penyelenggaraan harian yang diperlukan setiap kereta.",
+    "Untuk penggantian bateri hibrid di JB, kami pasang set bateri baharu original/OEM. Ia hanya ada sebagai unit lengkap yang telah dipasang, bukan sel tunggal. Jika pek anda masih boleh diselamatkan, kami boleh memulihkannya di rak bateri kami.",
+    "Kami juga buat servis aircond (termasuk flushing sistem aircond), baiki transmisi auto, bina semula enjin dan penyelenggaraan kereta am, supaya satu bengkel boleh menjaga seluruh kereta anda."
+   ],
+   "faq": [
+    {
+     "q": "Kereta hibrid apa yang anda uruskan?",
+     "a": "Kereta hibrid Toyota dan Lexus seperti Prius dan Prius C, C-HR, Camry Hybrid, Corolla Cross Hybrid, Estima, Alphard dan Voxy Hybrid, Lexus CT200h, ES dan NX, serta kereta hibrid Honda seperti Shuttle Hybrid."
+    },
+    {
+     "q": "Adakah anda tukar sel tunggal dalam bateri hibrid?",
+     "a": "Tidak. Untuk penggantian bateri, kami pasang set bateri hibrid baharu original/OEM, dan ia dijual hanya sebagai unit lengkap yang telah dipasang. Jika pek anda masih berbaloi diselamatkan, tanya kami tentang pemulihan."
+    },
+    {
+     "q": "Berapa harga bateri hibrid?",
+     "a": "Ia bergantung pada model dan apa yang ditemui semasa pemeriksaan. WhatsApp kami model dan tahun kereta anda, dan kami akan beritahu pilihan serta harga sebelum kerja bermula."
+    },
+    {
+     "q": "Di mana bengkel dan bila anda buka?",
+     "a": "No 5, Jalan Indah 16/6, Taman Bukit Indah, 79100 Iskandar Puteri, Johor Bahru. Kami buka Isnin hingga Sabtu, 9 pagi hingga 7 malam, dan tutup pada hari Ahad."
+    }
+   ]
+  },
+  "battery": {
+   "title": "Penggantian Bateri Hibrid JB | Set Original | HWS",
+   "description": "Penggantian bateri hibrid di JB dengan set bateri baharu original/OEM, unit lengkap untuk Prius, Camry, C-HR, Lexus dan kereta hibrid Honda.",
+   "h1": "Penggantian Bateri Hibrid di JB",
+   "intro": "Penggantian bateri hibrid di JB di Hybrid World Specialist bermaksud set bateri hibrid baharu original/OEM, dipasang sebagai satu unit lengkap yang telah dipasang. Kami tidak jual sel tunggal. Pemilik datang kepada kami untuk bateri hibrid Prius di JB, dan juga untuk bateri hibrid Camry, C-HR, Estima, Alphard, Voxy, Lexus dan Honda.",
+   "sections": [
+    {
+     "h2": "Bila bateri hibrid perlu diganti",
+     "p": [
+      "Bateri hibrid yang lemah biasanya menunjukkan amaran sistem hibrid pada papan pemuka, enjin berjalan lebih kerap daripada biasa, atau kereta terasa lemah semasa bergerak. Tanda-tanda ini boleh juga berpunca daripada sebab lain, jadi kami periksa kereta dahulu sebelum mencadangkan bateri baharu.",
+      "Jika pemeriksaan menunjukkan pek masih boleh diselamatkan, kami akan beritahu, dan pemulihan bateri hibrid mungkin pilihan yang lebih baik."
+     ]
+    },
+    {
+     "h2": "Set bateri baharu original/OEM, unit lengkap sahaja",
+     "p": [
+      "Kami pasang set bateri hibrid baharu original/OEM. Ia datang sebagai unit lengkap yang telah dipasang, sedia untuk dimasukkan ke dalam kereta, bukan sel tunggal yang longgar. Dengan cara ini seluruh pek sepadan sejak hari pertama.",
+      "Anda boleh lihat unit bateri baharu dan gambar dekat label alat ganti dalam reel kami di halaman utama."
+     ]
+    },
+    {
+     "h2": "Bateri hibrid Prius di JB",
+     "p": [
+      "Toyota Prius dan Prius C antara kereta hibrid yang paling kerap kami jumpa. Begitu juga Camry Hybrid, C-HR, Corolla Cross Hybrid serta Estima, Alphard dan Voxy Hybrid. WhatsApp kami model dan tahun kereta anda, dan kami akan beritahu apa yang boleh dilakukan untuk kereta anda."
+     ]
+    }
+   ],
+   "faq": [
+    {
+     "q": "Adakah anda jual sel bateri hibrid tunggal?",
+     "a": "Tidak. Set bateri hibrid baharu original/OEM kami dijual hanya sebagai unit lengkap yang telah dipasang, bukan sel tunggal."
+    },
+    {
+     "q": "Patutkah saya ganti atau pulihkan bateri hibrid saya?",
+     "a": "Ia bergantung pada keadaan pek anda. Kami periksa kereta dahulu, kemudian beritahu sama ada pemulihan atau set bateri baharu lebih sesuai."
+    },
+    {
+     "q": "Berapa harga penggantian bateri hibrid?",
+     "a": "Harga bergantung pada model kereta. WhatsApp kami model dan tahun kereta anda, dan kami akan beri sebut harga sebelum kerja bermula."
+    }
+   ]
+  },
+  "recon": {
+   "title": "Pemulihan Bateri Hibrid JB | Hybrid World (HWS)",
+   "description": "Pemulihan bateri hibrid di Johor Bahru pada rak bateri kami sendiri, untuk Toyota Camry, Estima, Alphard, Prius dan kereta hibrid lain. WhatsApp kami.",
+   "h1": "Pemulihan Bateri Hibrid di Johor Bahru",
+   "intro": "Pemulihan bateri hibrid memberi pek bateri hibrid sedia ada anda peluang lagi sebelum anda fikir tentang yang baharu. Di Hybrid World Specialist, Johor Bahru, kami pulihkan pek pada rak rawatan bateri kami sendiri, dalam bilik bateri berasingan di dalam bengkel.",
+   "sections": [
+    {
+     "h2": "Apa itu pemulihan bateri hibrid",
+     "p": [
+      "Pek bateri hibrid terdiri daripada banyak sel yang berfungsi bersama. Pemulihan dilakukan pada pek sedia ada anda di atas rak rawatan, bukannya menggantinya.",
+      "Tidak semua pek berbaloi dipulihkan. Kami periksa dahulu dan beritahu dengan jujur sama ada pemulihan atau set bateri baharu pilihan yang lebih baik."
+     ]
+    },
+    {
+     "h2": "Bilik bateri kami",
+     "p": [
+      "Pek disambung pada rak rawatan bateri kami, dengan komputer riba di sebelahnya, dalam bilik tersendiri. Reel kami menunjukkan set bateri Camry Hybrid, Estima Hybrid dan Alphard Hybrid dipulihkan di situ."
+     ]
+    },
+    {
+     "h2": "Bila patut tanya tentang pemulihan",
+     "p": [
+      "Jika kereta hibrid anda menunjukkan amaran bateri, atau enjin nampak berjalan lebih kerap daripada dahulu, WhatsApp kami model dan tahun kereta anda. Kami akan beritahu langkah seterusnya."
+     ]
+    }
+   ],
+   "faq": [
+    {
+     "q": "Bolehkah semua bateri hibrid dipulihkan?",
+     "a": "Tidak. Kami periksa pek dahulu. Jika pemulihan bukan pilihan yang sesuai, kami akan terangkan sebabnya dan bincangkan set bateri baharu original/OEM dengan anda."
+    },
+    {
+     "q": "Model apa yang pernah anda pulihkan?",
+     "a": "Reel kami menunjukkan set bateri Toyota Camry Hybrid, Estima Hybrid dan Alphard Hybrid dipulihkan. Tanya kami tentang model anda di WhatsApp."
+    },
+    {
+     "q": "Bagaimana nak mula?",
+     "a": "Hantar WhatsApp dengan model, tahun kereta dan amaran yang anda nampak, dan kami akan aturkan pemeriksaan."
+    }
+   ]
+  },
+  "inverter": {
+   "title": "Baiki Inverter Hibrid JB | Kerosakan Sistem | HWS",
+   "description": "Baiki inverter hibrid dan kerosakan sistem hibrid di Johor Bahru untuk kereta hibrid Toyota, Lexus dan Honda. Periksa dahulu, sebut harga sebelum kerja.",
+   "h1": "Baiki Sistem Hibrid & Inverter, Johor Bahru",
+   "intro": "Baiki inverter hibrid dan kerosakan sistem hibrid untuk kereta hibrid Toyota, Lexus dan Honda di Johor Bahru. Apabila amaran sistem hibrid menyala, kami jejak kerosakan dahulu, kemudian terangkan dan beri sebut harga sebelum kami baiki.",
+   "sections": [
+    {
+     "h2": "Apa fungsi inverter",
+     "p": [
+      "Inverter terletak di antara bateri hibrid dan motor elektrik. Ia menukar kuasa bateri kepada bentuk yang digunakan motor, dan kembali semula apabila kereta mengecas dirinya. Apabila ia rosak, kereta mungkin menunjukkan amaran sistem hibrid atau hilang pemacu elektrik."
+     ]
+    },
+    {
+     "h2": "Amaran sistem hibrid yang kami periksa",
+     "p": [
+      "Amaran sistem hibrid boleh datang daripada bateri, inverter, penyejukan, pendawaian atau sensor. Sebab itu kami periksa seluruh sistem hibrid sebelum menyebut bahagian yang rosak, supaya anda tidak membayar untuk pembaikan yang salah."
+     ]
+    },
+    {
+     "h2": "Bawa butiran kereta anda",
+     "p": [
+      "WhatsApp kami model, tahun kereta dan foto amaran pada papan pemuka. Ia membantu kami bersiap sebelum anda datang."
+     ]
+    }
+   ],
+   "faq": [
+    {
+     "q": "Selamatkah memandu dengan amaran sistem hibrid?",
+     "a": "Setiap kes berbeza. Hantar foto amaran dan butiran kereta anda melalui WhatsApp, dan kami akan nasihatkan langkah seterusnya."
+    },
+    {
+     "q": "Adakah anda baiki inverter kereta hibrid Honda juga?",
+     "a": "Kami menguruskan sistem hibrid Toyota, Lexus dan Honda. WhatsApp kami model dan tahun kereta anda untuk disemak."
+    },
+    {
+     "q": "Adakah anda beritahu harga dahulu?",
+     "a": "Ya. Kami periksa kereta, terangkan apa yang kami temui dan beri sebut harga sebelum kami baiki."
+    }
+   ]
+  },
+  "toyota": {
+   "title": "Baiki Hibrid Toyota Johor Bahru | Hibrid Lexus JB | HWS",
+   "description": "Baiki hibrid Toyota di Johor Bahru dan hibrid Lexus di JB: Prius, C-HR, Camry, Corolla Cross, Estima, Alphard, Voxy, Lexus CT200h, ES, NX.",
+   "h1": "Servis Hibrid Toyota & Lexus, Johor Bahru",
+   "intro": "Baiki hibrid Toyota di Johor Bahru dan hibrid Lexus di JB, daripada servis biasa sehingga kerja bateri hibrid dan sistem hibrid. Kami menjaga bahagian hibrid dan juga bahagian lain kereta, termasuk stereng dan suspensi.",
+   "sections": [
+    {
+     "h2": "Kereta hibrid Toyota yang kami uruskan",
+     "p": [
+      "Kami menguruskan Toyota Prius dan Prius C, C-HR, Camry Hybrid, Corolla Cross Hybrid, serta Estima, Alphard dan Voxy Hybrid. Foto di bawah menunjukkan servis Toyota Voxy hibrid dan Toyota C-HR di atas lif kami."
+     ]
+    },
+    {
+     "h2": "Baiki hibrid Lexus di JB",
+     "p": [
+      "Kami juga menguruskan kereta hibrid Lexus, termasuk CT200h, ES dan NX. Hibrid Lexus berkongsi banyak bahagian hibrid dengan Toyota, jadi pemeriksaan yang sama digunakan."
+     ]
+    },
+    {
+     "h2": "Servis, stereng dan suspensi",
+     "p": [
+      "Kereta hibrid masih perlukan semua yang diperlukan kereta biasa: servis, brek, stereng dan suspensi. Foto kami menunjukkan rak stereng, strat dan bush diganti di bengkel.",
+      "Beritahu kami apa yang anda perasan, seperti bunyi apabila melalui bonggol atau stereng terasa berat, dan kami akan periksa."
+     ]
+    }
+   ],
+   "faq": [
+    {
+     "q": "Adakah anda servis bahagian biasa kereta hibrid Toyota juga?",
+     "a": "Ya. Selain kerja bateri hibrid dan sistem hibrid, kami buat penyelenggaraan am serta pembaikan stereng dan suspensi."
+    },
+    {
+     "q": "Adakah anda menguruskan kereta hibrid Lexus?",
+     "a": "Ya, termasuk Lexus CT200h, ES dan NX."
+    },
+    {
+     "q": "Bagaimana nak tempah?",
+     "a": "WhatsApp kami model, tahun kereta dan apa yang anda perlukan. Kami buka Isnin hingga Sabtu, 9 pagi hingga 7 malam."
+    }
+   ]
+  },
+  "honda": {
+   "title": "Baiki Hibrid Honda JB | Shuttle Hybrid & Lain-lain | HWS",
+   "description": "Baiki hibrid Honda di JB: pemeriksaan sistem hibrid, kerja bateri hibrid dan penyelenggaraan kereta hibrid Honda seperti Shuttle Hybrid. WhatsApp kami.",
+   "h1": "Servis & Baiki Hibrid Honda di JB",
+   "intro": "Baiki hibrid Honda di JB di Hybrid World Specialist merangkumi pemeriksaan sistem hibrid, kerja bateri hibrid dan penyelenggaraan am untuk kereta hibrid Honda seperti Shuttle Hybrid.",
+   "sections": [
+    {
+     "h2": "Masalah sistem hibrid Honda",
+     "p": [
+      "Apabila kereta hibrid Honda menunjukkan amaran atau tidak lagi bergerak dengan kuasa elektrik seperti dahulu, kami periksa sistem hibrid dahulu. Kemudian kami terangkan kerosakan dan beri sebut harga sebelum kami baiki."
+     ]
+    },
+    {
+     "h2": "Bateri dan penyelenggaraan untuk hibrid Honda",
+     "p": [
+      "Kami boleh melihat bateri hibrid, daripada pemulihan sehingga set bateri lengkap yang baharu, dan menjaga servis berkala yang diperlukan Honda anda."
+     ]
+    },
+    {
+     "h2": "Ceritakan tentang Honda anda",
+     "p": [
+      "WhatsApp kami model, tahun dan apa yang anda perasan. Foto amaran pada papan pemuka sangat membantu."
+     ]
+    }
+   ],
+   "faq": [
+    {
+     "q": "Kereta hibrid Honda apa yang anda uruskan?",
+     "a": "Kereta hibrid Honda seperti Shuttle Hybrid. WhatsApp kami model dan tahun kereta anda untuk menyemak kereta anda."
+    },
+    {
+     "q": "Bolehkah anda baiki amaran sistem hibrid Honda?",
+     "a": "Kami periksa sistem hibrid untuk mencari puncanya dahulu, kemudian beri sebut harga sebelum pembaikan."
+    },
+    {
+     "q": "Adakah anda buat servis biasa untuk kereta hibrid Honda juga?",
+     "a": "Ya, kami buat penyelenggaraan am serta kerja sistem hibrid dan bateri."
+    }
+   ]
+  },
+  "aircon": {
+   "title": "Servis Aircond Kereta JB | Flushing Aircond | Hybrid World",
+   "description": "Servis aircond kereta di Johor Bahru, termasuk flushing sistem aircond, di Hybrid World Specialist, Taman Bukit Indah. WhatsApp kami.",
+   "h1": "Servis Aircond Kereta di Johor Bahru",
+   "intro": "Servis aircond kereta di Johor Bahru, termasuk flushing sistem aircond, untuk kereta hibrid dan kereta lain. Jika aircond anda tidak sejuk seperti dahulu, atau berbau, WhatsApp kami dan kami akan periksa.",
+   "sections": [
+    {
+     "h2": "Flushing sistem aircond",
+     "p": [
+      "Flushing membersihkan bahagian dalam sistem aircond. Satu reel kami menunjukkan flushing sistem aircond sedang dijalankan di bengkel."
+     ]
+    },
+    {
+     "h2": "Tanda aircond anda perlu diperiksa",
+     "p": [
+      "Angin yang tidak cukup sejuk, bau busuk, atau bunyi apabila aircond dipasang semuanya sebab untuk diperiksa."
+     ]
+    }
+   ],
+   "faq": [
+    {
+     "q": "Adakah anda servis aircond kereta hibrid?",
+     "a": "Ya. Kami servis aircond kereta, termasuk flushing sistem aircond."
+    },
+    {
+     "q": "Berapa harga servis aircond?",
+     "a": "Ia bergantung pada apa yang diperlukan kereta. WhatsApp kami model dan tahun kereta anda untuk sebut harga."
+    }
+   ]
+  },
+  "transmission": {
+   "title": "Baiki Transmisi Auto JB | Hybrid World Specialist",
+   "description": "Baiki transmisi auto di Johor Bahru di Hybrid World Specialist, Taman Bukit Indah. Periksa dahulu, sebut harga sebelum kerja. WhatsApp kami.",
+   "h1": "Baiki Transmisi Auto di Johor Bahru",
+   "intro": "Baiki transmisi auto di Johor Bahru di Hybrid World Specialist. Jika kereta anda tergelincir, tersentak atau teragak-agak semasa tukar gear, WhatsApp kami dan kami akan periksa sebelum memberi sebut harga.",
+   "sections": [
+    {
+     "h2": "Tanda masalah transmisi",
+     "p": [
+      "Pertukaran gear yang tersentak atau lewat, tergelincir, lampu amaran atau bunyi baharu dari gearbox ialah tanda untuk memeriksa transmisi lebih awal."
+     ]
+    },
+    {
+     "h2": "Periksa dahulu, kemudian sebut harga",
+     "p": [
+      "Kami periksa kereta, terangkan apa yang kami temui dan beri sebut harga sebelum sebarang pembaikan."
+     ]
+    }
+   ],
+   "faq": [
+    {
+     "q": "Adakah anda baiki transmisi automatik?",
+     "a": "Ya, kami baiki transmisi auto."
+    },
+    {
+     "q": "Bagaimana nak dapatkan sebut harga?",
+     "a": "WhatsApp kami model, tahun kereta dan apa yang anda perasan, dan kami akan aturkan pemeriksaan."
+    }
+   ]
+  },
+  "engine": {
+   "title": "Bina Semula Enjin JB | Hybrid World Specialist",
+   "description": "Bina semula enjin di Johor Bahru di Hybrid World Specialist, Taman Bukit Indah. Kami periksa enjin dahulu dan sebut harga sebelum kerja. WhatsApp kami.",
+   "h1": "Bina Semula Enjin di Johor Bahru",
+   "intro": "Bina semula enjin di Johor Bahru di Hybrid World Specialist. Apabila enjin sudah haus, bina semula boleh memulihkannya. Kami periksa dahulu dan terangkan pilihan serta sebut harga kepada anda.",
+   "sections": [
+    {
+     "h2": "Bila bina semula enjin sesuai",
+     "p": [
+      "Penggunaan minyak enjin yang banyak, kehilangan kuasa, bunyi ketukan atau mampatan rendah boleh menunjukkan enjin yang haus. Pemeriksaan akan menunjukkan sama ada bina semula pilihan yang sesuai untuk kereta anda."
+     ]
+    },
+    {
+     "h2": "Sebut harga sebelum kerja",
+     "p": [
+      "Kami terangkan apa yang kami temui dan beri sebut harga sebelum enjin dibuka."
+     ]
+    }
+   ],
+   "faq": [
+    {
+     "q": "Adakah anda bina semula enjin?",
+     "a": "Ya, bina semula enjin ialah salah satu perkhidmatan kami."
+    },
+    {
+     "q": "Bagaimana nak mula?",
+     "a": "WhatsApp kami model, tahun kereta dan gejala yang anda perasan."
+    }
+   ]
+  },
+  "about": {
+   "title": "Tentang Hybrid World Specialist (HWS), Johor Bahru",
+   "description": "Tentang Hybrid World Specialist (HWS), bengkel kereta hibrid dan bateri hibrid di Taman Bukit Indah, Johor Bahru, dikendalikan oleh HYBRID WORLD (M) SDN BHD.",
+   "h1": "Tentang Hybrid World Specialist",
+   "intro": "Hybrid World Specialist (HWS) ialah pakar kereta hibrid di Johor Bahru, dikendalikan oleh HYBRID WORLD (M) SDN BHD. Bengkel kami terletak di Taman Bukit Indah, Iskandar Puteri.",
+   "sections": [
+    {
+     "h2": "Apa yang kami buat",
+     "p": [
+      "Kami menumpukan pada kereta hibrid Toyota, Lexus dan Honda: penggantian bateri hibrid dengan set bateri baharu original/OEM, pemulihan bateri hibrid, kerosakan sistem hibrid dan inverter, serta penyelenggaraan am. Kami juga buat servis aircond, baiki transmisi auto dan bina semula enjin."
+     ]
+    },
+    {
+     "h2": "Bengkel kami",
+     "p": [
+      "Hadapan bengkel ada sepanduk HYBRID WORLD (M) SDN BHD di atas pintu. Di dalam terdapat lif kami dan bilik bateri berasingan dengan rak rawatan bateri kami."
+     ]
+    },
+    {
+     "h2": "Kata pemilik kereta",
+     "p": [
+      "Pemilik memberi kami 4.5 di Google daripada 22 ulasan. Anda boleh baca sebahagian ulasan mereka, dengan kata-kata mereka sendiri, di halaman utama kami dan semuanya di Google."
+     ]
+    }
+   ],
+   "company_h2": "Maklumat syarikat"
+  },
+  "contact": {
+   "title": "Hubungi Hybrid World Specialist | Taman Bukit Indah, JB",
+   "description": "WhatsApp/telefon Hybrid World Specialist di +60 14-298 5155. No 5, Jalan Indah 16/6, Taman Bukit Indah, Iskandar Puteri, Johor Bahru. Isn-Sab 9 pagi-7 malam.",
+   "h1": "Hubungi Hybrid World Specialist",
+   "intro": "Cara paling cepat untuk menghubungi kami ialah WhatsApp. Hantar model kereta, tahun dan apa yang anda perlukan, serta foto sebarang amaran pada papan pemuka.",
+   "sections": []
+  }
+ }
+}

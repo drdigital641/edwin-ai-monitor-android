@@ -1,0 +1,262 @@
+{
+ "_readme": "Page order, photos, reels and the review quotes. Visible text lives in strings/<lang>.json; business facts in config.json. Photo notes: fb-01..03 are a Toyota Voxy (never caption as Lexus/CT200h); shopfront fascia says CARHUB with a HYBRID WORLD (M) SDN BHD banner, never crop or claim otherwise.",
+ "languages": [
+  {
+   "code": "en",
+   "prefix": ""
+  },
+  {
+   "code": "ms",
+   "prefix": "ms/"
+  },
+  {
+   "code": "zh",
+   "prefix": "zh/"
+  }
+ ],
+ "og_photo": "battery-rack",
+ "logo": "gmaps-06-logo-hybrid-world-specialist",
+ "photos": [
+  {
+   "key": "chr-lift",
+   "file": "gmaps-01-toyota-chr-on-lift-bonnet-open.webp"
+  },
+  {
+   "key": "shopfront",
+   "file": "gmaps-02-shop-front-hybrid-world-signboard.webp"
+  },
+  {
+   "key": "underbody",
+   "file": "gmaps-03-car-underbody-on-two-post-lift.webp"
+  },
+  {
+   "key": "battery-pack",
+   "file": "gmaps-04-hybrid-battery-pack-cells-exposed.webp"
+  },
+  {
+   "key": "battery-rack",
+   "file": "gmaps-05-battery-conditioning-rack-and-laptop.webp"
+  },
+  {
+   "key": "voxy-bay",
+   "file": "fb-01-toyota-voxy-engine-bay-bonnet-open.webp"
+  },
+  {
+   "key": "voxy-front",
+   "file": "fb-02-toyota-voxy-on-two-post-lift-front-view.webp"
+  },
+  {
+   "key": "voxy-rear",
+   "file": "fb-03-toyota-voxy-on-lift-rear-view.webp"
+  },
+  {
+   "key": "rack-floor",
+   "file": "fb-04-steering-rack-removed-parts-on-floor.webp"
+  },
+  {
+   "key": "rack-subframe",
+   "file": "fb-05-new-steering-rack-fitted-on-subframe.webp"
+  },
+  {
+   "key": "strut-brake",
+   "file": "fb-06-worn-suspension-strut-and-brake-inspection.webp"
+  },
+  {
+   "key": "parts-laid",
+   "file": "fb-07-steering-rack-and-suspension-parts-laid-out.webp"
+  },
+  {
+   "key": "parts-layout",
+   "file": "fb-08-steering-racks-struts-and-bushings-layout.webp"
+  },
+  {
+   "key": "underbody-susp",
+   "file": "fb-09-underbody-suspension-inspection.webp"
+  },
+  {
+   "key": "wheel-off",
+   "file": "fb-10-wheel-off-strut-and-brake-disc.webp"
+  },
+  {
+   "key": "lower-arm",
+   "file": "fb-11-front-underbody-lower-arm-and-cv-axle.webp"
+  },
+  {
+   "key": "steer-shafts",
+   "file": "fb-12-steering-intermediate-shafts.webp"
+  }
+ ],
+ "services": [
+  {
+   "key": "battery",
+   "slug": "hybrid-battery-replacement/",
+   "hero": "battery-pack",
+   "photos": [
+    "battery-rack"
+   ],
+   "tile_photo": "battery-pack",
+   "icon": "battery"
+  },
+  {
+   "key": "recon",
+   "slug": "hybrid-battery-reconditioning/",
+   "hero": "battery-rack",
+   "photos": [
+    "battery-pack"
+   ],
+   "tile_photo": "battery-rack",
+   "icon": "recon"
+  },
+  {
+   "key": "inverter",
+   "slug": "hybrid-system-inverter-repair/",
+   "icon": "inverter"
+  },
+  {
+   "key": "toyota",
+   "slug": "toyota-lexus-hybrid-service/",
+   "hero": "chr-lift",
+   "photos": [
+    "voxy-front",
+    "voxy-rear",
+    "voxy-bay",
+    "underbody",
+    "rack-subframe",
+    "parts-layout",
+    "wheel-off",
+    "strut-brake"
+   ],
+   "tile_photo": "chr-lift",
+   "icon": "car"
+  },
+  {
+   "key": "honda",
+   "slug": "honda-hybrid-service/",
+   "icon": "honda"
+  },
+  {
+   "key": "aircon",
+   "slug": "aircon-service/",
+   "icon": "aircon"
+  },
+  {
+   "key": "transmission",
+   "slug": "transmission-repair/",
+   "icon": "transmission"
+  },
+  {
+   "key": "engine",
+   "slug": "engine-rebuild/",
+   "icon": "engine"
+  }
+ ],
+ "carousel": [
+  "chr-lift",
+  "battery-pack",
+  "voxy-front",
+  "battery-rack",
+  "rack-subframe",
+  "voxy-rear",
+  "parts-layout",
+  "underbody",
+  "wheel-off",
+  "parts-laid",
+  "strut-brake",
+  "steer-shafts",
+  "lower-arm",
+  "shopfront"
+ ],
+ "about_photos": [
+  "shopfront",
+  "battery-rack",
+  "underbody"
+ ],
+ "reels": [
+  {
+   "id": "3590804401132363",
+   "shape": "portrait",
+   "seconds": 45
+  },
+  {
+   "id": "913009320191079",
+   "shape": "portrait",
+   "seconds": 54
+  },
+  {
+   "id": "247718808165266",
+   "shape": "portrait",
+   "seconds": 45
+  },
+  {
+   "id": "1997784040607881",
+   "shape": "portrait",
+   "seconds": 45
+  },
+  {
+   "id": "3698249173743111",
+   "shape": "landscape",
+   "seconds": 45
+  },
+  {
+   "id": "1043418970146526",
+   "shape": "portrait",
+   "seconds": 45
+  },
+  {
+   "id": "1409707422923024",
+   "shape": "portrait",
+   "seconds": 45
+  },
+  {
+   "id": "1511233039613802",
+   "shape": "portrait",
+   "seconds": 45
+  },
+  {
+   "id": "1261488171143483",
+   "shape": "portrait",
+   "seconds": 45
+  },
+  {
+   "id": "782658250126168",
+   "shape": "landscape",
+   "seconds": 45
+  },
+  {
+   "id": "1386231112061897",
+   "shape": "portrait",
+   "seconds": 30
+  },
+  {
+   "id": "939639247865591",
+   "shape": "portrait",
+   "seconds": 30
+  }
+ ],
+ "reviews": [
+  {
+   "name": "Caithline",
+   "text": "The boss is professional and the service is good, staffs are friendly and skillful. Highly recommended for hybrid car users to here."
+  },
+  {
+   "name": "Ian",
+   "text": "I trust their workmanship. They thoroughly check my car which I like. Prices are reasonable and boss always replies fast on whatsapp."
+  },
+  {
+   "name": "David",
+   "text": "the humble and very skilful boss/workers solve my Honda Shuttle Hybrid system issue with their professional knowledge, and quick to get back my car too."
+  },
+  {
+   "name": "Chee Chong",
+   "text": "...their prices are reasonable... Workmanship is INCREDIBLE. Highly recommend. Trustworthy."
+  },
+  {
+   "name": "Crystal",
+   "text": "Honest & truthful! Boss is also a meticulous person... My car has never felt this good!"
+  },
+  {
+   "name": "Tc. Wan",
+   "text": "Highly recommend... good approach by the team, high quality product and service."
+  }
+ ]
+}

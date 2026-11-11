@@ -1,0 +1,21 @@
+<body class="{{body_class}}">
+<a class="skip" href="#main">{{skip}}</a>
+<header class="hdr" data-part="header">
+  <div class="wrap hdr-in">
+    <a class="logo" href="{{home}}" aria-label="{{brand}}">
+      <img src="{{base}}img/logo-96.webp" width="44" height="44" alt="">
+      <span class="logo-txt"><b><span class="full">{{brand}}</span><span class="abbr">{{short}}</span></b><small>{{tagline}}</small></span>
+    </a>
+    <nav class="nav" id="nav" aria-label="{{nav_label}}">
+      <ul>
+{{nav_items}}
+      </ul>
+    </nav>
+    <div class="hdr-end">
+      <div class="langs" role="group" aria-label="{{lang_label}}">{{switcher}}</div>
+      {{wa}}
+      <button class="menu-btn" id="menu-btn" type="button" aria-expanded="false" aria-controls="nav"><span class="burger" aria-hidden="true"><i></i><i></i><i></i></span><span class="sr">{{menu}}</span></button>
+    </div>
+  </div>
+  <span class="hdr-charge" aria-hidden="true"></span>
+</header>
