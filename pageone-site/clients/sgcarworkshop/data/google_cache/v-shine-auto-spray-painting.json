@@ -1,0 +1,30 @@
+{
+ "businessStatus": "OPERATIONAL",
+ "primaryType": "car_repair",
+ "types": [
+  "car_repair",
+  "point_of_interest",
+  "service",
+  "establishment"
+ ],
+ "rating": 4.9,
+ "userRatingCount": 113,
+ "websiteUri": "https://l.facebook.com/l.php?u=https://vshineauto1318.wixsite.com/mysite?fbclid=IwAR3n74WfxLr0Go-qjLkLX27KCP0XJ2rCz5dqYlRCLVngy5niqKwqeI4BEZc&h=AT1H3gWgk0wYtfEzuNTkSUJIJ1RAw5MABpMrnplDSyRgOEbbo_oJoekCsyiRUbasecv88H9PWUqhGSfPrJBp8JlREz5McEMwQEg19u6vMoXv00yPd9cEjCmtdf7nqQEvgVXDTA",
+ "paymentOptions": null,
+ "parkingOptions": null,
+ "editorialSummary": null,
+ "weekdayDescriptions": [
+  "Monday: 10:30 AM – 7:30 PM",
+  "Tuesday: 10:30 AM – 7:30 PM",
+  "Wednesday: 10:30 AM – 7:30 PM",
+  "Thursday: 10:30 AM – 7:30 PM",
+  "Friday: 10:30 AM – 7:30 PM",
+  "Saturday: 10:30 AM – 5:00 PM",
+  "Sunday: Closed"
+ ],
+ "review_count_seen": 5,
+ "review_themes": "Customers on Google Maps mention a full respray on a Toyota Harrier, scratch and dent repairs, panel beating after accidents, clear costs upfront and regular updates on the repair.",
+ "fetched_at": "2026-11-11",
+ "place_id": "ChIJUYAVOSEX2jERDmm2lvqoNiQ",
+ "source": "google_places"
+}

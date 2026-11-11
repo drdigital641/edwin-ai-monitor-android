@@ -1,0 +1,48 @@
+{
+ "schema_version": 1,
+ "slug": "atc-sin-ming-pte-ltd",
+ "place_id": "ChIJucjD4T8Q2jERaL5ZXLhX6A8",
+ "place_id_checked_at": "2026-11-11",
+ "name": "ATC @ Sin Ming Pte. Ltd.",
+ "name_source_url": "google_profile",
+ "name_checked_at": "2026-11-11",
+ "address": {
+  "block": "",
+  "street": "176 Sin Ming Dr, #02-02 Sin Ming AutoCare",
+  "unit": "",
+  "building": ""
+ },
+ "postal_code": "575721",
+ "address_source_url": "google_profile",
+ "address_checked_at": "2026-11-11",
+ "categories": [
+  "SERV"
+ ],
+ "services": [
+  "General servicing and repair"
+ ],
+ "services_source_url": "google_profile",
+ "phones": [
+  {
+   "e164": "+6583862625",
+   "kind": "mobile",
+   "whatsapp": true,
+   "source": "google_profile",
+   "checked_at": "2026-11-11"
+  }
+ ],
+ "google_screen": {
+  "passed": true,
+  "reason": "OPERATIONAL, car repair, SG mobile on Google profile",
+  "checked_at": "2026-11-11"
+ },
+ "status": "pending",
+ "tier": "basic",
+ "first_seen_at": "2026-11-11",
+ "last_verified_at": "2026-11-11",
+ "collector_version": "agent-v5",
+ "estate": "sin-ming-industrial-estate",
+ "planning_area": "Bishan",
+ "region": "central",
+ "hold": "hold: 2 of 5 sampled reviews are serious complaints; not featured"
+}

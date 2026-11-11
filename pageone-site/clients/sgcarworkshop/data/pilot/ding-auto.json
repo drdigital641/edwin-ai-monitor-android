@@ -1,0 +1,36 @@
+{
+ "lede": "Ding Auto at Sin Ming Industrial Estate is a car accident repair and bodywork workshop.",
+ "chips": [
+  "Accident repairs",
+  "Bodywork"
+ ],
+ "services": [
+  "Accident repairs",
+  "Bumper repair",
+  "Bodywork"
+ ],
+ "themes": "Customers on Google Maps mention accident and bumper repairs done within days, almost daily progress updates with photos, no hidden costs and help with extensive repair jobs.",
+ "faqs": [
+  [
+   "What does Ding Auto do?",
+   "Google Maps lists it as a car repair workshop."
+  ],
+  [
+   "What are the opening hours?",
+   "The hours are listed in the Google Maps section above. Please see Google Maps for current hours."
+  ]
+ ],
+ "sources": "its Google Maps listing",
+ "stories": [],
+ "mentioned_services": [
+  "Accident repairs",
+  "Bumper repair",
+  "Bodywork"
+ ],
+ "services_note": "Services customers mention on Google Maps. Ask the workshop for its full list.",
+ "makes": [],
+ "makes_note": "Not listed on its public pages. Ask the workshop about your car.",
+ "specialties": [],
+ "good_to_know": [],
+ "card_rules": "2026-11-05"
+}

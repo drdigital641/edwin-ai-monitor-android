@@ -1,0 +1,47 @@
+{
+ "lede": "PRO-JEX V2D at Kaki Bukit Industrial Estate is a car servicing and repair workshop.",
+ "chips": [
+  "Korean cars",
+  "Servicing"
+ ],
+ "services": [
+  "Vehicle inspection and valuation",
+  "Maintenance and ECU diagnostics",
+  "Engine performance tuning",
+  "Fuel-saving enhancements",
+  "Original or OEM parts supply"
+ ],
+ "themes": "Customers on Google Maps mention a focus on Korean cars, a tyre noise found after another shop missed it, a Kia Cerato body roll and oil leak fixed, a Honda Civic RPM issue diagnosed and regular oil changes.",
+ "faqs": [
+  [
+   "What does PRO-JEX V2D do?",
+   "Google Maps lists it as a car repair workshop."
+  ],
+  [
+   "What are the opening hours?",
+   "The hours are listed in the Google Maps section above. Please see Google Maps for current hours."
+  ]
+ ],
+ "sources": "its own website (v2d.com.sg)",
+ "stories": [],
+ "mentioned_services": [
+  "Korean car servicing",
+  "Suspension repair",
+  "Oil leak repair",
+  "Engine oil change",
+  "Fault diagnosis"
+ ],
+ "services_note": "Services as listed on the workshop's own website, v2d.com.sg.",
+ "makes": [
+  "Kia",
+  "Honda"
+ ],
+ "makes_note": "Named by customers on Google Maps. Ask the workshop about other makes.",
+ "specialties": [
+  "Engine performance tuning",
+  "ECU diagnostics",
+  "Inspection and valuation"
+ ],
+ "good_to_know": [],
+ "card_rules": "2026-11-05"
+}

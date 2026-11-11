@@ -1,0 +1,41 @@
+{
+ "lede": "93 MotorSports at Kaki Bukit Industrial Estate is a car repair workshop.",
+ "chips": [
+  "Repairs",
+  "Diagnosis"
+ ],
+ "services": [
+  "Gearbox repair",
+  "Suspension check",
+  "Coolant leak repair",
+  "Fault diagnosis"
+ ],
+ "themes": "Customers on Google Maps mention patient checks on gearbox, suspension, leaks and vibration, a Volkswagen Caddy gearbox fixed by replacing only the faulty part, a coolant leak traced to a water pipe, and photos of faulty and new parts sent during repairs.",
+ "faqs": [
+  [
+   "What does 93 MotorSports do?",
+   "Google Maps lists it as a car repair workshop."
+  ],
+  [
+   "What are the opening hours?",
+   "The hours are listed in the Google Maps section above. Please see Google Maps for current hours."
+  ]
+ ],
+ "sources": "its Google Maps listing",
+ "stories": [],
+ "mentioned_services": [
+  "Gearbox repair",
+  "Suspension check",
+  "Coolant leak repair",
+  "Fault diagnosis"
+ ],
+ "services_note": "Services customers mention on Google Maps. Ask the workshop for its full list.",
+ "makes": [
+  "Toyota",
+  "Volkswagen"
+ ],
+ "makes_note": "Named by customers on Google Maps. Ask the workshop about other makes.",
+ "specialties": [],
+ "good_to_know": [],
+ "card_rules": "2026-11-05"
+}

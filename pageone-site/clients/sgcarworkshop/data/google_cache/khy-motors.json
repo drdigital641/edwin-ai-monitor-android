@@ -1,0 +1,30 @@
+{
+ "businessStatus": "OPERATIONAL",
+ "primaryType": "car_repair",
+ "types": [
+  "car_repair",
+  "point_of_interest",
+  "service",
+  "establishment"
+ ],
+ "rating": 4.9,
+ "userRatingCount": 106,
+ "websiteUri": "https://www.facebook.com/KHY-Motors-PTE-LTD-2076452259309248/",
+ "paymentOptions": null,
+ "parkingOptions": null,
+ "editorialSummary": null,
+ "weekdayDescriptions": [
+  "Monday: 11:00 AM – 9:00 PM",
+  "Tuesday: 11:00 AM – 9:00 PM",
+  "Wednesday: 11:00 AM – 9:00 PM",
+  "Thursday: 11:00 AM – 9:00 PM",
+  "Friday: 11:00 AM – 9:00 PM",
+  "Saturday: 11:00 AM – 7:00 PM",
+  "Sunday: Closed"
+ ],
+ "review_count_seen": 5,
+ "review_themes": "Customers on Google Maps mention deep Mazda know-how across many models, a quick pre-purchase inspection on a used Mazda CX-5, servicing, careful diagnosis, cost-saving advice and a clean workshop.",
+ "fetched_at": "2026-11-11",
+ "place_id": "ChIJp1X-bv0X2jERn7VJtVonEOw",
+ "source": "google_places"
+}

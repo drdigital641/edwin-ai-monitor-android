@@ -1,0 +1,73 @@
+{
+ "schema_version": 1,
+ "slug": "star-9-workshop",
+ "place_id": "ChIJW9qqTzQR2jERucHMzRY1YD8",
+ "place_id_checked_at": "2026-11-11",
+ "name": "Star 9 Workshop",
+ "name_source_url": "google_profile",
+ "name_checked_at": "2026-11-11",
+ "address": {
+  "block": "",
+  "street": "176 Sin Ming Dr, #01-12 Sin Ming AutoCare",
+  "unit": "",
+  "building": ""
+ },
+ "postal_code": "575721",
+ "address_source_url": "google_profile",
+ "address_checked_at": "2026-11-11",
+ "categories": [
+  "SERV"
+ ],
+ "services": [
+  "General servicing and repair"
+ ],
+ "services_source_url": "google_profile",
+ "phones": [
+  {
+   "e164": "+6592216868",
+   "kind": "mobile",
+   "whatsapp": true,
+   "source": "google_profile",
+   "checked_at": "2026-11-11"
+  }
+ ],
+ "google_screen": {
+  "passed": true,
+  "reason": "OPERATIONAL, car repair, SG mobile on Google profile",
+  "checked_at": "2026-11-11"
+ },
+ "status": "active",
+ "tier": "basic",
+ "first_seen_at": "2026-11-11",
+ "last_verified_at": "2026-11-11",
+ "collector_version": "agent-v5",
+ "estate": "sin-ming-industrial-estate",
+ "planning_area": "Bishan",
+ "region": "central",
+ "lat": 1.360901898783,
+ "lng": 103.8399279808359,
+ "geo_source": "onemap",
+ "blocks": [
+  "hero",
+  "contact",
+  "services",
+  "good_for",
+  "problems",
+  "reviews",
+  "comparison",
+  "hours",
+  "stories",
+  "location",
+  "tips",
+  "faq",
+  "claim",
+  "sources"
+ ],
+ "google_rating": {
+  "rating": 4.9,
+  "count": 42,
+  "checked": "2026-11-11",
+  "source": "Google Places",
+  "source_date": "2026-11-11"
+ }
+}

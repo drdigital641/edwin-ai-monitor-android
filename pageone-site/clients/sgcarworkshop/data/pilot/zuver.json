@@ -1,0 +1,50 @@
+{
+ "lede": "Zuver at Sin Ming Industrial Estate is a continental car servicing and repair workshop.",
+ "chips": [
+  "Continental cars",
+  "Diagnosis"
+ ],
+ "services": [
+  "Service maintenance",
+  "Engine repair and overhaul",
+  "Gearbox repair",
+  "Diagnostics",
+  "NVH (noise and vibration) diagnostics",
+  "Brakes",
+  "Electrical and electronics",
+  "Aircon"
+ ],
+ "themes": "Customers on Google Maps mention faults found within half an hour that a previous mechanic could not solve, same-day repairs, a Land Rover Discovery Sport looked after over several visits, and brake and undercarriage checks on continental cars.",
+ "faqs": [
+  [
+   "What does Zuver do?",
+   "Google Maps lists it as a car repair workshop."
+  ],
+  [
+   "What are the opening hours?",
+   "The hours are listed in the Google Maps section above. Please see Google Maps for current hours."
+  ]
+ ],
+ "sources": "its own website (zuver.com.sg)",
+ "stories": [],
+ "mentioned_services": [
+  "Fault diagnosis",
+  "Car repair",
+  "Brake check",
+  "Continental car servicing"
+ ],
+ "services_note": "Services as listed on the workshop's own website, zuver.com.sg.",
+ "makes": [
+  "Land Rover"
+ ],
+ "makes_note": "Named by customers on Google Maps. Ask the workshop about other makes.",
+ "specialties": [
+  "European and luxury cars",
+  "Noise and vibration diagnostics",
+  "Engine overhaul"
+ ],
+ "good_to_know": [
+  "Body and paint and interior repair alongside mechanical work, according to its website"
+ ],
+ "card_rules": "2026-11-05"
+}

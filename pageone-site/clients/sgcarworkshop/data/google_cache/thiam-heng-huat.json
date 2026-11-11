@@ -1,0 +1,24 @@
+{
+ "businessStatus": "OPERATIONAL",
+ "primaryType": "car_repair",
+ "types": [
+  "car_repair",
+  "point_of_interest",
+  "service",
+  "establishment"
+ ],
+ "rating": 4.5,
+ "userRatingCount": 25,
+ "websiteUri": null,
+ "paymentOptions": {
+  "acceptsCashOnly": false
+ },
+ "parkingOptions": null,
+ "editorialSummary": null,
+ "weekdayDescriptions": null,
+ "review_count_seen": 5,
+ "review_themes": "Customers on Google Maps mention bodywork after accidents, a crumpled rear on a Honda repaired, polishing, an extra dent fixed, regular progress updates and fair treatment for every driver.",
+ "fetched_at": "2026-11-11",
+ "place_id": "ChIJFc5NEncX2jERNItwZw3oPDg",
+ "source": "google_places"
+}

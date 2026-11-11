@@ -1,0 +1,38 @@
+{
+ "lede": "KHY Motors at Sin Ming Industrial Estate is a Mazda servicing and repair workshop.",
+ "chips": [
+  "Mazda",
+  "Inspections"
+ ],
+ "services": [
+  "Mazda servicing",
+  "Pre-purchase inspection",
+  "Fault diagnosis"
+ ],
+ "themes": "Customers on Google Maps mention deep Mazda know-how across many models, a quick pre-purchase inspection on a used Mazda CX-5, servicing, careful diagnosis, cost-saving advice and a clean workshop.",
+ "faqs": [
+  [
+   "What does KHY Motors do?",
+   "Google Maps lists it as a car repair workshop."
+  ],
+  [
+   "What are the opening hours?",
+   "The hours are listed in the Google Maps section above. Please see Google Maps for current hours."
+  ]
+ ],
+ "sources": "its Google Maps listing",
+ "stories": [],
+ "mentioned_services": [
+  "Mazda servicing",
+  "Pre-purchase inspection",
+  "Fault diagnosis"
+ ],
+ "services_note": "Services customers mention on Google Maps. Ask the workshop for its full list.",
+ "makes": [
+  "Mazda"
+ ],
+ "makes_note": "Named by customers on Google Maps. Ask the workshop about other makes.",
+ "specialties": [],
+ "good_to_know": [],
+ "card_rules": "2026-11-05"
+}

@@ -1,0 +1,37 @@
+{
+ "lede": "Mobil Autosoon at Sin Ming Industrial Estate is a Mobil car servicing centre.",
+ "chips": [
+  "Oil change",
+  "Servicing"
+ ],
+ "services": [
+  "Oil change",
+  "Engine diagnostics",
+  "General vehicle maintenance"
+ ],
+ "themes": "Customers on Google Maps mention fast service, options explained clearly, engine oil changes that leave the car running smoother and customers who have come back for years.",
+ "faqs": [
+  [
+   "What does Mobil Autosoon do?",
+   "Google Maps lists it as a car repair workshop."
+  ],
+  [
+   "What are the opening hours?",
+   "The hours are listed in the Google Maps section above. Please see Google Maps for current hours."
+  ]
+ ],
+ "sources": "its own website (workshop.sea.mobil.com)",
+ "stories": [],
+ "mentioned_services": [
+  "Oil change",
+  "Car servicing"
+ ],
+ "services_note": "Services as listed on the workshop's own website, workshop.sea.mobil.com.",
+ "makes": [],
+ "makes_note": "Not listed on its public pages. Ask the workshop about your car.",
+ "specialties": [
+  "Servicing with Mobil engine oils"
+ ],
+ "good_to_know": [],
+ "card_rules": "2026-11-05"
+}

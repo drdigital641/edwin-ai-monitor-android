@@ -1,0 +1,52 @@
+{
+ "lede": "MK9 Superspeed at Sin Ming Industrial Estate is a car servicing and repair workshop.",
+ "chips": [
+  "Gearbox",
+  "Engine work"
+ ],
+ "services": [
+  "Routine servicing",
+  "DSG gearbox work",
+  "DQ200 clutch replacement",
+  "Mechatronic repair",
+  "Engine and mountings",
+  "Suspension",
+  "Diagnostics",
+  "Brakes, electrical and aircon"
+ ],
+ "themes": "Customers on Google Maps mention an Audi Q2 mechatronic fault fixed in hours, a coolant warning checked without changing parts needlessly, pre-purchase inspections, regular servicing and a full engine overhaul.",
+ "faqs": [
+  [
+   "What does MK9 Superspeed do?",
+   "Google Maps lists it as a car repair workshop."
+  ],
+  [
+   "What are the opening hours?",
+   "The hours are listed in the Google Maps section above. Please see Google Maps for current hours."
+  ]
+ ],
+ "sources": "its own website (mk9.sg)",
+ "stories": [],
+ "mentioned_services": [
+  "Mechatronic repair",
+  "Coolant system check",
+  "Pre-purchase inspection",
+  "Engine overhaul",
+  "Car servicing"
+ ],
+ "services_note": "Services as listed on the workshop's own website, mk9.sg.",
+ "makes": [
+  "Audi",
+  "Volkswagen"
+ ],
+ "makes_note": "Named on its own website. Ask the workshop about other makes.",
+ "specialties": [
+  "Audi and Volkswagen",
+  "DSG and DQ200 mechatronic repair",
+  "Engine mountings"
+ ],
+ "good_to_know": [
+  "Works by appointment, according to its website"
+ ],
+ "card_rules": "2026-11-05"
+}

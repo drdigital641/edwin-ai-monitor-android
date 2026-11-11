@@ -1,0 +1,48 @@
+{
+ "schema_version": 1,
+ "slug": "motoserv-car-service-centre-upper-thomson-mobil-1-carcare",
+ "place_id": "ChIJOYdJBc4X2jER2s8q85yV5-w",
+ "place_id_checked_at": "2026-11-11",
+ "name": "Motoserv Car Service Centre @Upper Thomson ( Mobil 1 Carcare )",
+ "name_source_url": "google_profile",
+ "name_checked_at": "2026-11-11",
+ "address": {
+  "block": "",
+  "street": "553 Upper Thomson Rd",
+  "unit": "",
+  "building": ""
+ },
+ "postal_code": "574416",
+ "address_source_url": "google_profile",
+ "address_checked_at": "2026-11-11",
+ "categories": [
+  "SERV"
+ ],
+ "services": [
+  "General servicing and repair"
+ ],
+ "services_source_url": "google_profile",
+ "phones": [
+  {
+   "e164": "+6581333264",
+   "kind": "mobile",
+   "whatsapp": true,
+   "source": "google_profile",
+   "checked_at": "2026-11-11"
+  }
+ ],
+ "google_screen": {
+  "passed": true,
+  "reason": "OPERATIONAL, car repair, SG mobile on Google profile",
+  "checked_at": "2026-11-11"
+ },
+ "status": "pending",
+ "tier": "basic",
+ "first_seen_at": "2026-11-11",
+ "last_verified_at": "2026-11-11",
+ "collector_version": "agent-v5",
+ "estate": "sin-ming-industrial-estate",
+ "planning_area": "Bishan",
+ "region": "central",
+ "hold": "hold: Upper Thomson Road has no estate yet (add one when 3+ shops there qualify)"
+}

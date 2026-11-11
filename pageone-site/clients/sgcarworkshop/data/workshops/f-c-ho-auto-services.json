@@ -1,0 +1,48 @@
+{
+ "schema_version": 1,
+ "slug": "f-c-ho-auto-services",
+ "place_id": "ChIJr41gKRMX2jERItkfxY-6TVg",
+ "place_id_checked_at": "2026-11-11",
+ "name": "F C Ho Auto Services",
+ "name_source_url": "google_profile",
+ "name_checked_at": "2026-11-11",
+ "address": {
+  "block": "",
+  "street": "176 Sin Ming Dr, #01-12 Sin Ming AutoCare",
+  "unit": "",
+  "building": ""
+ },
+ "postal_code": "575721",
+ "address_source_url": "google_profile",
+ "address_checked_at": "2026-11-11",
+ "categories": [
+  "SERV"
+ ],
+ "services": [
+  "General servicing and repair"
+ ],
+ "services_source_url": "google_profile",
+ "phones": [
+  {
+   "e164": "+6597626896",
+   "kind": "mobile",
+   "whatsapp": true,
+   "source": "google_profile",
+   "checked_at": "2026-11-11"
+  }
+ ],
+ "google_screen": {
+  "passed": true,
+  "reason": "OPERATIONAL, car repair, SG mobile on Google profile",
+  "checked_at": "2026-11-11"
+ },
+ "status": "pending",
+ "tier": "basic",
+ "first_seen_at": "2026-11-11",
+ "last_verified_at": "2026-11-11",
+ "collector_version": "agent-v5",
+ "estate": "sin-ming-industrial-estate",
+ "planning_area": "Bishan",
+ "region": "central",
+ "hold": "hold: only 2 ratings; Google unit #01-12 is the same as star-9-workshop (different mobile); recheck before rebuild"
+}

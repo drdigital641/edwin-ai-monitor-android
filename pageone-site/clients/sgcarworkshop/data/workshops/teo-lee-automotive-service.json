@@ -1,0 +1,48 @@
+{
+ "schema_version": 1,
+ "slug": "teo-lee-automotive-service",
+ "place_id": "ChIJJVA6d9EW2jERUkClaX4OnPI",
+ "place_id_checked_at": "2026-11-11",
+ "name": "Teo & Lee Automotive Service",
+ "name_source_url": "google_profile",
+ "name_checked_at": "2026-11-11",
+ "address": {
+  "block": "",
+  "street": "555 Upper Thomson Rd",
+  "unit": "",
+  "building": ""
+ },
+ "postal_code": "574417",
+ "address_source_url": "google_profile",
+ "address_checked_at": "2026-11-11",
+ "categories": [
+  "SERV"
+ ],
+ "services": [
+  "General servicing and repair"
+ ],
+ "services_source_url": "google_profile",
+ "phones": [
+  {
+   "e164": "+6590606562",
+   "kind": "mobile",
+   "whatsapp": true,
+   "source": "google_profile",
+   "checked_at": "2026-11-11"
+  }
+ ],
+ "google_screen": {
+  "passed": true,
+  "reason": "OPERATIONAL, car repair, SG mobile on Google profile",
+  "checked_at": "2026-11-11"
+ },
+ "status": "pending",
+ "tier": "basic",
+ "first_seen_at": "2026-11-11",
+ "last_verified_at": "2026-11-11",
+ "collector_version": "agent-v5",
+ "estate": "sin-ming-industrial-estate",
+ "planning_area": "Bishan",
+ "region": "central",
+ "hold": "hold: Upper Thomson Road has no estate yet (add one when 3+ shops there qualify)"
+}

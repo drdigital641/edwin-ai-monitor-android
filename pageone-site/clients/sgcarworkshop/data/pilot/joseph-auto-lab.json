@@ -1,0 +1,38 @@
+{
+ "lede": "Joseph Auto-Lab at Sin Ming Industrial Estate is a car servicing and repair workshop.",
+ "chips": [
+  "Diagnosis",
+  "Aircon"
+ ],
+ "services": [
+  "Car inspection",
+  "Aircon compressor repair",
+  "Car servicing",
+  "Fault diagnosis"
+ ],
+ "themes": "Customers on Google Maps mention deep, thorough inspections, clear walk-throughs of repair options, only the work that is needed, an aircon compressor fixed for intermittent cooling and fair, transparent pricing.",
+ "faqs": [
+  [
+   "What does Joseph Auto-Lab do?",
+   "Google Maps lists it as a car repair workshop."
+  ],
+  [
+   "What are the opening hours?",
+   "The hours are listed in the Google Maps section above. Please see Google Maps for current hours."
+  ]
+ ],
+ "sources": "its Google Maps listing",
+ "stories": [],
+ "mentioned_services": [
+  "Car inspection",
+  "Aircon compressor repair",
+  "Car servicing",
+  "Fault diagnosis"
+ ],
+ "services_note": "Services customers mention on Google Maps. Ask the workshop for its full list.",
+ "makes": [],
+ "makes_note": "Not listed on its public pages. Ask the workshop about your car.",
+ "specialties": [],
+ "good_to_know": [],
+ "card_rules": "2026-11-05"
+}

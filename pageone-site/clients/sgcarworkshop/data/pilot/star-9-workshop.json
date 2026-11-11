@@ -1,0 +1,49 @@
+{
+ "lede": "Star 9 Workshop at Sin Ming Industrial Estate is a car servicing and repair workshop.",
+ "chips": [
+  "Continental cars",
+  "Classic cars"
+ ],
+ "services": [
+  "Engine and transmission",
+  "Diagnostics and troubleshooting",
+  "Electrical and electronics",
+  "Scheduled maintenance",
+  "Suspension and brakes",
+  "Full vehicle restoration"
+ ],
+ "themes": "Customers on Google Maps mention classic and modern cars, Japanese and continental makes, a BMW X1 repaired after a high quote elsewhere, gearbox tuning and engine mounting work, and a Mercedes-Benz SLK cared for over 15 years.",
+ "faqs": [
+  [
+   "What does Star 9 Workshop do?",
+   "Google Maps lists it as a car repair workshop."
+  ],
+  [
+   "What are the opening hours?",
+   "The hours are listed in the Google Maps section above. Please see Google Maps for current hours."
+  ]
+ ],
+ "sources": "its own website (star9workshop.sg)",
+ "stories": [],
+ "mentioned_services": [
+  "Car servicing",
+  "Gearbox tuning",
+  "Engine mounting",
+  "Classic car repair"
+ ],
+ "services_note": "Services as listed on the workshop's own website, star9workshop.sg.",
+ "makes": [
+  "BMW",
+  "Mercedes-Benz"
+ ],
+ "makes_note": "Named by customers on Google Maps. Ask the workshop about other makes.",
+ "specialties": [
+  "Classic and continental cars",
+  "Full vehicle restoration",
+  "Electrical diagnostics"
+ ],
+ "good_to_know": [
+  "Clear quotation before any work begins, according to its website"
+ ],
+ "card_rules": "2026-11-05"
+}

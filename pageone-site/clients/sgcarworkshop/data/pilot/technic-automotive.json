@@ -1,0 +1,41 @@
+{
+ "lede": "Technic Automotive at Sin Ming Industrial Estate is a continental car servicing and repair workshop.",
+ "chips": [
+  "Continental cars",
+  "Servicing"
+ ],
+ "services": [
+  "Major maintenance",
+  "Check engine light repair",
+  "Car servicing",
+  "Noise diagnosis"
+ ],
+ "themes": "Customers on Google Maps mention care of a Porsche Macan, a squeaking noise sorted during major maintenance, a check engine light fixed after other workshops could not, follow-up calls after repairs and BMW know-how.",
+ "faqs": [
+  [
+   "What does Technic Automotive do?",
+   "Google Maps lists it as a car repair workshop."
+  ],
+  [
+   "What are the opening hours?",
+   "The hours are listed in the Google Maps section above. Please see Google Maps for current hours."
+  ]
+ ],
+ "sources": "its Google Maps listing",
+ "stories": [],
+ "mentioned_services": [
+  "Major maintenance",
+  "Check engine light repair",
+  "Car servicing",
+  "Noise diagnosis"
+ ],
+ "services_note": "Services customers mention on Google Maps. Ask the workshop for its full list.",
+ "makes": [
+  "Porsche",
+  "BMW"
+ ],
+ "makes_note": "Named by customers on Google Maps. Ask the workshop about other makes.",
+ "specialties": [],
+ "good_to_know": [],
+ "card_rules": "2026-11-05"
+}

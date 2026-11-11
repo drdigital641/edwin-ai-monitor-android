@@ -1,0 +1,30 @@
+{
+ "businessStatus": "OPERATIONAL",
+ "primaryType": "car_repair",
+ "types": [
+  "car_repair",
+  "point_of_interest",
+  "service",
+  "establishment"
+ ],
+ "rating": 4.8,
+ "userRatingCount": 26,
+ "websiteUri": "https://www.facebook.com/profile.php?id=61568045683809",
+ "paymentOptions": null,
+ "parkingOptions": null,
+ "editorialSummary": null,
+ "weekdayDescriptions": [
+  "Monday: 8:30 AM – 10:00 PM",
+  "Tuesday: 8:30 AM – 10:00 PM",
+  "Wednesday: 8:30 AM – 10:00 PM",
+  "Thursday: 8:30 AM – 10:00 PM",
+  "Friday: 8:30 AM – 10:00 PM",
+  "Saturday: 8:30 AM – 6:00 PM",
+  "Sunday: 8:30 AM – 6:00 PM"
+ ],
+ "review_count_seen": 5,
+ "review_themes": "Customers on Google Maps mention deep, thorough inspections, clear walk-throughs of repair options, only the work that is needed, an aircon compressor fixed for intermittent cooling and fair, transparent pricing.",
+ "fetched_at": "2026-11-11",
+ "place_id": "ChIJP1Xy2AYX2jERRfUvB0p9Xgo",
+ "source": "google_places"
+}

@@ -1,0 +1,51 @@
+{
+ "lede": "Kakis Garage at Sin Ming Industrial Estate is a car servicing and repair workshop.",
+ "chips": [
+  "Servicing",
+  "Leak repair"
+ ],
+ "services": [
+  "General car servicing",
+  "Brake repair and replacement",
+  "Car aircon repair",
+  "Engine diagnostics",
+  "Battery replacement",
+  "Suspension repair",
+  "Car electrical repairs",
+  "Pre-purchase car inspection"
+ ],
+ "themes": "Customers on Google Maps mention an oil leak found and fixed in a day after other shops could not pin it down, front brake pads on a Honda Civic, extra checks before handover and long-term care of daily-use cars.",
+ "faqs": [
+  [
+   "What does Kakis Garage do?",
+   "Google Maps lists it as a car repair workshop."
+  ],
+  [
+   "What are the opening hours?",
+   "The hours are listed in the Google Maps section above. Please see Google Maps for current hours."
+  ]
+ ],
+ "sources": "its own website (kakisgarage.sg)",
+ "stories": [],
+ "mentioned_services": [
+  "Oil leak repair",
+  "Brake pad change",
+  "Car servicing",
+  "Troubleshooting"
+ ],
+ "services_note": "Services as listed on the workshop's own website, kakisgarage.sg.",
+ "makes": [
+  "Honda"
+ ],
+ "makes_note": "Named by customers on Google Maps. Ask the workshop about other makes.",
+ "specialties": [
+  "Japanese and Korean cars",
+  "Diagnostics",
+  "Small to medium repairs"
+ ],
+ "good_to_know": [
+  "Open workshop: you can watch your car being worked on, according to its website",
+  "Book by WhatsApp, according to its website"
+ ],
+ "card_rules": "2026-11-05"
+}
