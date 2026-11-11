@@ -68,31 +68,41 @@
    "code": "U1",
    "name": "Pembaikan ECU / ECM",
    "topic": "ECU / ECM",
-   "card": "Unit kawalan enjin dan papan ECM dibaiki pada peringkat komponen, diperiksa di meja kerja sebelum dan selepas."
+   "card": "Unit kawalan enjin dan papan ECM dibaiki pada peringkat komponen, diperiksa di meja kerja sebelum dan selepas.",
+   "tile": "Papan ECU & ECM enjin",
+   "tile_name": "ECU / ECM"
   },
   "abs": {
    "code": "U2",
    "name": "Pembaikan modul ABS",
    "topic": "modul ABS",
-   "card": "Modul kawalan ABS diperiksa dan dibaiki, supaya lampu amaran tidak semestinya bermakna kena beli unit baru."
+   "card": "Modul kawalan ABS diperiksa dan dibaiki, supaya lampu amaran tidak semestinya bermakna kena beli unit baru.",
+   "tile": "Modul kawalan ABS",
+   "tile_name": "ABS"
   },
   "cluster": {
    "code": "U3",
    "name": "Pembaikan meter kluster",
    "topic": "meter kluster",
-   "card": "Meter kluster dengan tolok mati, masalah paparan atau masalah lampu dibaiki di meja kerja."
+   "card": "Meter kluster dengan tolok mati, masalah paparan atau masalah lampu dibaiki di meja kerja.",
+   "tile": "Jarum meter, skrin, lampu",
+   "tile_name": "Meter kluster"
   },
   "modules": {
    "code": "U4",
    "name": "Modul kawalan lain",
    "topic": "modul kawalan",
-   "card": "TCM/TCU, kawalan badan (body control) dan papan elektronik kereta yang lain diperiksa satu persatu."
+   "card": "TCM/TCU, kawalan badan (body control) dan papan elektronik kereta yang lain diperiksa satu persatu.",
+   "tile": "TCM, kawalan badan & papan lain",
+   "tile_name": "Papan litar"
   },
   "marine": {
    "code": "U5",
    "name": "Pembaikan elektronik marin",
    "topic": "kawalan elektronik marin",
-   "card": "Kawalan elektronik bot diperiksa dan dibaiki pada peringkat papan litar, cara yang sama seperti modul kereta."
+   "card": "Kawalan elektronik bot diperiksa dan dibaiki pada peringkat papan litar, cara yang sama seperti modul kereta.",
+   "tile": "Kawalan elektronik bot",
+   "tile_name": "Marin"
   }
  },
  "steps": [
@@ -122,7 +132,7 @@
    "title": "Baiki ECU Johor Bahru untuk Bengkel | EMATS",
    "description": "Baiki ECU Johor Bahru untuk bengkel kereta: pembaikan peringkat komponen untuk ECU/ECM, modul ABS dan meter kluster. Diagnosis sebelum sebut harga. Servis hantar masuk.",
    "kicker": "Pembaikan peringkat komponen · Johor Bahru",
-   "h1": "Baiki ECU di Johor Bahru untuk Bengkel",
+   "h1": "Baiki ECU & Modul ABS, Johor Bahru",
    "intro": "EMATS baiki ECU Johor Bahru pada peringkat komponen: kami buka modul, cari bahagian yang rosak pada papan litar dan baikinya. Bengkel kereta hantar papan ECU/ECM, modul ABS, meter kluster dan modul kawalan lain kepada kami, dan kami beritahu kerosakan serta kosnya sebelum sebarang pembaikan.",
    "badges": [
     "Diagnosis sebelum sebut harga",
@@ -187,7 +197,11 @@
      "q": "Bolehkah pemilik kereta hantar modul juga?",
      "a": "Pelanggan utama kami ialah bengkel, tetapi pemilik kereta juga boleh mesej kami. Bengkel anda biasanya perlu tanggal dan pasang semula modul itu."
     }
-   ]
+   ],
+   "tagline": "Bengkel hantar modul. Kami diagnosis, beri sebut harga, kemudian baiki.",
+   "tiles_h2": "Apa yang kami baiki",
+   "steps_h2": "Cara ia berfungsi",
+   "swipe": "Leret untuk lagi"
   },
   "ecu": {
    "title": "Baiki ECU & ECM Johor Bahru untuk Bengkel | EMATS",
@@ -467,5 +481,23 @@
    "loc_h2": "Lokasi",
    "loc_p": "Johor Bahru, Malaysia. Sila mesej kami dahulu untuk mengatur penghantaran atau penyerahan modul."
   }
- }
+ },
+ "steps4": [
+  {
+   "t": "Hantar",
+   "d": "WhatsApp kerosakan, kemudian hantar modul."
+  },
+  {
+   "t": "Kami diagnosis",
+   "d": "Kami cari kerosakan di meja kerja."
+  },
+  {
+   "t": "Sebut harga",
+   "d": "Anda tahu kerosakan dan kos dahulu."
+  },
+  {
+   "t": "Baiki + uji",
+   "d": "Dibaiki, diuji, dihantar semula."
+  }
+ ]
 }

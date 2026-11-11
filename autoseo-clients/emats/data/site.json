@@ -62,21 +62,24 @@
     "ecu-open-case",
     "ecu-case"
    ],
-   "art": "ecu"
+   "art": "ecu",
+   "tile_photo": "tricore-chip"
   },
   {
    "key": "abs",
    "slug": "abs-module-repair/",
    "hero": "",
    "photos": [],
-   "art": "abs"
+   "art": "abs",
+   "tile_photo": ""
   },
   {
    "key": "cluster",
    "slug": "instrument-cluster-repair/",
    "hero": "cluster-bench",
    "photos": [],
-   "art": "cluster"
+   "art": "cluster",
+   "tile_photo": "cluster-bench"
   },
   {
    "key": "modules",
@@ -86,14 +89,16 @@
     "bga-blue-jig",
     "bga-bench-mat"
    ],
-   "art": "modules"
+   "art": "modules",
+   "tile_photo": "bga-blue-jig"
   },
   {
    "key": "marine",
    "slug": "marine-electronics-repair/",
    "hero": "",
    "photos": [],
-   "art": "marine"
+   "art": "marine",
+   "tile_photo": ""
   }
  ],
  "home_photos": [

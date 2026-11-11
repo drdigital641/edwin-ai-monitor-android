@@ -105,7 +105,7 @@ for f in pages:
     if "/" in rel.replace("index.html", "").strip("/") or rel.count("/") > 1 or rel not in ("index.html", "ms/index.html", "zh/index.html"):
         want.add("crumbs")
     if rel in ("index.html", "ms/index.html", "zh/index.html"):
-        want |= {"service-card", "reel", "faq"}
+        want |= {"service-card", "service-tile", "step", "gallery", "reel", "faq"}
     miss = want - p.parts
     if miss:
         err(f"{rel}: shared parts missing {sorted(miss)}")

@@ -347,20 +347,48 @@ def service_schema(L, k, path):
 
 
 # ------------------------------------------------------------------ pages
+STEP_ICONS = [
+    '<svg viewBox="0 0 24 24" width="30" height="30"><path d="M3 11.5 21 3l-6.5 18-3-7.5L3 11.5Z" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/><path d="m11.5 13.5 4-4" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>',
+    '<svg viewBox="0 0 24 24" width="30" height="30"><circle cx="10.5" cy="10.5" r="6.5" fill="none" stroke="currentColor" stroke-width="2"/><path d="m15.5 15.5 5 5" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"/><path d="M7 10.5h2l1-2 1.5 4 1-2h1" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>',
+    '<svg viewBox="0 0 24 24" width="30" height="30"><path d="M6 3h9l4 4v14H6z" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/><path d="M9 11h7M9 15h7M9 7h4" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>',
+    '<svg viewBox="0 0 24 24" width="30" height="30"><path d="M14.5 5.5a4 4 0 0 0-5 5L3.5 16.5l3 3 6-6a4 4 0 0 0 5-5l-2.5 2.5-2-.5-.5-2z" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/><path d="m15 17 2 2 4-4" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>',
+]
+
+
+def img_tag(L, key, sizes, eager=False, cls=""):
+    w, h = SIZES[key]
+    stem = PHOTO[key]["file"][:-5]
+    return (f'<img{" class=" + chr(34) + cls + chr(34) if cls else ""} src="{BASE}img/{stem}-640.webp" srcset="{BASE}img/{stem}-640.webp 640w, {BASE}img/{stem}-1200.webp {w}w" '
+            f'sizes="{sizes}" width="{w}" height="{h}" alt="{E(L.s["photos"][key])}" loading="{"eager" if eager else "lazy"}" decoding="async">')
+
+
+def tile(L, k):
+    sv, cfg = L.s["services"][k], SVC[k]
+    media = img_tag(L, cfg["tile_photo"], "(max-width: 760px) 50vw, 20vw") if cfg.get("tile_photo") else board_art(cfg["art"], "")
+    return fill("service_tile", href=L.url(cfg["slug"]), media=media, code=E(sv["code"]), name=E(sv["tile_name"]), sub=E(sv["tile"]))
+
+
+def steps_icons(L):
+    items = "".join(fill("step_icon", icon=STEP_ICONS[i], n=f"{i + 1:02d}", t=E(st["t"]), d=E(st["d"])) for i, st in enumerate(L.s["steps4"]))
+    return f'<ol class="isteps">{items}</ol>'
+
+
+def gallery(L, keys):
+    items = "".join(f'<figure class="gal-item">{img_tag(L, k, "(max-width: 760px) 80vw, 300px")}</figure>' for k in keys)
+    return fill("gallery", label=E(L.s["pages"]["home"]["photos_h2"]), items=items, hint=E(L.s["pages"]["home"]["swipe"]))
+
+
 def build_home(L):
     h = L.s["pages"]["home"]
     console = "".join(f'<li><span class="ok">✓</span> {E(c)}</li>' for c in h["console"])
-    badges = "".join(f'<li>{E(b)}</li>' for b in h["badges"])
-    body = f'''<section class="hero sec-black">
+    why = "".join(f'<div class="why"><span class="mono">0{i}</span><h3>{E(w["t"])}</h3><p>{E(w["d"])}</p></div>' for i, w in enumerate(h["why"], 1))
+    body = f'''<section class="hero hero-wow sec-black">
   {binary_bg()}
   <div class="wrap hero-grid">
     <div class="hero-txt">
-      <p class="kicker mono">{E(h["kicker"])}</p>
       <h1>{E(h["h1"])}</h1>
-      <p class="lead">{E(h["intro"])}</p>
-      <ul class="badges mono">{badges}</ul>
+      <p class="tagline">{E(h["tagline"])}</p>
       <div class="cta-row">{wa(L, "workshop")}{tel(L)}</div>
-      <p class="more-link"><a href="{L.url("for-workshops/")}">{E(h["process_link"])} →</a></p>
     </div>
     <div class="hero-art">
       {board_art("ecu", "", hero=True)}
@@ -369,13 +397,40 @@ def build_home(L):
     </div>
   </div>
 </section>
-<section class="sec sec-dark" id="services">
+<section class="sec sec-dark sec-tight" id="services">
   <div class="wrap">
-    {kh(h["services_kicker"], h["services_h2"], h["services_p"])}
-    <div class="chip-grid feat">{"".join(card(L, k) for k in SVC)}</div>
+    <h2>{E(h["tiles_h2"])}</h2>
+    <div class="tiles">{"".join(tile(L, k) for k in SVC)}</div>
+  </div>
+</section>
+<section class="sec sec-black sec-tight">
+  <div class="wrap">
+    <h2>{E(h["steps_h2"])}</h2>
+    {steps_icons(L)}
+  </div>
+</section>
+<section class="sec sec-dark sec-tight">
+  <div class="wrap">
+    <h2>{E(h["photos_h2"])}</h2>
+    {gallery(L, SITE["home_photos"])}
+  </div>
+</section>
+<section class="sec sec-black" id="reels">
+  <div class="wrap">
+    {kh(h["reels_kicker"], h["reels_h2"], h["reels_p"])}
+    {reel_wall(L)}
+    <p class="note mono">{E(L.ui["reel_note"])}</p>
   </div>
 </section>
 <section class="sec sec-paper">
+  <div class="wrap">
+    {kh(h["services_kicker"], h["services_h2"])}
+    <p class="lead">{E(h["intro"])}</p>
+    <p class="lead">{E(h["services_p"])}</p>
+    <div class="chip-grid feat">{"".join(card(L, k) for k in SVC)}</div>
+  </div>
+</section>
+<section class="sec sec-dark">
   <div class="wrap">
     {kh(h["process_kicker"], h["process_h2"], h["process_p"])}
     {steps_html(L)}
@@ -384,21 +439,8 @@ def build_home(L):
 </section>
 <section class="sec sec-black">
   <div class="wrap">
-    {kh(h["photos_kicker"], h["photos_h2"], h["photos_p"])}
-    <div class="bench-grid">{"".join(photo(L, k, i, sizes="(max-width: 760px) 50vw, 25vw") for i, k in enumerate(SITE["home_photos"], 1))}</div>
-  </div>
-</section>
-<section class="sec sec-dark">
-  <div class="wrap">
     {kh(h["why_kicker"], h["why_h2"])}
-    <div class="why-grid">{"".join(f'<div class="why"><span class="mono">0{i}</span><h3>{E(w["t"])}</h3><p>{E(w["d"])}</p></div>' for i, w in enumerate(h["why"], 1))}</div>
-  </div>
-</section>
-<section class="sec sec-black" id="reels">
-  <div class="wrap">
-    {kh(h["reels_kicker"], h["reels_h2"], h["reels_p"])}
-    {reel_wall(L)}
-    <p class="note mono">{E(L.ui["reel_note"])}</p>
+    <div class="why-grid">{why}</div>
   </div>
 </section>
 '''

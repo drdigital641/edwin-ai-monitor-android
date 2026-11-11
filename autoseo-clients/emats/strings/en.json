@@ -68,31 +68,41 @@
    "code": "U1",
    "name": "ECU / ECM repair",
    "topic": "ECU / ECM",
-   "card": "Engine control units and ECM boards repaired at component level, checked on the bench before and after."
+   "card": "Engine control units and ECM boards repaired at component level, checked on the bench before and after.",
+   "tile": "Engine ECU & ECM boards",
+   "tile_name": "ECU / ECM"
   },
   "abs": {
    "code": "U2",
    "name": "ABS module repair",
    "topic": "ABS module",
-   "card": "ABS control modules checked and repaired, so a warning light does not have to mean a new unit."
+   "card": "ABS control modules checked and repaired, so a warning light does not have to mean a new unit.",
+   "tile": "ABS control modules",
+   "tile_name": "ABS"
   },
   "cluster": {
    "code": "U3",
    "name": "Instrument cluster repair",
    "topic": "instrument cluster",
-   "card": "Instrument clusters with dead gauges, display faults or lighting problems repaired on the bench."
+   "card": "Instrument clusters with dead gauges, display faults or lighting problems repaired on the bench.",
+   "tile": "Gauges, screens, lighting",
+   "tile_name": "Cluster"
   },
   "modules": {
    "code": "U4",
    "name": "Other control modules",
    "topic": "control module",
-   "card": "TCM/TCU, body control and other car electronic boards looked at case by case."
+   "card": "TCM/TCU, body control and other car electronic boards looked at case by case.",
+   "tile": "TCM, body & other boards",
+   "tile_name": "Boards"
   },
   "marine": {
    "code": "U5",
    "name": "Marine electronics repair",
    "topic": "marine electronic control",
-   "card": "Boat electronic controls checked and repaired at board level, the same way as car modules."
+   "card": "Boat electronic controls checked and repaired at board level, the same way as car modules.",
+   "tile": "Boat electronic controls",
+   "tile_name": "Marine"
   }
  },
  "steps": [
@@ -122,7 +132,7 @@
    "title": "ECU Repair Johor Bahru for Workshops | EMATS",
    "description": "ECU repair in Johor Bahru for car workshops: component-level repair of ECU/ECM, ABS modules and instrument clusters. Diagnosis before quote. Send-in service.",
    "kicker": "Component-level repair · Johor Bahru",
-   "h1": "ECU Repair in Johor Bahru for Workshops",
+   "h1": "ECU & ABS Module Repair, Johor Bahru",
    "intro": "EMATS does ECU repair in Johor Bahru at component level: we open the module, find the failed part on the board and repair it. Car workshops send us ECU/ECM boards, ABS modules, instrument clusters and other control modules, and we tell them the fault and the cost before any repair.",
    "badges": [
     "Diagnosis before quote",
@@ -187,7 +197,11 @@
      "q": "Can car owners send a module too?",
      "a": "Our main customers are workshops, but car owners can also message us. Your workshop will usually need to remove and refit the module."
     }
-   ]
+   ],
+   "tagline": "Workshops send it in. We diagnose, quote, then repair.",
+   "tiles_h2": "What we repair",
+   "steps_h2": "How it works",
+   "swipe": "Swipe for more"
   },
   "ecu": {
    "title": "ECM & ECU Repair Johor Bahru | Car ECU Repair for Workshops | EMATS",
@@ -467,5 +481,23 @@
    "loc_h2": "Location",
    "loc_p": "Johor Bahru, Malaysia. Please message us first to arrange sending or dropping off a module."
   }
- }
+ },
+ "steps4": [
+  {
+   "t": "Send in",
+   "d": "WhatsApp the fault, then send the module."
+  },
+  {
+   "t": "We diagnose",
+   "d": "We find the fault on the bench."
+  },
+  {
+   "t": "Quote",
+   "d": "You get the fault and cost first."
+  },
+  {
+   "t": "Repair + test",
+   "d": "Repaired, bench tested, sent back."
+  }
+ ]
 }
