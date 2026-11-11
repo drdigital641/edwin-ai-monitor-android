@@ -73,7 +73,7 @@ page(DIR_URL.strip("/") + "/index.html",
 
         <p class="kicker reveal" style="margin-top:40px">What it won't do</p>
         <h2 class="reveal">No promised enquiries</h2>
-        <p class="reveal">A listing is a way for drivers to find and contact you. It does not promise a number of enquiries, and no one can honestly promise you a place on Google's first page. If you also want your own website found on Google and AI search, that is what Page One's Get Found plan does: S$100 a month, website included, no setup fee and no contract, for anyone who registers by 31 Dec 2026. See the <a class="link" href="/results/">results from businesses we run</a>.</p>
+        <p class="reveal">A listing is a way for drivers to find and contact you. It does not promise a number of enquiries, and no one can honestly promise you a place on Google's first page. If you also want your own website found on Google and AI search, that is what Page One's Get Found plan does: %%PLAN%% a month, website included, no setup fee and no contract, for anyone who registers by 31 Dec 2026. See the <a class="link" href="/results/">results from businesses we run</a>.</p>
       </div>
     </section>
 
@@ -86,5 +86,5 @@ page(DIR_URL.strip("/") + "/index.html",
       </div>
     </section>
 
-""" + cta("Want your own website found too?", "Sign up at S$100 a month, or ask Edwin anything on WhatsApp first. No obligation."),
+""" + cta("Want your own website found too?", "Sign up at %%PLAN%% a month, or ask Edwin anything on WhatsApp first. No obligation."),
      crumb="SG Car Workshop", crumb_parent=("Results", "/results/"), updated=DIR_UPDATED)

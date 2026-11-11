@@ -48,6 +48,15 @@ if (lm.test(s)) s = s.replace(lm, `const PAGE_LASTMOD: Record<string, string> = 
 const og0 = s.indexOf('// ORG_GRAPH:start\n'), og1 = s.indexOf('// ORG_GRAPH:end');
 if (og0 >= 0 && og1 > og0) s = s.slice(0, og0) + '// ORG_GRAPH:start\nconst ORG_GRAPH = ' + (await get('bridge/org-graph.json')).toString('utf8').trim() + ';\n' + s.slice(og1);
 
+// Get Found price: copied from the site builder's single value (pageone-site/builder/price.py), so one edit there
+// changes the site and, after this script, every Bridge-made page (articles, /articles/, llms.txt, sitemap titles).
+const plan = /^PLAN = (\d+)/m.exec((await get('builder/price.py')).toString('utf8'));
+if (!plan) throw new Error('builder/price.py: PLAN not found');
+s = s.replace(/export const PLAN_PRICE = \d+;/, `export const PLAN_PRICE = ${plan[1]};`);
+// main.js cache-buster for article pages, same rule as builder/build.py (first 8 hex of its sha256).
+const jsv = crypto.createHash('sha256').update(await get('site/main.js')).digest('hex').slice(0, 8);
+s = s.replace(/const JS_VERSION = '[^']*';/, `const JS_VERSION = '${jsv}';`);
+
 fs.writeFileSync(F, s);
 console.log(changed.length ? changed.join('\n') : 'no page changed');
-console.log(`pins: ${changed.length} changed; SITE_SRC -> ${C.slice(0, 7)}; llms.txt Results and Websites sections refreshed`);
+console.log(`pins: ${changed.length} changed; SITE_SRC -> ${C.slice(0, 7)}; PLAN_PRICE ${plan[1]}; JS_VERSION ${jsv}; llms.txt Results and Websites sections refreshed`);
