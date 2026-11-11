@@ -11,5 +11,7 @@
  "site_url": "https://autoseo.my",
  "_site_url_note": "Empty while this is a preview: canonical, hreflang and og:url use root-relative paths and schema has no url. Set to the live domain, e.g. https://example.my, when it goes live; they then become absolute.",
  "preview": false,
- "_preview_note": "true = every page carries <meta name=robots content=noindex,nofollow>. Set false only when the site goes live on its own domain."
+ "_preview_note": "true = every page carries <meta name=robots content=noindex,nofollow>. Set false only when the site goes live on its own domain.",
+ "check_endpoint": "https://base44.app/api/apps/6ac7f2548a9c3877449e2772/functions",
+ "_check_endpoint_note": "Free website check (homepage hero): the shared checker functions siteCheck and siteCheckContact. Called with brand \"autoseo\"."
 }

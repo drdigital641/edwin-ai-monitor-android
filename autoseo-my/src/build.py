@@ -12,6 +12,7 @@ check stops the build with exit code 1.
 import hashlib
 import html
 import json
+import re
 import shutil
 import subprocess
 import sys
@@ -32,6 +33,9 @@ E = html.escape
 CSS = (ROOT / "assets" / "base.css").read_text(encoding="utf-8") + "\n" + (ROOT / "assets" / "brand.css").read_text(encoding="utf-8")
 JS = (ROOT / "assets" / "site.js").read_text(encoding="utf-8")
 ASSET_V = hashlib.sha256((CSS + JS).encode()).hexdigest()[:10]
+CHECK_JS = (ROOT / "assets" / "check.js").read_text(encoding="utf-8")
+CHECK_V = hashlib.sha256(CHECK_JS.encode()).hexdigest()[:10]
+CHECK_CSS = re.sub(r"/\*.*?\*/\s*", "", (ROOT / "assets" / "check.css").read_text(encoding="utf-8"), flags=re.S).strip()
 
 
 def fill(tpl, **kw):
@@ -173,7 +177,7 @@ def tagline_html(L):
 PAGES = []
 
 
-def page(L, path, title, description, body, current="", faqs=None, body_class=""):
+def page(L, path, title, description, body, current="", faqs=None, body_class="", head_extra=""):
     graph = org_graph(L)
     if faqs:
         graph.append(faq_schema(L, faqs))
@@ -194,6 +198,8 @@ def page(L, path, title, description, body, current="", faqs=None, body_class=""
     doc = fill("head", lang=L.s["meta"]["html_lang"], title=E(title), description=E(description), robots=robots, canonical=canonical, hreflang=alts,
                og_url=og_url, og_locale=L.s["meta"]["og_locale"], asset_v=ASSET_V, schema=schema_tag(graph), base=BASE, brand_name=E(BRAND["name"]),
                font_extra="&family=Noto+Sans+SC:wght@400;600;700" if L.code == "zh" else "")
+    if head_extra:
+        doc = doc.replace("</head>", head_extra + "</head>", 1)
     doc += fill("header", body_class=(body_class + " lang-" + L.code).strip(), nav_links=nav, skip=E(ui["skip"]), home_aria=E(ui["home_aria"]),
                 nav_aria=E(ui["nav_aria"]), lang_aria=E(ui["lang_switch_aria"]), lang_links=lang_links,
                 whatsapp_us=E(ui["whatsapp_us"]), menu=E(ui["menu"]), **shared)
@@ -209,6 +215,16 @@ def page(L, path, title, description, body, current="", faqs=None, body_class=""
 
 
 # ------------------------------------------------------------------ home
+def hero_check(L):
+    """Free website check box: one shared template for every language (templates/hero_check.html)."""
+    c = L.s["check"]
+    data = {"wa": BRAND["whatsapp_number"], "prefills": {k: L.s["prefills"][k] for k in ("check", "check_failed")},
+            "c": {k: v for k, v in c.items() if not k.startswith("_")}}
+    js = json.dumps(data, ensure_ascii=False, separators=(",", ":")).replace("</", "<\\/")
+    return fill("hero_check", endpoint=E(BRAND["check_endpoint"]), lang=L.code, kicker=E(c["kicker"]), label=E(c["label"]),
+                placeholder=E(c["placeholder"]), button=E(c["button"]), note=E(c["note"]), strings_json=js)
+
+
 def build_home(L):
     s, h, ui = L.s, L.s["home"], L.ui
     items = [s["industries"][m["slug"]]["label"] for m in SITE["industries"]] + [s["other_industry"]]
@@ -224,7 +240,7 @@ def build_home(L):
           <h1>{E(h["hero_h1"])}</h1>
           <p class="hero-tagline grad-text">{E(BRAND["tagline"])}</p>
 {f'          <p class="hero-tagline-tr">{E(tr)}</p>' + chr(10) if tr else ""}          <p class="lead">{E(s["brand"]["positioning"])}{E(s["meta"]["full_stop"])}{E(h["hero_lines"][1])}</p>
-          <div class="cta-row hero-ctas">
+{hero_check(L)}          <div class="cta-row hero-ctas">
             <a class="btn" href="{L.wa("audit")}" target="_blank" rel="noopener" data-cta="whatsapp_home_audit">{E(s["btn_audit"])}</a>
             <a class="btn btn-ghost" href="{L.wa("specialist")}" target="_blank" rel="noopener" data-cta="whatsapp_home_specialist">{E(s["btn_specialist"])}</a>
           </div>
@@ -259,7 +275,8 @@ def build_home(L):
     home_faqs = s["faqs"][:SITE["home_faq_count"]]
     body += faq_block(L, home_faqs, h["faq_h2"], after=f'        <p class="note reveal" style="text-align:center">{E(ui["full_faq_before"])} <a class="link" href="{L.url("faq/")}">{E(ui["full_faq_link"])}</a>.</p>')
     body += cta_band(L, "home")
-    page(L, "", h["title"], h["description"], body, faqs=home_faqs, body_class="home")
+    page(L, "", h["title"], h["description"], body, faqs=home_faqs, body_class="home",
+         head_extra=f'  <style>\n{CHECK_CSS}\n  </style>\n  <script src="{BASE}assets/check.js?v={CHECK_V}" defer></script>\n')
 
 
 # ------------------------------------------------------------------ services
@@ -411,6 +428,7 @@ def build_extras():
     (OUT / "assets").mkdir(exist_ok=True)
     (OUT / "assets" / "site.css").write_text(CSS, encoding="utf-8")
     (OUT / "assets" / "site.js").write_text(JS, encoding="utf-8")
+    (OUT / "assets" / "check.js").write_text(CHECK_JS, encoding="utf-8")
 
 
 def main():

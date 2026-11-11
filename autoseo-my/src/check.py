@@ -21,7 +21,7 @@ BRAND = json.loads((ROOT / "data" / "brand.json").read_text(encoding="utf-8"))
 terms = [t.strip() for t in (ROOT / "data" / "blocklist.txt").read_text(encoding="utf-8").splitlines() if t.strip() and not t.startswith("#")]
 
 scan = [p for p in SITE.rglob("*") if p.is_file()]
-scan += [ROOT / "data" / "brand.json", ROOT / "data" / "site.json"] + list((ROOT / "strings").glob("*.json")) + list((ROOT / "templates").glob("*.html")) + [ROOT / "assets" / "brand.css", ROOT / "assets" / "base.css", ROOT / "assets" / "site.js"]
+scan += [ROOT / "data" / "brand.json", ROOT / "data" / "site.json"] + list((ROOT / "strings").glob("*.json")) + list((ROOT / "templates").glob("*.html")) + [ROOT / "assets" / "brand.css", ROOT / "assets" / "base.css", ROOT / "assets" / "site.js", ROOT / "assets" / "check.js", ROOT / "assets" / "check.css"]
 hits = []
 for p in scan:
     text = p.read_text(encoding="utf-8", errors="replace").lower()
