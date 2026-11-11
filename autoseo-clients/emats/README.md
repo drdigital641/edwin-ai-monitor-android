@@ -17,7 +17,7 @@ The build writes fully rendered HTML into `site/` and runs `src/check.py` (one H
 - `strings/en.json`, `ms.json`, `zh.json`: every visible word, including the WhatsApp prefills (`prefills.general`, `prefills.service`, `prefills.workshop`).
 - `templates/`: shared head, header, footer, WhatsApp button, sticky bar, service card, reel facade, FAQ, CTA, breadcrumb, photo.
 - `data/site.json`: page order, photo-to-service mapping, the 12 Facebook reels.
-- `photos/`: the 8 real bench photos from the owner's Facebook. Note: `emats-06-instrument-cluster-repair.webp` actually shows an ECU in its metal case, so it is used as an ECU photo.
+- `photos/`: the 8 real bench photos from the owner's Facebook. `emats-06-ecu-in-metal-case.webp` shows an ECU in its metal case (renamed 11 Nov from emats-06-instrument-cluster-repair).
 
 ## Move day
 
