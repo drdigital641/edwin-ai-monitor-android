@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """Link checker + JSON-LD parse + banned words.  python3 check.py [sitedir]"""
-import json, os, re, sys
+import glob, json, os, re, sys
 from html.parser import HTMLParser
 from urllib.parse import urlparse, urljoin, unquote
 root = os.path.abspath(sys.argv[1] if len(sys.argv) > 1 else os.path.join(os.path.dirname(__file__), '..', 'site'))
@@ -600,7 +600,9 @@ _hraw = open(os.path.join(root, 'index.html'), encoding='utf-8').read()
 _hs = re.search(r'<section id="workshops".*?</section>', _hraw, re.S).group(0)
 _vis = _hs
 _cj = os.path.join(root, 'assets', 'cards.json')
-_tpl = ''.join(json.load(open(_cj, encoding='utf-8'))['cards']) if os.path.exists(_cj) else ''
+_tpl = ''.join(''.join(json.load(open(f, encoding='utf-8'))['cards']) for f in sorted(glob.glob(os.path.join(root, 'assets', 'cards*.json')), key=lambda f: (len(f), f)))
+for _f in glob.glob(os.path.join(root, 'assets', 'cards*.json')):
+    if os.path.getsize(_f) > 900000: print('card file over 900 KB (Bridge write limit ~1 MB):', os.path.basename(_f)); bad += 1
 if '<template id="more-cards">' in _hs: print('homepage still holds the hidden card template (cards past the first per group belong in assets/cards.json)'); bad += 1
 if _tpl and 'data-more="assets/cards.json' not in _hs: print('homepage does not point to assets/cards.json'); bad += 1
 # Page size (Edwin 6 Nov 2026): the Controller health check passes under 250 KB of raw homepage HTML

@@ -180,6 +180,24 @@ for _f in ('dir.css', 'dir.js', 'livephone.js', 'ask.js'):
 V = _h.hexdigest()[:8]
 
 HOME_MORE = []   # homepage cards past the first HOME_N per group: written to assets/cards.json (page-size fix, Edwin 6 Nov 2026)
+
+CARDS_PART_BYTES = 600000   # each assets/cards*.json stays well under the Bridge's ~1 MB verified-write limit
+
+
+def part_name(i):
+    return 'cards.json' if i == 0 else 'cards-%d.json' % (i + 1)
+
+
+def cards_parts():
+    """HOME_MORE split into parts of about CARDS_PART_BYTES each, in order."""
+    parts, cur, size = [], [], 0
+    for c in HOME_MORE:
+        n = len(c.encode('utf-8'))
+        if cur and size + n > CARDS_PART_BYTES:
+            parts.append(cur); cur, size = [], 0
+        cur.append(c); size += n
+    if cur: parts.append(cur)
+    return parts
 PAGES = {}   # path ('' = home, 'a/b/' ...) -> html
 META = {}    # path -> title (for llms/sitemap)
 FREECOUNT = {}   # path -> free workshops behind a thresholded page (check.py re-applies MIN_FREE)
@@ -503,7 +521,7 @@ def home():
 <section class="feat" aria-roledescription="carousel" aria-label="Featured Premium workshops"><div class="w"><div class="sec-h"><h2>Featured Premium workshops <span class="spons">Featured (paid)</span></h2>
 <div class="car-nav"><button type="button" id="cprev" aria-label="Previous">{ic('chev-l')}</button><button type="button" id="cnext" aria-label="Next">{ic('chev-r')}</button></div></div>
 <div class="marq" id="marq"><ul class="track" id="track" aria-label="Featured workshops">{slides}</ul></div></div></section>
-<section id="workshops" class="lst"><div class="w"><div class="sec-h"><h2>Workshops</h2><a class="sec-link" href="#services">Browse by service</a></div>{sortbar}<div id="results" class="hgroups" data-n="{HOME_N}"{(' data-more="assets/cards.json?v=%s"' % V) if rest else ''}>{cards}</div>
+<section id="workshops" class="lst"><div class="w"><div class="sec-h"><h2>Workshops</h2><a class="sec-link" href="#services">Browse by service</a></div>{sortbar}<div id="results" class="hgroups" data-n="{HOME_N}"{(' data-more="%s"' % ' '.join('assets/%s?v=%s' % (part_name(i), V) for i in range(len(cards_parts())))) if rest else ''}>{cards}</div>
 <div class="empty" id="empty"><b>No workshops match.</b> Try fewer filters, or <a href="list-your-workshop/">list your workshop</a>.</div>{more_btn}<p class="fine adnote">Up to {HOME_N} workshops per group, mixed in a new random order on every visit. Top rated uses Google rating and number of ratings together (see <a href="about/">How we rank</a>); Nearest uses straight-line distance from your phone's location, which is not stored. Basic listings are built from the workshop's public Google Business Profile and, where available, what its customers mention in Google reviews, and link to its Google Maps listing. They are not endorsed by or arranged with the business.</p></div></section>
 <section class="alt" id="services"><div class="w"><h2>Browse by service</h2><ul class="tiles">{svc_tiles}</ul></div></section>
 <section id="regions"><div class="w"><h2>Browse by area</h2><ul class="tiles rg">{reg_tiles}</ul><h3 class="sub-h">Estates and industrial areas</h3><ul class="tiles est">{est_tiles}</ul></div></section>
@@ -2713,8 +2731,8 @@ def build():
     # Listing id -> name + the mobile on the card, read by the Controller claim function (Edwin 8 Nov 2026). Same public numbers as the cards.
     open(OUT + '/assets/claim-listings.json', 'w', encoding='utf-8').write(json.dumps(
         {'listings': {e['slug']: {'n': e['name'], 'm': e['phone']} for e in ENTRIES if e.get('phone')}}, ensure_ascii=False, separators=(',', ':')))
-    if HOME_MORE:
-        open(OUT + '/assets/cards.json', 'w', encoding='utf-8').write(json.dumps({'cards': HOME_MORE}, ensure_ascii=False, separators=(',', ':')))
+    for i, part in enumerate(cards_parts()):   # split so no file passes the Bridge's ~1 MB write limit (11 Nov 2026)
+        open(OUT + '/assets/' + part_name(i), 'w', encoding='utf-8').write(json.dumps({'cards': part}, ensure_ascii=False, separators=(',', ':')))
     make_icons()
     folder_fillers()
 

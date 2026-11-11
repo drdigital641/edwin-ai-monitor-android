@@ -7,7 +7,7 @@ var RM=!!(window.matchMedia&&matchMedia('(prefers-reduced-motion: reduce)').matc
 /* Home page (page-size fix, Edwin 6 Nov 2026): only the first workshops per group are in the HTML; the rest load once from assets/cards.json (data-more) on page load, before any search, filter, sort or Show all. */
 var cards,rerun=null,RS=d.getElementById('results'),MU=RS&&RS.getAttribute('data-more'),loaded=!MU,lp=null;
 function more(){if(loaded)return Promise.resolve();if(lp)return lp;
-lp=(window.fetch?fetch(MU,{credentials:'omit'}).then(function(r){if(!r.ok)throw r.status;return r.json()}):Promise.reject()).then(function(j){var t=d.createElement('div');t.innerHTML=(j.cards||[]).join('');
+lp=(window.fetch?Promise.all(MU.split(' ').map(function(u){return fetch(u,{credentials:'omit'}).then(function(r){if(!r.ok)throw r.status;return r.json()})})):Promise.reject()).then(function(js){var t=d.createElement('div');t.innerHTML=js.map(function(j){return (j.cards||[]).join('')}).join('');
 [].slice.call(t.children).forEach(function(c){var h=RS.querySelector('[data-hg="'+c.getAttribute('data-g')+'"] .grid');(h||RS).appendChild(c)})},function(){}).then(function(){loaded=true;
 cards=d.querySelectorAll('#results [data-search]');if(rerun)rerun();else lay();if(window.sgcwRefresh)window.sgcwRefresh()});return lp}
 window.sgcwReady=MU?new Promise(function(ok){setTimeout(function(){more().then(ok)},0)}):Promise.resolve();
