@@ -1,0 +1,82 @@
+{
+  "name": "Lakeside View",
+  "slug": "lakeside-view",
+  "type": "BTO",
+  "label": "HDB BTO",
+  "area": "Jurong West",
+  "region": "West",
+  "developer": "HDB",
+  "tenure": "Not confirmed",
+  "top_label": "Completion",
+  "top": "Year only: estimated 2026, from a third-party tracker. HDB has not confirmed a project-wide key date on the pages we checked. Your HDB notification is the date that counts.",
+  "unit_mix": "2-room Flexi to 5-room (as listed by a third-party tracker)",
+  "official_site": "Not confirmed",
+  "facts": [
+    {
+      "label": "Town",
+      "value": "Jurong West (Yuan Ching Road / Kang Ching Road)"
+    },
+    {
+      "label": "Units",
+      "value": "1,016 (as listed by a third-party tracker)"
+    }
+  ],
+  "keywords": [
+    "Lakeside View renovation",
+    "Lakeside View interior design",
+    "Lakeside View renovation guide"
+  ],
+  "intro": "Lakeside View is a BTO project in Jurong West near Yuan Ching Road and Kang Ching Road, listed by a third-party tracker as 1,016 flats from 2-room Flexi to 5-room. It is one of the larger BTO handovers around this time. Below: key facts, what owners usually change, a defects check and how to plan your Lakeside View renovation.",
+  "whatsapp_text": "Hi Maison, I'm collecting keys at Lakeside View and would like to discuss the renovation.",
+  "sections": [
+    {
+      "heading": "What to know about Lakeside View",
+      "text": "With more than a thousand flats handing over, the first weeks after keys are crowded. Owners who report defects quickly and have a permit-ready plan start works first. The rest wait for contractors, lifts and the Building Service Centre.\n\nHomes near the lake and greenery suit a calm, natural look: light timber, soft colours and plenty of daylight. In larger flats there is room for a proper study and family storage; in 2-room Flexi flats, keep it simple, safe and easy to clean."
+    },
+    {
+      "heading": "What owners usually change",
+      "text": "Common requests at Lakeside View:",
+      "bullets": [
+        "Natural timber tones and light colours to suit the setting.",
+        "4- and 5-room: a study, full-height wardrobes and a family area.",
+        "2-room Flexi: compact storage and slip-resistant finishes.",
+        "Kitchen cabinets with tall storage.",
+        "Toilet upgrades with tiles overlaid on the existing ones (no hacking in the first 3 years)."
+      ]
+    }
+  ],
+  "timeline_note": "Plan on about 8 to 12 weeks from keys to move-in for a full renovation. In a handover this size, start planning before keys.",
+  "faq": [
+    {
+      "q": "When can I collect keys at Lakeside View?",
+      "a": "Your HDB notification gives your date. A third-party tracker estimates completion in 2026, but HDB has not confirmed a project-wide date on the pages we checked."
+    },
+    {
+      "q": "How long do I have to report defects?",
+      "a": "HDB says to report all defects within 30 days of key collection, before renovation starts. The Defects Liability Period runs for 1 year from key collection."
+    },
+    {
+      "q": "Can I start renovation on a Saturday?",
+      "a": "General works are allowed Monday to Saturday, 9am to 6pm, but noisy works such as hacking are allowed only on weekdays, 9am to 5pm."
+    }
+  ],
+  "sources": [
+    {
+      "label": "KeyDayKit BTO tracker (third-party)",
+      "url": "https://keydaykit.com/guides/bto-key-collection-2026-2027/"
+    },
+    {
+      "label": "HDB roadshows page (checked; no project date)",
+      "url": "https://www.mynicehome.gov.sg/get-settled-in/roadshows/"
+    },
+    {
+      "label": "HDB renovation guide",
+      "url": "https://www.mynicehome.gov.sg/get-settled-in/hdb-renovation-guide/"
+    }
+  ],
+  "nearby_hints": [
+    "keat-hong-grange"
+  ],
+  "date_published": "2026-11-07",
+  "date_modified": "2026-11-11"
+}

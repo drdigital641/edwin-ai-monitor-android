@@ -1,0 +1,240 @@
+{
+  "name": "Norwood Grand",
+  "slug": "norwood-grand",
+  "type": "Condo",
+  "label": "Private condominium",
+  "area": "Woodlands",
+  "region": "North",
+  "developer": "CDL Stellar Pte. Ltd., a CDL subsidiary",
+  "tenure": "99-year lease from 18 December 2023",
+  "top": "TOP obtained August 2026 (CDL construction update, 2 November 2026).",
+  "unit_mix": "1-bedroom + study to 4-bedroom premium + study, about 495 to 1,335 sq ft",
+  "official_site": "https://www.cdlhomes.com.sg/norwoodgrand/brochure.pdf",
+  "description": "Four bespoke-carpentry interior design concepts for Norwood Grand, Woodlands, plus the official CDL floor plans. WhatsApp Maison to plan your renovation.",
+  "keywords": [
+    "Norwood Grand renovation",
+    "Norwood Grand interior design",
+    "Norwood Grand floor plan",
+    "Woodlands condo interior design"
+  ],
+  "intro": "Explore four interior design themes for your Norwood Grand home, then WhatsApp Maison to discuss your own layout. Each look is a starting point for your Norwood Grand renovation.",
+  "whatsapp_text": "Hi Maison, I’m planning my Norwood Grand renovation. Can we discuss my layout?",
+  "hero_whatsapp_text": "Hi Maison, I’m planning my Norwood Grand renovation. I like the Tropical Resort Modern living room concept. Can we discuss my layout?",
+  "renders_heading": "Four Norwood Grand interior design themes",
+  "renders_intro": "Four rooms, four looks, each built around bespoke carpentry. We adapt every idea to your actual unit.",
+  "renders": [
+    {
+      "image": "/images/new-launches/norwood-grand-v4/norwood-grand-v4-living-tropical-resort-modern-1600.webp",
+      "image_small": "/images/new-launches/norwood-grand-v4/norwood-grand-v4-living-tropical-resort-modern-900.webp",
+      "width": 1600,
+      "height": 900,
+      "alt": "Tropical Resort Modern living room concept with fluted teak built-in wall and balcony greenery",
+      "style": "Tropical Resort Modern",
+      "room": "Living room",
+      "title": "Norwood Grand living room interior design — Tropical Resort Modern",
+      "text": "A fluted teak feature wall, a floating teak-and-travertine console and built-in display niches give the living room a warm, resort-like calm. An easy starting point for your Norwood Grand renovation.",
+      "whatsapp_text": "Hi Maison, I’m interested in the Tropical Resort Modern living room concept for my Norwood Grand unit. Can we discuss my layout?"
+    },
+    {
+      "image": "/images/new-launches/norwood-grand-v4/norwood-grand-v4-kitchen-smoked-walnut-noir-1600.webp",
+      "image_small": "/images/new-launches/norwood-grand-v4/norwood-grand-v4-kitchen-smoked-walnut-noir-900.webp",
+      "width": 1600,
+      "height": 900,
+      "alt": "Close-up of Smoked Walnut Noir kitchen concept with walnut cabinets and black stone counter",
+      "style": "Smoked Walnut Noir",
+      "room": "Kitchen (close-up)",
+      "title": "Woodlands condo kitchen design idea — Smoked Walnut Noir",
+      "text": "Handleless smoked-walnut carpentry, a black sintered-stone counter and fluted-glass wall cabinets give the kitchen a dark, tailored finish. Adapt the finishes and storage to your actual unit.",
+      "whatsapp_text": "Hi Maison, I’m interested in the Smoked Walnut Noir kitchen concept for my Norwood Grand unit. Can we discuss my layout?"
+    },
+    {
+      "image": "/images/new-launches/norwood-grand-v4/norwood-grand-v4-main-bedroom-quiet-luxury-greige-1600.webp",
+      "image_small": "/images/new-launches/norwood-grand-v4/norwood-grand-v4-main-bedroom-quiet-luxury-greige-900.webp",
+      "width": 1600,
+      "height": 900,
+      "alt": "Quiet Luxury Greige main bedroom concept with built-in headboard wall and glass wardrobe",
+      "style": "Quiet Luxury Greige",
+      "room": "Main bedroom",
+      "title": "Norwood Grand main bedroom design — Quiet Luxury Greige",
+      "text": "A wall-to-wall upholstered headboard panel, a full-height bronze-glass wardrobe and a built-in vanity keep the main bedroom soft, quiet and uncluttered.",
+      "whatsapp_text": "Hi Maison, I’m interested in the Quiet Luxury Greige main bedroom concept for my Norwood Grand unit. Can we discuss my layout?"
+    },
+    {
+      "image": "/images/new-launches/norwood-grand-v4/norwood-grand-v4-common-bedroom-terrazzo-mid-century-1600.webp",
+      "image_small": "/images/new-launches/norwood-grand-v4/norwood-grand-v4-common-bedroom-terrazzo-mid-century-900.webp",
+      "width": 1600,
+      "height": 900,
+      "alt": "Terrazzo Mid-Century common bedroom concept with built-in bed, desk and curved cabinets",
+      "style": "Terrazzo Mid-Century",
+      "room": "Common bedroom",
+      "title": "Norwood Grand common bedroom renovation idea — Terrazzo Mid-Century",
+      "text": "A one-piece built-in platform bed, a window desk with a terrazzo top and rounded olive overhead cabinets make a compact common bedroom work for both rest and study.",
+      "whatsapp_text": "Hi Maison, I’m interested in the Terrazzo Mid-Century common bedroom concept for my Norwood Grand unit. Can we discuss my layout?"
+    }
+  ],
+  "plans_heading": "Norwood Grand floor plans",
+  "plans_intro": "Original CDL brochure pages 16 to 21, copied as-is (scaled only, not redrawn). Plans are subject to change and final survey; owners confirm their actual unit.",
+  "floor_plans": [
+    {
+      "image": "/images/new-launches/norwood-grand-v4/norwood-grand-cdl-brochure-plans-p16.webp",
+      "width": 2000,
+      "height": 914,
+      "alt": "Norwood Grand CDL brochure page 16 floor plans: 1-Bedroom + Study (A1S), 2-Bedroom (B1)",
+      "title": "page 16 floor plan",
+      "caption": "Brochure p.16: 1-Bedroom + Study (A1S), 2-Bedroom (B1). (P) variants shown on the same page.",
+      "credit": "Floor plan: Norwood Grand brochure, CDL"
+    },
+    {
+      "image": "/images/new-launches/norwood-grand-v4/norwood-grand-cdl-brochure-plans-p17.webp",
+      "width": 2000,
+      "height": 1333,
+      "alt": "Norwood Grand CDL brochure page 17 floor plans: 2-Bedroom + Ensuite Study (B1S), 2-Bedroom + Study (B2S)",
+      "title": "page 17 floor plan",
+      "caption": "Brochure p.17: 2-Bedroom + Ensuite Study (B1S), 2-Bedroom + Study (B2S). (P) variants shown on the same page.",
+      "credit": "Floor plan: Norwood Grand brochure, CDL"
+    },
+    {
+      "image": "/images/new-launches/norwood-grand-v4/norwood-grand-cdl-brochure-plans-p18.webp",
+      "width": 2000,
+      "height": 1333,
+      "alt": "Norwood Grand CDL brochure page 18 floor plans: 3-Bedroom Deluxe (C1, C2)",
+      "title": "page 18 floor plan",
+      "caption": "Brochure p.18: 3-Bedroom Deluxe (C1, C2). (P) variants shown on the same page.",
+      "credit": "Floor plan: Norwood Grand brochure, CDL"
+    },
+    {
+      "image": "/images/new-launches/norwood-grand-v4/norwood-grand-cdl-brochure-plans-p19.webp",
+      "width": 2000,
+      "height": 1333,
+      "alt": "Norwood Grand CDL brochure page 19 floor plans: 3-Bedroom + Study (C3S), 3-Bedroom Premium + Study (C4PS)",
+      "title": "page 19 floor plan",
+      "caption": "Brochure p.19: 3-Bedroom + Study (C3S), 3-Bedroom Premium + Study (C4PS). (P) variants shown on the same page.",
+      "credit": "Floor plan: Norwood Grand brochure, CDL"
+    },
+    {
+      "image": "/images/new-launches/norwood-grand-v4/norwood-grand-cdl-brochure-plans-p20.webp",
+      "width": 2000,
+      "height": 1333,
+      "alt": "Norwood Grand CDL brochure page 20 floor plans: 3-Bedroom Premium + Study (C5PS), 4-Bedroom Deluxe + Study (D1S)",
+      "title": "page 20 floor plan",
+      "caption": "Brochure p.20: 3-Bedroom Premium + Study (C5PS), 4-Bedroom Deluxe + Study (D1S). (P) variants shown on the same page.",
+      "credit": "Floor plan: Norwood Grand brochure, CDL"
+    },
+    {
+      "image": "/images/new-launches/norwood-grand-v4/norwood-grand-cdl-brochure-plans-p21.webp",
+      "width": 2000,
+      "height": 1333,
+      "alt": "Norwood Grand CDL brochure page 21 floor plans: 4-Bedroom Premium + Study (D2PS, D3PS)",
+      "title": "page 21 floor plan",
+      "caption": "Brochure p.21: 4-Bedroom Premium + Study (D2PS, D3PS). (P) variants shown on the same page.",
+      "credit": "Floor plan: Norwood Grand brochure, CDL"
+    }
+  ],
+  "plans_note": "Source: [Norwood Grand brochure, CDL (PDF)](https://www.cdlhomes.com.sg/norwoodgrand/brochure.pdf).",
+  "unit_tips_heading": "Layout at a glance",
+  "unit_tips": [
+    {
+      "unit": "1-bedroom + study to 2-bedroom + study",
+      "size": "46–66 sqm / 495–710 sq ft",
+      "bedrooms": "1 to 2 bedrooms",
+      "tip": "Fit built-in carpentry around the supplied wardrobes; a study corner can share the living or bedroom space."
+    },
+    {
+      "unit": "3-bedroom types",
+      "size": "81–97 sqm / 872–1,044 sq ft",
+      "bedrooms": "3 bedrooms, some with a study",
+      "tip": "A common bedroom or the study can take a built-in desk and full-height storage."
+    },
+    {
+      "unit": "4-bedroom + study",
+      "size": "109–124 sqm / 1,173–1,335 sq ft",
+      "bedrooms": "4 bedrooms + study",
+      "tip": "Plan storage across the bedrooms and the yard; never alter the household shelter."
+    }
+  ],
+  "sections": [
+    {
+      "heading": "Norwood Grand project facts",
+      "text": "- 348 units in four 11-storey blocks at 2, 6, 8 and 10 Champions Way, Woodlands. Developer: CDL Stellar Pte. Ltd., a CDL subsidiary. [CDL news release](https://www.cdl.com.sg/assets/en-newsroom-press-release-pdf/CDL-News-Release-Norwood-Grand-launch-weekend-web.pdf)\n- 99-year lease from 18 December 2023. TOP obtained August 2026 (CDL construction update, 2 November 2026). [CDL construction page](https://www.cdlhomes.com.sg/construction/)\n- Unit sizes from about 495 to 1,335 sq ft, depending on type. [CDL brochure](https://www.cdlhomes.com.sg/norwoodgrand/brochure.pdf)\n\nMaison is an independent interior design firm, not affiliated with CDL. Key and access appointments are set per owner and are not confirmed here."
+    },
+    {
+      "heading": "About these concepts and plans",
+      "text": "The four theme pictures on this page are AI-generated style concepts by Maison for a Norwood Grand renovation. They are not photos of an actual unit, not completed Maison projects and not surveyed layouts; layouts, fittings and views are illustrative. Each look leans on built-in carpentry, the kind of Woodlands condo interior design that Maison plans for Champions Way homes. The floor plans are the original pages 16 to 21 of the [Norwood Grand brochure by CDL](https://www.cdlhomes.com.sg/norwoodgrand/brochure.pdf), scaled only. They are subject to change and final survey, so confirm your own unit plan, stack and any mirroring before adapting an idea."
+    }
+  ],
+  "steps_heading": "From keys to move-in",
+  "steps": [
+    {
+      "title": "Keys / access",
+      "text": "TOP obtained Aug 2026. Key and access appointments are not confirmed."
+    },
+    {
+      "title": "Defects",
+      "text": "Inspect and log defects; agree rectification and access."
+    },
+    {
+      "title": "Survey",
+      "text": "Survey the unit and freeze the scope."
+    },
+    {
+      "title": "Approvals",
+      "text": "Management requirements and any work-specific authority approvals."
+    },
+    {
+      "title": "Build",
+      "text": "Procure, build, test and inspect. 6–10 on-site weeks is an allowance, not a guarantee."
+    }
+  ],
+  "faq": [
+    {
+      "q": "Which unit types do the floor plans cover?",
+      "a": "Pages 16 to 21 of the [CDL brochure](https://www.cdlhomes.com.sg/norwoodgrand/brochure.pdf) show every type from 1-Bedroom + Study (A1S, 46 sqm / 495 sq ft) to 4-Bedroom Premium + Study (D3PS, 124 sqm / 1,335 sq ft), with the (P) variants on the same pages. The brochure notes that areas include the balcony and PES where applicable and that plans are subject to final survey. Confirm your exact stack, floor and any mirrored version."
+    },
+    {
+      "q": "Which finishes are supplied, and which are proposals?",
+      "a": "Official specifications give porcelain living/kitchen tiles, vinyl bedrooms, laminate/melamine kitchen cabinets with quartz tops, melamine wardrobes, B1 induction appliances, 2.70m living/bedroom and 2.40m kitchen ceilings. CDL names Bosch/Samsung appliances and Geberit/Hansgrohe bathroom fittings. Exact colours, models, cabinet internals and as-built locations need handover verification. [Finishes/developer source](https://www.cdlhomes.com.sg/norwoodgrand/floorplans/specifications.pdf). Maison-inspired colours, furniture, lighting and joinery treatments do not prove supplied finishes or a previous Maison commission."
+    },
+    {
+      "q": "Are the pictures exact reconstructions?",
+      "a": "No. They are AI-generated style concepts, not photos of a Norwood Grand unit and not completed Maison projects. Room shapes, fittings, furniture and window views are illustrative. Use your approved plan and a measured site survey for construction. Compass facing and real views are not implied."
+    },
+    {
+      "q": "What is the confirmed timing?",
+      "a": "TOP obtained August 2026. Individual key/access appointments remain unconfirmed. Building TOP does not authorise tenant/owner renovation. [Timing source](https://www.cdlhomes.com.sg/construction/)."
+    },
+    {
+      "q": "What must happen before move-in or occupation?",
+      "a": "Inspect and log defects; agree rectification and access; survey and freeze scope; obtain management/landlord requirements and work-specific authority approvals; procure, build, test and inspect; confirm completion/occupation requirements and moving arrangements. Condo/EC and office rules differ from HDB residential rules. No exact approval lead time, deposit, permitted hours or move-in date is verified. A moderate home scope may use 6–10 on-site weeks, or modest office 8–12 weeks, only as an editorial planning allowance after access/approvals—not a guarantee."
+    },
+    {
+      "q": "What other project details should I check?",
+      "a": "Project-wide facilities, amenities and the original unit mix do not establish your own view or unit details. Ask for your approved owner documents before committing to works."
+    }
+  ],
+  "sources": [
+    {
+      "label": "https://www.cdlhomes.com.sg/norwoodgrand/brochure.pdf",
+      "url": "https://www.cdlhomes.com.sg/norwoodgrand/brochure.pdf"
+    },
+    {
+      "label": "https://www.cdlhomes.com.sg/norwoodgrand/floorplans/specifications.pdf",
+      "url": "https://www.cdlhomes.com.sg/norwoodgrand/floorplans/specifications.pdf"
+    },
+    {
+      "label": "https://www.cdl.com.sg/assets/en-newsroom-press-release-pdf/CDL-News-Release-Norwood-Grand-launch-weekend-web.pdf",
+      "url": "https://www.cdl.com.sg/assets/en-newsroom-press-release-pdf/CDL-News-Release-Norwood-Grand-launch-weekend-web.pdf"
+    },
+    {
+      "label": "https://www.cdlhomes.com.sg/construction/",
+      "url": "https://www.cdlhomes.com.sg/construction/"
+    },
+    {
+      "label": "https://maisoninteriordesign.sg/portfolio/",
+      "url": "https://maisoninteriordesign.sg/portfolio/"
+    }
+  ],
+  "reviewed": "Reviewed 8 November 2026, SGT (UTC+8).",
+  "nearby_hints": [],
+  "date_published": "2026-11-07",
+  "date_modified": "2026-11-11"
+}

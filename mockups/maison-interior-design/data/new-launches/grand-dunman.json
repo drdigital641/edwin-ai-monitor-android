@@ -1,0 +1,77 @@
+{
+  "name": "Grand Dunman",
+  "slug": "grand-dunman",
+  "type": "Condo",
+  "label": "Private condominium",
+  "area": "Dunman Road",
+  "district": "D15",
+  "region": "Central",
+  "developer": "SingHaiyi Group and CSC Land Group (Grand Dunman Pte Ltd)",
+  "tenure": "99-year leasehold",
+  "top_label": "Completion",
+  "top": "Year only: the developer lists expected completion as 2028. Some reports suggest an earlier TOP; we could not confirm one on an official page.",
+  "unit_mix": "1-bedroom to 5-bedroom, including study, dual-key and penthouse units",
+  "official_site": "https://www.singhaiyi.com/grand-dunman.html",
+  "facts": [
+    {
+      "label": "District",
+      "value": "D15, Dunman Road"
+    },
+    {
+      "label": "Units",
+      "value": "1,008"
+    }
+  ],
+  "keywords": [
+    "Grand Dunman renovation",
+    "Grand Dunman interior design",
+    "Grand Dunman renovation guide"
+  ],
+  "intro": "Grand Dunman is a 1,008-unit condominium on Dunman Road by SingHaiyi and CSC Land Group, with unit types from 1-bedroom to 5-bedroom, including dual-key and penthouse units. In a development this size, handover is a logistics exercise. Below: key facts, what owners usually change, a defects check and how to plan your Grand Dunman renovation.",
+  "whatsapp_text": "Hi Maison, I'm collecting keys at Grand Dunman and would like to discuss the renovation.",
+  "sections": [
+    {
+      "heading": "What to know about Grand Dunman",
+      "text": "When around a thousand homes hand over within weeks of each other, lifts, loading bays and the management office are in demand. Owners who have their design, quotation and renovation application ready before keys are the ones who start first. Owners who wait often lose weeks in the queue.\n\nThe unit mix is wide. A 1-bedroom investor unit, a 3-bedroom flex unit and a dual-key unit all need different plans, so we start from your floor plan and how you will use the home, not a package."
+    },
+    {
+      "heading": "What owners usually change",
+      "text": "Common requests at Grand Dunman:",
+      "bullets": [
+        "Investor units: durable finishes and a furniture package for tenants.",
+        "Flex and study units: a room that changes use, with a wall bed or fold-down desk.",
+        "Dual-key units: storage and soundproofing for both parts.",
+        "Family units: full-height wardrobes and an entrance utility cabinet.",
+        "Lighting upgrades throughout."
+      ]
+    }
+  ],
+  "timeline_note": "Most new condo renovations take about 4 to 8 weeks from keys to move-in. At a 1,008-unit handover, add time for lift bookings in the first weeks.",
+  "faq": [
+    {
+      "q": "When will Grand Dunman be completed?",
+      "a": "The developer lists expected completion as 2028. We could not confirm an earlier TOP date on an official page."
+    },
+    {
+      "q": "How do I avoid delays when everyone renovates at once?",
+      "a": "Have your design, quotation and renovation application ready before keys, and book your lift slots with the management as early as allowed."
+    },
+    {
+      "q": "Can you plan a dual-key unit at Grand Dunman?",
+      "a": "Yes. We plan storage, kitchenettes and soundproofing so both parts work on their own or together."
+    }
+  ],
+  "sources": [
+    {
+      "label": "SingHaiyi Grand Dunman page",
+      "url": "https://www.singhaiyi.com/grand-dunman.html"
+    },
+    {
+      "label": "EdgeProp project page (third-party)",
+      "url": "https://www.edgeprop.sg/new-launches/grand-dunman"
+    }
+  ],
+  "nearby_hints": [],
+  "date_published": "2026-11-07",
+  "date_modified": "2026-11-11"
+}

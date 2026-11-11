@@ -1,0 +1,72 @@
+{
+  "name": "Plantation Dew",
+  "slug": "plantation-dew",
+  "type": "BTO",
+  "label": "HDB BTO",
+  "area": "Tengah",
+  "region": "West",
+  "developer": "HDB",
+  "tenure": "",
+  "top_label": "Launch / TOP / key date",
+  "top": "November 2026 launch. The official confirmation in our file covers the launch date only, not TOP or key collection",
+  "unit_mix": "",
+  "official_site": "",
+  "facts": [
+    {
+      "label": "Units",
+      "value": "710"
+    }
+  ],
+  "title": "Plantation Dew Renovation & Interior Design | Tengah BTO — Maison",
+  "description": "Interior design and built-in carpentry for Plantation Dew, an HDB BTO in Tengah. Launch facts only; key dates unconfirmed. WhatsApp Maison with your plan.",
+  "keywords": [
+    "Plantation Dew renovation",
+    "Plantation Dew interior design",
+    "Plantation Dew floor plan",
+    "Tengah BTO renovation",
+    "Plantation Dew built-in carpentry",
+    "Tengah interior design"
+  ],
+  "intro": "Plantation Dew is an HDB BTO project in Tengah, listed in the November 2026 BTO exercise with 710 flats, as recorded from HDB’s BTO portal in our project file. That official confirmation covers the launch and the unit count only. TOP and key-collection dates are unconfirmed. Tenure is left blank. Use your HDB documents for typologies, and do not treat a portal launch as a handover date. This page sets out what is on file and how to plan your Plantation Dew renovation.",
+  "sections": [
+    {
+      "heading": "Planning your Plantation Dew interior",
+      "text": "A newly launched Tengah BTO is still years from renovation, which is useful in a town that is itself still being built out. When HDB issues your approved plan, the interior brief that usually pays off is built-in: a fitted kitchen with a tall pantry or fridge run, full-height wardrobes, an entry cabinet, and a living-room joinery wall, with a built-in desk if a common bedroom will be a study. Maison specifies this as custom carpentry, not as IKEA-style furniture. No official floor plan is on file, and we will not invent typologies or a typical Plantation Dew layout.\n\nBrickland Weave and Plantation Edge I & II are unconfirmed near-completion pages in the same town and are not a guide to when Dew will get keys. Plantation Creek, Garden Waterfront I & II and Plantation Verge were packed earlier. We will not invent walking times to any present or future MRT station, and we will not assign a view from the project name.\n\nKeep the official plan when it is issued, and write to us when you want the carpentry drawings frozen well before any permit is due. After keys, inspect defects and apply for the HDB renovation permit before fabrication. A moderate carpentry scope is often planned at about six to ten weeks on site after approvals — an editorial allowance, not a promise. WhatsApp Maison with your unit type and plan when you have them. We are not affiliated with HDB."
+    }
+  ],
+  "faq": [
+    {
+      "q": "When was Plantation Dew launched?",
+      "a": "Our project file records: 2026-11 launch. That official confirmation covers the launch date only, not TOP or key collection."
+    },
+    {
+      "q": "Is the key-collection date for Plantation Dew confirmed?",
+      "a": "No. Completion and keys are unconfirmed in our file. Use your HDB documents for your own appointment, when you have one."
+    },
+    {
+      "q": "Do you have the Plantation Dew floor plan?",
+      "a": "No official floor-plan or site image is on file for this page, so none is published here. Please send your approved HDB unit plan."
+    },
+    {
+      "q": "What should I send Maison?",
+      "a": "Your approved floor plan, unit type if you have it, and a key date if one is already in writing. After keys, an HDB renovation permit is required before works. WhatsApp us at https://wa.me/6593391185."
+    }
+  ],
+  "cta_text": "WhatsApp Maison with your unit type, approved floor plan and key date (if you have one).",
+  "sources": [
+    {
+      "label": "HDB: bto",
+      "url": "https://homes.hdb.gov.sg/home/bto"
+    }
+  ],
+  "nearby_hints": [
+    "brickland-weave",
+    "plantation-edge-i-and-ii",
+    "plantation-creek-at-tengah",
+    "keat-hong-grange",
+    "parc-point"
+  ],
+  "reviewed": "Facts checked against the sources on file, 11 November 2026.",
+  "date_published": "2026-11-11",
+  "date_modified": "2026-11-11"
+}

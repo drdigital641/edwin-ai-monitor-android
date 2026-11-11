@@ -1,0 +1,69 @@
+{
+  "name": "Brickland Weave",
+  "slug": "brickland-weave",
+  "type": "HDB",
+  "label": "HDB flat",
+  "area": "Tengah",
+  "region": "West",
+  "developer": "HDB (listed in our project file, not officially confirmed)",
+  "tenure": "",
+  "top_label": "Launch / TOP / key date",
+  "top": "",
+  "unit_mix": "",
+  "official_site": "",
+  "facts": [],
+  "facts_note": "This project is not marked officially confirmed in our project file. Unit counts, tenure and dates from third-party or unverified sources have been left blank until they can be cited from the developer, HDB, URA or another official source.",
+  "title": "Brickland Weave Renovation & Interior Design | Tengah HDB — Maison",
+  "description": "Interior design and built-in carpentry for Brickland Weave, an HDB project in Tengah. Unconfirmed tracker figures are left blank.",
+  "keywords": [
+    "Brickland Weave renovation",
+    "Brickland Weave interior design",
+    "Brickland Weave floor plan",
+    "Tengah HDB renovation",
+    "Brickland Weave built-in carpentry",
+    "Tengah interior design"
+  ],
+  "intro": "Brickland Weave is an HDB project in Tengah. Third-party completion estimates in our file have conflicted, and official HDB launch or brochure material, as already checked in the file, does not verify a current project-wide completion or key month. This entry is not officially confirmed. Unit counts and any estimated month are left out of the facts below, and we will not publish a month as HDB-confirmed. If you have an HDB key-appointment letter, use that. This page sets out what is on file and how to plan your Brickland Weave renovation.",
+  "sections": [
+    {
+      "heading": "Planning your Brickland Weave interior",
+      "text": "Tengah’s Brickland belt sits in a new town that is still being built out. Owners who are close to keys usually need the first fit-out to work from week one: a fitted kitchen, full-height wardrobes, an entry shoe cabinet, and a living-room joinery wall, rather than a temporary arrangement of loose furniture while the town is still taking shape. Maison specifies that work as built-in carpentry, not as IKEA-style furniture, and we can present it in a wide room view or in closer studies of a kitchen run or a wardrobe. No official floor plan is on file, so typologies are not listed, and we will not invent a typical Brickland Weave layout.\n\nPlantation Edge I & II and Plantation Dew are the other Tengah pages in this batch. Dew is a November 2026 BTO launch and is at a different stage; do not use its launch date as a key date for Brickland Weave. Plantation Creek, Garden Waterfront I & II and Plantation Verge were packed earlier and are also unconfirmed for keys. We will not invent walking times to any present or future MRT station.\n\nAfter keys, inspect defects and obtain the HDB renovation permit before fabrication. A moderate, non-structural carpentry scope is often planned at about six to ten weeks on site after access and approvals — an editorial allowance, not a guarantee. WhatsApp Maison with your approved plan and any key letter you have. We are not affiliated with HDB."
+    }
+  ],
+  "faq": [
+    {
+      "q": "Is the completion or key date for Brickland Weave confirmed?",
+      "a": "Not in our project file. This project is not officially confirmed, so unit counts and tracker dates have been left blank. If you have an HDB key-appointment letter, use that."
+    },
+    {
+      "q": "Do you have the Brickland Weave floor plan?",
+      "a": "No official floor-plan or site image is on file for this page, so none is published here. Please send your approved HDB unit plan."
+    },
+    {
+      "q": "Do I need an HDB renovation permit?",
+      "a": "Yes, for the usual HDB renovation works. After keys, inspect defects, then apply for the permit with a registered contractor before carpentry is fabricated."
+    },
+    {
+      "q": "What should I send Maison?",
+      "a": "Your approved floor plan, unit type if you have it, and a key date if one is already in writing. WhatsApp us at https://wa.me/6593391185."
+    }
+  ],
+  "cta_text": "WhatsApp Maison with your unit type, approved floor plan and key date (if you have one).",
+  "sources": [
+    {
+      "label": "hdbprices.com: brickland weave (third-party, not used as official confirmation)",
+      "url": "https://hdbprices.com/bto/brickland-weave",
+      "nofollow": true
+    }
+  ],
+  "nearby_hints": [
+    "plantation-edge-i-and-ii",
+    "plantation-dew",
+    "plantation-creek-at-tengah",
+    "plantation-verge",
+    "parc-point"
+  ],
+  "reviewed": "Facts checked against the sources on file, 11 November 2026.",
+  "date_published": "2026-11-11",
+  "date_modified": "2026-11-11"
+}

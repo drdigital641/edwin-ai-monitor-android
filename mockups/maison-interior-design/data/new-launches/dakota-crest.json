@@ -1,0 +1,67 @@
+{
+  "name": "Dakota Crest",
+  "slug": "dakota-crest",
+  "type": "HDB",
+  "label": "HDB flat",
+  "area": "Geylang",
+  "region": "Central",
+  "developer": "HDB (listed in our project file, not officially confirmed)",
+  "tenure": "",
+  "top_label": "Launch / TOP / key date",
+  "top": "",
+  "unit_mix": "",
+  "official_site": "",
+  "facts": [],
+  "facts_note": "This project is not marked officially confirmed in our project file. Unit counts, tenure and completion or key dates from third-party trackers have been left blank until they can be cited from HDB.",
+  "title": "Dakota Crest Renovation & Interior Design | Geylang HDB — Maison",
+  "description": "Interior design and built-in carpentry for Dakota Crest, an HDB project in Geylang. Unconfirmed tracker figures are left blank.",
+  "keywords": [
+    "Dakota Crest renovation",
+    "Dakota Crest interior design",
+    "Dakota Crest floor plan",
+    "Geylang HDB renovation",
+    "Dakota Crest built-in carpentry",
+    "Geylang HDB interior design"
+  ],
+  "intro": "Dakota Crest is an HDB project in Geylang, in the Dakota area. Our project file carries a third-party completion estimate that is not officially confirmed. HDB has not verified a project-wide completion or key month, and tracker sources have disagreed, so unit counts and that estimated month are left out of the facts below. Your HDB appointment letter, if you have one, is the source of truth. This page sets out what is on file and how to plan your Dakota Crest renovation.",
+  "sections": [
+    {
+      "heading": "Planning your Dakota Crest interior",
+      "text": "Dakota is a residential pocket with a different character from MacPherson or the older Geylang shophouse streets. Owners who are close to keys usually need the flat to work from week one: storage at the door, a kitchen of fitted cabinets, and bedrooms with proper wardrobes rather than a temporary rack. Maison will design those pieces as built-in carpentry, finished and photographed the way a professional interior is seen, including closer material shots when you are choosing a finish. We do not use flat-pack furniture as the backbone of the home, and we will not draw a layout until your approved HDB plan is in hand. No official floor plan is on file, so typologies are not listed.\n\nMacPherson Weave is another unconfirmed near-completion page in Geylang; Merpati Meadow is a much earlier BTO launch in the same town. Grand Dunman, already live in District 15, is a nearby link for readers in the east-central belt. None of those pages is a typologies or key-date reference for Dakota Crest. We will not invent walking times to Dakota MRT or to the canal, and we will not assign a view from the estate name.\n\nWhen keys are in writing, follow the HDB sequence: defects inspection, a measured survey, the renovation permit, then fabrication. A moderate carpentry scope is often planned at six to ten weeks on site after approvals, as an editorial planning figure only. WhatsApp Maison with your plan and key letter if you have them. We are an independent designer and are not affiliated with HDB."
+    }
+  ],
+  "faq": [
+    {
+      "q": "Is the completion or key date for Dakota Crest confirmed?",
+      "a": "Not in our project file. This project is not officially confirmed, so unit counts and tracker dates have been left blank. If you have an HDB key-appointment letter, use that."
+    },
+    {
+      "q": "Do you have the Dakota Crest floor plan?",
+      "a": "No official floor-plan or site image is on file for this page, so none is published here. Please send your approved HDB unit plan."
+    },
+    {
+      "q": "Do I need an HDB renovation permit?",
+      "a": "Yes, for the usual HDB renovation works. After keys, inspect defects, then apply for the permit with a registered contractor before carpentry is fabricated."
+    },
+    {
+      "q": "What should I send Maison?",
+      "a": "Your approved floor plan, unit type if you have it, and a key date if one is already in writing. WhatsApp us at https://wa.me/6593391185."
+    }
+  ],
+  "cta_text": "WhatsApp Maison with your unit type, approved floor plan and key date (if you have one).",
+  "sources": [
+    {
+      "label": "hdbprices.com: 2027 (third-party, not used as official confirmation)",
+      "url": "https://hdbprices.com/bto/completion/2027",
+      "nofollow": true
+    }
+  ],
+  "nearby_hints": [
+    "macpherson-weave",
+    "merpati-meadow",
+    "grand-dunman"
+  ],
+  "reviewed": "Facts checked against the sources on file, 11 November 2026.",
+  "date_published": "2026-11-11",
+  "date_modified": "2026-11-11"
+}

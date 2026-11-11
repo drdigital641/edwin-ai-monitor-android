@@ -1,0 +1,75 @@
+{
+  "name": "AMO Residence",
+  "slug": "amo-residence",
+  "type": "Condo",
+  "label": "Private condominium",
+  "area": "Ang Mo Kio",
+  "district": "D20",
+  "region": "North-East",
+  "developer": "Not confirmed",
+  "tenure": "Not confirmed",
+  "top_label": "TOP",
+  "top": "Year only: expected 2026, as reported by Stacked Homes. We could not confirm a date on an official page.",
+  "unit_mix": "Not confirmed",
+  "official_site": "Not confirmed",
+  "facts": [
+    {
+      "label": "District",
+      "value": "D20, Ang Mo Kio Rise"
+    },
+    {
+      "label": "Units",
+      "value": "372 (as reported)"
+    }
+  ],
+  "keywords": [
+    "AMO Residence renovation",
+    "AMO Residence interior design",
+    "AMO Residence renovation guide"
+  ],
+  "intro": "AMO Residence is a condominium of about 372 homes on Ang Mo Kio Rise, reported to be close to completion in 2026. Ang Mo Kio is a mature town, and many buyers are upgraders from nearby HDB flats. Below: key facts, what owners usually change, a defects check and how to plan your AMO Residence renovation.",
+  "whatsapp_text": "Hi Maison, I'm collecting keys at AMO Residence and would like to discuss the renovation.",
+  "sections": [
+    {
+      "heading": "What to know about AMO Residence",
+      "text": "Upgraders often bring furniture from their HDB flat, and condo rooms are shaped differently. Before buying anything new, measure what you are bringing and plan the built-ins around the pieces you want to keep.\n\nMoving from HDB to a condo also changes the rules: renovation approval comes from the management, and the hours and deposits are set by the condo's by-laws. The developer's defects period is your chance to get things fixed before renovation starts."
+    },
+    {
+      "heading": "What owners usually change",
+      "text": "Common requests at AMO Residence:",
+      "bullets": [
+        "Built-ins planned around furniture you are bringing from your current home.",
+        "Wardrobe internals and an entrance cabinet.",
+        "A study corner or home office.",
+        "Lighting upgrades in the living and dining areas.",
+        "Curtains and blinds for every window."
+      ]
+    }
+  ],
+  "timeline_note": "Most new condo renovations take about 4 to 8 weeks from keys to move-in.",
+  "faq": [
+    {
+      "q": "When will AMO Residence be completed?",
+      "a": "Stacked Homes reported an expected TOP in 2026. We could not confirm this on an official page, so check your developer's notice."
+    },
+    {
+      "q": "I'm moving from an HDB flat. What changes?",
+      "a": "Approval comes from the condo's management, not HDB, and working hours are set by its by-laws. Check the developer's defects process too."
+    },
+    {
+      "q": "Should I keep my old furniture?",
+      "a": "Keep the pieces that fit. Measure them against the new floor plan before designing the built-ins, so everything works together."
+    }
+  ],
+  "sources": [
+    {
+      "label": "Stacked Homes report (third-party)",
+      "url": "https://stackedhomes.com/7-close-to-top-new-launch-condos-in-2026/"
+    }
+  ],
+  "nearby_hints": [
+    "pollen-collection"
+  ],
+  "date_published": "2026-11-07",
+  "date_modified": "2026-11-11"
+}

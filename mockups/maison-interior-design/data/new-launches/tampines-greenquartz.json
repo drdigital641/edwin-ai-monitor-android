@@ -1,0 +1,67 @@
+{
+  "name": "Tampines GreenQuartz",
+  "slug": "tampines-greenquartz",
+  "type": "HDB",
+  "label": "HDB flat",
+  "area": "Tampines",
+  "region": "East",
+  "developer": "HDB (listed in our project file, not officially confirmed)",
+  "tenure": "",
+  "top_label": "Launch / TOP / key date",
+  "top": "",
+  "unit_mix": "",
+  "official_site": "",
+  "facts": [],
+  "facts_note": "This project is not marked officially confirmed in our project file. Unit counts, tenure and completion or key dates from third-party trackers have been left blank until they can be cited from HDB.",
+  "title": "Tampines GreenQuartz Renovation & Interior Design | Tampines HDB — Maison",
+  "description": "Interior design and built-in carpentry for Tampines GreenQuartz, an HDB project in Tampines. Unconfirmed tracker figures are left blank.",
+  "keywords": [
+    "Tampines GreenQuartz renovation",
+    "Tampines GreenQuartz interior design",
+    "Tampines GreenQuartz floor plan",
+    "Tampines HDB renovation",
+    "Tampines GreenQuartz built-in carpentry",
+    "Tampines HDB interior design"
+  ],
+  "intro": "Tampines GreenQuartz is an HDB project in Tampines. Our project file describes it as near completion and carries a third-party 2026 completion note, but this entry is not officially confirmed. Official HDB roadshow resources, checked in our file on 7 November 2026, do not confirm a project-wide TOP or key date, and key appointments are unconfirmed. Unit counts and any completion year are therefore left out of the facts below. If you have an HDB key letter, use that. We will not publish a tracker year as if HDB had issued it. This page sets out what is on file and how to plan your Tampines GreenQuartz renovation.",
+  "sections": [
+    {
+      "heading": "Planning your Tampines GreenQuartz interior",
+      "text": "Tampines is a mature, well-equipped new town, and owners who are close to keys usually plan the first fit-out as a long stay: school bags at the door, a kitchen that can take family cooking, and bedrooms with proper wardrobes. The joinery that typically does that job is a fitted kitchen with a tall pantry or fridge run, full-height wardrobes, an entry cabinet, and a living-room joinery wall. Maison specifies this as built-in carpentry, not as IKEA-style furniture, and we will design from your approved plan only. No official floor plan is on file, so typologies and room sizes are not listed.\n\nRivelle Tampines, packed earlier, is an executive condominium page in District 18 and is a nearby link for readers in the same town, not a typologies or key-date reference for GreenQuartz. We will not invent walking times to Tampines town, to a park, or to any MRT station. Check your block, facing and the HDB renovation rules before you plan blinds, a window bench or any hacking.\n\nAfter keys, inspect defects, then apply for the HDB renovation permit before fabrication. A moderate, non-structural carpentry scope is often planned at about six to ten weeks on site after access and approvals — an editorial allowance, not a guarantee. WhatsApp Maison with your approved plan and any key letter you have. We are not affiliated with HDB."
+    }
+  ],
+  "faq": [
+    {
+      "q": "Is the completion or key date for Tampines GreenQuartz confirmed?",
+      "a": "Not in our project file. This project is not officially confirmed, so unit counts and tracker dates have been left blank. If you have an HDB key-appointment letter, use that."
+    },
+    {
+      "q": "Do you have the Tampines GreenQuartz floor plan?",
+      "a": "No official floor-plan or site image is on file for this page, so none is published here. Please send your approved HDB unit plan."
+    },
+    {
+      "q": "Do I need an HDB renovation permit?",
+      "a": "Yes, for the usual HDB renovation works. After keys, inspect defects, then apply for the permit with a registered contractor before carpentry is fabricated."
+    },
+    {
+      "q": "What should I send Maison?",
+      "a": "Your approved floor plan, unit type if you have it, and a key date if one is already in writing. WhatsApp us at https://wa.me/6593391185."
+    }
+  ],
+  "cta_text": "WhatsApp Maison with your unit type, approved floor plan and key date (if you have one).",
+  "sources": [
+    {
+      "label": "keydaykit.com: bto key collection 2026 2027 (third-party, not used as official confirmation)",
+      "url": "https://keydaykit.com/guides/bto-key-collection-2026-2027/",
+      "nofollow": true
+    }
+  ],
+  "nearby_hints": [
+    "rivelle-tampines",
+    "pinery-residences",
+    "vela-bay"
+  ],
+  "reviewed": "Facts checked against the sources on file, 11 November 2026.",
+  "date_published": "2026-11-11",
+  "date_modified": "2026-11-11"
+}

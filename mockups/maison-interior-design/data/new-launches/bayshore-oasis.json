@@ -1,0 +1,71 @@
+{
+  "name": "Bayshore Oasis",
+  "slug": "bayshore-oasis",
+  "type": "BTO",
+  "label": "HDB BTO",
+  "area": "Bedok",
+  "region": "East",
+  "developer": "HDB",
+  "tenure": "",
+  "top_label": "Launch / TOP / key date",
+  "top": "November 2026 launch. The official confirmation in our file covers the launch date only, not TOP or key collection",
+  "unit_mix": "",
+  "official_site": "",
+  "facts": [
+    {
+      "label": "Units",
+      "value": "855"
+    }
+  ],
+  "title": "Bayshore Oasis Renovation & Interior Design | Bedok BTO — Maison",
+  "description": "Interior design and built-in carpentry for Bayshore Oasis, an HDB BTO in Bedok. Launch facts only; key dates unconfirmed. WhatsApp Maison with your plan.",
+  "keywords": [
+    "Bayshore Oasis renovation",
+    "Bayshore Oasis interior design",
+    "Bayshore Oasis floor plan",
+    "Bedok BTO renovation",
+    "Bayshore Oasis built-in carpentry",
+    "Bedok HDB interior design"
+  ],
+  "intro": "Bayshore Oasis is an HDB BTO project in Bedok. It is listed in the November 2026 BTO exercise, with 855 flats, on HDB’s BTO portal as recorded in our project file. That official confirmation covers the launch and the unit count only. TOP and key-collection dates are unconfirmed. Tenure is left blank. Please use your HDB documents for typologies, and do not treat a portal launch as a handover date. This page sets out what is on file and how to plan your Bayshore Oasis renovation.",
+  "sections": [
+    {
+      "heading": "Planning your Bayshore Oasis interior",
+      "text": "Bayshore is a newer eastern belt, distinct from older Bedok neighbourhoods such as Chai Chee. Buyers in a freshly launched BTO usually have years, not months, before renovation can start, which is the right time to think about how the household will actually live: school bags at the door, a kitchen that can take weekday cooking, and bedrooms that will need full-height wardrobes rather than a temporary rack. Maison designs those pieces as built-in carpentry, not as IKEA-style furniture. We will work from the official HDB plan when you have it, and we can show a full room or a closer material study when you need to decide on a finish.\n\nNo official floor plan is on file, so typologies are not listed here. Bayshore Sails was launched in the same November 2026 exercise and is the natural sister page on this site; the two projects do not automatically share typologies or a later key date. Bedok North Springs and Chai Chee Green are earlier-stage HDB pages in the same town and should not be used as a timetable for Oasis. We will not invent walking times to the coast, to Bedok, or to any MRT station, and we will not assign a sea view to your future stack.\n\nKeep the official plan when it is issued. After keys, inspect defects, then obtain the HDB renovation permit before fabrication. A moderate carpentry scope is often planned at about six to ten weeks on site after approvals — an editorial allowance, not a guarantee. WhatsApp Maison when you have a plan to share. We are not affiliated with HDB."
+    }
+  ],
+  "faq": [
+    {
+      "q": "When was Bayshore Oasis launched?",
+      "a": "Our project file records: 2026-11 launch. That official confirmation covers the launch date only, not TOP or key collection."
+    },
+    {
+      "q": "Is the key-collection date for Bayshore Oasis confirmed?",
+      "a": "No. Completion and keys are unconfirmed in our file. Use your HDB documents for your own appointment, when you have one."
+    },
+    {
+      "q": "Do you have the Bayshore Oasis floor plan?",
+      "a": "No official floor-plan or site image is on file for this page, so none is published here. Please send your approved HDB unit plan."
+    },
+    {
+      "q": "What should I send Maison?",
+      "a": "Your approved floor plan, unit type if you have it, and a key date if one is already in writing. After keys, an HDB renovation permit is required before works. WhatsApp us at https://wa.me/6593391185."
+    }
+  ],
+  "cta_text": "WhatsApp Maison with your unit type, approved floor plan and key date (if you have one).",
+  "sources": [
+    {
+      "label": "HDB: bto",
+      "url": "https://homes.hdb.gov.sg/home/bto"
+    }
+  ],
+  "nearby_hints": [
+    "bayshore-sails",
+    "bedok-north-springs",
+    "chai-chee-green",
+    "vela-bay"
+  ],
+  "reviewed": "Facts checked against the sources on file, 11 November 2026.",
+  "date_published": "2026-11-11",
+  "date_modified": "2026-11-11"
+}

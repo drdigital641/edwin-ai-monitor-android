@@ -1,15 +1,8 @@
 # New launches hub, project pages and service guides (exec'd by build.py after its helpers).
+# Project pages are data: data/new-launches/<slug>.json, rendered by newlaunch.py (format: docs/new-launch-data-format.md).
 exec(open(os.path.join(HERE, "launches_guides.py"), encoding="utf-8").read())
-exec(open(os.path.join(HERE, "launches_projects.py"), encoding="utf-8").read())
-exec(open(os.path.join(HERE, "vpage.py"), encoding="utf-8").read())
-exec(open(os.path.join(HERE, "picker2.py"), encoding="utf-8").read())
-exec(open(os.path.join(HERE, "towner_v4.py"), encoding="utf-8").read())
-exec(open(os.path.join(HERE, "norwood_v4.py"), encoding="utf-8").read())
-exec(open(os.path.join(HERE, "myst_v4.py"), encoding="utf-8").read())
-exec(open(os.path.join(HERE, "canninghill_v4.py"), encoding="utf-8").read())
-LAUNCHES = [p for p in LAUNCHES if p["slug"] not in VPAGE_ON_HOLD]
-# visual pages first on the hub
-LAUNCHES.sort(key=lambda p: (p["slug"] not in VPAGES, list(VPAGES).index(p["slug"]) if p["slug"] in VPAGES else 0))
+VPAGE_ON_HOLD = {"parc-point-tengah": "parc-point"}   # old slug -> real page (noindex stub). lumina-grand is a real page again from 11 Nov
+LAUNCHES, LAUNCH_URLS, NL_LASTMOD = [], [], {}   # filled by launches_build() from the JSON data
 
 KINDS = {"bto": ("BTO / HDB", "bto-renovation"), "ec": ("Executive condo", "new-condo-renovation"),
          "condo": ("Private condo", "new-condo-renovation"), "landed": ("Landed", "landed-renovation"),
@@ -92,10 +85,10 @@ def wa_cta(q, msg, ref):
 
 def guide_page(g):
     path = f"services/{g['slug']}/"
-    rel = [p for p in LAUNCHES if p["kind"] in g["kind"] or (g["slug"] == "new-condo-renovation" and p["kind"] in ("condo", "ec"))]
+    rel = sorted([p for p in LAUNCHES if _nl_guide(p) in g["kind"] or (g["slug"] == "new-condo-renovation" and _nl_guide(p) in ("condo", "ec"))], key=lambda p: p["name"].lower())
     secs = "".join(f'<section class="nl-sec"><h2 class="display">{e(h)}</h2>{ul(items)}</section>' for h, items in g["secs"])
     rel_html = ("<section class=\"nl-sec\"><h2 class=\"display\">New launches with guides</h2><ul class=\"nl-links\">" +
-                "".join(f'<li><a href="{BASE}new-launches/{p["slug"]}/">{e(p["name"])} <span>{e(p["place"])}</span></a></li>' for p in rel) + "</ul></section>") if rel else ""
+                "".join(f'<li><a href="{BASE}new-launches/{p["slug"]}/">{e(p["name"])} <span>{e(p["area"])}</span></a></li>' for p in rel) + "</ul></section>") if rel else ""
     schema = {"@context": "https://schema.org", "@graph": [ORG, crumbs([("Home", ""), ("Services", "services/"), (g["short"], path)]),
               {"@type": "Service", "name": g["short"], "provider": {"@id": DOMAIN + "/#business"}, "areaServed": {"@type": "Country", "name": "Singapore"}, "description": g["desc"]},
               faq_ld(g["faq"])]}
@@ -111,87 +104,17 @@ def guide_page(g):
     s += footer()
     write(path + "index.html", s)
 
-def launch_page(p):
-    path = f"new-launches/{p['slug']}/"
-    kl, gslug = KINDS[p["kind"]]
-    g = GBY[gslug]
-    facts = "".join(f"<div><dt>{e(a)}</dt><dd>{e(b)}</dd></div>" for a, b in p["facts"])
-    work = "fit-out" if p["kind"] in ("office", "retail") else "renovation"
-    q = f"Collecting keys at {p['name']}?"
-    msg = f"Hi Maison, I'm collecting keys at {p['name']} and would like to discuss the {work}."
-    title = (f"{p['name']} {'Fit-Out' if work == 'fit-out' else 'Renovation'} Guide | {p['place']} | Maison Interior Design")
-    desc = f"{p['name']} ({p['place']}): key facts from public sources, what owners usually change, a handover defects check, {'landlord and authority rules' if work == 'fit-out' else 'renovation rules'} and a realistic timeline."
-    srcs = p["sources"] + SRC_RULES[p["kind"]]
-    schema = {"@context": "https://schema.org", "@graph": [ORG, crumbs([("Home", ""), ("New launches", "new-launches/"), (p["name"], path)]),
-              {"@type": "Article", "headline": f"{p['name']}: {work} guide for new owners and tenants", "description": desc,
-               "datePublished": PUB, "dateModified": PUB, "author": {"@id": DOMAIN + "/#business"}, "publisher": {"@id": DOMAIN + "/#business"},
-               "mainEntityOfPage": DOMAIN + "/" + path, "about": {"@type": "Place", "name": p["name"]}, "citation": [u for _, u in p["sources"]]},
-              faq_ld(p["faq"])]}
-    s = head(title, desc, path, "62-Havelock-Road-Living-1-small-1024x683.jpg", schema)
-    s += header("new-launches/")
-    s += f"""<section class="phead"><div class="wrap narrow"><p class="eyebrow"><a href="{BASE}new-launches/">New launches</a> · {e(p['label'])}</p>
-<h1 class="display">{e(p['name'])} <em>{work} guide</em></h1><p class="ph-p">{e(p['lede'])}</p></div></section>
-<section class="sec tight nl-s"><div class="wrap narrow nl-body">
-<dl class="nl-facts">{facts}<div class="nl-date"><dt>{e(p['date'][0])}</dt><dd>{e(p['date'][1])}</dd></div></dl>
-{src_line(p['sources'])}
-<section class="nl-sec"><h2 class="display">What to know about {e(p['name'])}</h2>{"".join("<p>"+e(x)+"</p>" for x in p['paras'])}</section>
-<section class="nl-sec"><h2 class="display">What {'tenants' if work == 'fit-out' else 'owners'} usually change</h2>{ul(p['changes'])}</section>
-<section class="nl-sec"><h2 class="display">{'Handover check' if work == 'fit-out' else 'Defects check at handover'}</h2>{ul(DEFECTS[p['kind']])}</section>
-<section class="nl-sec"><h2 class="display">{'Rules and approvals' if work == 'fit-out' else 'What the rules allow'}</h2>{ul(RULES[p['kind']])}
-<p>Rules change, so we check the current version for your unit before we quote. <a class="link" href="{BASE}services/{gslug}/">Full {e(g['short'].lower())} guide</a></p></section>
-<section class="nl-sec"><h2 class="display">A realistic timeline</h2>{tl_html(TL[p['kind']], p['tl'])}</section>
-<p class="nl-indep">{e(MAISON_INDEP)} We have not worked at {e(p['name'])} unless our portfolio says so. Facts on this page come only from the sources listed; prices and floor plans are not given.</p>
-{src_line(srcs)}</div></section>
-{faq_block(p['faq'])}{wa_cta(q, msg, p['slug'])}"""
-    s += footer()
-    write(path + "index.html", s)
+exec(open(os.path.join(HERE, "newlaunch.py"), encoding="utf-8").read())
 
-HUB_FAQ = [("What is the difference between TOP and key collection?", "TOP (Temporary Occupation Permit) means the building can be occupied. Key collection comes after, on a date your developer or HDB gives you. We never treat a TOP date as your key date."),
-           ("When should I contact an interior designer?", "One to two months before keys for a BTO or condo, and before you sign the lease for an office or shop. That leaves time for design, quotation and approvals so work starts on day one."),
-           ("Are you the appointed interior designer for these projects?", "No. Maison is an independent firm, not appointed by or affiliated with any developer, HDB or building owner. We write these guides to help new owners and tenants plan."),
-           ("Where do the project facts come from?", "Only from public sources linked on each page, such as HDB, the developer's own site or published reports. If we could not confirm a fact, we left it out or marked it as reported.")]
-
-def hub():
-    order = ["bto", "ec", "condo", "landed", "office", "retail"]
-    chips = "".join(f'<button class="chip{" on" if k=="All" else ""}" data-f="{k}" aria-pressed="{"true" if k=="All" else "false"}">{k}</button>' for k in ["All"] + [KINDS[k][0] for k in order])
-    def hcard(p):
-        if p["slug"] in VPAGES:
-            v = VPAGES[p["slug"]]
-            hb = globals().get("V4CFG", {}).get(p["slug"], {}).get("hub")
-            fig = (f'<img src="{BASE}images/new-launches/{V4CFG[p["slug"]]["dir"]}/{hb["img"]}.webp" width="{hb["w"]}" height="{hb["h"]}" alt="{e(hb["alt"])}" loading="lazy" decoding="async">'
-                   if hb else vimg(p["slug"], v["hero"], "AI concept: " + p["name"] + " living and dining", sizes="(min-width:900px) 30vw, 100vw"))
-            return (f'<a class="lc lc-img" href="{BASE}new-launches/{p["slug"]}/" data-kind="{KINDS[p["kind"]][0]}">'
-                    f'<figure>{fig}</figure>'
-                    f'<span class="tag">{e(v["tag"])}</span><h3>{e(p["name"])} <em>{e(p["place"])}</em></h3><span class="more">See the concepts</span></a>')
-        return (f'<a class="lc" href="{BASE}new-launches/{p["slug"]}/" data-kind="{KINDS[p["kind"]][0]}"><span class="tag">{e(p["label"])}</span>'
-                f'<h3>{e(p["name"])} <em>{e(p["place"])}</em></h3><p>{e(p["date"][1].split(". ")[0].rstrip("."))}.</p><span class="more">Read the guide</span></a>')
-    cards = "".join(hcard(p) for p in LAUNCHES)
-    gcards = "".join(f'<a class="gc" href="{BASE}services/{g["slug"]}/"><h3>{e(g["short"])}</h3><p>{e(g["desc"])}</p><span class="more">Read the guide</span></a>' for g in GUIDES)
-    schema = {"@context": "https://schema.org", "@graph": [ORG, crumbs([("Home", ""), ("New launches", "new-launches/")]),
-              {"@type": "CollectionPage", "name": "New launches renovation and fit-out guides", "hasPart": [{"@type": "Article", "headline": p["name"] + " guide", "url": DOMAIN + "/new-launches/" + p["slug"] + "/"} for p in LAUNCHES]},
-              faq_ld(HUB_FAQ)]}
-    s = head("New Launches Singapore 2026-2027 | BTO, Condo, Office & Shop Fit-Out Guides | Maison",
-             "Renovation and fit-out guides for new BTO, EC, condo, landed, office and retail projects in Singapore reaching TOP or key collection in 2026-2027. Facts from public sources.",
-             "new-launches/", "62-Havelock-Road-Living-1-small-1024x683.jpg", schema)
-    s += header("new-launches/")
-    s += f"""<section class="phead"><div class="wrap"><p class="eyebrow">New launches · 2026 to 2027</p>
-<h1 class="display">Getting your keys? <em>Plan the renovation first</em></h1>
-<p class="ph-p">Guides for BTO, EC, condo, landed, office and retail projects reaching TOP or handover in 2026 and 2027. Each page lists key facts from public sources, what owners usually change, a handover check, the rules that apply and a realistic timeline.</p>
-<div class="chips" role="group" aria-label="Filter by property type">{chips}</div></div></section>
-<section class="sec tight"><div class="wrap"><div class="lgrid" id="lgrid">{cards}</div>
-<p class="nl-indep">{e(MAISON_INDEP)} Dates follow the wording of each page's source; a TOP date is not a key-collection date.</p></div></section>
-<section class="sec tight nl-guides"><div class="wrap"><p class="eyebrow">Guides by property type</p><h2 class="display">Renovation and fit-out, <em>by type</em></h2><div class="ggrid">{gcards}</div></div></section>
-{faq_block(HUB_FAQ, "About these guides")}{wa_cta("Collecting keys soon?", "Hi Maison, I'm collecting keys soon and would like to plan the renovation.", "new-launches")}"""
-    s += footer()
-    write("new-launches/index.html", s)
-
-def launches_build():
-    for sl in VPAGE_ON_HOLD:  # on hold (7 Nov): earlier pages were live, so point them to the hub
-        write(f"new-launches/{sl}/index.html", f'<!doctype html><html lang="en-SG"><head><meta charset="utf-8"><meta name="robots" content="noindex"><meta http-equiv="refresh" content="0;url={BASE}new-launches/"><link rel="canonical" href="{DOMAIN}/new-launches/"><title>New launches | Maison Interior Design</title></head><body><a href="{BASE}new-launches/">New launches</a></body></html>')
+def launches_build(dirs=None):
+    global LAUNCHES, LAUNCH_URLS
+    LAUNCHES = nl_load(dirs)
+    NL_LASTMOD.update({f"new-launches/{p['slug']}/": p.get("date_modified") or p.get("date_published") or "2026-11-11" for p in LAUNCHES})
+    NL_LASTMOD["new-launches/"] = max(NL_LASTMOD.values(), default="2026-11-11")
+    LAUNCH_URLS = ["new-launches/"] + [f"new-launches/{p['slug']}/" for p in LAUNCHES] + [f"services/{g['slug']}/" for g in GUIDES]
+    for sl, to in VPAGE_ON_HOLD.items():  # old URLs kept as noindex redirect stubs
+        u = f"{BASE}new-launches/{to}/" if to else f"{BASE}new-launches/"
+        write(f"new-launches/{sl}/index.html", f'<!doctype html><html lang="en-SG"><head><meta charset="utf-8"><meta name="robots" content="noindex"><meta http-equiv="refresh" content="0;url={u}"><link rel="canonical" href="{DOMAIN}{u}"><title>New launches | Maison Interior Design</title></head><body><a href="{u}">New launches</a></body></html>')
     for g in GUIDES: guide_page(g)
-    for p in LAUNCHES:
-        if p["slug"] in VPAGES: vpage(p["slug"])
-        else: launch_page(p)
-    hub()
-
-LAUNCH_URLS = ["new-launches/"] + [f"new-launches/{p['slug']}/" for p in LAUNCHES] + [f"services/{g['slug']}/" for g in GUIDES]
+    for p in LAUNCHES: nl_page(p, LAUNCHES)
+    nl_hub(LAUNCHES)

@@ -1,0 +1,82 @@
+{
+  "name": "Keat Hong Grange",
+  "slug": "keat-hong-grange",
+  "type": "BTO",
+  "label": "HDB BTO",
+  "area": "Choa Chu Kang",
+  "region": "West",
+  "developer": "HDB",
+  "tenure": "Not confirmed",
+  "top_label": "Completion",
+  "top": "Year only: estimated 2026, from a third-party tracker. HDB has not confirmed a project-wide key date on the pages we checked. Your HDB notification is the date that counts.",
+  "unit_mix": "2-room Flexi to 5-room (as listed by a third-party tracker)",
+  "official_site": "Not confirmed",
+  "facts": [
+    {
+      "label": "Town",
+      "value": "Choa Chu Kang"
+    },
+    {
+      "label": "Units",
+      "value": "987 in 5 blocks (as listed by a third-party tracker)"
+    }
+  ],
+  "keywords": [
+    "Keat Hong Grange renovation",
+    "Keat Hong Grange interior design",
+    "Keat Hong Grange renovation guide"
+  ],
+  "intro": "Keat Hong Grange is a BTO project in Choa Chu Kang, listed by a third-party tracker as 987 flats in five blocks, from 2-room Flexi to 5-room. With so many flats handed over together, timing matters. Below: key facts, what owners usually change, a defects check and how to plan your Keat Hong Grange renovation.",
+  "whatsapp_text": "Hi Maison, I'm collecting keys at Keat Hong Grange and would like to discuss the renovation.",
+  "sections": [
+    {
+      "heading": "What to know about Keat Hong Grange",
+      "text": "Nearly a thousand households collecting keys around the same time means busy lifts, a busy Building Service Centre and contractors with full calendars. Owners who have their layout and quotation ready before keys can start as soon as their defects are reported.\n\nThe flat mix ranges from 2-room Flexi flats, often bought by seniors or singles, to 5-room flats for larger families. A 2-room Flexi flat needs safe, simple finishes and smart storage; a 5-room flat has room for a study, a family area and serious storage."
+    },
+    {
+      "heading": "What owners usually change",
+      "text": "Common requests at Keat Hong Grange:",
+      "bullets": [
+        "2-room Flexi: slip-resistant finishes, good lighting and compact storage.",
+        "4- and 5-room: full-height wardrobes, a study and a family TV area.",
+        "Kitchen cabinets and countertops.",
+        "Toilet upgrades with tiles overlaid on the existing ones (no hacking in the first 3 years).",
+        "Window grilles and air-conditioning by approved installers."
+      ]
+    }
+  ],
+  "timeline_note": "Plan on about 8 to 12 weeks from keys to move-in for a full renovation. In a large handover, book your contractor early.",
+  "faq": [
+    {
+      "q": "When can I collect keys at Keat Hong Grange?",
+      "a": "Your HDB notification gives your date. A third-party tracker estimates completion in 2026, but HDB has not confirmed a project-wide date on the pages we checked."
+    },
+    {
+      "q": "What should I prioritise in a 2-room Flexi flat?",
+      "a": "Safety and storage: slip-resistant floors, good lighting, easy-to-reach cabinets and a layout that leaves clear walking space."
+    },
+    {
+      "q": "How do I beat the renovation queue?",
+      "a": "Finalise your layout and quotation before keys, report defects in the first days, and let your contractor apply for the HDB permit straight away."
+    }
+  ],
+  "sources": [
+    {
+      "label": "KeyDayKit BTO tracker (third-party)",
+      "url": "https://keydaykit.com/guides/bto-key-collection-2026-2027/"
+    },
+    {
+      "label": "HDB roadshows page (checked; no project date)",
+      "url": "https://www.mynicehome.gov.sg/get-settled-in/roadshows/"
+    },
+    {
+      "label": "HDB renovation guide",
+      "url": "https://www.mynicehome.gov.sg/get-settled-in/hdb-renovation-guide/"
+    }
+  ],
+  "nearby_hints": [
+    "lakeside-view"
+  ],
+  "date_published": "2026-11-07",
+  "date_modified": "2026-11-11"
+}

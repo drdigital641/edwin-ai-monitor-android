@@ -1,0 +1,75 @@
+{
+  "name": "Pollen Collection",
+  "slug": "pollen-collection",
+  "type": "Landed",
+  "label": "Landed homes",
+  "area": "Seletar",
+  "district": "D28",
+  "region": "North-East",
+  "developer": "Singapore United Estates Pte Ltd",
+  "tenure": "99 years",
+  "top_label": "TOP",
+  "top": "Reported: 2026. EdgeProp lists the TOP as Q2 2026; we could not confirm this on an official page.",
+  "unit_mix": "Not confirmed",
+  "official_site": "Not confirmed",
+  "facts": [
+    {
+      "label": "District",
+      "value": "D28, Seletar (Pollen View)"
+    },
+    {
+      "label": "Units",
+      "value": "132 landed homes"
+    }
+  ],
+  "keywords": [
+    "Pollen Collection renovation",
+    "Pollen Collection interior design",
+    "Pollen Collection renovation guide"
+  ],
+  "intro": "Pollen Collection is a development of 132 landed homes in Seletar, reported to have reached TOP in 2026. New landed homes give owners more space to work with, and more ways to get the details wrong. Below: key facts, what owners usually change, a defects check and how to plan your Pollen Collection renovation.",
+  "whatsapp_text": "Hi Maison, I'm collecting keys at Pollen Collection and would like to discuss the renovation.",
+  "sections": [
+    {
+      "heading": "What to know about Pollen Collection",
+      "text": "A new landed home is not like a new condo. There are more floors to furnish, more stairs and landings to light, and outdoor spaces such as a garden, a car porch or a roof terrace that need finishes able to take Singapore's sun and rain.\n\nIn a landed development with shared facilities, the management usually controls anything that changes the outside of the house, such as the gate, facade or roof. Inside, you have more freedom. Our builder team mainly builds landed houses, so we plan the interior with how the whole house works."
+    },
+    {
+      "heading": "What owners usually change",
+      "text": "Common requests at Pollen Collection:",
+      "bullets": [
+        "Built-in storage on every floor, including under the stairs.",
+        "A family room or study upstairs, separate from the formal living room.",
+        "Lighting for the staircase, landings and outdoor areas.",
+        "Weather-resistant finishes for the porch, garden and any roof terrace.",
+        "Air-conditioning and ceiling fans planned floor by floor."
+      ]
+    }
+  ],
+  "timeline_note": "An interior renovation of a new landed home usually takes about 3 to 4 months. Anything that changes the outside needs approval first and takes longer.",
+  "faq": [
+    {
+      "q": "Can I change the outside of my Pollen Collection home?",
+      "a": "Usually only with the management's approval and within its rules, because the look of the development is shared. Inside, most changes are yours to make."
+    },
+    {
+      "q": "How long does a new landed home renovation take?",
+      "a": "About 3 to 4 months for interior work. Work that changes the outside takes longer because it needs approval first."
+    },
+    {
+      "q": "Has Pollen Collection reached TOP?",
+      "a": "EdgeProp reports the TOP as Q2 2026. We could not confirm this on an official page, so check your developer's notice."
+    }
+  ],
+  "sources": [
+    {
+      "label": "EdgeProp project page (third-party)",
+      "url": "https://www.edgeprop.sg/new-launches/pollen-collection"
+    }
+  ],
+  "nearby_hints": [
+    "amo-residence"
+  ],
+  "date_published": "2026-11-07",
+  "date_modified": "2026-11-11"
+}

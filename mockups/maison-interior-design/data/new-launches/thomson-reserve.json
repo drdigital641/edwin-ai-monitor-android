@@ -1,0 +1,68 @@
+{
+  "name": "Thomson Reserve",
+  "slug": "thomson-reserve",
+  "type": "Condo",
+  "label": "Private condominium",
+  "area": "District 20",
+  "district": "D20",
+  "region": "Central",
+  "developer": "",
+  "tenure": "",
+  "top_label": "Launch / TOP / key date",
+  "top": "",
+  "unit_mix": "",
+  "official_site": "",
+  "facts": [],
+  "facts_note": "This project is not marked officially confirmed in our project file. Unit counts, tenure and dates from third-party listings have been left blank until they can be cited from the developer, HDB or URA.",
+  "title": "Thomson Reserve Renovation & Interior Design | District 20 Condo — Maison",
+  "description": "Interior design and built-in carpentry for Thomson Reserve, a condominium in District 20, around Ang Mo Kio, Bishan and Thomson.",
+  "keywords": [
+    "Thomson Reserve renovation",
+    "Thomson Reserve interior design",
+    "Thomson Reserve floor plan",
+    "District 20 condo renovation",
+    "Thomson Reserve built-in carpentry",
+    "Thomson condo interior design"
+  ],
+  "intro": "Thomson Reserve is a condominium in District 20, in the Ang Mo Kio, Bishan and Thomson belt. Our project file records a launch in October 2026 from a third-party new-launch list. Because this entry is not officially confirmed, unit counts, tenure and that launch month are left out of the facts below, and no TOP or key date is confirmed. Third-party lists sometimes describe this as a very large development; we are not repeating a unit count until it can be cited from the developer or URA. Please use the sale documents for typologies and completion. This page sets out what is on file and how to plan your Thomson Reserve renovation.",
+  "sections": [
+    {
+      "heading": "Planning your Thomson Reserve interior",
+      "text": "In a large Thomson-belt condominium, unit types will vary, and neighbours will be fitting out on different calendars. What does not vary is the work that usually makes a new home liveable: an entry cabinet, a living-room joinery wall, full-height wardrobes, and a fitted kitchen with a tall pantry. If you have a study or a flexible common room, a built-in desk and wardrobe run is cleaner than a loose table. Maison designs those pieces as custom carpentry, not as flat-pack furniture, and we will not publish a typical layout for this estate because no official floor plan is on file. Send your approved plan and we will design to that drawing.\n\nAMO Residence is already live on this site in District 20, and Lentor Gardens Residences sits just to the north in District 26. Those are nearby links for readers, not a shared typologies list or a shared management handbook. We will not invent walking times to Thomson, to Ang Mo Kio, or to any MRT station. Check your own stack, facing and the estate rules before you plan blinds, a balcony cabinet or a window bench, especially if your living room is long and open.\n\nWhen a key date is in writing, leave time for defects inspection, measurement and renovation approval before fabrication. In a large development, contractor access and lift bookings can be busy; read the rules early. A moderate carpentry scope is often planned at about six to ten weeks on site after approvals, as an editorial allowance only. WhatsApp Maison with your unit type and plan. We are not affiliated with the developer."
+    }
+  ],
+  "faq": [
+    {
+      "q": "Is the completion or launch date for Thomson Reserve confirmed?",
+      "a": "Not in our project file. This project is not officially confirmed, so unit counts, tenure and dates from third-party listings have been left blank. Use the developer’s documents for your own dates."
+    },
+    {
+      "q": "Do you have the Thomson Reserve floor plan?",
+      "a": "No official floor-plan or site image is on file for this page, so none is published here. Please send your approved unit plan."
+    },
+    {
+      "q": "Can I renovate right after keys?",
+      "a": "After handover, inspect defects and obtain the management corporation’s renovation approval first. A moderate carpentry scope is often planned at about six to ten weeks on site after access and approvals; that is an editorial allowance, not a guarantee."
+    },
+    {
+      "q": "What should I send Maison?",
+      "a": "Your approved floor plan, unit type if you have it, and a key date if one is already in writing. WhatsApp us at https://wa.me/6593391185."
+    }
+  ],
+  "cta_text": "WhatsApp Maison with your unit type, approved floor plan and key date (if you have one).",
+  "sources": [
+    {
+      "label": "EdgeProp: new launches (third-party, not used as official confirmation)",
+      "url": "https://www.edgeprop.sg/new-launches",
+      "nofollow": true
+    }
+  ],
+  "nearby_hints": [
+    "amo-residence",
+    "lentor-gardens-residences",
+    "the-orie"
+  ],
+  "reviewed": "Facts checked against the sources on file, 11 November 2026.",
+  "date_published": "2026-11-11",
+  "date_modified": "2026-11-11"
+}

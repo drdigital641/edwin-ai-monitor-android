@@ -1,0 +1,74 @@
+{
+  "name": "Watten House",
+  "slug": "watten-house",
+  "type": "Condo",
+  "label": "Private condominium",
+  "area": "Shelford",
+  "district": "D11",
+  "region": "Central",
+  "developer": "",
+  "tenure": "",
+  "top_label": "Launch / TOP / key date",
+  "top": "",
+  "unit_mix": "",
+  "official_site": "",
+  "facts": [
+    {
+      "label": "Address (as listed)",
+      "value": "36–50 Shelford Road"
+    }
+  ],
+  "facts_note": "This project is not marked officially confirmed in our project file. Unit counts, tenure and dates from third-party listings have been left blank until they can be cited from the developer, HDB or URA.",
+  "title": "Watten House Renovation & Interior Design | Shelford / D11 Condo — Maison",
+  "description": "Interior design and built-in carpentry for Watten House, a condominium in District 11, around Novena, Dunearn and Shelford. WhatsApp Maison with your plan.",
+  "keywords": [
+    "Watten House renovation",
+    "Watten House interior design",
+    "Watten House floor plan",
+    "Shelford Road condo renovation",
+    "Watten House built-in carpentry",
+    "District 11 condo interior design"
+  ],
+  "intro": "Watten House is a condominium in District 11, with a listed address at 36–50 Shelford Road, in the Watten and Shelford residential enclave. This project is not officially confirmed in our project file, so unit counts, tenure and the expected 2027 TOP drawn from a third-party editorial list are left out of the facts below. If a listing describes the tenure or a completion year, treat it as unverified until the developer’s own documents say so. Your sale-and-purchase documents remain the source of truth. This page sets out what is on file and how to plan your Watten House renovation.",
+  "sections": [
+    {
+      "heading": "Planning your Watten House interior",
+      "text": "Shelford Road is a quiet, low-rise corridor rather than a high-street launch. Owners who buy here usually want the interior to feel considered and residential, not like a hotel suite dropped into a new tower. That is a good brief for built-in carpentry: a living room with a proper joinery wall and, where the plan allows, a window seat; a kitchen of fitted cabinets rather than loose units; and bedrooms with full-height wardrobes and a headboard wall instead of a freestanding bed against a bare plaster wall. Maison will design those elements to the approved plan, in materials that can take a closer, more luxurious photograph — stone, timber veneer, fluted panels — as well as a wide room view. We do not specify IKEA-style flat-pack furniture as the backbone of the home.\n\nNo official floor plan is on file, so typologies and room sizes are not listed. We will also not invent a unit count or describe a “typical Watten House layout”. When you send the approved drawings we can talk about circulation, the dining position, and whether a common bedroom should be a guest room, a study or a child’s room with a built-in desk.\n\nIf you are working towards a 2027 handover, use the time to freeze the design before keys, then follow the usual order: defects, measurement, management approval, fabrication. A moderate carpentry scope is often planned at six to ten weeks on site after access and approvals, as an editorial figure only. Nearby, Dunearn House and The Serra Residences sit in the same district, and Orchard is a short hop south; those are location notes, not a claim about facilities or travel time from your stack. WhatsApp Maison with your plan when you have it."
+    }
+  ],
+  "faq": [
+    {
+      "q": "Is the completion or launch date for Watten House confirmed?",
+      "a": "Not in our project file. This project is not officially confirmed, so unit counts, tenure and dates from third-party listings have been left blank. Use the developer’s documents for your own dates."
+    },
+    {
+      "q": "Do you have the Watten House floor plan?",
+      "a": "No official floor-plan or site image is on file for this page, so none is published here. Please send your approved unit plan."
+    },
+    {
+      "q": "Can I renovate right after keys?",
+      "a": "After handover, inspect defects and obtain the management corporation’s renovation approval first. A moderate carpentry scope is often planned at about six to ten weeks on site after access and approvals; that is an editorial allowance, not a guarantee."
+    },
+    {
+      "q": "What should I send Maison?",
+      "a": "Your approved floor plan, unit type if you have it, and a key date if one is already in writing. WhatsApp us at https://wa.me/6593391185."
+    }
+  ],
+  "cta_text": "WhatsApp Maison with your unit type, approved floor plan and key date (if you have one).",
+  "sources": [
+    {
+      "label": "Stacked Homes: 7 close to top new launch condos in 2026 (third-party, not used as official confirmation)",
+      "url": "https://stackedhomes.com/7-close-to-top-new-launch-condos-in-2026/",
+      "nofollow": true
+    }
+  ],
+  "nearby_hints": [
+    "dunearn-house",
+    "the-serra-residences",
+    "8-bt",
+    "orchard-sophia"
+  ],
+  "reviewed": "Facts checked against the sources on file, 11 November 2026.",
+  "date_published": "2026-11-11",
+  "date_modified": "2026-11-11"
+}

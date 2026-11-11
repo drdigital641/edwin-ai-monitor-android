@@ -1,0 +1,69 @@
+{
+  "name": "Duet @ Emily",
+  "slug": "duet-at-emily",
+  "type": "Condo",
+  "label": "Private condominium",
+  "area": "District 9",
+  "district": "D9",
+  "region": "Central",
+  "developer": "",
+  "tenure": "",
+  "top_label": "Launch / TOP / key date",
+  "top": "",
+  "unit_mix": "",
+  "official_site": "",
+  "facts": [],
+  "facts_note": "This project is not marked officially confirmed in our project file. Unit counts, tenure and dates from third-party listings have been left blank until they can be cited from the developer, HDB or URA.",
+  "title": "Duet @ Emily Renovation & Interior Design | District 9 Condo — Maison",
+  "description": "Interior design and built-in carpentry for Duet @ Emily, a condominium in District 9, around Orchard, River Valley and Leonie Hill.",
+  "keywords": [
+    "Duet @ Emily renovation",
+    "Duet at Emily interior design",
+    "Duet @ Emily floor plan",
+    "District 9 condo renovation",
+    "Duet @ Emily built-in carpentry",
+    "Orchard boutique condo interior design"
+  ],
+  "intro": "Duet @ Emily is a condominium in District 9, in the Orchard and River Valley catchment. Our project file records a launch in July 2026 from a third-party new-launch list. This entry is not officially confirmed, so unit counts, tenure and that launch month are left out of the facts below, and no TOP or key date is confirmed. Third-party lists sometimes describe this as a very small development; we are not repeating a unit count until it can be cited from the developer or URA. Your sale documents are the source of truth. This page sets out what is on file and how to plan your Duet @ Emily renovation.",
+  "sections": [
+    {
+      "heading": "Planning your Duet @ Emily interior",
+      "text": "In a boutique District 9 building, every centimetre of the plan tends to matter. There is less room to hide a messy entry, a loose wardrobe or a kitchen that looks temporary, and the finish is often judged at close range. That is a natural brief for Maison. We design built-in carpentry — an entry cabinet, a living-room joinery wall, a fitted kitchen, and full-height wardrobes, including a headboard wall if the bedroom plan allows it — and we photograph the work the way a professional interior is seen: tight junctions, consistent grain, and closer shots of materials, not only a wide show-flat angle. We do not use IKEA-style flat-pack furniture as the backbone of the home.\n\nNo official floor plan is on file, so typologies, room sizes and a sample layout are not published here, and we will not invent a typical Duet @ Emily plan. River Modern, One Leonie Residences, Orchard Sophia and CanningHill Piers are other Maison pages in or next to this district. Use them as nearby links. Do not assume they share a layout, a tenure or a management handbook with this building. City or river views should be checked from your own stack and floor; we will not promise an outlook.\n\nOnce keys are in sight, inspect defects, measure, and obtain the management corporation’s approval before fabrication. In a small building, access, working hours and protection of common areas can be stricter, so read the rules early. A moderate carpentry scope is often planned at six to ten weeks on site after approvals; that is an editorial allowance, not a guarantee. WhatsApp Maison with your approved plan when you have it."
+    }
+  ],
+  "faq": [
+    {
+      "q": "Is the completion or launch date for Duet @ Emily confirmed?",
+      "a": "Not in our project file. This project is not officially confirmed, so unit counts, tenure and dates from third-party listings have been left blank. Use the developer’s documents for your own dates."
+    },
+    {
+      "q": "Do you have the Duet @ Emily floor plan?",
+      "a": "No official floor-plan or site image is on file for this page, so none is published here. Please send your approved unit plan."
+    },
+    {
+      "q": "Can I renovate right after keys?",
+      "a": "After handover, inspect defects and obtain the management corporation’s renovation approval first. A moderate carpentry scope is often planned at about six to ten weeks on site after access and approvals; that is an editorial allowance, not a guarantee."
+    },
+    {
+      "q": "What should I send Maison?",
+      "a": "Your approved floor plan, unit type if you have it, and a key date if one is already in writing. WhatsApp us at https://wa.me/6593391185."
+    }
+  ],
+  "cta_text": "WhatsApp Maison with your unit type, approved floor plan and key date (if you have one).",
+  "sources": [
+    {
+      "label": "EdgeProp: new launches (third-party, not used as official confirmation)",
+      "url": "https://www.edgeprop.sg/new-launches",
+      "nofollow": true
+    }
+  ],
+  "nearby_hints": [
+    "river-modern",
+    "one-leonie-residences",
+    "orchard-sophia",
+    "canninghill-piers"
+  ],
+  "reviewed": "Facts checked against the sources on file, 11 November 2026.",
+  "date_published": "2026-11-11",
+  "date_modified": "2026-11-11"
+}

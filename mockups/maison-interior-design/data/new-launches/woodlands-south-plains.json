@@ -1,0 +1,69 @@
+{
+  "name": "Woodlands South Plains",
+  "slug": "woodlands-south-plains",
+  "type": "HDB",
+  "label": "HDB flat",
+  "area": "Woodlands",
+  "region": "North",
+  "developer": "HDB (listed in our project file, not officially confirmed)",
+  "tenure": "",
+  "top_label": "Launch / TOP / key date",
+  "top": "",
+  "unit_mix": "",
+  "official_site": "",
+  "facts": [],
+  "facts_note": "This project is not marked officially confirmed in our project file. Unit counts, tenure and dates from third-party or unverified sources have been left blank until they can be cited from the developer, HDB, URA or another official source.",
+  "title": "Woodlands South Plains Renovation & Interior Design | Woodlands HDB — Maison",
+  "description": "Interior design and built-in carpentry for Woodlands South Plains, an HDB project in Woodlands. Unconfirmed tracker figures are left blank.",
+  "keywords": [
+    "Woodlands South Plains renovation",
+    "Woodlands South Plains interior design",
+    "Woodlands South Plains floor plan",
+    "Woodlands HDB renovation",
+    "Woodlands South Plains built-in carpentry",
+    "Woodlands interior design"
+  ],
+  "intro": "Woodlands South Plains is an HDB project in Woodlands. As with Woodgrove Ascent, a third-party completion estimate is on file and is not officially confirmed. HDB has not verified a project-wide completion or key month, and tracker sources have disagreed, so unit counts and any estimated month are left out of the facts below. Use your HDB key letter, if you have one, as the source of truth. The word “Plains” is not treated as a confirmed outlook or as a guaranteed open view. This page sets out what is on file and how to plan your Woodlands South Plains renovation.",
+  "sections": [
+    {
+      "heading": "Planning your Woodlands South Plains interior",
+      "text": "A southern Woodlands estate still needs the same first-fit-out discipline as the rest of the town: do not copy a neighbour’s layout, and do not start carpentry from a tracker date. When your approved plan is in hand, the work that typically makes the flat liveable is a fitted kitchen, full-height wardrobes, an entry shoe cabinet, and a living-room storage wall, with a built-in desk if a common bedroom will be a study. Maison specifies this as custom carpentry, not as IKEA-style furniture. No official floor plan is on file, so typologies are not listed.\n\nWoodgrove Ascent, Woodgrove Edge, UrbanVille @ Woodlands and Woodgrove Acres are the other Woodlands pages in this batch and should not be used as typologies or date references. Norwood Grand, already live, and Wynwood Grand are nearby private and EC links. We will not invent walking times to Woodlands South or to any MRT station. Check your block, facing and the HDB renovation rules before you plan blinds, a window bench or any hacking.\n\nAfter keys, inspect defects and obtain the HDB renovation permit before fabrication. A moderate carpentry scope is often planned at about six to ten weeks on site after approvals — an editorial allowance, not a guarantee. WhatsApp Maison with your plan and key letter if you have them. We are not affiliated with HDB."
+    }
+  ],
+  "faq": [
+    {
+      "q": "Is the completion or key date for Woodlands South Plains confirmed?",
+      "a": "Not in our project file. This project is not officially confirmed, so unit counts and tracker dates have been left blank. If you have an HDB key-appointment letter, use that."
+    },
+    {
+      "q": "Do you have the Woodlands South Plains floor plan?",
+      "a": "No official floor-plan or site image is on file for this page, so none is published here. Please send your approved HDB unit plan."
+    },
+    {
+      "q": "Do I need an HDB renovation permit?",
+      "a": "Yes, for the usual HDB renovation works. After keys, inspect defects, then apply for the permit with a registered contractor before carpentry is fabricated."
+    },
+    {
+      "q": "What should I send Maison?",
+      "a": "Your approved floor plan, unit type if you have it, and a key date if one is already in writing. WhatsApp us at https://wa.me/6593391185."
+    }
+  ],
+  "cta_text": "WhatsApp Maison with your unit type, approved floor plan and key date (if you have one).",
+  "sources": [
+    {
+      "label": "hdbprices.com: 2027 (third-party, not used as official confirmation)",
+      "url": "https://hdbprices.com/bto/completion/2027",
+      "nofollow": true
+    }
+  ],
+  "nearby_hints": [
+    "woodgrove-ascent",
+    "woodgrove-edge",
+    "urbanville-at-woodlands",
+    "norwood-grand",
+    "wynwood-grand"
+  ],
+  "reviewed": "Facts checked against the sources on file, 11 November 2026.",
+  "date_published": "2026-11-11",
+  "date_modified": "2026-11-11"
+}

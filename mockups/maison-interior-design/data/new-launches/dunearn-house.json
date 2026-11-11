@@ -1,0 +1,69 @@
+{
+  "name": "Dunearn House",
+  "slug": "dunearn-house",
+  "type": "Condo",
+  "label": "Private condominium",
+  "area": "District 11",
+  "district": "D11",
+  "region": "Central",
+  "developer": "",
+  "tenure": "",
+  "top_label": "Launch / TOP / key date",
+  "top": "",
+  "unit_mix": "",
+  "official_site": "",
+  "facts": [],
+  "facts_note": "This project is not marked officially confirmed in our project file. Unit counts, tenure and dates from third-party listings have been left blank until they can be cited from the developer, HDB or URA.",
+  "title": "Dunearn House Renovation & Interior Design | District 11 Condo — Maison",
+  "description": "Interior design and built-in carpentry for Dunearn House, a condominium in District 11, around Novena, Dunearn and Shelford.",
+  "keywords": [
+    "Dunearn House renovation",
+    "Dunearn House interior design",
+    "Dunearn House floor plan",
+    "District 11 condo renovation",
+    "Dunearn House built-in carpentry",
+    "Dunearn Road condo interior design"
+  ],
+  "intro": "Dunearn House is a condominium in District 11, in the Novena, Dunearn and Shelford belt. Our project file records a launch in July 2026 from a third-party new-launch list. Because this entry is not officially confirmed, unit counts, tenure and that launch month are left out of the facts below, and no TOP or key date is confirmed. Please use the developer’s documents for completion, tenure and typologies. This page sets out what is on file and how to plan your Dunearn House renovation.",
+  "sections": [
+    {
+      "heading": "Planning your Dunearn House interior",
+      "text": "Dunearn Road is a long, established residential and institutional corridor rather than a brand-new waterfront. Owners here often already know the neighbourhood and want the new apartment to feel settled: a proper place for shoes and bags, a living room with a built-in storage wall, bedrooms with full-height wardrobes, and a kitchen that can take family cooking. A common bedroom is frequently asked to work as a study; a built-in desk and wardrobe along one wall is the usual, quieter answer. Maison specifies this as custom carpentry, not as loose, flat-pack furniture, and we will draw it from your approved plan, not from a generic District 11 layout.\n\nNo official floor plan is on file, so typologies and room sizes are not listed. Watten House on Shelford Road and The Serra Residences, also in District 11, are nearby pages on this site; they are not a substitute for your drawings. We will not invent a walking time to Novena, to Bukit Timah, or to any campus or hospital along the corridor. Check facing, traffic noise and the management rules on window and balcony treatments before you plan a bench, a desk under a window, or blinds.\n\nWhen you have a key date in writing, leave time for defects inspection, measurement and renovation approval before carpentry is fabricated. A moderate, non-structural carpentry scope is often planned at about six to ten weeks on site after access and approvals — an editorial figure, not a promise. WhatsApp Maison with your plan and unit type. We are an independent designer and are not affiliated with the developer."
+    }
+  ],
+  "faq": [
+    {
+      "q": "Is the completion or launch date for Dunearn House confirmed?",
+      "a": "Not in our project file. This project is not officially confirmed, so unit counts, tenure and dates from third-party listings have been left blank. Use the developer’s documents for your own dates."
+    },
+    {
+      "q": "Do you have the Dunearn House floor plan?",
+      "a": "No official floor-plan or site image is on file for this page, so none is published here. Please send your approved unit plan."
+    },
+    {
+      "q": "Can I renovate right after keys?",
+      "a": "After handover, inspect defects and obtain the management corporation’s renovation approval first. A moderate carpentry scope is often planned at about six to ten weeks on site after access and approvals; that is an editorial allowance, not a guarantee."
+    },
+    {
+      "q": "What should I send Maison?",
+      "a": "Your approved floor plan, unit type if you have it, and a key date if one is already in writing. WhatsApp us at https://wa.me/6593391185."
+    }
+  ],
+  "cta_text": "WhatsApp Maison with your unit type, approved floor plan and key date (if you have one).",
+  "sources": [
+    {
+      "label": "EdgeProp: new launches (third-party, not used as official confirmation)",
+      "url": "https://www.edgeprop.sg/new-launches",
+      "nofollow": true
+    }
+  ],
+  "nearby_hints": [
+    "watten-house",
+    "the-serra-residences",
+    "orchard-sophia",
+    "8-bt"
+  ],
+  "reviewed": "Facts checked against the sources on file, 11 November 2026.",
+  "date_published": "2026-11-11",
+  "date_modified": "2026-11-11"
+}

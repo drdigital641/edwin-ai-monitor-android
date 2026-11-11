@@ -1,0 +1,192 @@
+{
+  "name": "Towner Residences",
+  "slug": "towner-residences",
+  "type": "BTO",
+  "label": "HDB BTO",
+  "area": "Kallang/Whampoa",
+  "region": "Central",
+  "developer": "HDB",
+  "tenure": "Not confirmed",
+  "top_label": "Completion",
+  "top": "No project-wide key date confirmed; confirm your own HDB handover.",
+  "unit_mix": "3-room and 4-room",
+  "official_site": "https://assets.hdb.gov.sg/community/towner_residences/index.html",
+  "keywords": [
+    "Towner Residences renovation",
+    "Towner Residences interior design",
+    "Towner Residences floor plan",
+    "Kallang/Whampoa BTO interior design"
+  ],
+  "intro": "Explore four interior design themes for your Towner Residences BTO, then WhatsApp Maison to discuss your own layout. Each look is a starting point for your Towner Residences renovation.",
+  "whatsapp_text": "Hi Maison, I’m planning my Towner Residences BTO renovation. Can we discuss my layout?",
+  "hero_whatsapp_text": "Hi Maison, I’m planning my Towner Residences BTO renovation. I like the Warm Japandi living room concept. Can we discuss my layout?",
+  "renders_heading": "Four Towner Residences BTO interior design themes",
+  "renders_intro": "Four rooms, four different looks. Each is a starting point we adapt to your actual unit.",
+  "renders": [
+    {
+      "image": "/images/new-launches/towner-v4/towner-v4-living-warm-japandi-1600.webp",
+      "image_small": "/images/new-launches/towner-v4/towner-v4-living-warm-japandi-900.webp",
+      "width": 1600,
+      "height": 900,
+      "alt": "Warm Japandi living room concept with oak storage, cream sofa and framed HDB-style windows",
+      "style": "Warm Japandi",
+      "room": "Living room",
+      "title": "Towner Residences living room interior design — Warm Japandi",
+      "text": "Warm oak, tactile cream fabrics and a sculptural stone-look table create a calm, welcoming living space. An inviting starting point for your Towner BTO renovation.",
+      "whatsapp_text": "Hi Maison, I’m interested in the Warm Japandi living room concept for my Towner Residences BTO. Can we discuss my layout?"
+    },
+    {
+      "image": "/images/new-launches/towner-v4/towner-v4-kitchen-modern-luxe-1600.webp",
+      "image_small": "/images/new-launches/towner-v4/towner-v4-kitchen-modern-luxe-900.webp",
+      "width": 1600,
+      "height": 900,
+      "alt": "Modern Luxe compact kitchen concept with graphite cabinets, pale stone counters and warm task lighting",
+      "style": "Modern Luxe",
+      "room": "Kitchen",
+      "title": "3-room and 4-room BTO kitchen design idea — Modern Luxe",
+      "text": "Graphite cabinetry, pale stone surfaces and quiet task lighting bring a polished look to a compact kitchen. Adapt the finishes and storage to your actual unit.",
+      "whatsapp_text": "Hi Maison, I’m interested in the Modern Luxe kitchen concept for my Towner Residences BTO. Can we discuss my layout?"
+    },
+    {
+      "image": "/images/new-launches/towner-v4/towner-v4-main-bedroom-hotel-suite-1600.webp",
+      "image_small": "/images/new-launches/towner-v4/towner-v4-main-bedroom-hotel-suite-900.webp",
+      "width": 1600,
+      "height": 900,
+      "alt": "Hotel Suite main bedroom concept with walnut headboard, fitted wardrobes and soft neutral bedding",
+      "style": "Hotel Suite",
+      "room": "Main bedroom",
+      "title": "Towner Residences main bedroom design — Hotel Suite",
+      "text": "Walnut tones, soft upholstery and layered lighting give the main bedroom a boutique-hotel mood. Fitted storage keeps the room grounded in everyday apartment living.",
+      "whatsapp_text": "Hi Maison, I’m interested in the Hotel Suite main bedroom concept for my Towner Residences BTO. Can we discuss my layout?"
+    },
+    {
+      "image": "/images/new-launches/towner-v4/towner-v4-common-bedroom-soft-scandi-1600.webp",
+      "image_small": "/images/new-launches/towner-v4/towner-v4-common-bedroom-soft-scandi-900.webp",
+      "width": 1600,
+      "height": 900,
+      "alt": "Soft Scandi common bedroom concept with sage wall, single bed, oak desk and fitted wardrobe",
+      "style": "Soft Scandi",
+      "room": "Common bedroom",
+      "title": "Towner BTO common bedroom renovation idea — Soft Scandi",
+      "text": "Sage, pale oak and integrated storage make a compact bedroom feel composed and useful. A single bed and window-side desk balance rest with a practical workspace.",
+      "whatsapp_text": "Hi Maison, I’m interested in the Soft Scandi common bedroom concept for my Towner Residences BTO. Can we discuss my layout?"
+    }
+  ],
+  "plans_heading": "Towner Residences 3-room and 4-room floor plans",
+  "plans_intro": "Original pages from the HDB sales brochure, with HDB’s suggested furniture layout. Not construction drawings; owners confirm their actual unit.",
+  "floor_plans": [
+    {
+      "image": "/images/new-launches/towner-v4/towner-hdb-brochure-3room.webp",
+      "width": 1090,
+      "height": 1460,
+      "alt": "HDB brochure floor plan of a Towner Residences 3-room flat with suggested furniture layout",
+      "title": "3-room floor plan",
+      "caption": "3-room, brochure printed p.10. Approx. 68 sqm including the air-con ledge (65 sqm internal).",
+      "credit": "Floor plan: HDB brochure"
+    },
+    {
+      "image": "/images/new-launches/towner-v4/towner-hdb-brochure-4room-arrangements.webp",
+      "width": 1600,
+      "height": 2262,
+      "alt": "HDB brochure page showing both Towner Residences 4-room floor plan arrangements with suggested furniture layout",
+      "title": "4-room (both arrangements) floor plan",
+      "caption": "4-room (both arrangements), brochure printed p.12. Approx. 93 sqm including the air-con ledge (90 sqm internal). The brochure shows two arrangements.",
+      "credit": "Floor plan: HDB brochure"
+    }
+  ],
+  "plans_note": "Source: HDB-authored Towner Residences sales brochure, [archive copy hosted by BTO HQ](https://btohq.sgp1.cdn.digitaloceanspaces.com/bto/aug-2021-bto/towner-residences.pdf). For context, see HDB’s [Towner Residences virtual tour](https://assets.hdb.gov.sg/community/towner_residences/index.html).",
+  "unit_tips_heading": "Layout at a glance",
+  "unit_tips": [
+    {
+      "unit": "3-room",
+      "size": "65 sqm internal (approx. 68 sqm incl. ledge)",
+      "bedrooms": "2 bedrooms",
+      "tip": "Keep the dry kitchen and kitchen/utility clear to work in; adapt storage to your actual unit."
+    },
+    {
+      "unit": "4-room (two brochure arrangements)",
+      "size": "90 sqm internal (approx. 93 sqm incl. ledge)",
+      "bedrooms": "3 bedrooms",
+      "tip": "A common bedroom can double as a study; never use the household shelter as one."
+    }
+  ],
+  "sections": [
+    {
+      "heading": "About these concepts and plans",
+      "text": "The four theme pictures on this page are AI-generated style concepts by Maison. They are not photos of an actual unit, not completed Maison projects and not surveyed layouts; layouts, fittings and views are illustrative. The floor plans are reproduced from the HDB-authored Towner Residences sales brochure ([archive copy](https://btohq.sgp1.cdn.digitaloceanspaces.com/bto/aug-2021-bto/towner-residences.pdf), printed p.10 and p.12). They are not construction drawings; confirm your own approved plan, stack and any mirroring before adapting an idea."
+    }
+  ],
+  "steps_heading": "From keys to move-in",
+  "steps": [
+    {
+      "title": "Keys",
+      "text": "Collect on your own HDB date. No project-wide key date is confirmed."
+    },
+    {
+      "title": "Defects",
+      "text": "Inspect and report defects, then coordinate rectification."
+    },
+    {
+      "title": "Survey",
+      "text": "Measure the home against your approved plan and OCS selections."
+    },
+    {
+      "title": "Approvals",
+      "text": "Confirm HDB renovation and permitted-work requirements."
+    },
+    {
+      "title": "Build",
+      "text": "Procure and build. Any 8–12-week example is a planning allowance, not a guarantee."
+    }
+  ],
+  "faq": [
+    {
+      "q": "Which floor areas are correct?",
+      "a": "HDB’s brochure states 3-room: approx. 68 sqm including the air-con ledge (65 sqm internal), and 4-room: approx. 93 sqm including the air-con ledge (90 sqm internal). The ledge is not usable living space. Printed p.12 shows two 4-room arrangements; confirm your own stack and any mirroring."
+    },
+    {
+      "q": "How does the first 4-room arrangement work?",
+      "a": "In the first arrangement on p.12, three bedrooms line the plan-top edge. Living/dining sits plan-left, the shelter beside the lower-left entrance, kitchen at the bottom and service yard to its right; bathrooms are beside this service zone. These are diagram-relative directions, not compass facings."
+    },
+    {
+      "q": "Which finishes are supplied?",
+      "a": "The specifications name aluminium-framed tinted windows, glazed porcelain kitchen floor/wall tiles and an aluminium-framed glazed service-yard door. Polished porcelain living floors and vinyl bedroom floors are optional OCS items, not universal supply. Render colours, cabinetry, counters, furniture and light fittings are design proposals."
+    },
+    {
+      "q": "Are the pictures exact reconstructions?",
+      "a": "No. They are AI-generated style concepts, not photos of a Towner Residences unit and not completed Maison projects. Room shapes, fittings, furniture and window views are illustrative. Individual room dimensions were not published, so check your approved owner plan and a measured survey before construction."
+    },
+    {
+      "q": "Are keys officially confirmed for a particular month?",
+      "a": "No project-wide current key date was confirmed. Historical third-party estimates are not an appointment. Confirm your own HDB handover and defects process."
+    },
+    {
+      "q": "How should renovation be sequenced?",
+      "a": "Inspect and report defects, coordinate rectification, survey the home, confirm the HDB renovation and permitted-work requirements, then procure and build. Any 8–12-week example is a conditional planning allowance, not a Maison guarantee. Never alter the household shelter or structural elements based on a concept image."
+    }
+  ],
+  "sources": [
+    {
+      "label": "https://btohq.sgp1.cdn.digitaloceanspaces.com/bto/aug-2021-bto/towner-residences.pdf",
+      "url": "https://btohq.sgp1.cdn.digitaloceanspaces.com/bto/aug-2021-bto/towner-residences.pdf"
+    },
+    {
+      "label": "https://assets.hdb.gov.sg/community/towner_residences/index.html",
+      "url": "https://assets.hdb.gov.sg/community/towner_residences/index.html"
+    },
+    {
+      "label": "https://maisoninteriordesign.sg/portfolio/",
+      "url": "https://maisoninteriordesign.sg/portfolio/"
+    },
+    {
+      "label": "https://www.hdb.gov.sg/residential/living-in-an-hdb-flat/renovation",
+      "url": "https://www.hdb.gov.sg/residential/living-in-an-hdb-flat/renovation"
+    }
+  ],
+  "reviewed": "Reviewed 7 November 2026, SGT (UTC+8).",
+  "nearby_hints": [
+    "kent-heights"
+  ],
+  "date_published": "2026-11-07",
+  "date_modified": "2026-11-11"
+}

@@ -1,0 +1,68 @@
+{
+  "name": "Chai Chee Green",
+  "slug": "chai-chee-green",
+  "type": "HDB",
+  "label": "HDB flat",
+  "area": "Bedok",
+  "region": "East",
+  "developer": "HDB (listed in our project file, not officially confirmed)",
+  "tenure": "",
+  "top_label": "Launch / TOP / key date",
+  "top": "",
+  "unit_mix": "",
+  "official_site": "",
+  "facts": [],
+  "facts_note": "This project is not marked officially confirmed in our project file. Unit counts, tenure and completion or key dates from third-party trackers have been left blank until they can be cited from HDB.",
+  "title": "Chai Chee Green Renovation & Interior Design | Bedok HDB — Maison",
+  "description": "Interior design and built-in carpentry for Chai Chee Green, an HDB project in Bedok. Unconfirmed tracker figures are left blank.",
+  "keywords": [
+    "Chai Chee Green renovation",
+    "Chai Chee Green interior design",
+    "Chai Chee Green floor plan",
+    "Bedok HDB renovation",
+    "Chai Chee Green built-in carpentry",
+    "Bedok HDB interior design"
+  ],
+  "intro": "Chai Chee Green is an HDB project in Bedok, in the Chai Chee part of the town. A third-party tracker estimate is on file, but this entry is not officially confirmed. HDB has not verified a project-wide completion or key month, and tracker sources have disagreed, so unit counts and any estimated month are left out of the facts below. If you already have a key appointment, that letter — not a website table — is the date that matters. This page sets out what is on file and how to plan your Chai Chee Green renovation.",
+  "sections": [
+    {
+      "heading": "Planning your Chai Chee Green interior",
+      "text": "Chai Chee is a settled residential pocket of Bedok rather than a brand-new waterfront. Owners here often want a calm, practical first fit-out: storage for shoes and bags, a kitchen that can take family cooking, and bedrooms that are fully fitted rather than left with a loose rack. Maison will design that work as built-in carpentry — fitted kitchen cabinets, full-height wardrobes, an entry cabinet, and a living-room joinery wall — and we can present it in a wide room view or in closer studies of a counter, a wardrobe or a headboard wall. We do not use flat-pack furniture as the backbone of the home, and we will not draw a layout until your approved plan is in hand.\n\nNo official floor plan is on file, so typologies and room sizes are not listed. Bedok North Springs is another near-completion HDB page in the same town; Bayshore Oasis and Bayshore Sails are much earlier BTO launches in Bedok and should not be used as a completion guide for Chai Chee Green. We will not invent walking times to Chai Chee, to Bedok town, or to any MRT station.\n\nWhen keys are in writing, inspect defects first, then apply for the HDB renovation permit before any carpentry is fabricated. A moderate carpentry scope is often planned at six to ten weeks on site after approvals, as an editorial planning figure only. WhatsApp Maison with your approved plan and key letter if you have them. We are an independent designer and are not affiliated with HDB."
+    }
+  ],
+  "faq": [
+    {
+      "q": "Is the completion or key date for Chai Chee Green confirmed?",
+      "a": "Not in our project file. This project is not officially confirmed, so unit counts and tracker dates have been left blank. If you have an HDB key-appointment letter, use that."
+    },
+    {
+      "q": "Do you have the Chai Chee Green floor plan?",
+      "a": "No official floor-plan or site image is on file for this page, so none is published here. Please send your approved HDB unit plan."
+    },
+    {
+      "q": "Do I need an HDB renovation permit?",
+      "a": "Yes, for the usual HDB renovation works. After keys, inspect defects, then apply for the permit with a registered contractor before carpentry is fabricated."
+    },
+    {
+      "q": "What should I send Maison?",
+      "a": "Your approved floor plan, unit type if you have it, and a key date if one is already in writing. WhatsApp us at https://wa.me/6593391185."
+    }
+  ],
+  "cta_text": "WhatsApp Maison with your unit type, approved floor plan and key date (if you have one).",
+  "sources": [
+    {
+      "label": "hdbprices.com: 2027 (third-party, not used as official confirmation)",
+      "url": "https://hdbprices.com/bto/completion/2027",
+      "nofollow": true
+    }
+  ],
+  "nearby_hints": [
+    "bedok-north-springs",
+    "bayshore-oasis",
+    "bayshore-sails",
+    "vela-bay"
+  ],
+  "reviewed": "Facts checked against the sources on file, 11 November 2026.",
+  "date_published": "2026-11-11",
+  "date_modified": "2026-11-11"
+}

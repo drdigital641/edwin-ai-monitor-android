@@ -544,7 +544,7 @@ def notfound():
 
 def extras():
     urls = [""] + [h for h, _ in NAV] + ["landed-homes/"] + [f'portfolio/{p["slug"]}/' for p in P] + LAUNCH_URLS[1:]
-    sm = '<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n' + "".join(f"  <url><loc>{DOMAIN}/{u}</loc><lastmod>{'2026-11-07' if (u in LAUNCH_URLS or u == '') else '2026-11-03'}</lastmod></url>\n" for u in urls) + "</urlset>\n"
+    sm = '<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n' + "".join(f"  <url><loc>{DOMAIN}/{u}</loc><lastmod>{NL_LASTMOD.get(u) or ('2026-11-07' if (u in LAUNCH_URLS or u == '') else '2026-11-03')}</lastmod></url>\n" for u in urls) + "</urlset>\n"
     write("sitemap.xml", sm)
     write("robots.txt", f"User-agent: *\nAllow: /\n\nSitemap: {DOMAIN}/sitemap.xml\n")
     write("llms.txt", f"""# Maison Interior Design
@@ -567,7 +567,7 @@ Maison works with these Singapore suppliers for materials, flooring, lighting an
 """ + "".join(f'- [{g["short"]}]({DOMAIN}/services/{g["slug"]}/): {g["desc"]}\n' for g in GUIDES) + """
 ## New launches (renovation and fit-out guides; facts from public sources, Maison is not appointed by any developer or HDB)
 - [New launches hub]({DOMAIN}/new-launches/)
-""" + "".join(f'- [{p["name"]}, {p["place"]}]({DOMAIN}/new-launches/{p["slug"]}/): {p["label"]}. {p["date"][1].split(". ")[0]}.\n' for p in LAUNCHES) + """
+""" + "".join(f'- [{_nl_h1(p)}]({DOMAIN}/new-launches/{p["slug"]}/): {p.get("label") or p["type"]}, {p["area"]}. {(p["top"].split(". ")[0].rstrip(".") + ".") if _nl_shown(p["top"]) else "Key dates not confirmed."}\n' for p in sorted(LAUNCHES, key=lambda q: q["name"].lower())) + """
 ## Projects
 """ + "".join(f'- [{p["name"]} {p["place"]}]({DOMAIN}/portfolio/{p["slug"]}/): {p["kind"]}, {p["type"]}.\n' for p in P))
     write("favicon.svg", '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64"><rect width="64" height="64" fill="#1f1c19"/><text x="32" y="44" font-family="Georgia,serif" font-size="36" fill="#c9a979" text-anchor="middle">M</text></svg>')
@@ -582,7 +582,7 @@ def live_guard():
     the Page One credit, hotlinked WordPress images, a noindex or an .htaccess."""
     import re as _r
     bad = []
-    stubs = {"new-launches/lumina-grand/index.html", "new-launches/parc-point-tengah/index.html"}  # redirect stubs
+    stubs = {"new-launches/parc-point-tengah/index.html"}  # redirect stubs
     for root, dirs, files in os.walk(OUT):
         for f in files:
             rel = os.path.relpath(os.path.join(root, f), OUT).replace(os.sep, "/")
@@ -599,7 +599,36 @@ def live_guard():
 
 exec(open(os.path.join(HERE, "launches.py"), encoding="utf-8").read())
 
+USAGE = """python3 build.py                     build the whole site into ./site
+python3 build.py --check DIR         only check a folder of new-launch packs or JSON files (nothing is built)
+python3 build.py --add-batch DIR     convert + check a folder of packs (<slug>/page.md or <slug>.md) and/or JSON files,
+                                     save them as data/new-launches/<slug>.json, then build the whole site"""
+
 if __name__ == "__main__":
+    import sys, tempfile
+    args = sys.argv[1:]
+    if args and (args[0] not in ("--check", "--add-batch") or len(args) != 2):
+        raise SystemExit(USAGE)
+    if args:
+        batch = os.path.abspath(args[1])
+        if not os.path.isdir(batch): raise SystemExit(f"Not a folder: {batch}")
+        same = os.path.realpath(batch) == os.path.realpath(NL_DIR)
+        work = batch
+        if not same:  # packs are converted to JSON first; JSON files are taken as they are
+            work = tempfile.mkdtemp(prefix="maison-batch-")
+            ok, bad = packs_to_json(batch, work)
+            for f in glob.glob(os.path.join(batch, "*.json")): shutil.copy(f, work)
+            if bad: raise SystemExit("These packs could not be converted (nothing was built):\n  " + "\n  ".join(f"{s}: {r}" for s, r in bad))
+            if ok: print(f"converted {len(ok)} packs to JSON")
+        got = nl_load([work])   # stops with every problem listed
+        if not got: raise SystemExit(f"No packs or .json files in {batch}")
+        clash = [] if same else [p["slug"] for p in got if os.path.isfile(os.path.join(NL_DIR, p["slug"] + ".json"))]
+        if args[0] == "--check":
+            print(f"OK: {len(got)} projects pass the check" + (f"; these would replace existing pages: {', '.join(clash)}" if clash else "")); raise SystemExit(0)
+        os.makedirs(NL_DIR, exist_ok=True)
+        if not same:
+            for p in got: shutil.copy(os.path.join(work, p["slug"] + ".json"), os.path.join(NL_DIR, p["slug"] + ".json"))
+        print(f"added {len(got)} project files to data/new-launches/" + (f" (replaced: {', '.join(clash)})" if clash else ""))
     if os.path.isdir(OUT): shutil.rmtree(OUT)
     os.makedirs(OUT)
     home(); portfolio(); services(); landed(); about(); contact(); notfound()

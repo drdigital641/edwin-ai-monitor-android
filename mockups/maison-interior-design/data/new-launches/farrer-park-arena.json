@@ -1,0 +1,70 @@
+{
+  "name": "Farrer Park Arena",
+  "slug": "farrer-park-arena",
+  "type": "HDB",
+  "label": "HDB flat",
+  "area": "Farrer Park",
+  "district": "Kallang/Whampoa",
+  "region": "Central",
+  "developer": "HDB (listed in our project file, not officially confirmed)",
+  "tenure": "",
+  "top_label": "Launch / TOP / key date",
+  "top": "",
+  "unit_mix": "",
+  "official_site": "",
+  "facts": [],
+  "facts_note": "This project is not marked officially confirmed in our project file. Unit counts, tenure and completion or key dates from third-party trackers have been left blank until they can be cited from HDB.",
+  "title": "Farrer Park Arena Renovation & Interior Design | Farrer Park HDB — Maison",
+  "description": "Interior design and built-in carpentry for Farrer Park Arena, an HDB project in Kallang/Whampoa. Unconfirmed tracker figures are left blank.",
+  "keywords": [
+    "Farrer Park Arena renovation",
+    "Farrer Park Arena interior design",
+    "Farrer Park Arena floor plan",
+    "Kallang/Whampoa HDB renovation",
+    "Farrer Park Arena built-in carpentry",
+    "Kallang/Whampoa HDB interior design"
+  ],
+  "intro": "Farrer Park Arena is an HDB project in Kallang/Whampoa, in the Farrer Park area. A third-party completion estimate is on file, but this entry is not officially confirmed. HDB has not verified a project-wide key date, and tracker sources have disagreed on the month, so unit counts and any estimated month are left out of the facts below. The word “Arena” is not treated as a confirmed view or typologies feature. If you have a key-appointment letter, that is the date that matters. This page sets out what is on file and how to plan your Farrer Park Arena renovation.",
+  "sections": [
+    {
+      "heading": "Planning your Farrer Park Arena interior",
+      "text": "Farrer Park is a fine-grain, inner-city neighbourhood, and a new HDB home here usually has to work hard in a compact plan. The carpentry that typically does that job is a fitted kitchen, full-height wardrobes, an entry shoe cabinet, and a living-room storage wall, with a built-in desk if a common bedroom will be a study. Maison specifies built-in carpentry, photographed professionally, not IKEA-style furniture. We have no official floor plan on file and will not invent typologies or a typical Farrer Park Arena layout.\n\nFarrer Park Fields is the other Farrer Park page in this batch and is also unconfirmed for keys; do not copy a date from one to the other. Verandah @ Kallang, Towner Residences and Kent Heights sit in the wider Kallang/Whampoa town, and Dorset Gardens is a nearby District 8 link. We will not invent walking times to Farrer Park MRT or to Little India. Check your block, facing and the HDB renovation rules before you plan blinds, a bench or any hacking, especially if the road is busy.\n\nAfter keys, inspect defects, measure, and obtain the HDB renovation permit before fabrication. A moderate, non-structural carpentry scope is often planned at about six to ten weeks on site after access and approvals — an editorial allowance, not a guarantee. WhatsApp Maison with your plan and key letter if you have them. We are not affiliated with HDB."
+    }
+  ],
+  "faq": [
+    {
+      "q": "Is the completion or key date for Farrer Park Arena confirmed?",
+      "a": "Not in our project file. This project is not officially confirmed, so unit counts and tracker dates have been left blank. If you have an HDB key-appointment letter, use that."
+    },
+    {
+      "q": "Do you have the Farrer Park Arena floor plan?",
+      "a": "No official floor-plan or site image is on file for this page, so none is published here. Please send your approved HDB unit plan."
+    },
+    {
+      "q": "Do I need an HDB renovation permit?",
+      "a": "Yes, for the usual HDB renovation works. After keys, inspect defects, then apply for the permit with a registered contractor before carpentry is fabricated."
+    },
+    {
+      "q": "What should I send Maison?",
+      "a": "Your approved floor plan, unit type if you have it, and a key date if one is already in writing. WhatsApp us at https://wa.me/6593391185."
+    }
+  ],
+  "cta_text": "WhatsApp Maison with your unit type, approved floor plan and key date (if you have one).",
+  "sources": [
+    {
+      "label": "hdbprices.com: 2027 (third-party, not used as official confirmation)",
+      "url": "https://hdbprices.com/bto/completion/2027",
+      "nofollow": true
+    }
+  ],
+  "nearby_hints": [
+    "farrer-park-fields",
+    "verandah-at-kallang",
+    "towner-residences",
+    "kent-heights",
+    "dorset-gardens"
+  ],
+  "reviewed": "Facts checked against the sources on file, 11 November 2026.",
+  "date_published": "2026-11-11",
+  "date_modified": "2026-11-11"
+}

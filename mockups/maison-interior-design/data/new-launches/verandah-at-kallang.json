@@ -1,0 +1,69 @@
+{
+  "name": "Verandah @ Kallang",
+  "slug": "verandah-at-kallang",
+  "type": "HDB",
+  "label": "HDB flat",
+  "area": "Kallang",
+  "district": "Kallang/Whampoa",
+  "region": "Central",
+  "developer": "HDB (listed in our project file, not officially confirmed)",
+  "tenure": "",
+  "top_label": "Launch / TOP / key date",
+  "top": "",
+  "unit_mix": "",
+  "official_site": "",
+  "facts": [],
+  "facts_note": "This project is not marked officially confirmed in our project file. Unit counts, tenure and completion or key dates from third-party trackers have been left blank until they can be cited from HDB.",
+  "title": "Verandah @ Kallang Renovation & Interior Design | Kallang HDB — Maison",
+  "description": "Interior design and built-in carpentry for Verandah @ Kallang, an HDB project in Kallang/Whampoa. Unconfirmed tracker figures are left blank.",
+  "keywords": [
+    "Verandah @ Kallang renovation",
+    "Verandah @ Kallang interior design",
+    "Verandah @ Kallang floor plan",
+    "Kallang/Whampoa HDB renovation",
+    "Verandah @ Kallang built-in carpentry",
+    "Kallang/Whampoa HDB interior design"
+  ],
+  "intro": "Verandah @ Kallang is an HDB project in Kallang/Whampoa. A third-party completion estimate is on file, but this entry is not officially confirmed: HDB has not verified a project-wide key date, and tracker sources have disagreed on the month. Unit counts and any estimated month are left out of the facts below. The word “Verandah” in the name is not treated as a confirmed typologies feature; we will not invent a PES, balcony or verandah layout. If you have an HDB key letter, use that. This page sets out what is on file and how to plan your Verandah @ Kallang renovation.",
+  "sections": [
+    {
+      "heading": "Planning your Verandah @ Kallang interior",
+      "text": "Kallang and Whampoa form a central, mixed, older town on the edge of the city. Owners approaching keys here usually want a first fit-out that is compact and exacting: circulation kept clear, a fitted kitchen, full-height wardrobes, an entry cabinet, and a living-room joinery wall rather than a cluster of loose cabinets. Maison designs that work as built-in carpentry, not as flat-pack furniture, and we can present it in a wide view or in closer material studies. No official floor plan is on file, so typologies and room sizes are not listed.\n\nTowner Residences and Kent Heights are already live on this site in Kallang/Whampoa and are the natural nearby pages. Farrer Park Arena and Farrer Park Fields are other unconfirmed HDB pages in the same town and should not be used as a date guide. Dorset Gardens, packed earlier in District 8, is a nearby private-housing link only. We will not invent walking times to any MRT station, and we will not assign a river or city view to your block.\n\nAfter keys, inspect defects and apply for the HDB renovation permit before fabrication. A moderate carpentry scope is often planned at six to ten weeks on site after approvals, as an editorial figure only. WhatsApp Maison with your approved plan and any key letter you have. We are not affiliated with HDB."
+    }
+  ],
+  "faq": [
+    {
+      "q": "Is the completion or key date for Verandah @ Kallang confirmed?",
+      "a": "Not in our project file. This project is not officially confirmed, so unit counts and tracker dates have been left blank. If you have an HDB key-appointment letter, use that."
+    },
+    {
+      "q": "Do you have the Verandah @ Kallang floor plan?",
+      "a": "No official floor-plan or site image is on file for this page, so none is published here. Please send your approved HDB unit plan."
+    },
+    {
+      "q": "Do I need an HDB renovation permit?",
+      "a": "Yes, for the usual HDB renovation works. After keys, inspect defects, then apply for the permit with a registered contractor before carpentry is fabricated."
+    },
+    {
+      "q": "What should I send Maison?",
+      "a": "Your approved floor plan, unit type if you have it, and a key date if one is already in writing. WhatsApp us at https://wa.me/6593391185."
+    }
+  ],
+  "cta_text": "WhatsApp Maison with your unit type, approved floor plan and key date (if you have one).",
+  "sources": [
+    {
+      "label": "hdbprices.com: 2027 (third-party, not used as official confirmation)",
+      "url": "https://hdbprices.com/bto/completion/2027",
+      "nofollow": true
+    }
+  ],
+  "nearby_hints": [
+    "towner-residences",
+    "kent-heights",
+    "farrer-park-arena",
+    "farrer-park-fields"
+  ],
+  "reviewed": "Facts checked against the sources on file, 11 November 2026.",
+  "date_published": "2026-11-11",
+  "date_modified": "2026-11-11"
+}

@@ -1,0 +1,74 @@
+{
+  "name": "Dorset Gardens",
+  "slug": "dorset-gardens",
+  "type": "Condo",
+  "label": "Private condominium",
+  "area": "Dorset Road",
+  "district": "D8",
+  "region": "Central",
+  "developer": "UOL / Kheng Leong (listed in our project file, not officially confirmed)",
+  "tenure": "",
+  "top_label": "Launch / TOP / key date",
+  "top": "",
+  "unit_mix": "",
+  "official_site": "",
+  "facts": [
+    {
+      "label": "Address (as listed)",
+      "value": "Dorset Road"
+    }
+  ],
+  "facts_note": "This project is not marked officially confirmed in our project file. Unit counts, tenure and dates from third-party listings have been left blank until they can be cited from the developer, HDB or URA.",
+  "title": "Dorset Gardens Renovation & Interior Design | Dorset Road / D8 Condo — Maison",
+  "description": "Interior design and built-in carpentry for Dorset Gardens, a condominium in District 8, around Farrer Park, Little India and Dorset Road.",
+  "keywords": [
+    "Dorset Gardens renovation",
+    "Dorset Gardens interior design",
+    "Dorset Gardens floor plan",
+    "Dorset Road condo renovation",
+    "Dorset Gardens built-in carpentry",
+    "District 8 condo interior design"
+  ],
+  "intro": "Dorset Gardens is a condominium in District 8, with a listed address at Dorset Road, in the Farrer Park and Little India belt. Our project file names UOL and Kheng Leong as the developers and records a planned launch in the first half of 2027 from a third-party report. Because this entry is not officially confirmed, unit counts, tenure and that planned launch window are left out of the facts below, and no TOP or key date is confirmed. A reported unit count appears in the file as an approximation; we are not repeating it until it can be cited from the developer or URA. Your eventual sale documents will be the source of truth. This page sets out what is on file and how to plan your Dorset Gardens renovation.",
+  "sections": [
+    {
+      "heading": "Planning your Dorset Gardens interior",
+      "text": "District 8 is an inner-city, fine-grain neighbourhood: older streets, a mix of housing, and a very different atmosphere from a new-town EC. Owners who buy here often want the new apartment to feel calm once the door is closed — proper storage, a living room that is not a dump of loose cabinets, and bedrooms that are fully fitted — while still being practical about shoes, bags and weekday cooking. That is a joinery brief. Maison would start, once an approved plan exists, with an entry cabinet, a living-room storage wall, a fitted kitchen with a tall pantry, and full-height wardrobes. We specify built-in carpentry, not IKEA-style furniture, and we can work in close, material-led photographs as well as a wide room view.\n\nNo official floor plan is on file, so typologies and room sizes are not listed, and we will not invent a typical Dorset Gardens layout. Orchard Sophia and the District 9 pages sit just to the west; Kent Heights and Towner Residences, already live, sit in the wider Kallang and Farrer Park catchment. Those are nearby links. We will not invent walking times to Farrer Park MRT or to Little India. Check your eventual stack, facing and the management rules before you plan blinds or a window bench, especially if the road is busy.\n\nIt is early for on-site work if the launch itself is still planned. When a plan and a purchase timeline are in your hands, WhatsApp Maison and we can start from those documents. After keys, the sequence is defects, measurement, renovation approval, then fabrication. A moderate carpentry scope is often planned at six to ten weeks on site after approvals, as an editorial figure only. We are not affiliated with the developers."
+    }
+  ],
+  "faq": [
+    {
+      "q": "Is the completion or launch date for Dorset Gardens confirmed?",
+      "a": "Not in our project file. This project is not officially confirmed, so unit counts, tenure and dates from third-party listings have been left blank. Use the developer’s documents for your own dates."
+    },
+    {
+      "q": "Do you have the Dorset Gardens floor plan?",
+      "a": "No official floor-plan or site image is on file for this page, so none is published here. Please send your approved unit plan."
+    },
+    {
+      "q": "Can I renovate right after keys?",
+      "a": "After handover, inspect defects and obtain the management corporation’s renovation approval first. A moderate carpentry scope is often planned at about six to ten weeks on site after access and approvals; that is an editorial allowance, not a guarantee."
+    },
+    {
+      "q": "What should I send Maison?",
+      "a": "Your approved floor plan, unit type if you have it, and a key date if one is already in writing. WhatsApp us at https://wa.me/6593391185."
+    }
+  ],
+  "cta_text": "WhatsApp Maison with your unit type, approved floor plan and key date (if you have one).",
+  "sources": [
+    {
+      "label": "EdgeProp (third-party, not used as official confirmation)",
+      "url": "https://www.edgeprop.sg/property-news/uol-readies-mega-thomson-reserve-condo-launch-4q2026-and-luxury-nomad-hilton-hotel-debut",
+      "nofollow": true
+    }
+  ],
+  "nearby_hints": [
+    "orchard-sophia",
+    "kent-heights",
+    "towner-residences",
+    "river-modern"
+  ],
+  "reviewed": "Facts checked against the sources on file, 11 November 2026.",
+  "date_published": "2026-11-11",
+  "date_modified": "2026-11-11"
+}

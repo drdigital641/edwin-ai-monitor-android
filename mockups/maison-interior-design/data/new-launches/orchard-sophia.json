@@ -1,0 +1,75 @@
+{
+  "name": "Orchard Sophia",
+  "slug": "orchard-sophia",
+  "type": "Condo",
+  "label": "Private condominium · freehold",
+  "area": "Sophia Road",
+  "district": "D9",
+  "region": "Central",
+  "developer": "Orchard Sophia Pte Ltd",
+  "tenure": "Freehold",
+  "top_label": "TOP",
+  "top": "Reported: 2026. EdgeProp lists the TOP as Q2 2026; we could not confirm this on an official page.",
+  "unit_mix": "1-bedroom, 2-bedroom and 3-bedroom, including 3-bedroom dual-key",
+  "official_site": "Not confirmed",
+  "facts": [
+    {
+      "label": "District",
+      "value": "D9, Sophia Road"
+    },
+    {
+      "label": "Units",
+      "value": "78"
+    }
+  ],
+  "keywords": [
+    "Orchard Sophia renovation",
+    "Orchard Sophia interior design",
+    "Orchard Sophia renovation guide"
+  ],
+  "intro": "Orchard Sophia is a boutique freehold development of 78 homes on Sophia Road in District 9, reported to have reached TOP in 2026. Boutique buildings renovate differently from big condos. Below: key facts, what owners usually change, a defects check and how to plan your Orchard Sophia renovation.",
+  "whatsapp_text": "Hi Maison, I'm collecting keys at Orchard Sophia and would like to discuss the renovation.",
+  "sections": [
+    {
+      "heading": "What to know about Orchard Sophia",
+      "text": "With only 78 units, there are fewer contractors competing for the lift and loading bay, but the management is small and rules are often stricter about noise and common areas. Ask for the renovation guidelines before you finalise the design.\n\nFreehold homes near Orchard tend to be held for a long time, so it pays to choose finishes that age well. The 3-bedroom dual-key units are a special case: two front doors in one home, which suits a family with older parents or an owner who rents out the smaller part. Plan storage and soundproofing for both parts."
+    },
+    {
+      "heading": "What owners usually change",
+      "text": "Common requests at Orchard Sophia:",
+      "bullets": [
+        "Dual-key units: separate storage, a compact kitchenette and soundproofing between the two parts.",
+        "Smaller units: built-in storage and a dining area that doubles as a work space.",
+        "Quality finishes that age well, like stone-look surfaces and solid timber details.",
+        "Layered lighting for evening living.",
+        "Window treatments for privacy in a dense area."
+      ]
+    }
+  ],
+  "timeline_note": "Most boutique condo renovations take about 4 to 8 weeks from keys to move-in. Dual-key units with two kitchens can take longer.",
+  "faq": [
+    {
+      "q": "Has Orchard Sophia reached TOP?",
+      "a": "EdgeProp reports the TOP as Q2 2026. We could not confirm this on an official page, so check your developer's notice."
+    },
+    {
+      "q": "How should I renovate a dual-key unit?",
+      "a": "Plan it as two homes: storage and a kitchenette in each part, and soundproofing at the connecting door, so both parts work whether you live in them together or rent one out."
+    },
+    {
+      "q": "Are renovation rules different in a small development?",
+      "a": "The rules come from the management in every condo, but small developments often have tighter limits on noise and common areas. Read them before you finalise the design."
+    }
+  ],
+  "sources": [
+    {
+      "label": "EdgeProp project page (third-party)",
+      "url": "https://www.edgeprop.sg/new-launches/orchard-sophia"
+    }
+  ],
+  "nearby_hints": [
+    "canninghill-piers"
+  ],
+  "date_published": "2026-11-07",
+  "date_modified": "2026-11-11"
+}

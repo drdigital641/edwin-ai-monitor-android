@@ -1,0 +1,82 @@
+{
+  "name": "Kent Heights",
+  "slug": "kent-heights",
+  "type": "BTO",
+  "label": "HDB BTO",
+  "area": "Kallang/Whampoa",
+  "region": "Central",
+  "developer": "HDB",
+  "tenure": "Not confirmed",
+  "top_label": "Completion",
+  "top": "Year only: estimated 2026, from a third-party tracker. HDB has not confirmed a project-wide key date on the pages we checked. Your HDB notification is the date that counts.",
+  "unit_mix": "2-room Flexi and 4-room (as listed by a third-party tracker)",
+  "official_site": "Not confirmed",
+  "facts": [
+    {
+      "label": "Town",
+      "value": "Kallang/Whampoa (Owen Road)"
+    },
+    {
+      "label": "Units",
+      "value": "430 in one 32-storey block (as listed by a third-party tracker)"
+    }
+  ],
+  "keywords": [
+    "Kent Heights renovation",
+    "Kent Heights interior design",
+    "Kent Heights renovation guide"
+  ],
+  "intro": "Kent Heights is a single 32-storey BTO block on Owen Road in Kallang/Whampoa, listed by a third-party tracker as 430 flats of 2-room Flexi and 4-room types. One block means one set of lifts for every renovation. Below: key facts, what owners usually change, a defects check and how to plan your Kent Heights renovation.",
+  "whatsapp_text": "Hi Maison, I'm collecting keys at Kent Heights and would like to discuss the renovation.",
+  "sections": [
+    {
+      "heading": "What to know about Kent Heights",
+      "text": "When every renovation in a project shares the same lifts, materials deliveries and debris removal need careful scheduling. Your contractor should plan deliveries around the lift bookings and protect the lift and corridor as required.\n\nThe 2-room Flexi and 4-room mix suits seniors, singles and young families. High floors in a central location often have good views, so plan the living room around the window: low furniture, a TV wall that doesn't block the view, and blinds that control the afternoon sun."
+    },
+    {
+      "heading": "What owners usually change",
+      "text": "Common requests at Kent Heights:",
+      "bullets": [
+        "Living rooms planned around the window and the view.",
+        "2-room Flexi: compact storage and safe, slip-resistant finishes.",
+        "4-room: full-height wardrobes and a study.",
+        "Blinds or curtains for sun control on high floors.",
+        "Toilet upgrades with tiles overlaid on the existing ones (no hacking in the first 3 years)."
+      ]
+    }
+  ],
+  "timeline_note": "Plan on about 8 to 12 weeks from keys to move-in for a full renovation. Allow extra time if the lifts are heavily booked.",
+  "faq": [
+    {
+      "q": "When can I collect keys at Kent Heights?",
+      "a": "Your HDB notification gives your date. A third-party tracker estimates completion in 2026, but HDB has not confirmed a project-wide date on the pages we checked."
+    },
+    {
+      "q": "Does a single block make renovation slower?",
+      "a": "It can, because every flat shares the same lifts. A contractor who plans deliveries early keeps your schedule on track."
+    },
+    {
+      "q": "What are the noisy work hours?",
+      "a": "HDB allows noisy works, such as hacking and tile cutting, only Monday to Friday, 9am to 5pm."
+    }
+  ],
+  "sources": [
+    {
+      "label": "KeyDayKit BTO tracker (third-party)",
+      "url": "https://keydaykit.com/guides/bto-key-collection-2026-2027/"
+    },
+    {
+      "label": "HDB roadshows page (checked; no project date)",
+      "url": "https://www.mynicehome.gov.sg/get-settled-in/roadshows/"
+    },
+    {
+      "label": "HDB renovation guide",
+      "url": "https://www.mynicehome.gov.sg/get-settled-in/hdb-renovation-guide/"
+    }
+  ],
+  "nearby_hints": [
+    "towner-residences"
+  ],
+  "date_published": "2026-11-07",
+  "date_modified": "2026-11-11"
+}
