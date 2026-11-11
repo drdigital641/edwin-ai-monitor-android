@@ -36,7 +36,7 @@
   "email_us": "发电邮给我们",
   "directions": "查看路线",
   "open_maps": "在 Google Maps 打开",
-  "read_reviews": "到 Google Maps 看我们的评价",
+  "read_reviews": "看我们的 Google 评价",
   "stars_aria": "5 星(满分 5 星)",
   "rating_line": "Google 评分 5.0 · 19 则评价",
   "rating_sub": "每一则评价都是 5 星",
@@ -102,7 +102,8 @@
   "service_tag": "服务",
   "see_service": "了解这项服务",
   "watch_fb": "到 Facebook 观看",
-  "scroll_hint": "滑动看更多"
+  "scroll_hint": "滑动看更多",
+  "find_on_maps": "在 Google 地图找到我们"
  },
  "photos": {
   "shop-exterior": "Carzy World Sdn Bhd 位于巴生 Air Hitam Pusat Perniagaan Bestari 的店面,可见黄色招牌和开放的维修车位",

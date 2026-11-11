@@ -40,7 +40,8 @@ for p in scan:
 SHARED = {
     "header": 'class="site-header"', "language switch": 'class="lang-switch"', "header WhatsApp": 'data-cta="whatsapp_header"',
     "trust strip": 'class="trust"', "CTA band": 'class="cta-band"', "footer": 'class="site-footer"', "credit": BIZ["credit_url"],
-    "mobile WhatsApp bar": 'data-cta="whatsapp_mobile_bar"', "WhatsApp number": f"wa.me/{BIZ['whatsapp_number']}",
+    "mobile WhatsApp bar": 'data-cta="whatsapp_mobile_bar"', "footer Google Maps button": 'data-cta="google_listing_footer"',
+    "rating badge Google reviews link": 'data-cta="google_reviews_badge"', "Google listing link": BIZ["google_listing_url"], "WhatsApp number": f"wa.me/{BIZ['whatsapp_number']}",
 }
 LANG_ATTR = {"en": "en", "ms": "ms", "zh": "zh-Hans"}
 pages = sorted(SITE.rglob("*.html"))
@@ -56,6 +57,11 @@ for p in pages:
     for bad in ("1128044756568418", "1358776602985089"):
         if bad in h:
             problems.append(f"{rel}: dropped clip {bad} must not appear")
+    if rel.parts[-2:-1] == ("contact",) and 'data-cta="google_listing_contact"' not in h:
+        problems.append(f"{rel}: contact page needs the Find us on Google Maps button")
+    for m in re.finditer(r'<a [^>]*href="' + re.escape(BIZ["google_listing_url"]) + r'"[^>]*>', h):
+        if 'target="_blank"' not in m.group(0) or 'rel="noopener"' not in m.group(0):
+            problems.append(f"{rel}: Google listing link must open in a new tab with rel=noopener")
     if len(re.findall(r"<h1[\s>]", h)) != 1:
         problems.append(f"{rel}: needs exactly one <h1>")
     if BIZ["preview"] and '<meta name="robots" content="noindex,nofollow">' not in h:

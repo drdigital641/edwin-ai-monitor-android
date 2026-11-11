@@ -125,10 +125,10 @@ def business_node(L):
         "address": {"@type": "PostalAddress", "streetAddress": BIZ["street"], "addressLocality": BIZ["city"],
                     "postalCode": BIZ["postcode"], "addressRegion": BIZ["state"], "addressCountry": BIZ["country_code"]},
         "geo": {"@type": "GeoCoordinates", "latitude": BIZ["lat"], "longitude": BIZ["lng"]},
-        "hasMap": BIZ["maps_url"], "openingHoursSpecification": hours_spec(),
+        "hasMap": BIZ["google_listing_url"], "openingHoursSpecification": hours_spec(),
         "areaServed": {"@type": "City", "name": "Klang"},
         "identifier": {"@type": "PropertyValue", "propertyID": "SSM company no.", "value": BIZ["company_no"]},
-        "sameAs": [BIZ["facebook_url"], BIZ["maps_url"]],
+        "sameAs": [BIZ["facebook_url"], BIZ["google_listing_url"], BIZ["maps_url"]],
         "availableLanguage": [STR[l["code"]]["meta"]["lang_name"] for l in LANGS],
     }
 
@@ -219,7 +219,7 @@ def video_node(L, key):
 # ------------------------------------------------------------------ shared blocks
 def trust(L):
     ui = L.ui
-    return fill("trust_strip", maps_url=E(BIZ["maps_url"]), stars_aria=E(ui["stars_aria"]), rating_line=E(ui["rating_line"]),
+    return fill("trust_strip", listing_url=E(BIZ["google_listing_url"]), read_reviews=E(ui["read_reviews"]), stars_aria=E(ui["stars_aria"]), rating_line=E(ui["rating_line"]),
                 hours_short=E(ui["hours_short"]), location_short=E(ui["location_short"]), brands_short=E(ui["brands_short"])).rstrip("\n")
 
 
@@ -267,7 +267,7 @@ def service_cards(L, path, skip=None):
 
 def reviews_link(L):
     """No review cards on the site: the rating line plus a link to the reviews on Google Maps."""
-    return (f'        <div class="cta-row"><a class="btn btn-outline-light" href="{E(BIZ["maps_url"])}" target="_blank" rel="noopener" data-cta="google_reviews">'
+    return (f'        <div class="cta-row"><a class="btn btn-outline-light" href="{E(BIZ["google_listing_url"])}" target="_blank" rel="noopener" data-cta="google_reviews">'
             f'{E(L.ui["read_reviews"])} ↗</a></div>\n')
 
 
@@ -298,7 +298,9 @@ def visit_block(L, with_map=False):
             f'            <p><b>{E(ui["phone_label"])}</b><br><a class="link" href="{L.wa("general")}" target="_blank" rel="noopener" data-cta="whatsapp_visit">{E(BIZ["phone_display"])}</a></p>\n'
             f'            <p><b>{E(ui["email_label"])}</b><br><a class="link" href="mailto:{BIZ["email"]}" data-cta="email_visit">{E(BIZ["email"])}</a></p>\n'
             f'{hours_table(L)}\n'
-            f'            <div class="cta-row"><a class="btn btn-dark" href="{E(BIZ["maps_url"])}" target="_blank" rel="noopener" data-cta="directions">{E(ui["directions"])}</a>'
+            f'            <div class="cta-row">'
+            + (f'<a class="btn btn-red btn-maps" href="{E(BIZ["google_listing_url"])}" target="_blank" rel="noopener" data-cta="google_listing_contact"><span aria-hidden="true">📍</span><span>{E(ui["find_on_maps"])}</span></a>' if with_map else "")
+            + f'<a class="btn btn-dark" href="{E(BIZ["maps_url"])}" target="_blank" rel="noopener" data-cta="directions">{E(ui["directions"])}</a>'
             f'<a class="btn btn-wa" href="{L.wa("directions")}" target="_blank" rel="noopener" data-cta="whatsapp_directions">{wa_icon()}<span>{E(ui["whatsapp_us"])}</span></a></div>\n'
             f'          </div>\n')
     if with_map:
@@ -343,7 +345,7 @@ def page(L, path, title, description, body, graph_extra=(), current="", body_cla
     pages = [("", ui["nav"]["home"]), ("services/", ui["nav"]["services"]), ("about/", ui["nav"]["about"]), ("contact/", ui["nav"]["contact"])]
     doc += fill("footer", cta_band=cta if cta is not None else cta_band(L, "page"), name=E(BIZ["name"]), tagline=E(BIZ["tagline"]),
                 company_label=E(ui["company_label"]), company_no=E(BIZ["company_no"]), facebook_url=E(BIZ["facebook_url"]), facebook=E(ui["facebook"]),
-                maps_url=E(BIZ["maps_url"]), read_reviews=E(ui["read_reviews"]), h_visit=E(ui["footer_visit"]), address=E(BIZ["address_full"]),
+                listing_url=E(BIZ["google_listing_url"]), find_on_maps=E(ui["find_on_maps"]), read_reviews=E(ui["read_reviews"]), h_visit=E(ui["footer_visit"]), address=E(BIZ["address_full"]),
                 wa_general=L.wa("general"), phone=E(BIZ["phone_display"]), phone_e164=BIZ["phone_e164"], call=E(ui["call"]), email=E(BIZ["email"]),
                 hours_table=hours_table(L, "hours hours-footer"), h_services=E(ui["footer_services"]),
                 footer_services="\n".join(f'        <a href="{L.url("services/" + m["slug"] + "/")}">{E(s["services"][m["slug"]]["short"])}</a>' for m in SITE["services"]),
@@ -361,7 +363,7 @@ def build_home(L):
     body = fill("hero_video", poster=media(L, path, sig["poster"]), video_label=E(h["hero_video_label"]), src=media(L, path, sig["file"]),
                 sound_on=E(ui["sound_on"]), sound_off=E(ui["sound_off"]), play=E(ui["play"]), pause=E(ui["pause"]), eyebrow=E(h["eyebrow"]),
                 h1=E(h["h1"]), lead=E(h["hero_lead"]), wa=L.wa("general"), wa_icon=wa_icon(), whatsapp_now=E(ui["whatsapp_now"]),
-                phone_e164=BIZ["phone_e164"], call_label=L.call_label(), maps_url=E(BIZ["maps_url"]), stars_aria=E(ui["stars_aria"]),
+                phone_e164=BIZ["phone_e164"], call_label=L.call_label(), listing_url=E(BIZ["google_listing_url"]), read_reviews=E(ui["read_reviews"]), stars_aria=E(ui["stars_aria"]),
                 rating_line=E(ui["rating_line"]), discount_badge=E(ui["discount_badge"]), wa_discount=L.wa("discount"))
     body += f'    <div class="ribbon">\n      <div class="wrap">\n{trust(L)}\n      </div>\n    </div>\n'
     # signature story: the 190E restoration (self-hosted, click to play)
@@ -499,7 +501,7 @@ def build_llms():
     out = [f"# {BIZ['name']}", "", f"> {BIZ['tagline']}. {t['summary']}", "",
            f"- Address: {BIZ['address_full']}", f"- Plus code: {BIZ['plus_code']}", f"- Phone and WhatsApp: {BIZ['phone_display']} (https://wa.me/{BIZ['whatsapp_number']})",
            f"- Email: {BIZ['email']}", f"- {t['hours']}: Monday to Friday 10:00 to 19:00, Saturday 10:00 to 16:30, Sunday closed",
-           f"- Company no.: {BIZ['company_no']}", f"- {t['reviews']}", f"- Google Maps: {BIZ['maps_url']}", f"- Facebook: {BIZ['facebook_url']}",
+           f"- Company no.: {BIZ['company_no']}", f"- {t['reviews']}", f"- Google Business listing: {BIZ['google_listing_url']}", f"- Google Maps: {BIZ['maps_url']}", f"- Facebook: {BIZ['facebook_url']}",
            f"- {t['offer']}", "", f"## {t['services']}", ""]
     out += [f"- [{en['services'][m['slug']]['title']}]({live_url('', 'services/' + m['slug'] + '/')}): {en['services'][m['slug']]['intro']}" for m in SITE["services"]]
     out += ["", f"## {t['pages']}", ""]

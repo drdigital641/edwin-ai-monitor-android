@@ -36,7 +36,7 @@
   "email_us": "E-mel kami",
   "directions": "Dapatkan arah",
   "open_maps": "Buka di Google Maps",
-  "read_reviews": "Baca ulasan kami di Google Maps",
+  "read_reviews": "Baca ulasan Google kami",
   "stars_aria": "5 bintang daripada 5",
   "rating_line": "5.0 di Google · 19 ulasan",
   "rating_sub": "Semua ulasan 5 bintang",
@@ -102,7 +102,8 @@
   "service_tag": "Servis",
   "see_service": "Tentang servis ini",
   "watch_fb": "Tonton di Facebook",
-  "scroll_hint": "Leret untuk lagi"
+  "scroll_hint": "Leret untuk lagi",
+  "find_on_maps": "Cari kami di Google Maps"
  },
  "photos": {
   "shop-exterior": "Bahagian hadapan kedai Carzy World Sdn Bhd di Pusat Perniagaan Bestari, Air Hitam, Klang, dengan papan tanda kuning dan ruang servis yang terbuka",
