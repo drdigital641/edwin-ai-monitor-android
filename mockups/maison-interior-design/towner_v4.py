@@ -172,7 +172,7 @@ def vpage_v4(slug):
              f'<p class="v4-src">More BTO and condo projects: <a href="{BASE}new-launches/">New launches</a>.</p>'
              + (f'<p class="v4-lead">{e(v["end_note"])}</p>' if v.get("end_note") else "") +
              f'<div class="vh-cta end">{_v4wa("WhatsApp Maison", v["end_msg"], ref + "-end", "general", path)}</div></div></section>')
-    og = f"https://pageonesingapore.com{BASE}images/new-launches/{d}/{t0['img']}-{W}.webp"
+    og = f"{DOMAIN}{BASE}images/new-launches/{d}/{t0['img']}-{W}.webp"
     schema = {"@context": "https://schema.org", "@graph": [ORG, crumbs([("Home", ""), ("New launches", "new-launches/"), (c["h1"], path)]),
               {"@type": "Article", "headline": c["h1"], "description": c["desc"], "datePublished": "2026-11-07", "dateModified": "2026-11-08",
                "author": {"@id": DOMAIN + "/#business"}, "publisher": {"@id": DOMAIN + "/#business"}, "mainEntityOfPage": DOMAIN + "/" + path,

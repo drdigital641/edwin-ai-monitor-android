@@ -11,8 +11,8 @@ import hashlib, html, json, os, shutil
 
 HERE = os.path.dirname(os.path.abspath(__file__))
 OUT = os.path.join(HERE, "site")
-U = "https://maisoninteriordesign.sg/wp-content/uploads/"
-BASE = "/preview/maison-interior-design/"   # preview path on pageonesingapore.com
+U = "/wp-content/uploads/"   # the 57 former WordPress images, now served from the live docroot
+BASE = "/"   # live docroot of maisoninteriordesign.sg (site root)
 DOMAIN = "https://maisoninteriordesign.sg"
 WA = "6593391185"
 PHONE = "+65 9339 1185"
@@ -156,7 +156,9 @@ def src(f):
     return f if f.startswith(("http", "/")) else U + f
 
 def absu(f):
-    return "https://pageonesingapore.com" + f if f.startswith("/") else src(f)
+    # absolute URL on the live domain, for og/twitter images and JSON-LD
+    f = src(f)
+    return f if f.startswith("http") else DOMAIN + f
 
 def img(f, alt, cls="", w=1024, h=683, lazy=True, sizes=None):
     return (f'<img src="{src(f)}" alt="{e(alt)}" width="{w}" height="{h}"'
@@ -186,14 +188,14 @@ def head(title, desc, path, og_img, schema):
 <title>{e(title)}</title><meta name="description" content="{e(desc)}">
 <link rel="canonical" href="{url}">
 <meta property="og:type" content="website"><meta property="og:title" content="{e(title)}"><meta property="og:description" content="{e(desc)}">
-<meta property="og:url" content="{url}"><meta property="og:image" content="{('' if og_img.startswith('http') else 'https://pageonesingapore.com') + src(og_img) if og_img.startswith('/') else src(og_img)}"><meta name="twitter:card" content="summary_large_image">
+<meta property="og:url" content="{url}"><meta property="og:image" content="{absu(og_img)}"><meta name="twitter:card" content="summary_large_image">
 <meta name="theme-color" content="#f4efe8">
 <link rel="icon" href="{BASE}favicon.svg" type="image/svg+xml"><link rel="icon" href="{BASE}brand/favicon-48.png" sizes="48x48" type="image/png"><link rel="apple-touch-icon" href="{BASE}brand/apple-touch-icon.png">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="{BASE}mid.css?v={VER}">
 <script>document.documentElement.classList.add('js')</script>
-<script type="application/ld+json">{json.dumps(schema, ensure_ascii=False)}</script>
+<script type="application/ld+json">{json.dumps(schema, ensure_ascii=False, separators=(',', ':'))}</script>
 </head>"""
 
 SVC_SUB = [("bto-renovation", "BTO key collection"), ("new-condo-renovation", "New condo"), ("landed-renovation", "Landed renovation"),
@@ -232,14 +234,14 @@ def footer():
 <div class="ft-b"><h3>Studio</h3>{links}</div>
 <div class="ft-c"><h3>Talk to us</h3><p>Roland Ng, Managing Director</p><a href="tel:+{WA}">{PHONE}</a><a href="mailto:{EMAIL}">{EMAIL}</a>
 <p class="soc"><a href="{IG}" rel="noopener">Instagram</a><a href="{FB}" rel="noopener">Facebook</a><a href="{wa()}">WhatsApp</a></p></div>
-</div><div class="wrap ft-legal"><span>© 2026 Maison Interior Design</span><span>Redesign concept by Page One Singapore</span></div></footer>
+</div><div class="wrap ft-legal"><span>© 2026 Maison Interior Design</span></div></footer>
 <a class="fab" href="{wa()}" data-cta="whatsapp" aria-label="WhatsApp Maison Interior Design"><svg viewBox="0 0 24 24" width="24" height="24" aria-hidden="true"><path fill="currentColor" d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2Zm0 18.2a8.2 8.2 0 0 1-4.2-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2Zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8-.2-.1-.4-.1-.6.1l-.8 1c-.1.2-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.3-.4.2-.4.7-1.3.1-.2 0-.3 0-.4l-.8-1.8c-.2-.5-.4-.4-.6-.4h-.5a1 1 0 0 0-.7.3 3 3 0 0 0-.9 2.2 5.2 5.2 0 0 0 1.1 2.7 11.8 11.8 0 0 0 4.5 4c1.7.7 2.3.8 3.2.6.5-.1 1.5-.6 1.7-1.2.2-.6.2-1.1.2-1.2-.1-.1-.3-.2-.5-.3Z"/></svg></a>
 <div class="vm" id="vm" hidden role="dialog" aria-modal="true" aria-label="Home tour video"><button class="vm-x" aria-label="Close video">×</button><video controls playsinline preload="none"></video></div>
 <script src="{BASE}mid.js?v={VER}" defer></script></body></html>"""
 
 ORG = {"@type": "HomeAndConstructionBusiness", "@id": DOMAIN + "/#business", "name": "Maison Interior Design",
        "url": DOMAIN + "/", "telephone": PHONE, "email": EMAIL, "foundingDate": "2018",
-       "areaServed": {"@type": "Country", "name": "Singapore"}, "image": U + "Jimmy-Monkey-Completed-6.jpg",
+       "areaServed": {"@type": "Country", "name": "Singapore"}, "image": absu("Jimmy-Monkey-Completed-6.jpg"),
        "founder": {"@type": "Person", "name": "Roland Ng", "jobTitle": "Managing Director"},
        "sameAs": [IG, FB]}
 
@@ -570,9 +572,30 @@ Maison works with these Singapore suppliers for materials, flooring, lighting an
 """ + "".join(f'- [{p["name"]} {p["place"]}]({DOMAIN}/portfolio/{p["slug"]}/): {p["kind"]}, {p["type"]}.\n' for p in P))
     write("favicon.svg", '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64"><rect width="64" height="64" fill="#1f1c19"/><text x="32" y="44" font-family="Georgia,serif" font-size="36" fill="#c9a979" text-anchor="middle">M</text></svg>')
     shutil.copy(os.path.join(HERE, "mid.css"), os.path.join(OUT, "mid.css"))
-    for d in ("brand", "logos", "img", "images"):
+    # logos/ (Page One logo-options page) is not part of the live site, so it is not shipped
+    for d in ("brand", "img", "images"):
         if os.path.isdir(os.path.join(HERE, d)): shutil.copytree(os.path.join(HERE, d), os.path.join(OUT, d))
     shutil.copy(os.path.join(HERE, "mid.js"), os.path.join(OUT, "mid.js"))
+
+def live_guard():
+    """The build is the live docroot of maisoninteriordesign.sg: stop if it would bring back preview paths,
+    the Page One credit, hotlinked WordPress images, a noindex or an .htaccess."""
+    import re as _r
+    bad = []
+    stubs = {"new-launches/lumina-grand/index.html", "new-launches/parc-point-tengah/index.html"}  # redirect stubs
+    for root, dirs, files in os.walk(OUT):
+        for f in files:
+            rel = os.path.relpath(os.path.join(root, f), OUT).replace(os.sep, "/")
+            if f.startswith("."): bad.append(rel + ": dotfile (never ship .htaccess)")
+            if not f.endswith((".html", ".css", ".js", ".txt", ".xml")): continue
+            t = open(os.path.join(root, f), encoding="utf-8").read()
+            for pat, why in (("/preview/", "preview path"), ("pageonesingapore", "pageonesingapore.com URL"),
+                             ("Redesign concept by Page One", "Page One credit"), ("Page One", "Page One mention")):
+                if pat in t: bad.append(f"{rel}: {why}")
+            if "noindex" in t and rel not in stubs: bad.append(rel + ": noindex")
+            if _r.search(r'(?:src|srcset|href|poster)="https?://maisoninteriordesign\.sg/wp-content/', t) or "url(https://maisoninteriordesign.sg" in t:
+                bad.append(rel + ": hotlinked wp-content image")
+    if bad: raise SystemExit("live guard failed:\n  " + "\n  ".join(bad))
 
 exec(open(os.path.join(HERE, "launches.py"), encoding="utf-8").read())
 
@@ -583,4 +606,5 @@ if __name__ == "__main__":
     for i, p in enumerate(P): project(i, p)
     launches_build()
     extras()
+    live_guard()
     print("built", sum(len(f) for _, _, f in os.walk(OUT)), "files")
