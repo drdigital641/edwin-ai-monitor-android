@@ -1,0 +1,87 @@
+{
+ "html_lang": "en",
+ "hreflang": "en",
+ "og_locale": "en_MY",
+ "prefix": "",
+ "skip": "Skip to content",
+ "home": "Home",
+ "services_h": "Services",
+ "lang_label": "Language",
+ "menu": "Menu",
+ "close": "Close",
+ "svc": {
+  "aircond": "Car aircond",
+  "adas": "ADAS calibration",
+  "hybrid": "Hybrid &amp; EV",
+  "ecu": "ECU &amp; diagnosis",
+  "battery": "Battery",
+  "servicing": "Servicing"
+ },
+ "contact": "Contact",
+ "about": "About",
+ "cars_h": "Cars we work on",
+ "brand": {
+  "bmw": "BMW",
+  "mercedes-benz": "Mercedes-Benz",
+  "porsche": "Porsche",
+  "honda": "Honda",
+  "toyota": "Toyota"
+ },
+ "wa": "WhatsApp",
+ "wa_us": "WhatsApp us",
+ "call": "Call",
+ "map": "Map",
+ "area": "AP · Kuantan, Pahang",
+ "address_h": "Address",
+ "directions": "Directions",
+ "hours_h": "Hours",
+ "hours_rows": [
+  [
+   "Mon to Sat",
+   "9:00am to 6:30pm"
+  ],
+  [
+   "Sunday",
+   "11:00am to 3:00pm"
+  ]
+ ],
+ "hours_note": "Hours as shown on Google",
+ "wa_call_h": "WhatsApp · Call",
+ "email_h": "Email",
+ "follow_h": "Follow the work",
+ "lang_h": "Language",
+ "articles": {
+  "nav": "Articles",
+  "title": "Car Tips from Kuantan | AP Car",
+  "description": "Short answers from AP Car in Kuantan on ADAS calibration, car aircond, hybrid and EV repair, ECU diagnosis and car batteries.",
+  "k": "From our bay",
+  "h1": "Car tips from Kuantan",
+  "tag": "Short answers from the jobs we do every day.",
+  "list_h2": "Latest articles",
+  "read": "Read",
+  "min": "{n} min read",
+  "answer": "Short answer",
+  "faq_h2": "Quick answers",
+  "more_k": "Also at AP Car",
+  "service_cta": "See the service page",
+  "end_h": "Tell us the car and the problem.",
+  "end_p": "We reply on WhatsApp.",
+  "jobs_k": "From our bay",
+  "months": [
+   "Jan",
+   "Feb",
+   "Mar",
+   "Apr",
+   "May",
+   "Jun",
+   "Jul",
+   "Aug",
+   "Sep",
+   "Oct",
+   "Nov",
+   "Dec"
+  ],
+  "date_fmt": "{d} {m} {y}",
+  "more_h2": "More articles"
+ }
+}

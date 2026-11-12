@@ -1,0 +1,87 @@
+{
+ "html_lang": "zh-Hans",
+ "hreflang": "zh-Hans",
+ "og_locale": "zh_CN",
+ "prefix": "zh/",
+ "skip": "跳到内容",
+ "home": "首页",
+ "services_h": "服务",
+ "lang_label": "语言",
+ "menu": "菜单",
+ "close": "关闭",
+ "svc": {
+  "aircond": "汽车冷气",
+  "adas": "ADAS 校准",
+  "hybrid": "混动与电动车",
+  "ecu": "ECU 与电脑诊断",
+  "battery": "电池",
+  "servicing": "保养"
+ },
+ "contact": "联系",
+ "about": "关于我们",
+ "cars_h": "我们修的车",
+ "brand": {
+  "bmw": "宝马",
+  "mercedes-benz": "奔驰",
+  "porsche": "保时捷",
+  "honda": "本田",
+  "toyota": "丰田"
+ },
+ "wa": "WhatsApp",
+ "wa_us": "WhatsApp 联系",
+ "call": "电话",
+ "map": "地图",
+ "area": "AP · 彭亨 关丹",
+ "address_h": "地址",
+ "directions": "导航到店",
+ "hours_h": "营业时间",
+ "hours_rows": [
+  [
+   "星期一至六",
+   "上午 9:00 至 下午 6:30"
+  ],
+  [
+   "星期日",
+   "上午 11:00 至 下午 3:00"
+  ]
+ ],
+ "hours_note": "以 Google 显示为准",
+ "wa_call_h": "WhatsApp · 电话",
+ "email_h": "电邮",
+ "follow_h": "关注我们的日常",
+ "lang_h": "语言",
+ "articles": {
+  "nav": "文章",
+  "title": "关丹汽车小知识 | AP Car",
+  "description": "关丹 AP Car 的简短解答：ADAS 校准、汽车冷气、混动与电动车维修、ECU 电脑诊断和汽车电池。",
+  "k": "店里的真实案例",
+  "h1": "关丹汽车小知识",
+  "tag": "来自每天实际工作的简短解答。",
+  "list_h2": "最新文章",
+  "read": "阅读",
+  "min": "约 {n} 分钟",
+  "answer": "简短回答",
+  "faq_h2": "常见问题",
+  "more_k": "AP Car 其他服务",
+  "service_cta": "查看服务页面",
+  "end_h": "告诉我们车型和问题。",
+  "end_p": "我们在 WhatsApp 回复。",
+  "jobs_k": "店里的真实案例",
+  "months": [
+   "1",
+   "2",
+   "3",
+   "4",
+   "5",
+   "6",
+   "7",
+   "8",
+   "9",
+   "10",
+   "11",
+   "12"
+  ],
+  "date_fmt": "{y}年{m}月{d}日",
+  "more_h2": "更多文章"
+ }
+}

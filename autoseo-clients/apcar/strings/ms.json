@@ -1,0 +1,87 @@
+{
+ "html_lang": "ms",
+ "hreflang": "ms",
+ "og_locale": "ms_MY",
+ "prefix": "ms/",
+ "skip": "Terus ke kandungan",
+ "home": "Utama",
+ "services_h": "Servis",
+ "lang_label": "Bahasa",
+ "menu": "Menu",
+ "close": "Tutup",
+ "svc": {
+  "aircond": "Aircond kereta",
+  "adas": "Kalibrasi ADAS",
+  "hybrid": "Hybrid &amp; EV",
+  "ecu": "ECU &amp; diagnosis",
+  "battery": "Bateri",
+  "servicing": "Servis kereta"
+ },
+ "contact": "Hubungi",
+ "about": "Tentang kami",
+ "cars_h": "Kereta yang kami baiki",
+ "brand": {
+  "bmw": "BMW",
+  "mercedes-benz": "Mercedes-Benz",
+  "porsche": "Porsche",
+  "honda": "Honda",
+  "toyota": "Toyota"
+ },
+ "wa": "WhatsApp",
+ "wa_us": "WhatsApp kami",
+ "call": "Telefon",
+ "map": "Peta",
+ "area": "AP · Kuantan, Pahang",
+ "address_h": "Alamat",
+ "directions": "Arah ke kedai",
+ "hours_h": "Waktu buka",
+ "hours_rows": [
+  [
+   "Isnin hingga Sabtu",
+   "9:00 pg hingga 6:30 ptg"
+  ],
+  [
+   "Ahad",
+   "11:00 pg hingga 3:00 ptg"
+  ]
+ ],
+ "hours_note": "Waktu seperti di Google",
+ "wa_call_h": "WhatsApp · Telefon",
+ "email_h": "Emel",
+ "follow_h": "Ikuti kerja kami",
+ "lang_h": "Bahasa",
+ "articles": {
+  "nav": "Artikel",
+  "title": "Tip Kereta dari Kuantan | AP Car",
+  "description": "Jawapan ringkas dari AP Car di Kuantan tentang kalibrasi ADAS, aircond kereta, hybrid dan EV, diagnosis ECU dan bateri kereta.",
+  "k": "Dari bengkel kami",
+  "h1": "Tip kereta dari Kuantan",
+  "tag": "Jawapan ringkas dari kerja harian kami.",
+  "list_h2": "Artikel terkini",
+  "read": "Baca",
+  "min": "{n} minit bacaan",
+  "answer": "Jawapan ringkas",
+  "faq_h2": "Soalan ringkas",
+  "more_k": "Juga di AP Car",
+  "service_cta": "Lihat halaman servis",
+  "end_h": "Beritahu kami kereta dan masalahnya.",
+  "end_p": "Kami balas di WhatsApp.",
+  "jobs_k": "Dari bengkel kami",
+  "months": [
+   "Jan",
+   "Feb",
+   "Mac",
+   "Apr",
+   "Mei",
+   "Jun",
+   "Jul",
+   "Ogo",
+   "Sep",
+   "Okt",
+   "Nov",
+   "Dis"
+  ],
+  "date_fmt": "{d} {m} {y}",
+  "more_h2": "Artikel lain"
+ }
+}

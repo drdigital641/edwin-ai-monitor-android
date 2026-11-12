@@ -1,0 +1,254 @@
+{
+ "slug": "radar-calibration-acc-lane-keep-off",
+ "published": "2026-11-12",
+ "updated": "2026-11-12",
+ "service": "adas",
+ "hero_photo": "adas-setup",
+ "_sources": "Facts only from the preview's ADAS calibration page (EN/BM/中文, 12 Nov 2026): signs list, 4 steps ending in a road test, Autel / MaxiSys, code P2583-76, 'misalignment millimeter wave radar', the 4 jobs, photo captions.",
+ "en": {
+  "keyword": "radar calibration Kuantan",
+  "title": "Radar Calibration in Kuantan: ACC or Lane Keep Off? | AP Car",
+  "description": "Radar calibration in Kuantan: why ACC and lane keep switch off, the signs, and how AP Car aims the radar or camera in its own bay, then road tests.",
+  "h1": "Radar calibration in Kuantan: ACC or lane keep switched off?",
+  "lead": "Looking for radar calibration in Kuantan? It usually starts with one thing: ACC or lane keep has switched off. Here is what that means and what we do.",
+  "answer": "When the front radar or camera is out of line, ACC and lane keep switch off until it is aimed again. We read the code, aim it in our bay with Autel / MaxiSys equipment, then road test.",
+  "prefill": "Hi AP Car, my ACC / lane keep is switched off and I need radar calibration. Car model:",
+  "excerpt": "The signs, why the system switches off, and our 4 steps.",
+  "sections": [
+   {
+    "h2": "Signs it needs aiming",
+    "list": [
+     "ACC or lane keep switched off",
+     "\"Check System\" on the dash",
+     "Pre-crash system malfunction",
+     "After bumper, radar or windscreen work",
+     "Lane keep pulls the wrong way"
+    ],
+    "photo": "cluster-acc"
+   },
+   {
+    "h2": "Why it switches off",
+    "p": [
+     "ACC, lane keep (LKAS), lane departure (LDW) and pre-crash use a front radar and camera that must point exactly right.",
+     "When a code such as \"misalignment millimeter wave radar\" appears, the system switches off until it is aimed again."
+    ],
+    "photo": "radar-module"
+   },
+   {
+    "h2": "Our 4 steps",
+    "steps": [
+     [
+      "Read",
+      "Scan for radar / camera codes"
+     ],
+     [
+      "Set up",
+      "Target stand placed for the car"
+     ],
+     [
+      "Aim",
+      "Radar or camera aiming on the scanner"
+     ],
+     [
+      "Road test",
+      "ACC and lane keep checked on the road"
+     ]
+    ]
+   },
+   {
+    "h2": "Before and after",
+    "pair": [
+     "radar-code",
+     "aiming-done"
+    ]
+   },
+   {
+    "h2": "Calibrations we have done",
+    "jobs": [
+     "Honda Civic Type R (FK8): ADAS calibration + road test",
+     "Honda Civic (2017, Japan): radar aiming after code P2583-76",
+     "Honda N-Box: ACC and lane-keep camera aiming",
+     "Toyota Alphard: pre-crash system malfunction, ADAS calibration + road test"
+    ]
+   }
+  ],
+  "faqs": [
+   {
+    "q": "Do I need calibration after bumper or windscreen work?",
+    "a": "If ACC or lane keep stops working after bumper, radar or windscreen work, the radar or camera may need aiming. WhatsApp us the car model and what you see."
+   },
+   {
+    "q": "Is there a road test?",
+    "a": "Yes. Every calibration we post ends with a road test."
+   },
+   {
+    "q": "Which cars can you calibrate?",
+    "a": "Our posts show Honda and Toyota jobs. The procedure depends on the car, so WhatsApp the model first and we will tell you."
+   }
+  ]
+ },
+ "ms": {
+  "keyword": "kalibrasi ADAS Kuantan",
+  "title": "Kalibrasi ADAS Kuantan: ACC atau LKAS Tak Berfungsi? | AP Car",
+  "description": "Kalibrasi ADAS Kuantan: kenapa ACC dan LKAS tak berfungsi, tandanya, dan cara AP Car kalibrasi radar atau kamera di bengkel, kemudian uji jalan.",
+  "h1": "Kalibrasi ADAS Kuantan: ACC atau LKAS tak berfungsi?",
+  "lead": "Kalibrasi ADAS Kuantan biasanya bermula dengan satu masalah: ACC atau LKAS tiba-tiba tak berfungsi. Ini maksudnya dan apa yang kami buat.",
+  "answer": "Bila radar atau kamera hadapan tak sejajar, ACC dan LKAS berhenti sehingga dikalibrasi semula. Kami baca kod, kalibrasi di bengkel kami dengan peralatan Autel / MaxiSys, kemudian uji jalan.",
+  "prefill": "Hi AP Car, ACC / LKAS kereta saya tak berfungsi, saya perlukan kalibrasi ADAS. Model kereta:",
+  "excerpt": "Tanda-tanda, kenapa sistem berhenti, dan 4 langkah kami.",
+  "sections": [
+   {
+    "h2": "Tanda perlu kalibrasi",
+    "list": [
+     "ACC atau LKAS tak berfungsi",
+     "\"Check System\" pada meter",
+     "Pre-crash system malfunction",
+     "Selepas kerja bampar, radar atau cermin depan",
+     "Lane keep tarik ke arah salah"
+    ],
+    "photo": "cluster-acc"
+   },
+   {
+    "h2": "Kenapa sistem berhenti",
+    "p": [
+     "ACC, LKAS, LDW dan sistem pre-crash bergantung pada radar dan kamera hadapan yang mesti tepat.",
+     "Bila keluar kod seperti \"misalignment millimeter wave radar\", sistem berhenti sehingga dikalibrasi semula."
+    ],
+    "photo": "radar-module"
+   },
+   {
+    "h2": "4 langkah kami",
+    "steps": [
+     [
+      "Baca",
+      "Scan kod radar / kamera"
+     ],
+     [
+      "Pasang",
+      "Stand sasaran ikut kereta"
+     ],
+     [
+      "Kalibrasi",
+      "Aiming radar atau kamera"
+     ],
+     [
+      "Uji jalan",
+      "ACC dan LKAS diuji di jalan"
+     ]
+    ]
+   },
+   {
+    "h2": "Sebelum dan selepas",
+    "pair": [
+     "radar-code",
+     "aiming-done"
+    ]
+   },
+   {
+    "h2": "Kalibrasi yang pernah kami buat",
+    "jobs": [
+     "Honda Civic Type R (FK8): kalibrasi ADAS + uji jalan",
+     "Honda Civic (2017, Jepun): radar aiming selepas kod P2583-76",
+     "Honda N-Box: kalibrasi kamera ACC dan LKAS",
+     "Toyota Alphard: pre-crash system malfunction, kalibrasi ADAS + uji jalan"
+    ]
+   }
+  ],
+  "faqs": [
+   {
+    "q": "Perlu kalibrasi selepas kerja bampar atau cermin depan?",
+    "a": "Jika ACC atau LKAS tak berfungsi selepas kerja bampar, radar atau cermin depan, radar atau kamera mungkin perlu dikalibrasi. WhatsApp model kereta dan apa yang anda nampak."
+   },
+   {
+    "q": "Ada uji jalan?",
+    "a": "Ada. Setiap kalibrasi yang kami kongsi diakhiri dengan uji jalan."
+   },
+   {
+    "q": "Kereta apa boleh dikalibrasi?",
+    "a": "Hantaran kami tunjuk kerja Honda dan Toyota. Prosedur ikut kereta, jadi WhatsApp model dulu."
+   }
+  ]
+ },
+ "zh": {
+  "keyword": "关丹雷达校准",
+  "title": "关丹雷达校准：ACC 或车道保持失灵？| AP Car",
+  "description": "关丹雷达校准：ACC 和车道保持为什么会失灵、有哪些迹象，以及 AP Car 如何在店里标定雷达或摄像头，再上路测试。",
+  "h1": "关丹雷达校准：ACC 或车道保持失灵怎么办？",
+  "lead": "来问关丹雷达校准的车主，通常都是同一个问题：ACC 或车道保持突然失灵。下面说明原因和我们的做法。",
+  "answer": "前雷达或摄像头一旦偏移，ACC 和车道保持就会暂停，直到重新校准。我们先读故障码，在店里用 Autel／MaxiSys 设备标定，再上路测试。",
+  "prefill": "你好 AP Car，我的 ACC／车道保持失灵，需要雷达校准。车型：",
+  "excerpt": "常见迹象、系统为什么暂停，以及我们的 4 个步骤。",
+  "sections": [
+   {
+    "h2": "需要校准的迹象",
+    "list": [
+     "ACC 或车道保持失灵",
+     "仪表显示 \"Check System\"",
+     "预碰撞系统故障",
+     "换过保险杠、雷达或挡风玻璃后",
+     "车道保持方向不对"
+    ],
+    "photo": "cluster-acc"
+   },
+   {
+    "h2": "系统为什么会暂停",
+    "p": [
+     "ACC 自适应巡航、车道保持、车道偏离警示和预碰撞系统，都靠前雷达和摄像头准确对正。",
+     "一旦出现 \"misalignment millimeter wave radar\" 之类的故障码，系统会暂停，直到重新校准。"
+    ],
+    "photo": "radar-module"
+   },
+   {
+    "h2": "我们的 4 个步骤",
+    "steps": [
+     [
+      "读码",
+      "扫描雷达／摄像头故障码"
+     ],
+     [
+      "架设",
+      "按车型摆好标靶"
+     ],
+     [
+      "标定",
+      "扫描仪执行雷达或摄像头校准"
+     ],
+     [
+      "路试",
+      "上路确认 ACC 与车道保持"
+     ]
+    ]
+   },
+   {
+    "h2": "校准前后",
+    "pair": [
+     "radar-code",
+     "aiming-done"
+    ]
+   },
+   {
+    "h2": "做过的校准",
+    "jobs": [
+     "本田 Civic Type R（FK8）：ADAS 校准 + 路试",
+     "本田 Civic（2017 日规）：故障码 P2583-76 后雷达校准",
+     "本田 N-Box：ACC 与车道保持摄像头校准",
+     "丰田 Alphard：预碰撞系统故障，ADAS 校准 + 路试"
+    ]
+   }
+  ],
+  "faqs": [
+   {
+    "q": "换保险杠或挡风玻璃后需要校准吗？",
+    "a": "如果换过保险杠、雷达或挡风玻璃后 ACC 或车道保持失灵，雷达或摄像头可能需要重新校准。请 WhatsApp 告诉我们车型和看到的情况。"
+   },
+   {
+    "q": "会路试吗？",
+    "a": "会。我们发布的每一单校准都以路试结束。"
+   },
+   {
+    "q": "哪些车可以校准？",
+    "a": "我们发布过本田和丰田的案例。程序因车而异，请先 WhatsApp 车型。"
+   }
+  ]
+ }
+}

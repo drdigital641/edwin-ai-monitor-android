@@ -1,0 +1,8 @@
+{
+ "_readme": "Photos already on the preview (assets/img/<key>-480.webp / -960.webp). Size = the -960 file. Captions = the preview's own alt text, word for word, per language. Add a photo here (from config.json photos) before an article uses it.",
+ "adas-setup": {"w": 960, "h": 1280, "en": "MaxiSys ADAS target in front of a Honda Civic", "ms": "Sasaran ADAS MaxiSys di depan Honda Civic", "zh": "MaxiSys ADAS 标靶对准本田 Civic"},
+ "radar-code": {"w": 960, "h": 438, "en": "Before: radar misalignment code P2583-76", "ms": "Sebelum: kod radar tak sejajar P2583-76", "zh": "校准前：雷达偏移故障码 P2583-76"},
+ "aiming-done": {"w": 960, "h": 625, "en": "After: \"The Radar Aiming has been completed\"", "ms": "Selepas: \"The Radar Aiming has been completed\"", "zh": "校准后：\"The Radar Aiming has been completed\""},
+ "radar-module": {"w": 960, "h": 1280, "en": "Front radar module behind the bumper (Honda)", "ms": "Modul radar hadapan di belakang bampar (Honda)", "zh": "保险杠后的前雷达模块（本田）"},
+ "cluster-acc": {"w": 960, "h": 1280, "en": "ACC warning on a Japan-spec Civic", "ms": "Amaran ACC pada Civic spesifikasi Jepun", "zh": "日规 Civic 的 ACC 警示"}
+}
