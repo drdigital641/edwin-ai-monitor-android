@@ -296,7 +296,7 @@ def sgcw_badge(c):
             f'href="https://sgcarworkshop.sg/workshops/{c["sgcw"]}/">Premium on SG Car Workshop</a>')
 
 
-def clients_page():
+def clients_page(path="clients/index.html", robots=None, wl=WL_LIVE):
     cards = []
     for c in SC["clients"]:
         k = c["key"]
@@ -332,7 +332,7 @@ def clients_page():
                                "description": c["industry"], "creator": PROVIDER, "maintainer": PROVIDER},
                               **({"dateCreated": c["launched"]} if len(c["launched"]) == 10 else {}))}
                 for i, c in enumerate(SC["clients"])]
-    page("clients/index.html",
+    page(path,
          "Client Websites &amp; Google Results | Page One Singapore",
          f"See the websites Page One Singapore built and runs for real Singapore businesses, with their Google Search Console numbers to {THROUGH_SHORT}. %%PLAN%% a month.",
          [{"@context": "https://schema.org", "@type": "CollectionPage", "url": SITE + "/clients/",
@@ -350,7 +350,7 @@ def clients_page():
         <p class="kicker reveal">New clients, every week</p>
         <h2 class="reveal">Young, and growing in the open</h2>
         <p class="section-lead reveal">""" + growing_lead() + """ Signed-up clients are counted, but only named once their own website is live.</p>
-        """ + growth_chart() + """
+""" + (client_counts_block() if wl else "") + """        """ + growth_chart() + """
         <h3 class="reveal">The newest client websites</h3>
         <div class="cards three site-cards" style="margin:20px 0 36px">
 """ + newest_cards(3) + """
@@ -399,7 +399,8 @@ def clients_page():
     </section>
 
 """ + cta("Want your business on this page?", "Sign up at %%PLAN%% a month, or check where your website stands today. No obligation."),
-         crumb="Clients", updated=CLIENTS_UPDATED, head_extra="\n  <style>" + GROW_CSS + "</style>")
+         crumb="Clients", updated=CLIENTS_UPDATED, head_extra="\n  <style>" + GROW_CSS + (WL_CSS if wl else "") + "</style>",
+         **({"robots": robots} if robots else {}), **({"foot_extra": WL_COUNTS_JS} if wl else {}))
 
 _WORDS = ["zero", "one", "two", "three", "four", "five", "six", "seven", "eight", "nine", "ten"]
 _n_others = sum(1 for c in SC["clients"] if stage(c["key"]) != "case")

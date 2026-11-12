@@ -86,6 +86,7 @@ LLMS_PAGES = []  # (url, title, description, [(question, answer)]) for llms-full
 
 
 # Client list and every Search Console figure on the site (builder/showcase.json).
+exec(open(os.path.join(HERE, "white_label.py"), encoding="utf-8").read())
 exec(open(os.path.join(HERE, "showcase.py"), encoding="utf-8").read())
 
 
@@ -1552,25 +1553,37 @@ exec(open(os.path.join(HERE, "ads_compare.py"), encoding="utf-8").read())
 # Lead generation repositioning (28 Oct 2026): /how-it-works/ and /lead-generation-singapore/.
 exec(open(os.path.join(HERE, "lead_gen.py"), encoding="utf-8").read())
 
-page("index.html",
-     "Get Found, Get Enquiries: Affordable SEO Singapore from %%PLAN%%",
-     "Help customers find your business on Google and AI search like ChatGPT, then turn visitors into enquiries. Website included, %%PLAN%%/month, no contract.",
-     [HOME_FAQ_LD, {"@context": "https://schema.org", "@graph": [
-         dict(ORG_CORE,
-              founder=FOUNDER,
-              parentOrganization=COMPANY,
-              knowsAbout=["Search engine optimisation", "Local SEO", "Google Business Profile", "AI search visibility", "Generative engine optimisation", "Small business websites"],
-              openingHoursSpecification=CONTACT_POINT["hoursAvailable"],
-              makesOffer=[{"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Get Found basic subscription (website built free or fixed, Google and AI search setup, managed daily)", "url": SITE + "/get-found/"}, "price": "%%PLAN_NUM%%", "priceCurrency": "SGD",
-                           "priceSpecification": {"@type": "UnitPriceSpecification", "price": "%%PLAN_NUM%%", "priceCurrency": "SGD", "unitCode": "MON"}},
-                          {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "SEO Boost", "url": SITE + "/seo-boost/"}, "price": "10", "priceCurrency": "SGD"}]),
-         WEBSITE_NODE]}],
-     fill_home(open(os.path.join(HERE, "home_body.html"), encoding="utf-8").read().rstrip("\n").replace("{{GLANCE_ANSWER}}", GLANCE_ANSWER).replace("{{HOME_FAQ}}", HOME_FAQ_HTML)
-              .replace("{{WA_HERO}}", wa_src("Hi Edwin, I'd like more customer enquiries for my business.", "homepage, top"))
-              .replace("{{WA_FINAL}}", wa_src("Hi Edwin, I'd like more customer enquiries for my business.", "homepage, bottom"))),
-     updated=max(SC_UPDATED, AIV_UPDATED, "2026-11-08"),
-     head_extra="\n  <style>" + " ".join(open(os.path.join(HERE, "home_motion.css"), encoding="utf-8").read().split("\n")[1:]).strip() + GROW_CSS + "</style>",
-     foot_extra='\n  <script src="/motion.js?v=4" defer></script>')
+def build_home(path="index.html", robots=None, wl=WL_LIVE):
+    page(path,
+         "Get Found, Get Enquiries: Affordable SEO Singapore from %%PLAN%%",
+         "Help customers find your business on Google and AI search like ChatGPT, then turn visitors into enquiries. Website included, %%PLAN%%/month, no contract.",
+         [HOME_FAQ_LD, {"@context": "https://schema.org", "@graph": [
+             dict(ORG_CORE,
+                  founder=FOUNDER,
+                  parentOrganization=COMPANY,
+                  knowsAbout=["Search engine optimisation", "Local SEO", "Google Business Profile", "AI search visibility", "Generative engine optimisation", "Small business websites"],
+                  openingHoursSpecification=CONTACT_POINT["hoursAvailable"],
+                  makesOffer=[{"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Get Found basic subscription (website built free or fixed, Google and AI search setup, managed daily)", "url": SITE + "/get-found/"}, "price": "%%PLAN_NUM%%", "priceCurrency": "SGD",
+                               "priceSpecification": {"@type": "UnitPriceSpecification", "price": "%%PLAN_NUM%%", "priceCurrency": "SGD", "unitCode": "MON"}},
+                              {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "SEO Boost", "url": SITE + "/seo-boost/"}, "price": "10", "priceCurrency": "SGD"}]),
+             WEBSITE_NODE]}],
+         fill_home(open(os.path.join(HERE, "home_body.html"), encoding="utf-8").read().rstrip("\n").replace("{{GLANCE_ANSWER}}", GLANCE_ANSWER).replace("{{HOME_FAQ}}", HOME_FAQ_HTML)
+                  .replace("{{WHITE_LABEL}}", white_label_section() if wl else "")
+                  .replace("{{WA_HERO}}", wa_src("Hi Edwin, I'd like more customer enquiries for my business.", "homepage, top"))
+                  .replace("{{WA_FINAL}}", wa_src("Hi Edwin, I'd like more customer enquiries for my business.", "homepage, bottom"))),
+         updated=max(SC_UPDATED, AIV_UPDATED, "2026-11-08"),
+         head_extra="\n  <style>" + " ".join(open(os.path.join(HERE, "home_motion.css"), encoding="utf-8").read().split("\n")[1:]).strip() + GROW_CSS + (WL_CSS if wl else "") + "</style>",
+         foot_extra='\n  <script src="/motion.js?v=4" defer></script>', **({"robots": robots} if robots else {}))
+
+
+build_home()
+# White label preview (Edwin 12 Nov 2026): noindex copy of the homepage and /clients/ with the new parts switched on.
+build_home(WL_PREVIEW + "index.html", robots="noindex, nofollow", wl=True)
+clients_page(WL_PREVIEW + "clients/index.html", robots="noindex, nofollow", wl=True)
+for _p in (WL_PREVIEW + "index.html", WL_PREVIEW + "clients/index.html"):
+    _f = os.path.join(ROOT, _p)
+    _h = wl_preview_links(open(_f, encoding="utf-8").read())
+    open(_f, "w", encoding="utf-8").write(_h)
 
 
 # ---------- llms-full.txt and per-page sitemap dates ----------
