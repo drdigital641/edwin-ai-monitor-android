@@ -1242,6 +1242,47 @@
       "articles": 6,
       "short": "car repair",
       "sgcw": "new-zen-werkz"
+    },
+    {
+      "key": "jb-staycations",
+      "name": "JB Staycations",
+      "domain": "jbstaycations.com",
+      "url": "https://jbstaycations.com/",
+      "industry": "Holiday houses in Johor Bahru, for Singapore groups",
+      "schema_type": "LodgingBusiness",
+      "img": "/images/clients/jbstaycations.webp",
+      "gsc_site": "sc-domain:jbstaycations.com",
+      "launched": "2026-11-09",
+      "brand_terms": [
+        "jb staycations",
+        "jbstaycations",
+        "jb staycation"
+      ],
+      "skip_queries": [],
+      "gsc": {
+        "record_id": null,
+        "first_day": null,
+        "clicks": 0,
+        "impressions": 0,
+        "position": 0,
+        "prev_clicks": 0,
+        "prev_impressions": 0,
+        "prev_position": 0,
+        "queries": 0,
+        "page_one": 0,
+        "top3": 0,
+        "capped": false,
+        "monthly": [],
+        "best_query": null,
+        "top_queries": []
+      },
+      "built": [
+        "A page for each of the two private houses, Prima in Gelang Patah and Landak near KSL City Mall",
+        "Clear prices per night in ringgit, with cleaning included and the house rules up front",
+        "Getting-there guides from Singapore and one-tap WhatsApp booking"
+      ],
+      "articles": 4,
+      "short": "JB holiday houses"
     }
   ],
   "pipeline": {

@@ -12,17 +12,17 @@ GOOGLE_DO_I_NEED_SEO = "https://developers.google.com/search/docs/fundamentals/d
 
 AFF_ANSWER = ("Affordable SEO services in Singapore are ongoing monthly SEO a small business can keep paying for. "
               "Small-business agency retainers are often around S$500 to S$3,000 a month (a general market range, not a quote). "
-              "Page One's affordable SEO service is S$50 a month, website included, with a new article every 2 days and a "
+              "Page One's affordable SEO service is %%PLAN%% a month, website included, with a new article every 2 days and a "
               "technical audit every day. No setup fee, no contract.")
 
 AFF_FAQ = [
     ("What are affordable SEO services?",
      "Affordable SEO services are ongoing search engine optimisation priced for a small business: a fast website, a Google Business Profile, "
      "Search Console, a page for each service, regular new content and frequent technical checks, paid monthly at a price you can keep up. "
-     "Page One Singapore provides all of that for S$50 a month, website included, with no setup fee and no contract."),
+     "Page One Singapore provides all of that for %%PLAN%% a month, website included, with no setup fee and no contract."),
     ("How much do affordable SEO services cost in Singapore?",
      "As a general guide, small-business SEO retainers from agencies are often around S$500 to S$3,000 or more a month, sometimes with a setup "
-     "or audit fee. These are typical ranges, not quotes. Page One's Get Found plan is S$50 a month for anyone who registers by 31 Dec 2026, "
+     "or audit fee. These are typical ranges, not quotes. Page One's Get Found plan is %%PLAN%% a month for anyone who registers by 31 Dec 2026, "
      "and optional SEO Boosts are S$10 per run. Your domain, usually S$15 to S$30 a year, is the only extra."),
     ("Are affordable SEO packages worth it for a small business?",
      "They are when the package covers the essentials and keeps working every month: a site Google can read, a Google Business Profile, "
@@ -37,7 +37,7 @@ AFF_FAQ = [
      "New pages can start appearing in Search Console sooner, but no one can promise when or where. We show you the numbers in your own "
      "Search Console instead of promising rankings."),
     ("Do I need a website first?",
-     "No. If you don't have a website yet, we build one at no extra charge as part of the S$50 a month, usually live within 7 days of getting "
+     "No. If you don't have a website yet, we build one at no extra charge as part of the %%PLAN%% a month, usually live within 7 days of getting "
      "your details and photos. If you already have one, we fix its on-page technical SEO, or redesign it free if you ask."),
     ("Do you guarantee page one on Google?",
      "No. Google decides rankings, so no honest provider can guarantee them. Be careful of any affordable SEO package that does. "
@@ -52,7 +52,7 @@ _AFF_CHECKLIST = [
     ("New content, regularly", "Fresh pages answering real customer searches give Google new reasons to show you", "Included: a new article every 2 days, each aimed at a different search"),
     ("Technical checks", "Broken links, slow pages and indexing problems quietly cost you visibility", "Included: a technical audit every day, with problems fixed"),
     ("AI search readiness", "More people ask ChatGPT or read Google's AI answers before they click", "Included: Bing setup, labelled business details and an llms.txt summary"),
-    ("Fair terms", "You own your domain, no long lock-in, a published price", "S$50 a month, no setup fee, no contract, domain in your name"),
+    ("Fair terms", "You own your domain, no long lock-in, a published price", "%%PLAN%% a month, no setup fee, no contract, domain in your name"),
 ]
 
 _AFF_FLAGS = [
@@ -68,10 +68,10 @@ _aff_check_rows = "".join(f"<tr><th>{a}</th><td>{b}</td><td>{c}</td></tr>" for a
 _aff_flag_rows = "".join(f"<tr><th>{a}</th><td>{b}</td></tr>" for a, b in _AFF_FLAGS)
 
 page(AFF_URL.strip("/") + "/index.html",
-     "Affordable SEO Services Singapore: S$50/month, No Contract",
-     "Affordable SEO services in Singapore for S$50/month: website included, a new article every 2 days, daily technical audits. No setup fee, no contract.",
+     "Affordable SEO Services Singapore: %%PLAN%%/month, No Contract",
+     "Affordable SEO services in Singapore for %%PLAN%%/month: website included, a new article every 2 days, daily technical audits. No setup fee, no contract.",
      [service("Affordable SEO services for Singapore small businesses", AFF_URL,
-              "Affordable, ongoing SEO for Singapore small businesses for S$50 a month: a website (built free, or your current site's technical SEO fixed), Google, Google Maps and AI search setup, a new article every 2 days and a technical audit every day.", "50"),
+              "Affordable, ongoing SEO for Singapore small businesses for %%PLAN%% a month: a website (built free, or your current site's technical SEO fixed), Google, Google Maps and AI search setup, a new article every 2 days and a technical audit every day.", "%%PLAN_NUM%%"),
       {"@context": "https://schema.org", "@type": "Article",
        "headline": "Affordable SEO services in Singapore: what you should get, and for how much",
        "description": AFF_ANSWER,
@@ -79,12 +79,12 @@ page(AFF_URL.strip("/") + "/index.html",
        "author": {"@type": "Person", "name": "Edwin", "jobTitle": "Founder, Page One Singapore", "url": SITE + "/about/"},
        "publisher": PROVIDER, "datePublished": AFF_UPDATED, "dateModified": AFF_UPDATED,
        "about": ["Affordable SEO services", "Small business SEO", "SEO packages Singapore"],
-       "image": SITE + "/images/og-50.png"},
+       "image": SITE + "/images/og-%%PLAN_NUM%%.png"},
       _faq_ld(AFF_FAQ), _price_ld(AFF_URL)],
      hero("Affordable SEO services", "Affordable SEO services Singapore",
-          "Affordable SEO services in Singapore, from S$50 a month",
+          "Affordable SEO services in Singapore, from %%PLAN%% a month",
           AFF_ANSWER,
-          '<p class="hero-price"><b>S$50</b>/month · <span class="intro-tag">Register by 31 Dec 2026</span> · no setup fee · no contract · '
+          '<p class="hero-price"><b>%%PLAN%%</b>/month · <span class="intro-tag">Register by 31 Dec 2026</span> · no setup fee · no contract · '
           '<a class="link" href="https://wa.me/6597856612" target="_blank" rel="noopener">WhatsApp +65 9785 6612</a></p>\n'
           f'        <p class="hero-alt">Updated <time datetime="{AFF_UPDATED}">25 October 2026</time> · By <a href="/about/">Edwin, Page One Singapore</a></p>') + f"""
 
@@ -95,7 +95,7 @@ page(AFF_URL.strip("/") + "/index.html",
         <p class="section-lead reveal">An affordable SEO package should cover the eight essentials below every month, not just once at the start. Use this list to compare any SEO service, including ours.</p>
         <div class="table-wrap reveal" style="margin-top:24px">
           <table class="compare">
-            <thead><tr><th>Essential</th><th>Why it matters</th><th>Page One, S$50 a month</th></tr></thead>
+            <thead><tr><th>Essential</th><th>Why it matters</th><th>Page One, %%PLAN%% a month</th></tr></thead>
             <tbody>{_aff_check_rows}</tbody>
           </table>
         </div>
@@ -157,9 +157,9 @@ page(AFF_URL.strip("/") + "/index.html",
         <h2 class="reveal">Affordable SEO services: your questions, answered</h2>
         <div style="margin-top:24px">
 {_faq_html(AFF_FAQ)}        </div>
-        <p class="note reveal">Need a website and SEO on a small budget? <a class="link" href="/budget-seo-website-singapore/">Website and SEO for S$50 a month →</a> · <a class="link" href="/pricing/">Full pricing →</a> · <a class="link" href="/seo-boost/">What an SEO Boost does →</a></p>
+        <p class="note reveal">Need a website and SEO on a small budget? <a class="link" href="/budget-seo-website-singapore/">Website and SEO for %%PLAN%% a month →</a> · <a class="link" href="/pricing/">Full pricing →</a> · <a class="link" href="/seo-boost/">What an SEO Boost does →</a></p>
       </div>
     </section>
 
-""" + cta("Affordable SEO that you can check", "Start at S$50 a month with no setup fee and no contract, or ask Edwin anything on WhatsApp first. No obligation."),
+""" + cta("Affordable SEO that you can check", "Start at %%PLAN%% a month with no setup fee and no contract, or ask Edwin anything on WhatsApp first. No obligation."),
      crumb="Affordable SEO services", updated=AFF_UPDATED)

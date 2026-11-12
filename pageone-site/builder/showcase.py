@@ -149,10 +149,11 @@ LIVE_COUNT_WORD = ["zero", "one", "two", "three", "four", "five", "six", "seven"
 
 # Portfolio growth: live sites per launch month (cumulative) plus the signed-up sites still being built.
 GROWTH = [(m, sum(1 for c in SC["clients"] if c["launched"][:7] <= m)) for m in sorted({c["launched"][:7] for c in SC["clients"]})]
-BUILDING = int(SC.get("pipeline", {}).get("building", 0))
+# Sites being built: no number here. The count comes live from the Controller feed in the browser
+# (count_span / build_bar in white_label.py, Edwin 12 Nov 2026), so nothing is hard-coded.
 GROWTH_AS_OF = date_long(max([SC.get("pipeline", {}).get("as_of", SC_UPDATED)] + [c["launched"] for c in SC["clients"] if len(c["launched"]) == 10]))
 GROWTH_LINE = (" · ".join(f"{month_long(m) if i == 0 else month_long(m).split()[0]}: {n} live" for i, (m, n) in enumerate(GROWTH))
-               + (f", plus {BUILDING} more being built" if BUILDING else "") + f" (as of {GROWTH_AS_OF})")
+               + count_span("building", ", plus ", " more being built") + f" (as of {GROWTH_AS_OF})")
 
 
 def names_list(names):
@@ -206,7 +207,7 @@ def launch_short(c):
 def growing_lead():
     return (f"Page One Singapore is new, and we say so openly: the first website on our system went live in {FIRST_LAUNCH}. "
             f"As of {GROWTH_AS_OF}, {LIVE_N} client websites are live on their own domains"
-            + (f", {BUILDING} more are being built for clients who have signed up" if BUILDING else "")
+            + count_span("building", ", ", " more are being built for clients who have signed up")
             + f", and {N_SPAN} of the live ones {SPAN_TEXT}.")
 
 
@@ -219,13 +220,11 @@ def newest_cards(n=3):
 
 
 def growth_chart():
-    top = max(n for _, n in GROWTH_MONTHS) + BUILDING
+    top = max(n for _, n in GROWTH_MONTHS)
     bars = [f'<div class="g" style="--h:{round(n / top, 3)}"><span>{n}</span><i></i><small>{month_short(m)[:3]}</small></div>' for m, n in GROWTH_MONTHS]
-    if BUILDING:
-        bars.append(f'<div class="g b" style="--h:{round(BUILDING / top, 3)}"><span>+{BUILDING}</span><i></i><small>Building</small></div>')
-    label = "; ".join(f"{month_long(m)}: {n} live" for m, n in GROWTH_MONTHS) + (f"; plus {BUILDING} being built" if BUILDING else "")
+    label = "; ".join(f"{month_long(m)}: {n} live" for m, n in GROWTH_MONTHS)
     return (f'<div class="grow reveal" style="--n:{len(bars)}" role="img" aria-label="Client websites live at the end of each month: {label}">'
-            + "".join(bars) + "</div>")
+            + "".join(bars) + build_bar(top) + "</div>")
 
 
 def launch_log():
@@ -296,7 +295,7 @@ def sgcw_badge(c):
             f'href="https://sgcarworkshop.sg/workshops/{c["sgcw"]}/">Premium on SG Car Workshop</a>')
 
 
-def clients_page():
+def clients_page(path="clients/index.html", robots=None, wl=WL_LIVE):
     cards = []
     for c in SC["clients"]:
         k = c["key"]
@@ -321,8 +320,8 @@ def clients_page():
         ("Are these real businesses?", f"Yes. Every website on this page is live on the business's own domain, so you can open it and check. Edwin Garage is our founder's own car workshop, where the system was first built. The others are businesses we build and run websites for."),
         ("Where do the Google numbers come from?", f"From Google Search Console, Google's own report of how a website performs in Google Search. We collect the final data automatically and don't edit it. The figures on this page cover the 28 days to {THROUGH} ({WINDOW}), compared with the 28 days before ({PREV_WINDOW})."),
         ("Why do some websites have no numbers?", "Google needs time to find and test a new website. A site launched this month has no Search Console data yet, so we show what we built instead of guessing. The numbers will appear here once Google has them."),
-        ("How can it be good if it only costs S$50 a month?", "The price is low because a set of AI tools we designed does the daily SEO work that used to be billed by the hour, not because steps are skipped. The websites and numbers on this page are the proof, not a promise: results vary by business, and newer sites show smaller numbers."),
-        ("Is Page One Singapore a new company?", f"Yes. Page One Singapore is run by Snap Commercial Pte. Ltd., a Singapore company registered in 2022, and the first website on our SEO system went live in {FIRST_LAUNCH}. As of {GROWTH_AS_OF}, {LIVE_N} client websites are live on their own domains" + (f" and {BUILDING} more are being built for clients who have signed up" if BUILDING else "") + ". We add each new one to this page the day it goes live, so you can watch the portfolio grow."),
+        ("How can it be good if it only costs %%PLAN%% a month?", "The price is low because a set of AI tools we designed does the daily SEO work that used to be billed by the hour, not because steps are skipped. The websites and numbers on this page are the proof, not a promise: results vary by business, and newer sites show smaller numbers."),
+        ("Is Page One Singapore a new company?", f"Yes. Page One Singapore is run by Snap Commercial Pte. Ltd., a Singapore company registered in 2022, and the first website on our SEO system went live in {FIRST_LAUNCH}. As of {GROWTH_AS_OF}, {LIVE_N} client websites are live on their own domains" + ". We add each new one to this page the day it goes live, so you can watch the portfolio grow."),
         ("Why are some clients not named?", "A website being built is only counted, never named, until it is live on the business's own domain. That protects our clients' plans and means every name on this page is a website you can open and check."),
         ("How can I tell a website was built by Page One Singapore?", "Most client websites carry a small &ldquo;Website &amp; SEO by Page One Singapore&rdquo; credit in their footer that links back to this site, and every one of them is listed on this page with its own domain. Each card above links straight to the live website, so you can check both ways."),
         ("How often is this page updated?", "Each new client website is added the day it goes live on its own domain, and the Search Console figures are refreshed when new final data is collected. The date of the data is always shown next to the numbers."),
@@ -332,9 +331,9 @@ def clients_page():
                                "description": c["industry"], "creator": PROVIDER, "maintainer": PROVIDER},
                               **({"dateCreated": c["launched"]} if len(c["launched"]) == 10 else {}))}
                 for i, c in enumerate(SC["clients"])]
-    page("clients/index.html",
+    page(path,
          "Client Websites &amp; Google Results | Page One Singapore",
-         f"See the websites Page One Singapore built and runs for real Singapore businesses, with their Google Search Console numbers to {THROUGH_SHORT}. S$50 a month.",
+         f"See the websites Page One Singapore built and runs for real Singapore businesses, with their Google Search Console numbers to {THROUGH_SHORT}. %%PLAN%% a month.",
          [{"@context": "https://schema.org", "@type": "CollectionPage", "url": SITE + "/clients/",
            "name": "Client websites and results", "about": PROVIDER, "inLanguage": "en-SG", "dateModified": CLIENTS_UPDATED,
            "mainEntity": {"@type": "ItemList", "name": "Websites built and run by Page One Singapore",
@@ -342,7 +341,7 @@ def clients_page():
           {"@context": "https://schema.org", "@type": "FAQPage",
            "mainEntity": [{"@type": "Question", "name": q, "acceptedAnswer": {"@type": "Answer", "text": a}} for q, a in faq]}],
          hero("Clients", "Client websites",
-              "S$50 a month, and here is what it has done for real Singapore businesses.",
+              "%%PLAN%% a month, and here is what it has done for real Singapore businesses.",
               f"Every website below is live on the business's own domain. Open them, judge the design yourself, and read their Google numbers straight from Search Console, with data to {THROUGH}. We are new and growing: each new client website is added here the day it goes live.", buttons=False) + """
 
     <section class="section" id="newest">
@@ -350,7 +349,7 @@ def clients_page():
         <p class="kicker reveal">New clients, every week</p>
         <h2 class="reveal">Young, and growing in the open</h2>
         <p class="section-lead reveal">""" + growing_lead() + """ Signed-up clients are counted, but only named once their own website is live.</p>
-        """ + growth_chart() + """
+""" + (client_counts_block() if wl else "") + """        """ + growth_chart() + """
         <h3 class="reveal">The newest client websites</h3>
         <div class="cards three site-cards" style="margin:20px 0 36px">
 """ + newest_cards(3) + """
@@ -366,7 +365,7 @@ def clients_page():
         <p class="kicker reveal">Cheap can still be good</p>
         <h2 class="reveal">A low price, with the numbers to back it</h2>
         <p class="reveal" style="margin:-4px 0 14px;font-weight:600">Eligible automotive clients also get a premium listing on <a class="link" href="https://sgcarworkshop.sg/">SG Car Workshop</a>, a directory of Singapore car workshops.</p>
-        <p class="section-lead reveal">S$50 a month is low because a set of AI tools we designed does the daily SEO work that used to be billed by the hour, not because steps are skipped. Here is what the same system has done. Last 28 days (""" + WINDOW + """), compared with the 28 days before.</p>
+        <p class="section-lead reveal">%%PLAN%% a month is low because a set of AI tools we designed does the daily SEO work that used to be billed by the hour, not because steps are skipped. Here is what the same system has done. Last 28 days (""" + WINDOW + """), compared with the 28 days before.</p>
         <div class="reveal">""" + kpis([
             ("Edwin Garage: clicks from Google", EG["clicks"], f"Up from {EG['prev_clicks']} · average position {EG['pos']}"),
             ("Edwin Garage: searches on page one", EG["page_one"], f"{EG['top3']} in the top 3"),
@@ -374,7 +373,7 @@ def clients_page():
             ("Websites live", str(len(SC["clients"])), "Each on the business's own domain"),
         ]) + """</div>
         <p class="note reveal"><b>Portfolio growth:</b> """ + GROWTH_LINE + """. Only sites live on the business's own domain are counted as live.</p>
-        <p class="note reveal">Results vary by business, and no one can guarantee rankings. Newer sites are shown too, with smaller numbers or none yet. <a class="link" href="/cheapest-seo-singapore/">Why it costs S$50 →</a></p>
+        <p class="note reveal">Results vary by business, and no one can guarantee rankings. Newer sites are shown too, with smaller numbers or none yet. <a class="link" href="/cheapest-seo-singapore/">Why it costs %%PLAN%% →</a></p>
       </div>
     </section>
 
@@ -398,8 +397,9 @@ def clients_page():
 """ for q, a in faq) + """      </div>
     </section>
 
-""" + cta("Want your business on this page?", "Sign up at S$50 a month, or check where your website stands today. No obligation."),
-         crumb="Clients", updated=CLIENTS_UPDATED, head_extra="\n  <style>" + GROW_CSS + "</style>")
+""" + cta("Want your business on this page?", "Sign up at %%PLAN%% a month, or check where your website stands today. No obligation."),
+         crumb="Clients", updated=CLIENTS_UPDATED, head_extra="\n  <style>" + GROW_CSS + WL_CSS + "</style>",
+         **({"robots": robots} if robots else {}), foot_extra=WL_COUNTS_JS)
 
 _WORDS = ["zero", "one", "two", "three", "four", "five", "six", "seven", "eight", "nine", "ten"]
 _n_others = sum(1 for c in SC["clients"] if stage(c["key"]) != "case")
@@ -471,7 +471,7 @@ HOME_TOKENS = {
         <p class="note reveal"><a class="card-link" href="/clients/#newest">See every client website, newest first →</a></p>
       </div>
     </section>""",
-    "{{MARQUEE_LABEL}}": f"Already running for {len(SC['clients'])} businesses" + (f" · {BUILDING} more being built" if BUILDING else ""),
+    "{{MARQUEE_LABEL}}": f"Already running for {len(SC['clients'])} businesses" + count_span("building", " · ", " more being built"),
     "{{HOME_KPIS}}": "\n".join(
         f'          <div class="kpi"><div class="label">{l}</div><div class="value">{v}</div><div class="delta">{d}</div>{b}</div>' for l, v, d, b in [
             ("Edwin Garage: clicks from Google", EG["clicks"], f"Up from {EG['prev_clicks']} · average position {EG['pos']}",
@@ -528,12 +528,12 @@ def llms_sections():
                      + names_list([month_long(m) for m in sorted({c["launched"][:7] for c in new})]) + ", no Search Console data yet.")
     lines += ["- Full case studies: https://pageonesingapore.com/results/",
               "- Every client website with its numbers: https://pageonesingapore.com/clients/",
-              "- Low price, real results: S$50 a month is low because a set of AI tools we designed does the daily SEO work that used to be billed by the hour; "
+              "- Low price, real results: %%PLAN%% a month is low because a set of AI tools we designed does the daily SEO work that used to be billed by the hour; "
               "the numbers above come from the same system."]
     growth = ", ".join(f"{n} by {month_long(m)}" for m, n in GROWTH)
     sites = ["## Websites we run",
              f"- As of {GROWTH_AS_OF}, Page One runs {len(SC['clients'])} live client websites, each on the business's own domain "
-             f"(live count: {growth})" + (f", and is building {BUILDING} more for clients who have signed up." if BUILDING else ".")] + [f"- [{c['name']}]({c['url']}): {c['industry']}" + (f" (live since {date_long(c['launched'])})" if len(c['launched']) == 10 else f" (launched {month_long(c['launched'])})" if stage(c['key']) == "new" else "")
+             f"(live count: {growth})."] + [f"- [{c['name']}]({c['url']}): {c['industry']}" + (f" (live since {date_long(c['launched'])})" if len(c['launched']) == 10 else f" (launched {month_long(c['launched'])})" if stage(c['key']) == "new" else "")
                                       for c in SC["clients"]] + [
              f"- New and growing: Page One Singapore is a young company; the first website on its system went live in {FIRST_LAUNCH}. "
              f"{N_SPAN} client websites {SPAN_TEXT}, newest first: "
@@ -541,5 +541,5 @@ def llms_sections():
              "- Signed-up clients whose websites are still being built are counted but not named until their own domain is live."] + ["- All client websites with screenshots and dated results: https://pageonesingapore.com/clients/"]
     out = os.path.join(HERE, "..", "bridge")
     os.makedirs(out, exist_ok=True)
-    open(os.path.join(out, "llms-results.md"), "w", encoding="utf-8").write("\n".join(lines) + "\n")
+    open(os.path.join(out, "llms-results.md"), "w", encoding="utf-8").write(__import__("price").fill("\n".join(lines) + "\n"))
     open(os.path.join(out, "llms-websites.md"), "w", encoding="utf-8").write("\n".join(sites) + "\n")

@@ -4,6 +4,7 @@ Static site for Page One Singapore, hosted on Bluehost (`public_html/website_b1e
 
 - `site/` — the files as published (HTML, CSS, JS, icons, images).
 - `builder/build.py` — generates every page from one template: `python3 builder/build.py site`. Homepage and sample-report bodies live in `builder/home_body.html` and `builder/report_body.html`.
+- `builder/price.py` — the ONE place for the Get Found price (`PLAN`). Builder sources use tokens (`%%PLAN%%`, `%%PLAN_NUM%%`, `%%PLAN_YEAR%%`, `%%PLAN_YEAR_DOMAIN%%`, `%%PLAN_MAX%%`, `%%PLAN_B1..3%%`) filled when files are written; `build.py` also writes `PLAN_PRICE` into `site/main.js`, versions `main.js?v=` from its hash, and stops if `site/images/og-<PLAN>.png` is missing. To change the price: edit `PLAN`, make the og image, build, fix `bridge/lastmod.json` dates for changed pages, commit, then run `bridge/update_pins.mjs` in the Bridge (it copies `PLAN` into the Bridge's `PLAN_PRICE`, which fills `%%PLAN%%` in article pages, /articles/, llms.txt and sitemap titles).
 - `builder/mkedits.py` — makes minimal edit lists (old_text/new_text) between the last commit and the working copy, for uploading through the bridge's `edit_file`.
 - `htaccess.txt` — speed and HTTPS settings to paste into `.htaccess` in cPanel (the bridge does not write `.htaccess`).
 

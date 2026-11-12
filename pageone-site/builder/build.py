@@ -1,4 +1,7 @@
-import json, os, sys
+import hashlib, json, os, re, sys
+
+sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+from price import PLAN, fill  # the ONE place for the Get Found price
 
 ROOT = sys.argv[1]
 HERE = os.path.dirname(os.path.abspath(__file__))
@@ -12,11 +15,23 @@ def wa_src(text, source):
     """Pre-filled WhatsApp link that names where the tap came from (lead-generation CTAs, 28 Oct 2026)."""
     from urllib.parse import quote
     return f"https://wa.me/{WA}?text=" + quote(f"{text}\n\n(From pageonesingapore.com, {source})")
-UPDATED = "2026-10-19"
+UPDATED = "2026-11-11"
 BIZ_ID = SITE + "/#business"
 GBP = "https://maps.google.com/?cid=8757289318297107567"
+# Keep site/main.js on the same price, and give it a cache-busting version from its bytes.
+_MAIN_JS = os.path.join(ROOT, "main.js")
+if os.path.exists(_MAIN_JS):
+    _js = open(_MAIN_JS, encoding="utf-8").read()
+    _js2 = re.sub(r"^const PLAN_PRICE = \d+;", f"const PLAN_PRICE = {PLAN};", _js, count=1, flags=re.M)
+    if _js2 != _js:
+        open(_MAIN_JS, "w", encoding="utf-8").write(_js2)
+    MAIN_JS_V = hashlib.sha256(_js2.encode("utf-8")).hexdigest()[:8]
+else:
+    MAIN_JS_V = str(PLAN)
+if not os.path.exists(os.path.join(HERE, "..", "site", "images", f"og-{PLAN}.png")):
+    raise SystemExit(f"Missing share image site/images/og-{PLAN}.png for the new price: make it first.")
 API = "https://base44.app/api/apps/6ac7f2548a9c3877449e2772/functions"
-PROMO = '<div class="promo-bar"><div class="wrap"><b>Our price:</b> S$50/month for anyone who registers by 31 Dec 2026. From 2027 the price may rise, depending on demand, and we\'ll tell you before it changes. <a href="/signup/">Sign up &rarr;</a></div></div>'
+PROMO = '<div class="promo-bar"><div class="wrap"><b>Our price:</b> %%PLAN%%/month for anyone who registers by 31 Dec 2026. From 2027 the price may rise, depending on demand, and we\'ll tell you before it changes. <a href="/signup/">Sign up &rarr;</a></div></div>'
 
 NAV = [
     ("/how-it-works/", "How it works"),
@@ -56,9 +71,9 @@ CONTACT_POINT = {"@type": "ContactPoint", "contactType": "customer support", "te
 ORG_CORE = {"@type": "ProfessionalService", "@id": BIZ_ID, "name": "Page One Singapore",
             "alternateName": ["Page One SG", "PageOne Singapore"], "url": SITE + "/",
             "logo": {"@type": "ImageObject", "url": SITE + "/icon-512.png", "width": 512, "height": 512},
-            "image": SITE + "/images/og-50.png",
-            "description": "Done-for-you website and SEO for Singapore small businesses: a website built free (or your current one fixed) and managed every day, set up so Google Search, Google Maps and AI assistants can find it, from S$50 a month. No setup fee, no contract.",
-            "telephone": "+" + WA, "priceRange": "S$50 - S$100 per month",
+            "image": SITE + "/images/og-%%PLAN_NUM%%.png",
+            "description": "Done-for-you website and SEO for Singapore small businesses: a website built free (or your current one fixed) and managed every day, set up so Google Search, Google Maps and AI assistants can find it, from %%PLAN%% a month. No setup fee, no contract.",
+            "telephone": "+" + WA, "priceRange": "%%PLAN%% - %%PLAN_MAX%% per month",
             "address": {"@type": "PostalAddress", "addressCountry": "SG"},
             "areaServed": {"@type": "Country", "name": "Singapore"},
             "contactPoint": CONTACT_POINT, "hasMap": GBP, "sameAs": [GBP]}
@@ -71,6 +86,7 @@ LLMS_PAGES = []  # (url, title, description, [(question, answer)]) for llms-full
 
 
 # Client list and every Search Console figure on the site (builder/showcase.json).
+exec(open(os.path.join(HERE, "white_label.py"), encoding="utf-8").read())
 exec(open(os.path.join(HERE, "showcase.py"), encoding="utf-8").read())
 
 
@@ -99,7 +115,7 @@ def page(path, title, desc, schemas, body, crumb=None, robots="index, follow, ma
             "@context": "https://schema.org", "@type": "WebPage", "@id": SITE + current + "#webpage", "url": SITE + current, "name": title.replace("&amp;", "&"),
             "description": desc, "inLanguage": "en-SG", "isPartOf": {"@id": SITE + "/#website"},
             "about": {"@id": BIZ_ID}, "publisher": {"@id": BIZ_ID},
-            "primaryImageOfPage": {"@type": "ImageObject", "url": SITE + "/images/og-50.png", "width": 1200, "height": 630},
+            "primaryImageOfPage": {"@type": "ImageObject", "url": SITE + "/images/og-%%PLAN_NUM%%.png", "width": 1200, "height": 630},
             "dateModified": updated or UPDATED}]
         if path != "index.html":  # the homepage carries the full business description
             schemas = schemas + [{"@context": "https://schema.org", "@graph": [ORG_CORE, WEBSITE_NODE]}]
@@ -135,16 +151,16 @@ def page(path, title, desc, schemas, body, crumb=None, robots="index, follow, ma
   <meta property="og:title" content="{title}">
   <meta property="og:description" content="{desc}">
   <meta property="og:url" content="{SITE}{current}">
-  <meta property="og:image" content="{SITE}/images/og-50.png">
+  <meta property="og:image" content="{SITE}/images/og-%%PLAN_NUM%%.png">
   <meta property="og:image:width" content="1200">
   <meta property="og:image:height" content="630">
-  <meta property="og:image:alt" content="Page One Singapore: get found on Google and AI search from S$50 a month">
+  <meta property="og:image:alt" content="Page One Singapore: get found on Google and AI search from %%PLAN%% a month">
   <meta property="og:locale" content="en_SG">
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="{title}">
   <meta name="twitter:description" content="{desc}">
-  <meta name="twitter:image" content="{SITE}/images/og-50.png">
-  <meta name="twitter:image:alt" content="Page One Singapore: get found on Google and AI search from S$50 a month">
+  <meta name="twitter:image" content="{SITE}/images/og-%%PLAN_NUM%%.png">
+  <meta name="twitter:image:alt" content="Page One Singapore: get found on Google and AI search from %%PLAN%% a month">
   <meta name="theme-color" content="#060b18">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -179,7 +195,7 @@ def page(path, title, desc, schemas, body, crumb=None, robots="index, follow, ma
     <div class="wrap footer-grid">
       <div>
         <a class="logo" href="/"><span class="logo-mark">1</span><span>Page One <b>Singapore</b></span></a>
-        <p>Google + AI visibility for Singapore businesses. Island-wide, from S$50 a month.</p>
+        <p>Google + AI visibility for Singapore businesses. Island-wide, from %%PLAN%% a month.</p>
         <p><a class="footer-wa" href="{WA_LINK}" target="_blank" rel="noopener">WhatsApp {WA_DISPLAY}</a><br><span>Chat with Edwin · no obligation</span></p>
       </div>
       <div>
@@ -226,14 +242,14 @@ def page(path, title, desc, schemas, body, crumb=None, robots="index, follow, ma
     {WA_ICON}
   </a>
 
-  <script src="/main.js?v=17" defer></script>{foot_extra}
+  <script src="/main.js?v={MAIN_JS_V}" defer></script>{foot_extra}
 </body>
 </html>
 """
     out = os.path.join(ROOT, path)
     if os.path.dirname(path):
         os.makedirs(os.path.dirname(out), exist_ok=True)
-    open(out, "w", encoding="utf-8").write(html)
+    open(out, "w", encoding="utf-8").write(fill(html))
 
 
 def service(name, url, desc, price):
@@ -245,10 +261,10 @@ def service(name, url, desc, price):
         "description": desc,
         "provider": PROVIDER,
         "areaServed": {"@type": "Country", "name": "Singapore"},
-        "image": SITE + "/images/og-50.png",
+        "image": SITE + "/images/og-%%PLAN_NUM%%.png",
         "offers": {"@type": "Offer", "price": price, "priceCurrency": "SGD", "url": SITE + url,
                    **({"priceSpecification": {"@type": "UnitPriceSpecification", "price": price, "priceCurrency": "SGD", "unitCode": "MON"}}
-                      if price == "50" else {})},
+                      if price == "%%PLAN_NUM%%" else {})},
     }
 
 
@@ -258,7 +274,7 @@ def cta(title="Not sure where you stand?", text="Check your website free in unde
         <h2>{title}</h2>
         <p>{text}</p>
         <div class="cta-row center">
-          <a class="btn" href="/signup/">Sign up from S$50/month</a>
+          <a class="btn" href="/signup/">Sign up from %%PLAN%%/month</a>
           <a class="btn btn-ghost" href="{WA_LINK}" target="_blank" rel="noopener">Chat on WhatsApp</a>
         </div>
       </div>
@@ -268,7 +284,7 @@ def cta(title="Not sure where you stand?", text="Check your website free in unde
 def hero(crumb, eyebrow, h1, lead, price_html="", buttons=True):
     btns = """
         <div class="cta-row">
-          <a class="btn" href="/signup/">Sign up from S$50/month</a>
+          <a class="btn" href="/signup/">Sign up from %%PLAN%%/month</a>
           <a class="btn btn-ghost" href="/#check">Check my website free</a>
         </div>""" if buttons else ""
     eb = f'\n        <p class="eyebrow"><span class="live" aria-hidden="true"></span>{eyebrow}</p>' if eyebrow else ""
@@ -296,7 +312,7 @@ GET_FOUND = """<ul class="ticks">
 
 PLAN_COMPARE = """<div class="cards two plan-compare">
           <div class="card reveal">
-            <p class="pill">S$50 a month · managed every day</p>
+            <p class="pill">%%PLAN%% a month · managed every day</p>
             <h3>Get Found: discovered naturally</h3>
             <ul class="ticks">
               <li>A website at no extra charge: built from scratch if you don't have one, or your current one fixed (or redesigned free if you ask)</li>
@@ -323,14 +339,14 @@ PLAN_COMPARE = """<div class="cards two plan-compare">
 # Homepage and About. Only facts already stated elsewhere on the site.
 GLANCE_ANSWER = ("Page One Singapore is a done-for-you website and SEO service for Singapore small businesses. "
                  "We build your website free (or fix the one you have), set it up so Google Search, Google Maps "
-                 "and AI assistants like ChatGPT can find it, and look after it every day, for S$50 a month with no setup fee and no contract.")
+                 "and AI assistants like ChatGPT can find it, and look after it every day, for %%PLAN%% a month with no setup fee and no contract.")
 GLANCE_ROWS = [
     ("Who it's for", 'New businesses that need their first website, and small businesses looking for affordable SEO. '
                      '<a class="link" href="/new-business-website/">New business</a> · <a class="link" href="/seo-services-singapore/">Shopping for SEO</a>'),
     ("What you get", "A website on your own domain, built free (or your current website's technical SEO fixed, or redesigned free if you ask), hosting and SSL, "
                      "Google Business Profile, Google Search Console and Bing setup, structured data and llms.txt for AI search, a new article every 2 days, "
                      "a technical audit every day with problems fixed, and small changes over WhatsApp."),
-    ("Price", 'S$50 a month on the Get Found plan, for anyone who registers by 31 Dec 2026. From 2027 the price may rise, depending on demand, and we\'ll tell you before it changes. '
+    ("Price", '%%PLAN%% a month on the Get Found plan, for anyone who registers by 31 Dec 2026. From 2027 the price may rise, depending on demand, and we\'ll tell you before it changes. '
               'Optional SEO Boosts are S$10 per run. No setup fee, no contract, cancel anytime. '
               'Your domain, usually S$15–30 a year, is registered in your name and paid by you directly. <a class="link" href="/pricing/">Pricing</a>'),
     ("Where", "Singapore, island-wide."),
@@ -371,14 +387,14 @@ def glance(section_class="section"):
 
 # ---------- Get Found ----------
 page("get-found/index.html",
-     "Small Business SEO Singapore: Get Found Plan from S$50/month",
-     "Our S$50/month plan. No website? We build one free. Have one? We fix its technical SEO. Managed daily for Google and AI search. No setup fee or contract.",
+     "Small Business SEO Singapore: Get Found Plan from %%PLAN%%/month",
+     "Our %%PLAN%%/month plan. No website? We build one free. Have one? We fix its technical SEO. Managed daily for Google and AI search. No setup fee or contract.",
      [service("Get Found basic subscription", "/get-found/",
-              "A website on the client's own domain built free, or the client's existing website with its on-page technical SEO fixed (or an SEO landing page on a subdomain), set up for Google Search, Google Maps and AI assistants, with a daily technical audit and a new article every 2 days.", "50")],
+              "A website on the client's own domain built free, or the client's existing website with its on-page technical SEO fixed (or an SEO landing page on a subdomain), set up for Google Search, Google Maps and AI assistants, with a daily technical audit and a new article every 2 days.", "%%PLAN_NUM%%")],
      hero("Get Found", "Basic subscription",
           "Get Found: your shopfront on Google and AI.",
-          "Get Found is our S$50-a-month plan that sets your business up to be found on Google Search, Google Maps and AI assistants like ChatGPT. No website? We build one on your own domain, free. Already have one? We fix its on-page technical SEO, or redesign it free if you ask.",
-          '<p class="hero-price"><b>S$50</b>/month · <span class="intro-tag">Register by 31 Dec 2026</span> · no setup fee · no contract</p>') + """
+          "Get Found is our %%PLAN%%-a-month plan that sets your business up to be found on Google Search, Google Maps and AI assistants like ChatGPT. No website? We build one on your own domain, free. Already have one? We fix its on-page technical SEO, or redesign it free if you ask.",
+          '<p class="hero-price"><b>%%PLAN%%</b>/month · <span class="intro-tag">Register by 31 Dec 2026</span> · no setup fee · no contract</p>') + """
 
     <section class="section">
       <div class="wrap">
@@ -401,9 +417,9 @@ page("get-found/index.html",
 
     <section class="section">
       <div class="wrap">
-        <p class="kicker reveal">What S$50 a month covers</p>
+        <p class="kicker reveal">What %%PLAN%% a month covers</p>
         <h2 class="reveal">Managed every day, Boost when you want</h2>
-        <p class="section-lead reveal">Your S$50 plan keeps your site technically correct, so Google and AI search like ChatGPT can find, read and understand every page, with a technical audit every day and a new article every 2 days. A Boost looks at who is on Google's first page for one of your search terms and improves your page to compete with the one directly above you. More work doesn't guarantee faster rankings, but every Boost is reported.</p>
+        <p class="section-lead reveal">Your %%PLAN%% plan keeps your site technically correct, so Google and AI search like ChatGPT can find, read and understand every page, with a technical audit every day and a new article every 2 days. A Boost looks at who is on Google's first page for one of your search terms and improves your page to compete with the one directly above you. More work doesn't guarantee faster rankings, but every Boost is reported.</p>
         """ + PLAN_COMPARE + """
       </div>
     </section>
@@ -438,7 +454,7 @@ page("get-found/index.html",
           <li class="reveal"><span>3</span><h3>We build and launch</h3><p>Your site or landing page goes live, connected to Google, Maps and Bing.</p></li>
         </ol>
         <div class="price-strip reveal">
-          <p><b>S$50/month</b> · register by 31 Dec 2026 · no setup fee · cancel anytime</p>
+          <p><b>%%PLAN%%/month</b> · register by 31 Dec 2026 · no setup fee · cancel anytime</p>
           <a class="card-link" href="/signup/">Sign up now →</a>
         </div>
       </div>
@@ -450,7 +466,7 @@ page("get-found/index.html",
 def redirect(path, target):
     out = os.path.join(ROOT, path)
     os.makedirs(os.path.dirname(out), exist_ok=True)
-    open(out, "w", encoding="utf-8").write(f"""<!doctype html>
+    open(out, "w", encoding="utf-8").write(fill(f"""<!doctype html>
 <html lang="en-SG">
 <head>
   <meta charset="utf-8">
@@ -463,7 +479,7 @@ def redirect(path, target):
   <p>This page has moved to <a href="{target}">Get Found</a>.</p>
 </body>
 </html>
-""")
+"""))
 
 
 redirect("new-website/index.html", "/website/")
@@ -471,13 +487,13 @@ redirect("landing-page/index.html", "/get-found/")
 
 # ---------- Website: built and managed ----------
 WEBSITE_FAQ = [
-    ("How much does a website cost with Page One Singapore?", "S$50 a month on the Get Found plan, for anyone who registers by 31 Dec 2026. From 2027 the price may rise, depending on demand, and we'll tell you before it changes. That covers building your website, hosting it, keeping it secure and fast, and looking after it every day. There's no setup fee and no contract. Your domain is registered in your name and paid by you directly, usually S$15–30 a year."),
+    ("How much does a website cost with Page One Singapore?", "%%PLAN%% a month on the Get Found plan, for anyone who registers by 31 Dec 2026. From 2027 the price may rise, depending on demand, and we'll tell you before it changes. That covers building your website, hosting it, keeping it secure and fast, and looking after it every day. There's no setup fee and no contract. Your domain is registered in your name and paid by you directly, usually S$15–30 a year."),
     ("Who looks after the website after it's built?", "We do. We host it, keep it online, secure and fast, run a technical audit every day and fix the problems it finds, add a new article every 2 days, and make small text and photo changes when you need them. You just WhatsApp Edwin."),
     ("I only have a Facebook or Instagram page. Do I still need a website?", "A social page is a good start, but Google and ChatGPT can't rank it like a website. A website with a page for each service and your area gives customers searching on Google a way to find you, and it's yours, not a social platform's."),
     ("Do I own my website and domain?", "Your domain is registered in your name, so you always own it. If you cancel, your site stays live until the end of the month you paid for, you keep your domain, and you can buy the site files if you want to host them elsewhere."),
     ("How long does it take to build my website?", "Usually within 7 days of receiving your details and photos. You send them over WhatsApp, and we do the rest."),
     ("Do I need any technical skills?", "No. You tell us about your business and send a few photos. We handle the domain setup, design, hosting, Google setup and updates."),
-    ("What does a small business website cost per year with Page One?", "About S$615–630 a year all in: 12 months at S$50 (S$600) plus your domain name, usually S$15–30 a year, paid by you directly. Building the website, hosting, the security certificate, Google setup, a daily technical audit with fixes, a new article every 2 days and small changes are all inside the S$50. There is no setup fee and no separate renewal bill for hosting or maintenance."),
+    ("What does a small business website cost per year with Page One?", "About %%PLAN_YEAR_DOMAIN%% a year all in: 12 months at %%PLAN%% (%%PLAN_YEAR%%) plus your domain name, usually S$15–30 a year, paid by you directly. Building the website, hosting, the security certificate, Google setup, a daily technical audit with fixes, a new article every 2 days and small changes are all inside the %%PLAN%%. There is no setup fee and no separate renewal bill for hosting or maintenance."),
     ("What pages does a small business website need?", "Most local businesses need a homepage that says what you do and which area you serve, one page for each main service, a way to see prices or how you quote, an about page, and a contact page with your hours and a WhatsApp button. We build these pages for you. If your site has a contact form, add a short privacy notice too: under the PDPA you need to tell people what you will use their details for."),
     ("I already have a website but no one looks after it. Can you help?", "Yes. We can take over looking after your existing website: we fix its on-page technical SEO, and redesign it free if you ask. Or, if you'd rather keep your site untouched, we can add an SEO landing page next to it. WhatsApp Edwin with your website address and he'll check it and tell you honestly which makes sense for you."),
 ]
@@ -486,16 +502,16 @@ _site_html = site_cards_html()
 _wfaq_html = "\n".join(f"        <details class=\"reveal\"><summary>{q}</summary><p>{a}</p></details>" for q, a in WEBSITE_FAQ)
 
 page("website/index.html",
-     "Small Business Website Singapore: Built &amp; Managed, S$50/mo",
-     "No website yet? We build a fast, mobile-friendly website for your Singapore business and manage it for you: hosting, updates and Google setup. S$50/month.",
+     "Small Business Website Singapore: Built &amp; Managed, %%PLAN%%/mo",
+     "No website yet? We build a fast, mobile-friendly website for your Singapore business and manage it for you: hosting, updates and Google setup. %%PLAN%%/month.",
      [service("Website design and management for small businesses", "/website/",
-              "A website built on the client's own domain, set up for Google, Google Maps and AI search, then hosted and managed every day: security, speed, a daily technical audit with fixes, a new article every 2 days and small text and photo changes.", "50"),
+              "A website built on the client's own domain, set up for Google, Google Maps and AI search, then hosted and managed every day: security, speed, a daily technical audit with fixes, a new article every 2 days and small text and photo changes.", "%%PLAN_NUM%%"),
       {"@context": "https://schema.org", "@type": "FAQPage",
        "mainEntity": [{"@type": "Question", "name": q, "acceptedAnswer": {"@type": "Answer", "text": a}} for q, a in WEBSITE_FAQ]}],
      hero("Website", "No website yet?",
-          "A good website for your business, built and managed for S$50 a month.",
+          "A good website for your business, built and managed for %%PLAN%% a month.",
           "Just starting out, or still relying on a Facebook page? We build a fast, mobile-friendly website on your own domain at no extra charge, set it up so Google, Google Maps and ChatGPT can find it, then look after it for you every day. No setup fee, no contract, no tech skills needed.",
-          '<p class="hero-price"><b>S$50</b>/month · <span class="intro-tag">Register by 31 Dec 2026</span> · website + management · no setup fee</p>') + """
+          '<p class="hero-price"><b>%%PLAN%%</b>/month · <span class="intro-tag">Register by 31 Dec 2026</span> · website + management · no setup fee</p>') + """
 
     <section class="section">
       <div class="wrap">
@@ -545,7 +561,7 @@ page("website/index.html",
               <tr><th>Google, Maps and AI setup</th><td>Up to you</td><td>Depends on the designer</td><td>Included</td></tr>
               <tr><th>Hosting and security</th><td>Through the builder</td><td>Often up to you</td><td>Included</td></tr>
               <tr><th>Changes after launch</th><td>You do them</td><td>Often charged separately</td><td>Small changes included</td></tr>
-              <tr><th>Cost</th><td>Builder plan plus your time</td><td>Usually an upfront fee</td><td>S$50 a month, no setup fee</td></tr>
+              <tr><th>Cost</th><td>Builder plan plus your time</td><td>Usually an upfront fee</td><td>%%PLAN%% a month, no setup fee</td></tr>
             </tbody>
           </table>
         </div>
@@ -562,7 +578,7 @@ page("website/index.html",
           <li class="reveal"><span>3</span><h3>We launch and look after it</h3><p>Usually live within 7 days, connected to Google, Maps and Bing, and managed every day after that.</p></li>
         </ol>
         <div class="price-strip reveal">
-          <p><b>S$50/month</b> · register by 31 Dec 2026 · website + management · no setup fee · cancel anytime</p>
+          <p><b>%%PLAN%%/month</b> · register by 31 Dec 2026 · website + management · no setup fee · cancel anytime</p>
           <a class="card-link" href="/signup/">Sign up now →</a>
         </div>
         <p class="note reveal">Same system, real numbers: Edwin Garage, built and run this way, got """ + EG["clicks"] + """ clicks from Google in the 28 days to """ + THROUGH + """, with an average position of """ + EG["pos"] + """ (Google Search Console). <a class="link" href="/results/">See the case studies →</a> <a class="link" href="/clients/">See every client website →</a></p>
@@ -586,7 +602,7 @@ page("website/index.html",
           <li><b>A privacy notice if you have a contact form.</b> Under the PDPA, tell people what you'll use their details for.</li>
           <li><b>Someone looking after it.</b> Hosting renewals, security updates and new content don't stop after launch.</li>
         </ul>
-        <p class="note reveal">On the S$50 plan we build and look after all of these except the privacy notice, which is your business's own policy: send us the wording and we add it to your site. <a class="link" href="/#check">Check your current website free →</a> · <a class="link" href="/new-business-website/">Starting a new business? See the launch checklist →</a></p>
+        <p class="note reveal">On the %%PLAN%% plan we build and look after all of these except the privacy notice, which is your business's own policy: send us the wording and we add it to your site. <a class="link" href="/#check">Check your current website free →</a> · <a class="link" href="/new-business-website/">Starting a new business? See the launch checklist →</a></p>
       </div>
     </section>
 
@@ -606,8 +622,8 @@ page("website/index.html",
 
 # ---------- SEO Boost ----------
 BOOST_FAQ = [
-    ("How much does an SEO Boost cost?", "S$10 per run, on top of the S$50-a-month Get Found plan. There is no package to commit to: add Boosts at sign-up or top up anytime on WhatsApp, as many or as few as you like. Most businesses start with 1 or 2 a month and add more when they want to push harder, for example before a busy season."),
-    ("What is the difference between the plan and a Boost?", "The S$50 Get Found plan already includes a technical audit every day with problems fixed, and a new article every 2 days, each aimed at a different real search. A Boost is a first-page competitor analysis for one of your search terms: we see who is on Google's first page, find each competitor's key weakness, improve your page to compete with the one directly above you, and send you a before/after report of what we found and changed."),
+    ("How much does an SEO Boost cost?", "S$10 per run, on top of the %%PLAN%%-a-month Get Found plan. There is no package to commit to: add Boosts at sign-up or top up anytime on WhatsApp, as many or as few as you like. Most businesses start with 1 or 2 a month and add more when they want to push harder, for example before a busy season."),
+    ("What is the difference between the plan and a Boost?", "The %%PLAN%% Get Found plan already includes a technical audit every day with problems fixed, and a new article every 2 days, each aimed at a different real search. A Boost is a first-page competitor analysis for one of your search terms: we see who is on Google's first page, find each competitor's key weakness, improve your page to compete with the one directly above you, and send you a before/after report of what we found and changed."),
     ("Does an SEO Boost guarantee better rankings?", "No. Google decides rankings, so no honest provider can guarantee them. What we guarantee is the work: every Boost is documented in a before/after report, so you can see exactly what was done and what changed."),
 ]
 BOOST_FAQ_LD = {"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [
@@ -620,7 +636,7 @@ page("seo-boost/index.html",
               "A first-page competitor analysis for one search term: who is on Google's first page, each competitor's key weakness, and changes to the client's page to compete with the one directly above, with a before/after report. Optional, topped up anytime.", "10"), BOOST_FAQ_LD],
      hero("SEO Boost", "Optional top-up",
           "Want to push harder? Add an SEO Boost.",
-          "An SEO Boost is an optional S$10 run for one of your search terms. We see who is on Google's first page, find each competitor's key weakness, improve your page to compete with the one directly above you, then send a report of what we found and changed. Your S$50 plan already includes a technical audit every day and a new article every 2 days.",
+          "An SEO Boost is an optional S$10 run for one of your search terms. We see who is on Google's first page, find each competitor's key weakness, improve your page to compete with the one directly above you, then send a report of what we found and changed. Your %%PLAN%% plan already includes a technical audit every day and a new article every 2 days.",
           '<p class="hero-price"><b>S$10</b>/run · top up anytime</p>') + """
 
     <section class="section">
@@ -689,28 +705,28 @@ page("seo-boost/index.html",
 # "SEO packages / SEO pricing Singapore" owner page. Only Page One's own prices are numbers; other packages are
 # described by what buyers should compare, never by a provider's price.
 PRICING_FAQ = [
-    ("How much does SEO cost in Singapore with Page One?", "S$50 a month on the Get Found plan, for anyone who registers by 31 Dec 2026, with no setup fee and no minimum contract. From 2027 the price may rise, depending on demand, and we'll tell you before it changes. Optional SEO Boosts are S$10 per run. The only other cost is your domain name, usually S$15–30 a year, which is registered in your name and paid by you directly."),
+    ("How much does SEO cost in Singapore with Page One?", "%%PLAN%% a month on the Get Found plan, for anyone who registers by 31 Dec 2026, with no setup fee and no minimum contract. From 2027 the price may rise, depending on demand, and we'll tell you before it changes. Optional SEO Boosts are S$10 per run. The only other cost is your domain name, usually S$15–30 a year, which is registered in your name and paid by you directly."),
     ("Is there a minimum contract?", "No. You pay monthly in advance and can cancel anytime by WhatsApp. If you cancel, your site stays live until the end of the month you paid for, and you keep your domain."),
-    ("Is there a setup fee?", "No. Building your website (or fixing your current one), Google Business Profile, Search Console and Bing setup are all part of the S$50 a month."),
-    ("Will the price go up?", "It may. S$50 a month is our price for anyone who registers by 31 Dec 2026. From 2027 the price may rise, depending on demand, and we'll tell you before it changes. There's no minimum contract, so you can cancel anytime."),
+    ("Is there a setup fee?", "No. Building your website (or fixing your current one), Google Business Profile, Search Console and Bing setup are all part of the %%PLAN%% a month."),
+    ("Will the price go up?", "It may. %%PLAN%% a month is our price for anyone who registers by 31 Dec 2026. From 2027 the price may rise, depending on demand, and we'll tell you before it changes. There's no minimum contract, so you can cancel anytime."),
     ("What is not included?", "Paid ads, running your social media accounts and buying links. Your domain name is paid by you directly. We also don't promise rankings, because Google decides them and no honest provider can guarantee them."),
-    ("Do I need a website before I sign up?", "No. If you don't have one, we build it on your own domain, free, as part of the S$50 plan. If you already have one, we fix its on-page technical SEO on your current website, or redesign it free if you ask. If you'd rather keep your site untouched, we can add an SEO landing page on a subdomain next to it instead."),
+    ("Do I need a website before I sign up?", "No. If you don't have one, we build it on your own domain, free, as part of the %%PLAN%% plan. If you already have one, we fix its on-page technical SEO on your current website, or redesign it free if you ask. If you'd rather keep your site untouched, we can add an SEO landing page on a subdomain next to it instead."),
 ]
 
 page("pricing/index.html",
-     "SEO Packages &amp; Pricing Singapore: S$50/month, No Contract",
-     "SEO pricing for Singapore small businesses: S$50/month with a free website, Google Maps and AI search setup, articles every 2 days and daily audits. No setup fee or contract.",
+     "SEO Packages &amp; Pricing Singapore: %%PLAN%%/month, No Contract",
+     "SEO pricing for Singapore small businesses: %%PLAN%%/month with a free website, Google Maps and AI search setup, articles every 2 days and daily audits. No setup fee or contract.",
      [{"@context": "https://schema.org", "@type": "FAQPage",
        "mainEntity": [{"@type": "Question", "name": q, "acceptedAnswer": {"@type": "Answer", "text": a}} for q, a in PRICING_FAQ]},
       {"@context": "https://schema.org", "@type": "OfferCatalog", "name": "Page One Singapore pricing", "url": SITE + "/pricing/",
        "itemListElement": [
-           {"@type": "Offer", "name": "Get Found basic subscription (website or landing page + Google & AI visibility setup)", "price": "50", "priceCurrency": "SGD",
+           {"@type": "Offer", "name": "Get Found basic subscription (website or landing page + Google & AI visibility setup)", "price": "%%PLAN_NUM%%", "priceCurrency": "SGD",
             "url": SITE + "/get-found/", "seller": PROVIDER,
-            "priceSpecification": {"@type": "UnitPriceSpecification", "price": "50", "priceCurrency": "SGD", "unitCode": "MON"}},
+            "priceSpecification": {"@type": "UnitPriceSpecification", "price": "%%PLAN_NUM%%", "priceCurrency": "SGD", "unitCode": "MON"}},
            {"@type": "Offer", "name": "SEO Boost (optional first-page competitor analysis, per run) with before/after report", "price": "10", "priceCurrency": "SGD",
             "url": SITE + "/seo-boost/", "seller": PROVIDER}]}],
      hero("Pricing", "No setup fee · No contract · Cancel anytime",
-          "Simple pricing. Start at S$50.",
+          "Simple pricing. Start at %%PLAN%%.",
           "One monthly plan, plus optional SEO Boosts when you want to push harder on one search term. Sign up by chatting with Edwin on WhatsApp.", buttons=False) + """
 
     <section class="section">
@@ -719,9 +735,9 @@ page("pricing/index.html",
           <div class="price-card reveal">
             <p class="pill">Basic subscription</p>
             <h2 class="h3">Get Found</h2>
-            <p class="price"><span>S$50</span>/month</p>
+            <p class="price"><span>%%PLAN%%</span>/month</p>
             <p class="intro-note"><span class="intro-tag">Register by 31 Dec 2026</span> This is our price for anyone who registers by 31 Dec 2026. From 2027 the price may rise, depending on demand, and we'll tell you before it changes.</p>
-            <p class="intro-note">Our S$20 early-bird spots are now full. Early-bird clients keep S$20; new clients join at S$50 a month.</p>
+            <p class="intro-note">Our S$20 early-bird spots are now full. Early-bird clients keep S$20; new clients join at %%PLAN%% a month.</p>
             <ul class="ticks">
               <li><a href="/get-found/">A website at no extra charge: built free, or your current one fixed</a></li>
               <li>Technically correct, so Google and AI search like ChatGPT can find, read and understand every page. No ad spend.</li>
@@ -756,15 +772,15 @@ page("pricing/index.html",
             </fieldset>
             <div class="total" aria-live="polite">
               <span>Total</span>
-              <strong id="calc-total">S$50</strong><span>/month</span>
+              <strong id="calc-total">%%PLAN%%</strong><span>/month</span>
             </div>
-            <p class="calc-break" id="calc-break">S$50 Get Found only</p>
+            <p class="calc-break" id="calc-break">%%PLAN%% Get Found only</p>
             <a class="btn btn-block" href="/signup/" id="calc-signup">Sign up with this plan</a>
           </form>
         </div>
         <p class="note reveal" style="margin-top:32px">Why so low? A set of AI tools we designed does the daily SEO work that used to be billed by the hour. <a class="link" href="/cheapest-seo-singapore/">Cheap SEO doesn't have to mean bad SEO →</a> · <a class="link" href="/cheapest-website-singapore/">A website without the lump sum →</a></p>
         <h2 class="reveal" style="margin-top:64px">What you get when you join</h2>
-        <p class="section-lead reveal">One plan: S$50 a month. No setup fee and no minimum contract. Your domain name is a separate yearly cost.</p>
+        <p class="section-lead reveal">One plan: %%PLAN%% a month. No setup fee and no minimum contract. Your domain name is a separate yearly cost.</p>
         <div class="cards two" style="margin-top:32px">
           <div class="card reveal">
             <p class="pill">Included</p>
@@ -825,7 +841,7 @@ page("pricing/index.html",
           <table class="compare">
             <thead><tr><th>Ask about</th><th>Why it matters</th><th>Page One Get Found</th></tr></thead>
             <tbody>
-              <tr><th>Monthly price</th><td>Is it the full price, or before add-ons?</td><td><b>S$50</b>, optional SEO Boosts S$10 per run</td></tr>
+              <tr><th>Monthly price</th><td>Is it the full price, or before add-ons?</td><td><b>%%PLAN%%</b>, optional SEO Boosts S$10 per run</td></tr>
               <tr><th>Setup or audit fee</th><td>Some packages charge one before month one</td><td>S$0</td></tr>
               <tr><th>Minimum term</th><td>Many SEO contracts have one; know yours before the first invoice</td><td>None, cancel anytime</td></tr>
               <tr><th>Website</th><td>Many SEO packages assume you already have one</td><td>Included: we build it free if you don't have one, or fix the one you have</td></tr>
@@ -856,19 +872,19 @@ page("pricing/index.html",
 # ---------- FAQ ----------
 FAQS = [
     ("What is SEO, in simple words?", "SEO stands for search engine optimisation. In simple words, it means making your business easy for Google to find, understand and recommend, so you show up when customers search for what you sell. Today it also covers AI assistants like ChatGPT, which many people now ask for recommendations. See SEO explained simply for the common terms."),
-    ("Can you build and manage a website for my new business?", "Yes. If you don't have a website, the S$50 Get Found plan includes building one free on your own domain and managing it every day: hosting, security, speed, a technical audit every day with problems fixed, a new article every 2 days and small text and photo changes. It's usually live within 7 days. See our website page for details."),
-    ("What do I get every month for S$50?", "Get Found means your website is fully managed and technically correct, so Google and AI search like ChatGPT can find, read and understand every page, in the free, unpaid results with no ad spend. If you don't have a website, we build one free; if you have one, we fix it. We write a new article for your site every 2 days, each aimed at a different real search, and every day we run a technical audit and fix the problems it finds. Your website stays online, secure and fast, with a WhatsApp button. Want to push harder on one search term? An SEO Boost looks at who is on Google's first page and improves your page to compete."),
+    ("Can you build and manage a website for my new business?", "Yes. If you don't have a website, the %%PLAN%% Get Found plan includes building one free on your own domain and managing it every day: hosting, security, speed, a technical audit every day with problems fixed, a new article every 2 days and small text and photo changes. It's usually live within 7 days. See our website page for details."),
+    ("What do I get every month for %%PLAN%%?", "Get Found means your website is fully managed and technically correct, so Google and AI search like ChatGPT can find, read and understand every page, in the free, unpaid results with no ad spend. If you don't have a website, we build one free; if you have one, we fix it. We write a new article for your site every 2 days, each aimed at a different real search, and every day we run a technical audit and fix the problems it finds. Your website stays online, secure and fast, with a WhatsApp button. Want to push harder on one search term? An SEO Boost looks at who is on Google's first page and improves your page to compete."),
     ("I'm not good with computers. Do I need to do anything technical?", "No. You tell us about your business and send a few photos on WhatsApp, and we do the technical work: the website, Google and Bing setup, Google Maps and the AI-search setup. If you already have a website, we fix it for you. If you choose an SEO landing page instead, there's one setting to add to your domain. We send simple step-by-step instructions, and Edwin can guide you through it."),
     ("How will I know it's working?", "We connect your website to Google Search Console, Google's own free report. It shows how many times you appeared in Google, how many people clicked, and what they searched. Every SEO Boost also comes with a before/after report of what was done."),
-    ("Is there a setup fee or contract?", "No. There's no setup fee and no minimum contract. You pay S$50 a month in advance and can cancel anytime."),
-    ("Will the S$50 price go up?", "It may. S$50 a month is our price for anyone who registers by 31 Dec 2026. From 2027 the price may rise, depending on demand, and we'll tell you before it changes. There's no minimum contract, so you can cancel anytime."),
-    ('Is S$50 a month a gimmick price?', "No. S$50 isn't a teaser to upsell you later, and it isn't budget SEO with steps skipped. It's what SEO can cost when a set of AI tools we designed does the daily optimisation work that used to be billed by the hour. The same system runs every website we manage, and it's proven on real businesses: " + PROOF_EG + ", according to Google Search Console. No setup fee, no contract, so you can judge it for yourself."),
-    ("Can I get a website and SEO for S$50 a month?", "Yes. The S$50 Get Found plan is ongoing monthly SEO with your website built and managed, not a one-off task. Optional SEO Boosts are S$10 each. The first year of a website costs S$600, plus your domain. See our small-budget guide."),
+    ("Is there a setup fee or contract?", "No. There's no setup fee and no minimum contract. You pay %%PLAN%% a month in advance and can cancel anytime."),
+    ("Will the %%PLAN%% price go up?", "It may. %%PLAN%% a month is our price for anyone who registers by 31 Dec 2026. From 2027 the price may rise, depending on demand, and we'll tell you before it changes. There's no minimum contract, so you can cancel anytime."),
+    ('Is %%PLAN%% a month a gimmick price?', "No. %%PLAN%% isn't a teaser to upsell you later, and it isn't budget SEO with steps skipped. It's what SEO can cost when a set of AI tools we designed does the daily optimisation work that used to be billed by the hour. The same system runs every website we manage, and it's proven on real businesses: " + PROOF_EG + ", according to Google Search Console. No setup fee, no contract, so you can judge it for yourself."),
+    ("Can I get a website and SEO for %%PLAN%% a month?", "Yes. The %%PLAN%% Get Found plan is ongoing monthly SEO with your website built and managed, not a one-off task. Optional SEO Boosts are S$10 each. The first year of a website costs %%PLAN_YEAR%%, plus your domain. See our small-budget guide."),
     ("Is the free website check really free?", "Yes. Enter your website address on our homepage and the checker tests Google basics, mobile setup, speed and AI-search readiness in under a minute. No sign-up needed."),
     ("How do I reach you?", "WhatsApp Edwin on " + WA_DISPLAY + ". You can also tap the green chat button on any page. No obligation to buy anything."),
     ("How do I sign up and pay?", "Fill in the short form on our sign-up page or tap the chat button. It opens WhatsApp with your details filled in. Edwin confirms what you need and sends payment details for your first month. SEO Boosts are added or topped up the same way."),
     ("I already have a website. Do I need to change it?", "No. We fix its on-page technical SEO on your current website and manage it for you, and redesign it free if you ask. If you'd rather keep your site untouched, you give us a subdomain such as go.yourbrand.com and we build a separate SEO landing page there instead."),
-    ("What is an SEO Boost?", "An optional S$10 run for one of your search terms. We see who is on Google's first page, find each competitor's key weakness, improve your page to compete with the one directly above you, and send you a before/after report of what we found and changed. Top up anytime, as many or as few as you like. Your S$50 plan, with its articles every 2 days and daily technical audit, works without it."),
+    ("What is an SEO Boost?", "An optional S$10 run for one of your search terms. We see who is on Google's first page, find each competitor's key weakness, improve your page to compete with the one directly above you, and send you a before/after report of what we found and changed. Top up anytime, as many or as few as you like. Your %%PLAN%% plan, with its articles every 2 days and daily technical audit, works without it."),
     ("How do you help me show up in ChatGPT and other AI search?", "AI assistants like ChatGPT, Gemini and Perplexity rely on search indexes such as Bing and Google and on clearly structured information. We connect your site to Google and Bing, mark up your business details so machines can read them, publish an llms.txt file, and write content that answers the questions customers ask."),
     ("Who pays for the domain?", "If you need a new domain, it's registered in your name and you pay for it directly (usually S$15–30 a year). You always own your domain."),
     ("Do you have proof it works?", "Yes. Our results page shows real Google Search Console numbers from the businesses we run. " + PROOF_BOTH.replace(", according to Google Search Console", "") + " Results vary by business, so we don't guarantee them."),
@@ -904,7 +920,7 @@ page("about/index.html",
        "about": PROVIDER, "mainEntity": dict(FOUNDER, worksFor=PROVIDER,
                                              owns={"@type": "AutoRepair", "name": "Edwin Garage", "url": "https://sggarage.com/"})}],
      hero("About", "Built by a business owner", "An SEO system built by a Singapore business owner, not an agency.",
-          "Page One Singapore builds and looks after websites that help small businesses get found on Google and AI search like ChatGPT, from S$50 a month. Our founder combines a computer science degree with 18+ years of running businesses, and every method was proven on real Singapore businesses before we offered it to you.", buttons=False) + """
+          "Page One Singapore builds and looks after websites that help small businesses get found on Google and AI search like ChatGPT, from %%PLAN%% a month. Our founder combines a computer science degree with 18+ years of running businesses, and every method was proven on real Singapore businesses before we offered it to you.", buttons=False) + """
 
     <section class="section">
       <div class="wrap split">
@@ -933,7 +949,7 @@ page("about/index.html",
           <p class="kicker">Why we exist</p>
           <h2>Online visibility shouldn't need a big budget</h2>
           <p>Page One Singapore runs the websites and Google listings for """ + LIVE_COUNT_WORD + """ local businesses today, from a car workshop and a car detailing service to a sofa cleaning company, a property agent and a financial consultant. <a class="link" href="/clients/">See them all</a>.</p>
-          <p>We started because new and small businesses were being quoted hundreds of dollars a month for SEO they couldn't see or measure. So we built a simpler way: S$50 a month, a report for every SEO Boost, and no contract. Start small, and add more only when you see it working.</p>
+          <p>We started because new and small businesses were being quoted hundreds of dollars a month for SEO they couldn't see or measure. So we built a simpler way: %%PLAN%% a month, a report for every SEO Boost, and no contract. Start small, and add more only when you see it working.</p>
           <p>Page One Singapore is a project of Snap Commercial Pte. Ltd., a Singapore company registered in 2022 (UEN 202209904W).</p>
           <a class="card-link" href="/#stories">See the websites we run →</a>
           <p><a class="link" href="/is-page-one-singapore-legit/">Is Page One legit? Check every claim yourself →</a></p>
@@ -1111,6 +1127,7 @@ page("results/index.html",
 """ + _others_html + """
         </div>
         <p class="note reveal"><a class="card-link" href="/clients/">See all the client websites →</a></p>
+        <p class="note reveal">We also run SG Car Workshop, a listings site for car workshops in Singapore. For owners, we explain <a class="link" href="/results/sg-car-workshop-directory/">how the workshop listings work and how to claim yours</a>, with no traffic or enquiry promises.</p>
       </div>
     </section>
 
@@ -1122,7 +1139,7 @@ page("results/index.html",
 """ for q, a in RESULTS_FAQ) + """      </div>
     </section>
 
-""" + cta("Want this for your business?", "Sign up at S$50 a month, or check where your website stands today. No obligation."),
+""" + cta("Want this for your business?", "Sign up at %%PLAN%% a month, or check where your website stands today. No obligation."),
      crumb="Results", updated=SC_UPDATED)
 
 
@@ -1157,7 +1174,7 @@ page("contact/index.html",
             <li><a class="link" href="/results/">See real results</a> from businesses we run</li>
             <li><a class="link" href="/#check">Check your website free</a> in under a minute</li>
             <li><a class="link" href="/faq/">Read the FAQ</a>: fees, contracts, cancelling</li>
-            <li><a class="link" href="/signup/">Sign up</a> at S$50 a month</li>
+            <li><a class="link" href="/signup/">Sign up</a> at %%PLAN%% a month</li>
             <li><a class="link" href="{GBP}" target="_blank" rel="noopener">Find us on Google Maps</a> and read our reviews</li>
           </ul>
           <p class="fine">Already a client and want to change or cancel your plan? Just WhatsApp us.</p>
@@ -1229,11 +1246,11 @@ page("terms/index.html",
       <div class="wrap narrow prose">
         <p>These terms apply when you use Page One Singapore's services. Page One Singapore is a project of Snap Commercial Pte. Ltd. (UEN 202209904W), which provides the services. By signing up, you agree to these terms.</p>
         <h2>Our services</h2>
-        <p><b>Get Found</b> (S$50 a month) covers a website on your own domain built free (or your current website's on-page technical SEO fixed, or a landing page on your subdomain), plus the Google and AI search setup described on our <a href="/get-found/">Get Found page</a>, a daily technical audit with fixes and a new article every 2 days. <b>SEO Boost</b> (S$10 per run) is an optional first-page competitor analysis for one search term, with changes to your page and a report.</p>
+        <p><b>Get Found</b> (%%PLAN%% a month) covers a website on your own domain built free (or your current website's on-page technical SEO fixed, or a landing page on your subdomain), plus the Google and AI search setup described on our <a href="/get-found/">Get Found page</a>, a daily technical audit with fixes and a new article every 2 days. <b>SEO Boost</b> (S$10 per run) is an optional first-page competitor analysis for one search term, with changes to your page and a report.</p>
         <h2>Payment</h2>
         <p>The monthly fee is paid in advance. SEO Boosts are paid when you top up. We arrange payment over WhatsApp. Prices are in Singapore dollars.</p>
         <h2>Price</h2>
-        <p>Get Found is S$50 a month for anyone who registers by 31 Dec 2026. Clients who joined at an earlier early-bird price keep that price. From 2027 the price may rise, depending on demand, and we'll tell you before any price change applies to your own subscription.</p>
+        <p>Get Found is %%PLAN%% a month for anyone who registers by 31 Dec 2026. Clients who joined at an earlier early-bird price keep that price. From 2027 the price may rise, depending on demand, and we'll tell you before any price change applies to your own subscription.</p>
         <h2>No contract, cancel anytime</h2>
         <p>There's no minimum term. You can cancel anytime by WhatsApp. Your service runs until the end of the month you've paid for; we don't refund part-months.</p>
         <h2>Your domain and content</h2>
@@ -1251,21 +1268,21 @@ page("terms/index.html",
 
 # ---------- Sign up ----------
 page("signup/index.html",
-     "Sign Up: Get Found from S$50/month | Page One Singapore",
-     "Sign up for the Get Found plan at S$50/month: free website, Google and AI search setup, articles every 2 days and daily audits. No setup fee or contract.",
+     "Sign Up: Get Found from %%PLAN%%/month | Page One Singapore",
+     "Sign up for the Get Found plan at %%PLAN%%/month: free website, Google and AI search setup, articles every 2 days and daily audits. No setup fee or contract.",
      [service("Get Found basic subscription", "/signup/",
-              "A website built free (or an existing one fixed), set up for Google Search, Google Maps and AI assistants, with a daily technical audit and a new article every 2 days. S$50 a month, billed monthly.", "50")],
-     hero("Sign up", "S$50 a month", "Get found on Google and AI from S$50 a month.",
+              "A website built free (or an existing one fixed), set up for Google Search, Google Maps and AI assistants, with a daily technical audit and a new article every 2 days. %%PLAN%% a month, billed monthly.", "%%PLAN_NUM%%")],
+     hero("Sign up", "%%PLAN%% a month", "Get found on Google and AI from %%PLAN%% a month.",
           "Tell us a little about your business and continue on WhatsApp with Edwin. No setup fee, no contract, cancel anytime.", buttons=False) + """
 
     <section class="section">
       <div class="wrap signup-grid">
         <form class="signup-card reveal" id="signup-form" novalidate>
           <p class="pill">Get Found plan</p>
-          <p class="price"><span>S$50</span>/month</p>
+          <p class="price"><span>%%PLAN%%</span>/month</p>
           <p class="intro-note"><span class="intro-tag">Register by 31 Dec 2026</span> This is our price for anyone who registers by 31 Dec 2026. From 2027 the price may rise, depending on demand, and we'll tell you before it changes.</p>
           <label>Business name<input name="business" required autocomplete="organization" maxlength="100"></label>
-          <label>Your name<input name="name" required autocomplete="name" maxlength="80"></label>
+          <label>Your name<input name="name" required autocomplete="name" maxlength="%%PLAN_NUM%%"></label>
           <label>What does your business do? (optional)<input name="industry" maxlength="120" placeholder="e.g. hair salon in Bedok"></label>
           <label>Current website (if any)<input name="website" inputmode="url" placeholder="yourbusiness.com.sg" maxlength="200"></label>
           <fieldset class="boost-pick">
@@ -1275,7 +1292,7 @@ page("signup/index.html",
             <label><input type="radio" name="boosts" value="2"> 2</label>
             <label><input type="radio" name="boosts" value="4"> 4</label>
           </fieldset>
-          <div class="total" aria-live="polite"><span>First month</span><strong id="signup-total">S$50</strong><span id="signup-then">then S$50/month</span></div>
+          <div class="total" aria-live="polite"><span>First month</span><strong id="signup-total">%%PLAN%%</strong><span id="signup-then">then %%PLAN%%/month</span></div>
           <p class="form-error" role="alert" hidden></p>
           <button class="btn btn-block" type="submit">Continue on WhatsApp</button>
           <p class="fine">Opens WhatsApp with your details filled in. Edwin confirms what you need and sends payment details. Nothing is charged until you agree. See our <a href="/terms/">terms</a>.</p>
@@ -1318,7 +1335,7 @@ page("signup/success/index.html",
         <ol class="mini-steps">
           <li>We'll contact you on WhatsApp to collect your business details and a few photos.</li>
           <li>We build your website or landing page and connect it to Google, Maps and Bing. Usually live within 7 days.</li>
-          <li>You pay S$50 each month until you cancel. Cancel anytime by WhatsApp.</li>
+          <li>You pay %%PLAN%% each month until you cancel. Cancel anytime by WhatsApp.</li>
         </ol>
         <p>Want to push harder on one search term? <a class="link" href="/seo-boost/#top-up">Top up SEO Boosts</a> anytime.</p>
       </div>
@@ -1349,7 +1366,7 @@ page("404.html",
       <div class="wrap">
         <div class="cards three">
           <a class="card" href="/"><h2 class="h3">Home</h2><p>Start from the beginning.</p></a>
-          <a class="card" href="/get-found/"><h2 class="h3">Get Found</h2><p>Our S$50/month plan.</p></a>
+          <a class="card" href="/get-found/"><h2 class="h3">Get Found</h2><p>Our %%PLAN%%/month plan.</p></a>
           <a class="card" href="/pricing/"><h2 class="h3">Pricing</h2><p>Plans and the cost calculator.</p></a>
         </div>
       </div>
@@ -1438,7 +1455,7 @@ GLOSSARY = [
         ("audit", "A health check of your page", "Technical SEO audit",
          "A check of whether Google and AI assistants can find your page, read it and understand it: things like loading, mobile layout, page titles and business details.",
          "Small technical problems can quietly stop you showing up, even when everything looks fine to you.",
-         "Included every day in your S$50 Get Found plan, with the problems it finds fixed. That keeps your site technically correct, so Google and AI search like ChatGPT can find, read and understand every page."),
+         "Included every day in your %%PLAN%% Get Found plan, with the problems it finds fixed. That keeps your site technically correct, so Google and AI search like ChatGPT can find, read and understand every page."),
         ("gsc", "Google's free report on your website", "Google Search Console (GSC)",
          "A free tool from Google that shows how your website performs in Google Search: how often you appear, how many people click, and what they searched.",
          "It's real data straight from Google, not a guess. Our results page uses it too.",
@@ -1505,9 +1522,9 @@ page("seo-explained/index.html",
 
 # ---------- Home ----------
 HOME_QA = [
-    ('What is Page One Singapore?', 'An affordable, done-for-you way for Singapore small businesses to get found and get enquiries: a website (included), SEO for Google Search and Maps, AEO and GEO for AI search like ChatGPT, and WhatsApp enquiry buttons on every page, for S$50 a month. Edwin (NUS Computer Science) designed a set of AI tools to optimise its SEO daily, and proved them first on his own car workshop.'),
-    ('How much does it cost?', 'S$50 a month, for anyone who registers by 31 Dec 2026. From 2027 the price may rise, depending on demand, and we\'ll tell you before it changes. No setup fee, no contract. Optional SEO Boosts are S$10 per run. Your domain, usually S$15 to S$30 a year, is in your name.'),
-    ('What do I get for S$50?', 'Your website (built free, or your current one fixed), hosting, Google Maps, Google and Bing setup, a new article every 2 days, a technical audit every day with problems fixed, and small changes over WhatsApp.'),
+    ('What is Page One Singapore?', 'An affordable, done-for-you way for Singapore small businesses to get found and get enquiries: a website (included), SEO for Google Search and Maps, AEO and GEO for AI search like ChatGPT, and WhatsApp enquiry buttons on every page, for %%PLAN%% a month. Edwin (NUS Computer Science) designed a set of AI tools to optimise its SEO daily, and proved them first on his own car workshop.'),
+    ('How much does it cost?', '%%PLAN%% a month, for anyone who registers by 31 Dec 2026. From 2027 the price may rise, depending on demand, and we\'ll tell you before it changes. No setup fee, no contract. Optional SEO Boosts are S$10 per run. Your domain, usually S$15 to S$30 a year, is in your name.'),
+    ('What do I get for %%PLAN%%?', 'Your website (built free, or your current one fixed), hosting, Google Maps, Google and Bing setup, a new article every 2 days, a technical audit every day with problems fixed, and small changes over WhatsApp.'),
     ('Does it actually work?', f"Edwin Garage got {EG['clicks']} Google clicks in the 28 days to {THROUGH}, according to Google Search Console. Results vary, so we don't guarantee rankings."),
 ]
 HOME_FAQ_HTML = "".join(f'          <details class="reveal"><summary>{q}</summary><p>{a}</p></details>\n' for q, a in HOME_QA)
@@ -1517,10 +1534,11 @@ HOME_FAQ_LD = {"@context": "https://schema.org", "@type": "FAQPage", "mainEntity
 exec(open(os.path.join(HERE, "industries.py"), encoding="utf-8").read())
 # "Cheapest SEO" / "cheapest website" pages (honest answers to those searches).
 exec(open(os.path.join(HERE, "affordable.py"), encoding="utf-8").read())
-# Small-budget owner page (/budget-seo-website-singapore/): S$50 a month, website and SEO included.
+# Small-budget owner page (/budget-seo-website-singapore/): %%PLAN%% a month, website and SEO included.
 exec(open(os.path.join(HERE, "budget.py"), encoding="utf-8").read())
 # Affordable SEO services owner page (/affordable-seo-services-singapore/), 25 Oct 2026.
 exec(open(os.path.join(HERE, "affordable_seo.py"), encoding="utf-8").read())
+exec(open(os.path.join(HERE, "directory_story.py"), encoding="utf-8").read())
 # Client showcase (/clients/), from showcase.json.
 clients_page()
 llms_sections()
@@ -1535,25 +1553,30 @@ exec(open(os.path.join(HERE, "ads_compare.py"), encoding="utf-8").read())
 # Lead generation repositioning (28 Oct 2026): /how-it-works/ and /lead-generation-singapore/.
 exec(open(os.path.join(HERE, "lead_gen.py"), encoding="utf-8").read())
 
-page("index.html",
-     "Get Found, Get Enquiries: Affordable SEO Singapore from S$50",
-     "Help customers find your business on Google and AI search like ChatGPT, then turn visitors into enquiries. Website included, S$50/month, no contract.",
-     [HOME_FAQ_LD, {"@context": "https://schema.org", "@graph": [
-         dict(ORG_CORE,
-              founder=FOUNDER,
-              parentOrganization=COMPANY,
-              knowsAbout=["Search engine optimisation", "Local SEO", "Google Business Profile", "AI search visibility", "Generative engine optimisation", "Small business websites"],
-              openingHoursSpecification=CONTACT_POINT["hoursAvailable"],
-              makesOffer=[{"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Get Found basic subscription (website built free or fixed, Google and AI search setup, managed daily)", "url": SITE + "/get-found/"}, "price": "50", "priceCurrency": "SGD",
-                           "priceSpecification": {"@type": "UnitPriceSpecification", "price": "50", "priceCurrency": "SGD", "unitCode": "MON"}},
-                          {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "SEO Boost", "url": SITE + "/seo-boost/"}, "price": "10", "priceCurrency": "SGD"}]),
-         WEBSITE_NODE]}],
-     fill_home(open(os.path.join(HERE, "home_body.html"), encoding="utf-8").read().rstrip("\n").replace("{{GLANCE_ANSWER}}", GLANCE_ANSWER).replace("{{HOME_FAQ}}", HOME_FAQ_HTML)
-              .replace("{{WA_HERO}}", wa_src("Hi Edwin, I'd like more customer enquiries for my business.", "homepage, top"))
-              .replace("{{WA_FINAL}}", wa_src("Hi Edwin, I'd like more customer enquiries for my business.", "homepage, bottom"))),
-     updated=max(SC_UPDATED, AIV_UPDATED, "2026-11-08"),
-     head_extra="\n  <style>" + " ".join(open(os.path.join(HERE, "home_motion.css"), encoding="utf-8").read().split("\n")[1:]).strip() + GROW_CSS + "</style>",
-     foot_extra='\n  <script src="/motion.js?v=4" defer></script>')
+def build_home(path="index.html", robots=None, wl=WL_LIVE):
+    page(path,
+         "Get Found, Get Enquiries: Affordable SEO Singapore from %%PLAN%%",
+         "Help customers find your business on Google and AI search like ChatGPT, then turn visitors into enquiries. Website included, %%PLAN%%/month, no contract.",
+         [HOME_FAQ_LD, {"@context": "https://schema.org", "@graph": [
+             dict(ORG_CORE,
+                  founder=FOUNDER,
+                  parentOrganization=COMPANY,
+                  knowsAbout=["Search engine optimisation", "Local SEO", "Google Business Profile", "AI search visibility", "Generative engine optimisation", "Small business websites"],
+                  openingHoursSpecification=CONTACT_POINT["hoursAvailable"],
+                  makesOffer=[{"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Get Found basic subscription (website built free or fixed, Google and AI search setup, managed daily)", "url": SITE + "/get-found/"}, "price": "%%PLAN_NUM%%", "priceCurrency": "SGD",
+                               "priceSpecification": {"@type": "UnitPriceSpecification", "price": "%%PLAN_NUM%%", "priceCurrency": "SGD", "unitCode": "MON"}},
+                              {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "SEO Boost", "url": SITE + "/seo-boost/"}, "price": "10", "priceCurrency": "SGD"}]),
+             WEBSITE_NODE]}],
+         fill_home(open(os.path.join(HERE, "home_body.html"), encoding="utf-8").read().rstrip("\n").replace("{{GLANCE_ANSWER}}", GLANCE_ANSWER).replace("{{HOME_FAQ}}", HOME_FAQ_HTML)
+                  .replace("{{WHITE_LABEL}}", white_label_section() if wl else "")
+                  .replace("{{WA_HERO}}", wa_src("Hi Edwin, I'd like more customer enquiries for my business.", "homepage, top"))
+                  .replace("{{WA_FINAL}}", wa_src("Hi Edwin, I'd like more customer enquiries for my business.", "homepage, bottom"))),
+         updated=max(SC_UPDATED, AIV_UPDATED, "2026-11-12"),
+         head_extra="\n  <style>" + " ".join(open(os.path.join(HERE, "home_motion.css"), encoding="utf-8").read().split("\n")[1:]).strip() + GROW_CSS + WL_CSS + "</style>",
+         foot_extra='\n  <script src="/motion.js?v=4" defer></script>' + WL_COUNTS_JS, **({"robots": robots} if robots else {}))
+
+
+build_home()
 
 
 # ---------- llms-full.txt and per-page sitemap dates ----------
@@ -1586,7 +1609,7 @@ for _u, _t, _d, _qa in _pages:
             _out += [f"Q: {_plain(_q)}", f"A: {_plain(_a)}", ""]
     else:
         _out.append("")
-open(os.path.join(ROOT, "llms-full.txt"), "w", encoding="utf-8").write("\n".join(_out).rstrip("\n") + "\n")
+open(os.path.join(ROOT, "llms-full.txt"), "w", encoding="utf-8").write(fill("\n".join(_out).rstrip("\n") + "\n"))
 _bridge = os.path.join(HERE, "..", "bridge")
 if os.path.isdir(_bridge) and os.path.abspath(ROOT) == os.path.abspath(os.path.join(HERE, "..", "site")):
     with open(os.path.join(_bridge, "lastmod.json"), "w", encoding="utf-8") as _f:
@@ -1594,6 +1617,6 @@ if os.path.isdir(_bridge) and os.path.abspath(ROOT) == os.path.abspath(os.path.j
         _f.write("\n")
     # The same business description for the Bridge's article pages (ORG_GRAPH in pageoneArticles.ts).
     with open(os.path.join(_bridge, "org-graph.json"), "w", encoding="utf-8") as _f:
-        json.dump({"@context": "https://schema.org", "@graph": [ORG_CORE, WEBSITE_NODE]}, _f, ensure_ascii=False, indent=2)
+        _f.write(fill(json.dumps({"@context": "https://schema.org", "@graph": [ORG_CORE, WEBSITE_NODE]}, ensure_ascii=False, indent=2)))
         _f.write("\n")
 print("built")

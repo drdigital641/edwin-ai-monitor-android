@@ -1,0 +1,7 @@
+# Old white-label preview (12 Nov 2026): Edwin approved go-live, so each preview URL 301s to its live page.
+# Only this folder is affected; the root and preview/.htaccess are untouched.
+<IfModule mod_rewrite.c>
+RewriteEngine On
+RewriteRule ^clients(/.*)?$ https://pageonesingapore.com/clients/ [R=301,L]
+RewriteRule ^ https://pageonesingapore.com/ [R=301,L]
+</IfModule>
