@@ -135,6 +135,12 @@ p { margin: 0 0 1em; }
 .hw-hero h1 { color: #fff; max-width: 13ch; margin: 14px 0 10px; text-shadow: 0 2px 18px rgba(0, 0, 0, .35); }
 .hw-hero-line { font-size: 1.12rem; color: #e6efff; max-width: 34ch; margin: 0; }
 .hw-hero .hw-actions { margin: 18px 0 10px; }
+/* diagnosis note (facts.json, 2026-11-12) */
+.hw-diag-note { margin: 12px 0 0; font: 600 0.98rem/1.35 var(--display); max-width: 30ch; }
+.hw-hero .hw-diag-note { color: var(--lime); margin: 14px 0 0; text-shadow: 0 1px 10px rgba(0, 0, 0, .35); }
+.hw-intro .hw-diag-note { color: var(--blue-deep); margin: 14px 0 0; }
+/* end diagnosis note */
+
 .hw-hero .hw-rate { color: #fff; }
 @media (min-width: 900px) {
   .hw-hero { min-height: 680px; align-items: center; }

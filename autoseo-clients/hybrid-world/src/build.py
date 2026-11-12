@@ -178,7 +178,7 @@ def business_node(L):
                     "addressLocality": CFG["locality"], "addressRegion": CFG["region"], "addressCountry": CFG["country_code"]},
         "geo": {"@type": "GeoCoordinates", "latitude": CFG["lat"], "longitude": CFG["lng"]},
         "hasMap": CFG["maps_url"], "openingHours": CFG["opening_hours"],
-        "openingHoursSpecification": [{"@type": "OpeningHoursSpecification", "dayOfWeek": [f"https://schema.org/{d}" for d in h["days"]],
+        "openingHoursSpecification": [{"@type": "OpeningHoursSpecification", "dayOfWeek": ([f"https://schema.org/{d}" for d in h["days"]] if len(h["days"]) > 1 else f"https://schema.org/{h['days'][0]}"),
                                        "opens": h["opens"], "closes": h["closes"]} for h in CFG["hours"]],
         "identifier": {"@type": "PropertyValue", "propertyID": "SSM company no.", "value": CFG["registration_no"]},
         "areaServed": [{"@type": "City", "name": "Johor Bahru"}, {"@type": "City", "name": "Iskandar Puteri"}],
