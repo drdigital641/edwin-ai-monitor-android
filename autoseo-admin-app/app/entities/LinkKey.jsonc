@@ -1,0 +1,16 @@
+{
+  "name": "LinkKey",
+  "properties": {
+    "private_jwk": { "type": "string", "description": "P-256 private key (JWK JSON) that signs requests to the Controller. Made on the server on first use; no user can read it (rls below matches no role); only server code via the service role." },
+    "public_jwk": { "type": "string", "description": "Matching public key (kty, crv, x, y). Given to the Controller (shared/autoseoLinkKey.ts)." },
+    "created_at": { "type": "string", "description": "When the key was made (ISO)" }
+  },
+  "required": ["private_jwk", "public_jwk"],
+  "type": "object",
+  "rls": {
+    "create": { "user_condition": { "role": "no_user" } },
+    "read": { "user_condition": { "role": "no_user" } },
+    "update": { "user_condition": { "role": "no_user" } },
+    "delete": { "user_condition": { "role": "no_user" } }
+  }
+}
