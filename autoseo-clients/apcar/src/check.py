@@ -113,3 +113,73 @@ def run(root, out, C, S, arts):
         if os.path.exists(os.path.join(out, f)):
             errs.append(f'{f} must not be built: articles stay out of every sitemap until Edwin says AP Car is live')
     return errs
+
+
+def check_md(md_root):
+    """Checks the Markdown hand-off files (articles/<slug>/en.md, ms.md, zh.md) that build.py --live reads (13 Nov 2026)."""
+    errs = []
+    need = ('slug', 'lang', 'url', 'date_published', 'keyword', 'title', 'description', 'h1')
+    for slug in sorted(os.listdir(md_root)):
+        d = os.path.join(md_root, slug)
+        if not os.path.isdir(d):
+            continue
+        for l in ('en', 'ms', 'zh'):
+            p = os.path.join(d, f'{l}.md')
+            if not os.path.exists(p):
+                errs.append(f'{slug}: missing {l}.md')
+                continue
+            text = open(p, encoding='utf-8').read()
+            if not text.startswith('---\n') or '\n---\n' not in text[4:]:
+                errs.append(f'{slug}/{l}.md: no front matter')
+                continue
+            head, body = text[4:].split('\n---\n', 1)
+            fm = {}
+            for line in head.splitlines():
+                k, _, v = line.partition(':')
+                v = v.strip()
+                fm[k.strip()] = json.loads(v) if v.startswith('"') else v
+            for k in need:
+                if not fm.get(k):
+                    errs.append(f'{slug}/{l}.md: front matter missing {k}')
+            if fm.get('slug') != slug:
+                errs.append(f'{slug}/{l}.md: slug in front matter is {fm.get("slug")}')
+            if len(fm.get('description', '')) > 160:
+                errs.append(f'{slug}/{l}.md: description over 160 chars')
+            h1s = [x for x in body.splitlines() if x.startswith('# ')]
+            if len(h1s) != 1:
+                errs.append(f'{slug}/{l}.md: {len(h1s)} H1 lines (need exactly 1)')
+            paras = [x for x in body.split('\n\n') if x.strip() and not x.lstrip().startswith(('#', '>', '-', '!', '|'))]
+            kw = fm.get('keyword', '')
+            for name, val in (('title', fm.get('title', '')), ('h1', h1s[0][2:] if h1s else ''), ('first paragraph', paras[0] if paras else '')):
+                if kw and not kw_in(kw, val):
+                    errs.append(f'{slug}/{l}.md: keyword "{kw}" not in {name}')
+            if not re.search(r'^## ', body, flags=re.M):
+                errs.append(f'{slug}/{l}.md: no H2 sections')
+            if re.search(r'^#### ', body, flags=re.M) and not re.search(r'^### ', body, flags=re.M):
+                errs.append(f'{slug}/{l}.md: H4 without H3')
+            for b in BLOCK:
+                m = re.search(b, text, flags=re.I)
+                if m:
+                    errs.append(f'{slug}/{l}.md: blocked word "{m.group(0)}"')
+    return errs
+
+
+if __name__ == '__main__':
+    # python3 src/check.py            -> article data (data/articles/*.json) + the Markdown in articles/
+    # python3 src/check.py --md DIR   -> only the Markdown folder DIR (one sub-folder per slug)
+    import sys
+    root = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+    args = sys.argv[1:]
+    errs = []
+    if '--md' in args:
+        errs += check_md(args[args.index('--md') + 1])
+    else:
+        C = json.load(open(os.path.join(root, 'config.json'), encoding='utf-8'))
+        S = {l: json.load(open(os.path.join(root, 'strings', f'{l}.json'), encoding='utf-8')) for l in ('en', 'ms', 'zh')}
+        adir = os.path.join(root, 'data', 'articles')
+        arts = [json.load(open(os.path.join(adir, f), encoding='utf-8')) for f in sorted(os.listdir(adir)) if f.endswith('.json')]
+        errs += run(root, os.path.join(root, '_no_html_build_'), C, S, arts)
+        if os.path.isdir(os.path.join(root, 'articles')):
+            errs += check_md(os.path.join(root, 'articles'))
+    print('\n'.join(errs) if errs else 'OK: 0 problems')
+    sys.exit(1 if errs else 0)
