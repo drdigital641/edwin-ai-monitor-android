@@ -1571,19 +1571,12 @@ def build_home(path="index.html", robots=None, wl=WL_LIVE):
                   .replace("{{WHITE_LABEL}}", white_label_section() if wl else "")
                   .replace("{{WA_HERO}}", wa_src("Hi Edwin, I'd like more customer enquiries for my business.", "homepage, top"))
                   .replace("{{WA_FINAL}}", wa_src("Hi Edwin, I'd like more customer enquiries for my business.", "homepage, bottom"))),
-         updated=max(SC_UPDATED, AIV_UPDATED, "2026-11-08"),
-         head_extra="\n  <style>" + " ".join(open(os.path.join(HERE, "home_motion.css"), encoding="utf-8").read().split("\n")[1:]).strip() + GROW_CSS + (WL_CSS if wl else "") + "</style>",
-         foot_extra='\n  <script src="/motion.js?v=4" defer></script>', **({"robots": robots} if robots else {}))
+         updated=max(SC_UPDATED, AIV_UPDATED, "2026-11-12"),
+         head_extra="\n  <style>" + " ".join(open(os.path.join(HERE, "home_motion.css"), encoding="utf-8").read().split("\n")[1:]).strip() + GROW_CSS + WL_CSS + "</style>",
+         foot_extra='\n  <script src="/motion.js?v=4" defer></script>' + WL_COUNTS_JS, **({"robots": robots} if robots else {}))
 
 
 build_home()
-# White label preview (Edwin 12 Nov 2026): noindex copy of the homepage and /clients/ with the new parts switched on.
-build_home(WL_PREVIEW + "index.html", robots="noindex, nofollow", wl=True)
-clients_page(WL_PREVIEW + "clients/index.html", robots="noindex, nofollow", wl=True)
-for _p in (WL_PREVIEW + "index.html", WL_PREVIEW + "clients/index.html"):
-    _f = os.path.join(ROOT, _p)
-    _h = wl_preview_links(open(_f, encoding="utf-8").read())
-    open(_f, "w", encoding="utf-8").write(_h)
 
 
 # ---------- llms-full.txt and per-page sitemap dates ----------

@@ -17,7 +17,7 @@ Short version: https://pageonesingapore.com/llms.txt. This file is generated fro
 
 ## Get Found, Get Enquiries: Affordable SEO Singapore from S$100
 URL: https://pageonesingapore.com/
-Last updated: 2026-11-08
+Last updated: 2026-11-12
 
 Help customers find your business on Google and AI search like ChatGPT, then turn visitors into enquiries. Website included, S$100/month, no contract.
 
@@ -259,7 +259,7 @@ Q: How can it be good if it only costs S$100 a month?
 A: The price is low because a set of AI tools we designed does the daily SEO work that used to be billed by the hour, not because steps are skipped. The websites and numbers on this page are the proof, not a promise: results vary by business, and newer sites show smaller numbers.
 
 Q: Is Page One Singapore a new company?
-A: Yes. Page One Singapore is run by Snap Commercial Pte. Ltd., a Singapore company registered in 2022, and the first website on our SEO system went live in June 2026. As of 9 November 2026, 22 client websites are live on their own domains and 5 more are being built for clients who have signed up. We add each new one to this page the day it goes live, so you can watch the portfolio grow.
+A: Yes. Page One Singapore is run by Snap Commercial Pte. Ltd., a Singapore company registered in 2022, and the first website on our SEO system went live in June 2026. As of 9 November 2026, 22 client websites are live on their own domains. We add each new one to this page the day it goes live, so you can watch the portfolio grow.
 
 Q: Why are some clients not named?
 A: A website being built is only counted, never named, until it is live on the business's own domain. That protects our clients' plans and means every name on this page is a website you can open and check.
