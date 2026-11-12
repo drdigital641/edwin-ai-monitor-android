@@ -4,7 +4,7 @@
 (function () {
   "use strict";
   var T = window.T, CFG = window.AUTOSEO_ADMIN_CONFIG || {};
-  var DEMO = /[?&]demo=1\b/.test(location.search);
+  var DEMO = /[?&]demo=1\b/.test(location.search) && typeof window.AUTOSEO_DEMO === "function";
   var state = { token: null, me: null, clients: null, error: null, last: null };
   var $app = document.getElementById("app"), $hdr = document.getElementById("hdr");
 
