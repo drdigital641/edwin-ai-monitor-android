@@ -78,12 +78,14 @@
    "aircon": "Aircond"
   },
   "menu_open": "Menu",
-  "hero_alt": "Kerja kereta hibrid di Hybrid World Specialist, Johor Bahru: Toyota C-HR di atas lif dan pek bateri hibrid"
+  "hero_alt": "Kerja kereta hibrid di Hybrid World Specialist, Johor Bahru: Toyota C-HR di atas lif dan pek bateri hibrid",
+  "diag_note": "Tiada sebut harga tekaan. Tempah diagnosis bersemuka."
  },
  "prefills": {
   "general": "Hi Hybrid World, saya nak tanya tentang kereta hibrid saya. Model dan tahun: ",
   "service": "Hi Hybrid World, saya nak tanya tentang {topic}. Model dan tahun kereta saya: ",
-  "reel": "Hi Hybrid World, saya nampak reel anda dan nak tanya tentang kereta hibrid saya. Model dan tahun: "
+  "reel": "Hi Hybrid World, saya nampak reel anda dan nak tanya tentang kereta hibrid saya. Model dan tahun: ",
+  "diagnosis": "Hai Hybrid World, saya ingin tempah diagnosis bersemuka. Model dan tahun: "
  },
  "services": {
   "battery": {

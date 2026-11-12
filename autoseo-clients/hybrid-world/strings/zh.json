@@ -78,12 +78,14 @@
    "aircon": "冷气"
   },
   "menu_open": "菜单",
-  "hero_alt": "Hybrid World Specialist 新山车间的混合动力车维修：升降机上的 Toyota C-HR 和混合动力电池组"
+  "hero_alt": "Hybrid World Specialist 新山车间的混合动力车维修：升降机上的 Toyota C-HR 和混合动力电池组",
+  "diag_note": "不估报价。预约当面诊断。"
  },
  "prefills": {
   "general": "你好 Hybrid World，我想咨询我的混合动力车。车型和年份：",
   "service": "你好 Hybrid World，我想咨询{topic}。我的车型和年份：",
-  "reel": "你好 Hybrid World，我看了你们的短视频，想咨询我的混合动力车。车型和年份："
+  "reel": "你好 Hybrid World，我看了你们的短视频，想咨询我的混合动力车。车型和年份：",
+  "diagnosis": "您好 Hybrid World，我想预约当面诊断。车型及年份："
  },
  "services": {
   "battery": {

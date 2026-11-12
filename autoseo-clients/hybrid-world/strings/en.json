@@ -78,12 +78,14 @@
    "aircon": "Aircon"
   },
   "menu_open": "Menu",
-  "hero_alt": "Hybrid car work at Hybrid World Specialist, Johor Bahru: a Toyota C-HR on the lift and a hybrid battery pack"
+  "hero_alt": "Hybrid car work at Hybrid World Specialist, Johor Bahru: a Toyota C-HR on the lift and a hybrid battery pack",
+  "diag_note": "No guess quotes. Book a face-to-face diagnosis."
  },
  "prefills": {
   "general": "Hi Hybrid World, I'd like to ask about my hybrid car. Model and year: ",
   "service": "Hi Hybrid World, I'd like to ask about {topic}. My car model and year: ",
-  "reel": "Hi Hybrid World, I saw your reel and I'd like to ask about my hybrid. Model and year: "
+  "reel": "Hi Hybrid World, I saw your reel and I'd like to ask about my hybrid. Model and year: ",
+  "diagnosis": "Hi Hybrid World, I'd like to book a face-to-face diagnosis. Model and year: "
  },
  "services": {
   "battery": {

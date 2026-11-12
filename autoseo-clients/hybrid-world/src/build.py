@@ -69,6 +69,7 @@ class Lang:
         return BASE + self.prefix + path
 
 
+# Face-to-face diagnosis (client update 12 Nov 2026): home + service heroes show ui.diag_note and use prefills.diagnosis.
 # ------------------------------------------------------------------ calls to action (data-cta names match the other AutoSEO previews)
 def wa_href(L, key="general", topic=""):
     msg = L.s["prefills"][key].replace("{topic}", topic)
@@ -414,7 +415,8 @@ def build_home(L):
     {charge_meter(L)}
     <h1 id="h1">{E(h["h1"])}</h1>
     <p class="hw-hero-line">{E(h["tagline"])}</p>
-    <div class="hw-actions">{wa(L, "home_hero", cls=" hw-wa-big")}{tel(L, "home_hero", cls=" hw-call-glass hw-wide-only")}</div>
+    <p class="hw-diag-note">{E(L.ui["diag_note"])}</p>
+    <div class="hw-actions">{wa(L, "home_hero", "diagnosis", cls=" hw-wa-big")}{tel(L, "home_hero", cls=" hw-call-glass hw-wide-only")}</div>
     {rating_link(L, "hero")}
   </div>
 </section>
@@ -473,7 +475,8 @@ def build_service(L, k):
       <p class="hw-eyebrow"><span class="hw-eyebrow-ico">{icon_art(c["icon"])}</span>{E(CFG["brand"])}</p>
       <h1 id="h1">{E(pg["h1"])}</h1>
       <p class="hw-lede">{E(pg["intro"])}</p>
-      <div class="hw-actions">{wa(L, "service_" + k, "service", sv["name"])}{tel(L, "service_" + k, cls=" hw-call-line")}</div>
+      <p class="hw-diag-note">{E(L.ui["diag_note"])}</p>
+      <div class="hw-actions">{wa(L, "service_" + k, "diagnosis")}{tel(L, "service_" + k, cls=" hw-call-line")}</div>
       {rating_link(L, "service")}
     </div>
     <div class="hw-intro-media">{media}</div>
