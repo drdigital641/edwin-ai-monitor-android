@@ -130,7 +130,7 @@
     function offerShare() {
       if (!offer || ta.value !== saved) return; offer = false;
       var c = (state.clients || []).filter(function (x) { return x.id === id; })[0]; if (!c) return;
-      shareSheet(shareText({ change: "ch_memo", name: c.name, step: c.step, link: safeUrl(c.open_url), notes: saved, user: state.me.email }));
+      shareSheet(shareText({ change: "ch_memo", name: c.name, step: c.step, link: safeUrl(c.open_url) }));
     }
     function save() {
       clearTimeout(timer); var v = ta.value; if (v === saved) return inflight;
@@ -167,7 +167,7 @@
       if (!company || !url || !type) { (company ? url ? f.querySelector("input[name=url_type]") : f.url : f.company).focus(); return; }
       var btn = document.getElementById("saveBtn"); btn.disabled = true; btn.innerHTML = bi("f_saving");
       api("create_client", { company: company, url: url, url_type: type, notes: notes }).then(function (r) {
-        state.clients = null; state.last = { company: company, url: url, type: type, notes: notes, user: r.submitted_by || state.me.email };
+        state.clients = null; state.last = { company: company, url: url, type: type, notes: notes, user: state.me.email };
         location.hash = "#/done";
       }, function (e) { btn.disabled = false; btn.innerHTML = bi("f_save"); var b = document.getElementById("e-save"); b.hidden = false; b.innerHTML = errText(e); });
     };
@@ -175,12 +175,12 @@
 
   /* ---------- template: WhatsApp share (12 Nov 2026): after every create/save the user may share; never automatic ---------- */
   function L(k) { return T[k][0] + " " + T[k][1]; }
+  /* Public info only (security review 12 Nov 2026): what changed, business name, status, preferred URL and the
+     public site/preview link. Never notes, emails, phone numbers, IDs, tokens or the dashboard address. */
   function shareText(o) {
     var st = T["st_" + (o.step || "pending")], lines = ["*" + L(o.change) + "*", L("sh_company") + ": " + o.name, L("sh_status") + ": " + st[0] + " " + st[1]];
     if (o.url) lines.push(L("sh_url") + ": " + o.url + (o.urlType ? " (" + (o.urlType === "existing" ? T.sum_existing[0] + " " + T.sum_existing[1] : T.sum_new[0] + " " + T.sum_new[1]) + ")" : ""));
     lines.push(L(o.step === "live" ? "sh_live_link" : "sh_link") + ": " + (o.link || L("sh_no_link")));
-    if (o.notes) lines.push(L("memo") + ": " + (o.notes.length > 400 ? o.notes.slice(0, 400) + "…" : o.notes));
-    if (o.user) lines.push(L("ch_by") + ": " + o.user);
     return lines.join("\n");
   }
   function shareButtons(text, idp) {
@@ -212,7 +212,7 @@
 
   function screenDone() {
     var x = state.last; if (!x) { location.hash = "#/clients"; return; }
-    var text = shareText({ change: "ch_created", name: x.company, step: "pending", url: x.url, urlType: x.type, link: "", notes: x.notes.trim(), user: x.user });
+    var text = shareText({ change: "ch_created", name: x.company, step: "pending", url: x.url, urlType: x.type, link: "" });
     $app.innerHTML = '<div class="form"><div class="ok-tick" aria-hidden="true">✓</div><h1 class="h1">' + bi("done_title") + '</h1><p class="hint">' + bi("share_hint") + "</p>" +
       '<div class="summary" id="sum"></div>' + shareButtons(text, "dn") +
       '<a class="btn btn-line btn-block" href="#/clients" style="margin-top:10px">' + bi("back_clients") + "</a></div>";

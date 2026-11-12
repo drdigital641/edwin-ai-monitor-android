@@ -95,7 +95,6 @@ window.T = {
   sh_no_link:     ["not ready yet", "尚未准备好"],
   ch_created:     ["New client added", "已添加新客户"],
   ch_memo:        ["Notes updated", "备注已更新"],
-  ch_by:          ["By", "提交者"],
   /* summary text sent to the group: English line, then Chinese line */
   sum_en: "New AutoSEO client: {company}, {url} ({type}), notes: {notes}, submitted by {user}",
   sum_zh: "AutoSEO 新客户：{company}，{url}（{type}），备注：{notes}，提交者：{user}",
