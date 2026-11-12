@@ -1,0 +1,40 @@
+{
+ "lede": "Alpha Auto Solution at Kaki Bukit Industrial Estate is a continental car diagnosis and repair workshop.",
+ "chips": [
+  "Diagnosis",
+  "Continental cars"
+ ],
+ "services": [
+  "Fault diagnosis",
+  "Car servicing",
+  "Electrical repair",
+  "Continental car repair"
+ ],
+ "themes": "Customers on Google Maps mention hard-to-find faults solved after other workshops could not, a Mercedes misfire traced properly, a battery drain issue fixed, scheduled servicing on a Mercedes B180 and up-to-date diagnostic software for many makes.",
+ "faqs": [
+  [
+   "What does Alpha Auto Solution do?",
+   "Google Maps lists it as a car repair workshop."
+  ],
+  [
+   "What are the opening hours?",
+   "The hours are listed in the Google Maps section above. Please see Google Maps for current hours."
+  ]
+ ],
+ "sources": "its Google Maps listing",
+ "stories": [],
+ "mentioned_services": [
+  "Fault diagnosis",
+  "Car servicing",
+  "Electrical repair",
+  "Continental car repair"
+ ],
+ "services_note": "Services customers mention on Google Maps. Ask the workshop for its full list.",
+ "makes": [
+  "Mercedes-Benz"
+ ],
+ "makes_note": "Named by customers on Google Maps. Ask the workshop about other makes.",
+ "specialties": [],
+ "good_to_know": [],
+ "card_rules": "2026-11-05"
+}

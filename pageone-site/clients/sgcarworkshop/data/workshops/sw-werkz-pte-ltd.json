@@ -1,0 +1,48 @@
+{
+ "schema_version": 1,
+ "slug": "sw-werkz-pte-ltd",
+ "place_id": "ChIJP5v91-MX2jERPJwTpThCWTA",
+ "place_id_checked_at": "2026-11-12",
+ "name": "SW Werkz Pte Ltd",
+ "name_source_url": "google_profile",
+ "name_checked_at": "2026-11-12",
+ "address": {
+  "block": "",
+  "street": "25 Kaki Bukit Rd 4, #08-39/40",
+  "unit": "",
+  "building": ""
+ },
+ "postal_code": "417800",
+ "address_source_url": "google_profile",
+ "address_checked_at": "2026-11-12",
+ "categories": [
+  "SERV"
+ ],
+ "services": [
+  "General servicing and repair"
+ ],
+ "services_source_url": "google_profile",
+ "phones": [
+  {
+   "e164": "+6582023070",
+   "kind": "mobile",
+   "whatsapp": true,
+   "source": "google_profile",
+   "checked_at": "2026-11-12"
+  }
+ ],
+ "google_screen": {
+  "passed": true,
+  "reason": "OPERATIONAL, car repair, SG mobile on Google profile",
+  "checked_at": "2026-11-12"
+ },
+ "status": "pending",
+ "tier": "basic",
+ "first_seen_at": "2026-11-12",
+ "last_verified_at": "2026-11-12",
+ "collector_version": "agent-v5",
+ "estate": "kaki-bukit-industrial-estate",
+ "planning_area": "Bedok",
+ "region": "east",
+ "hold": "hold: 3 of 5 sampled reviews are complaints, one mentions dishonesty; not featured"
+}

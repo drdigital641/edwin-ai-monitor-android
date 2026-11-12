@@ -1,0 +1,44 @@
+{
+ "lede": "Nxpress Performance at Kaki Bukit Industrial Estate is a car repair and engine rebuild workshop.",
+ "chips": [
+  "Engine rebuilds",
+  "Repairs"
+ ],
+ "services": [
+  "Engine rebuild",
+  "Car servicing",
+  "Battery and alternator replacement",
+  "Power steering repair"
+ ],
+ "themes": "Customers on Google Maps mention full engine rebuilds, servicing with power steering and engine mounting work, battery, alternator and belt replacement, an ISOFIX bracket fitted to an older Toyota Camry and long-time customers across many makes.",
+ "faqs": [
+  [
+   "What does Nxpress Performance do?",
+   "Google Maps lists it as a car repair workshop."
+  ],
+  [
+   "What are the opening hours?",
+   "The hours are listed in the Google Maps section above. Please see Google Maps for current hours."
+  ]
+ ],
+ "sources": "its Google Maps listing",
+ "stories": [],
+ "mentioned_services": [
+  "Engine rebuild",
+  "Car servicing",
+  "Battery and alternator replacement",
+  "Power steering repair"
+ ],
+ "services_note": "Services customers mention on Google Maps. Ask the workshop for its full list.",
+ "makes": [
+  "Mitsubishi",
+  "Fiat",
+  "Suzuki",
+  "Maserati",
+  "Toyota"
+ ],
+ "makes_note": "Named by customers on Google Maps. Ask the workshop about other makes.",
+ "specialties": [],
+ "good_to_know": [],
+ "card_rules": "2026-11-05"
+}

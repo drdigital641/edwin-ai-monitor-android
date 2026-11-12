@@ -1,0 +1,39 @@
+{
+ "lede": "Hong Auto Workshop at Kaki Bukit Industrial Estate is a car dent, paint and servicing workshop.",
+ "chips": [
+  "Dent repair",
+  "Spray painting"
+ ],
+ "services": [
+  "Dent repair",
+  "Spray painting",
+  "Car servicing"
+ ],
+ "themes": "Customers on Google Maps mention dent and paint-chip repairs on Tesla Model 3 and Model Y cars, bumper and door painting collected the next day, same-day collection for some dent jobs and regular servicing for a Toyota Estima.",
+ "faqs": [
+  [
+   "What does Hong Auto Workshop do?",
+   "Google Maps lists it as a car repair workshop."
+  ],
+  [
+   "What are the opening hours?",
+   "The hours are listed in the Google Maps section above. Please see Google Maps for current hours."
+  ]
+ ],
+ "sources": "its Google Maps listing",
+ "stories": [],
+ "mentioned_services": [
+  "Dent repair",
+  "Spray painting",
+  "Car servicing"
+ ],
+ "services_note": "Services customers mention on Google Maps. Ask the workshop for its full list.",
+ "makes": [
+  "Tesla",
+  "Toyota"
+ ],
+ "makes_note": "Named by customers on Google Maps. Ask the workshop about other makes.",
+ "specialties": [],
+ "good_to_know": [],
+ "card_rules": "2026-11-05"
+}

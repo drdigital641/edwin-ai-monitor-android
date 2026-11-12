@@ -1,0 +1,40 @@
+{
+ "lede": "B Motor Works at Kaki Bukit Industrial Estate is a BMW servicing and repair workshop.",
+ "chips": [
+  "BMW",
+  "Diagnosis"
+ ],
+ "services": [
+  "BMW servicing",
+  "Fault diagnosis",
+  "Battery replacement",
+  "Car repair"
+ ],
+ "themes": "Customers on Google Maps mention BMW diagnosis done quickly and accurately, a battery tested and replaced after a no-start, before-and-after videos of replaced parts, clear pricing and cars returned ahead of schedule.",
+ "faqs": [
+  [
+   "What does B Motor Works do?",
+   "Google Maps lists it as a car repair workshop."
+  ],
+  [
+   "What are the opening hours?",
+   "The hours are listed in the Google Maps section above. Please see Google Maps for current hours."
+  ]
+ ],
+ "sources": "its Google Maps listing",
+ "stories": [],
+ "mentioned_services": [
+  "BMW servicing",
+  "Fault diagnosis",
+  "Battery replacement",
+  "Car repair"
+ ],
+ "services_note": "Services customers mention on Google Maps. Ask the workshop for its full list.",
+ "makes": [
+  "BMW"
+ ],
+ "makes_note": "Named by customers on Google Maps. Ask the workshop about other makes.",
+ "specialties": [],
+ "good_to_know": [],
+ "card_rules": "2026-11-05"
+}

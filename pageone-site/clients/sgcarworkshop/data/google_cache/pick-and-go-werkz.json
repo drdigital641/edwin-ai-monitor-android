@@ -1,0 +1,37 @@
+{
+ "businessStatus": "OPERATIONAL",
+ "primaryType": "car_repair",
+ "types": [
+  "auto_parts_store",
+  "car_repair",
+  "point_of_interest",
+  "store",
+  "service",
+  "establishment"
+ ],
+ "rating": 5,
+ "userRatingCount": 348,
+ "websiteUri": "https://www.pickandgowerkz.com.sg/",
+ "paymentOptions": {
+  "acceptsCreditCards": true,
+  "acceptsDebitCards": true,
+  "acceptsCashOnly": false,
+  "acceptsNfc": true
+ },
+ "parkingOptions": null,
+ "editorialSummary": null,
+ "weekdayDescriptions": [
+  "Monday: 9:30 AM – 7:00 PM",
+  "Tuesday: 9:30 AM – 7:00 PM",
+  "Wednesday: 9:30 AM – 7:00 PM",
+  "Thursday: 9:30 AM – 7:00 PM",
+  "Friday: 9:30 AM – 7:00 PM",
+  "Saturday: 9:30 AM – 5:00 PM",
+  "Sunday: Closed"
+ ],
+ "review_count_seen": 5,
+ "review_themes": "Customers on Google Maps mention clear explanations before any repair starts, fender bender repairs sped up on request, a continental car's oil-in-coolant problem properly checked, no hidden charges and jobs done within the quoted time.",
+ "fetched_at": "2026-11-12",
+ "place_id": "ChIJn__CBGUX2jERMzawreh1lDQ",
+ "source": "google_places"
+}

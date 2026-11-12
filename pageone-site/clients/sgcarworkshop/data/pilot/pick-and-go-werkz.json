@@ -1,0 +1,50 @@
+{
+ "lede": "Pick And Go Werkz at Kaki Bukit Industrial Estate is a car repair workshop.",
+ "chips": [
+  "Repairs",
+  "Accident repairs"
+ ],
+ "services": [
+  "Car servicing and maintenance",
+  "Car repair",
+  "Engine and transmission diagnostics",
+  "Engine and transmission overhaul",
+  "Panel beating and welding",
+  "Car spray painting",
+  "Car aircon repair",
+  "Car accident claims",
+  "Onsite car battery replacement",
+  "Towing"
+ ],
+ "themes": "Customers on Google Maps mention clear explanations before any repair starts, fender bender repairs sped up on request, a continental car's oil-in-coolant problem properly checked, no hidden charges and jobs done within the quoted time.",
+ "faqs": [
+  [
+   "What does Pick And Go Werkz do?",
+   "Google Maps lists it as a car repair workshop."
+  ],
+  [
+   "What are the opening hours?",
+   "The hours are listed in the Google Maps section above. Please see Google Maps for current hours."
+  ]
+ ],
+ "sources": "its own website (pickandgowerkz.com.sg)",
+ "stories": [],
+ "mentioned_services": [
+  "Car repair",
+  "Accident repairs",
+  "Engine diagnosis"
+ ],
+ "services_note": "Services as listed on the workshop's own website, pickandgowerkz.com.sg.",
+ "makes": [],
+ "makes_note": "Not listed on its public pages. Ask the workshop about your car.",
+ "specialties": [
+  "Onsite battery replacement across Singapore",
+  "Accident claims",
+  "Engine and transmission overhaul"
+ ],
+ "good_to_know": [
+  "Replacement car during repair downtime, according to its website",
+  "Onsite battery replacement by call or WhatsApp, according to its website"
+ ],
+ "card_rules": "2026-11-05"
+}

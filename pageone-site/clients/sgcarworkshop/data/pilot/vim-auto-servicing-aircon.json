@@ -1,0 +1,38 @@
+{
+ "lede": "Vim Auto Servicing & AirCon at Kaki Bukit Industrial Estate is a car aircon and servicing workshop.",
+ "chips": [
+  "Aircon",
+  "Servicing"
+ ],
+ "services": [
+  "Aircon repair",
+  "Cooling coil replacement",
+  "Car servicing",
+  "COE renewal inspection"
+ ],
+ "themes": "Customers on Google Maps mention aircon leaks traced to the compressor piping, cooling coil and valve replacement, a free check before work, inspections for drivers deciding whether to renew COE, and routine servicing on older cars.",
+ "faqs": [
+  [
+   "What does Vim Auto Servicing & AirCon do?",
+   "Google Maps lists it as a car repair workshop."
+  ],
+  [
+   "What are the opening hours?",
+   "The hours are listed in the Google Maps section above. Please see Google Maps for current hours."
+  ]
+ ],
+ "sources": "its Google Maps listing",
+ "stories": [],
+ "mentioned_services": [
+  "Aircon repair",
+  "Cooling coil replacement",
+  "Car servicing",
+  "COE renewal inspection"
+ ],
+ "services_note": "Services customers mention on Google Maps. Ask the workshop for its full list.",
+ "makes": [],
+ "makes_note": "Not listed on its public pages. Ask the workshop about your car.",
+ "specialties": [],
+ "good_to_know": [],
+ "card_rules": "2026-11-05"
+}

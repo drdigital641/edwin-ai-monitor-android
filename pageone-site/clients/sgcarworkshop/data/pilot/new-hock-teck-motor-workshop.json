@@ -1,0 +1,42 @@
+{
+ "lede": "New Hock Teck Motor Workshop at Kaki Bukit Industrial Estate is a car servicing and repair workshop.",
+ "chips": [
+  "Servicing",
+  "Older cars"
+ ],
+ "services": [
+  "Car servicing",
+  "Car repair",
+  "Spray painting",
+  "Insurance claims help"
+ ],
+ "themes": "Customers on Google Maps mention Mercedes B180 and Ford Focus servicing, repairs and painting on older cars, hard-to-find parts tracked down for an older model, a chassis squeak fixed and help with insurance claims.",
+ "faqs": [
+  [
+   "What does New Hock Teck Motor Workshop do?",
+   "Google Maps lists it as a car repair workshop."
+  ],
+  [
+   "What are the opening hours?",
+   "The hours are listed in the Google Maps section above. Please see Google Maps for current hours."
+  ]
+ ],
+ "sources": "its Google Maps listing",
+ "stories": [],
+ "mentioned_services": [
+  "Car servicing",
+  "Car repair",
+  "Spray painting",
+  "Insurance claims help"
+ ],
+ "services_note": "Services customers mention on Google Maps. Ask the workshop for its full list.",
+ "makes": [
+  "Mercedes-Benz",
+  "Ford",
+  "Toyota"
+ ],
+ "makes_note": "Named by customers on Google Maps. Ask the workshop about other makes.",
+ "specialties": [],
+ "good_to_know": [],
+ "card_rules": "2026-11-05"
+}

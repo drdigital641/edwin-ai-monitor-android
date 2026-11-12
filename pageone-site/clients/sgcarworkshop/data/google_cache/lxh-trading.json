@@ -1,0 +1,34 @@
+{
+ "businessStatus": "OPERATIONAL",
+ "primaryType": "car_repair",
+ "types": [
+  "car_repair",
+  "point_of_interest",
+  "service",
+  "establishment"
+ ],
+ "rating": 5,
+ "userRatingCount": 304,
+ "websiteUri": "https://www.carousell.sg/u/leexihong/",
+ "paymentOptions": {
+  "acceptsCreditCards": true,
+  "acceptsDebitCards": true,
+  "acceptsNfc": true
+ },
+ "parkingOptions": null,
+ "editorialSummary": null,
+ "weekdayDescriptions": [
+  "Monday: 11:00 AM – 9:00 PM",
+  "Tuesday: 11:00 AM – 9:00 PM",
+  "Wednesday: 11:00 AM – 9:00 PM",
+  "Thursday: 11:00 AM – 9:00 PM",
+  "Friday: 11:00 AM – 9:00 PM",
+  "Saturday: 10:00 AM – 3:00 PM",
+  "Sunday: Closed"
+ ],
+ "review_count_seen": 5,
+ "review_themes": "Customers on Google Maps mention Mercedes retrofits including an original-equipment analogue clock, TPMS sensor replacement, suspension, brake and rotor work done the same day, side mirror repairs and genuine parts sourced at fair prices.",
+ "fetched_at": "2026-11-12",
+ "place_id": "ChIJuQJ4LaMX2jERxzbL5qx4LUc",
+ "source": "google_places"
+}

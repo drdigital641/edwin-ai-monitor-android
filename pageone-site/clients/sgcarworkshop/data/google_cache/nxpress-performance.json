@@ -1,0 +1,35 @@
+{
+ "businessStatus": "OPERATIONAL",
+ "primaryType": "car_repair",
+ "types": [
+  "car_repair",
+  "point_of_interest",
+  "service",
+  "establishment"
+ ],
+ "rating": 5,
+ "userRatingCount": 39,
+ "websiteUri": "https://www.facebook.com/nxpressperformance",
+ "paymentOptions": {
+  "acceptsCreditCards": true,
+  "acceptsDebitCards": true,
+  "acceptsCashOnly": false,
+  "acceptsNfc": true
+ },
+ "parkingOptions": null,
+ "editorialSummary": null,
+ "weekdayDescriptions": [
+  "Monday: 10:00 AM – 8:00 PM",
+  "Tuesday: 10:00 AM – 8:00 PM",
+  "Wednesday: 10:00 AM – 8:00 PM",
+  "Thursday: 10:00 AM – 8:00 PM",
+  "Friday: 10:00 AM – 8:00 PM",
+  "Saturday: 10:00 AM – 6:00 PM",
+  "Sunday: Closed"
+ ],
+ "review_count_seen": 5,
+ "review_themes": "Customers on Google Maps mention full engine rebuilds, servicing with power steering and engine mounting work, battery, alternator and belt replacement, an ISOFIX bracket fitted to an older Toyota Camry and long-time customers across many makes.",
+ "fetched_at": "2026-11-12",
+ "place_id": "ChIJQSfh1-MX2jEREa8VJuaMV1Y",
+ "source": "google_places"
+}

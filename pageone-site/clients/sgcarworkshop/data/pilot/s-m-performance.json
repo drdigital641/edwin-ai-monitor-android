@@ -1,0 +1,40 @@
+{
+ "lede": "S M Performance at Kaki Bukit Industrial Estate is a car servicing workshop.",
+ "chips": [
+  "Servicing",
+  "Aircon"
+ ],
+ "services": [
+  "Car servicing",
+  "Aircon flushing",
+  "Engine oil change"
+ ],
+ "themes": "Customers on Google Maps mention full servicing with engine oil, filters and brake fluid, aircon flushing, a comfortable waiting room with drinks and snacks, and a space to work while waiting.",
+ "faqs": [
+  [
+   "What does S M Performance do?",
+   "Google Maps lists it as a car repair workshop."
+  ],
+  [
+   "What are the opening hours?",
+   "The hours are listed in the Google Maps section above. Please see Google Maps for current hours."
+  ]
+ ],
+ "sources": "its own website (smperformance.com.sg)",
+ "stories": [],
+ "mentioned_services": [
+  "Car servicing",
+  "Aircon flushing",
+  "Engine oil change"
+ ],
+ "services_note": "Services as listed on the workshop's own website, smperformance.com.sg.",
+ "makes": [],
+ "makes_note": "Not listed on its public pages. Ask the workshop about your car.",
+ "specialties": [
+  "European cars"
+ ],
+ "good_to_know": [
+  "Part of the S M Spray Painting group, which also offers car rental, according to its website"
+ ],
+ "card_rules": "2026-11-05"
+}

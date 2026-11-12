@@ -1,0 +1,33 @@
+{
+ "businessStatus": "OPERATIONAL",
+ "primaryType": "car_repair",
+ "types": [
+  "car_repair",
+  "point_of_interest",
+  "service",
+  "establishment"
+ ],
+ "rating": 4.5,
+ "userRatingCount": 10,
+ "websiteUri": null,
+ "paymentOptions": {
+  "acceptsDebitCards": true,
+  "acceptsNfc": true
+ },
+ "parkingOptions": null,
+ "editorialSummary": null,
+ "weekdayDescriptions": [
+  "Monday: 9:30 AM – 7:30 PM",
+  "Tuesday: 9:30 AM – 7:30 PM",
+  "Wednesday: 9:30 AM – 7:30 PM",
+  "Thursday: 9:30 AM – 7:30 PM",
+  "Friday: 9:30 AM – 7:30 PM",
+  "Saturday: 9:30 AM – 4:00 PM",
+  "Sunday: Closed"
+ ],
+ "review_count_seen": 5,
+ "review_themes": "Customers on Google Maps mention hard-to-find faults solved after other workshops could not, a Mercedes misfire traced properly, a battery drain issue fixed, scheduled servicing on a Mercedes B180 and up-to-date diagnostic software for many makes.",
+ "fetched_at": "2026-11-12",
+ "place_id": "ChIJcY-ICjgX2jERL9yW3RJ3yM8",
+ "source": "google_places"
+}

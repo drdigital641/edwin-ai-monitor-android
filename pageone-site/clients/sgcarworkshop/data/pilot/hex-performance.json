@@ -1,0 +1,41 @@
+{
+ "lede": "Hex Performance at Kaki Bukit Industrial Estate is a car tuning and servicing workshop.",
+ "chips": [
+  "Tuning",
+  "Servicing"
+ ],
+ "services": [
+  "Car tuning",
+  "Car servicing",
+  "Brake replacement",
+  "Engine repair"
+ ],
+ "themes": "Customers on Google Maps mention tuning set up for each car rather than copied from another, Honda and Lexus owners, brake rotor and pad replacement, regular servicing and major restoration repairs.",
+ "faqs": [
+  [
+   "What does Hex Performance do?",
+   "Google Maps lists it as a car repair workshop."
+  ],
+  [
+   "What are the opening hours?",
+   "The hours are listed in the Google Maps section above. Please see Google Maps for current hours."
+  ]
+ ],
+ "sources": "its Google Maps listing",
+ "stories": [],
+ "mentioned_services": [
+  "Car tuning",
+  "Car servicing",
+  "Brake replacement",
+  "Engine repair"
+ ],
+ "services_note": "Services customers mention on Google Maps. Ask the workshop for its full list.",
+ "makes": [
+  "Honda",
+  "Lexus"
+ ],
+ "makes_note": "Named by customers on Google Maps. Ask the workshop about other makes.",
+ "specialties": [],
+ "good_to_know": [],
+ "card_rules": "2026-11-05"
+}

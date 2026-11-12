@@ -1,0 +1,48 @@
+{
+ "schema_version": 1,
+ "slug": "kiang-motor",
+ "place_id": "ChIJL8_z9jEX2jER_asyiB8A5so",
+ "place_id_checked_at": "2026-11-12",
+ "name": "KIANG MOTOR",
+ "name_source_url": "google_profile",
+ "name_checked_at": "2026-11-12",
+ "address": {
+  "block": "",
+  "street": "25 Kaki Bukit Rd 4, #06-66 SYNERGY@ KB",
+  "unit": "",
+  "building": ""
+ },
+ "postal_code": "417800",
+ "address_source_url": "google_profile",
+ "address_checked_at": "2026-11-12",
+ "categories": [
+  "SERV"
+ ],
+ "services": [
+  "General servicing and repair"
+ ],
+ "services_source_url": "google_profile",
+ "phones": [
+  {
+   "e164": "+6596477978",
+   "kind": "mobile",
+   "whatsapp": true,
+   "source": "google_profile",
+   "checked_at": "2026-11-12"
+  }
+ ],
+ "google_screen": {
+  "passed": true,
+  "reason": "OPERATIONAL, car repair, SG mobile on Google profile",
+  "checked_at": "2026-11-12"
+ },
+ "status": "pending",
+ "tier": "basic",
+ "first_seen_at": "2026-11-12",
+ "last_verified_at": "2026-11-12",
+ "collector_version": "agent-v5",
+ "estate": "kaki-bukit-industrial-estate",
+ "planning_area": "Bedok",
+ "region": "east",
+ "hold": "hold: only 1 rating"
+}

@@ -1,0 +1,73 @@
+{
+ "schema_version": 1,
+ "slug": "hex-performance",
+ "place_id": "ChIJuz27dwAX2jERWptvVP_Ok9c",
+ "place_id_checked_at": "2026-11-12",
+ "name": "Hex Performance",
+ "name_source_url": "google_profile",
+ "name_checked_at": "2026-11-12",
+ "address": {
+  "block": "",
+  "street": "25 Kaki Bukit Rd 4",
+  "unit": "",
+  "building": ""
+ },
+ "postal_code": "417800",
+ "address_source_url": "google_profile",
+ "address_checked_at": "2026-11-12",
+ "categories": [
+  "SERV"
+ ],
+ "services": [
+  "General servicing and repair"
+ ],
+ "services_source_url": "google_profile",
+ "phones": [
+  {
+   "e164": "+6582980073",
+   "kind": "mobile",
+   "whatsapp": true,
+   "source": "google_profile",
+   "checked_at": "2026-11-12"
+  }
+ ],
+ "google_screen": {
+  "passed": true,
+  "reason": "OPERATIONAL, car repair, SG mobile on Google profile",
+  "checked_at": "2026-11-12"
+ },
+ "status": "active",
+ "tier": "basic",
+ "first_seen_at": "2026-11-12",
+ "last_verified_at": "2026-11-12",
+ "collector_version": "agent-v5",
+ "estate": "kaki-bukit-industrial-estate",
+ "planning_area": "Bedok",
+ "region": "east",
+ "lat": 1.339676875326561,
+ "lng": 103.9107992907692,
+ "geo_source": "onemap",
+ "blocks": [
+  "hero",
+  "contact",
+  "services",
+  "good_for",
+  "problems",
+  "reviews",
+  "comparison",
+  "hours",
+  "stories",
+  "location",
+  "tips",
+  "faq",
+  "claim",
+  "sources"
+ ],
+ "google_rating": {
+  "rating": 5,
+  "count": 13,
+  "checked": "2026-11-12",
+  "source": "Google Places",
+  "source_date": "2026-11-12"
+ }
+}

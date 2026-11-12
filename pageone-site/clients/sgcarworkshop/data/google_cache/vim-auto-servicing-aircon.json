@@ -1,0 +1,34 @@
+{
+ "businessStatus": "OPERATIONAL",
+ "primaryType": "car_repair",
+ "types": [
+  "car_repair",
+  "point_of_interest",
+  "service",
+  "establishment"
+ ],
+ "rating": 5,
+ "userRatingCount": 41,
+ "websiteUri": null,
+ "paymentOptions": {
+  "acceptsCreditCards": true,
+  "acceptsDebitCards": true,
+  "acceptsNfc": true
+ },
+ "parkingOptions": null,
+ "editorialSummary": null,
+ "weekdayDescriptions": [
+  "Monday: 9:30 AM – 7:00 PM",
+  "Tuesday: 9:30 AM – 7:00 PM",
+  "Wednesday: 9:30 AM – 7:00 PM",
+  "Thursday: 9:30 AM – 7:00 PM",
+  "Friday: 9:30 AM – 7:00 PM",
+  "Saturday: 9:30 AM – 7:00 PM",
+  "Sunday: Closed"
+ ],
+ "review_count_seen": 5,
+ "review_themes": "Customers on Google Maps mention aircon leaks traced to the compressor piping, cooling coil and valve replacement, a free check before work, inspections for drivers deciding whether to renew COE, and routine servicing on older cars.",
+ "fetched_at": "2026-11-12",
+ "place_id": "ChIJm30IoSQX2jERyaYcj8CZ9DU",
+ "source": "google_places"
+}

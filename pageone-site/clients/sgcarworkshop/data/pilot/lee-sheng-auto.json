@@ -1,0 +1,58 @@
+{
+ "lede": "Lee Sheng Auto at Kaki Bukit Industrial Estate is an accident repair and insurance claims workshop.",
+ "chips": [
+  "Accident repairs",
+  "Insurance claims"
+ ],
+ "services": [
+  "Accident claims and GIA reporting",
+  "Spray painting and accident repair",
+  "Engine servicing and mechanical repair",
+  "Fleet maintenance for companies",
+  "Aircon servicing and repair",
+  "Engine diagnostics and tune-ups",
+  "Brake, cooling and transmission repairs",
+  "Van and car rental"
+ ],
+ "themes": "Customers on Google Maps mention patient help with accident reports and insurance claims, bumper repairs on a Mercedes S-Class, repairs sped up for drivers who need their car back, and a walk-through of the car at collection.",
+ "faqs": [
+  [
+   "What does Lee Sheng Auto do?",
+   "Google Maps lists it as a car repair workshop."
+  ],
+  [
+   "What are the opening hours?",
+   "The hours are listed in the Google Maps section above. Please see Google Maps for current hours."
+  ]
+ ],
+ "sources": "its own website (leeshengauto.com.sg)",
+ "stories": [],
+ "mentioned_services": [
+  "Accident repairs",
+  "Insurance claims help",
+  "Bumper repair"
+ ],
+ "services_note": "Services as listed on the workshop's own website, leeshengauto.com.sg.",
+ "makes": [
+  "Mercedes-Benz",
+  "BMW",
+  "Audi",
+  "Toyota",
+  "Honda",
+  "Nissan",
+  "Mazda",
+  "Kia",
+  "Hyundai"
+ ],
+ "makes_note": "Named on its own website. Ask the workshop about other makes.",
+ "specialties": [
+  "Accident claims and GIA reporting centre",
+  "Continental and Asian cars",
+  "Fleet maintenance"
+ ],
+ "good_to_know": [
+  "Book an appointment before coming for accident reporting, according to its website",
+  "Asks for your go-ahead before any repair work, according to its website"
+ ],
+ "card_rules": "2026-11-05"
+}

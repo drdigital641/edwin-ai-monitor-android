@@ -60,5 +60,11 @@
   "details": 22,
   "sweep_calls": 20,
   "free_id_calls": 73
+ },
+ "2026-11-12": {
+  "text_search": 0,
+  "details": 22,
+  "sweep_calls": 20,
+  "free_id_calls": 39
  }
 }

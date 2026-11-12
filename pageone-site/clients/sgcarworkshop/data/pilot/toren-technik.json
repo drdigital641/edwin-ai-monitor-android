@@ -1,0 +1,44 @@
+{
+ "lede": "Toren Technik at Kaki Bukit Industrial Estate is a continental car tuning and repair workshop.",
+ "chips": [
+  "Tuning",
+  "Continental cars"
+ ],
+ "services": [
+  "ECU remap",
+  "Fault diagnosis",
+  "Body kit repair",
+  "Spray painting",
+  "Tyres"
+ ],
+ "themes": "Customers on Google Maps mention an ECU remap on an Audi TT, a body kit fixed, a persistent fault found after other workshops could not, help with Mercedes-AMG cars, and spray work and tyres.",
+ "faqs": [
+  [
+   "What does Toren Technik do?",
+   "Google Maps lists it as a car repair workshop."
+  ],
+  [
+   "What are the opening hours?",
+   "The hours are listed in the Google Maps section above. Please see Google Maps for current hours."
+  ]
+ ],
+ "sources": "its Google Maps listing",
+ "stories": [],
+ "mentioned_services": [
+  "ECU remap",
+  "Fault diagnosis",
+  "Body kit repair",
+  "Spray painting",
+  "Tyres"
+ ],
+ "services_note": "Services customers mention on Google Maps. Ask the workshop for its full list.",
+ "makes": [
+  "Audi",
+  "Volkswagen",
+  "Mercedes-AMG"
+ ],
+ "makes_note": "Named by customers on Google Maps. Ask the workshop about other makes.",
+ "specialties": [],
+ "good_to_know": [],
+ "card_rules": "2026-11-05"
+}

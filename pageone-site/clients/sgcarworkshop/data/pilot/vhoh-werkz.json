@@ -1,0 +1,40 @@
+{
+ "lede": "VHOH Werkz at Kaki Bukit Industrial Estate is a car servicing and repair workshop.",
+ "chips": [
+  "Servicing",
+  "Aircon flushing"
+ ],
+ "services": [
+  "Brake repair",
+  "Aircon flushing",
+  "Battery replacement",
+  "Car servicing"
+ ],
+ "themes": "Customers on Google Maps mention photos and videos of parts before and after replacement, brake disc and pad changes on a BMW 523i, aircon flushing, battery replacement and tips on maintaining the car.",
+ "faqs": [
+  [
+   "What does VHOH Werkz do?",
+   "Google Maps lists it as a car repair workshop."
+  ],
+  [
+   "What are the opening hours?",
+   "The hours are listed in the Google Maps section above. Please see Google Maps for current hours."
+  ]
+ ],
+ "sources": "its Google Maps listing",
+ "stories": [],
+ "mentioned_services": [
+  "Brake repair",
+  "Aircon flushing",
+  "Battery replacement",
+  "Car servicing"
+ ],
+ "services_note": "Services customers mention on Google Maps. Ask the workshop for its full list.",
+ "makes": [
+  "BMW"
+ ],
+ "makes_note": "Named by customers on Google Maps. Ask the workshop about other makes.",
+ "specialties": [],
+ "good_to_know": [],
+ "card_rules": "2026-11-05"
+}
