@@ -793,3 +793,73 @@ ARTICLES.append({
  "related": ["/services/european-car-servicing/", "/services/car-diagnostics-warning-lights/", "/european-car-service-schedule-singapore/", "/free-car-battery-test-bmw-mercedes-audi-singapore/"],
  "confirm": [],
 })
+
+ARTICLES.append({
+ "slug": "gearbox-jerks-when-changing-gear-bmw-mercedes-audi-singapore",
+ "name": "Gearbox Jerking When Changing Gear",
+ "card": "Why a BMW, Mercedes-Benz or Audi gearbox can jerk or hesitate between gears, what to note, and when to stop driving.",
+ "title": "Gearbox Jerking When Changing Gear: Causes",
+ "desc": "Gearbox jerking or hesitating when changing gear in a BMW, Mercedes-Benz or Audi? See common causes, what to note, when to stop driving and what a workshop checks.",
+ "h1": "Gearbox Jerking When Changing Gear: What Could Cause It?",
+ "answer": "A jerk when the gearbox changes gear can come from aged fluid, a software adaptation issue, a sensor or control fault, or wear inside the gearbox. The jerk alone does not say which. Note when it happens, then have the fluid checked and the transmission codes read. If the car slips, loses drive or goes into limp mode, stop safely.",
+ "date": "2026-11-13",
+ "updated": "13 Nov 2026",
+ "service": "/services/gearbox-transmission-service/",
+ "minutes": 4,
+ "brand": "BMW, Mercedes-Benz and Audi",
+ "sections": [
+  {
+   "h2": "What does a jerking gearbox feel like?",
+   "html": "<p>Owners describe it in different ways: a thump when the car changes from first to second, a lurch when you select Drive or Reverse, a shudder at low speed, or a hesitation before the car pulls away. On an automatic gearbox, any of these can be the first sign that something needs attention.</p><p>The feeling does not name the cause. Two cars with the same jerk can have a simple fluid issue or a fault that needs a deeper look, which is why noting the details helps.</p>"
+  },
+  {
+   "h2": "What can cause a gearbox to jerk?",
+   "html": "<table>\n<thead><tr><th>Possible cause</th><th>What you may notice</th><th>How it is checked</th></tr></thead>\n<tbody>\n<tr><td>Aged or low gearbox fluid</td><td>Harsh shifts, delay when selecting Drive or Reverse</td><td>Fluid level and condition, check for leaks</td></tr>\n<tr><td>Software adaptation out of range</td><td>Jerks that started after a battery change or a long period of unchanged driving style</td><td>Stored codes and adaptation data</td></tr>\n<tr><td>Sensor or control unit fault</td><td>Jerks with a warning light or limp mode</td><td>Fault codes and live data</td></tr>\n<tr><td>Wear inside the gearbox</td><td>Slipping, revs rising without the car accelerating</td><td>Road test, codes, fluid condition</td></tr>\n<tr><td>Engine or mount issue</td><td>A thump that feels like the gearbox but comes from elsewhere</td><td>Engine codes, visual check of mounts</td></tr>\n</tbody></table><p>Any of these can have a simpler cause than a failed gearbox, so the checks come before conclusions.</p>"
+  },
+  {
+   "h2": "What should you note before booking?",
+   "html": "<ul>\n<li>Does it happen cold, hot, or both?</li>\n<li>Does it happen at low speed in stop-go traffic, or while accelerating?</li>\n<li>Is it one particular gear change, or all of them?</li>\n<li>Is it when you select Drive or Reverse while stationary?</li>\n<li>Is there a warning light or a message on the dash? Take a photo of it.</li>\n<li>Did it start after a service, a battery change or any other work?</li>\n</ul><p>This short list lets a workshop narrow down the cause faster and saves a repeat visit.</p>"
+  },
+  {
+   "h2": "Can fresh gearbox fluid fix the jerk?",
+   "html": "<p>Sometimes it improves shifting, especially when the old fluid was in poor condition. If the cause is mechanical wear or a control fault, new fluid will not repair it. How often the fluid is due depends on the gearbox and the maker's schedule, so check your handbook. Our <a href=\"/european-car-service-schedule-singapore/\">European car service schedule guide</a> explains how to read the maker's intervals.</p><p>Our <a href=\"/services/gearbox-transmission-service/\">gearbox and ATF service</a> page explains how we inspect first and explain what we find before any repair.</p>"
+  },
+  {
+   "h2": "When should you stop driving?",
+   "html": "<p>Drive gently, avoid long trips and heavy traffic, and have the car inspected soon if shifts are rough but the car still drives normally. Stop in a safe place and avoid driving further if any of these happen:</p><ul>\n<li>The engine revs but the car does not accelerate.</li>\n<li>The car loses drive or will not engage a gear.</li>\n<li>Loud grinding, whining or banging from the gearbox.</li>\n<li>A gearbox warning with limp mode, where the car limits its own speed or gears.</li>\n</ul><p>On an expressway such as the PIE or CTE, move to the left lane, use hazard lights and stop only where it is safe. If a warning light is on, see our <a href=\"/services/car-diagnostics-warning-lights/\">car diagnostics and warning lights</a> page for how the codes are read.</p>"
+  },
+  {
+   "h2": "Where can you get it checked?",
+   "html": "<p>Send us your car model and the details you noted on WhatsApp at +65 8221 5502, or use the <a href=\"/contact-us/\">contact page</a>. We are at 143 Bukit Timah Road, Newton Circus, inside the Shell station. We inspect, explain what we find and quote, and you approve before any work starts.</p>"
+  }
+ ],
+ "faqs": [
+  {
+   "q": "Why does my gearbox jerk when changing gear?",
+   "a": "Common causes are aged or low gearbox fluid, a software adaptation issue, a sensor or control fault, or wear inside the gearbox. The jerk alone does not say which, so the fluid is checked and the transmission codes are read."
+  },
+  {
+   "q": "Is it safe to drive with a jerking gearbox?",
+   "a": "If the car still drives normally, drive gently and have it inspected soon. If it slips, loses drive, makes loud noises or goes into limp mode, stop in a safe place and avoid driving further."
+  },
+  {
+   "q": "Will changing the gearbox fluid stop the jerking?",
+   "a": "It can help when the old fluid was in poor condition, but it will not repair mechanical wear or a control fault. A check first shows whether a fluid service is likely to help."
+  },
+  {
+   "q": "What should I tell the workshop about the jerk?",
+   "a": "Say whether it happens cold or hot, at low speed or while accelerating, in one gear change or all of them, and whether a warning light is on. A photo of any dash message also helps."
+  },
+  {
+   "q": "How do I book a gearbox check at ContiExpert?",
+   "a": "WhatsApp +65 8221 5502 with your car model and what you noticed, or visit 143 Bukit Timah Road, Newton Circus, inside the Shell station. We inspect, explain and quote, and you approve before work starts."
+  }
+ ],
+ "related": [
+  "/services/gearbox-transmission-service/",
+  "/services/car-diagnostics-warning-lights/",
+  "/european-car-service-schedule-singapore/",
+  "/contact-us/"
+ ],
+ "confirm": []
+})

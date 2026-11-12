@@ -9,7 +9,7 @@ DOMAIN = 'https://contiexpert.sg'
 BASE = '' if LIVE else '/preview/contiexpert'
 HERE = os.path.dirname(os.path.abspath(__file__))
 OUT = sys.argv[1] if len(sys.argv) > 1 else os.path.join(HERE, 'site')
-TODAY = '2026-11-11'
+TODAY = '2026-11-13'
 INDEXNOW_KEY = '6f1c2e9a4b7d48c3a05e9d21b8f3c7e4'
 
 BIZ = 'Volt Autocare'
