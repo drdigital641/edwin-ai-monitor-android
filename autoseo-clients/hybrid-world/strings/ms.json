@@ -26,7 +26,7 @@
   "call_short": "Telefon",
   "email": "E-mel kami",
   "hours_label": "Waktu operasi",
-  "hours_text": "Isn–Sab 9 pagi–7 malam · Ahad tutup",
+  "hours_text": "Isn–Jumaat 9 pagi–6:30 petang · Sabtu 9 pagi–6 petang · Tutup Ahad dan cuti umum",
   "address_label": "Alamat",
   "phone_label": "WhatsApp & telefon",
   "email_label": "E-mel",
@@ -230,7 +230,7 @@
     },
     {
      "q": "Di mana bengkel dan bila anda buka?",
-     "a": "No 5, Jalan Indah 16/6, Taman Bukit Indah, 79100 Iskandar Puteri, Johor Bahru. Kami buka Isnin hingga Sabtu, 9 pagi hingga 7 malam, dan tutup pada hari Ahad."
+     "a": "No 5, Jalan Indah 16/6, Taman Bukit Indah, 79100 Iskandar Puteri, Johor Bahru. Kami buka Isnin hingga Jumaat, 9 pagi hingga 6:30 petang, dan Sabtu 9 pagi hingga 6 petang. Tutup pada hari Ahad dan cuti umum."
     }
    ],
    "system_h2": "Kereta hibrid anda, bahagian demi bahagian",
@@ -396,7 +396,7 @@
     },
     {
      "q": "Bagaimana nak tempah?",
-     "a": "WhatsApp kami model, tahun kereta dan apa yang anda perlukan. Kami buka Isnin hingga Sabtu, 9 pagi hingga 7 malam."
+     "a": "WhatsApp kami model, tahun kereta dan apa yang anda perlukan. Kami buka Isnin hingga Jumaat, 9 pagi hingga 6:30 petang, dan Sabtu 9 pagi hingga 6 petang. Tutup pada hari Ahad dan cuti umum."
     }
    ]
   },
@@ -559,7 +559,7 @@
   },
   "contact": {
    "title": "Hubungi Hybrid World Specialist | Taman Bukit Indah, JB",
-   "description": "WhatsApp/telefon Hybrid World Specialist di +60 14-298 5155. No 5, Jalan Indah 16/6, Taman Bukit Indah, Iskandar Puteri, Johor Bahru. Isn-Sab 9 pagi-7 malam.",
+   "description": "WhatsApp/telefon Hybrid World Specialist di +60 14-298 5155. No 5, Jalan Indah 16/6, Taman Bukit Indah, Iskandar Puteri, Johor Bahru. Isn-Jumaat 9 pagi-6:30 petang, Sabtu 9 pagi-6 petang. Tutup Ahad dan cuti umum.",
    "h1": "Hubungi Hybrid World Specialist",
    "intro": "Cara paling cepat untuk menghubungi kami ialah WhatsApp. Hantar model kereta, tahun dan apa yang anda perlukan, serta foto sebarang amaran pada papan pemuka.",
    "sections": []

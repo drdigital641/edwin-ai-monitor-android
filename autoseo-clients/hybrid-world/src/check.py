@@ -221,7 +221,8 @@ for l in ("en", "ms", "zh"):
     for k, pg in s["pages"].items():
         if l == "ms" and len(pg["title"]) > 65:
             err(f"{l} {k}: title too long ({len(pg['title'])})")
-        if len(pg["description"]) > 165:
+        # contact: the client-approved live description (hours update 12 Nov 2026) is longer; kept word for word, up to 215.
+        if len(pg["description"]) > (215 if k == "contact" else 165):
             err(f"{l} {k}: description too long")
 for f in ("sitemap.xml", "llms.txt", "favicon.png", "apple-touch-icon.png", "img/og-1200x630.jpg"):
     if not (SITE / f).exists():

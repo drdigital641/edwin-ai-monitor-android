@@ -26,7 +26,7 @@
   "call_short": "Call",
   "email": "Email us",
   "hours_label": "Hours",
-  "hours_text": "Mon–Sat 9am–7pm · Sunday closed",
+  "hours_text": "Mon–Fri 9am–6:30pm · Sat 9am–6pm · Closed Sun and public holidays",
   "address_label": "Address",
   "phone_label": "WhatsApp & phone",
   "email_label": "Email",
@@ -230,7 +230,7 @@
     },
     {
      "q": "Where is the workshop and when are you open?",
-     "a": "No 5, Jalan Indah 16/6, Taman Bukit Indah, 79100 Iskandar Puteri, Johor Bahru. We are open Monday to Saturday, 9am to 7pm, and closed on Sunday."
+     "a": "No 5, Jalan Indah 16/6, Taman Bukit Indah, 79100 Iskandar Puteri, Johor Bahru. We are open Monday to Friday, 9am to 6:30pm, and Saturday 9am to 6pm. Closed Sundays and public holidays."
     }
    ],
    "system_h2": "Your hybrid, part by part",
@@ -396,7 +396,7 @@
     },
     {
      "q": "How do I book?",
-     "a": "WhatsApp us your car model, year and what you need. We are open Monday to Saturday, 9am to 7pm."
+     "a": "WhatsApp us your car model, year and what you need. We are open Monday to Friday, 9am to 6:30pm, and Saturday 9am to 6pm. Closed Sundays and public holidays."
     }
    ]
   },
@@ -559,7 +559,7 @@
   },
   "contact": {
    "title": "Contact Hybrid World Specialist | Taman Bukit Indah, JB",
-   "description": "WhatsApp or call Hybrid World Specialist on +60 14-298 5155. No 5, Jalan Indah 16/6, Taman Bukit Indah, Iskandar Puteri, Johor Bahru. Mon-Sat 9am-7pm.",
+   "description": "WhatsApp or call Hybrid World Specialist on +60 14-298 5155. No 5, Jalan Indah 16/6, Taman Bukit Indah, Iskandar Puteri, Johor Bahru. Mon-Fri 9am-6:30pm, Sat 9am-6pm. Closed Sun and public holidays.",
    "h1": "Contact Hybrid World Specialist",
    "intro": "The fastest way to reach us is WhatsApp. Send your car model, year and what you need, and a photo of any warning on the dashboard.",
    "sections": []
