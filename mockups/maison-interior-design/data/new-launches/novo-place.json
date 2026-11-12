@@ -1,0 +1,69 @@
+{
+  "name": "Novo Place",
+  "slug": "novo-place",
+  "type": "EC",
+  "label": "Executive condominium",
+  "area": "District 24",
+  "district": "D24",
+  "region": "West",
+  "developer": "Hoi Hup Realty & Sunway Developments (listed in our project file, not officially confirmed)",
+  "tenure": "",
+  "top_label": "Launch / TOP / key date",
+  "top": "",
+  "unit_mix": "",
+  "official_site": "",
+  "facts": [],
+  "facts_note": "This project is not marked officially confirmed in our project file. Unit counts, tenure and dates from third-party listings have been left blank until they can be cited from the developer, HDB or URA.",
+  "title": "Novo Place Renovation & Interior Design | District 24 EC — Maison",
+  "description": "Interior design and built-in carpentry for Novo Place, an executive condominium in District 24, around Tengah and Choa Chu Kang.",
+  "keywords": [
+    "Novo Place renovation",
+    "Novo Place interior design",
+    "Novo Place floor plan",
+    "Tengah EC renovation",
+    "Novo Place built-in carpentry",
+    "District 24 executive condominium interior design"
+  ],
+  "intro": "Novo Place is an executive condominium in District 24, in the Tengah and Choa Chu Kang belt. Our project file lists Hoi Hup Realty and Sunway Developments as the developers. The file also carries a third-party expected TOP in the first quarter of 2027, but that figure was not verified on the developer’s own page, so it is not treated as a confirmed date here. Unit counts and tenure are likewise left out until we can cite an official source. If you are an owner approaching handover, use your sale documents and any letter from the developer as the source of truth for your own key date. This page sets out what is on file and how to plan your Novo Place renovation.",
+  "sections": [
+    {
+      "heading": "Planning your Novo Place interior",
+      "text": "District 24 is a growth corridor where new housing, new roads and new amenities have been arriving in stages. That matters for renovation only in practical ways: you may be planning a first home while the neighbourhood is still settling, and you will want storage that works from week one — school bags, bulk groceries, and a place to drop shoes and helmets — without waiting to “see how the estate feels”. The joinery that usually does that job is an entry cabinet, a living-room storage wall, full-height wardrobes, and a fitted kitchen with a tall pantry. Maison designs those as built-in carpentry, not as loose, flat-pack furniture.\n\nWe do not have an official floor plan on file for Novo Place, and we will not invent a typical unit type. EC estates often mix family typologies, but the only safe starting point is your approved plan. With that in hand we can tell whether the living and dining share one long wall (a good place for a continuous media and storage run), whether a common bedroom can take a built-in desk, and how far the kitchen can go before it meets a structural wall or a supplied appliance bank. Close-up material studies — stone, veneer, laminate, profiled doors — are as useful as a wide room view when you are choosing a look.\n\nIf your expected handover is in 2027, you still have time to lock a design, but not an unlimited amount once fabrication lead times are included. The sober sequence is: confirm the key appointment, inspect defects, measure, submit the management renovation application, then build. A moderate carpentry scope is often planned at six to ten weeks on site after approvals, as an editorial allowance only. WhatsApp Maison with your plan and any key letter you already have, and we will work from those, not from a guess."
+    }
+  ],
+  "faq": [
+    {
+      "q": "Is the completion or launch date for Novo Place confirmed?",
+      "a": "Not in our project file. This project is not officially confirmed, so unit counts, tenure and dates from third-party listings have been left blank. Use the developer’s documents for your own dates."
+    },
+    {
+      "q": "Do you have the Novo Place floor plan?",
+      "a": "No official floor-plan or site image is on file for this page, so none is published here. Please send your approved unit plan."
+    },
+    {
+      "q": "Can I renovate right after keys?",
+      "a": "After handover, inspect defects and obtain the management corporation’s renovation approval first. A moderate carpentry scope is often planned at about six to ten weeks on site after access and approvals; that is an editorial allowance, not a guarantee."
+    },
+    {
+      "q": "What should I send Maison?",
+      "a": "Your approved floor plan, unit type if you have it, and a key date if one is already in writing. WhatsApp us at https://wa.me/6593391185."
+    }
+  ],
+  "cta_text": "WhatsApp Maison with your unit type, approved floor plan and key date (if you have one).",
+  "sources": [
+    {
+      "label": "hdbec.sg: novo place (third-party, not used as official confirmation)",
+      "url": "https://www.hdbec.sg/novo-place/",
+      "nofollow": true
+    }
+  ],
+  "nearby_hints": [
+    "tengah-garden-residences",
+    "keat-hong-grange",
+    "solano-grand",
+    "lumina-grand"
+  ],
+  "reviewed": "Facts checked against the sources on file, 11 November 2026.",
+  "date_published": "2026-11-11",
+  "date_modified": "2026-11-11"
+}

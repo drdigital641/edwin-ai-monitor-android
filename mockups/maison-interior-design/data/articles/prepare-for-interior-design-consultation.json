@@ -1,0 +1,64 @@
+{
+  "slug": "prepare-for-interior-design-consultation",
+  "date_published": "2026-11-12",
+  "title": "Interior Design Consultation Singapore: What to Prepare | Maison",
+  "description": "Booking an interior design consultation in Singapore? What to bring, what happens at the first meeting, and the questions worth asking before work starts.",
+  "keyword": "interior design consultation",
+  "eyebrow": "Planning a renovation",
+  "h1": ["Your first interior design consultation:", "what to prepare"],
+  "lead": "A good interior design consultation starts before you meet. If the designer can see your floor plan, your dates and the way you want to live, the first meeting moves straight to ideas instead of questions. This note sets out what to bring, what happens next at Maison, and what to ask any designer before you sign.",
+  "hero": {"src": "3D-Visual-Blk-296-Tampines-St-22-2-1024x683.jpg", "alt": "3D visual of a Tampines Street 22 HDB flat by Maison Interior Design", "w": 1024, "h": 683, "caption": "A perspective 3D view prepared by Maison for an HDB flat at Tampines Street 22."},
+  "sections": [
+    {"h2": "What to bring",
+     "p": ["You do not need a finished brief. You need the facts that shape the design, so the designer is not guessing."],
+     "list": [
+       "Your floor plan. For a new launch, use your approved unit plan, not a brochure picture.",
+       "Your key collection or handover date, if you have one. It decides when drawings and approvals need to be ready.",
+       "A few photos of spaces you like, from home magazines, Instagram or friends' homes. Say what you like in each one.",
+       "A list of what stays: furniture, appliances and anything built-in you want to keep, with rough measurements.",
+       "Who lives there and how: work from home, cooking at home, children, elderly parents, pets, helpers.",
+       "Which rooms are in scope, and what you want left alone.",
+       "Any rules you have already received, such as the condo's renovation guidelines or, for a shop or office, the landlord's fit-out guidelines and handover condition."
+     ]},
+    {"h2": "What happens at the first meeting",
+     "p": ["At Maison the first meeting is the concept consultation. From there the work follows the same order on every project:"],
+     "steps": [
+       ["Concept and space planning", "We talk through how you live or run the business, then propose a layout for the space."],
+       ["Itemised quotation with 3D drawings", "You receive an itemised quotation together with perspective 3D drawings and a colour proposal, so you can see each room before work starts."],
+       ["Revisions before the quotation is final", "Change a cabinet, a tile or a colour on screen instead of on site."],
+       ["Applications", "For HDB flats, the team handles the HDB renovation permit application and helps with your renovation loan application."],
+       ["Design and build", "Carpentry, alterations, furnishing and decor, with dedicated project management."],
+       ["After handover", "A 2-year workmanship warranty and post-sales service, so you have one team to call."]
+     ]},
+    {"h2": "Questions worth asking any designer",
+     "p": ["Whoever you choose, these answers tell you how the project will run. Get them in writing."],
+     "list": [
+       "Is the quotation itemised, so you can see what each part covers?",
+       "Will you see 3D drawings of every room before work starts?",
+       "Who applies for the HDB renovation permit, or the condo's renovation approval?",
+       "Who manages the site day to day, and how will you get updates?",
+       "What happens after handover: is there a workmanship warranty, and who do you call?"
+     ]},
+    {"h2": "When to book",
+     "p": [
+       "For a new BTO flat, start talking to a designer about one to two months before key collection. That leaves time for a layout, 3D drawings and a firm quotation, so works can start once your defects are reported and the permit is in.",
+       "For a new condo or executive condominium, the renovation approval comes from the condo's management, so plan the drawings before keys too. Our new condo renovation guide sets out the handover and approval steps.",
+       "For an office, shop, café or restaurant, book early enough to design around the landlord's fit-out rules and your opening date."
+     ]}
+  ],
+  "related": [
+    ["services/", "Interior design services and the five-step process"],
+    ["services/bto-renovation/", "BTO key collection renovation guide"],
+    ["services/new-condo-renovation/", "New condo renovation guide"],
+    ["services/office-fit-out/", "Office fit-out guide"],
+    ["new-launches/", "New launch renovation guides"],
+    ["portfolio/", "Completed projects and 3D designs"]
+  ],
+  "faq": [
+    ["What should I bring to an interior design consultation?", "Your floor plan, your key or handover date if you have one, a few photos of spaces you like, a list of furniture you are keeping, and a short note on who lives there and which rooms you want to change."],
+    ["Will I see my home before renovation starts?", "At Maison, yes. After the concept consultation and layout proposal you receive an itemised quotation with perspective 3D drawings and a colour proposal, and you can ask for revisions before the quotation is final."],
+    ["Do you handle the HDB renovation permit?", "Yes. The team handles the HDB renovation permit application and helps with your renovation loan application as part of the process."],
+    ["How do I start with Maison?", "WhatsApp Maison on +65 9339 1185 with your floor plan and a few photos you like. Roland and the team will come back with first ideas."]
+  ],
+  "wa_text": "Hi Maison, I read your article on preparing for an interior design consultation. I'd like to send my floor plan."
+}

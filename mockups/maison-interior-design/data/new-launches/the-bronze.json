@@ -1,0 +1,68 @@
+{
+  "name": "The Bronze",
+  "slug": "the-bronze",
+  "type": "Condo",
+  "label": "Private condominium",
+  "area": "District 12",
+  "district": "D12",
+  "region": "Central",
+  "developer": "",
+  "tenure": "",
+  "top_label": "Launch / TOP / key date",
+  "top": "",
+  "unit_mix": "",
+  "official_site": "",
+  "facts": [],
+  "facts_note": "This project is not marked officially confirmed in our project file. Unit counts, tenure and dates from third-party listings have been left blank until they can be cited from the developer, HDB or URA.",
+  "title": "The Bronze Renovation & Interior Design | District 12 Condo — Maison",
+  "description": "Interior design and built-in carpentry for The Bronze, a condominium in District 12, around Toa Payoh and Balestier. WhatsApp Maison with your plan.",
+  "keywords": [
+    "The Bronze renovation",
+    "The Bronze interior design",
+    "The Bronze floor plan",
+    "District 12 condo renovation",
+    "The Bronze built-in carpentry",
+    "Toa Payoh boutique condo interior design"
+  ],
+  "intro": "The Bronze is a condominium in District 12, in the Toa Payoh and Balestier belt. Our project file records a launch in July 2026 from a third-party new-launch list. Because this entry is not officially confirmed, unit counts, tenure and that launch month are left out of the facts below, and no TOP or key date is confirmed. Third-party lists sometimes describe this as a very small building; we are not repeating a unit count until it can be cited from the developer or URA. Your sale documents remain the source of truth for typologies and completion. This page sets out what is on file and how to plan your The Bronze renovation.",
+  "sections": [
+    {
+      "heading": "Planning your The Bronze interior",
+      "text": "In a boutique District 12 home, the interior is usually judged at close range. There is little space to hide a loose wardrobe, an unfinished kitchen or a cluttered entry, and the finish needs to be consistent from the door to the bedroom. That is a natural brief for Maison. We design built-in carpentry — an entry cabinet, a living-room joinery wall, a fitted kitchen, and full-height wardrobes, with a headboard wall in the main bedroom if the plan allows it — and we present the work the way a professional interior is photographed, including closer shots of stone, veneer, profiles and junctions, not only a wide corner-to-corner view. We do not use IKEA-style flat-pack furniture as the backbone of the home.\n\nNo official floor plan is on file, so typologies, room sizes and a sample layout are not published here, and we will not invent a typical The Bronze plan. The Orie, also in District 12 at Lorong 1 Toa Payoh, is a nearby page on this site; it is a much larger development and is not a typologies reference for this building. We will not invent walking times to Toa Payoh town, to Balestier, or to any MRT station. Check your own stack, facing and the management rules, which in a small building can be quite specific about access, working hours and protection of common areas.\n\nWhen a key date is in writing, inspect defects, measure, and obtain renovation approval before fabrication. A moderate carpentry scope is often planned at about six to ten weeks on site after approvals; that is an editorial allowance, not a guarantee. WhatsApp Maison with your approved plan when you have it. We are not affiliated with the developer."
+    }
+  ],
+  "faq": [
+    {
+      "q": "Is the completion or launch date for The Bronze confirmed?",
+      "a": "Not in our project file. This project is not officially confirmed, so unit counts, tenure and dates from third-party listings have been left blank. Use the developer’s documents for your own dates."
+    },
+    {
+      "q": "Do you have the The Bronze floor plan?",
+      "a": "No official floor-plan or site image is on file for this page, so none is published here. Please send your approved unit plan."
+    },
+    {
+      "q": "Can I renovate right after keys?",
+      "a": "After handover, inspect defects and obtain the management corporation’s renovation approval first. A moderate carpentry scope is often planned at about six to ten weeks on site after access and approvals; that is an editorial allowance, not a guarantee."
+    },
+    {
+      "q": "What should I send Maison?",
+      "a": "Your approved floor plan, unit type if you have it, and a key date if one is already in writing. WhatsApp us at https://wa.me/6593391185."
+    }
+  ],
+  "cta_text": "WhatsApp Maison with your unit type, approved floor plan and key date (if you have one).",
+  "sources": [
+    {
+      "label": "EdgeProp: new launches (third-party, not used as official confirmation)",
+      "url": "https://www.edgeprop.sg/new-launches",
+      "nofollow": true
+    }
+  ],
+  "nearby_hints": [
+    "the-orie",
+    "kent-heights",
+    "towner-residences"
+  ],
+  "reviewed": "Facts checked against the sources on file, 11 November 2026.",
+  "date_published": "2026-11-11",
+  "date_modified": "2026-11-11"
+}

@@ -1,0 +1,214 @@
+{
+  "name": "The Myst",
+  "slug": "the-myst",
+  "type": "Condo",
+  "label": "Private condominium",
+  "area": "Upper Bukit Timah",
+  "district": "D23",
+  "region": "West",
+  "developer": "CDL Aries Pte. Ltd., wholly owned by CDL",
+  "tenure": "99-year lease from 11 May 2023",
+  "top": "TOP obtained September 2026; expected vacant possession 31 March 2029.",
+  "unit_mix": "1-bedroom + study to 5-bedroom (types A1Sa to E1), about 517 to 1,690 sq ft",
+  "official_site": "https://www.cdlhomes.com.sg/themyst/floorplans",
+  "keywords": [
+    "The Myst renovation",
+    "The Myst interior design",
+    "The Myst floor plan",
+    "Upper Bukit Timah condo interior design"
+  ],
+  "intro": "Explore four interior design themes for your The Myst home, then WhatsApp Maison to discuss your own layout. Each look is a starting point for your The Myst renovation.",
+  "whatsapp_text": "Hi Maison, I’m planning my The Myst renovation. Can we discuss my layout?",
+  "hero_whatsapp_text": "Hi Maison, I’m planning my The Myst renovation. I like the Misty Forest Modern living room concept. Can we discuss my layout?",
+  "renders_heading": "Four The Myst interior design themes",
+  "renders_intro": "Four rooms, four looks, each built around bespoke carpentry. We adapt every idea to your actual unit.",
+  "renders_note": "All four are styled on Type B1 typical 2-bedroom, 63 sq m / 678 sq ft (CDL simplified brochure p8; standard ceiling, not the B1(d) 4.5m-void variant).",
+  "renders": [
+    {
+      "image": "/images/new-launches/the-myst-v4/the-myst-v4-living-misty-forest-modern-1920.webp",
+      "image_small": "/images/new-launches/the-myst-v4/the-myst-v4-living-misty-forest-modern-900.webp",
+      "width": 1920,
+      "height": 1080,
+      "alt": "Misty Forest Modern living room concept at The Myst with fluted oak built-in wall and balcony greenery",
+      "style": "Misty Forest Modern",
+      "room": "Living room",
+      "title": "The Myst living room interior design — Misty Forest Modern",
+      "text": "A fluted pale-oak feature wall, a floating moss-green stone TV console, a built-in window bench and soft cove lighting bring the green outlook indoors. A calm starting point for your The Myst renovation.",
+      "whatsapp_text": "Hi Maison, I’m interested in the Misty Forest Modern living room concept for my The Myst unit. Can we discuss my layout?"
+    },
+    {
+      "image": "/images/new-launches/the-myst-v4/the-myst-v4-kitchen-champagne-marble-deco-1920.webp",
+      "image_small": "/images/new-launches/the-myst-v4/the-myst-v4-kitchen-champagne-marble-deco-900.webp",
+      "width": 1920,
+      "height": 1080,
+      "alt": "Close-up of Champagne Marble Deco kitchen concept with sintered-stone counter and brass-edged cabinets",
+      "style": "Champagne Marble Deco",
+      "room": "Kitchen (close-up)",
+      "title": "Upper Bukit Timah condo kitchen design idea — Champagne Marble Deco",
+      "text": "Handleless champagne lacquer cabinets with brass edges, a calacatta-look sintered-stone counter and backsplash, and fluted bronze-glass wall cabinets give the kitchen a light, polished finish. Adapt the finishes and storage to your actual unit.",
+      "whatsapp_text": "Hi Maison, I’m interested in the Champagne Marble Deco kitchen concept for my The Myst unit. Can we discuss my layout?"
+    },
+    {
+      "image": "/images/new-launches/the-myst-v4/the-myst-v4-main-bedroom-mocha-limewash-contemporary-1920.webp",
+      "image_small": "/images/new-launches/the-myst-v4/the-myst-v4-main-bedroom-mocha-limewash-contemporary-900.webp",
+      "width": 1920,
+      "height": 1080,
+      "alt": "Mocha Limewash Contemporary main bedroom concept with built-in headboard wall and walnut wardrobe",
+      "style": "Mocha Limewash Contemporary",
+      "room": "Main bedroom",
+      "title": "The Myst main bedroom design — Mocha Limewash Contemporary",
+      "text": "A full-width limewash headboard wall with backlit floating shelves, a built-in platform bed and a ribbed walnut full-height wardrobe keep the main bedroom warm, quiet and uncluttered.",
+      "whatsapp_text": "Hi Maison, I’m interested in the Mocha Limewash Contemporary main bedroom concept for my The Myst unit. Can we discuss my layout?"
+    },
+    {
+      "image": "/images/new-launches/the-myst-v4/the-myst-v4-common-bedroom-navy-oak-heritage-1920.webp",
+      "image_small": "/images/new-launches/the-myst-v4/the-myst-v4-common-bedroom-navy-oak-heritage-900.webp",
+      "width": 1920,
+      "height": 1080,
+      "alt": "Navy Oak Heritage common bedroom concept with built-in study desk and full-height wardrobe",
+      "style": "Navy Oak Heritage",
+      "room": "Common bedroom (close-up)",
+      "title": "The Myst common bedroom renovation idea — Navy Oak Heritage",
+      "text": "A navy lacquer study-and-wardrobe run, an oak desktop under the window and a built-in daybed corner turn a compact common bedroom into a study that still has room to rest.",
+      "whatsapp_text": "Hi Maison, I’m interested in the Navy Oak Heritage common bedroom concept for my The Myst unit. Can we discuss my layout?"
+    }
+  ],
+  "plans_heading": "The Myst floor plans",
+  "plans_intro": "Original CDL simplified-brochure pages 8 to 10, copied as-is (scaled only, not redrawn).",
+  "floor_plans": [
+    {
+      "image": "/images/new-launches/the-myst-v4/the-myst-cdl-brochure-plans-p8.webp",
+      "width": 2000,
+      "height": 1327,
+      "alt": "The Myst CDL simplified brochure page 8 floor plans: 1-Bedroom + Study A1Sa and 2-Bedroom B1",
+      "title": "page 8 floor plan",
+      "caption": "Brochure p.8: 1-Bedroom + Study A1Sa 48 sq m / 517 sq ft (A1Sa(d) 61 sq m / 657 sq ft); 2-Bedroom B1 63 sq m / 678 sq ft (B1(d) 78 sq m / 840 sq ft).",
+      "credit": "Floor plan: The Myst simplified brochure, CDL"
+    },
+    {
+      "image": "/images/new-launches/the-myst-v4/the-myst-cdl-brochure-plans-p9.webp",
+      "width": 2000,
+      "height": 1327,
+      "alt": "The Myst CDL simplified brochure page 9 floor plans: 2-Bedroom + Study B3S and 3-Bedroom C1",
+      "title": "page 9 floor plan",
+      "caption": "Brochure p.9: 2-Bedroom + Study B3S 65 sq m / 700 sq ft (B3S(d) 79 sq m / 850 sq ft); 3-Bedroom C1 79 sq m / 850 sq ft (C1(d) 95 sq m / 1,023 sq ft).",
+      "credit": "Floor plan: The Myst simplified brochure, CDL"
+    },
+    {
+      "image": "/images/new-launches/the-myst-v4/the-myst-cdl-brochure-plans-p10.webp",
+      "width": 2000,
+      "height": 1327,
+      "alt": "The Myst CDL simplified brochure page 10 floor plans: 4-Bedroom D2 and 5-Bedroom E1",
+      "title": "page 10 floor plan",
+      "caption": "Brochure p.10: 4-Bedroom D2 141 sq m / 1,518 sq ft (D2(d) 172 sq m / 1,851 sq ft); 5-Bedroom E1 157 sq m / 1,690 sq ft (E1(d) 189 sq m / 2,034 sq ft).",
+      "credit": "Floor plan: The Myst simplified brochure, CDL"
+    }
+  ],
+  "plans_note": "(d) variants include a strata void above living/dining with 4.5m ceiling height; (p) = ground-floor PES variants. Other types in the block schematic (e.g. B1a, C2, C3Pa, C4PSa) have no plan in the public simplified brochure; ask CDL or your agent for those. Plans are subject to change and final survey; areas include A/C ledge, balcony and strata void where applicable.\n\nSource: [The Myst simplified brochure, CDL (PDF)](https://www.cdlhomes.com.sg/themyst/assets/pdf/The%20Myst%20Simplified%20Brochure_Final.pdf).",
+  "unit_tips_heading": "Layouts and renovation ideas",
+  "unit_tips": [
+    {
+      "unit": "1-bed + study (A1Sa)",
+      "tip": "Build the study as a slim desk-and-shelf wall; keep the living open."
+    },
+    {
+      "unit": "2-bed (B1) / 2-bed + study (B3S)",
+      "tip": "Full-height feature wall with hidden storage; bedroom 2 doubles as a study with a built-in desk."
+    },
+    {
+      "unit": "3-bed (C1)",
+      "tip": "Plan storage room by room; built-in TV console and window benches free floor space."
+    },
+    {
+      "unit": "4/5-bed (D2, E1)",
+      "tip": "Separate dry/wet kitchen zones (per plan) suit stone counters and a display wall; (d) units’ 4.5m void suits full-height fluted or veneer feature walls."
+    }
+  ],
+  "unit_tips_note": "Ideas only; check walls, services and management rules before work.",
+  "sections": [
+    {
+      "heading": "The Myst project facts",
+      "text": "- 408 units in two 24-storey towers at 800 and 802 Upper Bukit Timah Road. Developer: CDL Aries Pte. Ltd., wholly owned by CDL. Land area approx. 179,008 sq ft. [CDL news release](https://www.cdl.com.sg/assets/en-newsroom-press-release-pdf/CDL-News-Release-The-Myst-Preview-web.pdf)\n- 99-year lease from 11 May 2023. TOP obtained September 2026; expected vacant possession 31 March 2029. [CDL construction page](https://www.cdlhomes.com.sg/construction/)\n- CDL describes a 5-minute walk to Cashew MRT (Downtown Line) and 75% of the footprint as landscaping and communal facilities. [CDL news release](https://www.cdl.com.sg/assets/en-newsroom-press-release-pdf/CDL-News-Release-The-Myst-Preview-web.pdf)\n\nMaison is an independent interior design firm, not affiliated with CDL. Key dates are set per buyer by CDL."
+    },
+    {
+      "heading": "About these concepts and plans",
+      "text": "The four theme pictures on this page are AI-generated style concepts by Maison for a The Myst renovation. They are not photos of an actual unit, not completed Maison projects and not surveyed layouts; layouts, fittings and views are illustrative. Each look leans on built-in carpentry, the kind of Upper Bukit Timah condo renovation Maison plans for homes near Cashew. The floor plans are the original pages 8 to 10 of [The Myst simplified brochure by CDL](https://www.cdlhomes.com.sg/themyst/assets/pdf/The%20Myst%20Simplified%20Brochure_Final.pdf), scaled only. They are subject to change and final survey, so confirm your own unit plan, stack and any mirroring before adapting an idea."
+    },
+    {
+      "heading": "Views tips",
+      "text": "CDL describes “picturesque views of its lush surroundings”, but no unit’s view is guaranteed. Check your stack, floor and facing on the brochure key plan, then plan blinds, glare control and window benches around your actual outlook."
+    }
+  ],
+  "steps_heading": "Keys to move-in (planning guide)",
+  "steps": [
+    {
+      "title": "Key collection",
+      "text": "Book with CDL; TOP was obtained in September 2026 (CDL construction page, updated 2 Nov 2026). Your own key date comes from CDL."
+    },
+    {
+      "title": "Defects",
+      "text": "Check and log defects; agree rectification."
+    },
+    {
+      "title": "Measure-up",
+      "text": "Measure-up and design freeze with Maison."
+    },
+    {
+      "title": "Management approval",
+      "text": "Renovation deposit and hours: ask the MCST or managing agent."
+    },
+    {
+      "title": "Carpentry and works",
+      "text": "Often about 6–10 weeks on site for a moderate carpentry scope (editorial estimate, not a guarantee)."
+    },
+    {
+      "title": "Move in",
+      "text": "Clean, handover and move in."
+    }
+  ],
+  "faq": [
+    {
+      "q": "When did The Myst get TOP?",
+      "a": "CDL lists TOP obtained in September 2026; expected vacant possession date is 31 March 2029. Key dates are per buyer. [Source: CDL construction page](https://www.cdlhomes.com.sg/construction/)."
+    },
+    {
+      "q": "Which unit are the concepts based on?",
+      "a": "Type B1 2-bedroom, 63 sq m / 678 sq ft (brochure p8). They are style concepts, not your actual unit."
+    },
+    {
+      "q": "What does CDL supply in the kitchen and bathrooms?",
+      "a": "CDL names Bosch and SMEG kitchen appliances and Hansgrohe, Geberit and Kohler bathroom brands. [Source: CDL news release](https://www.cdl.com.sg/assets/en-newsroom-press-release-pdf/CDL-News-Release-The-Myst-Preview-web.pdf)."
+    },
+    {
+      "q": "Where can I get the full floor plan?",
+      "a": "The public simplified brochure (pages 8-10) shows six types and their variants; use your own sales documents for your exact unit."
+    },
+    {
+      "q": "Can I renovate right after keys?",
+      "a": "After defects inspection and management approval; condo rules differ from HDB rules."
+    }
+  ],
+  "cta_text": "WhatsApp Maison with your unit type, key date and wish list.",
+  "sources": [
+    {
+      "label": "https://www.cdlhomes.com.sg/themyst/assets/pdf/The%20Myst%20Simplified%20Brochure_Final.pdf",
+      "url": "https://www.cdlhomes.com.sg/themyst/assets/pdf/The%20Myst%20Simplified%20Brochure_Final.pdf"
+    },
+    {
+      "label": "https://www.cdl.com.sg/assets/en-newsroom-press-release-pdf/CDL-News-Release-The-Myst-Preview-web.pdf",
+      "url": "https://www.cdl.com.sg/assets/en-newsroom-press-release-pdf/CDL-News-Release-The-Myst-Preview-web.pdf"
+    },
+    {
+      "label": "https://www.cdlhomes.com.sg/construction/",
+      "url": "https://www.cdlhomes.com.sg/construction/"
+    },
+    {
+      "label": "https://www.cdlhomes.com.sg/themyst/floorplans",
+      "url": "https://www.cdlhomes.com.sg/themyst/floorplans"
+    }
+  ],
+  "reviewed": "Reviewed 9 November 2026, SGT (UTC+8).",
+  "nearby_hints": [],
+  "date_published": "2026-11-07",
+  "date_modified": "2026-11-11"
+}

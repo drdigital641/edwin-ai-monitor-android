@@ -1,0 +1,65 @@
+{
+  "name": "Kebun Baru Breeze",
+  "slug": "kebun-baru-breeze",
+  "type": "BTO",
+  "label": "HDB BTO",
+  "area": "Ang Mo Kio",
+  "region": "North-East",
+  "developer": "HDB",
+  "tenure": "",
+  "top_label": "Launch / TOP / key date",
+  "top": "16 June 2026 launch. The official confirmation in our file covers the launch date only, not TOP or key collection",
+  "unit_mix": "",
+  "official_site": "",
+  "facts": [],
+  "title": "Kebun Baru Breeze Renovation & Interior Design | Ang Mo Kio BTO — Maison",
+  "description": "Interior design and built-in carpentry for Kebun Baru Breeze, an HDB BTO in Ang Mo Kio. Launch facts only; key dates unconfirmed.",
+  "keywords": [
+    "Kebun Baru Breeze renovation",
+    "Kebun Baru Breeze interior design",
+    "Kebun Baru Breeze floor plan",
+    "Ang Mo Kio BTO renovation",
+    "Kebun Baru Breeze built-in carpentry",
+    "Ang Mo Kio HDB interior design"
+  ],
+  "intro": "Kebun Baru Breeze is an HDB BTO project in Ang Mo Kio. It was launched on 16 June 2026, in the same HDB sales exercise as Kebun Baru Ridge. That official confirmation covers the launch date only. Completion and key-collection dates are unconfirmed; our project file notes that they are generally beyond 2027. A unit count is not in our file, so that field is left blank. Tenure is also left blank. Please use your HDB documents, not a tracker, for typologies and for any later key appointment. This page sets out what is on file and how to plan your Kebun Baru Breeze renovation.",
+  "sections": [
+    {
+      "heading": "Planning your Kebun Baru Breeze interior",
+      "text": "Ang Mo Kio is a mature heartland town. Buyers here usually already know the neighbourhood and are planning a long first stay in a new flat. That is years away from renovation, which is useful: you can think clearly about storage and kitchen layout once HDB issues your approved plan, without rushing to a contractor. The work that typically makes a new BTO liveable is built-in carpentry — a kitchen of fitted cabinets and a tall pantry or fridge run, full-height bedroom wardrobes, an entry shoe cabinet, and a living-room joinery wall rather than a loose television bench. Maison is an interior designer. We specify carpentry that is built in, not IKEA-style flat-pack furniture, and we can work from a wide room view or from closer studies of a wardrobe, a kitchen run or a headboard wall.\n\nNo official floor plan is on file for this page, and we will not invent flat types or a typical Kebun Baru Breeze layout. Kebun Baru Ridge, launched in the same exercise, is a nearby page on this site; it is not a typologies reference for Breeze. AMO Residence, already live, sits in the wider District 20 catchment. Use those links as neighbourhood context only. We will not invent walking times to any MRT station or town centre.\n\nWhen a key date is eventually in writing, the HDB sequence is different from a condominium: defects inspection, a measured survey, then an HDB renovation permit and a registered contractor, before any carpentry is fabricated. A moderate, non-structural carpentry scope is often planned at about six to ten weeks on site after access and approvals; that is an editorial allowance, not a guarantee. WhatsApp Maison with your official plan when you have it. We are not affiliated with HDB."
+    }
+  ],
+  "faq": [
+    {
+      "q": "When was Kebun Baru Breeze launched?",
+      "a": "Our project file records: 2026-06-16 launch. That official confirmation covers the launch date only, not TOP or key collection."
+    },
+    {
+      "q": "Is the key-collection date for Kebun Baru Breeze confirmed?",
+      "a": "No. Completion and keys are unconfirmed in our file. Use your HDB documents for your own appointment, when you have one."
+    },
+    {
+      "q": "Do you have the Kebun Baru Breeze floor plan?",
+      "a": "No official floor-plan or site image is on file for this page, so none is published here. Please send your approved HDB unit plan."
+    },
+    {
+      "q": "What should I send Maison?",
+      "a": "Your approved floor plan, unit type if you have it, and a key date if one is already in writing. After keys, an HDB renovation permit is required before works. WhatsApp us at https://wa.me/6593391185."
+    }
+  ],
+  "cta_text": "WhatsApp Maison with your unit type, approved floor plan and key date (if you have one).",
+  "sources": [
+    {
+      "label": "HDB",
+      "url": "https://www.hdb.gov.sg/hdb-pulse/news/2026/hdb-launches-6952-flats-across-7-projects-in-june-2026-bto-sales-exercise"
+    }
+  ],
+  "nearby_hints": [
+    "kebun-baru-ridge",
+    "amo-residence",
+    "thomson-reserve"
+  ],
+  "reviewed": "Facts checked against the sources on file, 11 November 2026.",
+  "date_published": "2026-11-11",
+  "date_modified": "2026-11-11"
+}

@@ -1,0 +1,70 @@
+{
+  "name": "Toa Payoh Hillside",
+  "slug": "toa-payoh-hillside",
+  "type": "BTO",
+  "label": "HDB BTO",
+  "area": "Toa Payoh",
+  "region": "Central",
+  "developer": "HDB",
+  "tenure": "",
+  "top_label": "Launch / TOP / key date",
+  "top": "November 2026 launch. The official confirmation in our file covers the launch date only, not TOP or key collection",
+  "unit_mix": "Community Care Apartments are recorded as part of the unit count; other typologies are not listed",
+  "official_site": "",
+  "facts": [
+    {
+      "label": "Units",
+      "value": "1,432, including 256 Community Care Apartments"
+    }
+  ],
+  "title": "Toa Payoh Hillside Renovation & Interior Design | Toa Payoh BTO — Maison",
+  "description": "Interior design and built-in carpentry for Toa Payoh Hillside, an HDB BTO in Toa Payoh. Launch facts only; key dates unconfirmed.",
+  "keywords": [
+    "Toa Payoh Hillside renovation",
+    "Toa Payoh Hillside interior design",
+    "Toa Payoh Hillside floor plan",
+    "Toa Payoh BTO renovation",
+    "Toa Payoh Hillside built-in carpentry",
+    "Toa Payoh interior design"
+  ],
+  "intro": "Toa Payoh Hillside is an HDB BTO project in Toa Payoh, listed in the November 2026 BTO exercise with 1,432 flats, including 256 Community Care Apartments, as recorded from HDB’s BTO portal in our project file. That official confirmation covers the launch and those recorded counts only, not TOP or keys. Tenure is left blank. Community Care Apartments are a distinct HDB product; we will not invent their interior standards, eligibility rules or a typical layout, and we will not treat them as ordinary family typologies. For any flat type, use your HDB documents. This page sets out what is on file and how to plan your Toa Payoh Hillside renovation.",
+  "sections": [
+    {
+      "heading": "Planning your Toa Payoh Hillside interior",
+      "text": "A newly launched Toa Payoh BTO is still years from a first fit-out. When an official plan is issued for a standard flat, the carpentry that typically makes it liveable is a fitted kitchen, full-height wardrobes, an entry cabinet, and a living-room joinery wall, designed by Maison as built-in work rather than as IKEA-style furniture. We have no official floor plan on file and will not invent a mixed typologies schedule for the estate.\n\nKim Keat Heights is an unconfirmed near-completion page in the same town and is not a guide to when Hillside will get keys. The Orie and The Bronze are nearby District 12 links only. We will not invent walking times to Toa Payoh town or to any MRT station.\n\nKeep the official plan when HDB issues it, and be clear whether your documents name a standard flat or a Community Care Apartment. After keys, inspect defects and apply for the HDB renovation permit before fabrication, following the rules that apply to your actual flat type. A moderate carpentry scope for an ordinary, non-structural family-flat fit-out is often planned at about six to ten weeks on site after approvals — an editorial allowance, not a guarantee, and not a claim about Community Care Apartments. WhatsApp Maison with your unit type and approved plan when you have them. We are not affiliated with HDB."
+    }
+  ],
+  "faq": [
+    {
+      "q": "When was Toa Payoh Hillside launched?",
+      "a": "Our project file records: 2026-11 launch. That official confirmation covers the launch date only, not TOP or key collection."
+    },
+    {
+      "q": "Is the key-collection date for Toa Payoh Hillside confirmed?",
+      "a": "No. Completion and keys are unconfirmed in our file. Use your HDB documents for your own appointment, when you have one."
+    },
+    {
+      "q": "Do you have the Toa Payoh Hillside floor plan?",
+      "a": "No official floor-plan or site image is on file for this page, so none is published here. Please send your approved HDB unit plan."
+    },
+    {
+      "q": "What should I send Maison?",
+      "a": "Your approved floor plan, unit type if you have it, and a key date if one is already in writing. After keys, an HDB renovation permit is required before works. WhatsApp us at https://wa.me/6593391185."
+    }
+  ],
+  "cta_text": "WhatsApp Maison with your unit type, approved floor plan and key date (if you have one).",
+  "sources": [
+    {
+      "label": "HDB: bto",
+      "url": "https://homes.hdb.gov.sg/home/bto"
+    }
+  ],
+  "nearby_hints": [
+    "kim-keat-heights",
+    "the-orie",
+    "the-bronze"
+  ],
+  "reviewed": "Facts checked against the sources on file, 11 November 2026.",
+  "date_published": "2026-11-11",
+  "date_modified": "2026-11-11"
+}

@@ -1,0 +1,85 @@
+{
+  "name": "Parc Point",
+  "slug": "parc-point",
+  "type": "Commercial",
+  "label": "Retail",
+  "area": "Tengah",
+  "guide": "retail",
+  "region": "West",
+  "developer": "HDB",
+  "tenure": "",
+  "top_label": "Opening",
+  "top": "Opened 28 February 2026 (progressive). NUHS/NUP release confirms the polyclinic opening that day within Parc Point, consistent with HDB’s earlier first-quarter 2026 planned opening",
+  "unit_mix": "",
+  "official_site": "",
+  "facts": [
+    {
+      "label": "Address",
+      "value": "302 Tengah Park Avenue"
+    }
+  ],
+  "title": "Parc Point Fit-Out & Interior Design | Tengah Neighbourhood Centre — Maison",
+  "description": "Shop and F&B fit-out notes for Parc Point in Tengah. Official figures only; unconfirmed dates left blank. WhatsApp Maison with your tenancy plan.",
+  "keywords": [
+    "Parc Point fit-out",
+    "Parc Point shop fit-out",
+    "Parc Point interior design",
+    "Parc Point renovation",
+    "Tengah shop fit-out",
+    "Parc Point F&B fit-out",
+    "Tengah retail interior design"
+  ],
+  "intro": "Parc Point is an HDB neighbourhood centre at 302 Tengah Park Avenue, in Tengah, not a residential condominium. Our project file, citing an NUHS/NUP release, records a progressive opening on 28 February 2026, including FairPrice, the Gourmet Paradise food court and Tengah Polyclinic, consistent with HDB’s earlier first-quarter 2026 planned opening. Research already on file also records, from HDB and CNA reporting, a retail centre of about 16,000 sq m with more than 40 shops, adjacent to Parc Residences @ Tengah. Those are scheme facts. We have not audited the current trading status of every tenant, we will not invent individual shop sizes by dividing the centre area, and no official tenancy floor plan is on file. This page sets out what is on file and how to plan your Parc Point fit-out.",
+  "sections": [
+    {
+      "heading": "Planning your Parc Point interior",
+      "text": "This page is for shop and F&B fit-out, not for home renovation. A supermarket, a food court, a clinic and a small shop each have a different services and licensing brief; a generic lifestyle-retail layout is not a substitute for any of them. For an ordinary shop unit, Maison would start from the approved tenancy plan and the landlord’s fit-out rules, then specify built-in shopfront joinery, a counter, display and storage, and a compact back-of-house run, not loose, flat-pack fixtures. Food trades need coordinated extraction, grease management and water and electrical capacity before any carpentry is fixed. HDB’s commercial renovation route, as already recorded in our research file, requires prior approval for fitting-out, usually through a qualified person; classification of the actual work must be checked, and we will not promise a processing time.\n\nPlantation Creek, Garden Waterfront I & II, Plantation Verge, Brickland Weave, Plantation Edge I & II and Plantation Dew are nearby Tengah housing pages; they are not a shop-unit typologies list. We will not invent walking times to any present or future MRT station, and we will not publish generic shop concepts, which are not plans of this centre.\n\nIf you have a unit, send the tenancy plan, permitted trade, measured area and any landlord manual. After handover, record defects, obtain approvals, then fabricate. A modest non-food shop fit-out is often planned at about six to ten weeks on site after approvals — an editorial allowance only. WhatsApp Maison at https://wa.me/6593391185. We are not affiliated with HDB or with the named tenants."
+    }
+  ],
+  "faq": [
+    {
+      "q": "Is Parc Point already open?",
+      "a": "Our project file records: 2026-02-28 opened. Check your own lease and landlord handover for unit access. This is not a home key-collection date."
+    },
+    {
+      "q": "Do you have a floor plan for Parc Point?",
+      "a": "No official floor plan or tenancy / floor-plate drawing is on file for this page, so none is published here. Please send your approved tenancy or office plan."
+    },
+    {
+      "q": "Is this a home-renovation page?",
+      "a": "No. The copy is angled at shop, office or F&B fit-out. Send a tenancy plan and permitted trade, not a residential brief, unless you actually have a home in a related development — in which case use that development’s own page."
+    },
+    {
+      "q": "What should I send Maison?",
+      "a": "Your tenancy or floor-plate plan, permitted use, and any landlord fit-out manual or access date. WhatsApp us at https://wa.me/6593391185."
+    }
+  ],
+  "cta_text": "WhatsApp Maison with your tenancy or floor-plate plan, permitted use, and any landlord fit-out manual or access date.",
+  "sources": [
+    {
+      "label": "nuhs.edu.sg: nup media release tengah polyclinic opens for residents (PDF)",
+      "url": "https://www.nuhs.edu.sg/docs/default-source/newsroom-document/nup/2026/nup-media-release---tengah-polyclinic-opens-for-residents.pdf"
+    },
+    {
+      "label": "HDB",
+      "url": "https://www.hdb.gov.sg/hdb-pulse/news/2025/supermarket-food-court-and-wellness-trail-to-open-at-tengahs-newest-neighbourhood-centre-in-1q-2026"
+    },
+    {
+      "label": "channelnewsasia.com",
+      "url": "https://www.channelnewsasia.com/singapore/tengah-parc-point-fairprice-supermarket-gourmet-paradise-food-court-open-5563351"
+    },
+    {
+      "label": "HDB: renovation",
+      "url": "https://www.hdb.gov.sg/shops-and-offices/managing-an-hdb-shop-or-office/renovation"
+    }
+  ],
+  "nearby_hints": [
+    "plantation-creek-at-tengah",
+    "garden-waterfront-i-and-ii-at-tengah",
+    "plantation-dew",
+    "keat-hong-grange"
+  ],
+  "reviewed": "Facts checked against the sources on file, 11 November 2026.",
+  "date_published": "2026-11-11",
+  "date_modified": "2026-11-11"
+}

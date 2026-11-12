@@ -1,0 +1,67 @@
+{
+  "name": "Queen's Arc",
+  "slug": "queens-arc",
+  "type": "HDB",
+  "label": "HDB flat",
+  "area": "Queenstown",
+  "region": "Central",
+  "developer": "HDB (listed in our project file, not officially confirmed)",
+  "tenure": "",
+  "top_label": "Launch / TOP / key date",
+  "top": "",
+  "unit_mix": "",
+  "official_site": "",
+  "facts": [],
+  "facts_note": "This project is not marked officially confirmed in our project file. Unit counts, tenure and completion or key dates from third-party trackers have been left blank until they can be cited from HDB.",
+  "title": "Queen's Arc Renovation & Interior Design | Queenstown HDB — Maison",
+  "description": "Interior design and built-in carpentry for Queen's Arc, an HDB project in Queenstown. Unconfirmed tracker figures are left blank.",
+  "keywords": [
+    "Queen's Arc renovation",
+    "Queen's Arc interior design",
+    "Queen's Arc floor plan",
+    "Queenstown HDB renovation",
+    "Queen's Arc built-in carpentry",
+    "Queenstown HDB interior design"
+  ],
+  "intro": "Queen’s Arc is an HDB project in Queenstown. A third-party completion estimate is on file, but this entry is not officially confirmed. HDB has not verified a project-wide completion or key month, and tracker sources have disagreed, so unit counts and any estimated month are left out of the facts below. If you have a key-appointment letter, that is the date we will work from. We will not publish a tracker month as if HDB had issued it. This page sets out what is on file and how to plan your Queen's Arc renovation.",
+  "sections": [
+    {
+      "heading": "Planning your Queen's Arc interior",
+      "text": "Queenstown is a mature, well-connected central-west town, and owners who buy or collect keys here often already know the neighbourhood. The first fit-out is still worth doing properly: a fitted kitchen that can take daily cooking, full-height bedroom wardrobes, an entry shoe cabinet, and a living-room storage wall, rather than a cluster of loose furniture. Maison specifies this as built-in carpentry, finished and photographed professionally, including closer material shots when you need to decide on a finish. We do not use IKEA-style furniture as the backbone of the home. No official floor plan is on file, so typologies are not listed, and we will not invent a typical Queen’s Arc layout or a heritage claim from the name.\n\nWe will not invent walking times to Queenstown town, to Holland, or to any MRT station. Nearby Maison pages in the wider west and central belt include Amberwood At Holland and CanningHill Piers; they are private-housing links, not typologies references for this HDB project. Check your block, facing and the HDB renovation rules before you plan blinds, a bench or any hacking.\n\nAfter keys, inspect defects and apply for the HDB renovation permit before fabrication. A moderate carpentry scope is often planned at six to ten weeks on site after approvals, as an editorial planning figure only. WhatsApp Maison with your approved plan and any key letter you have. We are an independent designer and are not affiliated with HDB."
+    }
+  ],
+  "faq": [
+    {
+      "q": "Is the completion or key date for Queen's Arc confirmed?",
+      "a": "Not in our project file. This project is not officially confirmed, so unit counts and tracker dates have been left blank. If you have an HDB key-appointment letter, use that."
+    },
+    {
+      "q": "Do you have the Queen's Arc floor plan?",
+      "a": "No official floor-plan or site image is on file for this page, so none is published here. Please send your approved HDB unit plan."
+    },
+    {
+      "q": "Do I need an HDB renovation permit?",
+      "a": "Yes, for the usual HDB renovation works. After keys, inspect defects, then apply for the permit with a registered contractor before carpentry is fabricated."
+    },
+    {
+      "q": "What should I send Maison?",
+      "a": "Your approved floor plan, unit type if you have it, and a key date if one is already in writing. WhatsApp us at https://wa.me/6593391185."
+    }
+  ],
+  "cta_text": "WhatsApp Maison with your unit type, approved floor plan and key date (if you have one).",
+  "sources": [
+    {
+      "label": "hdbprices.com: 2027 (third-party, not used as official confirmation)",
+      "url": "https://hdbprices.com/bto/completion/2027",
+      "nofollow": true
+    }
+  ],
+  "nearby_hints": [
+    "amberwood-at-holland",
+    "canninghill-piers",
+    "hudson-place-residences"
+  ],
+  "reviewed": "Facts checked against the sources on file, 11 November 2026.",
+  "date_published": "2026-11-11",
+  "date_modified": "2026-11-11"
+}

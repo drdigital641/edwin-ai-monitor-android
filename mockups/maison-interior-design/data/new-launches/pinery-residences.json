@@ -1,0 +1,69 @@
+{
+  "name": "Pinery Residences",
+  "slug": "pinery-residences",
+  "type": "Condo",
+  "label": "Private condominium",
+  "area": "District 16",
+  "district": "D16",
+  "region": "East",
+  "developer": "",
+  "tenure": "",
+  "top_label": "Launch / TOP / key date",
+  "top": "",
+  "unit_mix": "",
+  "official_site": "",
+  "facts": [],
+  "facts_note": "This project is not marked officially confirmed in our project file. Unit counts, tenure and dates from third-party listings have been left blank until they can be cited from the developer, HDB or URA.",
+  "title": "Pinery Residences Renovation & Interior Design | District 16 Condo — Maison",
+  "description": "Interior design and built-in carpentry for Pinery Residences, a condominium in District 16, around Bedok and the Upper East Coast.",
+  "keywords": [
+    "Pinery Residences renovation",
+    "Pinery Residences interior design",
+    "Pinery Residences floor plan",
+    "District 16 condo renovation",
+    "Pinery Residences built-in carpentry",
+    "Upper East Coast condo interior design"
+  ],
+  "intro": "Pinery Residences is a condominium in District 16, in the Bedok and Upper East Coast belt. Our project file records a launch in March 2026 from a third-party new-launch list. This entry is not officially confirmed, so unit counts, tenure and that launch month are left out of the facts below, and no TOP or key date is confirmed. If you are a buyer, your sale documents are the source of truth for completion, tenure and typologies. We will not repeat third-party figures as if they had come from the developer or URA. This page sets out what is on file and how to plan your Pinery Residences renovation.",
+  "sections": [
+    {
+      "heading": "Planning your Pinery Residences interior",
+      "text": "The east coast has a practical renovation climate: sun, rain and haze at the windows, sandy shoes and sports gear at the door, and households that often want a living room that can open toward a balcony without looking unfinished. That is a joinery problem more than a furniture problem. A built-in entry cabinet, a living-room storage wall that can sit against the balcony line, full-height bedroom wardrobes, and a fitted kitchen with a tall pantry are the pieces that usually do the work. If the common bedroom becomes a study, a built-in desk under the window is more stable than a loose table that drifts. Maison designs this as custom carpentry, not as IKEA-style loose furniture, and we will work from your approved plan only.\n\nNo official floor plan is on file, so typologies, room sizes and a sample layout are not published here. District 16 also includes Vela Bay in this same batch; that is a nearby-project note, not a claim that the two estates share a typologies list or a management handbook. Walking times to the beach, to Bedok town, or to any MRT station are not something we will invent from a district code.\n\nOnce you have a key date in writing, follow the sober order: defects inspection and rectification access, a measured survey, the management corporation’s renovation rules, deposit and hours, then fabrication. A moderate carpentry scope is often planned at six to ten weeks on site after approvals, as an editorial planning figure only. WhatsApp Maison with your unit type, the approved plan and any key letter you already have. We are an independent designer and are not affiliated with the developer."
+    }
+  ],
+  "faq": [
+    {
+      "q": "Is the completion or launch date for Pinery Residences confirmed?",
+      "a": "Not in our project file. This project is not officially confirmed, so unit counts, tenure and dates from third-party listings have been left blank. Use the developer’s documents for your own dates."
+    },
+    {
+      "q": "Do you have the Pinery Residences floor plan?",
+      "a": "No official floor-plan or site image is on file for this page, so none is published here. Please send your approved unit plan."
+    },
+    {
+      "q": "Can I renovate right after keys?",
+      "a": "After handover, inspect defects and obtain the management corporation’s renovation approval first. A moderate carpentry scope is often planned at about six to ten weeks on site after access and approvals; that is an editorial allowance, not a guarantee."
+    },
+    {
+      "q": "What should I send Maison?",
+      "a": "Your approved floor plan, unit type if you have it, and a key date if one is already in writing. WhatsApp us at https://wa.me/6593391185."
+    }
+  ],
+  "cta_text": "WhatsApp Maison with your unit type, approved floor plan and key date (if you have one).",
+  "sources": [
+    {
+      "label": "EdgeProp: new launches (third-party, not used as official confirmation)",
+      "url": "https://www.edgeprop.sg/new-launches",
+      "nofollow": true
+    }
+  ],
+  "nearby_hints": [
+    "vela-bay",
+    "rivelle-tampines",
+    "coastal-cabana",
+    "grand-dunman"
+  ],
+  "reviewed": "Facts checked against the sources on file, 11 November 2026.",
+  "date_published": "2026-11-11",
+  "date_modified": "2026-11-11"
+}

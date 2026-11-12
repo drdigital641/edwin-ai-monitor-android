@@ -1,0 +1,72 @@
+{
+  "name": "Bishan Ridges",
+  "slug": "bishan-ridges",
+  "type": "HDB",
+  "label": "HDB flat",
+  "area": "Bishan",
+  "region": "Central",
+  "developer": "HDB (listed in our project file, not officially confirmed)",
+  "tenure": "",
+  "top_label": "Launch / TOP / key date",
+  "top": "",
+  "unit_mix": "",
+  "official_site": "",
+  "facts": [
+    {
+      "label": "Address (as listed)",
+      "value": "Bishan Street 13/14"
+    }
+  ],
+  "facts_note": "This project is not marked officially confirmed in our project file. Unit counts, tenure and completion or key dates from third-party trackers have been left blank until they can be cited from HDB.",
+  "title": "Bishan Ridges Renovation & Interior Design | Bishan HDB — Maison",
+  "description": "Interior design and built-in carpentry for Bishan Ridges, an HDB project in Bishan. Unconfirmed tracker figures are left blank.",
+  "keywords": [
+    "Bishan Ridges renovation",
+    "Bishan Ridges interior design",
+    "Bishan Ridges floor plan",
+    "Bishan HDB renovation",
+    "Bishan Ridges built-in carpentry",
+    "Bishan HDB interior design"
+  ],
+  "intro": "Bishan Ridges is an HDB project in Bishan, with a listed address at Bishan Street 13/14. A tracker month of October 2026 was previously noted in our file and has been withdrawn: it was not a verified completion month, and public HDB roadshow and virtual-tour resources do not date completion or keys. The key date is unconfirmed, and this project is not officially confirmed, so unit counts and any completion month are left out of the facts below. If you already have an HDB key-appointment letter, use that. If you do not, we will not invent a date. This page sets out what is on file and how to plan your Bishan Ridges renovation.",
+  "sections": [
+    {
+      "heading": "Planning your Bishan Ridges interior",
+      "text": "Bishan Street 13 and 14 sit in a settled part of Bishan, close to the everyday life of a mature town. Owners who are approaching keys usually need a first fit-out that works immediately: a kitchen of fitted cabinets, full-height wardrobes, an entry shoe cabinet, and a living-room joinery wall, rather than a temporary arrangement of loose furniture. Maison designs that work as built-in carpentry, finished and photographed professionally, including closer material studies when you are choosing a finish. We do not use flat-pack furniture as the backbone of the home, and we have no official floor plan on file to publish typologies or a sample layout.\n\nLakeview Cascadia is a June 2026 BTO launch in the same town and is years away from keys; do not treat the two pages as the same stage. Thomson Reserve and AMO Residence are nearby links in the wider district. We will not invent walking times to Bishan Junction, to a park, or to any MRT station. Check your own block, facing and the HDB renovation rules before you plan blinds, a bench or any hacking.\n\nWhen a key date is in writing, the order is defects inspection, a measured survey, the HDB renovation permit, then fabrication. A moderate, non-structural carpentry scope is often planned at six to ten weeks on site after access and approvals, as an editorial figure only. WhatsApp Maison with your approved plan and any key letter you have. We are not affiliated with HDB."
+    }
+  ],
+  "faq": [
+    {
+      "q": "Is the completion or key date for Bishan Ridges confirmed?",
+      "a": "Not in our project file. This project is not officially confirmed, so unit counts and tracker dates have been left blank. If you have an HDB key-appointment letter, use that."
+    },
+    {
+      "q": "Do you have the Bishan Ridges floor plan?",
+      "a": "No official floor-plan or site image is on file for this page, so none is published here. Please send your approved HDB unit plan."
+    },
+    {
+      "q": "Do I need an HDB renovation permit?",
+      "a": "Yes, for the usual HDB renovation works. After keys, inspect defects, then apply for the permit with a registered contractor before carpentry is fabricated."
+    },
+    {
+      "q": "What should I send Maison?",
+      "a": "Your approved floor plan, unit type if you have it, and a key date if one is already in writing. WhatsApp us at https://wa.me/6593391185."
+    }
+  ],
+  "cta_text": "WhatsApp Maison with your unit type, approved floor plan and key date (if you have one).",
+  "sources": [
+    {
+      "label": "mynicehome.gov.sg: roadshows (third-party, not used as official confirmation)",
+      "url": "https://www.mynicehome.gov.sg/get-settled-in/roadshows/",
+      "nofollow": true
+    }
+  ],
+  "nearby_hints": [
+    "lakeview-cascadia",
+    "amo-residence",
+    "thomson-reserve"
+  ],
+  "reviewed": "Facts checked against the sources on file, 11 November 2026.",
+  "date_published": "2026-11-11",
+  "date_modified": "2026-11-11"
+}

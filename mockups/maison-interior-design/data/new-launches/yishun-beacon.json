@@ -1,0 +1,71 @@
+{
+  "name": "Yishun Beacon",
+  "slug": "yishun-beacon",
+  "type": "HDB",
+  "label": "HDB flat",
+  "area": "Yishun",
+  "region": "North",
+  "developer": "HDB (listed in our project file, not officially confirmed)",
+  "tenure": "",
+  "top_label": "Launch / TOP / key date",
+  "top": "",
+  "unit_mix": "",
+  "official_site": "",
+  "facts": [
+    {
+      "label": "Address (as listed)",
+      "value": "Yishun Central"
+    }
+  ],
+  "facts_note": "This project is not marked officially confirmed in our project file. Unit counts, tenure and dates from third-party or unverified sources have been left blank until they can be cited from the developer, HDB, URA or another official source.",
+  "title": "Yishun Beacon Renovation & Interior Design | Yishun HDB — Maison",
+  "description": "Interior design and built-in carpentry for Yishun Beacon, an HDB project in Yishun. Unconfirmed tracker figures are left blank.",
+  "keywords": [
+    "Yishun Beacon renovation",
+    "Yishun Beacon interior design",
+    "Yishun Beacon floor plan",
+    "Yishun HDB renovation",
+    "Yishun Beacon built-in carpentry",
+    "Yishun interior design"
+  ],
+  "intro": "Yishun Beacon is an HDB project in Yishun, with a listed address at Yishun Central. Our project file describes it as near completion and carries a third-party 2026 completion note, but this entry is not officially confirmed. Official HDB roadshow resources, checked in our file on 7 November 2026, do not confirm a project-wide TOP or key date, and key appointments are unconfirmed. Unit counts and any completion year are therefore left out of the facts below. If you have an HDB key letter, use that. The word “Beacon” is not treated as a confirmed outlook. This page sets out what is on file and how to plan your Yishun Beacon renovation.",
+  "sections": [
+    {
+      "heading": "Planning your Yishun Beacon interior",
+      "text": "Yishun Central is the town-centre belt of a mature northern town. Owners who are close to keys usually want a first fit-out that works immediately: a fitted kitchen, full-height wardrobes, an entry shoe cabinet, and a living-room storage wall, rather than a temporary arrangement of loose furniture. Maison designs that work as built-in carpentry, not as IKEA-style furniture, and we will draw only from your approved plan. No official floor plan is on file, so typologies are not listed, and we will not invent a typical Yishun Beacon layout.\n\nChencharu Acres is the other Yishun page in this batch; it is a November 2026 BTO launch and is years away from keys. Chong Pang City, also in Yishun in this batch, is a retail and community development, not a typologies reference for this HDB estate. We will not invent walking times to Yishun town or to any MRT station. Check your block, facing and the HDB renovation rules before you plan blinds, a bench or any hacking.\n\nAfter keys, inspect defects and obtain the HDB renovation permit before fabrication. A moderate, non-structural carpentry scope is often planned at six to ten weeks on site after access and approvals, as an editorial figure only. WhatsApp Maison with your approved plan and any key letter you have. We are not affiliated with HDB."
+    }
+  ],
+  "faq": [
+    {
+      "q": "Is the completion or key date for Yishun Beacon confirmed?",
+      "a": "Not in our project file. This project is not officially confirmed, so unit counts and tracker dates have been left blank. If you have an HDB key-appointment letter, use that."
+    },
+    {
+      "q": "Do you have the Yishun Beacon floor plan?",
+      "a": "No official floor-plan or site image is on file for this page, so none is published here. Please send your approved HDB unit plan."
+    },
+    {
+      "q": "Do I need an HDB renovation permit?",
+      "a": "Yes, for the usual HDB renovation works. After keys, inspect defects, then apply for the permit with a registered contractor before carpentry is fabricated."
+    },
+    {
+      "q": "What should I send Maison?",
+      "a": "Your approved floor plan, unit type if you have it, and a key date if one is already in writing. WhatsApp us at https://wa.me/6593391185."
+    }
+  ],
+  "cta_text": "WhatsApp Maison with your unit type, approved floor plan and key date (if you have one).",
+  "sources": [
+    {
+      "label": "keydaykit.com: bto key collection 2026 2027 (third-party, not used as official confirmation)",
+      "url": "https://keydaykit.com/guides/bto-key-collection-2026-2027/",
+      "nofollow": true
+    }
+  ],
+  "nearby_hints": [
+    "chencharu-acres",
+    "chong-pang-city-integrated-development"
+  ],
+  "reviewed": "Facts checked against the sources on file, 11 November 2026.",
+  "date_published": "2026-11-11",
+  "date_modified": "2026-11-11"
+}

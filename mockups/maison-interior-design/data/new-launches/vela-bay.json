@@ -1,0 +1,69 @@
+{
+  "name": "Vela Bay",
+  "slug": "vela-bay",
+  "type": "Condo",
+  "label": "Private condominium",
+  "area": "District 16",
+  "district": "D16",
+  "region": "East",
+  "developer": "",
+  "tenure": "",
+  "top_label": "Launch / TOP / key date",
+  "top": "",
+  "unit_mix": "",
+  "official_site": "",
+  "facts": [],
+  "facts_note": "This project is not marked officially confirmed in our project file. Unit counts, tenure and dates from third-party listings have been left blank until they can be cited from the developer, HDB or URA.",
+  "title": "Vela Bay Renovation & Interior Design | District 16 Condo — Maison",
+  "description": "Interior design and built-in carpentry for Vela Bay, a condominium in District 16, around Bedok and the Upper East Coast. WhatsApp Maison with your plan.",
+  "keywords": [
+    "Vela Bay renovation",
+    "Vela Bay interior design",
+    "Vela Bay floor plan",
+    "District 16 condo renovation",
+    "Vela Bay built-in carpentry",
+    "Upper East Coast condo interior design"
+  ],
+  "intro": "Vela Bay is a condominium in District 16, in the Bedok and Upper East Coast belt. Our project file records a launch in April 2026 from a third-party new-launch list. This entry is not officially confirmed, so unit counts, tenure and that launch month are left out of the facts below, and no TOP or key date is confirmed. Please treat the developer’s documents as the source of truth for completion, tenure and typologies. This page sets out what is on file and how to plan your Vela Bay renovation.",
+  "sections": [
+    {
+      "heading": "Planning your Vela Bay interior",
+      "text": "A “bay” name in this district often comes with marketing language about water, breeze and outdoor living. We will not assign a view, a breeze or a walking time to the coast from your stack. What we can plan, once your approved floor plan is in hand, is the joinery that makes a new east-coast apartment easy to live in: an entry cabinet for shoes and bags, a living-room storage wall that can sit cleanly against a balcony opening, full-height bedroom wardrobes, and a fitted kitchen with a tall pantry. If the living room is long and narrow, a continuous joinery wall is usually calmer than a loose television bench and a cluster of cabinets. Maison specifies built-in carpentry, not IKEA-style furniture, and we are happy to work in close, material-led photographs as well as a traditional wide shot.\n\nNo official floor plan is on file, so typologies and room sizes are not listed. Pinery Residences is another District 16 project in this batch; use that page as a nearby link, not as a stand-in for your own layout. Before you plan balcony cabinets, screens or a window bench, read the management corporation’s rules and visit the unit at more than one time of day, because east-coast light and rain can be quite different in the late afternoon.\n\nAfter keys, inspect defects first, then measure and apply for renovation approval. A moderate, non-structural carpentry scope is often planned at six to ten weeks on site after access and approvals — an editorial allowance, not a promise. WhatsApp Maison with your approved plan and any key date you have in writing. We are not affiliated with the developer."
+    }
+  ],
+  "faq": [
+    {
+      "q": "Is the completion or launch date for Vela Bay confirmed?",
+      "a": "Not in our project file. This project is not officially confirmed, so unit counts, tenure and dates from third-party listings have been left blank. Use the developer’s documents for your own dates."
+    },
+    {
+      "q": "Do you have the Vela Bay floor plan?",
+      "a": "No official floor-plan or site image is on file for this page, so none is published here. Please send your approved unit plan."
+    },
+    {
+      "q": "Can I renovate right after keys?",
+      "a": "After handover, inspect defects and obtain the management corporation’s renovation approval first. A moderate carpentry scope is often planned at about six to ten weeks on site after access and approvals; that is an editorial allowance, not a guarantee."
+    },
+    {
+      "q": "What should I send Maison?",
+      "a": "Your approved floor plan, unit type if you have it, and a key date if one is already in writing. WhatsApp us at https://wa.me/6593391185."
+    }
+  ],
+  "cta_text": "WhatsApp Maison with your unit type, approved floor plan and key date (if you have one).",
+  "sources": [
+    {
+      "label": "EdgeProp: new launches (third-party, not used as official confirmation)",
+      "url": "https://www.edgeprop.sg/new-launches",
+      "nofollow": true
+    }
+  ],
+  "nearby_hints": [
+    "pinery-residences",
+    "rivelle-tampines",
+    "grand-dunman",
+    "coastal-cabana"
+  ],
+  "reviewed": "Facts checked against the sources on file, 11 November 2026.",
+  "date_published": "2026-11-11",
+  "date_modified": "2026-11-11"
+}
