@@ -118,7 +118,7 @@
     var taps = cs.reduce(function (a, c) { return a + ((c.taps && c.taps.wa) || 0) + ((c.taps && c.taps.call) || 0); }, 0);
     $app.innerHTML = demoNote() + '<h1 class="h1">' + bi("nav_clients") + "</h1>" +
       '<div class="kpis">' + kpi(cs.length, "k_clients") + kpi(live, "k_live") + kpi(cs.length - live, "k_building") + kpi(taps, "k_taps") + "</div>" +
-      '<div class="add-row"><a class="btn btn-ochre btn-block" href="#/new">+ ' + bi("nav_new") + "</a></div>" +
+      '<div class="bottom-bar"><a class="btn btn-ochre btn-block save" href="#/new">+ ' + bi("nav_new") + "</a></div>" +
       (cs.length ? '<div class="cards">' + cs.map(card).join("") + "</div>"
         : '<div class="center"><h2 class="h1" style="font-size:18px">' + bi("empty_title") + "</h2><p>" + bi("empty_text") + "</p></div>");
     $app.querySelectorAll("textarea[data-memo]").forEach(wireMemo);
@@ -126,12 +126,17 @@
 
   /* memo autosave: saves 1.2s after typing stops and when the box loses focus */
   function wireMemo(ta) {
-    var id = ta.getAttribute("data-memo"), meta = document.getElementById("mm-" + id), timer = null, saved = ta.value;
+    var id = ta.getAttribute("data-memo"), meta = document.getElementById("mm-" + id), timer = null, saved = ta.value, offer = false, inflight = null;
+    function offerShare() {
+      if (!offer || ta.value !== saved) return; offer = false;
+      var c = (state.clients || []).filter(function (x) { return x.id === id; })[0]; if (!c) return;
+      shareSheet(shareText({ change: "ch_memo", name: c.name, step: c.step, link: safeUrl(c.open_url), notes: saved, user: state.me.email }));
+    }
     function save() {
-      clearTimeout(timer); var v = ta.value; if (v === saved) return;
+      clearTimeout(timer); var v = ta.value; if (v === saved) return inflight;
       meta.className = "memo-meta"; meta.innerHTML = esc(T.memo_saving[0]) + " " + esc(T.memo_saving[1]);
-      api("save_memo", { client_id: id, memo: v }).then(function (r) {
-        saved = v; var c = (state.clients || []).filter(function (x) { return x.id === id; })[0]; if (c) { c.memo = v; c.memo_updated_at = r.memo_updated_at; }
+      return inflight = api("save_memo", { client_id: id, memo: v }).then(function (r) {
+        saved = v; offer = true; if (document.activeElement !== ta) offerShare(); var c = (state.clients || []).filter(function (x) { return x.id === id; })[0]; if (c) { c.memo = v; c.memo_updated_at = r.memo_updated_at; }
         meta.innerHTML = esc(T.memo_saved[0]) + " " + esc(T.memo_saved[1]) + " · " + memoMeta(r.memo_updated_at);
       }, function (e) {
         meta.className = "memo-meta err"; meta.innerHTML = esc(T.memo_err[0]) + " " + esc(T.memo_err[1]);
@@ -140,7 +145,7 @@
       });
     }
     ta.addEventListener("input", function () { clearTimeout(timer); timer = setTimeout(save, 1200); });
-    ta.addEventListener("blur", save);
+    ta.addEventListener("blur", function () { var p = save(); if (p && p.then) p.then(offerShare, function () {}); else offerShare(); });
   }
 
   function screenNew() {
@@ -153,7 +158,7 @@
       '</div><div class="err-msg" id="e-type" hidden>' + bi("f_err_urltype") + "</div></fieldset>" +
       '<div class="field"><label for="f-notes">4. ' + bi("f_notes", "bi-inline") + ' <span class="opt">(' + esc(T.f_optional[0]) + " " + esc(T.f_optional[1]) + ')</span></label><textarea id="f-notes" name="notes" class="notes-big" maxlength="5000" placeholder="' + esc(T.f_notes_ph[0] + "\n" + T.f_notes_ph[1]) + '"></textarea></div>' +
       '<div class="banner-err" id="e-save" hidden></div>' +
-      '<div class="form-actions"><button class="btn btn-main btn-block save" type="submit" id="saveBtn">' + bi("f_save") + '</button><a class="btn btn-line btn-block" href="#/clients">' + bi("f_cancel") + "</a></div></form>";
+      '<a class="btn btn-line btn-block" href="#/clients">' + bi("f_cancel") + '</a><div class="bottom-bar"><button class="btn btn-main btn-block save" type="submit" id="saveBtn">' + bi("f_save") + "</button></div></form>";
     var f = document.getElementById("nf");
     f.onsubmit = function (ev) {
       ev.preventDefault();
@@ -168,26 +173,51 @@
     };
   }
 
-  function summaryText(x) {
-    var type = x.type === "existing" ? T.sum_existing : T.sum_new, notes = x.notes.trim();
-    function fill(tpl, i) { return tpl.replace("{company}", x.company).replace("{url}", x.url).replace("{type}", type[i]).replace("{notes}", notes || T.sum_no_notes[i]).replace("{user}", x.user); }
-    return fill(T.sum_en, 0) + "\n" + fill(T.sum_zh, 1);
+  /* ---------- template: WhatsApp share (12 Nov 2026): after every create/save the user may share; never automatic ---------- */
+  function L(k) { return T[k][0] + " " + T[k][1]; }
+  function shareText(o) {
+    var st = T["st_" + (o.step || "pending")], lines = ["*" + L(o.change) + "*", L("sh_company") + ": " + o.name, L("sh_status") + ": " + st[0] + " " + st[1]];
+    if (o.url) lines.push(L("sh_url") + ": " + o.url + (o.urlType ? " (" + (o.urlType === "existing" ? T.sum_existing[0] + " " + T.sum_existing[1] : T.sum_new[0] + " " + T.sum_new[1]) + ")" : ""));
+    lines.push(L(o.step === "live" ? "sh_live_link" : "sh_link") + ": " + (o.link || L("sh_no_link")));
+    if (o.notes) lines.push(L("memo") + ": " + (o.notes.length > 400 ? o.notes.slice(0, 400) + "…" : o.notes));
+    if (o.user) lines.push(L("ch_by") + ": " + o.user);
+    return lines.join("\n");
   }
+  function shareButtons(text, idp) {
+    var group = safeUrl(state.me && state.me.group_link);
+    return '<div class="form-actions">' +
+      '<a class="btn btn-wa btn-block save" id="' + idp + 'wa" href="https://wa.me/?text=' + encodeURIComponent(text) + '" target="_blank" rel="noopener noreferrer">' + bi("share_wa") + "</a>" +
+      '<button class="btn btn-line btn-block" type="button" id="' + idp + 'copy">' + bi("copy") + "</button>" +
+      (group ? '<a class="btn btn-line btn-block" href="' + esc(group) + '" target="_blank" rel="noopener noreferrer">' + bi("open_group2") + "</a>" : "") + "</div>";
+  }
+  function wireCopy(btn, text, srcEl) {
+    btn.onclick = function () {
+      function ok() { btn.innerHTML = bi("copied"); setTimeout(function () { btn.innerHTML = bi("copy"); }, 2000); }
+      function fallback() { var r = document.createRange(); r.selectNodeContents(srcEl); var s = getSelection(); s.removeAllRanges(); s.addRange(r); try { document.execCommand("copy"); ok(); } catch (e) {} }
+      if (navigator.clipboard && navigator.clipboard.writeText) navigator.clipboard.writeText(text).then(ok, fallback); else fallback();
+    };
+  }
+  function shareSheet(text) {
+    closeSheet();
+    var d = document.createElement("div"); d.className = "sheet-bg"; d.id = "sheet";
+    d.innerHTML = '<div class="sheet" role="dialog" aria-modal="true" aria-labelledby="shT"><h2 class="h1" id="shT" style="font-size:18px;margin-top:0">' + bi("share_title") + '</h2><p class="hint">' + bi("share_hint") + '</p><div class="summary" id="shSum"></div>' +
+      shareButtons(text, "sh") + '<button class="btn btn-line btn-block" type="button" id="shClose" style="margin-top:10px">' + bi("close") + "</button></div>";
+    document.body.appendChild(d);
+    document.getElementById("shSum").textContent = text;
+    wireCopy(document.getElementById("shcopy"), text, document.getElementById("shSum"));
+    document.getElementById("shClose").onclick = closeSheet;
+    d.addEventListener("click", function (ev) { if (ev.target === d) closeSheet(); });
+  }
+  function closeSheet() { var o = document.getElementById("sheet"); if (o) o.remove(); }
+
   function screenDone() {
     var x = state.last; if (!x) { location.hash = "#/clients"; return; }
-    var text = summaryText(x), group = safeUrl(state.me.group_link);
-    $app.innerHTML = '<div class="form"><div class="ok-tick" aria-hidden="true">✓</div><h1 class="h1">' + bi("done_title") + "</h1><p>" + bi("done_text") + "</p>" +
-      '<div class="summary" id="sum"></div><div class="form-actions">' +
-      '<button class="btn btn-main btn-block save" type="button" id="copyBtn">' + bi("copy") + "</button>" +
-      (group ? '<a class="btn btn-ochre btn-block" href="' + esc(group) + '" target="_blank" rel="noopener noreferrer">' + bi("open_group") + "</a>"
-             : '<button class="btn btn-line btn-block" type="button" disabled>' + bi("group_not_set") + "</button>") +
-      '<a class="btn btn-line btn-block" href="#/clients">' + bi("back_clients") + "</a></div></div>";
+    var text = shareText({ change: "ch_created", name: x.company, step: "pending", url: x.url, urlType: x.type, link: "", notes: x.notes.trim(), user: x.user });
+    $app.innerHTML = '<div class="form"><div class="ok-tick" aria-hidden="true">✓</div><h1 class="h1">' + bi("done_title") + '</h1><p class="hint">' + bi("share_hint") + "</p>" +
+      '<div class="summary" id="sum"></div>' + shareButtons(text, "dn") +
+      '<a class="btn btn-line btn-block" href="#/clients" style="margin-top:10px">' + bi("back_clients") + "</a></div>";
     document.getElementById("sum").textContent = text;
-    document.getElementById("copyBtn").onclick = function () {
-      var b = this; function ok() { b.innerHTML = bi("copied"); setTimeout(function () { b.innerHTML = bi("copy"); }, 2000); }
-      if (navigator.clipboard && navigator.clipboard.writeText) navigator.clipboard.writeText(text).then(ok, fallback); else fallback();
-      function fallback() { var r = document.createRange(); r.selectNodeContents(document.getElementById("sum")); var s = getSelection(); s.removeAllRanges(); s.addRange(r); try { document.execCommand("copy"); ok(); } catch (e) {} }
-    };
+    wireCopy(document.getElementById("dncopy"), text, document.getElementById("sum"));
   }
 
   /* ---------- flow ---------- */
@@ -216,7 +246,7 @@
     screenClients();
     window.scrollTo(0, 0);
   }
-  window.addEventListener("hashchange", function () { if (state.me) render(); });
+  window.addEventListener("hashchange", function () { closeSheet(); if (state.me) render(); });
   var saved = load("as_tok");
   if (saved && (!DEMO || saved === "demo")) onToken(saved); else { header(); screenSignIn(""); }
 })();
