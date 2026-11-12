@@ -2,7 +2,7 @@
 import html, json, os, re
 
 # Words that must never appear on an AP Car page (Edwin's brief, 12 Nov 2026).
-BLOCK = [r'dtc\s*off', r'\bclone', r'\bremap', r'\bRM\s?\d', r'\bRM\b', r'page\s*one', r'pageone', r'\bedwin\b',
+BLOCK = [r'gt\s*-?\s*hybrid', r'\b4\.3\b', r'dtc\s*off', r'\bclone', r'\bremap', r'\bRM\s?\d', r'\bRM\b', r'page\s*one', r'pageone', r'\bedwin\b',
          r'sggarage', r'singapore', r'\bwarranty\b', r'years? in business', r'since (19|20)\d\d',
          r'\bauthori[sz]ed dealer', r'official (dealer|service centre|service center)', r'\bdealer\b', r'1 ?hour', r'guarantee',
          r'autoseo', r'k tech']

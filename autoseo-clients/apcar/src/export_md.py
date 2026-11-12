@@ -26,7 +26,7 @@ LABEL = {
     "ms": {"jobs": "Kerja yang kami buat", "faq": "Soalan", "related": "Berkaitan", "wa": "WhatsApp AP Car", "pair": ("Sebelum", "Selepas")},
     "zh": {"jobs": "我们做过的案例", "faq": "常见问题", "related": "相关页面", "wa": "WhatsApp AP Car", "pair": ("之前", "之后")},
 }
-BANNED = re.compile(r"\bRM ?\d|\bringgit\b|\bprice|\bharga\b|价格|\bDTC ?off\b|\bclone\b|\bremap|\b4\.3\b|\b45 (?:reviews|ulasan)|\byears? (?:in business|of experience)|\btahun pengalaman\b|年经验|guarantee|jaminan|保证", re.I)
+BANNED = re.compile(r"\bGT ?-?Hybrid\b|\bRM ?\d|\bringgit\b|\bprice|\bharga\b|价格|\bDTC ?off\b|\bclone\b|\bremap|\b4\.3\b|\b45 (?:reviews|ulasan)|\byears? (?:in business|of experience)|\btahun pengalaman\b|年经验|guarantee|jaminan|保证", re.I)
 
 
 def q(s):
