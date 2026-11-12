@@ -34,10 +34,10 @@ SITE = C['site_url']
 PHONE_SVG = ('<svg viewBox="0 0 24 24" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-width="2" '
              'd="M5 3h4l2 5-2.5 1.5a11 11 0 0 0 6 6L16 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 5a2 2 0 0 1 2-2Z"/></svg>')
 TONE = {'aircond': 't1', 'adas': 't2', 'hybrid': 't3', 'ecu': 't4', 'battery': 't5', 'servicing': 't6'}
-DEFAULT_PREFILL = {
-    'en': 'Hi AP Car, I have a question about my car. Car model:',
-    'ms': 'Hi AP Car, saya ada soalan tentang kereta saya. Model kereta:',
-    'zh': '你好 AP Car，我想咨询汽车问题。车型：',
+DEFAULT_PREFILL = {  # the live preview's own general prefills (12 Nov 2026)
+    'en': 'Hi AP Car, I found you on your website. My car is a (model):',
+    'ms': 'Hi AP Car, saya jumpa laman web anda. Kereta saya (model):',
+    'zh': '你好 AP Car，我在你们的网站看到。我的车是（车型）：',
 }
 e = html.escape
 
@@ -133,7 +133,7 @@ def shared(lang, path, P, wa_url):
          'maps': e(C['maps_url']), 'tel': C['phone_e164'], 'phone': C['phone_display'], 'email': C['email'],
          'tiktok': C['tiktok_url'], 'facebook': C['facebook_url'], 'address': e(C['address_display'])}
     for x in LANGS:
-        d['cur_' + x] = 'page' if x == lang else 'false'
+        d['cur_' + x] = 'true' if x == lang else 'false'
     for k, v in s.items():
         if isinstance(v, str):
             d[k] = v
@@ -141,7 +141,7 @@ def shared(lang, path, P, wa_url):
         d['svc_' + k] = v
     for k, v in s['brand'].items():
         d['brand_' + k] = v
-    d['hours_rows'] = ''.join(f'<tr><th>{e(a)}</th><td>{e(b)}</td></tr>' for a, b in s['hours_rows'])
+    d['hours_rows'] = ''.join(f'<tr><td>{e(a)}</td><td>{e(b)}</td></tr>' for a, b in s['hours_rows'])
     return fill(T['header'], d), fill(T['footer'], d)
 
 
