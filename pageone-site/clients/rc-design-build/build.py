@@ -342,6 +342,24 @@ def header(path):
 ''' % (E(wa_link('my space', path) or rel(path, '/contact/')), PHONE_DISPLAY, rel(path, '/'), rel(path, '/'), links, cta(path, 'my space', 'WhatsApp Us'))
 
 
+# Google review footer button (Edwin 13 Nov 2026): same markup and styles as the live footer.
+# Links to the review helper /review.html (noindex, never in sitemap/llms). Lives here so every rebuild keeps it.
+REVIEW_FOOTER = """<style>
+/* Google review footer button (2026-11-13) */
+.p1-foot-review{margin:16px 0 0}
+.p1-foot-review a{
+  display:inline-flex;align-items:center;justify-content:center;box-sizing:border-box;
+  min-height:44px;min-width:44px;padding:10px 18px;
+  border:1.5px solid currentColor;border-radius:999px;
+  text-decoration:none!important;font-weight:700;line-height:1.25;color:inherit
+}
+.p1-foot-review a:hover{opacity:.88}
+footer.foot .p1-foot-review{margin:12px 0 8px}
+</style>
+<p class="p1-foot-review"><a href="/review.html?business=commercialfitout" target="_blank" rel="noopener">Leave us a Google review</a></p>
+"""
+
+
 def footer(path):
     col = lambda paths: ''.join('<li><a href="%s">%s</a></li>' % (rel(path, p), E(SHORT[p])) for p in paths)
     return '''</main>
@@ -350,7 +368,7 @@ def footer(path):
 <div><h3>Services</h3><ul>%s</ul></div>
 <div><h3>AVL &amp; spaces</h3><ul>%s</ul></div>
 <div><h3>Plan</h3><ul>%s</ul></div>
-<p class="small">Photos marked "Real project" show SG Commercial Fitout carpentry (decor added with AI styling). Photos marked "AI design concept" are ideas, not completed work. &copy; 2026 %s.</p>
+%s<p class="small">Photos marked "Real project" show SG Commercial Fitout carpentry (decor added with AI styling). Photos marked "AI design concept" are ideas, not completed work. &copy; 2026 %s.</p>
 </div></footer>
 <a class="wa-float" href="%s" rel="noopener" aria-label="WhatsApp SG Commercial Fitout">%s<span class="sr">WhatsApp %s</span></a>
 <script src="%src.js?v=%s" defer></script>
@@ -359,7 +377,7 @@ def footer(path):
 </html>
 ''' % (rel(path, '/'), E(TAGLINE), ADDR_HTML, E(wa_link('my space', path) or ''), PHONE_DISPLAY, pending_box([('Operating company', 'name and UEN to be confirmed')]),
        col(SERVICE_ORDER), col(['/avl/', '/avl/commercial-audio-systems/', '/avl/display-visual-systems/', '/avl/architectural-feature-lighting/', '/spaces/retail-shops-boutiques/', '/spaces/cafes-service-counters/']),
-       col(['/projects/', '/design-concepts/', '/design-concepts/concept-of-the-day/', '/guides/', '/about/', '/contact/', '/privacy-policy/']), E(BRAND_FULL),
+       col(['/projects/', '/design-concepts/', '/design-concepts/concept-of-the-day/', '/guides/', '/about/', '/contact/', '/privacy-policy/']), REVIEW_FOOTER, E(BRAND_FULL),
        E(wa_link('my space', path) or ''), WA_SVG, PHONE_DISPLAY, rel(path, '/'), vhash('rc.js'), rel(path, '/'), vhash('wa-tap-counter.js'))
 
 

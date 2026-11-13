@@ -57,6 +57,8 @@ ld_graph = {"@context": "https://schema.org", "@graph": [
 
 e = lambda s: html.escape(s, quote=True)
 tpl = pathlib.Path(__file__).with_name("style.css").read_text()
+# Shared footer (incl. the Google review button, 13 Nov 2026): edit footer.html once, every article builder reads it.
+FOOTER = pathlib.Path(__file__).with_name("footer.html").read_text()
 
 body = f"""
 <p><strong>The colour of the smoke tells you where to look. Thin white vapour on a cold morning that clears in a few minutes is usually just condensation. Thick white smoke that keeps coming can mean coolant is burning, blue-grey smoke means oil is burning, and black smoke means too much fuel. Smoke with a rising temperature gauge, a red warning light, a fuel smell or loss of power means pull over and switch off.</strong></p>
@@ -195,13 +197,7 @@ page = f"""<!DOCTYPE html>
 </div></div>
 <div class="article-wrap"><article class="article">
 {body}</article></div>
-<footer class="footer"><div class="footer-inner">
-  <div class="footer-brand"><a class="logo" href="/"><span>Edwin</span> Garage</a><p>Car workshop in Ang Mo Kio since 2010. Servicing, repairs, aircon and accident claims.</p></div>
-  <div class="footer-links"><h4>Services</h4><ul><li><a href="/car-servicing-repair/">Car Servicing &amp; Repair</a></li><li><a href="/car-aircon-repair/">Car Aircon Repair</a></li><li><a href="/accident-claim-repair/">Accident &amp; Dent Repair</a></li><li><a href="/prices/">Starting prices</a></li></ul></div>
-  <div class="footer-links"><h4>Visit Us</h4><ul><li>Blk 5032 Ang Mo Kio Industrial Park 2 #01-295, Singapore 569535</li><li>Mon–Sat: 10am – 8pm · Closed Sundays</li><li><a href="https://wa.me/6597856612" target="_blank" rel="noopener">WhatsApp: 9785 6612</a> (enquiries)</li></ul></div>
-  <div class="footer-links"><h4>Quick Links</h4><ul><li><a href="/articles/">Car Guides &amp; Articles</a></li><li><a href="https://sggarageedwin.as.me/" target="_blank" rel="noopener">Book Appointment</a></li><li><a href="/about/">About Edwin Garage</a></li></ul></div>
-</div><div class="footer-bottom"><p>© 2026 Edwin Garage Automotive Services Pte. Ltd. (UEN 201828727D) · Blk 5032 Ang Mo Kio Industrial Park 2 #01-295 · Singapore 569535</p></div><p style="text-align:center;font-size:.82rem;margin:12px 0 0"><a href="/privacy-policy/">Privacy Policy</a></p></footer>
-<script src="/p1-cta.js" defer></script>
+{FOOTER}<script src="/p1-cta.js" defer></script>
 </body>
 </html>
 """

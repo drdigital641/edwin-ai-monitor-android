@@ -1949,6 +1949,29 @@ def build_pages():
 # ---------------------------------------------------------------------------------------------
 # Render
 # ---------------------------------------------------------------------------------------------
+
+# Google review footer button (Edwin 13 Nov 2026): same markup, styles and localised labels as the live mykar.my footer.
+# Links to the review helper /review.html (noindex, never in sitemap/llms/IndexNow). Every page, articles included.
+REVIEW_FOOTER_CSS = """<style>
+/* Google review footer button (2026-11-13) */
+.p1-foot-review{margin:16px 0 0}
+.p1-foot-review a{
+  display:inline-flex;align-items:center;justify-content:center;box-sizing:border-box;
+  min-height:44px;min-width:44px;padding:10px 18px;
+  border:1.5px solid currentColor;border-radius:999px;
+  text-decoration:none!important;font-weight:700;line-height:1.25;color:inherit
+}
+.p1-foot-review a:hover{opacity:.88}
+footer.foot .p1-foot-review{margin:12px 0 8px}
+</style>
+"""
+REVIEW_LABEL = T('Leave us a Google review', 'Tinggalkan ulasan Google', '在 Google 留下评价')
+
+
+def review_footer(L):
+    return REVIEW_FOOTER_CSS + '<p class="p1-foot-review"><a href="/review.html?business=mykar" target="_blank" rel="noopener">%s</a></p>\n' % E(t(REVIEW_LABEL, L))
+
+
 def render(L, path, p):
     full = PFX[L] + path
     pre = '../' * full.count('/')
@@ -2062,7 +2085,7 @@ def render(L, path, p):
 <li><a href="{FB}" target="_blank" rel="noopener">Facebook</a></li>
 </ul></div>
 </div>
-<div class="ftr-legal"><span>© 2026 {LEGAL} · {E(t(W['reg'], L))} {REGNO}</span></div>
+{review_footer(L)}<div class="ftr-legal"><span>© 2026 {LEGAL} · {E(t(W['reg'], L))} {REGNO}</span></div>
 </div></footer>
 {'' if p.get('b2b') else dock}
 </body>
