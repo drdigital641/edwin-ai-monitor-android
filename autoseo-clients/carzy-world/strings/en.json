@@ -1,0 +1,661 @@
+{
+ "_readme": "Every visible English string. ms.json and zh.json have the same keys.",
+ "meta": {
+  "html_lang": "en",
+  "og_locale": "en_MY",
+  "lang_name": "English",
+  "switch_label": "EN",
+  "schema_lang": "en",
+  "title_suffix": " | Carzy World, Klang"
+ },
+ "prefills": {
+  "general": "Hi Carzy World, I found you on your website. I'd like to ask about my car.",
+  "service": "Hi Carzy World, I'd like to ask about {topic}. My car is a (model and year):",
+  "booking": "Hi Carzy World, I'd like to book my car in. My car is a (model and year):",
+  "discount": "Hi Carzy World, I'm a new customer and saw the 5% new customer discount. My car is a (model and year):",
+  "directions": "Hi Carzy World, I'm on my way to the workshop. Could you share directions?"
+ },
+ "ui": {
+  "skip": "Skip to content",
+  "nav": {
+   "home": "Home",
+   "services": "Services",
+   "work": "Recent work",
+   "reviews": "Reviews",
+   "about": "About",
+   "contact": "Contact",
+   "articles": "Articles"
+  },
+  "nav_aria": "Main menu",
+  "menu": "Menu",
+  "lang_aria": "Language",
+  "home_aria": "Carzy World home",
+  "whatsapp_us": "WhatsApp us",
+  "whatsapp_now": "WhatsApp us now",
+  "call": "Call",
+  "call_us": "Call {phone}",
+  "email_us": "Email us",
+  "directions": "Get directions",
+  "open_maps": "Open in Google Maps",
+  "read_reviews": "Read our Google reviews",
+  "stars_aria": "5 out of 5 stars",
+  "rating_line": "5.0 on Google · 19 reviews",
+  "rating_sub": "Every review is 5 stars",
+  "hours_short": "Mon–Fri 10am–7pm · Sat 10am–4:30pm",
+  "location_short": "Air Hitam, Klang",
+  "brands_short": "All car brands welcome",
+  "hours_title": "Opening hours",
+  "days": {
+   "mon_fri": "Monday – Friday",
+   "sat": "Saturday",
+   "sun": "Sunday"
+  },
+  "times": {
+   "mon_fri": "10:00am – 7:00pm",
+   "sat": "10:00am – 4:30pm",
+   "sun": "Closed"
+  },
+  "address_label": "Address",
+  "phone_label": "Phone and WhatsApp",
+  "email_label": "Email",
+  "company_label": "Company no.",
+  "facebook": "Facebook page",
+  "more_details": "More details",
+  "all_services": "See all services",
+  "discount_badge": "New customer: 5% discount",
+  "discount_terms": "Terms apply. Ask us on WhatsApp.",
+  "photo_kicker": "Inside the workshop",
+  "related_kicker": "Other services",
+  "related_h2": "We can also help with",
+  "breadcrumb_aria": "Breadcrumb",
+  "footer_services": "Services",
+  "footer_visit": "Visit us",
+  "footer_pages": "Pages",
+  "credit": "Website by AutoSEO.my",
+  "map_title": "Map showing Carzy World in Air Hitam, Klang",
+  "map_load": "Show the map",
+  "price_note": "We don't publish prices because every car and problem is different. Send us your car model and the problem on WhatsApp for a quote.",
+  "brands_note": "All car brands are welcome.",
+  "months": [
+   "Jan",
+   "Feb",
+   "Mar",
+   "Apr",
+   "May",
+   "Jun",
+   "Jul",
+   "Aug",
+   "Sep",
+   "Oct",
+   "Nov",
+   "Dec"
+  ],
+  "sound_on": "Tap for sound",
+  "sound_off": "Sound off",
+  "pause": "Pause video",
+  "play": "Play video",
+  "play_clip": "Play clip",
+  "video_note": "Clips play from our Facebook page when you tap them.",
+  "watch_more": "Watch more on Facebook",
+  "ask_this": "Ask about this",
+  "clip_aria": "Video clips from our workshop",
+  "seconds": "{n}s",
+  "service_tag": "Service",
+  "see_service": "About this service",
+  "watch_fb": "Watch on Facebook",
+  "scroll_hint": "Swipe for more",
+  "find_on_maps": "Find us on Google Maps"
+ },
+ "photos": {
+  "shop-exterior": "Carzy World Sdn Bhd shop front in Pusat Perniagaan Bestari, Air Hitam, Klang, with the yellow signboard and open service bay",
+  "logo": "Carzy World logo",
+  "bmw-in-workshop": "A BMW sedan in the Carzy World workshop with engine oil ready for its service",
+  "engine-work-closeup": "Close-up of engine work in progress at Carzy World, Klang",
+  "porsche-in-workshop": "A red Porsche 911 in the Carzy World service bay with Mobil 1 oil and new filters",
+  "isuzu-pickup-at-entrance": "An Isuzu D-Max at the Carzy World entrance with oil and grease containers for its service",
+  "tesla-model-3": "A white Tesla Model 3 in the Carzy World workshop with its old upper arm on the floor",
+  "mercedes-amg-cla45": "A Mercedes-AMG CLA 45 S in the Carzy World service bay with the replaced belt and parts in front",
+  "nissan-almera-brakes": "A silver Nissan Almera at Carzy World with a new brake booster, brake parts, ignition coils and spark plugs",
+  "perodua-axia-service": "A dark blue Perodua Axia on the lift at Carzy World with engine oil, a filter and a belt for its service",
+  "perodua-myvi-aircond": "A black Perodua Myvi at the Carzy World entrance with boxed aircond parts in front"
+ },
+ "home": {
+  "title": "Car Workshop & Car Service in Klang | Carzy World",
+  "description": "Carzy World Sdn Bhd is a car workshop in Air Hitam, Klang: car service, oil change, engine and gearbox, aircond, brakes, wiring faults, EV and classic car repair. 5.0 on Google. WhatsApp +60 17-693 3936.",
+  "eyebrow": "Automotive Specialists Service Centre · Klang",
+  "h1": "The car workshop in Klang that does it properly",
+  "lead": "Carzy World Sdn Bhd is a car workshop in Air Hitam, Klang. We handle servicing and oil changes, engine and gearbox repair, aircond, brakes and suspension, difficult wiring faults, EVs and classic cars. All car brands are welcome.",
+  "hero_note": "WhatsApp us your car model and the problem. We'll tell you what to expect.",
+  "services_kicker": "What we fix",
+  "services_h2": "Seven ways we keep your car right",
+  "services_lead": "Seven groups of work, from a quick oil change to tracing a wiring fault other shops couldn't find.",
+  "work_kicker": "Recent work",
+  "work_h2": "Cars we've worked on recently",
+  "work_lead": "A few real jobs from our workshop, posted on our Facebook page.",
+  "work": {
+   "tesla": {
+    "title": "Tesla Model 3",
+    "text": "Upper arm replacement, plus a fast-charging fault checked and sorted.",
+    "when": "Oct 2026"
+   },
+   "dmax": {
+    "title": "Isuzu D-Max",
+    "text": "Major service on a working pickup truck.",
+    "when": "Recent"
+   },
+   "c230": {
+    "title": "Mercedes-Benz C230",
+    "text": "Coolant and oil leaks fixed, and the warning lights on the dashboard checked.",
+    "when": "Recent"
+   },
+   "w201": {
+    "title": "Mercedes 190E 2.5-16 (1988)",
+    "text": "Restoration work on a classic Mercedes.",
+    "when": "Nov 2026"
+   }
+  },
+  "suit_line": "Our boss is known for working on cars in a suit. It's his way of showing that every job is done properly.",
+  "gallery_h2": "Cars in our workshop",
+  "reviews_kicker": "Reviews",
+  "reviews_h2": "Rated 5.0 on Google Maps",
+  "reviews_lead": "19 customers have rated us on Google Maps, and the average is 5.0. Read what they wrote, in their own words, on our Google listing.",
+  "visit_kicker": "Visit us",
+  "visit_h2": "Find us in Air Hitam, Klang",
+  "visit_text": "We're at Pusat Perniagaan Bestari in Taman Perindustrian Air Hitam, Klang. Look for the yellow signboard. Send us a WhatsApp before you come so we can get ready for your car.",
+  "faq_kicker": "FAQ",
+  "faq_h2": "Questions we often get",
+  "cta_h2": "Tell us what your car needs",
+  "cta_text": "WhatsApp us your car model, year and the problem. Calls are welcome too during opening hours.",
+  "hero_lead": "Carzy World is a car workshop in Air Hitam, Klang for servicing, repairs and difficult faults. All car brands welcome.",
+  "hero_video_label": "Our boss at work in a suit, at the Carzy World workshop in Klang",
+  "intro_h2": "One workshop for servicing, repairs and the hard jobs",
+  "reels_kicker": "On camera",
+  "reels_h2": "Watch us work",
+  "reels_lead": "Real jobs from our workshop. Tap a clip to play it here.",
+  "classic_kicker": "Our signature story",
+  "classic_h2": "Bringing a 1988 Mercedes 190E 2.5-16 back to life",
+  "classic_text": "In November 2026 we worked on restoring a 1988 Mercedes 190E 2.5-16. We also take on older European cars with leaks, warning lights and worn parts.",
+  "classic_video_label": "Restoration work on a 1988 Mercedes 190E 2.5-16 at Carzy World",
+  "pick_kicker": "Services",
+  "pick_h2": "Pick a service",
+  "photos_h2": "Inside the workshop",
+  "works_kicker": "Recent works",
+  "works_h2": "Fresh off our ramps",
+  "works_lead": "Real photos of real jobs, from our Facebook page.",
+  "works": {
+   "isuzu": {
+    "title": "Isuzu D-Max service",
+    "text": "A working pickup in for its service, with fresh oil and grease ready."
+   },
+   "porsche": {
+    "title": "Porsche 911 service",
+    "text": "Mobil 1 engine oil and new filters, laid out before the service."
+   },
+   "bmw": {
+    "title": "BMW sedan oil service",
+    "text": "Fresh engine oil and a new filter for a BMW sedan."
+   },
+   "engine": {
+    "title": "Engine work in progress",
+    "text": "Hands-on engine work in our service bay."
+   },
+   "tesla": {
+    "title": "Tesla Model 3 repair",
+    "text": "An upper arm replaced and a fast-charging issue sorted."
+   },
+   "cla45": {
+    "title": "Mercedes-AMG CLA 45 S",
+    "text": "Parts replaced, with the old belt laid out in front."
+   },
+   "almera": {
+    "title": "Nissan Almera brake and engine repair",
+    "text": "In for brake and engine issues. New brake booster, coils and plugs."
+   },
+   "myvi": {
+    "title": "Perodua Myvi aircond service",
+    "text": "In for an aircond service, with the new parts ready."
+   },
+   "axia": {
+    "title": "Perodua Axia service and noise fix",
+    "text": "A service plus a noise tracked down and fixed."
+   }
+  },
+  "works_also": "Also on our ramps recently",
+  "suit_kicker": "The man in the suit",
+  "suit_h2": "Why our boss fixes cars in a suit",
+  "suit_text": "It's his way of showing that every job is done properly and professionally, from an oil change to a restoration.",
+  "visit_btn": "Plan your visit"
+ },
+ "faqs": [
+  {
+   "q": "Where is Carzy World?",
+   "a": "We're at 137-G, Jln Permata 1/KS09, Pusat Perniagaan Bestari, Taman Perindustrian Air Hitam Phase 1 & 2, 42000 Klang, Selangor. Tap 'Get directions' to open it in Google Maps."
+  },
+  {
+   "q": "What are your opening hours?",
+   "a": "Monday to Friday 10am to 7pm, and Saturday 10am to 4:30pm. We're closed on Sunday."
+  },
+  {
+   "q": "Which car brands do you work on?",
+   "a": "All car brands are welcome. Recent jobs include a Tesla Model 3, an Isuzu D-Max, a Mercedes-Benz C230 and a 1988 Mercedes 190E 2.5-16."
+  },
+  {
+   "q": "How much will my repair cost?",
+   "a": "We don't publish prices because every car and problem is different. WhatsApp us your car model, year and the problem and we'll give you a quote. New customers get a 5% discount (terms apply)."
+  },
+  {
+   "q": "How do I book my car in?",
+   "a": "The quickest way is WhatsApp on +60 17-693 3936. You can also call the same number during opening hours or email yc.carzyworld@gmail.com."
+  },
+  {
+   "q": "Do you repair electric cars?",
+   "a": "Yes. In October 2026 we replaced an upper arm on a Tesla Model 3 and sorted out a fast-charging fault on it."
+  },
+  {
+   "q": "Can you fix wiring problems other workshops couldn't?",
+   "a": "Yes, electrical and wiring faults are a regular job for us. Our videos show a fault that kept coming back, and batteries that kept dying after two other workshops couldn't find the cause. Tell us on WhatsApp what happens and when."
+  }
+ ],
+ "services": {
+  "car-servicing-oil-change": {
+   "short": "Servicing & oil change",
+   "title": "Car servicing and oil change",
+   "card": "Regular servicing, major service and oil change for every brand.",
+   "h1": "Car servicing and oil change in Klang",
+   "meta_title": "Car Servicing & Oil Change in Klang",
+   "meta_description": "Car servicing, major service and oil change at Carzy World, Air Hitam, Klang. All car brands welcome. WhatsApp +60 17-693 3936 for a quote.",
+   "prefill_topic": "a car service or oil change",
+   "intro": "Regular servicing keeps your car reliable and helps catch small problems early. We do normal services, major services and oil changes for all car brands, from city cars to pickups and continental cars.",
+   "covers_h2": "What we do",
+   "covers": [
+    "Car servicing and major service",
+    "Engine oil and oil filter change",
+    "General repairs and maintenance found during the service",
+    "Pickups and 4x4s, such as a recent Isuzu D-Max major service"
+   ],
+   "signs_h2": "When to bring your car in",
+   "signs": [
+    "Your service reminder or sticker says it's due",
+    "The oil warning light comes on",
+    "The engine sounds rougher or louder than usual",
+    "You're planning a long drive and want the car checked first"
+   ],
+   "body": "Tell us your car model, year and mileage on WhatsApp, and we'll let you know what the service should include and give you a quote. We keep you updated while your car is with us.",
+   "faqs": [
+    {
+     "q": "What's the difference between a normal service and a major service?",
+     "a": "A normal service is mainly the oil and oil filter change with basic checks. A major service usually adds more items such as other filters, fluids and spark plugs, depending on your car's schedule. WhatsApp us your car model and mileage and we'll tell you which one is due."
+    },
+    {
+     "q": "Do you service pickups and 4x4s?",
+     "a": "Yes. All car brands are welcome, and we recently did a major service on an Isuzu D-Max."
+    }
+   ]
+  },
+  "engine-gearbox-repair": {
+   "short": "Engine & gearbox",
+   "title": "Engine and gearbox repair",
+   "card": "Engine problems, leaks, warning lights and gearbox repair.",
+   "h1": "Engine and gearbox repair in Klang",
+   "meta_title": "Engine & Gearbox Repair in Klang",
+   "meta_description": "Engine and gearbox repair at Carzy World, Air Hitam, Klang: leaks, warning lights, rough running and gearbox problems. All car brands. WhatsApp +60 17-693 3936.",
+   "prefill_topic": "an engine or gearbox problem",
+   "intro": "Engine and gearbox problems are worth checking early, before a small fault turns into a big repair. WhatsApp us what you're noticing and we'll tell you what to expect.",
+   "covers_h2": "What we do",
+   "covers": [
+    "Engine repair",
+    "Gearbox repair",
+    "Oil and coolant leaks, like a recent Mercedes-Benz C230",
+    "Checking dashboard warning lights"
+   ],
+   "signs_h2": "Signs to get checked",
+   "signs": [
+    "Engine warning light on the dashboard",
+    "Oil or coolant drips under the car",
+    "Rough idle, shaking or loss of power",
+    "Gears slipping, jerking or slow to engage"
+   ],
+   "body": "Send us a short video or a description of the problem on WhatsApp. It helps us understand what's going on before you bring the car in.",
+   "faqs": [
+    {
+     "q": "Can I keep driving with the engine warning light on?",
+     "a": "If the light is flashing, or the car feels very different, stop driving and get it checked, because it can mean a serious fault. If it's steady and the car drives normally, book a check soon. Either way, WhatsApp us and we'll advise you."
+    },
+    {
+     "q": "Do you fix oil and coolant leaks?",
+     "a": "Yes. We recently fixed coolant and oil leaks on a Mercedes-Benz C230 and checked the warning lights it was showing."
+    }
+   ]
+  },
+  "car-aircond-service": {
+   "short": "Aircond",
+   "title": "Car aircond diagnostics and service",
+   "card": "Aircond not cold, weak airflow or smells: we find the cause.",
+   "h1": "Car aircond service and diagnostics in Klang",
+   "meta_title": "Car Aircond Service & Diagnostics in Klang",
+   "meta_description": "Car aircond not cold? Carzy World in Air Hitam, Klang checks and services car aircond for all brands. WhatsApp +60 17-693 3936.",
+   "prefill_topic": "my car aircond",
+   "intro": "In Malaysian weather, a weak aircond makes every drive uncomfortable. We check the system to find out why it isn't cooling properly, then service or repair what's needed.",
+   "covers_h2": "What we do",
+   "covers": [
+    "Aircond diagnostics to find the cause",
+    "Aircond service",
+    "Repairs found during the check"
+   ],
+   "signs_h2": "Signs to get checked",
+   "signs": [
+    "Air isn't as cold as it used to be",
+    "Cold at first, then warm after a while",
+    "Weak airflow from the vents",
+    "A bad smell or strange noise when the aircond is on"
+   ],
+   "body": "Tell us on WhatsApp what the aircond is doing and when it started. We'll check the system and let you know what we find.",
+   "faqs": [
+    {
+     "q": "Why is my car aircond not cold?",
+     "a": "Common causes include low refrigerant from a leak, a blocked filter, a cooling fan problem or a faulty compressor. A proper check finds the real cause, so you don't pay for parts you don't need."
+    },
+    {
+     "q": "Do you only top up the gas?",
+     "a": "We check the system first to find out why it isn't cooling, then service or repair what's needed. Topping up without finding a leak usually means the problem comes back."
+    }
+   ]
+  },
+  "suspension-brakes-exhaust": {
+   "short": "Suspension, brakes & exhaust",
+   "title": "Suspension, brakes and exhaust",
+   "card": "Brake noise, bumpy ride or a loud exhaust, sorted.",
+   "h1": "Suspension, brake and exhaust repair in Klang",
+   "meta_title": "Suspension, Brake & Exhaust Repair in Klang",
+   "meta_description": "Suspension, brake and exhaust system repair at Carzy World, Air Hitam, Klang. All car brands welcome. WhatsApp +60 17-693 3936.",
+   "prefill_topic": "suspension, brakes or exhaust",
+   "intro": "Brakes and suspension keep you safe and the car comfortable. We check and repair suspension, brakes and exhaust systems for all car brands.",
+   "covers_h2": "What we do",
+   "covers": [
+    "Suspension repair, such as the upper arm we replaced on a Tesla Model 3",
+    "Brake checks and repair",
+    "Exhaust system repair"
+   ],
+   "signs_h2": "Signs to get checked",
+   "signs": [
+    "Squealing or grinding when you brake",
+    "The car pulls to one side or the steering shakes",
+    "Knocking over bumps or a bouncy ride",
+    "A louder exhaust, rattles or exhaust smell in the cabin"
+   ],
+   "body": "Brake and suspension problems can get worse quickly. If something feels wrong, WhatsApp us and bring the car in for a check.",
+   "faqs": [
+    {
+     "q": "My brakes squeal. Is it urgent?",
+     "a": "A squeal can mean worn brake pads, and grinding usually means they're worn right down. Get them checked soon, because worn brakes take longer to stop the car."
+    },
+    {
+     "q": "Why is my exhaust suddenly louder?",
+     "a": "A louder exhaust usually means a leak or a damaged part in the exhaust system. It's worth checking, especially if you can smell exhaust inside the car."
+    }
+   ]
+  },
+  "electrical-wiring-diagnosis": {
+   "short": "Electrical & wiring",
+   "title": "Electrical and wiring fault finding",
+   "card": "Difficult wiring and electrical faults traced and fixed.",
+   "h1": "Car electrical and wiring diagnosis in Klang",
+   "meta_title": "Car Wiring & Electrical Fault Diagnosis in Klang",
+   "meta_description": "Difficult car wiring and electrical faults traced and fixed at Carzy World, Air Hitam, Klang. Even other workshops send cars to us. WhatsApp +60 17-693 3936.",
+   "prefill_topic": "an electrical or wiring problem",
+   "intro": "Electrical faults can be hard to pin down: a warning light that comes and goes, or something that only fails sometimes. Tracing difficult wiring problems is work we're known for.",
+   "covers_h2": "What we do",
+   "covers": [
+    "Electrical fault finding",
+    "Wiring repair",
+    "Warning lights and difficult problems other shops couldn't solve"
+   ],
+   "signs_h2": "Problems we look into",
+   "signs": [
+    "Warning lights that come and go",
+    "Electrical parts that work sometimes and not others",
+    "Fuses that keep blowing",
+    "A battery that keeps going flat"
+   ],
+   "body": "Our videos show a fault that kept coming back, and batteries that kept dying after two other workshops couldn't find the cause. Tell us what's happening on WhatsApp, and when it happens.",
+   "faqs": [
+    {
+     "q": "Other workshops couldn't find the fault. Can you help?",
+     "a": "Difficult wiring and electrical problems are what we're known for. WhatsApp us what you've already tried and what the car is doing, and we'll take a look."
+    },
+    {
+     "q": "My battery keeps going flat. Is it the battery?",
+     "a": "Not always. A flat battery can also come from a charging problem or something drawing power when the car is off. A check finds the cause, so you don't replace parts for nothing."
+    }
+   ]
+  },
+  "ev-repair": {
+   "short": "EV repair",
+   "title": "EV repair",
+   "card": "Electric car repairs, from suspension to charging faults.",
+   "h1": "EV repair in Klang",
+   "meta_title": "EV Repair in Klang: Electric Car Workshop",
+   "meta_description": "Electric car repair at Carzy World, Air Hitam, Klang. Recent work: Tesla Model 3 upper arm replacement and fast-charging fault. WhatsApp +60 17-693 3936.",
+   "prefill_topic": "my electric car (EV)",
+   "intro": "Electric cars still need suspension, brake and general repairs, and sometimes help with charging problems. We work on EVs as well as petrol and diesel cars.",
+   "covers_h2": "Recent EV work",
+   "covers": [
+    "Tesla Model 3 upper arm replacement (Oct 2026)",
+    "Tesla Model 3 fast-charging fault (Oct 2026)",
+    "Suspension, brakes and general repairs on electric cars"
+   ],
+   "signs_h2": "When to get your EV checked",
+   "signs": [
+    "Knocks or clunks from the suspension",
+    "Charging is slow, stops or won't start",
+    "A warning message on the screen",
+    "Tyres wearing unevenly"
+   ],
+   "body": "Tell us your EV model and what's happening on WhatsApp. If it's a charging problem, let us know where and how you were charging when it happened.",
+   "faqs": [
+    {
+     "q": "Do you work on Tesla?",
+     "a": "Yes. In October 2026 we replaced an upper arm on a Tesla Model 3 and sorted out a fast-charging fault on the same car."
+    },
+    {
+     "q": "Do you only repair electric cars?",
+     "a": "No. We work on all car brands, petrol, diesel and electric."
+    }
+   ]
+  },
+  "classic-continental-cars": {
+   "short": "Classic & continental",
+   "title": "Classic and continental cars",
+   "card": "Older and European cars, from leaks to restoration work.",
+   "h1": "Classic and continental car repair in Klang",
+   "meta_title": "Classic & Continental Car Repair in Klang",
+   "meta_description": "Classic and continental car repair at Carzy World, Air Hitam, Klang: a 1988 Mercedes 190E 2.5-16 restoration and Mercedes-Benz C230 leak repairs. WhatsApp +60 17-693 3936.",
+   "prefill_topic": "a classic or continental car",
+   "intro": "Older and European cars need patience and care. We take on classic restoration work and continental car repairs.",
+   "covers_h2": "Recent work",
+   "covers": [
+    "1988 Mercedes 190E 2.5-16 restoration (Nov 2026)",
+    "Mercedes-Benz C230 coolant and oil leaks, and warning lights",
+    "Servicing and repairs on continental cars"
+   ],
+   "signs_h2": "Good reasons to bring it in",
+   "signs": [
+    "Leaks, smells or new noises on an older car",
+    "Warning lights on a continental car",
+    "A classic car that's been sitting and needs to be brought back",
+    "A car you want looked after properly"
+   ],
+   "body": "Send us photos of your car and tell us what you'd like done on WhatsApp. For restoration work, let us know the car's history if you have it.",
+   "faqs": [
+    {
+     "q": "Do you restore classic cars?",
+     "a": "Yes. In November 2026 we worked on restoring a 1988 Mercedes 190E 2.5-16."
+    },
+    {
+     "q": "Do you work on continental cars?",
+     "a": "Yes. All car brands are welcome. Recent continental work includes coolant and oil leaks and warning lights on a Mercedes-Benz C230."
+    }
+   ]
+  }
+ },
+ "services_page": {
+  "title": "Car Repair & Servicing Services in Klang | Carzy World",
+  "description": "All Carzy World services in Air Hitam, Klang: servicing and oil change, engine and gearbox, aircond, suspension and brakes, wiring faults, EV and classic cars.",
+  "eyebrow": "Services",
+  "h1": "Our car services in Klang",
+  "lead": "From an oil change to a difficult wiring fault, here's what we do. All car brands are welcome.",
+  "list_h2": "Choose a service",
+  "covers_kicker": "In short",
+  "faq_h2": "Questions about {name}"
+ },
+ "about_page": {
+  "title": "About Carzy World Sdn Bhd | Car Workshop in Klang",
+  "description": "About Carzy World Sdn Bhd, an automotive service centre in Air Hitam, Klang. Reliable service and repairs for all car brands. 5.0 on Google from 19 reviews.",
+  "eyebrow": "About us",
+  "h1": "About Carzy World",
+  "lead": "Reliable automotive service and repairs you can trust.",
+  "story_h2": "A workshop that does things properly",
+  "paras": [
+   "Carzy World Sdn Bhd is an automotive service centre in Pusat Perniagaan Bestari, Taman Perindustrian Air Hitam, Klang.",
+   "We service and repair all car brands: everyday cars, pickups, continental cars, EVs and classics. Recent jobs include a Tesla Model 3, an Isuzu D-Max, a Mercedes-Benz C230 and a 1988 Mercedes 190E 2.5-16.",
+   "Our boss is known for working on cars in a suit. It's his way of showing that every job is done properly and professionally."
+  ],
+  "values_h2": "How we work",
+  "values": [
+   {
+    "title": "All car brands",
+    "text": "Everyday cars, pickups, continental cars, EVs and classics."
+   },
+   {
+    "title": "WhatsApp us first",
+    "text": "Send your car model and the problem, and we'll tell you what to expect."
+   },
+   {
+    "title": "Done properly",
+    "text": "Our boss works on cars in a suit, to show that every job is done properly."
+   },
+   {
+    "title": "Difficult problems",
+    "text": "Faults that keep coming back and cars other workshops turned down: see our videos."
+   }
+  ],
+  "company_h2": "Company details",
+  "video_h2": "Why the suit?",
+  "video_text": "Our boss works on cars in a suit. It's his way of showing that every job is done properly and professionally. Here he is at work."
+ },
+ "contact_page": {
+  "title": "Contact Carzy World | Car Workshop in Air Hitam, Klang",
+  "description": "Contact Carzy World Sdn Bhd: WhatsApp or call +60 17-693 3936, email, address in Air Hitam, Klang, opening hours and map.",
+  "eyebrow": "Contact",
+  "h1": "Contact Carzy World",
+  "lead": "WhatsApp is the fastest way to reach us. Tell us your car model, year and the problem.",
+  "ways_h2": "Ways to reach us",
+  "whatsapp_text": "Fastest reply. Send photos or a short video of the problem.",
+  "call_text": "During opening hours.",
+  "email_text": "For anything that isn't urgent.",
+  "find_h2": "Find the workshop"
+ },
+ "schema": {
+  "description": "Automotive service centre in Air Hitam, Klang, Selangor. Car servicing and oil change, engine and gearbox repair, aircond, suspension, brakes and exhaust, electrical and wiring fault finding, EV repair, and classic and continental cars. All car brands welcome."
+ },
+ "llms": {
+  "summary": "Car workshop (auto repair shop) in Air Hitam, Klang, Selangor, Malaysia. All car brands welcome.",
+  "contact": "Contact",
+  "hours": "Opening hours",
+  "services": "Services",
+  "pages": "Pages",
+  "reviews": "Google rating: 5.0 from 19 ratings, checked 11 November 2026.",
+  "offer": "Offer: new customers get a 5% discount (terms apply). No other prices are published; ask on WhatsApp for a quote."
+ },
+ "videos": {
+  "signature": {
+   "title": "Our boss at work in a suit",
+   "caption": "A day at the workshop with our boss, who works on cars in a suit."
+  },
+  "classic190e": {
+   "title": "1988 Mercedes 190E 2.5-16 restoration",
+   "caption": "Restoration work on a classic 1988 Mercedes 190E 2.5-16."
+  },
+  "1045226281867426": {
+   "title": "New to Carzy World?",
+   "caption": "A quick look at our workshop for first-time customers, who get a 5% new customer discount (terms apply).",
+   "topic": "the new customer discount"
+  },
+  "1773614920220424": {
+   "title": "The boss on heavy accident repairs",
+   "caption": "Our boss talks about a car with heavy accident damage that other workshops turned down.",
+   "topic": "accident damage repair"
+  },
+  "2553325481847062": {
+   "title": "Tracing a mystery fault",
+   "caption": "Using diagnostics to track down a fault that kept coming back.",
+   "topic": "a fault that keeps coming back"
+  },
+  "1049619834456911": {
+   "title": "Oil service packages",
+   "caption": "What goes into our oil service packages, from the oil to the filter.",
+   "topic": "an oil service package"
+  },
+  "1534269351507322": {
+   "title": "Warning light and hidden damage",
+   "caption": "A warning light led us to crash damage hidden under the car.",
+   "topic": "a warning light on my dashboard"
+  },
+  "1580829843577636": {
+   "title": "Proton X70 engine overhaul",
+   "caption": "Overhauling a high-mileage Proton X70 1.8 TGDI engine.",
+   "topic": "an engine overhaul"
+  },
+  "1491106668688179": {
+   "title": "Batteries keep dying",
+   "caption": "Finding the electrical fault behind dead batteries that two other workshops couldn't fix.",
+   "topic": "a battery or electrical fault"
+  },
+  "997369159356181": {
+   "title": "Audi TT restoration",
+   "caption": "Putting right bad modifications and worn suspension on an Audi TT.",
+   "topic": "restoring my car"
+  },
+  "1691603952271668": {
+   "title": "The McLaren 570S is here!",
+   "caption": "A McLaren 570S arrives at the Carzy World workshop.",
+   "topic": "a McLaren or other supercar"
+  },
+  "1000676125661619": {
+   "title": "McLaren 570S, episode 2",
+   "caption": "Part two of the McLaren 570S story, told by our team.",
+   "topic": "a McLaren or other supercar"
+  },
+  "1732306897734918": {
+   "title": "AMG E63 S oil leak",
+   "caption": "Finding an oil leak on a Mercedes-AMG E63 S, up on the lift.",
+   "topic": "an oil leak"
+  },
+  "1308116057801952": {
+   "title": "Engine shaking at idle",
+   "caption": "Finding out why an engine shakes while idling, including a compression test.",
+   "topic": "an engine shaking at idle"
+  }
+ },
+ "articles": {
+  "title": "Car Care Articles from Our Klang Workshop | Carzy World",
+  "description": "Plain-English car care articles from Carzy World, a car workshop in Air Hitam, Klang: aircond, servicing, brakes, electrical faults, EVs and classics.",
+  "eyebrow": "Articles",
+  "h1": "Car care articles from our Klang workshop",
+  "lead": "Straight answers to the car problems we see in our Air Hitam, Klang workshop, written by the Carzy World team. Each one links to the service that fixes it.",
+  "list_h2": "Latest articles",
+  "read_more": "Read the article",
+  "read_time": "{n} min read",
+  "byline": "Carzy World, Klang",
+  "answer": "Short answer",
+  "owner_kicker": "The service for this",
+  "owner_cta": "See the service",
+  "cta_h": "Got this problem right now?",
+  "cta_text": "Send us your car model, year and what it's doing on WhatsApp. We'll tell you what we think it is and give you a quote.",
+  "faq_kicker": "FAQ",
+  "faq_h2": "Questions about this topic",
+  "more_kicker": "Keep reading",
+  "more_h2": "More from the workshop",
+  "all": "All articles"
+ }
+}

@@ -1,0 +1,661 @@
+{
+ "_readme": "Every visible English string. ms.json and zh.json have the same keys. Review text is NOT here: reviews stay in their original English (data/site.json).",
+ "meta": {
+  "html_lang": "ms",
+  "og_locale": "ms_MY",
+  "lang_name": "Bahasa Melayu",
+  "switch_label": "BM",
+  "schema_lang": "ms",
+  "title_suffix": " | Carzy World, Klang"
+ },
+ "prefills": {
+  "general": "Hi Carzy World, saya jumpa kedai anda di website. Saya nak tanya pasal kereta saya.",
+  "service": "Hi Carzy World, saya nak tanya pasal {topic}. Kereta saya (model dan tahun):",
+  "booking": "Hi Carzy World, saya nak buat tempahan untuk kereta saya. Kereta saya (model dan tahun):",
+  "discount": "Hi Carzy World, saya pelanggan baru dan nampak diskaun 5% pelanggan baru. Kereta saya (model dan tahun):",
+  "directions": "Hi Carzy World, saya dalam perjalanan ke bengkel. Boleh share arah ke sana?"
+ },
+ "ui": {
+  "skip": "Terus ke kandungan",
+  "nav": {
+   "home": "Utama",
+   "services": "Perkhidmatan",
+   "work": "Kerja terkini",
+   "reviews": "Ulasan",
+   "about": "Tentang kami",
+   "contact": "Hubungi",
+   "articles": "Artikel"
+  },
+  "nav_aria": "Menu utama",
+  "menu": "Menu",
+  "lang_aria": "Bahasa",
+  "home_aria": "Laman utama Carzy World",
+  "whatsapp_us": "WhatsApp kami",
+  "whatsapp_now": "WhatsApp kami sekarang",
+  "call": "Telefon",
+  "call_us": "Telefon {phone}",
+  "email_us": "E-mel kami",
+  "directions": "Dapatkan arah",
+  "open_maps": "Buka di Google Maps",
+  "read_reviews": "Baca ulasan Google kami",
+  "stars_aria": "5 bintang daripada 5",
+  "rating_line": "5.0 di Google · 19 ulasan",
+  "rating_sub": "Semua ulasan 5 bintang",
+  "hours_short": "Isnin–Jumaat 10 pagi–7 malam · Sabtu 10 pagi–4:30 petang",
+  "location_short": "Air Hitam, Klang",
+  "brands_short": "Semua jenama kereta dialu-alukan",
+  "hours_title": "Waktu operasi",
+  "days": {
+   "mon_fri": "Isnin – Jumaat",
+   "sat": "Sabtu",
+   "sun": "Ahad"
+  },
+  "times": {
+   "mon_fri": "10:00 pagi – 7:00 malam",
+   "sat": "10:00 pagi – 4:30 petang",
+   "sun": "Tutup"
+  },
+  "address_label": "Alamat",
+  "phone_label": "Telefon dan WhatsApp",
+  "email_label": "E-mel",
+  "company_label": "No. syarikat",
+  "facebook": "Laman Facebook",
+  "more_details": "Maklumat lanjut",
+  "all_services": "Lihat semua perkhidmatan",
+  "discount_badge": "Pelanggan baru: diskaun 5%",
+  "discount_terms": "Tertakluk pada terma. Tanya kami di WhatsApp.",
+  "photo_kicker": "Di dalam bengkel",
+  "related_kicker": "Perkhidmatan lain",
+  "related_h2": "Kami juga boleh bantu dengan",
+  "breadcrumb_aria": "Laluan halaman",
+  "footer_services": "Perkhidmatan",
+  "footer_visit": "Singgah ke bengkel",
+  "footer_pages": "Halaman",
+  "credit": "Laman web oleh AutoSEO.my",
+  "map_title": "Peta menunjukkan Carzy World di Air Hitam, Klang",
+  "map_load": "Papar peta",
+  "price_note": "Kami tak letak harga di sini sebab setiap kereta dan masalah lain-lain. Hantar model kereta dan masalah anda melalui WhatsApp untuk dapatkan sebut harga.",
+  "brands_note": "Semua jenama kereta dialu-alukan.",
+  "months": [
+   "Jan",
+   "Feb",
+   "Mac",
+   "Apr",
+   "Mei",
+   "Jun",
+   "Jul",
+   "Ogo",
+   "Sep",
+   "Okt",
+   "Nov",
+   "Dis"
+  ],
+  "sound_on": "Tekan untuk bunyi",
+  "sound_off": "Bunyi dimatikan",
+  "pause": "Jeda video",
+  "play": "Main video",
+  "play_clip": "Main klip",
+  "video_note": "Klip dimainkan dari laman Facebook kami bila anda tekan.",
+  "watch_more": "Tonton lagi di Facebook",
+  "ask_this": "Tanya pasal ini",
+  "clip_aria": "Klip video dari bengkel kami",
+  "seconds": "{n}s",
+  "service_tag": "Servis",
+  "see_service": "Tentang servis ini",
+  "watch_fb": "Tonton di Facebook",
+  "scroll_hint": "Leret untuk lagi",
+  "find_on_maps": "Cari kami di Google Maps"
+ },
+ "photos": {
+  "shop-exterior": "Bahagian hadapan kedai Carzy World Sdn Bhd di Pusat Perniagaan Bestari, Air Hitam, Klang, dengan papan tanda kuning dan ruang servis yang terbuka",
+  "logo": "Logo Carzy World",
+  "bmw-in-workshop": "Sebuah kereta sedan BMW di bengkel Carzy World dengan minyak enjin sedia untuk diservis",
+  "engine-work-closeup": "Gambar dekat kerja enjin sedang dijalankan di Carzy World, Klang",
+  "porsche-in-workshop": "Porsche 911 merah di ruang servis Carzy World dengan minyak Mobil 1 dan penapis baru",
+  "isuzu-pickup-at-entrance": "Isuzu D-Max di pintu masuk Carzy World dengan bekas minyak dan gris untuk servis",
+  "tesla-model-3": "Tesla Model 3 putih di bengkel Carzy World dengan upper arm lama di lantai",
+  "mercedes-amg-cla45": "Mercedes-AMG CLA 45 S di ruang servis Carzy World dengan tali sawat dan alat ganti yang ditukar di hadapan",
+  "nissan-almera-brakes": "Nissan Almera perak di Carzy World dengan brake booster baru, alat ganti brek, ignition coil dan palam pencucuh",
+  "perodua-axia-service": "Perodua Axia biru gelap di atas lif di Carzy World dengan minyak enjin, penapis dan tali sawat untuk servis",
+  "perodua-myvi-aircond": "Perodua Myvi hitam di pintu masuk Carzy World dengan kotak alat ganti aircond di hadapan"
+ },
+ "home": {
+  "title": "Bengkel Kereta & Servis Kereta di Klang | Carzy World",
+  "description": "Carzy World Sdn Bhd ialah bengkel kereta di Air Hitam, Klang: servis kereta, tukar minyak hitam, enjin dan gearbox, aircond, brek, masalah pendawaian, repair kereta EV dan kereta klasik. 5.0 di Google. WhatsApp +60 17-693 3936.",
+  "eyebrow": "Pusat Servis Pakar Automotif · Klang",
+  "h1": "Bengkel kereta di Klang yang buat kerja dengan betul",
+  "lead": "Carzy World Sdn Bhd ialah bengkel kereta di Air Hitam, Klang. Kami buat servis dan tukar minyak hitam, repair enjin dan gearbox, aircond, brek dan suspension, masalah pendawaian yang susah, kereta EV dan kereta klasik. Semua jenama kereta dialu-alukan.",
+  "hero_note": "WhatsApp model kereta dan masalah anda. Kami akan beritahu apa yang anda boleh jangka.",
+  "services_kicker": "Apa kami buat",
+  "services_h2": "Tujuh cara kami jaga kereta anda",
+  "services_lead": "Tujuh kumpulan kerja, dari tukar minyak hitam yang cepat sampai mengesan masalah pendawaian yang bengkel lain tak jumpa.",
+  "work_kicker": "Kerja terkini",
+  "work_h2": "Kereta yang kami uruskan baru-baru ini",
+  "work_lead": "Beberapa kerja sebenar dari bengkel kami, yang dikongsi di laman Facebook kami.",
+  "work": {
+   "tesla": {
+    "title": "Tesla Model 3",
+    "text": "Tukar upper arm, serta masalah pengecasan laju diperiksa dan diselesaikan.",
+    "when": "Okt 2026"
+   },
+   "dmax": {
+    "title": "Isuzu D-Max",
+    "text": "Servis besar untuk trak pikap kerja.",
+    "when": "Baru-baru ini"
+   },
+   "c230": {
+    "title": "Mercedes-Benz C230",
+    "text": "Kebocoran coolant dan minyak enjin dibaiki, dan lampu amaran di dashboard diperiksa.",
+    "when": "Baru-baru ini"
+   },
+   "w201": {
+    "title": "Mercedes 190E 2.5-16 (1988)",
+    "text": "Kerja pemulihan untuk sebuah Mercedes klasik.",
+    "when": "Nov 2026"
+   }
+  },
+  "suit_line": "Bos kami terkenal sebab buat kerja kereta dengan memakai sut. Itu caranya tunjuk yang setiap kerja dibuat dengan betul.",
+  "gallery_h2": "Kereta di bengkel kami",
+  "reviews_kicker": "Ulasan",
+  "reviews_h2": "Penilaian 5.0 di Google Maps",
+  "reviews_lead": "19 pelanggan telah menilai kami di Google Maps, dengan purata 5.0. Baca apa yang mereka tulis, dalam kata-kata mereka sendiri, di halaman Google kami.",
+  "visit_kicker": "Singgah ke bengkel",
+  "visit_h2": "Cari kami di Air Hitam, Klang",
+  "visit_text": "Kami di Pusat Perniagaan Bestari, Taman Perindustrian Air Hitam, Klang. Cari papan tanda kuning. Hantar WhatsApp sebelum datang supaya kami boleh bersedia untuk kereta anda.",
+  "faq_kicker": "Soalan lazim",
+  "faq_h2": "Soalan yang selalu ditanya",
+  "cta_h2": "Beritahu kami apa yang kereta anda perlukan",
+  "cta_text": "WhatsApp model kereta, tahun dan masalahnya. Boleh telefon juga waktu operasi.",
+  "hero_lead": "Carzy World ialah bengkel kereta di Air Hitam, Klang untuk servis, repair dan masalah yang susah dikesan. Semua jenama kereta dialu-alukan.",
+  "hero_video_label": "Bos kami sedang buat kerja dengan memakai sut, di bengkel Carzy World di Klang",
+  "intro_h2": "Satu bengkel untuk servis, repair dan kerja yang susah",
+  "reels_kicker": "Depan kamera",
+  "reels_h2": "Tengok kami bekerja",
+  "reels_lead": "Kerja sebenar dari bengkel kami. Tekan klip untuk main di sini.",
+  "classic_kicker": "Kisah istimewa kami",
+  "classic_h2": "Menghidupkan semula Mercedes 190E 2.5-16 tahun 1988",
+  "classic_text": "Pada November 2026 kami buat kerja pemulihan Mercedes 190E 2.5-16 tahun 1988. Kami juga terima kereta Eropah lama yang ada kebocoran, lampu amaran dan komponen haus.",
+  "classic_video_label": "Kerja pemulihan Mercedes 190E 2.5-16 tahun 1988 di Carzy World",
+  "pick_kicker": "Perkhidmatan",
+  "pick_h2": "Pilih satu servis",
+  "photos_h2": "Dalam bengkel kami",
+  "works_kicker": "Kerja terkini",
+  "works_h2": "Baru keluar dari bengkel",
+  "works_lead": "Gambar sebenar kerja sebenar, dari halaman Facebook kami.",
+  "works_also": "Baru-baru ini juga di ramp kami",
+  "suit_kicker": "Lelaki berkot",
+  "suit_h2": "Kenapa bos kami baiki kereta pakai sut",
+  "suit_text": "Itu caranya tunjuk yang setiap kerja dibuat dengan betul dan profesional, dari tukar minyak hitam sampai pemulihan kereta.",
+  "visit_btn": "Rancang kedatangan anda",
+  "works": {
+   "isuzu": {
+    "title": "Servis Isuzu D-Max",
+    "text": "Sebuah pikap kerja masuk untuk servis, dengan minyak dan gris baru sedia."
+   },
+   "porsche": {
+    "title": "Servis Porsche 911",
+    "text": "Minyak enjin Mobil 1 dan penapis baru, disusun sebelum servis."
+   },
+   "bmw": {
+    "title": "Servis minyak sedan BMW",
+    "text": "Minyak enjin segar dan penapis baru untuk sedan BMW."
+   },
+   "engine": {
+    "title": "Kerja enjin sedang dibuat",
+    "text": "Kerja enjin secara terus di ruang servis kami."
+   },
+   "tesla": {
+    "title": "Repair Tesla Model 3",
+    "text": "Upper arm ditukar dan masalah pengecasan pantas diselesaikan."
+   },
+   "cla45": {
+    "title": "Mercedes-AMG CLA 45 S",
+    "text": "Alat ganti ditukar, dengan tali sawat lama disusun di hadapan."
+   },
+   "almera": {
+    "title": "Repair brek dan enjin Nissan Almera",
+    "text": "Masuk kerana masalah brek dan enjin. Brake booster, coil dan palam pencucuh baru."
+   },
+   "myvi": {
+    "title": "Servis aircond Perodua Myvi",
+    "text": "Masuk untuk servis aircond, dengan alat ganti baru sedia."
+   },
+   "axia": {
+    "title": "Servis dan baiki bunyi Perodua Axia",
+    "text": "Servis, dan bunyi yang mengganggu dikesan dan dibaiki."
+   }
+  }
+ },
+ "faqs": [
+  {
+   "q": "Di mana Carzy World?",
+   "a": "Kami di 137-G, Jln Permata 1/KS09, Pusat Perniagaan Bestari, Taman Perindustrian Air Hitam Phase 1 & 2, 42000 Klang, Selangor. Tekan 'Dapatkan arah' untuk buka di Google Maps."
+  },
+  {
+   "q": "Pukul berapa bengkel buka?",
+   "a": "Isnin hingga Jumaat 10 pagi hingga 7 malam, dan Sabtu 10 pagi hingga 4:30 petang. Kami tutup hari Ahad."
+  },
+  {
+   "q": "Jenama kereta apa yang boleh dibaiki?",
+   "a": "Semua jenama kereta dialu-alukan. Kerja terkini termasuk Tesla Model 3, Isuzu D-Max, Mercedes-Benz C230 dan Mercedes 190E 2.5-16 tahun 1988."
+  },
+  {
+   "q": "Berapa kos repair kereta saya?",
+   "a": "Kami tak letak harga di sini sebab setiap kereta dan masalah lain-lain. WhatsApp model kereta, tahun dan masalahnya, nanti kami bagi sebut harga. Pelanggan baru dapat diskaun 5% (tertakluk pada terma)."
+  },
+  {
+   "q": "Macam mana nak buat tempahan?",
+   "a": "Cara paling cepat ialah WhatsApp ke +60 17-693 3936. Boleh juga telefon nombor yang sama waktu operasi atau e-mel ke yc.carzyworld@gmail.com."
+  },
+  {
+   "q": "Ada repair kereta elektrik?",
+   "a": "Ada. Pada Oktober 2026 kami tukar upper arm sebuah Tesla Model 3 dan selesaikan masalah pengecasan laju pada kereta itu."
+  },
+  {
+   "q": "Boleh baiki masalah pendawaian yang bengkel lain tak dapat selesaikan?",
+   "a": "Ya, masalah elektrik dan pendawaian memang kerja biasa kami. Video kami tunjuk satu kerosakan yang asyik berulang, dan bateri yang asyik kong selepas dua bengkel lain tak jumpa puncanya. Beritahu kami melalui WhatsApp apa yang berlaku dan bila."
+  }
+ ],
+ "services": {
+  "car-servicing-oil-change": {
+   "short": "Servis dan tukar minyak hitam",
+   "title": "Servis kereta dan tukar minyak hitam",
+   "card": "Servis biasa, servis besar dan tukar minyak hitam untuk semua jenama.",
+   "h1": "Servis kereta dan tukar minyak hitam di Klang",
+   "meta_title": "Servis Kereta dan Tukar Minyak Hitam di Klang",
+   "meta_description": "Servis kereta, servis besar dan tukar minyak hitam di Carzy World, Air Hitam, Klang. Semua jenama kereta dialu-alukan. WhatsApp +60 17-693 3936 untuk sebut harga.",
+   "prefill_topic": "servis kereta atau tukar minyak hitam",
+   "intro": "Servis berkala menjadikan kereta anda boleh diharap dan membantu kesan masalah kecil awal-awal. Kami buat servis biasa, servis besar dan tukar minyak hitam untuk semua jenama kereta, dari kereta kecil sampai pikap dan kereta Eropah.",
+   "covers_h2": "Apa kami buat",
+   "covers": [
+    "Servis kereta dan servis besar",
+    "Tukar minyak enjin dan penapis minyak",
+    "Repair am dan penyelenggaraan yang dijumpai semasa servis",
+    "Pikap dan 4x4, seperti servis besar Isuzu D-Max baru-baru ini"
+   ],
+   "signs_h2": "Bila patut bawa kereta masuk",
+   "signs": [
+    "Peringatan servis atau pelekat servis kata dah sampai masanya",
+    "Lampu amaran minyak menyala",
+    "Bunyi enjin lebih kasar atau lebih kuat dari biasa",
+    "Anda nak buat perjalanan jauh dan nak kereta diperiksa dulu"
+   ],
+   "body": "Beritahu model kereta, tahun dan jarak perjalanan (mileage) anda melalui WhatsApp, nanti kami maklumkan apa yang patut ada dalam servis dan bagi sebut harga. Kami akan kemas kini anda selagi kereta ada dengan kami.",
+   "faqs": [
+    {
+     "q": "Apa beza servis biasa dengan servis besar?",
+     "a": "Servis biasa kebanyakannya tukar minyak hitam dan penapis minyak dengan pemeriksaan asas. Servis besar biasanya tambah lebih banyak item seperti penapis lain, cecair dan palam pencucuh, ikut jadual kereta anda. WhatsApp model kereta dan mileage, nanti kami beritahu yang mana sampai masanya."
+    },
+    {
+     "q": "Ada servis pikap dan 4x4?",
+     "a": "Ada. Semua jenama kereta dialu-alukan, dan baru-baru ini kami buat servis besar untuk sebuah Isuzu D-Max."
+    }
+   ]
+  },
+  "engine-gearbox-repair": {
+   "short": "Enjin dan gearbox",
+   "title": "Repair enjin dan gearbox",
+   "card": "Masalah enjin, kebocoran, lampu amaran dan repair gearbox.",
+   "h1": "Repair enjin dan gearbox di Klang",
+   "meta_title": "Repair Enjin dan Gearbox di Klang",
+   "meta_description": "Repair enjin dan gearbox di Carzy World, Air Hitam, Klang: kebocoran, lampu amaran, enjin kasar dan masalah gearbox. Semua jenama kereta. WhatsApp +60 17-693 3936.",
+   "prefill_topic": "masalah enjin atau gearbox",
+   "intro": "Masalah enjin dan gearbox elok diperiksa awal, sebelum kerosakan kecil jadi repair besar. WhatsApp kami apa yang anda perasan dan kami akan beritahu apa yang anda boleh jangka.",
+   "covers_h2": "Apa kami buat",
+   "covers": [
+    "Repair enjin",
+    "Repair gearbox",
+    "Kebocoran minyak dan coolant, seperti Mercedes-Benz C230 baru-baru ini",
+    "Memeriksa lampu amaran di dashboard"
+   ],
+   "signs_h2": "Tanda yang patut diperiksa",
+   "signs": [
+    "Lampu amaran enjin menyala di dashboard",
+    "Minyak atau coolant menitik di bawah kereta",
+    "Enjin tak lancar semasa idle, bergegar atau hilang tenaga",
+    "Gear tergelincir, tersentak atau lambat masuk"
+   ],
+   "body": "Hantar video pendek atau penerangan masalah melalui WhatsApp. Ini membantu kami faham apa yang berlaku sebelum anda bawa kereta masuk.",
+   "faqs": [
+    {
+     "q": "Boleh teruskan memandu kalau lampu amaran enjin menyala?",
+     "a": "Kalau lampu berkelip, atau kereta rasa lain sangat, berhenti memandu dan periksa kereta, sebab ia mungkin kerosakan serius. Kalau lampu menyala tetap dan kereta masih boleh dipandu seperti biasa, buat tempahan untuk pemeriksaan tak lama lagi. Apa pun keadaannya, WhatsApp kami dan kami akan nasihatkan."
+    },
+    {
+     "q": "Ada baiki kebocoran minyak dan coolant?",
+     "a": "Ada. Baru-baru ini kami baiki kebocoran coolant dan minyak enjin pada sebuah Mercedes-Benz C230 dan periksa lampu amaran yang menyala."
+    }
+   ]
+  },
+  "car-aircond-service": {
+   "short": "Aircond",
+   "title": "Diagnosis dan servis aircond kereta",
+   "card": "Aircond tak sejuk, angin lemah atau berbau: kami cari puncanya.",
+   "h1": "Servis dan diagnosis aircond kereta di Klang",
+   "meta_title": "Servis dan Diagnosis Aircond Kereta di Klang",
+   "meta_description": "Aircond kereta tak sejuk? Carzy World di Air Hitam, Klang periksa dan servis aircond kereta untuk semua jenama. WhatsApp +60 17-693 3936.",
+   "prefill_topic": "aircond kereta saya",
+   "intro": "Dengan cuaca Malaysia, aircond yang lemah menjadikan setiap perjalanan tak selesa. Kami periksa sistem untuk cari kenapa ia tak sejuk dengan betul, kemudian servis atau repair apa yang perlu.",
+   "covers_h2": "Apa kami buat",
+   "covers": [
+    "Diagnosis aircond untuk cari punca",
+    "Servis aircond",
+    "Repair yang dijumpai semasa pemeriksaan"
+   ],
+   "signs_h2": "Tanda yang patut diperiksa",
+   "signs": [
+    "Angin tak sejuk macam dulu",
+    "Sejuk pada mulanya, kemudian jadi suam selepas beberapa lama",
+    "Angin dari ventilasi lemah",
+    "Bau tak sedap atau bunyi pelik bila aircond dipasang"
+   ],
+   "body": "Beritahu kami melalui WhatsApp apa yang aircond buat dan bila ia mula. Kami akan periksa sistem dan maklumkan apa yang kami jumpa.",
+   "faqs": [
+    {
+     "q": "Kenapa aircond kereta saya tak sejuk?",
+     "a": "Punca biasa termasuk gas aircond rendah sebab bocor, penapis tersumbat, masalah kipas penyejuk atau kompresor rosak. Pemeriksaan yang betul akan jumpa punca sebenar, jadi anda tak bayar untuk alat ganti yang tak perlu."
+    },
+    {
+     "q": "Hanya tambah gas saja ke?",
+     "a": "Kami periksa sistem dulu untuk cari kenapa ia tak sejuk, kemudian servis atau repair apa yang perlu. Tambah gas tanpa cari kebocoran biasanya bermakna masalah itu akan datang balik."
+    }
+   ]
+  },
+  "suspension-brakes-exhaust": {
+   "short": "Suspension, brek dan ekzos",
+   "title": "Suspension, brek dan ekzos",
+   "card": "Bunyi brek, tunggangan melantun atau ekzos kuat, kami selesaikan.",
+   "h1": "Repair suspension, brek dan ekzos di Klang",
+   "meta_title": "Repair Suspension, Brek dan Ekzos di Klang",
+   "meta_description": "Repair sistem suspension, brek dan ekzos di Carzy World, Air Hitam, Klang. Semua jenama kereta dialu-alukan. WhatsApp +60 17-693 3936.",
+   "prefill_topic": "suspension, brek atau ekzos",
+   "intro": "Brek dan suspension memastikan anda selamat dan kereta selesa. Kami periksa dan repair suspension, brek dan sistem ekzos untuk semua jenama kereta.",
+   "covers_h2": "Apa kami buat",
+   "covers": [
+    "Repair suspension, seperti upper arm yang kami tukar pada Tesla Model 3",
+    "Pemeriksaan dan repair brek",
+    "Repair sistem ekzos"
+   ],
+   "signs_h2": "Tanda yang patut diperiksa",
+   "signs": [
+    "Berdecit atau berkeriut bila tekan brek",
+    "Kereta tertarik ke satu sebelah atau stereng bergegar",
+    "Berdentum bila lalu bonggol atau tunggangan melantun",
+    "Ekzos lebih kuat, berbunyi bising atau bau ekzos dalam kabin"
+   ],
+   "body": "Masalah brek dan suspension boleh jadi teruk dengan cepat. Kalau ada yang tak kena, WhatsApp kami dan bawa kereta masuk untuk diperiksa.",
+   "faqs": [
+    {
+     "q": "Brek saya berdecit. Adakah ia mendesak?",
+     "a": "Bunyi berdecit mungkin bermakna pad brek dah haus, dan bunyi berkeriut biasanya bermakna ia dah haus teruk. Periksa tak lama lagi, sebab brek yang haus ambil masa lebih lama untuk hentikan kereta."
+    },
+    {
+     "q": "Kenapa ekzos saya tiba-tiba lebih kuat?",
+     "a": "Ekzos yang lebih kuat biasanya bermakna ada kebocoran atau bahagian rosak dalam sistem ekzos. Elok diperiksa, terutamanya kalau anda terhidu bau ekzos dalam kereta."
+    }
+   ]
+  },
+  "electrical-wiring-diagnosis": {
+   "short": "Elektrik dan pendawaian",
+   "title": "Mengesan masalah elektrik dan pendawaian",
+   "card": "Masalah pendawaian dan elektrik yang susah dikesan dan dibaiki.",
+   "h1": "Diagnosis elektrik dan pendawaian kereta di Klang",
+   "meta_title": "Diagnosis Pendawaian dan Elektrik Kereta di Klang",
+   "meta_description": "Masalah pendawaian dan elektrik kereta yang susah dikesan dan dibaiki di Carzy World, Air Hitam, Klang. Bengkel lain pun hantar kereta kepada kami. WhatsApp +60 17-693 3936.",
+   "prefill_topic": "masalah elektrik atau pendawaian",
+   "intro": "Masalah elektrik boleh jadi susah nak kenal pasti: lampu amaran yang kejap ada kejap hilang, atau sesuatu yang rosak sekali-sekala saja. Mengesan masalah pendawaian yang susah ialah kerja yang kami terkenal.",
+   "covers_h2": "Apa kami buat",
+   "covers": [
+    "Mengesan masalah elektrik",
+    "Repair pendawaian",
+    "Lampu amaran dan masalah susah yang bengkel lain tak dapat selesaikan"
+   ],
+   "signs_h2": "Masalah yang kami periksa",
+   "signs": [
+    "Lampu amaran yang kejap ada kejap hilang",
+    "Alat elektrik yang kadang-kadang berfungsi, kadang-kadang tidak",
+    "Fius yang asyik putus",
+    "Bateri yang selalu habis"
+   ],
+   "body": "Video kami tunjuk satu kerosakan yang asyik berulang, dan bateri yang asyik kong selepas dua bengkel lain tak jumpa puncanya. Beritahu kami apa yang berlaku melalui WhatsApp, dan bila ia berlaku.",
+   "faqs": [
+    {
+     "q": "Bengkel lain tak jumpa puncanya. Boleh tolong?",
+     "a": "Masalah pendawaian dan elektrik yang susah memang kerja yang kami terkenal. WhatsApp kami apa yang anda dah cuba dan apa yang kereta buat, nanti kami tengok."
+    },
+    {
+     "q": "Bateri saya asyik habis. Adakah bateri yang rosak?",
+     "a": "Tak semestinya. Bateri habis juga boleh datang daripada masalah pengecasan atau sesuatu yang menyedut kuasa bila kereta dimatikan. Pemeriksaan akan jumpa puncanya, jadi anda tak tukar alat ganti dengan sia-sia."
+    }
+   ]
+  },
+  "ev-repair": {
+   "short": "Repair EV",
+   "title": "Repair EV",
+   "card": "Repair kereta elektrik, dari suspension sampai masalah pengecasan.",
+   "h1": "Repair EV di Klang",
+   "meta_title": "Repair EV di Klang: Bengkel Kereta Elektrik",
+   "meta_description": "Repair kereta elektrik di Carzy World, Air Hitam, Klang. Kerja terkini: tukar upper arm Tesla Model 3 dan masalah pengecasan laju. WhatsApp +60 17-693 3936.",
+   "prefill_topic": "kereta elektrik (EV) saya",
+   "intro": "Kereta elektrik masih perlukan repair suspension, brek dan repair am, dan kadang-kadang bantuan untuk masalah pengecasan. Kami kerja pada EV dan juga kereta petrol dan diesel.",
+   "covers_h2": "Kerja EV terkini",
+   "covers": [
+    "Tukar upper arm Tesla Model 3 (Okt 2026)",
+    "Masalah pengecasan laju Tesla Model 3 (Okt 2026)",
+    "Suspension, brek dan repair am pada kereta elektrik"
+   ],
+   "signs_h2": "Bila patut periksa EV anda",
+   "signs": [
+    "Bunyi ketukan atau dentuman dari suspension",
+    "Pengecasan perlahan, berhenti atau tak mahu mula",
+    "Mesej amaran di skrin",
+    "Tayar haus tak sekata"
+   ],
+   "body": "Beritahu kami model EV anda dan apa yang berlaku melalui WhatsApp. Kalau masalah pengecasan, maklumkan di mana dan bagaimana anda mengecas semasa ia berlaku.",
+   "faqs": [
+    {
+     "q": "Ada repair Tesla?",
+     "a": "Ada. Pada Oktober 2026 kami tukar upper arm sebuah Tesla Model 3 dan selesaikan masalah pengecasan laju pada kereta yang sama."
+    },
+    {
+     "q": "Repair kereta elektrik saja ke?",
+     "a": "Tidak. Kami kerja pada semua jenama kereta, petrol, diesel dan elektrik."
+    }
+   ]
+  },
+  "classic-continental-cars": {
+   "short": "Klasik dan kereta Eropah",
+   "title": "Kereta klasik dan kereta Eropah",
+   "card": "Kereta lama dan kereta Eropah, dari kebocoran sampai kerja pemulihan.",
+   "h1": "Repair kereta klasik dan kereta Eropah di Klang",
+   "meta_title": "Repair Kereta Klasik dan Kereta Eropah di Klang",
+   "meta_description": "Repair kereta klasik dan kereta Eropah di Carzy World, Air Hitam, Klang: pemulihan Mercedes 190E 2.5-16 tahun 1988 dan repair kebocoran Mercedes-Benz C230. WhatsApp +60 17-693 3936.",
+   "prefill_topic": "kereta klasik atau kereta Eropah",
+   "intro": "Kereta lama dan kereta Eropah perlukan kesabaran dan penjagaan. Kami terima kerja pemulihan kereta klasik dan repair kereta Eropah.",
+   "covers_h2": "Kerja terkini",
+   "covers": [
+    "Pemulihan Mercedes 190E 2.5-16 tahun 1988 (Nov 2026)",
+    "Kebocoran coolant dan minyak enjin Mercedes-Benz C230, serta lampu amaran",
+    "Servis dan repair kereta Eropah"
+   ],
+   "signs_h2": "Sebab yang baik untuk bawa masuk",
+   "signs": [
+    "Kebocoran, bau atau bunyi baru pada kereta lama",
+    "Lampu amaran pada kereta Eropah",
+    "Kereta klasik yang lama tersadai dan perlu dihidupkan semula",
+    "Kereta yang anda nak dijaga dengan betul"
+   ],
+   "body": "Hantar gambar kereta anda dan beritahu apa yang anda nak dibuat melalui WhatsApp. Untuk kerja pemulihan, maklumkan sejarah kereta kalau anda ada.",
+   "faqs": [
+    {
+     "q": "Ada pulihkan kereta klasik?",
+     "a": "Ada. Pada November 2026 kami buat kerja memulihkan sebuah Mercedes 190E 2.5-16 tahun 1988."
+    },
+    {
+     "q": "Ada kerja pada kereta Eropah?",
+     "a": "Ada. Semua jenama kereta dialu-alukan. Kerja kereta Eropah terkini termasuk kebocoran coolant dan minyak enjin serta lampu amaran pada Mercedes-Benz C230."
+    }
+   ]
+  }
+ },
+ "services_page": {
+  "title": "Perkhidmatan Repair dan Servis Kereta di Klang | Carzy World",
+  "description": "Semua perkhidmatan Carzy World di Air Hitam, Klang: servis dan tukar minyak hitam, enjin dan gearbox, aircond, suspension dan brek, masalah pendawaian, kereta EV dan klasik.",
+  "eyebrow": "Perkhidmatan",
+  "h1": "Perkhidmatan kereta kami di Klang",
+  "lead": "Dari tukar minyak hitam sampai masalah pendawaian yang susah, inilah yang kami buat. Semua jenama kereta dialu-alukan.",
+  "list_h2": "Pilih perkhidmatan",
+  "covers_kicker": "Ringkasnya",
+  "faq_h2": "Soalan tentang {name}"
+ },
+ "about_page": {
+  "title": "Tentang Carzy World Sdn Bhd | Bengkel Kereta di Klang",
+  "description": "Tentang Carzy World Sdn Bhd, pusat servis automotif di Air Hitam, Klang. Servis dan repair yang boleh diharap untuk semua jenama kereta. 5.0 di Google daripada 19 ulasan.",
+  "eyebrow": "Tentang kami",
+  "h1": "Tentang Carzy World",
+  "lead": "Servis dan repair automotif yang boleh diharap dan dipercayai.",
+  "story_h2": "Bengkel yang buat kerja dengan betul",
+  "paras": [
+   "Carzy World Sdn Bhd ialah pusat servis automotif di Pusat Perniagaan Bestari, Taman Perindustrian Air Hitam, Klang.",
+   "Kami servis dan repair semua jenama kereta: kereta harian, pikap, kereta Eropah, EV dan kereta klasik. Kerja terkini termasuk Tesla Model 3, Isuzu D-Max, Mercedes-Benz C230 dan Mercedes 190E 2.5-16 tahun 1988.",
+   "Bos kami terkenal sebab buat kerja kereta dengan memakai sut. Itu caranya tunjuk yang setiap kerja dibuat dengan betul dan profesional."
+  ],
+  "values_h2": "Cara kami bekerja",
+  "values": [
+   {
+    "title": "Semua jenama kereta",
+    "text": "Kereta harian, pikap, kereta Eropah, EV dan kereta klasik."
+   },
+   {
+    "title": "WhatsApp kami dulu",
+    "text": "Hantar model kereta dan masalah anda, dan kami akan beritahu apa yang anda boleh jangka."
+   },
+   {
+    "title": "Buat dengan betul",
+    "text": "Bos kami baiki kereta dengan memakai sut, tanda setiap kerja dibuat dengan betul."
+   },
+   {
+    "title": "Masalah yang susah",
+    "text": "Kerosakan yang asyik berulang dan kereta yang bengkel lain tolak: tonton video kami."
+   }
+  ],
+  "company_h2": "Maklumat syarikat",
+  "video_h2": "Kenapa pakai sut?",
+  "video_text": "Bos kami buat kerja kereta dengan memakai sut. Itu caranya tunjuk yang setiap kerja dibuat dengan betul dan profesional. Ini dia sedang buat kerja."
+ },
+ "contact_page": {
+  "title": "Hubungi Carzy World | Bengkel Kereta di Air Hitam, Klang",
+  "description": "Hubungi Carzy World Sdn Bhd: WhatsApp atau telefon +60 17-693 3936, e-mel, alamat di Air Hitam, Klang, waktu operasi dan peta.",
+  "eyebrow": "Hubungi",
+  "h1": "Hubungi Carzy World",
+  "lead": "WhatsApp ialah cara paling cepat untuk hubungi kami. Beritahu model kereta, tahun dan masalahnya.",
+  "ways_h2": "Cara hubungi kami",
+  "whatsapp_text": "Balasan paling cepat. Hantar gambar atau video pendek masalah itu.",
+  "call_text": "Waktu operasi sahaja.",
+  "email_text": "Untuk perkara yang tak mendesak.",
+  "find_h2": "Cari bengkel kami"
+ },
+ "schema": {
+  "description": "Pusat servis automotif di Air Hitam, Klang, Selangor. Servis kereta dan tukar minyak hitam, repair enjin dan gearbox, aircond, suspension, brek dan ekzos, mengesan masalah elektrik dan pendawaian, repair EV, serta kereta klasik dan kereta Eropah. Semua jenama kereta dialu-alukan."
+ },
+ "llms": {
+  "summary": "Bengkel kereta di Air Hitam, Klang, Selangor, Malaysia. Semua jenama kereta dialu-alukan.",
+  "contact": "Hubungi",
+  "hours": "Waktu operasi",
+  "services": "Perkhidmatan",
+  "pages": "Halaman",
+  "reviews": "Penilaian Google: 5.0 daripada 19 penilaian, disemak 11 November 2026.",
+  "offer": "Tawaran: pelanggan baru dapat diskaun 5% (tertakluk pada terma). Tiada harga lain diterbitkan; tanya di WhatsApp untuk sebut harga."
+ },
+ "videos": {
+  "signature": {
+   "title": "Bos kami sedang buat kerja dengan memakai sut",
+   "caption": "Sehari di bengkel bersama bos kami, yang buat kerja kereta dengan memakai sut."
+  },
+  "classic190e": {
+   "title": "Pemulihan Mercedes 190E 2.5-16 tahun 1988",
+   "caption": "Kerja pemulihan sebuah Mercedes 190E 2.5-16 klasik tahun 1988."
+  },
+  "1045226281867426": {
+   "title": "Baru dengan Carzy World?",
+   "caption": "Tengok sekejap bengkel kami untuk pelanggan kali pertama, yang dapat diskaun 5% pelanggan baru (tertakluk pada terma).",
+   "topic": "diskaun pelanggan baru"
+  },
+  "1773614920220424": {
+   "title": "Bos kami tentang repair kemalangan teruk",
+   "caption": "Bos kami bercerita tentang kereta yang rosak teruk akibat kemalangan, yang bengkel lain tolak.",
+   "topic": "repair kerosakan kemalangan"
+  },
+  "2553325481847062": {
+   "title": "Mengesan masalah misteri",
+   "caption": "Guna diagnostik untuk cari masalah yang asyik berulang.",
+   "topic": "masalah yang asyik berulang"
+  },
+  "1049619834456911": {
+   "title": "Pakej servis minyak",
+   "caption": "Apa yang ada dalam pakej servis minyak kami, dari minyak sampai penapis.",
+   "topic": "pakej servis minyak"
+  },
+  "1534269351507322": {
+   "title": "Lampu amaran dan kerosakan tersembunyi",
+   "caption": "Lampu amaran bawa kami kepada kerosakan akibat rempuhan yang tersembunyi di bawah kereta.",
+   "topic": "lampu amaran di dashboard saya"
+  },
+  "1580829843577636": {
+   "title": "Overhaul enjin Proton X70",
+   "caption": "Overhaul enjin Proton X70 1.8 TGDI yang dah banyak jarak perjalanan.",
+   "topic": "overhaul enjin"
+  },
+  "1491106668688179": {
+   "title": "Bateri asyik mati",
+   "caption": "Cari punca masalah elektrik di sebalik bateri yang asyik mati, yang dua bengkel lain tak dapat selesaikan.",
+   "topic": "masalah bateri atau elektrik"
+  },
+  "997369159356181": {
+   "title": "Pemulihan Audi TT",
+   "caption": "Betulkan ubah suai yang teruk dan suspension yang haus pada sebuah Audi TT.",
+   "topic": "pemulihan kereta saya"
+  },
+  "1691603952271668": {
+   "title": "McLaren 570S dah sampai!",
+   "caption": "Sebuah McLaren 570S tiba di bengkel Carzy World.",
+   "topic": "McLaren atau kereta super lain"
+  },
+  "1000676125661619": {
+   "title": "McLaren 570S, episod 2",
+   "caption": "Bahagian kedua kisah McLaren 570S, diceritakan oleh pasukan kami.",
+   "topic": "McLaren atau kereta super lain"
+  },
+  "1732306897734918": {
+   "title": "Kebocoran minyak AMG E63 S",
+   "caption": "Mencari kebocoran minyak pada Mercedes-AMG E63 S di atas lif.",
+   "topic": "kebocoran minyak"
+  },
+  "1308116057801952": {
+   "title": "Enjin bergegar masa idle",
+   "caption": "Mencari punca enjin bergegar semasa idle, termasuk ujian mampatan.",
+   "topic": "enjin bergegar masa idle"
+  }
+ },
+ "articles": {
+  "title": "Artikel Penjagaan Kereta dari Bengkel Kami di Klang | Carzy World",
+  "description": "Artikel penjagaan kereta yang mudah difahami dari Carzy World, bengkel kereta di Air Hitam, Klang: aircond, servis, brek, elektrik, EV dan kereta klasik.",
+  "eyebrow": "Artikel",
+  "h1": "Artikel penjagaan kereta dari bengkel kami di Klang",
+  "lead": "Jawapan terus untuk masalah kereta yang kami jumpa di bengkel kami di Air Hitam, Klang, ditulis oleh pasukan Carzy World. Setiap artikel ada pautan ke servis yang membaikinya.",
+  "list_h2": "Artikel terkini",
+  "read_more": "Baca artikel",
+  "read_time": "{n} minit bacaan",
+  "byline": "Carzy World, Klang",
+  "answer": "Jawapan ringkas",
+  "owner_kicker": "Servis untuk masalah ini",
+  "owner_cta": "Lihat servis",
+  "cta_h": "Ada masalah ini sekarang?",
+  "cta_text": "Hantar model kereta, tahun dan apa yang berlaku melalui WhatsApp. Kami akan beritahu apa yang kami rasa puncanya dan beri sebut harga.",
+  "faq_kicker": "Soalan lazim",
+  "faq_h2": "Soalan tentang topik ini",
+  "more_kicker": "Baca lagi",
+  "more_h2": "Lagi dari bengkel kami",
+  "all": "Semua artikel"
+ }
+}
