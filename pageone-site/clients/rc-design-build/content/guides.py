@@ -496,4 +496,37 @@ G15 = {
   'wa_topic': 'planning my showroom layout',
 }
 
-PAGES = [G1, G2, G3, G4, G5, G6, G7, G8, G9, G10, G11, G12, G13, G14, G15]
+G16 = {
+  'path': '/guides/beauty-treatment-room-design-for-a-small-studio/',
+  'title': 'Beauty Treatment Room Design | R&C',
+  'desc': 'How to design a small beauty treatment room in Singapore: privacy, bed or chair space, sink and storage, soft and task lighting, surfaces and power.',
+  'h1': 'How to Design a Small Beauty Treatment Room in Singapore',
+  'kicker': 'Treatment room planning guide',
+  'answer': 'A small beauty treatment room works best when it is private, calm and easy to clean. Fit the bed or chair first with room to walk around it, then add a sink or wipe-clean counter, closed storage within arm\'s reach, soft general lighting with a separate task light, and sockets where equipment will stand. Check landlord and building rules before building.',
+  'card': 'Design a small treatment room: privacy, bed or chair space, sink and storage, lighting, surfaces and power.',
+  'image': 'salon-stations',
+  'image_alt': 'Salon stations with mirrors and storage (AI design concept)',
+  'og': 'share-beauty-treatment-room-design-for-a-small-studio.jpg',
+  'date': '2026-11-14',
+  'owner': '/spaces/salons-beauty-studios/',
+  'reading': '5 min read',
+  'sections': [
+    {'h2': 'What should a small treatment room achieve?', 'html': '<p>A treatment room has to feel private and calm for the client, and work smoothly for the therapist. In a small unit that means one clear zone for the bed or chair, a tidy place for tools and products, and surfaces that are quick to wipe down between clients.</p>'},
+    {'h2': 'How much space do the bed or chair and the therapist need?', 'html': '<p>Plan around the bed or chair first. Leave enough room to walk round the working side, to lower or recline the seat, and for the client to get on and off comfortably. Mark the footprint on the floor with tape and stand in it before you decide the walls.</p><ul><li>Keep the door swing clear of the bed and any trolley.</li><li>Leave a path for the therapist to move without squeezing past furniture.</li><li>Decide whether the room also needs a small seat for a companion or for changing.</li></ul>'},
+    {'h2': 'How do you give a treatment room privacy?', 'html': '<p>Clients relax when they cannot be seen or overheard. A solid door or a full-height partition works better than a curtain, and a door that does not open straight onto the bed protects privacy when someone steps in. If the room is a partitioned corner, think about sound as well as sight: soft finishes and a closed door help.</p><p>For the reception side of the studio, see <a href="/guides/salon-station-design-and-layout/">salon station design and layout</a>.</p>'},
+    {'h2': 'Do you need a sink, and where does storage go?', 'html': '<p>Many treatments are easier with a sink or a wipe-clean counter nearby. If you want a sink, plan it early, because it needs water supply and drainage and may need landlord or building approval. Closed storage within arm\'s reach keeps products, towels and tools out of sight and off the working surface.</p><p>Joinery that fits the room exactly is covered under <a href="/services/commercial-carpentry/">commercial carpentry</a>.</p>'},
+    {'h2': 'What lighting works in a treatment room?', 'html': '<p>Use soft, warm general lighting for comfort, and a separate adjustable task light so the therapist can see clearly. Avoid a bright spot directly above the client\'s face. Dimmer controls let one room suit different treatments.</p><p>More on lighting choices is in <a href="/guides/lighting-a-retail-display/">lighting a retail display</a>, which also covers glare.</p>'},
+    {'h2': 'Which surfaces and power points should you plan?', 'html': '<p>Choose floors and counters that are easy to wipe and do not stain easily, and walls that can be cleaned. Put sockets where the equipment will actually stand, away from any sink, and think about where cables will run. A licensed electrician should do any new electrical work.</p>'},
+    {'h2': 'What should you send to get help with a treatment room?', 'html': '<p>Send us a floor plan or unit layout, a few photos, the treatments you offer and how many rooms you need. See <a href="/spaces/salons-beauty-studios/">salon and beauty studio fit-out</a>, or the brief checklist in <a href="/guides/how-to-brief-a-shop-fit-out/">how to brief a shop fit-out</a>. Rules for the unit, such as landlord or building approvals, vary, so check them before you start building.</p>'},
+  ],
+  'faqs': [
+    ('How big should a small beauty treatment room be?', 'Big enough to place the bed or chair with space to walk round it, recline it and get on and off. Mark the footprint with tape on the floor and test it before building walls.'),
+    ('How do I make a treatment room private?', 'Use a solid door or a full-height partition rather than a curtain, keep the door from opening straight onto the bed, and use soft finishes to reduce sound.'),
+    ('Does a treatment room need a sink?', 'Many treatments are easier with one nearby. A sink needs water supply and drainage and may need landlord or building approval, so plan it early.'),
+    ('What lighting suits a treatment room?', 'Soft, warm general lighting with a separate adjustable task light, and no bright spot directly above the client. Dimmers help.'),
+  ],
+  'related': ['/spaces/salons-beauty-studios/', '/guides/salon-station-design-and-layout/', '/guides/lighting-a-retail-display/', '/guides/how-to-brief-a-shop-fit-out/', '/services/commercial-carpentry/'],
+  'wa_topic': 'designing a beauty treatment room',
+}
+
+PAGES = [G1, G2, G3, G4, G5, G6, G7, G8, G9, G10, G11, G12, G13, G14, G15, G16]
