@@ -1,0 +1,8 @@
+/assets/img/aiming-done-960.webp
+/assets/img/aiming-done-480.webp
+/assets/img/cluster-acc-960.webp
+/assets/img/cluster-acc-480.webp
+/assets/img/radar-code-960.webp
+/assets/img/radar-code-480.webp
+/assets/img/radar-module-960.webp
+/assets/img/radar-module-480.webp
