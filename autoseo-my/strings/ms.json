@@ -1,0 +1,1139 @@
+{
+ "_readme": "All visible text for one language. Same keys in en.json, ms.json, zh.json. Names kept as is: AutoSEO.my, SEO, AEO, GEO, Google, Google Maps, ChatGPT, Gemini, Perplexity, K Tech Auto Solution Sdn Bhd.",
+ "meta": {
+  "html_lang": "ms",
+  "og_locale": "ms_MY",
+  "schema_lang": "ms-MY",
+  "switch_label": "BM",
+  "lang_name": "Bahasa Melayu",
+  "full_stop": ". "
+ },
+ "brand": {
+  "positioning": "Agensi Pemasaran SEO, AEO & GEO Khusus Automotif di Malaysia",
+  "focus_line": "100% Fokus Automotif. Lebih Nampak. Lebih Banyak Pertanyaan. Lebih Ramai Pelanggan.",
+  "tagline_translation": "Dibina untuk Automotif. Dioptimumkan untuk Carian. Digerakkan oleh Hasil.",
+  "brand_line": "AutoSEO.my - Jenama di bawah K Tech Auto Solution Sdn Bhd",
+  "whatsapp_label": "WhatsApp Pakar SEO Kami",
+  "areas": [
+   "Kuala Lumpur",
+   "Selangor",
+   "Johor Bahru",
+   "Penang"
+  ],
+  "areas_line": "Kuala Lumpur · Selangor · Johor Bahru · Penang",
+  "org_description": "AutoSEO.my ialah jenama di bawah K Tech Auto Solution Sdn Bhd: agensi pemasaran SEO, AEO dan GEO khusus automotif untuk perniagaan automotif di Malaysia.",
+  "knows_about": [
+   "Pengoptimuman Enjin Carian (SEO)",
+   "Pengoptimuman Enjin Jawapan (AEO)",
+   "Pengoptimuman Enjin Generatif (GEO)",
+   "Pemasaran automotif",
+   "Google Business Profile"
+  ],
+  "is_brand_of": "AutoSEO.my ialah jenama di bawah K Tech Auto Solution Sdn Bhd."
+ },
+ "prefills": {
+  "audit": "Hi AutoSEO.my, saya ingin dapatkan audit SEO automotif percuma untuk perniagaan saya.",
+  "specialist": "Hi AutoSEO.my, saya ingin berbincang dengan pakar SEO anda tentang perniagaan automotif saya.",
+  "general": "Hi AutoSEO.my, saya ingin tahu lebih lanjut tentang perkhidmatan SEO automotif anda.",
+  "service": "Hi AutoSEO.my, saya ingin tahu lebih lanjut tentang {topic} untuk perniagaan automotif saya.",
+  "industry": "Hi AutoSEO.my, saya menjalankan {topic} dan saya ingin dapatkan audit SEO automotif percuma.",
+  "quote": "Hi AutoSEO.my, saya ingin minta sebut harga SEO automotif untuk perniagaan saya.",
+  "check": "Hi AutoSEO.my, saya sudah cuba semakan laman web percuma untuk {site} dan dapat {score}/100. Sila hantarkan senarai perkara yang perlu dibaiki dahulu.",
+  "check_failed": "Hi AutoSEO.my, saya cuba semakan laman web percuma untuk {site} tetapi ia tidak dapat disiapkan. Boleh tolong semak laman web saya?",
+  "partner": "Saya ingin menyertai program rakan kongsi AutoSEO",
+  "partner_question": "Hi AutoSEO.my, saya ada soalan tentang program rakan kongsi AutoSEO."
+ },
+ "ui": {
+  "skip": "Terus ke kandungan",
+  "menu": "Menu",
+  "home_aria": "Laman utama AutoSEO.my",
+  "lang_switch_aria": "Bahasa",
+  "nav": {
+   "services": "Perkhidmatan",
+   "industries": "Industri",
+   "how": "Cara Kerja",
+   "about": "Tentang",
+   "faq": "Soalan",
+   "contact": "Hubungi",
+   "partners": "Rakan Kongsi",
+   "articles": "Artikel"
+  },
+  "whatsapp_us": "WhatsApp kami",
+  "more_details": "Butiran lanjut →",
+  "see_all_services": "Lihat semua perkhidmatan →",
+  "more_about_us": "Lebih lanjut tentang kami →",
+  "how_detail_link": "Cara ia berfungsi secara terperinci →",
+  "full_faq_before": "Lagi dalam",
+  "full_faq_link": "Soalan Lazim penuh",
+  "quote_link": "WhatsApp untuk sebut harga →",
+  "quote_button": "WhatsApp untuk sebut harga",
+  "open_whatsapp": "Buka WhatsApp →",
+  "examples_only": "Sekadar contoh. Pelan anda dibina berdasarkan apa yang dicari oleh pelanggan anda sendiri.",
+  "examples_only_bilingual": "Sekadar contoh. Pelan anda dibina berdasarkan apa yang dicari oleh pelanggan anda sendiri, dalam Bahasa Inggeris dan Bahasa Malaysia.",
+  "example_searches_aria": "Contoh carian",
+  "service_of": "Perkhidmatan {n} daripada 06",
+  "footer_services": "Perkhidmatan",
+  "footer_industries": "Industri",
+  "footer_company": "Syarikat",
+  "privacy": "Privasi",
+  "home": "Utama",
+  "page_not_found": "Halaman tidak dijumpai",
+  "faq_kicker": "Soalan anda, dijawab",
+  "quote_line": "Harga bergantung pada keperluan perniagaan anda.",
+  "nav_aria": "Utama"
+ },
+ "home": {
+  "title": "AutoSEO.my | Agensi SEO, AEO & GEO Automotif di Malaysia",
+  "description": "Agensi SEO, AEO dan GEO khusus automotif di Malaysia. Bantu pemandu di KL, Selangor, Johor Bahru dan Penang jumpa perniagaan anda di Google, Maps dan carian AI.",
+  "hero_h1": "Adakah Perniagaan Automotif Anda Mudah Dijumpai di Google dan Carian AI?",
+  "hero_lines": [
+   "Pelanggan anda yang seterusnya mungkin sedang mencari perkhidmatan anda sekarang.",
+   "Biar AutoSEO.my bantu mereka jumpa anda."
+  ],
+  "card_aria": "Tempat pemandu mencari perniagaan automotif",
+  "card_chip_1": "🚗 Dibina untuk automotif",
+  "card_head": "Tempat pemandu mencari",
+  "card_query": "bengkel kereta berdekatan",
+  "channels": [
+   [
+    "Google Search",
+    "SEO"
+   ],
+   [
+    "Google Maps",
+    "SEO Tempatan"
+   ],
+   [
+    "Featured snippets",
+    "AEO"
+   ],
+   [
+    "ChatGPT",
+    "GEO"
+   ],
+   [
+    "Google Gemini",
+    "GEO"
+   ],
+   [
+    "Perplexity",
+    "GEO"
+   ]
+  ],
+  "card_caption": "Adakah perniagaan anda muncul bila mereka mencari?",
+  "card_chip_2": "📍 KL · Selangor · JB · Penang",
+  "marquee_aria": "Industri yang kami layani",
+  "marquee_label": "100% automotif",
+  "marquee_link": "Industri yang kami layani",
+  "about_kicker": "Tentang AutoSEO.my",
+  "services_kicker": "Penyelesaian Pemasaran Digital Kami",
+  "services_h2": "Enam cara kami bantu pemandu menjumpai anda",
+  "services_lead": "Setiap perkhidmatan ada halaman sendiri dengan butiran lengkap.",
+  "ind_kicker": "Industri yang Kami Layani",
+  "ind_h2": "Perniagaan automotif sahaja",
+  "ind_lead": "Kami bekerja dengan seluruh industri automotif, daripada bengkel di hujung jalan hingga pengedar yang membekalkannya.",
+  "why_kicker": "Kenapa Pilih AutoSEO.my?",
+  "why_h2": "Pakar carian automotif",
+  "how_kicker": "Cara ia berfungsi",
+  "how_h2": "Daripada audit percuma kepada lebih banyak pertanyaan",
+  "mission_kicker": "Misi Kami",
+  "faq_h2": "SEO Automotif di Malaysia: soalan anda, dijawab"
+ },
+ "btn_audit": "Dapatkan Audit SEO Automotif Percuma",
+ "btn_specialist": "WhatsApp Pakar SEO Kami",
+ "about_paras": [
+  "AutoSEO.my ialah agensi pemasaran digital khusus yang memberi tumpuan sepenuhnya kepada perniagaan automotif di seluruh Malaysia, untuk membina jenama yang lebih kukuh, meningkatkan keterlihatan dalam talian dan menjana lebih banyak pertanyaan pelanggan.",
+  "Tidak seperti agensi pemasaran digital am, kami fokus sepenuhnya pada industri automotif.",
+  "Kami menggabungkan Pengoptimuman Enjin Carian (SEO), Pengoptimuman Enjin Jawapan (AEO) dan Pengoptimuman Enjin Generatif (GEO) supaya perniagaan automotif mudah ditemui melalui Google Search, Google Maps dan platform carian berasaskan AI seperti ChatGPT, Gemini dan Perplexity."
+ ],
+ "goal": "Matlamat kami mudah: Jadikan perniagaan automotif anda lebih mudah dijumpai, lebih mudah dipercayai dan lebih mudah dipilih.",
+ "mission": "Menjadi pakar pemasaran digital automotif paling dipercayai di Malaysia dengan membantu perniagaan automotif mengukuhkan kehadiran dalam talian, membina kewibawaan jenama yang berpanjangan dan menarik lebih ramai pelanggan.",
+ "why": [
+  {
+   "title": "Pengkhususan 100% dalam Industri Automotif",
+   "text": "Kami faham cara pemandu mencari bengkel, pengedar kereta, tayar, pembaikan dan perkhidmatan automotif."
+  },
+  {
+   "title": "Dibina untuk Pasaran Malaysia",
+   "text": "Strategi kami menyasarkan permintaan pelanggan tempatan di Kuala Lumpur, Selangor, Johor Bahru, Penang dan lokasi lain di Malaysia."
+  },
+  {
+   "title": "Kepakaran SEO + AEO + GEO",
+   "text": "Kami bantu perniagaan automotif bersaing dalam carian Google tradisional dan bersedia menghadapi kepentingan penemuan melalui AI yang semakin meningkat."
+  },
+  {
+   "title": "Fokus pada Pertumbuhan Perniagaan Sebenar",
+   "text": "Keutamaan kami bukan sekadar trafik dan kedudukan kata kunci. Kami fokus pada pertanyaan berkualiti, lead WhatsApp, panggilan telefon dan pelanggan yang benar-benar membeli."
+  }
+ ],
+ "services_page": {
+  "title": "Perkhidmatan SEO, AEO & GEO Automotif di Malaysia | AutoSEO.my",
+  "description": "Perkhidmatan SEO, AEO, GEO, reka bentuk laman web, Google Maps dan kandungan untuk perniagaan automotif Malaysia. WhatsApp untuk audit percuma.",
+  "eyebrow": "Penyelesaian Pemasaran Digital Kami",
+  "h1": "Perkhidmatan SEO, AEO dan GEO automotif di Malaysia",
+  "lead": "Enam perkhidmatan, satu matlamat: jadikan perniagaan automotif anda lebih mudah dijumpai, lebih mudah dipercayai dan lebih mudah dipilih.",
+  "list_kicker": "Apa yang kami buat",
+  "list_h2": "Pilih perkhidmatan untuk lihat skopnya",
+  "fit_kicker": "Cara semuanya berpadu",
+  "fit_h2": "Cara orang mencari sudah berubah. Pemasaran anda pun perlu berubah.",
+  "fit_text": "Pemandu masih mencari di Google dan Google Maps, tetapi semakin ramai yang terus mendapat jawapan, atau bertanya kepada alat AI seperti ChatGPT, Gemini atau Perplexity. SEO membantu halaman anda mendapat kedudukan, AEO menukar pengetahuan anda kepada jawapan yang jelas, dan GEO membantu alat AI menemui dan mempercayai jenama anda. Laman web, Google Business Profile dan kandungan anda mengikat semuanya, dan setiap halaman berakhir dengan pertanyaan WhatsApp yang mudah.",
+  "why_kicker": "Kenapa ia penting",
+  "covers_kicker": "Apa yang diliputi",
+  "covers_h2": "Apa yang kami kerjakan",
+  "searches_h3": "Jenis carian yang disasarkan",
+  "faq_h2": "{name}: soalan lazim",
+  "related_kicker": "Sesuai digabungkan dengan",
+  "related_h2": "Perkhidmatan berkaitan",
+  "title_suffix": " | AutoSEO.my"
+ },
+ "services": {
+  "automotive-seo": {
+   "title": "SEO Automotif — Naik Kedudukan di Google",
+   "short": "SEO Automotif",
+   "text": "Tingkatkan keterlihatan carian organik untuk perkhidmatan automotif dan kata kunci berasaskan lokasi yang dicari bakal pelanggan anda.",
+   "h1": "SEO Automotif di Malaysia: naik kedudukan di Google",
+   "meta": "SEO automotif untuk bengkel, pengedar, kedai tayar dan pembekal alat ganti Malaysia: halaman servis dan lokasi yang sepadan dengan carian pemandu di Google.",
+   "why": "Kebanyakan pemandu bermula dengan carian seperti “servis kereta berdekatan” atau “kedai tayar Shah Alam”. Jika laman web anda tiada halaman yang jelas untuk servis itu di kawasan tersebut, Google tiada apa-apa daripada anda untuk dipaparkan. SEO automotif memberi setiap servis dan setiap kawasan yang anda layani satu halaman yang menjawab carian itu dengan tepat.",
+   "covers": [
+    "Kajian kata kunci tentang servis dan kawasan yang benar-benar dicari pelanggan anda, dalam Bahasa Inggeris dan Bahasa Malaysia",
+    "Satu halaman yang jelas untuk setiap servis utama, dengan butiran yang pemandu perlukan sebelum menelefon",
+    "Halaman lokasi untuk kawasan yang benar-benar anda layani, seperti Petaling Jaya, Shah Alam, Johor Bahru atau George Town",
+    "Semakan teknikal: kelajuan halaman, paparan mudah alih, tajuk, pengepala, pautan rosak dan pengindeksan",
+    "Data berstruktur (schema) supaya Google memahami perniagaan, servis dan soalan lazim anda",
+    "Semakan berkala tentang apa yang berkesan dalam Google Search Console, dan perubahan berdasarkannya"
+   ],
+   "searches": [
+    "servis kereta berdekatan",
+    "bengkel kereta Shah Alam",
+    "repair gearbox Kuala Lumpur",
+    "tukar brake pad Johor Bahru",
+    "bengkel kereta Penang"
+   ],
+   "faqs": [
+    {
+     "q": "Berapa lama SEO automotif mengambil masa untuk menunjukkan hasil?",
+     "a": "SEO dibina dalam tempoh beberapa bulan, bukan beberapa hari. Pembetulan teknikal dan halaman servis baharu boleh dikesan Google dalam beberapa minggu, manakala kedudukan lebih tinggi untuk carian yang bersaing biasanya mengambil masa lebih lama. Kami tidak menjanjikan kedudukan atau tarikh tertentu, kerana Google yang menentukannya."
+    },
+    {
+     "q": "Adakah anda menyasarkan carian Bahasa Malaysia juga?",
+     "a": "Ya, jika pelanggan anda menggunakannya. Ramai pemandu mencari dengan campuran Bahasa Inggeris dan Bahasa Malaysia, seperti “bengkel kereta” atau “kedai tayar”, jadi kami semak kedua-duanya semasa merancang halaman anda."
+    },
+    {
+     "q": "Perlukah saya laman web baharu untuk SEO?",
+     "a": "Tidak semestinya. Jika laman web semasa anda baik, kami akan menambah baiknya. Jika ia perlahan, sukar digunakan di telefon atau sukar diedit, kami mungkin mencadangkan pembinaan semula. Kami akan terangkan selepas audit percuma."
+    }
+   ],
+   "prefill_topic": "SEO Automotif"
+  },
+  "aeo-answer-engine-optimisation": {
+   "title": "AEO — Dijumpai Melalui Enjin Jawapan",
+   "short": "AEO (Pengoptimuman Enjin Jawapan)",
+   "text": "Susun kandungan automotif supaya lebih layak dipaparkan dalam Google featured snippets, jawapan janaan AI dan carian berbentuk perbualan.",
+   "h1": "AEO untuk perniagaan automotif: jadi jawapan yang orang nampak",
+   "meta": "Pengoptimuman Enjin Jawapan untuk perniagaan automotif Malaysia: jawapan jelas kepada soalan pemandu, disusun untuk featured snippets dan jawapan AI.",
+   "why": "Semakin banyak carian berakhir dengan jawapan dan bukannya senarai pautan: featured snippet, ringkasan AI atau jawapan suara. Pemandu bertanya soalan seperti “berapa kerap perlu tukar minyak gearbox?” atau “kenapa aircon kereta tak sejuk?”. AEO memastikan perniagaan anda ada jawapan yang jelas dan tepat, supaya anda boleh menjadi sumber yang dirujuk jawapan tersebut.",
+   "covers": [
+    "Senarai soalan sebenar yang ditanya pelanggan anda, sebelum dan selepas mereka melawat",
+    "Jawapan ringkas dan terus di bahagian atas setiap halaman, diikuti butiran",
+    "Bahagian soalan lazim pada halaman servis, ditanda dengan FAQ schema",
+    "Pengepala ringkas yang sepadan dengan cara orang menyusun soalan mereka",
+    "Fakta yang konsisten merentas laman web dan Google Business Profile anda"
+   ],
+   "searches": [
+    "berapa kerap servis kereta",
+    "kenapa aircon kereta tak sejuk",
+    "bila perlu tukar tayar",
+    "harga bateri kereta berapa",
+    "gearbox kereta slip ke"
+   ],
+   "faqs": [
+    {
+     "q": "Apakah beza antara SEO dan AEO?",
+     "a": "SEO membantu halaman anda mendapat kedudukan dalam senarai hasil carian. AEO membentuk kandungan anda supaya enjin carian dan alat AI boleh mengambil jawapan yang jelas daripadanya, untuk featured snippets, ringkasan AI dan carian suara. Ia paling berkesan apabila digabungkan."
+    },
+    {
+     "q": "Adakah AEO akan memasukkan perniagaan saya dalam jawapan AI Google?",
+     "a": "Tiada siapa boleh menjamin itu, kerana Google dan alat AI memilih sumber mereka sendiri. AEO meningkatkan kelayakan anda dengan menyediakan jawapan yang jelas, tersusun dan tepat untuk mereka gunakan."
+    },
+    {
+     "q": "Perlukah saya tulis jawapan sendiri?",
+     "a": "Tidak perlu. Kami menyediakan draf berdasarkan maklumat yang anda beri tentang servis dan cara kerja anda, dan anda menyemaknya untuk ketepatan sebelum ia disiarkan."
+    }
+   ],
+   "prefill_topic": "AEO (Pengoptimuman Enjin Jawapan)"
+  },
+  "geo-ai-search-visibility": {
+   "title": "GEO — Bina Keterlihatan dalam Carian AI",
+   "short": "GEO (Pengoptimuman Enjin Generatif)",
+   "text": "Kukuhkan kebolehjumpaan dan kewibawaan jenama anda dalam pengalaman carian berasaskan AI, termasuk ChatGPT, Google Gemini dan Perplexity.",
+   "h1": "GEO di Malaysia: bawa perniagaan automotif anda ke dalam carian AI",
+   "meta": "Pengoptimuman Enjin Generatif untuk perniagaan automotif di Malaysia: bantu ChatGPT, Google Gemini dan Perplexity menemui, memahami dan menyebut jenama anda.",
+   "why": "Sesetengah pemandu kini bertanya ChatGPT, Gemini atau Perplexity untuk mencadangkan bengkel atau menerangkan pembaikan sebelum mereka membuka Google. Alat-alat ini membina jawapan daripada apa yang mereka boleh baca dan percayai tentang anda dalam talian. GEO menjadikan fakta perniagaan anda jelas, konsisten dan mudah ditemui alat AI.",
+   "covers": [
+    "Fakta perniagaan yang jelas di laman web anda: apa yang anda buat, di mana, dan untuk kenderaan apa",
+    "Nama, pautan hubungan dan kawasan yang sama di semua tempat perniagaan anda muncul dalam talian",
+    "Fail llms.txt dan data berstruktur yang kemas untuk dibaca alat AI",
+    "Persediaan enjin carian di Google dan Bing, yang menjadi rujukan beberapa alat AI",
+    "Panduan dan soalan lazim yang berguna, supaya alat AI ada sesuatu yang tepat untuk dipetik",
+    "Semakan tentang cara alat AI menggambarkan perniagaan anda sekarang"
+   ],
+   "searches": [
+    "kedai tayar terbaik di Johor Bahru",
+    "cadangkan specialist aircon kereta di Penang",
+    "pusat servis EV Kuala Lumpur",
+    "mana nak beli alat ganti kereta di Selangor"
+   ],
+   "faqs": [
+    {
+     "q": "Apakah GEO?",
+     "a": "Pengoptimuman Enjin Generatif ialah kerja menjadikan perniagaan anda mudah ditemui, difahami dan disebut oleh alat AI seperti ChatGPT, Google Gemini dan Perplexity apabila orang meminta cadangan atau nasihat."
+    },
+    {
+     "q": "Bolehkah anda jamin ChatGPT akan mencadangkan perniagaan saya?",
+     "a": "Tidak. Alat AI menentukan jawapan mereka sendiri dan ia berubah dari semasa ke semasa. Apa yang kami boleh buat ialah memastikan maklumat yang tepat dan konsisten tentang perniagaan anda tersedia untuk mereka gunakan."
+    },
+    {
+     "q": "Adakah GEO menggantikan SEO?",
+     "a": "Tidak. Alat AI sering bergantung pada halaman dan isyarat yang sama seperti enjin carian, jadi SEO yang baik ialah asas yang GEO bina di atasnya."
+    }
+   ],
+   "prefill_topic": "GEO (Pengoptimuman Enjin Generatif)"
+  },
+  "automotive-website-design": {
+   "title": "Reka Bentuk & Pembangunan Laman Web Automotif",
+   "short": "Reka Bentuk & Pembangunan Laman Web Automotif",
+   "text": "Bina laman web profesional, mesra mudah alih dan sedia SEO, direka untuk menukar pengunjung kepada pertanyaan WhatsApp, panggilan telefon dan tempahan yang disahkan.",
+   "h1": "Reka bentuk laman web automotif di Malaysia, dibina untuk membawa pertanyaan",
+   "meta": "Laman web mesra mudah alih dan sedia SEO untuk bengkel, pengedar dan pembekal automotif Malaysia, direka untuk menukar pengunjung kepada pertanyaan WhatsApp dan tempahan.",
+   "why": "Kebanyakan pengunjung anda menggunakan telefon, selalunya sedang berdiri di sebelah kereta yang perlukan perhatian. Mereka mahu cepat tahu apa yang anda baiki, di mana anda berada dan cara menghubungi anda. Laman web automotif yang baik dimuatkan dengan pantas, menjawab soalan itu pada skrin pertama dan meletakkan butang WhatsApp dalam jangkauan ibu jari.",
+   "covers": [
+    "Reka bentuk mudah alih dahulu yang dimuatkan dengan pantas pada rangkaian mudah alih Malaysia",
+    "Satu halaman untuk setiap servis, dengan soalan yang lazim ditanya pelanggan",
+    "Butang WhatsApp dengan mesej siap tulis, supaya pertanyaan sampai dengan konteks",
+    "SEO dibina sejak awal: tajuk, pengepala, schema dan sitemap yang kemas",
+    "Gambar sebenar premis dan kerja anda, jika anda boleh sediakan",
+    "Laman web milik anda, di domain anda sendiri"
+   ],
+   "searches": [
+    "website bengkel kereta",
+    "website untuk dealer kereta Malaysia",
+    "design website kedai tayar"
+   ],
+   "faqs": [
+    {
+     "q": "Berapakah kos sebuah laman web?",
+     "a": "Ia bergantung pada bilangan halaman dan keperluan anda. WhatsApp kami untuk sebut harga selepas kami memahami perniagaan anda."
+    },
+    {
+     "q": "Bolehkah anda menambah baik laman web sedia ada saya?",
+     "a": "Boleh. Jika laman web semasa anda dalam keadaan baik, kami boleh membaiki kelajuan, susun atur dan SEO tanpa membinanya semula."
+    },
+    {
+     "q": "Adakah laman web itu milik saya?",
+     "a": "Ya. Laman web dibina untuk perniagaan anda di domain anda sendiri."
+    }
+   ],
+   "prefill_topic": "Reka Bentuk & Pembangunan Laman Web Automotif"
+  },
+  "google-maps-local-seo": {
+   "title": "Google Maps & SEO Tempatan",
+   "short": "Google Maps & SEO Tempatan",
+   "text": "Optimumkan Google Business Profile untuk meningkatkan kebolehjumpaan tempatan, mengukuhkan kepercayaan pelanggan dan menarik pemandu berdekatan.",
+   "h1": "Google Maps dan SEO tempatan untuk perniagaan automotif di Malaysia",
+   "meta": "Google Business Profile dan SEO tempatan untuk bengkel, kedai tayar, pusat detailing dan pengedar Malaysia: lebih mudah dijumpai di Google Maps bila pemandu berdekatan mencari.",
+   "why": "Apabila pemandu mencari “kedai tayar berdekatan”, Google biasanya memaparkan peta dengan beberapa perniagaan sebelum sebarang laman web. Google Business Profile anda menentukan sama ada anda muncul di situ dan sama ada orang cukup percaya untuk menekan. SEO tempatan memastikan profil itu lengkap, tepat dan aktif.",
+   "covers": [
+    "Google Business Profile yang lengkap: kategori, servis, waktu operasi dan kawasan perkhidmatan yang betul",
+    "Nama dan butiran perniagaan anda sama pada profil, laman web dan direktori",
+    "Hantaran profil dan gambar berkala yang menunjukkan kerja sebenar anda",
+    "Rutin mudah untuk meminta ulasan Google daripada pelanggan yang berpuas hati, dan membalas ulasan",
+    "Halaman lokasi di laman web anda yang menyokong penyenaraian Maps anda"
+   ],
+   "searches": [
+    "kedai tayar berdekatan",
+    "cuci kereta berdekatan",
+    "bengkel buka hari Ahad Petaling Jaya",
+    "tukar bateri kereta berdekatan"
+   ],
+   "faqs": [
+    {
+     "q": "Kenapa perniagaan saya tidak muncul di Google Maps?",
+     "a": "Sebab lazim ialah profil yang belum disahkan atau tidak lengkap, kategori utama yang salah, atau butiran yang tidak sepadan dengan laman web anda. Audit percuma menyemak perkara ini dahulu."
+    },
+    {
+     "q": "Bolehkah anda dapatkan lebih banyak ulasan Google untuk kami?",
+     "a": "Kami menyediakan cara yang mudah dan jujur untuk meminta ulasan daripada pelanggan sebenar anda. Kami tidak pernah membeli ulasan atau menulis ulasan palsu, kerana itu melanggar peraturan Google dan boleh menyebabkan profil digantung."
+    },
+    {
+     "q": "Perlukah saya ada alamat kedai untuk muncul di Maps?",
+     "a": "Tidak. Perkhidmatan bergerak boleh menggunakan profil kawasan perkhidmatan yang menyenaraikan kawasan liputan mereka, dan bukannya alamat awam."
+    }
+   ],
+   "prefill_topic": "Google Maps & SEO Tempatan"
+  },
+  "automotive-content-marketing": {
+   "title": "Kandungan Automotif & Kesedaran Jenama",
+   "short": "Kandungan Automotif & Kesedaran Jenama",
+   "text": "Hasilkan artikel, panduan servis, soalan lazim dan kandungan digital khusus industri yang membina kredibiliti jenama dan menarik trafik carian yang relevan.",
+   "h1": "Kandungan automotif yang membina kepercayaan dan membawa trafik carian",
+   "meta": "Artikel, panduan servis dan soalan lazim untuk perniagaan automotif Malaysia, ditulis untuk pemandu, bagi membina kredibiliti jenama dan menarik trafik carian yang relevan.",
+   "why": "Pemandu membuat kajian sebelum membelanjakan wang untuk kereta mereka. Artikel dan panduan servis yang berguna menjawab soalan mereka, menunjukkan anda arif dalam bidang anda dan membawa masuk orang yang mencari masalah tertentu. Lama-kelamaan, ia juga memberi enjin carian dan alat AI lebih banyak sebab untuk mempercayai jenama anda.",
+   "covers": [
+    "Artikel tentang soalan yang ditanya pelanggan anda, dalam bahasa yang mudah difahami",
+    "Panduan servis yang menerangkan sesuatu pembaikan atau produk, apa yang mempengaruhi kerja itu dan apa yang perlu dijangka",
+    "Soalan lazim untuk setiap halaman servis",
+    "Kandungan yang dirancang berdasarkan carian di kawasan yang anda layani",
+    "Fakta disemak bersama anda sebelum apa-apa disiarkan"
+   ],
+   "searches": [
+    "tanda bateri kereta nak rosak",
+    "berapa lama tayar tahan di Malaysia",
+    "coating kereta vs wax",
+    "tukar bateri hybrid"
+   ],
+   "faqs": [
+    {
+     "q": "Siapa yang menulis kandungan?",
+     "a": "Kami menyediakan draf berdasarkan servis dan kepakaran anda, dan anda meluluskan apa-apa yang menyatakan fakta tentang perniagaan anda sebelum ia disiarkan."
+    },
+    {
+     "q": "Berapa kerap kami perlu menyiarkan kandungan?",
+     "a": "Kandungan berguna yang konsisten lebih berkesan daripada kandungan yang dihantar sekali gus. Kami bersetuju dengan kadar yang sesuai untuk perniagaan anda semasa merancang kerja."
+    },
+    {
+     "q": "Adakah anda menyalin kandungan daripada laman web lain?",
+     "a": "Tidak. Kandungan yang disalin tidak membantu dalam carian Google atau AI. Semuanya ditulis khusus untuk perniagaan anda."
+    }
+   ],
+   "prefill_topic": "Kandungan Automotif & Kesedaran Jenama"
+  }
+ },
+ "industries_page": {
+  "title": "Industri Automotif yang Kami Layani di Malaysia | AutoSEO.my",
+  "description": "SEO, AEO dan GEO untuk bengkel kereta, pusat jualan kereta, kedai tayar, aksesori, aircon, detailing, EV dan hybrid, alat ganti dan peralatan di Malaysia.",
+  "eyebrow": "100% automotif",
+  "h1": "Industri yang Kami Layani",
+  "lead": "Kami fokus sepenuhnya pada industri automotif, jadi kami faham cara pemandu dan pembeli perdagangan mencari setiap jenis perniagaan.",
+  "grid_kicker": "Siapa yang kami bantu",
+  "grid_h2": "Perniagaan automotif di seluruh Malaysia",
+  "same_kicker": "Matlamat yang sama untuk setiap perniagaan",
+  "same_h2": "Lebih mudah dijumpai, lebih mudah dipercayai, lebih mudah dipilih",
+  "same_text": "Apa pun bidang automotif anda, kerja bermula dengan cara pelanggan anda mencari: perkataan yang mereka guna, kawasan yang mereka cari, dan sama ada mereka menggunakan Google, Google Maps atau alat AI. Pilih industri anda di atas untuk melihat fokus kami, atau WhatsApp kami jika industri anda tiada dalam senarai.",
+  "focus_kicker": "Fokus kami",
+  "focus_h2": "Cara kami membantu {label}",
+  "search_kicker": "Cara pelanggan anda mencari",
+  "search_h2": "Carian yang berbaloi untuk anda muncul",
+  "svc_kicker": "Perkhidmatan",
+  "svc_h2": "Apa yang boleh kami lakukan untuk anda"
+ },
+ "industries": {
+  "car-workshops": {
+   "label": "Bengkel kereta dan pusat servis automotif",
+   "short": "Bengkel kereta",
+   "who": "bengkel kereta",
+   "h1": "SEO untuk bengkel kereta dan pusat servis di Malaysia",
+   "meta": "SEO, Google Maps dan keterlihatan carian AI untuk bengkel kereta dan pusat servis automotif di Kuala Lumpur, Selangor, Johor Bahru dan Penang.",
+   "intro": "Pemandu biasanya mencari bengkel apabila sesuatu sudah rosak, jadi mereka mencari dengan cepat dan memilih dengan cepat. Mereka mahu bengkel yang dekat, sedang buka dan jelas boleh membaiki masalah mereka. Bengkel yang muncul dengan halaman servis yang jelas dan penyenaraian Google Maps yang kukuh ialah yang mendapat panggilan.",
+   "focus": [
+    "Satu halaman untuk setiap kerja utama anda, seperti servis, brek, gearbox, suspensi atau pembaikan enjin",
+    "Jenama kereta yang anda pakar, jika ada, supaya pemilik yang tepat menjumpai anda",
+    "Google Business Profile yang kukuh dengan waktu operasi dan servis sebenar anda",
+    "Halaman kawasan untuk taman perumahan yang benar-benar anda layani",
+    "Butang WhatsApp supaya pelanggan boleh terus hantar gambar atau terangkan masalah"
+   ],
+   "searches": [
+    "bengkel kereta berdekatan",
+    "bengkel kereta Klang",
+    "servis kereta Subang Jaya",
+    "specialist gearbox Johor Bahru"
+   ],
+   "focus_label": "bengkel kereta dan pusat servis automotif"
+  },
+  "car-dealerships": {
+   "label": "Pusat jualan kereta baharu dan terpakai",
+   "short": "Pusat jualan kereta",
+   "who": "pusat jualan kereta",
+   "h1": "SEO untuk pusat jualan kereta baharu dan terpakai di Malaysia",
+   "meta": "Bantu pembeli kereta menjumpai pusat jualan kereta baharu atau terpakai anda di Google, Google Maps dan carian AI, dengan halaman yang jelas dan pertanyaan WhatsApp.",
+   "intro": "Pembeli kereta membuat banyak perbandingan sebelum melawat bilik pameran. Mereka mencari ikut jenama, model, bajet dan lokasi, dan ramai juga meminta nasihat alat AI. Pusat jualan yang menjawab soalan itu dengan jelas dalam talian lebih mudah disenarai pendek.",
+   "focus": [
+    "Halaman untuk jenama dan model yang anda jual, dengan maklumat yang dicari pembeli",
+    "Halaman lokasi untuk setiap bilik pameran atau cawangan",
+    "Panduan berguna tentang membeli, tukar ganti dan memiliki kereta",
+    "Google Business Profile yang dikemas kini dan tepat untuk setiap outlet",
+    "Butang pertanyaan WhatsApp dengan model sudah dinyatakan dalam mesej"
+   ],
+   "searches": [
+    "kereta terpakai Kuala Lumpur",
+    "kereta recond Shah Alam",
+    "showroom kereta Johor Bahru",
+    "trade in kereta Penang"
+   ],
+   "focus_label": "pusat jualan kereta baharu dan terpakai"
+  },
+  "tyre-shops": {
+   "label": "Kedai tayar dan pengedar tayar",
+   "short": "Kedai tayar",
+   "who": "kedai tayar",
+   "h1": "SEO untuk kedai tayar dan pengedar tayar di Malaysia",
+   "meta": "Bantu pemandu dan pembeli perdagangan menjumpai kedai tayar atau perniagaan pengedaran tayar anda di Google, Google Maps dan carian AI di seluruh Malaysia.",
+   "intro": "Carian tayar selalunya sangat setempat dan sangat khusus: saiz tayar, jenama, atau tayar pancit yang perlu dibaiki sekarang. Pengedar juga perlu dijumpai oleh bengkel dan armada yang mencari bekalan. Halaman yang jelas dan penyenaraian Maps yang dijaga baik membantu kedua-dua jenis pelanggan.",
+   "focus": [
+    "Halaman untuk jenama tayar dan servis yang anda tawarkan, seperti alignment, balancing dan tampal tayar pancit",
+    "Keterlihatan di Google Maps untuk carian “kedai tayar berdekatan”",
+    "Halaman perdagangan untuk bengkel dan armada jika anda mengedar",
+    "Jawapan kepada soalan lazim tentang tayar: saiz, kehausan, usia dan tekanan",
+    "Pertanyaan WhatsApp yang menyertakan saiz tayar pelanggan"
+   ],
+   "searches": [
+    "kedai tayar berdekatan",
+    "kedai tayar Johor Bahru",
+    "wheel alignment Petaling Jaya",
+    "pengedar tayar Malaysia"
+   ],
+   "focus_label": "kedai tayar dan pengedar tayar"
+  },
+  "car-accessories": {
+   "label": "Peruncit aksesori kereta dan aftermarket",
+   "short": "Aksesori kereta",
+   "who": "perniagaan aksesori kereta",
+   "h1": "SEO untuk peruncit aksesori kereta dan aftermarket di Malaysia",
+   "meta": "Bantu pemandu menjumpai kedai aksesori kereta atau aftermarket anda di Google dan carian AI, dengan halaman produk dan pemasangan yang jelas untuk pembeli Malaysia.",
+   "intro": "Pembeli aksesori mencari ikut produk dan model kereta, seperti dashcam, head unit, body kit atau tinted untuk kereta tertentu. Halaman yang sepadan dengan carian itu, dan menunjukkan apa yang anda pasang serta di mana, menukar layaran kepada pertanyaan.",
+   "focus": [
+    "Halaman kategori untuk produk yang anda jual dan pasang",
+    "Halaman model kereta untuk pemasangan yang popular",
+    "Panduan yang membantu pembeli memilih antara pilihan",
+    "Keterlihatan di Google Maps untuk outlet pemasangan anda",
+    "Pertanyaan WhatsApp dengan produk dan model kereta sudah diisi"
+   ],
+   "searches": [
+    "pasang dashcam Kuala Lumpur",
+    "android player kereta Selangor",
+    "tinted kereta Johor Bahru",
+    "kedai bodykit Penang"
+   ],
+   "focus_label": "peruncit aksesori kereta dan aftermarket"
+  },
+  "car-aircon-specialists": {
+   "label": "Pakar aircon kereta",
+   "short": "Pakar aircon kereta",
+   "who": "perniagaan aircon kereta",
+   "h1": "SEO untuk pakar aircon kereta di Malaysia",
+   "meta": "Bantu pemandu yang aircon keretanya tidak sejuk menjumpai bengkel pakar anda di Google, Google Maps dan carian AI di Kuala Lumpur, Selangor, Johor Bahru dan Penang.",
+   "intro": "Dalam cuaca panas Malaysia, aircon kereta yang tidak lagi sejuk adalah perkara mendesak. Pemilik mencari gejalanya sama kerap seperti mencari servisnya. Pakar yang menerangkan masalah aircon yang lazim dan muncul di Maps berdekatan berada di kedudukan baik untuk mendapat kerja itu.",
+   "focus": [
+    "Halaman untuk tambah gas, kompresor, cooling coil, blower dan kerja servis",
+    "Panduan gejala, seperti “aircon tak sejuk” atau “aircon berbau”",
+    "Google Business Profile dengan servis aircon disenaraikan",
+    "Halaman kawasan untuk tempat yang anda layani",
+    "Pertanyaan WhatsApp supaya pelanggan boleh terangkan masalah dahulu"
+   ],
+   "searches": [
+    "aircon kereta tak sejuk",
+    "servis aircon kereta Shah Alam",
+    "aircon kereta Johor Bahru",
+    "tukar kompresor aircon Penang"
+   ],
+   "focus_label": "pakar aircon kereta"
+  },
+  "car-detailing": {
+   "label": "Pusat detailing, penggilapan dan coating kereta",
+   "short": "Detailing dan coating kereta",
+   "who": "pusat detailing kereta",
+   "h1": "SEO untuk pusat detailing, penggilapan dan coating kereta di Malaysia",
+   "meta": "Bantu pemilik kereta menjumpai pusat detailing, penggilapan atau coating anda di Google, Google Maps dan carian AI, dengan halaman servis yang jelas dan tempahan WhatsApp.",
+   "intro": "Pelanggan detailing membandingkan pilihan dan mahu melihat hasilnya sebelum menempah. Mereka mencari servis dan kawasan, kemudian melihat gambar dan ulasan. Halaman servis yang jelas, gambar sebenar dan profil Maps yang kukuh memudahkan mereka memilih anda.",
+   "focus": [
+    "Halaman untuk setiap servis, seperti pembersihan dalaman, penggilapan, ceramic coating dan paint protection film",
+    "Panduan yang menerangkan perbezaan antara rawatan",
+    "Gambar kerja anda sendiri di laman web dan profil Google anda",
+    "Aliran ulasan Google tulen yang berterusan",
+    "Mesej tempahan WhatsApp dengan model kereta disertakan"
+   ],
+   "searches": [
+    "ceramic coating Kuala Lumpur",
+    "polish kereta berdekatan",
+    "cuci dalam kereta Petaling Jaya",
+    "PPF Johor Bahru"
+   ],
+   "focus_label": "pusat detailing, penggilapan dan coating kereta"
+  },
+  "ev-hybrid-specialists": {
+   "label": "Pakar kenderaan EV dan hybrid",
+   "short": "Pakar EV dan hybrid",
+   "who": "pakar EV dan hybrid",
+   "h1": "SEO untuk pakar kenderaan EV dan hybrid di Malaysia",
+   "meta": "Bantu pemilik EV dan hybrid di Malaysia menjumpai perkhidmatan pakar anda di Google dan carian AI, dengan halaman yang jelas tentang sistem yang anda kendalikan.",
+   "intro": "Pemilik EV dan hybrid selalunya tidak boleh ke sembarang bengkel, jadi mereka bersungguh-sungguh mencari orang yang faham kereta mereka. Ramai juga bertanya alat AI dahulu. Halaman yang jelas tentang sistem dan model yang anda kendalikan membantu pemilik ini menjumpai dan mempercayai anda.",
+   "focus": [
+    "Halaman untuk bateri hybrid, servis EV dan kerja diagnostik yang anda tawarkan",
+    "Halaman model dan jenama yang anda ada pengalaman sebenar",
+    "Panduan ringkas yang menjawab soalan lazim tentang EV dan hybrid",
+    "Fakta perniagaan yang jelas untuk dibaca dan diulang oleh alat AI",
+    "Pertanyaan WhatsApp dengan model dan gejala disertakan"
+   ],
+   "searches": [
+    "tukar bateri hybrid Kuala Lumpur",
+    "pusat servis EV Selangor",
+    "specialist hybrid Penang",
+    "bengkel EV Johor Bahru"
+   ],
+   "focus_label": "pakar kenderaan EV dan hybrid"
+  },
+  "battery-spare-parts": {
+   "label": "Pembekal bateri kereta dan alat ganti",
+   "short": "Bateri dan alat ganti",
+   "who": "perniagaan bateri dan alat ganti kereta",
+   "h1": "SEO untuk pembekal bateri kereta dan alat ganti di Malaysia",
+   "meta": "Bantu pemandu dan bengkel menjumpai perniagaan bateri kereta atau alat ganti anda di Google, Google Maps dan carian AI di seluruh Malaysia.",
+   "intro": "Carian bateri dan alat ganti selalunya mendesak atau sangat khusus: kereta yang tidak boleh hidup, atau nombor bahagian untuk model tertentu. Halaman yang disusun ikut model kereta dan bahagian, ditambah penyenaraian Maps yang boleh dipercayai, membantu pembeli menjumpai anda bila mereka perlukan anda.",
+   "focus": [
+    "Halaman untuk jenis bateri dan model kereta yang sesuai dengannya",
+    "Kategori alat ganti yang disusun mengikut cara pembeli mencari",
+    "Halaman perdagangan untuk bengkel jika anda membekalkan mereka",
+    "Keterlihatan di Google Maps untuk carian “bateri kereta berdekatan”",
+    "Pertanyaan WhatsApp yang menyertakan model kereta dan bahagian yang diperlukan"
+   ],
+   "searches": [
+    "bateri kereta berdekatan",
+    "bateri kereta Johor Bahru",
+    "alat ganti kereta Kuala Lumpur",
+    "hantar bateri kereta Selangor"
+   ],
+   "focus_label": "pembekal bateri kereta dan alat ganti"
+  },
+  "equipment-diagnostic-tools": {
+   "label": "Pengedar peralatan automotif dan alat diagnostik",
+   "short": "Peralatan dan alat diagnostik",
+   "who": "pengedar peralatan automotif",
+   "h1": "SEO untuk pengedar peralatan automotif dan alat diagnostik di Malaysia",
+   "meta": "Bantu bengkel dan pembeli perdagangan menjumpai perniagaan peralatan automotif atau alat diagnostik anda di Google dan carian AI di seluruh Malaysia.",
+   "intro": "Pelanggan anda ialah pemilik bengkel dan juruteknik yang membuat kajian teliti sebelum membeli peralatan. Mereka mencari ikut jenis alat, jenama dan fungsi, dan sering meminta alat AI membandingkan pilihan. Halaman produk dan kategori yang jelas membantu anda masuk senarai pendek mereka.",
+   "focus": [
+    "Halaman kategori dan produk yang ditulis untuk pembeli bengkel",
+    "Panduan perbandingan antara jenis alat dan kegunaannya",
+    "Maklumat sokongan dan latihan yang membina kepercayaan",
+    "Fakta syarikat yang jelas untuk alat AI dan carian B2B",
+    "Pertanyaan WhatsApp yang menamakan produk yang sedang dilihat pembeli"
+   ],
+   "searches": [
+    "alat diagnostik kereta Malaysia",
+    "pembekal car lift Selangor",
+    "peralatan bengkel Kuala Lumpur",
+    "pengedar scan tool Malaysia"
+   ],
+   "focus_label": "pengedar peralatan automotif dan alat diagnostik"
+  }
+ },
+ "other_industry": "Perniagaan lain yang berkaitan dengan automotif",
+ "faqs": [
+  {
+   "q": "Apa yang AutoSEO.my buat?",
+   "a": "AutoSEO.my membantu perniagaan automotif di Malaysia dijumpai dalam talian. Kami menggabungkan SEO, AEO dan GEO supaya bengkel, pengedar kereta, kedai tayar dan perniagaan automotif lain lebih mudah dijumpai di Google Search, Google Maps dan alat AI seperti ChatGPT, Gemini dan Perplexity, serta lebih mudah dihubungi melalui WhatsApp."
+  },
+  {
+   "q": "Siapa yang anda layani?",
+   "a": "Perniagaan automotif sahaja: bengkel dan pusat servis kereta, pusat jualan kereta, kedai tayar, peruncit aksesori, pakar aircon kereta, pusat detailing, pakar EV dan hybrid, pembekal bateri dan alat ganti, pengedar peralatan dan perniagaan lain yang berkaitan dengan automotif."
+  },
+  {
+   "q": "Kawasan mana yang anda liputi?",
+   "a": "Kami bekerja dengan perniagaan di seluruh Malaysia, termasuk Kuala Lumpur, Selangor, Johor Bahru dan Penang. Strategi dibina berdasarkan kawasan tempat pelanggan anda berada."
+  },
+  {
+   "q": "Berapakah kosnya?",
+   "a": "Ia bergantung pada perniagaan anda dan keperluan anda. WhatsApp kami untuk sebut harga selepas audit SEO automotif percuma."
+  },
+  {
+   "q": "Apakah audit SEO automotif percuma itu?",
+   "a": "Kami melihat bagaimana perniagaan anda muncul sekarang di Google Search, Google Maps dan carian AI, serta laman web anda jika ada, kemudian memberitahu anda dalam bahasa mudah apa yang perlu dibaiki dahulu. Mintalah melalui WhatsApp."
+  },
+  {
+   "q": "Apakah SEO, AEO dan GEO?",
+   "a": "SEO membantu halaman anda mendapat kedudukan di Google. AEO membentuk kandungan anda menjadi jawapan yang jelas untuk featured snippets dan jawapan AI. GEO membantu alat AI seperti ChatGPT, Gemini dan Perplexity menemui dan menyebut perniagaan anda. Bersama-sama, ia meliputi cara pemandu mencari hari ini."
+  },
+  {
+   "q": "Bolehkah anda jamin tempat pertama di Google?",
+   "a": "Tidak. Tiada siapa boleh menjamin kedudukan dengan jujur, kerana Google dan alat AI menentukan hasil mereka sendiri. Kami fokus pada kerja yang meningkatkan peluang anda, dan pada apa yang paling penting: pertanyaan berkualiti, lead WhatsApp dan panggilan telefon."
+  },
+  {
+   "q": "Bagaimana saya boleh bermula?",
+   "a": "Hantar mesej WhatsApp kepada kami. Beritahu nama perniagaan anda, apa yang anda buat dan di mana, dan kami akan aturkan audit SEO automotif percuma anda."
+  }
+ ],
+ "steps": [
+  {
+   "pill": "Langkah 1",
+   "title": "Audit SEO automotif percuma",
+   "text": "Hantar mesej WhatsApp dengan nama perniagaan dan lokasi anda. Kami semak bagaimana anda muncul di Google Search, Google Maps dan carian AI hari ini, dan apa yang menghalang anda.",
+   "items": [
+    "Google Business Profile dan penyenaraian Maps anda",
+    "Laman web anda, jika ada: kelajuan, paparan mudah alih dan halaman",
+    "Bagaimana anda muncul untuk carian yang digunakan pelanggan anda",
+    "Apa yang alat AI boleh temui tentang perniagaan anda"
+   ]
+  },
+  {
+   "pill": "Langkah 2",
+   "title": "Pelan untuk perniagaan anda",
+   "text": "Kami terangkan penemuan kami dalam bahasa mudah dan cadangkan apa yang perlu dibaiki dahulu. Pelan ini dibina berdasarkan servis, kawasan dan pelanggan yang anda mahu lebih ramai.",
+   "items": [
+    "Keutamaan, yang paling penting dahulu",
+    "Servis dan kawasan mana yang perlu difokuskan",
+    "Sebut harga melalui WhatsApp, tanpa sebarang obligasi"
+   ]
+  },
+  {
+   "pill": "Langkah 3",
+   "title": "Kami lakukan kerja",
+   "text": "Kami melaksanakan kerja yang dipersetujui merentas SEO, AEO dan GEO, daripada laman web dan profil Google anda hingga kandungan yang menjawab soalan pelanggan anda.",
+   "items": [
+    "Penambahbaikan laman web dan halaman",
+    "Google Maps dan SEO tempatan",
+    "Kandungan, soalan lazim dan data berstruktur"
+   ]
+  },
+  {
+   "pill": "Langkah 4",
+   "title": "Semak dan tambah baik",
+   "text": "Kami melihat apa yang membawa masuk pertanyaan dan terus menambah baiknya. Fokus kekal pada pertanyaan berkualiti, lead WhatsApp, panggilan dan pelanggan, bukan sekadar trafik.",
+   "items": [
+    "Apa yang orang cari untuk menjumpai anda",
+    "Halaman mana yang membawa pertanyaan",
+    "Penambahbaikan seterusnya, dipersetujui bersama anda"
+   ]
+  }
+ ],
+ "about_page": {
+  "title": "Tentang AutoSEO.my: Pemasaran Digital Automotif di Malaysia",
+  "description": "AutoSEO.my ialah agensi SEO, AEO dan GEO khusus automotif di Malaysia, jenama di bawah K Tech Auto Solution Sdn Bhd.",
+  "h1": "Tentang AutoSEO.my",
+  "who_kicker": "Siapa kami",
+  "why_h2": "Apa yang membezakan kami",
+  "ind_h2": "Setiap bahagian industri automotif"
+ },
+ "how_page": {
+  "title": "Cara Ia Berfungsi: SEO Automotif di Malaysia | AutoSEO.my",
+  "description": "Cara AutoSEO.my bekerja: audit SEO automotif percuma di WhatsApp, pelan untuk perniagaan anda, kerja SEO, AEO dan GEO, kemudian penambahbaikan berkala.",
+  "eyebrow": "Empat langkah, tak perlu pandai teknologi",
+  "h1": "Cara ia berfungsi: daripada audit percuma kepada lebih banyak pertanyaan",
+  "lead": "Mulakan dengan mesej WhatsApp. Kami semak bagaimana perniagaan anda muncul hari ini, bersetuju dengan pelan bersama anda, lakukan kerja dan terus menambah baiknya.",
+  "steps_kicker": "Langkah-langkah",
+  "steps_h2": "Apa yang berlaku pada setiap langkah",
+  "you_kicker": "Bahagian anda",
+  "you_h2": "Apa yang kami perlukan daripada anda",
+  "you_text": "Sembang WhatsApp ringkas tentang perniagaan anda: apa yang anda buat, kawasan yang anda layani dan pelanggan yang anda mahu lebih ramai. Gambar sebenar premis dan kerja anda sangat membantu. Sebelum apa-apa yang menerangkan perniagaan anda disiarkan, anda menyemaknya untuk ketepatan."
+ },
+ "faq_page": {
+  "title": "Soalan Lazim: SEO, AEO & GEO Automotif di Malaysia | AutoSEO.my",
+  "description": "Jawapan tentang AutoSEO.my: maksud SEO, AEO dan GEO, siapa yang kami layani, kawasan liputan, harga dan audit SEO automotif percuma.",
+  "eyebrow": "Jawapan yang mudah",
+  "h1": "Soalan tentang SEO automotif, dijawab",
+  "lead": "Apa yang kami buat, siapa yang kami layani, berapa kosnya dan cara untuk bermula.",
+  "kicker": "Soalan Lazim",
+  "h2": "Soalan yang kerap ditanya"
+ },
+ "contact_page": {
+  "title": "Hubungi AutoSEO.my di WhatsApp",
+  "description": "Hubungi AutoSEO.my di WhatsApp untuk audit SEO automotif percuma atau sebut harga. Melayani perniagaan automotif di seluruh Malaysia.",
+  "eyebrow": "WhatsApp ialah cara terpantas untuk menghubungi kami",
+  "h1": "Hubungi AutoSEO.my",
+  "lead": "Hantar mesej WhatsApp dengan nama perniagaan anda, apa yang anda buat dan lokasi anda. Kami akan membalas di WhatsApp.",
+  "kicker": "Pilih mesej",
+  "h2": "Setiap butang membuka WhatsApp dengan mesej siap untuk dihantar",
+  "audit_text": "Minta semakan percuma tentang bagaimana perniagaan anda muncul di Google, Maps dan carian AI.",
+  "specialist_text": "Berbincang tentang perniagaan anda dan apa yang anda mahu lebih banyak.",
+  "quote_text": "Beritahu kami apa yang anda perlukan dan kami akan cadangkan yang sesuai.",
+  "areas_note": "Kami bekerja dengan perniagaan automotif di seluruh Malaysia, termasuk Kuala Lumpur, Selangor, Johor Bahru dan Penang."
+ },
+ "privacy_page": {
+  "title": "Notis Privasi | AutoSEO.my",
+  "description": "Cara laman web AutoSEO.my mengendalikan maklumat: tiada borang, tiada kuki penjejakan, mesej WhatsApp hanya digunakan untuk membalas.",
+  "eyebrow": "Ringkas dan jelas",
+  "h1": "Notis privasi",
+  "lead": "Cara AutoSEO.my mengendalikan maklumat di laman web ini.",
+  "sections": [
+   [
+    "Apa yang dikumpul laman web ini",
+    "Laman web ini tiada borang dan tidak meminta butiran peribadi. Ia tidak menetapkan sebarang kuki pengiklanan atau penjejakan."
+   ],
+   [
+    "Mesej WhatsApp",
+    "Apabila anda menekan butang WhatsApp, WhatsApp dibuka dengan mesej yang siap untuk dihantar. Tiada apa-apa dihantar sehingga anda menekan hantar. Mesej yang anda hantar sampai kepada kami melalui WhatsApp dan dikendalikan di bawah terma WhatsApp sendiri. Kami menggunakannya hanya untuk membalas anda dan menyediakan perkhidmatan yang anda tanyakan."
+   ],
+   [
+    "Fon",
+    "Halaman memuatkan fon daripada Google Fonts, jadi pelayar anda berhubung dengan pelayan Google apabila anda melihatnya."
+   ],
+   [
+    "Siapa kami",
+    "AutoSEO.my ialah jenama di bawah K Tech Auto Solution Sdn Bhd. Untuk sebarang soalan privasi, atau untuk meminta kami memadam mesej anda, hubungi kami di WhatsApp."
+   ]
+  ]
+ },
+ "notfound_page": {
+  "title": "Halaman tidak dijumpai | AutoSEO.my",
+  "description": "Halaman ini tidak dapat dijumpai.",
+  "eyebrow": "404",
+  "h1": "Maaf, halaman itu tiada di sini",
+  "lead": "Pautan mungkin lama atau tersalah taip. Cuba halaman perkhidmatan atau industri, atau tanya kami di WhatsApp."
+ },
+ "partners_page": {
+  "_note": "Halaman program rakan kongsi (/ms/partners/). Jumlah, kadar dan terma bayaran komisen BELUM disahkan: jangan tambah nombor, peratus, tempoh bayaran atau contoh.",
+  "title": "Program Rujukan SEO Automotif Malaysia | AutoSEO.my",
+  "description": "Sertai program rujukan SEO automotif AutoSEO.my di Malaysia. Kenalkan perniagaan kereta yang perlukan SEO, AEO, GEO atau laman web, dan dapatkan komisen.",
+  "crumb": "Program rakan kongsi",
+  "eyebrow": "Program rakan kongsi",
+  "h1": "Program Rujukan SEO Automotif di Malaysia",
+  "hero_line": "Anda kenal orang yang tepat. Kami uruskan carian.",
+  "lead": "Ini program rujukan SEO automotif Malaysia untuk pemilik bengkel, perunding, pekerja bebas dan kenalan industri: kenalkan perniagaan automotif yang perlu ditemui di Google, Google Maps atau carian AI, dan kami uruskan selebihnya.",
+  "btn_apply": "Mohon di WhatsApp",
+  "btn_how": "Lihat cara kerja",
+  "commission_note": "Butiran komisen dikongsi apabila anda memohon.",
+  "route_label": "Laluan rujukan anda",
+  "route_aria": "Laluan rujukan: anda kenalkan, kami bentang dan tutup jualan, anda dapat komisen",
+  "who_kicker": "Untuk siapa",
+  "who_h2": "Untuk orang yang sudah dipercayai dalam industri automotif",
+  "who": [
+   {
+    "title": "Pemilik bengkel",
+    "text": "Anda berbual dengan pemilik kedai lain setiap minggu. Kenalkan mereka yang perlukan lebih banyak pertanyaan kepada kami."
+   },
+   {
+    "title": "Perunding automotif",
+    "text": "Anda sudah menasihati perniagaan automotif. Tambah keterlihatan carian dalam bantuan yang anda tawarkan."
+   },
+   {
+    "title": "Pekerja bebas",
+    "text": "Pereka, jurugambar dan pemasar yang ada pelanggan automotif yang perlukan SEO, AEO atau GEO dibuat dengan betul."
+   },
+   {
+    "title": "Kenalan industri",
+    "text": "Pembekal, pengedar dan sesiapa sahaja yang mengenali pemilik perniagaan automotif secara peribadi."
+   }
+  ],
+  "how_kicker": "Cara kerja",
+  "how_h2": "Tiga langkah. Anda hanya buat langkah pertama.",
+  "steps": [
+   {
+    "title": "Anda kenalkan",
+    "text": "Beritahu kami tentang perniagaan automotif yang perlukan lebih banyak pertanyaan, dan maklumkan pemiliknya bahawa kami akan menghubungi mereka. Hanya perkenalan mesra."
+   },
+   {
+    "title": "Kami bentang dan tutup jualan",
+    "text": "Pasukan kami berbincang dengan pemilik, menyemak kedudukan mereka di Google, Google Maps dan carian AI, menerangkan pelan dan menyediakan sebut harga."
+   },
+   {
+    "title": "Anda dapat komisen",
+    "text": "Apabila perniagaan itu mendaftar, anda menerima komisen. Butiran komisen dikongsi apabila anda memohon."
+   }
+  ],
+  "refer_kicker": "Apa yang boleh dirujuk",
+  "refer_h2": "Setiap perkhidmatan AutoSEO.my dikira",
+  "refer_lead": "Kenalkan perniagaan untuk mana-mana perkhidmatan kami:",
+  "refer_ind": "Untuk mana-mana perniagaan automotif, contohnya:",
+  "why_kicker": "Kenapa AutoSEO.my",
+  "why_h2": "Mudah dikenalkan, kerana semuanya automotif",
+  "rules_kicker": "Peraturan mudah",
+  "rules_h2": "Empat peraturan supaya setiap perkenalan dialu-alukan",
+  "rules": [
+   {
+    "title": "Perkenalan mesra sahaja",
+    "text": "Kenalkan orang yang anda kenal, yang mengenali anda, dan yang sudi dihubungi oleh kami."
+   },
+   {
+    "title": "Tiada spam",
+    "text": "Tiada spam dalam apa jua bentuk: jangan siarkan pautan kami di kumpulan, ruangan komen atau forum yang tidak mengalu-alukannya."
+   },
+   {
+    "title": "Tiada mesej pukal kepada orang asing",
+    "text": "Tiada hantaran pukal WhatsApp, SMS, e-mel atau DM kepada senarai orang yang tidak dikenali atas nama kami."
+   },
+   {
+    "title": "Tiada janji bagi pihak kami",
+    "text": "Jangan sebut harga atau janjikan ranking, hasil atau tempoh masa. Pasukan kami yang akan menerangkannya selepas menyemak perniagaan itu."
+   }
+  ],
+  "faq_h2": "Soalan tentang program rakan kongsi",
+  "faqs": [
+   {
+    "q": "Siapa yang boleh menyertai program rakan kongsi?",
+    "a": "Pemilik bengkel, perunding automotif, pekerja bebas dan kenalan industri di Malaysia yang mengenali pemilik perniagaan automotif secara peribadi. Ceritakan sedikit tentang diri anda di WhatsApp dan kami uruskan selebihnya."
+   },
+   {
+    "q": "Bagaimana komisen berfungsi?",
+    "a": "Anda menerima komisen apabila perniagaan yang anda kenalkan menjadi pelanggan AutoSEO.my. Butiran komisen dikongsi apabila anda memohon."
+   },
+   {
+    "q": "Adakah saya perlu menjual?",
+    "a": "Tidak. Anda hanya membuat perkenalan mesra. Pasukan kami menerangkan perkhidmatan, menyediakan pelan dan sebut harga, dan menutup jualan. Anda tidak perlu membentang atau menyebut harga."
+   },
+   {
+    "q": "Bagaimana saya dibayar?",
+    "a": "Cara dan masa pembayaran komisen diterangkan bersama butiran komisen apabila anda memohon."
+   },
+   {
+    "q": "Bolehkah saya merujuk perniagaan di luar industri automotif?",
+    "a": "AutoSEO.my hanya bekerja dengan perniagaan automotif: bengkel, pusat jualan kereta, kedai tayar, aksesori, aircon, detailing, EV dan hybrid, bateri, alat ganti dan peralatan. Jika tidak pasti sesuatu perniagaan sesuai, tanya kami di WhatsApp sebelum membuat perkenalan."
+   },
+   {
+    "q": "Kawasan mana yang anda liputi?",
+    "a": "Perniagaan automotif di seluruh Malaysia, termasuk Kuala Lumpur, Selangor, Johor Bahru dan Penang."
+   },
+   {
+    "q": "Bolehkah saya beritahu pemilik perniagaan berapa kosnya?",
+    "a": "Tolong jangan. Harga bergantung pada keperluan setiap perniagaan, jadi pasukan kami menyediakan sebut harga selepas berbincang dengan pemiliknya."
+   }
+  ],
+  "cta_h2": "Kenal perniagaan automotif yang patut lebih mudah ditemui?",
+  "cta_text": "Mohon di WhatsApp. Butiran komisen dikongsi apabila anda memohon.",
+  "btn_question": "Tanya soalan dahulu"
+ },
+ "llms": {
+  "services": "Perkhidmatan",
+  "industries": "Industri",
+  "company": "Syarikat",
+  "contact": "Hubungi",
+  "areas": "Kawasan",
+  "and_other": "dan lokasi lain di Malaysia",
+  "articles": "Artikel"
+ },
+ "check": {
+  "_note": "Free website check in the homepage hero (templates/hero_check.html + assets/check.js). {site} and {score} are filled in by the script.",
+  "kicker": "Semakan laman web percuma",
+  "label": "Alamat laman web anda",
+  "placeholder": "yourworkshop.com.my",
+  "button": "Semak laman web saya",
+  "note": "Percuma, kira-kira 20 saat. Kami hanya membaca laman utama awam anda.",
+  "progress": [
+   "Membuka laman utama anda…",
+   "Menyemak asas Google…",
+   "Menyemak telefon bimbit dan carian AI…",
+   "Mengira skor anda…"
+  ],
+  "err_empty": "Sila masukkan alamat laman web anda, contohnya yourworkshop.com.my",
+  "err_failed": "Kami tidak dapat menyemak laman web itu. Semak alamatnya dan cuba lagi.",
+  "err_blocked": "Laman web ini menggunakan perlindungan bot yang menyembunyikannya daripada penyemak automatik, jadi kami tidak dapat menilainya dengan adil.",
+  "err_rate": "Anda telah menjalankan banyak semakan baru-baru ini. Sila cuba lagi dalam masa sejam.",
+  "err_network": "Semakan tidak dapat dijalankan sekarang. Sila cuba lagi dalam seminit.",
+  "result_for": "Keputusan untuk {site}",
+  "score_label": "Skor daripada 100",
+  "verdict_good": "Permulaan yang baik. Beberapa pembaikan kecil masih boleh membantu.",
+  "verdict_ok": "Beberapa asas penting perlu diperbaiki.",
+  "verdict_poor": "Beberapa asas tiada, jadi pemandu mungkin sukar menemui anda.",
+  "counts": "{fails} perlu dibaiki · {warns} perlu ditambah baik · {passes} baik",
+  "penalty": "Skor dihadkan pada {cap} kerana masalah serius: {items}. Baiki ini dahulu.",
+  "penalty_items": {
+   "status": "halaman tidak dimuatkan",
+   "indexable": "halaman disembunyikan daripada Google (noindex)",
+   "https": "laman tidak menggunakan https",
+   "title": "halaman tiada tajuk",
+   "robots": "robots.txt menyekat Google"
+  },
+  "speed_label": "Kelajuan mudah alih (Google PageSpeed)",
+  "speed_wait": "Mengukur kelajuan mudah alih…",
+  "speed_na": "Kelajuan mudah alih tidak dapat diukur sekarang.",
+  "groups": {
+   "google": "Asas Google",
+   "mobile": "Telefon bimbit",
+   "ai": "Carian AI",
+   "customers": "Pelanggan"
+  },
+  "status": {
+   "pass": "Baik",
+   "warn": "Tambah baik",
+   "fail": "Baiki"
+  },
+  "show_good": "Tunjuk apa yang sudah baik",
+  "wa_heading": "Nak tahu apa yang perlu dibaiki dahulu?",
+  "wa_text": "Hantar keputusan ini kepada pasukan kami di WhatsApp dan kami akan membalas dengan pembaikan yang paling penting. Tiada sebarang kewajipan.",
+  "wa_button": "Dapatkan senarai pembaikan di WhatsApp",
+  "wa_failed_text": "Hantar alamat laman web anda kepada kami di WhatsApp dan pasukan kami akan menyemaknya untuk anda.",
+  "again": "Semak laman web lain",
+  "disclaimer": "Semakan automatik pada laman utama anda. Ia menunjukkan apa yang boleh ditambah baik; ia tidak boleh menjanjikan kedudukan carian.",
+  "items": {
+   "status": {
+    "label": "Halaman dimuatkan",
+    "pass": "Laman utama anda dibuka dengan normal.",
+    "fix": "Laman utama anda gagal dimuatkan dengan betul. Google tidak boleh menyenaraikan halaman yang tidak boleh dibuka."
+   },
+   "https": {
+    "label": "Selamat (HTTPS)",
+    "pass": "Laman web anda menggunakan alamat https:// yang selamat.",
+    "fix": "Laman web anda tidak menggunakan https://. Pelayar akan memaparkan \"Not secure\" dan Google lebih mengutamakan laman web yang selamat."
+   },
+   "http_redirect": {
+    "label": "http:// dihalakan ke https://",
+    "pass": "Pelawat yang menaip http:// dihantar ke versi yang selamat.",
+    "fix": "Versi http:// tidak menghantar pelawat ke https://."
+   },
+   "title": {
+    "label": "Tajuk halaman",
+    "pass": "Tajuk halaman anda sesuai panjangnya.",
+    "fix": "Tajuk halaman anda tiada, terlalu pendek atau terlalu panjang. Ia ialah tajuk biru yang dilihat orang di Google."
+   },
+   "description": {
+    "label": "Penerangan meta (meta description)",
+    "pass": "Teks petikan carian anda sesuai panjangnya.",
+    "fix": "Penerangan meta anda tiada atau panjangnya tidak sesuai, jadi Google mungkin memaparkan teks rawak di bawah nama anda."
+   },
+   "h1": {
+    "label": "Tajuk utama (H1)",
+    "pass": "Satu tajuk utama yang jelas.",
+    "fix": "Halaman ini perlukan tepat satu tajuk utama yang menyatakan apa yang anda buat dan di mana."
+   },
+   "local_keywords": {
+    "label": "Kawasan anda dalam tajuk dan tajuk utama",
+    "pass": "Tajuk dan tajuk utama anda menyatakan di mana anda beroperasi.",
+    "fix": "Nyatakan kawasan anda dalam tajuk halaman dan tajuk utama, contohnya \"Bengkel Kereta di Petaling Jaya\"."
+   },
+   "lang": {
+    "label": "Bahasa halaman ditetapkan",
+    "pass": "Halaman ini menyatakan bahasa yang digunakan.",
+    "fix": "Halaman ini tidak menyatakan bahasa yang digunakan, jadi Google terpaksa meneka."
+   },
+   "mixed_content": {
+    "label": "Tiada fail tidak selamat",
+    "pass": "Semua imej dan skrip dimuatkan dengan selamat.",
+    "fix": "Sesetengah imej atau skrip dimuatkan melalui http:// yang tidak selamat, dan pelayar boleh menyekatnya."
+   },
+   "indexable": {
+    "label": "Dibenarkan di Google",
+    "pass": "Tiada apa yang menghalang Google daripada menyenaraikan halaman ini.",
+    "fix": "Halaman ini memberitahu Google supaya tidak menyenaraikannya (noindex), jadi ia tidak akan muncul dalam carian."
+   },
+   "canonical": {
+    "label": "Pautan canonical",
+    "pass": "Google tahu alamat mana ialah versi utama.",
+    "fix": "Tiada pautan canonical, jadi Google mungkin menganggap salinan halaman sebagai halaman berasingan."
+   },
+   "robots": {
+    "label": "robots.txt",
+    "pass": "Ditemui, dan ia membenarkan Google masuk.",
+    "fix": "robots.txt tiada atau menyekat Google."
+   },
+   "sitemap": {
+    "label": "Peta laman (sitemap)",
+    "pass": "Peta laman membantu Google menemui setiap halaman.",
+    "fix": "Tiada peta laman (sitemap) ditemui, jadi Google mungkin terlepas sesetengah halaman anda."
+   },
+   "pages": {
+    "label": "Halaman yang mencukupi untuk bersaing",
+    "pass": "Halaman yang mencukupi untuk muncul dalam pelbagai carian.",
+    "fix": "Terlalu sedikit halaman. Setiap perkhidmatan dan kawasan biasanya perlukan halaman sendiri untuk muncul di Google."
+   },
+   "internal_links": {
+    "label": "Pautan ke halaman lain anda",
+    "pass": "Laman utama mempunyai pautan ke halaman anda yang lain.",
+    "fix": "Letakkan pautan dari laman utama ke setiap halaman perkhidmatan dan kawasan supaya Google dan pelawat dapat menemuinya."
+   },
+   "fresh": {
+    "label": "Laman web nampak terkini",
+    "pass": "Dikemas kini baru-baru ini.",
+    "fix": "Laman web nampak ketinggalan zaman (tahun pada footer lama atau tiada kemas kini terkini)."
+   },
+   "viewport": {
+    "label": "Sesuai untuk telefon bimbit",
+    "pass": "Halaman ini muat pada skrin telefon.",
+    "fix": "Halaman ini tidak disediakan untuk telefon, sedangkan kebanyakan pemandu mencari menggunakan telefon."
+   },
+   "response": {
+    "label": "Masa respons pelayan",
+    "pass": "Pelayan anda menjawab dengan pantas.",
+    "fix": "Pelayan anda lambat menjawab, dan pelawat yang tidak sabar akan pergi."
+   },
+   "weight": {
+    "label": "Saiz halaman",
+    "pass": "Halaman ini ringan.",
+    "fix": "Halaman ini berat, jadi ia dimuatkan perlahan pada data mudah alih."
+   },
+   "scripts": {
+    "label": "Tidak diperlahankan oleh skrip",
+    "pass": "Bilangan skrip yang munasabah.",
+    "fix": "Banyak fail skrip dimuatkan bersama halaman, yang memperlahankannya pada telefon."
+   },
+   "schema": {
+    "label": "Butiran perniagaan untuk mesin (structured data)",
+    "pass": "Google dan alat AI boleh membaca butiran perniagaan anda.",
+    "fix": "Tiada butiran perniagaan dalam structured data, jadi Google dan alat AI terpaksa meneka nama, kawasan dan waktu operasi anda."
+   },
+   "ai_bots": {
+    "label": "Pembantu AI boleh membaca laman web",
+    "pass": "ChatGPT, Gemini, Perplexity dan lain-lain tidak disekat.",
+    "fix": "robots.txt anda menyekat sesetengah alat AI, jadi mereka tidak dapat mengesyorkan anda."
+   },
+   "content": {
+    "label": "Teks yang boleh dibaca pada halaman",
+    "pass": "Teks yang cukup untuk Google dan AI memahami apa yang anda tawarkan.",
+    "fix": "Teks yang boleh dibaca terlalu sedikit. Terangkan perkhidmatan, kawasan dan soalan lazim anda dengan perkataan mudah."
+   },
+   "h2": {
+    "label": "Subtajuk",
+    "pass": "Bahagian yang jelas dengan subtajuk.",
+    "fix": "Gunakan subtajuk untuk setiap perkhidmatan, kawasan dan soalan lazim."
+   },
+   "faq": {
+    "label": "Jawapan kepada soalan lazim (FAQ)",
+    "pass": "Menjawab soalan sebenar pelanggan yang boleh dipetik oleh Google dan AI.",
+    "fix": "Tambah soalan sebenar pelanggan dengan jawapan yang jelas (harga, tempoh, kawasan mana)."
+   },
+   "llms": {
+    "label": "Ringkasan llms.txt untuk AI",
+    "pass": "Ringkasan llms.txt untuk alat AI ditemui.",
+    "fix": "Tiada ringkasan llms.txt. Ia membantu alat AI menerangkan anda dengan betul (bagus untuk ada)."
+   },
+   "og": {
+    "label": "Pratonton perkongsian",
+    "pass": "Pautan yang dikongsi di WhatsApp dan Facebook menunjukkan pratonton yang betul.",
+    "fix": "Pautan yang dikongsi di WhatsApp dan Facebook nampak kosong. Tambah tag pratonton perkongsian."
+   },
+   "alt": {
+    "label": "Foto dengan penerangan",
+    "pass": "Foto anda mempunyai penerangan.",
+    "fix": "Tambah foto sebenar kerja anda, setiap satu dengan penerangan ringkas."
+   },
+   "local": {
+    "label": "Nombor telefon dan lokasi",
+    "pass": "Pelanggan dan Google boleh nampak lokasi anda dan cara menghubungi anda.",
+    "fix": "Papar nombor telefon dan alamat atau kawasan perkhidmatan anda pada halaman."
+   },
+   "contact": {
+    "label": "Hubungi dengan satu ketikan",
+    "pass": "Pelawat boleh menelefon, WhatsApp atau e-mel anda dengan satu ketikan.",
+    "fix": "Tiada pautan panggilan, WhatsApp atau e-mel satu ketikan. Pelanggan yang bersedia tidak akan menyalin nombor anda secara manual."
+   },
+   "reviews": {
+    "label": "Ulasan dipaparkan",
+    "pass": "Memaparkan ulasan yang membina kepercayaan pelanggan baharu.",
+    "fix": "Tiada ulasan pada halaman. Kebanyakan pemandu menyemak ulasan sebelum menelefon."
+   },
+   "hours_map": {
+    "label": "Waktu operasi dan peta",
+    "pass": "Pelanggan boleh nampak bila anda buka dan mencari anda di Google Maps.",
+    "fix": "Papar waktu operasi anda dan pautan Google Maps."
+   }
+  }
+ },
+ "articles_page": {
+  "title": "Artikel SEO automotif | AutoSEO.my",
+  "description": "Panduan mudah untuk perniagaan automotif di Malaysia: Google Maps, carian, jawapan AI dan laman web, diterangkan langkah demi langkah.",
+  "eyebrow": "Panduan untuk perniagaan automotif",
+  "h1": "Artikel SEO automotif",
+  "lead": "Panduan ringkas dan praktikal untuk bengkel, pengedar dan kedai alat ganti di Malaysia supaya mudah dijumpai di Google, Google Maps dan jawapan AI.",
+  "crumb": "Artikel",
+  "list_h2": "Artikel terkini",
+  "published": "Diterbitkan",
+  "updated": "Dikemas kini",
+  "read_time": "Masa membaca",
+  "minutes": "{n} minit",
+  "answer_label": "Jawapan ringkas",
+  "service_lead": "Mahu kami uruskan untuk perniagaan anda?",
+  "service_link": "Lihat perkhidmatan {topic} kami →",
+  "faq_h2": "Soalan tentang topik ini",
+  "more_h2": "Artikel lain",
+  "empty": "Artikel pertama akan menyusul tidak lama lagi.",
+  "search_aria": "Frasa carian yang dijawab oleh artikel ini",
+  "cta_h2": "Mahu kami semak profil perniagaan anda?",
+  "cta_text": "Hantar nama perniagaan anda melalui WhatsApp dan kami akan beritahu apa yang perlu dibetulkan dahulu."
+ }
+}

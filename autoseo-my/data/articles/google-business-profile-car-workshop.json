@@ -1,0 +1,80 @@
+{
+ "_readme": "One article = this one file (EN + BM + 中文). Facts: general, checkable knowledge about Google Business Profile only; no prices, no client names, no figures or promises.",
+ "slug": "google-business-profile-car-workshop",
+ "published": "2026-11-13",
+ "updated": "2026-11-13",
+ "service": "google-maps-local-seo",
+ "minutes": 5,
+ "en": {
+  "title": "Google Business Profile for a car workshop",
+  "description": "What a car workshop in Malaysia should fill in first on its Google Business Profile: name, category, hours, services, photos and reviews.",
+  "keyword": "Google Business Profile for a car workshop",
+  "search": "google business profile car workshop malaysia",
+  "h1": "Google Business Profile for a car workshop: what to fill in first",
+  "lead": "A complete Google Business Profile for a car workshop is often the first thing a motorist sees: on Google Maps, in the local results and when they search your name. Most workshops have a profile, but many leave half of it empty. Here is what to fill in first, in order.",
+  "answer": "Start with the basics Google uses to match you to searches: your real business name, the most accurate primary category, a correct pin or service area, your phone and WhatsApp number, and opening hours, including holidays. Then add your services, real photos of the workshop, and reply to every review.",
+  "sections": [
+   {"h2": "1. Name, category and location", "p": ["Use the name on your signboard and business registration, exactly as customers know it. Google's own guidelines say not to add keywords or a city to the name, and listings that do can be suspended.", "Pick the primary category that best describes the main job you do, for example \"Auto repair shop\", \"Car battery store\" or \"Tire shop\". You can add a few secondary categories for other work you really do. Then check the map pin sits on your entrance, not the middle of the road."]},
+   {"h2": "2. Hours, phone and website", "steps": [
+     {"b": "Opening hours", "t": "Set your normal hours, and add special hours for public holidays and festive closures before they happen."},
+     {"b": "Phone number", "t": "Use the number that is actually answered during opening hours. If customers mostly WhatsApp you, say so in the description."},
+     {"b": "Website", "t": "Link to your own website, ideally a page that matches what the profile says about your services and area."}
+   ]},
+   {"h2": "3. Services and description", "p": ["Add the services you really offer, using the words motorists search for, such as servicing, brake repair, car aircond repair or battery replacement. Keep the description factual: what you do, which cars you work on and the area you serve."], "list": ["Only list services you actually do", "Use the same business name, phone number and address as on your website and social pages", "Avoid prices or promises you cannot keep up to date"]},
+   {"h2": "4. Photos and reviews", "p": ["Upload real photos: the shopfront so people can find you, the service bays, and finished work. Blur number plates before posting.", "Ask happy customers for a review after the job, and reply to every review, good or bad, politely and briefly. Never offer gifts or discounts in return for reviews; Google's rules do not allow it."], "note": "Keep it current. A profile with old hours or a closed phone line loses calls, even if everything else is right."}
+  ],
+  "faqs": [
+   {"q": "Is a Google Business Profile free for a workshop?", "a": "Yes. Creating and managing a Google Business Profile is free. You need a Google account and to verify that you run the business, usually by video, phone or postcard, depending on what Google offers you."},
+   {"q": "Can I add my area or \"best\" to my business name?", "a": "No. Google's guidelines say the name should match your real-world signage and branding. Extra keywords, locations or claims in the name break the rules and can get the listing suspended."},
+   {"q": "How do I get more reviews without breaking the rules?", "a": "Ask every customer after the job, send them your review link on WhatsApp, and reply to every review. Do not pay for reviews, offer rewards for them or post reviews for yourself."}
+  ]
+ },
+ "ms": {
+  "title": "Google Business Profile untuk bengkel kereta",
+  "description": "Apa yang bengkel kereta di Malaysia patut isi dahulu dalam Google Business Profile: nama, kategori, waktu buka, servis, gambar dan ulasan.",
+  "keyword": "Google Business Profile untuk bengkel kereta",
+  "search": "google business profile bengkel kereta",
+  "h1": "Google Business Profile untuk bengkel kereta: apa yang perlu diisi dahulu",
+  "lead": "Google Business Profile untuk bengkel kereta yang lengkap selalunya perkara pertama yang pemandu nampak: di Google Maps, dalam hasil carian setempat dan apabila mereka mencari nama anda. Kebanyakan bengkel sudah ada profil, tetapi ramai yang biarkan separuh kosong. Ini yang perlu diisi dahulu, ikut turutan.",
+  "answer": "Mulakan dengan asas yang Google guna untuk padankan anda dengan carian: nama perniagaan sebenar, kategori utama yang paling tepat, lokasi pin atau kawasan servis yang betul, nombor telefon dan WhatsApp, serta waktu buka termasuk cuti umum. Kemudian tambah servis anda, gambar sebenar bengkel, dan balas setiap ulasan.",
+  "sections": [
+   {"h2": "1. Nama, kategori dan lokasi", "p": ["Guna nama seperti pada papan tanda dan pendaftaran perniagaan anda, sama seperti yang pelanggan kenal. Garis panduan Google sendiri melarang penambahan kata kunci atau nama bandar pada nama, dan profil yang berbuat begitu boleh digantung.", "Pilih kategori utama yang paling tepat untuk kerja utama anda, contohnya \"Auto repair shop\", \"Car battery store\" atau \"Tire shop\". Anda boleh tambah beberapa kategori kedua untuk kerja lain yang memang anda buat. Kemudian pastikan pin peta berada di pintu masuk anda, bukan di tengah jalan."]},
+   {"h2": "2. Waktu buka, telefon dan laman web", "steps": [
+     {"b": "Waktu buka", "t": "Tetapkan waktu biasa anda, dan tambah waktu khas untuk cuti umum dan cuti perayaan sebelum tiba."},
+     {"b": "Nombor telefon", "t": "Guna nombor yang memang dijawab semasa waktu buka. Jika pelanggan lebih banyak WhatsApp, nyatakan dalam penerangan."},
+     {"b": "Laman web", "t": "Pautkan ke laman web anda sendiri, sebaiknya halaman yang sepadan dengan servis dan kawasan dalam profil."}
+   ]},
+   {"h2": "3. Servis dan penerangan", "p": ["Tambah servis yang memang anda tawarkan, guna perkataan yang pemandu cari, seperti servis kereta, baiki brek, baiki aircond kereta atau tukar bateri. Pastikan penerangan berdasarkan fakta: apa yang anda buat, kereta jenis apa dan kawasan yang anda layan."], "list": ["Senaraikan hanya servis yang memang anda buat", "Guna nama perniagaan, nombor telefon dan alamat yang sama seperti di laman web dan media sosial", "Elakkan harga atau janji yang sukar dikemas kini"]},
+   {"h2": "4. Gambar dan ulasan", "p": ["Muat naik gambar sebenar: bahagian depan kedai supaya mudah dijumpai, ruang kerja, dan kerja yang sudah siap. Kaburkan nombor plat sebelum dimuat naik.", "Minta pelanggan yang berpuas hati memberi ulasan selepas kerja siap, dan balas setiap ulasan, baik atau buruk, dengan sopan dan ringkas. Jangan beri hadiah atau diskaun sebagai balasan ulasan; peraturan Google tidak membenarkannya."], "note": "Sentiasa kemas kini. Profil dengan waktu buka lama atau talian telefon yang tidak dijawab akan kehilangan panggilan, walaupun yang lain semuanya betul."}
+  ],
+  "faqs": [
+   {"q": "Adakah Google Business Profile percuma untuk bengkel?", "a": "Ya. Membuat dan mengurus Google Business Profile adalah percuma. Anda perlukan akaun Google dan perlu sahkan bahawa anda menjalankan perniagaan itu, biasanya melalui video, telefon atau poskad, bergantung pada pilihan yang Google beri."},
+   {"q": "Bolehkah saya tambah nama kawasan atau \"terbaik\" pada nama perniagaan?", "a": "Tidak. Garis panduan Google menetapkan nama mesti sama dengan papan tanda dan jenama sebenar. Kata kunci, lokasi atau dakwaan tambahan pada nama melanggar peraturan dan boleh menyebabkan profil digantung."},
+   {"q": "Bagaimana dapat lebih banyak ulasan tanpa melanggar peraturan?", "a": "Minta setiap pelanggan selepas kerja siap, hantar pautan ulasan melalui WhatsApp, dan balas setiap ulasan. Jangan bayar untuk ulasan, beri ganjaran atau tulis ulasan untuk diri sendiri."}
+  ]
+ },
+ "zh": {
+  "title": "汽车维修厂的 Google 商家资料怎么填",
+  "description": "马来西亚汽车维修厂在 Google 商家资料上应该先填什么：名称、类别、营业时间、服务、照片和评价。",
+  "keyword": "汽车维修厂的 Google 商家资料",
+  "search": "汽车维修厂 google 商家资料",
+  "h1": "汽车维修厂的 Google 商家资料：先填好这几项",
+  "lead": "一份完整的汽车维修厂的 Google 商家资料，往往是车主最先看到的东西：在 Google 地图上、在本地搜索结果里，以及他们搜索您店名的时候。大多数维修厂都有资料，但很多只填了一半。下面按顺序说明应该先填哪些。",
+  "answer": "先填好 Google 用来把您和搜索配对的基本资料：真实的商家名称、最准确的主要类别、正确的地图位置或服务区域、电话和 WhatsApp 号码，以及包括公共假期在内的营业时间。然后加上您的服务项目、维修厂的真实照片，并回复每一条评价。",
+  "sections": [
+   {"h2": "1. 名称、类别和位置", "p": ["使用招牌和商业注册上的名称，和顾客平时叫的一样。Google 自己的规定是不能在名称里加关键词或城市名，这样做的商家资料可能会被停用。", "选一个最能描述您主要业务的主要类别，例如 \"Auto repair shop\"、\"Car battery store\" 或 \"Tire shop\"。您可以为确实在做的其他业务加几个次要类别。然后检查地图标记是否在您的入口，而不是在马路中间。"]},
+   {"h2": "2. 营业时间、电话和网站", "steps": [
+     {"b": "营业时间", "t": "设置平时的营业时间，并在公共假期和节日休息之前先加上特殊营业时间。"},
+     {"b": "电话号码", "t": "填营业时间内真的有人接听的号码。如果顾客大多用 WhatsApp 联系您，请在简介里写明。"},
+     {"b": "网站", "t": "链接到您自己的网站，最好是和资料上写的服务与地区一致的页面。"}
+   ]},
+   {"h2": "3. 服务项目和简介", "p": ["加上您确实提供的服务，用车主会搜索的说法，例如汽车保养、刹车维修、汽车冷气维修或更换电池。简介要写事实：您做什么、修哪些车、服务哪些地区。"], "list": ["只列出您真正在做的服务", "商家名称、电话和地址要和网站及社交媒体上的一致", "不要写难以及时更新的价格或承诺"]},
+   {"h2": "4. 照片和评价", "p": ["上传真实的照片：店面（方便顾客找到您）、维修区，以及完工的车。上传前先把车牌模糊处理。", "工作完成后请满意的顾客留下评价，并礼貌、简短地回复每一条评价，无论好坏。不要用礼物或折扣换取评价，Google 的规定不允许这样做。"], "note": "保持资料最新。即使其他都对，营业时间过期或电话没人接，也会让您错过来电。"}
+  ],
+  "faqs": [
+   {"q": "维修厂用 Google 商家资料要收费吗？", "a": "不用。建立和管理 Google 商家资料是免费的。您需要一个 Google 账号，并验证您是这家商家的经营者，通常通过视频、电话或明信片，视 Google 提供的方式而定。"},
+   {"q": "可以在商家名称里加上地区或“最好”吗？", "a": "不可以。Google 的规定是名称必须和真实的招牌及品牌一致。在名称里加关键词、地点或宣传字眼都违反规定，可能导致商家资料被停用。"},
+   {"q": "怎样在不违规的情况下获得更多评价？", "a": "每次完工后都请顾客评价，通过 WhatsApp 发送评价链接，并回复每一条评价。不要花钱买评价、用奖励换评价，也不要自己给自己写评价。"}
+  ]
+ }
+}

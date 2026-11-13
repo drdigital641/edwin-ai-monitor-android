@@ -1,0 +1,1139 @@
+{
+ "_readme": "All visible text for one language. Same keys in en.json, ms.json, zh.json. Names kept as is: AutoSEO.my, SEO, AEO, GEO, Google, Google Maps, ChatGPT, Gemini, Perplexity, K Tech Auto Solution Sdn Bhd.",
+ "meta": {
+  "html_lang": "en",
+  "og_locale": "en_MY",
+  "schema_lang": "en-MY",
+  "switch_label": "EN",
+  "lang_name": "English",
+  "full_stop": ". "
+ },
+ "brand": {
+  "positioning": "Malaysia’s Automotive-Exclusive SEO, AEO & GEO Marketing Agency",
+  "focus_line": "100% Automotive Focus. More Visibility. More Enquiries. More Customers.",
+  "tagline_translation": "",
+  "brand_line": "AutoSEO.my - A Brand By K Tech Auto Solution Sdn Bhd",
+  "whatsapp_label": "WhatsApp Our SEO Specialists",
+  "areas": [
+   "Kuala Lumpur",
+   "Selangor",
+   "Johor Bahru",
+   "Penang"
+  ],
+  "areas_line": "Kuala Lumpur · Selangor · Johor Bahru · Penang",
+  "org_description": "AutoSEO.my is a brand of K Tech Auto Solution Sdn Bhd: an automotive-exclusive SEO, AEO and GEO marketing agency for automotive businesses in Malaysia.",
+  "knows_about": [
+   "Search Engine Optimisation",
+   "Answer Engine Optimisation",
+   "Generative Engine Optimisation",
+   "Automotive marketing",
+   "Google Business Profile"
+  ],
+  "is_brand_of": "AutoSEO.my is a brand of K Tech Auto Solution Sdn Bhd."
+ },
+ "prefills": {
+  "audit": "Hi AutoSEO.my, I'd like a free automotive SEO audit for my business.",
+  "specialist": "Hi AutoSEO.my, I'd like to speak to one of your SEO specialists about my automotive business.",
+  "general": "Hi AutoSEO.my, I'd like to know more about your automotive SEO services.",
+  "service": "Hi AutoSEO.my, I'd like to know more about {topic} for my automotive business.",
+  "industry": "Hi AutoSEO.my, I run {topic} and I'd like a free automotive SEO audit.",
+  "quote": "Hi AutoSEO.my, I'd like a quote for automotive SEO for my business.",
+  "check": "Hi AutoSEO.my, I ran the free website check on {site} and got {score}/100. Please send me the list of what to fix first.",
+  "check_failed": "Hi AutoSEO.my, I tried the free website check on {site} but it couldn't finish. Could you check my website for me?",
+  "partner": "I want to join the AutoSEO partner programme",
+  "partner_question": "Hi AutoSEO.my, I have a question about the AutoSEO partner programme."
+ },
+ "ui": {
+  "skip": "Skip to content",
+  "menu": "Menu",
+  "home_aria": "AutoSEO.my home",
+  "lang_switch_aria": "Language",
+  "nav": {
+   "services": "Services",
+   "industries": "Industries",
+   "how": "How it works",
+   "about": "About",
+   "faq": "FAQ",
+   "contact": "Contact",
+   "partners": "Partners",
+   "articles": "Articles"
+  },
+  "whatsapp_us": "WhatsApp us",
+  "more_details": "More details →",
+  "see_all_services": "See all services →",
+  "more_about_us": "More about us →",
+  "how_detail_link": "How it works in detail →",
+  "full_faq_before": "More in the",
+  "full_faq_link": "full FAQ",
+  "quote_link": "WhatsApp for a quote →",
+  "quote_button": "WhatsApp for a quote",
+  "open_whatsapp": "Open WhatsApp →",
+  "examples_only": "Examples only. Your plan is built on what your own customers search.",
+  "examples_only_bilingual": "Examples only. Your plan is built on what your own customers search, in English and Bahasa Malaysia.",
+  "example_searches_aria": "Example searches",
+  "service_of": "Service {n} of 06",
+  "footer_services": "Services",
+  "footer_industries": "Industries",
+  "footer_company": "Company",
+  "privacy": "Privacy",
+  "home": "Home",
+  "page_not_found": "Page not found",
+  "faq_kicker": "Questions, answered",
+  "quote_line": "Pricing depends on what your business needs.",
+  "nav_aria": "Main"
+ },
+ "home": {
+  "title": "AutoSEO.my | Automotive SEO, AEO & GEO Agency in Malaysia",
+  "description": "Automotive-only SEO, AEO and GEO agency in Malaysia. Help motorists in KL, Selangor, Johor Bahru and Penang find your business on Google, Maps and AI search.",
+  "hero_h1": "Is Your Automotive Business Visible on Google and AI Search?",
+  "hero_lines": [
+   "Your next customer could already be searching for your services.",
+   "Let AutoSEO.my help them find you."
+  ],
+  "card_aria": "Where motorists look for automotive businesses",
+  "card_chip_1": "🚗 Built for automotive",
+  "card_head": "Where motorists look",
+  "card_query": "car workshop near me",
+  "channels": [
+   [
+    "Google Search",
+    "SEO"
+   ],
+   [
+    "Google Maps",
+    "Local SEO"
+   ],
+   [
+    "Featured snippets",
+    "AEO"
+   ],
+   [
+    "ChatGPT",
+    "GEO"
+   ],
+   [
+    "Google Gemini",
+    "GEO"
+   ],
+   [
+    "Perplexity",
+    "GEO"
+   ]
+  ],
+  "card_caption": "Is your business there when they search?",
+  "card_chip_2": "📍 KL · Selangor · JB · Penang",
+  "marquee_aria": "Industries we serve",
+  "marquee_label": "100% automotive",
+  "marquee_link": "Industries we serve",
+  "about_kicker": "About AutoSEO.my",
+  "services_kicker": "Our Digital Marketing Solutions",
+  "services_h2": "Six ways we help motorists find you",
+  "services_lead": "Each service has its own page with the detail.",
+  "ind_kicker": "Industries We Serve",
+  "ind_h2": "Only automotive businesses",
+  "ind_lead": "We work with the whole automotive trade, from the workshop down the road to the distributor that supplies it.",
+  "why_kicker": "Why Choose AutoSEO.my?",
+  "why_h2": "Specialists in automotive search",
+  "how_kicker": "How it works",
+  "how_h2": "From free audit to more enquiries",
+  "mission_kicker": "Our Mission",
+  "faq_h2": "Automotive SEO in Malaysia: your questions, answered"
+ },
+ "btn_audit": "Get a Free Automotive SEO Audit",
+ "btn_specialist": "WhatsApp Our SEO Specialists",
+ "about_paras": [
+  "AutoSEO.my is a specialised digital marketing agency dedicated exclusively to helping automotive businesses across Malaysia build stronger brands, improve online visibility and generate more customer enquiries.",
+  "Unlike general digital marketing agencies, we focus entirely on the automotive industry.",
+  "We combine Search Engine Optimisation (SEO), Answer Engine Optimisation (AEO) and Generative Engine Optimisation (GEO) to help automotive businesses get discovered through Google Search, Google Maps and AI-powered search platforms such as ChatGPT, Gemini and Perplexity."
+ ],
+ "goal": "Our goal is simple: Make your automotive business easier to find, easier to trust and easier to choose.",
+ "mission": "To become Malaysia's most trusted automotive digital marketing specialist by helping automotive businesses strengthen their online presence, build lasting brand authority and attract more customers.",
+ "why": [
+  {
+   "title": "100% Automotive Industry Specialisation",
+   "text": "We understand how motorists search for workshops, dealerships, tyres, repairs and automotive services."
+  },
+  {
+   "title": "Built for the Malaysian Market",
+   "text": "Our strategies target local customer demand across Kuala Lumpur, Selangor, Johor Bahru, Penang and other Malaysian locations."
+  },
+  {
+   "title": "SEO + AEO + GEO Expertise",
+   "text": "We help automotive businesses compete in traditional Google search and prepare for the growing importance of AI-powered discovery."
+  },
+  {
+   "title": "Focused on Real Business Growth",
+   "text": "Our priority is not just traffic and keyword rankings. We focus on qualified enquiries, WhatsApp leads, calls and customer conversions."
+  }
+ ],
+ "services_page": {
+  "title": "Automotive SEO, AEO & GEO Services in Malaysia | AutoSEO.my",
+  "description": "Automotive SEO, AEO, GEO, website design, Google Maps and content services for Malaysian automotive businesses. WhatsApp for a free audit.",
+  "eyebrow": "Our Digital Marketing Solutions",
+  "h1": "Automotive SEO, AEO and GEO services in Malaysia",
+  "lead": "Six services, one aim: make your automotive business easier to find, easier to trust and easier to choose.",
+  "list_kicker": "What we do",
+  "list_h2": "Choose a service to see what it covers",
+  "fit_kicker": "How they fit together",
+  "fit_h2": "Search has changed. Your marketing should too.",
+  "fit_text": "Motorists still search Google and Google Maps, but more of them now get a direct answer, or ask an AI tool such as ChatGPT, Gemini or Perplexity. SEO gets your pages ranking, AEO turns your knowledge into clear answers, and GEO helps AI tools find and trust your brand. Your website, Google Business Profile and content tie it all together, and every page ends with an easy WhatsApp enquiry.",
+  "why_kicker": "Why it matters",
+  "covers_kicker": "What it covers",
+  "covers_h2": "What we work on",
+  "searches_h3": "The kind of searches this is for",
+  "faq_h2": "{name}: common questions",
+  "related_kicker": "Works well with",
+  "related_h2": "Related services",
+  "title_suffix": " | AutoSEO.my"
+ },
+ "services": {
+  "automotive-seo": {
+   "title": "Automotive SEO — Rank Higher on Google",
+   "short": "Automotive SEO",
+   "text": "Improve organic search visibility for relevant automotive services and location-based keywords that potential customers are searching for.",
+   "h1": "Automotive SEO in Malaysia: rank higher on Google",
+   "meta": "Automotive SEO for Malaysian workshops, dealers, tyre shops and parts suppliers: service and location pages that match what motorists search on Google.",
+   "why": "Most motorists start with a search like “car service near me” or “tyre shop Shah Alam”. If your website doesn’t have a clear page for that service in that area, Google has nothing of yours to show. Automotive SEO gives each service and each area you cover a page that answers the search properly.",
+   "covers": [
+    "Keyword research on the services and areas your customers actually search for, in English and Bahasa Malaysia",
+    "One clear page for each main service, with the details a motorist needs before they call",
+    "Location pages for the areas you really serve, such as Petaling Jaya, Shah Alam, Johor Bahru or George Town",
+    "Technical checks: page speed, mobile layout, titles, headings, broken links and indexing",
+    "Structured data (schema) so Google understands your business, services and FAQs",
+    "Regular review of what is working in Google Search Console, and changes based on it"
+   ],
+   "searches": [
+    "car service near me",
+    "bengkel kereta Shah Alam",
+    "gearbox repair Kuala Lumpur",
+    "brake pad replacement Johor Bahru",
+    "car workshop Penang"
+   ],
+   "faqs": [
+    {
+     "q": "How long does automotive SEO take to work?",
+     "a": "SEO builds over months, not days. Technical fixes and new service pages can be picked up by Google within weeks, while stronger rankings for competitive searches usually take longer. We don’t promise specific rankings or dates, because Google decides those."
+    },
+    {
+     "q": "Do you target Bahasa Malaysia searches too?",
+     "a": "Yes, where your customers use them. Many motorists search in a mix of English and Bahasa Malaysia, such as “bengkel kereta” or “kedai tayar”, so we check both when we plan your pages."
+    },
+    {
+     "q": "Do I need a new website for SEO?",
+     "a": "Not always. If your current website is sound, we improve it. If it is slow, hard to use on a phone or hard to edit, we may suggest a rebuild. We’ll explain which after the free audit."
+    }
+   ],
+   "prefill_topic": "Automotive SEO"
+  },
+  "aeo-answer-engine-optimisation": {
+   "title": "AEO — Get Discovered Through Answer Engines",
+   "short": "AEO (Answer Engine Optimisation)",
+   "text": "Structure automotive content to improve its eligibility for Google featured snippets, AI-generated answers and conversational search.",
+   "h1": "AEO for automotive businesses: be the answer people see",
+   "meta": "Answer Engine Optimisation for Malaysian automotive businesses: clear answers to motorists’ questions, structured for featured snippets and AI answers.",
+   "why": "More searches now end with an answer rather than a list of links: a featured snippet, an AI overview or a voice reply. Motorists ask things like “how often should I change my gearbox oil?” or “why is my car aircon not cold?”. AEO makes sure your business has a clear, accurate answer ready, so you can be the source those answers draw on.",
+   "covers": [
+    "A list of the real questions your customers ask, before and after they visit",
+    "Short, direct answers at the top of each page, followed by the detail",
+    "FAQ sections on service pages, marked up with FAQ schema",
+    "Plain headings that match how people phrase their questions",
+    "Facts kept consistent across your website and Google Business Profile"
+   ],
+   "searches": [
+    "how often to service a car in Malaysia",
+    "why is my car aircon not cold",
+    "when to change tyres",
+    "what does a car battery cost",
+    "is my gearbox slipping"
+   ],
+   "faqs": [
+    {
+     "q": "What is the difference between SEO and AEO?",
+     "a": "SEO helps your pages rank in the list of search results. AEO shapes your content so search engines and AI tools can lift a clear answer from it, for featured snippets, AI overviews and voice search. They work best together."
+    },
+    {
+     "q": "Will AEO get my business into Google’s AI answers?",
+     "a": "Nobody can guarantee that, because Google and AI tools choose their own sources. AEO improves your eligibility by giving them clear, well-structured and accurate answers to use."
+    },
+    {
+     "q": "Do I have to write the answers myself?",
+     "a": "No. We draft them from what you tell us about your services and how you work, and you check them for accuracy before they go live."
+    }
+   ],
+   "prefill_topic": "AEO (Answer Engine Optimisation)"
+  },
+  "geo-ai-search-visibility": {
+   "title": "GEO — Build Visibility in AI Search",
+   "short": "GEO (Generative Engine Optimisation)",
+   "text": "Strengthen your brand's discoverability and authority across AI-powered search experiences, including ChatGPT, Google Gemini and Perplexity.",
+   "h1": "GEO in Malaysia: get your automotive business into AI search",
+   "meta": "Generative Engine Optimisation for automotive businesses in Malaysia: help ChatGPT, Google Gemini and Perplexity find, understand and mention your brand.",
+   "why": "Some motorists now ask ChatGPT, Gemini or Perplexity to recommend a workshop or explain a repair before they ever open Google. These tools build their answers from what they can read and trust about you online. GEO makes your business facts clear, consistent and easy for AI tools to find.",
+   "covers": [
+    "Clear business facts on your website: what you do, where, and for which vehicles",
+    "The same name, contact link and areas everywhere your business appears online",
+    "An llms.txt file and clean structured data that AI tools can read",
+    "Search engine setup on Google and Bing, which several AI tools draw on",
+    "Helpful guides and FAQs that give AI tools something accurate to quote",
+    "Checks on how AI tools currently describe your business"
+   ],
+   "searches": [
+    "best tyre shop in Johor Bahru",
+    "recommend a car aircon specialist in Penang",
+    "EV service centre Kuala Lumpur",
+    "where to buy car parts in Selangor"
+   ],
+   "faqs": [
+    {
+     "q": "What is GEO?",
+     "a": "Generative Engine Optimisation is the work of making your business easy for AI tools such as ChatGPT, Google Gemini and Perplexity to find, understand and mention when people ask them for recommendations or advice."
+    },
+    {
+     "q": "Can you guarantee ChatGPT will recommend my business?",
+     "a": "No. AI tools decide their own answers and they change over time. What we can do is make sure accurate, consistent information about your business is out there for them to use."
+    },
+    {
+     "q": "Does GEO replace SEO?",
+     "a": "No. AI tools often rely on the same pages and signals that search engines use, so good SEO is the base that GEO builds on."
+    }
+   ],
+   "prefill_topic": "GEO (Generative Engine Optimisation)"
+  },
+  "automotive-website-design": {
+   "title": "Automotive Website Design & Development",
+   "short": "Automotive Website Design & Development",
+   "text": "Create professional, mobile-friendly, SEO-ready websites designed to turn visitors into WhatsApp enquiries, phone calls and confirmed bookings.",
+   "h1": "Automotive website design in Malaysia, built to bring enquiries",
+   "meta": "Mobile-friendly, SEO-ready websites for Malaysian workshops, dealers and automotive suppliers, designed to turn visitors into WhatsApp enquiries and bookings.",
+   "why": "Most of your visitors will be on a phone, often standing next to a car that needs attention. They want to see quickly what you fix, where you are and how to reach you. A good automotive website loads fast, answers those questions on the first screen and puts a WhatsApp button within thumb’s reach.",
+   "covers": [
+    "Mobile-first design that loads quickly on Malaysian mobile networks",
+    "A page for each service, with the questions customers usually ask",
+    "WhatsApp buttons with a ready-written message, so enquiries arrive with context",
+    "SEO built in from the start: titles, headings, schema and a clean sitemap",
+    "Real photos of your premises and work, where you can provide them",
+    "A site you own, on your own domain"
+   ],
+   "searches": [
+    "car workshop website",
+    "website for car dealer Malaysia",
+    "tyre shop website design"
+   ],
+   "faqs": [
+    {
+     "q": "How much does a website cost?",
+     "a": "It depends on the number of pages and what you need. WhatsApp us for a quote after we understand your business."
+    },
+    {
+     "q": "Can you improve my existing website instead?",
+     "a": "Yes. If your current site is in good shape, we can fix its speed, layout and SEO rather than rebuild it."
+    },
+    {
+     "q": "Will the website be mine?",
+     "a": "Yes. The website is built for your business on your own domain."
+    }
+   ],
+   "prefill_topic": "Automotive Website Design & Development"
+  },
+  "google-maps-local-seo": {
+   "title": "Google Maps & Local SEO",
+   "short": "Google Maps & Local SEO",
+   "text": "Optimise Google Business Profiles to improve local discoverability, strengthen customer trust and attract nearby motorists.",
+   "h1": "Google Maps and local SEO for automotive businesses in Malaysia",
+   "meta": "Google Business Profile and local SEO for Malaysian workshops, tyre shops, detailers and dealers: be easier to find on Google Maps when nearby motorists search.",
+   "why": "When a motorist searches “tyre shop near me”, Google usually shows a map with a handful of businesses before any website. Your Google Business Profile decides whether you appear there and whether people trust you enough to tap. Local SEO keeps that profile complete, accurate and active.",
+   "covers": [
+    "A complete Google Business Profile: the right categories, services, hours and service areas",
+    "Your business name and details kept the same on your profile, website and directories",
+    "Regular profile posts and photos that show your real work",
+    "A simple routine for asking happy customers for Google reviews, and replying to reviews",
+    "Location pages on your website that support your Maps listing"
+   ],
+   "searches": [
+    "tyre shop near me",
+    "car wash near me",
+    "workshop open Sunday Petaling Jaya",
+    "car battery replacement near me"
+   ],
+   "faqs": [
+    {
+     "q": "Why doesn’t my business show on Google Maps?",
+     "a": "Common reasons are an unverified or incomplete profile, the wrong main category, or details that don’t match your website. The free audit checks these first."
+    },
+    {
+     "q": "Can you get us more Google reviews?",
+     "a": "We set up an easy, honest way to ask your real customers for reviews. We never buy reviews or write fake ones, as that breaks Google’s rules and can get a profile suspended."
+    },
+    {
+     "q": "Do I need a shop address to appear on Maps?",
+     "a": "No. Mobile services can use a service-area profile that lists the areas they cover instead of a public address."
+    }
+   ],
+   "prefill_topic": "Google Maps & Local SEO"
+  },
+  "automotive-content-marketing": {
+   "title": "Automotive Content & Brand Awareness",
+   "short": "Automotive Content & Brand Awareness",
+   "text": "Develop industry-specific articles, service guides, FAQs and digital content that build brand credibility and attract relevant search traffic.",
+   "h1": "Automotive content that builds trust and brings search traffic",
+   "meta": "Articles, service guides and FAQs for Malaysian automotive businesses, written for motorists, to build brand credibility and attract relevant search traffic.",
+   "why": "Motorists research before they spend money on their car. Helpful articles and service guides answer their questions, show that you know your trade and bring in people searching for specific problems. Over time they also give search engines and AI tools more reasons to trust your brand.",
+   "covers": [
+    "Articles on the questions your customers ask, in plain Malaysian English",
+    "Service guides that explain a repair or product, what affects the job and what to expect",
+    "FAQs for each service page",
+    "Content planned around searches in the areas you serve",
+    "Facts checked with you before anything is published"
+   ],
+   "searches": [
+    "signs your car battery is dying",
+    "how long do tyres last in Malaysia",
+    "car coating vs wax",
+    "hybrid battery replacement"
+   ],
+   "faqs": [
+    {
+     "q": "Who writes the content?",
+     "a": "We draft it based on your services and expertise, and you approve anything that states facts about your business before it goes live."
+    },
+    {
+     "q": "How often should we publish?",
+     "a": "Regular, useful content does better than bursts. We agree a pace that suits your business when we plan the work."
+    },
+    {
+     "q": "Will you copy content from other websites?",
+     "a": "No. Copied content doesn’t help with Google or AI search. Everything is written for your business."
+    }
+   ],
+   "prefill_topic": "Automotive Content & Brand Awareness"
+  }
+ },
+ "industries_page": {
+  "title": "Automotive Industries We Serve in Malaysia | AutoSEO.my",
+  "description": "SEO, AEO and GEO for car workshops, dealerships, tyre shops, accessories, aircon, detailing, EV and hybrid, parts and equipment businesses in Malaysia.",
+  "eyebrow": "100% automotive",
+  "h1": "Industries We Serve",
+  "lead": "We focus entirely on the automotive industry, so we understand how motorists and trade buyers search for each kind of business.",
+  "grid_kicker": "Who we help",
+  "grid_h2": "Automotive businesses across Malaysia",
+  "same_kicker": "Same goal for every business",
+  "same_h2": "Easier to find, easier to trust, easier to choose",
+  "same_text": "Whatever part of the automotive trade you are in, the work starts with how your customers search: the words they use, the areas they search in, and whether they use Google, Google Maps or an AI tool. Choose your industry above to see what we focus on, or WhatsApp us if yours isn’t listed.",
+  "focus_kicker": "What we focus on",
+  "focus_h2": "How we help {label}",
+  "search_kicker": "How your customers search",
+  "search_h2": "Searches worth being found for",
+  "svc_kicker": "Services",
+  "svc_h2": "What we can do for you"
+ },
+ "industries": {
+  "car-workshops": {
+   "label": "Car workshops and automotive service centres",
+   "short": "Car workshops",
+   "who": "a car workshop",
+   "h1": "SEO for car workshops and service centres in Malaysia",
+   "meta": "SEO, Google Maps and AI search visibility for car workshops and automotive service centres in Kuala Lumpur, Selangor, Johor Bahru and Penang.",
+   "intro": "Motorists usually look for a workshop when something has already gone wrong, so they search fast and choose fast. They want a workshop that is close, open and clearly fixes their problem. The workshops that show up with clear service pages and a strong Google Maps listing are the ones that get the call.",
+   "focus": [
+    "A page for each main job you do, such as servicing, brakes, gearbox, suspension or engine repair",
+    "Car makes you specialise in, if you do, so the right owners find you",
+    "A strong Google Business Profile with your real hours and services",
+    "Area pages for the neighbourhoods you actually serve",
+    "A WhatsApp button so customers can send photos or describe the problem straight away"
+   ],
+   "searches": [
+    "car workshop near me",
+    "bengkel kereta Klang",
+    "car service Subang Jaya",
+    "gearbox specialist Johor Bahru"
+   ],
+   "focus_label": "car workshops and automotive service centres"
+  },
+  "car-dealerships": {
+   "label": "New and used car dealerships",
+   "short": "Car dealerships",
+   "who": "a car dealership",
+   "h1": "SEO for new and used car dealerships in Malaysia",
+   "meta": "Help car buyers find your new or used car dealership on Google, Google Maps and AI search, with clear pages and WhatsApp enquiries.",
+   "intro": "Car buyers compare a lot before they visit a showroom. They search by brand, model, budget and location, and many ask AI tools for advice too. A dealership that answers those questions clearly online is easier to shortlist.",
+   "focus": [
+    "Pages for the brands and models you sell, with the information buyers look for",
+    "Location pages for each showroom or branch",
+    "Helpful guides on buying, trading in and owning a car",
+    "Google Business Profiles kept accurate for every outlet",
+    "WhatsApp enquiry buttons with the model already named in the message"
+   ],
+   "searches": [
+    "used car dealer Kuala Lumpur",
+    "recond car Shah Alam",
+    "car showroom Johor Bahru",
+    "trade in my car Penang"
+   ],
+   "focus_label": "new and used car dealerships"
+  },
+  "tyre-shops": {
+   "label": "Tyre shops and tyre distributors",
+   "short": "Tyre shops",
+   "who": "a tyre shop",
+   "h1": "SEO for tyre shops and tyre distributors in Malaysia",
+   "meta": "Help motorists and trade buyers find your tyre shop or tyre distribution business on Google, Google Maps and AI search across Malaysia.",
+   "intro": "Tyre searches are often very local and very specific: a tyre size, a brand, or a puncture that needs fixing now. Distributors also need to be found by workshops and fleets looking for supply. Clear pages and a well-kept Maps listing help both kinds of customer.",
+   "focus": [
+    "Pages for the tyre brands and services you offer, such as alignment, balancing and puncture repair",
+    "Google Maps visibility for “tyre shop near me” searches",
+    "Trade pages for workshops and fleets if you distribute",
+    "Answers to common tyre questions: sizes, wear, age and pressure",
+    "WhatsApp enquiries that include the customer’s tyre size"
+   ],
+   "searches": [
+    "tyre shop near me",
+    "kedai tayar Johor Bahru",
+    "wheel alignment Petaling Jaya",
+    "tyre distributor Malaysia"
+   ],
+   "focus_label": "tyre shops and tyre distributors"
+  },
+  "car-accessories": {
+   "label": "Car accessories and aftermarket retailers",
+   "short": "Car accessories",
+   "who": "a car accessories business",
+   "h1": "SEO for car accessories and aftermarket retailers in Malaysia",
+   "meta": "Help motorists find your car accessories or aftermarket shop on Google and AI search, with clear product and fitting pages for Malaysian buyers.",
+   "intro": "Accessory buyers search by product and by car model, such as dashcams, head units, body kits or tint for a specific car. Pages that match those searches, and show what you fit and where, turn browsing into enquiries.",
+   "focus": [
+    "Category pages for the products you sell and fit",
+    "Car model pages where you have popular fitments",
+    "Guides that help buyers choose between options",
+    "Google Maps visibility for your fitting outlets",
+    "WhatsApp enquiries with the product and car model filled in"
+   ],
+   "searches": [
+    "dashcam installation Kuala Lumpur",
+    "android player car Selangor",
+    "car tint Johor Bahru",
+    "bodykit shop Penang"
+   ],
+   "focus_label": "car accessories and aftermarket retailers"
+  },
+  "car-aircon-specialists": {
+   "label": "Car air-conditioning specialists",
+   "short": "Car aircon specialists",
+   "who": "a car air-conditioning business",
+   "h1": "SEO for car air-conditioning specialists in Malaysia",
+   "meta": "Help motorists with a warm car aircon find your specialist workshop on Google, Google Maps and AI search in Kuala Lumpur, Selangor, Johor Bahru and Penang.",
+   "intro": "In Malaysian heat, a car aircon that stops blowing cold is urgent. Owners search for the symptom as often as the service. A specialist that explains common aircon problems and shows up on Maps nearby is well placed to get the job.",
+   "focus": [
+    "Pages for gas top-ups, compressor, cooling coil, blower and servicing work",
+    "Symptom guides, such as “aircon not cold” or “aircon smells”",
+    "Google Business Profile with aircon services listed",
+    "Area pages for the places you serve",
+    "WhatsApp enquiries so customers can describe the problem first"
+   ],
+   "searches": [
+    "car aircon not cold",
+    "car aircon service Shah Alam",
+    "aircon kereta Johor Bahru",
+    "compressor replacement Penang"
+   ],
+   "focus_label": "car air-conditioning specialists"
+  },
+  "car-detailing": {
+   "label": "Car detailing, polishing and coating centres",
+   "short": "Car detailing and coating",
+   "who": "a car detailing centre",
+   "h1": "SEO for car detailing, polishing and coating centres in Malaysia",
+   "meta": "Help car owners find your detailing, polishing or coating centre on Google, Google Maps and AI search, with clear service pages and WhatsApp bookings.",
+   "intro": "Detailing customers compare options and want to see the result before they book. They search for a service and an area, then look at photos and reviews. Clear service pages, real photos and a strong Maps profile make it easier to choose you.",
+   "focus": [
+    "Pages for each service, such as interior cleaning, polishing, ceramic coating and paint protection film",
+    "Guides that explain the differences between treatments",
+    "Photos of your own work on your website and Google profile",
+    "A steady flow of genuine Google reviews",
+    "WhatsApp booking messages with the car model included"
+   ],
+   "searches": [
+    "ceramic coating Kuala Lumpur",
+    "car polish near me",
+    "interior cleaning Petaling Jaya",
+    "PPF Johor Bahru"
+   ],
+   "focus_label": "car detailing, polishing and coating centres"
+  },
+  "ev-hybrid-specialists": {
+   "label": "EV and hybrid vehicle specialists",
+   "short": "EV and hybrid specialists",
+   "who": "an EV and hybrid specialist",
+   "h1": "SEO for EV and hybrid vehicle specialists in Malaysia",
+   "meta": "Help EV and hybrid owners in Malaysia find your specialist service on Google and AI search, with clear pages on the systems you work on.",
+   "intro": "EV and hybrid owners often can’t use any workshop, so they search hard for someone who knows their car. Many also ask AI tools for advice first. Clear pages about the systems and models you handle help these owners find and trust you.",
+   "focus": [
+    "Pages for hybrid battery, EV servicing and diagnostic work you offer",
+    "Model and brand pages where you have real experience",
+    "Plain guides that answer common EV and hybrid questions",
+    "Clear business facts that AI tools can read and repeat",
+    "WhatsApp enquiries with the model and symptom included"
+   ],
+   "searches": [
+    "hybrid battery replacement Kuala Lumpur",
+    "EV service centre Selangor",
+    "hybrid specialist Penang",
+    "EV workshop Johor Bahru"
+   ],
+   "focus_label": "ev and hybrid vehicle specialists"
+  },
+  "battery-spare-parts": {
+   "label": "Car battery and spare parts suppliers",
+   "short": "Batteries and spare parts",
+   "who": "a car battery and spare parts business",
+   "h1": "SEO for car battery and spare parts suppliers in Malaysia",
+   "meta": "Help motorists and workshops find your car battery or spare parts business on Google, Google Maps and AI search across Malaysia.",
+   "intro": "Battery and parts searches are often urgent or very specific: a car that won’t start, or a part number for a particular model. Pages organised by car model and part, plus a reliable Maps listing, help buyers find you when they need you.",
+   "focus": [
+    "Pages for battery types and the car models they fit",
+    "Parts categories organised the way buyers search",
+    "Trade pages for workshops if you supply them",
+    "Google Maps visibility for “car battery near me” searches",
+    "WhatsApp enquiries that include the car model and part needed"
+   ],
+   "searches": [
+    "car battery near me",
+    "bateri kereta Johor Bahru",
+    "spare parts Kuala Lumpur",
+    "car battery delivery Selangor"
+   ],
+   "focus_label": "car battery and spare parts suppliers"
+  },
+  "equipment-diagnostic-tools": {
+   "label": "Automotive equipment and diagnostic tool distributors",
+   "short": "Equipment and diagnostic tools",
+   "who": "an automotive equipment distributor",
+   "h1": "SEO for automotive equipment and diagnostic tool distributors in Malaysia",
+   "meta": "Help workshops and trade buyers find your automotive equipment or diagnostic tool business on Google and AI search across Malaysia.",
+   "intro": "Your customers are workshop owners and technicians who research carefully before buying equipment. They search by tool type, brand and function, and often ask AI tools to compare options. Clear product and category pages help you get on their shortlist.",
+   "focus": [
+    "Category and product pages written for workshop buyers",
+    "Comparison guides between tool types and uses",
+    "Support and training information that builds trust",
+    "Clear company facts for AI tools and B2B searches",
+    "WhatsApp enquiries that name the product the buyer is looking at"
+   ],
+   "searches": [
+    "car diagnostic tool Malaysia",
+    "car lift supplier Selangor",
+    "workshop equipment Kuala Lumpur",
+    "scan tool distributor Malaysia"
+   ],
+   "focus_label": "automotive equipment and diagnostic tool distributors"
+  }
+ },
+ "other_industry": "Other automotive-related businesses",
+ "faqs": [
+  {
+   "q": "What does AutoSEO.my do?",
+   "a": "AutoSEO.my helps automotive businesses in Malaysia get found online. We combine SEO, AEO and GEO so workshops, dealers, tyre shops and other automotive businesses are easier to find on Google Search, Google Maps and AI tools such as ChatGPT, Gemini and Perplexity, and easier to contact on WhatsApp."
+  },
+  {
+   "q": "Who do you work with?",
+   "a": "Only automotive businesses: car workshops and service centres, dealerships, tyre shops, accessory retailers, car aircon specialists, detailing centres, EV and hybrid specialists, battery and parts suppliers, equipment distributors and other automotive-related businesses."
+  },
+  {
+   "q": "Which areas do you cover?",
+   "a": "We work with businesses across Malaysia, including Kuala Lumpur, Selangor, Johor Bahru and Penang. Strategies are built around the areas where your customers are."
+  },
+  {
+   "q": "How much does it cost?",
+   "a": "It depends on your business and what you need. WhatsApp us for a quote after a free automotive SEO audit."
+  },
+  {
+   "q": "What is the free automotive SEO audit?",
+   "a": "We look at how your business appears today on Google Search, Google Maps and AI search, and at your website if you have one, then tell you in plain language what to fix first. Ask for it on WhatsApp."
+  },
+  {
+   "q": "What are SEO, AEO and GEO?",
+   "a": "SEO helps your pages rank on Google. AEO shapes your content into clear answers for featured snippets and AI answers. GEO helps AI tools such as ChatGPT, Gemini and Perplexity find and mention your business. Together they cover how motorists search today."
+  },
+  {
+   "q": "Can you guarantee first place on Google?",
+   "a": "No. Nobody can honestly guarantee rankings, because Google and AI tools decide their own results. We focus on the work that improves your chances, and on what matters most: qualified enquiries, WhatsApp leads and calls."
+  },
+  {
+   "q": "How do I get started?",
+   "a": "Send us a WhatsApp message. Tell us your business name, what you do and where, and we’ll arrange your free automotive SEO audit."
+  }
+ ],
+ "steps": [
+  {
+   "pill": "Step 1",
+   "title": "Free automotive SEO audit",
+   "text": "Send us a WhatsApp message with your business name and location. We check how you appear on Google Search, Google Maps and AI search today, and what is holding you back.",
+   "items": [
+    "Your Google Business Profile and Maps listing",
+    "Your website, if you have one: speed, mobile layout and pages",
+    "How you show up for the searches your customers use",
+    "What AI tools can find about your business"
+   ]
+  },
+  {
+   "pill": "Step 2",
+   "title": "A plan for your business",
+   "text": "We explain what we found in plain language and suggest what to fix first. The plan is built around your services, your areas and the customers you want more of.",
+   "items": [
+    "Priorities, most important first",
+    "Which services and areas to focus on",
+    "A quote on WhatsApp, with no obligation"
+   ]
+  },
+  {
+   "pill": "Step 3",
+   "title": "We do the work",
+   "text": "We carry out the agreed work across SEO, AEO and GEO, from your website and Google profile to content that answers your customers’ questions.",
+   "items": [
+    "Website and page improvements",
+    "Google Maps and local SEO",
+    "Content, FAQs and structured data"
+   ]
+  },
+  {
+   "pill": "Step 4",
+   "title": "Review and improve",
+   "text": "We look at what is bringing in enquiries and keep improving it. The focus stays on qualified enquiries, WhatsApp leads, calls and customers, not just traffic.",
+   "items": [
+    "What people search to find you",
+    "Which pages bring enquiries",
+    "Next improvements, agreed with you"
+   ]
+  }
+ ],
+ "about_page": {
+  "title": "About AutoSEO.my: Automotive Digital Marketing in Malaysia",
+  "description": "AutoSEO.my is an automotive-exclusive SEO, AEO and GEO agency in Malaysia, a brand of K Tech Auto Solution Sdn Bhd.",
+  "h1": "About AutoSEO.my",
+  "who_kicker": "Who we are",
+  "why_h2": "What makes us different",
+  "ind_h2": "Every part of the automotive trade"
+ },
+ "how_page": {
+  "title": "How It Works: Automotive SEO in Malaysia | AutoSEO.my",
+  "description": "How AutoSEO.my works: a free automotive SEO audit on WhatsApp, a plan for your business, the work on SEO, AEO and GEO, then regular improvements.",
+  "eyebrow": "Four steps, no tech skills needed",
+  "h1": "How it works: from free audit to more enquiries",
+  "lead": "Start with a WhatsApp message. We check how your business shows up today, agree a plan with you, do the work and keep improving it.",
+  "steps_kicker": "The steps",
+  "steps_h2": "What happens at each step",
+  "you_kicker": "Your part",
+  "you_h2": "What we need from you",
+  "you_text": "A short WhatsApp chat about your business: what you do, the areas you serve and the customers you want more of. Real photos of your premises and work help a lot. Before anything that describes your business goes live, you check it for accuracy."
+ },
+ "faq_page": {
+  "title": "FAQ: Automotive SEO, AEO & GEO in Malaysia | AutoSEO.my",
+  "description": "Answers about AutoSEO.my: what SEO, AEO and GEO mean, who we work with, areas covered, pricing and the free automotive SEO audit.",
+  "eyebrow": "Plain answers",
+  "h1": "Automotive SEO questions, answered",
+  "lead": "What we do, who we work with, what it costs and how to start.",
+  "kicker": "FAQ",
+  "h2": "Frequently asked questions"
+ },
+ "contact_page": {
+  "title": "Contact AutoSEO.my on WhatsApp",
+  "description": "Contact AutoSEO.my on WhatsApp for a free automotive SEO audit or a quote. Serving automotive businesses across Malaysia.",
+  "eyebrow": "WhatsApp is the fastest way to reach us",
+  "h1": "Contact AutoSEO.my",
+  "lead": "Send us a WhatsApp message with your business name, what you do and where you are. We’ll reply on WhatsApp.",
+  "kicker": "Pick a message",
+  "h2": "Each button opens WhatsApp with a message ready to send",
+  "audit_text": "Ask for a free check of how your business shows up on Google, Maps and AI search.",
+  "specialist_text": "Talk through your business and what you want more of.",
+  "quote_text": "Tell us what you need and we’ll suggest what fits.",
+  "areas_note": "We work with automotive businesses across Malaysia, including Kuala Lumpur, Selangor, Johor Bahru and Penang."
+ },
+ "privacy_page": {
+  "title": "Privacy Notice | AutoSEO.my",
+  "description": "How the AutoSEO.my website handles information: no forms, no tracking cookies, WhatsApp messages used only to reply.",
+  "eyebrow": "Short and plain",
+  "h1": "Privacy notice",
+  "lead": "How AutoSEO.my handles information on this website.",
+  "sections": [
+   [
+    "What this website collects",
+    "This website has no forms and asks for no personal details. It sets no advertising or tracking cookies."
+   ],
+   [
+    "WhatsApp messages",
+    "When you tap a WhatsApp button, WhatsApp opens with a message ready to send. Nothing is sent until you press send. Messages you send reach us through WhatsApp and are handled under WhatsApp’s own terms. We use them only to reply to you and to provide the service you ask about."
+   ],
+   [
+    "Fonts",
+    "Pages load fonts from Google Fonts, so your browser connects to Google’s servers when you view them."
+   ],
+   [
+    "Who we are",
+    "AutoSEO.my is a brand of K Tech Auto Solution Sdn Bhd. For any privacy question, or to ask us to delete your messages, contact us on WhatsApp."
+   ]
+  ]
+ },
+ "notfound_page": {
+  "title": "Page not found | AutoSEO.my",
+  "description": "This page could not be found.",
+  "eyebrow": "404",
+  "h1": "Sorry, that page isn’t here",
+  "lead": "The link may be old or mistyped. Try the services or industries pages, or ask us on WhatsApp."
+ },
+ "partners_page": {
+  "_note": "Partner programme page (/partners/). Commission amount, rate and payout terms are NOT confirmed: never add numbers, percentages, payout times or examples.",
+  "title": "Automotive SEO Referral Programme Malaysia | AutoSEO.my",
+  "description": "Join the AutoSEO.my automotive SEO referral programme in Malaysia. Introduce car businesses that need SEO, AEO, GEO or a website, and earn commission.",
+  "crumb": "Partner programme",
+  "eyebrow": "Partner programme",
+  "h1": "Automotive SEO Referral Programme in Malaysia",
+  "hero_line": "You know the right people. We do the search work.",
+  "lead": "This is the automotive SEO referral programme Malaysia's workshop owners, consultants, freelancers and industry contacts can join: introduce an automotive business that needs to be found on Google, Google Maps or AI search, and we take it from there.",
+  "btn_apply": "Apply on WhatsApp",
+  "btn_how": "See how it works",
+  "commission_note": "Commission details shared when you apply.",
+  "route_label": "Your referral route",
+  "route_aria": "Referral route: you introduce, we pitch and close, you earn",
+  "who_kicker": "Who it's for",
+  "who_h2": "For people the motor trade already trusts",
+  "who": [
+   {
+    "title": "Workshop owners",
+    "text": "You talk to other shop owners every week. Point the ones who need more enquiries our way."
+   },
+   {
+    "title": "Automotive consultants",
+    "text": "You already advise automotive businesses. Add search visibility to what you can help them with."
+   },
+   {
+    "title": "Freelancers",
+    "text": "Designers, photographers and marketers with automotive clients who need SEO, AEO or GEO done properly."
+   },
+   {
+    "title": "Industry contacts",
+    "text": "Suppliers, distributors and anyone else who knows automotive business owners personally."
+   }
+  ],
+  "how_kicker": "How it works",
+  "how_h2": "Three steps. You only do the first one.",
+  "steps": [
+   {
+    "title": "You introduce",
+    "text": "Tell us about an automotive business that needs more enquiries, and let the owner know we will be in touch. A warm introduction, nothing more."
+   },
+   {
+    "title": "We pitch and close",
+    "text": "Our team talks to the owner, looks at how they show up on Google, Google Maps and AI search, explains the plan and handles the quote."
+   },
+   {
+    "title": "You earn",
+    "text": "When the business signs up, you earn a commission. Commission details shared when you apply."
+   }
+  ],
+  "refer_kicker": "What you can refer",
+  "refer_h2": "Every AutoSEO.my service counts",
+  "refer_lead": "Introduce a business for any of our services:",
+  "refer_ind": "For any automotive business, for example:",
+  "why_kicker": "Why AutoSEO.my",
+  "why_h2": "Easy to introduce, because it's all automotive",
+  "rules_kicker": "Simple rules",
+  "rules_h2": "Four rules that keep every introduction welcome",
+  "rules": [
+   {
+    "title": "Warm introductions only",
+    "text": "Introduce people you know, who know you, and who are happy to hear from us."
+   },
+   {
+    "title": "No spam",
+    "text": "No spam of any kind: don't post our links in groups, comment sections or forums where they aren't welcome."
+   },
+   {
+    "title": "No cold mass messaging",
+    "text": "No bulk WhatsApp, SMS, email or DM blasts to lists of strangers in our name."
+   },
+   {
+    "title": "No promises on our behalf",
+    "text": "Don't quote prices or promise rankings, results or timelines. Our team covers that after looking at the business."
+   }
+  ],
+  "faq_h2": "Partner programme questions",
+  "faqs": [
+   {
+    "q": "Who can join the partner programme?",
+    "a": "Workshop owners, automotive consultants, freelancers and industry contacts in Malaysia who personally know automotive business owners. Tell us a little about yourself on WhatsApp and we'll take it from there."
+   },
+   {
+    "q": "How does commission work?",
+    "a": "You earn a commission when a business you introduced becomes an AutoSEO.my client. Commission details shared when you apply."
+   },
+   {
+    "q": "Do I need to sell anything?",
+    "a": "No. You make a warm introduction. Our team explains the services, prepares the plan and quote, and closes. You never need to pitch or quote prices."
+   },
+   {
+    "q": "How am I paid?",
+    "a": "How and when commission is paid is explained together with the commission details when you apply."
+   },
+   {
+    "q": "Can I refer businesses outside automotive?",
+    "a": "AutoSEO.my works only with automotive businesses: workshops, dealerships, tyre shops, accessories, aircon, detailing, EV and hybrid, batteries, spare parts and equipment. If you're not sure a business fits, ask us on WhatsApp before you introduce them."
+   },
+   {
+    "q": "Which areas do you cover?",
+    "a": "Automotive businesses across Malaysia, including Kuala Lumpur, Selangor, Johor Bahru and Penang."
+   },
+   {
+    "q": "Can I tell a business owner what it will cost?",
+    "a": "Please don't. Pricing depends on what each business needs, so our team prepares the quote after talking to the owner."
+   }
+  ],
+  "cta_h2": "Know an automotive business that should be easier to find?",
+  "cta_text": "Apply on WhatsApp. Commission details shared when you apply.",
+  "btn_question": "Ask a question first"
+ },
+ "llms": {
+  "services": "Services",
+  "industries": "Industries",
+  "company": "Company",
+  "contact": "Contact",
+  "areas": "Areas",
+  "and_other": "and other Malaysian locations",
+  "articles": "Articles"
+ },
+ "check": {
+  "_note": "Free website check in the homepage hero (templates/hero_check.html + assets/check.js). {site} and {score} are filled in by the script.",
+  "kicker": "Free website check",
+  "label": "Your website address",
+  "placeholder": "yourworkshop.com.my",
+  "button": "Check my website",
+  "note": "Free, about 20 seconds. We only read your public homepage.",
+  "progress": [
+   "Opening your homepage…",
+   "Checking the Google basics…",
+   "Checking mobile and AI search…",
+   "Adding up your score…"
+  ],
+  "err_empty": "Please enter your website address, for example yourworkshop.com.my",
+  "err_failed": "We couldn't check that website. Check the address and try again.",
+  "err_blocked": "This website uses bot protection that hides it from automated checkers, so we can't score it fairly.",
+  "err_rate": "You've run a lot of checks recently. Please try again in an hour.",
+  "err_network": "The check couldn't run just now. Please try again in a minute.",
+  "result_for": "Result for {site}",
+  "score_label": "Score out of 100",
+  "verdict_good": "A strong start. A few small fixes could still help.",
+  "verdict_ok": "Some important basics need work.",
+  "verdict_poor": "Several basics are missing, so motorists may not find you.",
+  "counts": "{fails} to fix · {warns} to improve · {passes} good",
+  "penalty": "Score held at {cap} because of a serious problem: {items}. Fix this first.",
+  "penalty_items": {
+   "status": "the page doesn't load",
+   "indexable": "the page is hidden from Google (noindex)",
+   "https": "the site isn't on https",
+   "title": "the page has no title",
+   "robots": "robots.txt blocks Google"
+  },
+  "speed_label": "Mobile speed (Google PageSpeed)",
+  "speed_wait": "Measuring mobile speed…",
+  "speed_na": "Mobile speed couldn't be measured right now.",
+  "groups": {
+   "google": "Google basics",
+   "mobile": "Mobile",
+   "ai": "AI search",
+   "customers": "Customers"
+  },
+  "status": {
+   "pass": "Good",
+   "warn": "Improve",
+   "fail": "Fix"
+  },
+  "show_good": "Show what's already good",
+  "wa_heading": "Want to know what to fix first?",
+  "wa_text": "Send this result to our team on WhatsApp and we'll reply with the fixes that matter most. No obligation.",
+  "wa_button": "Get my fix list on WhatsApp",
+  "wa_failed_text": "Send us your website address on WhatsApp and our team will check it for you.",
+  "again": "Check another website",
+  "disclaimer": "An automated check of your homepage. It shows what to improve; it can't promise rankings.",
+  "items": {
+   "status": {
+    "label": "Page loads",
+    "pass": "Your homepage opens normally.",
+    "fix": "Your homepage did not load properly. Google can't list a page that doesn't open."
+   },
+   "https": {
+    "label": "Secure (HTTPS)",
+    "pass": "Your site uses a secure https:// address.",
+    "fix": "Your site isn't on https://. Browsers show \"Not secure\" and Google prefers secure sites."
+   },
+   "http_redirect": {
+    "label": "http:// goes to https://",
+    "pass": "Visitors who type http:// are sent to the secure version.",
+    "fix": "The http:// version doesn't send visitors to https://."
+   },
+   "title": {
+    "label": "Page title",
+    "pass": "Your page title is a good length.",
+    "fix": "Your page title is missing, too short or too long. It's the blue headline people see on Google."
+   },
+   "description": {
+    "label": "Meta description",
+    "pass": "Your search snippet text is a good length.",
+    "fix": "Your meta description is missing or the wrong length, so Google may show random text under your name."
+   },
+   "h1": {
+    "label": "Main heading (H1)",
+    "pass": "One clear main heading.",
+    "fix": "The page needs exactly one main heading that says what you do and where."
+   },
+   "local_keywords": {
+    "label": "Your area in the title and heading",
+    "pass": "Your title and heading say where you work.",
+    "fix": "Say your area in the title and main heading, for example \"Car Workshop in Petaling Jaya\"."
+   },
+   "lang": {
+    "label": "Page language set",
+    "pass": "The page says which language it's in.",
+    "fix": "The page doesn't say which language it's in, so Google has to guess."
+   },
+   "mixed_content": {
+    "label": "No insecure files",
+    "pass": "All images and scripts load securely.",
+    "fix": "Some images or scripts load over insecure http://, which browsers can block."
+   },
+   "indexable": {
+    "label": "Allowed in Google",
+    "pass": "Nothing stops Google from listing this page.",
+    "fix": "This page tells Google not to list it (noindex), so it won't show up in search."
+   },
+   "canonical": {
+    "label": "Canonical link",
+    "pass": "Google knows which address is the main version.",
+    "fix": "No canonical link, so Google may treat copies of the page as separate pages."
+   },
+   "robots": {
+    "label": "robots.txt",
+    "pass": "Found, and it lets Google in.",
+    "fix": "robots.txt is missing or blocks Google."
+   },
+   "sitemap": {
+    "label": "Sitemap",
+    "pass": "A sitemap helps Google find every page.",
+    "fix": "No sitemap found, so Google may miss some of your pages."
+   },
+   "pages": {
+    "label": "Enough pages to rank",
+    "pass": "Enough pages to show up for many different searches.",
+    "fix": "Too few pages. Each service and area usually needs its own page to show up on Google."
+   },
+   "internal_links": {
+    "label": "Links to your other pages",
+    "pass": "The homepage links to your other pages.",
+    "fix": "Link from the homepage to each service and area page so Google and visitors find them."
+   },
+   "fresh": {
+    "label": "Site looks up to date",
+    "pass": "Recently updated.",
+    "fix": "The site looks out of date (old footer year or no recent updates)."
+   },
+   "viewport": {
+    "label": "Mobile-friendly setup",
+    "pass": "The page fits phone screens.",
+    "fix": "The page isn't set up for phones, and most motorists search on their phone."
+   },
+   "response": {
+    "label": "Server response time",
+    "pass": "Your server answers quickly.",
+    "fix": "Your server is slow to answer, and impatient visitors leave."
+   },
+   "weight": {
+    "label": "Page size",
+    "pass": "The page is lean.",
+    "fix": "The page is heavy, so it loads slowly on mobile data."
+   },
+   "scripts": {
+    "label": "Not slowed down by scripts",
+    "pass": "A reasonable number of scripts.",
+    "fix": "Many script files load with the page, which slows it down on phones."
+   },
+   "schema": {
+    "label": "Business details for machines (structured data)",
+    "pass": "Google and AI tools can read your business details.",
+    "fix": "No business details in structured data, so Google and AI tools have to guess your name, area and hours."
+   },
+   "ai_bots": {
+    "label": "AI assistants can read the site",
+    "pass": "ChatGPT, Gemini, Perplexity and others aren't blocked.",
+    "fix": "Your robots.txt blocks some AI tools, so they can't recommend you."
+   },
+   "content": {
+    "label": "Readable text on the page",
+    "pass": "Enough text for Google and AI to understand what you offer.",
+    "fix": "Too little readable text. Explain your services, areas and common questions in plain words."
+   },
+   "h2": {
+    "label": "Subheadings",
+    "pass": "Clear sections with subheadings.",
+    "fix": "Use subheadings for each service, area and common question."
+   },
+   "faq": {
+    "label": "Answers to common questions (FAQ)",
+    "pass": "Answers real customer questions that Google and AI can quote.",
+    "fix": "Add real customer questions with clear answers (price, how long, which areas)."
+   },
+   "llms": {
+    "label": "llms.txt summary for AI",
+    "pass": "Found an llms.txt summary for AI tools.",
+    "fix": "No llms.txt summary. It helps AI tools describe you correctly (nice to have)."
+   },
+   "og": {
+    "label": "Share preview",
+    "pass": "Links shared on WhatsApp and Facebook show a proper preview.",
+    "fix": "Links shared on WhatsApp and Facebook look bare. Add share preview tags."
+   },
+   "alt": {
+    "label": "Photos with descriptions",
+    "pass": "Your photos have descriptions.",
+    "fix": "Add real photos of your work, each with a short description."
+   },
+   "local": {
+    "label": "Phone number and location",
+    "pass": "Customers and Google can see where you are and how to reach you.",
+    "fix": "Show your phone number and your address or service area on the page."
+   },
+   "contact": {
+    "label": "One-tap contact",
+    "pass": "Visitors can call, WhatsApp or email you in one tap.",
+    "fix": "No one-tap call, WhatsApp or email link. Ready customers won't copy your number by hand."
+   },
+   "reviews": {
+    "label": "Reviews shown",
+    "pass": "Shows reviews that build trust with new customers.",
+    "fix": "No reviews on the page. Most motorists check reviews before they call."
+   },
+   "hours_map": {
+    "label": "Opening hours and map",
+    "pass": "Customers can see when you're open and find you on Google Maps.",
+    "fix": "Show your opening hours and a Google Maps link."
+   }
+  }
+ },
+ "articles_page": {
+  "title": "Automotive SEO articles | AutoSEO.my",
+  "description": "Plain-English guides for Malaysian automotive businesses: Google Maps, search, AI answers and websites, explained step by step.",
+  "eyebrow": "Guides for automotive businesses",
+  "h1": "Automotive SEO articles",
+  "lead": "Short, practical guides for workshops, dealers and parts shops in Malaysia on getting found on Google, Google Maps and AI answers.",
+  "crumb": "Articles",
+  "list_h2": "Latest articles",
+  "published": "Published",
+  "updated": "Updated",
+  "read_time": "Read time",
+  "minutes": "{n} min",
+  "answer_label": "Short answer",
+  "service_lead": "Want this done for your business?",
+  "service_link": "See our {topic} service →",
+  "faq_h2": "Questions about this topic",
+  "more_h2": "More articles",
+  "empty": "The first articles are on the way.",
+  "search_aria": "Search phrase this article answers",
+  "cta_h2": "Want a second pair of eyes on your listing?",
+  "cta_text": "Send us your business name on WhatsApp and we will tell you what to fix first."
+ }
+}

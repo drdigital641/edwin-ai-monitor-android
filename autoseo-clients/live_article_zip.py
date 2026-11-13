@@ -3,7 +3,8 @@
 
     python3 autoseo-clients/live_article_zip.py <site> <slug> [--date YYYY-MM-DD]
 
-Sites: emats (ecumats.my), hybrid-world (hybridworld.com.my), carzy-world (carzyworld.com.my).
+Sites: emats (ecumats.my), hybrid-world (hybridworld.com.my), carzy-world (carzyworld.com.my),
+autoseo-my (autoseo.my itself: source autoseo-my/ at the repo root, which always builds live).
 The live sites are built and deployed by Dev Desk (build_live.py / build.py --live). This script never deploys.
 It runs the repo build in live mode (site-live/) and zips:
   source/data/articles/<slug>.json      the article data file (what build_live.py reads)
@@ -25,7 +26,7 @@ from datetime import datetime, timedelta, timezone
 from pathlib import Path
 
 HERE = Path(__file__).resolve().parent
-SITES = {"emats": "config.json", "hybrid-world": "config.json", "carzy-world": "data/business.json"}
+SITES = {"emats": "config.json", "hybrid-world": "config.json", "carzy-world": "data/business.json", "autoseo-my": "data/brand.json"}
 LANG_PREFIX = ["", "ms/", "zh/"]
 PROTECTED = re.compile(r"(^|/)(\.htaccess|robots\.txt|BingSiteAuth\.xml|\.well-known/|cgi-bin/)|^[0-9a-f]{8,}\.txt$", re.I)
 
@@ -36,16 +37,19 @@ def main():
     ap.add_argument("slug")
     ap.add_argument("--date", default=(datetime.now(timezone.utc) + timedelta(hours=8)).date().isoformat())
     a = ap.parse_args()
-    root = HERE / a.site
+    own = a.site == "autoseo-my"  # autoseo.my builds live already (brand.json preview false): no --live, output site/
+    root = HERE.parent / "autoseo-my" if own else HERE / a.site
     cfg = json.loads((root / SITES[a.site]).read_text(encoding="utf-8"))
-    live = cfg["live_site_url"]
+    live = cfg["site_url"].rstrip("/") + "/" if own else cfg["live_site_url"]
+    if own and cfg.get("preview"):
+        sys.exit("autoseo-my brand.json preview is true: not a live build")
     src = root / "data" / "articles" / f"{a.slug}.json"
     if not src.exists():
         sys.exit(f"no article data file {src}")
-    r = subprocess.run([sys.executable, str(root / "src" / "build.py"), "--live"])
+    r = subprocess.run([sys.executable, str(root / "src" / "build.py")] + ([] if own else ["--live"]))
     if r.returncode:
         sys.exit("live build failed: nothing zipped")
-    out = root / "site-live"
+    out = root / ("site" if own else "site-live")
     files = []
     for p in LANG_PREFIX:
         files.append(f"{p}articles/index.html")

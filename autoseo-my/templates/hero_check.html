@@ -1,0 +1,15 @@
+          <form class="checker-box hero-check" id="site-check" novalidate data-endpoint="{{endpoint}}" data-lang="{{lang}}">
+            <label class="checker-label" for="site-check-url"><span class="hero-check-kicker">{{kicker}}</span> · {{label}}</label>
+            <div class="checker-row">
+              <div class="checker-field">
+                <span class="checker-globe" aria-hidden="true">🌐</span>
+                <input id="site-check-url" name="url" type="url" inputmode="url" autocomplete="url" autocapitalize="off" spellcheck="false" placeholder="{{placeholder}}" required>
+              </div>
+              <button class="btn" type="submit" data-cta="check_submit">{{button}}</button>
+            </div>
+            <p class="checker-hint">{{note}}</p>
+            <p class="form-error" id="site-check-error" role="alert" hidden></p>
+            <div class="checker-progress" id="site-check-progress" hidden aria-live="polite"><span class="bar"><i></i></span><span class="step"></span></div>
+          </form>
+          <div class="hero-check-result" id="site-check-result" aria-live="polite" hidden></div>
+          <script type="application/json" id="site-check-text">{{strings_json}}</script>

@@ -1,0 +1,20 @@
+/* Free website check in the homepage hero (templates/hero_check.html + assets/check.js). Inlined on the 3 homepages only. */
+.hero-check { margin: 22px 0 22px; max-width: 640px; }
+.hero .hero-check .checker-label { color: #fff; }
+.hero .hero-check .checker-hint { color: #c9d2e3; }
+.hero .hero-check .form-error { color: #fecaca; }
+.hero .hero-check .checker-progress .step { color: #c9d2e3; }
+.hero-check-kicker { color: #ff8a3d; }
+.hero-check-result { max-width: 640px; scroll-margin-top: 84px; }
+.hero-check-result .checker-result { margin: 0 0 24px; }
+.hero-check-result .checker-groups { margin-top: 20px; }
+.hero-check-counts { margin-top: 4px !important; font-size: .88rem; font-weight: 600; }
+.chk-tag { display: inline-block; margin-left: 4px; padding: 0 7px; border-radius: 999px; font-size: .7rem; font-weight: 700; vertical-align: 1px; background: #e2e8f0; color: #334155; }
+.chk.pass .chk-tag { background: #dcfce7; color: #166534; } .chk.warn .chk-tag { background: #fef3c7; color: #92400e; } .chk.fail .chk-tag { background: #fee2e2; color: #991b1b; }
+.hero-check-good { margin-top: 8px; }
+.hero-check-good summary { cursor: pointer; font-size: .86rem; font-weight: 700; color: var(--muted); }
+.hero-check-cta-h { margin: 0 0 6px; color: #fff; font-size: 1.05rem; }
+.btn-wa-cta { background: #25d366; color: #06280f; box-shadow: none; }
+.btn-wa-cta:hover { background: #1fbe5a; }
+.hero-check-result .checker-head h3 { overflow-wrap: anywhere; word-break: normal; }
+@media (max-width: 640px) { .hero-check { margin: 18px 0; } .hero-check-result .checker-head { align-items: flex-start; gap: 14px; } .hero-check-result .score-ring { width: 80px; height: 80px; } }
