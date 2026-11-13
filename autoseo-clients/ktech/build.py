@@ -9,6 +9,7 @@ from urllib.parse import quote
 B=os.path.dirname(os.path.abspath(__file__)); sys.path.insert(0,os.path.join(B,'src'))
 from content import *
 import articles as ART  # K Tech articles (13 Nov 2026): src/articles.py + data/articles/*.json
+from products import PRODUCTS
 F=json.load(open(os.path.join(B,'facts.json'),encoding='utf-8'))
 LIVE_KTECH='--live-ktech' in sys.argv
 LIVE='--live' in sys.argv or LIVE_KTECH
@@ -24,7 +25,7 @@ else:
     OUT=os.path.join(B,'dist-live' if LIVE else 'dist-preview')
 BASE_URL=M['base_url']; BASE=M['base_path']; NOINDEX=M['noindex']
 CANON=BASE_URL if LIVE else 'https://ktec.my/'
-A=BASE+'assets/'; V='?v=20261113h'
+A=BASE+'assets/'; V='?v=20261113p'
 ARTS=ART.load(B); ART_KEYS=ART.register(globals(),ARTS)
 E_=html.escape
 WA_SVG='<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm0 18.2a8.2 8.2 0 0 1-4.2-1.1l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8s-.4-.1-.6.1-.7.8-.8 1-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.3-.4.3-.4.7-1.3.1-.2 0-.3 0-.4l-.8-1.8c-.2-.5-.4-.4-.6-.4h-.5a1 1 0 0 0-.7.3 3 3 0 0 0-.9 2.2 5.2 5.2 0 0 0 1.1 2.7 11.8 11.8 0 0 0 4.5 4c1.7.7 2.3.8 3.2.6a2.7 2.7 0 0 0 1.8-1.2 2.2 2.2 0 0 0 .1-1.2c0-.1-.2-.2-.5-.3z"/></svg>'
@@ -36,13 +37,33 @@ def curl_(p,l): return CANON+LANG_META[l]['prefix']+SLUG[p]
 def wa(l,extra=''): return 'https://wa.me/'+F['whatsapp']+'?text='+quote(WA[l]+extra)
 def wabtn(l,label=None,cls='btn btn-wa',ref='cta'):
     return f'<a class="{cls}" href="{wa(l)}" target="_blank" rel="noopener" data-ref="{ref}">{WA_SVG}<span>{E_(label or UI[l]["wa_quote"])}</span></a>'
+def wa_num(num,l,extra=''):
+    return 'https://wa.me/'+num+'?text='+quote(WA[l]+extra)
+def purl(slug,l):
+    return BASE+LANG_META[l]['prefix']+SLUG['tools']+slug+'/'
+def pcurl(slug,l):
+    return CANON+LANG_META[l]['prefix']+SLUG['tools']+slug+'/'
+def prod_ctas(l, model, ref='product'):
+    return f'<div class="pctas"><a class="btn btn-wa" href="{wa(l,model)}" target="_blank" rel="noopener" data-ref="{ref}">{WA_SVG}<span>{E_(UI[l]["wa_quote"])}</span></a></div>'
+RELATED={
+  'maxisys-ultra-s2':['maxisys-ms919-s2','maxisys-ms909-s2'],
+  'maxisys-ms919-s2':['maxisys-ultra-s2','maxisys-ms909-s2'],
+  'maxisys-ms909-s2':['maxisys-ultra-s2','maxisys-ms919-s2'],
+  'maxisys-ms909ev':['ev-diagnostics-upgrade-kit'],
+  'ev-diagnostics-upgrade-kit':['maxisys-ms909ev'],
+  'maxisys-ms908s3':['maxicheck-mx900'],
+  'maxisys-ms906pro':['maxicheck-mx900'],
+  'maxicheck-mx900':['maxisys-ms906pro'],
+}
+BY_SLUG={pr['slug']:pr for pr in PRODUCTS}
+
 
 def schema_org(l):
     offers=[{'@type':'Offer','itemOffered':{'@type':'Product','name':'Autel '+f[l][0],'brand':{'@type':'Brand','name':'Autel'},'category':f[l][0]}} for f in FAMILIES]
     return {'@context':'https://schema.org','@type':['Store','AutomotiveBusiness'],'@id':CANON+'#org','name':F['name'],'legalName':F['name'],
       'alternateName':'K Tech','identifier':F['company_no'],'url':CANON,'logo':CANON+'assets/ktech-logo.png','image':CANON+'assets/og.jpg',
       'telephone':'+'+F['call'],'email':F['email'],'slogan':F['bio'],'hasMap':F['maps'],'address':{'@type':'PostalAddress','streetAddress':F['street'],'postalCode':F['postcode'],'addressLocality':F['locality'],'addressRegion':F['region'],'addressCountry':F['country']},
-      'contactPoint':[{'@type':'ContactPoint','contactType':'sales','telephone':'+'+F['whatsapp'],'contactOption':'WhatsApp','areaServed':'MY'},{'@type':'ContactPoint','contactType':'sales','name':'Hooi (WhatsApp)','telephone':'+'+F['whatsapp_hooi'],'contactOption':'WhatsApp','areaServed':['Johor Bahru','Masai']},{'@type':'ContactPoint','contactType':'customer service','telephone':'+'+F['call'],'name':F['call_name'],'email':F['email'],'areaServed':'MY'},{'@type':'ContactPoint','contactType':'customer service','name':F['call2_name'],'telephone':'+'+F['call2'],'email':F['email'],'areaServed':'MY'}],
+      'contactPoint':[{'@type':'ContactPoint','contactType':'sales','telephone':'+'+F['whatsapp'],'contactOption':'WhatsApp','areaServed':['Johor Bahru','Masai','MY']},{'@type':'ContactPoint','contactType':'customer service','telephone':'+'+F['call'],'name':F['call_name'],'email':F['email'],'areaServed':'MY'},{'@type':'ContactPoint','contactType':'customer service','name':F['call2_name'],'telephone':'+'+F['call2'],'email':F['email'],'areaServed':'MY'}],
       'areaServed':[{'@type':'City','name':'Johor Bahru'},{'@type':'City','name':'Masai'},{'@type':'Country','name':'Malaysia'}],'brand':{'@type':'Brand','name':'Autel'},
       'sameAs':[F['facebook'],F['facebook2']],'knowsAbout':['Autel diagnostic tools','ADAS calibration','TPMS','key programming','EV diagnostics'],
       'subOrganization':{'@type':'Organization','name':'AutoSEO.my','url':F['autoseo']},
@@ -54,32 +75,37 @@ def crumbs(p,l):
     if p!='home': it.append({'@type':'ListItem','position':2,'name':UI[l]['nav'][p],'item':curl_(p,l)})
     return {'@context':'https://schema.org','@type':'BreadcrumbList','itemListElement':it}
 
-def head(p,l,schemas):
-    t=TITLE[p][l]; d=DESC[p][l]
-    alt=''.join(f'<link rel="alternate" hreflang="{LANG_META[x]["html"]}" href="{curl_(p,x)}">' for x in LANGS)+f'<link rel="alternate" hreflang="x-default" href="{curl_(p,"en")}">'
+def head(p,l,schemas, title=None, desc=None, canon=None, og_image=None, alternates=None):
+    t=title if title is not None else TITLE[p][l]; d=desc if desc is not None else DESC[p][l]
+    can=canon if canon is not None else curl_(p,l)
+    ogimg=og_image or (CANON+'assets/og.jpg')
+    if alternates is None:
+        alternates={x: curl_(p,x) for x in LANGS}
+    alt=''.join(f'<link rel="alternate" hreflang="{LANG_META[x]["html"]}" href="{alternates[x]}">' for x in LANGS)+f'<link rel="alternate" hreflang="x-default" href="{alternates["en"]}">'
     zh='&family=Noto+Sans+SC:wght@400;600;700' if l=='zh' else ''
     js=''.join('<script type="application/ld+json">'+json.dumps(s,ensure_ascii=False)+'</script>' for s in schemas)
     return f'''<!doctype html><html lang="{LANG_META[l]['html']}"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <title>{E_(t)}</title><meta name="description" content="{E_(d)}"><meta name="robots" content="{'noindex,nofollow' if NOINDEX else 'index,follow,max-image-preview:large'}">
-<link rel="canonical" href="{curl_(p,l)}">{alt}
-<meta property="og:type" content="website"><meta property="og:title" content="{E_(t)}"><meta property="og:description" content="{E_(d)}"><meta property="og:url" content="{curl_(p,l)}"><meta property="og:image" content="{CANON}assets/og.jpg"><meta property="og:locale" content="{LANG_META[l]['og']}"><meta name="twitter:card" content="summary_large_image">
+<link rel="canonical" href="{can}">{alt}
+<meta property="og:type" content="website"><meta property="og:title" content="{E_(t)}"><meta property="og:description" content="{E_(d)}"><meta property="og:url" content="{can}"><meta property="og:image" content="{ogimg}"><meta property="og:locale" content="{LANG_META[l]['og']}"><meta name="twitter:card" content="summary_large_image">
 <meta name="theme-color" content="#f3f4f0"><link rel="icon" type="image/png" href="{A}favicon.png"><link rel="apple-touch-icon" href="{A}apple-touch-icon.png">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@600;700&family=Public+Sans:wght@400;600{zh}&display=swap">
 <link rel="stylesheet" href="{A}k.css{V}">{js}</head><body>'''
 
-def header(p,l):
+def header(p,l, lang_href=None):
     nav=''.join(f'<a href="{url(x,l)}"{" aria-current=page" if x==p else ""}>{E_(UI[l]["nav"][x])}</a>' for x in PAGES[1:])
     mnav=''.join(f'<a href="{url(x,l)}">{E_(UI[l]["nav"][x])}</a>' for x in PAGES)
-    lang=''.join(f'<a href="{url(p,x)}" hreflang="{LANG_META[x]["html"]}" lang="{LANG_META[x]["html"]}"{" aria-current=true" if x==l else ""}>{LANG_META[x]["label"]}</a>' for x in LANGS)
-    return f'''<header class="top"><div class="wrap"><a class="brand" href="{url('home',l)}" aria-label="K Tech Auto Solution"><img src="{A}ktech-logo.webp" alt="K Tech Auto Solution logo" width="420" height="229"></a>
+    href=lang_href or (lambda x: url(p,x))
+    lang=''.join(f'<a href="{href(x)}" hreflang="{LANG_META[x]["html"]}" lang="{LANG_META[x]["html"]}"{" aria-current=true" if x==l else ""}>{LANG_META[x]["label"]}</a>' for x in LANGS)
+    return f'''<header class="top"><div class="wrap"><a class="brand" href="{url('home',l)}" aria-label="K Tech Auto Solution"><img src="{A}ktech-logo.webp{V}" alt="K Tech Auto Solution logo" width="110" height="56" decoding="async"></a>
 <nav class="tnav" aria-label="Main">{nav}</nav><div class="lang" aria-label="Language">{lang}</div>
 <button class="menu-btn" aria-expanded="false" aria-controls="mnav" aria-label="{UI[l]['menu']}"><i></i><i></i><i></i></button></div><nav id="mnav" aria-label="Mobile">{mnav}</nav></header><main>'''
 
 def footer(l):
     u=UI[l]; nav=''.join(f'<a href="{url(x,l)}">{E_(u["nav"][x])}</a>' for x in PAGES+['articles'])
     return f'''</main><footer class="foot"><div class="wrap"><div class="fg">
-<div><img src="{A}ktech-logo-white.webp" alt="K Tech Auto Solution" width="420" height="229" loading="lazy"><p>{E_(F['name'])}<br>{u['co']} {F['company_no']}<br><a href="{F['maps']}" target="_blank" rel="noopener">{E_(F['address_full'])}</a></p>
+<div><img src="{A}ktech-logo-white.webp{V}" alt="K Tech Auto Solution" width="110" height="56" loading="lazy" decoding="async"><p>{E_(F['name'])}<br>{u['co']} {F['company_no']}<br><a href="{F['maps']}" target="_blank" rel="noopener">{E_(F['address_full'])}</a></p>
 <p><a href="{wa(l)}" target="_blank" rel="noopener" data-ref="footer">WhatsApp {F['whatsapp_display']}</a><br><a href="tel:+{F['call']}" data-ref="footer-call">{E_(u['calln'].format(n=F['call_name']))} {F['call_display']}</a><br><a href="tel:+{F['call2']}" data-ref="footer-call2">{E_(u['calln'].format(n=F['call2_name']))} {F['call2_display']}</a><br>{u['email']}: <a href="mailto:{F['email']}">{F['email']}</a><br><a href="{F['facebook']}" target="_blank" rel="noopener">Facebook: {E_(F['facebook_label'])} →</a><br><a href="{F['facebook2']}" target="_blank" rel="noopener">Facebook: {E_(F['facebook2_label'])} →</a></p></div>
 <nav aria-label="Footer">{nav}</nav>
 <div><p>{E_(u['autoseo_foot'])}</p><a class="seo-l" href="{F['autoseo']}">AutoSEO.my — SEO websites for automotive workshops</a></div></div>
@@ -132,10 +158,74 @@ def page_home(l):
 def ph(p,l,h1,intro):
     u=UI[l]; return f'<section class="ph"><div class="wrap"><div class="crumb"><a href="{url("home",l)}">{E_(u["nav"]["home"])}</a> / {E_(u["nav"][p])}</div><h1>{E_(h1)}</h1><p>{E_(intro)}</p>{wabtn(l,ref="top")}</div></section>'
 
+def product_schema(pr,l):
+    c=pr[l]
+    return {'@context':'https://schema.org','@type':'Product','name':c['name'],'description':c['intro'],
+            'brand':{'@type':'Brand','name':'Autel'},'image':CANON+'assets/'+pr['img'],'url':pcurl(pr['slug'],l),
+            'category':'Automotive diagnostic tool','manufacturer':{'@type':'Organization','name':'Autel'}}
+
+def product_crumbs(pr,l):
+    c=pr[l]
+    return {'@context':'https://schema.org','@type':'BreadcrumbList','itemListElement':[
+        {'@type':'ListItem','position':1,'name':UI[l]['nav']['home'],'item':curl_('home',l)},
+        {'@type':'ListItem','position':2,'name':UI[l]['nav']['tools'],'item':curl_('tools',l)},
+        {'@type':'ListItem','position':3,'name':c['name'],'item':pcurl(pr['slug'],l)}]}
+
+def product_block(pr,l, link=True, heading='h2'):
+    c=pr[l]; u=UI[l]
+    w,h=pr.get('wh',(1200,700))
+    feats=''.join(f'<li>{E_(x)}</li>' for x in (c['features'] if not link else c['features'][:5]))
+    specs=''
+    if not link and c.get('specs'):
+        specs=f'<h3>{E_(u["prod_spec"])}</h3><dl class="pspec">'+''.join(f'<div><dt>{E_(k)}</dt><dd>{E_(v)}</dd></div>' for k,v in c['specs'])+'</dl>'
+    note=f'<p class="pnote">{E_(c["note"])}</p>' if c.get('note') and not link else ''
+    cov=f'<p class="pcov"><b>{E_(u["prod_cov"])}.</b> {E_(c["coverage"])}</p>' if c.get('coverage') and not link else ''
+    more=f'<p class="pmore"><a href="{purl(pr["slug"],l)}">{E_(u["prod_more"])} →</a></p>' if link else ''
+    rel=''
+    if not link:
+        slugs=RELATED.get(pr['slug'],[])
+        if slugs:
+            rel='<div class="prel">'+''.join(f'<a href="{purl(s,l)}">{E_(BY_SLUG[s][l]["name"])}</a>' for s in slugs if s in BY_SLUG)+'</div>'
+    hid=pr['slug']
+    img=pr['img']
+    sku=pr['sku']
+    parts=[]
+    parts.append(f'<article class="psec" id="{hid}">')
+    parts.append(f'<div class="phero"><img src="{A}{img}" alt="{E_(c["alt"])}" width="{w}" height="{h}" loading="lazy"></div>')
+    parts.append('<div class="ptx"><span class="mono">'+E_(sku)+'</span>')
+    parts.append(f'<{heading}>{E_(c["name"])}</{heading}>')
+    parts.append(f'<p class="ptag">{E_(c["tag"])}</p>')
+    parts.append(f'<p>{E_(c["intro"])}</p>')
+    parts.append(f'<h3>{E_(u["prod_feat"])}</h3><ul class="pfeats">{feats}</ul>')
+    parts.append(f'<h3>{E_(u["prod_use"])}</h3><p>{E_(c["use"])}</p>')
+    parts.append(specs+cov+note)
+    parts.append(prod_ctas(l, c['name'], ref=hid))
+    parts.append(more+rel+'</div></article>')
+    return ''.join(parts)
+
+def page_product(pr,l):
+    c=pr[l]; u=UI[l]
+    crumb=f'<div class="pcrumb"><a href="{url("home",l)}">{E_(u["nav"]["home"])}</a> / <a href="{url("tools",l)}">{E_(u["nav"]["tools"])}</a> / {E_(c["name"])}</div>'
+    body=(f'<section class="ph"><div class="wrap">{crumb}<p class="mono" style="margin:0 0 8px">{E_(u["badge"])}</p></div></section>'
+          f'<section class="sec"><div class="wrap">{product_block(pr,l,link=False,heading="h1")}'
+          f'<p class="pmore" style="margin-top:18px"><a href="{url("tools",l)}">← {E_(u["prod_back"])}</a></p>'
+          f'<p class="pnote">{E_(u["prod_src"])}</p></div></section>'
+          +end_cta(l,HOME[l]['cta_h'],HOME[l]['cta_p']))
+    alts={x: pcurl(pr['slug'],x) for x in LANGS}
+    return head('tools',l,[schema_org(l),product_schema(pr,l),product_crumbs(pr,l)],
+                title=c['title'], desc=c['desc'], canon=pcurl(pr['slug'],l),
+                og_image=CANON+'assets/'+pr['img'], alternates=alts)+header('tools',l, lang_href=lambda x, slug=pr['slug']: purl(slug,x))+body+footer(l)
+
+
 def page_tools(l):
-    t=TOOLS[l]; fq=FAQ[l][:4]
-    items={'@context':'https://schema.org','@type':'ItemList','name':t['h1'],'itemListElement':[{'@type':'ListItem','position':i+1,'item':{'@type':'Product','name':'Autel '+f[l][0],'description':f[l][1],'brand':{'@type':'Brand','name':'Autel'},**({'image':CANON+'assets/'+f['img']} if f['img'] else {})}} for i,f in enumerate(FAMILIES)]}
-    body=ph('tools',l,t['h1'],t['intro'])+f'<section class="sec"><div class="wrap"><div class="newbox"><span class="mono">MS909S2</span><h2>{E_(UI[l]["new_t"])}</h2><p>{E_(UI[l]["new_p"])}</p></div><div class="flist">'+''.join(fam_card(f,l,'article') for f in FAMILIES)+f'</div></div></section><section class="sec alt"><div class="wrap"><div class="sh"><div><h2>{E_(UI[l]["faq"])}</h2></div></div>{faq_html(l,fq)}</div></section>'+end_cta(l,HOME[l]['cta_h'],HOME[l]['cta_p'])
+    t=TOOLS[l]; fq=FAQ[l][:4]; u=UI[l]
+    items={'@context':'https://schema.org','@type':'ItemList','name':t['h1'],'itemListElement':[{'@type':'ListItem','position':i+1,'item':product_schema(pr,l)} for i,pr in enumerate(PRODUCTS)]}
+    newbox=f'<div class="newbox"><span class="mono">MS909S2</span><h2>{E_(u["new_t"])}</h2><p>{E_(u["new_p"])}</p><p class="pmore" style="margin-top:10px"><a href="{purl("maxisys-ms909-s2",l)}">{E_(u["prod_more"])} →</a></p></div>'
+    fams='<div class="flist">'+''.join(fam_card(f,l,'article') for f in FAMILIES)+'</div>'
+    models=('<section class="sec alt" id="models"><div class="wrap"><div class="sh"><div><span class="mono">Autel</span><h2>'
+            +E_(u['prod_all'])+'</h2><p>'+E_(u['prod_src'])+'</p></div></div>'
+            +''.join(product_block(pr,l,link=True) for pr in PRODUCTS)+'</div></section>')
+    body=ph('tools',l,t['h1'],t['intro'])+f'<section class="sec"><div class="wrap">{newbox}{fams}</div></section>'+models+f'<section class="sec"><div class="wrap"><div class="sh"><div><h2>{E_(u["faq"])}</h2></div></div>{faq_html(l,fq)}</div></section>'+end_cta(l,HOME[l]['cta_h'],HOME[l]['cta_p'])
     return head('tools',l,[schema_org(l),items,faq_schema(l,fq),crumbs('tools',l)])+header('tools',l)+body+footer(l)
 
 def page_services(l):
@@ -157,7 +247,7 @@ def page_about(l):
 
 def page_contact(l):
     c=CONTACT[l]
-    body=ph('contact',l,c['h1'],c['p'])+f'''<section class="sec"><div class="wrap cgrid"><div class="cbox"><span class="mono">WhatsApp</span><a class="big" href="{wa(l)}" target="_blank" rel="noopener" data-ref="contact-number">{F['whatsapp_display']}</a>{wabtn(l,ref='contact')}<a class="btn btn-ghost wah" href="https://wa.me/{F['whatsapp_hooi']}?text={quote(WA[l])}" target="_blank" rel="noopener" data-ref="contact-wa-hooi">{WA_SVG}<span>{E_(UI[l]['wa_hooi'])} {F['whatsapp_hooi_display']}</span></a><p class="mono" style="margin:12px 0 0">{E_(UI[l]['areas'])}</p>
+    body=ph('contact',l,c['h1'],c['p'])+f'''<section class="sec"><div class="wrap cgrid"><div class="cbox"><span class="mono">WhatsApp</span><a class="big" href="{wa(l)}" target="_blank" rel="noopener" data-ref="contact-number">{F['whatsapp_display']}</a>{wabtn(l,ref='contact')}<p class="mono" style="margin:12px 0 0">{E_(UI[l]['areas'])}</p>
 <div class="cact"><a class="btn btn-ghost" href="tel:+{F['call']}" data-ref="contact-call">{E_(UI[l]['calln'].format(n=F['call_name']))} {F['call_display']}</a><a class="btn btn-ghost" href="tel:+{F['call2']}" data-ref="contact-call2">{E_(UI[l]['calln'].format(n=F['call2_name']))} {F['call2_display']}</a><a class="btn btn-ghost" href="mailto:{F['email']}">{F['email']}</a></div>
 <p style="margin-top:16px"><span class="mono">{UI[l]['addr']}</span><br>{E_(F['address_full'])}<br><a href="{F['maps']}" target="_blank" rel="noopener">{UI[l]['map']} →</a><br><a href="{F['facebook']}" target="_blank" rel="noopener">Facebook: {E_(F['facebook_label'])} →</a><br><a href="{F['facebook2']}" target="_blank" rel="noopener">Facebook: {E_(F['facebook2_label'])} →</a></p></div>
 <form class="cbox" id="enquiry" data-wa="{F['whatsapp']}" data-lines='{E_(json.dumps(c["lines"],ensure_ascii=False))}'><span class="mono">{E_(c['form_h'])}</span>
@@ -177,6 +267,9 @@ for l in LANGS:
     for p in PAGES:
         d=os.path.join(OUT,LANG_META[l]['prefix']+SLUG[p]); os.makedirs(d,exist_ok=True)
         open(d+'index.html','w',encoding='utf-8').write(R[p](l))
+    for pr in PRODUCTS:
+        d=os.path.join(OUT,LANG_META[l]['prefix']+SLUG['tools']+pr['slug']); os.makedirs(d,exist_ok=True)
+        open(os.path.join(d,'index.html'),'w',encoding='utf-8').write(page_product(pr,l))
 ART.build(globals(),ARTS)
 # sitemap/robots/llms
 sm='<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">\n'
@@ -185,9 +278,13 @@ for p in PAGES+ART_KEYS:
         alts=''.join(f'<xhtml:link rel="alternate" hreflang="{LANG_META[x]["html"]}" href="{curl_(p,x)}"/>' for x in LANGS)
         lm=next((x['updated'] for x in ARTS if 'art:'+x['slug']==p),F['updated'])
         sm+=f'<url><loc>{curl_(p,l)}</loc><lastmod>{lm}</lastmod>{alts}</url>\n'
+for pr in PRODUCTS:
+    for l in LANGS:
+        alts=''.join(f'<xhtml:link rel="alternate" hreflang="{LANG_META[x]["html"]}" href="{pcurl(pr["slug"],x)}"/>' for x in LANGS)
+        sm+=f'<url><loc>{pcurl(pr["slug"],l)}</loc><lastmod>{F["updated"]}</lastmod>{alts}</url>\n'
 open(OUT+'/sitemap.xml','w').write(sm+'</urlset>\n')
 open(OUT+'/robots.txt','w').write(('User-agent: *\nDisallow: /\n' if NOINDEX else 'User-agent: *\nAllow: /\n\nSitemap: '+CANON+'sitemap.xml\n'))
-open(OUT+'/llms.txt','w',encoding='utf-8').write(f"# {F['name']}\n> Authorised Autel dealer in Johor Bahru, Malaysia (listed on autel.com Where to Buy, Malaysia). Company No. {F['company_no']}. WhatsApp +{F['whatsapp']}. Call {F['call_name']} +{F['call']} or {F['call2_name']} +{F['call2']}. Facebook: {F['facebook']} and {F['facebook2']}. Email {F['email']}. Address: {F['address_full']}. Runs technical training sessions for workshop technicians.\n\n## Pages\n"+''.join(f"- [{UI['en']['nav'][p]}]({curl_(p,'en')})\n" for p in PAGES)+("\n## Articles\n"+''.join(f"- [{a['en']['h1']}]({curl_('art:'+a['slug'],'en')}): {a['en']['description']}\n" for a in ARTS) if ARTS else '')+f"\n## Related\n- [AutoSEO.my]({F['autoseo']}): SEO websites for automotive businesses, a brand of K Tech Auto Solution Sdn Bhd\n")
+open(OUT+'/llms.txt','w',encoding='utf-8').write(f"# {F['name']}\n> Authorised Autel dealer in Johor Bahru, Malaysia (listed on autel.com Where to Buy, Malaysia). Company No. {F['company_no']}. WhatsApp +{F['whatsapp']}. Call {F['call_name']} +{F['call']} or {F['call2_name']} +{F['call2']}. Facebook: {F['facebook']} and {F['facebook2']}. Email {F['email']}. Address: {F['address_full']}. Runs technical training sessions for workshop technicians.\n\n## Pages\n"+''.join(f"- [{UI['en']['nav'][p]}]({curl_(p,'en')})\n" for p in PAGES)+''.join(f"- [{pr['en']['name']}]({pcurl(pr['slug'],'en')})\n" for pr in PRODUCTS)+("\n## Articles\n"+''.join(f"- [{a['en']['h1']}]({curl_('art:'+a['slug'],'en')}): {a['en']['description']}\n" for a in ARTS) if ARTS else '')+f"\n## Related\n- [AutoSEO.my]({F['autoseo']}): SEO websites for automotive businesses, a brand of K Tech Auto Solution Sdn Bhd\n")
 open(OUT+'/404.html','w',encoding='utf-8').write(head('home','en',[]).replace(TITLE['home']['en'],'Page not found | K Tech')+header('home','en')+f'<section class="ph"><div class="wrap"><h1>Page not found</h1><p><a href="{url("home","en")}">Home →</a></p></div></section>'+footer('en'))
 # pre-upload ban check
 bad=['Page One','pageonesingapore','TODO','lorem','XXXX','★','rating']

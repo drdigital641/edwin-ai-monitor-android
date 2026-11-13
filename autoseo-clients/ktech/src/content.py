@@ -18,15 +18,15 @@ UI = {
  'en': {'ev_h':'Events & on the ground','ev_s':'From our Facebook pages. Drag or let it glide.','ev':['Showroom grand opening','At the service counter','Autel kit and case','Tools packed for delivery','Tablet demo at a booth','Team at a trade show','Display counter with Autel tools','Training audience'],'wa_hooi':'WhatsApp Hooi','recent':'Recent job:','recent_t':'Mercedes-Benz W222 Night View (ADAS) calibration.','new_t':'New: Autel MaxiSys MS909S2','new_p':'Comes with MAX, an AI voice assistant: say “Hey MAX”.','areas':'Johor Bahru · Masai','calln':'Call {n}','call':'Call','email':'Email','map':'Open in Google Maps','addr':'Address','real_h':'On the ground','real_s':'Real K Tech moments from our Facebook.','team':'K Tech team at a workshop, Johor','train':'Technical training session','train_h':'Technical training','train_s':'Sessions for workshop technicians. Drag or let it glide.','nav': {'home':'Home','tools':'Autel tools','services':'Services','about':'About','contact':'Contact'},
         'wa':'WhatsApp us','wa_quote':'WhatsApp for a quote','menu':'Menu','see_range':'See the Autel range',
         'badge':'Authorised Autel dealer · Johor Bahru','tm':'Autel, MaxiSys, MaxiIM, MaxiTPMS, MaxiHVAC and MaxiAlign are trademarks of Autel. Product images: Autel. K Tech Auto Solution Sdn. Bhd. is listed by Autel as a dealer in Malaysia.',
-        'autoseo_foot':'SEO websites for automotive workshops:','co':'Company No.','faq':'Questions','updated':'Updated','listed':'See Autel’s Where to Buy','fb':'Facebook','ask_stock':'Ask for stock & model'},
+        'autoseo_foot':'SEO websites for automotive workshops:','co':'Company No.','faq':'Questions','updated':'Updated','listed':'See Autel’s Where to Buy','fb':'Facebook','ask_stock':'Ask for stock & model','wa_andrew':'WhatsApp Andrew','prod_feat':'Key features','prod_use':'For workshops','prod_spec':'Hardware & protocols','prod_more':'Full details','prod_all':'Models from Autel brochures','prod_src':'Facts are from Autel product brochures supplied to K Tech. WhatsApp us to confirm coverage and stock.','prod_back':'All Autel tools','prod_cov':'Coverage'},
  'ms': {'ev_h':'Acara & di lapangan','ev_s':'Dari halaman Facebook kami. Seret atau biar ia bergerak.','ev':['Pembukaan rasmi bilik pameran','Di kaunter servis','Kit dan beg Autel','Alat sedia untuk dihantar','Demo tablet di gerai','Pasukan di pameran dagangan','Kaunter paparan alat Autel','Peserta latihan'],'wa_hooi':'WhatsApp Hooi','recent':'Kerja terkini:','recent_t':'Kalibrasi Mercedes-Benz W222 Night View (ADAS).','new_t':'Baharu: Autel MaxiSys MS909S2','new_p':'Dilengkapi MAX, pembantu suara AI: sebut “Hey MAX”.','areas':'Johor Bahru · Masai','calln':'Hubungi {n}','call':'Telefon','email':'E-mel','map':'Buka di Google Maps','addr':'Alamat','real_h':'Di lapangan','real_s':'Detik sebenar K Tech dari Facebook kami.','team':'Pasukan K Tech di bengkel, Johor','train':'Sesi latihan teknikal','train_h':'Latihan teknikal','train_s':'Sesi untuk juruteknik bengkel. Seret atau biar ia bergerak.','nav': {'home':'Utama','tools':'Alat Autel','services':'Servis','about':'Tentang','contact':'Hubungi'},
         'wa':'WhatsApp kami','wa_quote':'WhatsApp untuk sebut harga','menu':'Menu','see_range':'Lihat rangkaian Autel',
         'badge':'Pengedar sah Autel · Johor Bahru','tm':'Autel, MaxiSys, MaxiIM, MaxiTPMS, MaxiHVAC dan MaxiAlign ialah tanda dagangan Autel. Gambar produk: Autel. K Tech Auto Solution Sdn. Bhd. disenaraikan oleh Autel sebagai pengedar di Malaysia.',
-        'autoseo_foot':'Laman web SEO untuk bengkel kereta:','co':'No. Syarikat','faq':'Soalan','updated':'Dikemas kini','listed':'Lihat Where to Buy Autel','fb':'Facebook','ask_stock':'Tanya stok & model'},
+        'autoseo_foot':'Laman web SEO untuk bengkel kereta:','co':'No. Syarikat','faq':'Soalan','updated':'Dikemas kini','listed':'Lihat Where to Buy Autel','fb':'Facebook','ask_stock':'Tanya stok & model','wa_andrew':'WhatsApp Andrew','prod_feat':'Ciri utama','prod_use':'Untuk bengkel','prod_spec':'Perkakasan & protokol','prod_more':'Butiran penuh','prod_all':'Model dari brosur Autel','prod_src':'Fakta diambil daripada brosur produk Autel yang diberikan kepada K Tech. WhatsApp kami untuk mengesahkan liputan dan stok.','prod_back':'Semua alat Autel','prod_cov':'Liputan'},
  'zh': {'ev_h':'活动与现场','ev_s':'来自我们的 Facebook 专页。可滑动，也会自动播放。','ev':['展厅开幕','服务柜台','Autel 套件与工具箱','准备送货的工具','展位平板演示','展会团队','Autel 工具展示柜台','培训现场'],'wa_hooi':'WhatsApp Hooi','recent':'近期案例：','recent_t':'Mercedes-Benz W222 Night View（ADAS）校准。','new_t':'新品：Autel MaxiSys MS909S2','new_p':'配备 AI 语音助手 MAX：说 “Hey MAX” 即可。','areas':'新山 · Masai','calln':'致电 {n}','call':'致电','email':'电邮','map':'在 Google 地图打开','addr':'地址','real_h':'现场实况','real_s':'来自我们 Facebook 的真实现场。','team':'K Tech 团队在柔佛车厂','train':'技术培训课程','train_h':'技术培训','train_s':'为车厂技师而设。可滑动，也会自动播放。','nav': {'home':'首页','tools':'Autel 诊断仪','services':'服务','about':'关于我们','contact':'联系'},
         'wa':'WhatsApp 我们','wa_quote':'WhatsApp 询价','menu':'菜单','see_range':'查看 Autel 产品系列',
         'badge':'Autel 授权经销商 · 新山','tm':'Autel、MaxiSys、MaxiIM、MaxiTPMS、MaxiHVAC 与 MaxiAlign 为 Autel 的商标。产品图片来源：Autel。K Tech Auto Solution Sdn. Bhd. 已列于 Autel 官方马来西亚经销商名单。',
-        'autoseo_foot':'汽车维修厂 SEO 网站：','co':'公司注册号','faq':'常见问题','updated':'更新','listed':'查看 Autel 官方经销商名单','fb':'Facebook','ask_stock':'询问现货与型号'},
+        'autoseo_foot':'汽车维修厂 SEO 网站：','co':'公司注册号','faq':'常见问题','updated':'更新','listed':'查看 Autel 官方经销商名单','fb':'Facebook','ask_stock':'询问现货与型号','wa_andrew':'WhatsApp Andrew','prod_feat':'主要功能','prod_use':'适合车厂','prod_spec':'硬件与协议','prod_more':'完整详情','prod_all':'来自 Autel 手册的型号','prod_src':'以上事实来自提供给 K Tech 的 Autel 产品手册。请 WhatsApp 我们确认覆盖范围与现货。','prod_back':'全部 Autel 工具','prod_cov':'覆盖范围'},
 }
 
 # Autel product families (names/taglines from autel.com, 13 Nov 2026)
@@ -35,7 +35,7 @@ FAMILIES = [
   'en':('Diagnostic tablets','Full-system scans, coding and live data.'),
   'ms':('Tablet diagnostik','Imbasan semua sistem, coding dan data langsung.'),
   'zh':('诊断平板','全车系统扫描、编程设码与实时数据。')},
- {'k':'ev','img':None,'code':'E02','models':'MaxiSys Ultra EV S2 · EV Diagnostics Upgrade Kit2',
+ {'k':'ev','img':'autel-ev-upgrade-kit.webp','code':'E02','models':'MaxiSys Ultra EV S2 · EV Diagnostics Upgrade Kit2',
   'en':('EV & hybrid diagnostics','Battery-pack and high-voltage system checks.'),
   'ms':('Diagnostik EV & hibrid','Semakan pek bateri dan sistem voltan tinggi.'),
   'zh':('电动车与混动诊断','电池包与高压系统检测。')},
@@ -78,7 +78,7 @@ TITLE = {
  'tools': {'en':'Autel Diagnostic Tools Malaysia: Full Range | K Tech','ms':'Alat Diagnostik Autel Malaysia | K Tech','zh':'马来西亚 Autel 诊断仪全系列 | K Tech'},
  'services': {'en':'Autel Tool Supply & Workshop Services | K Tech JB','ms':'Bekalan Alat Autel & Servis Bengkel | K Tech JB','zh':'Autel 工具供应与车厂服务 | K Tech 新山'},
  'about': {'en':'About K Tech Auto Solution Sdn. Bhd. | Johor Bahru','ms':'Tentang K Tech Auto Solution Sdn. Bhd. | Johor Bahru','zh':'关于 K Tech Auto Solution Sdn. Bhd. | 新山'},
- 'contact': {'en':'Contact K Tech Johor Bahru | WhatsApp +60 18-949 2820','ms':'Hubungi K Tech Johor Bahru | WhatsApp +60 18-949 2820','zh':'联系 K Tech 新山 | WhatsApp +60 18-949 2820'},
+ 'contact': {'en':'Contact K Tech Johor Bahru | WhatsApp +60 12-546 2820','ms':'Hubungi K Tech Johor Bahru | WhatsApp +60 12-546 2820','zh':'联系 K Tech 新山 | WhatsApp +60 12-546 2820'},
 }
 DESC = {
  'home': {'en':'Authorised Autel dealer in Johor Bahru. Diagnostic tablets, ADAS, TPMS, key programming and EV tools for workshops. WhatsApp K Tech for a quote.',
@@ -93,9 +93,9 @@ DESC = {
  'about': {'en':'K Tech Auto Solution Sdn. Bhd. (201801038870) is a Johor Bahru Autel dealer and the company behind AutoSEO.my.',
            'ms':'K Tech Auto Solution Sdn. Bhd. (201801038870) ialah pengedar Autel di Johor Bahru dan syarikat di sebalik AutoSEO.my.',
            'zh':'K Tech Auto Solution Sdn. Bhd.（201801038870）是新山的 Autel 经销商，也是 AutoSEO.my 背后的公司。'},
- 'contact': {'en':'WhatsApp K Tech Auto Solution in Johor Bahru on +60 18-949 2820 for Autel diagnostic tool quotes and stock.',
-             'ms':'WhatsApp K Tech Auto Solution di Johor Bahru, +60 18-949 2820, untuk sebut harga dan stok alat diagnostik Autel.',
-             'zh':'WhatsApp +60 18-949 2820 联系新山 K Tech Auto Solution，询问 Autel 诊断仪报价与现货。'},
+ 'contact': {'en':'WhatsApp K Tech Auto Solution in Johor Bahru on +60 12-546 2820 for Autel diagnostic tool quotes and stock.',
+             'ms':'WhatsApp K Tech Auto Solution di Johor Bahru, +60 12-546 2820, untuk sebut harga dan stok alat diagnostik Autel.',
+             'zh':'WhatsApp +60 12-546 2820 联系新山 K Tech Auto Solution，询问 Autel 诊断仪报价与现货。'},
 }
 
 HOME = {

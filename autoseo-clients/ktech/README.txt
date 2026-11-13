@@ -1,4 +1,3 @@
-K Tech (ktech.my) source for the AutoSEO article writer. Domain: https://ktech.my/ (Edwin confirmed 8:40pm SGT 13 Nov). Not billed.
-- src/, build.py, facts.json, brief.md: the site source and facts (Dev Desk builds the live copy with build.py --live).
-- article-template-example/: EMATS live article + /articles/ index pages, as a layout reference for the add-only article zip. Give K Tech its own look per the design rules; reuse only the structure.
+K Tech (ktech.my) source RE-SYNC, 13 Nov ~9:25pm SGT. ktech.my has been LIVE since 8:57pm SGT. This replaces the earlier ktech-source.zip.
+Changes since the first zip: 8 Autel product pages under /autel-diagnostic-tools/, new logo, single WhatsApp button +60 12-546 2820 (wa.me/60125462820); Call Hooi and Call Andrew buttons unchanged.
 No secrets, server paths, .htaccess, IndexNow key or DNS files included.
