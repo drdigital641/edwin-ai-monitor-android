@@ -1,0 +1,22 @@
+{
+ "businessStatus": "OPERATIONAL",
+ "primaryType": "car_repair",
+ "types": [
+  "car_repair",
+  "point_of_interest",
+  "service",
+  "establishment"
+ ],
+ "rating": 4.1,
+ "userRatingCount": 7,
+ "websiteUri": "http://www.jmotowerkz.com/news.htm",
+ "paymentOptions": null,
+ "parkingOptions": null,
+ "editorialSummary": null,
+ "weekdayDescriptions": null,
+ "review_count_seen": 5,
+ "review_themes": "Customers on Google Maps mention patient troubleshooting with test drives before and after the job, and clear explanations of how each part works.",
+ "fetched_at": "2026-11-13",
+ "place_id": "ChIJ_9H8fPMX2jERkji8wkwmCfM",
+ "source": "google_places"
+}

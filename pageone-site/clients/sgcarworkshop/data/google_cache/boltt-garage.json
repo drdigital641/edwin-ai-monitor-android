@@ -1,0 +1,30 @@
+{
+ "businessStatus": "OPERATIONAL",
+ "primaryType": "car_repair",
+ "types": [
+  "car_repair",
+  "point_of_interest",
+  "service",
+  "establishment"
+ ],
+ "rating": 5,
+ "userRatingCount": 5,
+ "websiteUri": null,
+ "paymentOptions": null,
+ "parkingOptions": null,
+ "editorialSummary": null,
+ "weekdayDescriptions": [
+  "Monday: 9:00 AM – 6:00 PM",
+  "Tuesday: 9:00 AM – 6:00 PM",
+  "Wednesday: 9:00 AM – 6:00 PM",
+  "Thursday: 9:00 AM – 6:00 PM",
+  "Friday: 9:00 AM – 6:00 PM",
+  "Saturday: 9:00 AM – 6:00 PM",
+  "Sunday: 10:00 AM – 5:00 PM"
+ ],
+ "review_count_seen": 5,
+ "review_themes": "Customers on Google Maps mention servicing for both Japanese and continental cars, each issue explained in detail and a team that customers have used for several years.",
+ "fetched_at": "2026-11-13",
+ "place_id": "ChIJg2rRhxoV2jER64VsUNqakF0",
+ "source": "google_places"
+}

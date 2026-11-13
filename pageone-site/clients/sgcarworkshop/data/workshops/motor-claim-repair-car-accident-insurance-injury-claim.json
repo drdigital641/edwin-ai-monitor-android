@@ -1,0 +1,48 @@
+{
+ "schema_version": 1,
+ "slug": "motor-claim-repair-car-accident-insurance-injury-claim",
+ "place_id": "ChIJk9tgTiYb2jERxshS9Scx_QQ",
+ "place_id_checked_at": "2026-11-13",
+ "name": "Motor Claim Repair (Car accident insurance injury claim)",
+ "name_source_url": "google_profile",
+ "name_checked_at": "2026-11-13",
+ "address": {
+  "block": "",
+  "street": "60 Paya Lebar Rd, #06-28 Paya Lebar Square",
+  "unit": "",
+  "building": ""
+ },
+ "postal_code": "409051",
+ "address_source_url": "google_profile",
+ "address_checked_at": "2026-11-13",
+ "categories": [
+  "SERV"
+ ],
+ "services": [
+  "General servicing and repair"
+ ],
+ "services_source_url": "google_profile",
+ "phones": [
+  {
+   "e164": "+6596207078",
+   "kind": "mobile",
+   "whatsapp": true,
+   "source": "google_profile",
+   "checked_at": "2026-11-13"
+  }
+ ],
+ "google_screen": {
+  "passed": true,
+  "reason": "OPERATIONAL, car repair, SG mobile on Google profile",
+  "checked_at": "2026-11-13"
+ },
+ "status": "pending",
+ "tier": "basic",
+ "first_seen_at": "2026-11-13",
+ "last_verified_at": "2026-11-13",
+ "collector_version": "agent-v5",
+ "estate": "paya-ubi-industrial-park",
+ "planning_area": "Geylang",
+ "region": "central",
+ "hold": "hold: address is an office in Paya Lebar Square (claims service), not a workshop in Paya Ubi Industrial Park; recheck location"
+}

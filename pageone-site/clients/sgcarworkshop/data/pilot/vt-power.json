@@ -1,0 +1,36 @@
+{
+ "lede": "VT Power at Kaki Bukit Industrial Estate is a car servicing and repair workshop.",
+ "chips": [
+  "Servicing",
+  "Suspension"
+ ],
+ "services": [
+  "Car servicing",
+  "Engine oil change",
+  "Suspension repair"
+ ],
+ "themes": "Customers on Google Maps mention servicing packages, engine oil changes, a suspension repair that made the car ride smoothly again, products shown before fitting and clear pricing without hard selling.",
+ "faqs": [
+  [
+   "What does VT Power do?",
+   "Google Maps lists it as a car repair workshop."
+  ],
+  [
+   "What are the opening hours?",
+   "The hours are listed in the Google Maps section above. Please see Google Maps for current hours."
+  ]
+ ],
+ "sources": "its Google Maps listing",
+ "stories": [],
+ "mentioned_services": [
+  "Car servicing",
+  "Engine oil change",
+  "Suspension repair"
+ ],
+ "services_note": "Services customers mention on Google Maps. Ask the workshop for its full list.",
+ "makes": [],
+ "makes_note": "Not listed on its public pages. Ask the workshop about your car.",
+ "specialties": [],
+ "good_to_know": [],
+ "card_rules": "2026-11-05"
+}

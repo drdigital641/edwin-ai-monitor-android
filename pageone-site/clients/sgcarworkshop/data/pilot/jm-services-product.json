@@ -1,0 +1,33 @@
+{
+ "lede": "JM Services & Product at Ubi Road 1 is a car repair workshop.",
+ "chips": [
+  "Diagnosis"
+ ],
+ "services": [
+  "Fault diagnosis",
+  "Car repair"
+ ],
+ "themes": "Customers on Google Maps mention patient troubleshooting with test drives before and after the job, and clear explanations of how each part works.",
+ "faqs": [
+  [
+   "What does JM Services & Product do?",
+   "Google Maps lists it as a car repair workshop."
+  ],
+  [
+   "What are the opening hours?",
+   "The hours are listed in the Google Maps section above. Please see Google Maps for current hours."
+  ]
+ ],
+ "sources": "its Google Maps listing",
+ "stories": [],
+ "mentioned_services": [
+  "Fault diagnosis",
+  "Car repair"
+ ],
+ "services_note": "Services customers mention on Google Maps. Ask the workshop for its full list.",
+ "makes": [],
+ "makes_note": "Not listed on its public pages. Ask the workshop about your car.",
+ "specialties": [],
+ "good_to_know": [],
+ "card_rules": "2026-11-05"
+}

@@ -1,0 +1,40 @@
+{
+ "lede": "Zentrum Performance at Kaki Bukit Industrial Estate is a continental car servicing workshop.",
+ "chips": [
+  "Continental cars",
+  "Servicing"
+ ],
+ "services": [
+  "Continental car servicing",
+  "Pre-purchase inspection",
+  "Brake repair",
+  "Suspension repair"
+ ],
+ "themes": "Customers on Google Maps mention mechanics with Volkswagen experience, continental car servicing, pre-purchase inspections, engine and gearbox oil changes, and lower arm, brake pad and rotor replacement.",
+ "faqs": [
+  [
+   "What does Zentrum Performance do?",
+   "Google Maps lists it as a car repair workshop."
+  ],
+  [
+   "What are the opening hours?",
+   "The hours are listed in the Google Maps section above. Please see Google Maps for current hours."
+  ]
+ ],
+ "sources": "its Google Maps listing",
+ "stories": [],
+ "mentioned_services": [
+  "Continental car servicing",
+  "Pre-purchase inspection",
+  "Brake repair",
+  "Suspension repair"
+ ],
+ "services_note": "Services customers mention on Google Maps. Ask the workshop for its full list.",
+ "makes": [
+  "Volkswagen"
+ ],
+ "makes_note": "Named by customers on Google Maps. Ask the workshop about other makes.",
+ "specialties": [],
+ "good_to_know": [],
+ "card_rules": "2026-11-05"
+}

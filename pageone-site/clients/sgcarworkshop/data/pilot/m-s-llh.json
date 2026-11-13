@@ -1,0 +1,38 @@
+{
+ "lede": "M.S. LLH at Kaki Bukit Industrial Estate is a panel beating and spray painting workshop.",
+ "chips": [
+  "Panel beating",
+  "Spray painting"
+ ],
+ "services": [
+  "Panel beating",
+  "Dent repair",
+  "Spray painting",
+  "Accident repairs"
+ ],
+ "themes": "Customers on Google Maps mention panel beating and fresh paint done within a day, a roof dent repaired in a few hours, paint colour matched on the spot and accident repairs with no visible trace.",
+ "faqs": [
+  [
+   "What does M.S. LLH do?",
+   "Google Maps lists it as a car repair workshop."
+  ],
+  [
+   "What are the opening hours?",
+   "The hours are listed in the Google Maps section above. Please see Google Maps for current hours."
+  ]
+ ],
+ "sources": "its Google Maps listing",
+ "stories": [],
+ "mentioned_services": [
+  "Panel beating",
+  "Dent repair",
+  "Spray painting",
+  "Accident repairs"
+ ],
+ "services_note": "Services customers mention on Google Maps. Ask the workshop for its full list.",
+ "makes": [],
+ "makes_note": "Not listed on its public pages. Ask the workshop about your car.",
+ "specialties": [],
+ "good_to_know": [],
+ "card_rules": "2026-11-05"
+}

@@ -1,0 +1,38 @@
+{
+ "lede": "WE Garage at Kaki Bukit Industrial Estate is an accident repair and insurance claims workshop.",
+ "chips": [
+  "Accident repairs",
+  "Insurance claims"
+ ],
+ "services": [
+  "Accident repairs",
+  "Insurance claims help",
+  "Towing",
+  "Replacement car"
+ ],
+ "themes": "Customers on Google Maps mention one-stop help after accidents, from towing and the insurance reporting centre to repairs, a replacement car arranged, and each repair checked before handover.",
+ "faqs": [
+  [
+   "What does WE Garage do?",
+   "Google Maps lists it as a car repair workshop."
+  ],
+  [
+   "What are the opening hours?",
+   "The hours are listed in the Google Maps section above. Please see Google Maps for current hours."
+  ]
+ ],
+ "sources": "its Google Maps listing",
+ "stories": [],
+ "mentioned_services": [
+  "Accident repairs",
+  "Insurance claims help",
+  "Towing",
+  "Replacement car"
+ ],
+ "services_note": "Services customers mention on Google Maps. Ask the workshop for its full list.",
+ "makes": [],
+ "makes_note": "Not listed on its public pages. Ask the workshop about your car.",
+ "specialties": [],
+ "good_to_know": [],
+ "card_rules": "2026-11-05"
+}

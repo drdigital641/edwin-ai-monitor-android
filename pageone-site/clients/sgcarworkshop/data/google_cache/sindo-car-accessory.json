@@ -1,0 +1,26 @@
+{
+ "businessStatus": "OPERATIONAL",
+ "primaryType": "car_repair",
+ "types": [
+  "car_repair",
+  "point_of_interest",
+  "service",
+  "establishment"
+ ],
+ "rating": 4.1,
+ "userRatingCount": 17,
+ "websiteUri": null,
+ "paymentOptions": {
+  "acceptsCreditCards": true,
+  "acceptsDebitCards": true,
+  "acceptsNfc": true
+ },
+ "parkingOptions": null,
+ "editorialSummary": null,
+ "weekdayDescriptions": null,
+ "review_count_seen": 5,
+ "review_themes": null,
+ "fetched_at": "2026-11-13",
+ "place_id": "ChIJj9FA-GAU2jERY2qlMGl3xvo",
+ "source": "google_places"
+}

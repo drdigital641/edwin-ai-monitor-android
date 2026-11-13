@@ -1,0 +1,45 @@
+{
+ "lede": "VAE Motor Works Electrical & Battery at Yishun Industrial Park A is a car electrical, battery and servicing workshop.",
+ "chips": [
+  "Electrical",
+  "Batteries"
+ ],
+ "services": [
+  "Car maintenance",
+  "Car repair",
+  "Battery replacement and electrical checks",
+  "Car plate replacement",
+  "Car wrapping and stickers"
+ ],
+ "themes": "Customers on Google Maps mention rear wheel bearing checks on a Suzuki Swift, quick urgent jobs, car number plates and accessories, and staff who explain the work clearly.",
+ "faqs": [
+  [
+   "What does VAE Motor Works Electrical & Battery do?",
+   "Google Maps lists it as a car repair workshop."
+  ],
+  [
+   "What are the opening hours?",
+   "The hours are listed in the Google Maps section above. Please see Google Maps for current hours."
+  ]
+ ],
+ "sources": "its own website (sitelift.site)",
+ "stories": [],
+ "mentioned_services": [
+  "Wheel bearing repair",
+  "Car servicing",
+  "Number plates",
+  "Car electrical and battery"
+ ],
+ "services_note": "Services as listed on the workshop's own website, sitelift.site.",
+ "makes": [
+  "Suzuki"
+ ],
+ "makes_note": "Named by customers on Google Maps. Ask the workshop about other makes.",
+ "specialties": [
+  "Battery and electrical work",
+  "Car plate replacement",
+  "Car wrapping and stickers"
+ ],
+ "good_to_know": [],
+ "card_rules": "2026-11-05"
+}

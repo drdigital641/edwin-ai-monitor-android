@@ -1,0 +1,73 @@
+{
+ "schema_version": 1,
+ "slug": "elite-am",
+ "place_id": "ChIJN3U3XWAU2jERSZ0SVGhDI-M",
+ "place_id_checked_at": "2026-11-13",
+ "name": "Elite AM",
+ "name_source_url": "google_profile",
+ "name_checked_at": "2026-11-13",
+ "address": {
+  "block": "",
+  "street": "1 Yishun Industrial Street 1, #01-06, A Posh Bizhub",
+  "unit": "",
+  "building": ""
+ },
+ "postal_code": "768160",
+ "address_source_url": "google_profile",
+ "address_checked_at": "2026-11-13",
+ "categories": [
+  "SERV"
+ ],
+ "services": [
+  "General servicing and repair"
+ ],
+ "services_source_url": "google_profile",
+ "phones": [
+  {
+   "e164": "+6594555806",
+   "kind": "mobile",
+   "whatsapp": true,
+   "source": "google_profile",
+   "checked_at": "2026-11-13"
+  }
+ ],
+ "google_screen": {
+  "passed": true,
+  "reason": "OPERATIONAL, car repair, SG mobile on Google profile",
+  "checked_at": "2026-11-13"
+ },
+ "status": "active",
+ "tier": "basic",
+ "first_seen_at": "2026-11-13",
+ "last_verified_at": "2026-11-13",
+ "collector_version": "agent-v5",
+ "estate": "yishun-industrial-street-1",
+ "planning_area": "Yishun",
+ "region": "north",
+ "lat": 1.437321101237472,
+ "lng": 103.8420857637009,
+ "geo_source": "onemap",
+ "blocks": [
+  "hero",
+  "contact",
+  "services",
+  "good_for",
+  "problems",
+  "reviews",
+  "comparison",
+  "hours",
+  "stories",
+  "location",
+  "tips",
+  "faq",
+  "claim",
+  "sources"
+ ],
+ "google_rating": {
+  "rating": 5,
+  "count": 38,
+  "checked": "2026-11-13",
+  "source": "Google Places",
+  "source_date": "2026-11-13"
+ }
+}

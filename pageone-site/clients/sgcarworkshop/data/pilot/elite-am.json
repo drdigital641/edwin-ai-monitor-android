@@ -1,0 +1,41 @@
+{
+ "lede": "Elite AM at Yishun Industrial Street 1 is an accident repair and insurance claims workshop.",
+ "chips": [
+  "Accident repairs",
+  "Insurance claims"
+ ],
+ "services": [
+  "Accident repairs",
+  "Accident reporting help",
+  "Insurance claims help",
+  "Towing"
+ ],
+ "themes": "Customers on Google Maps mention patient help with accident reporting and claims, towing arranged within the hour, regular updates on the repair timeline and accident repairs handled for insurance cases.",
+ "faqs": [
+  [
+   "What does Elite AM do?",
+   "Google Maps lists it as a car repair workshop."
+  ],
+  [
+   "What are the opening hours?",
+   "The hours are listed in the Google Maps section above. Please see Google Maps for current hours."
+  ]
+ ],
+ "sources": "its own website (eliteam.com.sg)",
+ "stories": [],
+ "mentioned_services": [
+  "Accident repairs",
+  "Accident reporting help",
+  "Insurance claims help",
+  "Towing"
+ ],
+ "services_note": "Services as listed on the workshop's own website, eliteam.com.sg.",
+ "makes": [],
+ "makes_note": "Not listed on its public pages. Ask the workshop about your car.",
+ "specialties": [
+  "Accident repairs",
+  "Insurance claim processing"
+ ],
+ "good_to_know": [],
+ "card_rules": "2026-11-05"
+}

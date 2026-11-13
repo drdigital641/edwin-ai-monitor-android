@@ -1,0 +1,48 @@
+{
+ "lede": "KT Garage at Kaki Bukit Industrial Estate is a car repair and paintwork workshop.",
+ "chips": [
+  "Repairs",
+  "Paintwork"
+ ],
+ "services": [
+  "Car repair, servicing and maintenance",
+  "Accident repair",
+  "Accident reporting and claims",
+  "24-hour towing",
+  "Fleet management"
+ ],
+ "themes": "Customers on Google Maps mention a damper and anti-roll bar fitted to an XPeng EV, a full colour-change respray, help with accident documents for insurance claims and catalytic converter cleaning.",
+ "faqs": [
+  [
+   "What does KT Garage do?",
+   "Google Maps lists it as a car repair workshop."
+  ],
+  [
+   "What are the opening hours?",
+   "The hours are listed in the Google Maps section above. Please see Google Maps for current hours."
+  ]
+ ],
+ "sources": "its own website (ktgroup.com.sg)",
+ "stories": [],
+ "mentioned_services": [
+  "Suspension parts fitting",
+  "Full respray",
+  "Insurance claims help",
+  "Catalytic converter cleaning"
+ ],
+ "services_note": "Services as listed on the workshop's own website, ktgroup.com.sg.",
+ "makes": [
+  "XPeng"
+ ],
+ "makes_note": "Named by customers on Google Maps. Ask the workshop about other makes.",
+ "specialties": [
+  "Third party and own damage claims help",
+  "Accident repair",
+  "Fleet maintenance"
+ ],
+ "good_to_know": [
+  "Free collection and delivery on request, according to its website",
+  "Courtesy car for accident claims, according to its website"
+ ],
+ "card_rules": "2026-11-05"
+}

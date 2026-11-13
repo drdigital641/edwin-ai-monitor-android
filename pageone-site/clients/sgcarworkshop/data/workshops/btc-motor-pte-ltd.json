@@ -1,0 +1,48 @@
+{
+ "schema_version": 1,
+ "slug": "btc-motor-pte-ltd",
+ "place_id": "ChIJo4v4DtMX2jER6ahj2sWwRRA",
+ "place_id_checked_at": "2026-11-13",
+ "name": "Btc Motor Pte. Ltd.",
+ "name_source_url": "google_profile",
+ "name_checked_at": "2026-11-13",
+ "address": {
+  "block": "",
+  "street": "1 Kaki Bukit Ave 6, #01-80",
+  "unit": "",
+  "building": ""
+ },
+ "postal_code": "417883",
+ "address_source_url": "google_profile",
+ "address_checked_at": "2026-11-13",
+ "categories": [
+  "SERV"
+ ],
+ "services": [
+  "General servicing and repair"
+ ],
+ "services_source_url": "google_profile",
+ "phones": [
+  {
+   "e164": "+6597150839",
+   "kind": "mobile",
+   "whatsapp": true,
+   "source": "google_profile",
+   "checked_at": "2026-11-13"
+  }
+ ],
+ "google_screen": {
+  "passed": true,
+  "reason": "OPERATIONAL, car repair, SG mobile on Google profile",
+  "checked_at": "2026-11-13"
+ },
+ "status": "pending",
+ "tier": "basic",
+ "first_seen_at": "2026-11-13",
+ "last_verified_at": "2026-11-13",
+ "collector_version": "agent-v5",
+ "estate": "kaki-bukit-industrial-estate",
+ "planning_area": "Bedok",
+ "region": "east",
+ "hold": "hold: only 4 ratings, one says it is a company lorry servicing centre; recheck it is a car workshop"
+}

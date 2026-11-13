@@ -1,0 +1,30 @@
+{
+ "businessStatus": "OPERATIONAL",
+ "primaryType": "car_repair",
+ "types": [
+  "car_repair",
+  "point_of_interest",
+  "service",
+  "establishment"
+ ],
+ "rating": 5,
+ "userRatingCount": 42,
+ "websiteUri": "https://www.facebook.com/zentrumperformance",
+ "paymentOptions": null,
+ "parkingOptions": null,
+ "editorialSummary": null,
+ "weekdayDescriptions": [
+  "Monday: 9:30 AM – 6:00 PM",
+  "Tuesday: 9:30 AM – 6:00 PM",
+  "Wednesday: 9:30 AM – 6:00 PM",
+  "Thursday: 9:30 AM – 6:00 PM",
+  "Friday: 9:30 AM – 6:00 PM",
+  "Saturday: 9:30 AM – 4:30 PM",
+  "Sunday: Closed"
+ ],
+ "review_count_seen": 5,
+ "review_themes": "Customers on Google Maps mention mechanics with Volkswagen experience, continental car servicing, pre-purchase inspections, engine and gearbox oil changes, and lower arm, brake pad and rotor replacement.",
+ "fetched_at": "2026-11-13",
+ "place_id": "ChIJ83KPiMYX2jERHgJQW6ZIP2E",
+ "source": "google_places"
+}

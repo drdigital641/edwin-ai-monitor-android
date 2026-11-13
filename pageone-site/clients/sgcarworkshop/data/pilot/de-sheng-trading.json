@@ -1,0 +1,38 @@
+{
+ "lede": "De Sheng Trading at Ubi Road 1 is a car electrical repair workshop.",
+ "chips": [
+  "Electrical",
+  "Diagnosis"
+ ],
+ "services": [
+  "Alternator replacement",
+  "Starter motor repair",
+  "Car electrical repair",
+  "Fault diagnosis"
+ ],
+ "themes": "Customers on Google Maps mention alternator replacement, an intermittent starter motor traced to a faulty cable, full electrical checks, and photos and videos of the problem shared before a quote.",
+ "faqs": [
+  [
+   "What does De Sheng Trading do?",
+   "Google Maps lists it as a car repair workshop."
+  ],
+  [
+   "What are the opening hours?",
+   "The hours are listed in the Google Maps section above. Please see Google Maps for current hours."
+  ]
+ ],
+ "sources": "its Google Maps listing",
+ "stories": [],
+ "mentioned_services": [
+  "Alternator replacement",
+  "Starter motor repair",
+  "Car electrical repair",
+  "Fault diagnosis"
+ ],
+ "services_note": "Services customers mention on Google Maps. Ask the workshop for its full list.",
+ "makes": [],
+ "makes_note": "Not listed on its public pages. Ask the workshop about your car.",
+ "specialties": [],
+ "good_to_know": [],
+ "card_rules": "2026-11-05"
+}

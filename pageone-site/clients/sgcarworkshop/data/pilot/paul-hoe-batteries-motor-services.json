@@ -1,0 +1,38 @@
+{
+ "lede": "Paul Hoe Batteries & Motor Services at Kaki Bukit Industrial Estate is a car battery and repair workshop.",
+ "chips": [
+  "Batteries",
+  "Repairs"
+ ],
+ "services": [
+  "Car battery replacement",
+  "EV 12V battery",
+  "Radiator repair",
+  "Tyre puncture repair"
+ ],
+ "themes": "Customers on Google Maps mention a 12V battery replaced on an EV that would not start, a radiator water tank replaced with a health check afterwards, quick tyre puncture repairs and faults fixed within hours.",
+ "faqs": [
+  [
+   "What does Paul Hoe Batteries & Motor Services do?",
+   "Google Maps lists it as a car repair workshop."
+  ],
+  [
+   "What are the opening hours?",
+   "The hours are listed in the Google Maps section above. Please see Google Maps for current hours."
+  ]
+ ],
+ "sources": "its Google Maps listing",
+ "stories": [],
+ "mentioned_services": [
+  "Car battery replacement",
+  "EV 12V battery",
+  "Radiator repair",
+  "Tyre puncture repair"
+ ],
+ "services_note": "Services customers mention on Google Maps. Ask the workshop for its full list.",
+ "makes": [],
+ "makes_note": "Not listed on its public pages. Ask the workshop about your car.",
+ "specialties": [],
+ "good_to_know": [],
+ "card_rules": "2026-11-05"
+}

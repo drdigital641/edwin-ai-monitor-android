@@ -1,0 +1,34 @@
+{
+ "businessStatus": "OPERATIONAL",
+ "primaryType": "car_repair",
+ "types": [
+  "car_repair",
+  "point_of_interest",
+  "service",
+  "establishment"
+ ],
+ "rating": 4.8,
+ "userRatingCount": 29,
+ "websiteUri": null,
+ "paymentOptions": {
+  "acceptsCreditCards": true,
+  "acceptsDebitCards": true,
+  "acceptsNfc": true
+ },
+ "parkingOptions": null,
+ "editorialSummary": null,
+ "weekdayDescriptions": [
+  "Monday: 8:30 AM – 9:00 PM",
+  "Tuesday: 8:30 AM – 9:00 PM",
+  "Wednesday: 8:30 AM – 9:00 PM",
+  "Thursday: 8:30 AM – 9:00 PM",
+  "Friday: 8:30 AM – 9:00 PM",
+  "Saturday: 8:30 AM – 9:00 PM",
+  "Sunday: 8:30 AM – 9:00 PM"
+ ],
+ "review_count_seen": 5,
+ "review_themes": "Customers on Google Maps mention a 12V battery replaced on an EV that would not start, a radiator water tank replaced with a health check afterwards, quick tyre puncture repairs and faults fixed within hours.",
+ "fetched_at": "2026-11-13",
+ "place_id": "ChIJHbd-KIkX2jERi9NfFWW_DyU",
+ "source": "google_places"
+}

@@ -1,0 +1,48 @@
+{
+ "schema_version": 1,
+ "slug": "platinum-werkz",
+ "place_id": "ChIJLT6vCi4Z2jER0RBGm_LNXs0",
+ "place_id_checked_at": "2026-11-13",
+ "name": "Platinum Werkz",
+ "name_source_url": "google_profile",
+ "name_checked_at": "2026-11-13",
+ "address": {
+  "block": "",
+  "street": "53 Ubi Avenue 1, #01-25 Paya Ubi Industrial Park",
+  "unit": "",
+  "building": ""
+ },
+ "postal_code": "408934",
+ "address_source_url": "google_profile",
+ "address_checked_at": "2026-11-13",
+ "categories": [
+  "SERV"
+ ],
+ "services": [
+  "General servicing and repair"
+ ],
+ "services_source_url": "google_profile",
+ "phones": [
+  {
+   "e164": "+6581185453",
+   "kind": "mobile",
+   "whatsapp": true,
+   "source": "google_profile",
+   "checked_at": "2026-11-13"
+  }
+ ],
+ "google_screen": {
+  "passed": true,
+  "reason": "OPERATIONAL, car repair, SG mobile on Google profile",
+  "checked_at": "2026-11-13"
+ },
+ "status": "pending",
+ "tier": "basic",
+ "first_seen_at": "2026-11-13",
+ "last_verified_at": "2026-11-13",
+ "collector_version": "agent-v5",
+ "estate": "paya-ubi-industrial-park",
+ "planning_area": "Geylang",
+ "region": "central",
+ "hold": "hold: only 1 rating, no review text"
+}

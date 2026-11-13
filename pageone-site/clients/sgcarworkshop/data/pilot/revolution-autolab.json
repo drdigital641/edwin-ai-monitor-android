@@ -1,0 +1,38 @@
+{
+ "lede": "Revolution Autolab at Kaki Bukit Industrial Estate is an Audi and continental car workshop.",
+ "chips": [
+  "Audi",
+  "Servicing"
+ ],
+ "services": [
+  "Audi servicing",
+  "Car repair",
+  "Fault diagnosis"
+ ],
+ "themes": "Customers on Google Maps mention Audi servicing including an A4 B9 quattro, repairs and checks done promptly, and hard-to-find issues traced and solved.",
+ "faqs": [
+  [
+   "What does Revolution Autolab do?",
+   "Google Maps lists it as a car repair workshop."
+  ],
+  [
+   "What are the opening hours?",
+   "The hours are listed in the Google Maps section above. Please see Google Maps for current hours."
+  ]
+ ],
+ "sources": "its Google Maps listing",
+ "stories": [],
+ "mentioned_services": [
+  "Audi servicing",
+  "Car repair",
+  "Fault diagnosis"
+ ],
+ "services_note": "Services customers mention on Google Maps. Ask the workshop for its full list.",
+ "makes": [
+  "Audi"
+ ],
+ "makes_note": "Named by customers on Google Maps. Ask the workshop about other makes.",
+ "specialties": [],
+ "good_to_know": [],
+ "card_rules": "2026-11-05"
+}
