@@ -30,7 +30,7 @@
  "_rating_note": "Shown as text only, linked to maps_url. Never AggregateRating schema.",
  "base_path": "/preview/hybrid-world/",
  "site_url": "https://autoseo.my/preview/hybrid-world/",
- "live_site_url": "https://hybridworld.my/",
+ "live_site_url": "https://hybridworld.com.my/",
  "_live_site_url_note": "Planned domain (NOT registered 11 Nov 2026). sitemap.xml and llms.txt are written for it. Move day: site_url = live_site_url, base_path = /, preview = false, rebuild.",
  "preview": true,
  "credit": "Website by AutoSEO.my",

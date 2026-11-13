@@ -22,13 +22,15 @@ from urllib.parse import quote
 
 from PIL import Image
 
+sys.path.insert(0, str(Path(__file__).resolve().parents[2]))
+import live_mode  # noqa: E402
 ROOT = Path(__file__).resolve().parent.parent
 CFG = json.loads((ROOT / "config.json").read_text(encoding="utf-8"))
+OUT = live_mode.apply(CFG, ROOT)
 SITE = json.loads((ROOT / "data" / "site.json").read_text(encoding="utf-8"))
 LANGS = SITE["languages"]
 STR = {l["code"]: json.loads((ROOT / "strings" / f"{l['code']}.json").read_text(encoding="utf-8")) for l in LANGS}
 TPL = {p.stem: p.read_text(encoding="utf-8") for p in (ROOT / "templates").glob("*.html")}
-OUT = ROOT / "site"
 BASE = CFG["base_path"]
 E = html.escape
 CSS = (ROOT / "assets" / "site.css").read_text(encoding="utf-8")

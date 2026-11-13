@@ -32,7 +32,7 @@
  "base_path": "/preview/carzy-world/",
  "site_url": "https://autoseo.my/preview/carzy-world/",
  "_site_url_note": "Where these pages are served now. Canonical, hreflang, og:url and schema use it. When the site moves: set site_url to live_site_url, base_path to /, preview to false, rebuild.",
- "live_site_url": "https://www.carzyworld.com/",
+ "live_site_url": "https://carzyworld.com.my/",
  "_live_site_url_note": "Planned domain (not registered yet, 11 Nov 2026). sitemap.xml and llms.txt are written for this domain so they are ready on move day.",
  "preview": true,
  "credit": "Website by AutoSEO.my",

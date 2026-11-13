@@ -6,9 +6,11 @@ import sys
 from html.parser import HTMLParser
 from pathlib import Path
 
+sys.path.insert(0, str(Path(__file__).resolve().parents[2]))
+import live_mode  # noqa: E402
 ROOT = Path(__file__).resolve().parent.parent
-SITE = ROOT / "site"
 CFG = json.loads((ROOT / "config.json").read_text(encoding="utf-8"))
+SITE = live_mode.apply(CFG, ROOT)
 BASE = CFG["base_path"]
 WA = (CFG.get("whatsapp_number") or "").strip()
 errors = []

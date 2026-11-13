@@ -16,16 +16,16 @@
 
 ## Services
 
-- [Car servicing and oil change](https://www.carzyworld.com/services/car-servicing-oil-change/): Regular servicing keeps your car reliable and helps catch small problems early. We do normal services, major services and oil changes for all car brands, from city cars to pickups and continental cars.
-- [Engine and gearbox repair](https://www.carzyworld.com/services/engine-gearbox-repair/): Engine and gearbox problems are worth checking early, before a small fault turns into a big repair. WhatsApp us what you're noticing and we'll tell you what to expect.
-- [Car aircond diagnostics and service](https://www.carzyworld.com/services/car-aircond-service/): In Malaysian weather, a weak aircond makes every drive uncomfortable. We check the system to find out why it isn't cooling properly, then service or repair what's needed.
-- [Suspension, brakes and exhaust](https://www.carzyworld.com/services/suspension-brakes-exhaust/): Brakes and suspension keep you safe and the car comfortable. We check and repair suspension, brakes and exhaust systems for all car brands.
-- [Electrical and wiring fault finding](https://www.carzyworld.com/services/electrical-wiring-diagnosis/): Electrical faults can be hard to pin down: a warning light that comes and goes, or something that only fails sometimes. Tracing difficult wiring problems is work we're known for.
-- [EV repair](https://www.carzyworld.com/services/ev-repair/): Electric cars still need suspension, brake and general repairs, and sometimes help with charging problems. We work on EVs as well as petrol and diesel cars.
-- [Classic and continental cars](https://www.carzyworld.com/services/classic-continental-cars/): Older and European cars need patience and care. We take on classic restoration work and continental car repairs.
+- [Car servicing and oil change](https://carzyworld.com.my/services/car-servicing-oil-change/): Regular servicing keeps your car reliable and helps catch small problems early. We do normal services, major services and oil changes for all car brands, from city cars to pickups and continental cars.
+- [Engine and gearbox repair](https://carzyworld.com.my/services/engine-gearbox-repair/): Engine and gearbox problems are worth checking early, before a small fault turns into a big repair. WhatsApp us what you're noticing and we'll tell you what to expect.
+- [Car aircond diagnostics and service](https://carzyworld.com.my/services/car-aircond-service/): In Malaysian weather, a weak aircond makes every drive uncomfortable. We check the system to find out why it isn't cooling properly, then service or repair what's needed.
+- [Suspension, brakes and exhaust](https://carzyworld.com.my/services/suspension-brakes-exhaust/): Brakes and suspension keep you safe and the car comfortable. We check and repair suspension, brakes and exhaust systems for all car brands.
+- [Electrical and wiring fault finding](https://carzyworld.com.my/services/electrical-wiring-diagnosis/): Electrical faults can be hard to pin down: a warning light that comes and goes, or something that only fails sometimes. Tracing difficult wiring problems is work we're known for.
+- [EV repair](https://carzyworld.com.my/services/ev-repair/): Electric cars still need suspension, brake and general repairs, and sometimes help with charging problems. We work on EVs as well as petrol and diesel cars.
+- [Classic and continental cars](https://carzyworld.com.my/services/classic-continental-cars/): Older and European cars need patience and care. We take on classic restoration work and continental car repairs.
 
 ## Pages
 
-- English: [Home](https://www.carzyworld.com/), [Services](https://www.carzyworld.com/services/), [About](https://www.carzyworld.com/about/), [Contact](https://www.carzyworld.com/contact/)
-- Bahasa Melayu: [Utama](https://www.carzyworld.com/ms/), [Perkhidmatan](https://www.carzyworld.com/ms/services/), [Tentang kami](https://www.carzyworld.com/ms/about/), [Hubungi](https://www.carzyworld.com/ms/contact/)
-- 中文: [首页](https://www.carzyworld.com/zh/), [服务](https://www.carzyworld.com/zh/services/), [关于我们](https://www.carzyworld.com/zh/about/), [联络我们](https://www.carzyworld.com/zh/contact/)
+- English: [Home](https://carzyworld.com.my/), [Services](https://carzyworld.com.my/services/), [About](https://carzyworld.com.my/about/), [Contact](https://carzyworld.com.my/contact/)
+- Bahasa Melayu: [Utama](https://carzyworld.com.my/ms/), [Perkhidmatan](https://carzyworld.com.my/ms/services/), [Tentang kami](https://carzyworld.com.my/ms/about/), [Hubungi](https://carzyworld.com.my/ms/contact/)
+- 中文: [首页](https://carzyworld.com.my/zh/), [服务](https://carzyworld.com.my/zh/services/), [关于我们](https://carzyworld.com.my/zh/about/), [联络我们](https://carzyworld.com.my/zh/contact/)

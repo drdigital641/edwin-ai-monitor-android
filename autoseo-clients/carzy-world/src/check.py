@@ -18,9 +18,11 @@ import re
 import sys
 from pathlib import Path
 
+sys.path.insert(0, str(Path(__file__).resolve().parents[2]))
+import live_mode  # noqa: E402
 ROOT = Path(__file__).resolve().parent.parent
-SITE = ROOT / "site"
 BIZ = json.loads((ROOT / "data" / "business.json").read_text(encoding="utf-8"))
+SITE = live_mode.apply(BIZ, ROOT)
 SITE_DATA = json.loads((ROOT / "data" / "site.json").read_text(encoding="utf-8"))
 STR = {p.stem: json.loads(p.read_text(encoding="utf-8")) for p in (ROOT / "strings").glob("*.json")}
 terms = [t.strip() for t in (ROOT / "data" / "blocklist.txt").read_text(encoding="utf-8").splitlines() if t.strip() and not t.startswith("#")]
