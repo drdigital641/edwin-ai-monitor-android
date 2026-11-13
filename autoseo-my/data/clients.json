@@ -1,0 +1,70 @@
+{
+ "_readme": "Client websites shown on /clients/ (13 Nov 2026, matches live). Only sites live on the client's own domain; one card each, in this order. Screenshot in assets/clients/<image>. 'updated' is the sitemap lastmod of /clients/; 'css_v' the clients.css version.",
+ "updated": "2026-11-13T20:22:00+08:00",
+ "css_v": "20261113",
+ "clients": [
+  {
+   "name": "EMATS",
+   "url": "https://ecumats.my/",
+   "domain": "ecumats.my",
+   "image": "emats.webp",
+   "en": "ECU and ABS module repair, Johor Bahru",
+   "ms": "Baiki ECU dan modul ABS, Johor Bahru",
+   "zh": "新山 ECU 与 ABS 模块维修"
+  },
+  {
+   "name": "Battery Rescue",
+   "url": "https://batteryrescue.sg/",
+   "domain": "batteryrescue.sg",
+   "image": "battery-rescue.webp",
+   "en": "Onsite car battery replacement, Singapore",
+   "ms": "Penggantian bateri kereta di lokasi, Singapura",
+   "zh": "新加坡上门汽车电池更换"
+  },
+  {
+   "name": "MyKar World",
+   "url": "https://mykar.my/",
+   "domain": "mykar.my",
+   "image": "mykar.webp",
+   "en": "Dongfeng EV 3S centre, Johor Bahru",
+   "ms": "Pusat 3S EV Dongfeng, Johor Bahru",
+   "zh": "东风新山 3S 中心"
+  },
+  {
+   "name": "Klar Details",
+   "url": "https://klardetails.com.sg/",
+   "domain": "klardetails.com.sg",
+   "image": "klar-details.webp",
+   "en": "Car detailing and paint correction, Jurong East",
+   "ms": "Detailing dan pembetulan cat kereta, Jurong East",
+   "zh": "裕廊东汽车美容与漆面修正"
+  },
+  {
+   "name": "Carzy World",
+   "url": "https://carzyworld.com.my/",
+   "domain": "carzyworld.com.my",
+   "image": "carzy-world.webp",
+   "en": "Car workshop and service, Klang",
+   "ms": "Bengkel dan servis kereta, Klang",
+   "zh": "巴生汽车维修厂与保养"
+  },
+  {
+   "name": "Hybrid World",
+   "url": "https://hybridworld.com.my/",
+   "domain": "hybridworld.com.my",
+   "image": "hybrid-world.webp",
+   "en": "Hybrid car and battery specialist, Johor Bahru",
+   "ms": "Pakar kereta dan bateri hibrid, Johor Bahru",
+   "zh": "新山混合动力车与电池专家"
+  },
+  {
+   "name": "Ap Car Air-Cond Centre",
+   "url": "https://apcar.com.my/",
+   "domain": "apcar.com.my",
+   "image": "apcar.webp",
+   "en": "Car aircond specialist, Kuantan",
+   "ms": "Pakar aircond kereta, Kuantan",
+   "zh": "关丹汽车冷气专家"
+  }
+ ]
+}

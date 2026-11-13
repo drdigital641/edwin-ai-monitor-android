@@ -21,13 +21,22 @@ BRAND = json.loads((ROOT / "data" / "brand.json").read_text(encoding="utf-8"))
 terms = [t.strip() for t in (ROOT / "data" / "blocklist.txt").read_text(encoding="utf-8").splitlines() if t.strip() and not t.startswith("#")]
 
 scan = [p for p in SITE.rglob("*") if p.is_file()]
-scan += [ROOT / "data" / "brand.json", ROOT / "data" / "site.json"] + list((ROOT / "strings").glob("*.json")) + list((ROOT / "templates").glob("*.html")) + [ROOT / "assets" / "brand.css", ROOT / "assets" / "base.css", ROOT / "assets" / "site.js", ROOT / "assets" / "check.js", ROOT / "assets" / "check.css", ROOT / "assets" / "partners.css", ROOT / "assets" / "articles.css"] + list((ROOT / "data" / "articles").glob("*.json"))
+scan += [ROOT / "data" / "brand.json", ROOT / "data" / "site.json"] + list((ROOT / "strings").glob("*.json")) + list((ROOT / "templates").glob("*.html")) + [ROOT / "assets" / "brand.css", ROOT / "assets" / "base.css", ROOT / "assets" / "site.js", ROOT / "assets" / "check.js", ROOT / "assets" / "check.css", ROOT / "assets" / "partners.css", ROOT / "assets" / "articles.css", ROOT / "assets" / "clients.css"] + list((ROOT / "data" / "articles").glob("*.json"))
+# /clients/ names the client websites that are live on their own domains (data/clients.json, Edwin 13 Nov 2026).
+# Only there, and only for blocked terms that appear in that file, the names and domains are allowed.
+CLIENTS_TEXT = (ROOT / "data" / "clients.json").read_text(encoding="utf-8").lower()
+CLIENT_OK = {t.lower() for t in terms if t.lower() in CLIENTS_TEXT}
+CLIENT_FILES = ("site/clients/", "site/ms/clients/", "site/zh/clients/", "site/assets/clients/")
+BINARY = (".webp", ".png", ".jpg", ".jpeg", ".gif", ".ico")
 hits = []
 for p in scan:
-    text = p.read_text(encoding="utf-8", errors="replace").lower()
     rel = str(p.relative_to(ROOT)).lower()
+    # images: file name only (their bytes are not text)
+    text = "" if rel.endswith(BINARY) else p.read_text(encoding="utf-8", errors="replace").lower()
     for t in terms:
         tl = t.lower()
+        if tl in CLIENT_OK and rel.startswith(CLIENT_FILES):
+            continue
         if tl in rel:
             hits.append(f"{rel}: file name contains {t!r}")
         n = text.count(tl)
@@ -49,7 +58,8 @@ for p in pages:
         problems.append(f"{rel}: no JSON-LD")
     for b in blocks:
         try:
-            g = json.loads(b)["@graph"]
+            d = json.loads(b)
+            g = d.get("@graph", [d])  # a plain node (the /clients/ CollectionPage) is checked as a one-node graph
             for node in g:
                 if any(k in node for k in ("telephone", "address", "email")):
                     problems.append(f"{rel}: schema has telephone/address/email")

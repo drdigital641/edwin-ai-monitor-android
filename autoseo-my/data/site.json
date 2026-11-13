@@ -90,5 +90,7 @@
   "🔍",
   "📈"
  ],
- "home_faq_count": 4
+ "home_faq_count": 4,
+ "partners_live": false,
+ "_partners_live_note": "false = no /partners/ page, link, sitemap or llms entry. Set true only once a /partners/ page is live (13 Nov 2026)."
 }

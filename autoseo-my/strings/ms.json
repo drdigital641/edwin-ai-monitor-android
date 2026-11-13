@@ -52,6 +52,7 @@
    "services": "Perkhidmatan",
    "industries": "Industri",
    "how": "Cara Kerja",
+   "clients": "Pelanggan",
    "about": "Tentang",
    "faq": "Soalan",
    "contact": "Hubungi",
@@ -1135,5 +1136,43 @@
   "search_aria": "Frasa carian yang dijawab oleh artikel ini",
   "cta_h2": "Mahu kami semak profil perniagaan anda?",
   "cta_text": "Hantar nama perniagaan anda melalui WhatsApp dan kami akan beritahu apa yang perlu dibetulkan dahulu."
+ },
+ "clients_page": {
+  "title": "Laman Web Pelanggan | AutoSEO.my",
+  "description": "Lihat laman web automotif yang dibina dan diurus oleh AutoSEO.my, setiap satu hidup di domain perniagaan itu sendiri. WhatsApp pakar SEO kami untuk membina milik anda.",
+  "crumb": "Pelanggan",
+  "eyebrow": "100% Fokus Automotif. Lebih Nampak. Lebih Banyak Pertanyaan. Lebih Ramai Pelanggan.",
+  "h1": "Laman web langsung yang kami bina untuk perniagaan automotif.",
+  "lead": "Setiap laman di bawah sudah hidup di domain perniagaan itu sendiri. Buka dan nilaikan kerja kami sendiri. Setiap pelanggan baharu ditambah pada hari laman webnya dilancarkan.",
+  "btn_audit": "Dapatkan Audit SEO Automotif Percuma",
+  "btn_specialist": "WhatsApp Pakar SEO Kami",
+  "wa_audit": "Hi AutoSEO.my, I'd like a free automotive SEO audit for my business.",
+  "wa_specialist": "Hi AutoSEO.my, I'd like to speak to one of your SEO specialists about my automotive business.",
+  "kicker": "Pelanggan kami",
+  "h2": "Perniagaan automotif, sudah hidup hari ini",
+  "section_lead": "{n} laman web pelanggan sudah hidup di domain sendiri. Laman yang masih dalam pratonton tidak dinamakan di sini.",
+  "kpi_label": "Laman web pelanggan yang hidup",
+  "live": "Hidup",
+  "faq_kicker": "Mengenai halaman ini",
+  "faq_h2": "Soalan tentang pelanggan kami",
+  "faqs": [
+   {
+    "q": "Adakah ini perniagaan sebenar?",
+    "a": "Ya. Setiap laman web di halaman ini sudah hidup di domain perniagaan itu sendiri, jadi anda boleh membukanya dan menyemak. Setiap kad memaut terus ke laman itu."
+   },
+   {
+    "q": "Mengapa hanya sebahagian pelanggan AutoSEO tersenarai?",
+    "a": "Laman web yang sedang dibina hanya dikira, tidak dinamakan, sehingga ia hidup di domain perniagaan itu sendiri. Ini melindungi rancangan pelanggan, dan bermaksud setiap nama di halaman ini ialah laman yang boleh anda buka dan semak."
+   },
+   {
+    "q": "Berapa kerap halaman ini dikemas kini?",
+    "a": "Setiap laman web pelanggan baharu ditambah pada hari ia dilancarkan di domain sendiri."
+   }
+  ],
+  "cta_h2": "Mahukan perniagaan anda di halaman ini?",
+  "cta_text": "WhatsApp pakar SEO kami untuk audit SEO automotif percuma. Tiada obligasi.",
+  "alt": "Laman utama laman web {name} ({domain})",
+  "visit": "Lawati {domain} ↗",
+  "schema_name": "Perniagaan automotif, sudah hidup hari ini"
  }
 }

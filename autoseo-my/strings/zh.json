@@ -52,6 +52,7 @@
    "services": "服务",
    "industries": "行业",
    "how": "合作流程",
+   "clients": "客户",
    "about": "关于我们",
    "faq": "常见问题",
    "contact": "联系我们",
@@ -1135,5 +1136,43 @@
   "search_aria": "本文回答的搜索词",
   "cta_h2": "想请我们帮您看看商家资料吗？",
   "cta_text": "通过 WhatsApp 发来您的商家名称，我们会告诉您最先要改的地方。"
+ },
+ "clients_page": {
+  "title": "客户网站 | AutoSEO.my",
+  "description": "查看 AutoSEO.my 为汽车业客户建立并维护、已在客户自有域名上线的网站。WhatsApp 我们的 SEO 顾问，为您建立网站。",
+  "crumb": "客户",
+  "eyebrow": "100% 专注汽车行业。更高曝光，更多询问，更多客户。",
+  "h1": "我们为汽车业客户建立的已上线网站。",
+  "lead": "以下每个网站都已在客户自己的域名上线。打开即可自行判断。新客户的网站在上线当天就会加入此页。",
+  "btn_audit": "获取免费汽车业 SEO 诊断",
+  "btn_specialist": "WhatsApp 我们的 SEO 顾问",
+  "wa_audit": "Hi AutoSEO.my, I'd like a free automotive SEO audit for my business.",
+  "wa_specialist": "Hi AutoSEO.my, I'd like to speak to one of your SEO specialists about my automotive business.",
+  "kicker": "我们的客户",
+  "h2": "已上线的汽车业客户",
+  "section_lead": "已有 {n} 个客户网站在其自有域名上线。仍在预览中的网站不会在此具名。",
+  "kpi_label": "已上线的客户网站",
+  "live": "已上线",
+  "faq_kicker": "关于本页",
+  "faq_h2": "关于客户的常见问题",
+  "faqs": [
+   {
+    "q": "这些是真实的企业吗？",
+    "a": "是的。本页列出的每个网站都已在该企业自己的域名上线，您可以打开查验。每张卡片都直接链到该网站。"
+   },
+   {
+    "q": "为什么只列出部分 AutoSEO 客户？",
+    "a": "仍在建置中的网站只计入数量，不会具名，直到它在客户自己的域名上线。这保护客户的计划，也代表本页出现的每个名字都是您可以打开查验的网站。"
+   },
+   {
+    "q": "本页多久更新一次？",
+    "a": "每个新的客户网站在其自有域名上线当天就会加入本页。"
+   }
+  ],
+  "cta_h2": "希望您的企业出现在本页？",
+  "cta_text": "WhatsApp 我们的 SEO 顾问，获取免费的汽车业 SEO 诊断。无需承诺。",
+  "alt": "{name} 网站首页（{domain}）",
+  "visit": "访问 {domain} ↗",
+  "schema_name": "已上线的汽车业客户"
  }
 }

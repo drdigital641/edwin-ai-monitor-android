@@ -52,6 +52,7 @@
    "services": "Services",
    "industries": "Industries",
    "how": "How it works",
+   "clients": "Clients",
    "about": "About",
    "faq": "FAQ",
    "contact": "Contact",
@@ -1135,5 +1136,43 @@
   "search_aria": "Search phrase this article answers",
   "cta_h2": "Want a second pair of eyes on your listing?",
   "cta_text": "Send us your business name on WhatsApp and we will tell you what to fix first."
+ },
+ "clients_page": {
+  "title": "Client Websites | AutoSEO.my",
+  "description": "See the automotive websites AutoSEO.my built and runs, each live on the business's own domain. WhatsApp our SEO specialists to get yours built.",
+  "crumb": "Clients",
+  "eyebrow": "100% Automotive Focus. More Visibility. More Enquiries. More Customers.",
+  "h1": "Live websites we built for automotive businesses.",
+  "lead": "Every site below is live on the business's own domain. Open it and judge the work yourself. We add each new client the day their website goes live.",
+  "btn_audit": "Get a Free Automotive SEO Audit",
+  "btn_specialist": "WhatsApp Our SEO Specialists",
+  "wa_audit": "Hi AutoSEO.my, I'd like a free automotive SEO audit for my business.",
+  "wa_specialist": "Hi AutoSEO.my, I'd like to speak to one of your SEO specialists about my automotive business.",
+  "kicker": "Our clients",
+  "h2": "Automotive businesses, live today",
+  "section_lead": "{n} client websites are live on their own domains. Sites still in preview are not named here.",
+  "kpi_label": "Client websites live",
+  "live": "Live",
+  "faq_kicker": "About this page",
+  "faq_h2": "Questions about our clients",
+  "faqs": [
+   {
+    "q": "Are these real businesses?",
+    "a": "Yes. Every website on this page is live on the business's own domain, so you can open it and check. Each card links straight to that live site."
+   },
+   {
+    "q": "Why are only some AutoSEO clients listed?",
+    "a": "A website being built is only counted, never named, until it is live on the business's own domain. That protects our clients' plans and means every name on this page is a website you can open and check."
+   },
+   {
+    "q": "How often is this page updated?",
+    "a": "Each new client website is added the day it goes live on its own domain."
+   }
+  ],
+  "cta_h2": "Want your business on this page?",
+  "cta_text": "WhatsApp our SEO specialists for a free automotive SEO audit. No obligation.",
+  "alt": "{name} website homepage ({domain})",
+  "visit": "Visit {domain} ↗",
+  "schema_name": "Automotive businesses, live today"
  }
 }

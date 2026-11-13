@@ -41,6 +41,10 @@ PARTNERS_CSS = re.sub(r"/\*.*?\*/\s*", "", (ROOT / "assets" / "partners.css").re
 # Articles (/articles/ hub + article pages) only: inlined on those pages, so site.css stays unchanged (13 Nov 2026).
 ARTICLES_CSS = re.sub(r"/\*.*?\*/\s*", "", (ROOT / "assets" / "articles.css").read_text(encoding="utf-8"), flags=re.S).strip()
 # One file per article: data/articles/<slug>.json with en / ms / zh. Newest first.
+# /clients/: one card per client website live on its own domain (data/clients.json, 13 Nov 2026).
+CLIENTS = json.loads((ROOT / "data" / "clients.json").read_text(encoding="utf-8"))
+# /partners/ is not on live yet: no page, no link, no sitemap/llms entry until site.json partners_live is true.
+PARTNERS_LIVE = SITE.get("partners_live", False)
 ARTICLES = sorted((json.loads(f.read_text(encoding="utf-8")) for f in (ROOT / "data" / "articles").glob("*.json")),
                   key=lambda a: (a["published"], a["slug"]), reverse=True)
 
@@ -80,10 +84,10 @@ def page_url(lang_prefix, path):
 
 
 # ------------------------------------------------------------------ schema
-def org_graph(L):
+def org_graph(L, path=""):
     s = L.s
     org = {
-        "@type": "Organization", "@id": "#organization", "name": BRAND["name"], "slogan": tagline(L),
+        "@type": "Organization", "@id": "#organization", "name": BRAND["name"], "slogan": tagline(L, path),
         "description": s["brand"]["org_description"],
         "parentOrganization": {"@type": "Organization", "name": BRAND["company"]},
         "areaServed": [{"@type": "Country", "name": BRAND["country"]}] + [{"@type": "Place", "name": a} for a in s["brand"]["areas"]],
@@ -175,9 +179,29 @@ def mission(L):
 '''
 
 
-def tagline(L):
-    """The tagline in the page's own language: English on EN pages, the BM / 中文 tagline on /ms/ and /zh/ (Edwin, 11 Nov 2026)."""
-    return L.s["brand"]["tagline_translation"] or BRAND["tagline"]
+def tagline(L, path=""):
+    """Schema slogan. EN pages and every ms/zh inner page: the English tagline. ms/zh home: the BM / 中文 tagline only (live, 13 Nov 2026)."""
+    tr = L.s["brand"]["tagline_translation"]
+    return tr if tr and path == "" else BRAND["tagline"]
+
+
+def tagline_html(L, path=""):
+    """Footer tagline. ms/zh inner pages: the English line plus <span class="tagline-tr"> with the BM / 中文 line. ms/zh home: translated line only."""
+    tr = L.s["brand"]["tagline_translation"]
+    if not tr:
+        return E(BRAND["tagline"])
+    if path == "":
+        return E(tr)
+    return E(BRAND["tagline"]) + f'<span class="tagline-tr">{E(tr)}</span>'
+
+
+def company_links(L):
+    """Footer company column and llms.txt company list: one order for both."""
+    ui = L.ui
+    out = [("about/", ui["nav"]["about"]), ("clients/", ui["nav"]["clients"]), ("how-it-works/", ui["nav"]["how"])]
+    if PARTNERS_LIVE:
+        out.append(("partners/", ui["nav"]["partners"]))
+    return out + [("articles/", ui["nav"]["articles"]), ("faq/", ui["nav"]["faq"]), ("contact/", ui["nav"]["contact"])]
 
 
 # ------------------------------------------------------------------ page shell
@@ -185,7 +209,7 @@ PAGES = []
 
 
 def page(L, path, title, description, body, current="", faqs=None, body_class="", head_extra="", extra_graph=None):
-    graph = org_graph(L)
+    graph = org_graph(L, path)
     graph += extra_graph or []
     if faqs:
         graph.append(faq_schema(L, faqs))
@@ -201,7 +225,7 @@ def page(L, path, title, description, body, current="", faqs=None, body_class=""
         f'<a href="{BASE + l["prefix"] + path.replace("404.html", "")}" hreflang="{STR[l["code"]]["meta"]["html_lang"]}" lang="{STR[l["code"]]["meta"]["html_lang"]}"'
         + (' aria-current="true"' if l["code"] == L.code else "") + f'>{E(STR[l["code"]]["meta"]["switch_label"])}</a>' for l in LANGS)
     nav = "\n".join(f'        <a href="{L.url(p)}"' + (' aria-current="page"' if current == p else "") + f'>{E(ui["nav"][k])}</a>'
-                    for p, k in [("services/", "services"), ("industries/", "industries"), ("how-it-works/", "how"), ("about/", "about"), ("faq/", "faq"), ("contact/", "contact")])
+                    for p, k in [("services/", "services"), ("industries/", "industries"), ("how-it-works/", "how"), ("clients/", "clients"), ("about/", "about"), ("faq/", "faq"), ("contact/", "contact")])
     shared = dict(base=BASE, home_url=L.url(), brand_name_html=BRAND["name_html"], logo_letter=BRAND["logo_letter"], wa_general=L.wa("general"), wa_icon=TPL["wa_icon"].strip(), whatsapp_label=E(L.s["brand"]["whatsapp_label"]))
     doc = fill("head", lang=L.s["meta"]["html_lang"], title=E(title), description=E(description), robots=robots, canonical=canonical, hreflang=alts,
                og_url=og_url, og_locale=L.s["meta"]["og_locale"], asset_v=ASSET_V, schema=schema_tag(graph), base=BASE, brand_name=E(BRAND["name"]),
@@ -212,8 +236,8 @@ def page(L, path, title, description, body, current="", faqs=None, body_class=""
                 nav_aria=E(ui["nav_aria"]), lang_aria=E(ui["lang_switch_aria"]), lang_links=lang_links,
                 whatsapp_us=E(ui["whatsapp_us"]), menu=E(ui["menu"]), **shared)
     doc += body
-    company = [("about/", ui["nav"]["about"]), ("how-it-works/", ui["nav"]["how"]), ("partners/", ui["nav"]["partners"]), ("articles/", ui["nav"]["articles"]), ("faq/", ui["nav"]["faq"]), ("contact/", ui["nav"]["contact"]), ("privacy/", ui["privacy"])]
-    doc += fill("footer", tagline=E(tagline(L)), year=date.today().year,
+    company = company_links(L) + [("privacy/", ui["privacy"])]
+    doc += fill("footer", tagline=tagline_html(L, path), year=date.today().year,
                 brand_line=E(L.s["brand"]["brand_line"]), areas_line=E(L.s["brand"]["areas_line"]),
                 h_services=E(ui["footer_services"]), h_industries=E(ui["footer_industries"]), h_company=E(ui["footer_company"]),
                 footer_services="\n".join(f'        <a href="{L.url("services/" + m["slug"] + "/")}">{E(L.s["services"][m["slug"]]["short"])}</a>' for m in SITE["services"]),
@@ -381,6 +405,89 @@ def build_company(L):
     body = page_hero(L, [("", ui["home"]), ("", ui["page_not_found"])], np["eyebrow"], np["h1"], np["lead"], "notfound")
     body += section(f'        <p class="reveal"><a class="link" href="{L.url()}">{E(ui["home"])}</a> · <a class="link" href="{L.url("services/")}">{E(ui["nav"]["services"])}</a> · <a class="link" href="{L.url("industries/")}">{E(ui["nav"]["industries"])}</a> · <a class="link" href="{L.url("faq/")}">{E(ui["nav"]["faq"])}</a></p>', narrow=True)
     page(L, "404.html", np["title"], np["description"], body)
+
+
+# ------------------------------------------------------------------ clients
+def build_clients(L):
+    """/clients/: one card per client website that is live on its own domain (data/clients.json). Own small stylesheet assets/clients.css."""
+    s, ui, cp = L.s, L.ui, L.s["clients_page"]
+    path = "clients/"
+    cards = CLIENTS["clients"]
+    n = len(cards)
+
+    def wa(text):
+        return E(f"https://wa.me/{BRAND['whatsapp_number']}?text={quote(text, safe='')}")
+
+    def btns(cta, indent):
+        return (f'{indent}<a class="btn" href="{wa(cp["wa_audit"])}" target="_blank" rel="noopener" data-cta="whatsapp_clients{cta}audit">{E(cp["btn_audit"])}</a>\n'
+                f'{indent}<a class="btn btn-ghost" href="{wa(cp["wa_specialist"])}" target="_blank" rel="noopener" data-cta="whatsapp_clients{cta}">{E(cp["btn_specialist"])}</a>\n')
+
+    tiles = []
+    for c in cards:
+        alt = cp["alt"].replace("{name}", c["name"]).replace("{domain}", c["domain"])
+        tiles.append(f'''          <a class="card site-card reveal" href="{E(c["url"])}" target="_blank" rel="noopener">
+            <span class="browser"><span class="browser-bar"><i></i><i></i><i></i><span>{E(c["domain"])}</span></span><img src="{BASE}assets/clients/{c["image"]}" width="640" height="400" alt="{E(alt)}" decoding="async"></span>
+            <p class="pill live-pill"><span class="live-dot" aria-hidden="true"></span>{E(cp["live"])}</p>
+            <h3>{E(c["name"])}</h3>
+            <p>{E(c[L.code])}</p>
+            <span class="card-link">{E(cp["visit"].replace("{domain}", c["domain"]))}</span>
+          </a>''')
+    faqs = "".join(f'        <details><summary>{E(f["q"])}</summary><p>{E(f["a"])}</p></details>\n' for f in cp["faqs"])
+    body = f'''  <main id="main">
+    <section class="page-hero">
+      <span class="glow glow-1" aria-hidden="true"></span>
+      <span class="glow glow-2" aria-hidden="true"></span>
+      <div class="wrap">
+        <p class="crumbs"><a href="{L.url()}">{E(ui["home"])}</a> / {E(cp["crumb"])}</p>
+        <p class="eyebrow"><span class="live" aria-hidden="true"></span>{E(cp["eyebrow"])}</p>
+        <h1>{E(cp["h1"])}</h1>
+        <p class="lead">{E(cp["lead"])}</p>
+        <div class="cta-row">
+{btns("_", "          ").replace('clients_audit"', 'clients_audit"').replace('data-cta="whatsapp_clients_">', 'data-cta="whatsapp_clients_specialist">')}        </div>
+      </div>
+    </section>
+    <section class="section" id="clients">
+      <div class="wrap">
+        <p class="kicker reveal">{E(cp["kicker"])}</p>
+        <h2 class="reveal">{E(cp["h2"])}</h2>
+        <p class="section-lead reveal">{E(cp["section_lead"].replace("{n}", str(n)))}</p>
+        <div class="clients-count">
+          <div class="kpi"><div class="label">{E(cp["kpi_label"])}</div><div class="value">{n}</div></div>
+        </div>
+        <div class="cards two site-cards">
+{chr(10).join(tiles)}
+        </div>
+      </div>
+    </section>
+    <section class="section alt">
+      <div class="wrap narrow">
+        <p class="kicker reveal">{E(cp["faq_kicker"])}</p>
+        <h2 class="reveal">{E(cp["faq_h2"])}</h2>
+{faqs}      </div>
+    </section>
+    <section class="cta-band">
+      <div class="wrap">
+        <h2>{E(cp["cta_h2"])}</h2>
+        <p>{E(cp["cta_text"])}</p>
+        <div class="cta-row center">
+{btns("_cta_", "          ").replace('data-cta="whatsapp_clients_cta_audit"', 'data-cta="whatsapp_clients_cta_audit"').replace('data-cta="whatsapp_clients_cta_">', 'data-cta="whatsapp_clients_cta_wa">')}        </div>
+      </div>
+    </section>
+'''
+    graph = {"@context": "https://schema.org", "@type": "CollectionPage", "url": page_url(L.prefix, path), "name": cp["h2"], "inLanguage": s["meta"]["schema_lang"],
+             "isPartOf": {"@type": "WebSite", "name": BRAND["name"], "url": page_url("", "")},
+             "mainEntity": {"@type": "ItemList", "name": cp["h2"], "numberOfItems": n,
+                            "itemListElement": [{"@type": "ListItem", "position": i + 1, "url": c["url"], "name": c["name"]} for i, c in enumerate(cards)]}}
+    extra = (f'  <link rel="stylesheet" href="{BASE}assets/clients.css?v={CLIENTS["css_v"]}">\n', 
+             f'  <script type="application/ld+json">\n{json.dumps(graph, ensure_ascii=False, indent=1)}\n  </script>\n')
+    page(L, path, cp["title"], cp["description"], "", current=path)
+    key, doc = PAGES.pop()
+    # The header template opens <main>; this page writes its own (live layout, 13 Nov 2026).
+    doc = doc.replace('  </header>\n  <main id="main">\n', '  </header>\n  ' + body, 1)
+    doc = doc.replace(f'  <script src="{BASE}assets/site.js', extra[0] + f'  <script src="{BASE}assets/site.js', 1)
+    doc = doc.replace("  </script>\n</head>", "  </script>\n" + extra[1] + "</head>", 1)
+    doc = doc.replace("  </main>\n  <footer", "  </main>\n\n  <footer", 1)
+    PAGES.append((key, doc))
 
 
 # ------------------------------------------------------------------ partner programme
@@ -587,10 +694,14 @@ def build_llms():
                 f"### {t['services']}"]
         out += [f"- [{s['services'][m['slug']]['title']}]({abs_url(L.url('services/' + m['slug'] + '/'))}): {s['services'][m['slug']]['text']}" for m in SITE["services"]]
         out += ["", f"### {t['industries']}"] + [f"- [{s['industries'][m['slug']]['label']}]({abs_url(L.url('industries/' + m['slug'] + '/'))})" for m in SITE["industries"]] + [f"- {s['other_industry']}"]
-        out += ["", f"### {t['company']}"] + [f"- [{L.ui['nav'][k]}]({abs_url(L.url(p))})" for p, k in [("about/", "about"), ("how-it-works/", "how"), ("partners/", "partners"), ("articles/", "articles"), ("faq/", "faq"), ("contact/", "contact")]] + [""]
+        out += ["", f"### {t['company']}"] + [f"- [{label}]({abs_url(L.url(p))})" for p, label in company_links(L)] + [""]
         if ARTICLES:
             out += [f"### {t['articles']}"] + [f"- [{a[L.code]['h1']}]({abs_url(L.url('articles/' + a['slug'] + '/'))}): {a[L.code]['description']}" for a in ARTICLES] + [""]
     (OUT / "llms.txt").write_text("\n".join(out), encoding="utf-8")
+
+
+# sitemap <lastmod> only where a real update date is known (no fake lastmod).
+LASTMOD = {"clients/": CLIENTS["updated"]}
 
 
 def build_sitemap():
@@ -600,11 +711,18 @@ def build_sitemap():
     root = BRAND["site_url"].rstrip("/")
     (OUT / "robots.txt").write_text(f"User-agent: *\nAllow: /\nSitemap: {root}/sitemap.xml\n", encoding="utf-8")
     out = ['<?xml version="1.0" encoding="UTF-8"?>', '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"', '        xmlns:xhtml="http://www.w3.org/1999/xhtml">']
+    groups, art_groups = [], []
     for cfg in LANGS:
-        paths = sorted(p for p, _ in PAGES if p.startswith(cfg["prefix"]) and p[len(cfg["prefix"]):].split("/")[0] not in ("ms", "zh") and not p.endswith("404.html"))
+        paths = sorted(p for p, _ in PAGES if p.startswith(cfg["prefix"]) and p[len(cfg["prefix"]):].split("/")[0] not in ("ms", "zh", "articles") and not p.endswith("404.html"))
+        groups.append(paths)
+        art_groups.append(sorted(p for p, _ in PAGES if p.startswith(cfg["prefix"] + "articles/")))
+    # Articles go last, per language, as on live (each article run adds them at the end; 13 Nov 2026).
+    for cfg, paths in zip(LANGS + LANGS, groups + art_groups):
         for p in sorted(paths, key=lambda x: x + "index.html"):
             rest = p[len(cfg["prefix"]):]
             out += ["  <url>", f"    <loc>{page_url(cfg['prefix'], rest)}</loc>"]
+            if rest in LASTMOD:
+                out.append(f"    <lastmod>{LASTMOD[rest]}</lastmod>")
             out += [f'    <xhtml:link rel="alternate" hreflang="{STR[l["code"]]["meta"]["html_lang"]}" href="{page_url(l["prefix"], rest)}"/>' for l in LANGS]
             out += [f'    <xhtml:link rel="alternate" hreflang="x-default" href="{page_url("", rest)}"/>', "  </url>"]
     out.append("</urlset>")
@@ -626,6 +744,10 @@ def build_extras():
     (OUT / "assets" / "site.css").write_text(CSS, encoding="utf-8")
     (OUT / "assets" / "site.js").write_text(JS, encoding="utf-8")
     (OUT / "assets" / "check.js").write_text(CHECK_JS, encoding="utf-8")
+    shutil.copyfile(ROOT / "assets" / "clients.css", OUT / "assets" / "clients.css")
+    (OUT / "assets" / "clients").mkdir(exist_ok=True)
+    for c in CLIENTS["clients"]:
+        shutil.copyfile(ROOT / "assets" / "clients" / c["image"], OUT / "assets" / "clients" / c["image"])
 
 
 def main():
@@ -638,7 +760,9 @@ def main():
         build_services(L)
         build_industries(L)
         build_company(L)
-        build_partners(L)
+        build_clients(L)
+        if PARTNERS_LIVE:
+            build_partners(L)
         build_articles(L)
     for path, doc in PAGES:
         f = OUT / (path if path.endswith(".html") else path + "index.html")

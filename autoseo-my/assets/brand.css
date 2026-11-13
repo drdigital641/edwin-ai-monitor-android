@@ -59,3 +59,7 @@ body, main { background-color: var(--page); }
 .lang-zh h1, .lang-zh h2, .lang-zh h3 { letter-spacing: 0; line-height: 1.25; }
 .lang-zh { line-height: 1.75; }
 .lang-zh .kicker, .lang-zh .eyebrow, .lang-zh .marquee-label { letter-spacing: .06em; }
+
+/* 7 nav items after Clients was added, 13 Nov 2026 */
+@media (min-width: 821px) and (max-width: 1180px) { .nav { gap: 16px; } .nav a { font-size: .86rem; white-space: nowrap; } }
+@media (min-width: 821px) and (max-width: 1040px) { .header-inner { gap: 12px; } .nav { gap: 10px; } .nav a { font-size: .8rem; } .logo { font-size: .95rem; gap: 8px; } }
