@@ -4,8 +4,8 @@ SLUG = "car-engine-knocking-noise-singapore"
 URL = f"https://www.sggarage.com/articles/{SLUG}.html"
 TITLE = "Car Engine Knocking Noise: Causes and What to Do"
 H1 = "Why Is My Car Engine Knocking, and Is It Safe to Keep Driving?"
-DESC = ("Engine making a knocking or tapping noise? What the sound can mean (low oil, fuel, "
-        "carbon build-up, ignition, worn parts), when to stop driving, and what to tell the workshop.")
+DESC = ("Engine knocking or tapping? What the sound can mean (low oil, fuel, ignition, worn parts), "
+        "when to stop driving and what to tell the workshop.")
 PUB = "2026-11-14T01:30:00+08:00"
 BYLINE_DATE = "November 14, 2026"
 SECTION = "Engine"
