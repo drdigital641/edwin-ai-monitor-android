@@ -1,0 +1,74 @@
+{
+ "_readme": "One article = this file (EN + BM + 中文). Facts: K Tech's own pages (facts.json, src/content.py) + general, checkable workshop knowledge. No prices, stock, delivery times or claims about other shops. The word 'rating' (also inside words) is banned by build.py.",
+ "slug": "tpms-relearn-after-tyre-change",
+ "published": "2026-11-13",
+ "updated": "2026-11-13",
+ "family": "tpms",
+ "minutes": 4,
+ "en": {
+  "title": "TPMS relearn after a tyre change",
+  "description": "Why the TPMS light stays on after new tyres or a rotation, and how a workshop does a TPMS relearn: auto, stationary or OBD.",
+  "keyword": "TPMS relearn",
+  "h1": "TPMS relearn after a tyre change: why the light stays on",
+  "lead": "A TPMS relearn tells the car which tyre pressure sensor sits on which wheel. When a customer comes back with the TPMS light on after new tyres, a rotation or a new sensor, the car usually has not learned the sensor IDs yet. Here is what to check, in order.",
+  "answer": "The TPMS light often stays on after tyre work because the car does not recognise a sensor or its position. Check that every sensor answers a TPMS tool, replace or program any dead sensor, then do the relearn the car's maker specifies: automatic driving relearn, stationary relearn, or OBD relearn with a tool.",
+  "sections": [
+   {"h2": "Why the light comes on after tyre work", "p": ["Each direct TPMS sensor sits inside the wheel and sends its own ID and pressure to the car. If a sensor is damaged when the tyre is changed, its battery is flat, or a new sensor has an ID the car has never seen, the system cannot match it and the warning light stays on.", "On some cars, rotating the wheels is enough to need a relearn, because the car shows pressure per wheel position."]},
+   {"h2": "Checks before the relearn", "checks": [
+     {"b": "Set the pressures", "t": "Inflate every tyre to the pressure on the door label first. A low tyre keeps the light on even when the sensors are fine."},
+     {"b": "Trigger each sensor", "t": "Use a TPMS tool at each valve to read the sensor ID, pressure and battery state. A sensor that does not answer is the first suspect."},
+     {"b": "Replace or program", "t": "Fit a new sensor, or program a blank programmable sensor to match the car, before you start the relearn."}
+   ]},
+   {"h2": "The three relearn methods", "p": ["Car makers use different procedures, and the right one depends on make, model and year. A TPMS tool shows the procedure for the car in front of you."], "list": ["Automatic: the car learns the sensors while it is driven for a while", "Stationary: the car is put into learn mode, then each sensor is triggered in a set order", "OBD: the tool reads the sensor IDs and writes them to the car through the OBD port"], "note": "If the light still stays on after a correct relearn, scan the TPMS module for fault codes: the fault may be in the receiver or the module, not the sensors."}
+  ],
+  "faqs": [
+   {"q": "Do I need a relearn after every tyre change?", "a": "Not always. It depends on the car and on whether a sensor was replaced or the wheels changed position. The procedure for that make, model and year tells you when a relearn is needed."},
+   {"q": "Can I reuse the old sensor in a new tyre?", "a": "Often yes, if it still answers a TPMS tool, its battery is good and it was not damaged when the tyre was removed. Check it before you fit the new tyre."},
+   {"q": "Which Autel tools does K Tech supply for TPMS work?", "a": "K Tech supplies Autel MaxiTPMS tools for sensor programming and relearn. WhatsApp us your car brands and the jobs you do, and we will suggest the model that fits."}
+  ]
+ },
+ "ms": {
+  "title": "Relearn TPMS selepas tukar tayar",
+  "description": "Kenapa lampu TPMS kekal menyala selepas tayar baru atau pusingan tayar, dan cara bengkel buat relearn TPMS: auto, statik atau OBD.",
+  "keyword": "relearn TPMS",
+  "h1": "Relearn TPMS selepas tukar tayar: kenapa lampu masih menyala",
+  "lead": "Relearn TPMS memberitahu kereta sensor tekanan tayar mana berada di roda mana. Apabila pelanggan kembali dengan lampu TPMS menyala selepas tayar baru, pusingan tayar atau sensor baru, biasanya kereta belum mengenal ID sensor itu. Ini perkara yang perlu disemak, ikut turutan.",
+  "answer": "Lampu TPMS selalunya kekal menyala selepas kerja tayar kerana kereta tidak mengenal sensor atau kedudukannya. Pastikan setiap sensor menjawab alat TPMS, ganti atau program sensor yang rosak, kemudian buat relearn mengikut cara pengeluar kereta: relearn automatik semasa memandu, relearn statik, atau relearn OBD dengan alat.",
+  "sections": [
+   {"h2": "Kenapa lampu menyala selepas kerja tayar", "p": ["Setiap sensor TPMS langsung berada di dalam roda dan menghantar ID serta tekanannya sendiri kepada kereta. Jika sensor rosak semasa tayar ditukar, baterinya habis, atau sensor baru mempunyai ID yang belum pernah dikenal, sistem tidak dapat memadankannya dan lampu amaran kekal menyala.", "Pada sesetengah kereta, memusingkan roda pun sudah perlu relearn, kerana kereta menunjukkan tekanan bagi setiap kedudukan roda."]},
+   {"h2": "Semakan sebelum relearn", "checks": [
+     {"b": "Tetapkan tekanan", "t": "Isi angin setiap tayar mengikut tekanan pada label pintu dahulu. Tayar yang kurang angin akan mengekalkan lampu walaupun sensor elok."},
+     {"b": "Aktifkan setiap sensor", "t": "Guna alat TPMS pada setiap injap untuk membaca ID sensor, tekanan dan keadaan bateri. Sensor yang tidak menjawab ialah suspek pertama."},
+     {"b": "Ganti atau program", "t": "Pasang sensor baru, atau program sensor kosong yang boleh diprogram supaya sepadan dengan kereta, sebelum mula relearn."}
+   ]},
+   {"h2": "Tiga cara relearn", "p": ["Pengeluar kereta menggunakan prosedur berbeza, dan cara yang betul bergantung pada jenama, model dan tahun. Alat TPMS menunjukkan prosedur untuk kereta yang sedang dibaiki."], "list": ["Automatik: kereta mengenal sensor semasa dipandu untuk seketika", "Statik: kereta dimasukkan ke mod belajar, kemudian setiap sensor diaktifkan mengikut turutan", "OBD: alat membaca ID sensor dan menulisnya ke kereta melalui port OBD"], "note": "Jika lampu masih menyala selepas relearn yang betul, imbas modul TPMS untuk kod kerosakan: masalahnya mungkin pada penerima atau modul, bukan sensor."}
+  ],
+  "faqs": [
+   {"q": "Perlukah relearn setiap kali tukar tayar?", "a": "Tidak semestinya. Ia bergantung pada kereta dan sama ada sensor diganti atau roda bertukar kedudukan. Prosedur untuk jenama, model dan tahun itu menunjukkan bila relearn diperlukan."},
+   {"q": "Bolehkah sensor lama digunakan semula pada tayar baru?", "a": "Selalunya boleh, jika ia masih menjawab alat TPMS, baterinya elok dan ia tidak rosak semasa tayar dibuka. Semak dahulu sebelum memasang tayar baru."},
+   {"q": "Alat Autel apa yang K Tech bekalkan untuk kerja TPMS?", "a": "K Tech membekalkan alat Autel MaxiTPMS untuk program sensor dan relearn. WhatsApp jenama kereta dan kerja yang anda buat, dan kami cadangkan model yang sesuai."}
+  ]
+ },
+ "zh": {
+  "title": "换轮胎后的 TPMS 重新学习",
+  "description": "为什么换新轮胎或调换轮胎位置后胎压灯还亮，以及维修厂怎样做 TPMS 重新学习：自动、静态或 OBD。",
+  "keyword": "TPMS 重新学习",
+  "h1": "换轮胎后的 TPMS 重新学习：为什么胎压灯还亮着",
+  "lead": "TPMS 重新学习是让车子知道哪个胎压传感器装在哪个车轮上。顾客换了新轮胎、调换轮胎位置或装了新传感器后，胎压灯还亮着回来，通常是车子还没有学会传感器的 ID。下面按顺序说明要检查什么。",
+  "answer": "轮胎工作后胎压灯常常还亮，是因为车子不认得某个传感器或它的位置。先确认每个传感器都能被 TPMS 工具读到，更换或编程坏掉的传感器，然后按车厂规定的方法做重新学习：行驶自动学习、静态学习，或用工具做 OBD 学习。",
+  "sections": [
+   {"h2": "为什么轮胎工作后灯会亮", "p": ["每个直接式 TPMS 传感器都装在车轮里，把自己的 ID 和胎压发给车子。如果换轮胎时传感器被弄坏、电池没电，或新传感器的 ID 车子从没见过，系统就配对不上，警告灯会一直亮着。", "有些车只要调换车轮位置就需要重新学习，因为车子会按每个车轮位置显示胎压。"]},
+   {"h2": "重新学习之前的检查", "checks": [
+     {"b": "先调好胎压", "t": "先按车门标签上的胎压给每个轮胎打气。胎压不足时，即使传感器正常，灯也会一直亮。"},
+     {"b": "逐个激活传感器", "t": "在每个气门嘴用 TPMS 工具读取传感器 ID、胎压和电池状态。没有反应的传感器是第一个怀疑对象。"},
+     {"b": "更换或编程", "t": "开始重新学习之前，先装上新传感器，或把可编程的空白传感器编程成适合这辆车。"}
+   ]},
+   {"h2": "三种重新学习方法", "p": ["不同车厂的步骤不一样，正确的方法要看品牌、型号和年份。TPMS 工具会显示眼前这辆车的步骤。"], "list": ["自动：车子行驶一段时间后自己学会传感器", "静态：让车子进入学习模式，再按顺序逐个激活传感器", "OBD：工具读取传感器 ID，再通过 OBD 接口写进车子"], "note": "如果按正确步骤学习后灯还亮，请扫描 TPMS 模块的故障码：问题可能在接收器或模块，而不是传感器。"}
+  ],
+  "faqs": [
+   {"q": "每次换轮胎都要重新学习吗？", "a": "不一定。要看车子，以及是否换了传感器或调换了车轮位置。该品牌、型号和年份的步骤会说明什么时候需要重新学习。"},
+   {"q": "旧传感器可以装到新轮胎上继续用吗？", "a": "通常可以，只要它还能被 TPMS 工具读到、电池正常，而且拆轮胎时没有被弄坏。装新轮胎前先检查。"},
+   {"q": "K Tech 提供哪些用于 TPMS 工作的 Autel 工具？", "a": "K Tech 提供用于传感器编程和重新学习的 Autel MaxiTPMS 工具。通过 WhatsApp 告诉我们您修的车款和工作，我们推荐合适的型号。"}
+  ]
+ }
+}

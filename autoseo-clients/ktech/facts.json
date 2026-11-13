@@ -1,0 +1,59 @@
+{
+  "name": "K Tech Auto Solution Sdn. Bhd.",
+  "short": "K Tech",
+  "company_no": "201801038870 (1300901-K)",
+  "whatsapp": "60189492820",
+  "whatsapp_display": "+60 18-949 2820",
+  "locality": "Johor Bahru",
+  "region": "Johor",
+  "country": "MY",
+  "facebook": "https://www.facebook.com/ktechautosolutionsb/",
+  "autel_wtb": "https://autel.com/au/where-to-buy/",
+  "autel": "https://www.autel.com/",
+  "autoseo": "https://autoseo.my/",
+  "updated": "2026-11-13",
+  "preview": {
+    "base_url": "https://autoseo.my/preview/ktec/",
+    "base_path": "/preview/ktec/",
+    "noindex": true
+  },
+  "live": {
+    "base_url": "https://ktec.my/",
+    "base_path": "/",
+    "noindex": false
+  },
+  "sources": {
+    "name_company_no_jb": "facebook.com/ktechautosolutionsb og:title/og:description (curl 13 Nov 2026)",
+    "autel_listing": "autel.com/au/where-to-buy/ Malaysia: K Tech Auto Solution Sdn Bhd (13 Nov 2026)",
+    "autel_families": "autel.com home nav + Our Products (13 Nov 2026)",
+    "autoseo_brand": "K Tech WhatsApp 10 Nov 2026: 'AutoSEO.my - A Brand By K Tech Auto Solution Sdn Bhd' (clients/autoseo-my/copy.txt)",
+    "fb_details": "facebook.com/ktechautosolutionsb (signed-in browser, 13 Nov 2026 via Website Manager): address, phone, email, category, bio; photos media-fb/",
+    "fb2": "facebook.com/share/19qfUGy2US -> facebook.com/KTechHooi/ og:title 'K Tech-Autel-Hooi | Masai', same Company No (curl 13 Nov 2026 20:01)",
+    "call2": "Edwin WhatsApp 13 Nov 2026 20:00: +60125462820 (add as second call number)",
+    "hooi_fb": "facebook.com/KTechHooi signed-in read 13 Nov 2026: Masai; phone/WhatsApp +60125462820; bio services; posts MS909S2 MAX AI, W222 Night View calibration; photos media-fb-hooi/"
+  },
+  "call": "60125462820",
+  "call_display": "+60 12-546 2820",
+  "email": "sales@k-techmy.com",
+  "street": "No. 28, Jalan Ekoperniagaan 3/11, Taman Ekoperniagaan",
+  "postcode": "81100",
+  "address_full": "No. 28, Jalan Ekoperniagaan 3/11, Taman Ekoperniagaan, 81100 Johor Bahru, Johor, Malaysia",
+  "category": "Automotive Service",
+  "bio": "Your Car Diagnostic Solution Partner",
+  "maps": "https://www.google.com/maps/search/?api=1&query=No.%2028%2C%20Jalan%20Ekoperniagaan%203/11%2C%20Taman%20Ekoperniagaan%2C%2081100%20Johor%20Bahru%2C%20Johor%2C%20Malaysia",
+  "call2": "60125512820",
+  "call2_display": "+60 12-551 2820",
+  "facebook_label": "K Tech Auto Solution Sdn. Bhd.",
+  "facebook2": "https://www.facebook.com/KTechHooi/",
+  "facebook2_label": "K Tech-Autel-Hooi",
+  "call_name": "Hooi",
+  "call2_name": "Andrew",
+  "whatsapp_hooi": "60125462820",
+  "whatsapp_hooi_display": "+60 12-546 2820",
+  "area2": "Masai",
+  "live_ktech": {
+    "base_url": "https://ktech.my/",
+    "base_path": "/",
+    "noindex": false
+  }
+}

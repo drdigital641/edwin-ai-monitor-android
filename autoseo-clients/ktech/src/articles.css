@@ -1,0 +1,41 @@
+/* K Tech articles only (/articles/ hub + article pages). Loaded on those pages only, so k.css stays as it is.
+   Own look: each article is a printed scan report. Mono codes, a RESULT box for the short answer, checklist rows. */
+.rp-hero{padding:22px 0 26px;background:repeating-linear-gradient(0deg,transparent 0 23px,rgba(21,23,26,.05) 23px 24px),repeating-linear-gradient(90deg,transparent 0 23px,rgba(21,23,26,.05) 23px 24px)}
+.rp-hero .crumb{font:600 13px var(--hd);letter-spacing:.04em;text-transform:uppercase;color:var(--mute);margin-bottom:12px}
+.rp-hero .crumb a{color:var(--ink2)}
+.rp-sheet{background:var(--card);border:1.5px solid var(--ink);box-shadow:8px 8px 0 var(--ink);padding:18px 16px 20px;position:relative}
+.rp-strip{display:flex;flex-wrap:wrap;gap:6px 14px;align-items:center;justify-content:space-between;margin:-18px -16px 16px;padding:8px 16px;background:var(--ink);color:#e9ecef;font:600 12px var(--hd);letter-spacing:.1em;text-transform:uppercase}
+.rp-strip b{color:var(--amber);font-weight:700}
+.rp-sheet h1{font-size:clamp(28px,7.4vw,46px);text-transform:uppercase;margin:0 0 12px}
+.rp-sheet .lead{font-size:17px;color:var(--ink2);margin:0}
+.rp-tag{display:inline-flex;align-items:center;gap:8px;margin:0 0 12px;padding:5px 10px;border:1.5px dashed var(--red);color:var(--red2);font:700 13px var(--hd);letter-spacing:.06em;text-transform:uppercase;max-width:100%;overflow-wrap:anywhere}
+.rp-meta{display:flex;flex-wrap:wrap;gap:4px 16px;margin:14px 0 0;padding:12px 0 0;border-top:1px dashed var(--line);list-style:none;font:600 12px var(--hd);letter-spacing:.06em;text-transform:uppercase;color:var(--mute)}
+.rp-meta b{color:var(--ink)}
+.rp-result{margin:18px 0 0;padding:14px 14px 14px 52px;position:relative;background:#eaf7ef;border:1.5px solid #1b8a4b}
+.rp-result::before{content:'';position:absolute;left:14px;top:15px;width:24px;height:24px;background:#1b8a4b;clip-path:polygon(0 52%,14% 38%,40% 62%,86% 14%,100% 28%,40% 90%)}
+.rp-result .mono{display:block;color:#1b8a4b;margin-bottom:4px}
+.rp-result p{margin:0;font-size:16.5px;line-height:1.6}
+.rp-body{max-width:760px}
+.rp-body h2{font-size:clamp(22px,5.4vw,30px);margin:34px 0 10px;display:flex;gap:10px;align-items:baseline}
+.rp-body h2 .mono{color:var(--red);flex:none}
+.rp-body p,.rp-body li{font-size:17px;line-height:1.7}
+.rp-checks{list-style:none;margin:12px 0 0;padding:0;border:1.5px solid var(--ink)}
+.rp-checks li{display:grid;grid-template-columns:auto 1fr;gap:4px 12px;padding:12px 14px;border-bottom:1px solid var(--line);background:var(--card)}
+.rp-checks li:last-child{border-bottom:0}
+.rp-checks .mono{color:var(--cyan);padding-top:3px}
+.rp-checks b{display:block;font-family:var(--hd);font-size:17px}
+.rp-list{padding-left:1.2em}
+.rp-note{margin:18px 0 0;padding:12px 14px;border-left:4px solid var(--amber);background:#fff6e2}
+.rp-tool{margin:28px 0 0;padding:14px;border:1.5px solid var(--ink);background:var(--paper2);display:grid;gap:10px}
+.rp-tool a{font-weight:700}
+/* hub: stack of report cards */
+.rp-list-cards{display:grid;gap:14px;margin-top:18px}
+.rp-card{display:grid;grid-template-columns:auto 1fr;gap:4px 14px;padding:16px;background:var(--card);border:1.5px solid var(--ink);text-decoration:none;color:inherit;transition:transform .15s,box-shadow .15s}
+.rp-card:hover,.rp-card:focus-visible{transform:translate(-2px,-2px);box-shadow:4px 4px 0 var(--red)}
+.rp-card .mono{grid-row:span 3;color:var(--red);padding-top:3px}
+.rp-card h3{font-size:20px;text-transform:uppercase}
+.rp-card p{margin:0;color:var(--ink2)}
+.rp-card time{font:600 12px var(--hd);letter-spacing:.06em;text-transform:uppercase;color:var(--mute)}
+.rp-empty{color:var(--mute)}
+@media(min-width:900px){.rp-sheet{padding:26px 28px 28px}.rp-strip{margin:-26px -28px 20px;padding:9px 28px}.rp-hero{padding:40px 0 44px}}
+@media(prefers-reduced-motion:reduce){.rp-card{transition:none}.rp-card:hover{transform:none}}

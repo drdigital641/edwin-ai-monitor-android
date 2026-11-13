@@ -4,7 +4,8 @@
     python3 autoseo-clients/live_article_zip.py <site> <slug> [--date YYYY-MM-DD]
 
 Sites: emats (ecumats.my), hybrid-world (hybridworld.com.my), carzy-world (carzyworld.com.my),
-autoseo-my (autoseo.my itself: source autoseo-my/ at the repo root, which always builds live).
+autoseo-my (autoseo.my itself: source autoseo-my/ at the repo root, which always builds live),
+ktech (ktech.my: Dev Desk builder copy in autoseo-clients/ktech, build.py --live-ktech -> dist-live-ktech/; also ships the builder files).
 The live sites are built and deployed by Dev Desk (build_live.py / build.py --live). This script never deploys.
 It runs the repo build in live mode (site-live/) and zips:
   source/data/articles/<slug>.json      the article data file (what build_live.py reads)
@@ -26,7 +27,7 @@ from datetime import datetime, timedelta, timezone
 from pathlib import Path
 
 HERE = Path(__file__).resolve().parent
-SITES = {"emats": "config.json", "hybrid-world": "config.json", "carzy-world": "data/business.json", "autoseo-my": "data/brand.json"}
+SITES = {"emats": "config.json", "hybrid-world": "config.json", "carzy-world": "data/business.json", "autoseo-my": "data/brand.json", "ktech": "facts.json"}
 LANG_PREFIX = ["", "ms/", "zh/"]
 PROTECTED = re.compile(r"(^|/)(\.htaccess|robots\.txt|BingSiteAuth\.xml|\.well-known/|cgi-bin/)|^[0-9a-f]{8,}\.txt$", re.I)
 
@@ -40,16 +41,17 @@ def main():
     own = a.site == "autoseo-my"  # autoseo.my builds live already (brand.json preview false): no --live, output site/
     root = HERE.parent / "autoseo-my" if own else HERE / a.site
     cfg = json.loads((root / SITES[a.site]).read_text(encoding="utf-8"))
-    live = cfg["site_url"].rstrip("/") + "/" if own else cfg["live_site_url"]
+    kt = a.site == "ktech"
+    live = cfg["site_url"].rstrip("/") + "/" if own else (cfg.get("live_ktech") or {}).get("base_url", "https://ktech.my/") if kt else cfg["live_site_url"]
     if own and cfg.get("preview"):
         sys.exit("autoseo-my brand.json preview is true: not a live build")
     src = root / "data" / "articles" / f"{a.slug}.json"
     if not src.exists():
         sys.exit(f"no article data file {src}")
-    r = subprocess.run([sys.executable, str(root / "src" / "build.py")] + ([] if own else ["--live"]))
+    r = subprocess.run([sys.executable, str(root / "build.py"), "--live-ktech"]) if kt else subprocess.run([sys.executable, str(root / "src" / "build.py")] + ([] if own else ["--live"]))
     if r.returncode:
         sys.exit("live build failed: nothing zipped")
-    out = root / ("site" if own else "site-live")
+    out = root / ("dist-live-ktech" if kt else "site" if own else "site-live")
     files = []
     for p in LANG_PREFIX:
         files.append(f"{p}articles/index.html")
@@ -58,6 +60,8 @@ def main():
             sys.exit(f"missing {p}articles/{a.slug}/index.html")
         files += [str(f.relative_to(out)) for f in sorted(art.rglob("*")) if f.is_file()]
     files += ["sitemap.xml", "llms.txt"]
+    if kt:
+        files.append("assets/articles.css")  # new file on the first run, unchanged after; never k.css/k.js
 
     problems = []
     for rel in files:
@@ -90,6 +94,9 @@ def main():
              "source/data/articles/" + src.name + "  sha256 " + hashlib.sha256(src.read_bytes()).hexdigest()[:16]]
     with zipfile.ZipFile(zp, "w", zipfile.ZIP_DEFLATED) as z:
         z.write(src, f"source/data/articles/{src.name}")
+        if kt:  # the article builder files, so Dev Desk's copy stays in step
+            for extra in ("build.py", "src/articles.py", "src/articles.css"):
+                z.write(root / extra, f"source/{extra}")
         for rel in files:
             z.write(out / rel, f"overlay/{rel}")
             lines.append(f"overlay/{rel}  sha256 " + hashlib.sha256((out / rel).read_bytes()).hexdigest()[:16])
