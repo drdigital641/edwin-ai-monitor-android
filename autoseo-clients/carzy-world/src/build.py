@@ -48,6 +48,30 @@ SIZES = {}  # key -> (w, h), filled by build_images()
 PAGES = []  # (path, html, lang)
 
 
+# Google review footer button (13 Nov 2026): same markup and styles as the live carzyworld.com.my pages.
+# Live builds only (the review helper page /review.html exists on the live domain, not on the autoseo.my preview).
+REVIEW_FOOTER_CSS = """<style>
+/* Google review footer button (2026-11-13) */
+.p1-foot-review{margin:16px 0 0}
+.p1-foot-review a{
+  display:inline-flex;align-items:center;justify-content:center;box-sizing:border-box;
+  min-height:44px;min-width:44px;padding:10px 18px;
+  border:1.5px solid currentColor;border-radius:999px;
+  text-decoration:none!important;font-weight:700;line-height:1.25;color:inherit
+}
+.p1-foot-review a:hover{opacity:.88}
+footer.foot .p1-foot-review{margin:12px 0 8px}
+</style>
+"""
+
+
+def review_footer(L):
+    if BIZ["preview"]:
+        return ""
+    return (REVIEW_FOOTER_CSS + f'<p class="p1-foot-review"><a href="{BASE}review.html?business={E(BIZ["review_key"])}" target="_blank" rel="noopener">'
+            f'{E(L.ui["leave_review"])}</a></p>\n')
+
+
 def fill(tpl, **kw):
     out = TPL[tpl]
     for k, v in kw.items():
@@ -360,7 +384,7 @@ def page(L, path, title, description, body, graph_extra=(), current="", body_cla
     pages = [("", ui["nav"]["home"]), ("services/", ui["nav"]["services"]), ("articles/", ui["nav"]["articles"]), ("about/", ui["nav"]["about"]), ("contact/", ui["nav"]["contact"])]
     doc += fill("footer", cta_band=cta if cta is not None else cta_band(L, "page"), name=E(BIZ["name"]), tagline=E(BIZ["tagline"]),
                 company_label=E(ui["company_label"]), company_no=E(BIZ["company_no"]), facebook_url=E(BIZ["facebook_url"]), facebook=E(ui["facebook"]),
-                listing_url=E(BIZ["google_listing_url"]), find_on_maps=E(ui["find_on_maps"]), read_reviews=E(ui["read_reviews"]), h_visit=E(ui["footer_visit"]), address=E(BIZ["address_full"]),
+                listing_url=E(BIZ["google_listing_url"]), find_on_maps=E(ui["find_on_maps"]), read_reviews=E(ui["read_reviews"]), review_footer=review_footer(L), h_visit=E(ui["footer_visit"]), address=E(BIZ["address_full"]),
                 wa_general=L.wa("general"), phone=E(BIZ["phone_display"]), phone_e164=BIZ["phone_e164"], call=E(ui["call"]), email=E(BIZ["email"]),
                 hours_table=hours_table(L, "hours hours-footer"), h_services=E(ui["footer_services"]),
                 footer_services="\n".join(f'        <a href="{L.url("services/" + m["slug"] + "/")}">{E(s["services"][m["slug"]]["short"])}</a>' for m in SITE["services"]),

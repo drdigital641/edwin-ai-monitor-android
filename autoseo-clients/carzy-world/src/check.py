@@ -130,6 +130,8 @@ for p in pages:
             problems.append(f"{rel}: asset without ?v= {ref}")
     for ref in re.findall(r'href="(' + re.escape(BIZ["base_path"]) + r'[^"#?]*)', h):
         target = SITE / ref[len(BIZ["base_path"]):]
+        if ref == BIZ["base_path"] + "review.html":  # live-only Google review helper page (not built here, never in sitemap)
+            continue
         if not (target.is_file() or (target / "index.html").exists()):
             problems.append(f"{rel}: broken internal link {ref}")
 
