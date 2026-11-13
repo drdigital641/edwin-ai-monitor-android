@@ -1,13 +1,14 @@
-/* AutoSEO Admin app (separate Base44 app, 13 Nov 2026): sign-in is the app's own Base44 Google login, done before this
+/* AutoSEO Admin app (separate Base44 app, 13 Nov 2026): sign-in is the app's own Base44 email + password login (private,
+   invite-only; Edwin invites and removes staff in Base44), done before this
    script runs; every call goes to this app's server function "admin" (window.AUTOSEO_API), which signs it to the Controller.
    AutoSEO client dashboard. All screens are built from the small templates below
    (header/menu, KPI tiles, client card, form), so one edit changes every screen.
    Every number shown comes from the server; the page never filters other accounts' data itself. */
 (function () {
   "use strict";
-  var T = window.T, CFG = window.AUTOSEO_ADMIN_CONFIG || {};
+  var T = window.T;
   var DEMO = /[?&]demo=1\b/.test(location.search) && typeof window.AUTOSEO_DEMO === "function";
-  var state = { token: null, me: null, clients: null, error: null, last: null };
+  var state = { me: null, clients: null, error: null, last: null };
   var $app = document.getElementById("app"), $hdr = document.getElementById("hdr");
 
   /* ---------- helpers ---------- */
@@ -15,25 +16,16 @@
   function bi(k, cls) { var v = T[k]; return '<span class="bi ' + (cls || "") + '">' + esc(v[0]) + '<span class="zh" lang="zh-Hans">' + esc(v[1]) + "</span></span>"; }
   function biText(k) { return T[k][0] + " " + T[k][1]; }
   function when(iso) { if (!iso) return ""; var d = new Date(iso); if (isNaN(d)) return ""; return d.toLocaleString("en-GB", { day: "numeric", month: "short", year: "numeric", hour: "2-digit", minute: "2-digit" }); }
-  function store(k, v) { try { if (v == null) sessionStorage.removeItem(k); else sessionStorage.setItem(k, v); } catch (e) {} }
-  function load(k) { try { return sessionStorage.getItem(k); } catch (e) { return null; } }
   function safeUrl(u) { u = String(u || "").trim(); if (!u) return ""; if (!/^https?:\/\//i.test(u)) u = "https://" + u; try { var x = new URL(u); return /^https?:$/.test(x.protocol) ? x.href : ""; } catch (e) { return ""; } }
   function route() { return (location.hash.replace(/^#\/?/, "") || "clients").split("/")[0]; }
 
   /* ---------- server ---------- */
   function api(action, body) {
-    if (DEMO) return window.AUTOSEO_DEMO(action, body || {});
-    if (window.AUTOSEO_API) return window.AUTOSEO_API(action, body || {}).then(function (j) { if (!j || !j.ok) throw (j || { code: "server" }); return j; });
-    if (!CFG.api_url) return Promise.reject({ code: "not_set" });
-    return fetch(CFG.api_url, {
-      method: "POST", headers: { "Content-Type": "application/json" }, credentials: "omit",
-      body: JSON.stringify(Object.assign({ action: action, id_token: state.token }, body || {}))
-    }).then(function (r) { return r.json().catch(function () { return { ok: false, code: "bad_reply" }; }).then(function (j) { if (!j.ok) throw j; return j; }); },
-      function () { throw { code: "network" }; });
+    return window.AUTOSEO_API(action, body || {}).then(function (j) { if (!j || !j.ok) throw (j || { code: "server" }); return j; });
   }
   function errText(e) {
     var c = e && e.code;
-    var k = c === "not_allowed" ? "err_denied" : c === "email_not_verified" ? "err_unverified" : c === "network" ? "err_network" : c === "token_expired" || c === "bad_token" ? "err_session" : c === "not_set" ? (window.AUTOSEO_API ? "err_link_not_set" : "signin_not_set") : "err_generic";
+    var k = c === "not_allowed" ? "err_denied" : c === "network" ? "err_network" : c === "bad_token" ? "err_session" : c === "not_set" ? "err_link_not_set" : "err_generic";
     return bi(k);
   }
 
@@ -101,17 +93,12 @@
 
   /* ---------- screens ---------- */
   function demoNote() { return DEMO ? '<div class="demo">' + bi("demo_note") + "</div>" : ""; }
+  /* Not allowed / session ended: the Base44 login handles sign-in; here we only offer to sign out and use another account. */
   function screenSignIn(errHtml) {
     $app.innerHTML = '<div class="center"><h1 class="h1">' + bi("signin_title") + "</h1><p>" + bi("signin_text") + "</p>" +
       (errHtml ? '<div class="banner-err">' + errHtml + "</div>" : "") +
-      (window.AUTOSEO_API ? '<button class="btn btn-main" id="switchAcct">' + bi("nav_signout") + "</button>" : CFG.google_client_id || DEMO ? '<div id="gsi"></div>' : '<div class="banner-err">' + bi("signin_not_set") + "</div>") + "</div>";
-    if (window.AUTOSEO_API) { document.getElementById("switchAcct").onclick = function () { window.AUTOSEO_SIGNOUT(); }; return; }
-    if (DEMO) { var b = document.createElement("button"); b.className = "btn btn-main"; b.innerHTML = bi("signin_title"); b.onclick = function () { onToken("demo"); }; document.getElementById("gsi").appendChild(b); return; }
-    if (!CFG.google_client_id) return;
-    gsiReady(function () {
-      google.accounts.id.initialize({ client_id: CFG.google_client_id, callback: function (r) { onToken(r.credential); }, auto_select: false, ux_mode: "popup", itp_support: true });
-      google.accounts.id.renderButton(document.getElementById("gsi"), { theme: "outline", size: "large", shape: "pill", text: "signin_with", width: 280 });
-    });
+      '<button class="btn btn-main" id="switchAcct">' + bi("nav_signout") + "</button></div>";
+    document.getElementById("switchAcct").onclick = function () { if (!DEMO) window.AUTOSEO_SIGNOUT(); };
   }
   function screenLoading() { $app.innerHTML = '<div class="center"><p>' + bi("loading") + "</p></div>"; }
   function screenError(e) { $app.innerHTML = '<div class="center"><div class="banner-err">' + errText(e) + '</div><button class="btn btn-main" id="retry">' + bi("retry") + "</button></div>"; document.getElementById("retry").onclick = refresh; }
@@ -144,7 +131,7 @@
         meta.innerHTML = esc(T.memo_saved[0]) + " " + esc(T.memo_saved[1]) + " · " + memoMeta(r.memo_updated_at);
       }, function (e) {
         meta.className = "memo-meta err"; meta.innerHTML = esc(T.memo_err[0]) + " " + esc(T.memo_err[1]);
-        if (e && (e.code === "token_expired" || e.code === "bad_token")) return signOut(e);
+        if (e && (e.code === "bad_token")) return signOut(e);
         timer = setTimeout(save, 5000);
       });
     }
@@ -225,22 +212,15 @@
   }
 
   /* ---------- flow ---------- */
-  function gsiReady(cb) {
-    if (window.google && google.accounts && google.accounts.id) return cb();
-    var s = document.createElement("script"); s.src = "https://accounts.google.com/gsi/client"; s.async = true; s.onload = cb; document.head.appendChild(s);
-  }
-  function onToken(tok) { state.token = tok; store("as_tok", tok); refresh(); }
   function signOut(e) {
-    if (window.AUTOSEO_API && !(e && e.code)) { window.AUTOSEO_SIGNOUT(); return; }
-    state.token = null; state.me = null; state.clients = null; store("as_tok", null);
-    try { if (window.google && google.accounts) google.accounts.id.disableAutoSelect(); } catch (x) {}
-    header(); screenSignIn(e && e.code ? errText(e) : "");
+    if (!(e && e.code)) { if (!DEMO) window.AUTOSEO_SIGNOUT(); return; }
+    state.me = null; state.clients = null; header(); screenSignIn(errText(e));
   }
   function refresh() {
     header(); screenLoading();
     api("me").then(function (r) { state.me = r.user; state.me.group_link = r.group_link || ""; return api("clients"); })
       .then(function (r) { state.clients = r.clients || []; render(); },
-        function (e) { if (e && /^(not_allowed|email_not_verified|token_expired|bad_token)$/.test(e.code) || (e && e.code === "not_set" && !window.AUTOSEO_API)) signOut(e); else screenError(e); });
+        function (e) { if (e && /^(not_allowed|bad_token)$/.test(e.code)) signOut(e); else screenError(e); });
   }
   function render() {
     header();
@@ -261,6 +241,6 @@
     }).catch(function (e) { document.getElementById("pk").innerHTML = errText(e); });
   }
   window.addEventListener("hashchange", function () { closeSheet(); if (state.me || route() === "setup") render(); });
-  if (window.AUTOSEO_API && !DEMO) { if (route() === "setup") { header(); screenSetup(); } else refresh(); }
-  else { var saved = load("as_tok"); if (saved && (!DEMO || saved === "demo")) onToken(saved); else { header(); screenSignIn(""); } }
+  if (DEMO) window.AUTOSEO_API = function (a, b) { return window.AUTOSEO_DEMO(a, b).then(function (r) { return Object.assign({ ok: true }, r); }); };
+  if (route() === "setup") { header(); screenSetup(); } else refresh();
 })();
