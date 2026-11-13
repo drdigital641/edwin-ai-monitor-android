@@ -892,6 +892,25 @@ def page_date(path):
     return UPDATED
 
 
+
+# Google review footer button (Edwin 13 Nov 2026): same markup and styles as the live footer, so rebuilds keep it.
+# build_zh.py translates the label through zh/strings_zh.json; the <style> block is left as is.
+REVIEW_FOOTER = """<style>
+/* Google review footer button (2026-11-13) */
+.p1-foot-review{margin:16px 0 0}
+.p1-foot-review a{
+  display:inline-flex;align-items:center;justify-content:center;box-sizing:border-box;
+  min-height:44px;min-width:44px;padding:10px 18px;
+  border:1.5px solid currentColor;border-radius:999px;
+  text-decoration:none!important;font-weight:700;line-height:1.25;color:inherit
+}
+.p1-foot-review a:hover{opacity:.88}
+footer.foot .p1-foot-review{margin:12px 0 8px}
+</style>
+<p class="p1-foot-review"><a href="/review.html?business=newzenwerkz" target="_blank" rel="noopener">Leave us a Google review</a></p>
+"""
+
+
 def render(path, p):
     pre = '../' * path.count('/')
     url = SITE + path
@@ -988,7 +1007,7 @@ def render(path, p):
 <li><a href="{pre}areas/">Areas we serve</a> · <a href="{pre}articles/">Articles</a> · <a href="{pre}about/">About</a> · <a href="{pre}contact/">Contact</a></li>
 </ul></div>
 </div>
-<div class="ftr-legal"><span>{LEGAL} · UEN {UEN}</span><span>© 2026 {LEGAL}</span></div>
+{REVIEW_FOOTER}<div class="ftr-legal"><span>{LEGAL} · UEN {UEN}</span><span>© 2026 {LEGAL}</span></div>
 </div></footer>
 <div class="dock"><a class="dock-wa" href="{E(wa_url())}" target="_blank" rel="noopener" aria-label="WhatsApp New Zen Werkz on {WA_SHOW}">{WA_SVG}<span>WhatsApp</span></a><a class="dock-call" href="tel:{TEL}" aria-label="Call New Zen Werkz on {TEL_SHOW}">{PHONE_SVG}<span>Call</span></a></div>
 </body>
