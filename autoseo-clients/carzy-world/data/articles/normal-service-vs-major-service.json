@@ -1,0 +1,268 @@
+{
+ "_readme": "One article. English is the source; ms and zh carry the same keys. Facts only from the site (strings/en.json, data/business.json). No prices, warranties or timings.",
+ "slug": "normal-service-vs-major-service",
+ "published": "2026-11-14",
+ "updated": "2026-11-14",
+ "service": "car-servicing-oil-change",
+ "keyword": "normal service vs major service",
+ "look": {
+  "variant": "split",
+  "visual": {
+   "type": "photo",
+   "key": "perodua-axia-service"
+  }
+ },
+ "cta_after": 2,
+ "en": {
+  "title": "Normal Service vs Major Service: What's the Difference?",
+  "description": "Normal service vs major service: what each one covers, how to tell which one your car is due for, and what to tell the workshop. Carzy World, Klang.",
+  "keyword": "normal service vs major service",
+  "motif": "SERVICE",
+  "h1": "Normal service vs major service: what's the difference, and which one is due?",
+  "lead": "Normal service vs major service is one of the most common questions we hear in Klang. A normal service is mainly the engine oil and oil filter change with basic checks. A major service goes further and usually adds more items, depending on your car's own service schedule.",
+  "answer": "A normal service is mainly the engine oil and oil filter change with basic checks. A major service usually adds more items such as other filters, fluids and spark plugs, depending on your car's schedule. Which one is due depends on your car model and mileage, so ask the workshop to confirm before you book.",
+  "topic": "a normal service or major service",
+  "excerpt": "What a normal service and a major service each cover, and how to find out which one your car is due for.",
+  "sections": [
+   {
+    "h2": "Normal service and major service side by side",
+    "p": [
+     "Both keep your car reliable, but they are not the same job. This is how they usually differ:"
+    ],
+    "pairs": [
+     {
+      "t": "Normal service",
+      "d": "Mainly the engine oil and oil filter change, with basic checks."
+     },
+     {
+      "t": "Major service",
+      "d": "Usually adds more items such as other filters, fluids and spark plugs, depending on your car's schedule."
+     },
+     {
+      "t": "Why the list changes",
+      "d": "Each car has its own schedule, so a major service on one car is not the same list as on another."
+     }
+    ]
+   },
+   {
+    "h2": "How to tell which service your car is due",
+    "p": [
+     "You do not have to guess. These are the easiest places to look:"
+    ],
+    "list": [
+     "The service reminder or sticker from your last service",
+     "The service schedule in your owner's manual or service book",
+     "Your car's mileage now compared with the schedule",
+     "Whether the oil warning light has come on"
+    ],
+    "p_after": [
+     "If you are still not sure, tell us the car model, year and mileage on WhatsApp and we will tell you what the service should include."
+    ]
+   },
+   {
+    "h2": "Why an oil change alone is not enough forever",
+    "p": [
+     "Engine oil is the part most people remember, but other parts of the car also wear with time and mileage. A major service is the point where the schedule covers those other items too.",
+     "That is why it helps to follow the schedule for your car instead of repeating the same oil change every time. Skipping items can let small problems build up unseen."
+    ]
+   },
+   {
+    "h2": "What happens when you bring your car in",
+    "p": [
+     "Here is how a service usually goes with us:"
+    ],
+    "steps": [
+     "You tell us your car model, year and mileage on WhatsApp",
+     "We tell you what the service should include and give you a quote",
+     "We keep you updated while your car is with us",
+     "If we find a repair is needed during the service, we explain it and quote before doing it"
+    ],
+    "p_after": [
+     "At Carzy World we do normal services, major services and oil changes for all car brands, from city cars to pickups and continental cars. A recent job was a major service on an Isuzu D-Max."
+    ]
+   }
+  ],
+  "faqs": [
+   {
+    "q": "How do I know if my car needs a major service?",
+    "a": "Check the service reminder, your owner's manual schedule and your mileage. If you are unsure, WhatsApp us your car model and mileage and we will tell you which one is due."
+   },
+   {
+    "q": "Do you service pickups and 4x4s?",
+    "a": "Yes. All car brands are welcome, and we recently did a major service on an Isuzu D-Max."
+   },
+   {
+    "q": "Can I ask for a quote before I book?",
+    "a": "Yes. We do not publish prices because every car is different. WhatsApp us your car model, year and mileage and we will give you a quote."
+   }
+  ]
+ },
+ "ms": {
+  "title": "Servis Biasa vs Servis Besar: Apa Bezanya?",
+  "description": "Servis biasa vs servis besar: apa yang diliputi setiap satu, cara tahu yang mana patut dibuat untuk kereta anda, dan apa nak beritahu bengkel. Carzy World, Klang.",
+  "keyword": "servis biasa vs servis besar",
+  "motif": "SERVIS",
+  "h1": "Servis biasa vs servis besar: apa bezanya, dan yang mana patut dibuat?",
+  "lead": "Servis biasa vs servis besar ialah soalan yang paling kerap kami dengar di Klang. Servis biasa terutamanya tukar minyak enjin dan penapis minyak dengan pemeriksaan asas. Servis besar pula lebih menyeluruh dan biasanya menambah lebih banyak item, bergantung pada jadual servis kereta anda sendiri.",
+  "answer": "Servis biasa terutamanya tukar minyak enjin dan penapis minyak dengan pemeriksaan asas. Servis besar biasanya menambah item lain seperti penapis lain, cecair dan palam pencucuh, bergantung pada jadual kereta anda. Yang mana patut dibuat bergantung pada model dan perbatuan kereta anda, jadi minta bengkel sahkan sebelum anda tempah.",
+  "topic": "servis biasa atau servis besar",
+  "excerpt": "Apa yang diliputi servis biasa dan servis besar, dan cara tahu yang mana patut dibuat untuk kereta anda.",
+  "sections": [
+   {
+    "h2": "Servis biasa dan servis besar bersebelahan",
+    "p": [
+     "Kedua-duanya memastikan kereta anda boleh dipercayai, tetapi ia bukan kerja yang sama. Biasanya perbezaannya begini:"
+    ],
+    "pairs": [
+     {
+      "t": "Servis biasa",
+      "d": "Terutamanya tukar minyak enjin dan penapis minyak, dengan pemeriksaan asas."
+     },
+     {
+      "t": "Servis besar",
+      "d": "Biasanya menambah item lain seperti penapis lain, cecair dan palam pencucuh, bergantung pada jadual kereta anda."
+     },
+     {
+      "t": "Kenapa senarai berbeza",
+      "d": "Setiap kereta ada jadual sendiri, jadi servis besar pada satu kereta tidak sama senarainya dengan kereta lain."
+     }
+    ]
+   },
+   {
+    "h2": "Cara tahu servis mana yang patut dibuat",
+    "p": [
+     "Anda tak perlu meneka. Ini tempat paling mudah untuk semak:"
+    ],
+    "list": [
+     "Peringatan servis atau pelekat daripada servis terakhir anda",
+     "Jadual servis dalam buku manual pemilik atau buku servis",
+     "Perbatuan kereta anda sekarang berbanding jadual",
+     "Sama ada lampu amaran minyak sudah menyala"
+    ],
+    "p_after": [
+     "Kalau masih tak pasti, beritahu kami model kereta, tahun dan perbatuan di WhatsApp, dan kami akan beritahu apa yang servis itu patut merangkumi."
+    ]
+   },
+   {
+    "h2": "Kenapa tukar minyak sahaja tidak cukup selama-lamanya",
+    "p": [
+     "Minyak enjin ialah bahagian yang kebanyakan orang ingat, tetapi bahagian lain pada kereta juga haus mengikut masa dan perbatuan. Servis besar ialah masa apabila jadual meliputi item lain itu juga.",
+     "Sebab itu ada baiknya mengikut jadual kereta anda, bukan mengulang tukar minyak yang sama setiap kali. Melangkau item boleh membiarkan masalah kecil bertambah tanpa disedari."
+    ]
+   },
+   {
+    "h2": "Apa yang berlaku bila anda bawa kereta masuk",
+    "p": [
+     "Beginilah servis biasanya berjalan di tempat kami:"
+    ],
+    "steps": [
+     "Anda beritahu kami model kereta, tahun dan perbatuan di WhatsApp",
+     "Kami beritahu apa yang servis itu patut merangkumi dan beri sebut harga",
+     "Kami kemas kini anda semasa kereta anda ada bersama kami",
+     "Jika kami jumpa pembaikan diperlukan semasa servis, kami terangkan dan beri sebut harga sebelum membuatnya"
+    ],
+    "p_after": [
+     "Di Carzy World kami buat servis biasa, servis besar dan tukar minyak untuk semua jenama kereta, dari kereta bandar hingga pikap dan kereta kontinental. Kerja terbaru ialah servis besar untuk Isuzu D-Max."
+    ]
+   }
+  ],
+  "faqs": [
+   {
+    "q": "Bagaimana saya tahu kereta saya perlukan servis besar?",
+    "a": "Semak peringatan servis, jadual dalam buku manual pemilik dan perbatuan anda. Kalau tak pasti, WhatsApp kami model dan perbatuan kereta anda dan kami akan beritahu yang mana patut dibuat."
+   },
+   {
+    "q": "Adakah anda servis pikap dan 4x4?",
+    "a": "Ya. Semua jenama kereta dialu-alukan, dan baru-baru ini kami buat servis besar untuk Isuzu D-Max."
+   },
+   {
+    "q": "Boleh saya minta sebut harga sebelum tempah?",
+    "a": "Boleh. Kami tidak menerbitkan harga kerana setiap kereta berbeza. WhatsApp kami model, tahun dan perbatuan kereta anda dan kami akan beri sebut harga."
+   }
+  ]
+ },
+ "zh": {
+  "title": "小保养和大保养有什么区别?",
+  "description": "小保养和大保养的区别:各自包含什么,如何知道你的车该做哪一种,以及该跟车厂说什么。巴生 Carzy World。",
+  "keyword": "小保养和大保养的区别",
+  "motif": "保养",
+  "h1": "小保养和大保养的区别:有什么不同,现在该做哪一种?",
+  "lead": "小保养和大保养的区别,是我们在巴生最常被问到的问题之一。小保养主要是更换机油和机油滤芯,并做基本检查。大保养则更全面,通常会按你车子自己的保养表增加更多项目。",
+  "answer": "小保养主要是更换机油和机油滤芯,并做基本检查。大保养通常会增加其他项目,例如其他滤芯、各种油液和火花塞,视你车子的保养表而定。该做哪一种取决于你的车型和里程,所以预约前请车厂先确认。",
+  "topic": "小保养还是大保养",
+  "excerpt": "小保养和大保养各包含什么,以及如何知道你的车该做哪一种。",
+  "sections": [
+   {
+    "h2": "小保养和大保养对照",
+    "p": [
+     "两者都能让你的车保持可靠,但不是同一项工作。通常的区别如下:"
+    ],
+    "pairs": [
+     {
+      "t": "小保养",
+      "d": "主要是更换机油和机油滤芯,并做基本检查。"
+     },
+     {
+      "t": "大保养",
+      "d": "通常会增加其他项目,例如其他滤芯、各种油液和火花塞,视你车子的保养表而定。"
+     },
+     {
+      "t": "为什么项目不一样",
+      "d": "每辆车都有自己的保养表,所以一辆车的大保养和另一辆车的项目并不相同。"
+     }
+    ]
+   },
+   {
+    "h2": "如何知道该做哪一种保养",
+    "p": [
+     "你不需要靠猜。最简单的几个查看位置是:"
+    ],
+    "list": [
+     "上次保养留下的保养提示或贴纸",
+     "车主手册或保养手册里的保养表",
+     "你车子现在的里程与保养表的对照",
+     "机油警示灯是否已经亮起"
+    ],
+    "p_after": [
+     "如果还是不确定,请在 WhatsApp 告诉我们车型、年份和里程,我们会告诉你这次保养应该包含什么。"
+    ]
+   },
+   {
+    "h2": "为什么只换机油不能一直这样",
+    "p": [
+     "机油是大家最记得的部分,但车上其他零件也会随时间和里程磨损。大保养就是保养表把这些其他项目也包括进来的时候。",
+     "所以最好按你车子的保养表来做,而不是每次都只重复换机油。跳过项目,可能让小问题在你没注意到时慢慢变大。"
+    ]
+   },
+   {
+    "h2": "把车开来时会发生什么",
+    "p": [
+     "我们这边的保养一般是这样进行的:"
+    ],
+    "steps": [
+     "你在 WhatsApp 告诉我们车型、年份和里程",
+     "我们告诉你这次保养应该包含什么,并给你报价",
+     "车在我们这里时,我们会随时向你更新进度",
+     "如果保养时发现需要维修,我们会先解释并报价,再动手"
+    ],
+    "p_after": [
+     "在 Carzy World,我们为所有品牌的车做小保养、大保养和换机油,从小型车到皮卡和欧陆车都可以。最近的一单是 Isuzu D-Max 的大保养。"
+    ]
+   }
+  ],
+  "faqs": [
+   {
+    "q": "我怎么知道我的车需要大保养?",
+    "a": "查看保养提示、车主手册里的保养表和你的里程。如果不确定,请在 WhatsApp 告诉我们车型和里程,我们会告诉你该做哪一种。"
+   },
+   {
+    "q": "你们做皮卡和四驱车的保养吗?",
+    "a": "做。欢迎所有品牌的车,我们最近就做过一辆 Isuzu D-Max 的大保养。"
+   },
+   {
+    "q": "预约前可以先要报价吗?",
+    "a": "可以。我们不公开价格,因为每辆车都不一样。请在 WhatsApp 告诉我们车型、年份和里程,我们会给你报价。"
+   }
+  ]
+ }
+}

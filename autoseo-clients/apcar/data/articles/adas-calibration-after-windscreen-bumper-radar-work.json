@@ -1,0 +1,248 @@
+{
+ "slug": "adas-calibration-after-windscreen-bumper-radar-work",
+ "published": "2026-11-14",
+ "updated": "2026-11-14",
+ "service": "adas",
+ "hero_photo": "radar-module",
+ "_sources": "Facts only from the preview's ADAS calibration page (same facts as the 12 Nov article): signs list incl. 'After bumper, radar or windscreen work', 4 steps ending in a road test, Autel / MaxiSys, code P2583-76, the 4 jobs, photo captions. Nothing added.",
+ "en": {
+  "keyword": "ADAS calibration Kuantan",
+  "title": "ADAS Calibration in Kuantan After Windscreen or Bumper Work | AP Car",
+  "description": "ADAS calibration in Kuantan after windscreen, bumper or radar work: the signs the system needs aiming, and how AP Car aims it in its own bay, then road tests.",
+  "h1": "ADAS calibration in Kuantan after windscreen, bumper or radar work",
+  "lead": "Need ADAS calibration in Kuantan after windscreen, bumper or radar work? If ACC or lane keep stopped working afterwards, the radar or camera may no longer point the right way. Here is how to tell and what we do.",
+  "answer": "After windscreen, bumper or radar work, the front radar or camera may need aiming again. If ACC or lane keep has switched off, we read the code, aim it in our bay with Autel / MaxiSys equipment, then road test.",
+  "prefill": "Hi AP Car, my ACC / lane keep stopped working after windscreen / bumper work and I need ADAS calibration. Car model:",
+  "excerpt": "What to look for after windscreen, bumper or radar work, and our 4 steps.",
+  "sections": [
+   {
+    "h2": "What to look for after the work",
+    "list": [
+     "ACC or lane keep switched off",
+     "\"Check System\" on the dash",
+     "Pre-crash system malfunction",
+     "Lane keep pulls the wrong way"
+    ],
+    "photo": "cluster-acc"
+   },
+   {
+    "h2": "Why the work can matter",
+    "p": [
+     "ACC, lane keep (LKAS), lane departure (LDW) and pre-crash use a front radar and camera that must point exactly right.",
+     "The radar sits behind the bumper and the camera looks through the windscreen, so work in those areas can leave them out of line. When a code such as \"misalignment millimeter wave radar\" appears, the system switches off until it is aimed again."
+    ],
+    "photo": "radar-module"
+   },
+   {
+    "h2": "Our 4 steps",
+    "steps": [
+     [
+      "Read",
+      "Scan for radar / camera codes"
+     ],
+     [
+      "Set up",
+      "Target stand placed for the car"
+     ],
+     [
+      "Aim",
+      "Radar or camera aiming on the scanner"
+     ],
+     [
+      "Road test",
+      "ACC and lane keep checked on the road"
+     ]
+    ]
+   },
+   {
+    "h2": "Before and after",
+    "pair": [
+     "radar-code",
+     "aiming-done"
+    ]
+   },
+   {
+    "h2": "Calibrations we have done",
+    "jobs": [
+     "Honda Civic Type R (FK8): ADAS calibration + road test",
+     "Honda N-Box: ACC and lane-keep camera aiming",
+     "Toyota Alphard: pre-crash system malfunction, ADAS calibration + road test"
+    ]
+   }
+  ],
+  "faqs": [
+   {
+    "q": "What should I do if ACC or lane keep stops after bumper or windscreen work?",
+    "a": "Note what the dash shows, then WhatsApp us the car model and what you see. The radar or camera may need aiming."
+   },
+   {
+    "q": "Do you road test after calibration?",
+    "a": "Yes. Every calibration we post ends with a road test."
+   },
+   {
+    "q": "Which cars can you calibrate?",
+    "a": "Our posts show Honda and Toyota jobs. The procedure depends on the car, so WhatsApp the model first and we will tell you."
+   }
+  ]
+ },
+ "ms": {
+  "keyword": "kalibrasi ADAS Kuantan",
+  "title": "Kalibrasi ADAS Kuantan Selepas Kerja Cermin atau Bampar | AP Car",
+  "description": "Kalibrasi ADAS Kuantan selepas kerja cermin depan, bampar atau radar: tanda sistem perlu dikalibrasi, dan cara AP Car kalibrasi di bengkel, kemudian uji jalan.",
+  "h1": "Kalibrasi ADAS Kuantan selepas kerja cermin depan, bampar atau radar",
+  "lead": "Perlukan kalibrasi ADAS Kuantan selepas kerja cermin depan, bampar atau radar? Jika ACC atau LKAS tak berfungsi selepas itu, radar atau kamera mungkin tidak lagi menghala dengan betul. Ini cara untuk tahu dan apa yang kami buat.",
+  "answer": "Selepas kerja cermin depan, bampar atau radar, radar atau kamera hadapan mungkin perlu dikalibrasi semula. Jika ACC atau LKAS berhenti, kami baca kod, kalibrasi di bengkel kami dengan peralatan Autel / MaxiSys, kemudian uji jalan.",
+  "prefill": "Hi AP Car, ACC / LKAS kereta saya tak berfungsi selepas kerja cermin depan / bampar, saya perlukan kalibrasi ADAS. Model kereta:",
+  "excerpt": "Apa yang perlu dilihat selepas kerja cermin depan, bampar atau radar, dan 4 langkah kami.",
+  "sections": [
+   {
+    "h2": "Apa yang perlu dilihat selepas kerja",
+    "list": [
+     "ACC atau LKAS tak berfungsi",
+     "\"Check System\" pada meter",
+     "Pre-crash system malfunction",
+     "Lane keep tarik ke arah salah"
+    ],
+    "photo": "cluster-acc"
+   },
+   {
+    "h2": "Kenapa kerja itu penting",
+    "p": [
+     "ACC, LKAS, LDW dan sistem pre-crash bergantung pada radar dan kamera hadapan yang mesti tepat.",
+     "Radar berada di belakang bampar dan kamera melihat melalui cermin depan, jadi kerja di kawasan itu boleh menyebabkan ia tak sejajar. Bila keluar kod seperti \"misalignment millimeter wave radar\", sistem berhenti sehingga dikalibrasi semula."
+    ],
+    "photo": "radar-module"
+   },
+   {
+    "h2": "4 langkah kami",
+    "steps": [
+     [
+      "Baca",
+      "Scan kod radar / kamera"
+     ],
+     [
+      "Pasang",
+      "Stand sasaran ikut kereta"
+     ],
+     [
+      "Kalibrasi",
+      "Aiming radar atau kamera"
+     ],
+     [
+      "Uji jalan",
+      "ACC dan LKAS diuji di jalan"
+     ]
+    ]
+   },
+   {
+    "h2": "Sebelum dan selepas",
+    "pair": [
+     "radar-code",
+     "aiming-done"
+    ]
+   },
+   {
+    "h2": "Kalibrasi yang pernah kami buat",
+    "jobs": [
+     "Honda Civic Type R (FK8): kalibrasi ADAS + uji jalan",
+     "Honda N-Box: kalibrasi kamera ACC dan LKAS",
+     "Toyota Alphard: pre-crash system malfunction, kalibrasi ADAS + uji jalan"
+    ]
+   }
+  ],
+  "faqs": [
+   {
+    "q": "Apa patut saya buat jika ACC atau LKAS berhenti selepas kerja bampar atau cermin depan?",
+    "a": "Catat apa yang dipaparkan pada meter, kemudian WhatsApp model kereta dan apa yang anda nampak. Radar atau kamera mungkin perlu dikalibrasi."
+   },
+   {
+    "q": "Ada uji jalan selepas kalibrasi?",
+    "a": "Ada. Setiap kalibrasi yang kami kongsi diakhiri dengan uji jalan."
+   },
+   {
+    "q": "Kereta apa boleh dikalibrasi?",
+    "a": "Hantaran kami tunjuk kerja Honda dan Toyota. Prosedur ikut kereta, jadi WhatsApp model dulu."
+   }
+  ]
+ },
+ "zh": {
+  "keyword": "关丹 ADAS 校准",
+  "title": "关丹 ADAS 校准：换挡风玻璃或保险杠后 | AP Car",
+  "description": "关丹 ADAS 校准：换过挡风玻璃、保险杠或雷达后，有哪些迹象说明系统需要校准，以及 AP Car 如何在店里标定，再上路测试。",
+  "h1": "关丹 ADAS 校准：换挡风玻璃、保险杠或雷达之后",
+  "lead": "换过挡风玻璃、保险杠或雷达后，需要关丹 ADAS 校准吗？如果之后 ACC 或车道保持失灵，可能是前雷达或摄像头的角度已经不对。下面说明如何判断和我们的做法。",
+  "answer": "换过挡风玻璃、保险杠或雷达后，前雷达或摄像头可能需要重新校准。如果 ACC 或车道保持失灵，我们先读故障码，在店里用 Autel／MaxiSys 设备标定，再上路测试。",
+  "prefill": "你好 AP Car，换过挡风玻璃／保险杠后我的 ACC／车道保持失灵，需要 ADAS 校准。车型：",
+  "excerpt": "换挡风玻璃、保险杠或雷达后要留意什么，以及我们的 4 个步骤。",
+  "sections": [
+   {
+    "h2": "做完维修后要留意的迹象",
+    "list": [
+     "ACC 或车道保持失灵",
+     "仪表显示 \"Check System\"",
+     "预碰撞系统故障",
+     "车道保持方向不对"
+    ],
+    "photo": "cluster-acc"
+   },
+   {
+    "h2": "为什么这些维修会有影响",
+    "p": [
+     "ACC 自适应巡航、车道保持、车道偏离警示和预碰撞系统，都靠前雷达和摄像头准确对正。",
+     "雷达装在保险杠后面，摄像头透过挡风玻璃往前看，所以这些位置的维修可能让它们偏离。一旦出现 \"misalignment millimeter wave radar\" 之类的故障码，系统会暂停，直到重新校准。"
+    ],
+    "photo": "radar-module"
+   },
+   {
+    "h2": "我们的 4 个步骤",
+    "steps": [
+     [
+      "读码",
+      "扫描雷达／摄像头故障码"
+     ],
+     [
+      "架设",
+      "按车型摆好标靶"
+     ],
+     [
+      "标定",
+      "扫描仪执行雷达或摄像头校准"
+     ],
+     [
+      "路试",
+      "上路确认 ACC 与车道保持"
+     ]
+    ]
+   },
+   {
+    "h2": "校准前后",
+    "pair": [
+     "radar-code",
+     "aiming-done"
+    ]
+   },
+   {
+    "h2": "做过的校准",
+    "jobs": [
+     "本田 Civic Type R（FK8）：ADAS 校准 + 路试",
+     "本田 N-Box：ACC 与车道保持摄像头校准",
+     "丰田 Alphard：预碰撞系统故障，ADAS 校准 + 路试"
+    ]
+   }
+  ],
+  "faqs": [
+   {
+    "q": "换保险杠或挡风玻璃后 ACC 或车道保持失灵怎么办？",
+    "a": "先记下仪表上显示的内容，再 WhatsApp 告诉我们车型和看到的情况。雷达或摄像头可能需要重新校准。"
+   },
+   {
+    "q": "校准后会路试吗？",
+    "a": "会。我们发布的每一单校准都以路试结束。"
+   },
+   {
+    "q": "哪些车可以校准？",
+    "a": "我们发布过本田和丰田的案例。程序因车而异，请先 WhatsApp 车型。"
+   }
+  ]
+ }
+}
