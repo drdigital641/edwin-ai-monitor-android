@@ -180,9 +180,8 @@ def mission(L):
 
 
 def tagline(L, path=""):
-    """Schema slogan. EN pages and every ms/zh inner page: the English tagline. ms/zh home: the BM / 中文 tagline only (live, 13 Nov 2026)."""
-    tr = L.s["brand"]["tagline_translation"]
-    return tr if tr and path == "" else BRAND["tagline"]
+    """Schema slogan in the page's own language: English on EN pages, the BM / 中文 tagline (same line as the footer translation) on every ms/zh page (13 Nov 2026)."""
+    return L.s["brand"]["tagline_translation"] or BRAND["tagline"]
 
 
 def tagline_html(L, path=""):
