@@ -2062,7 +2062,7 @@ def render(L, path, p):
 <li><a href="{FB}" target="_blank" rel="noopener">Facebook</a></li>
 </ul></div>
 </div>
-<div class="ftr-legal"><span>© 2026 {LEGAL} · {E(t(W['reg'], L))} {REGNO}</span><span>{E(t(W['built'], L))} <a href="https://pageonesingapore.com/">Page One Singapore</a></span></div>
+<div class="ftr-legal"><span>© 2026 {LEGAL} · {E(t(W['reg'], L))} {REGNO}</span></div>
 </div></footer>
 {'' if p.get('b2b') else dock}
 </body>
