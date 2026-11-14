@@ -1,0 +1,86 @@
+/* Clients by industry (preview). Builds on /styles.css */
+html{scroll-behavior:smooth}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+.cv-hero{padding-bottom:40px}
+.cv-hero .lead{max-width:640px}
+.cv-kpis{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin:8px 0 22px;max-width:520px}
+.cv-kpis .kpi{background:rgba(255,255,255,.06);border:1px solid var(--line-dark);box-shadow:none;padding:14px 16px;min-width:0}
+.cv-kpis .kpi .value{font-size:2.4rem;line-height:1.1;background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent}
+.cv-kpis .kpi .label{color:var(--muted-dark)}
+.chips{display:flex;gap:8px;overflow-x:auto;padding:4px 16px 12px;margin:0 -16px 18px;scrollbar-width:none;-webkit-overflow-scrolling:touch}
+.chips::-webkit-scrollbar{display:none}
+.chips .chip{position:static;animation:none;box-shadow:none;flex:0 0 auto;display:inline-flex;align-items:center;gap:8px;padding:10px 14px;border-radius:999px;border:1px solid rgba(255,255,255,.2);background:rgba(255,255,255,.06);color:#fff;text-decoration:none;font-weight:600;font-size:.92rem;min-height:44px;white-space:nowrap}
+.chips .chip b{color:#fff;background:var(--grad-strong);border-radius:999px;padding:1px 8px;font-size:.8rem}
+.chips .chip:hover{background:rgba(255,255,255,.14)}
+a:focus-visible,button:focus-visible{outline:3px solid var(--cyan);outline-offset:2px}
+/* glide strip */
+.glide-wrap{overflow:hidden;margin:0 -16px}
+.glide{display:flex;gap:12px;overflow-x:auto;padding:6px 16px 10px;scrollbar-width:none;-webkit-overflow-scrolling:touch;scroll-snap-type:x proximity}
+.glide::-webkit-scrollbar{display:none}
+.glide.auto{scroll-snap-type:none}
+.glide>*{flex:0 0 auto}
+.gcard{display:block;width:96px;text-decoration:none}
+.gcard .phone{border-radius:14px;padding:4px}
+/* phone frame */
+.phone{display:block;background:#0b1220;border-radius:20px;padding:6px;box-shadow:0 10px 30px rgba(15,23,42,.25);border:1px solid rgba(255,255,255,.12)}
+.phone img{display:block;width:100%;height:auto;aspect-ratio:1/2;object-fit:cover;object-position:top;border-radius:15px;background:#1b2740}
+.gcard .phone img{border-radius:10px}
+/* latest */
+.cv-latest{padding:44px 0 8px}
+.latest-grid{display:grid;grid-template-columns:minmax(0,1fr);gap:12px;margin-top:14px}
+.lcard{display:block;min-width:0;background:#fff;border:1px solid var(--line);border-radius:var(--radius);padding:14px 16px;text-decoration:none;color:var(--ink);box-shadow:var(--shadow)}
+.lcard:hover{transform:translateY(-2px)}
+.lcard .date{font-size:.78rem;font-weight:700;color:var(--green)}
+.lcard h3{margin:2px 0 2px;font-size:1.05rem}
+.lcard .dom{font-size:.85rem;color:var(--muted);overflow-wrap:anywhere}
+.lcard p{margin:6px 0 0;font-size:.92rem;color:var(--muted)}
+/* industry blocks */
+.ind{padding:48px 0;scroll-margin-top:84px}
+.ind.alt{background:var(--bg-alt)}
+.ind-grid{display:grid;grid-template-columns:minmax(0,1fr);gap:22px}
+.ind-text,.ind-strip{min-width:0}
+.ind h2{display:flex;flex-wrap:wrap;align-items:center;gap:10px;margin:0 0 14px}
+.count-badge{font-size:.8rem;font-weight:700;color:#fff;background:var(--grad-strong);padding:4px 12px;border-radius:999px;letter-spacing:.02em}
+.build{list-style:none;margin:0 0 16px;padding:0}
+.build li{display:flex;gap:10px;margin:0 0 10px;color:var(--ink)}
+.build svg{flex:0 0 20px;margin-top:3px;color:var(--green)}
+.sc-card{background:var(--night);color:#dbe3f1;border-radius:var(--radius);padding:18px;border:1px solid var(--line-dark);box-shadow:var(--shadow)}
+.sc-card .lbl{display:inline-block;font-size:.72rem;letter-spacing:.12em;text-transform:uppercase;font-weight:800;color:#ffb3bf;margin-bottom:6px}
+.sc-card .who{font-weight:700;color:#fff;margin:0}
+.sc-card .who span{color:var(--muted-dark);font-weight:400;overflow-wrap:anywhere}
+.sc-card .txt{margin:8px 0;color:#fff}
+.sc-card .note{margin:0;font-size:.8rem;color:var(--muted-dark)}
+.strip-wrap{position:relative;min-width:0}
+.strip{display:flex;gap:16px;overflow-x:auto;scroll-snap-type:x mandatory;padding:6px 16px 16px;margin:0 -16px;scrollbar-width:none;-webkit-overflow-scrolling:touch}
+.strip::-webkit-scrollbar{display:none}
+.ccard{flex:0 0 min(62vw,230px);min-width:0;scroll-snap-align:start;display:flex;flex-direction:column;gap:10px;text-decoration:none;color:var(--ink);background:#fff;border:1px solid var(--line);border-radius:var(--radius);padding:12px;box-shadow:var(--shadow);transition:transform .2s}
+.ccard:hover{transform:translateY(-3px)}
+.ccard h3{margin:0;font-size:1rem;line-height:1.3}
+.ccard .desc{margin:0;font-size:.88rem;color:var(--muted)}
+.ccard .since{margin:0;font-size:.78rem;font-weight:700;color:var(--green)}
+.ccard .visit{margin:auto 0 0;font-size:.85rem;font-weight:700;overflow-wrap:anywhere}
+.ccard .visit span{color:#c8102e;white-space:nowrap}
+.arrows{display:none}
+/* close */
+.cv-close{padding:64px 0;text-align:center}
+.cv-close .section-lead{margin:0 auto 24px}
+.cv-close .cta-row{display:flex;flex-wrap:wrap;gap:12px;justify-content:center}
+.cv-close .btn-ghost{color:var(--ink);border-color:var(--ink);background:transparent}
+.cv-close .btn-ghost:hover{background:rgba(15,23,42,.06)}
+.cv-disc{font-size:.82rem;color:var(--muted);max-width:760px;margin:0 auto;padding:20px 16px 36px;text-align:center}
+@media(min-width:768px){
+  .cv-kpis{grid-template-columns:auto auto;gap:16px}
+  .chips{flex-wrap:wrap;overflow:visible;margin:0 0 22px;padding:0}
+  .latest-grid{grid-template-columns:repeat(3,minmax(0,1fr))}
+  .gcard{width:120px}
+  .arrows{display:flex;gap:8px;justify-content:flex-end;margin-bottom:8px}
+  .arrows button{width:44px;height:44px;border-radius:50%;border:1px solid var(--line);background:#fff;font-size:1.2rem;cursor:pointer;color:var(--ink);box-shadow:var(--shadow)}
+  .arrows button:hover{background:var(--bg-alt)}
+  .ccard{flex-basis:230px}
+}
+@media(min-width:1024px){
+  .ind{padding:72px 0}
+  .ind-grid{grid-template-columns:minmax(0,5fr) minmax(0,7fr);gap:48px;align-items:start}
+  .ind-text{position:sticky;top:96px}
+  .strip{margin:0;padding:6px 4px 16px}
+}
