@@ -1,6 +1,0 @@
-406 https://carzyworld.com.my/ -> index.html
-406 https://carzyworld.com.my/404.html -> 404.html
-406 https://carzyworld.com.my/llms.txt -> llms.txt
-406 https://carzyworld.com.my/ms/ -> ms/index.html
-406 https://carzyworld.com.my/robots.txt -> robots.txt
-406 https://carzyworld.com.my/zh/ -> zh/index.html
