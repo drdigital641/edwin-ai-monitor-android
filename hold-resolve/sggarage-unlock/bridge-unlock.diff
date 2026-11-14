@@ -1,0 +1,12 @@
+--- a/base44/shared/bridgeConfig.ts	2026-11-14 15:11:41.717883489 +0000
++++ b/base44/shared/bridgeConfig.ts	2026-11-14 15:11:41.754378205 +0000
+@@ -110,7 +110,8 @@
+ export type SiteHold = { key: string; name: string; on: boolean; site: string; prefix: string | null };
+ export const SITE_HOLDS: readonly SiteHold[] = Object.freeze([
+   { key: 'pageone', name: 'Page One (pageonesingapore.com)', on: false, site: 'pageone', prefix: null },
+-  { key: 'sggarage', name: 'SG Garage (sggarage.com)', on: true, site: 'sggarage', prefix: '' },
++  // sggarage OFF since "SG GARAGE UNLOCK 1114-2245" (Edwin, relayed 10:42pm SGT 14 Nov 2026: "remove the lock").
++  { key: 'sggarage', name: 'SG Garage (sggarage.com)', on: false, site: 'sggarage', prefix: '' },
+   { key: 'star', name: 'Star Performance (starperformancemotor.com)', on: false, site: 'pageone', prefix: 'preview/star-performance/' },
+   { key: 'klar', name: 'Klar Details (klardetails.com.sg)', on: false, site: 'pageone', prefix: 'preview/klar-details/' },
+   { key: 'cska', name: 'CSKA (cskatrading.com)', on: false, site: 'pageone', prefix: 'preview/cska-auto/' },

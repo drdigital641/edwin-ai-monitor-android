@@ -1,0 +1,126 @@
+running 4 tests from ./tests/bulkWrite.test.ts
+accepts a normal site folder and joins base_path ... ok (1ms)
+blocked file types refuse the whole batch ... ok (13ms)
+path traversal and bad paths are refused ... ok (507µs)
+content rules, duplicates, sha format, limits ... ok (15ms)
+running 2 tests from ./tests/bulkWriteMock.test.ts
+bulk create, then overwrite rules, backups and per-file results ... ok (526ms)
+cannot reach into another site folder; blocked batch writes nothing ... ok (3ms)
+running 3 tests from ./tests/cpanelChokepoint.test.ts
+cPanel choke point refuses every change into a site folder unless writeFile granted it ...
+------- post-test output -------
+refused   upload_files into site root, no grant -> LIVE GUARD (cPanel choke point) refused: Fileman/upload_files into ~/public_html/carbonfibre/index.html (only 
+refused   upload_files .htaccess into site root -> LIVE GUARD (cPanel choke point) refused: Fileman/upload_files into ~/public_html/carbonfibre/.htaccess (only w
+allowed   upload_files into ~/bluehost-bridge-private (selftest probe)
+allowed   upload_files into site root WITH writeFile grant
+refused   same upload after the grant ended -> LIVE GUARD (cPanel choke point) refused: Fileman/upload_files into ~/public_html/carbonfibre/index.html (only 
+refused   grant for one file does not cover another -> LIVE GUARD (cPanel choke point) refused: Fileman/upload_files into ~/public_html/carbonfibre/b.html (only writ
+refused   save_file_content into site (not allow-listed either) -> cPanel call not allowed: Fileman/save_file_content
+refused   fileop copy into site root -> LIVE GUARD (cPanel choke point) refused: fileop copy into ~/public_html/carbonfibre/index.html (only writeFile
+allowed   fileop copy site file into ~/bluehost-bridge-private/backups (writeFile backup step)
+allowed   fileop compress into ~/backups-private (deploy tgz)
+refused   fileop move -> cPanel file operation not allowed: move
+refused   fileop rename -> cPanel file operation not allowed: rename
+refused   fileop unlink -> cPanel file operation not allowed: unlink
+refused   fileop trash -> cPanel file operation not allowed: trash
+refused   fileop extract -> cPanel file operation not allowed: extract
+refused   fileop link -> cPanel file operation not allowed: link
+refused   fileop killdir -> cPanel file operation not allowed: killdir
+refused   fileop chmod on a site file -> LIVE GUARD (cPanel choke point) refused: fileop chmod into ~/public_html/carbonfibre/index.html (only writeFil
+allowed   fileop chmod on a private backup
+refused   fileop copy without doubledecode=0 -> LIVE GUARD (cPanel choke point) refused: fileop without doubledecode=0. Nothing was changed.
+refused   copy dest walks out of private with .. -> LIVE GUARD (cPanel choke point) refused: fileop copy: path has an empty, "." or ".." segment. Nothing was chan
+refused   copy dest with %2e%2e -> LIVE GUARD (cPanel choke point) refused: fileop copy: path has NUL, backslash, "%" or a control character. Not
+refused   copy dest with %2f -> LIVE GUARD (cPanel choke point) refused: fileop copy: path has NUL, backslash, "%" or a control character. Not
+refused   upload dir with .. into site -> LIVE GUARD (cPanel choke point) refused: Fileman/upload_files: path has an empty, "." or ".." segment. Nothing
+refused   two destinations in one copy -> LIVE GUARD (cPanel choke point) refused: copy needs exactly one destination. Nothing was changed.
+refused   mkdir with .. in the name -> LIVE GUARD (cPanel choke point) refused: mkdir: bad name. Nothing was changed.
+----- post-test output end -----
+cPanel choke point refuses every change into a site folder unless writeFile granted it ... ok (23ms)
+mkdir only inside a site root or a private folder (guard low item 1) ...
+------- post-test output -------
+refused   mkdir in a site before the site roots are loaded (fail closed) -> LIVE GUARD (cPanel choke point) refused: mkdir ~/public_html/carbonfibre/articles/new (folders may only be mad
+allowed   mkdir inside a site root
+allowed   mkdir inside another site root
+refused   mkdir of a new folder at public_html level (public_html is never accepted as a root) -> LIVE GUARD (cPanel choke point) refused: mkdir ~/public_html/evil (folders may only be made inside a site root
+refused   mkdir directly in home -> LIVE GUARD (cPanel choke point) refused: mkdir ~/newdir (folders may only be made inside a site root or a priv
+refused   mkdir in ~/.ssh -> LIVE GUARD (cPanel choke point) refused: mkdir ~/.ssh/x (folders may only be made inside a site root or a priv
+refused   mkdir in ~/etc -> LIVE GUARD (cPanel choke point) refused: mkdir ~/etc/x (folders may only be made inside a site root or a priva
+refused   mkdir in ~/mail -> LIVE GUARD (cPanel choke point) refused: mkdir ~/mail/x (folders may only be made inside a site root or a priv
+refused   mkdir in ~/public_ftp -> LIVE GUARD (cPanel choke point) refused: mkdir ~/public_ftp/x (folders may only be made inside a site root or 
+refused   mkdir in an unknown *-private folder -> LIVE GUARD (cPanel choke point) refused: mkdir ~/someone-private/x (folders may only be made inside a site roo
+refused   mkdir that would make the site root itself -> LIVE GUARD (cPanel choke point) refused: mkdir ~/public_html/carbonfibre (folders may only be made inside a si
+refused   mkdir outside home -> LIVE GUARD (cPanel choke point) refused: mkdir: path is outside the account home. Nothing was changed.
+refused   mkdir with %2e%2e -> LIVE GUARD (cPanel choke point) refused: mkdir: path has NUL, backslash, "%" or a control character. Nothing w
+allowed   mkdir in ~/bluehost-bridge-private/backups
+allowed   mkdir in ~/backups-private
+allowed   mkdir making ~/backups-private itself
+refused   mkdir in ~/alicia-publisher-private -> LIVE GUARD (cPanel choke point) refused: mkdir ~/alicia-publisher-private/x (folders may only be made inside a
+refused   mkdir in ~/sofacare-production-publisher-private -> LIVE GUARD (cPanel choke point) refused: mkdir ~/sofacare-production-publisher-private/x (folders may only be 
+refused   mkdir in ~/alicia-private -> LIVE GUARD (cPanel choke point) refused: mkdir ~/alicia-private/x (folders may only be made inside a site root
+refused   mkdir in ~/danny-private -> LIVE GUARD (cPanel choke point) refused: mkdir ~/danny-private/x (folders may only be made inside a site root 
+refused   mkdir in ~/sofacare-private -> LIVE GUARD (cPanel choke point) refused: mkdir ~/sofacare-private/x (folders may only be made inside a site ro
+refused   mkdir making a new ~/x-private folder -> LIVE GUARD (cPanel choke point) refused: mkdir ~/x-private (folders may only be made inside a site root or a p
+refused   mkdir in a look-alike ~/backups-private2 -> LIVE GUARD (cPanel choke point) refused: mkdir ~/backups-private2/x (folders may only be made inside a site ro
+refused   mkdir in a look-alike ~/bluehost-bridge-private-x -> LIVE GUARD (cPanel choke point) refused: mkdir ~/bluehost-bridge-private-x/x (folders may only be made inside 
+----- post-test output end -----
+mkdir only inside a site root or a private folder (guard low item 1) ... ok (1ms)
+percent-encoded paths can never decode into a path walk ...
+------- post-test output -------
+refused   path "%2e%2e/index.html"
+refused   path "%2E%2E/%2E%2E/etc/passwd"
+refused   path "articles/%2e%2e/%2e%2e/x.html"
+refused   path "..%2findex.html"
+refused   path "%2e%2e%2f%2e%2e%2fx"
+refused   path "a%2fb.html"
+refused   path "%252e%252e/x.html"
+refused   path "%c0%ae%c0%ae/x"
+refused   path "a/%00.html"
+refused   path "articles\\..\\x.html"
+refused   path "../x.html"
+refused   path "a/../../x.html"
+inside    path "/etc/passwd" -> site-relative "etc/passwd" (and the live guard refuses absolute input)
+----- post-test output end -----
+percent-encoded paths can never decode into a path walk ... ok (1ms)
+running 8 tests from ./tests/crawlerCore.test.ts
+IPv4 boundaries ... ok (712µs)
+IPv6 boundaries and forms ... ok (258µs)
+payload validation keeps last known good (never empty success) ... ok (229µs)
+overlapping lists do not force identity ... ok (278µs)
+classes ... ok (184µs)
+spoofed forwarded header is ignored: only the logged connection address is used ... ok (446µs)
+parsing and sanitizing ... ok (610µs)
+other crawlers: verified only inside their own list; Claude never verified; never OpenAI ... ok (311µs)
+running 17 tests from ./tests/generatedOverride.test.ts
+allowed for pageone: sitemap.xml, sitemap.txt, llms.txt ... ok (1ms)
+allowed for star: sitemap.xml, sitemap.txt, llms.txt ... ok (279µs)
+allowed for klar: sitemap.xml, sitemap.txt, llms.txt ... ok (177µs)
+allowed for cska: sitemap.xml, sitemap.txt, llms.txt ... ok (135µs)
+allowed for jacky: sitemap.xml, sitemap.txt, llms.txt ... ok (11ms)
+allowed for ben: sitemap.xml, sitemap.txt, llms.txt ... ok (168µs)
+refused for sggarage (no override at all), same three files ... ok (956µs)
+refused for other sites and other client folders ... ok (605µs)
+refused for any other file, even from the publisher ... ok (673µs)
+server config and code stay never-write even from the publisher ... ok (110µs)
+refused when the write is not from the publisher (bulk write, MCP write_file, sync) ... ok (266µs)
+bad XML refused ... ok (636µs)
+sitemap.xml with 0 URLs refused ... ok (128µs)
+empty llms.txt refused, bad sitemap.txt refused ... ok (182µs)
+unknown live state and path tricks still refused first ... ok (132µs)
+real-shape sitemaps pass the XML check (sitemapindex, image namespace, comments, CDATA) ... ok (155µs)
+wiring: only the publisher put() passes publisher: true, and writeFile forwards it strictly ... ok (10ms)
+running 6 tests from ./tests/githubSyncMock.test.ts
+request validation: repo allowlist, commit sha only, no deletes ... ok (1ms)
+sync ~40 files (text + binary), then re-sync is all unchanged ...
+------- post-test output -------
+mock sync of 40 files: 436 ms wall (fetch 24 ms), max cPanel/GitHub calls in flight 8
+mock re-sync (all unchanged): 321 ms wall
+----- post-test output end -----
+sync ~40 files (text + binary), then re-sync is all unchanged ... ok (757ms)
+backup that cannot be made means nothing is written ... ok (100ms)
+dry run downloads and lists but writes nothing ... ok (112ms)
+blocked file in the source folder refuses the batch before any download ... ok (126ms)
+missing folder / commit and other-site folder are refused ... ok (36ms)
+
+ok | 40 passed | 0 failed (1s)
+

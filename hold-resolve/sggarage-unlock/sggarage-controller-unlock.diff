@@ -1,0 +1,188 @@
+diff -ruN sgu0/base44/shared/ftpClient.ts sgu/base44/shared/ftpClient.ts
+--- a/base44/shared/ftpClient.ts	2026-11-14 15:09:31.318310443 +0000
++++ b/base44/shared/ftpClient.ts	2026-11-14 15:09:31.355313767 +0000
+@@ -32,7 +32,7 @@
+ 
+ function resolvePath(cwd: string, p: unknown): string {
+   const s = p == null ? '' : String(p);
+-  if (/[\0\x01-\x1f\x7f\\]/.test(s) || s.startsWith('~')) throw new HoldError(holdMessage('unsafe FTP path', JSON.stringify(s)));
++  if (/[\0\x01-\x1f\x7f\\]/.test(s) || s.startsWith('~')) throw new HoldError('Unsafe FTP path ' + JSON.stringify(s) + ' refused (control character, backslash or ~). Nothing was sent to the server.');
+   const parts: string[] = [];
+   for (const seg of ((s.startsWith('/') ? '' : cwd + '/') + s).split('/')) {
+     if (!seg || seg === '.') continue;
+@@ -67,7 +67,7 @@
+   }
+ 
+   const roFtp = new Proxy(raw.ftp ?? {}, {
+-    get(t, k) { if (k === 'request' || k === 'send' || k === 'handle') return () => { throw new HoldError(holdMessage('raw FTP command', '(blocked)')); }; return Reflect.get(t, k); },
++    get(t, k) { if (k === 'request' || k === 'send' || k === 'handle') return () => { throw new HoldError('Raw FTP commands (client.ftp.request/send/handle) are never allowed: they skip the file checks. Nothing was sent to the server.'); }; return Reflect.get(t, k); },
+   });
+ 
+   return new Proxy(raw, {
+diff -ruN sgu0/base44/shared/siteHold.ts sgu/base44/shared/siteHold.ts
+--- a/base44/shared/siteHold.ts	2026-11-14 15:09:31.318776117 +0000
++++ b/base44/shared/siteHold.ts	2026-11-14 15:11:19.949255111 +0000
+@@ -3,7 +3,9 @@
+ // IS SAVED, so changing `on` here is live the moment it is saved: only Edwin lifts this hold.
+ // Fail closed: the hold counts as ON unless the entry exists, is well formed and says on === false.
+ export const SITE_HOLDS = Object.freeze([
+-  Object.freeze({ key: 'sggarage', name: 'SG Garage (sggarage.com)', on: true, docroot: '/home3/sgmodde1/public_html/carbonfibre' }),
++  // OFF since "SG GARAGE UNLOCK 1114-2245" (Edwin, relayed 10:42pm SGT 14 Nov 2026: "remove the lock"; all coding on
++  // every client site goes through Claude). To lock SG Garage again set on: true here (live on save).
++  Object.freeze({ key: 'sggarage', name: 'SG Garage (sggarage.com)', on: false, docroot: '/home3/sgmodde1/public_html/carbonfibre' }),
+ ]);
+ 
+ // Any path with a segment of this name is treated as SG Garage, at any FTP root depth
+diff -ruN sgu0/tests/sggHold.test.ts sgu/tests/sggHold.test.ts
+--- a/tests/sggHold.test.ts	2026-11-14 15:09:31.335346334 +0000
++++ b/tests/sggHold.test.ts	2026-11-14 15:10:36.311266511 +0000
+@@ -5,7 +5,7 @@
+ import { audit, cmds } from './fakeSdk.ts';
+ import { guardClient, withFtp } from '../base44/shared/ftpClient.ts';
+ import { safeWriteRemoteText, readRemoteText, sha256 } from '../base44/shared/ftpFileOps.ts';
+-import { holdOn, HoldError } from '../base44/shared/siteHold.ts';
++import { holdOn, HoldError, SITE_HOLDS } from '../base44/shared/siteHold.ts';
+ import ftpWriteFile from '../base44/functions/ftpWriteFile/entry.ts';
+ import ftpHealthCheck from '../base44/functions/ftpHealthCheck/entry.ts';
+ import websiteCommandWorker from '../base44/functions/websiteCommandWorker/entry.ts';
+@@ -29,15 +29,25 @@
+ async function allowed(label: string, fn: () => Promise<unknown>) { await fn(); console.log('allowed ', label); }
+ const req = (body: any) => new Request('http://x/', { method: 'POST', body: JSON.stringify(body) });
+ 
++// Since "SG GARAGE UNLOCK 1114-2245" the sggarage flag is OFF. The refusal tests below only run while it is ON (they
++// prove the lock works when Edwin turns it back on); with it OFF they print EXPECTED and skip. The fail-closed
++// flag rules are tested either way, and tests/sggUnlocked.test.ts covers the OFF state.
++const HOLD_ON = holdOn();
++const skipOff = (name: string) => { if (HOLD_ON) return false; console.log('EXPECTED with the SG Garage HOLD OFF: "' + name + '" skipped (refusals only apply while it is ON)'); return true; };
++
+ Deno.test('hold flag fails closed', () => {
+-  if (!holdOn()) throw new Error('default must be ON');
+-  for (const bad of [[], null, undefined, 'x', [{ key: 'sggarage' }], [{ key: 'sggarage', on: 'false' }], [{ key: 'sggarage', on: 0 }], [{ key: 'other', on: false }]])
++  const flag = (SITE_HOLDS as any[]).find((h) => h.key === 'sggarage');
++  if (holdOn() !== (flag.on !== false)) throw new Error('default must follow the SITE_HOLDS entry');
++  // undefined means "use SITE_HOLDS" (the default argument), so it follows the flag; every other bad value is ON.
++  if (holdOn('sggarage', undefined) !== HOLD_ON) throw new Error('undefined must use SITE_HOLDS');
++  for (const bad of [[], null, 'x', [{ key: 'sggarage' }], [{ key: 'sggarage', on: 'false' }], [{ key: 'sggarage', on: 0 }], [{ key: 'other', on: false }]])
+     if (!holdOn('sggarage', bad)) throw new Error('should be ON for ' + JSON.stringify(bad));
+   if (holdOn('sggarage', [{ key: 'sggarage', on: false }])) throw new Error('explicit false should be OFF');
+   console.log('ok      flag missing/malformed/unreadable = ON; only on:false = OFF');
+ });
+ 
+ Deno.test('FTP root IS the SG Garage docroot: every write, rename and delete refused', async () => {
++  if (skipOff('FTP root IS the SG Garage docroot')) return;
+   reset({ ['/' + MARK]: 'k', '/index.html': '<h1>SGG</h1>', '/robots.txt': 'User-agent: *', '/articles/a.html': 'a' });
+   const sha = sha256(Buffer.from('<h1>SGG</h1>'));
+   await refused('safeWriteRemoteText overwrite /index.html', () => safeWriteRemoteText('/index.html', 'X', { expectedSha256: sha }));
+@@ -61,6 +71,7 @@
+ });
+ 
+ Deno.test('FTP root is the account home: carbonfibre refused at any depth, other sites still work', async () => {
++  if (skipOff('FTP root is the account home')) return;
+   reset({ '/public_html/carbonfibre/index.html': 'sgg', ['/public_html/carbonfibre/' + MARK]: 'k', '/public_html/cleanic/index.html': 'c' }, { dirs: ['/_cleanic_control/validation'] });
+   await refused('/public_html/carbonfibre/index.html', () => safeWriteRemoteText('/public_html/carbonfibre/x.html', 'X'));
+   await refused('relative path after cd', () => withFtp(async (c: any) => { await c.cd('/public_html/carbonfibre'); await c.uploadFrom(new Blob(['x']).stream(), 'x.html'); }));
+@@ -75,6 +86,7 @@
+ });
+ 
+ Deno.test('login folder is the docroot, or the check cannot run: refused (fail closed)', async () => {
++  if (skipOff('login folder is the docroot, or the check cannot run')) return;
+   reset({ ['/sgg/' + MARK]: 'k', '/sgg/index.html': 'sgg' }, { loginPwd: '/sgg' });
+   await refused('relative write in a login folder that has the SG Garage marker', () => withFtp((c: any) => c.uploadFrom(new Blob(['x']).stream(), 'index.html')));
+   reset({ '/index.html': 'x' }, { listFails: true });
+@@ -90,6 +102,7 @@
+ });
+ 
+ Deno.test('entry functions: 423, failed command, and a hold-refused ConnectionAudit row for each refusal', async () => {
++  if (skipOff('entry functions')) return;
+   reset({ ['/' + MARK]: 'k', '/robots.txt': 'r', '/index.html': 'i' }, { dirs: ['/_cleanic_control/validation'] });
+   audit.length = 0;
+   const before = snap();
+diff -ruN sgu0/tests/sggUnlocked.test.ts sgu/tests/sggUnlocked.test.ts
+--- a/tests/sggUnlocked.test.ts	1970-01-01 00:00:00.000000000 +0000
++++ b/tests/sggUnlocked.test.ts	2026-11-14 15:11:19.143214732 +0000
+@@ -0,0 +1,85 @@
++// SG Garage UNLOCKED state for the SgGarage Controller ("SG GARAGE UNLOCK 1114-2245", 14 Nov 2026).
++// Fake in-memory FTP server, fake Base44 SDK: no network, nothing saved anywhere.
++// Run: deno test --no-check=remote --import-map tests/importmap.json tests/sggUnlocked.test.ts
++// With the sggarage flag OFF: normal SG Garage writes go through every path, while the file-type rule that applies
++// to every site (server config / server code never written) still refuses before any byte is sent.
++import { reset, state } from './fakeFtp.ts';
++import { audit, cmds } from './fakeSdk.ts';
++import { withFtp } from '../base44/shared/ftpClient.ts';
++import { safeWriteRemoteText, sha256 } from '../base44/shared/ftpFileOps.ts';
++import { holdOn } from '../base44/shared/siteHold.ts';
++import ftpWriteFile from '../base44/functions/ftpWriteFile/entry.ts';
++import ftpHealthCheck from '../base44/functions/ftpHealthCheck/entry.ts';
++import websiteCommandWorker from '../base44/functions/websiteCommandWorker/entry.ts';
++
++const MARK = 'adba3d204db0f9cd2fb386bf0cc497ce.txt';
++const req = (body: any) => new Request('http://x/', { method: 'POST', body: JSON.stringify(body) });
++const snap = () => JSON.stringify([...state.files.entries()].map(([k, v]) => [k, sha256(Buffer.from(v))]).sort());
++const docroot = () => reset({ ['/' + MARK]: 'k', '/index.html': '<h1>SGG</h1>', '/articles/a.html': 'a', '/old.html': 'o', '/robots.txt': 'User-agent: *' }, { dirs: ['/articles', '/_chatgpt_backups', '/_cleanic_control/validation'] });
++const skip = () => { if (!holdOn()) return false; console.log('EXPECTED while the SG Garage HOLD is ON: unlocked-state test skipped'); return true; };
++
++Deno.test('flag is OFF in SITE_HOLDS', () => {
++  if (holdOn()) { console.log('EXPECTED while the SG Garage HOLD is ON: flag check skipped'); return; }
++  console.log('ok       sggarage HOLD flag is OFF');
++});
++
++Deno.test('unlocked: normal writes to the SG Garage docroot go through on every path', async () => {
++  if (skip()) return;
++  docroot();
++  const w1 = await safeWriteRemoteText('/new-article.html', '<h1>new</h1>');
++  if (!w1.verified || !state.files.has('/new-article.html')) throw new Error('new file not written');
++  const w2 = await safeWriteRemoteText('/index.html', '<h1>SGG v2</h1>', { expectedSha256: sha256(Buffer.from('<h1>SGG</h1>')) });
++  if (!w2.verified) throw new Error('overwrite not verified');
++  await withFtp((c: any) => c.uploadFrom(new Blob(['x']).stream(), '/articles/b.html'));
++  await withFtp((c: any) => c.rename('/old.html', '/renamed.html'));
++  await withFtp((c: any) => c.ensureDir('/newdir'));
++  await withFtp((c: any) => c.send('SITE CHMOD 644 /index.html'));
++  for (const f of ['/articles/b.html', '/renamed.html']) if (!state.files.has(f)) throw new Error('missing ' + f);
++  const r1 = await ftpWriteFile(req({ path: '/articles/a.html', content: 'a2', expected_sha256: sha256(Buffer.from('a')) }));
++  if (r1.status !== 200) throw new Error('ftpWriteFile status ' + r1.status + ' ' + JSON.stringify(await r1.json()));
++  cmds['u1'] = { id: 'u1', action: 'write', path: '/articles/c.html', content: 'c', status: 'pending', attempts: 0 };
++  const r2 = await websiteCommandWorker(req({ id: 'u1' }));
++  if (r2.status !== 200 || cmds['u1'].status === 'failed') throw new Error('worker status ' + r2.status + ' / ' + cmds['u1'].status);
++  if (!state.files.has('/articles/c.html')) throw new Error('worker write missing');
++  docroot();  // fresh server for the probe (write + read back + remove)
++  const h = await ftpHealthCheck(req({}));
++  if (h.status !== 200) throw new Error('health check (probe write + remove) ' + h.status + ' ' + JSON.stringify(await h.json()).slice(0, 600));
++  console.log('allowed  new file, overwrite with sha, upload, rename, mkdir, SITE CHMOD, ftpWriteFile 200, worker 200, health probe 200');
++});
++
++Deno.test('unlocked: server config and server code are still never written (every-site rule), 403 + audit', async () => {
++  if (skip()) return;
++  docroot();
++  audit.length = 0;
++  const before = snap();
++  const BAD = ['/.htaccess', '/.htpasswd', '/.user.ini', '/php.ini', '/x.php', '/shell.php.jpg', '/run.cgi', '/a.pl', '/a.py', '/a.sh', '/page.shtml', '/X.PHP '];
++  for (const p of BAD) {
++    const r = await ftpWriteFile(req({ path: p, content: 'x' }));
++    if (r.status !== 403) throw new Error(p + ': expected 403, got ' + r.status);
++  }
++  let err: any = null;
++  try { await withFtp((c: any) => c.uploadFromDir('/tmp', '/')); } catch (e) { err = e; }
++  if (err?.name !== 'NeverWriteError') throw new Error('folder upload should be refused');
++  if (snap() !== before) throw new Error('server changed');
++  const rows = audit.filter((a) => a.stage === 'never-write-refused');
++  if (rows.length !== BAD.length) throw new Error('expected ' + BAD.length + ' never-write rows, got ' + rows.length);
++  console.log('refused  ' + BAD.length + ' config/code names (403, ' + rows.length + ' audit rows) + folder upload; server unchanged');
++});
++
++Deno.test('unlocked: raw FTP commands and unsafe paths still refused, with messages that do not claim the HOLD is ON', async () => {
++  if (skip()) return;
++  docroot();
++  const before = snap();
++  for (const fn of [
++    () => withFtp(async (c: any) => c.ftp.request('STOR /index.html')),
++    () => withFtp((c: any) => c.remove('~/index.html')),
++    () => withFtp((c: any) => c.remove('\\index.html')),
++  ]) {
++    let err: any = null;
++    try { await fn(); } catch (e) { err = e; }
++    if (!err) throw new Error('expected a refusal');
++    if (/HOLD is ON/.test(String(err.message))) throw new Error('misleading message: ' + err.message);
++  }
++  if (snap() !== before) throw new Error('server changed');
++  console.log('refused  raw ftp.request, ~ path, backslash path (neutral messages)');
++});

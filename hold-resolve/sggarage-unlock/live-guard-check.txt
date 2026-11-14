@@ -1,0 +1,12 @@
+Bluehost Bridge liveGuard (saved code, git 38e9ed2) run on SG Garage cases, 14 Nov 2026 ~11:15pm SGT, Bridge sandbox, no writes.
+Today's 3 server-side edits replayed as Bridge writes (before = source 9ce0077, after = live bytes):
+articles/car-engine-knocking-noise-singapore.html => REFUSED: JSON-LD would lose or change 4 value(s) (FAQ answer text)
+car-servicing-repair/index.html                   => REFUSED: JSON-LD would lose or change 1 value(s) (FAQ "Can I walk in?" answer)
+index.html                                        => ALLOWED
+Other replacements:
+sitemap.xml (one URL added)   => REFUSED: replacing this file type needs an override
+article-cards.json            => REFUSED: replacing this file type needs an override
+robots.txt                    => REFUSED: replacing this file type needs an override
+assets/site.css               => ALLOWED
+new page articles/new.html    => ALLOWED
+delete old.html               => REFUSED: delete of a live file is blocked
