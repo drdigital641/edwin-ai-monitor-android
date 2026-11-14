@@ -863,3 +863,69 @@ ARTICLES.append({
  ],
  "confirm": []
 })
+
+# Night article 15 Nov 2026 (odd night, worker h)
+ARTICLES.append({
+ "slug": "steering-wheel-shakes-when-braking-bmw-mercedes-audi-singapore",
+ "name": "Steering Wheel Shakes When Braking",
+ "card": "Why the steering wheel or brake pedal can shake when you brake in a BMW, Mercedes-Benz or Audi, what to note, and when to stop driving.",
+ "title": "Steering Wheel Shakes When Braking: Causes",
+ "desc": "Steering wheel or pedal shaking when you brake in a BMW, Mercedes-Benz or Audi? See common causes, what to note, when to stop driving and what a brake check covers.",
+ "h1": "Steering Wheel Shakes When Braking: What Could Cause It?",
+ "answer": "A steering wheel that shakes when you brake usually points to the brake discs, a wheel or tyre issue, or worn suspension parts. It is most often noticed at higher speed. Note when it happens, then have the discs, wheels and suspension inspected. If the pedal feels soft or the car pulls hard to one side, stop safely.",
+ "date": "2026-11-15",
+ "updated": "15 Nov 2026",
+ "service": "/services/brake-suspension-repair/",
+ "minutes": 4,
+ "brand": "BMW, Mercedes-Benz and Audi",
+ "sections": [
+  {
+   "h2": "What does a shaking steering wheel when braking feel like?",
+   "html": "<p>Owners describe a shudder through the steering wheel when they press the brake, a pulsing or vibrating brake pedal, or a shake that appears mainly from higher speed and eases as the car slows. Some feel it through the whole car. Where you feel it helps a workshop narrow down the cause.</p>"
+  },
+  {
+   "h2": "What can cause the steering wheel to shake when braking?",
+   "html": "<table>\n<thead><tr><th>Possible cause</th><th>What you may notice</th><th>How it is checked</th></tr></thead>\n<tbody>\n<tr><td>Brake disc condition (uneven wear or warping)</td><td>Shake or pulsing pedal only when braking</td><td>Disc runout and thickness are measured</td></tr>\n<tr><td>Wheel or tyre issue</td><td>Vibration that may also appear without braking</td><td>Wheels and tyres are inspected</td></tr>\n<tr><td>Worn suspension parts</td><td>Shake with clunks over bumps or a loose feel</td><td>Links, bushes and joints are checked for play</td></tr>\n<tr><td>Sticking brake caliper</td><td>Pull to one side, a hot wheel, or a burning smell</td><td>Calipers and brake hoses are inspected</td></tr>\n</tbody></table>\n<p>The shake alone does not say which one it is, so the parts are checked rather than guessed.</p>"
+  },
+  {
+   "h2": "What should you note before booking?",
+   "html": "<ul>\n<li>Does it happen only when braking, or also while driving normally?</li>\n<li>Does it appear at higher speed, at low speed, or both?</li>\n<li>Do you feel it in the steering wheel, the pedal or the whole car?</li>\n<li>Has the car had new tyres, wheels or brake work recently?</li>\n<li>Does the car pull to one side, or make noise when braking?</li>\n</ul>\n<p>These answers help the workshop point the inspection in the right direction.</p>"
+  },
+  {
+   "h2": "What does a brake inspection cover?",
+   "html": "<p>We remove the wheels and look at the discs for ridges, cracks, warping or heavy corrosion, and at pad thickness and wear pattern. We inspect calipers, hoses and lines, check the brake fluid, and look at the wheels, tyres and suspension parts that move. We explain which items are fine, which are close to their limit and which need work now, then quote the repair. You approve it before work starts.</p>"
+  },
+  {
+   "h2": "When should you stop driving?",
+   "html": "<p>If the shake is mild and the car brakes normally, drive gently and have it inspected soon. Stop in a safe place and ask for help if the brake pedal feels soft or sinks, the car pulls hard to one side, you hear grinding, or the shake is getting worse quickly. Do not keep driving normally with brakes that feel unsafe.</p>"
+  },
+  {
+   "h2": "Where can you get it checked?",
+   "html": "<p>Send us your car model and the details you noted on WhatsApp at +65 8221 5502, or use the <a href=\"/contact-us/\">contact page</a>. We are at 143 Bukit Timah Road, Newton Circus, inside the Shell station. Read about <a href=\"/services/brake-suspension-repair/\">brake and suspension repair</a> and how a check works, and see the <a href=\"/european-car-service-schedule-singapore/\">European car service schedule</a>, as brake and suspension checks are also useful during a regular service.</p>"
+  }
+ ],
+ "faqs": [
+  {
+   "q": "Why does my steering wheel shake when I brake?",
+   "a": "Common causes are brake discs with uneven wear or warping, a wheel or tyre issue, or worn suspension parts. The shake alone does not say which, so the discs, wheels and suspension are inspected."
+  },
+  {
+   "q": "Is it safe to drive with a shaking steering wheel when braking?",
+   "a": "If the car brakes normally, drive gently and have it inspected soon. If the pedal is soft, the car pulls hard to one side, or you hear grinding, stop in a safe place and get help."
+  },
+  {
+   "q": "Is a shake only when braking a brake problem or a tyre problem?",
+   "a": "A shake that appears only when you brake usually points to the brakes, while a vibration that is also there without braking can point to a wheel or tyre issue. A check of both settles it."
+  },
+  {
+   "q": "What should I tell the workshop about the shake?",
+   "a": "Say whether it happens only when braking, at what speed, whether you feel it in the wheel or the pedal, and whether tyres or brake work were changed recently. Any noise or pulling to one side also helps."
+  }
+ ],
+ "related": [
+  "/services/brake-suspension-repair/",
+  "/european-car-service-schedule-singapore/",
+  "/contact-us/"
+ ],
+ "confirm": []
+})
