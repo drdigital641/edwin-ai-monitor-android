@@ -1,0 +1,68 @@
+# SG Garage / Edwin Garage - Ang Mo Kio, Singapore
+# https://www.sggarage.com/
+
+User-agent: Googlebot
+Allow: /
+Disallow: /submit-article.php
+Disallow: /test.html
+Disallow: /articles/test*
+
+User-agent: Googlebot-Image
+Allow: /
+
+User-agent: Bingbot
+Allow: /
+
+User-agent: Slurp
+Allow: /
+
+User-agent: DuckDuckBot
+Allow: /
+
+User-agent: Baiduspider
+Allow: /
+
+User-agent: YandexBot
+Allow: /
+
+User-agent: facebot
+Allow: /
+
+User-agent: ia_archiver
+Allow: /
+
+User-agent: GPTBot
+Allow: /
+
+User-agent: ChatGPT-User
+Allow: /
+
+User-agent: OAI-SearchBot
+Allow: /
+
+User-agent: Google-Extended
+Allow: /
+
+User-agent: PerplexityBot
+Allow: /
+
+User-agent: ClaudeBot
+Allow: /
+
+User-agent: anthropic-ai
+Allow: /
+
+User-agent: Applebot
+Allow: /
+
+User-agent: CCBot
+Allow: /
+
+User-agent: *
+Allow: /
+Disallow: /submit-article.php
+Disallow: /test.html
+Disallow: /articles/test*
+
+Sitemap: https://www.sggarage.com/sitemap.xml
+Sitemap: https://www.sggarage.com/articles/sitemap.xml
