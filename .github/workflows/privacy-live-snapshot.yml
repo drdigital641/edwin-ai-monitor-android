@@ -1,0 +1,22 @@
+name: Privacy job - live snapshot (read-only)
+on:
+  push:
+    branches: [ "claude/project-thread-dtzp29" ]
+    paths: [ "privacy-job/run.txt", ".github/workflows/privacy-live-snapshot.yml" ]
+permissions:
+  contents: write
+jobs:
+  snapshot:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 60
+    steps:
+      - uses: actions/checkout@v4
+      - name: Copy live sites over HTTP (GET only)
+        run: python3 privacy-job/mirror.py $(cat privacy-job/run.txt)
+      - name: Commit snapshot to this branch
+        run: |
+          git config user.name "snapshot-bot"
+          git config user.email "actions@users.noreply.github.com"
+          git add privacy-job/live privacy-job/manifest
+          git commit -q -m "Privacy job: live HTTP snapshot $(date -u +%Y-%m-%dT%H:%MZ)" || exit 0
+          for i in 1 2 3; do git pull --rebase -q origin claude/project-thread-dtzp29 && git push -q origin HEAD:claude/project-thread-dtzp29 && break; sleep 5; done
