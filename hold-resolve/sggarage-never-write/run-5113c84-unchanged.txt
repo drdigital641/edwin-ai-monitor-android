@@ -1,0 +1,60 @@
+running 6 tests from ./tests/sggHold.test.ts
+hold flag fails closed ...
+------- output -------
+ok      flag missing/malformed/unreadable = ON; only on:false = OFF
+----- output end -----
+hold flag fails closed ... ok (974µs)
+FTP root IS the SG Garage docroot: every write, rename and delete refused ...
+------- output -------
+refused  safeWriteRemoteText overwrite /index.html
+refused  safeWriteRemoteText new /new.html
+refused  safeWriteRemoteText /.htaccess
+refused  backup folder /_chatgpt_backups is inside the docroot too
+refused  remove
+refused  rename
+refused  removeDir
+refused  clearWorkingDir
+refused  ensureDir (mkdir)
+refused  send DELE
+refused  send SITE CHMOD
+refused  client.ftp.request raw STOR
+refused  uploadFromDir
+refused  a method the guard does not know is treated as a write
+allowed  read /robots.txt
+allowed  send NOOP / SIZE
+----- output end -----
+FTP root IS the SG Garage docroot: every write, rename and delete refused ... ok (12ms)
+FTP root is the account home: carbonfibre refused at any depth, other sites still work ...
+------- output -------
+refused  /public_html/carbonfibre/index.html
+refused  relative path after cd
+refused  .. walk into carbonfibre
+refused  rename OUT of carbonfibre
+refused  rename INTO carbonfibre
+refused  backslash path
+refused  ~ path
+allowed  write outside SG Garage (/_cleanic_control/validation/probe.txt) still works
+----- output end -----
+FTP root is the account home: carbonfibre refused at any depth, other sites still work ... ok (4ms)
+login folder is the docroot, or the check cannot run: refused (fail closed) ...
+------- output -------
+refused  relative write in a login folder that has the SG Garage marker
+refused  root listing fails -> cannot prove it is not SG Garage
+----- output end -----
+login folder is the docroot, or the check cannot run: refused (fail closed) ... ok (663µs)
+hold OFF (explicit on:false) lets the same write through, so the guard is the only thing blocking ...
+------- output -------
+allowed  write with hold explicitly off (guardClient test hook only)
+----- output end -----
+hold OFF (explicit on:false) lets the same write through, so the guard is the only thing blocking ... ok (1ms)
+entry functions: 423, failed command, and a hold-refused ConnectionAudit row for each refusal ...
+------- output -------
+logged   ftpWriteFile: SG GARAGE HOLD is ON (flag "sggarage"): ensureDir /_chatgpt_backups refused; nothing was changed. Only Edw
+logged   ftpHealthCheck: SG GARAGE HOLD is ON (flag "sggarage"): ensureDir /_cleanic_control/validation refused; nothing was chan
+logged   websiteCommandWorker c1: SG GARAGE HOLD is ON (flag "sggarage"): ensureDir /_chatgpt_backups refused; nothing was change
+allowed  ftpHealthCheck write_test:false (list + read only)
+----- output end -----
+entry functions: 423, failed command, and a hold-refused ConnectionAudit row for each refusal ... ok (6ms)
+
+ok | 6 passed | 0 failed (29ms)
+
