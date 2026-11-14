@@ -81,6 +81,7 @@ WEBSITE_NODE = {"@type": "WebSite", "@id": SITE + "/#website", "url": SITE + "/"
                 "alternateName": ["Page One SG", "PageOne Singapore", "pageonesingapore.com"],
                 "inLanguage": "en-SG", "publisher": {"@id": BIZ_ID}}
 AIV_UPDATED = "2026-10-19"  # AI-visibility release: at-a-glance blocks and plain answers
+LLMS_LASTMOD_OVERRIDE = {}  # page URL -> "Last updated" shown in llms-full.txt when it must differ from LASTMOD
 LASTMOD = {}     # page URL -> dateModified, for the sitemap (bridge/lastmod.json)
 LLMS_PAGES = []  # (url, title, description, [(question, answer)]) for llms-full.txt
 
@@ -97,6 +98,16 @@ def crumbs_ld(name, url, parent=None):
         "@type": "BreadcrumbList",
         "itemListElement": [{"@type": "ListItem", "position": i + 1, "name": n, "item": SITE + u} for i, (n, u) in enumerate(trail)],
     }
+
+
+# Live meta descriptions (13 Nov 2026, edited on the server, ROUND 4): only <meta name="description"> changed on
+# these pages; og/twitter/JSON-LD descriptions kept the older text. Kept here so a rebuild reproduces live exactly.
+META_DESC_LIVE = {
+    "pricing/index.html": "SEO pricing for Singapore small businesses: %%PLAN%%/month with a free website, Google Maps and AI search setup, articles every 2 days. No setup fee or contract.",
+    "seo-services-singapore/index.html": "Comparing SEO services in Singapore? Agency retainers, an in-house SEO executive or Page One at %%PLAN%%/month: typical costs, what you get, when each makes sense.",
+    "results/sg-car-workshop-directory/index.html": "How SG Car Workshop, the listings site run by Page One Singapore, matches drivers to workshops, keeps paid placements out of ranking and offers free listings.",
+    "free-website-check/index.html": "Free SEO check for your website: Google basics, mobile, speed and ChatGPT readiness, with a score out of 100 and plain-English fixes. No sign-up, under a minute",
+}
 
 
 def page(path, title, desc, schemas, body, crumb=None, robots="index, follow, max-image-preview:large", updated=None, head_extra="", foot_extra="", crumb_parent=None):
@@ -137,7 +148,7 @@ def page(path, title, desc, schemas, body, crumb=None, robots="index, follow, ma
   <script>if(/(^|\\.)pageonesingapore\\.com$/.test(location.hostname)&&(location.protocol==="http:"||location.hostname!=="pageonesingapore.com"))location.replace("https://pageonesingapore.com"+location.pathname+location.search+location.hash);</script>
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>{title}</title>
-  <meta name="description" content="{desc}">
+  <meta name="description" content="{META_DESC_LIVE.get(path, desc)}">
   <meta name="robots" content="{robots}">
   <link rel="canonical" href="{SITE}{current}">
   <link rel="icon" href="/favicon.ico" sizes="48x48">
@@ -233,7 +244,20 @@ def page(path, title, desc, schemas, body, crumb=None, robots="index, follow, ma
         <a href="/terms/">Terms of service</a>
       </div>
     </div>
-    <div class="wrap footer-bottom">
+    <style>
+/* Google review footer button (2026-11-13) */
+.p1-foot-review{{margin:16px 0 0}}
+.p1-foot-review a{{
+  display:inline-flex;align-items:center;justify-content:center;box-sizing:border-box;
+  min-height:44px;min-width:44px;padding:10px 18px;
+  border:1.5px solid currentColor;border-radius:999px;
+  text-decoration:none!important;font-weight:700;line-height:1.25;color:inherit
+}}
+.p1-foot-review a:hover{{opacity:.88}}
+footer.foot .p1-foot-review{{margin:12px 0 8px}}
+</style>
+<p class="p1-foot-review"><a href="/review.html?business=pageone" target="_blank" rel="noopener">Leave us a Google review</a></p>
+<div class="wrap footer-bottom">
       <p class="fine">© <span id="year">2026</span> Page One Singapore. All rights reserved. Page One Singapore is a project of Snap Commercial Pte. Ltd. (UEN 202209904W).</p>
     </div>
   </footer>
@@ -1602,7 +1626,7 @@ _out = ["# Page One Singapore: full guide for AI assistants", "",
 _out += [f"- {k}: {_plain(_re.sub(r'<a [^>]*href="(/[^"]*)"[^>]*>(.*?)</a>', lambda m: m.group(2) + ' (' + SITE + m.group(1) + ')', v))}" for k, v in GLANCE_ROWS]
 _out += ["- Contact: WhatsApp " + WA_DISPLAY + " (https://wa.me/" + WA + ")", "- Google Business Profile: " + GBP, ""]
 for _u, _t, _d, _qa in _pages:
-    _out += [f"## {_plain(_t)}", f"URL: {SITE}{_u}", f"Last updated: {LASTMOD[_u]}", "", _plain(_d)]
+    _out += [f"## {_plain(_t)}", f"URL: {SITE}{_u}", f"Last updated: {LLMS_LASTMOD_OVERRIDE.get(_u, LASTMOD[_u])}", "", _plain(_d)]
     if _qa:
         _out.append("")
         for _q, _a in _qa:

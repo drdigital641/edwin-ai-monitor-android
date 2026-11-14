@@ -7,7 +7,8 @@
 # providers or their prices, no ranking promises. Run from build.py (exec) after budget.py (uses affordable.py helpers).
 
 AFF_URL = "/affordable-seo-services-singapore/"
-AFF_UPDATED = "2026-10-25"
+AFF_UPDATED = "2026-10-25"   # datePublished; llms-full "Last updated" (live 14 Nov keeps 2026-10-25 there)
+AFF_MODIFIED = "2026-11-14"  # ROUND 4 (13-14 Nov, edited on the live server): dateModified + hero "Updated" line
 GOOGLE_DO_I_NEED_SEO = "https://developers.google.com/search/docs/fundamentals/do-i-need-seo"
 
 AFF_ANSWER = ("Affordable SEO services in Singapore are ongoing monthly SEO a small business can keep paying for. "
@@ -39,6 +40,10 @@ AFF_FAQ = [
     ("Do I need a website first?",
      "No. If you don't have a website yet, we build one at no extra charge as part of the %%PLAN%% a month, usually live within 7 days of getting "
      "your details and photos. If you already have one, we fix its on-page technical SEO, or redesign it free if you ask."),
+    ("Is there a monthly SEO plan in Singapore with no contract?",
+     "Yes. Page One's Get Found plan is %%PLAN%% a month with no setup fee and no contract; you can cancel anytime, and your domain stays in your name. "
+     "The %%PLAN%% price is for anyone who registers by 31 Dec 2026. Whichever provider you compare, ask for the minimum term and the monthly price "
+     "in writing before the first invoice."),
     ("Do you guarantee page one on Google?",
      "No. Google decides rankings, so no honest provider can guarantee them. Be careful of any affordable SEO package that does. "
      "We document the work and you see your own Google numbers in Search Console."),
@@ -77,7 +82,7 @@ page(AFF_URL.strip("/") + "/index.html",
        "description": AFF_ANSWER,
        "url": SITE + AFF_URL, "mainEntityOfPage": SITE + AFF_URL, "inLanguage": "en-SG",
        "author": {"@type": "Person", "name": "Edwin", "jobTitle": "Founder, Page One Singapore", "url": SITE + "/about/"},
-       "publisher": PROVIDER, "datePublished": AFF_UPDATED, "dateModified": AFF_UPDATED,
+       "publisher": PROVIDER, "datePublished": AFF_UPDATED, "dateModified": AFF_MODIFIED,
        "about": ["Affordable SEO services", "Small business SEO", "SEO packages Singapore"],
        "image": SITE + "/images/og-%%PLAN_NUM%%.png"},
       _faq_ld(AFF_FAQ), _price_ld(AFF_URL)],
@@ -86,7 +91,7 @@ page(AFF_URL.strip("/") + "/index.html",
           AFF_ANSWER,
           '<p class="hero-price"><b>%%PLAN%%</b>/month · <span class="intro-tag">Register by 31 Dec 2026</span> · no setup fee · no contract · '
           '<a class="link" href="https://wa.me/6597856612" target="_blank" rel="noopener">WhatsApp +65 9785 6612</a></p>\n'
-          f'        <p class="hero-alt">Updated <time datetime="{AFF_UPDATED}">25 October 2026</time> · By <a href="/about/">Edwin, Page One Singapore</a></p>') + f"""
+          f'        <p class="hero-alt">Updated <time datetime="{AFF_MODIFIED}">14 November 2026</time> · By <a href="/about/">Edwin, Page One Singapore</a></p>') + f"""
 
     <section class="section">
       <div class="wrap">
@@ -162,4 +167,9 @@ page(AFF_URL.strip("/") + "/index.html",
     </section>
 
 """ + cta("Affordable SEO that you can check", "Start at %%PLAN%% a month with no setup fee and no contract, or ask Edwin anything on WhatsApp first. No obligation."),
-     crumb="Affordable SEO services", updated=AFF_UPDATED)
+     crumb="Affordable SEO services", updated=AFF_MODIFIED)
+# llms-full.txt on live (14 Nov) was not regenerated with ROUND 4: it keeps "Last updated: 2026-10-25" and the FAQ without the
+# no-contract question. Keep it that way so the build equals live; the sitemap date lives in bridge/lastmod.json (not changed here).
+_aff_llms_q = "Is there a monthly SEO plan in Singapore with no contract?"
+LLMS_PAGES[-1] = (LLMS_PAGES[-1][0], LLMS_PAGES[-1][1], LLMS_PAGES[-1][2], [qa for qa in LLMS_PAGES[-1][3] if qa[0] != _aff_llms_q])
+LLMS_LASTMOD_OVERRIDE[AFF_URL] = AFF_UPDATED
