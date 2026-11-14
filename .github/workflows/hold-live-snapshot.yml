@@ -1,0 +1,25 @@
+name: HOLD live snapshot (read-only)
+# Edwin OK 14 Nov 2026 9:24am SGT. GET-only HTTP copy of live client sites, committed to this branch only.
+on:
+  push:
+    branches: [ "claude/project-thread-xc39oz" ]
+    paths: [ "hold-resolve/mirror/**", ".github/workflows/hold-live-snapshot.yml" ]
+
+permissions:
+  contents: write
+
+jobs:
+  snapshot:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 60
+    steps:
+      - uses: actions/checkout@v4
+      - name: Mirror live sites over HTTP (GET only)
+        run: python3 hold-resolve/mirror/mirror.py $(cat hold-resolve/mirror/run.txt)
+      - name: Commit snapshot to this branch
+        run: |
+          git config user.name "hold-snapshot-bot"
+          git config user.email "actions@users.noreply.github.com"
+          git add hold-resolve/live
+          git commit -q -m "HOLD resolve: live HTTP snapshot $(date -u +%Y-%m-%dT%H:%MZ)" || exit 0
+          for i in 1 2 3; do git pull --rebase -q origin claude/project-thread-xc39oz && git push -q origin HEAD:claude/project-thread-xc39oz && break; sleep 5; done
