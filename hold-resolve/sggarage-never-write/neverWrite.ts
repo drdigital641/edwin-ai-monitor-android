@@ -2,17 +2,20 @@
 // SG Garage HOLD: it applies whether the HOLD is on or off, and it has NO bypass flag. Base44 backend code is live
 // as soon as it is saved, so removing it is a code change that needs security review.
 // This app never creates, changes, renames, moves or deletes a server-config or server-code file:
-// basename .htaccess / .user.ini / php.ini, or any PHP-executable extension, checked case-insensitively after
-// stripping trailing dots and spaces (".htaccess.", "x.PHP ", "x.php..."). A ".php" part in the middle of the name
-// ("shell.php.jpg") is refused too, because Apache can run such files with some handler setups.
+// basename .htaccess / .htpasswd / .user.ini / php.ini, or any server-executable extension (PHP family, .cgi, .pl,
+// .py, .sh, and .shtml whose server-side includes can run commands), checked case-insensitively after stripping
+// trailing dots and spaces (".htaccess.", "x.PHP ", "x.cgi..."). The same extension in the middle of the name
+// ("shell.php.jpg", "run.cgi.txt") is refused too, because Apache can run such files with some handler setups.
+// Matches the Bluehost Bridge NEVER list (security review "SGG NEVER-WRITE ADD 1114-1125").
 export class NeverWriteError extends Error {
   status = 403;
   constructor(message: string) { super(message); this.name = 'NeverWriteError'; }
 }
 
-const BLOCKED_NAMES = new Set(['.htaccess', '.user.ini', 'php.ini']);
-const PHP_EXT = /\.(php\d*|phtml|pht|phps|phar)$/;
-const PHP_PART = /\.(php\d*|phtml|pht|phps|phar)\./;
+const BLOCKED_NAMES = new Set(['.htaccess', '.htpasswd', '.user.ini', 'php.ini']);
+const CODE = '(php\\d*|phtml|pht|phps|phar|cgi|pl|py|sh|shtml)';
+const CODE_EXT = new RegExp('\\.' + CODE + '$');
+const CODE_PART = new RegExp('\\.' + CODE + '\\.');
 
 // Returns why a basename may never be written, or null.
 export function neverWriteReason(path: unknown): string | null {
@@ -21,7 +24,7 @@ export function neverWriteReason(path: unknown): string | null {
   const bare = raw.toLowerCase().replace(/[\s.]+$/u, '');  // drop trailing dots and spaces: ".htaccess." -> ".htaccess"
   if (!bare) return null;
   if (BLOCKED_NAMES.has(bare)) return 'server config file (' + raw + ')';
-  if (PHP_EXT.test(bare) || PHP_PART.test(bare + '.')) return 'server code file (' + raw + ')';
+  if (CODE_EXT.test(bare) || CODE_PART.test(bare + '.')) return 'server code file (' + raw + ')';
   return null;
 }
 

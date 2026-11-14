@@ -1,0 +1,8 @@
+# SGG NEVER-WRITE ADD 1114-1125: deno test ... tests/  (copy b = 5113c84 HOLD diff only, its own tests, unchanged)
+hold flag fails closed ... ok (907µs)
+FTP root IS the SG Garage docroot: every write, rename and delete refused ... ok (13ms)
+FTP root is the account home: carbonfibre refused at any depth, other sites still work ... ok (5ms)
+login folder is the docroot, or the check cannot run: refused (fail closed) ... ok (1ms)
+hold OFF (explicit on:false) lets the same write through, so the guard is the only thing blocking ... ok (1ms)
+entry functions: 423, failed command, and a hold-refused ConnectionAudit row for each refusal ... ok (7ms)
+ok | 6 passed | 0 failed (32ms)

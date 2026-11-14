@@ -1,0 +1,20 @@
+# SGG NEVER-WRITE ADD 1114-1125: deno test --no-check --allow-env --import-map tests/importmap.json tests/  (copy nw1, HOLD ON)
+# Result and log lines (full log kept in the SgGarage Controller sandbox /tmp/h1/nw1out/run-hold-on.txt)
+SG Garage HOLD flag in this copy: ON (fake server = a non-SG Garage folder)
+ok       61 blocked variants, 23 normal names allowed
+name rule: every blocked variant is caught, normal names are not ... ok (1ms)
+refused  1045 write attempts across 61 names; server bytes unchanged after each
+every FTP write path refuses blocked names before any byte is sent ... ok (93ms)
+refused  ftpWriteFile x10 (403) + websiteCommandWorker x10 (403, command failed); 20 audit rows, e.g. ftpWriteFile: NEVER-WRITE: write /.htaccess refused: this app never writes, renames, moves or dele
+entry functions refuse with 403, mark the command failed and log never-write-refused ... ok (8ms)
+allowed  23 safe writes (overwrites with backups) + png upload + rename + SITE CHMOD on .html + ftpHealthCheck probe write/remove
+normal .html/.css/.js/image writes still work (only the never-write block can refuse here) ... ok (12ms)
+hold flag fails closed ... ok (1ms)
+refused  safeWriteRemoteText /.htaccess (NeverWriteError)
+refused  uploadFromDir (never-write refuses all folder uploads since 1114-1110) (NeverWriteError)
+FTP root IS the SG Garage docroot: every write, rename and delete refused ... ok (12ms)
+FTP root is the account home: carbonfibre refused at any depth, other sites still work ... ok (6ms)
+login folder is the docroot, or the check cannot run: refused (fail closed) ... ok (1ms)
+hold OFF (explicit on:false) lets the same write through, so the guard is the only thing blocking ... ok (1ms)
+entry functions: 423, failed command, and a hold-refused ConnectionAudit row for each refusal ... ok (6ms)
+ok | 10 passed | 0 failed (237ms)

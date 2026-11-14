@@ -4,8 +4,10 @@ Security review "SGG NEVER-WRITE 1114-1110", 14 Nov 2026. App: SgGarage Controll
 Nothing was saved in any Base44 app, no checkpoint, nothing published, every HOLD flag stays ON.
 
 ## What it blocks
-Every FTP write path in the app refuses a target whose basename is `.htaccess`, `.user.ini` or `php.ini`, or that is
-PHP code: `.php`, `.php3-8`, `.phtml`, `.pht`, `.phps`, `.phar` anywhere as an extension (so `shell.php.jpg` is refused too),
+Every FTP write path in the app refuses a target whose basename is `.htaccess`, `.htpasswd`, `.user.ini` or `php.ini`, or that is
+server code: `.php`, `.php3-8`, `.phtml`, `.pht`, `.phps`, `.phar`, `.cgi`, `.pl`, `.py`, `.sh`, `.shtml` anywhere as an extension
+(so `shell.php.jpg` and `run.cgi.txt` are refused too). `.htpasswd` and `.cgi/.pl/.py/.sh/.shtml` were added in
+"SGG NEVER-WRITE ADD 1114-1125" to match the Bluehost Bridge NEVER list (`.shtml` because server-side includes can run commands),
 case-insensitive, after removing trailing dots and spaces, with backslashes read as slashes.
 
 Paths covered: ftpWriteFile / safeWriteRemoteText, websiteCommandWorker, ftpHealthCheck probe write and remove,
@@ -20,11 +22,27 @@ raw STOR / APPE / DELE / RNFR / RNTO / SITE, and the /_chatgpt_backups backup wr
   command marked failed, ConnectionAudit row `stage: never-write-refused`. Never retried.
 
 ## Files
+- `never-write-add-delta.diff` (1114-1125) adds `.htpasswd` and `.cgi/.pl/.py/.sh/.shtml` on top of `sggarage-never-write.diff`.
+  Apply order: 5113c84 HOLD diff, then `sggarage-never-write.diff`, then `never-write-add-delta.diff`.
+  `neverWrite.ts` and `neverWrite.test.ts` in this folder are the final versions (after the delta).
 - `sggarage-never-write.diff` applies ON TOP of the HOLD diff `hold-resolve/sggarage-controller-hold/sggarage-controller-hold.diff` (commit 5113c84). Kept separate from the guard set.
 - `neverWrite.ts` (new shared/neverWrite.ts), `neverWrite.test.ts` (fake-FTP tests).
 - The 5113c84 HOLD test got two widened assertions (`refusedAny`: HoldError OR NeverWriteError) for the `/.htaccess` and `uploadFromDir` cases, because the never-write block now refuses them first. All other HOLD assertions unchanged.
 
-## Test results (deno, fake FTP, no network)
+## Test results after the 1114-1125 addition (runs-add-1114-1125/)
+| Run | Passed | Failed |
+|---|---|---|
+| HOLD on, full suite (4 never-write + 6 HOLD) | 10 | 0 |
+| HOLD off (scratch copy, SG Garage docroot), never-write tests | 4 | 0 |
+| Unchanged 5113c84 code + its own tests | 6 | 0 |
+
+1045 write attempts across 61 blocked variants (29 earlier + 32 new: .htpasswd x5, .cgi x6, .pl x5, .py x5, .sh x5, .shtml x6,
+each with case, trailing dot/space and mid-name forms) refused on every write path, server bytes unchanged after each, no
+backup written. Also: existing /.htpasswd and /page.shtml overwrite with the right sha refused, page.shtml.<stamp>.bak refused.
+Entry functions: ftpWriteFile x10 and the worker x10 return 403, 20 audit rows. 23 normal names (incl. .htpasswd-help.txt,
+cgi-guide.html, perl.html, python.html, shop.html, x.pyc, x.plist, push.js, flash.sharp.css) still write with HOLD off.
+
+## Test results 1114-1110 (first version, deno, fake FTP, no network)
 | Run | Passed | Failed |
 |---|---|---|
 | HOLD on, full suite (4 never-write + 6 HOLD) | 10 | 0 |
