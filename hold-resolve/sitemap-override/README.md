@@ -44,5 +44,6 @@ Security and Privacy Officer review and then Edwin's "save".
   LIVE copies of these three are newer than source, so any line added by hand on live and not produced by the
   generator will be replaced. Backups from 22:09 exist (above).
 - Client folders: the publisher only writes a client file that is pinned in clientAssets.ts and whose recorded state sha
-  differs from the pin sha. Today only Jacky (`preview/dmts/sitemap.xml`, `preview/dmts/llms.txt`) has these files pinned;
-  Star, Klar, CSKA and Ben sitemap/llms are not pinned, so for them the override only matters once a pin is added.
+  differs from the pin sha. Today Jacky (`preview/dmts/sitemap.xml`, `preview/dmts/llms.txt`) and CSKA
+  (`preview/cska-auto/sitemap.xml`, `preview/cska-auto/llms.txt`) have these files pinned; Star, Klar and Ben
+  sitemap/llms are not pinned, so for them the override only matters once a pin is added. No client sitemap.txt is pinned.
