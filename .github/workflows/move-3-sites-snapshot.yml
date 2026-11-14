@@ -1,0 +1,26 @@
+name: Move 3 sites - live snapshot (read-only)
+# Edwin's brief 14 Nov 2026 "Move K Tech, Benz World, Li Lian to Bridge": pull each live site into source exactly as served.
+# GET-only HTTP copy, committed to this branch only. Never writes to any server.
+on:
+  push:
+    branches: [ "claude/project-thread-pcpp95" ]
+    paths: [ "move-3-sites/run.txt", ".github/workflows/move-3-sites-snapshot.yml" ]
+
+permissions:
+  contents: write
+
+jobs:
+  snapshot:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 60
+    steps:
+      - uses: actions/checkout@v4
+      - name: Copy live sites over HTTP (GET only)
+        run: python3 move-3-sites/mirror.py $(cat move-3-sites/run.txt)
+      - name: Commit snapshot to this branch
+        run: |
+          git config user.name "hold-snapshot-bot"
+          git config user.email "actions@users.noreply.github.com"
+          git add autoseo-clients pageone-site move-3-sites/live
+          git commit -q -m "Move 3 sites: live HTTP snapshot $(date -u +%Y-%m-%dT%H:%MZ)" || exit 0
+          for i in 1 2 3; do git pull --rebase -q origin claude/project-thread-pcpp95 && git push -q origin HEAD:claude/project-thread-pcpp95 && break; sleep 5; done
