@@ -166,6 +166,7 @@ def page(path, title, desc, schemas, body, crumb=None, robots="index, follow, ma
   <meta property="og:image:width" content="1200">
   <meta property="og:image:height" content="630">
   <meta property="og:image:alt" content="Page One Singapore: get found on Google and AI search from %%PLAN%% a month">
+  <meta property="og:image:secure_url" content="{SITE}/images/og-%%PLAN_NUM%%.png">
   <meta property="og:locale" content="en_SG">
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="{title}">
