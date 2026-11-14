@@ -1,0 +1,142 @@
+------- pre-test output -------
+SG Garage HOLD flag in this copy: OFF (fake server = the SG Garage docroot)
+----- pre-test output end -----
+running 4 tests from ./tests/neverWrite.test.ts
+name rule: every blocked variant is caught, normal names are not ...
+------- output -------
+ok       61 blocked variants, 23 normal names allowed
+----- output end -----
+name rule: every blocked variant is caught, normal names are not ... ok (1ms)
+every FTP write path refuses blocked names before any byte is sent ...
+------- output -------
+refused  1045 write attempts across 61 names; server bytes unchanged after each
+----- output end -----
+every FTP write path refuses blocked names before any byte is sent ... ok (93ms)
+entry functions refuse with 403, mark the command failed and log never-write-refused ...
+------- output -------
+refused  ftpWriteFile x10 (403) + websiteCommandWorker x10 (403, command failed); 20 audit rows, e.g. ftpWriteFile: NEVER-WRITE: write /.htaccess refused: this app never writes, renames, moves or deletes a server
+----- output end -----
+entry functions refuse with 403, mark the command failed and log never-write-refused ... ok (7ms)
+normal .html/.css/.js/image writes still work (only the never-write block can refuse here) ...
+------- output -------
+allowed  23 safe writes (overwrites with backups) + png upload + rename + SITE CHMOD (outside SG Garage only) + ftpHealthCheck probe write/remove
+----- output end -----
+normal .html/.css/.js/image writes still work (only the never-write block can refuse here) ... ok (11ms)
+running 6 tests from ./tests/sggHold.test.ts
+hold flag fails closed ...
+------- post-test output -------
+ok      flag missing/malformed/unreadable = ON; only on:false = OFF
+----- post-test output end -----
+hold flag fails closed ... ok (1ms)
+FTP root IS the SG Garage docroot: every write, rename and delete refused ...
+------- post-test output -------
+EXPECTED with the SG Garage HOLD OFF: "FTP root IS the SG Garage docroot" skipped (refusals only apply while it is ON)
+----- post-test output end -----
+FTP root IS the SG Garage docroot: every write, rename and delete refused ... ok (309µs)
+FTP root is the account home: carbonfibre refused at any depth, other sites still work ...
+------- post-test output -------
+EXPECTED with the SG Garage HOLD OFF: "FTP root is the account home" skipped (refusals only apply while it is ON)
+----- post-test output end -----
+FTP root is the account home: carbonfibre refused at any depth, other sites still work ... ok (157µs)
+login folder is the docroot, or the check cannot run: refused (fail closed) ...
+------- post-test output -------
+EXPECTED with the SG Garage HOLD OFF: "login folder is the docroot, or the check cannot run" skipped (refusals only apply while it is ON)
+----- post-test output end -----
+login folder is the docroot, or the check cannot run: refused (fail closed) ... ok (123µs)
+hold OFF (explicit on:false) lets the same write through, so the guard is the only thing blocking ...
+------- post-test output -------
+allowed  write with hold explicitly off (guardClient test hook only)
+----- post-test output end -----
+hold OFF (explicit on:false) lets the same write through, so the guard is the only thing blocking ... ok (6ms)
+entry functions: 423, failed command, and a hold-refused ConnectionAudit row for each refusal ...
+------- post-test output -------
+EXPECTED with the SG Garage HOLD OFF: "entry functions" skipped (refusals only apply while it is ON)
+----- post-test output end -----
+entry functions: 423, failed command, and a hold-refused ConnectionAudit row for each refusal ... ok (188µs)
+running 4 tests from ./tests/sggSideDoor.test.ts
+guard: delete, rename, folder removal, SITE, MFMT and unknown commands refused in the SG Garage docroot (HOLD off) ...
+------- post-test output -------
+refused  remove /index.html
+refused  remove relative index.html
+refused  rename /old.html -> /new.html
+refused  removeDir /articles
+refused  removeEmptyDir /assets
+refused  clearWorkingDir
+refused  send DELE /index.html
+refused  send dele index.html
+refused  send RNFR /old.html
+refused  send RNTO /n.html
+refused  send RMD /articles
+refused  send XRMD /articles
+refused  send SITE CHMOD 644 /index.html
+refused  send SITE CHMOD 777 articles/a.html
+refused  send site chmod 644 index.html
+refused  send SITE UTIME 20200101 /index.html
+refused  send MFMT 20200101000000 /index.html
+refused  send MFCT 20200101000000 /index.html
+refused  send XYZ /index.html
+refused  sendIgnoringError DELE /old.html
+refused  unknown client method
+refused  raw uploadFrom of HTML (skips the HTML check)
+refused  raw uploadFrom of a NEW .htm
+refused  send STOR /index.html
+refused  appendFrom HTML
+refused  send APPE /articles/a.html
+ok       server bytes unchanged after every refusal
+----- post-test output end -----
+guard: delete, rename, folder removal, SITE, MFMT and unknown commands refused in the SG Garage docroot (HOLD off) ... ok (9ms)
+guard: what still works in SG Garage, and other sites are not affected (HOLD off) ...
+------- post-test output -------
+refused  remove another file in the probe folder
+allowed  probe removal, mkdir, css/png/sitemap upload, NOOP, MKD
+refused  remove /public_html/carbonfibre/index.html (account-home root)
+refused  SITE CHMOD on carbonfibre (account-home root)
+allowed  delete, rename, raw HTML upload, SITE CHMOD outside SG Garage (unchanged)
+refused  remove when the SG Garage check cannot run (fail closed)
+----- post-test output end -----
+guard: what still works in SG Garage, and other sites are not affected (HOLD off) ... ok (4ms)
+end to end: HTML overwrite check (title, meta, H1, JSON-LD, FAQ, footer, older date), 403 + audit row ...
+------- post-test output -------
+refused  ftpWriteFile /index.html title change (403)
+refused  ftpWriteFile /index.html meta description change (403)
+refused  ftpWriteFile /index.html H1 change (403)
+refused  ftpWriteFile /index.html JSON-LD value change (403)
+refused  ftpWriteFile /index.html FAQ question lost (403)
+refused  ftpWriteFile /index.html review footer removed (403)
+refused  ftpWriteFile /index.html older than live (403)
+refused  websiteCommandWorker H1 change (403, command failed)
+ok       server unchanged; 8 side-door-refused audit rows
+allowed  HTML body edit (200), new HTML page, sitemap.xml and article-cards.json overwrite (non-HTML: unchanged by this diff)
+allowed  ftpHealthCheck probe write + remove (200)
+----- post-test output end -----
+end to end: HTML overwrite check (title, meta, H1, JSON-LD, FAQ, footer, older date), 403 + audit row ... ok (15ms)
+end to end: never-write still refuses first; a refused write is never retried ...
+------- post-test output -------
+refused  .htaccess (never-write, 403, unchanged)
+----- post-test output end -----
+end to end: never-write still refuses first; a refused write is never retried ... ok (1ms)
+running 4 tests from ./tests/sggUnlocked.test.ts
+flag is OFF in SITE_HOLDS ...
+------- post-test output -------
+ok       sggarage HOLD flag is OFF
+----- post-test output end -----
+flag is OFF in SITE_HOLDS ... ok (848µs)
+unlocked: normal writes to the SG Garage docroot go through on every path ...
+------- post-test output -------
+allowed  new file, HTML overwrite keeping H1, css upload, mkdir, ftpWriteFile 200, worker 200, health probe 200
+----- post-test output end -----
+unlocked: normal writes to the SG Garage docroot go through on every path ... ok (19ms)
+unlocked: server config and server code are still never written (every-site rule), 403 + audit ...
+------- post-test output -------
+refused  12 config/code names (403, 12 audit rows) + folder upload; server unchanged
+----- post-test output end -----
+unlocked: server config and server code are still never written (every-site rule), 403 + audit ... ok (2ms)
+unlocked: raw FTP commands and unsafe paths still refused, with messages that do not claim the HOLD is ON ...
+------- post-test output -------
+refused  raw ftp.request, ~ path, backslash path (neutral messages)
+----- post-test output end -----
+unlocked: raw FTP commands and unsafe paths still refused, with messages that do not claim the HOLD is ON ... ok (605µs)
+
+ok | 18 passed | 0 failed (412ms)
+
+exit 0

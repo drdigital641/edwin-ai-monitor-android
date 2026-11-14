@@ -1,5 +1,7 @@
 # SG Garage: the two SEPARATE diffs left after "SG GARAGE UNLOCK SAVE 1114-2330" (NOT saved)
 
+> **DROPPED** (Edwin 11:30pm SGT 14 Nov, "SG GARAGE OPTION C 1114-2335"): do not save these two diffs. The live guard and the never-write lock stay. Replaced by `../../sggarage-option-c/`.
+
 3e01a2c81 (flags OFF only) was saved at 11:40pm SGT 14 Nov 2026:
 - Bluehost Bridge git 33343ea (on e1d39cf), checkpoint 6af880138a6c7cf41e0e2566. Tests on saved code 45/0.
 - SgGarage Controller git ac87bd6 (on 4f87f50), checkpoint 6af8803f403adb49f721da4b. Tests on saved code 14/0 (never-write still refuses: 1045 attempts / 61 names; 12 config/code names 403).

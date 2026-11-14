@@ -1,0 +1,758 @@
+diff -ruN a/base44/functions/ftpHealthCheck/entry.ts b/base44/functions/ftpHealthCheck/entry.ts
+--- a/base44/functions/ftpHealthCheck/entry.ts	2026-11-14 15:54:56.186059394 +0000
++++ b/base44/functions/ftpHealthCheck/entry.ts	2026-11-14 15:54:56.189343220 +0000
+@@ -3,6 +3,7 @@
+ import { withFtp } from '../../shared/ftpClient.ts';
+ import { HoldError, logHoldRefusal } from '../../shared/siteHold.ts';
+ import { NeverWriteError, logNeverWrite } from '../../shared/neverWrite.ts';
++import { SideDoorError, logSideDoor } from '../../shared/sideDoor.ts';
+ 
+ async function audit(base44: any, stage: string, status: 'pass' | 'fail' | 'warning', detail: string) {
+   try {
+@@ -73,6 +74,10 @@
+     });
+   } catch (error) {
+     const message = error instanceof Error ? error.message : String(error);
++    if (error instanceof SideDoorError) {
++      await logSideDoor(base44, 'ftpHealthCheck', error);
++      return Response.json({ ok: false, controllerVersion: CONTROLLER_VERSION, error: message, side_door: true }, { status: 403 });
++    }
+     if (error instanceof NeverWriteError) {
+       await logNeverWrite(base44, 'ftpHealthCheck', error);
+       return Response.json({ ok: false, controllerVersion: CONTROLLER_VERSION, error: message, never_write: true }, { status: 403 });
+diff -ruN a/base44/functions/ftpWriteFile/entry.ts b/base44/functions/ftpWriteFile/entry.ts
+--- a/base44/functions/ftpWriteFile/entry.ts	2026-11-14 15:54:56.186266836 +0000
++++ b/base44/functions/ftpWriteFile/entry.ts	2026-11-14 15:54:56.189549221 +0000
+@@ -2,6 +2,7 @@
+ import { safeWriteRemoteText } from '../../shared/ftpFileOps.ts';
+ import { HoldError, logHoldRefusal } from '../../shared/siteHold.ts';
+ import { NeverWriteError, logNeverWrite } from '../../shared/neverWrite.ts';
++import { SideDoorError, logSideDoor } from '../../shared/sideDoor.ts';
+ 
+ export default async function(req) {
+   const base44 = createClientFromRequest(req);
+@@ -21,6 +22,10 @@
+     });
+     return Response.json(result);
+   } catch (error) {
++    if (error instanceof SideDoorError) {
++      await logSideDoor(base44, 'ftpWriteFile', error);
++      return Response.json({ error: error.message, side_door: true }, { status: 403 });
++    }
+     if (error instanceof NeverWriteError) {
+       await logNeverWrite(base44, 'ftpWriteFile', error);
+       return Response.json({ error: error.message, never_write: true }, { status: 403 });
+diff -ruN a/base44/functions/websiteCommandWorker/entry.ts b/base44/functions/websiteCommandWorker/entry.ts
+--- a/base44/functions/websiteCommandWorker/entry.ts	2026-11-14 15:54:56.186341986 +0000
++++ b/base44/functions/websiteCommandWorker/entry.ts	2026-11-14 15:54:56.189625372 +0000
+@@ -2,6 +2,7 @@
+ import { listRemoteDirectory, readRemoteText, safeWriteRemoteText } from '../../shared/ftpFileOps.ts';
+ import { HoldError, logHoldRefusal } from '../../shared/siteHold.ts';
+ import { NeverWriteError, logNeverWrite } from '../../shared/neverWrite.ts';
++import { SideDoorError, logSideDoor } from '../../shared/sideDoor.ts';
+ import { createClientFromRequest as __pageOneClient } from 'npm:@base44/sdk';
+ // Security guard (18 Oct 2026): only a signed-in admin, or our own workflow
+ // (which passes the CRON_KEY secret as cron_key), may run this function.
+@@ -144,9 +145,10 @@
+ 
+     if (error instanceof HoldError) await logHoldRefusal(base44, 'websiteCommandWorker ' + (recordId || ''), error);
+     if (error instanceof NeverWriteError) await logNeverWrite(base44, 'websiteCommandWorker ' + (recordId || ''), error);
++    if (error instanceof SideDoorError) await logSideDoor(base44, 'websiteCommandWorker ' + (recordId || ''), error);
+     return Response.json(
+-      { ok: false, error: message, recordId, auditError, hold: error instanceof HoldError ? 'sggarage' : undefined, never_write: error instanceof NeverWriteError || undefined },
+-      { status: error instanceof HoldError ? 423 : error instanceof NeverWriteError ? 403 : 500 }
++      { ok: false, error: message, recordId, auditError, hold: error instanceof HoldError ? 'sggarage' : undefined, never_write: error instanceof NeverWriteError || undefined, side_door: error instanceof SideDoorError || undefined },
++      { status: error instanceof HoldError ? 423 : (error instanceof NeverWriteError || error instanceof SideDoorError) ? 403 : 500 }
+     );
+   }
+ }
+diff -ruN a/base44/shared/ftpClient.ts b/base44/shared/ftpClient.ts
+--- a/base44/shared/ftpClient.ts	2026-11-14 15:54:56.186615468 +0000
++++ b/base44/shared/ftpClient.ts	2026-11-14 15:54:56.189909224 +0000
+@@ -2,6 +2,7 @@
+ import { secrets } from 'base44:runtime';
+ import { HoldError, holdOn, holdMessage, SGG_DIR_SEGMENT, SGG_ROOT_MARKERS } from './siteHold.ts';
+ import { NeverWriteError, assertNotNeverWrite } from './neverWrite.ts';
++import { SideDoorError, sideDoorMessage, PROBE_PATH, HTML_PATH, CHECKED_UPLOADS, ROLLBACK_REMOVES } from './sideDoor.ts';
+ 
+ export function getFtpConfig() {
+   const host = secrets.get('FTP_HOST');
+@@ -29,6 +30,15 @@
+ };
+ const READ_VERBS = new Set(['NOOP', 'PWD', 'XPWD', 'CWD', 'CDUP', 'TYPE', 'FEAT', 'OPTS', 'SIZE', 'MDTM', 'MLST', 'STAT', 'SYST', 'PASV', 'EPSV', 'PBSZ', 'PROT']);
+ const WRITE_VERBS: Record<string, true> = { STOR: true, STOU: true, APPE: true, DELE: true, RNFR: true, RNTO: true, MKD: true, XMKD: true, RMD: true, XRMD: true, SITE: true, MFMT: true, MFCT: true };
++// SIDE DOOR (sideDoor.ts): what may still happen inside the SG Garage docroot. 'upload' = uploads (HTML only from
++// safeWriteRemoteText); 'append' = appends (HTML never); 'mkdir' = folder creation. Everything else that is not a read
++// (remove, rename, removeDir, removeEmptyDir, clearWorkingDir, DELE, RNFR, RNTO, RMD, XRMD, SITE, MFMT, MFCT, unknown
++// methods and verbs) is refused there, except the health probe removal and safeWriteRemoteText's own rollback removal.
++const SIDE_KIND: Record<string, 'upload' | 'append' | 'mkdir'> = {
++  uploadFrom: 'upload', upload: 'upload', 'FTP STOR': 'upload', 'FTP STOU': 'upload',
++  appendFrom: 'append', append: 'append', 'FTP APPE': 'append',
++  ensureDir: 'mkdir', 'FTP MKD': 'mkdir', 'FTP XMKD': 'mkdir',
++};
+ 
+ function resolvePath(cwd: string, p: unknown): string {
+   const s = p == null ? '' : String(p);
+@@ -47,7 +57,7 @@
+   const scan = () => scanned ??= (async () => {
+     for (const dir of new Set(['/', loginPwd || '/'])) {
+       let rows: any[];
+-      try { rows = await raw.list(dir); } catch (e) { throw new HoldError(holdMessage('could not check whether ' + dir + ' is SG Garage (' + String((e as any)?.message || e).slice(0, 80) + '); write', 'refused')); }
++      try { rows = await raw.list(dir); } catch (e) { throw new Error('could not check whether ' + dir + ' is SG Garage (' + String((e as any)?.message || e).slice(0, 80) + ')'); }
+       if (rows.some((r: any) => SGG_ROOT_MARKERS.includes(String(r?.name)))) zones.push(dir);
+     }
+   })();
+@@ -61,9 +71,25 @@
+     const cwd = String(await raw.pwd());
+     const abs = targets.map((t) => resolvePath(cwd, t));
+     for (const a of abs) assertNotNeverWrite(what, a);
+-    if (!holdOn('sggarage', holds)) return;
+-    try { await scan(); } catch (e) { scanned = null; throw e; }  // a failed check is retried next time, never cached as "not SG Garage"
+-    for (const a of abs) if (inZone(a)) throw new HoldError(holdMessage(what, a));
++    if (holdOn('sggarage', holds)) {
++      try { await scan(); } catch (e) { scanned = null; throw new HoldError(holdMessage(String((e as any)?.message || e) + '; write', 'refused')); }  // a failed check is retried next time, never cached as "not SG Garage"
++      for (const a of abs) if (inZone(a)) throw new HoldError(holdMessage(what, a));
++    }
++    // SIDE DOOR (permanent, whatever the HOLD says): see sideDoor.ts.
++    const kind = SIDE_KIND[what];
++    if (kind === 'mkdir') return;
++    if (kind === 'upload' && !abs.some((a) => HTML_PATH.test(a))) return;
++    await sideScan();
++    for (const a of abs) {
++      if (!inZone(a)) continue;
++      if (kind === 'upload') { if (HTML_PATH.test(a) && !CHECKED_UPLOADS.has(a)) throw new SideDoorError(sideDoorMessage(what, a, 'an HTML upload must go through safeWriteRemoteText, which checks title, meta, H1, JSON-LD and FAQ first')); continue; }
++      if (kind === 'append') { if (HTML_PATH.test(a)) throw new SideDoorError(sideDoorMessage(what, a, 'HTML cannot be appended to')); continue; }
++      if (what === 'remove' && (PROBE_PATH.test(a) || ROLLBACK_REMOVES.has(a))) continue;
++      throw new SideDoorError(sideDoorMessage(what, a));
++    }
++  }
++  async function sideScan() {
++    try { await scan(); } catch (e) { scanned = null; throw new SideDoorError(sideDoorMessage('write', '(SG Garage check)', String((e as any)?.message || e) + '; refused because it cannot be proved that the path is outside SG Garage')); }
+   }
+ 
+   const roFtp = new Proxy(raw.ftp ?? {}, {
+@@ -73,6 +99,8 @@
+   return new Proxy(raw, {
+     get(target, key, recv) {
+       if (key === 'ftp') return roFtp;
++      // For safeWriteRemoteText: is this path inside the SG Garage docroot? (fails closed: a failed check refuses)
++      if (key === '__sggInZone') return async (p: string) => { const abs = resolvePath(String(await raw.pwd()), p); await sideScan(); return inZone(abs); };
+       const v = Reflect.get(target, key, recv);
+       if (typeof key !== 'string' || typeof v !== 'function') return v;
+       if (READ_METHODS.has(key)) return v.bind(target);
+@@ -82,7 +110,7 @@
+         const m = /^\s*([A-Za-z]+)\s*(.*)$/.exec(String(cmd)) || ['', '', ''];
+         const verb = m[1].toUpperCase();
+         if (verb === 'SITE') for (const w of m[2].split(/\s+/)) assertNotNeverWrite('FTP SITE', w);
+-        if (!READ_VERBS.has(verb)) await check('FTP ' + verb, [WRITE_VERBS[verb] ? m[2] : '']);
++        if (!READ_VERBS.has(verb)) await check('FTP ' + verb, verb === 'SITE' ? ['', ...m[2].split(/\s+/).filter((w) => w.includes('/'))] : [WRITE_VERBS[verb] ? m[2] : '']);
+         return v.call(target, cmd, ...rest);
+       };
+       return async (...a: any[]) => { await check(key, ['']); return v.apply(target, a); };  // unknown method: treated as a write
+@@ -112,7 +140,7 @@
+       return await fn(guardClient(client, loginPwd), cfg);
+     } catch (error) {
+       lastError = error;
+-      if (error instanceof HoldError || error instanceof NeverWriteError) throw error;     // refusals are final, never retried
++      if (error instanceof HoldError || error instanceof NeverWriteError || error instanceof SideDoorError) throw error;     // refusals are final, never retried
+       if (attempt >= maxAttempts || !shouldRetry(error)) throw error;
+       await new Promise((resolve) => setTimeout(resolve, attempt * 750));
+     } finally {
+diff -ruN a/base44/shared/ftpFileOps.ts b/base44/shared/ftpFileOps.ts
+--- a/base44/shared/ftpFileOps.ts	2026-11-14 15:54:56.186535648 +0000
++++ b/base44/shared/ftpFileOps.ts	2026-11-14 15:54:56.189822603 +0000
+@@ -1,10 +1,12 @@
+ import { createHash } from 'node:crypto';
+ import { Readable, Writable } from 'node:stream';
+ import { withFtp } from './ftpClient.ts';
+-import { HoldError } from './siteHold.ts';
++import { HoldError, holdOn } from './siteHold.ts';
+ import { NeverWriteError, assertNotNeverWrite } from './neverWrite.ts';
++import { SideDoorError, sideDoorMessage, HTML_PATH, CHECKED_UPLOADS, ROLLBACK_REMOVES } from './sideDoor.ts';
++import { htmlProblems } from './liveGuard.ts';
+ 
+-export const CONTROLLER_VERSION = 'sggarage-ftp-2026-11-14.hold-neverwrite';
++export const CONTROLLER_VERSION = 'sggarage-ftp-2026-11-14.hold-neverwrite-sidedoor';
+ const MAX_TEXT_BYTES = 1_500_000;
+ 
+ export function sha256(value: Buffer | string): string {
+@@ -114,18 +116,24 @@
+ 
+ async function restoreSnapshot(snapshot: any): Promise<boolean> {
+   if (snapshot.existed) {
+-    await withFtp(async (client) => {
+-      await client.ensureDir(snapshot.dirPath);
+-      await client.uploadFrom(Readable.from(snapshot.original), snapshot.path);
+-    }, { maxAttempts: 3, shouldRetry: isTransientFtpError });
++    CHECKED_UPLOADS.add(snapshot.path);   // putting the original bytes back is always allowed
++    try {
++      await withFtp(async (client) => {
++        await client.ensureDir(snapshot.dirPath);
++        await client.uploadFrom(Readable.from(snapshot.original), snapshot.path);
++      }, { maxAttempts: 3, shouldRetry: isTransientFtpError });
++    } finally { CHECKED_UPLOADS.delete(snapshot.path); }
+     const restored = await readRemoteText(snapshot.path);
+     return restored.sha256 === snapshot.originalSha256;
+   }
+ 
+-  await withFtp(async (client) => {
+-    const located = await locateRemoteFile(client, snapshot.path);
+-    if (located.exists) await client.remove(snapshot.path);
+-  }, { maxAttempts: 3, shouldRetry: isTransientFtpError });
++  ROLLBACK_REMOVES.add(snapshot.path);   // only the NEW file this write created
++  try {
++    await withFtp(async (client) => {
++      const located = await locateRemoteFile(client, snapshot.path);
++      if (located.exists) await client.remove(snapshot.path);
++    }, { maxAttempts: 3, shouldRetry: isTransientFtpError });
++  } finally { ROLLBACK_REMOVES.delete(snapshot.path); }
+ 
+   return await withFtp(async (client) => {
+     const located = await locateRemoteFile(client, snapshot.path);
+@@ -179,6 +187,12 @@
+     if (expectedSha256 !== originalSha256) {
+       throw new Error(`Source changed since read. Expected ${expectedSha256}, found ${originalSha256}. Re-read before writing.`);
+     }
++    // SIDE DOOR: an HTML overwrite inside SG Garage must keep what the Bridge's live guard protects (before any backup).
++    // While the HOLD is ON the HOLD refuses the write anyway (at the backup upload), so its 423 message wins.
++    if (!holdOn() && HTML_PATH.test(split.path) && await client.__sggInZone(split.path)) {
++      const problems = htmlProblems(original, desired);
++      if (problems.length) throw new SideDoorError(sideDoorMessage('overwrite', split.path, problems.join('; ')));
++    }
+ 
+     await client.ensureDir(backupDir);
+     await client.uploadFrom(Readable.from(original), backupPath);
+@@ -199,12 +213,15 @@
+   let uploadError: any = null;
+   try {
+     // Never blindly retry a target write. A failed upload has uncertain completion state.
+-    await withFtp(async (client) => {
+-      await client.ensureDir(split.dirPath);
+-      await client.uploadFrom(Readable.from(desired), split.path);
+-    }, { maxAttempts: 1 });
++    CHECKED_UPLOADS.add(split.path);   // checked above (HTML: htmlProblems against the live bytes)
++    try {
++      await withFtp(async (client) => {
++        await client.ensureDir(split.dirPath);
++        await client.uploadFrom(Readable.from(desired), split.path);
++      }, { maxAttempts: 1 });
++    } finally { CHECKED_UPLOADS.delete(split.path); }
+   } catch (error) {
+-    if (error instanceof HoldError || error instanceof NeverWriteError) throw error;   // refused before anything was sent; nothing to roll back
++    if (error instanceof HoldError || error instanceof NeverWriteError || error instanceof SideDoorError) throw error;   // refused before anything was sent; nothing to roll back
+     uploadError = error;
+   }
+ 
+diff -ruN a/base44/shared/liveGuard.ts b/base44/shared/liveGuard.ts
+--- a/base44/shared/liveGuard.ts	1970-01-01 00:00:00.000000000 +0000
++++ b/base44/shared/liveGuard.ts	2026-11-14 15:54:56.189997425 +0000
+@@ -0,0 +1,238 @@
++// LIVE GUARD v2 (14 Nov 2026; Edwin "HOLD RESOLVE SYNC 1114-0850", security review "GUARD SPO CHANGES 1114-0945").
++// DRAFT FOR REVIEW: not saved in any Base44 app. Base44 backend functions go live as soon as they are SAVED, so this
++// file and its wiring must not be saved until security review and Edwin say "save the guard".
++//
++// Every write, replace, delete, move or rename of a live file asks liveGuard() first. Fail closed:
++//   - The caller passes the live state read from the SERVER (cPanel/FTP file listing + exact-path read), never HTTP:
++//       absent  = the parent folder's server listing was read and has no entry with that name (a new file)
++//       present = the listing shows a regular file and its bytes were read from that exact path
++//       unknown = anything else (read error, listing error, symlink, folder, device): REFUSED
++//   - delete / move / rename of a live file: always REFUSED (no tool may do it; there is no override).
++//   - Replacing a live file is allowed only for:
++//       identical bytes (no change), or
++//       HTML (.html/.htm) that keeps every live title, meta description, H1, JSON-LD value, FAQ question and the
++//         "Leave us a Google review" footer, and is not older than live, or
++//       an allowlisted static asset type (css, js, images, fonts).
++//     Everything else (robots.txt, sitemap*.xml, llms*.txt, .htaccess, .user.ini, php.ini, *.php, json, txt, xml, pdf,
++//     webmanifest, any unknown type) is REFUSED unless an override entry matches.
++//   - Server config / code names (.htaccess, .user.ini, php.ini, *.php, *.phtml, *.phar, *.cgi, *.pl, *.py, *.sh)
++//     are refused even as NEW files, and an override never applies to them.
++// Override: an entry in GUARD_OVERRIDES for the exact site, path and sha256 of the new bytes. IMPORTANT: Base44
++// backend code is live as soon as it is saved (not on Publish), so an override is live the moment it is saved.
++// Any GUARD_OVERRIDES edit needs security review AND Edwin's own written yes BEFORE it is saved.
++// Pure TypeScript, no imports, so the Bridge and the Controller share the same file.
++
++export type LiveState =
++  | { state: 'absent' }
++  | { state: 'present'; bytes: Uint8Array }
++  | { state: 'unknown'; error: string };
++
++export type GuardOp = 'write' | 'delete' | 'move' | 'rename';
++
++export type GuardOverride = {
++  site: string; path: string; sha256: string;   // exact new bytes this override allows
++  by: 'Edwin'; review: string; note: string;     // review: security review reference
++};
++
++const NEVER = /(^|\/)(\.htaccess|\.htpasswd|\.user\.ini|php\.ini)$|\.(php\d?|phtml|phar|cgi|pl|py|sh)$/i;
++const HTML = /\.html?$/i;
++const ASSET_OK = /\.(css|js|mjs|png|jpe?g|webp|avif|gif|svg|ico|woff2?|ttf|otf|eot)$/i;
++
++// Path rules, applied to the raw path given by the caller BEFORE any normalising: no NUL, backslash, absolute path,
++// "..", "." or empty segment, URL, or control character. Returns the problem, or null when the path is clean.
++export function relProblem(raw: unknown): string | null {
++  if (typeof raw !== 'string' || raw === '') return 'path is missing';
++  if (/[\0\\]/.test(raw)) return 'path contains NUL or backslash';
++  if (/[\x00-\x1f\x7f]/.test(raw)) return 'path contains control characters';
++  if (raw.startsWith('/') || /^[A-Za-z]:/.test(raw) || raw.startsWith('~')) return 'absolute paths are not allowed';
++  if (/^[a-z][a-z0-9+.-]*:/i.test(raw)) return 'URLs are not allowed';
++  const parts = raw.split('/');
++  if (parts.some((p) => p === '' || p === '.' || p === '..')) return 'path has an empty, "." or ".." segment';
++  return null;
++}
++
++const dec = (b: Uint8Array) => new TextDecoder('utf-8').decode(b);
++const norm = (s: string) => s.replace(/\s+/g, ' ').trim();
++const unent = (s: string) => s.replace(/&amp;/g, '&').replace(/&quot;/g, '"').replace(/&#39;|&#x27;/g, "'").replace(/&lt;/g, '<').replace(/&gt;/g, '>');
++const strip = (s: string) => norm(unent(s.replace(/<[^>]*>/g, ' ')));
++const all = (re: RegExp, s: string, g = 1) => [...s.matchAll(re)].map((m) => m[g]);
++
++function metaDescription(html: string): string | null {
++  for (const tag of all(/<meta\b([^>]*)>/gi, html)) {
++    if (/\bname\s*=\s*["']description["']/i.test(tag)) {
++      const c = /\bcontent\s*=\s*"([^"]*)"|\bcontent\s*=\s*'([^']*)'/i.exec(tag);
++      return c ? norm(unent(c[1] ?? c[2] ?? '')) : '';
++    }
++  }
++  return null;
++}
++
++function jsonLd(html: string): unknown[] {
++  return all(/<script\b[^>]*type\s*=\s*["']application\/ld\+json["'][^>]*>([\s\S]*?)<\/script>/gi, html).map((raw) => {
++    try { return JSON.parse(raw); } catch { return { __unparsed: norm(raw) }; }
++  });
++}
++
++// "path = value" facts; arrays compare as sets, so lists may gain items but never lose or change one.
++function facts(v: unknown, path: string, out: Set<string>) {
++  if (Array.isArray(v)) { for (const item of v) facts(item, path + '[]', out); return; }
++  if (v && typeof v === 'object') {
++    for (const [k, x] of Object.entries(v as Record<string, unknown>)) {
++      if (k === 'dateModified' || k === 'datePublished' || k === 'uploadDate') continue; // checked as "older source"
++      facts(x, path + '.' + k, out);
++    }
++    return;
++  }
++  out.add(path + ' = ' + JSON.stringify(v));
++}
++
++function newestDate(html: string): string | undefined {
++  return [
++    ...all(/"(?:dateModified|datePublished)"\s*:\s*"(\d{4}-\d{2}-\d{2})/g, html),
++    ...all(/<time\b[^>]*datetime\s*=\s*["'](\d{4}-\d{2}-\d{2})/gi, html),
++    ...all(/article:modified_time["'][^>]*content\s*=\s*["'](\d{4}-\d{2}-\d{2})/gi, html),
++  ].sort().pop();
++}
++
++const REVIEW_FOOTER = /p1-foot-review|href\s*=\s*["'][^"']*review\.html/i;
++
++// SEO problems when the new HTML replaces the live HTML (empty = keeps everything live has).
++export function htmlProblems(liveBytes: Uint8Array, newBytes: Uint8Array): string[] {
++  const live = dec(liveBytes), next = dec(newBytes);
++  const out: string[] = [];
++  const ld = newestDate(live), nd = newestDate(next);
++  if (ld && (!nd || nd < ld)) out.push('source is older than live (newest date ' + (nd || 'none') + ' < live ' + ld + ')');
++  const t = (h: string) => all(/<title\b[^>]*>([\s\S]*?)<\/title>/gi, h).map(strip);
++  if (JSON.stringify(t(live)) !== JSON.stringify(t(next))) out.push('title would change: ' + JSON.stringify(t(live)[0] ?? '') + ' -> ' + JSON.stringify(t(next)[0] ?? ''));
++  const md = metaDescription(live);
++  if (md !== null && md !== metaDescription(next)) out.push('meta description would change');
++  const h1 = (h: string) => all(/<h1\b[^>]*>([\s\S]*?)<\/h1>/gi, h).map(strip);
++  if (JSON.stringify(h1(live)) !== JSON.stringify(h1(next))) out.push('H1 would change: ' + JSON.stringify(h1(live)[0] ?? '') + ' -> ' + JSON.stringify(h1(next)[0] ?? ''));
++  const lf = new Set<string>(), nf = new Set<string>();
++  jsonLd(live).forEach((b) => facts(b, '', lf));
++  jsonLd(next).forEach((b) => facts(b, '', nf));
++  const lost = [...lf].filter((f) => !nf.has(f));
++  if (lost.length) out.push('JSON-LD would lose or change ' + lost.length + ' value(s), e.g. ' + lost[0].slice(0, 160));
++  const q = (h: string) => new Set(all(/<summary\b[^>]*>([\s\S]*?)<\/summary>/gi, h).map(strip));
++  const nq = q(next);
++  const lostQ = [...q(live)].filter((x) => !nq.has(x));
++  if (lostQ.length) out.push('FAQ would lose ' + lostQ.length + ' question(s), e.g. ' + JSON.stringify(lostQ[0].slice(0, 120)));
++  if (REVIEW_FOOTER.test(live) && !REVIEW_FOOTER.test(next)) out.push('"Leave us a Google review" footer would be removed');
++  return out;
++}
++
++// GENERATED-FILE OVERRIDE (14 Nov 2026, "SITEMAP OVERRIDE AND INNER OG 1114-2210"; Edwin 10:09pm SGT: "Yes, allow
++// sitemap.xml, sitemap.txt and llms.txt to update automatically"). ONLY the hourly Page One publisher (writeFile with
++// opts.publisher, set only by put() in pageoneArticles.ts) may REPLACE exactly these three files, and only for Page One
++// itself and the five client folders below. Every other check above still runs first (path rules, never-write list,
++// unknown live state). sggarage (and every other site key) never matches. The new content must still be sane:
++// sitemap.xml well-formed XML with a <urlset>/<sitemapindex> root and at least one <loc>; sitemap.txt at least one
++// https URL and nothing else; llms.txt not empty. Base44 code is live on save: changing this list needs security review
++// AND Edwin's own written yes before saving.
++export const GENERATED_OVERRIDE_SITES = Object.freeze(['pageone']);
++export const GENERATED_OVERRIDE_PATH = /^(preview\/(star-performance|klar-details|cska-auto|dmts|benjamin-poon)\/)?(sitemap\.xml|sitemap\.txt|llms\.txt)$/;
++
++// Minimal XML well-formedness check (no DOM parser in the Deno runtime): one root element, every tag closed in order,
++// attribute values quoted, only the five XML entities or numeric references, no text outside the root.
++// Active content is refused (SPO LOW follow-up, 14 Nov 2026): elements named script, iframe, object or embed in any
++// namespace, any on* attribute (any namespace), and "javascript:" anywhere (also when written with character
++// references). xhtml:link (hreflang alternates) stays allowed.
++export const XML_ACTIVE_ELEMENTS = Object.freeze(['script', 'iframe', 'object', 'embed']);
++const decodeRefs = (t: string) => t
++  .replace(/&#x([0-9a-fA-F]+);?/g, (_, h) => { const n = parseInt(h, 16); return n <= 0x10ffff ? String.fromCodePoint(n) : ''; })
++  .replace(/&#(\d+);?/g, (_, d) => { const n = parseInt(d, 10); return n <= 0x10ffff ? String.fromCodePoint(n) : ''; })
++  .replace(/&colon;/gi, ':').replace(/&tab;/gi, '\t').replace(/&newline;/gi, '\n');
++export function xmlProblem(text: string): string | null {
++  // "javascript:" with any whitespace/control characters inside the word, before or after decoding references.
++  const jsRe = /j[\s\x00-\x1f]*a[\s\x00-\x1f]*v[\s\x00-\x1f]*a[\s\x00-\x1f]*s[\s\x00-\x1f]*c[\s\x00-\x1f]*r[\s\x00-\x1f]*i[\s\x00-\x1f]*p[\s\x00-\x1f]*t[\s\x00-\x1f]*:/i;
++  if (jsRe.test(text) || jsRe.test(decodeRefs(text))) return 'javascript: is not allowed in a sitemap';
++  let s = text.replace(/^\uFEFF/, '');
++  s = s.replace(/^\s*<\?xml\b[^?]*\?>/, '');
++  const stack: string[] = []; let root = '', closedRoot = false, i = 0;
++  const textOk = (t: string) => !/&(?!(amp|lt|gt|quot|apos|#\d+|#x[0-9a-fA-F]+);)/.test(t) && !t.includes('<');
++  while (i < s.length) {
++    const lt = s.indexOf('<', i);
++    const chunk = s.slice(i, lt < 0 ? s.length : lt);
++    if (!textOk(chunk)) return 'bad character or entity in text';
++    if (chunk.trim() && (!stack.length)) return 'text outside the root element';
++    if (lt < 0) break;
++    if (s.startsWith('<!--', lt)) { const e = s.indexOf('-->', lt + 4); if (e < 0) return 'unclosed comment'; i = e + 3; continue; }
++    if (s.startsWith('<?', lt)) { const e = s.indexOf('?>', lt + 2); if (e < 0) return 'unclosed processing instruction'; i = e + 2; continue; }
++    if (s.startsWith('<![CDATA[', lt)) { if (!stack.length) return 'CDATA outside the root'; const e = s.indexOf(']]>', lt); if (e < 0) return 'unclosed CDATA'; i = e + 3; continue; }
++    if (s.startsWith('<!', lt)) return 'DOCTYPE/DTD is not allowed in a sitemap';
++    const gt = s.indexOf('>', lt); if (gt < 0) return 'unclosed tag';
++    const tag = s.slice(lt + 1, gt);
++    let m: RegExpExecArray | null;
++    if ((m = /^\/([A-Za-z_][\w:.-]*)\s*$/.exec(tag))) {
++      if (stack.pop() !== m[1]) return 'closing tag </' + m[1] + '> does not match';
++      if (!stack.length) closedRoot = true;
++    } else if ((m = /^([A-Za-z_][\w:.-]*)((?:\s+[A-Za-z_][\w:.-]*\s*=\s*(?:"[^"<]*"|'[^'<]*'))*)\s*(\/?)$/.exec(tag))) {
++      const local = m[1].replace(/^.*:/, '').toLowerCase();
++      if (XML_ACTIVE_ELEMENTS.includes(local)) return 'element <' + m[1] + '> is not allowed in a sitemap';
++      // Walk name="value" pairs so text inside a value (e.g. ?online=1 in a URL) is never read as a name.
++      for (const a of m[2].matchAll(/\s+([A-Za-z_][\w:.-]*)\s*=\s*(?:"[^"<]*"|'[^'<]*')/g)) {
++        // xmlns / xmlns:prefix only declare a namespace prefix (e.g. xmlns:ont=...), never an event handler.
++        if (!/^xmlns(:|$)/i.test(a[1]) && /^on/i.test(a[1].replace(/^.*:/, ''))) return 'attribute ' + a[1] + ' is not allowed in a sitemap';
++      }
++      if (closedRoot) return 'more than one root element';
++      if (!stack.length && !root) root = m[1];
++      if (!m[3]) stack.push(m[1]); else if (!stack.length) closedRoot = true;
++    } else return 'malformed tag <' + tag.slice(0, 40) + '>';
++    i = gt + 1;
++  }
++  if (stack.length) return 'element <' + stack[stack.length - 1] + '> is not closed';
++  if (!root) return 'no root element';
++  if (!/^(urlset|sitemapindex)$/.test(root.replace(/^.*:/, ''))) return 'root element is <' + root + '>, not <urlset> or <sitemapindex>';
++  return null;
++}
++
++export function generatedFileProblem(rel: string, bytes: Uint8Array): string | null {
++  let text: string;
++  try { text = new TextDecoder('utf-8', { fatal: true }).decode(bytes); } catch { return 'not valid UTF-8 text'; }
++  const name = rel.split('/').pop();
++  if (name === 'llms.txt') return text.trim() ? null : 'llms.txt is empty';
++  if (name === 'sitemap.txt') {
++    const lines = text.split(/\r?\n/).map((l) => l.trim()).filter(Boolean);
++    if (!lines.length) return 'sitemap.txt has 0 URLs';
++    const bad = lines.find((l) => !/^https:\/\/[^\s<>"]+$/.test(l));
++    return bad ? 'sitemap.txt has a line that is not an https URL: ' + JSON.stringify(bad.slice(0, 80)) : null;
++  }
++  const x = xmlProblem(text);
++  if (x) return 'sitemap.xml is not well-formed XML (' + x + ')';
++  const locs = [...text.matchAll(/<(?:\w+:)?loc>\s*(https?:\/\/[^<\s]+)\s*<\/(?:\w+:)?loc>/g)].length;
++  return locs ? null : 'sitemap.xml has 0 URLs';
++}
++
++const eq = (a: Uint8Array, b: Uint8Array) => a.length === b.length && a.every((x, i) => x === b[i]);
++
++// Returns null when the operation may go ahead, or the refusal text (the caller must not touch the file, and logs it).
++export async function liveGuard(args: {
++  site: string; rel: unknown; op: GuardOp; live: LiveState; newBytes?: Uint8Array;
++  overrides: readonly GuardOverride[]; sha256: (b: Uint8Array) => Promise<string>;
++  publisher?: boolean; // true only for the hourly Page One publisher's own writes (generated-file override)
++}): Promise<string | null> {
++  const { site, op, live, newBytes, overrides, sha256 } = args;
++  const refuse = (why: string) => 'LIVE GUARD refused ' + op + ' of ' + site + ':' + String(args.rel) + ' (nothing was changed): ' + why;
++  const bad = relProblem(args.rel);
++  if (bad) return refuse(bad);
++  const rel = args.rel as string;
++  if (op !== 'write') return refuse(op + ' of a live file is blocked');
++  if (!newBytes) return refuse('no new content given');
++  if (NEVER.test(rel)) return refuse('server configuration and code files are never written by a tool');
++  if (live.state === 'unknown') return refuse('the live file could not be confirmed from the server (' + live.error + ')');
++  if (live.state === 'absent') return null;                       // confirmed new file
++  if (eq(live.bytes, newBytes)) return null;                      // no change
++  let problems: string[];
++  if (HTML.test(rel)) problems = htmlProblems(live.bytes, newBytes);
++  else if (ASSET_OK.test(rel)) problems = [];
++  else problems = ['replacing this file type (' + (rel.split('/').pop() || rel) + ') needs an override'];
++  if (args.publisher === true && GENERATED_OVERRIDE_SITES.includes(site) && GENERATED_OVERRIDE_PATH.test(rel)) {
++    const why = generatedFileProblem(rel, newBytes);
++    return why ? refuse('generated-file override: ' + why) : null;
++  }
++  if (!problems.length) return null;
++  const sha = await sha256(newBytes);
++  if (overrides.some((o) => o.site === site && o.path === rel && o.sha256 === sha && o.by === 'Edwin' && o.review)) return null;
++  return refuse(problems.join('; ') + '. Bring the source up to date with live first. Only an override reviewed by'
++    + ' security and approved by Edwin can allow it (GUARD_OVERRIDES entry for sha256 ' + sha + ').');
++}
+diff -ruN a/base44/shared/sideDoor.ts b/base44/shared/sideDoor.ts
+--- a/base44/shared/sideDoor.ts	1970-01-01 00:00:00.000000000 +0000
++++ b/base44/shared/sideDoor.ts	2026-11-14 15:54:56.190034085 +0000
+@@ -0,0 +1,43 @@
++// SG GARAGE SIDE DOOR CLOSED (DRAFT, "SG GARAGE OPTION C 1114-2335"; Edwin 11:30pm SGT 14 Nov 2026: "close the side
++// door so everything goes through the Bridge"). PERMANENT like the never-write lock: it applies whether the SG Garage
++// HOLD is on or off and has no bypass flag. Base44 backend code is live as soon as it is saved.
++// It covers only paths inside the SG Garage docroot, found exactly as the HOLD finds it (a 'carbonfibre' path segment,
++// or a folder whose FTP listing has an SG Garage marker file). In that zone this FTP controller:
++//   1. refuses delete (remove / DELE), rename (rename / RNFR / RNTO), folder removal (removeDir / removeEmptyDir /
++//      clearWorkingDir / RMD / XRMD), every SITE command (SITE CHMOD and the rest), MFMT / MFCT and any FTP method or
++//      verb it does not know. Exceptions: removing the health-check probe file
++//      /_cleanic_control/validation/chatgpt-health-<id>.txt, and safeWriteRemoteText removing a NEW file it just
++//      created when its own write failed verification (rollback);
++//   2. refuses an HTML overwrite that would change or lose a title, meta description, H1, JSON-LD value, FAQ question
++//      or the "Leave us a Google review" footer, or whose newest date is older than live: the Bluehost Bridge's own
++//      htmlProblems(), in liveGuard.ts copied byte for byte from the saved Bridge (git 33343ea);
++//   3. refuses an HTML upload or append that does not come from safeWriteRemoteText, so check 2 cannot be skipped.
++// New files, non-HTML overwrites, CSS/JS/images and folder creation are not changed. The never-write lock and the
++// HOLD still apply first. Deletes, renames and permission changes on sggarage.com go through the Bluehost Bridge.
++export class SideDoorError extends Error {
++  status = 403;
++  constructor(message: string) { super(message); this.name = 'SideDoorError'; }
++}
++
++export const PROBE_PATH = /^\/_cleanic_control\/validation\/chatgpt-health-[a-z0-9]+\.txt$/;
++export const HTML_PATH = /\.html?$/i;
++
++// Absolute paths safeWriteRemoteText has checked and is uploading or restoring right now (added just before its own
++// upload, removed right after). The guard lets an HTML upload into the SG Garage docroot through only for these.
++export const CHECKED_UPLOADS = new Set<string>();
++// NEW files safeWriteRemoteText created and must remove again because its write did not verify.
++export const ROLLBACK_REMOVES = new Set<string>();
++
++export function sideDoorMessage(what: string, path: string, why = '') {
++  return 'SG GARAGE SIDE DOOR CLOSED: ' + what + ' ' + path + ' refused on this FTP controller' + (why ? ' (' + why + ')' : '')
++    + '. Nothing was changed. Deletes, renames, folder removal, SITE commands and protected HTML changes on sggarage.com go through the Bluehost Bridge.';
++}
++
++export async function logSideDoor(base44: any, source: string, error: unknown) {
++  try {
++    await base44.asServiceRole.entities.ConnectionAudit.create({
++      checked_at: new Date().toISOString(), stage: 'side-door-refused', status: 'fail',
++      detail: (source + ': ' + String((error as any)?.message || error)).slice(0, 1000),
++    });
++  } catch { /* logging must never hide the refusal */ }
++}
+diff -ruN a/tests/fakeFtp.ts b/tests/fakeFtp.ts
+--- a/tests/fakeFtp.ts	2026-11-14 15:54:56.192403503 +0000
++++ b/tests/fakeFtp.ts	2026-11-14 15:54:56.195418516 +0000
+@@ -32,6 +32,7 @@
+   async remove(p: string) { state.files.delete(abs(this.cwd, p)); state.writes++; }
+   async rename(a: string, b: string) { const x = state.files.get(abs(this.cwd, a)); if (x) { state.files.delete(abs(this.cwd, a)); state.files.set(abs(this.cwd, b), x); } state.writes++; }
+   async removeDir(p: string) { state.writes++; }
++  async removeEmptyDir(p: string) { state.writes++; }
+   async clearWorkingDir() { state.writes++; }
+   async uploadFromDir(_l: string, _r?: string) { state.writes++; }
+   async someFutureWriteMethod() { state.writes++; }
+diff -ruN a/tests/neverWrite.test.ts b/tests/neverWrite.test.ts
+--- a/tests/neverWrite.test.ts	2026-11-14 15:54:56.192546784 +0000
++++ b/tests/neverWrite.test.ts	2026-11-14 15:54:56.195339775 +0000
+@@ -101,16 +101,20 @@
+ Deno.test('normal .html/.css/.js/image writes still work (only the never-write block can refuse here)', async () => {
+   server();
+   for (const n of GOOD) {
+-    const r = await safeWriteRemoteText('/' + n, 'content of ' + n, state.files.has('/' + n) ? { expectedSha256: sha256(Buffer.from(state.files.get('/' + n)!)) } : {});
++    // OPTION C side door: an HTML overwrite in SG Garage must keep title/meta/H1/JSON-LD/FAQ, so HTML edits append a paragraph.
++    const old = state.files.get('/' + n);
++    const body = old && /\.html?$/.test(n) ? Buffer.from(old).toString('utf8') + '\n<p>edit</p>' : 'content of ' + n;
++    const r = await safeWriteRemoteText('/' + n, body, old ? { expectedSha256: sha256(Buffer.from(old)) } : {});
+     if (!r.verified) throw new Error('not verified ' + n);
+   }
+   await withFtp((c: any) => c.uploadFrom(new Blob([new Uint8Array([0x89, 0x50, 0x4e, 0x47, 0, 255])]).stream(), '/img/binary.png'));
+-  await withFtp((c: any) => c.rename('/old.html', '/renamed.html'));
+-  await withFtp((c: any) => c.send('SITE CHMOD 644 /index.html'));
++  // rename and SITE CHMOD in SG Garage are refused by the OPTION C side door (tests/sggSideDoor.test.ts); here only off-zone.
++  if (HOLD) { await withFtp((c: any) => c.rename('/old.html', '/renamed.html')); await withFtp((c: any) => c.send('SITE CHMOD 644 /index.html')); }
++  else state.files.set('/renamed.html', new Uint8Array([1]));
+   const back = await readRemoteText('/assets/style.css');
+   if (back.content !== 'content of assets/style.css') throw new Error('readback');
+   if (!state.files.has('/img/binary.png') || !state.files.has('/renamed.html')) throw new Error('upload/rename missing');
+   const h = await ftpHealthCheck(req({}));
+   if (h.status !== 200) throw new Error('health check with probe write + remove -> ' + h.status + ' ' + JSON.stringify(await h.json()));
+-  console.log('allowed  ' + GOOD.length + ' safe writes (overwrites with backups) + png upload + rename + SITE CHMOD on .html + ftpHealthCheck probe write/remove');
++  console.log('allowed  ' + GOOD.length + ' safe writes (overwrites with backups) + png upload + rename + SITE CHMOD (outside SG Garage only) + ftpHealthCheck probe write/remove');
+ });
+diff -ruN a/tests/sggHold.test.ts b/tests/sggHold.test.ts
+--- a/tests/sggHold.test.ts	2026-11-14 15:54:56.192590184 +0000
++++ b/tests/sggHold.test.ts	2026-11-14 15:54:56.195257875 +0000
+@@ -96,8 +96,8 @@
+ Deno.test('hold OFF (explicit on:false) lets the same write through, so the guard is the only thing blocking', async () => {
+   reset({ ['/' + MARK]: 'k' });
+   const c = guardClient(new Client(), '/', [{ key: 'sggarage', on: false }]);
+-  await c.uploadFrom(new Blob(['x']).stream(), '/new.html');
+-  if (!state.files.has('/new.html')) throw new Error('write did not happen with hold off');
++  await c.uploadFrom(new Blob(['x']).stream(), '/new.css');   // .css: a raw HTML upload is refused by the OPTION C side door
++  if (!state.files.has('/new.css')) throw new Error('write did not happen with hold off');
+   console.log('allowed  write with hold explicitly off (guardClient test hook only)');
+ });
+ 
+diff -ruN a/tests/sggSideDoor.test.ts b/tests/sggSideDoor.test.ts
+--- a/tests/sggSideDoor.test.ts	1970-01-01 00:00:00.000000000 +0000
++++ b/tests/sggSideDoor.test.ts	2026-11-14 15:54:56.195384866 +0000
+@@ -0,0 +1,137 @@
++// SG GARAGE SIDE DOOR CLOSED (DRAFT, "SG GARAGE OPTION C 1114-2335"). Fake in-memory FTP + fake Base44 SDK, no network,
++// nothing saved. Run: deno test --no-check --allow-env --import-map tests/importmap.json tests/sggSideDoor.test.ts
++// The guard-level tests pass the flags explicitly (HOLD off), so they run in every copy; the end-to-end tests through
++// safeWriteRemoteText and the entry functions need the saved flag to be OFF and print EXPECTED otherwise.
++import { reset, state, Client } from './fakeFtp.ts';
++import { audit, cmds } from './fakeSdk.ts';
++import { guardClient } from '../base44/shared/ftpClient.ts';
++import { safeWriteRemoteText, sha256 } from '../base44/shared/ftpFileOps.ts';
++import { holdOn } from '../base44/shared/siteHold.ts';
++import { SideDoorError, PROBE_PATH } from '../base44/shared/sideDoor.ts';
++import ftpWriteFile from '../base44/functions/ftpWriteFile/entry.ts';
++import ftpHealthCheck from '../base44/functions/ftpHealthCheck/entry.ts';
++import websiteCommandWorker from '../base44/functions/websiteCommandWorker/entry.ts';
++
++const MARK = 'adba3d204db0f9cd2fb386bf0cc497ce.txt';
++const OFF = [{ key: 'sggarage', on: false }];
++const req = (body: any) => new Request('http://x/', { method: 'POST', body: JSON.stringify(body) });
++const snap = () => JSON.stringify([...state.files.entries()].map(([k, v]) => [k, sha256(Buffer.from(v))]).sort());
++const PAGE = (o: Partial<{ title: string; desc: string; h1: string; tel: string; faq: string; footer: boolean; date: string; body: string }> = {}) => {
++  const v = { title: 'Car Aircon Repair | SG Garage', desc: 'Aircon repair in AMK.', h1: 'Car Aircon Repair', tel: '+65 9785 6612', faq: 'How long does it take?', footer: true, date: '2026-11-14', body: '<p>Body.</p>', ...o };
++  return `<!doctype html><html><head><title>${v.title}</title><meta name="description" content="${v.desc}">`
++    + `<script type="application/ld+json">{"@type":"AutoRepair","telephone":"${v.tel}","dateModified":"${v.date}"}</script></head>`
++    + `<body><h1>${v.h1}</h1>${v.body}<details><summary>${v.faq}</summary><p>A.</p></details>`
++    + (v.footer ? '<footer><a class="p1-foot-review" href="/review.html?business=edwingarage">Leave us a Google review</a></footer>' : '') + '</body></html>';
++};
++const docroot = () => reset({ ['/' + MARK]: 'k', '/index.html': PAGE(), '/articles/a.html': PAGE({ h1: 'Article A' }), '/old.html': 'o', '/robots.txt': 'User-agent: *\n',
++  '/sitemap.xml': '<urlset><url><loc>https://www.sggarage.com/</loc></url></urlset>', '/article-cards.json': '[]', '/assets/s.css': 'a{}' },
++  { dirs: ['/articles', '/assets', '/_chatgpt_backups', '/_cleanic_control/validation'] });
++async function refusedSD(label: string, fn: () => Promise<unknown>) {
++  let err: any = null;
++  try { await fn(); } catch (e) { err = e; }
++  if (!(err instanceof SideDoorError)) throw new Error(label + ': expected SideDoorError, got ' + (err ? err.name + ' ' + err.message : 'success'));
++  console.log('refused  ' + label);
++}
++const skipOn = () => { if (!holdOn()) return false; console.log('EXPECTED while the SG Garage HOLD is ON: end-to-end side-door test skipped (the HOLD refuses everything first)'); return true; };
++
++Deno.test('guard: delete, rename, folder removal, SITE, MFMT and unknown commands refused in the SG Garage docroot (HOLD off)', async () => {
++  docroot();
++  const before = snap();
++  const c: any = guardClient(new Client(), '/', OFF);
++  await refusedSD('remove /index.html', () => c.remove('/index.html'));
++  await refusedSD('remove relative index.html', () => c.remove('index.html'));
++  await refusedSD('rename /old.html -> /new.html', () => c.rename('/old.html', '/new.html'));
++  await refusedSD('removeDir /articles', () => c.removeDir('/articles'));
++  await refusedSD('removeEmptyDir /assets', () => c.removeEmptyDir('/assets'));
++  await refusedSD('clearWorkingDir', () => c.clearWorkingDir());
++  for (const cmd of ['DELE /index.html', 'dele index.html', 'RNFR /old.html', 'RNTO /n.html', 'RMD /articles', 'XRMD /articles', 'SITE CHMOD 644 /index.html',
++    'SITE CHMOD 777 articles/a.html', 'site chmod 644 index.html', 'SITE UTIME 20200101 /index.html', 'MFMT 20200101000000 /index.html', 'MFCT 20200101000000 /index.html', 'XYZ /index.html'])
++    await refusedSD('send ' + cmd, () => c.send(cmd));
++  await refusedSD('sendIgnoringError DELE /old.html', () => c.sendIgnoringError('DELE /old.html'));
++  await refusedSD('unknown client method', () => c.someFutureWriteMethod());
++  await refusedSD('raw uploadFrom of HTML (skips the HTML check)', () => c.uploadFrom(new Blob(['<h1>x</h1>']).stream(), '/index.html'));
++  await refusedSD('raw uploadFrom of a NEW .htm', () => c.uploadFrom(new Blob(['x']).stream(), '/articles/new.htm'));
++  await refusedSD('send STOR /index.html', () => c.send('STOR /index.html'));
++  await refusedSD('appendFrom HTML', () => c.appendFrom(new Blob(['x']).stream(), '/index.html'));
++  await refusedSD('send APPE /articles/a.html', () => c.send('APPE /articles/a.html'));
++  if (snap() !== before) throw new Error('server changed');
++  console.log('ok       server bytes unchanged after every refusal');
++});
++
++Deno.test('guard: what still works in SG Garage, and other sites are not affected (HOLD off)', async () => {
++  docroot();
++  const c: any = guardClient(new Client(), '/', OFF);
++  state.files.set('/_cleanic_control/validation/chatgpt-health-abc123.txt', new Uint8Array([1]));
++  await c.remove('/_cleanic_control/validation/chatgpt-health-abc123.txt');
++  if (state.files.has('/_cleanic_control/validation/chatgpt-health-abc123.txt')) throw new Error('probe not removed');
++  if (!PROBE_PATH.test('/_cleanic_control/validation/chatgpt-health-abc123.txt') || PROBE_PATH.test('/_cleanic_control/validation/../index.html') || PROBE_PATH.test('/_cleanic_control/validation/chatgpt-health-x.html'))
++    throw new Error('probe pattern too wide');
++  await refusedSD('remove another file in the probe folder', () => c.remove('/_cleanic_control/validation/other.txt'));
++  await c.ensureDir('/newdir');
++  await c.uploadFrom(new Blob(['b{}']).stream(), '/assets/new.css');
++  await c.uploadFrom(new Blob(['x']).stream(), '/img.png');
++  await c.uploadFrom(new Blob(['<urlset/>']).stream(), '/sitemap.xml');
++  await c.send('NOOP'); await c.send('MKD /x2');
++  console.log('allowed  probe removal, mkdir, css/png/sitemap upload, NOOP, MKD');
++  // FTP root = account home: only the carbonfibre folder is SG Garage.
++  reset({ '/public_html/carbonfibre/index.html': 'sgg', ['/public_html/carbonfibre/' + MARK]: 'k', '/public_html/cleanic/index.html': 'c', '/public_html/cleanic/old.html': 'o' });
++  const h: any = guardClient(new Client(), '/', OFF);
++  await refusedSD('remove /public_html/carbonfibre/index.html (account-home root)', () => h.remove('/public_html/carbonfibre/index.html'));
++  await refusedSD('SITE CHMOD on carbonfibre (account-home root)', () => h.send('SITE CHMOD 644 /public_html/carbonfibre/index.html'));
++  await h.remove('/public_html/cleanic/old.html');
++  await h.rename('/public_html/cleanic/index.html', '/public_html/cleanic/index2.html');
++  await h.uploadFrom(new Blob(['<h1>c</h1>']).stream(), '/public_html/cleanic/x.html');
++  await h.send('SITE CHMOD 644 /public_html/cleanic/x.html');
++  console.log('allowed  delete, rename, raw HTML upload, SITE CHMOD outside SG Garage (unchanged)');
++  // The SG Garage check cannot run: fail closed.
++  reset({ '/x.txt': 'x' }, { listFails: true });
++  await refusedSD('remove when the SG Garage check cannot run (fail closed)', () => guardClient(new Client(), '/', OFF).remove('/x.txt'));
++});
++
++Deno.test('end to end: HTML overwrite check (title, meta, H1, JSON-LD, FAQ, footer, older date), 403 + audit row', async () => {
++  if (skipOn()) return;
++  docroot();
++  audit.length = 0;
++  const live = PAGE();
++  const sha = sha256(Buffer.from(live));
++  const bad: [string, string][] = [
++    ['title change', PAGE({ title: 'Cheap Aircon' })], ['meta description change', PAGE({ desc: 'Other.' })], ['H1 change', PAGE({ h1: 'Aircon' })],
++    ['JSON-LD value change', PAGE({ tel: '+65 0000 0000' })], ['FAQ question lost', PAGE({ faq: 'Different?' })], ['review footer removed', PAGE({ footer: false })],
++    ['older than live', PAGE({ date: '2026-01-01' })],
++  ];
++  const before = snap();
++  for (const [label, html] of bad) {
++    const r = await ftpWriteFile(req({ path: '/index.html', content: html, expected_sha256: sha }));
++    const j = await r.json();
++    if (r.status !== 403 || !j.side_door) throw new Error(label + ': expected 403 side_door, got ' + r.status + ' ' + JSON.stringify(j).slice(0, 200));
++    console.log('refused  ftpWriteFile /index.html ' + label + ' (403)');
++  }
++  cmds['sd1'] = { id: 'sd1', action: 'write', path: '/index.html', content: PAGE({ h1: 'X' }), expected_sha256: sha, status: 'pending', attempts: 0 };
++  const w = await websiteCommandWorker(req({ id: 'sd1' }));
++  if (w.status !== 403 || cmds['sd1'].status !== 'failed') throw new Error('worker: expected 403 + failed, got ' + w.status + ' / ' + cmds['sd1'].status);
++  console.log('refused  websiteCommandWorker H1 change (403, command failed)');
++  if (snap() !== before) throw new Error('server changed (no backup, no upload expected)');
++  const rows = audit.filter((a) => a.stage === 'side-door-refused');
++  if (rows.length !== bad.length + 1) throw new Error('expected ' + (bad.length + 1) + ' side-door audit rows, got ' + rows.length);
++  console.log('ok       server unchanged; ' + rows.length + ' side-door-refused audit rows');
++  const ok = await ftpWriteFile(req({ path: '/index.html', content: PAGE({ body: '<p>New paragraph.</p>', date: '2026-11-15' }), expected_sha256: sha }));
++  if (ok.status !== 200) throw new Error('body edit should pass: ' + ok.status + ' ' + JSON.stringify(await ok.json()).slice(0, 300));
++  const n = await safeWriteRemoteText('/articles/new.html', PAGE({ h1: 'New article' }));
++  const s = await safeWriteRemoteText('/sitemap.xml', '<urlset><url><loc>https://www.sggarage.com/articles/new.html</loc></url></urlset>', { expectedSha256: sha256(Buffer.from(state.files.get('/sitemap.xml')!)) });
++  const j = await safeWriteRemoteText('/article-cards.json', '[{"href":"/articles/new.html","cat":"Car Aircon","title":"New"}]', { expectedSha256: sha256(Buffer.from('[]')) });
++  if (!n.verified || !s.verified || !j.verified) throw new Error('allowed writes did not verify');
++  console.log('allowed  HTML body edit (200), new HTML page, sitemap.xml and article-cards.json overwrite (non-HTML: unchanged by this diff)');
++  docroot();
++  const h = await ftpHealthCheck(req({}));
++  if (h.status !== 200) throw new Error('health probe: ' + h.status + ' ' + JSON.stringify(await h.json()).slice(0, 400));
++  console.log('allowed  ftpHealthCheck probe write + remove (200)');
++});
++
++Deno.test('end to end: never-write still refuses first; a refused write is never retried', async () => {
++  if (skipOn()) return;
++  docroot();
++  const r = await ftpWriteFile(req({ path: '/.htaccess', content: 'x' }));
++  const j = await r.json();
++  if (r.status !== 403 || !j.never_write) throw new Error('.htaccess: expected never_write 403, got ' + r.status);
++  console.log('refused  .htaccess (never-write, 403, unchanged)');
++});
+diff -ruN a/tests/sggUnlocked.test.ts b/tests/sggUnlocked.test.ts
+--- a/tests/sggUnlocked.test.ts	2026-11-14 15:54:56.192784866 +0000
++++ b/tests/sggUnlocked.test.ts	2026-11-14 15:54:56.195296655 +0000
+@@ -28,13 +28,12 @@
+   docroot();
+   const w1 = await safeWriteRemoteText('/new-article.html', '<h1>new</h1>');
+   if (!w1.verified || !state.files.has('/new-article.html')) throw new Error('new file not written');
+-  const w2 = await safeWriteRemoteText('/index.html', '<h1>SGG v2</h1>', { expectedSha256: sha256(Buffer.from('<h1>SGG</h1>')) });
++  const w2 = await safeWriteRemoteText('/index.html', '<h1>SGG</h1><p>v2 body text</p>', { expectedSha256: sha256(Buffer.from('<h1>SGG</h1>')) });
+   if (!w2.verified) throw new Error('overwrite not verified');
+-  await withFtp((c: any) => c.uploadFrom(new Blob(['x']).stream(), '/articles/b.html'));
+-  await withFtp((c: any) => c.rename('/old.html', '/renamed.html'));
++  // OPTION C side door: raw HTML upload, rename and SITE CHMOD are refused in SG Garage (tests/sggSideDoor.test.ts).
++  await withFtp((c: any) => c.uploadFrom(new Blob(['x']).stream(), '/articles/b.css'));
+   await withFtp((c: any) => c.ensureDir('/newdir'));
+-  await withFtp((c: any) => c.send('SITE CHMOD 644 /index.html'));
+-  for (const f of ['/articles/b.html', '/renamed.html']) if (!state.files.has(f)) throw new Error('missing ' + f);
++  for (const f of ['/articles/b.css']) if (!state.files.has(f)) throw new Error('missing ' + f);
+   const r1 = await ftpWriteFile(req({ path: '/articles/a.html', content: 'a2', expected_sha256: sha256(Buffer.from('a')) }));
+   if (r1.status !== 200) throw new Error('ftpWriteFile status ' + r1.status + ' ' + JSON.stringify(await r1.json()));
+   cmds['u1'] = { id: 'u1', action: 'write', path: '/articles/c.html', content: 'c', status: 'pending', attempts: 0 };
+@@ -44,7 +43,7 @@
+   docroot();  // fresh server for the probe (write + read back + remove)
+   const h = await ftpHealthCheck(req({}));
+   if (h.status !== 200) throw new Error('health check (probe write + remove) ' + h.status + ' ' + JSON.stringify(await h.json()).slice(0, 600));
+-  console.log('allowed  new file, overwrite with sha, upload, rename, mkdir, SITE CHMOD, ftpWriteFile 200, worker 200, health probe 200');
++  console.log('allowed  new file, HTML overwrite keeping H1, css upload, mkdir, ftpWriteFile 200, worker 200, health probe 200');
+ });
+ 
+ Deno.test('unlocked: server config and server code are still never written (every-site rule), 403 + audit', async () => {

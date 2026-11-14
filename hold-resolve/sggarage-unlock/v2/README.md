@@ -1,5 +1,7 @@
 # SG Garage unlock v2 (DIFF ONLY, NOT SAVED)
 
+> **DROPPED** (OPTION C 1114-2335): not to be saved. See `../../sggarage-option-c/`.
+
 Task "SG GARAGE UNLOCK DIFF UPDATE 1114-2325". This **replaces** the v1 diffs in the folder above (commit 3e01a2c81).
 Edwin's words, relayed: 10:42pm "go through Claude and remove the lock"; 11:07pm "Unlock sggarage as well", "Unlock everyone";
 11:11pm "We'll do all the checking and upload the latest, never-overwritten website to the server. Then you unlock everything."

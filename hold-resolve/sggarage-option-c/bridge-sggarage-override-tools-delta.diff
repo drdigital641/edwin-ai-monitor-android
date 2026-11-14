@@ -1,0 +1,61 @@
+diff -ruN b/base44/shared/liveGuard.ts c/base44/shared/liveGuard.ts
+--- b/base44/shared/liveGuard.ts	2026-11-14 15:49:28.397355595 +0000
++++ c/base44/shared/liveGuard.ts	2026-11-14 15:49:28.403105679 +0000
+@@ -143,7 +143,9 @@
+ // route) use it too. Base44 code is live on save: changing these needs security review AND Edwin's own written yes.
+ export const SGG_GENERATED_SITE = 'sggarage';
+ export const SGG_GENERATED_PATH = /^(sitemap\.xml|sitemap\.txt|llms\.txt|article-cards\.json)$/;
+-export const SGG_OVERRIDE_WRITERS: readonly ('publisher' | 'tools')[] = Object.freeze(['publisher']);
++// OPTIONAL TOOLS DELTA (separate SPO item): 'tools' added so the night run's Bridge edit_file/write_file route can update
++// the same four files, with the same content checks.
++export const SGG_OVERRIDE_WRITERS: readonly ('publisher' | 'tools')[] = Object.freeze(['publisher', 'tools']);
+ 
+ // article-cards.json (the SG Garage articles page card list): strict shape. A JSON array of 1 to 5000 cards; each card
+ // is an object with exactly the keys href, cat and title, all strings; href is /articles/<lower-case-slug>.html and
+diff -ruN b/tests/generatedOverride.test.ts c/tests/generatedOverride.test.ts
+--- b/tests/generatedOverride.test.ts	2026-11-14 15:49:28.408735634 +0000
++++ c/tests/generatedOverride.test.ts	2026-11-14 15:49:28.411606562 +0000
+@@ -23,10 +23,10 @@
+   });
+ }
+ 
+-Deno.test('sggarage (OPTION C 1114-2335): same three files allowed for the publisher only, refused for tool writes', async () => {
++Deno.test('sggarage (OPTION C 1114-2335): same three files allowed for the publisher and (tools delta) tool writes', async () => {
+   for (const rel of ['sitemap.xml', 'sitemap.txt', 'llms.txt']) {
+     await ok(g('sggarage', rel, rel === 'sitemap.xml' ? OLD_XML : 'a\n', rel === 'sitemap.xml' ? NEW_XML : 'https://x.sg/\n'));
+-    await no(g('sggarage', rel, rel === 'sitemap.xml' ? OLD_XML : 'a\n', rel === 'sitemap.xml' ? NEW_XML : 'https://x.sg/\n', false), /needs an override/);
++    await ok(g('sggarage', rel, rel === 'sitemap.xml' ? OLD_XML : 'a\n', rel === 'sitemap.xml' ? NEW_XML : 'https://x.sg/\n', false));  // tools delta
+   }
+ });
+ 
+diff -ruN b/tests/sggGeneratedOverride.test.ts c/tests/sggGeneratedOverride.test.ts
+--- b/tests/sggGeneratedOverride.test.ts	2026-11-14 15:49:28.409004404 +0000
++++ c/tests/sggGeneratedOverride.test.ts	2026-11-14 15:49:28.411687441 +0000
+@@ -19,13 +19,13 @@
+ const NEW_CARDS = JSON.stringify([card('c', 'Maintenance', 'Car Engine Knocking Noise? “What” it means – €'), card('a'), card('b', 'BMW', 'BMW X3 brake service (edited)')], null, 4);
+ 
+ Deno.test('settings: publisher-only, exact four root paths, Page One override list unchanged, flags unchanged', () => {
+-  if (JSON.stringify(SGG_OVERRIDE_WRITERS) !== '["publisher"]') throw new Error('writers must be ["publisher"]');
++  if (JSON.stringify(SGG_OVERRIDE_WRITERS) !== '["publisher","tools"]') throw new Error('writers must be ["publisher","tools"] (tools delta)');
+   if (JSON.stringify(GENERATED_OVERRIDE_SITES) !== '["pageone"]') throw new Error('Page One override list changed');
+   for (const p of ['sitemap.xml', 'sitemap.txt', 'llms.txt', 'article-cards.json']) if (!SGG_GENERATED_PATH.test(p)) throw new Error(p);
+   for (const p of ['articles/sitemap.xml', 'x/llms.txt', 'llms-full.txt', 'sitemap.xml.bak', 'Sitemap.xml', 'article-cards.json.txt', 'articles/article-cards.json', 'robots.txt', 'index.html'])
+     if (SGG_GENERATED_PATH.test(p)) throw new Error('path should not match: ' + p);
+   if (SITE_HOLDS.some((h) => h.on !== false)) throw new Error('flags changed');
+-  console.log('ok       writers ["publisher"]; 4 exact root paths; Page One list unchanged; all 7 flags off (unchanged from 33343ea)');
++  console.log('ok       writers ["publisher","tools"] (tools delta); 4 exact root paths; Page One list unchanged; all 7 flags off (unchanged from 33343ea)');
+ });
+ 
+ Deno.test('sggarage publisher: the four files are replaced when the content is sane', async () => {
+@@ -77,7 +77,10 @@
+ 
+ Deno.test('the override is narrow: tool writes, other paths, other sites, other files all refused as before', async () => {
+   for (const rel of ['sitemap.xml', 'sitemap.txt', 'llms.txt', 'article-cards.json'])
+-    await no('sggarage ' + rel + ' by a Bridge TOOL write (no publisher flag)', g('sggarage', rel, rel.endsWith('.xml') ? XML() : rel.endsWith('.json') ? LIVE_CARDS : 'https://www.sggarage.com/\n', rel.endsWith('.xml') ? XML('<url><loc>https://www.sggarage.com/z</loc></url>') : rel.endsWith('.json') ? NEW_CARDS : 'https://www.sggarage.com/z\n', false), /needs an override/);
++    await ok('sggarage ' + rel + ' by a Bridge TOOL write (tools delta)', g('sggarage', rel, rel.endsWith('.xml') ? XML() : rel.endsWith('.json') ? LIVE_CARDS : 'https://www.sggarage.com/\n', rel.endsWith('.xml') ? XML('<url><loc>https://www.sggarage.com/z</loc></url>') : rel.endsWith('.json') ? NEW_CARDS : 'https://www.sggarage.com/z\n', false));
++  await no('sggarage sitemap.xml <script> by a TOOL write (same checks)', g('sggarage', 'sitemap.xml', XML(), XML('<script>x</script>'), false), /element <script> is not allowed/);
++  await no('sggarage article-cards.json dropping a card by a TOOL write', g('sggarage', 'article-cards.json', LIVE_CARDS, JSON.stringify([card('a')]), false), /would drop/);
++  await no('pageone sitemap.xml by a TOOL write (Page One stays publisher-only)', g('pageone', 'sitemap.xml', XML(), XML('<url><loc>https://x.sg/z</loc></url>'), false), /needs an override/);
+   await no('sggarage robots.txt (publisher)', g('sggarage', 'robots.txt', 'User-agent: *\n', 'User-agent: *\nDisallow: /\n'), /needs an override/);
+   await no('sggarage llms-full.txt (publisher)', g('sggarage', 'llms-full.txt', 'a', 'b'), /needs an override/);
+   await no('sggarage articles/sitemap.xml (sub-folder)', g('sggarage', 'articles/sitemap.xml', XML(), XML(' ')), /needs an override/);

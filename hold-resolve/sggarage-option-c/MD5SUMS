@@ -1,0 +1,11 @@
+c874753f9eafcdc6f1ee1c5bd7d0da26  README.md
+b41399f37b38dae6d5f044d30d0df453  bridge-liveGuard-33343ea.ts
+d92306d8c058c2831cc3c5f59f7efacf  bridge-sggarage-override-tools-delta.diff
+64aac12fe3818707a852a72dc14bba67  bridge-sggarage-override.diff
+b6876741d37f5cb6fb6931a6fc6340e8  sggarage-controller-side-door.diff
+ae85c4c47a0d0d8613a4bb78c9a902e0  test-bridge-override-plus-tools-delta.txt
+ff0fe78265dc006476275561d92bc512  test-bridge-override.txt
+167f0bf1f8054a36140846f07baf6c0a  test-controller-ac87bd6-unchanged.txt
+f9b01c4d92e649aa1eca365afe370733  test-controller-side-door-flag-off.txt
+23f7e07414088ec9dbc649650c827e1d  test-controller-side-door-flag-on.txt
+5c4650d507d352e6f86d2ba730daa9ad  ../../docs/EMERGENCY-LOCK.md

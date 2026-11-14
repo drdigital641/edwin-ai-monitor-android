@@ -1,0 +1,193 @@
+diff -ruN a/base44/shared/liveGuard.ts b/base44/shared/liveGuard.ts
+--- a/base44/shared/liveGuard.ts	2026-11-14 15:49:28.390578131 +0000
++++ b/base44/shared/liveGuard.ts	2026-11-14 15:49:28.397355595 +0000
+@@ -132,6 +132,60 @@
+ export const GENERATED_OVERRIDE_SITES = Object.freeze(['pageone']);
+ export const GENERATED_OVERRIDE_PATH = /^(preview\/(star-performance|klar-details|cska-auto|dmts|benjamin-poon)\/)?(sitemap\.xml|sitemap\.txt|llms\.txt)$/;
+ 
++// SG GARAGE GENERATED-FILE OVERRIDE (DRAFT, "SG GARAGE OPTION C 1114-2335"; Edwin 11:30pm SGT 14 Nov 2026: "allow
++// sitemap and article cards to update"). Same pattern as the Page One override above, for site key 'sggarage' only
++// (docroot public_html/carbonfibre, Bridge prefix ''): only a write that carries the publisher flag may REPLACE exactly
++// these four files at the site root, and only when the new content passes the checks below. Every other check above
++// still runs first (path rules, never-write list, unknown live state). Paths in sub-folders never match.
++// SGG_OVERRIDE_WRITERS: 'publisher' = a writeFile call carrying the publisher option. The hourly publisher writes Page One only
++// today (pageoneArticles.ts SITE_KEY), so with ['publisher'] this override is dormant until a publisher step writes
++// sggarage. Adding 'tools' (separate delta for SPO) lets Bridge tool writes (edit_file / write_file, the night run's
++// route) use it too. Base44 code is live on save: changing these needs security review AND Edwin's own written yes.
++export const SGG_GENERATED_SITE = 'sggarage';
++export const SGG_GENERATED_PATH = /^(sitemap\.xml|sitemap\.txt|llms\.txt|article-cards\.json)$/;
++export const SGG_OVERRIDE_WRITERS: readonly ('publisher' | 'tools')[] = Object.freeze(['publisher']);
++
++// article-cards.json (the SG Garage articles page card list): strict shape. A JSON array of 1 to 5000 cards; each card
++// is an object with exactly the keys href, cat and title, all strings; href is /articles/<lower-case-slug>.html and
++// unique; title 1-300 and cat 1-60 characters with no < or > or control characters; "javascript:" nowhere. When the
++// live file is a readable card list, every live href must still be in the new list (cards may be added or edited,
++// never dropped).
++export function articleCardsProblem(bytes: Uint8Array, liveBytes?: Uint8Array): string | null {
++  let text: string;
++  try { text = new TextDecoder('utf-8', { fatal: true }).decode(bytes); } catch { return 'not valid UTF-8 text'; }
++  const jsRe = /j[\s\x00-\x1f]*a[\s\x00-\x1f]*v[\s\x00-\x1f]*a[\s\x00-\x1f]*s[\s\x00-\x1f]*c[\s\x00-\x1f]*r[\s\x00-\x1f]*i[\s\x00-\x1f]*p[\s\x00-\x1f]*t[\s\x00-\x1f]*:/i;
++  if (jsRe.test(text)) return 'javascript: is not allowed in article-cards.json';
++  let data: unknown;
++  try { data = JSON.parse(text.replace(/^\uFEFF/, '')); } catch (e) { return 'article-cards.json is not valid JSON (' + String((e as Error).message).slice(0, 80) + ')'; }
++  if (!Array.isArray(data)) return 'article-cards.json must be a JSON array';
++  if (data.length < 1 || data.length > 5000) return 'article-cards.json must have 1 to 5000 cards (has ' + data.length + ')';
++  const seen = new Set<string>();
++  const bad = /[<>\x00-\x1f\x7f]/;
++  for (let i = 0; i < data.length; i++) {
++    const c = data[i] as Record<string, unknown>;
++    if (!c || typeof c !== 'object' || Array.isArray(c) || Object.getPrototypeOf(c) !== Object.prototype) return 'card ' + i + ' is not an object';
++    const keys = Object.keys(c).sort().join(',');
++    if (keys !== 'cat,href,title') return 'card ' + i + ' must have exactly href, cat and title (has ' + keys.slice(0, 80) + ')';
++    const { href, cat, title } = c;
++    if (typeof href !== 'string' || typeof cat !== 'string' || typeof title !== 'string') return 'card ' + i + ': href, cat and title must be strings';
++    if (href.length > 200 || !/^\/articles\/[a-z0-9][a-z0-9-]*\.html$/.test(href)) return 'card ' + i + ': href ' + JSON.stringify(href.slice(0, 80)) + ' is not /articles/<slug>.html';
++    if (jsRe.test(href) || jsRe.test(cat) || jsRe.test(title)) return 'card ' + i + ': javascript: is not allowed in article-cards.json';
++    if (seen.has(href)) return 'card ' + i + ': href ' + href + ' appears twice';
++    seen.add(href);
++    if (!title.trim() || title.length > 300 || bad.test(title)) return 'card ' + i + ': title must be 1-300 characters with no < > or control characters';
++    if (!cat.trim() || cat.length > 60 || bad.test(cat)) return 'card ' + i + ': cat must be 1-60 characters with no < > or control characters';
++  }
++  if (liveBytes) {
++    let live: unknown = null;
++    try { live = JSON.parse(new TextDecoder('utf-8').decode(liveBytes).replace(/^\uFEFF/, '')); } catch { live = null; }
++    if (Array.isArray(live)) {
++      const lost = live.map((x: any) => x && typeof x.href === 'string' ? x.href : null).filter((h): h is string => !!h && !seen.has(h));
++      if (lost.length) return 'article-cards.json would drop ' + lost.length + ' live card(s), e.g. ' + lost[0].slice(0, 120);
++    }
++  }
++  return null;
++}
++
+ // Minimal XML well-formedness check (no DOM parser in the Deno runtime): one root element, every tag closed in order,
+ // attribute values quoted, only the five XML entities or numeric references, no text outside the root.
+ // Active content is refused (SPO LOW follow-up, 14 Nov 2026): elements named script, iframe, object or embed in any
+@@ -230,6 +284,11 @@
+     const why = generatedFileProblem(rel, newBytes);
+     return why ? refuse('generated-file override: ' + why) : null;
+   }
++  if (site === SGG_GENERATED_SITE && SGG_GENERATED_PATH.test(rel)
++    && ((args.publisher === true && SGG_OVERRIDE_WRITERS.includes('publisher')) || (args.publisher !== true && SGG_OVERRIDE_WRITERS.includes('tools')))) {
++    const why = rel === 'article-cards.json' ? articleCardsProblem(newBytes, live.bytes) : generatedFileProblem(rel, newBytes);
++    return why ? refuse('sggarage generated-file override: ' + why) : null;
++  }
+   if (!problems.length) return null;
+   const sha = await sha256(newBytes);
+   if (overrides.some((o) => o.site === site && o.path === rel && o.sha256 === sha && o.by === 'Edwin' && o.review)) return null;
+diff -ruN a/tests/generatedOverride.test.ts b/tests/generatedOverride.test.ts
+--- a/tests/generatedOverride.test.ts	2026-11-14 15:49:28.406067967 +0000
++++ b/tests/generatedOverride.test.ts	2026-11-14 15:49:28.408735634 +0000
+@@ -23,9 +23,10 @@
+   });
+ }
+ 
+-Deno.test('refused for sggarage (no override at all), same three files', async () => {
++Deno.test('sggarage (OPTION C 1114-2335): same three files allowed for the publisher only, refused for tool writes', async () => {
+   for (const rel of ['sitemap.xml', 'sitemap.txt', 'llms.txt']) {
+-    await no(g('sggarage', rel, rel === 'sitemap.xml' ? OLD_XML : 'a\n', rel === 'sitemap.xml' ? NEW_XML : 'https://x.sg/\n'), /needs an override/);
++    await ok(g('sggarage', rel, rel === 'sitemap.xml' ? OLD_XML : 'a\n', rel === 'sitemap.xml' ? NEW_XML : 'https://x.sg/\n'));
++    await no(g('sggarage', rel, rel === 'sitemap.xml' ? OLD_XML : 'a\n', rel === 'sitemap.xml' ? NEW_XML : 'https://x.sg/\n', false), /needs an override/);
+   }
+ });
+ 
+diff -ruN a/tests/sggGeneratedOverride.test.ts b/tests/sggGeneratedOverride.test.ts
+--- a/tests/sggGeneratedOverride.test.ts	1970-01-01 00:00:00.000000000 +0000
++++ b/tests/sggGeneratedOverride.test.ts	2026-11-14 15:49:28.409004404 +0000
+@@ -0,0 +1,97 @@
++// SG Garage generated-file override (DRAFT, "SG GARAGE OPTION C 1114-2335"). Run:
++// deno test --no-check -A --import-map tests/importmap.json tests/sggGeneratedOverride.test.ts
++// Pure guard calls with fake live states: never touches a live site.
++import { liveGuard, articleCardsProblem, SGG_OVERRIDE_WRITERS, SGG_GENERATED_PATH, GENERATED_OVERRIDE_SITES } from '../base44/shared/liveGuard.ts';
++import { writeBlockedReason, SITE_HOLDS } from '../base44/shared/bridgeConfig.ts';
++
++const enc = (s: string) => new TextEncoder().encode(s);
++const sha256 = async (b: Uint8Array) => Array.from(new Uint8Array(await crypto.subtle.digest('SHA-256', b))).map((x) => x.toString(16).padStart(2, '0')).join('');
++const present = (s: string) => ({ state: 'present' as const, bytes: enc(s) });
++const g = (site: string, rel: string, liveText: string, newText: string, publisher = true) =>
++  liveGuard({ site, rel, op: 'write', live: present(liveText), newBytes: enc(newText), overrides: [], sha256, publisher });
++const ok = async (label: string, p: Promise<string | null>) => { const r = await p; if (r !== null) throw new Error(label + ': expected allowed, got: ' + r); console.log('allowed  ' + label); };
++const no = async (label: string, p: Promise<string | null>, m: RegExp) => { const r = await p; if (r === null || !m.test(r)) throw new Error(label + ': expected refusal ' + m + ', got: ' + r); console.log('refused  ' + label); };
++
++const NS = 'xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"';
++const XML = (extra = '') => `<?xml version="1.0" encoding="UTF-8"?>\n<urlset ${NS}><url><loc>https://www.sggarage.com/</loc></url>${extra}</urlset>\n`;
++const card = (slug: string, cat = 'Car Servicing', title = 'Title ' + slug) => ({ href: '/articles/' + slug + '.html', cat, title });
++const LIVE_CARDS = JSON.stringify([card('a'), card('b', 'BMW', 'BMW X3 Brake Service: Cost, Interval & What Gets Checked')], null, 4);
++const NEW_CARDS = JSON.stringify([card('c', 'Maintenance', 'Car Engine Knocking Noise? “What” it means – €'), card('a'), card('b', 'BMW', 'BMW X3 brake service (edited)')], null, 4);
++
++Deno.test('settings: publisher-only, exact four root paths, Page One override list unchanged, flags unchanged', () => {
++  if (JSON.stringify(SGG_OVERRIDE_WRITERS) !== '["publisher"]') throw new Error('writers must be ["publisher"]');
++  if (JSON.stringify(GENERATED_OVERRIDE_SITES) !== '["pageone"]') throw new Error('Page One override list changed');
++  for (const p of ['sitemap.xml', 'sitemap.txt', 'llms.txt', 'article-cards.json']) if (!SGG_GENERATED_PATH.test(p)) throw new Error(p);
++  for (const p of ['articles/sitemap.xml', 'x/llms.txt', 'llms-full.txt', 'sitemap.xml.bak', 'Sitemap.xml', 'article-cards.json.txt', 'articles/article-cards.json', 'robots.txt', 'index.html'])
++    if (SGG_GENERATED_PATH.test(p)) throw new Error('path should not match: ' + p);
++  if (SITE_HOLDS.some((h) => h.on !== false)) throw new Error('flags changed');
++  console.log('ok       writers ["publisher"]; 4 exact root paths; Page One list unchanged; all 7 flags off (unchanged from 33343ea)');
++});
++
++Deno.test('sggarage publisher: the four files are replaced when the content is sane', async () => {
++  await ok('sitemap.xml', g('sggarage', 'sitemap.xml', XML(), XML('<url><loc>https://www.sggarage.com/articles/c.html</loc><lastmod>2026-11-15</lastmod></url>')));
++  await ok('sitemap.xml with xhtml:link alternates', g('sggarage', 'sitemap.xml', XML(), XML('<url><loc>https://www.sggarage.com/b/</loc><xhtml:link xmlns:xhtml="http://www.w3.org/1999/xhtml" rel="alternate" hreflang="en" href="https://www.sggarage.com/b/"/></url>')));
++  await ok('sitemap.txt', g('sggarage', 'sitemap.txt', 'https://www.sggarage.com/\n', 'https://www.sggarage.com/\nhttps://www.sggarage.com/articles/c.html\n'));
++  await ok('llms.txt', g('sggarage', 'llms.txt', '# SG Garage\n', '# SG Garage\n- Featured: /articles/c.html\n'));
++  await ok('article-cards.json (card added at the top, one title edited)', g('sggarage', 'article-cards.json', LIVE_CARDS, NEW_CARDS));
++});
++
++Deno.test('sggarage publisher: sitemap.xml with active content or no URLs refused (d1f0dbf3d hardening)', async () => {
++  await no('sitemap.xml <script>', g('sggarage', 'sitemap.xml', XML(), XML('<script>x</script>')), /element <script> is not allowed/);
++  await no('sitemap.xml <xhtml:iframe>', g('sggarage', 'sitemap.xml', XML(), XML('<xhtml:iframe/>')), /element <xhtml:iframe> is not allowed/);
++  await no('sitemap.xml onload attribute', g('sggarage', 'sitemap.xml', XML(), XML('<url><loc onload="x">https://www.sggarage.com/z</loc></url>')), /attribute onload is not allowed/);
++  await no('sitemap.xml javascript: hidden with references', g('sggarage', 'sitemap.xml', XML(), XML('<url><loc>&#106;avascript&#58;alert(1)</loc></url>')), /javascript: is not allowed/);
++  await no('sitemap.xml not well-formed', g('sggarage', 'sitemap.xml', XML(), '<urlset><url>'), /not well-formed/);
++  await no('sitemap.xml 0 URLs', g('sggarage', 'sitemap.xml', XML(), `<urlset ${NS}></urlset>`), /0 URLs/);
++  await no('sitemap.xml wrong root', g('sggarage', 'sitemap.xml', XML(), '<html><loc>https://x.sg/</loc></html>'), /not <urlset>/);
++  await no('sitemap.txt non-URL line', g('sggarage', 'sitemap.txt', 'https://www.sggarage.com/\n', 'https://www.sggarage.com/\n<script>\n'), /not an https URL/);
++  await no('sitemap.txt empty', g('sggarage', 'sitemap.txt', 'https://www.sggarage.com/\n', '\n'), /0 URLs/);
++  await no('llms.txt empty', g('sggarage', 'llms.txt', '# a\n', '  \n'), /llms.txt is empty/);
++});
++
++Deno.test('sggarage publisher: article-cards.json strict shape', async () => {
++  const bad: [string, string, RegExp][] = [
++    ['not JSON', '[{"href":', /not valid JSON/],
++    ['object, not array', '{"cards":[]}', /must be a JSON array/],
++    ['empty array', '[]', /1 to 5000 cards/],
++    ['extra key', JSON.stringify([{ ...card('a'), img: 'x.jpg' }, card('b')]), /exactly href, cat and title/],
++    ['missing key', JSON.stringify([{ href: '/articles/a.html', title: 't' }, card('b')]), /exactly href, cat and title/],
++    ['__proto__ key', '[{"href":"/articles/a.html","cat":"c","title":"t","__proto__":{"x":1}},' + JSON.stringify(card('b')) + ']', /exactly href, cat and title/],
++    ['number title', JSON.stringify([{ href: '/articles/a.html', cat: 'c', title: 5 }, card('b')]), /must be strings/],
++    ['card is a string', JSON.stringify(['x', card('a'), card('b')]), /is not an object/],
++    ['href off-site', JSON.stringify([{ ...card('a'), href: 'https://evil.example/a.html' }, card('b')]), /is not \/articles\/<slug>.html/],
++    ['href ../', JSON.stringify([{ ...card('a'), href: '/articles/../index.html' }, card('b')]), /is not \/articles\/<slug>.html/],
++    ['href javascript:', JSON.stringify([{ ...card('a'), href: 'javascript:alert(1)' }, card('b')]), /javascript: is not allowed/],
++    ['javascript: hidden with \\u escapes', '[{"href":"/articles/a.html","cat":"c","title":"\\u006aavascript:x"},' + JSON.stringify(card('b')) + ']', /javascript: is not allowed/],
++    ['title with HTML', JSON.stringify([{ ...card('a'), title: '<img src=x onerror=alert(1)>' }, card('b')]), /no < > or control/],
++    ['cat with control character', JSON.stringify([{ ...card('a'), cat: 'a\u0007' }, card('b')]), /no < > or control/],
++    ['empty title', JSON.stringify([{ ...card('a'), title: ' ' }, card('b')]), /title must be 1-300/],
++    ['duplicate href', JSON.stringify([card('a'), card('a'), card('b')]), /appears twice/],
++    ['drops a live card', JSON.stringify([card('a'), card('c')]), /would drop 1 live card/],
++  ];
++  for (const [label, text, m] of bad) await no('article-cards.json ' + label, g('sggarage', 'article-cards.json', LIVE_CARDS, text), m);
++  if (articleCardsProblem(enc(JSON.stringify([card('a')])), undefined) !== null) throw new Error('a clean list with no live file should pass');
++  if (articleCardsProblem(enc(new Array(5001).fill(0).map((_, i) => card('s' + i)).length ? JSON.stringify(new Array(5001).fill(0).map((_, i) => card('s' + i))) : '')) === null) throw new Error('5001 cards should fail');
++  console.log('ok       clean list without a live file passes; 5001 cards refused');
++});
++
++Deno.test('the override is narrow: tool writes, other paths, other sites, other files all refused as before', async () => {
++  for (const rel of ['sitemap.xml', 'sitemap.txt', 'llms.txt', 'article-cards.json'])
++    await no('sggarage ' + rel + ' by a Bridge TOOL write (no publisher flag)', g('sggarage', rel, rel.endsWith('.xml') ? XML() : rel.endsWith('.json') ? LIVE_CARDS : 'https://www.sggarage.com/\n', rel.endsWith('.xml') ? XML('<url><loc>https://www.sggarage.com/z</loc></url>') : rel.endsWith('.json') ? NEW_CARDS : 'https://www.sggarage.com/z\n', false), /needs an override/);
++  await no('sggarage robots.txt (publisher)', g('sggarage', 'robots.txt', 'User-agent: *\n', 'User-agent: *\nDisallow: /\n'), /needs an override/);
++  await no('sggarage llms-full.txt (publisher)', g('sggarage', 'llms-full.txt', 'a', 'b'), /needs an override/);
++  await no('sggarage articles/sitemap.xml (sub-folder)', g('sggarage', 'articles/sitemap.xml', XML(), XML(' ')), /needs an override/);
++  await no('sggarage other .json (publisher)', g('sggarage', 'assets/data.json', '[]', '[1]'), /needs an override/);
++  const OLD = '<html><head><title>A</title></head><body><h1>A</h1></body></html>';
++  await no('sggarage index.html title change (publisher)', g('sggarage', 'index.html', OLD, OLD.replace('<title>A', '<title>B')), /title would change/);
++  await no('sggarage .htaccess (publisher)', g('sggarage', '.htaccess', 'a', 'b'), /never written/);
++  await no('sggarage x.php (publisher)', g('sggarage', 'x.php', 'a', 'b'), /never written/);
++  for (const p of ['.htaccess', 'x.php', 'a.cgi', 'a.sh']) if (!writeBlockedReason(p)) throw new Error('bridgeConfig block missing for ' + p);
++  await no('cleanic article-cards.json (publisher)', g('cleanic', 'article-cards.json', LIVE_CARDS, NEW_CARDS), /needs an override/);
++  await no('pageone article-cards.json (publisher; not in the Page One list)', g('pageone', 'article-cards.json', LIVE_CARDS, NEW_CARDS), /needs an override/);
++  await no('contiexpert sitemap.xml (publisher)', g('contiexpert', 'sitemap.xml', XML(), XML('<url><loc>https://x.sg/z</loc></url>')), /needs an override/);
++  await no('SGGARAGE (wrong case) sitemap.xml', g('SGGARAGE', 'sitemap.xml', XML(), XML('<url><loc>https://x.sg/z</loc></url>')), /needs an override/);
++  const unk = await liveGuard({ site: 'sggarage', rel: 'sitemap.xml', op: 'write', live: { state: 'unknown', error: 'timeout' }, newBytes: enc(XML()), overrides: [], sha256, publisher: true });
++  if (unk === null || !/could not be confirmed/.test(unk)) throw new Error('unknown live state must still be refused: ' + unk);
++  console.log('refused  sggarage sitemap.xml with unknown live state (publisher)');
++});
