@@ -38,6 +38,32 @@ def rel_of(base, href, cur):
     return path
 for site in only:
     base = SITES[site]; out = os.path.join(ROOT, 'live', site); os.makedirs(out, exist_ok=True)
+    fixed = os.path.join(HERE, site + '-files.txt')
+    if os.path.exists(fixed):
+        # LIST MODE (SG Garage, 14 Nov 2026): fetch exactly the listed server paths (from the cPanel listing of the
+        # Bridge-writable static set), no crawling; plus a sitemap coverage report (which sitemap URL maps to which file).
+        paths = [l.strip() for l in open(fixed) if l.strip() and not l.startswith('#')]
+        st, sm = get(base + '/sitemap.xml'); cover = []
+        for loc in re.findall(rb'<loc>([^<]+)</loc>', sm):
+            r = rel_of(base, loc.decode().strip(), 'index.html')
+            cover.append((loc.decode().strip(), r or '-', 'in-list' if r in paths else 'NOT-IN-LIST'))
+        manifest = []; misses = []
+        for rel in paths:
+            code, body = get(url_of(base, rel))
+            if code != 200: misses.append((rel, code)); continue
+            dst = os.path.join(out, rel); os.makedirs(os.path.dirname(dst), exist_ok=True)
+            open(dst, 'wb').write(body)
+            manifest.append((rel, hashlib.sha256(body).hexdigest(), len(body)))
+            time.sleep(0.3)
+        with open(os.path.join(ROOT, 'live', site + '.sitemap-coverage.tsv'), 'w') as f:
+            for c in cover: f.write('%s\t%s\t%s\n' % c)
+        with open(os.path.join(ROOT, 'live', site + '.manifest.tsv'), 'w') as f:
+            for m in sorted(manifest): f.write('%s\t%s\t%d\n' % m)
+        with open(os.path.join(ROOT, 'live', site + '.misses.tsv'), 'w') as f:
+            for m in sorted(misses): f.write('%s\t%s\n' % m)
+        print(site, len(manifest), 'files', len(misses), 'misses', len(cover), 'sitemap urls',
+              sum(1 for c in cover if c[2] != 'in-list'), 'not in list')
+        continue
     seeds = [l.split()[2] for l in open(os.path.join(ROOT, 'client-source-shas.txt')) if l.split()[0] == site]
     st, sm = get(base + '/sitemap.xml')
     for loc in re.findall(rb'<loc>([^<]+)</loc>', sm):
