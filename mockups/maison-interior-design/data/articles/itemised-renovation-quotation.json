@@ -1,0 +1,57 @@
+{
+  "slug": "itemised-renovation-quotation",
+  "date_published": "2026-11-15",
+  "title": "Itemised Renovation Quotation: What to Check | Maison",
+  "description": "Comparing designers? What an itemised renovation quotation should show, how to read each line, and the questions to ask before you sign in Singapore.",
+  "keyword": "itemised renovation quotation",
+  "eyebrow": "Planning a renovation",
+  "h1": ["Reading an itemised renovation quotation:", "what each line should tell you"],
+  "lead": "An itemised renovation quotation breaks the job into lines you can read, instead of one lump sum. That makes it easier to see what is included, compare one designer with another, and agree changes before work starts. This note sets out what a good quotation should show, how to read it room by room, and what to ask about before you sign.",
+  "hero": {"src": "Completed-Blk-10-Teck-Whye-1-1024x683.jpg", "alt": "Completed HDB flat at Blk 10 Teck Whye Crescent by Maison Interior Design", "w": 1024, "h": 683, "caption": "A completed HDB flat at Teck Whye Crescent by Maison."},
+  "sections": [
+    {"h2": "Why itemised matters",
+     "p": ["A single total tells you nothing about what is in it. An itemised quotation lists the work in separate lines, so you can ask about each one, remove or change a line, and see exactly what a comparison with another designer is comparing."]},
+    {"h2": "What a good quotation should show",
+     "list": [
+       "Work grouped by area or trade: hacking and alterations, flooring and tiling, carpentry, electrical, painting, and furnishing or decor where included.",
+       "A clear description for each line: what is being built or done, and where in the home.",
+       "Quantity and unit where they apply, such as metres of cabinetry or the number of points, so lines can be checked against the plan.",
+       "What is included and what is not, written down, so nothing is assumed.",
+       "The drawings it refers to, so each carpentry line matches something you can see."
+     ]},
+    {"h2": "How to read it room by room",
+     "p": ["Take the floor plan and the 3D drawings next to the quotation and go one room at a time."],
+     "steps": [
+       ["Match lines to drawings", "Every cabinet, feature wall or built-in in the drawings should have a line, and every line should be something you can find in the drawings."],
+       ["Check the finishes", "Materials, colours and finishes should be named in the quotation, matching the colour proposal."],
+       ["Look for gaps", "Ask about anything you expected but cannot find, such as electrical points, lighting, or clearing and cleaning at the end."],
+       ["Note the applications", "For HDB flats, ask who applies for the HDB renovation permit and who handles the renovation loan paperwork."],
+       ["Ask about changes", "Ask how a change after signing is recorded, so any new line is written down and agreed before it is done."]
+     ]},
+    {"h2": "How Maison does it",
+     "p": ["At Maison the quotation is itemised and arrives together with perspective 3D drawings and a colour proposal, so you can see each room before work begins. You can ask for revisions before the quotation is final. Work then runs under dedicated project management, with a 2-year workmanship warranty and post-sales service after handover."]},
+    {"h2": "Questions to ask any designer",
+     "list": [
+       "Is every line described, so I can see what it covers?",
+       "Do the lines match the 3D drawings room by room?",
+       "What is not included in this quotation?",
+       "Who manages the site, and how will I get updates?",
+       "How are changes after signing written down and agreed?"
+     ]}
+  ],
+  "related": [
+    ["services/", "Interior design services and the five-step process"],
+    ["services/bto-renovation/", "BTO key collection renovation guide"],
+    ["services/new-condo-renovation/", "New condo renovation guide"],
+    ["portfolio/teck-whye-crescent/", "Teck Whye Crescent HDB project"],
+    ["articles/prepare-for-interior-design-consultation/", "What to prepare for your first consultation"]
+  ],
+  "faq": [
+    ["What is an itemised renovation quotation?", "A quotation that lists the renovation work in separate lines, each described and grouped by area or trade, instead of one lump sum. It lets you see what is included and ask about each line."],
+    ["How do I compare two renovation quotations?", "Put both next to the floor plan and go room by room. Compare what each line covers, the materials named, and what is listed as not included. Two totals only compare fairly when the lines cover the same work."],
+    ["Does Maison give an itemised quotation?", "Yes. After the concept consultation and layout proposal you receive an itemised quotation with perspective 3D drawings and a colour proposal, and you can ask for revisions before it is final."],
+    ["Who applies for the HDB renovation permit?", "At Maison the team handles the HDB renovation permit application and helps with your renovation loan application. Ask any designer who does this before you sign."],
+    ["How do I start?", "WhatsApp Maison on +65 9339 1185 with your floor plan and the quotation you want to compare. Roland and the team will come back to you."]
+  ],
+  "wa_text": "Hi Maison, I read your article on itemised renovation quotations. I'd like to send my floor plan and ask about a quotation."
+}
