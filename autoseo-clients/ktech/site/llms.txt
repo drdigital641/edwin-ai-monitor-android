@@ -1,0 +1,23 @@
+# K Tech Auto Solution Sdn. Bhd.
+> Authorised Autel dealer in Johor Bahru, Malaysia (listed on autel.com Where to Buy, Malaysia). Company No. 201801038870 (1300901-K). WhatsApp +60125462820. Call Hooi +60125462820 or Andrew +60125512820. Facebook: https://www.facebook.com/ktechautosolutionsb/ and https://www.facebook.com/KTechHooi/. Email sales@k-techmy.com. Address: No. 28, Jalan Ekoperniagaan 3/11, Taman Ekoperniagaan, 81100 Johor Bahru, Johor, Malaysia. Runs technical training sessions for workshop technicians.
+
+## Pages
+- [Home](https://ktech.my/)
+- [Autel tools](https://ktech.my/autel-diagnostic-tools/)
+- [Services](https://ktech.my/services/)
+- [About](https://ktech.my/about/)
+- [Contact](https://ktech.my/contact/)
+- [Autel MaxiSYS Ultra S2](https://ktech.my/autel-diagnostic-tools/maxisys-ultra-s2/)
+- [Autel MaxiSYS MS919 S2](https://ktech.my/autel-diagnostic-tools/maxisys-ms919-s2/)
+- [Autel MaxiSYS MS909 S2](https://ktech.my/autel-diagnostic-tools/maxisys-ms909-s2/)
+- [Autel MaxiSYS MS909EV](https://ktech.my/autel-diagnostic-tools/maxisys-ms909ev/)
+- [Autel MaxiSYS EV Diagnostics Upgrade Kit](https://ktech.my/autel-diagnostic-tools/ev-diagnostics-upgrade-kit/)
+- [Autel MaxiSYS MS908S3 Kit](https://ktech.my/autel-diagnostic-tools/maxisys-ms908s3/)
+- [Autel MaxiSYS MS906Pro and MS906Pro-TS](https://ktech.my/autel-diagnostic-tools/maxisys-ms906pro/)
+- [Autel MaxiCheck MX900](https://ktech.my/autel-diagnostic-tools/maxicheck-mx900/)
+
+## Articles
+- [TPMS relearn after a tyre change: why the light stays on](https://ktech.my/articles/tpms-relearn-after-tyre-change/): Why the TPMS light stays on after new tyres or a rotation, and how a workshop does a TPMS relearn: auto, stationary or OBD.
+
+## Related
+- [AutoSEO.my](https://autoseo.my/): SEO websites for automotive businesses, a brand of K Tech Auto Solution Sdn Bhd

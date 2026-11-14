@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://lilianproperties.com/sitemap.xml
