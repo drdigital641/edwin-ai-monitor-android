@@ -71,8 +71,12 @@ Deno.test('mkdir only inside a site root or a private folder (guard low item 1)'
   await allowed('mkdir in ~/bluehost-bridge-private/backups', mk(PRIV + '/backups', 'sggarage'));
   await allowed('mkdir in ~/backups-private', mk(BK, 'x'));
   await allowed('mkdir making ~/backups-private itself', mk(HOME, 'backups-private'));
-  for (const n of ['alicia-private', 'danny-private', 'sofacare-private', 'sofacare-production-publisher-private'])
-    await allowed('mkdir in ~/' + n, mk(HOME + '/' + n, 'x'));
+  // Other apps' private folders are never the Bridge's (security review GUARD FOLDER NAMES 1114-1110).
+  for (const n of ['alicia-publisher-private', 'sofacare-production-publisher-private', 'alicia-private', 'danny-private', 'sofacare-private'])
+    await refused('mkdir in ~/' + n, mk(HOME + '/' + n, 'x'));
+  await refused('mkdir making a new ~/x-private folder', mk(HOME, 'x-private'));
+  await refused('mkdir in a look-alike ~/backups-private2', mk(HOME + '/backups-private2', 'x'));
+  await refused('mkdir in a look-alike ~/bluehost-bridge-private-x', mk(HOME + '/bluehost-bridge-private-x', 'x'));
 });
 
 Deno.test('percent-encoded paths can never decode into a path walk', async () => {

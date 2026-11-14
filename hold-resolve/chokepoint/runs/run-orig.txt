@@ -1,32 +1,32 @@
 running 4 tests from ./tests/bulkWrite.test.ts
-accepts a normal site folder and joins base_path ... ok (1ms)
-blocked file types refuse the whole batch ... ok (17ms)
-path traversal and bad paths are refused ... ok (649µs)
-content rules, duplicates, sha format, limits ... ok (13ms)
+accepts a normal site folder and joins base_path ... ok (2ms)
+blocked file types refuse the whole batch ... ok (14ms)
+path traversal and bad paths are refused ... ok (514µs)
+content rules, duplicates, sha format, limits ... ok (17ms)
 running 2 tests from ./tests/bulkWriteMock.test.ts
-bulk create, then overwrite rules, backups and per-file results ... ok (339ms)
+bulk create, then overwrite rules, backups and per-file results ... ok (357ms)
 cannot reach into another site folder; blocked batch writes nothing ... FAILED (1ms)
 running 8 tests from ./tests/crawlerCore.test.ts
-IPv4 boundaries ... ok (800µs)
-IPv6 boundaries and forms ... ok (279µs)
-payload validation keeps last known good (never empty success) ... ok (264µs)
-overlapping lists do not force identity ... ok (383µs)
-classes ... ok (328µs)
-spoofed forwarded header is ignored: only the logged connection address is used ... ok (372µs)
-parsing and sanitizing ... ok (813µs)
-other crawlers: verified only inside their own list; Claude never verified; never OpenAI ... ok (401µs)
+IPv4 boundaries ... ok (640µs)
+IPv6 boundaries and forms ... ok (295µs)
+payload validation keeps last known good (never empty success) ... ok (411µs)
+overlapping lists do not force identity ... ok (429µs)
+classes ... ok (379µs)
+spoofed forwarded header is ignored: only the logged connection address is used ... ok (397µs)
+parsing and sanitizing ... ok (1ms)
+other crawlers: verified only inside their own list; Claude never verified; never OpenAI ... ok (409µs)
 running 6 tests from ./tests/githubSyncMock.test.ts
-request validation: repo allowlist, commit sha only, no deletes ... ok (2ms)
+request validation: repo allowlist, commit sha only, no deletes ... ok (1ms)
 sync ~40 files (text + binary), then re-sync is all unchanged ...
 ------- post-test output -------
-mock sync of 40 files: 332 ms wall (fetch 23 ms), max cPanel/GitHub calls in flight 8
-mock re-sync (all unchanged): 155 ms wall
+mock sync of 40 files: 361 ms wall (fetch 28 ms), max cPanel/GitHub calls in flight 8
+mock re-sync (all unchanged): 169 ms wall
 ----- post-test output end -----
-sync ~40 files (text + binary), then re-sync is all unchanged ... ok (487ms)
-backup that cannot be made means nothing is written ... ok (103ms)
-dry run downloads and lists but writes nothing ... ok (40ms)
-blocked file in the source folder refuses the batch before any download ... ok (122ms)
-missing folder / commit and other-site folder are refused ... FAILED (38ms)
+sync ~40 files (text + binary), then re-sync is all unchanged ... ok (531ms)
+backup that cannot be made means nothing is written ... ok (110ms)
+dry run downloads and lists but writes nothing ... ok (44ms)
+blocked file in the source folder refuses the batch before any download ... ok (127ms)
+missing folder / commit and other-site folder are refused ... FAILED (39ms)
 
  ERRORS 
 

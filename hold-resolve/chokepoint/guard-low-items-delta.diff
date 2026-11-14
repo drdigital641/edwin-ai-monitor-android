@@ -1,6 +1,6 @@
 diff -ruN v3pre/base44/shared/bridgeOps.ts v3/base44/shared/bridgeOps.ts
---- a/base44/shared/bridgeOps.ts	2026-11-14 02:55:20.101466902 +0000
-+++ b/base44/shared/bridgeOps.ts	2026-11-14 02:55:20.124367130 +0000
+--- a/base44/shared/bridgeOps.ts
++++ b/base44/shared/bridgeOps.ts
 @@ -3,7 +3,7 @@
  // -> automatic restore if the readback does not match.
  import { liveGuard, type LiveState } from './liveGuard.ts';
@@ -19,18 +19,17 @@ diff -ruN v3pre/base44/shared/bridgeOps.ts v3/base44/shared/bridgeOps.ts
  }
  
 diff -ruN v3pre/base44/shared/cpanel.ts v3/base44/shared/cpanel.ts
---- a/base44/shared/cpanel.ts	2026-11-14 02:55:20.101530027 +0000
-+++ b/base44/shared/cpanel.ts	2026-11-14 02:55:20.124033346 +0000
-@@ -11,6 +11,23 @@
+--- a/base44/shared/cpanel.ts
++++ b/base44/shared/cpanel.ts
+@@ -11,6 +11,22 @@
  // file). Paths must be plain absolute paths under the account home: no "..", ".", empty segment, "%", backslash,
  // NUL or control character, and fileop must run with doubledecode=0 so cPanel never decodes them a second time.
  const PRIVATE_DIRS = [PRIVATE_ROOT, CPANEL.home + '/backups-private'];
-+// mkdir (guard low item 1, 14 Nov 2026): a folder may only be made inside a site root, ~/bluehost-bridge-private,
-+// ~/backups-private, or one of the *-private folders that already exist on the account (fixed list, never
-+// widened at run time). Site roots are the cPanel document roots of SITES, registered by loadRoots() in
-+// bridgeOps.ts; until they are loaded no site folder may be made (fail closed).
-+const MKDIR_PRIVATE_DIRS = Object.freeze([...PRIVATE_DIRS, ...['alicia-private', 'danny-private', 'sofacare-private',
-+  'sofacare-production-publisher-private'].map((n) => CPANEL.home + '/' + n)]);
++// mkdir (guard low items 1114-1045 + folder names 1114-1110, 14 Nov 2026): a folder may only be made inside a site
++// root, ~/bluehost-bridge-private or ~/backups-private. Fixed list, never widened at run time; the Bridge never makes
++// folders inside any other app's private folders (Alicia, Danny, SofaCare publishers). Site roots are the cPanel
++// document roots of SITES, registered by loadRoots() in bridgeOps.ts; until they are loaded no site folder may be made.
++const MKDIR_PRIVATE_DIRS = Object.freeze([PRIVATE_ROOT, CPANEL.home + '/backups-private']);
 +let siteRootList: readonly string[] = Object.freeze([]);
 +export function setSiteRoots(roots: string[]) {
 +  siteRootList = Object.freeze(roots.filter((r) => typeof r === 'string' && !pathProblem(r) && r !== CPANEL.home + '/public_html'));
@@ -45,7 +44,7 @@ diff -ruN v3pre/base44/shared/cpanel.ts v3/base44/shared/cpanel.ts
  const MUTATING_UAPI = new Set(['Fileman/upload_files', 'Fileman/save_file_content']);
  const grants = new Map<string, number>();
  
-@@ -66,7 +83,7 @@
+@@ -66,7 +82,7 @@
  }
  
  function checkApi2Mutation(func: string, params: Record<string, string>) {
@@ -55,8 +54,8 @@ diff -ruN v3pre/base44/shared/cpanel.ts v3/base44/shared/cpanel.ts
    const list = (v: string | undefined) => String(v ?? '').split(',').filter(Boolean);
    switch (params.op) {
 diff -ruN v3pre/tests/bulkWriteMock.test.ts v3/tests/bulkWriteMock.test.ts
---- a/tests/bulkWriteMock.test.ts	2026-11-14 02:55:20.108078817 +0000
-+++ b/tests/bulkWriteMock.test.ts	2026-11-14 02:55:20.124861902 +0000
+--- a/tests/bulkWriteMock.test.ts
++++ b/tests/bulkWriteMock.test.ts
 @@ -1,6 +1,7 @@
  // End-to-end test of write_files against an in-memory fake cPanel (fetch is replaced; no
  // network). Run: deno test --import-map tests/importmap.json tests/bulkWriteMock.test.ts
@@ -80,8 +79,8 @@ diff -ruN v3pre/tests/bulkWriteMock.test.ts v3/tests/bulkWriteMock.test.ts
    await writeMany({ site: 'pageone', files: [{ path: 'a.html', content: 'x' }, { path: 'b/.htaccess', content: 'x' }] }, ctx).catch((e) => { msg = e.message; });
    if (!/Nothing was written/.test(msg)) throw new Error(msg);
 diff -ruN v3pre/tests/cpanelChokepoint.test.ts v3/tests/cpanelChokepoint.test.ts
---- a/tests/cpanelChokepoint.test.ts	2026-11-14 02:55:20.108384193 +0000
-+++ b/tests/cpanelChokepoint.test.ts	2026-11-14 02:55:20.125009386 +0000
+--- a/tests/cpanelChokepoint.test.ts
++++ b/tests/cpanelChokepoint.test.ts
 @@ -1,6 +1,6 @@
  // LIVE GUARD choke point in shared/cpanel.ts + percent-encoded path test (14 Nov 2026, "GUARD CHOKEPOINT 1114-1010").
  // fetch is replaced: no network. Run: deno test --import-map tests/importmap.json tests/cpanelChokepoint.test.ts
@@ -90,7 +89,7 @@ diff -ruN v3pre/tests/cpanelChokepoint.test.ts v3/tests/cpanelChokepoint.test.ts
  import { normalizeRel, writeFile } from '../base44/shared/bridgeOps.ts';
  
  const HOME = '/home3/sgmodde1', SITE = HOME + '/public_html/carbonfibre', PRIV = HOME + '/bluehost-bridge-private', BK = HOME + '/backups-private';
-@@ -48,10 +48,33 @@
+@@ -48,10 +48,37 @@
    await refused('copy dest with %2f', () => api2('fileop', { op: 'copy', sourcefiles: SITE + '/index.html', destfiles: PRIV + '%2f..%2fpublic_html/x.html', doubledecode: '0' }));
    await refused('upload dir with .. into site', () => uapi('Fileman', 'upload_files', form(PRIV + '/../public_html/carbonfibre', 'index.html'), 'POST'));
    await refused('two destinations in one copy', () => api2('fileop', { op: 'copy', sourcefiles: SITE + '/a', destfiles: PRIV + '/a,' + SITE + '/b', doubledecode: '0' }));
@@ -118,16 +117,20 @@ diff -ruN v3pre/tests/cpanelChokepoint.test.ts v3/tests/cpanelChokepoint.test.ts
 +  await allowed('mkdir in ~/bluehost-bridge-private/backups', mk(PRIV + '/backups', 'sggarage'));
 +  await allowed('mkdir in ~/backups-private', mk(BK, 'x'));
 +  await allowed('mkdir making ~/backups-private itself', mk(HOME, 'backups-private'));
-+  for (const n of ['alicia-private', 'danny-private', 'sofacare-private', 'sofacare-production-publisher-private'])
-+    await allowed('mkdir in ~/' + n, mk(HOME + '/' + n, 'x'));
++  // Other apps' private folders are never the Bridge's (security review GUARD FOLDER NAMES 1114-1110).
++  for (const n of ['alicia-publisher-private', 'sofacare-production-publisher-private', 'alicia-private', 'danny-private', 'sofacare-private'])
++    await refused('mkdir in ~/' + n, mk(HOME + '/' + n, 'x'));
++  await refused('mkdir making a new ~/x-private folder', mk(HOME, 'x-private'));
++  await refused('mkdir in a look-alike ~/backups-private2', mk(HOME + '/backups-private2', 'x'));
++  await refused('mkdir in a look-alike ~/bluehost-bridge-private-x', mk(HOME + '/bluehost-bridge-private-x', 'x'));
 +});
 +
  Deno.test('percent-encoded paths can never decode into a path walk', async () => {
    const bad = ['%2e%2e/index.html', '%2E%2E/%2E%2E/etc/passwd', 'articles/%2e%2e/%2e%2e/x.html', '..%2findex.html', '%2e%2e%2f%2e%2e%2fx', 'a%2fb.html',
      '%252e%252e/x.html', '%c0%ae%c0%ae/x', 'a/%00.html', 'articles\\..\\x.html', '../x.html', 'a/../../x.html'];
 diff -ruN v3pre/tests/githubSyncMock.test.ts v3/tests/githubSyncMock.test.ts
---- a/tests/githubSyncMock.test.ts	2026-11-14 02:55:20.108192548 +0000
-+++ b/tests/githubSyncMock.test.ts	2026-11-14 02:55:20.124565830 +0000
+--- a/tests/githubSyncMock.test.ts
++++ b/tests/githubSyncMock.test.ts
 @@ -3,6 +3,7 @@
  // Run: deno test --import-map tests/importmap.json tests/githubSyncMock.test.ts
  import { syncFromGithub, gitBlobSha, parseSyncRequest } from '../base44/shared/githubSync.ts';

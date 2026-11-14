@@ -1,10 +1,10 @@
 running 4 tests from ./tests/bulkWrite.test.ts
 accepts a normal site folder and joins base_path ... ok (1ms)
-blocked file types refuse the whole batch ... ok (17ms)
-path traversal and bad paths are refused ... ok (605µs)
-content rules, duplicates, sha format, limits ... ok (15ms)
+blocked file types refuse the whole batch ... ok (14ms)
+path traversal and bad paths are refused ... ok (489µs)
+content rules, duplicates, sha format, limits ... ok (16ms)
 running 2 tests from ./tests/bulkWriteMock.test.ts
-bulk create, then overwrite rules, backups and per-file results ... ok (560ms)
+bulk create, then overwrite rules, backups and per-file results ... ok (585ms)
 cannot reach into another site folder; blocked batch writes nothing ...
 ------- post-test output -------
 EXPECTED while SG Garage HOLD is ON: sggarage batch refused by the hold (isolation check skipped)
@@ -59,10 +59,14 @@ refused   mkdir with %2e%2e -> LIVE GUARD (cPanel choke point) refused: mkdir: p
 allowed   mkdir in ~/bluehost-bridge-private/backups
 allowed   mkdir in ~/backups-private
 allowed   mkdir making ~/backups-private itself
-allowed   mkdir in ~/alicia-private
-allowed   mkdir in ~/danny-private
-allowed   mkdir in ~/sofacare-private
-allowed   mkdir in ~/sofacare-production-publisher-private
+refused   mkdir in ~/alicia-publisher-private -> LIVE GUARD (cPanel choke point) refused: mkdir ~/alicia-publisher-private/x (folders may only be made inside a
+refused   mkdir in ~/sofacare-production-publisher-private -> LIVE GUARD (cPanel choke point) refused: mkdir ~/sofacare-production-publisher-private/x (folders may only be 
+refused   mkdir in ~/alicia-private -> LIVE GUARD (cPanel choke point) refused: mkdir ~/alicia-private/x (folders may only be made inside a site root
+refused   mkdir in ~/danny-private -> LIVE GUARD (cPanel choke point) refused: mkdir ~/danny-private/x (folders may only be made inside a site root 
+refused   mkdir in ~/sofacare-private -> LIVE GUARD (cPanel choke point) refused: mkdir ~/sofacare-private/x (folders may only be made inside a site ro
+refused   mkdir making a new ~/x-private folder -> LIVE GUARD (cPanel choke point) refused: mkdir ~/x-private (folders may only be made inside a site root or a p
+refused   mkdir in a look-alike ~/backups-private2 -> LIVE GUARD (cPanel choke point) refused: mkdir ~/backups-private2/x (folders may only be made inside a site ro
+refused   mkdir in a look-alike ~/bluehost-bridge-private-x -> LIVE GUARD (cPanel choke point) refused: mkdir ~/bluehost-bridge-private-x/x (folders may only be made inside 
 ----- post-test output end -----
 mkdir only inside a site root or a private folder (guard low item 1) ... ok (2ms)
 percent-encoded paths can never decode into a path walk ...
@@ -83,30 +87,30 @@ inside    path "/etc/passwd" -> site-relative "etc/passwd" (and the live guard r
 ----- post-test output end -----
 percent-encoded paths can never decode into a path walk ... ok (1ms)
 running 8 tests from ./tests/crawlerCore.test.ts
-IPv4 boundaries ... ok (819µs)
-IPv6 boundaries and forms ... ok (469µs)
-payload validation keeps last known good (never empty success) ... ok (389µs)
-overlapping lists do not force identity ... ok (371µs)
-classes ... ok (258µs)
-spoofed forwarded header is ignored: only the logged connection address is used ... ok (391µs)
-parsing and sanitizing ... ok (781µs)
-other crawlers: verified only inside their own list; Claude never verified; never OpenAI ... ok (381µs)
+IPv4 boundaries ... ok (709µs)
+IPv6 boundaries and forms ... ok (287µs)
+payload validation keeps last known good (never empty success) ... ok (320µs)
+overlapping lists do not force identity ... ok (403µs)
+classes ... ok (259µs)
+spoofed forwarded header is ignored: only the logged connection address is used ... ok (421µs)
+parsing and sanitizing ... ok (768µs)
+other crawlers: verified only inside their own list; Claude never verified; never OpenAI ... ok (389µs)
 running 6 tests from ./tests/githubSyncMock.test.ts
 request validation: repo allowlist, commit sha only, no deletes ... ok (1ms)
 sync ~40 files (text + binary), then re-sync is all unchanged ...
 ------- post-test output -------
-mock sync of 40 files: 461 ms wall (fetch 26 ms), max cPanel/GitHub calls in flight 8
-mock re-sync (all unchanged): 328 ms wall
+mock sync of 40 files: 457 ms wall (fetch 25 ms), max cPanel/GitHub calls in flight 8
+mock re-sync (all unchanged): 338 ms wall
 ----- post-test output end -----
-sync ~40 files (text + binary), then re-sync is all unchanged ... ok (789ms)
-backup that cannot be made means nothing is written ... ok (102ms)
-dry run downloads and lists but writes nothing ... ok (123ms)
-blocked file in the source folder refuses the batch before any download ... ok (135ms)
+sync ~40 files (text + binary), then re-sync is all unchanged ... ok (796ms)
+backup that cannot be made means nothing is written ... ok (105ms)
+dry run downloads and lists but writes nothing ... ok (122ms)
+blocked file in the source folder refuses the batch before any download ... ok (140ms)
 missing folder / commit and other-site folder are refused ...
 ------- post-test output -------
 EXPECTED while SG Garage HOLD is ON: sggarage sync refused by the hold (isolation check skipped)
 ----- post-test output end -----
-missing folder / commit and other-site folder are refused ... ok (36ms)
+missing folder / commit and other-site folder are refused ... ok (38ms)
 
 ok | 23 passed | 0 failed (2s)
 
