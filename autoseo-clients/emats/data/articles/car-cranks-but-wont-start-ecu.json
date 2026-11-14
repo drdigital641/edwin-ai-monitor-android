@@ -1,0 +1,271 @@
+{
+ "_readme": "One article. English is the source; ms and zh carry the same keys. Facts only from the site (strings/en.json, config.json) plus general, checkable workshop knowledge. No prices, warranties, turnaround times, brands or address.",
+ "slug": "car-cranks-but-wont-start-ecu",
+ "published": "2026-11-15",
+ "updated": "2026-11-15",
+ "service": "ecu",
+ "keyword": "car cranks but won't start",
+ "look": {
+  "variant": "bench",
+  "visual": {
+   "type": "photo",
+   "key": "ecu-open-case"
+  }
+ },
+ "cta_after": 2,
+ "en": {
+  "title": "Car Cranks But Won't Start? When It's the ECU",
+  "description": "Car cranks but won't start with power and wiring confirmed? What to check at the ECU, the signs that point to the module, and how to send it in for repair.",
+  "keyword": "car cranks but won't start",
+  "motif": "CRANKS",
+  "h1": "Car cranks but won't start, and the power and wiring check out: when to suspect the ECU",
+  "lead": "When a car cranks but won't start, the ECU is only one of several suspects. Fuel, spark, the crank and cam sensor signals, the immobiliser and the wiring all produce the same symptom. Once you have confirmed power, earth and the wiring at the ECU, and the sensors and supplies it depends on are good, the module itself becomes a fair suspect. This note covers what to rule out first and when to send the ECU in.",
+  "answer": "If a car cranks but won't start and the ECU's power, earth, fuses and wiring are confirmed good, check the crank and cam sensor signals, the immobiliser and the fuel and ignition supplies next. If those are good and the ECU still does not fire the injectors or coils, the module is worth checking on the bench.",
+  "topic": "car that cranks but won't start",
+  "excerpt": "What to rule out first, the signs that point to the ECU, and how to send the module in.",
+  "sections": [
+   {
+    "h2": "What a cranking, non-starting car needs",
+    "p": [
+     "An engine needs three things to start: fuel, spark and the right timing signals. The ECU controls the first two, so a fault anywhere in that chain can look like a dead ECU. Sort the symptom first:"
+    ],
+    "pairs": [
+     {
+      "t": "Cranks, no fuel pressure",
+      "d": "Check the fuel pump fuse and relay, the pump supply and the fuel pressure before the ECU."
+     },
+     {
+      "t": "Cranks, no spark",
+      "d": "Check the coils, their supply and the ignition signal. A coil or driver fault is not always the ECU."
+     },
+     {
+      "t": "Cranks, scan tool shows no engine speed signal",
+      "d": "Check the crank sensor, the cam sensor and their wiring. The ECU cannot time the engine without them."
+     },
+     {
+      "t": "Cranks, immobiliser light flashing or staying on",
+      "d": "Check the immobiliser and key system first. The ECU may be cutting fuel or spark on purpose."
+     }
+    ]
+   },
+   {
+    "h2": "The checks to finish before you blame the ECU",
+    "p": [
+     "These are standard checks and most only need a multimeter and the wiring diagram for the car:"
+    ],
+    "steps": [
+     "Battery voltage while cranking: a weak supply can make the ECU reset mid-crank",
+     "The ECU fuses and main relay, tested under load rather than by eye",
+     "Power and earth at the ECU connector itself, with the connector plugged in so you can back-probe it",
+     "The crank and cam sensor signals while cranking, with a scope or the live data",
+     "Fuel pressure, and spark at the plug or a signal at the coil",
+     "Whether the scan tool talks to the ECU, and any codes it stores or keeps losing"
+    ]
+   },
+   {
+    "h2": "Signs the ECU itself is the fault",
+    "p": [
+     "When the supplies, sensors and wiring all pass, these signs point back to the module:"
+    ],
+    "list": [
+     "Good power and earth at the connector, good sensor signals, but no injector or coil drive from the ECU",
+     "No communication with the ECU while other modules answer normally",
+     "Water damage, corrosion or burnt parts visible on the board or in the case",
+     "A no-start that comes and goes with heat, vibration or a tap on the case",
+     "A previous repair, a jump start or a short on the wiring just before the fault began"
+    ]
+   },
+   {
+    "h2": "How to send the ECU in",
+    "p": [
+     "Once you have done the checks, WhatsApp us the car model, the fault you saw and the part number from the module label. A photo of the label helps, and so does a note of what you have already checked.",
+     "You send or drop off the module in Johor Bahru. We check it on the bench and tell you the fault and the cost before any repair starts. Once you agree, we repair it at component level, test it on the bench and send it back for your workshop to refit."
+    ]
+   }
+  ],
+  "faqs": [
+   {
+    "q": "Can a bad ECU make a car crank but not start?",
+    "a": "Yes, if it stops driving the injectors or coils. But a bad crank or cam sensor signal, the fuel supply, the immobiliser and wiring faults give the same symptom, so rule those out first."
+   },
+   {
+    "q": "How do I know if the ECU is getting power?",
+    "a": "Check the fuses and main relay, then measure power and earth at the ECU connector with the connector plugged in. A missing supply or earth is a wiring fault, not a dead module."
+   },
+   {
+    "q": "Do you need the whole car to check the ECU?",
+    "a": "No. Your workshop removes the ECU and sends or drops it off. We check it on the bench and tell you the fault and the cost before any repair."
+   }
+  ]
+ },
+ "ms": {
+  "title": "Kereta Hidup Enjin Tapi Tak Start? Bila ECU Puncanya",
+  "description": "Kereta enjin berputar tapi tak hidup walaupun kuasa dan wayar elok? Apa yang perlu diperiksa pada ECU, tanda yang menunjuk pada modul dan cara menghantarnya.",
+  "keyword": "enjin berputar tapi tak hidup",
+  "motif": "CRANKS",
+  "h1": "Enjin berputar tapi tak hidup, kuasa dan wayar elok: bila patut syak ECU",
+  "lead": "Bila enjin berputar tapi tak hidup, ECU hanyalah satu daripada beberapa suspek. Bahan api, percikan api, isyarat sensor crank dan cam, immobiliser dan pendawaian semuanya memberi simptom yang sama. Bila kuasa, ground dan pendawaian pada ECU sudah disahkan baik, dan sensor serta bekalan yang bergantung padanya juga baik, modul itu sendiri jadi suspek yang munasabah. Nota ini menerangkan apa yang perlu disingkirkan dulu dan bila ECU patut dihantar.",
+  "answer": "Kalau enjin berputar tapi tak hidup dan kuasa, ground, fius dan pendawaian ECU sudah disahkan baik, periksa isyarat sensor crank dan cam, immobiliser serta bekalan bahan api dan pencucuhan. Kalau semua itu baik dan ECU masih tak menggerakkan injektor atau gegelung, modul itu patut diperiksa di meja kerja.",
+  "topic": "kereta yang enjin berputar tapi tak hidup",
+  "excerpt": "Apa yang perlu disingkirkan dulu, tanda yang menunjuk pada ECU, dan cara menghantar modul.",
+  "sections": [
+   {
+    "h2": "Apa yang diperlukan oleh enjin yang berputar tapi tak hidup",
+    "p": [
+     "Enjin perlukan tiga perkara untuk hidup: bahan api, percikan api dan isyarat masa yang betul. ECU mengawal dua yang pertama, jadi kerosakan di mana-mana dalam rantaian itu boleh nampak seperti ECU mati. Asingkan simptom dulu:"
+    ],
+    "pairs": [
+     {
+      "t": "Berputar, tiada tekanan bahan api",
+      "d": "Periksa fius dan relay pam bahan api, bekalan pam dan tekanan bahan api sebelum ECU."
+     },
+     {
+      "t": "Berputar, tiada percikan api",
+      "d": "Periksa gegelung, bekalannya dan isyarat pencucuhan. Kerosakan gegelung atau pemacu tak semestinya ECU."
+     },
+     {
+      "t": "Berputar, alat imbas tunjuk tiada isyarat kelajuan enjin",
+      "d": "Periksa sensor crank, sensor cam dan pendawaiannya. ECU tak boleh menentukan masa enjin tanpanya."
+     },
+     {
+      "t": "Berputar, lampu immobiliser berkelip atau kekal menyala",
+      "d": "Periksa sistem immobiliser dan kunci dulu. ECU mungkin sengaja memotong bahan api atau percikan api."
+     }
+    ]
+   },
+   {
+    "h2": "Semakan yang perlu disiapkan sebelum menyalahkan ECU",
+    "p": [
+     "Ini semakan standard dan kebanyakannya hanya perlukan multimeter dan gambar rajah pendawaian kereta itu:"
+    ],
+    "steps": [
+     "Voltan bateri semasa starter berputar: bekalan yang lemah boleh menyebabkan ECU reset semasa memutar",
+     "Fius ECU dan relay utama, diuji di bawah beban, bukan sekadar dilihat dengan mata",
+     "Kuasa dan ground pada penyambung ECU itu sendiri, dengan penyambung dipasang supaya anda boleh back-probe",
+     "Isyarat sensor crank dan cam semasa starter berputar, dengan scope atau data langsung",
+     "Tekanan bahan api, dan percikan api pada palam atau isyarat pada gegelung",
+     "Sama ada alat imbas boleh berkomunikasi dengan ECU, dan sebarang kod yang disimpan atau terus hilang"
+    ]
+   },
+   {
+    "h2": "Tanda bahawa ECU itu sendiri yang rosak",
+    "p": [
+     "Bila bekalan, sensor dan pendawaian semuanya lulus, tanda-tanda ini menunjuk balik kepada modul:"
+    ],
+    "list": [
+     "Kuasa dan ground baik pada penyambung, isyarat sensor baik, tapi tiada pacuan injektor atau gegelung dari ECU",
+     "Tiada komunikasi dengan ECU sedangkan modul lain menjawab seperti biasa",
+     "Kerosakan air, karat atau komponen terbakar yang nampak pada papan atau dalam casing",
+     "Kereta tak hidup yang datang dan pergi mengikut haba, getaran atau ketukan pada casing",
+     "Pembaikan sebelum ini, jump start atau litar pintas pada pendawaian sejurus sebelum kerosakan bermula"
+    ]
+   },
+   {
+    "h2": "Cara menghantar ECU masuk",
+    "p": [
+     "Selepas semakan dibuat, WhatsApp kami model kereta, kerosakan yang anda nampak dan nombor bahagian pada label modul. Gambar label membantu, begitu juga catatan tentang apa yang anda dah periksa.",
+     "Anda hantar atau serahkan modul di Johor Bahru. Kami periksa di meja kerja dan beritahu kerosakan serta kosnya sebelum sebarang pembaikan bermula. Bila anda setuju, kami baiki pada peringkat komponen, uji di meja kerja dan hantar balik untuk bengkel anda pasang semula."
+    ]
+   }
+  ],
+  "faqs": [
+   {
+    "q": "Bolehkah ECU rosak menyebabkan enjin berputar tapi tak hidup?",
+    "a": "Boleh, kalau ia berhenti menggerakkan injektor atau gegelung. Tetapi isyarat sensor crank atau cam yang lemah, bekalan bahan api, immobiliser dan kerosakan wayar memberi simptom yang sama, jadi singkirkan semua itu dulu."
+   },
+   {
+    "q": "Bagaimana saya tahu ECU mendapat kuasa?",
+    "a": "Periksa fius dan relay utama, kemudian ukur kuasa dan ground pada penyambung ECU dengan penyambung dipasang. Bekalan atau ground yang tiada ialah kerosakan wayar, bukan modul mati."
+   },
+   {
+    "q": "Adakah anda perlukan seluruh kereta untuk periksa ECU?",
+    "a": "Tidak. Bengkel anda tanggalkan ECU dan hantar atau serahkannya. Kami periksa di meja kerja dan beritahu kerosakan serta kosnya sebelum sebarang pembaikan."
+   }
+  ]
+ },
+ "zh": {
+  "title": "发动机转但无法启动?何时该查 ECU",
+  "description": "发动机转但无法启动,电源和线路都正常?ECU 该检查什么、哪些迹象指向模块,以及如何寄修。",
+  "keyword": "发动机转但无法启动",
+  "motif": "CRANKS",
+  "h1": "发动机转但无法启动,电源和线路都正常:何时该怀疑 ECU",
+  "lead": "当发动机转但无法启动,ECU 只是几个嫌疑之一。燃油、火花、曲轴和凸轮轴传感器信号、防盗锁止系统以及线路,都会出现同样的症状。当 ECU 的电源、接地和线路都确认正常,它所依赖的传感器和供电也正常时,模块本身才成为合理的怀疑对象。本文说明应该先排除什么,以及什么时候把 ECU 寄来维修。",
+  "answer": "如果发动机转但无法启动,而 ECU 的电源、接地、保险丝和线路都确认正常,接下来检查曲轴和凸轮轴传感器信号、防盗锁止系统,以及燃油和点火供电。如果这些都正常,ECU 仍然不驱动喷油嘴或点火线圈,这个模块就值得拿到维修台检测。",
+  "topic": "发动机转但无法启动的汽车",
+  "excerpt": "应先排除什么、哪些迹象指向 ECU,以及如何寄修模块。",
+  "sections": [
+   {
+    "h2": "发动机转但无法启动,需要什么条件",
+    "p": [
+     "发动机要启动需要三样东西:燃油、火花和正确的时序信号。前两项由 ECU 控制,所以这条链上任何地方出问题,看起来都像 ECU 坏了。先把症状分清楚:"
+    ],
+    "pairs": [
+     {
+      "t": "转动,但没有燃油压力",
+      "d": "先检查油泵保险丝和继电器、油泵供电和燃油压力,然后才查 ECU。"
+     },
+     {
+      "t": "转动,但没有火花",
+      "d": "检查点火线圈、它的供电和点火信号。线圈或驱动故障不一定是 ECU。"
+     },
+     {
+      "t": "转动,诊断仪显示没有发动机转速信号",
+      "d": "检查曲轴传感器、凸轮轴传感器及其线路。没有它们,ECU 无法确定发动机时序。"
+     },
+     {
+      "t": "转动,防盗灯闪烁或一直亮着",
+      "d": "先检查防盗锁止和钥匙系统。ECU 可能是故意切断燃油或火花。"
+     }
+    ]
+   },
+   {
+    "h2": "怪 ECU 之前要做完的检查",
+    "p": [
+     "这些都是标准检查,大部分只需要一个万用表和该车的线路图:"
+    ],
+    "steps": [
+     "启动马达转动时的电池电压:供电太弱可能让 ECU 在转动中重置",
+     "ECU 的保险丝和主继电器,要在带负载的情况下测试,不能只用眼睛看",
+     "ECU 插头本身的电源和接地,插头保持插上,这样才能从背面探测(back-probe)",
+     "启动马达转动时的曲轴和凸轮轴传感器信号,用示波器或实时数据查看",
+     "燃油压力,以及火花塞处的火花或点火线圈处的信号",
+     "诊断仪能否与 ECU 通讯,以及它存储或不断丢失的故障码"
+    ]
+   },
+   {
+    "h2": "哪些迹象代表 ECU 本身有故障",
+    "p": [
+     "当供电、传感器和线路都通过检查,以下迹象就指向模块本身:"
+    ],
+    "list": [
+     "插头处电源和接地正常、传感器信号正常,但 ECU 不驱动喷油嘴或点火线圈",
+     "其他模块通讯正常,唯独无法与 ECU 通讯",
+     "电路板上或外壳内能看到进水、腐蚀或烧焦的零件",
+     "无法启动的情况会随着热度、震动或轻敲外壳而时有时无",
+     "故障发生前不久曾有过维修、跨接启动或线路短路"
+    ]
+   },
+   {
+    "h2": "如何把 ECU 寄来维修",
+    "p": [
+     "做完检查后,请把车型、您看到的故障,以及模块标签上的零件编号 WhatsApp 给我们。附上标签照片会更方便,把您已经检查过的项目一并告诉我们也有帮助。",
+     "您可以把模块寄来或亲自送到新山。我们在维修台上检测,维修开始之前先告诉您故障原因和费用。您同意后,我们做元件级维修,在维修台上测试,再寄回给您的车厂重新装回。"
+    ]
+   }
+  ],
+  "faqs": [
+   {
+    "q": "ECU 坏了会造成发动机转但无法启动吗?",
+    "a": "会,如果它不再驱动喷油嘴或点火线圈。但曲轴或凸轮轴传感器信号不良、燃油供应、防盗锁止系统和线路故障也会出现同样症状,所以先排除这些。"
+   },
+   {
+    "q": "怎么知道 ECU 有没有电?",
+    "a": "检查保险丝和主继电器,然后在插头插上的情况下量 ECU 插头的电源和接地。缺少供电或接地是线路故障,不是模块坏了。"
+   },
+   {
+    "q": "检查 ECU 需要把整辆车送来吗?",
+    "a": "不需要。由您的车厂拆下 ECU,寄来或亲自送来。我们在维修台上检测,并在任何维修之前先告诉您故障原因和费用。"
+   }
+  ]
+ }
+}

@@ -1,0 +1,206 @@
+{
+ "_readme": "One article = this file (EN + BM + 中文). Facts: K Tech's own pages (facts.json, src/content.py) + general, checkable workshop knowledge. No prices, stock, delivery times or warranties.",
+ "slug": "adas-calibration-after-windscreen-or-bumper-work",
+ "published": "2026-11-15",
+ "updated": "2026-11-15",
+ "family": "adas",
+ "minutes": 4,
+ "en": {
+  "title": "ADAS calibration after windscreen or bumper work",
+  "description": "When a workshop needs ADAS calibration after windscreen or bumper work: which jobs move the camera or radar, static and dynamic methods, and the checks.",
+  "keyword": "ADAS calibration after windscreen",
+  "h1": "ADAS calibration after windscreen or bumper work: when a workshop needs it",
+  "lead": "ADAS calibration after windscreen replacement, bumper repair or other body work makes sure the camera and radar see the road the way the car expects. A forward camera sits behind the windscreen and a radar sensor often sits behind the bumper, so any job that moves them can throw the aim off. This note sets out which jobs call for a calibration and how a workshop checks it.",
+  "answer": "Calibrate the ADAS camera or radar after any job that removes, replaces or moves it or the part it sits behind: windscreen replacement, bumper removal or repair, collision work, or a camera or radar replacement. Follow the car maker's procedure for that model, which is static, dynamic or both, and scan for ADAS fault codes before and after.",
+  "sections": [
+   {
+    "h2": "Jobs that move the camera or radar",
+    "p": [
+     "The sensors are calibrated to a fixed position on the car. If the position changes, the car can misjudge distance or lane position, even when no warning light is on."
+    ],
+    "list": [
+     "Windscreen replacement, because the forward camera is mounted behind the glass",
+     "Front or rear bumper removal or repair, because radar sensors often sit behind the bumper cover",
+     "Collision or body repair around the front end, the pillars or the mirrors",
+     "Replacing a camera or radar sensor",
+     "Suspension or wheel alignment work that changes the ride height or the thrust line"
+    ]
+   },
+   {
+    "h2": "Checks before the calibration",
+    "checks": [
+     {
+      "b": "Scan first",
+      "t": "Read ADAS fault codes with a diagnostic tool before you start, and note what is stored, so you can tell old faults from new ones."
+     },
+     {
+      "b": "Prepare the car",
+      "t": "Check tyre pressures, a level floor, a full-enough fuel level and an empty boot where the procedure asks for it, and make sure the glass and sensor area are clean."
+     },
+     {
+      "b": "Look up the procedure",
+      "t": "The method and the target position depend on make, model and year. Use the maker's procedure shown on the tool for the car in front of you."
+     }
+    ]
+   },
+   {
+    "h2": "Static, dynamic or both",
+    "p": [
+     "Car makers use different methods, and some require more than one:"
+    ],
+    "list": [
+     "Static: the car is placed in front of calibration targets at set distances and positions",
+     "Dynamic: the car is driven on a suitable road at a set speed while the system learns",
+     "Both: a static step followed by a road drive"
+    ],
+    "note": "After the calibration, scan again for ADAS fault codes and confirm the system reports as calibrated. If a fault remains, check the sensor mounting and the target setup before repeating."
+   }
+  ],
+  "faqs": [
+   {
+    "q": "Is ADAS calibration needed after a windscreen replacement?",
+    "a": "Often, yes, when the car has a forward camera behind the windscreen. The camera is aimed to a fixed position, and a new windscreen can change it. The car maker's procedure for that model says how."
+   },
+   {
+    "q": "Do I need calibration after a bumper repair?",
+    "a": "If a radar sensor sits behind the bumper, or it was removed or knocked, the aim can change. Check the procedure for the model, and scan for ADAS fault codes before and after."
+   },
+   {
+    "q": "Which Autel tools does K Tech supply for ADAS work?",
+    "a": "K Tech supplies Autel MaxiSys ADAS MA800 and ADAS IA1000 for camera and radar calibration. WhatsApp us your car brands and the jobs you do, and we will suggest what fits."
+   }
+  ]
+ },
+ "ms": {
+  "title": "Kalibrasi ADAS selepas kerja cermin depan atau bumper",
+  "description": "Bila bengkel perlukan kalibrasi ADAS selepas kerja cermin depan atau bumper: kerja yang menggerakkan kamera atau radar, kaedah statik dan dinamik, dan semakannya.",
+  "keyword": "kalibrasi ADAS selepas cermin depan",
+  "h1": "Kalibrasi ADAS selepas cermin depan atau bumper: bila bengkel perlukannya",
+  "lead": "Kalibrasi ADAS selepas cermin depan diganti, bumper dibaiki atau kerja badan lain memastikan kamera dan radar melihat jalan seperti yang kereta jangkakan. Kamera hadapan berada di belakang cermin depan dan sensor radar selalunya di belakang bumper, jadi mana-mana kerja yang menggerakkannya boleh mengubah halanya. Nota ini menerangkan kerja yang memerlukan kalibrasi dan cara bengkel menyemaknya.",
+  "answer": "Kalibrasi kamera atau radar ADAS selepas mana-mana kerja yang menanggalkan, menggantikan atau menggerakkannya, atau bahagian di hadapannya: ganti cermin depan, tanggal atau baiki bumper, kerja perlanggaran, atau ganti kamera atau radar. Ikut prosedur pembuat kereta untuk model itu, sama ada statik, dinamik atau kedua-duanya, dan imbas kod kerosakan ADAS sebelum dan selepas.",
+  "sections": [
+   {
+    "h2": "Kerja yang menggerakkan kamera atau radar",
+    "p": [
+     "Sensor dikalibrasi pada kedudukan tetap di kereta. Jika kedudukan berubah, kereta boleh tersilap menilai jarak atau kedudukan lorong, walaupun tiada lampu amaran menyala."
+    ],
+    "list": [
+     "Ganti cermin depan, kerana kamera hadapan dipasang di belakang kaca",
+     "Tanggal atau baiki bumper depan atau belakang, kerana sensor radar selalunya di belakang penutup bumper",
+     "Kerja perlanggaran atau badan di bahagian depan, tiang atau cermin sisi",
+     "Ganti sensor kamera atau radar",
+     "Kerja suspensyen atau penjajaran roda yang mengubah ketinggian kereta atau garis tujahan"
+    ]
+   },
+   {
+    "h2": "Semakan sebelum kalibrasi",
+    "checks": [
+     {
+      "b": "Imbas dahulu",
+      "t": "Baca kod kerosakan ADAS dengan alat diagnostik sebelum mula, dan catat apa yang tersimpan, supaya anda dapat bezakan kerosakan lama daripada yang baru."
+     },
+     {
+      "b": "Sediakan kereta",
+      "t": "Periksa tekanan tayar, lantai yang rata, paras minyak yang cukup dan bonet belakang yang kosong jika prosedur memintanya, dan pastikan kaca serta kawasan sensor bersih."
+     },
+     {
+      "b": "Cari prosedur",
+      "t": "Kaedah dan kedudukan sasaran bergantung pada jenama, model dan tahun. Guna prosedur pembuat yang ditunjukkan pada alat untuk kereta di hadapan anda."
+     }
+    ]
+   },
+   {
+    "h2": "Statik, dinamik atau kedua-duanya",
+    "p": [
+     "Pembuat kereta guna kaedah berbeza, dan sesetengahnya memerlukan lebih daripada satu:"
+    ],
+    "list": [
+     "Statik: kereta diletakkan di hadapan sasaran kalibrasi pada jarak dan kedudukan yang ditetapkan",
+     "Dinamik: kereta dipandu di jalan yang sesuai pada kelajuan yang ditetapkan sementara sistem belajar",
+     "Kedua-duanya: langkah statik diikuti pemanduan di jalan"
+    ],
+    "note": "Selepas kalibrasi, imbas semula kod kerosakan ADAS dan pastikan sistem melaporkan sudah dikalibrasi. Jika kerosakan masih ada, periksa pemasangan sensor dan susunan sasaran sebelum mengulang."
+   }
+  ],
+  "faqs": [
+   {
+    "q": "Adakah kalibrasi ADAS diperlukan selepas ganti cermin depan?",
+    "a": "Selalunya ya, apabila kereta ada kamera hadapan di belakang cermin depan. Kamera dihalakan ke kedudukan tetap, dan cermin depan baru boleh mengubahnya. Prosedur pembuat kereta untuk model itu menerangkan caranya."
+   },
+   {
+    "q": "Adakah saya perlu kalibrasi selepas baiki bumper?",
+    "a": "Jika sensor radar berada di belakang bumper, atau ia ditanggalkan atau terhentak, halanya boleh berubah. Semak prosedur untuk model itu, dan imbas kod kerosakan ADAS sebelum dan selepas."
+   },
+   {
+    "q": "Alat Autel yang manakah K Tech bekalkan untuk kerja ADAS?",
+    "a": "K Tech membekalkan Autel MaxiSys ADAS MA800 dan ADAS IA1000 untuk kalibrasi kamera dan radar. WhatsApp kami jenama kereta dan kerja yang anda buat, dan kami akan cadangkan yang sesuai."
+   }
+  ]
+ },
+ "zh": {
+  "title": "换挡风玻璃或保险杠后的 ADAS 校准",
+  "description": "换挡风玻璃或修保险杠后,车厂何时需要做 ADAS 校准:哪些工作会移动摄像头或雷达、静态与动态方法,以及检查步骤。",
+  "keyword": "换挡风玻璃后的 ADAS 校准",
+  "h1": "换挡风玻璃或保险杠后的 ADAS 校准:车厂何时需要做",
+  "lead": "换挡风玻璃后的 ADAS 校准、保险杠维修后的校准,以及其他车身工作后的校准,是为了让摄像头和雷达按车子预期的方式看路。前方摄像头装在挡风玻璃后面,雷达传感器常常装在保险杠后面,所以任何会移动它们的工作,都可能让对准角度出现偏差。本文说明哪些工作需要校准,以及车厂如何检查。",
+  "answer": "凡是拆卸、更换或移动 ADAS 摄像头或雷达,或移动它们所在部件的工作之后,都要校准:更换挡风玻璃、拆装或修理保险杠、碰撞维修,或更换摄像头或雷达。按车厂对该车型的规定程序做,可能是静态、动态,或两者都要,并且在前后各扫描一次 ADAS 故障码。",
+  "sections": [
+   {
+    "h2": "哪些工作会移动摄像头或雷达",
+    "p": [
+     "传感器是按车上的固定位置校准的。位置一变,即使没有警告灯亮,车子也可能误判距离或车道位置。"
+    ],
+    "list": [
+     "更换挡风玻璃,因为前方摄像头装在玻璃后面",
+     "拆装或修理前后保险杠,因为雷达传感器常常装在保险杠外壳后面",
+     "车头、车柱或后视镜周围的碰撞或车身维修",
+     "更换摄像头或雷达传感器",
+     "改变车身高度或推力线的悬挂或四轮定位工作"
+    ]
+   },
+   {
+    "h2": "校准之前的检查",
+    "checks": [
+     {
+      "b": "先扫描",
+      "t": "开始前用诊断工具读取 ADAS 故障码,并记下已存储的内容,这样才能分清旧故障和新故障。"
+     },
+     {
+      "b": "准备车辆",
+      "t": "按程序要求,检查胎压、地面是否水平、油量是否足够、行李厢是否清空,并确保玻璃和传感器区域干净。"
+     },
+     {
+      "b": "查找程序",
+      "t": "方法和目标位置取决于品牌、车型和年份。请使用工具上显示的、适用于眼前这辆车的车厂程序。"
+     }
+    ]
+   },
+   {
+    "h2": "静态、动态或两者",
+    "p": [
+     "不同车厂用不同方法,有些要求不止一种:"
+    ],
+    "list": [
+     "静态:把车停在校准靶前,按规定的距离和位置摆放",
+     "动态:在合适的道路上按规定车速行驶,让系统自行学习",
+     "两者:先做静态步骤,再上路行驶"
+    ],
+    "note": "校准之后,再扫描一次 ADAS 故障码,并确认系统显示已校准。如果故障仍在,先检查传感器的安装和校准靶的摆放,再重做。"
+   }
+  ],
+  "faqs": [
+   {
+    "q": "换挡风玻璃后一定要做 ADAS 校准吗?",
+    "a": "如果车上有装在挡风玻璃后面的前方摄像头,通常需要。摄像头是对准固定位置的,新的挡风玻璃可能改变它。该车型的车厂程序会说明做法。"
+   },
+   {
+    "q": "修保险杠后需要校准吗?",
+    "a": "如果雷达传感器装在保险杠后面,或曾被拆下、撞到,对准角度可能改变。请查该车型的程序,并在前后各扫描一次 ADAS 故障码。"
+   },
+   {
+    "q": "K Tech 为 ADAS 工作供应哪些 Autel 工具?",
+    "a": "K Tech 供应 Autel MaxiSys ADAS MA800 和 ADAS IA1000,用于摄像头和雷达校准。请把您的车子品牌和所做的工作 WhatsApp 给我们,我们会建议合适的型号。"
+   }
+  ]
+ }
+}

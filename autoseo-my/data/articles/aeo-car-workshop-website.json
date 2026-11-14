@@ -1,0 +1,209 @@
+{
+ "_readme": "One article = this one file (EN + BM + 中文). Facts: general, checkable knowledge about AEO and FAQ markup only; no prices, no client names, no figures or promises.",
+ "slug": "aeo-car-workshop-website",
+ "published": "2026-11-15",
+ "updated": "2026-11-15",
+ "service": "aeo-answer-engine-optimisation",
+ "minutes": 5,
+ "en": {
+  "title": "AEO for a car workshop website: answers motorists ask",
+  "description": "What AEO means for a car workshop in Malaysia: write the questions motorists ask, answer them first and plainly, and mark them up so search can read them.",
+  "keyword": "AEO for a car workshop",
+  "search": "aeo car workshop website malaysia",
+  "h1": "AEO for a car workshop: write the answers motorists ask",
+  "lead": "AEO for a car workshop means shaping your website so that search engines and AI assistants can lift a clear, correct answer straight from your pages. AEO stands for answer engine optimisation. Motorists now ask full questions, such as why their aircond is not cold, and the page that answers first and plainly is the one that gets quoted.",
+  "answer": "AEO means answering the real question a motorist types or speaks in the first two or three sentences of a page, then adding detail below. For a workshop that means one page per question or service, a short direct answer, clear headings, FAQ markup that matches the text on the page, and the same name, phone and area everywhere.",
+  "sections": [
+   {
+    "h2": "1. Start from the questions motorists really ask",
+    "p": [
+     "List the questions customers ask you on the phone or on WhatsApp: why is my battery flat in the morning, how often should I service, what does this warning light mean. Those are the questions to write for. Do not invent questions nobody asks."
+    ]
+   },
+   {
+    "h2": "2. Put the answer first",
+    "steps": [
+     {
+      "b": "Answer in the first lines",
+      "t": "Give the direct answer in two or three sentences at the top, in plain words, then explain below."
+     },
+     {
+      "b": "Use question headings",
+      "t": "Use headings that are the question itself, so each section can stand on its own as an answer."
+     },
+     {
+      "b": "One question per page",
+      "t": "Keep one main question or service per page so it is clear what the page answers."
+     }
+    ]
+   },
+   {
+    "h2": "3. Make the page easy for machines to read",
+    "p": [
+     "Search engines and AI assistants read the text that is actually on the page. Keep the answer in normal visible text, not only in an image or a pop-up."
+    ],
+    "list": [
+     "Add FAQ markup (FAQPage structured data) only for questions and answers that are visible on the page",
+     "Use the same business name, phone number and area as on your Google Business Profile",
+     "Keep opening hours, services and contact details current",
+     "Only write facts you can stand behind: no prices or promises you cannot keep up to date"
+    ]
+   },
+   {
+    "h2": "4. Keep it honest and up to date",
+    "p": [
+     "No one can promise that a page will be quoted by an AI assistant. What you control is the quality: correct, plain answers about the work you really do, kept current. That is also what helps a motorist who finds you through normal search."
+    ],
+    "note": "Start small: write answers to your five most common questions, then add one more each week."
+   }
+  ],
+  "faqs": [
+   {
+    "q": "What does AEO mean?",
+    "a": "AEO stands for answer engine optimisation. It means writing and structuring your pages so that search engines and AI assistants can find a clear answer to a question and show it to the person asking."
+   },
+   {
+    "q": "Is AEO different from normal SEO?",
+    "a": "It builds on it. You still need a fast, crawlable website and a good Google Business Profile. AEO adds a focus on direct answers, question headings and matching FAQ markup."
+   },
+   {
+    "q": "Does AEO guarantee my workshop will be quoted by an AI assistant?",
+    "a": "No. Nobody can promise that. Clear, correct and current answers on your pages make it possible for search and AI assistants to use them."
+   }
+  ]
+ },
+ "ms": {
+  "title": "AEO untuk bengkel kereta: jawab soalan pemandu",
+  "description": "Apa maksud AEO untuk bengkel kereta di Malaysia: tulis soalan yang pemandu tanya, jawab dahulu dengan jelas, dan tanda supaya enjin carian boleh membacanya.",
+  "keyword": "AEO untuk bengkel kereta",
+  "search": "aeo bengkel kereta malaysia",
+  "h1": "AEO untuk bengkel kereta: tulis jawapan kepada soalan pemandu",
+  "lead": "AEO untuk bengkel kereta bermaksud menyusun laman web anda supaya enjin carian dan pembantu AI boleh mengambil jawapan yang jelas dan betul terus daripada halaman anda. AEO bermaksud answer engine optimisation. Pemandu kini bertanya soalan penuh, seperti kenapa aircond tak sejuk, dan halaman yang menjawab dahulu dengan jelas akan dipetik.",
+  "answer": "AEO bermaksud menjawab soalan sebenar yang pemandu taip atau sebut dalam dua atau tiga ayat pertama halaman, kemudian tambah butiran di bawah. Untuk bengkel, itu bermaksud satu halaman bagi setiap soalan atau servis, jawapan ringkas yang terus, tajuk yang jelas, markup FAQ yang sepadan dengan teks di halaman, dan nama, telefon serta kawasan yang sama di mana-mana.",
+  "sections": [
+   {
+    "h2": "1. Mulakan dengan soalan yang benar-benar pemandu tanya",
+    "p": [
+     "Senaraikan soalan yang pelanggan tanya melalui telefon atau WhatsApp: kenapa bateri kong pagi, berapa kerap perlu servis, apa maksud lampu amaran ini. Itulah soalan untuk anda tulis. Jangan reka soalan yang tiada orang tanya."
+    ]
+   },
+   {
+    "h2": "2. Letakkan jawapan dahulu",
+    "steps": [
+     {
+      "b": "Jawab di baris pertama",
+      "t": "Beri jawapan terus dalam dua atau tiga ayat di atas, dengan perkataan mudah, kemudian terangkan di bawah."
+     },
+     {
+      "b": "Guna tajuk berbentuk soalan",
+      "t": "Guna tajuk yang merupakan soalan itu sendiri, supaya setiap bahagian boleh berdiri sendiri sebagai jawapan."
+     },
+     {
+      "b": "Satu soalan satu halaman",
+      "t": "Kekalkan satu soalan atau servis utama bagi setiap halaman supaya jelas apa yang dijawab halaman itu."
+     }
+    ]
+   },
+   {
+    "h2": "3. Permudahkan mesin membaca halaman",
+    "p": [
+     "Enjin carian dan pembantu AI membaca teks yang sebenarnya ada di halaman. Letakkan jawapan dalam teks biasa yang boleh dilihat, bukan hanya dalam gambar atau pop-up."
+    ],
+    "list": [
+     "Tambah markup FAQ (data berstruktur FAQPage) hanya untuk soalan dan jawapan yang kelihatan di halaman",
+     "Guna nama perniagaan, nombor telefon dan kawasan yang sama seperti di Google Business Profile anda",
+     "Pastikan waktu buka, servis dan maklumat perhubungan sentiasa terkini",
+     "Tulis hanya fakta yang anda boleh pertahankan: tiada harga atau janji yang sukar dikemas kini"
+    ]
+   },
+   {
+    "h2": "4. Kekal jujur dan terkini",
+    "p": [
+     "Tiada sesiapa boleh berjanji halaman anda akan dipetik oleh pembantu AI. Yang anda kawal ialah kualiti: jawapan yang betul dan mudah tentang kerja yang memang anda buat, sentiasa dikemas kini. Itu juga membantu pemandu yang menjumpai anda melalui carian biasa."
+    ],
+    "note": "Mulakan kecil: tulis jawapan kepada lima soalan paling kerap, kemudian tambah satu lagi setiap minggu."
+   }
+  ],
+  "faqs": [
+   {
+    "q": "Apakah maksud AEO?",
+    "a": "AEO ialah answer engine optimisation. Ia bermaksud menulis dan menyusun halaman anda supaya enjin carian dan pembantu AI boleh mencari jawapan yang jelas kepada sesuatu soalan dan menunjukkannya kepada penanya."
+   },
+   {
+    "q": "Adakah AEO berbeza daripada SEO biasa?",
+    "a": "Ia dibina atas SEO. Anda masih perlukan laman web yang pantas dan boleh dirangkak serta Google Business Profile yang baik. AEO menambah tumpuan pada jawapan terus, tajuk soalan dan markup FAQ yang sepadan."
+   },
+   {
+    "q": "Adakah AEO menjamin bengkel saya dipetik oleh pembantu AI?",
+    "a": "Tidak. Tiada sesiapa boleh berjanji begitu. Jawapan yang jelas, betul dan terkini pada halaman anda membolehkan enjin carian dan pembantu AI menggunakannya."
+   }
+  ]
+ },
+ "zh": {
+  "title": "汽车维修厂的 AEO:回答车主会问的问题",
+  "description": "马来西亚汽车维修厂的 AEO 是什么意思:写出车主真正会问的问题,先简洁回答,再加上标记,让搜索引擎读得懂。",
+  "keyword": "汽车维修厂的 AEO",
+  "search": "汽车维修厂 aeo",
+  "h1": "汽车维修厂的 AEO:写出车主会问的答案",
+  "lead": "汽车维修厂的 AEO,意思是把您的网站整理成搜索引擎和 AI 助手可以直接从页面里取出清楚、正确答案的样子。AEO 是 answer engine optimisation(答案引擎优化)的缩写。车主现在会问完整的问题,例如冷气为什么不冷,而最先、最清楚回答的页面,才会被引用。",
+  "answer": "AEO 就是在页面开头的两三句话里,回答车主打字或说出口的真实问题,然后在下面补充细节。对维修厂来说,就是每个问题或服务一个页面,开头有简短直接的答案,标题清楚,FAQ 标记和页面上的文字一致,并且到处使用相同的名称、电话和地区。",
+  "sections": [
+   {
+    "h2": "1. 从车主真正会问的问题开始",
+    "p": [
+     "列出顾客在电话或 WhatsApp 上常问您的问题:为什么早上电池没电,多久该保养一次,这个警告灯是什么意思。这些就是您要写的问题。不要编造没有人会问的问题。"
+    ]
+   },
+   {
+    "h2": "2. 把答案放在最前面",
+    "steps": [
+     {
+      "b": "开头就回答",
+      "t": "在页面最上面用两三句平实的话给出直接答案,然后在下面再解释。"
+     },
+     {
+      "b": "用问题作标题",
+      "t": "用问题本身当标题,让每一段都能单独作为一个答案。"
+     },
+     {
+      "b": "一页一个问题",
+      "t": "每个页面只放一个主要问题或服务,这样页面回答什么一目了然。"
+     }
+    ]
+   },
+   {
+    "h2": "3. 让机器容易读懂页面",
+    "p": [
+     "搜索引擎和 AI 助手读的是页面上真正存在的文字。请把答案放在看得见的普通文字里,而不是只放在图片或弹出窗口中。"
+    ],
+    "list": [
+     "只为页面上看得见的问题和答案加 FAQ 标记(FAQPage 结构化数据)",
+     "使用与 Google 商家资料相同的商家名称、电话和地区",
+     "让营业时间、服务项目和联系方式保持最新",
+     "只写您能负责的事实:不要写难以及时更新的价格或承诺"
+    ]
+   },
+   {
+    "h2": "4. 保持诚实,保持更新",
+    "p": [
+     "没有人能保证页面会被 AI 助手引用。您能掌控的是质量:关于您真正在做的服务,写出正确、平实、并且保持更新的答案。这同样有助于通过一般搜索找到您的车主。"
+    ],
+    "note": "从小处开始:先写下最常被问的五个问题的答案,然后每周再加一个。"
+   }
+  ],
+  "faqs": [
+   {
+    "q": "AEO 是什么意思?",
+    "a": "AEO 是 answer engine optimisation(答案引擎优化)的缩写,意思是把页面写好、整理好,让搜索引擎和 AI 助手能找到问题的清楚答案,并展示给提问的人。"
+   },
+   {
+    "q": "AEO 和一般的 SEO 不一样吗?",
+    "a": "AEO 是在 SEO 的基础上做的。您仍然需要一个速度快、能被抓取的网站和完善的 Google 商家资料。AEO 多了对直接答案、问题标题和相符 FAQ 标记的重视。"
+   },
+   {
+    "q": "做了 AEO 就保证我的维修厂会被 AI 助手引用吗?",
+    "a": "不能。没有人能这样承诺。页面上清楚、正确、保持更新的答案,只是让搜索引擎和 AI 助手有可能使用它们。"
+   }
+  ]
+ }
+}
