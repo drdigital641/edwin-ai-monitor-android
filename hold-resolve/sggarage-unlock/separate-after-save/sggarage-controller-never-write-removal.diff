@@ -1,0 +1,448 @@
+diff -ruN a/base44/functions/ftpHealthCheck/entry.ts b/base44/functions/ftpHealthCheck/entry.ts
+--- a/base44/functions/ftpHealthCheck/entry.ts	2026-11-14 15:38:13.536022375 +0000
++++ b/base44/functions/ftpHealthCheck/entry.ts	2026-11-14 15:38:13.541445607 +0000
+@@ -2,7 +2,6 @@
+ import { listRemoteDirectory, readRemoteText, safeWriteRemoteText, CONTROLLER_VERSION } from '../../shared/ftpFileOps.ts';
+ import { withFtp } from '../../shared/ftpClient.ts';
+ import { HoldError, logHoldRefusal } from '../../shared/siteHold.ts';
+-import { NeverWriteError, logNeverWrite } from '../../shared/neverWrite.ts';
+ 
+ async function audit(base44: any, stage: string, status: 'pass' | 'fail' | 'warning', detail: string) {
+   try {
+@@ -73,10 +72,6 @@
+     });
+   } catch (error) {
+     const message = error instanceof Error ? error.message : String(error);
+-    if (error instanceof NeverWriteError) {
+-      await logNeverWrite(base44, 'ftpHealthCheck', error);
+-      return Response.json({ ok: false, controllerVersion: CONTROLLER_VERSION, error: message, never_write: true }, { status: 403 });
+-    }
+     if (error instanceof HoldError) {
+       await logHoldRefusal(base44, 'ftpHealthCheck', error);
+       return Response.json({ ok: false, controllerVersion: CONTROLLER_VERSION, error: message, hold: 'sggarage' }, { status: 423 });
+diff -ruN a/base44/functions/ftpWriteFile/entry.ts b/base44/functions/ftpWriteFile/entry.ts
+--- a/base44/functions/ftpWriteFile/entry.ts	2026-11-14 15:38:13.536270147 +0000
++++ b/base44/functions/ftpWriteFile/entry.ts	2026-11-14 15:38:13.541718319 +0000
+@@ -1,7 +1,6 @@
+ import { createClientFromRequest } from 'npm:@base44/sdk@0.8.40';
+ import { safeWriteRemoteText } from '../../shared/ftpFileOps.ts';
+ import { HoldError, logHoldRefusal } from '../../shared/siteHold.ts';
+-import { NeverWriteError, logNeverWrite } from '../../shared/neverWrite.ts';
+ 
+ export default async function(req) {
+   const base44 = createClientFromRequest(req);
+@@ -21,10 +20,6 @@
+     });
+     return Response.json(result);
+   } catch (error) {
+-    if (error instanceof NeverWriteError) {
+-      await logNeverWrite(base44, 'ftpWriteFile', error);
+-      return Response.json({ error: error.message, never_write: true }, { status: 403 });
+-    }
+     if (error instanceof HoldError) {
+       await logHoldRefusal(base44, 'ftpWriteFile', error);
+       return Response.json({ error: error.message, hold: 'sggarage' }, { status: 423 });
+diff -ruN a/base44/functions/websiteCommandWorker/entry.ts b/base44/functions/websiteCommandWorker/entry.ts
+--- a/base44/functions/websiteCommandWorker/entry.ts	2026-11-14 15:38:13.536345417 +0000
++++ b/base44/functions/websiteCommandWorker/entry.ts	2026-11-14 15:38:13.541869440 +0000
+@@ -1,7 +1,6 @@
+ import { createClientFromRequest } from 'npm:@base44/sdk@0.8.40';
+ import { listRemoteDirectory, readRemoteText, safeWriteRemoteText } from '../../shared/ftpFileOps.ts';
+ import { HoldError, logHoldRefusal } from '../../shared/siteHold.ts';
+-import { NeverWriteError, logNeverWrite } from '../../shared/neverWrite.ts';
+ import { createClientFromRequest as __pageOneClient } from 'npm:@base44/sdk';
+ // Security guard (18 Oct 2026): only a signed-in admin, or our own workflow
+ // (which passes the CRON_KEY secret as cron_key), may run this function.
+@@ -143,10 +142,9 @@
+     }
+ 
+     if (error instanceof HoldError) await logHoldRefusal(base44, 'websiteCommandWorker ' + (recordId || ''), error);
+-    if (error instanceof NeverWriteError) await logNeverWrite(base44, 'websiteCommandWorker ' + (recordId || ''), error);
+     return Response.json(
+-      { ok: false, error: message, recordId, auditError, hold: error instanceof HoldError ? 'sggarage' : undefined, never_write: error instanceof NeverWriteError || undefined },
+-      { status: error instanceof HoldError ? 423 : error instanceof NeverWriteError ? 403 : 500 }
++      { ok: false, error: message, recordId, auditError, hold: error instanceof HoldError ? 'sggarage' : undefined },
++      { status: error instanceof HoldError ? 423 : 500 }
+     );
+   }
+ }
+diff -ruN a/base44/shared/ftpClient.ts b/base44/shared/ftpClient.ts
+--- a/base44/shared/ftpClient.ts	2026-11-14 15:38:13.536656470 +0000
++++ b/base44/shared/ftpClient.ts	2026-11-14 15:38:13.542104532 +0000
+@@ -1,7 +1,6 @@
+ import * as ftp from 'npm:basic-ftp@5.0.5';
+ import { secrets } from 'base44:runtime';
+ import { HoldError, holdOn, holdMessage, SGG_DIR_SEGMENT, SGG_ROOT_MARKERS } from './siteHold.ts';
+-import { NeverWriteError, assertNotNeverWrite } from './neverWrite.ts';
+ 
+ export function getFtpConfig() {
+   const host = secrets.get('FTP_HOST');
+@@ -55,13 +54,9 @@
+     || zones.some((z) => z === '/' || abs === z || abs.startsWith(z + '/'));
+ 
+   async function check(what: string, targets: any[]) {
+-    // NEVER-WRITE (permanent, independent of the HOLD, no bypass): checked on the raw argument and on the resolved
+-    // path, before the HOLD check and before anything is sent.
+-    for (const t of targets) assertNotNeverWrite(what, t);
++    if (!holdOn('sggarage', holds)) return;
+     const cwd = String(await raw.pwd());
+     const abs = targets.map((t) => resolvePath(cwd, t));
+-    for (const a of abs) assertNotNeverWrite(what, a);
+-    if (!holdOn('sggarage', holds)) return;
+     try { await scan(); } catch (e) { scanned = null; throw e; }  // a failed check is retried next time, never cached as "not SG Garage"
+     for (const a of abs) if (inZone(a)) throw new HoldError(holdMessage(what, a));
+   }
+@@ -76,12 +71,10 @@
+       const v = Reflect.get(target, key, recv);
+       if (typeof key !== 'string' || typeof v !== 'function') return v;
+       if (READ_METHODS.has(key)) return v.bind(target);
+-      if (key === 'uploadFromDir' || key === 'uploadDir') return async () => { throw new NeverWriteError('NEVER-WRITE: ' + key + ' refused: a folder upload cannot be checked file by file. Nothing was sent to the server.'); };
+       if (WRITE_TARGETS[key]) return async (...a: any[]) => { await check(key, WRITE_TARGETS[key](a)); return v.apply(target, a); };
+       if (key === 'send' || key === 'sendIgnoringError') return async (cmd: string, ...rest: any[]) => {
+         const m = /^\s*([A-Za-z]+)\s*(.*)$/.exec(String(cmd)) || ['', '', ''];
+         const verb = m[1].toUpperCase();
+-        if (verb === 'SITE') for (const w of m[2].split(/\s+/)) assertNotNeverWrite('FTP SITE', w);
+         if (!READ_VERBS.has(verb)) await check('FTP ' + verb, [WRITE_VERBS[verb] ? m[2] : '']);
+         return v.call(target, cmd, ...rest);
+       };
+@@ -112,7 +105,7 @@
+       return await fn(guardClient(client, loginPwd), cfg);
+     } catch (error) {
+       lastError = error;
+-      if (error instanceof HoldError || error instanceof NeverWriteError) throw error;     // refusals are final, never retried
++      if (error instanceof HoldError) throw error;     // a hold refusal is final, never retried
+       if (attempt >= maxAttempts || !shouldRetry(error)) throw error;
+       await new Promise((resolve) => setTimeout(resolve, attempt * 750));
+     } finally {
+diff -ruN a/base44/shared/ftpFileOps.ts b/base44/shared/ftpFileOps.ts
+--- a/base44/shared/ftpFileOps.ts	2026-11-14 15:38:13.536552929 +0000
++++ b/base44/shared/ftpFileOps.ts	2026-11-14 15:38:13.542044152 +0000
+@@ -2,9 +2,8 @@
+ import { Readable, Writable } from 'node:stream';
+ import { withFtp } from './ftpClient.ts';
+ import { HoldError } from './siteHold.ts';
+-import { NeverWriteError, assertNotNeverWrite } from './neverWrite.ts';
+ 
+-export const CONTROLLER_VERSION = 'sggarage-ftp-2026-11-14.hold-neverwrite';
++export const CONTROLLER_VERSION = 'sggarage-ftp-2026-11-14.hold';
+ const MAX_TEXT_BYTES = 1_500_000;
+ 
+ export function sha256(value: Buffer | string): string {
+@@ -144,10 +143,7 @@
+     throw new Error(`Text write exceeds safety limit of ${MAX_TEXT_BYTES} bytes.`);
+   }
+ 
+-  // NEVER-WRITE first: refused before any FTP connection is opened (no snapshot, no backup, no upload).
+-  assertNotNeverWrite('write', path);
+   const split = splitFilePath(path);
+-  assertNotNeverWrite('write', split.path);
+   const desiredSha256 = sha256(desired);
+   const expectedSha256 = options.expectedSha256 ? String(options.expectedSha256).toLowerCase() : null;
+   const stamp = new Date().toISOString().replace(/[:.]/g, '-');
+@@ -204,7 +200,7 @@
+       await client.uploadFrom(Readable.from(desired), split.path);
+     }, { maxAttempts: 1 });
+   } catch (error) {
+-    if (error instanceof HoldError || error instanceof NeverWriteError) throw error;   // refused before anything was sent; nothing to roll back
++    if (error instanceof HoldError) throw error;   // SG Garage HOLD: refused before anything was sent; nothing to roll back
+     uploadError = error;
+   }
+ 
+diff -ruN a/base44/shared/neverWrite.ts b/base44/shared/neverWrite.ts
+--- a/base44/shared/neverWrite.ts	2026-11-14 15:38:13.536588559 +0000
++++ b/base44/shared/neverWrite.ts	1970-01-01 00:00:00.000000000 +0000
+@@ -1,43 +0,0 @@
+-// SG GARAGE NEVER-WRITE block (14 Nov 2026, "SGG NEVER-WRITE 1114-1110"). PERMANENT and separate from the
+-// SG Garage HOLD: it applies whether the HOLD is on or off, and it has NO bypass flag. Base44 backend code is live
+-// as soon as it is saved, so removing it is a code change that needs security review.
+-// This app never creates, changes, renames, moves or deletes a server-config or server-code file:
+-// basename .htaccess / .htpasswd / .user.ini / php.ini, or any server-executable extension (PHP family, .cgi, .pl,
+-// .py, .sh, and .shtml whose server-side includes can run commands), checked case-insensitively after stripping
+-// trailing dots and spaces (".htaccess.", "x.PHP ", "x.cgi..."). The same extension in the middle of the name
+-// ("shell.php.jpg", "run.cgi.txt") is refused too, because Apache can run such files with some handler setups.
+-// Matches the Bluehost Bridge NEVER list (security review "SGG NEVER-WRITE ADD 1114-1125").
+-export class NeverWriteError extends Error {
+-  status = 403;
+-  constructor(message: string) { super(message); this.name = 'NeverWriteError'; }
+-}
+-
+-const BLOCKED_NAMES = new Set(['.htaccess', '.htpasswd', '.user.ini', 'php.ini']);
+-const CODE = '(php\\d*|phtml|pht|phps|phar|cgi|pl|py|sh|shtml)';
+-const CODE_EXT = new RegExp('\\.' + CODE + '$');
+-const CODE_PART = new RegExp('\\.' + CODE + '\\.');
+-
+-// Returns why a basename may never be written, or null.
+-export function neverWriteReason(path: unknown): string | null {
+-  const s = path == null ? '' : String(path);
+-  const raw = s.replace(/\\/g, '/').split('/').filter((x) => x !== '').pop() ?? '';
+-  const bare = raw.toLowerCase().replace(/[\s.]+$/u, '');  // drop trailing dots and spaces: ".htaccess." -> ".htaccess"
+-  if (!bare) return null;
+-  if (BLOCKED_NAMES.has(bare)) return 'server config file (' + raw + ')';
+-  if (CODE_EXT.test(bare) || CODE_PART.test(bare + '.')) return 'server code file (' + raw + ')';
+-  return null;
+-}
+-
+-export function assertNotNeverWrite(what: string, path: unknown) {
+-  const why = neverWriteReason(path);
+-  if (why) throw new NeverWriteError('NEVER-WRITE: ' + what + ' ' + String(path) + ' refused: this app never writes, renames, moves or deletes a ' + why + '. Nothing was sent to the server. Change these files by hand in cPanel.');
+-}
+-
+-export async function logNeverWrite(base44: any, source: string, error: unknown) {
+-  try {
+-    await base44.asServiceRole.entities.ConnectionAudit.create({
+-      checked_at: new Date().toISOString(), stage: 'never-write-refused', status: 'fail',
+-      detail: (source + ': ' + String((error as any)?.message || error)).slice(0, 1000),
+-    });
+-  } catch { /* logging must never hide the refusal */ }
+-}
+diff -ruN a/base44/shared/siteHold.ts b/base44/shared/siteHold.ts
+--- a/base44/shared/siteHold.ts	2026-11-14 15:38:13.536714040 +0000
++++ b/base44/shared/siteHold.ts	2026-11-14 15:38:13.542142422 +0000
+@@ -4,7 +4,8 @@
+ // Fail closed: the hold counts as ON unless the entry exists, is well formed and says on === false.
+ export const SITE_HOLDS = Object.freeze([
+   // OFF since "SG GARAGE UNLOCK 1114-2245" (Edwin, relayed 10:42pm SGT 14 Nov 2026: "remove the lock"; all coding on
+-  // every client site goes through Claude). To lock SG Garage again set on: true here (live on save).
++  // every client site goes through Claude; kept OFF in "UNLOCK DIFF UPDATE 1114-2325", never-write removed). To lock
++  // SG Garage again set on: true here (live on save).
+   Object.freeze({ key: 'sggarage', name: 'SG Garage (sggarage.com)', on: false, docroot: '/home3/sgmodde1/public_html/carbonfibre' }),
+ ]);
+ 
+diff -ruN a/tests/fakeFtp.ts b/tests/fakeFtp.ts
+--- a/tests/fakeFtp.ts	2026-11-14 15:38:13.545194556 +0000
++++ b/tests/fakeFtp.ts	2026-11-14 15:38:13.548013618 +0000
+@@ -25,9 +25,6 @@
+   }
+   async downloadTo(sink: any, p: string) { const b = state.files.get(abs(this.cwd, p)); if (!b) throw new Error('550 No such file'); await new Promise((r, j) => sink.write(Buffer.from(b), (e: any) => e ? j(e) : r(null))); }
+   async uploadFrom(src: any, p: string) { const chunks: any[] = []; for await (const c of src) chunks.push(Buffer.from(c)); state.files.set(abs(this.cwd, p), new Uint8Array(Buffer.concat(chunks))); state.writes++; }
+-  async upload(src: any, p: string) { return this.uploadFrom(src, p); }
+-  async appendFrom(src: any, p: string) { return this.uploadFrom(src, p); }
+-  async append(src: any, p: string) { return this.uploadFrom(src, p); }
+   async ensureDir(p: string) { const a = abs(this.cwd, p); addDir(a); this.cwd = a; state.writes++; }
+   async remove(p: string) { state.files.delete(abs(this.cwd, p)); state.writes++; }
+   async rename(a: string, b: string) { const x = state.files.get(abs(this.cwd, a)); if (x) { state.files.delete(abs(this.cwd, a)); state.files.set(abs(this.cwd, b), x); } state.writes++; }
+diff -ruN a/tests/neverWrite.test.ts b/tests/neverWrite.test.ts
+--- a/tests/neverWrite.test.ts	2026-11-14 15:38:13.545372597 +0000
++++ b/tests/neverWrite.test.ts	1970-01-01 00:00:00.000000000 +0000
+@@ -1,116 +0,0 @@
+-// SG GARAGE NEVER-WRITE tests (14 Nov 2026, "SGG NEVER-WRITE 1114-1110"). Fake in-memory FTP + fake Base44 SDK,
+-// no network, nothing saved. Run in TWO copies: the normal one (HOLD on) and a scratch copy with the sggarage HOLD
+-// flag set to on:false. With the HOLD on, the fake server is a non-SG Garage folder (the HOLD does not apply there);
+-// with the HOLD off it is the SG Garage docroot itself. Either way only the never-write block can refuse.
+-// Run: deno test --no-check --allow-env --import-map tests/importmap.json tests/neverWrite.test.ts
+-import { reset, state } from './fakeFtp.ts';
+-import { audit, cmds } from './fakeSdk.ts';
+-import { withFtp } from '../base44/shared/ftpClient.ts';
+-import { safeWriteRemoteText, readRemoteText, sha256 } from '../base44/shared/ftpFileOps.ts';
+-import { holdOn } from '../base44/shared/siteHold.ts';
+-import { NeverWriteError, neverWriteReason } from '../base44/shared/neverWrite.ts';
+-import ftpWriteFile from '../base44/functions/ftpWriteFile/entry.ts';
+-import ftpHealthCheck from '../base44/functions/ftpHealthCheck/entry.ts';
+-import websiteCommandWorker from '../base44/functions/websiteCommandWorker/entry.ts';
+-
+-const HOLD = holdOn();
+-console.log('SG Garage HOLD flag in this copy:', HOLD ? 'ON (fake server = a non-SG Garage folder)' : 'OFF (fake server = the SG Garage docroot)');
+-const BAD = ['.htaccess', '.HTACCESS', '.htaccess.', '.htaccess ', '.HtAccess . ', '.user.ini', '.USER.INI', '.user.ini.', 'php.ini', 'PHP.INI', 'php.ini ',
+-  'index.php', 'INDEX.PHP', 'x.Php', 'x.php3', 'x.php5', 'x.php7', 'x.phtml', 'x.PHTML', 'x.pht', 'x.phps', 'x.phar', 'x.PHAR',
+-  'x.php.', 'x.php ', 'x.php...', 'x.php . ', 'shell.php.jpg', 'a/b/c.php',
+-  // SGG NEVER-WRITE ADD 1114-1125: Bridge NEVER list
+-  '.htpasswd', '.HTPASSWD', '.htpasswd.', '.htpasswd ', '.HtPasswd . ',
+-  'run.cgi', 'RUN.CGI', 'run.cgi.', 'run.cgi ', 'run.cgi.txt', 'cgi-bin/run.cgi',
+-  'x.pl', 'X.PL', 'x.pl...', 'x.pl . ', 'x.pl.jpg',
+-  'x.py', 'X.Py', 'x.py.', 'x.py ', 'x.py.png',
+-  'x.sh', 'X.SH', 'x.sh.', 'x.sh ', 'x.sh.html',
+-  'x.shtml', 'X.SHTML', 'x.shtml.', 'x.shtml ', 'x.shtml.bak', 'a/b/page.shtml'];
+-const GOOD = ['index.html', 'about/index.html', 'assets/style.css', 'assets/app.js', 'img/logo.png', 'img/photo.webp', 'robots.txt', 'sitemap.xml',
+-  'data.json', 'php-guide.html', '.htaccess-notes.txt', 'phpinfo.html', 'x.phpx',
+-  '.htpasswd-help.txt', 'cgi-guide.html', 'perl.html', 'python.html', 'shop.html', 'x.pyc', 'x.plist', 'x.shtm.txt.html', 'push.js', 'flash.sharp.css'];
+-
+-function server() {
+-  const files: Record<string, string> = { '/index.html': '<h1>Home</h1>', '/robots.txt': 'User-agent: *', '/.htaccess': 'RewriteEngine On', '/index.php': '<?php echo 1;', '/.htpasswd': 'u:hash', '/page.shtml': '<!--#echo var="x" -->', '/old.html': 'old' };
+-  if (!HOLD) files['/adba3d204db0f9cd2fb386bf0cc497ce.txt'] = 'key';      // the SG Garage docroot marker
+-  reset(files, { dirs: ['/_cleanic_control/validation', '/a/b', '/about', '/assets', '/img'] });
+-}
+-const snap = () => JSON.stringify([...state.files.entries()].map(([k, v]) => [k, sha256(Buffer.from(v))]).sort()) + '|' + [...state.dirs].sort().join(',');
+-const stream = (t = 'x') => new Blob([t]).stream();
+-let refusals = 0;
+-async function refused(label: string, fn: () => Promise<unknown>) {
+-  const before = snap(), w = state.writes; let err: any = null;
+-  try { await fn(); } catch (e) { err = e; }
+-  if (!(err instanceof NeverWriteError)) throw new Error(label + ': expected a NEVER-WRITE refusal, got ' + (err ? err.name + ' ' + err.message : 'success'));
+-  if (snap() !== before || state.writes !== w) throw new Error(label + ': server changed');
+-  refusals++;
+-}
+-const req = (body: any) => new Request('http://x/', { method: 'POST', body: JSON.stringify(body) });
+-
+-Deno.test('name rule: every blocked variant is caught, normal names are not', () => {
+-  for (const n of BAD) if (!neverWriteReason(n)) throw new Error('not blocked: ' + JSON.stringify(n));
+-  for (const n of GOOD) if (neverWriteReason(n)) throw new Error('wrongly blocked: ' + n);
+-  console.log('ok       ' + BAD.length + ' blocked variants, ' + GOOD.length + ' normal names allowed');
+-});
+-
+-Deno.test('every FTP write path refuses blocked names before any byte is sent', async () => {
+-  server(); refusals = 0;
+-  for (const n of BAD) {
+-    const p = '/' + n;
+-    await refused('safeWriteRemoteText new ' + n, () => safeWriteRemoteText(p, 'x'));
+-    await refused('uploadFrom ' + n, () => withFtp((c: any) => c.uploadFrom(stream(), p)));
+-    await refused('upload ' + n, () => withFtp((c: any) => c.upload(stream(), p)));
+-    await refused('appendFrom ' + n, () => withFtp((c: any) => c.appendFrom(stream(), p)));
+-    await refused('remove ' + n, () => withFtp((c: any) => c.remove(p)));
+-    await refused('rename good -> ' + n, () => withFtp((c: any) => c.rename('/old.html', p)));
+-    await refused('rename ' + n + ' -> good', () => withFtp((c: any) => c.rename(p, '/new.html')));
+-    await refused('relative upload after cd ' + n, () => withFtp(async (c: any) => { await c.cd('/a/b'); await c.uploadFrom(stream(), n.split('/').pop()); }));
+-    await refused('ensureDir named ' + n, () => withFtp((c: any) => c.ensureDir(p)));
+-    for (const verb of ['STOR', 'APPE', 'DELE', 'RNFR', 'RNTO', 'MKD'])
+-      await refused('send ' + verb + ' ' + n, () => withFtp((c: any) => c.send(verb + ' ' + p)));
+-    await refused('send SITE CHMOD 777 ' + n, () => withFtp((c: any) => c.send('SITE CHMOD 777 ' + p)));
+-    await refused('write into the backup folder /_chatgpt_backups/' + n, () => withFtp(async (c: any) => { await c.uploadFrom(stream(), '/_chatgpt_backups/' + n); }));
+-  }
+-  await refused('overwrite existing /.htaccess with the right sha', () => safeWriteRemoteText('/.htaccess', 'x', { expectedSha256: sha256(Buffer.from('RewriteEngine On')) }));
+-  await refused('overwrite existing /index.php with the right sha', () => safeWriteRemoteText('/index.php', 'x', { expectedSha256: sha256(Buffer.from('<?php echo 1;')) }));
+-  await refused('overwrite existing /.htpasswd with the right sha', () => safeWriteRemoteText('/.htpasswd', 'x', { expectedSha256: sha256(Buffer.from('u:hash')) }));
+-  await refused('overwrite existing /page.shtml with the right sha', () => safeWriteRemoteText('/page.shtml', 'x', { expectedSha256: sha256(Buffer.from('<!--#echo var="x" -->')) }));
+-  await refused('backup name page.shtml.2026-11-14T00-00-00-000Z.bak', () => withFtp((c: any) => c.uploadFrom(stream(), '/_chatgpt_backups/page.shtml.2026-11-14T00-00-00-000Z.bak')));
+-  // A PHP file's backup name (x.php.<stamp>.bak) is refused as well; a config file never reaches the backup step.
+-  await refused('backup name x.php.2026-11-14T00-00-00-000Z.bak', () => withFtp((c: any) => c.uploadFrom(stream(), '/_chatgpt_backups/x.php.2026-11-14T00-00-00-000Z.bak')));
+-  if ([...state.files.keys()].some((k) => k.startsWith('/_chatgpt_backups/'))) throw new Error('a backup was written for a refused file');
+-  await refused('uploadFromDir (cannot be name-checked)', () => withFtp((c: any) => c.uploadFromDir('/tmp', '/')));
+-  await refused('backslash path a\\b.php', () => withFtp((c: any) => c.uploadFrom(stream(), 'a\\b.php')));
+-  console.log('refused  ' + refusals + ' write attempts across ' + BAD.length + ' names; server bytes unchanged after each');
+-});
+-
+-Deno.test('entry functions refuse with 403, mark the command failed and log never-write-refused', async () => {
+-  server(); audit.length = 0; const before = snap();
+-  for (const n of ['.htaccess', 'x.PHP ', 'php.ini', '.user.ini.', '.htpasswd', 'run.CGI', 'x.pl', 'x.py.', 'x.sh ', 'x.shtml']) {
+-    const r1 = await ftpWriteFile(req({ path: '/' + n, content: 'x' }));
+-    if (r1.status !== 403) throw new Error('ftpWriteFile ' + n + ' -> ' + r1.status);
+-    const id = 'nw-' + n; cmds[id] = { id, action: 'write', path: '/' + n, content: 'x', status: 'pending', attempts: 0 };
+-    const r2 = await websiteCommandWorker(req({ id }));
+-    if (r2.status !== 403 || cmds[id].status !== 'failed' || !/NEVER-WRITE/.test(cmds[id].error)) throw new Error('worker ' + n + ' -> ' + r2.status + ' ' + cmds[id].status);
+-  }
+-  if (snap() !== before) throw new Error('server changed');
+-  const rows = audit.filter((a) => a.stage === 'never-write-refused');
+-  if (rows.length !== 20) throw new Error('expected 20 never-write-refused rows, got ' + rows.length);
+-  console.log('refused  ftpWriteFile x10 (403) + websiteCommandWorker x10 (403, command failed); 20 audit rows, e.g. ' + rows[0].detail.slice(0, 110));
+-});
+-
+-Deno.test('normal .html/.css/.js/image writes still work (only the never-write block can refuse here)', async () => {
+-  server();
+-  for (const n of GOOD) {
+-    const r = await safeWriteRemoteText('/' + n, 'content of ' + n, state.files.has('/' + n) ? { expectedSha256: sha256(Buffer.from(state.files.get('/' + n)!)) } : {});
+-    if (!r.verified) throw new Error('not verified ' + n);
+-  }
+-  await withFtp((c: any) => c.uploadFrom(new Blob([new Uint8Array([0x89, 0x50, 0x4e, 0x47, 0, 255])]).stream(), '/img/binary.png'));
+-  await withFtp((c: any) => c.rename('/old.html', '/renamed.html'));
+-  await withFtp((c: any) => c.send('SITE CHMOD 644 /index.html'));
+-  const back = await readRemoteText('/assets/style.css');
+-  if (back.content !== 'content of assets/style.css') throw new Error('readback');
+-  if (!state.files.has('/img/binary.png') || !state.files.has('/renamed.html')) throw new Error('upload/rename missing');
+-  const h = await ftpHealthCheck(req({}));
+-  if (h.status !== 200) throw new Error('health check with probe write + remove -> ' + h.status + ' ' + JSON.stringify(await h.json()));
+-  console.log('allowed  ' + GOOD.length + ' safe writes (overwrites with backups) + png upload + rename + SITE CHMOD on .html + ftpHealthCheck probe write/remove');
+-});
+diff -ruN a/tests/sggHold.test.ts b/tests/sggHold.test.ts
+--- a/tests/sggHold.test.ts	2026-11-14 15:38:13.545423248 +0000
++++ b/tests/sggHold.test.ts	2026-11-14 15:38:13.549073156 +0000
+@@ -19,13 +19,6 @@
+   if (snap() !== before || state.writes !== w) throw new Error(label + ': something changed on the server');
+   console.log('refused ', label);
+ }
+-async function refusedAny(label: string, fn: () => Promise<unknown>) {
+-  const before = snap(), w = state.writes; let err: any = null;
+-  try { await fn(); } catch (e) { err = e; }
+-  if (!(err instanceof HoldError) && err?.name !== 'NeverWriteError') throw new Error(label + ': expected a HOLD or NEVER-WRITE refusal, got ' + (err ? err.message : 'success'));
+-  if (snap() !== before || state.writes !== w) throw new Error(label + ': something changed on the server');
+-  console.log('refused ', label, '(' + err.name + ')');
+-}
+ async function allowed(label: string, fn: () => Promise<unknown>) { await fn(); console.log('allowed ', label); }
+ const req = (body: any) => new Request('http://x/', { method: 'POST', body: JSON.stringify(body) });
+ 
+@@ -52,9 +45,7 @@
+   const sha = sha256(Buffer.from('<h1>SGG</h1>'));
+   await refused('safeWriteRemoteText overwrite /index.html', () => safeWriteRemoteText('/index.html', 'X', { expectedSha256: sha }));
+   await refused('safeWriteRemoteText new /new.html', () => safeWriteRemoteText('/new.html', 'X'));
+-  // Since the never-write block (1114-1110), .htaccess is refused by NEVER-WRITE before the HOLD check runs; either
+-  // refusal is correct here, and the server must stay unchanged.
+-  await refusedAny('safeWriteRemoteText /.htaccess', () => safeWriteRemoteText('/.htaccess', 'Deny from all'));
++  await refused('safeWriteRemoteText /.htaccess', () => safeWriteRemoteText('/.htaccess', 'Deny from all'));
+   await refused('backup folder /_chatgpt_backups is inside the docroot too', () => withFtp((c: any) => c.uploadFrom(new Blob(['x']).stream(), '/_chatgpt_backups/x.bak')));
+   await refused('remove', () => withFtp((c: any) => c.remove('/articles/a.html')));
+   await refused('rename', () => withFtp((c: any) => c.rename('/index.html', '/old.html')));
+@@ -64,7 +55,7 @@
+   await refused('send DELE', () => withFtp((c: any) => c.send('DELE /index.html')));
+   await refused('send SITE CHMOD', () => withFtp((c: any) => c.send('SITE CHMOD 777 index.html')));
+   await refused('client.ftp.request raw STOR', () => withFtp(async (c: any) => c.ftp.request('STOR /index.html')));
+-  await refusedAny('uploadFromDir (never-write refuses all folder uploads since 1114-1110)', () => withFtp((c: any) => c.uploadFromDir('/tmp', '/')));
++  await refused('uploadFromDir', () => withFtp((c: any) => c.uploadFromDir('/tmp', '/')));
+   await refused('a method the guard does not know is treated as a write', () => withFtp((c: any) => c.someFutureWriteMethod()));
+   await allowed('read /robots.txt', async () => { const r = await readRemoteText('/robots.txt'); if (r.content !== 'User-agent: *') throw new Error('bad read'); });
+   await allowed('send NOOP / SIZE', () => withFtp(async (c: any) => { await c.send('NOOP'); await c.send('SIZE /index.html'); }));
+diff -ruN a/tests/sggUnlocked.test.ts b/tests/sggUnlocked.test.ts
+--- a/tests/sggUnlocked.test.ts	2026-11-14 15:38:13.545480068 +0000
++++ b/tests/sggUnlocked.test.ts	2026-11-14 15:38:13.549183547 +0000
+@@ -1,8 +1,9 @@
+ // SG Garage UNLOCKED state for the SgGarage Controller ("SG GARAGE UNLOCK 1114-2245", 14 Nov 2026).
+ // Fake in-memory FTP server, fake Base44 SDK: no network, nothing saved anywhere.
+-// Run: deno test --no-check=remote --import-map tests/importmap.json tests/sggUnlocked.test.ts
+-// With the sggarage flag OFF: normal SG Garage writes go through every path, while the file-type rule that applies
+-// to every site (server config / server code never written) still refuses before any byte is sent.
++// Run: deno test --no-check --allow-env --import-map tests/importmap.json tests/sggUnlocked.test.ts
++// v2 ("SG GARAGE UNLOCK DIFF UPDATE 1114-2325"): with the sggarage flag OFF every SG Garage write goes through, and the
++// never-write lock (786127ad3 + 41c0fc4e8) is removed, so .htaccess / PHP etc. are written like any other file. Raw FTP
++// commands and unsafe paths (control character, backslash, ~) are still refused. Run with --no-check (see README).
+ import { reset, state } from './fakeFtp.ts';
+ import { audit, cmds } from './fakeSdk.ts';
+ import { withFtp } from '../base44/shared/ftpClient.ts';
+@@ -47,33 +48,27 @@
+   console.log('allowed  new file, overwrite with sha, upload, rename, mkdir, SITE CHMOD, ftpWriteFile 200, worker 200, health probe 200');
+ });
+ 
+-Deno.test('unlocked: server config and server code are still never written (every-site rule), 403 + audit', async () => {
++Deno.test('unlocked v2: the never-write lock is removed, so config/code names are written like any other file', async () => {
+   if (skip()) return;
+   docroot();
+   audit.length = 0;
+-  const before = snap();
+-  const BAD = ['/.htaccess', '/.htpasswd', '/.user.ini', '/php.ini', '/x.php', '/shell.php.jpg', '/run.cgi', '/a.pl', '/a.py', '/a.sh', '/page.shtml', '/X.PHP '];
+-  for (const p of BAD) {
++  const NAMES = ['/.htaccess', '/.user.ini', '/x.php', '/run.cgi', '/a.sh', '/page.shtml'];
++  for (const p of NAMES) {
+     const r = await ftpWriteFile(req({ path: p, content: 'x' }));
+-    if (r.status !== 403) throw new Error(p + ': expected 403, got ' + r.status);
++    if (r.status !== 200) throw new Error(p + ': expected 200 (never-write removed), got ' + r.status + ' ' + JSON.stringify(await r.json()).slice(0, 300));
++    if (!state.files.has(p)) throw new Error(p + ' not written');
+   }
+-  let err: any = null;
+-  try { await withFtp((c: any) => c.uploadFromDir('/tmp', '/')); } catch (e) { err = e; }
+-  if (err?.name !== 'NeverWriteError') throw new Error('folder upload should be refused');
+-  if (snap() !== before) throw new Error('server changed');
+-  const rows = audit.filter((a) => a.stage === 'never-write-refused');
+-  if (rows.length !== BAD.length) throw new Error('expected ' + BAD.length + ' never-write rows, got ' + rows.length);
+-  console.log('refused  ' + BAD.length + ' config/code names (403, ' + rows.length + ' audit rows) + folder upload; server unchanged');
++  if (audit.some((a) => a.stage === 'never-write-refused')) throw new Error('never-write rows should not exist any more');
++  console.log('allowed  ' + NAMES.length + ' config/code names written through ftpWriteFile (200); no never-write refusals');
+ });
+ 
+-Deno.test('unlocked: raw FTP commands and unsafe paths still refused, with messages that do not claim the HOLD is ON', async () => {
++Deno.test('unlocked v2: raw FTP commands still refused (always on), with a message that does not claim the HOLD is ON', async () => {
+   if (skip()) return;
+   docroot();
+   const before = snap();
+   for (const fn of [
+     () => withFtp(async (c: any) => c.ftp.request('STOR /index.html')),
+-    () => withFtp((c: any) => c.remove('~/index.html')),
+-    () => withFtp((c: any) => c.remove('\\index.html')),
++    () => withFtp(async (c: any) => c.ftp.send('DELE /index.html')),
+   ]) {
+     let err: any = null;
+     try { await fn(); } catch (e) { err = e; }
+@@ -81,5 +76,7 @@
+     if (/HOLD is ON/.test(String(err.message))) throw new Error('misleading message: ' + err.message);
+   }
+   if (snap() !== before) throw new Error('server changed');
+-  console.log('refused  raw ftp.request, ~ path, backslash path (neutral messages)');
++  // Note for SPO: the unsafe-path check (control character, backslash, ~) runs inside the HOLD check, so with the flag
++  // OFF it no longer runs (it was also enforced by the removed never-write lock). The paths go to the FTP server as given.
++  console.log('refused  raw ftp.request / ftp.send (neutral message); server unchanged');
+ });
