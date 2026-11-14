@@ -1,0 +1,116 @@
+diff -ruN da/base44/shared/liveGuard.ts db/base44/shared/liveGuard.ts
+--- a/base44/shared/liveGuard.ts	2026-11-14 14:59:29.643776407 +0000
++++ b/base44/shared/liveGuard.ts	2026-11-14 14:59:29.646239895 +0000
+@@ -134,7 +134,18 @@
+ 
+ // Minimal XML well-formedness check (no DOM parser in the Deno runtime): one root element, every tag closed in order,
+ // attribute values quoted, only the five XML entities or numeric references, no text outside the root.
++// Active content is refused (SPO LOW follow-up, 14 Nov 2026): elements named script, iframe, object or embed in any
++// namespace, any on* attribute (any namespace), and "javascript:" anywhere (also when written with character
++// references). xhtml:link (hreflang alternates) stays allowed.
++export const XML_ACTIVE_ELEMENTS = Object.freeze(['script', 'iframe', 'object', 'embed']);
++const decodeRefs = (t: string) => t
++  .replace(/&#x([0-9a-fA-F]+);?/g, (_, h) => { const n = parseInt(h, 16); return n <= 0x10ffff ? String.fromCodePoint(n) : ''; })
++  .replace(/&#(\d+);?/g, (_, d) => { const n = parseInt(d, 10); return n <= 0x10ffff ? String.fromCodePoint(n) : ''; })
++  .replace(/&colon;/gi, ':').replace(/&tab;/gi, '\t').replace(/&newline;/gi, '\n');
+ export function xmlProblem(text: string): string | null {
++  // "javascript:" with any whitespace/control characters inside the word, before or after decoding references.
++  const jsRe = /j[\s\x00-\x1f]*a[\s\x00-\x1f]*v[\s\x00-\x1f]*a[\s\x00-\x1f]*s[\s\x00-\x1f]*c[\s\x00-\x1f]*r[\s\x00-\x1f]*i[\s\x00-\x1f]*p[\s\x00-\x1f]*t[\s\x00-\x1f]*:/i;
++  if (jsRe.test(text) || jsRe.test(decodeRefs(text))) return 'javascript: is not allowed in a sitemap';
+   let s = text.replace(/^\uFEFF/, '');
+   s = s.replace(/^\s*<\?xml\b[^?]*\?>/, '');
+   const stack: string[] = []; let root = '', closedRoot = false, i = 0;
+@@ -156,6 +167,13 @@
+       if (stack.pop() !== m[1]) return 'closing tag </' + m[1] + '> does not match';
+       if (!stack.length) closedRoot = true;
+     } else if ((m = /^([A-Za-z_][\w:.-]*)((?:\s+[A-Za-z_][\w:.-]*\s*=\s*(?:"[^"<]*"|'[^'<]*'))*)\s*(\/?)$/.exec(tag))) {
++      const local = m[1].replace(/^.*:/, '').toLowerCase();
++      if (XML_ACTIVE_ELEMENTS.includes(local)) return 'element <' + m[1] + '> is not allowed in a sitemap';
++      // Walk name="value" pairs so text inside a value (e.g. ?online=1 in a URL) is never read as a name.
++      for (const a of m[2].matchAll(/\s+([A-Za-z_][\w:.-]*)\s*=\s*(?:"[^"<]*"|'[^'<]*')/g)) {
++        // xmlns / xmlns:prefix only declare a namespace prefix (e.g. xmlns:ont=...), never an event handler.
++        if (!/^xmlns(:|$)/i.test(a[1]) && /^on/i.test(a[1].replace(/^.*:/, ''))) return 'attribute ' + a[1] + ' is not allowed in a sitemap';
++      }
+       if (closedRoot) return 'more than one root element';
+       if (!stack.length && !root) root = m[1];
+       if (!m[3]) stack.push(m[1]); else if (!stack.length) closedRoot = true;
+diff -ruN da/tests/sitemapActiveContent.test.ts db/tests/sitemapActiveContent.test.ts
+--- a/tests/sitemapActiveContent.test.ts	1970-01-01 00:00:00.000000000 +0000
++++ b/tests/sitemapActiveContent.test.ts	2026-11-14 14:59:29.648462363 +0000
+@@ -0,0 +1,76 @@
++// SPO LOW follow-up (14 Nov 2026): the sitemap.xml check refuses active content. Run:
++// deno test --no-check -A --import-map tests/importmap.json tests/sitemapActiveContent.test.ts
++// Pure function and guard calls with fake live states: never touches a live site.
++import { liveGuard, xmlProblem, generatedFileProblem } from '../base44/shared/liveGuard.ts';
++
++const enc = (s: string) => new TextEncoder().encode(s);
++const sha256 = async (b: Uint8Array) => Array.from(new Uint8Array(await crypto.subtle.digest('SHA-256', b))).map((x) => x.toString(16).padStart(2, '0')).join('');
++const NS = 'xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"';
++const XHTML = 'xmlns:xhtml="http://www.w3.org/1999/xhtml"';
++const OLD_XML = `<?xml version="1.0" encoding="UTF-8"?>\n<urlset ${NS}>\n<url><loc>https://example.sg/</loc></url>\n</urlset>\n`;
++const wrap = (inner: string, attrs = '') => `<?xml version="1.0" encoding="UTF-8"?>\n<urlset ${NS} ${XHTML}${attrs}>\n<url><loc>https://example.sg/</loc>${inner}</url>\n</urlset>\n`;
++const refused = (x: string, m: RegExp) => {
++  const p = generatedFileProblem('sitemap.xml', enc(x));
++  if (p === null || !m.test(p)) throw new Error('expected refusal ' + m + ', got: ' + p + ' for ' + x.slice(0, 160));
++};
++const allowed = (x: string) => {
++  const p = generatedFileProblem('sitemap.xml', enc(x));
++  if (p !== null) throw new Error('expected allowed, got: ' + p + ' for ' + x.slice(0, 160));
++};
++
++Deno.test('script / iframe / object / embed refused in any namespace and any case', () => {
++  for (const el of ['script', 'iframe', 'object', 'embed']) {
++    for (const name of [el, el.toUpperCase(), 'xhtml:' + el, 'html:' + el, 'x:' + el[0].toUpperCase() + el.slice(1)]) {
++      refused(wrap(`<${name}>a</${name}>`), /element <.+> is not allowed/);
++      refused(wrap(`<${name} src="https://x.sg/a"/>`), /element <.+> is not allowed/);
++    }
++  }
++  refused(`<script ${NS}><url><loc>https://x.sg/</loc></url></script>`, /element <script> is not allowed/);
++});
++
++Deno.test('on* attributes refused in any namespace and any case', () => {
++  for (const a of ['onload', 'onerror', 'ONCLICK', 'onMouseOver', 'xhtml:onload', 'x:onfocus', 'on']) {
++    refused(wrap(`<xhtml:link rel="alternate" hreflang="en" href="https://example.sg/" ${a}="x"/>`), /attribute .+ is not allowed/);
++    refused(wrap(`<lastmod ${a}='1'>2026-11-14</lastmod>`), /attribute .+ is not allowed/);
++  }
++  refused(wrap('', ' onload="x"'), /attribute onload is not allowed/);
++});
++
++Deno.test('javascript: refused anywhere, also hidden with case, whitespace or character references', () => {
++  for (const js of [
++    'javascript:alert(1)', 'JavaScript:alert(1)', 'java\tscript:x', 'java&#x09;script:x', '&#106;avascript:x',
++    'javascript&#58;x', 'javascript&#x3A;x', 'javascript&colon;x',
++    '&#x6A;&#x61;&#x76;&#x61;&#x73;&#x63;&#x72;&#x69;&#x70;&#x74;&#x3a;x',
++  ]) {
++    refused(wrap(`<xhtml:link rel="alternate" hreflang="en" href="${js}"/>`), /javascript: is not allowed/);
++  }
++  refused(`<urlset ${NS}><url><loc>javascript:alert(1)</loc></url></urlset>`, /javascript: is not allowed/);
++  refused(wrap('<x><![CDATA[javascript:alert(1)]]></x>'), /javascript: is not allowed/);
++  refused(wrap('<!-- javascript:x -->'), /javascript: is not allowed/);
++});
++
++Deno.test('xhtml:link hreflang alternates stay allowed, and look-alike words are not refused', () => {
++  allowed(wrap('<xhtml:link rel="alternate" hreflang="en" href="https://example.sg/"/><xhtml:link rel="alternate" hreflang="zh" href="https://example.sg/zh/"/><xhtml:link rel="alternate" hreflang="x-default" href="https://example.sg/"/>'));
++  allowed(wrap('<xhtml:link rel="alternate" hreflang="en" href="https://example.sg/"></xhtml:link>'));
++  allowed(`<urlset ${NS}><url><loc>https://example.sg/javascript-basics/?online=1&amp;onload=2</loc></url><url><loc>https://example.sg/objects/embedded-scripts/</loc></url></urlset>`);
++  allowed(wrap('<xhtml:link rel="alternate" hreflang="en" href="https://example.sg/?x=onload"/>'));
++  allowed(wrap('<image:image xmlns:image="http://www.google.com/schemas/sitemap-image/1.1"><image:loc>https://example.sg/a.jpg</image:loc></image:image>'));
++  allowed(wrap('<scripture>a</scripture><objects/><embedded/><iframes/>'));
++  allowed(wrap('', ' xmlns:ont="https://example.sg/ns"'));
++});
++
++Deno.test('through the guard: publisher write with active content refused, clean hreflang sitemap allowed', async () => {
++  const live = { state: 'present' as const, bytes: enc(OLD_XML) };
++  const run = (x: string, rel: string) => liveGuard({ site: 'pageone', rel, op: 'write', live, newBytes: enc(x), overrides: [], sha256, publisher: true });
++  for (const rel of ['sitemap.xml', 'preview/dmts/sitemap.xml', 'preview/benjamin-poon/sitemap.xml']) {
++    const bad = await run(wrap('<xhtml:script>x</xhtml:script>'), rel);
++    if (bad === null || !/element <xhtml:script> is not allowed/.test(bad)) throw new Error('expected refusal, got ' + bad);
++    const bad2 = await run(wrap('<xhtml:link rel="alternate" hreflang="en" href="javascript:alert(1)"/>'), rel);
++    if (bad2 === null || !/javascript: is not allowed/.test(bad2)) throw new Error('expected refusal, got ' + bad2);
++    const bad3 = await run(wrap('<lastmod onclick="x">2026-11-14</lastmod>'), rel);
++    if (bad3 === null || !/attribute onclick is not allowed/.test(bad3)) throw new Error('expected refusal, got ' + bad3);
++    const good = await run(wrap('<xhtml:link rel="alternate" hreflang="zh" href="https://example.sg/zh/"/>'), rel);
++    if (good !== null) throw new Error('expected allowed, got ' + good);
++  }
++  if (xmlProblem(wrap('<embed/>')) === null) throw new Error('embed passed');
++});

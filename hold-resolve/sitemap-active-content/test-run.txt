@@ -1,0 +1,12 @@
+Bridge sandbox COPY /tmp/pc (copy of /app at git 38e9ed2 + active-content.diff; /app untouched, clean), 14 Nov 2026 ~11:05pm SGT
+deno test --no-check -A --import-map tests/importmap.json tests/
+running 5 tests from ./tests/sitemapActiveContent.test.ts
+ok | 45 passed | 0 failed (40 existing + 5 new)
+
+Real sitemaps from the repo sources through generatedFileProblem('sitemap.xml', ...) with the new code:
+pageone-site/clients/benjamin-poon/site/sitemap.xml => OK
+pageone-site/clients/cska-auto/site/sitemap.xml => OK
+pageone-site/clients/dmts/site/sitemap.xml => OK
+pageone-site/clients/klar-details/site/sitemap.xml => OK
+pageone-site/clients/star-performance/site/sitemap.xml => OK
+pageone-site/site/sitemap.xml => OK
