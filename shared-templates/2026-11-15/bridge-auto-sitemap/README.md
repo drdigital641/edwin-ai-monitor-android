@@ -108,3 +108,10 @@ The hourly publisher rewrites a pinned file when its live sha differs from the p
 - `bridge-auto-sitemap.diff` (diff -ruN against 5012f3e, deno.lock excluded)
 - `test-baseline.txt` (full deno output at 5012f3e)
 - `test-auto-sitemap.txt` (full deno output with the change)
+
+## Rebased onto ddd665c (15 Nov 2026, after the "move 3 sites" Bridge save)
+- The 5012f3e diff applies cleanly onto Bridge git ddd665c (line offsets only, no conflicts). The changed lines are identical.
+- Rebased tree: Base44 sandbox /tmp/qul5nf-rb. Rebased diff: sandbox /tmp/qul5nf-rebased-ddd665c.diff (1017 lines, md5 c65eb50669efe9c841685554d15a7141).
+- Full suite on the rebased tree: 86 passed, 0 failed (67 at ddd665c plus 19 new).
+- K Tech, Benz World and Li Lian are covered automatically (they are in SITES / SITE_HOLDS with HOLD off).
+- One thing for SPO: the move thread's own override for those 3 sites (MOVED_GENERATED_SITES) already lets any Bridge tool write replace their sitemap/llms files with only the generatedFileProblem check, and it runs before the auto-sitemap rule. So for those 3 sites the extra "never drop a live URL/line" rule is not enforced by the guard (the merge code itself still never drops anything). Easy fix if wanted: add the never-drop check to that override too.
