@@ -1,6 +1,6 @@
 # Emergency lock: how to stop or allow changes to a live website
 
-Written 14 Nov 2026 for Edwin ("SG GARAGE UNLOCK 1114-2245").
+Written 14 Nov 2026 for Edwin ("SG GARAGE UNLOCK 1114-2245"), updated for "SG GARAGE UNLOCK DIFF UPDATE 1114-2325".
 Standing rule: **all coding on every client site goes through Claude, so the repo copy always matches live.**
 
 ## 1. The fast way: just tell Claude
@@ -60,15 +60,23 @@ The list of writers is in `hold-resolve/sggarage-controller-hold/WRITERS.md`. To
 
 ## 3. Rules that apply to every site, locked or not
 
-- **Server config and server code are never written** by the Bridge or either Controller. This covers `.htaccess`, `.htpasswd`, `.user.ini`, `php.ini`, PHP files, `.cgi`, `.pl`, `.py`, `.sh` and `.shtml`.
+Updated for "SG GARAGE UNLOCK DIFF UPDATE 1114-2325" (v2). The SG Garage points below are true **once that diff is saved**; until then the old rules still run.
+
+- **Server config and server code are never written by the Bluehost Bridge**, for any site (sggarage included). This covers `.htaccess`, `.htpasswd`, `.user.ini`, `php.ini`, PHP files, `.cgi`, `.pl`, `.py` and `.sh`. The Page One Controller has the same rule.
   - The one exception: the publisher may write a reviewed, pinned `.htaccess`.
   - To change these files, edit them in cPanel File Manager or ask Claude for a reviewed exception.
-- **Live guard (Bluehost Bridge):** an overwrite of a live file is refused if any of these is true:
+- **SgGarage Controller:** its never-write lock is removed. It **can** write `.htaccess`, PHP and other config/code files on sggarage.com over FTP. It still refuses raw FTP commands. The unsafe-path check only runs while the sggarage flag is ON.
+- **Live guard (Bluehost Bridge), every site except SG Garage:** an overwrite of a live file is refused if any of these is true:
   - It is an HTML page that would change or lose a title, meta description, H1, JSON-LD value, FAQ question or the "Leave us a Google review" footer.
   - It is a robots.txt, sitemap, llms.txt, .json or other data file. Exception: the hourly publisher may update sitemap.xml, sitemap.txt and llms.txt for Page One and its 5 client folders.
   - It is a delete, move or rename.
 
   New pages, CSS, JavaScript, images and normal body text edits go through. Anything else needs a reviewed override, which Claude prepares and you approve.
+- **SG Garage has no live guard** (`NO_LIVE_GUARD_SITES = ['sggarage']` in the Bridge's `base44/shared/liveGuard.ts`). Only the path check and the config/code rule apply. Instead, Claude follows this **pre-write step every time** before writing sggarage.com:
+  1. Compare every live file with the repo source (GET from www.sggarage.com, or Bridge read_file).
+  2. If a live file is newer (someone edited it on the server), take the exact server bytes, check the sha256, commit them as source, and only then make the change on top.
+  3. Make the tgz backup in `~/backups-private/` and tell you its path, then write.
+- **To put the SG Garage live guard back:** ask Claude to remove `'sggarage'` from `NO_LIVE_GUARD_SITES` (Bridge, live on save). To put the Controller never-write back: ask Claude to re-apply 786127ad3 + 41c0fc4e8 to the SgGarage Controller. `LOCK sggarage now` (section 1) stops all writes at once without either of these.
 
 ## 4. What the hourly :25 publisher does
 

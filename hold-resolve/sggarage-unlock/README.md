@@ -1,5 +1,7 @@
 # SG Garage unlock (DIFF ONLY, NOT SAVED)
 
+> **Superseded by `v2/`** ("SG GARAGE UNLOCK DIFF UPDATE 1114-2325"): use the v2 diffs. v1 below is kept for the record.
+
 This is task "SG GARAGE UNLOCK 1114-2245". Edwin's words, relayed at 10:42pm SGT on 14 Nov 2026: "go through Claude and remove the lock".
 
 Nothing here has been saved, published or synced. Base44 functions go live on save, so this waits for SPO's review and then Edwin's "save".

@@ -1,0 +1,56 @@
+running 6 tests from ./tests/sggHold.test.ts
+hold flag fails closed ...
+------- output -------
+ok      flag missing/malformed/unreadable = ON; only on:false = OFF
+----- output end -----
+hold flag fails closed ... ok (642µs)
+FTP root IS the SG Garage docroot: every write, rename and delete refused ...
+------- output -------
+EXPECTED with the SG Garage HOLD OFF: "FTP root IS the SG Garage docroot" skipped (refusals only apply while it is ON)
+----- output end -----
+FTP root IS the SG Garage docroot: every write, rename and delete refused ... ok (237µs)
+FTP root is the account home: carbonfibre refused at any depth, other sites still work ...
+------- output -------
+EXPECTED with the SG Garage HOLD OFF: "FTP root is the account home" skipped (refusals only apply while it is ON)
+----- output end -----
+FTP root is the account home: carbonfibre refused at any depth, other sites still work ... ok (173µs)
+login folder is the docroot, or the check cannot run: refused (fail closed) ...
+------- output -------
+EXPECTED with the SG Garage HOLD OFF: "login folder is the docroot, or the check cannot run" skipped (refusals only apply while it is ON)
+----- output end -----
+login folder is the docroot, or the check cannot run: refused (fail closed) ... ok (137µs)
+hold OFF (explicit on:false) lets the same write through, so the guard is the only thing blocking ...
+------- output -------
+allowed  write with hold explicitly off (guardClient test hook only)
+----- output end -----
+hold OFF (explicit on:false) lets the same write through, so the guard is the only thing blocking ... ok (6ms)
+entry functions: 423, failed command, and a hold-refused ConnectionAudit row for each refusal ...
+------- output -------
+EXPECTED with the SG Garage HOLD OFF: "entry functions" skipped (refusals only apply while it is ON)
+----- output end -----
+entry functions: 423, failed command, and a hold-refused ConnectionAudit row for each refusal ... ok (202µs)
+running 4 tests from ./tests/sggUnlocked.test.ts
+flag is OFF in SITE_HOLDS ...
+------- post-test output -------
+ok       sggarage HOLD flag is OFF
+----- post-test output end -----
+flag is OFF in SITE_HOLDS ... ok (689µs)
+unlocked: normal writes to the SG Garage docroot go through on every path ...
+------- post-test output -------
+allowed  new file, overwrite with sha, upload, rename, mkdir, SITE CHMOD, ftpWriteFile 200, worker 200, health probe 200
+----- post-test output end -----
+unlocked: normal writes to the SG Garage docroot go through on every path ... ok (17ms)
+unlocked v2: the never-write lock is removed, so config/code names are written like any other file ...
+------- post-test output -------
+allowed  6 config/code names written through ftpWriteFile (200); no never-write refusals
+----- post-test output end -----
+unlocked v2: the never-write lock is removed, so config/code names are written like any other file ... ok (3ms)
+unlocked v2: raw FTP commands still refused (always on), with a message that does not claim the HOLD is ON ...
+------- post-test output -------
+refused  raw ftp.request / ftp.send (neutral message); server unchanged
+----- post-test output end -----
+unlocked v2: raw FTP commands still refused (always on), with a message that does not claim the HOLD is ON ... ok (565µs)
+
+ok | 10 passed | 0 failed (112ms)
+
+exit 0

@@ -1,0 +1,119 @@
+diff -ruN a/base44/shared/bridgeConfig.ts b/base44/shared/bridgeConfig.ts
+--- a/base44/shared/bridgeConfig.ts	2026-11-14 15:32:04.830789609 +0000
++++ b/base44/shared/bridgeConfig.ts	2026-11-14 15:32:04.836734474 +0000
+@@ -110,7 +110,8 @@
+ export type SiteHold = { key: string; name: string; on: boolean; site: string; prefix: string | null };
+ export const SITE_HOLDS: readonly SiteHold[] = Object.freeze([
+   { key: 'pageone', name: 'Page One (pageonesingapore.com)', on: false, site: 'pageone', prefix: null },
+-  { key: 'sggarage', name: 'SG Garage (sggarage.com)', on: true, site: 'sggarage', prefix: '' },
++  // sggarage OFF since "SG GARAGE UNLOCK 1114-2245" (Edwin, relayed 10:42pm SGT 14 Nov 2026: "remove the lock").
++  { key: 'sggarage', name: 'SG Garage (sggarage.com)', on: false, site: 'sggarage', prefix: '' },
+   { key: 'star', name: 'Star Performance (starperformancemotor.com)', on: false, site: 'pageone', prefix: 'preview/star-performance/' },
+   { key: 'klar', name: 'Klar Details (klardetails.com.sg)', on: false, site: 'pageone', prefix: 'preview/klar-details/' },
+   { key: 'cska', name: 'CSKA (cskatrading.com)', on: false, site: 'pageone', prefix: 'preview/cska-auto/' },
+diff -ruN a/base44/shared/liveGuard.ts b/base44/shared/liveGuard.ts
+--- a/base44/shared/liveGuard.ts	2026-11-14 15:32:04.831014159 +0000
++++ b/base44/shared/liveGuard.ts	2026-11-14 15:32:04.836673354 +0000
+@@ -130,6 +130,8 @@
+ // https URL and nothing else; llms.txt not empty. Base44 code is live on save: changing this list needs security review
+ // AND Edwin's own written yes before saving.
+ export const GENERATED_OVERRIDE_SITES = Object.freeze(['pageone']);
++// Sites whose overwrites skip the live guard (path check and config/code rule still apply). Every other site keeps it.
++export const NO_LIVE_GUARD_SITES: readonly string[] = Object.freeze(['sggarage']);
+ export const GENERATED_OVERRIDE_PATH = /^(preview\/(star-performance|klar-details|cska-auto|dmts|benjamin-poon)\/)?(sitemap\.xml|sitemap\.txt|llms\.txt)$/;
+ 
+ // Minimal XML well-formedness check (no DOM parser in the Deno runtime): one root element, every tag closed in order,
+@@ -219,6 +221,10 @@
+   if (op !== 'write') return refuse(op + ' of a live file is blocked');
+   if (!newBytes) return refuse('no new content given');
+   if (NEVER.test(rel)) return refuse('server configuration and code files are never written by a tool');
++  // SG Garage: live guard OFF ("SG GARAGE UNLOCK DIFF UPDATE 1114-2325", Edwin 10:42pm/11:11pm SGT 14 Nov 2026, all coding
++  // goes through Claude). Only the path check and the config/code rule above still apply; no live-state, HTML, file-type
++  // or override checks. Claude pulls newer live files into source BEFORE writing (procedure in docs/EMERGENCY-LOCK.md).
++  if (NO_LIVE_GUARD_SITES.includes(site)) return null;
+   if (live.state === 'unknown') return refuse('the live file could not be confirmed from the server (' + live.error + ')');
+   if (live.state === 'absent') return null;                       // confirmed new file
+   if (eq(live.bytes, newBytes)) return null;                      // no change
+diff -ruN a/tests/generatedOverride.test.ts b/tests/generatedOverride.test.ts
+--- a/tests/generatedOverride.test.ts	2026-11-14 15:32:04.839614752 +0000
++++ b/tests/generatedOverride.test.ts	2026-11-14 15:32:04.842303440 +0000
+@@ -23,9 +23,10 @@
+   });
+ }
+ 
+-Deno.test('refused for sggarage (no override at all), same three files', async () => {
++Deno.test('sggarage: live guard OFF since UNLOCK DIFF UPDATE 1114-2325, so the same three files are allowed (no override needed)', async () => {
+   for (const rel of ['sitemap.xml', 'sitemap.txt', 'llms.txt']) {
+-    await no(g('sggarage', rel, rel === 'sitemap.xml' ? OLD_XML : 'a\n', rel === 'sitemap.xml' ? NEW_XML : 'https://x.sg/\n'), /needs an override/);
++    await ok(g('sggarage', rel, rel === 'sitemap.xml' ? OLD_XML : 'a\n', rel === 'sitemap.xml' ? NEW_XML : 'https://x.sg/\n'));
++    await ok(g('sggarage', rel, rel === 'sitemap.xml' ? OLD_XML : 'a\n', rel === 'sitemap.xml' ? NEW_XML : 'https://x.sg/\n', false));
+   }
+ });
+ 
+diff -ruN a/tests/sggNoLiveGuard.test.ts b/tests/sggNoLiveGuard.test.ts
+--- a/tests/sggNoLiveGuard.test.ts	1970-01-01 00:00:00.000000000 +0000
++++ b/tests/sggNoLiveGuard.test.ts	2026-11-14 15:32:04.842386649 +0000
+@@ -0,0 +1,63 @@
++// SG Garage live guard OFF ("SG GARAGE UNLOCK DIFF UPDATE 1114-2325", 14 Nov 2026). Run:
++// deno test --no-check -A --import-map tests/importmap.json tests/sggNoLiveGuard.test.ts
++// Pure guard calls with fake live states: never touches a live site.
++import { liveGuard, NO_LIVE_GUARD_SITES } from '../base44/shared/liveGuard.ts';
++import { writeBlockedReason, SITE_HOLDS } from '../base44/shared/bridgeConfig.ts';
++
++const enc = (s: string) => new TextEncoder().encode(s);
++const sha256 = async (b: Uint8Array) => Array.from(new Uint8Array(await crypto.subtle.digest('SHA-256', b))).map((x) => x.toString(16).padStart(2, '0')).join('');
++const present = (s: string) => ({ state: 'present' as const, bytes: enc(s) });
++const g = (site: string, rel: unknown, live: any, newText: string, publisher = false) =>
++  liveGuard({ site, rel, op: 'write', live, newBytes: enc(newText), overrides: [], sha256, publisher });
++const ok = async (label: string, p: Promise<string | null>) => { const r = await p; if (r !== null) throw new Error(label + ': expected allowed, got: ' + r); console.log('allowed  ' + label); };
++const no = async (label: string, p: Promise<string | null>, m: RegExp) => { const r = await p; if (r === null || !m.test(r)) throw new Error(label + ': expected refusal ' + m + ', got: ' + r); console.log('refused  ' + label); };
++
++const PAGE = (title: string, faq: string, ld: string) => `<!doctype html><html><head><title>${title}</title><meta name="description" content="d">`
++  + `<script type="application/ld+json">{"@type":"AutoRepair","telephone":"${ld}"}</script></head><body><h1>H</h1>`
++  + `<div class="faq"><h3>${faq}</h3></div><footer><a href="https://g.page/r/x/review">Leave us a Google review</a></footer></body></html>`;
++const OLD = PAGE('SG Garage', 'How long does a service take?', '+65 1111 1111');
++const NEW = PAGE('SG Garage | Car Servicing', 'How long does a car service take?', '+65 2222 2222');
++const XML = '<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"><url><loc>https://www.sggarage.com/</loc></url></urlset>\n';
++
++Deno.test('flags: sggarage HOLD OFF in SITE_HOLDS, and sggarage is the only site without the live guard', () => {
++  const h = SITE_HOLDS.find((x) => x.key === 'sggarage');
++  if (!h || h.on !== false) throw new Error('sggarage hold should be OFF');
++  for (const x of SITE_HOLDS) if (x.key !== 'sggarage' && x.on !== false) throw new Error(x.key + ' changed');
++  if (JSON.stringify(NO_LIVE_GUARD_SITES) !== '["sggarage"]') throw new Error('NO_LIVE_GUARD_SITES must be exactly ["sggarage"]');
++  console.log('ok       sggarage HOLD off; other 6 flags unchanged (off); NO_LIVE_GUARD_SITES = ["sggarage"]');
++});
++
++Deno.test('sggarage: edits the live guard used to refuse now go through', async () => {
++  await ok('sggarage index.html: title + FAQ question + JSON-LD value changed', g('sggarage', 'index.html', present(OLD), NEW));
++  await ok('sggarage article: review footer removed', g('sggarage', 'articles/a.html', present(OLD), OLD.replace(/<footer>.*<\/footer>/, '')));
++  await ok('sggarage sitemap.xml replace', g('sggarage', 'sitemap.xml', present(XML), XML.replace('</urlset>', '<url><loc>https://www.sggarage.com/b/</loc></url></urlset>')));
++  await ok('sggarage article-cards.json replace', g('sggarage', 'articles/article-cards.json', present('[]'), '[{"t":"x"}]'));
++  await ok('sggarage robots.txt replace', g('sggarage', 'robots.txt', present('User-agent: *\n'), 'User-agent: *\nSitemap: https://www.sggarage.com/sitemap.xml\n'));
++  await ok('sggarage llms.txt replace', g('sggarage', 'llms.txt', present('# a\n'), '# b\n'));
++  await ok('sggarage live state unknown (no live compare at all)', g('sggarage', 'index.html', { state: 'unknown', error: 'timeout' }, NEW));
++  await ok('sggarage new page', g('sggarage', 'new/index.html', { state: 'absent' }, NEW));
++});
++
++Deno.test('sggarage: path check and the config/code rule still apply (guard + bridgeConfig file-type blocks)', async () => {
++  for (const p of ['.htaccess', 'sub/.htaccess', '.user.ini', 'php.ini', 'x.php', 'a.cgi', 'a.pl', 'a.py', 'a.sh']) {
++    await no('sggarage ' + p + ' (liveGuard NEVER)', g('sggarage', p, present('x'), 'y'), /never written/);
++    if (!writeBlockedReason(p) && !p.endsWith('.ini')) throw new Error('bridgeConfig no longer blocks ' + p);
++  }
++  for (const p of ['.htaccess', 'x.php', 'a.cgi', 'a.sh']) if (!writeBlockedReason(p)) throw new Error('bridgeConfig block missing for ' + p);
++  console.log('ok       bridgeConfig writeBlockedReason still blocks .htaccess / .php / .cgi / .sh (every site, unchanged)');
++  await no('sggarage ../ path', g('sggarage', '../x.html', present('x'), 'y'), /refused/);
++  await no('sggarage absolute path', g('sggarage', '/etc/x.html', present('x'), 'y'), /refused/);
++  const del = await liveGuard({ site: 'sggarage', rel: 'index.html', op: 'delete' as any, live: present(OLD), overrides: [], sha256 });
++  if (del === null) throw new Error('delete through the guard should still be refused (no delete tool uses it)');
++  console.log('refused  sggarage delete through the guard (unchanged)');
++});
++
++Deno.test('every other site keeps the live guard exactly as before', async () => {
++  await no('pageone index.html FAQ/JSON-LD change', g('pageone', 'index.html', present(OLD), NEW), /LIVE GUARD refused/);
++  await no('star preview page title change', g('pageone', 'preview/star-performance/index.html', present(OLD), NEW), /LIVE GUARD refused/);
++  await no('cleanic sitemap.xml (not publisher)', g('cleanic', 'sitemap.xml', present(XML), XML + ' '), /needs an override/);
++  await no('contiexpert robots.txt', g('contiexpert', 'robots.txt', present('a'), 'b'), /needs an override/);
++  await no('pageone live unknown', g('pageone', 'index.html', { state: 'unknown', error: 'timeout' }, NEW), /could not be confirmed/);
++  await no('pageone sitemap.xml without publisher flag', g('pageone', 'sitemap.xml', present(XML), XML + ' '), /needs an override/);
++  await no('site key SGGARAGE (wrong case) is not exempt', g('SGGARAGE', 'index.html', present(OLD), NEW), /LIVE GUARD refused/);
++});

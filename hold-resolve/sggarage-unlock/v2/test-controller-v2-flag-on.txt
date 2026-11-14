@@ -1,0 +1,82 @@
+running 6 tests from ./tests/sggHold.test.ts
+hold flag fails closed ...
+------- output -------
+ok      flag missing/malformed/unreadable = ON; only on:false = OFF
+----- output end -----
+hold flag fails closed ... ok (625µs)
+FTP root IS the SG Garage docroot: every write, rename and delete refused ...
+------- output -------
+refused  safeWriteRemoteText overwrite /index.html
+refused  safeWriteRemoteText new /new.html
+refused  safeWriteRemoteText /.htaccess
+refused  backup folder /_chatgpt_backups is inside the docroot too
+refused  remove
+refused  rename
+refused  removeDir
+refused  clearWorkingDir
+refused  ensureDir (mkdir)
+refused  send DELE
+refused  send SITE CHMOD
+refused  client.ftp.request raw STOR
+refused  uploadFromDir
+refused  a method the guard does not know is treated as a write
+allowed  read /robots.txt
+allowed  send NOOP / SIZE
+----- output end -----
+FTP root IS the SG Garage docroot: every write, rename and delete refused ... ok (12ms)
+FTP root is the account home: carbonfibre refused at any depth, other sites still work ...
+------- output -------
+refused  /public_html/carbonfibre/index.html
+refused  relative path after cd
+refused  .. walk into carbonfibre
+refused  rename OUT of carbonfibre
+refused  rename INTO carbonfibre
+refused  backslash path
+refused  ~ path
+allowed  write outside SG Garage (/_cleanic_control/validation/probe.txt) still works
+----- output end -----
+FTP root is the account home: carbonfibre refused at any depth, other sites still work ... ok (4ms)
+login folder is the docroot, or the check cannot run: refused (fail closed) ...
+------- output -------
+refused  relative write in a login folder that has the SG Garage marker
+refused  root listing fails -> cannot prove it is not SG Garage
+----- output end -----
+login folder is the docroot, or the check cannot run: refused (fail closed) ... ok (729µs)
+hold OFF (explicit on:false) lets the same write through, so the guard is the only thing blocking ...
+------- output -------
+allowed  write with hold explicitly off (guardClient test hook only)
+----- output end -----
+hold OFF (explicit on:false) lets the same write through, so the guard is the only thing blocking ... ok (1ms)
+entry functions: 423, failed command, and a hold-refused ConnectionAudit row for each refusal ...
+------- output -------
+logged   ftpWriteFile: SG GARAGE HOLD is ON (flag "sggarage"): ensureDir /_chatgpt_backups refused; nothing was changed. Only Edw
+logged   ftpHealthCheck: SG GARAGE HOLD is ON (flag "sggarage"): ensureDir /_cleanic_control/validation refused; nothing was chan
+logged   websiteCommandWorker c1: SG GARAGE HOLD is ON (flag "sggarage"): ensureDir /_chatgpt_backups refused; nothing was change
+allowed  ftpHealthCheck write_test:false (list + read only)
+----- output end -----
+entry functions: 423, failed command, and a hold-refused ConnectionAudit row for each refusal ... ok (6ms)
+running 4 tests from ./tests/sggUnlocked.test.ts
+flag is OFF in SITE_HOLDS ...
+------- post-test output -------
+EXPECTED while the SG Garage HOLD is ON: flag check skipped
+----- post-test output end -----
+flag is OFF in SITE_HOLDS ... ok (570µs)
+unlocked: normal writes to the SG Garage docroot go through on every path ...
+------- post-test output -------
+EXPECTED while the SG Garage HOLD is ON: unlocked-state test skipped
+----- post-test output end -----
+unlocked: normal writes to the SG Garage docroot go through on every path ... ok (238µs)
+unlocked v2: the never-write lock is removed, so config/code names are written like any other file ...
+------- post-test output -------
+EXPECTED while the SG Garage HOLD is ON: unlocked-state test skipped
+----- post-test output end -----
+unlocked v2: the never-write lock is removed, so config/code names are written like any other file ... ok (147µs)
+unlocked v2: raw FTP commands still refused (always on), with a message that does not claim the HOLD is ON ...
+------- post-test output -------
+EXPECTED while the SG Garage HOLD is ON: unlocked-state test skipped
+----- post-test output end -----
+unlocked v2: raw FTP commands still refused (always on), with a message that does not claim the HOLD is ON ... ok (146µs)
+
+ok | 10 passed | 0 failed (104ms)
+
+exit 0
