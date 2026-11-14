@@ -1,0 +1,26 @@
+name: HOLD exact live fetch (read-only)
+# 14 Nov 2026 "SOURCE SYNC AFTER UNLOCK 1114-2155": GET-only HTTP copy of an exact file list from live into the
+# site sources on this branch, so source = live before the hourly publisher runs. Never writes to any server.
+on:
+  push:
+    branches: [ "claude/project-thread-xc39oz" ]
+    paths: [ "hold-resolve/exact/list.tsv", ".github/workflows/hold-exact-fetch.yml" ]
+
+permissions:
+  contents: write
+
+jobs:
+  fetch:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - name: Fetch exact files from live over HTTP (GET only)
+        run: python3 hold-resolve/exact/fetch.py hold-resolve/exact/list.tsv
+      - name: Commit to this branch
+        run: |
+          git config user.name "hold-snapshot-bot"
+          git config user.email "actions@users.noreply.github.com"
+          git add pageone-site hold-resolve/exact
+          git commit -q -m "Source = live after unlock: exact live copies of tonight's changed files ($(date -u +%Y-%m-%dT%H:%MZ))" || exit 0
+          for i in 1 2 3; do git pull --rebase -q origin claude/project-thread-xc39oz && git push -q origin HEAD:claude/project-thread-xc39oz && break; sleep 5; done
