@@ -1,0 +1,1 @@
+{ "imports": { "npm:basic-ftp@5.0.5": "./fakeFtp.ts", "base44:runtime": "./fakeRuntime.ts", "npm:@base44/sdk@0.8.40": "./fakeSdk.ts", "npm:@base44/sdk": "./fakeSdk.ts" } }

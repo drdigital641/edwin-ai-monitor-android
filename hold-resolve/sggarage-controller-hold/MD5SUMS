@@ -1,0 +1,7 @@
+14012cd0b2433533225d6fe4b05ea497  sggarage-controller-hold.diff
+c74553159519184d5511276d2640602f  test-output.txt
+b4e629c91d9b6a0785da577c1b1f6ad8  tests/fakeFtp.ts
+c4454a61dd5076d878a0e86d3e129bb7  tests/fakeRuntime.ts
+376ee4e621cdfe0702f3025ae62ed607  tests/fakeSdk.ts
+8c3b9146e0314ae5fc4385ef5f6039db  tests/importmap.json
+34642659d763abdb8ac1746931dc212b  tests/sggHold.test.ts

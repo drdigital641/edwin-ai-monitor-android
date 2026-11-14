@@ -1,0 +1,239 @@
+diff -ruN a/base44/functions/ftpHealthCheck/entry.ts b/base44/functions/ftpHealthCheck/entry.ts
+--- a/base44/functions/ftpHealthCheck/entry.ts	2026-11-14 02:43:21.664892509 +0000
++++ b/base44/functions/ftpHealthCheck/entry.ts	2026-11-14 02:46:11.113700987 +0000
+@@ -1,6 +1,7 @@
+ import { createClientFromRequest } from 'npm:@base44/sdk@0.8.40';
+ import { listRemoteDirectory, readRemoteText, safeWriteRemoteText, CONTROLLER_VERSION } from '../../shared/ftpFileOps.ts';
+ import { withFtp } from '../../shared/ftpClient.ts';
++import { HoldError, logHoldRefusal } from '../../shared/siteHold.ts';
+ 
+ async function audit(base44: any, stage: string, status: 'pass' | 'fail' | 'warning', detail: string) {
+   try {
+@@ -71,6 +72,10 @@
+     });
+   } catch (error) {
+     const message = error instanceof Error ? error.message : String(error);
++    if (error instanceof HoldError) {
++      await logHoldRefusal(base44, 'ftpHealthCheck', error);
++      return Response.json({ ok: false, controllerVersion: CONTROLLER_VERSION, error: message, hold: 'sggarage' }, { status: 423 });
++    }
+     await audit(base44, 'health', 'fail', message);
+     return Response.json({ ok: false, controllerVersion: CONTROLLER_VERSION, error: message }, { status: 500 });
+   }
+diff -ruN a/base44/functions/ftpWriteFile/entry.ts b/base44/functions/ftpWriteFile/entry.ts
+--- a/base44/functions/ftpWriteFile/entry.ts	2026-11-14 02:43:21.666108876 +0000
++++ b/base44/functions/ftpWriteFile/entry.ts	2026-11-14 02:46:11.113562209 +0000
+@@ -1,9 +1,10 @@
+ import { createClientFromRequest } from 'npm:@base44/sdk@0.8.40';
+ import { safeWriteRemoteText } from '../../shared/ftpFileOps.ts';
++import { HoldError, logHoldRefusal } from '../../shared/siteHold.ts';
+ 
+ export default async function(req) {
++  const base44 = createClientFromRequest(req);
+   try {
+-    const base44 = createClientFromRequest(req);
+     const user = await base44.auth.me();
+     if (!user) return Response.json({ error: 'Unauthorized' }, { status: 401 });
+     if (user.role !== 'admin') return Response.json({ error: 'Forbidden: admin only' }, { status: 403 });
+@@ -19,6 +20,10 @@
+     });
+     return Response.json(result);
+   } catch (error) {
++    if (error instanceof HoldError) {
++      await logHoldRefusal(base44, 'ftpWriteFile', error);
++      return Response.json({ error: error.message, hold: 'sggarage' }, { status: 423 });
++    }
+     return Response.json({ error: error instanceof Error ? error.message : String(error) }, { status: 500 });
+   }
+ }
+diff -ruN a/base44/functions/websiteCommandWorker/entry.ts b/base44/functions/websiteCommandWorker/entry.ts
+--- a/base44/functions/websiteCommandWorker/entry.ts	2026-11-14 02:43:21.666533162 +0000
++++ b/base44/functions/websiteCommandWorker/entry.ts	2026-11-14 02:46:11.113836235 +0000
+@@ -1,5 +1,6 @@
+ import { createClientFromRequest } from 'npm:@base44/sdk@0.8.40';
+ import { listRemoteDirectory, readRemoteText, safeWriteRemoteText } from '../../shared/ftpFileOps.ts';
++import { HoldError, logHoldRefusal } from '../../shared/siteHold.ts';
+ import { createClientFromRequest as __pageOneClient } from 'npm:@base44/sdk';
+ // Security guard (18 Oct 2026): only a signed-in admin, or our own workflow
+ // (which passes the CRON_KEY secret as cron_key), may run this function.
+@@ -140,9 +141,10 @@
+       }
+     }
+ 
++    if (error instanceof HoldError) await logHoldRefusal(base44, 'websiteCommandWorker ' + (recordId || ''), error);
+     return Response.json(
+-      { ok: false, error: message, recordId, auditError },
+-      { status: 500 }
++      { ok: false, error: message, recordId, auditError, hold: error instanceof HoldError ? 'sggarage' : undefined },
++      { status: error instanceof HoldError ? 423 : 500 }
+     );
+   }
+ }
+diff -ruN a/base44/shared/ftpClient.ts b/base44/shared/ftpClient.ts
+--- a/base44/shared/ftpClient.ts	2026-11-14 02:43:21.667672459 +0000
++++ b/base44/shared/ftpClient.ts	2026-11-14 02:46:11.113256823 +0000
+@@ -1,5 +1,6 @@
+ import * as ftp from 'npm:basic-ftp@5.0.5';
+ import { secrets } from 'base44:runtime';
++import { HoldError, holdOn, holdMessage, SGG_DIR_SEGMENT, SGG_ROOT_MARKERS } from './siteHold.ts';
+ 
+ export function getFtpConfig() {
+   const host = secrets.get('FTP_HOST');
+@@ -13,6 +14,76 @@
+   return { host, user, password, port, secure };
+ }
+ 
++// ---------- SG GARAGE HOLD guard (14 Nov 2026) ----------
++// Every FTP connection in this app is made here, so every caller (ftpWriteFile, websiteCommandWorker, ftpHealthCheck,
++// restoreSnapshot, the agent's tools) only ever gets this guarded client. Allow-list: read-only methods pass; every
++// method that can create, change, rename or delete is checked; anything else is refused while the hold is on.
++const READ_METHODS = new Set(['access', 'cd', 'cdup', 'pwd', 'list', 'size', 'lastMod', 'features', 'download', 'downloadTo',
++  'downloadDir', 'downloadToDir', 'close', 'trackProgress', 'useDefaultSettings', 'protectWhitespace', 'closed']);
++// method -> which arguments are remote target paths (missing/empty target = current folder)
++const WRITE_TARGETS: Record<string, (a: any[]) => any[]> = {
++  uploadFrom: (a) => [a[1]], upload: (a) => [a[1]], appendFrom: (a) => [a[1]], append: (a) => [a[1]],
++  remove: (a) => [a[0]], removeEmptyDir: (a) => [a[0]], removeDir: (a) => [a[0]], clearWorkingDir: () => [''],
++  rename: (a) => [a[0], a[1]], ensureDir: (a) => [a[0]], uploadFromDir: (a) => [a[1]], uploadDir: (a) => [a[1]],
++};
++const READ_VERBS = new Set(['NOOP', 'PWD', 'XPWD', 'CWD', 'CDUP', 'TYPE', 'FEAT', 'OPTS', 'SIZE', 'MDTM', 'MLST', 'STAT', 'SYST', 'PASV', 'EPSV', 'PBSZ', 'PROT']);
++const WRITE_VERBS: Record<string, true> = { STOR: true, STOU: true, APPE: true, DELE: true, RNFR: true, RNTO: true, MKD: true, XMKD: true, RMD: true, XRMD: true, SITE: true, MFMT: true, MFCT: true };
++
++function resolvePath(cwd: string, p: unknown): string {
++  const s = p == null ? '' : String(p);
++  if (/[\0\x01-\x1f\x7f\\]/.test(s) || s.startsWith('~')) throw new HoldError(holdMessage('unsafe FTP path', JSON.stringify(s)));
++  const parts: string[] = [];
++  for (const seg of ((s.startsWith('/') ? '' : cwd + '/') + s).split('/')) {
++    if (!seg || seg === '.') continue;
++    if (seg === '..') parts.pop(); else parts.push(seg);
++  }
++  return '/' + parts.join('/');
++}
++
++export function guardClient(raw: any, loginPwd: string, holds?: any) {
++  const zones: string[] = [];          // folders that are the SG Garage docroot (found via marker files)
++  let scanned: Promise<void> | null = null;
++  const scan = () => scanned ??= (async () => {
++    for (const dir of new Set(['/', loginPwd || '/'])) {
++      let rows: any[];
++      try { rows = await raw.list(dir); } catch (e) { throw new HoldError(holdMessage('could not check whether ' + dir + ' is SG Garage (' + String((e as any)?.message || e).slice(0, 80) + '); write', 'refused')); }
++      if (rows.some((r: any) => SGG_ROOT_MARKERS.includes(String(r?.name)))) zones.push(dir);
++    }
++  })();
++  const inZone = (abs: string) => abs.split('/').includes(SGG_DIR_SEGMENT)
++    || zones.some((z) => z === '/' || abs === z || abs.startsWith(z + '/'));
++
++  async function check(what: string, targets: any[]) {
++    if (!holdOn('sggarage', holds)) return;
++    const cwd = String(await raw.pwd());
++    const abs = targets.map((t) => resolvePath(cwd, t));
++    try { await scan(); } catch (e) { scanned = null; throw e; }  // a failed check is retried next time, never cached as "not SG Garage"
++    for (const a of abs) if (inZone(a)) throw new HoldError(holdMessage(what, a));
++  }
++
++  const roFtp = new Proxy(raw.ftp ?? {}, {
++    get(t, k) { if (k === 'request' || k === 'send' || k === 'handle') return () => { throw new HoldError(holdMessage('raw FTP command', '(blocked)')); }; return Reflect.get(t, k); },
++  });
++
++  return new Proxy(raw, {
++    get(target, key, recv) {
++      if (key === 'ftp') return roFtp;
++      const v = Reflect.get(target, key, recv);
++      if (typeof key !== 'string' || typeof v !== 'function') return v;
++      if (READ_METHODS.has(key)) return v.bind(target);
++      if (WRITE_TARGETS[key]) return async (...a: any[]) => { await check(key, WRITE_TARGETS[key](a)); return v.apply(target, a); };
++      if (key === 'send' || key === 'sendIgnoringError') return async (cmd: string, ...rest: any[]) => {
++        const m = /^\s*([A-Za-z]+)\s*(.*)$/.exec(String(cmd)) || ['', '', ''];
++        const verb = m[1].toUpperCase();
++        if (!READ_VERBS.has(verb)) await check('FTP ' + verb, [WRITE_VERBS[verb] ? m[2] : '']);
++        return v.call(target, cmd, ...rest);
++      };
++      return async (...a: any[]) => { await check(key, ['']); return v.apply(target, a); };  // unknown method: treated as a write
++    },
++    set(target, key, value) { if (key === 'ftp') return false; return Reflect.set(target, key, value); },
++  });
++}
++
+ export async function withFtp(fn, options: any = {}) {
+   const cfg = getFtpConfig();
+   const maxAttempts = Number(options.maxAttempts || 3);
+@@ -30,9 +101,11 @@
+         port: cfg.port,
+         secure: cfg.secure
+       });
+-      return await fn(client, cfg);
++      const loginPwd = await client.pwd();
++      return await fn(guardClient(client, loginPwd), cfg);
+     } catch (error) {
+       lastError = error;
++      if (error instanceof HoldError) throw error;     // a hold refusal is final, never retried
+       if (attempt >= maxAttempts || !shouldRetry(error)) throw error;
+       await new Promise((resolve) => setTimeout(resolve, attempt * 750));
+     } finally {
+diff -ruN a/base44/shared/ftpFileOps.ts b/base44/shared/ftpFileOps.ts
+--- a/base44/shared/ftpFileOps.ts	2026-11-14 02:43:21.667993956 +0000
++++ b/base44/shared/ftpFileOps.ts	2026-11-14 02:46:11.113413511 +0000
+@@ -1,8 +1,9 @@
+ import { createHash } from 'node:crypto';
+ import { Readable, Writable } from 'node:stream';
+ import { withFtp } from './ftpClient.ts';
++import { HoldError } from './siteHold.ts';
+ 
+-export const CONTROLLER_VERSION = 'sggarage-ftp-2026-08-30.1';
++export const CONTROLLER_VERSION = 'sggarage-ftp-2026-11-14.hold';
+ const MAX_TEXT_BYTES = 1_500_000;
+ 
+ export function sha256(value: Buffer | string): string {
+@@ -199,6 +200,7 @@
+       await client.uploadFrom(Readable.from(desired), split.path);
+     }, { maxAttempts: 1 });
+   } catch (error) {
++    if (error instanceof HoldError) throw error;   // SG Garage HOLD: refused before anything was sent; nothing to roll back
+     uploadError = error;
+   }
+ 
+diff -ruN a/base44/shared/siteHold.ts b/base44/shared/siteHold.ts
+--- a/base44/shared/siteHold.ts	1970-01-01 00:00:00.000000000 +0000
++++ b/base44/shared/siteHold.ts	2026-11-14 02:46:11.076472403 +0000
+@@ -0,0 +1,42 @@
++// SG GARAGE HOLD for this FTP controller (14 Nov 2026, "SGG CONTROLLER HOLD 1114-1040").
++// Mirrors the Page One Controller / Bluehost Bridge SITE_HOLDS pattern. Base44 backend code is LIVE AS SOON AS IT
++// IS SAVED, so changing `on` here is live the moment it is saved: only Edwin lifts this hold.
++// Fail closed: the hold counts as ON unless the entry exists, is well formed and says on === false.
++export const SITE_HOLDS = Object.freeze([
++  Object.freeze({ key: 'sggarage', name: 'SG Garage (sggarage.com)', on: true, docroot: '/home3/sgmodde1/public_html/carbonfibre' }),
++]);
++
++// Any path with a segment of this name is treated as SG Garage, at any FTP root depth
++// (/carbonfibre, /public_html/carbonfibre, /home3/sgmodde1/public_html/carbonfibre, /www/carbonfibre ...).
++export const SGG_DIR_SEGMENT = 'carbonfibre';
++// Files that only SG Garage's docroot has. If the FTP root (or the login folder) lists either one, that folder IS
++// the SG Garage docroot and every path inside it is held.
++export const SGG_ROOT_MARKERS = Object.freeze(['site-renderer.php', 'adba3d204db0f9cd2fb386bf0cc497ce.txt']);
++
++export class HoldError extends Error {
++  status = 423;
++  constructor(message: string) { super(message); this.name = 'HoldError'; }
++}
++
++export function holdOn(key = 'sggarage', holds: any = SITE_HOLDS): boolean {
++  try {
++    const h = Array.isArray(holds) ? holds.find((x: any) => x && x.key === key) : null;
++    if (!h || typeof h !== 'object') return true;      // missing flag -> ON
++    return h.on !== false;                              // anything but an explicit false -> ON
++  } catch {
++    return true;                                        // flag could not be read -> ON
++  }
++}
++
++export function holdMessage(what: string, path: string) {
++  return 'SG GARAGE HOLD is ON (flag "sggarage"): ' + what + ' ' + path + ' refused; nothing was changed. Only Edwin lifts this hold.';
++}
++
++export async function logHoldRefusal(base44: any, source: string, error: unknown) {
++  try {
++    await base44.asServiceRole.entities.ConnectionAudit.create({
++      checked_at: new Date().toISOString(), stage: 'hold-refused', status: 'fail',
++      detail: (source + ': ' + String((error as any)?.message || error)).slice(0, 1000),
++    });
++  } catch { /* logging must never hide the refusal */ }
++}
