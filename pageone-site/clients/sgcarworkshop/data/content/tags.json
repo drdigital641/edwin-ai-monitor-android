@@ -278,5 +278,13 @@
   "rx": "vibrat|shak|wobbl|shudder|judder|wheel balanc|alignment",
   "cat": null,
   "guide": "car-vibration-steering-shake"
+ },
+ {
+  "id": "p-water-dripping",
+  "kind": "problem",
+  "label": "Water or fluid dripping under the car",
+  "rx": "drip|puddle|leak|coolant|condensation|wet carpet",
+  "cat": null,
+  "guide": "car-water-dripping-under-car"
  }
 ]

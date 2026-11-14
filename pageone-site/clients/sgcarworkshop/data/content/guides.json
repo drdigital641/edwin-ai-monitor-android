@@ -1768,5 +1768,141 @@
    "general-servicing-repair",
    "gearbox-repair"
   ]
+ },
+ {
+  "slug": "car-water-dripping-under-car",
+  "kind": "problem",
+  "short": "Water under the car",
+  "cap": 4,
+  "article": true,
+  "published": "2026-11-15",
+  "title": "Water Dripping Under the Car: Aircon or Leak? | SG Car Workshop",
+  "h1": "Water dripping under the car: aircon water or a leak?",
+  "desc": "Clear water under a parked car is often normal aircon condensation. How to tell it from a coolant, oil or brake fluid leak, and when to stop driving.",
+  "lede": "A small puddle of clear water under the front of the car after you have used the aircon is usually normal: the aircon removes moisture from the cabin air and drains it under the car. Oily, coloured or sweet-smelling fluid is different and points to a leak. Look at the colour, feel and smell of the drip, and where it lands, before you decide whether it can wait.",
+  "heading": "What the drip can mean",
+  "tell_h": "What to tell the workshop",
+  "urgent_h": "Stop driving when it is safe if:",
+  "causes": [
+   [
+    "Clear, odourless water after using the aircon",
+    "On a hot day the aircon pulls moisture out of the air and drips it from a drain tube, usually under the front of the car on the passenger side. It stops soon after the engine is switched off and is normally harmless.",
+    [
+     [
+      "guides/car-aircon-not-cold/",
+      "Aircon not cold guide"
+     ],
+     [
+      "services/car-aircon-repair/",
+      "Aircon repair workshops"
+     ]
+    ]
+   ],
+   [
+    "Water inside the car, in the passenger footwell",
+    "If the carpet is wet and the aircon is on, the drain tube may be blocked, so the water backs up into the cabin instead of draining out. A musty smell often goes with it. A workshop can clear the drain and check the cabin.",
+    [
+     [
+      "services/car-aircon-repair/",
+      "Aircon repair workshops"
+     ],
+     [
+      "services/car-aircon-flushing/",
+      "Aircon flushing"
+     ]
+    ]
+   ],
+   [
+    "Coloured, sweet-smelling or watery fluid near the engine",
+    "Coolant is often green, pink or orange and may smell sweet. A drip together with a rising temperature gauge, steam or a low coolant level points to a cooling system leak, which can lead to overheating.",
+    [
+     [
+      "guides/car-overheating/",
+      "Car overheating guide"
+     ],
+     [
+      "services/general-servicing-repair/",
+      "Servicing and repair workshops"
+     ]
+    ]
+   ],
+   [
+    "Dark, oily drip under the engine",
+    "Engine oil is usually brown or black and feels slippery. Fresh drips, a burning smell or an oil warning light need attention soon. An old, dry stain on the ground is a different matter from a fresh drip.",
+    [
+     [
+      "guides/car-burning-smell/",
+      "Burning smell guide"
+     ],
+     [
+      "services/general-servicing-repair/",
+      "Servicing and repair workshops"
+     ]
+    ]
+   ],
+   [
+    "Fluid near a wheel, or from the middle of the car",
+    "A slippery fluid near a wheel with a soft or sinking brake pedal can be a brake fluid leak. Reddish or pinkish fluid in the middle or front of the car can come from the gearbox or power steering.",
+    [
+     [
+      "guides/brake-squeal-noise/",
+      "Brake noise guide"
+     ],
+     [
+      "services/gearbox-repair/",
+      "Gearbox workshops"
+     ]
+    ]
+   ]
+  ],
+  "tell": [
+   "The colour, feel and smell of the fluid: clear and like water, oily, sticky, or sweet-smelling.",
+   "Where it lands: front, middle or rear, and which side of the car.",
+   "Whether it only drips after the aircon has been on, or also when the car is parked overnight.",
+   "Any warning lights, a rising temperature gauge, a soft brake pedal or a wet carpet inside the car.",
+   "A photo of the stain on a sheet of white paper or card left under the car overnight."
+  ],
+  "urgent": "the fluid is oily or coloured and the drip is growing, the temperature gauge climbs or steam comes from the bonnet, the brake pedal feels soft or sinks, or an oil or brake warning light comes on. Pull over somewhere safe, switch off the engine and call for roadside help. Do not top up and keep driving.",
+  "faqs": [
+   [
+    "Is it normal for water to drip under my car?",
+    "Clear water dripping under the front of the car after you have used the aircon is normal. It is condensation from the aircon and it stops soon after the engine is off. Fluid that is oily, coloured or sweet-smelling is not normal."
+   ],
+   [
+    "How can I tell aircon water from a coolant leak?",
+    "Aircon water is clear, has no smell and feels like plain water. Coolant is usually coloured, may smell sweet and can feel slightly slimy. A rising temperature gauge or a falling coolant level also points to a leak."
+   ],
+   [
+    "Why is the carpet wet in the passenger footwell?",
+    "A blocked aircon drain tube is a common reason. The water cannot drain out under the car, so it collects in the cabin. A workshop can clear the drain and check how far the water has spread."
+   ],
+   [
+    "Can I keep driving if the car is leaking fluid?",
+    "A few drops of clear aircon water are fine. For oily or coloured fluid, a rising temperature gauge or a soft brake pedal, stop safely first and call for roadside help rather than driving on."
+   ],
+   [
+    "What does a workshop check first?",
+    "Usually the colour and smell of the fluid, where it comes from, and the coolant and oil levels. For wet carpets they check the aircon drain. A photo of the stain helps."
+   ]
+  ],
+  "kw": [
+   "dripping",
+   "drip",
+   "water under",
+   "water leak",
+   "leak",
+   "leaking",
+   "puddle",
+   "condensation",
+   "aircon water",
+   "coolant",
+   "wet carpet",
+   "wet floor",
+   "footwell"
+  ],
+  "cats": [
+   "car-aircon-repair",
+   "general-servicing-repair"
+  ]
  }
 ]
