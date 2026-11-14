@@ -10,6 +10,7 @@ B=os.path.dirname(os.path.abspath(__file__)); sys.path.insert(0,os.path.join(B,'
 from content import *
 import articles as ART  # K Tech articles (13 Nov 2026): src/articles.py + data/articles/*.json
 from products import PRODUCTS
+import services_more as SVM  # K Tech service pages (14 Nov 2026): src/services_more.py + src/svc.css
 F=json.load(open(os.path.join(B,'facts.json'),encoding='utf-8'))
 LIVE_KTECH='--live-ktech' in sys.argv
 LIVE='--live' in sys.argv or LIVE_KTECH
@@ -27,6 +28,7 @@ BASE_URL=M['base_url']; BASE=M['base_path']; NOINDEX=M['noindex']
 CANON=BASE_URL if LIVE else 'https://ktec.my/'
 A=BASE+'assets/'; V='?v=20261113p'
 ARTS=ART.load(B); ART_KEYS=ART.register(globals(),ARTS)
+SVC_KEYS=SVM.register(globals()); SVC_UPDATED='2026-11-14'
 E_=html.escape
 WA_SVG='<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm0 18.2a8.2 8.2 0 0 1-4.2-1.1l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8s-.4-.1-.6.1-.7.8-.8 1-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.3-.4.3-.4.7-1.3.1-.2 0-.3 0-.4l-.8-1.8c-.2-.5-.4-.4-.6-.4h-.5a1 1 0 0 0-.7.3 3 3 0 0 0-.9 2.2 5.2 5.2 0 0 0 1.1 2.7 11.8 11.8 0 0 0 4.5 4c1.7.7 2.3.8 3.2.6a2.7 2.7 0 0 0 1.8-1.2 2.2 2.2 0 0 0 .1-1.2c0-.1-.2-.2-.5-.3z"/></svg>'
 ICON={'ev':'<svg viewBox="0 0 48 48"><rect x="6" y="14" width="32" height="20"/><path d="M38 20h4v8h-4M20 17l-5 8h8l-5 8"/></svg>',
@@ -234,6 +236,9 @@ def page_services(l):
         a=f' <a href="{F[link]}"{" target=_blank rel=noopener" if link!="autoseo" else ""}>{lt} →</a>' if link else ''
         arts+=f'<article{" class=hl" if link=="autoseo" else ""}><span class="n">{code}</span><div><h2>{E_(n)}</h2><p>{E_(p)}{a}</p></div></article>'
     svc=[{'@context':'https://schema.org','@type':'Service','name':n,'description':p,'provider':{'@id':CANON+'#org'},'areaServed':'Malaysia',**({'url':F['autoseo']} if link=='autoseo' else {})} for _,n,p,link,_ in s['items']]
+    for code,n,p,k in SVM.list_items(l):
+        arts+=f'<article><span class="n">{code}</span><div><h2><a href="{url(k,l)}" style="color:inherit;font:inherit;text-transform:inherit;letter-spacing:inherit;text-decoration:none">{E_(n)}</a></h2><p>{E_(p)} <a href="{url(k,l)}">{E_(UI[l]["prod_more"])} →</a></p></div></article>'
+        svc.append({'@context':'https://schema.org','@type':'Service','name':n,'description':p,'provider':{'@id':CANON+'#org'},'areaServed':'Malaysia','url':curl_(k,l)})
     u=UI[l]; tr=''.join(f'<figure class="tshot"><img src="{A}ktec-training-{i}.webp" alt="{E_(u['train'])} {i}, K Tech Johor Bahru" width="720" height="900" loading="lazy" draggable="false"><figcaption>{E_(u['train'])}</figcaption></figure>' for i in range(1,6))
     train=f'<section class="sec alt" id="training"><div class="wrap"><div class="sh"><div><span class="mono">S5</span><h2>{E_(u["train_h"])}</h2><p>{E_(u["train_s"])}</p></div></div><div class="glide" data-speed="0.04">{tr}</div><p class="fbl"><a href="{F["facebook"]}" target="_blank" rel="noopener">Facebook: {E_(F["facebook_label"])} →</a><br><a href="{F["facebook2"]}" target="_blank" rel="noopener">Facebook: {E_(F["facebook2_label"])} →</a></p></div></section>'
     body=ph('services',l,s['h1'],s['intro'])+f'<section class="sec"><div class="wrap"><div class="svc">{arts}</div><p class="recent"><b>{E_(u["recent"])}</b> {E_(u["recent_t"])}</p></div></section>'+train+end_cta(l,HOME[l]['cta_h'],HOME[l]['cta_p'])
@@ -271,12 +276,13 @@ for l in LANGS:
         d=os.path.join(OUT,LANG_META[l]['prefix']+SLUG['tools']+pr['slug']); os.makedirs(d,exist_ok=True)
         open(os.path.join(d,'index.html'),'w',encoding='utf-8').write(page_product(pr,l))
 ART.build(globals(),ARTS)
+SVM.build(globals())
 # sitemap/robots/llms
 sm='<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">\n'
-for p in PAGES+ART_KEYS:
+for p in PAGES+ART_KEYS+SVC_KEYS:
     for l in LANGS:
         alts=''.join(f'<xhtml:link rel="alternate" hreflang="{LANG_META[x]["html"]}" href="{curl_(p,x)}"/>' for x in LANGS)
-        lm=next((x['updated'] for x in ARTS if 'art:'+x['slug']==p),F['updated'])
+        lm=next((x['updated'] for x in ARTS if 'art:'+x['slug']==p),SVC_UPDATED if p in SVC_KEYS+['services'] else F['updated'])
         sm+=f'<url><loc>{curl_(p,l)}</loc><lastmod>{lm}</lastmod>{alts}</url>\n'
 for pr in PRODUCTS:
     for l in LANGS:
@@ -284,7 +290,7 @@ for pr in PRODUCTS:
         sm+=f'<url><loc>{pcurl(pr["slug"],l)}</loc><lastmod>{F["updated"]}</lastmod>{alts}</url>\n'
 open(OUT+'/sitemap.xml','w').write(sm+'</urlset>\n')
 open(OUT+'/robots.txt','w').write(('User-agent: *\nDisallow: /\n' if NOINDEX else 'User-agent: *\nAllow: /\n\nSitemap: '+CANON+'sitemap.xml\n'))
-open(OUT+'/llms.txt','w',encoding='utf-8').write(f"# {F['name']}\n> Authorised Autel dealer in Johor Bahru, Malaysia (listed on autel.com Where to Buy, Malaysia). Company No. {F['company_no']}. WhatsApp +{F['whatsapp']}. Call {F['call_name']} +{F['call']} or {F['call2_name']} +{F['call2']}. Facebook: {F['facebook']} and {F['facebook2']}. Email {F['email']}. Address: {F['address_full']}. Runs technical training sessions for workshop technicians.\n\n## Pages\n"+''.join(f"- [{UI['en']['nav'][p]}]({curl_(p,'en')})\n" for p in PAGES)+''.join(f"- [{pr['en']['name']}]({pcurl(pr['slug'],'en')})\n" for pr in PRODUCTS)+("\n## Articles\n"+''.join(f"- [{a['en']['h1']}]({curl_('art:'+a['slug'],'en')}): {a['en']['description']}\n" for a in ARTS) if ARTS else '')+f"\n## Related\n- [AutoSEO.my]({F['autoseo']}): SEO websites for automotive businesses, a brand of K Tech Auto Solution Sdn Bhd\n")
+open(OUT+'/llms.txt','w',encoding='utf-8').write(f"# {F['name']}\n> Authorised Autel dealer in Johor Bahru, Malaysia (listed on autel.com Where to Buy, Malaysia). Company No. {F['company_no']}. WhatsApp +{F['whatsapp']}. Call {F['call_name']} +{F['call']} or {F['call2_name']} +{F['call2']}. Facebook: {F['facebook']} and {F['facebook2']}. Email {F['email']}. Address: {F['address_full']}. Runs technical training sessions for workshop technicians.\n\n## Pages\n"+''.join(f"- [{UI['en']['nav'][p]}]({curl_(p,'en')})\n" for p in PAGES)+''.join(f"- [{pr['en']['name']}]({pcurl(pr['slug'],'en')})\n" for pr in PRODUCTS)+"\n## Services\n"+''.join(f"- [{s['en']['name']}]({curl_('svc:'+s['slug'],'en')}): {s['en']['desc']}\n" for s in SVM.SERVICES_MORE)+("\n## Articles\n"+''.join(f"- [{a['en']['h1']}]({curl_('art:'+a['slug'],'en')}): {a['en']['description']}\n" for a in ARTS) if ARTS else '')+f"\n## Related\n- [AutoSEO.my]({F['autoseo']}): SEO websites for automotive businesses, a brand of K Tech Auto Solution Sdn Bhd\n")
 open(OUT+'/404.html','w',encoding='utf-8').write(head('home','en',[]).replace(TITLE['home']['en'],'Page not found | K Tech')+header('home','en')+f'<section class="ph"><div class="wrap"><h1>Page not found</h1><p><a href="{url("home","en")}">Home →</a></p></div></section>'+footer('en'))
 # pre-upload ban check
 bad=['Page One','pageonesingapore','TODO','lorem','XXXX','★','rating']
