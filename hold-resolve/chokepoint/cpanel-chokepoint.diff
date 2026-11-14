@@ -1,0 +1,156 @@
+LIVE GUARD v3 delta for the Bluehost Bridge (14 Nov 2026, security review "GUARD CHOKEPOINT 1114-1010").
+DIFF ONLY, NOT SAVED in the Bridge app. Apply ON TOP of hold-resolve/bridge-guard-v2.diff (v2 = writeFile/runBulk hooks).
+
+diff -ru v2/base44/shared/bridgeOps.ts v3/base44/shared/bridgeOps.ts
+--- v2/base44/shared/bridgeOps.ts
++++ v3/base44/shared/bridgeOps.ts
+@@ -3,7 +3,7 @@
+ // -> automatic restore if the readback does not match.
+ import { liveGuard, type LiveState } from './liveGuard.ts';
+ import { CPANEL, SITES, PRIVATE_ROOT, BACKUP_ROOT, MAX_FILE_BYTES, SERVER_CONFIG_ALLOWED, SERVER_CONFIG_ROLLBACK, PINNED_SERVER_CONFIG, readBlockedReason, writeBlockedReason, holdReason, GUARD_OVERRIDES } from './bridgeConfig.ts';
+-import { uapi, api2, checkResult } from './cpanel.ts';
++import { uapi, api2, checkResult, withSiteWriteGrant } from './cpanel.ts';
+
+ export class BridgeError extends Error {
+   status: number;
+@@ -306,7 +306,7 @@
+   let verified = false;
+   for (let attempt = 1; attempt <= 2 && !verified; attempt++) {
+     uploadError = null;
+-    try { await putBytes(abs, bytes); } catch (e) { uploadError = e; }
++    try { await withSiteWriteGrant(abs, () => putBytes(abs, bytes)); } catch (e) { uploadError = e; }
+     verified = (await contentSha(abs)) === afterSha;
+   }
+   if (verified) {
+@@ -319,7 +319,7 @@
+   if (current) {
+     let restored = false;
+     for (let attempt = 1; attempt <= 2 && !restored; attempt++) {
+-      try { await putBytes(abs, current.bytes); } catch { /* verified below */ }
++      try { await withSiteWriteGrant(abs, () => putBytes(abs, current.bytes)); } catch { /* verified below */ }
+       restored = (await contentSha(abs)) === current.sha256;
+     }
+     if (!restored) throw new BridgeError('Write could not be verified AND the original could not be restored. Stop and restore backup ' + backup?.backupId + ' manually.', 500);
+diff -ru v2/base44/shared/cpanel.ts v3/base44/shared/cpanel.ts
+--- v2/base44/shared/cpanel.ts
++++ v3/base44/shared/cpanel.ts
+@@ -1,6 +1,85 @@
+ // cPanel HTTPS transport. Same calls the Alicia publisher already proved on this server.
+ import { secrets } from 'base44:runtime';
+-import { CPANEL } from './bridgeConfig.ts';
++import { CPANEL, PRIVATE_ROOT } from './bridgeConfig.ts';
++
++// ---------- LIVE GUARD CHOKE POINT (14 Nov 2026, security review "GUARD CHOKEPOINT 1114-1010") ----------
++// Every cPanel call goes through uapi() / api2() below, so this is the one place that sees every change on the
++// server. A call that CHANGES a file (UAPI upload_files / save_file_content, API 2 fileop of any kind) may only put
++// its result in a private folder (~/bluehost-bridge-private or ~/backups-private), unless the exact destination
++// was granted by writeFile() for its own guarded upload or restore-on-mismatch step (withSiteWriteGrant).
++// move / rename / unlink / trash / extract / any other fileop are refused outright. mkdir is allowed (it changes no
++// file). Paths must be plain absolute paths under the account home: no "..", ".", empty segment, "%", backslash,
++// NUL or control character, and fileop must run with doubledecode=0 so cPanel never decodes them a second time.
++const PRIVATE_DIRS = [PRIVATE_ROOT, CPANEL.home + '/backups-private'];
++const MUTATING_UAPI = new Set(['Fileman/upload_files', 'Fileman/save_file_content']);
++const grants = new Map<string, number>();
++
++export class ChokepointError extends Error {
++  status = 403;
++  constructor(message: string) { super('LIVE GUARD (cPanel choke point) refused: ' + message + '. Nothing was changed.'); }
++}
++
++export function pathProblem(p: unknown): string | null {
++  if (typeof p !== 'string' || !p) return 'missing path';
++  if (/[\0\\%\x00-\x1f\x7f]/.test(p)) return 'path has NUL, backslash, "%" or a control character';
++  if (!p.startsWith(CPANEL.home + '/')) return 'path is outside the account home';
++  if (p.slice(1).split('/').some((x) => x === '' || x === '.' || x === '..')) return 'path has an empty, "." or ".." segment';
++  return null;
++}
++const isPrivate = (p: string) => PRIVATE_DIRS.some((d) => p === d || p.startsWith(d + '/'));
++
++// Throws unless a changing call may put a file at this exact absolute path.
++export function assertMutationTarget(p: unknown, what: string) {
++  const bad = pathProblem(p);
++  if (bad) throw new ChokepointError(what + ': ' + bad);
++  if (isPrivate(p as string) || grants.has(p as string)) return;
++  throw new ChokepointError(what + ' into ' + String(p).replace(CPANEL.home, '~') + ' (only writeFile may change a site file)');
++}
++
++// Used ONLY by writeFile() (bridgeOps.ts) around its own verified upload and restore steps, after the hold, block,
++// path and live guard checks have passed. The grant covers this one absolute path while fn runs.
++export async function withSiteWriteGrant<T>(abs: string, fn: () => Promise<T>): Promise<T> {
++  const bad = pathProblem(abs);
++  if (bad) throw new ChokepointError('grant: ' + bad);
++  grants.set(abs, (grants.get(abs) || 0) + 1);
++  try { return await fn(); } finally {
++    const n = (grants.get(abs) || 1) - 1;
++    if (n) grants.set(abs, n); else grants.delete(abs);
++  }
++}
++
++function checkUapiMutation(key: string, params: Record<string, string> | FormData) {
++  if (!MUTATING_UAPI.has(key)) return;
++  const get = (k: string) => params instanceof FormData ? params.get(k) : params[k];
++  const dir = get('dir');
++  if (key === 'Fileman/save_file_content') { assertMutationTarget(String(dir ?? '') + '/' + String(get('file') ?? ''), key); return; }
++  if (!(params instanceof FormData)) throw new ChokepointError(key + ' without a file form');
++  const names: string[] = [];
++  for (const [k, v] of params.entries()) {
++    if (!k.startsWith('file-')) continue;
++    const name = v instanceof File ? v.name : String(v);
++    if (!name || name.includes('/')) throw new ChokepointError(key + ': bad file name');
++    names.push(name);
++  }
++  if (!names.length) throw new ChokepointError(key + ' with no file');
++  for (const n of names) assertMutationTarget(String(dir ?? '') + '/' + n, key);
++}
++
++function checkApi2Mutation(func: string, params: Record<string, string>) {
++  if (func === 'mkdir') { const bad = pathProblem(params.path + '/' + params.name); if (bad || String(params.name).includes('/')) throw new ChokepointError('mkdir: ' + (bad || 'bad name')); return; }
++  if (params.doubledecode !== '0') throw new ChokepointError('fileop without doubledecode=0');
++  const list = (v: string | undefined) => String(v ?? '').split(',').filter(Boolean);
++  switch (params.op) {
++    case 'copy': case 'compress': {
++      if (list(params.destfiles).length !== 1) throw new ChokepointError(params.op + ' needs exactly one destination');
++      for (const src of list(params.sourcefiles)) { const bad = pathProblem(src); if (bad) throw new ChokepointError(params.op + ' source: ' + bad); }
++      assertMutationTarget(params.destfiles, 'fileop ' + params.op);
++      return;
++    }
++    case 'chmod': for (const t of list(params.sourcefiles)) assertMutationTarget(t, 'fileop chmod'); if (!list(params.sourcefiles).length) throw new ChokepointError('chmod with no target'); return;
++    default: throw new ChokepointError('fileop ' + String(params.op) + ' is blocked (move, rename, unlink, trash, extract and others never run)');
++  }
++}
+
+ const UAPI_ALLOWED = new Set([
+   'Fileman/get_file_content', 'Fileman/get_file_information', 'Fileman/upload_files',
+@@ -33,6 +112,7 @@
+ export async function uapi(module: string, func: string, params: Record<string, string> | FormData, method: 'GET' | 'POST' = 'GET', attempts = method === 'GET' ? 3 : 1) {
+   const key = module + '/' + func;
+   if (!UAPI_ALLOWED.has(key)) throw new Error('cPanel call not allowed: ' + key);
++  checkUapiMutation(key, params);
+   let url = CPANEL.host + '/execute/' + key;
+   const headers: Record<string, string> = authHeader();
+   const options: RequestInit = { method, headers, redirect: 'manual' };
+@@ -51,6 +131,7 @@
+   const backupTgz = func === 'fileop' && params.op === 'compress' && params.metadata === 'tar.gz'
+     && String(params.destfiles || '').startsWith(CPANEL.home + '/backups-private/') && !String(params.destfiles).includes('..');
+   if (func === 'fileop' && !API2_ALLOWED_OPS.has(params.op) && !backupTgz) throw new Error('cPanel file operation not allowed: ' + params.op);
++  checkApi2Mutation(func, params);
+   const body = new URLSearchParams({
+     cpanel_jsonapi_user: CPANEL.user, cpanel_jsonapi_apiversion: '2',
+     cpanel_jsonapi_module: 'Fileman', cpanel_jsonapi_func: func, ...params,
+
+Test mocks (tests only, so the existing mock tests can answer the live guard's server listing):
+--- tests/bulkWriteMock.test.ts
++++ tests/bulkWriteMock.test.ts
+@@ -28,6 +28,13 @@
++      if (fn === 'Fileman/list_files') { // server listing for the live guard probe (14 Nov 2026)
++        const d = q.get('dir')!; if (!dirs.has(d)) return Response.json({ result: { status: 0, errors: ['No such directory'] } });
++        const rows: any[] = [];
++        for (const f of files.keys()) if (parentOf(f) === d) rows.push({ file: f.slice(d.length + 1), type: 'file' });
++        for (const x of dirs) if (x !== d && parentOf(x) === d) rows.push({ file: x.slice(d.length + 1), type: 'dir' });
++        return ok(rows);
++      }
+--- tests/githubSyncMock.test.ts
++++ tests/githubSyncMock.test.ts
+@@ -93,7 +93,7 @@
+-        return ok([...kids].map((file) => ({ file })));
++        return ok([...kids].map((file) => ({ file, type: files.has(d + '/' + file) ? 'file' : 'dir' }))); // type: live guard probe
