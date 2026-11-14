@@ -1,0 +1,45 @@
+name: Carzy live fetch (GET only)
+on:
+  push:
+    branches: [ "claude/project-thread-fm4s6e" ]
+    paths: [ ".github/workflows/carzy-live-fetch.yml", "live-snapshot/carzy-request.txt" ]
+jobs:
+  fetch:
+    runs-on: ubuntu-24.04
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v4
+      - name: Fetch live pages and assets
+        run: |
+          set -u
+          D=live-snapshot/carzy-world-live
+          rm -rf "$D"; mkdir -p "$D"
+          B=https://carzyworld.com.my
+          curl -sSL -A "Mozilla/5.0" "$B/sitemap.xml" -o "$D/sitemap.xml" || true
+          grep -o '<loc>[^<]*</loc>' "$D/sitemap.xml" | sed 's/<\/*loc>//g' > /tmp/urls.txt || true
+          printf '%s\n' "$B/" "$B/ms/" "$B/zh/" "$B/404.html" "$B/robots.txt" "$B/llms.txt" >> /tmp/urls.txt
+          sort -u /tmp/urls.txt -o /tmp/urls.txt
+          : > "$D/FETCH-LOG.txt"
+          while read -r u; do
+            p="${u#*://*/}"; [ "$p" = "$u" ] && p=""
+            case "$p" in ""|*/) f="${p}index.html";; *) f="$p";; esac
+            mkdir -p "$D/$(dirname "$f")"
+            code=$(curl -sSL -A "Mozilla/5.0" -o "$D/$f" -w '%{http_code}' "$u")
+            echo "$code $u -> $f" >> "$D/FETCH-LOG.txt"
+          done < /tmp/urls.txt
+          grep -rhoE '(assets|img)/[A-Za-z0-9._/-]+\.(css|js)' "$D" --include=*.html | sort -u > /tmp/assets.txt || true
+          while read -r a; do
+            mkdir -p "$D/$(dirname "$a")"
+            code=$(curl -sSL -A "Mozilla/5.0" -o "$D/$a" -w '%{http_code}' "$B/$a")
+            echo "$code $B/$a -> $a" >> "$D/FETCH-LOG.txt"
+          done < /tmp/assets.txt
+          (cd "$D" && find . -type f ! -name SHA256SUMS -exec sha256sum {} + | sort -k2 > SHA256SUMS)
+          date -u > "$D/FETCHED-AT.txt"
+      - name: Commit snapshot
+        run: |
+          git config user.name "github-actions"
+          git config user.email "github-actions@users.noreply.github.com"
+          git add live-snapshot
+          git commit -m "Carzy World live snapshot (GET only)" || exit 0
+          git push
