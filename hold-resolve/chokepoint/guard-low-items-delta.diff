@@ -1,0 +1,165 @@
+diff -ruN v3pre/base44/shared/bridgeOps.ts v3/base44/shared/bridgeOps.ts
+--- a/base44/shared/bridgeOps.ts	2026-11-14 02:55:20.101466902 +0000
++++ b/base44/shared/bridgeOps.ts	2026-11-14 02:55:20.124367130 +0000
+@@ -3,7 +3,7 @@
+ // -> automatic restore if the readback does not match.
+ import { liveGuard, type LiveState } from './liveGuard.ts';
+ import { CPANEL, SITES, PRIVATE_ROOT, BACKUP_ROOT, MAX_FILE_BYTES, SERVER_CONFIG_ALLOWED, SERVER_CONFIG_ROLLBACK, PINNED_SERVER_CONFIG, readBlockedReason, writeBlockedReason, holdReason, GUARD_OVERRIDES } from './bridgeConfig.ts';
+-import { uapi, api2, checkResult, withSiteWriteGrant } from './cpanel.ts';
++import { uapi, api2, checkResult, withSiteWriteGrant, setSiteRoots } from './cpanel.ts';
+ 
+ export class BridgeError extends Error {
+   status: number;
+@@ -43,6 +43,7 @@
+     if (root && root.startsWith(CPANEL.home + '/') && !root.includes('..')) roots[key] = root.replace(/\/+$/, '');
+   }
+   rootsCache = { at: Date.now(), roots };
++  setSiteRoots(Object.values(roots)); // choke point: mkdir only inside these roots or private folders
+   return roots;
+ }
+ 
+diff -ruN v3pre/base44/shared/cpanel.ts v3/base44/shared/cpanel.ts
+--- a/base44/shared/cpanel.ts	2026-11-14 02:55:20.101530027 +0000
++++ b/base44/shared/cpanel.ts	2026-11-14 02:55:20.124033346 +0000
+@@ -11,6 +11,23 @@
+ // file). Paths must be plain absolute paths under the account home: no "..", ".", empty segment, "%", backslash,
+ // NUL or control character, and fileop must run with doubledecode=0 so cPanel never decodes them a second time.
+ const PRIVATE_DIRS = [PRIVATE_ROOT, CPANEL.home + '/backups-private'];
++// mkdir (guard low item 1, 14 Nov 2026): a folder may only be made inside a site root, ~/bluehost-bridge-private,
++// ~/backups-private, or one of the *-private folders that already exist on the account (fixed list, never
++// widened at run time). Site roots are the cPanel document roots of SITES, registered by loadRoots() in
++// bridgeOps.ts; until they are loaded no site folder may be made (fail closed).
++const MKDIR_PRIVATE_DIRS = Object.freeze([...PRIVATE_DIRS, ...['alicia-private', 'danny-private', 'sofacare-private',
++  'sofacare-production-publisher-private'].map((n) => CPANEL.home + '/' + n)]);
++let siteRootList: readonly string[] = Object.freeze([]);
++export function setSiteRoots(roots: string[]) {
++  siteRootList = Object.freeze(roots.filter((r) => typeof r === 'string' && !pathProblem(r) && r !== CPANEL.home + '/public_html'));
++}
++const under = (p: string, d: string) => p === d || p.startsWith(d + '/');
++function assertMkdirTarget(target: string) {
++  const bad = pathProblem(target);
++  if (bad) throw new ChokepointError('mkdir: ' + bad);
++  if (MKDIR_PRIVATE_DIRS.some((d) => under(target, d)) || siteRootList.some((r) => target !== r && under(target, r))) return;
++  throw new ChokepointError('mkdir ' + target.replace(CPANEL.home, '~') + ' (folders may only be made inside a site root or a private folder)');
++}
+ const MUTATING_UAPI = new Set(['Fileman/upload_files', 'Fileman/save_file_content']);
+ const grants = new Map<string, number>();
+ 
+@@ -66,7 +83,7 @@
+ }
+ 
+ function checkApi2Mutation(func: string, params: Record<string, string>) {
+-  if (func === 'mkdir') { const bad = pathProblem(params.path + '/' + params.name); if (bad || String(params.name).includes('/')) throw new ChokepointError('mkdir: ' + (bad || 'bad name')); return; }
++  if (func === 'mkdir') { if (!params.name || String(params.name).includes('/')) throw new ChokepointError('mkdir: bad name'); assertMkdirTarget(params.path + '/' + params.name); return; }
+   if (params.doubledecode !== '0') throw new ChokepointError('fileop without doubledecode=0');
+   const list = (v: string | undefined) => String(v ?? '').split(',').filter(Boolean);
+   switch (params.op) {
+diff -ruN v3pre/tests/bulkWriteMock.test.ts v3/tests/bulkWriteMock.test.ts
+--- a/tests/bulkWriteMock.test.ts	2026-11-14 02:55:20.108078817 +0000
++++ b/tests/bulkWriteMock.test.ts	2026-11-14 02:55:20.124861902 +0000
+@@ -1,6 +1,7 @@
+ // End-to-end test of write_files against an in-memory fake cPanel (fetch is replaced; no
+ // network). Run: deno test --import-map tests/importmap.json tests/bulkWriteMock.test.ts
+ import { writeMany } from '../base44/shared/bulkWrite.ts';
++import { holdReason } from '../base44/shared/bridgeConfig.ts';
+ 
+ const HOME = '/home3/sgmodde1', ROOT = HOME + '/public_html', PAGEONE = ROOT + '/pageone';
+ const files = new Map<string, Uint8Array>();
+@@ -107,7 +108,12 @@
+   const r: any = await writeMany({ site: 'sggarage', files: [{ path: 'ok.html', content: 'x' }, { path: 'cleanic/index.html', content: 'x' }] }, ctx).catch((e) => ({ thrown: e.message }));
+   // Folder isolation is enforced when folders are prepared/written: the cleanic file must fail.
+   const bad = r.thrown ? r.thrown : r.results.find((x: any) => x.path === 'cleanic/index.html').error;
+-  if (!/belongs to the cleanic site/.test(bad)) throw new Error(JSON.stringify(r));
++  // EXPECTED while the SG Garage BRIDGE HOLD is ON (14 Nov 2026): the hold refuses the whole sggarage batch before the
++  // folder-isolation check runs. When Edwin lifts the hold this branch turns off and the isolation check runs again.
++  if (holdReason('sggarage', 'ok.html')) {
++    if (!/BRIDGE HOLD is ON for SG Garage/.test(bad) || files.size !== before) throw new Error('expected the SG Garage HOLD refusal: ' + JSON.stringify(r));
++    console.log('EXPECTED while SG Garage HOLD is ON: sggarage batch refused by the hold (isolation check skipped)');
++  } else if (!/belongs to the cleanic site/.test(bad)) throw new Error(JSON.stringify(r));
+   let msg = '';
+   await writeMany({ site: 'pageone', files: [{ path: 'a.html', content: 'x' }, { path: 'b/.htaccess', content: 'x' }] }, ctx).catch((e) => { msg = e.message; });
+   if (!/Nothing was written/.test(msg)) throw new Error(msg);
+diff -ruN v3pre/tests/cpanelChokepoint.test.ts v3/tests/cpanelChokepoint.test.ts
+--- a/tests/cpanelChokepoint.test.ts	2026-11-14 02:55:20.108384193 +0000
++++ b/tests/cpanelChokepoint.test.ts	2026-11-14 02:55:20.125009386 +0000
+@@ -1,6 +1,6 @@
+ // LIVE GUARD choke point in shared/cpanel.ts + percent-encoded path test (14 Nov 2026, "GUARD CHOKEPOINT 1114-1010").
+ // fetch is replaced: no network. Run: deno test --import-map tests/importmap.json tests/cpanelChokepoint.test.ts
+-import { uapi, api2, withSiteWriteGrant, ChokepointError } from '../base44/shared/cpanel.ts';
++import { uapi, api2, withSiteWriteGrant, ChokepointError, setSiteRoots } from '../base44/shared/cpanel.ts';
+ import { normalizeRel, writeFile } from '../base44/shared/bridgeOps.ts';
+ 
+ const HOME = '/home3/sgmodde1', SITE = HOME + '/public_html/carbonfibre', PRIV = HOME + '/bluehost-bridge-private', BK = HOME + '/backups-private';
+@@ -48,10 +48,33 @@
+   await refused('copy dest with %2f', () => api2('fileop', { op: 'copy', sourcefiles: SITE + '/index.html', destfiles: PRIV + '%2f..%2fpublic_html/x.html', doubledecode: '0' }));
+   await refused('upload dir with .. into site', () => uapi('Fileman', 'upload_files', form(PRIV + '/../public_html/carbonfibre', 'index.html'), 'POST'));
+   await refused('two destinations in one copy', () => api2('fileop', { op: 'copy', sourcefiles: SITE + '/a', destfiles: PRIV + '/a,' + SITE + '/b', doubledecode: '0' }));
+-  await allowed('mkdir inside a site (changes no file)', () => api2('mkdir', { path: SITE + '/articles', name: 'new', permissions: '0755' }));
+   await refused('mkdir with .. in the name', () => api2('mkdir', { path: SITE, name: '../x', permissions: '0755' }));
+ });
+ 
++Deno.test('mkdir only inside a site root or a private folder (guard low item 1)', async () => {
++  const mk = (path: string, name: string) => () => api2('mkdir', { path, name, permissions: '0755' });
++  setSiteRoots([]);
++  await refused('mkdir in a site before the site roots are loaded (fail closed)', mk(SITE + '/articles', 'new'));
++  setSiteRoots([SITE, HOME + '/public_html/website_b1ec45f5', HOME + '/public_html', HOME + '/../etc']);
++  await allowed('mkdir inside a site root', mk(SITE + '/articles', 'new'));
++  await allowed('mkdir inside another site root', mk(HOME + '/public_html/website_b1ec45f5/preview', 'demo'));
++  await refused('mkdir of a new folder at public_html level (public_html is never accepted as a root)', mk(HOME + '/public_html', 'evil'));
++  await refused('mkdir directly in home', mk(HOME, 'newdir'));
++  await refused('mkdir in ~/.ssh', mk(HOME + '/.ssh', 'x'));
++  await refused('mkdir in ~/etc', mk(HOME + '/etc', 'x'));
++  await refused('mkdir in ~/mail', mk(HOME + '/mail', 'x'));
++  await refused('mkdir in ~/public_ftp', mk(HOME + '/public_ftp', 'x'));
++  await refused('mkdir in an unknown *-private folder', mk(HOME + '/someone-private', 'x'));
++  await refused('mkdir that would make the site root itself', mk(HOME + '/public_html', 'carbonfibre'));
++  await refused('mkdir outside home', mk('/tmp', 'x'));
++  await refused('mkdir with %2e%2e', mk(SITE + '/%2e%2e', 'x'));
++  await allowed('mkdir in ~/bluehost-bridge-private/backups', mk(PRIV + '/backups', 'sggarage'));
++  await allowed('mkdir in ~/backups-private', mk(BK, 'x'));
++  await allowed('mkdir making ~/backups-private itself', mk(HOME, 'backups-private'));
++  for (const n of ['alicia-private', 'danny-private', 'sofacare-private', 'sofacare-production-publisher-private'])
++    await allowed('mkdir in ~/' + n, mk(HOME + '/' + n, 'x'));
++});
++
+ Deno.test('percent-encoded paths can never decode into a path walk', async () => {
+   const bad = ['%2e%2e/index.html', '%2E%2E/%2E%2E/etc/passwd', 'articles/%2e%2e/%2e%2e/x.html', '..%2findex.html', '%2e%2e%2f%2e%2e%2fx', 'a%2fb.html',
+     '%252e%252e/x.html', '%c0%ae%c0%ae/x', 'a/%00.html', 'articles\\..\\x.html', '../x.html', 'a/../../x.html'];
+diff -ruN v3pre/tests/githubSyncMock.test.ts v3/tests/githubSyncMock.test.ts
+--- a/tests/githubSyncMock.test.ts	2026-11-14 02:55:20.108192548 +0000
++++ b/tests/githubSyncMock.test.ts	2026-11-14 02:55:20.124565830 +0000
+@@ -3,6 +3,7 @@
+ // Run: deno test --import-map tests/importmap.json tests/githubSyncMock.test.ts
+ import { syncFromGithub, gitBlobSha, parseSyncRequest } from '../base44/shared/githubSync.ts';
+ import { SYNC_BACKUP } from '../base44/shared/bridgeOps.ts';
++import { holdReason } from '../base44/shared/bridgeConfig.ts';
+ SYNC_BACKUP.paceMs = 0; // no 2-per-second spacing in tests
+ 
+ // ---- fake GitHub: one commit holding a few folders ----
+@@ -149,7 +150,9 @@
+ Deno.test('sync ~40 files (text + binary), then re-sync is all unchanged', async () => {
+   // Pre-existing different file: must be backed up then updated.
+   dirs.add(PAGEONE + '/preview'); dirs.add(PAGEONE + '/preview/demo');
+-  files.set(PAGEONE + '/preview/demo/f0.html', enc('old'));
++  // Same H1 as the source ("page 0"), different body: a normal update the live guard allows (14 Nov 2026 fixture fix;
++  // the old fixture 'old' had no H1, so the guard rightly refused an H1 change).
++  files.set(PAGEONE + '/preview/demo/f0.html', enc('<h1>page 0</h1><p>old</p>'));
+   corruptRaw = 'pageone-site/clients/demo/site/f6.html'; // one bad download, retried and verified
+   const t0 = performance.now();
+   const r: any = await syncFromGithub(req(), ctx);
+@@ -216,7 +219,15 @@
+ Deno.test('missing folder / commit and other-site folder are refused', async () => {
+   if (!/does not exist/.test(await refused(req({ source_path: 'pageone-site/clients/none' })))) throw new Error('missing folder');
+   if (!/not found on GitHub/.test(await refused(req({ ref: '1234567' })))) throw new Error('missing commit');
++  const before = files.size;
+   const r: any = await syncFromGithub({ site: 'sggarage', base_path: 'cleanic/x', ref: COMMIT, source_path: 'pageone-site/clients/bad/site', exclude: ['.htaccess', 'x/run.php'] }, ctx).catch((e) => ({ thrown: e.message }));
+   const bad = r.thrown || r.results?.[0]?.error;
++  // EXPECTED while the SG Garage BRIDGE HOLD is ON (14 Nov 2026): the hold refuses every sggarage sync before the
++  // folder-isolation check runs. When Edwin lifts the hold this branch turns off and the isolation check runs again.
++  if (holdReason('sggarage', 'cleanic/x/index.html')) {
++    if (!/BRIDGE HOLD is ON for SG Garage/.test(bad) || files.size !== before) throw new Error('expected the SG Garage HOLD refusal: ' + JSON.stringify(r));
++    console.log('EXPECTED while SG Garage HOLD is ON: sggarage sync refused by the hold (isolation check skipped)');
++    return;
++  }
+   if (!/belongs to the cleanic site/.test(bad)) throw new Error(JSON.stringify(r));
+ });

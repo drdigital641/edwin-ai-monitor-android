@@ -1,0 +1,18 @@
+running 2 tests from ./tests/bulkWriteMock.test.ts
+bulk create, then overwrite rules, backups and per-file results ... ok (556ms)
+cannot reach into another site folder; blocked batch writes nothing ... ok (5ms)
+running 6 tests from ./tests/githubSyncMock.test.ts
+request validation: repo allowlist, commit sha only, no deletes ... ok (1ms)
+sync ~40 files (text + binary), then re-sync is all unchanged ...
+------- post-test output -------
+mock sync of 40 files: 451 ms wall (fetch 24 ms), max cPanel/GitHub calls in flight 8
+mock re-sync (all unchanged): 331 ms wall
+----- post-test output end -----
+sync ~40 files (text + binary), then re-sync is all unchanged ... ok (782ms)
+backup that cannot be made means nothing is written ... ok (100ms)
+dry run downloads and lists but writes nothing ... ok (124ms)
+blocked file in the source folder refuses the batch before any download ... ok (133ms)
+missing folder / commit and other-site folder are refused ... ok (35ms)
+
+ok | 8 passed | 0 failed (1s)
+

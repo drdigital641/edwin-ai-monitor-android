@@ -1,0 +1,52 @@
+running 4 tests from ./tests/bulkWrite.test.ts
+accepts a normal site folder and joins base_path ... ok (1ms)
+blocked file types refuse the whole batch ... ok (17ms)
+path traversal and bad paths are refused ... ok (649µs)
+content rules, duplicates, sha format, limits ... ok (13ms)
+running 2 tests from ./tests/bulkWriteMock.test.ts
+bulk create, then overwrite rules, backups and per-file results ... ok (339ms)
+cannot reach into another site folder; blocked batch writes nothing ... FAILED (1ms)
+running 8 tests from ./tests/crawlerCore.test.ts
+IPv4 boundaries ... ok (800µs)
+IPv6 boundaries and forms ... ok (279µs)
+payload validation keeps last known good (never empty success) ... ok (264µs)
+overlapping lists do not force identity ... ok (383µs)
+classes ... ok (328µs)
+spoofed forwarded header is ignored: only the logged connection address is used ... ok (372µs)
+parsing and sanitizing ... ok (813µs)
+other crawlers: verified only inside their own list; Claude never verified; never OpenAI ... ok (401µs)
+running 6 tests from ./tests/githubSyncMock.test.ts
+request validation: repo allowlist, commit sha only, no deletes ... ok (2ms)
+sync ~40 files (text + binary), then re-sync is all unchanged ...
+------- post-test output -------
+mock sync of 40 files: 332 ms wall (fetch 23 ms), max cPanel/GitHub calls in flight 8
+mock re-sync (all unchanged): 155 ms wall
+----- post-test output end -----
+sync ~40 files (text + binary), then re-sync is all unchanged ... ok (487ms)
+backup that cannot be made means nothing is written ... ok (103ms)
+dry run downloads and lists but writes nothing ... ok (40ms)
+blocked file in the source folder refuses the batch before any download ... ok (122ms)
+missing folder / commit and other-site folder are refused ... FAILED (38ms)
+
+ ERRORS 
+
+cannot reach into another site folder; blocked batch writes nothing => ./tests/bulkWriteMock.test.ts:98:6
+error: Error: {"thrown":"BRIDGE HOLD is ON for SG Garage (sggarage.com) (flag \"sggarage\"): no write, sync, push or restore of its live files until Edwin lifts it. Nothing was changed."}
+  if (!/belongs to the cleanic site/.test(bad)) throw new Error(JSON.stringify(r));
+                                                      ^
+    at file:///tmp/g4/orig/tests/bulkWriteMock.test.ts:103:55
+
+missing folder / commit and other-site folder are refused => ./tests/githubSyncMock.test.ts:216:6
+error: Error: {"thrown":"BRIDGE HOLD is ON for SG Garage (sggarage.com) (flag \"sggarage\"): no write, sync, push or restore of its live files until Edwin lifts it. Nothing was changed."}
+  if (!/belongs to the cleanic site/.test(bad)) throw new Error(JSON.stringify(r));
+                                                      ^
+    at file:///tmp/g4/orig/tests/githubSyncMock.test.ts:221:55
+
+ FAILURES 
+
+cannot reach into another site folder; blocked batch writes nothing => ./tests/bulkWriteMock.test.ts:98:6
+missing folder / commit and other-site folder are refused => ./tests/githubSyncMock.test.ts:216:6
+
+FAILED | 18 passed | 2 failed (1s)
+
+error: Test failed

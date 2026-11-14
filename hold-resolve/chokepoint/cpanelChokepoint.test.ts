@@ -1,6 +1,6 @@
 // LIVE GUARD choke point in shared/cpanel.ts + percent-encoded path test (14 Nov 2026, "GUARD CHOKEPOINT 1114-1010").
 // fetch is replaced: no network. Run: deno test --import-map tests/importmap.json tests/cpanelChokepoint.test.ts
-import { uapi, api2, withSiteWriteGrant, ChokepointError } from '../base44/shared/cpanel.ts';
+import { uapi, api2, withSiteWriteGrant, ChokepointError, setSiteRoots } from '../base44/shared/cpanel.ts';
 import { normalizeRel, writeFile } from '../base44/shared/bridgeOps.ts';
 
 const HOME = '/home3/sgmodde1', SITE = HOME + '/public_html/carbonfibre', PRIV = HOME + '/bluehost-bridge-private', BK = HOME + '/backups-private';
@@ -48,8 +48,31 @@ Deno.test('cPanel choke point refuses every change into a site folder unless wri
   await refused('copy dest with %2f', () => api2('fileop', { op: 'copy', sourcefiles: SITE + '/index.html', destfiles: PRIV + '%2f..%2fpublic_html/x.html', doubledecode: '0' }));
   await refused('upload dir with .. into site', () => uapi('Fileman', 'upload_files', form(PRIV + '/../public_html/carbonfibre', 'index.html'), 'POST'));
   await refused('two destinations in one copy', () => api2('fileop', { op: 'copy', sourcefiles: SITE + '/a', destfiles: PRIV + '/a,' + SITE + '/b', doubledecode: '0' }));
-  await allowed('mkdir inside a site (changes no file)', () => api2('mkdir', { path: SITE + '/articles', name: 'new', permissions: '0755' }));
   await refused('mkdir with .. in the name', () => api2('mkdir', { path: SITE, name: '../x', permissions: '0755' }));
+});
+
+Deno.test('mkdir only inside a site root or a private folder (guard low item 1)', async () => {
+  const mk = (path: string, name: string) => () => api2('mkdir', { path, name, permissions: '0755' });
+  setSiteRoots([]);
+  await refused('mkdir in a site before the site roots are loaded (fail closed)', mk(SITE + '/articles', 'new'));
+  setSiteRoots([SITE, HOME + '/public_html/website_b1ec45f5', HOME + '/public_html', HOME + '/../etc']);
+  await allowed('mkdir inside a site root', mk(SITE + '/articles', 'new'));
+  await allowed('mkdir inside another site root', mk(HOME + '/public_html/website_b1ec45f5/preview', 'demo'));
+  await refused('mkdir of a new folder at public_html level (public_html is never accepted as a root)', mk(HOME + '/public_html', 'evil'));
+  await refused('mkdir directly in home', mk(HOME, 'newdir'));
+  await refused('mkdir in ~/.ssh', mk(HOME + '/.ssh', 'x'));
+  await refused('mkdir in ~/etc', mk(HOME + '/etc', 'x'));
+  await refused('mkdir in ~/mail', mk(HOME + '/mail', 'x'));
+  await refused('mkdir in ~/public_ftp', mk(HOME + '/public_ftp', 'x'));
+  await refused('mkdir in an unknown *-private folder', mk(HOME + '/someone-private', 'x'));
+  await refused('mkdir that would make the site root itself', mk(HOME + '/public_html', 'carbonfibre'));
+  await refused('mkdir outside home', mk('/tmp', 'x'));
+  await refused('mkdir with %2e%2e', mk(SITE + '/%2e%2e', 'x'));
+  await allowed('mkdir in ~/bluehost-bridge-private/backups', mk(PRIV + '/backups', 'sggarage'));
+  await allowed('mkdir in ~/backups-private', mk(BK, 'x'));
+  await allowed('mkdir making ~/backups-private itself', mk(HOME, 'backups-private'));
+  for (const n of ['alicia-private', 'danny-private', 'sofacare-private', 'sofacare-production-publisher-private'])
+    await allowed('mkdir in ~/' + n, mk(HOME + '/' + n, 'x'));
 });
 
 Deno.test('percent-encoded paths can never decode into a path walk', async () => {
