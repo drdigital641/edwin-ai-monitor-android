@@ -1,0 +1,23 @@
+<!-- Page One shared carousel v1: copy this block, keep the class names, change only cards and the label.
+     In <head>: <link rel="stylesheet" href="/assets/p1-carousel.css?v=HASH">
+     Before </body>: <script src="/assets/p1-carousel.js?v=HASH" defer></script>
+     Every card uses the same frame (aspect ratio from --p1c-ratio), photos fill it with object-fit: cover.
+     Give real width/height on each img so the page does not jump. First card eager, the rest lazy. -->
+<div class="p1c" role="region" aria-roledescription="carousel" aria-label="Recent jobs" data-speed="0.04" data-resume="1500">
+  <div class="p1c-rail">
+    <ul class="p1c-track">
+      <li class="p1c-card">
+        <a href="/works/example-1/">
+          <figure class="p1c-frame"><img src="/img/example-1.webp" width="800" height="600" alt="What the photo really shows" decoding="async"></figure>
+          <p class="p1c-cap">Short caption that matches the photo</p>
+        </a>
+      </li>
+      <li class="p1c-card">
+        <figure class="p1c-frame"><img src="/img/example-2.webp" width="600" height="900" alt="What the photo really shows" loading="lazy" decoding="async"></figure>
+        <p class="p1c-cap">Portrait photos are cropped to the same frame</p>
+      </li>
+      <!-- more cards -->
+    </ul>
+  </div>
+  <!-- arrows + dots are added by p1-carousel.js; no-JS visitors get a plain swipe row -->
+</div>

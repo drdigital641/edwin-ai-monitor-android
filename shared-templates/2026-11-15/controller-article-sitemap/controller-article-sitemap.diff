@@ -1,0 +1,561 @@
+diff -ruN -x deno.lock -x node_modules -x deno.json qul5nf-ctl-base/base44/functions/clientSites/entry.ts qul5nf-ctl/base44/functions/clientSites/entry.ts
+--- qul5nf-ctl-base/base44/functions/clientSites/entry.ts
++++ qul5nf-ctl/base44/functions/clientSites/entry.ts
+@@ -2,6 +2,7 @@
+ import { createClientFromRequest } from 'npm:@base44/sdk@0.8.44';
+ import { isCron } from '../../shared/guard.ts';
+ import { connectFtp, sha256, safeWrite } from '../../shared/bluehostFiles.ts';
++import { articleFollowUp } from '../../shared/articleSeo.ts';
+ import { renderPreview, renderLive, slugify, waNumber, PAGEONE, PAGEONE_FOLDER, SERVER_IP, type Copy, type ServicePage, type Article } from '../../shared/clientSite.ts';
+ import { readSite, downloadImage } from '../../shared/siteImport.ts';
+ import { BRANDS, AUTOSEO, byBrand } from '../../shared/brand.ts';
+@@ -27,11 +28,11 @@
+ const enc = new TextEncoder();
+ const FIELDS = ['name', 'niche', 'area', 'whatsapp', 'phone', 'email', 'address', 'hours', 'services', 'facts', 'brand_color'];
+ 
+-async function putBytes(base44: any, actor: string, rel: string, bytes: Uint8Array) {
++async function putBytes(base44: any, actor: string, rel: string, bytes: Uint8Array, opts: { articleFollowUp?: boolean } = {}) {
+   const ftp = await connectFtp();
+   let current: any = null;
+   try { current = await ftp.download(rel); } finally { await ftp.close(); }
+-  return safeWrite(base44, actor, rel, bytes, current ? await sha256(current) : undefined, 'client-site');
++  return safeWrite(base44, actor, rel, bytes, current ? await sha256(current) : undefined, 'client-site', opts);
+ }
+ const put = (base44: any, actor: string, rel: string, text: string) => putBytes(base44, actor, rel, enc.encode(text));
+ 
+@@ -171,10 +172,13 @@
+   return rows.map((r) => ({ slug: r.slug, title: r.title, meta_description: r.meta_description || '', published_at: r.published_at,
+     sections: r.sections || [], faqs: r.faqs || [], service: r.service || '' }));
+ }
+-async function publishLive(base44: any, actor: string, c: any, only?: Parameters<typeof renderLive>[4]) {
++// incremental: for a new article. sitemap.xml, llms.txt and robots.txt are NOT regenerated from scratch (the live guard refuses
++// to replace them, and a refusal here used to stop the run before IndexNow); articleFollowUp() adds the article to them instead.
++const INCREMENTAL_SKIP = new Set(['sitemap.xml', 'llms.txt', 'robots.txt']);
++async function publishLive(base44: any, actor: string, c: any, only?: Parameters<typeof renderLive>[4], incremental = false) {
+   const copy: Copy = JSON.parse(c.content_json);
+   const files = renderLive(c, copy, pagesOf(c), await articlesOf(base44.asServiceRole.entities, c.slug), only);
+-  for (const [name, text] of Object.entries(files)) await put(base44, actor, `preview/${c.slug}/${name}`, text);
++  for (const [name, text] of Object.entries(files)) { if (incremental && INCREMENTAL_SKIP.has(name)) continue; await put(base44, actor, `preview/${c.slug}/${name}`, text); }
+   return Object.keys(files);
+ }
+ const NEVER = `Never invent: prices, years in business, number of customers or jobs, reviews, ratings, awards, certifications, guarantees, response times, or anything not stated in the facts.
+@@ -380,12 +384,17 @@
+           const a = await writeArticle(svc, c, pagesOf(c), existing);
+           const published_at = new Date().toISOString();
+           await E.ClientArticle.create({ client_slug: c.slug, ...a, published_at });
+-          await publishLive(base44, actor, c, { core: true, articles: [a.slug] });
+-          if (c.live_at && c.indexnow_key) {
+-            await fetch('https://api.indexnow.org/indexnow', { method: 'POST', headers: { 'Content-Type': 'application/json' }, signal: AbortSignal.timeout(10000),
+-              body: JSON.stringify({ host: c.domain, key: c.indexnow_key, urlList: [`https://${c.domain}/articles/${a.slug}/`, `https://${c.domain}/articles/`] }) }).catch(() => null);
+-          }
+-          done.push({ client: c.slug, title: a.title, url: `https://${c.domain}/articles/${a.slug}/` });
++          await publishLive(base44, actor, c, { core: true, articles: [a.slug] }, true);
++          // Sitemap, llms.txt, article cards and IndexNow for this one article (shared/articleSeo.ts). Each step reports on its own.
++          const root = `preview/${c.slug}/`;
++          const follow_up = await articleFollowUp({
++            read: async (rel) => { const ftp = await connectFtp(); try { return await ftp.download(rel); } finally { await ftp.close(); } },
++            write: async (rel, bytes) => { const ftp = await connectFtp(); let cur: any = null; try { cur = await ftp.download(rel); } finally { await ftp.close(); }
++              return safeWrite(base44, actor, rel, bytes, cur ? await sha256(cur) : undefined, 'client-site', { articleFollowUp: true }); },
++            indexnow: (body) => fetch('https://api.indexnow.org/indexnow', { method: 'POST', headers: { 'Content-Type': 'application/json; charset=utf-8' }, signal: AbortSignal.timeout(10000), body: JSON.stringify(body) })
++              .then((r) => r.status).catch((e) => 'error: ' + String(e?.message || e).slice(0, 80)),
++          }, { root, domain: c.domain, indexnowKey: c.indexnow_key, live: Boolean(c.live_at) }, { slug: a.slug, title: a.title, published: published_at });
++          done.push({ client: c.slug, title: a.title, url: `https://${c.domain}/articles/${a.slug}/`, follow_up });
+         } catch (e) { done.push({ client: c.slug, error: String((e as Error)?.message || e).slice(0, 200) }); }
+       }
+       return Response.json({ ok: true, today, written: done, remaining });
+diff -ruN -x deno.lock qul5nf-ctl-base/base44/shared/articleSeo.ts qul5nf-ctl/base44/shared/articleSeo.ts
+--- qul5nf-ctl-base/base44/shared/articleSeo.ts
++++ qul5nf-ctl/base44/shared/articleSeo.ts
+@@ -0,0 +1,285 @@
++// ARTICLE FOLLOW-UP (DRAFT for review, 15 Nov 2026, Edwin: "each new article: add it to the sitemap and article-cards,
++// then send IndexNow"). ONE module used by every Controller path that writes a new article onto a client site.
++// Nothing here is saved live yet: Base44 backend code is live on save, so saving needs security review + Edwin's yes.
++//
++// After an article page is published it does, in this order, each step on its own (one failing never blocks the others):
++//   1. sitemap.xml    : add <url><loc>+<lastmod> for the articles index and the article, only when missing. Existing entries are never
++//                       dropped, changed or reordered. Output must pass the same checks as the Bridge's xmlProblem (copied below).
++//   2. sitemap.txt    : rebuilt from the sitemap.xml locs (one https URL per line).
++//   3. llms.txt       : ONE line for the article, only when its URL is missing; inserted at the end of the "## Articles" section
++//                       (or a new "## Articles" section at the end). No existing line is rewritten.
++//   4. article-cards.json : only if the site has one. One card added with exactly the live card shape; no live card dropped.
++//   5. IndexNow       : the article URL plus the articles index URL only, with the site's own key (Client.indexnow_key).
++// Writes go through safeWrite with { articleFollowUp: true }: the live guard then lets exactly these files be REPLACED
++// (see articleFollowUpProblem), and still runs every other check (HOLD flags, path rules, unknown live state).
++// Pure TypeScript, no imports, so it can be tested with fakes.
++
++// ---- checks copied VERBATIM from the Bluehost Bridge base44/shared/liveGuard.ts (xmlProblem, generatedFileProblem, articleCardsProblem) ----
++const JS_RE = /j[\s\x00-\x1f]*a[\s\x00-\x1f]*v[\s\x00-\x1f]*a[\s\x00-\x1f]*s[\s\x00-\x1f]*c[\s\x00-\x1f]*r[\s\x00-\x1f]*i[\s\x00-\x1f]*p[\s\x00-\x1f]*t[\s\x00-\x1f]*:/i;
++export const XML_ACTIVE_ELEMENTS = Object.freeze(['script', 'iframe', 'object', 'embed']);
++const decodeRefs = (t: string) => t
++  .replace(/&#x([0-9a-fA-F]+);?/g, (_, h) => { const n = parseInt(h, 16); return n <= 0x10ffff ? String.fromCodePoint(n) : ''; })
++  .replace(/&#(\d+);?/g, (_, d) => { const n = parseInt(d, 10); return n <= 0x10ffff ? String.fromCodePoint(n) : ''; })
++  .replace(/&colon;/gi, ':').replace(/&tab;/gi, '\t').replace(/&newline;/gi, '\n');
++export function xmlProblem(text: string): string | null {
++  if (JS_RE.test(text) || JS_RE.test(decodeRefs(text))) return 'javascript: is not allowed in a sitemap';
++  let s = text.replace(/^\uFEFF/, '');
++  s = s.replace(/^\s*<\?xml\b[^?]*\?>/, '');
++  const stack: string[] = []; let root = '', closedRoot = false, i = 0;
++  const textOk = (t: string) => !/&(?!(amp|lt|gt|quot|apos|#\d+|#x[0-9a-fA-F]+);)/.test(t) && !t.includes('<');
++  while (i < s.length) {
++    const lt = s.indexOf('<', i);
++    const chunk = s.slice(i, lt < 0 ? s.length : lt);
++    if (!textOk(chunk)) return 'bad character or entity in text';
++    if (chunk.trim() && (!stack.length)) return 'text outside the root element';
++    if (lt < 0) break;
++    if (s.startsWith('<!--', lt)) { const e = s.indexOf('-->', lt + 4); if (e < 0) return 'unclosed comment'; i = e + 3; continue; }
++    if (s.startsWith('<?', lt)) { const e = s.indexOf('?>', lt + 2); if (e < 0) return 'unclosed processing instruction'; i = e + 2; continue; }
++    if (s.startsWith('<![CDATA[', lt)) { if (!stack.length) return 'CDATA outside the root'; const e = s.indexOf(']]>', lt); if (e < 0) return 'unclosed CDATA'; i = e + 3; continue; }
++    if (s.startsWith('<!', lt)) return 'DOCTYPE/DTD is not allowed in a sitemap';
++    const gt = s.indexOf('>', lt); if (gt < 0) return 'unclosed tag';
++    const tag = s.slice(lt + 1, gt);
++    let m: RegExpExecArray | null;
++    if ((m = /^\/([A-Za-z_][\w:.-]*)\s*$/.exec(tag))) {
++      if (stack.pop() !== m[1]) return 'closing tag </' + m[1] + '> does not match';
++      if (!stack.length) closedRoot = true;
++    } else if ((m = /^([A-Za-z_][\w:.-]*)((?:\s+[A-Za-z_][\w:.-]*\s*=\s*(?:"[^"<]*"|'[^'<]*'))*)\s*(\/?)$/.exec(tag))) {
++      const local = m[1].replace(/^.*:/, '').toLowerCase();
++      if (XML_ACTIVE_ELEMENTS.includes(local)) return 'element <' + m[1] + '> is not allowed in a sitemap';
++      for (const a of m[2].matchAll(/\s+([A-Za-z_][\w:.-]*)\s*=\s*(?:"[^"<]*"|'[^'<]*')/g)) {
++        if (!/^xmlns(:|$)/i.test(a[1]) && /^on/i.test(a[1].replace(/^.*:/, ''))) return 'attribute ' + a[1] + ' is not allowed in a sitemap';
++      }
++      if (closedRoot) return 'more than one root element';
++      if (!stack.length && !root) root = m[1];
++      if (!m[3]) stack.push(m[1]); else if (!stack.length) closedRoot = true;
++    } else return 'malformed tag <' + tag.slice(0, 40) + '>';
++    i = gt + 1;
++  }
++  if (stack.length) return 'element <' + stack[stack.length - 1] + '> is not closed';
++  if (!root) return 'no root element';
++  if (!/^(urlset|sitemapindex)$/.test(root.replace(/^.*:/, ''))) return 'root element is <' + root + '>, not <urlset> or <sitemapindex>';
++  return null;
++}
++
++export function generatedFileProblem(rel: string, bytes: Uint8Array): string | null {
++  let text: string;
++  try { text = new TextDecoder('utf-8', { fatal: true }).decode(bytes); } catch { return 'not valid UTF-8 text'; }
++  const name = rel.split('/').pop();
++  if (name === 'llms.txt') return text.trim() ? null : 'llms.txt is empty';
++  if (name === 'sitemap.txt') {
++    const lines = text.split(/\r?\n/).map((l) => l.trim()).filter(Boolean);
++    if (!lines.length) return 'sitemap.txt has 0 URLs';
++    const bad = lines.find((l) => !/^https:\/\/[^\s<>"]+$/.test(l));
++    return bad ? 'sitemap.txt has a line that is not an https URL: ' + JSON.stringify(bad.slice(0, 80)) : null;
++  }
++  const x = xmlProblem(text);
++  if (x) return 'sitemap.xml is not well-formed XML (' + x + ')';
++  const locs = [...text.matchAll(/<(?:\w+:)?loc>\s*(https?:\/\/[^<\s]+)\s*<\/(?:\w+:)?loc>/g)].length;
++  return locs ? null : 'sitemap.xml has 0 URLs';
++}
++
++export function articleCardsProblem(bytes: Uint8Array, liveBytes?: Uint8Array): string | null {
++  let text: string;
++  try { text = new TextDecoder('utf-8', { fatal: true }).decode(bytes); } catch { return 'not valid UTF-8 text'; }
++  if (JS_RE.test(text)) return 'javascript: is not allowed in article-cards.json';
++  let data: unknown;
++  try { data = JSON.parse(text.replace(/^\uFEFF/, '')); } catch (e) { return 'article-cards.json is not valid JSON (' + String((e as Error).message).slice(0, 80) + ')'; }
++  if (!Array.isArray(data)) return 'article-cards.json must be a JSON array';
++  if (data.length < 1 || data.length > 5000) return 'article-cards.json must have 1 to 5000 cards (has ' + data.length + ')';
++  const seen = new Set<string>();
++  const bad = /[<>\x00-\x1f\x7f]/;
++  for (let i = 0; i < data.length; i++) {
++    const c = data[i] as Record<string, unknown>;
++    if (!c || typeof c !== 'object' || Array.isArray(c) || Object.getPrototypeOf(c) !== Object.prototype) return 'card ' + i + ' is not an object';
++    const keys = Object.keys(c).sort().join(',');
++    if (keys !== 'cat,href,title') return 'card ' + i + ' must have exactly href, cat and title (has ' + keys.slice(0, 80) + ')';
++    const { href, cat, title } = c;
++    if (typeof href !== 'string' || typeof cat !== 'string' || typeof title !== 'string') return 'card ' + i + ': href, cat and title must be strings';
++    if (href.length > 200 || !/^\/articles\/[a-z0-9][a-z0-9-]*\.html$/.test(href)) return 'card ' + i + ': href ' + JSON.stringify(href.slice(0, 80)) + ' is not /articles/<slug>.html';
++    if (JS_RE.test(href) || JS_RE.test(cat) || JS_RE.test(title)) return 'card ' + i + ': javascript: is not allowed in article-cards.json';
++    if (seen.has(href)) return 'card ' + i + ': href ' + href + ' appears twice';
++    seen.add(href);
++    if (!title.trim() || title.length > 300 || bad.test(title)) return 'card ' + i + ': title must be 1-300 characters with no < > or control characters';
++    if (!cat.trim() || cat.length > 60 || bad.test(cat)) return 'card ' + i + ': cat must be 1-60 characters with no < > or control characters';
++  }
++  if (liveBytes) {
++    let live: unknown = null;
++    try { live = JSON.parse(new TextDecoder('utf-8').decode(liveBytes).replace(/^\uFEFF/, '')); } catch { live = null; }
++    if (Array.isArray(live)) {
++      const lost = live.map((x: any) => x && typeof x.href === 'string' ? x.href : null).filter((h): h is string => !!h && !seen.has(h));
++      if (lost.length) return 'article-cards.json would drop ' + lost.length + ' live card(s), e.g. ' + lost[0].slice(0, 120);
++    }
++  }
++  return null;
++}
++
++// ---- pure text edits (all additive) ----
++const enc = new TextEncoder();
++const dec = (b: Uint8Array) => new TextDecoder('utf-8').decode(b);
++const xmlEsc = (s: string) => s.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
++const xmlUnesc = (s: string) => s.replace(/&lt;/g, '<').replace(/&gt;/g, '>').replace(/&quot;/g, '"').replace(/&apos;/g, "'").replace(/&amp;/g, '&');
++
++export const sitemapLocs = (xml: string): string[] =>
++  [...xml.matchAll(/<(?:\w+:)?loc>\s*([^<\s][^<]*?)\s*<\/(?:\w+:)?loc>/g)].map((m) => xmlUnesc(m[1]));
++
++// Adds <url><loc><lastmod> before the closing </urlset> for each url not already listed. Returns the same text when nothing is missing.
++// A sitemapindex (or anything without </urlset>) is left alone: returns null.
++export function addToSitemapXml(xml: string, urls: { loc: string; lastmod: string }[]): string | null {
++  const have = new Set(sitemapLocs(xml));
++  const add = urls.filter((u) => !have.has(u.loc));
++  if (!add.length) return xml;
++  const end = xml.lastIndexOf('</urlset>');
++  if (end < 0) return null;
++  const head = xml.slice(0, end).replace(/[ \t]*$/, '');
++  const rows = add.map((u) => `  <url><loc>${xmlEsc(u.loc)}</loc><lastmod>${u.lastmod}</lastmod></url>\n`).join('');
++  return head + (head.endsWith('\n') ? '' : '\n') + rows + xml.slice(end);
++}
++
++export const sitemapTxtFromXml = (xml: string): string => sitemapLocs(xml).join('\n') + '\n';
++
++// One line, only if the URL is missing. Goes at the end of the "## Articles" section, or a new section at the end of the file.
++export function addToLlmsTxt(txt: string, line: string, url: string): string {
++  if (txt.includes(url)) return txt;
++  const h = /^## Articles[ \t]*$/m.exec(txt);
++  if (!h) return txt.replace(/\s*$/, '') + '\n\n## Articles\n' + line + '\n';
++  const afterHead = h.index + h[0].length;
++  const next = /^## /m.exec(txt.slice(afterHead + 1));
++  const end = next ? afterHead + 1 + next.index : txt.length;
++  const section = txt.slice(afterHead, end);
++  const trimmed = section.replace(/\s*$/, '');
++  return txt.slice(0, afterHead) + trimmed + '\n' + line + '\n' + (next ? '\n' : '') + txt.slice(end);
++}
++
++// Adds one card in the live shape (same keys, same key order, 2-space indent if the live file uses it). New card goes first (newest first).
++export function addToCards(json: string, card: { href: string; cat: string; title: string }): string | null {
++  let data: any;
++  try { data = JSON.parse(json.replace(/^\uFEFF/, '')); } catch { return null; }
++  if (!Array.isArray(data)) return null;
++  if (data.some((c: any) => c && c.href === card.href)) return json;
++  const order = data[0] && typeof data[0] === 'object' ? Object.keys(data[0]) : ['href', 'cat', 'title'];
++  const shaped: Record<string, string> = {};
++  for (const k of order) shaped[k] = (card as any)[k];
++  const indent = /^\[\s*\n(\s+)\S/.exec(json)?.[1] ?? '';
++  const out = JSON.stringify([shaped, ...data], null, indent ? indent.length : undefined);
++  return out + (json.endsWith('\n') ? '\n' : '');
++}
++
++// ---- the narrow guard override ----
++// Mirrors the Bridge's GENERATED_OVERRIDE. Only a write that carries { articleFollowUp: true } may REPLACE these files, only inside a
++// Controller client-site folder, and only when the new bytes pass these checks against the live bytes. liveGuard() re-checks the path.
++export const FOLLOWUP_PATH = /^preview\/[a-z0-9][a-z0-9-]*\/(sitemap\.xml|sitemap\.txt|llms\.txt|article-cards\.json)$/;
++const lineSet = (t: string) => t.split(/\r?\n/);
++
++export function articleFollowUpProblem(rel: string, next: Uint8Array, live: Uint8Array): string | null {
++  if (!FOLLOWUP_PATH.test(rel)) return 'not an article follow-up file';
++  const name = rel.split('/').pop()!;
++  if (name === 'article-cards.json') {
++    const p = articleCardsProblem(next, live);
++    if (p) return p;
++    const a = JSON.parse(dec(next).replace(/^\uFEFF/, '')), b = JSON.parse(dec(live).replace(/^\uFEFF/, ''));
++    if (Array.isArray(b) && a.length - b.length > 1) return 'more than 1 new card';
++    return null;
++  }
++  const p = generatedFileProblem(rel, next);
++  if (p) return p;
++  const n = dec(next), l = dec(live);
++  if (name === 'sitemap.xml') {
++    const nl = sitemapLocs(n), ll = sitemapLocs(l);
++    const set = new Set(nl);
++    const lost = ll.filter((u) => !set.has(u));
++    if (lost.length) return 'sitemap.xml would drop ' + lost.length + ' live URL(s), e.g. ' + lost[0].slice(0, 120);
++    if (nl.length - ll.length > 2) return 'sitemap.xml would add more than 2 URLs';
++    // existing entries keep their order
++    const keep = nl.filter((u) => ll.includes(u));
++    if (JSON.stringify(keep) !== JSON.stringify(ll)) return 'sitemap.xml would reorder or duplicate live URLs';
++    return null;
++  }
++  if (name === 'sitemap.txt') {
++    const nl = lineSet(n).map((x) => x.trim()).filter(Boolean), ll = lineSet(l).map((x) => x.trim()).filter(Boolean);
++    const set = new Set(nl);
++    const lost = ll.filter((u) => !set.has(u));
++    if (lost.length) return 'sitemap.txt would drop ' + lost.length + ' live URL(s)';
++    if (nl.length - ll.length > 20) return 'sitemap.txt would add more than 20 URLs';
++    return null;
++  }
++  // llms.txt: every live line stays, in order; at most 2 new non-empty lines (the article line and a heading).
++  const nl = lineSet(n), ll = lineSet(l);
++  let j = 0;
++  for (const line of ll) { while (j < nl.length && nl[j] !== line) j++; if (j >= nl.length) return 'llms.txt would rewrite or drop a live line: ' + JSON.stringify(line.slice(0, 80)); j++; }
++  const liveCount = new Map<string, number>();
++  for (const x of ll) liveCount.set(x, (liveCount.get(x) || 0) + 1);
++  const added = nl.filter((x) => { const c = liveCount.get(x) || 0; if (c > 0) { liveCount.set(x, c - 1); return false; } return x.trim() !== ''; });
++  if (added.length > 2) return 'llms.txt would add more than 2 lines';
++  return null;
++}
++
++// ---- the follow-up itself ----
++export type FollowUpIO = {
++  read(rel: string): Promise<Uint8Array | null>;               // exact live bytes, or null when the file does not exist
++  write(rel: string, bytes: Uint8Array): Promise<unknown>;     // must be safeWrite(..., { articleFollowUp: true }); throws when refused
++  indexnow(body: Record<string, unknown>): Promise<number | string>;
++};
++export type FollowUpSite = {
++  root: string;            // folder prefix on the server, e.g. 'preview/acme-plumbing/'
++  domain: string;          // acme.sg
++  indexnowKey?: string;    // Client.indexnow_key
++  live: boolean;           // true once the domain answers on https (Client.live_at); IndexNow is only sent then
++  cardsFile?: string;      // default 'article-cards.json'
++};
++export type FollowUpArticle = { slug: string; title: string; published: string; cat?: string; cardHref?: string };
++export type FollowUpReport = Record<'sitemap_xml' | 'sitemap_txt' | 'llms_txt' | 'cards' | 'indexnow', string>;
++
++export async function articleFollowUp(io: FollowUpIO, site: FollowUpSite, a: FollowUpArticle): Promise<FollowUpReport> {
++  const base = `https://${site.domain}/`;
++  const articleUrl = `${base}articles/${a.slug}/`, indexUrl = `${base}articles/`;
++  const lastmod = /^\d{4}-\d{2}-\d{2}/.test(a.published) ? a.published.slice(0, 10) : new Date().toISOString().slice(0, 10);
++  const rep: FollowUpReport = { sitemap_xml: 'skipped', sitemap_txt: 'skipped', llms_txt: 'skipped', cards: 'skipped: no card file', indexnow: 'skipped' };
++  const err = (e: unknown) => 'error: ' + String((e as Error)?.message || e).slice(0, 200);
++
++  // Writes one file if the new text differs and passes its checks. Returns a status word.
++  const put = async (name: string, make: (live: string) => string | null, check: (bytes: Uint8Array, live: Uint8Array) => string | null) => {
++    const rel = site.root + name;
++    const live = await io.read(rel);
++    if (!live) return 'skipped: file not on the server';
++    const next = make(dec(live));
++    if (next === null) return 'skipped: not a plain urlset/list';
++    if (next === dec(live)) return 'unchanged';
++    const bytes = enc.encode(next);
++    const bad = check(bytes, live);
++    if (bad) return 'not written: ' + bad;
++    await io.write(rel, bytes);
++    return 'updated';
++  };
++
++  let xmlAfter = '', candidate = '';
++  try {
++    rep.sitemap_xml = await put('sitemap.xml',
++      (t) => { const r = addToSitemapXml(t, [{ loc: indexUrl, lastmod }, { loc: articleUrl, lastmod }]); if (r !== null) candidate = r; return r; },
++      (b, l) => articleFollowUpProblem(site.root + 'sitemap.xml', b, l));
++    if (rep.sitemap_xml === 'updated' || rep.sitemap_xml === 'unchanged') xmlAfter = candidate;   // sitemap.txt follows only what is really live
++  } catch (e) { rep.sitemap_xml = err(e); }
++  try {
++    if (!xmlAfter) rep.sitemap_txt = 'skipped: no sitemap.xml';
++    else rep.sitemap_txt = await put('sitemap.txt', () => sitemapTxtFromXml(xmlAfter), (b, l) => articleFollowUpProblem(site.root + 'sitemap.txt', b, l));
++  } catch (e) { rep.sitemap_txt = err(e); }
++  try {
++    rep.llms_txt = await put('llms.txt', (t) => addToLlmsTxt(t, `- [${a.title.replace(/[\[\]\r\n]/g, ' ').trim()}](${articleUrl})`, articleUrl),
++      (b, l) => articleFollowUpProblem(site.root + 'llms.txt', b, l));
++  } catch (e) { rep.llms_txt = err(e); }
++  try {
++    const cards = site.root + (site.cardsFile || 'article-cards.json');
++    if (await io.read(cards)) {
++      rep.cards = await put(site.cardsFile || 'article-cards.json',
++        (t) => addToCards(t, { href: a.cardHref || `/articles/${a.slug}.html`, cat: a.cat || 'Article', title: a.title }),
++        (b, l) => articleFollowUpProblem(cards, b, l));
++    }
++  } catch (e) { rep.cards = err(e); }
++  try {
++    if (!site.live || !site.indexnowKey) rep.indexnow = 'skipped: ' + (!site.live ? 'site not live yet' : 'no IndexNow key');
++    else {
++      const r = await io.indexnow({ host: site.domain, key: site.indexnowKey, keyLocation: `${base}${site.indexnowKey}.txt`, urlList: [articleUrl, indexUrl] });
++      rep.indexnow = 'sent: ' + r;
++    }
++  } catch (e) { rep.indexnow = err(e); }
++  return rep;
++}
+diff -ruN -x deno.lock qul5nf-ctl-base/tests/articleSeo.test.ts qul5nf-ctl/tests/articleSeo.test.ts
+--- qul5nf-ctl-base/tests/articleSeo.test.ts
++++ qul5nf-ctl/tests/articleSeo.test.ts
+@@ -0,0 +1,130 @@
++// Article follow-up tests (15 Nov 2026). Run: deno test -A tests/articleSeo.test.ts. Fakes only: no FTP, no network, no real IndexNow.
++import { assertEquals, assert, assertStringIncludes } from 'jsr:@std/assert@1';
++import { addToSitemapXml, sitemapTxtFromXml, addToLlmsTxt, addToCards, articleFollowUp, articleFollowUpProblem, xmlProblem, sitemapLocs, type FollowUpIO } from '../base44/shared/articleSeo.ts';
++import { liveGuard } from '../base44/shared/liveGuard.ts';
++
++const enc = new TextEncoder(), dec = new TextDecoder();
++const B = 'https://acme.sg/';
++const XML = `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n  <url><loc>${B}</loc><lastmod>2026-11-01</lastmod></url>\n  <url><loc>${B}about/</loc><lastmod>2026-11-01</lastmod></url>\n  <url><loc>${B}articles/old-one/</loc><lastmod>2026-11-05</lastmod></url>\n</urlset>\n`;
++const LLMS = `# Acme\n\n> Plumber\n\n## Services\n- [Leaks](${B}leaks/)\n\n## Articles\n- [Old one](${B}articles/old-one/)\n\n## Contact\n- WhatsApp\n`;
++const CARDS = `[\n  {"href": "/articles/old.html", "cat": "Care", "title": "Old"}\n]\n`;
++const ART = { slug: 'new-one', title: 'New one', published: '2026-11-15T01:00:00.000Z' };
++const SITE = { root: 'preview/acme/', domain: 'acme.sg', indexnowKey: 'abc123', live: true };
++
++// A fake server that applies the real live guard (with the follow-up override) exactly like safeWrite does.
++function fake(files: Record<string, string>, opts: { refuse?: string[] } = {}) {
++  const store = new Map<string, Uint8Array>(Object.entries(files).map(([k, v]) => [k, enc.encode(v)]));
++  const writes: string[] = [], pings: any[] = [];
++  const io: FollowUpIO = {
++    read: async (rel) => store.get(rel) ?? null,
++    write: async (rel, bytes) => {
++      if (opts.refuse?.includes(rel)) throw new Error('LIVE GUARD refused (fake)');
++      const live = store.has(rel) ? { state: 'present' as const, bytes: store.get(rel)! } : { state: 'absent' as const };
++      const generatedOk = live.state === 'present' && articleFollowUpProblem(rel, bytes, live.bytes) === null;
++      const g = await liveGuard({ site: 'pageone', rel, op: 'write', live, newBytes: bytes, overrides: [], sha256: async () => 'x', generatedOk });
++      if (g) throw new Error(g);
++      store.set(rel, bytes); writes.push(rel);
++    },
++    indexnow: async (body) => { pings.push(body); return 200; },
++  };
++  return { io, store, writes, pings };
++}
++const F = { 'preview/acme/sitemap.xml': XML, 'preview/acme/sitemap.txt': `${B}\n${B}about/\n${B}articles/old-one/\n`, 'preview/acme/llms.txt': LLMS };
++
++Deno.test('sitemap: adds index + article, keeps every old entry in order, passes xmlProblem', () => {
++  const out = addToSitemapXml(XML, [{ loc: B + 'articles/', lastmod: '2026-11-15' }, { loc: B + 'articles/new-one/', lastmod: '2026-11-15' }])!;
++  assertEquals(xmlProblem(out), null);
++  assertEquals(sitemapLocs(out), [B, B + 'about/', B + 'articles/old-one/', B + 'articles/', B + 'articles/new-one/']);
++  assertStringIncludes(out, '<url><loc>https://acme.sg/articles/new-one/</loc><lastmod>2026-11-15</lastmod></url>');
++  assert(out.startsWith(XML.slice(0, XML.indexOf('</urlset>'))));
++});
++Deno.test('sitemap: URL already there -> identical text; sitemapindex -> null; & escaped', () => {
++  assertEquals(addToSitemapXml(XML, [{ loc: B + 'about/', lastmod: '2026-11-15' }]), XML);
++  assertEquals(addToSitemapXml('<sitemapindex><sitemap><loc>https://a.sg/s.xml</loc></sitemap></sitemapindex>', [{ loc: B, lastmod: '2026-11-15' }]), null);
++  assertStringIncludes(addToSitemapXml(XML, [{ loc: B + 'a?x=1&y=2', lastmod: '2026-11-15' }])!, 'x=1&amp;y=2');
++});
++Deno.test('sitemap.txt rebuilt from locs (decoded)', () => {
++  assertEquals(sitemapTxtFromXml(addToSitemapXml(XML, [{ loc: B + 'q?a=1&b=2', lastmod: '2026-11-15' }])!).split('\n').pop(), '');
++  assertStringIncludes(sitemapTxtFromXml(addToSitemapXml(XML, [{ loc: B + 'q?a=1&b=2', lastmod: '2026-11-15' }])!), 'q?a=1&b=2\n');
++});
++Deno.test('llms.txt: one line at the end of the Articles section, nothing else touched; none when URL present', () => {
++  const line = `- [New one](${B}articles/new-one/)`;
++  const out = addToLlmsTxt(LLMS, line, B + 'articles/new-one/');
++  assertEquals(out.replace(line + '\n', ''), LLMS);
++  assert(out.indexOf(line) > out.indexOf('Old one') && out.indexOf(line) < out.indexOf('## Contact'));
++  assertEquals(addToLlmsTxt(out, line, B + 'articles/new-one/'), out);
++  assertEquals(addToLlmsTxt('# A\n\n## Services\n- x\n', line, 'u'), '# A\n\n## Services\n- x\n\n## Articles\n' + line + '\n');
++});
++Deno.test('cards: same shape and indent, new first, nothing dropped, duplicate ignored', () => {
++  const out = addToCards(CARDS, { href: '/articles/new-one.html', cat: 'Care', title: 'New one' })!;
++  const arr = JSON.parse(out);
++  assertEquals(arr.map((c: any) => c.href), ['/articles/new-one.html', '/articles/old.html']);
++  assertEquals(Object.keys(arr[0]), ['href', 'cat', 'title']);
++  assertEquals(addToCards(out, { href: '/articles/new-one.html', cat: 'x', title: 'y' }), out);
++  assertEquals(addToCards('{}', { href: '/a', cat: 'c', title: 't' }), null);
++});
++Deno.test('override check: drops, reorders, script, on*, javascript:, bad root, big adds are refused', () => {
++  const rel = 'preview/acme/sitemap.xml', live = enc.encode(XML);
++  const p = (x: string) => articleFollowUpProblem(rel, enc.encode(x), live);
++  assertEquals(p(addToSitemapXml(XML, [{ loc: B + 'n/', lastmod: '2026-11-15' }])!), null);
++  assertStringIncludes(p(XML.replace(/\s*<url><loc>https:\/\/acme.sg\/about\/<\/loc>.*?<\/url>/, ''))!, 'drop');
++  assertStringIncludes(p(XML.replace('<url><loc>https://acme.sg/</loc>', '<script>x</script><url><loc>https://acme.sg/</loc>'))!, 'not allowed');
++  assertStringIncludes(p(XML.replace('<urlset ', '<urlset onload="x" '))!, 'on');
++  assertStringIncludes(p(XML.replace('</urlset>', '<url><loc>javascript:alert(1)</loc></url></urlset>'))!, 'javascript');
++  assert(p(XML.replace('urlset', 'html').replace('urlset', 'html')) !== null);
++  assertStringIncludes(p(addToSitemapXml(XML, [1, 2, 3].map((i) => ({ loc: B + 'n' + i + '/', lastmod: '2026-11-15' })))!)!, 'more than 2');
++  assertStringIncludes(p(XML.replace(B + 'about/', B + 'about-new/'))!, 'drop');
++  assertEquals(articleFollowUpProblem('preview/acme/robots.txt', enc.encode('x'), enc.encode('y')), 'not an article follow-up file');
++  assertEquals(articleFollowUpProblem('sitemap.xml', enc.encode(XML), enc.encode(XML)), 'not an article follow-up file');
++  assertEquals(articleFollowUpProblem('preview/acme/llms.txt', enc.encode(LLMS.replace('Plumber', 'Cheater')), enc.encode(LLMS))!.slice(0, 22), 'llms.txt would rewrite');
++  assertStringIncludes(articleFollowUpProblem('preview/acme/article-cards.json', enc.encode('[{"href":"/articles/z.html","cat":"c","title":"t"}]'), enc.encode(CARDS))!, 'drop');
++});
++Deno.test('guard: without the flag, replacing sitemap/llms/robots is still refused (the bug this fixes)', async () => {
++  for (const rel of ['preview/acme/sitemap.xml', 'preview/acme/llms.txt', 'preview/acme/robots.txt']) {
++    const g = await liveGuard({ site: 'pageone', rel, op: 'write', live: { state: 'present', bytes: enc.encode('old') }, newBytes: enc.encode('new'), overrides: [], sha256: async () => 'x' });
++    assert(g && g.includes('needs an override'), rel);
++  }
++  // flag set but path not allowlisted: still refused
++  const g2 = await liveGuard({ site: 'pageone', rel: 'preview/acme/robots.txt', op: 'write', live: { state: 'present', bytes: enc.encode('old') }, newBytes: enc.encode('new'), overrides: [], sha256: async () => 'x', generatedOk: true });
++  assert(g2 && g2.includes('needs an override'));
++  const g3 = await liveGuard({ site: 'pageone', rel: '.htaccess', op: 'write', live: { state: 'absent' }, newBytes: enc.encode('x'), overrides: [], sha256: async () => 'x', generatedOk: true });
++  assert(g3 && g3.includes('never written'));
++});
++Deno.test('full follow-up: sitemap.xml, sitemap.txt, llms.txt updated; IndexNow = article + index only, with the site key', async () => {
++  const f = fake(F);
++  const r = await articleFollowUp(f.io, SITE, ART);
++  assertEquals([r.sitemap_xml, r.sitemap_txt, r.llms_txt, r.cards, r.indexnow], ['updated', 'updated', 'updated', 'skipped: no card file', 'sent: 200']);
++  assertEquals(f.writes, ['preview/acme/sitemap.xml', 'preview/acme/sitemap.txt', 'preview/acme/llms.txt']);
++  assertEquals(f.pings, [{ host: 'acme.sg', key: 'abc123', keyLocation: 'https://acme.sg/abc123.txt', urlList: [B + 'articles/new-one/', B + 'articles/'] }]);
++  assertStringIncludes(dec.decode(f.store.get('preview/acme/sitemap.txt')!), B + 'articles/new-one/');
++  assertStringIncludes(dec.decode(f.store.get('preview/acme/llms.txt')!), `- [New one](${B}articles/new-one/)`);
++  // second run for the same article changes nothing
++  const again = await articleFollowUp(f.io, SITE, ART);
++  assertEquals([again.sitemap_xml, again.sitemap_txt, again.llms_txt], ['unchanged', 'unchanged', 'unchanged']);
++});
++Deno.test('cards: updated when the site has a card file', async () => {
++  const f = fake({ ...F, 'preview/acme/article-cards.json': CARDS });
++  const r = await articleFollowUp(f.io, SITE, { ...ART, cat: 'Care' });
++  assertEquals(r.cards, 'updated');
++  assertEquals(JSON.parse(dec.decode(f.store.get('preview/acme/article-cards.json')!)).length, 2);
++});
++Deno.test('hold / refusal on one file does not stop the others or IndexNow', async () => {
++  const f = fake(F, { refuse: ['preview/acme/sitemap.xml'] });
++  const r = await articleFollowUp(f.io, SITE, ART);
++  assertStringIncludes(r.sitemap_xml, 'error: LIVE GUARD refused');
++  assertEquals(r.sitemap_txt, 'skipped: no sitemap.xml');
++  assertEquals(r.llms_txt, 'updated');
++  assertEquals(r.indexnow, 'sent: 200');
++});
++Deno.test('site not live or no key -> no IndexNow; missing files are not created', async () => {
++  const f = fake({});
++  assertEquals((await articleFollowUp(f.io, { ...SITE, live: false }, ART)).indexnow, 'skipped: site not live yet');
++  assertEquals((await articleFollowUp(f.io, { ...SITE, indexnowKey: '' }, ART)).indexnow, 'skipped: no IndexNow key');
++  assertEquals(f.writes, []); assertEquals(f.pings, []);
++});
++Deno.test('bad existing sitemap -> not written (content check), reported', async () => {
++  const f = fake({ 'preview/acme/sitemap.xml': XML.replace('</urlset>', '<script>x</script></urlset>') });
++  const r = await articleFollowUp(f.io, SITE, ART);
++  assertStringIncludes(r.sitemap_xml, 'not written');
++  assertEquals(f.writes, []);
++});
+diff -ruN -x deno.lock -x node_modules -x deno.json qul5nf-ctl-base/base44/shared/bluehostFiles.ts qul5nf-ctl/base44/shared/bluehostFiles.ts
+--- qul5nf-ctl-base/base44/shared/bluehostFiles.ts
++++ qul5nf-ctl/base44/shared/bluehostFiles.ts
+@@ -6,6 +6,7 @@
+ import { secrets } from 'base44:runtime';
+ import { FtpClient } from './ftpClient.ts';
+ import { liveGuard, type LiveState } from './liveGuard.ts';
++import { articleFollowUpProblem } from './articleSeo.ts';
+ 
+ // LIVE GUARD overrides. Base44 backend code is LIVE AS SOON AS IT IS SAVED (not on Publish), so an entry here is
+ // live the moment it is saved. Any edit to this list needs security review AND Edwin's own written yes BEFORE saving.
+@@ -152,7 +153,7 @@
+ }
+ 
+ // Upload with version check, backup, temp-file + rename, readback and restore.
+-export async function safeWrite(base44, actor, rel, bytes, expectedSha, action = 'write') {
++export async function safeWrite(base44, actor, rel, bytes, expectedSha, action = 'write', opts: { articleFollowUp?: boolean } = {}) {
+   writePolicy(rel);
+   if (bytes.length > MAX_BYTES) throw new HttpError('File is too large (limit 4 MB)', 413);
+   const afterSha = await sha256(bytes);
+@@ -162,7 +163,10 @@
+     // LIVE GUARD v2 (14 Nov 2026): live state from the FTP server's own listing + exact-path RETR (never HTTP).
+     // Unknown state, delete/move, server config/code and unsafe paths are refused before any backup or upload.
+     const liveState = await probeLiveFtp(ftp, rel);
+-    const guard = await liveGuard({ site: 'pageone', rel, op: 'write', live: liveState, newBytes: bytes, overrides: GUARD_OVERRIDES, sha256 });
++    // Article follow-up (sitemap.xml / sitemap.txt / llms.txt / article-cards.json of a client site): the narrow override applies
++    // only when the caller says so AND the new bytes pass the content checks against the live bytes.
++    const generatedOk = opts.articleFollowUp === true && liveState.state === 'present' && articleFollowUpProblem(rel, bytes, liveState.bytes) === null;
++    const guard = await liveGuard({ site: 'pageone', rel, op: 'write', live: liveState, newBytes: bytes, overrides: GUARD_OVERRIDES, sha256, generatedOk });
+     if (guard) throw new HttpError(guard, 409);
+     const liveSha = liveState.state === 'present' ? await sha256(liveState.bytes) : null;
+     const current = await ftp.download(rel);
+diff -ruN -x deno.lock -x node_modules -x deno.json qul5nf-ctl-base/base44/shared/liveGuard.ts qul5nf-ctl/base44/shared/liveGuard.ts
+--- qul5nf-ctl-base/base44/shared/liveGuard.ts
++++ qul5nf-ctl/base44/shared/liveGuard.ts
+@@ -20,6 +20,13 @@
+ // Override: an entry in GUARD_OVERRIDES for the exact site, path and sha256 of the new bytes. IMPORTANT: Base44
+ // backend code is live as soon as it is saved (not on Publish), so an override is live the moment it is saved.
+ // Any GUARD_OVERRIDES edit needs security review AND Edwin's own written yes BEFORE it is saved.
++// ARTICLE FOLLOW-UP OVERRIDE (DRAFT, 15 Nov 2026; needs security review + Edwin's written yes before saving):
++//   a write that carries generatedOk === true may REPLACE exactly preview/<client-slug>/{sitemap.xml, sitemap.txt, llms.txt,
++//   article-cards.json}. The caller (safeWrite, only when called with { articleFollowUp: true }) sets generatedOk only after
++//   articleFollowUpProblem() (shared/articleSeo.ts) passed: well-formed urlset sitemap with no script/iframe/object/embed,
++//   on* attribute or javascript:, no live URL/line/card dropped or reordered, at most 1-2 additions. Every check above this
++//   point (path rules, never-write list, unknown live state, identical bytes) still runs first; HOLD flags are applied by
++//   safeWrite before the guard. robots.txt, .htaccess, HTML and every other file are unaffected.
+ // Pure TypeScript, no imports, so the Bridge and the Controller share the same file.
+ 
+ export type LiveState =
+@@ -36,6 +43,7 @@
+ 
+ const NEVER = /(^|\/)(\.htaccess|\.htpasswd|\.user\.ini|php\.ini)$|\.(php\d?|phtml|phar|cgi|pl|py|sh)$/i;
+ const HTML = /\.html?$/i;
++export const FOLLOWUP_PATH = /^preview\/[a-z0-9][a-z0-9-]*\/(sitemap\.xml|sitemap\.txt|llms\.txt|article-cards\.json)$/;
+ const ASSET_OK = /\.(css|js|mjs|png|jpe?g|webp|avif|gif|svg|ico|woff2?|ttf|otf|eot)$/i;
+ 
+ // Path rules, applied to the raw path given by the caller BEFORE any normalising: no NUL, backslash, absolute path,
+@@ -127,6 +135,7 @@
+ export async function liveGuard(args: {
+   site: string; rel: unknown; op: GuardOp; live: LiveState; newBytes?: Uint8Array;
+   overrides: readonly GuardOverride[]; sha256: (b: Uint8Array) => Promise<string>;
++  generatedOk?: boolean; // true only when articleFollowUpProblem() passed for these exact bytes (see the override note above)
+ }): Promise<string | null> {
+   const { site, op, live, newBytes, overrides, sha256 } = args;
+   const refuse = (why: string) => 'LIVE GUARD refused ' + op + ' of ' + site + ':' + String(args.rel) + ' (nothing was changed): ' + why;
+@@ -139,6 +148,7 @@
+   if (live.state === 'unknown') return refuse('the live file could not be confirmed from the server (' + live.error + ')');
+   if (live.state === 'absent') return null;                       // confirmed new file
+   if (eq(live.bytes, newBytes)) return null;                      // no change
++  if (args.generatedOk === true && FOLLOWUP_PATH.test(rel)) return null; // article follow-up override (content already checked by the caller)
+   let problems: string[];
+   if (HTML.test(rel)) problems = htmlProblems(live.bytes, newBytes);
+   else if (ASSET_OK.test(rel)) problems = [];

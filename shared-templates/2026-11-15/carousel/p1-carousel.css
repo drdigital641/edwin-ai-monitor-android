@@ -1,0 +1,30 @@
+/* Page One shared sliding carousel v1 (15 Nov 2026). Behaviour only + a neutral look.
+   Each site sets its own look through these variables (house rule 0.3: visible design stays per site):
+   --p1c-card (card width), --p1c-gap, --p1c-ratio (one uniform frame for every card),
+   --p1c-radius, --p1c-accent (dots/arrows), --p1c-ctrl-bg, --p1c-cap (caption colour). */
+.p1c{--p1c-card:min(78vw,300px);--p1c-gap:16px;--p1c-ratio:4/3;--p1c-radius:14px;--p1c-accent:currentColor;--p1c-ctrl-bg:transparent;--p1c-cap:inherit;position:relative;max-width:100%;overflow:hidden}
+.p1c-rail{overflow-x:auto;overflow-y:hidden;scroll-snap-type:x mandatory;-webkit-overflow-scrolling:touch;scrollbar-width:none;overscroll-behavior-x:contain}
+.p1c-rail::-webkit-scrollbar{display:none}
+.p1c-track{display:flex;gap:var(--p1c-gap);margin:0;padding:4px 0 8px;list-style:none;width:max-content}
+.p1c-card{flex:0 0 var(--p1c-card);width:var(--p1c-card);scroll-snap-align:start;margin:0}
+.p1c-frame{position:relative;margin:0;aspect-ratio:var(--p1c-ratio);overflow:hidden;border-radius:var(--p1c-radius);background:rgba(127,127,127,.12)}
+.p1c-frame img,.p1c-frame video,.p1c-frame picture{display:block;width:100%;height:100%;object-fit:cover;-webkit-user-drag:none;user-select:none}
+.p1c-cap{margin:8px 2px 0;color:var(--p1c-cap);font-size:.95rem;line-height:1.35}
+/* running (motion allowed + JS ready): the track moves, the page keeps vertical scrolling */
+.p1c-run .p1c-rail{overflow:hidden;scroll-snap-type:none;touch-action:pan-y;cursor:grab}
+.p1c-run .p1c-rail:active{cursor:grabbing}
+.p1c-run .p1c-track{will-change:transform}
+/* controls: visible arrows + dots, 44px touch targets, shown only once JS is ready */
+.p1c-ctrl{display:none}
+.p1c-ready .p1c-ctrl{display:flex;align-items:center;justify-content:center;gap:8px;margin-top:6px}
+.p1c-prev,.p1c-next,.p1c-dot{-webkit-tap-highlight-color:transparent;touch-action:manipulation;cursor:pointer;font:inherit;color:var(--p1c-accent)}
+.p1c-prev,.p1c-next{width:44px;height:44px;border-radius:50%;border:1.5px solid currentColor;background:var(--p1c-ctrl-bg);display:inline-flex;align-items:center;justify-content:center;padding:0}
+.p1c-prev::before,.p1c-next::before{content:"";width:10px;height:10px;border:solid currentColor;border-width:0 2px 2px 0;transform:rotate(135deg);margin-left:4px}
+.p1c-next::before{transform:rotate(-45deg);margin-left:-4px}
+.p1c-dots{display:flex;align-items:center}
+.p1c-dot{width:28px;height:44px;border:0;background:none;padding:0;display:inline-flex;align-items:center;justify-content:center}
+.p1c-dot::before{content:"";width:8px;height:8px;border-radius:50%;background:currentColor;opacity:.3;transition:opacity .2s,transform .2s}
+.p1c-dot[aria-current="true"]::before{opacity:1;transform:scale(1.25)}
+.p1c-prev:focus-visible,.p1c-next:focus-visible,.p1c-dot:focus-visible{outline:2px solid var(--p1c-accent);outline-offset:2px}
+@media (hover:hover){.p1c-prev:hover,.p1c-next:hover{opacity:.8}}
+@media (prefers-reduced-motion:reduce){.p1c-dot::before{transition:none}.p1c-rail{scroll-behavior:auto}}

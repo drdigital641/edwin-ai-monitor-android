@@ -1,0 +1,18 @@
+# Condensed log (per-test lines omitted). Full log: Base44 sandbox /tmp/qul5nf-after.txt
+# Command (in /tmp/qul5nf-ctl, HEAD 21ffaab + this diff):
+#   deno test -A --import-map=/tmp/qul5nf-im.json tests/ base44/tests/
+running 12 tests from ./base44/tests/autoseoAdmin.test.ts
+running 3 tests from ./base44/tests/autoseoLink.test.ts
+running 4 tests from ./base44/tests/cronGate.test.ts
+running 6 tests from ./base44/tests/siteFeedIngest.test.ts
+running 7 tests from ./tests/articleRuns.test.ts
+running 12 tests from ./tests/articleSeo.test.ts      (NEW)
+running 6 tests from ./tests/billingAlerts.test.ts
+running 15 tests from ./tests/brand.test.ts
+running 6 tests from ./tests/clientCounts.test.ts
+running 17 tests from ./tests/crawlerEval.test.ts
+running 24 tests from ./tests/googleEval.test.ts
+running 11 tests from ./tests/gscSites.test.ts
+running 6 tests from ./tests/linkedPayment.test.ts
+running 5 tests from ./tests/sgcwChase.test.ts
+ok | 134 passed | 0 failed

@@ -1,0 +1,1017 @@
+diff -ruN -x deno.lock qul5nf-bridge-base/base44/functions/bridgeEdit/entry.ts qul5nf-bridge/base44/functions/bridgeEdit/entry.ts
+--- qul5nf-bridge-base/base44/functions/bridgeEdit/entry.ts	2026-11-14 16:09:33.000000000 +0000
++++ qul5nf-bridge/base44/functions/bridgeEdit/entry.ts	2026-11-14 16:45:14.597795299 +0000
+@@ -1,4 +1,10 @@
+ import { bridgeTool } from '../../shared/handler.ts';
+ import { editFile } from '../../shared/bridgeOps.ts';
++import { attachAutoSitemap } from '../../shared/autoSitemapRun.ts';
+ 
+-export default bridgeTool('edit', (body) => editFile(body.site, body.path, body.edits), { logs: true });
++// After a saved edit, the auto-sitemap step updates the site's sitemap.xml, sitemap.txt and llms.txt and sends IndexNow.
++// Its outcome is only reported (autoSitemap); it never changes the edit.
++export default bridgeTool('edit', async (body) => {
++  const result = await editFile(body.site, body.path, body.edits);
++  return await attachAutoSitemap(body.site, result, [{ path: result.path }]); // bytes are read back from the server
++}, { logs: true });
+diff -ruN -x deno.lock qul5nf-bridge-base/base44/functions/bridgeWrite/entry.ts qul5nf-bridge/base44/functions/bridgeWrite/entry.ts
+--- qul5nf-bridge-base/base44/functions/bridgeWrite/entry.ts	2026-11-14 16:09:33.000000000 +0000
++++ qul5nf-bridge/base44/functions/bridgeWrite/entry.ts	2026-11-14 16:45:02.361630993 +0000
+@@ -1,4 +1,11 @@
+ import { bridgeTool } from '../../shared/handler.ts';
+ import { writeFile, decodeInputBytes } from '../../shared/bridgeOps.ts';
++import { attachAutoSitemap } from '../../shared/autoSitemapRun.ts';
+ 
+-export default bridgeTool('write', (body) => writeFile(body.site, body.path, decodeInputBytes(body), body.expected_sha256), { logs: true });
++// After a saved write, the auto-sitemap step updates the site's sitemap.xml, sitemap.txt and llms.txt and sends IndexNow.
++// It runs after the page is written and verified; its outcome is only reported (autoSitemap) and never changes the write.
++export default bridgeTool('write', async (body) => {
++  const bytes = decodeInputBytes(body);
++  const result = await writeFile(body.site, body.path, bytes, body.expected_sha256);
++  return await attachAutoSitemap(body.site, result, [{ path: result.path, bytes }]);
++}, { logs: true });
+diff -ruN -x deno.lock qul5nf-bridge-base/base44/shared/autoSitemap.ts qul5nf-bridge/base44/shared/autoSitemap.ts
+--- qul5nf-bridge-base/base44/shared/autoSitemap.ts	1970-01-01 00:00:00.000000000 +0000
++++ qul5nf-bridge/base44/shared/autoSitemap.ts	2026-11-14 16:45:45.973343874 +0000
+@@ -0,0 +1,214 @@
++// AUTO SITEMAP (draft, 15 Nov 2026): pure helpers used after every Bridge publish to keep a site's sitemap.xml,
++// sitemap.txt and llms.txt up to date. No I/O here. The run step is in autoSitemapRun.ts, the write rule in
++// liveGuard.ts (opts.autoSitemap). Nothing in this file ever drops or reorders an existing entry.
++import { xmlProblem } from './liveGuard.ts';
++
++// Global kill switch. false = the auto step does nothing anywhere (page writes are not affected).
++export const AUTO_SITEMAP_ENABLED = true;
++// Excluded from the auto step. "pageone" = Page One's own root (its hourly publisher rebuilds those three files).
++// "<site>:<prefix>" excludes one client folder (for example "pageone:preview/star-performance/").
++export const AUTO_SITEMAP_EXCLUDE: readonly string[] = Object.freeze(['pageone']);
++export const INDEXNOW_MAX_URLS = 1000;
++
++export type Change = { url: string; lastmod: string };
++export type LlmsPage = { url: string; title: string; desc?: string };
++
++const bare = (h: string) => h.toLowerCase().replace(/^www\./, '');
++const ctrl = /[\x00-\x1f\x7f]/g;
++const JS_SRC = 'j[\\s\\x00-\\x1f]*a[\\s\\x00-\\x1f]*v[\\s\\x00-\\x1f]*a[\\s\\x00-\\x1f]*s[\\s\\x00-\\x1f]*c[\\s\\x00-\\x1f]*r[\\s\\x00-\\x1f]*i[\\s\\x00-\\x1f]*p[\\s\\x00-\\x1f]*t[\\s\\x00-\\x1f]*:';
++const hasJs = (s: string) => new RegExp(JS_SRC, 'i').test(s);
++const unent = (s: string) => s.replace(/&lt;/g, '<').replace(/&gt;/g, '>').replace(/&quot;/g, '"').replace(/&apos;|&#39;|&#x27;/g, "'").replace(/&amp;/g, '&');
++const xmlEsc = (s: string) => s.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
++
++// ---------- page facts ----------
++
++export function pageMeta(html: string): { title: string; desc: string } {
++  const strip = (s: string) => unent(s.replace(/<[^>]*>/g, ' ')).replace(/\s+/g, ' ').trim();
++  const t = /<title\b[^>]*>([\s\S]*?)<\/title>/i.exec(html);
++  const h1 = /<h1\b[^>]*>([\s\S]*?)<\/h1>/i.exec(html);
++  let desc = '';
++  for (const m of html.matchAll(/<meta\b[^>]*>/gi)) {
++    if (/\bname\s*=\s*["']description["']/i.test(m[0])) {
++      const c = /\bcontent\s*=\s*"([^"]*)"|\bcontent\s*=\s*'([^']*)'/i.exec(m[0]);
++      desc = c ? strip(c[1] ?? c[2] ?? '') : '';
++      break;
++    }
++  }
++  return { title: strip((t ? t[1] : '') || (h1 ? h1[1] : '')), desc };
++}
++
++function encodePath(rel: string): string {
++  return rel.split('/').map((s) => encodeURI(s)).join('/');
++}
++
++// Canonical href when it is on the same site (www or not), else the file path as a URL.
++export function pageUrl(host: string, rel: string, html: string): string {
++  for (const m of html.matchAll(/<link\b[^>]*>/gi)) {
++    if (!/\brel\s*=\s*["']?canonical["']?/i.test(m[0])) continue;
++    const h = /\bhref\s*=\s*"([^"]*)"|\bhref\s*=\s*'([^']*)'/i.exec(m[0]);
++    if (!h) continue;
++    try {
++      const u = new URL(unent((h[1] ?? h[2] ?? '').trim()));
++      if ((u.protocol === 'https:' || u.protocol === 'http:') && bare(u.hostname) === bare(host) && !u.username && !u.password) {
++        return 'https://' + u.host + u.pathname + u.search;
++      }
++    } catch { /* fall back to the file path */ }
++    break;
++  }
++  const clean = rel.replace(/^\/+/, '');
++  const path = /(^|\/)index\.html?$/i.test(clean) ? clean.replace(/index\.html?$/i, '') : clean;
++  return 'https://' + host + '/' + encodePath(path);
++}
++
++// true only for a normal public .html/.htm page.
++export function indexable(rel: string, html: string): boolean {
++  if (!/\.html?$/i.test(rel)) return false;
++  const parts = rel.split('/');
++  const name = parts[parts.length - 1].toLowerCase();
++  if (name === '404.html' || name === '404.htm') return false;
++  if (/review/i.test(name)) return false;                       // Google review helper pages and the like
++  if (/^google[0-9a-f]+\.html$/.test(name)) return false;        // Search Console verification file
++  if (rel.startsWith('preview/')) return false;                  // a preview folder is only indexable as its own client docroot (caller strips that prefix)
++  if (parts.some((p) => p.startsWith('_') || p.startsWith('.'))) return false;
++  if (!/<html\b|<title\b/i.test(html)) return false;             // a fragment, not a page
++  for (const m of html.matchAll(/<meta\b[^>]*>/gi)) {
++    const tag = m[0];
++    if (/\bname\s*=\s*["'](robots|googlebot|bingbot)["']/i.test(tag) && /\bcontent\s*=\s*["'][^"']*\b(noindex|none)\b/i.test(tag)) return false;
++    if (/\bhttp-equiv\s*=\s*["']?refresh/i.test(tag)) return false; // redirect stub
++  }
++  return true;
++}
++
++// ---------- sitemap.xml ----------
++
++const URL_BLOCK = /<(?:\w+:)?url\b[^>]*>[\s\S]*?<\/(?:\w+:)?url>/g;
++const LOC = /<loc>\s*([^<]*?)\s*<\/loc>/;
++
++// Page URLs only (plain <loc>); image:loc, video:loc and similar are kept by the merge but never listed as pages.
++export function sitemapLocs(xml: string): string[] {
++  return [...xml.matchAll(new RegExp(LOC.source, 'g'))].map((m) => unent(m[1]));
++}
++const allLocs = (xml: string) => [...xml.matchAll(/<(?:\w+:)?loc>\s*([^<]*?)\s*<\/(?:\w+:)?loc>/g)].map((m) => unent(m[1]));
++
++const okUrl = (u: string) => /^https:\/\/[^\s<>"'\\]+$/.test(u) && !hasJs(u);
++const okDate = (d: string) => /^\d{4}-\d{2}-\d{2}$/.test(d);
++
++export type MergeResult = { xml: string; changedUrls: string[]; added: string[]; bumped: string[]; rejected: string[]; error?: string };
++
++// Bumps <lastmod> of a URL that is already listed, appends a new <url> for a new one. Never removes, reorders or
++// rewrites anything else. Returns the live text untouched (with error) if the result would not pass xmlProblem.
++export function mergeSitemap(liveXml: string, changes: Change[]): MergeResult {
++  const out: MergeResult = { xml: liveXml, changedUrls: [], added: [], bumped: [], rejected: [] };
++  const live = xmlProblem(liveXml);
++  if (live) return { ...out, error: 'live sitemap.xml is not usable (' + live + ')' };
++  if (!/<(?:\w+:)?urlset\b/.test(liveXml)) return { ...out, error: 'live sitemap.xml is not a <urlset> (sitemap index files are not merged)' };
++  const byUrl = new Map<string, string>();
++  for (const c of changes) {
++    if (!okUrl(c.url) || !okDate(c.lastmod)) { out.rejected.push(c.url); continue; }
++    const prev = byUrl.get(c.url);
++    if (!prev || c.lastmod > prev) byUrl.set(c.url, c.lastmod);
++  }
++  const eol = liveXml.includes('\r\n') ? '\r\n' : '\n';
++  let xml = liveXml;
++  const fresh: [string, string][] = [];
++  for (const [url, date] of byUrl) {
++    let found = false;
++    xml = xml.replace(URL_BLOCK, (block) => {
++      if (found) return block;
++      const m = LOC.exec(block);
++      if (!m || unent(m[1]) !== url) return block;
++      found = true;
++      const lm = /<((?:\w+:)?lastmod)>\s*([^<]*?)\s*<\/(?:\w+:)?lastmod>/.exec(block);
++      if (lm) {
++        if (lm[2].slice(0, 10) >= date) return block;                         // already as new or newer
++        out.bumped.push(url);
++        return block.replace(lm[0], '<' + lm[1] + '>' + date + '</' + lm[1] + '>');
++      }
++      out.bumped.push(url);
++      return block.replace(/(<\/()loc>)(\s*)/, (_all, close, ns, ws) => close + ws + '<' + ns + 'lastmod>' + date + '</' + ns + 'lastmod>' + ws);
++    });
++    if (!found) fresh.push([url, date]);
++  }
++  if (fresh.length) {
++    const close = /<\/(?:\w+:)?urlset\s*>\s*$/.exec(xml);
++    if (!close) return { ...out, xml: liveXml, bumped: [], added: [], error: 'sitemap.xml has no closing </urlset>' };
++    const blocks = [...xml.matchAll(URL_BLOCK)];
++    const last = blocks.length ? blocks[blocks.length - 1] : null;
++    let bi = '  ', ci = '    ', multi = true;
++    if (last) {
++      const before = xml.slice(0, last.index!);
++      const nl = before.lastIndexOf('\n');
++      const pad = before.slice(nl + 1);
++      if (/^[ \t]*$/.test(pad) && nl >= 0) bi = pad; else multi = false;
++      const lp = /\n([ \t]*)<loc>/.exec(last[0]);
++      if (lp) ci = lp[1]; else if (!/\n/.test(last[0])) multi = false;
++    }
++    const mk = ([url, date]: [string, string]) => multi
++      ? bi + '<url>' + eol + ci + '<loc>' + xmlEsc(url) + '</loc>' + eol + ci + '<lastmod>' + date + '</lastmod>' + eol + bi + '</url>'
++      : '<url><loc>' + xmlEsc(url) + '</loc><lastmod>' + date + '</lastmod></url>';
++    const head = xml.slice(0, close.index);
++    const trail = /\s*$/.exec(head)![0];
++    xml = head.slice(0, head.length - trail.length) + eol + fresh.map(mk).join(eol) + (trail || eol) + xml.slice(close.index);
++    out.added.push(...fresh.map((f) => f[0]));
++  }
++  if (xml === liveXml) return out;
++  const bad = xmlProblem(xml);
++  if (bad) return { ...out, xml: liveXml, added: [], bumped: [], error: 'merged sitemap.xml failed the safety check (' + bad + ')' };
++  const locsAfter = new Set(allLocs(xml));
++  if (allLocs(liveXml).some((l) => !locsAfter.has(l))) return { ...out, xml: liveXml, added: [], bumped: [], error: 'merge would drop a live URL (refused)' };
++  return { ...out, xml, changedUrls: [...out.added, ...out.bumped] };
++}
++
++// Every <loc>, one per line.
++export function sitemapTxtFrom(xml: string): string {
++  const seen = new Set<string>();
++  const lines = sitemapLocs(xml).filter((u) => okUrl(u) && !seen.has(u) && seen.add(u));
++  return lines.length ? lines.join('\n') + '\n' : '';
++}
++
++// Keeps every live line in place and appends the sitemap URLs that are missing.
++export function mergeSitemapTxt(liveTxt: string, xml: string): { text: string; added: string[] } {
++  const eol = liveTxt.includes('\r\n') ? '\r\n' : '\n';
++  const have = new Set(liveTxt.split(/\r?\n/).map((l) => l.trim()).filter(Boolean));
++  const add = sitemapTxtFrom(xml).split('\n').filter((u) => u && !have.has(u));
++  if (!add.length) return { text: liveTxt, added: [] };
++  const base = liveTxt.length && !/\n$/.test(liveTxt) ? liveTxt + eol : liveTxt;
++  return { text: base + add.join(eol) + eol, added: add };
++}
++
++// ---------- llms.txt ----------
++
++export function cleanLlmsText(s: string, max: number): string {
++  let t = String(s ?? '').replace(ctrl, ' ').replace(/[<>\[\]]/g, '');
++  for (let i = 0; i < 5 && hasJs(t); i++) t = t.replace(new RegExp(JS_SRC, 'gi'), '');
++  return t.replace(/\s+/g, ' ').trim().slice(0, max);
++}
++
++// Adds "- [title](url): desc" for URLs not yet in the file. Never removes or rewrites a line.
++export function mergeLlms(liveText: string, pages: LlmsPage[]): { text: string; added: string[] } {
++  const eol = liveText.includes('\r\n') ? '\r\n' : '\n';
++  const lines = liveText.split(/\r?\n/);
++  const fresh: { url: string; line: string }[] = [];
++  const seen = new Set<string>();
++  for (const p of pages) {
++    if (!okUrl(p.url) || seen.has(p.url) || liveText.includes(p.url)) continue;
++    seen.add(p.url);
++    const title = cleanLlmsText(p.title, 200) || p.url.replace(/^https:\/\//, '');
++    const desc = cleanLlmsText(p.desc || '', 300);
++    fresh.push({ url: p.url, line: '- [' + title + '](' + p.url + ')' + (desc ? ': ' + desc : '') });
++  }
++  if (!fresh.length) return { text: liveText, added: [] };
++  const add = fresh.map((f) => f.line);
++  for (const name of ['Articles', 'Pages', 'Recent pages']) {
++    const head = lines.findIndex((l) => new RegExp('^##\\s+' + name + '\\s*$', 'i').test(l));
++    if (head < 0) continue;
++    let end = lines.length;
++    for (let i = head + 1; i < lines.length; i++) if (/^#{1,6}\s/.test(lines[i])) { end = i; break; }
++    let at = end;
++    while (at > head + 1 && lines[at - 1].trim() === '') at--;
++    lines.splice(at, 0, ...add);
++    return { text: lines.join(eol), added: fresh.map((f) => f.url) };
++  }
++  const base = liveText.length && !/\n$/.test(liveText) ? liveText + eol : liveText;
++  return { text: base + (base.trim() ? eol : '') + '## Recent pages' + eol + add.join(eol) + eol, added: fresh.map((f) => f.url) };
++}
+diff -ruN -x deno.lock qul5nf-bridge-base/base44/shared/autoSitemapRun.ts qul5nf-bridge/base44/shared/autoSitemapRun.ts
+--- qul5nf-bridge-base/base44/shared/autoSitemapRun.ts	1970-01-01 00:00:00.000000000 +0000
++++ qul5nf-bridge/base44/shared/autoSitemapRun.ts	2026-11-14 16:54:58.451935981 +0000
+@@ -0,0 +1,194 @@
++// AUTO SITEMAP RUN STEP (draft, 15 Nov 2026). After a successful publish (sync_from_github, write_files, write_file,
++// edit_file) this rebuilds the site's sitemap.xml, sitemap.txt and llms.txt from what was just written, then sends
++// IndexNow for the pages that changed. It runs AFTER the page writes and can never fail or undo them: every problem
++// is returned in the tool result as `autoSitemap`. The three files are written through writeFile() with
++// opts.autoSitemap, so the live guard (AUTO SITEMAP RULE in liveGuard.ts) and the BRIDGE HOLD both still apply.
++import { SITES, SITE_HOLDS, holdReason } from './bridgeConfig.ts';
++import { BridgeError, readFile, writeFile, listDir, sha256 } from './bridgeOps.ts';
++import { CLIENT_PINNED_ASSETS } from './clientAssets.ts';
++import {
++  AUTO_SITEMAP_ENABLED, AUTO_SITEMAP_EXCLUDE, INDEXNOW_MAX_URLS, indexable, mergeLlms, mergeSitemap, mergeSitemapTxt,
++  pageMeta, pageUrl, sitemapLocs, type LlmsPage,
++} from './autoSitemap.ts';
++
++export type Written = { path: string; bytes?: Uint8Array };
++type Sub = { prefix: string; domain: string };
++type Text = { text: string; sha: string };
++
++// The hourly publisher rewrites a pinned file whenever its live sha differs from the pin, so a write to a pinned path
++// would be reverted at the next run. Pinned = listed in CLIENT_PINNED_ASSETS (clientAssets.ts), keyed by the path from the
++// docroot of the 'pageone' site. The pins in pageoneArticles.ts cover Page One's own root, which this step never writes.
++const isPinned = (site: string, rel: string) => site === 'pageone' && CLIENT_PINNED_ASSETS.some((a) => a.rel === rel);
++
++const bareHost = (h: string) => h.toLowerCase().replace(/^www\./, '');
++
++// Which client folder (or the site root) a written path belongs to; null = not covered.
++export function subsiteFor(site: string, path: string): Sub | null {
++  if (!(site in SITES)) return null;
++  if (site === 'pageone') {
++    for (const h of SITE_HOLDS) {
++      if (h.site !== site || !h.prefix) continue;
++      const domain = /\(([^)]+)\)/.exec(h.name)?.[1];
++      if (domain && path.startsWith(h.prefix)) return AUTO_SITEMAP_EXCLUDE.includes(site + ':' + h.prefix) ? null : { prefix: h.prefix, domain };
++    }
++    return AUTO_SITEMAP_EXCLUDE.includes(site) ? null : { prefix: '', domain: SITES.pageone.domain };
++  }
++  if (AUTO_SITEMAP_EXCLUDE.includes(site)) return null;
++  return { prefix: '', domain: SITES[site as keyof typeof SITES].domain };
++}
++
++async function readText(site: string, rel: string): Promise<Text | null | 'unreadable'> {
++  try {
++    const r: any = await readFile(site, rel);
++    return typeof r.content === 'string' ? { text: r.content, sha: r.sha256 } : 'unreadable';
++  } catch (e) {
++    return e instanceof BridgeError && e.status === 404 ? null : 'unreadable';
++  }
++}
++
++const sgDate = () => new Date(Date.now() + 8 * 3600_000).toISOString().slice(0, 10);
++
++async function findIndexNowKey(site: string, prefix: string): Promise<string | null> {
++  try {
++    const listing = await listDir(site, prefix.replace(/\/$/, ''));
++    const names = (listing.entries as any[]).filter((e) => e.type === 'file' && /^[0-9a-f]{32}\.txt$/.test(e.name)).map((e) => e.name as string).slice(0, 3);
++    for (const n of names) {
++      const t = await readText(site, prefix + n);
++      if (t && t !== 'unreadable' && t.text.trim() === n.slice(0, -4)) return n.slice(0, -4);
++    }
++  } catch { /* no key */ }
++  return null;
++}
++
++async function sendIndexNow(host: string, key: string, urls: string[]) {
++  const urlList = urls.slice(0, INDEXNOW_MAX_URLS);
++  try {
++    const res = await fetch('https://api.indexnow.org/indexnow', {
++      method: 'POST', headers: { 'Content-Type': 'application/json; charset=utf-8' }, signal: AbortSignal.timeout(15_000),
++      body: JSON.stringify({ host, key, keyLocation: 'https://' + host + '/' + key + '.txt', urlList }),
++    });
++    return { status: res.status === 200 || res.status === 202 ? 'sent' : 'error', http: res.status, urls: urlList.length };
++  } catch (e) {
++    return { status: 'error', error: (e instanceof Error ? e.message : String(e)).slice(0, 100), urls: urlList.length };
++  }
++}
++
++async function runGroup(site: string, sub: Sub, items: Written[], dryRun: boolean, today: string) {
++  const { prefix } = sub;
++  const g: any = { prefix: prefix || '/', host: null, status: 'skipped', pages: 0, added: [], bumped: [], files: {}, indexnow: { status: 'skipped' } };
++  const pages: { rel: string; html: string }[] = [];
++  for (const it of items) {
++    const rel = it.path.slice(prefix.length);
++    let bytes = it.bytes;
++    if (!bytes && /\.html?$/i.test(rel)) { const t = await readText(site, it.path); bytes = t && t !== 'unreadable' ? new TextEncoder().encode(t.text) : undefined; }
++    if (!bytes) continue;
++    const html = new TextDecoder('utf-8').decode(bytes);
++    if (indexable(rel, html)) pages.push({ rel, html });
++  }
++  g.pages = pages.length;
++  if (!pages.length) { g.reason = 'no indexable .html page was written'; return g; }
++
++  const held = holdReason(site, prefix + 'sitemap.xml');
++  if (held) { g.status = 'held'; g.reason = held; return g; }
++  const xml = await readText(site, prefix + 'sitemap.xml');
++  if (!xml) { g.reason = 'sitemap.xml not found on the site (never created from nothing)'; return g; }
++  if (xml === 'unreadable') { g.reason = 'sitemap.xml could not be read from the server'; return g; }
++
++  // The site host is the one the live sitemap already uses for this domain (www or not).
++  const hosts = sitemapLocs(xml.text).map((l) => { try { return new URL(l).host; } catch { return ''; } }).filter((h) => h && bareHost(h) === bareHost(sub.domain));
++  const host = hosts.sort((a, b) => hosts.filter((x) => x === b).length - hosts.filter((x) => x === a).length)[0];
++  if (!host) { g.reason = 'no URL of ' + sub.domain + ' in the live sitemap.xml'; return g; }
++  g.host = host;
++
++  const meta = pages.map((p) => ({ url: pageUrl(host, p.rel, p.html), ...pageMeta(p.html) }));
++  const merged = mergeSitemap(xml.text, meta.map((m) => ({ url: m.url, lastmod: today })));
++  if (merged.error) { g.status = 'error'; g.reason = merged.error; return g; }
++  g.added = merged.added; g.bumped = merged.bumped;
++  const todo: { rel: string; text: string; sha: string }[] = [];
++  if (merged.xml !== xml.text) todo.push({ rel: 'sitemap.xml', text: merged.xml, sha: xml.sha });
++  else g.files['sitemap.xml'] = 'unchanged';
++
++  const txt = await readText(site, prefix + 'sitemap.txt');
++  if (!txt || txt === 'unreadable') g.files['sitemap.txt'] = 'skipped: ' + (txt ? 'unreadable' : 'not on the site');
++  else {
++    const t = mergeSitemapTxt(txt.text, merged.xml);
++    if (t.text !== txt.text) todo.push({ rel: 'sitemap.txt', text: t.text, sha: txt.sha }); else g.files['sitemap.txt'] = 'unchanged';
++  }
++  const llms = await readText(site, prefix + 'llms.txt');
++  if (!llms || llms === 'unreadable') g.files['llms.txt'] = 'skipped: ' + (llms ? 'unreadable' : 'not on the site');
++  else {
++    const l = mergeLlms(llms.text, meta.map((m): LlmsPage => ({ url: m.url, title: m.title, desc: m.desc })));
++    if (l.text !== llms.text) todo.push({ rel: 'llms.txt', text: l.text, sha: llms.sha }); else g.files['llms.txt'] = 'unchanged';
++  }
++
++  const sameHost = (u: string) => { try { return bareHost(new URL(u).hostname) === bareHost(sub.domain); } catch { return false; } };
++  const nowUrls = [...new Set(meta.map((m) => m.url).filter(sameHost))];
++  const key = await findIndexNowKey(site, prefix);
++
++  // Pinned generated files are not written: report them with the sha the pin would need.
++  const pinned: typeof todo = [];
++  for (const t of [...todo]) {
++    if (!isPinned(site, prefix + t.rel)) continue;
++    pinned.push(t); todo.splice(todo.indexOf(t), 1);
++    g.files[t.rel] = { file: prefix + t.rel, skipped: 'pinned: re-pin to new sha needed', newSha: await sha256(new TextEncoder().encode(t.text)) };
++  }
++  if (pinned.length) g.pinned = pinned.map((t) => prefix + t.rel);
++
++  if (dryRun) {
++    for (const t of todo) g.files[t.rel] = 'would update';
++    g.status = 'dry_run';
++    g.indexnow = key ? { status: 'would send', urls: nowUrls.slice(0, INDEXNOW_MAX_URLS) } : { status: 'skipped', reason: 'no IndexNow key file in the site folder' };
++    return g;
++  }
++
++  let failed = 0, xmlFailed = false;
++  for (const t of todo) {
++    if (t.rel === 'sitemap.txt' && xmlFailed) { g.files[t.rel] = 'skipped: sitemap.xml was not written'; continue; }
++    try {
++      const r: any = await writeFile(site, prefix + t.rel, new TextEncoder().encode(t.text), t.sha, { autoSitemap: true });
++      g.files[t.rel] = r.unchanged ? 'unchanged' : 'written';
++    } catch (e) {
++      failed++; if (t.rel === 'sitemap.xml') xmlFailed = true;
++      g.files[t.rel] = 'error: ' + (e instanceof Error ? e.message : String(e)).slice(0, 300);
++    }
++  }
++  g.status = failed ? (failed === todo.length ? 'error' : 'partial') : 'ok';
++  if (!key) g.indexnow = { status: 'skipped', reason: 'no IndexNow key file in the site folder' };
++  else if (!nowUrls.length) g.indexnow = { status: 'skipped', reason: 'no URL on the site host' };
++  else g.indexnow = await sendIndexNow(host, key, nowUrls);
++  return g;
++}
++
++// `written`: the files this publish created or changed (or, with dryRun, would). Never throws.
++export async function autoSitemapAfter(args: { site: string; written: Written[]; dryRun?: boolean; today?: string }) {
++  try {
++    if (!AUTO_SITEMAP_ENABLED) return { status: 'disabled' };
++    const groups = new Map<string, { sub: Sub; items: Written[] }>();
++    for (const w of args.written) {
++      if (!/\.html?$/i.test(w.path)) continue;
++      const sub = subsiteFor(args.site, w.path);
++      if (!sub) continue;
++      const g = groups.get(sub.prefix) || { sub, items: [] };
++      g.items.push(w); groups.set(sub.prefix, g);
++    }
++    if (!groups.size) return { status: 'nothing', reason: 'no .html page of a covered site was written' };
++    const today = args.today || sgDate();
++    const out: any[] = [];
++    for (const { sub, items } of groups.values()) {
++      try { out.push(await runGroup(args.site, sub, items, args.dryRun === true, today)); }
++      catch (e) { out.push({ prefix: sub.prefix || '/', status: 'error', reason: (e instanceof Error ? e.message : String(e)).slice(0, 300) }); }
++    }
++    const st = (s: string) => out.some((g: any) => g.status === s);
++    const status = st('error') ? 'error' : st('partial') ? 'partial' : st('held') ? 'held' : st('dry_run') ? 'dry_run' : st('ok') ? 'ok' : 'skipped';
++    return { status, added: out.flatMap((g: any) => g.added || []), bumped: out.flatMap((g: any) => g.bumped || []),
++      indexnow: out.length === 1 ? (out[0] as any).indexnow : out.map((g: any) => g.indexnow), groups: out };
++  } catch (e) {
++    return { status: 'error', reason: (e instanceof Error ? e.message : String(e)).slice(0, 300) };
++  }
++}
++
++// For the single-file tools: adds `autoSitemap` to a successful, changed write result. A failure here never changes `result`.
++export async function attachAutoSitemap<T extends Record<string, any>>(site: string, result: T, written: Written[]): Promise<T & { autoSitemap?: unknown }> {
++  if (!result || result.saved !== true) return result;
++  return { ...result, autoSitemap: await autoSitemapAfter({ site, written }) };
++}
+diff -ruN -x deno.lock qul5nf-bridge-base/base44/shared/bridgeOps.ts qul5nf-bridge/base44/shared/bridgeOps.ts
+--- qul5nf-bridge-base/base44/shared/bridgeOps.ts	2026-11-14 16:09:33.000000000 +0000
++++ qul5nf-bridge/base44/shared/bridgeOps.ts	2026-11-14 16:44:06.440543383 +0000
+@@ -262,7 +262,7 @@
+ // re-reading it. The verified backup below still fails if the live file changed since.
+ // opts.overwrite (bulk write_files only): replace an existing file without expected_sha256;
+ // it is still backed up and verified first. A given expected_sha256 is still enforced.
+-export async function writeFile(site: string, relInput: unknown, bytes: Uint8Array, expectedSha: unknown, opts: { allowServerConfig?: boolean; current?: FileBytes; overwrite?: boolean; publisher?: boolean } = {}) {
++export async function writeFile(site: string, relInput: unknown, bytes: Uint8Array, expectedSha: unknown, opts: { allowServerConfig?: boolean; current?: FileBytes; overwrite?: boolean; publisher?: boolean; autoSitemap?: boolean } = {}) {
+   const rel = normalizeRel(relInput);
+   // BRIDGE HOLD (14 Nov 2026): checked first, before any read, backup or upload. Every live write
+   // (tools, bulk, sync, restore, publisher) goes through here, so a held site can never be written.
+@@ -277,7 +277,7 @@
+   // LIVE GUARD v2 (14 Nov 2026): live state from the server's own listing + exact-path cPanel read (never HTTP).
+   // Unknown state, delete/move, server config/code and unsafe paths are refused before any backup or upload.
+   const live = await probeLive(site, rel);
+-  const guard = await liveGuard({ site, rel: relInput, op: 'write', live, newBytes: bytes, overrides: GUARD_OVERRIDES, sha256, publisher: opts.publisher === true });
++  const guard = await liveGuard({ site, rel: relInput, op: 'write', live, newBytes: bytes, overrides: GUARD_OVERRIDES, sha256, publisher: opts.publisher === true, autoSitemap: opts.autoSitemap === true });
+   if (guard) throw new BridgeError(guard, 409);
+   const liveSha = live.state === 'present' ? await sha256(live.bytes) : null;
+ 
+diff -ruN -x deno.lock qul5nf-bridge-base/base44/shared/bulkWrite.ts qul5nf-bridge/base44/shared/bulkWrite.ts
+--- qul5nf-bridge-base/base44/shared/bulkWrite.ts	2026-11-14 16:09:33.000000000 +0000
++++ qul5nf-bridge/base44/shared/bulkWrite.ts	2026-11-14 16:45:02.361475449 +0000
+@@ -6,6 +6,7 @@
+ import { liveGuard } from './liveGuard.ts';
+ import { BridgeError, normalizeRel, decodeInputBytes, writeFile, prepareFolders, mapLimit, sha256, probeLive } from './bridgeOps.ts';
+ import { assertNotClaimed } from './sync.ts';
++import { autoSitemapAfter } from './autoSitemapRun.ts';
+ import type { ToolContext } from './handler.ts';
+ 
+ export const MAX_FILES = 150;
+@@ -103,10 +104,14 @@
+   const n = (k: string) => checked.filter((c) => c.live === k).length;
+   const compare = { same: n('same'), update: n('update'), create: n('create'), unknown: n('unknown'), refused: refusals.length };
+ 
++  const bytesOf = new Map(plan.files.map((f) => [f.path, f.bytes]));
+   if (opts.dryRun) {
++    // AUTO SITEMAP (dry run): reports the planned sitemap.xml / sitemap.txt / llms.txt changes and IndexNow list; writes nothing.
++    const planned = checked.filter((c) => c.live !== 'same' && c.live !== 'unknown' && !c.guard).map((c) => ({ path: c.path, bytes: bytesOf.get(c.path) }));
++    const autoSitemap = await autoSitemapAfter({ site, written: planned, dryRun: true });
+     return { dry_run: true, site, base_path: plan.base || '/', overwrite: plan.overwrite,
+       totals: { files: plan.files.length, bytes: plan.totalBytes }, compare,
+-      would_change: checked.filter((c) => c.live !== 'same'), guard_refusals: refusals.map((c) => c.guard) };
++      would_change: checked.filter((c) => c.live !== 'same'), guard_refusals: refusals.map((c) => c.guard), autoSitemap };
+   }
+   if (refusals.length) {
+     await mapLimit(refusals, 8, async (c) => {
+@@ -146,8 +151,10 @@
+     created: count('created'), updated: count('updated'), unchanged: count('unchanged'),
+     failed: count('error'), skipped: count('skipped'), bytes: plan.totalBytes };
+   const allOk = totals.ok === totals.files;
++  // AUTO SITEMAP: after the page writes, never part of their success or failure.
++  const autoSitemap = await autoSitemapAfter({ site, written: results.filter((r: any) => r.ok && (r.status === 'created' || r.status === 'updated')).map((r: any) => ({ path: r.path, bytes: bytesOf.get(r.path) })) });
+   return {
+-    ok: allOk, site, base_path: plan.base || '/', overwrite: plan.overwrite, totals,
++    ok: allOk, autoSitemap, site, base_path: plan.base || '/', overwrite: plan.overwrite, totals,
+     message: allOk ? 'All ' + totals.files + ' files written and verified.'
+       : (totals.failed + totals.skipped) + ' of ' + totals.files + ' files were NOT written (see results with ok=false); the others were written and verified.',
+     results, elapsed_ms: Date.now() - started,
+diff -ruN -x deno.lock qul5nf-bridge-base/base44/shared/liveGuard.ts qul5nf-bridge/base44/shared/liveGuard.ts
+--- qul5nf-bridge-base/base44/shared/liveGuard.ts	2026-11-14 16:09:33.000000000 +0000
++++ qul5nf-bridge/base44/shared/liveGuard.ts	2026-11-14 16:44:06.440297016 +0000
+@@ -259,6 +259,60 @@
+   return locs ? null : 'sitemap.xml has 0 URLs';
+ }
+ 
++// AUTO SITEMAP RULE (draft 15 Nov 2026; Edwin: "every publish through the Bridge rebuilds that site's sitemap.xml,
++// sitemap.txt and llms.txt"). ONLY the auto-sitemap step after a publish (writeFile opts.autoSitemap, set nowhere else)
++// may REPLACE exactly the site's own sitemap.xml, sitemap.txt and llms.txt: the root of the site's docroot, or for
++// 'pageone' only the client folders preview/<slug>/ named in GENERATED_OVERRIDE_PATH (Page One's own root stays with
++// its hourly publisher). The live file must exist (a sitemap is never created from nothing). writeFile checks the
++// BRIDGE HOLD first, so a held site is refused before this runs. Besides generatedFileProblem (which keeps the SPO
++// safety fix: no script/iframe/object/embed, on* attributes or javascript:), the new content must keep what live has:
++//   sitemap.xml: every live <loc> still present, new <loc> https on a host the live file already uses;
++//   sitemap.txt: every live line still present, new lines https on a host the live file already uses;
++//   llms.txt:    every non-empty live line still present, new lines free of < > control characters and javascript:.
++export const AUTO_SITEMAP_ROOT_PATH = /^(sitemap\.xml|sitemap\.txt|llms\.txt)$/;
++export function autoSitemapPathOk(site: string, rel: string): boolean {
++  if (site === 'pageone') return /^preview\/[^/]+\//.test(rel) && GENERATED_OVERRIDE_PATH.test(rel);
++  return AUTO_SITEMAP_ROOT_PATH.test(rel);
++}
++
++const locsOf = (xml: string) => [...xml.matchAll(/<(?:\w+:)?loc>\s*([^<]*?)\s*<\/(?:\w+:)?loc>/g)].map((m) => unent(m[1]));
++const hostOf = (u: string) => { try { return new URL(u).hostname.toLowerCase(); } catch { return ''; } };
++
++export function autoSitemapProblem(rel: string, liveBytes: Uint8Array, newBytes: Uint8Array): string | null {
++  const base = generatedFileProblem(rel, newBytes);
++  if (base) return base;
++  let live: string, next: string;
++  try { live = new TextDecoder('utf-8', { fatal: true }).decode(liveBytes); next = new TextDecoder('utf-8', { fatal: true }).decode(newBytes); } catch { return 'live or new file is not valid UTF-8 text'; }
++  const name = rel.split('/').pop();
++  const lines = (t: string) => t.split(/\r?\n/).map((l) => l.trim()).filter(Boolean);
++  if (name === 'sitemap.xml') {
++    const lx = xmlProblem(live);
++    if (lx) return 'the live sitemap.xml is not usable (' + lx + ')';
++    const have = new Set(locsOf(next)), liveLocs = locsOf(live);
++    const lost = liveLocs.filter((l) => !have.has(l));
++    if (lost.length) return 'sitemap.xml would drop ' + lost.length + ' live URL(s), e.g. ' + lost[0].slice(0, 120);
++    const hosts = new Set(liveLocs.map(hostOf));
++    const bad = locsOf(next).find((l) => !liveLocs.includes(l) && (!/^https:\/\//.test(l) || (hosts.size > 0 && !hosts.has(hostOf(l)))));
++    return bad ? 'sitemap.xml has a new URL that is not https on the live site host: ' + JSON.stringify(bad.slice(0, 100)) : null;
++  }
++  if (name === 'sitemap.txt') {
++    const liveLines = lines(live), have = new Set(lines(next));
++    const lost = liveLines.filter((l) => !have.has(l));
++    if (lost.length) return 'sitemap.txt would drop ' + lost.length + ' live line(s), e.g. ' + lost[0].slice(0, 120);
++    const hosts = new Set(liveLines.map(hostOf));
++    const bad = lines(next).find((l) => !liveLines.includes(l) && (!/^https:\/\//.test(l) || (hosts.size > 0 && !hosts.has(hostOf(l)))));
++    return bad ? 'sitemap.txt has a new line that is not https on the live site host: ' + JSON.stringify(bad.slice(0, 100)) : null;
++  }
++  // llms.txt
++  const liveLines = new Set(lines(live).map((l) => l));
++  const nextLines = new Set(lines(next));
++  const lost = [...liveLines].filter((l) => !nextLines.has(l));
++  if (lost.length) return 'llms.txt would drop or change ' + lost.length + ' live line(s), e.g. ' + lost[0].slice(0, 120);
++  const jsRe = /j[\s\x00-\x1f]*a[\s\x00-\x1f]*v[\s\x00-\x1f]*a[\s\x00-\x1f]*s[\s\x00-\x1f]*c[\s\x00-\x1f]*r[\s\x00-\x1f]*i[\s\x00-\x1f]*p[\s\x00-\x1f]*t[\s\x00-\x1f]*:/i;
++  const bad = next.split(/\r?\n/).find((l) => l.trim() && !liveLines.has(l.trim()) && (/[<>]/.test(l) || /[\x00-\x08\x0b\x0c\x0e-\x1f\x7f]/.test(l) || jsRe.test(l)));
++  return bad ? 'llms.txt has a new line with < > a control character or javascript: : ' + JSON.stringify(bad.slice(0, 100)) : null;
++}
++
+ const eq = (a: Uint8Array, b: Uint8Array) => a.length === b.length && a.every((x, i) => x === b[i]);
+ 
+ // Returns null when the operation may go ahead, or the refusal text (the caller must not touch the file, and logs it).
+@@ -266,6 +320,7 @@
+   site: string; rel: unknown; op: GuardOp; live: LiveState; newBytes?: Uint8Array;
+   overrides: readonly GuardOverride[]; sha256: (b: Uint8Array) => Promise<string>;
+   publisher?: boolean; // true only for the hourly Page One publisher's own writes (generated-file override)
++  autoSitemap?: boolean; // true only for the auto-sitemap step after a publish (see AUTO SITEMAP RULE)
+ }): Promise<string | null> {
+   const { site, op, live, newBytes, overrides, sha256 } = args;
+   const refuse = (why: string) => 'LIVE GUARD refused ' + op + ' of ' + site + ':' + String(args.rel) + ' (nothing was changed): ' + why;
+@@ -276,6 +331,13 @@
+   if (!newBytes) return refuse('no new content given');
+   if (NEVER.test(rel)) return refuse('server configuration and code files are never written by a tool');
+   if (live.state === 'unknown') return refuse('the live file could not be confirmed from the server (' + live.error + ')');
++  if (args.autoSitemap === true) {
++    if (!autoSitemapPathOk(site, rel)) return refuse('auto-sitemap may only replace the site\'s own root sitemap.xml, sitemap.txt and llms.txt');
++    if (live.state !== 'present') return refuse('auto-sitemap never creates a sitemap: the live file was not found');
++    if (eq(live.bytes, newBytes)) return null;
++    const why = autoSitemapProblem(rel, live.bytes, newBytes);
++    return why ? refuse('auto-sitemap: ' + why) : null;
++  }
+   if (live.state === 'absent') return null;                       // confirmed new file
+   if (eq(live.bytes, newBytes)) return null;                      // no change
+   let problems: string[];
+diff -ruN -x deno.lock qul5nf-bridge-base/base44/tests/autoSitemap.test.ts qul5nf-bridge/base44/tests/autoSitemap.test.ts
+--- qul5nf-bridge-base/base44/tests/autoSitemap.test.ts	1970-01-01 00:00:00.000000000 +0000
++++ qul5nf-bridge/base44/tests/autoSitemap.test.ts	2026-11-14 16:55:13.804343745 +0000
+@@ -0,0 +1,420 @@
++// Auto sitemap tests (draft 15 Nov 2026). Run from the repo root:
++//   deno test --no-check -A --import-map tests/importmap.json base44/tests/autoSitemap.test.ts
++// Pure functions, guard calls with fake live states, and the whole hook against an in-memory fake cPanel and a fake
++// IndexNow endpoint (fetch is replaced; no network, no live site, no real IndexNow request).
++import { indexable, mergeLlms, mergeSitemap, mergeSitemapTxt, pageUrl, sitemapTxtFrom, AUTO_SITEMAP_ENABLED, AUTO_SITEMAP_EXCLUDE } from '../shared/autoSitemap.ts';
++import { autoSitemapAfter, subsiteFor } from '../shared/autoSitemapRun.ts';
++import { liveGuard, xmlProblem } from '../shared/liveGuard.ts';
++import { SITE_HOLDS } from '../shared/bridgeConfig.ts';
++import { writeFile } from '../shared/bridgeOps.ts';
++import { writeMany } from '../shared/bulkWrite.ts';
++
++const enc = (s: string) => new TextEncoder().encode(s);
++function eq(a: unknown, b: unknown, m: string) { if (JSON.stringify(a) !== JSON.stringify(b)) throw new Error(m + ': expected ' + JSON.stringify(b) + ' got ' + JSON.stringify(a)); }
++function yes(c: unknown, m: string) { if (!c) throw new Error(m); }
++
++const SM = (urls: string[], extra = '') => '<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml" xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">\n'
++  + urls.map((u) => `  <url>\n    <loc>${u}</loc>\n    <lastmod>2026-01-01</lastmod>\n  </url>`).join('\n') + extra + '\n</urlset>\n';
++const H = 'https://www.cleanicdetailing.com';
++const PAGE = (title = 'Brake Service', canonical = '') => `<!doctype html><html><head><title>${title}</title><meta name="description" content="About ${title}">${canonical}</head><body><h1>${title}</h1></body></html>`;
++
++// ---------------- pure functions ----------------
++
++Deno.test('pageUrl: canonical on the same host wins, else the file path becomes the URL', () => {
++  const c = (h: string) => `<link rel="canonical" href="${h}">`;
++  eq(pageUrl('www.x.sg', 'x/index.html', PAGE('a', c('https://www.x.sg/x/'))), 'https://www.x.sg/x/', 'canonical');
++  eq(pageUrl('www.x.sg', 'x/index.html', PAGE('a', c('https://x.sg/x/'))), 'https://x.sg/x/', 'canonical apex of same site');
++  eq(pageUrl('www.x.sg', 'x/index.html', PAGE('a', c('http://www.x.sg/x/'))), 'https://www.x.sg/x/', 'http canonical upgraded');
++  eq(pageUrl('www.x.sg', 'x/index.html', PAGE('a', c('https://evil.example/x/'))), 'https://www.x.sg/x/', 'foreign canonical ignored');
++  eq(pageUrl('www.x.sg', 'x/index.html', PAGE('a', c('javascript:alert(1)'))), 'https://www.x.sg/x/', 'javascript canonical ignored');
++  eq(pageUrl('www.x.sg', 'x/index.html', PAGE('a')), 'https://www.x.sg/x/', 'x/index.html');
++  eq(pageUrl('www.x.sg', 'index.html', PAGE('a')), 'https://www.x.sg/', 'index.html');
++  eq(pageUrl('www.x.sg', 'a/b.html', PAGE('a')), 'https://www.x.sg/a/b.html', 'a/b.html');
++  eq(pageUrl('www.x.sg', 'a b/c (1).html', PAGE('a')), 'https://www.x.sg/a%20b/c%20(1).html', 'encoded');
++});
++
++Deno.test('indexable: only real public pages', () => {
++  yes(indexable('a/index.html', PAGE()), 'normal page');
++  yes(indexable('about.htm', PAGE()), '.htm page');
++  for (const [rel, html, why] of [
++    ['a.css', PAGE(), 'not html'], ['404.html', PAGE(), '404'], ['review.html', PAGE(), 'review helper'], ['google-review-helper.html', PAGE(), '*review*'],
++    ['a/Review.html', PAGE(), 'review in a folder'], ['preview/x/index.html', PAGE(), 'preview folder'], ['google1a2b3c.html', PAGE(), 'verification file'],
++    ['n.html', PAGE().replace('</head>', '<meta name="robots" content="noindex, follow"></head>'), 'noindex'],
++    ['n.html', PAGE().replace('</head>', '<meta content="NOINDEX" name="googlebot"></head>'), 'noindex googlebot, content first'],
++    ['r.html', '<html><head><meta http-equiv="refresh" content="0; url=/x/"></head></html>', 'meta refresh stub'],
++    ['inc/part.html', '<div>fragment</div>', 'fragment'], ['_draft/a.html', PAGE(), 'underscore folder'],
++  ] as [string, string, string][]) yes(!indexable(rel, html), 'should not be indexable: ' + why);
++  yes(indexable('a.html', PAGE().replace('</head>', '<meta name="robots" content="index,follow"></head>')), 'index,follow is fine');
++});
++
++Deno.test('mergeSitemap: bump, add, never drop or reorder, keep other tags byte for byte, idempotent', () => {
++  const extra = '\n  <url>\n    <loc>https://www.cleanicdetailing.com/g/</loc>\n    <xhtml:link rel="alternate" hreflang="en" href="https://www.cleanicdetailing.com/g/"/>\n    <image:image><image:loc>https://cdn.example/a.jpg</image:loc></image:image>\n  </url>';
++  const live = SM([H + '/', H + '/a/', H + '/b/'], extra);
++  const r = mergeSitemap(live, [{ url: H + '/a/', lastmod: '2026-11-15' }, { url: H + '/new/', lastmod: '2026-11-15' }, { url: H + '/g/', lastmod: '2026-11-15' }]);
++  eq(r.error, undefined, 'no error');
++  eq(r.added, [H + '/new/'], 'added'); eq(r.bumped, [H + '/a/', H + '/g/'], 'bumped (also a block with no lastmod)');
++  eq(r.changedUrls, [H + '/new/', H + '/a/', H + '/g/'], 'changedUrls');
++  eq(xmlProblem(r.xml), null, 'passes xmlProblem');
++  const order = (x: string) => [...x.matchAll(/<loc>([^<]+)<\/loc>/g)].map((m) => m[1]);
++  eq(order(r.xml), [H + '/', H + '/a/', H + '/b/', H + '/g/', H + '/new/'], 'existing order kept, new at the end');
++  yes(r.xml.includes('<xhtml:link rel="alternate" hreflang="en" href="https://www.cleanicdetailing.com/g/"/>'), 'xhtml:link kept');
++  yes(r.xml.includes('<image:image><image:loc>https://cdn.example/a.jpg</image:loc></image:image>'), 'image tag kept');
++  yes(r.xml.includes('<loc>' + H + '/</loc>\n    <lastmod>2026-01-01</lastmod>'), 'untouched entry byte for byte');
++  yes(r.xml.includes('<loc>' + H + '/a/</loc>\n    <lastmod>2026-11-15</lastmod>'), 'lastmod bumped');
++  yes(r.xml.includes('  <url>\n    <loc>' + H + '/new/</loc>\n    <lastmod>2026-11-15</lastmod>\n  </url>\n</urlset>'), 'new entry uses the same indentation');
++  const again = mergeSitemap(r.xml, [{ url: H + '/a/', lastmod: '2026-11-15' }, { url: H + '/new/', lastmod: '2026-11-15' }, { url: H + '/g/', lastmod: '2026-11-15' }]);
++  eq(again.xml, r.xml, 'idempotent: second merge changes nothing'); eq(again.changedUrls, [], 'idempotent: nothing changed');
++  const older = mergeSitemap(r.xml, [{ url: H + '/a/', lastmod: '2026-05-01' }]);
++  eq(older.xml, r.xml, 'an older date never moves lastmod backwards');
++  const crlf = mergeSitemap(live.replace(/\n/g, '\r\n'), [{ url: H + '/new/', lastmod: '2026-11-15' }]);
++  yes(!/[^\r]\n/.test(crlf.xml), 'CRLF file stays CRLF');
++});
++
++Deno.test('mergeSitemap: unsafe or odd input refused, entities escaped, live problems reported', () => {
++  const live = SM([H + '/']);
++  const r = mergeSitemap(live, [
++    { url: 'javascript:alert(1)', lastmod: '2026-11-15' }, { url: 'https://x.sg/<script>', lastmod: '2026-11-15' }, { url: 'http://x.sg/a', lastmod: '2026-11-15' },
++    { url: H + '/ok/', lastmod: 'yesterday' }, { url: 'https://www.cleanicdetailing.com/j a/', lastmod: '2026-11-15' },
++    { url: H + '/q/?a=1&b=2', lastmod: '2026-11-15' },
++  ]);
++  eq(r.added, [H + '/q/?a=1&b=2'], 'only the clean URL was added'); eq(r.rejected.length, 5, 'five rejected');
++  yes(r.xml.includes('<loc>' + H + '/q/?a=1&amp;b=2</loc>'), '& escaped'); eq(xmlProblem(r.xml), null, 'still passes xmlProblem');
++  yes(!/script|javascript/i.test(r.xml), 'no active content in the output');
++  yes(mergeSitemap('<urlset><url>', []).error, 'broken live sitemap reported');
++  yes(mergeSitemap('<?xml version="1.0"?><sitemapindex><sitemap><loc>https://a.sg/s.xml</loc></sitemap></sitemapindex>', [{ url: 'https://a.sg/x', lastmod: '2026-11-15' }]).error, 'sitemap index is not merged');
++  yes(mergeSitemap(live.replace('<url>', '<script/><url>'), [{ url: H + '/n/', lastmod: '2026-11-15' }]).error, 'live sitemap with <script> is not merged');
++});
++
++Deno.test('sitemap.txt: every <loc>, one per line; live lines kept; page locs only', () => {
++  const xml = SM([H + '/', H + '/a/'], '\n  <url>\n    <loc>' + H + '/g/</loc>\n    <image:image><image:loc>https://cdn.example/a.jpg</image:loc></image:image>\n  </url>');
++  eq(sitemapTxtFrom(xml), [H + '/', H + '/a/', H + '/g/'].join('\n') + '\n', 'txt from xml (image loc not listed)');
++  const m = mergeSitemapTxt(H + '/old/\n' + H + '/a/\n', xml);
++  eq(m.text, H + '/old/\n' + H + '/a/\n' + H + '/\n' + H + '/g/\n', 'live lines kept in place, missing URLs appended');
++  eq(mergeSitemapTxt(m.text, xml).text, m.text, 'idempotent');
++});
++
++Deno.test('mergeLlms: never rewrites a line, right heading, sanitised, idempotent', () => {
++  const live = '# Cleanic\n\n> Detailing\n\n## Articles\n- [Old](' + H + '/old/): old one\n\n## Contact\n- Phone: 1\n';
++  const p = [{ url: H + '/new/', title: 'New <b>Tip</b> [x] javascript:alert(1)', desc: 'Line one\nline "two" <img src=x onerror=1>' }, { url: H + '/old/', title: 'Rewritten!', desc: 'x' }];
++  const r = mergeLlms(live, p);
++  eq(r.added, [H + '/new/'], 'only the new URL');
++  yes(r.text.startsWith(live.split('## Articles')[0]), 'text before the heading untouched');
++  yes(r.text.includes('- [Old](' + H + '/old/): old one\n- [New bTip/b x alert(1)](' + H + '/new/): Line one line "two" img src=x onerror=1\n\n## Contact\n- Phone: 1\n'), 'inserted at the end of Articles, sanitised, Contact untouched: ' + JSON.stringify(r.text));
++  yes(!/[<>]|javascript:/i.test(r.text.split('## Articles')[1]), 'no < > or javascript:');
++  eq(mergeLlms(r.text, p).text, r.text, 'idempotent');
++  const none = mergeLlms('# Site\n- [Home](' + H + '/)', [{ url: H + '/n/', title: 'N', desc: '' }]);
++  eq(none.text, '# Site\n- [Home](' + H + '/)\n\n## Recent pages\n- [N](' + H + '/n/)\n', 'no heading: new Recent pages section at the end');
++  eq(mergeLlms(none.text, [{ url: H + '/m/', title: 'M' }]).text, '# Site\n- [Home](' + H + '/)\n\n## Recent pages\n- [N](' + H + '/n/)\n- [M](' + H + '/m/)\n', 'second page goes into Recent pages');
++  eq(mergeLlms('# S\n## Pages\n- [a](' + H + '/a/)\n', [{ url: H + '/b/', title: 'B' }]).text, '# S\n## Pages\n- [a](' + H + '/a/)\n- [B](' + H + '/b/)\n', '## Pages heading used');
++  eq(mergeLlms('# S\n', [{ url: 'javascript:alert(1)', title: 'x' }]).added, [], 'javascript: URL refused');
++});
++
++Deno.test('settings: kill switch on, only pageone root excluded, hourly publisher override untouched', () => {
++  eq(AUTO_SITEMAP_ENABLED, true, 'enabled'); eq([...AUTO_SITEMAP_EXCLUDE], ['pageone'], 'exclude list');
++  eq(subsiteFor('pageone', 'index.html'), null, 'pageone root excluded');
++  eq(subsiteFor('pageone', 'preview/aivs/index.html'), null, 'other preview folders excluded');
++  eq(subsiteFor('pageone', 'preview/star-performance/a/index.html'), { prefix: 'preview/star-performance/', domain: 'starperformancemotor.com' }, 'client folder = its own site');
++  eq(subsiteFor('cleanic', 'a/index.html'), { prefix: '', domain: 'cleanicdetailing.com' }, 'cleanic root');
++  eq(subsiteFor('nope', 'a.html'), null, 'unknown site');
++});
++
++// ---------------- guard flag ----------------
++
++const sha256 = async (b: Uint8Array) => Array.from(new Uint8Array(await crypto.subtle.digest('SHA-256', b))).map((x) => x.toString(16).padStart(2, '0')).join('');
++const present = (s: string) => ({ state: 'present' as const, bytes: enc(s) });
++const g = (site: string, rel: string, live: string | null, next: string, flag = true, publisher = false) =>
++  liveGuard({ site, rel, op: 'write', live: live === null ? { state: 'absent' } : present(live), newBytes: enc(next), overrides: [], sha256, autoSitemap: flag, publisher });
++const ok = async (label: string, p: Promise<string | null>) => { const r = await p; if (r !== null) throw new Error(label + ': expected allowed, got: ' + r); };
++const no = async (label: string, p: Promise<string | null>, m: RegExp) => { const r = await p; if (r === null || !m.test(r)) throw new Error(label + ': expected refusal ' + m + ', got: ' + r); };
++
++Deno.test('guard flag: allowed for the three root files of an unlocked site, with the live content kept', async () => {
++  const live = SM([H + '/', H + '/a/']), next = SM([H + '/', H + '/a/', H + '/n/']);
++  for (const site of ['cleanic', 'sggarage', 'alicia', 'danny', 'sofacare']) {
++    await ok(site + ' sitemap.xml', g(site, 'sitemap.xml', live, next));
++    await ok(site + ' sitemap.txt', g(site, 'sitemap.txt', H + '/\n', H + '/\n' + H + '/n/\n'));
++    await ok(site + ' llms.txt', g(site, 'llms.txt', '# A\n- one\n', '# A\n- one\n- [N](' + H + '/n/)\n'));
++  }
++  await ok('identical bytes', g('cleanic', 'sitemap.xml', live, live));
++  await ok('pageone client folder', g('pageone', 'preview/star-performance/sitemap.xml', live, next));
++});
++
++Deno.test('guard flag: refused outside its narrow path, without the live file, or when the live content would be lost', async () => {
++  const live = SM([H + '/', H + '/a/']), next = SM([H + '/', H + '/a/', H + '/n/']);
++  await no('no flag = same refusal as before', g('cleanic', 'sitemap.xml', live, next, false), /needs an override/);
++  await no('sub-folder sitemap.xml', g('cleanic', 'articles/sitemap.xml', live, next), /only replace the site's own root/);
++  await no('sub-folder llms.txt', g('cleanic', 'a/llms.txt', '# a', '# a\n- b'), /only replace the site's own root/);
++  await no('robots.txt', g('cleanic', 'robots.txt', 'User-agent: *\n', 'User-agent: *\nDisallow: /\n'), /only replace the site's own root/);
++  await no('llms-full.txt', g('cleanic', 'llms-full.txt', 'a', 'b'), /only replace the site's own root/);
++  await no('article-cards.json', g('sggarage', 'article-cards.json', '[]', '[1]'), /only replace the site's own root/);
++  await no('index.html', g('cleanic', 'index.html', PAGE(), PAGE('Other')), /only replace the site's own root/);
++  await no('.htaccess', g('cleanic', '.htaccess', 'a', 'b'), /never written/);
++  await no('pageone own root (hourly publisher only)', g('pageone', 'sitemap.xml', live, next), /only replace the site's own root/);
++  await no('pageone preview of a non-client folder', g('pageone', 'preview/aivs/sitemap.xml', live, next), /only replace the site's own root/);
++  await no('file absent: never created from nothing', g('cleanic', 'sitemap.xml', null, next), /never creates a sitemap/);
++  await no('unknown live state', liveGuard({ site: 'cleanic', rel: 'sitemap.xml', op: 'write', live: { state: 'unknown', error: 'timeout' }, newBytes: enc(next), overrides: [], sha256, autoSitemap: true }), /could not be confirmed/);
++  await no('sitemap.xml drops a live URL', g('cleanic', 'sitemap.xml', live, SM([H + '/', H + '/n/'])), /would drop 1 live URL/);
++  await no('sitemap.xml new URL on another host', g('cleanic', 'sitemap.xml', live, SM([H + '/', H + '/a/', 'https://evil.example/x'])), /not https on the live site host/);
++  await no('sitemap.xml new http URL', g('cleanic', 'sitemap.xml', live, SM([H + '/', H + '/a/', 'http://www.cleanicdetailing.com/x'])), /not https on the live site host/);
++  await no('sitemap.txt drops a line', g('cleanic', 'sitemap.txt', H + '/\n' + H + '/a/\n', H + '/\n'), /would drop 1 live line/);
++  await no('sitemap.txt new line other host', g('cleanic', 'sitemap.txt', H + '/\n', H + '/\nhttps://evil.example/\n'), /live site host/);
++  await no('sitemap.txt non-URL', g('cleanic', 'sitemap.txt', H + '/\n', H + '/\n<script>\n'), /not an https URL/);
++  await no('llms.txt drops a line', g('cleanic', 'llms.txt', '# A\n- one\n- two\n', '# A\n- one\n'), /would drop or change 1 live line/);
++  await no('llms.txt changes a line', g('cleanic', 'llms.txt', '# A\n- one\n', '# A\n- ONE\n'), /would drop or change 1 live line/);
++  await no('llms.txt new line with <script>', g('cleanic', 'llms.txt', '# A\n', '# A\n- <script>x</script>\n'), /new line with/);
++  await no('llms.txt new line with javascript:', g('cleanic', 'llms.txt', '# A\n', '# A\n- [x](jav\tascript:alert(1))\n'), /new line with/);
++  await no('llms.txt empty', g('cleanic', 'llms.txt', '# A\n', ' \n'), /empty/);
++});
++
++Deno.test('guard flag: the SPO safety fix still applies (script / iframe / object / embed, on* attributes, javascript:)', async () => {
++  const live = SM([H + '/']);
++  const add = (x: string) => SM([H + '/'], x);
++  await no('<script>', g('cleanic', 'sitemap.xml', live, add('<script>x</script>')), /element <script> is not allowed/);
++  await no('<iframe>', g('cleanic', 'sitemap.xml', live, add('<iframe src="x"/>')), /element <iframe> is not allowed/);
++  await no('<object>', g('cleanic', 'sitemap.xml', live, add('<object/>')), /element <object> is not allowed/);
++  await no('<xhtml:embed>', g('cleanic', 'sitemap.xml', live, add('<xhtml:embed/>')), /element <xhtml:embed> is not allowed/);
++  await no('onload attribute', g('cleanic', 'sitemap.xml', live, add('<url><loc onload="x">' + H + '/z/</loc></url>')), /attribute onload is not allowed/);
++  await no('javascript: in a loc', g('cleanic', 'sitemap.xml', live, add('<url><loc>&#106;avascript&#58;alert(1)</loc></url>')), /javascript: is not allowed/);
++  await ok('xhtml:link alternates are fine', g('cleanic', 'sitemap.xml', live, add('<url><loc>' + H + '/z/</loc><xhtml:link rel="alternate" hreflang="en" href="' + H + '/z/"/></url>')));
++});
++
++Deno.test('guard flag: existing Page One publisher and SG Garage overrides work as before', async () => {
++  const live = SM([H + '/']), next = SM([H + '/', H + '/z/']);
++  await ok('pageone root, publisher', g('pageone', 'sitemap.xml', live, next, false, true));
++  await ok('pageone client folder, publisher', g('pageone', 'preview/klar-details/sitemap.xml', live, next, false, true));
++  await ok('sggarage root by a tool write (tools delta)', g('sggarage', 'sitemap.xml', live, next, false, false));
++  await no('pageone root by a tool write without the flag', g('pageone', 'sitemap.xml', live, next, false, false), /needs an override/);
++  await no('cleanic by a tool write without the flag', g('cleanic', 'sitemap.xml', live, next, false, false), /needs an override/);
++});
++
++// ---------------- the hook against a fake cPanel and a fake IndexNow ----------------
++
++const HOME = '/home3/sgmodde1', ROOT = HOME + '/public_html', CLEANIC = ROOT + '/cleanic', PAGEONE = ROOT + '/pageone';
++const files = new Map<string, Uint8Array>();
++const dirs = new Set<string>([HOME, ROOT, PAGEONE, CLEANIC, PAGEONE + '/preview', PAGEONE + '/preview/star-performance', HOME + '/bluehost-bridge-private', HOME + '/bluehost-bridge-private/backups']);
++const posts: any[] = [];
++let indexNowStatus = 200, indexNowThrows = false;
++const latin1 = (b: Uint8Array) => Array.from(b, (c) => String.fromCharCode(c)).join('');
++const cp = (data: any) => Response.json({ result: { status: 1, errors: null, data } });
++const parentOf = (p: string) => p.slice(0, p.lastIndexOf('/'));
++const text = (p: string) => new TextDecoder().decode(files.get(p)!);
++const setFile = (p: string, s: string) => files.set(p, enc(s));
++
++globalThis.fetch = (async (input: any, init: any = {}) => {
++  const url = new URL(String(input));
++  if (url.host === 'api.indexnow.org') {
++    if (indexNowThrows) throw new Error('network down');
++    posts.push({ url: String(input), method: init.method, body: JSON.parse(init.body) });
++    return new Response('', { status: indexNowStatus });
++  }
++  if (url.pathname.startsWith('/execute/')) {
++    const fn = url.pathname.slice(9), q = url.searchParams;
++    if (fn === 'DomainInfo/domains_data') return cp({ main_domain: { domain: 'sggarage.com', documentroot: ROOT },
++      addon_domains: [{ domain: 'pageonesingapore.com', documentroot: PAGEONE }, { domain: 'cleanicdetailing.com', documentroot: CLEANIC }], sub_domains: [], parked_domains: [] });
++    if (fn === 'Fileman/get_file_information') {
++      const p = q.get('path')!;
++      if (files.has(p)) return cp({ exists: 1, mode: 0o100644, size: files.get(p)!.length, mtime: 1 });
++      if (dirs.has(p)) return cp({ exists: 1, mode: 0o040755, size: 4096, mtime: 1 });
++      return Response.json({ result: { status: 0, errors: ['The file is not available'] } });
++    }
++    if (fn === 'Fileman/list_files') {
++      const d = q.get('dir')!; if (!dirs.has(d)) return Response.json({ result: { status: 0, errors: ['No such directory'] } });
++      const rows: any[] = [];
++      for (const f of files.keys()) if (parentOf(f) === d) rows.push({ file: f.slice(d.length + 1), type: 'file', size: files.get(f)!.length, mtime: 1 });
++      for (const x of dirs) if (x !== d && parentOf(x) === d) rows.push({ file: x.slice(d.length + 1), type: 'dir', size: 4096, mtime: 1 });
++      return cp(rows);
++    }
++    if (fn === 'Fileman/get_file_content') {
++      const b = files.get(q.get('dir') + '/' + q.get('file'));
++      return b ? cp({ content: latin1(b) }) : Response.json({ result: { status: 0, errors: ['No such file'] } });
++    }
++    if (fn === 'Fileman/upload_files') {
++      const form = init.body as FormData; const dir = String(form.get('dir')); const f = form.get('file-1') as File;
++      if (!dirs.has(dir)) return Response.json({ result: { status: 0, errors: ['no dir'] } });
++      files.set(dir + '/' + f.name, new Uint8Array(await f.arrayBuffer()));
++      return cp({ succeeded: 1 });
++    }
++  }
++  if (url.pathname === '/json-api/cpanel') {
++    const p = new URLSearchParams(String(init.body)); const fn = p.get('cpanel_jsonapi_func')!;
++    const res = (data: any[]) => Response.json({ cpanelresult: { event: { result: 1 }, data } });
++    if (fn === 'mkdir') {
++      const d = p.get('path') + '/' + p.get('name');
++      if (dirs.has(d) || !dirs.has(p.get('path')!)) return res([{ result: 0, reason: 'exists or no parent' }]);
++      dirs.add(d); return res([{ result: 1 }]);
++    }
++    if (fn === 'fileop' && p.get('op') === 'copy') { files.set(p.get('destfiles')!, files.get(p.get('sourcefiles')!)!.slice()); return res([{ result: 1 }]); }
++    if (fn === 'fileop' && p.get('op') === 'chmod') return res([{ result: 1 }]);
++  }
++  return new Response('unexpected ' + url, { status: 500 });
++}) as typeof fetch;
++
++const logs: any[] = [];
++const ctx: any = { agent: 'claude', viaKey: false, email: 'admin@test', base44: { asServiceRole: { entities: {
++  BridgeLock: { filter: async () => [] }, BridgeLog: { create: async (r: any) => { logs.push(r); return r; } } } } } };
++
++const KEY = 'a1b2c3d4e5f60718293a4b5c6d7e8f90';
++const today = new Date(Date.now() + 8 * 3600_000).toISOString().slice(0, 10);
++const resetCleanic = () => {
++  for (const k of [...files.keys()]) if (k.startsWith(CLEANIC + '/') || k.startsWith(PAGEONE + '/')) files.delete(k);
++  posts.length = 0; indexNowStatus = 200; indexNowThrows = false;
++  setFile(CLEANIC + '/sitemap.xml', SM([H + '/', H + '/old/']));
++  setFile(CLEANIC + '/sitemap.txt', H + '/\n' + H + '/old/\n');
++  setFile(CLEANIC + '/llms.txt', '# Cleanic\n\n## Articles\n- [Old](' + H + '/old/): old\n');
++  setFile(CLEANIC + '/' + KEY + '.txt', KEY);
++  setFile(CLEANIC + '/index.html', PAGE('Home'));
++};
++const batch = (extra: any[] = [], dry = false) => ({ site: 'cleanic', overwrite: true, dry_run: dry, files: [
++  { path: 'tips/index.html', content: PAGE('Tips', `<link rel="canonical" href="${H}/tips/">`) },
++  { path: 'review.html', content: PAGE('Review us') }, { path: 'secret.html', content: PAGE('S').replace('</head>', '<meta name="robots" content="noindex"></head>') },
++  { path: 'style.css', content: 'a{}' }, ...extra] });
++
++Deno.test('hook: write_files writes 3 files and sends ONE IndexNow POST with only the changed, indexable URLs', async () => {
++  resetCleanic();
++  const r: any = await writeMany(batch(), ctx);
++  eq([r.ok, r.totals.created], [true, 4], 'page batch');
++  eq(r.autoSitemap.status, 'ok', 'auto status: ' + JSON.stringify(r.autoSitemap));
++  eq(r.autoSitemap.added, [H + '/tips/'], 'added'); eq(r.autoSitemap.bumped, [], 'bumped');
++  const f = r.autoSitemap.groups[0].files;
++  eq(f, { 'sitemap.xml': 'written', 'sitemap.txt': 'written', 'llms.txt': 'written' }, 'three files written');
++  yes(text(CLEANIC + '/sitemap.xml').includes('<loc>' + H + '/tips/</loc>\n    <lastmod>' + today + '</lastmod>'), 'sitemap.xml has the new page');
++  yes(text(CLEANIC + '/sitemap.xml').includes('<loc>' + H + '/old/</loc>\n    <lastmod>2026-01-01</lastmod>'), 'old entry untouched');
++  eq(text(CLEANIC + '/sitemap.txt'), H + '/\n' + H + '/old/\n' + H + '/tips/\n', 'sitemap.txt');
++  yes(text(CLEANIC + '/llms.txt').endsWith('- [Old](' + H + '/old/): old\n- [Tips](' + H + '/tips/): About Tips\n'), 'llms.txt line added under Articles: ' + text(CLEANIC + '/llms.txt'));
++  yes(!/review|secret/.test(text(CLEANIC + '/sitemap.xml') + text(CLEANIC + '/llms.txt')), 'review helper and noindex pages are not listed');
++  eq(posts.length, 1, 'exactly one IndexNow POST');
++  eq(posts[0], { url: 'https://api.indexnow.org/indexnow', method: 'POST', body: { host: 'www.cleanicdetailing.com', key: KEY, keyLocation: 'https://www.cleanicdetailing.com/' + KEY + '.txt', urlList: [H + '/tips/'] } }, 'IndexNow body');
++  eq(r.autoSitemap.indexnow, { status: 'sent', http: 200, urls: 1 }, 'indexnow result');
++  const rerun: any = await writeMany(batch(), ctx);
++  eq(rerun.totals.unchanged, 4, 'second identical publish changes nothing');
++  eq(rerun.autoSitemap.status, 'nothing', 'idempotent: no auto step'); eq(posts.length, 1, 'no second POST');
++});
++
++Deno.test('hook: an updated page bumps lastmod and is re-sent; a same-day page keeps its sitemap entry', async () => {
++  resetCleanic();
++  await writeMany(batch(), ctx);
++  posts.length = 0;
++  setFile(CLEANIC + '/sitemap.xml', text(CLEANIC + '/sitemap.xml').replace('<lastmod>' + today + '</lastmod>', '<lastmod>2026-02-02</lastmod>'));
++  const r: any = await writeMany({ site: 'cleanic', overwrite: true, files: [{ path: 'tips/index.html', content: PAGE('Tips', `<link rel="canonical" href="${H}/tips/">`) + '<!-- v2 -->' }] }, ctx);
++  eq(r.autoSitemap.bumped, [H + '/tips/'], 'lastmod bumped'); eq(r.autoSitemap.added, [], 'not added again');
++  eq(r.autoSitemap.groups[0].files['llms.txt'], 'unchanged', 'llms.txt line exists, not touched');
++  eq(posts[0].body.urlList, [H + '/tips/'], 'IndexNow for the edited page');
++});
++
++Deno.test('hook: dry run writes nothing, reports the plan and the IndexNow list', async () => {
++  resetCleanic();
++  const before = ['sitemap.xml', 'sitemap.txt', 'llms.txt'].map((n) => text(CLEANIC + '/' + n));
++  const d: any = await writeMany(batch([], true), ctx);
++  eq(d.dry_run, true, 'dry run'); eq(d.autoSitemap.status, 'dry_run', 'status: ' + JSON.stringify(d.autoSitemap));
++  eq(d.autoSitemap.added, [H + '/tips/'], 'planned add');
++  eq(d.autoSitemap.groups[0].files, { 'sitemap.xml': 'would update', 'sitemap.txt': 'would update', 'llms.txt': 'would update' }, 'planned files');
++  eq(d.autoSitemap.indexnow, { status: 'would send', urls: [H + '/tips/'] }, 'planned IndexNow');
++  eq(['sitemap.xml', 'sitemap.txt', 'llms.txt'].map((n) => text(CLEANIC + '/' + n)), before, 'live files untouched');
++  yes(!files.has(CLEANIC + '/tips/index.html'), 'no page written either'); eq(posts.length, 0, 'no IndexNow request');
++});
++
++Deno.test('hook: an auto-step failure never fails the page batch (bad live sitemap, IndexNow down, missing sitemap, no key)', async () => {
++  resetCleanic();
++  setFile(CLEANIC + '/sitemap.xml', '<urlset><url><loc>' + H + '/</loc></url>');           // broken live file
++  let r: any = await writeMany(batch(), ctx);
++  eq([r.ok, r.totals.created], [true, 4], 'pages written'); eq(r.autoSitemap.status, 'error', 'auto step reports the problem');
++  yes(/not usable/.test(r.autoSitemap.groups[0].reason), 'reason: ' + r.autoSitemap.groups[0].reason);
++  yes(files.has(CLEANIC + '/tips/index.html'), 'page is live'); eq(text(CLEANIC + '/sitemap.xml'), '<urlset><url><loc>' + H + '/</loc></url>', 'broken sitemap left alone'); eq(posts.length, 0, 'no IndexNow after a failed merge');
++
++  resetCleanic(); indexNowThrows = true;
++  r = await writeMany(batch(), ctx);
++  eq(r.ok, true, 'batch ok when IndexNow is down'); eq(r.autoSitemap.status, 'ok', 'files still written'); eq(r.autoSitemap.indexnow.status, 'error', 'IndexNow error reported');
++
++  resetCleanic(); files.delete(CLEANIC + '/sitemap.xml');
++  r = await writeMany(batch(), ctx);
++  eq(r.ok, true, 'batch ok'); eq(r.autoSitemap.status, 'skipped', 'no sitemap: skipped'); yes(/never created from nothing/.test(r.autoSitemap.groups[0].reason), 'reason');
++  yes(!files.has(CLEANIC + '/sitemap.xml'), 'sitemap.xml was not created');
++
++  resetCleanic(); files.delete(CLEANIC + '/llms.txt'); files.delete(CLEANIC + '/' + KEY + '.txt');
++  r = await writeMany(batch(), ctx);
++  eq(r.autoSitemap.groups[0].files['llms.txt'], 'skipped: not on the site', 'llms.txt missing: skipped, not created');
++  eq(r.autoSitemap.indexnow.status, 'skipped', 'no key file: IndexNow skipped'); eq(posts.length, 0, 'no POST'); yes(!files.has(CLEANIC + '/llms.txt'), 'llms.txt not created');
++
++  resetCleanic(); setFile(CLEANIC + '/' + KEY + '.txt', 'not the key');
++  r = await writeMany(batch(), ctx); eq(r.autoSitemap.indexnow.status, 'skipped', 'key file content must equal its name');
++
++  resetCleanic(); indexNowStatus = 422;
++  r = await writeMany(batch(), ctx); eq([r.ok, r.autoSitemap.indexnow.status, r.autoSitemap.indexnow.http], [true, 'error', 422], 'HTTP error reported only');
++});
++
++Deno.test('hook: a guard refusal inside the auto step is reported and the page writes stay', async () => {
++  resetCleanic();
++  setFile(CLEANIC + '/llms.txt', '# Cleanic\n\n## Articles\n- [Old](' + H + '/old/): old\n');
++  // A page whose title tries to inject: the merge sanitises it, so the guard accepts and the output is clean.
++  const r: any = await writeMany({ site: 'cleanic', overwrite: true, files: [{ path: 'x/index.html', content: PAGE('<script>alert(1)</script> javascript:evil') }] }, ctx);
++  eq(r.ok, true, 'batch ok'); const l = text(CLEANIC + '/llms.txt');
++  yes(!/<|>|javascript:/i.test(l.split('## Articles')[1]), 'sanitised in llms.txt: ' + l);
++  // Direct guard refusal through writeFile with the flag: wrong path is refused by the real write path, nothing changes.
++  let err = ''; try { await writeFile('cleanic', 'robots.txt', enc('x'), null, { autoSitemap: true }); } catch (e) { err = String((e as Error).message); }
++  yes(/LIVE GUARD refused/.test(err) && !files.has(CLEANIC + '/robots.txt'), 'writeFile with the flag cannot write robots.txt: ' + err);
++  err = ''; try { await writeFile('cleanic', 'sitemap.xml', enc(SM([H + '/'])), text(CLEANIC + '/sitemap.xml') && await sha256(files.get(CLEANIC + '/sitemap.xml')!), { autoSitemap: true }); } catch (e) { err = String((e as Error).message); }
++  yes(/would drop \d+ live URL/.test(err), 'writeFile with the flag cannot drop a live URL: ' + err);
++});
++
++Deno.test('hook: HOLD ON refuses the auto write; excluded and non-page writes do nothing; kill switch is a constant', async () => {
++  resetCleanic();
++  const h = SITE_HOLDS.find((x) => x.key === 'sggarage')!;
++  const sg = ROOT; setFile(sg + '/sitemap.xml', SM(['https://www.sggarage.com/'])); setFile(sg + '/index.html', PAGE('SG'));
++  h.on = true;
++  try {
++    const r: any = await autoSitemapAfter({ site: 'sggarage', written: [{ path: 'new/index.html', bytes: enc(PAGE('N')) }] });
++    eq(r.status, 'held', 'held: ' + JSON.stringify(r)); eq(text(sg + '/sitemap.xml'), SM(['https://www.sggarage.com/']), 'sitemap untouched while HOLD is ON');
++    let err = ''; try { await writeFile('sggarage', 'sitemap.xml', enc(SM(['https://www.sggarage.com/', 'https://www.sggarage.com/n/'])), null, { autoSitemap: true, overwrite: true }); } catch (e) { err = String((e as Error).message); }
++    yes(/BRIDGE HOLD is ON/.test(err), 'writeFile itself refuses with HOLD ON: ' + err);
++  } finally { h.on = false; }
++  const r2: any = await autoSitemapAfter({ site: 'sggarage', written: [{ path: 'new/index.html', bytes: enc(PAGE('N')) }] });
++  eq(r2.status, 'ok', 'HOLD OFF: runs: ' + JSON.stringify(r2));
++  yes(text(sg + '/sitemap.xml').includes('https://www.sggarage.com/new/'), 'sggarage sitemap updated'); eq(posts.length, 0, 'no key file at the sggarage root: no IndexNow');
++  eq((await autoSitemapAfter({ site: 'pageone', written: [{ path: 'index.html', bytes: enc(PAGE('P')) }] })).status, 'nothing', 'pageone root is excluded');
++  eq((await autoSitemapAfter({ site: 'cleanic', written: [{ path: 'a.css', bytes: enc('a{}') }, { path: 'img/x.png', bytes: enc('x') }] })).status, 'nothing', 'non-HTML writes do nothing');
++  eq((await autoSitemapAfter({ site: 'cleanic', written: [{ path: 'review.html', bytes: enc(PAGE()) }] })).status, 'skipped', 'only a review helper: no indexable page');
++  files.delete(sg + '/sitemap.xml'); files.delete(sg + '/index.html');
++});
++
++Deno.test('hook: single-file tools - edit path reads the page back; Page One client folder is its own site', async () => {
++  resetCleanic();
++  setFile(CLEANIC + '/e/index.html', PAGE('Edited', `<link rel="canonical" href="${H}/e/">`));
++  const r: any = await autoSitemapAfter({ site: 'cleanic', written: [{ path: 'e/index.html' }] }); // no bytes = read back from the server, as edit_file does
++  eq(r.status, 'ok', JSON.stringify(r)); eq(r.added, [H + '/e/'], 'edited page listed'); eq(posts[0].body.urlList, [H + '/e/'], 'IndexNow');
++  posts.length = 0;
++  const P = PAGEONE + '/preview/star-performance/';
++  setFile(P + 'sitemap.xml', SM(['https://starperformancemotor.com/'])); setFile(P + 'llms.txt', '# Star\n'); setFile(P + KEY + '.txt', KEY);
++  const c: any = await autoSitemapAfter({ site: 'pageone', written: [{ path: 'preview/star-performance/service/index.html', bytes: enc(PAGE('Service')) }, { path: 'index.html', bytes: enc(PAGE('Root')) }] });
++  eq(c.status, 'ok', JSON.stringify(c)); eq(c.groups.length, 1, 'only the client folder'); eq(c.added, ['https://starperformancemotor.com/service/'], 'client host, not the preview host');
++  yes(text(P + 'sitemap.xml').includes('https://starperformancemotor.com/service/'), 'client sitemap updated');
++  eq(c.groups[0].files['sitemap.txt'], 'skipped: not on the site', 'no sitemap.txt there: not created');
++  eq(posts[0].body.host, 'starperformancemotor.com', 'IndexNow for the client host'); yes(!/pageonesingapore\.com\/preview/.test(JSON.stringify(posts)), 'preview host never sent');
++});
++
++Deno.test('hook: pinned sitemap.xml / llms.txt (clientAssets) are skipped and reported, unpinned sitemap.txt is written, IndexNow still goes out', async () => {
++  resetCleanic();
++  const J = 'https://jackygearbox.com', P = PAGEONE + '/preview/dmts/';
++  dirs.add(P.slice(0, -1));
++  const liveXml = SM([J + '/']), liveTxt = J + '/\n', liveLlms = '# Jacky\n\n## Articles\n- [A](' + J + '/a/): a\n';
++  setFile(P + 'sitemap.xml', liveXml); setFile(P + 'sitemap.txt', liveTxt); setFile(P + 'llms.txt', liveLlms); setFile(P + KEY + '.txt', KEY);
++  const page = { path: 'preview/dmts/articles/new-one/index.html', bytes: enc(PAGE('New one')) };
++  const expectXml = mergeSitemap(liveXml, [{ url: J + '/articles/new-one/', lastmod: today }]).xml;
++  const expectSha = await sha256(enc(expectXml));
++  const dry: any = await autoSitemapAfter({ site: 'pageone', written: [page], dryRun: true });
++  eq(dry.groups[0].files['sitemap.xml'], { file: 'preview/dmts/sitemap.xml', skipped: 'pinned: re-pin to new sha needed', newSha: expectSha }, 'dry run reports the pin');
++  eq(dry.groups[0].files['llms.txt'].skipped, 'pinned: re-pin to new sha needed', 'dry run: llms.txt pinned'); eq(dry.groups[0].files['sitemap.txt'], 'would update', 'dry run: sitemap.txt is not pinned');
++  eq(text(P + 'sitemap.xml'), liveXml, 'dry run wrote nothing'); eq(posts.length, 0, 'dry run sent nothing');
++  const r: any = await autoSitemapAfter({ site: 'pageone', written: [page] });
++  eq(r.status, 'ok', JSON.stringify(r));
++  eq(r.groups[0].files['sitemap.xml'], { file: 'preview/dmts/sitemap.xml', skipped: 'pinned: re-pin to new sha needed', newSha: expectSha }, 'pinned sitemap.xml skipped with the new sha');
++  eq(r.groups[0].files['llms.txt'].skipped, 'pinned: re-pin to new sha needed', 'pinned llms.txt skipped');
++  eq(r.groups[0].files['sitemap.txt'], 'written', 'unpinned sitemap.txt written'); eq(r.groups[0].pinned, ['preview/dmts/sitemap.xml', 'preview/dmts/llms.txt'], 'pinned list');
++  eq(text(P + 'sitemap.xml'), liveXml, 'pinned sitemap.xml untouched'); eq(text(P + 'llms.txt'), liveLlms, 'pinned llms.txt untouched');
++  yes(text(P + 'sitemap.txt').includes(J + '/articles/new-one/'), 'sitemap.txt has the page');
++  eq(posts.length, 1, 'IndexNow still sent'); eq(posts[0].body.urlList, [J + '/articles/new-one/'], 'for the written page');
++  // unpinned client folder in the same run type: everything is written (see the star-performance test above)
++  resetCleanic(); posts.length = 0;
++  const S = PAGEONE + '/preview/star-performance/';
++  setFile(S + 'sitemap.xml', SM(['https://starperformancemotor.com/'])); setFile(S + 'llms.txt', '# Star\n'); setFile(S + 'sitemap.txt', 'https://starperformancemotor.com/\n');
++  const u: any = await autoSitemapAfter({ site: 'pageone', written: [{ path: 'preview/star-performance/x/index.html', bytes: enc(PAGE('X')) }] });
++  eq(u.groups[0].files, { 'sitemap.xml': 'written', 'sitemap.txt': 'written', 'llms.txt': 'written' }, 'unpinned folder: all three written');
++});

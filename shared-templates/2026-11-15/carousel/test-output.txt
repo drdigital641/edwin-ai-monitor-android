@@ -1,0 +1,44 @@
+PASS auto-slides on its own (40.0px in 1s)
+PASS cards cloned for a seamless loop (6 -> 12)
+PASS clones are aria-hidden
+PASS vertical swipe on it scrolls the page (165px)
+PASS vertical swipe does not stop it (40.0px moved)
+PASS still sliding right after the vertical swipe
+PASS press-and-hold pauses (0.00px while held)
+PASS still paused 1.1s after release
+PASS resumes about 1.5s after release (16.0px by 1.9s)
+PASS a quick tap does not pause it
+PASS sideways drag follows the finger 1:1 (130.7px for 130px)
+PASS paused while the finger stays down after a drag
+PASS sideways drag does not scroll the page
+PASS paused 1.1s after the drag ends
+PASS resumes after the drag
+PASS diagonal sideways slide moves the carousel (-99.3px)
+PASS diagonal sideways slide does not scroll the page
+PASS every card one uniform frame (300x225, 6 cards)
+PASS photos use object-fit: cover
+PASS arrows + 6 dots visible, 44px tall (8)
+PASS exactly one dot marked current
+PASS next arrow
+PASS next arrow lands on a card edge (pos 632.0, step 316)
+PASS dot 4 goes to card 4 (948.0 vs 948)
+PASS no sideways page scroll at 360px
+PASS no sideways page scroll at 390px
+PASS no sideways page scroll at 412px
+PASS no page errors 
+PASS hover alone does not pause (Edwin brief 14 Nov)
+PASS vertical mouse wheel over it does not pause
+PASS mouse press-and-hold pauses 67.9 67.9
+PASS mouse drag follows 1:1 (150.0)
+PASS drag does not open the card link
+PASS paused 1.1s after mouse release
+PASS resumes after mouse release
+PASS keyboard focus on a control pauses
+PASS reduced motion: no clones
+PASS reduced motion: does not auto-slide
+PASS reduced motion: arrows + dots visible
+PASS reduced motion: next arrow moves the swipe row
+PASS no JS: plain swipe row
+PASS no JS: no dead controls
+
+42 passed, 0 failed
