@@ -1,0 +1,28 @@
+Bridge sandbox COPY /tmp/pa (copy of /app at git caa0c6f; /app untouched, still caa0c6f, clean), 14 Nov 2026 ~10:20pm SGT
+deno test --no-check -A --import-map tests/importmap.json tests/
+
+bulkWrite.test.ts            4 ok
+bulkWriteMock.test.ts        2 ok
+cpanelChokepoint.test.ts     3 ok
+crawlerCore.test.ts          8 ok
+githubSyncMock.test.ts       6 ok
+generatedOverride.test.ts   17 ok (new):
+  ok  allowed for pageone: sitemap.xml, sitemap.txt, llms.txt
+  ok  allowed for star: sitemap.xml, sitemap.txt, llms.txt
+  ok  allowed for klar: sitemap.xml, sitemap.txt, llms.txt
+  ok  allowed for cska: sitemap.xml, sitemap.txt, llms.txt
+  ok  allowed for jacky: sitemap.xml, sitemap.txt, llms.txt
+  ok  allowed for ben: sitemap.xml, sitemap.txt, llms.txt
+  ok  refused for sggarage (no override at all), same three files
+  ok  refused for other sites and other client folders
+  ok  refused for any other file, even from the publisher
+  ok  server config and code stay never-write even from the publisher
+  ok  refused when the write is not from the publisher (bulk write, MCP write_file, sync)
+  ok  bad XML refused
+  ok  sitemap.xml with 0 URLs refused
+  ok  empty llms.txt refused, bad sitemap.txt refused
+  ok  unknown live state and path tricks still refused first
+  ok  real-shape sitemaps pass the XML check (sitemapindex, image namespace, comments, CDATA)
+  ok  wiring: only the publisher put() passes publisher: true, and writeFile forwards it strictly
+
+ok | 40 passed | 0 failed (23 existing + 17 new)

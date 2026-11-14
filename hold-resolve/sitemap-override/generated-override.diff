@@ -1,0 +1,254 @@
+diff -ru pa0/base44/shared/bridgeOps.ts pa/base44/shared/bridgeOps.ts
+--- pa0/base44/shared/bridgeOps.ts	2026-11-14 14:12:35.583675220 +0000
++++ pa/base44/shared/bridgeOps.ts	2026-11-14 14:12:43.552381653 +0000
+@@ -262,7 +262,7 @@
+ // re-reading it. The verified backup below still fails if the live file changed since.
+ // opts.overwrite (bulk write_files only): replace an existing file without expected_sha256;
+ // it is still backed up and verified first. A given expected_sha256 is still enforced.
+-export async function writeFile(site: string, relInput: unknown, bytes: Uint8Array, expectedSha: unknown, opts: { allowServerConfig?: boolean; current?: FileBytes; overwrite?: boolean } = {}) {
++export async function writeFile(site: string, relInput: unknown, bytes: Uint8Array, expectedSha: unknown, opts: { allowServerConfig?: boolean; current?: FileBytes; overwrite?: boolean; publisher?: boolean } = {}) {
+   const rel = normalizeRel(relInput);
+   // BRIDGE HOLD (14 Nov 2026): checked first, before any read, backup or upload. Every live write
+   // (tools, bulk, sync, restore, publisher) goes through here, so a held site can never be written.
+@@ -277,7 +277,7 @@
+   // LIVE GUARD v2 (14 Nov 2026): live state from the server's own listing + exact-path cPanel read (never HTTP).
+   // Unknown state, delete/move, server config/code and unsafe paths are refused before any backup or upload.
+   const live = await probeLive(site, rel);
+-  const guard = await liveGuard({ site, rel: relInput, op: 'write', live, newBytes: bytes, overrides: GUARD_OVERRIDES, sha256 });
++  const guard = await liveGuard({ site, rel: relInput, op: 'write', live, newBytes: bytes, overrides: GUARD_OVERRIDES, sha256, publisher: opts.publisher === true });
+   if (guard) throw new BridgeError(guard, 409);
+   const liveSha = live.state === 'present' ? await sha256(live.bytes) : null;
+ 
+diff -ru pa0/base44/shared/liveGuard.ts pa/base44/shared/liveGuard.ts
+--- pa0/base44/shared/liveGuard.ts	2026-11-14 14:12:35.587583858 +0000
++++ pa/base44/shared/liveGuard.ts	2026-11-14 14:12:43.551914143 +0000
+@@ -121,12 +121,77 @@
+   return out;
+ }
+ 
++// GENERATED-FILE OVERRIDE (14 Nov 2026, "SITEMAP OVERRIDE AND INNER OG 1114-2210"; Edwin 10:09pm SGT: "Yes, allow
++// sitemap.xml, sitemap.txt and llms.txt to update automatically"). ONLY the hourly Page One publisher (writeFile with
++// opts.publisher, set only by put() in pageoneArticles.ts) may REPLACE exactly these three files, and only for Page One
++// itself and the five client folders below. Every other check above still runs first (path rules, never-write list,
++// unknown live state). sggarage (and every other site key) never matches. The new content must still be sane:
++// sitemap.xml well-formed XML with a <urlset>/<sitemapindex> root and at least one <loc>; sitemap.txt at least one
++// https URL and nothing else; llms.txt not empty. Base44 code is live on save: changing this list needs security review
++// AND Edwin's own written yes before saving.
++export const GENERATED_OVERRIDE_SITES = Object.freeze(['pageone']);
++export const GENERATED_OVERRIDE_PATH = /^(preview\/(star-performance|klar-details|cska-auto|dmts|benjamin-poon)\/)?(sitemap\.xml|sitemap\.txt|llms\.txt)$/;
++
++// Minimal XML well-formedness check (no DOM parser in the Deno runtime): one root element, every tag closed in order,
++// attribute values quoted, only the five XML entities or numeric references, no text outside the root.
++export function xmlProblem(text: string): string | null {
++  let s = text.replace(/^\uFEFF/, '');
++  s = s.replace(/^\s*<\?xml\b[^?]*\?>/, '');
++  const stack: string[] = []; let root = '', closedRoot = false, i = 0;
++  const textOk = (t: string) => !/&(?!(amp|lt|gt|quot|apos|#\d+|#x[0-9a-fA-F]+);)/.test(t) && !t.includes('<');
++  while (i < s.length) {
++    const lt = s.indexOf('<', i);
++    const chunk = s.slice(i, lt < 0 ? s.length : lt);
++    if (!textOk(chunk)) return 'bad character or entity in text';
++    if (chunk.trim() && (!stack.length)) return 'text outside the root element';
++    if (lt < 0) break;
++    if (s.startsWith('<!--', lt)) { const e = s.indexOf('-->', lt + 4); if (e < 0) return 'unclosed comment'; i = e + 3; continue; }
++    if (s.startsWith('<?', lt)) { const e = s.indexOf('?>', lt + 2); if (e < 0) return 'unclosed processing instruction'; i = e + 2; continue; }
++    if (s.startsWith('<![CDATA[', lt)) { if (!stack.length) return 'CDATA outside the root'; const e = s.indexOf(']]>', lt); if (e < 0) return 'unclosed CDATA'; i = e + 3; continue; }
++    if (s.startsWith('<!', lt)) return 'DOCTYPE/DTD is not allowed in a sitemap';
++    const gt = s.indexOf('>', lt); if (gt < 0) return 'unclosed tag';
++    const tag = s.slice(lt + 1, gt);
++    let m: RegExpExecArray | null;
++    if ((m = /^\/([A-Za-z_][\w:.-]*)\s*$/.exec(tag))) {
++      if (stack.pop() !== m[1]) return 'closing tag </' + m[1] + '> does not match';
++      if (!stack.length) closedRoot = true;
++    } else if ((m = /^([A-Za-z_][\w:.-]*)((?:\s+[A-Za-z_][\w:.-]*\s*=\s*(?:"[^"<]*"|'[^'<]*'))*)\s*(\/?)$/.exec(tag))) {
++      if (closedRoot) return 'more than one root element';
++      if (!stack.length && !root) root = m[1];
++      if (!m[3]) stack.push(m[1]); else if (!stack.length) closedRoot = true;
++    } else return 'malformed tag <' + tag.slice(0, 40) + '>';
++    i = gt + 1;
++  }
++  if (stack.length) return 'element <' + stack[stack.length - 1] + '> is not closed';
++  if (!root) return 'no root element';
++  if (!/^(urlset|sitemapindex)$/.test(root.replace(/^.*:/, ''))) return 'root element is <' + root + '>, not <urlset> or <sitemapindex>';
++  return null;
++}
++
++export function generatedFileProblem(rel: string, bytes: Uint8Array): string | null {
++  let text: string;
++  try { text = new TextDecoder('utf-8', { fatal: true }).decode(bytes); } catch { return 'not valid UTF-8 text'; }
++  const name = rel.split('/').pop();
++  if (name === 'llms.txt') return text.trim() ? null : 'llms.txt is empty';
++  if (name === 'sitemap.txt') {
++    const lines = text.split(/\r?\n/).map((l) => l.trim()).filter(Boolean);
++    if (!lines.length) return 'sitemap.txt has 0 URLs';
++    const bad = lines.find((l) => !/^https:\/\/[^\s<>"]+$/.test(l));
++    return bad ? 'sitemap.txt has a line that is not an https URL: ' + JSON.stringify(bad.slice(0, 80)) : null;
++  }
++  const x = xmlProblem(text);
++  if (x) return 'sitemap.xml is not well-formed XML (' + x + ')';
++  const locs = [...text.matchAll(/<(?:\w+:)?loc>\s*(https?:\/\/[^<\s]+)\s*<\/(?:\w+:)?loc>/g)].length;
++  return locs ? null : 'sitemap.xml has 0 URLs';
++}
++
+ const eq = (a: Uint8Array, b: Uint8Array) => a.length === b.length && a.every((x, i) => x === b[i]);
+ 
+ // Returns null when the operation may go ahead, or the refusal text (the caller must not touch the file, and logs it).
+ export async function liveGuard(args: {
+   site: string; rel: unknown; op: GuardOp; live: LiveState; newBytes?: Uint8Array;
+   overrides: readonly GuardOverride[]; sha256: (b: Uint8Array) => Promise<string>;
++  publisher?: boolean; // true only for the hourly Page One publisher's own writes (generated-file override)
+ }): Promise<string | null> {
+   const { site, op, live, newBytes, overrides, sha256 } = args;
+   const refuse = (why: string) => 'LIVE GUARD refused ' + op + ' of ' + site + ':' + String(args.rel) + ' (nothing was changed): ' + why;
+@@ -143,6 +208,10 @@
+   if (HTML.test(rel)) problems = htmlProblems(live.bytes, newBytes);
+   else if (ASSET_OK.test(rel)) problems = [];
+   else problems = ['replacing this file type (' + (rel.split('/').pop() || rel) + ') needs an override'];
++  if (args.publisher === true && GENERATED_OVERRIDE_SITES.includes(site) && GENERATED_OVERRIDE_PATH.test(rel)) {
++    const why = generatedFileProblem(rel, newBytes);
++    return why ? refuse('generated-file override: ' + why) : null;
++  }
+   if (!problems.length) return null;
+   const sha = await sha256(newBytes);
+   if (overrides.some((o) => o.site === site && o.path === rel && o.sha256 === sha && o.by === 'Edwin' && o.review)) return null;
+diff -ru pa0/base44/shared/pageoneArticles.ts pa/base44/shared/pageoneArticles.ts
+--- pa0/base44/shared/pageoneArticles.ts	2026-11-14 14:12:35.586951468 +0000
++++ pa/base44/shared/pageoneArticles.ts	2026-11-14 14:15:17.532651779 +0000
+@@ -841,7 +841,8 @@
+ 
+ async function put(rel: string, bytes: Uint8Array) {
+   const sha = await currentSha(rel);
+-  const r: any = await writeFile(SITE_KEY, rel, bytes, sha);
++  // The publisher flag lets the guard's generated-file override (sitemap.xml / sitemap.txt / llms.txt only) apply.
++  const r: any = await writeFile(SITE_KEY, rel, bytes, sha, { publisher: true });
+   return r.unchanged ? 'unchanged' : 'written';
+ }
+ 
+diff -ruN pa0/tests/generatedOverride.test.ts pa/tests/generatedOverride.test.ts
+--- pa0/tests/generatedOverride.test.ts	1970-01-01 00:00:00.000000000 +0000
++++ pa/tests/generatedOverride.test.ts	2026-11-14 14:15:04.963076220 +0000
+@@ -0,0 +1,124 @@
++// Generated-file override (sitemap.xml / sitemap.txt / llms.txt). Run:
++// deno test --no-check -A --import-map tests/importmap.json tests/generatedOverride.test.ts
++// Pure guard calls with fake live states: never touches a live site.
++import { liveGuard, xmlProblem, generatedFileProblem } from '../base44/shared/liveGuard.ts';
++
++const enc = (s: string) => new TextEncoder().encode(s);
++const sha256 = async (b: Uint8Array) => Array.from(new Uint8Array(await crypto.subtle.digest('SHA-256', b))).map((x) => x.toString(16).padStart(2, '0')).join('');
++const OLD_XML = '<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n<url><loc>https://example.sg/</loc></url>\n</urlset>\n';
++const NEW_XML = '<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n<url><loc>https://example.sg/</loc><lastmod>2026-11-14</lastmod></url>\n<url><loc>https://example.sg/a/?x=1&amp;y=2</loc></url>\n</urlset>\n';
++const live = (s: string) => ({ state: 'present' as const, bytes: enc(s) });
++const g = (site: string, rel: string, liveText: string, newText: string, publisher = true) =>
++  liveGuard({ site, rel, op: 'write', live: live(liveText), newBytes: enc(newText), overrides: [], sha256, publisher });
++const ok = async (p: Promise<string | null>) => { const r = await p; if (r !== null) throw new Error('expected allowed, got: ' + r); };
++const no = async (p: Promise<string | null>, m: RegExp) => { const r = await p; if (r === null || !m.test(r)) throw new Error('expected refusal ' + m + ', got: ' + r); };
++
++const FOLDERS = { pageone: '', star: 'preview/star-performance/', klar: 'preview/klar-details/', cska: 'preview/cska-auto/', jacky: 'preview/dmts/', ben: 'preview/benjamin-poon/' };
++
++for (const [name, pre] of Object.entries(FOLDERS)) {
++  Deno.test(`allowed for ${name}: sitemap.xml, sitemap.txt, llms.txt`, async () => {
++    await ok(g('pageone', pre + 'sitemap.xml', OLD_XML, NEW_XML));
++    await ok(g('pageone', pre + 'sitemap.txt', 'https://example.sg/\n', 'https://example.sg/\nhttps://example.sg/a/\n'));
++    await ok(g('pageone', pre + 'llms.txt', '# Old\n', '# New\n- [Home](https://example.sg/)\n'));
++  });
++}
++
++Deno.test('refused for sggarage (no override at all), same three files', async () => {
++  for (const rel of ['sitemap.xml', 'sitemap.txt', 'llms.txt']) {
++    await no(g('sggarage', rel, rel === 'sitemap.xml' ? OLD_XML : 'a\n', rel === 'sitemap.xml' ? NEW_XML : 'https://x.sg/\n'), /needs an override/);
++  }
++});
++
++Deno.test('refused for other sites and other client folders', async () => {
++  await no(g('cleanic', 'sitemap.xml', OLD_XML, NEW_XML), /needs an override/);
++  await no(g('contiexpert', 'llms.txt', 'a', 'b'), /needs an override/);
++  await no(g('pageone', 'preview/ecu-clinic/sitemap.xml', OLD_XML, NEW_XML), /needs an override/);
++  await no(g('pageone', 'preview/wrapstar/llms.txt', 'a', 'b'), /needs an override/);
++  await no(g('pageone', 'preview/star-performance/sub/sitemap.xml', OLD_XML, NEW_XML), /needs an override/);
++  await no(g('pageone', 'articles/sitemap.xml', OLD_XML, NEW_XML), /needs an override/);
++});
++
++Deno.test('refused for any other file, even from the publisher', async () => {
++  for (const rel of ['robots.txt', 'llms-full.txt', 'data.json', 'sitemap.xml.bak', 'sitemap-index.xml', 'preview/dmts/robots.txt', 'feed.xml', 'sitemap.xml.gz']) {
++    await no(g('pageone', rel, 'a', 'b'), /needs an override|refused/);
++  }
++});
++
++Deno.test('server config and code stay never-write even from the publisher', async () => {
++  await no(g('pageone', '.htaccess', 'a', 'b'), /never written/);
++  await no(g('pageone', 'preview/dmts/index.php', 'a', 'b'), /never written/);
++});
++
++Deno.test('refused when the write is not from the publisher (bulk write, MCP write_file, sync)', async () => {
++  await no(g('pageone', 'sitemap.xml', OLD_XML, NEW_XML, false), /needs an override/);
++  await no(liveGuard({ site: 'pageone', rel: 'llms.txt', op: 'write', live: live('a'), newBytes: enc('b'), overrides: [], sha256 }), /needs an override/);
++  // a truthy non-boolean is not accepted
++  await no(liveGuard({ site: 'pageone', rel: 'llms.txt', op: 'write', live: live('a'), newBytes: enc('b'), overrides: [], sha256, publisher: 'yes' as any }), /needs an override/);
++});
++
++Deno.test('bad XML refused', async () => {
++  const bad = [
++    '<urlset><url><loc>https://x.sg/</loc></url>',                       // root not closed
++    '<urlset><url><loc>https://x.sg/</url></loc></urlset>',             // wrong nesting
++    '<urlset><url><loc>https://x.sg/?a=1&b=2</loc></url></urlset>',     // raw &
++    '<urlset><url><loc>https://x.sg/</loc></url></urlset><urlset></urlset>', // two roots
++    'junk<urlset><url><loc>https://x.sg/</loc></url></urlset>',         // text outside root
++    '<html><body><loc>https://x.sg/</loc></body></html>',               // wrong root
++    '<!DOCTYPE x [<!ENTITY a "b">]><urlset><url><loc>https://x.sg/</loc></url></urlset>', // DTD
++    '<urlset><url foo=bar><loc>https://x.sg/</loc></url></urlset>',     // unquoted attribute
++    '',                                                                  // empty
++  ];
++  for (const b of bad) await no(g('pageone', 'sitemap.xml', OLD_XML, b), /generated-file override: sitemap\.xml is not well-formed XML/);
++  await no(liveGuard({ site: 'pageone', rel: 'sitemap.xml', op: 'write', live: live(OLD_XML), newBytes: new Uint8Array([0x3c, 0xff, 0xfe]), overrides: [], sha256, publisher: true }), /not valid UTF-8/);
++});
++
++Deno.test('sitemap.xml with 0 URLs refused', async () => {
++  await no(g('pageone', 'sitemap.xml', OLD_XML, '<?xml version="1.0"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n</urlset>\n'), /0 URLs/);
++  await no(g('pageone', 'preview/klar-details/sitemap.xml', OLD_XML, '<urlset><url><loc></loc></url></urlset>'), /0 URLs/);
++  await no(g('pageone', 'preview/klar-details/sitemap.xml', OLD_XML, '<urlset><url><loc>not a url</loc></url></urlset>'), /0 URLs/);
++});
++
++Deno.test('empty llms.txt refused, bad sitemap.txt refused', async () => {
++  for (const e of ['', '   \n\n\t']) await no(g('pageone', 'llms.txt', '# a', e), /llms\.txt is empty/);
++  await no(g('pageone', 'preview/benjamin-poon/llms.txt', '# a', ''), /llms\.txt is empty/);
++  await no(g('pageone', 'sitemap.txt', 'https://x.sg/\n', '\n\n'), /0 URLs/);
++  await no(g('pageone', 'sitemap.txt', 'https://x.sg/\n', 'https://x.sg/\n<script>\n'), /not an https URL/);
++  await no(g('pageone', 'sitemap.txt', 'https://x.sg/\n', 'http://x.sg/\n'), /not an https URL/);
++});
++
++Deno.test('unknown live state and path tricks still refused first', async () => {
++  const r = await liveGuard({ site: 'pageone', rel: 'sitemap.xml', op: 'write', live: { state: 'unknown', error: 'timeout' }, newBytes: enc(NEW_XML), overrides: [], sha256, publisher: true });
++  if (!r || !/could not be confirmed/.test(r)) throw new Error('got ' + r);
++  await no(g('pageone', '../sitemap.xml', OLD_XML, NEW_XML), /refused/);
++  await no(g('pageone', 'preview/star-performance/../../sitemap.xml', OLD_XML, NEW_XML), /refused/);
++  const d = await liveGuard({ site: 'pageone', rel: 'sitemap.xml', op: 'delete', live: live(OLD_XML), overrides: [], sha256, publisher: true });
++  if (!d || !/blocked/.test(d)) throw new Error('delete got ' + d);
++});
++
++Deno.test('real-shape sitemaps pass the XML check (sitemapindex, image namespace, comments, CDATA)', () => {
++  const ok2 = [
++    NEW_XML,
++    '﻿<?xml version="1.0"?><sitemapindex xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"><sitemap><loc>https://x.sg/s1.xml</loc></sitemap></sitemapindex>',
++    '<?xml version="1.0"?>\n<!-- generated -->\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">\n<url><loc>https://x.sg/</loc><image:image><image:loc>https://x.sg/a.jpg</image:loc></image:image></url>\n</urlset>',
++    "<urlset xmlns='http://www.sitemaps.org/schemas/sitemap/0.9'><url><loc>https://x.sg/</loc><x><![CDATA[a & <b>]]></x><y/></url></urlset>",
++  ];
++  for (const x of ok2) { const p = generatedFileProblem('sitemap.xml', enc(x)); if (p) throw new Error(p + ' for ' + x.slice(0, 60)); }
++  if (xmlProblem('<urlset><a></b></urlset>') === null) throw new Error('mismatch passed');
++});
++
++Deno.test('wiring: only the publisher put() passes publisher: true, and writeFile forwards it strictly', async () => {
++  const ops = await Deno.readTextFile(new URL('../base44/shared/bridgeOps.ts', import.meta.url));
++  if (!ops.includes("publisher: opts.publisher === true")) throw new Error('writeFile does not forward publisher strictly');
++  const hits: string[] = [];
++  for await (const f of walk(new URL('../base44/', import.meta.url))) {
++    const t = await Deno.readTextFile(f);
++    for (const m of t.matchAll(/publisher:\s*true/g)) hits.push(f.pathname.replace(/.*base44\//, '') + '@' + t.slice(0, m.index).split('\n').length);
++  }
++  if (hits.length !== 1 || !hits[0].startsWith('shared/pageoneArticles.ts@')) throw new Error('publisher: true found at ' + JSON.stringify(hits));
++});
++async function* walk(dir: URL): AsyncGenerator<URL> {
++  for await (const e of Deno.readDir(dir)) {
++    const u = new URL(e.name + (e.isDirectory ? '/' : ''), dir);
++    if (e.isDirectory) yield* walk(u); else if (/\.(ts|js)$/.test(e.name)) yield u;
++  }
++}
