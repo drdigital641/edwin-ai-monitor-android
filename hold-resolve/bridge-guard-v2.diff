@@ -1,0 +1,164 @@
+diff -ru a/base44/shared/bridgeConfig.ts b/base44/shared/bridgeConfig.ts
+--- a/base44/shared/bridgeConfig.ts
++++ b/base44/shared/bridgeConfig.ts
+@@ -1,3 +1,4 @@
++import type { GuardOverride } from './liveGuard.ts';
+ // Bluehost Bridge: one cPanel-over-HTTPS method for every website on account sgmodde1.
+ // The token lives only in the app secret CPANEL_TOKEN. Nothing here is secret.
+ export const CPANEL = Object.freeze({
+@@ -138,3 +139,8 @@
+   const h = activeHold(site, rel);
+   return h ? 'BRIDGE HOLD is ON for ' + h.name + ' (flag "' + h.key + '"): no write, sync, push or restore of its live files until Edwin lifts it. Nothing was changed.' : null;
+ }
++
++// LIVE GUARD overrides. Base44 backend code is LIVE AS SOON AS IT IS SAVED (not on Publish), so an entry here is
++// live the moment it is saved. Any edit to this list needs security review AND Edwin's own written yes BEFORE saving.
++// Each entry allows only the exact new bytes (site, path, sha256); server config/code files can never be overridden.
++export const GUARD_OVERRIDES: readonly GuardOverride[] = Object.freeze([]);
+diff -ru a/base44/shared/bridgeOps.ts b/base44/shared/bridgeOps.ts
+--- a/base44/shared/bridgeOps.ts
++++ b/base44/shared/bridgeOps.ts
+@@ -1,7 +1,8 @@
+ // Safe file operations for every site. All writes follow one path:
+ // read + version check -> verified private backup -> upload -> byte-exact readback
+ // -> automatic restore if the readback does not match.
+-import { CPANEL, SITES, PRIVATE_ROOT, BACKUP_ROOT, MAX_FILE_BYTES, SERVER_CONFIG_ALLOWED, SERVER_CONFIG_ROLLBACK, PINNED_SERVER_CONFIG, readBlockedReason, writeBlockedReason, holdReason } from './bridgeConfig.ts';
++import { liveGuard, type LiveState } from './liveGuard.ts';
++import { CPANEL, SITES, PRIVATE_ROOT, BACKUP_ROOT, MAX_FILE_BYTES, SERVER_CONFIG_ALLOWED, SERVER_CONFIG_ROLLBACK, PINNED_SERVER_CONFIG, readBlockedReason, writeBlockedReason, holdReason, GUARD_OVERRIDES } from './bridgeConfig.ts';
+ import { uapi, api2, checkResult } from './cpanel.ts';
+
+ export class BridgeError extends Error {
+@@ -272,7 +273,15 @@
+   const { root, abs } = await resolvePath(site, rel);
+   const expected = typeof expectedSha === 'string' && expectedSha ? expectedSha.toLowerCase() : null;
+
++  // LIVE GUARD v2 (14 Nov 2026): live state from the server's own listing + exact-path cPanel read (never HTTP).
++  // Unknown state, delete/move, server config/code and unsafe paths are refused before any backup or upload.
++  const live = await probeLive(site, rel);
++  const guard = await liveGuard({ site, rel: relInput, op: 'write', live, newBytes: bytes, overrides: GUARD_OVERRIDES, sha256 });
++  if (guard) throw new BridgeError(guard, 409);
++  const liveSha = live.state === 'present' ? await sha256(live.bytes) : null;
++
+   const current = opts.current ?? await readBytes(abs);
++  if ((current ? current.sha256 : null) !== liveSha) throw new BridgeError('LIVE GUARD: the live file changed while it was being checked; nothing was changed. Try again.', 409);
+   if (current) {
+     if (!expected && !opts.overwrite) throw new BridgeError('expected_sha256 is required to overwrite ' + rel + '. Read the file first (current sha256: ' + current.sha256 + ')', 409);
+     if (expected && expected !== current.sha256) throw new BridgeError('The live file changed since you read it (now ' + current.sha256 + '). Read it again and redo the change.', 409);
+@@ -286,6 +295,10 @@
+   }
+
+   const backup = current ? await backupFile(site, rel, abs, current.sha256) : null;
++  // Narrow the race: re-read the live state from the server just before the upload.
++  const again = await probeLive(site, rel);
++  const againSha = again.state === 'present' ? await sha256(again.bytes) : again.state === 'absent' ? null : 'unknown';
++  if (againSha !== liveSha) throw new BridgeError('LIVE GUARD: the live file changed just before the write; nothing was changed. Try again.', 409);
+   if (!current) await ensureDirTree(splitAbs(abs).dir, '0755', root);
+
+   // Overwriting with the same bytes is safe to repeat, and every attempt is verified.
+@@ -578,3 +591,39 @@
+ }
+
+ function errText(e: unknown) { return e instanceof Error ? e.message : e ? String(e) : 'content mismatch after upload'; }
++
++// ---------- LIVE GUARD v2: live state from the server (14 Nov 2026) ----------
++// absent  = the parent folder's cPanel listing was read and has no entry with that name (or the parent folder is
++//           itself confirmed absent the same way, up to the site root); never judged from HTTP.
++// present = the listing shows a regular file and its bytes were read from that exact path (get_file_content).
++// unknown = listing/read error, symlink, folder or any other type. The guard refuses unknown.
++export async function probeLive(site: string, rel: string): Promise<LiveState> {
++  try {
++    const { root, abs } = await resolvePath(site, rel);
++    const type = await listedType(abs, root);
++    if (type === 'absent') return { state: 'absent' };
++    if (type !== 'file') return { state: 'unknown', error: 'not a regular file on the server (' + type + ')' };
++    const f = await readBytes(abs);
++    if (!f) return { state: 'unknown', error: 'listed on the server but could not be read' };
++    return { state: 'present', bytes: f.bytes };
++  } catch (e) {
++    return { state: 'unknown', error: errText(e) };
++  }
++}
++
++async function listedType(abs: string, root: string): Promise<string> {
++  const { dir, file } = splitAbs(abs);
++  if (!(dir === root || dir.startsWith(root + '/'))) throw new Error('outside the site folder');
++  let rows: any[];
++  try {
++    rows = checkResult(await uapi('Fileman', 'list_files', {
++      dir, types: 'file|dir|link|char|block|fifo|socket', show_hidden: '1', include_mime: '0', include_permissions: '0',
++    }), 'list_files') || [];
++  } catch (e) {
++    if (dir === root) throw e;                                   // never look above the site root
++    if (await listedType(dir, root) === 'absent') return 'absent'; // parent folder confirmed missing
++    throw e;
++  }
++  const hit = rows.find((r: any) => String(r.file) === file);
++  return hit ? String(hit.type) : 'absent';
++}
+diff -ru a/base44/shared/bulkWrite.ts b/base44/shared/bulkWrite.ts
+--- a/base44/shared/bulkWrite.ts
++++ b/base44/shared/bulkWrite.ts
+@@ -2,8 +2,9 @@
+ // Every file goes through the same writeFile path as write_file (blocked types, path checks,
+ // site isolation, verified backup before overwrite, byte-exact readback, auto-restore on
+ // mismatch). Writes run a few at a time; each file gets its own result, nothing is hidden.
+-import { MAX_FILE_BYTES, writeBlockedReason, holdReason } from './bridgeConfig.ts';
+-import { BridgeError, normalizeRel, decodeInputBytes, writeFile, prepareFolders, mapLimit, sha256 } from './bridgeOps.ts';
++import { MAX_FILE_BYTES, writeBlockedReason, holdReason, GUARD_OVERRIDES } from './bridgeConfig.ts';
++import { liveGuard } from './liveGuard.ts';
++import { BridgeError, normalizeRel, decodeInputBytes, writeFile, prepareFolders, mapLimit, sha256, probeLive } from './bridgeOps.ts';
+ import { assertNotClaimed } from './sync.ts';
+ import type { ToolContext } from './handler.ts';
+
+@@ -87,10 +88,31 @@
+   // Respect the other AI's claims: one claimed file refuses the batch before any write.
+   await mapLimit(plan.files, 8, (f) => assertNotClaimed(ctx.base44, ctx.agent, site, f.path));
+
++  // LIVE GUARD v2 + compare (14 Nov 2026): read every live file from the server first. A dry run reports what would
++  // change (same / update / create / unknown) and what the guard refuses; a real run refuses the WHOLE batch before any
++  // write when one file is refused, and logs every refusal.
++  const checked = await mapLimit(plan.files, 4, async (f) => {
++    const live = await probeLive(site, f.path);
++    const sha = await sha256(f.bytes);
++    const liveSha = live.state === 'present' ? await sha256(live.bytes) : null;
++    const refused = await liveGuard({ site, rel: f.path, op: 'write', live, newBytes: f.bytes, overrides: GUARD_OVERRIDES, sha256 });
++    return { path: f.path, bytes: f.bytes.length, sha256: sha, live_sha256: liveSha,
++      live: live.state === 'unknown' ? 'unknown' : live.state === 'absent' ? 'create' : liveSha === sha ? 'same' : 'update', guard: refused };
++  });
++  const refusals = checked.filter((c) => c.guard);
++  const n = (k: string) => checked.filter((c) => c.live === k).length;
++  const compare = { same: n('same'), update: n('update'), create: n('create'), unknown: n('unknown'), refused: refusals.length };
++
+   if (opts.dryRun) {
+     return { dry_run: true, site, base_path: plan.base || '/', overwrite: plan.overwrite,
+-      totals: { files: plan.files.length, bytes: plan.totalBytes },
+-      files: await Promise.all(plan.files.map(async (f) => ({ path: f.path, bytes: f.bytes.length, sha256: await sha256(f.bytes) }))) };
++      totals: { files: plan.files.length, bytes: plan.totalBytes }, compare,
++      would_change: checked.filter((c) => c.live !== 'same'), guard_refusals: refusals.map((c) => c.guard) };
++  }
++  if (refusals.length) {
++    await mapLimit(refusals, 8, async (c) => {
++      try { await ctx.base44.asServiceRole.entities.BridgeLog.create({ action: 'live-guard-refused', ok: false, site, path: c.path, error: c.guard, actor: ctx.email, duration_ms: Date.now() - started }); } catch { /* logging must not hide the refusal */ }
++    });
++    throw new BridgeError('Nothing was written. LIVE GUARD refused ' + refusals.length + ' of ' + plan.files.length + ' file(s): ' + refusals.slice(0, 5).map((c) => c.guard).join(' | '), 409);
+   }
+
+   await prepareFolders(site, plan.files.map((f) => f.path));
+diff -ru a/base44/shared/pageoneArticles.ts b/base44/shared/pageoneArticles.ts
+--- a/base44/shared/pageoneArticles.ts
++++ b/base44/shared/pageoneArticles.ts
+@@ -967,10 +967,10 @@
+     }
+   }
+
+-  if (!deployBlocked) {
+-    results.push(await publishServerRules(known, save));
+-    results.push(...await publishPinnedServerFiles(known, save));
+-  }
++  // LIVE GUARD v2 (14 Nov 2026, security review): the publisher never writes any .htaccess (server rules and pinned
++  // server files are no longer published from here; change them by hand in cPanel).
++  void deployBlocked; void publishServerRules; void publishPinnedServerFiles;
++  results.push({ path: '.htaccess (server rules + pinned server files)', status: 'blocked', error: 'The publisher never writes .htaccess (live guard).' });
+
+   const shared: [string, string][] = [
+     ['articles/index.html', indexPage(list)], ['sitemap.xml', sitemapXml(list)],

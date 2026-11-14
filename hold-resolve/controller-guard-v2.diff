@@ -1,0 +1,132 @@
+diff -ru a/base44/shared/bluehostFiles.ts b/base44/shared/bluehostFiles.ts
+--- a/base44/shared/bluehostFiles.ts
++++ b/base44/shared/bluehostFiles.ts
+@@ -5,6 +5,11 @@
+ import { createClientFromRequest } from 'npm:@base44/sdk@0.8.44';
+ import { secrets } from 'base44:runtime';
+ import { FtpClient } from './ftpClient.ts';
++import { liveGuard, type LiveState } from './liveGuard.ts';
++
++// LIVE GUARD overrides. Base44 backend code is LIVE AS SOON AS IT IS SAVED (not on Publish), so an entry here is
++// live the moment it is saved. Any edit to this list needs security review AND Edwin's own written yes BEFORE saving.
++export const GUARD_OVERRIDES = Object.freeze([]);
+
+ export const SITE_ORIGIN = 'https://pageonesingapore.com';
+ const DEFAULT_FTP_HOST = 'ftp.pageonesingapore.com';
+@@ -154,8 +159,15 @@
+   const ftp = await connectFtp();
+   const entry = { action, path: rel, actor, after_sha256: afterSha, bytes: bytes.length, ok: false };
+   try {
++    // LIVE GUARD v2 (14 Nov 2026): live state from the FTP server's own listing + exact-path RETR (never HTTP).
++    // Unknown state, delete/move, server config/code and unsafe paths are refused before any backup or upload.
++    const liveState = await probeLiveFtp(ftp, rel);
++    const guard = await liveGuard({ site: 'pageone', rel, op: 'write', live: liveState, newBytes: bytes, overrides: GUARD_OVERRIDES, sha256 });
++    if (guard) throw new HttpError(guard, 409);
++    const liveSha = liveState.state === 'present' ? await sha256(liveState.bytes) : null;
+     const current = await ftp.download(rel);
+     const beforeSha = current ? await sha256(current) : null;
++    if (beforeSha !== liveSha) throw new HttpError('LIVE GUARD: the live file changed while it was being checked; nothing was changed. Try again.', 409);
+     entry.before_sha256 = beforeSha;
+     const expected = typeof expectedSha === 'string' && expectedSha ? expectedSha.toLowerCase() : null;
+     if (current && !expected) throw new HttpError('expected_sha256 is required to overwrite ' + rel + ' (current sha256: ' + beforeSha + ')', 409);
+@@ -177,6 +189,13 @@
+       await ftp.remove(temp).catch(() => {});
+       throw new HttpError('Upload could not be verified; the live file was not touched.', 502);
+     }
++    // Narrow the race: re-check the live file from the server just before the rename into place.
++    const again = await probeLiveFtp(ftp, rel);
++    const againSha = again.state === 'present' ? await sha256(again.bytes) : again.state === 'absent' ? null : 'unknown';
++    if (againSha !== liveSha) {
++      await ftp.remove(temp).catch(() => {});
++      throw new HttpError('LIVE GUARD: the live file changed just before the write; nothing was changed. Try again.', 409);
++    }
+     await ftp.rename(temp, rel);
+     const live = await ftp.download(rel);
+     if (live && await sha256(live) === afterSha) {
+@@ -221,3 +240,34 @@
+     }
+   };
+ }
++
++// ---------- LIVE GUARD v2: live state from the FTP server (14 Nov 2026) ----------
++// absent  = the parent folder's MLSD listing was read and has no entry with that name (or the parent folder is itself
++//           confirmed absent the same way, up to the FTP root); never judged from HTTP.
++// present = MLSD lists a regular file (type=file) and RETR of that exact path returned its bytes.
++// unknown = anything else (550 on a listed file, listing error, symlink, folder): the guard refuses it.
++async function probeLiveFtp(ftp: any, rel: string): Promise<LiveState> {
++  try {
++    const i = rel.lastIndexOf('/');
++    const type = await ftpListedType(ftp, i < 0 ? '' : rel.slice(0, i), rel.slice(i + 1));
++    if (type === 'absent') return { state: 'absent' };
++    if (type !== 'file') return { state: 'unknown', error: 'not a regular file on the server (' + type + ')' };
++    const bytes = await ftp.download(rel);
++    if (!bytes) return { state: 'unknown', error: 'listed on the server but could not be read' };
++    return { state: 'present', bytes };
++  } catch (e) {
++    return { state: 'unknown', error: String(e?.message || e).slice(0, 200) };
++  }
++}
++
++async function ftpListedType(ftp, dir, name) {
++  const rows = await ftp.listAll(dir);
++  if (rows === null) {
++    if (!dir) throw new Error('the site folder listing failed');
++    const j = dir.lastIndexOf('/');
++    if (await ftpListedType(ftp, j < 0 ? '' : dir.slice(0, j), dir.slice(j + 1)) === 'absent') return 'absent';
++    throw new Error('listing of ' + dir + ' failed');
++  }
++  const hit = rows.find((r) => r.name === name);
++  return hit ? hit.type : 'absent';
++}
+diff -ru a/base44/shared/ftpClient.ts b/base44/shared/ftpClient.ts
+--- a/base44/shared/ftpClient.ts
++++ b/base44/shared/ftpClient.ts
+@@ -120,6 +120,8 @@
+ }
+
+ // One logged-in connection. Paths are relative to the account's home folder.
++const TEMP_UPLOAD = /(^|\/)tmp-upload-[0-9a-f]{8}-[^/]+$/;
++
+ export class FtpClient {
+   constructor(host, session, socket) {
+     this.host = host;
+@@ -187,12 +189,16 @@
+     if (![226, 250].includes(done.code)) throw new Error('Upload failed (' + done.code + ' ' + done.text + ')');
+   }
+
++  // LIVE GUARD v2 (14 Nov 2026): only a fresh temp upload made by safeWrite may be renamed or removed. Moving,
++  // renaming or deleting any other (live) file is blocked here, below every caller.
+   async rename(fromRel, toRel) {
++    if (!TEMP_UPLOAD.test(fromRel)) throw new Error('LIVE GUARD: moving or renaming a live file is blocked');
+     await this.session.command('RNFR ' + this.abs(fromRel), [350]);
+     await this.session.command('RNTO ' + this.abs(toRel), [250]);
+   }
+
+   async remove(rel) {
++    if (!TEMP_UPLOAD.test(rel)) throw new Error('LIVE GUARD: deleting a live file is blocked');
+     await this.session.command('DELE ' + this.abs(rel), [250]);
+   }
+
+@@ -206,6 +212,22 @@
+     }
+   }
+
++  // LIVE GUARD v2: every entry of one folder with its raw MLSD type (file, dir, OS.unix=slink:..., ...), or null on 550.
++  async listAll(relDir) {
++    const data = await this.openData();
++    const reply = await this.session.command('MLSD ' + (relDir ? this.abs(relDir) : this.home || '/'), null);
++    if (reply.code === 550) { data.destroy(); return null; }
++    if (![125, 150].includes(reply.code)) { data.destroy(); throw new Error('MLSD failed (' + reply.code + ' ' + reply.text + ')'); }
++    const text = new TextDecoder().decode(await receiveBytes(data));
++    const done = await this.session.readReply();
++    if (![226, 250].includes(done.code)) throw new Error('Listing failed (' + done.code + ' ' + done.text + ')');
++    return text.split(/\r?\n/).filter(Boolean).map((line) => {
++      const space = line.indexOf(' ');
++      const type = (line.slice(0, space).split(';').find((f) => /^type=/i.test(f)) || 'type=unknown').slice(5).toLowerCase();
++      return { name: line.slice(space + 1), type };
++    });
++  }
++
+   // Machine-readable listing (MLSD): [{ name, type, size, modified }].
+   async list(relDir) {
+     const data = await this.openData();
