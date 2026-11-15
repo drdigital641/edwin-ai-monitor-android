@@ -9,6 +9,7 @@ SITES = {  # key: (base url, source folder in this repo)
     'ktech': ('https://ktech.my', 'autoseo-clients/ktech/site'),
     'benzworld': ('https://benzworld.my', 'autoseo-clients/benz-world/site'),
     'lilian': ('https://lilianproperties.com', 'pageone-site/clients/lilian-properties/site'),
+    'carzy': ('https://carzyworld.com.my', 'autoseo-clients/carzy-world/site'),
 }
 only = sys.argv[1:] or list(SITES)
 UA = 'Mozilla/5.0 (compatible; PageOneLiveSnapshot/1.0; read-only)'
@@ -58,7 +59,7 @@ for site in only:
         manifest.append((rel, hashlib.sha256(body).hexdigest(), len(body)))
         if rel.endswith(('.html', '.htm', '.css', '.xml', '.webmanifest', '.json', '.txt')):
             text = body.decode('utf-8', 'replace')
-            refs = re.findall(r'''(?:href|src|content)\s*=\s*["']([^"'#]+)''', text) + re.findall(r'''url\(\s*["']?([^"')]+)''', text)
+            refs = re.findall(r'''(?:href|src)\s*=\s*["']([^"'#]+)''', text) + re.findall(r'''url\(\s*["']?([^"')]+)''', text)
             refs += [s.strip().split(' ')[0] for ss in re.findall(r'''srcset\s*=\s*["']([^"']+)''', text) for s in ss.split(',')]
             refs += re.findall(r'<loc>([^<]+)</loc>', text) + re.findall(r'''"(?:src|href|url)"\s*:\s*"([^"]+)"''', text)
             refs += re.findall(r'''https?://[^\s"'<>)]+''', text) if rel.endswith('.txt') else []
