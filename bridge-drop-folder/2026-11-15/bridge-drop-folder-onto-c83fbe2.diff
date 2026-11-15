@@ -1,0 +1,1168 @@
+diff -ruN pbase/base44/entities/BridgeDrop.jsonc pnew/base44/entities/BridgeDrop.jsonc
+--- pbase/base44/entities/BridgeDrop.jsonc	1970-01-01 00:00:00.000000000 +0000
++++ pnew/base44/entities/BridgeDrop.jsonc	2026-11-15 02:45:33.653803087 +0000
+@@ -0,0 +1,29 @@
++{
++  "name": "BridgeDrop",
++  "type": "object",
++  "properties": {
++    "target": { "type": "string", "description": "Live domain the drop is for, e.g. maisoninteriordesign.sg" },
++    "site": { "type": "string", "description": "Bridge site key the files may be published to (e.g. pageone)" },
++    "base_path": { "type": "string", "description": "Folder inside that site (e.g. preview/maison-interior-design); empty = site root" },
++    "job": { "type": "string", "description": "Job slug, e.g. grand-dunman" },
++    "state": { "type": "string", "enum": ["open", "ready", "published", "cleared", "expired"], "default": "open" },
++    "created_by_label": { "type": "string", "description": "BridgeKey label of the bot key that opened the drop (never the key)" },
++    "created_by_actor": { "type": "string" },
++    "last_drop_at": { "type": "string", "format": "date-time" },
++    "ready_at": { "type": "string", "format": "date-time" },
++    "expires_at": { "type": "string", "format": "date-time" },
++    "published_at": { "type": "string", "format": "date-time" },
++    "published_by": { "type": "string" },
++    "cleared_at": { "type": "string", "format": "date-time" },
++    "cleared_by": { "type": "string" },
++    "bot_note": { "type": "string", "description": "Short note from the bot (max 500)" },
++    "review_note": { "type": "string", "description": "Claude's note (why cleared or refused)" }
++  },
++  "required": ["target", "site", "job", "state", "expires_at"],
++  "rls": {
++    "read": { "user_condition": { "role": "admin" } },
++    "create": { "user_condition": { "role": "admin" } },
++    "update": { "user_condition": { "role": "admin" } },
++    "delete": { "user_condition": { "role": "admin" } }
++  }
++}
+diff -ruN pbase/base44/entities/BridgeDropFile.jsonc pnew/base44/entities/BridgeDropFile.jsonc
+--- pbase/base44/entities/BridgeDropFile.jsonc	1970-01-01 00:00:00.000000000 +0000
++++ pnew/base44/entities/BridgeDropFile.jsonc	2026-11-15 02:45:33.653849541 +0000
+@@ -0,0 +1,24 @@
++{
++  "name": "BridgeDropFile",
++  "type": "object",
++  "properties": {
++    "drop_id": { "type": "string" },
++    "path": { "type": "string", "description": "Path inside the drop, e.g. images/hero.webp" },
++    "ext": { "type": "string" },
++    "kind": { "type": "string", "enum": ["json", "image", "text"] },
++    "bytes": { "type": "number" },
++    "sha256": { "type": "string" },
++    "dropped_at": { "type": "string", "format": "date-time" },
++    "dropped_by": { "type": "string", "description": "BridgeKey label (never the key)" },
++    "state": { "type": "string", "enum": ["stored", "replaced", "cleared"], "default": "stored" },
++    "published_to": { "type": "string", "description": "site:path it was published to" },
++    "published_at": { "type": "string", "format": "date-time" }
++  },
++  "required": ["drop_id", "path", "sha256", "state"],
++  "rls": {
++    "read": { "user_condition": { "role": "admin" } },
++    "create": { "user_condition": { "role": "admin" } },
++    "update": { "user_condition": { "role": "admin" } },
++    "delete": { "user_condition": { "role": "admin" } }
++  }
++}
+diff -ruN pbase/base44/entities/BridgeKey.jsonc pnew/base44/entities/BridgeKey.jsonc
+--- pbase/base44/entities/BridgeKey.jsonc	2026-11-15 02:24:27.000000000 +0000
++++ pnew/base44/entities/BridgeKey.jsonc	2026-11-15 02:45:33.653196795 +0000
+@@ -26,10 +26,11 @@
+     },
+     "scope": {
+       "default": "full",
+-      "description": "full = all bridge tools (ChatGPT). overview = read-only overview for the Page One Controller, nothing else. site:<site> = that one website's automation may list, read and write its own files only.",
++      "description": "full = all bridge tools (ChatGPT). overview = read-only overview for the Page One Controller, nothing else. site:<site> = that one website's automation may list, read and write its own files only. drop = a bot may only put files in the private drop folder and read drop status.",
+       "enum": [
+         "full",
+         "overview",
++        "drop",
+         "site:cleanic",
+         "site:pageone"
+       ],
+diff -ruN pbase/base44/functions/bridgeDropClear/entry.ts pnew/base44/functions/bridgeDropClear/entry.ts
+--- pbase/base44/functions/bridgeDropClear/entry.ts	1970-01-01 00:00:00.000000000 +0000
++++ pnew/base44/functions/bridgeDropClear/entry.ts	2026-11-15 02:45:33.656212596 +0000
+@@ -0,0 +1,5 @@
++import { bridgeTool } from '../../shared/handler.ts';
++import { dropClear } from '../../shared/drops.ts';
++
++// BOT DROP FOLDER: wipe a drop's files after publish (or when refused). Session only.
++export default bridgeTool('drop_clear', (body, ctx) => dropClear(body, ctx), { needsSite: false, sessionOnly: true, logs: true });
+diff -ruN pbase/base44/functions/bridgeDropList/entry.ts pnew/base44/functions/bridgeDropList/entry.ts
+--- pbase/base44/functions/bridgeDropList/entry.ts	1970-01-01 00:00:00.000000000 +0000
++++ pnew/base44/functions/bridgeDropList/entry.ts	2026-11-15 02:45:33.655959347 +0000
+@@ -0,0 +1,5 @@
++import { bridgeTool } from '../../shared/handler.ts';
++import { dropList } from '../../shared/drops.ts';
++
++// BOT DROP FOLDER: Claude's signed-in session only (every API key refused).
++export default bridgeTool('drop_list', (body, ctx) => dropList(body, ctx), { needsSite: false, sessionOnly: true });
+diff -ruN pbase/base44/functions/bridgeDropPublish/entry.ts pnew/base44/functions/bridgeDropPublish/entry.ts
+--- pbase/base44/functions/bridgeDropPublish/entry.ts	1970-01-01 00:00:00.000000000 +0000
++++ pnew/base44/functions/bridgeDropPublish/entry.ts	2026-11-15 02:45:33.656132877 +0000
+@@ -0,0 +1,6 @@
++import { bridgeTool } from '../../shared/handler.ts';
++import { dropPublish } from '../../shared/drops.ts';
++
++// BOT DROP FOLDER: Claude places reviewed dropped files on the drop's site through writeFile (every live guard,
++// expected_sha256 for each replace, private backup, verified readback). Session only: no API key can publish.
++export default bridgeTool('drop_publish', (body, ctx) => dropPublish(body, ctx), { needsSite: false, sessionOnly: true, logs: true });
+diff -ruN pbase/base44/functions/bridgeDropPut/entry.ts pnew/base44/functions/bridgeDropPut/entry.ts
+--- pbase/base44/functions/bridgeDropPut/entry.ts	1970-01-01 00:00:00.000000000 +0000
++++ pnew/base44/functions/bridgeDropPut/entry.ts	2026-11-15 02:45:33.655795427 +0000
+@@ -0,0 +1,6 @@
++import { bridgeTool } from '../../shared/handler.ts';
++import { dropPut } from '../../shared/drops.ts';
++
++// BOT DROP FOLDER (Edwin 15 Nov 2026): a bot (drop key) stores ONE file in the private drop folder, or marks a drop ready.
++// Never writes a website. POST https://blue-bridge-pilot.base44.app/functions/bridgeDropPut with header X-Bridge-Key.
++export default bridgeTool('drop_put', (body, ctx) => dropPut(body, ctx), { needsSite: false, logs: true });
+diff -ruN pbase/base44/functions/bridgeDropRead/entry.ts pnew/base44/functions/bridgeDropRead/entry.ts
+--- pbase/base44/functions/bridgeDropRead/entry.ts	1970-01-01 00:00:00.000000000 +0000
++++ pnew/base44/functions/bridgeDropRead/entry.ts	2026-11-15 02:45:33.656051669 +0000
+@@ -0,0 +1,5 @@
++import { bridgeTool } from '../../shared/handler.ts';
++import { dropRead } from '../../shared/drops.ts';
++
++// BOT DROP FOLDER: Claude reviews one dropped file (text content, or image size + sha). Session only.
++export default bridgeTool('drop_read', (body, ctx) => dropRead(body, ctx), { needsSite: false, sessionOnly: true });
+diff -ruN pbase/base44/functions/bridgeDropStatus/entry.ts pnew/base44/functions/bridgeDropStatus/entry.ts
+--- pbase/base44/functions/bridgeDropStatus/entry.ts	1970-01-01 00:00:00.000000000 +0000
++++ pnew/base44/functions/bridgeDropStatus/entry.ts	2026-11-15 02:45:33.655880544 +0000
+@@ -0,0 +1,5 @@
++import { bridgeTool } from '../../shared/handler.ts';
++import { dropStatus } from '../../shared/drops.ts';
++
++// BOT DROP FOLDER: the bot's own drops with file names, sizes, sha256 and state. Never returns file content.
++export default bridgeTool('drop_status', (body, ctx) => dropStatus(body, ctx), { needsSite: false });
+diff -ruN pbase/base44/mcp/config.json pnew/base44/mcp/config.json
+--- pbase/base44/mcp/config.json	2026-11-15 02:24:27.000000000 +0000
++++ pnew/base44/mcp/config.json	2026-11-15 02:45:33.656337220 +0000
+@@ -866,6 +866,154 @@
+         },
+         "handler": "bridgeClaim",
+         "disabled": false
++      },
++      {
++        "name": "drop_list",
++        "title": "List bot drops",
++        "description": "List files that Edwin's bots dropped in the Bridge drop folder (private, never served): drop_id, site (live domain), job, state (open/ready/published/cleared/expired), who dropped what and when, and each file's path, size and sha256. Signed-in session only.",
++        "input_schema": {
++          "type": "object",
++          "required": [],
++          "properties": {
++            "state": {
++              "type": "string",
++              "enum": [
++                "open",
++                "ready",
++                "published",
++                "cleared",
++                "expired"
++              ]
++            },
++            "limit": {
++              "type": "integer",
++              "minimum": 1,
++              "maximum": 50
++            }
++          }
++        },
++        "annotations": {
++          "read_only_hint": true,
++          "destructive_hint": false,
++          "idempotent_hint": true,
++          "open_world_hint": null
++        },
++        "handler": "bridgeDropList",
++        "disabled": false
++      },
++      {
++        "name": "drop_read",
++        "title": "Review a dropped file",
++        "description": "Read one dropped file for review: text/JSON content, or image width/height. Proves the stored file is exactly what the bot dropped (sha256) and re-runs the type and secret checks.",
++        "input_schema": {
++          "type": "object",
++          "required": [
++            "drop_id",
++            "path"
++          ],
++          "properties": {
++            "drop_id": {
++              "type": "string"
++            },
++            "path": {
++              "type": "string",
++              "description": "Path inside the drop, e.g. images/hero.webp"
++            }
++          }
++        },
++        "annotations": {
++          "read_only_hint": true,
++          "destructive_hint": false,
++          "idempotent_hint": true,
++          "open_world_hint": null
++        },
++        "handler": "bridgeDropRead",
++        "disabled": false
++      },
++      {
++        "name": "drop_publish",
++        "title": "Publish dropped files to their site",
++        "description": "Place reviewed dropped files on the drop's own site through the normal guarded write (HOLD, blocked names, live guard, private backup, verified readback). Each file keeps its type. Replacing a live file needs expected_sha256 = its live sha (read_live_file or the dry run). Files are checked first; one problem refuses the batch. Use dry_run first. Signed-in session only: bot keys can never publish.",
++        "input_schema": {
++          "type": "object",
++          "required": [
++            "drop_id",
++            "files"
++          ],
++          "properties": {
++            "drop_id": {
++              "type": "string"
++            },
++            "base_path": {
++              "type": "string",
++              "description": "Optional folder inside the drop's site; defaults to the drop's folder (e.g. preview/maison-interior-design) and must stay inside it."
++            },
++            "files": {
++              "type": "array",
++              "minItems": 1,
++              "maxItems": 40,
++              "items": {
++                "type": "object",
++                "required": [
++                  "from",
++                  "to"
++                ],
++                "properties": {
++                  "from": {
++                    "type": "string",
++                    "description": "Path inside the drop"
++                  },
++                  "to": {
++                    "type": "string",
++                    "description": "Path relative to base_path, e.g. images/new-launches/grand-dunman-v4/hero.webp"
++                  },
++                  "expected_sha256": {
++                    "type": "string",
++                    "description": "Live sha256 when the target already exists and differs"
++                  }
++                }
++              }
++            },
++            "dry_run": {
++              "type": "boolean"
++            }
++          }
++        },
++        "annotations": {
++          "read_only_hint": false,
++          "destructive_hint": false,
++          "idempotent_hint": true,
++          "open_world_hint": null
++        },
++        "handler": "bridgeDropPublish",
++        "disabled": false
++      },
++      {
++        "name": "drop_clear",
++        "title": "Clear a drop",
++        "description": "After the page is live and checked (or when a drop is refused), wipe the drop's files from the private folder and mark it cleared. Drops also expire 7 days after they open.",
++        "input_schema": {
++          "type": "object",
++          "required": [
++            "drop_id"
++          ],
++          "properties": {
++            "drop_id": {
++              "type": "string"
++            },
++            "reason": {
++              "type": "string"
++            }
++          }
++        },
++        "annotations": {
++          "read_only_hint": false,
++          "destructive_hint": true,
++          "idempotent_hint": true,
++          "open_world_hint": null
++        },
++        "handler": "bridgeDropClear",
++        "disabled": false
+       }
+     ]
+   }
+diff -ruN pbase/base44/shared/bridgeOps.ts pnew/base44/shared/bridgeOps.ts
+--- pbase/base44/shared/bridgeOps.ts	2026-11-15 02:24:27.000000000 +0000
++++ pnew/base44/shared/bridgeOps.ts	2026-11-15 02:45:33.656652311 +0000
+@@ -712,3 +712,25 @@
+   const hit = rows.find((r: any) => String(r.file) === file);
+   return hit ? String(hit.type) : 'absent';
+ }
++
++// ---------- BOT DROP FOLDER (Edwin 15 Nov 2026 10:31am SGT) ----------
++// Bot-prepared files are kept in ~/bluehost-bridge-private/drops/<drop id>/<path>: outside public_html (never served,
++// never indexable) and inside the private folder the cPanel choke point already allows. No site file is touched here;
++// placing a dropped file on a site goes through writeFile() above with every guard (drops.ts dropPublish).
++export const DROP_ROOT = PRIVATE_ROOT + '/drops';
++const DROP_REL = /^[A-Za-z0-9]{6,40}(\/[A-Za-z0-9][A-Za-z0-9_-]{0,99}){0,2}\/[A-Za-z0-9][A-Za-z0-9_-]{0,99}\.[a-z]{2,4}$/;
++function dropAbs(rel: string) {
++  if (typeof rel !== 'string' || !DROP_REL.test(rel)) throw new BridgeError('Bad drop file path', 400);
++  return DROP_ROOT + '/' + rel;
++}
++export async function putDropBytes(rel: string, bytes: Uint8Array) {
++  const abs = dropAbs(rel);
++  await ensureDirTree(splitAbs(abs).dir, '0700', PRIVATE_ROOT);
++  await putBytes(abs, bytes);
++  if ((await contentSha(abs)) !== await sha256(bytes)) throw new BridgeError('The dropped file could not be verified on the server; send it again.', 502);
++}
++export async function readDropBytes(rel: string): Promise<FileBytes> {
++  const f = await readBytes(dropAbs(rel));
++  if (!f) throw new BridgeError('The dropped file is missing on the server', 404);
++  return f;
++}
+diff -ruN pbase/base44/shared/drops.ts pnew/base44/shared/drops.ts
+--- pbase/base44/shared/drops.ts	1970-01-01 00:00:00.000000000 +0000
++++ pnew/base44/shared/drops.ts	2026-11-15 02:45:33.658885570 +0000
+@@ -0,0 +1,343 @@
++// BOT DROP FOLDER (Edwin 15 Nov 2026 10:31am SGT): "add a safe way for my bots to hand files to you through the Bridge,
++// which you then check and publish". Bots hold a separate key (scope 'drop') that can ONLY run drop_put and drop_status.
++// Files land in ~/bluehost-bridge-private/drops/<drop id>/ (outside public_html: never served, never indexable).
++// Claude (signed-in session only, never a key) lists, reads, publishes and clears drops. Publishing a dropped file uses
++// writeFile(): HOLD, blocked names, live guard, compare-and-swap base hash, private backup and byte-exact readback.
++import { BridgeError, sha256, putDropBytes, readDropBytes, writeFile, readFile, normalizeRel } from './bridgeOps.ts';
++import { SITES, secretContentReason } from './bridgeConfig.ts';
++import { AUTO_SITEMAP_CLIENT_FOLDERS } from './liveGuard.ts';
++import { assertNotClaimed } from './sync.ts';
++
++export const DROP_LIMITS = Object.freeze({
++  imageBytes: 1_000_000, // cPanel reads back at most ~1 MB, and every stored file is verified by reading it back
++  jsonBytes: 512_000,
++  textBytes: 256_000,
++  dropBytes: 15_000_000,
++  filesPerDrop: 40,
++  openDropsPerKey: 10,
++  days: 7, // a drop not cleared within 7 days of creation expires and its files are wiped
++  pathChars: 160,
++  publishPerCall: 40,
++});
++const KINDS: Record<string, 'json' | 'image' | 'text'> = Object.freeze({ json: 'json', webp: 'image', jpg: 'image', jpeg: 'image', png: 'image', md: 'text', txt: 'text' });
++export const DROP_TYPES = Object.freeze(Object.keys(KINDS));
++const OPEN_STATES = ['open', 'ready'];
++const db = (base44: any) => base44.asServiceRole.entities;
++const now = () => new Date().toISOString();
++
++// ---------- checks (pure, unit-tested) ----------
++
++export type DropTarget = { target: string; site: string; base: string };
++// A drop names the live website by its domain (or Bridge site key / client folder slug). Page One client sites that are
++// served from pageone preview/<slug> map to site 'pageone' + base 'preview/<slug>'.
++export function dropTarget(input: unknown): DropTarget {
++  if (typeof input !== 'string' || !input.trim()) throw new BridgeError('site is required, e.g. maisoninteriordesign.sg');
++  const v = input.trim().toLowerCase().replace(/^https?:\/\//, '').replace(/\/+$/, '').replace(/^www\./, '');
++  for (const [key, s] of Object.entries(SITES)) if (v === key || v === s.domain) return { target: s.domain, site: key, base: '' };
++  for (const [slug, domain] of Object.entries(AUTO_SITEMAP_CLIENT_FOLDERS)) if (v === domain || v === slug) return { target: domain, site: 'pageone', base: 'preview/' + slug };
++  throw new BridgeError('Unknown site for a drop. Use the live domain, e.g. maisoninteriordesign.sg', 400);
++}
++
++export function dropJob(input: unknown): string {
++  if (typeof input !== 'string' || !/^[a-z0-9][a-z0-9-]{1,59}$/.test(input)) throw new BridgeError('job must be a short slug: lowercase letters, digits and -, e.g. grand-dunman');
++  return input;
++}
++
++const SEG = /^[A-Za-z0-9][A-Za-z0-9_-]{0,99}$/;
++const NAME = /^[A-Za-z0-9][A-Za-z0-9_-]{0,99}\.([A-Za-z0-9]{1,8})$/;
++const SECRET_NAME = /(secret|passw|credential|token|api[-_]?key|private[-_]?key|id_rsa|id_ed25519|htaccess|htpasswd|wp-config|(^|[^a-z])env([^a-z]|$))/i;
++export type DropPath = { rel: string; ext: string; kind: 'json' | 'image' | 'text' };
++// Paths inside a drop: at most 2 folders deep, letters/digits/-/_ only, exactly one dot (so no a.php.jpg), allowed types only.
++export function dropPath(input: unknown): DropPath {
++  if (typeof input !== 'string' || !input) throw new BridgeError('path is required, e.g. grand-dunman.json or images/hero.webp');
++  if (input.length > DROP_LIMITS.pathChars) throw new BridgeError('path is longer than ' + DROP_LIMITS.pathChars + ' characters');
++  if (/[\0\\%\x00-\x1f\x7f]/.test(input)) throw new BridgeError('Invalid characters in path');
++  if (/^[a-z]+:/i.test(input) || input.startsWith('/') || input.startsWith('~')) throw new BridgeError('path must be relative to the drop, e.g. images/hero.webp');
++  const parts = input.split('/');
++  if (parts.some((p) => p === '..' || p === '.')) throw new BridgeError('Path traversal is not allowed');
++  if (parts.some((p) => p === '')) throw new BridgeError('path has an empty folder name');
++  if (parts.length > 3) throw new BridgeError('path may be at most 2 folders deep');
++  const name = parts[parts.length - 1];
++  for (const p of parts.slice(0, -1)) if (!SEG.test(p)) throw new BridgeError('Folder names may use letters, digits, - and _ only');
++  const m = NAME.exec(name);
++  if (!m) throw new BridgeError('File names must be <name>.<type> using letters, digits, - and _ with exactly one dot (refused: ' + name.slice(0, 60) + ')');
++  const ext = m[1].toLowerCase();
++  if (!Object.hasOwn(KINDS, ext)) throw new BridgeError('File type .' + ext + ' is not allowed in a drop. Allowed: .json .webp .jpg .jpeg .png .md .txt', 415);
++  if (SECRET_NAME.test(input)) throw new BridgeError('File and folder names that look like secrets or server config are refused', 403);
++  return { rel: parts.slice(0, -1).concat(name.slice(0, name.length - m[1].length) + ext).join('/'), ext, kind: KINDS[ext] };
++}
++
++const has = (b: Uint8Array, sig: number[], at = 0) => b.length >= at + sig.length && sig.every((x, i) => b[at + i] === x);
++function magicOk(ext: string, b: Uint8Array) {
++  if (ext === 'png') return has(b, [0x89, 0x50, 0x4e, 0x47, 0x0d, 0x0a, 0x1a, 0x0a]);
++  if (ext === 'jpg' || ext === 'jpeg') return has(b, [0xff, 0xd8, 0xff]);
++  if (ext === 'webp') return has(b, [0x52, 0x49, 0x46, 0x46]) && has(b, [0x57, 0x45, 0x42, 0x50], 8);
++  return false;
++}
++const latin1 = (b: Uint8Array) => { let s = ''; for (let i = 0; i < b.length; i += 32768) s += String.fromCharCode(...b.subarray(i, i + 32768)); return s; };
++const CODE = /<\?php|<\?=|<script[\s>\/]|<%[=@\s]|^#!\s*\//im;
++const BRIDGE_KEY_TEXT = /\bbb_[A-Za-z0-9_-]{40,}/;
++export function sizeLimit(kind: string) { return kind === 'image' ? DROP_LIMITS.imageBytes : kind === 'json' ? DROP_LIMITS.jsonBytes : DROP_LIMITS.textBytes; }
++
++// null = the bytes are acceptable for this file type.
++export function dropContentProblem(p: DropPath, bytes: Uint8Array): string | null {
++  if (!bytes.length) return 'the file is empty';
++  if (bytes.length > sizeLimit(p.kind)) return 'the file is ' + bytes.length + ' bytes; the limit for .' + p.ext + ' is ' + sizeLimit(p.kind) + ' bytes';
++  if (p.kind === 'image') {
++    if (!magicOk(p.ext, bytes)) return 'this is not a real .' + p.ext + ' image (the file header does not match; archives and programs are refused)';
++    if (CODE.test(latin1(bytes))) return 'the image contains script or server code';
++    return null;
++  }
++  let text: string;
++  try { text = new TextDecoder('utf-8', { fatal: true, ignoreBOM: false }).decode(bytes); } catch { return 'the file is not valid UTF-8 text'; }
++  if (/[\x00-\x08\x0b\x0c\x0e-\x1f\x7f]/.test(text)) return 'the file has control characters (binary data, archive or program)';
++  if (CODE.test(text)) return 'the file contains script tags or server code';
++  if (secretContentReason(text) || BRIDGE_KEY_TEXT.test(text)) return 'the file looks like it contains a password, key or token';
++  if (p.kind === 'json') { try { JSON.parse(text.replace(/^﻿/, '')); } catch { return 'the file is not valid JSON'; } }
++  return null;
++}
++
++export function decodeDropBytes(body: any): Uint8Array {
++  const t = typeof body?.content === 'string', b = typeof body?.content_base64 === 'string';
++  if (t === b) throw new BridgeError('Send exactly one of content (text) or content_base64 (binary)');
++  if (t) return new TextEncoder().encode(body.content);
++  const clean = body.content_base64.replace(/\s+/g, '');
++  if (clean.length > Math.ceil(DROP_LIMITS.imageBytes / 3) * 4 + 8) throw new BridgeError('content_base64 is larger than the 1 MB file limit', 413);
++  let bin: string;
++  try { bin = atob(clean); } catch { throw new BridgeError('content_base64 is not valid base64'); }
++  return Uint8Array.from(bin, (c) => c.charCodeAt(0));
++}
++
++// Width x height from the image header (for review only; null if not found).
++export function imageSize(ext: string, b: Uint8Array): { width: number; height: number } | null {
++  const u16 = (i: number) => (b[i] << 8) | b[i + 1], l16 = (i: number) => b[i] | (b[i + 1] << 8), l24 = (i: number) => b[i] | (b[i + 1] << 8) | (b[i + 2] << 16);
++  if (ext === 'png' && b.length > 24) return { width: (u16(16) << 16) | u16(18), height: (u16(20) << 16) | u16(22) };
++  if (ext === 'webp' && b.length > 30) {
++    const kind = latin1(b.subarray(12, 16));
++    if (kind === 'VP8X') return { width: l24(24) + 1, height: l24(27) + 1 };
++    if (kind === 'VP8 ') return { width: l16(26) & 0x3fff, height: l16(28) & 0x3fff };
++    if (kind === 'VP8L') { const v = b[21] | (b[22] << 8) | (b[23] << 16) | (b[24] << 24); return { width: (v & 0x3fff) + 1, height: ((v >> 14) & 0x3fff) + 1 }; }
++  }
++  if (ext === 'jpg' || ext === 'jpeg') {
++    let i = 2;
++    while (i + 9 < b.length) {
++      if (b[i] !== 0xff) return null;
++      const m = b[i + 1];
++      if (m >= 0xc0 && m <= 0xcf && m !== 0xc4 && m !== 0xc8 && m !== 0xcc) return { width: u16(i + 7), height: u16(i + 5) };
++      i += 2 + u16(i + 2);
++    }
++  }
++  return null;
++}
++
++// ---------- store ----------
++
++const fileView = (f: any) => ({ path: f.path, type: f.ext, bytes: f.bytes, sha256: f.sha256, state: f.state, dropped_at: f.dropped_at, dropped_by: f.dropped_by,
++  published_to: f.published_to || null, published_at: f.published_at || null });
++const dropView = (d: any) => ({ drop_id: d.id, site: d.target, job: d.job, state: d.state, bridge_site: d.site, base_path: d.base_path || '',
++  created_at: d.created_date || null, created_by: d.created_by_label, last_drop_at: d.last_drop_at || null, ready_at: d.ready_at || null,
++  expires_at: d.expires_at, published_at: d.published_at || null, cleared_at: d.cleared_at || null, bot_note: d.bot_note || null, review_note: d.review_note || null });
++
++async function filesOf(base44: any, dropId: string) {
++  return await db(base44).BridgeDropFile.filter({ drop_id: dropId }, '-created_date', 500);
++}
++const current = (rows: any[]) => rows.filter((f) => f.state === 'stored');
++
++async function openDrop(base44: any, t: DropTarget, job: string) {
++  for (const state of OPEN_STATES) {
++    const rows = await db(base44).BridgeDrop.filter({ target: t.target, job, state }, '-created_date', 1);
++    if (rows[0] && Date.parse(rows[0].expires_at) > Date.now()) return rows[0];
++  }
++  return null;
++}
++
++async function wipe(dropId: string, rel: string) {
++  // The choke point never deletes files; a cleared drop file is overwritten so no content remains.
++  try { await putDropBytes(dropId + '/' + rel, new Uint8Array(0)); } catch { await putDropBytes(dropId + '/' + rel, new TextEncoder().encode('cleared\n')); }
++}
++
++async function clearDrop(base44: any, drop: any, state: 'cleared' | 'expired', by: string, reason: string) {
++  const rows = await filesOf(base44, drop.id);
++  let wiped = 0;
++  const seen = new Set<string>();
++  for (const f of rows) {
++    if (f.state === 'cleared') continue;
++    if (!seen.has(f.path)) { seen.add(f.path); await wipe(drop.id, f.path); wiped++; }
++    await db(base44).BridgeDropFile.update(f.id, { state: 'cleared' });
++  }
++  await db(base44).BridgeDrop.update(drop.id, { state, cleared_at: now(), cleared_by: by, review_note: String(reason || drop.review_note || '').slice(0, 500) || null });
++  return { drop_id: drop.id, state, files_wiped: wiped };
++}
++
++// Expired drops are wiped a few at a time whenever a drop tool runs.
++export async function sweepExpired(base44: any, max = 1) {
++  const done: any[] = [];
++  for (const state of ['open', 'ready', 'published']) {
++    if (done.length >= max) break;
++    const rows = await db(base44).BridgeDrop.filter({ state }, 'expires_at', 5).catch(() => []);
++    for (const d of rows) {
++      if (done.length >= max) break;
++      if (Date.parse(d.expires_at) <= Date.now()) done.push(await clearDrop(base44, d, 'expired', 'bridge (expiry)', 'expired after ' + DROP_LIMITS.days + ' days'));
++    }
++  }
++  return done;
++}
++
++export type DropCtx = { base44: any; email: string | null; keyLabel?: string | null };
++
++// ---------- bot tools (drop key) ----------
++
++// drop_put: store one file (or action "ready" to say the drop is complete). Never touches a website.
++export async function dropPut(body: any, ctx: DropCtx) {
++  const t = dropTarget(body?.site);
++  const job = dropJob(body?.job);
++  const by = (ctx.keyLabel || ctx.email || 'unknown').slice(0, 80);
++  await sweepExpired(ctx.base44, 1).catch(() => {});
++  if (body?.action === 'ready') {
++    const drop = await openDrop(ctx.base44, t, job);
++    if (!drop) throw new BridgeError('No open drop for ' + t.target + ' / ' + job, 404);
++    const note = typeof body.note === 'string' ? body.note.slice(0, 500) : null;
++    if (note && (CODE.test(note) || secretContentReason(note) || BRIDGE_KEY_TEXT.test(note))) throw new BridgeError('note refused (code or secret-looking text)', 422);
++    await db(ctx.base44).BridgeDrop.update(drop.id, { state: 'ready', ready_at: now(), bot_note: note });
++    return { drop_id: drop.id, site: t.target, job, state: 'ready', files: current(await filesOf(ctx.base44, drop.id)).map(fileView) };
++  }
++  if (body?.action !== undefined && body.action !== 'put') throw new BridgeError('action must be put (default) or ready');
++  const p = dropPath(body?.path);
++  const bytes = decodeDropBytes(body);
++  const sha = await sha256(bytes);
++  if (body.sha256 !== undefined && (typeof body.sha256 !== 'string' || body.sha256.toLowerCase() !== sha)) throw new BridgeError('sha256 does not match the bytes that arrived (' + sha + '); send the file again', 422);
++  const problem = dropContentProblem(p, bytes);
++  if (problem) throw new BridgeError(p.rel + ' refused: ' + problem, 422);
++
++  let drop = await openDrop(ctx.base44, t, job);
++  if (!drop) {
++    const mine = (await Promise.all(OPEN_STATES.map((state) => db(ctx.base44).BridgeDrop.filter({ created_by_label: by, state }, '-created_date', 50)))).flat();
++    if (mine.filter((d: any) => Date.parse(d.expires_at) > Date.now()).length >= DROP_LIMITS.openDropsPerKey) throw new BridgeError('This key already has ' + DROP_LIMITS.openDropsPerKey + ' open drops; wait until Claude publishes or clears them', 429);
++    drop = await db(ctx.base44).BridgeDrop.create({ target: t.target, site: t.site, base_path: t.base, job, state: 'open', created_by_label: by,
++      created_by_actor: ctx.email || null, expires_at: new Date(Date.now() + DROP_LIMITS.days * 86400_000).toISOString(), last_drop_at: now() });
++  }
++  const rows = current(await filesOf(ctx.base44, drop.id));
++  const same = rows.find((f) => f.path === p.rel);
++  if (same && same.sha256 === sha) return { drop_id: drop.id, site: t.target, job, path: p.rel, sha256: sha, bytes: bytes.length, stored: false, unchanged: true };
++  if (!same && rows.length >= DROP_LIMITS.filesPerDrop) throw new BridgeError('A drop holds at most ' + DROP_LIMITS.filesPerDrop + ' files', 413);
++  const total = rows.reduce((n, f) => n + (f.path === p.rel ? 0 : Number(f.bytes) || 0), 0) + bytes.length;
++  if (total > DROP_LIMITS.dropBytes) throw new BridgeError('A drop holds at most ' + DROP_LIMITS.dropBytes + ' bytes in total (this file would make it ' + total + ')', 413);
++
++  await putDropBytes(drop.id + '/' + p.rel, bytes);
++  if (same) await db(ctx.base44).BridgeDropFile.update(same.id, { state: 'replaced' });
++  await db(ctx.base44).BridgeDropFile.create({ drop_id: drop.id, path: p.rel, ext: p.ext, kind: p.kind, bytes: bytes.length, sha256: sha,
++    dropped_at: now(), dropped_by: by, state: 'stored' });
++  await db(ctx.base44).BridgeDrop.update(drop.id, { last_drop_at: now(), state: 'open' });
++  return { drop_id: drop.id, site: t.target, job, path: p.rel, sha256: sha, bytes: bytes.length, stored: true, replaced: Boolean(same),
++    files: rows.length + (same ? 0 : 1), total_bytes: total, expires_at: drop.expires_at };
++}
++
++// drop_status: this key's drops (or one site+job) with file names, sizes and hashes. Never returns file content.
++export async function dropStatus(body: any, ctx: DropCtx) {
++  const by = (ctx.keyLabel || ctx.email || 'unknown').slice(0, 80);
++  if (body?.site !== undefined || body?.job !== undefined) {
++    const t = dropTarget(body?.site), job = dropJob(body?.job);
++    const rows = (await db(ctx.base44).BridgeDrop.filter({ target: t.target, job }, '-created_date', 5)).filter((d: any) => !ctx.keyLabel || d.created_by_label === by);
++    return { drops: await Promise.all(rows.map(async (d: any) => ({ ...dropView(d), files: current(await filesOf(ctx.base44, d.id)).map(fileView) }))) };
++  }
++  const rows = ctx.keyLabel ? await db(ctx.base44).BridgeDrop.filter({ created_by_label: by }, '-created_date', 20) : await db(ctx.base44).BridgeDrop.list('-created_date', 20);
++  return { drops: rows.map(dropView), limits: DROP_LIMITS, types: DROP_TYPES };
++}
++
++// ---------- Claude tools (signed-in session only) ----------
++
++async function getDrop(base44: any, id: unknown) {
++  if (typeof id !== 'string' || !/^[A-Za-z0-9]{6,40}$/.test(id)) throw new BridgeError('drop_id is required');
++  const rows = await db(base44).BridgeDrop.filter({ id }, '-created_date', 1);
++  if (!rows[0]) throw new BridgeError('Drop not found: ' + id, 404);
++  return rows[0];
++}
++
++export async function dropList(body: any, ctx: DropCtx) {
++  await sweepExpired(ctx.base44, 2).catch(() => {});
++  const limit = Math.min(Math.max(Number(body?.limit) || 20, 1), 50);
++  const rows = body?.state ? await db(ctx.base44).BridgeDrop.filter({ state: String(body.state) }, '-created_date', limit) : await db(ctx.base44).BridgeDrop.list('-created_date', limit);
++  return { drops: await Promise.all(rows.map(async (d: any) => ({ ...dropView(d), files: current(await filesOf(ctx.base44, d.id)).map(fileView) }))), limits: DROP_LIMITS };
++}
++
++// Reads a dropped file back from the private folder and proves it is the exact file the bot dropped.
++async function loadDropped(base44: any, drop: any, pathInput: unknown) {
++  const p = dropPath(pathInput);
++  const row = current(await filesOf(base44, drop.id)).find((f) => f.path === p.rel);
++  if (!row) throw new BridgeError('No stored file ' + p.rel + ' in this drop', 404);
++  const f = await readDropBytes(drop.id + '/' + p.rel);
++  if (f.sha256 !== row.sha256) throw new BridgeError('TAMPER CHECK: ' + p.rel + ' on the server is not the file that was dropped (sha differs). Nothing was published.', 409);
++  const problem = dropContentProblem(p, f.bytes);
++  if (problem) throw new BridgeError(p.rel + ' refused: ' + problem, 422);
++  return { p, row, bytes: f.bytes };
++}
++
++export async function dropRead(body: any, ctx: DropCtx) {
++  const drop = await getDrop(ctx.base44, body?.drop_id);
++  if (!OPEN_STATES.includes(drop.state) && drop.state !== 'published') throw new BridgeError('This drop is ' + drop.state, 410);
++  const { p, row, bytes } = await loadDropped(ctx.base44, drop, body?.path);
++  const out: any = { drop_id: drop.id, path: p.rel, type: p.ext, bytes: bytes.length, sha256: row.sha256, dropped_by: row.dropped_by, dropped_at: row.dropped_at };
++  if (p.kind === 'image') out.image = imageSize(p.ext, bytes);
++  else out.content = new TextDecoder().decode(bytes);
++  return out;
++}
++
++// drop_publish: place dropped files on the drop's own site (or another folder of it) through writeFile.
++// files: [{ from: '<drop path>', to: '<path inside base_path>', expected_sha256?: '<live sha when replacing>' }].
++// All files are checked first (type kept, tamper check, base hash for every replace); one problem refuses the batch.
++export async function dropPublish(body: any, ctx: DropCtx) {
++  const drop = await getDrop(ctx.base44, body?.drop_id);
++  if (!OPEN_STATES.includes(drop.state) && drop.state !== 'published') throw new BridgeError('This drop is ' + drop.state + '; nothing was published', 410);
++  if (Date.parse(drop.expires_at) <= Date.now()) throw new BridgeError('This drop has expired; nothing was published', 410);
++  const list = body?.files;
++  if (!Array.isArray(list) || !list.length || list.length > DROP_LIMITS.publishPerCall) throw new BridgeError('files must list 1-' + DROP_LIMITS.publishPerCall + ' {from, to}');
++  const site = drop.site;
++  const base = body?.base_path === undefined ? (drop.base_path || '') : normalizeRel(body.base_path, true);
++  if (drop.base_path && base !== drop.base_path && !base.startsWith(drop.base_path + '/')) throw new BridgeError('base_path must stay inside ' + drop.base_path + ' (the drop is for ' + drop.target + ')', 403);
++  const plan: any[] = [];
++  const targets = new Set<string>();
++  for (const item of list) {
++    const { p, row, bytes } = await loadDropped(ctx.base44, drop, item?.from);
++    const to = normalizeRel(item?.to);
++    const ext = (to.split('/').pop() || '').split('.').pop()?.toLowerCase();
++    if (ext !== p.ext && !((ext === 'jpg' || ext === 'jpeg') && (p.ext === 'jpg' || p.ext === 'jpeg'))) throw new BridgeError(item.to + ': the file type must stay .' + p.ext, 422);
++    const rel = base ? base + '/' + to : to;
++    if (targets.has(rel)) throw new BridgeError('Two files go to ' + rel, 400);
++    targets.add(rel);
++    let liveSha: string | null = null;
++    try { liveSha = (await readFile(site, rel)).sha256; } catch (e) { if (!(e instanceof BridgeError && e.status === 404)) throw e; }
++    const expected = typeof item.expected_sha256 === 'string' ? item.expected_sha256.toLowerCase() : null;
++    const action = liveSha === null ? 'create' : liveSha === row.sha256 ? 'unchanged' : 'update';
++    if (action === 'update' && expected !== liveSha) throw new BridgeError(rel + ' already exists on the live site and differs: pass expected_sha256 = ' + liveSha + ' (from read_live_file) to replace it. Nothing was published.', 409);
++    plan.push({ from: p.rel, to: rel, action, live_sha256: liveSha, sha256: row.sha256, bytes: bytes.length, row, data: bytes, expected });
++  }
++  const strip = (x: any) => ({ from: x.from, to: x.to, action: x.action, live_sha256: x.live_sha256, sha256: x.sha256, bytes: x.bytes });
++  if (body?.dry_run === true) return { drop_id: drop.id, site, dry_run: true, files: plan.map(strip) };
++  const results: any[] = [];
++  for (const x of plan) {
++    if (x.action === 'unchanged') { results.push({ ...strip(x), status: 'unchanged' }); continue; }
++    try {
++      await assertNotClaimed(ctx.base44, 'claude', site, x.to);
++      const r: any = await writeFile(site, x.to, x.data, x.expected);
++      await db(ctx.base44).BridgeDropFile.update(x.row.id, { published_to: site + ':' + x.to, published_at: now() });
++      await db(ctx.base44).BridgeLog.create({ action: 'drop_publish', ok: true, site, path: x.to, backup_id: r.backupId || null, before_sha256: r.beforeSha256 || null,
++        after_sha256: r.afterSha256 || r.sha256 || null, error: null, actor: ctx.email || null, duration_ms: 0 }).catch(() => {});
++      results.push({ ...strip(x), status: r.created ? 'created' : r.unchanged ? 'unchanged' : 'updated', backupId: r.backupId || null, url: r.url });
++    } catch (e) {
++      const msg = e instanceof Error ? e.message : String(e);
++      await db(ctx.base44).BridgeLog.create({ action: 'drop_publish', ok: false, site, path: x.to, error: msg.slice(0, 400), actor: ctx.email || null, duration_ms: 0 }).catch(() => {});
++      results.push({ ...strip(x), status: 'error', error: msg });
++      break; // stop at the first failure; the rest are reported as skipped
++    }
++  }
++  for (const x of plan.slice(results.length)) results.push({ ...strip(x), status: 'skipped' });
++  const ok = results.every((r) => r.status !== 'error' && r.status !== 'skipped');
++  if (results.some((r) => r.status === 'created' || r.status === 'updated')) await db(ctx.base44).BridgeDrop.update(drop.id, { state: 'published', published_at: now(), published_by: ctx.email || null });
++  return { drop_id: drop.id, site, ok, files: results, next: 'When the page is live and checked, call drop_clear for this drop.' };
++}
++
++export async function dropClear(body: any, ctx: DropCtx) {
++  const drop = await getDrop(ctx.base44, body?.drop_id);
++  if (drop.state === 'cleared' || drop.state === 'expired') return { drop_id: drop.id, state: drop.state, files_wiped: 0, already: true };
++  return await clearDrop(ctx.base44, drop, 'cleared', ctx.email || 'claude', typeof body?.reason === 'string' ? body.reason : 'cleared after publish');
++}
+diff -ruN pbase/base44/shared/handler.ts pnew/base44/shared/handler.ts
+--- pbase/base44/shared/handler.ts	2026-11-15 02:24:27.000000000 +0000
++++ pnew/base44/shared/handler.ts	2026-11-15 02:45:33.657686964 +0000
+@@ -17,6 +17,9 @@
+ const OVERVIEW_ACTIONS = new Set(['overview']);
+ // What a site key (one website's own automation) may run, on its own site only.
+ const SITE_KEY_ACTIONS = new Set(['list', 'read', 'write']);
++// BOT DROP FOLDER (Edwin 15 Nov 2026): a drop key may ONLY put files into the private drop folder and read drop status.
++// It can never publish, read or write live files, or run any other Bridge tool.
++export const DROP_KEY_ACTIONS: ReadonlySet<string> = new Set(['drop_put', 'drop_status']);
+ 
+ // Changes that respect the other AI's work claims.
+ const CHANGES = new Set(['write', 'edit', 'restore']);
+@@ -49,14 +52,15 @@
+   try { await base44.asServiceRole.entities.BridgeAuthLog.create(entry); } catch { /* never block a request */ }
+ }
+ 
+-export type ToolContext = { base44: any; agent: Agent; viaKey: boolean; email: string | null };
++export type ToolContext = { base44: any; agent: Agent; viaKey: boolean; email: string | null; keyLabel: string | null };
+ 
+ // Shared wrapper for every bridge function: admin-only, bounded JSON body, audit log.
+ // The API key means the ChatGPT Custom GPT; a signed-in admin means Claude's connector.
+-export function bridgeTool(action: string, run: (body: any, ctx: ToolContext) => Promise<any>, opts: { needsSite?: boolean; logs?: boolean } = {}) {
++// opts.sessionOnly: only a signed-in admin (Claude's connector) may run it; every API key is refused (drop_publish etc.).
++export function bridgeTool(action: string, run: (body: any, ctx: ToolContext) => Promise<any>, opts: { needsSite?: boolean; logs?: boolean; sessionOnly?: boolean } = {}) {
+   return async function (req: Request) {
+     const started = Date.now();
+-    let base44: any, user: any, body: any = {}, siteOnly: string | null = null;
++    let base44: any, user: any, body: any = {}, siteOnly: string | null = null, dropKey: string | null = null;
+     let authMeta: Record<string, any> = {};
+     try {
+       base44 = createClientFromRequest(req);
+@@ -71,6 +75,8 @@
+         if (!info) return await deny('Invalid API key', 401, { key_type: 'none' });
+         const scope = info.scope;
+         authMeta = { key_type: info.type, key_label: info.label, scope };
++        if (opts.sessionOnly) return await deny('This tool is for Claude\'s signed-in session only; API keys cannot use it', 403, authMeta);
++        if (scope === 'drop' && !DROP_KEY_ACTIONS.has(action)) return await deny('This key can only drop files and read drop status', 403, authMeta);
+         if (scope === 'overview' && !OVERVIEW_ACTIONS.has(action)) {
+           return await deny('This key can only read the overview', 403, authMeta);
+         }
+@@ -78,6 +84,9 @@
+           if (!SITE_KEY_ACTIONS.has(action)) return await deny('This key can only list, read and write files', 403, authMeta);
+           siteOnly = scope.slice(5);
+           user = { email: siteOnly + '-automation (site key)', role: 'admin' };
++        } else if (scope === 'drop') {
++          dropKey = info.label;
++          user = { email: 'bot drop key: ' + info.label, role: 'admin' };
+         } else {
+           user = scope === 'overview' ? OVERVIEW_ACTOR : KEY_ACTOR;
+         }
+@@ -95,12 +104,12 @@
+       authMeta.site = body?.site || null;
+       if (siteOnly && body.site !== siteOnly) throw new BridgeError('This key only works for the ' + siteOnly + ' site', 403);
+       // A site key belongs to neither AI, so it respects both AIs' claims.
+-      const agent = (user === KEY_ACTOR ? 'chatgpt' : siteOnly ? 'automation' : 'claude') as Agent;
++      const agent = (user === KEY_ACTOR ? 'chatgpt' : siteOnly || dropKey ? 'automation' : 'claude') as Agent;
+       if (CHANGES.has(action)) await assertNotClaimed(base44, agent, body.site, body.path);
+-      const viaKey = user === KEY_ACTOR || user === OVERVIEW_ACTOR || Boolean(siteOnly);
++      const viaKey = user === KEY_ACTOR || user === OVERVIEW_ACTOR || Boolean(siteOnly) || Boolean(dropKey);
+       await authLog(base44, { endpoint: action, allowed: true, ...authMeta });
+       authMeta.__ran = true; // errors after this point are not auth denials
+-      const result = await run(body, { base44, agent, viaKey, email: user?.email || null });
++      const result = await run(body, { base44, agent, viaKey, email: user?.email || null, keyLabel: dropKey });
+       if (opts.logs) await audit(base44, user, action, body, true, result, null, started);
+       return Response.json({ ok: true, ...result }, { headers: { 'Cache-Control': 'no-store' } });
+     } catch (error) {
+diff -ruN pbase/base44/shared/keys.ts pnew/base44/shared/keys.ts
+--- pbase/base44/shared/keys.ts	2026-11-15 02:24:27.000000000 +0000
++++ pnew/base44/shared/keys.ts	2026-11-15 02:45:33.657755210 +0000
+@@ -13,10 +13,12 @@
+ 
+ // 'site:<key>': a website's own automation (e.g. the Cleanic article writer) may only
+ // list, read and write files of that one site.
+-export type KeyScope = 'full' | 'overview' | `site:${string}`;
++// 'drop': a bot's key for the drop folder only (drop_put + drop_status), see drops.ts.
++export type KeyScope = 'full' | 'overview' | 'drop' | `site:${string}`;
+ 
+ function scopeOf(raw: unknown): KeyScope {
+   if (raw === 'overview') return 'overview';
++  if (raw === 'drop') return 'drop';
+   if (typeof raw === 'string' && raw.startsWith('site:') && Object.hasOwn(SITES, raw.slice(5))) return raw as KeyScope;
+   return 'full';
+ }
+@@ -55,7 +57,7 @@
+     const key = newKey();
+     if (typeof body.scope === 'string' && body.scope.startsWith('site:') && !Object.hasOwn(SITES, body.scope.slice(5))) throw new BridgeError('Unknown site in scope');
+     const scope: KeyScope = scopeOf(body.scope);
+-    const fallback = scope === 'overview' ? 'Page One Controller' : scope === 'full' ? 'ChatGPT' : scope.slice(5) + ' automation';
++    const fallback = scope === 'overview' ? 'Page One Controller' : scope === 'full' ? 'ChatGPT' : scope === 'drop' ? 'Bot drop key' : scope.slice(5) + ' automation';
+     const label = typeof body.label === 'string' && body.label.trim() ? body.label.trim().slice(0, 80) : fallback;
+     const row = await db(base44).BridgeKey.create({ label, scope, key_hash: await keyHash(key), last4: key.slice(-4), active: true, created_by: actorEmail });
+     return { key, key_info: view(row || { label, scope, last4: key.slice(-4), active: true }) };
+diff -ruN pbase/src/pages/Connect.jsx pnew/src/pages/Connect.jsx
+--- pbase/src/pages/Connect.jsx	2026-11-15 02:24:27.000000000 +0000
++++ pnew/src/pages/Connect.jsx	2026-11-15 02:45:33.663210572 +0000
+@@ -111,9 +111,12 @@
+ 
+ // A site key lets one website's own automation (e.g. the Cleanic article writer) list, read and
+ // write files of that one site only. The key is shown once; the bridge stores only its hash.
++const DROP = "__drop";
+ const SITE_OPTIONS = [
+   ["cleanic", "cleanicdetailing.com"], ["sggarage", "sggarage.com"], ["alicia", "aliciaongproperty.com"],
+   ["danny", "dannychuafinancial.com"], ["sofacare", "sofacaresg.com"], ["pageone", "pageonesingapore.com"], ["ktech", "ktech.my"], ["benzworld", "benzworld.my"], ["lilian", "lilianproperties.com"], ["carzy", "carzyworld.com.my"], ["hybridworld", "hybridworld.com.my"], ["autoseo", "autoseo.my"], ["ecumats", "ecumats.my"], ["apcar", "apcar.com.my"], ["jayven", "jayvenang.sg"], ["urbaneco", "urbanecosolutions.com"], ["snapsg", "snapsg.com"],
++  // BOT DROP FOLDER (15 Nov 2026): a bot key that can only drop files into the private drop folder and read drop status.
++  [DROP, "Bot drop folder (no site access)"],
+ ];
+ 
+ // The new key is kept in this tab's sessionStorage until Done is clicked, so a reload of the
+@@ -134,17 +137,18 @@
+   const [busy, setBusy] = useState(false);
+   const [error, setError] = useState(null);
+ 
++  const defaultLabel = site === DROP ? "Bot drop key" : site + " automation";
+   const create = async (e) => {
+     e?.preventDefault?.();
+     setConfirming(false);
+     setBusy(true); setError(null);
+     try {
+       const res = await base44.functions.invoke("bridgeKey", {
+-        action: "create", scope: "site:" + site, label: label.trim() || site + " automation",
++        action: "create", scope: site === DROP ? "drop" : "site:" + site, label: label.trim() || defaultLabel,
+       });
+       const body = bodyOf(res);
+       if (!body.key) throw new Error(body.error || "The key was not returned. Try again.");
+-      const v = { key: body.key, site, label: body.key_info?.label || label.trim() || site + " automation" };
++      const v = { key: body.key, site, label: body.key_info?.label || label.trim() || defaultLabel };
+       savePendingKey(v);
+       setFresh(v);
+     } catch (err) { setError(errText(err)); }
+@@ -157,8 +161,14 @@
+     return (
+       <div className="space-y-3 rounded-lg border border-amber-300 bg-amber-50 p-3">
+         <p className="text-xs font-medium text-amber-900">
+-          New key for {fresh.site} ({fresh.label}). Copy it now: after you click Done it cannot be shown again.
+-          It works for {fresh.site} only (list, read, write). Put it in that app's BRIDGE_KEY secret, then revoke the old key.
++          {fresh.site === DROP ? <>
++            New bot drop key ({fresh.label}). Copy it now: after you click Done it cannot be shown again.
++            It can only drop files into the private drop folder and read drop status: no publish, no live files.
++            Save it straight into a file or environment variable on the bot's computer. Never paste it into a chat.
++          </> : <>
++            New key for {fresh.site} ({fresh.label}). Copy it now: after you click Done it cannot be shown again.
++            It works for {fresh.site} only (list, read, write). Put it in that app's BRIDGE_KEY secret, then revoke the old key.
++          </>}
+         </p>
+         <MaskedCopy value={fresh.key} />
+         <div className="text-right">
+@@ -179,16 +189,16 @@
+         </label>
+         <label className="min-w-0 flex-1 text-xs text-neutral-500">
+           <span className="mb-1 block">Label</span>
+-          <input value={label} onChange={(e) => setLabel(e.target.value)} maxLength={80} placeholder={site + " automation"}
++          <input value={label} onChange={(e) => setLabel(e.target.value)} maxLength={80} placeholder={defaultLabel}
+             className="h-8 w-full rounded-md border border-neutral-200 bg-white px-2 text-sm" />
+         </label>
+         <Button type="button" size="sm" onClick={() => setConfirming(true)} disabled={busy || confirming}>
+-          <KeyRound className="mr-1.5 h-4 w-4" />{busy ? "Making key..." : "New site key"}
++          <KeyRound className="mr-1.5 h-4 w-4" />{busy ? "Making key..." : site === DROP ? "New bot drop key" : "New site key"}
+         </Button>
+       </div>
+       {confirming && (
+         <div className="flex flex-wrap items-center justify-between gap-2 rounded-lg border border-neutral-300 bg-neutral-50 p-3">
+-          <p className="text-xs text-neutral-700">Make a new key that works for <strong>{site}</strong> only? It is shown once.</p>
++          <p className="text-xs text-neutral-700">{site === DROP ? <>Make a new <strong>bot drop key</strong> (drop folder only)? It is shown once.</> : <>Make a new key that works for <strong>{site}</strong> only? It is shown once.</>}</p>
+           <div className="flex gap-2">
+             <Button type="button" size="sm" variant="outline" onClick={() => setConfirming(false)}>Cancel</Button>
+             <Button type="button" size="sm" onClick={create}>Yes, make key</Button>
+diff -ruN pbase/tests/dropFolder.test.ts pnew/tests/dropFolder.test.ts
+--- pbase/tests/dropFolder.test.ts	1970-01-01 00:00:00.000000000 +0000
++++ pnew/tests/dropFolder.test.ts	2026-11-15 02:45:33.661066919 +0000
+@@ -0,0 +1,317 @@
++// BOT DROP FOLDER self-test (Edwin 15 Nov 2026 10:31am SGT): every refusal Edwin listed, the drop key's limits, and the
++// Claude-only publish path, against an in-memory fake cPanel and fake entities (fetch is replaced; no network).
++// Run: deno test --no-check -A --import-map tests/importmap.json tests/dropFolder.test.ts
++import { dropPath, dropContentProblem, dropTarget, DROP_LIMITS } from '../base44/shared/drops.ts';
++import { keyHash } from '../base44/shared/keys.ts';
++import dropPutFn from '../base44/functions/bridgeDropPut/entry.ts';
++import dropStatusFn from '../base44/functions/bridgeDropStatus/entry.ts';
++import dropListFn from '../base44/functions/bridgeDropList/entry.ts';
++import dropReadFn from '../base44/functions/bridgeDropRead/entry.ts';
++import dropPublishFn from '../base44/functions/bridgeDropPublish/entry.ts';
++import dropClearFn from '../base44/functions/bridgeDropClear/entry.ts';
++import readFn from '../base44/functions/bridgeReadLive/entry.ts';
++import readOldFn from '../base44/functions/bridgeRead/entry.ts';
++import writeFn from '../base44/functions/bridgeWrite/entry.ts';
++import writeManyFn from '../base44/functions/bridgeWriteMany/entry.ts';
++import editFn from '../base44/functions/bridgeEdit/entry.ts';
++import restoreFn from '../base44/functions/bridgeRestore/entry.ts';
++import syncGhFn from '../base44/functions/bridgeSyncGithub/entry.ts';
++import listFn from '../base44/functions/bridgeList/entry.ts';
++import listLiveFn from '../base44/functions/bridgeListLive/entry.ts';
++import keyFn from '../base44/functions/bridgeKey/entry.ts';
++import overviewFn from '../base44/functions/bridgeOverview/entry.ts';
++import sitesFn from '../base44/functions/bridgeSites/entry.ts';
++import guideFn from '../base44/functions/bridgeGuide/entry.ts';
++import noteFn from '../base44/functions/bridgeNote/entry.ts';
++import claimFn from '../base44/functions/bridgeClaim/entry.ts';
++import syncFn from '../base44/functions/bridgeSync/entry.ts';
++import backupsFn from '../base44/functions/bridgeBackups/entry.ts';
++
++const HOME = '/home3/sgmodde1', ROOT = HOME + '/public_html', PAGEONE = ROOT + '/pageone', PRIV = HOME + '/bluehost-bridge-private';
++const MAISON = PAGEONE + '/preview/maison-interior-design';
++const files = new Map<string, Uint8Array>();
++const dirs = new Set<string>([HOME, ROOT, PAGEONE, PAGEONE + '/preview', MAISON, MAISON + '/images', ROOT + '/cleanic', PRIV, PRIV + '/backups', HOME + '/backups-private']);
++const latin1 = (b: Uint8Array) => { let s = ''; for (const c of b) s += String.fromCharCode(c); return s; };
++const ok = (data: any) => Response.json({ result: { status: 1, errors: null, data } });
++const parentOf = (p: string) => p.slice(0, p.lastIndexOf('/'));
++const uploads: string[] = [];
++globalThis.fetch = (async (input: any, init: any = {}) => {
++  const url = new URL(String(input));
++  if (url.pathname.startsWith('/execute/')) {
++    const fn = url.pathname.slice(9), q = url.searchParams;
++    if (fn === 'DomainInfo/domains_data') return ok({ main_domain: { domain: 'sggarage.com', documentroot: ROOT },
++      addon_domains: [{ domain: 'pageonesingapore.com', documentroot: PAGEONE }, { domain: 'cleanicdetailing.com', documentroot: ROOT + '/cleanic' }], sub_domains: [], parked_domains: [] });
++    if (fn === 'Fileman/get_file_information') {
++      const p = q.get('path')!;
++      if (files.has(p)) return ok({ exists: 1, mode: 0o100644, size: files.get(p)!.length, mtime: 1 });
++      if (dirs.has(p)) return ok({ exists: 1, mode: 0o040755, size: 4096, mtime: 1 });
++      return Response.json({ result: { status: 0, errors: ['The file is not available'] } });
++    }
++    if (fn === 'Fileman/list_files') {
++      const d = q.get('dir')!; if (!dirs.has(d)) return Response.json({ result: { status: 0, errors: ['No such directory'] } });
++      const rows: any[] = [];
++      for (const f of files.keys()) if (parentOf(f) === d) rows.push({ file: f.slice(d.length + 1), type: 'file', size: files.get(f)!.length });
++      for (const x of dirs) if (x !== d && parentOf(x) === d) rows.push({ file: x.slice(d.length + 1), type: 'dir' });
++      return ok(rows);
++    }
++    if (fn === 'Fileman/get_file_content') {
++      const b = files.get(q.get('dir') + '/' + q.get('file'));
++      return b ? ok({ content: latin1(b) }) : Response.json({ result: { status: 0, errors: ['No such file'] } });
++    }
++    if (fn === 'Fileman/upload_files') {
++      const form = init.body as FormData; const dir = String(form.get('dir')); const f = form.get('file-1') as File;
++      if (!dirs.has(dir)) return Response.json({ result: { status: 0, errors: ['no dir'] } });
++      files.set(dir + '/' + f.name, new Uint8Array(await f.arrayBuffer())); uploads.push(dir + '/' + f.name);
++      return ok({ succeeded: 1 });
++    }
++  }
++  if (url.pathname === '/json-api/cpanel') {
++    const p = new URLSearchParams(String(init.body)); const fn = p.get('cpanel_jsonapi_func')!;
++    const res = (data: any[]) => Response.json({ cpanelresult: { event: { result: 1 }, data } });
++    if (fn === 'mkdir') { const d = p.get('path') + '/' + p.get('name'); if (!dirs.has(p.get('path')!)) return res([{ result: 0, reason: 'no parent' }]); dirs.add(d); return res([{ result: 1 }]); }
++    if (fn === 'fileop' && p.get('op') === 'copy') { files.set(p.get('destfiles')!, files.get(p.get('sourcefiles')!)!.slice()); return res([{ result: 1 }]); }
++    if (fn === 'fileop' && p.get('op') === 'chmod') return res([{ result: 1 }]);
++  }
++  return new Response('unexpected ' + url, { status: 500 });
++}) as typeof fetch;
++
++// ---- fake Base44 entities (equality filter, newest first) ----
++const tables: Record<string, any[]> = {};
++let seq = 0;
++const table = (name: string) => (tables[name] ??= []);
++const match = (r: any, q: any) => Object.entries(q).every(([k, v]) => r[k] === v);
++const entity = (name: string) => ({
++  create: async (d: any) => { const r = { id: 'id' + (++seq).toString().padStart(8, '0'), created_date: new Date(Date.now() + seq).toISOString(), ...d }; table(name).push(r); return r; },
++  update: async (id: string, d: any) => { const r = table(name).find((x) => x.id === id); Object.assign(r, d); return r; },
++  filter: async (q: any, sort?: string, limit = 50) => {
++    const rows = table(name).filter((r) => match(r, q)).reverse();
++    if (sort && !sort.startsWith('-')) rows.sort((x, y) => String(x[sort]).localeCompare(String(y[sort]))); // ascending sort, like Base44
++    return rows.slice(0, limit);
++  },
++  list: async (_sort?: string, limit = 50) => table(name).slice().reverse().slice(0, limit),
++});
++const entities = new Proxy({}, { get: (_t, name: string) => entity(name) });
++let sessionUser: any = null;
++(globalThis as any).__bridgeTestClient = { asServiceRole: { entities }, entities, auth: { me: async () => sessionUser } };
++
++const DROP_KEY = 'bb_' + 'd'.repeat(43), FULL_KEY = 'bb_' + 'f'.repeat(43), SITE_KEY = 'bb_' + 's'.repeat(43);
++table('BridgeKey').push({ id: 'k1', label: 'Maison bot', scope: 'drop', key_hash: await keyHash(DROP_KEY), active: true, last_used_at: new Date().toISOString() });
++table('BridgeKey').push({ id: 'k2', label: 'ChatGPT', scope: 'full', key_hash: await keyHash(FULL_KEY), active: true, last_used_at: new Date().toISOString() });
++table('BridgeKey').push({ id: 'k3', label: 'cleanic automation', scope: 'site:cleanic', key_hash: await keyHash(SITE_KEY), active: true, last_used_at: new Date().toISOString() });
++
++async function call(fn: (r: Request) => Promise<Response>, body: any, key?: string | null) {
++  const headers: Record<string, string> = { 'content-type': 'application/json' };
++  if (key) headers['X-Bridge-Key'] = key;
++  const res = await fn(new Request('https://bridge.test/fn', { method: 'POST', headers, body: JSON.stringify(body) }));
++  return { status: res.status, body: await res.json() };
++}
++const enc = (s: string) => new TextEncoder().encode(s);
++const b64 = (b: Uint8Array) => btoa(latin1(b));
++function webp(n = 64, fill = 7) { const b = new Uint8Array(n).fill(fill); b.set(enc('RIFF'), 0); b.set(enc('WEBPVP8X'), 8); b[24] = 0xff; b[25] = 0x04; b[26] = 0; b[27] = 0x7f; b[28] = 0x02; b[29] = 0; return b; }
++const lines: string[] = [];
++const log = (s: string) => lines.push(s);
++function refused(what: string, fn: () => unknown, why: RegExp) {
++  try { fn(); } catch (e) { const m = (e as Error).message; if (!why.test(m)) throw new Error(what + ': wrong refusal: ' + m); log('refused  ' + what.padEnd(34) + ' -> ' + m.slice(0, 90)); return; }
++  throw new Error(what + ' was NOT refused');
++}
++
++Deno.test('1. paths and file types: only .json .webp .jpg .png .md .txt; no ../, absolute, URL, dotfile, double extension or secret names', () => {
++  for (const p of ['.htaccess', 'site/.htaccess', 'x.htaccess', 'contact.php', 'a.php.jpg', 'hero.webp.php', 'deploy.sh', 'run.cgi', 'tool.exe', 'app.bin',
++    'site.zip', 'site.tar.gz', 'pack.7z', 'page.html', 'main.js', 'logo.svg', 'style.css', '.env', 'x.phtml']) refused(p, () => dropPath(p), /not allowed|exactly one dot|Folder names/);
++  for (const p of ['../index.json', 'a/../../b.json', './x.json', '/etc/passwd.txt', '~/x.txt', 'https://evil.sg/a.json', 'a\\b.json', '%2e%2e/x.json', 'a//b.json', 'a/b/c/d.json'])
++    refused(p, () => dropPath(p), /traversal|relative|Invalid characters|empty folder|2 folders deep/);
++  for (const p of ['secrets.json', 'api-key.txt', 'db-password.txt', 'my-token.json', 'credentials.md', 'id_rsa.txt', 'prod-env.txt']) refused(p, () => dropPath(p), /look like secrets/);
++  for (const p of ['grand-dunman.json', 'images/hero.webp', 'images/v4/plan_1.png', 'notes.md', 'brief.txt', 'shot.JPG']) { dropPath(p); log('allowed  ' + p); }
++});
++
++Deno.test('2. content checks: real image headers, no code, no secrets, valid JSON/UTF-8, size limits', () => {
++  const P = (p: string) => dropPath(p);
++  const png = new Uint8Array([0x89, 0x50, 0x4e, 0x47, 0x0d, 0x0a, 0x1a, 0x0a, 0, 0, 0, 0]);
++  const cases: [string, Uint8Array, RegExp][] = [
++    ['fake.webp (really a PNG)', png, /not a real \.webp/],
++    ['zip.webp (zip archive)', new Uint8Array([0x50, 0x4b, 0x03, 0x04, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10]), /not a real/],
++    ['elf.png (program)', new Uint8Array([0x7f, 0x45, 0x4c, 0x46, 2, 1, 1, 0, 0, 0, 0, 0]), /not a real/],
++    ['shell.jpg (php inside jpeg)', new Uint8Array([0xff, 0xd8, 0xff, 0xe0, ...enc('<?php system($_GET[1]); ?>')]), /script or server code/],
++    ['bad.json', enc('{"name": "Grand Dunman",'), /not valid JSON/],
++    ['code.txt (<?php)', enc('hello <?php echo 1; ?>'), /server code/],
++    ['xss.md (<script>)', enc('# hi\n<script>alert(1)</script>'), /script tags/],
++    ['shebang.txt', enc('#!/bin/sh\nrm -rf /'), /server code/],
++    ['login.json (password)', enc('{"password": "hunter2hunter2"}'), /password, key or token/],
++    ['aws.txt (AWS key)', enc('key AKIAABCDEFGHIJKLMNOP'), /password, key or token/],
++    ['bridgekey.txt (a Bridge key)', enc('X-Bridge-Key: bb_' + 'a'.repeat(43)), /password, key or token/],
++    ['binary.txt (NUL bytes)', new Uint8Array([104, 105, 0, 1, 2]), /control characters|UTF-8/],
++    ['empty.json', new Uint8Array(0), /empty/],
++    ['big.webp (1,000,001 bytes)', webp(1_000_001), /limit for \.webp is 1000000/],
++    ['big.json (512,001 bytes)', enc('"' + 'a'.repeat(511_999) + '"'), /limit for \.json is 512000/],
++    ['big.md (256,001 bytes)', enc('a'.repeat(256_001)), /limit for \.md is 256000/],
++  ];
++  for (const [label, bytes, why] of cases) {
++    const name = label.split(' ')[0];
++    const pr = dropContentProblem(P(name), bytes);
++    if (!pr || !why.test(pr)) throw new Error(label + ': ' + pr);
++    log('refused  ' + label.padEnd(34) + ' -> ' + pr.slice(0, 90));
++  }
++  if (dropContentProblem(P('hero.webp'), webp()) !== null) throw new Error('good webp');
++  if (dropContentProblem(P('g.json'), enc('{"name":"Grand Dunman","vp":"31 Aug 2027"}')) !== null) throw new Error('good json');
++  log('allowed  real webp + valid JSON');
++});
++
++Deno.test('3. bot key: drop_put + drop_status only; every other Bridge tool refused; files land in the private folder only', async () => {
++  const before = new Map([...files].filter(([p]) => p.startsWith(ROOT)).map(([p, b]) => [p, latin1(b)]));
++  const json = enc(JSON.stringify({ slug: 'grand-dunman', name: 'Grand Dunman' }));
++  let r = await call(dropPutFn, { site: 'maisoninteriordesign.sg', job: 'grand-dunman', path: 'grand-dunman.json', content: new TextDecoder().decode(json) }, DROP_KEY);
++  if (r.status !== 200 || !r.body.stored) throw new Error('put json: ' + JSON.stringify(r.body));
++  const dropId = r.body.drop_id;
++  for (let i = 1; i <= 9; i++) {
++    r = await call(dropPutFn, { site: 'maisoninteriordesign.sg', job: 'grand-dunman', path: 'images/gd-v4-' + i + '.webp', content_base64: b64(webp(200, i)) }, DROP_KEY);
++    if (r.status !== 200 || r.body.drop_id !== dropId) throw new Error('put webp ' + i + ': ' + JSON.stringify(r.body));
++  }
++  log('allowed  drop key: 1 JSON + 9 WebPs into drop ' + dropId + ' (' + r.body.files + ' files, ' + r.body.total_bytes + ' bytes)');
++  const stored = [...files.keys()].filter((p) => p.startsWith(PRIV + '/drops/' + dropId + '/'));
++  if (stored.length !== 10) throw new Error('stored ' + stored.length);
++  const after = new Map([...files].filter(([p]) => p.startsWith(ROOT)).map(([p, b]) => [p, latin1(b)]));
++  if (JSON.stringify([...before]) !== JSON.stringify([...after])) throw new Error('a public_html file changed');
++  log('ok       10 files in ~/bluehost-bridge-private/drops/' + dropId + '/ (outside public_html); 0 public_html files changed');
++  r = await call(dropPutFn, { site: 'maisoninteriordesign.sg', job: 'grand-dunman', path: 'images/x.webp', content_base64: b64(webp(50)), sha256: '0'.repeat(64) }, DROP_KEY);
++  if (r.status !== 422 || !/sha256 does not match/.test(r.body.error)) throw new Error('sha mismatch: ' + JSON.stringify(r.body));
++  log('refused  drop_put with wrong sha256            -> ' + r.body.error.slice(0, 80));
++  for (const [what, body, why] of [
++    ['drop_put .htaccess', { path: '.htaccess', content: 'Deny from all' }, /not allowed|exactly one dot/],
++    ['drop_put ../ path', { path: '../../public_html/index.json', content: '{}' }, /traversal/],
++    ['drop_put .php', { path: 'shell.php', content: '<?php ?>' }, /not allowed/],
++    ['drop_put secret content', { path: 'notes.txt', content: 'DB_PASSWORD=abcdefgh12345' }, /password, key or token/],
++    ['drop_put unknown site', { site: 'evil.com', path: 'a.json', content: '{}' }, /Unknown site/],
++    ['drop_put bad job', { job: '../x', path: 'a.json', content: '{}' }, /job must be/],
++  ] as [string, any, RegExp][]) {
++    const res = await call(dropPutFn, { site: 'maisoninteriordesign.sg', job: 'grand-dunman', ...body }, DROP_KEY);
++    if (res.status < 400 || !why.test(res.body.error)) throw new Error(what + ': ' + JSON.stringify(res.body));
++    log('refused  ' + what.padEnd(34) + ' -> ' + res.body.error.slice(0, 80));
++  }
++  const st = await call(dropStatusFn, { site: 'maisoninteriordesign.sg', job: 'grand-dunman' }, DROP_KEY);
++  if (st.status !== 200 || st.body.drops[0].files.length !== 10 || JSON.stringify(st.body).includes('Grand Dunman')) throw new Error('status: ' + JSON.stringify(st.body).slice(0, 300));
++  log('allowed  drop_status: 10 files with path/size/sha256/when/who, no file content');
++  const ready = await call(dropPutFn, { site: 'maisoninteriordesign.sg', job: 'grand-dunman', action: 'ready', note: 'v4 set complete' }, DROP_KEY);
++  if (ready.body.state !== 'ready') throw new Error('ready');
++  const live = { site: 'pageone', path: 'preview/maison-interior-design/index.html' };
++  const denied: [string, any, any][] = [
++    ['read_live_file', readFn, live], ['read_file', readOldFn, live], ['write_file', writeFn, { ...live, content: 'x' }],
++    ['write_files', writeManyFn, { site: 'pageone', files: [{ path: 'a.json', content: '{}' }] }], ['edit_file', editFn, { ...live, edits: [{ old_text: 'a', new_text: 'b' }] }],
++    ['restore_backup', restoreFn, { ...live, backup_id: 'x' }], ['sync_from_github', syncGhFn, { site: 'pageone', ref: 'abcdef1', source_path: 'x' }],
++    ['list_files', listFn, { site: 'pageone' }], ['list_live_files', listLiveFn, { site: 'pageone' }], ['bridgeKey (make keys)', keyFn, { action: 'create', scope: 'full' }],
++    ['overview', overviewFn, {}], ['list_sites', sitesFn, {}], ['get_instructions', guideFn, {}], ['post_note', noteFn, { text: 'hi' }],
++    ['claim_work', claimFn, { site: 'pageone' }], ['sync_status', syncFn, {}], ['list_backups', backupsFn, { site: 'pageone' }],
++  ];
++  for (const [name, fn, body] of denied) {
++    const res = await call(fn, body, DROP_KEY);
++    if (res.status !== 403 || !/can only drop files/.test(res.body.error)) throw new Error('drop key ran ' + name + ': ' + JSON.stringify(res.body).slice(0, 200));
++  }
++  log('refused  drop key on ' + denied.length + ' other tools (' + denied.map((d) => d[0]).join(', ') + ') -> 403 "This key can only drop files and read drop status"');
++  for (const [name, fn, body] of [['drop_publish', dropPublishFn, { drop_id: dropId, files: [] }], ['drop_read', dropReadFn, { drop_id: dropId, path: 'grand-dunman.json' }],
++    ['drop_list', dropListFn, {}], ['drop_clear', dropClearFn, { drop_id: dropId }]] as [string, any, any][]) {
++    for (const [k, kn] of [[DROP_KEY, 'drop key'], [FULL_KEY, 'full ChatGPT key'], [SITE_KEY, 'site key']]) {
++      const res = await call(fn, body, k);
++      if (res.status !== 403 || !/signed-in session only/.test(res.body.error)) throw new Error(kn + ' ran ' + name + ': ' + JSON.stringify(res.body));
++    }
++  }
++  log('refused  drop_publish/drop_read/drop_list/drop_clear with the drop key, the full ChatGPT key and a site key -> 403 (signed-in session only)');
++  const site = await call(dropPutFn, { site: 'maisoninteriordesign.sg', job: 'x1', path: 'a.json', content: '{}' }, SITE_KEY);
++  if (site.status !== 403) throw new Error('site key dropped');
++  const bad = await call(dropPutFn, { site: 'maisoninteriordesign.sg', job: 'x1', path: 'a.json', content: '{}' }, 'bb_' + 'x'.repeat(43));
++  if (bad.status !== 401) throw new Error('unknown key');
++  log('refused  drop_put with a site key (403) and an unknown key (401)');
++  const logs = table('BridgeAuthLog');
++  if (JSON.stringify(logs).includes(DROP_KEY) || JSON.stringify(logs).includes(await keyHash(DROP_KEY))) throw new Error('key leaked into the auth log');
++  if (!logs.some((l) => l.key_label === 'Maison bot' && l.endpoint === 'drop_put' && l.allowed)) throw new Error('no auth log row');
++  const bl = table('BridgeLog').filter((l) => l.action === 'drop_put' && l.ok);
++  if (bl.length < 10 || bl[0].actor !== 'bot drop key: Maison bot') throw new Error('BridgeLog who/what/when');
++  log('ok       logs: ' + logs.length + ' BridgeAuthLog rows (key label, never the key or its hash) + ' + bl.length + ' BridgeLog drop_put rows (who, path, when)');
++});
++
++Deno.test('4. limits: 40 files and 15 MB per drop, 10 open drops per key', async () => {
++  for (let i = 0; i < DROP_LIMITS.filesPerDrop; i++) {
++    const r = await call(dropPutFn, { site: 'pageonesingapore.com', job: 'many', path: 'f' + i + '.txt', content: 'file ' + i }, DROP_KEY);
++    if (r.status !== 200) throw new Error('file ' + i + ': ' + JSON.stringify(r.body));
++  }
++  let r = await call(dropPutFn, { site: 'pageonesingapore.com', job: 'many', path: 'f41.txt', content: 'one too many' }, DROP_KEY);
++  if (r.status !== 413 || !/at most 40 files/.test(r.body.error)) throw new Error('41st: ' + JSON.stringify(r.body));
++  log('refused  41st file in one drop                 -> ' + r.body.error);
++  for (let i = 0; i < 15; i++) {
++    r = await call(dropPutFn, { site: 'pageonesingapore.com', job: 'big', path: 'b' + i + '.webp', content_base64: b64(webp(999_999, i)) }, DROP_KEY);
++    if (r.status !== 200) throw new Error('big ' + i + ': ' + JSON.stringify(r.body));
++  }
++  r = await call(dropPutFn, { site: 'pageonesingapore.com', job: 'big', path: 'b15.webp', content_base64: b64(webp(999_999, 15)) }, DROP_KEY);
++  if (r.status !== 413 || !/15000000 bytes in total/.test(r.body.error)) throw new Error('15MB: ' + JSON.stringify(r.body));
++  log('refused  16th 1 MB image (drop over 15 MB)     -> ' + r.body.error.slice(0, 90));
++  for (let i = 0; i < 7; i++) await call(dropPutFn, { site: 'pageonesingapore.com', job: 'open-' + i, path: 'a.txt', content: 'x' }, DROP_KEY);
++  r = await call(dropPutFn, { site: 'pageonesingapore.com', job: 'open-7', path: 'a.txt', content: 'x' }, DROP_KEY);
++  if (r.status !== 429) throw new Error('open drops: ' + JSON.stringify(r.body));
++  log('refused  11th open drop for the same key       -> ' + r.body.error);
++});
++
++Deno.test('5. Claude publish (session only): review, tamper check, base hash, type kept, stays in the drop\'s folder, then clear', async () => {
++  sessionUser = { email: 'claude-session@test', role: 'admin' };
++  const list = await call(dropListFn, { state: 'ready' });
++  const drop = list.body.drops.find((d: any) => d.job === 'grand-dunman');
++  if (!drop || drop.bridge_site !== 'pageone' || drop.base_path !== 'preview/maison-interior-design') throw new Error('list: ' + JSON.stringify(list.body).slice(0, 300));
++  const rd = await call(dropReadFn, { drop_id: drop.drop_id, path: 'images/gd-v4-1.webp' });
++  if (rd.body.image?.width !== 1280 || rd.body.image?.height !== 640) throw new Error('image size ' + JSON.stringify(rd.body));
++  const rj = await call(dropReadFn, { drop_id: drop.drop_id, path: 'grand-dunman.json' });
++  if (!/Grand Dunman/.test(rj.body.content)) throw new Error('json read');
++  log('allowed  session drop_list / drop_read (JSON content; webp 1280x640)');
++  const to = (i: number) => 'images/new-launches/grand-dunman-v4/gd-v4-' + i + '.webp';
++  const files9 = Array.from({ length: 9 }, (_, k) => ({ from: 'images/gd-v4-' + (k + 1) + '.webp', to: to(k + 1) }));
++  // A file already live at one target, with different bytes: replacing it needs its live sha.
++  dirs.add(MAISON + '/images/new-launches'); dirs.add(MAISON + '/images/new-launches/grand-dunman-v4');
++  files.set(MAISON + '/' + to(9), webp(120, 99));
++  let r = await call(dropPublishFn, { drop_id: drop.drop_id, files: files9 });
++  if (r.status !== 409 || !/already exists on the live site and differs: pass expected_sha256/.test(r.body.error)) throw new Error('no base: ' + JSON.stringify(r.body));
++  log('refused  drop_publish replace without base     -> ' + r.body.error.slice(0, 90));
++  if (uploads.some((u) => u.startsWith(MAISON + '/images/new-launches'))) throw new Error('something was written');
++  for (const [what, body, why] of [
++    ['publish webp as .php', { files: [{ from: 'images/gd-v4-1.webp', to: 'images/x.php' }] }, /type must stay \.webp/],
++    ['publish webp as .htaccess', { files: [{ from: 'images/gd-v4-1.webp', to: '.htaccess' }] }, /type must stay/],
++    ['publish outside drop folder', { base_path: 'preview/klar-details', files: [{ from: 'images/gd-v4-1.webp', to: 'a.webp' }] }, /must stay inside preview\/maison-interior-design/],
++    ['publish ../ target', { files: [{ from: 'images/gd-v4-1.webp', to: '../../index.webp' }] }, /traversal/],
++    ['publish file not in drop', { files: [{ from: 'images/nope.webp', to: 'a.webp' }] }, /No stored file/],
++  ] as [string, any, RegExp][]) {
++    const res = await call(dropPublishFn, { drop_id: drop.drop_id, ...body });
++    if (res.status < 400 || !why.test(res.body.error)) throw new Error(what + ': ' + JSON.stringify(res.body));
++    log('refused  ' + what.padEnd(34) + ' -> ' + res.body.error.slice(0, 80));
++  }
++  // Tamper check: the stored copy changes after the drop.
++  const stored = PRIV + '/drops/' + drop.drop_id + '/images/gd-v4-2.webp';
++  const orig = files.get(stored)!; files.set(stored, webp(200, 55));
++  r = await call(dropPublishFn, { drop_id: drop.drop_id, files: [{ from: 'images/gd-v4-2.webp', to: to(2) }] });
++  if (r.status !== 409 || !/TAMPER CHECK/.test(r.body.error)) throw new Error('tamper: ' + JSON.stringify(r.body));
++  files.set(stored, orig);
++  log('refused  stored file changed after drop        -> ' + r.body.error.slice(0, 80));
++  const liveSha = Array.from(new Uint8Array(await crypto.subtle.digest('SHA-256', files.get(MAISON + '/' + to(9))!)), (b) => b.toString(16).padStart(2, '0')).join('');
++  files9[8] = { ...files9[8], expected_sha256: liveSha } as any;
++  const dry = await call(dropPublishFn, { drop_id: drop.drop_id, files: files9, dry_run: true });
++  if (dry.body.files.filter((f: any) => f.action === 'create').length !== 8 || dry.body.files[8].action !== 'update') throw new Error('dry: ' + JSON.stringify(dry.body));
++  r = await call(dropPublishFn, { drop_id: drop.drop_id, files: files9 });
++  if (!r.body.ok || r.body.files.filter((f: any) => f.status === 'created').length !== 8 || r.body.files[8].status !== 'updated' || !r.body.files[8].backupId) throw new Error('publish: ' + JSON.stringify(r.body).slice(0, 400));
++  for (let i = 1; i <= 9; i++) if (latin1(files.get(MAISON + '/' + to(i))!) !== latin1(webp(200, i))) throw new Error('live bytes ' + i);
++  log('allowed  session drop_publish: dry run 8 create + 1 update, then 8 created + 1 updated (backup made, bytes verified)');
++  const cl = await call(dropClearFn, { drop_id: drop.drop_id, reason: 'published and checked' });
++  if (cl.body.state !== 'cleared' || cl.body.files_wiped !== 10) throw new Error('clear: ' + JSON.stringify(cl.body));
++  const left = [...files].filter(([p, b]) => p.startsWith(PRIV + '/drops/' + drop.drop_id + '/') && b.length > 0);
++  if (left.length) throw new Error('content left after clear');
++  r = await call(dropReadFn, { drop_id: drop.drop_id, path: 'grand-dunman.json' });
++  if (r.status !== 410) throw new Error('read after clear');
++  log('ok       drop_clear wiped 10 files (0 bytes left), the drop now refuses reads and publishes (410)');
++  // Expiry: an old drop is wiped by the next drop tool call.
++  const old = table('BridgeDrop').find((d) => d.job === 'many'); old.expires_at = new Date(Date.now() - 1000).toISOString();
++  await call(dropListFn, {});
++  if (old.state !== 'expired') throw new Error('expiry: ' + old.state);
++  log('ok       a drop past its 7-day expiry is wiped and marked expired on the next drop call');
++  sessionUser = null;
++});
++
++Deno.test('6. targets: domains map to their Bridge site and folder', () => {
++  const t = dropTarget('https://www.maisoninteriordesign.sg/');
++  if (t.site !== 'pageone' || t.base !== 'preview/maison-interior-design') throw new Error(JSON.stringify(t));
++  if (dropTarget('ktech.my').site !== 'ktech') throw new Error('ktech');
++  log('ok       maisoninteriordesign.sg -> pageone:preview/maison-interior-design; ktech.my -> ktech');
++  console.log('\n' + lines.join('\n'));
++});
+diff -ruN pbase/tests/stubs/runtime.ts pnew/tests/stubs/runtime.ts
+--- pbase/tests/stubs/runtime.ts	2026-11-15 02:24:27.000000000 +0000
++++ pnew/tests/stubs/runtime.ts	2026-11-15 02:45:33.660322266 +0000
+@@ -1,3 +1,8 @@
+ // Test stand-in for 'base44:runtime' and the SDK. Holds no real secret; cPanel is mocked in tests.
+ export const secrets = { get: (k: string): string | undefined => (k === 'CPANEL_TOKEN' ? 'test-token-not-real' : undefined) };
+-export function createClientFromRequest(_req: Request): any { throw new Error('not available in tests'); }
++// A test may set globalThis.__bridgeTestClient to a fake SDK client (dropFolder.test.ts); otherwise nothing is available.
++export function createClientFromRequest(_req: Request): any {
++  const fake = (globalThis as any).__bridgeTestClient;
++  if (fake) return fake;
++  throw new Error('not available in tests');
++}
