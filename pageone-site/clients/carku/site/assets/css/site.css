@@ -4,7 +4,7 @@
 :root{
   --night:#0B2350;--night-2:#123272;--blue:#1565E0;--blue-deep:#0D4AAE;--signal:#3FD0F5;
   --ice:#F4F8FD;--paper:#FFFFFF;--ink:#0E1A2B;--ink-2:#3A4D68;--line:#D3DFEE;--on-night:#DCE8FA;--on-night-2:#A9C2E8;
-  --wa:#128C4A;--wa-deep:#0D6E3A;
+  --wa:#0F7A40;--wa-deep:#0B6334;
   --r-xl:28px;--r-l:20px;--r-m:14px;--r-s:10px;
   --wrap:1180px;--gut:20px;
   --display:"Archivo C","Arial Narrow",sans-serif;--body:"Figtree C","Segoe UI",sans-serif;
@@ -74,6 +74,7 @@ p{margin:0 0 1em;text-wrap:pretty}
 .on-night{background:var(--night);color:var(--on-night)}
 .on-night h2,.on-night h3{color:#fff}
 .on-night a{color:var(--signal)}
+.on-night .btn-wa{color:#fff}
 .sec-h{margin-bottom:28px;max-width:780px}
 .sec-h p{color:var(--ink-2);font-size:1.08rem;margin-top:12px}
 .on-night .sec-h p{color:var(--on-night-2)}
@@ -284,7 +285,7 @@ p{margin:0 0 1em;text-wrap:pretty}
 /* cta band */
 .cta-band{background:var(--blue);color:#fff;border-radius:var(--r-xl);padding:28px 22px;display:grid;gap:16px}
 .cta-band h2{color:#fff;font-size:clamp(1.6rem,6vw,2.6rem)}
-.cta-band p{margin:0;color:#E3EDFF}
+.cta-band p{margin:0;color:#fff}
 .cta-band .btn-wa{background:#fff;color:var(--wa-deep)}
 @media (min-width:900px){.cta-band{grid-template-columns:1.4fr 1fr;align-items:center;padding:40px}}
 
@@ -301,6 +302,7 @@ p{margin:0 0 1em;text-wrap:pretty}
 /* footer */
 .ft{background:var(--night);color:var(--on-night-2);padding:48px 0 calc(110px + env(safe-area-inset-bottom));font-size:.95rem}
 .ft a{color:var(--on-night)}
+.ft .btn-wa{color:#fff}
 .ft-grid{display:grid;gap:30px}
 .ft-brand .wm{font:800 1.8rem/1 var(--display);font-stretch:85%;color:#fff;letter-spacing:.02em}
 .ft-logo{display:inline-block;background:#fff;border-radius:12px;padding:8px 12px}

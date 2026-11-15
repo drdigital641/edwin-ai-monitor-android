@@ -150,7 +150,7 @@ def header(path):
         cols += '<p class="menu-h">%s</p><ul>%s</ul>' % (e(lab), "".join('<li><a href="%s%s">%s</a></li>' % (r, h, e(l)) for h, l in items))
     return f"""<header class="hd">
   <div class="wrap hd-in">
-    <a class="hd-logo" href="{r or './'}" aria-label="Carku Singapore home"><img src="{e(MEDIA['logo'])}" alt="Carku" width="300" height="60" referrerpolicy="no-referrer" onerror="this.outerHTML='&lt;span class=wm&gt;CARKU&lt;/span&gt;'"><span class="sg">Singapore</span></a>
+    <a class="hd-logo" href="{r or './'}"><img src="{e(MEDIA['logo'])}" alt="Carku" width="300" height="60" referrerpolicy="no-referrer" onerror="this.outerHTML='&lt;span class=wm&gt;CARKU&lt;/span&gt;'"><span class="sg">Singapore</span></a>
     <nav class="hd-nav" aria-label="Main">{nav}</nav>
     {btn_wa("WhatsApp", "header-whatsapp")}
     <details class="menu" data-menu>
@@ -195,7 +195,7 @@ def footer(path):
     </div>
   </div>
 </footer>
-<div class="sticky" data-sticky aria-hidden="true">{btn_wa("WhatsApp Kohden", "sticky-whatsapp")}<a class="btn call" href="tel:{TEL}" data-cta="sticky-call" aria-label="Call Kohden">Call</a></div>
+<div class="sticky" data-sticky aria-hidden="true">{btn_wa("WhatsApp Kohden", "sticky-whatsapp")}<a class="btn call" href="tel:{TEL}" data-cta="sticky-call">Call</a></div>
 <script src="{r}assets/js/site.js?v={VER['js']}" defer></script>
 </body>
 </html>
