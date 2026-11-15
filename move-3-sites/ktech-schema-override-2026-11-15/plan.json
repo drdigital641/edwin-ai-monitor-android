@@ -1,0 +1,1379 @@
+[
+ {
+  "path": "about/index.html",
+  "expected_sha256": "0d4202ae31744da7518e6c0d50b23c1d98608b5e75b2944af385a65bf2fa279e",
+  "new_sha256": "f58526b40d94c0d33026939fdfaa2355f6926a7309e9990af189af59b55a72b9",
+  "edits": [
+   {
+    "old_text": "{\"@type\": \"ContactPoint\", \"contactType\": \"customer service\", \"name\": \"Andrew\", \"telephone\": \"+60125512820\", \"email\": \"sales@k-techmy.com\", \"areaServed\": \"MY\"}",
+    "new_text": "{\"@type\": \"ContactPoint\", \"contactType\": \"customer service\", \"name\": \"Tony\", \"telephone\": \"+60109362820\", \"email\": \"sales@k-techmy.com\", \"areaServed\": \"MY\"}, {\"@type\": \"ContactPoint\", \"contactType\": \"customer service\", \"name\": \"Gavin\", \"telephone\": \"+60125512820\", \"email\": \"sales@k-techmy.com\", \"areaServed\": \"MY\"}",
+    "expected_occurrences": 1
+   },
+   {
+    "old_text": "\"telephone\": \"+60125462820\", \"name\": \"Hooi\",",
+    "new_text": "\"telephone\": \"+60125462820\", \"name\": \"Autel Hooi\",",
+    "expected_occurrences": 1
+   },
+   {
+    "old_text": "\"areaServed\": [\"Johor Bahru\", \"Masai\", \"MY\"]",
+    "new_text": "\"areaServed\": [\"Johor Bahru\", \"Tebrau\", \"MY\"]",
+    "expected_occurrences": 1
+   },
+   {
+    "old_text": "{\"@type\": \"City\", \"name\": \"Masai\"}",
+    "new_text": "{\"@type\": \"City\", \"name\": \"Tebrau\"}",
+    "expected_occurrences": 1
+   }
+  ]
+ },
+ {
+  "path": "articles/adas-calibration-after-windscreen-or-bumper-work/index.html",
+  "expected_sha256": "e29f992d3303ab02940b91c5518006ec43a893616dd514eca50e685e87ccc1da",
+  "new_sha256": "47f76214f26ea68efca49b8c548eaa47300767d37c1fa682e519f3db21b410df",
+  "edits": [
+   {
+    "old_text": "{\"@type\": \"ContactPoint\", \"contactType\": \"customer service\", \"name\": \"Andrew\", \"telephone\": \"+60125512820\", \"email\": \"sales@k-techmy.com\", \"areaServed\": \"MY\"}",
+    "new_text": "{\"@type\": \"ContactPoint\", \"contactType\": \"customer service\", \"name\": \"Tony\", \"telephone\": \"+60109362820\", \"email\": \"sales@k-techmy.com\", \"areaServed\": \"MY\"}, {\"@type\": \"ContactPoint\", \"contactType\": \"customer service\", \"name\": \"Gavin\", \"telephone\": \"+60125512820\", \"email\": \"sales@k-techmy.com\", \"areaServed\": \"MY\"}",
+    "expected_occurrences": 1
+   },
+   {
+    "old_text": "\"telephone\": \"+60125462820\", \"name\": \"Hooi\",",
+    "new_text": "\"telephone\": \"+60125462820\", \"name\": \"Autel Hooi\",",
+    "expected_occurrences": 1
+   },
+   {
+    "old_text": "\"areaServed\": [\"Johor Bahru\", \"Masai\", \"MY\"]",
+    "new_text": "\"areaServed\": [\"Johor Bahru\", \"Tebrau\", \"MY\"]",
+    "expected_occurrences": 1
+   },
+   {
+    "old_text": "{\"@type\": \"City\", \"name\": \"Masai\"}",
+    "new_text": "{\"@type\": \"City\", \"name\": \"Tebrau\"}",
+    "expected_occurrences": 1
+   }
+  ]
+ },
+ {
+  "path": "articles/index.html",
+  "expected_sha256": "b4ecc35019280900535f147a90bab3ee55812a97c0d9e3a1a82c53bf30ca4bd7",
+  "new_sha256": "9098279995c425127a97f630f45ef88c450d1f770d667c4c0ce0852a9d8416d6",
+  "edits": [
+   {
+    "old_text": "{\"@type\": \"ContactPoint\", \"contactType\": \"customer service\", \"name\": \"Andrew\", \"telephone\": \"+60125512820\", \"email\": \"sales@k-techmy.com\", \"areaServed\": \"MY\"}",
+    "new_text": "{\"@type\": \"ContactPoint\", \"contactType\": \"customer service\", \"name\": \"Tony\", \"telephone\": \"+60109362820\", \"email\": \"sales@k-techmy.com\", \"areaServed\": \"MY\"}, {\"@type\": \"ContactPoint\", \"contactType\": \"customer service\", \"name\": \"Gavin\", \"telephone\": \"+60125512820\", \"email\": \"sales@k-techmy.com\", \"areaServed\": \"MY\"}",
+    "expected_occurrences": 1
+   },
+   {
+    "old_text": "\"telephone\": \"+60125462820\", \"name\": \"Hooi\",",
+    "new_text": "\"telephone\": \"+60125462820\", \"name\": \"Autel Hooi\",",
+    "expected_occurrences": 1
+   },
+   {
+    "old_text": "\"areaServed\": [\"Johor Bahru\", \"Masai\", \"MY\"]",
+    "new_text": "\"areaServed\": [\"Johor Bahru\", \"Tebrau\", \"MY\"]",
+    "expected_occurrences": 1
+   },
+   {
+    "old_text": "{\"@type\": \"City\", \"name\": \"Masai\"}",
+    "new_text": "{\"@type\": \"City\", \"name\": \"Tebrau\"}",
+    "expected_occurrences": 1
+   }
+  ]
+ },
+ {
+  "path": "articles/tpms-relearn-after-tyre-change/index.html",
+  "expected_sha256": "02a47ad7a87f1578adac6c520575b22096ee69f6ca28ad1f3536caa0937af443",
+  "new_sha256": "6d841f2de5e7bb1e75bc37c07dfa5fe195273b2649435a1b57d137e348f14859",
+  "edits": [
+   {
+    "old_text": "{\"@type\": \"ContactPoint\", \"contactType\": \"customer service\", \"name\": \"Andrew\", \"telephone\": \"+60125512820\", \"email\": \"sales@k-techmy.com\", \"areaServed\": \"MY\"}",
+    "new_text": "{\"@type\": \"ContactPoint\", \"contactType\": \"customer service\", \"name\": \"Tony\", \"telephone\": \"+60109362820\", \"email\": \"sales@k-techmy.com\", \"areaServed\": \"MY\"}, {\"@type\": \"ContactPoint\", \"contactType\": \"customer service\", \"name\": \"Gavin\", \"telephone\": \"+60125512820\", \"email\": \"sales@k-techmy.com\", \"areaServed\": \"MY\"}",
+    "expected_occurrences": 1
+   },
+   {
+    "old_text": "\"telephone\": \"+60125462820\", \"name\": \"Hooi\",",
+    "new_text": "\"telephone\": \"+60125462820\", \"name\": \"Autel Hooi\",",
+    "expected_occurrences": 1
+   },
+   {
+    "old_text": "\"areaServed\": [\"Johor Bahru\", \"Masai\", \"MY\"]",
+    "new_text": "\"areaServed\": [\"Johor Bahru\", \"Tebrau\", \"MY\"]",
+    "expected_occurrences": 1
+   },
+   {
+    "old_text": "{\"@type\": \"City\", \"name\": \"Masai\"}",
+    "new_text": "{\"@type\": \"City\", \"name\": \"Tebrau\"}",
+    "expected_occurrences": 1
+   }
+  ]
+ },
+ {
+  "path": "autel-diagnostic-tools/ev-diagnostics-upgrade-kit/index.html",
+  "expected_sha256": "6d50b1eecffbf11d16d9d8830ccbc7fc5114c2d2b1658c872faa030e0092b860",
+  "new_sha256": "0738932280f2d1e559496179d3f9294c27837ada61076d3c2c8a2deeb50a146e",
+  "edits": [
+   {
+    "old_text": "{\"@type\": \"ContactPoint\", \"contactType\": \"customer service\", \"name\": \"Andrew\", \"telephone\": \"+60125512820\", \"email\": \"sales@k-techmy.com\", \"areaServed\": \"MY\"}",
+    "new_text": "{\"@type\": \"ContactPoint\", \"contactType\": \"customer service\", \"name\": \"Tony\", \"telephone\": \"+60109362820\", \"email\": \"sales@k-techmy.com\", \"areaServed\": \"MY\"}, {\"@type\": \"ContactPoint\", \"contactType\": \"customer service\", \"name\": \"Gavin\", \"telephone\": \"+60125512820\", \"email\": \"sales@k-techmy.com\", \"areaServed\": \"MY\"}",
+    "expected_occurrences": 1
+   },
+   {
+    "old_text": "\"telephone\": \"+60125462820\", \"name\": \"Hooi\",",
+    "new_text": "\"telephone\": \"+60125462820\", \"name\": \"Autel Hooi\",",
+    "expected_occurrences": 1
+   },
+   {
+    "old_text": "\"areaServed\": [\"Johor Bahru\", \"Masai\", \"MY\"]",
+    "new_text": "\"areaServed\": [\"Johor Bahru\", \"Tebrau\", \"MY\"]",
+    "expected_occurrences": 1
+   },
+   {
+    "old_text": "{\"@type\": \"City\", \"name\": \"Masai\"}",
+    "new_text": "{\"@type\": \"City\", \"name\": \"Tebrau\"}",
+    "expected_occurrences": 1
+   }
+  ]
+ },
+ {
+  "path": "autel-diagnostic-tools/index.html",
+  "expected_sha256": "210da2801aa9939cd63c059a2254c4ecb08bdbf88d78bbe19a8fbefaf0350a84",
+  "new_sha256": "00aa5e61f7b4578fe9c705e86b674c288d1848a66a00077ecc5d8a68a51ce45f",
+  "edits": [
+   {
+    "old_text": "{\"@type\": \"ContactPoint\", \"contactType\": \"customer service\", \"name\": \"Andrew\", \"telephone\": \"+60125512820\", \"email\": \"sales@k-techmy.com\", \"areaServed\": \"MY\"}",
+    "new_text": "{\"@type\": \"ContactPoint\", \"contactType\": \"customer service\", \"name\": \"Tony\", \"telephone\": \"+60109362820\", \"email\": \"sales@k-techmy.com\", \"areaServed\": \"MY\"}, {\"@type\": \"ContactPoint\", \"contactType\": \"customer service\", \"name\": \"Gavin\", \"telephone\": \"+60125512820\", \"email\": \"sales@k-techmy.com\", \"areaServed\": \"MY\"}",
+    "expected_occurrences": 1
+   },
+   {
+    "old_text": "\"telephone\": \"+60125462820\", \"name\": \"Hooi\",",
+    "new_text": "\"telephone\": \"+60125462820\", \"name\": \"Autel Hooi\",",
+    "expected_occurrences": 1
+   },
+   {
+    "old_text": "\"areaServed\": [\"Johor Bahru\", \"Masai\", \"MY\"]",
+    "new_text": "\"areaServed\": [\"Johor Bahru\", \"Tebrau\", \"MY\"]",
+    "expected_occurrences": 1
+   },
+   {
+    "old_text": "{\"@type\": \"City\", \"name\": \"Masai\"}",
+    "new_text": "{\"@type\": \"City\", \"name\": \"Tebrau\"}",
+    "expected_occurrences": 1
+   }
+  ]
+ },
+ {
+  "path": "autel-diagnostic-tools/maxicheck-mx900/index.html",
+  "expected_sha256": "e031c0528e509441ddafe57473dedec6f1683379a3326905843020890817da7e",
+  "new_sha256": "4675c6df9598c5975f059ecb20c9dce63153d2df6d9c1a7f90787843da1fce7b",
+  "edits": [
+   {
+    "old_text": "{\"@type\": \"ContactPoint\", \"contactType\": \"customer service\", \"name\": \"Andrew\", \"telephone\": \"+60125512820\", \"email\": \"sales@k-techmy.com\", \"areaServed\": \"MY\"}",
+    "new_text": "{\"@type\": \"ContactPoint\", \"contactType\": \"customer service\", \"name\": \"Tony\", \"telephone\": \"+60109362820\", \"email\": \"sales@k-techmy.com\", \"areaServed\": \"MY\"}, {\"@type\": \"ContactPoint\", \"contactType\": \"customer service\", \"name\": \"Gavin\", \"telephone\": \"+60125512820\", \"email\": \"sales@k-techmy.com\", \"areaServed\": \"MY\"}",
+    "expected_occurrences": 1
+   },
+   {
+    "old_text": "\"telephone\": \"+60125462820\", \"name\": \"Hooi\",",
+    "new_text": "\"telephone\": \"+60125462820\", \"name\": \"Autel Hooi\",",
+    "expected_occurrences": 1
+   },
+   {
+    "old_text": "\"areaServed\": [\"Johor Bahru\", \"Masai\", \"MY\"]",
+    "new_text": "\"areaServed\": [\"Johor Bahru\", \"Tebrau\", \"MY\"]",
+    "expected_occurrences": 1
+   },
+   {
+    "old_text": "{\"@type\": \"City\", \"name\": \"Masai\"}",
+    "new_text": "{\"@type\": \"City\", \"name\": \"Tebrau\"}",
+    "expected_occurrences": 1
+   }
+  ]
+ },
+ {
+  "path": "autel-diagnostic-tools/maxisys-ms906pro/index.html",
+  "expected_sha256": "2356f0afb1d2d8cd35b826188b6c88d87190031e9d458d6bf6dc288b733118b9",
+  "new_sha256": "c7896cb53866ebb3480d8b51d3240332ae7dac590b98a8db03517cb74cf9f700",
+  "edits": [
+   {
+    "old_text": "{\"@type\": \"ContactPoint\", \"contactType\": \"customer service\", \"name\": \"Andrew\", \"telephone\": \"+60125512820\", \"email\": \"sales@k-techmy.com\", \"areaServed\": \"MY\"}",
+    "new_text": "{\"@type\": \"ContactPoint\", \"contactType\": \"customer service\", \"name\": \"Tony\", \"telephone\": \"+60109362820\", \"email\": \"sales@k-techmy.com\", \"areaServed\": \"MY\"}, {\"@type\": \"ContactPoint\", \"contactType\": \"customer service\", \"name\": \"Gavin\", \"telephone\": \"+60125512820\", \"email\": \"sales@k-techmy.com\", \"areaServed\": \"MY\"}",
+    "expected_occurrences": 1
+   },
+   {
+    "old_text": "\"telephone\": \"+60125462820\", \"name\": \"Hooi\",",
+    "new_text": "\"telephone\": \"+60125462820\", \"name\": \"Autel Hooi\",",
+    "expected_occurrences": 1
+   },
+   {
+    "old_text": "\"areaServed\": [\"Johor Bahru\", \"Masai\", \"MY\"]",
+    "new_text": "\"areaServed\": [\"Johor Bahru\", \"Tebrau\", \"MY\"]",
+    "expected_occurrences": 1
+   },
+   {
+    "old_text": "{\"@type\": \"City\", \"name\": \"Masai\"}",
+    "new_text": "{\"@type\": \"City\", \"name\": \"Tebrau\"}",
+    "expected_occurrences": 1
+   }
+  ]
+ },
+ {
+  "path": "autel-diagnostic-tools/maxisys-ms908s3/index.html",
+  "expected_sha256": "acb3f830c3ffdf2c1809d97610dc8d7f7ed5b29ddd2276c82b1abc9e2f85ac4b",
+  "new_sha256": "3eee0838f6f9734bd87249866026194bbf87d171852e403c66c59328b24796a4",
+  "edits": [
+   {
+    "old_text": "{\"@type\": \"ContactPoint\", \"contactType\": \"customer service\", \"name\": \"Andrew\", \"telephone\": \"+60125512820\", \"email\": \"sales@k-techmy.com\", \"areaServed\": \"MY\"}",
+    "new_text": "{\"@type\": \"ContactPoint\", \"contactType\": \"customer service\", \"name\": \"Tony\", \"telephone\": \"+60109362820\", \"email\": \"sales@k-techmy.com\", \"areaServed\": \"MY\"}, {\"@type\": \"ContactPoint\", \"contactType\": \"customer service\", \"name\": \"Gavin\", \"telephone\": \"+60125512820\", \"email\": \"sales@k-techmy.com\", \"areaServed\": \"MY\"}",
+    "expected_occurrences": 1
+   },
+   {
+    "old_text": "\"telephone\": \"+60125462820\", \"name\": \"Hooi\",",
+    "new_text": "\"telephone\": \"+60125462820\", \"name\": \"Autel Hooi\",",
+    "expected_occurrences": 1
+   },
+   {
+    "old_text": "\"areaServed\": [\"Johor Bahru\", \"Masai\", \"MY\"]",
+    "new_text": "\"areaServed\": [\"Johor Bahru\", \"Tebrau\", \"MY\"]",
+    "expected_occurrences": 1
+   },
+   {
+    "old_text": "{\"@type\": \"City\", \"name\": \"Masai\"}",
+    "new_text": "{\"@type\": \"City\", \"name\": \"Tebrau\"}",
+    "expected_occurrences": 1
+   }
+  ]
+ },
+ {
+  "path": "autel-diagnostic-tools/maxisys-ms909-s2/index.html",
+  "expected_sha256": "be785e5011cc05480d8d0d6484839b0b7824efba0af6459a4ce409dfd960a875",
+  "new_sha256": "99d3803701af586c7782e8a1a907dd9207816dfa13c68971a2bae16ef12de256",
+  "edits": [
+   {
+    "old_text": "{\"@type\": \"ContactPoint\", \"contactType\": \"customer service\", \"name\": \"Andrew\", \"telephone\": \"+60125512820\", \"email\": \"sales@k-techmy.com\", \"areaServed\": \"MY\"}",
+    "new_text": "{\"@type\": \"ContactPoint\", \"contactType\": \"customer service\", \"name\": \"Tony\", \"telephone\": \"+60109362820\", \"email\": \"sales@k-techmy.com\", \"areaServed\": \"MY\"}, {\"@type\": \"ContactPoint\", \"contactType\": \"customer service\", \"name\": \"Gavin\", \"telephone\": \"+60125512820\", \"email\": \"sales@k-techmy.com\", \"areaServed\": \"MY\"}",
+    "expected_occurrences": 1
+   },
+   {
+    "old_text": "\"telephone\": \"+60125462820\", \"name\": \"Hooi\",",
+    "new_text": "\"telephone\": \"+60125462820\", \"name\": \"Autel Hooi\",",
+    "expected_occurrences": 1
+   },
+   {
+    "old_text": "\"areaServed\": [\"Johor Bahru\", \"Masai\", \"MY\"]",
+    "new_text": "\"areaServed\": [\"Johor Bahru\", \"Tebrau\", \"MY\"]",
+    "expected_occurrences": 1
+   },
+   {
+    "old_text": "{\"@type\": \"City\", \"name\": \"Masai\"}",
+    "new_text": "{\"@type\": \"City\", \"name\": \"Tebrau\"}",
+    "expected_occurrences": 1
+   }
+  ]
+ },
+ {
+  "path": "autel-diagnostic-tools/maxisys-ms909ev/index.html",
+  "expected_sha256": "165e002edfc44f7998beda8ad66d2f461bb5dfcad5c29cebb3cb835c15c2c501",
+  "new_sha256": "8ee2b10efe2a5196c8fe8646532f31c338ecbe7f09dd13afc87e2e00ab9e241a",
+  "edits": [
+   {
+    "old_text": "{\"@type\": \"ContactPoint\", \"contactType\": \"customer service\", \"name\": \"Andrew\", \"telephone\": \"+60125512820\", \"email\": \"sales@k-techmy.com\", \"areaServed\": \"MY\"}",
+    "new_text": "{\"@type\": \"ContactPoint\", \"contactType\": \"customer service\", \"name\": \"Tony\", \"telephone\": \"+60109362820\", \"email\": \"sales@k-techmy.com\", \"areaServed\": \"MY\"}, {\"@type\": \"ContactPoint\", \"contactType\": \"customer service\", \"name\": \"Gavin\", \"telephone\": \"+60125512820\", \"email\": \"sales@k-techmy.com\", \"areaServed\": \"MY\"}",
+    "expected_occurrences": 1
+   },
+   {
+    "old_text": "\"telephone\": \"+60125462820\", \"name\": \"Hooi\",",
+    "new_text": "\"telephone\": \"+60125462820\", \"name\": \"Autel Hooi\",",
+    "expected_occurrences": 1
+   },
+   {
+    "old_text": "\"areaServed\": [\"Johor Bahru\", \"Masai\", \"MY\"]",
+    "new_text": "\"areaServed\": [\"Johor Bahru\", \"Tebrau\", \"MY\"]",
+    "expected_occurrences": 1
+   },
+   {
+    "old_text": "{\"@type\": \"City\", \"name\": \"Masai\"}",
+    "new_text": "{\"@type\": \"City\", \"name\": \"Tebrau\"}",
+    "expected_occurrences": 1
+   }
+  ]
+ },
+ {
+  "path": "autel-diagnostic-tools/maxisys-ms919-s2/index.html",
+  "expected_sha256": "50b4b625db555da84a08ad7489877a0f7885fa070d337db45948b03ea7824237",
+  "new_sha256": "fc6a9dbedc31f378690774586f48794e8335ab66d8ddf2e014df1d360a26b88e",
+  "edits": [
+   {
+    "old_text": "{\"@type\": \"ContactPoint\", \"contactType\": \"customer service\", \"name\": \"Andrew\", \"telephone\": \"+60125512820\", \"email\": \"sales@k-techmy.com\", \"areaServed\": \"MY\"}",
+    "new_text": "{\"@type\": \"ContactPoint\", \"contactType\": \"customer service\", \"name\": \"Tony\", \"telephone\": \"+60109362820\", \"email\": \"sales@k-techmy.com\", \"areaServed\": \"MY\"}, {\"@type\": \"ContactPoint\", \"contactType\": \"customer service\", \"name\": \"Gavin\", \"telephone\": \"+60125512820\", \"email\": \"sales@k-techmy.com\", \"areaServed\": \"MY\"}",
+    "expected_occurrences": 1
+   },
+   {
+    "old_text": "\"telephone\": \"+60125462820\", \"name\": \"Hooi\",",
+    "new_text": "\"telephone\": \"+60125462820\", \"name\": \"Autel Hooi\",",
+    "expected_occurrences": 1
+   },
+   {
+    "old_text": "\"areaServed\": [\"Johor Bahru\", \"Masai\", \"MY\"]",
+    "new_text": "\"areaServed\": [\"Johor Bahru\", \"Tebrau\", \"MY\"]",
+    "expected_occurrences": 1
+   },
+   {
+    "old_text": "{\"@type\": \"City\", \"name\": \"Masai\"}",
+    "new_text": "{\"@type\": \"City\", \"name\": \"Tebrau\"}",
+    "expected_occurrences": 1
+   }
+  ]
+ },
+ {
+  "path": "autel-diagnostic-tools/maxisys-ultra-s2/index.html",
+  "expected_sha256": "cf8b865f26117f63a0027c6024b0ab27bdf2b321c0f975b0276509dbe917976c",
+  "new_sha256": "47a63744c6c0e41d1b5cd555a9094a9f1f5251ee7cf2ca2145911feb4626dec1",
+  "edits": [
+   {
+    "old_text": "{\"@type\": \"ContactPoint\", \"contactType\": \"customer service\", \"name\": \"Andrew\", \"telephone\": \"+60125512820\", \"email\": \"sales@k-techmy.com\", \"areaServed\": \"MY\"}",
+    "new_text": "{\"@type\": \"ContactPoint\", \"contactType\": \"customer service\", \"name\": \"Tony\", \"telephone\": \"+60109362820\", \"email\": \"sales@k-techmy.com\", \"areaServed\": \"MY\"}, {\"@type\": \"ContactPoint\", \"contactType\": \"customer service\", \"name\": \"Gavin\", \"telephone\": \"+60125512820\", \"email\": \"sales@k-techmy.com\", \"areaServed\": \"MY\"}",
+    "expected_occurrences": 1
+   },
+   {
+    "old_text": "\"telephone\": \"+60125462820\", \"name\": \"Hooi\",",
+    "new_text": "\"telephone\": \"+60125462820\", \"name\": \"Autel Hooi\",",
+    "expected_occurrences": 1
+   },
+   {
+    "old_text": "\"areaServed\": [\"Johor Bahru\", \"Masai\", \"MY\"]",
+    "new_text": "\"areaServed\": [\"Johor Bahru\", \"Tebrau\", \"MY\"]",
+    "expected_occurrences": 1
+   },
+   {
+    "old_text": "{\"@type\": \"City\", \"name\": \"Masai\"}",
+    "new_text": "{\"@type\": \"City\", \"name\": \"Tebrau\"}",
+    "expected_occurrences": 1
+   }
+  ]
+ },
+ {
+  "path": "contact/index.html",
+  "expected_sha256": "874e320d6db41adad81add209716dcac6b1c5b05b062517e55a1ef2a40a9f3a2",
+  "new_sha256": "cea452755016198c7c721d6ca3a345d3c8b9e68b1bbdde0bde7b521f9193c44e",
+  "edits": [
+   {
+    "old_text": "{\"@type\": \"ContactPoint\", \"contactType\": \"customer service\", \"name\": \"Andrew\", \"telephone\": \"+60125512820\", \"email\": \"sales@k-techmy.com\", \"areaServed\": \"MY\"}",
+    "new_text": "{\"@type\": \"ContactPoint\", \"contactType\": \"customer service\", \"name\": \"Tony\", \"telephone\": \"+60109362820\", \"email\": \"sales@k-techmy.com\", \"areaServed\": \"MY\"}, {\"@type\": \"ContactPoint\", \"contactType\": \"customer service\", \"name\": \"Gavin\", \"telephone\": \"+60125512820\", \"email\": \"sales@k-techmy.com\", \"areaServed\": \"MY\"}",
+    "expected_occurrences": 1
+   },
+   {
+    "old_text": "\"telephone\": \"+60125462820\", \"name\": \"Hooi\",",
+    "new_text": "\"telephone\": \"+60125462820\", \"name\": \"Autel Hooi\",",
+    "expected_occurrences": 1
+   },
+   {
+    "old_text": "\"areaServed\": [\"Johor Bahru\", \"Masai\", \"MY\"]",
+    "new_text": "\"areaServed\": [\"Johor Bahru\", \"Tebrau\", \"MY\"]",
+    "expected_occurrences": 1
+   },
+   {
+    "old_text": "{\"@type\": \"City\", \"name\": \"Masai\"}",
+    "new_text": "{\"@type\": \"City\", \"name\": \"Tebrau\"}",
+    "expected_occurrences": 1
+   }
+  ]
+ },
+ {
+  "path": "index.html",
+  "expected_sha256": "883071e40acc29717a4b2c7bbdbd53610717ab4a8cf977f08f5a9ffb1d68e610",
+  "new_sha256": "7ef49e588c2a4b0709c82a736907c3909a91e540584fe1383ee34d8fa9b45e45",
+  "edits": [
+   {
+    "old_text": "{\"@type\": \"ContactPoint\", \"contactType\": \"customer service\", \"name\": \"Andrew\", \"telephone\": \"+60125512820\", \"email\": \"sales@k-techmy.com\", \"areaServed\": \"MY\"}",
+    "new_text": "{\"@type\": \"ContactPoint\", \"contactType\": \"customer service\", \"name\": \"Tony\", \"telephone\": \"+60109362820\", \"email\": \"sales@k-techmy.com\", \"areaServed\": \"MY\"}, {\"@type\": \"ContactPoint\", \"contactType\": \"customer service\", \"name\": \"Gavin\", \"telephone\": \"+60125512820\", \"email\": \"sales@k-techmy.com\", \"areaServed\": \"MY\"}",
+    "expected_occurrences": 1
+   },
+   {
+    "old_text": "\"telephone\": \"+60125462820\", \"name\": \"Hooi\",",
+    "new_text": "\"telephone\": \"+60125462820\", \"name\": \"Autel Hooi\",",
+    "expected_occurrences": 1
+   },
+   {
+    "old_text": "\"areaServed\": [\"Johor Bahru\", \"Masai\", \"MY\"]",
+    "new_text": "\"areaServed\": [\"Johor Bahru\", \"Tebrau\", \"MY\"]",
+    "expected_occurrences": 1
+   },
+   {
+    "old_text": "{\"@type\": \"City\", \"name\": \"Masai\"}",
+    "new_text": "{\"@type\": \"City\", \"name\": \"Tebrau\"}",
+    "expected_occurrences": 1
+   }
+  ]
+ },
+ {
+  "path": "ms/about/index.html",
+  "expected_sha256": "2e48e4485e8f73a9dea49ca0bed6297e3612cca7a765a120c4391a899b0ac466",
+  "new_sha256": "a6fdbcc441363d0f71eb34945e02f825862171ec09547e08b0da31aa610d43bd",
+  "edits": [
+   {
+    "old_text": "{\"@type\": \"ContactPoint\", \"contactType\": \"customer service\", \"name\": \"Andrew\", \"telephone\": \"+60125512820\", \"email\": \"sales@k-techmy.com\", \"areaServed\": \"MY\"}",
+    "new_text": "{\"@type\": \"ContactPoint\", \"contactType\": \"customer service\", \"name\": \"Tony\", \"telephone\": \"+60109362820\", \"email\": \"sales@k-techmy.com\", \"areaServed\": \"MY\"}, {\"@type\": \"ContactPoint\", \"contactType\": \"customer service\", \"name\": \"Gavin\", \"telephone\": \"+60125512820\", \"email\": \"sales@k-techmy.com\", \"areaServed\": \"MY\"}",
+    "expected_occurrences": 1
+   },
+   {
+    "old_text": "\"telephone\": \"+60125462820\", \"name\": \"Hooi\",",
+    "new_text": "\"telephone\": \"+60125462820\", \"name\": \"Autel Hooi\",",
+    "expected_occurrences": 1
+   },
+   {
+    "old_text": "\"areaServed\": [\"Johor Bahru\", \"Masai\", \"MY\"]",
+    "new_text": "\"areaServed\": [\"Johor Bahru\", \"Tebrau\", \"MY\"]",
+    "expected_occurrences": 1
+   },
+   {
+    "old_text": "{\"@type\": \"City\", \"name\": \"Masai\"}",
+    "new_text": "{\"@type\": \"City\", \"name\": \"Tebrau\"}",
+    "expected_occurrences": 1
+   }
+  ]
+ },
+ {
+  "path": "ms/articles/adas-calibration-after-windscreen-or-bumper-work/index.html",
+  "expected_sha256": "eb614a06e05a26fab6dce0e6ef1c638dfafdeedb129c67085a7c643dad32ab6e",
+  "new_sha256": "75f75812b8d403c434d1992965bc9229f4cf2611588d9f1b3534449d88c781a9",
+  "edits": [
+   {
+    "old_text": "{\"@type\": \"ContactPoint\", \"contactType\": \"customer service\", \"name\": \"Andrew\", \"telephone\": \"+60125512820\", \"email\": \"sales@k-techmy.com\", \"areaServed\": \"MY\"}",
+    "new_text": "{\"@type\": \"ContactPoint\", \"contactType\": \"customer service\", \"name\": \"Tony\", \"telephone\": \"+60109362820\", \"email\": \"sales@k-techmy.com\", \"areaServed\": \"MY\"}, {\"@type\": \"ContactPoint\", \"contactType\": \"customer service\", \"name\": \"Gavin\", \"telephone\": \"+60125512820\", \"email\": \"sales@k-techmy.com\", \"areaServed\": \"MY\"}",
+    "expected_occurrences": 1
+   },
+   {
+    "old_text": "\"telephone\": \"+60125462820\", \"name\": \"Hooi\",",
+    "new_text": "\"telephone\": \"+60125462820\", \"name\": \"Autel Hooi\",",
+    "expected_occurrences": 1
+   },
+   {
+    "old_text": "\"areaServed\": [\"Johor Bahru\", \"Masai\", \"MY\"]",
+    "new_text": "\"areaServed\": [\"Johor Bahru\", \"Tebrau\", \"MY\"]",
+    "expected_occurrences": 1
+   },
+   {
+    "old_text": "{\"@type\": \"City\", \"name\": \"Masai\"}",
+    "new_text": "{\"@type\": \"City\", \"name\": \"Tebrau\"}",
+    "expected_occurrences": 1
+   }
+  ]
+ },
+ {
+  "path": "ms/articles/index.html",
+  "expected_sha256": "0acb473f5b4417986e144343c487f3c3c91e14f95baeb77f8b622107a439e897",
+  "new_sha256": "842d194d3b60c4305cbaad45c338501c9f3991e34a2398c92a91592ee440d910",
+  "edits": [
+   {
+    "old_text": "{\"@type\": \"ContactPoint\", \"contactType\": \"customer service\", \"name\": \"Andrew\", \"telephone\": \"+60125512820\", \"email\": \"sales@k-techmy.com\", \"areaServed\": \"MY\"}",
+    "new_text": "{\"@type\": \"ContactPoint\", \"contactType\": \"customer service\", \"name\": \"Tony\", \"telephone\": \"+60109362820\", \"email\": \"sales@k-techmy.com\", \"areaServed\": \"MY\"}, {\"@type\": \"ContactPoint\", \"contactType\": \"customer service\", \"name\": \"Gavin\", \"telephone\": \"+60125512820\", \"email\": \"sales@k-techmy.com\", \"areaServed\": \"MY\"}",
+    "expected_occurrences": 1
+   },
+   {
+    "old_text": "\"telephone\": \"+60125462820\", \"name\": \"Hooi\",",
+    "new_text": "\"telephone\": \"+60125462820\", \"name\": \"Autel Hooi\",",
+    "expected_occurrences": 1
+   },
+   {
+    "old_text": "\"areaServed\": [\"Johor Bahru\", \"Masai\", \"MY\"]",
+    "new_text": "\"areaServed\": [\"Johor Bahru\", \"Tebrau\", \"MY\"]",
+    "expected_occurrences": 1
+   },
+   {
+    "old_text": "{\"@type\": \"City\", \"name\": \"Masai\"}",
+    "new_text": "{\"@type\": \"City\", \"name\": \"Tebrau\"}",
+    "expected_occurrences": 1
+   }
+  ]
+ },
+ {
+  "path": "ms/articles/tpms-relearn-after-tyre-change/index.html",
+  "expected_sha256": "5862079fb66f2b9f795acb23efea39e6b29bb43b5384df7e0eea2fd09d91f098",
+  "new_sha256": "ab2adb66a91fca87e2c32967ceaa1d117b030ebb903d63fc23269521febaa3a3",
+  "edits": [
+   {
+    "old_text": "{\"@type\": \"ContactPoint\", \"contactType\": \"customer service\", \"name\": \"Andrew\", \"telephone\": \"+60125512820\", \"email\": \"sales@k-techmy.com\", \"areaServed\": \"MY\"}",
+    "new_text": "{\"@type\": \"ContactPoint\", \"contactType\": \"customer service\", \"name\": \"Tony\", \"telephone\": \"+60109362820\", \"email\": \"sales@k-techmy.com\", \"areaServed\": \"MY\"}, {\"@type\": \"ContactPoint\", \"contactType\": \"customer service\", \"name\": \"Gavin\", \"telephone\": \"+60125512820\", \"email\": \"sales@k-techmy.com\", \"areaServed\": \"MY\"}",
+    "expected_occurrences": 1
+   },
+   {
+    "old_text": "\"telephone\": \"+60125462820\", \"name\": \"Hooi\",",
+    "new_text": "\"telephone\": \"+60125462820\", \"name\": \"Autel Hooi\",",
+    "expected_occurrences": 1
+   },
+   {
+    "old_text": "\"areaServed\": [\"Johor Bahru\", \"Masai\", \"MY\"]",
+    "new_text": "\"areaServed\": [\"Johor Bahru\", \"Tebrau\", \"MY\"]",
+    "expected_occurrences": 1
+   },
+   {
+    "old_text": "{\"@type\": \"City\", \"name\": \"Masai\"}",
+    "new_text": "{\"@type\": \"City\", \"name\": \"Tebrau\"}",
+    "expected_occurrences": 1
+   }
+  ]
+ },
+ {
+  "path": "ms/autel-diagnostic-tools/ev-diagnostics-upgrade-kit/index.html",
+  "expected_sha256": "3a54b2e39cb99c44b4c04cc2f07145cdef51999ec49a1ea2b15a9d30de39f74b",
+  "new_sha256": "92291f63278abe3614e4737dd4bd81a72f4ca981de08f10b861be72a6a7aac2a",
+  "edits": [
+   {
+    "old_text": "{\"@type\": \"ContactPoint\", \"contactType\": \"customer service\", \"name\": \"Andrew\", \"telephone\": \"+60125512820\", \"email\": \"sales@k-techmy.com\", \"areaServed\": \"MY\"}",
+    "new_text": "{\"@type\": \"ContactPoint\", \"contactType\": \"customer service\", \"name\": \"Tony\", \"telephone\": \"+60109362820\", \"email\": \"sales@k-techmy.com\", \"areaServed\": \"MY\"}, {\"@type\": \"ContactPoint\", \"contactType\": \"customer service\", \"name\": \"Gavin\", \"telephone\": \"+60125512820\", \"email\": \"sales@k-techmy.com\", \"areaServed\": \"MY\"}",
+    "expected_occurrences": 1
+   },
+   {
+    "old_text": "\"telephone\": \"+60125462820\", \"name\": \"Hooi\",",
+    "new_text": "\"telephone\": \"+60125462820\", \"name\": \"Autel Hooi\",",
+    "expected_occurrences": 1
+   },
+   {
+    "old_text": "\"areaServed\": [\"Johor Bahru\", \"Masai\", \"MY\"]",
+    "new_text": "\"areaServed\": [\"Johor Bahru\", \"Tebrau\", \"MY\"]",
+    "expected_occurrences": 1
+   },
+   {
+    "old_text": "{\"@type\": \"City\", \"name\": \"Masai\"}",
+    "new_text": "{\"@type\": \"City\", \"name\": \"Tebrau\"}",
+    "expected_occurrences": 1
+   }
+  ]
+ },
+ {
+  "path": "ms/autel-diagnostic-tools/index.html",
+  "expected_sha256": "4589bfb975c578374e7cd1f1965a2847f638119c8ba28ed3a74975fdb1498d23",
+  "new_sha256": "249f98778a5f32d9b8f1a013074c3853dece95e4ebaedc2277fa7ad1ea715f7a",
+  "edits": [
+   {
+    "old_text": "{\"@type\": \"ContactPoint\", \"contactType\": \"customer service\", \"name\": \"Andrew\", \"telephone\": \"+60125512820\", \"email\": \"sales@k-techmy.com\", \"areaServed\": \"MY\"}",
+    "new_text": "{\"@type\": \"ContactPoint\", \"contactType\": \"customer service\", \"name\": \"Tony\", \"telephone\": \"+60109362820\", \"email\": \"sales@k-techmy.com\", \"areaServed\": \"MY\"}, {\"@type\": \"ContactPoint\", \"contactType\": \"customer service\", \"name\": \"Gavin\", \"telephone\": \"+60125512820\", \"email\": \"sales@k-techmy.com\", \"areaServed\": \"MY\"}",
+    "expected_occurrences": 1
+   },
+   {
+    "old_text": "\"telephone\": \"+60125462820\", \"name\": \"Hooi\",",
+    "new_text": "\"telephone\": \"+60125462820\", \"name\": \"Autel Hooi\",",
+    "expected_occurrences": 1
+   },
+   {
+    "old_text": "\"areaServed\": [\"Johor Bahru\", \"Masai\", \"MY\"]",
+    "new_text": "\"areaServed\": [\"Johor Bahru\", \"Tebrau\", \"MY\"]",
+    "expected_occurrences": 1
+   },
+   {
+    "old_text": "{\"@type\": \"City\", \"name\": \"Masai\"}",
+    "new_text": "{\"@type\": \"City\", \"name\": \"Tebrau\"}",
+    "expected_occurrences": 1
+   }
+  ]
+ },
+ {
+  "path": "ms/autel-diagnostic-tools/maxicheck-mx900/index.html",
+  "expected_sha256": "eed2cde4549ae441c18effd1f637f1d71a998b635f79208d19aa0efa66581cfa",
+  "new_sha256": "1a777fb3d2bf53237094f4cbf2afa1289c3e7cc45015b8b3a7e07266c2cd5266",
+  "edits": [
+   {
+    "old_text": "{\"@type\": \"ContactPoint\", \"contactType\": \"customer service\", \"name\": \"Andrew\", \"telephone\": \"+60125512820\", \"email\": \"sales@k-techmy.com\", \"areaServed\": \"MY\"}",
+    "new_text": "{\"@type\": \"ContactPoint\", \"contactType\": \"customer service\", \"name\": \"Tony\", \"telephone\": \"+60109362820\", \"email\": \"sales@k-techmy.com\", \"areaServed\": \"MY\"}, {\"@type\": \"ContactPoint\", \"contactType\": \"customer service\", \"name\": \"Gavin\", \"telephone\": \"+60125512820\", \"email\": \"sales@k-techmy.com\", \"areaServed\": \"MY\"}",
+    "expected_occurrences": 1
+   },
+   {
+    "old_text": "\"telephone\": \"+60125462820\", \"name\": \"Hooi\",",
+    "new_text": "\"telephone\": \"+60125462820\", \"name\": \"Autel Hooi\",",
+    "expected_occurrences": 1
+   },
+   {
+    "old_text": "\"areaServed\": [\"Johor Bahru\", \"Masai\", \"MY\"]",
+    "new_text": "\"areaServed\": [\"Johor Bahru\", \"Tebrau\", \"MY\"]",
+    "expected_occurrences": 1
+   },
+   {
+    "old_text": "{\"@type\": \"City\", \"name\": \"Masai\"}",
+    "new_text": "{\"@type\": \"City\", \"name\": \"Tebrau\"}",
+    "expected_occurrences": 1
+   }
+  ]
+ },
+ {
+  "path": "ms/autel-diagnostic-tools/maxisys-ms906pro/index.html",
+  "expected_sha256": "52fc6c254ae0c0a407c284fb45e5ff5a1405617c7e5fd21ebb67f54da591cf5f",
+  "new_sha256": "66df7a21e00b05007ec1cbea85da08dc408d9f275208c829aae2b9008afba20c",
+  "edits": [
+   {
+    "old_text": "{\"@type\": \"ContactPoint\", \"contactType\": \"customer service\", \"name\": \"Andrew\", \"telephone\": \"+60125512820\", \"email\": \"sales@k-techmy.com\", \"areaServed\": \"MY\"}",
+    "new_text": "{\"@type\": \"ContactPoint\", \"contactType\": \"customer service\", \"name\": \"Tony\", \"telephone\": \"+60109362820\", \"email\": \"sales@k-techmy.com\", \"areaServed\": \"MY\"}, {\"@type\": \"ContactPoint\", \"contactType\": \"customer service\", \"name\": \"Gavin\", \"telephone\": \"+60125512820\", \"email\": \"sales@k-techmy.com\", \"areaServed\": \"MY\"}",
+    "expected_occurrences": 1
+   },
+   {
+    "old_text": "\"telephone\": \"+60125462820\", \"name\": \"Hooi\",",
+    "new_text": "\"telephone\": \"+60125462820\", \"name\": \"Autel Hooi\",",
+    "expected_occurrences": 1
+   },
+   {
+    "old_text": "\"areaServed\": [\"Johor Bahru\", \"Masai\", \"MY\"]",
+    "new_text": "\"areaServed\": [\"Johor Bahru\", \"Tebrau\", \"MY\"]",
+    "expected_occurrences": 1
+   },
+   {
+    "old_text": "{\"@type\": \"City\", \"name\": \"Masai\"}",
+    "new_text": "{\"@type\": \"City\", \"name\": \"Tebrau\"}",
+    "expected_occurrences": 1
+   }
+  ]
+ },
+ {
+  "path": "ms/autel-diagnostic-tools/maxisys-ms908s3/index.html",
+  "expected_sha256": "628d550424cfe920402d137bfc8a72bc4a8549cdf17da2d3762e7c860fae4a3a",
+  "new_sha256": "f737f529f967a588d97cb831f672613182fa3c5e439df53189fc8db7d1654685",
+  "edits": [
+   {
+    "old_text": "{\"@type\": \"ContactPoint\", \"contactType\": \"customer service\", \"name\": \"Andrew\", \"telephone\": \"+60125512820\", \"email\": \"sales@k-techmy.com\", \"areaServed\": \"MY\"}",
+    "new_text": "{\"@type\": \"ContactPoint\", \"contactType\": \"customer service\", \"name\": \"Tony\", \"telephone\": \"+60109362820\", \"email\": \"sales@k-techmy.com\", \"areaServed\": \"MY\"}, {\"@type\": \"ContactPoint\", \"contactType\": \"customer service\", \"name\": \"Gavin\", \"telephone\": \"+60125512820\", \"email\": \"sales@k-techmy.com\", \"areaServed\": \"MY\"}",
+    "expected_occurrences": 1
+   },
+   {
+    "old_text": "\"telephone\": \"+60125462820\", \"name\": \"Hooi\",",
+    "new_text": "\"telephone\": \"+60125462820\", \"name\": \"Autel Hooi\",",
+    "expected_occurrences": 1
+   },
+   {
+    "old_text": "\"areaServed\": [\"Johor Bahru\", \"Masai\", \"MY\"]",
+    "new_text": "\"areaServed\": [\"Johor Bahru\", \"Tebrau\", \"MY\"]",
+    "expected_occurrences": 1
+   },
+   {
+    "old_text": "{\"@type\": \"City\", \"name\": \"Masai\"}",
+    "new_text": "{\"@type\": \"City\", \"name\": \"Tebrau\"}",
+    "expected_occurrences": 1
+   }
+  ]
+ },
+ {
+  "path": "ms/autel-diagnostic-tools/maxisys-ms909-s2/index.html",
+  "expected_sha256": "4fc65d5da91391a5a138e9bea015049555c9409b8b824743d29f230baf1d31e2",
+  "new_sha256": "93b6d6dca2085d49f32071cd8b0436cf07b2c31cdb5d809a9b874cdf06197450",
+  "edits": [
+   {
+    "old_text": "{\"@type\": \"ContactPoint\", \"contactType\": \"customer service\", \"name\": \"Andrew\", \"telephone\": \"+60125512820\", \"email\": \"sales@k-techmy.com\", \"areaServed\": \"MY\"}",
+    "new_text": "{\"@type\": \"ContactPoint\", \"contactType\": \"customer service\", \"name\": \"Tony\", \"telephone\": \"+60109362820\", \"email\": \"sales@k-techmy.com\", \"areaServed\": \"MY\"}, {\"@type\": \"ContactPoint\", \"contactType\": \"customer service\", \"name\": \"Gavin\", \"telephone\": \"+60125512820\", \"email\": \"sales@k-techmy.com\", \"areaServed\": \"MY\"}",
+    "expected_occurrences": 1
+   },
+   {
+    "old_text": "\"telephone\": \"+60125462820\", \"name\": \"Hooi\",",
+    "new_text": "\"telephone\": \"+60125462820\", \"name\": \"Autel Hooi\",",
+    "expected_occurrences": 1
+   },
+   {
+    "old_text": "\"areaServed\": [\"Johor Bahru\", \"Masai\", \"MY\"]",
+    "new_text": "\"areaServed\": [\"Johor Bahru\", \"Tebrau\", \"MY\"]",
+    "expected_occurrences": 1
+   },
+   {
+    "old_text": "{\"@type\": \"City\", \"name\": \"Masai\"}",
+    "new_text": "{\"@type\": \"City\", \"name\": \"Tebrau\"}",
+    "expected_occurrences": 1
+   }
+  ]
+ },
+ {
+  "path": "ms/autel-diagnostic-tools/maxisys-ms909ev/index.html",
+  "expected_sha256": "234b756e921b19f53af820e350b3cc4b246c826818f0ef6c7b92a3eab06322ee",
+  "new_sha256": "c7943fdbceedb20bfabb133c1a015d114dd66c414816e46ce97454233c20c2e1",
+  "edits": [
+   {
+    "old_text": "{\"@type\": \"ContactPoint\", \"contactType\": \"customer service\", \"name\": \"Andrew\", \"telephone\": \"+60125512820\", \"email\": \"sales@k-techmy.com\", \"areaServed\": \"MY\"}",
+    "new_text": "{\"@type\": \"ContactPoint\", \"contactType\": \"customer service\", \"name\": \"Tony\", \"telephone\": \"+60109362820\", \"email\": \"sales@k-techmy.com\", \"areaServed\": \"MY\"}, {\"@type\": \"ContactPoint\", \"contactType\": \"customer service\", \"name\": \"Gavin\", \"telephone\": \"+60125512820\", \"email\": \"sales@k-techmy.com\", \"areaServed\": \"MY\"}",
+    "expected_occurrences": 1
+   },
+   {
+    "old_text": "\"telephone\": \"+60125462820\", \"name\": \"Hooi\",",
+    "new_text": "\"telephone\": \"+60125462820\", \"name\": \"Autel Hooi\",",
+    "expected_occurrences": 1
+   },
+   {
+    "old_text": "\"areaServed\": [\"Johor Bahru\", \"Masai\", \"MY\"]",
+    "new_text": "\"areaServed\": [\"Johor Bahru\", \"Tebrau\", \"MY\"]",
+    "expected_occurrences": 1
+   },
+   {
+    "old_text": "{\"@type\": \"City\", \"name\": \"Masai\"}",
+    "new_text": "{\"@type\": \"City\", \"name\": \"Tebrau\"}",
+    "expected_occurrences": 1
+   }
+  ]
+ },
+ {
+  "path": "ms/autel-diagnostic-tools/maxisys-ms919-s2/index.html",
+  "expected_sha256": "591665dedcb8efa1f884889cee6a6fd48fd91dcb37f03fe5836413118e619c91",
+  "new_sha256": "b5e8a7558fee5f9d5937454a7a113309490e75eca3a107c8a0cbf7d69cc2677e",
+  "edits": [
+   {
+    "old_text": "{\"@type\": \"ContactPoint\", \"contactType\": \"customer service\", \"name\": \"Andrew\", \"telephone\": \"+60125512820\", \"email\": \"sales@k-techmy.com\", \"areaServed\": \"MY\"}",
+    "new_text": "{\"@type\": \"ContactPoint\", \"contactType\": \"customer service\", \"name\": \"Tony\", \"telephone\": \"+60109362820\", \"email\": \"sales@k-techmy.com\", \"areaServed\": \"MY\"}, {\"@type\": \"ContactPoint\", \"contactType\": \"customer service\", \"name\": \"Gavin\", \"telephone\": \"+60125512820\", \"email\": \"sales@k-techmy.com\", \"areaServed\": \"MY\"}",
+    "expected_occurrences": 1
+   },
+   {
+    "old_text": "\"telephone\": \"+60125462820\", \"name\": \"Hooi\",",
+    "new_text": "\"telephone\": \"+60125462820\", \"name\": \"Autel Hooi\",",
+    "expected_occurrences": 1
+   },
+   {
+    "old_text": "\"areaServed\": [\"Johor Bahru\", \"Masai\", \"MY\"]",
+    "new_text": "\"areaServed\": [\"Johor Bahru\", \"Tebrau\", \"MY\"]",
+    "expected_occurrences": 1
+   },
+   {
+    "old_text": "{\"@type\": \"City\", \"name\": \"Masai\"}",
+    "new_text": "{\"@type\": \"City\", \"name\": \"Tebrau\"}",
+    "expected_occurrences": 1
+   }
+  ]
+ },
+ {
+  "path": "ms/autel-diagnostic-tools/maxisys-ultra-s2/index.html",
+  "expected_sha256": "c957d1fb744c112a1112378126200b32d36186d115333711300bf7bcb2bb4007",
+  "new_sha256": "ad2d472655b1b0e9e9e153fbfd7c643c7794d66e179973a90eb1111679483ccb",
+  "edits": [
+   {
+    "old_text": "{\"@type\": \"ContactPoint\", \"contactType\": \"customer service\", \"name\": \"Andrew\", \"telephone\": \"+60125512820\", \"email\": \"sales@k-techmy.com\", \"areaServed\": \"MY\"}",
+    "new_text": "{\"@type\": \"ContactPoint\", \"contactType\": \"customer service\", \"name\": \"Tony\", \"telephone\": \"+60109362820\", \"email\": \"sales@k-techmy.com\", \"areaServed\": \"MY\"}, {\"@type\": \"ContactPoint\", \"contactType\": \"customer service\", \"name\": \"Gavin\", \"telephone\": \"+60125512820\", \"email\": \"sales@k-techmy.com\", \"areaServed\": \"MY\"}",
+    "expected_occurrences": 1
+   },
+   {
+    "old_text": "\"telephone\": \"+60125462820\", \"name\": \"Hooi\",",
+    "new_text": "\"telephone\": \"+60125462820\", \"name\": \"Autel Hooi\",",
+    "expected_occurrences": 1
+   },
+   {
+    "old_text": "\"areaServed\": [\"Johor Bahru\", \"Masai\", \"MY\"]",
+    "new_text": "\"areaServed\": [\"Johor Bahru\", \"Tebrau\", \"MY\"]",
+    "expected_occurrences": 1
+   },
+   {
+    "old_text": "{\"@type\": \"City\", \"name\": \"Masai\"}",
+    "new_text": "{\"@type\": \"City\", \"name\": \"Tebrau\"}",
+    "expected_occurrences": 1
+   }
+  ]
+ },
+ {
+  "path": "ms/contact/index.html",
+  "expected_sha256": "359f1aa309784398ecd8e5010f0afb037402c9f118d3224934d92373c87052fa",
+  "new_sha256": "b2d38c6bc6e06fb3f6628df353a19f3548351f72dead2e8e6a0f0caada46015e",
+  "edits": [
+   {
+    "old_text": "{\"@type\": \"ContactPoint\", \"contactType\": \"customer service\", \"name\": \"Andrew\", \"telephone\": \"+60125512820\", \"email\": \"sales@k-techmy.com\", \"areaServed\": \"MY\"}",
+    "new_text": "{\"@type\": \"ContactPoint\", \"contactType\": \"customer service\", \"name\": \"Tony\", \"telephone\": \"+60109362820\", \"email\": \"sales@k-techmy.com\", \"areaServed\": \"MY\"}, {\"@type\": \"ContactPoint\", \"contactType\": \"customer service\", \"name\": \"Gavin\", \"telephone\": \"+60125512820\", \"email\": \"sales@k-techmy.com\", \"areaServed\": \"MY\"}",
+    "expected_occurrences": 1
+   },
+   {
+    "old_text": "\"telephone\": \"+60125462820\", \"name\": \"Hooi\",",
+    "new_text": "\"telephone\": \"+60125462820\", \"name\": \"Autel Hooi\",",
+    "expected_occurrences": 1
+   },
+   {
+    "old_text": "\"areaServed\": [\"Johor Bahru\", \"Masai\", \"MY\"]",
+    "new_text": "\"areaServed\": [\"Johor Bahru\", \"Tebrau\", \"MY\"]",
+    "expected_occurrences": 1
+   },
+   {
+    "old_text": "{\"@type\": \"City\", \"name\": \"Masai\"}",
+    "new_text": "{\"@type\": \"City\", \"name\": \"Tebrau\"}",
+    "expected_occurrences": 1
+   }
+  ]
+ },
+ {
+  "path": "ms/index.html",
+  "expected_sha256": "478584b3289359f533d844f512bddcc9fd7bedd164dcaead403662ef9aefebc2",
+  "new_sha256": "ec397cecd21b3a4290e2c1a41ec4447d3be7344f85cf9b9c465d577946408fcd",
+  "edits": [
+   {
+    "old_text": "{\"@type\": \"ContactPoint\", \"contactType\": \"customer service\", \"name\": \"Andrew\", \"telephone\": \"+60125512820\", \"email\": \"sales@k-techmy.com\", \"areaServed\": \"MY\"}",
+    "new_text": "{\"@type\": \"ContactPoint\", \"contactType\": \"customer service\", \"name\": \"Tony\", \"telephone\": \"+60109362820\", \"email\": \"sales@k-techmy.com\", \"areaServed\": \"MY\"}, {\"@type\": \"ContactPoint\", \"contactType\": \"customer service\", \"name\": \"Gavin\", \"telephone\": \"+60125512820\", \"email\": \"sales@k-techmy.com\", \"areaServed\": \"MY\"}",
+    "expected_occurrences": 1
+   },
+   {
+    "old_text": "\"telephone\": \"+60125462820\", \"name\": \"Hooi\",",
+    "new_text": "\"telephone\": \"+60125462820\", \"name\": \"Autel Hooi\",",
+    "expected_occurrences": 1
+   },
+   {
+    "old_text": "\"areaServed\": [\"Johor Bahru\", \"Masai\", \"MY\"]",
+    "new_text": "\"areaServed\": [\"Johor Bahru\", \"Tebrau\", \"MY\"]",
+    "expected_occurrences": 1
+   },
+   {
+    "old_text": "{\"@type\": \"City\", \"name\": \"Masai\"}",
+    "new_text": "{\"@type\": \"City\", \"name\": \"Tebrau\"}",
+    "expected_occurrences": 1
+   }
+  ]
+ },
+ {
+  "path": "ms/privacy/index.html",
+  "expected_sha256": "d31fbbba6a43d35ed8b67e1e5a14ab7126f91297a4be010dd253761120563e3b",
+  "new_sha256": "a6d527ed2e389a67310a09aae6e6f52f7742ee8016b8c9391f9fa04b69b745a3",
+  "edits": [
+   {
+    "old_text": "{\"@type\": \"ContactPoint\", \"contactType\": \"customer service\", \"name\": \"Andrew\", \"telephone\": \"+60125512820\", \"email\": \"sales@k-techmy.com\", \"areaServed\": \"MY\"}",
+    "new_text": "{\"@type\": \"ContactPoint\", \"contactType\": \"customer service\", \"name\": \"Tony\", \"telephone\": \"+60109362820\", \"email\": \"sales@k-techmy.com\", \"areaServed\": \"MY\"}, {\"@type\": \"ContactPoint\", \"contactType\": \"customer service\", \"name\": \"Gavin\", \"telephone\": \"+60125512820\", \"email\": \"sales@k-techmy.com\", \"areaServed\": \"MY\"}",
+    "expected_occurrences": 1
+   },
+   {
+    "old_text": "\"telephone\": \"+60125462820\", \"name\": \"Hooi\",",
+    "new_text": "\"telephone\": \"+60125462820\", \"name\": \"Autel Hooi\",",
+    "expected_occurrences": 1
+   },
+   {
+    "old_text": "\"areaServed\": [\"Johor Bahru\", \"Masai\", \"MY\"]",
+    "new_text": "\"areaServed\": [\"Johor Bahru\", \"Tebrau\", \"MY\"]",
+    "expected_occurrences": 1
+   },
+   {
+    "old_text": "{\"@type\": \"City\", \"name\": \"Masai\"}",
+    "new_text": "{\"@type\": \"City\", \"name\": \"Tebrau\"}",
+    "expected_occurrences": 1
+   }
+  ]
+ },
+ {
+  "path": "ms/services/index.html",
+  "expected_sha256": "39924d3c182dc3b39353a19c0cdbf63fefc2540594faa65f79b1b1e0bfa0263a",
+  "new_sha256": "90261a8b5e1d7a07d2a77363ea6a7cca060566fed4a5adcf3b9b2fe119e62e9f",
+  "edits": [
+   {
+    "old_text": "{\"@type\": \"ContactPoint\", \"contactType\": \"customer service\", \"name\": \"Andrew\", \"telephone\": \"+60125512820\", \"email\": \"sales@k-techmy.com\", \"areaServed\": \"MY\"}",
+    "new_text": "{\"@type\": \"ContactPoint\", \"contactType\": \"customer service\", \"name\": \"Tony\", \"telephone\": \"+60109362820\", \"email\": \"sales@k-techmy.com\", \"areaServed\": \"MY\"}, {\"@type\": \"ContactPoint\", \"contactType\": \"customer service\", \"name\": \"Gavin\", \"telephone\": \"+60125512820\", \"email\": \"sales@k-techmy.com\", \"areaServed\": \"MY\"}",
+    "expected_occurrences": 1
+   },
+   {
+    "old_text": "\"telephone\": \"+60125462820\", \"name\": \"Hooi\",",
+    "new_text": "\"telephone\": \"+60125462820\", \"name\": \"Autel Hooi\",",
+    "expected_occurrences": 1
+   },
+   {
+    "old_text": "\"areaServed\": [\"Johor Bahru\", \"Masai\", \"MY\"]",
+    "new_text": "\"areaServed\": [\"Johor Bahru\", \"Tebrau\", \"MY\"]",
+    "expected_occurrences": 1
+   },
+   {
+    "old_text": "{\"@type\": \"City\", \"name\": \"Masai\"}",
+    "new_text": "{\"@type\": \"City\", \"name\": \"Tebrau\"}",
+    "expected_occurrences": 1
+   }
+  ]
+ },
+ {
+  "path": "privacy/index.html",
+  "expected_sha256": "f125665f7f1ae41c1cd427501dc70192721e45d80b83bac9664a8afa124b83b4",
+  "new_sha256": "17f3af9e7d5773fdcd047fddacaec2c7952e4419606c936c926badc2eeaf95c6",
+  "edits": [
+   {
+    "old_text": "{\"@type\": \"ContactPoint\", \"contactType\": \"customer service\", \"name\": \"Andrew\", \"telephone\": \"+60125512820\", \"email\": \"sales@k-techmy.com\", \"areaServed\": \"MY\"}",
+    "new_text": "{\"@type\": \"ContactPoint\", \"contactType\": \"customer service\", \"name\": \"Tony\", \"telephone\": \"+60109362820\", \"email\": \"sales@k-techmy.com\", \"areaServed\": \"MY\"}, {\"@type\": \"ContactPoint\", \"contactType\": \"customer service\", \"name\": \"Gavin\", \"telephone\": \"+60125512820\", \"email\": \"sales@k-techmy.com\", \"areaServed\": \"MY\"}",
+    "expected_occurrences": 1
+   },
+   {
+    "old_text": "\"telephone\": \"+60125462820\", \"name\": \"Hooi\",",
+    "new_text": "\"telephone\": \"+60125462820\", \"name\": \"Autel Hooi\",",
+    "expected_occurrences": 1
+   },
+   {
+    "old_text": "\"areaServed\": [\"Johor Bahru\", \"Masai\", \"MY\"]",
+    "new_text": "\"areaServed\": [\"Johor Bahru\", \"Tebrau\", \"MY\"]",
+    "expected_occurrences": 1
+   },
+   {
+    "old_text": "{\"@type\": \"City\", \"name\": \"Masai\"}",
+    "new_text": "{\"@type\": \"City\", \"name\": \"Tebrau\"}",
+    "expected_occurrences": 1
+   }
+  ]
+ },
+ {
+  "path": "services/index.html",
+  "expected_sha256": "2674d4e65e199ed31b5f9e500f4e2ed08d56e5c5fd5fd031cc73b012081d4a5e",
+  "new_sha256": "cd75093852f904a56365242b873330394cf629907b5ba4fc4119e2b0e855502f",
+  "edits": [
+   {
+    "old_text": "{\"@type\": \"ContactPoint\", \"contactType\": \"customer service\", \"name\": \"Andrew\", \"telephone\": \"+60125512820\", \"email\": \"sales@k-techmy.com\", \"areaServed\": \"MY\"}",
+    "new_text": "{\"@type\": \"ContactPoint\", \"contactType\": \"customer service\", \"name\": \"Tony\", \"telephone\": \"+60109362820\", \"email\": \"sales@k-techmy.com\", \"areaServed\": \"MY\"}, {\"@type\": \"ContactPoint\", \"contactType\": \"customer service\", \"name\": \"Gavin\", \"telephone\": \"+60125512820\", \"email\": \"sales@k-techmy.com\", \"areaServed\": \"MY\"}",
+    "expected_occurrences": 1
+   },
+   {
+    "old_text": "\"telephone\": \"+60125462820\", \"name\": \"Hooi\",",
+    "new_text": "\"telephone\": \"+60125462820\", \"name\": \"Autel Hooi\",",
+    "expected_occurrences": 1
+   },
+   {
+    "old_text": "\"areaServed\": [\"Johor Bahru\", \"Masai\", \"MY\"]",
+    "new_text": "\"areaServed\": [\"Johor Bahru\", \"Tebrau\", \"MY\"]",
+    "expected_occurrences": 1
+   },
+   {
+    "old_text": "{\"@type\": \"City\", \"name\": \"Masai\"}",
+    "new_text": "{\"@type\": \"City\", \"name\": \"Tebrau\"}",
+    "expected_occurrences": 1
+   }
+  ]
+ },
+ {
+  "path": "zh/about/index.html",
+  "expected_sha256": "ac16cad0b8f61e252544eedae4a7585e6fd5591d5fcfc227e8ceaf9e3358899d",
+  "new_sha256": "1112d2cb5d37cbab3ecd58038d34af31e9d3ecb12e0e72df972e22990a139097",
+  "edits": [
+   {
+    "old_text": "{\"@type\": \"ContactPoint\", \"contactType\": \"customer service\", \"name\": \"Andrew\", \"telephone\": \"+60125512820\", \"email\": \"sales@k-techmy.com\", \"areaServed\": \"MY\"}",
+    "new_text": "{\"@type\": \"ContactPoint\", \"contactType\": \"customer service\", \"name\": \"Tony\", \"telephone\": \"+60109362820\", \"email\": \"sales@k-techmy.com\", \"areaServed\": \"MY\"}, {\"@type\": \"ContactPoint\", \"contactType\": \"customer service\", \"name\": \"Gavin\", \"telephone\": \"+60125512820\", \"email\": \"sales@k-techmy.com\", \"areaServed\": \"MY\"}",
+    "expected_occurrences": 1
+   },
+   {
+    "old_text": "\"telephone\": \"+60125462820\", \"name\": \"Hooi\",",
+    "new_text": "\"telephone\": \"+60125462820\", \"name\": \"Autel Hooi\",",
+    "expected_occurrences": 1
+   },
+   {
+    "old_text": "\"areaServed\": [\"Johor Bahru\", \"Masai\", \"MY\"]",
+    "new_text": "\"areaServed\": [\"Johor Bahru\", \"Tebrau\", \"MY\"]",
+    "expected_occurrences": 1
+   },
+   {
+    "old_text": "{\"@type\": \"City\", \"name\": \"Masai\"}",
+    "new_text": "{\"@type\": \"City\", \"name\": \"Tebrau\"}",
+    "expected_occurrences": 1
+   }
+  ]
+ },
+ {
+  "path": "zh/articles/adas-calibration-after-windscreen-or-bumper-work/index.html",
+  "expected_sha256": "0a84f75e87b9a8fec466bb1ecf057a58e94c8f03aea15b7da0fffd1b8a110856",
+  "new_sha256": "28235987746b489235950343609011c3ed376c3e66d2d4cb174dafe0549a0928",
+  "edits": [
+   {
+    "old_text": "{\"@type\": \"ContactPoint\", \"contactType\": \"customer service\", \"name\": \"Andrew\", \"telephone\": \"+60125512820\", \"email\": \"sales@k-techmy.com\", \"areaServed\": \"MY\"}",
+    "new_text": "{\"@type\": \"ContactPoint\", \"contactType\": \"customer service\", \"name\": \"Tony\", \"telephone\": \"+60109362820\", \"email\": \"sales@k-techmy.com\", \"areaServed\": \"MY\"}, {\"@type\": \"ContactPoint\", \"contactType\": \"customer service\", \"name\": \"Gavin\", \"telephone\": \"+60125512820\", \"email\": \"sales@k-techmy.com\", \"areaServed\": \"MY\"}",
+    "expected_occurrences": 1
+   },
+   {
+    "old_text": "\"telephone\": \"+60125462820\", \"name\": \"Hooi\",",
+    "new_text": "\"telephone\": \"+60125462820\", \"name\": \"Autel Hooi\",",
+    "expected_occurrences": 1
+   },
+   {
+    "old_text": "\"areaServed\": [\"Johor Bahru\", \"Masai\", \"MY\"]",
+    "new_text": "\"areaServed\": [\"Johor Bahru\", \"Tebrau\", \"MY\"]",
+    "expected_occurrences": 1
+   },
+   {
+    "old_text": "{\"@type\": \"City\", \"name\": \"Masai\"}",
+    "new_text": "{\"@type\": \"City\", \"name\": \"Tebrau\"}",
+    "expected_occurrences": 1
+   }
+  ]
+ },
+ {
+  "path": "zh/articles/index.html",
+  "expected_sha256": "ac822923540144e5a2792b7561fe87c4c904a7de61d57f0a44064b67e05a07e1",
+  "new_sha256": "4c68ebdc4b70ae0010fc1aa6058cd16c2f9b8545453f93056a898b4f6b772e5d",
+  "edits": [
+   {
+    "old_text": "{\"@type\": \"ContactPoint\", \"contactType\": \"customer service\", \"name\": \"Andrew\", \"telephone\": \"+60125512820\", \"email\": \"sales@k-techmy.com\", \"areaServed\": \"MY\"}",
+    "new_text": "{\"@type\": \"ContactPoint\", \"contactType\": \"customer service\", \"name\": \"Tony\", \"telephone\": \"+60109362820\", \"email\": \"sales@k-techmy.com\", \"areaServed\": \"MY\"}, {\"@type\": \"ContactPoint\", \"contactType\": \"customer service\", \"name\": \"Gavin\", \"telephone\": \"+60125512820\", \"email\": \"sales@k-techmy.com\", \"areaServed\": \"MY\"}",
+    "expected_occurrences": 1
+   },
+   {
+    "old_text": "\"telephone\": \"+60125462820\", \"name\": \"Hooi\",",
+    "new_text": "\"telephone\": \"+60125462820\", \"name\": \"Autel Hooi\",",
+    "expected_occurrences": 1
+   },
+   {
+    "old_text": "\"areaServed\": [\"Johor Bahru\", \"Masai\", \"MY\"]",
+    "new_text": "\"areaServed\": [\"Johor Bahru\", \"Tebrau\", \"MY\"]",
+    "expected_occurrences": 1
+   },
+   {
+    "old_text": "{\"@type\": \"City\", \"name\": \"Masai\"}",
+    "new_text": "{\"@type\": \"City\", \"name\": \"Tebrau\"}",
+    "expected_occurrences": 1
+   }
+  ]
+ },
+ {
+  "path": "zh/articles/tpms-relearn-after-tyre-change/index.html",
+  "expected_sha256": "c4dc928afa8a63eb52408047c5ef13354d766cf51ac215a4d0efd8456e880b50",
+  "new_sha256": "f7ce84b037d5a5891f6f9496ada5fbedd78aaa51a94866e62fa7a753b646934f",
+  "edits": [
+   {
+    "old_text": "{\"@type\": \"ContactPoint\", \"contactType\": \"customer service\", \"name\": \"Andrew\", \"telephone\": \"+60125512820\", \"email\": \"sales@k-techmy.com\", \"areaServed\": \"MY\"}",
+    "new_text": "{\"@type\": \"ContactPoint\", \"contactType\": \"customer service\", \"name\": \"Tony\", \"telephone\": \"+60109362820\", \"email\": \"sales@k-techmy.com\", \"areaServed\": \"MY\"}, {\"@type\": \"ContactPoint\", \"contactType\": \"customer service\", \"name\": \"Gavin\", \"telephone\": \"+60125512820\", \"email\": \"sales@k-techmy.com\", \"areaServed\": \"MY\"}",
+    "expected_occurrences": 1
+   },
+   {
+    "old_text": "\"telephone\": \"+60125462820\", \"name\": \"Hooi\",",
+    "new_text": "\"telephone\": \"+60125462820\", \"name\": \"Autel Hooi\",",
+    "expected_occurrences": 1
+   },
+   {
+    "old_text": "\"areaServed\": [\"Johor Bahru\", \"Masai\", \"MY\"]",
+    "new_text": "\"areaServed\": [\"Johor Bahru\", \"Tebrau\", \"MY\"]",
+    "expected_occurrences": 1
+   },
+   {
+    "old_text": "{\"@type\": \"City\", \"name\": \"Masai\"}",
+    "new_text": "{\"@type\": \"City\", \"name\": \"Tebrau\"}",
+    "expected_occurrences": 1
+   }
+  ]
+ },
+ {
+  "path": "zh/autel-diagnostic-tools/ev-diagnostics-upgrade-kit/index.html",
+  "expected_sha256": "9bb525987044f28c1d0f3f3715642005414e72e946f3085a50f356785234b792",
+  "new_sha256": "53ccf5e74aaae621c914fe60fc4b367bec22529fe20ff57cd6ed15ead14268ab",
+  "edits": [
+   {
+    "old_text": "{\"@type\": \"ContactPoint\", \"contactType\": \"customer service\", \"name\": \"Andrew\", \"telephone\": \"+60125512820\", \"email\": \"sales@k-techmy.com\", \"areaServed\": \"MY\"}",
+    "new_text": "{\"@type\": \"ContactPoint\", \"contactType\": \"customer service\", \"name\": \"Tony\", \"telephone\": \"+60109362820\", \"email\": \"sales@k-techmy.com\", \"areaServed\": \"MY\"}, {\"@type\": \"ContactPoint\", \"contactType\": \"customer service\", \"name\": \"Gavin\", \"telephone\": \"+60125512820\", \"email\": \"sales@k-techmy.com\", \"areaServed\": \"MY\"}",
+    "expected_occurrences": 1
+   },
+   {
+    "old_text": "\"telephone\": \"+60125462820\", \"name\": \"Hooi\",",
+    "new_text": "\"telephone\": \"+60125462820\", \"name\": \"Autel Hooi\",",
+    "expected_occurrences": 1
+   },
+   {
+    "old_text": "\"areaServed\": [\"Johor Bahru\", \"Masai\", \"MY\"]",
+    "new_text": "\"areaServed\": [\"Johor Bahru\", \"Tebrau\", \"MY\"]",
+    "expected_occurrences": 1
+   },
+   {
+    "old_text": "{\"@type\": \"City\", \"name\": \"Masai\"}",
+    "new_text": "{\"@type\": \"City\", \"name\": \"Tebrau\"}",
+    "expected_occurrences": 1
+   }
+  ]
+ },
+ {
+  "path": "zh/autel-diagnostic-tools/index.html",
+  "expected_sha256": "6ae5a332dc15469e591dfff3def09ce77cd1a55c2ce53f8cf219242631bd22b6",
+  "new_sha256": "825857784e4fa77a6ed977fe0c5f406b79a7793241a2a42226de073fbd75f96f",
+  "edits": [
+   {
+    "old_text": "{\"@type\": \"ContactPoint\", \"contactType\": \"customer service\", \"name\": \"Andrew\", \"telephone\": \"+60125512820\", \"email\": \"sales@k-techmy.com\", \"areaServed\": \"MY\"}",
+    "new_text": "{\"@type\": \"ContactPoint\", \"contactType\": \"customer service\", \"name\": \"Tony\", \"telephone\": \"+60109362820\", \"email\": \"sales@k-techmy.com\", \"areaServed\": \"MY\"}, {\"@type\": \"ContactPoint\", \"contactType\": \"customer service\", \"name\": \"Gavin\", \"telephone\": \"+60125512820\", \"email\": \"sales@k-techmy.com\", \"areaServed\": \"MY\"}",
+    "expected_occurrences": 1
+   },
+   {
+    "old_text": "\"telephone\": \"+60125462820\", \"name\": \"Hooi\",",
+    "new_text": "\"telephone\": \"+60125462820\", \"name\": \"Autel Hooi\",",
+    "expected_occurrences": 1
+   },
+   {
+    "old_text": "\"areaServed\": [\"Johor Bahru\", \"Masai\", \"MY\"]",
+    "new_text": "\"areaServed\": [\"Johor Bahru\", \"Tebrau\", \"MY\"]",
+    "expected_occurrences": 1
+   },
+   {
+    "old_text": "{\"@type\": \"City\", \"name\": \"Masai\"}",
+    "new_text": "{\"@type\": \"City\", \"name\": \"Tebrau\"}",
+    "expected_occurrences": 1
+   }
+  ]
+ },
+ {
+  "path": "zh/autel-diagnostic-tools/maxicheck-mx900/index.html",
+  "expected_sha256": "6ac9e33fc82213c14322a229145cefec51c357792efe4437cda8da469390dbf3",
+  "new_sha256": "c5e965f995be521c36a90cbec8ae5d65dc01ea9e057db4672556497c5af1992b",
+  "edits": [
+   {
+    "old_text": "{\"@type\": \"ContactPoint\", \"contactType\": \"customer service\", \"name\": \"Andrew\", \"telephone\": \"+60125512820\", \"email\": \"sales@k-techmy.com\", \"areaServed\": \"MY\"}",
+    "new_text": "{\"@type\": \"ContactPoint\", \"contactType\": \"customer service\", \"name\": \"Tony\", \"telephone\": \"+60109362820\", \"email\": \"sales@k-techmy.com\", \"areaServed\": \"MY\"}, {\"@type\": \"ContactPoint\", \"contactType\": \"customer service\", \"name\": \"Gavin\", \"telephone\": \"+60125512820\", \"email\": \"sales@k-techmy.com\", \"areaServed\": \"MY\"}",
+    "expected_occurrences": 1
+   },
+   {
+    "old_text": "\"telephone\": \"+60125462820\", \"name\": \"Hooi\",",
+    "new_text": "\"telephone\": \"+60125462820\", \"name\": \"Autel Hooi\",",
+    "expected_occurrences": 1
+   },
+   {
+    "old_text": "\"areaServed\": [\"Johor Bahru\", \"Masai\", \"MY\"]",
+    "new_text": "\"areaServed\": [\"Johor Bahru\", \"Tebrau\", \"MY\"]",
+    "expected_occurrences": 1
+   },
+   {
+    "old_text": "{\"@type\": \"City\", \"name\": \"Masai\"}",
+    "new_text": "{\"@type\": \"City\", \"name\": \"Tebrau\"}",
+    "expected_occurrences": 1
+   }
+  ]
+ },
+ {
+  "path": "zh/autel-diagnostic-tools/maxisys-ms906pro/index.html",
+  "expected_sha256": "4c5271447633a22c765f708fe61d99f2452d5951c443927da7497d676292c760",
+  "new_sha256": "dccc9402eb06d9caf34718984671e80a3a6686d47e6a3ec700423c173c4f66d7",
+  "edits": [
+   {
+    "old_text": "{\"@type\": \"ContactPoint\", \"contactType\": \"customer service\", \"name\": \"Andrew\", \"telephone\": \"+60125512820\", \"email\": \"sales@k-techmy.com\", \"areaServed\": \"MY\"}",
+    "new_text": "{\"@type\": \"ContactPoint\", \"contactType\": \"customer service\", \"name\": \"Tony\", \"telephone\": \"+60109362820\", \"email\": \"sales@k-techmy.com\", \"areaServed\": \"MY\"}, {\"@type\": \"ContactPoint\", \"contactType\": \"customer service\", \"name\": \"Gavin\", \"telephone\": \"+60125512820\", \"email\": \"sales@k-techmy.com\", \"areaServed\": \"MY\"}",
+    "expected_occurrences": 1
+   },
+   {
+    "old_text": "\"telephone\": \"+60125462820\", \"name\": \"Hooi\",",
+    "new_text": "\"telephone\": \"+60125462820\", \"name\": \"Autel Hooi\",",
+    "expected_occurrences": 1
+   },
+   {
+    "old_text": "\"areaServed\": [\"Johor Bahru\", \"Masai\", \"MY\"]",
+    "new_text": "\"areaServed\": [\"Johor Bahru\", \"Tebrau\", \"MY\"]",
+    "expected_occurrences": 1
+   },
+   {
+    "old_text": "{\"@type\": \"City\", \"name\": \"Masai\"}",
+    "new_text": "{\"@type\": \"City\", \"name\": \"Tebrau\"}",
+    "expected_occurrences": 1
+   }
+  ]
+ },
+ {
+  "path": "zh/autel-diagnostic-tools/maxisys-ms908s3/index.html",
+  "expected_sha256": "3a5f78b698e21ef73d16210ba0f676936d4c6ff9f0e052e00b32de8b7e3d1245",
+  "new_sha256": "d60fb2ad79f9e7d5a724bbc1b8c4ef4580bc2837723aa802fc4dc739155061e3",
+  "edits": [
+   {
+    "old_text": "{\"@type\": \"ContactPoint\", \"contactType\": \"customer service\", \"name\": \"Andrew\", \"telephone\": \"+60125512820\", \"email\": \"sales@k-techmy.com\", \"areaServed\": \"MY\"}",
+    "new_text": "{\"@type\": \"ContactPoint\", \"contactType\": \"customer service\", \"name\": \"Tony\", \"telephone\": \"+60109362820\", \"email\": \"sales@k-techmy.com\", \"areaServed\": \"MY\"}, {\"@type\": \"ContactPoint\", \"contactType\": \"customer service\", \"name\": \"Gavin\", \"telephone\": \"+60125512820\", \"email\": \"sales@k-techmy.com\", \"areaServed\": \"MY\"}",
+    "expected_occurrences": 1
+   },
+   {
+    "old_text": "\"telephone\": \"+60125462820\", \"name\": \"Hooi\",",
+    "new_text": "\"telephone\": \"+60125462820\", \"name\": \"Autel Hooi\",",
+    "expected_occurrences": 1
+   },
+   {
+    "old_text": "\"areaServed\": [\"Johor Bahru\", \"Masai\", \"MY\"]",
+    "new_text": "\"areaServed\": [\"Johor Bahru\", \"Tebrau\", \"MY\"]",
+    "expected_occurrences": 1
+   },
+   {
+    "old_text": "{\"@type\": \"City\", \"name\": \"Masai\"}",
+    "new_text": "{\"@type\": \"City\", \"name\": \"Tebrau\"}",
+    "expected_occurrences": 1
+   }
+  ]
+ },
+ {
+  "path": "zh/autel-diagnostic-tools/maxisys-ms909-s2/index.html",
+  "expected_sha256": "e60f71b969e3a781be3ecd99910cdb4b570ed08ab494a1a63b2fcadcc98a5f91",
+  "new_sha256": "9e6c079597958a93ed5313346ca5dcd9ad5464542a5811c151e076f74c876fac",
+  "edits": [
+   {
+    "old_text": "{\"@type\": \"ContactPoint\", \"contactType\": \"customer service\", \"name\": \"Andrew\", \"telephone\": \"+60125512820\", \"email\": \"sales@k-techmy.com\", \"areaServed\": \"MY\"}",
+    "new_text": "{\"@type\": \"ContactPoint\", \"contactType\": \"customer service\", \"name\": \"Tony\", \"telephone\": \"+60109362820\", \"email\": \"sales@k-techmy.com\", \"areaServed\": \"MY\"}, {\"@type\": \"ContactPoint\", \"contactType\": \"customer service\", \"name\": \"Gavin\", \"telephone\": \"+60125512820\", \"email\": \"sales@k-techmy.com\", \"areaServed\": \"MY\"}",
+    "expected_occurrences": 1
+   },
+   {
+    "old_text": "\"telephone\": \"+60125462820\", \"name\": \"Hooi\",",
+    "new_text": "\"telephone\": \"+60125462820\", \"name\": \"Autel Hooi\",",
+    "expected_occurrences": 1
+   },
+   {
+    "old_text": "\"areaServed\": [\"Johor Bahru\", \"Masai\", \"MY\"]",
+    "new_text": "\"areaServed\": [\"Johor Bahru\", \"Tebrau\", \"MY\"]",
+    "expected_occurrences": 1
+   },
+   {
+    "old_text": "{\"@type\": \"City\", \"name\": \"Masai\"}",
+    "new_text": "{\"@type\": \"City\", \"name\": \"Tebrau\"}",
+    "expected_occurrences": 1
+   }
+  ]
+ },
+ {
+  "path": "zh/autel-diagnostic-tools/maxisys-ms909ev/index.html",
+  "expected_sha256": "7d70e5a56f6c168422b330ff182d8f1b4301efc18002f95986583149aec6a328",
+  "new_sha256": "477b3821143bd0c333929011d827a44c5f294947b8232b65a99139bdd0033fad",
+  "edits": [
+   {
+    "old_text": "{\"@type\": \"ContactPoint\", \"contactType\": \"customer service\", \"name\": \"Andrew\", \"telephone\": \"+60125512820\", \"email\": \"sales@k-techmy.com\", \"areaServed\": \"MY\"}",
+    "new_text": "{\"@type\": \"ContactPoint\", \"contactType\": \"customer service\", \"name\": \"Tony\", \"telephone\": \"+60109362820\", \"email\": \"sales@k-techmy.com\", \"areaServed\": \"MY\"}, {\"@type\": \"ContactPoint\", \"contactType\": \"customer service\", \"name\": \"Gavin\", \"telephone\": \"+60125512820\", \"email\": \"sales@k-techmy.com\", \"areaServed\": \"MY\"}",
+    "expected_occurrences": 1
+   },
+   {
+    "old_text": "\"telephone\": \"+60125462820\", \"name\": \"Hooi\",",
+    "new_text": "\"telephone\": \"+60125462820\", \"name\": \"Autel Hooi\",",
+    "expected_occurrences": 1
+   },
+   {
+    "old_text": "\"areaServed\": [\"Johor Bahru\", \"Masai\", \"MY\"]",
+    "new_text": "\"areaServed\": [\"Johor Bahru\", \"Tebrau\", \"MY\"]",
+    "expected_occurrences": 1
+   },
+   {
+    "old_text": "{\"@type\": \"City\", \"name\": \"Masai\"}",
+    "new_text": "{\"@type\": \"City\", \"name\": \"Tebrau\"}",
+    "expected_occurrences": 1
+   }
+  ]
+ },
+ {
+  "path": "zh/autel-diagnostic-tools/maxisys-ms919-s2/index.html",
+  "expected_sha256": "946ee143d87a6374303409d7a667a80bb1be5972e5efd6973bca2198baabf919",
+  "new_sha256": "328f316c755dde99e00d72a4149868d991aee7e9f7bee763ece63e8c92318294",
+  "edits": [
+   {
+    "old_text": "{\"@type\": \"ContactPoint\", \"contactType\": \"customer service\", \"name\": \"Andrew\", \"telephone\": \"+60125512820\", \"email\": \"sales@k-techmy.com\", \"areaServed\": \"MY\"}",
+    "new_text": "{\"@type\": \"ContactPoint\", \"contactType\": \"customer service\", \"name\": \"Tony\", \"telephone\": \"+60109362820\", \"email\": \"sales@k-techmy.com\", \"areaServed\": \"MY\"}, {\"@type\": \"ContactPoint\", \"contactType\": \"customer service\", \"name\": \"Gavin\", \"telephone\": \"+60125512820\", \"email\": \"sales@k-techmy.com\", \"areaServed\": \"MY\"}",
+    "expected_occurrences": 1
+   },
+   {
+    "old_text": "\"telephone\": \"+60125462820\", \"name\": \"Hooi\",",
+    "new_text": "\"telephone\": \"+60125462820\", \"name\": \"Autel Hooi\",",
+    "expected_occurrences": 1
+   },
+   {
+    "old_text": "\"areaServed\": [\"Johor Bahru\", \"Masai\", \"MY\"]",
+    "new_text": "\"areaServed\": [\"Johor Bahru\", \"Tebrau\", \"MY\"]",
+    "expected_occurrences": 1
+   },
+   {
+    "old_text": "{\"@type\": \"City\", \"name\": \"Masai\"}",
+    "new_text": "{\"@type\": \"City\", \"name\": \"Tebrau\"}",
+    "expected_occurrences": 1
+   }
+  ]
+ },
+ {
+  "path": "zh/autel-diagnostic-tools/maxisys-ultra-s2/index.html",
+  "expected_sha256": "227bc630aa80df3138fb7a42cb45d5d36d4ae588a61054b9699fbf615cc12a34",
+  "new_sha256": "ca4c9cd29bcf3f6d9ab538ee5394587570c49fcb497fe9c29737e2faca7d7a9a",
+  "edits": [
+   {
+    "old_text": "{\"@type\": \"ContactPoint\", \"contactType\": \"customer service\", \"name\": \"Andrew\", \"telephone\": \"+60125512820\", \"email\": \"sales@k-techmy.com\", \"areaServed\": \"MY\"}",
+    "new_text": "{\"@type\": \"ContactPoint\", \"contactType\": \"customer service\", \"name\": \"Tony\", \"telephone\": \"+60109362820\", \"email\": \"sales@k-techmy.com\", \"areaServed\": \"MY\"}, {\"@type\": \"ContactPoint\", \"contactType\": \"customer service\", \"name\": \"Gavin\", \"telephone\": \"+60125512820\", \"email\": \"sales@k-techmy.com\", \"areaServed\": \"MY\"}",
+    "expected_occurrences": 1
+   },
+   {
+    "old_text": "\"telephone\": \"+60125462820\", \"name\": \"Hooi\",",
+    "new_text": "\"telephone\": \"+60125462820\", \"name\": \"Autel Hooi\",",
+    "expected_occurrences": 1
+   },
+   {
+    "old_text": "\"areaServed\": [\"Johor Bahru\", \"Masai\", \"MY\"]",
+    "new_text": "\"areaServed\": [\"Johor Bahru\", \"Tebrau\", \"MY\"]",
+    "expected_occurrences": 1
+   },
+   {
+    "old_text": "{\"@type\": \"City\", \"name\": \"Masai\"}",
+    "new_text": "{\"@type\": \"City\", \"name\": \"Tebrau\"}",
+    "expected_occurrences": 1
+   }
+  ]
+ },
+ {
+  "path": "zh/contact/index.html",
+  "expected_sha256": "19d870dc4821d970f8679b90cfa19ea7e536591e6d50b589357f8ff699dbf11a",
+  "new_sha256": "e8f1467e3ee056cc98195338db51d537b809d4c763bfef2f8c02da8e6bcbb13b",
+  "edits": [
+   {
+    "old_text": "{\"@type\": \"ContactPoint\", \"contactType\": \"customer service\", \"name\": \"Andrew\", \"telephone\": \"+60125512820\", \"email\": \"sales@k-techmy.com\", \"areaServed\": \"MY\"}",
+    "new_text": "{\"@type\": \"ContactPoint\", \"contactType\": \"customer service\", \"name\": \"Tony\", \"telephone\": \"+60109362820\", \"email\": \"sales@k-techmy.com\", \"areaServed\": \"MY\"}, {\"@type\": \"ContactPoint\", \"contactType\": \"customer service\", \"name\": \"Gavin\", \"telephone\": \"+60125512820\", \"email\": \"sales@k-techmy.com\", \"areaServed\": \"MY\"}",
+    "expected_occurrences": 1
+   },
+   {
+    "old_text": "\"telephone\": \"+60125462820\", \"name\": \"Hooi\",",
+    "new_text": "\"telephone\": \"+60125462820\", \"name\": \"Autel Hooi\",",
+    "expected_occurrences": 1
+   },
+   {
+    "old_text": "\"areaServed\": [\"Johor Bahru\", \"Masai\", \"MY\"]",
+    "new_text": "\"areaServed\": [\"Johor Bahru\", \"Tebrau\", \"MY\"]",
+    "expected_occurrences": 1
+   },
+   {
+    "old_text": "{\"@type\": \"City\", \"name\": \"Masai\"}",
+    "new_text": "{\"@type\": \"City\", \"name\": \"Tebrau\"}",
+    "expected_occurrences": 1
+   }
+  ]
+ },
+ {
+  "path": "zh/index.html",
+  "expected_sha256": "6ce3a476f36a23185035cb88df911d48e97e786e4c159f120611c64acfabd29a",
+  "new_sha256": "2d199ae21141d2bced834e0201706ed12e4d1d3a73f1421a65fbcf64549f04c9",
+  "edits": [
+   {
+    "old_text": "{\"@type\": \"ContactPoint\", \"contactType\": \"customer service\", \"name\": \"Andrew\", \"telephone\": \"+60125512820\", \"email\": \"sales@k-techmy.com\", \"areaServed\": \"MY\"}",
+    "new_text": "{\"@type\": \"ContactPoint\", \"contactType\": \"customer service\", \"name\": \"Tony\", \"telephone\": \"+60109362820\", \"email\": \"sales@k-techmy.com\", \"areaServed\": \"MY\"}, {\"@type\": \"ContactPoint\", \"contactType\": \"customer service\", \"name\": \"Gavin\", \"telephone\": \"+60125512820\", \"email\": \"sales@k-techmy.com\", \"areaServed\": \"MY\"}",
+    "expected_occurrences": 1
+   },
+   {
+    "old_text": "\"telephone\": \"+60125462820\", \"name\": \"Hooi\",",
+    "new_text": "\"telephone\": \"+60125462820\", \"name\": \"Autel Hooi\",",
+    "expected_occurrences": 1
+   },
+   {
+    "old_text": "\"areaServed\": [\"Johor Bahru\", \"Masai\", \"MY\"]",
+    "new_text": "\"areaServed\": [\"Johor Bahru\", \"Tebrau\", \"MY\"]",
+    "expected_occurrences": 1
+   },
+   {
+    "old_text": "{\"@type\": \"City\", \"name\": \"Masai\"}",
+    "new_text": "{\"@type\": \"City\", \"name\": \"Tebrau\"}",
+    "expected_occurrences": 1
+   }
+  ]
+ },
+ {
+  "path": "zh/privacy/index.html",
+  "expected_sha256": "787d0bdc2f09439bf3b10f8f3a308864bc80ad80d5c596fb1f442636e6b7ce9a",
+  "new_sha256": "8071a8a75aec5d2fb5096cd34571ca39b7b29d4a515fb89223ba9bc8abc056f9",
+  "edits": [
+   {
+    "old_text": "{\"@type\": \"ContactPoint\", \"contactType\": \"customer service\", \"name\": \"Andrew\", \"telephone\": \"+60125512820\", \"email\": \"sales@k-techmy.com\", \"areaServed\": \"MY\"}",
+    "new_text": "{\"@type\": \"ContactPoint\", \"contactType\": \"customer service\", \"name\": \"Tony\", \"telephone\": \"+60109362820\", \"email\": \"sales@k-techmy.com\", \"areaServed\": \"MY\"}, {\"@type\": \"ContactPoint\", \"contactType\": \"customer service\", \"name\": \"Gavin\", \"telephone\": \"+60125512820\", \"email\": \"sales@k-techmy.com\", \"areaServed\": \"MY\"}",
+    "expected_occurrences": 1
+   },
+   {
+    "old_text": "\"telephone\": \"+60125462820\", \"name\": \"Hooi\",",
+    "new_text": "\"telephone\": \"+60125462820\", \"name\": \"Autel Hooi\",",
+    "expected_occurrences": 1
+   },
+   {
+    "old_text": "\"areaServed\": [\"Johor Bahru\", \"Masai\", \"MY\"]",
+    "new_text": "\"areaServed\": [\"Johor Bahru\", \"Tebrau\", \"MY\"]",
+    "expected_occurrences": 1
+   },
+   {
+    "old_text": "{\"@type\": \"City\", \"name\": \"Masai\"}",
+    "new_text": "{\"@type\": \"City\", \"name\": \"Tebrau\"}",
+    "expected_occurrences": 1
+   }
+  ]
+ },
+ {
+  "path": "zh/services/index.html",
+  "expected_sha256": "98463b94ed6b83b206988912c5ed4044a5228a461147f8efd2e6ea8626a779cc",
+  "new_sha256": "3dc7ac0c729209e4df49c0124a739aefeb605c89f414989c3d2545a8585e1fb9",
+  "edits": [
+   {
+    "old_text": "{\"@type\": \"ContactPoint\", \"contactType\": \"customer service\", \"name\": \"Andrew\", \"telephone\": \"+60125512820\", \"email\": \"sales@k-techmy.com\", \"areaServed\": \"MY\"}",
+    "new_text": "{\"@type\": \"ContactPoint\", \"contactType\": \"customer service\", \"name\": \"Tony\", \"telephone\": \"+60109362820\", \"email\": \"sales@k-techmy.com\", \"areaServed\": \"MY\"}, {\"@type\": \"ContactPoint\", \"contactType\": \"customer service\", \"name\": \"Gavin\", \"telephone\": \"+60125512820\", \"email\": \"sales@k-techmy.com\", \"areaServed\": \"MY\"}",
+    "expected_occurrences": 1
+   },
+   {
+    "old_text": "\"telephone\": \"+60125462820\", \"name\": \"Hooi\",",
+    "new_text": "\"telephone\": \"+60125462820\", \"name\": \"Autel Hooi\",",
+    "expected_occurrences": 1
+   },
+   {
+    "old_text": "\"areaServed\": [\"Johor Bahru\", \"Masai\", \"MY\"]",
+    "new_text": "\"areaServed\": [\"Johor Bahru\", \"Tebrau\", \"MY\"]",
+    "expected_occurrences": 1
+   },
+   {
+    "old_text": "{\"@type\": \"City\", \"name\": \"Masai\"}",
+    "new_text": "{\"@type\": \"City\", \"name\": \"Tebrau\"}",
+    "expected_occurrences": 1
+   }
+  ]
+ }
+]
