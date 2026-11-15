@@ -10,7 +10,7 @@ Facts live in data/models.py and FACTS below. Never add a claim that is not ther
 """
 import hashlib, html, json, os, shutil, sys, urllib.parse, datetime
 sys.path.insert(0, os.path.join(os.path.dirname(__file__), "data"))
-from models import MODELS, MEDIA, DIMS, APP_IOS, APP_ANDROID  # noqa: E402
+from models import MODELS, MEDIA, DIMS, SCHEMA_IMG_LIVE, APP_IOS, APP_ANDROID  # noqa: E402
 
 ROOT = os.path.dirname(os.path.abspath(__file__))
 OUT = os.path.join(ROOT, "site")
@@ -512,7 +512,7 @@ def build_model(m):
     if m["kg"]:
         props.append(("Weight", m["kg"]))
     prod = {"@type": "Product", "@id": BASE + p + "#product", "name": "Carku %s sodium-ion car starting battery" % m["code"],
-            "model": m["code"], "sku": m["code"], "brand": {"@id": BASE + "#brand"}, "image": [BASE + IMG + f for f in m["img"]],
+            "model": m["code"], "sku": m["code"], "brand": {"@id": BASE + "#brand"}, "image": SCHEMA_IMG_LIVE[m["slug"]] + [BASE + IMG + f for f in m["img"]],
             "description": "12V smart sodium-ion starting battery for passenger cars, %s. %sAh, %sA peak current, Bluetooth app monitoring, 5-year warranty in Singapore through Kohden." % (m["size_long"], m["ah"], m["peak"]),
             "category": "Car starting battery",
             "additionalProperty": [{"@type": "PropertyValue", "name": k, "value": v} for k, v in props]}

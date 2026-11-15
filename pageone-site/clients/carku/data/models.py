@@ -75,6 +75,38 @@ MODELS = [
                    "Smart remote monitoring with wireless alerts."]),
 ]
 
+# JSON-LD image URLs already live since 15 Nov (LIVE GUARD keeps schema values): keep them, add the local files after.
+SCHEMA_IMG_LIVE = {
+ "cbn30-d23": [
+  "https://www.carkubattery.com/wp-content/uploads/2025/11/CARKUbattery-CBN1230-scaled.webp",
+  "https://www.carkubattery.com/wp-content/uploads/2025/11/CARKUbattery-CBN1230-2-scaled.webp"
+ ],
+ "cbn30-h5": [
+  "https://www.carkubattery.com/wp-content/uploads/2025/11/CBN1230H5-scaled.webp",
+  "https://www.carkubattery.com/wp-content/uploads/2025/11/CBN1230H5-2-scaled.webp"
+ ],
+ "cbn30-h6": [
+  "https://www.carkubattery.com/wp-content/uploads/2025/11/1-3-scaled.webp",
+  "https://www.carkubattery.com/wp-content/uploads/2025/11/2-3-scaled.webp"
+ ],
+ "cbn30-l3h": [
+  "https://www.carkubattery.com/wp-content/uploads/2025/11/5-1-scaled.webp",
+  "https://www.carkubattery.com/wp-content/uploads/2025/11/3-2-scaled.webp"
+ ],
+ "cbn40-h7": [
+  "https://www.carkubattery.com/wp-content/uploads/2025/11/CARKUbattery-%E5%AE%98%E7%BD%91%E4%BA%A7%E5%93%81%E5%9B%BE_%E7%94%BB%E6%9D%BF-1-%E5%89%AF%E6%9C%AC-4-scaled.webp",
+  "https://www.carkubattery.com/wp-content/uploads/2025/11/CBN1240H-H7-2-scaled.webp"
+ ],
+ "cbn40-h8": [
+  "https://www.carkubattery.com/wp-content/uploads/2025/11/CBN1240-H8-scaled.webp",
+  "https://www.carkubattery.com/wp-content/uploads/2025/11/CBN1240-H8-2-scaled.webp"
+ ],
+ "cbn50-h9": [
+  "https://www.carkubattery.com/wp-content/uploads/2025/11/CARKUbattery-%E5%AE%98%E7%BD%91%E4%BA%A7%E5%93%81%E5%9B%BE-71-scaled.webp",
+  "https://www.carkubattery.com/wp-content/uploads/2025/11/CARKUbattery-%E5%AE%98%E7%BD%91%E4%BA%A7%E5%93%81%E5%9B%BE-72-scaled.webp"
+ ]
+}
+
 MEDIA = dict(  # local files in assets/img/carku/ (Website Manager drop, 15 Nov 2026; manifest has sources)
     logo="carku-logo-english-slogan-blue.webp",
     icon="carku-app-icon.webp",
