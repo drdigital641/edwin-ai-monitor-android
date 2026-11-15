@@ -2778,7 +2778,9 @@ def build():
               '4. Page One checks that the WhatsApp came from the listing mobile and then approves. Until then the claim is pending and the public listing does not change. No code from the listing mobile, no claim.',
               'Limits: 5 claims per hour per connection, 3 per listing per day; codes expire after 7 days.']
     lines += ['', '## More', '- [For AI agents](%sfor-ai-agents/)' % BASE, '- [List your workshop](%slist-your-workshop/)' % BASE, '- [About](%sabout/)' % BASE, '- [Terms](%sterms/)' % BASE, '- [Privacy](%sprivacy/)' % BASE, '']
-    open(OUT + '/llms.txt', 'w').write('\n'.join(lines))
+    # "More pages" section added on live 15 Nov 2026 (kept so a rebuild never drops it); live build only (sgcarworkshop.sg URLs)
+    _more = os.path.join(HERE, '..', 'data', 'llms_more.txt')
+    open(OUT + '/llms.txt', 'w').write('\n'.join(lines) + (open(_more).read() if LIVE and os.path.exists(_more) else ''))
     print('built %d pages + 404 into %s (LIVE=%s, v=%s)' % (len(PAGES), OUT, LIVE, V))
 
 
