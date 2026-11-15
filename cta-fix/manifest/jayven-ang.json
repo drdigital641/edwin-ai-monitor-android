@@ -1,0 +1,432 @@
+{
+ "site": {
+  "slug": "jayven-ang",
+  "origin": "https://jayvenang.sg",
+  "prefix": "/",
+  "bridge": "jayven",
+  "base": "",
+  "src": "/p1-cta.js"
+ },
+ "tag": "<script src=\"/p1-cta.js?v=284a3e5c\" defer></script>",
+ "pages_seen": 52,
+ "with_cta": 52,
+ "already_tracked": 0,
+ "to_fix": [
+  {
+   "url": "https://jayvenang.sg/",
+   "file": "index.html",
+   "live_sha256": "f4c493b8e44c5d29670baa62fc2e1cd18069e35a3164a87bc571b611e4635f18",
+   "wa": 7,
+   "tel": 1,
+   "new_sha256": "4046e89055ef2dffbfc2a87d6f91f0cf3a58d49c56d5a324a576dc79c489ed78"
+  },
+  {
+   "url": "https://jayvenang.sg/new-launches/",
+   "file": "new-launches/index.html",
+   "live_sha256": "f52fcd0333227784feafeacf9588cc0de999dcde3630ee33f0a77666932872dd",
+   "wa": 20,
+   "tel": 1,
+   "new_sha256": "fff4e2b6bcfc2daa36b21c8eed8862021acab4169629292c1e7ac9e77c533db2"
+  },
+  {
+   "url": "https://jayvenang.sg/projects/the-serra-residences/",
+   "file": "projects/the-serra-residences/index.html",
+   "live_sha256": "b430802ed571b1990e8ae1c2bdd526f74e2edf3eb8e8483a36777729ede01716",
+   "wa": 5,
+   "tel": 1,
+   "new_sha256": "f631a233e42cf63d00d7ab1b9c917defebc823aacbef41d85b372f0f4f290f14"
+  },
+  {
+   "url": "https://jayvenang.sg/projects/thomson-reserve/",
+   "file": "projects/thomson-reserve/index.html",
+   "live_sha256": "0eced08e697ffd61c428df6b5c54c557e5e7af5bb566d53213d38dc055c3ac49",
+   "wa": 5,
+   "tel": 1,
+   "new_sha256": "9408d558f8792ff28e765acdb4e380c26474d74aa5896b1d50c7d22edadf1c47"
+  },
+  {
+   "url": "https://jayvenang.sg/projects/woodlands-drive-17-ec-dec-2026/",
+   "file": "projects/woodlands-drive-17-ec-dec-2026/index.html",
+   "live_sha256": "b4ce7d55dddf787cccd327405c7ff17acf16d22d8800f829afdd8a295e8dc3b7",
+   "wa": 5,
+   "tel": 1,
+   "new_sha256": "6cad5e39415c34482d81d94d038b63c1b854c122630ba2e21f3b6a61caf38df1"
+  },
+  {
+   "url": "https://jayvenang.sg/projects/chencharu-central-residences/",
+   "file": "projects/chencharu-central-residences/index.html",
+   "live_sha256": "81c574708890cda68eac4b8d2e185a27b3e8bbfdfc128cacfc937fb094823016",
+   "wa": 5,
+   "tel": 1,
+   "new_sha256": "9d51173f20caea218bc336ef64ad504141c2a8d684729ca413ce8a9fc42fdcd8"
+  },
+  {
+   "url": "https://jayvenang.sg/projects/senja-close-ec/",
+   "file": "projects/senja-close-ec/index.html",
+   "live_sha256": "7fccd8f340d638413bc801a02a34c208fa8fdf9e9b8cc1701f46abd2b1e6d9c4",
+   "wa": 5,
+   "tel": 1,
+   "new_sha256": "cd4a4921af2da8d78025c307c3c17c0cae52c9596b30b0413c177c836e729616"
+  },
+  {
+   "url": "https://jayvenang.sg/projects/lentor-rise/",
+   "file": "projects/lentor-rise/index.html",
+   "live_sha256": "509da25c437e233f945fe0e11acba7c13b61da7194d9bd55736dfb4d33169acb",
+   "wa": 5,
+   "tel": 1,
+   "new_sha256": "8ca93c4b97183a08974364c336ce78359c882c47e710ad30e83fa13f3596031d"
+  },
+  {
+   "url": "https://jayvenang.sg/projects/one-chuan-grove/",
+   "file": "projects/one-chuan-grove/index.html",
+   "live_sha256": "ec9907957b132be33217ca20767ade9dedf1ef1df4f2ea400a9c48a25e1abc77",
+   "wa": 5,
+   "tel": 1,
+   "new_sha256": "a3f2ed6e1c82d0f8afcee9d12c462266c109625ae4853c3c202c44d93dec7bb6"
+  },
+  {
+   "url": "https://jayvenang.sg/projects/sembawang-road-ec/",
+   "file": "projects/sembawang-road-ec/index.html",
+   "live_sha256": "2c44c5962e8c52e1c0f923a628080230f49d04dc8380acd58b33c130ae17d3c4",
+   "wa": 5,
+   "tel": 1,
+   "new_sha256": "8f2b49900d24d3ae72168fd4c23f0f4a3184858c06cadc61ae703adb6be2ef61"
+  },
+  {
+   "url": "https://jayvenang.sg/projects/the-river-opus/",
+   "file": "projects/the-river-opus/index.html",
+   "live_sha256": "7f4ee9dec870adac8cee39e3670dc9a13482f011276a9f75c0110ffa41bc2395",
+   "wa": 5,
+   "tel": 1,
+   "new_sha256": "846369201cb72302a61bca4361f3c8022022de90613c4c046b9994f60716eae4"
+  },
+  {
+   "url": "https://jayvenang.sg/projects/bedok-rise-residences/",
+   "file": "projects/bedok-rise-residences/index.html",
+   "live_sha256": "c9bdacf84ddd9d3b603bec305f8d33a7eccb3cd8279fc14123d919bc6b1e6b40",
+   "wa": 5,
+   "tel": 1,
+   "new_sha256": "8030f7a9b1927e8fb9b6cb3d3822e0388fbede457a62eac89c5317e842cb847d"
+  },
+  {
+   "url": "https://jayvenang.sg/projects/dorset-gardens/",
+   "file": "projects/dorset-gardens/index.html",
+   "live_sha256": "1cb36d19b82aea957d2f4e75e5e05ab99e08367e9389880d13d957bc68e4ab10",
+   "wa": 5,
+   "tel": 1,
+   "new_sha256": "22ebf01f2793ac5bf23ea7ab4d6dff17c5b7ebcf3cbd47117da88f501b044372"
+  },
+  {
+   "url": "https://jayvenang.sg/projects/telok-blangah-road-gls/",
+   "file": "projects/telok-blangah-road-gls/index.html",
+   "live_sha256": "efb0eb597daeff1de99bfb2eebc5e78f36364d1c943cfe292d7600c64bac9795",
+   "wa": 5,
+   "tel": 1,
+   "new_sha256": "0ee3fb41ec26fec604d0db862363d36c38905fe1328162fabe92e4055bcc91b2"
+  },
+  {
+   "url": "https://jayvenang.sg/projects/the-island-residence/",
+   "file": "projects/the-island-residence/index.html",
+   "live_sha256": "72f678bb4205b12cddf88c32c22e21dd162cb688e0d904a3a02b99c7f5e54214",
+   "wa": 5,
+   "tel": 1,
+   "new_sha256": "9dbcb711cbd124f0c8b200563f38b405dd275f8aff9e7fc9bda36a3002ae67c1"
+  },
+  {
+   "url": "https://jayvenang.sg/projects/woodlands-drive-17-ec-apr-2027/",
+   "file": "projects/woodlands-drive-17-ec-apr-2027/index.html",
+   "live_sha256": "4d4dd2233158b0057a5c43002555949dd5e7ad8d758146c19b22e6feb0cee9ab",
+   "wa": 5,
+   "tel": 1,
+   "new_sha256": "43432479108ab75c546b839b25b04f393118f196ecd3f676a4e2b734d353d057"
+  },
+  {
+   "url": "https://jayvenang.sg/projects/dover-drive-gls/",
+   "file": "projects/dover-drive-gls/index.html",
+   "live_sha256": "8d8c9955eb402651f8902d5c16cbc6b5d917ec8643c69d4547154227041b2e43",
+   "wa": 5,
+   "tel": 1,
+   "new_sha256": "3588eeca72e2d3738da8f31dd206c9e552e23dd1850057a1d11d00755d0d495b"
+  },
+  {
+   "url": "https://jayvenang.sg/projects/former-yishun-ten/",
+   "file": "projects/former-yishun-ten/index.html",
+   "live_sha256": "f53ba4bdd7b55ad302c7f977ee86a11be33140bf458ceef534db60500cd6856d",
+   "wa": 5,
+   "tel": 1,
+   "new_sha256": "a21f6a94e021d26fff18c26d1bdb14d2d4241a348aef081ffb17586b064c8c90"
+  },
+  {
+   "url": "https://jayvenang.sg/projects/impressions-at-dairy-farm/",
+   "file": "projects/impressions-at-dairy-farm/index.html",
+   "live_sha256": "bce13f51a59342c0380aef88e19b0c6602fbd571407683d676b9c0b1883fb5f0",
+   "wa": 5,
+   "tel": 1,
+   "new_sha256": "0e590660ff0eb5680b02ac59166d7c647ee627efa26b60d1ca9c69ab3d0875ed"
+  },
+  {
+   "url": "https://jayvenang.sg/projects/woodlands-drive-17-ec/",
+   "file": "projects/woodlands-drive-17-ec/index.html",
+   "live_sha256": "9ce5a0afc628df7ba3576cf7ecc466f35191b1c6fe16bb8632034ae9b7e5c139",
+   "wa": 6,
+   "tel": 1,
+   "new_sha256": "1dff37d4a2ed25e12bb071ae1ced52df36f74b9739b8200ee3c46caab1d6c2ae"
+  },
+  {
+   "url": "https://jayvenang.sg/new-launches/october-2026/",
+   "file": "new-launches/october-2026/index.html",
+   "live_sha256": "0b68f1e421a97e8e0721b56cc5d59b23e4ca97fde855d7a6471d625a26ce54db",
+   "wa": 6,
+   "tel": 1,
+   "new_sha256": "03ac0128257023c3e2b352b517534839bb8e7b8a2a3f2709773caa3fc38c4978"
+  },
+  {
+   "url": "https://jayvenang.sg/new-launches/december-2026/",
+   "file": "new-launches/december-2026/index.html",
+   "live_sha256": "c1b389545101dcfcf87daac76af91549fbce2cb48d45016dda65954e47c3f861",
+   "wa": 5,
+   "tel": 1,
+   "new_sha256": "e7a368887c1b2d63ed3c1da8932b82d46e5f62d22707bb0ba004d2e05914f54d"
+  },
+  {
+   "url": "https://jayvenang.sg/new-launches/january-2027/",
+   "file": "new-launches/january-2027/index.html",
+   "live_sha256": "1e68679ed2d40565211141e1c643474b7b8542ea8edeab276ca52d08ba6b95c3",
+   "wa": 6,
+   "tel": 1,
+   "new_sha256": "dcad4812d331e5c493604de64b7253369f605da1a2b8cf598a55dcfacc5f871b"
+  },
+  {
+   "url": "https://jayvenang.sg/new-launches/february-2027/",
+   "file": "new-launches/february-2027/index.html",
+   "live_sha256": "71df829db61abca4f8b931f7f0ebf122822936655ae1cbb58d40b6392f3df251",
+   "wa": 8,
+   "tel": 1,
+   "new_sha256": "99493b2d44eabde41f487c916b95fedc679435a3bed51a16e344daf5887688f3"
+  },
+  {
+   "url": "https://jayvenang.sg/new-launches/march-2027/",
+   "file": "new-launches/march-2027/index.html",
+   "live_sha256": "f6ee3e2363ea4e507ea785ce646048d6d410d9bbe60e69e6c64158c1e72379cd",
+   "wa": 6,
+   "tel": 1,
+   "new_sha256": "70b59bbb5fdefe6c6148934b7eb38140bac152d353243294e2b547588e2e232c"
+  },
+  {
+   "url": "https://jayvenang.sg/new-launches/april-2027/",
+   "file": "new-launches/april-2027/index.html",
+   "live_sha256": "b8e3472dae5258094002a0169c303b5c5b1defd5a6d19c18a516d54d1bac66e0",
+   "wa": 7,
+   "tel": 1,
+   "new_sha256": "6caae675909de4b7b77afd7d1e8855fe36536753523754c4f3e4542de554d816"
+  },
+  {
+   "url": "https://jayvenang.sg/new-launches/may-2027/",
+   "file": "new-launches/may-2027/index.html",
+   "live_sha256": "a15fed334ef6c2d52e2db142e83188ddd83e76bc6cac4bc2697c837482ce9a7e",
+   "wa": 7,
+   "tel": 1,
+   "new_sha256": "03d376702165878ce4842f0d9de4db645a45b8386470e22c8f919db55a82b5bd"
+  },
+  {
+   "url": "https://jayvenang.sg/new-launches/district-04/",
+   "file": "new-launches/district-04/index.html",
+   "live_sha256": "b8b9e4035c291edea5851f2743a469970aedacbe46c359aa99edc2a48ee6232a",
+   "wa": 6,
+   "tel": 1,
+   "new_sha256": "7d0bb79910fb018ba42a3603d3f0f3c76e5f5292b6881b6903423db2f4f2593c"
+  },
+  {
+   "url": "https://jayvenang.sg/new-launches/district-05/",
+   "file": "new-launches/district-05/index.html",
+   "live_sha256": "fb34f93740823b6ab5bdf27637255e0a752b4c89dadcb34b0def6bd72fa669bc",
+   "wa": 5,
+   "tel": 1,
+   "new_sha256": "39af614add0bbcea5024ccee4cfe11d9f1a861613587363b57ec206fb84a966a"
+  },
+  {
+   "url": "https://jayvenang.sg/new-launches/district-08/",
+   "file": "new-launches/district-08/index.html",
+   "live_sha256": "b32bbdb76569532060eadf02cb98c4b4c879249032e0726b4ec299e3fee43a7c",
+   "wa": 5,
+   "tel": 1,
+   "new_sha256": "e3ec632bc51cc780bee869f209d6c2a3219c0333da2915a9923b07797d545414"
+  },
+  {
+   "url": "https://jayvenang.sg/new-launches/district-10/",
+   "file": "new-launches/district-10/index.html",
+   "live_sha256": "97fde3091db3dde82fc19709abb2101835938db1118f9b060a8b20639375c948",
+   "wa": 5,
+   "tel": 1,
+   "new_sha256": "5b107cffa10c9a7a0f62f56f8b6b68b801fb9e66fd2a5373cf2adcd5acd51503"
+  },
+  {
+   "url": "https://jayvenang.sg/new-launches/district-11/",
+   "file": "new-launches/district-11/index.html",
+   "live_sha256": "25a52d19acb48234384de4fa71be8b77671e0f533164443e14db03c435a62d41",
+   "wa": 5,
+   "tel": 1,
+   "new_sha256": "ff9554f41536e20a28d4422e35ff6fb1d3c1b45217e040550b7cd0995fb1cfd0"
+  },
+  {
+   "url": "https://jayvenang.sg/new-launches/district-16/",
+   "file": "new-launches/district-16/index.html",
+   "live_sha256": "860aff339445c2b77c4febc267daef8cceb6870886a4dcee2daa6794e9312b9d",
+   "wa": 5,
+   "tel": 1,
+   "new_sha256": "e30b861b1afef1daa2481ac0ca212e3e422be9cbed4e2acb866e1818be825312"
+  },
+  {
+   "url": "https://jayvenang.sg/new-launches/district-19/",
+   "file": "new-launches/district-19/index.html",
+   "live_sha256": "63519875291a8a7e8b4bca3ce02e8984548705c05799e2ddcff35acfa411cad3",
+   "wa": 5,
+   "tel": 1,
+   "new_sha256": "802b109262919430ca73268533cf1d055a467ef5e6244444f42f079ce8c123e7"
+  },
+  {
+   "url": "https://jayvenang.sg/new-launches/district-20/",
+   "file": "new-launches/district-20/index.html",
+   "live_sha256": "f5973651426c7d6adc1117e5022325605cae78ca9a044454cd5f351ddc44b22b",
+   "wa": 5,
+   "tel": 1,
+   "new_sha256": "def0ff8a8f5d8d7d20e072e6c9caa599c53f14b2d9fcee54ef7b2ce41c148ae0"
+  },
+  {
+   "url": "https://jayvenang.sg/new-launches/district-23/",
+   "file": "new-launches/district-23/index.html",
+   "live_sha256": "4f8c6b1e0e229ce49bd3f7a1c71529b431ee9bf2734fa94db7c359c1dc4aef32",
+   "wa": 6,
+   "tel": 1,
+   "new_sha256": "e465eabc7850022e2a5b58e6e01ce35f323e8be808e3a3a52399b013486810ff"
+  },
+  {
+   "url": "https://jayvenang.sg/new-launches/district-25/",
+   "file": "new-launches/district-25/index.html",
+   "live_sha256": "d3ea2eb724ace4f52fc264320400b9eb39104c125e39f04246526cd6352d561f",
+   "wa": 6,
+   "tel": 1,
+   "new_sha256": "c2998dc515f40f7f45d54aea17161394f68d082de6fa38845f7272f472ecdb63"
+  },
+  {
+   "url": "https://jayvenang.sg/new-launches/district-26/",
+   "file": "new-launches/district-26/index.html",
+   "live_sha256": "5fc2076fcf975b8c3669623cb50b3fe7990d0eb37a9dd0d54f916849ded0130a",
+   "wa": 5,
+   "tel": 1,
+   "new_sha256": "2d4f1cbc6d20cf00457747c55eb1abe9621eb8342c3f9217beb530150407b9f6"
+  },
+  {
+   "url": "https://jayvenang.sg/new-launches/district-27/",
+   "file": "new-launches/district-27/index.html",
+   "live_sha256": "3d808d61d250d6c002915549c334e4aa1d3fbe83f9fb40ff75853a2f3ddce5c6",
+   "wa": 7,
+   "tel": 1,
+   "new_sha256": "b6b16f2402e63721ad12896e2634f47a4c4b3b21e8f914732bd79b1343f4ed02"
+  },
+  {
+   "url": "https://jayvenang.sg/new-launches/central/",
+   "file": "new-launches/central/index.html",
+   "live_sha256": "59913bfedcc9c81d8685fb99a0f6d55267ba89a884a428c25ce0b72027f735e6",
+   "wa": 10,
+   "tel": 1,
+   "new_sha256": "bc7b5bbde12cc06f3dc617d4aa4c394f4f245b2d3b402b90683f2c713800a6f8"
+  },
+  {
+   "url": "https://jayvenang.sg/new-launches/north/",
+   "file": "new-launches/north/index.html",
+   "live_sha256": "4b8dbeaad5cfb5094dd7fe15cd14bfc01a5422c38f90f75e19934c660d4ca405",
+   "wa": 10,
+   "tel": 1,
+   "new_sha256": "82eafdf1ca0819e3ee00e72cf03e533afd5fc01e1e5f9f3b5c3acd53c82964d1"
+  },
+  {
+   "url": "https://jayvenang.sg/new-launches/north-east/",
+   "file": "new-launches/north-east/index.html",
+   "live_sha256": "b173987bef56e04f309637ee4538707e3f24b1646a4bf2b7e3daf9546fe6e7f0",
+   "wa": 5,
+   "tel": 1,
+   "new_sha256": "afc005652287e6dcb6305d6eec0deae9e174c0bb68fd81d27e72e438920a3b07"
+  },
+  {
+   "url": "https://jayvenang.sg/new-launches/east/",
+   "file": "new-launches/east/index.html",
+   "live_sha256": "84b9cab31586aee8044489dcf6a64a1c4ae9c9a880e3449a4d3f2cb97e1d8c72",
+   "wa": 5,
+   "tel": 1,
+   "new_sha256": "eb225aed18e2ba959b7e5bc08999c891fe7463149a0499e4c8f6df6013d90ba3"
+  },
+  {
+   "url": "https://jayvenang.sg/new-launches/west/",
+   "file": "new-launches/west/index.html",
+   "live_sha256": "19ed8bb2ac9575dcf57ba8dc3f854deed3c7addc928c5540472ca1f7dca679be",
+   "wa": 7,
+   "tel": 1,
+   "new_sha256": "1cf96b15e75afd8e6c8f0950c0b960db11e2617507b107a85ed819f525bd08e7"
+  },
+  {
+   "url": "https://jayvenang.sg/new-launches/ec/",
+   "file": "new-launches/ec/index.html",
+   "live_sha256": "2867696159c1de806e4f8edcb84dc783495c298a0a1767295c96056589cdad15",
+   "wa": 8,
+   "tel": 1,
+   "new_sha256": "1a7bfebf930a31988ac248705aee917d2f8136aa50103b1099af62ba389d1b50"
+  },
+  {
+   "url": "https://jayvenang.sg/new-launches/gls/",
+   "file": "new-launches/gls/index.html",
+   "live_sha256": "a227660d5b5439b26a1975d3d1a01f39b960d5aa9cfaf46e22f23d201dca8587",
+   "wa": 6,
+   "tel": 1,
+   "new_sha256": "1d849b6f0bb64be0a55614200f133f940fc4ce2b2467d38c5efa4a22c5dfbbc3"
+  },
+  {
+   "url": "https://jayvenang.sg/new-launches/2026/",
+   "file": "new-launches/2026/index.html",
+   "live_sha256": "c290189d74768c7731d20ce10771c22e5df5006ec041f9ed0cf71650257b7a63",
+   "wa": 7,
+   "tel": 1,
+   "new_sha256": "aabddb85a24c68a249affecfc2ccf9bc60b4d3897a0d2ac32ed49c3765a453df"
+  },
+  {
+   "url": "https://jayvenang.sg/new-launches/2027/",
+   "file": "new-launches/2027/index.html",
+   "live_sha256": "6703f933616914eb5f7bd8ba6ca63e128019bc0798e5dfad3dd75f77b79b6903",
+   "wa": 18,
+   "tel": 1,
+   "new_sha256": "2bc9d1ec272a4bb042d7a4cbed08ec192ee2ad87d1d70fe74bdc645ac538113e"
+  },
+  {
+   "url": "https://jayvenang.sg/articles/",
+   "file": "articles/index.html",
+   "live_sha256": "5b0399eadc5949ebbdb4f92c908f44c64dbdbdfc0e412be3768ea8df5397ee58",
+   "wa": 3,
+   "tel": 1,
+   "new_sha256": "f61b36312df3c082f5df7bd84d381add79c819d34342fb74c3884818fb056bef"
+  },
+  {
+   "url": "https://jayvenang.sg/privacy/",
+   "file": "privacy/index.html",
+   "live_sha256": "eff2202d7131f4d3ea3dab8dc5b4f4aa2e5d70ab935571c6d04ce6de2863199a",
+   "wa": 4,
+   "tel": 1,
+   "new_sha256": "1ec1120354ef0603717bb9b23f1ddf618fa6359265e2353f5e2765574b7223bf"
+  },
+  {
+   "url": "https://jayvenang.sg/disclaimer/",
+   "file": "disclaimer/index.html",
+   "live_sha256": "db33b71546161570a028e5d4aff8599f20d2fabff0013f67db90154d4b6be215",
+   "wa": 3,
+   "tel": 1,
+   "new_sha256": "5fbe4ba5669a197b7ced6fdf747d596010dc462b0f89557543197ff59888d026"
+  },
+  {
+   "url": "https://jayvenang.sg/articles/new-launch-preview-and-showflat-steps/",
+   "file": "articles/new-launch-preview-and-showflat-steps/index.html",
+   "live_sha256": "40dfb9f5b50df049fd92024c6159ba189a64066106aa2164bb6503793ed33349",
+   "wa": 4,
+   "tel": 1,
+   "new_sha256": "9bf6a7956e4f8efb0937a2b697023ebae4feac418410caea632152694bfe7a50"
+  }
+ ]
+}

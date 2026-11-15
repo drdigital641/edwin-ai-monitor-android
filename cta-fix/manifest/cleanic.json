@@ -1,0 +1,1576 @@
+{
+ "site": {
+  "slug": "cleanic",
+  "origin": "https://cleanicdetailing.com",
+  "prefix": "/",
+  "bridge": "cleanic",
+  "base": "",
+  "src": "/p1-cta.js"
+ },
+ "tag": "<script src=\"/p1-cta.js?v=52e1004d\" defer></script>",
+ "pages_seen": 202,
+ "with_cta": 196,
+ "already_tracked": 1,
+ "to_fix": [
+  {
+   "url": "https://cleanicdetailing.com/sand-dirt-car-interior-singapore/",
+   "file": "sand-dirt-car-interior-singapore/index.html",
+   "live_sha256": "ee3723348754b33e65271497046f73b82616687e7bba6c1fe0b813f8cd72c72c",
+   "wa": 8,
+   "tel": 7,
+   "new_sha256": "e6d7daa8d3c55939fb38f53be0899091d94f112a65cacefb47dea4a264df163e"
+  },
+  {
+   "url": "https://cleanicdetailing.com/pet-hair-removal-car-singapore/",
+   "file": "pet-hair-removal-car-singapore/index.html",
+   "live_sha256": "c95c0b4e2af0d195cb95a8d6235b014bab488cff76612f36b4650e02c90e4244",
+   "wa": 8,
+   "tel": 7,
+   "new_sha256": "55801613f29c0abdd52839e80b52b2ac5ca82f92f2e1cbbe83e6988e2ec8eb93"
+  },
+  {
+   "url": "https://cleanicdetailing.com/mitsubishi-interior-cleaning-fumigation-singapore/",
+   "file": "mitsubishi-interior-cleaning-fumigation-singapore/index.html",
+   "live_sha256": "ab1a13fe21d264b69c96ebc98d81e5f891847035a6a7c53fba8cc769a1b30daf",
+   "wa": 8,
+   "tel": 7,
+   "new_sha256": "70792add3517f6db2af696706bd115e81d984c3b47c2579f3ad4291a77fde6c5"
+  },
+  {
+   "url": "https://cleanicdetailing.com/mazda-interior-cleaning-fumigation-singapore/",
+   "file": "mazda-interior-cleaning-fumigation-singapore/index.html",
+   "live_sha256": "46a4144d12079917f8bc8f552cfa58e25fe150cd0929a96b7e17d4940723c73c",
+   "wa": 8,
+   "tel": 8,
+   "new_sha256": "658c4e47fe9803e282101ddcaa320083e3f134d2b81e0854c2c585492a2344a2"
+  },
+  {
+   "url": "https://cleanicdetailing.com/kia-interior-cleaning-fumigation-singapore/",
+   "file": "kia-interior-cleaning-fumigation-singapore/index.html",
+   "live_sha256": "3eac2f12f76fa4b6c67c4032028164e0d40bfa4ff62f7cfb97c429a7d7cb62e0",
+   "wa": 8,
+   "tel": 7,
+   "new_sha256": "4005d5165be627dff19efcdb9c13bafbd03e4c8acc15c8e7fbb94464e7c562d0"
+  },
+  {
+   "url": "https://cleanicdetailing.com/hyundai-interior-cleaning-fumigation-singapore/",
+   "file": "hyundai-interior-cleaning-fumigation-singapore/index.html",
+   "live_sha256": "c4abbecc0347906f3ea4480665b4ef3910e4038e16c9101aee1aaf3b55e7044c",
+   "wa": 8,
+   "tel": 7,
+   "new_sha256": "5467a862a7c10348a7ff5335390a83be93bef6c4188d5fc31e57894dfb0375ea"
+  },
+  {
+   "url": "https://cleanicdetailing.com/subaru-interior-cleaning-fumigation-singapore/",
+   "file": "subaru-interior-cleaning-fumigation-singapore/index.html",
+   "live_sha256": "fbe4bd750a006c2bb869b0723dfa6573f85ce13c2094ea0e7e8b4914caeee5b9",
+   "wa": 8,
+   "tel": 7,
+   "new_sha256": "ee62804751cb658a736902767104d79df35f4684dff3ae24f683b2bc9bae2ae2"
+  },
+  {
+   "url": "https://cleanicdetailing.com/volvo-interior-fumigation-steam-cleaning-singapore/",
+   "file": "volvo-interior-fumigation-steam-cleaning-singapore/index.html",
+   "live_sha256": "4dc5b3e172230694c78895f4bcb20591f169250d969358d0b22d8d030df3ffcc",
+   "wa": 8,
+   "tel": 7,
+   "new_sha256": "699bc826debbd9d19edf6d7e03e111341b2fc54da6cf6181c7a3467e60450672"
+  },
+  {
+   "url": "https://cleanicdetailing.com/audi-interior-fumigation-detailing-singapore/",
+   "file": "audi-interior-fumigation-detailing-singapore/index.html",
+   "live_sha256": "3284738e2776923ccd4a190026afc5ea7a191426202aa361f6cd38632c88949e",
+   "wa": 8,
+   "tel": 7,
+   "new_sha256": "af5fff048c6e5a981dd91dd32ceac584f6637a6bd798a50d79d89f89014959ba"
+  },
+  {
+   "url": "https://cleanicdetailing.com/car-fumigation-safe-during-pregnancy-singapore/",
+   "file": "car-fumigation-safe-during-pregnancy-singapore/index.html",
+   "live_sha256": "1268ec0798baa49f96d13f762c381057913c24664a52df0978ff6780108662ce",
+   "wa": 8,
+   "tel": 7,
+   "new_sha256": "ac716796d03e1ba9d4ebb9ac44cf99e2b813ed4b26cb902b36785b07b23ecd60"
+  },
+  {
+   "url": "https://cleanicdetailing.com/grab-driver-car-cleaning-singapore/",
+   "file": "grab-driver-car-cleaning-singapore/index.html",
+   "live_sha256": "44eb256cb54ba47272f24c1d9a7019b8fe03748349def901f9edbe2060f4b8ac",
+   "wa": 8,
+   "tel": 7,
+   "new_sha256": "f99a0a085c68aa19822860f6d9365d2cc6c173bc600180733e6808a4d2dddb75"
+  },
+  {
+   "url": "https://cleanicdetailing.com/lexus-interior-fumigation-steam-cleaning-singapore/",
+   "file": "lexus-interior-fumigation-steam-cleaning-singapore/index.html",
+   "live_sha256": "4d491ee7b2558e09285c452a422b2305b01a41f4019e7718976dccac26e35e65",
+   "wa": 8,
+   "tel": 7,
+   "new_sha256": "3f9a6b9555b09d9414896e486166f85d207b9b471d6eb12de287b464214c7b7d"
+  },
+  {
+   "url": "https://cleanicdetailing.com/why-is-my-car-interior-always-damp-singapore/",
+   "file": "why-is-my-car-interior-always-damp-singapore/index.html",
+   "live_sha256": "cf00f90f1d927788b79668efb671d8a3dacf871747eaff2affc22dfabcb62cb4",
+   "wa": 8,
+   "tel": 7,
+   "new_sha256": "934d05ae28d713c7ac6ecbec74368514d3f9fc8688df160ece2a7f210ff0b3d7"
+  },
+  {
+   "url": "https://cleanicdetailing.com/allergy-friendly-car-cleaning-singapore/",
+   "file": "allergy-friendly-car-cleaning-singapore/index.html",
+   "live_sha256": "e632b17996c59d9e9342ad1faaca732e8d5b29ff13ece2f582fb12396fa3ab43",
+   "wa": 8,
+   "tel": 7,
+   "new_sha256": "1bda2ad71f401c2115500772840a3a5250fe4873e34feb902cb5639fb0df5b55"
+  },
+  {
+   "url": "https://cleanicdetailing.com/car-interior-cleaning-for-asthma-singapore/",
+   "file": "car-interior-cleaning-for-asthma-singapore/index.html",
+   "live_sha256": "f4c7627a4e1c11c659f8e27f71f1d4db9b3cc22bfab1d1fca700fabce6dd98ec",
+   "wa": 8,
+   "tel": 7,
+   "new_sha256": "46d7224d73858f4895c5e8a96260fd723cd425891e5865ef06c5a70ee189f8bb"
+  },
+  {
+   "url": "https://cleanicdetailing.com/water-leaking-into-car-singapore/",
+   "file": "water-leaking-into-car-singapore/index.html",
+   "live_sha256": "186fe5b1828d96cc783f34bb3ad3eda6ee8cf620d90aaedbb048968af5d858bf",
+   "wa": 8,
+   "tel": 7,
+   "new_sha256": "664564e70d886baa250f0f2403f520c5a5c02d60eec0ed4adbd8a3156e134078"
+  },
+  {
+   "url": "https://cleanicdetailing.com/car-flooded-inside-singapore/",
+   "file": "car-flooded-inside-singapore/index.html",
+   "live_sha256": "08b10d48a4edcd931e64141f98aea6bc1e5908fb4afdefe3bdc31a010b9afeb7",
+   "wa": 8,
+   "tel": 7,
+   "new_sha256": "20b93d90c2ff9a0ca6a10128ea57e119ef0da6d63cf8a3dfdab25943a5d3e327"
+  },
+  {
+   "url": "https://cleanicdetailing.com/wet-carpet-in-car-singapore/",
+   "file": "wet-carpet-in-car-singapore/index.html",
+   "live_sha256": "51b0907e0c4a6668a9c402de4fd500a9f3b60c581ec1024120e191605d2a9e90",
+   "wa": 8,
+   "tel": 7,
+   "new_sha256": "21292cb1cebc5a030cd9e1be557288e5f693e956d602cf7efd7e22f38146d746"
+  },
+  {
+   "url": "https://cleanicdetailing.com/sewage-smell-in-car-singapore/",
+   "file": "sewage-smell-in-car-singapore/index.html",
+   "live_sha256": "7db5b5a8e8ac154a7c61dfdc69589a5016a08953b3300a96a9293bfd2c64f048",
+   "wa": 8,
+   "tel": 7,
+   "new_sha256": "e527c6697d91d652b71ea785d91ef18db0514c57226e9c997eb3583c432ad297"
+  },
+  {
+   "url": "https://cleanicdetailing.com/bed-bugs-in-car-singapore/",
+   "file": "bed-bugs-in-car-singapore/index.html",
+   "live_sha256": "eba1c2ec1276999ad97d9735ed9d5a2072e0582ab2a620a2314dcd226409286f",
+   "wa": 8,
+   "tel": 7,
+   "new_sha256": "f9ee5cc7a848ba9e3d636a2fcd0a94a31bcd028bfbdb06e14ddf9c1ada710094"
+  },
+  {
+   "url": "https://cleanicdetailing.com/vomit-cleaning-service-singapore/",
+   "file": "vomit-cleaning-service-singapore/index.html",
+   "live_sha256": "a996852b59321d848e969270bad5c8da9b907b71102ea98125fb6c6c114f02ac",
+   "wa": 2,
+   "tel": 1,
+   "new_sha256": "6fe609449043b50353e6961c68fd1b759737b46985399ae0febb4f55805d1f65"
+  },
+  {
+   "url": "https://cleanicdetailing.com/car-fumigation-jb-vs-singapore/",
+   "file": "car-fumigation-jb-vs-singapore/index.html",
+   "live_sha256": "0bcd1f18cf4ef13cb6efac4efd81f1237f168a3c0092dc60637a275e886ba7d9",
+   "wa": 8,
+   "tel": 7,
+   "new_sha256": "8112f0eb358d29deffcd7eb2b271c63ce6469fea8f4c1b7c0e8a559b4d209b8f"
+  },
+  {
+   "url": "https://cleanicdetailing.com/car-fumigation-cost-singapore-2026/",
+   "file": "car-fumigation-cost-singapore-2026/index.html",
+   "live_sha256": "3c34c15d169defdc4ef248e56db1d527eed20c397d04ec3c8d184100d26e678c",
+   "wa": 8,
+   "tel": 7,
+   "new_sha256": "07d08ff27f9829acd9c73fb768a13016387e1b714e2792f7aa1f0ac770fe00ea"
+  },
+  {
+   "url": "https://cleanicdetailing.com/car-interior-cleaning-singapore-full-guide/",
+   "file": "car-interior-cleaning-singapore-full-guide/index.html",
+   "live_sha256": "154a7968ff2c2c5ef88824df4c3e34e15897f90b4877f97639743d8a2243702e",
+   "wa": 8,
+   "tel": 7,
+   "new_sha256": "096607a9e92747cb774a19a818bd0d86502d469e9b48587a7919072d19a26115"
+  },
+  {
+   "url": "https://cleanicdetailing.com/mosquito-in-car-singapore/",
+   "file": "mosquito-in-car-singapore/index.html",
+   "live_sha256": "e3be11547515b078c798b3a842bbb4f15e8d26507fefaf05580b46962010a601",
+   "wa": 8,
+   "tel": 7,
+   "new_sha256": "7f23b92844d695ed33622e7708ee8558bb76288aaf046019663c9acbe1bc5422"
+  },
+  {
+   "url": "https://cleanicdetailing.com/preventing-cockroach-infestations-in-cars/",
+   "file": "preventing-cockroach-infestations-in-cars/index.html",
+   "live_sha256": "9e74dec91a221dac46e0c843dcee083389426acb3e5b12320394fc01bd5916f9",
+   "wa": 8,
+   "tel": 7,
+   "new_sha256": "ee5b9a88328cb39c116a2ba535dbb1b5cbdb286515374454574f4c5847df9fa6"
+  },
+  {
+   "url": "https://cleanicdetailing.com/centipede-in-car-singapore/",
+   "file": "centipede-in-car-singapore/index.html",
+   "live_sha256": "abdf651eebad9829a5261b1311a8dd2b7de9ecf21a3c7bf473058984d88a5f5d",
+   "wa": 8,
+   "tel": 7,
+   "new_sha256": "4949afeb2464a2bd03bf9a0aec0ad335a9c5240993a6171cea3d9a1899e171e8"
+  },
+  {
+   "url": "https://cleanicdetailing.com/car-grooming-singapore/",
+   "file": "car-grooming-singapore/index.html",
+   "live_sha256": "0788470466699f4d913b82417f927663052e42d2debccd069e300828320e833c",
+   "wa": 9,
+   "tel": 7,
+   "new_sha256": "4307e00dba177576ee3c7ffb44f018fc946e34c42a3fb9078f2b4b7b64ac59b6"
+  },
+  {
+   "url": "https://cleanicdetailing.com/mirakn-dry-gas-fumigation-singapore/",
+   "file": "mirakn-dry-gas-fumigation-singapore/index.html",
+   "live_sha256": "bbb24d7ebb5b64db35704a39d1634530698317029a40ef1cefc68d499dec4877",
+   "wa": 10,
+   "tel": 6,
+   "new_sha256": "4a23a8f5e834406e6d6d3585618833c48c56a8792277303ec940b3a0a98a703b"
+  },
+  {
+   "url": "https://cleanicdetailing.com/durian-smell-in-car-singapore/",
+   "file": "durian-smell-in-car-singapore/index.html",
+   "live_sha256": "f1f6c0f3e847722c4134d61b98d381c980f33b2f0e15cfad28c8ed5a4bf003f1",
+   "wa": 8,
+   "tel": 7,
+   "new_sha256": "957f0dc68483db84c59a1c16ca92d335d613fb66e230b045e26688d9b4db63d2"
+  },
+  {
+   "url": "https://cleanicdetailing.com/snake-in-car-singapore/",
+   "file": "snake-in-car-singapore/index.html",
+   "live_sha256": "ac2e02e27b0f7c409f4d2916e3f9cbd2f4da37dc80a216452e4ce526a9a83b33",
+   "wa": 8,
+   "tel": 7,
+   "new_sha256": "001d5ade6974e3a787f3b8402aef9be88350990dfe05e3d9229e9e4cf14e0c87"
+  },
+  {
+   "url": "https://cleanicdetailing.com/dead-animal-smell-in-car-singapore/",
+   "file": "dead-animal-smell-in-car-singapore/index.html",
+   "live_sha256": "30c4d5f6cc66cd394e94450aacc243d2d6e957fe0e729938d945f68dc914736e",
+   "wa": 8,
+   "tel": 7,
+   "new_sha256": "06c663e988cdd5f6ae9ecc86a3e49e05bc97d6995aec3ba70ad7db29673d8b0e"
+  },
+  {
+   "url": "https://cleanicdetailing.com/rotten-smell-in-car-singapore/",
+   "file": "rotten-smell-in-car-singapore/index.html",
+   "live_sha256": "ab16e5bd68e452e79b0cc378d5f99d772abafd515518b2bad2b88041b8d96889",
+   "wa": 8,
+   "tel": 7,
+   "new_sha256": "52a8f64a3f7a4fb6691ea78115fae3e2eb7aa367a36601664d45faa026c174b7"
+  },
+  {
+   "url": "https://cleanicdetailing.com/food-spill-smell-in-car-singapore/",
+   "file": "food-spill-smell-in-car-singapore/index.html",
+   "live_sha256": "af148b4652ea8da4e4e31f0d9750e67017f58144b7bcb1cfbfef61e577a519ac",
+   "wa": 8,
+   "tel": 7,
+   "new_sha256": "f3b96baff930fd9ccbdef44d5fa79d3cfb4ee786e0232c41433022bd8e5be9f7"
+  },
+  {
+   "url": "https://cleanicdetailing.com/milk-spilled-in-car-smell-singapore/",
+   "file": "milk-spilled-in-car-smell-singapore/index.html",
+   "live_sha256": "5055f3c03235a76e6a54776396606d9ae62e407928fe8303c80ed3686430ead6",
+   "wa": 8,
+   "tel": 7,
+   "new_sha256": "bf53ca0598ada82045aef90c7ff30b9bb2fce9cbd7b222216ea4fbff28117e20"
+  },
+  {
+   "url": "https://cleanicdetailing.com/pet-urine-smell-in-car-singapore/",
+   "file": "pet-urine-smell-in-car-singapore/index.html",
+   "live_sha256": "77d7f4b84eefd81d478974d094efc5c928950e32388f088634f376ab28c93b89",
+   "wa": 8,
+   "tel": 7,
+   "new_sha256": "a289bd956bf80974717f8c83fa16a36afe9cf79a09c12096074ae4f7ce881b06"
+  },
+  {
+   "url": "https://cleanicdetailing.com/car-interior-stain-removal-singapore/",
+   "file": "car-interior-stain-removal-singapore/index.html",
+   "live_sha256": "23e0ccd6dd20aa2fe1caf814a51fe3043b3abe5493d702358477ae296145fc3b",
+   "wa": 8,
+   "tel": 7,
+   "new_sha256": "943270dae677a23774425aa40a008f30d3e26be1bdfd2608b180323f150cec8c"
+  },
+  {
+   "url": "https://cleanicdetailing.com/car-dashboard-cleaning-singapore/",
+   "file": "car-dashboard-cleaning-singapore/index.html",
+   "live_sha256": "617832135299282560ccf31d88bac718520fc984fab47fe8bf37ea298c6f738c",
+   "wa": 8,
+   "tel": 7,
+   "new_sha256": "647c6b7e1eb0de9b3e1c5671c97d53528c897db0c484bb07110dba52aef9b786"
+  },
+  {
+   "url": "https://cleanicdetailing.com/car-interior-hygiene-singapore/",
+   "file": "car-interior-hygiene-singapore/index.html",
+   "live_sha256": "27cf21c2872bce90bc31f617e63ac2e723869272fb4a8fce4f32eac82ead72bf",
+   "wa": 8,
+   "tel": 7,
+   "new_sha256": "a59768e71a49afec257c4a2343af7020d5607883c96f129e60fcc02cda897430"
+  },
+  {
+   "url": "https://cleanicdetailing.com/car-disinfection-service-singapore/",
+   "file": "car-disinfection-service-singapore/index.html",
+   "live_sha256": "ed36760bc0724b0d478f2381d79189110316da5fd6b1b947792a3fd045e3ff5a",
+   "wa": 8,
+   "tel": 7,
+   "new_sha256": "c24eddc8239b41d8ddd03c42ab0ed7591225762dd9ef67dad8b206360e7e6556"
+  },
+  {
+   "url": "https://cleanicdetailing.com/sanitise-car-for-baby-singapore/",
+   "file": "sanitise-car-for-baby-singapore/index.html",
+   "live_sha256": "4ca2669da3f810207ee06fdf0894064f68d50a0d26f12f5a9a1748fe4d064550",
+   "wa": 8,
+   "tel": 7,
+   "new_sha256": "a9f112c22190e9e3db145934b073dada0f5c4ec3f7dac169184a29b5c22a2253"
+  },
+  {
+   "url": "https://cleanicdetailing.com/car-aircon-smells-bad-singapore/",
+   "file": "car-aircon-smells-bad-singapore/index.html",
+   "live_sha256": "9a5575d66ddd85b92924434d05014a71a0a9cd20152faab221a19a391d9602ad",
+   "wa": 8,
+   "tel": 7,
+   "new_sha256": "4289f70cc5186f348050c5b0d6a131026b566b664a20b658fa250c929923446d"
+  },
+  {
+   "url": "https://cleanicdetailing.com/leather-car-seat-cleaning-singapore/",
+   "file": "leather-car-seat-cleaning-singapore/index.html",
+   "live_sha256": "f91911f26f5d89fd8e6b634440e789ba1aef71bb4e39fc35b4f1abe5fca6aa1d",
+   "wa": 8,
+   "tel": 7,
+   "new_sha256": "85318c390b6ec938907b79bc7cbb8e9ac2c1470e74bc08985d78a858cd90ba9c"
+  },
+  {
+   "url": "https://cleanicdetailing.com/car-carpet-cleaning-singapore/",
+   "file": "car-carpet-cleaning-singapore/index.html",
+   "live_sha256": "7cfcc86c9ed6c00bf3ef8071bf27805a02a2fd6a3afb2c3f046322c7687a06fb",
+   "wa": 8,
+   "tel": 7,
+   "new_sha256": "4df8897d698b9a126d738ffacc74611ce327be85f0ebbbed54e5aac03af6bd1a"
+  },
+  {
+   "url": "https://cleanicdetailing.com/car-seat-cleaning-singapore/",
+   "file": "car-seat-cleaning-singapore/index.html",
+   "live_sha256": "6bc22a55f20f66a2f98dca8616da59bd1540fce10da4a3884054ad274e35db31",
+   "wa": 8,
+   "tel": 7,
+   "new_sha256": "8d42216ddbbc5ba35c31b8e02290a9d18f98c5773e0cb48afc7625432fb4624b"
+  },
+  {
+   "url": "https://cleanicdetailing.com/pet-smell-in-car-singapore/",
+   "file": "pet-smell-in-car-singapore/index.html",
+   "live_sha256": "1082812fdda7facaa59523bb99175ca04b42a4e79e4091e05c7e0776f4abcfce",
+   "wa": 8,
+   "tel": 7,
+   "new_sha256": "1ce8aa9daa5c35c4e62ee7228196f9c62aa76f01041286a7a124f51b8c0738df"
+  },
+  {
+   "url": "https://cleanicdetailing.com/cigarette-smell-in-car-singapore/",
+   "file": "cigarette-smell-in-car-singapore/index.html",
+   "live_sha256": "f96c19a194902a39c5e11525375ef9adc6fea4fc82be312937a9a380e055cc1b",
+   "wa": 8,
+   "tel": 7,
+   "new_sha256": "d56da5ac1f5753bef92ad0bff408bc0a9f0a2b58ec65be13231421b98e70eb07"
+  },
+  {
+   "url": "https://cleanicdetailing.com/insects-in-my-car-singapore/",
+   "file": "insects-in-my-car-singapore/index.html",
+   "live_sha256": "b117b005076c295fc860711facc40222217f17afce8ec36eee905141566ec511",
+   "wa": 8,
+   "tel": 7,
+   "new_sha256": "a16b1873dff2721f0ae8b079c239c5f0e57e97a4a1496c3cc7b4a9b022304f4e"
+  },
+  {
+   "url": "https://cleanicdetailing.com/rat-in-my-car-engine-singapore/",
+   "file": "rat-in-my-car-engine-singapore/index.html",
+   "live_sha256": "a376054ffb8380df29d60ec32dee35b8cc3a48a2b9c01b6ac9d9709909ef57e1",
+   "wa": 9,
+   "tel": 7,
+   "new_sha256": "589b1631b8483990d4e899c81c463cb86a12d2a7918be6f1c5c9a7b63c16a2c1"
+  },
+  {
+   "url": "https://cleanicdetailing.com/bees-in-my-car-singapore/",
+   "file": "bees-in-my-car-singapore/index.html",
+   "live_sha256": "74d7ee9570b3afbbb21e176144f81296ca8c70a4ee5581484f780deae2b4ce23",
+   "wa": 8,
+   "tel": 7,
+   "new_sha256": "e0accc318189912bddeb284d41e82976401c7adc9c5d9c2b8ab9dd5b7f6bf70e"
+  },
+  {
+   "url": "https://cleanicdetailing.com/spider-in-my-car-singapore/",
+   "file": "spider-in-my-car-singapore/index.html",
+   "live_sha256": "62cd2a2c8d9e7c5d405c8c7416640b1c814068c97af848d45268efe5847d2a1e",
+   "wa": 8,
+   "tel": 7,
+   "new_sha256": "9f1e172e97244aae7d24177e15a383ae7a2ae8466c61c9fa7fc747094119bc48"
+  },
+  {
+   "url": "https://cleanicdetailing.com/lizard-in-my-car-singapore-2026/",
+   "file": "lizard-in-my-car-singapore-2026/index.html",
+   "live_sha256": "fc0b4865ac05b327a9730347910c99c35cee8a4c3f1db5afd6479dc1c2d48068",
+   "wa": 8,
+   "tel": 7,
+   "new_sha256": "0118694166e9a51bd66c279c15ff4d65fdddfa627d6cda433ec282cc6c3ba445"
+  },
+  {
+   "url": "https://cleanicdetailing.com/ants-in-my-car-singapore-2026/",
+   "file": "ants-in-my-car-singapore-2026/index.html",
+   "live_sha256": "941db660461ce06871cc3e50077fc3d6fd0e62fc8e66d27cf5dc493fadc6bb87",
+   "wa": 8,
+   "tel": 7,
+   "new_sha256": "e13d6fce5e368e9b25fde11e1a5ba9a3b962adc7a50ca77c4016c474e8e255a8"
+  },
+  {
+   "url": "https://cleanicdetailing.com/car-odour-removal-singapore-3/",
+   "file": "car-odour-removal-singapore-3/index.html",
+   "live_sha256": "38a607e6dcddd05447e79864ed2de628e6ea2affa115372532ad109f58a34321",
+   "wa": 8,
+   "tel": 7,
+   "new_sha256": "93c830bb12eb241586ce3003572e0c6a7af9c0c6451d3d96c5b08a72a0ee79d4"
+  },
+  {
+   "url": "https://cleanicdetailing.com/car-mould-removal-singapore-3/",
+   "file": "car-mould-removal-singapore-3/index.html",
+   "live_sha256": "0522138ce2c26b58455ba634c6b0606c1f8dca118c27c5984614d6227dd4152a",
+   "wa": 8,
+   "tel": 7,
+   "new_sha256": "67b0f21e3f91f7502fdf48075e96a5737aa2499888d6be6cbab019cf18b4209f"
+  },
+  {
+   "url": "https://cleanicdetailing.com/cockroach-in-car-singapore-2/",
+   "file": "cockroach-in-car-singapore-2/index.html",
+   "live_sha256": "50505238ea01e4965d9b0c27c23b1642b497513b7c812c87b5e247ca70c1f812",
+   "wa": 8,
+   "tel": 7,
+   "new_sha256": "82bd6c1560a1eb6668ed945feabb7975a1b805f78d4e2924a85f83d257476acf"
+  },
+  {
+   "url": "https://cleanicdetailing.com/car-cockroach-fumigation-singapore/",
+   "file": "car-cockroach-fumigation-singapore/index.html",
+   "live_sha256": "d6f86de472ee59f0dde06f78d7d8b1b6f687028095f37457fbf05b87a4fef7ca",
+   "wa": 8,
+   "tel": 7,
+   "new_sha256": "9cd5cd6804b77d9e9994b6e60e23e607249be12d61d16593e620e41224e2ee02"
+  },
+  {
+   "url": "https://cleanicdetailing.com/porsche-panamera-total-refresh-singapore/",
+   "file": "porsche-panamera-total-refresh-singapore/index.html",
+   "live_sha256": "e512285f268097cdd757f1f22e6b859a23a90682ec4486741e80701172413626",
+   "wa": 8,
+   "tel": 7,
+   "new_sha256": "8325719312bcd9fb59a97d5452b6ebc0adf3b41f30067dc05aefdbdde8e68647"
+  },
+  {
+   "url": "https://cleanicdetailing.com/car-fumigation-singapore/",
+   "file": "car-fumigation-singapore/index.html",
+   "live_sha256": "3fafca262d0cd8b7815b2f022622ebc5cb0fb145344f73446ebb4a7486b9c832",
+   "wa": 9,
+   "tel": 7,
+   "new_sha256": "1858ccc9ab2490f2867f7c5797bf010bf7a4d5c4d2dc0de75f29b8e2963b1a9a"
+  },
+  {
+   "url": "https://cleanicdetailing.com/mobile-car-detailing-singapore-the-convenient-way-to-keep-your-car-immaculate/",
+   "file": "mobile-car-detailing-singapore-the-convenient-way-to-keep-your-car-immaculate/index.html",
+   "live_sha256": "9db6d1aeada3d50778276bf57cc7f09f27b3bbc0f73c920117011ccb616d93ac",
+   "wa": 8,
+   "tel": 7,
+   "new_sha256": "b502ac96797cef6eae374de8b1a850dde903e6ca77007bfaa152523f3d0119e7"
+  },
+  {
+   "url": "https://cleanicdetailing.com/car-grooming-singapore-price-guide/",
+   "file": "car-grooming-singapore-price-guide/index.html",
+   "live_sha256": "3c5e9da8e9746bf1abfc0c0309c7f2bc260ed9fc74c4c41571be0aff1027d7a3",
+   "wa": 2,
+   "tel": 1,
+   "new_sha256": "3fa3dd7e4ba23f7253a8dfaba6b43f3dfde06fb50d963b6595f16755d1a7f123"
+  },
+  {
+   "url": "https://cleanicdetailing.com/articles/",
+   "file": "articles/index.html",
+   "live_sha256": "6b7f83571d9acb1facece44e0ffb3e43e3d5df8e3eec50748510c7cd1843d5e3",
+   "wa": 2,
+   "tel": 2,
+   "new_sha256": "e827cb5f471ffd1e4e63d40a1d7a05ee4171a7832da4afee2875c95422a0eda7"
+  },
+  {
+   "url": "https://cleanicdetailing.com/home-glowup/",
+   "file": "home-glowup/index.html",
+   "live_sha256": "6b9baef951d3311cee10de85d05acee17c07cc5874119617acd6f2aaf58e31d8",
+   "wa": 7,
+   "tel": 6,
+   "new_sha256": "581655957cd9e7844a8a3cf454c406f2aca981680e162394765eb92ecb6396b2"
+  },
+  {
+   "url": "https://cleanicdetailing.com/contact/",
+   "file": "contact/index.html",
+   "live_sha256": "085631123c01cffdb88e9b358c26d50dc6904b65bdf047f087d9a4c2b96497c5",
+   "wa": 7,
+   "tel": 6,
+   "new_sha256": "000ecc844e35238f4889cb58cfc64eb0da994dda6477314a49630584dbe3bfb8"
+  },
+  {
+   "url": "https://cleanicdetailing.com/about/",
+   "file": "about/index.html",
+   "live_sha256": "cc8135ab5ea37f697e1ed6b2315fd7fa8c878e2e9aa03ed14edc207b58b2db0c",
+   "wa": 7,
+   "tel": 6,
+   "new_sha256": "3b07cdbdc63563df5b0f9b22f00fcb08c125dc514e2c73dbdcc55f4964feb308"
+  },
+  {
+   "url": "https://cleanicdetailing.com/fruit-fly-infestation-in-car-singapore/",
+   "file": "fruit-fly-infestation-in-car-singapore/index.html",
+   "live_sha256": "8297bd2c3c593f3a59de1bd2c6f532453788a4d77554427c9142deb3ba3e1e76",
+   "wa": 2,
+   "tel": 0,
+   "new_sha256": "31d99881753523f376bb5a1c221ceb9d960930954ada63e81323f2b550c578dd"
+  },
+  {
+   "url": "https://cleanicdetailing.com/spilled-coffee-smell-in-car-singapore/",
+   "file": "spilled-coffee-smell-in-car-singapore/index.html",
+   "live_sha256": "0fb6e040cd5286cc4e994b7f2ceb17763f2c044bbab8d7745e1b82bbd446fa61",
+   "wa": 2,
+   "tel": 0,
+   "new_sha256": "8fd9211e7d4760ee9b113f710c0cd53aaf502e31d22dac145d1719936c875f1c"
+  },
+  {
+   "url": "https://cleanicdetailing.com/slugs-in-car-singapore/",
+   "file": "slugs-in-car-singapore/index.html",
+   "live_sha256": "48f083662f9356d68a52c9b97a8a3a75588809b09267d371f5b391836c073e0f",
+   "wa": 2,
+   "tel": 0,
+   "new_sha256": "c7cce53233de0882a4cbdc0f629990bf95d50bf283ff99630d4c9ad398fd6a41"
+  },
+  {
+   "url": "https://cleanicdetailing.com/silverfish-in-car-singapore/",
+   "file": "silverfish-in-car-singapore/index.html",
+   "live_sha256": "92172d3d0ca32560b9da998a86557d11182d393cc2b73839a9bbf18fecdb0f23",
+   "wa": 2,
+   "tel": 0,
+   "new_sha256": "54fa8e163bbe88c82397d9c7d990cb4dc3f8de46cdabd301fc9495648306b6f3"
+  },
+  {
+   "url": "https://cleanicdetailing.com/moth-infestation-in-car-singapore/",
+   "file": "moth-infestation-in-car-singapore/index.html",
+   "live_sha256": "93e22878c1307e7f4039af548b8def7159e66e735604aab12c8b56551a421ca3",
+   "wa": 2,
+   "tel": 0,
+   "new_sha256": "0a4cdb23559a9901870d0cb2847288f524916a521c1d7ea7dd39d703ed8722c6"
+  },
+  {
+   "url": "https://cleanicdetailing.com/earwigs-in-car-singapore/",
+   "file": "earwigs-in-car-singapore/index.html",
+   "live_sha256": "82d82f5f3efebd45d88a61537d643db152adfa551e7f4fa9ffc679221ffc0c2b",
+   "wa": 2,
+   "tel": 0,
+   "new_sha256": "6dad7aab2b0fc58c40493ec16c7a3fa693f5b3201196ad685516a06f6e97742d"
+  },
+  {
+   "url": "https://cleanicdetailing.com/tiny-bugs-on-car-dashboard-singapore/",
+   "file": "tiny-bugs-on-car-dashboard-singapore/index.html",
+   "live_sha256": "cdd7557067d12d69e1faa6802ce1d7fedeb6ced81645686c8a59ae08c57bb542",
+   "wa": 2,
+   "tel": 0,
+   "new_sha256": "a16b6d4698215ea790f80e991f8cad4b322be70a133fb20693d90960e802330a"
+  },
+  {
+   "url": "https://cleanicdetailing.com/mites-in-car-interior-singapore/",
+   "file": "mites-in-car-interior-singapore/index.html",
+   "live_sha256": "4ad0ef15b54060d29f8830b39c91929a3c66764b4a87f07bb42694138a4d8ff2",
+   "wa": 2,
+   "tel": 0,
+   "new_sha256": "289147869aaebdd6b63b636a990abed432e2b303ba75f9437912c06a321aefad"
+  },
+  {
+   "url": "https://cleanicdetailing.com/tiny-worms-in-car-interior-singapore/",
+   "file": "tiny-worms-in-car-interior-singapore/index.html",
+   "live_sha256": "c6476f3e986626cc90bfa2d3b328b584b60a24584653eb3c1900f39135071b75",
+   "wa": 2,
+   "tel": 0,
+   "new_sha256": "af65c87ac9531d0d28603023b936f86918d452fc27b2612c69551f8951de1ed8"
+  },
+  {
+   "url": "https://cleanicdetailing.com/mushrooms-growing-in-car-singapore/",
+   "file": "mushrooms-growing-in-car-singapore/index.html",
+   "live_sha256": "842275573405562520435c3221551e68b00769c5fcee2e0c72eea57383cef160",
+   "wa": 2,
+   "tel": 0,
+   "new_sha256": "400f027cde89c364d28e2b079f3333d45b08701cbcd23c9813b4297d9aef1121"
+  },
+  {
+   "url": "https://cleanicdetailing.com/earwig-bites-in-car-singapore/",
+   "file": "earwig-bites-in-car-singapore/index.html",
+   "live_sha256": "1bf7f06913b394c5bf6dcb49dc32ae752f2f1d01b5d55ac3de5cb916373ec12d",
+   "wa": 2,
+   "tel": 0,
+   "new_sha256": "bebff28e1986f08d22184126aec3de0713df6e7a18032264ed0760ea6f72ee73"
+  },
+  {
+   "url": "https://cleanicdetailing.com/tiny-black-bugs-in-car-singapore/",
+   "file": "tiny-black-bugs-in-car-singapore/index.html",
+   "live_sha256": "754b451af13eda58ed02672ebd8c8f9d3ece612488835321459b41d57b704711",
+   "wa": 2,
+   "tel": 0,
+   "new_sha256": "e60a459e3e06a205855586bfc58425759268cad66a122a701560a276f8f05011"
+  },
+  {
+   "url": "https://cleanicdetailing.com/ladybugs-in-car-singapore/",
+   "file": "ladybugs-in-car-singapore/index.html",
+   "live_sha256": "dd9221036d781e610b1c332bd76c277844093806d84370b776237af62fb3006a",
+   "wa": 2,
+   "tel": 0,
+   "new_sha256": "b88ed7e33513215dee67397392c52f66873f1c648fdd1179750014a99187a371"
+  },
+  {
+   "url": "https://cleanicdetailing.com/tiny-beetles-in-car-singapore/",
+   "file": "tiny-beetles-in-car-singapore/index.html",
+   "live_sha256": "e409bdefb846328f39706f8b430679b3eb3e4e78cd181e53a524ad1a26a46eef",
+   "wa": 2,
+   "tel": 0,
+   "new_sha256": "a7ead4cccf973f67c110b63a1925337727b137a641a81c184d1de74699e29c4d"
+  },
+  {
+   "url": "https://cleanicdetailing.com/cleaning-cigarette-ash-in-car-singapore/",
+   "file": "cleaning-cigarette-ash-in-car-singapore/index.html",
+   "live_sha256": "a25cc5b75e72cfd89a34c36c0fb2be1f8a646a5077aaeeed9f41fb6276888336",
+   "wa": 2,
+   "tel": 0,
+   "new_sha256": "ead8f30fb228dc6a56a091011045633535e7b37765bf3eebedcf72fbf8b71907"
+  },
+  {
+   "url": "https://cleanicdetailing.com/crickets-in-car-singapore/",
+   "file": "crickets-in-car-singapore/index.html",
+   "live_sha256": "9d8a3997bf148f449a3158b0b483c5c7bfec596d78d0b3e1aaae5528b5d3f72c",
+   "wa": 2,
+   "tel": 0,
+   "new_sha256": "4bec474baef78b65f78a302f05312e1a66f796465a5b07f6e081e8976e37a97a"
+  },
+  {
+   "url": "https://cleanicdetailing.com/tiny-transparent-bugs-in-car-singapore/",
+   "file": "tiny-transparent-bugs-in-car-singapore/index.html",
+   "live_sha256": "5caa0f5d0f1fc66919416809fac519eaa3379d5e9dfecd269a96dd6d9c8ac2bd",
+   "wa": 2,
+   "tel": 0,
+   "new_sha256": "a5c8519029d824bae1f851efc76f39044196c5aa84f0b446278ca4e8a886f7f7"
+  },
+  {
+   "url": "https://cleanicdetailing.com/soil-mud-in-car-interior-singapore/",
+   "file": "soil-mud-in-car-interior-singapore/index.html",
+   "live_sha256": "dd6d76b7063a879519c9fddc09d570f9b26df234d64eb9ba3d9c3224b78ddb50",
+   "wa": 2,
+   "tel": 0,
+   "new_sha256": "c66b14af219de6ec2b4c8f22db109ea98dfea942dfdd2d32770f3b8369912f25"
+  },
+  {
+   "url": "https://cleanicdetailing.com/houseflies-in-car-singapore/",
+   "file": "houseflies-in-car-singapore/index.html",
+   "live_sha256": "93e8da528f4474e6d3eefefd59c04d8bb99a8d13f5013ee30d1d535793357f8e",
+   "wa": 2,
+   "tel": 0,
+   "new_sha256": "68b076fa3d6ce3471497f17d262bcb6bf42c7ca303886d6bf4e8ecda63b49696"
+  },
+  {
+   "url": "https://cleanicdetailing.com/how-cleanic-detailing-gets-found-on-google/",
+   "file": "how-cleanic-detailing-gets-found-on-google/index.html",
+   "live_sha256": "801bc3e7f48d76dbc6b34fac403f388151355d492c0fbce0131b6eda9da2ece3",
+   "wa": 2,
+   "tel": 0,
+   "new_sha256": "5367e7d1f95b31e8843bd7b6ff58a4a86745be8fe9f88a756c0be3bb49f6efb2"
+  },
+  {
+   "url": "https://cleanicdetailing.com/how-long-does-car-fumigation-take-singapore/",
+   "file": "how-long-does-car-fumigation-take-singapore/index.html",
+   "live_sha256": "d8c6b25a88cfd005b80368de11653f73312ff0fc0b6ca100cbc09b63e7e33d2e",
+   "wa": 2,
+   "tel": 0,
+   "new_sha256": "ee328dc0081567a96492336949ae583beb8a3883b50949c9c127448b107abb78"
+  },
+  {
+   "url": "https://cleanicdetailing.com/how-to-prepare-car-for-fumigation-singapore/",
+   "file": "how-to-prepare-car-for-fumigation-singapore/index.html",
+   "live_sha256": "7d1c261956955c0e0dc545c7289c481473843c99aa4c3bcc1c58d6756fa2a68b",
+   "wa": 2,
+   "tel": 0,
+   "new_sha256": "715840d69d02b33a6b801a4b1b23fbb441ae748393795f10814a6e96078c4140"
+  },
+  {
+   "url": "https://cleanicdetailing.com/moth-larvae-in-car-singapore/",
+   "file": "moth-larvae-in-car-singapore/index.html",
+   "live_sha256": "7f23b4db086db1d53d4c4034d38ac054fddcf866eb4e2a0507589b386fd83c33",
+   "wa": 2,
+   "tel": 0,
+   "new_sha256": "5ae715c55242f0697cb4c813b49df545a040403c3346ce91fce03f752eafaefd"
+  },
+  {
+   "url": "https://cleanicdetailing.com/baby-powder-smell-in-car-singapore/",
+   "file": "baby-powder-smell-in-car-singapore/index.html",
+   "live_sha256": "60fc7687f0ba810ad2cf1c4ed825253d73d40358917418a0f1d6889d6077ccf6",
+   "wa": 2,
+   "tel": 0,
+   "new_sha256": "1b7760cf4f7e95f65c17f9185f1aafccad42832987493783947934e323631888"
+  },
+  {
+   "url": "https://cleanicdetailing.com/how-to-check-a-car-detailer-singapore/",
+   "file": "how-to-check-a-car-detailer-singapore/index.html",
+   "live_sha256": "8aa154afc8f68e14f759738327c91b586fc0dd40a58ca3fb2587d36d4405febe",
+   "wa": 2,
+   "tel": 0,
+   "new_sha256": "3936289a0cfe14e4ed3af2ca3e0642411a71f8eb09888042efbecaedb017ea18"
+  },
+  {
+   "url": "https://cleanicdetailing.com/can-ants-nest-in-car-electronics/",
+   "file": "can-ants-nest-in-car-electronics/index.html",
+   "live_sha256": "949e798df668076c9f8d39053efa13edd65a598e8957485c7dd08e555a82c4b5",
+   "wa": 2,
+   "tel": 0,
+   "new_sha256": "21a71c0e0dafba86802d1ec8a3298d22389dca719f3ca1078e7e1a3ab22df4ef"
+  },
+  {
+   "url": "https://cleanicdetailing.com/how-to-get-rid-of-cricket-noise-in-car-singapore/",
+   "file": "how-to-get-rid-of-cricket-noise-in-car-singapore/index.html",
+   "live_sha256": "7d43878976495592dfe63bfe69f970aba3c523c33331d4a6272161822ae3b608",
+   "wa": 2,
+   "tel": 0,
+   "new_sha256": "a166d5b796a57873b96deb6d68c62a5f0be657187587b96a67ce95ffd6d2bd22"
+  },
+  {
+   "url": "https://cleanicdetailing.com/how-to-remove-lizard-droppings-from-car-interior-singapore/",
+   "file": "how-to-remove-lizard-droppings-from-car-interior-singapore/index.html",
+   "live_sha256": "3b52d90166bd12f98a2c1b8c5b8af7023c540acef5c482b0be8f122f73c0831e",
+   "wa": 2,
+   "tel": 0,
+   "new_sha256": "272876fb2020cf81d3f918338778879c7fe66d3144096c58d3f477464838ce21"
+  },
+  {
+   "url": "https://cleanicdetailing.com/how-to-get-rid-of-chirping-noise-in-car/",
+   "file": "how-to-get-rid-of-chirping-noise-in-car/index.html",
+   "live_sha256": "3f2cdf309232c4dd0000b8d81f490db2a37b948a419f4d33fcf0a2023f20a117",
+   "wa": 2,
+   "tel": 0,
+   "new_sha256": "0f8234f1435aab9c35241381200a8831840ab71f6afea030edcb3612aa458988"
+  },
+  {
+   "url": "https://cleanicdetailing.com/car-steam-cleaning-singapore-2/",
+   "file": "car-steam-cleaning-singapore-2/index.html",
+   "live_sha256": "662e5f1319e3f159dff9e9c4126c42fe19f582eabb535fbf582de059af96307b",
+   "wa": 3,
+   "tel": 1,
+   "new_sha256": "1becd1a4d0f0bd3b36bb7cbd076e8119cd94faf144996fe7991a7aeae5b16798"
+  },
+  {
+   "url": "https://cleanicdetailing.com/cockroach-egg-cases-in-car-singapore/",
+   "file": "cockroach-egg-cases-in-car-singapore/index.html",
+   "live_sha256": "a417099d34ac0f76adde864d40b78c98904e639fc47e5e370fa83ab4763774be",
+   "wa": 2,
+   "tel": 0,
+   "new_sha256": "14d6f1e349f2cda257a0eb63eabcdacb74903e19736c2c40a3e4ad3f373fac5a"
+  },
+  {
+   "url": "https://cleanicdetailing.com/wet-carpet-smell-in-car-singapore/",
+   "file": "wet-carpet-smell-in-car-singapore/index.html",
+   "live_sha256": "62a643af98015a9f56113883eb22cb041c9633b8b7b64f41c06ed69b70083636",
+   "wa": 5,
+   "tel": 4,
+   "new_sha256": "b04a65cb5e428cf680a2cd78cbc120539d891ff0d0ddd98785764d4ffa0e57c9"
+  },
+  {
+   "url": "https://cleanicdetailing.com/car-steam-cleaning-singapore-guide-2026/",
+   "file": "car-steam-cleaning-singapore-guide-2026/index.html",
+   "live_sha256": "8104d03f3fbc8e4733066bbc4e9eec8ecc322a2ac831b29eb3b0bb3c122577d6",
+   "wa": 8,
+   "tel": 7,
+   "new_sha256": "6f589e0807d9506f787026b4cfa7bc910bf140636d0a3e3040caf81cdac63acb"
+  },
+  {
+   "url": "https://cleanicdetailing.com/mobile-car-fumigation-singapore-comes-to-you/",
+   "file": "mobile-car-fumigation-singapore-comes-to-you/index.html",
+   "live_sha256": "25887cc685a3dcdb83401cc508f086c0e581727685dab13a69e203f4d62b9773",
+   "wa": 8,
+   "tel": 7,
+   "new_sha256": "7466763313313f361af21cd4d07566ae02effcf372a9e56aa5bad876ac53f8d1"
+  },
+  {
+   "url": "https://cleanicdetailing.com/mirakn-car-fumigation-singapore-2/",
+   "file": "mirakn-car-fumigation-singapore-2/index.html",
+   "live_sha256": "9232f85ab15adf12ba9d79bcf6043c89edaccd9f0a0ebf973c29350517202ebf",
+   "wa": 8,
+   "tel": 7,
+   "new_sha256": "1948214c7ace0ebf9e04e88b3c28948d2debd90b9a12e861819feea3b12ca1a7"
+  },
+  {
+   "url": "https://cleanicdetailing.com/cockroach-in-my-car-singapore-2026/",
+   "file": "cockroach-in-my-car-singapore-2026/index.html",
+   "live_sha256": "611a1a73826f342b903ae06a4694d5b18bccedcf90e2756986bebe338eaa9150",
+   "wa": 8,
+   "tel": 7,
+   "new_sha256": "7dd70a2d842adb810e2843bd7d3e649832a7768fa59b87111ac046111bca46ad"
+  },
+  {
+   "url": "https://cleanicdetailing.com/car-disinfection-singapore-2026/",
+   "file": "car-disinfection-singapore-2026/index.html",
+   "live_sha256": "a7ed6de76b7e280aaa2e1a2326e074a80ceeec3b3d7304e172da3ed12ec0a931",
+   "wa": 8,
+   "tel": 7,
+   "new_sha256": "0537cb086e5bfaa5a973b522f4d6d96a262b51e5580e06737fadc498c0824b67"
+  },
+  {
+   "url": "https://cleanicdetailing.com/category/seo-articles/",
+   "file": "category/seo-articles/index.html",
+   "live_sha256": "b713319108cdab2211d9b41f3aebbf6c01d09cd672a9e7e4dcceb28a8ba3225d",
+   "wa": 7,
+   "tel": 6,
+   "new_sha256": "81c5b544e642a2427d13b21f28d208f8c20625bf7634677194867c4181e29dc6"
+  },
+  {
+   "url": "https://cleanicdetailing.com/category/car-care-tips/",
+   "file": "category/car-care-tips/index.html",
+   "live_sha256": "d36443151b23dcf37d8a84ce0d8ed3dd407549d00a92b2d33e05a01f7220eff1",
+   "wa": 7,
+   "tel": 6,
+   "new_sha256": "e7874afe1e6061454a2124cb3f799d59430c745c688badaac7e36f291630c0bb"
+  },
+  {
+   "url": "https://cleanicdetailing.com/car-interior-grooming-singapore/",
+   "file": "car-interior-grooming-singapore/index.html",
+   "live_sha256": "986a50b56645975d57067d4a6be8bf148703ced4391420f5bf3157c115dacc64",
+   "wa": 8,
+   "tel": 7,
+   "new_sha256": "f4e52e94bd5b2a7b5c9a688f425842e2be397f397948a934f1e703c7351c874c"
+  },
+  {
+   "url": "https://cleanicdetailing.com/mobile-car-interior-cleaning-singapore/",
+   "file": "mobile-car-interior-cleaning-singapore/index.html",
+   "live_sha256": "ad64d464b203464c6d218d087c7f2efe4eac027f27caccc68de1cd2d6545692a",
+   "wa": 8,
+   "tel": 7,
+   "new_sha256": "13d996ec2f79aef4ecc513182d41a7bd09ae8467a9be840b41e2e92ebd3d7a4e"
+  },
+  {
+   "url": "https://cleanicdetailing.com/deep-clean-car-interior-singapore/",
+   "file": "deep-clean-car-interior-singapore/index.html",
+   "live_sha256": "ec14b70b86e9f7d4301066b945fc88b0df4e01b2e3c88009519bb0958a8ebb48",
+   "wa": 8,
+   "tel": 7,
+   "new_sha256": "282ca5912a6eb7fd986246036d38816ba401a54e24cf38d26895e306b335e92e"
+  },
+  {
+   "url": "https://cleanicdetailing.com/category/car-interior-steam-cleaning/",
+   "file": "category/car-interior-steam-cleaning/index.html",
+   "live_sha256": "873ffdc18328f05336fe0ec6b6d1a6e582e04f07663c9d69e7949fcb7da43e2b",
+   "wa": 7,
+   "tel": 6,
+   "new_sha256": "ef69e2f498efeae3969559b4210eb1b54875775eb1f33dae05f138006135e4b7"
+  },
+  {
+   "url": "https://cleanicdetailing.com/hyundai-kona-ev-sanitisation-steam-cleaning/",
+   "file": "hyundai-kona-ev-sanitisation-steam-cleaning/index.html",
+   "live_sha256": "0997573986a208d8b45f05aaa93381c520d135fd85c42dbbb760b159c7227d94",
+   "wa": 8,
+   "tel": 7,
+   "new_sha256": "9bb802aac84b113f6e3f62b2b12453d677835c4a4a57dd6d51235972e69ab1ea"
+  },
+  {
+   "url": "https://cleanicdetailing.com/tag/car-cleaning-singapore/",
+   "file": "tag/car-cleaning-singapore/index.html",
+   "live_sha256": "416e866964adf4ecc0fd66cb01d6e5a80728487ff35ab4c65ece3e8128baca67",
+   "wa": 7,
+   "tel": 6,
+   "new_sha256": "c91e4dcdfbfd397c76b960b845cb0adb0e6d4e6f6563bf74e3a557f430b9202a"
+  },
+  {
+   "url": "https://cleanicdetailing.com/tag/cleanic-detailing/",
+   "file": "tag/cleanic-detailing/index.html",
+   "live_sha256": "ddfff10b6a919f2ceed2970796b0e3ce9340796ba055ee0adb643954a9d5a8db",
+   "wa": 7,
+   "tel": 6,
+   "new_sha256": "71a86d3c813fb8c0527587c1efb5978df781b12f1429842d5b244a82b8ee13a7"
+  },
+  {
+   "url": "https://cleanicdetailing.com/tag/grab-driver-car-cleaning-singapore/",
+   "file": "tag/grab-driver-car-cleaning-singapore/index.html",
+   "live_sha256": "e31bb4d8ae070353e8fa1ffe011c98170e425cb5ef2b4b8e06894c45fbab001d",
+   "wa": 7,
+   "tel": 6,
+   "new_sha256": "625bf001423d38647ceb70d1692703072d77308b9d56e3e0078d09c2ff57d6d0"
+  },
+  {
+   "url": "https://cleanicdetailing.com/tag/phv-car-cleaning/",
+   "file": "tag/phv-car-cleaning/index.html",
+   "live_sha256": "edf40b137b9be66735d528585db11891673f99293467f88ebe36200a81bd0efe",
+   "wa": 7,
+   "tel": 6,
+   "new_sha256": "8b8ad31e8b0d0969c28b514e3a72d6c0ec7bc657ddf989e04b8086efd1e0b1ab"
+  },
+  {
+   "url": "https://cleanicdetailing.com/category/odour-mould-removal/",
+   "file": "category/odour-mould-removal/index.html",
+   "live_sha256": "2add4b90fe6e42b0f9e536fe4fbcbe1dfe925d0b62fadc7c68fce69e3b8797fe",
+   "wa": 7,
+   "tel": 6,
+   "new_sha256": "965d42f610cab2e0ba0bb40b9b883176bc6a0d3a87d0d2232b763c0085101895"
+  },
+  {
+   "url": "https://cleanicdetailing.com/category/car-disinfection/",
+   "file": "category/car-disinfection/index.html",
+   "live_sha256": "b16a6c9761ed836efc0fcf4871882d1a7afb2c12b9d46b0febe9751a49d8ef99",
+   "wa": 7,
+   "tel": 6,
+   "new_sha256": "7a7e98a77421571891e59891b5acfd75f0ee5dbb0d8d31f8f7aa0d433edc61fa"
+  },
+  {
+   "url": "https://cleanicdetailing.com/category/car-pest-control/",
+   "file": "category/car-pest-control/index.html",
+   "live_sha256": "cbbe0e13d1ef913275c045e5b63c9131439c6ce38cdb108cc96172fc5227aeaa",
+   "wa": 7,
+   "tel": 6,
+   "new_sha256": "1595b786b93e7a17b7c86ae95702700eef95ba6b935a5ef399e1d098e11c841d"
+  },
+  {
+   "url": "https://cleanicdetailing.com/car-pest-control-singapore-the-only-reliable-way-to-eliminate-cockroaches-and-insects-from-your-car/",
+   "file": "car-pest-control-singapore-the-only-reliable-way-to-eliminate-cockroaches-and-insects-from-your-car/index.html",
+   "live_sha256": "9491e23d1f6c0d470d70b2e2510a8ae66f1a782d54558d2b1549752557f96792",
+   "wa": 8,
+   "tel": 7,
+   "new_sha256": "f6b13d2d03e697fcb30e022808ee0feb0bcafe8201de655de98cf3bf4791f9d9"
+  },
+  {
+   "url": "https://cleanicdetailing.com/category/car-fumigation/",
+   "file": "category/car-fumigation/index.html",
+   "live_sha256": "0b9b8dd5a5fb5fae655a9778409c46e760eb844f58d7cf240391fad0aaa6be5a",
+   "wa": 7,
+   "tel": 6,
+   "new_sha256": "f0ea055f24169c906fadb8e1343550a0f6c13e9b1bf0f2c049cceefcd83e2323"
+  },
+  {
+   "url": "https://cleanicdetailing.com/car-cockroach-infestation-singapore-2026-warning-signs/",
+   "file": "car-cockroach-infestation-singapore-2026-warning-signs/index.html",
+   "live_sha256": "87eb493c9d88756d7319ac6225c569e86fc23fb50447bfbee93c10a27b5b4d81",
+   "wa": 8,
+   "tel": 7,
+   "new_sha256": "a4be97dedc66610a2170de4fbcd9e7564fda39fe54121eb7454aafc47335e84f"
+  },
+  {
+   "url": "https://cleanicdetailing.com/car-interior-cleaning-singapore-2026/",
+   "file": "car-interior-cleaning-singapore-2026/index.html",
+   "live_sha256": "9386632c1a6eb172b40d6305de8defbf9f78406ef8e15ecebcb6d6fd10449b95",
+   "wa": 8,
+   "tel": 7,
+   "new_sha256": "1576db5e4238f7ef5493ec79c7f8d6e767fb6acae2bb50ad5fc4e9f460c2e77e"
+  },
+  {
+   "url": "https://cleanicdetailing.com/car-interior-cleaning-singapore/",
+   "file": "car-interior-cleaning-singapore/index.html",
+   "live_sha256": "181e587350a2de8937c981f2c3e9de0f3ec4c9b4bfee92205958e7aab58a476b",
+   "wa": 8,
+   "tel": 7,
+   "new_sha256": "3f794693732fbf7680a081bad41dbf66bdf012287a4176b5ffffe32737281fe6"
+  },
+  {
+   "url": "https://cleanicdetailing.com/vomit-smell-in-car-singapore/",
+   "file": "vomit-smell-in-car-singapore/index.html",
+   "live_sha256": "d2fd1f712757e9c43451e8106844d93cea851b948f52f874d63d450f123b2767",
+   "wa": 8,
+   "tel": 7,
+   "new_sha256": "9025eae337bb1a8f199f411113f2b869fd88dc5398f13c0097b10deb721fb32a"
+  },
+  {
+   "url": "https://cleanicdetailing.com/tag/lizard-in-my-car/",
+   "file": "tag/lizard-in-my-car/index.html",
+   "live_sha256": "ba0642e9486ec2275adef9903a90c4ae6dc1beb3c790257ad5a4583c0bc23fc0",
+   "wa": 7,
+   "tel": 6,
+   "new_sha256": "5f75fdc5b29e81b33f1e9ec492aad51b064fd8274beec9528dfe0238ba8de0ef"
+  },
+  {
+   "url": "https://cleanicdetailing.com/tag/mirakn/",
+   "file": "tag/mirakn/index.html",
+   "live_sha256": "8796691916a5585a8bb40a337a8d0cd48a440918344544ba367bce5928d944b4",
+   "wa": 7,
+   "tel": 6,
+   "new_sha256": "061339cb8306879db67a132a64ebdbfaf436933b75b9048acf076d9cc0932509"
+  },
+  {
+   "url": "https://cleanicdetailing.com/tag/car-mould-removal-singapore/",
+   "file": "tag/car-mould-removal-singapore/index.html",
+   "live_sha256": "a63b8d502141d2035e467d33328bf0f10dcd4bf21b9c2226898bfdc1498052c7",
+   "wa": 7,
+   "tel": 6,
+   "new_sha256": "8a45b52eebbde4043e445194a34a67960f16c02f10044bea875872f028a9ac1f"
+  },
+  {
+   "url": "https://cleanicdetailing.com/tag/car-cockroach-fumigation-singapore/",
+   "file": "tag/car-cockroach-fumigation-singapore/index.html",
+   "live_sha256": "29bc92c541f6014196d907956f619c4409b1e69fdee6bec098986e5fc681cd90",
+   "wa": 7,
+   "tel": 6,
+   "new_sha256": "1d9ab65c13acafb14f4b870295d8a8ee916158d9053f533809766cacca877e9f"
+  },
+  {
+   "url": "https://cleanicdetailing.com/tag/car-odour-removal-singapore/",
+   "file": "tag/car-odour-removal-singapore/index.html",
+   "live_sha256": "3cb7b747b93476237a0cbfed9a4bce153fb9798934c19a0e9f3f87de30086885",
+   "wa": 7,
+   "tel": 6,
+   "new_sha256": "d874342846fc6fef3f5be3da2e484b50aeea7d828118e136b5cc0eb6db19029c"
+  },
+  {
+   "url": "https://cleanicdetailing.com/tag/ants-in-my-car/",
+   "file": "tag/ants-in-my-car/index.html",
+   "live_sha256": "52cb2c774f27be5e22effebe5b3e43d989526135f963c104b154b9115f366b40",
+   "wa": 7,
+   "tel": 6,
+   "new_sha256": "d3449bcbb1bbed19b119b11075d297fdc5b70707b4998cb0d665d7d5ec388de0"
+  },
+  {
+   "url": "https://cleanicdetailing.com/tag/mobile-car-detailing-singapore/",
+   "file": "tag/mobile-car-detailing-singapore/index.html",
+   "live_sha256": "4dede16aba1ebdb57cc10ca02ec4871cb4a0e5088258f2b5c9cc3b8f15395785",
+   "wa": 7,
+   "tel": 6,
+   "new_sha256": "f906f052cd6031f694b387b83114df4f2b3fc6e8d6c1e9bb5712d29dc6ba91dd"
+  },
+  {
+   "url": "https://cleanicdetailing.com/what-is-car-grooming-singapore/",
+   "file": "what-is-car-grooming-singapore/index.html",
+   "live_sha256": "e9dcf0e11cee4c985c8a0489455523977a0a6e4a3b0451ddee16a735d826c145",
+   "wa": 2,
+   "tel": 0,
+   "new_sha256": "57ee4d931566939cea48d0f292576d3b3c1ab46926482ce122db2e35fc473c9c"
+  },
+  {
+   "url": "https://cleanicdetailing.com/cockroach-fumigation-office-singapore-mirakn/",
+   "file": "cockroach-fumigation-office-singapore-mirakn/index.html",
+   "live_sha256": "3110b369574f2af23db3a5d579ddb22a94fbd5a6c5e8bfd6cd8c36c387acab11",
+   "wa": 2,
+   "tel": 0,
+   "new_sha256": "f17655acc0e755867753b64c1e7bf0287cc8ebcd7fa3540d848afac0fb4b852b"
+  },
+  {
+   "url": "https://cleanicdetailing.com/maggots-in-car-singapore/",
+   "file": "maggots-in-car-singapore/index.html",
+   "live_sha256": "b1f70602c52aba82d97eacf6feb5f7ca0ea4ced907924a08ff6917b3bfb42998",
+   "wa": 2,
+   "tel": 0,
+   "new_sha256": "a88c4ae701d0bf11b149ff1da8f2c11e5b4fa74255b909bace29c44beb20dd09"
+  },
+  {
+   "url": "https://cleanicdetailing.com/cockroach-fumigation-restaurant-fnb-singapore-mirakn/",
+   "file": "cockroach-fumigation-restaurant-fnb-singapore-mirakn/index.html",
+   "live_sha256": "3e16520284033387ab764328416f989e5a0fbbf01d9b5da94fb2ad7932226790",
+   "wa": 2,
+   "tel": 0,
+   "new_sha256": "9a76b616f8de719601ae6e16831b1786625539d4cfc644be51e9f879994aa9ce"
+  },
+  {
+   "url": "https://cleanicdetailing.com/cockroach-fumigation-rental-property-singapore-mirakn/",
+   "file": "cockroach-fumigation-rental-property-singapore-mirakn/index.html",
+   "live_sha256": "ce2dc980b2eb638bdc048da629b0e84246bafd9a2bffddbfb3a6a80a81c1ecb8",
+   "wa": 2,
+   "tel": 0,
+   "new_sha256": "a7ca24bb107c8290e0aa5168144aa0c32de167024771b2aebe9d68c8837213e9"
+  },
+  {
+   "url": "https://cleanicdetailing.com/mosquito-baby-room-singapore-mirakn/",
+   "file": "mosquito-baby-room-singapore-mirakn/index.html",
+   "live_sha256": "798e47159841d5aa278ba597dc4fe0f48b035f4ebe964b2c291b409e1dc379b7",
+   "wa": 2,
+   "tel": 0,
+   "new_sha256": "5f063d976081d9d68c20f60b46e43e33c0c7b0f7f8be062aafe4b1d0404c15c8"
+  },
+  {
+   "url": "https://cleanicdetailing.com/tag/car-fumigation-singapore/",
+   "file": "tag/car-fumigation-singapore/index.html",
+   "live_sha256": "ffbafec19b5fe909ed0a3e989799aa44a829579d9d77b51a9ba80d3191f0eb29",
+   "wa": 7,
+   "tel": 6,
+   "new_sha256": "78b084a34846c6ab188f3713fdf3f9b3f85cc4eed01d4318d8130365785e6d64"
+  },
+  {
+   "url": "https://cleanicdetailing.com/tag/cockroach-removal-car/",
+   "file": "tag/cockroach-removal-car/index.html",
+   "live_sha256": "12f95d4fbdac20f1e46b580b10a614b96ded494501538faf6a889c7fe4db193e",
+   "wa": 7,
+   "tel": 6,
+   "new_sha256": "1c36f24459def8e8b61fa0e55b4b34ae44868918e297ea71f86cbf971f1509b9"
+  },
+  {
+   "url": "https://cleanicdetailing.com/tag/interior-shampoo/",
+   "file": "tag/interior-shampoo/index.html",
+   "live_sha256": "1b1cfe3b0457391e9ffff59cf3a5897be6785dafe780fb268c067ae88a4a9116",
+   "wa": 7,
+   "tel": 6,
+   "new_sha256": "6f82e91b40f478807015a45c9152934c71587750ac803a2f1f2676fdd03580ec"
+  },
+  {
+   "url": "https://cleanicdetailing.com/tag/porsche-detailing-singapore/",
+   "file": "tag/porsche-detailing-singapore/index.html",
+   "live_sha256": "7b233c7ad963ceceaba5a209b0316b03aa77d93324a660c846e30b31264e374f",
+   "wa": 7,
+   "tel": 6,
+   "new_sha256": "378e01d20b1ca405882f9d57d7dbdefba6fbaf5a476d949aa2dc9a98519a9bd9"
+  },
+  {
+   "url": "https://cleanicdetailing.com/tag/cockroach-in-car-singapore/",
+   "file": "tag/cockroach-in-car-singapore/index.html",
+   "live_sha256": "8a79d3e14813b5fc6221c5dc28cbe5718eece1898e322898e349f1c065b8ee0e",
+   "wa": 7,
+   "tel": 6,
+   "new_sha256": "d4772dd94ba49a0ab353c41ffee5bd92c26ce5baee5dc2390a6529c666219488"
+  },
+  {
+   "url": "https://cleanicdetailing.com/tag/mobile-car-fumigation-singapore/",
+   "file": "tag/mobile-car-fumigation-singapore/index.html",
+   "live_sha256": "3ee6ac577447f02ee31a0b7fab8e5ad1af932636e86d94e5c4e83cba49e63788",
+   "wa": 7,
+   "tel": 6,
+   "new_sha256": "8a1cb9f7a8a9bc22b62266b150757b6de953d0bf63c00505438680dd7bde1305"
+  },
+  {
+   "url": "https://cleanicdetailing.com/tag/cockroach-in-my-car/",
+   "file": "tag/cockroach-in-my-car/index.html",
+   "live_sha256": "94bfa78c410fda85739f6df7e3892ccd5819ffbc1ae181f1723bdb8199657a63",
+   "wa": 7,
+   "tel": 6,
+   "new_sha256": "b8f4548142d95926946c76bf145fb48227c395b7517a1e56b80ed0f6c8710466"
+  },
+  {
+   "url": "https://cleanicdetailing.com/tag/mirakn-car-fumigation-singapore/",
+   "file": "tag/mirakn-car-fumigation-singapore/index.html",
+   "live_sha256": "ca5c016967d40ba4a3318ddca7360d8b3cc230840505dd4378632aad7484007f",
+   "wa": 7,
+   "tel": 6,
+   "new_sha256": "98f4d005d1e54adf16a6e2cb2ef52b98ab6ae40cd934907b91098c5e612d2b9f"
+  },
+  {
+   "url": "https://cleanicdetailing.com/tag/car-disinfection-singapore/",
+   "file": "tag/car-disinfection-singapore/index.html",
+   "live_sha256": "b99a3bc1730a28b7a2509eabc28c30bd23b7d645dd66a5a09d5e2b6236dae642",
+   "wa": 7,
+   "tel": 6,
+   "new_sha256": "ffa2bcf0c7972fecd825f3aba141fcb3964c587870e6b6c957b0b7722dab829e"
+  },
+  {
+   "url": "https://cleanicdetailing.com/category/interior-steam-cleaning/",
+   "file": "category/interior-steam-cleaning/index.html",
+   "live_sha256": "0741c3ab80138d6e59c612c3754cc3b39c15ee5e140f8e13bc34364b8736d520",
+   "wa": 7,
+   "tel": 6,
+   "new_sha256": "a3686c225390719dc429c19191672f9f5e7e943e6cf8a5274676a1656eb2417f"
+  },
+  {
+   "url": "https://cleanicdetailing.com/tag/car-steam-cleaning-singapore/",
+   "file": "tag/car-steam-cleaning-singapore/index.html",
+   "live_sha256": "66936faae8ded03d136dd31b2fd6a9e38ddc3b4d508d10d81355a3caf49a7bab",
+   "wa": 7,
+   "tel": 6,
+   "new_sha256": "038395701e410230e2533cf3eb05a4089fd109b6c62d68b97b95bc8247d852f8"
+  },
+  {
+   "url": "https://cleanicdetailing.com/category/car-interior-steam-cleaning/page/2/",
+   "file": "category/car-interior-steam-cleaning/page/2/index.html",
+   "live_sha256": "cb1e9e58934fda306af095548caa8c0ee3d3267433d64246c254daef162de330",
+   "wa": 7,
+   "tel": 6,
+   "new_sha256": "528919e290548ccfacf29495dcaa5da752f8a8dd04689ccac82abbd4950fce6c"
+  },
+  {
+   "url": "https://cleanicdetailing.com/car-steam-cleaning-singapore/",
+   "file": "car-steam-cleaning-singapore/index.html",
+   "live_sha256": "de25a2a28c631aa98e93e65dbb88689390f8448f78f30276275459e9540e424e",
+   "wa": 8,
+   "tel": 7,
+   "new_sha256": "f55513b5dd36ef949c5fbabd30cfc219d1e2271afe2a1a11fbb5b576b064ce60"
+  },
+  {
+   "url": "https://cleanicdetailing.com/mobile-car-fumigation-singapore-on-site-mirakn/",
+   "file": "mobile-car-fumigation-singapore-on-site-mirakn/index.html",
+   "live_sha256": "7c64e0313f577600c5d9ef9fb238b8b93aa1c436bb5f61cc8e278eee5e040e94",
+   "wa": 8,
+   "tel": 7,
+   "new_sha256": "b6a429497f1add7a4929fd42025903bf93497cc5e9d24630d77cc23d5dcba85a"
+  },
+  {
+   "url": "https://cleanicdetailing.com/mirakn-dry-gas-car-fumigation-singapore-the-smarter-safer-way-to-eliminate-car-pests/",
+   "file": "mirakn-dry-gas-car-fumigation-singapore-the-smarter-safer-way-to-eliminate-car-pests/index.html",
+   "live_sha256": "5ff027cdea8d038e0e26f0d3d4212049a576834e483a3170cbad1b0648a2feb6",
+   "wa": 9,
+   "tel": 7,
+   "new_sha256": "81129f8de4df91fe26726945d752d72f07a39e2682a3e633ff34cc739cb8740c"
+  },
+  {
+   "url": "https://cleanicdetailing.com/car-interior-cleaning-singapore-why-steam-cleaning-beats-a-regular-car-wash-every-time/",
+   "file": "car-interior-cleaning-singapore-why-steam-cleaning-beats-a-regular-car-wash-every-time/index.html",
+   "live_sha256": "d31b341546f67ddcdcb5f83545aea268f2f171d96242590506128eff66e21254",
+   "wa": 8,
+   "tel": 7,
+   "new_sha256": "d7584d560c0487210fa8cfad67028b383403e2eb42834a646c09ef6ec5f343c8"
+  },
+  {
+   "url": "https://cleanicdetailing.com/24-hour-car-cleaning-singapore-why-round-the-clock-service-changes-everything/",
+   "file": "24-hour-car-cleaning-singapore-why-round-the-clock-service-changes-everything/index.html",
+   "live_sha256": "d732e6a08e3d61aa349bec58d51ed3fda38fd264c4c4296cc96f072bcbc374b1",
+   "wa": 8,
+   "tel": 7,
+   "new_sha256": "8b06d48bdb1d4a9b5d06912949c283df93fb0d42c8697fc1a8fc3b7d8624afb5"
+  },
+  {
+   "url": "https://cleanicdetailing.com/car-disinfection-service-singapore-why-steam-cleaning-kills-99-9-of-germs/",
+   "file": "car-disinfection-service-singapore-why-steam-cleaning-kills-99-9-of-germs/index.html",
+   "live_sha256": "5276139803fcf83d9987a668625d23dd8c3092dba2d14c7a6c0f8b18e22a1abf",
+   "wa": 8,
+   "tel": 7,
+   "new_sha256": "edb65ccb4fbfa607c0336bc14c4fb19db1049934a3187a185424bf5fc484ff2f"
+  },
+  {
+   "url": "https://cleanicdetailing.com/car-odour-removal-singapore-how-steam-cleaning-eliminates-stubborn-smells-for-good/",
+   "file": "car-odour-removal-singapore-how-steam-cleaning-eliminates-stubborn-smells-for-good/index.html",
+   "live_sha256": "a7c34254cd656e822cbb20fac83601b7cd8362c63b90cd82dbb6c4f9ff03ca83",
+   "wa": 8,
+   "tel": 7,
+   "new_sha256": "305c4ac2068d4536ca6c7dff7e03db7416b52ad73f37e2f507dcd65c60f3e57a"
+  },
+  {
+   "url": "https://cleanicdetailing.com/category/car-care-tips/page/2/",
+   "file": "category/car-care-tips/page/2/index.html",
+   "live_sha256": "8dcfe4689e4e805376b30fb13d44ac99d64fb6818e72e79358981e2e51ce1a93",
+   "wa": 7,
+   "tel": 6,
+   "new_sha256": "8d27461909d04c7e69872d49fb4a732fa84f987774d44eeb6855c1f672c018d0"
+  },
+  {
+   "url": "https://cleanicdetailing.com/emergency-car-detailing-singapore-2026-2/",
+   "file": "emergency-car-detailing-singapore-2026-2/index.html",
+   "live_sha256": "aa8624a8f3fa731dba46c553c35d68fbdd519659084f176b189dcab3bcf618e4",
+   "wa": 8,
+   "tel": 7,
+   "new_sha256": "11fe07e566c3e6fe07fa0b0ca7b855f521485d32f764d8dbb11045bf04f6184c"
+  },
+  {
+   "url": "https://cleanicdetailing.com/tag/car-cleaning-singapore/page/2/",
+   "file": "tag/car-cleaning-singapore/page/2/index.html",
+   "live_sha256": "fe0fe134158291fe0117543b6015a7a7d898eb59d8bd49f8116fa139d30522d5",
+   "wa": 7,
+   "tel": 6,
+   "new_sha256": "98b6be1eb734b2e80fa3ef22ea0f91f175d8c84516b6f1fe1132924212c4663e"
+  },
+  {
+   "url": "https://cleanicdetailing.com/tag/car-cleaning-singapore/page/4/",
+   "file": "tag/car-cleaning-singapore/page/4/index.html",
+   "live_sha256": "2c43711b36668a1d14295b9107e86933288e402dadc026feb3b155091aa31cd2",
+   "wa": 7,
+   "tel": 6,
+   "new_sha256": "fd3263874d742817841b02d2627e1930d8c0b22b204da1a8cc89d133a501d4bd"
+  },
+  {
+   "url": "https://cleanicdetailing.com/tag/bed-bugs/",
+   "file": "tag/bed-bugs/index.html",
+   "live_sha256": "a301dcee1c602feebb49e97d6293db485f6b546496b8104e28086b18cb37a6c2",
+   "wa": 7,
+   "tel": 6,
+   "new_sha256": "89f9d1e008f76665aca49b1cf684dcb2653aa5733f0084c2446f5ca2983e58a8"
+  },
+  {
+   "url": "https://cleanicdetailing.com/tag/car-sanitisation-singapore/",
+   "file": "tag/car-sanitisation-singapore/index.html",
+   "live_sha256": "43d3cea9b0d0db08a92680b5469de06c66e3ad0a404c4087c9cae2e5b35c4417",
+   "wa": 7,
+   "tel": 6,
+   "new_sha256": "2b09d8ca318d96181dd2845dbf5e57a9abcb6573c86a67d9281672804983e661"
+  },
+  {
+   "url": "https://cleanicdetailing.com/tag/hyundai-kona-ev/",
+   "file": "tag/hyundai-kona-ev/index.html",
+   "live_sha256": "06f316a38c37ca551d51cd767db6287bd1b26cf0c32b7cc13bac0087032d036a",
+   "wa": 7,
+   "tel": 6,
+   "new_sha256": "76ce1162234cb546b1c018771ce6a55c46f7744d561e3ebbcb13b928063ea8a8"
+  },
+  {
+   "url": "https://cleanicdetailing.com/cockroach-eggs-in-car-singapore/",
+   "file": "cockroach-eggs-in-car-singapore/index.html",
+   "live_sha256": "0f5d0442f0d84edf6065ca832d09853661b93ad77ac18ea4c4b9a16953f2bcc7",
+   "wa": 8,
+   "tel": 7,
+   "new_sha256": "eed250376bfe58d793d94dbfd2418682130daa046044700ab7c34ba35c7353d2"
+  },
+  {
+   "url": "https://cleanicdetailing.com/category/car-fumigation/page/2/",
+   "file": "category/car-fumigation/page/2/index.html",
+   "live_sha256": "9a6a04c0b9fda9c2e639f727ecdb7988796454419d6a57128e22c10247866f34",
+   "wa": 7,
+   "tel": 6,
+   "new_sha256": "7a0caecd851c1b67868df52b3e1ededd5379cfa7890d1c79e9f8e52e2042aa9d"
+  },
+  {
+   "url": "https://cleanicdetailing.com/car-sanitisation-singapore-2/",
+   "file": "car-sanitisation-singapore-2/index.html",
+   "live_sha256": "e2a75f10241bdfa536dcebe3f0f839a76c31b6cf8f14e4f41ab090d0d2975d34",
+   "wa": 8,
+   "tel": 7,
+   "new_sha256": "5e7d8591510f97e6ce92e06d186d1d3a9623de88cd56025e248af9eda848aab2"
+  },
+  {
+   "url": "https://cleanicdetailing.com/car-disinfection-singapore/",
+   "file": "car-disinfection-singapore/index.html",
+   "live_sha256": "6f1e932fdb2c5cc12e8dd0b465fae37566f9423e70c4296886b268dee2dddc0b",
+   "wa": 8,
+   "tel": 7,
+   "new_sha256": "883c56b9dcc2b0360c65d022afe53a12fa36fc7552a5560aa4cf7430e4e0fe24"
+  },
+  {
+   "url": "https://cleanicdetailing.com/tag/car-pest-control-singapore/",
+   "file": "tag/car-pest-control-singapore/index.html",
+   "live_sha256": "7fe607ed6dd15bf5b7ee5e2ad7884461aacf43cedf8397e479d5a1c0611cc914",
+   "wa": 7,
+   "tel": 6,
+   "new_sha256": "6e2b2a7508150a80193bbf6ce8765c19eba0ce1c001ea89cd3f2783ecf29e1ac"
+  },
+  {
+   "url": "https://cleanicdetailing.com/tag/cleanic-detailing/page/2/",
+   "file": "tag/cleanic-detailing/page/2/index.html",
+   "live_sha256": "8a55054e863eb4a997bf1e2bdeadf5ffe8cab3e424448b44356885aa66951c65",
+   "wa": 7,
+   "tel": 6,
+   "new_sha256": "1d9921b602a3bcf7999849f2f1dd28601d4522ba1ad07cf5f454310781bcbaef"
+  },
+  {
+   "url": "https://cleanicdetailing.com/tag/cleanic-detailing/page/4/",
+   "file": "tag/cleanic-detailing/page/4/index.html",
+   "live_sha256": "fcf7802cd4b412d27ad382bb480a51acca9eb5d478832e0d36d7abd2e4440900",
+   "wa": 7,
+   "tel": 6,
+   "new_sha256": "046385f7aa7b4572e2c49b76c62e662771df89c142a0fbfdd03092fbc16bae3b"
+  },
+  {
+   "url": "https://cleanicdetailing.com/tag/car-interior-cleaning-singapore/",
+   "file": "tag/car-interior-cleaning-singapore/index.html",
+   "live_sha256": "2ffdc61447203f7447a30e801d0e9c8efbe4eb2edbbd13298fdc68e1a2d11e54",
+   "wa": 7,
+   "tel": 6,
+   "new_sha256": "313a3e5ec5c00b1e5e4a106bd37a61003a8e07676ae733e7cf5db4b16d17937a"
+  },
+  {
+   "url": "https://cleanicdetailing.com/tag/car-cockroach-infestation-singapore/",
+   "file": "tag/car-cockroach-infestation-singapore/index.html",
+   "live_sha256": "72bbccc801b18333d779fac2459b64d79381f59a4125e80ca315ac2f8d08e069",
+   "wa": 7,
+   "tel": 6,
+   "new_sha256": "8b89ee7b3a03cba2cad158e782e6bfbf9d92fd1befc46c33369067237595c161"
+  },
+  {
+   "url": "https://cleanicdetailing.com/car-cockroach-fumigation-singapore-glb180-case-study/",
+   "file": "car-cockroach-fumigation-singapore-glb180-case-study/index.html",
+   "live_sha256": "34867151386bf2d1859649cab9b65fb3bf66681f7d3101f59b8427897a211397",
+   "wa": 8,
+   "tel": 7,
+   "new_sha256": "0bf46420c806306e0cfd164cb8ec32e2bd6b3af835c1983b9fead2b1ef18bd98"
+  },
+  {
+   "url": "https://cleanicdetailing.com/tag/mirakn/page/2/",
+   "file": "tag/mirakn/page/2/index.html",
+   "live_sha256": "83ec53d787fb1261d4cb363f96e50900a199692c2c90aa55523322be001bad6a",
+   "wa": 7,
+   "tel": 6,
+   "new_sha256": "8a1ed5ebb56c48b8b435e7e2c390855e7c61bb3ab66359120f56d0f171a02e03"
+  },
+  {
+   "url": "https://cleanicdetailing.com/tag/mirakn/page/3/",
+   "file": "tag/mirakn/page/3/index.html",
+   "live_sha256": "80d222e49c05a04f81b6c12753b75cf2c8a60c34add697253be1248aecf25681",
+   "wa": 7,
+   "tel": 6,
+   "new_sha256": "64a6c851564a7b657c9d18314b8bc62bc6982e8b9195748dbbbb795e4b7dbe3a"
+  },
+  {
+   "url": "https://cleanicdetailing.com/category/odour-mould-removal/page/2/",
+   "file": "category/odour-mould-removal/page/2/index.html",
+   "live_sha256": "f79114bf9c3cd59a9d611aef87892f2ad72bd48ad1d60f7d4bea7c26a0abd9af",
+   "wa": 7,
+   "tel": 6,
+   "new_sha256": "45696a2e036c3cfe6dfbb3191347a34d2c2506cf3ae6c3e3b090aba4758d0795"
+  },
+  {
+   "url": "https://cleanicdetailing.com/car-mould-removal-singapore-2/",
+   "file": "car-mould-removal-singapore-2/index.html",
+   "live_sha256": "b5b08cb737b9cabd1ea3f0c4a27f8c817a27978a1ee481cb8ea45f9a09752c75",
+   "wa": 8,
+   "tel": 7,
+   "new_sha256": "6b5969eef30c2646b6b4d477273192f434dee34879bd755bc5e9d7f9787ef42b"
+  },
+  {
+   "url": "https://cleanicdetailing.com/effective-cockroach-fumigation-techniques/",
+   "file": "effective-cockroach-fumigation-techniques/index.html",
+   "live_sha256": "44a87fd6af3dd70f06cefbd8f37d3ae0a71ec504633c23eb0325416c28bf0fbc",
+   "wa": 8,
+   "tel": 7,
+   "new_sha256": "7ecb7943f1c20cbcfdd6582516ae69df6729917f4136bf3c90349c0460cde3f3"
+  },
+  {
+   "url": "https://cleanicdetailing.com/car-odour-removal-singapore-2/",
+   "file": "car-odour-removal-singapore-2/index.html",
+   "live_sha256": "159248eeb66f34291240d919af35ca88f2d96ed4a645f500847e1ec31c7cd92f",
+   "wa": 8,
+   "tel": 7,
+   "new_sha256": "f6ec1e5c348efbd274be09b1732cd4c1a86133a952f390dfc103d7619b9f348b"
+  },
+  {
+   "url": "https://cleanicdetailing.com/tag/dry-gas-fumigation/",
+   "file": "tag/dry-gas-fumigation/index.html",
+   "live_sha256": "6ca455d732d9dd3a53f6fcd65780f7296c115e6787f4ecd1d78d368cdb61a8ff",
+   "wa": 7,
+   "tel": 6,
+   "new_sha256": "5e452711cb86ac13c5fec93e2301c310c34a12a0710d8421d0c8a16ab319cf1d"
+  },
+  {
+   "url": "https://cleanicdetailing.com/tag/mirakn-singapore/",
+   "file": "tag/mirakn-singapore/index.html",
+   "live_sha256": "12062357a848e72e46175f2777a58a2bd9f7623ab7a11ba286bbbc1498a75df5",
+   "wa": 7,
+   "tel": 6,
+   "new_sha256": "7275812bd50df428faaa03f9f762e28392652dbd9e45bbaee272bf966aee919e"
+  },
+  {
+   "url": "https://cleanicdetailing.com/mobile-car-fumigation-singapore/",
+   "file": "mobile-car-fumigation-singapore/index.html",
+   "live_sha256": "6c43f48acd1e9dc9642c8e09dcd844ca96f31d5366e87fddb39592cc57b51668",
+   "wa": 8,
+   "tel": 7,
+   "new_sha256": "b3a3de4417c397d9fda67699488a79d7b252f5129d79516b59442ead1c1e9d8e"
+  },
+  {
+   "url": "https://cleanicdetailing.com/tag/emergency-car-detailing-singapore/",
+   "file": "tag/emergency-car-detailing-singapore/index.html",
+   "live_sha256": "4d3e94a65a9631ea5890118ee8529f12f2b8dd2cb91b763c3a41ff3a35120580",
+   "wa": 7,
+   "tel": 6,
+   "new_sha256": "10de995cdb33996dc10d4f4aaad079a00bca9458eec30a1c449ab683bed9fc03"
+  },
+  {
+   "url": "https://cleanicdetailing.com/tag/car-cleaning-singapore/page/3/",
+   "file": "tag/car-cleaning-singapore/page/3/index.html",
+   "live_sha256": "b69574b082fd2228c9bf021101f3a8000745908ded4614702a8c98100c96a767",
+   "wa": 7,
+   "tel": 6,
+   "new_sha256": "276752aa4fcd8a4dc598f59ec9fceb1f4c415113778eb86afc42fdcec2759a64"
+  },
+  {
+   "url": "https://cleanicdetailing.com/tag/24-hour-car-cleaning-singapore/",
+   "file": "tag/24-hour-car-cleaning-singapore/index.html",
+   "live_sha256": "d95b118a7ea25589c4f752988ff1f6921b784ded6ac67ae19a2386875bb7ddab",
+   "wa": 7,
+   "tel": 6,
+   "new_sha256": "887abedd7735945c544d87f27315487554f8e1484c30cfdb4ea79732de3f3b79"
+  },
+  {
+   "url": "https://cleanicdetailing.com/tag/car-interior-cleaning/",
+   "file": "tag/car-interior-cleaning/index.html",
+   "live_sha256": "9d525f755c05a7547cf86e40864affc3381287385db72907c316b5984291f61a",
+   "wa": 7,
+   "tel": 6,
+   "new_sha256": "4196cd01c0f419f8f597f2ef252d68ca94a485af20fa8abd470dced80631cdfc"
+  },
+  {
+   "url": "https://cleanicdetailing.com/tag/steam-cleaning/",
+   "file": "tag/steam-cleaning/index.html",
+   "live_sha256": "f557f7ee1ab4e2dc92c92cff20476fe850e88766a97f0fd988034bf6b5767d27",
+   "wa": 7,
+   "tel": 6,
+   "new_sha256": "0776b8b36cac59aa82227f1be89c25547d9d2ea95235e32fe41d1578e89d059c"
+  },
+  {
+   "url": "https://cleanicdetailing.com/tag/car-disinfection-service/",
+   "file": "tag/car-disinfection-service/index.html",
+   "live_sha256": "6ce49a5ae2e3fff598d812d99e0dd1c7607420301db9b36f2e1072d3464eeb36",
+   "wa": 7,
+   "tel": 6,
+   "new_sha256": "b2e293dfb1cf61da7bd77688ff917ae80a7101a544b3db98c1860fbe4798f6d2"
+  },
+  {
+   "url": "https://cleanicdetailing.com/why-choose-professional-cleaning-services/",
+   "file": "why-choose-professional-cleaning-services/index.html",
+   "live_sha256": "a99ec65ed00fae4cd2e082c62d86b5b7ad91efeffd64db8807551f737b96edc9",
+   "wa": 8,
+   "tel": 7,
+   "new_sha256": "53a397395d0e6800a1946b9e8764a11963c2a78fba98b0c2eea881acdd04bdd3"
+  },
+  {
+   "url": "https://cleanicdetailing.com/24-7-on-call-car-services/",
+   "file": "24-7-on-call-car-services/index.html",
+   "live_sha256": "99e5bd3115e9dd8cd241154f4029a45979e34c50f436be738059b23a3a0ab618",
+   "wa": 8,
+   "tel": 7,
+   "new_sha256": "436ba2846ccd8279d7c337744b99d2c1567a23872a01cc63fff5211214d32b03"
+  },
+  {
+   "url": "https://cleanicdetailing.com/steam-cleaning-vs-traditional-methods/",
+   "file": "steam-cleaning-vs-traditional-methods/index.html",
+   "live_sha256": "867d9b6d8f7b725a57730c9a3899fbbed393f3806b88c9225ed92cf22911d994",
+   "wa": 8,
+   "tel": 7,
+   "new_sha256": "c2907bec2e410d0f61328992734b6fefade717c8986a9e0a661962eafbad3fa3"
+  },
+  {
+   "url": "https://cleanicdetailing.com/the-importance-of-car-interior-cleaning/",
+   "file": "the-importance-of-car-interior-cleaning/index.html",
+   "live_sha256": "4c25387e47e0219e79ed9d7b7516ae23655f888e0468ef51483cd5d04866cd95",
+   "wa": 8,
+   "tel": 7,
+   "new_sha256": "d17cd9d9f50b518f41db6bdb89557127340b9f0ababcc3028a4984b7a147ac2a"
+  },
+  {
+   "url": "https://cleanicdetailing.com/car-cockroach-infestation-singapore/",
+   "file": "car-cockroach-infestation-singapore/index.html",
+   "live_sha256": "3169250a656db462cb60f20fe81b7f2690716ca517c53bbacf67317008cd9b33",
+   "wa": 8,
+   "tel": 7,
+   "new_sha256": "bcccb19a8f9ce45e208f8f9bf2dd3fa0562a41bc4a23bc032fecd763ab6e0ecb"
+  },
+  {
+   "url": "https://cleanicdetailing.com/emergency-car-detailing-singapore/",
+   "file": "emergency-car-detailing-singapore/index.html",
+   "live_sha256": "a882474c47958510d11a3ae351af27ba3e3c8e8d13234304113fe3a77bf44b3f",
+   "wa": 8,
+   "tel": 7,
+   "new_sha256": "76b03601bf940353f67c22b42b228abba8da801499056c294b18d52b630b05af"
+  },
+  {
+   "url": "https://cleanicdetailing.com/tag/cleanic-detailing/page/3/",
+   "file": "tag/cleanic-detailing/page/3/index.html",
+   "live_sha256": "ceca8a5c3fd61783f8bb07b6d4ef75a32f92656834d76370b7fd2be479d65f86",
+   "wa": 7,
+   "tel": 6,
+   "new_sha256": "a45698e3811584a33565d25d26127c134536cd0d776e95f6d4e9fd10e5b124aa"
+  },
+  {
+   "url": "https://cleanicdetailing.com/smoke-smell-in-car-singapore/",
+   "file": "smoke-smell-in-car-singapore/index.html",
+   "live_sha256": "2ba3e7e8b11419f3d8a05cb8505ba5443102194c6592d3f595b83d1fca98502a",
+   "wa": 8,
+   "tel": 7,
+   "new_sha256": "d8f8b0a3b7a9c0eec2da49c088a8eb90bb0a0de8033f2b759559d9f923c08496"
+  },
+  {
+   "url": "https://cleanicdetailing.com/tag/car-detailing-singapore/",
+   "file": "tag/car-detailing-singapore/index.html",
+   "live_sha256": "ff2f61ba46da7950899c33bed302369a44781239983c19bffdef2518a0e14005",
+   "wa": 7,
+   "tel": 6,
+   "new_sha256": "1486c186517ca8eb383678be9e456065039a8b182a1014ec487bf8fb137a396c"
+  }
+ ]
+}

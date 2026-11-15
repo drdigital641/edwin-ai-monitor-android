@@ -1,0 +1,408 @@
+{
+ "site": {
+  "slug": "benz-world",
+  "origin": "https://benzworld.my",
+  "prefix": "/",
+  "bridge": "benzworld",
+  "base": "",
+  "src": "/p1-cta.js"
+ },
+ "tag": "<script src=\"/p1-cta.js?v=63c70953\" defer></script>",
+ "pages_seen": 50,
+ "with_cta": 49,
+ "already_tracked": 0,
+ "to_fix": [
+  {
+   "url": "https://benzworld.my/",
+   "file": "index.html",
+   "live_sha256": "da5d36effd073705bbfff8a568e8c3f4116f1baef4b6675cb7e3f2a7e52b6b4d",
+   "wa": 5,
+   "tel": 5,
+   "new_sha256": "1f352b9879413a5e9494c0e8a120870957e40ca748b68c68ce92c5e7370946d8"
+  },
+  {
+   "url": "https://benzworld.my/services/",
+   "file": "services/index.html",
+   "live_sha256": "727a343187315724f0949a23ee824ffed28079f1fe13f2b1d8e314fa2ad731ce",
+   "wa": 4,
+   "tel": 4,
+   "new_sha256": "51d9c261b46e209af75557646d63424efa07c8694063c68966eac43ffaa72129"
+  },
+  {
+   "url": "https://benzworld.my/services/servicing/",
+   "file": "services/servicing/index.html",
+   "live_sha256": "22a6b676ba701889ef774fdeafe773fe4abe1a9810413eb243cdaac93dea1dd7",
+   "wa": 4,
+   "tel": 4,
+   "new_sha256": "06ac333baabfe1425349ed32e4cf3873c512482a9be1af48bb630d8e0a830ad6"
+  },
+  {
+   "url": "https://benzworld.my/services/diagnostics/",
+   "file": "services/diagnostics/index.html",
+   "live_sha256": "a23a3c31d0851157e94e058f9a21d018c55c33859b31029897d150992b5c449f",
+   "wa": 5,
+   "tel": 4,
+   "new_sha256": "888168f30ed5749f569f8b4aef6cd2d1a6b224241dc097fa8748401075c9c33f"
+  },
+  {
+   "url": "https://benzworld.my/services/engine-overhaul/",
+   "file": "services/engine-overhaul/index.html",
+   "live_sha256": "0ff7384775a3a37b6f8b53fe4e26e71040d6aa355750de115b96bf6e07ece2ec",
+   "wa": 4,
+   "tel": 4,
+   "new_sha256": "ca4b7187feda997291b622d6d53152593be04a454577a9dc4bdbb139a100a038"
+  },
+  {
+   "url": "https://benzworld.my/services/gearbox-overhaul/",
+   "file": "services/gearbox-overhaul/index.html",
+   "live_sha256": "95569c96473776e4692b1aebcb6e8e9c4fa1f7689f27b5ad91361f028d8cc856",
+   "wa": 4,
+   "tel": 4,
+   "new_sha256": "9b2e48754249a83f86b85e34cb5510b6d2d0695f60a565aea5ebd52b4373a380"
+  },
+  {
+   "url": "https://benzworld.my/services/suspension/",
+   "file": "services/suspension/index.html",
+   "live_sha256": "b13bdf81f2e1c2e87345867b23f200463aa617e46928eb04952deaa183ebc330",
+   "wa": 4,
+   "tel": 4,
+   "new_sha256": "3bb8624d037b9557257f3a88a5c87e9d996a411c58faadbda5eaf76cc0610a3f"
+  },
+  {
+   "url": "https://benzworld.my/services/tyres-and-alignment/",
+   "file": "services/tyres-and-alignment/index.html",
+   "live_sha256": "803bda6f49facf896a5c946efa1a6fe77fb14546063a8409c66b2ae8e45aaae7",
+   "wa": 4,
+   "tel": 4,
+   "new_sha256": "72d2af1f9a2e0dc415f95d7a05738b0d29afe0d4ef2877594ed440120c945c65"
+  },
+  {
+   "url": "https://benzworld.my/services/brakes/",
+   "file": "services/brakes/index.html",
+   "live_sha256": "3b9e620175b6822824e1116f550940767803cacd59d2a9a440eb9408a6bcaf22",
+   "wa": 4,
+   "tel": 4,
+   "new_sha256": "0f7de27f1baca49f426c4dd55cc6dbcaad6e17c3d9d4602672bee274c8976b44"
+  },
+  {
+   "url": "https://benzworld.my/services/aircon/",
+   "file": "services/aircon/index.html",
+   "live_sha256": "9a6658f6ce317db33d8975db53446be7cf7760e7058a9a99390f4b897a109410",
+   "wa": 4,
+   "tel": 4,
+   "new_sha256": "2587a314de3391731d4e9d973b306cc77de26031bbc1ac40dc46f1446eb09255"
+  },
+  {
+   "url": "https://benzworld.my/services/performance/",
+   "file": "services/performance/index.html",
+   "live_sha256": "4e5925cacc460b61e6d90a57eeaf5647508c032c10cdf14debcaf77dfafcf349",
+   "wa": 4,
+   "tel": 4,
+   "new_sha256": "3fd8cd151d75f30a8623398b7d6a6bbdfbdaa73cb6d8c159b2b71423c1e51e40"
+  },
+  {
+   "url": "https://benzworld.my/services/pickup-and-delivery/",
+   "file": "services/pickup-and-delivery/index.html",
+   "live_sha256": "2524303b5bff2b42f65c58447e88bf9cd39a0f6f9808b06c1a41ccad3a66bcac",
+   "wa": 4,
+   "tel": 4,
+   "new_sha256": "202007f94c2d05ab0eec52db0b2774ece42be7e57ff7ad9bb882f760a47a905d"
+  },
+  {
+   "url": "https://benzworld.my/about/",
+   "file": "about/index.html",
+   "live_sha256": "d57df6a8ba99805e07d6489aa14b8972e5120473eec428d05bebd746c7f813d7",
+   "wa": 3,
+   "tel": 4,
+   "new_sha256": "18a03b7f2d798556968a6a42073b2ad51d7d90df6f2171497c84299df32ab843"
+  },
+  {
+   "url": "https://benzworld.my/contact/",
+   "file": "contact/index.html",
+   "live_sha256": "b5bc74d0f67af3f8100f0875e7d1094391143240dcdd521245ccd15ddefd0760",
+   "wa": 4,
+   "tel": 6,
+   "new_sha256": "880e0112b684b09f008cb11680d10ba5f89801c1908de7a4e7699b5fc4d998c5"
+  },
+  {
+   "url": "https://benzworld.my/ms/",
+   "file": "ms/index.html",
+   "live_sha256": "382802e364edce7f1145cf23ca07f44d283ad54ffd096a690074d7b9f46ffd6a",
+   "wa": 5,
+   "tel": 5,
+   "new_sha256": "84f4d39685994b97fc9d6a5b891e57c2bb6690a16dfc52cc7797160d9cf2b227"
+  },
+  {
+   "url": "https://benzworld.my/ms/services/",
+   "file": "ms/services/index.html",
+   "live_sha256": "34ff99a76224090c494a7e9692cf14dc5b51b3c8b8c13ba1c9b9c817365fef51",
+   "wa": 4,
+   "tel": 4,
+   "new_sha256": "aa6eff58447cecf0865b7ce3c4bacaa49f9c1453d2b8b46cb6a6eecb93edb4b1"
+  },
+  {
+   "url": "https://benzworld.my/ms/services/servicing/",
+   "file": "ms/services/servicing/index.html",
+   "live_sha256": "ad910d3157351db866f0f1aa638984082c0b8671dcb8c6924c8c16c5e9ce3ae2",
+   "wa": 4,
+   "tel": 4,
+   "new_sha256": "287c6d5c643e4d28499c9ca128edcd26d2f0e24e4bfb6c36b085865f35fd4fb3"
+  },
+  {
+   "url": "https://benzworld.my/ms/services/diagnostics/",
+   "file": "ms/services/diagnostics/index.html",
+   "live_sha256": "9b60c20d9f904cbe9b18cba9f8168d8e90cc3b28d583d38ec5fe32e351ed4697",
+   "wa": 5,
+   "tel": 4,
+   "new_sha256": "87da377dc40c5090fe9ff74a934e91f232c6c91ea2a6a9e1f02556d8f8b181ba"
+  },
+  {
+   "url": "https://benzworld.my/ms/services/engine-overhaul/",
+   "file": "ms/services/engine-overhaul/index.html",
+   "live_sha256": "5d1d65f4fc595be96465078a87e2d626f4532e98e3e2acfae74daabb8b206469",
+   "wa": 4,
+   "tel": 4,
+   "new_sha256": "5b259eff91849fcbe3e306bcc8895affdbfdc06b30c3b53f53db847950f6cef9"
+  },
+  {
+   "url": "https://benzworld.my/ms/services/gearbox-overhaul/",
+   "file": "ms/services/gearbox-overhaul/index.html",
+   "live_sha256": "c1f6ff10c64ac6058a5db4ce34a6f3976167dfe45f152df16d282419891a8532",
+   "wa": 4,
+   "tel": 4,
+   "new_sha256": "ac41afb9fbe266a39f6113b542ca687d150f58cea857c3974044203ffada25b5"
+  },
+  {
+   "url": "https://benzworld.my/ms/services/suspension/",
+   "file": "ms/services/suspension/index.html",
+   "live_sha256": "10cca31cf87fb954b151968ae89f25fe1e28b004f26c713b0a04dde13b51a0f6",
+   "wa": 4,
+   "tel": 4,
+   "new_sha256": "a66e4bc85c30f35e0f6e0572d500e7b04aeecd3945c924f0b75ef8afe9c3c1c3"
+  },
+  {
+   "url": "https://benzworld.my/ms/services/tyres-and-alignment/",
+   "file": "ms/services/tyres-and-alignment/index.html",
+   "live_sha256": "587701cf4ce0d1028a720b036a21973c71cc836b0161a505d7718f8e3a16435c",
+   "wa": 4,
+   "tel": 4,
+   "new_sha256": "2b8b559b45268b31db989722357f2011eb723ecb9c737c3cf3892dd93ea4117d"
+  },
+  {
+   "url": "https://benzworld.my/ms/services/brakes/",
+   "file": "ms/services/brakes/index.html",
+   "live_sha256": "23ff57c0f4136a595c96931cf092f50880a9a204ef4200648c5fa976073dba58",
+   "wa": 4,
+   "tel": 4,
+   "new_sha256": "935aa395b79432d5d170b15406095b9ab8880af789db785fec42dd9a6f320291"
+  },
+  {
+   "url": "https://benzworld.my/ms/services/aircon/",
+   "file": "ms/services/aircon/index.html",
+   "live_sha256": "4efdace2ad0d4612381daf1e3799a85a11df6fdd26bcf3cd4f0b6acdd1325486",
+   "wa": 4,
+   "tel": 4,
+   "new_sha256": "ee8d01ba273e0e135cf4439eeffe5e363f2c19c2a629c02b3795e6028578cccd"
+  },
+  {
+   "url": "https://benzworld.my/ms/services/performance/",
+   "file": "ms/services/performance/index.html",
+   "live_sha256": "ae85b3c47b89cb5acb321e9b87e2a5a34b423b7fe0cddf912f3db07e395d8bb8",
+   "wa": 4,
+   "tel": 4,
+   "new_sha256": "0e14a7d362f80aa4143ee64ac30f46490a487df79bce92f76f418fed4c1befc2"
+  },
+  {
+   "url": "https://benzworld.my/ms/services/pickup-and-delivery/",
+   "file": "ms/services/pickup-and-delivery/index.html",
+   "live_sha256": "1807c8270c634831fcc756f6b8f74194f1f58ce7aaa4f0e704c832be410794dd",
+   "wa": 4,
+   "tel": 4,
+   "new_sha256": "1ad8bdccc3e5bee0d24a80c2b3869e7bbf175bd10e160430652dd2b8822d3cb1"
+  },
+  {
+   "url": "https://benzworld.my/ms/about/",
+   "file": "ms/about/index.html",
+   "live_sha256": "ec786cdfa8f4c466d7ba0fa9ab07a9f48b095f9c6a865eac29b6f867d38d2709",
+   "wa": 3,
+   "tel": 4,
+   "new_sha256": "602c8e12b80f18f3ad52e9d5492dd25b32df89ff15d10493b22f56c6994c7671"
+  },
+  {
+   "url": "https://benzworld.my/ms/contact/",
+   "file": "ms/contact/index.html",
+   "live_sha256": "26d39c12882de8bf5b0afbd1871baf4b77b49ee7ab51653391fe2c710f989430",
+   "wa": 4,
+   "tel": 6,
+   "new_sha256": "f558d6a258b5b60b88adfc0a30e1b7480df112dd620773b6b47aae9cbdf984f1"
+  },
+  {
+   "url": "https://benzworld.my/zh/",
+   "file": "zh/index.html",
+   "live_sha256": "117fb6a0ef4ec942a7fb850bd49808794518677061c5a187c676a7f05ac73169",
+   "wa": 5,
+   "tel": 5,
+   "new_sha256": "4392d8dedccba3716aed7bd449d657cf450544219cf56b8406cbb1760455d723"
+  },
+  {
+   "url": "https://benzworld.my/zh/services/",
+   "file": "zh/services/index.html",
+   "live_sha256": "e70987a280a6b5c46580332315015b5e2c27b0f8cce06a18a95e730c308601f8",
+   "wa": 4,
+   "tel": 4,
+   "new_sha256": "1c79c913e5aaea64c23efb3887abee6bb4bda1e4aec69322ef552596b7078733"
+  },
+  {
+   "url": "https://benzworld.my/zh/services/servicing/",
+   "file": "zh/services/servicing/index.html",
+   "live_sha256": "535a80bc23d1858a0ac3ac89190ba2437345fb5d73279f451d0478a37ae60507",
+   "wa": 4,
+   "tel": 4,
+   "new_sha256": "fd40a4ea3cf097c0566f1fb5a1a5047865a46fe02e54bd1c283504e77a0099cd"
+  },
+  {
+   "url": "https://benzworld.my/zh/services/diagnostics/",
+   "file": "zh/services/diagnostics/index.html",
+   "live_sha256": "af9b6fef7dac36fccb3043e0da9a51f3ac0680519667a4f3bab555d67c97a4ef",
+   "wa": 5,
+   "tel": 4,
+   "new_sha256": "a2498440b6eade73d38cf65e7d4225041a460e9e018d4f9d4e7aa05ded7b4a9f"
+  },
+  {
+   "url": "https://benzworld.my/zh/services/engine-overhaul/",
+   "file": "zh/services/engine-overhaul/index.html",
+   "live_sha256": "1a6d50c6b9f631539e3f00e02ae2d1b729a1aa24c958b2c24345c21036c77c43",
+   "wa": 4,
+   "tel": 4,
+   "new_sha256": "d8069bcc5ae0383c45f707040811ce607d83a548819355732eeb03ebfdb4fd44"
+  },
+  {
+   "url": "https://benzworld.my/zh/services/gearbox-overhaul/",
+   "file": "zh/services/gearbox-overhaul/index.html",
+   "live_sha256": "a454dc55fd971c8cfbae4dbbeb5ba262944386e8a53ed6558ac3197ffd7ea1fa",
+   "wa": 4,
+   "tel": 4,
+   "new_sha256": "d33eb1416dcce3baed1de14017981d7304b337a2ca7e1fcf0ea6f62aa15a0106"
+  },
+  {
+   "url": "https://benzworld.my/zh/services/suspension/",
+   "file": "zh/services/suspension/index.html",
+   "live_sha256": "7ac73208520939d97ca215c41a52dfce755518cdbf4a7da1c5445dcbfac20300",
+   "wa": 4,
+   "tel": 4,
+   "new_sha256": "810a0bfd19b02077e35531d850151245970992d6db15f12c8950fb81547f0f06"
+  },
+  {
+   "url": "https://benzworld.my/zh/services/tyres-and-alignment/",
+   "file": "zh/services/tyres-and-alignment/index.html",
+   "live_sha256": "427e24a6d8207e99d9ebfa91f6c39e292ad9d8683cc2620b0b394c9214aa314f",
+   "wa": 4,
+   "tel": 4,
+   "new_sha256": "d83f2396b7e82c3bae487447a21fcdde567f7d485565328a3cbd04f32bacfd1a"
+  },
+  {
+   "url": "https://benzworld.my/zh/services/brakes/",
+   "file": "zh/services/brakes/index.html",
+   "live_sha256": "d39811146cdf9863b8fd6c7f7e057bec0ae760f56a3c32936fd7bcc52d1ab795",
+   "wa": 4,
+   "tel": 4,
+   "new_sha256": "18a1790e1a05477c40f93288d5627e490638c0f3354fcb420523d4ab477ed23d"
+  },
+  {
+   "url": "https://benzworld.my/zh/services/aircon/",
+   "file": "zh/services/aircon/index.html",
+   "live_sha256": "dc9b24301213da31c166a3b2fccefd247c899ef799b48b589d59a2985efff07a",
+   "wa": 4,
+   "tel": 4,
+   "new_sha256": "dc0878fbbef03d83665ce2f04d12fd1cd7ad581e0b0e07bd37beb4941c618c12"
+  },
+  {
+   "url": "https://benzworld.my/zh/services/performance/",
+   "file": "zh/services/performance/index.html",
+   "live_sha256": "14681bed4ed33771dc9058e238300f117e118218f07b2600e3955e81e0304ce5",
+   "wa": 4,
+   "tel": 4,
+   "new_sha256": "9b02730b34d45e3c8dc9252e07938a94f6c1f4017669ea378686c88b224c746a"
+  },
+  {
+   "url": "https://benzworld.my/zh/services/pickup-and-delivery/",
+   "file": "zh/services/pickup-and-delivery/index.html",
+   "live_sha256": "9e556d267fa54243b1e8f1edb3957b2e8a3b2c065f2184150a997fe6f9580160",
+   "wa": 4,
+   "tel": 4,
+   "new_sha256": "033d0d60d75fc6e049b0a0c1552e39c53f04d65c219bc9239f8899a18c674092"
+  },
+  {
+   "url": "https://benzworld.my/zh/about/",
+   "file": "zh/about/index.html",
+   "live_sha256": "8e9b0bd97e30feb0fdbcade552a0b6fa103df68783cfc0fc5b051eb26c3099b6",
+   "wa": 3,
+   "tel": 4,
+   "new_sha256": "a6802f8145e171e34a54329191c064848e2d136236f7271b4902b742e0fc6e00"
+  },
+  {
+   "url": "https://benzworld.my/zh/contact/",
+   "file": "zh/contact/index.html",
+   "live_sha256": "7b84ae7a7906ab420070f9c7d41f707e82786612ec617a3bad6f58ee6d0dc34a",
+   "wa": 4,
+   "tel": 6,
+   "new_sha256": "995632245d4e78d295468b33093ea92567b70112f76cfd959352c3104185a06a"
+  },
+  {
+   "url": "https://benzworld.my/articles/",
+   "file": "articles/index.html",
+   "live_sha256": "765ed4c86d5537580d03e2d143fdde8828c1415029bbf55a1181a517fb6d1170",
+   "wa": 3,
+   "tel": 4,
+   "new_sha256": "3229978eb20f5e2582e44ea5b6b650e08ce3b004cde6d64355de8e701f8b7ae4"
+  },
+  {
+   "url": "https://benzworld.my/privacy/",
+   "file": "privacy/index.html",
+   "live_sha256": "cce23247a5f9c24089a4dbfd6728b65e436c7062e643fd273c221647110f8411",
+   "wa": 2,
+   "tel": 5,
+   "new_sha256": "16169ccd68dbbbe73ffb1e0ec9960233e6078d46f5014af9ba8f997ce7e78098"
+  },
+  {
+   "url": "https://benzworld.my/ms/privacy/",
+   "file": "ms/privacy/index.html",
+   "live_sha256": "92e1a5540ce2ab5de9e5e02e209fbb05dcdd25fd71dd55f8956f674ed84d1407",
+   "wa": 2,
+   "tel": 5,
+   "new_sha256": "f8fd154c2c88d42684ac72aad1c74f63357758e303e2cfebc122b0773982ddd0"
+  },
+  {
+   "url": "https://benzworld.my/zh/privacy/",
+   "file": "zh/privacy/index.html",
+   "live_sha256": "ab937028da2fbe475934fe3afba39f86abe7d296d2884f0041ac8118c142d2ae",
+   "wa": 2,
+   "tel": 5,
+   "new_sha256": "af319dfd5862e148fb5a26cc534e1969d272f63a091dcbd113834aa8ac1a1658"
+  },
+  {
+   "url": "https://benzworld.my/articles/how-to-choose-a-workshop-for-continental-cars-jb/",
+   "file": "articles/how-to-choose-a-workshop-for-continental-cars-jb/index.html",
+   "live_sha256": "982c5641a3a9ea942b461ea526ab6ae51b1a2d58ca1a99919432b7de3d9b424f",
+   "wa": 3,
+   "tel": 3,
+   "new_sha256": "805ec17d2d8557668e816183a25ad60ccc49126709489dde04e0dfbd89ef775f"
+  },
+  {
+   "url": "https://benzworld.my/ms/articles/how-to-choose-a-workshop-for-continental-cars-jb/",
+   "file": "ms/articles/how-to-choose-a-workshop-for-continental-cars-jb/index.html",
+   "live_sha256": "415cde999ae88a7d53c5c7102bd87a5572f769f50e07668a109b989face4d99e",
+   "wa": 3,
+   "tel": 3,
+   "new_sha256": "23eb3c82fb7dbd919f06ed3a389f741048f8857b54e994acfd631e079c0b9f2e"
+  },
+  {
+   "url": "https://benzworld.my/zh/articles/how-to-choose-a-workshop-for-continental-cars-jb/",
+   "file": "zh/articles/how-to-choose-a-workshop-for-continental-cars-jb/index.html",
+   "live_sha256": "d883e561e23d061e2933a4d11b03a23e2abcbd229781d72440835f633e4fd17a",
+   "wa": 3,
+   "tel": 3,
+   "new_sha256": "8b9e7d7bcaa91d56104dd5a2458762f20122bd32b1ee18aaa2ed92c0912e5f5a"
+  }
+ ]
+}

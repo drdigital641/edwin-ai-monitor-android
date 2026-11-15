@@ -1,0 +1,992 @@
+{
+ "site": {
+  "slug": "maison-interior-design",
+  "origin": "https://maisoninteriordesign.sg",
+  "prefix": "/",
+  "bridge": "pageone",
+  "base": "preview/maison-interior-design",
+  "src": "/p1-cta.js"
+ },
+ "tag": "<script src=\"/p1-cta.js?v=b54fbe0c\" defer></script>",
+ "pages_seen": 123,
+ "with_cta": 122,
+ "already_tracked": 0,
+ "to_fix": [
+  {
+   "url": "https://maisoninteriordesign.sg/",
+   "file": "index.html",
+   "live_sha256": "97b296a1642f4304b83332a961b721e84784ee8d6b8151852e02929c798afc6d",
+   "wa": 5,
+   "tel": 1,
+   "new_sha256": "21a2b87612a5e1302cc07953633abd29ca91ace4f046b6a615366d72d778ab14"
+  },
+  {
+   "url": "https://maisoninteriordesign.sg/portfolio/",
+   "file": "portfolio/index.html",
+   "live_sha256": "c5b1e7fd960c69cfee44d890bd22d08126f3caeeaf3882dbf0e072f5e32cf49c",
+   "wa": 4,
+   "tel": 1,
+   "new_sha256": "42f3b5a26d2009a8d599da4b0112130be23d5b5164402a6805df591b171b1984"
+  },
+  {
+   "url": "https://maisoninteriordesign.sg/services/",
+   "file": "services/index.html",
+   "live_sha256": "fe22554839f651c4b87dc6dca9de25918ce8de4b71b1fe9a8143c1772f877be8",
+   "wa": 7,
+   "tel": 1,
+   "new_sha256": "43414a5a492823e503936e2c88be33f981a89dfb71422319e04f1bf1959c4f7d"
+  },
+  {
+   "url": "https://maisoninteriordesign.sg/new-launches/",
+   "file": "new-launches/index.html",
+   "live_sha256": "1dacf5204c843ee060c87e0e9c487b9b3048b76dafb9adde0cf9ecad1f499036",
+   "wa": 4,
+   "tel": 1,
+   "new_sha256": "ff63921f1dacabdf5925794bc62ad105c680f322847e620aba769bfe8ec311d0"
+  },
+  {
+   "url": "https://maisoninteriordesign.sg/articles/",
+   "file": "articles/index.html",
+   "live_sha256": "6d30201c134f94f34bdf1c18e1239c8a86e878a71e0ce17ba8af79ef3b702f17",
+   "wa": 4,
+   "tel": 1,
+   "new_sha256": "69843367bd6557841b0e4c36753180595bdd1a83819de949561b19b36094cc4c"
+  },
+  {
+   "url": "https://maisoninteriordesign.sg/about/",
+   "file": "about/index.html",
+   "live_sha256": "027133b727e227ec38db6d468fd37febbb2719c4080479f56c585292cc61b89c",
+   "wa": 5,
+   "tel": 1,
+   "new_sha256": "33fb9362cc2f4ee980c4ae9584dbbcc00943593236c2cad1cfa9052caf0e99c0"
+  },
+  {
+   "url": "https://maisoninteriordesign.sg/contact/",
+   "file": "contact/index.html",
+   "live_sha256": "811d8997da408790d7c30ae96bb5fd961d0e60f4218cca2dbc4b0008eb014990",
+   "wa": 4,
+   "tel": 2,
+   "new_sha256": "e1e7d55e2667141b69b8c57c94677206dfda09d5482c25813f34a19b77a707f2"
+  },
+  {
+   "url": "https://maisoninteriordesign.sg/landed-homes/",
+   "file": "landed-homes/index.html",
+   "live_sha256": "8ec63a7bdecb1b020c89d501f001702e693bdc7a2a3dacfe13d6cbb14ec14d75",
+   "wa": 5,
+   "tel": 1,
+   "new_sha256": "95525978dce9d3aa5969d3177f279cc767f20d2eee336df7ef461ee0067e8fd9"
+  },
+  {
+   "url": "https://maisoninteriordesign.sg/portfolio/bedok-reservoir-road/",
+   "file": "portfolio/bedok-reservoir-road/index.html",
+   "live_sha256": "0015b459f52e9847da9ff6d7bb3d4b982d614c6b3cb607c4bdae205768a75091",
+   "wa": 5,
+   "tel": 1,
+   "new_sha256": "fe6aff6b97074f7e7bfd7bc966be6320e59bce481d1f852b52375269b7feafb0"
+  },
+  {
+   "url": "https://maisoninteriordesign.sg/portfolio/landed-home-holland/",
+   "file": "portfolio/landed-home-holland/index.html",
+   "live_sha256": "29c9441fb5fdce3140293a47ed23a04c770f4b305b071be45a58faa7494fc586",
+   "wa": 4,
+   "tel": 1,
+   "new_sha256": "51321245e86b935eb502a4183003623bd15a7d656b1a62818b30582020cdbda2"
+  },
+  {
+   "url": "https://maisoninteriordesign.sg/portfolio/jimmy-monkey-one-north/",
+   "file": "portfolio/jimmy-monkey-one-north/index.html",
+   "live_sha256": "3cebdaaefc12318f92b9aaa406221cbbb0cd323b7a27229299b1df55825d4a4c",
+   "wa": 4,
+   "tel": 1,
+   "new_sha256": "7f74bea25af2b76c2bb9f8c58533b72e91df533b96c0c6cad22dad216368fb7d"
+  },
+  {
+   "url": "https://maisoninteriordesign.sg/portfolio/62-havelock-road-river-place/",
+   "file": "portfolio/62-havelock-road-river-place/index.html",
+   "live_sha256": "c1e6ef7c54a918830a6ea91cadd5be1b81180b7954c7388c57cf77fab2712610",
+   "wa": 4,
+   "tel": 1,
+   "new_sha256": "8aae384555f25f2cff26acad9b4d1dcd23cb78d35f0a20e25874ca711cca9ac0"
+  },
+  {
+   "url": "https://maisoninteriordesign.sg/portfolio/teck-whye-crescent/",
+   "file": "portfolio/teck-whye-crescent/index.html",
+   "live_sha256": "36895aa74be8f72cab9c1534e1769844f365214679219de53c94b2ffd3559850",
+   "wa": 4,
+   "tel": 1,
+   "new_sha256": "d3c43a133a63eb380fe7ad2023d54b9114d2393f96c5c9026895cdc81a34bb83"
+  },
+  {
+   "url": "https://maisoninteriordesign.sg/portfolio/yaowarat-thai-kway-chap/",
+   "file": "portfolio/yaowarat-thai-kway-chap/index.html",
+   "live_sha256": "ca15b8f282c8d9d711815bef0d56be60685fb4dc6aff3643961182008583ce2a",
+   "wa": 4,
+   "tel": 1,
+   "new_sha256": "4035d8299a3f851660ee8bec3f9c63b6110be085b1fc48fc9b16712d21a8ac64"
+  },
+  {
+   "url": "https://maisoninteriordesign.sg/portfolio/jimmy-monkey-plq/",
+   "file": "portfolio/jimmy-monkey-plq/index.html",
+   "live_sha256": "707a5592046c553ec737812e1fd06d5384590e85b268ba04e3879a8e100abaa3",
+   "wa": 4,
+   "tel": 1,
+   "new_sha256": "44ae41c7ca88f7b1eb6210e7618d202e7ad23eca07a947090648c11930cdbe40"
+  },
+  {
+   "url": "https://maisoninteriordesign.sg/portfolio/commonwealth-road/",
+   "file": "portfolio/commonwealth-road/index.html",
+   "live_sha256": "bde46c1eeea9b8e5dab08470279c3af5c7cba4918f7e5a3c37eae4c55cc24d93",
+   "wa": 4,
+   "tel": 1,
+   "new_sha256": "71d62d805dc2cc26e4865ba444c324b2b44825bfc69370c8e19450baa22a8631"
+  },
+  {
+   "url": "https://maisoninteriordesign.sg/portfolio/tampines-street-22/",
+   "file": "portfolio/tampines-street-22/index.html",
+   "live_sha256": "fb5c39860e1084496e5065ff71b59a31a1dbaa05fd084be592f8500a70ee0479",
+   "wa": 4,
+   "tel": 1,
+   "new_sha256": "e06232d2017ae798f03d3fee65f552fca8574b117200b62095ea3294a41a0b87"
+  },
+  {
+   "url": "https://maisoninteriordesign.sg/new-launches/39-robinson-road/",
+   "file": "new-launches/39-robinson-road/index.html",
+   "live_sha256": "a8967ed2787b6865b26f893700c3b2ccc84f53b4a5e09fd217c67ebb778e9223",
+   "wa": 5,
+   "tel": 1,
+   "new_sha256": "077d331ef3b323205b920f5822468530ef7ffc481c699454d2e195826424d22c"
+  },
+  {
+   "url": "https://maisoninteriordesign.sg/new-launches/8-bt/",
+   "file": "new-launches/8-bt/index.html",
+   "live_sha256": "1b62d4455d6e8b201f930b756e2459b598ab7d889a97242e957b5f1787d66648",
+   "wa": 5,
+   "tel": 1,
+   "new_sha256": "835ec446f25a641a496ee9a2640c65810a06f9a718a464e1ac144b413a95dab3"
+  },
+  {
+   "url": "https://maisoninteriordesign.sg/new-launches/altura/",
+   "file": "new-launches/altura/index.html",
+   "live_sha256": "c23dae707a0a7d25aefee4d0588a5e90ded010b5a78e03f9940e017b2a3ad991",
+   "wa": 5,
+   "tel": 1,
+   "new_sha256": "c27ebed37be2f673d6a0fb34e47eadb5f3a0f9dd921738955778ef06ab98569a"
+  },
+  {
+   "url": "https://maisoninteriordesign.sg/new-launches/amberwood-at-holland/",
+   "file": "new-launches/amberwood-at-holland/index.html",
+   "live_sha256": "aeb4c766c996085f7c38dcab67c148daf9bfaa1fe94784dd8d6096e6eafa5e77",
+   "wa": 5,
+   "tel": 1,
+   "new_sha256": "837bf64e923e780c0fdfd9fea9c14260d19ec3d38c186181102da458a14868bc"
+  },
+  {
+   "url": "https://maisoninteriordesign.sg/new-launches/amo-residence/",
+   "file": "new-launches/amo-residence/index.html",
+   "live_sha256": "f56836943275ed201901ae49e60b849bc4c3c56582c36a2c7ad57917c705b68a",
+   "wa": 9,
+   "tel": 1,
+   "new_sha256": "886e506e549c2971de46a32ddd22cfa847e8cbf639eee30f3f6e7c3a9b0a7624"
+  },
+  {
+   "url": "https://maisoninteriordesign.sg/new-launches/bayshore-oasis/",
+   "file": "new-launches/bayshore-oasis/index.html",
+   "live_sha256": "782b26a20747ab76ee97496572203b16e278113b46925a0840cf3e665c28040c",
+   "wa": 5,
+   "tel": 1,
+   "new_sha256": "872f37ffe885c04d1d386551f6ffce3692b5206262381027bfb05908e9a1ab7c"
+  },
+  {
+   "url": "https://maisoninteriordesign.sg/new-launches/bayshore-sails/",
+   "file": "new-launches/bayshore-sails/index.html",
+   "live_sha256": "9d91b763eadb4cf0d67eaf59b346a84c21eaba37bd5d98d926f68d256f02ce72",
+   "wa": 5,
+   "tel": 1,
+   "new_sha256": "a3e78546751868c55814f3aae8078834c738874f01f0dad63927175c2c834198"
+  },
+  {
+   "url": "https://maisoninteriordesign.sg/new-launches/bedok-north-springs/",
+   "file": "new-launches/bedok-north-springs/index.html",
+   "live_sha256": "95da83213b3a5f997abd55e0a2f3513a89a5aed62812c9f2e6cbff077fe47077",
+   "wa": 5,
+   "tel": 1,
+   "new_sha256": "3ba1e1041f68304617e8035b32b80a26d509731a2c425ab6d13339dd41c2d6f1"
+  },
+  {
+   "url": "https://maisoninteriordesign.sg/new-launches/belgravia-ace/",
+   "file": "new-launches/belgravia-ace/index.html",
+   "live_sha256": "f0897781fdedf08702bb6896eeb10edd425ae0cc08103100a8dcf3902048bb86",
+   "wa": 5,
+   "tel": 1,
+   "new_sha256": "2e8185335c5cd67311e2d252444dfec9b9fad026447837a19a47b76d6e6d3e02"
+  },
+  {
+   "url": "https://maisoninteriordesign.sg/new-launches/berlayar-rise/",
+   "file": "new-launches/berlayar-rise/index.html",
+   "live_sha256": "f31d9f8187912937e07fb5a7fe134d614564db85fd8db0a385eeffa542970eb3",
+   "wa": 5,
+   "tel": 1,
+   "new_sha256": "b3a6de441b91c5e5d354cab461a7b7ac5532708fcff1b86b95c0981eb49327b0"
+  },
+  {
+   "url": "https://maisoninteriordesign.sg/new-launches/bishan-ridges/",
+   "file": "new-launches/bishan-ridges/index.html",
+   "live_sha256": "d715a286bda077f0489a799fd852722980ef573c9362e8103357807082addaa0",
+   "wa": 5,
+   "tel": 1,
+   "new_sha256": "55620d4b46a5a285d1f01185ca78db3b47dee6485409dd1e21b2208851b2be0d"
+  },
+  {
+   "url": "https://maisoninteriordesign.sg/new-launches/blossoms-by-the-park/",
+   "file": "new-launches/blossoms-by-the-park/index.html",
+   "live_sha256": "68ba6e19827e218a30d247443967505e1717860a12660c0f9e1adfb73b363c0e",
+   "wa": 5,
+   "tel": 1,
+   "new_sha256": "3a83432f2274fcc1654f2234018c0734d92eb6a0b13ff87bd01e41cc8ce4ab85"
+  },
+  {
+   "url": "https://maisoninteriordesign.sg/new-launches/brickland-weave/",
+   "file": "new-launches/brickland-weave/index.html",
+   "live_sha256": "cdf9a77c1b7fdb653776c661e5ccaa17d18591a151b05054cab6fb788c26486d",
+   "wa": 5,
+   "tel": 1,
+   "new_sha256": "edd3ae5168de8190302ba6d361f1d59b80766e485db8cf732e52feabe893f47f"
+  },
+  {
+   "url": "https://maisoninteriordesign.sg/new-launches/canninghill-piers/",
+   "file": "new-launches/canninghill-piers/index.html",
+   "live_sha256": "9db271fa68456dc4248004f8d3bcce540aecc417d69dfe7d93e823700df73294",
+   "wa": 10,
+   "tel": 1,
+   "new_sha256": "4e3602a821f901bb597b7a4cc94ebc6d0b692b2a62b4bd2007919537ed6409c6"
+  },
+  {
+   "url": "https://maisoninteriordesign.sg/new-launches/chai-chee-green/",
+   "file": "new-launches/chai-chee-green/index.html",
+   "live_sha256": "97b7abe7a0fae7f9099b54fa1f21e98a23c1fa8fa7df684a9a8ff7ed58ce23e6",
+   "wa": 5,
+   "tel": 1,
+   "new_sha256": "1b393070fa29e52f92aa249465f1e496148d0d229eb2cc6a2987a1086717cb7d"
+  },
+  {
+   "url": "https://maisoninteriordesign.sg/new-launches/chencharu-acres/",
+   "file": "new-launches/chencharu-acres/index.html",
+   "live_sha256": "a41a19bc91a82467504352dd9cc222289daccf92008894aa39ddc9a959bf65a9",
+   "wa": 5,
+   "tel": 1,
+   "new_sha256": "1ae0e5e6d570c3c5e00cc27a3f7b128f148067ae2fe7e288a7c452f5cc0ee881"
+  },
+  {
+   "url": "https://maisoninteriordesign.sg/new-launches/chong-pang-city-integrated-development/",
+   "file": "new-launches/chong-pang-city-integrated-development/index.html",
+   "live_sha256": "5c0790d07797cdd49c3fa3ccbf592fed35e7c6cae9c232b97ce951a6e4d917e4",
+   "wa": 5,
+   "tel": 1,
+   "new_sha256": "e6f2bd7a66d20b3549b101fee32b57a59af130c1de7ff944b29cad54a2c090bb"
+  },
+  {
+   "url": "https://maisoninteriordesign.sg/new-launches/coastal-cabana/",
+   "file": "new-launches/coastal-cabana/index.html",
+   "live_sha256": "05e6fb283a85560977f8c3fff9c65aec8e078e66c222810865bd8503eb0ce523",
+   "wa": 5,
+   "tel": 1,
+   "new_sha256": "c737e1c8cdee18b54808ddb0548fbd3fd339ef447312a62db3c91e892731ee89"
+  },
+  {
+   "url": "https://maisoninteriordesign.sg/new-launches/dakota-crest/",
+   "file": "new-launches/dakota-crest/index.html",
+   "live_sha256": "c28b64db1db7349d53699daf57ccb32bcbd317f38a8d3d5aed1fe54cf3b0c2f0",
+   "wa": 5,
+   "tel": 1,
+   "new_sha256": "6a88c0c988fc04a5b84736434e0829db881494bf4221fb89fd4234af0c84c927"
+  },
+  {
+   "url": "https://maisoninteriordesign.sg/new-launches/dorset-gardens/",
+   "file": "new-launches/dorset-gardens/index.html",
+   "live_sha256": "1d46c4d6d543c8b4bdb27412f9cd479235b8c1d1f41aad34f0719c638b1d0700",
+   "wa": 5,
+   "tel": 1,
+   "new_sha256": "57dd9190ebf45a08fa0b63d6e834b434c55239204c1bd94fe8032c14f938d86c"
+  },
+  {
+   "url": "https://maisoninteriordesign.sg/new-launches/duet-at-emily/",
+   "file": "new-launches/duet-at-emily/index.html",
+   "live_sha256": "5557029b9bfa4abb3486f077b269ded5d5e9ce6f5298a015aa6d5469f7016f59",
+   "wa": 5,
+   "tel": 1,
+   "new_sha256": "9648670969411609cb7938b73a7dc72165f481c1a3356e44fd310ae3dfcb80ce"
+  },
+  {
+   "url": "https://maisoninteriordesign.sg/new-launches/dunearn-house/",
+   "file": "new-launches/dunearn-house/index.html",
+   "live_sha256": "7dd07ade47bb7f3e0ce189a815e292325f9871b463383c6d0a4077c37ee71a85",
+   "wa": 5,
+   "tel": 1,
+   "new_sha256": "3c227d48b10d282bdd4982b79913256edf8a2159eab33b32fbe41babc772862a"
+  },
+  {
+   "url": "https://maisoninteriordesign.sg/new-launches/farrer-park-arena/",
+   "file": "new-launches/farrer-park-arena/index.html",
+   "live_sha256": "5e0f488e57a37e873bc6272f40b98c5e4d0ac7436d3e822931995949d8980206",
+   "wa": 5,
+   "tel": 1,
+   "new_sha256": "4da9907a60964826a09a3cea428d82fa1508008ddbda94a38bf22f76e9cfcb8a"
+  },
+  {
+   "url": "https://maisoninteriordesign.sg/new-launches/farrer-park-fields/",
+   "file": "new-launches/farrer-park-fields/index.html",
+   "live_sha256": "5a9a05dbfd26a351b83060ee653ed0dd3d6f542eba0debe6deb94789e30cdca0",
+   "wa": 5,
+   "tel": 1,
+   "new_sha256": "a8fa47b4c227be8267e0ceb53548829bc2fe7a248a8a59fb02cbc751731ad6d1"
+  },
+  {
+   "url": "https://maisoninteriordesign.sg/new-launches/february-2026-sbf-exercise/",
+   "file": "new-launches/february-2026-sbf-exercise/index.html",
+   "live_sha256": "67022347b11009c93b1ffe1194942390e43b5ed2ecc913b6785ab02beb1fc259",
+   "wa": 5,
+   "tel": 1,
+   "new_sha256": "5d2e43648de6fe49c0359cd2343b562f40ed117a61cc327531d58671eda64b87"
+  },
+  {
+   "url": "https://maisoninteriordesign.sg/new-launches/fernvale-sails/",
+   "file": "new-launches/fernvale-sails/index.html",
+   "live_sha256": "f22866e0663440add2b54e5a9fdcfcf6531269915c01ca579dfb6e5db9207c6b",
+   "wa": 5,
+   "tel": 1,
+   "new_sha256": "8ebca7e6fd8d81b24f7aad95533b30fd629643a7b17c7e0e9e0054e28e7fc7f4"
+  },
+  {
+   "url": "https://maisoninteriordesign.sg/new-launches/garden-waterfront-i-and-ii-at-tengah/",
+   "file": "new-launches/garden-waterfront-i-and-ii-at-tengah/index.html",
+   "live_sha256": "53d03fa4cf670c5c77a790c734532137b2bc90add90fffa09b91620e3f3fc9d9",
+   "wa": 5,
+   "tel": 1,
+   "new_sha256": "1d22c40b698a8c56bc1031c27ec174bed71da63c9a6a7976f0130a83c26c633a"
+  },
+  {
+   "url": "https://maisoninteriordesign.sg/new-launches/grand-dunman/",
+   "file": "new-launches/grand-dunman/index.html",
+   "live_sha256": "8fc9901c8eb0e9f242fc906bc5a50a96f586cacc53b10735bbe62c4dbe771fe5",
+   "wa": 5,
+   "tel": 1,
+   "new_sha256": "94864e4302469bad8ba5cb22b5c6970eae45ad7135ecf06ce4a8f76173128834"
+  },
+  {
+   "url": "https://maisoninteriordesign.sg/new-launches/heart-of-yew-tee/",
+   "file": "new-launches/heart-of-yew-tee/index.html",
+   "live_sha256": "b60a4a4cfd8b66465851cc191b5bd0f4e4fdb19c7b0ff234c258e6ed06a8187a",
+   "wa": 5,
+   "tel": 1,
+   "new_sha256": "968a0addcaf713ae3ec2828e2bf71302860d350ca913b351f177971b85416691"
+  },
+  {
+   "url": "https://maisoninteriordesign.sg/new-launches/hougang-central-mixed-use-development/",
+   "file": "new-launches/hougang-central-mixed-use-development/index.html",
+   "live_sha256": "b051ea5cabc71916c7b7aaaa40c46ab81cdb3fd65177b1adcca38c71162acbb7",
+   "wa": 5,
+   "tel": 1,
+   "new_sha256": "dd072285a7c6acf682d20f5d85fce9a523010cf152d42ef5311dc7a4d1b9e7c0"
+  },
+  {
+   "url": "https://maisoninteriordesign.sg/new-launches/hudson-place-residences/",
+   "file": "new-launches/hudson-place-residences/index.html",
+   "live_sha256": "a5b1b5a8ba39d6d10afc2979a32ba820c9acbfcc58abc1002ffc56e46c8769c9",
+   "wa": 5,
+   "tel": 1,
+   "new_sha256": "ed1f0849dce3d07b2ce590fbb67fdf2bc3a78f29243b47f31b512a56b05a325d"
+  },
+  {
+   "url": "https://maisoninteriordesign.sg/new-launches/ioi-central-boulevard-towers/",
+   "file": "new-launches/ioi-central-boulevard-towers/index.html",
+   "live_sha256": "f021c1288dad83014d6e0685c61469706cd6257fa22499c46c8220af0cd19a05",
+   "wa": 5,
+   "tel": 1,
+   "new_sha256": "ed0531e2e1d9b78221890419fdc0c67dd28345302070c88453ea25a1550ca44d"
+  },
+  {
+   "url": "https://maisoninteriordesign.sg/new-launches/jurong-arcadia/",
+   "file": "new-launches/jurong-arcadia/index.html",
+   "live_sha256": "c6ebe9fe80cd0db576c82b80d3dcab363fbf10a0de3832f03f272f201b678a38",
+   "wa": 5,
+   "tel": 1,
+   "new_sha256": "115ff423d4cee9390692d16e7a1d16ae58480502278ad5980767a0e9cc3f1318"
+  },
+  {
+   "url": "https://maisoninteriordesign.sg/new-launches/jurong-west-crystal/",
+   "file": "new-launches/jurong-west-crystal/index.html",
+   "live_sha256": "af81b2a9f1211b63109c65b7910569b37739ecab7d0bc1915c15d4564772bef7",
+   "wa": 5,
+   "tel": 1,
+   "new_sha256": "65911df16986f7465047559800fbf57a5503e5a4791bc3feb12e769547c255fa"
+  },
+  {
+   "url": "https://maisoninteriordesign.sg/new-launches/keat-hong-grange/",
+   "file": "new-launches/keat-hong-grange/index.html",
+   "live_sha256": "747743146652f8ac599d6217458a9b5664049c2ce38e0f26dbe7e78ae9c01805",
+   "wa": 5,
+   "tel": 1,
+   "new_sha256": "15def0b1f2ab92f0eb91bf4f2c802e28bed9d1a2183f181521ad78c00c823499"
+  },
+  {
+   "url": "https://maisoninteriordesign.sg/new-launches/kebun-baru-breeze/",
+   "file": "new-launches/kebun-baru-breeze/index.html",
+   "live_sha256": "aad484e3966b024a81f0f8c3352d87112ed906ae41168a7c6e539281d824fc94",
+   "wa": 5,
+   "tel": 1,
+   "new_sha256": "56395d48d895b86a141859efb7bd79d7b63eef52b1c944a92c76826a04fb3dd8"
+  },
+  {
+   "url": "https://maisoninteriordesign.sg/new-launches/kebun-baru-ridge/",
+   "file": "new-launches/kebun-baru-ridge/index.html",
+   "live_sha256": "bdf41c736b843292bd6b81cc64b13682a53f2363dd55ecb88c2915ef34161bc6",
+   "wa": 5,
+   "tel": 1,
+   "new_sha256": "e2cb5b15a6081d74d8265ae6c520c762b47bae7939d10168040eb2a916436f09"
+  },
+  {
+   "url": "https://maisoninteriordesign.sg/new-launches/kent-heights/",
+   "file": "new-launches/kent-heights/index.html",
+   "live_sha256": "33f7aa2197c0ebe4458346c92f25880f5648aff7b6cbf50cc5a49050bb2ce9ad",
+   "wa": 5,
+   "tel": 1,
+   "new_sha256": "0372e674c873a035e5707f76397b68ac43f389c357d01981a4a29403a83da683"
+  },
+  {
+   "url": "https://maisoninteriordesign.sg/new-launches/keppel-south-central/",
+   "file": "new-launches/keppel-south-central/index.html",
+   "live_sha256": "2e21c0210f722a029a6d8ccd75e680946c80bd9c26cba9ffeafe12d95b585aba",
+   "wa": 5,
+   "tel": 1,
+   "new_sha256": "78b0bad8ab2e6f3c69d842c3e2232627a19432d8933b5bba9f61f2bc90fca7ad"
+  },
+  {
+   "url": "https://maisoninteriordesign.sg/new-launches/kim-keat-heights/",
+   "file": "new-launches/kim-keat-heights/index.html",
+   "live_sha256": "195c6412cc64e799e66b4392c6ae25950121e40c8b0acaf0688a822a1a2331b6",
+   "wa": 5,
+   "tel": 1,
+   "new_sha256": "d1da600fd5638397446f9c0dcc46f16e125fff8907566c1cd873b7dff329d4cf"
+  },
+  {
+   "url": "https://maisoninteriordesign.sg/new-launches/kovan-wellspring/",
+   "file": "new-launches/kovan-wellspring/index.html",
+   "live_sha256": "84d2a0df3d53f7f51ed1dec5862d5cbaa562967c8feb565173e6630405056042",
+   "wa": 5,
+   "tel": 1,
+   "new_sha256": "f9940b3c5d32596f70c94073acb2d9254d08eef482a1e8234315407b777592c1"
+  },
+  {
+   "url": "https://maisoninteriordesign.sg/new-launches/lakeside-view/",
+   "file": "new-launches/lakeside-view/index.html",
+   "live_sha256": "5a381fc9343aa475ab7635b023152376fa8bb3040e07232def51a19ba4d26a1c",
+   "wa": 5,
+   "tel": 1,
+   "new_sha256": "1932b8d5d5d58e466d94037bb72d2aa4b2e8294ceb84157e9bf99bf0ad25e1fd"
+  },
+  {
+   "url": "https://maisoninteriordesign.sg/new-launches/lakeview-cascadia/",
+   "file": "new-launches/lakeview-cascadia/index.html",
+   "live_sha256": "f92e9f66f9716af79d970af9ff6c1140b03709e50774855ea111127216cba6ee",
+   "wa": 5,
+   "tel": 1,
+   "new_sha256": "6ca4ef28a287991afcff981224f2d131a4c143d1f629a69963f3aafd99846634"
+  },
+  {
+   "url": "https://maisoninteriordesign.sg/new-launches/lentor-gardens-residences/",
+   "file": "new-launches/lentor-gardens-residences/index.html",
+   "live_sha256": "7df3b853449867e7673a864dee3f9bfe481bcb55d6ee890de25d3c4a6c0e5ada",
+   "wa": 5,
+   "tel": 1,
+   "new_sha256": "5186ab098bb77dbff7fea9e822eee16b7e271b7b870be2803589d49a9dba50dc"
+  },
+  {
+   "url": "https://maisoninteriordesign.sg/new-launches/lentor-modern-mall/",
+   "file": "new-launches/lentor-modern-mall/index.html",
+   "live_sha256": "70b6ebaafd8a0b4f83a5e42a48fd4548da61c934b45c86d169eabc256e9bf6ff",
+   "wa": 5,
+   "tel": 1,
+   "new_sha256": "b5ba095b011bcad09f95594e0b96ac11a4e2b6ae7a21fb921bcc26c08bc58b51"
+  },
+  {
+   "url": "https://maisoninteriordesign.sg/new-launches/lucerne-grand/",
+   "file": "new-launches/lucerne-grand/index.html",
+   "live_sha256": "82b45a7054edef148969661aa865a71fed61cea10add803033f6882f390de78b",
+   "wa": 5,
+   "tel": 1,
+   "new_sha256": "2cf3bffae14de354b022e1bc941c05f030ee5239b215b050a4276e58ca2847c8"
+  },
+  {
+   "url": "https://maisoninteriordesign.sg/new-launches/lumina-grand/",
+   "file": "new-launches/lumina-grand/index.html",
+   "live_sha256": "a77fe0913eaf24e8feb3385a7729e070a82a966c06b807973a08e6a5ea661cf1",
+   "wa": 9,
+   "tel": 1,
+   "new_sha256": "9526fb16c87991a9c47f26d78549bf6d58395ec14aab8fa4eba2e8d79ad69963"
+  },
+  {
+   "url": "https://maisoninteriordesign.sg/new-launches/luxus-hills-phase-10/",
+   "file": "new-launches/luxus-hills-phase-10/index.html",
+   "live_sha256": "325b17aba8e8b36159ebf3932987ee7bab48d9a04615bb22c98c3c2e9fa894d6",
+   "wa": 5,
+   "tel": 1,
+   "new_sha256": "827e756e666392f6d2bd01da4e5786f05ef3aee12b167293d70f51d070d0fb30"
+  },
+  {
+   "url": "https://maisoninteriordesign.sg/new-launches/macpherson-weave/",
+   "file": "new-launches/macpherson-weave/index.html",
+   "live_sha256": "043533cc749d916fe056b01f9ac7a0c712c1e1cd39a497463c8bdacd44fffc02",
+   "wa": 5,
+   "tel": 1,
+   "new_sha256": "33a1f9b4a70dccccbececd677768695b70f95a037f2d46bed1ee969a51468e7e"
+  },
+  {
+   "url": "https://maisoninteriordesign.sg/new-launches/matilda-riverside/",
+   "file": "new-launches/matilda-riverside/index.html",
+   "live_sha256": "08ffa890c8d7aa416289ae05d8a8af0d5a3c1ca6ba7db6716e519c49e1e96f9e",
+   "wa": 5,
+   "tel": 1,
+   "new_sha256": "055f5990e5fa4b7c7fc7d2d332234f2ffe90909998915da25b7a2701bc357a2c"
+  },
+  {
+   "url": "https://maisoninteriordesign.sg/new-launches/merpati-meadow/",
+   "file": "new-launches/merpati-meadow/index.html",
+   "live_sha256": "7ecb9ee63db2b0193869fa208a2969e8986a71b8ee0e74975b45da7879c7e1d7",
+   "wa": 5,
+   "tel": 1,
+   "new_sha256": "4456ec490fc2c3d6e3ad58d4c355e351ca9a08c19cbe6bb41b8ada59f6b5c138"
+  },
+  {
+   "url": "https://maisoninteriordesign.sg/new-launches/narra-residences/",
+   "file": "new-launches/narra-residences/index.html",
+   "live_sha256": "abdf57dbda739cf05757c841abd231608883270470fdc014d186384cbb8d49d5",
+   "wa": 5,
+   "tel": 1,
+   "new_sha256": "7707e91d48251de83e4eb6355f5101996a394826ede90bbb2d29cb67d39f183e"
+  },
+  {
+   "url": "https://maisoninteriordesign.sg/new-launches/newport-plaza-retail-podium/",
+   "file": "new-launches/newport-plaza-retail-podium/index.html",
+   "live_sha256": "72bcc601c77a28e4a63c060a41502608fccb92055794dd7585f3501b50b6c322",
+   "wa": 5,
+   "tel": 1,
+   "new_sha256": "fa22d63634f0c354be5865fd816a83999c39e9ac2504c4cbff11be3f92dba127"
+  },
+  {
+   "url": "https://maisoninteriordesign.sg/new-launches/newport-residences/",
+   "file": "new-launches/newport-residences/index.html",
+   "live_sha256": "d891fa0e383eed1136679ef74b05729fca44fb3e0c83cb24df7fdfd9919f3a85",
+   "wa": 5,
+   "tel": 1,
+   "new_sha256": "5c0b4e5afaf7984a5f96b91451ba1463777ba28419556c9a99dcc8738d8a1528"
+  },
+  {
+   "url": "https://maisoninteriordesign.sg/new-launches/newport-tower/",
+   "file": "new-launches/newport-tower/index.html",
+   "live_sha256": "ab00c05342111616c64f6c14b263c96e14fab6634087b76ad8ecae0de0212b17",
+   "wa": 5,
+   "tel": 1,
+   "new_sha256": "a618982e22958996182b311c55ea4eb985f45cf2489c42b2ed34d19743e2fce3"
+  },
+  {
+   "url": "https://maisoninteriordesign.sg/new-launches/norwood-grand/",
+   "file": "new-launches/norwood-grand/index.html",
+   "live_sha256": "978e6e00f3da37bd16c7ab03a61e03127c6dc57367257fe95ba98c47938a9792",
+   "wa": 9,
+   "tel": 1,
+   "new_sha256": "e233b960ec918c517269d4026de6d9863a501a108bddb3756b0b91909ae24747"
+  },
+  {
+   "url": "https://maisoninteriordesign.sg/new-launches/novo-place/",
+   "file": "new-launches/novo-place/index.html",
+   "live_sha256": "a78700146b427ce107dd3955d5e0f8f061233f1606cdd95196fbeac15b48ae45",
+   "wa": 5,
+   "tel": 1,
+   "new_sha256": "67e125a928c9eabe8d6ca5d39b897123a1e86192295666150033d171258d2eff"
+  },
+  {
+   "url": "https://maisoninteriordesign.sg/new-launches/ocbc-punggol/",
+   "file": "new-launches/ocbc-punggol/index.html",
+   "live_sha256": "8ad13e32873f8f4eb4ad3967ed40d5a94c22c1beaefb506f1ea99b4fa838bcd7",
+   "wa": 5,
+   "tel": 1,
+   "new_sha256": "5ef9beb3d19b81c3998d12582c6a67de3c7f4f3c7634584d3a4c01a4fffc1405"
+  },
+  {
+   "url": "https://maisoninteriordesign.sg/new-launches/one-leonie-residences/",
+   "file": "new-launches/one-leonie-residences/index.html",
+   "live_sha256": "a1bb760a554016024b16688222fabfda4cb48e7842dc95f0934c067a348a191f",
+   "wa": 5,
+   "tel": 1,
+   "new_sha256": "3f012bd8813303a59d36d7587e149e13b3c78720c641bf00f11af3017d2db0f3"
+  },
+  {
+   "url": "https://maisoninteriordesign.sg/new-launches/orchard-sophia/",
+   "file": "new-launches/orchard-sophia/index.html",
+   "live_sha256": "0c3561a139dab0a51606f3de364ea15444964e5266cd31ac9e8f0c83e97af280",
+   "wa": 5,
+   "tel": 1,
+   "new_sha256": "40f38ee826ba1fe80813ed010d4547adffbc7633112547fa206f201ad1fa27a9"
+  },
+  {
+   "url": "https://maisoninteriordesign.sg/new-launches/parc-point/",
+   "file": "new-launches/parc-point/index.html",
+   "live_sha256": "3bac27c79a7d6d51f26fc008fbe2f4e142dc7e0af5514c16c4725ba3b0671973",
+   "wa": 5,
+   "tel": 1,
+   "new_sha256": "aa93964c714459cbc5963bc2e7bcfa0bc997bb560b31f3657cb12eebe0468e82"
+  },
+  {
+   "url": "https://maisoninteriordesign.sg/new-launches/pinery-residences/",
+   "file": "new-launches/pinery-residences/index.html",
+   "live_sha256": "51fd077a824dc4cf26d81394efdcea1ec5071adba6a6fb9128ba21c07ecbc0e6",
+   "wa": 5,
+   "tel": 1,
+   "new_sha256": "4ebafb87080019ec81bdcc6f0dc3bae1cd002301ac044e0522a290e37eb28e62"
+  },
+  {
+   "url": "https://maisoninteriordesign.sg/new-launches/plantation-creek-at-tengah/",
+   "file": "new-launches/plantation-creek-at-tengah/index.html",
+   "live_sha256": "450d36df675b7adde24aeac3f3e2f7eddb5c06ec7e2b108800a78d79838c0d3f",
+   "wa": 5,
+   "tel": 1,
+   "new_sha256": "9bd54f323d3ac5ae1f6a5bdda670367372bb46782760c2dc7c28d97c7c72460d"
+  },
+  {
+   "url": "https://maisoninteriordesign.sg/new-launches/plantation-dew/",
+   "file": "new-launches/plantation-dew/index.html",
+   "live_sha256": "57895410895a844e74d47c048e75597750d9118e3e8f8352e423403b3ed9ad6d",
+   "wa": 5,
+   "tel": 1,
+   "new_sha256": "a7ee9eb9c190fdb660d22aba202054870f91e0377685f6a4b58762b7515a88dd"
+  },
+  {
+   "url": "https://maisoninteriordesign.sg/new-launches/plantation-edge-i-and-ii/",
+   "file": "new-launches/plantation-edge-i-and-ii/index.html",
+   "live_sha256": "9dfaabb07a43342f640bc6ce78cf5efb566ff5366772a28b30404a0b42d3034a",
+   "wa": 5,
+   "tel": 1,
+   "new_sha256": "793a318f943fa0258b7f1982e6e91ca2ad6f13549f6d45a65aaa7156e9238479"
+  },
+  {
+   "url": "https://maisoninteriordesign.sg/new-launches/plantation-verge/",
+   "file": "new-launches/plantation-verge/index.html",
+   "live_sha256": "e2294f9cec31cf7b0bf329b4bbae2ece99a31b63c04362d655ba0d81192519fc",
+   "wa": 5,
+   "tel": 1,
+   "new_sha256": "1b76eaa297717e00f94d3dfd0665f0eeba9f0788b1a4afe9d07f9b38d39ffc6d"
+  },
+  {
+   "url": "https://maisoninteriordesign.sg/new-launches/pollen-collection/",
+   "file": "new-launches/pollen-collection/index.html",
+   "live_sha256": "07d3f9cff882be016e1614eb9ae6c0e2e7311565dd59bd19341fa9c0202211d8",
+   "wa": 9,
+   "tel": 1,
+   "new_sha256": "04db8236ef6856f1dfbc278a02cc333d6467fecc0743af50446c067892b18fd1"
+  },
+  {
+   "url": "https://maisoninteriordesign.sg/new-launches/queens-arc/",
+   "file": "new-launches/queens-arc/index.html",
+   "live_sha256": "946e98f045aa2436ac7d0158f493e6865fa58ad4c48b6a5d10ad6083ebd1e8c5",
+   "wa": 5,
+   "tel": 1,
+   "new_sha256": "e06af938c1689a3aeca3b7d3de7808f24684244441e9e8ad47e7921da161d948"
+  },
+  {
+   "url": "https://maisoninteriordesign.sg/new-launches/rivelle-tampines/",
+   "file": "new-launches/rivelle-tampines/index.html",
+   "live_sha256": "84951e6e163ac275211a4bb5cabaa78c1a18757be92aa17d1732437a47065c08",
+   "wa": 5,
+   "tel": 1,
+   "new_sha256": "f9bec054c8904daed2407ed3f29480e845adf52527ad37eaf34b8cf86f5b9737"
+  },
+  {
+   "url": "https://maisoninteriordesign.sg/new-launches/river-modern/",
+   "file": "new-launches/river-modern/index.html",
+   "live_sha256": "ae91dfd6295c438a49352823d76911f54fa302498860970b27c7cb407416688f",
+   "wa": 5,
+   "tel": 1,
+   "new_sha256": "ec36d661b6ef58b4434d6da794f0d811bcbae14564d985ca948f93e3130201eb"
+  },
+  {
+   "url": "https://maisoninteriordesign.sg/new-launches/sembawang-anchor/",
+   "file": "new-launches/sembawang-anchor/index.html",
+   "live_sha256": "0f30e7f6fa9725345f5513764de6dea87e1d18225f1d95e2a207675744b7add0",
+   "wa": 5,
+   "tel": 1,
+   "new_sha256": "5eb826db9347c0874ea3fd048b356e6494f231d1f98e976c92c9b98ef8e484ef"
+  },
+  {
+   "url": "https://maisoninteriordesign.sg/new-launches/sembawang-brook/",
+   "file": "new-launches/sembawang-brook/index.html",
+   "live_sha256": "50832bf766edf5e1e259950af662b274d49008e4d852562ca0f5b140a4dcd83a",
+   "wa": 5,
+   "tel": 1,
+   "new_sha256": "e95a9e48f77df8110e24eef685d380913f779dd2e2102f342892174865a58e44"
+  },
+  {
+   "url": "https://maisoninteriordesign.sg/new-launches/sembawang-portico/",
+   "file": "new-launches/sembawang-portico/index.html",
+   "live_sha256": "e4d5b3968b14c41537eb32ffc0ff34c37d071f66aac9f857c31062e8da794d79",
+   "wa": 5,
+   "tel": 1,
+   "new_sha256": "ab0827b9c3eed37d10f72caf98d2add0756ee9bfc7f708138e91345b61f9005a"
+  },
+  {
+   "url": "https://maisoninteriordesign.sg/new-launches/shaw-tower/",
+   "file": "new-launches/shaw-tower/index.html",
+   "live_sha256": "a938e3abbae76d56aa518392a672f54e97497ec147bb64ac4541f86f8b96a52d",
+   "wa": 10,
+   "tel": 1,
+   "new_sha256": "854e5fa22b09034d615e6d6d1c3bf82861c946a414bca0c8058eeab3af19d4a2"
+  },
+  {
+   "url": "https://maisoninteriordesign.sg/new-launches/solano-grand/",
+   "file": "new-launches/solano-grand/index.html",
+   "live_sha256": "8dba0c1b11b5fc501cb09eda78c5537fad3ba14cacc462c701d542b986b3ebec",
+   "wa": 5,
+   "tel": 1,
+   "new_sha256": "86fda3aee3c78e288b49d978bfabf3a2f31ab6d17691966710fb7e79e829e9c4"
+  },
+  {
+   "url": "https://maisoninteriordesign.sg/new-launches/tampines-greenquartz/",
+   "file": "new-launches/tampines-greenquartz/index.html",
+   "live_sha256": "7a575d2511a0287e1c1d5a1de25672f3827a917220121c637ef1d844f7ae572d",
+   "wa": 5,
+   "tel": 1,
+   "new_sha256": "974528d55bd4e218d4baf96af532c901ce02d1f977e706b2d2499f5437400240"
+  },
+  {
+   "url": "https://maisoninteriordesign.sg/new-launches/tanjong-tree-residences-at-hougang/",
+   "file": "new-launches/tanjong-tree-residences-at-hougang/index.html",
+   "live_sha256": "156067f55632202f643a7e45512af8955b5b160ff8fec0091705fd2fc6314cc5",
+   "wa": 5,
+   "tel": 1,
+   "new_sha256": "8098085a8901a51722b7eeacf5adb8014bf6b0c362d358515f7067c420923b2f"
+  },
+  {
+   "url": "https://maisoninteriordesign.sg/new-launches/tengah-garden-residences/",
+   "file": "new-launches/tengah-garden-residences/index.html",
+   "live_sha256": "947ddf445a70b60ee4c4c94999e7a9b698662f2168c40d3a43ea734a9621a6bc",
+   "wa": 5,
+   "tel": 1,
+   "new_sha256": "5ef7127722cfb701fa959f4a7da37b754aba57953f496b2455dc909ec4e5d76b"
+  },
+  {
+   "url": "https://maisoninteriordesign.sg/new-launches/the-botany-at-dairy-farm/",
+   "file": "new-launches/the-botany-at-dairy-farm/index.html",
+   "live_sha256": "dbadf7d416cbcb6f19cbcace39710014227b5f3809fab985de6de7c265b0d3b7",
+   "wa": 5,
+   "tel": 1,
+   "new_sha256": "feedae7c8337b2c8ceb2c63168f6921d3c87b05ce7e5fe4d911aef41988ec123"
+  },
+  {
+   "url": "https://maisoninteriordesign.sg/new-launches/the-bronze/",
+   "file": "new-launches/the-bronze/index.html",
+   "live_sha256": "629ff5c2ee5abab3d15229f326e43adc40b97152aa1a8645520560208f975dd3",
+   "wa": 5,
+   "tel": 1,
+   "new_sha256": "2795cedec3da256b59257269e0bda3e810e4fa89a57249824a73776b9f5357d4"
+  },
+  {
+   "url": "https://maisoninteriordesign.sg/new-launches/the-island-residence/",
+   "file": "new-launches/the-island-residence/index.html",
+   "live_sha256": "e9eb20a17ca9735f116fff5f2fc09798fa219a4f7df8f263dea864d78bad4737",
+   "wa": 5,
+   "tel": 1,
+   "new_sha256": "d1030d9dea76310656b6065b482971a75bcd6ae4ed05b6d6e4bc882c63c46a2c"
+  },
+  {
+   "url": "https://maisoninteriordesign.sg/new-launches/the-myst/",
+   "file": "new-launches/the-myst/index.html",
+   "live_sha256": "704302d8c148e3b7a9c9c3c165a251db8bbdbc0207e1a43099680dd867853863",
+   "wa": 9,
+   "tel": 1,
+   "new_sha256": "fff79e145852ae95f90ff65d0846da181322f69e39da0f1d91eaf64b68069e01"
+  },
+  {
+   "url": "https://maisoninteriordesign.sg/new-launches/the-orie/",
+   "file": "new-launches/the-orie/index.html",
+   "live_sha256": "d7cebe6e0961d66fad37f1de442ec34a9881bdd04a534c6bfa61dd3fa929b4ec",
+   "wa": 5,
+   "tel": 1,
+   "new_sha256": "c6037e5c43b090b5c6d891e16a1f1536ee807f95a58b0b5c8808d438993dc638"
+  },
+  {
+   "url": "https://maisoninteriordesign.sg/new-launches/the-serra-residences/",
+   "file": "new-launches/the-serra-residences/index.html",
+   "live_sha256": "1c22376eac7e7149dca0f09aa84a9b2416a0e067ae058e905098a960f1b782f9",
+   "wa": 5,
+   "tel": 1,
+   "new_sha256": "f4ecb8555593c149022539149352ee3eb81cf04e4a4398b0010f663ddb76a9a2"
+  },
+  {
+   "url": "https://maisoninteriordesign.sg/new-launches/thomson-reserve/",
+   "file": "new-launches/thomson-reserve/index.html",
+   "live_sha256": "306f15dfd35ca2a1a7a765a01bfb4f3651bd7f9127a0ef941a893f9dcf7aefc1",
+   "wa": 5,
+   "tel": 1,
+   "new_sha256": "be6493c0e842cc35e2c548caca80e999513faabe6f0d6be2d82adb35562bafad"
+  },
+  {
+   "url": "https://maisoninteriordesign.sg/new-launches/toa-payoh-hillside/",
+   "file": "new-launches/toa-payoh-hillside/index.html",
+   "live_sha256": "3290bcb0fafb79afd52922d4785c07587ab6dce558108bc4698a87fc91f518b0",
+   "wa": 5,
+   "tel": 1,
+   "new_sha256": "5c980fc0bc9857b1508316a752b81e1716a7af7bdd79297f927d81170968fb98"
+  },
+  {
+   "url": "https://maisoninteriordesign.sg/new-launches/towner-residences/",
+   "file": "new-launches/towner-residences/index.html",
+   "live_sha256": "fc8d0684c6f489e0f0e466e786ec0711f891f96904d234251bcfea36c43652c6",
+   "wa": 9,
+   "tel": 1,
+   "new_sha256": "424388b224aa8b3bb791255304f1a410553ad77f1e07cab41bd264b53434094d"
+  },
+  {
+   "url": "https://maisoninteriordesign.sg/new-launches/urbanville-at-woodlands/",
+   "file": "new-launches/urbanville-at-woodlands/index.html",
+   "live_sha256": "f8f48bc1856238f4fb33be14f111e1e8b7928aeeb3241ff489f83c2768f93a0a",
+   "wa": 5,
+   "tel": 1,
+   "new_sha256": "57993060cecd9a93ea841e0caf174b63970de23c77b754326698d2e700245fba"
+  },
+  {
+   "url": "https://maisoninteriordesign.sg/new-launches/vela-bay/",
+   "file": "new-launches/vela-bay/index.html",
+   "live_sha256": "df3251e9f462a9e70916662fc134a04c74d67699fbace1a5c9c5da37bc47861e",
+   "wa": 5,
+   "tel": 1,
+   "new_sha256": "e9b71d3f7bb5b78a2dbb02f50c72caf18cc0b3ba6dcddd0c9c708060959c27d2"
+  },
+  {
+   "url": "https://maisoninteriordesign.sg/new-launches/verandah-at-kallang/",
+   "file": "new-launches/verandah-at-kallang/index.html",
+   "live_sha256": "ead514c1c2f6db891712f7056f1c10f0f5294c4bb74474d586cc2540d5578b2c",
+   "wa": 5,
+   "tel": 1,
+   "new_sha256": "31a5d353f63a56c3749bd316ac63408ec7f7805e26c750f47fda7e215840fd9e"
+  },
+  {
+   "url": "https://maisoninteriordesign.sg/new-launches/watten-house/",
+   "file": "new-launches/watten-house/index.html",
+   "live_sha256": "ed4e8ce6a2179c205c1558afc24423b159f1c2ef4d10193f06a19b1e9f74c6ab",
+   "wa": 5,
+   "tel": 1,
+   "new_sha256": "749cc53ed52cf82aeebd745c6fc21158c773dd481d635b50dfc1da3d471bb1b6"
+  },
+  {
+   "url": "https://maisoninteriordesign.sg/new-launches/woodgrove-acres/",
+   "file": "new-launches/woodgrove-acres/index.html",
+   "live_sha256": "64ab41538a06d36dd0a572b20b169980225fa871f1c0f4a4327d89f814c7f50f",
+   "wa": 5,
+   "tel": 1,
+   "new_sha256": "8db7d83a63d55a072222c53ffa810ec39340969b2ce81659385d1ea5dc31c483"
+  },
+  {
+   "url": "https://maisoninteriordesign.sg/new-launches/woodgrove-ascent/",
+   "file": "new-launches/woodgrove-ascent/index.html",
+   "live_sha256": "1aefd9c0c06bec879988df90a72f56b213dc3f896e21fe2fda2241ae71d3f5c3",
+   "wa": 5,
+   "tel": 1,
+   "new_sha256": "8ba42a67ef4c05611f67264d49e7a39173b8890db292f6ae37251854d98516f6"
+  },
+  {
+   "url": "https://maisoninteriordesign.sg/new-launches/woodgrove-edge/",
+   "file": "new-launches/woodgrove-edge/index.html",
+   "live_sha256": "863e334139f718a7953338e2b996b155bd9954b96d0d8d7303ed46303f7680b4",
+   "wa": 5,
+   "tel": 1,
+   "new_sha256": "ae2fe98d166157f3b5105602f2b94cac3d61461ce6a16ee4fc4be9e3db224098"
+  },
+  {
+   "url": "https://maisoninteriordesign.sg/new-launches/woodlands-south-plains/",
+   "file": "new-launches/woodlands-south-plains/index.html",
+   "live_sha256": "351e6e82f971746e5c54e4b85518b5f98786fce9652bc68b60c4a31d46845524",
+   "wa": 5,
+   "tel": 1,
+   "new_sha256": "e65e5577d87efe3ceabad954a01a7f84ce5da08d9e04dde0a27fe04001a16f2a"
+  },
+  {
+   "url": "https://maisoninteriordesign.sg/new-launches/wynwood-grand/",
+   "file": "new-launches/wynwood-grand/index.html",
+   "live_sha256": "0a1667a17643b583c1ba664fffa1da37b187875879feef6afdad819b2fbd6691",
+   "wa": 5,
+   "tel": 1,
+   "new_sha256": "60b34ed5966769693605bb5606eb2be2162abbdfde0c2e1a1d7b5a5108242e45"
+  },
+  {
+   "url": "https://maisoninteriordesign.sg/new-launches/yishun-beacon/",
+   "file": "new-launches/yishun-beacon/index.html",
+   "live_sha256": "48ad59ab55c12cbcc1877acbc6f1e756aba492cbf7dd3e3049a8930b4c96e2fe",
+   "wa": 5,
+   "tel": 1,
+   "new_sha256": "79c8581b6c7f02462252a8c3963d6c118f9b684797891e1c15d3288484bc7ebf"
+  },
+  {
+   "url": "https://maisoninteriordesign.sg/services/bto-renovation/",
+   "file": "services/bto-renovation/index.html",
+   "live_sha256": "1deff17ed26a0192735b535587a3faffe3c79fef4258a4310a9b8e0e66669cb9",
+   "wa": 5,
+   "tel": 1,
+   "new_sha256": "6e35f158b0dbfb89b45f7a46a032cf41e36906f17e268e4e727aede338ae1a6f"
+  },
+  {
+   "url": "https://maisoninteriordesign.sg/services/new-condo-renovation/",
+   "file": "services/new-condo-renovation/index.html",
+   "live_sha256": "f84b5d16b332b9f9d6eb7ae36273472a6c1f9e31cf1001c80cbb8479ec37fd3e",
+   "wa": 5,
+   "tel": 1,
+   "new_sha256": "a81ef3ae67ddfbc8044bc1ada0aa8850b1e63e17de898d58b937fb9f618cd18b"
+  },
+  {
+   "url": "https://maisoninteriordesign.sg/services/landed-renovation/",
+   "file": "services/landed-renovation/index.html",
+   "live_sha256": "38104ab9ae58f8f0e11c0313b0c65a7988e8dabc6e9f535da06807cb76329835",
+   "wa": 5,
+   "tel": 1,
+   "new_sha256": "29b3f4ee2ef84fc0347591997f20c5efa26d083dc39c54f6486b985de3c619d7"
+  },
+  {
+   "url": "https://maisoninteriordesign.sg/services/office-fit-out/",
+   "file": "services/office-fit-out/index.html",
+   "live_sha256": "3cd4eedc59f38b3ea4fec79078ec9328a440890550423b8bd021ae2f3060796a",
+   "wa": 5,
+   "tel": 1,
+   "new_sha256": "32ed185be61b334b3bad92710129af32ac4e537c4cb19d0873aada6fccfbf2b8"
+  },
+  {
+   "url": "https://maisoninteriordesign.sg/services/retail-shop-fit-out/",
+   "file": "services/retail-shop-fit-out/index.html",
+   "live_sha256": "7fb9fec599db67afd9868a4982d0397847853d08a7aff42aaf1af21bf99495d8",
+   "wa": 5,
+   "tel": 1,
+   "new_sha256": "e8f5e9f93f84bd87a81247fe1196327d222d8463ef0800cbac7aa77482b9bf93"
+  },
+  {
+   "url": "https://maisoninteriordesign.sg/services/commercial-fit-out/",
+   "file": "services/commercial-fit-out/index.html",
+   "live_sha256": "9d2853822344b7cb8114cfcd9244fd08400e617936d35027c3ec70837eb70366",
+   "wa": 5,
+   "tel": 1,
+   "new_sha256": "3a853a16bca71fc2d0b9803ae84cf719bf9b7375211d99c32e474458535d2a2e"
+  },
+  {
+   "url": "https://maisoninteriordesign.sg/articles/prepare-for-interior-design-consultation/",
+   "file": "articles/prepare-for-interior-design-consultation/index.html",
+   "live_sha256": "fc16b6344286861f0323a8754596029a7fee70d030c62c714bfcf4e31d39c040",
+   "wa": 4,
+   "tel": 1,
+   "new_sha256": "a339574c8e76808848c7a22bdfbda22273bab67f032ced0d43c38ceac6788e58"
+  },
+  {
+   "url": "https://maisoninteriordesign.sg/articles/itemised-renovation-quotation/",
+   "file": "articles/itemised-renovation-quotation/index.html",
+   "live_sha256": "ffd1fd438876e4dd5abae6602eda5821c13f73ec5f1e4eff3362706df4e30420",
+   "wa": 4,
+   "tel": 1,
+   "new_sha256": "e550ea03ad6cacc662900a166f2dfee0712dbe12bd9b2fcd5c8e7b852a1b6fc0"
+  }
+ ]
+}

@@ -1,0 +1,24 @@
+{
+ "site": {
+  "slug": "hyper-power",
+  "origin": "https://pageonesingapore.com",
+  "prefix": "/preview/hyper-power/",
+  "bridge": "pageone",
+  "base": "preview/hyper-power",
+  "src": "/preview/hyper-power/p1-cta.js"
+ },
+ "tag": "<script src=\"/preview/hyper-power/p1-cta.js?v=47ea0430\" defer></script>",
+ "pages_seen": 1,
+ "with_cta": 1,
+ "already_tracked": 0,
+ "to_fix": [
+  {
+   "url": "https://pageonesingapore.com/preview/hyper-power/",
+   "file": "index.html",
+   "live_sha256": "4d57bbb07b4189e4dc2dfcff2750fbfd3a08ad301d8b8079366e532109980791",
+   "wa": 6,
+   "tel": 1,
+   "new_sha256": "2308fbff2c0d0e3cbd76de38c8717671fdccc2de934358d425e447ff80da3a97"
+  }
+ ]
+}

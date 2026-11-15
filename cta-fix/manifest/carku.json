@@ -1,0 +1,15 @@
+{
+ "site": {
+  "slug": "carku",
+  "origin": "https://autoseo.my",
+  "prefix": "/preview/carku/",
+  "bridge": "autoseo",
+  "base": "preview/carku",
+  "src": "/preview/carku/p1-cta.js"
+ },
+ "tag": "<script src=\"/preview/carku/p1-cta.js?v=addf0d5d\" defer></script>",
+ "pages_seen": 0,
+ "with_cta": 0,
+ "already_tracked": 0,
+ "to_fix": []
+}

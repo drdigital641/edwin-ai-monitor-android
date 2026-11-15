@@ -1,0 +1,424 @@
+{
+ "site": {
+  "slug": "ktech",
+  "origin": "https://ktech.my",
+  "prefix": "/",
+  "bridge": "ktech",
+  "base": "",
+  "src": "/p1-cta.js"
+ },
+ "tag": "<script src=\"/p1-cta.js?v=020caac6\" defer></script>",
+ "pages_seen": 51,
+ "with_cta": 51,
+ "already_tracked": 0,
+ "to_fix": [
+  {
+   "url": "https://ktech.my/",
+   "file": "index.html",
+   "live_sha256": "883071e40acc29717a4b2c7bbdbd53610717ab4a8cf977f08f5a9ffb1d68e610",
+   "wa": 5,
+   "tel": 3,
+   "new_sha256": "b75a13fca846ce41cabbab85bf5d584d586585b00722483441dc167077c83551"
+  },
+  {
+   "url": "https://ktech.my/ms/",
+   "file": "ms/index.html",
+   "live_sha256": "478584b3289359f533d844f512bddcc9fd7bedd164dcaead403662ef9aefebc2",
+   "wa": 5,
+   "tel": 3,
+   "new_sha256": "dfac0c59c8df6ea299f3d9dfe1dbbe5dace59762a09ee2a5264a1d554742f5f2"
+  },
+  {
+   "url": "https://ktech.my/zh/",
+   "file": "zh/index.html",
+   "live_sha256": "6ce3a476f36a23185035cb88df911d48e97e786e4c159f120611c64acfabd29a",
+   "wa": 5,
+   "tel": 3,
+   "new_sha256": "b4b7836231bf4df46f2cbb68f2d933ca9549682c00924e247c18afde240a82f8"
+  },
+  {
+   "url": "https://ktech.my/autel-diagnostic-tools/",
+   "file": "autel-diagnostic-tools/index.html",
+   "live_sha256": "210da2801aa9939cd63c059a2254c4ecb08bdbf88d78bbe19a8fbefaf0350a84",
+   "wa": 22,
+   "tel": 3,
+   "new_sha256": "06786511963ccc64e12c807b00d1d2e45a9386d67faece5e42396b9190b242fe"
+  },
+  {
+   "url": "https://ktech.my/ms/autel-diagnostic-tools/",
+   "file": "ms/autel-diagnostic-tools/index.html",
+   "live_sha256": "4589bfb975c578374e7cd1f1965a2847f638119c8ba28ed3a74975fdb1498d23",
+   "wa": 22,
+   "tel": 3,
+   "new_sha256": "8105826527f229d8d01c78d1a2edd7cc812d325ee36e6b7ca62715c600f5c39e"
+  },
+  {
+   "url": "https://ktech.my/zh/autel-diagnostic-tools/",
+   "file": "zh/autel-diagnostic-tools/index.html",
+   "live_sha256": "6ae5a332dc15469e591dfff3def09ce77cd1a55c2ce53f8cf219242631bd22b6",
+   "wa": 22,
+   "tel": 3,
+   "new_sha256": "cf13db6732c39be6696932bb6f7746c5f86ba922f59338e9ebc1f319364218fd"
+  },
+  {
+   "url": "https://ktech.my/services/",
+   "file": "services/index.html",
+   "live_sha256": "d7019d53ef0266cf534ec2efea34814345b2726fd10b65000073a29e525cc686",
+   "wa": 8,
+   "tel": 3,
+   "new_sha256": "f2d901756f3d0633a4c352e1d54db23d5095923f77286b2da142531c0e248a07"
+  },
+  {
+   "url": "https://ktech.my/ms/services/",
+   "file": "ms/services/index.html",
+   "live_sha256": "29b4ba99452f27e82dc0f7db458bfa69cdac7d5fb361f23408f8a1f487e8ae2f",
+   "wa": 8,
+   "tel": 3,
+   "new_sha256": "8c57a2837f2e96cb14abdc5f4749b9a9f538d202bdadb457abc19bde8575f741"
+  },
+  {
+   "url": "https://ktech.my/zh/services/",
+   "file": "zh/services/index.html",
+   "live_sha256": "9fbc7fa79b07b793549090fd81bd2891d9826601ea26c87059491148dfa7bfb8",
+   "wa": 8,
+   "tel": 3,
+   "new_sha256": "aa5ea35c891a685723317b98cb7c6367e8a870f18f0c0eb4312956863a7ddc6c"
+  },
+  {
+   "url": "https://ktech.my/about/",
+   "file": "about/index.html",
+   "live_sha256": "0d4202ae31744da7518e6c0d50b23c1d98608b5e75b2944af385a65bf2fa279e",
+   "wa": 4,
+   "tel": 6,
+   "new_sha256": "12cc3ce4a89c4d50677be5de735058267ecc05cb056ffa6843071c0141a838ba"
+  },
+  {
+   "url": "https://ktech.my/ms/about/",
+   "file": "ms/about/index.html",
+   "live_sha256": "2e48e4485e8f73a9dea49ca0bed6297e3612cca7a765a120c4391a899b0ac466",
+   "wa": 4,
+   "tel": 6,
+   "new_sha256": "96d776042c74829daf9d4b03d6a0f01b37b6bce27884c1f897c5135a3b58e4f3"
+  },
+  {
+   "url": "https://ktech.my/zh/about/",
+   "file": "zh/about/index.html",
+   "live_sha256": "ac16cad0b8f61e252544eedae4a7585e6fd5591d5fcfc227e8ceaf9e3358899d",
+   "wa": 4,
+   "tel": 6,
+   "new_sha256": "4dcc5e8a775e32f028131adfd1a351d6fd44e1db0059b02f7e2e284e04654b91"
+  },
+  {
+   "url": "https://ktech.my/contact/",
+   "file": "contact/index.html",
+   "live_sha256": "874e320d6db41adad81add209716dcac6b1c5b05b062517e55a1ef2a40a9f3a2",
+   "wa": 5,
+   "tel": 6,
+   "new_sha256": "3b83cd473268fb07a3cab8cd0ae2e6147989c2d540bfb034f98535c00105f590"
+  },
+  {
+   "url": "https://ktech.my/ms/contact/",
+   "file": "ms/contact/index.html",
+   "live_sha256": "359f1aa309784398ecd8e5010f0afb037402c9f118d3224934d92373c87052fa",
+   "wa": 5,
+   "tel": 6,
+   "new_sha256": "4361814daa4cf79d367d4eb24645f141db388558ba343d2058556561711df3b1"
+  },
+  {
+   "url": "https://ktech.my/zh/contact/",
+   "file": "zh/contact/index.html",
+   "live_sha256": "19d870dc4821d970f8679b90cfa19ea7e536591e6d50b589357f8ff699dbf11a",
+   "wa": 5,
+   "tel": 6,
+   "new_sha256": "d736f3c8f8677b1bcf94a4cf1728cd78412dad1caadfe07ff4812394a3e56415"
+  },
+  {
+   "url": "https://ktech.my/articles/",
+   "file": "articles/index.html",
+   "live_sha256": "b4ecc35019280900535f147a90bab3ee55812a97c0d9e3a1a82c53bf30ca4bd7",
+   "wa": 4,
+   "tel": 3,
+   "new_sha256": "c9f3f7be108d763299efaa293673d34cfe496cf22679fc8764cb7ec2dc2ad787"
+  },
+  {
+   "url": "https://ktech.my/ms/articles/",
+   "file": "ms/articles/index.html",
+   "live_sha256": "0acb473f5b4417986e144343c487f3c3c91e14f95baeb77f8b622107a439e897",
+   "wa": 4,
+   "tel": 3,
+   "new_sha256": "b693a1b92b62de1d8157044885932a531f904574be8bc7cc41812906a600b477"
+  },
+  {
+   "url": "https://ktech.my/zh/articles/",
+   "file": "zh/articles/index.html",
+   "live_sha256": "ac822923540144e5a2792b7561fe87c4c904a7de61d57f0a44064b67e05a07e1",
+   "wa": 4,
+   "tel": 3,
+   "new_sha256": "5bfa1c23cce5e7b2effc9f367e2c29341dff35398a05462ba098b580c75fc1ba"
+  },
+  {
+   "url": "https://ktech.my/articles/adas-calibration-after-windscreen-or-bumper-work/",
+   "file": "articles/adas-calibration-after-windscreen-or-bumper-work/index.html",
+   "live_sha256": "e29f992d3303ab02940b91c5518006ec43a893616dd514eca50e685e87ccc1da",
+   "wa": 4,
+   "tel": 3,
+   "new_sha256": "4e967124ad422ba95ab37ecbc2e850729e051818f09835f64cdfb627b637f658"
+  },
+  {
+   "url": "https://ktech.my/ms/articles/adas-calibration-after-windscreen-or-bumper-work/",
+   "file": "ms/articles/adas-calibration-after-windscreen-or-bumper-work/index.html",
+   "live_sha256": "eb614a06e05a26fab6dce0e6ef1c638dfafdeedb129c67085a7c643dad32ab6e",
+   "wa": 4,
+   "tel": 3,
+   "new_sha256": "83ad21207757fd576a301135adcee45730b7b1584aa3e93159f866f6ac9761b4"
+  },
+  {
+   "url": "https://ktech.my/zh/articles/adas-calibration-after-windscreen-or-bumper-work/",
+   "file": "zh/articles/adas-calibration-after-windscreen-or-bumper-work/index.html",
+   "live_sha256": "0a84f75e87b9a8fec466bb1ecf057a58e94c8f03aea15b7da0fffd1b8a110856",
+   "wa": 4,
+   "tel": 3,
+   "new_sha256": "2282c7fe3db41c6abbdad3fe947284c7fa702561c70cf7c637c76e4d80130139"
+  },
+  {
+   "url": "https://ktech.my/articles/tpms-relearn-after-tyre-change/",
+   "file": "articles/tpms-relearn-after-tyre-change/index.html",
+   "live_sha256": "02a47ad7a87f1578adac6c520575b22096ee69f6ca28ad1f3536caa0937af443",
+   "wa": 4,
+   "tel": 3,
+   "new_sha256": "98c9e4e9dd57b89f177449379810aabc8a3c70f1138a36b7bbf17486044f29f4"
+  },
+  {
+   "url": "https://ktech.my/ms/articles/tpms-relearn-after-tyre-change/",
+   "file": "ms/articles/tpms-relearn-after-tyre-change/index.html",
+   "live_sha256": "5862079fb66f2b9f795acb23efea39e6b29bb43b5384df7e0eea2fd09d91f098",
+   "wa": 4,
+   "tel": 3,
+   "new_sha256": "c2a0fa71065a5b4585af530c2a46f575df0164332cefac91bf911a2eaa3855ef"
+  },
+  {
+   "url": "https://ktech.my/zh/articles/tpms-relearn-after-tyre-change/",
+   "file": "zh/articles/tpms-relearn-after-tyre-change/index.html",
+   "live_sha256": "c4dc928afa8a63eb52408047c5ef13354d766cf51ac215a4d0efd8456e880b50",
+   "wa": 4,
+   "tel": 3,
+   "new_sha256": "b7fc876cf06699ef83eacd7772383b82cb93cd6035545154a48b0c7f29884998"
+  },
+  {
+   "url": "https://ktech.my/autel-diagnostic-tools/maxisys-ultra-s2/",
+   "file": "autel-diagnostic-tools/maxisys-ultra-s2/index.html",
+   "live_sha256": "cf8b865f26117f63a0027c6024b0ab27bdf2b321c0f975b0276509dbe917976c",
+   "wa": 4,
+   "tel": 3,
+   "new_sha256": "02e914c50b0b3f2f66560748bd1239ae5d61d345b412db9be94836c4f4c4ef3e"
+  },
+  {
+   "url": "https://ktech.my/ms/autel-diagnostic-tools/maxisys-ultra-s2/",
+   "file": "ms/autel-diagnostic-tools/maxisys-ultra-s2/index.html",
+   "live_sha256": "c957d1fb744c112a1112378126200b32d36186d115333711300bf7bcb2bb4007",
+   "wa": 4,
+   "tel": 3,
+   "new_sha256": "02d6889d3948933520be07b5b4f5a23d32140a2b7b3d037b2b71476e5ac2644f"
+  },
+  {
+   "url": "https://ktech.my/zh/autel-diagnostic-tools/maxisys-ultra-s2/",
+   "file": "zh/autel-diagnostic-tools/maxisys-ultra-s2/index.html",
+   "live_sha256": "227bc630aa80df3138fb7a42cb45d5d36d4ae588a61054b9699fbf615cc12a34",
+   "wa": 4,
+   "tel": 3,
+   "new_sha256": "a860b50aa2ba748c64b2230e257f5a479de97aca2fccb71b44731fed9b0e0099"
+  },
+  {
+   "url": "https://ktech.my/autel-diagnostic-tools/maxisys-ms919-s2/",
+   "file": "autel-diagnostic-tools/maxisys-ms919-s2/index.html",
+   "live_sha256": "50b4b625db555da84a08ad7489877a0f7885fa070d337db45948b03ea7824237",
+   "wa": 4,
+   "tel": 3,
+   "new_sha256": "0c022228df90badd83bb69ebec35709fe1c835154897b2c4cf37ccc19f99def0"
+  },
+  {
+   "url": "https://ktech.my/ms/autel-diagnostic-tools/maxisys-ms919-s2/",
+   "file": "ms/autel-diagnostic-tools/maxisys-ms919-s2/index.html",
+   "live_sha256": "591665dedcb8efa1f884889cee6a6fd48fd91dcb37f03fe5836413118e619c91",
+   "wa": 4,
+   "tel": 3,
+   "new_sha256": "70d6519dcf6b64ed3a8d199bc1dd2556da259b3985051bf8d51414f42fe70344"
+  },
+  {
+   "url": "https://ktech.my/zh/autel-diagnostic-tools/maxisys-ms919-s2/",
+   "file": "zh/autel-diagnostic-tools/maxisys-ms919-s2/index.html",
+   "live_sha256": "946ee143d87a6374303409d7a667a80bb1be5972e5efd6973bca2198baabf919",
+   "wa": 4,
+   "tel": 3,
+   "new_sha256": "c522e3cb8b132c8e523cce93153331d473aa4746ee7965e73650244d4c029aaa"
+  },
+  {
+   "url": "https://ktech.my/autel-diagnostic-tools/maxisys-ms909-s2/",
+   "file": "autel-diagnostic-tools/maxisys-ms909-s2/index.html",
+   "live_sha256": "be785e5011cc05480d8d0d6484839b0b7824efba0af6459a4ce409dfd960a875",
+   "wa": 4,
+   "tel": 3,
+   "new_sha256": "ea939a86b3cc3a2658d0aa010871f306fb23e640597e275460abf194a6f25f32"
+  },
+  {
+   "url": "https://ktech.my/ms/autel-diagnostic-tools/maxisys-ms909-s2/",
+   "file": "ms/autel-diagnostic-tools/maxisys-ms909-s2/index.html",
+   "live_sha256": "4fc65d5da91391a5a138e9bea015049555c9409b8b824743d29f230baf1d31e2",
+   "wa": 4,
+   "tel": 3,
+   "new_sha256": "fe67fc70f712645c18e3f793a938490e920d3c2bdada652fd7747c1394a34200"
+  },
+  {
+   "url": "https://ktech.my/zh/autel-diagnostic-tools/maxisys-ms909-s2/",
+   "file": "zh/autel-diagnostic-tools/maxisys-ms909-s2/index.html",
+   "live_sha256": "e60f71b969e3a781be3ecd99910cdb4b570ed08ab494a1a63b2fcadcc98a5f91",
+   "wa": 4,
+   "tel": 3,
+   "new_sha256": "715082c4f584af4c56e9de6c0da108e5f04ebf8656b7f57355dabcbc922ab3c4"
+  },
+  {
+   "url": "https://ktech.my/autel-diagnostic-tools/maxisys-ms909ev/",
+   "file": "autel-diagnostic-tools/maxisys-ms909ev/index.html",
+   "live_sha256": "165e002edfc44f7998beda8ad66d2f461bb5dfcad5c29cebb3cb835c15c2c501",
+   "wa": 4,
+   "tel": 3,
+   "new_sha256": "88d4af72855eec38027fe2ba2544d595588ba0eba09e8e85fd00e424c4dbeb07"
+  },
+  {
+   "url": "https://ktech.my/ms/autel-diagnostic-tools/maxisys-ms909ev/",
+   "file": "ms/autel-diagnostic-tools/maxisys-ms909ev/index.html",
+   "live_sha256": "234b756e921b19f53af820e350b3cc4b246c826818f0ef6c7b92a3eab06322ee",
+   "wa": 4,
+   "tel": 3,
+   "new_sha256": "24acc957ad2985f81c37fa0f749fb5e6155528b6424bc28a7a6d007e34af9e65"
+  },
+  {
+   "url": "https://ktech.my/zh/autel-diagnostic-tools/maxisys-ms909ev/",
+   "file": "zh/autel-diagnostic-tools/maxisys-ms909ev/index.html",
+   "live_sha256": "7d70e5a56f6c168422b330ff182d8f1b4301efc18002f95986583149aec6a328",
+   "wa": 4,
+   "tel": 3,
+   "new_sha256": "07089082317608eea33ca1ebfb8b5736bb352c6da268f47598c225ba69c288b2"
+  },
+  {
+   "url": "https://ktech.my/autel-diagnostic-tools/ev-diagnostics-upgrade-kit/",
+   "file": "autel-diagnostic-tools/ev-diagnostics-upgrade-kit/index.html",
+   "live_sha256": "6d50b1eecffbf11d16d9d8830ccbc7fc5114c2d2b1658c872faa030e0092b860",
+   "wa": 4,
+   "tel": 3,
+   "new_sha256": "602626dbc4570224827619577385d0f87c7c70cb65f3adadc626ce9efffcb1ee"
+  },
+  {
+   "url": "https://ktech.my/ms/autel-diagnostic-tools/ev-diagnostics-upgrade-kit/",
+   "file": "ms/autel-diagnostic-tools/ev-diagnostics-upgrade-kit/index.html",
+   "live_sha256": "3a54b2e39cb99c44b4c04cc2f07145cdef51999ec49a1ea2b15a9d30de39f74b",
+   "wa": 4,
+   "tel": 3,
+   "new_sha256": "2339fbe739a75533083555e0ca173c9d02c6ed8cb6b813031260bb812a2f6086"
+  },
+  {
+   "url": "https://ktech.my/zh/autel-diagnostic-tools/ev-diagnostics-upgrade-kit/",
+   "file": "zh/autel-diagnostic-tools/ev-diagnostics-upgrade-kit/index.html",
+   "live_sha256": "9bb525987044f28c1d0f3f3715642005414e72e946f3085a50f356785234b792",
+   "wa": 4,
+   "tel": 3,
+   "new_sha256": "4ca1ad118e47f7c9ea645cf985c3ae1ce063fa9f36f4919cb8e7a9923890262c"
+  },
+  {
+   "url": "https://ktech.my/autel-diagnostic-tools/maxisys-ms908s3/",
+   "file": "autel-diagnostic-tools/maxisys-ms908s3/index.html",
+   "live_sha256": "acb3f830c3ffdf2c1809d97610dc8d7f7ed5b29ddd2276c82b1abc9e2f85ac4b",
+   "wa": 4,
+   "tel": 3,
+   "new_sha256": "c25df8a195a559855862595d4d28101da5fc22516cc6820b2b07a72a9b6386d0"
+  },
+  {
+   "url": "https://ktech.my/ms/autel-diagnostic-tools/maxisys-ms908s3/",
+   "file": "ms/autel-diagnostic-tools/maxisys-ms908s3/index.html",
+   "live_sha256": "628d550424cfe920402d137bfc8a72bc4a8549cdf17da2d3762e7c860fae4a3a",
+   "wa": 4,
+   "tel": 3,
+   "new_sha256": "4a1b2f641b4849cffecde47d3f5f94c813a5e59bc97ada900d1a939ea71d271a"
+  },
+  {
+   "url": "https://ktech.my/zh/autel-diagnostic-tools/maxisys-ms908s3/",
+   "file": "zh/autel-diagnostic-tools/maxisys-ms908s3/index.html",
+   "live_sha256": "3a5f78b698e21ef73d16210ba0f676936d4c6ff9f0e052e00b32de8b7e3d1245",
+   "wa": 4,
+   "tel": 3,
+   "new_sha256": "cc6cc36ad02276cd30cfc7d7be0850dd869567aaf2e93fa3c2730eabab63281a"
+  },
+  {
+   "url": "https://ktech.my/autel-diagnostic-tools/maxisys-ms906pro/",
+   "file": "autel-diagnostic-tools/maxisys-ms906pro/index.html",
+   "live_sha256": "2356f0afb1d2d8cd35b826188b6c88d87190031e9d458d6bf6dc288b733118b9",
+   "wa": 4,
+   "tel": 3,
+   "new_sha256": "d5befe9087cbafa962952baed84c28d5196f9f63ac35cbcc18744215a0ead96b"
+  },
+  {
+   "url": "https://ktech.my/ms/autel-diagnostic-tools/maxisys-ms906pro/",
+   "file": "ms/autel-diagnostic-tools/maxisys-ms906pro/index.html",
+   "live_sha256": "52fc6c254ae0c0a407c284fb45e5ff5a1405617c7e5fd21ebb67f54da591cf5f",
+   "wa": 4,
+   "tel": 3,
+   "new_sha256": "90f6008ae4edf37d4b02d61da187bc31442bef64a00db931fddaa4a63a47ddbf"
+  },
+  {
+   "url": "https://ktech.my/zh/autel-diagnostic-tools/maxisys-ms906pro/",
+   "file": "zh/autel-diagnostic-tools/maxisys-ms906pro/index.html",
+   "live_sha256": "4c5271447633a22c765f708fe61d99f2452d5951c443927da7497d676292c760",
+   "wa": 4,
+   "tel": 3,
+   "new_sha256": "c9378b1b28eff51bae510d464d81249c534b51bcb336b72cbda8c11406d00a75"
+  },
+  {
+   "url": "https://ktech.my/autel-diagnostic-tools/maxicheck-mx900/",
+   "file": "autel-diagnostic-tools/maxicheck-mx900/index.html",
+   "live_sha256": "e031c0528e509441ddafe57473dedec6f1683379a3326905843020890817da7e",
+   "wa": 4,
+   "tel": 3,
+   "new_sha256": "4580d9f2c4e21f81be04ea559d65bbb0796f44b2433e1861f4a6e9a92be303d7"
+  },
+  {
+   "url": "https://ktech.my/ms/autel-diagnostic-tools/maxicheck-mx900/",
+   "file": "ms/autel-diagnostic-tools/maxicheck-mx900/index.html",
+   "live_sha256": "eed2cde4549ae441c18effd1f637f1d71a998b635f79208d19aa0efa66581cfa",
+   "wa": 4,
+   "tel": 3,
+   "new_sha256": "d78b0737146df7a4b932c8e68057677b8c4e614b7284473fe39dcac4f5904bf2"
+  },
+  {
+   "url": "https://ktech.my/zh/autel-diagnostic-tools/maxicheck-mx900/",
+   "file": "zh/autel-diagnostic-tools/maxicheck-mx900/index.html",
+   "live_sha256": "6ac9e33fc82213c14322a229145cefec51c357792efe4437cda8da469390dbf3",
+   "wa": 4,
+   "tel": 3,
+   "new_sha256": "d7b3d49f4a5878d6fed8f87da5fb7ac2ad76926ea39ee68b0969769dd5e1adaf"
+  },
+  {
+   "url": "https://ktech.my/privacy/",
+   "file": "privacy/index.html",
+   "live_sha256": "f125665f7f1ae41c1cd427501dc70192721e45d80b83bac9664a8afa124b83b4",
+   "wa": 3,
+   "tel": 6,
+   "new_sha256": "c369cb3d30cde6423f9cc6020c73bf0eeb1ca39b30c8c27cffb647677946a86b"
+  },
+  {
+   "url": "https://ktech.my/ms/privacy/",
+   "file": "ms/privacy/index.html",
+   "live_sha256": "d31fbbba6a43d35ed8b67e1e5a14ab7126f91297a4be010dd253761120563e3b",
+   "wa": 3,
+   "tel": 6,
+   "new_sha256": "1a74c6a376ee304aa8a0e12cbf51b49220b06619fa37ddef8ac69035284e69b6"
+  },
+  {
+   "url": "https://ktech.my/zh/privacy/",
+   "file": "zh/privacy/index.html",
+   "live_sha256": "787d0bdc2f09439bf3b10f8f3a308864bc80ad80d5c596fb1f442636e6b7ce9a",
+   "wa": 3,
+   "tel": 6,
+   "new_sha256": "027eae19bdb4bde44985c8ad301b3c869c462eead76d8a9ddedbfad54cabedd0"
+  }
+ ]
+}

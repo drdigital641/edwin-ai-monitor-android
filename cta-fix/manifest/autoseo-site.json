@@ -1,0 +1,667 @@
+{
+ "site": {
+  "slug": "autoseo-site",
+  "origin": "https://autoseo.my",
+  "prefix": "/",
+  "exclude": [
+   "/preview/"
+  ],
+  "bridge": "autoseo",
+  "base": "",
+  "src": "/p1-cta.js"
+ },
+ "tag": "<script src=\"/p1-cta.js?v=33c3c1b4\" defer></script>",
+ "pages_seen": 81,
+ "with_cta": 81,
+ "already_tracked": 0,
+ "to_fix": [
+  {
+   "url": "https://autoseo.my/",
+   "file": "index.html",
+   "live_sha256": "0ddc6de1d93af2b18a06b04b801b24ae11f6515d080d20488a682678986811b4",
+   "wa": 8,
+   "tel": 0,
+   "new_sha256": "4b14d0ca4eef46608b7718886f2ad6e0d3ed7f53f3859adea4664a381e6a7693"
+  },
+  {
+   "url": "https://autoseo.my/about/",
+   "file": "about/index.html",
+   "live_sha256": "8bc0ad09bd2d0d12defc73af832d560d997747796682d131989f105b0be0b336",
+   "wa": 8,
+   "tel": 0,
+   "new_sha256": "c58ac8d01ff2b20b4d4573e0bbb9934629083e3494ebca6bb9a5666a689cc353"
+  },
+  {
+   "url": "https://autoseo.my/clients/",
+   "file": "clients/index.html",
+   "live_sha256": "01f5cc319e870162b03d6eae60d71a37670aabebd16979a4d1bc250cc0b0662f",
+   "wa": 7,
+   "tel": 0,
+   "new_sha256": "45d7372645698eb060508871fd53fe6facaabcb0967a7c692d682361f35e1f5a"
+  },
+  {
+   "url": "https://autoseo.my/contact/",
+   "file": "contact/index.html",
+   "live_sha256": "a70031aa608f01e744b2b692a3261ee2ea6eab0f3eec2eeb4ba432b8cda9b7dc",
+   "wa": 8,
+   "tel": 0,
+   "new_sha256": "65d16b0240ecbad6aac0d8ad44419f6105ceff4f706f772de6102609483775c6"
+  },
+  {
+   "url": "https://autoseo.my/faq/",
+   "file": "faq/index.html",
+   "live_sha256": "0db1343731b66e7a774f5e58bfe1d2bdfa8e67769142bc9a1e40a943a01cb977",
+   "wa": 7,
+   "tel": 0,
+   "new_sha256": "ac2c2a88fa3f767f833b5c2efc31dc1152d332495f67ce364f051eef4389b23a"
+  },
+  {
+   "url": "https://autoseo.my/how-it-works/",
+   "file": "how-it-works/index.html",
+   "live_sha256": "2ae1e224aebe78105fcf38b420a3cb7687a6497c74336862f2d76e3e3942a28d",
+   "wa": 8,
+   "tel": 0,
+   "new_sha256": "f204be998d6e8838c4229357e1a349b2d495b1b019920793c170eaf25e3db169"
+  },
+  {
+   "url": "https://autoseo.my/industries/battery-spare-parts/",
+   "file": "industries/battery-spare-parts/index.html",
+   "live_sha256": "c22f7fe485c893ef45007cecd88286c07a0390c30ffdd06d8a3d82269af42a09",
+   "wa": 7,
+   "tel": 0,
+   "new_sha256": "776f09e6ab1d2ed173958c79351b7f9356128590e20b3719c86153e635f57f80"
+  },
+  {
+   "url": "https://autoseo.my/industries/car-accessories/",
+   "file": "industries/car-accessories/index.html",
+   "live_sha256": "b82dab5cf8d4550d0b0ad6d0322205ccaea51355aead4cd1945b6ddd73fb266b",
+   "wa": 7,
+   "tel": 0,
+   "new_sha256": "2d1a8090e85816a140ae26185178ef59347a36f823681fb88b9cab5256de878c"
+  },
+  {
+   "url": "https://autoseo.my/industries/car-aircon-specialists/",
+   "file": "industries/car-aircon-specialists/index.html",
+   "live_sha256": "a452ddb4814141b95cc889bee6ad8174d6373e6c84c3469e0ded2830143b8827",
+   "wa": 7,
+   "tel": 0,
+   "new_sha256": "23c2d5f0a269b260beaac215224c37678024dfc347c01a5e8bde873f97cbc2f9"
+  },
+  {
+   "url": "https://autoseo.my/industries/car-dealerships/",
+   "file": "industries/car-dealerships/index.html",
+   "live_sha256": "01026a9d9a8ea9bfb8883a9b7c0ed93a98edc28b510ee0587e1faf2a283959f1",
+   "wa": 7,
+   "tel": 0,
+   "new_sha256": "e28dc6cbe9eadb5ad30ea33e6aac11d043c49f4703fe5050c53ff9d8959892fa"
+  },
+  {
+   "url": "https://autoseo.my/industries/car-detailing/",
+   "file": "industries/car-detailing/index.html",
+   "live_sha256": "bb97a31d423e25a5858de807a2241a8af7d7e1db9f89e626056081eeb343539e",
+   "wa": 7,
+   "tel": 0,
+   "new_sha256": "503dfde2deb3daea2c8caa130a96ed9ae94e6a58a16537b18e643b572bd3cdf0"
+  },
+  {
+   "url": "https://autoseo.my/industries/car-workshops/",
+   "file": "industries/car-workshops/index.html",
+   "live_sha256": "9d0e08062fd0085e3ba421c5eccfd8e5acc7081896ed365a1925fd95e67f9fc7",
+   "wa": 7,
+   "tel": 0,
+   "new_sha256": "edabb3d88f8a055228762044bb14353fedeb9112e1ee6f71ef85d9b2877e671b"
+  },
+  {
+   "url": "https://autoseo.my/industries/equipment-diagnostic-tools/",
+   "file": "industries/equipment-diagnostic-tools/index.html",
+   "live_sha256": "fdf75af7faec2a79c831180274d9b0378523a071ffa0cb49563342c446b23ed8",
+   "wa": 7,
+   "tel": 0,
+   "new_sha256": "44400d9154d9e59806e2b7dc169404fc2f8be24a4b5d5e73a0af611232dad544"
+  },
+  {
+   "url": "https://autoseo.my/industries/ev-hybrid-specialists/",
+   "file": "industries/ev-hybrid-specialists/index.html",
+   "live_sha256": "af4ad546e4452fba07e7b6f4928099fd18c7c8c3c34e3531d4efbb8bc3a4cac6",
+   "wa": 7,
+   "tel": 0,
+   "new_sha256": "ceb1467be9c8d8f036ef600c11ff6c727a8841f79c8dda90b7374431af0720d7"
+  },
+  {
+   "url": "https://autoseo.my/industries/",
+   "file": "industries/index.html",
+   "live_sha256": "c099a743a3338589da32633b2f0f77558787cf89bc427bef8091a04628b5612a",
+   "wa": 8,
+   "tel": 0,
+   "new_sha256": "db7a9d0e384051fbd6e105ac8fe28a3aa2efc1fb09d18f6be06860fa4b726b73"
+  },
+  {
+   "url": "https://autoseo.my/industries/tyre-shops/",
+   "file": "industries/tyre-shops/index.html",
+   "live_sha256": "d25ab4e863cf61223c944823fd55c06bae80058cfc6f522bcf805f6f0e911c95",
+   "wa": 7,
+   "tel": 0,
+   "new_sha256": "3d4d33c781a5f19123754dc9312a9a823f23eb3fadace9a43946f7f44aa1d75f"
+  },
+  {
+   "url": "https://autoseo.my/privacy/",
+   "file": "privacy/index.html",
+   "live_sha256": "a1f3bbf5d072ab86581ca9d1f6e0b9923195d1bd50ded52d7d661a8964de3c12",
+   "wa": 5,
+   "tel": 0,
+   "new_sha256": "689420962e0cf194bd50b8200e4c7e2253f5a97bdfc178869696ac0bcb518305"
+  },
+  {
+   "url": "https://autoseo.my/services/aeo-answer-engine-optimisation/",
+   "file": "services/aeo-answer-engine-optimisation/index.html",
+   "live_sha256": "5f94396f81a7bc72af7f3f59073a30d354d5b07f4f57905de9acee1c588c2750",
+   "wa": 7,
+   "tel": 0,
+   "new_sha256": "07e3ff8ad4f79b15696ca5eb0cbdae238435d282614bb5c30b938b392b70a9e4"
+  },
+  {
+   "url": "https://autoseo.my/services/automotive-content-marketing/",
+   "file": "services/automotive-content-marketing/index.html",
+   "live_sha256": "332c20c9d34ebfc5d19a38efe47ae1f3634cda853e0b5305775ba0793d97d07c",
+   "wa": 7,
+   "tel": 0,
+   "new_sha256": "8ff674f6f6e161fd768b720df5af602f0b3486ce70b9e277955f1ba925eea941"
+  },
+  {
+   "url": "https://autoseo.my/services/automotive-seo/",
+   "file": "services/automotive-seo/index.html",
+   "live_sha256": "748c5fd5a8326ee5044201d87f13059fb0cd810d48fa23f0fb63e7110c3c9cc6",
+   "wa": 7,
+   "tel": 0,
+   "new_sha256": "54135ee1a0204768907c41f3128d49f1b71dbecb322e6d86297687cf2f4b4e70"
+  },
+  {
+   "url": "https://autoseo.my/services/automotive-website-design/",
+   "file": "services/automotive-website-design/index.html",
+   "live_sha256": "228f3d45f372865ce6c0f094b62df33e774602ebce61f399caa648b89bb9a635",
+   "wa": 7,
+   "tel": 0,
+   "new_sha256": "12e2827b1dd2f8dd0952bcf08859737aea81a7835d597b219247723b044731dd"
+  },
+  {
+   "url": "https://autoseo.my/services/geo-ai-search-visibility/",
+   "file": "services/geo-ai-search-visibility/index.html",
+   "live_sha256": "a7bf0e9acbff9f40c762bd1296cbb8213e2e6a1933679a2807881e6dff184634",
+   "wa": 7,
+   "tel": 0,
+   "new_sha256": "112e7ca3896f80e11976fa64d486bfe24fb5eeef50ed49394468c6b067ef2d63"
+  },
+  {
+   "url": "https://autoseo.my/services/google-maps-local-seo/",
+   "file": "services/google-maps-local-seo/index.html",
+   "live_sha256": "5bf905a78ba8ebc53fa8af6d5d4833d6853125d05700a27bffc32aa95ed204a9",
+   "wa": 7,
+   "tel": 0,
+   "new_sha256": "4839c0f7fa042b6278579325ae430647fb524213573fbe5809702fff5932301b"
+  },
+  {
+   "url": "https://autoseo.my/services/",
+   "file": "services/index.html",
+   "live_sha256": "677a2dec0b8630611beb9a249c9ececcc59c33f9348d6417ff3cc4dfe9e2b689",
+   "wa": 8,
+   "tel": 0,
+   "new_sha256": "f23927fb5235cf3fc1ab852c11f97aaf937374293d97e8e7fb05c0ee8fa32edc"
+  },
+  {
+   "url": "https://autoseo.my/ms/about/",
+   "file": "ms/about/index.html",
+   "live_sha256": "3ea5ba68bc1016f56389ebfe07cfee0f798ec031d36a9c615aad112383a14fc7",
+   "wa": 8,
+   "tel": 0,
+   "new_sha256": "f9492061e4e6c3aca389e1c15af20abce16e19d281d35f8552364dccd98bafed"
+  },
+  {
+   "url": "https://autoseo.my/ms/clients/",
+   "file": "ms/clients/index.html",
+   "live_sha256": "1de50228fb301cdf49a8c00d718391fcde0665a47410e4dfd6c767f58dba2e10",
+   "wa": 7,
+   "tel": 0,
+   "new_sha256": "08240cce7bd80bc680bd5c50225d57e94539bcbc02e1fd7fdccd65a8899d3df9"
+  },
+  {
+   "url": "https://autoseo.my/ms/contact/",
+   "file": "ms/contact/index.html",
+   "live_sha256": "d8ece5361d82e3308dca25c6379e533b608547c4e15ae4c389dd8c56a6588724",
+   "wa": 8,
+   "tel": 0,
+   "new_sha256": "1e378be3eab8f9b12b3d49093789b0e9453db5d5a851aea48baaffb6bffe0c6a"
+  },
+  {
+   "url": "https://autoseo.my/ms/faq/",
+   "file": "ms/faq/index.html",
+   "live_sha256": "e8df562d06ed4e2e410eb23cbfda1ea4802524daea12d4755c1e96161657a491",
+   "wa": 7,
+   "tel": 0,
+   "new_sha256": "cc111a3b36471e38d3e9435d987ffe9f5b3ef448f4e20684f3d2dd43ba260b38"
+  },
+  {
+   "url": "https://autoseo.my/ms/how-it-works/",
+   "file": "ms/how-it-works/index.html",
+   "live_sha256": "ea3b28360e296e47dd8b185818f91180ec9c0c25d7321eb8a3ba94916087def8",
+   "wa": 8,
+   "tel": 0,
+   "new_sha256": "33c331bc3872165329e1a881ce756e792b4a6b99aea8bb191171ecd291b104f5"
+  },
+  {
+   "url": "https://autoseo.my/ms/",
+   "file": "ms/index.html",
+   "live_sha256": "599de5884830a81975bc93e105d6a7a44894fe0046be84d63600b4d0ede4adb0",
+   "wa": 8,
+   "tel": 0,
+   "new_sha256": "afe819f763477c32bfaafb068adf7d1d2aeee8b0f36af2965968b4c2a1860b48"
+  },
+  {
+   "url": "https://autoseo.my/ms/industries/battery-spare-parts/",
+   "file": "ms/industries/battery-spare-parts/index.html",
+   "live_sha256": "47d0d58ca65c37dc61019db120d59e9bc1b70a007b3f86c0379e5a97b5b4e5f7",
+   "wa": 7,
+   "tel": 0,
+   "new_sha256": "ffb1c473798d416ec4480c574bbaaac48e6be27c5d57ca962a1a6bc9f899daa4"
+  },
+  {
+   "url": "https://autoseo.my/ms/industries/car-accessories/",
+   "file": "ms/industries/car-accessories/index.html",
+   "live_sha256": "f4461cba987b6b1ba9e129014489b0ee6baa0cd38c02fbc5973142a2e5717d93",
+   "wa": 7,
+   "tel": 0,
+   "new_sha256": "108d086bea7075f123cdd08166810657fa2f8116d1cb7e5aab30bdf92233b7f0"
+  },
+  {
+   "url": "https://autoseo.my/ms/industries/car-aircon-specialists/",
+   "file": "ms/industries/car-aircon-specialists/index.html",
+   "live_sha256": "5bd839723084b42fef78b22c0c11288cd85c49ac410f91535ac614f6901ea6d1",
+   "wa": 7,
+   "tel": 0,
+   "new_sha256": "cda3429694eb1c2e2b99df4d0873f5470b390c0ec9b753f8e385906a92ea1786"
+  },
+  {
+   "url": "https://autoseo.my/ms/industries/car-dealerships/",
+   "file": "ms/industries/car-dealerships/index.html",
+   "live_sha256": "cc20757f2d93f9989f98e5ec735ce26abed2d656da0ddb469cac9fdb01c77638",
+   "wa": 7,
+   "tel": 0,
+   "new_sha256": "5b5c9a2c77ed16fdcaf1deb71ed87919a1cbff3ce323461b7c1d4d6e2573f083"
+  },
+  {
+   "url": "https://autoseo.my/ms/industries/car-detailing/",
+   "file": "ms/industries/car-detailing/index.html",
+   "live_sha256": "fffca4ac4292bfb6885df388a4cb3c05e1981cc33889fd3b0bc86a246c145649",
+   "wa": 7,
+   "tel": 0,
+   "new_sha256": "8bbb7ed51cc029c14adaede4d07d4e5f8d91647571f21ecb91a4fee14d0c39a2"
+  },
+  {
+   "url": "https://autoseo.my/ms/industries/car-workshops/",
+   "file": "ms/industries/car-workshops/index.html",
+   "live_sha256": "376e1156a927cfff77264bacf134ce2fa228e295279d16c382e9d33140344c7a",
+   "wa": 7,
+   "tel": 0,
+   "new_sha256": "26b75e680aed983f278374383a118da553a0edb1996a457c1f0efc72de0a45ca"
+  },
+  {
+   "url": "https://autoseo.my/ms/industries/equipment-diagnostic-tools/",
+   "file": "ms/industries/equipment-diagnostic-tools/index.html",
+   "live_sha256": "3abf6597f671eca768e94e9cdaaf98b290bb38050a0d5551e9ba3fadd7be9787",
+   "wa": 7,
+   "tel": 0,
+   "new_sha256": "26019b5dd01f53c807739ec98031c79bf527a91e60bf751b51cff4c778f65999"
+  },
+  {
+   "url": "https://autoseo.my/ms/industries/ev-hybrid-specialists/",
+   "file": "ms/industries/ev-hybrid-specialists/index.html",
+   "live_sha256": "dda24166da196daa36f8dc1c4329ae387615c6d9b20c5ee3366bb4b21b97c877",
+   "wa": 7,
+   "tel": 0,
+   "new_sha256": "ffe8ff2e85b7df4399f60e86d3fdfc3f9b05105aadbc921495647f13d4b69a9e"
+  },
+  {
+   "url": "https://autoseo.my/ms/industries/",
+   "file": "ms/industries/index.html",
+   "live_sha256": "618abdb58d14cf6d64eaaedb335ce0717d2659e23fcbad695d0b45b7d9901f81",
+   "wa": 8,
+   "tel": 0,
+   "new_sha256": "d96d1df96c0c94cc64581bc52773bf082d4dce8c99cf2f3c63087250b871f63a"
+  },
+  {
+   "url": "https://autoseo.my/ms/industries/tyre-shops/",
+   "file": "ms/industries/tyre-shops/index.html",
+   "live_sha256": "2b0d1be23873332f5f6fb284ec8661dcc43c12a6327335eb7151c9bae14893ce",
+   "wa": 7,
+   "tel": 0,
+   "new_sha256": "4258e53e4c9d37f06ae29cd66bfb920748101f8987746dbe5d150f82875723a5"
+  },
+  {
+   "url": "https://autoseo.my/ms/privacy/",
+   "file": "ms/privacy/index.html",
+   "live_sha256": "0d87b02089564cc7e501c15685ad4cf4c75e025fa00f1cc8ba3d531a07b8b5cd",
+   "wa": 5,
+   "tel": 0,
+   "new_sha256": "0da7873bcfd13cc0d613038305f7402d15782ab96b95bb4ac3b2147bcc9267de"
+  },
+  {
+   "url": "https://autoseo.my/ms/services/aeo-answer-engine-optimisation/",
+   "file": "ms/services/aeo-answer-engine-optimisation/index.html",
+   "live_sha256": "5a7b855bc8d539e4e61864392e8fb6a8e00134c1557ef960f7f15ab3dd7d82c5",
+   "wa": 7,
+   "tel": 0,
+   "new_sha256": "531fa5335bab3f8c23426ffbb988060b5f5e87e3dbef4b95826f35b463538861"
+  },
+  {
+   "url": "https://autoseo.my/ms/services/automotive-content-marketing/",
+   "file": "ms/services/automotive-content-marketing/index.html",
+   "live_sha256": "a60eae443371e61b12977f8ef11f2ccd9ede3bdbdd4bbac0273f08ccbeb28372",
+   "wa": 7,
+   "tel": 0,
+   "new_sha256": "c8972ea7726c59b32ddaf71a300634710e3431db52e9d3ab5c14d81b5e54c8de"
+  },
+  {
+   "url": "https://autoseo.my/ms/services/automotive-seo/",
+   "file": "ms/services/automotive-seo/index.html",
+   "live_sha256": "2406dc0355972722c80d1d9bfe35643ccdb5adcdffde22a1e9cad795ea75f90c",
+   "wa": 7,
+   "tel": 0,
+   "new_sha256": "0a1773e9d636c43971541718b110ecd2004b7fc5a6588d9c434974c35be196b3"
+  },
+  {
+   "url": "https://autoseo.my/ms/services/automotive-website-design/",
+   "file": "ms/services/automotive-website-design/index.html",
+   "live_sha256": "7640ed29e5ebd7ee14ae879742550f789b58ba89cda0379449787efe8508a93a",
+   "wa": 7,
+   "tel": 0,
+   "new_sha256": "096e200f6ad4cd871d75cca53764bc5cae18585ef0be89c212aba2dc84ab413d"
+  },
+  {
+   "url": "https://autoseo.my/ms/services/geo-ai-search-visibility/",
+   "file": "ms/services/geo-ai-search-visibility/index.html",
+   "live_sha256": "27d33b4c287d0827883ef539f38ecc673b679ef4820262ce68cb3f126e64d52f",
+   "wa": 7,
+   "tel": 0,
+   "new_sha256": "5f90668152c7674ecfd0555b5c955f58006e0be90ca3666afbf28574ca2644b3"
+  },
+  {
+   "url": "https://autoseo.my/ms/services/google-maps-local-seo/",
+   "file": "ms/services/google-maps-local-seo/index.html",
+   "live_sha256": "005792627ff87dc4f2b9f694ac90fc4586ca4378dcce600553f5a40746d08b95",
+   "wa": 7,
+   "tel": 0,
+   "new_sha256": "2461a9cf618e547c12ee436c6abd56939f48efc82ccd0ddff61ff139a3dcc03e"
+  },
+  {
+   "url": "https://autoseo.my/ms/services/",
+   "file": "ms/services/index.html",
+   "live_sha256": "d3d637fe10e2558d3131975b87cc096a5eb7ded011271c4a51d74831549a656e",
+   "wa": 8,
+   "tel": 0,
+   "new_sha256": "162ab4d2c0038728f0ee8d92bac6badd0ec9258e51493c661a9ef5a5b3fce3e5"
+  },
+  {
+   "url": "https://autoseo.my/zh/about/",
+   "file": "zh/about/index.html",
+   "live_sha256": "ac60418e2661c1f1c3bfdcd25d67de84416290b77daed6b87e2e3d756aad5a8c",
+   "wa": 8,
+   "tel": 0,
+   "new_sha256": "d9887f4a239ebe6e421ccd47453d90ee0d35ee60525ba5a374a299c7fda5096a"
+  },
+  {
+   "url": "https://autoseo.my/zh/clients/",
+   "file": "zh/clients/index.html",
+   "live_sha256": "24f38b6e866c9eccd28ae6992552e9069ef643b9c0f1a79bb9cdda1b38e0ec63",
+   "wa": 7,
+   "tel": 0,
+   "new_sha256": "7aa761ff90c6e7ea21ba573f5b37063db68cc25f2975f4832143029949c50032"
+  },
+  {
+   "url": "https://autoseo.my/zh/contact/",
+   "file": "zh/contact/index.html",
+   "live_sha256": "fcc90df4fa5ee5d793b97159951683abddbc14ccc56b0ee09be86d473a4e929a",
+   "wa": 8,
+   "tel": 0,
+   "new_sha256": "e676c664f62707c0e7668595e7e36947c7c4bf09d04dfb7a6389ca14b1642151"
+  },
+  {
+   "url": "https://autoseo.my/zh/faq/",
+   "file": "zh/faq/index.html",
+   "live_sha256": "0c34b240b46b104509ddc66158c94b08f29738d283b4f115e52de7a873ce2a69",
+   "wa": 7,
+   "tel": 0,
+   "new_sha256": "7d893592e2d2bd9db8eecc9d42e1a1d5dc0805853d833cbfaac10fc4472df235"
+  },
+  {
+   "url": "https://autoseo.my/zh/how-it-works/",
+   "file": "zh/how-it-works/index.html",
+   "live_sha256": "51aadaa7bee15d371dc521e41e0493ca299049dc38fa3ac36cd893694ead66ea",
+   "wa": 8,
+   "tel": 0,
+   "new_sha256": "2e094faf689e62f568a3ae6b85e1981a4923503a83b89bb7f35daef0dbfeb06e"
+  },
+  {
+   "url": "https://autoseo.my/zh/",
+   "file": "zh/index.html",
+   "live_sha256": "224cad284db6db614501252b0ac1569fbadc2539de8eeee53c5c4fb59ecae2bb",
+   "wa": 8,
+   "tel": 0,
+   "new_sha256": "8d936585cbeaf65fb1b6164695d75e6f5bca4b46fdead91443e7a7b94593ab53"
+  },
+  {
+   "url": "https://autoseo.my/zh/industries/battery-spare-parts/",
+   "file": "zh/industries/battery-spare-parts/index.html",
+   "live_sha256": "3356adf8004f28441e429daba6c079af4e85a87d7ebdf93034302d702b6b2dd7",
+   "wa": 7,
+   "tel": 0,
+   "new_sha256": "0489c88bf6368c23d6e4ecfbba2b2eb3cb3c7f73319675b7627faf61b3e54993"
+  },
+  {
+   "url": "https://autoseo.my/zh/industries/car-accessories/",
+   "file": "zh/industries/car-accessories/index.html",
+   "live_sha256": "a091073ee9e288ce916709bcd55b61530f26dbbd1acb0aef84940d07248cf0cd",
+   "wa": 7,
+   "tel": 0,
+   "new_sha256": "0e4c317a6ef9fc386bf71bb08b387a7fe5408ec87814bb007b5e7fd61ed64245"
+  },
+  {
+   "url": "https://autoseo.my/zh/industries/car-aircon-specialists/",
+   "file": "zh/industries/car-aircon-specialists/index.html",
+   "live_sha256": "7639c5754f5c493a9a45d66392558bd14cb29284d31315f7b6391f66c3937109",
+   "wa": 7,
+   "tel": 0,
+   "new_sha256": "64a10248a16cefbe87e7f9ec2d280e40675b978bb90d91209ac7a4d464f30c09"
+  },
+  {
+   "url": "https://autoseo.my/zh/industries/car-dealerships/",
+   "file": "zh/industries/car-dealerships/index.html",
+   "live_sha256": "50ba712008308953139b018b9d2bf6a6169fdcdddb8ece8dd6b54fcd1bd7631e",
+   "wa": 7,
+   "tel": 0,
+   "new_sha256": "482c9d9094428155e993fd3145e959d88d33b028b9795ca1d8e7329a0baa2f47"
+  },
+  {
+   "url": "https://autoseo.my/zh/industries/car-detailing/",
+   "file": "zh/industries/car-detailing/index.html",
+   "live_sha256": "30e94d51ae202688e37bb7b22440ee72469f426096f853f95b8238baf771e90f",
+   "wa": 7,
+   "tel": 0,
+   "new_sha256": "430171a47a9e1c834113dc4fe5007ff62c5e9122e6dc5178c6e84d3059b087c4"
+  },
+  {
+   "url": "https://autoseo.my/zh/industries/car-workshops/",
+   "file": "zh/industries/car-workshops/index.html",
+   "live_sha256": "6100cd1d66d17821bc4d8c6ea3cc8bea805fb3cbb8f0a74441716dd0c035a149",
+   "wa": 7,
+   "tel": 0,
+   "new_sha256": "f284ebff61f55ef8db8adc392044dae648db32f57647d47ea16c93e0eff3e08f"
+  },
+  {
+   "url": "https://autoseo.my/zh/industries/equipment-diagnostic-tools/",
+   "file": "zh/industries/equipment-diagnostic-tools/index.html",
+   "live_sha256": "320abaa4f23f9f5bb42a02b049144417d24c4bb7fed6a6783ac4b044cf45fe1f",
+   "wa": 7,
+   "tel": 0,
+   "new_sha256": "0499ccde38dd1ab03d5e9a668457ae76772b373b7e56dd60990fac650273b30d"
+  },
+  {
+   "url": "https://autoseo.my/zh/industries/ev-hybrid-specialists/",
+   "file": "zh/industries/ev-hybrid-specialists/index.html",
+   "live_sha256": "d3a410b849e39bd8bd83888223c4044e4bcf21298ccebefffdb129bcb002de5e",
+   "wa": 7,
+   "tel": 0,
+   "new_sha256": "5d2eac4bec61731b26eecc24ab0f8fcc59a31e12cebd74759f9b03dbb91a73ec"
+  },
+  {
+   "url": "https://autoseo.my/zh/industries/",
+   "file": "zh/industries/index.html",
+   "live_sha256": "adc484cb71309b236c9911a9c97b01e426518cec4104a8fcb40790a11623906f",
+   "wa": 8,
+   "tel": 0,
+   "new_sha256": "7adce43887c330df42915af32913bca693448c5b014c2dd6e58a8b098dab78e5"
+  },
+  {
+   "url": "https://autoseo.my/zh/industries/tyre-shops/",
+   "file": "zh/industries/tyre-shops/index.html",
+   "live_sha256": "e1883c5a5de8441a768a94cacfe731bba6235cc23458bd7f0c6037cbae783c93",
+   "wa": 7,
+   "tel": 0,
+   "new_sha256": "fad803088c64e0fe2941cff2efcc08d4137cc9c90e73adf088f16cf3e7ccec34"
+  },
+  {
+   "url": "https://autoseo.my/zh/privacy/",
+   "file": "zh/privacy/index.html",
+   "live_sha256": "b3e0d540cf54d3eb95548baefbdcfcdc5dba36e3851fa748fa9f81a65e98292c",
+   "wa": 5,
+   "tel": 0,
+   "new_sha256": "183f61588ca62b575f427c95e0e8ec6ac375a905873e4ee7c3c99197a26ecf28"
+  },
+  {
+   "url": "https://autoseo.my/zh/services/aeo-answer-engine-optimisation/",
+   "file": "zh/services/aeo-answer-engine-optimisation/index.html",
+   "live_sha256": "ee5f5044583c2d5cb4c506c69aaf39b0465eed0fd4d52d420446076a88cef594",
+   "wa": 7,
+   "tel": 0,
+   "new_sha256": "e2b9bdc92eb9b09093d1091d520ae84275de0454fe95b24deae5548d79ff565d"
+  },
+  {
+   "url": "https://autoseo.my/zh/services/automotive-content-marketing/",
+   "file": "zh/services/automotive-content-marketing/index.html",
+   "live_sha256": "29c4ded40de38d0006ff9077086ff504af6fb84da7af4e466e24256edfbd547d",
+   "wa": 7,
+   "tel": 0,
+   "new_sha256": "8380e267a821a42d022e57dec34c0fb2b7a65b3e3a13ce2052e7d781d0a2fdc3"
+  },
+  {
+   "url": "https://autoseo.my/zh/services/automotive-seo/",
+   "file": "zh/services/automotive-seo/index.html",
+   "live_sha256": "d09e1c867a30c973dcbde52f95f19d1f3e2dc19edd4ecfdb81fad6ef51fd918e",
+   "wa": 7,
+   "tel": 0,
+   "new_sha256": "b90ed5a5acd279a03ff2eea9445bd971dfc76d91862bd43507ba7938c244571d"
+  },
+  {
+   "url": "https://autoseo.my/zh/services/automotive-website-design/",
+   "file": "zh/services/automotive-website-design/index.html",
+   "live_sha256": "08cf04ee544f268b080ced925d7af7515e37aef1cccf6ff9ff60505a05af7c79",
+   "wa": 7,
+   "tel": 0,
+   "new_sha256": "802e9af917c6561ae590ca998428d64be916517570a578de7dd3abbbbefe7920"
+  },
+  {
+   "url": "https://autoseo.my/zh/services/geo-ai-search-visibility/",
+   "file": "zh/services/geo-ai-search-visibility/index.html",
+   "live_sha256": "426b8432454b20b6712f952bbce528391f9439e3d8adb2563669657e28160825",
+   "wa": 7,
+   "tel": 0,
+   "new_sha256": "d25f4bf995b92f7490e37305f946903831b27316da7b663a088906a11774fcdf"
+  },
+  {
+   "url": "https://autoseo.my/zh/services/google-maps-local-seo/",
+   "file": "zh/services/google-maps-local-seo/index.html",
+   "live_sha256": "ea8ec6b9add05fb603010ab57effc583b0a62581bbc557e96254207d8ff0a5a3",
+   "wa": 7,
+   "tel": 0,
+   "new_sha256": "27b6c7dd89d11374225e8c4304ecd84b3aa34a618917dc6229aabcaa02af1284"
+  },
+  {
+   "url": "https://autoseo.my/zh/services/",
+   "file": "zh/services/index.html",
+   "live_sha256": "eb90e15ede5c205a6c1d0c5ee295c6ae8044991c804315be37bb818f505fad02",
+   "wa": 8,
+   "tel": 0,
+   "new_sha256": "3fbbebe89e6924eae39f2cc321fa8ef87cf90c46cdb9fd7fd0469e604a3b8ca0"
+  },
+  {
+   "url": "https://autoseo.my/articles/google-business-profile-car-workshop/",
+   "file": "articles/google-business-profile-car-workshop/index.html",
+   "live_sha256": "ce5c160d631c0082986b265acff20ce5e0a1376d0053e4572aa6c22d6ca79b7b",
+   "wa": 5,
+   "tel": 0,
+   "new_sha256": "d63d8b0b763c178f0f8fb27b39d941a44fd4fe3f87d49ce0b9592dd2077145b8"
+  },
+  {
+   "url": "https://autoseo.my/articles/",
+   "file": "articles/index.html",
+   "live_sha256": "3838a1c22d9f8e4f1171c43ea05e26365f8c718a1a26a21f95c612b7eac0074f",
+   "wa": 7,
+   "tel": 0,
+   "new_sha256": "2808b9ed54d3a8234de4a619e5bb42d0157a10f9502c0c65789c849fdd9e900d"
+  },
+  {
+   "url": "https://autoseo.my/ms/articles/google-business-profile-car-workshop/",
+   "file": "ms/articles/google-business-profile-car-workshop/index.html",
+   "live_sha256": "3c4eb7e3919d5687788c6bf5ee9cb09270367bc58c06b9fd1698bdac3ca1c0e2",
+   "wa": 5,
+   "tel": 0,
+   "new_sha256": "20575bdd8893596f93a377c20ec0113930a3a73c78544e0d863a7eaafc16ccd2"
+  },
+  {
+   "url": "https://autoseo.my/ms/articles/",
+   "file": "ms/articles/index.html",
+   "live_sha256": "03e3c6ad37518991eb45bfa6a922066f93e1b4771a59ffe4d904f2920cbd6e53",
+   "wa": 7,
+   "tel": 0,
+   "new_sha256": "f480f89055491ea74cca918c56ab537474b8f508c01d64999b7232625e35dde6"
+  },
+  {
+   "url": "https://autoseo.my/zh/articles/google-business-profile-car-workshop/",
+   "file": "zh/articles/google-business-profile-car-workshop/index.html",
+   "live_sha256": "1d5be368c2ba57821dc3b05c47e45a08d80e76fb52fe3217c4e27e0de7422656",
+   "wa": 5,
+   "tel": 0,
+   "new_sha256": "b292f8ccf61fc2777883313a22ecdf937e5189e39a63bd79fb2ce36068dba09c"
+  },
+  {
+   "url": "https://autoseo.my/zh/articles/",
+   "file": "zh/articles/index.html",
+   "live_sha256": "edff935f83cd44c1e28d4f33a9bc71121615a19d0d571806c0575a216ad53ea5",
+   "wa": 7,
+   "tel": 0,
+   "new_sha256": "a7830f8106149f059c0feb5465a50ea3f10acc5f210ef1096e4cfc3ca7e8650d"
+  },
+  {
+   "url": "https://autoseo.my/articles/aeo-car-workshop-website/",
+   "file": "articles/aeo-car-workshop-website/index.html",
+   "live_sha256": "2364e8688ae3d735477296af39622feda5d52598b723e13caf7b0b1bffdedd63",
+   "wa": 5,
+   "tel": 0,
+   "new_sha256": "fd55e00c0dbcc6c22bb981c43f38fc00072b4e28921e6a449b1f56cb2a2d664f"
+  },
+  {
+   "url": "https://autoseo.my/ms/articles/aeo-car-workshop-website/",
+   "file": "ms/articles/aeo-car-workshop-website/index.html",
+   "live_sha256": "22fff936bcea1b60c763751df30ba902e37fce3c79ed7899cce6071cc729ba54",
+   "wa": 5,
+   "tel": 0,
+   "new_sha256": "cf5bd1e9ec95ae5b82b1c49b436bea7400aee3948b21da33b285aeec5f280bb8"
+  },
+  {
+   "url": "https://autoseo.my/zh/articles/aeo-car-workshop-website/",
+   "file": "zh/articles/aeo-car-workshop-website/index.html",
+   "live_sha256": "ae2752b063480c26b63d060d607d110d1245257b09cf28754e40302ecd17e066",
+   "wa": 5,
+   "tel": 0,
+   "new_sha256": "9b959d7347d2d0018073314b07391b32e84c78b21d7341adfc4acf2a45905cd6"
+  }
+ ]
+}

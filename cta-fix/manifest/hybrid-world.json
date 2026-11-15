@@ -1,0 +1,352 @@
+{
+ "site": {
+  "slug": "hybrid-world",
+  "origin": "https://hybridworld.com.my",
+  "prefix": "/",
+  "bridge": "hybridworld",
+  "base": "",
+  "src": "/p1-cta.js"
+ },
+ "tag": "<script src=\"/p1-cta.js?v=ae6c928a\" defer></script>",
+ "pages_seen": 42,
+ "with_cta": 42,
+ "already_tracked": 0,
+ "to_fix": [
+  {
+   "url": "https://hybridworld.com.my/",
+   "file": "index.html",
+   "live_sha256": "6930af91ce179ca413dc18d2d5b84ee7775f3b0ead81e41ded72b8294fb16b31",
+   "wa": 6,
+   "tel": 5,
+   "new_sha256": "08395a61b00a12a95ec1b0550de6f245fbaeea66043b118234770b12e5e1971e"
+  },
+  {
+   "url": "https://hybridworld.com.my/hybrid-battery-replacement/",
+   "file": "hybrid-battery-replacement/index.html",
+   "live_sha256": "38786fed4b3050cebe5ab8223588726cda4ff9425b49fb289fee0524dd2a3dd9",
+   "wa": 5,
+   "tel": 4,
+   "new_sha256": "bc52d32ede50a6d5ed720201ba75170588bd1bfa13e64dacf7d7c99e41ef1924"
+  },
+  {
+   "url": "https://hybridworld.com.my/hybrid-battery-reconditioning/",
+   "file": "hybrid-battery-reconditioning/index.html",
+   "live_sha256": "9649d220709a5418577120ba6ef5eb7e2e661cf3a6b3dbb5d9bc851ded88e158",
+   "wa": 5,
+   "tel": 4,
+   "new_sha256": "a6ef139b7ffa3441ef5e32dd9c8844a3df76a980454739f8b60c5b16e6b2871e"
+  },
+  {
+   "url": "https://hybridworld.com.my/hybrid-system-inverter-repair/",
+   "file": "hybrid-system-inverter-repair/index.html",
+   "live_sha256": "a775c8ddaa3a30157ce04e9283493399ef3d94228bd164f382a68f6dc8c03524",
+   "wa": 5,
+   "tel": 4,
+   "new_sha256": "6d3cedfa7a03ea617cf605e0a46936ecff5aff5dd4e15e65dcb2c4629a7d8ce1"
+  },
+  {
+   "url": "https://hybridworld.com.my/toyota-lexus-hybrid-service/",
+   "file": "toyota-lexus-hybrid-service/index.html",
+   "live_sha256": "b0cd73b09b5f3b6db6542d8d1c4cb605ea01b2eb038e77394d7d53fda2c6193e",
+   "wa": 5,
+   "tel": 4,
+   "new_sha256": "c7bc5214e23b8e950fa4bc39730d76e1ed69c266add0901e835800528f7b32aa"
+  },
+  {
+   "url": "https://hybridworld.com.my/honda-hybrid-service/",
+   "file": "honda-hybrid-service/index.html",
+   "live_sha256": "1d5fca052f54afa3692603ff792349ae6527b6e13b76d5b140ec720c29d00e48",
+   "wa": 5,
+   "tel": 4,
+   "new_sha256": "61de8ba2b63a99eadf27191cd29188bf8d7705f067d10924ba1dd71a025530dd"
+  },
+  {
+   "url": "https://hybridworld.com.my/aircon-service/",
+   "file": "aircon-service/index.html",
+   "live_sha256": "4a3531c1ce43437c16928e9e8208e08bb02e61a3ed51d899ed18b4006d3afbf5",
+   "wa": 5,
+   "tel": 4,
+   "new_sha256": "eda9bdc8fd1d741df5b8b80d42639daffd02818535c12aaddfaa11f45e67e1c2"
+  },
+  {
+   "url": "https://hybridworld.com.my/transmission-repair/",
+   "file": "transmission-repair/index.html",
+   "live_sha256": "ecd2ba110b2d1fc6b5d2bb41dd5dccf29fedaf933b4a893e0d45edf9de6d2fa3",
+   "wa": 5,
+   "tel": 4,
+   "new_sha256": "582c38d4bf7cdd1f1541b3c97ad50d109167a4cc8fdaa29332294b08eeff8173"
+  },
+  {
+   "url": "https://hybridworld.com.my/engine-rebuild/",
+   "file": "engine-rebuild/index.html",
+   "live_sha256": "ffecae9f0f3bf10c1d44b8d766cfe943a17f55437c2e3d4e91d4aab2e52a8ee3",
+   "wa": 5,
+   "tel": 4,
+   "new_sha256": "ed8a7b24b0dbbda6d00830f0c87079c2d2bcc0ae85bc7cf8763cdac8401c141e"
+  },
+  {
+   "url": "https://hybridworld.com.my/about/",
+   "file": "about/index.html",
+   "live_sha256": "c0fd576a1f9f01cd53c6202874c98ab60c178b15dc38e1fec57d38dd334516e8",
+   "wa": 6,
+   "tel": 5,
+   "new_sha256": "ce6713ec2cfb5fcb16e9c7927e1c20515dae67ea27b61df11e00f7c9b85c7111"
+  },
+  {
+   "url": "https://hybridworld.com.my/contact/",
+   "file": "contact/index.html",
+   "live_sha256": "29a56098774a8192ec9f4911c8c611a12eb4fdd4c440798803a28eeb630ab292",
+   "wa": 6,
+   "tel": 5,
+   "new_sha256": "2a26bd227fd17cfc9088a252578740ad4af1e7adcf7a897e5740097103ec091c"
+  },
+  {
+   "url": "https://hybridworld.com.my/articles/",
+   "file": "articles/index.html",
+   "live_sha256": "c98f75a07cfdeff1bb3d712a029523451c84b0648e8235634249b89fa9e1b446",
+   "wa": 5,
+   "tel": 4,
+   "new_sha256": "e95699eca90dbe8f0170cbc92cc20ea52cfe0063547e07f5d975b58049d681d0"
+  },
+  {
+   "url": "https://hybridworld.com.my/articles/recondition-or-replace-hybrid-battery/",
+   "file": "articles/recondition-or-replace-hybrid-battery/index.html",
+   "live_sha256": "433d58d46570cb8bc9addd4e9168b62718b86042f8a3a944ea6e93a07c7f86c5",
+   "wa": 7,
+   "tel": 4,
+   "new_sha256": "ac50d24dfe7be0e5ed41dd3325511c21d3e26de1ade69e418753542504068c02"
+  },
+  {
+   "url": "https://hybridworld.com.my/ms/",
+   "file": "ms/index.html",
+   "live_sha256": "0230aac51983a1d392035de1062d67d4db019b309f570d1a9f3058b9f12741ef",
+   "wa": 6,
+   "tel": 5,
+   "new_sha256": "8b9bb7564a0eaa07acc240d754bb1d205218f0fa577c964642d81fb7f7214bec"
+  },
+  {
+   "url": "https://hybridworld.com.my/ms/hybrid-battery-replacement/",
+   "file": "ms/hybrid-battery-replacement/index.html",
+   "live_sha256": "10751b0acf9f270dd75e3bd623c13bec0531e7af01f8acb641586d5d382fed96",
+   "wa": 5,
+   "tel": 4,
+   "new_sha256": "42979732e59632dc55079705555f70f242f88229fb3ca6cb7110054b37f0603b"
+  },
+  {
+   "url": "https://hybridworld.com.my/ms/hybrid-battery-reconditioning/",
+   "file": "ms/hybrid-battery-reconditioning/index.html",
+   "live_sha256": "1f8565b044edc7af1c6f6857e27aa3f2a46e8e54d3def0197a5c5e2b697d2ff3",
+   "wa": 5,
+   "tel": 4,
+   "new_sha256": "dfb05a8ef97d7d04d81defed7f233bd0a76a06cbadd9ae1a027bbb0abedb6fd4"
+  },
+  {
+   "url": "https://hybridworld.com.my/ms/hybrid-system-inverter-repair/",
+   "file": "ms/hybrid-system-inverter-repair/index.html",
+   "live_sha256": "0f147b03e909a28bf95ae611a2c1118cd66b2f7d96a9ed0124a410ddf64eace0",
+   "wa": 5,
+   "tel": 4,
+   "new_sha256": "77114c7f77d7df47a3188a34f30fab7bebd7d109a2190a8941f8138f37bd5c26"
+  },
+  {
+   "url": "https://hybridworld.com.my/ms/toyota-lexus-hybrid-service/",
+   "file": "ms/toyota-lexus-hybrid-service/index.html",
+   "live_sha256": "a8a38312f618f2f912e9cbb45297e0287533c72e583d0ba540cad1dfc509e29b",
+   "wa": 5,
+   "tel": 4,
+   "new_sha256": "5d0497af4c1e12b08cb95ed02ed44ea6d619d7a85ccfaa1c28642fee64ecc9b7"
+  },
+  {
+   "url": "https://hybridworld.com.my/ms/honda-hybrid-service/",
+   "file": "ms/honda-hybrid-service/index.html",
+   "live_sha256": "06792f47a0285a8fe41872462640cd4daa9a15b0c0e52a2396d6c9ac4b5518ab",
+   "wa": 5,
+   "tel": 4,
+   "new_sha256": "7858288b40035aaf16b9dfdc848b71010aa8f5eb004fc2d80077016e1615282b"
+  },
+  {
+   "url": "https://hybridworld.com.my/ms/aircon-service/",
+   "file": "ms/aircon-service/index.html",
+   "live_sha256": "91032c388b29da1efc37e896c10b62c346ca4a9eae25713719791e522182af3e",
+   "wa": 5,
+   "tel": 4,
+   "new_sha256": "efa42893278151dfff0ecc2060112f2a740f431efb5f9c0936d2a6243127a3e3"
+  },
+  {
+   "url": "https://hybridworld.com.my/ms/transmission-repair/",
+   "file": "ms/transmission-repair/index.html",
+   "live_sha256": "72effb70a92909d28a0746ec58d323698a25a75eec9294f99fb6ab76be9b40a7",
+   "wa": 5,
+   "tel": 4,
+   "new_sha256": "72697fb109996d1c5e3dcb506fdee643ad21e6593664818caddb483393d96a59"
+  },
+  {
+   "url": "https://hybridworld.com.my/ms/engine-rebuild/",
+   "file": "ms/engine-rebuild/index.html",
+   "live_sha256": "47d7a170140f46677feaf618ded290756003098af5782ccb23529acb5ca100ef",
+   "wa": 5,
+   "tel": 4,
+   "new_sha256": "3dd5127c14d20ba46c872b3a0a8d7c9c357c7f85c1e99491f0ff6ba3216ae33e"
+  },
+  {
+   "url": "https://hybridworld.com.my/ms/about/",
+   "file": "ms/about/index.html",
+   "live_sha256": "c3b95d245049b5188ddfe9a3945191a6d737ab3f717127e7e65f6d02609723bf",
+   "wa": 6,
+   "tel": 5,
+   "new_sha256": "f9c1ad04e8b63e4489595b5100f877b3ca81012ed4f5a6fb5c8674b209c142af"
+  },
+  {
+   "url": "https://hybridworld.com.my/ms/contact/",
+   "file": "ms/contact/index.html",
+   "live_sha256": "87a51ac038af17fdb671f8fdba3d955e57999a67080f7382f92dcbb0c1f932dc",
+   "wa": 6,
+   "tel": 5,
+   "new_sha256": "7fb78da616b469cb1fb42c6912a24d36b3fe0f6b26e15d4fbbc8d26799b56371"
+  },
+  {
+   "url": "https://hybridworld.com.my/ms/articles/",
+   "file": "ms/articles/index.html",
+   "live_sha256": "be33ac14ac40cff9323ba4324e1f4978d54669c99e8e6fc87ad532c1fbef2e11",
+   "wa": 5,
+   "tel": 4,
+   "new_sha256": "32c8a1d8e4e0c21c1daffaf9f42650824a56d703223ea0ca87c59109437ac664"
+  },
+  {
+   "url": "https://hybridworld.com.my/ms/articles/recondition-or-replace-hybrid-battery/",
+   "file": "ms/articles/recondition-or-replace-hybrid-battery/index.html",
+   "live_sha256": "231e2f1e7195beda77512a4ea64094807529f30bd2f5554312e6608ffc432b4d",
+   "wa": 7,
+   "tel": 4,
+   "new_sha256": "78393c55f01ecb5e17b4f38f711053a82d644ad2cdc6e964bc2e297ec9a3b4b8"
+  },
+  {
+   "url": "https://hybridworld.com.my/zh/",
+   "file": "zh/index.html",
+   "live_sha256": "7380523e8b21774e909374879c53272475864635abbd81562c12bf9e599592ea",
+   "wa": 6,
+   "tel": 5,
+   "new_sha256": "8ceec8f2a47ae8f562d6663a1026981a927a6f627f0ab459ad3d897b594a7ff3"
+  },
+  {
+   "url": "https://hybridworld.com.my/zh/hybrid-battery-replacement/",
+   "file": "zh/hybrid-battery-replacement/index.html",
+   "live_sha256": "dd2ae1c56923b6d1d6a812b30b742482d96269d36aba286f8d79c34f225f3580",
+   "wa": 5,
+   "tel": 4,
+   "new_sha256": "2af882717311812f3636cdb3d783d296870b9ca3688b0dbea8aa4bd31bba69e8"
+  },
+  {
+   "url": "https://hybridworld.com.my/zh/hybrid-battery-reconditioning/",
+   "file": "zh/hybrid-battery-reconditioning/index.html",
+   "live_sha256": "3dbd991513ed688b87bc67043136b2da577e0655ada8ac21ffad03d517a2a5bc",
+   "wa": 5,
+   "tel": 4,
+   "new_sha256": "4cd65ed48fa6a0fb5456645687553755cafcc3d34b6ff95f940fa19b69443665"
+  },
+  {
+   "url": "https://hybridworld.com.my/zh/hybrid-system-inverter-repair/",
+   "file": "zh/hybrid-system-inverter-repair/index.html",
+   "live_sha256": "6aee33a6aeabec896bb389d28c5da287c890c316c23fe76ad09e2809e1ad82e0",
+   "wa": 5,
+   "tel": 4,
+   "new_sha256": "558919fb3a64772a90e079f07c00e34b6679521c24544ec695de48fccae584a9"
+  },
+  {
+   "url": "https://hybridworld.com.my/zh/toyota-lexus-hybrid-service/",
+   "file": "zh/toyota-lexus-hybrid-service/index.html",
+   "live_sha256": "0c14f9286b6bb3adb5b0f4dc8ef47e5318d0962a32dc1fa108fd1747acf1adc5",
+   "wa": 5,
+   "tel": 4,
+   "new_sha256": "c604966138a0668f38c4f2e165a16d3e91851b6d67c5796b774ed1658d453b58"
+  },
+  {
+   "url": "https://hybridworld.com.my/zh/honda-hybrid-service/",
+   "file": "zh/honda-hybrid-service/index.html",
+   "live_sha256": "66571ad49ae90e2b6d413dfef124559af0af25f5ed5a809c4786d1035a333df6",
+   "wa": 5,
+   "tel": 4,
+   "new_sha256": "8702fdd2b86a3a4191f55270317745f1b9b48c572c9ffbe53cd9c849b1cd3fdb"
+  },
+  {
+   "url": "https://hybridworld.com.my/zh/aircon-service/",
+   "file": "zh/aircon-service/index.html",
+   "live_sha256": "aea7195f129a3be0c0d3d8c98df278393b567bc5b6c58714df96b4014ebe4dee",
+   "wa": 5,
+   "tel": 4,
+   "new_sha256": "bf3d042871ad964f4b5dc0bf26bb9c601a159ff3d57d364acbfa2d30f4c068ed"
+  },
+  {
+   "url": "https://hybridworld.com.my/zh/transmission-repair/",
+   "file": "zh/transmission-repair/index.html",
+   "live_sha256": "4819c6d56668837861257a71ed611cc20379e773e1044091a3da0374c93ea058",
+   "wa": 5,
+   "tel": 4,
+   "new_sha256": "52468331213e33656c78e2c4aaaa3139a5eadc01ea2f0456d0a2bc1004b2fed8"
+  },
+  {
+   "url": "https://hybridworld.com.my/zh/engine-rebuild/",
+   "file": "zh/engine-rebuild/index.html",
+   "live_sha256": "e3c4a21a087f335b2c4134cb07fd9d20a9014a0ca87d74a6411d45440ab265a2",
+   "wa": 5,
+   "tel": 4,
+   "new_sha256": "1e8965b2db820b4632dec1d40d9f1d3804d5c2826d847b2eb8eb2c21872be4de"
+  },
+  {
+   "url": "https://hybridworld.com.my/zh/about/",
+   "file": "zh/about/index.html",
+   "live_sha256": "f7ecc3b42cc857c635d45a974f2ec1e4c9f705575e35a57d16ff18cdd6605244",
+   "wa": 6,
+   "tel": 5,
+   "new_sha256": "3ae7d3305ee0b5fe92d2a56e0f2a70856c9f21450e3d80737fa167a431507600"
+  },
+  {
+   "url": "https://hybridworld.com.my/zh/contact/",
+   "file": "zh/contact/index.html",
+   "live_sha256": "508fd1f08f60817bd121d543ad8e2d78a7f565c0c42a3423965433890fa2240f",
+   "wa": 6,
+   "tel": 5,
+   "new_sha256": "b48210d528a755ed16ade1bb9b100fb4099b534fc754a3113343798c95b23359"
+  },
+  {
+   "url": "https://hybridworld.com.my/zh/articles/",
+   "file": "zh/articles/index.html",
+   "live_sha256": "a5b69445f9b5286fff9093d030b5fb54d95c27f95d73a321fef9130e8918ce4d",
+   "wa": 5,
+   "tel": 4,
+   "new_sha256": "57a0c4425317ec5756e7d133b0ebf60fc10fee36d8069b795e5e3a9383b850c1"
+  },
+  {
+   "url": "https://hybridworld.com.my/zh/articles/recondition-or-replace-hybrid-battery/",
+   "file": "zh/articles/recondition-or-replace-hybrid-battery/index.html",
+   "live_sha256": "65d492f1352cdffc0a9a845b18e9dd53d28aa9e389f427072d998946bb35bc87",
+   "wa": 7,
+   "tel": 4,
+   "new_sha256": "20a3c98d4fbed5dc2c21bf6e6b62c50df073b4ed7c3f338ecc87779016c10cda"
+  },
+  {
+   "url": "https://hybridworld.com.my/articles/hybrid-system-warning-light-on/",
+   "file": "articles/hybrid-system-warning-light-on/index.html",
+   "live_sha256": "aba370136a807c6ebdefd8a000c8dce9b3561078cea02f9bbcd57b847f2fbe64",
+   "wa": 7,
+   "tel": 4,
+   "new_sha256": "7b4e396a2990978a572999d2904c9cd2f6762283cac395a81e7a012e837f4724"
+  },
+  {
+   "url": "https://hybridworld.com.my/ms/articles/hybrid-system-warning-light-on/",
+   "file": "ms/articles/hybrid-system-warning-light-on/index.html",
+   "live_sha256": "ee2cd2651507e19d378c5adefa5b8391f006b3ec0d1289e6c14c5e53bec75eec",
+   "wa": 7,
+   "tel": 4,
+   "new_sha256": "aea37a5ea5efa5b58adbb6926f601d9815d40508ceaf90c0ce53165ac8169ea4"
+  },
+  {
+   "url": "https://hybridworld.com.my/zh/articles/hybrid-system-warning-light-on/",
+   "file": "zh/articles/hybrid-system-warning-light-on/index.html",
+   "live_sha256": "0d06a8e193ac0c883140b2cf33df713907e0cd67affa2768f3a309b8a0ec931a",
+   "wa": 7,
+   "tel": 4,
+   "new_sha256": "f64948c3e2db3a41e1aa9175ece827ae418c66f41a67b879f31fc6543b957d84"
+  }
+ ]
+}

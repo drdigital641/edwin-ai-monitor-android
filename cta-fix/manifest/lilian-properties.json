@@ -1,0 +1,1896 @@
+{
+ "site": {
+  "slug": "lilian-properties",
+  "origin": "https://lilianproperties.com",
+  "prefix": "/",
+  "bridge": "lilian",
+  "base": "",
+  "src": "/p1-cta.js"
+ },
+ "tag": "<script src=\"/p1-cta.js?v=b6a3a0b7\" defer></script>",
+ "pages_seen": 209,
+ "with_cta": 209,
+ "already_tracked": 0,
+ "to_fix": [
+  {
+   "url": "https://lilianproperties.com/",
+   "file": "index.html",
+   "live_sha256": "ce5168163468a23afca3e3747c083c306d8871f7a8151504abbd006046e5ba4b",
+   "wa": 5,
+   "tel": 1,
+   "new_sha256": "21cfd6ff2b15cdaded56bb2b3cae829987df387831f9d74033ed4f95a783acda"
+  },
+  {
+   "url": "https://lilianproperties.com/district-14-geylang-eunos-paya-lebar",
+   "file": "district-14-geylang-eunos-paya-lebar",
+   "live_sha256": "da4259292b824685ee69705e2633a58e6650566b60d165d18ae89298071bf2c4",
+   "wa": 3,
+   "tel": 1,
+   "problem": "extensionless url, map by hand",
+   "new_sha256": "56cb327f6ad6f052502df988cc06afc0f13fa0488535da6206b405abc360f83a"
+  },
+  {
+   "url": "https://lilianproperties.com/district-15-katong-marine-parade",
+   "file": "district-15-katong-marine-parade",
+   "live_sha256": "d5c95382abeb5b6c23fd48b1120e461d73f7aad062c8d4f993a32c1e87399031",
+   "wa": 3,
+   "tel": 1,
+   "problem": "extensionless url, map by hand",
+   "new_sha256": "2ec926a293d537773962351a57c6ee57cfdf88c9474cc95dcabdd31809d36c54"
+  },
+  {
+   "url": "https://lilianproperties.com/district-16-bedok-upper-east-coast",
+   "file": "district-16-bedok-upper-east-coast",
+   "live_sha256": "23b228431b65ac35cdbd32f8f1e7a71464dcf2a550a5d29a78fb2e12ca3fbdde",
+   "wa": 3,
+   "tel": 1,
+   "problem": "extensionless url, map by hand",
+   "new_sha256": "411178016e316f317030b922620eea42e0c205cf1ce332bdc3372b2e56bf4c1c"
+  },
+  {
+   "url": "https://lilianproperties.com/project-detail/579-THE-SERRA-RESIDENCES",
+   "file": "project-detail/579-THE-SERRA-RESIDENCES",
+   "live_sha256": "7e55a559612df39cb58351e1c3fbccf42fe0685328bef83380aa756ce6ba6269",
+   "wa": 4,
+   "tel": 1,
+   "problem": "extensionless url, map by hand",
+   "new_sha256": "ea620922cc7026c799389f2ea3758a7e30dbc9b89990feea2349cad830b204a6"
+  },
+  {
+   "url": "https://lilianproperties.com/project-detail/523-THOMSON-RESERVE",
+   "file": "project-detail/523-THOMSON-RESERVE",
+   "live_sha256": "f9aafb8f29d13ed13628909fb5b636c2490384dfaa3100234b4930926469153c",
+   "wa": 4,
+   "tel": 1,
+   "problem": "extensionless url, map by hand",
+   "new_sha256": "97cb203538b051547256a7de42014615f8429072d59f99a7f8af0d01be3225c1"
+  },
+  {
+   "url": "https://lilianproperties.com/projects/woodlands-drive-17-ec",
+   "file": "projects/woodlands-drive-17-ec",
+   "live_sha256": "0e88b3ba375f5c58ebb188c3253fd75ced592b3d6e73dd03fceac7a1f87889ec",
+   "wa": 4,
+   "tel": 1,
+   "problem": "extensionless url, map by hand",
+   "new_sha256": "c5e6021f78f669134a56d7c941788d9295bdcd99645905a1ecdde5f0e971b3a6"
+  },
+  {
+   "url": "https://lilianproperties.com/projects/senja-close-ec",
+   "file": "projects/senja-close-ec",
+   "live_sha256": "4ca16734cbb1a4529cb974730e02f645661d5a785871dcfa5e94946d6b5516cf",
+   "wa": 4,
+   "tel": 1,
+   "problem": "extensionless url, map by hand",
+   "new_sha256": "45d16b21d234396b097f36a0f867457a2883f76bfc698724eee2836539698baa"
+  },
+  {
+   "url": "https://lilianproperties.com/project-detail/564-CHENCHARU-CENTRAL-RESIDENCES",
+   "file": "project-detail/564-CHENCHARU-CENTRAL-RESIDENCES",
+   "live_sha256": "d0c615e6c07b855571be159d1f90329097d02f8da3d38a953564525e50635fcf",
+   "wa": 4,
+   "tel": 1,
+   "problem": "extensionless url, map by hand",
+   "new_sha256": "1248a52933ce8a33b4bb3e4ea7729b2f49febc7eeb354e41ba641652b2da3807"
+  },
+  {
+   "url": "https://lilianproperties.com/projects/one-chuan-grove",
+   "file": "projects/one-chuan-grove",
+   "live_sha256": "682ea58fcc8be45d6b97ee16d1a64891b2397de7059744cf786704ff8d046c95",
+   "wa": 4,
+   "tel": 1,
+   "problem": "extensionless url, map by hand",
+   "new_sha256": "4175df717c5ff2d9593714143dcee5047d3a2ab747efbeb9636de70a31c43e7d"
+  },
+  {
+   "url": "https://lilianproperties.com/projects/lentor-signature",
+   "file": "projects/lentor-signature",
+   "live_sha256": "70b0af6276a1d950e89c4f9f66c9df5085ca88d1aa83ca83fb25b3c5af66ef1b",
+   "wa": 4,
+   "tel": 1,
+   "problem": "extensionless url, map by hand",
+   "new_sha256": "746222dfdef2ecf0d9db4dd55bdc43b6e392b8d15c7184e4cac4d9d629c9e537"
+  },
+  {
+   "url": "https://lilianproperties.com/projects/the-river-opus",
+   "file": "projects/the-river-opus",
+   "live_sha256": "cafa35a8f85dc52f62da16309ada71361f98172f46f0eed2cd30625cb7aa6537",
+   "wa": 4,
+   "tel": 1,
+   "problem": "extensionless url, map by hand",
+   "new_sha256": "11b8e4e6ef4246fcb0dcf118110b5081bb89a7dff12d70cf6c5bae48437bb2ac"
+  },
+  {
+   "url": "https://lilianproperties.com/projects/sembawang-road-ec",
+   "file": "projects/sembawang-road-ec",
+   "live_sha256": "0bceafdfda9b4fd924f46c2ea8dfeee1c5608f951e06285bc6ad6a6d722d153f",
+   "wa": 4,
+   "tel": 1,
+   "problem": "extensionless url, map by hand",
+   "new_sha256": "970142f9a4f3e85117f7fd3a74e388e1d3d242ebfb0024b3804355c25869ecae"
+  },
+  {
+   "url": "https://lilianproperties.com/projects/bedok-rise-residences",
+   "file": "projects/bedok-rise-residences",
+   "live_sha256": "80e4575cdccddede7a007006da0679e9c9433c86ec6f696695fd10b17bc51d5f",
+   "wa": 4,
+   "tel": 1,
+   "problem": "extensionless url, map by hand",
+   "new_sha256": "e2f8e1d5f13c1e02c4f9a0f960cd400722b00b4f2d4437939d89dd594c729927"
+  },
+  {
+   "url": "https://lilianproperties.com/projects/dorset-gardens",
+   "file": "projects/dorset-gardens",
+   "live_sha256": "ef4af2e64cf714a285d4964c5b7a964bed09392d1e3ead1661f5d8647d8a2206",
+   "wa": 4,
+   "tel": 1,
+   "problem": "extensionless url, map by hand",
+   "new_sha256": "c5d496c0dfe8143dcbb1fd8d6271a17218258671c903528e7c6448d07c4594a9"
+  },
+  {
+   "url": "https://lilianproperties.com/projects/telok-blangah-road-gls",
+   "file": "projects/telok-blangah-road-gls",
+   "live_sha256": "79b2c5c4eb408671ab1d0e856519efe7aaf3fa085087f7d0c9324f98b5276866",
+   "wa": 4,
+   "tel": 1,
+   "problem": "extensionless url, map by hand",
+   "new_sha256": "8ba22747dedc30d34834a8fd6f941aa618048f1788dc395245c3ed694e486bac"
+  },
+  {
+   "url": "https://lilianproperties.com/projects/the-island-residence",
+   "file": "projects/the-island-residence",
+   "live_sha256": "140b21a4c5d7eaff857476a59fcc26af683ff9cb427ee7058b424c169e3e4b52",
+   "wa": 4,
+   "tel": 1,
+   "problem": "extensionless url, map by hand",
+   "new_sha256": "de580f5919ff6d6fbc79377bccff8f8d940c2760712ce0918da6829befe6e7ad"
+  },
+  {
+   "url": "https://lilianproperties.com/projects/impressions-at-dairy-farm",
+   "file": "projects/impressions-at-dairy-farm",
+   "live_sha256": "9a2b0dce03de92832f93ca3dde75724b2baa69a3d618a7b3d9f49db3e69d092b",
+   "wa": 4,
+   "tel": 1,
+   "problem": "extensionless url, map by hand",
+   "new_sha256": "74ba7b9588512a176632fb0190deeb9c7b0a04342515f8cd8babf737b859ee3c"
+  },
+  {
+   "url": "https://lilianproperties.com/projects/dover-drive-gls",
+   "file": "projects/dover-drive-gls",
+   "live_sha256": "fbf850a8dc9b8c83a6c3bc34475019d907378ea0c27fcb3a3070e19b2246150b",
+   "wa": 4,
+   "tel": 1,
+   "problem": "extensionless url, map by hand",
+   "new_sha256": "3ac1294e22f68c591a6de43354c2f1c15ba65b677b026f1eebce6bab9f97e240"
+  },
+  {
+   "url": "https://lilianproperties.com/projects/former-yishun-ten",
+   "file": "projects/former-yishun-ten",
+   "live_sha256": "5fb376292b5d05f0861e6f7728db77a5fa8fb1810a979aed4fc494c494ec73db",
+   "wa": 4,
+   "tel": 1,
+   "problem": "extensionless url, map by hand",
+   "new_sha256": "732918108cc79997f9147728db86bc6b645f1a8e55bedbeb0df02112e34a8462"
+  },
+  {
+   "url": "https://lilianproperties.com/projects",
+   "file": "projects",
+   "live_sha256": "f472cbdc3fa539cd43f1f11f803cd51ff3fd2d05da48cfc0e071775c7369f80d",
+   "wa": 4,
+   "tel": 1,
+   "problem": "extensionless url, map by hand",
+   "new_sha256": "d7e4b293ba864be4a836b07826701dfd22872719f634cc805a5e90213ef07c45"
+  },
+  {
+   "url": "https://lilianproperties.com/project-detail/534-RIVER-MODERN",
+   "file": "project-detail/534-RIVER-MODERN",
+   "live_sha256": "68fdaef872f5b9fe8f9e768299e9295fc21fda8396ff2372ad44efc28b4a0399",
+   "wa": 4,
+   "tel": 1,
+   "problem": "extensionless url, map by hand",
+   "new_sha256": "a0cb7cfa810d1c7da07df8b1398a31802b4f2356f61ca960ee71befacd0d70c7"
+  },
+  {
+   "url": "https://lilianproperties.com/project-detail/506-PROMENADE-PEAK",
+   "file": "project-detail/506-PROMENADE-PEAK",
+   "live_sha256": "c82ab3a4253ba97a1e2d51c721cbe1a400d275189b6d4e16508c8799f6dc91d5",
+   "wa": 4,
+   "tel": 1,
+   "problem": "extensionless url, map by hand",
+   "new_sha256": "ebf5517353d2abd19702fa0e870bd4b6592b3ff1a8d4d0269550dee9aab16d13"
+  },
+  {
+   "url": "https://lilianproperties.com/project-detail/201-MIDTOWN-BAY",
+   "file": "project-detail/201-MIDTOWN-BAY",
+   "live_sha256": "5177e96c4359717295584c88ee9b7c1571f0cb159c74a165d12a1f40c890a832",
+   "wa": 4,
+   "tel": 1,
+   "problem": "extensionless url, map by hand",
+   "new_sha256": "c216daef12dfffedb77309474bf723811798b9c3bb7b827d1cc0112e7bf469b2"
+  },
+  {
+   "url": "https://lilianproperties.com/project-detail/538-SPRINGLEAF-RESIDENCE",
+   "file": "project-detail/538-SPRINGLEAF-RESIDENCE",
+   "live_sha256": "f618b75f5031962fe0b74fa7a069ccd312acfef572eed79bc7829f55184ac1de",
+   "wa": 4,
+   "tel": 1,
+   "problem": "extensionless url, map by hand",
+   "new_sha256": "d809a9495867081187e969248ba70884cf556cc97703f16cb5f19c46c645e145"
+  },
+  {
+   "url": "https://lilianproperties.com/project-detail/388-SORA",
+   "file": "project-detail/388-SORA",
+   "live_sha256": "89a210b1b67bc87ab5b0b89c950fc4e0c738bfb80f5d96512768da3a107837da",
+   "wa": 4,
+   "tel": 1,
+   "problem": "extensionless url, map by hand",
+   "new_sha256": "b5d00bfc5c23c2dc6c10d9363e1aa47078a22d8e10f8aa443c770e7cdd5ee2d8"
+  },
+  {
+   "url": "https://lilianproperties.com/project-detail/429-PARKTOWN-RESIDENCE",
+   "file": "project-detail/429-PARKTOWN-RESIDENCE",
+   "live_sha256": "e4a6c040225890558805fd0a48d81f90f2765de3a7573a00fbdd3de2fd626b66",
+   "wa": 4,
+   "tel": 1,
+   "problem": "extensionless url, map by hand",
+   "new_sha256": "06050a19a5dde79019d0d70d6340ff380053e31f5e1a02e97735012ccb0ae134"
+  },
+  {
+   "url": "https://lilianproperties.com/project-detail/278-BELGRAVIA-ACE",
+   "file": "project-detail/278-BELGRAVIA-ACE",
+   "live_sha256": "a0f681835f15dedf2d6a24bc8af8f5bb40f0bb96ed4a7e9d268512d747c9cd8c",
+   "wa": 4,
+   "tel": 1,
+   "problem": "extensionless url, map by hand",
+   "new_sha256": "7d3444be254cfaf7d57e05163389029f84aa280974418e08e456a543fd7bf25b"
+  },
+  {
+   "url": "https://lilianproperties.com/project-detail/466-UPPERHOUSE-at-Orchard-Boulevard",
+   "file": "project-detail/466-UPPERHOUSE-at-Orchard-Boulevard",
+   "live_sha256": "6715c7643ed983f23b5004d11e74815c28dff0e4301834e10f440afdc25a0a0b",
+   "wa": 4,
+   "tel": 1,
+   "problem": "extensionless url, map by hand",
+   "new_sha256": "50abecc74bc0623d472c3039fe6de900f62ad86217336a88c898b60f599e5004"
+  },
+  {
+   "url": "https://lilianproperties.com/project-detail/560-CT-GOLD-@-MACPHERSON",
+   "file": "project-detail/560-CT-GOLD-@-MACPHERSON",
+   "live_sha256": "9c351a84b695baf48a0a7ba624fe19d59cb611d9f10e9fae173732b7326f97ba",
+   "wa": 4,
+   "tel": 1,
+   "problem": "extensionless url, map by hand",
+   "new_sha256": "3476cb41bc8dba4c5d2832201e512613e064e92b26f0007a41e6df98b2d93177"
+  },
+  {
+   "url": "https://lilianproperties.com/project-detail/489-108-ROBINSON-ROAD",
+   "file": "project-detail/489-108-ROBINSON-ROAD",
+   "live_sha256": "29aa7a9830686ecfd875a98cce85920dfe732cb364cc3788c2a9167df2098c52",
+   "wa": 4,
+   "tel": 1,
+   "problem": "extensionless url, map by hand",
+   "new_sha256": "b1d64f8456b99874386b40dd49bfba0596437842aa42b2a5a623f23885196cb3"
+  },
+  {
+   "url": "https://lilianproperties.com/project-detail/505-RIVER-GREEN",
+   "file": "project-detail/505-RIVER-GREEN",
+   "live_sha256": "58b49c052f366a964c03874c5b7aa4738fd283050bcb27f917688af0c9b5a002",
+   "wa": 4,
+   "tel": 1,
+   "problem": "extensionless url, map by hand",
+   "new_sha256": "a9afce6fbb8f4b097acd7f20c72ed182a36721527f1547a281644b78f5b9dddf"
+  },
+  {
+   "url": "https://lilianproperties.com/project-detail/541-LUCERNE-GRAND",
+   "file": "project-detail/541-LUCERNE-GRAND",
+   "live_sha256": "ba8a1d0b837657e110c7990df5bbdd093ca37f4d938045154f473cd2b0b33c0b",
+   "wa": 4,
+   "tel": 1,
+   "problem": "extensionless url, map by hand",
+   "new_sha256": "b78d09e69d2544422c003c8948e9cd696540e82baedd4156b61626aa9dfcb5d7"
+  },
+  {
+   "url": "https://lilianproperties.com/project-detail/452-CHUAN-PARK",
+   "file": "project-detail/452-CHUAN-PARK",
+   "live_sha256": "0976cff23a4488420fe9e50939e6f330c2f541ce87f3eacbe149104933680c5c",
+   "wa": 4,
+   "tel": 1,
+   "problem": "extensionless url, map by hand",
+   "new_sha256": "ecba1e1bc544606448004113f960e618e3c2984389ee0872b9f744654956f330"
+  },
+  {
+   "url": "https://lilianproperties.com/project-detail/499-SOPHIA-MEADOW",
+   "file": "project-detail/499-SOPHIA-MEADOW",
+   "live_sha256": "206418284c966ad08d5ec50c094f2a3b1541ee970ac723c042ed14fc71b9385d",
+   "wa": 4,
+   "tel": 1,
+   "problem": "extensionless url, map by hand",
+   "new_sha256": "8638c3e37f013f3495f660a78014092fe1cda6dfb0d5510d355109828cb2845a"
+  },
+  {
+   "url": "https://lilianproperties.com/project-detail/471-ARC-380",
+   "file": "project-detail/471-ARC-380",
+   "live_sha256": "2c7a5865a6131b26c7b7d2d3e2f6b35a8490bb79f411e9d82600f62d6329cc73",
+   "wa": 4,
+   "tel": 1,
+   "problem": "extensionless url, map by hand",
+   "new_sha256": "0d5678da0ff36d8bd0e69a0725cfb5f49cac20ec958c0f59d17fe39a373500ce"
+  },
+  {
+   "url": "https://lilianproperties.com/project-detail/459-ELTA",
+   "file": "project-detail/459-ELTA",
+   "live_sha256": "8c9c62408adeac1ef1663672010a84bfb00b3a81b5f7defef8bf58eb1ec9fb11",
+   "wa": 4,
+   "tel": 1,
+   "problem": "extensionless url, map by hand",
+   "new_sha256": "2c3edafd72be874bf6f8e46b2cf294de95e7d8f00e138a379b23e0bff0c2768c"
+  },
+  {
+   "url": "https://lilianproperties.com/project-detail/545-SPRINGLEAF-COLLECTION",
+   "file": "project-detail/545-SPRINGLEAF-COLLECTION",
+   "live_sha256": "223f3154127346de27058aed02e53aba5850ab4531a23700d4a9efd4ce74ddd9",
+   "wa": 4,
+   "tel": 1,
+   "problem": "extensionless url, map by hand",
+   "new_sha256": "3cd113c9d16288d25237d73d11a01c4ee8660504d069f68b26a97ad6bc00c02d"
+  },
+  {
+   "url": "https://lilianproperties.com/project-detail/585-AMBERWOOD-AT-HOLLAND",
+   "file": "project-detail/585-AMBERWOOD-AT-HOLLAND",
+   "live_sha256": "28a780c4a1850dcca201530840430b613eb6290b07c772e2644c68e6eb2b18da",
+   "wa": 4,
+   "tel": 1,
+   "problem": "extensionless url, map by hand",
+   "new_sha256": "d49f8ed970ed1a79365684be5768ab016b23b71ae4cb0bcc1790f67177e17314"
+  },
+  {
+   "url": "https://lilianproperties.com/project-detail/390-LENTORIA",
+   "file": "project-detail/390-LENTORIA",
+   "live_sha256": "5f37034d1d87ce4c14a3d20ecdde5be10977a7c3ac235b2eaeacc84088bfe134",
+   "wa": 4,
+   "tel": 1,
+   "problem": "extensionless url, map by hand",
+   "new_sha256": "407f174c1feb78b7abef028d1707cbdf0404c055ea7844e95db774bdb76b435a"
+  },
+  {
+   "url": "https://lilianproperties.com/project-detail/535-HUDSON-PLACE-RESIDENCES",
+   "file": "project-detail/535-HUDSON-PLACE-RESIDENCES",
+   "live_sha256": "ce63e0801b380180668b2b0580deaa0e8492eb6f62917f325d0b0fb15ae79f65",
+   "wa": 4,
+   "tel": 1,
+   "problem": "extensionless url, map by hand",
+   "new_sha256": "9364f28cb5718a0c349fb7722c6a2d15d8c0a0eeb184091d2537d9c56dbcdc87"
+  },
+  {
+   "url": "https://lilianproperties.com/project-detail/338-10-EVELYN",
+   "file": "project-detail/338-10-EVELYN",
+   "live_sha256": "de8cec61b47a4352fcd0f1e256ed7d5f650acf3923cbac225bb6d0d6ad23a8ea",
+   "wa": 4,
+   "tel": 1,
+   "problem": "extensionless url, map by hand",
+   "new_sha256": "79c9ea5ba482f48eedf6535e2e64c32a2336e9a9f7d6ad42a00ba7efe7d708a7"
+  },
+  {
+   "url": "https://lilianproperties.com/project-detail/493-FORTUNE-CENTRE",
+   "file": "project-detail/493-FORTUNE-CENTRE",
+   "live_sha256": "0bd024cb7651466fac63662ec19a633555489e0f7c8e92cf01023cde47a5e938",
+   "wa": 4,
+   "tel": 1,
+   "problem": "extensionless url, map by hand",
+   "new_sha256": "564d41315b3c93d1261ced64eba85eb805031951c7a97bb476ca9075d89a8382"
+  },
+  {
+   "url": "https://lilianproperties.com/project-detail/347-NEWPORT-RESIDENCES",
+   "file": "project-detail/347-NEWPORT-RESIDENCES",
+   "live_sha256": "dbe6e6e7bb3610cc5854d7bd827d2494ce2e934bc62669b0112c561b48cab919",
+   "wa": 4,
+   "tel": 1,
+   "problem": "extensionless url, map by hand",
+   "new_sha256": "ce1c382ac39210a3e3add7a93f82c7ae5ad12aa7af0df30de6aa3e7b58fa8b3f"
+  },
+  {
+   "url": "https://lilianproperties.com/project-detail/49-SKIES-MILTONIA",
+   "file": "project-detail/49-SKIES-MILTONIA",
+   "live_sha256": "8eb3c54f47ba728c0f7b982e5cf4ba5ff2ec9c0f4544c98f7e9aa330b788d45c",
+   "wa": 4,
+   "tel": 1,
+   "problem": "extensionless url, map by hand",
+   "new_sha256": "14ed4979207736e8abd72449a52664e80c45c089c21f57ce89ec0789d10f4f96"
+  },
+  {
+   "url": "https://lilianproperties.com/project-detail/542-DUNEARN-HOUSE",
+   "file": "project-detail/542-DUNEARN-HOUSE",
+   "live_sha256": "773c81f6b7fd714d76280aa4e48fd52ba03af84617d780a77f61b540f4c8488b",
+   "wa": 4,
+   "tel": 1,
+   "problem": "extensionless url, map by hand",
+   "new_sha256": "cd96b472cfb9f46fac9360c290ade35a27f68ce3a3ed1f5a34c9a9d05279e435"
+  },
+  {
+   "url": "https://lilianproperties.com/project-detail/262-THE-RITZ-CARLTON-RESIDENCES",
+   "file": "project-detail/262-THE-RITZ-CARLTON-RESIDENCES",
+   "live_sha256": "e87419b384e2186b36285f44d057ff0f8e52b0c768604d95cb6041545051d0ee",
+   "wa": 4,
+   "tel": 1,
+   "problem": "extensionless url, map by hand",
+   "new_sha256": "f1b7e5238b5c83f1f1ff4ed226728e8f1cfbe2e966af556da7c1fd06e50fcc3e"
+  },
+  {
+   "url": "https://lilianproperties.com/project-detail/258-111-SOMERSET",
+   "file": "project-detail/258-111-SOMERSET",
+   "live_sha256": "cb866727c008d9501240c12858d2983496aa9f2a754cfaf87cb5a0dae61dd5ff",
+   "wa": 4,
+   "tel": 1,
+   "problem": "extensionless url, map by hand",
+   "new_sha256": "51ac299825c6e86f9c2e097f598b50ddfb5a1d65acc19bb004b619deaa43346c"
+  },
+  {
+   "url": "https://lilianproperties.com/project-detail/128-3-ORCHARD-BY-THE-PARK",
+   "file": "project-detail/128-3-ORCHARD-BY-THE-PARK",
+   "live_sha256": "8670db4169c618f6cd209a59c4ba68cb84dcaf868bdde524964d0ca308ac3985",
+   "wa": 4,
+   "tel": 1,
+   "problem": "extensionless url, map by hand",
+   "new_sha256": "2e326e62c4cb62daac287af2233f1cf1c856285befa82db196b04d605f7f1d46"
+  },
+  {
+   "url": "https://lilianproperties.com/project-detail/445-THE-RESIDENCES-AT-W-SINGAPORE-SENTOSA-COVE",
+   "file": "project-detail/445-THE-RESIDENCES-AT-W-SINGAPORE-SENTOSA-COVE",
+   "live_sha256": "af6d14990e3dce8bff0617dd377bc14c6396958ebe9dc2d80bf0512da62877c4",
+   "wa": 4,
+   "tel": 1,
+   "problem": "extensionless url, map by hand",
+   "new_sha256": "b70e1b03fc9da24b95eb9265fd72643f233036ca81367f3ace189d412cdb8ea5"
+  },
+  {
+   "url": "https://lilianproperties.com/project-detail/465-BLOOMSBURY-RESIDENCES",
+   "file": "project-detail/465-BLOOMSBURY-RESIDENCES",
+   "live_sha256": "770e97e96699fedb239488e51844cca5b1293c2f2eecb66ceeaaf783f5330af5",
+   "wa": 4,
+   "tel": 1,
+   "problem": "extensionless url, map by hand",
+   "new_sha256": "869e38c43521b81bc3bea43bee8a36152f20cd50a6ac719b2238bf5b70b1aa5e"
+  },
+  {
+   "url": "https://lilianproperties.com/project-detail/75-REFLECTIONS-AT-KEPPEL-BAY",
+   "file": "project-detail/75-REFLECTIONS-AT-KEPPEL-BAY",
+   "live_sha256": "eb76d62fe2a7e4afca12fbe32a78a105f1e26a6b6a0b82fc761af62364bcb530",
+   "wa": 4,
+   "tel": 1,
+   "problem": "extensionless url, map by hand",
+   "new_sha256": "f1c4fd3f50f72c0a7c3087c803631c0c470c821af4a888434c517bf95f3c2bea"
+  },
+  {
+   "url": "https://lilianproperties.com/project-detail/312-TURQUOISE",
+   "file": "project-detail/312-TURQUOISE",
+   "live_sha256": "da74e0634852045a4f58021a346117c1993d99dc0b330f8325cee7681d5df500",
+   "wa": 4,
+   "tel": 1,
+   "problem": "extensionless url, map by hand",
+   "new_sha256": "6a5c9fe02164dfea1b56a4d733d0eb9a0727a3965b871243f13bef7710861f7d"
+  },
+  {
+   "url": "https://lilianproperties.com/project-detail/480-THE-GREEN-COLLECTION",
+   "file": "project-detail/480-THE-GREEN-COLLECTION",
+   "live_sha256": "5a68dcd2fbd0adc7f39864751be15f200c3b42d2e83a8a1bfbac837bc40066be",
+   "wa": 4,
+   "tel": 1,
+   "problem": "extensionless url, map by hand",
+   "new_sha256": "139eb7ebfc89e975b107aadf88839bf2ecbbf5a1b21d33483bc593c9122d72c9"
+  },
+  {
+   "url": "https://lilianproperties.com/project-detail/453-NORWOOD-GRAND",
+   "file": "project-detail/453-NORWOOD-GRAND",
+   "live_sha256": "60a3897fd1912d84fc3dbdc85393f175552d4a3e3ec6d44e7feb9e43af27b8d5",
+   "wa": 4,
+   "tel": 1,
+   "problem": "extensionless url, map by hand",
+   "new_sha256": "0cb4316957967da3a3d404d19e0f20cbb3f4b6fb67a92150bf97e7b4eef788c1"
+  },
+  {
+   "url": "https://lilianproperties.com/project-detail/352-TEMBUSU-GRAND",
+   "file": "project-detail/352-TEMBUSU-GRAND",
+   "live_sha256": "5c77e18f4c02251bef5d6c0f67526821f5e3065c48b1ad9df67b7c2c1a8ce2cd",
+   "wa": 4,
+   "tel": 1,
+   "problem": "extensionless url, map by hand",
+   "new_sha256": "fb657a1a5bdf5c415a917e604283d9ca4c47950fe92345404240e5d4e0542131"
+  },
+  {
+   "url": "https://lilianproperties.com/project-detail/509-PENRITH",
+   "file": "project-detail/509-PENRITH",
+   "live_sha256": "1403f2858b518f5b0350f7bdc0b5d5cd0d05819347ca3fa4a54e0e0d067387c8",
+   "wa": 4,
+   "tel": 1,
+   "problem": "extensionless url, map by hand",
+   "new_sha256": "bc2089c868c46926b80f10e9dc9f7fe1fbcd76196643741c03015efec6f64e0c"
+  },
+  {
+   "url": "https://lilianproperties.com/project-detail/470-AUREA",
+   "file": "project-detail/470-AUREA",
+   "live_sha256": "9a4d80552c8a43ac78c62a95669edde268312063f006f402ad24d803a6985191",
+   "wa": 4,
+   "tel": 1,
+   "problem": "extensionless url, map by hand",
+   "new_sha256": "9a2f574352520e9a84dd7aeab858dfe043098ae52d762d14df09f44cfac206a2"
+  },
+  {
+   "url": "https://lilianproperties.com/project-detail/51-PLUS",
+   "file": "project-detail/51-PLUS",
+   "live_sha256": "b6c2db53d440ebfa8544579377dfaef39641c342cb119729c70868264e1c3616",
+   "wa": 4,
+   "tel": 1,
+   "problem": "extensionless url, map by hand",
+   "new_sha256": "0245204e563ed9f2e62b74532ca0befae14fbd84ec33e3a951f5dc53f14c69e2"
+  },
+  {
+   "url": "https://lilianproperties.com/project-detail/61-V-ON-SHENTON",
+   "file": "project-detail/61-V-ON-SHENTON",
+   "live_sha256": "b110f9b83a500c1b3e724730029597077886a52c29fec591176583de6c22e32c",
+   "wa": 4,
+   "tel": 1,
+   "problem": "extensionless url, map by hand",
+   "new_sha256": "02b4714c79507fd182c35061c94516487f03d4234bee941befdb7ea32900f0ec"
+  },
+  {
+   "url": "https://lilianproperties.com/project-detail/356-SOPHIA-REGENCY",
+   "file": "project-detail/356-SOPHIA-REGENCY",
+   "live_sha256": "f5c72611bebb8c3522b909cdd0a0e3cd7b9e21c281fe09442acae68aec0a6bb5",
+   "wa": 4,
+   "tel": 1,
+   "problem": "extensionless url, map by hand",
+   "new_sha256": "ce1038e867f099a08fe9731e84d2e63a77490bec10d9b36bfdedd0b1917b1e28"
+  },
+  {
+   "url": "https://lilianproperties.com/project-detail/175-BOULEVARD-88",
+   "file": "project-detail/175-BOULEVARD-88",
+   "live_sha256": "1c19637e03a99c4eddd3449044e34dedbafbd140694deb60caa31873b5503697",
+   "wa": 4,
+   "tel": 1,
+   "problem": "extensionless url, map by hand",
+   "new_sha256": "a53b02735eb85a57a8f3c20c7aba7679ac5fc2161a32d82f7e5c3b2651db9f9b"
+  },
+  {
+   "url": "https://lilianproperties.com/project-detail/413-MEYER-BLUE",
+   "file": "project-detail/413-MEYER-BLUE",
+   "live_sha256": "3ac13546981bdae50c50730fb719a442c10c36afc1a50ec02c190c9eddc3be03",
+   "wa": 4,
+   "tel": 1,
+   "problem": "extensionless url, map by hand",
+   "new_sha256": "d7a108152d18105539dcdb874fc3c59389bbbbc0a03a0cd74927ed8cbf207bbb"
+  },
+  {
+   "url": "https://lilianproperties.com/project-detail/375-GRAND-DUNMAN",
+   "file": "project-detail/375-GRAND-DUNMAN",
+   "live_sha256": "58066c193f37cf7568d4c9e4e38e5d2920f0c284a52089d50a3283ad7ef010ea",
+   "wa": 4,
+   "tel": 1,
+   "problem": "extensionless url, map by hand",
+   "new_sha256": "2bf10dcb130ea0d3b81d945dd136d02a9ba2b8e28fad388c5f52d659fefbf471"
+  },
+  {
+   "url": "https://lilianproperties.com/project-detail/428-ONE-MARINA-GARDENS",
+   "file": "project-detail/428-ONE-MARINA-GARDENS",
+   "live_sha256": "60e44affd2df1b513d24bc831d62dade40050a421d8ea8a8d67a120bc0df4db5",
+   "wa": 4,
+   "tel": 1,
+   "problem": "extensionless url, map by hand",
+   "new_sha256": "d7df5ef25734e479642cc632590adf00529988e21f5c9f6c813a13d66eea4326"
+  },
+  {
+   "url": "https://lilianproperties.com/project-detail/28-MARINA-COLLECTION",
+   "file": "project-detail/28-MARINA-COLLECTION",
+   "live_sha256": "422fb0c2776e7bf5519ed2eba341512b59506548eaa4853e3a0efd014704b2c0",
+   "wa": 4,
+   "tel": 1,
+   "problem": "extensionless url, map by hand",
+   "new_sha256": "964fb884a0be80e5d8446d5fd4b63d58309d40a2a47489772b5405a550ae8860"
+  },
+  {
+   "url": "https://lilianproperties.com/project-detail/364-THE-COLLECTIVE-AT-ONE-SOPHIA",
+   "file": "project-detail/364-THE-COLLECTIVE-AT-ONE-SOPHIA",
+   "live_sha256": "6746a4e33a8177c29ef22c0af526e3233e84f176c9bbb41b8737931167128d80",
+   "wa": 4,
+   "tel": 1,
+   "problem": "extensionless url, map by hand",
+   "new_sha256": "0443a286c2ad7674eef46dcc78324e5509edfd5a4697b505779c3d18ceb88491"
+  },
+  {
+   "url": "https://lilianproperties.com/project-detail/423-THE-SHOREFRONT",
+   "file": "project-detail/423-THE-SHOREFRONT",
+   "live_sha256": "724996410e78d0740a23053f82993ecf14f1454398b699612d654fbcdfbaf96d",
+   "wa": 4,
+   "tel": 1,
+   "problem": "extensionless url, map by hand",
+   "new_sha256": "fdb0a6bc6609d594100a2893a2585a2d37359f83af30bda89c545d226d463e5d"
+  },
+  {
+   "url": "https://lilianproperties.com/project-detail/481-FOOD-VISION-@-MANDAI",
+   "file": "project-detail/481-FOOD-VISION-@-MANDAI",
+   "live_sha256": "1d5f84d4fef4323e8219daaef887a76364d0429d510e55908f10d08ef52a26a5",
+   "wa": 4,
+   "tel": 1,
+   "problem": "extensionless url, map by hand",
+   "new_sha256": "73713bb2c5b7210de45c8613c03143699296dfa141e873e580d5a935255e4ea2"
+  },
+  {
+   "url": "https://lilianproperties.com/project-detail/211-URBAN-TREASURES",
+   "file": "project-detail/211-URBAN-TREASURES",
+   "live_sha256": "4f49dce57606651756def5cc48ff335dc562eccb18b2e1cc2c6a13bd3e9500c0",
+   "wa": 4,
+   "tel": 1,
+   "problem": "extensionless url, map by hand",
+   "new_sha256": "1cc07d60e9f142ad22087b7daf9bd66f71607b1647521b190caac77e772e7991"
+  },
+  {
+   "url": "https://lilianproperties.com/project-detail/502-ZYON-GRAND",
+   "file": "project-detail/502-ZYON-GRAND",
+   "live_sha256": "fd4c21effac63eddaf7d7c749b3cbd40a8c5a9a675aa3900360a94f9f0ff0083",
+   "wa": 4,
+   "tel": 1,
+   "problem": "extensionless url, map by hand",
+   "new_sha256": "b2513f88b9558180b63e9021d9c1325c56856b56b87f8dc0436a0322225830d0"
+  },
+  {
+   "url": "https://lilianproperties.com/project-detail/420-J%27DEN",
+   "file": "project-detail/420-J%27DEN",
+   "live_sha256": "22dc15831f36a59b9f6d5f7b269d81c2d16bf4b365a5dc602ed44126c02e67d4",
+   "wa": 4,
+   "tel": 1,
+   "problem": "extensionless url, map by hand",
+   "new_sha256": "3dc2cb5854b3f642c1eeb9df2f59c86af0179edbc45dc2c26ccb0c3c1c074258"
+  },
+  {
+   "url": "https://lilianproperties.com/project-detail/87-THE-LINE-@-TANJONG-RHU",
+   "file": "project-detail/87-THE-LINE-@-TANJONG-RHU",
+   "live_sha256": "4c34a3a1964b8e00211cd91492b435d77cd7f74e6f9ac30a674777a30b0839c6",
+   "wa": 4,
+   "tel": 1,
+   "problem": "extensionless url, map by hand",
+   "new_sha256": "76fb1fd93345684ecc262ce23b9cc2a3ec2b2fd59f6cd1780974696146c06390"
+  },
+  {
+   "url": "https://lilianproperties.com/project-detail/496-ONE-SOPHIA",
+   "file": "project-detail/496-ONE-SOPHIA",
+   "live_sha256": "3e16f3aae87b68b90781036183428f731ec4f20d34e189a47c7f25bb3f5085e6",
+   "wa": 4,
+   "tel": 1,
+   "problem": "extensionless url, map by hand",
+   "new_sha256": "b6feee0e7ef776a61339de96459bf8d7000f86862b4ddf74fe8c9925194a0188"
+  },
+  {
+   "url": "https://lilianproperties.com/project-detail/410-8@BT",
+   "file": "project-detail/410-8@BT",
+   "live_sha256": "25be7fc9cffe63cb9287a90e72621b7a5acdf138c3fb6bb97149e40df6219678",
+   "wa": 4,
+   "tel": 1,
+   "problem": "extensionless url, map by hand",
+   "new_sha256": "290a6881bcf5e16c5d916b6a24316c8ba2fedc02a2ee41615450ac23a15b807c"
+  },
+  {
+   "url": "https://lilianproperties.com/project-detail/365-ARINA-EAST-RESIDENCES",
+   "file": "project-detail/365-ARINA-EAST-RESIDENCES",
+   "live_sha256": "67d7959d3e8ca317d73a37c1a234bb7c7201f4b77680efca5d2407a71a39e2b9",
+   "wa": 4,
+   "tel": 1,
+   "problem": "extensionless url, map by hand",
+   "new_sha256": "277e82628152c93d3124e8628180aefd16c29a962cf870876dc5ec8fcd5ab6bb"
+  },
+  {
+   "url": "https://lilianproperties.com/project-detail/588-SPACE-NOVA",
+   "file": "project-detail/588-SPACE-NOVA",
+   "live_sha256": "694daebc4478240f84e8dacceedd536a5d78e74314a424328fc9332f9cbf47e7",
+   "wa": 4,
+   "tel": 1,
+   "problem": "extensionless url, map by hand",
+   "new_sha256": "f26c86ce7a39dd6159d1305bb17701b6e87ac3c7c96567756d27158c6c7c176b"
+  },
+  {
+   "url": "https://lilianproperties.com/project-detail/462-UNION-SQUARE-RESIDENCES",
+   "file": "project-detail/462-UNION-SQUARE-RESIDENCES",
+   "live_sha256": "d29f32dae17606ab71dfa68453fbeaeef28d9dd33213a77b8a4ee8c54f40cd92",
+   "wa": 4,
+   "tel": 1,
+   "problem": "extensionless url, map by hand",
+   "new_sha256": "326218f52f8849989804404afc1ad76c55ff0aa110490a2e41d8e12d79090467"
+  },
+  {
+   "url": "https://lilianproperties.com/project-detail/55-TAGORE-8",
+   "file": "project-detail/55-TAGORE-8",
+   "live_sha256": "185b9e0d69848a603e1a543ff6b1a49ff1879869b098fc41b5860a2ff91afc7d",
+   "wa": 4,
+   "tel": 1,
+   "problem": "extensionless url, map by hand",
+   "new_sha256": "25038acb45f44c8695f61af7a7a08423bd064406247ad3c41840cf4b0c6fd381"
+  },
+  {
+   "url": "https://lilianproperties.com/project-detail/367-THE-HILLSHORE",
+   "file": "project-detail/367-THE-HILLSHORE",
+   "live_sha256": "1383d6e3b340ba7ba156f47d74aee0e75bfbf2e7fa6b4bc084b9aaf66baa23cc",
+   "wa": 4,
+   "tel": 1,
+   "problem": "extensionless url, map by hand",
+   "new_sha256": "33967482eb739068e89d582d58bd3684cd8e396775735db2d938b08e84a7a933"
+  },
+  {
+   "url": "https://lilianproperties.com/project-detail/412-BAGNALL-HAUS",
+   "file": "project-detail/412-BAGNALL-HAUS",
+   "live_sha256": "20b8c2918c8d533293f1e5ce5c5efe52b1d1f09724b27e9365ca6439b5c985a9",
+   "wa": 4,
+   "tel": 1,
+   "problem": "extensionless url, map by hand",
+   "new_sha256": "7a4dec0e7ba860cfde9a89f74953c1466e328ae32f96195796bf640c08a93fc4"
+  },
+  {
+   "url": "https://lilianproperties.com/project-detail/520-PINERY-RESIDENCES",
+   "file": "project-detail/520-PINERY-RESIDENCES",
+   "live_sha256": "633027cafe393be5ba4e611ab455f7f71e1095914a7cab801035e39f563f36af",
+   "wa": 4,
+   "tel": 1,
+   "problem": "extensionless url, map by hand",
+   "new_sha256": "d603994b24383874c7c2e5ec4ca099f04ec979cde8a215eed0ecc65414819870"
+  },
+  {
+   "url": "https://lilianproperties.com/project-detail/354-THE-GIVERNY-RESIDENCES",
+   "file": "project-detail/354-THE-GIVERNY-RESIDENCES",
+   "live_sha256": "943ae3f447595b01464f9887b7c84808532719af1c797d99eea4cceffc985588",
+   "wa": 4,
+   "tel": 1,
+   "problem": "extensionless url, map by hand",
+   "new_sha256": "97ff97c4b76d2b99621d5e3a0f28308f45a05d8c7494e37350c7dc65f10c360d"
+  },
+  {
+   "url": "https://lilianproperties.com/project-detail/186-JERVOIS-PRIVE",
+   "file": "project-detail/186-JERVOIS-PRIVE",
+   "live_sha256": "fa22f67b9e6004eaffda2ffeee0a93cf7a8f3fdf38011df28823e9948ed2e9a0",
+   "wa": 4,
+   "tel": 1,
+   "problem": "extensionless url, map by hand",
+   "new_sha256": "9ee949640526afd6b2f94528b67feeb5b3b1c4cb872adfc8a802028e05bf9b1d"
+  },
+  {
+   "url": "https://lilianproperties.com/project-detail/361-Cape-Royale",
+   "file": "project-detail/361-Cape-Royale",
+   "live_sha256": "4b65600c1b09838988c9c67a1ec50ea95a1849b86fb5536580d078f8184daa4f",
+   "wa": 4,
+   "tel": 1,
+   "problem": "extensionless url, map by hand",
+   "new_sha256": "ea426d5c0945bf58fbf602e1858630503512d8b8b80bece2f136b6f6fa355cd4"
+  },
+  {
+   "url": "https://lilianproperties.com/project-detail/533-THE-ROBERTSON-OPUS",
+   "file": "project-detail/533-THE-ROBERTSON-OPUS",
+   "live_sha256": "9c5e95579cc4f38af9f7facf528b6c113c225f2bdb897281481fb919a47250dc",
+   "wa": 4,
+   "tel": 1,
+   "problem": "extensionless url, map by hand",
+   "new_sha256": "f3caaa7efdb8df1ea0b924bed844e3fd0748135c48ee79178843732799483632"
+  },
+  {
+   "url": "https://lilianproperties.com/project-detail/331-GEMS-VILLE",
+   "file": "project-detail/331-GEMS-VILLE",
+   "live_sha256": "eae1bc39c79cd6ac89eff5d3b265bb7bf7f1f003902945acff785e3f86758510",
+   "wa": 4,
+   "tel": 1,
+   "problem": "extensionless url, map by hand",
+   "new_sha256": "289320ed96db83fc009adaff309a9a7569231a32cc27af6dc63af8022d61489e"
+  },
+  {
+   "url": "https://lilianproperties.com/project-detail/272-CANNINGHILL-PIERS",
+   "file": "project-detail/272-CANNINGHILL-PIERS",
+   "live_sha256": "8e85b39646815413545fcdfaa29d9ee723d40743e2255e80531b1286542185c2",
+   "wa": 4,
+   "tel": 1,
+   "problem": "extensionless url, map by hand",
+   "new_sha256": "2da443741831349071ad680ee511e7c25b91979744873ecc3918ce230f36a623"
+  },
+  {
+   "url": "https://lilianproperties.com/project-detail/319-THE-RESERVE-RESIDENCES",
+   "file": "project-detail/319-THE-RESERVE-RESIDENCES",
+   "live_sha256": "ccffc2cf0a821cef218a8d779e454f7941dbd9a8c4a90efaa66a72e388c706f1",
+   "wa": 4,
+   "tel": 1,
+   "problem": "extensionless url, map by hand",
+   "new_sha256": "475e9362304b639fd12d666e6260c6b6944975422b9f3a35e83e07c2618011c4"
+  },
+  {
+   "url": "https://lilianproperties.com/project-detail/341-SEASCAPE",
+   "file": "project-detail/341-SEASCAPE",
+   "live_sha256": "2912fa605bc978e39bd72c8e0c6b57f1d3d5c83c4f7f6838898770367eb0bfab",
+   "wa": 4,
+   "tel": 1,
+   "problem": "extensionless url, map by hand",
+   "new_sha256": "6406a22dfd73a120cd41afc59d22824b657fe555bd0c89742270016d45b3cd95"
+  },
+  {
+   "url": "https://lilianproperties.com/project-detail/492-SUNSHINE-PLAZA",
+   "file": "project-detail/492-SUNSHINE-PLAZA",
+   "live_sha256": "af58ccf9ff94c2da5f5eda2e1f680b6dc44fa4bb3af64baae08b51003adb6b09",
+   "wa": 4,
+   "tel": 1,
+   "problem": "extensionless url, map by hand",
+   "new_sha256": "380186e2543f32507d656837dc08941232a9e3cf15f05daa7939cbd623f9f0d2"
+  },
+  {
+   "url": "https://lilianproperties.com/project-detail/460-THE-ORIE",
+   "file": "project-detail/460-THE-ORIE",
+   "live_sha256": "b2d326e287e0d3eff3ee8ae0e45fbfb0626ca949592b66e05211e2332b596908",
+   "wa": 4,
+   "tel": 1,
+   "problem": "extensionless url, map by hand",
+   "new_sha256": "bcdb6f0d7ade034cc87c13c7f9d687f28a46f502b44343fa88f1f8abe5e5a819"
+  },
+  {
+   "url": "https://lilianproperties.com/project-detail/522-FABER-RESIDENCE",
+   "file": "project-detail/522-FABER-RESIDENCE",
+   "live_sha256": "d186f953688e89487d592d09a10bb5536f4c6672ebbce9f70ad6c1dd8119f22b",
+   "wa": 4,
+   "tel": 1,
+   "problem": "extensionless url, map by hand",
+   "new_sha256": "a0f7d788d5a9b8496ef7fca2cb55054995eb39abf0c352f618523267655ee0bb"
+  },
+  {
+   "url": "https://lilianproperties.com/project-detail/379-CT-FOODNEX",
+   "file": "project-detail/379-CT-FOODNEX",
+   "live_sha256": "7364c5015ae9741c8395e1eaff1f38021d707c5712fdb9687f6aa501c3b7c2e9",
+   "wa": 4,
+   "tel": 1,
+   "problem": "extensionless url, map by hand",
+   "new_sha256": "a3c21d9529c053fe4588f3640cac61570675380757f8b6a2d5448620e6c6c4eb"
+  },
+  {
+   "url": "https://lilianproperties.com/project-detail/58-OUE-@-TWIN-PEAK",
+   "file": "project-detail/58-OUE-@-TWIN-PEAK",
+   "live_sha256": "50894a1ce41906a3fc86fb6e02122679244b4c4972b7d3320f36f07bf0b1c954",
+   "wa": 4,
+   "tel": 1,
+   "problem": "extensionless url, map by hand",
+   "new_sha256": "027bdde9e90c710e6c3c66ee15dab60c6745dab904ce9b6e57687f5f03a19c0b"
+  },
+  {
+   "url": "https://lilianproperties.com/project-detail/324-TMW-MAXWELL",
+   "file": "project-detail/324-TMW-MAXWELL",
+   "live_sha256": "a2b89094e9d835809bf3c1596723e9df48adca822e585a7e57cb0d5948cc530d",
+   "wa": 4,
+   "tel": 1,
+   "problem": "extensionless url, map by hand",
+   "new_sha256": "e0133ca3fe164df4bf18341af56ff08d7faec009bcfcd07283d25416cf7eea5d"
+  },
+  {
+   "url": "https://lilianproperties.com/project-detail/269-REIGNWOOD-HAMILTON-SCOTTS",
+   "file": "project-detail/269-REIGNWOOD-HAMILTON-SCOTTS",
+   "live_sha256": "507c6239c989e26aad5480a656a303a007ded90b5d3678a13d4409458ec266b8",
+   "wa": 4,
+   "tel": 1,
+   "problem": "extensionless url, map by hand",
+   "new_sha256": "c66c2b9e85b43e5825e4db65b12bb56104ffa232481775e23a9494ff32a7430d"
+  },
+  {
+   "url": "https://lilianproperties.com/project-detail/540-LENTOR-GARDENS-RESIDENCES",
+   "file": "project-detail/540-LENTOR-GARDENS-RESIDENCES",
+   "live_sha256": "a30346ba12d94f8cd3f9d68612b1f202ded9ce9f774f1ab17fe6a3cddc3182a4",
+   "wa": 4,
+   "tel": 1,
+   "problem": "extensionless url, map by hand",
+   "new_sha256": "22fb800fce5b1ee36b5c36e68c0b70eae75b56c0f3c01f1049f89215cd8ace7a"
+  },
+  {
+   "url": "https://lilianproperties.com/project-detail/383-THE-MYST",
+   "file": "project-detail/383-THE-MYST",
+   "live_sha256": "0ba4ef8aa14e398aa7df12126fce620d733785c52ebad909267459bfa63bdbd7",
+   "wa": 4,
+   "tel": 1,
+   "problem": "extensionless url, map by hand",
+   "new_sha256": "bd4a0d6582550af5f38716afaf7f2cda4d3fa48ef1d8e4f69e12cab642a41217"
+  },
+  {
+   "url": "https://lilianproperties.com/project-detail/536-VELA-BAY",
+   "file": "project-detail/536-VELA-BAY",
+   "live_sha256": "fdd86f9b9784e551e1c6083d17bfb70692738f4ddaacabc01a3a97ec9aa0e38f",
+   "wa": 4,
+   "tel": 1,
+   "problem": "extensionless url, map by hand",
+   "new_sha256": "6ed211af925d34fa7c37f2321280beb3d88fd746c042f755ac37975783ea82cc"
+  },
+  {
+   "url": "https://lilianproperties.com/project-detail/510-COASTAL-CABANA",
+   "file": "project-detail/510-COASTAL-CABANA",
+   "live_sha256": "d48fd4c0fa5fb61b3450caf062f3960ed122a4e0ae3c3e4521f87fa1fa2d84a4",
+   "wa": 4,
+   "tel": 1,
+   "problem": "extensionless url, map by hand",
+   "new_sha256": "9529ccdc87d8ab13f11385e53f49f62a21259bcd7332ee69f72b2254fc71c624"
+  },
+  {
+   "url": "https://lilianproperties.com/project-detail/386-JANSEN-HOUSE",
+   "file": "project-detail/386-JANSEN-HOUSE",
+   "live_sha256": "cd285b08538b92831fec50dd3c65cc0c982d8a9ec0282b0f9147a280ddde5941",
+   "wa": 4,
+   "tel": 1,
+   "problem": "extensionless url, map by hand",
+   "new_sha256": "b89b6aa775f229938e1c5a41668da00e2b8c4e6f3fd01651d4593be4282e3e5e"
+  },
+  {
+   "url": "https://lilianproperties.com/project-detail/530-ARTISAN-8",
+   "file": "project-detail/530-ARTISAN-8",
+   "live_sha256": "1bab07400ba4690156ef05c8317dcc2dc9e1ce6b66ae25a8c396dc1f178657e4",
+   "wa": 4,
+   "tel": 1,
+   "problem": "extensionless url, map by hand",
+   "new_sha256": "108f23d1fe675cb8203ec280e79d7c4d9e9abd7f6aff6ae0befbca810ea07303"
+  },
+  {
+   "url": "https://lilianproperties.com/project-detail/54-WOODS-SQUARE",
+   "file": "project-detail/54-WOODS-SQUARE",
+   "live_sha256": "171ce65f8db4de5490ede5274cf9148f49a1e52eaf51c8047cb5f07c109a9fd4",
+   "wa": 4,
+   "tel": 1,
+   "problem": "extensionless url, map by hand",
+   "new_sha256": "ff64bc02c681f184c02f828662c20723be3a9bc11fc948c279aaf94e5aba8466"
+  },
+  {
+   "url": "https://lilianproperties.com/project-detail/507-CANBERRA-CRESCENT-RESIDENCES",
+   "file": "project-detail/507-CANBERRA-CRESCENT-RESIDENCES",
+   "live_sha256": "7cf64877dd57eb7843d67df7f7a9ef0252bcb6ef58bdbf6f3fa4431016e53432",
+   "wa": 4,
+   "tel": 1,
+   "problem": "extensionless url, map by hand",
+   "new_sha256": "781c7b93187447a36f21d8eada4a4f14e90bc427f4b9933a8adcf28f7b126a31"
+  },
+  {
+   "url": "https://lilianproperties.com/project-detail/461-NAVA-GROVE",
+   "file": "project-detail/461-NAVA-GROVE",
+   "live_sha256": "7bed733e3b8d9e30dcbc42280b46164c2051a3492ae90a464a03e7d3245259ad",
+   "wa": 4,
+   "tel": 1,
+   "problem": "extensionless url, map by hand",
+   "new_sha256": "5635b759d508bb6e824d7967886b2151b514723dac2c822ef5468bd275f3ed65"
+  },
+  {
+   "url": "https://lilianproperties.com/project-detail/53-CT-HUB-2",
+   "file": "project-detail/53-CT-HUB-2",
+   "live_sha256": "4850de89495c154e408f2baef7b0613491e26b3e0556a82b51e6bb96ce6420d9",
+   "wa": 4,
+   "tel": 1,
+   "problem": "extensionless url, map by hand",
+   "new_sha256": "c10ccf56e54195f00499337accaaf0e02216304490d37a777081c561cde1b969"
+  },
+  {
+   "url": "https://lilianproperties.com/project-detail/306-EDEN-RESIDENCES-CAPITOL",
+   "file": "project-detail/306-EDEN-RESIDENCES-CAPITOL",
+   "live_sha256": "24658474d80da1a47cc5017a0a4ef4b5fa6db41975d35785b2459534c4cc58f9",
+   "wa": 4,
+   "tel": 1,
+   "problem": "extensionless url, map by hand",
+   "new_sha256": "f09a0e8fde5dab06e3471496a4ee183601799cb823b2a57066d56bebef8780e6"
+  },
+  {
+   "url": "https://lilianproperties.com/project-detail/524-NARRA-RESIDENCES",
+   "file": "project-detail/524-NARRA-RESIDENCES",
+   "live_sha256": "cacf8d2ba02cb578644c95595d23e8e5ee640bb88bc0464f2c98a18a23344c2e",
+   "wa": 4,
+   "tel": 1,
+   "problem": "extensionless url, map by hand",
+   "new_sha256": "7f022a14fdd704ee1e9c2125c97383255e9e7efca8a9cf9093d5b0e1127c4b39"
+  },
+  {
+   "url": "https://lilianproperties.com/project-detail/381-CLAYDENCE",
+   "file": "project-detail/381-CLAYDENCE",
+   "live_sha256": "d01c7e4b1e5ba820b40e9a8f5516f19c529695e46641d35b06e187cae1c96ad4",
+   "wa": 4,
+   "tel": 1,
+   "problem": "extensionless url, map by hand",
+   "new_sha256": "07fe03be30c2ea73fd34e34167bb2aa4af7085bd1bd7d60aa7022d97c0a1bdc9"
+  },
+  {
+   "url": "https://lilianproperties.com/project-detail/73-LLOYD-SIXTY-FIVE",
+   "file": "project-detail/73-LLOYD-SIXTY-FIVE",
+   "live_sha256": "a653d591277ecf910a466844385d496808452ecd2ed7c95bd57013f3b4fe06c9",
+   "wa": 4,
+   "tel": 1,
+   "problem": "extensionless url, map by hand",
+   "new_sha256": "599b3f592c9e748341fba76f4e73c2f5600c4603c91974405762c1deeb9c9bd0"
+  },
+  {
+   "url": "https://lilianproperties.com/project-detail/247-GRANGE-1866",
+   "file": "project-detail/247-GRANGE-1866",
+   "live_sha256": "3f8dbbae15b44dd81514297a471dd72c24b6edf0b9f9f3dfecd5bdad70e986ba",
+   "wa": 4,
+   "tel": 1,
+   "problem": "extensionless url, map by hand",
+   "new_sha256": "0fb1e02762016f9a2c42b325630d13149d2b8044d47b4d6d92841de01f68f2d1"
+  },
+  {
+   "url": "https://lilianproperties.com/project-detail/387-THE-ARCADY-AT-BOON-KENG",
+   "file": "project-detail/387-THE-ARCADY-AT-BOON-KENG",
+   "live_sha256": "4ad473c0ce2aa0a0868eba4edd071ef387cece7817d254081bc20ebb3a34754b",
+   "wa": 4,
+   "tel": 1,
+   "problem": "extensionless url, map by hand",
+   "new_sha256": "88ebedcd10a01757e42eb332afe7682bf92b830b12c611210d231d260ceaa51e"
+  },
+  {
+   "url": "https://lilianproperties.com/project-detail/362-ZYANYA",
+   "file": "project-detail/362-ZYANYA",
+   "live_sha256": "210b6b863c8a96f0b28b874a5789c5d38a92c22707fa740d69846f28dbf98209",
+   "wa": 4,
+   "tel": 1,
+   "problem": "extensionless url, map by hand",
+   "new_sha256": "217650b527474b1aebcff2161befa72486cd931f0e88fb9e2261fae8b1985213"
+  },
+  {
+   "url": "https://lilianproperties.com/project-detail/515-THE-GOLDEN-MILE",
+   "file": "project-detail/515-THE-GOLDEN-MILE",
+   "live_sha256": "0b3f35f5662725905b577162556c51dcdcd143e13e2cf8b8741c68d256f25228",
+   "wa": 4,
+   "tel": 1,
+   "problem": "extensionless url, map by hand",
+   "new_sha256": "2fc43837db1cd853ba61cf0dc81f2738e5e20b6c5654062510c01848e7d9519b"
+  },
+  {
+   "url": "https://lilianproperties.com/project-detail/323-TERRA-HILL",
+   "file": "project-detail/323-TERRA-HILL",
+   "live_sha256": "bd54a1072344beea41d62d64fad01058ad443555bfa4e14b787f7dcb6b22f11f",
+   "wa": 4,
+   "tel": 1,
+   "problem": "extensionless url, map by hand",
+   "new_sha256": "3d5c230455f9c09dc63d6b7c3bb76d557f7112af69d08d4d0804ed8f478679b3"
+  },
+  {
+   "url": "https://lilianproperties.com/project-detail/416-21-ANDERSON",
+   "file": "project-detail/416-21-ANDERSON",
+   "live_sha256": "6937097401a26392d15a02f7880066f98cb338bd29a4fee887312f92ad468c33",
+   "wa": 4,
+   "tel": 1,
+   "problem": "extensionless url, map by hand",
+   "new_sha256": "5f8b6f011305b80fbd8c70d3e83e2fca2bf3b8a2038c1354fde8223eeea113d3"
+  },
+  {
+   "url": "https://lilianproperties.com/project-detail/494-THE-VENUE-SHOPPES",
+   "file": "project-detail/494-THE-VENUE-SHOPPES",
+   "live_sha256": "3bf9c7b7251fa2685c703c432e0d67d929c4221a97e960cef4e08cca06b1b615",
+   "wa": 4,
+   "tel": 1,
+   "problem": "extensionless url, map by hand",
+   "new_sha256": "15ffa44a7863fe16035fc952d29c03a67650c2d2190be241281335ec0a69bdc4"
+  },
+  {
+   "url": "https://lilianproperties.com/project-detail/578-GATE%2B",
+   "file": "project-detail/578-GATE%2B",
+   "live_sha256": "aa86408cf6fc235a9190d964abbffe6db732ce59ff6997c9fd2cea0b5c356d25",
+   "wa": 4,
+   "tel": 1,
+   "problem": "extensionless url, map by hand",
+   "new_sha256": "758d743726a5831b77a2c5b6a300702c6ce0fa750e4d05465c2b47ce7317e7e2"
+  },
+  {
+   "url": "https://lilianproperties.com/project-detail/508-THE-SEN",
+   "file": "project-detail/508-THE-SEN",
+   "live_sha256": "530b3a71c95e8b6deab3d85fe82c73da8ef3f23a05c9c14eecb8ef9a63e15c14",
+   "wa": 4,
+   "tel": 1,
+   "problem": "extensionless url, map by hand",
+   "new_sha256": "febdc3df2f9c58fb2c70599f6197a9d62d837be8c0cd4d64650782acabdf1779"
+  },
+  {
+   "url": "https://lilianproperties.com/project-detail/408-KASSIA",
+   "file": "project-detail/408-KASSIA",
+   "live_sha256": "5d05c49d93df62f63a2bc7b0b466fe372d17e9c761f5e071843754b8f733e653",
+   "wa": 4,
+   "tel": 1,
+   "problem": "extensionless url, map by hand",
+   "new_sha256": "64deec109e22511be675795382006267b72e88b212d800fa31c74e7a8d359673"
+  },
+  {
+   "url": "https://lilianproperties.com/project-detail/355-HILL-HOUSE",
+   "file": "project-detail/355-HILL-HOUSE",
+   "live_sha256": "37e4ba890eb99ca5f93089007940335047421fc2e57e231cd5b9c60b838aeaf3",
+   "wa": 4,
+   "tel": 1,
+   "problem": "extensionless url, map by hand",
+   "new_sha256": "03bc5fd9e57623454b254a9c420ba21d4b9e1a153a0bffb3dbf019fc713a0c11"
+  },
+  {
+   "url": "https://lilianproperties.com/project-detail/373-THE-LAKEGARDEN-RESIDENCES",
+   "file": "project-detail/373-THE-LAKEGARDEN-RESIDENCES",
+   "live_sha256": "c58ee607d34a7a989c2dd13798885003776f2056743aee0424893b9ebecc1fce",
+   "wa": 4,
+   "tel": 1,
+   "problem": "extensionless url, map by hand",
+   "new_sha256": "61af5a87b5c45317907ed66e3eb4d4b49e417734a6bf472a1b6a40d0fda3c749"
+  },
+  {
+   "url": "https://lilianproperties.com/project-detail/374-PINETREE-HILL",
+   "file": "project-detail/374-PINETREE-HILL",
+   "live_sha256": "e3ae37c67dd51da9a1109cb7449af9adac37592dd29b468019e483fdb0964c47",
+   "wa": 4,
+   "tel": 1,
+   "problem": "extensionless url, map by hand",
+   "new_sha256": "50f409ba14b93d7380087ccf46cb5670a76ad502929388275e4a4add2cd5f19c"
+  },
+  {
+   "url": "https://lilianproperties.com/project-detail/382-THE-CONTINUUM",
+   "file": "project-detail/382-THE-CONTINUUM",
+   "live_sha256": "e18138ea41807152732948fe160f0965baa8f7cd57ab6aa01a9cfb6b8018396f",
+   "wa": 4,
+   "tel": 1,
+   "problem": "extensionless url, map by hand",
+   "new_sha256": "f6b5087a4c01e33997107b9ce193f3e26f5ce1b68fb4216e65c4531a89571a4c"
+  },
+  {
+   "url": "https://lilianproperties.com/project-detail/389-HILLOCK-GREEN",
+   "file": "project-detail/389-HILLOCK-GREEN",
+   "live_sha256": "bf555016717a71967a066159a147f00ff4b0ac72be782660c3cfb6b42ed865e2",
+   "wa": 4,
+   "tel": 1,
+   "problem": "extensionless url, map by hand",
+   "new_sha256": "6f89b4ef21eaf6761c7c1a79cfbf3104194b6e025599e1774ad5b0f90faf98bb"
+  },
+  {
+   "url": "https://lilianproperties.com/project-detail/478-VISIONCREST-ORCHARD",
+   "file": "project-detail/478-VISIONCREST-ORCHARD",
+   "live_sha256": "2268530119c9fc8655b5d5ffe3bf2fe4c61699503ec2285d7afe28e5dd2c4e7b",
+   "wa": 4,
+   "tel": 1,
+   "problem": "extensionless url, map by hand",
+   "new_sha256": "3427e7ef9abeeb4eaeb24e415c440844e91c9b4a078621c9914ff9a125b1a4d6"
+  },
+  {
+   "url": "https://lilianproperties.com/project-detail/498-SPACE-18",
+   "file": "project-detail/498-SPACE-18",
+   "live_sha256": "4ddbfbe8697921a576aeb4a57a826b62cf68a7a4f581846e3940870370796dc4",
+   "wa": 4,
+   "tel": 1,
+   "problem": "extensionless url, map by hand",
+   "new_sha256": "d1cc6fef2f5cced639cd51bef8315952af058ac191fb2d86bd9c2beba871afee"
+  },
+  {
+   "url": "https://lilianproperties.com/project-detail/503-SKYE-AT-HOLLAND",
+   "file": "project-detail/503-SKYE-AT-HOLLAND",
+   "live_sha256": "ad74834eb29d6440eac5fade79bf4b499dc1e761a7e2d4eabe273a2975412b98",
+   "wa": 4,
+   "tel": 1,
+   "problem": "extensionless url, map by hand",
+   "new_sha256": "4681946d73e1152b170ea07005623b65071f4b701523ce91db81d97ad2784470"
+  },
+  {
+   "url": "https://lilianproperties.com/project-detail/525-TENGAH-GARDEN-RESIDENCES",
+   "file": "project-detail/525-TENGAH-GARDEN-RESIDENCES",
+   "live_sha256": "533536ead49c993183ecd88c2f13db46e1db790dc5ef70f8811f0c9ad64acf98",
+   "wa": 4,
+   "tel": 1,
+   "problem": "extensionless url, map by hand",
+   "new_sha256": "333b213fea8983107efadfe4c5805278bc067b8f3b9cb00cdfabeb4da4f4cb70"
+  },
+  {
+   "url": "https://lilianproperties.com/listing-detail/444900-Jervois-Prive",
+   "file": "listing-detail/444900-Jervois-Prive",
+   "live_sha256": "448ec7a34161fa7819846cdf2859433cb160419269dfaf6965d7eedc290f51a2",
+   "wa": 4,
+   "tel": 1,
+   "problem": "extensionless url, map by hand",
+   "new_sha256": "799c96690e2788ca045a41bc881524e6b1f2940862e39dad14275f41205a1ce4"
+  },
+  {
+   "url": "https://lilianproperties.com/listing-detail/549587-OUE-Twin-Peaks",
+   "file": "listing-detail/549587-OUE-Twin-Peaks",
+   "live_sha256": "49f27402b60fc55bc67d00800d0fd0eb35b0a592fc6fcfec8cf5edbddd35120a",
+   "wa": 4,
+   "tel": 1,
+   "problem": "extensionless url, map by hand",
+   "new_sha256": "0994b1991732e0e037ed11acb71eae22ba05961d19a1ab9149de7f46bc2213ff"
+  },
+  {
+   "url": "https://lilianproperties.com/listing-detail/444811-SOPHIA-REGENCY",
+   "file": "listing-detail/444811-SOPHIA-REGENCY",
+   "live_sha256": "1f378eae923b5b4e3843e9b2b1ae0893c236dc238d9bd8d252bf2e602399030e",
+   "wa": 4,
+   "tel": 1,
+   "problem": "extensionless url, map by hand",
+   "new_sha256": "f97050e3770ca8daa9fe4b7ae1fe9b5d0987041c0479e0df9deb8ff9a825b97d"
+  },
+  {
+   "url": "https://lilianproperties.com/listing-detail/514532-Midtown-Bay",
+   "file": "listing-detail/514532-Midtown-Bay",
+   "live_sha256": "2b70dd9b8a6df50dc5d8c21b007ceb4e624d83d79304e0b093db45aed27f81a7",
+   "wa": 4,
+   "tel": 1,
+   "problem": "extensionless url, map by hand",
+   "new_sha256": "1f982d5c37e00d9c784172c0daa88a9340d48d693b9f1713ef2e1ea5c54d8944"
+  },
+  {
+   "url": "https://lilianproperties.com/listing-detail/444833-The-Line@Tanjong-Rhu",
+   "file": "listing-detail/444833-The-Line@Tanjong-Rhu",
+   "live_sha256": "207ee1c88701f218a2763737d5bd4962fe70a79fb5bbbc092b9df43f7fe317f0",
+   "wa": 4,
+   "tel": 1,
+   "problem": "extensionless url, map by hand",
+   "new_sha256": "cc8532009aa521e9ef85ff59ef84abfa222253665c740bbffd5ea4572217a93c"
+  },
+  {
+   "url": "https://lilianproperties.com/about",
+   "file": "about",
+   "live_sha256": "5091ae56692e5d37486e900428241a526adc6f7dcea913965620b7605524242f",
+   "wa": 3,
+   "tel": 1,
+   "problem": "extensionless url, map by hand",
+   "new_sha256": "0ac69610e9b6da5ab30d9bb247382805ffa0801504e340d68d49f61c4866bcd1"
+  },
+  {
+   "url": "https://lilianproperties.com/contact-me",
+   "file": "contact-me",
+   "live_sha256": "e0250e27e3735531635bd5efa2b5c7d46393f271c26f0daea9ba261731eb54e0",
+   "wa": 4,
+   "tel": 2,
+   "problem": "extensionless url, map by hand",
+   "new_sha256": "13d11072d6d774e912b04052d8e60899bddf89fa5c7e9636fbf8708aec3bba33"
+  },
+  {
+   "url": "https://lilianproperties.com/sale",
+   "file": "sale",
+   "live_sha256": "87894e7500b33588d5a6f500a0844b34481fb6288d35fb4aa3e1759840f27059",
+   "wa": 4,
+   "tel": 1,
+   "problem": "extensionless url, map by hand",
+   "new_sha256": "73ea70659ae0627c615e95ba921aba61297b80c473161635e2bc5ccb7fced54f"
+  },
+  {
+   "url": "https://lilianproperties.com/rent",
+   "file": "rent",
+   "live_sha256": "6d3ba8e7d89d7880317fc11403c54b126fea0b339cd72c177a422bc45b33e9f4",
+   "wa": 4,
+   "tel": 1,
+   "problem": "extensionless url, map by hand",
+   "new_sha256": "1c38a6e10f6220d825856599957b6d6707f2818dc31432e2bf06efd12afda6e9"
+  },
+  {
+   "url": "https://lilianproperties.com/joinme",
+   "file": "joinme",
+   "live_sha256": "1f238e941fb9f2c5552fe4ddecf9c4de9d2e7358f0f06dd402089b1b14d32347",
+   "wa": 4,
+   "tel": 1,
+   "problem": "extensionless url, map by hand",
+   "new_sha256": "0276ed6a8802e39eb2d999e8fd4db6b1003d2ab76586322c184a3e1f6a1892d9"
+  },
+  {
+   "url": "https://lilianproperties.com/privacy-policy",
+   "file": "privacy-policy",
+   "live_sha256": "05c77a2c6242f56f2553d094c0a324fc6debca4e35fe3b229425d3bb178cbedc",
+   "wa": 3,
+   "tel": 1,
+   "problem": "extensionless url, map by hand",
+   "new_sha256": "09f28a028f3fc6dbaa6ea4d8d97710e4cacb7fc643ec383bb1cf67b9136bdcaa"
+  },
+  {
+   "url": "https://lilianproperties.com/news-and-picks",
+   "file": "news-and-picks",
+   "live_sha256": "c249c0fd258ffc461a5465abdb858cb97a87640fbb3c60c87447df40c58f95b2",
+   "wa": 3,
+   "tel": 1,
+   "problem": "extensionless url, map by hand",
+   "new_sha256": "e6109b3f1666091d44722bc4e919983163de4ab4b95888680ca57e8ca4a72b69"
+  },
+  {
+   "url": "https://lilianproperties.com/news-and-picks/news",
+   "file": "news-and-picks/news",
+   "live_sha256": "ed9a17b1e55b73caf3206349050c2bd10ccb4b06ff8a61d5b621c3f17e7868e8",
+   "wa": 3,
+   "tel": 1,
+   "problem": "extensionless url, map by hand",
+   "new_sha256": "7ee02b9294041028929853fd500a569f6cfb6c01f77a00c32d7e6ed833ad98d0"
+  },
+  {
+   "url": "https://lilianproperties.com/news-and-picks/picks",
+   "file": "news-and-picks/picks",
+   "live_sha256": "2414523c78fa5c795cf4aca5eeddbd927dc527da424654b9a9dc86c142701a09",
+   "wa": 3,
+   "tel": 1,
+   "problem": "extensionless url, map by hand",
+   "new_sha256": "ee86f657999741176a15db77c18800fa55088eaba3ec5bc63f582240e4b27673"
+  },
+  {
+   "url": "https://lilianproperties.com/news-detail/1320",
+   "file": "news-detail/1320",
+   "live_sha256": "51bfc56b2f0a8942d6a49f1f9a05f994fe76555e6414990475d26c405d3b48da",
+   "wa": 3,
+   "tel": 1,
+   "problem": "extensionless url, map by hand",
+   "new_sha256": "b4f332a74120584f627bc15bfa54a6e8e3d4cab8d533a37a4fa0777065723b68"
+  },
+  {
+   "url": "https://lilianproperties.com/picks-detail/1348",
+   "file": "picks-detail/1348",
+   "live_sha256": "a57220626e6655bc08ff3a1cb348e2ed9061cdcefd9856e18552988712f11a7b",
+   "wa": 3,
+   "tel": 1,
+   "problem": "extensionless url, map by hand",
+   "new_sha256": "5972a68ea8d6518ae66e6ecc40c60c6db6d1329a91da1daa601bdf7cefd51a95"
+  },
+  {
+   "url": "https://lilianproperties.com/picks-detail/1351",
+   "file": "picks-detail/1351",
+   "live_sha256": "39dfea305595896311ac5d97dc3fc2401471fe6e9a424e86762dd1e1a62317fa",
+   "wa": 3,
+   "tel": 1,
+   "problem": "extensionless url, map by hand",
+   "new_sha256": "04a1ed2d8cb0aad51fa78b88dfd02dd6cb99435c2e5aac835cab048702cd5e78"
+  },
+  {
+   "url": "https://lilianproperties.com/picks-detail/1350",
+   "file": "picks-detail/1350",
+   "live_sha256": "3d0dd1633eaaf4607c421ae5a10e0346a2a93fc366f75a782eae876be8c91e68",
+   "wa": 3,
+   "tel": 1,
+   "problem": "extensionless url, map by hand",
+   "new_sha256": "97482e8b2881a5fcf3ae04fd9092282304c9230385fd8b718f4dc18638cb6650"
+  },
+  {
+   "url": "https://lilianproperties.com/news-detail/1343",
+   "file": "news-detail/1343",
+   "live_sha256": "4a4b877aaa353ff06cb4688a8229def7a263b0978e8925b0e38ad650f833be27",
+   "wa": 3,
+   "tel": 1,
+   "problem": "extensionless url, map by hand",
+   "new_sha256": "595c13f7b50121359deb0131955324d9f52b981383287792257cdee46f999b2e"
+  },
+  {
+   "url": "https://lilianproperties.com/picks-detail/1349",
+   "file": "picks-detail/1349",
+   "live_sha256": "a6928ecbc06bb356a5273abc94abca82700ec0d801311b5ae119d2de83799285",
+   "wa": 3,
+   "tel": 1,
+   "problem": "extensionless url, map by hand",
+   "new_sha256": "ad9b71b9c1b097b70a5171b20306f7ce662839c71973c3909bf86e529886f123"
+  },
+  {
+   "url": "https://lilianproperties.com/picks-detail/1352",
+   "file": "picks-detail/1352",
+   "live_sha256": "2461bc37f0daf359f2f84a22f11d35c62a4228313192c65ff48c71016915cecc",
+   "wa": 3,
+   "tel": 1,
+   "problem": "extensionless url, map by hand",
+   "new_sha256": "08d650977903372a158d2c2e4950e758a46229d560b60ce7deb1ab99cb9c87d8"
+  },
+  {
+   "url": "https://lilianproperties.com/news-detail/1338",
+   "file": "news-detail/1338",
+   "live_sha256": "cb6607e9ac8da6333c9a0a25807c5de05df083c6536206b0bdefb11004277c34",
+   "wa": 3,
+   "tel": 1,
+   "problem": "extensionless url, map by hand",
+   "new_sha256": "11221deb366cc328db9a6ef010ddae191c0df1cfe496f1df0e08211f38c63e3b"
+  },
+  {
+   "url": "https://lilianproperties.com/news-detail/1330",
+   "file": "news-detail/1330",
+   "live_sha256": "d766a252fe23b1c274c73285a56d11a430d8cf0e5be6b4e31281aa34e803a1bb",
+   "wa": 3,
+   "tel": 1,
+   "problem": "extensionless url, map by hand",
+   "new_sha256": "6288e70269fa7f0b27b04860659b7d980019df8d45b40131e6e1a7d46fdea074"
+  },
+  {
+   "url": "https://lilianproperties.com/news-detail/1347",
+   "file": "news-detail/1347",
+   "live_sha256": "68789fb9355fc7b6ab4f5f97a4bd13b0f68c5dee3259f43a70560eb3d2d20cfe",
+   "wa": 3,
+   "tel": 1,
+   "problem": "extensionless url, map by hand",
+   "new_sha256": "0c7821cea61d7e601ec9a324aef2902c35178fadc189eab5459498c6a7be1d62"
+  },
+  {
+   "url": "https://lilianproperties.com/news-detail/1317",
+   "file": "news-detail/1317",
+   "live_sha256": "fe42b5d22d471ae85c20f47e616462d7298954389dda6560f677ebe3cbba176e",
+   "wa": 3,
+   "tel": 1,
+   "problem": "extensionless url, map by hand",
+   "new_sha256": "a8426d8cb14d635135ed6240244d53b09d5ea180172188ab6716064512f01048"
+  },
+  {
+   "url": "https://lilianproperties.com/news-detail/1315",
+   "file": "news-detail/1315",
+   "live_sha256": "9cc2662e695aedb38c56ba19a7ad7491450d00c8f8a9b94ffa6bb06fdd37bd10",
+   "wa": 3,
+   "tel": 1,
+   "problem": "extensionless url, map by hand",
+   "new_sha256": "03bec7662220f8e8f14cd1912cd640b53a60fdb6efb7ed2ed7ab8baac78abc46"
+  },
+  {
+   "url": "https://lilianproperties.com/news-detail/1304",
+   "file": "news-detail/1304",
+   "live_sha256": "34535adda10a9ffe4f5f0e36d76cf85c5ae5563be5c0770ccdabd07853afcb4e",
+   "wa": 3,
+   "tel": 1,
+   "problem": "extensionless url, map by hand",
+   "new_sha256": "115cb326c64304f1899b4e06f874d605526ff7ff07e62351942f37ccfb0b8697"
+  },
+  {
+   "url": "https://lilianproperties.com/news-detail/1305",
+   "file": "news-detail/1305",
+   "live_sha256": "f53c6c7e06b442d8b439a4b3fc5ddfdabd101d84ae45a560b3a54e21b782a0ab",
+   "wa": 3,
+   "tel": 1,
+   "problem": "extensionless url, map by hand",
+   "new_sha256": "02b63503016190e678502426d991fcab56354983b31f463c73fe489586311ea2"
+  },
+  {
+   "url": "https://lilianproperties.com/news-detail/1309",
+   "file": "news-detail/1309",
+   "live_sha256": "8750f9dc979eb7d5ab5496f4a01374cbebea1a7dc39e26e4c0b7d2d79cd64914",
+   "wa": 3,
+   "tel": 1,
+   "problem": "extensionless url, map by hand",
+   "new_sha256": "7cf5086570a0f717f672d13cc34d8fbdf66175fb4d02dc4f16941cddfa6602a4"
+  },
+  {
+   "url": "https://lilianproperties.com/news-detail/1300",
+   "file": "news-detail/1300",
+   "live_sha256": "3166dde602aab76f43470cd6b0634932b8edcbf75798b3ee26c40badf61bbb36",
+   "wa": 3,
+   "tel": 1,
+   "problem": "extensionless url, map by hand",
+   "new_sha256": "f9f20465b9b38fe30857087b49e085657cf113b7864e191269640586ec6d3c13"
+  },
+  {
+   "url": "https://lilianproperties.com/news-detail/1303",
+   "file": "news-detail/1303",
+   "live_sha256": "21aa992302a30b181b682cc2a0888f41dce59cc342b819d9975b8ea44d2c9580",
+   "wa": 3,
+   "tel": 1,
+   "problem": "extensionless url, map by hand",
+   "new_sha256": "fda5c2dfae038edeab70d8c7616300fc633c9308b10aafaac886045d9d4ad941"
+  },
+  {
+   "url": "https://lilianproperties.com/picks-detail/1344",
+   "file": "picks-detail/1344",
+   "live_sha256": "03f0a83122392b8b1424d0765d54dfea7cb579e4a0c17c27f8c6e0634f4811a1",
+   "wa": 3,
+   "tel": 1,
+   "problem": "extensionless url, map by hand",
+   "new_sha256": "3794a1a95a5bb11cf63bd8f7eed8b83805ab21cb039f9f16680167ed6ddd29ae"
+  },
+  {
+   "url": "https://lilianproperties.com/picks-detail/1346",
+   "file": "picks-detail/1346",
+   "live_sha256": "e1c095652a6f0916bc8d46e589e218de0a28cd0d9c5e8539112fc873603fc54a",
+   "wa": 3,
+   "tel": 1,
+   "problem": "extensionless url, map by hand",
+   "new_sha256": "3cb08d4470a9662df4f414fd2c3190b2705311affce9f630c3a0585a5346b177"
+  },
+  {
+   "url": "https://lilianproperties.com/picks-detail/1341",
+   "file": "picks-detail/1341",
+   "live_sha256": "269c1090379577818023fb28976682c97b8d0530504b524197a41b7a3e192ff1",
+   "wa": 3,
+   "tel": 1,
+   "problem": "extensionless url, map by hand",
+   "new_sha256": "7e02d866d50b3be97cec2b63dec9d28ad885f12eb00923945f6482bf63f752cd"
+  },
+  {
+   "url": "https://lilianproperties.com/picks-detail/1342",
+   "file": "picks-detail/1342",
+   "live_sha256": "e670ad414d1359f9a2af1a8a44573fa9bb0d1307dd2ceeb28da3a20feff90ffa",
+   "wa": 3,
+   "tel": 1,
+   "problem": "extensionless url, map by hand",
+   "new_sha256": "05d10fee4572197e4c3095f5a2b0254c265dd7635327a3dc2a19b68c133d2e9f"
+  },
+  {
+   "url": "https://lilianproperties.com/picks-detail/1340",
+   "file": "picks-detail/1340",
+   "live_sha256": "975fe041683161d079639af4d7e2cf0ce5fbedaef469610de2a0ffdc2215de37",
+   "wa": 3,
+   "tel": 1,
+   "problem": "extensionless url, map by hand",
+   "new_sha256": "3ddd3286314a1314dcf31bffb8a93a34dd7095f00a7c6528fbf9b261d5afc10e"
+  },
+  {
+   "url": "https://lilianproperties.com/picks-detail/1123",
+   "file": "picks-detail/1123",
+   "live_sha256": "960746d1941d83c20af529d5557fe6fd701e90122a1c92d3b22da51794a02554",
+   "wa": 3,
+   "tel": 1,
+   "problem": "extensionless url, map by hand",
+   "new_sha256": "c616d16412e9939dd4b355f80650b4bd982079b30e6df0e53da2170519495540"
+  },
+  {
+   "url": "https://lilianproperties.com/picks-detail/1345",
+   "file": "picks-detail/1345",
+   "live_sha256": "6003958788188ecaf092e652e175d808938a23aff1f374caace662e0ecbc3da4",
+   "wa": 3,
+   "tel": 1,
+   "problem": "extensionless url, map by hand",
+   "new_sha256": "a77280d6983d717da507bd5172ea2fde223dfce57d746ae4984dd5e58e12ebf1"
+  },
+  {
+   "url": "https://lilianproperties.com/overseas",
+   "file": "overseas",
+   "live_sha256": "7ff1d397cb0b472be91d94a0ddfd4311c56be0207ec410f8b4f98a3f95a505ba",
+   "wa": 4,
+   "tel": 1,
+   "problem": "extensionless url, map by hand",
+   "new_sha256": "4f021ddd00a27e23dcfc36603435ea07e86f0f985f5c050b8ee6be1472587587"
+  },
+  {
+   "url": "https://lilianproperties.com/overseas-detail/405-One-Bishopgate-Plaza",
+   "file": "overseas-detail/405-One-Bishopgate-Plaza",
+   "live_sha256": "840f28fb1014bfc5c92f5b00a353caa1fa5d147c5db30b08b8451c3e23a97284",
+   "wa": 4,
+   "tel": 1,
+   "problem": "extensionless url, map by hand",
+   "new_sha256": "9ecd47ad63872b3116b3d30aad06943e2fde856b9d1f760c781c5d3feb2e71fe"
+  },
+  {
+   "url": "https://lilianproperties.com/overseas-detail/419-DAMAC-Tower-Nine-Elms-London",
+   "file": "overseas-detail/419-DAMAC-Tower-Nine-Elms-London",
+   "live_sha256": "3c4314e4421afa823df8c0096a1ec1b6f7802a39e7a74bc0fa4fe48ee4c8183e",
+   "wa": 4,
+   "tel": 1,
+   "problem": "extensionless url, map by hand",
+   "new_sha256": "c87d7e670f0d95b69dd7852ce9e2bd793968abdeaf1ee08e1845116495a2cc8c"
+  },
+  {
+   "url": "https://lilianproperties.com/overseas-detail/486-ROYAL-PLATINUM",
+   "file": "overseas-detail/486-ROYAL-PLATINUM",
+   "live_sha256": "15c84e9cafd995e3e243bdfeff1a22430578056ab97929e7ad4b8d2c8942a5f2",
+   "wa": 4,
+   "tel": 1,
+   "problem": "extensionless url, map by hand",
+   "new_sha256": "7287f9a43a345b317695851817a32337ff95b2b809b76ed347f1d3dbf822446b"
+  },
+  {
+   "url": "https://lilianproperties.com/overseas-detail/422-The-Residences-at-Central-Park-%28Ellerslie%29",
+   "file": "overseas-detail/422-The-Residences-at-Central-Park-%28Ellerslie%29",
+   "live_sha256": "68adf02738f29d8d037014c1d9c7b00eb83bb0cb454ada7a1bb8dac08168c0f9",
+   "wa": 4,
+   "tel": 1,
+   "problem": "extensionless url, map by hand",
+   "new_sha256": "c91a7085211df1830037c05c243d757973d45ef31ad8caf117cb9ec742d6bce5"
+  },
+  {
+   "url": "https://lilianproperties.com/overseas-detail/469-WATERHOUSE-GARDENS",
+   "file": "overseas-detail/469-WATERHOUSE-GARDENS",
+   "live_sha256": "34b000fd252c9e554f8c497810a504b848d41910791fdc971c1de664141f7ff8",
+   "wa": 4,
+   "tel": 1,
+   "problem": "extensionless url, map by hand",
+   "new_sha256": "8010d7584598b12dcba5867dc4bab774a0acbb9025f29d61778fa17e6c0e5310"
+  },
+  {
+   "url": "https://lilianproperties.com/overseas-detail/343-UNO",
+   "file": "overseas-detail/343-UNO",
+   "live_sha256": "9f2182261712b91a3c8df8d0676f2b0f77db94e1be713a0c6650bdfe1bbf80f2",
+   "wa": 4,
+   "tel": 1,
+   "problem": "extensionless url, map by hand",
+   "new_sha256": "cbd7d8570ee720676994bc626736bc7230d3ffed785f43dcfebcf2f27d40a1c8"
+  },
+  {
+   "url": "https://lilianproperties.com/overseas-detail/477-Obsidian",
+   "file": "overseas-detail/477-Obsidian",
+   "live_sha256": "6a80f24035bd36b6445ec0bae4a6a17a512c4eaab1f77f26d9b590eaf3d07d5f",
+   "wa": 4,
+   "tel": 1,
+   "problem": "extensionless url, map by hand",
+   "new_sha256": "fc6e76eb5d0e4c6dcdf7cf5f1fdc1ca3565aab1a8bf53d5d664851cb0447b0de"
+  },
+  {
+   "url": "https://lilianproperties.com/overseas-detail/298-TRX-RESIDENCE",
+   "file": "overseas-detail/298-TRX-RESIDENCE",
+   "live_sha256": "47b23693b92ce021fa0a1c327cdea35bfcdc89fcac157b628db3067a52e10b54",
+   "wa": 4,
+   "tel": 1,
+   "problem": "extensionless url, map by hand",
+   "new_sha256": "1341d52f10a0737e573699c9f82a742b67db67882df86cab6df0913a345cd697"
+  },
+  {
+   "url": "https://lilianproperties.com/overseas-detail/296-ROYAL-WHARF",
+   "file": "overseas-detail/296-ROYAL-WHARF",
+   "live_sha256": "d7a79c60b52b8be1cf933e5541ad746d4a81dcd49d2b5e6a6373e1994bf85534",
+   "wa": 4,
+   "tel": 1,
+   "problem": "extensionless url, map by hand",
+   "new_sha256": "57f7002a225833d517f8f2778a0ba30b59936ce9f2c2a14c4b95797372ef83dc"
+  },
+  {
+   "url": "https://lilianproperties.com/overseas-detail/336-OPUS-BAY",
+   "file": "overseas-detail/336-OPUS-BAY",
+   "live_sha256": "2a496fce78d6bf960b4a434bd892aee94d0a50d7a4cf085fed3513ebfc25d780",
+   "wa": 4,
+   "tel": 1,
+   "problem": "extensionless url, map by hand",
+   "new_sha256": "d72a4ef6c003ae97f1417c0eb3bb1ee1a8a332305df583b3e682879e057cb980"
+  },
+  {
+   "url": "https://lilianproperties.com/overseas-detail/407-Odom",
+   "file": "overseas-detail/407-Odom",
+   "live_sha256": "c999d92de2bd849e2958349f5421f9e85b32971ee026b75760e220978c00102a",
+   "wa": 4,
+   "tel": 1,
+   "problem": "extensionless url, map by hand",
+   "new_sha256": "0a5647aceb8e445a563660ee316a1cbd54e78b14ff6dbf0944bd5b03ebef0125"
+  },
+  {
+   "url": "https://lilianproperties.com/overseas-detail/482-Rose-Apple-Square",
+   "file": "overseas-detail/482-Rose-Apple-Square",
+   "live_sha256": "0cf1e74eef65fcc9c3b9c7eaa6723985bdbf233c335b532a778061e634421cd8",
+   "wa": 4,
+   "tel": 1,
+   "problem": "extensionless url, map by hand",
+   "new_sha256": "20fd1e3674b028db0c31ae262192799ea360f0e18d860b48e9995631e604f902"
+  },
+  {
+   "url": "https://lilianproperties.com/overseas-detail/475-ONE-THAMES-QUAY",
+   "file": "overseas-detail/475-ONE-THAMES-QUAY",
+   "live_sha256": "673416da71273bfc2f4318a4b8438b991b7b55867c29c35635a0e3e9cbc1942c",
+   "wa": 4,
+   "tel": 1,
+   "problem": "extensionless url, map by hand",
+   "new_sha256": "5e0a170657f8dc807aba824c61b495efa557621c9010ab2e3e20bfa529882578"
+  },
+  {
+   "url": "https://lilianproperties.com/overseas-detail/468-BOW-GREEN",
+   "file": "overseas-detail/468-BOW-GREEN",
+   "live_sha256": "9c94c756b489924444a2fa782cd3cfee84ebbd707c8c5a17b3ccc8ead51c5f36",
+   "wa": 4,
+   "tel": 1,
+   "problem": "extensionless url, map by hand",
+   "new_sha256": "93f41c2b4a7226868a16941ace2e114182db4464fa2e4c792f2aa852c172eef8"
+  },
+  {
+   "url": "https://lilianproperties.com/overseas-detail/425-Madras-Square",
+   "file": "overseas-detail/425-Madras-Square",
+   "live_sha256": "d3ed6afd9215ea3e0bb61d5f17dbce93b53571ae3b2657432fdc81583ee34bdd",
+   "wa": 4,
+   "tel": 1,
+   "problem": "extensionless url, map by hand",
+   "new_sha256": "cda958d3728a15366630a049949f6809cd04b3d3f41ef28c0e1ef70d78e811c9"
+  },
+  {
+   "url": "https://lilianproperties.com/overseas-detail/434-Fareham",
+   "file": "overseas-detail/434-Fareham",
+   "live_sha256": "bd236212d802ad0e5d56e083e7b0658135f8950d548e3a14849ae2d24a31367b",
+   "wa": 4,
+   "tel": 1,
+   "problem": "extensionless url, map by hand",
+   "new_sha256": "4c2c47bac1e161b8879ecc1f125b84ab42f87725453b255445099dd00a28730b"
+  },
+  {
+   "url": "https://lilianproperties.com/overseas-detail/295-MAC-@-MIDTOWN",
+   "file": "overseas-detail/295-MAC-@-MIDTOWN",
+   "live_sha256": "d549f294e4984a53e27f4cc2dc5e5f0358a403ecfc1c70f9ff5683fbcc17d259",
+   "wa": 4,
+   "tel": 1,
+   "problem": "extensionless url, map by hand",
+   "new_sha256": "d60d6095b8554e28edc8a3d517370ab521613fbd1792280bb0179ee7ce1c127c"
+  },
+  {
+   "url": "https://lilianproperties.com/overseas-detail/439-Grafton-Villas",
+   "file": "overseas-detail/439-Grafton-Villas",
+   "live_sha256": "f9a5c6fed38c11655cf99916c19b5a116551fac9f0c95ff79a7ef0f5174c932d",
+   "wa": 4,
+   "tel": 1,
+   "problem": "extensionless url, map by hand",
+   "new_sha256": "6967f218f5fa6eb27ff8a05c7cd2fc25017b1480014f6e05d0388956852d9c80"
+  },
+  {
+   "url": "https://lilianproperties.com/overseas-detail/495-Cassia-Rama-9",
+   "file": "overseas-detail/495-Cassia-Rama-9",
+   "live_sha256": "1b5a61451e6062fe978950696fb767a2c1af4dcb455daa5fed9a2aa8f9553a28",
+   "wa": 4,
+   "tel": 1,
+   "problem": "extensionless url, map by hand",
+   "new_sha256": "6d25aeb355407ed4c6618eec13e7ff4fce4e364357eff5d79ca1b259d05229ee"
+  },
+  {
+   "url": "https://lilianproperties.com/overseas-detail/438-Sanubari",
+   "file": "overseas-detail/438-Sanubari",
+   "live_sha256": "4f8b61a8059df31745837ebbbf80534c357bdbb0c4d272cac1a61f1f01183de9",
+   "wa": 4,
+   "tel": 1,
+   "problem": "extensionless url, map by hand",
+   "new_sha256": "f594d7a3851adaaac167a1c027a514beffa80e53f7afabe45876d031bedf4c34"
+  },
+  {
+   "url": "https://lilianproperties.com/overseas-detail/427-Yarra-Bend",
+   "file": "overseas-detail/427-Yarra-Bend",
+   "live_sha256": "d120f01c5564614cb00ac77d2465de4775957050a8593f39ec17dd76bf28d619",
+   "wa": 4,
+   "tel": 1,
+   "problem": "extensionless url, map by hand",
+   "new_sha256": "0b6f806441b35d75cc76e8805621b4df77a04202716a1da6173c0d02afd8e63e"
+  },
+  {
+   "url": "https://lilianproperties.com/overseas-detail/488-ANCORA",
+   "file": "overseas-detail/488-ANCORA",
+   "live_sha256": "1f6d90ee89fe35e02db11c086a2b2b256d9925d7ea54a439d00eefc4304cc366",
+   "wa": 4,
+   "tel": 1,
+   "problem": "extensionless url, map by hand",
+   "new_sha256": "8ed904f3ecd3213556b39afe93881840bdd213b057cb41bf7283e20c0199afbd"
+  },
+  {
+   "url": "https://lilianproperties.com/overseas-detail/441-Echo-Townhomes",
+   "file": "overseas-detail/441-Echo-Townhomes",
+   "live_sha256": "2d1db98004947ce6b7cc067115e8bdc8dc2591e131143988c8767d93a35ef964",
+   "wa": 4,
+   "tel": 1,
+   "problem": "extensionless url, map by hand",
+   "new_sha256": "c2f4de2db9eed2861c8b5910c2e4c2be247ea1f75ee0f55eea607dcef23bb467"
+  },
+  {
+   "url": "https://lilianproperties.com/overseas-detail/333-RIVERSCAPE",
+   "file": "overseas-detail/333-RIVERSCAPE",
+   "live_sha256": "59059e7d31a8554a1f45c6c9d4c8f9ea99c23fbb6d81e875b71c614a016a54ac",
+   "wa": 4,
+   "tel": 1,
+   "problem": "extensionless url, map by hand",
+   "new_sha256": "9aa3497a89ea6d221d7d7f2ccb9a5fc51d8901da68422081a79f322a60f91901"
+  },
+  {
+   "url": "https://lilianproperties.com/overseas-detail/398-Banyan-Tree-Profile",
+   "file": "overseas-detail/398-Banyan-Tree-Profile",
+   "live_sha256": "c062514ce965fe0d2847a98dff733e68a5c287fa42a1bc1f9aa8a47ca235709f",
+   "wa": 4,
+   "tel": 1,
+   "problem": "extensionless url, map by hand",
+   "new_sha256": "3f7eda56d918d28beb69cd03ba4b7a7fb5e16a70dede62e9e223da206dc11fc2"
+  },
+  {
+   "url": "https://lilianproperties.com/overseas-detail/163-FLATIRON-BY-MERIDIAN",
+   "file": "overseas-detail/163-FLATIRON-BY-MERIDIAN",
+   "live_sha256": "ebec520a58e3e7939172ca6b60f0eba32825b521614d7a90ff364422cab6d8c6",
+   "wa": 4,
+   "tel": 1,
+   "problem": "extensionless url, map by hand",
+   "new_sha256": "e3c7da0a138c1ffaa01033cd939b23ee51fce03748f7e6083029000986b83b3a"
+  },
+  {
+   "url": "https://lilianproperties.com/overseas-detail/118-NV-APARTMENTS",
+   "file": "overseas-detail/118-NV-APARTMENTS",
+   "live_sha256": "9c79904d771df60fb4829a267b3a27c9c3917e8ff219be191987698c02d24990",
+   "wa": 4,
+   "tel": 1,
+   "problem": "extensionless url, map by hand",
+   "new_sha256": "0e37d4a2549d9dab892a2a7fad7c67da7523313ec216523f614dbbb865ab9b81"
+  },
+  {
+   "url": "https://lilianproperties.com/overseas-detail/121-PREMIER-TOWER",
+   "file": "overseas-detail/121-PREMIER-TOWER",
+   "live_sha256": "15f6ccf8d6474d3e752797edfddf48b6812c194ad090fbfb4e70a10c5f83aef1",
+   "wa": 4,
+   "tel": 1,
+   "problem": "extensionless url, map by hand",
+   "new_sha256": "27b2aebe2010c1efc944d763fce9d2cd9ccc856e4790781229a7e874f7177dc3"
+  },
+  {
+   "url": "https://lilianproperties.com/overseas-detail/147-BATTERSEA-REACH",
+   "file": "overseas-detail/147-BATTERSEA-REACH",
+   "live_sha256": "e5296e4b1d965a5ad59c86ae602e8b95319e02728f0a996053323e249323560d",
+   "wa": 4,
+   "tel": 1,
+   "problem": "extensionless url, map by hand",
+   "new_sha256": "fc42ceeb5ba605d088eb57eca2b25c4f7831befc22cf20bcd742afdc1448ae00"
+  },
+  {
+   "url": "https://lilianproperties.com/financials",
+   "file": "financials",
+   "live_sha256": "56c0113b53428891b2c356eb023f853fc7852deaff870ad8d88a51b488af2044",
+   "wa": 4,
+   "tel": 1,
+   "problem": "extensionless url, map by hand",
+   "new_sha256": "a596607fd96f15d9bc0e54804a6b8e71c99db2db9d41099cc026da6c578a0cc4"
+  },
+  {
+   "url": "https://lilianproperties.com/past-transaction",
+   "file": "past-transaction",
+   "live_sha256": "fa29432a47910137693d2adf8ff1fe59fe8dfb43a4ec2725f6d335b0d617b790",
+   "wa": 4,
+   "tel": 1,
+   "problem": "extensionless url, map by hand",
+   "new_sha256": "81003cbba0860e1f5a7fb47252e3c21055a11505b9f1846d644b76d8123f7151"
+  },
+  {
+   "url": "https://lilianproperties.com/project-comparison",
+   "file": "project-comparison",
+   "live_sha256": "f5fb9a90786edf5800ba048b7b1d4e754e563c2adc0c18674224a868e3ce877a",
+   "wa": 3,
+   "tel": 1,
+   "problem": "extensionless url, map by hand",
+   "new_sha256": "fbc515a5b583bd67d0b0251500323962cfb187291e78c1cb9d38fab444065315"
+  },
+  {
+   "url": "https://lilianproperties.com/guides/a-weekend-in-katong",
+   "file": "guides/a-weekend-in-katong",
+   "live_sha256": "aea128207bd2122db65cbc4f34a4c8f6797e5fb7cad8b7fc1f850c5fad22c67d",
+   "wa": 4,
+   "tel": 1,
+   "problem": "extensionless url, map by hand",
+   "new_sha256": "97dfdc0aca47bf9ce77554f8ce7d26e945f0358017222283ac99e4218b91f304"
+  },
+  {
+   "url": "https://lilianproperties.com/guides/east-coast-park",
+   "file": "guides/east-coast-park",
+   "live_sha256": "e35d007254bf6b6b725398a739d451bfd510ab40f944231abd3aa7a353afaf33",
+   "wa": 4,
+   "tel": 1,
+   "problem": "extensionless url, map by hand",
+   "new_sha256": "8c865cc4c8038dee81bd2f94ae1c1277cecc30e29660e61e9feebf6f0e0e6d99"
+  },
+  {
+   "url": "https://lilianproperties.com/guides/bedok-food-and-parks",
+   "file": "guides/bedok-food-and-parks",
+   "live_sha256": "03e6a9b074aa2b31ed8bf3901f2f47bb00a875f25a68e916c171a9f05fa300c5",
+   "wa": 4,
+   "tel": 1,
+   "problem": "extensionless url, map by hand",
+   "new_sha256": "77f57796ede144b9ba55823c125ed4f466c831d5c9372bbe2b39f4effbea4d1d"
+  },
+  {
+   "url": "https://lilianproperties.com/guides/geylang-paya-lebar-food-trail",
+   "file": "guides/geylang-paya-lebar-food-trail",
+   "live_sha256": "5340ec7804979b2001ef2a2c55e122d0c0c4e9c7afe6cfb38258d36b922d04c7",
+   "wa": 4,
+   "tel": 1,
+   "problem": "extensionless url, map by hand",
+   "new_sha256": "e9dd3bedffa2fb341c5bb0e24fc8c0a48feab4c9eeb7c5142b8bb25ae998731c"
+  },
+  {
+   "url": "https://lilianproperties.com/guides",
+   "file": "guides",
+   "live_sha256": "0f1e1d31180d5212f94ec4522c1b7e049ca82795fad0986cba24eb3e5d9cb49d",
+   "wa": 3,
+   "tel": 1,
+   "problem": "extensionless url, map by hand",
+   "new_sha256": "cf28e748dc40627543b43ccdcafdbfbf12330150114cb987ebe81311805f10a6"
+  },
+  {
+   "url": "https://lilianproperties.com/articles",
+   "file": "articles",
+   "live_sha256": "fbb09cc3bb0c4d3e36d7e26ae56ef46e2767321b640b5b78c83031a49ab0f6c0",
+   "wa": 3,
+   "tel": 1,
+   "problem": "extensionless url, map by hand",
+   "new_sha256": "5c0697c878a7b3bb66cd037db7a1432e99f0d0b9bbea74919f50b87171953d6d"
+  },
+  {
+   "url": "https://lilianproperties.com/project-detail/578-GATE+",
+   "file": "project-detail/578-GATE+",
+   "live_sha256": "aa86408cf6fc235a9190d964abbffe6db732ce59ff6997c9fd2cea0b5c356d25",
+   "wa": 4,
+   "tel": 1,
+   "problem": "extensionless url, map by hand",
+   "new_sha256": "758d743726a5831b77a2c5b6a300702c6ce0fa750e4d05465c2b47ce7317e7e2"
+  },
+  {
+   "url": "https://lilianproperties.com/overseas-detail/422-The-Residences-at-Central-Park-(Ellerslie)",
+   "file": "overseas-detail/422-The-Residences-at-Central-Park-(Ellerslie)",
+   "live_sha256": "68adf02738f29d8d037014c1d9c7b00eb83bb0cb454ada7a1bb8dac08168c0f9",
+   "wa": 4,
+   "tel": 1,
+   "problem": "extensionless url, map by hand",
+   "new_sha256": "c91a7085211df1830037c05c243d757973d45ef31ad8caf117cb9ec742d6bce5"
+  }
+ ]
+}

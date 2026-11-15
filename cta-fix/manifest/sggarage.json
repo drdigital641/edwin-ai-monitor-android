@@ -1,0 +1,241 @@
+{
+ "site": {
+  "slug": "sggarage",
+  "origin": "https://www.sggarage.com",
+  "prefix": "/",
+  "bridge": "sggarage",
+  "base": "",
+  "src": "",
+  "reuse_tag": "p1-cta.js"
+ },
+ "tag": "<script src=\"/p1-cta.js\" defer></script>",
+ "pages_seen": 177,
+ "with_cta": 174,
+ "already_tracked": 146,
+ "to_fix": [
+  {
+   "url": "https://www.sggarage.com/articles/water-under-car-aircon-or-leak-singapore.html",
+   "file": "articles/water-under-car-aircon-or-leak-singapore.html",
+   "live_sha256": "50f09353a7c3de6ad705eb38b17b668f9ca098950330a10f854ef9679df6f98b",
+   "wa": 5,
+   "tel": 0,
+   "new_sha256": "e7f6491b12dfe6cde8ecc6525e0baa8b38c455475ccae18a9d605b093ec4f9d2"
+  },
+  {
+   "url": "https://www.sggarage.com/articles/toyota-hybrid-engine-starts-parked-singapore.html",
+   "file": "articles/toyota-hybrid-engine-starts-parked-singapore.html",
+   "live_sha256": "8618affdde5181d97a5225ee76a29f42956378888834b056887bca4778d308bf",
+   "wa": 5,
+   "tel": 0,
+   "new_sha256": "f68f0ee23a87670dda5b1b5516609bc40fdbf6e6e2001cbc00562537823267c6"
+  },
+  {
+   "url": "https://www.sggarage.com/articles/car-repair-warranty-singapore.html",
+   "file": "articles/car-repair-warranty-singapore.html",
+   "live_sha256": "8739c57d56a1f0662feb4774d16b977d97fe14b6496f64a3e730a00df3a03a52",
+   "wa": 5,
+   "tel": 0,
+   "new_sha256": "b15621ec103827e5de102f3587508fb66fbee8b69cc03d55ee20a9d849493741"
+  },
+  {
+   "url": "https://www.sggarage.com/articles/bmw-battery-registration-singapore.html",
+   "file": "articles/bmw-battery-registration-singapore.html",
+   "live_sha256": "c39493bd0381c9d291834312fc027fac9683e5927f2ece7da22668a9252ca629",
+   "wa": 5,
+   "tel": 0,
+   "new_sha256": "4470db746aadf6d24db64e416db5f23ae83edfebcb7f052618887f4415684929"
+  },
+  {
+   "url": "https://www.sggarage.com/articles/tyre-puncture-repair-or-replace-singapore.html",
+   "file": "articles/tyre-puncture-repair-or-replace-singapore.html",
+   "live_sha256": "43d28e61bbf475f9cbb9644bdc082cfa337ec51853165da5087c42924626d875",
+   "wa": 5,
+   "tel": 0,
+   "new_sha256": "1cca5533a37c9a51bda4d123ecc6d546a56846c1a7bc3b9ec86031d88136bfa3"
+  },
+  {
+   "url": "https://www.sggarage.com/articles/car-fuel-smell-singapore.html",
+   "file": "articles/car-fuel-smell-singapore.html",
+   "live_sha256": "e4b7df0d721cd9244be1fbcacf3ff852293fd923886d30fe490ad7035667ad74",
+   "wa": 5,
+   "tel": 0,
+   "new_sha256": "43a4bd9d587f22f887b5a0b00c6f6516a114d993585193a6de7b5217cf4aecc2"
+  },
+  {
+   "url": "https://www.sggarage.com/articles/car-diagnostic-fee-singapore.html",
+   "file": "articles/car-diagnostic-fee-singapore.html",
+   "live_sha256": "2fb5cf4a32051fed076fd4a6cf13bf5c63e373462aa8b8ecf467fd21afae7c6e",
+   "wa": 5,
+   "tel": 0,
+   "new_sha256": "d64010da6276ffb253b042243487ae2da250860ff192fe471496a8cf144ee7fd"
+  },
+  {
+   "url": "https://www.sggarage.com/articles/car-battery-drains-overnight-singapore.html",
+   "file": "articles/car-battery-drains-overnight-singapore.html",
+   "live_sha256": "197a65498bb0ddf1b5826e5a3c3edc9fd493967bbeadb613eeee80652c932764",
+   "wa": 5,
+   "tel": 0,
+   "new_sha256": "60e913c5b596626503ff9a75da90dc09c4eb1a1c4623295facbcc296c4fc0ca3"
+  },
+  {
+   "url": "https://www.sggarage.com/articles/soft-brake-pedal-singapore.html",
+   "file": "articles/soft-brake-pedal-singapore.html",
+   "live_sha256": "e3cab23cb5fa2992dc0d8ffcd1db439881c49d7e63e064d4568bc9c70750b9b6",
+   "wa": 5,
+   "tel": 0,
+   "new_sha256": "2b3f7911312e319bf70ef2cb257a651bd9496351b2bf8abc7dbe01dc85bb8024"
+  },
+  {
+   "url": "https://www.sggarage.com/articles/car-repair-waiting-for-parts-singapore.html",
+   "file": "articles/car-repair-waiting-for-parts-singapore.html",
+   "live_sha256": "a7bd11bcf9ddf5a584f0269a43cc88cd4af0f7ded4ca5e237717f3b46a2bb70c",
+   "wa": 5,
+   "tel": 0,
+   "new_sha256": "cc015cb127baf272bd482980fe8f9f15ac443a822b9efb03c73026798250d14c"
+  },
+  {
+   "url": "https://www.sggarage.com/articles/mercedes-a180-gearbox-shudder-singapore.html",
+   "file": "articles/mercedes-a180-gearbox-shudder-singapore.html",
+   "live_sha256": "1aac4fb00404054b2e3f5bc7c7ba38ed8d9ad8ecad7fa885b880bf8f13d4f9f7",
+   "wa": 5,
+   "tel": 0,
+   "new_sha256": "5d98ab2053598ebf11347deec3878f565361b2cab40204b82ee540d2bcc9d5d0"
+  },
+  {
+   "url": "https://www.sggarage.com/articles/xado-engine-oil-treatment-ang-mo-kio.html",
+   "file": "articles/xado-engine-oil-treatment-ang-mo-kio.html",
+   "live_sha256": "105e58a4d8d562d82d910dcfc495eb0d12e9d4a5e4bed872aa71ad745bdf6d62",
+   "wa": 4,
+   "tel": 0,
+   "new_sha256": "f19ae96522dba32a88efeefcbee6d777d9eb2404881fa84949e1f37e0fe95b1c"
+  },
+  {
+   "url": "https://www.sggarage.com/articles/why-edwin-built-sg-car-workshop-directory.html",
+   "file": "articles/why-edwin-built-sg-car-workshop-directory.html",
+   "live_sha256": "6caf487e0cfefbcb34a65140e98767d0b112e940271f7b554edd542a71796b48",
+   "wa": 4,
+   "tel": 0,
+   "new_sha256": "42eb64168d9b4edb3391502a8db0938be116633c44465e493cab6e624ab7ec9e"
+  },
+  {
+   "url": "https://www.sggarage.com/articles/how-edwin-garage-got-found-on-google.html",
+   "file": "articles/how-edwin-garage-got-found-on-google.html",
+   "live_sha256": "7b1f796e1ca2d58f3b89e09ec2c4c5b9f6ebdbef1048da10b2795eb436ddc353",
+   "wa": 4,
+   "tel": 0,
+   "new_sha256": "0bbdf97369cb89a486a9ade24a0067fc981b6ec85f76be9f564389d085386fb9"
+  },
+  {
+   "url": "https://www.sggarage.com/articles/car-wiper-streaks-singapore.html",
+   "file": "articles/car-wiper-streaks-singapore.html",
+   "live_sha256": "fb9fa125785cee3f199dabc3209bc3020235a0eea728be1a4bb50c34507ca495",
+   "wa": 5,
+   "tel": 0,
+   "new_sha256": "6b470f3775b302f788d4c831cdc276d198254cfbd6171adb332911ffd41e8769"
+  },
+  {
+   "url": "https://www.sggarage.com/articles/car-belt-squeal-startup-singapore.html",
+   "file": "articles/car-belt-squeal-startup-singapore.html",
+   "live_sha256": "aa0c1a5ca5289861a5e6adeb30691b5f245778233b57207c333515073528481a",
+   "wa": 5,
+   "tel": 0,
+   "new_sha256": "a2e6c3f8634bd76c30e0414b266b65ed87a9d984da78823c3e2b4e1ba53a9579"
+  },
+  {
+   "url": "https://www.sggarage.com/articles/car-repair-priority-list-singapore.html",
+   "file": "articles/car-repair-priority-list-singapore.html",
+   "live_sha256": "b65554644e141f017efaf4e9f76cdca47d07a191e00dd32f1151d1834d839b4d",
+   "wa": 5,
+   "tel": 0,
+   "new_sha256": "83ab8b85f190dadbafa54aac2aae55e9227acc37aefda71bb3980014a4cc566a"
+  },
+  {
+   "url": "https://www.sggarage.com/articles/car-cabin-filter-replacement-singapore.html",
+   "file": "articles/car-cabin-filter-replacement-singapore.html",
+   "live_sha256": "5cefdf57022aacdb9bcd90a0286a4296a60f3bccffeebd2ce2dec5f2f16b9834",
+   "wa": 5,
+   "tel": 0,
+   "new_sha256": "7c9ccca0ae217c630fea15677c6b56d19b8104d89b644211ebafd1e44b088d5b"
+  },
+  {
+   "url": "https://www.sggarage.com/articles/mazda-3-i-stop-not-working-singapore.html",
+   "file": "articles/mazda-3-i-stop-not-working-singapore.html",
+   "live_sha256": "3b48109adbe6d2384ab244bf8b49a19c20bf82f973f6b491feaf385c6164742a",
+   "wa": 5,
+   "tel": 0,
+   "new_sha256": "04ce44374c231e55c0a8896486d67b01ab74b7962ed7ef758677ed8eb0958da1"
+  },
+  {
+   "url": "https://www.sggarage.com/articles/intermittent-car-fault-diagnosis-singapore.html",
+   "file": "articles/intermittent-car-fault-diagnosis-singapore.html",
+   "live_sha256": "eb52701012efe46aa541616d12f70e87bc92b8b0c4cf84c244f0ac78ea188f8e",
+   "wa": 5,
+   "tel": 0,
+   "new_sha256": "8caf2d1d9e6aa2bc510702ed799579a2fe211aa072cd4933d6076e0faf7e970f"
+  },
+  {
+   "url": "https://www.sggarage.com/articles/car-wont-go-into-gear-singapore.html",
+   "file": "articles/car-wont-go-into-gear-singapore.html",
+   "live_sha256": "330b1b249d04d5f6227968cb812cdb3dedc84d2b14883704170f3dcdaab8d329",
+   "wa": 5,
+   "tel": 0,
+   "new_sha256": "1e7107209c2bc634715147e988d4dc4053281bc68c8c0f1076aad82dbaa53a05"
+  },
+  {
+   "url": "https://www.sggarage.com/articles/car-coolant-flush-or-top-up-singapore.html",
+   "file": "articles/car-coolant-flush-or-top-up-singapore.html",
+   "live_sha256": "721891738d6d5b7261d7dba126c9927c08de0db9af4b478a0915669fc00f5ca5",
+   "wa": 5,
+   "tel": 0,
+   "new_sha256": "64fa21623ec2c781a820962cc263d99a2d1e3d536f74f762eb2e01542a45366f"
+  },
+  {
+   "url": "https://www.sggarage.com/articles/car-repair-handover-checklist-singapore.html",
+   "file": "articles/car-repair-handover-checklist-singapore.html",
+   "live_sha256": "19afec1d8a3f9c4ed72dc9ff8c884ab6fe224a3110e422af0fb81f2f927ae591",
+   "wa": 5,
+   "tel": 0,
+   "new_sha256": "3165febc97c34854991674fc14871f38992ed08fa744e50a20a87c8f24f31d95"
+  },
+  {
+   "url": "https://www.sggarage.com/articles/car-aircon-compressor-noise-singapore.html",
+   "file": "articles/car-aircon-compressor-noise-singapore.html",
+   "live_sha256": "f49c49560df5eb8b742a838aaf6cd4a2bec1828c798fd57ff25a5e04670e68a1",
+   "wa": 5,
+   "tel": 0,
+   "new_sha256": "48609f5055c323e732ad8df48a9150f44f914ef055c5a18e14b0aa09cb9e9447"
+  },
+  {
+   "url": "https://www.sggarage.com/articles/car-vibrates-at-idle-singapore.html",
+   "file": "articles/car-vibrates-at-idle-singapore.html",
+   "live_sha256": "1de4d1e4a2d8890fb8b709044e105e6b03701826d2c140ecfe59df7f2761bc6c",
+   "wa": 5,
+   "tel": 0,
+   "new_sha256": "6a0dac395ed0970545489b121ddbcbf7e79bf935fc1012ae0ba0207645e801e6"
+  },
+  {
+   "url": "https://www.sggarage.com/articles/car-sliding-door-wont-close-singapore.html",
+   "file": "articles/car-sliding-door-wont-close-singapore.html",
+   "live_sha256": "5f1591c0b73b69ae5f0149946e14fb066011a74ab96965aa41470fe3b56c1aff",
+   "wa": 5,
+   "tel": 0,
+   "new_sha256": "ff855e2bd6a38b45ae94b712342932c0bcae82cdc18e8de33a6f5fbbfdf10ce4"
+  },
+  {
+   "url": "https://www.sggarage.com/articles/car-repair-authorisation-singapore.html",
+   "file": "articles/car-repair-authorisation-singapore.html",
+   "live_sha256": "612d8e5ab9d75cb04e9a192c3c97a7e78b5a23c44130855212097fdf89964903",
+   "wa": 5,
+   "tel": 0,
+   "new_sha256": "ea39efc42fe8d1bd25113d3bd23b66a83bcc3b76788b72b2f9c32fdb3c949000"
+  },
+  {
+   "url": "https://www.sggarage.com/articles/wheel-bearing-noise-singapore.html",
+   "file": "articles/wheel-bearing-noise-singapore.html",
+   "live_sha256": "8e02d90090ab6c94528ebaeec2fb0729b4a5cc5efb867f7b6032444c1996e820",
+   "wa": 5,
+   "tel": 0,
+   "new_sha256": "7575df3fc38e8b6cc5b39a466292a3315e84a55c545112e6f2cb0f05b5ba7627"
+  }
+ ]
+}
