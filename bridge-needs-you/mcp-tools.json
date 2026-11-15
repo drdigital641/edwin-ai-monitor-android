@@ -1,0 +1,108 @@
+[
+  {
+    "name": "needs_you",
+    "title": "Needs you: add or close an item for Edwin",
+    "description": "Only for a step only Edwin (or a server-level helper) can do. action=add: type publish (a Base44 Publish: target app, ref = 24-char checkpoint id, summary = what it changes) or server (.htaccess, PHP, cPanel, DNS, domain verification: target site, ref = file or setting, summary + why). A new item sends ONE notice to Grok Bot; the same open step again sends nothing. Never for routine progress. action=done: only after you confirmed on live that the step happened (live_check) and re-checked the site (site_recheck); sends no notice. action=resend: only when the notice never arrived. Short plain text only: no file contents, no keys.",
+    "input_schema": {
+      "type": "object",
+      "required": [
+        "action"
+      ],
+      "properties": {
+        "action": {
+          "type": "string",
+          "enum": [
+            "add",
+            "done",
+            "resend"
+          ]
+        },
+        "type": {
+          "type": "string",
+          "enum": [
+            "publish",
+            "server"
+          ],
+          "description": "add only"
+        },
+        "target": {
+          "type": "string",
+          "description": "add: site or app, e.g. Bluehost Bridge, Page One Controller, SgGarage Controller, commercialfitout.sg"
+        },
+        "ref": {
+          "type": "string",
+          "description": "add: checkpoint id (publish) or file / setting (server)"
+        },
+        "summary": {
+          "type": "string",
+          "description": "add: one line, what is needed (max 200)"
+        },
+        "why": {
+          "type": "string",
+          "description": "add: short why (max 600)"
+        },
+        "id": {
+          "type": "string",
+          "description": "done / resend: the item id"
+        },
+        "live_check": {
+          "type": "string",
+          "description": "done: what you confirmed on live"
+        },
+        "site_recheck": {
+          "type": "string",
+          "description": "done: the site re-check result"
+        },
+        "confirm_resend": {
+          "type": "boolean",
+          "description": "resend: true only after Grok Bot confirmed it never got a notice that timed out"
+        }
+      }
+    },
+    "annotations": {
+      "read_only_hint": false,
+      "destructive_hint": false,
+      "idempotent_hint": false,
+      "open_world_hint": true
+    },
+    "handler": "bridgeNeedsYou",
+    "disabled": false
+  },
+  {
+    "name": "list_needs_you",
+    "title": "Needs you: list open items (read only)",
+    "description": "Read-only. Open needs-you items for Edwin (status open, done or all), or one item by id, to confirm an item is real and still open. Shows no secrets and no file contents.",
+    "input_schema": {
+      "type": "object",
+      "required": [],
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "One item by id"
+        },
+        "status": {
+          "type": "string",
+          "enum": [
+            "open",
+            "done",
+            "all"
+          ],
+          "description": "Default open"
+        },
+        "limit": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 100
+        }
+      }
+    },
+    "annotations": {
+      "read_only_hint": true,
+      "destructive_hint": false,
+      "idempotent_hint": true,
+      "open_world_hint": null
+    },
+    "handler": "bridgeNeedsList",
+    "disabled": false
+  }
+]
