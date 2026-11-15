@@ -37,6 +37,9 @@ E = html.escape
 CSS = (ROOT / "assets" / "site.css").read_text(encoding="utf-8")
 JS = (ROOT / "assets" / "site.js").read_text(encoding="utf-8")
 ASSET_V = hashlib.sha256((CSS + JS).encode()).hexdigest()[:10]
+# site.css tag = the hand-set tag on the live pages (15 Nov 2026: live moved to dated tags like 20261114i).
+# Bump it here AND on every live page whenever assets/site.css changes.
+CSS_V = "20261115w"
 # Articles (11 Nov 2026): one JSON file per article in data/articles/, rendered by templates/article*.html.
 # Their CSS is a separate file loaded only on article pages, so a night run never changes site.css.
 ART_CSS = (ROOT / "assets" / "articles.css").read_text(encoding="utf-8")
@@ -376,7 +379,7 @@ def page(L, path, title, description, body, graph_extra=(), current="", body_cla
                     + f'>{E(ui["nav"][k])}</a>' for p, k in NAV)
     doc = fill("head", lang=s["meta"]["html_lang"], title=E(title), description=E(description), robots=robots, canonical=abs_url(L.prefix, path),
                hreflang=alts, base=BASE, brand_name=E(BIZ["short_name"]), og_image=abs_url("", "img/" + PHOTO["shop-exterior"]["file"]),
-               og_locale=s["meta"]["og_locale"], preload=preload, asset_v=ASSET_V, schema=schema_tag(graph))
+               og_locale=s["meta"]["og_locale"], preload=preload, asset_v=ASSET_V, css_v=CSS_V, schema=schema_tag(graph))
     doc += fill("header", body_class=(body_class + " lang-" + L.code).strip(), skip=E(ui["skip"]), home_url=L.url(), home_aria=E(ui["home_aria"]),
                 base=BASE, logo_alt=E(s["photos"]["logo"]), nav_aria=E(ui["nav_aria"]), nav_links=nav, lang_aria=E(ui["lang_aria"]),
                 lang_links=lang_links, wa_general=L.wa("general"), wa_icon=wa_icon(), whatsapp_us=E(ui["whatsapp_us"]), menu=E(ui["menu"]))
