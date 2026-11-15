@@ -1,0 +1,34 @@
+{
+ "businessStatus": "OPERATIONAL",
+ "primaryType": "car_repair",
+ "types": [
+  "car_repair",
+  "service",
+  "point_of_interest",
+  "establishment"
+ ],
+ "rating": 4.9,
+ "userRatingCount": 42,
+ "websiteUri": "http://ycautosvc.com/?utm_source=google&utm_medium=wix_google_business_profile&utm_campaign=18327566411030909328",
+ "paymentOptions": {
+  "acceptsCreditCards": true,
+  "acceptsDebitCards": true,
+  "acceptsNfc": true
+ },
+ "parkingOptions": null,
+ "editorialSummary": null,
+ "weekdayDescriptions": [
+  "Monday: 8:30 AM – 12:00 PM, 1:00 – 6:00 PM",
+  "Tuesday: 8:30 AM – 12:00 PM, 1:00 – 6:00 PM",
+  "Wednesday: 8:30 AM – 12:00 PM, 1:00 – 6:00 PM",
+  "Thursday: 8:30 AM – 12:00 PM, 1:00 – 6:00 PM",
+  "Friday: 8:30 AM – 12:00 PM, 1:00 – 6:00 PM",
+  "Saturday: 8:30 AM – 12:00 PM, 1:00 – 3:00 PM",
+  "Sunday: Closed"
+ ],
+ "review_count_seen": 5,
+ "review_themes": null,
+ "fetched_at": "2026-11-15",
+ "place_id": "ChIJle7m1mIF2jERRSvfiR9KbpI",
+ "source": "google_places"
+}

@@ -1,0 +1,32 @@
+{
+ "businessStatus": "OPERATIONAL",
+ "primaryType": "car_repair",
+ "types": [
+  "car_repair",
+  "service",
+  "point_of_interest",
+  "establishment"
+ ],
+ "rating": 4.6,
+ "userRatingCount": 12,
+ "websiteUri": "http://www.r-tuning.sg/",
+ "paymentOptions": {
+  "acceptsNfc": false
+ },
+ "parkingOptions": null,
+ "editorialSummary": null,
+ "weekdayDescriptions": [
+  "Monday: 12:00 – 9:00 PM",
+  "Tuesday: 12:00 – 9:00 PM",
+  "Wednesday: 12:00 – 9:00 PM",
+  "Thursday: 12:00 – 9:00 PM",
+  "Friday: 2:00 – 10:00 PM",
+  "Saturday: 12:00 – 4:30 PM",
+  "Sunday: 7:30 PM – 12:00 AM"
+ ],
+ "review_count_seen": 5,
+ "review_themes": null,
+ "fetched_at": "2026-11-15",
+ "place_id": "ChIJz2srOwY92jERALb_wGaLcbE",
+ "source": "google_places"
+}

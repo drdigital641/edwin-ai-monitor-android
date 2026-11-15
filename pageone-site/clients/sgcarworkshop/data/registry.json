@@ -4003,5 +4003,203 @@
   "mobile": "+6598755803",
   "status": "built",
   "date": "2026-11-13"
+ },
+ {
+  "place_id": "ChIJbwNSbvQX2jERd7jdedQeWvM",
+  "slug": "automobile-integrated-management-pte-ltd",
+  "name_norm": "automobile integrated management",
+  "postal_code": "408715",
+  "mobile": "+6591195277",
+  "status": "built",
+  "date": "2026-11-15"
+ },
+ {
+  "place_id": "ChIJM-uGffMX2jER8cFibiyz58I",
+  "slug": "yigo-automobile-air-conditioning",
+  "name_norm": "yigo automobile air conditioning",
+  "postal_code": "408701",
+  "mobile": "+6582224907",
+  "status": "built",
+  "date": "2026-11-15"
+ },
+ {
+  "place_id": "ChIJ_4myrLgX2jERIuCSxx_uD_Q",
+  "slug": "yigo-bodyworks",
+  "name_norm": "yigo bodyworks",
+  "postal_code": "408701",
+  "mobile": "+6582224907",
+  "status": "built",
+  "date": "2026-11-15"
+ },
+ {
+  "place_id": "ChIJPTeqiKEZ2jERyx6jiCpveC0",
+  "slug": "imperial-auto-style",
+  "name_norm": "imperial auto style",
+  "postal_code": "408868",
+  "mobile": "+6585442453",
+  "status": "built",
+  "date": "2026-11-15"
+ },
+ {
+  "place_id": "ChIJ2RPIPvQX2jERIkJ2WCTnoFE",
+  "slug": "sin-hwee-motor-pte-ltd",
+  "name_norm": "sin hwee motor",
+  "postal_code": "408717",
+  "mobile": "+6597666672",
+  "status": "built",
+  "date": "2026-11-15"
+ },
+ {
+  "place_id": "ChIJI1meCx4Y2jERNDPFfxMJeU8",
+  "slug": "racing-technik-exhaust-specialist",
+  "name_norm": "racing technik exhaust specialist",
+  "postal_code": "408934",
+  "mobile": "+6583889880",
+  "status": "built",
+  "date": "2026-11-15"
+ },
+ {
+  "place_id": "ChIJNW7IQfQX2jERUhTRMgULLBg",
+  "slug": "auto-dynamac-service-trading",
+  "name_norm": "auto dynamac service trading",
+  "postal_code": "408713",
+  "mobile": "+6598761984",
+  "status": "built",
+  "date": "2026-11-15"
+ },
+ {
+  "place_id": "ChIJXTRIBkwZ2jERYYBGuI1bCxg",
+  "slug": "gary-s-engineering-pte-ltd",
+  "name_norm": "gary s engineering",
+  "postal_code": "408934",
+  "mobile": "+6596662016",
+  "status": "built",
+  "date": "2026-11-15"
+ },
+ {
+  "place_id": "ChIJcxZHwh0Y2jEREuHCY7yJucw",
+  "slug": "2g-advance-auto-services-pte-ltd",
+  "name_norm": "2g advance auto services",
+  "postal_code": "408933",
+  "mobile": "+6592961785",
+  "status": "built",
+  "date": "2026-11-15"
+ },
+ {
+  "place_id": "ChIJz2srOwY92jERALb_wGaLcbE",
+  "slug": "r-tuning",
+  "name_norm": "r tuning",
+  "postal_code": "408933",
+  "mobile": "+6584888894",
+  "status": "built",
+  "date": "2026-11-15"
+ },
+ {
+  "place_id": "ChIJNW7IQfQX2jERPqoStfqSbvs",
+  "slug": "calvin-auto-services-pte-ltd",
+  "name_norm": "calvin auto services",
+  "postal_code": "408713",
+  "mobile": "+6596272767",
+  "status": "built",
+  "date": "2026-11-15"
+ },
+ {
+  "place_id": "ChIJKX9e4h0Y2jERG5GWrF3wX5c",
+  "slug": "best-solution-autocare",
+  "name_norm": "best solution autocare",
+  "postal_code": "408934",
+  "mobile": "+6588664777",
+  "status": "built",
+  "date": "2026-11-15"
+ },
+ {
+  "place_id": "ChIJpSMKaHsZ2jERrtvbQ5bH0lM",
+  "slug": "motoricarz-garage",
+  "name_norm": "motoricarz garage",
+  "postal_code": "408934",
+  "mobile": "+6597699299",
+  "status": "built",
+  "date": "2026-11-15"
+ },
+ {
+  "place_id": "ChIJ1Xz8T_QX2jERADzjcquY2G8",
+  "slug": "evergum-auto-services",
+  "name_norm": "evergum auto services",
+  "postal_code": "408716",
+  "mobile": "+6593829991",
+  "status": "built",
+  "date": "2026-11-15"
+ },
+ {
+  "place_id": "ChIJv9BCjj492jERpyEhXKTHvq0",
+  "slug": "lambency-detailing-ubi",
+  "name_norm": "lambency detailing ubi",
+  "postal_code": "408934",
+  "mobile": "+6596585808",
+  "status": "built",
+  "date": "2026-11-15"
+ },
+ {
+  "place_id": "ChIJWaKNB8gZ2jERCHo9wy_f-Lw",
+  "slug": "zenith-car-detailing-kovalent-coatings-singapore",
+  "name_norm": "zenith car detailing kovalent coatings",
+  "postal_code": "408934",
+  "mobile": "+6580884815",
+  "status": "built",
+  "date": "2026-11-15"
+ },
+ {
+  "place_id": "ChIJ66N4-x0Y2jERd_kGBXgBzLU",
+  "slug": "spray-paint-shop-singapore",
+  "name_norm": "spray paint shop",
+  "postal_code": "408716",
+  "mobile": "+6590055965",
+  "status": "built",
+  "date": "2026-11-15"
+ },
+ {
+  "place_id": "ChIJw4o37uoX2jERVFXUrkOptjs",
+  "slug": "keeper-labo-car-coating-car-detailing-services-in-singapore",
+  "name_norm": "keeper labo car coating car detailing services in",
+  "postal_code": "408543",
+  "mobile": "+6591002979",
+  "status": "built",
+  "date": "2026-11-15"
+ },
+ {
+  "place_id": "ChIJVyk39asX2jER22dZOQGfnZU",
+  "slug": "k-cars-auto-centre-pte-ltd",
+  "name_norm": "k cars auto centre",
+  "postal_code": "415934",
+  "mobile": "+6593215151",
+  "status": "built",
+  "date": "2026-11-15"
+ },
+ {
+  "place_id": "ChIJ168Hm_AX2jERyU5qE-MZzxE",
+  "slug": "chong-keong-motor-service",
+  "name_norm": "chong keong motor service",
+  "postal_code": "415934",
+  "mobile": "+6598060489",
+  "status": "built",
+  "date": "2026-11-15"
+ },
+ {
+  "place_id": "ChIJaxz4GtUF2jER4EsObcGllfY",
+  "slug": "stamford-tyres-auto-rescue-2",
+  "name_norm": "stamford tyres auto rescue",
+  "postal_code": "628635",
+  "mobile": "+6587973355",
+  "status": "built",
+  "date": "2026-11-15"
+ },
+ {
+  "place_id": "ChIJle7m1mIF2jERRSvfiR9KbpI",
+  "slug": "y-c-auto-service",
+  "name_norm": "y c auto service",
+  "postal_code": "628461",
+  "mobile": "+6596263494",
+  "status": "built",
+  "date": "2026-11-15"
  }
 ]

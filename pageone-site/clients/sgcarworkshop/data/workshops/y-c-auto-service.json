@@ -1,0 +1,44 @@
+{
+ "schema_version": 1,
+ "slug": "y-c-auto-service",
+ "place_id": "ChIJle7m1mIF2jERRSvfiR9KbpI",
+ "place_id_checked_at": "2026-11-15",
+ "name": "Y.C. Auto Service",
+ "name_source_url": "google_profile",
+ "name_checked_at": "2026-11-15",
+ "address": {
+  "block": "",
+  "street": "9 Pioneer Rd N, #01-56",
+  "unit": "",
+  "building": ""
+ },
+ "postal_code": "628461",
+ "address_source_url": "google_profile",
+ "address_checked_at": "2026-11-15",
+ "categories": [
+  "SERV"
+ ],
+ "services": [
+  "General servicing and repair"
+ ],
+ "services_source_url": "google_profile",
+ "phones": [
+  {
+   "e164": "+6596263494",
+   "kind": "mobile",
+   "whatsapp": true,
+   "source": "google_profile",
+   "checked_at": "2026-11-15"
+  }
+ ],
+ "google_screen": {
+  "passed": true,
+  "reason": "OPERATIONAL, car repair, SG mobile on Google profile",
+  "checked_at": "2026-11-15"
+ },
+ "status": "pending",
+ "tier": "basic",
+ "first_seen_at": "2026-11-15",
+ "last_verified_at": "2026-11-15",
+ "collector_version": "agent-v5"
+}

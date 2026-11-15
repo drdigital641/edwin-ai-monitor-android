@@ -1,0 +1,44 @@
+{
+ "schema_version": 1,
+ "slug": "2g-advance-auto-services-pte-ltd",
+ "place_id": "ChIJcxZHwh0Y2jEREuHCY7yJucw",
+ "place_id_checked_at": "2026-11-15",
+ "name": "2G Advance Auto Services Pte Ltd",
+ "name_source_url": "google_profile",
+ "name_checked_at": "2026-11-15",
+ "address": {
+  "block": "",
+  "street": "51 UBI AVENUE 1 #01-31 PAYA, UBI INDUSTRIAL PARK",
+  "unit": "",
+  "building": ""
+ },
+ "postal_code": "408933",
+ "address_source_url": "google_profile",
+ "address_checked_at": "2026-11-15",
+ "categories": [
+  "SERV"
+ ],
+ "services": [
+  "General servicing and repair"
+ ],
+ "services_source_url": "google_profile",
+ "phones": [
+  {
+   "e164": "+6592961785",
+   "kind": "mobile",
+   "whatsapp": true,
+   "source": "google_profile",
+   "checked_at": "2026-11-15"
+  }
+ ],
+ "google_screen": {
+  "passed": true,
+  "reason": "OPERATIONAL, car repair, SG mobile on Google profile",
+  "checked_at": "2026-11-15"
+ },
+ "status": "pending",
+ "tier": "basic",
+ "first_seen_at": "2026-11-15",
+ "last_verified_at": "2026-11-15",
+ "collector_version": "agent-v5"
+}

@@ -1,0 +1,27 @@
+{
+ "businessStatus": "OPERATIONAL",
+ "primaryType": "car_repair",
+ "types": [
+  "car_repair",
+  "tire_shop",
+  "auto_parts_store",
+  "supplier",
+  "manufacturer",
+  "service",
+  "point_of_interest",
+  "store",
+  "establishment"
+ ],
+ "rating": 5,
+ "userRatingCount": 1,
+ "websiteUri": null,
+ "paymentOptions": null,
+ "parkingOptions": null,
+ "editorialSummary": null,
+ "weekdayDescriptions": null,
+ "review_count_seen": 1,
+ "review_themes": null,
+ "fetched_at": "2026-11-15",
+ "place_id": "ChIJ168Hm_AX2jERyU5qE-MZzxE",
+ "source": "google_places"
+}
