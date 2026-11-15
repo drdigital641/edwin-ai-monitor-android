@@ -1,0 +1,15 @@
+name: K Tech IndexNow (contact details update)
+on:
+  push:
+    branches: [ "claude/project-thread-t8rwf8" ]
+    paths: [ "move-3-sites/ktech-indexnow/urls.json" ]
+jobs:
+  ping:
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+      - run: |
+          curl -sS -o /dev/null -w "indexnow.org %{http_code}\n" -X POST https://api.indexnow.org/indexnow -H "Content-Type: application/json; charset=utf-8" --data @move-3-sites/ktech-indexnow/urls.json
+          curl -sS -o /dev/null -w "bing %{http_code}\n" -X POST https://www.bing.com/indexnow -H "Content-Type: application/json; charset=utf-8" --data @move-3-sites/ktech-indexnow/urls.json
+          for u in contact/ ms/contact/ zh/contact/ services/ about/ privacy/; do curl -s https://ktech.my/$u | grep -oE "(Tony|Gavin|Tebrau|Call Q|Andrew)" | sort | uniq -c | tr '\n' ' '; echo " <- $u"; done
+          curl -s https://ktech.my/c6fde72b3c912e0c25f7377c4176e592.txt; echo
