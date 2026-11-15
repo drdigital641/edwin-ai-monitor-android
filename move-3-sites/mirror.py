@@ -64,6 +64,7 @@ for site in only:
     while queue:
         rel = queue.pop(0); code, body = get(url_of(base, rel))
         if code != 200: misses.append((rel, code)); continue
+        if b'<title>Index of /' in body[:600]: misses.append((rel, 'autoindex')); continue  # Apache folder listing, not a file
         dst = os.path.join(out, rel); os.makedirs(os.path.dirname(dst), exist_ok=True)
         open(dst, 'wb').write(body)
         manifest.append((rel, hashlib.sha256(body).hexdigest(), len(body)))
