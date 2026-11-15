@@ -838,8 +838,8 @@
  },
  {
   "path": "ms/services/index.html",
-  "expected_sha256": "39924d3c182dc3b39353a19c0cdbf63fefc2540594faa65f79b1b1e0bfa0263a",
-  "new_sha256": "90261a8b5e1d7a07d2a77363ea6a7cca060566fed4a5adcf3b9b2fe119e62e9f",
+  "expected_sha256": "29b4ba99452f27e82dc0f7db458bfa69cdac7d5fb361f23408f8a1f487e8ae2f",
+  "new_sha256": "d11d9c904dfce002451ea1bff842fa03623d0789bcb98772d83d461811f3f7d1",
   "edits": [
    {
     "old_text": "{\"@type\": \"ContactPoint\", \"contactType\": \"customer service\", \"name\": \"Andrew\", \"telephone\": \"+60125512820\", \"email\": \"sales@k-techmy.com\", \"areaServed\": \"MY\"}",
@@ -892,8 +892,8 @@
  },
  {
   "path": "services/index.html",
-  "expected_sha256": "2674d4e65e199ed31b5f9e500f4e2ed08d56e5c5fd5fd031cc73b012081d4a5e",
-  "new_sha256": "cd75093852f904a56365242b873330394cf629907b5ba4fc4119e2b0e855502f",
+  "expected_sha256": "d7019d53ef0266cf534ec2efea34814345b2726fd10b65000073a29e525cc686",
+  "new_sha256": "f5745ecfdf540769064232cb1bfd67ac4c488a9b0e99b3875195c0495295da09",
   "edits": [
    {
     "old_text": "{\"@type\": \"ContactPoint\", \"contactType\": \"customer service\", \"name\": \"Andrew\", \"telephone\": \"+60125512820\", \"email\": \"sales@k-techmy.com\", \"areaServed\": \"MY\"}",
@@ -1351,8 +1351,8 @@
  },
  {
   "path": "zh/services/index.html",
-  "expected_sha256": "98463b94ed6b83b206988912c5ed4044a5228a461147f8efd2e6ea8626a779cc",
-  "new_sha256": "3dc7ac0c729209e4df49c0124a739aefeb605c89f414989c3d2545a8585e1fb9",
+  "expected_sha256": "9fbc7fa79b07b793549090fd81bd2891d9826601ea26c87059491148dfa7bfb8",
+  "new_sha256": "67e374761057e21a83076549a037261e4765a6991057be215b02dca59bfa663d",
   "edits": [
    {
     "old_text": "{\"@type\": \"ContactPoint\", \"contactType\": \"customer service\", \"name\": \"Andrew\", \"telephone\": \"+60125512820\", \"email\": \"sales@k-techmy.com\", \"areaServed\": \"MY\"}",

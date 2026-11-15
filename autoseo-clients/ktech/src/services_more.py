@@ -85,50 +85,50 @@ SERVICES_MORE = [
  {'slug': 'mercedes-benz-engineering-software-training', 'code': 'S8', 'img': 'ktech-mercedes-training-session.webp', 'wh': (918, 1480), 'tm': True,
   'stype': 'Technical training',
   'en': {'name': 'One-to-one Mercedes-Benz engineering software training', 'card': 'One technician, one trainer: Mercedes-Benz engineering software training at your pace.',
-         'title': 'Mercedes-Benz Engineering Software Training, 1-to-1 | K Tech JB', 'desc': 'One-to-one Mercedes-Benz engineering software training for workshop technicians in Johor Bahru. Topics agreed with you first. Call Q on +60 18-949 2820 to arrange.',
+         'title': 'Mercedes-Benz Engineering Software Training, 1-to-1 | K Tech JB', 'desc': 'One-to-one Mercedes-Benz engineering software training for workshop technicians in Johor Bahru. Topics agreed with you first. WhatsApp Q on +60 18-949 2820 to arrange.',
          'h1': 'One-to-one Mercedes-Benz engineering software training', 'line': 'One trainer, one technician, your Mercedes-Benz jobs.',
          'fig': 'K Tech session on a Mercedes-Benz in a workshop (faces and plates blurred)',
          'do': ['One-to-one training: just you and the trainer, so the pace and questions are yours.',
                 'Mercedes-Benz engineering software, for technicians who already do everyday diagnostics.',
                 'Topics agreed with you before the session, based on the Mercedes-Benz jobs you get.',
                 'Hands-on work on a real car where the topic needs it.'],
-         'steps': [('Call Q', 'Your level and the jobs you want to learn.'), ('We agree topics', 'And a date and place.'), ('Train 1-to-1', 'On a real car, at your pace.')],
+         'steps': [('WhatsApp Q', 'Your level and the jobs you want to learn.'), ('We agree topics', 'And a date and place.'), ('Train 1-to-1', 'On a real car, at your pace.')],
          'notes': ['Engineering software goes deeper than a normal scan. A wrong change can disable a module, so it pays to learn it properly.',
                    'Bring the questions from jobs you got stuck on. One-to-one time is best spent on your own cases.',
                    'K Tech also runs group technical training sessions for workshop technicians.'],
          'faq': [('Who is this training for?', 'Technicians and workshop owners who work on Mercedes-Benz and want to use engineering software, beyond everyday diagnostics.'),
                  ('Why one-to-one?', 'You set the pace and every question is about your own jobs. Nothing is skipped because a group has to move on.'),
-                 ('Which software and topics are covered?', 'We agree this with you before the session. Call Q on +60 18-949 2820 with the jobs you do and the software you have, and we confirm what the session covers.')]},
+                 ('Which software and topics are covered?', 'We agree this with you before the session. WhatsApp Q on +60 18-949 2820 with the jobs you do and the software you have, and we confirm what the session covers.')]},
   'ms': {'name': 'Latihan perisian kejuruteraan Mercedes-Benz satu-dengan-satu', 'card': 'Seorang juruteknik, seorang jurulatih: latihan perisian kejuruteraan Mercedes-Benz ikut rentak anda.',
-         'title': 'Latihan Perisian Kejuruteraan Mercedes-Benz 1-dengan-1 | K Tech', 'desc': 'Latihan perisian kejuruteraan Mercedes-Benz satu-dengan-satu untuk juruteknik bengkel di Johor Bahru. Topik dipersetujui dahulu. Hubungi Q di +60 18-949 2820 untuk mengatur.',
+         'title': 'Latihan Perisian Kejuruteraan Mercedes-Benz 1-dengan-1 | K Tech', 'desc': 'Latihan perisian kejuruteraan Mercedes-Benz satu-dengan-satu untuk juruteknik bengkel di Johor Bahru. Topik dipersetujui dahulu. WhatsApp Q di +60 18-949 2820 untuk mengatur.',
          'h1': 'Latihan perisian kejuruteraan Mercedes-Benz satu-dengan-satu', 'line': 'Seorang jurulatih, seorang juruteknik, kerja Mercedes-Benz anda.',
          'fig': 'Sesi K Tech pada Mercedes-Benz di bengkel (wajah dan nombor plat dikaburkan)',
          'do': ['Latihan satu-dengan-satu: hanya anda dan jurulatih, jadi rentak dan soalan ikut anda.',
                 'Perisian kejuruteraan Mercedes-Benz, untuk juruteknik yang sudah biasa dengan diagnostik harian.',
                 'Topik dipersetujui sebelum sesi, berdasarkan kerja Mercedes-Benz yang anda terima.',
                 'Kerja hands-on pada kereta sebenar jika topik memerlukannya.'],
-         'steps': [('Hubungi Q', 'Tahap anda dan kerja yang mahu dipelajari.'), ('Setuju topik', 'Serta tarikh dan tempat.'), ('Latihan 1-dengan-1', 'Pada kereta sebenar, ikut rentak anda.')],
+         'steps': [('WhatsApp Q', 'Tahap anda dan kerja yang mahu dipelajari.'), ('Setuju topik', 'Serta tarikh dan tempat.'), ('Latihan 1-dengan-1', 'Pada kereta sebenar, ikut rentak anda.')],
          'notes': ['Perisian kejuruteraan pergi lebih dalam daripada imbasan biasa. Perubahan yang salah boleh melumpuhkan modul, jadi berbaloi belajar dengan betul.',
                    'Bawa soalan daripada kerja yang pernah tersekat. Masa satu-dengan-satu paling berguna untuk kes anda sendiri.',
                    'K Tech juga mengendalikan sesi latihan teknikal berkumpulan untuk juruteknik bengkel.'],
          'faq': [('Latihan ini untuk siapa?', 'Juruteknik dan pemilik bengkel yang membaiki Mercedes-Benz dan mahu menggunakan perisian kejuruteraan, melebihi diagnostik harian.'),
                  ('Kenapa satu-dengan-satu?', 'Anda tetapkan rentak dan setiap soalan tentang kerja anda sendiri. Tiada yang dilangkau kerana kumpulan perlu bergerak.'),
-                 ('Perisian dan topik apa yang diliputi?', 'Kami persetujui bersama anda sebelum sesi. Hubungi Q di +60 18-949 2820 tentang kerja yang anda buat dan perisian yang anda ada, dan kami sahkan liputan sesi.')]},
+                 ('Perisian dan topik apa yang diliputi?', 'Kami persetujui bersama anda sebelum sesi. WhatsApp Q di +60 18-949 2820 tentang kerja yang anda buat dan perisian yang anda ada, dan kami sahkan liputan sesi.')]},
   'zh': {'name': '一对一奔驰工程软件培训', 'card': '一位导师，一位技师：按你的节奏学习奔驰工程软件。',
-         'title': '一对一奔驰工程软件培训 | K Tech 新山', 'desc': '新山 K Tech 为车厂技师提供一对一奔驰（Mercedes-Benz）工程软件培训，课程内容事先与你商定。致电 Q +60 18-949 2820 预约。',
+         'title': '一对一奔驰工程软件培训 | K Tech 新山', 'desc': '新山 K Tech 为车厂技师提供一对一奔驰（Mercedes-Benz）工程软件培训，课程内容事先与你商定。WhatsApp Q（+60 18-949 2820）预约。',
          'h1': '一对一奔驰工程软件培训', 'line': '一位导师，一位技师，专讲你的奔驰工作。',
          'fig': 'K Tech 在车厂进行奔驰实车课程（已模糊人脸与车牌）',
          'do': ['一对一培训：只有你和导师，节奏和问题由你决定。',
                 '奔驰工程软件，适合已经熟悉日常诊断的技师。',
                 '课程内容按你平时接的奔驰工作，事先与你商定。',
                 '需要时在实车上动手操作。'],
-         'steps': [('致电 Q', '你的程度与想学的工作。'), ('商定内容', '以及日期与地点。'), ('一对一上课', '实车操作，按你的节奏。')],
+         'steps': [('WhatsApp Q', '你的程度与想学的工作。'), ('商定内容', '以及日期与地点。'), ('一对一上课', '实车操作，按你的节奏。')],
          'notes': ['工程软件比一般诊断扫描更深入，改错设置可能令模块无法工作，所以值得好好学。',
                    '把以前卡住的案例带来。一对一的时间最适合解决你自己的问题。',
                    'K Tech 也为车厂技师举办小组技术培训课程。'],
          'faq': [('这个培训适合谁？', '维修奔驰、想在日常诊断之外使用工程软件的技师与车厂老板。'),
                  ('为什么是一对一？', '节奏由你决定，每个问题都围绕你自己的工作，不会因为要跟上小组进度而跳过。'),
-                 ('涵盖哪些软件与内容？', '上课前与你商定。请致电 Q +60 18-949 2820，告诉我们你做的工作与你现有的软件，我们确认课程内容。')]}},
+                 ('涵盖哪些软件与内容？', '上课前与你商定。请 WhatsApp Q（+60 18-949 2820），告诉我们你做的工作与你现有的软件，我们确认课程内容。')]}},
 
  {'slug': 'autel-repair-and-parts', 'code': 'S9', 'img': 'ktech-autel-tablet-battery-pack.webp', 'wh': (1380, 640), 'tm': False,
   'stype': 'Diagnostic tool repair and replacement parts',
@@ -310,13 +310,16 @@ def _wa(g, l, s):
     return 'https://wa.me/' + g['F']['whatsapp'] + '?text=' + quote(UIS[l]['wa'].format(d=dom) + s[l]['name'])
 
 
-CALL_Q = {'en': 'Call Q +60 18-949 2820', 'ms': 'Hubungi Q +60 18-949 2820', 'zh': '致电 Q +60 18-949 2820'}
-CALL_Q_SLUGS = {'mercedes-benz-engineering-software-training'}  # Andrew 15 Nov 2026: training enquiries go to Q by phone
+CALL_Q = {'en': 'Ask Q on WhatsApp', 'ms': 'Tanya Q di WhatsApp', 'zh': 'WhatsApp 咨询 Q'}
+Q_WA = {'en': 'Hi Q, I found ktech.my. I would like to ask about: Technical One to One Training',
+        'ms': 'Hai Q, saya jumpa ktech.my. Saya mahu bertanya tentang: Latihan Teknikal Satu-dengan-Satu',
+        'zh': '你好 Q，我在 ktech.my 看到你们。我想咨询：一对一技术培训'}  # Edwin 15 Nov 2026 1:14pm SGT
+CALL_Q_SLUGS = {'mercedes-benz-engineering-software-training'}  # Edwin 15 Nov 2026: training enquiries go to Q on WhatsApp
 
 
 def _btn(g, l, s, ref):
     if s.get('slug') in CALL_Q_SLUGS:
-        return f'<a class="btn" href="tel:+60189492820" data-ref="{ref}-call-q">{E_(CALL_Q[l])}</a>'
+        return f'<a class="btn btn-wa" href="https://wa.me/60189492820?text={quote(Q_WA[l])}" target="_blank" rel="noopener" data-ref="{ref}-wa-q">{g["WA_SVG"]}<span>{E_(CALL_Q[l])}</span></a>'
     return f'<a class="btn btn-wa" href="{_wa(g, l, s)}" target="_blank" rel="noopener" data-ref="{ref}">{g["WA_SVG"]}<span>{E_(UIS[l]["ask"])}</span></a>'
 
 
