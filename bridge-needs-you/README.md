@@ -36,5 +36,5 @@ Changed by apply.py: base44/shared/handler.ts (needs key scope), base44/shared/k
 2. deno test (tests/), deno check entries, eslint Connect.jsx, vite build, in the /tmp copy.
 3. Copy the same files into /app (auto-commit), create_checkpoint, give Edwin the checkpoint to Publish.
 
-Self-test 15 Nov 2026 (head 6c1e80b/c83fbe2 copy): needsYou 9/9; full suite 76/1, the 1 is the pre-existing
+Self-test 15 Nov 2026 (head c83fbe2, re-based on 99ed377 drop folder): needsYou 9/9; full suite 76/1, the 1 is the pre-existing
 guardOverrides1115 "exactly 2 entries" check (fixed at head c83fbe2); deno check OK; eslint clean; vite build OK.

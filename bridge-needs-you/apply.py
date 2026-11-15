@@ -17,13 +17,13 @@ rep('base44/shared/handler.ts', """        if (scope.startsWith('site:')) {""", 
         }
         if (scope.startsWith('site:')) {""")
 rep('base44/shared/handler.ts', """          user = scope === 'overview' ? OVERVIEW_ACTOR : KEY_ACTOR;""", """          user = scope === 'overview' ? OVERVIEW_ACTOR : scope === 'needs' ? NEEDS_ACTOR : KEY_ACTOR;""")
-rep('base44/shared/handler.ts', """const viaKey = user === KEY_ACTOR || user === OVERVIEW_ACTOR || Boolean(siteOnly);""", """const viaKey = user === KEY_ACTOR || user === OVERVIEW_ACTOR || user === NEEDS_ACTOR || Boolean(siteOnly);""")
+rep('base44/shared/handler.ts', """const viaKey = user === KEY_ACTOR || user === OVERVIEW_ACTOR || Boolean(siteOnly) || Boolean(dropKey);""", """const viaKey = user === KEY_ACTOR || user === OVERVIEW_ACTOR || user === NEEDS_ACTOR || Boolean(siteOnly) || Boolean(dropKey);""")
 
-rep('base44/shared/keys.ts', """export type KeyScope = 'full' | 'overview' | `site:${string}`;""", """// 'needs': Grok Bot, read the needs-you list only (15 Nov 2026).
-export type KeyScope = 'full' | 'overview' | 'needs' | `site:${string}`;""")
+rep('base44/shared/keys.ts', """export type KeyScope = 'full' | 'overview' | 'drop' | `site:${string}`;""", """// 'needs': Grok Bot, read the needs-you list only (15 Nov 2026).
+export type KeyScope = 'full' | 'overview' | 'drop' | 'needs' | `site:${string}`;""")
 rep('base44/shared/keys.ts', """  if (raw === 'overview') return 'overview';""", """  if (raw === 'overview') return 'overview';
   if (raw === 'needs') return 'needs';""")
-rep('base44/shared/keys.ts', """const fallback = scope === 'overview' ? 'Page One Controller' : scope === 'full' ? 'ChatGPT' : scope.slice(5) + ' automation';""", """const fallback = scope === 'overview' ? 'Page One Controller' : scope === 'needs' ? 'Grok Bot (needs list, read only)' : scope === 'full' ? 'ChatGPT' : scope.slice(5) + ' automation';""")
+rep('base44/shared/keys.ts', """const fallback = scope === 'overview' ? 'Page One Controller' : scope === 'full' ? 'ChatGPT' : scope === 'drop' ? 'Bot drop key' : scope.slice(5) + ' automation';""", """const fallback = scope === 'overview' ? 'Page One Controller' : scope === 'full' ? 'ChatGPT' : scope === 'drop' ? 'Bot drop key' : scope === 'needs' ? 'Grok Bot (needs list, read only)' : scope.slice(5) + ' automation';""")
 
 rep('src/pages/Connect.jsx', '''  const [fresh, setFresh] = useState(null);
   const [busy, setBusy] = useState(false);
