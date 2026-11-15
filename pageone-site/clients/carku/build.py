@@ -757,6 +757,8 @@ def write_meta():
     models = "\n".join("- [Carku %s](%smodels/%s/): %s, %sAh, %s, %sA peak current%s%s" % (
         m["code"], BASE, m["slug"], m["size_long"], m["ah"], m["volt"], m["peak"],
         (", %s Wh" % m["wh"]) if m["wh"] else "", (", %s" % m["kg"]) if m["kg"] else "") for m in MODELS)
+    arts = load_articles()
+    guides = ("## Guides\n" + "\n".join("- [%s](%sarticles/%s/): %s" % (a["title"], BASE, a["slug"], a["description"]) for a in arts) + "\n") if arts else ""
     llms = f"""# Carku Singapore
 
 > Carku smart sodium-ion car batteries for passenger cars in Singapore, distributed by KohDen International Pte Ltd. Each battery pairs with the free Carku Battery app over Bluetooth to show state of charge, state of health, voltage, temperature, current and alerts, offers one-touch jump start through the app even when the battery is flat, and carries a 5-year warranty (terms by Kohden).
@@ -787,6 +789,7 @@ def write_meta():
 ## Models
 {models}
 
+{guides}
 ## Related
 - Hyper Power sodium-ion and lithium car batteries, also from Kohden: {HYPER}
 """

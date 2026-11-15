@@ -34,5 +34,6 @@
 - [Carku CBN40-L5/H8](https://pageonesingapore.com/preview/carku/models/cbn40-h8/): DIN H8 (L5) size, 40Ah, 12.2V, 1200A peak current, 488 Wh, 7.6 kg
 - [Carku CBN50-L6/H9](https://pageonesingapore.com/preview/carku/models/cbn50-h9/): DIN H9 (L6) size, 50Ah, 12.2V, 1500A peak current, 610 Wh, 9 kg
 
+
 ## Related
 - Hyper Power sodium-ion and lithium car batteries, also from Kohden: https://pageonesingapore.com/preview/hyper-power/
