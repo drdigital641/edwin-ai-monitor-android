@@ -2,6 +2,7 @@
 if(!window.matchMedia('(prefers-reduced-motion: reduce)').matches&&'IntersectionObserver' in window){d.classList.add('js');
 var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}})},{rootMargin:'0px 0px -8% 0px'});
 document.querySelectorAll('.reveal').forEach(function(el){io.observe(el)});setTimeout(function(){document.querySelectorAll('.reveal').forEach(function(el){el.classList.add('in')})},2500)}
+var st=document.querySelector('[data-sticky]'),hc=document.querySelector('.hero .ctas,.page .ctas');if(st){if(hc&&'IntersectionObserver' in window){new IntersectionObserver(function(es){st.classList.toggle('on',!es[0].isIntersecting)}).observe(hc)}else st.classList.add('on')}
 var m=document.querySelector('.menu'),n=document.querySelector('.nav');if(m&&n)m.addEventListener('click',function(){var o=n.classList.toggle('open');m.setAttribute('aria-expanded',o)});
 /* carousel standard: auto-slides, keeps sliding on scroll, pauses only while held/dragged, restarts ~2s after release */
 document.querySelectorAll('.carousel[data-auto]').forEach(function(c){var held=false,t=null;

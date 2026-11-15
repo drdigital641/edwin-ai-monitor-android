@@ -1,3 +1,4 @@
+# Singapore preview: pages carry noindex. Real domain rules go in at go-live.
 User-agent: *
 Allow: /
 
@@ -34,4 +35,4 @@ Allow: /
 User-agent: DuckAssistBot
 Allow: /
 
-Sitemap: https://exnlube.com/sitemap.xml
+Sitemap: https://pageonesingapore.com/preview/exn-lube/sitemap.xml

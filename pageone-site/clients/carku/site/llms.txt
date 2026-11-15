@@ -1,0 +1,38 @@
+# Carku Singapore
+
+> Carku smart sodium-ion car batteries for passenger cars in Singapore, distributed by KohDen International Pte Ltd. Each battery pairs with the free Carku Battery app over Bluetooth to show state of charge, state of health, voltage, temperature, current and alerts, offers one-touch jump start through the app even when the battery is flat, and carries a 5-year warranty (terms by Kohden).
+
+## Key facts
+- Seven 12V sodium-ion passenger models: CBN30-D23 (JIS D23), CBN30-L2/H5, CBN30-L3/H6, CBN30-L3H, CBN40-L4/H7, CBN40-L5/H8, CBN50-L6/H9. All stocked by Kohden.
+- 3000 rated cycles, operating range -40 °C to 80 °C, sealed and maintenance-free.
+- Carku publishes peak current (1000A to 1500A), not CCA.
+- Service through Kohden: 5-year warranty, 1-to-1 replacement for defects, 24-hour support, free on-site service. Workshops are welcome to partner.
+- Prices on request.
+
+## Contact
+- KohDen International Pte Ltd, 7 Kaki Bukit Road 1 #01-15 Eunos Technolink, Singapore 415937
+- WhatsApp +65 8603 0355, phone +65 6966 6565, Monday to Friday, 9am to 5pm. Closed on Saturday and Sunday.
+- Distributor website: https://www.kohden.com.sg/
+
+## Pages
+- [Smart battery app](https://pageonesingapore.com/preview/carku/smart-app/)
+- [One-touch jump start](https://pageonesingapore.com/preview/carku/jump-start/)
+- [All models](https://pageonesingapore.com/preview/carku/models/)
+- [Find your size](https://pageonesingapore.com/preview/carku/fitment/)
+- [Why sodium-ion](https://pageonesingapore.com/preview/carku/why-sodium-ion/)
+- [5-year warranty and service](https://pageonesingapore.com/preview/carku/warranty/)
+- [For workshops](https://pageonesingapore.com/preview/carku/for-workshops/)
+- [FAQ](https://pageonesingapore.com/preview/carku/faq/)
+- [Contact](https://pageonesingapore.com/preview/carku/contact/)
+
+## Models
+- [Carku CBN30-D23](https://pageonesingapore.com/preview/carku/models/cbn30-d23/): JIS D23 size, 30Ah, 12V, 1000A peak current, 360 Wh, 4.5 kg
+- [Carku CBN30-L2/H5](https://pageonesingapore.com/preview/carku/models/cbn30-h5/): DIN H5 (L2) size, 30Ah, 12.2V, 1000A peak current, 366 Wh, 6 kg
+- [Carku CBN30-L3/H6](https://pageonesingapore.com/preview/carku/models/cbn30-h6/): DIN H6 (L3) size, 30Ah, 12.2V, 1000A peak current, 366 Wh, 6.1 kg
+- [Carku CBN30-L3H](https://pageonesingapore.com/preview/carku/models/cbn30-l3h/): DIN H6 (L3) case, 30Ah, 12V, 1000A peak current
+- [Carku CBN40-L4/H7](https://pageonesingapore.com/preview/carku/models/cbn40-h7/): DIN H7 (L4) size, 40Ah, 12.2V, 1200A peak current, 488 Wh
+- [Carku CBN40-L5/H8](https://pageonesingapore.com/preview/carku/models/cbn40-h8/): DIN H8 (L5) size, 40Ah, 12.2V, 1200A peak current, 488 Wh, 7.6 kg
+- [Carku CBN50-L6/H9](https://pageonesingapore.com/preview/carku/models/cbn50-h9/): DIN H9 (L6) size, 50Ah, 12.2V, 1500A peak current, 610 Wh, 9 kg
+
+## Related
+- Hyper Power sodium-ion and lithium car batteries, also from Kohden: https://pageonesingapore.com/preview/hyper-power/
