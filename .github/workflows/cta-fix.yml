@@ -1,0 +1,18 @@
+name: CTA tracker fix (GET-only crawl)
+on:
+  push:
+    branches: [ "claude/project-thread-hulxo2" ]
+    paths: [ ".github/cta-fix/**", "cta-fix/js/**", ".github/workflows/cta-fix.yml" ]
+permissions:
+  contents: write
+jobs:
+  crawl:
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+      - name: Crawl and prepare fixed copies
+        run: python3 .github/cta-fix/fix.py $(cat .github/cta-fix/only.txt 2>/dev/null)
+      - name: Commit
+        run: |
+          git config user.name "github-actions[bot]"; git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add cta-fix && git commit -m "CTA tracker fix: crawl output" && git push

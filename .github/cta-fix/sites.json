@@ -1,0 +1,15 @@
+[
+ {"slug":"maison-interior-design","origin":"https://maisoninteriordesign.sg","prefix":"/","bridge":"pageone","base":"preview/maison-interior-design","src":"/p1-cta.js"},
+ {"slug":"cleanic","origin":"https://cleanicdetailing.com","prefix":"/","bridge":"cleanic","base":"","src":"/p1-cta.js"},
+ {"slug":"emats","origin":"https://ecumats.my","prefix":"/","bridge":"ecumats","base":"","src":"/p1-cta.js"},
+ {"slug":"autoseo-site","origin":"https://autoseo.my","prefix":"/","exclude":["/preview/"],"bridge":"autoseo","base":"","src":"/p1-cta.js"},
+ {"slug":"ktech","origin":"https://ktech.my","prefix":"/","bridge":"ktech","base":"","src":"/p1-cta.js"},
+ {"slug":"hybrid-world","origin":"https://hybridworld.com.my","prefix":"/","bridge":"hybridworld","base":"","src":"/p1-cta.js"},
+ {"slug":"jayven-ang","origin":"https://jayvenang.sg","prefix":"/","bridge":"jayven","base":"","src":"/p1-cta.js"},
+ {"slug":"benz-world","origin":"https://benzworld.my","prefix":"/","bridge":"benzworld","base":"","src":"/p1-cta.js"},
+ {"slug":"carzy-world","origin":"https://carzyworld.com.my","prefix":"/","bridge":"carzy","base":"","src":"/p1-cta.js"},
+ {"slug":"lilian-properties","origin":"https://lilianproperties.com","prefix":"/","bridge":"lilian","base":"","src":"/p1-cta.js"},
+ {"slug":"hyper-power","origin":"https://pageonesingapore.com","prefix":"/preview/hyper-power/","bridge":"pageone","base":"preview/hyper-power","src":"/preview/hyper-power/p1-cta.js"},
+ {"slug":"carku","origin":"https://autoseo.my","prefix":"/preview/carku/","bridge":"autoseo","base":"preview/carku","src":"/preview/carku/p1-cta.js"},
+ {"slug":"sggarage","origin":"https://www.sggarage.com","prefix":"/","bridge":"sggarage","base":"","src":"","reuse_tag":"p1-cta.js"}
+]
