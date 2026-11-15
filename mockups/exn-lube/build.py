@@ -289,6 +289,10 @@ def shell(path, title, desc, body, schema=None, image=HERO, trail=None, ogtype="
     graph = [brand_schema(), org_schema(), {"@type": "WebSite", "@id": SITE + "#site", "url": SITE, "name": BRAND, "inLanguage": "en-SG", "publisher": {"@id": ORG_ID}}]
     if trail: graph.append(crumbs(trail))
     graph += schema or []
+    # night-run articles carry their own Base44 hero (images/articles/<slug>.*): it is also og:image + twitter:image (HARD IMAGE GATE)
+    own = isinstance(image, str) and image.startswith(SITE + "images/articles/")
+    og, og_w, og_h = (image, 1200, 675) if own else (OG_IMG, 1200, 630)
+    og_type = ("webp" if og.endswith(".webp") else "png" if og.endswith(".png") else "jpeg")
     ld = json.dumps({"@context": "https://schema.org", "@graph": graph}, ensure_ascii=False).replace("</", "<\\/")
     doc = f"""<!doctype html>
 <html lang="en-SG">
@@ -309,14 +313,14 @@ def shell(path, title, desc, body, schema=None, image=HERO, trail=None, ogtype="
 <meta property="og:title" content="{esc(title)}">
 <meta property="og:description" content="{esc(desc)}">
 <meta property="og:url" content="{url}">
-<meta property="og:image" content="{OG_IMG}">
-<meta property="og:image:secure_url" content="{OG_IMG}">
-<meta property="og:image:type" content="image/jpeg">
-<meta property="og:image:width" content="1200">
-<meta property="og:image:height" content="630">
+<meta property="og:image" content="{og}">
+<meta property="og:image:secure_url" content="{og}">
+<meta property="og:image:type" content="image/{og_type}">
+<meta property="og:image:width" content="{og_w}">
+<meta property="og:image:height" content="{og_h}">
 <meta property="og:image:alt" content="{esc(title)}">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image" content="{OG_IMG}">
+<meta name="twitter:image" content="{og}">
 <link rel="stylesheet" href="{r}exn.css?v={CSS_V}">
 <script type="application/ld+json">{ld}</script>
 </head>
@@ -590,9 +594,14 @@ def article_cards(r, n=None):
             "dot-4-vs-dot-5-1-brake-fluid": kd("2026/04/E5002-DOT5-1000-1L.jpg")}
     out = ""
     for a in ARTS[:n] if n else ARTS:
-        a["img"] = imgs.get(a["slug"], HERO)
+        a["img"] = (SITE + a["hero"]) if a.get("hero") else imgs.get(a["slug"], HERO)
         out += f'<a class="acard reveal" href="{r}articles/{a["slug"]}/"><img src="{a["img"]}" alt="" width="300" height="200" loading="lazy"><h3>{esc(a["h1"])}</h3><p>{esc(a["desc"])}</p></a>'
     return out
+
+def human_date(d):
+    import datetime
+    x = datetime.date.fromisoformat(d)
+    return f"{x.day} {x.strftime('%B %Y')}"
 
 def articles():
     r = "../"
@@ -608,8 +617,8 @@ def articles():
         owner = a["owner"].strip("/") + "/"
         oname = next((c["short"] for c in CATS if owner.endswith(c["slug"] + "/")), None) or next((p["name"] for p in PPAGES if owner.endswith(p["slug"] + "/")), "EXN products")
         body = f"""<article class="wrap page post"><h1>{esc(a["h1"])}</h1>
-<p class="meta">EXN Lube Singapore. Updated <time datetime="{a.get("updated", a["date"])}">16 November 2026</time></p>
-<img class="wide" src="{a["img"]}" alt="{esc(a["h1"])}" width="800" height="500">
+<p class="meta">EXN Lube Singapore. Updated <time datetime="{a.get("updated", a["date"])}">{human_date(a.get("updated", a["date"]))}</time></p>
+<img class="wide" src="{a["img"]}" alt="{esc(a.get("hero_alt") or a["h1"])}" width="{1200 if a.get("hero") else 800}" height="{675 if a.get("hero") else 500}" fetchpriority="high">
 {a["body_html"].replace("<table", "<div class=\"tbl\"><table").replace("</table>", "</table></div>")}
 <div class="ctaband"><p>Looking for the right EXN product? See <a href="{rr}{owner}">{esc(oname)}</a> or ask Kohden, EXN\'s Singapore distributor.</p>{cta_buttons(rr, "article-" + a["slug"])}</div>
 {faq_html(a["faq"], rr)}</article>"""
