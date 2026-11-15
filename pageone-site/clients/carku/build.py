@@ -16,6 +16,7 @@ ROOT = os.path.dirname(os.path.abspath(__file__))
 OUT = os.path.join(ROOT, "site")
 BASE = "https://pageonesingapore.com/preview/carku/"
 HYPER = "https://pageonesingapore.com/preview/hyper-power/"
+EXN = "https://pageonesingapore.com/preview/exn-lube/"
 KOHDEN = "https://www.kohden.com.sg/"
 WA_NUM = "6586030355"
 TEL = "+6569666565"
@@ -190,7 +191,7 @@ def footer(path):
       <div>
         <h2>Workshops</h2><ul><li><a href="{r}for-workshops/">Stock and fit Carku</a></li></ul>
         <h2 style="margin-top:18px">Also from Kohden</h2>
-        <ul><li><a href="{HYPER}" data-cta="footer-hyper-power">Hyper Power sodium-ion and lithium batteries</a></li><li><a href="{KOHDEN}" target="_blank" rel="noopener">kohden.com.sg</a></li></ul>
+        <ul><li><a href="{HYPER}" data-cta="footer-hyper-power">Hyper Power sodium-ion and lithium batteries</a></li><li><a href="{EXN}" data-cta="footer-exn-lube">EXN engine oil and lubricants</a></li><li><a href="{KOHDEN}" target="_blank" rel="noopener">kohden.com.sg</a></li></ul>
         <h2 style="margin-top:18px">More</h2>
         <ul><li><a href="{r}articles/">Guides</a></li><li><a href="{r}privacy/">Privacy</a></li></ul>
       </div>
@@ -246,7 +247,7 @@ def cta_band(path, h="Not sure which Carku fits your car?", p="Send Kohden your 
 
 
 def sister(path):
-    return f"""<section class="sec"><div class="wrap"><div class="sister"><div><h2>Two Kohden battery brands</h2><p>Carku is the smart one, with the app and one-touch jump start. Want lithium LiFePO4, or a JIS size such as N55 or S95? Kohden's other brand, Hyper Power, covers those.</p></div><div class="sister-links"><a class="btn btn-line" href="{HYPER}" data-cta="sister-hyper-power">See Hyper Power</a><a class="txt-link" href="{KOHDEN}" target="_blank" rel="noopener">kohden.com.sg</a></div></div></div></section>"""
+    return f"""<section class="sec"><div class="wrap"><div class="sister"><div><h2>Two Kohden battery brands</h2><p>Carku is the smart one, with the app and one-touch jump start. Want lithium LiFePO4, or a JIS size such as N55 or S95? Kohden's other brand, Hyper Power, covers those.</p></div><div class="sister-links"><a class="btn btn-line" href="{HYPER}" data-cta="sister-hyper-power">See Hyper Power</a><a class="txt-link" href="{EXN}" data-cta="sister-exn-lube">EXN engine oil from Kohden</a><a class="txt-link" href="{KOHDEN}" target="_blank" rel="noopener">kohden.com.sg</a></div></div></div></section>"""
 
 
 # ---------- pages ----------
