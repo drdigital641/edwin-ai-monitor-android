@@ -11,7 +11,7 @@ SITES = {  # key: (base url, source folder in this repo)
     'lilian': ('https://lilianproperties.com', 'pageone-site/clients/lilian-properties/site'),
     'carzy': ('https://carzyworld.com.my', 'autoseo-clients/carzy-world/site'),
 }
-only = sys.argv[1:] or list(SITES)
+only = [a for a in sys.argv[1:] if a in SITES] or list(SITES)
 UA = 'Mozilla/5.0 (compatible; PageOneLiveSnapshot/1.0; read-only)'
 class NoRedirect(urllib.request.HTTPRedirectHandler):
     def redirect_request(self, *a, **k): return None
