@@ -7,6 +7,7 @@
 - [Services](https://ktech.my/services/)
 - [About](https://ktech.my/about/)
 - [Contact](https://ktech.my/contact/)
+- [Privacy](https://ktech.my/privacy/)
 - [Autel MaxiSYS Ultra S2](https://ktech.my/autel-diagnostic-tools/maxisys-ultra-s2/)
 - [Autel MaxiSYS MS919 S2](https://ktech.my/autel-diagnostic-tools/maxisys-ms919-s2/)
 - [Autel MaxiSYS MS909 S2](https://ktech.my/autel-diagnostic-tools/maxisys-ms909-s2/)
@@ -17,7 +18,11 @@
 - [Autel MaxiCheck MX900](https://ktech.my/autel-diagnostic-tools/maxicheck-mx900/)
 
 ## Articles
+- [ADAS calibration after windscreen or bumper work: when a workshop needs it](https://ktech.my/articles/adas-calibration-after-windscreen-or-bumper-work/): When a workshop needs ADAS calibration after windscreen or bumper work: which jobs move the camera or radar, static and dynamic methods, and the checks.
 - [TPMS relearn after a tyre change: why the light stays on](https://ktech.my/articles/tpms-relearn-after-tyre-change/): Why the TPMS light stays on after new tyres or a rotation, and how a workshop does a TPMS relearn: auto, stationary or OBD.
 
 ## Related
 - [AutoSEO.my](https://autoseo.my/): SEO websites for automotive businesses, a brand of K Tech Auto Solution Sdn Bhd
+
+## More pages
+- [Articles for workshops | K Tech](https://ktech.my/articles/): Practical notes for Malaysian workshops on diagnostics, ADAS, TPMS and key programming, from K Tech, Autel dealer in Johor Bahru.
