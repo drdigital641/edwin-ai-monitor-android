@@ -1,0 +1,40 @@
+{
+ "lede": "Calvin Auto Services at Ubi Road 1 is a car servicing and repair workshop.",
+ "chips": [
+  "Servicing",
+  "Repairs",
+  "LTA inspection"
+ ],
+ "services": [
+  "Car servicing",
+  "Repairs",
+  "Maintenance",
+  "LTA inspection",
+  "Insurance help",
+  "Car advice"
+ ],
+ "themes": "Customers on Google Maps mention friendly staff, prompt replies and follow-up after repairs, and a workshop they have used for many years.",
+ "faqs": [
+  [
+   "What does Calvin Auto Services do?",
+   "Google Maps lists it as a car repair workshop."
+  ],
+  [
+   "What are the opening hours?",
+   "The hours are listed in the Google Maps section above. Please see Google Maps for current hours."
+  ]
+ ],
+ "sources": "its Google Maps listing",
+ "stories": [],
+ "mentioned_services": [
+  "Servicing",
+  "Repairs",
+  "Inspection"
+ ],
+ "services_note": "Services mentioned on Google Maps. Ask the workshop for its full list.",
+ "specialties": [],
+ "makes": [],
+ "makes_note": "Not listed on its public pages. Ask the workshop about your car.",
+ "good_to_know": [],
+ "card_rules": "2026-11-05"
+}

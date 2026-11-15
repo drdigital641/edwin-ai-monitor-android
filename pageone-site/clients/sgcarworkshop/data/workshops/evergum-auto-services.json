@@ -40,5 +40,9 @@
  "tier": "basic",
  "first_seen_at": "2026-11-15",
  "last_verified_at": "2026-11-15",
- "collector_version": "agent-v5"
+ "collector_version": "agent-v5",
+ "hold": "hold: a sampled review alleges dishonesty and damage; not featured",
+ "estate": "ubi-road-1",
+ "planning_area": "Geylang",
+ "region": "central"
 }

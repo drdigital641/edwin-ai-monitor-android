@@ -1,0 +1,42 @@
+{
+ "lede": "Racing Technik Exhaust Specialist at Paya Ubi Industrial Park is an exhaust workshop.",
+ "chips": [
+  "Exhaust",
+  "Coilovers"
+ ],
+ "services": [
+  "Exhaust repair",
+  "Exhaust modification",
+  "Exhaust mounts and hangers",
+  "Coilover setup",
+  "Tyre alignment"
+ ],
+ "themes": "Customers on Google Maps mention exhaust repairs and changes, help with cabin resonance, coilover setup and tyre alignment.",
+ "faqs": [
+  [
+   "What does Racing Technik Exhaust Specialist do?",
+   "Google Maps lists it as a car repair workshop."
+  ],
+  [
+   "What are the opening hours?",
+   "The hours are listed in the Google Maps section above. Please see Google Maps for current hours."
+  ]
+ ],
+ "sources": "its Google Maps listing",
+ "stories": [],
+ "mentioned_services": [
+  "Exhaust",
+  "Coilovers",
+  "Tyre alignment"
+ ],
+ "services_note": "Services listed on Google Maps. Ask the workshop for its full list.",
+ "specialties": [],
+ "makes": [
+  "Suzuki",
+  "Honda",
+  "Subaru"
+ ],
+ "makes_note": "Named by customers on Google Maps. Ask the workshop about your car.",
+ "good_to_know": [],
+ "card_rules": "2026-11-05"
+}

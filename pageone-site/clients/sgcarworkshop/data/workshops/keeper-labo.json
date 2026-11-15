@@ -1,18 +1,18 @@
 {
  "schema_version": 1,
- "slug": "sin-hwee-motor-pte-ltd",
- "place_id": "ChIJ2RPIPvQX2jERIkJ2WCTnoFE",
+ "slug": "keeper-labo",
+ "place_id": "ChIJw4o37uoX2jERVFXUrkOptjs",
  "place_id_checked_at": "2026-11-15",
- "name": "Sin Hwee Motor Pte Ltd",
+ "name": "KeePer LABO",
  "name_source_url": "google_profile",
  "name_checked_at": "2026-11-15",
  "address": {
   "block": "",
-  "street": "3023A Ubi Rd 1, #01-59",
+  "street": "10 Ubi View, #1F, Autobacs 408543",
   "unit": "",
   "building": ""
  },
- "postal_code": "408717",
+ "postal_code": "408543",
  "address_source_url": "google_profile",
  "address_checked_at": "2026-11-15",
  "categories": [
@@ -24,7 +24,7 @@
  "services_source_url": "google_profile",
  "phones": [
   {
-   "e164": "+6597666672",
+   "e164": "+6591002979",
    "kind": "mobile",
    "whatsapp": true,
    "source": "google_profile",
@@ -36,9 +36,38 @@
   "reason": "OPERATIONAL, car repair, SG mobile on Google profile",
   "checked_at": "2026-11-15"
  },
- "status": "pending",
+ "status": "active",
  "tier": "basic",
  "first_seen_at": "2026-11-15",
  "last_verified_at": "2026-11-15",
- "collector_version": "agent-v5"
+ "collector_version": "agent-v5",
+ "estate": "ubi-road-1",
+ "planning_area": "Geylang",
+ "region": "central",
+ "lat": 1.332235347169339,
+ "lng": 103.896134187626,
+ "geo_source": "onemap",
+ "blocks": [
+  "hero",
+  "contact",
+  "services",
+  "good_for",
+  "problems",
+  "reviews",
+  "comparison",
+  "hours",
+  "stories",
+  "location",
+  "tips",
+  "faq",
+  "claim",
+  "sources"
+ ],
+ "google_rating": {
+  "rating": 4.9,
+  "count": 334,
+  "checked": "2026-11-15",
+  "source": "Google Places",
+  "source_date": "2026-11-15"
+ }
 }

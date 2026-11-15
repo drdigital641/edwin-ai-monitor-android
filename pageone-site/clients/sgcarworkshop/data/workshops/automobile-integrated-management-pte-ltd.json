@@ -40,5 +40,9 @@
  "tier": "basic",
  "first_seen_at": "2026-11-15",
  "last_verified_at": "2026-11-15",
- "collector_version": "agent-v5"
+ "collector_version": "agent-v5",
+ "hold": "hold: only 1 Google rating; recheck when it has more",
+ "estate": "ubi-road-1",
+ "planning_area": "Geylang",
+ "region": "central"
 }

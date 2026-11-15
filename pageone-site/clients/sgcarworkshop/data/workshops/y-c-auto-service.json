@@ -36,9 +36,38 @@
   "reason": "OPERATIONAL, car repair, SG mobile on Google profile",
   "checked_at": "2026-11-15"
  },
- "status": "pending",
+ "status": "active",
  "tier": "basic",
  "first_seen_at": "2026-11-15",
  "last_verified_at": "2026-11-15",
- "collector_version": "agent-v5"
+ "collector_version": "agent-v5",
+ "estate": "soon-lee-street-pioneer",
+ "planning_area": "Pioneer",
+ "region": "west",
+ "lat": 1.325248019457771,
+ "lng": 103.6946830539982,
+ "geo_source": "onemap",
+ "blocks": [
+  "hero",
+  "contact",
+  "services",
+  "good_for",
+  "problems",
+  "reviews",
+  "comparison",
+  "hours",
+  "stories",
+  "location",
+  "tips",
+  "faq",
+  "claim",
+  "sources"
+ ],
+ "google_rating": {
+  "rating": 4.9,
+  "count": 42,
+  "checked": "2026-11-15",
+  "source": "Google Places",
+  "source_date": "2026-11-15"
+ }
 }

@@ -1,14 +1,14 @@
 {
  "schema_version": 1,
- "slug": "zenith-car-detailing-kovalent-coatings-singapore",
- "place_id": "ChIJWaKNB8gZ2jERCHo9wy_f-Lw",
+ "slug": "gary-s-engineering",
+ "place_id": "ChIJXTRIBkwZ2jERYYBGuI1bCxg",
  "place_id_checked_at": "2026-11-15",
- "name": "Zenith Car Detailing (Kovalent Coatings Singapore)",
+ "name": "Gary's Engineering",
  "name_source_url": "google_profile",
  "name_checked_at": "2026-11-15",
  "address": {
   "block": "",
-  "street": "53 Ubi Ave 1, #01-36",
+  "street": "53, #01-42 Ubi Ave 1, Paya Ubi Industrial Park",
   "unit": "",
   "building": ""
  },
@@ -24,7 +24,7 @@
  "services_source_url": "google_profile",
  "phones": [
   {
-   "e164": "+6580884815",
+   "e164": "+6596662016",
    "kind": "mobile",
    "whatsapp": true,
    "source": "google_profile",
@@ -36,9 +36,38 @@
   "reason": "OPERATIONAL, car repair, SG mobile on Google profile",
   "checked_at": "2026-11-15"
  },
- "status": "pending",
+ "status": "active",
  "tier": "basic",
  "first_seen_at": "2026-11-15",
  "last_verified_at": "2026-11-15",
- "collector_version": "agent-v5"
+ "collector_version": "agent-v5",
+ "estate": "paya-ubi-industrial-park",
+ "planning_area": "Geylang",
+ "region": "central",
+ "lat": 1.325408139002763,
+ "lng": 103.8966013359551,
+ "geo_source": "onemap",
+ "blocks": [
+  "hero",
+  "contact",
+  "services",
+  "good_for",
+  "problems",
+  "reviews",
+  "comparison",
+  "hours",
+  "stories",
+  "location",
+  "tips",
+  "faq",
+  "claim",
+  "sources"
+ ],
+ "google_rating": {
+  "rating": 4.5,
+  "count": 144,
+  "checked": "2026-11-15",
+  "source": "Google Places",
+  "source_date": "2026-11-15"
+ }
 }

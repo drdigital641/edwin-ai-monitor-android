@@ -2739,6 +2739,8 @@ def build():
     urls = sorted(PAGES)
     open(OUT + '/sitemap.xml', 'w').write('<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n' +
                                           ''.join('<url><loc>%s</loc><lastmod>%s</lastmod></url>\n' % (abs_url(p), lastmod_of(p, PAGES[p])) for p in urls if p not in NOINDEX) + '</urlset>\n')
+    # sitemap.txt (article roster v2, Edwin 16 Nov 2026: sitemap.txt on every site): same indexable URLs, one per line
+    open(OUT + '/sitemap.txt', 'w').write(''.join(abs_url(p) + '\n' for p in urls if p not in NOINDEX))
     if LIVE:
         bots = LIVE_BOTS
         _unused = ['Googlebot', 'Bingbot', 'OAI-SearchBot', 'GPTBot', 'ChatGPT-User', 'PerplexityBot', 'ClaudeBot', 'Claude-SearchBot', 'Google-Extended', 'Applebot-Extended', 'DuckAssistBot']

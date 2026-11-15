@@ -1,9 +1,9 @@
 {
  "schema_version": 1,
- "slug": "calvin-auto-services-pte-ltd",
+ "slug": "calvin-auto-services",
  "place_id": "ChIJNW7IQfQX2jERPqoStfqSbvs",
  "place_id_checked_at": "2026-11-15",
- "name": "Calvin Auto Services Pte Ltd",
+ "name": "Calvin Auto Services",
  "name_source_url": "google_profile",
  "name_checked_at": "2026-11-15",
  "address": {
@@ -36,9 +36,38 @@
   "reason": "OPERATIONAL, car repair, SG mobile on Google profile",
   "checked_at": "2026-11-15"
  },
- "status": "pending",
+ "status": "active",
  "tier": "basic",
  "first_seen_at": "2026-11-15",
  "last_verified_at": "2026-11-15",
- "collector_version": "agent-v5"
+ "collector_version": "agent-v5",
+ "estate": "ubi-road-1",
+ "planning_area": "Geylang",
+ "region": "central",
+ "lat": 1.329696511400929,
+ "lng": 103.8953280652052,
+ "geo_source": "onemap",
+ "blocks": [
+  "hero",
+  "contact",
+  "services",
+  "good_for",
+  "problems",
+  "reviews",
+  "comparison",
+  "hours",
+  "stories",
+  "location",
+  "tips",
+  "faq",
+  "claim",
+  "sources"
+ ],
+ "google_rating": {
+  "rating": 5,
+  "count": 6,
+  "checked": "2026-11-15",
+  "source": "Google Places",
+  "source_date": "2026-11-15"
+ }
 }
