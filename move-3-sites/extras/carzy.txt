@@ -1,0 +1,17 @@
+# Live files found by Bridge list_files (15 Nov 2026) that no page links to. Pulled so source = live.
+0a6d331ef2663641305c770df6c6b86a.txt
+BingSiteAuth.xml
+og-image.jpg
+articles/normal-service-vs-major-service/index.html
+ms/articles/normal-service-vs-major-service/index.html
+zh/articles/normal-service-vs-major-service/index.html
+img/carzy-world-logo.webp
+img/carzy-world-mazda-at-entrance.webp
+img/carzy-world-mazda-at-entrance-640.webp
+img/carzy-world-perodua-sedan-in-workshop.webp
+img/carzy-world-perodua-sedan-in-workshop-640.webp
+img/carzy-world-toyota-4x4-service-bay.webp
+img/carzy-world-toyota-4x4-service-bay-640.webp
+img/carzy-world-toyota-mpv-in-workshop.webp
+img/carzy-world-toyota-mpv-in-workshop-640.webp
+media/fb-1358776602985089.jpg

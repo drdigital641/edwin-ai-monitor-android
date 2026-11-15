@@ -50,7 +50,9 @@ for site in only:
     for loc in re.findall(rb'<loc>([^<]+)</loc>', sm):
         r = rel_of(base, loc.decode().strip(), 'index.html')
         if r: seeds.append(r)
-    queue = list(dict.fromkeys(seeds + EXTRAS)); seen = set(queue); manifest = []; misses = []
+    xf = os.path.join(HERE, 'extras', site + '.txt')
+    site_extras = [l.strip() for l in open(xf) if l.strip() and not l.startswith('#')] if os.path.exists(xf) else []
+    queue = list(dict.fromkeys(seeds + EXTRAS + site_extras)); seen = set(queue); manifest = []; misses = []
     while queue:
         rel = queue.pop(0); code, body = get(url_of(base, rel))
         if code != 200: misses.append((rel, code)); continue
