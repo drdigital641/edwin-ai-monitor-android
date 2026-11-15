@@ -115,3 +115,12 @@ The hourly publisher rewrites a pinned file when its live sha differs from the p
 - Full suite on the rebased tree: 86 passed, 0 failed (67 at ddd665c plus 19 new).
 - K Tech, Benz World and Li Lian are covered automatically (they are in SITES / SITE_HOLDS with HOLD off).
 - One thing for SPO: the move thread's own override for those 3 sites (MOVED_GENERATED_SITES) already lets any Bridge tool write replace their sitemap/llms files with only the generatedFileProblem check, and it runs before the auto-sitemap rule. So for those 3 sites the extra "never drop a live URL/line" rule is not enforced by the guard (the merge code itself still never drops anything). Easy fix if wanted: add the never-drop check to that override too.
+
+## Rebased onto 16de882 (15 Nov 2026 ~10am SGT, live-edit tools + 17 site keys)
+- Use `bridge-auto-sitemap-rebased-16de882.diff` (1020 lines, md5 ec86aa7bbed312a6531a67b8b7656755). It replaces the earlier diffs.
+- One hand merge: bridgeEdit/entry.ts now passes expected_sha256 to editFile (new in 16de882) and then runs the auto step.
+- The auto step already writes each sitemap/llms file with the live sha256 it just read as the base, so it meets the new stale-write rule (a file that changed in between is refused, never overwritten).
+- One test updated to send expected_sha256 for a page overwrite (new 16de882 rule).
+- Full suite: 91 passed, 0 failed (72 at 16de882 plus 19 new). Tree in the Bridge sandbox at /tmp/qul5nf-rb2 (sandbox /tmp can be wiped; the diff here is the durable copy).
+- All 17 site keys are covered (HOLD off), except Page One's root (its publisher owns it) and files pinned in clientAssets.
+- AutoSEO article runs that publish through the Bridge get sitemap + llms + IndexNow from this step once it is saved.
