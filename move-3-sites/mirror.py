@@ -10,6 +10,14 @@ SITES = {  # key: (base url, source folder in this repo)
     'benzworld': ('https://benzworld.my', 'autoseo-clients/benz-world/site'),
     'lilian': ('https://lilianproperties.com', 'pageone-site/clients/lilian-properties/site'),
     'carzy': ('https://carzyworld.com.my', 'autoseo-clients/carzy-world/site'),
+    # All sites on the Bridge (Edwin 15 Nov 2026 9:20am SGT): the rest of the Bluehost account.
+    'hybridworld': ('https://hybridworld.com.my', 'bluehost-live/hybridworld/site'),
+    'autoseo': ('https://autoseo.my', 'bluehost-live/autoseo/site'),
+    'ecumats': ('https://ecumats.my', 'bluehost-live/ecumats/site'),
+    'apcar': ('https://apcar.com.my', 'bluehost-live/apcar/site'),
+    'jayven': ('https://jayvenang.sg', 'bluehost-live/jayven/site'),
+    'urbaneco': ('https://urbanecosolutions.com', 'bluehost-live/urbaneco/site'),
+    'snapsg': ('https://snapsg.com', 'bluehost-live/snapsg/site'),
 }
 only = [a for a in sys.argv[1:] if a in SITES] or list(SITES)
 UA = 'Mozilla/5.0 (compatible; PageOneLiveSnapshot/1.0; read-only)'

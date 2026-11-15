@@ -21,6 +21,6 @@ jobs:
         run: |
           git config user.name "hold-snapshot-bot"
           git config user.email "actions@users.noreply.github.com"
-          git add autoseo-clients pageone-site move-3-sites/live
+          git add autoseo-clients pageone-site bluehost-live move-3-sites/live
           git commit -q -m "Move 3 sites: live HTTP snapshot $(date -u +%Y-%m-%dT%H:%MZ)" || exit 0
           for i in 1 2 3; do git pull --rebase -q origin claude/project-thread-pcpp95 && git push -q origin HEAD:claude/project-thread-pcpp95 && break; sleep 5; done
