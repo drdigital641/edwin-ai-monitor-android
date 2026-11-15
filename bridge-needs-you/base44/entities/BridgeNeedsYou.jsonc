@@ -1,0 +1,31 @@
+{
+  "name": "BridgeNeedsYou",
+  "type": "object",
+  "properties": {
+    "type": { "type": "string", "enum": ["publish", "server"], "description": "publish = a Base44 Publish for Edwin; server = a step the Bridge cannot do (.htaccess, PHP, cPanel, DNS, domain verification)" },
+    "target": { "type": "string", "description": "Site or app, e.g. Bluehost Bridge, Page One Controller, commercialfitout.sg" },
+    "ref": { "type": "string", "description": "Checkpoint id (publish) or file / setting (server)" },
+    "summary": { "type": "string", "description": "One line: what is needed" },
+    "why": { "type": "string", "description": "Short why. Never file contents or secrets" },
+    "status": { "type": "string", "enum": ["open", "done"], "default": "open" },
+    "dedupe_key": { "type": "string", "description": "type|target|ref, lower case; one open item per step" },
+    "opened_at": { "type": "string", "format": "date-time" },
+    "opened_by": { "type": "string" },
+    "done_at": { "type": "string", "format": "date-time" },
+    "done_by": { "type": "string" },
+    "live_check": { "type": "string", "description": "What was confirmed on live before marking done" },
+    "site_recheck": { "type": "string", "description": "The site re-check after the step" },
+    "notice_status": { "type": "string", "enum": ["pending", "sending", "sent", "failed", "unknown", "not_configured", "rate_limited"], "description": "Outcome of the one Grok Bot notice. Never the URL or key" },
+    "notice_http": { "type": "number", "description": "HTTP status the webhook answered" },
+    "notice_error": { "type": "string", "description": "Short reason, never the URL, key or response body" },
+    "notice_attempts": { "type": "number" },
+    "notified_at": { "type": "string", "format": "date-time" }
+  },
+  "required": ["type", "target", "ref", "summary", "status"],
+  "rls": {
+    "read": { "user_condition": { "role": "admin" } },
+    "create": { "user_condition": { "role": "admin" } },
+    "update": { "user_condition": { "role": "admin" } },
+    "delete": { "user_condition": { "role": "admin" } }
+  }
+}
