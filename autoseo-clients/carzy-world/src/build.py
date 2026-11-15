@@ -36,10 +36,11 @@ E = html.escape
 
 CSS = (ROOT / "assets" / "site.css").read_text(encoding="utf-8")
 JS = (ROOT / "assets" / "site.js").read_text(encoding="utf-8")
-ASSET_V = hashlib.sha256((CSS + JS).encode()).hexdigest()[:10]
+# site.js tag = the hand-set tag on the live pages (live 15 Nov 2026: site.js?v=20261114i). Bump with any site.js change.
+ASSET_V = "20261114i"
 # site.css tag = the hand-set tag on the live pages (15 Nov 2026: live moved to dated tags like 20261114i).
 # Bump it here AND on every live page whenever assets/site.css changes.
-CSS_V = "20261115w"
+CSS_V = "20261115w"  # live since 15 Nov 2026 (Bridge)
 # Articles (11 Nov 2026): one JSON file per article in data/articles/, rendered by templates/article*.html.
 # Their CSS is a separate file loaded only on article pages, so a night run never changes site.css.
 ART_CSS = (ROOT / "assets" / "articles.css").read_text(encoding="utf-8")
