@@ -124,3 +124,9 @@ The hourly publisher rewrites a pinned file when its live sha differs from the p
 - Full suite: 91 passed, 0 failed (72 at 16de882 plus 19 new). Tree in the Bridge sandbox at /tmp/qul5nf-rb2 (sandbox /tmp can be wiped; the diff here is the durable copy).
 - All 17 site keys are covered (HOLD off), except Page One's root (its publisher owns it) and files pinned in clientAssets.
 - AutoSEO article runs that publish through the Bridge get sitemap + llms + IndexNow from this step once it is saved.
+
+## SAVED 15 Nov 2026 ~10:20am SGT (Edwin 9:53am: "Site map and LLM: yes, update everyone to the latest" / "You have the call")
+- Bridge git b57e3cd, checkpoint 6af911261c0930e0447a859f (on 16de882). Diff as saved: SAVED-b57e3cd.diff (md5 90d008ef4418c108a77a067d93df1f43).
+- Added before saving: coverage of the 20 client folders inside the Page One docroot that are a live domain's docroot (AUTO_SITEMAP_CLIENT_FOLDERS in liveGuard.ts, from the cPanel addon domain list): aivs, autotex, battery-rescue, benjamin-poon, contiexpert, cska-auto, dmts, dongfeng-jb, ecu-clinic, ev-body-parts, jb-staycation, klar-details, maison-interior-design, nanyang-carpentry, new-zen-werkz, rc-design-build (commercialfitout.sg), sgcarworkshop, star-performance, wrapstar, xado. Hidden previews are never touched or pinged.
+- Tests on the saved code: 92 passed, 0 failed. The walk-in thread saved c0a007c on top right after (GUARD_OVERRIDES only); 92/0 on that too.
+- MCP tool calls run the PUBLISHED Bridge, so the step starts working after Edwin Publishes (the latest checkpoint includes it).
