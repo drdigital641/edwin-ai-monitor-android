@@ -46,7 +46,7 @@ p{margin:0 0 1em;text-wrap:pretty}
 .hd{position:sticky;top:0;z-index:40;background:var(--paper);border-bottom:1px solid var(--line)}
 .hd-in{display:flex;align-items:center;gap:12px;min-height:64px}
 .hd-logo{display:flex;align-items:center;gap:10px;text-decoration:none;color:var(--night);margin-right:auto;min-height:44px}
-.hd-logo img{height:30px;width:auto;max-width:150px}
+.hd-logo img{height:40px;width:auto}
 .hd-logo .wm{font:800 1.35rem/1 var(--display);font-stretch:85%;letter-spacing:.02em}
 .hd-logo .sg{font:600 .8rem/1 var(--body);color:var(--ink-2);border-left:1px solid var(--line);padding-left:10px}
 .hd-nav{display:none}
@@ -155,7 +155,11 @@ p{margin:0 0 1em;text-wrap:pretty}
 
 /* image frame with graceful fallback */
 .frame{position:relative;background:linear-gradient(160deg,#FFFFFF 0%,#EAF1FB 100%);display:grid;place-items:center;overflow:hidden}
-.frame img{width:88%;height:88%;object-fit:contain;position:relative;z-index:1}
+.frame img{width:100%;height:100%;object-fit:contain;position:relative;z-index:1}
+.band-img{border-radius:var(--r-l);border:1px solid var(--line)}
+.shot{margin:0 auto;width:min(64vw,300px)}
+.shot .frame{border-radius:26px;background:#06142F;box-shadow:0 30px 60px -24px rgba(0,0,0,.6)}
+.store img{width:28px;height:28px;border-radius:7px}
 .frame .fb{position:absolute;inset:0;display:grid;place-items:center;font:800 1.6rem/1 var(--display);font-stretch:78%;color:rgba(11,35,80,.18);text-align:center;padding:12px}
 .frame-photo img{width:100%;height:100%;object-fit:cover}
 
@@ -306,7 +310,7 @@ p{margin:0 0 1em;text-wrap:pretty}
 .ft-grid{display:grid;gap:30px}
 .ft-brand .wm{font:800 1.8rem/1 var(--display);font-stretch:85%;color:#fff;letter-spacing:.02em}
 .ft-logo{display:inline-block;background:#fff;border-radius:12px;padding:8px 12px}
-.ft-logo img{height:28px;width:auto}
+.ft-logo img{height:44px;width:auto}
 .ft h2{font:700 1rem/1.2 var(--body);color:#fff;margin:0 0 10px;letter-spacing:0}
 .ft ul{list-style:none;margin:0;padding:0}
 .ft li a{display:inline-flex;min-height:40px;align-items:center}

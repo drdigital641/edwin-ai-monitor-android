@@ -10,7 +10,7 @@ Facts live in data/models.py and FACTS below. Never add a claim that is not ther
 """
 import hashlib, html, json, os, shutil, sys, urllib.parse, datetime
 sys.path.insert(0, os.path.join(os.path.dirname(__file__), "data"))
-from models import MODELS, MEDIA, APP_IOS, APP_ANDROID  # noqa: E402
+from models import MODELS, MEDIA, DIMS, APP_IOS, APP_ANDROID  # noqa: E402
 
 ROOT = os.path.dirname(os.path.abspath(__file__))
 OUT = os.path.join(ROOT, "site")
@@ -80,11 +80,16 @@ def btn_wa(label, cta, href=WA_GENERAL, cls="", anchor=False):
             % (cls, e(href), cta, ' data-sticky-anchor' if anchor else "", ico("wa"), e(label)))
 
 
-def frame(src, alt, fb, cls="", eager=False, sizes="(min-width: 900px) 40vw, 90vw"):
+IMG = "assets/img/carku/"
+
+
+def frame(r, name, alt, fb, key="product", cls="", eager=False):
+    """Official Carku image in a frame at its true aspect ratio, object-fit: contain (never cover)."""
+    w, h = DIMS[key]
     load = 'loading="eager" fetchpriority="high"' if eager else 'loading="lazy"'
-    return ('<span class="frame %s"><span class="fb" aria-hidden="true">%s</span>'
-            '<img src="%s" alt="%s" %s decoding="async" referrerpolicy="no-referrer" width="800" height="800"></span>'
-            % (cls, e(fb), e(src), e(alt), load))
+    return ('<span class="frame %s" style="aspect-ratio:%d/%d"><span class="fb" aria-hidden="true">%s</span>'
+            '<img src="%s%s%s" alt="%s" %s decoding="async" width="%d" height="%d"></span>'
+            % (cls, w, h, e(fb), r, IMG, e(name), e(alt), load, w, h))
 
 
 def tbc(v, suffix=""):
@@ -131,7 +136,7 @@ def head(path, title, desc, schema, og_alt="Carku smart sodium-ion car battery, 
 <meta name="twitter:image" content="{BASE}assets/img/og-1200x630.jpg">
 <link rel="preload" href="{r}assets/fonts/archivo-var.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="stylesheet" href="{r}assets/css/site.css?v={VER['css']}">
-<link rel="icon" type="image/png" href="{r}assets/img/favicon.png">
+<link rel="icon" type="image/webp" href="{r}assets/img/carku/carku-app-icon.webp">
 <link rel="apple-touch-icon" href="{r}assets/img/apple-touch-icon.png">
 <script type="application/ld+json">{json.dumps(schema, ensure_ascii=False)}</script>
 </head>
@@ -150,7 +155,7 @@ def header(path):
         cols += '<p class="menu-h">%s</p><ul>%s</ul>' % (e(lab), "".join('<li><a href="%s%s">%s</a></li>' % (r, h, e(l)) for h, l in items))
     return f"""<header class="hd">
   <div class="wrap hd-in">
-    <a class="hd-logo" href="{r or './'}"><img src="{e(MEDIA['logo'])}" alt="Carku" width="300" height="60" referrerpolicy="no-referrer" onerror="this.outerHTML='&lt;span class=wm&gt;CARKU&lt;/span&gt;'"><span class="sg">Singapore</span></a>
+    <a class="hd-logo" href="{r or './'}"><img src="{r}{IMG}{MEDIA['logo']}" alt="Carku" width="300" height="100"><span class="sg">Singapore</span></a>
     <nav class="hd-nav" aria-label="Main">{nav}</nav>
     {btn_wa("WhatsApp", "header-whatsapp")}
     <details class="menu" data-menu>
@@ -169,7 +174,7 @@ def footer(path):
   <div class="wrap">
     <div class="ft-grid">
       <div class="ft-brand">
-        <span class="ft-logo"><img src="{e(MEDIA['logo'])}" alt="Carku" width="300" height="60" loading="lazy" referrerpolicy="no-referrer" onerror="this.outerHTML='&lt;span class=wm style=color:#0B2350&gt;CARKU&lt;/span&gt;'"></span>
+        <span class="ft-logo"><img src="{r}{IMG}{MEDIA['logo']}" alt="Carku" width="300" height="100" loading="lazy"></span>
         <p style="margin-top:14px">Smart sodium-ion car batteries with app monitoring, one-touch jump start and a 5-year warranty.</p>
         {btn_wa("WhatsApp Kohden", "footer-whatsapp")}
       </div>
@@ -258,29 +263,20 @@ def rail_items(r):
     out = []
     for m in MODELS:
         out.append('<a class="rail-item" href="%smodels/%s/">%s<span class="rail-cap"><b>%s</b><span>%s, %sAh, %sA peak</span></span></a>'
-                   % (r, m["slug"], frame(m["img"][0], "Official Carku %s sodium-ion battery product image" % m["code"], m["code"], sizes="280px"),
+                   % (r, m["slug"], frame(r, m["img"][0], "Carku %s sodium-ion 12V starting battery, official front product photo" % m["code"], m["code"]),
                       e(m["code"]), e(m["size_long"]), m["ah"], m["peak"]))
     return "".join(out)
 
 
-def phone_illustration():
-    rows = [("ring", "State of charge"), ("health", "State of health"), ("volt", "Voltage"),
-            ("thermo", "Temperature"), ("current", "Current"), ("alert", "Alerts")]
-    li = "".join('<li>%s%s</li>' % (ico(i), e(t)) for i, t in rows)
-    return f"""<figure style="margin:0">
-  <div class="phone" role="img" aria-label="Illustration of the readings shown in the Carku Battery app">
-    <div class="phone-in">
-      <div class="ph-ring"><svg viewBox="0 0 100 100" aria-hidden="true"><circle cx="50" cy="50" r="42" fill="none" stroke="rgba(255,255,255,.12)" stroke-width="7"/><circle cx="50" cy="50" r="42" fill="none" stroke="#3FD0F5" stroke-width="7" stroke-linecap="round" pathLength="100" stroke-dasharray="100" stroke-dashoffset="22" transform="rotate(-90 50 50)"/></svg><b>Battery<br>status</b></div>
-      <ul class="ph-rows">{li}</ul>
-    </div>
-  </div>
-  <figcaption class="ph-cap">Illustration of what the app shows. Not a screenshot.</figcaption>
-</figure>"""
+def phone_illustration(r):
+    return ('<figure class="shot">%s<figcaption class="ph-cap">Carku-Battery app, Activate Device screen. Official App Store screenshot.</figcaption></figure>'
+            % frame(r, MEDIA["shot_activate"], "Official Carku-Battery iOS App Store screenshot of the Activate Device screen", "Carku-Battery app", "shot_activate"))
 
 
-def stores():
-    return (f'<div class="stores"><a class="store" href="{APP_IOS}" target="_blank" rel="noopener" data-cta="app-ios">{ico("phone")}Carku Battery on the App Store</a>'
-            f'<a class="store" href="{e(APP_ANDROID)}" target="_blank" rel="noopener" data-cta="app-android">{ico("phone")}Carku Battery on Google Play</a></div>')
+def stores(r):
+    i = f'<img src="{r}{IMG}{MEDIA["icon"]}" alt="" width="512" height="512" loading="lazy">'
+    return (f'<div class="stores"><a class="store" href="{APP_IOS}" target="_blank" rel="noopener" data-cta="app-ios">{i}Carku Battery on the App Store</a>'
+            f'<a class="store" href="{e(APP_ANDROID)}" target="_blank" rel="noopener" data-cta="app-android">{i}Carku Battery on Google Play</a></div>')
 
 
 def steps():
@@ -310,7 +306,7 @@ def build_home():
           <circle class="g-track" cx="100" cy="100" r="88"/>
           <circle class="g-fill" cx="100" cy="100" r="88" pathLength="100" transform="rotate(-90 100 100)"/>
         </svg>
-        <div class="gauge-img"><img src="{e(h6['img'][0])}" alt="Official Carku CBN30-L3/H6 smart sodium-ion battery" width="800" height="800" loading="eager" fetchpriority="high" decoding="async" referrerpolicy="no-referrer" onerror="this.style.visibility='hidden'"></div>
+        <div class="gauge-img"><img src="{IMG}{h6['img'][0]}" alt="Carku CBN30-L3/H6 sodium-ion battery with the Carku-Battery app and Bluetooth marks, official product photo" width="1600" height="1310" loading="eager" fetchpriority="high" decoding="async"></div>
       </div>
       <ul class="chips" aria-label="Key facts"><li>{ico("bt")}Bluetooth app</li><li>{ico("thermo")}−40 to 80 °C</li><li>{ico("cycle")}3000 cycles</li></ul>
     </div>
@@ -346,11 +342,11 @@ def build_home():
 
 <section class="sec on-night" aria-labelledby="app-h">
   <div class="wrap app-grid">
-    {phone_illustration()}
+    {phone_illustration(r)}
     <div>
       <div class="sec-h"><h2 id="app-h">Set up in three steps</h2><p>No dongle and no workshop visit. The Bluetooth module is built into the battery.</p></div>
       {steps()}
-      {stores()}
+      {stores(r)}
     </div>
   </div>
 </section>
@@ -370,7 +366,7 @@ def build_home():
 
 <section class="sec sec-white" aria-labelledby="svc-h">
   <div class="wrap split">
-    {frame(MEDIA['car'], "Official Carku image of the passenger car starting battery application", "Carku for passenger cars", "frame-photo")}
+    {frame(r, MEDIA['workshop'], "Official Carku lifestyle photo of a CBN30-L3/H6 sodium-ion battery carried in a workshop beside a passenger car", "Carku", "workshop")}
     <div>
       <div class="sec-h"><h2 id="svc-h">Backed by Kohden in Singapore</h2></div>
       <ul class="svc">
@@ -391,6 +387,7 @@ def build_home():
 
 def build_smart_app():
     p = "smart-app/"
+    r = "../"
     trail = [("", "Home"), (p, "Smart battery app")]
     faq = [("Is the Carku Battery app free?", "Yes. It is a free download on the App Store and Google Play."),
            ("How does the app connect to the battery?", "Over Bluetooth. Turn on Bluetooth on your phone, open the app and follow its prompts to pick your battery. The app can also read the QR code on the battery to get its details."),
@@ -400,7 +397,7 @@ def build_smart_app():
     body = head(p, "Car Battery with App and Bluetooth | Carku Battery app Singapore",
                 "The Carku Battery app reads your car battery over Bluetooth: state of charge, state of health, voltage, temperature, current and alerts. Free on iOS and Android.", schema)
     body += page_head(p, trail, "A car battery with an app", "Pair your Carku battery with your phone over Bluetooth and see how it is doing, before it lets you down.")
-    body += f"""<section class="sec on-night"><div class="wrap app-grid">{phone_illustration()}<div><div class="sec-h"><h2>What the app shows</h2><p>Carku lists these readings for its passenger batteries.</p></div>
+    body += f"""<section class="sec on-night"><div class="wrap app-grid">{phone_illustration(r)}<div><div class="sec-h"><h2>What the app shows</h2><p>Carku lists these readings for its passenger batteries.</p></div>
 <ul class="svc">
 <li>{ico("ring")}<span><b>State of charge</b><span>How full the battery is right now.</span></span></li>
 <li>{ico("health")}<span><b>State of health</b><span>How the battery is ageing, with early warnings for potential issues.</span></span></li>
@@ -409,8 +406,8 @@ def build_smart_app():
 <li>{ico("current")}<span><b>Current</b><span>What is flowing in and out of the battery.</span></span></li>
 <li>{ico("alert")}<span><b>Alerts</b><span>Wireless alerts and diagnostic guidance.</span></span></li>
 </ul></div></div></section>
-<section class="sec"><div class="wrap app-grid" style="align-items:start"><div class="sec-h"><h2>Pair it in three steps</h2><p>From Carku's own setup guide.</p>{stores()}</div><div class="on-night" style="border-radius:28px;padding:18px">{steps()}</div></div></section>
-<section class="sec sec-white"><div class="wrap split split-rev">{frame(MEDIA['appguide'], "Official Carku Battery app installation guide image", "Carku Battery app")}<div class="prose"><h2 style="margin-top:0">Why it matters in Singapore</h2><p>Short trips, idling in traffic and cars parked for days drain a battery slowly. A normal battery gives no warning until the car will not start. With Carku you can open the app and see the charge and health before you set off.</p><p>And if the charge does run out, the same app has <a href="../jump-start/">one-touch jump start</a>.</p></div></div></section>
+<section class="sec"><div class="wrap app-grid" style="align-items:start"><div class="sec-h"><h2>Pair it in three steps</h2><p>From Carku's own setup guide.</p>{stores(r)}</div><div class="on-night" style="border-radius:28px;padding:18px">{steps()}</div></div></section>
+<section class="sec sec-white"><div class="wrap split split-rev">{frame("../", MEDIA['appguide'], "Official Carku-Battery app installation guide: account, sign-in, Bluetooth pairing, real-time status and settings", "Carku Battery app", "appguide")}<div class="prose"><h2 style="margin-top:0">Why it matters in Singapore</h2><p>Short trips, idling in traffic and cars parked for days drain a battery slowly. A normal battery gives no warning until the car will not start. With Carku you can open the app and see the charge and health before you set off.</p><p>And if the charge does run out, the same app has <a href="../jump-start/">one-touch jump start</a>.</p></div></div></section>
 <section class="sec"><div class="wrap"><h2 class="faq-group" style="margin-top:0">App questions</h2>{faq_html(faq)}</div></section>
 {cta_band(p, "Want a battery that talks to your phone?")}"""
     body += footer(p)
@@ -419,6 +416,7 @@ def build_smart_app():
 
 def build_jump():
     p = "jump-start/"
+    r = "../"
     trail = [("", "Home"), (p, "One-touch jump start")]
     faq = [("Can a Carku battery start the car when it is flat?", "Yes. Kohden confirms that through the Carku app the battery can start the car even when it has gone flat. Carku calls this one-touch jump start."),
            ("Do I still need jumper cables or a power bank?", "The one-touch jump start is built to rescue you without a second car. Kohden can explain how it works on your model."),
@@ -427,7 +425,7 @@ def build_jump():
     body = head(p, "Jump-Start Battery Singapore | Carku one-touch jump start",
                 "Carku smart car battery with one-touch jump start in the app, even when the battery is flat. Sold and supported in Singapore by Kohden. WhatsApp to ask.", schema)
     body += page_head(p, trail, "One-touch jump start, even when the battery is flat", "Battery gone flat in the car park? Open the Carku app and use one-touch jump start. No cables, no second car.")
-    body += f"""<section class="sec"><div class="wrap split">{frame(MEDIA['bt'], "Official Carku image of the Bluetooth smart starting battery", "Carku smart battery")}<div class="prose">
+    body += f"""<section class="sec"><div class="wrap split">{frame("../", MODELS[3]['img'][1], "Carku CBN30-L3H sodium-ion starting battery in an official lifestyle scene with a passenger car", "Carku smart battery")}<div class="prose">
 <h2 style="margin-top:0">A battery that rescues itself</h2>
 <p>Carku lists one-touch jump start capability on its smart starting batteries. Kohden confirms what that means for drivers here: through the app, the battery can start the car even when it has gone flat.</p>
 <h3>When it helps</h3>
@@ -436,7 +434,7 @@ def build_jump():
 <ul><li>A Carku smart battery fitted in your car</li><li>The free Carku Battery app, paired over Bluetooth</li></ul>
 <p class="fine">Exact steps and limits depend on the model. Kohden can walk you through it.</p>
 </div></div></section>
-<section class="sec on-night"><div class="wrap"><div class="sec-h"><h2>It starts with the app</h2><p>Pair once and the same app shows charge, health and alerts, so a flat battery is less of a surprise.</p></div>{steps()}{stores()}</div></section>
+<section class="sec on-night"><div class="wrap"><div class="sec-h"><h2>It starts with the app</h2><p>Pair once and the same app shows charge, health and alerts, so a flat battery is less of a surprise.</p></div>{steps()}{stores(r)}</div></section>
 <section class="sec"><div class="wrap"><h2 class="faq-group" style="margin-top:0">Jump-start questions</h2>{faq_html(faq)}</div></section>
 {cta_band(p, "Never wait for a jump again", "Tell Kohden your car model and they will match the right Carku battery.")}"""
     body += footer(p)
@@ -457,11 +455,12 @@ def build_why():
             ("Monitoring", "Bluetooth app: charge, health, alerts", "None"),
             ("Flat-battery rescue", "One-touch jump start in the app", "Needs cables or a second car")]
     tr = "".join('<tr><th scope="row">%s</th><td>%s</td><td style="font-weight:500;color:var(--ink-2)">%s</td></tr>' % tuple(map(e, r_)) for r_ in rows)
-    body += f"""<section class="sec"><div class="wrap">
-<div style="overflow-x:auto"><table class="spec" style="min-width:560px"><caption>Carku sodium-ion vs a typical lead-acid battery</caption><thead><tr><th scope="col">What matters</th><th scope="col" style="color:var(--night)">Carku sodium-ion</th><th scope="col">Typical lead-acid</th></tr></thead><tbody>{tr}</tbody></table></div>
+    hg = frame("../", MEDIA["hero_graphic"], "Official Carku photo of CBN30-L3H and CBN30-L3 sodium-ion starting batteries on a highway with passenger cars, headline The Next-Gen Lead-Acid Replacement", "Carku", "hero_graphic", cls="band-img")
+    body += f"""<section class="sec"><div class="wrap">{hg}
+<div style="overflow-x:auto;margin-top:26px"><table class="spec" style="min-width:560px"><caption>Carku sodium-ion vs a typical lead-acid battery</caption><thead><tr><th scope="col">What matters</th><th scope="col" style="color:var(--night)">Carku sodium-ion</th><th scope="col">Typical lead-acid</th></tr></thead><tbody>{tr}</tbody></table></div>
 <p class="fine" style="margin-top:10px">Carku figures from carkubattery.com product pages. Lead-acid column is a general description, not a specific product.</p>
 </div></section>
-<section class="sec sec-white"><div class="wrap split">{frame(MEDIA['cold'], "Official Carku image of a car in cold weather", "Carku in extreme cold")}<div class="prose">
+<section class="sec sec-white"><div class="wrap split">{frame("../", MEDIA['features'], "Official Carku graphic of sodium-ion starting batteries with feature icons and passenger-car scenes", "Carku sodium-ion", "features")}<div class="prose">
 <h2 style="margin-top:0">Built for heat as well as cold</h2>
 <p>Carku rates its sodium-ion starting batteries from −40 °C to 80 °C. In Singapore the challenge is heat: a car parked in the sun all day. Carku says its sodium-ion chemistry stays stable across that range, and lists self-heating on most models.</p>
 <h2>Light and sealed</h2>
@@ -477,7 +476,7 @@ def build_why():
 
 def model_card(m, r):
     return ('<a class="mcard" href="%smodels/%s/">%s<span><b>%s</b><span class="m-size">%s</span><span class="m-k">%sAh, %sA peak, %s</span></span></a>'
-            % (r, m["slug"], frame(m["img"][0], "Official Carku %s product image" % m["code"], m["code"], sizes="200px"),
+            % (r, m["slug"], frame(r, m["img"][0], "Carku %s sodium-ion starting battery, official front product photo" % m["code"], m["code"]),
                e(m["code"]), e(m["size_long"]), m["ah"], m["peak"], e(m["volt"])))
 
 
@@ -492,7 +491,8 @@ def build_models():
     cards = "".join(model_card(m, "../") for m in MODELS)
     rows = "".join('<tr><th scope="row"><a href="%s/">%s</a></th><td>%s</td><td>%sAh</td><td>%sA</td><td>%s</td></tr>'
                    % (m["slug"], e(m["code"]), e(m["size"]), m["ah"], m["peak"], tbc(m["wh"], " Wh")) for m in MODELS)
-    body += f"""<section class="sec"><div class="wrap"><div class="mgrid">{cards}</div></div></section>
+    lineup = frame("../", MEDIA["lineup"], "Official Carku sodium-ion starting battery lineup with four passenger-car batteries and the Carku-Battery app on a phone", "Carku lineup", "lineup", cls="band-img")
+    body += f"""<section class="sec"><div class="wrap">{lineup}<div class="mgrid" style="margin-top:22px">{cards}</div></div></section>
 <section class="sec sec-white"><div class="wrap"><div style="overflow-x:auto"><table class="spec" style="min-width:560px"><caption>Compare at a glance</caption><thead><tr><th scope="col">Model</th><th scope="col">Size</th><th scope="col">Capacity</th><th scope="col">Peak current</th><th scope="col">Energy</th></tr></thead><tbody>{rows}</tbody></table></div>
 <p class="fine" style="margin-top:10px">All models: 3000 cycles, −40 °C to 80 °C, Bluetooth app, 5-year warranty. Carku publishes peak current, not CCA.</p></div></section>
 {cta_band(p)}"""
@@ -512,7 +512,7 @@ def build_model(m):
     if m["kg"]:
         props.append(("Weight", m["kg"]))
     prod = {"@type": "Product", "@id": BASE + p + "#product", "name": "Carku %s sodium-ion car starting battery" % m["code"],
-            "model": m["code"], "sku": m["code"], "brand": {"@id": BASE + "#brand"}, "image": m["img"],
+            "model": m["code"], "sku": m["code"], "brand": {"@id": BASE + "#brand"}, "image": [BASE + IMG + f for f in m["img"]],
             "description": "12V smart sodium-ion starting battery for passenger cars, %s. %sAh, %sA peak current, Bluetooth app monitoring, 5-year warranty in Singapore through Kohden." % (m["size_long"], m["ah"], m["peak"]),
             "category": "Car starting battery",
             "additionalProperty": [{"@type": "PropertyValue", "name": k, "value": v} for k, v in props]}
@@ -530,10 +530,14 @@ def build_model(m):
             ("Terminal layout", "<span class=\"tbc\">To be confirmed</span>"), ("Warranty", "5 years, terms by Kohden"),
             ("Availability", "In stock at Kohden, Singapore")]
     tr = "".join('<tr><th scope="row">%s</th><td>%s</td></tr>' % (e(k), v) for k, v in spec)
+    views = {"angle": "three-quarter product photo", "angle-right": "three-quarter product photo from the right", "angle-high": "three-quarter product photo from above",
+             "back": "back and label photo", "top": "top view showing the terminals", "scene": "official lifestyle scene with a passenger car",
+             "certificates": "photographed with certificate documents, official gallery image"}
+    gallery = "".join(frame("../../", f, "Carku %s sodium-ion starting battery, %s" % (m["code"], views[f.split("-", 3)[3][:-5]] if f.split("-", 3)[3][:-5] in views else "official product photo"), m["code"]) for f in m["img"][1:])
     off = "".join('<li>%s<span>%s</span></li>' % (ico("check"), e(x)) for x in m["official"])
     others = "".join(model_card(o, "../../") for o in MODELS if o is not m and o["size"] in (m["size"],)) or ""
     body += f"""<section class="sec"><div class="wrap mp">
-  <div class="mp-media">{frame(m['img'][0], "Official Carku %s product image" % m['code'], m['code'], eager=True)}<div class="mp-thumbs">{frame(m['img'][1], "Official Carku %s product image, second view" % m['code'], m['code'])}{frame(MEDIA['bt'], "Official Carku Bluetooth smart battery image", "Bluetooth")}</div></div>
+  <div class="mp-media">{frame("../../", m['img'][0], "Carku %s sodium-ion 12V starting battery, official front product photo" % m['code'], m['code'], eager=True)}<div class="mp-thumbs">{gallery}</div></div>
   <div>
     <table class="spec"><caption>Specifications</caption><tbody>{tr}</tbody></table>
     <p class="fine" style="margin-top:10px">Source: <a href="{e(m['src'])}" target="_blank" rel="noopener">Carku product page</a>. Carku publishes peak current, not CCA.</p>
@@ -567,7 +571,7 @@ def build_fitment():
     for s in sizes:
         ms = [m for m in MODELS if m["size"] == s]
         rows = "".join('<div class="fit-row">%s<div><b><a href="../models/%s/">%s</a></b><br><span class="fine">%sAh, %sA peak. Size: %s. Weight: %s.</span></div></div>'
-                       % (frame(m["img"][0], "Official Carku %s product image" % m["code"], m["code"], sizes="80px"), m["slug"], e(m["code"]), m["ah"], m["peak"],
+                       % (frame("../", m["img"][0], "Carku %s, official product photo" % m["code"], m["code"]), m["slug"], e(m["code"]), m["ah"], m["peak"],
                           tbc(m["dims"]) + (" (to be confirmed)" if m["dims_tbc"] else ""), tbc(m["kg"])) for m in ms)
         lab = ms[0]["size_long"].replace(" case", " size")
         blocks += '<section class="fit" id="size-%s" aria-labelledby="h-%s"><h2 id="h-%s">%s <small>%s</small></h2>%s</section>' % (s.lower(), s.lower(), s.lower(), s, e(lab), rows)
@@ -605,7 +609,7 @@ def build_workshops():
     body = head(p, "Stock and Fit Carku Smart Batteries | Workshops Singapore",
                 "Workshops in Singapore: stock and fit Carku smart sodium-ion batteries through Kohden. Seven passenger sizes, app monitoring, 5-year warranty and 1-to-1 replacement.", schema)
     body += page_head(p, trail, "Stock and fit Carku in your workshop", "A battery your customers can see working on their phone. Supplied and supported by Kohden.", "Workshop enquiry on WhatsApp", WA_WORKSHOP, "workshop-whatsapp")
-    body += f"""<section class="sec"><div class="wrap split">{frame(MEDIA['factory'], "Official Carku manufacturing image", "Carku manufacturing", "frame-photo")}<div>
+    body += f"""<section class="sec"><div class="wrap split">{frame("../", MEDIA['factory'], "Official Carku factory exterior with the CARKU wordmark on the building", "Carku", "factory")}<div>
 <div class="sec-h"><h2>Why workshops add Carku</h2></div>
 <ul class="svc">
 <li>{ico("bt")}<span><b>Something to show the customer</b><span>Pair the battery with their phone at handover and they see it working.</span></span></li>
@@ -688,7 +692,7 @@ def build_privacy():
     body += page_head(p, trail, "Privacy", "Short and plain.")
     body += """<section class="sec"><div class="wrap prose">
 <p>This site has no forms and does not ask you for personal data. When you tap a WhatsApp or call button, you contact KohDen International Pte Ltd directly through WhatsApp or your phone, and their terms apply to that conversation.</p>
-<p>Product images on this site are loaded from Carku's official website. Your browser contacts that site to show them.</p>
+<p>Product photos and app screenshots are Carku's official images, used with the permission of Carku's authorised Singapore dealer.</p>
 <p>We count taps on buttons without storing who you are. Kohden handles any personal data you send them under Singapore's Personal Data Protection Act (PDPA).</p>
 <p>Questions: WhatsApp +65 8603 0355 or call +65 6966 6565.</p>
 </div></section>"""
