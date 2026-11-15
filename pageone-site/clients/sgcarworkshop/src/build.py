@@ -174,10 +174,20 @@ MARK_SVG = ('<svg width="36" height="36" viewBox="0 0 48 48" aria-hidden="true">
             '<path fill="#d4a64a" fill-rule="evenodd" d="%s"/></svg>' % MARK_PATH)
 LOGO = MARK_SVG
 
+_PIN_OTHERS = ('883aa583279b', '6a988b93')   # (sha1[:12] of dir.css+livephone.js+ask.js as live, token live pages carry)
 _h = hashlib.sha1()
 for _f in ('dir.css', 'dir.js', 'livephone.js', 'ask.js'):
     _h.update(open(os.path.join(HERE, _f), 'rb').read())
 V = _h.hexdigest()[:8]
+# Cache-bust tokens (16 Nov 2026): live dir.js was edited on 15 Nov (carousel resume 2s -> 1.5s) and its pages were bumped to
+# ?v=<first 8 of dir.js sha256>. dir.js gets its own token; every other asset keeps the token live pages already carry while
+# dir.css, livephone.js and ask.js are unchanged, so a rebuild does not touch every page just to change a ?v= string.
+V_DIR = hashlib.sha256(open(os.path.join(HERE, 'dir.js'), 'rb').read()).hexdigest()[:8]
+_h3 = hashlib.sha1()
+for _f in ('dir.css', 'livephone.js', 'ask.js'):
+    _h3.update(open(os.path.join(HERE, _f), 'rb').read())
+if _h3.hexdigest()[:12] == _PIN_OTHERS[0]:
+    V = _PIN_OTHERS[1]
 
 HOME_MORE = []   # homepage cards past the first HOME_N per group: written to assets/cards.json (page-size fix, Edwin 6 Nov 2026)
 
@@ -373,7 +383,7 @@ def page(path, title, desc, body, schema=None, og=None, bar=None, h1=None, extra
 </main>
 {footer(depth)}
 {bar or ''}
-<script src="{p}assets/dir.js?v={V}" defer></script>
+<script src="{p}assets/dir.js?v={V_DIR}" defer></script>
 {('<script src="%sassets/ask.js?v=%s" defer></script>' % (p, V)) if path == '' else ''}
 {('<script src="%sassets/livephone.js?v=%s" defer></script>' % (p, V)) if extra_js else ''}
 </body>
