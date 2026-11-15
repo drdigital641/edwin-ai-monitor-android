@@ -1,0 +1,28 @@
+/* Urban Eco articles: linked only on article pages, on top of style.css (same tokens). */
+.art-hero .wrap{position:relative;z-index:1}
+.art-hero h1{font-size:clamp(2rem,8.4vw,3.4rem);line-height:1.08;max-width:22ch;text-wrap:balance}
+html[lang^="zh"] .art-hero h1{font-family:var(--f-body);font-weight:700;font-size:clamp(1.7rem,7vw,2.8rem);line-height:1.25}
+.art-hero .art-k{font:700 .74rem/1 var(--f-body);letter-spacing:.14em;text-transform:uppercase;color:var(--clay);margin:0 0 10px}
+.art-hero .art-lang{font-size:.88rem;margin:0 0 12px;color:var(--muted)}
+.art-lang a{color:var(--leaf);font-weight:600;text-underline-offset:3px;display:inline-block;padding:10px 4px;margin:-10px 0}
+.art-meta{font-size:.88rem!important;margin:0 0 10px}
+.art-body .wrap{max-width:740px}
+.art-body p,.art-body li{font-size:1.04rem;line-height:1.7}
+.art-body h2{font-size:clamp(1.45rem,5.6vw,1.9rem);line-height:1.2;margin:1.5em 0 .5em}
+.art-body h3{font-size:1.2rem;margin:1.3em 0 .4em}
+.art-body[lang] h2,.art-body [lang] h2,.art-body .wrap[lang] h2,.art-body .wrap[lang] h3{font-family:var(--f-body);font-weight:700}
+.art-body ul,.art-body ol{padding-left:1.2em;margin:0 0 1em}
+.art-body a{color:var(--leaf);font-weight:600;text-underline-offset:3px}
+.art-body blockquote{margin:0 0 1em;padding:6px 0 6px 14px;border-left:3px solid var(--sprout);color:var(--muted)}
+.art-body img{width:100%;height:auto;border-radius:var(--r-m);margin:8px 0 16px}
+.art-body pre{overflow-x:auto;padding:12px 14px;background:var(--mist);border-radius:12px;font-size:.88rem}
+.art-index{list-style:none;margin:0;padding:0;display:grid;gap:14px}
+.art-index a{display:grid;gap:6px;padding:20px 18px;background:#fff;border:1px solid var(--line);border-radius:var(--r-l);text-decoration:none;color:inherit;box-shadow:var(--shadow)}
+.art-index time{font:700 .72rem/1 var(--f-body);letter-spacing:.12em;text-transform:uppercase;color:var(--clay)}
+.art-index strong{font:400 1.5rem/1.15 var(--f-head);color:var(--forest)}
+html[lang^="zh"] .art-index strong{font:700 1.2rem/1.35 var(--f-body)}
+.art-index span{color:var(--muted);font-size:.95rem}
+.art-rel-h{font-size:1.6rem;margin:0 0 12px}
+.art-rel{list-style:none;margin:0 0 16px;padding:0;display:grid;gap:8px}
+.art-rel a,.art-all{display:inline-block;padding:10px 0;color:var(--leaf);font-weight:600;text-underline-offset:3px}
+@media (min-width:768px){.art-index{grid-template-columns:1fr 1fr}}

@@ -1,0 +1,124 @@
+/* Clients page extras. Shared site.css stays untouched.
+   Live-pill (status only, no date) and card-link styles for the client tiles. */
+
+.live-pill {
+  background: rgba(22, 163, 74, .1) !important;
+  color: #15803d !important;
+}
+.live-dot {
+  display: inline-block;
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: #16a34a;
+  margin-right: 6px;
+  vertical-align: 1px;
+  animation: livep 2s ease-in-out infinite;
+}
+@keyframes livep {
+  50% { box-shadow: 0 0 0 5px rgba(22, 163, 74, 0); }
+  0%, 100% { box-shadow: 0 0 0 0 rgba(22, 163, 74, .45); }
+}
+.site-card h3 a { color: inherit; text-decoration: none; }
+.site-card h3 a:hover { text-decoration: underline; }
+.site-cards .site-card p { overflow-wrap: anywhere; }
+.site-card .card-link { margin-top: 10px; }
+.clients-count {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: 12px;
+  margin: 0 0 28px;
+  max-width: 320px;
+}
+.clients-count .kpi { padding: 16px; }
+.clients-count .label { overflow-wrap: anywhere; font-size: .82rem; color: var(--muted); margin: 0 0 4px; }
+.clients-count .value { font-family: var(--display); font-weight: 800; font-size: 2rem; color: var(--ink); line-height: 1; }
+.section.dark .clients-count .value { color: #fff; }
+.section.dark .clients-count .label { color: var(--muted-dark); }
+
+/* 7 nav items (Clients added): tighten mid-width so the bar does not overflow. */
+@media (min-width: 821px) and (max-width: 1180px) {
+  .nav { gap: 16px; }
+  .nav a { font-size: .86rem; white-space: nowrap; }
+}
+@media (min-width: 821px) and (max-width: 1040px) {
+  .header-inner { gap: 12px; }
+  .nav { gap: 10px; }
+  .nav a { font-size: .8rem; }
+  .logo { font-size: .95rem; gap: 8px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .live-dot { animation: none; }
+}
+
+/* Industry grouping (counts, no launch dates). Keep AutoSEO look. */
+.clients-count.two-kpis {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  max-width: 420px;
+  gap: 12px;
+}
+.industry-nav {
+  display: flex;
+  gap: 8px;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  overscroll-behavior-x: contain;
+  padding: 4px 0 16px;
+  margin: 0 0 8px;
+  scrollbar-width: thin;
+}
+.industry-nav a {
+  flex: 0 0 auto;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  text-decoration: none;
+  color: inherit;
+  font-weight: 700;
+  font-size: .82rem;
+  line-height: 1.2;
+  padding: 8px 12px;
+  border-radius: 999px;
+  border: 1px solid var(--line-dark, rgba(255,255,255,.14));
+  background: rgba(255,255,255,.04);
+  white-space: nowrap;
+  max-width: 100%;
+}
+.industry-nav a:hover { background: rgba(255,255,255,.1); }
+.industry-nav .chip-count {
+  display: inline-block;
+  min-width: 1.25em;
+  padding: 0 6px;
+  border-radius: 999px;
+  background: rgba(255, 61, 87, .16);
+  color: #ff8a9a;
+  font-size: .75rem;
+  font-weight: 800;
+  text-align: center;
+}
+.industry-block { scroll-margin-top: 96px; margin: 0 0 36px; }
+.industry-block:last-child { margin-bottom: 0; }
+.industry-head {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 12px;
+  flex-wrap: wrap;
+  margin: 0 0 16px;
+}
+.industry-head h2 {
+  margin: 0;
+  font-size: clamp(1.25rem, 3vw, 1.6rem);
+}
+.industry-head .count-badge {
+  flex: none;
+  font-weight: 700;
+  font-size: .82rem;
+  color: var(--muted);
+  white-space: nowrap;
+}
+@media (max-width: 860px) {
+  .industry-block .cards.two,
+  .industry-block .cards.three { grid-template-columns: 1fr; }
+}

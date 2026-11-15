@@ -1,0 +1,30 @@
+/* AP Car articles: linked only on /articles/ pages, on top of site.css. Same Cold Read tokens. */
+.art-hero .sh-copy{padding-top:18px;padding-bottom:28px}
+.art-hero h1{text-transform:none;font-size:clamp(28px,8.2vw,52px);line-height:1.08;max-width:22ch;text-wrap:balance}
+html[lang="zh-Hans"] .art-hero h1{font-size:clamp(26px,7.4vw,44px);line-height:1.2}
+.art-meta{margin:0 0 18px;color:#c9c6ea;font-size:13.5px}
+.art-body{background:var(--paper);padding:28px 0 48px}
+.art-body .wrap{max-width:720px}
+.art-body p{font-size:16.5px;line-height:1.65;margin:0 0 14px;max-width:65ch}
+.art-body h2{text-transform:none;font-size:clamp(22px,6vw,32px);line-height:1.15;margin:28px 0 12px}
+.art-body h3{text-transform:none;font-size:20px;line-height:1.2;margin:22px 0 10px}
+html[lang="zh-Hans"] .art-body h2,html[lang="zh-Hans"] .art-body h3{font-family:var(--fd),var(--cjk)}
+.art-body ul,.art-body ol{margin:0 0 16px;padding:0 0 0 1.2em;max-width:65ch}
+.art-body li{margin:0 0 6px;font-size:16.5px;line-height:1.55}
+.art-body a{color:var(--ice-d);font-weight:600;text-decoration:underline;text-decoration-color:var(--amber);text-underline-offset:3px}
+.art-body blockquote{margin:0 0 16px;padding:8px 0 8px 14px;border-left:3px solid var(--amber);color:var(--muted);max-width:65ch}
+.art-body img{width:auto;max-width:100%;height:auto;max-height:min(70vh,560px);object-fit:contain;object-position:center;display:block;margin:8px auto 16px;border:2px solid var(--ink);background:var(--frost-2)}
+.art-body pre{overflow-x:auto;padding:12px 14px;background:var(--frost-2);border:2px solid var(--ink);font-size:14px;margin:0 0 16px;max-width:100%}
+.art-body code{font-size:.92em}
+.art-rel-h{font-size:clamp(22px,6vw,36px);text-transform:none;margin-top:8px}
+.art-index{list-style:none;margin:0;padding:0;display:grid;gap:12px}
+.art-index a{display:grid;gap:6px;padding:18px 16px;border:2px solid var(--ink);background:var(--paper);box-shadow:var(--sh);text-decoration:none}
+.art-index time{font:700 12px/1 var(--fb);letter-spacing:.12em;text-transform:uppercase;color:var(--ice-d)}
+.art-index strong{font:900 26px/1.1 var(--fd);text-transform:none}
+html[lang="zh-Hans"] .art-index strong{font-family:var(--fd),var(--cjk);font-size:22px;line-height:1.25}
+.art-index span{color:var(--muted);font-size:15px}
+@media (min-width:720px){
+  .art-hero .sh-copy{padding-top:28px;padding-bottom:40px}
+  .art-body{padding:40px 0 64px}
+  .art-index a{padding:22px}
+}

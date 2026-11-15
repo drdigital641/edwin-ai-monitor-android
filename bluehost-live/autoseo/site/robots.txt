@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://autoseo.my/sitemap.xml
