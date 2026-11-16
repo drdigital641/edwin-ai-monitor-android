@@ -1,518 +1,200 @@
 {
- "about/index.html": {
-  "status": 200,
-  "final": "https://pageonesingapore.com/about/",
-  "sha256": "cc306e4d3e6136d045c1f30a70f0be50858b4ed7728a66c5814515c55ad6cee3",
-  "bytes": 20414
- },
- "affordable-seo-services-singapore/index.html": {
-  "status": 200,
-  "final": "https://pageonesingapore.com/affordable-seo-services-singapore/",
-  "sha256": "0f94777e1eaece0062fe4ef5324bb4de29d1735e46c3ec79b36a09a095f6b981",
-  "bytes": 36759
- },
- "ai-seo-vs-traditional-seo/index.html": {
-  "status": 200,
-  "final": "https://pageonesingapore.com/ai-seo-vs-traditional-seo/",
-  "sha256": "91a2780b177eff93d0a140bb44fe0f97c5929b3c912c2dc36abbf87effed3793",
-  "bytes": 38939
- },
  "articles/affordable-website-for-small-business-singapore/index.html": {
   "status": 200,
   "final": "https://pageonesingapore.com/articles/affordable-website-for-small-business-singapore/",
-  "sha256": "9e59c84c3e7ccb1a98cb9f9fd30ebc00d1312e404082fce6542136bd39b06e46",
-  "bytes": 31081
+  "sha256": "d191c4aba3ba2d70df2c12ea4cf2d8952389a3536cc8f4d503671dda2834ee27",
+  "bytes": 31105
  },
  "articles/carousell-seller-need-website-singapore/index.html": {
   "status": 200,
   "final": "https://pageonesingapore.com/articles/carousell-seller-need-website-singapore/",
-  "sha256": "625b5ca69f7c8bf7656c7731afc8218f4543ad86760a1e8859236d4e840f8512",
-  "bytes": 27645
+  "sha256": "03ad0ad0f24e3711248028e8c55810fa79c10ea542177de82f50e6a01dfd58a2",
+  "bytes": 27772
  },
  "articles/cheap-seo-singapore-for-small-business/index.html": {
   "status": 200,
   "final": "https://pageonesingapore.com/articles/cheap-seo-singapore-for-small-business/",
-  "sha256": "4ad5b32730ca75f00980878aaa29d6fd13c1a08cc2b529a9e8c15bd11fb0bc01",
-  "bytes": 32643
+  "sha256": "85241a0eb2c8df397d82bf9a95b1805e174c05802b9b8c79b00f8899b19bfce3",
+  "bytes": 32667
  },
  "articles/cheapest-seo-service-singapore-no-contract/index.html": {
   "status": 200,
   "final": "https://pageonesingapore.com/articles/cheapest-seo-service-singapore-no-contract/",
-  "sha256": "c510050354b541b7c6ee369331075a4ac687b0b5de9f71c0083c5fe91d8631d7",
-  "bytes": 35846
+  "sha256": "288fbe93c2daed5b3a7c6f4a81e2e4fc532c74b89c350a1d2dbf817cddf9f98c",
+  "bytes": 35870
  },
  "articles/do-i-need-a-website-if-i-have-a-facebook-page-singapore/index.html": {
   "status": 200,
   "final": "https://pageonesingapore.com/articles/do-i-need-a-website-if-i-have-a-facebook-page-singapore/",
-  "sha256": "f7160a5c50396c80cc974a3091762f0e06f4369aa2fe6e7e982ba8708071f434",
-  "bytes": 32230
+  "sha256": "0c5e2ca08c1c0ac5b6b14eccce8a72337db4e0265f1faaa129b96b9f724695c0",
+  "bytes": 32254
  },
  "articles/does-cheap-seo-actually-work-small-business-singapore/index.html": {
   "status": 200,
   "final": "https://pageonesingapore.com/articles/does-cheap-seo-actually-work-small-business-singapore/",
-  "sha256": "3137106e65bcf232699ed5711fa79d541e0e010caeeada4f7cb0d1c19cf765f9",
-  "bytes": 32249
+  "sha256": "a72854d90fbedfaad25470dc2b3e983f499346e08a88e0838414817a1ea5b417",
+  "bytes": 32273
  },
  "articles/does-google-business-profile-need-a-website-singapore/index.html": {
   "status": 200,
   "final": "https://pageonesingapore.com/articles/does-google-business-profile-need-a-website-singapore/",
-  "sha256": "9ad9be7f547c64a348aa79d9310d5250c01c571b0aa2abd7507d5908e64efe61",
-  "bytes": 28751
+  "sha256": "86b79c296f04329e58df7e5a780bfae68085468a872cf69a26edf5a97eb54506",
+  "bytes": 28775
  },
  "articles/first-website-checklist-newly-opened-shop-singapore/index.html": {
   "status": 200,
   "final": "https://pageonesingapore.com/articles/first-website-checklist-newly-opened-shop-singapore/",
-  "sha256": "da10b807eab54f31af7fbcd0eda7a9f567e371dad11d2991c1f82c65f4d37b5e",
-  "bytes": 31047
+  "sha256": "26348ff50ae7ca1ac43bcf87cf9ed423c55012ecaf937ede863136125479626a",
+  "bytes": 31071
  },
  "articles/get-customers-from-google-instead-of-only-social-media-singa/index.html": {
   "status": 200,
   "final": "https://pageonesingapore.com/articles/get-customers-from-google-instead-of-only-social-media-singa/",
-  "sha256": "561eabe8c6a7a3ed8b82492b3ee104044c6f9f46f08f23d4f1632b85e795b023",
-  "bytes": 31316
+  "sha256": "f389a56686f23b7b6da7b5951614be2b740504fbc32dc3ced3c5dae5bcef0af1",
+  "bytes": 31340
+ },
+ "articles/google-maps-listing-free-website-gone-singapore/index.html": {
+  "status": 200,
+  "final": "https://pageonesingapore.com/articles/google-maps-listing-free-website-gone-singapore/",
+  "sha256": "3b932228554147786e83cfa305d450f1434a43d4fd5f43ff992e88ad0ee77258",
+  "bytes": 29220
  },
  "articles/how-long-does-seo-take-new-small-business-singapore/index.html": {
   "status": 200,
   "final": "https://pageonesingapore.com/articles/how-long-does-seo-take-new-small-business-singapore/",
-  "sha256": "8fbfd0c8e90841986378cd4092eb99cd6b3fa09ee54eaa76ef0ca2a27717bcc2",
-  "bytes": 31618
+  "sha256": "79d3f23cf480b7f6125053fd5cb44ace68a8a2ae4985c1a1afa59a0868c08ea4",
+  "bytes": 31642
  },
  "articles/how-to-appear-on-google-maps-small-business-singapore/index.html": {
   "status": 200,
   "final": "https://pageonesingapore.com/articles/how-to-appear-on-google-maps-small-business-singapore/",
-  "sha256": "bf690015e891dd0265223fd94906a75a6f75cd5fffe509e76ae43851ec656059",
-  "bytes": 33353
+  "sha256": "41b1eb9d6a08531eaba084c950995a345d9ab028ec25f11b1895f423574b695c",
+  "bytes": 33377
  },
  "articles/how-to-get-my-business-recommended-by-chatgpt-singapore/index.html": {
   "status": 200,
   "final": "https://pageonesingapore.com/articles/how-to-get-my-business-recommended-by-chatgpt-singapore/",
-  "sha256": "bce8864424365f7198f3008ea37caa8521e245661772ed4564732284e0ba985d",
-  "bytes": 30871
+  "sha256": "ce0b2dd8d830cf9d3bcabe1a30cb82a6fc44618de36614d3249cff5cf6cfeaf5",
+  "bytes": 30895
  },
  "articles/how-to-get-new-business-on-google-singapore/index.html": {
   "status": 200,
   "final": "https://pageonesingapore.com/articles/how-to-get-new-business-on-google-singapore/",
-  "sha256": "a5ee4bb6adf03ff0ebef23cc55e8991c6164bf07e7df367db6d9530e0d7e56bc",
-  "bytes": 34138
+  "sha256": "78655eabfc9b3c9482feb4e74a6f1101440a9347acc5289bf81928c6d5bdfe07",
+  "bytes": 34162
  },
  "articles/how-to-judge-an-seo-proposal-singapore/index.html": {
   "status": 200,
   "final": "https://pageonesingapore.com/articles/how-to-judge-an-seo-proposal-singapore/",
-  "sha256": "1835c1d41c78604267f41752ed37cc62e2f24595d980fa6094eb8146b4d436d3",
-  "bytes": 32093
+  "sha256": "8c5a6a4c849dd55f1f7b6a0430bee2d3555df7e6b0ee0f24d077c0cbf008dbde",
+  "bytes": 32117
  },
  "articles/how-to-show-google-reviews-on-business-website-singapore/index.html": {
   "status": 200,
   "final": "https://pageonesingapore.com/articles/how-to-show-google-reviews-on-business-website-singapore/",
-  "sha256": "9bfec089c37b1cee2661d08aa60f6b5436494c08a352895a06f6377c63826767",
-  "bytes": 30376
+  "sha256": "f1f11275e83f231b86617a38ab761754993984d327a48ce293cdae24130618dd",
+  "bytes": 30408
  },
  "articles/how-to-start-a-website-new-business-singapore/index.html": {
   "status": 200,
   "final": "https://pageonesingapore.com/articles/how-to-start-a-website-new-business-singapore/",
-  "sha256": "3a01ec1c7c8fe6431d8ac6ffc7b1ac7ca14d17fc65336815d21c6a1adda8b087",
-  "bytes": 32687
- },
- "articles/lead-generation-case-study-singapore-cleanic-detailing/index.html": {
-  "status": 200,
-  "final": "https://pageonesingapore.com/articles/lead-generation-case-study-singapore-cleanic-detailing/",
-  "sha256": "feb027c2eec487ff5fb473572feb1d0562e2c2f76d338aba6ff8d3a861d0f6cc",
-  "bytes": 29828
- },
- "articles/link-in-bio-vs-website-singapore/index.html": {
-  "status": 200,
-  "final": "https://pageonesingapore.com/articles/link-in-bio-vs-website-singapore/",
-  "sha256": "4acbf7b47eda133e1ac534815fcc4012c94686ab01e7e5782b343b9820d4387c",
-  "bytes": 27596
- },
- "articles/many-google-reviews-but-no-website-singapore/index.html": {
-  "status": 200,
-  "final": "https://pageonesingapore.com/articles/many-google-reviews-but-no-website-singapore/",
-  "sha256": "13827d801742a2c84a5e347b6e73fcb544339392b259aec9ad47cc4e1583d9d7",
-  "bytes": 31205
- },
- "articles/old-website-not-working-mature-domain-seo-singapore/index.html": {
-  "status": 200,
-  "final": "https://pageonesingapore.com/articles/old-website-not-working-mature-domain-seo-singapore/",
-  "sha256": "fa7be90862a2e73cc7f28b4d397a0d971ea2272f1eae8f6a17c7bce7a7b0d0be",
-  "bytes": 28750
- },
- "articles/questions-to-ask-seo-agency-singapore/index.html": {
-  "status": 200,
-  "final": "https://pageonesingapore.com/articles/questions-to-ask-seo-agency-singapore/",
-  "sha256": "38b224769dc92d1f6f8edf771bcc9dccd8d29b3f1040b9223aff383dc7040b3a",
-  "bytes": 30272
- },
- "articles/seo-agency-vs-monthly-subscription-singapore/index.html": {
-  "status": 200,
-  "final": "https://pageonesingapore.com/articles/seo-agency-vs-monthly-subscription-singapore/",
-  "sha256": "6e831c50a72b28dca9021926a7490864e7d045fc7bd11f9852a2d144118093ec",
-  "bytes": 31762
- },
- "articles/seo-case-study-singapore-car-workshop/index.html": {
-  "status": 200,
-  "final": "https://pageonesingapore.com/articles/seo-case-study-singapore-car-workshop/",
-  "sha256": "9a7cefcbca86ff78fd6f85b5689e95407ffde4f88c09823b8dc5c099a54a7e35",
-  "bytes": 30988
- },
- "articles/website-for-carousell-seller-singapore/index.html": {
-  "status": 200,
-  "final": "https://pageonesingapore.com/articles/website-for-carousell-seller-singapore/",
-  "sha256": "0e14d3a7b4894d2236658a06464d230efc7cf7f8c63278d41f6fb31af0088fe7",
-  "bytes": 28726
- },
- "articles/website-for-home-based-business-singapore/index.html": {
-  "status": 200,
-  "final": "https://pageonesingapore.com/articles/website-for-home-based-business-singapore/",
-  "sha256": "08c157e27092e66630000e0617bfcfef68e23e86f4521f38175ecf6a94f5deb0",
-  "bytes": 30548
- },
- "articles/website-for-instagram-business-singapore/index.html": {
-  "status": 200,
-  "final": "https://pageonesingapore.com/articles/website-for-instagram-business-singapore/",
-  "sha256": "6dd872f6e952b4a7fb4f44b3efe8bff3678dc8ee0bdcb1fc59285ddb0a63b77f",
-  "bytes": 30751
- },
- "articles/website-for-new-cafe-singapore/index.html": {
-  "status": 200,
-  "final": "https://pageonesingapore.com/articles/website-for-new-cafe-singapore/",
-  "sha256": "a9f99764bd9df23d8238e40d7cf99345830b2ab58ce9e7cf32e84abd7691c7d8",
-  "bytes": 30473
- },
- "articles/website-for-tiktok-shop-seller-singapore/index.html": {
-  "status": 200,
-  "final": "https://pageonesingapore.com/articles/website-for-tiktok-shop-seller-singapore/",
-  "sha256": "0d4fbe3cdbb1e21bc77b3397039f0d0274c875fabc6595af7c6f5139a8a041a2",
-  "bytes": 29071
- },
- "articles/what-happens-instagram-business-account-banned-singapore/index.html": {
-  "status": 200,
-  "final": "https://pageonesingapore.com/articles/what-happens-instagram-business-account-banned-singapore/",
-  "sha256": "f6541cb0dfd10c54284e6bc0445c5bfcc5a441368fa020c4d21b83a57824c232",
-  "bytes": 31552
- },
- "articles/what-should-a-monthly-seo-plan-include-singapore/index.html": {
-  "status": 200,
-  "final": "https://pageonesingapore.com/articles/what-should-a-monthly-seo-plan-include-singapore/",
-  "sha256": "1ba3c88d11301a89b1d42bc36404020a51a367fd2794980e725ae766f95c0695",
-  "bytes": 32207
- },
- "articles/what-to-do-after-registering-business-singapore-get-online/index.html": {
-  "status": 200,
-  "final": "https://pageonesingapore.com/articles/what-to-do-after-registering-business-singapore-get-online/",
-  "sha256": "de6185ba2efa276f8a93d483575d5f00c71a3e9e69632d8df476d13386229ad0",
-  "bytes": 30240
+  "sha256": "0b09f80577ef6e46f9af2b19d0031ff3b386e996fcd471b33f33c533c15ce4ac",
+  "bytes": 32711
  },
  "articles/index.html": {
   "status": 200,
   "final": "https://pageonesingapore.com/articles/",
-  "sha256": "b1fbd21039360f41c1a917e9e156f1c013ac92652b7eee6dd1c251e50d187e95",
-  "bytes": 32877
+  "sha256": "9cd4594796431b69a9fbf8cc18ad3d1e2d7dac1275e9132b131a6281abb25eaa",
+  "bytes": 33660
  },
- "budget-seo-website-singapore/index.html": {
+ "articles/lead-generation-case-study-singapore-cleanic-detailing/index.html": {
   "status": 200,
-  "final": "https://pageonesingapore.com/budget-seo-website-singapore/",
-  "sha256": "f716a548af391aa26e1e89e4e0a7ec9844684e86d806c5132b9d627891ffeeb9",
-  "bytes": 35547
+  "final": "https://pageonesingapore.com/articles/lead-generation-case-study-singapore-cleanic-detailing/",
+  "sha256": "62ff72441e387996e9adc075cabf8c0467efe8b794ab8c2826b5c40afd65a6e5",
+  "bytes": 29852
  },
- "cheapest-seo-singapore/index.html": {
+ "articles/link-in-bio-vs-website-singapore/index.html": {
   "status": 200,
-  "final": "https://pageonesingapore.com/cheapest-seo-singapore/",
-  "sha256": "678982f80f51707b5cdfcd4842c747172c9007cc4192cfe676ec8ffc7756106e",
-  "bytes": 44215
+  "final": "https://pageonesingapore.com/articles/link-in-bio-vs-website-singapore/",
+  "sha256": "dfefa55c5b48eba1046be031379a81513b4e701d5259a9f8a677e70029b7eba4",
+  "bytes": 27723
  },
- "cheapest-website-singapore/index.html": {
+ "articles/many-google-reviews-but-no-website-singapore/index.html": {
   "status": 200,
-  "final": "https://pageonesingapore.com/cheapest-website-singapore/",
-  "sha256": "658deffe18eb17409d7900d83c5003b7b7106d68e7e744a713cab2bc5e17370f",
-  "bytes": 31568
+  "final": "https://pageonesingapore.com/articles/many-google-reviews-but-no-website-singapore/",
+  "sha256": "880f86b2245acd0c301635b49d1fbbe1bc3b9aebb28002b3a6d67f5064740c3d",
+  "bytes": 31229
  },
- "clients/index.html": {
+ "articles/old-website-not-working-mature-domain-seo-singapore/index.html": {
   "status": 200,
-  "final": "https://pageonesingapore.com/clients/",
-  "sha256": "90e942d0bfc7dfd931a1f645886ab176023fb2033ddde01c39be4e13a398f238",
-  "bytes": 67415
+  "final": "https://pageonesingapore.com/articles/old-website-not-working-mature-domain-seo-singapore/",
+  "sha256": "969d1cb2c728415bea4a8828c60ebee8bff4cf52d54d4d6e7b437cce1b1acf60",
+  "bytes": 28782
  },
- "contact/index.html": {
+ "articles/questions-to-ask-seo-agency-singapore/index.html": {
   "status": 200,
-  "final": "https://pageonesingapore.com/contact/",
-  "sha256": "20dee03699eabcf4663262d55688cb66515f7e5e587a2b6c36175b2aa834a32b",
-  "bytes": 16414
+  "final": "https://pageonesingapore.com/articles/questions-to-ask-seo-agency-singapore/",
+  "sha256": "8215ffc9af158f43100b9a8b1dbb7c355717caad9e6824e4d0f330a464496346",
+  "bytes": 30296
  },
- "faq/index.html": {
+ "articles/seo-agency-vs-monthly-subscription-singapore/index.html": {
   "status": 200,
-  "final": "https://pageonesingapore.com/faq/",
-  "sha256": "127b8eb2c867f59c0946aef3152203a1c12572b8a1a44a92c08e553735832530",
-  "bytes": 29545
+  "final": "https://pageonesingapore.com/articles/seo-agency-vs-monthly-subscription-singapore/",
+  "sha256": "878206ec40d436a07a90369ee8a49f58d9cb5cfbc9babe003c723c91c02fbdf4",
+  "bytes": 31786
  },
- "free-website-check/index.html": {
+ "articles/seo-case-study-singapore-car-workshop/index.html": {
   "status": 200,
-  "final": "https://pageonesingapore.com/free-website-check/",
-  "sha256": "dc56383ce4e97640edaebf2c5c38d53de15f0e775949613863d5a920755213a1",
-  "bytes": 18752
+  "final": "https://pageonesingapore.com/articles/seo-case-study-singapore-car-workshop/",
+  "sha256": "89554145e89496bbbadb70f62bcea12fb4b86cceddb22a8ab145c7375d29a91d",
+  "bytes": 31012
  },
- "get-found/index.html": {
+ "articles/website-for-carousell-seller-singapore/index.html": {
   "status": 200,
-  "final": "https://pageonesingapore.com/get-found/",
-  "sha256": "5b00dc46a1ce0c8c7476a2ce4c187cb676c3f1411fea55007d0affcd7118aa8c",
-  "bytes": 22009
+  "final": "https://pageonesingapore.com/articles/website-for-carousell-seller-singapore/",
+  "sha256": "fe5182702ba7a7ecf219aaf40c65dd03c7b0f6c93e77539645126ffb366eb7ff",
+  "bytes": 28750
  },
- "google-ads-vs-seo-vs-ai-blog-tools/index.html": {
+ "articles/website-for-home-based-business-singapore/index.html": {
   "status": 200,
-  "final": "https://pageonesingapore.com/google-ads-vs-seo-vs-ai-blog-tools/",
-  "sha256": "e13866d9a5bfed572825a3e02140e869085475b8e395b7d8a5e18ff84b05ce6f",
-  "bytes": 28644
+  "final": "https://pageonesingapore.com/articles/website-for-home-based-business-singapore/",
+  "sha256": "381d1c92cc8c7d63da63fa0abdf7d2a9c6af92ef87403e4818d61c6e56ec1e56",
+  "bytes": 30572
  },
- "how-it-works/index.html": {
+ "articles/website-for-instagram-business-singapore/index.html": {
   "status": 200,
-  "final": "https://pageonesingapore.com/how-it-works/",
-  "sha256": "822ee8a17159000127a3f7899a118c41d7a1800fcc662bfa1887685e8fd867a7",
-  "bytes": 23919
+  "final": "https://pageonesingapore.com/articles/website-for-instagram-business-singapore/",
+  "sha256": "1a20b5e48b59faf18db2b2b4e5507056469a2590ecda8b6c0ed12c175848672d",
+  "bytes": 30783
  },
- "images/articles/index.html": {
+ "articles/website-for-new-cafe-singapore/index.html": {
   "status": 200,
-  "final": "https://pageonesingapore.com/images/articles/",
-  "sha256": "62712c73dc41544eeb861cf683d86262a6980bcc4195769a49093e7578388a13",
-  "bytes": 188
+  "final": "https://pageonesingapore.com/articles/website-for-new-cafe-singapore/",
+  "sha256": "57bc09d139fea7806b5aabb29185d94fc304a843040c538e26f620440243f703",
+  "bytes": 30497
  },
- "images/clients/index.html": {
+ "articles/website-for-tiktok-shop-seller-singapore/index.html": {
   "status": 200,
-  "final": "https://pageonesingapore.com/images/clients/",
-  "sha256": "62712c73dc41544eeb861cf683d86262a6980bcc4195769a49093e7578388a13",
-  "bytes": 188
+  "final": "https://pageonesingapore.com/articles/website-for-tiktok-shop-seller-singapore/",
+  "sha256": "0b76ea4f5b17541db00d04401f7d17b48484d222f4cb304ab23faee7f79a48e7",
+  "bytes": 29103
  },
- "images/index.html": {
+ "articles/what-happens-instagram-business-account-banned-singapore/index.html": {
   "status": 200,
-  "final": "https://pageonesingapore.com/images/",
-  "sha256": "62712c73dc41544eeb861cf683d86262a6980bcc4195769a49093e7578388a13",
-  "bytes": 188
+  "final": "https://pageonesingapore.com/articles/what-happens-instagram-business-account-banned-singapore/",
+  "sha256": "ad41315c599c14a67fd3b62ddb39fd71cc044e114d23fdc24c8d1d5aace4ac2f",
+  "bytes": 31576
  },
- "industries/aircon-servicing/index.html": {
+ "articles/what-should-a-monthly-seo-plan-include-singapore/index.html": {
   "status": 200,
-  "final": "https://pageonesingapore.com/industries/aircon-servicing/",
-  "sha256": "91ac91beef1228c4319826e4e0cbdc59698fed0d8b14b8a0d2cfd64a878b8662",
-  "bytes": 21335
+  "final": "https://pageonesingapore.com/articles/what-should-a-monthly-seo-plan-include-singapore/",
+  "sha256": "62e8fbed0a9cf2ce055b072d49c3962bfb665fdf3b2d3c5eba82b6325bf9c708",
+  "bytes": 32231
  },
- "industries/beauty-salon/index.html": {
+ "articles/what-to-do-after-registering-business-singapore-get-online/index.html": {
   "status": 200,
-  "final": "https://pageonesingapore.com/industries/beauty-salon/",
-  "sha256": "50006725a775803e2952cea1c6067f740201af20858257a2b796f33cb99f202c",
-  "bytes": 20653
- },
- "industries/cafe/index.html": {
-  "status": 200,
-  "final": "https://pageonesingapore.com/industries/cafe/",
-  "sha256": "beb3bcf8229c43c821caedd612142a96f948ebd6170ac39abdd1ff06342284d7",
-  "bytes": 22613
- },
- "industries/car-detailing/index.html": {
-  "status": 200,
-  "final": "https://pageonesingapore.com/industries/car-detailing/",
-  "sha256": "f2210d53afac0356faa03988b6e7a4b999124a908aed353d48f0799d76ad5be9",
-  "bytes": 22143
- },
- "industries/car-workshop/index.html": {
-  "status": 200,
-  "final": "https://pageonesingapore.com/industries/car-workshop/",
-  "sha256": "7c4ddfbd8f53ddfa510c0134dccaf2a340cf460e345f3883b202af953c597b78",
-  "bytes": 22318
- },
- "industries/cleaning-services/index.html": {
-  "status": 200,
-  "final": "https://pageonesingapore.com/industries/cleaning-services/",
-  "sha256": "2050cb647fc81f498861ba81d6412287476bc5ed73308036eabe568b8970e1e5",
-  "bytes": 21385
- },
- "industries/fitness-studio/index.html": {
-  "status": 200,
-  "final": "https://pageonesingapore.com/industries/fitness-studio/",
-  "sha256": "bd8d21838562303f748096340905adb468a9c31cdf7997b5bef4c5898202b944",
-  "bytes": 22845
- },
- "industries/home-bakery/index.html": {
-  "status": 200,
-  "final": "https://pageonesingapore.com/industries/home-bakery/",
-  "sha256": "8cdc77bb9954f5358d82d2c4050ecb72d2206b146a40f66bbef6058a725adeb5",
-  "bytes": 23042
- },
- "industries/nail-lash-studio/index.html": {
-  "status": 200,
-  "final": "https://pageonesingapore.com/industries/nail-lash-studio/",
-  "sha256": "611f161007303ba0ffc3dabb119f87841e240ba03d1e23c20498fe17c6a93121",
-  "bytes": 22452
- },
- "industries/pest-control/index.html": {
-  "status": 200,
-  "final": "https://pageonesingapore.com/industries/pest-control/",
-  "sha256": "fafb8e64ee6c7c5a733ade7c0be968ff76fea54c110cc48fa275cb2cc15a5f40",
-  "bytes": 20612
- },
- "industries/plumber/index.html": {
-  "status": 200,
-  "final": "https://pageonesingapore.com/industries/plumber/",
-  "sha256": "ac79ad8240917a93ba951f05d8c2fc42beb3fbbeca9ca71662256f970b310608",
-  "bytes": 20611
- },
- "industries/property-agent/index.html": {
-  "status": 200,
-  "final": "https://pageonesingapore.com/industries/property-agent/",
-  "sha256": "635dea3a2ea8b4e255880c25872834532240eff80c624d7cb11e5ad9a012cd0e",
-  "bytes": 21331
- },
- "industries/renovation-contractor/index.html": {
-  "status": 200,
-  "final": "https://pageonesingapore.com/industries/renovation-contractor/",
-  "sha256": "e7928e461b4a8a5441201e2e717eaf3b55a486bb7c6c166f03fba03266915341",
-  "bytes": 21013
- },
- "industries/tuition-centre/index.html": {
-  "status": 200,
-  "final": "https://pageonesingapore.com/industries/tuition-centre/",
-  "sha256": "888b732c2d75a5c2fa731d8b55476e321d1804b07de1f98e697f01f23a6a4f54",
-  "bytes": 21030
- },
- "industries/index.html": {
-  "status": 200,
-  "final": "https://pageonesingapore.com/industries/",
-  "sha256": "46f01fbb8dc68a2a9c171a062b827b633179886b62e10d8e2158705db4406fa5",
-  "bytes": 21710
- },
- "is-page-one-singapore-legit/index.html": {
-  "status": 200,
-  "final": "https://pageonesingapore.com/is-page-one-singapore-legit/",
-  "sha256": "77ac8fe0c5f7aa52c74f4bcf5e323721faf67af2e2fcf83dfb798e6c123113b2",
-  "bytes": 35678
- },
- "landing-page/index.html": {
-  "status": 200,
-  "final": "https://pageonesingapore.com/landing-page/",
-  "sha256": "22e0b6ca28883d1c7f3dd15a98a5044c8576fe28686bed3d86082601f7956f3d",
-  "bytes": 405
- },
- "lead-generation-singapore/index.html": {
-  "status": 200,
-  "final": "https://pageonesingapore.com/lead-generation-singapore/",
-  "sha256": "0e30de69171b91505737b9cbb9b971eea638a0b5b0384b88929e67cfbe17ca54",
-  "bytes": 21243
- },
- "managed-website-singapore/index.html": {
-  "status": 200,
-  "final": "https://pageonesingapore.com/managed-website-singapore/",
-  "sha256": "3f43b16bb33f683d796de5d67203452e4f0c60735b16aa88f30a67aeed4a1e51",
-  "bytes": 43367
- },
- "new-business-website/index.html": {
-  "status": 200,
-  "final": "https://pageonesingapore.com/new-business-website/",
-  "sha256": "68e13fbee1437760e797b719967b48ba3e14092e4c9d77072b7cea0fd25f0d12",
-  "bytes": 35543
- },
- "new-website/index.html": {
-  "status": 200,
-  "final": "https://pageonesingapore.com/new-website/",
-  "sha256": "c86694c9957d7cdf5af539c28b64706a5d2ddee2347197e91c07523a93c51c8a",
-  "bytes": 399
- },
- "pricing/index.html": {
-  "status": 200,
-  "final": "https://pageonesingapore.com/pricing/",
-  "sha256": "4bf94bd6d47e7c97cefe38e46b81a95fe1701b70f2acbb9f08f58ce4d9e31093",
-  "bytes": 30853
- },
- "privacy/index.html": {
-  "status": 200,
-  "final": "https://pageonesingapore.com/privacy/",
-  "sha256": "22b562a959a497d0f4fe0a8cacf389abd23d1133cc9f4c83adf3560bd4f6146f",
-  "bytes": 15609
- },
- "results/sg-car-workshop-directory/index.html": {
-  "status": 200,
-  "final": "https://pageonesingapore.com/results/sg-car-workshop-directory/",
-  "sha256": "674bf44f23b42148ea89bf0e25a2534975e20450bf640d5d33c92cffb0d8cd3b",
-  "bytes": 21190
- },
- "results/index.html": {
-  "status": 200,
-  "final": "https://pageonesingapore.com/results/",
-  "sha256": "c40a86c314b713f71f60a10d762c7c9723a3d7afa7aef52f8d9c50411d3fba00",
-  "bytes": 33632
- },
- "seo-aeo-geo-singapore/index.html": {
-  "status": 200,
-  "final": "https://pageonesingapore.com/seo-aeo-geo-singapore/",
-  "sha256": "4b6d0da42f97c8185cf29b9d9db6a0e5ee0b632613992df081da722b0c1849e3",
-  "bytes": 22956
- },
- "seo-boost/index.html": {
-  "status": 200,
-  "final": "https://pageonesingapore.com/seo-boost/",
-  "sha256": "0793ad7e0505b4aac3a05fbc7fb904f505400e38450c8169cdb334809d4ea4ea",
-  "bytes": 21086
- },
- "seo-explained/index.html": {
-  "status": 200,
-  "final": "https://pageonesingapore.com/seo-explained/",
-  "sha256": "cc9cfe2a979bea93373c09221170f8d0171bd5fc116c6e6ee0a4b7ca0636f681",
-  "bytes": 38351
- },
- "seo-services-singapore/index.html": {
-  "status": 200,
-  "final": "https://pageonesingapore.com/seo-services-singapore/",
-  "sha256": "9d6c1d5014fb4de4412690ba0134f9546b797f895f778df3261348161c72aca3",
-  "bytes": 38823
- },
- "signup/success/index.html": {
-  "status": 200,
-  "final": "https://pageonesingapore.com/signup/success/",
-  "sha256": "dace6828242122f262280c1e824bef63aca2cbeafc9a4c23dd32d11f8aa74ebb",
-  "bytes": 9559
- },
- "signup/index.html": {
-  "status": 200,
-  "final": "https://pageonesingapore.com/signup/",
-  "sha256": "d5d189bdaf80ce854613bd394a1078bf8a8d42f5e745ed659ca8bde58f3cda57",
-  "bytes": 17038
- },
- "terms/index.html": {
-  "status": 200,
-  "final": "https://pageonesingapore.com/terms/",
-  "sha256": "e8c3919f4889707d673e4676f4768772fba345fbbcf1384762cce387c696540c",
-  "bytes": 14879
- },
- "website/index.html": {
-  "status": 200,
-  "final": "https://pageonesingapore.com/website/",
-  "sha256": "1e5f3ec02820f0061db6a01909b9dc4288f83921277c211891061b54008562ca",
-  "bytes": 43196
- },
- "404.html": {
-  "status": 200,
-  "final": "https://pageonesingapore.com/404.html",
-  "sha256": "9577d096a2e3f9b2f32f1864f8adcb7a76900984434e99496e4958fa2bd04b33",
-  "bytes": 9042
- },
- "index.html": {
-  "status": 200,
-  "final": "https://pageonesingapore.com/",
-  "sha256": "671c03b15b51ade629e017d9063f12bf3dddddebefa35ede4684cb65d04ec725",
-  "bytes": 50020
- },
- "report.html": {
-  "status": 200,
-  "final": "https://pageonesingapore.com/report.html",
-  "sha256": "adfed15b8473027c39a06e50aae1d3495645347586d03082cd34227c555c42f8",
-  "bytes": 13575
- },
- "review.html": {
-  "status": 200,
-  "final": "https://pageonesingapore.com/review.html",
-  "sha256": "36f2afbc99bc0d9379a32ab41e3f2b6cac594362e2cd974af6aadf373b08e379",
-  "bytes": 10737
- },
- "main.js": {
-  "status": 200,
-  "final": "https://pageonesingapore.com/main.js",
-  "sha256": "e02665a71080099701fd802c9b75bc9d7b0aae870a55945707e26cf5ffc835aa",
-  "bytes": 45516
+  "final": "https://pageonesingapore.com/articles/what-to-do-after-registering-business-singapore-get-online/",
+  "sha256": "1f91d27476206d10af96ef9d9b00bf3e6adf921d17224f63a853e67de29094c2",
+  "bytes": 30264
  }
 }
