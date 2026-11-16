@@ -72,23 +72,25 @@ def build(slug, d):
      (f"How much does {n} renovation cost?", "The cost depends on your unit type and scope, mainly the amount of built-in carpentry. We have not published package prices, so WhatsApp us for a quote for your unit type. We give an itemised quotation so you can see what each part costs."),
      (f"What renovation ideas suit a {q7t} at {n}?", TS[types[min(2,len(types)-1)][1]][1]),
      (f"When can I start renovating {n}?", "After you collect your keys. Report defects within 30 days, apply for the HDB renovation permit through your contractor, then start works. Noisy works are limited to Monday to Friday, 9am to 5pm."),
-    ] + d["faq_new"] + [
+    ] + d.get("faq_new", []) + [
      (f"When was {n} launched?", f"It was offered in HDB's November 2026 BTO exercise. Applications closed on 11 November 2026."),
      (f"Is the key-collection date for {n} confirmed?", "No. HDB publishes estimated waiting times and estimated completion and delivery possession dates, not individual key appointments. Use your HDB documents for your own appointment, when you have one."),
      (f"Do you have the {n} floor plan?", f"Yes. HDB's official 4-room Layout Ideas plan is shown on this page, copied as-is and credited. It is a typical type plan, not a specific stack. Please send your approved HDB unit plan."),
      ("What should I send Maison?", "Your approved floor plan, unit type if you have it, and a key date if one is already in writing. After keys, an HDB renovation permit is required before works. WhatsApp us at https://wa.me/6593391185."),
     ]
+    if "faqs" in d: faqs = d["faqs"]
+    faqs = [(q, d.get("ans", {}).get(q, a)) for q, a in faqs]
     faq_html = "".join(f'<details class="qa"><summary><h3>{E(q)}</h3><span class="pm" aria-hidden="true"></span></summary><div class="vq"><p>{E(a)}</p></div></details>' for q, a in faqs)
 
     ld_desc = desc if LD_FULL else old_desc
     ld = {"@context":"https://schema.org","@graph":[
      {"@type":"HomeAndConstructionBusiness","@id":"https://maisoninteriordesign.sg/#business","name":"Maison Interior Design","url":"https://maisoninteriordesign.sg/","telephone":"+65 9339 1185","email":"maisoninteriordesignsg@gmail.com","foundingDate":"2018","areaServed":{"@type":"Country","name":"Singapore"},"image":"https://maisoninteriordesign.sg/wp-content/uploads/Jimmy-Monkey-Completed-6.jpg","founder":{"@type":"Person","name":"Roland Ng","jobTitle":"Managing Director"},"sameAs":["https://www.instagram.com/maison_interiordesign/","https://www.facebook.com/MaisonInteriorDesignSG"]},
      {"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://maisoninteriordesign.sg/"},{"@type":"ListItem","position":2,"name":"New launches","item":"https://maisoninteriordesign.sg/new-launches/"},{"@type":"ListItem","position":3,"name":n,"item":url}]},
-     {"@type":"Article","headline":f"{n} Renovation & Interior Design","description":ld_desc,"datePublished":"2026-11-11","dateModified":"2026-11-16" if LD_FULL else "2026-11-11","author":{"@id":"https://maisoninteriordesign.sg/#business"},"publisher":{"@id":"https://maisoninteriordesign.sg/#business"},"mainEntityOfPage":url,
+     {"@type":"Article","headline":f"{n} Renovation & Interior Design","description":ld_desc,"datePublished":d.get("pub","2026-11-11"),"dateModified":"2026-11-16" if LD_FULL else "2026-11-11","author":{"@id":"https://maisoninteriordesign.sg/#business"},"publisher":{"@id":"https://maisoninteriordesign.sg/#business"},"mainEntityOfPage":url,
       "image":[f"https://maisoninteriordesign.sg/images/new-launches/{d['dir']}/{d['dir'].replace('-v4','')}-v4-{r['stem']}-1920.webp" for r in rs],
       "about":{"@type":"Place","name":n,"address":{"@type":"PostalAddress","addressLocality":town,"addressCountry":"SG"}},
-      "keywords":f"{n} renovation, {n} interior design, {n} floor plan, {town} BTO renovation, {n} built-in carpentry, {d['old_kwl']}",
-      "citation":["https://homes.hdb.gov.sg/home/bto"]},
+      "keywords":d.get("kw") or f"{n} renovation, {n} interior design, {n} floor plan, {town} BTO renovation, {n} built-in carpentry, {d['old_kwl']}",
+      "citation":d.get("cite",["https://homes.hdb.gov.sg/home/bto"])},
      {"@type":"FAQPage","mainEntity":[{"@type":"Question","name":q,"acceptedAnswer":{"@type":"Answer","text":a}} for q, a in (faqs if LD_FULL else faqs)]}]}
     ld_s = json.dumps(ld, ensure_ascii=False, separators=(",", ":"))
 
@@ -155,10 +157,12 @@ def build(slug, d):
     for s in d["near"]:
         o = NEARD[s]
         near += f'<a class="lc" href="/new-launches/{s}/" data-kind="BTO"><span class="tag">HDB BTO · {o["town"]}</span><h3>{E(o["name"])} <em>{o["town"]}</em></h3><p>November 2026 BTO launch, {o["units"]} flats.</p><span class="more">Read the guide</span></a>'
+    for s, kind, tag, nm, tw, blurb in d.get("near_cards", []):
+        near += f'<a class="lc" href="/new-launches/{s}/" data-kind="{kind}"><span class="tag">{E(tag)}</span><h3>{E(nm)} <em>{E(tw)}</em></h3><p>{E(blurb)}</p><span class="more">Read the guide</span></a>'
     src = "".join(f'<li><a href="{u}" target="_blank" rel="noopener">{E(t)}</a> (HDB, official)</li>' for t, u in d["extra_src"])
     src += '<li><a href="https://homes.hdb.gov.sg/home/bto" target="_blank" rel="noopener">HDB: BTO</a></li><li><a href="https://www.mynicehome.gov.sg/get-settled-in/hdb-renovation-guide/" target="_blank" rel="noopener">HDB renovation guide</a></li><li><a href="https://www.mynicehome.gov.sg/get-settled-in/hdb-move-in-guide/" target="_blank" rel="noopener">HDB move-in guide</a></li>'
 
-    intro_sec = f'<section class="nlp-s nv-about"><div class="wrap nlp-prose"><h2 class="nlp-h2">About {E(n)}</h2><p>{E(d["intro"])}</p><p class="nlp-small">Facts checked against HDB sources on 16 November 2026. We do not list prices. Maison is not affiliated with HDB.</p></div></section>'
+    intro_sec = f'<section class="nlp-s nv-about"><div class="wrap nlp-prose"><h2 class="nlp-h2">About {E(n)}</h2><p>{E(d["intro"])}</p><p class="nlp-small">{E(d.get("checked","Facts checked against HDB sources on 16 November 2026."))} We do not list prices. Maison is not affiliated with HDB.</p></div></section>'
 
     ask = lambda ref, label, msg: ""
     b2 = band(slug, n, "plan", f"Get a free layout plan for your {primary} at {n}", "Send your unit plan and we will mark up zoning, storage and walkways for it.", f"Get my free {primary} layout plan", f"Hi Maison, I'd like a free layout plan for my {primary} at {n}.")
@@ -171,7 +175,7 @@ def build(slug, d):
             f'{space}{b2}{concepts}{reco}{b3}{trust}{PLAN.replace("@@N@@", E(n))}{intro_sec}{arts}'
             f'<section class="nlp-s nlp-faq"><div class="wrap narrow"><h2 class="nlp-h2">{E(n)} renovation FAQ</h2>{faq_html}<div class="nx-faq-cta">{btn(slug,"faq","Ask Maison on WhatsApp",f"Hi Maison, I have a question about my {n} renovation.")}</div></div></section>'
             f'<section class="nlp-s nlp-src"><div class="wrap narrow"><h2 class="nlp-h2">Sources and links</h2><ul>{src}</ul><p class="nlp-small">Maison Interior Design is an independent interior design firm. We are not appointed by, or affiliated with, the developer, HDB or the building\'s owner. We have not worked at {E(n)}. Concept images are AI concept designs by Maison, not the actual unit.</p></div></section>'
-            f'<section class="nlp-s nlp-near"><div class="wrap"><h2 class="nlp-h2">More November 2026 BTO launches</h2><div class="lgrid nlp-near-g">{near}</div><p class="nlp-small"><a href="/new-launches/">All new launches</a></p></div></section></div>'
+            f'<section class="nlp-s nlp-near"><div class="wrap"><h2 class="nlp-h2">{E(d.get("near_h","More November 2026 BTO launches"))}</h2><div class="lgrid nlp-near-g">{near}</div><p class="nlp-small"><a href="/new-launches/">All new launches</a></p></div></section></div>'
             f'<section class="cta dark"><div class="wrap cta-in"><h2 class="display">Planning your {E(n)} renovation?<br><em>WhatsApp Maison</em></h2><p class="cta-p">WhatsApp Maison with your unit type, approved floor plan and key date (if you have one).</p><div class="btns">{btn(slug,"end","Get my free layout plan",f"Hi Maison, I'd like a free layout plan for my {primary} at {n}.","btn light nlp-wa-l")}<a class="btn ghost-l" href="/new-launches/">All new launches</a></div></div></section></main>')
     script = ('<script>(function(){var c=document.getElementById("car");if(!c)return;var s=c.children,ds=document.querySelectorAll(".nv-dot"),i=0;'
               'function go(k){i=(k+s.length)%s.length;c.scrollTo({left:s[i].offsetLeft,behavior:window.matchMedia("(prefers-reduced-motion: reduce)").matches?"auto":"smooth"})}'
