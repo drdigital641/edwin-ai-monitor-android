@@ -1,0 +1,33 @@
+{
+ "businessStatus": "OPERATIONAL",
+ "primaryType": "car_repair",
+ "types": [
+  "car_repair",
+  "service",
+  "store",
+  "point_of_interest",
+  "establishment"
+ ],
+ "rating": 4.3,
+ "userRatingCount": 55,
+ "websiteUri": "https://www.ncsmotorwerkz.com/",
+ "paymentOptions": {
+  "acceptsCreditCards": false
+ },
+ "parkingOptions": null,
+ "editorialSummary": null,
+ "weekdayDescriptions": [
+  "Monday: 9:30 AM – 6:00 PM",
+  "Tuesday: 9:30 AM – 6:00 PM",
+  "Wednesday: 9:30 AM – 6:00 PM",
+  "Thursday: 9:30 AM – 6:00 PM",
+  "Friday: 9:30 AM – 6:00 PM",
+  "Saturday: 9:30 AM – 3:00 PM",
+  "Sunday: Closed"
+ ],
+ "review_count_seen": 5,
+ "review_themes": null,
+ "fetched_at": "2026-11-16",
+ "place_id": "ChIJR_-wt2oX2jERqLXW-_V2jf8",
+ "source": "google_places"
+}

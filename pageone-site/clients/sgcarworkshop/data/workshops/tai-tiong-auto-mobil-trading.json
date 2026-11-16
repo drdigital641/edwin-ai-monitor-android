@@ -1,0 +1,44 @@
+{
+ "schema_version": 1,
+ "slug": "tai-tiong-auto-mobil-trading",
+ "place_id": "ChIJxYv0ArkP2jERG7y0DR92-dM",
+ "place_id_checked_at": "2026-11-16",
+ "name": "Tai Tiong Auto Mobil Trading 大中维修汽车贸易",
+ "name_source_url": "google_profile",
+ "name_checked_at": "2026-11-16",
+ "address": {
+  "block": "",
+  "street": "5 Soon Lee St, #06-36 Pioneer Point",
+  "unit": "",
+  "building": ""
+ },
+ "postal_code": "627607",
+ "address_source_url": "google_profile",
+ "address_checked_at": "2026-11-16",
+ "categories": [
+  "SERV"
+ ],
+ "services": [
+  "General servicing and repair"
+ ],
+ "services_source_url": "google_profile",
+ "phones": [
+  {
+   "e164": "+6597832015",
+   "kind": "mobile",
+   "whatsapp": true,
+   "source": "google_profile",
+   "checked_at": "2026-11-16"
+  }
+ ],
+ "google_screen": {
+  "passed": true,
+  "reason": "OPERATIONAL, car repair, SG mobile on Google profile",
+  "checked_at": "2026-11-16"
+ },
+ "status": "pending",
+ "tier": "basic",
+ "first_seen_at": "2026-11-16",
+ "last_verified_at": "2026-11-16",
+ "collector_version": "agent-v5"
+}

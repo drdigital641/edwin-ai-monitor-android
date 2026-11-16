@@ -1,0 +1,44 @@
+{
+ "schema_version": 1,
+ "slug": "v-tech-auto-service",
+ "place_id": "ChIJ32gfw44P2jER_cYFa7FDtFc",
+ "place_id_checked_at": "2026-11-16",
+ "name": "V-Tech Auto Service",
+ "name_source_url": "google_profile",
+ "name_checked_at": "2026-11-16",
+ "address": {
+  "block": "",
+  "street": "1 Soon Lee St, #06-04/5/6/7",
+  "unit": "",
+  "building": ""
+ },
+ "postal_code": "627605",
+ "address_source_url": "google_profile",
+ "address_checked_at": "2026-11-16",
+ "categories": [
+  "SERV"
+ ],
+ "services": [
+  "General servicing and repair"
+ ],
+ "services_source_url": "google_profile",
+ "phones": [
+  {
+   "e164": "+6590270498",
+   "kind": "mobile",
+   "whatsapp": true,
+   "source": "google_profile",
+   "checked_at": "2026-11-16"
+  }
+ ],
+ "google_screen": {
+  "passed": true,
+  "reason": "OPERATIONAL, car repair, SG mobile on Google profile",
+  "checked_at": "2026-11-16"
+ },
+ "status": "pending",
+ "tier": "basic",
+ "first_seen_at": "2026-11-16",
+ "last_verified_at": "2026-11-16",
+ "collector_version": "agent-v5"
+}
