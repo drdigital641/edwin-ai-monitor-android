@@ -1,6 +1,6 @@
-diff -ru relax-base/base44/functions/bridgeEdit/entry.ts relax/base44/functions/bridgeEdit/entry.ts
---- relax-base/base44/functions/bridgeEdit/entry.ts	2026-11-16 06:17:17.577937114 +0000
-+++ relax/base44/functions/bridgeEdit/entry.ts	2026-11-16 06:22:08.668682263 +0000
+diff -ruN rb/base44/functions/bridgeEdit/entry.ts rn/base44/functions/bridgeEdit/entry.ts
+--- rb/base44/functions/bridgeEdit/entry.ts	2026-11-16 06:31:08.539640727 +0000
++++ rn/base44/functions/bridgeEdit/entry.ts	2026-11-16 06:31:08.573708984 +0000
 @@ -7,6 +7,7 @@
  // After a saved edit, the auto-sitemap step updates the site's sitemap.xml and llms.txt and sends IndexNow.
  // Its outcome is only reported (autoSitemap); it never changes the edit.
@@ -10,9 +10,9 @@ diff -ru relax-base/base44/functions/bridgeEdit/entry.ts relax/base44/functions/
 +  const result = await editFile(body.site, body.path, body.edits, body.expected_sha256, { seoEdit: ctx.agent === 'claude' && !ctx.viaKey });
    return await attachAutoSitemap(body.site, result, [{ path: result.path }], ctx.base44); // bytes are read back from the server
  }, { logs: true });
-diff -ru relax-base/base44/functions/bridgeRestore/entry.ts relax/base44/functions/bridgeRestore/entry.ts
---- relax-base/base44/functions/bridgeRestore/entry.ts	2026-11-16 06:17:17.579804187 +0000
-+++ relax/base44/functions/bridgeRestore/entry.ts	2026-11-16 06:22:08.668803827 +0000
+diff -ruN rb/base44/functions/bridgeRestore/entry.ts rn/base44/functions/bridgeRestore/entry.ts
+--- rb/base44/functions/bridgeRestore/entry.ts	2026-11-16 06:31:08.540738717 +0000
++++ rn/base44/functions/bridgeRestore/entry.ts	2026-11-16 06:31:08.574718595 +0000
 @@ -1,4 +1,5 @@
  import { bridgeTool } from '../../shared/handler.ts';
  import { restoreBackup } from '../../shared/bridgeOps.ts';
@@ -20,9 +20,9 @@ diff -ru relax-base/base44/functions/bridgeRestore/entry.ts relax/base44/functio
 -export default bridgeTool('restore', (body) => restoreBackup(body.site, body.backup_id, body.path), { logs: true });
 +// APPROVED SEO EDIT RULE (16 Nov 2026): only Claude's signed-in session (agent claude, no API key) gets seoEdit.
 +export default bridgeTool('restore', (body, ctx) => restoreBackup(body.site, body.backup_id, body.path, { seoEdit: ctx.agent === 'claude' && !ctx.viaKey }), { logs: true });
-diff -ru relax-base/base44/functions/bridgeWrite/entry.ts relax/base44/functions/bridgeWrite/entry.ts
---- relax-base/base44/functions/bridgeWrite/entry.ts	2026-11-16 06:17:17.580477229 +0000
-+++ relax/base44/functions/bridgeWrite/entry.ts	2026-11-16 06:22:08.668495598 +0000
+diff -ruN rb/base44/functions/bridgeWrite/entry.ts rn/base44/functions/bridgeWrite/entry.ts
+--- rb/base44/functions/bridgeWrite/entry.ts	2026-11-16 06:31:08.541109689 +0000
++++ rn/base44/functions/bridgeWrite/entry.ts	2026-11-16 06:31:08.575390062 +0000
 @@ -6,6 +6,7 @@
  // It runs after the page is written and verified; its outcome is only reported (autoSitemap) and never changes the write.
  export default bridgeTool('write', async (body, ctx) => {
@@ -32,9 +32,9 @@ diff -ru relax-base/base44/functions/bridgeWrite/entry.ts relax/base44/functions
 +  const result = await writeFile(body.site, body.path, bytes, body.expected_sha256, { seoEdit: ctx.agent === 'claude' && !ctx.viaKey });
    return await attachAutoSitemap(body.site, result, [{ path: result.path, bytes }], ctx.base44);
  }, { logs: true });
-diff -ru relax-base/base44/shared/bridgeOps.ts relax/base44/shared/bridgeOps.ts
---- relax-base/base44/shared/bridgeOps.ts	2026-11-16 06:17:17.582314082 +0000
-+++ relax/base44/shared/bridgeOps.ts	2026-11-16 06:22:08.668341448 +0000
+diff -ruN rb/base44/shared/bridgeOps.ts rn/base44/shared/bridgeOps.ts
+--- rb/base44/shared/bridgeOps.ts	2026-11-16 06:31:08.541640078 +0000
++++ rn/base44/shared/bridgeOps.ts	2026-11-16 06:31:08.576132959 +0000
 @@ -350,7 +350,7 @@
  // opts.overwrite (bulk write_files only) no longer skips the base hash (SPO review 16 Nov 2026): EVERY replace of an
  // existing file needs expected_sha256 matching live, whatever the overwrite setting. Only a write whose bytes equal the
@@ -91,9 +91,9 @@ diff -ru relax-base/base44/shared/bridgeOps.ts relax/base44/shared/bridgeOps.ts
    return { ...result, restoredFrom: backupId };
  }
  
-diff -ru relax-base/base44/shared/bulkWrite.ts relax/base44/shared/bulkWrite.ts
---- relax-base/base44/shared/bulkWrite.ts	2026-11-16 06:17:17.582389951 +0000
-+++ relax/base44/shared/bulkWrite.ts	2026-11-16 06:22:08.668933848 +0000
+diff -ruN rb/base44/shared/bulkWrite.ts rn/base44/shared/bulkWrite.ts
+--- rb/base44/shared/bulkWrite.ts	2026-11-16 06:31:08.541687535 +0000
++++ rn/base44/shared/bulkWrite.ts	2026-11-16 06:31:08.576197995 +0000
 @@ -70,14 +70,18 @@
  
  export async function writeMany(body: any, ctx: ToolContext) {
@@ -133,17 +133,18 @@ diff -ru relax-base/base44/shared/bulkWrite.ts relax/base44/shared/bulkWrite.ts
        return { path: f.path, ok: true, status: r.unchanged ? 'unchanged' : r.created ? 'created' : 'updated',
          bytes: f.bytes.length, sha256: r.afterSha256 || r.sha256, verified: r.unchanged ? true : r.verified === true,
          backupId: r.backupId || null, beforeSha256: r.beforeSha256 || null, url: r.url, ms: Date.now() - t0 };
-diff -ru relax-base/base44/shared/liveGuard.ts relax/base44/shared/liveGuard.ts
---- relax-base/base44/shared/liveGuard.ts	2026-11-16 06:17:17.583656094 +0000
-+++ relax/base44/shared/liveGuard.ts	2026-11-16 06:22:08.669371671 +0000
-@@ -408,6 +408,41 @@
+diff -ruN rb/base44/shared/liveGuard.ts rn/base44/shared/liveGuard.ts
+--- rb/base44/shared/liveGuard.ts	2026-11-16 06:31:08.542605717 +0000
++++ rn/base44/shared/liveGuard.ts	2026-11-16 06:31:08.577317712 +0000
+@@ -408,6 +408,67 @@
    return bad ? 'llms.txt has a new line with < > a control character or javascript: : ' + JSON.stringify(bad.slice(0, 100)) : null;
  }
  
 +// APPROVED SEO EDIT RULE (Edwin 16 Nov 2026, thread "Relax Bridge live guard for approved edits": "Let Claude's approved
 +// jobs edit titles, meta, H1 and content without asking me, keep auto-backups"). For a Bridge TOOL edit of a live HTML page
 +// (write_file, edit_file, write_files, restore_backup: writeFile opts.seoEdit, set only on those routes and only for Claude's
-+// signed-in Bridge session: agent 'claude' with no API key; the ChatGPT key, site keys and drop keys never get it), a change to the
++// signed-in Bridge session: agent 'claude' with no API key, which means ANY signed-in Base44 admin of the Bridge app with no
++// key, Edwin's own login included; the ChatGPT key, site keys and drop keys never get it), a change to the
 +// page's <title>, meta description or <h1> text is no longer a refusal and needs no GUARD_OVERRIDES entry. Body content
 +// edits already pass when they keep the checks below. The new page must still be sane: the same number of <title> and
 +// <h1> elements as live, each 1-200 / 1-250 characters of text, and a non-empty meta description (max 400) whenever live
@@ -153,32 +154,57 @@ diff -ru relax-base/base44/shared/liveGuard.ts relax/base44/shared/liveGuard.ts
 +// and auto-sitemap routes, sync_from_github and drop_publish (they never pass seoEdit), and the SG Car Workshop directory
 +// pages (preview/sgcarworkshop/ keeps its own rule). The BRIDGE HOLD (frozen sites), the blocked-name / secret checks,
 +// the base-sha256 compare-and-swap, the verified private backup before every replace and the byte-exact readback all
-+// run in writeFile around this guard and are unchanged. SEO_EDIT_ON = false switches the rule off (Base44 code is live on
++// run in writeFile around this guard and are unchanged. restore_backup also uses it, so a rollback can put back an older title, H1 or
++// meta (intended; its older-than-live date check still applies). SEO_EDIT_ON = false switches the rule off (Base44 code is live on
 +// save: changing this needs security review AND Edwin's own written yes before saving).
 +export const SEO_EDIT_ON = true;
-+const SEO_EDIT_RELAXED = /^(title would change|meta description would change|H1 would change)/;
++// ARTICLES-ONLY SITES (SPO review 16 Nov 2026; Edwin's standing rule: Cleanic and ContiExpert are articles only). On these
++// the relaxation applies only under articles/; every other page keeps the old title / meta / H1 refusal. ContiExpert lives
++// in the Page One docroot at preview/contiexpert/ today; the 'contiexpert' key covers it if it ever gets its own site key.
++export const SEO_EDIT_ARTICLES_ONLY: Readonly<Record<string, string>> = Object.freeze({ 'cleanic': '', 'contiexpert': '', 'pageone:preview/contiexpert/': 'preview/contiexpert/' });
++export function seoEditPathOk(site: string, rel: string): boolean {
++  for (const [k, prefix] of Object.entries(SEO_EDIT_ARTICLES_ONLY)) {
++    const [s, p] = k.includes(':') ? [k.slice(0, k.indexOf(':')), k.slice(k.indexOf(':') + 1)] : [k, ''];
++    if (site === s && rel.startsWith(p)) return rel.slice(prefix.length).startsWith('articles/');
++  }
++  return true;
++}
++export const SEO_EDIT_RELAXED = /^(title would change|meta description would change|H1 would change)/;
++
++// SPO review 16 Nov 2026 (PASS WITH CHANGES): counts ignore comments and script/style/template/noscript/textarea blocks,
++// so a real <title>/<h1> cannot be hidden in a comment while a fake one keeps the count; the number of meta description
++// tags must match live (or go from 0 to 1: adding one is fine, and then the 1-400 limit applies); new title / meta text may not hold < or > (also entity-encoded), and a new H1 may not hold
++// script, iframe, on*= handlers or javascript:.
++const visibleHtml = (h: string) => h.replace(/<!--[\s\S]*?-->/g, '').replace(/<(script|style|template|noscript|textarea)\b[\s\S]*?<\/\1\s*>/gi, '');
++const SEO_H1_ACTIVE = /<\s*script|<\s*iframe|\bon[a-z]+\s*=|javascript\s*:/i;
 +
 +export function seoEditProblems(liveBytes: Uint8Array, newBytes: Uint8Array, problems: string[]): string[] {
 +  const kept = problems.filter((p) => !SEO_EDIT_RELAXED.test(p));
 +  if (kept.length === problems.length) return problems;
-+  const live = dec(liveBytes), next = dec(newBytes);
-+  const t = (h: string) => all(/<title\b[^>]*>([\s\S]*?)<\/title>/gi, h).map(strip);
-+  const h1 = (h: string) => all(/<h1\b[^>]*>([\s\S]*?)<\/h1>/gi, h).map(strip);
-+  const lt = t(live), nt = t(next), lh = h1(live), nh = h1(next);
++  const live = visibleHtml(dec(liveBytes)), next = visibleHtml(dec(newBytes));
++  const rawT = (h: string) => all(/<title\b[^>]*>([\s\S]*?)<\/title\s*>/gi, h);
++  const rawH = (h: string) => all(/<h1\b[^>]*>([\s\S]*?)<\/h1\s*>/gi, h);
++  const metas = (h: string) => all(/<meta\b([^>]*)>/gi, h).filter((tag) => /\bname\s*=\s*["']?description\b/i.test(tag)).length;
++  const lt = rawT(live), nt = rawT(next), lh = rawH(live), nh = rawH(next);
 +  if (nt.length !== lt.length) kept.push('approved SEO edit: the page must keep ' + lt.length + ' <title> element(s) (has ' + nt.length + ')');
-+  else if (nt.some((x) => !x || x.length > 200)) kept.push('approved SEO edit: a title must be 1-200 characters of text');
++  else if (nt.some((x) => /[<>]/.test(unent(x)))) kept.push('approved SEO edit: a title may not contain < or >');
++  else if (nt.map(strip).some((x) => !x || x.length > 200)) kept.push('approved SEO edit: a title must be 1-200 characters of text');
 +  if (nh.length !== lh.length) kept.push('approved SEO edit: the page must keep ' + lh.length + ' <h1> element(s) (has ' + nh.length + ')');
-+  else if (nh.some((x) => !x || x.length > 250)) kept.push('approved SEO edit: an H1 must be 1-250 characters of text');
++  else if (nh.some((x) => SEO_H1_ACTIVE.test(x) || SEO_H1_ACTIVE.test(unent(x)))) kept.push('approved SEO edit: an H1 may not contain script, iframe, on*= handlers or javascript:');
++  else if (nh.map(strip).some((x) => !x || x.length > 250)) kept.push('approved SEO edit: an H1 must be 1-250 characters of text');
++  const lmc = metas(live), nmc = metas(next);
 +  const lm = metaDescription(live), nm = metaDescription(next);
-+  if (lm !== null && nm === null) kept.push('approved SEO edit: the meta description would be removed');
-+  else if (lm && nm !== null && (!nm || nm.length > 400)) kept.push('approved SEO edit: the meta description must be 1-400 characters');
++  if (nmc !== lmc && !(lmc === 0 && nmc === 1)) kept.push('approved SEO edit: the page must keep ' + lmc + ' meta description tag(s) (has ' + nmc + ')');
++  else if (lm !== null && nm === null) kept.push('approved SEO edit: the meta description would be removed');
++  else if (nm !== null && /[<>]/.test(nm)) kept.push('approved SEO edit: the meta description may not contain < or >');
++  else if (nm !== null && (!nm || nm.length > 400)) kept.push('approved SEO edit: the meta description must be 1-400 characters');
 +  return kept;
 +}
 +
  const eq = (a: Uint8Array, b: Uint8Array) => a.length === b.length && a.every((x, i) => x === b[i]);
  
  // Returns null when the operation may go ahead, or the refusal text (the caller must not touch the file, and logs it).
-@@ -416,6 +451,7 @@
+@@ -416,6 +477,7 @@
    overrides: readonly GuardOverride[]; sha256: (b: Uint8Array) => Promise<string>;
    publisher?: boolean; // true only for the hourly Page One publisher's own writes (generated-file override)
    autoSitemap?: boolean; // true only for the auto-sitemap step after a publish (see AUTO SITEMAP RULE)
@@ -186,13 +212,310 @@ diff -ru relax-base/base44/shared/liveGuard.ts relax/base44/shared/liveGuard.ts
    expectedSha256?: string; // op 'delete' only: the sha256 the caller read just before (see SITEMAP.TXT DELETE RULE)
  }): Promise<string | null> {
    const { site, op, live, newBytes, overrides, sha256 } = args;
-@@ -475,6 +511,9 @@
+@@ -475,6 +537,9 @@
        problems = why ? ['sgcarworkshop directory data: ' + why] : [];
      } else if (HTML.test(rel)) problems = sgcwHtmlProblems(live.bytes, newBytes, problems);
    }
-+  if (SEO_EDIT_ON && args.seoEdit === true && args.publisher !== true && HTML.test(rel) && !(site === SGCW_SITE && rel.startsWith(SGCW_PREFIX))) {
++  if (SEO_EDIT_ON && args.seoEdit === true && args.publisher !== true && HTML.test(rel) && !(site === SGCW_SITE && rel.startsWith(SGCW_PREFIX)) && seoEditPathOk(site, rel)) {
 +    problems = seoEditProblems(live.bytes, newBytes, problems);
 +  }
    if (!problems.length) return null;
    const sha = await sha256(newBytes);
    if (overrides.some((o) => o.site === site && o.path === rel && o.sha256 === sha && o.by === 'Edwin' && o.review)) return null;
+diff -ruN rb/tests/guardOverrides1115.test.ts rn/tests/guardOverrides1115.test.ts
+--- rb/tests/guardOverrides1115.test.ts	2026-11-16 06:31:08.549434655 +0000
++++ rn/tests/guardOverrides1115.test.ts	2026-11-16 06:31:08.580805540 +0000
+@@ -29,7 +29,9 @@
+   if (weekly.length !== 2) throw new Error('expected exactly the 2 weekly entries, got ' + weekly.length);
+   // Orchard Sophia FAQ one-time entry (15 Nov 2026) is checked exactly in orchardSophiaOverride.test.ts;
+   // K Tech contact schema entries (15 Nov 2026) in ktechSchemaOverride.test.ts.
+-  const other = GUARD_OVERRIDES.filter((o) => o.note !== 'weekly near-miss SEO fix, one-time' && o.note !== 'Orchard Sophia vacant possession FAQ, one-time' && !o.note.startsWith('ktech contact schema, one-time') && o.note !== 'sitemap/llms catch-up: add the 15 Nov article, one-time');
++  const other = GUARD_OVERRIDES.filter((o) => o.note !== 'weekly near-miss SEO fix, one-time' && o.note !== 'Orchard Sophia vacant possession FAQ, one-time' && !o.note.startsWith('ktech contact schema, one-time') && o.note !== 'sitemap/llms catch-up: add the 15 Nov article, one-time'
++    // 16 Nov 2026 one-time entries from other jobs (Maison launch pages, Urban Eco schools); checked by their own jobs.
++    && !/^(maison (remaining 3 full-concept pages|full-concept launch pages)|urban eco schools title\/meta\/H1), one-time, remove after deploy$/.test(o.note));
+   if (other.some((o) => o.note !== 'sitemap/llms refresh: add missing pages only, one-time' || o.site !== 'pageone' || !/^preview\/[a-z0-9-]+\/(sitemap\.xml|llms\.txt)$/.test(o.path))) throw new Error('unexpected extra override entry');
+   console.log('ok       2 new entries, 2 in total; HOLD off and path not blocked for both');
+ });
+diff -ruN rb/tests/seoEditRelax.test.ts rn/tests/seoEditRelax.test.ts
+--- rb/tests/seoEditRelax.test.ts	1970-01-01 00:00:00.000000000 +0000
++++ rn/tests/seoEditRelax.test.ts	2026-11-16 06:31:08.581433395 +0000
+@@ -0,0 +1,279 @@
++// APPROVED SEO EDIT RULE self-test (Edwin 16 Nov 2026: "Let Claude's approved jobs edit titles, meta, H1 and content
++// without asking me, keep auto-backups"). Pure guard calls with fake live states, then the real write path
++// (write_file / edit_file / write_files / restore_backup) against the same in-memory fake cPanel as liveEdit.test.ts.
++// Run: deno test --no-check -A --import-map tests/importmap.json tests/seoEditRelax.test.ts
++import { liveGuard, htmlProblems, SEO_EDIT_ON, SEO_EDIT_RELAXED, MYKAR_FB_PATH } from '../base44/shared/liveGuard.ts';
++import { writeFile, editFile, restoreBackup, listBackups, deleteSitemapTxt } from '../base44/shared/bridgeOps.ts';
++import { writeMany, runBulk } from '../base44/shared/bulkWrite.ts';
++import { GUARD_OVERRIDES, SITE_HOLDS, holdReason } from '../base44/shared/bridgeConfig.ts';
++
++const HOME = '/home3/sgmodde1', ROOT = HOME + '/public_html', PAGEONE = ROOT + '/pageone';
++const files = new Map<string, Uint8Array>();
++const dirs = new Set<string>([HOME, ROOT, PAGEONE, ROOT + '/cleanic', HOME + '/bluehost-bridge-private', HOME + '/bluehost-bridge-private/backups']);
++const calls: string[] = [];
++let failUploadFor = '';
++let inflight = 0, maxInflight = 0;
++const latin1 = (b: Uint8Array) => Array.from(b, (c) => String.fromCharCode(c)).join('');
++const ok = (data: any) => Response.json({ result: { status: 1, errors: null, data } });
++const parentOf = (p: string) => p.slice(0, p.lastIndexOf('/'));
++
++globalThis.fetch = (async (input: any, init: any = {}) => {
++  inflight++; maxInflight = Math.max(maxInflight, inflight);
++  await new Promise((r) => setTimeout(r, 2));
++  try {
++    const url = new URL(String(input));
++    if (url.pathname.startsWith('/execute/')) {
++      const fn = url.pathname.slice(9); calls.push(fn);
++      const q = url.searchParams;
++      if (fn === 'DomainInfo/domains_data') return ok({ main_domain: { domain: 'sggarage.com', documentroot: ROOT },
++        addon_domains: [{ domain: 'pageonesingapore.com', documentroot: PAGEONE }, { domain: 'cleanicdetailing.com', documentroot: ROOT + '/cleanic' }], sub_domains: [], parked_domains: [] });
++      if (fn === 'Fileman/get_file_information') {
++        const p = q.get('path')!;
++        if (files.has(p)) return ok({ exists: 1, mode: 0o100644, size: files.get(p)!.length, mtime: 1 });
++        if (dirs.has(p)) return ok({ exists: 1, mode: 0o040755, size: 4096, mtime: 1 });
++        return Response.json({ result: { status: 0, errors: ['The file is not available'] } });
++      }
++      if (fn === 'Fileman/list_files') { // server listing for the live guard probe (14 Nov 2026)
++        const d = q.get('dir')!; if (!dirs.has(d)) return Response.json({ result: { status: 0, errors: ['No such directory'] } });
++        const rows: any[] = [];
++        for (const f of files.keys()) if (parentOf(f) === d) rows.push({ file: f.slice(d.length + 1), type: 'file' });
++        for (const x of dirs) if (x !== d && parentOf(x) === d) rows.push({ file: x.slice(d.length + 1), type: 'dir' });
++        return ok(rows);
++      }
++      if (fn === 'Fileman/get_file_content') {
++        const b = files.get(q.get('dir') + '/' + q.get('file'));
++        return b ? ok({ content: latin1(b) }) : Response.json({ result: { status: 0, errors: ['No such file'] } });
++      }
++      if (fn === 'Fileman/upload_files') {
++        const form = init.body as FormData; const dir = String(form.get('dir')); const f = form.get('file-1') as File;
++        if (!dirs.has(dir)) return Response.json({ result: { status: 0, errors: ['no dir'] } });
++        const bytes = new Uint8Array(await f.arrayBuffer());
++        if (f.name === failUploadFor && latin1(bytes) === 'will fail') bytes[0] ^= 1; // corrupt the new content only, to exercise verify + restore
++        files.set(dir + '/' + f.name, bytes);
++        return ok({ succeeded: 1 });
++      }
++    }
++    if (url.pathname === '/json-api/cpanel') {
++      const p = new URLSearchParams(String(init.body)); const fn = p.get('cpanel_jsonapi_func')!; calls.push('api2/' + fn + '/' + (p.get('op') || ''));
++      const res = (data: any[]) => Response.json({ cpanelresult: { event: { result: 1 }, data } });
++      if (fn === 'mkdir') {
++        const d = p.get('path') + '/' + p.get('name');
++        if (dirs.has(d) || !dirs.has(p.get('path')!)) return Response.json({ cpanelresult: { event: { result: 1 }, data: [{ result: 0, reason: 'exists or no parent' }] } });
++        dirs.add(d); return res([{ result: 1 }]);
++      }
++      if (fn === 'fileop' && p.get('op') === 'copy') { files.set(p.get('destfiles')!, files.get(p.get('sourcefiles')!)!.slice()); return res([{ result: 1 }]); }
++      if (fn === 'fileop' && p.get('op') === 'chmod') return res([{ result: 1 }]);
++    }
++    return new Response('unexpected ' + url, { status: 500 });
++  } finally { inflight--; }
++}) as typeof fetch;
++
++const logs: any[] = [];
++const ctx: any = { agent: 'claude', viaKey: false, email: 'admin@test', base44: { asServiceRole: { entities: {
++  BridgeLock: { filter: async () => [] }, BridgeLog: { create: async (r: any) => { logs.push(r); return r; } } } } } };
++
++function eq(a: unknown, b: unknown, m: string) { if (JSON.stringify(a) !== JSON.stringify(b)) throw new Error(m + ': expected ' + JSON.stringify(b) + ' got ' + JSON.stringify(a)); }
++
++const enc = (s: string) => new TextEncoder().encode(s);
++const shaHex = async (t: string) => Array.from(new Uint8Array(await crypto.subtle.digest('SHA-256', enc(t))), (b) => b.toString(16).padStart(2, '0')).join('');
++const P = PAGEONE + '/preview/_live';
++dirs.add(PAGEONE + '/preview'); dirs.add(P); dirs.add(P + '/assets'); dirs.add(P + '/cgi-bin');
++dirs.add(P + '/svc'); dirs.add(PAGEONE + '/preview/sgcarworkshop');
++
++const dec = (b: Uint8Array) => new TextDecoder().decode(b);
++const sha = async (b: Uint8Array) => Array.from(new Uint8Array(await crypto.subtle.digest('SHA-256', b)), (x) => x.toString(16).padStart(2, '0')).join('');
++const PG = (o: { title?: string; meta?: string | null; h1?: string; body?: string; ld?: string; faq?: string; footer?: boolean; date?: string } = {}) =>
++  '<!doctype html><html><head><title>' + (o.title ?? 'Brake Repair Singapore') + '</title>'
++  + (o.meta === null ? '' : '<meta name="description" content="' + (o.meta ?? 'Brake pads and discs replaced same day.') + '">')
++  + '<script type="application/ld+json">' + (o.ld ?? '{"@type":"AutoRepair","name":"X Garage","telephone":"+65 6000 0000"}') + '</script>'
++  + '</head><body><h1>' + (o.h1 ?? 'Brake repair') + '</h1><p>' + (o.body ?? 'We fix brakes.') + '</p>'
++  + '<time datetime="' + (o.date ?? '2026-11-10') + '">10 Nov</time>'
++  + '<details><summary>' + (o.faq ?? 'How long does it take?') + '</summary>About an hour.</details>'
++  + (o.footer === false ? '' : '<a class="p1-foot-review" href="/review.html">Leave us a Google review</a>') + '</body></html>';
++const LIVE = PG();
++const present = (t: string) => ({ state: 'present' as const, bytes: enc(t) });
++const guard = (rel: string, live: any, next: string, extra: Record<string, unknown> = {}, site = 'pageone', op: any = 'write') =>
++  liveGuard({ site, rel, op, live, newBytes: enc(next), overrides: GUARD_OVERRIDES, sha256: sha, ...extra });
++const R = 'preview/_live/svc/brakes.html';
++const out: string[] = [];
++async function allowed(name: string, p: Promise<string | null>) { const r = await p; if (r !== null) throw new Error(name + ' should pass: ' + r); out.push('allowed  ' + name); }
++async function refused(name: string, p: Promise<string | null>, why: RegExp) { const r = await p; if (r === null || !why.test(r)) throw new Error(name + ' should be refused (' + why + '): ' + r); out.push('refused  ' + name + '  -> ' + r.replace(/^LIVE GUARD refused \w+ of [^ ]+ \(nothing was changed\): /, '').slice(0, 90)); }
++
++Deno.test('rule is on, and approved tool edits of title / meta / H1 / body pass without an override', async () => {
++  if (SEO_EDIT_ON !== true) throw new Error('SEO_EDIT_ON');
++  const L = present(LIVE), s = { seoEdit: true };
++  await allowed('title change', guard(R, L, PG({ title: 'Brake Repair Singapore | Same-Day Pads' }), s));
++  await allowed('meta description change', guard(R, L, PG({ meta: 'Same-day brake pad and disc replacement in Ubi.' }), s));
++  await allowed('H1 change', guard(R, L, PG({ h1: 'Same-day brake repair in Singapore' }), s));
++  await allowed('body content change', guard(R, L, PG({ body: 'We fix brakes. New paragraph about disc skimming.' }), s));
++  await allowed('title + meta + H1 + body together', guard(R, L, PG({ title: 'T2', meta: 'M2', h1: 'H2', body: 'B2' }), s));
++  await allowed('newer date with retitle', guard(R, L, PG({ title: 'T3', date: '2026-11-16' }), s));
++  await allowed('JSON-LD gains a value', guard(R, L, PG({ h1: 'H4', ld: '{"@type":"AutoRepair","name":"X Garage","telephone":"+65 6000 0000","url":"https://x.sg/"}' }), s));
++  await allowed('.htm page title change', guard('preview/_live/svc/a.htm', L, PG({ title: 'T5' }), s));
++  console.log(out.splice(0).join('\n'));
++});
++
++Deno.test('the same edits are still refused on every route that is not an approved tool edit', async () => {
++  const L = present(LIVE), next = PG({ title: 'Retitled', h1: 'New H1', meta: 'New meta' });
++  await refused('no seoEdit (sync_from_github / drop_publish route)', guard(R, L, next), /title would change.*meta description would change.*H1 would change/);
++  await refused('publisher with seoEdit', guard(R, L, next, { seoEdit: true, publisher: true }), /title would change/);
++  await refused('auto-sitemap with seoEdit (html)', guard(R, L, next, { seoEdit: true, autoSitemap: true }), /auto-sitemap may only replace/);
++  await refused('SG Car Workshop page title (own rule kept)', guard('preview/sgcarworkshop/index.html', L, next, { seoEdit: true }), /title would change.*H1 would change/);
++  await allowed('SG Car Workshop meta-only change (its existing rule, unchanged)', guard('preview/sgcarworkshop/index.html', L, PG({ meta: 'Now 812 workshops' }), { seoEdit: true }));
++  console.log(out.splice(0).join('\n'));
++});
++
++Deno.test('retained HTML safeguards still refuse approved edits', async () => {
++  const L = present(LIVE), s = { seoEdit: true };
++  await refused('older-than-live source', guard(R, L, PG({ title: 'T', date: '2026-10-01' }), s), /source is older than live/);
++  await refused('JSON-LD value changed', guard(R, L, PG({ ld: '{"@type":"AutoRepair","name":"X Garage","telephone":"+65 9999 9999"}' }), s), /JSON-LD would lose or change/);
++  await refused('JSON-LD removed', guard(R, L, PG({ title: 'T', ld: '{}' }), s), /JSON-LD would lose or change/);
++  await refused('FAQ question lost', guard(R, L, PG({ faq: 'Different question?' }), s), /FAQ would lose 1 question/);
++  await refused('review footer removed', guard(R, L, PG({ footer: false }), s), /Google review" footer would be removed/);
++  await refused('title removed', guard(R, L, PG().replace(/<title>.*?<\/title>/, ''), s), /must keep 1 <title>/);
++  await refused('second title added', guard(R, L, PG().replace('</head>', '<title>x</title></head>'), s), /must keep 1 <title>/);
++  await refused('empty title', guard(R, L, PG({ title: '  ' }), s), /title must be 1-200/);
++  await refused('title over 200 chars', guard(R, L, PG({ title: 'x'.repeat(201) }), s), /title must be 1-200/);
++  await refused('H1 removed', guard(R, L, PG().replace(/<h1>.*?<\/h1>/, ''), s), /must keep 1 <h1>/);
++  await refused('extra H1 added', guard(R, L, PG({ body: '<h1>Two</h1>' }), s), /must keep 1 <h1>/);
++  await refused('empty H1', guard(R, L, PG({ h1: '<span></span>' }), s), /H1 must be 1-250/);
++  await refused('meta description removed', guard(R, L, PG({ meta: null }), s), /must keep 1 meta description tag/);
++  await refused('meta description emptied', guard(R, L, PG({ meta: '' }), s), /meta description must be 1-400/);
++  await refused('meta description over 400', guard(R, L, PG({ meta: 'm'.repeat(401) }), s), /meta description must be 1-400/);
++  // SPO review fixes
++  await refused('real H1 hidden in a comment, fake H1 kept', guard(R, L, PG().replace(/<h1>(.*?)<\/h1>/, '<!--<h1>$1</h1>-->') + '<template><h1>fake</h1></template>', s), /must keep 1 <h1>/);
++  await refused('title moved into a comment + H1 change', guard(R, L, PG({ h1: 'New' }).replace(/<title>(.*?)<\/title>/, '<!--<title>$1</title>-->'), s), /must keep 1 <title>/);
++  await refused('second meta description added', guard(R, L, PG({ meta: 'New' }).replace('</head>', '<meta name="description" content=""></head>'), s), /must keep 1 meta description tag/);
++  await refused('markup in title (entity-encoded)', guard(R, L, PG({ title: '&lt;script&gt;x&lt;/script&gt;' }), s), /title may not contain < or >/);
++  await refused('markup in meta (entity-encoded)', guard(R, L, PG({ meta: '&lt;b&gt;x' }), s), /meta description may not contain < or >/);
++  await refused('script in H1', guard(R, L, PG({ h1: 'Hi<img src=x onerror=alert(1)>' }), s), /H1 may not contain script/);
++  await refused('javascript: link in H1', guard(R, L, PG({ h1: '<a href="javascript:alert(1)">Hi</a>' }), s), /H1 may not contain script/);
++  await allowed('H1 with ordinary inline markup', guard(R, L, PG({ h1: 'Brake repair <span class="hl">in Ubi</span>' }), s));
++  console.log(out.splice(0).join('\n'));
++});
++
++Deno.test('retained non-HTML, server-config, delete and unknown-state blocks are unchanged', async () => {
++  const s = { seoEdit: true }, L = present('x');
++  for (const f of ['robots.txt', 'sitemap.xml', 'llms.txt', 'data/x.json', 'feed.xml', 'doc.pdf', 'site.webmanifest', 'notes.txt'])
++    await refused('replace ' + f, guard('preview/_live/' + f, L, 'y', s), /needs an override/);
++  await refused('mykar fb-posts.json bad shape', guard(MYKAR_FB_PATH, L, '{"x":1}', s), /mykar fb-posts\.json rule/);
++  for (const f of ['.htaccess', 'svc/.htaccess', '.htpasswd', '.user.ini', 'php.ini', 'contact.php', 'x.phtml', 'a.phar', 'form.cgi', 'run.py', 'a.pl', 'deploy.sh']) {
++    await refused('replace ' + f, guard('preview/_live/' + f, L, 'y', s), /never written by a tool/);
++    await refused('create ' + f, guard('preview/_live/' + f, { state: 'absent' }, 'y', s), /never written by a tool/);
++  }
++  await refused('delete index.html', guard(R, present(LIVE), '', s, 'pageone', 'delete'), /delete of a live file is blocked/);
++  await refused('delete .htaccess', guard('.htaccess', present('x'), '', s, 'pageone', 'delete'), /delete of a live file is blocked/);
++  await refused('move', guard(R, present(LIVE), PG({ title: 'T' }), s, 'pageone', 'move'), /move of a live file is blocked/);
++  await refused('rename', guard(R, present(LIVE), PG({ title: 'T' }), s, 'pageone', 'rename'), /rename of a live file is blocked/);
++  await refused('unknown live state', guard(R, { state: 'unknown', error: 'read error' }, PG({ title: 'T' }), s), /could not be confirmed/);
++  for (const bad of ['../x.html', '/etc/x.html', 'a//b.html', 'a\\b.html', 'https://x.sg/a.html'])
++    await refused('path ' + bad, guard(bad, present(LIVE), PG({ title: 'T' }), s), /path|absolute|URLs/);
++  console.log(out.splice(0).join('\n'));
++});
++
++Deno.test('frozen-site HOLD flags and the write-path blocks are unchanged', async () => {
++  console.log('ok       ' + SITE_HOLDS.length + ' HOLD flags, on: ' + JSON.stringify(SITE_HOLDS.filter((h: any) => h.on).map((h: any) => h.site)));
++  // writeFile checks holdReason first for every route, before the guard; the rule never reaches a held site.
++  for (const h of SITE_HOLDS.filter((x: any) => x.on)) if (!holdReason((h as any).site, 'index.html')) throw new Error('hold ' + (h as any).site);
++  for (const f of ['.htaccess', 'contact.php', '.env', 'wp-config.php']) {
++    let m = ''; try { await writeFile('pageone', 'preview/_live/' + f, enc('x'), null, { seoEdit: true }); } catch (e) { m = (e as Error).message; }
++    if (!m) throw new Error(f + ' was written'); out.push('refused  writeFile seoEdit ' + f + '  -> ' + m.slice(0, 70));
++  }
++  files.set(P + '/index.html', enc(LIVE));
++  let d = ''; try { await deleteSitemapTxt('pageone', 'preview/_live/index.html', await sha(files.get(P + '/index.html')!)); } catch (e) { d = (e as Error).message; }
++  if (!/Only a file named exactly sitemap.txt/.test(d) || !files.has(P + '/index.html')) throw new Error('delete: ' + d);
++  out.push('refused  delete_file index.html -> ' + d.slice(0, 70));
++  console.log(out.splice(0).join('\n'));
++});
++
++Deno.test('write_file retitle: written, verified, backed up; restore_backup rolls it back in one step', async () => {
++  files.set(P + '/svc/brakes.html', enc(LIVE));
++  const base = await sha(enc(LIVE));
++  const next = PG({ title: 'Brake Repair Singapore | Same-Day', h1: 'Same-day brake repair', meta: 'New meta.' });
++  let stale = ''; try { await writeFile('pageone', R, enc(next), 'a'.repeat(64), { seoEdit: true }); } catch (e) { stale = (e as Error).message; }
++  if (!/STALE WRITE refused/.test(stale)) throw new Error('stale base: ' + stale);
++  let noBase = ''; try { await writeFile('pageone', R, enc(next), null, { seoEdit: true }); } catch (e) { noBase = (e as Error).message; }
++  if (!/expected_sha256 is required/.test(noBase)) throw new Error('no base: ' + noBase);
++  let plain = ''; try { await writeFile('pageone', R, enc(next), base); } catch (e) { plain = (e as Error).message; }
++  if (!/title would change/.test(plain)) throw new Error('route without seoEdit should still refuse: ' + plain);
++  if (dec(files.get(P + '/svc/brakes.html')!) !== LIVE) throw new Error('refused writes changed live');
++  const w: any = await writeFile('pageone', R, enc(next), base, { seoEdit: true });
++  if (!w.saved || !w.verified || !w.backupId || dec(files.get(P + '/svc/brakes.html')!) !== next) throw new Error('write: ' + JSON.stringify(w));
++  const bk = [...files.keys()].find((k) => k.includes('/backups/pageone/' + w.backupId + '/'))!;
++  if (!bk || dec(files.get(bk)!) !== LIVE) throw new Error('backup copy is not the old live page');
++  console.log('allowed  write_file title+H1+meta with base; verified; backup ' + w.backupId + ' holds the old page byte-exact');
++  console.log('refused  same write with stale base / no base / without seoEdit; live unchanged');
++  const list: any = await listBackups('pageone', R);
++  if (!list.backups.some((b: any) => b.backupId === w.backupId)) throw new Error('list_backups: ' + JSON.stringify(list));
++  const r: any = await restoreBackup('pageone', w.backupId, R, { seoEdit: true });
++  if (!r.saved || !r.verified || r.restoredFrom !== w.backupId || dec(files.get(P + '/svc/brakes.html')!) !== LIVE) throw new Error('restore: ' + JSON.stringify(r));
++  const bk2 = [...files.keys()].find((k) => k.includes('/backups/pageone/' + r.backupId + '/'))!;
++  if (!r.backupId || dec(files.get(bk2)!) !== next) throw new Error('restore did not back up the edited page first');
++  console.log('allowed  restore_backup ' + w.backupId + ' -> old title back, verified; the edited page was backed up first (' + r.backupId + ')');
++});
++
++Deno.test('edit_file and write_files retitle; runBulk without seoEdit (sync_from_github route) still refuses', async () => {
++  files.set(P + '/svc/brakes.html', enc(LIVE));
++  let noFlag = ''; try { await editFile('pageone', R, [{ old_text: '<title>Brake Repair Singapore</title>', new_text: '<title>X</title>' }], await sha(enc(LIVE))); } catch (x) { noFlag = (x as Error).message; }
++  if (!/title would change/.test(noFlag)) throw new Error('edit_file without seoEdit: ' + noFlag);
++  console.log('refused  edit_file title change without seoEdit (API key callers) -> title would change');
++  const e: any = await editFile('pageone', R, [{ old_text: '<title>Brake Repair Singapore</title>', new_text: '<title>Brake Repair SG | Ubi</title>' }], await sha(enc(LIVE)), { seoEdit: true });
++  if (!e.saved || !e.backupId || !dec(files.get(P + '/svc/brakes.html')!).includes('<title>Brake Repair SG | Ubi</title>')) throw new Error('edit_file: ' + JSON.stringify(e));
++  console.log('allowed  edit_file title change; backup ' + e.backupId);
++  const cur = dec(files.get(P + '/svc/brakes.html')!);
++  const next = cur.replace('<h1>Brake repair</h1>', '<h1>Brake repair in Ubi</h1>');
++  const plan = { base: '', overwrite: true, files: [{ path: R, bytes: enc(next), expected: await sha(enc(cur)) }], totalBytes: next.length };
++  let m = ''; try { await runBulk('pageone', plan as any, ctx, { dryRun: false, started: Date.now() }); } catch (x) { m = (x as Error).message; }
++  if (!/LIVE GUARD refused.*H1 would change/.test(m) || dec(files.get(P + '/svc/brakes.html')!) !== cur) throw new Error('runBulk without seoEdit: ' + m);
++  console.log('refused  runBulk without seoEdit (sync_from_github route) -> ' + m.slice(0, 80));
++  for (const [who, c] of [['ChatGPT key', { ...ctx, agent: 'chatgpt', viaKey: true }], ['site key', { ...ctx, agent: 'automation', viaKey: true }], ['claude via key', { ...ctx, viaKey: true }]] as const) {
++    let k = ''; try { await writeMany({ site: 'pageone', files: [{ path: R, content: next, expected_sha256: await sha(enc(cur)) }] }, c); } catch (x) { k = (x as Error).message; }
++    if (!/H1 would change/.test(k) || dec(files.get(P + '/svc/brakes.html')!) !== cur) throw new Error('write_files via ' + who + ': ' + k);
++    console.log('refused  write_files H1 change via ' + who + ' -> H1 would change');
++  }
++  const b: any = await writeMany({ site: 'pageone', files: [{ path: R, content: next, expected_sha256: await sha(enc(cur)) }] }, ctx);
++  const row = (b.results || b.files || []).find((x: any) => x.path === R);
++  if (!row || row.status !== 'updated' || !row.backupId || dec(files.get(P + '/svc/brakes.html')!) !== next) throw new Error('write_files: ' + JSON.stringify(b).slice(0, 400));
++  console.log('allowed  write_files H1 change; backup ' + row.backupId);
++});
++
++Deno.test('tool entry points pass seoEdit only for Claude\'s signed-in session; sync, drops, publisher never pass it', async () => {
++  const src = (p: string) => Deno.readTextFileSync(new URL('../base44/' + p, import.meta.url));
++  const FLAG = "seoEdit: ctx.agent === 'claude' && !ctx.viaKey";
++  for (const f of ['functions/bridgeWrite/entry.ts', 'functions/bridgeEdit/entry.ts', 'functions/bridgeRestore/entry.ts', 'shared/bulkWrite.ts'])
++    if (!src(f).includes(FLAG)) throw new Error(f + ' does not gate seoEdit on the Claude session');
++  for (const f of ['shared/githubSync.ts', 'shared/drops.ts', 'shared/pageoneArticles.ts', 'shared/autoSitemapRun.ts', 'shared/heroImage.ts'])
++    if (/seoEdit/.test(src(f))) throw new Error(f + ' must not pass seoEdit');
++  const all = [...src('shared/bridgeOps.ts').matchAll(/seoEdit: (true|[^,})]+)/g)].map((m) => m[1]);
++  if (all.includes('true')) throw new Error('bridgeOps sets seoEdit: true unconditionally');
++  console.log('ok       write_file / edit_file / restore_backup / write_files gate on the Claude session; sync, drops, publisher, auto-sitemap, hero image never pass seoEdit');
++});
++
++Deno.test('articles-only sites (Cleanic, ContiExpert): relaxation only under articles/', async () => {
++  const L = present(LIVE), s = { seoEdit: true }, next = PG({ title: 'Retitled', h1: 'New H1', meta: 'New meta' });
++  await refused('cleanic index.html title change', guard('index.html', L, next, s, 'cleanic'), /title would change/);
++  await refused('cleanic car-steam-cleaning-singapore-2/index.html title change', guard('car-steam-cleaning-singapore-2/index.html', L, next, s, 'cleanic'), /title would change/);
++  await allowed('cleanic articles/x/index.html title change', guard('articles/x/index.html', L, next, s, 'cleanic'));
++  await refused('contiexpert (Page One preview/contiexpert/) index.html title change', guard('preview/contiexpert/index.html', L, next, s), /title would change/);
++  await allowed('contiexpert (Page One preview/contiexpert/) articles/x/index.html title change', guard('preview/contiexpert/articles/x/index.html', L, next, s));
++  await refused('contiexpert (own site key) index.html title change', guard('index.html', L, next, s, 'contiexpert'), /title would change/);
++  await allowed('contiexpert (own site key) articles/x/index.html title change', guard('articles/x/index.html', L, next, s, 'contiexpert'));
++  await allowed('look-alike folder preview/contiexpert-x/ is a different client (not excluded)', guard('preview/contiexpert-x/index.html', L, next, s));
++  await allowed('retitle + meta description added where live had none (1-400)', guard(R, present(PG({ meta: null })), PG({ title: 'T', meta: 'Added meta' }), s));
++  await refused('retitle + meta description added where live had none, over 400', guard(R, present(PG({ meta: null })), PG({ title: 'T', meta: 'm'.repeat(401) }), s), /meta description must be 1-400/);
++  await refused('retitle + two meta descriptions added where live had none', guard(R, present(PG({ meta: null })), PG({ title: 'T', meta: 'a' }).replace('</head>', '<meta name="description" content="b"></head>'), s), /must keep 0 meta description tag/);
++  console.log(out.splice(0).join('\n'));
++});
++
++Deno.test('each relaxed refusal message is still produced word-for-word by htmlProblems (rewording cannot silently stop the rule)', () => {
++  const L = enc(LIVE);
++  for (const [name, next, prefix] of [
++    ['title', PG({ title: 'X' }), 'title would change'],
++    ['meta description', PG({ meta: 'X' }), 'meta description would change'],
++    ['H1', PG({ h1: 'X' }), 'H1 would change'],
++  ] as const) {
++    const p = htmlProblems(L, enc(next));
++    if (p.length !== 1 || !p[0].startsWith(prefix) || !SEO_EDIT_RELAXED.test(p[0])) throw new Error(name + ': ' + JSON.stringify(p));
++    console.log('ok       ' + name + ' change -> "' + p[0].slice(0, 50) + '" matches the relaxed list');
++  }
++});

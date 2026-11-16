@@ -23,9 +23,17 @@ refused  title over 200 chars  -> approved SEO edit: a title must be 1-200 chara
 refused  H1 removed  -> approved SEO edit: the page must keep 1 <h1> element(s) (has 0). Bring the source up to da
 refused  extra H1 added  -> approved SEO edit: the page must keep 1 <h1> element(s) (has 2). Bring the source up to da
 refused  empty H1  -> approved SEO edit: an H1 must be 1-250 characters of text. Bring the source up to date wit
-refused  meta description removed  -> approved SEO edit: the meta description would be removed. Bring the source up to date with
+refused  meta description removed  -> approved SEO edit: the page must keep 1 meta description tag(s) (has 0). Bring the source 
 refused  meta description emptied  -> approved SEO edit: the meta description must be 1-400 characters. Bring the source up to d
 refused  meta description over 400  -> approved SEO edit: the meta description must be 1-400 characters. Bring the source up to d
+refused  real H1 hidden in a comment, fake H1 kept  -> approved SEO edit: the page must keep 1 <h1> element(s) (has 0). Bring the source up to da
+refused  title moved into a comment + H1 change  -> approved SEO edit: the page must keep 1 <title> element(s) (has 0). Bring the source up to
+refused  second meta description added  -> approved SEO edit: the page must keep 1 meta description tag(s) (has 2). Bring the source 
+refused  markup in title (entity-encoded)  -> approved SEO edit: a title may not contain < or >. Bring the source up to date with live f
+refused  markup in meta (entity-encoded)  -> approved SEO edit: the meta description may not contain < or >. Bring the source up to dat
+refused  script in H1  -> approved SEO edit: an H1 may not contain script, iframe, on*= handlers or javascript:. Bri
+refused  javascript: link in H1  -> approved SEO edit: an H1 may not contain script, iframe, on*= handlers or javascript:. Bri
+allowed  H1 with ordinary inline markup
 refused  replace robots.txt  -> replacing this file type (robots.txt) needs an override. Bring the source up to date with 
 refused  replace sitemap.xml  -> replacing this file type (sitemap.xml) needs an override. Bring the source up to date with
 refused  replace llms.txt  -> replacing this file type (llms.txt) needs an override. Bring the source up to date with li
@@ -75,15 +83,30 @@ refused  writeFile seoEdit contact.php  -> Server-side code files (contact.php) 
 refused  writeFile seoEdit .env  -> This file can hold passwords and is never exposed by the bridge.
 refused  writeFile seoEdit wp-config.php  -> This file can hold passwords and is never exposed by the bridge.
 refused  delete_file index.html -> Only a file named exactly sitemap.txt can be deleted
-allowed  write_file title+H1+meta with base; verified; backup 20261116-062239-1f2b5e holds the old page byte-exact
+allowed  write_file title+H1+meta with base; verified; backup 20261116-063108-27c07e holds the old page byte-exact
 refused  same write with stale base / no base / without seoEdit; live unchanged
-allowed  restore_backup 20261116-062239-1f2b5e -> old title back, verified; the edited page was backed up first (20261116-062239-7179c6)
+allowed  restore_backup 20261116-063108-27c07e -> old title back, verified; the edited page was backed up first (20261116-063108-ca81f7)
 refused  edit_file title change without seoEdit (API key callers) -> title would change
-allowed  edit_file title change; backup 20261116-062239-2e9610
+allowed  edit_file title change; backup 20261116-063108-1f768c
 refused  runBulk without seoEdit (sync_from_github route) -> Nothing was written. LIVE GUARD refused 1 of 1 file(s): LIVE GUARD refused write
 refused  write_files H1 change via ChatGPT key -> H1 would change
 refused  write_files H1 change via site key -> H1 would change
 refused  write_files H1 change via claude via key -> H1 would change
-allowed  write_files H1 change; backup 20261116-062239-9bddb0
+allowed  write_files H1 change; backup 20261116-063109-79836a
 ok       write_file / edit_file / restore_backup / write_files gate on the Claude session; sync, drops, publisher, auto-sitemap, hero image never pass seoEdit
-ok | 8 passed | 0 failed (395ms)
+refused  cleanic index.html title change  -> title would change: "Brake Repair Singapore" -> "Retitled"; meta description would change;
+refused  cleanic car-steam-cleaning-singapore-2/index.html title change  -> title would change: "Brake Repair Singapore" -> "Retitled"; meta description would change;
+allowed  cleanic articles/x/index.html title change
+refused  contiexpert (Page One preview/contiexpert/) index.html title change  -> title would change: "Brake Repair Singapore" -> "Retitled"; meta description would change;
+allowed  contiexpert (Page One preview/contiexpert/) articles/x/index.html title change
+refused  contiexpert (own site key) index.html title change  -> title would change: "Brake Repair Singapore" -> "Retitled"; meta description would change;
+allowed  contiexpert (own site key) articles/x/index.html title change
+allowed  look-alike folder preview/contiexpert-x/ is a different client (not excluded)
+allowed  retitle + meta description added where live had none (1-400)
+refused  retitle + meta description added where live had none, over 400  -> approved SEO edit: the meta description must be 1-400 characters. Bring the source up to d
+refused  retitle + two meta descriptions added where live had none  -> approved SEO edit: the page must keep 0 meta description tag(s) (has 2). Bring the source 
+ok       title change -> "title would change: "Brake Repair Singapore" -> "X" matches the relaxed list
+ok       meta description change -> "meta description would change" matches the relaxed list
+ok       H1 change -> "H1 would change: "Brake repair" -> "X"" matches the relaxed list
+ok | 10 passed | 0 failed (398ms)
+Full Bridge suite (tests/ + base44/tests/, /tmp copy of 5bae2e2 + this diff): ok | 168 passed | 0 failed | 1 ignored
