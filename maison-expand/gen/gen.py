@@ -77,6 +77,14 @@ P["sembawang-anchor"] = dict(
  sec=[("EdgeProp November 2026 BTO report",SRC_EDGE),("Stacked Homes November 2026 BTO review",SRC_STK)], near=["chencharu-acres","toa-payoh-hillside","plantation-dew"],
  extra_faq=[])
 
+EX = {
+ "chencharu-acres":[("yishun-beacon","Yishun Beacon","Yishun","HDB flat","Renovation planning notes for new owners.")],
+ "plantation-dew":[("brickland-weave","Brickland Weave","Tengah","HDB flat","Renovation planning notes for new owners."),("plantation-edge-i-and-ii","Plantation Edge I &amp; II","Tengah","HDB flat","Renovation planning notes for new owners.")],
+ "bayshore-sails":[("bayshore-oasis","Bayshore Oasis","Bedok","HDB BTO","November 2026 launch.")],
+ "sembawang-anchor":[("sembawang-brook","Sembawang Brook","Sembawang","HDB BTO","16 June 2026 launch."),("sembawang-portico","Sembawang Portico","Sembawang","HDB BTO","16 June 2026 launch.")],
+ "toa-payoh-hillside":[("kim-keat-heights","Kim Keat Heights","Toa Payoh","HDB flat","Renovation planning notes for new owners.")],
+}
+
 def wa(slug, name, ref, ptype=None):
     if ptype:
         t = f"Hi Maison, I’m collecting keys at {name} ({ptype}). Can I see design ideas and a quote?"
@@ -96,13 +104,14 @@ def lst(items):
 def build(slug, d):
     n, town = d["name"], d["town"]
     title = f"{n} Renovation &amp; Interior Design | {town} BTO — Maison"
-    desc = f"Interior design and built-in carpentry for {n}, an HDB BTO in {town}. Launch facts only; key dates unconfirmed. WhatsApp Maison with your plan."
+    desc = f"Interior design and built-in carpentry for {n}, an HDB BTO in {town}. Launch facts only; key dates unconfirmed." + ("" if slug in ("sembawang-anchor","toa-payoh-hillside") else " WhatsApp Maison with your plan.")
     OLD_FAQ = [
      (f"When was {n} launched?","Our project file records: 2026-11 launch. That official confirmation covers the launch date only, not TOP or key collection."),
      (f"Is the key-collection date for {n} confirmed?","No. Completion and keys are unconfirmed in our file. Use your HDB documents for your own appointment, when you have one."),
      (f"Do you have the {n} floor plan?","No official floor-plan or site image is on file for this page, so none is published here. Please send your approved HDB unit plan."),
      ("What should I send Maison?","Your approved floor plan, unit type if you have it, and a key date if one is already in writing. After keys, an HDB renovation permit is required before works. WhatsApp us at https://wa.me/6593391185."),
     ]
+    KWL = {"chencharu-acres":"Yishun interior design","plantation-dew":"Tengah interior design","bayshore-sails":"Bedok HDB interior design","sembawang-anchor":"Sembawang HDB interior design","toa-payoh-hillside":"Toa Payoh interior design"}[slug]
     url = f"https://maisoninteriordesign.sg/new-launches/{slug}/"
     types = d["types"]
     tnames = ", ".join(t[0] for t in types[:-1]) + " and " + types[-1][0] if len(types) > 1 else types[0][0]
@@ -136,7 +145,7 @@ def build(slug, d):
      {"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://maisoninteriordesign.sg/"},{"@type":"ListItem","position":2,"name":"New launches","item":"https://maisoninteriordesign.sg/new-launches/"},{"@type":"ListItem","position":3,"name":n,"item":url}]},
      {"@type":"Article","headline":f"{n} Renovation & Interior Design","description":desc,"datePublished":"2026-11-11","dateModified":"2026-11-11","author":{"@id":"https://maisoninteriordesign.sg/#business"},"publisher":{"@id":"https://maisoninteriordesign.sg/#business"},"mainEntityOfPage":url,
       "about":{"@type":"Place","name":n,"address":{"@type":"PostalAddress","addressLocality":town,"addressCountry":"SG"}},
-      "keywords":f"{n} renovation, {n} interior design, {n} floor plan, {town} BTO renovation, {n} built-in carpentry, {town} interior design",
+      "keywords":f"{n} renovation, {n} interior design, {n} floor plan, {town} BTO renovation, {n} built-in carpentry, {KWL}",
       "citation":["https://homes.hdb.gov.sg/home/bto"]},
      {"@type":"FAQPage","mainEntity":faq_ld}]}
     ld_s = json.dumps(ld, ensure_ascii=False, separators=(",", ":"))
@@ -164,11 +173,13 @@ def build(slug, d):
         for t in types)
 
     near = ""
-    for s in d["near"]:
+    for s in d["near"][:2]:
         o = P[s]
         near += (f'<a class="lc" href="/new-launches/{s}/" data-kind="BTO"><span class="tag">HDB BTO · {o["town"]}</span>'
                  f'<h3>{E(o["name"])} <em>{o["town"]}</em></h3><p>November 2026 BTO launch, {o["units"]} flats.</p><span class="more">Read the guide</span></a>')
 
+    for (xs,xn,xt,xk,xl) in EX[slug]:
+        near += (f'<a class="lc" href="/new-launches/{xs}/" data-kind="HDB"><span class="tag">{xk} \u00b7 {xt}</span><h3>{xn} <em>{xt}</em></h3><p>{xl}</p><span class="more">Read the guide</span></a>')
     sources = (f'<li><a href="{SRC_MNH}" target="_blank" rel="noopener">HDB (MyNiceHome): November 2026 BTO sales launch</a> (official: location, units, flat types, MRT, schools, amenities, waiting time)</li>'
                f'<li><a href="{SRC_FLAT}" target="_blank" rel="noopener">HDB Flat Portal</a> (official floor plans and unit details)</li>'
                '<li><a href="https://homes.hdb.gov.sg/home/bto" target="_blank" rel="noopener">HDB: BTO</a></li>'
