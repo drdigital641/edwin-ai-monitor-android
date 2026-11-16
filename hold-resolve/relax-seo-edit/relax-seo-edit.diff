@@ -1,0 +1,198 @@
+diff -ru relax-base/base44/functions/bridgeEdit/entry.ts relax/base44/functions/bridgeEdit/entry.ts
+--- relax-base/base44/functions/bridgeEdit/entry.ts	2026-11-16 06:17:17.577937114 +0000
++++ relax/base44/functions/bridgeEdit/entry.ts	2026-11-16 06:22:08.668682263 +0000
+@@ -7,6 +7,7 @@
+ // After a saved edit, the auto-sitemap step updates the site's sitemap.xml and llms.txt and sends IndexNow.
+ // Its outcome is only reported (autoSitemap); it never changes the edit.
+ export default bridgeTool('edit', async (body, ctx) => {
+-  const result = await editFile(body.site, body.path, body.edits, body.expected_sha256);
++  // APPROVED SEO EDIT RULE (16 Nov 2026): only Claude's signed-in session (agent claude, no API key) gets seoEdit.
++  const result = await editFile(body.site, body.path, body.edits, body.expected_sha256, { seoEdit: ctx.agent === 'claude' && !ctx.viaKey });
+   return await attachAutoSitemap(body.site, result, [{ path: result.path }], ctx.base44); // bytes are read back from the server
+ }, { logs: true });
+diff -ru relax-base/base44/functions/bridgeRestore/entry.ts relax/base44/functions/bridgeRestore/entry.ts
+--- relax-base/base44/functions/bridgeRestore/entry.ts	2026-11-16 06:17:17.579804187 +0000
++++ relax/base44/functions/bridgeRestore/entry.ts	2026-11-16 06:22:08.668803827 +0000
+@@ -1,4 +1,5 @@
+ import { bridgeTool } from '../../shared/handler.ts';
+ import { restoreBackup } from '../../shared/bridgeOps.ts';
+ 
+-export default bridgeTool('restore', (body) => restoreBackup(body.site, body.backup_id, body.path), { logs: true });
++// APPROVED SEO EDIT RULE (16 Nov 2026): only Claude's signed-in session (agent claude, no API key) gets seoEdit.
++export default bridgeTool('restore', (body, ctx) => restoreBackup(body.site, body.backup_id, body.path, { seoEdit: ctx.agent === 'claude' && !ctx.viaKey }), { logs: true });
+diff -ru relax-base/base44/functions/bridgeWrite/entry.ts relax/base44/functions/bridgeWrite/entry.ts
+--- relax-base/base44/functions/bridgeWrite/entry.ts	2026-11-16 06:17:17.580477229 +0000
++++ relax/base44/functions/bridgeWrite/entry.ts	2026-11-16 06:22:08.668495598 +0000
+@@ -6,6 +6,7 @@
+ // It runs after the page is written and verified; its outcome is only reported (autoSitemap) and never changes the write.
+ export default bridgeTool('write', async (body, ctx) => {
+   const bytes = decodeInputBytes(body);
+-  const result = await writeFile(body.site, body.path, bytes, body.expected_sha256);
++  // APPROVED SEO EDIT RULE (16 Nov 2026): only Claude's signed-in session (agent claude, no API key) gets seoEdit.
++  const result = await writeFile(body.site, body.path, bytes, body.expected_sha256, { seoEdit: ctx.agent === 'claude' && !ctx.viaKey });
+   return await attachAutoSitemap(body.site, result, [{ path: result.path, bytes }], ctx.base44);
+ }, { logs: true });
+diff -ru relax-base/base44/shared/bridgeOps.ts relax/base44/shared/bridgeOps.ts
+--- relax-base/base44/shared/bridgeOps.ts	2026-11-16 06:17:17.582314082 +0000
++++ relax/base44/shared/bridgeOps.ts	2026-11-16 06:22:08.668341448 +0000
+@@ -350,7 +350,7 @@
+ // opts.overwrite (bulk write_files only) no longer skips the base hash (SPO review 16 Nov 2026): EVERY replace of an
+ // existing file needs expected_sha256 matching live, whatever the overwrite setting. Only a write whose bytes equal the
+ // live file (nothing is replaced: it returns unchanged) or a new file may come without one.
+-export async function writeFile(site: string, relInput: unknown, bytes: Uint8Array, expectedSha: unknown, opts: { allowServerConfig?: boolean; current?: FileBytes; overwrite?: boolean; publisher?: boolean; autoSitemap?: boolean } = {}) {
++export async function writeFile(site: string, relInput: unknown, bytes: Uint8Array, expectedSha: unknown, opts: { allowServerConfig?: boolean; current?: FileBytes; overwrite?: boolean; publisher?: boolean; autoSitemap?: boolean; seoEdit?: boolean } = {}) {
+   const rel = normalizeRel(relInput);
+   // BRIDGE HOLD (14 Nov 2026): checked first, before any read, backup or upload. Every live write
+   // (tools, bulk, sync, restore, publisher) goes through here, so a held site can never be written.
+@@ -365,7 +365,9 @@
+   // LIVE GUARD v2 (14 Nov 2026): live state from the server's own listing + exact-path cPanel read (never HTTP).
+   // Unknown state, delete/move, server config/code and unsafe paths are refused before any backup or upload.
+   const live = await probeLive(site, rel);
+-  const guard = await liveGuard({ site, rel: relInput, op: 'write', live, newBytes: bytes, overrides: GUARD_OVERRIDES, sha256, publisher: opts.publisher === true, autoSitemap: opts.autoSitemap === true });
++  const guard = await liveGuard({ site, rel: relInput, op: 'write', live, newBytes: bytes, overrides: GUARD_OVERRIDES, sha256, publisher: opts.publisher === true, autoSitemap: opts.autoSitemap === true,
++    // APPROVED SEO EDIT RULE (16 Nov 2026): only the Bridge tool routes set seoEdit; never with publisher / autoSitemap.
++    seoEdit: opts.seoEdit === true && opts.publisher !== true && opts.autoSitemap !== true });
+   if (guard) throw new BridgeError(guard, 409);
+   const liveSha = live.state === 'present' ? await sha256(live.bytes) : null;
+ 
+@@ -468,7 +470,7 @@
+   return { site, path: rel, deleted: true as const, beforeSha256: want, backupId: backup.backupId };
+ }
+ 
+-export async function editFile(site: string, relInput: unknown, edits: unknown, baseSha?: unknown) {
++export async function editFile(site: string, relInput: unknown, edits: unknown, baseSha?: unknown, opts: { seoEdit?: boolean } = {}) {
+   if (!Array.isArray(edits) || edits.length === 0 || edits.length > 50) throw new BridgeError('edits must be a list of 1-50 {old_text, new_text}');
+   const { rel, file } = await loadFile(site, relInput);
+   // LIVE EDIT TEMPLATE (15 Nov 2026): base hash from read_live_file; refused if live changed since that read.
+@@ -493,7 +495,7 @@
+     text = text.split(oldText).join(newText);
+     applied.push({ edit: index + 1, replaced: found });
+   }
+-  const result = await writeFile(site, rel, new TextEncoder().encode(text), file.sha256, { current: file });
++  const result = await writeFile(site, rel, new TextEncoder().encode(text), file.sha256, { current: file, seoEdit: opts.seoEdit === true });
+   return { ...result, edits: applied };
+ }
+ 
+@@ -660,7 +662,7 @@
+   return { site, backups: listed.filter((b) => !rel || b.files.includes(rel)) };
+ }
+ 
+-export async function restoreBackup(site: string, backupId: unknown, relInput: unknown) {
++export async function restoreBackup(site: string, backupId: unknown, relInput: unknown, opts: { seoEdit?: boolean } = {}) {
+   if (typeof backupId !== 'string' || !/^\d{8}-\d{6}-[0-9a-f]{6}$/.test(backupId)) throw new BridgeError('backup_id is not valid');
+   const rel = normalizeRel(relInput);
+   const saved = await readBytes(BACKUP_ROOT + '/' + site + '/' + backupId + '/' + flatten(rel));
+@@ -668,7 +670,7 @@
+   const { abs } = await resolvePath(site, rel);
+   const current = await readBytes(abs).catch(() => null);
+   // The restore itself is a normal verified write, so the current version is backed up first.
+-  const result = await writeFile(site, rel, saved.bytes, current?.sha256 || null, current ? { current } : {});
++  const result = await writeFile(site, rel, saved.bytes, current?.sha256 || null, { ...(current ? { current } : {}), seoEdit: opts.seoEdit === true });
+   return { ...result, restoredFrom: backupId };
+ }
+ 
+diff -ru relax-base/base44/shared/bulkWrite.ts relax/base44/shared/bulkWrite.ts
+--- relax-base/base44/shared/bulkWrite.ts	2026-11-16 06:17:17.582389951 +0000
++++ relax/base44/shared/bulkWrite.ts	2026-11-16 06:22:08.668933848 +0000
+@@ -70,14 +70,18 @@
+ 
+ export async function writeMany(body: any, ctx: ToolContext) {
+   const started = Date.now();
+-  return runBulk(body.site, planBulk(body), ctx, { dryRun: body.dry_run === true, started });
++  return runBulk(body.site, planBulk(body), ctx, { dryRun: body.dry_run === true, started,
++    // APPROVED SEO EDIT RULE (16 Nov 2026): only Claude's signed-in session (agent claude, no API key) gets seoEdit.
++    seoEdit: ctx.agent === 'claude' && !ctx.viaKey });
+ }
+ 
+ type BulkPlan = { base: string; overwrite: boolean; files: PlannedFile[]; totalBytes: number };
+ 
+ // Claims check, then the verified writes (same writeFile as write_file), then one audit row
+ // per changed file. Used by write_files and sync_from_github.
+-export async function runBulk(site: string, plan: BulkPlan, ctx: ToolContext, opts: { dryRun: boolean; started: number; beforeWrite?: () => Promise<void> }) {
++export async function runBulk(site: string, plan: BulkPlan, ctx: ToolContext, opts: { dryRun: boolean; started: number; beforeWrite?: () => Promise<void>; seoEdit?: boolean }) {
++  // APPROVED SEO EDIT RULE (16 Nov 2026): write_files passes seoEdit; sync_from_github never does.
++  const seoEdit = opts.seoEdit === true;
+   const started = opts.started;
+ 
+   // BRIDGE HOLD (14 Nov 2026): one held file refuses the whole batch before claims, folders or writes.
+@@ -96,7 +100,7 @@
+     const live = await probeLive(site, f.path);
+     const sha = await sha256(f.bytes);
+     const liveSha = live.state === 'present' ? await sha256(live.bytes) : null;
+-    const refused = await liveGuard({ site, rel: f.path, op: 'write', live, newBytes: f.bytes, overrides: GUARD_OVERRIDES, sha256 });
++    const refused = await liveGuard({ site, rel: f.path, op: 'write', live, newBytes: f.bytes, overrides: GUARD_OVERRIDES, sha256, seoEdit });
+     return { path: f.path, bytes: f.bytes.length, sha256: sha, live_sha256: liveSha,
+       live: live.state === 'unknown' ? 'unknown' : live.state === 'absent' ? 'create' : liveSha === sha ? 'same' : 'update', guard: refused };
+   });
+@@ -137,7 +141,7 @@
+     const t0 = Date.now();
+     if (t0 - started > TIME_BUDGET_MS) return { path: f.path, ok: false, status: 'skipped', error: 'Not started: time budget used up. Send this file again.' } as any;
+     try {
+-      const r: any = await writeFile(site, f.path, f.bytes, f.expected, { overwrite: plan.overwrite });
++      const r: any = await writeFile(site, f.path, f.bytes, f.expected, { overwrite: plan.overwrite, seoEdit });
+       return { path: f.path, ok: true, status: r.unchanged ? 'unchanged' : r.created ? 'created' : 'updated',
+         bytes: f.bytes.length, sha256: r.afterSha256 || r.sha256, verified: r.unchanged ? true : r.verified === true,
+         backupId: r.backupId || null, beforeSha256: r.beforeSha256 || null, url: r.url, ms: Date.now() - t0 };
+diff -ru relax-base/base44/shared/liveGuard.ts relax/base44/shared/liveGuard.ts
+--- relax-base/base44/shared/liveGuard.ts	2026-11-16 06:17:17.583656094 +0000
++++ relax/base44/shared/liveGuard.ts	2026-11-16 06:22:08.669371671 +0000
+@@ -408,6 +408,41 @@
+   return bad ? 'llms.txt has a new line with < > a control character or javascript: : ' + JSON.stringify(bad.slice(0, 100)) : null;
+ }
+ 
++// APPROVED SEO EDIT RULE (Edwin 16 Nov 2026, thread "Relax Bridge live guard for approved edits": "Let Claude's approved
++// jobs edit titles, meta, H1 and content without asking me, keep auto-backups"). For a Bridge TOOL edit of a live HTML page
++// (write_file, edit_file, write_files, restore_backup: writeFile opts.seoEdit, set only on those routes and only for Claude's
++// signed-in Bridge session: agent 'claude' with no API key; the ChatGPT key, site keys and drop keys never get it), a change to the
++// page's <title>, meta description or <h1> text is no longer a refusal and needs no GUARD_OVERRIDES entry. Body content
++// edits already pass when they keep the checks below. The new page must still be sane: the same number of <title> and
++// <h1> elements as live, each 1-200 / 1-250 characters of text, and a non-empty meta description (max 400) whenever live
++// has one. NOT relaxed (still refused exactly as before): older-than-live source, JSON-LD loss or change, FAQ question
++// loss, removal of the "Leave us a Google review" footer, every non-HTML file type, every path rule, the never-write list
++// (.htaccess, .user.ini, php.ini, PHP/CGI/shell code), unknown live state, deletes / moves / renames, the hourly publisher
++// and auto-sitemap routes, sync_from_github and drop_publish (they never pass seoEdit), and the SG Car Workshop directory
++// pages (preview/sgcarworkshop/ keeps its own rule). The BRIDGE HOLD (frozen sites), the blocked-name / secret checks,
++// the base-sha256 compare-and-swap, the verified private backup before every replace and the byte-exact readback all
++// run in writeFile around this guard and are unchanged. SEO_EDIT_ON = false switches the rule off (Base44 code is live on
++// save: changing this needs security review AND Edwin's own written yes before saving).
++export const SEO_EDIT_ON = true;
++const SEO_EDIT_RELAXED = /^(title would change|meta description would change|H1 would change)/;
++
++export function seoEditProblems(liveBytes: Uint8Array, newBytes: Uint8Array, problems: string[]): string[] {
++  const kept = problems.filter((p) => !SEO_EDIT_RELAXED.test(p));
++  if (kept.length === problems.length) return problems;
++  const live = dec(liveBytes), next = dec(newBytes);
++  const t = (h: string) => all(/<title\b[^>]*>([\s\S]*?)<\/title>/gi, h).map(strip);
++  const h1 = (h: string) => all(/<h1\b[^>]*>([\s\S]*?)<\/h1>/gi, h).map(strip);
++  const lt = t(live), nt = t(next), lh = h1(live), nh = h1(next);
++  if (nt.length !== lt.length) kept.push('approved SEO edit: the page must keep ' + lt.length + ' <title> element(s) (has ' + nt.length + ')');
++  else if (nt.some((x) => !x || x.length > 200)) kept.push('approved SEO edit: a title must be 1-200 characters of text');
++  if (nh.length !== lh.length) kept.push('approved SEO edit: the page must keep ' + lh.length + ' <h1> element(s) (has ' + nh.length + ')');
++  else if (nh.some((x) => !x || x.length > 250)) kept.push('approved SEO edit: an H1 must be 1-250 characters of text');
++  const lm = metaDescription(live), nm = metaDescription(next);
++  if (lm !== null && nm === null) kept.push('approved SEO edit: the meta description would be removed');
++  else if (lm && nm !== null && (!nm || nm.length > 400)) kept.push('approved SEO edit: the meta description must be 1-400 characters');
++  return kept;
++}
++
+ const eq = (a: Uint8Array, b: Uint8Array) => a.length === b.length && a.every((x, i) => x === b[i]);
+ 
+ // Returns null when the operation may go ahead, or the refusal text (the caller must not touch the file, and logs it).
+@@ -416,6 +451,7 @@
+   overrides: readonly GuardOverride[]; sha256: (b: Uint8Array) => Promise<string>;
+   publisher?: boolean; // true only for the hourly Page One publisher's own writes (generated-file override)
+   autoSitemap?: boolean; // true only for the auto-sitemap step after a publish (see AUTO SITEMAP RULE)
++  seoEdit?: boolean; // true only for Bridge tool edits (write_file, edit_file, write_files, restore_backup): APPROVED SEO EDIT RULE
+   expectedSha256?: string; // op 'delete' only: the sha256 the caller read just before (see SITEMAP.TXT DELETE RULE)
+ }): Promise<string | null> {
+   const { site, op, live, newBytes, overrides, sha256 } = args;
+@@ -475,6 +511,9 @@
+       problems = why ? ['sgcarworkshop directory data: ' + why] : [];
+     } else if (HTML.test(rel)) problems = sgcwHtmlProblems(live.bytes, newBytes, problems);
+   }
++  if (SEO_EDIT_ON && args.seoEdit === true && args.publisher !== true && HTML.test(rel) && !(site === SGCW_SITE && rel.startsWith(SGCW_PREFIX))) {
++    problems = seoEditProblems(live.bytes, newBytes, problems);
++  }
+   if (!problems.length) return null;
+   const sha = await sha256(newBytes);
+   if (overrides.some((o) => o.site === site && o.path === rel && o.sha256 === sha && o.by === 'Edwin' && o.review)) return null;

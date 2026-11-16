@@ -1,0 +1,89 @@
+allowed  title change
+allowed  meta description change
+allowed  H1 change
+allowed  body content change
+allowed  title + meta + H1 + body together
+allowed  newer date with retitle
+allowed  JSON-LD gains a value
+allowed  .htm page title change
+refused  no seoEdit (sync_from_github / drop_publish route)  -> title would change: "Brake Repair Singapore" -> "Retitled"; meta description would change;
+refused  publisher with seoEdit  -> title would change: "Brake Repair Singapore" -> "Retitled"; meta description would change;
+refused  auto-sitemap with seoEdit (html)  -> auto-sitemap may only replace the site's own root sitemap.xml and llms.txt
+refused  SG Car Workshop page title (own rule kept)  -> title would change: "Brake Repair Singapore" -> "Retitled"; H1 would change: "Brake repair
+allowed  SG Car Workshop meta-only change (its existing rule, unchanged)
+refused  older-than-live source  -> source is older than live (newest date 2026-10-01 < live 2026-11-10). Bring the source up 
+refused  JSON-LD value changed  -> JSON-LD would lose or change 1 value(s), e.g. .telephone = "+65 6000 0000". Bring the sour
+refused  JSON-LD removed  -> JSON-LD would lose or change 3 value(s), e.g. .@type = "AutoRepair". Bring the source up t
+refused  FAQ question lost  -> FAQ would lose 1 question(s), e.g. "How long does it take?". Bring the source up to date w
+refused  review footer removed  -> "Leave us a Google review" footer would be removed. Bring the source up to date with live 
+refused  title removed  -> approved SEO edit: the page must keep 1 <title> element(s) (has 0). Bring the source up to
+refused  second title added  -> approved SEO edit: the page must keep 1 <title> element(s) (has 2). Bring the source up to
+refused  empty title  -> approved SEO edit: a title must be 1-200 characters of text. Bring the source up to date w
+refused  title over 200 chars  -> approved SEO edit: a title must be 1-200 characters of text. Bring the source up to date w
+refused  H1 removed  -> approved SEO edit: the page must keep 1 <h1> element(s) (has 0). Bring the source up to da
+refused  extra H1 added  -> approved SEO edit: the page must keep 1 <h1> element(s) (has 2). Bring the source up to da
+refused  empty H1  -> approved SEO edit: an H1 must be 1-250 characters of text. Bring the source up to date wit
+refused  meta description removed  -> approved SEO edit: the meta description would be removed. Bring the source up to date with
+refused  meta description emptied  -> approved SEO edit: the meta description must be 1-400 characters. Bring the source up to d
+refused  meta description over 400  -> approved SEO edit: the meta description must be 1-400 characters. Bring the source up to d
+refused  replace robots.txt  -> replacing this file type (robots.txt) needs an override. Bring the source up to date with 
+refused  replace sitemap.xml  -> replacing this file type (sitemap.xml) needs an override. Bring the source up to date with
+refused  replace llms.txt  -> replacing this file type (llms.txt) needs an override. Bring the source up to date with li
+refused  replace data/x.json  -> replacing this file type (x.json) needs an override. Bring the source up to date with live
+refused  replace feed.xml  -> replacing this file type (feed.xml) needs an override. Bring the source up to date with li
+refused  replace doc.pdf  -> replacing this file type (doc.pdf) needs an override. Bring the source up to date with liv
+refused  replace site.webmanifest  -> replacing this file type (site.webmanifest) needs an override. Bring the source up to date
+refused  replace notes.txt  -> replacing this file type (notes.txt) needs an override. Bring the source up to date with l
+refused  mykar fb-posts.json bad shape  -> mykar fb-posts.json rule: top-level keys must be exactly page, posts, updated (got x)
+refused  replace .htaccess  -> server configuration and code files are never written by a tool
+refused  create .htaccess  -> server configuration and code files are never written by a tool
+refused  replace svc/.htaccess  -> server configuration and code files are never written by a tool
+refused  create svc/.htaccess  -> server configuration and code files are never written by a tool
+refused  replace .htpasswd  -> server configuration and code files are never written by a tool
+refused  create .htpasswd  -> server configuration and code files are never written by a tool
+refused  replace .user.ini  -> server configuration and code files are never written by a tool
+refused  create .user.ini  -> server configuration and code files are never written by a tool
+refused  replace php.ini  -> server configuration and code files are never written by a tool
+refused  create php.ini  -> server configuration and code files are never written by a tool
+refused  replace contact.php  -> server configuration and code files are never written by a tool
+refused  create contact.php  -> server configuration and code files are never written by a tool
+refused  replace x.phtml  -> server configuration and code files are never written by a tool
+refused  create x.phtml  -> server configuration and code files are never written by a tool
+refused  replace a.phar  -> server configuration and code files are never written by a tool
+refused  create a.phar  -> server configuration and code files are never written by a tool
+refused  replace form.cgi  -> server configuration and code files are never written by a tool
+refused  create form.cgi  -> server configuration and code files are never written by a tool
+refused  replace run.py  -> server configuration and code files are never written by a tool
+refused  create run.py  -> server configuration and code files are never written by a tool
+refused  replace a.pl  -> server configuration and code files are never written by a tool
+refused  create a.pl  -> server configuration and code files are never written by a tool
+refused  replace deploy.sh  -> server configuration and code files are never written by a tool
+refused  create deploy.sh  -> server configuration and code files are never written by a tool
+refused  delete index.html  -> delete of a live file is blocked (only a file named sitemap.txt may be deleted)
+refused  delete .htaccess  -> delete of a live file is blocked (only a file named sitemap.txt may be deleted)
+refused  move  -> move of a live file is blocked
+refused  rename  -> rename of a live file is blocked
+refused  unknown live state  -> the live file could not be confirmed from the server (read error)
+refused  path ../x.html  -> path has an empty, "." or ".." segment
+refused  path /etc/x.html  -> absolute paths are not allowed
+refused  path a//b.html  -> path has an empty, "." or ".." segment
+refused  path a\b.html  -> path contains NUL or backslash
+refused  path https://x.sg/a.html  -> URLs are not allowed
+ok       18 HOLD flags, on: []
+refused  writeFile seoEdit .htaccess  -> .htaccess changes server behaviour; edit it in cPanel File Manager.
+refused  writeFile seoEdit contact.php  -> Server-side code files (contact.php) are not writable through the brid
+refused  writeFile seoEdit .env  -> This file can hold passwords and is never exposed by the bridge.
+refused  writeFile seoEdit wp-config.php  -> This file can hold passwords and is never exposed by the bridge.
+refused  delete_file index.html -> Only a file named exactly sitemap.txt can be deleted
+allowed  write_file title+H1+meta with base; verified; backup 20261116-062239-1f2b5e holds the old page byte-exact
+refused  same write with stale base / no base / without seoEdit; live unchanged
+allowed  restore_backup 20261116-062239-1f2b5e -> old title back, verified; the edited page was backed up first (20261116-062239-7179c6)
+refused  edit_file title change without seoEdit (API key callers) -> title would change
+allowed  edit_file title change; backup 20261116-062239-2e9610
+refused  runBulk without seoEdit (sync_from_github route) -> Nothing was written. LIVE GUARD refused 1 of 1 file(s): LIVE GUARD refused write
+refused  write_files H1 change via ChatGPT key -> H1 would change
+refused  write_files H1 change via site key -> H1 would change
+refused  write_files H1 change via claude via key -> H1 would change
+allowed  write_files H1 change; backup 20261116-062239-9bddb0
+ok       write_file / edit_file / restore_backup / write_files gate on the Claude session; sync, drops, publisher, auto-sitemap, hero image never pass seoEdit
+ok | 8 passed | 0 failed (395ms)
