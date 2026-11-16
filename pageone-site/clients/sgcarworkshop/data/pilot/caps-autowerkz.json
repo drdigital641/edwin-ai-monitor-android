@@ -1,0 +1,59 @@
+{
+ "lede": "CAPS Autowerkz at Kaki Bukit Industrial Estate is a car servicing and repair workshop.",
+ "chips": [
+  "Servicing",
+  "Aircon",
+  "Suspension"
+ ],
+ "services": [
+  "Engine oil servicing",
+  "Gear oil servicing",
+  "Walnut blasting",
+  "Aircon servicing",
+  "Decarbon and catalytic cleaning",
+  "Brake pad replacement",
+  "Suspension"
+ ],
+ "themes": "Customers on Google Maps mention friendly technicians, a clean waiting lounge, coilover suspension work, aircon flushing and follow-up help after installation.",
+ "faqs": [
+  [
+   "What does CAPS Autowerkz do?",
+   "Google Maps lists it as a car repair workshop."
+  ],
+  [
+   "What are the opening hours?",
+   "The hours are listed in the Google Maps section above. Please see Google Maps for current hours."
+  ]
+ ],
+ "sources": "its Google Maps listing and its website",
+ "stories": [],
+ "mentioned_services": [
+  "Suspension",
+  "Aircon",
+  "Servicing",
+  "Brakes"
+ ],
+ "services_note": "Services listed on its website and mentioned on Google Maps. Ask the workshop for its full list.",
+ "specialties": [
+  "Walnut blasting (intake valve carbon cleaning)",
+  "Onsite and emergency services for selected needs"
+ ],
+ "makes": [
+  "Honda",
+  "Toyota",
+  "Mazda",
+  "Hyundai",
+  "Kia",
+  "BYD",
+  "Audi",
+  "BMW",
+  "Mercedes-Benz"
+ ],
+ "makes_note": "Car models named on its website.",
+ "good_to_know": [
+  "Also runs an online car parts store",
+  "Offers onsite services for selected needs"
+ ],
+ "good_to_know_note": "From its website.",
+ "card_rules": "2026-11-05"
+}

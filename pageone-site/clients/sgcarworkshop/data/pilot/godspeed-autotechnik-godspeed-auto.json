@@ -1,0 +1,65 @@
+{
+ "lede": "Godspeed AutoTechnik (Godspeed Auto) at Kaki Bukit Industrial Estate is a continental car servicing and tuning workshop.",
+ "chips": [
+  "Continental servicing",
+  "Suspension",
+  "ECU tuning"
+ ],
+ "services": [
+  "Servicing",
+  "Suspension",
+  "Brake replacement",
+  "Diagnostics",
+  "ECU tuning",
+  "Track setup",
+  "Pre-purchase inspection",
+  "Vehicle modification"
+ ],
+ "themes": "Customers on Google Maps mention suspension and bushing work, tuning that changed how the car drives, clear explanations without upselling and quick diagnosis.",
+ "faqs": [
+  [
+   "What does Godspeed AutoTechnik (Godspeed Auto) do?",
+   "Google Maps lists it as a car repair workshop."
+  ],
+  [
+   "What are the opening hours?",
+   "The hours are listed in the Google Maps section above. Please see Google Maps for current hours."
+  ]
+ ],
+ "sources": "its Google Maps listing and its website",
+ "stories": [],
+ "mentioned_services": [
+  "Suspension",
+  "Tuning",
+  "Diagnostics",
+  "Servicing"
+ ],
+ "services_note": "Services listed on its website and mentioned on Google Maps. Ask the workshop for its full list.",
+ "specialties": [
+  "Continental car servicing",
+  "Suspension work",
+  "ECU tuning and track setup"
+ ],
+ "makes": [
+  "Audi",
+  "Volkswagen",
+  "BMW",
+  "Mercedes-Benz",
+  "Mini",
+  "Porsche",
+  "Volvo",
+  "Land Rover",
+  "Toyota",
+  "Honda",
+  "Nissan",
+  "Subaru"
+ ],
+ "makes_note": "Makes named on its website, with Mercedes and Toyota also mentioned by customers on Google Maps.",
+ "good_to_know": [
+  "Has in-house facilities to service, maintain and upgrade cars",
+  "Offers pre-annual and pre-purchase inspection checks",
+  "Established in 2014"
+ ],
+ "good_to_know_note": "From its website.",
+ "card_rules": "2026-11-05"
+}

@@ -1,0 +1,44 @@
+{
+ "lede": "CO2 Motorwerkz at Soon Lee Street (Pioneer Point) is a car servicing and repair workshop.",
+ "chips": [
+  "Servicing",
+  "Spray painting",
+  "Suspension"
+ ],
+ "services": [
+  "Servicing",
+  "Car repair",
+  "Spray painting",
+  "Coilover work",
+  "Battery",
+  "Tyres",
+  "Wipers"
+ ],
+ "themes": "Customers on Google Maps mention patient staff who explain the work clearly, regular servicing, paintwork and coilover help.",
+ "faqs": [
+  [
+   "What does CO2 Motorwerkz do?",
+   "Google Maps lists it as a car repair workshop."
+  ],
+  [
+   "What are the opening hours?",
+   "The hours are listed in the Google Maps section above. Please see Google Maps for current hours."
+  ]
+ ],
+ "sources": "its Google Maps listing",
+ "stories": [],
+ "mentioned_services": [
+  "Servicing",
+  "Spray painting",
+  "Suspension",
+  "Tyres"
+ ],
+ "services_note": "Services mentioned on Google Maps. Ask the workshop for its full list.",
+ "specialties": [],
+ "makes": [
+  "Honda"
+ ],
+ "makes_note": "Make mentioned in Google Maps customer text. Ask the workshop about your car.",
+ "good_to_know": [],
+ "card_rules": "2026-11-05"
+}

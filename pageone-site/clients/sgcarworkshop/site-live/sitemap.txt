@@ -119,10 +119,12 @@ https://sgcarworkshop.sg/workshops/autobacs-car-care/
 https://sgcarworkshop.sg/workshops/automotive-repair-centre-jurong/
 https://sgcarworkshop.sg/workshops/autotex/
 https://sgcarworkshop.sg/workshops/autowheels-motorworks-bukit-batok-wcega-plaza/
+https://sgcarworkshop.sg/workshops/axwerkz-garage/
 https://sgcarworkshop.sg/workshops/b-motor-works/
 https://sgcarworkshop.sg/workshops/battery-rescue-sg/
 https://sgcarworkshop.sg/workshops/bavworks/
 https://sgcarworkshop.sg/workshops/benz-service-autoserv/
+https://sgcarworkshop.sg/workshops/bl-garage/
 https://sgcarworkshop.sg/workshops/blacknano-paint-protection-center/
 https://sgcarworkshop.sg/workshops/bluwel-automotive-service/
 https://sgcarworkshop.sg/workshops/bms-tuning/
@@ -133,6 +135,7 @@ https://sgcarworkshop.sg/workshops/btm-performance-sg/
 https://sgcarworkshop.sg/workshops/bvo-automotive/
 https://sgcarworkshop.sg/workshops/caltex-havoline-autopro-workshop-yishun-by-motoserv/
 https://sgcarworkshop.sg/workshops/calvin-auto-services/
+https://sgcarworkshop.sg/workshops/caps-autowerkz/
 https://sgcarworkshop.sg/workshops/car-battery-tyre-recovery/
 https://sgcarworkshop.sg/workshops/car-care-centre/
 https://sgcarworkshop.sg/workshops/car-motor-club/
@@ -150,6 +153,7 @@ https://sgcarworkshop.sg/workshops/chee-chai-motor-repairer/
 https://sgcarworkshop.sg/workshops/cheng-auto-bodyworks/
 https://sgcarworkshop.sg/workshops/chin-nam-hup-kee-motor/
 https://sgcarworkshop.sg/workshops/cleanic-detailing/
+https://sgcarworkshop.sg/workshops/co2-motorwerkz/
 https://sgcarworkshop.sg/workshops/codewerx/
 https://sgcarworkshop.sg/workshops/colourkraze-spray-painting-specialist-singapore/
 https://sgcarworkshop.sg/workshops/concours-singapore/
@@ -162,6 +166,7 @@ https://sgcarworkshop.sg/workshops/daiha-auto-service/
 https://sgcarworkshop.sg/workshops/de-sheng-trading/
 https://sgcarworkshop.sg/workshops/dhm-otomotive-werkz/
 https://sgcarworkshop.sg/workshops/ding-auto/
+https://sgcarworkshop.sg/workshops/dreamworks-garage/
 https://sgcarworkshop.sg/workshops/e-care-auto-services/
 https://sgcarworkshop.sg/workshops/edge-tuning/
 https://sgcarworkshop.sg/workshops/edwin-garage/
@@ -170,6 +175,7 @@ https://sgcarworkshop.sg/workshops/elite-car-ventures/
 https://sgcarworkshop.sg/workshops/elites-performance/
 https://sgcarworkshop.sg/workshops/eng-seng-motor/
 https://sgcarworkshop.sg/workshops/eng-shing-mechanical-works/
+https://sgcarworkshop.sg/workshops/entrust-motorworks/
 https://sgcarworkshop.sg/workshops/era-auto/
 https://sgcarworkshop.sg/workshops/eunos-motor-service/
 https://sgcarworkshop.sg/workshops/euroauto-bodywerkz/
@@ -190,8 +196,10 @@ https://sgcarworkshop.sg/workshops/fu-san-auto-shine/
 https://sgcarworkshop.sg/workshops/future-motor-werkz/
 https://sgcarworkshop.sg/workshops/garage-b/
 https://sgcarworkshop.sg/workshops/gary-s-engineering/
+https://sgcarworkshop.sg/workshops/gforce-autotechnik/
 https://sgcarworkshop.sg/workshops/global-auto-specialist/
 https://sgcarworkshop.sg/workshops/gma-automotive-services/
+https://sgcarworkshop.sg/workshops/godspeed-autotechnik-godspeed-auto/
 https://sgcarworkshop.sg/workshops/goodfellas-auto-service-centre/
 https://sgcarworkshop.sg/workshops/grand-auto-garage/
 https://sgcarworkshop.sg/workshops/gt-auto-garage/
@@ -240,6 +248,7 @@ https://sgcarworkshop.sg/workshops/kh-kinetics-autocare-night-friendly/
 https://sgcarworkshop.sg/workshops/khy-motors/
 https://sgcarworkshop.sg/workshops/kim-wah-seng-auto-services/
 https://sgcarworkshop.sg/workshops/kk-auto-m-e/
+https://sgcarworkshop.sg/workshops/kk-garage/
 https://sgcarworkshop.sg/workshops/klar-details/
 https://sgcarworkshop.sg/workshops/koi-motor-works/
 https://sgcarworkshop.sg/workshops/kolorwerx-autoshop/
@@ -248,6 +257,7 @@ https://sgcarworkshop.sg/workshops/kraftwerk-autohaus/
 https://sgcarworkshop.sg/workshops/kt-garage/
 https://sgcarworkshop.sg/workshops/kt-motorwerk-siang-motor/
 https://sgcarworkshop.sg/workshops/ky-auto/
+https://sgcarworkshop.sg/workshops/l-e-autoshop/
 https://sgcarworkshop.sg/workshops/l1-motorsports/
 https://sgcarworkshop.sg/workshops/lambency-detailing-ubi/
 https://sgcarworkshop.sg/workshops/lay-auto-garage/
@@ -294,6 +304,7 @@ https://sgcarworkshop.sg/workshops/my-car-consultant-carros-centre/
 https://sgcarworkshop.sg/workshops/my-car-garage/
 https://sgcarworkshop.sg/workshops/my-tyre-autoservice/
 https://sgcarworkshop.sg/workshops/nam-bee-trading/
+https://sgcarworkshop.sg/workshops/ncs-motorwerkz/
 https://sgcarworkshop.sg/workshops/new-hock-teck-motor-workshop/
 https://sgcarworkshop.sg/workshops/new-zen-werkz/
 https://sgcarworkshop.sg/workshops/noir-autoworks/
@@ -305,6 +316,7 @@ https://sgcarworkshop.sg/workshops/one-garage-color/
 https://sgcarworkshop.sg/workshops/one-zone-automotive/
 https://sgcarworkshop.sg/workshops/ong-guan-choon-motor/
 https://sgcarworkshop.sg/workshops/ong-kian-seng-motor-repairs/
+https://sgcarworkshop.sg/workshops/otjen-auto-garage/
 https://sgcarworkshop.sg/workshops/our-car-garage/
 https://sgcarworkshop.sg/workshops/palm-motorsports/
 https://sgcarworkshop.sg/workshops/paul-hoe-batteries-motor-services/
@@ -332,6 +344,7 @@ https://sgcarworkshop.sg/workshops/rio-motorworks/
 https://sgcarworkshop.sg/workshops/rk-one-stop-autohub/
 https://sgcarworkshop.sg/workshops/rui-chuan-car-repairing/
 https://sgcarworkshop.sg/workshops/rv-motorsports/
+https://sgcarworkshop.sg/workshops/s-e-automotive/
 https://sgcarworkshop.sg/workshops/s-m-performance/
 https://sgcarworkshop.sg/workshops/s-tech-automotive-services/
 https://sgcarworkshop.sg/workshops/sc-garage/
@@ -370,6 +383,7 @@ https://sgcarworkshop.sg/workshops/teutonic-autohaus/
 https://sgcarworkshop.sg/workshops/tg-auto/
 https://sgcarworkshop.sg/workshops/the-ecu-clinic/
 https://sgcarworkshop.sg/workshops/the-local-workshop/
+https://sgcarworkshop.sg/workshops/the-right-workshop/
 https://sgcarworkshop.sg/workshops/thiam-heng-huat/
 https://sgcarworkshop.sg/workshops/top-fuel-automotive/
 https://sgcarworkshop.sg/workshops/toren-technik/
@@ -386,6 +400,7 @@ https://sgcarworkshop.sg/workshops/u-auto-care/
 https://sgcarworkshop.sg/workshops/uber-garage/
 https://sgcarworkshop.sg/workshops/ubi-automobile-services/
 https://sgcarworkshop.sg/workshops/v-shine-auto-spray-painting/
+https://sgcarworkshop.sg/workshops/v-tech-auto-service/
 https://sgcarworkshop.sg/workshops/v8-motor-werkz/
 https://sgcarworkshop.sg/workshops/vader-garage-vader-group/
 https://sgcarworkshop.sg/workshops/vae-motor-works-electrical-battery/

@@ -1,0 +1,58 @@
+{
+ "lede": "KK Garage at Kaki Bukit Industrial Estate is a continental and luxury car repair workshop.",
+ "chips": [
+  "Continental cars",
+  "Diagnostics",
+  "Battery"
+ ],
+ "services": [
+  "Diagnostics",
+  "Engine repair",
+  "Aircon service and repair",
+  "Battery service",
+  "Mild hybrid battery service",
+  "Gearbox repair",
+  "Servicing",
+  "ECU repair"
+ ],
+ "themes": "Customers on Google Maps mention clear communication, advice on what can wait, careful work on continental cars such as Audi and Mercedes-Benz, and easy WhatsApp enquiries.",
+ "faqs": [
+  [
+   "What does KK Garage do?",
+   "Google Maps lists it as a car repair workshop."
+  ],
+  [
+   "What are the opening hours?",
+   "The hours are listed in the Google Maps section above. Please see Google Maps for current hours."
+  ]
+ ],
+ "sources": "its Google Maps listing and its website",
+ "stories": [],
+ "mentioned_services": [
+  "Battery",
+  "Servicing",
+  "ECU repair"
+ ],
+ "services_note": "Services listed on its website and mentioned on Google Maps. Ask the workshop for its full list.",
+ "specialties": [
+  "Continental car servicing",
+  "Luxury and high-performance cars",
+  "Aircon diagnosis and repair"
+ ],
+ "makes": [
+  "Audi",
+  "BMW",
+  "Jaguar",
+  "Land Rover",
+  "Porsche",
+  "Volkswagen",
+  "Mercedes-Benz"
+ ],
+ "makes_note": "Makes named on its website and by customers on Google Maps.",
+ "good_to_know": [
+  "Handles 48V mild hybrid battery service",
+  "Uses advanced diagnostic tools"
+ ],
+ "good_to_know_note": "From its website.",
+ "card_rules": "2026-11-05"
+}

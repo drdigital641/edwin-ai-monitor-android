@@ -1,0 +1,43 @@
+{
+ "lede": "OTJen Auto Garage at Kaki Bukit Industrial Estate is a car repair and tyre workshop.",
+ "chips": [
+  "Tyres",
+  "Servicing",
+  "Shock absorbers"
+ ],
+ "services": [
+  "Tyres",
+  "Shock absorber replacement",
+  "Servicing",
+  "Brake discs and pads",
+  "Timing belt",
+  "Diagnostics"
+ ],
+ "themes": "Customers on Google Maps mention tyre advice and replacement, shock absorber and brake work, and clear explanations of what the car needs.",
+ "faqs": [
+  [
+   "What does OTJen Auto Garage do?",
+   "Google Maps lists it as a car repair workshop."
+  ],
+  [
+   "What are the opening hours?",
+   "The hours are listed in the Google Maps section above. Please see Google Maps for current hours."
+  ]
+ ],
+ "sources": "its Google Maps listing",
+ "stories": [],
+ "mentioned_services": [
+  "Tyres",
+  "Suspension",
+  "Servicing",
+  "Brakes"
+ ],
+ "services_note": "Services mentioned on Google Maps. Ask the workshop for its full list.",
+ "specialties": [],
+ "makes": [
+  "Volkswagen"
+ ],
+ "makes_note": "Make mentioned in Google Maps customer text. Ask the workshop about your car.",
+ "good_to_know": [],
+ "card_rules": "2026-11-05"
+}

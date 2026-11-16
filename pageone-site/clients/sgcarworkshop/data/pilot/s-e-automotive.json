@@ -1,0 +1,38 @@
+{
+ "lede": "S&E Automotive at Soon Lee Street (Pioneer Point) is a car servicing and repair workshop.",
+ "chips": [
+  "Servicing",
+  "Audi and VW"
+ ],
+ "services": [
+  "Car servicing",
+  "Car repair",
+  "Audi and VW servicing"
+ ],
+ "themes": "Customers on Google Maps mention long-standing customers, clear explanations of the work needed and servicing for Audi and VW cars.",
+ "faqs": [
+  [
+   "What does S&E Automotive do?",
+   "Google Maps lists it as a car repair workshop."
+  ],
+  [
+   "What are the opening hours?",
+   "The hours are listed in the Google Maps section above. Please see Google Maps for current hours."
+  ]
+ ],
+ "sources": "its Google Maps listing",
+ "stories": [],
+ "mentioned_services": [
+  "Servicing",
+  "Repairs"
+ ],
+ "services_note": "Services mentioned on Google Maps. Ask the workshop for its full list.",
+ "specialties": [],
+ "makes": [
+  "Audi",
+  "Volkswagen"
+ ],
+ "makes_note": "Makes mentioned in Google Maps customer text. Ask the workshop about your car.",
+ "good_to_know": [],
+ "card_rules": "2026-11-05"
+}

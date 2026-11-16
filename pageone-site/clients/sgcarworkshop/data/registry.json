@@ -4204,7 +4204,7 @@
  },
  {
   "place_id": "ChIJA41oQmYP2jERu81U567zkWA",
-  "slug": "s-e-automotive-pte-ltd",
+  "slug": "s-e-automotive",
   "name_norm": "s e automotive",
   "postal_code": "627605",
   "mobile": "+6582490542",
@@ -4249,7 +4249,7 @@
  },
  {
   "place_id": "ChIJb6EskI4P2jERjqkdQ-2_bOE",
-  "slug": "axwerkz-garage-pte-ltd",
+  "slug": "axwerkz-garage",
   "name_norm": "axwerkz garage",
   "postal_code": "627608",
   "mobile": "+6597535445",
@@ -4267,7 +4267,7 @@
  },
  {
   "place_id": "ChIJd2o2CuEX2jERu1RwOdNCRDE",
-  "slug": "bl-garage-pte-ltd",
+  "slug": "bl-garage",
   "name_norm": "bl garage",
   "postal_code": "417800",
   "mobile": "+6592406288",
@@ -4303,7 +4303,7 @@
  },
  {
   "place_id": "ChIJexU_zuMX2jERujJ5WJK7Jx0",
-  "slug": "godspeed-autotechnik-godspeed-auto-pte-ltd",
+  "slug": "godspeed-autotechnik-godspeed-auto",
   "name_norm": "godspeed autotechnik godspeed auto",
   "postal_code": "417807",
   "mobile": "+6582282877",
@@ -4321,7 +4321,7 @@
  },
  {
   "place_id": "ChIJg-Oh7bQX2jERMQ_K6hR_Dlo",
-  "slug": "caps-autowerkz-pte-ltd",
+  "slug": "caps-autowerkz",
   "name_norm": "caps autowerkz",
   "postal_code": "417807",
   "mobile": "+6592960203",
@@ -4330,7 +4330,7 @@
  },
  {
   "place_id": "ChIJR_-wt2oX2jERqLXW-_V2jf8",
-  "slug": "ncs-motorwerkz-pte-ltd",
+  "slug": "ncs-motorwerkz",
   "name_norm": "ncs motorwerkz",
   "postal_code": "417808",
   "mobile": "+6597297770",
@@ -4339,7 +4339,7 @@
  },
  {
   "place_id": "ChIJTTihZFEX2jERH6kOGwushUk",
-  "slug": "entrust-motorworks-pte-ltd",
+  "slug": "entrust-motorworks",
   "name_norm": "entrust motorworks",
   "postal_code": "417800",
   "mobile": "+6588003033",

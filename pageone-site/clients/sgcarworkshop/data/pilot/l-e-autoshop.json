@@ -1,0 +1,38 @@
+{
+ "lede": "L E Autoshop at Kaki Bukit Industrial Estate is a car repair and servicing workshop.",
+ "chips": [
+  "Servicing",
+  "Car repair",
+  "Engine light checks"
+ ],
+ "services": [
+  "Servicing",
+  "Car repair",
+  "Engine light checks",
+  "Car return to customer's address"
+ ],
+ "themes": "Customers on Google Maps mention long-running customer relationships, straightforward dealing, quick help with an engine light and cars being driven back to them.",
+ "faqs": [
+  [
+   "What does L E Autoshop do?",
+   "Google Maps lists it as a car repair workshop."
+  ],
+  [
+   "What are the opening hours?",
+   "The hours are listed in the Google Maps section above. Please see Google Maps for current hours."
+  ]
+ ],
+ "sources": "its Google Maps listing",
+ "stories": [],
+ "mentioned_services": [
+  "Servicing",
+  "Engine diagnostics",
+  "Repairs"
+ ],
+ "services_note": "Services mentioned on Google Maps. Ask the workshop for its full list.",
+ "specialties": [],
+ "makes": [],
+ "makes_note": "Not listed on its public pages. Ask the workshop about your car.",
+ "good_to_know": [],
+ "card_rules": "2026-11-05"
+}

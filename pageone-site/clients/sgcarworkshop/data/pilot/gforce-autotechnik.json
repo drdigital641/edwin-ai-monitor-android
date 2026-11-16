@@ -1,0 +1,43 @@
+{
+ "lede": "GFORCE Autotechnik at Kaki Bukit Industrial Estate is a car servicing and repair workshop.",
+ "chips": [
+  "Car servicing",
+  "Brakes",
+  "Gearbox"
+ ],
+ "services": [
+  "Servicing",
+  "Tyre repair and replacement",
+  "Wheel alignment",
+  "Aircon repair",
+  "Battery replacement",
+  "Brake repair",
+  "Engine repair",
+  "Transmission repair"
+ ],
+ "themes": "Customers on Google Maps mention clear explanations of what needs doing, no hard selling, friendly staff and careful checks that spotted items such as brake pads and driveshaft issues.",
+ "faqs": [
+  [
+   "What does GFORCE Autotechnik do?",
+   "Google Maps lists it as a car repair workshop."
+  ],
+  [
+   "What are the opening hours?",
+   "The hours are listed in the Google Maps section above. Please see Google Maps for current hours."
+  ]
+ ],
+ "sources": "its Google Maps listing and its website",
+ "stories": [],
+ "mentioned_services": [
+  "Servicing",
+  "Gearbox",
+  "Brakes",
+  "Diagnostics"
+ ],
+ "services_note": "Services listed on its website and mentioned on Google Maps. Ask the workshop for its full list.",
+ "specialties": [],
+ "makes": [],
+ "makes_note": "Not listed on its public pages. Ask the workshop about your car.",
+ "good_to_know": [],
+ "card_rules": "2026-11-05"
+}

@@ -1,0 +1,67 @@
+{
+ "lede": "The Right Workshop at Kaki Bukit Industrial Estate is a multi-make independent car repair and servicing workshop.",
+ "chips": [
+  "Car servicing",
+  "Accident repair",
+  "Pre-purchase inspection"
+ ],
+ "services": [
+  "Car servicing",
+  "Aircon repair",
+  "Tyres and battery",
+  "Suspension repair",
+  "Brake repair",
+  "Engine and gearbox",
+  "Paint and body works",
+  "Pre-purchase inspection"
+ ],
+ "themes": "Customers on Google Maps mention transparent explanations of what is needed, no upselling, quick appointment slots and friendly staff in a relaxed workshop.",
+ "faqs": [
+  [
+   "What does The Right Workshop do?",
+   "Google Maps lists it as a car repair workshop."
+  ],
+  [
+   "What are the opening hours?",
+   "The hours are listed in the Google Maps section above. Please see Google Maps for current hours."
+  ]
+ ],
+ "sources": "its Google Maps listing and its website",
+ "stories": [],
+ "mentioned_services": [
+  "Diagnostics",
+  "Brakes",
+  "Servicing",
+  "Scrapping"
+ ],
+ "services_note": "Services listed on its website and mentioned on Google Maps. Ask the workshop for its full list.",
+ "specialties": [
+  "Multi-make independent servicing",
+  "Accident claims and repair",
+  "Pre-purchase inspection with photos",
+  "Towing and COE renewal help"
+ ],
+ "makes": [
+  "Toyota",
+  "Honda",
+  "Mazda",
+  "Nissan",
+  "Subaru",
+  "BMW",
+  "Mercedes-Benz",
+  "Audi",
+  "Volkswagen",
+  "Hyundai",
+  "Kia",
+  "Porsche",
+  "Tesla"
+ ],
+ "makes_note": "Makes named on its website, which lists 35 brands in total.",
+ "good_to_know": [
+  "Gives itemised quotes before work starts",
+  "Shows photos of worn parts",
+  "Takes bookings online or on WhatsApp"
+ ],
+ "good_to_know_note": "From its website.",
+ "card_rules": "2026-11-05"
+}

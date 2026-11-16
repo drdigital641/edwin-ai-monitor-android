@@ -1,0 +1,49 @@
+{
+ "lede": "Entrust Motorworks at Kaki Bukit Industrial Estate is an independent car servicing and repair workshop.",
+ "chips": [
+  "Servicing",
+  "Accident repair",
+  "On-site repair"
+ ],
+ "services": [
+  "Routine servicing",
+  "Engine rebuilds",
+  "Timing component service",
+  "Accident repair",
+  "Interior electrical work",
+  "On-site repair"
+ ],
+ "themes": "Customers on Google Maps mention friendly staff who explain the work clearly, keep them updated on their car and handle major servicing efficiently.",
+ "faqs": [
+  [
+   "What does Entrust Motorworks do?",
+   "Google Maps lists it as a car repair workshop."
+  ],
+  [
+   "What are the opening hours?",
+   "The hours are listed in the Google Maps section above. Please see Google Maps for current hours."
+  ]
+ ],
+ "sources": "its Google Maps listing and its website",
+ "stories": [],
+ "mentioned_services": [
+  "Servicing"
+ ],
+ "services_note": "Services listed on its website and mentioned on Google Maps. Ask the workshop for its full list.",
+ "specialties": [
+  "Works on all car brands, per its website",
+  "Photo job updates during work"
+ ],
+ "makes": [
+  "All makes (per its website)"
+ ],
+ "makes_note": "From its website. Ask the workshop about your car.",
+ "good_to_know": [
+  "Uses OEM and OES parts first; aftermarket only on request",
+  "Sends photo job updates to your phone",
+  "Written 6-month workmanship warranty on jobs",
+  "Two-post bay"
+ ],
+ "good_to_know_note": "From its website.",
+ "card_rules": "2026-11-05"
+}

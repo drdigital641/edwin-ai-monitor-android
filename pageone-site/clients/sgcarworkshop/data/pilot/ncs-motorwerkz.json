@@ -1,0 +1,51 @@
+{
+ "lede": "NCS Motorwerkz at Kaki Bukit Industrial Estate is a car repair and servicing workshop.",
+ "chips": [
+  "Car repair",
+  "Suspension",
+  "Spray painting"
+ ],
+ "services": [
+  "Aircon repair",
+  "Engine overhaul",
+  "Suspension",
+  "Transmission overhaul",
+  "Brake maintenance",
+  "Coding and programming",
+  "Panel beating",
+  "Spray painting"
+ ],
+ "themes": "Customers on Google Maps mention clear explanations, no pressure to do unneeded work, quick fault finding on items such as ABS and wheel sensors, and fast battery checks.",
+ "faqs": [
+  [
+   "What does NCS Motorwerkz do?",
+   "Google Maps lists it as a car repair workshop."
+  ],
+  [
+   "What are the opening hours?",
+   "The hours are listed in the Google Maps section above. Please see Google Maps for current hours."
+  ]
+ ],
+ "sources": "its Google Maps listing and its website",
+ "stories": [],
+ "mentioned_services": [
+  "Diagnostics",
+  "Battery",
+  "Servicing",
+  "Brakes"
+ ],
+ "services_note": "Services listed on its website and mentioned on Google Maps. Ask the workshop for its full list.",
+ "specialties": [
+  "Suspension and arms work",
+  "NVH noise and vibration testing",
+  "Accident repair quotes via WhatsApp"
+ ],
+ "makes": [],
+ "makes_note": "Not listed on its public pages. Ask the workshop about your car.",
+ "good_to_know": [
+  "Takes accident repair quotes and bookings on WhatsApp",
+  "Offers noise, vibration and harshness testing"
+ ],
+ "good_to_know_note": "From its website.",
+ "card_rules": "2026-11-05"
+}
