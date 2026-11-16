@@ -2176,5 +2176,41 @@
   "mobile_hint": "+6586666866",
   "source": "google_grid_sweep_2026-11-15 (Google phone, Edwin asked)",
   "added": "2026-11-15"
+ },
+ {
+  "place_id": "ChIJp42N-rwR2jERpHwOJbgfwkU",
+  "name_hint": "Zhong Cheng Enterprise",
+  "address_hint": "60 Jln Lam Huat, #04-53 Carros Centre",
+  "postal_code": "737869",
+  "mobile_hint": "+6597506777",
+  "source": "google_grid_sweep_2026-11-16 (Google phone, Edwin asked)",
+  "added": "2026-11-16"
+ },
+ {
+  "place_id": "ChIJ40-6ASoT2jERWrFriZ1IavQ",
+  "name_hint": "Daily Exotics Pte Ltd",
+  "address_hint": "60 Jln Lam Huat, #02-29",
+  "postal_code": "737869",
+  "mobile_hint": "+6596583575",
+  "source": "google_grid_sweep_2026-11-16 (Google phone, Edwin asked)",
+  "added": "2026-11-16"
+ },
+ {
+  "place_id": "ChIJ8TGoTPYT2jERPVr1PuUKu3c",
+  "name_hint": "AT Motorworks",
+  "address_hint": "60 Jln Lam Huat, #03-17 Carros Centre",
+  "postal_code": "737869",
+  "mobile_hint": "+6587007038",
+  "source": "google_grid_sweep_2026-11-16 (Google phone, Edwin asked)",
+  "added": "2026-11-16"
+ },
+ {
+  "place_id": "ChIJl9n751wS2jERZpdBfaftapM",
+  "name_hint": "Munich Autocare Pte Ltd",
+  "address_hint": "07-43 Jln Lam Huat",
+  "postal_code": "737870",
+  "mobile_hint": "+6596826300",
+  "source": "google_grid_sweep_2026-11-16 (Google phone, Edwin asked)",
+  "added": "2026-11-16"
  }
 ]
