@@ -1,0 +1,117 @@
+diff -ruN -x node_modules mk-base/base44/shared/liveGuard.ts mk/base44/shared/liveGuard.ts
+--- mk-base/base44/shared/liveGuard.ts	2026-11-16 04:06:28.111168251 +0000
++++ mk/base44/shared/liveGuard.ts	2026-11-16 04:06:49.339550249 +0000
+@@ -170,6 +170,49 @@
+ // Runs AFTER relProblem, NEVER (.htaccess, .user.ini, php.ini, PHP/CGI/shell code) and the unknown-live check, and the
+ // Bridge's secret/credential checks run before liveGuard, so none of those protections change. Stale writes are still
+ // refused by the base-sha256 compare-and-swap in the write path.
++// MYKAR WEEKLY CAROUSEL RULE (Edwin 16 Nov 2026 12:04pm SGT, thread "Refresh MyKar weekly carousel": "add a STANDING guard
++// override scoped to mykar.my data/fb-posts.json only, nothing else on mykar.my or any other site ... path-scoped, not
++// hash-pinned, so next week's file also passes"). mykar.my docroot = pageone preview/dongfeng-jb/. Only Bridge tool writes
++// (not the publisher) may REPLACE exactly preview/dongfeng-jb/data/fb-posts.json, and only when the new bytes pass the strict
++// shape check below (self-hosted /images/fb/*.webp only, facebook.com permalinks only, no fbcdn, no price/"only" wording in
++// captions, no markup). Runs AFTER relProblem, NEVER and the unknown-live check; the Bridge's secret checks and the base-sha256
++// compare-and-swap still apply. Base44 code is live on save: changing this needs security review AND Edwin's own written yes.
++export const MYKAR_FB_SITE = 'pageone';
++export const MYKAR_FB_PATH = 'preview/dongfeng-jb/data/fb-posts.json';
++const MYKAR_FB_KEYS = ['date', 'image', 'width', 'height', 'caption', 'permalink', 'type'];
++const MYKAR_FB_PRICE = /\bRM\s?\d|\$\s?\d|\bonly\b|\brebates?\b|\bmonthly\b|\bdeposit\b|\bdown\s?payment\b|\binstal+ments?\b|\bbulanan\b|\bhanya\b|\bdiskaun\b|月供|首付|回扣|仅需|只需|只要|优惠价/i;
++
++export function mykarFbProblem(bytes: Uint8Array): string | null {
++  if (bytes.length > 64 * 1024) return 'fb-posts.json over 64 KB';
++  let text: string;
++  try { text = new TextDecoder('utf-8', { fatal: true }).decode(bytes); } catch { return 'not valid UTF-8 text'; }
++  if (/fbcdn/i.test(text)) return 'fbcdn URLs are not allowed (images must be self-hosted)';
++  if (/<|>|javascript\s*:|\bon[a-z]+\s*=/i.test(text)) return 'markup, javascript: or on*= handler text is not allowed';
++  let d: any;
++  try { d = JSON.parse(text.replace(/^﻿/, '')); } catch (e) { return 'not valid JSON (' + String((e as Error).message).slice(0, 80) + ')'; }
++  if (!d || typeof d !== 'object' || Array.isArray(d)) return 'must be a JSON object';
++  const top = Object.keys(d).sort().join(',');
++  if (top !== 'page,posts,updated') return 'top-level keys must be exactly page, posts, updated (got ' + top.slice(0, 80) + ')';
++  if (typeof d.page !== 'string' || !/^https:\/\/www\.facebook\.com\/[A-Za-z0-9._-]+\/?$/.test(d.page)) return 'page must be a https://www.facebook.com/<page> URL';
++  if (typeof d.updated !== 'string' || !/^\d{4}-\d{2}-\d{2}$/.test(d.updated)) return 'updated must be YYYY-MM-DD';
++  if (!Array.isArray(d.posts) || d.posts.length < 1 || d.posts.length > 20) return 'posts must be an array of 1 to 20 posts';
++  for (let i = 0; i < d.posts.length; i++) {
++    const p = d.posts[i]; const n = 'post ' + (i + 1) + ': ';
++    if (!p || typeof p !== 'object' || Array.isArray(p)) return n + 'must be an object';
++    const extra = Object.keys(p).filter((k) => !MYKAR_FB_KEYS.includes(k));
++    if (extra.length) return n + 'unknown key ' + extra[0].slice(0, 40);
++    if (typeof p.date !== 'string' || !/^\d{4}-\d{2}-\d{2}$/.test(p.date)) return n + 'date must be YYYY-MM-DD';
++    if (typeof p.image !== 'string' || !/^\/images\/fb\/[a-z0-9-]{1,80}\.webp$/.test(p.image)) return n + 'image must be a self-hosted /images/fb/<name>.webp path';
++    for (const k of ['width', 'height']) if (!Number.isInteger(p[k]) || p[k] < 1 || p[k] > 4000) return n + k + ' must be a whole number 1-4000';
++    if (typeof p.caption !== 'string' || p.caption.length > 400) return n + 'caption must be text of at most 400 characters';
++    if (/[\x00-\x08\x0b\x0c\x0e-\x1f\x7f]/.test(p.caption)) return n + 'caption has a control character';
++    if (MYKAR_FB_PRICE.test(p.caption)) return n + 'caption quotes a price, payment or "only" (must be empty)';
++    if (typeof p.permalink !== 'string' || !/^https:\/\/www\.facebook\.com\/[A-Za-z0-9/_.?=&%-]{1,300}$/.test(p.permalink)) return n + 'permalink must be a https://www.facebook.com/ link';
++    if (!['photo', 'video', 'link'].includes(p.type)) return n + 'type must be photo, video or link';
++  }
++  return null;
++}
++
+ export const SGCW_SITE = 'pageone';
+ export const SGCW_PREFIX = 'preview/sgcarworkshop/';
+ export const SGCW_DATA_PATH = /^preview\/sgcarworkshop\/assets\/(cards(-[0-9]{1,3})?|claim-listings)\.json$/;
+@@ -421,6 +464,10 @@
+     const why = rel === 'article-cards.json' ? articleCardsProblem(newBytes, live.bytes) : generatedFileProblem(rel, newBytes);
+     return why ? refuse('sggarage generated-file override: ' + why) : null;
+   }
++  if (site === MYKAR_FB_SITE && rel === MYKAR_FB_PATH && args.publisher !== true) {
++    const why = mykarFbProblem(newBytes);
++    return why ? refuse('mykar fb-posts.json rule: ' + why) : null;
++  }
+   if (site === SGCW_SITE && rel.startsWith(SGCW_PREFIX)) {
+     if (SGCW_DATA_PATH.test(rel)) {
+       const why = sgcwDataProblem(newBytes);
+diff -ruN -x node_modules mk-base/tests/mykarFbRule.test.ts mk/tests/mykarFbRule.test.ts
+--- mk-base/tests/mykarFbRule.test.ts	1970-01-01 00:00:00.000000000 +0000
++++ mk/tests/mykarFbRule.test.ts	2026-11-16 04:07:11.873599273 +0000
+@@ -0,0 +1,49 @@
++// MyKar weekly carousel rule (Edwin 16 Nov 2026). Pure guard calls on inline bytes; never touches a live site.
++// Run from a /tmp copy: deno test -A tests/mykarFbRule.test.ts
++import { liveGuard } from '../base44/shared/liveGuard.ts';
++
++const enc = (s: string) => new TextEncoder().encode(s);
++const sha256 = async (b: Uint8Array) => Array.from(new Uint8Array(await crypto.subtle.digest('SHA-256', b as BufferSource))).map((x) => x.toString(16).padStart(2, '0')).join('');
++const g = (site: string, rel: string, next: Uint8Array, publisher = false) =>
++  liveGuard({ site, rel, op: 'write', live: { state: 'present', bytes: enc('{"page":"x","posts":[]}') }, newBytes: next, overrides: [], sha256, publisher });
++const ok = (name: string, r: string | null) => { if (r !== null) throw new Error(name + ' should pass: ' + r); };
++const no = (name: string, r: string | null, re?: RegExp) => { if (r === null) throw new Error(name + ' should be refused'); if (re && !re.test(r)) throw new Error(name + ' wrong reason: ' + r); };
++const P = 'preview/dongfeng-jb/data/fb-posts.json';
++const post = (o: Record<string, unknown> = {}) => ({ date: '2026-11-15', image: '/images/fb/mykar-fb-w20261116-1.webp', width: 809, height: 1080, caption: '',
++  permalink: 'https://www.facebook.com/reel/1685162066337170', type: 'photo', ...o });
++const doc = (posts: unknown[], o: Record<string, unknown> = {}) => enc(JSON.stringify({ page: 'https://www.facebook.com/dongfengjohorbahru/', updated: '2026-11-16', posts, ...o }, null, 2));
++
++Deno.test('mykar fb-posts.json: weekly file passes', async () => {
++  ok('basic', await g('pageone', P, doc([post(), post({ type: 'video', caption: '想问你一个有趣的问题 😊 如果两辆车的预算差不多，你会选择哪一种？ 其实…' }),
++    post({ type: 'link', caption: '🪔✨ Happy Deepavali! Selamat Menyambut Hari Deepavali! May the light of Deepavali bring hap…',
++      permalink: 'https://www.facebook.com/dongfengjohorbahru/posts/pfbid0fMPGjAwsLxTLZCp12WY48NhndtrL8gK6yrMSZbveSy2SsgvDQAEKhx3CYUjBMrd9l' })])));
++});
++
++Deno.test('mykar fb-posts.json: bad content refused', async () => {
++  no('fbcdn image', await g('pageone', P, doc([post({ image: 'https://scontent.fbcdn.net/x.jpg' })])), /fbcdn/);
++  no('remote image', await g('pageone', P, doc([post({ image: 'https://example.com/x.webp' })])), /self-hosted/);
++  no('jpg image', await g('pageone', P, doc([post({ image: '/images/fb/x.jpg' })])), /self-hosted/);
++  no('price RM', await g('pageone', P, doc([post({ caption: 'Now RM 129,800' })])), /price/);
++  no('price $', await g('pageone', P, doc([post({ caption: 'from $99' })])), /price/);
++  no('only', await g('pageone', P, doc([post({ caption: 'Only this week' })])), /price/);
++  no('monthly', await g('pageone', P, doc([post({ caption: 'low monthly payment' })])), /price/);
++  no('月供', await g('pageone', P, doc([post({ caption: '月供超低' })])), /price/);
++  no('markup', await g('pageone', P, doc([post({ caption: '<img src=x onerror=alert(1)>' })])), /markup/);
++  no('javascript permalink', await g('pageone', P, doc([post({ permalink: 'javascript:alert(1)' })])), /javascript|permalink/);
++  no('other host permalink', await g('pageone', P, doc([post({ permalink: 'https://evil.example/x' })])), /permalink/);
++  no('extra key', await g('pageone', P, doc([post({ html: 'x' })])), /unknown key/);
++  no('extra top key', await g('pageone', P, doc([post()], { script: 'x' })), /top-level/);
++  no('empty posts', await g('pageone', P, doc([])), /1 to 20/);
++  no('bad type', await g('pageone', P, doc([post({ type: 'iframe' })])), /type/);
++  no('not json', await g('pageone', P, enc('{"page":')), /not valid JSON/);
++});
++
++Deno.test('mykar rule is scoped to that one file and site', async () => {
++  const good = doc([post()]);
++  no('other json in dongfeng-jb', await g('pageone', 'preview/dongfeng-jb/data/other.json', good), /needs an override/);
++  no('same name other folder', await g('pageone', 'preview/exn-lube/data/fb-posts.json', good), /needs an override/);
++  no('same path other site', await g('sggarage', P, good), /needs an override/);
++  no('root fb-posts.json', await g('pageone', 'data/fb-posts.json', good), /needs an override/);
++  no('publisher route', await g('pageone', P, good, true), /needs an override/);
++  no('htaccess still never', await g('pageone', 'preview/dongfeng-jb/.htaccess', good), /never written/);
++});
