@@ -1,0 +1,85 @@
+diff -ruN spo3-base/base44/shared/bridgeOps.ts spo3/base44/shared/bridgeOps.ts
+--- spo3-base/base44/shared/bridgeOps.ts	2026-11-16 01:55:55.719921733 +0000
++++ spo3/base44/shared/bridgeOps.ts	2026-11-16 01:55:55.765973590 +0000
+@@ -347,8 +347,9 @@
+ 
+ // opts.current: the file exactly as the caller just read it (edit, restore), which saves
+ // re-reading it. The verified backup below still fails if the live file changed since.
+-// opts.overwrite (bulk write_files only): replace an existing file without expected_sha256;
+-// it is still backed up and verified first. A given expected_sha256 is still enforced.
++// opts.overwrite (bulk write_files only) no longer skips the base hash (SPO review 16 Nov 2026): EVERY replace of an
++// existing file needs expected_sha256 matching live, whatever the overwrite setting. Only a write whose bytes equal the
++// live file (nothing is replaced: it returns unchanged) or a new file may come without one.
+ export async function writeFile(site: string, relInput: unknown, bytes: Uint8Array, expectedSha: unknown, opts: { allowServerConfig?: boolean; current?: FileBytes; overwrite?: boolean; publisher?: boolean; autoSitemap?: boolean } = {}) {
+   const rel = normalizeRel(relInput);
+   // BRIDGE HOLD (14 Nov 2026): checked first, before any read, backup or upload. Every live write
+@@ -389,14 +390,14 @@
+     if (ctaProblems.length) throw new BridgeError('CTA GATE refused ' + rel + ' (nothing was changed; add the tracker tag, or send a blocked alert): ' + ctaProblems.join('; '), 422);
+   }
+ 
++  const afterSha = await sha256(bytes);
+   if (current) {
+-    if (!expected && !opts.overwrite) throw new BridgeError('expected_sha256 is required to overwrite ' + rel + '. Read the file first (current sha256: ' + current.sha256 + ')', 409);
++    if (!expected && current.sha256 !== afterSha) throw new BridgeError('expected_sha256 is required to overwrite ' + rel + '. Read the file first (current sha256: ' + current.sha256 + ')', 409);
+     if (expected && expected !== current.sha256) throw new BridgeError('STALE WRITE refused: the live file changed since you read it (now ' + current.sha256 + '). Read it again and redo the change.', 409);
+   } else if (expected) {
+     throw new BridgeError(rel + ' no longer exists on the server. Read again before writing.', 409);
+   }
+ 
+-  const afterSha = await sha256(bytes);
+   if (current && current.sha256 === afterSha) {
+     return { site, path: rel, url: liveUrl(site, rel), saved: false, unchanged: true, sha256: afterSha };
+   }
+diff -ruN spo3-base/tests/liveEdit.test.ts spo3/tests/liveEdit.test.ts
+--- spo3-base/tests/liveEdit.test.ts	2026-11-16 01:55:55.728777079 +0000
++++ spo3/tests/liveEdit.test.ts	2026-11-16 01:55:55.766180859 +0000
+@@ -137,6 +137,17 @@
+   let noBase = ''; try { await writeFile('pageone', 'preview/_live/assets/site.css', enc(amended), null); } catch (e) { noBase = (e as Error).message; }
+   if (!/expected_sha256 is required/.test(noBase)) throw new Error('no base: ' + noBase);
+   console.log('refused  write_file with no base -> ' + noBase.slice(0, 80));
++  // SPO review 16 Nov 2026: overwrite:true (the bulk option) no longer skips the base hash; live stays unchanged.
++  for (const missing of [undefined, null, '']) {
++    let owNoBase = ''; try { await writeFile('pageone', 'preview/_live/assets/site.css', enc(amended), missing, { overwrite: true }); } catch (e) { owNoBase = (e as Error).message; }
++    if (!/expected_sha256 is required to overwrite/.test(owNoBase)) throw new Error('overwrite:true with no base (' + JSON.stringify(missing) + '): ' + owNoBase);
++  }
++  if (new TextDecoder().decode(files.get(P + '/assets/site.css')) !== '.hdr{background:#000}\n.flood{color:blue}\n') throw new Error('overwrite:true without base changed live');
++  console.log('refused  write_file overwrite:true with no / null / empty base; live unchanged');
++  // Writing the exact live bytes replaces nothing: allowed without a base, reported unchanged, nothing uploaded.
++  const same: any = await writeFile('pageone', 'preview/_live/assets/site.css', enc('.hdr{background:#000}\n.flood{color:blue}\n'), null, { overwrite: true });
++  if (!same.unchanged) throw new Error('identical bytes without base should be unchanged: ' + JSON.stringify(same));
++  console.log('allowed  identical bytes without base -> unchanged (no replace)');
+   let staleEdit = ''; try { await editFile('pageone', 'preview/_live/assets/site.css', [{ old_text: '#000', new_text: '#fff' }], read.base_sha256); } catch (e) { staleEdit = (e as Error).message; }
+   if (!/STALE WRITE refused/.test(staleEdit)) throw new Error('stale edit: ' + staleEdit);
+   console.log('refused  edit_file with stale base -> ' + staleEdit.slice(0, 80));
+diff -ruN spo3-base/tests/move3Sites.test.ts spo3/tests/move3Sites.test.ts
+--- spo3-base/tests/move3Sites.test.ts	2026-11-16 01:55:55.729024737 +0000
++++ spo3/tests/move3Sites.test.ts	2026-11-16 01:55:55.766307479 +0000
+@@ -23,6 +23,11 @@
+   for (const [k, d] of NEW3) if ((SITES as any)[k].domain !== d) throw new Error(k + ' domain');
+   for (const [k] of NEW3) { const h = SITE_HOLDS.find((x) => x.key === k)!; if (!h || h.site !== k || h.prefix !== '' || h.on !== false) throw new Error(k + ' hold must be OFF (pinned, SPO 16 Nov)'); }
+   if (SITE_HOLDS.filter((h) => !NEW3.some(([k]) => k === h.key)).some((h) => h.on !== false)) throw new Error('old flags changed');
++  // SPO fix3 (16 Nov 2026): carzy and the 7 newer sites pinned by name, each on === false (not just any boolean).
++  for (const k of ['carzy', 'hybridworld', 'autoseo', 'ecumats', 'apcar', 'jayven', 'urbaneco', 'snapsg']) {
++    const h = SITE_HOLDS.find((x) => x.key === k);
++    if (!h || h.on !== false) throw new Error(k + ' hold must be on === false (SPO fix3)');
++  }
+   if (SITE_HOLDS.length !== 18) throw new Error('hold count');
+   console.log('ok       10 sites; flags ' + NEW3.map(([k]) => k + '=' + SITE_HOLDS.find((x) => x.key === k)!.on).join(' ') + '; other 7 flags off');
+ });
+diff -ruN spo3-base/tests/sggGeneratedOverride.test.ts spo3/tests/sggGeneratedOverride.test.ts
+--- spo3-base/tests/sggGeneratedOverride.test.ts	2026-11-16 01:55:55.729765064 +0000
++++ spo3/tests/sggGeneratedOverride.test.ts	2026-11-16 01:55:55.766617377 +0000
+@@ -24,8 +24,11 @@
+   for (const p of ['sitemap.xml', 'sitemap.txt', 'llms.txt', 'article-cards.json']) if (!SGG_GENERATED_PATH.test(p)) throw new Error(p);
+   for (const p of ['articles/sitemap.xml', 'x/llms.txt', 'llms-full.txt', 'sitemap.xml.bak', 'Sitemap.xml', 'article-cards.json.txt', 'articles/article-cards.json', 'robots.txt', 'index.html'])
+     if (SGG_GENERATED_PATH.test(p)) throw new Error('path should not match: ' + p);
+-  if (SITE_HOLDS.filter((h) => !['ktech', 'benzworld', 'lilian', 'carzy', 'hybridworld', 'autoseo', 'ecumats', 'apcar', 'jayven', 'urbaneco', 'snapsg'].includes(h.key)).some((h) => h.on !== false)) throw new Error('flags changed');
+-  console.log('ok       writers ["publisher","tools"] (tools delta); 4 exact root paths; Page One list unchanged; all 7 flags off (unchanged from 33343ea)');
++  // SPO fix3 (16 Nov 2026): every HOLD flag asserted OFF, the moved sites included (no exclusions).
++  if (SITE_HOLDS.length !== 18) throw new Error('expected 18 HOLD flags, got ' + SITE_HOLDS.length);
++  const onFlags = SITE_HOLDS.filter((h) => h.on !== false).map((h) => h.key);
++  if (onFlags.length) throw new Error('flags must all be on === false: ' + onFlags.join(', '));
++  console.log('ok       writers ["publisher","tools"] (tools delta); 4 exact root paths; Page One list unchanged; all 18 flags off');
+ });
+ 
+ Deno.test('sggarage publisher: the four files are replaced when the content is sane', async () => {

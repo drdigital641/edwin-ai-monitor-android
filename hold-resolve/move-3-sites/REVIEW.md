@@ -136,3 +136,26 @@ Nothing in this diff is saved or written yet.
 **Plan after PASS:**
 - Save items 1 and 2 in Base44 as one save, run the suite and create a checkpoint for Edwin to Publish.
 - Write zh/index.html through the Bridge and check that https://urbanecosolutions.com/zh/ shows the page, not the listing.
+
+## Result of fix2 (16 Nov 2026)
+SPO passed fix2.
+- **Bridge code:** saved as Bridge git 09272b6 on top of fix1. Checkpoint 6afa625b4e3ee19274e840a6 is for Edwin to Publish. Tests: 154 passed, plus the 1 old known failure.
+- **Urban Eco page:** zh/index.html was written through Bridge write_file as a new file (sha256 82cee085...). https://urbanecosolutions.com/zh/ now returns 200 with the noindex refresh page, and no "Index of" listing. auto-sitemap skipped it as noindex, as expected.
+
+## fix3-spo-2026-11-16.diff: NEEDS REVIEW BEFORE SAVE (base = Bridge git 09272b6)
+Nothing in this diff is saved.
+
+**A. write_file / writeFile: the base hash is required for every replace.**
+- `opts.overwrite` no longer skips `expected_sha256`. Any write that would change an existing file without a base is refused (409) before backup or upload, whatever the overwrite setting.
+- One deliberate case is still allowed: bytes identical to live. Nothing is replaced, and it returns `unchanged` with no upload.
+  - This keeps bulk/sync batches with unchanged files working. write_files already sends those files through without a base, after its plan check.
+  - It also means a single write_file of identical bytes now reports unchanged instead of asking for a base.
+  - **SPO: please confirm this is fine.**
+- write_files' own plan check (every `update` needs a matching base) is unchanged.
+- Test (liveEdit.test.ts): overwrite:true with an undefined, null or empty base is refused, and the live file is unchanged. Identical bytes without a base return unchanged.
+
+**B. HOLD flag pins.**
+- move3Sites.test.ts now pins carzy, hybridworld, autoseo, ecumats, apcar, jayven, urbaneco and snapsg by name, each `on === false`. The list check over all 11 moved keys stays.
+- sggGeneratedOverride.test.ts now asserts all 18 SITE_HOLDS flags `on === false`, with no exclusions, and that there are exactly 18.
+
+**Tests on the patched copy:** 154 passed, 1 failed (the same old guardOverrides1115 fixture), 1 ignored. The new assertions sit inside existing tests, so the count stays the same.
