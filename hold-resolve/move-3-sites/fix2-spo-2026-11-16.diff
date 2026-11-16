@@ -1,0 +1,197 @@
+diff -ruN -x openapi.ts spo2-base/base44/functions/bridgeEdit/entry.ts spo2/base44/functions/bridgeEdit/entry.ts
+--- spo2-base/base44/functions/bridgeEdit/entry.ts	2026-11-16 01:28:03.474370628 +0000
++++ spo2/base44/functions/bridgeEdit/entry.ts	2026-11-16 01:28:35.020088806 +0000
+@@ -2,7 +2,8 @@
+ import { editFile } from '../../shared/bridgeOps.ts';
+ import { attachAutoSitemap } from '../../shared/autoSitemapRun.ts';
+ 
+-// expected_sha256 (optional, 15 Nov 2026 live edit template): the base hash from read_live_file; a stale edit is refused.
++// expected_sha256 (REQUIRED since SPO review 16 Nov 2026; live edit template 15 Nov): the base hash from read_live_file.
++// A missing or stale base is refused and nothing is written.
+ // After a saved edit, the auto-sitemap step updates the site's sitemap.xml and llms.txt and sends IndexNow.
+ // Its outcome is only reported (autoSitemap); it never changes the edit.
+ export default bridgeTool('edit', async (body, ctx) => {
+diff -ruN -x openapi.ts spo2-base/base44/functions/bridgeSites/entry.ts spo2/base44/functions/bridgeSites/entry.ts
+--- spo2-base/base44/functions/bridgeSites/entry.ts	2026-11-16 01:28:03.479079645 +0000
++++ spo2/base44/functions/bridgeSites/entry.ts	2026-11-16 01:28:35.020783833 +0000
+@@ -1,4 +1,6 @@
+ import { bridgeTool } from '../../shared/handler.ts';
+ import { listSites, listAccountDomains } from '../../shared/bridgeOps.ts';
++import { sitesView } from '../../shared/sitesView.ts';
+ 
+-export default bridgeTool('sites', async () => ({ sites: await listSites(), account_domains: await listAccountDomains() }), { needsSite: false });
++// account_domains only for the all-sites caller; a site key sees only its own site (SPO review 16 Nov 2026).
++export default bridgeTool('sites', async (_body, ctx) => sitesView(ctx, await listSites(), listAccountDomains), { needsSite: false });
+diff -ruN -x openapi.ts spo2-base/base44/mcp/config.json spo2/base44/mcp/config.json
+--- spo2-base/base44/mcp/config.json	2026-11-16 01:28:03.480851887 +0000
++++ spo2/base44/mcp/config.json	2026-11-16 01:28:52.799262962 +0000
+@@ -270,7 +270,7 @@
+       {
+         "name": "edit_file",
+         "title": "Edit file (find and replace)",
+-        "description": "Preferred way to change part of a text file. Each edit replaces old_text with new_text; old_text must appear exactly expected_occurrences times (default 1) or nothing is changed. The live file is backed up first, then written and verified byte-for-byte; on mismatch the original is restored automatically.",
++        "description": "Preferred way to change part of a text file. Read it first with read_live_file and send its base_sha256 as expected_sha256 (required). Each edit replaces old_text with new_text; old_text must appear exactly expected_occurrences times (default 1) or nothing is changed. The live file is backed up first, then written and verified byte-for-byte; on mismatch the original is restored automatically.",
+         "input_schema": {
+           "properties": {
+             "edits": {
+@@ -326,13 +326,14 @@
+             },
+             "expected_sha256": {
+               "type": "string",
+-              "description": "Optional: base_sha256 from read_live_file. The edit is refused if the live file changed since that read."
++              "description": "Required: base_sha256 from read_live_file. The edit is refused if it is missing or the live file changed since that read."
+             }
+           },
+           "required": [
+             "site",
+             "path",
+-            "edits"
++            "edits",
++            "expected_sha256"
+           ],
+           "type": "object"
+         },
+diff -ruN -x openapi.ts spo2-base/base44/shared/bridgeOps.ts spo2/base44/shared/bridgeOps.ts
+--- spo2-base/base44/shared/bridgeOps.ts	2026-11-16 01:28:03.486826849 +0000
++++ spo2/base44/shared/bridgeOps.ts	2026-11-16 01:28:35.019896177 +0000
+@@ -470,8 +470,11 @@
+ export async function editFile(site: string, relInput: unknown, edits: unknown, baseSha?: unknown) {
+   if (!Array.isArray(edits) || edits.length === 0 || edits.length > 50) throw new BridgeError('edits must be a list of 1-50 {old_text, new_text}');
+   const { rel, file } = await loadFile(site, relInput);
+-  // LIVE EDIT TEMPLATE (15 Nov 2026): optional base hash from read_live_file; refused if live changed since that read.
+-  if (baseSha !== undefined && baseSha !== null && baseSha !== '') {
++  // LIVE EDIT TEMPLATE (15 Nov 2026): base hash from read_live_file; refused if live changed since that read.
++  // REQUIRED since SPO review 16 Nov 2026: an edit always replaces a live file, so it needs the base hash, the same as
++  // write_file and write_files replaces. Missing or malformed: refused before anything is written.
++  if (baseSha === undefined || baseSha === null || baseSha === '') throw new BridgeError('expected_sha256 is required to edit ' + rel + '. Read it first with read_live_file and send its base_sha256 (current sha256: ' + file.sha256 + ')', 409);
++  {
+     if (typeof baseSha !== 'string' || !/^[0-9a-f]{64}$/i.test(baseSha)) throw new BridgeError('expected_sha256 must be 64 hex characters');
+     if (baseSha.toLowerCase() !== file.sha256) throw new BridgeError('STALE WRITE refused: the live file changed since you read it (you read ' + baseSha.toLowerCase() + ', live is now ' + file.sha256 + '). Read it again and redo the change. Nothing was changed.', 409);
+   }
+diff -ruN -x openapi.ts spo2-base/base44/shared/handler.ts spo2/base44/shared/handler.ts
+--- spo2-base/base44/shared/handler.ts	2026-11-16 01:28:03.484053632 +0000
++++ spo2/base44/shared/handler.ts	2026-11-16 01:28:35.020643183 +0000
+@@ -56,7 +56,9 @@
+   try { await base44.asServiceRole.entities.BridgeAuthLog.create(entry); } catch { /* never block a request */ }
+ }
+ 
+-export type ToolContext = { base44: any; agent: Agent; viaKey: boolean; email: string | null; keyLabel: string | null };
++// siteOnly: the one site a site key belongs to (null for every other caller). allSites: true only for the full
++// (all-sites) key and Claude's signed-in admin session; overview, needs and drop keys are false (SPO review 16 Nov 2026).
++export type ToolContext = { base44: any; agent: Agent; viaKey: boolean; email: string | null; keyLabel: string | null; siteOnly: string | null; allSites: boolean };
+ 
+ // Shared wrapper for every bridge function: admin-only, bounded JSON body, audit log.
+ // The API key means the ChatGPT Custom GPT; a signed-in admin means Claude's connector.
+@@ -116,7 +118,8 @@
+       const viaKey = user === KEY_ACTOR || user === OVERVIEW_ACTOR || user === NEEDS_ACTOR || Boolean(siteOnly) || Boolean(dropKey);
+       await authLog(base44, { endpoint: action, allowed: true, ...authMeta });
+       authMeta.__ran = true; // errors after this point are not auth denials
+-      const result = await run(body, { base44, agent, viaKey, email: user?.email || null, keyLabel: dropKey });
++      const allSites = user === KEY_ACTOR || (key === null && user?.role === 'admin');
++      const result = await run(body, { base44, agent, viaKey, email: user?.email || null, keyLabel: dropKey, siteOnly, allSites });
+       if (opts.logs) await audit(base44, user, action, body, true, result, null, started);
+       return Response.json({ ok: true, ...result }, { headers: { 'Cache-Control': 'no-store' } });
+     } catch (error) {
+diff -ruN -x openapi.ts spo2-base/base44/shared/sitesView.ts spo2/base44/shared/sitesView.ts
+--- spo2-base/base44/shared/sitesView.ts	1970-01-01 00:00:00.000000000 +0000
++++ spo2/base44/shared/sitesView.ts	2026-11-16 01:28:35.020714673 +0000
+@@ -0,0 +1,10 @@
++// SITES VIEW (SPO review 16 Nov 2026): what the sites tool shows each caller.
++// account_domains lists every cPanel domain and folder on the account, so only the all-sites caller (the full key or
++// Claude's signed-in admin session) gets it. A site key sees only its own site row and never account_domains; any other
++// caller gets the site rows only. Today a site key cannot run the sites tool at all (SITE_KEY_ACTIONS); this keeps the
++// answer safe if that list ever grows.
++export function sitesView<S extends { site: string }, D>(caller: { siteOnly: string | null; allSites: boolean }, sites: S[], domains: () => Promise<D[]>) {
++  if (caller.siteOnly) return Promise.resolve({ sites: sites.filter((s) => s.site === caller.siteOnly) });
++  if (!caller.allSites) return Promise.resolve({ sites });
++  return domains().then((account_domains) => ({ sites, account_domains }));
++}
+diff -ruN -x openapi.ts spo2-base/tests/liveEdit.test.ts spo2/tests/liveEdit.test.ts
+--- spo2-base/tests/liveEdit.test.ts	2026-11-16 01:28:03.495866936 +0000
++++ spo2/tests/liveEdit.test.ts	2026-11-16 01:29:10.910524289 +0000
+@@ -140,6 +140,15 @@
+   let staleEdit = ''; try { await editFile('pageone', 'preview/_live/assets/site.css', [{ old_text: '#000', new_text: '#fff' }], read.base_sha256); } catch (e) { staleEdit = (e as Error).message; }
+   if (!/STALE WRITE refused/.test(staleEdit)) throw new Error('stale edit: ' + staleEdit);
+   console.log('refused  edit_file with stale base -> ' + staleEdit.slice(0, 80));
++  // SPO review 16 Nov 2026: the base hash is REQUIRED on edit_file (it always replaces a live file); nothing is written.
++  for (const missing of [undefined, null, '']) {
++    let noEditBase = ''; try { await editFile('pageone', 'preview/_live/assets/site.css', [{ old_text: '#000', new_text: '#fff' }], missing); } catch (e) { noEditBase = (e as Error).message; }
++    if (!/expected_sha256 is required to edit/.test(noEditBase)) throw new Error('edit with no base (' + JSON.stringify(missing) + '): ' + noEditBase);
++  }
++  let badEditBase = ''; try { await editFile('pageone', 'preview/_live/assets/site.css', [{ old_text: '#000', new_text: '#fff' }], 'abc'); } catch (e) { badEditBase = (e as Error).message; }
++  if (!/64 hex characters/.test(badEditBase)) throw new Error('edit with malformed base: ' + badEditBase);
++  if (new TextDecoder().decode(files.get(P + '/assets/site.css')) !== '.hdr{background:#000}\n.flood{color:blue}\n') throw new Error('edit without base changed live');
++  console.log('refused  edit_file with no / empty / malformed base; live unchanged');
+   // Fresh read, amend, write with the new base: allowed, and the other change (.flood) is kept.
+   const fresh: any = await readLiveFile('pageone', 'preview/_live/assets/site.css');
+   const w: any = await writeFile('pageone', 'preview/_live/assets/site.css', enc(fresh.content.replace('#000', '#fff')), fresh.base_sha256);
+diff -ruN -x openapi.ts spo2-base/tests/sitesView.test.ts spo2/tests/sitesView.test.ts
+--- spo2-base/tests/sitesView.test.ts	1970-01-01 00:00:00.000000000 +0000
++++ spo2/tests/sitesView.test.ts	2026-11-16 01:29:10.910629579 +0000
+@@ -0,0 +1,22 @@
++// SITES VIEW self-test (SPO review 16 Nov 2026): account_domains goes only to the all-sites caller.
++// Run: deno test --no-check -A --import-map tests/importmap.json tests/sitesView.test.ts
++import { sitesView } from '../base44/shared/sitesView.ts';
++
++const SITES = [{ site: 'ktech', folder: 'public_html/ktech.my' }, { site: 'urbaneco', folder: 'public_html/urbanecosolutions.com' }];
++const DOMAINS = [{ domain: 'sgmodder.com', folder: 'public_html' }, { domain: 'ktech.my', folder: 'public_html/ktech.my' }];
++
++Deno.test('sites: all-sites caller gets account_domains; a site key only its own site; other keys no domains', async () => {
++  let asked = 0;
++  const domains = async () => { asked++; return DOMAINS; };
++  const all: any = await sitesView({ siteOnly: null, allSites: true }, SITES, domains);
++  if (all.sites.length !== 2 || JSON.stringify(all.account_domains) !== JSON.stringify(DOMAINS) || asked !== 1) throw new Error('all-sites view');
++  const own: any = await sitesView({ siteOnly: 'ktech', allSites: false }, SITES, domains);
++  if ('account_domains' in own || own.sites.length !== 1 || own.sites[0].site !== 'ktech') throw new Error('site key view: ' + JSON.stringify(own));
++  // A site key is never treated as all-sites, even if both flags were set by mistake.
++  const both: any = await sitesView({ siteOnly: 'urbaneco', allSites: true }, SITES, domains);
++  if ('account_domains' in both || both.sites.length !== 1 || both.sites[0].site !== 'urbaneco') throw new Error('site key wins');
++  const other: any = await sitesView({ siteOnly: null, allSites: false }, SITES, domains);
++  if ('account_domains' in other || other.sites.length !== 2) throw new Error('other key view');
++  if (asked !== 1) throw new Error('cPanel domain list fetched for a caller that may not see it');
++  console.log('ok       account_domains: all-sites only; site key sees only its own row; overview/needs/drop: no domains, never fetched');
++});
+--- a/base44/shared/openapi.ts (OPENAPI pretty-printed)
++++ b/base44/shared/openapi.ts (OPENAPI pretty-printed)
+@@ -144,7 +144,8 @@
+         "required": [
+          "site",
+          "path",
+-         "edits"
++         "edits",
++         "expected_sha256"
+         ],
+         "properties": {
+          "site": {
+@@ -182,7 +183,7 @@
+          },
+          "expected_sha256": {
+           "type": "string",
+-          "description": "Optional base_sha256 from readLiveFile; refused if live changed since."
++          "description": "Required: base_sha256 from readLiveFile; refused if missing or if live changed since."
+          }
+         }
+        }
+--- /dev/null (urbanecosolutions.com zh/index.html does not exist; Apache shows an "Index of /zh" listing)
++++ b/urbaneco-live/zh/index.html (written through the Bridge write_file, new file)
+@@ -0,0 +1,20 @@
++<!doctype html>
++<html lang="zh-Hans-SG">
++<head>
++<meta charset="utf-8">
++<meta name="viewport" content="width=device-width, initial-scale=1">
++<title>中文 | Urban Eco Solutions</title>
++<meta name="robots" content="noindex, follow">
++<link rel="canonical" href="https://urbanecosolutions.com/zh/articles/">
++<meta http-equiv="refresh" content="0; url=/zh/articles/">
++<meta name="theme-color" content="#f7f4ec">
++<link rel="icon" href="/assets/img/favicon-32.png" type="image/png" sizes="32x32">
++<style>body{margin:0;background:#f7f4ec;color:#1f2a1c;font:16px/1.6 system-ui,-apple-system,"PingFang SC","Microsoft YaHei",sans-serif}main{max-width:36rem;margin:20vh auto;padding:0 16px;text-align:center}a{color:#2f6b1f}</style>
++</head>
++<body>
++<main>
++<p>中文内容在<a href="/zh/articles/">文章</a>页面。</p>
++<p lang="en-SG"><a href="/">Urban Eco Solutions home (English)</a></p>
++</main>
++</body>
++</html>

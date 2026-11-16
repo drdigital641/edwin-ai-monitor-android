@@ -101,3 +101,38 @@ The secret-like strings in step3 are the detection regexes, not real values.
 3. Create a checkpoint for Edwin to Publish.
 
 MCP tool calls run the published code, so items 1 and 3 reach the live tools only after Publish.
+
+## Result of fix1 (16 Nov 2026)
+SPO passed fix1. It was saved as Bridge git 1ccdcb1 (identical to fix1-spo-2026-11-16.diff), checkpoint 6afa5badb74a001722d2a792 for Edwin to Publish. Tests on the saved code: 153 passed, 1 old known failure. Before the Publish, the live sites list shows 17 roots, none equal to `public_html` and none nested in another, so the nested check drops nothing.
+
+## fix2-spo-2026-11-16.diff: NEEDS REVIEW BEFORE SAVE (base = Bridge git 1ccdcb1)
+Nothing in this diff is saved or written yet.
+
+1. **sites / account_domains to the all-sites caller only.**
+   - `ToolContext` gains `siteOnly` and `allSites`.
+   - `allSites` is true only for the full key (ChatGPT, BRIDGE_API_KEY) and Claude's signed-in admin session. It is false for overview, needs and drop keys.
+   - New `shared/sitesView.ts`:
+     - A site key gets only its own site row and never account_domains.
+     - Other non-all-sites callers get the site rows only, and the cPanel domain list is not even fetched for them.
+   - Note: a site key could not call `sites` before either (`SITE_KEY_ACTIONS` = list, read, write). This makes the answer safe if that list grows. Overview, needs and drop keys were already refused by their own allow-lists.
+   - Test: `tests/sitesView.test.ts`.
+2. **expected_sha256 REQUIRED on edit_file.**
+   - `editFile` refuses a missing, empty or null base hash (409) before writing, and a malformed one (400).
+   - The MCP schema and the OpenAPI schema now list it as required. The OpenAPI diff is shown pretty-printed because the file is one JSON line.
+   - **write_file already required it** for replacing an existing file (`writeFile` line ~393, `expected_sha256 is required to overwrite`; bridgeWrite passes no `overwrite` option). It is already tested in liveEdit.test.ts ("refused write_file with no base"), so there is no code change there.
+   - Callers: every night-run runbook already sends expected_sha256 on edit_file (alicia, cleanic, pageone, hero-image backfill).
+   - Test: added to `tests/liveEdit.test.ts`.
+3. **HOLD pins for carzy and the 7 newer sites.** These were already done in fix1: the move3Sites config test pins `on === false` for all 11 moved keys. No change here.
+4. **Urban Eco /zh/ open directory listing.**
+   - zh/ holds only `articles/`. The site's only Chinese content is the zh articles hub, and the home page is bilingual in place.
+   - New file `zh/index.html` (904 bytes):
+     - `noindex, follow`, canonical to /zh/articles/, and a meta refresh to /zh/articles/.
+     - Two visible links: the zh hub and the English home.
+     - No scripts, no .htaccess, and no sitemap entry.
+   - It will be written with Bridge write_file as a new file, followed by IndexNow.
+
+**Tests on the patched copy:** 154 passed, 1 failed (the same old guardOverrides1115 fixture failure), 1 ignored.
+
+**Plan after PASS:**
+- Save items 1 and 2 in Base44 as one save, run the suite and create a checkpoint for Edwin to Publish.
+- Write zh/index.html through the Bridge and check that https://urbanecosolutions.com/zh/ shows the page, not the listing.
