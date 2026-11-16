@@ -21,7 +21,10 @@ claude/project-thread-6s51oo (cf7fa7f). Work on a new branch from 6s51oo and cop
    is separate and does not use GSC.
    Pick: the top TODO of section A; when A is empty, the top of B. If it has no v4 set (`v4_set` null), follow
    `no_images_policy` (Edwin 4:03pm: "make", never skip). Maison Design Helper makes v4 sets in GSC order, 2 ahead, into
-   images/new-launches/<slug>-v4/: list that folder through the Bridge first and use its set when present. "make" = create the 4 v4 renders with Base44 (living, kitchen, main bedroom, common bedroom,
+   images/new-launches/<slug>-v4/: list that folder through the Bridge first and use its set when present. If the
+   project has `v4_drop` in launch-queue.json (or Bridge drop_list shows a ready drop for it), drop_read its JSON + README,
+   take facts, plan credit and GAPS from the README (state gaps honestly, never fill them), drop_publish the WebPs into
+   images/new-launches/<slug>-v4/, and drop_clear only after the live check. Never regenerate a set that is in a drop. "make" = create the 4 v4 renders with Base44 (living, kitchen, main bedroom, common bedroom,
    same naming as existing <slug>-v4 folders) plus the official HDB Layout Ideas / brochure plan, publish them to
    images/new-launches/<slug>-v4/ through the Bridge, then build; "skip" = take the next project that has a set and log
    the skipped one as "waiting for images". If images cannot be made today, log "blocked: images" and build the next

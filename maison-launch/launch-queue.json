@@ -109,14 +109,21 @@
    "launch_basis": "firm",
    "launch_source": "HDB BTO portal (page facts)",
    "status": "TODO",
-   "v4_set": null,
-   "floor_plan": false,
+   "v4_set": "merpati-meadow-v4 (drop 6afaba8fdaa0c916c2eab033)",
+   "floor_plan": true,
    "gsc_28d": {
     "clicks": 10,
     "impressions": 345,
     "position": 8.59
    },
-   "section": "A"
+   "section": "A",
+   "v4_drop": {
+    "drop_id": "6afaba8fdaa0c916c2eab033",
+    "site": "maisoninteriordesign.sg",
+    "status": "ready 16 Nov 4:12pm SGT (Maison Design Helper)",
+    "plan": "HDB Layout Ideas 4-room, about 89 sq m",
+    "gaps": "typical plan only; no 2-room Flexi layouts; no key date; blocks/views unverified"
+   }
   },
   {
    "slug": "plantation-edge-i-and-ii",
@@ -127,14 +134,21 @@
    "launch_basis": "none",
    "launch_source": "",
    "status": "TODO",
-   "v4_set": null,
-   "floor_plan": false,
+   "v4_set": "plantation-edge-i-and-ii-v4 (drop 6afabacea93cdb96da1def0c)",
+   "floor_plan": true,
    "gsc_28d": {
     "clicks": 10,
     "impressions": 302,
     "position": 8.08
    },
-   "section": "A"
+   "section": "A",
+   "v4_drop": {
+    "drop_id": "6afabacea93cdb96da1def0c",
+    "site": "maisoninteriordesign.sg",
+    "status": "ready 16 Nov 4:12pm SGT (Maison Design Helper)",
+    "plan": "HDB Oct 2023 brochure 4-room, about 93 sq m, pp 19-20",
+    "gaps": "no official completion or key date (leave out the third-party Dec 2027 estimate); no per-type unit counts"
+   }
   },
   {
    "slug": "plantation-verge",
@@ -603,10 +617,17 @@
    "launch_basis": "recorded",
    "launch_source": "page (newspaper report)",
    "status": "TODO",
-   "v4_set": null,
-   "floor_plan": false,
+   "v4_set": "coastal-cabana-v4 (drop 6afabaa6b2a3c08d4c3ca7a8)",
+   "floor_plan": true,
    "gsc_28d": null,
-   "section": "B"
+   "section": "B",
+   "v4_drop": {
+    "drop_id": "6afabaa6b2a3c08d4c3ca7a8",
+    "site": "maisoninteriordesign.sg",
+    "status": "ready 16 Nov 4:12pm SGT (Maison Design Helper)",
+    "plan": "see drop README",
+    "gaps": "see drop README"
+   }
   },
   {
    "slug": "newport-residences",

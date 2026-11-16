@@ -11,8 +11,8 @@ No v4 set on the next project: policy 'make' (make = create the Base44 v4 set + 
 
 | # | Project | Type | Clicks | Impr. | Pos. | Launch | v4 set | Floor plan |
 |---|---|---|---|---|---|---|---|---|
-| 1 | Merpati Meadow | BTO | 10 | 345 | 8.59 | Nov 2026 BTO | N | N |
-| 2 | Plantation Edge I & II | HDB | 10 | 302 | 8.08 | not on file | N | N |
+| 1 | Merpati Meadow | BTO | 10 | 345 | 8.59 | Nov 2026 BTO | Y | Y |
+| 2 | Plantation Edge I & II | HDB | 10 | 302 | 8.08 | not on file | Y | Y |
 | 3 | Plantation Verge | HDB | 5 | 130 | 9.22 | not on file | N | N |
 | 4 | Sembawang Portico | BTO | 5 | 101 | 8.95 | 16 Jun 2026 BTO | N | N |
 | 5 | Luxus Hills Phase 10 | Landed | 3 | 79 | 6.85 | Sep 2026 (unofficial) | N | N |
@@ -45,7 +45,7 @@ No v4 set on the next project: policy 'make' (make = create the Base44 v4 set + 
 | 5 | Lumina Grand | EC | 2024 (year only) | firm | Y | N |
 | 6 | Norwood Grand | Condo | 4 Oct 2024 preview | firm | Y | Y |
 | 7 | The Orie | Condo | Jan 2025 | recorded | N | N |
-| 8 | Coastal Cabana | EC | Jan 2026 | recorded | N | N |
+| 8 | Coastal Cabana | EC | Jan 2026 | recorded | Y | Y |
 | 9 | Newport Residences | Condo | Jan 2026 | firm | N | N |
 | 10 | Narra Residences | Condo | end Jan 2026 | recorded | N | N |
 | 11 | February 2026 SBF exercise | HDB | 4 Feb 2026 SBF | recorded | N | N |
@@ -118,5 +118,11 @@ No v4 set on the next project: policy 'make' (make = create the Base44 v4 set + 
 | Plantation Dew | Nov 2026 BTO |
 | Sembawang Anchor | Nov 2026 BTO |
 | Toa Payoh Hillside | Nov 2026 BTO |
+
+## v4 drops waiting in the Bridge drop-folder (use these, do not regenerate; follow each README, state its gaps)
+
+- Merpati Meadow: drop 6afaba8fdaa0c916c2eab033 (ready 16 Nov 4:12pm SGT (Maison Design Helper)). Plan: HDB Layout Ideas 4-room, about 89 sq m. Gaps: typical plan only; no 2-room Flexi layouts; no key date; blocks/views unverified.
+- Plantation Edge I & II: drop 6afabacea93cdb96da1def0c (ready 16 Nov 4:12pm SGT (Maison Design Helper)). Plan: HDB Oct 2023 brochure 4-room, about 93 sq m, pp 19-20. Gaps: no official completion or key date (leave out the third-party Dec 2027 estimate); no per-type unit counts.
+- Coastal Cabana: drop 6afabaa6b2a3c08d4c3ca7a8 (ready 16 Nov 4:12pm SGT (Maison Design Helper)). Plan: see drop README. Gaps: see drop README.
 
 Basis: firm = official source; recorded = date recorded on our page from a third-party list; planned = planned/unconfirmed; none = no launch date on file (A-Z).
