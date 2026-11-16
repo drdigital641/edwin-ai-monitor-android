@@ -1,0 +1,48 @@
+diff --git a/base44/shared/bridgeConfig.ts b/base44/shared/bridgeConfig.ts
+index 72e3735..ea04491 100644
+--- a/base44/shared/bridgeConfig.ts
++++ b/base44/shared/bridgeConfig.ts
+@@ -125,10 +125,10 @@ export const SITE_HOLDS: readonly SiteHold[] = Object.freeze([
+   { key: 'cska', name: 'CSKA (cskatrading.com)', on: false, site: 'pageone', prefix: 'preview/cska-auto/' },
+   { key: 'jacky', name: 'Jacky Gearbox (jackygearbox.com)', on: false, site: 'pageone', prefix: 'preview/dmts/' },
+   { key: 'ben', name: 'Benjamin Poon (planwithben.sg)', on: false, site: 'pageone', prefix: 'preview/benjamin-poon/' },
+-  // MOVE 3 SITES: ON until source = live (guard dry run 0 differences), then OFF in a second save (Edwin asked HOLD off).
+-  { key: 'ktech', name: 'K Tech (ktech.my)', on: true, site: 'ktech', prefix: '' },
+-  { key: 'benzworld', name: 'Benz World (benzworld.my)', on: true, site: 'benzworld', prefix: '' },
+-  { key: 'lilian', name: 'Li Lian Properties (lilianproperties.com)', on: true, site: 'lilian', prefix: '' },
++  // MOVE 3 SITES: saved ON 15 Nov 12:47am SGT; OFF one at a time ~1:15am after guard dry runs showed 0 differences (Edwin asked HOLD off).
++  { key: 'ktech', name: 'K Tech (ktech.my)', on: false, site: 'ktech', prefix: '' },
++  { key: 'benzworld', name: 'Benz World (benzworld.my)', on: false, site: 'benzworld', prefix: '' },
++  { key: 'lilian', name: 'Li Lian Properties (lilianproperties.com)', on: false, site: 'lilian', prefix: '' },
+ ]);
+ 
+ function holdCovers(h: SiteHold, site: string, rel: string): boolean {
+diff --git a/tests/move3Sites.test.ts b/tests/move3Sites.test.ts
+index a07f320..950f820 100644
+--- a/tests/move3Sites.test.ts
++++ b/tests/move3Sites.test.ts
+@@ -17,18 +17,19 @@ const XML = (d: string, extra = '') => `<?xml version="1.0" encoding="UTF-8"?>\n
+ const NEW3: [string, string][] = [['ktech', 'ktech.my'], ['benzworld', 'benzworld.my'], ['lilian', 'lilianproperties.com']];
+ const PAGE = (title: string) => `<!doctype html><html><head><title>${title}</title><meta name="description" content="d"></head><body><h1>H</h1></body></html>`;
+ 
+-Deno.test('config: 3 sites added with their domains, old 6 unchanged, HOLD ON for the 3 (step 1), old 7 flags unchanged', () => {
++Deno.test('config: 3 sites added with their domains, old 6 unchanged, a whole-site HOLD flag for each of the 3, old 7 flags unchanged', () => {
+   const keys = Object.keys(SITES).join(',');
+   if (keys !== 'sggarage,cleanic,alicia,danny,sofacare,pageone,ktech,benzworld,lilian') throw new Error('site keys: ' + keys);
+   for (const [k, d] of NEW3) if ((SITES as any)[k].domain !== d) throw new Error(k + ' domain');
+-  for (const [k] of NEW3) { const h = SITE_HOLDS.find((x) => x.key === k)!; if (!h || h.site !== k || h.prefix !== '' || h.on !== true) throw new Error(k + ' hold'); }
++  for (const [k] of NEW3) { const h = SITE_HOLDS.find((x) => x.key === k)!; if (!h || h.site !== k || h.prefix !== '' || typeof h.on !== 'boolean') throw new Error(k + ' hold'); }
+   if (SITE_HOLDS.filter((h) => !NEW3.some(([k]) => k === h.key)).some((h) => h.on !== false)) throw new Error('old flags changed');
+   if (SITE_HOLDS.length !== 10) throw new Error('hold count');
+-  console.log('ok       9 sites; ktech/benzworld/lilian HOLD ON; other 7 flags off');
++  console.log('ok       9 sites; flags ' + NEW3.map(([k]) => k + '=' + SITE_HOLDS.find((x) => x.key === k)!.on).join(' ') + '; other 7 flags off');
+ });
+ 
+-Deno.test('HOLD ON blocks every path of the 3 sites and nothing else', () => {
+-  for (const [k] of NEW3) for (const p of ['index.html', 'sitemap.xml', 'services/index.html', 'ms/zh/x.css']) if (!holdReason(k, p)) throw new Error(k + ':' + p + ' not held');
++Deno.test('each new flag: ON blocks every path of that site, OFF blocks none; other sites never held by them', () => {
++  for (const [k] of NEW3) { const on = SITE_HOLDS.find((x) => x.key === k)!.on;
++    for (const p of ['index.html', 'sitemap.xml', 'services/index.html', 'ms/zh/x.css']) if (!!holdReason(k, p) !== on) throw new Error(k + ':' + p + ' hold state wrong'); }
+   for (const [s, p] of [['pageone', 'index.html'], ['pageone', 'preview/lilian-properties/index.html'], ['sggarage', 'index.html'], ['cleanic', 'a.html']]) if (holdReason(s, p)) throw new Error(s + ':' + p + ' held');
+   console.log('ok       hold covers only the 3 new sites');
+ });

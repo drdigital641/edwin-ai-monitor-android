@@ -1,0 +1,452 @@
+diff --git a/base44/mcp/config.json b/base44/mcp/config.json
+index 95f1aa8..7bce794 100644
+--- a/base44/mcp/config.json
++++ b/base44/mcp/config.json
+@@ -74,14 +74,17 @@
+               "type": "string"
+             },
+             "site": {
+-              "description": "sggarage=sggarage.com, cleanic=cleanicdetailing.com, alicia=aliciaongproperty.com, danny=dannychuafinancial.com, sofacare=sofacaresg.com, pageone=pageonesingapore.com",
++              "description": "sggarage=sggarage.com, cleanic=cleanicdetailing.com, alicia=aliciaongproperty.com, danny=dannychuafinancial.com, sofacare=sofacaresg.com, pageone=pageonesingapore.com, ktech=ktech.my, benzworld=benzworld.my, lilian=lilianproperties.com",
+               "enum": [
+                 "sggarage",
+                 "cleanic",
+                 "alicia",
+                 "danny",
+                 "sofacare",
+-                "pageone"
++                "pageone",
++                "ktech",
++                "benzworld",
++                "lilian"
+               ],
+               "type": "string"
+             }
+@@ -111,14 +114,17 @@
+               "type": "string"
+             },
+             "site": {
+-              "description": "sggarage=sggarage.com, cleanic=cleanicdetailing.com, alicia=aliciaongproperty.com, danny=dannychuafinancial.com, sofacare=sofacaresg.com, pageone=pageonesingapore.com",
++              "description": "sggarage=sggarage.com, cleanic=cleanicdetailing.com, alicia=aliciaongproperty.com, danny=dannychuafinancial.com, sofacare=sofacaresg.com, pageone=pageonesingapore.com, ktech=ktech.my, benzworld=benzworld.my, lilian=lilianproperties.com",
+               "enum": [
+                 "sggarage",
+                 "cleanic",
+                 "alicia",
+                 "danny",
+                 "sofacare",
+-                "pageone"
++                "pageone",
++                "ktech",
++                "benzworld",
++                "lilian"
+               ],
+               "type": "string"
+             }
+@@ -173,14 +179,17 @@
+               "type": "string"
+             },
+             "site": {
+-              "description": "sggarage=sggarage.com, cleanic=cleanicdetailing.com, alicia=aliciaongproperty.com, danny=dannychuafinancial.com, sofacare=sofacaresg.com, pageone=pageonesingapore.com",
++              "description": "sggarage=sggarage.com, cleanic=cleanicdetailing.com, alicia=aliciaongproperty.com, danny=dannychuafinancial.com, sofacare=sofacaresg.com, pageone=pageonesingapore.com, ktech=ktech.my, benzworld=benzworld.my, lilian=lilianproperties.com",
+               "enum": [
+                 "sggarage",
+                 "cleanic",
+                 "alicia",
+                 "danny",
+                 "sofacare",
+-                "pageone"
++                "pageone",
++                "ktech",
++                "benzworld",
++                "lilian"
+               ],
+               "type": "string"
+             }
+@@ -224,14 +233,17 @@
+               "type": "string"
+             },
+             "site": {
+-              "description": "sggarage=sggarage.com, cleanic=cleanicdetailing.com, alicia=aliciaongproperty.com, danny=dannychuafinancial.com, sofacare=sofacaresg.com, pageone=pageonesingapore.com",
++              "description": "sggarage=sggarage.com, cleanic=cleanicdetailing.com, alicia=aliciaongproperty.com, danny=dannychuafinancial.com, sofacare=sofacaresg.com, pageone=pageonesingapore.com, ktech=ktech.my, benzworld=benzworld.my, lilian=lilianproperties.com",
+               "enum": [
+                 "sggarage",
+                 "cleanic",
+                 "alicia",
+                 "danny",
+                 "sofacare",
+-                "pageone"
++                "pageone",
++                "ktech",
++                "benzworld",
++                "lilian"
+               ],
+               "type": "string"
+             }
+@@ -263,14 +275,17 @@
+           ],
+           "properties": {
+             "site": {
+-              "description": "sggarage=sggarage.com, cleanic=cleanicdetailing.com, alicia=aliciaongproperty.com, danny=dannychuafinancial.com, sofacare=sofacaresg.com, pageone=pageonesingapore.com",
++              "description": "sggarage=sggarage.com, cleanic=cleanicdetailing.com, alicia=aliciaongproperty.com, danny=dannychuafinancial.com, sofacare=sofacaresg.com, pageone=pageonesingapore.com, ktech=ktech.my, benzworld=benzworld.my, lilian=lilianproperties.com",
+               "enum": [
+                 "sggarage",
+                 "cleanic",
+                 "alicia",
+                 "danny",
+                 "sofacare",
+-                "pageone"
++                "pageone",
++                "ktech",
++                "benzworld",
++                "lilian"
+               ],
+               "type": "string"
+             },
+@@ -339,14 +354,17 @@
+           ],
+           "properties": {
+             "site": {
+-              "description": "sggarage=sggarage.com, cleanic=cleanicdetailing.com, alicia=aliciaongproperty.com, danny=dannychuafinancial.com, sofacare=sofacaresg.com, pageone=pageonesingapore.com",
++              "description": "sggarage=sggarage.com, cleanic=cleanicdetailing.com, alicia=aliciaongproperty.com, danny=dannychuafinancial.com, sofacare=sofacaresg.com, pageone=pageonesingapore.com, ktech=ktech.my, benzworld=benzworld.my, lilian=lilianproperties.com",
+               "enum": [
+                 "sggarage",
+                 "cleanic",
+                 "alicia",
+                 "danny",
+                 "sofacare",
+-                "pageone"
++                "pageone",
++                "ktech",
++                "benzworld",
++                "lilian"
+               ],
+               "type": "string"
+             },
+@@ -405,14 +423,17 @@
+               "type": "string"
+             },
+             "site": {
+-              "description": "sggarage=sggarage.com, cleanic=cleanicdetailing.com, alicia=aliciaongproperty.com, danny=dannychuafinancial.com, sofacare=sofacaresg.com, pageone=pageonesingapore.com",
++              "description": "sggarage=sggarage.com, cleanic=cleanicdetailing.com, alicia=aliciaongproperty.com, danny=dannychuafinancial.com, sofacare=sofacaresg.com, pageone=pageonesingapore.com, ktech=ktech.my, benzworld=benzworld.my, lilian=lilianproperties.com",
+               "enum": [
+                 "sggarage",
+                 "cleanic",
+                 "alicia",
+                 "danny",
+                 "sofacare",
+-                "pageone"
++                "pageone",
++                "ktech",
++                "benzworld",
++                "lilian"
+               ],
+               "type": "string"
+             }
+@@ -445,14 +466,17 @@
+               "type": "string"
+             },
+             "site": {
+-              "description": "sggarage=sggarage.com, cleanic=cleanicdetailing.com, alicia=aliciaongproperty.com, danny=dannychuafinancial.com, sofacare=sofacaresg.com, pageone=pageonesingapore.com",
++              "description": "sggarage=sggarage.com, cleanic=cleanicdetailing.com, alicia=aliciaongproperty.com, danny=dannychuafinancial.com, sofacare=sofacaresg.com, pageone=pageonesingapore.com, ktech=ktech.my, benzworld=benzworld.my, lilian=lilianproperties.com",
+               "enum": [
+                 "sggarage",
+                 "cleanic",
+                 "alicia",
+                 "danny",
+                 "sofacare",
+-                "pageone"
++                "pageone",
++                "ktech",
++                "benzworld",
++                "lilian"
+               ],
+               "type": "string"
+             }
+@@ -500,14 +524,17 @@
+           "required": [],
+           "properties": {
+             "site": {
+-              "description": "Optional. sggarage=sggarage.com, cleanic=cleanicdetailing.com, alicia=aliciaongproperty.com, danny=dannychuafinancial.com, sofacare=sofacaresg.com, pageone=pageonesingapore.com",
++              "description": "Optional. sggarage=sggarage.com, cleanic=cleanicdetailing.com, alicia=aliciaongproperty.com, danny=dannychuafinancial.com, sofacare=sofacaresg.com, pageone=pageonesingapore.com, ktech=ktech.my, benzworld=benzworld.my, lilian=lilianproperties.com",
+               "enum": [
+                 "sggarage",
+                 "cleanic",
+                 "alicia",
+                 "danny",
+                 "sofacare",
+-                "pageone"
++                "pageone",
++                "ktech",
++                "benzworld",
++                "lilian"
+               ],
+               "type": "string"
+             },
+@@ -552,14 +579,17 @@
+               "description": "Default anyone."
+             },
+             "site": {
+-              "description": "Optional. sggarage=sggarage.com, cleanic=cleanicdetailing.com, alicia=aliciaongproperty.com, danny=dannychuafinancial.com, sofacare=sofacaresg.com, pageone=pageonesingapore.com",
++              "description": "Optional. sggarage=sggarage.com, cleanic=cleanicdetailing.com, alicia=aliciaongproperty.com, danny=dannychuafinancial.com, sofacare=sofacaresg.com, pageone=pageonesingapore.com, ktech=ktech.my, benzworld=benzworld.my, lilian=lilianproperties.com",
+               "enum": [
+                 "sggarage",
+                 "cleanic",
+                 "alicia",
+                 "danny",
+                 "sofacare",
+-                "pageone"
++                "pageone",
++                "ktech",
++                "benzworld",
++                "lilian"
+               ],
+               "type": "string"
+             }
+@@ -593,14 +623,17 @@
+               "description": "Default claim."
+             },
+             "site": {
+-              "description": "sggarage=sggarage.com, cleanic=cleanicdetailing.com, alicia=aliciaongproperty.com, danny=dannychuafinancial.com, sofacare=sofacaresg.com, pageone=pageonesingapore.com",
++              "description": "sggarage=sggarage.com, cleanic=cleanicdetailing.com, alicia=aliciaongproperty.com, danny=dannychuafinancial.com, sofacare=sofacaresg.com, pageone=pageonesingapore.com, ktech=ktech.my, benzworld=benzworld.my, lilian=lilianproperties.com",
+               "enum": [
+                 "sggarage",
+                 "cleanic",
+                 "alicia",
+                 "danny",
+                 "sofacare",
+-                "pageone"
++                "pageone",
++                "ktech",
++                "benzworld",
++                "lilian"
+               ],
+               "type": "string"
+             },
+diff --git a/base44/shared/bridgeConfig.ts b/base44/shared/bridgeConfig.ts
+index e913fc7..72e3735 100644
+--- a/base44/shared/bridgeConfig.ts
++++ b/base44/shared/bridgeConfig.ts
+@@ -20,7 +20,15 @@ export const SITES = Object.freeze({
+   danny: { domain: 'dannychuafinancial.com', name: 'Danny Chua Financial' },
+   sofacare: { domain: 'sofacaresg.com', name: 'SofaCare SG' },
+   pageone: { domain: 'pageonesingapore.com', name: 'Page One Singapore' },
++  // MOVE 3 SITES (Edwin 15 Nov 2026 12:36am SGT, "Move K Tech, Benz World, Li Lian to Bridge"): built outside Base44,
++  // live files on Bluehost are the truth. Document roots are looked up live from cPanel like the others.
++  ktech: { domain: 'ktech.my', name: 'K Tech Auto Solution' },
++  benzworld: { domain: 'benzworld.my', name: 'Benz World' },
++  lilian: { domain: 'lilianproperties.com', name: 'Li Lian Properties' },
+ });
++// Sites that must have their own document root: if cPanel gives one of these the same folder as another site, or a
++// folder that contains another site's folder, loadRoots (bridgeOps.ts) drops it and every call for it fails closed.
++export const OWN_FOLDER_SITES: readonly string[] = Object.freeze(['ktech', 'benzworld', 'lilian']);
+ 
+ export const MAX_FILE_BYTES = 5_000_000;
+ 
+@@ -117,6 +125,10 @@ export const SITE_HOLDS: readonly SiteHold[] = Object.freeze([
+   { key: 'cska', name: 'CSKA (cskatrading.com)', on: false, site: 'pageone', prefix: 'preview/cska-auto/' },
+   { key: 'jacky', name: 'Jacky Gearbox (jackygearbox.com)', on: false, site: 'pageone', prefix: 'preview/dmts/' },
+   { key: 'ben', name: 'Benjamin Poon (planwithben.sg)', on: false, site: 'pageone', prefix: 'preview/benjamin-poon/' },
++  // MOVE 3 SITES: ON until source = live (guard dry run 0 differences), then OFF in a second save (Edwin asked HOLD off).
++  { key: 'ktech', name: 'K Tech (ktech.my)', on: true, site: 'ktech', prefix: '' },
++  { key: 'benzworld', name: 'Benz World (benzworld.my)', on: true, site: 'benzworld', prefix: '' },
++  { key: 'lilian', name: 'Li Lian Properties (lilianproperties.com)', on: true, site: 'lilian', prefix: '' },
+ ]);
+ 
+ function holdCovers(h: SiteHold, site: string, rel: string): boolean {
+diff --git a/base44/shared/bridgeOps.ts b/base44/shared/bridgeOps.ts
+index 51a6c05..b6c11e3 100644
+--- a/base44/shared/bridgeOps.ts
++++ b/base44/shared/bridgeOps.ts
+@@ -2,7 +2,7 @@
+ // read + version check -> verified private backup -> upload -> byte-exact readback
+ // -> automatic restore if the readback does not match.
+ import { liveGuard, type LiveState } from './liveGuard.ts';
+-import { CPANEL, SITES, PRIVATE_ROOT, BACKUP_ROOT, MAX_FILE_BYTES, SERVER_CONFIG_ALLOWED, SERVER_CONFIG_ROLLBACK, PINNED_SERVER_CONFIG, readBlockedReason, writeBlockedReason, holdReason, GUARD_OVERRIDES } from './bridgeConfig.ts';
++import { OWN_FOLDER_SITES, CPANEL, SITES, PRIVATE_ROOT, BACKUP_ROOT, MAX_FILE_BYTES, SERVER_CONFIG_ALLOWED, SERVER_CONFIG_ROLLBACK, PINNED_SERVER_CONFIG, readBlockedReason, writeBlockedReason, holdReason, GUARD_OVERRIDES } from './bridgeConfig.ts';
+ import { uapi, api2, checkResult, withSiteWriteGrant, setSiteRoots } from './cpanel.ts';
+ 
+ export class BridgeError extends Error {
+@@ -42,11 +42,25 @@ async function loadRoots(): Promise<Record<string, string>> {
+     const root = byDomain.get(site.domain) || byDomain.get('www.' + site.domain);
+     if (root && root.startsWith(CPANEL.home + '/') && !root.includes('..')) roots[key] = root.replace(/\/+$/, '');
+   }
++  // MOVE 3 SITES (security review 15 Nov 2026): a site added later must have its OWN folder. If its root equals, or
++  // contains, another site's root (a parked domain maps to the main folder), it gets no root at all, so every call for
++  // it fails closed ('not found in cPanel domains') instead of writing into another site's files.
++  dropSharedRoots(roots);
+   rootsCache = { at: Date.now(), roots };
+   setSiteRoots(Object.values(roots)); // choke point: mkdir only inside these roots or private folders
+   return roots;
+ }
+ 
++export function dropSharedRoots(roots: Record<string, string>): Record<string, string> {
++  const all = Object.entries(roots); // judged against the full list, so two new sites on one folder are both dropped
++  for (const key of OWN_FOLDER_SITES) {
++    const mine = roots[key];
++    if (!mine) continue;
++    if (all.some(([other, r]) => other !== key && (r === mine || r.startsWith(mine + '/')))) delete roots[key];
++  }
++  return roots;
++}
++
+ export function assertSite(site: unknown): string {
+   if (typeof site !== 'string' || !(site in SITES)) {
+     throw new BridgeError('Unknown site. Use one of: ' + Object.keys(SITES).join(', '));
+diff --git a/base44/shared/liveGuard.ts b/base44/shared/liveGuard.ts
+index 335c021..d7b6f2d 100644
+--- a/base44/shared/liveGuard.ts
++++ b/base44/shared/liveGuard.ts
+@@ -132,6 +132,13 @@ export function htmlProblems(liveBytes: Uint8Array, newBytes: Uint8Array): strin
+ export const GENERATED_OVERRIDE_SITES = Object.freeze(['pageone']);
+ export const GENERATED_OVERRIDE_PATH = /^(preview\/(star-performance|klar-details|cska-auto|dmts|benjamin-poon)\/)?(sitemap\.xml|sitemap\.txt|llms\.txt)$/;
+ 
++// MOVE 3 SITES GENERATED-FILE OVERRIDE (Edwin 15 Nov 2026 12:36am SGT: "using the same guard and source-vs-live compare as the
++// other unlocked sites, including the sitemap.xml/sitemap.txt/llms.txt override"). Site keys ktech, benzworld, lilian only;
++// exactly these three files at the site's top folder; same content checks (generatedFileProblem). Writers as SG Garage:
++// the publisher flag and Bridge tool writes (the publisher writes Page One only, so today the tools route is the one used).
++export const MOVED_GENERATED_SITES = Object.freeze(['ktech', 'benzworld', 'lilian']);
++export const MOVED_GENERATED_PATH = /^(sitemap\.xml|sitemap\.txt|llms\.txt)$/;
++
+ // SG GARAGE GENERATED-FILE OVERRIDE (DRAFT, "SG GARAGE OPTION C 1114-2335"; Edwin 11:30pm SGT 14 Nov 2026: "allow
+ // sitemap and article cards to update"). Same pattern as the Page One override above, for site key 'sggarage' only
+ // (docroot public_html/carbonfibre, Bridge prefix ''): only a write that carries the publisher flag may REPLACE exactly
+@@ -286,6 +293,10 @@ export async function liveGuard(args: {
+     const why = generatedFileProblem(rel, newBytes);
+     return why ? refuse('generated-file override: ' + why) : null;
+   }
++  if (MOVED_GENERATED_SITES.includes(site) && MOVED_GENERATED_PATH.test(rel)) {
++    const why = generatedFileProblem(rel, newBytes);
++    return why ? refuse(site + ' generated-file override: ' + why) : null;
++  }
+   if (site === SGG_GENERATED_SITE && SGG_GENERATED_PATH.test(rel)
+     && ((args.publisher === true && SGG_OVERRIDE_WRITERS.includes('publisher')) || (args.publisher !== true && SGG_OVERRIDE_WRITERS.includes('tools')))) {
+     const why = rel === 'article-cards.json' ? articleCardsProblem(newBytes, live.bytes) : generatedFileProblem(rel, newBytes);
+diff --git a/base44/shared/openapi.ts b/base44/shared/openapi.ts
+index 0d69ebe..f0c9c2f 100644
+--- a/base44/shared/openapi.ts
++++ b/base44/shared/openapi.ts
+@@ -1,3 +1,3 @@
+ // API description for the ChatGPT Custom GPT. Served at /functions/bridgeOpenapi so the GPT
+ // imports it by URL (Actions > Import from URL). Keep it in step with the bridge functions.
+-export const OPENAPI = {"openapi":"3.1.0","info":{"title":"Bluehost Bridge","version":"1.3.0","description":"Edwin's Bluehost websites through Base44. Call getInstructions first in every conversation: the rules live in Base44."},"servers":[{"url":"https://blue-bridge-pilot.base44.app/functions"}],"security":[{"BridgeKey":[]}],"paths":{"/bridgeGuide":{"post":{"operationId":"getInstructions","summary":"Call first in every conversation. Returns Edwin's current rules for website work, stored in Base44. Follow them exactly.","x-openai-isConsequential":false,"requestBody":{"required":true,"content":{"application/json":{"schema":{"type":"object","properties":{}}}}},"responses":{"200":{"$ref":"#/components/responses/Result"}}}},"/bridgeSites":{"post":{"operationId":"listSites","summary":"List the six websites, their folders and whether each is reachable. Start here.","x-openai-isConsequential":false,"requestBody":{"required":true,"content":{"application/json":{"schema":{"type":"object","properties":{}}}}},"responses":{"200":{"$ref":"#/components/responses/Result"}}}},"/bridgeList":{"post":{"operationId":"listFiles","summary":"List files and folders in one site. Folders that belong to another site are marked belongsToSite.","x-openai-isConsequential":false,"requestBody":{"required":true,"content":{"application/json":{"schema":{"type":"object","required":["site"],"properties":{"site":{"$ref":"#/components/schemas/Site"},"path":{"type":"string","description":"Folder inside the site. Omit for the site's top folder."}}}}}},"responses":{"200":{"$ref":"#/components/responses/Result"}}}},"/bridgeRead":{"post":{"operationId":"readFile","summary":"Read one file. Returns content (text) or content_base64 (binary) and its sha256. Keep the sha256: writeFile needs it to overwrite.","x-openai-isConsequential":false,"requestBody":{"required":true,"content":{"application/json":{"schema":{"type":"object","required":["site","path"],"properties":{"site":{"$ref":"#/components/schemas/Site"},"path":{"$ref":"#/components/schemas/Path"}}}}}},"responses":{"200":{"$ref":"#/components/responses/Result"}}}},"/bridgeEdit":{"post":{"operationId":"editFile","summary":"Preferred way to change part of a text file (goes live immediately). Each old_text must appear exactly expected_occurrences times (default 1) or nothing changes.","x-openai-isConsequential":true,"requestBody":{"required":true,"content":{"application/json":{"schema":{"type":"object","required":["site","path","edits"],"properties":{"site":{"$ref":"#/components/schemas/Site"},"path":{"$ref":"#/components/schemas/Path"},"edits":{"type":"array","minItems":1,"maxItems":50,"items":{"type":"object","required":["old_text","new_text"],"properties":{"old_text":{"type":"string","description":"Exact text currently in the file."},"new_text":{"type":"string","description":"Text to put in its place."},"expected_occurrences":{"type":"integer","minimum":1,"description":"How many times old_text appears. Default 1."}}}}}}}}},"responses":{"200":{"$ref":"#/components/responses/Result"}}}},"/bridgeWrite":{"post":{"operationId":"writeFile","summary":"Create a new file or replace a whole file (goes live immediately). To overwrite, pass expected_sha256 from readFile. PHP, .htaccess and password files are blocked.","x-openai-isConsequential":true,"requestBody":{"required":true,"content":{"application/json":{"schema":{"type":"object","required":["site","path"],"properties":{"site":{"$ref":"#/components/schemas/Site"},"path":{"$ref":"#/components/schemas/Path"},"content":{"type":"string","description":"Full UTF-8 text of the file. Send this or content_base64, not both."},"content_base64":{"type":"string","description":"Full binary content, base64-encoded (for images)."},"expected_sha256":{"type":"string","description":"sha256 from readFile. Required when the file already exists."}}}}}},"responses":{"200":{"$ref":"#/components/responses/Result"}}}},"/bridgeBackups":{"post":{"operationId":"listBackups","summary":"List the private backups taken before each change for a site, newest first. Optionally only backups that contain one file.","x-openai-isConsequential":false,"requestBody":{"required":true,"content":{"application/json":{"schema":{"type":"object","required":["site"],"properties":{"site":{"$ref":"#/components/schemas/Site"},"path":{"type":"string","description":"Optional: only backups containing this file."},"limit":{"type":"integer","minimum":1,"maximum":100}}}}}},"responses":{"200":{"$ref":"#/components/responses/Result"}}}},"/bridgeRestore":{"post":{"operationId":"restoreBackup","summary":"Put a file back to the version in a backup (from listBackups). Goes live immediately. The current version is backed up first, so a restore can be undone.","x-openai-isConsequential":true,"requestBody":{"required":true,"content":{"application/json":{"schema":{"type":"object","required":["site","backup_id","path"],"properties":{"site":{"$ref":"#/components/schemas/Site"},"backup_id":{"type":"string","description":"backupId from listBackups, e.g. 20261009-234842-02eb82"},"path":{"$ref":"#/components/schemas/Path"}}}}}},"responses":{"200":{"$ref":"#/components/responses/Result"}}}},"/bridgeSync":{"post":{"operationId":"syncStatus","summary":"Check in at the start of every job: recent changes by Claude and ChatGPT, sites/files the other AI has claimed, and unread handover notes for you (each shown once).","x-openai-isConsequential":false,"requestBody":{"required":true,"content":{"application/json":{"schema":{"type":"object","required":[],"properties":{"site":{"$ref":"#/components/schemas/Site","description":"Optional: only this site."},"hours":{"type":"integer","minimum":1,"maximum":336,"description":"How far back to look at changes. Default 24."}}}}}},"responses":{"200":{"$ref":"#/components/responses/Result"}}}},"/bridgeNote":{"post":{"operationId":"postNote","summary":"Leave a short handover note for Claude (or anyone) after a job: what you changed, what is left, anything to check.","x-openai-isConsequential":false,"requestBody":{"required":true,"content":{"application/json":{"schema":{"type":"object","required":["text"],"properties":{"text":{"type":"string","description":"Up to 2000 characters."},"to":{"type":"string","enum":["claude","chatgpt","anyone"],"description":"Default anyone."},"site":{"$ref":"#/components/schemas/Site","description":"Optional: the site the note is about."}}}}}},"responses":{"200":{"$ref":"#/components/responses/Result"}}}},"/bridgeClaim":{"post":{"operationId":"claimWork","summary":"Before a bigger job, claim a whole site (no path) or one file for 5-120 minutes (default 30); the other AI cannot change it meanwhile. Claim again to extend. action=release when done.","x-openai-isConsequential":false,"requestBody":{"required":true,"content":{"application/json":{"schema":{"type":"object","required":["site"],"properties":{"action":{"type":"string","enum":["claim","release"],"description":"Default claim."},"site":{"$ref":"#/components/schemas/Site"},"path":{"type":"string","description":"Optional file path. Omit to claim the whole site."},"minutes":{"type":"integer","minimum":5,"maximum":120},"purpose":{"type":"string","description":"What you are working on, shown to the other AI."},"lock_id":{"type":"string","description":"For release: one specific claim. Omit to release all your claims on the site."}}}}}},"responses":{"200":{"$ref":"#/components/responses/Result"}}}},"/bridgeSyncGithub":{"post":{"operationId":"syncFromGithub","summary":"Copy a folder of drdigital641/edwin-ai-monitor-android at one commit SHA into a site folder. The bridge downloads the files itself (up to 150 files, 15 MB); same checks, backups and verification as writeFile. Never deletes.","x-openai-isConsequential":true,"requestBody":{"required":true,"content":{"application/json":{"schema":{"type":"object","required":["site","ref","source_path"],"properties":{"site":{"description":"sggarage=sggarage.com, cleanic=cleanicdetailing.com, alicia=aliciaongproperty.com, danny=dannychuafinancial.com, sofacare=sofacaresg.com, pageone=pageonesingapore.com","enum":["sggarage","cleanic","alicia","danny","sofacare","pageone"],"type":"string"},"base_path":{"type":"string","description":"Folder inside the site to copy into, e.g. preview/cska-auto. Omit for the site's top folder."},"ref":{"type":"string","description":"Commit SHA (7-40 hex characters). Branch names are refused so a sync is reproducible."},"source_path":{"type":"string","description":"Folder in the repo, e.g. pageone-site/clients/cska-auto/site. Every file under it is copied, keeping sub-folders."},"exclude":{"type":"array","maxItems":50,"items":{"type":"string"},"description":"Optional file paths relative to source_path to leave out, e.g. [\".htaccess\"]. Reported as excluded."},"overwrite":{"type":"boolean","description":"Default true: existing files are backed up and replaced. false: existing files fail instead."},"dry_run":{"type":"boolean","description":"true downloads and checks everything and lists sha256s; nothing is written."}}}}}},"responses":{"200":{"$ref":"#/components/responses/Result"}}}}},"components":{"securitySchemes":{"BridgeKey":{"type":"apiKey","in":"header","name":"X-Bridge-Key"}},"schemas":{"Site":{"type":"string","enum":["sggarage","cleanic","alicia","danny","sofacare","pageone"],"description":"sggarage=sggarage.com, cleanic=cleanicdetailing.com, alicia=aliciaongproperty.com, danny=dannychuafinancial.com, sofacare=sofacaresg.com, pageone=pageonesingapore.com"},"Path":{"type":"string","description":"File path inside the site folder, e.g. index.html or about/index.html (not a URL)."}},"responses":{"Result":{"description":"ok is true on success; otherwise error explains what went wrong and nothing was changed unless it says so.","content":{"application/json":{"schema":{"type":"object","properties":{"ok":{"type":"boolean"},"error":{"type":"string"}},"additionalProperties":true}}}}}}};
++export const OPENAPI = {"openapi":"3.1.0","info":{"title":"Bluehost Bridge","version":"1.3.0","description":"Edwin's Bluehost websites through Base44. Call getInstructions first in every conversation: the rules live in Base44."},"servers":[{"url":"https://blue-bridge-pilot.base44.app/functions"}],"security":[{"BridgeKey":[]}],"paths":{"/bridgeGuide":{"post":{"operationId":"getInstructions","summary":"Call first in every conversation. Returns Edwin's current rules for website work, stored in Base44. Follow them exactly.","x-openai-isConsequential":false,"requestBody":{"required":true,"content":{"application/json":{"schema":{"type":"object","properties":{}}}}},"responses":{"200":{"$ref":"#/components/responses/Result"}}}},"/bridgeSites":{"post":{"operationId":"listSites","summary":"List the websites, their folders and whether each is reachable. Start here.","x-openai-isConsequential":false,"requestBody":{"required":true,"content":{"application/json":{"schema":{"type":"object","properties":{}}}}},"responses":{"200":{"$ref":"#/components/responses/Result"}}}},"/bridgeList":{"post":{"operationId":"listFiles","summary":"List files and folders in one site. Folders that belong to another site are marked belongsToSite.","x-openai-isConsequential":false,"requestBody":{"required":true,"content":{"application/json":{"schema":{"type":"object","required":["site"],"properties":{"site":{"$ref":"#/components/schemas/Site"},"path":{"type":"string","description":"Folder inside the site. Omit for the site's top folder."}}}}}},"responses":{"200":{"$ref":"#/components/responses/Result"}}}},"/bridgeRead":{"post":{"operationId":"readFile","summary":"Read one file. Returns content (text) or content_base64 (binary) and its sha256. Keep the sha256: writeFile needs it to overwrite.","x-openai-isConsequential":false,"requestBody":{"required":true,"content":{"application/json":{"schema":{"type":"object","required":["site","path"],"properties":{"site":{"$ref":"#/components/schemas/Site"},"path":{"$ref":"#/components/schemas/Path"}}}}}},"responses":{"200":{"$ref":"#/components/responses/Result"}}}},"/bridgeEdit":{"post":{"operationId":"editFile","summary":"Preferred way to change part of a text file (goes live immediately). Each old_text must appear exactly expected_occurrences times (default 1) or nothing changes.","x-openai-isConsequential":true,"requestBody":{"required":true,"content":{"application/json":{"schema":{"type":"object","required":["site","path","edits"],"properties":{"site":{"$ref":"#/components/schemas/Site"},"path":{"$ref":"#/components/schemas/Path"},"edits":{"type":"array","minItems":1,"maxItems":50,"items":{"type":"object","required":["old_text","new_text"],"properties":{"old_text":{"type":"string","description":"Exact text currently in the file."},"new_text":{"type":"string","description":"Text to put in its place."},"expected_occurrences":{"type":"integer","minimum":1,"description":"How many times old_text appears. Default 1."}}}}}}}}},"responses":{"200":{"$ref":"#/components/responses/Result"}}}},"/bridgeWrite":{"post":{"operationId":"writeFile","summary":"Create a new file or replace a whole file (goes live immediately). To overwrite, pass expected_sha256 from readFile. PHP, .htaccess and password files are blocked.","x-openai-isConsequential":true,"requestBody":{"required":true,"content":{"application/json":{"schema":{"type":"object","required":["site","path"],"properties":{"site":{"$ref":"#/components/schemas/Site"},"path":{"$ref":"#/components/schemas/Path"},"content":{"type":"string","description":"Full UTF-8 text of the file. Send this or content_base64, not both."},"content_base64":{"type":"string","description":"Full binary content, base64-encoded (for images)."},"expected_sha256":{"type":"string","description":"sha256 from readFile. Required when the file already exists."}}}}}},"responses":{"200":{"$ref":"#/components/responses/Result"}}}},"/bridgeBackups":{"post":{"operationId":"listBackups","summary":"List the private backups taken before each change for a site, newest first. Optionally only backups that contain one file.","x-openai-isConsequential":false,"requestBody":{"required":true,"content":{"application/json":{"schema":{"type":"object","required":["site"],"properties":{"site":{"$ref":"#/components/schemas/Site"},"path":{"type":"string","description":"Optional: only backups containing this file."},"limit":{"type":"integer","minimum":1,"maximum":100}}}}}},"responses":{"200":{"$ref":"#/components/responses/Result"}}}},"/bridgeRestore":{"post":{"operationId":"restoreBackup","summary":"Put a file back to the version in a backup (from listBackups). Goes live immediately. The current version is backed up first, so a restore can be undone.","x-openai-isConsequential":true,"requestBody":{"required":true,"content":{"application/json":{"schema":{"type":"object","required":["site","backup_id","path"],"properties":{"site":{"$ref":"#/components/schemas/Site"},"backup_id":{"type":"string","description":"backupId from listBackups, e.g. 20261009-234842-02eb82"},"path":{"$ref":"#/components/schemas/Path"}}}}}},"responses":{"200":{"$ref":"#/components/responses/Result"}}}},"/bridgeSync":{"post":{"operationId":"syncStatus","summary":"Check in at the start of every job: recent changes by Claude and ChatGPT, sites/files the other AI has claimed, and unread handover notes for you (each shown once).","x-openai-isConsequential":false,"requestBody":{"required":true,"content":{"application/json":{"schema":{"type":"object","required":[],"properties":{"site":{"$ref":"#/components/schemas/Site","description":"Optional: only this site."},"hours":{"type":"integer","minimum":1,"maximum":336,"description":"How far back to look at changes. Default 24."}}}}}},"responses":{"200":{"$ref":"#/components/responses/Result"}}}},"/bridgeNote":{"post":{"operationId":"postNote","summary":"Leave a short handover note for Claude (or anyone) after a job: what you changed, what is left, anything to check.","x-openai-isConsequential":false,"requestBody":{"required":true,"content":{"application/json":{"schema":{"type":"object","required":["text"],"properties":{"text":{"type":"string","description":"Up to 2000 characters."},"to":{"type":"string","enum":["claude","chatgpt","anyone"],"description":"Default anyone."},"site":{"$ref":"#/components/schemas/Site","description":"Optional: the site the note is about."}}}}}},"responses":{"200":{"$ref":"#/components/responses/Result"}}}},"/bridgeClaim":{"post":{"operationId":"claimWork","summary":"Before a bigger job, claim a whole site (no path) or one file for 5-120 minutes (default 30); the other AI cannot change it meanwhile. Claim again to extend. action=release when done.","x-openai-isConsequential":false,"requestBody":{"required":true,"content":{"application/json":{"schema":{"type":"object","required":["site"],"properties":{"action":{"type":"string","enum":["claim","release"],"description":"Default claim."},"site":{"$ref":"#/components/schemas/Site"},"path":{"type":"string","description":"Optional file path. Omit to claim the whole site."},"minutes":{"type":"integer","minimum":5,"maximum":120},"purpose":{"type":"string","description":"What you are working on, shown to the other AI."},"lock_id":{"type":"string","description":"For release: one specific claim. Omit to release all your claims on the site."}}}}}},"responses":{"200":{"$ref":"#/components/responses/Result"}}}},"/bridgeSyncGithub":{"post":{"operationId":"syncFromGithub","summary":"Copy a folder of drdigital641/edwin-ai-monitor-android at one commit SHA into a site folder. The bridge downloads the files itself (up to 150 files, 15 MB); same checks, backups and verification as writeFile. Never deletes.","x-openai-isConsequential":true,"requestBody":{"required":true,"content":{"application/json":{"schema":{"type":"object","required":["site","ref","source_path"],"properties":{"site":{"description":"sggarage=sggarage.com, cleanic=cleanicdetailing.com, alicia=aliciaongproperty.com, danny=dannychuafinancial.com, sofacare=sofacaresg.com, pageone=pageonesingapore.com, ktech=ktech.my, benzworld=benzworld.my, lilian=lilianproperties.com","enum":["sggarage","cleanic","alicia","danny","sofacare","pageone","ktech","benzworld","lilian"],"type":"string"},"base_path":{"type":"string","description":"Folder inside the site to copy into, e.g. preview/cska-auto. Omit for the site's top folder."},"ref":{"type":"string","description":"Commit SHA (7-40 hex characters). Branch names are refused so a sync is reproducible."},"source_path":{"type":"string","description":"Folder in the repo, e.g. pageone-site/clients/cska-auto/site. Every file under it is copied, keeping sub-folders."},"exclude":{"type":"array","maxItems":50,"items":{"type":"string"},"description":"Optional file paths relative to source_path to leave out, e.g. [\".htaccess\"]. Reported as excluded."},"overwrite":{"type":"boolean","description":"Default true: existing files are backed up and replaced. false: existing files fail instead."},"dry_run":{"type":"boolean","description":"true downloads and checks everything and lists sha256s; nothing is written."}}}}}},"responses":{"200":{"$ref":"#/components/responses/Result"}}}}},"components":{"securitySchemes":{"BridgeKey":{"type":"apiKey","in":"header","name":"X-Bridge-Key"}},"schemas":{"Site":{"type":"string","enum":["sggarage","cleanic","alicia","danny","sofacare","pageone","ktech","benzworld","lilian"],"description":"sggarage=sggarage.com, cleanic=cleanicdetailing.com, alicia=aliciaongproperty.com, danny=dannychuafinancial.com, sofacare=sofacaresg.com, pageone=pageonesingapore.com, ktech=ktech.my, benzworld=benzworld.my, lilian=lilianproperties.com"},"Path":{"type":"string","description":"File path inside the site folder, e.g. index.html or about/index.html (not a URL)."}},"responses":{"Result":{"description":"ok is true on success; otherwise error explains what went wrong and nothing was changed unless it says so.","content":{"application/json":{"schema":{"type":"object","properties":{"ok":{"type":"boolean"},"error":{"type":"string"}},"additionalProperties":true}}}}}}};
+diff --git a/src/pages/Connect.jsx b/src/pages/Connect.jsx
+index 0386c5f..e0ffe62 100644
+--- a/src/pages/Connect.jsx
++++ b/src/pages/Connect.jsx
+@@ -113,7 +113,7 @@ function KeyManager() {
+ // write files of that one site only. The key is shown once; the bridge stores only its hash.
+ const SITE_OPTIONS = [
+   ["cleanic", "cleanicdetailing.com"], ["sggarage", "sggarage.com"], ["alicia", "aliciaongproperty.com"],
+-  ["danny", "dannychuafinancial.com"], ["sofacare", "sofacaresg.com"], ["pageone", "pageonesingapore.com"],
++  ["danny", "dannychuafinancial.com"], ["sofacare", "sofacaresg.com"], ["pageone", "pageonesingapore.com"], ["ktech", "ktech.my"], ["benzworld", "benzworld.my"], ["lilian", "lilianproperties.com"],
+ ];
+ 
+ // The new key is kept in this tab's sessionStorage until Done is clicked, so a reload of the
+diff --git a/tests/move3Sites.test.ts b/tests/move3Sites.test.ts
+new file mode 100644
+index 0000000..a07f320
+--- /dev/null
++++ b/tests/move3Sites.test.ts
+@@ -0,0 +1,88 @@
++// MOVE 3 SITES (K Tech, Benz World, Li Lian). Run:
++// deno test --no-check -A --import-map tests/importmap.json tests/move3Sites.test.ts
++// Pure config + guard calls with fake live states: never touches a live site.
++import { liveGuard, MOVED_GENERATED_SITES, MOVED_GENERATED_PATH, GENERATED_OVERRIDE_SITES, GENERATED_OVERRIDE_PATH } from '../base44/shared/liveGuard.ts';
++import { SITES, SITE_HOLDS, holdReason, writeBlockedReason } from '../base44/shared/bridgeConfig.ts';
++import { dropSharedRoots } from '../base44/shared/bridgeOps.ts';
++
++const enc = (s: string) => new TextEncoder().encode(s);
++const sha256 = async (b: Uint8Array) => Array.from(new Uint8Array(await crypto.subtle.digest('SHA-256', b))).map((x) => x.toString(16).padStart(2, '0')).join('');
++const present = (s: string) => ({ state: 'present' as const, bytes: enc(s) });
++const g = (site: string, rel: string, liveText: string, newText: string, publisher = false) =>
++  liveGuard({ site, rel, op: 'write', live: present(liveText), newBytes: enc(newText), overrides: [], sha256, publisher });
++const ok = async (label: string, p: Promise<string | null>) => { const r = await p; if (r !== null) throw new Error(label + ': expected allowed, got: ' + r); console.log('allowed  ' + label); };
++const no = async (label: string, p: Promise<string | null>, m: RegExp) => { const r = await p; if (r === null || !m.test(r)) throw new Error(label + ': expected refusal ' + m + ', got: ' + r); console.log('refused  ' + label); };
++const NS = 'xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"';
++const XML = (d: string, extra = '') => `<?xml version="1.0" encoding="UTF-8"?>\n<urlset ${NS}><url><loc>https://${d}/</loc></url>${extra}</urlset>\n`;
++const NEW3: [string, string][] = [['ktech', 'ktech.my'], ['benzworld', 'benzworld.my'], ['lilian', 'lilianproperties.com']];
++const PAGE = (title: string) => `<!doctype html><html><head><title>${title}</title><meta name="description" content="d"></head><body><h1>H</h1></body></html>`;
++
++Deno.test('config: 3 sites added with their domains, old 6 unchanged, HOLD ON for the 3 (step 1), old 7 flags unchanged', () => {
++  const keys = Object.keys(SITES).join(',');
++  if (keys !== 'sggarage,cleanic,alicia,danny,sofacare,pageone,ktech,benzworld,lilian') throw new Error('site keys: ' + keys);
++  for (const [k, d] of NEW3) if ((SITES as any)[k].domain !== d) throw new Error(k + ' domain');
++  for (const [k] of NEW3) { const h = SITE_HOLDS.find((x) => x.key === k)!; if (!h || h.site !== k || h.prefix !== '' || h.on !== true) throw new Error(k + ' hold'); }
++  if (SITE_HOLDS.filter((h) => !NEW3.some(([k]) => k === h.key)).some((h) => h.on !== false)) throw new Error('old flags changed');
++  if (SITE_HOLDS.length !== 10) throw new Error('hold count');
++  console.log('ok       9 sites; ktech/benzworld/lilian HOLD ON; other 7 flags off');
++});
++
++Deno.test('HOLD ON blocks every path of the 3 sites and nothing else', () => {
++  for (const [k] of NEW3) for (const p of ['index.html', 'sitemap.xml', 'services/index.html', 'ms/zh/x.css']) if (!holdReason(k, p)) throw new Error(k + ':' + p + ' not held');
++  for (const [s, p] of [['pageone', 'index.html'], ['pageone', 'preview/lilian-properties/index.html'], ['sggarage', 'index.html'], ['cleanic', 'a.html']]) if (holdReason(s, p)) throw new Error(s + ':' + p + ' held');
++  console.log('ok       hold covers only the 3 new sites');
++});
++
++Deno.test('override list: exactly 3 root files, only the 3 new sites, Page One list unchanged', () => {
++  if (JSON.stringify(MOVED_GENERATED_SITES) !== '["ktech","benzworld","lilian"]') throw new Error('sites');
++  if (JSON.stringify(GENERATED_OVERRIDE_SITES) !== '["pageone"]') throw new Error('Page One list changed');
++  if (GENERATED_OVERRIDE_PATH.source !== '^(preview\\/(star-performance|klar-details|cska-auto|dmts|benjamin-poon)\\/)?(sitemap\\.xml|sitemap\\.txt|llms\\.txt)$') throw new Error('Page One path changed');
++  for (const p of ['sitemap.xml', 'sitemap.txt', 'llms.txt']) if (!MOVED_GENERATED_PATH.test(p)) throw new Error(p);
++  for (const p of ['ms/sitemap.xml', 'zh/llms.txt', 'llms-full.txt', 'sitemap.xml.bak', 'Sitemap.xml', 'robots.txt', 'article-cards.json', 'index.html', '.htaccess'])
++    if (MOVED_GENERATED_PATH.test(p)) throw new Error('should not match ' + p);
++  console.log('ok       3 exact root paths');
++});
++
++Deno.test('3 sites: sitemap.xml/sitemap.txt/llms.txt replace allowed (tools and publisher) when sane', async () => {
++  for (const [k, d] of NEW3) for (const pub of [false, true]) {
++    await ok(k + ' sitemap.xml pub=' + pub, g(k, 'sitemap.xml', XML(d), XML(d, `<url><loc>https://${d}/services/x/</loc></url>`), pub));
++    await ok(k + ' sitemap.txt pub=' + pub, g(k, 'sitemap.txt', `https://${d}/\n`, `https://${d}/\nhttps://${d}/a/\n`, pub));
++    await ok(k + ' llms.txt pub=' + pub, g(k, 'llms.txt', '# x\n', '# x\n- a\n', pub));
++  }
++});
++
++Deno.test('3 sites: bad generated content refused; other guarded files still refused', async () => {
++  for (const [k, d] of NEW3) {
++    await no(k + ' sitemap <script>', g(k, 'sitemap.xml', XML(d), XML(d, '<script>x</script>')), /element <script> is not allowed/);
++    await no(k + ' sitemap onload', g(k, 'sitemap.xml', XML(d), XML(d, `<url><loc onload="x">https://${d}/z</loc></url>`)), /attribute onload is not allowed/);
++    await no(k + ' sitemap javascript:', g(k, 'sitemap.xml', XML(d), XML(d, '<url><loc>&#106;avascript&#58;alert(1)</loc></url>')), /javascript: is not allowed/);
++    await no(k + ' sitemap 0 URLs', g(k, 'sitemap.xml', XML(d), `<urlset ${NS}></urlset>`), /0 URLs/);
++    await no(k + ' sitemap.txt non-URL', g(k, 'sitemap.txt', `https://${d}/\n`, `https://${d}/\n<script>\n`), /not an https URL/);
++    await no(k + ' llms empty', g(k, 'llms.txt', '# a\n', ' \n'), /llms.txt is empty/);
++    await no(k + ' robots.txt', g(k, 'robots.txt', 'User-agent: *\nAllow: /\n', 'User-agent: *\nDisallow: /\n'), /needs an override/);
++    await no(k + ' ms/sitemap.xml', g(k, 'ms/sitemap.xml', XML(d), XML(d, `<url><loc>https://${d}/b/</loc></url>`)), /needs an override/);
++    await no(k + ' title change', g(k, 'index.html', PAGE('A'), PAGE('B')), /title/i);
++    await no(k + ' .htaccess', g(k, '.htaccess', 'x', 'y'), /never written/);
++    if (!writeBlockedReason('x.php') || !writeBlockedReason('.htaccess')) throw new Error('write block');
++  }
++});
++
++Deno.test('Page One and SG Garage behaviour unchanged for these files', async () => {
++  await no('pageone preview/lilian-properties/sitemap.xml (tools)', g('pageone', 'preview/lilian-properties/sitemap.xml', XML('x.sg'), XML('x.sg', '<url><loc>https://x.sg/b/</loc></url>')), /needs an override/);
++  await no('pageone root sitemap.xml (tools, not publisher)', g('pageone', 'sitemap.xml', XML('x.sg'), XML('x.sg', '<url><loc>https://x.sg/b/</loc></url>')), /needs an override/);
++  await no('cleanic sitemap.xml', g('cleanic', 'sitemap.xml', XML('x.sg'), XML('x.sg', '<url><loc>https://x.sg/b/</loc></url>')), /needs an override/);
++});
++
++Deno.test('own folder: a new site sharing or containing another site\'s root is dropped (fails closed)', () => {
++  const H = '/home3/sgmodde1/public_html';
++  const base = { sggarage: H + '/carbonfibre', pageone: H + '/website_b1ec45f5', cleanic: H + '/website_02a02bac' };
++  const good = dropSharedRoots({ ...base, ktech: H + '/ktech.my', benzworld: H + '/benzworld.my', lilian: H + '/lilianproperties.com' });
++  if (!good.ktech || !good.benzworld || !good.lilian || !good.pageone) throw new Error('distinct roots must stay');
++  const parked = dropSharedRoots({ ...base, ktech: H + '/website_b1ec45f5', benzworld: H, lilian: H + '/website_b1ec45f5/preview/lilian-properties' });
++  if (parked.ktech || parked.benzworld) throw new Error('equal / containing root must be dropped');
++  if (!parked.pageone || !parked.sggarage || !parked.cleanic) throw new Error('existing sites must stay');
++  if (!parked.lilian) throw new Error('a root nested inside another site is kept (resolvePath already blocks the other way)');
++  const twins = dropSharedRoots({ ...base, ktech: H + '/x', benzworld: H + '/x' });
++  if (twins.ktech || twins.benzworld) throw new Error('two new sites on one folder: both dropped');
++  console.log('ok       equal/containing roots dropped; distinct and existing roots kept');
++});
+diff --git a/tests/sggGeneratedOverride.test.ts b/tests/sggGeneratedOverride.test.ts
+index a869047..36f6991 100644
+--- a/tests/sggGeneratedOverride.test.ts
++++ b/tests/sggGeneratedOverride.test.ts
+@@ -24,7 +24,7 @@ Deno.test('settings: publisher-only, exact four root paths, Page One override li
+   for (const p of ['sitemap.xml', 'sitemap.txt', 'llms.txt', 'article-cards.json']) if (!SGG_GENERATED_PATH.test(p)) throw new Error(p);
+   for (const p of ['articles/sitemap.xml', 'x/llms.txt', 'llms-full.txt', 'sitemap.xml.bak', 'Sitemap.xml', 'article-cards.json.txt', 'articles/article-cards.json', 'robots.txt', 'index.html'])
+     if (SGG_GENERATED_PATH.test(p)) throw new Error('path should not match: ' + p);
+-  if (SITE_HOLDS.some((h) => h.on !== false)) throw new Error('flags changed');
++  if (SITE_HOLDS.filter((h) => !['ktech', 'benzworld', 'lilian'].includes(h.key)).some((h) => h.on !== false)) throw new Error('flags changed');
+   console.log('ok       writers ["publisher","tools"] (tools delta); 4 exact root paths; Page One list unchanged; all 7 flags off (unchanged from 33343ea)');
+ });
+ 
