@@ -344,7 +344,7 @@ def shell(path, title, desc, body, schema=None, image=HERO, trail=None, ogtype="
 <div><p class="ft-lab">Products</p>{"".join(f'<a href="{r}products/{c["slug"]}/">{esc(c["short"])}</a>' for c in CATS)}</div>
 <div><p class="ft-lab">EXN in Singapore</p><a href="{r}technology/molytech/">Molytech technology</a><a href="{r}workshops/">For workshops</a><a href="{r}where-to-buy/">Where to buy</a><a href="{r}about/">About EXN</a><a href="{r}articles/">Articles</a><a href="{r}contact/">Contact Kohden</a><a href="{r}privacy/">Privacy</a></div>
 <div><p class="ft-lab">Also from Kohden</p><a href="{HYPER}" data-cta="footer-hyper-power">Hyper Power batteries</a><a href="{CARKU}" data-cta="footer-carku">Carku smart batteries</a><a href="{KOHDEN_EXN}" target="_blank" rel="noopener" data-cta="footer-exn-category">EXN on kohden.com.sg</a><a href="{KOHDEN}" target="_blank" rel="noopener">kohden.com.sg</a></div>
-</div><p class="wrap small">EXN is a brand of {LEGAL}. Distributed in Singapore by <a href="{KOHDEN}" target="_blank" rel="noopener">{KNAME}</a>. Grades and specs as printed on EXN labels and listed by Kohden. Prices on request. &copy; 2026 EXN Lube Singapore. Preview site.</p></footer>
+</div><p class="wrap small">EXN is a brand of {LEGAL[:-1] if LEGAL.endswith(".") else LEGAL}. Distributed in Singapore by <a href="{KOHDEN}" target="_blank" rel="noopener">{KNAME}</a>. Grades and specs as printed on EXN labels and listed by Kohden. Prices on request. &copy; 2026 EXN Lube Singapore. Preview site.</p></footer>
 <div class="sticky" data-sticky><a class="btn wa" href="{esc(WA_GENERAL)}" data-cta="sticky-whatsapp" target="_blank" rel="noopener">{WA_ICON}<span>WhatsApp Kohden</span></a><a class="btn ghost" href="tel:{TEL}" data-cta="sticky-call">Call</a></div>
 <script src="{r}exn.js?v={JS_V}" defer></script>
 <script src="{r}wa-tap-counter.js?v={JS_V}" defer></script>
@@ -500,9 +500,11 @@ def about():
 <img class="wide reveal" src="{COMPANY}" alt="EXN Lube company photo" width="1000" height="560" loading="lazy">
 <h2>EXN in Singapore</h2>
 <div class="tbl"><table><tbody>
-<tr><th>Brand</th><td>EXN Lube</td></tr><tr><th>Singapore distributor</th><td><a href="{KOHDEN}" target="_blank" rel="noopener">{KNAME}</a></td></tr>
+<tr><th>Brand</th><td>EXN Lube</td></tr><tr><th>Brand owner</th><td>{LEGAL}, Malaysia</td></tr><tr><th>Singapore distributor</th><td><a href="{KOHDEN}" target="_blank" rel="noopener">{KNAME}</a></td></tr>
 <tr><th>Address</th><td>{esc(ADDR)}</td></tr><tr><th>Phone</th><td><a href="tel:{TEL}">{PHONE}</a></td></tr><tr><th>Email</th><td><a href="mailto:{EMAIL}">{EMAIL}</a></td></tr>
 <tr><th>Hours</th><td>{HOURS}</td></tr><tr><th>Range in Singapore</th><td>Car engine oils, Atfios ATF and CVTF, +Care fluids and treatments, X40 spray (as listed on the Kohden store)</td></tr></tbody></table></div>
+<h2>Where EXN comes from</h2>
+<p>EXN is a Malaysian lubricant brand, owned by {LEGAL} and founded in 2015 in Petaling Jaya by Marc Ee. EXN says it now supplies more than 10 export markets. Singapore is one of them, served by {KNAME}.</p>
 <h2>What EXN stands for</h2>
 <ul class="ticks"><li><b>Lubricants.</b> \"Our focus is on lubricants and we provide solutions for all issues and applications in this field.\"</li><li><b>Value.</b> Technically advanced products that generate added value.</li><li><b>Technology.</b> <a href="{r}technology/molytech/">Molytech</a>, EXN's nano friction technology.</li></ul>
 <blockquote>\"It's an honor to collaborate with a diverse range of industries, from automotive and heavy-duty to marine and industrial sectors... prioritizing the highest standards of quality, safety, and environmental responsibility.\"<cite>Marc Ee, Founder and CEO, EXN Lube</cite></blockquote>
