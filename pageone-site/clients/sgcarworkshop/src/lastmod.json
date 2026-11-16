@@ -1,8 +1,8 @@
 {
 "": {
 "d": "2026-11-16",
-"h": "08b218ea52d9",
-"h2": "08b218ea52d9"
+"h": "673eae95c06f",
+"h2": "673eae95c06f"
 },
 "about/": {
 "d": "2026-11-10",
@@ -21,8 +21,8 @@
 },
 "areas/bukit-batok-crescent/": {
 "d": "2026-11-16",
-"h": "495ab498b556",
-"h2": "495ab498b556"
+"h": "310c45ce277c",
+"h2": "310c45ce277c"
 },
 "areas/bukit-batok-crescent/car-tyres/": {
 "d": "2026-11-08",
@@ -45,24 +45,24 @@
 "h2": "95d977d26224"
 },
 "areas/central/": {
-"d": "2026-11-15",
-"h": "91421e4d6f8a",
-"h2": "91421e4d6f8a"
+"d": "2026-11-16",
+"h": "45490129841a",
+"h2": "45490129841a"
 },
 "areas/corporation-drive-jurong-east/": {
 "d": "2026-11-16",
-"h": "cc6cb40c074a",
-"h2": "cc6cb40c074a"
+"h": "ca37b5cdf264",
+"h2": "ca37b5cdf264"
 },
 "areas/defu-industrial-estate/": {
-"d": "2026-11-09",
-"h": "644c7054f0f3",
-"h2": "644c7054f0f3"
+"d": "2026-11-16",
+"h": "73314cdd41d9",
+"h2": "73314cdd41d9"
 },
 "areas/east/": {
 "d": "2026-11-16",
-"h": "d80697168db7",
-"h2": "d80697168db7"
+"h": "fc5139d31c73",
+"h2": "fc5139d31c73"
 },
 "areas/jurong-west/": {
 "d": "2026-11-16",
@@ -71,13 +71,13 @@
 },
 "areas/kaki-bukit-industrial-estate/": {
 "d": "2026-11-16",
-"h": "972834a72e12",
-"h2": "972834a72e12"
+"h": "ed1665dd2d7e",
+"h2": "ed1665dd2d7e"
 },
 "areas/kaki-bukit-industrial-estate/car-aircon-repair/": {
 "d": "2026-11-16",
-"h": "7cc3bad36228",
-"h2": "7cc3bad36228"
+"h": "cd49f3b31a92",
+"h2": "cd49f3b31a92"
 },
 "areas/kaki-bukit-industrial-estate/car-battery/": {
 "d": "2026-11-16",
@@ -86,8 +86,8 @@
 },
 "areas/kaki-bukit-industrial-estate/gearbox-repair/": {
 "d": "2026-11-16",
-"h": "626c6809b865",
-"h2": "626c6809b865"
+"h": "21d10f54f56b",
+"h2": "21d10f54f56b"
 },
 "areas/kaki-bukit-industrial-estate/spray-painting-bodywork/": {
 "d": "2026-11-16",
@@ -120,14 +120,14 @@
 "h2": "4896f0c45fa0"
 },
 "areas/sin-ming-industrial-estate/": {
-"d": "2026-11-10",
-"h": "af08603574d0",
-"h2": "af08603574d0"
+"d": "2026-11-16",
+"h": "7e3ab03a1111",
+"h2": "7e3ab03a1111"
 },
 "areas/sin-ming-industrial-estate/gearbox-repair/": {
-"d": "2026-11-10",
-"h": "470f6d0e7e46",
-"h2": "470f6d0e7e46"
+"d": "2026-11-16",
+"h": "108a78ae999b",
+"h2": "108a78ae999b"
 },
 "areas/sin-ming-industrial-estate/spray-painting-bodywork/": {
 "d": "2026-11-10",
@@ -150,19 +150,19 @@
 "h2": "741f16816493"
 },
 "areas/toh-guan-jurong-east/": {
-"d": "2026-11-09",
-"h": "a3ff2877cd1c",
-"h2": "a3ff2877cd1c"
+"d": "2026-11-16",
+"h": "2f157ce734e6",
+"h2": "2f157ce734e6"
 },
 "areas/ubi-road-1/": {
 "d": "2026-11-16",
-"h": "15b2fd55fc5f",
-"h2": "15b2fd55fc5f"
+"h": "9fc35e137183",
+"h2": "9fc35e137183"
 },
 "areas/ubi/": {
-"d": "2026-11-15",
-"h": "a7a6e71d8299",
-"h2": "a7a6e71d8299"
+"d": "2026-11-16",
+"h": "ce50eaea56e9",
+"h2": "ce50eaea56e9"
 },
 "areas/west/": {
 "d": "2026-11-16",
@@ -175,9 +175,9 @@
 "h2": "b604225692f6"
 },
 "areas/yishun-industrial-park-a/": {
-"d": "2026-11-12",
-"h": "48d2344a3a12",
-"h2": "48d2344a3a12"
+"d": "2026-11-16",
+"h": "74d7ea3f8a32",
+"h2": "74d7ea3f8a32"
 },
 "areas/yishun-industrial-street-1/": {
 "d": "2026-11-12",
@@ -191,28 +191,28 @@
 },
 "brands/bmw-mercedes/": {
 "d": "2026-11-16",
-"h": "a94a379adefb",
-"h2": "a94a379adefb"
+"h": "5178d440a0ea",
+"h2": "5178d440a0ea"
 },
 "brands/byd/": {
 "d": "2026-11-16",
-"h": "b3620f0c8f56",
-"h2": "b3620f0c8f56"
+"h": "c03aa79ff198",
+"h2": "c03aa79ff198"
 },
 "brands/honda/": {
 "d": "2026-11-16",
-"h": "76a3e8f234fd",
-"h2": "76a3e8f234fd"
+"h": "5a42828da67a",
+"h2": "5a42828da67a"
 },
 "brands/tesla/": {
 "d": "2026-11-16",
-"h": "d2d7f47f35fe",
-"h2": "d2d7f47f35fe"
+"h": "c323a9559568",
+"h2": "c323a9559568"
 },
 "brands/toyota/": {
 "d": "2026-11-16",
-"h": "6f2bdfa06a35",
-"h2": "6f2bdfa06a35"
+"h": "d390ae814482",
+"h2": "d390ae814482"
 },
 "contact/": {
 "d": "2026-11-05",
@@ -225,94 +225,99 @@
 "h2": "52e994bad476"
 },
 "guides/": {
-"d": "2026-11-10",
-"h": "3cbae03241b9",
-"h2": "3cbae03241b9"
+"d": "2026-11-16",
+"h": "e4d9d4156eb9",
+"h2": "e4d9d4156eb9"
 },
 "guides/before-a-workshop-visit/": {
 "d": "2026-11-16",
-"h": "f653109572aa",
-"h2": "f653109572aa"
+"h": "1b65dbeffbc0",
+"h2": "1b65dbeffbc0"
 },
 "guides/brake-squeal-noise/": {
 "d": "2026-11-16",
-"h": "4f8066be408f",
-"h2": "4f8066be408f"
+"h": "800a4f137c6b",
+"h2": "800a4f137c6b"
 },
 "guides/car-aircon-not-cold/": {
 "d": "2026-11-16",
-"h": "d394e45f71eb",
-"h2": "d394e45f71eb"
+"h": "0018d446c33a",
+"h2": "0018d446c33a"
 },
 "guides/car-battery-dead/": {
 "d": "2026-11-16",
-"h": "d926869fdafc",
-"h2": "d926869fdafc"
+"h": "42cc8aa2e937",
+"h2": "42cc8aa2e937"
 },
 "guides/car-burning-smell/": {
-"d": "2026-11-10",
-"h": "df7276539992",
-"h2": "df7276539992"
+"d": "2026-11-16",
+"h": "aaf984244521",
+"h2": "aaf984244521"
 },
 "guides/car-knocking-over-humps/": {
 "d": "2026-11-16",
-"h": "7f9c1e1f6cb8",
-"h2": "7f9c1e1f6cb8"
+"h": "b26e9a55cdca",
+"h2": "b26e9a55cdca"
 },
 "guides/car-overheating/": {
-"d": "2026-11-15",
-"h": "b92801c464f5",
-"h2": "b92801c464f5"
+"d": "2026-11-16",
+"h": "7779c46f6a39",
+"h2": "7779c46f6a39"
 },
 "guides/car-servicing-cost-singapore/": {
 "d": "2026-11-16",
-"h": "8bb831bc3fb2",
-"h2": "8bb831bc3fb2"
+"h": "07762c8388fc",
+"h2": "07762c8388fc"
 },
 "guides/car-spray-painting-singapore/": {
 "d": "2026-11-16",
-"h": "cef8b1071bd4",
-"h2": "cef8b1071bd4"
+"h": "63b2e9588960",
+"h2": "63b2e9588960"
 },
 "guides/car-vibration-steering-shake/": {
-"d": "2026-11-15",
-"h": "c6247bc617ae",
-"h2": "c6247bc617ae"
+"d": "2026-11-16",
+"h": "c8f789745918",
+"h2": "c8f789745918"
+},
+"guides/car-water-dripping-under-car/": {
+"d": "2026-11-16",
+"h": "a3394fedd09e",
+"h2": "a3394fedd09e"
 },
 "guides/car-wont-start-battery/": {
 "d": "2026-11-16",
-"h": "6cafd2cc0722",
-"h2": "6cafd2cc0722"
+"h": "9d227de252ac",
+"h2": "9d227de252ac"
 },
 "guides/dashboard-warning-lights/": {
 "d": "2026-11-16",
-"h": "465c75a39f29",
-"h2": "465c75a39f29"
+"h": "41f498be5ded",
+"h2": "41f498be5ded"
 },
 "guides/dent-repair-singapore/": {
 "d": "2026-11-16",
-"h": "283dde51ae1c",
-"h2": "283dde51ae1c"
+"h": "fb65e9718fc5",
+"h2": "fb65e9718fc5"
 },
 "guides/engine-warning-light/": {
 "d": "2026-11-16",
-"h": "8d66d4d89ba4",
-"h2": "8d66d4d89ba4"
+"h": "d02839989a6d",
+"h2": "d02839989a6d"
 },
 "guides/gearbox-cvt-jerking/": {
 "d": "2026-11-16",
-"h": "6328cbc57ef7",
-"h2": "6328cbc57ef7"
+"h": "e07afaf1e37b",
+"h2": "e07afaf1e37b"
 },
 "guides/how-to-choose-a-car-workshop/": {
 "d": "2026-11-16",
-"h": "72c54f2dbb4d",
-"h2": "72c54f2dbb4d"
+"h": "112bb69d9404",
+"h2": "112bb69d9404"
 },
 "guides/tyre-shop-open-sunday-singapore/": {
 "d": "2026-11-16",
-"h": "f36183dea6a2",
-"h2": "f36183dea6a2"
+"h": "5844a343790f",
+"h2": "5844a343790f"
 },
 "list-your-workshop/": {
 "d": "2026-11-16",
@@ -336,8 +341,8 @@
 },
 "services/car-aircon-repair/": {
 "d": "2026-11-16",
-"h": "a89b7f2605af",
-"h2": "a89b7f2605af"
+"h": "c2c4438950d7",
+"h2": "c2c4438950d7"
 },
 "services/car-battery/": {
 "d": "2026-11-16",
@@ -371,13 +376,13 @@
 },
 "services/gearbox-repair/": {
 "d": "2026-11-16",
-"h": "7bbbba5f7db3",
-"h2": "7bbbba5f7db3"
+"h": "72eb1f0d253d",
+"h2": "72eb1f0d253d"
 },
 "services/general-servicing-repair/": {
 "d": "2026-11-16",
-"h": "425745b0c4a6",
-"h2": "425745b0c4a6"
+"h": "b2cb916f0b5a",
+"h2": "b2cb916f0b5a"
 },
 "services/hybrid-ev-servicing/": {
 "d": "2026-11-10",
@@ -1086,8 +1091,8 @@
 },
 "workshops/hw-auto-service-centre/": {
 "d": "2026-11-04",
-"h": "1944f115603e",
-"h2": "1944f115603e"
+"h": "efd4a662ac30",
+"h2": "efd4a662ac30"
 },
 "workshops/hybrid-automotive/": {
 "d": "2026-11-07",
@@ -1651,8 +1656,8 @@
 },
 "workshops/rage-performance-technik/": {
 "d": "2026-11-05",
-"h": "9edcb750e418",
-"h2": "9edcb750e418"
+"h": "a746ae45791c",
+"h2": "a746ae45791c"
 },
 "workshops/rainbow-studios/": {
 "d": "2026-11-06",
@@ -1786,8 +1791,8 @@
 },
 "workshops/sin-hwee-motor/": {
 "d": "2026-11-15",
-"h": "db0b294d0789",
-"h2": "db0b294d0789"
+"h": "01dcbe61596d",
+"h2": "01dcbe61596d"
 },
 "workshops/sk-garage-motorsports/": {
 "d": "2026-11-04",
