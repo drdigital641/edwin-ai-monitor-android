@@ -929,3 +929,75 @@ ARTICLES.append({
  ],
  "confirm": []
 })
+
+# Night article 17 Nov 2026 (odd night, worker part 2)
+ARTICLES.append({
+ "slug": "clunking-noise-over-bumps-bmw-mercedes-audi-singapore",
+ "name": "Clunking Noise Over Bumps",
+ "card": "Why a BMW, Mercedes-Benz or Audi can clunk or knock over bumps, which suspension parts are usually involved, and when to stop driving.",
+ "title": "Clunking Noise Over Bumps: What It Means",
+ "desc": "Clunking or knocking over bumps in a BMW, Mercedes-Benz or Audi? See common suspension causes, what to note, when to stop driving and what a suspension check covers.",
+ "h1": "Clunking Noise Over Bumps: What Could Cause It?",
+ "answer": "A clunk or knock over bumps usually points to worn suspension parts such as stabiliser links, control arm bushes, top mounts or shock absorbers. It is often a loose or floaty feel as well. Note where and when it happens, then have the suspension inspected. If the steering or braking feels different, stop driving and get help.",
+ "date": "2026-11-17",
+ "updated": "17 Nov 2026",
+ "service": "/services/brake-suspension-repair/",
+ "minutes": 4,
+ "brand": "BMW, Mercedes-Benz and Audi",
+ "hero": {
+  "src": "/assets/articles/clunking-noise-over-bumps-bmw-mercedes-audi-singapore.jpg",
+  "w": 1024,
+  "h": 1024,
+  "alt": "Illustrative close view of a car's front suspension parts on a workshop lift"
+ },
+ "sections": [
+  {
+   "h2": "What does a clunk over bumps feel and sound like?",
+   "html": "<p>Owners describe a knock or clunk from one corner when the wheel drops into a pothole or crosses a speed bump, a rattle over rough road, or a car that feels loose or floaty. Some notice the steering wheel sits off-centre or that the tyres wear unevenly. Where and when you hear it helps a workshop narrow down the cause.</p>"
+  },
+  {
+   "h2": "What can cause a clunking noise over bumps?",
+   "html": "<table>\n<thead><tr><th>Possible cause</th><th>What you may notice</th><th>How it is checked</th></tr></thead>\n<tbody>\n<tr><td>Worn stabiliser links</td><td>Clunk or rattle over uneven road</td><td>Links are checked for play</td></tr>\n<tr><td>Hardened control arm bushes</td><td>Knock when the wheel drops, a loose or floaty feel</td><td>Bushes and joints are inspected for play</td></tr>\n<tr><td>Worn top mounts</td><td>Knock from the front over bumps, sometimes when turning</td><td>Mounts are inspected for wear</td></tr>\n<tr><td>Tired shock absorbers</td><td>Bouncy or floaty ride</td><td>Shock absorbers are inspected</td></tr>\n<tr><td>Alignment or uneven tyre wear</td><td>Car feels off-centre or tyres wear on the edges</td><td>Tyres and alignment are checked</td></tr>\n</tbody></table>\n<p>The noise alone does not say which one it is, so the moving parts are checked for play rather than guessed.</p>"
+  },
+  {
+   "h2": "What should you note before booking?",
+   "html": "<ul>\n<li>Is the noise from the front or rear, and from the left or right?</li>\n<li>Does it happen over bumps only, or also when turning or braking?</li>\n<li>Is it worse when the car is cold or after a long drive?</li>\n<li>Does the car feel loose or floaty, or does the steering sit off-centre?</li>\n<li>Has the car had new tyres, wheels or suspension work recently?</li>\n</ul>\n<p>These answers help the workshop point the inspection in the right direction.</p>"
+  },
+  {
+   "h2": "What does a suspension check cover?",
+   "html": "<p>We inspect the parts that move and check them for play: links, bushes, mounts and shock absorbers. We also look at tyre condition, because uneven wear on the edges of a tyre often tells us something about alignment or worn joints. We explain which items are fine, which are close to their limit and which need work now, then quote the repair. You approve it before work starts.</p>"
+  },
+  {
+   "h2": "Is it safe to keep driving with a clunk?",
+   "html": "<p>It depends on the part. A mild clunk may be a worn bush or link, but it can also be a more serious joint. If the steering or braking feels different, stop in a safe place and ask for help. Otherwise book an inspection soon, so a small item does not turn into a larger one.</p>"
+  },
+  {
+   "h2": "Where can you get it checked?",
+   "html": "<p>Send us your car model and the details you noted on WhatsApp at +65 8221 5502, or use the <a href=\"/contact-us/\">contact page</a>. We are at 143 Bukit Timah Road, Newton Circus, inside the Shell station. Read about <a href=\"/services/brake-suspension-repair/\">brake and suspension repair</a> and how a check works, and see the <a href=\"/european-car-service-schedule-singapore/\">European car service schedule</a>, as suspension checks are also useful during a regular service.</p>"
+  }
+ ],
+ "faqs": [
+  {
+   "q": "Why does my car clunk over bumps?",
+   "a": "Common causes are worn stabiliser links, hardened control arm bushes, worn top mounts or tired shock absorbers. The noise alone does not say which, so the parts that move are inspected for play."
+  },
+  {
+   "q": "Can I keep driving with a clunking noise?",
+   "a": "A mild clunk may be a worn bush or link, but it can also be a more serious joint. If the steering or braking feels different, stop driving and have it checked. Otherwise book an inspection soon."
+  },
+  {
+   "q": "Is a clunk over bumps a suspension or a tyre problem?",
+   "a": "A clunk over bumps usually points to suspension parts, while uneven tyre wear can point to alignment or worn joints. Both are looked at in the same check."
+  },
+  {
+   "q": "What should I tell the workshop about the noise?",
+   "a": "Say where it comes from, whether it happens over bumps only or also when turning or braking, and whether tyres or suspension work were changed recently. A loose feel or an off-centre steering wheel also helps."
+  }
+ ],
+ "related": [
+  "/services/brake-suspension-repair/",
+  "/european-car-service-schedule-singapore/",
+  "/contact-us/"
+ ],
+ "confirm": []
+})

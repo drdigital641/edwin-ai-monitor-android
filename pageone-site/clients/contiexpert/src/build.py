@@ -9,7 +9,7 @@ DOMAIN = 'https://contiexpert.sg'
 BASE = '' if LIVE else '/preview/contiexpert'
 HERE = os.path.dirname(os.path.abspath(__file__))
 OUT = sys.argv[1] if len(sys.argv) > 1 else os.path.join(HERE, 'site')
-TODAY = '2026-11-15'
+TODAY = '2026-11-17'
 INDEXNOW_KEY = '6f1c2e9a4b7d48c3a05e9d21b8f3c7e4'
 
 BIZ = 'Volt Autocare'
@@ -134,7 +134,7 @@ def brand_title(t):
     t = re.sub(r'\s*[|\-]\s*(ContiExpert by Volt Autocare|Volt Autocare|ContiExpert)\s*$', '', t)
     return t + ' | ' + BRAND
 
-def page(path, title, desc, body, lds=(), crumbs=None):
+def page(path, title, desc, body, lds=(), crumbs=None, og=None):
     title = brand_title(title)
     assert len(title) <= 80, (path, title)
     canon = DOMAIN + path
@@ -142,14 +142,16 @@ def page(path, title, desc, body, lds=(), crumbs=None):
     if crumbs: ld.append(crumbs_ld(crumbs))
     navh = ''.join('<a href="%s"%s>%s</a>' % (p, ' aria-current="page"' if path.startswith(p) and p != '/' else '', n) for n, p in NAV)
     cr = ''
+    if og: OGI, OGW, OGH, OGA = DOMAIN + og['src'], og['w'], og['h'], E(og['alt']); OGT = '<meta name="twitter:image" content="%s">' % OGI
+    else: OGI, OGW, OGH, OGA, OGT = DOMAIN + '/assets/og.jpg', 1200, 630, E(BRAND + ', European car servicing at Newton Circus'), ''
     head = f'''<!doctype html><html lang="en-SG" class="no-js"><head><meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>{E(title)}</title><meta name="description" content="{E(desc)}">
 <link rel="canonical" href="{canon}"><meta name="robots" content="index,follow,max-image-preview:large">
 <meta property="og:type" content="website"><meta property="og:site_name" content="{BRAND}"><meta property="og:title" content="{E(title)}">
-<meta property="og:description" content="{E(desc)}"><meta property="og:url" content="{canon}"><meta property="og:image" content="{DOMAIN}/assets/og.jpg">
-<meta property="og:image:width" content="1200"><meta property="og:image:height" content="630"><meta property="og:image:alt" content="{BRAND}, European car servicing at Newton Circus">
-<meta name="twitter:card" content="summary_large_image"><meta name="theme-color" content="#ffffff">
+<meta property="og:description" content="{E(desc)}"><meta property="og:url" content="{canon}"><meta property="og:image" content="{OGI}">
+<meta property="og:image:width" content="{OGW}"><meta property="og:image:height" content="{OGH}"><meta property="og:image:alt" content="{OGA}">
+<meta name="twitter:card" content="summary_large_image">{OGT}<meta name="theme-color" content="#ffffff">
 <link rel="icon" href="/favicon.ico" sizes="48x48"><link rel="icon" type="image/png" sizes="192x192" href="/assets/icon-192.png"><link rel="apple-touch-icon" href="/assets/apple-touch-icon.png"><link rel="manifest" href="/site.webmanifest">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600;700&display=swap">
 <link rel="stylesheet" href="/ce.css?v={ver('ce.css')}">
@@ -221,6 +223,10 @@ def related_html(urls):
     if not items: return ''
     return '<h2>Related</h2><div class="chips">%s</div>' % ''.join('<a class="chip" href="%s">%s</a>' % (x, E(URLNAME[x])) for x in items)
 
+def hero_img(p):
+    h = p['hero']
+    return '<img src="%s" width="%d" height="%d" alt="%s" decoding="async">' % (h['src'], h['w'], h['h'], E(h['alt']))
+
 def detail_page(kind, p):
     if kind == 'service':
         path = '/services/%s/' % p['slug']; cr = [('Home', '/'), ('Services', '/services/'), (p['name'], path)]
@@ -235,7 +241,7 @@ def detail_page(kind, p):
         meta = '<p class="meta">Updated %s &middot; %s min read &middot; By the %s team, Newton Circus</p>' % (p.get('updated', '3 Nov 2026'), p.get('minutes', 6), BRAND)
         lds.append({'@context': 'https://schema.org', '@type': 'Article', 'headline': p['h1'], 'datePublished': p['date'], 'dateModified': p.get('modified', p['date']),
                     'author': {'@type': 'Organization', 'name': BRAND, 'url': DOMAIN + '/'}, 'publisher': {'@id': DOMAIN + '/#business'},
-                    'image': DOMAIN + '/assets/og.jpg', 'mainEntityOfPage': DOMAIN + path})
+                    'image': DOMAIN + ((p.get('hero') or {}).get('src') or '/assets/og.jpg'), 'mainEntityOfPage': DOMAIN + path})
         own = p.get('service')
         extra = ('<div class="card"><h3 style="margin-top:0">The service behind this guide</h3><p><a href="%s">%s</a></p></div>' % (own, E(URLNAME.get(own, 'Our services')))) if own else ''
     else:
@@ -246,10 +252,10 @@ def detail_page(kind, p):
     ph = SVC_IMG.get(key, ('real-front', 'ContiExpert by Volt Autocare workshop bays at the Shell station, Newton'))
     logos = ''.join(img(l, l.replace('logo-', '').upper() + ' logo', 'blogo') for l in LOGOS.get(p['slug'], [])) if kind == 'brand' else ''
     body = f'''<div class="phead ph2"><div class="wrap"><div>{crumbs_html(cr)}{('<div class="blogos">%s</div>' % logos) if logos else ''}<h1>{E(p['h1'])}</h1>{meta}<p class="answer">{E(p['answer'])}</p>
-<div class="btns">{btn_wa('WhatsApp us about this', 'Hi ContiExpert, I am asking about: ' + p['name'] if 'name' in p else 'Hi ContiExpert, I read your guide: ' + p['h1'])}{btn_dir()}</div></div><div class="phimg">{img(ph[0], ph[1], eager=True)}</div></div></div>
+<div class="btns">{btn_wa('WhatsApp us about this', 'Hi ContiExpert, I am asking about: ' + p['name'] if 'name' in p else 'Hi ContiExpert, I read your guide: ' + p['h1'])}{btn_dir()}</div></div><div class="phimg">{hero_img(p) if p.get('hero') else img(ph[0], ph[1], eager=True)}</div></div></div>
 <div class="sec"><div class="wrap layout"><article class="prose">{secs}
 <div data-rv>{faq_html(p['faqs'])}</div><div data-rv>{related_html(p.get('related', []))}</div></article>{aside(extra)}</div></div>'''
-    page(path, p['title'], p['desc'], body, lds, cr)
+    page(path, p['title'], p['desc'], body, lds, cr, og=p.get('hero'))
 
 # ---------- 10 km catchment ----------
 AREAS = [  # name, lat, lon, group  (centroids are approximate; distances shown as rounded straight-line km)
