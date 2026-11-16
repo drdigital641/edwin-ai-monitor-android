@@ -95,9 +95,14 @@ def lst(items):
 
 def build(slug, d):
     n, town = d["name"], d["town"]
-    title = f"{n} Renovation &amp; Interior Design | Floor Plan Guide, Ideas, Quote — Maison"
-    desc = (f"{n} renovation and interior design in {town}: flat types, floor plan guide, renovation ideas, "
-            f"key-collection checklist and FAQ. WhatsApp Maison for a quote for your unit type.")
+    title = f"{n} Renovation &amp; Interior Design | {town} BTO — Maison"
+    desc = f"Interior design and built-in carpentry for {n}, an HDB BTO in {town}. Launch facts only; key dates unconfirmed. WhatsApp Maison with your plan."
+    OLD_FAQ = [
+     (f"When was {n} launched?","Our project file records: 2026-11 launch. That official confirmation covers the launch date only, not TOP or key collection."),
+     (f"Is the key-collection date for {n} confirmed?","No. Completion and keys are unconfirmed in our file. Use your HDB documents for your own appointment, when you have one."),
+     (f"Do you have the {n} floor plan?","No official floor-plan or site image is on file for this page, so none is published here. Please send your approved HDB unit plan."),
+     ("What should I send Maison?","Your approved floor plan, unit type if you have it, and a key date if one is already in writing. After keys, an HDB renovation permit is required before works. WhatsApp us at https://wa.me/6593391185."),
+    ]
     url = f"https://maisoninteriordesign.sg/new-launches/{slug}/"
     types = d["types"]
     tnames = ", ".join(t[0] for t in types[:-1]) + " and " + types[-1][0] if len(types) > 1 else types[0][0]
@@ -120,7 +125,7 @@ def build(slug, d):
       LAY.get(types[min(2,len(types)-1)][0].split(" (")[0], LAY["4-room"])),
      (f"When can I start renovating {n}?",
       "After you collect your keys. Report defects within 30 days, apply for the HDB renovation permit through your contractor, then start works. Noisy works are limited to Monday to Friday, 9am to 5pm."),
-    ] + d["extra_faq"]
+    ] + d["extra_faq"] + OLD_FAQ
     faq_html = "".join(
         f'<details class="qa"><summary><h3>{E(q)}</h3><span class="pm" aria-hidden="true"></span></summary><div class="vq"><p>{E(a)}</p></div></details>'
         for q, a in faqs)
@@ -129,10 +134,10 @@ def build(slug, d):
     ld = {"@context":"https://schema.org","@graph":[
      {"@type":"HomeAndConstructionBusiness","@id":"https://maisoninteriordesign.sg/#business","name":"Maison Interior Design","url":"https://maisoninteriordesign.sg/","telephone":"+65 9339 1185","email":"maisoninteriordesignsg@gmail.com","foundingDate":"2018","areaServed":{"@type":"Country","name":"Singapore"},"image":"https://maisoninteriordesign.sg/wp-content/uploads/Jimmy-Monkey-Completed-6.jpg","founder":{"@type":"Person","name":"Roland Ng","jobTitle":"Managing Director"},"sameAs":["https://www.instagram.com/maison_interiordesign/","https://www.facebook.com/MaisonInteriorDesignSG"]},
      {"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://maisoninteriordesign.sg/"},{"@type":"ListItem","position":2,"name":"New launches","item":"https://maisoninteriordesign.sg/new-launches/"},{"@type":"ListItem","position":3,"name":n,"item":url}]},
-     {"@type":"Article","headline":f"{n} Renovation & Interior Design","description":desc,"datePublished":"2026-11-11","dateModified":"2026-11-16","author":{"@id":"https://maisoninteriordesign.sg/#business"},"publisher":{"@id":"https://maisoninteriordesign.sg/#business"},"mainEntityOfPage":url,
-      "about":{"@type":"ApartmentComplex","name":n,"numberOfAccommodationUnits":int(d["units"].replace(",","")),"address":{"@type":"PostalAddress","addressLocality":town,"addressCountry":"SG"}},
-      "keywords":f"{n} renovation, {n} interior design, {n} floor plan, {n} completion date, {town} BTO renovation, {n} built-in carpentry",
-      "citation":[SRC_MNH,SRC_FLAT]},
+     {"@type":"Article","headline":f"{n} Renovation & Interior Design","description":desc,"datePublished":"2026-11-11","dateModified":"2026-11-11","author":{"@id":"https://maisoninteriordesign.sg/#business"},"publisher":{"@id":"https://maisoninteriordesign.sg/#business"},"mainEntityOfPage":url,
+      "about":{"@type":"Place","name":n,"address":{"@type":"PostalAddress","addressLocality":town,"addressCountry":"SG"}},
+      "keywords":f"{n} renovation, {n} interior design, {n} floor plan, {town} BTO renovation, {n} built-in carpentry, {town} interior design",
+      "citation":["https://homes.hdb.gov.sg/home/bto"]},
      {"@type":"FAQPage","mainEntity":faq_ld}]}
     ld_s = json.dumps(ld, ensure_ascii=False, separators=(",", ":"))
 
