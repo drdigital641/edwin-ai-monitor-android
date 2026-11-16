@@ -18,7 +18,7 @@ Run: python3 build.py   -> ./site   (preview: pageonesingapore.com/preview/exn-l
 16 Nov 2026 (Edwin): converted to a SINGAPORE site. Kohden (kohden.com.sg) is the distributor; main CTA WhatsApp Kohden.
 No Malaysian phone/address/"Malaysia" wording. Cross-linked with Hyper Power + Carku previews. noindex,nofollow on every page.
 """
-import html, json, os, shutil, hashlib, glob
+import html, json, os, re, shutil, hashlib, glob
 from urllib.parse import quote
 
 HERE = os.path.dirname(os.path.abspath(__file__))
@@ -41,6 +41,7 @@ ADDR = f"{STREET}, Singapore {POST}"
 HOURS = "Monday to Friday, 9am to 5pm. Saturday and Sunday closed."
 # WhatsApp: not shown on kohden.com.sg; +65 8603 0355 is the Kohden WhatsApp Edwin confirmed on 15 Nov 2026 (Carku, Hyper Power use it). Edwin to confirm for EXN.
 WA = "6586030355"
+WA_DISP = "+65 8603 0355"   # Kohden WhatsApp widget number; WhatsApp only, never for calls
 HYPER = "https://pageonesingapore.com/preview/hyper-power/"
 CARKU = "https://pageonesingapore.com/preview/carku/"
 MAPS = "https://www.google.com/maps/search/?api=1&query=" + quote("KohDen International 7 Kaki Bukit Road 1 Eunos Technolink Singapore 415937")
@@ -53,19 +54,17 @@ def wa(msg): return f"https://wa.me/{WA}?text=" + quote(msg, safe="")
 WA_GENERAL = wa("Hi Kohden, I'd like advice on EXN engine oil for my car.\nCar model: \nOil grade in my manual (e.g. 0W-20): ")
 WA_WORKSHOP = wa("Hi Kohden, our workshop would like to stock EXN oils.\nWorkshop name: \nArea: \nContact person: ")
 
-E = "https://exnlube.com/static/media/"
-def ex(name): return E + quote(name)
+# Official EXN images, copied from exnlube.com/static/media and served from the preview (Edwin 16 Nov: no exnlube.com links).
+E = "images/brand/"
+def ex(name): return SITE + E + re.sub(r"[^a-z0-9.]+", "-", name.lower())
 K = "https://www.kohden.com.sg/wp-content/uploads/"
 def kd(p): return K + quote(p)
 
 LOGO = ex("EXN LOGO BLACK-01-01.4e598f95512d0f60bfa9.png")
-LOGO_W = ex("EXN LOGO WHITE-01-01.331823519af95aae4b41.png")
-ICON = "https://exnlube.com/exnlube192.png"
-HERO = ex("EXN WEBSITE - BANNER 01.212cd9602db2172415cd.jpg")
-HERO2 = ex("EXN WEBSITE - BANNER 02.4dfaa53332de7778530f.jpg")
-HERO3 = ex("EXN WEBSITE - BANNER 03.e46cbc3446d631e26be5.jpg")
-MOLY = ex("molytech_big.288c9403d1bc153587ff.png")
-COMPANY = ex("company_photo.b91fadc2cefd1cfe51cf.png")
+LOGO_W = ex("EXN LOGO WHITE-01-01.331823519af95aae4b41.webp")   # 300x83
+HERO = ex("EXN WEBSITE - BANNER 01.212cd9602db2172415cd.webp")   # 1280x537
+MOLY = ex("molytech_big.288c9403d1bc153587ff.webp")   # 640x512
+COMPANY = ex("company_photo.b91fadc2cefd1cfe51cf.webp")   # 451x297
 COMM = [ex(f"Community-2024-(o)-0{i}.{h}.jpg") for i, h in
         [(2, "dd165d0358a437484f95"), (3, "e59deb3bdd278c463bdd"), (4, "bdacb6930c0ef95873fa"),
          (5, "e6cb68078de1c951ae51"), (6, "1d9c123fc7ee4c7afbc7")]]
@@ -138,7 +137,7 @@ CATS = [
   body="<p>EXN's tagline for the range is \"Built To Endure, Designed To Excel\". The company describes it as \"specialized for the Heavy Duty diesel engines of vehicles blended design for Heavy Truck, Commercial and Farm lubricants\".</p>"
        "<p>Kohden's Singapore store does not list HDDEO grades yet. Fleet operators can ask Kohden about supply and the specification sheet of each grade.</p>",
   faq=[("Who is EXN HDDEO for?", "Owners and fleets running heavy trucks, buses, commercial diesels and farm machinery. Ask Kohden, EXN's Singapore distributor, about the grades and approvals for your engines."),
-       ("How do I order EXN diesel oil in Singapore?", "WhatsApp or call Kohden with your engines and volumes. Ask for the technical data sheet of the grade you need.")]),
+       ("How do I order EXN diesel oil in Singapore?", f"WhatsApp Kohden on {WA_DISP} or call {PHONE} with your engines and volumes. Ask for the technical data sheet of the grade you need.")]),
  dict(slug="industrial-lubricants", name="Industrial lubricants", short="Industrial oils",
   title="Industrial Lubricants Singapore | Hydraulic, Turbine | EXN",
   desc="EXN industrial lubricants for hydraulic systems, turbines, compressors, bearings, open and closed gears and pneumatic tools, up to power plants.",
@@ -146,7 +145,7 @@ CATS = [
   answer="EXN supplies industrial lubricants for hydraulic systems, turbines, compressors, bearings, open and closed gears and pneumatic tools. EXN says the range serves the industrial sector from small plants to mega power plants. Kohden's Singapore store does not list industrial grades yet, so send Kohden your equipment list and ask what they can supply.",
   body="<p>In EXN's words, the range is used \"in a diverse range of equipment, including hydraulic systems, turbines, compressors, bearings, open and close gears, pneumatic tools and industrial sector... from small to mega power plants.\"</p>",
   faq=[("Which industrial oils does EXN make?", "Lubricants for hydraulic systems, turbines, compressors, bearings, open and closed gears and pneumatic tools. Ask EXN for the data sheet of each grade."),
-       ("How do I order industrial lubricants from EXN?", "WhatsApp or call Kohden, EXN's Singapore distributor, with your equipment and volumes.")]),
+       ("How do I order industrial lubricants from EXN?", f"WhatsApp Kohden, EXN's Singapore distributor, on {WA_DISP} or call {PHONE} with your equipment and volumes.")]),
  dict(slug="marine-lubricants", name="Marine lubricants", short="Marine oils",
   title="Marine Lubricants Singapore | Marine Diesel Oil | EXN",
   desc="EXN marine lubricants for fast and stationary diesel engines, with detergent and dispersant properties, oxidation resistance and anti-wear.",
@@ -327,7 +326,7 @@ def shell(path, title, desc, body, schema=None, image=HERO, trail=None, ogtype="
 <body>
 <a class="skip" href="#main">Skip to content</a>
 <header class="top"><div class="wrap bar">
-<a class="logo" href="{r}" aria-label="EXN Lube Singapore home"><img src="{LOGO_W}" alt="EXN Lube logo" width="150" height="40"></a>
+<a class="logo" href="{r}" aria-label="EXN Lube Singapore home"><img src="{LOGO_W}" alt="EXN Lube logo" width="150" height="42"></a>
 <button class="menu" aria-label="Menu" aria-expanded="false">Menu</button>
 <nav class="nav" aria-label="Main">{nav(r)}</nav>
 <a class="btn wa hd-wa" href="{esc(WA_GENERAL)}" data-cta="header-whatsapp" target="_blank" rel="noopener">{WA_ICON}<span>WhatsApp</span></a>
@@ -337,7 +336,7 @@ def shell(path, title, desc, body, schema=None, image=HERO, trail=None, ogtype="
 {body}
 </main>
 <footer class="foot"><div class="wrap cols">
-<div><img src="{LOGO_W}" alt="EXN Lube" width="120" height="32" loading="lazy">
+<div><img src="{LOGO_W}" alt="EXN Lube" width="120" height="33" loading="lazy">
 <p class="ft-lab">Singapore distributor</p><p><a href="{KOHDEN}" target="_blank" rel="noopener"><b>{KNAME}</b></a><br>{esc(ADDR)}</p>
 <p><a href="tel:{TEL}" data-cta="footer-call">Call {PHONE}</a><br><a href="mailto:{EMAIL}" data-cta="footer-email">{EMAIL}</a><br>{HOURS}</p>
 <a class="btn wa" href="{esc(WA_GENERAL)}" data-cta="footer-whatsapp" target="_blank" rel="noopener">{WA_ICON}<span>WhatsApp Kohden</span></a></div>
@@ -376,12 +375,12 @@ def home():
     cards = "".join(f'<a class="ccard reveal" href="products/{c["slug"]}/"><img src="{CAT_ICON[c["slug"]]}" alt="" width="56" height="56" loading="lazy"><h3>{esc(c["name"])}</h3><p>{esc(c["card"])}</p><span>See the range</span></a>' for c in CATS)
     feat = "".join(pcard(p, r, product_link(p[0], r)) for p in PRODUCTS if p[0] in ("hyb", "mr5w30", "mr0w20", "cm10w40", "cvtf", "dot4"))
     arts = article_cards(r, 3)
-    faq = [("Where can I buy EXN engine oil in Singapore?", f"From {KNAME}, EXN's authorised distributor in Singapore, at {ADDR}. WhatsApp or call {PHONE}, Monday to Friday, 9am to 5pm."),
+    faq = [("Where can I buy EXN engine oil in Singapore?", f"From {KNAME}, EXN's authorised distributor in Singapore, at {ADDR}. WhatsApp {WA_DISP} or call {PHONE}, Monday to Friday, 9am to 5pm."),
            ("Which EXN oils does Kohden list in Singapore?", "Extentios Hybrid 0W-16, Extentios Molyracing 0W-20, 5W-30, 5W-40 and 5W-50, Carios Molytech Nano 5W-30 and 10W-40, Atfios ATF and CVTF, and the +Care brake fluids, treatments, cleaners and X40 spray."),
            ("Can my workshop stock EXN?", "Yes. Kohden supplies workshops in Singapore. Send your workshop name and area on WhatsApp. See <a href=\"workshops/\">EXN for workshops</a>."),
            ("What is EXN Molytech?", "EXN's friction technology: nano particles that act like tiny ball bearings between metal surfaces to cut heat, wear and engine drag. See <a href=\"technology/molytech/\">how Molytech works</a>.")]
     body = f"""
-<section class="hero"><img class="hero-img" src="{HERO}" alt="EXN Lube engine oil bottles" width="1600" height="700" fetchpriority="high">
+<section class="hero"><img class="hero-img" src="{HERO}" alt="EXN Lube engine oil bottles" width="1280" height="537" fetchpriority="high">
 <div class="wrap hero-txt"><h1>EXN engine oil in Singapore</h1>
 <p class="lead">Fully synthetic and Molytech oils, sold here by Kohden.</p>
 {cta_buttons(r, "hero")}
@@ -398,7 +397,7 @@ def home():
 </ul></section>
 <div class="wrap">{kohden_block(r, "home-kohden")}</div>
 <section class="wrap"><h2>Popular EXN oils in Singapore</h2><div class="pgrid">{feat}</div></section>
-<section class="band"><div class="wrap split"><div class="reveal"><h2>Molytech: less friction, less heat, less drag</h2><p>Molytech is EXN's nano technology. Its particles act, in EXN's words, \"like billions of ball bearings\" between metal surfaces, turning sliding friction into rolling.</p><a class="btn ghost" href="technology/molytech/">How Molytech works</a></div><img class="reveal" src="{MOLY}" alt="EXN Molytech nano technology illustration" width="560" height="420" loading="lazy"></div></section>
+<section class="band"><div class="wrap split"><div class="reveal"><h2>Molytech: less friction, less heat, less drag</h2><p>Molytech is EXN's nano technology. Its particles act, in EXN's words, \"like billions of ball bearings\" between metal surfaces, turning sliding friction into rolling.</p><a class="btn ghost" href="technology/molytech/">How Molytech works</a></div><img class="reveal" src="{MOLY}" alt="EXN Molytech nano technology illustration" width="640" height="512" loading="lazy"></div></section>
 <section class="wrap"><h2>The full EXN range</h2><div class="cgrid">{cards}</div></section>
 <section class="wrap wband reveal"><h2>For Singapore workshops</h2><p>Stock EXN oils, gearbox fluids and +Care treatments, supplied by Kohden.</p>{cta_buttons(r, "home-workshop", "Workshop enquiry on WhatsApp", WA_WORKSHOP)}<p><a href="workshops/">EXN for workshops</a></p></section>
 <section class="wrap"><h2>Oil questions, answered</h2><div class="agrid">{arts}</div></section>
@@ -477,7 +476,7 @@ def molytech():
                 "Raises TBN to fight corrosion from combustion acids"]
     body = f"""<section class="wrap page"><h1>Molytech: how EXN's nano technology works</h1>
 <p class="answer">Molytech is EXN's friction technology. It is based on a 60-atom sphere called a buckyball that looks like a soccer ball at atomic level. The nano particles act like billions of ball bearings that fill gaps in metal surfaces, turning sliding friction into rolling, which EXN says lowers heat, wear and engine drag.</p>
-<img class="wide reveal" src="{MOLY}" alt="Molytech nano particles acting as ball bearings between metal surfaces" width="1000" height="560" loading="lazy">
+<img class="wide reveal" src="{MOLY}" alt="Molytech nano particles acting as ball bearings between metal surfaces" width="640" height="512" loading="lazy">
 <h2>What Molytech does, step by step</h2>
 <ol><li>Nano particles spread through the oil and settle into the tiny peaks and valleys of metal surfaces.</li><li>They make the surface more even at atomic level.</li><li>Moving parts roll over the particles instead of grinding against each other.</li><li>Less friction means less heat, which helps the oil last longer, and less engine drag, which helps fuel mileage.</li></ol>
 <h2>The eight benefits EXN lists</h2><ul class="ticks">{"".join(f"<li>{esc(b)}</li>" for b in benefits)}</ul>
@@ -497,11 +496,11 @@ def about():
     trail = [("Home", ""), ("About EXN", path)]
     body = f"""<section class="wrap page"><h1>About EXN Lube in Singapore</h1>
 <p class="answer">EXN Lube makes engine oils, gearbox fluids, grease and the +Care car care series under the slogan \"The Lubricant Expert\". In Singapore, EXN is distributed by {KNAME} in Kaki Bukit, an authorised distributor of DENSO, EXN, MOON and Hyper Power.</p>
-<img class="wide reveal" src="{COMPANY}" alt="EXN Lube company photo" width="1000" height="560" loading="lazy">
+<img class="wide reveal" src="{COMPANY}" alt="EXN Lube company photo" width="451" height="297" style="width:auto;max-width:100%" loading="lazy">
 <h2>EXN in Singapore</h2>
 <div class="tbl"><table><tbody>
 <tr><th>Brand</th><td>EXN Lube</td></tr><tr><th>Brand owner</th><td>{LEGAL}, Malaysia</td></tr><tr><th>Singapore distributor</th><td><a href="{KOHDEN}" target="_blank" rel="noopener">{KNAME}</a></td></tr>
-<tr><th>Address</th><td>{esc(ADDR)}</td></tr><tr><th>Phone</th><td><a href="tel:{TEL}">{PHONE}</a></td></tr><tr><th>Email</th><td><a href="mailto:{EMAIL}">{EMAIL}</a></td></tr>
+<tr><th>Address</th><td>{esc(ADDR)}</td></tr><tr><th>Phone</th><td><a href="tel:{TEL}" data-cta="about-kohden-call">{PHONE}</a></td></tr><tr><th>Email</th><td><a href="mailto:{EMAIL}" data-cta="about-kohden-email">{EMAIL}</a></td></tr>
 <tr><th>Hours</th><td>{HOURS}</td></tr><tr><th>Range in Singapore</th><td>Car engine oils, Atfios ATF and CVTF, +Care fluids and treatments, X40 spray (as listed on the Kohden store)</td></tr></tbody></table></div>
 <h2>Where EXN comes from</h2>
 <p>EXN is a Malaysian lubricant brand, owned by {LEGAL} and founded in 2015 in Petaling Jaya by Marc Ee. EXN says it now supplies more than 10 export markets. Singapore is one of them, served by {KNAME}.</p>
@@ -536,7 +535,7 @@ def workshops():
     path = "workshops/"
     r = "../"
     trail = [("Home", ""), ("For workshops", path)]
-    faq = [("How does a Singapore workshop stock EXN?", f"Through {KNAME}, EXN's authorised distributor in Singapore. Send your workshop name, area and contact person on WhatsApp, or call {PHONE}."),
+    faq = [("How does a Singapore workshop stock EXN?", f"Through {KNAME}, EXN's authorised distributor in Singapore. Send your workshop name, area and contact person on WhatsApp {WA_DISP}, or call {PHONE}."),
            ("Which EXN products can a workshop get in Singapore?", "Kohden's store lists the car engine oils (Extentios Hybrid, Extentios Molyracing, Carios Molytech Nano), Atfios ATF and CVTF, and the +Care fluids, treatments, cleaners and X40 spray."),
            ("What about trade prices?", "Trade terms are on request from Kohden.")]
     body = f"""<section class="wrap page"><h1>EXN oils for Singapore workshops</h1>
@@ -557,7 +556,7 @@ def where_to_buy():
            ("Can I see the EXN range online?", f"Yes, Kohden lists the EXN range on its own website at kohden.com.sg."),
            ("Is there a list of workshops that use EXN?", "Not yet. Ask Kohden on WhatsApp which workshop near you can do the oil change.")]
     body = f"""<section class="wrap page"><h1>Where to buy EXN oil in Singapore</h1>
-<p class="answer">In Singapore, EXN Lube is sold by {KNAME}, an authorised EXN distributor at {esc(ADDR)}. WhatsApp or call {PHONE}. Office hours: {HOURS}</p>
+<p class="answer">In Singapore, EXN Lube is sold by {KNAME}, an authorised EXN distributor at {esc(ADDR)}. WhatsApp {WA_DISP} or call {PHONE}. Office hours: {HOURS}</p>
 {kohden_block(r, "wtb-kohden")}
 <h2>Workshops</h2><p>A list of Singapore workshops that use EXN is not published yet. Kohden can tell you which workshop near you stocks your grade. Workshop owners: see <a href="{r}workshops/">EXN for workshops</a>.</p>
 {faq_html(faq, r)}</section>"""
@@ -568,7 +567,7 @@ def contact():
     r = "../"
     trail = [("Home", ""), ("Contact Kohden", path)]
     body = f"""<section class="wrap page"><h1>Contact Kohden for EXN in Singapore</h1>
-<p class="answer">For EXN oils in Singapore, contact {KNAME} at {esc(ADDR)}. WhatsApp or call {PHONE}, or email {EMAIL}. {HOURS}</p>
+<p class="answer">For EXN oils in Singapore, contact {KNAME} at {esc(ADDR)}. WhatsApp {WA_DISP}, call {PHONE} or email {EMAIL}. {HOURS}</p>
 {kohden_block(r, "contact-kohden")}
 <p class="small">For EXN brand questions outside Singapore, see EXN's own channels: {", ".join(f'<a href="{u}" rel="noopener">{n}</a>' for n, u in SOCIAL.items())}.</p></section>"""
     sch = [{"@type": "ContactPage", "url": SITE + path, "about": {"@id": ORG_ID}}]
@@ -581,7 +580,7 @@ def privacy():
 <p>This notice explains how personal data is handled on this website, in line with Singapore's Personal Data Protection Act 2012 (PDPA).</p>
 <h2>What we collect</h2><p>This website has no forms and does not ask for personal data. If you WhatsApp, call or email Kohden, Kohden keeps what you send so they can reply.</p>
 <h2>Button taps</h2><p>When you tap a call, email or WhatsApp button, we count the tap with the page name, device type and the site that referred you. We do not record your IP address or contact details.</p>
-<h2>Contact</h2><p>Questions about your data: <a href="mailto:{EMAIL}">{EMAIL}</a>, {PHONE}.</p></section>"""
+<h2>Contact</h2><p>Questions about your data: <a href="mailto:{EMAIL}" data-cta="privacy-email">{EMAIL}</a>, or call <a href="tel:{TEL}" data-cta="privacy-call">{PHONE}</a>.</p></section>"""
     shell(path, "Privacy Notice | EXN Lube Singapore", "How personal data is handled on the EXN Lube Singapore website under Singapore's PDPA 2012.", body, [], trail=trail)
 
 # ------------------------------------------------------------------ articles
@@ -812,6 +811,7 @@ def main():
     if os.path.exists(os.path.join(HERE, "og-image.jpg")): shutil.copy(os.path.join(HERE, "og-image.jpg"), os.path.join(OUT, "og-image.jpg"))
     if os.path.exists(os.path.join(HERE, "favicon.png")):
         for fn in ("favicon.png", "favicon.ico"): shutil.copy(os.path.join(HERE, fn), os.path.join(OUT, fn))
+    shutil.copytree(os.path.join(HERE, "images", "brand"), os.path.join(OUT, "images", "brand"))
     os.makedirs(os.path.join(OUT, "fonts"))
     for fn in ("barlow-condensed-700.woff2", "barlow-condensed-800.woff2", "public-sans-var.woff2"):
         shutil.copy(os.path.join(HERE, "fonts", fn), os.path.join(OUT, "fonts", fn))
