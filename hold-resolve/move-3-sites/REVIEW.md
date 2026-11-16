@@ -51,3 +51,53 @@ All of these are already Published. Diffs can be added here on request.
 ## Gate from now on (Edwin, 16 Nov 2026)
 - Any Bridge HOLD-off, or other backend change, is pushed as a diff to this folder and reviewed **before** it is saved in Base44.
 - Base44 backend code goes live on save, so a review only before Publish is too late.
+
+---
+
+# SPO round 1 result (16 Nov 2026): PASS. Fixes below are NOT saved in Base44 and wait for review
+
+## Live docroots (Bridge list_sites, read-only, 16 Nov 2026 9:20am SGT)
+
+| Site key | Domain | Docroot | Nested in another site's folder? |
+|---|---|---|---|
+| ktech | ktech.my | public_html/ktech.my | no, own folder |
+| benzworld | benzworld.my | public_html/benzworld.my | no, own folder |
+| lilian | lilianproperties.com | public_html/lilianproperties.com | no, own folder |
+
+- benzworld's folder also serves the cPanel sub-domain website-76a0b1a9.sgmodder.com. That domain is the same folder, not a different site.
+- No Bridge site root is nested inside another one. The other 8 moved sites are also in their own `public_html/<domain>` folders, and snapsg is in `public_html/snapsg`.
+- **Because none is nested, item 1 is hardening only.**
+
+## fix1-spo-2026-11-16.diff: items 1 to 3
+
+This was prepared in a /tmp copy of Bridge git 7563686, not in /app, so nothing is live.
+
+1. **HIGH, hardening.** `dropSharedRoots` now also drops a key whose root sits **inside** another site's root (`mine.startsWith(r + '/')`). New test cases:
+   - carbonfibre/ktech is dropped.
+   - website_02a02bac/x/y is dropped.
+   - The look-alike sibling carbonfibre-ktech is kept.
+   - The existing "nested is kept" assertion is flipped to "dropped".
+2. **LOW.** The move3Sites config test pins every moved key's HOLD flag `=== false`. This covers the 3 original keys and the 8 later ones.
+3. **LOW.** New `MOVED_OVERRIDE_WRITERS = Object.freeze(['publisher','tools'])`.
+   - The moved-sites generated-file override in liveGuard now checks it the same way the SG Garage override checks `SGG_OVERRIDE_WRITERS`.
+   - A test asserts the value and that it is frozen.
+
+**Tests on the patched copy:** 153 passed, 1 failed, 1 ignored. The unpatched copy gives 152 passed and the same 1 failure. That failure is `tests/guardOverrides1115.test.ts` ("unexpected extra override entry"), from another thread's one-time override fixture, and it has nothing to do with this change. This patch adds 1 test and breaks none.
+
+## Later steps, already saved and Published, for review after the fact (item 4)
+
+| Diff file | Bridge git range | What |
+|---|---|---|
+| step3-0b08c1b-live-edit-cas.diff | ddd665c..0b08c1b | **Most important.** read_live_file / list_live_files, compare-and-swap (base sha256) on write_file, edit_file, write_files and sync_from_github, and the account domain list in list_sites |
+| step4-04a4a4c-carzy-hold-off.diff | 0b08c1b..04a4a4c | Carzy World HOLD off after a 107/107 compare |
+| step5-f78fcb6-7-sites-hold-on.diff | 04a4a4c..f78fcb6 | 7 sites added HOLD ON: hybridworld, autoseo, ecumats, apcar, jayven, urbaneco, snapsg |
+| step6-16de882-7-sites-hold-off.diff | f78fcb6..16de882 | HOLD off for those 7 after 0-difference compares |
+
+The secret-like strings in step3 are the detection regexes, not real values.
+
+## Save plan once SPO passes fix1
+1. Apply fix1 in Base44 /app as one save.
+2. Run the full suite on the saved code.
+3. Create a checkpoint for Edwin to Publish.
+
+MCP tool calls run the published code, so items 1 and 3 reach the live tools only after Publish.

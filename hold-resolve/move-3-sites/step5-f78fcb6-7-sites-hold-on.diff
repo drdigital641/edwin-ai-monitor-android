@@ -1,0 +1,450 @@
+diff --git a/base44/mcp/config.json b/base44/mcp/config.json
+index ac6065f..2488c6a 100644
+--- a/base44/mcp/config.json
++++ b/base44/mcp/config.json
+@@ -74,7 +74,7 @@
+               "type": "string"
+             },
+             "site": {
+-              "description": "sggarage=sggarage.com, cleanic=cleanicdetailing.com, alicia=aliciaongproperty.com, danny=dannychuafinancial.com, sofacare=sofacaresg.com, pageone=pageonesingapore.com, ktech=ktech.my, benzworld=benzworld.my, lilian=lilianproperties.com, carzy=carzyworld.com.my",
++              "description": "sggarage=sggarage.com, cleanic=cleanicdetailing.com, alicia=aliciaongproperty.com, danny=dannychuafinancial.com, sofacare=sofacaresg.com, pageone=pageonesingapore.com, ktech=ktech.my, benzworld=benzworld.my, lilian=lilianproperties.com, carzy=carzyworld.com.my, hybridworld=hybridworld.com.my, autoseo=autoseo.my, ecumats=ecumats.my, apcar=apcar.com.my, jayven=jayvenang.sg, urbaneco=urbanecosolutions.com, snapsg=snapsg.com",
+               "enum": [
+                 "sggarage",
+                 "cleanic",
+@@ -85,7 +85,14 @@
+                 "ktech",
+                 "benzworld",
+                 "lilian",
+-                "carzy"
++                "carzy",
++                "hybridworld",
++                "autoseo",
++                "ecumats",
++                "apcar",
++                "jayven",
++                "urbaneco",
++                "snapsg"
+               ],
+               "type": "string"
+             }
+@@ -115,7 +122,7 @@
+               "type": "string"
+             },
+             "site": {
+-              "description": "sggarage=sggarage.com, cleanic=cleanicdetailing.com, alicia=aliciaongproperty.com, danny=dannychuafinancial.com, sofacare=sofacaresg.com, pageone=pageonesingapore.com, ktech=ktech.my, benzworld=benzworld.my, lilian=lilianproperties.com, carzy=carzyworld.com.my",
++              "description": "sggarage=sggarage.com, cleanic=cleanicdetailing.com, alicia=aliciaongproperty.com, danny=dannychuafinancial.com, sofacare=sofacaresg.com, pageone=pageonesingapore.com, ktech=ktech.my, benzworld=benzworld.my, lilian=lilianproperties.com, carzy=carzyworld.com.my, hybridworld=hybridworld.com.my, autoseo=autoseo.my, ecumats=ecumats.my, apcar=apcar.com.my, jayven=jayvenang.sg, urbaneco=urbanecosolutions.com, snapsg=snapsg.com",
+               "enum": [
+                 "sggarage",
+                 "cleanic",
+@@ -126,7 +133,14 @@
+                 "ktech",
+                 "benzworld",
+                 "lilian",
+-                "carzy"
++                "carzy",
++                "hybridworld",
++                "autoseo",
++                "ecumats",
++                "apcar",
++                "jayven",
++                "urbaneco",
++                "snapsg"
+               ],
+               "type": "string"
+             },
+@@ -162,7 +176,7 @@
+               "type": "string"
+             },
+             "site": {
+-              "description": "sggarage=sggarage.com, cleanic=cleanicdetailing.com, alicia=aliciaongproperty.com, danny=dannychuafinancial.com, sofacare=sofacaresg.com, pageone=pageonesingapore.com, ktech=ktech.my, benzworld=benzworld.my, lilian=lilianproperties.com, carzy=carzyworld.com.my",
++              "description": "sggarage=sggarage.com, cleanic=cleanicdetailing.com, alicia=aliciaongproperty.com, danny=dannychuafinancial.com, sofacare=sofacaresg.com, pageone=pageonesingapore.com, ktech=ktech.my, benzworld=benzworld.my, lilian=lilianproperties.com, carzy=carzyworld.com.my, hybridworld=hybridworld.com.my, autoseo=autoseo.my, ecumats=ecumats.my, apcar=apcar.com.my, jayven=jayvenang.sg, urbaneco=urbanecosolutions.com, snapsg=snapsg.com",
+               "enum": [
+                 "sggarage",
+                 "cleanic",
+@@ -173,7 +187,14 @@
+                 "ktech",
+                 "benzworld",
+                 "lilian",
+-                "carzy"
++                "carzy",
++                "hybridworld",
++                "autoseo",
++                "ecumats",
++                "apcar",
++                "jayven",
++                "urbaneco",
++                "snapsg"
+               ],
+               "type": "string"
+             }
+@@ -204,7 +225,7 @@
+               "type": "string"
+             },
+             "site": {
+-              "description": "sggarage=sggarage.com, cleanic=cleanicdetailing.com, alicia=aliciaongproperty.com, danny=dannychuafinancial.com, sofacare=sofacaresg.com, pageone=pageonesingapore.com, ktech=ktech.my, benzworld=benzworld.my, lilian=lilianproperties.com, carzy=carzyworld.com.my",
++              "description": "sggarage=sggarage.com, cleanic=cleanicdetailing.com, alicia=aliciaongproperty.com, danny=dannychuafinancial.com, sofacare=sofacaresg.com, pageone=pageonesingapore.com, ktech=ktech.my, benzworld=benzworld.my, lilian=lilianproperties.com, carzy=carzyworld.com.my, hybridworld=hybridworld.com.my, autoseo=autoseo.my, ecumats=ecumats.my, apcar=apcar.com.my, jayven=jayvenang.sg, urbaneco=urbanecosolutions.com, snapsg=snapsg.com",
+               "enum": [
+                 "sggarage",
+                 "cleanic",
+@@ -215,7 +236,14 @@
+                 "ktech",
+                 "benzworld",
+                 "lilian",
+-                "carzy"
++                "carzy",
++                "hybridworld",
++                "autoseo",
++                "ecumats",
++                "apcar",
++                "jayven",
++                "urbaneco",
++                "snapsg"
+               ],
+               "type": "string"
+             }
+@@ -270,7 +298,7 @@
+               "type": "string"
+             },
+             "site": {
+-              "description": "sggarage=sggarage.com, cleanic=cleanicdetailing.com, alicia=aliciaongproperty.com, danny=dannychuafinancial.com, sofacare=sofacaresg.com, pageone=pageonesingapore.com, ktech=ktech.my, benzworld=benzworld.my, lilian=lilianproperties.com, carzy=carzyworld.com.my",
++              "description": "sggarage=sggarage.com, cleanic=cleanicdetailing.com, alicia=aliciaongproperty.com, danny=dannychuafinancial.com, sofacare=sofacaresg.com, pageone=pageonesingapore.com, ktech=ktech.my, benzworld=benzworld.my, lilian=lilianproperties.com, carzy=carzyworld.com.my, hybridworld=hybridworld.com.my, autoseo=autoseo.my, ecumats=ecumats.my, apcar=apcar.com.my, jayven=jayvenang.sg, urbaneco=urbanecosolutions.com, snapsg=snapsg.com",
+               "enum": [
+                 "sggarage",
+                 "cleanic",
+@@ -281,7 +309,14 @@
+                 "ktech",
+                 "benzworld",
+                 "lilian",
+-                "carzy"
++                "carzy",
++                "hybridworld",
++                "autoseo",
++                "ecumats",
++                "apcar",
++                "jayven",
++                "urbaneco",
++                "snapsg"
+               ],
+               "type": "string"
+             },
+@@ -329,7 +364,7 @@
+               "type": "string"
+             },
+             "site": {
+-              "description": "sggarage=sggarage.com, cleanic=cleanicdetailing.com, alicia=aliciaongproperty.com, danny=dannychuafinancial.com, sofacare=sofacaresg.com, pageone=pageonesingapore.com, ktech=ktech.my, benzworld=benzworld.my, lilian=lilianproperties.com, carzy=carzyworld.com.my",
++              "description": "sggarage=sggarage.com, cleanic=cleanicdetailing.com, alicia=aliciaongproperty.com, danny=dannychuafinancial.com, sofacare=sofacaresg.com, pageone=pageonesingapore.com, ktech=ktech.my, benzworld=benzworld.my, lilian=lilianproperties.com, carzy=carzyworld.com.my, hybridworld=hybridworld.com.my, autoseo=autoseo.my, ecumats=ecumats.my, apcar=apcar.com.my, jayven=jayvenang.sg, urbaneco=urbanecosolutions.com, snapsg=snapsg.com",
+               "enum": [
+                 "sggarage",
+                 "cleanic",
+@@ -340,7 +375,14 @@
+                 "ktech",
+                 "benzworld",
+                 "lilian",
+-                "carzy"
++                "carzy",
++                "hybridworld",
++                "autoseo",
++                "ecumats",
++                "apcar",
++                "jayven",
++                "urbaneco",
++                "snapsg"
+               ],
+               "type": "string"
+             }
+@@ -372,7 +414,7 @@
+           ],
+           "properties": {
+             "site": {
+-              "description": "sggarage=sggarage.com, cleanic=cleanicdetailing.com, alicia=aliciaongproperty.com, danny=dannychuafinancial.com, sofacare=sofacaresg.com, pageone=pageonesingapore.com, ktech=ktech.my, benzworld=benzworld.my, lilian=lilianproperties.com, carzy=carzyworld.com.my",
++              "description": "sggarage=sggarage.com, cleanic=cleanicdetailing.com, alicia=aliciaongproperty.com, danny=dannychuafinancial.com, sofacare=sofacaresg.com, pageone=pageonesingapore.com, ktech=ktech.my, benzworld=benzworld.my, lilian=lilianproperties.com, carzy=carzyworld.com.my, hybridworld=hybridworld.com.my, autoseo=autoseo.my, ecumats=ecumats.my, apcar=apcar.com.my, jayven=jayvenang.sg, urbaneco=urbanecosolutions.com, snapsg=snapsg.com",
+               "enum": [
+                 "sggarage",
+                 "cleanic",
+@@ -383,7 +425,14 @@
+                 "ktech",
+                 "benzworld",
+                 "lilian",
+-                "carzy"
++                "carzy",
++                "hybridworld",
++                "autoseo",
++                "ecumats",
++                "apcar",
++                "jayven",
++                "urbaneco",
++                "snapsg"
+               ],
+               "type": "string"
+             },
+@@ -452,7 +501,7 @@
+           ],
+           "properties": {
+             "site": {
+-              "description": "sggarage=sggarage.com, cleanic=cleanicdetailing.com, alicia=aliciaongproperty.com, danny=dannychuafinancial.com, sofacare=sofacaresg.com, pageone=pageonesingapore.com, ktech=ktech.my, benzworld=benzworld.my, lilian=lilianproperties.com, carzy=carzyworld.com.my",
++              "description": "sggarage=sggarage.com, cleanic=cleanicdetailing.com, alicia=aliciaongproperty.com, danny=dannychuafinancial.com, sofacare=sofacaresg.com, pageone=pageonesingapore.com, ktech=ktech.my, benzworld=benzworld.my, lilian=lilianproperties.com, carzy=carzyworld.com.my, hybridworld=hybridworld.com.my, autoseo=autoseo.my, ecumats=ecumats.my, apcar=apcar.com.my, jayven=jayvenang.sg, urbaneco=urbanecosolutions.com, snapsg=snapsg.com",
+               "enum": [
+                 "sggarage",
+                 "cleanic",
+@@ -463,7 +512,14 @@
+                 "ktech",
+                 "benzworld",
+                 "lilian",
+-                "carzy"
++                "carzy",
++                "hybridworld",
++                "autoseo",
++                "ecumats",
++                "apcar",
++                "jayven",
++                "urbaneco",
++                "snapsg"
+               ],
+               "type": "string"
+             },
+@@ -529,7 +585,7 @@
+               "type": "string"
+             },
+             "site": {
+-              "description": "sggarage=sggarage.com, cleanic=cleanicdetailing.com, alicia=aliciaongproperty.com, danny=dannychuafinancial.com, sofacare=sofacaresg.com, pageone=pageonesingapore.com, ktech=ktech.my, benzworld=benzworld.my, lilian=lilianproperties.com, carzy=carzyworld.com.my",
++              "description": "sggarage=sggarage.com, cleanic=cleanicdetailing.com, alicia=aliciaongproperty.com, danny=dannychuafinancial.com, sofacare=sofacaresg.com, pageone=pageonesingapore.com, ktech=ktech.my, benzworld=benzworld.my, lilian=lilianproperties.com, carzy=carzyworld.com.my, hybridworld=hybridworld.com.my, autoseo=autoseo.my, ecumats=ecumats.my, apcar=apcar.com.my, jayven=jayvenang.sg, urbaneco=urbanecosolutions.com, snapsg=snapsg.com",
+               "enum": [
+                 "sggarage",
+                 "cleanic",
+@@ -540,7 +596,14 @@
+                 "ktech",
+                 "benzworld",
+                 "lilian",
+-                "carzy"
++                "carzy",
++                "hybridworld",
++                "autoseo",
++                "ecumats",
++                "apcar",
++                "jayven",
++                "urbaneco",
++                "snapsg"
+               ],
+               "type": "string"
+             }
+@@ -573,7 +636,7 @@
+               "type": "string"
+             },
+             "site": {
+-              "description": "sggarage=sggarage.com, cleanic=cleanicdetailing.com, alicia=aliciaongproperty.com, danny=dannychuafinancial.com, sofacare=sofacaresg.com, pageone=pageonesingapore.com, ktech=ktech.my, benzworld=benzworld.my, lilian=lilianproperties.com, carzy=carzyworld.com.my",
++              "description": "sggarage=sggarage.com, cleanic=cleanicdetailing.com, alicia=aliciaongproperty.com, danny=dannychuafinancial.com, sofacare=sofacaresg.com, pageone=pageonesingapore.com, ktech=ktech.my, benzworld=benzworld.my, lilian=lilianproperties.com, carzy=carzyworld.com.my, hybridworld=hybridworld.com.my, autoseo=autoseo.my, ecumats=ecumats.my, apcar=apcar.com.my, jayven=jayvenang.sg, urbaneco=urbanecosolutions.com, snapsg=snapsg.com",
+               "enum": [
+                 "sggarage",
+                 "cleanic",
+@@ -584,7 +647,14 @@
+                 "ktech",
+                 "benzworld",
+                 "lilian",
+-                "carzy"
++                "carzy",
++                "hybridworld",
++                "autoseo",
++                "ecumats",
++                "apcar",
++                "jayven",
++                "urbaneco",
++                "snapsg"
+               ],
+               "type": "string"
+             }
+@@ -632,7 +702,7 @@
+           "required": [],
+           "properties": {
+             "site": {
+-              "description": "Optional. sggarage=sggarage.com, cleanic=cleanicdetailing.com, alicia=aliciaongproperty.com, danny=dannychuafinancial.com, sofacare=sofacaresg.com, pageone=pageonesingapore.com, ktech=ktech.my, benzworld=benzworld.my, lilian=lilianproperties.com, carzy=carzyworld.com.my",
++              "description": "Optional. sggarage=sggarage.com, cleanic=cleanicdetailing.com, alicia=aliciaongproperty.com, danny=dannychuafinancial.com, sofacare=sofacaresg.com, pageone=pageonesingapore.com, ktech=ktech.my, benzworld=benzworld.my, lilian=lilianproperties.com, carzy=carzyworld.com.my, hybridworld=hybridworld.com.my, autoseo=autoseo.my, ecumats=ecumats.my, apcar=apcar.com.my, jayven=jayvenang.sg, urbaneco=urbanecosolutions.com, snapsg=snapsg.com",
+               "enum": [
+                 "sggarage",
+                 "cleanic",
+@@ -643,7 +713,14 @@
+                 "ktech",
+                 "benzworld",
+                 "lilian",
+-                "carzy"
++                "carzy",
++                "hybridworld",
++                "autoseo",
++                "ecumats",
++                "apcar",
++                "jayven",
++                "urbaneco",
++                "snapsg"
+               ],
+               "type": "string"
+             },
+@@ -688,7 +765,7 @@
+               "description": "Default anyone."
+             },
+             "site": {
+-              "description": "Optional. sggarage=sggarage.com, cleanic=cleanicdetailing.com, alicia=aliciaongproperty.com, danny=dannychuafinancial.com, sofacare=sofacaresg.com, pageone=pageonesingapore.com, ktech=ktech.my, benzworld=benzworld.my, lilian=lilianproperties.com, carzy=carzyworld.com.my",
++              "description": "Optional. sggarage=sggarage.com, cleanic=cleanicdetailing.com, alicia=aliciaongproperty.com, danny=dannychuafinancial.com, sofacare=sofacaresg.com, pageone=pageonesingapore.com, ktech=ktech.my, benzworld=benzworld.my, lilian=lilianproperties.com, carzy=carzyworld.com.my, hybridworld=hybridworld.com.my, autoseo=autoseo.my, ecumats=ecumats.my, apcar=apcar.com.my, jayven=jayvenang.sg, urbaneco=urbanecosolutions.com, snapsg=snapsg.com",
+               "enum": [
+                 "sggarage",
+                 "cleanic",
+@@ -699,7 +776,14 @@
+                 "ktech",
+                 "benzworld",
+                 "lilian",
+-                "carzy"
++                "carzy",
++                "hybridworld",
++                "autoseo",
++                "ecumats",
++                "apcar",
++                "jayven",
++                "urbaneco",
++                "snapsg"
+               ],
+               "type": "string"
+             }
+@@ -733,7 +817,7 @@
+               "description": "Default claim."
+             },
+             "site": {
+-              "description": "sggarage=sggarage.com, cleanic=cleanicdetailing.com, alicia=aliciaongproperty.com, danny=dannychuafinancial.com, sofacare=sofacaresg.com, pageone=pageonesingapore.com, ktech=ktech.my, benzworld=benzworld.my, lilian=lilianproperties.com, carzy=carzyworld.com.my",
++              "description": "sggarage=sggarage.com, cleanic=cleanicdetailing.com, alicia=aliciaongproperty.com, danny=dannychuafinancial.com, sofacare=sofacaresg.com, pageone=pageonesingapore.com, ktech=ktech.my, benzworld=benzworld.my, lilian=lilianproperties.com, carzy=carzyworld.com.my, hybridworld=hybridworld.com.my, autoseo=autoseo.my, ecumats=ecumats.my, apcar=apcar.com.my, jayven=jayvenang.sg, urbaneco=urbanecosolutions.com, snapsg=snapsg.com",
+               "enum": [
+                 "sggarage",
+                 "cleanic",
+@@ -744,7 +828,14 @@
+                 "ktech",
+                 "benzworld",
+                 "lilian",
+-                "carzy"
++                "carzy",
++                "hybridworld",
++                "autoseo",
++                "ecumats",
++                "apcar",
++                "jayven",
++                "urbaneco",
++                "snapsg"
+               ],
+               "type": "string"
+             },
+diff --git a/base44/shared/bridgeConfig.ts b/base44/shared/bridgeConfig.ts
+index eea5cd5..4583282 100644
+--- a/base44/shared/bridgeConfig.ts
++++ b/base44/shared/bridgeConfig.ts
+@@ -27,10 +27,19 @@ export const SITES = Object.freeze({
+   lilian: { domain: 'lilianproperties.com', name: 'Li Lian Properties' },
+   // ALL SITES ON THE BRIDGE (Edwin 15 Nov 2026 8:47am SGT); Carzy World first (Edwin 8:50am).
+   carzy: { domain: 'carzyworld.com.my', name: 'Carzy World' },
++  // Rest of the Bluehost account (Edwin 15 Nov 2026 9:20am SGT: "Make all sites on bluehost bridge"). HOLD ON until each
++  // site's guard dry run shows source = live, then OFF one site per save.
++  hybridworld: { domain: 'hybridworld.com.my', name: 'Hybrid World' },
++  autoseo: { domain: 'autoseo.my', name: 'AutoSEO' },
++  ecumats: { domain: 'ecumats.my', name: 'EMATS' },
++  apcar: { domain: 'apcar.com.my', name: 'AP Car' },
++  jayven: { domain: 'jayvenang.sg', name: 'Jayven Ang' },
++  urbaneco: { domain: 'urbanecosolutions.com', name: 'Urban Eco Solutions' },
++  snapsg: { domain: 'snapsg.com', name: 'SnapSG' },
+ });
+ // Sites that must have their own document root: if cPanel gives one of these the same folder as another site, or a
+ // folder that contains another site's folder, loadRoots (bridgeOps.ts) drops it and every call for it fails closed.
+-export const OWN_FOLDER_SITES: readonly string[] = Object.freeze(['ktech', 'benzworld', 'lilian', 'carzy']);
++export const OWN_FOLDER_SITES: readonly string[] = Object.freeze(['ktech', 'benzworld', 'lilian', 'carzy', 'hybridworld', 'autoseo', 'ecumats', 'apcar', 'jayven', 'urbaneco', 'snapsg']);
+ 
+ export const MAX_FILE_BYTES = 5_000_000;
+ 
+@@ -162,6 +171,14 @@ export const SITE_HOLDS: readonly SiteHold[] = Object.freeze([
+   { key: 'lilian', name: 'Li Lian Properties (lilianproperties.com)', on: false, site: 'lilian', prefix: '' },
+   // Carzy World: ON until the guard dry run shows source = live, then OFF in its own save.
+   { key: 'carzy', name: 'Carzy World (carzyworld.com.my)', on: false, site: 'carzy', prefix: '' },
++  // All sites on the Bridge (15 Nov): ON until the guard dry run shows source = live.
++  { key: 'hybridworld', name: 'Hybrid World (hybridworld.com.my)', on: true, site: 'hybridworld', prefix: '' },
++  { key: 'autoseo', name: 'AutoSEO (autoseo.my)', on: true, site: 'autoseo', prefix: '' },
++  { key: 'ecumats', name: 'EMATS (ecumats.my)', on: true, site: 'ecumats', prefix: '' },
++  { key: 'apcar', name: 'AP Car (apcar.com.my)', on: true, site: 'apcar', prefix: '' },
++  { key: 'jayven', name: 'Jayven Ang (jayvenang.sg)', on: true, site: 'jayven', prefix: '' },
++  { key: 'urbaneco', name: 'Urban Eco Solutions (urbanecosolutions.com)', on: true, site: 'urbaneco', prefix: '' },
++  { key: 'snapsg', name: 'SnapSG (snapsg.com)', on: true, site: 'snapsg', prefix: '' },
+ ]);
+ 
+ function holdCovers(h: SiteHold, site: string, rel: string): boolean {
+diff --git a/base44/shared/liveGuard.ts b/base44/shared/liveGuard.ts
+index 4dcf4d1..daea2f5 100644
+--- a/base44/shared/liveGuard.ts
++++ b/base44/shared/liveGuard.ts
+@@ -136,7 +136,7 @@ export const GENERATED_OVERRIDE_PATH = /^(preview\/(star-performance|klar-detail
+ // other unlocked sites, including the sitemap.xml/sitemap.txt/llms.txt override"). Site keys ktech, benzworld, lilian only;
+ // exactly these three files at the site's top folder; same content checks (generatedFileProblem). Writers as SG Garage:
+ // the publisher flag and Bridge tool writes (the publisher writes Page One only, so today the tools route is the one used).
+-export const MOVED_GENERATED_SITES = Object.freeze(['ktech', 'benzworld', 'lilian', 'carzy']);
++export const MOVED_GENERATED_SITES = Object.freeze(['ktech', 'benzworld', 'lilian', 'carzy', 'hybridworld', 'autoseo', 'ecumats', 'apcar', 'jayven', 'urbaneco', 'snapsg']);
+ export const MOVED_GENERATED_PATH = /^(sitemap\.xml|sitemap\.txt|llms\.txt)$/;
+ 
+ // SG GARAGE GENERATED-FILE OVERRIDE (DRAFT, "SG GARAGE OPTION C 1114-2335"; Edwin 11:30pm SGT 14 Nov 2026: "allow
+diff --git a/base44/shared/openapi.ts b/base44/shared/openapi.ts
+index fc7e546..481c1d3 100644
+--- a/base44/shared/openapi.ts
++++ b/base44/shared/openapi.ts
+@@ -1,3 +1,3 @@
+ // API description for the ChatGPT Custom GPT. Served at /functions/bridgeOpenapi so the GPT
+ // imports it by URL (Actions > Import from URL). Keep it in step with the bridge functions.
+-export const OPENAPI = {"openapi":"3.1.0","info":{"title":"Bluehost Bridge","version":"1.3.0","description":"Edwin's Bluehost websites through Base44. Call getInstructions first in every conversation: the rules live in Base44."},"servers":[{"url":"https://blue-bridge-pilot.base44.app/functions"}],"security":[{"BridgeKey":[]}],"paths":{"/bridgeGuide":{"post":{"operationId":"getInstructions","summary":"Call first in every conversation. Returns Edwin's current rules for website work, stored in Base44. Follow them exactly.","x-openai-isConsequential":false,"requestBody":{"required":true,"content":{"application/json":{"schema":{"type":"object","properties":{}}}}},"responses":{"200":{"$ref":"#/components/responses/Result"}}}},"/bridgeSites":{"post":{"operationId":"listSites","summary":"List the websites, their folders and whether each is reachable. Start here.","x-openai-isConsequential":false,"requestBody":{"required":true,"content":{"application/json":{"schema":{"type":"object","properties":{}}}}},"responses":{"200":{"$ref":"#/components/responses/Result"}}}},"/bridgeList":{"post":{"operationId":"listFiles","summary":"List files and folders in one site. Folders that belong to another site are marked belongsToSite.","x-openai-isConsequential":false,"requestBody":{"required":true,"content":{"application/json":{"schema":{"type":"object","required":["site"],"properties":{"site":{"$ref":"#/components/schemas/Site"},"path":{"type":"string","description":"Folder inside the site. Omit for the site's top folder."}}}}}},"responses":{"200":{"$ref":"#/components/responses/Result"}}}},"/bridgeRead":{"post":{"operationId":"readFile","summary":"Read one file. Returns content (text) or content_base64 (binary) and its sha256. Keep the sha256: writeFile needs it to overwrite.","x-openai-isConsequential":false,"requestBody":{"required":true,"content":{"application/json":{"schema":{"type":"object","required":["site","path"],"properties":{"site":{"$ref":"#/components/schemas/Site"},"path":{"$ref":"#/components/schemas/Path"}}}}}},"responses":{"200":{"$ref":"#/components/responses/Result"}}}},"/bridgeEdit":{"post":{"operationId":"editFile","summary":"Preferred way to change part of a text file (goes live immediately). Each old_text must appear exactly expected_occurrences times (default 1) or nothing changes.","x-openai-isConsequential":true,"requestBody":{"required":true,"content":{"application/json":{"schema":{"type":"object","required":["site","path","edits"],"properties":{"site":{"$ref":"#/components/schemas/Site"},"path":{"$ref":"#/components/schemas/Path"},"edits":{"type":"array","minItems":1,"maxItems":50,"items":{"type":"object","required":["old_text","new_text"],"properties":{"old_text":{"type":"string","description":"Exact text currently in the file."},"new_text":{"type":"string","description":"Text to put in its place."},"expected_occurrences":{"type":"integer","minimum":1,"description":"How many times old_text appears. Default 1."}}}},"expected_sha256":{"type":"string","description":"Optional base_sha256 from readLiveFile; refused if live changed since."}}}}}},"responses":{"200":{"$ref":"#/components/responses/Result"}}}},"/bridgeWrite":{"post":{"operationId":"writeFile","summary":"Create a new file or replace a whole file (goes live immediately). To overwrite, pass expected_sha256 from readFile. PHP, .htaccess and password files are blocked.","x-openai-isConsequential":true,"requestBody":{"required":true,"content":{"application/json":{"schema":{"type":"object","required":["site","path"],"properties":{"site":{"$ref":"#/components/schemas/Site"},"path":{"$ref":"#/components/schemas/Path"},"content":{"type":"string","description":"Full UTF-8 text of the file. Send this or content_base64, not both."},"content_base64":{"type":"string","description":"Full binary content, base64-encoded (for images)."},"expected_sha256":{"type":"string","description":"sha256 from readFile. Required when the file already exists."}}}}}},"responses":{"200":{"$ref":"#/components/responses/Result"}}}},"/bridgeBackups":{"post":{"operationId":"listBackups","summary":"List the private backups taken before each change for a site, newest first. Optionally only backups that contain one file.","x-openai-isConsequential":false,"requestBody":{"required":true,"content":{"application/json":{"schema":{"type":"object","required":["site"],"properties":{"site":{"$ref":"#/components/schemas/Site"},"path":{"type":"string","description":"Optional: only backups containing this file."},"limit":{"type":"integer","minimum":1,"maximum":100}}}}}},"responses":{"200":{"$ref":"#/components/responses/Result"}}}},"/bridgeRestore":{"post":{"operationId":"restoreBackup","summary":"Put a file back to the version in a backup (from listBackups). Goes live immediately. The current version is backed up first, so a restore can be undone.","x-openai-isConsequential":true,"requestBody":{"required":true,"content":{"application/json":{"schema":{"type":"object","required":["site","backup_id","path"],"properties":{"site":{"$ref":"#/components/schemas/Site"},"backup_id":{"type":"string","description":"backupId from listBackups, e.g. 20261009-234842-02eb82"},"path":{"$ref":"#/components/schemas/Path"}}}}}},"responses":{"200":{"$ref":"#/components/responses/Result"}}}},"/bridgeSync":{"post":{"operationId":"syncStatus","summary":"Check in at the start of every job: recent changes by Claude and ChatGPT, sites/files the other AI has claimed, and unread handover notes for you (each shown once).","x-openai-isConsequential":false,"requestBody":{"required":true,"content":{"application/json":{"schema":{"type":"object","required":[],"properties":{"site":{"$ref":"#/components/schemas/Site","description":"Optional: only this site."},"hours":{"type":"integer","minimum":1,"maximum":336,"description":"How far back to look at changes. Default 24."}}}}}},"responses":{"200":{"$ref":"#/components/responses/Result"}}}},"/bridgeNote":{"post":{"operationId":"postNote","summary":"Leave a short handover note for Claude (or anyone) after a job: what you changed, what is left, anything to check.","x-openai-isConsequential":false,"requestBody":{"required":true,"content":{"application/json":{"schema":{"type":"object","required":["text"],"properties":{"text":{"type":"string","description":"Up to 2000 characters."},"to":{"type":"string","enum":["claude","chatgpt","anyone"],"description":"Default anyone."},"site":{"$ref":"#/components/schemas/Site","description":"Optional: the site the note is about."}}}}}},"responses":{"200":{"$ref":"#/components/responses/Result"}}}},"/bridgeClaim":{"post":{"operationId":"claimWork","summary":"Before a bigger job, claim a whole site (no path) or one file for 5-120 minutes (default 30); the other AI cannot change it meanwhile. Claim again to extend. action=release when done.","x-openai-isConsequential":false,"requestBody":{"required":true,"content":{"application/json":{"schema":{"type":"object","required":["site"],"properties":{"action":{"type":"string","enum":["claim","release"],"description":"Default claim."},"site":{"$ref":"#/components/schemas/Site"},"path":{"type":"string","description":"Optional file path. Omit to claim the whole site."},"minutes":{"type":"integer","minimum":5,"maximum":120},"purpose":{"type":"string","description":"What you are working on, shown to the other AI."},"lock_id":{"type":"string","description":"For release: one specific claim. Omit to release all your claims on the site."}}}}}},"responses":{"200":{"$ref":"#/components/responses/Result"}}}},"/bridgeSyncGithub":{"post":{"operationId":"syncFromGithub","summary":"Copy a folder of drdigital641/edwin-ai-monitor-android at one commit SHA into a site folder. The bridge downloads the files itself (up to 150 files, 15 MB); same checks, backups and verification as writeFile. Never deletes.","x-openai-isConsequential":true,"requestBody":{"required":true,"content":{"application/json":{"schema":{"type":"object","required":["site","ref","source_path"],"properties":{"site":{"description":"sggarage=sggarage.com, cleanic=cleanicdetailing.com, alicia=aliciaongproperty.com, danny=dannychuafinancial.com, sofacare=sofacaresg.com, pageone=pageonesingapore.com, ktech=ktech.my, benzworld=benzworld.my, lilian=lilianproperties.com, carzy=carzyworld.com.my","enum":["sggarage","cleanic","alicia","danny","sofacare","pageone","ktech","benzworld","lilian","carzy"],"type":"string"},"base_path":{"type":"string","description":"Folder inside the site to copy into, e.g. preview/cska-auto. Omit for the site's top folder."},"ref":{"type":"string","description":"Commit SHA (7-40 hex characters). Branch names are refused so a sync is reproducible."},"source_path":{"type":"string","description":"Folder in the repo, e.g. pageone-site/clients/cska-auto/site. Every file under it is copied, keeping sub-folders."},"exclude":{"type":"array","maxItems":50,"items":{"type":"string"},"description":"Optional file paths relative to source_path to leave out, e.g. [\".htaccess\"]. Reported as excluded."},"overwrite":{"type":"boolean","description":"Default true: existing files are backed up and replaced. false: existing files fail instead."},"dry_run":{"type":"boolean","description":"true downloads and checks everything and lists sha256s; nothing is written."},"base_sha256":{"type":"object","additionalProperties":{"type":"string"},"description":"{site path: live sha256 it was based on} for every file that would replace a live file. Missing or stale entries refuse the whole sync."}}}}}},"responses":{"200":{"$ref":"#/components/responses/Result"}}}},"/bridgeReadLive":{"post":{"operationId":"readLiveFile","summary":"Read the CURRENT file from Bluehost before any change. Returns content and base_sha256. Then amend and writeFile with expected_sha256 = base_sha256 (refused if live changed). Never returns .htaccess, PHP/CGI/shell, secret files or credentials.","x-openai-isConsequential":false,"requestBody":{"required":true,"content":{"application/json":{"schema":{"type":"object","required":["site","path"],"properties":{"site":{"$ref":"#/components/schemas/Site"},"path":{"$ref":"#/components/schemas/Path"}}}}}},"responses":{"200":{"$ref":"#/components/responses/Result"}}}},"/bridgeListLive":{"post":{"operationId":"listLiveFiles","summary":"List files in one site folder from Bluehost: path, size, mtime, readable. depth 1-4 (default 1).","x-openai-isConsequential":false,"requestBody":{"required":true,"content":{"application/json":{"schema":{"type":"object","required":["site"],"properties":{"site":{"$ref":"#/components/schemas/Site"},"path":{"type":"string","description":"Folder inside the site. Omit for the top folder."},"depth":{"type":"integer","minimum":1,"maximum":4}}}}}},"responses":{"200":{"$ref":"#/components/responses/Result"}}}}},"components":{"securitySchemes":{"BridgeKey":{"type":"apiKey","in":"header","name":"X-Bridge-Key"}},"schemas":{"Site":{"type":"string","enum":["sggarage","cleanic","alicia","danny","sofacare","pageone","ktech","benzworld","lilian","carzy"],"description":"sggarage=sggarage.com, cleanic=cleanicdetailing.com, alicia=aliciaongproperty.com, danny=dannychuafinancial.com, sofacare=sofacaresg.com, pageone=pageonesingapore.com, ktech=ktech.my, benzworld=benzworld.my, lilian=lilianproperties.com, carzy=carzyworld.com.my"},"Path":{"type":"string","description":"File path inside the site folder, e.g. index.html or about/index.html (not a URL)."}},"responses":{"Result":{"description":"ok is true on success; otherwise error explains what went wrong and nothing was changed unless it says so.","content":{"application/json":{"schema":{"type":"object","properties":{"ok":{"type":"boolean"},"error":{"type":"string"}},"additionalProperties":true}}}}}}};
++export const OPENAPI = {"openapi":"3.1.0","info":{"title":"Bluehost Bridge","version":"1.3.0","description":"Edwin's Bluehost websites through Base44. Call getInstructions first in every conversation: the rules live in Base44."},"servers":[{"url":"https://blue-bridge-pilot.base44.app/functions"}],"security":[{"BridgeKey":[]}],"paths":{"/bridgeGuide":{"post":{"operationId":"getInstructions","summary":"Call first in every conversation. Returns Edwin's current rules for website work, stored in Base44. Follow them exactly.","x-openai-isConsequential":false,"requestBody":{"required":true,"content":{"application/json":{"schema":{"type":"object","properties":{}}}}},"responses":{"200":{"$ref":"#/components/responses/Result"}}}},"/bridgeSites":{"post":{"operationId":"listSites","summary":"List the websites, their folders and whether each is reachable. Start here.","x-openai-isConsequential":false,"requestBody":{"required":true,"content":{"application/json":{"schema":{"type":"object","properties":{}}}}},"responses":{"200":{"$ref":"#/components/responses/Result"}}}},"/bridgeList":{"post":{"operationId":"listFiles","summary":"List files and folders in one site. Folders that belong to another site are marked belongsToSite.","x-openai-isConsequential":false,"requestBody":{"required":true,"content":{"application/json":{"schema":{"type":"object","required":["site"],"properties":{"site":{"$ref":"#/components/schemas/Site"},"path":{"type":"string","description":"Folder inside the site. Omit for the site's top folder."}}}}}},"responses":{"200":{"$ref":"#/components/responses/Result"}}}},"/bridgeRead":{"post":{"operationId":"readFile","summary":"Read one file. Returns content (text) or content_base64 (binary) and its sha256. Keep the sha256: writeFile needs it to overwrite.","x-openai-isConsequential":false,"requestBody":{"required":true,"content":{"application/json":{"schema":{"type":"object","required":["site","path"],"properties":{"site":{"$ref":"#/components/schemas/Site"},"path":{"$ref":"#/components/schemas/Path"}}}}}},"responses":{"200":{"$ref":"#/components/responses/Result"}}}},"/bridgeEdit":{"post":{"operationId":"editFile","summary":"Preferred way to change part of a text file (goes live immediately). Each old_text must appear exactly expected_occurrences times (default 1) or nothing changes.","x-openai-isConsequential":true,"requestBody":{"required":true,"content":{"application/json":{"schema":{"type":"object","required":["site","path","edits"],"properties":{"site":{"$ref":"#/components/schemas/Site"},"path":{"$ref":"#/components/schemas/Path"},"edits":{"type":"array","minItems":1,"maxItems":50,"items":{"type":"object","required":["old_text","new_text"],"properties":{"old_text":{"type":"string","description":"Exact text currently in the file."},"new_text":{"type":"string","description":"Text to put in its place."},"expected_occurrences":{"type":"integer","minimum":1,"description":"How many times old_text appears. Default 1."}}}},"expected_sha256":{"type":"string","description":"Optional base_sha256 from readLiveFile; refused if live changed since."}}}}}},"responses":{"200":{"$ref":"#/components/responses/Result"}}}},"/bridgeWrite":{"post":{"operationId":"writeFile","summary":"Create a new file or replace a whole file (goes live immediately). To overwrite, pass expected_sha256 from readFile. PHP, .htaccess and password files are blocked.","x-openai-isConsequential":true,"requestBody":{"required":true,"content":{"application/json":{"schema":{"type":"object","required":["site","path"],"properties":{"site":{"$ref":"#/components/schemas/Site"},"path":{"$ref":"#/components/schemas/Path"},"content":{"type":"string","description":"Full UTF-8 text of the file. Send this or content_base64, not both."},"content_base64":{"type":"string","description":"Full binary content, base64-encoded (for images)."},"expected_sha256":{"type":"string","description":"sha256 from readFile. Required when the file already exists."}}}}}},"responses":{"200":{"$ref":"#/components/responses/Result"}}}},"/bridgeBackups":{"post":{"operationId":"listBackups","summary":"List the private backups taken before each change for a site, newest first. Optionally only backups that contain one file.","x-openai-isConsequential":false,"requestBody":{"required":true,"content":{"application/json":{"schema":{"type":"object","required":["site"],"properties":{"site":{"$ref":"#/components/schemas/Site"},"path":{"type":"string","description":"Optional: only backups containing this file."},"limit":{"type":"integer","minimum":1,"maximum":100}}}}}},"responses":{"200":{"$ref":"#/components/responses/Result"}}}},"/bridgeRestore":{"post":{"operationId":"restoreBackup","summary":"Put a file back to the version in a backup (from listBackups). Goes live immediately. The current version is backed up first, so a restore can be undone.","x-openai-isConsequential":true,"requestBody":{"required":true,"content":{"application/json":{"schema":{"type":"object","required":["site","backup_id","path"],"properties":{"site":{"$ref":"#/components/schemas/Site"},"backup_id":{"type":"string","description":"backupId from listBackups, e.g. 20261009-234842-02eb82"},"path":{"$ref":"#/components/schemas/Path"}}}}}},"responses":{"200":{"$ref":"#/components/responses/Result"}}}},"/bridgeSync":{"post":{"operationId":"syncStatus","summary":"Check in at the start of every job: recent changes by Claude and ChatGPT, sites/files the other AI has claimed, and unread handover notes for you (each shown once).","x-openai-isConsequential":false,"requestBody":{"required":true,"content":{"application/json":{"schema":{"type":"object","required":[],"properties":{"site":{"$ref":"#/components/schemas/Site","description":"Optional: only this site."},"hours":{"type":"integer","minimum":1,"maximum":336,"description":"How far back to look at changes. Default 24."}}}}}},"responses":{"200":{"$ref":"#/components/responses/Result"}}}},"/bridgeNote":{"post":{"operationId":"postNote","summary":"Leave a short handover note for Claude (or anyone) after a job: what you changed, what is left, anything to check.","x-openai-isConsequential":false,"requestBody":{"required":true,"content":{"application/json":{"schema":{"type":"object","required":["text"],"properties":{"text":{"type":"string","description":"Up to 2000 characters."},"to":{"type":"string","enum":["claude","chatgpt","anyone"],"description":"Default anyone."},"site":{"$ref":"#/components/schemas/Site","description":"Optional: the site the note is about."}}}}}},"responses":{"200":{"$ref":"#/components/responses/Result"}}}},"/bridgeClaim":{"post":{"operationId":"claimWork","summary":"Before a bigger job, claim a whole site (no path) or one file for 5-120 minutes (default 30); the other AI cannot change it meanwhile. Claim again to extend. action=release when done.","x-openai-isConsequential":false,"requestBody":{"required":true,"content":{"application/json":{"schema":{"type":"object","required":["site"],"properties":{"action":{"type":"string","enum":["claim","release"],"description":"Default claim."},"site":{"$ref":"#/components/schemas/Site"},"path":{"type":"string","description":"Optional file path. Omit to claim the whole site."},"minutes":{"type":"integer","minimum":5,"maximum":120},"purpose":{"type":"string","description":"What you are working on, shown to the other AI."},"lock_id":{"type":"string","description":"For release: one specific claim. Omit to release all your claims on the site."}}}}}},"responses":{"200":{"$ref":"#/components/responses/Result"}}}},"/bridgeSyncGithub":{"post":{"operationId":"syncFromGithub","summary":"Copy a folder of drdigital641/edwin-ai-monitor-android at one commit SHA into a site folder. The bridge downloads the files itself (up to 150 files, 15 MB); same checks, backups and verification as writeFile. Never deletes.","x-openai-isConsequential":true,"requestBody":{"required":true,"content":{"application/json":{"schema":{"type":"object","required":["site","ref","source_path"],"properties":{"site":{"description":"sggarage=sggarage.com, cleanic=cleanicdetailing.com, alicia=aliciaongproperty.com, danny=dannychuafinancial.com, sofacare=sofacaresg.com, pageone=pageonesingapore.com, ktech=ktech.my, benzworld=benzworld.my, lilian=lilianproperties.com, carzy=carzyworld.com.my, hybridworld=hybridworld.com.my, autoseo=autoseo.my, ecumats=ecumats.my, apcar=apcar.com.my, jayven=jayvenang.sg, urbaneco=urbanecosolutions.com, snapsg=snapsg.com","enum":["sggarage","cleanic","alicia","danny","sofacare","pageone","ktech","benzworld","lilian","carzy","hybridworld","autoseo","ecumats","apcar","jayven","urbaneco","snapsg"],"type":"string"},"base_path":{"type":"string","description":"Folder inside the site to copy into, e.g. preview/cska-auto. Omit for the site's top folder."},"ref":{"type":"string","description":"Commit SHA (7-40 hex characters). Branch names are refused so a sync is reproducible."},"source_path":{"type":"string","description":"Folder in the repo, e.g. pageone-site/clients/cska-auto/site. Every file under it is copied, keeping sub-folders."},"exclude":{"type":"array","maxItems":50,"items":{"type":"string"},"description":"Optional file paths relative to source_path to leave out, e.g. [\".htaccess\"]. Reported as excluded."},"overwrite":{"type":"boolean","description":"Default true: existing files are backed up and replaced. false: existing files fail instead."},"dry_run":{"type":"boolean","description":"true downloads and checks everything and lists sha256s; nothing is written."},"base_sha256":{"type":"object","additionalProperties":{"type":"string"},"description":"{site path: live sha256 it was based on} for every file that would replace a live file. Missing or stale entries refuse the whole sync."}}}}}},"responses":{"200":{"$ref":"#/components/responses/Result"}}}},"/bridgeReadLive":{"post":{"operationId":"readLiveFile","summary":"Read the CURRENT file from Bluehost before any change. Returns content and base_sha256. Then amend and writeFile with expected_sha256 = base_sha256 (refused if live changed). Never returns .htaccess, PHP/CGI/shell, secret files or credentials.","x-openai-isConsequential":false,"requestBody":{"required":true,"content":{"application/json":{"schema":{"type":"object","required":["site","path"],"properties":{"site":{"$ref":"#/components/schemas/Site"},"path":{"$ref":"#/components/schemas/Path"}}}}}},"responses":{"200":{"$ref":"#/components/responses/Result"}}}},"/bridgeListLive":{"post":{"operationId":"listLiveFiles","summary":"List files in one site folder from Bluehost: path, size, mtime, readable. depth 1-4 (default 1).","x-openai-isConsequential":false,"requestBody":{"required":true,"content":{"application/json":{"schema":{"type":"object","required":["site"],"properties":{"site":{"$ref":"#/components/schemas/Site"},"path":{"type":"string","description":"Folder inside the site. Omit for the top folder."},"depth":{"type":"integer","minimum":1,"maximum":4}}}}}},"responses":{"200":{"$ref":"#/components/responses/Result"}}}}},"components":{"securitySchemes":{"BridgeKey":{"type":"apiKey","in":"header","name":"X-Bridge-Key"}},"schemas":{"Site":{"type":"string","enum":["sggarage","cleanic","alicia","danny","sofacare","pageone","ktech","benzworld","lilian","carzy","hybridworld","autoseo","ecumats","apcar","jayven","urbaneco","snapsg"],"description":"sggarage=sggarage.com, cleanic=cleanicdetailing.com, alicia=aliciaongproperty.com, danny=dannychuafinancial.com, sofacare=sofacaresg.com, pageone=pageonesingapore.com, ktech=ktech.my, benzworld=benzworld.my, lilian=lilianproperties.com, carzy=carzyworld.com.my, hybridworld=hybridworld.com.my, autoseo=autoseo.my, ecumats=ecumats.my, apcar=apcar.com.my, jayven=jayvenang.sg, urbaneco=urbanecosolutions.com, snapsg=snapsg.com"},"Path":{"type":"string","description":"File path inside the site folder, e.g. index.html or about/index.html (not a URL)."}},"responses":{"Result":{"description":"ok is true on success; otherwise error explains what went wrong and nothing was changed unless it says so.","content":{"application/json":{"schema":{"type":"object","properties":{"ok":{"type":"boolean"},"error":{"type":"string"}},"additionalProperties":true}}}}}}};
+diff --git a/src/pages/Connect.jsx b/src/pages/Connect.jsx
+index 336dd7f..6148809 100644
+--- a/src/pages/Connect.jsx
++++ b/src/pages/Connect.jsx
+@@ -113,7 +113,7 @@ function KeyManager() {
+ // write files of that one site only. The key is shown once; the bridge stores only its hash.
+ const SITE_OPTIONS = [
+   ["cleanic", "cleanicdetailing.com"], ["sggarage", "sggarage.com"], ["alicia", "aliciaongproperty.com"],
+-  ["danny", "dannychuafinancial.com"], ["sofacare", "sofacaresg.com"], ["pageone", "pageonesingapore.com"], ["ktech", "ktech.my"], ["benzworld", "benzworld.my"], ["lilian", "lilianproperties.com"], ["carzy", "carzyworld.com.my"],
++  ["danny", "dannychuafinancial.com"], ["sofacare", "sofacaresg.com"], ["pageone", "pageonesingapore.com"], ["ktech", "ktech.my"], ["benzworld", "benzworld.my"], ["lilian", "lilianproperties.com"], ["carzy", "carzyworld.com.my"], ["hybridworld", "hybridworld.com.my"], ["autoseo", "autoseo.my"], ["ecumats", "ecumats.my"], ["apcar", "apcar.com.my"], ["jayven", "jayvenang.sg"], ["urbaneco", "urbanecosolutions.com"], ["snapsg", "snapsg.com"],
+ ];
+ 
+ // The new key is kept in this tab's sessionStorage until Done is clicked, so a reload of the
+diff --git a/tests/move3Sites.test.ts b/tests/move3Sites.test.ts
+index 251abba..adc0e36 100644
+--- a/tests/move3Sites.test.ts
++++ b/tests/move3Sites.test.ts
+@@ -14,16 +14,16 @@ const ok = async (label: string, p: Promise<string | null>) => { const r = await
+ const no = async (label: string, p: Promise<string | null>, m: RegExp) => { const r = await p; if (r === null || !m.test(r)) throw new Error(label + ': expected refusal ' + m + ', got: ' + r); console.log('refused  ' + label); };
+ const NS = 'xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"';
+ const XML = (d: string, extra = '') => `<?xml version="1.0" encoding="UTF-8"?>\n<urlset ${NS}><url><loc>https://${d}/</loc></url>${extra}</urlset>\n`;
+-const NEW3: [string, string][] = [['ktech', 'ktech.my'], ['benzworld', 'benzworld.my'], ['lilian', 'lilianproperties.com'], ['carzy', 'carzyworld.com.my']];
++const NEW3: [string, string][] = [['ktech', 'ktech.my'], ['benzworld', 'benzworld.my'], ['lilian', 'lilianproperties.com'], ['carzy', 'carzyworld.com.my'], ['hybridworld', 'hybridworld.com.my'], ['autoseo', 'autoseo.my'], ['ecumats', 'ecumats.my'], ['apcar', 'apcar.com.my'], ['jayven', 'jayvenang.sg'], ['urbaneco', 'urbanecosolutions.com'], ['snapsg', 'snapsg.com']];
+ const PAGE = (title: string) => `<!doctype html><html><head><title>${title}</title><meta name="description" content="d"></head><body><h1>H</h1></body></html>`;
+ 
+ Deno.test('config: 3 sites added with their domains, old 6 unchanged, a whole-site HOLD flag for each of the 3, old 7 flags unchanged', () => {
+   const keys = Object.keys(SITES).join(',');
+-  if (keys !== 'sggarage,cleanic,alicia,danny,sofacare,pageone,ktech,benzworld,lilian,carzy') throw new Error('site keys: ' + keys);
++  if (keys !== 'sggarage,cleanic,alicia,danny,sofacare,pageone,ktech,benzworld,lilian,carzy,hybridworld,autoseo,ecumats,apcar,jayven,urbaneco,snapsg') throw new Error('site keys: ' + keys);
+   for (const [k, d] of NEW3) if ((SITES as any)[k].domain !== d) throw new Error(k + ' domain');
+   for (const [k] of NEW3) { const h = SITE_HOLDS.find((x) => x.key === k)!; if (!h || h.site !== k || h.prefix !== '' || typeof h.on !== 'boolean') throw new Error(k + ' hold'); }
+   if (SITE_HOLDS.filter((h) => !NEW3.some(([k]) => k === h.key)).some((h) => h.on !== false)) throw new Error('old flags changed');
+-  if (SITE_HOLDS.length !== 11) throw new Error('hold count');
++  if (SITE_HOLDS.length !== 18) throw new Error('hold count');
+   console.log('ok       10 sites; flags ' + NEW3.map(([k]) => k + '=' + SITE_HOLDS.find((x) => x.key === k)!.on).join(' ') + '; other 7 flags off');
+ });
+ 
+@@ -35,7 +35,7 @@ Deno.test('each new flag: ON blocks every path of that site, OFF blocks none; ot
+ });
+ 
+ Deno.test('override list: exactly 3 root files, only the 3 new sites, Page One list unchanged', () => {
+-  if (JSON.stringify(MOVED_GENERATED_SITES) !== '["ktech","benzworld","lilian","carzy"]') throw new Error('sites');
++  if (JSON.stringify(MOVED_GENERATED_SITES) !== '["ktech","benzworld","lilian","carzy","hybridworld","autoseo","ecumats","apcar","jayven","urbaneco","snapsg"]') throw new Error('sites');
+   if (JSON.stringify(GENERATED_OVERRIDE_SITES) !== '["pageone"]') throw new Error('Page One list changed');
+   if (GENERATED_OVERRIDE_PATH.source !== '^(preview\\/(star-performance|klar-details|cska-auto|dmts|benjamin-poon)\\/)?(sitemap\\.xml|sitemap\\.txt|llms\\.txt)$') throw new Error('Page One path changed');
+   for (const p of ['sitemap.xml', 'sitemap.txt', 'llms.txt']) if (!MOVED_GENERATED_PATH.test(p)) throw new Error(p);
+diff --git a/tests/sggGeneratedOverride.test.ts b/tests/sggGeneratedOverride.test.ts
+index 0824c6a..701c5f8 100644
+--- a/tests/sggGeneratedOverride.test.ts
++++ b/tests/sggGeneratedOverride.test.ts
+@@ -24,7 +24,7 @@ Deno.test('settings: publisher-only, exact four root paths, Page One override li
+   for (const p of ['sitemap.xml', 'sitemap.txt', 'llms.txt', 'article-cards.json']) if (!SGG_GENERATED_PATH.test(p)) throw new Error(p);
+   for (const p of ['articles/sitemap.xml', 'x/llms.txt', 'llms-full.txt', 'sitemap.xml.bak', 'Sitemap.xml', 'article-cards.json.txt', 'articles/article-cards.json', 'robots.txt', 'index.html'])
+     if (SGG_GENERATED_PATH.test(p)) throw new Error('path should not match: ' + p);
+-  if (SITE_HOLDS.filter((h) => !['ktech', 'benzworld', 'lilian', 'carzy'].includes(h.key)).some((h) => h.on !== false)) throw new Error('flags changed');
++  if (SITE_HOLDS.filter((h) => !['ktech', 'benzworld', 'lilian', 'carzy', 'hybridworld', 'autoseo', 'ecumats', 'apcar', 'jayven', 'urbaneco', 'snapsg'].includes(h.key)).some((h) => h.on !== false)) throw new Error('flags changed');
+   console.log('ok       writers ["publisher","tools"] (tools delta); 4 exact root paths; Page One list unchanged; all 7 flags off (unchanged from 33343ea)');
+ });
+ 

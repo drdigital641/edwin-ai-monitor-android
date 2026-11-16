@@ -1,0 +1,27 @@
+diff --git a/base44/shared/bridgeConfig.ts b/base44/shared/bridgeConfig.ts
+index 4583282..bbab070 100644
+--- a/base44/shared/bridgeConfig.ts
++++ b/base44/shared/bridgeConfig.ts
+@@ -171,14 +171,14 @@ export const SITE_HOLDS: readonly SiteHold[] = Object.freeze([
+   { key: 'lilian', name: 'Li Lian Properties (lilianproperties.com)', on: false, site: 'lilian', prefix: '' },
+   // Carzy World: ON until the guard dry run shows source = live, then OFF in its own save.
+   { key: 'carzy', name: 'Carzy World (carzyworld.com.my)', on: false, site: 'carzy', prefix: '' },
+-  // All sites on the Bridge (15 Nov): ON until the guard dry run shows source = live.
+-  { key: 'hybridworld', name: 'Hybrid World (hybridworld.com.my)', on: true, site: 'hybridworld', prefix: '' },
+-  { key: 'autoseo', name: 'AutoSEO (autoseo.my)', on: true, site: 'autoseo', prefix: '' },
+-  { key: 'ecumats', name: 'EMATS (ecumats.my)', on: true, site: 'ecumats', prefix: '' },
+-  { key: 'apcar', name: 'AP Car (apcar.com.my)', on: true, site: 'apcar', prefix: '' },
+-  { key: 'jayven', name: 'Jayven Ang (jayvenang.sg)', on: true, site: 'jayven', prefix: '' },
+-  { key: 'urbaneco', name: 'Urban Eco Solutions (urbanecosolutions.com)', on: true, site: 'urbaneco', prefix: '' },
+-  { key: 'snapsg', name: 'SnapSG (snapsg.com)', on: true, site: 'snapsg', prefix: '' },
++  // All sites on the Bridge (15 Nov): saved ON (cp 6af90a0b), OFF one site per save after guard dry runs showed 0 differences.
++  { key: 'hybridworld', name: 'Hybrid World (hybridworld.com.my)', on: false, site: 'hybridworld', prefix: '' },
++  { key: 'autoseo', name: 'AutoSEO (autoseo.my)', on: false, site: 'autoseo', prefix: '' },
++  { key: 'ecumats', name: 'EMATS (ecumats.my)', on: false, site: 'ecumats', prefix: '' },
++  { key: 'apcar', name: 'AP Car (apcar.com.my)', on: false, site: 'apcar', prefix: '' },
++  { key: 'jayven', name: 'Jayven Ang (jayvenang.sg)', on: false, site: 'jayven', prefix: '' },
++  { key: 'urbaneco', name: 'Urban Eco Solutions (urbanecosolutions.com)', on: false, site: 'urbaneco', prefix: '' },
++  { key: 'snapsg', name: 'SnapSG (snapsg.com)', on: false, site: 'snapsg', prefix: '' },
+ ]);
+ 
+ function holdCovers(h: SiteHold, site: string, rel: string): boolean {

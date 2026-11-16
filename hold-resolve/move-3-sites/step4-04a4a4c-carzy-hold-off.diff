@@ -1,0 +1,33 @@
+diff --git a/base44/shared/bridgeConfig.ts b/base44/shared/bridgeConfig.ts
+index f1d9435..eea5cd5 100644
+--- a/base44/shared/bridgeConfig.ts
++++ b/base44/shared/bridgeConfig.ts
+@@ -161,7 +161,7 @@ export const SITE_HOLDS: readonly SiteHold[] = Object.freeze([
+   { key: 'benzworld', name: 'Benz World (benzworld.my)', on: false, site: 'benzworld', prefix: '' },
+   { key: 'lilian', name: 'Li Lian Properties (lilianproperties.com)', on: false, site: 'lilian', prefix: '' },
+   // Carzy World: ON until the guard dry run shows source = live, then OFF in its own save.
+-  { key: 'carzy', name: 'Carzy World (carzyworld.com.my)', on: true, site: 'carzy', prefix: '' },
++  { key: 'carzy', name: 'Carzy World (carzyworld.com.my)', on: false, site: 'carzy', prefix: '' },
+ ]);
+ 
+ function holdCovers(h: SiteHold, site: string, rel: string): boolean {
+diff --git a/tests/move3Sites.test.ts b/tests/move3Sites.test.ts
+index 6827918..251abba 100644
+--- a/tests/move3Sites.test.ts
++++ b/tests/move3Sites.test.ts
+@@ -88,12 +88,12 @@ Deno.test('own folder: a new site sharing or containing another site\'s root is
+   console.log('ok       equal/containing roots dropped; distinct and existing roots kept');
+ });
+ 
+-Deno.test('carzy: HOLD ON (step 1), own-folder rule applies', () => {
++Deno.test('carzy: HOLD off after 0-diff compare (15 Nov), own-folder rule applies', () => {
+   const h = SITE_HOLDS.find((x) => x.key === 'carzy')!;
+-  if (!h || h.on !== true || !holdReason('carzy', 'assets/site.css')) throw new Error('carzy must start held');
++  if (!h || h.on !== false || holdReason('carzy', 'assets/site.css')) throw new Error('carzy must be unlocked');
+   const H = '/home3/sgmodde1/public_html';
+   if (dropSharedRoots({ pageone: H + '/website_b1ec45f5', carzy: H + '/website_b1ec45f5' }).carzy) throw new Error('carzy shared root must drop');
+-  console.log('ok       carzy held; shared root dropped');
++  console.log('ok       carzy unlocked; shared root dropped');
+ });
+ 
+ Deno.test('account domain list: which Bridge key reaches each folder (read-only)', () => {

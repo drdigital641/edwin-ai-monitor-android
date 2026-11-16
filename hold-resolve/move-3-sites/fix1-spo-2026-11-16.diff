@@ -1,0 +1,105 @@
+diff -ru '--exclude=deno.lock' spo-base/base44/shared/bridgeOps.ts spo/base44/shared/bridgeOps.ts
+--- spo-base/base44/shared/bridgeOps.ts	2026-11-16 01:19:16.784074388 +0000
++++ spo/base44/shared/bridgeOps.ts	2026-11-16 01:19:36.597810243 +0000
+@@ -55,8 +55,8 @@
+     const root = byDomain.get(site.domain) || byDomain.get('www.' + site.domain);
+     if (root && root.startsWith(CPANEL.home + '/') && !root.includes('..')) roots[key] = root.replace(/\/+$/, '');
+   }
+-  // MOVE 3 SITES (security review 15 Nov 2026): a site added later must have its OWN folder. If its root equals, or
+-  // contains, another site's root (a parked domain maps to the main folder), it gets no root at all, so every call for
++  // MOVE 3 SITES (security review 15 Nov 2026; nested case 16 Nov): a site added later must have its OWN folder. If its root
++  // equals, contains, or sits inside another site's root (a parked domain maps to the main folder), it gets no root at all, so every call for
+   // it fails closed ('not found in cPanel domains') instead of writing into another site's files.
+   dropSharedRoots(roots);
+   rootsCache = { at: Date.now(), roots };
+@@ -69,7 +69,8 @@
+   for (const key of OWN_FOLDER_SITES) {
+     const mine = roots[key];
+     if (!mine) continue;
+-    if (all.some(([other, r]) => other !== key && (r === mine || r.startsWith(mine + '/')))) delete roots[key];
++    // equal, contains another site's root, or sits NESTED inside another site's root (SPO review 16 Nov 2026): drop it
++    if (all.some(([other, r]) => other !== key && (r === mine || r.startsWith(mine + '/') || mine.startsWith(r + '/')))) delete roots[key];
+   }
+   return roots;
+ }
+diff -ru '--exclude=deno.lock' spo-base/base44/shared/liveGuard.ts spo/base44/shared/liveGuard.ts
+--- spo-base/base44/shared/liveGuard.ts	2026-11-16 01:19:16.784594206 +0000
++++ spo/base44/shared/liveGuard.ts	2026-11-16 01:19:36.599030997 +0000
+@@ -138,6 +138,9 @@
+ // the publisher flag and Bridge tool writes (the publisher writes Page One only, so today the tools route is the one used).
+ export const MOVED_GENERATED_SITES = Object.freeze(['ktech', 'benzworld', 'lilian', 'carzy', 'hybridworld', 'autoseo', 'ecumats', 'apcar', 'jayven', 'urbaneco', 'snapsg']);
+ export const MOVED_GENERATED_PATH = /^(sitemap\.xml|sitemap\.txt|llms\.txt)$/;
++// Who may use the moved-sites override, as SG Garage's SGG_OVERRIDE_WRITERS (SPO review 16 Nov 2026): 'publisher' = a
++// writeFile call carrying the publisher option, 'tools' = Bridge tool writes. Removing a writer here switches that route off.
++export const MOVED_OVERRIDE_WRITERS: readonly ('publisher' | 'tools')[] = Object.freeze(['publisher', 'tools']);
+ 
+ // SG GARAGE GENERATED-FILE OVERRIDE (DRAFT, "SG GARAGE OPTION C 1114-2335"; Edwin 11:30pm SGT 14 Nov 2026: "allow
+ // sitemap and article cards to update"). Same pattern as the Page One override above, for site key 'sggarage' only
+@@ -408,7 +411,8 @@
+     const why = generatedFileProblem(rel, newBytes);
+     return why ? refuse('generated-file override: ' + why) : null;
+   }
+-  if (MOVED_GENERATED_SITES.includes(site) && MOVED_GENERATED_PATH.test(rel)) {
++  if (MOVED_GENERATED_SITES.includes(site) && MOVED_GENERATED_PATH.test(rel)
++    && ((args.publisher === true && MOVED_OVERRIDE_WRITERS.includes('publisher')) || (args.publisher !== true && MOVED_OVERRIDE_WRITERS.includes('tools')))) {
+     const why = generatedFileProblem(rel, newBytes);
+     return why ? refuse(site + ' generated-file override: ' + why) : null;
+   }
+diff -ru '--exclude=deno.lock' spo-base/tests/move3Sites.test.ts spo/tests/move3Sites.test.ts
+--- spo-base/tests/move3Sites.test.ts	2026-11-16 01:19:16.785941489 +0000
++++ spo/tests/move3Sites.test.ts	2026-11-16 01:19:36.599311836 +0000
+@@ -1,7 +1,7 @@
+ // MOVE 3 SITES (K Tech, Benz World, Li Lian). Run:
+ // deno test --no-check -A --import-map tests/importmap.json tests/move3Sites.test.ts
+ // Pure config + guard calls with fake live states: never touches a live site.
+-import { liveGuard, MOVED_GENERATED_SITES, MOVED_GENERATED_PATH, GENERATED_OVERRIDE_SITES, GENERATED_OVERRIDE_PATH } from '../base44/shared/liveGuard.ts';
++import { liveGuard, MOVED_GENERATED_SITES, MOVED_GENERATED_PATH, MOVED_OVERRIDE_WRITERS, GENERATED_OVERRIDE_SITES, GENERATED_OVERRIDE_PATH } from '../base44/shared/liveGuard.ts';
+ import { SITES, SITE_HOLDS, holdReason, writeBlockedReason } from '../base44/shared/bridgeConfig.ts';
+ import { dropSharedRoots, coverDomains } from '../base44/shared/bridgeOps.ts';
+ 
+@@ -21,7 +21,7 @@
+   const keys = Object.keys(SITES).join(',');
+   if (keys !== 'sggarage,cleanic,alicia,danny,sofacare,pageone,ktech,benzworld,lilian,carzy,hybridworld,autoseo,ecumats,apcar,jayven,urbaneco,snapsg') throw new Error('site keys: ' + keys);
+   for (const [k, d] of NEW3) if ((SITES as any)[k].domain !== d) throw new Error(k + ' domain');
+-  for (const [k] of NEW3) { const h = SITE_HOLDS.find((x) => x.key === k)!; if (!h || h.site !== k || h.prefix !== '' || typeof h.on !== 'boolean') throw new Error(k + ' hold'); }
++  for (const [k] of NEW3) { const h = SITE_HOLDS.find((x) => x.key === k)!; if (!h || h.site !== k || h.prefix !== '' || h.on !== false) throw new Error(k + ' hold must be OFF (pinned, SPO 16 Nov)'); }
+   if (SITE_HOLDS.filter((h) => !NEW3.some(([k]) => k === h.key)).some((h) => h.on !== false)) throw new Error('old flags changed');
+   if (SITE_HOLDS.length !== 18) throw new Error('hold count');
+   console.log('ok       10 sites; flags ' + NEW3.map(([k]) => k + '=' + SITE_HOLDS.find((x) => x.key === k)!.on).join(' ') + '; other 7 flags off');
+@@ -74,7 +74,7 @@
+   await no('cleanic sitemap.xml', g('cleanic', 'sitemap.xml', XML('x.sg'), XML('x.sg', '<url><loc>https://x.sg/b/</loc></url>')), /needs an override/);
+ });
+ 
+-Deno.test('own folder: a new site sharing or containing another site\'s root is dropped (fails closed)', () => {
++Deno.test('own folder: a new site sharing, containing or nested inside another site\'s root is dropped (fails closed)', () => {
+   const H = '/home3/sgmodde1/public_html';
+   const base = { sggarage: H + '/carbonfibre', pageone: H + '/website_b1ec45f5', cleanic: H + '/website_02a02bac' };
+   const good = dropSharedRoots({ ...base, ktech: H + '/ktech.my', benzworld: H + '/benzworld.my', lilian: H + '/lilianproperties.com' });
+@@ -82,10 +82,15 @@
+   const parked = dropSharedRoots({ ...base, ktech: H + '/website_b1ec45f5', benzworld: H, lilian: H + '/website_b1ec45f5/preview/lilian-properties' });
+   if (parked.ktech || parked.benzworld) throw new Error('equal / containing root must be dropped');
+   if (!parked.pageone || !parked.sggarage || !parked.cleanic) throw new Error('existing sites must stay');
+-  if (!parked.lilian) throw new Error('a root nested inside another site is kept (resolvePath already blocks the other way)');
++  if (parked.lilian) throw new Error('a root nested inside another site\'s root must be dropped (SPO 16 Nov)');
++  const nested = dropSharedRoots({ ...base, ktech: H + '/carbonfibre/ktech', benzworld: H + '/benzworld.my', lilian: H + '/website_02a02bac/x/y' });
++  if (nested.ktech || nested.lilian) throw new Error('nested roots must be dropped');
++  if (!nested.benzworld || !nested.sggarage || !nested.cleanic || !nested.pageone) throw new Error('own folder and existing sites must stay');
++  const lookalike = dropSharedRoots({ ...base, ktech: H + '/carbonfibre-ktech' });
++  if (!lookalike.ktech) throw new Error('a sibling folder whose name only starts with another root is not nested');
+   const twins = dropSharedRoots({ ...base, ktech: H + '/x', benzworld: H + '/x' });
+   if (twins.ktech || twins.benzworld) throw new Error('two new sites on one folder: both dropped');
+-  console.log('ok       equal/containing roots dropped; distinct and existing roots kept');
++  console.log('ok       equal/containing/nested roots dropped; distinct, look-alike and existing roots kept');
+ });
+ 
+ Deno.test('carzy: HOLD off after 0-diff compare (15 Nov), own-folder rule applies', () => {
+@@ -112,3 +117,9 @@
+   if (out[3].bridge_site !== 'ktech') throw new Error('sub: ' + s);
+   console.log('ok       own / nested / missing classified');
+ });
++
++Deno.test('moved-sites override writers: explicit [publisher, tools], same as SG Garage (SPO 16 Nov)', () => {
++  if (JSON.stringify(MOVED_OVERRIDE_WRITERS) !== '["publisher","tools"]') throw new Error('writers: ' + JSON.stringify(MOVED_OVERRIDE_WRITERS));
++  if (!Object.isFrozen(MOVED_OVERRIDE_WRITERS)) throw new Error('writers must be frozen');
++  console.log('ok       MOVED_OVERRIDE_WRITERS = ["publisher","tools"]');
++});
