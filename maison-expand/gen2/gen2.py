@@ -3,6 +3,7 @@
 import sys, os, json, html, hashlib
 from urllib.parse import quote
 from data import P, CAP
+from wa_fix import fix_html  # WhatsApp link rules (16 Nov 2026): new tab, data-cta, short layout-plan text
 OUT = sys.argv[1]
 LD_FULL = (os.environ.get("LD_MODE", "full") == "full")
 HERE = os.path.dirname(os.path.abspath(__file__))
@@ -17,7 +18,7 @@ IMG = lambda d, f: f"/images/new-launches/{d['dir']}/{f}"
 
 def wa(msg): return f"https://wa.me/{WA}?text={quote(msg, safe='')}"
 def btn(slug, ref, label, msg, cls="nlp-wa"):
-    return (f'<a class="{cls}" href="{wa(msg)}" data-cta="whatsapp" data-ref="{slug}-{ref}" data-path="/new-launches/{slug}/" rel="noopener">{SVG}<span>{E(label)}</span></a>')
+    return (f'<a class="{cls}" href="{wa(msg)}" data-cta="whatsapp" data-ref="{slug}-{ref}" data-path="/new-launches/{slug}/" target="_blank" rel="noopener">{SVG}<span>{E(label)}</span></a>')
 
 def band(slug, n, ref, h, p, label, msg):
     return (f'<section class="nx-band"><div class="wrap nx-band-in"><div><h2 class="nx-band-h">{E(h)}</h2><p>{E(p)}</p></div>'
@@ -111,7 +112,7 @@ def build(slug, d):
     for t, key, info in types:
         k = TS[key]
         cards += (f'<article class="nx-card"><h3>{E(t)}</h3><p class="nx-meta-n">{E(info)}</p><p>{E(k[1])}</p>'
-                  + btn(slug, f"type-{key}", f"Free layout plan for {t}", f"Hi Maison, I'm collecting keys at {n} ({t}). Can I get a free layout plan for my {t}?") + '</article>')
+                  + btn(slug, f"type-{key}", f"Free layout plan for {t}", f"Hi Maison, I'd like a free layout plan for my {t} at {n}.") + '</article>')
     glance = "".join(f'<div><dt>{E(a)}</dt><dd>{E(b)}</dd></div>' for a, b in d["glance"])
 
     # ---- space planning
@@ -195,6 +196,6 @@ for slug in only:
     html_ = build(slug, P[slug])
     html_ = html_.replace("</body>", "", 1) if False else html_
     p = os.path.join(OUT, "new-launches", slug); os.makedirs(p, exist_ok=True)
-    open(os.path.join(p, "index.html"), "w", encoding="utf-8").write(html_)
+    open(os.path.join(p, "index.html"), "w", encoding="utf-8").write(fix_html(html_))
 open(os.path.join(OUT, "nlp-expand.css"), "w", encoding="utf-8").write(CSS)
 print("css", CSSV, only)
