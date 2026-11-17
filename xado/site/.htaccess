@@ -15,6 +15,17 @@ RewriteEngine On
 
 # The online shop moved to shop.xado-shop.sg (same Shopify store as xado-singapore.myshopify.com).
 # Old shop paths on xado-shop.sg go to the same path there; query strings are kept (no "?" in the target).
+# Old Shopify handles that no longer exist in the store: send them straight to the current product (Edwin approved 17 Nov 2026).
+RewriteCond %{HTTP_HOST} ^(www\.)?xado-shop\.sg$ [NC]
+RewriteRule ^products/xado-atomic-oil-5w-40-sn-red-boost-4ltr/?$ https://shop.xado-shop.sg/products/xado-atomic-oil-5w40-c3-red-boost-engine-oil-4l [R=301,L]
+RewriteCond %{HTTP_HOST} ^(www\.)?xado-shop\.sg$ [NC]
+RewriteRule ^products/xado-atomic-oil-5w-30-sp-red-boost-4ltr/?$ https://shop.xado-shop.sg/products/xado-atomic-oil-5w30-c3-pro-red-boost-engine-oil-4l-copy [R=301,L]
+RewriteCond %{HTTP_HOST} ^(www\.)?xado-shop\.sg$ [NC]
+RewriteRule ^products/xado-atomic-oil-5w30-sp-red-boost-engine-oil-4l(-copy)?/?$ https://shop.xado-shop.sg/products/xado-atomic-oil-5w30-c3-pro-red-boost-engine-oil-4l-copy [R=301,L]
+RewriteCond %{HTTP_HOST} ^(www\.)?xado-shop\.sg$ [NC]
+RewriteRule ^pages/xado-atomic-metal-conditioner-1-stage-maximum/?$ https://shop.xado-shop.sg/products/xado-atomic-metal-conditioner-1-stage-maximum [R=301,L]
+RewriteCond %{HTTP_HOST} ^(www\.)?xado-shop\.sg$ [NC]
+RewriteRule ^pages/xado-product-sharing-/?$ https://shop.xado-shop.sg/collections/all-products [R=301,L]
 RewriteCond %{HTTP_HOST} ^(www\.)?xado-shop\.sg$ [NC]
 RewriteRule ^(products|collections|pages|blogs|checkouts|policies|apps|cdn|discount)(/.*)?$ https://shop.xado-shop.sg/$1$2 [R=301,L]
 RewriteCond %{HTTP_HOST} ^(www\.)?xado-shop\.sg$ [NC]

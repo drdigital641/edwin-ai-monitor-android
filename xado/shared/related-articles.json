@@ -1,0 +1,31 @@
+{
+  "_about": "ONE source for the XADO 'Keep reading' blocks (xado-shop.sg/articles/). Every article lists 3-4 related articles from its topic group; every article must be listed by at least 2 others. New night-run articles: add an entry here, add the new slug to 2+ other articles' related lists, then run xado_shared.py to render the blocks. Edwin 17 Nov 2026.",
+  "groups": {
+    "engine-wear": "Engine wear",
+    "gearbox-steering": "Gearbox and steering",
+    "fuel": "Fuel use",
+    "oil-change": "Oil change and additives"
+  },
+  "articles": {
+    "does-xado-replace-an-oil-change-singapore": {"title": "Does XADO replace an oil change? What an engine treatment does and does not do", "cat": "Engine care", "img": "p-xadoamctwinturbonew.jpg", "group": "oil-change",
+      "related": ["engine-oil-additive-singapore-does-it-work", "how-to-use-less-fuel-in-stop-start-traffic-singapore", "engine-noise-high-mileage-singapore"]},
+    "engine-noise-high-mileage-singapore": {"title": "Engine getting noisier at high mileage: what it means and what to check", "cat": "Engine care", "img": "p-xadoamctwinturbonew.jpg", "group": "engine-wear",
+      "related": ["older-car-burning-oil-coe-renewal-singapore", "turbo-engine-care-singapore-heat", "stop-go-traffic-engine-wear-singapore", "power-steering-whine-older-car-singapore"]},
+    "engine-oil-additive-singapore-does-it-work": {"title": "Engine oil additives: do they actually work?", "cat": "Buyer's guide", "img": "worn-vs-restored.jpg", "group": "oil-change",
+      "related": ["does-xado-replace-an-oil-change-singapore", "how-to-use-less-fuel-in-stop-start-traffic-singapore", "older-car-burning-oil-coe-renewal-singapore"]},
+    "gearbox-additive-automatic-transmission-singapore": {"title": "Gearbox additive in Singapore: what it does and when to use it", "cat": "Gearbox care", "img": "p-xadoex120atf.jpg", "group": "gearbox-steering",
+      "related": ["manual-gearbox-hard-to-shift-notchy-singapore", "power-steering-whine-older-car-singapore", "engine-oil-additive-singapore-does-it-work"]},
+    "how-to-use-less-fuel-in-stop-start-traffic-singapore": {"title": "How to use less fuel in Singapore stop-start traffic", "cat": "Running costs", "img": "p-xadoamctwinturbonew.jpg", "group": "fuel",
+      "related": ["stop-go-traffic-engine-wear-singapore", "does-xado-replace-an-oil-change-singapore", "turbo-engine-care-singapore-heat"]},
+    "manual-gearbox-hard-to-shift-notchy-singapore": {"title": "Manual gearbox hard to shift or notchy: causes and care", "cat": "Gearbox care", "img": "og.jpg", "group": "gearbox-steering",
+      "related": ["gearbox-additive-automatic-transmission-singapore", "power-steering-whine-older-car-singapore", "stop-go-traffic-engine-wear-singapore"]},
+    "older-car-burning-oil-coe-renewal-singapore": {"title": "Older car burning oil? What to do before renewing your COE", "cat": "COE renewal", "img": "oil-change.jpg", "group": "engine-wear",
+      "related": ["engine-noise-high-mileage-singapore", "engine-oil-additive-singapore-does-it-work", "power-steering-whine-older-car-singapore"]},
+    "power-steering-whine-older-car-singapore": {"title": "Power steering whine in an older car: what causes it and what helps", "cat": "Steering care", "img": "p-xadoex120psf.jpg", "group": "gearbox-steering",
+      "related": ["gearbox-additive-automatic-transmission-singapore", "manual-gearbox-hard-to-shift-notchy-singapore", "older-car-burning-oil-coe-renewal-singapore"]},
+    "stop-go-traffic-engine-wear-singapore": {"title": "How Singapore's stop-go traffic wears out your engine", "cat": "Singapore driving", "img": "sg-traffic.jpg", "group": "engine-wear",
+      "related": ["how-to-use-less-fuel-in-stop-start-traffic-singapore", "turbo-engine-care-singapore-heat", "engine-oil-additive-singapore-does-it-work"]},
+    "turbo-engine-care-singapore-heat": {"title": "Turbo engine care in Singapore's heat", "cat": "Engine care", "img": "turbo-engine-care-singapore-heat.jpg", "group": "engine-wear",
+      "related": ["engine-noise-high-mileage-singapore", "stop-go-traffic-engine-wear-singapore", "does-xado-replace-an-oil-change-singapore"]}
+  }
+}
