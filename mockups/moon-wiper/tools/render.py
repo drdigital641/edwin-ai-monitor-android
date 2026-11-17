@@ -2,8 +2,7 @@
 """Moon Wiper image renders (17 Nov 2026 redo). Run where the sources are downloaded:
   /tmp/src/kd-*.jpg  = Kohden product photos (kohden.com.sg/wp-content/uploads/2026/03/...)
   /tmp/src/fg-*.png  = Fu-Gang product images (fugang-autoparts.com/eimages/...)
-  /tmp/mw/*.jpg      = Edwin's pack photos (Bridge drop 6afc030c2c5b372926dcb5a1), only for the small packs strip
-Output /tmp/out: WebP + JPG renders on a dark rain-beaded glass field (authored art, no stock)."""
+Output /tmp/out: WebP + JPG renders on a light water-blue glass field with beading droplets (authored art, no stock)."""
 import os, random, math
 import numpy as np
 from PIL import Image, ImageDraw, ImageFilter, ImageChops, ImageEnhance
@@ -13,32 +12,29 @@ os.makedirs(OUT, exist_ok=True)
 random.seed(7)
 
 def field(w, h, spot=(0.62, 0.42), seed=1, drops=1.0):
-    """Dark graphite glass with a soft silver spotlight and beaded water drops."""
+    """Light water-blue glass: pale blue-grey base, bright spotlight, droplets beading on the glass."""
     rnd = random.Random(seed)
     y, x = np.mgrid[0:h, 0:w].astype(np.float32)
     cx, cy = spot[0] * w, spot[1] * h
-    d = np.sqrt(((x - cx) / (w * .75)) ** 2 + ((y - cy) / (h * .62)) ** 2)
-    g = np.clip(1 - d, 0, 1) ** 1.6
-    base = np.stack([14 + 52 * g, 18 + 58 * g, 22 + 64 * g], -1)
-    img = Image.fromarray(base.astype(np.uint8), 'RGB')
-    # drops
-    lay = Image.new('RGBA', (w, h), (0, 0, 0, 0))
-    hi = Image.new('RGBA', (w, h), (0, 0, 0, 0))
-    dl, dh = ImageDraw.Draw(lay), ImageDraw.Draw(hi)
-    n = int(w * h / 2600 * drops)
+    d = np.sqrt(((x - cx) / (w * .8)) ** 2 + ((y - cy) / (h * .7)) ** 2)
+    g = np.clip(1 - d, 0, 1) ** 1.3
+    base = np.stack([214 + 40 * g, 230 + 25 * g, 241 + 14 * g], -1)   # #D6E6F1 edge -> #FEFFFF centre
+    img = Image.fromarray(np.clip(base, 0, 255).astype(np.uint8), 'RGB').convert('RGBA')
+    sh = Image.new('RGBA', (w, h), (0, 0, 0, 0)); body = Image.new('RGBA', (w, h), (0, 0, 0, 0)); hi = Image.new('RGBA', (w, h), (0, 0, 0, 0))
+    ds, db, dh = ImageDraw.Draw(sh), ImageDraw.Draw(body), ImageDraw.Draw(hi)
+    n = int(w * h / 2400 * drops)
     for _ in range(n):
-        r = rnd.choice([1.5, 2, 2.5, 3, 3, 4, 5, 6, 8, 11, 14]) * (w / 1080)
+        r = rnd.choice([1.5, 2, 2.5, 3, 3, 4, 5, 6, 8, 10, 13]) * (w / 1080)
         px, py = rnd.uniform(0, w), rnd.uniform(0, h)
         sq = rnd.uniform(.82, 1.0)
         box = [px - r, py - r * sq, px + r, py + r * sq]
-        dl.ellipse([box[0], box[1] + r * .25, box[2], box[3] + r * .25], fill=(0, 0, 0, 70))      # shadow under bead
-        dl.ellipse(box, fill=(150, 160, 170, 38))                                                 # bead body
-        dl.ellipse([px - r * .8, py - r * .1, px + r * .8, py + r * .9 * sq], fill=(210, 220, 228, 26))  # lit lower lens
+        ds.ellipse([box[0] + r * .15, box[1] + r * .35, box[2] + r * .15, box[3] + r * .35], fill=(20, 70, 120, 46))  # blue shadow under bead
+        db.ellipse(box, fill=(150, 190, 220, 70))                                                                   # bead body
+        db.ellipse([px - r * .78, py - r * .05, px + r * .78, py + r * .85 * sq], fill=(255, 255, 255, 120))        # bright lower lens
         if r > 2.4:
-            dh.ellipse([px - r * .5, py - r * .62, px - r * .05, py - r * .25], fill=(255, 255, 255, 170))  # specular
-    lay = lay.filter(ImageFilter.GaussianBlur(w / 1080 * .9))
-    hi = hi.filter(ImageFilter.GaussianBlur(w / 1080 * .5))
-    img = img.convert('RGBA'); img.alpha_composite(lay); img.alpha_composite(hi)
+            dh.ellipse([px - r * .52, py - r * .64, px - r * .08, py - r * .28], fill=(255, 255, 255, 235))       # specular
+    sh = sh.filter(ImageFilter.GaussianBlur(w / 1080 * 1.4)); body = body.filter(ImageFilter.GaussianBlur(w / 1080 * .7)); hi = hi.filter(ImageFilter.GaussianBlur(w / 1080 * .4))
+    img.alpha_composite(sh); img.alpha_composite(body); img.alpha_composite(hi)
     return img
 
 def cutout(path, crop=True):
@@ -51,14 +47,8 @@ def cutout(path, crop=True):
     return rgba
 
 def lift(prod):
-    """Lift a dark blade off the dark field: slight brighten + silver rim light."""
-    p = ImageEnhance.Brightness(prod).enhance(1.25)
-    p = ImageEnhance.Contrast(p).enhance(1.15)
-    rim = Image.new('RGBA', p.size, (220, 228, 235, 0)); rim.putalpha(p.getchannel('A').filter(ImageFilter.MaxFilter(5)))
-    rim = rim.filter(ImageFilter.GaussianBlur(3)); rim.putalpha(rim.getchannel('A').point(lambda v: int(v * .35)))
-    out = Image.new('RGBA', (p.width + 20, p.height + 20), (0, 0, 0, 0))
-    out.alpha_composite(rim, (10, 10)); out.alpha_composite(p, (10, 10))
-    return out
+    """Crisp product on light glass: a touch more contrast, no rim light."""
+    return ImageEnhance.Contrast(prod).enhance(1.08)
 
 def place(bg, prod, width_frac, angle, center, shadow=True):
     w = int(bg.width * width_frac)
@@ -66,7 +56,7 @@ def place(bg, prod, width_frac, angle, center, shadow=True):
     p = lift(p).rotate(angle, expand=True, resample=Image.BICUBIC)
     x, y = int(center[0] * bg.width - p.width / 2), int(center[1] * bg.height - p.height / 2)
     if shadow:
-        s = Image.new('RGBA', p.size, (0, 0, 0, 0)); s.putalpha(p.getchannel('A').point(lambda v: int(v * .7)))
+        s = Image.new('RGBA', p.size, (16, 60, 110, 0)); s.putalpha(p.getchannel('A').point(lambda v: int(v * .38)))
         s = s.filter(ImageFilter.GaussianBlur(bg.width / 60))
         bg.alpha_composite(s, (x + int(bg.width * .02), y + int(bg.width * .04)))
     bg.alpha_composite(p, (x, y))
@@ -109,16 +99,6 @@ og = field(1200, 630, spot=(.68, .45), seed=5)
 place(og, cutout(KD['m1001']), .62, -12, (.70, .52))
 og.convert('RGB').save(f'{OUT}/og-base.png')
 
-# real packs strip: tight crops of Edwin's photos (x0,y0,x1,y1 on 1200x1600 frames)
-packs = {'pack-hybrid': ('moon-hybrid-boxes-closeup.jpg', (280, 0, 990, 950)),
-         'pack-advance': ('moon-silicone-advance-26-16.jpg', (260, 130, 800, 1000)),
-         'pack-back': ('moon-silicone-blade-pack-back.jpg', (360, 150, 760, 800))}
-for name, (f, box) in packs.items():
-    im = Image.open(f'{MW}/{f}').convert('RGB').crop(box)
-    tw, th = 480, 640
-    r = max(tw / im.width, th / im.height); im = im.resize((int(im.width * r), int(im.height * r)), Image.LANCZOS)
-    l, t = (im.width - tw) // 2, (im.height - th) // 2
-    im = im.crop((l, t, l + tw, t + th))
-    im.save(f'{OUT}/{name}.webp', quality=72, method=6); im.save(f'{OUT}/{name}.jpg', quality=76, optimize=True, progressive=True)
+# packs strip removed in round 3 (Edwin: asphalt backgrounds); no pack photos rendered
 
 for f in sorted(os.listdir(OUT)): print(f, os.path.getsize(f'{OUT}/{f}'))

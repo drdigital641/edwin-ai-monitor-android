@@ -182,19 +182,16 @@
     ]
   ],
   "images": {
-    "hero-hybrid": "MOON Silicone Hybrid M1001 wiper blade on rain-beaded dark glass (Kohden product photo)",
-    "hero-advance": "Conventional framed wiper blade on rain-beaded dark glass (Fu-Gang product image)",
-    "hero-flat": "MOON Silicone Flat M-102 beam wiper blade on rain-beaded dark glass (Kohden product photo)",
-    "hero-rear": "MOON Rear Conti M-FR rear wiper blade on rain-beaded dark glass (Kohden product photo)",
+    "hero-hybrid": "MOON Silicone Hybrid M1001 wiper blade on water-beaded light blue glass (Kohden product photo)",
+    "hero-advance": "Conventional framed wiper blade on water-beaded light blue glass (Fu-Gang product image)",
+    "hero-flat": "MOON Silicone Flat M-102 beam wiper blade on water-beaded light blue glass (Kohden product photo)",
+    "hero-rear": "MOON Rear Conti M-FR rear wiper blade on water-beaded light blue glass (Kohden product photo)",
     "tile-m1001": "MOON Silicone Hybrid M1001 wiper blade",
     "tile-advance": "Conventional framed wiper blade, Fu-Gang product image",
     "tile-m102": "MOON Silicone Flat M-102 wiper blade",
     "tile-m105": "MOON Silicone Japan Flat M-105 wiper blade",
     "tile-mgr": "MOON rear A-type and B-type wiper blade (M-GRA, M-GRB)",
-    "tile-mfr": "MOON Rear Conti M-FR wiper blade",
-    "pack-hybrid": "MOON Silicone Water Repellent Hybrid boxes, 26 inch and 16 inch",
-    "pack-advance": "MOON Silicone Advance packs, 26 inch and 16 inch",
-    "pack-back": "Back of a MOON Silicone Blade pack"
+    "tile-mfr": "MOON Rear Conti M-FR wiper blade"
   },
   "catalogue_mm_labels": {
     "12": 300,
@@ -202,5 +199,5 @@
     "28": 700,
     "32": 800
   },
-  "_image_sources": "hero/tile renders: Kohden product photos (kohden.com.sg/wp-content/uploads/2026/03/) and Fu-Gang product image (fugang-autoparts.com/eimages/2026FG_p0617105159774_955982_141349_9665752.png) on authored rain-glass art, tools/render.py. pack-*: tight crops of Edwin's photos (Bridge drop 6afc030c2c5b372926dcb5a1)."
+  "_image_sources": "hero/tile renders: Kohden product photos (kohden.com.sg/wp-content/uploads/2026/03/) and Fu-Gang product image (fugang-autoparts.com/eimages/2026FG_p0617105159774_955982_141349_9665752.png) on authored light water-beaded glass art, tools/render.py. Pack photo strip removed in round 3."
 }

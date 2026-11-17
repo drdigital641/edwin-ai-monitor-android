@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""MOON wiper blades SG preview, v2 redo (Page One, Edwin 17 Nov 2026 4:25pm SGT).
+"""MOON wiper blades SG preview, v3 water-blue (Page One, Edwin 17 Nov 2026 4:57pm SGT).
 Template-first: head/header/footer/dock/contact live here once; facts only in data.json; one CSS (static/site.css).
 CTA rule: per page exactly 3 call CTAs = header icon, hero button, sticky dock. Contact details shown once per page.
 Build: python3 build.py -> site/. WhatsApp: set data.json "whatsapp" (digits) and rebuild; slots appear in header, hero, dock."""
@@ -36,8 +36,8 @@ ICON = {
  'wipe': svg('<path d="M4 20L20 6"/><path d="M4 20h4"/>', 1.8),
 }
 
-WORDMARK = '''<svg viewBox="0 0 132 30" role="img" aria-label="MOON"><defs><linearGradient id="mg" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#F4F6F8"/><stop offset=".46" stop-color="#B9C1C8"/><stop offset=".54" stop-color="#8C959D"/><stop offset="1" stop-color="#DDE2E6"/></linearGradient></defs>
-<g fill="url(#mg)"><path d="M1 29V1h7l7 16 7-16h7v28h-6V12l-6 14h-4L7 12v17z"/><path d="M34 15C34 6 39 1 47 1s13 5 13 14-5 14-13 14-13-5-13-14zm6 0c0 5.6 2.6 8.6 7 8.6s7-3 7-8.6-2.6-8.6-7-8.6-7 3-7 8.6z"/><path d="M64 15C64 6 69 1 77 1s13 5 13 14-5 14-13 14-13-5-13-14zm6 0c0 5.6 2.6 8.6 7 8.6s7-3 7-8.6-2.6-8.6-7-8.6-7 3-7 8.6z"/><path d="M95 29V1h6l12 17V1h6v28h-6L101 12v17z"/></g><path d="M121 29l10-10v10z" fill="#EE2B3B"/></svg>'''
+WORDMARK = '''<svg viewBox="0 0 132 30" role="img" aria-label="MOON"><defs><linearGradient id="mg" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#0E5DA6"/><stop offset="1" stop-color="#073A6B"/></linearGradient></defs>
+<g fill="url(#mg)"><path d="M1 29V1h7l7 16 7-16h7v28h-6V12l-6 14h-4L7 12v17z"/><path d="M34 15C34 6 39 1 47 1s13 5 13 14-5 14-13 14-13-5-13-14zm6 0c0 5.6 2.6 8.6 7 8.6s7-3 7-8.6-2.6-8.6-7-8.6-7 3-7 8.6z"/><path d="M64 15C64 6 69 1 77 1s13 5 13 14-5 14-13 14-13-5-13-14zm6 0c0 5.6 2.6 8.6 7 8.6s7-3 7-8.6-2.6-8.6-7-8.6-7 3-7 8.6z"/><path d="M95 29V1h6l12 17V1h6v28h-6L101 12v17z"/></g><path d="M126 13s-5 5.6-5 9a5 5 0 0 0 10 0c0-3.4-5-9-5-9z" fill="#0B8DB8"/></svg>'''
 
 NAV = [('', 'Home', ''), ('hybrid-wiper-blades/', 'Silicone Hybrid', 'Japanese cars'),
        ('conventional-wiper-blades/', 'Silicone Advance', 'Continental cars'),
@@ -76,47 +76,39 @@ def contact(ref):
 def pic(name, cls='', eager=False, sizes=None, w=1080, h=1350, small=640):
     alt = IMG[name]
     src = f'{P}img/{name}'
-    load = 'fetchpriority="high"' if eager else 'loading="lazy"'
+    load = 'loading="eager" fetchpriority="high"' if eager else 'loading="lazy"'
     sz = sizes or '(min-width:900px) 560px, 100vw'
     return (f'<picture><source type="image/webp" srcset="{src}-{small}.webp {small}w, {src}.webp {w}w" sizes="{sz}">'
             f'<img class="{cls}" src="{src}.jpg" srcset="{src}-{small}.jpg {small}w, {src}.jpg {w}w" sizes="{sz}" width="{w}" height="{h}" alt="{e(alt)}" {load} decoding="async"></picture>')
 
-def tile(name, sizes='(min-width:900px) 280px, 50vw'):
-    return pic(name, sizes=sizes, w=720, h=720, small=360)
-
-def packimg(name):
-    return f'<picture><source type="image/webp" srcset="{P}img/{name}.webp"><img src="{P}img/{name}.jpg" width="480" height="640" alt="{e(IMG[name])}" loading="lazy" decoding="async"></picture>'
-
-def packs_strip():
-    li = ''.join(f'<li><figure style="margin:0">{packimg(n)}<figcaption>{e(c)}</figcaption></figure></li>' for n, c in
-                 [('pack-hybrid', 'Hybrid boxes'), ('pack-advance', 'Advance packs'), ('pack-back', 'Pack back')])
-    return f'<section class="sec"><div class="wrap"><div class="head"><h2>Real packs in Singapore</h2><p>MOON packs photographed in Singapore.</p></div><ul class="packs">{li}</ul></div></section>'
+def tile(name, sizes='(min-width:900px) 280px, 50vw', eager=False):
+    return pic(name, sizes=sizes, w=720, h=720, small=360, eager=eager)
 
 def mm(i):
     return round(i * 25.4)
 
 def hero(img, crumb, h1, line, extra='', label=None):
     c = f'<p class="crumb"><a href="{P}">Home</a> / {e(crumb)}</p>' if crumb else ''
-    return f'''<section class="hero"><div class="grid"><figure class="art">{pic(img, eager=True)}<span class="sheen" aria-hidden="true"></span></figure>
+    return f'''<section class="hero wv"><div class="grid"><figure class="art">{pic(img, eager=True)}<span class="sheen" aria-hidden="true"></span></figure>
 <div class="copy wrap">{c}<h1>{h1}</h1><p class="line">{line}</p>{extra}{cta_hero(label)}</div></div></section>'''
 
 def band(crumb, h1, line, bg='band-rain', extra=''):
-    return f'''<section class="band" style="background-image:image-set(url('{P}img/{bg}-800.webp') type('image/webp'),url('{P}img/{bg}-800.jpg') type('image/jpeg'))"><div class="wrap">
+    return f'''<section class="band wv" style="background-image:image-set(url('{P}img/{bg}-800.webp') type('image/webp'),url('{P}img/{bg}-800.jpg') type('image/jpeg'))"><div class="wrap">
 <p class="crumb"><a href="{P}">Home</a> / {e(crumb)}</p><h1>{h1}</h1><p class="line">{line}</p>{extra}{cta_hero()}</div></section>'''
 
 # ---- adapter chart (Silicone Advance only) ----
 def adapter_svg(code):
-    g = '<svg viewBox="0 0 200 110" aria-hidden="true" fill="none" stroke="#DDE2E6" stroke-width="3" stroke-linejoin="round" stroke-linecap="round">'
-    arm = '#8C959D'; red = '#EE2B3B'
+    g = '<svg viewBox="0 0 200 110" aria-hidden="true" fill="none" stroke="#0A4D8C" stroke-width="3" stroke-linejoin="round" stroke-linecap="round">'
+    arm = '#A9BED0'; red = '#0B8DB8'
     s = {
-     'D02': f'<path d="M20 70h160" stroke="{arm}" stroke-width="8"/><rect x="62" y="40" width="76" height="30"/><rect x="86" y="26" width="28" height="14" fill="{red}" stroke="{red}"/><path d="M62 92h76" stroke="{red}" stroke-width="2"/><text x="100" y="106" font-size="12" text-anchor="middle" fill="#AEB8C1" stroke="none" font-family="sans-serif">22mm</text>',
+     'D02': f'<path d="M20 70h160" stroke="{arm}" stroke-width="8"/><rect x="62" y="40" width="76" height="30"/><rect x="86" y="26" width="28" height="14" fill="{red}" stroke="{red}"/><path d="M62 92h76" stroke="{red}" stroke-width="2"/><text x="100" y="106" font-size="12" text-anchor="middle" fill="#46607A" stroke="none" font-family="sans-serif">22mm</text>',
      'i02': f'<path d="M20 70h160" stroke="{arm}" stroke-width="8"/><rect x="66" y="40" width="68" height="30"/><path d="M66 46h-14v18h14M134 46h14v18h-14" stroke="{red}"/><path d="M52 55h-10M148 55h10" stroke="{red}"/>',
-     'B02': f'<path d="M20 70h160" stroke="{arm}" stroke-width="8"/><rect x="58" y="38" width="84" height="32"/><circle cx="100" cy="54" r="9" stroke="{red}"/><path d="M91 54H24" stroke="{red}"/><text x="100" y="104" font-size="12" text-anchor="middle" fill="#AEB8C1" stroke="none" font-family="sans-serif">19 / 22mm</text>',
-     'L02': f'<path d="M20 74h160" stroke="{arm}" stroke-width="8"/><rect x="50" y="56" width="100" height="14"/><path d="M72 56v-10h56v10" stroke="{red}"/><text x="100" y="104" font-size="12" text-anchor="middle" fill="#AEB8C1" stroke="none" font-family="sans-serif">19mm</text>',
+     'B02': f'<path d="M20 70h160" stroke="{arm}" stroke-width="8"/><rect x="58" y="38" width="84" height="32"/><circle cx="100" cy="54" r="9" stroke="{red}"/><path d="M91 54H24" stroke="{red}"/><text x="100" y="104" font-size="12" text-anchor="middle" fill="#46607A" stroke="none" font-family="sans-serif">19 / 22mm</text>',
+     'L02': f'<path d="M20 74h160" stroke="{arm}" stroke-width="8"/><rect x="50" y="56" width="100" height="14"/><path d="M72 56v-10h56v10" stroke="{red}"/><text x="100" y="104" font-size="12" text-anchor="middle" fill="#46607A" stroke="none" font-family="sans-serif">19mm</text>',
      'G02': f'<path d="M20 70h160" stroke="{arm}" stroke-width="8"/><rect x="58" y="40" width="80" height="30"/><path d="M138 48h26v14h-14v-6" stroke="{red}"/>',
      'A02': f'<path d="M20 70h120" stroke="{arm}" stroke-width="8"/><path d="M140 70V44a14 14 0 0 0-14-14H40" stroke="{arm}" stroke-width="8"/><rect x="62" y="44" width="62" height="22"/><path d="M62 36h62" stroke="{red}"/>',
-     'J02': f'<path d="M20 70h160" stroke="{arm}" stroke-width="8"/><rect x="62" y="40" width="76" height="30"/><path d="M86 40V26h28v14" stroke="{red}"/><text x="100" y="62" font-size="18" text-anchor="middle" fill="#EE2B3B" stroke="none" font-family="sans-serif" font-weight="700">C</text>',
-     'K02': f'<path d="M20 70h160" stroke="{arm}" stroke-width="8"/><rect x="62" y="40" width="76" height="30"/><path d="M86 40V26h28v14" stroke="{red}"/><text x="100" y="62" font-size="18" text-anchor="middle" fill="#EE2B3B" stroke="none" font-family="sans-serif" font-weight="700">M</text>',
+     'J02': f'<path d="M20 70h160" stroke="{arm}" stroke-width="8"/><rect x="62" y="40" width="76" height="30"/><path d="M86 40V26h28v14" stroke="{red}"/><text x="100" y="62" font-size="18" text-anchor="middle" fill="#0B8DB8" stroke="none" font-family="sans-serif" font-weight="700">C</text>',
+     'K02': f'<path d="M20 70h160" stroke="{arm}" stroke-width="8"/><rect x="62" y="40" width="76" height="30"/><path d="M86 40V26h28v14" stroke="{red}"/><text x="100" y="62" font-size="18" text-anchor="middle" fill="#0B8DB8" stroke="none" font-family="sans-serif" font-weight="700">M</text>',
     }
     return g + s[code] + '</svg>'
 
@@ -158,9 +150,9 @@ def page(slug, title, desc, crumbname, body, ld=None, contact_in_body=False):
 <html lang="en-SG"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <title>{e(title)}</title><meta name="description" content="{e(desc)}"><link rel="canonical" href="{url}">
 <meta property="og:type" content="website"><meta property="og:site_name" content="{e(D['site_name'])}"><meta property="og:title" content="{e(title)}"><meta property="og:description" content="{e(desc)}"><meta property="og:url" content="{url}">
-<meta property="og:image" content="{BASE}og.jpg"><meta property="og:image:secure_url" content="{BASE}og.jpg"><meta property="og:image:type" content="image/jpeg"><meta property="og:image:width" content="1200"><meta property="og:image:height" content="630"><meta property="og:image:alt" content="MOON silicone hybrid wiper blade on rain-beaded glass"><meta property="og:locale" content="en_SG">
+<meta property="og:image" content="{BASE}og.jpg"><meta property="og:image:secure_url" content="{BASE}og.jpg"><meta property="og:image:type" content="image/jpeg"><meta property="og:image:width" content="1200"><meta property="og:image:height" content="630"><meta property="og:image:alt" content="MOON silicone hybrid wiper blade on water-beaded glass"><meta property="og:locale" content="en_SG">
 <meta name="twitter:card" content="summary_large_image"><meta name="twitter:title" content="{e(title)}"><meta name="twitter:description" content="{e(desc)}"><meta name="twitter:image" content="{BASE}og.jpg">
-<meta name="theme-color" content="#0B0E11"><link rel="icon" href="{P}favicon.svg" type="image/svg+xml">
+<meta name="theme-color" content="#0A4D8C"><link rel="icon" href="{P}favicon.svg" type="image/svg+xml">
 <link rel="preload" href="{P}fonts/saira-condensed-800.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="stylesheet" href="{P}site.css?v={css}"><script>document.documentElement.classList.add('js')</script>
 <script type="application/ld+json">{json.dumps({"@context": "https://schema.org", "@graph": graph}, ensure_ascii=False)}</script>
@@ -197,34 +189,33 @@ def build():
     bg = lambda n: f"background-image:image-set(url('{P}img/{n}-800.webp') type('image/webp'),url('{P}img/{n}-800.jpg') type('image/jpeg'))"
 
     # HOME
-    body = hero('hero-hybrid', '', 'Moon hybrid wiper blades for <span class="red">Singapore</span>',
+    body = hero('hero-hybrid', '', 'Moon hybrid wiper blades for <span class="hl">Singapore</span>',
                 'Taiwan-made silicone hybrid for Japanese cars, then Silicone Advance for Continental.', f'<span class="chip">Hybrid M1001 from $30 at Kohden</span>')
-    body += f'''<section class="sec"><div class="wrap"><div class="head"><h2>Two lines. <span class="red">Two kinds of car.</span></h2></div>
-<div class="duo"><a class="pn" href="{P}hybrid-wiper-blades/">{tile('tile-m1001', '(min-width:900px) 620px, 100vw')}<div class="tx"><h3>Silicone Hybrid M1001</h3><p class="for">For Japanese cars</p><p class="pr">{h['price']} at Kohden</p><span class="go">See the Hybrid</span></div></a>
-<a class="pn sm" href="{P}conventional-wiper-blades/">{tile('tile-advance', '(min-width:900px) 480px, 120px')}<div class="tx"><h3>Silicone Advance</h3><p class="for">For Continental cars</p><p class="pr">Adapter included. Price from Kohden.</p><span class="go">See Advance</span></div></a></div></div></section>
-<section class="stat" style="{bg('band-rain')}"><div class="wrap"><span class="big">2X</span><p>longer lasting than traditional natural rubber.</p>
+    body += f'''<section class="sec"><div class="wrap"><div class="head"><h2>Two lines. <span class="hl">Two kinds of car.</span></h2></div>
+<div class="duo"><a class="pn card" href="{P}hybrid-wiper-blades/">{tile('tile-m1001', '(min-width:900px) 620px, 100vw', eager=True)}<div class="tx"><h3>Silicone Hybrid M1001</h3><p class="for">For Japanese cars</p><p class="pr">{h['price']} at Kohden</p><span class="go">See the Hybrid</span></div></a>
+<a class="pn sm card" href="{P}conventional-wiper-blades/">{tile('tile-advance', '(min-width:900px) 480px, 120px', eager=True)}<div class="tx"><h3>Silicone Advance</h3><p class="for">For Continental cars</p><p class="pr">Adapter included. Price from Kohden.</p><span class="go">See Advance</span></div></a></div></div></section>
+<section class="stat wv" style="{bg('band-rain')}"><div class="wrap"><span class="big">2X</span><p>longer lasting than traditional natural rubber.</p>
 <p class="small">The maker's claim, from its own laboratory testing. Made in Taiwan by Fu-Gang, ISO 9001:2015 and IATF 16949:2016.</p></div></section>
 <section class="sec"><div class="wrap"><div class="head"><h2>Also in the range</h2></div><ul class="rg">
-<li><a href="{P}silicone-flat-wiper-blades/">{tile('tile-m102')}<div><b>Flat M-102</b><span>{fl['price']}</span></div></a></li>
+<li class="card"><a href="{P}silicone-flat-wiper-blades/">{tile('tile-m102')}<div><b>Flat M-102</b><span>{fl['price']}</span></div></a></li>
 <li><a href="{P}silicone-flat-wiper-blades/">{tile('tile-m105')}<div><b>Japan Flat M-105</b><span>{m105['price']}</span></div></a></li>
 <li><a href="{P}rear-wiper-blades/">{tile('tile-mgr')}<div><b>Rear M-GRA / M-GRB</b><span>$20</span></div></a></li>
 <li><a href="{P}rear-wiper-blades/">{tile('tile-mfr')}<div><b>Rear Conti M-FR</b><span>{PR['mfr']['price']}</span></div></a></li></ul></div></section>
-<section class="sec alt"><div class="wrap"><div class="head"><h2>Know your size</h2><p>Most cars take two different front sizes. Common ones:</p></div>
+<section class="sec alt"><div class="wrap"><div class="head"><h2>Know your size</h2><p>Some common front sizes, in inches and millimetres:</p></div>
 <table class="tbl"><thead><tr><th>Size</th><th>Length</th><th class="c">Hybrid</th><th class="c">Flat</th></tr></thead><tbody>
 {''.join(f'<tr><th scope="row">{i}"</th><td class="num">{mm(i)} mm</td><td class="y">Yes</td><td class="y">Yes</td></tr>' for i in (14, 16, 18, 24, 26))}</tbody></table>
-<p style="margin-top:16px"><a href="{P}wiper-size-guide/">Full size table and adapter chart</a></p></div></section>
-{packs_strip()}'''
+<p style="margin-top:16px"><a href="{P}wiper-size-guide/">Full size table and adapter chart</a></p></div></section>'''
     urls.append(page('', 'MOON Hybrid Wiper Blades Singapore | Silicone, Made in Taiwan',
         'MOON silicone hybrid wiper blades for Japanese cars and Silicone Advance for Continental cars. Kohden prices $20 to $80. Call +65 6966 6565.',
         'Home', body, [seller, {"@type": "Brand", "name": "MOON"}]))
 
     # HYBRID
-    hdesc = 'MOON Silicone Hybrid M1001 wiper blade for Japanese cars: streamlined shape against wind-lift, less chatter, multi-curvature rail spline. Made in Taiwan by Fu-Gang.'
-    feats = [('wind', 'Streamlined shape', 'Cuts wind-lift'), ('quiet', 'Less chatter', 'Smoother wipe'), ('curve', 'Multi-curvature rail', 'Follows the glass'), ('leaf', 'Recyclable material', 'Eco-product')]
-    fx = ''.join(f'<div>{ICON[i]}<b>{a}</b><span>{b}</span></div>' for i, a, b in feats)
-    body = hero('hero-hybrid', 'Silicone Hybrid', 'Silicone Hybrid <span class="red">M1001</span>', 'For Japanese cars. Exact-fit; Kohden matches it to your make, model and year.',
+    hdesc = 'MOON Silicone Hybrid M1001 wiper blade for Japanese cars, sold in Singapore by Kohden. Made in Taiwan by Fu-Gang.'
+    kd_h = ['Super streamlined shape, reduced wind-lift', 'Increasing durability, reducing chattering', 'Multi-curvature rail spline', 'Eco-product, material recyclable']
+    body = hero('hero-hybrid', 'Silicone Hybrid', 'Silicone Hybrid <span class="hl">M1001</span>', 'For Japanese cars. Kohden matches it to your make, model and year.',
                 f'<span class="chip">{h["price"]} at Kohden</span>')
-    body += f'''<section class="sec"><div class="wrap"><div class="fx">{fx}</div></div></section>
+    body += f'''<section class="sec"><div class="wrap"><div class="head"><h2>Kohden's description</h2><p>As listed on Kohden's M1001 product page; these are the seller's and maker's claims.</p></div>
+<ul class="dl">{''.join(f'<li>{e(x)}</li>' for x in kd_h)}</ul><p class="src">Source: <a href="{h['url']}" target="_blank" rel="noopener">kohden.com.sg</a></p></div></section>
 <section class="sec alt"><div class="wrap"><div class="head"><h2>Sizes at Kohden</h2><p>Inches as sold; millimetres are inches x 25.4.</p></div>
 <table class="tbl"><thead><tr><th>Size</th><th>Length</th></tr></thead><tbody>{size_rows([s for s in h['sizes'] if '+' not in s])}
 <tr><th scope="row">30" + 14"</th><td>Set of two</td></tr></tbody></table></div></section>
@@ -237,7 +228,7 @@ def build():
 
     # ADVANCE
     adesc = 'MOON Silicone Advance, the higher-end line for Continental cars, with water repellency and Siflon rubber technology. Adapter set included.'
-    body = hero('hero-advance', 'Silicone Advance', 'Silicone <span class="red">Advance</span>', 'The higher-end line for Continental cars. Adapter included.',
+    body = hero('hero-advance', 'Silicone Advance', 'Silicone <span class="hl">Advance</span>', 'The higher-end line for Continental cars. Adapter included.',
                 '<p class="small" style="margin-top:12px">Pictured: Fu-Gang conventional blade.</p>', label='Call Kohden for price')
     body += f'''<section class="sec"><div class="wrap">{adapter_chart()}</div></section>
 <section class="sec alt"><div class="wrap"><div class="head"><h2>On the pack</h2></div><div class="fx">
@@ -250,11 +241,11 @@ def build():
 
     # FLAT
     fdesc = 'MOON silicone beam / flat wiper blade, sold in Singapore by Kohden.'
-    fb = '<ul><li>Long-lasting silicone</li><li>Less noise and chatter</li><li>Strong corrosion resistance</li></ul>'
-    body = hero('hero-flat', 'Flat blades', 'Silicone <span class="red">flat</span> blades', 'Beam blades with no frame: M-102 and M-105 Japan Flat.', f'<span class="chip">From $30 at Kohden</span>')
+    fb = f'<p class="src">Kohden\'s M-102 listing says:</p><ul class="dl"><li>Long-lasting silicone</li><li>Less noise and chatter</li><li>Strong corrosion resistance</li></ul>'
+    body = hero('hero-flat', 'Flat blades', 'Silicone <span class="hl">flat</span> blades', 'Beam blades with no frame: M-102 and M-105 Japan Flat.', f'<span class="chip">From $30 at Kohden</span>')
     body += f'''<section class="sec"><div class="wrap ps">
-<article>{tile('tile-m102', '(min-width:900px) 560px, 100vw')}<div class="tx"><h3>M-102 Silicone Flat</h3><p class="pr red num" style="margin:6px 0 0">{fl['price']}</p>{fb}<ul class="sizes">{''.join(f'<li>{e(s)}</li>' for s in fl['sizes'])}</ul></div></article>
-<article>{tile('tile-m105', '(min-width:900px) 560px, 100vw')}<div class="tx"><h3>M-105 Japan Flat</h3><p class="pr red num" style="margin:6px 0 0">{m105['price']}</p>{fb}<ul class="sizes">{''.join(f'<li>{e(s)}</li>' for s in m105['sizes'])}</ul></div></article>
+<article class="card">{tile('tile-m102', '(min-width:900px) 560px, 100vw')}<div class="tx"><h3>M-102 Silicone Flat</h3><p class="pr num" style="margin:6px 0 0">{fl['price']}</p>{fb}<ul class="sizes">{''.join(f'<li>{e(s)}</li>' for s in fl['sizes'])}</ul></div></article>
+<article class="card">{tile('tile-m105', '(min-width:900px) 560px, 100vw')}<div class="tx"><h3>M-105 Japan Flat</h3><p class="pr num" style="margin:6px 0 0">{m105['price']}</p><ul class="sizes">{''.join(f'<li>{e(s)}</li>' for s in m105['sizes'])}</ul></div></article>
 </div><div class="wrap"><p style="margin-top:22px">For most Japanese cars, start with the <a href="{P}hybrid-wiper-blades/">Silicone Hybrid M1001</a>.</p></div></section>'''
     urls.append(page('silicone-flat-wiper-blades/', 'MOON Silicone Flat Wiper Blades Singapore | M-102, M-105',
         'MOON silicone beam / flat wiper blades: M-102 at $30 to $80 and M-105 Japan Flat at $30, Kohden Singapore. Sizes 12 to 28 inch.',
@@ -262,10 +253,10 @@ def build():
 
     # REAR
     rr = [('tile-mgr', 'M-GRA Rear A-type', PR['mgra']), ('tile-mgr', 'M-GRB Rear B-type', PR['mgrb']), ('tile-mfr', 'M-FR Rear Conti', PR['mfr'])]
-    rows = ''.join(f'<li>{tile(t, "116px")}<div><b>{n}</b><span class="pr">{p["price"]}</span><div class="sz">{", ".join(p["sizes"])}</div></div></li>' for t, n, p in rr)
-    body = hero('hero-rear', 'Rear blades', '<span class="red">Rear</span> wiper blades', 'Three rear types, $20 to $22 at Kohden.')
+    rows = ''.join(f'<li class="card">{tile(t, "116px")}<div><b>{n}</b><span class="pr">{p["price"]}</span><div class="sz">{", ".join(p["sizes"])}</div></div></li>' for t, n, p in rr)
+    body = hero('hero-rear', 'Rear blades', '<span class="hl">Rear</span> wiper blades', 'Three rear types, $20 to $22 at Kohden.')
     body += f'''<section class="sec"><div class="wrap"><ul class="rr">{rows}</ul>
-<div class="fx" style="margin-top:22px"><div>{ICON['box']}<b>Resin frame</b><span>Like the original part</span></div><div>{ICON['wipe']}<b>Easy to replace</b><span>Fit it yourself</span></div></div></div></section>'''
+<div class="fx" style="margin-top:22px"><div>{ICON['box']}<b>Resin frame like the original part</b><span>Kohden product description</span></div><div>{ICON['wipe']}<b>Easy to replace yourself</b><span>Kohden product description</span></div></div></div></section>'''
     rdesc = 'MOON rear wiper blade with a resin frame like the original part, sold in Singapore by Kohden.'
     urls.append(page('rear-wiper-blades/', 'MOON Rear Wiper Blades Singapore | M-GRA, M-GRB, M-FR from $20',
         'MOON rear wiper blades at Kohden Singapore: M-GRA $20, M-GRB $20, M-FR Conti $22. Sizes 10 to 16 inch.',
@@ -279,7 +270,7 @@ def build():
         if not any(cols): continue
         rows += f'<tr><th scope="row">{i}"</th><td class="num">{mm(i)}</td>' + ''.join('<td class="y">&#10003;</td>' if c else '<td class="n">-</td>' for c in cols) + '</tr>'
     cat = ', '.join(f'{k}" = {v}mm' for k, v in D['catalogue_mm_labels'].items())
-    body = band('Size guide', 'Wiper <span class="red">size</span> guide', 'Find your size, then check which MOON blade comes in it.')
+    body = band('Size guide', 'Wiper <span class="hl">size</span> guide', 'Find your size, then check which MOON blade comes in it.')
     body += f'''<section class="sec"><div class="wrap"><div class="head"><h2>Three ways to find it</h2></div><ol class="steps">
 <li><div><b>Read the old box or blade</b><span>The length is printed, usually in inches.</span></div></li>
 <li><div><b>Measure tip to tip</b><span>Measure the rubber end to end, driver and passenger side separately, plus the rear.</span></div></li>
@@ -293,8 +284,8 @@ def build():
         'Size guide', body, [seller]))
 
     # WHERE TO BUY
-    body = band('Where to buy', 'Where to <span class="red">buy</span>', 'Kohden in Kaki Bukit sells the MOON range in Singapore.')
-    body += f'''<section class="sec"><div class="wrap">{contact('buy')}</div></section>{packs_strip()}'''
+    body = band('Where to buy', 'Where to <span class="hl">buy</span>', 'Kohden in Kaki Bukit sells the MOON range in Singapore.')
+    body += f'''<section class="sec"><div class="wrap">{contact('buy')}</div></section>'''
     urls.append(page('where-to-buy/', 'Where to Buy MOON Wiper Blades Singapore | Kohden, Kaki Bukit',
         'Buy MOON wiper blades from KohDen International, 7 Kaki Bukit Road 1 #01-15 Eunos Technolink, Singapore 415937. Mon to Fri 9am to 5pm.',
         'Where to buy', body, [seller], contact_in_body=True))
@@ -311,14 +302,14 @@ def build():
      ('Which blades use the adapter chart?', 'Only Silicone Advance. The adapter chart does not apply to the Hybrid, flat or rear blades.'),
     ]
     q = ''.join(f'<details><summary>{e(a)}</summary><p>{e(b)}</p></details>' for a, b in faqs)
-    body = band('FAQ', 'Moon wiper <span class="red">questions</span>', 'Short answers from Kohden\'s published facts.')
+    body = band('FAQ', 'Moon wiper <span class="hl">questions</span>', 'Short answers from Kohden\'s published facts.')
     body += f'<section class="sec"><div class="wrap faq">{q}</div></section>'
     urls.append(page('faq/', 'MOON Wiper Blades FAQ Singapore | Sizes, Prices, Fit',
         'Answers on MOON wiper blades in Singapore: which blade for Japanese or Continental cars, Kohden prices, sizes, first use and the adapter chart.',
         'FAQ', body, [{"@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": a, "acceptedAnswer": {"@type": "Answer", "text": b}} for a, b in faqs]}]))
 
     # ARTICLES
-    body = band('Articles', 'Wiper <span class="red">articles</span>', 'No articles yet.')
+    body = band('Articles', 'Wiper <span class="hl">articles</span>', 'No articles yet.')
     body += f'<section class="sec"><div class="wrap"><ul class="rg" id="articles"></ul><p class="mute">Meanwhile, the <a href="{P}wiper-size-guide/">size guide</a> and <a href="{P}faq/">FAQ</a> cover the basics.</p></div></section>'
     urls.append(page('articles/', 'Wiper Blade Articles | MOON Singapore', 'Wiper blade guides for Singapore drivers from MOON. No articles yet.',
         'Articles', body, [{"@type": "CollectionPage", "name": "Wiper blade articles", "url": BASE + "articles/"}]))
