@@ -1,0 +1,430 @@
+diff -ruN ctl-base/base44/functions/portfolio/entry.ts ctl/base44/functions/portfolio/entry.ts
+--- ctl-base/base44/functions/portfolio/entry.ts	2026-11-17 22:38:28.801426192 +0000
++++ ctl/base44/functions/portfolio/entry.ts	2026-11-17 22:38:29.156202893 +0000
+@@ -471,7 +471,8 @@
+   const svc = base44.asServiceRole;
+   const body = await req.json().catch(() => ({}));
+   // Outside callers with no sign-in token and no valid CRON_KEY stop here, before any database read (11 Nov 2026).
+-  const pre = await preAuth(req, body, ['refresh', 'feed']);
++  // GROKBOT RUNNER (18 Nov 2026): 'runner_status' = the same read-only status, only for runnerFeed (CRON_KEY), which trims it.
++  const pre = await preAuth(req, body, ['refresh', 'feed', 'runner_status']);
+   if (!pre) return Response.json({ error: 'Forbidden' }, { status: 403 });
+   // Site feed (security review 11 Nov 2026): only reachable through siteFeedIngest, which checks the Bridge's HMAC
+   // signature, timestamp and nonce first and then calls here with CRON_KEY. No signed payload is accepted here directly.
+@@ -480,7 +481,7 @@
+   const E = svc.entities;
+   // Speed: every read the dashboard needs starts at once, alongside the sign-in check, instead of one after another.
+   // Nothing is returned until the caller is confirmed as admin (or the scheduled refresh).
+-  const isStatus = action === 'status';
++  const isStatus = action === 'status' || action === 'runner_status';
+   const clickSince = new Date(Date.parse(`${sgtDate(Date.now() - 6 * 864e5)}T00:00:00+08:00`)).toISOString();
+   const clicksP: Promise<any[]> = isStatus ? E.CtaClick.filter({ created_date: { $gte: clickSince } }, '-created_date', 5000).catch(() => []) : Promise.resolve([]);
+   const fixesP: Promise<any[]> = isStatus ? E.FixRequest.list('-created_date', 100).catch(() => []) : Promise.resolve([]);
+@@ -500,7 +501,7 @@
+     E.PortfolioSite.list('key', 50).catch(() => []),
+   ]);
+   if (user && user.role !== 'admin') return Response.json({ error: 'Forbidden' }, { status: 403 });
+-  if (!user && (!['refresh', 'feed'].includes(action) || !(await isCron(req, body)))) return Response.json({ error: 'Forbidden' }, { status: 403 });
++  if (!user && (!['refresh', 'feed', 'runner_status'].includes(action) || !(await isCron(req, body)))) return Response.json({ error: 'Forbidden' }, { status: 403 });
+   if (action === 'feed' && (user || !feed)) return Response.json({ error: 'Forbidden' }, { status: 403 });
+ 
+   // Client sites get the daily Client Article Writer (7:00am) once their full site is built.
+@@ -643,7 +644,7 @@
+     return Response.json({ ok: true, refreshed: results.filter(Boolean).length, timed_out: timedOut, skipped });
+   }
+ 
+-  if (action === 'status') {
++  if (isStatus) {
+     const newest = Math.max(0, ...rows.map((r) => Date.parse(r.refreshed_at || '') || 0));
+     // WhatsApp button clicks per site. Client sites send cta_type "whatsapp" with their site key;
+     // pageonesingapore.com's own tracker has no site and uses whatsapp_* types.
+diff -ruN ctl-base/base44/functions/runnerFeed/entry.ts ctl/base44/functions/runnerFeed/entry.ts
+--- ctl-base/base44/functions/runnerFeed/entry.ts	1970-01-01 00:00:00.000000000 +0000
++++ ctl/base44/functions/runnerFeed/entry.ts	2026-11-17 22:38:29.018779998 +0000
+@@ -0,0 +1,76 @@
++// GROKBOT RUNNER (Edwin 18 Nov 2026): what the Grok Bot API runner may see and change here, always through the Bluehost
++// Bridge (bridgeRunnerController), never directly. Accepted only from a request signed with the Bridge's private key
++// (same pinned key as articleFeed / crawlerIngest, less than 20 minutes old, purpose 'grokbot_runner'), or a signed-in
++// admin / CRON_KEY for testing. The apps share no secret.
++//   { op: 'copy_fix', site? }  -> sites whose dashboard row needs a fix (urgent/warn): the issue text and the exact
++//                                 "Copy fix" instruction the dashboard copies, plus the current FixRequest status. Read only.
++//   { op: 'taps', site? }      -> CTA tap counts per site (unique visitors today / 7 days, raw taps, per-day WhatsApp)
++//                                 and enquiry counts. Counts only: no visitor ids, numbers, messages or client contacts.
++//   { op: 'article_last', slug, date, title, url } -> sets ONLY article_last_built / article_last_title / article_last_url
++//                                 on that Client record. Nothing else is written.
++import { createClientFromRequest } from 'npm:@base44/sdk@0.8.44';
++import { guard } from '../../shared/guard.ts';
++import { verifyBridgeBatch } from '../../shared/crawlerEval.ts';
++
++const PURPOSE = 'grokbot_runner';
++const clip = (v: unknown, n: number) => String(v ?? '').replace(/[\u0000-\u001f\u007f<>]/g, ' ').trim().slice(0, n);
++const bare = (h: string) => String(h || '').toLowerCase().replace(/^https?:\/\//, '').replace(/\/.*$/, '').replace(/^www\./, '');
++const PREVIEW_HOSTS = ['pageonesingapore.com', 'autoseo.my'];
++
++export default async function (req: Request) {
++  if (req.method !== 'POST') return Response.json({ ok: false, error: 'method' }, { status: 405 });
++  const base44 = createClientFromRequest(req);
++  const body = await req.clone().json().catch(() => null);
++  const verified = await verifyBridgeBatch(body);
++  let p: any;
++  if (verified.ok && verified.payload?.purpose === PURPOSE) p = verified.payload;
++  else {
++    const denied = await guard(req, base44);
++    if (denied) return denied;
++    p = body || {};
++  }
++  const op = String(p?.op || '');
++  const E = base44.asServiceRole.entities;
++
++  if (op === 'copy_fix' || op === 'taps') {
++    const r: any = await base44.asServiceRole.functions.invoke('portfolio', { action: 'runner_status', cron_key: Deno.env.get('CRON_KEY') || '' }).catch(() => null);
++    const d = r?.data ?? r;
++    if (!d || !Array.isArray(d.sites)) return Response.json({ ok: false, error: 'Dashboard status not available' }, { status: 502 });
++    const only = p?.site ? clip(p.site, 80) : '';
++    const sites = d.sites.filter((s: any) => !only || s.key === only);
++    const meta = { refreshed_at: d.refreshed_at || null, stale: !!d.stale };
++    if (op === 'copy_fix') {
++      const issues = sites.filter((s: any) => ['urgent', 'warn'].includes(s.action?.level)).map((s: any) => ({
++        site: s.key, name: s.name, url: s.url, level: s.action.level, issue: s.action.text,
++        // Same text as the dashboard's Copy fix button (PortfolioOverview.jsx copyFix).
++        copy_fix: `Fix this issue on ${s.name} (${s.url}):\n\n"${s.action?.text}"\n\nDiagnose from primary evidence, apply the smallest safe fix, and verify on the live site.`,
++        checks: Array.isArray(s.issues) ? s.issues.slice(0, 20) : [], health_score: s.health_score ?? null,
++        fix: s.fix ? { status: s.fix.status, issue: s.fix.issue, result: s.fix.result, requested_at: s.fix.requested_at, finished_at: s.fix.finished_at } : null,
++      }));
++      return Response.json({ ok: true, ...meta, count: issues.length, issues }, { headers: { 'Cache-Control': 'no-store' } });
++    }
++    const taps = sites.map((s: any) => ({ site: s.key, name: s.name, url: s.url, cta: s.cta || {}, wa_days: s.wa_days || [],
++      ...(s.enq_today !== undefined ? { enq_today: s.enq_today, enq_7d: s.enq_7d } : {}) }));
++    return Response.json({ ok: true, ...meta, count: taps.length, taps }, { headers: { 'Cache-Control': 'no-store' } });
++  }
++
++  if (op === 'article_last') {
++    const slug = clip(p?.slug, 80);
++    if (!/^[a-z0-9][a-z0-9-]{1,79}$/.test(slug)) return Response.json({ ok: false, error: 'slug must be the Controller client slug' }, { status: 400 });
++    const date = clip(p?.date, 10);
++    if (!/^\d{4}-\d{2}-\d{2}$/.test(date)) return Response.json({ ok: false, error: 'date must be YYYY-MM-DD (SGT)' }, { status: 400 });
++    const title = clip(p?.title, 200);
++    if (!title) return Response.json({ ok: false, error: 'title is required' }, { status: 400 });
++    const url = clip(p?.url, 400);
++    let host = '';
++    try { const u = new URL(url); if (u.protocol === 'https:' && !u.username && !u.password && !u.port) host = bare(u.hostname); } catch { /* bad */ }
++    const rows: any[] = (await E.Client.filter({ slug }, '-created_date', 3).catch(() => [])).filter((c: any) => !c.is_partner);
++    if (rows.length !== 1) return Response.json({ ok: false, error: rows.length ? 'More than one client has this slug' : 'Unknown client slug' }, { status: 404 });
++    const c = rows[0];
++    if (!host || (host !== bare(c.domain || '') && !PREVIEW_HOSTS.includes(host))) return Response.json({ ok: false, error: 'url must be https on the client domain or its preview host' }, { status: 400 });
++    await E.Client.update(c.id, { article_last_built: date, article_last_title: title, article_last_url: url });
++    return Response.json({ ok: true, slug, date }, { headers: { 'Cache-Control': 'no-store' } });
++  }
++
++  return Response.json({ ok: false, error: 'op must be copy_fix, taps or article_last' }, { status: 400 });
++}
+diff -ruN ctl-base/base44/tests/runnerFeed.test.ts ctl/base44/tests/runnerFeed.test.ts
+--- ctl-base/base44/tests/runnerFeed.test.ts	1970-01-01 00:00:00.000000000 +0000
++++ ctl/base44/tests/runnerFeed.test.ts	2026-11-17 22:39:41.139560352 +0000
+@@ -0,0 +1,69 @@
++// GROKBOT RUNNER runnerFeed tests (18 Nov 2026). Run: deno test -A --no-check base44/tests/runnerFeed.test.ts
++// Fake SDK client (no network, no real key): unsigned outsiders refused, Copy fix + taps trimmed, article_last writes 3 fields only.
++import { assertEquals } from 'jsr:@std/assert@1';
++
++let me: any = null;
++const updates: any[] = [];
++const clients = [
++  { id: 'c1', slug: 'carzy', domain: 'carzyworld.com.my', is_partner: false, whatsapp: '+60123456789' },
++  { id: 'c2', slug: 'ktech', domain: 'ktech.my', is_partner: true },
++];
++const status = { refreshed_at: '2026-11-17T20:00:00Z', stale: false, sites: [
++  { key: 'carzy', name: 'Carzy World', url: 'https://carzyworld.com.my/', action: { level: 'urgent', text: 'Home page down' }, issues: ['http 500'], health_score: 20,
++    fix: { id: 'f', status: 'queued', issue: 'x', result: '', requested_at: 'r', finished_at: null, progress: 0 }, cta: { whatsapp: { today: 1, d7: 3 } }, wa_days: [{ day: '2026-11-17', n: 1 }],
++    update: { number: '+60123456789', text: 'private message' }, wa_report: { text: 'private', link: 'https://wa.me/x' }, plan: { amount: 100 } },
++  { key: 'sggarage', name: 'SG Garage', url: 'https://sggarage.com/', action: { level: 'ok', text: 'All good' }, cta: { whatsapp: { today: 0, d7: 9 } }, wa_days: [], enq_today: 0, enq_7d: 2 },
++] };
++(globalThis as any).__fake = {
++  auth: { me: async () => me },
++  asServiceRole: {
++    entities: { Client: { filter: async (q: any) => clients.filter((c) => c.slug === q.slug), update: async (id: string, d: any) => { updates.push({ id, d }); return d; } } },
++    functions: { invoke: async (_n: string, body: any) => ({ data: body.action === 'runner_status' ? status : null }) },
++  },
++};
++// The function under test with the SDK import swapped for the fake client (temp copy; shared/ imports point at the real files).
++const src = await Deno.readTextFile(new URL('../functions/runnerFeed/entry.ts', import.meta.url));
++const shared = new URL('../shared/', import.meta.url).href;
++const patched = src.replace(/import \{ createClientFromRequest \} from 'npm:@base44\/sdk@[^']+';/, 'const createClientFromRequest = (_r: Request) => (globalThis as any).__fake;')
++  .replaceAll("'../../shared/", "'" + shared);
++if (patched === src || patched.includes('npm:@base44/sdk')) throw new Error('could not swap the SDK import');
++const tmp = await Deno.makeTempFile({ suffix: '.ts' });
++await Deno.writeTextFile(tmp, patched);
++const { default: fn } = await import('file://' + tmp);
++const call = async (body: any) => { const r = await fn(new Request('https://x.test/f', { method: 'POST', body: JSON.stringify(body) })); return { status: r.status, body: await r.json() }; };
++
++Deno.test('unsigned outsider refused; bad signature refused', async () => {
++  me = null;
++  assertEquals((await call({ op: 'taps' })).status, 403);
++  assertEquals((await call({ payload: JSON.stringify({ purpose: 'grokbot_runner', op: 'taps', sent_at: new Date().toISOString() }), sig: 'AAAA', kid: 'nope' })).status, 403);
++  me = { role: 'user' };
++  assertEquals((await call({ op: 'taps' })).status, 403);
++});
++
++Deno.test('copy_fix: urgent/warn only, dashboard Copy fix text, no contacts', async () => {
++  me = { role: 'admin' };
++  const r = await call({ op: 'copy_fix' });
++  assertEquals(r.status, 200); assertEquals(r.body.count, 1);
++  assertEquals(r.body.issues[0].copy_fix.startsWith('Fix this issue on Carzy World (https://carzyworld.com.my/):'), true);
++  const s = JSON.stringify(r.body);
++  assertEquals(/private|wa\.me|\+6012|amount/.test(s), false);
++});
++
++Deno.test('taps: counts only, site filter', async () => {
++  me = { role: 'admin' };
++  const r = await call({ op: 'taps', site: 'sggarage' });
++  assertEquals(r.body.count, 1); assertEquals(r.body.taps[0].enq_7d, 2);
++  assertEquals(/private|wa\.me|\+6012/.test(JSON.stringify((await call({ op: 'taps' })).body)), false);
++});
++
++Deno.test('article_last: 3 fields only, own domain or preview host, partner/unknown refused', async () => {
++  me = { role: 'admin' };
++  assertEquals((await call({ op: 'article_last', slug: 'carzy', date: '2026-11-18', title: 'T', url: 'https://evil.example/a/' })).status, 400);
++  assertEquals((await call({ op: 'article_last', slug: 'ktech', date: '2026-11-18', title: 'T', url: 'https://ktech.my/a/' })).status, 404);
++  assertEquals((await call({ op: 'article_last', slug: 'nobody', date: '2026-11-18', title: 'T', url: 'https://x.my/a/' })).status, 404);
++  assertEquals((await call({ op: 'article_last', slug: 'carzy', date: '18-11-2026', title: 'T', url: 'https://carzyworld.com.my/a/' })).status, 400);
++  const r = await call({ op: 'article_last', slug: 'carzy', date: '2026-11-18', title: 'New article', url: 'https://www.carzyworld.com.my/articles/a/' });
++  assertEquals(r.status, 200);
++  assertEquals(Object.keys(updates.at(-1).d).sort(), ['article_last_built', 'article_last_title', 'article_last_url']);
++  assertEquals((await call({ op: 'drop_table' })).status, 400);
++});
+diff -ruN ctl-base/deno.lock ctl/deno.lock
+--- ctl-base/deno.lock	2026-11-17 22:38:28.808186886 +0000
++++ ctl/deno.lock	2026-11-17 22:38:52.219504586 +0000
+@@ -3,7 +3,8 @@
+   "specifiers": {
+     "jsr:@std/assert@*": "1.0.19",
+     "jsr:@std/assert@1": "1.0.19",
+-    "jsr:@std/internal@^1.0.12": "1.0.14"
++    "jsr:@std/internal@^1.0.12": "1.0.14",
++    "npm:@base44/sdk@0.8.44": "0.8.44"
+   },
+   "jsr": {
+     "@std/assert@1.0.19": {
+@@ -16,10 +17,222 @@
+       "integrity": "291516b3d4c35024d6ffbc0a9df5bf4c64116e05b50012cf846710152d2ffdf7"
+     }
+   },
++  "npm": {
++    "@base44/sdk@0.8.44": {
++      "integrity": "sha512-LcjNE6l56gVFgW8QSC2b8aMQuYU3OOq7pc5eUdzNx+6t6WpWGJyZ38owO1rhmODIvk/PF8lUBTeEJn2OjeL2hg==",
++      "dependencies": [
++        "axios",
++        "partysocket",
++        "socket.io-client",
++        "uuid"
++      ]
++    },
++    "@socket.io/component-emitter@3.1.2": {
++      "integrity": "sha512-9BCxFwvbGg/RsZK9tjXd8s4UcwR0MWeFQ1XEKIQVVvAGJyINdrqKMcTRyLoK8Rse1GjzLV9cwjWV1olXRWEXVA=="
++    },
++    "agent-base@6.0.2": {
++      "integrity": "sha512-RZNwNclF7+MS/8bDg70amg32dyeZGZxiDuQmZxKLAlQjr3jGyLx+4Kkk58UO7D2QdgFIQCovuSuZESne6RG6XQ==",
++      "dependencies": [
++        "debug"
++      ]
++    },
++    "asynckit@0.4.0": {
++      "integrity": "sha512-Oei9OH4tRh0YqU3GxhX79dM/mwVgvbZJaSNaRk+bshkj0S5cfHcgYakreBjrHwatXKbz+IoIdYLxrKim2MjW0Q=="
++    },
++    "axios@1.21.1": {
++      "integrity": "sha512-6eI5Q/Y4u/Um9dDlsRoq5pY2rxnUTv+L4PpLitnbk/i4jb3MxLZ5CsN5Ih3IysbeRYK4pR+P7qfMsOQl9fwwFQ==",
++      "dependencies": [
++        "follow-redirects",
++        "form-data",
++        "https-proxy-agent",
++        "proxy-from-env"
++      ]
++    },
++    "call-bind-apply-helpers@1.0.2": {
++      "integrity": "sha512-Sp1ablJ0ivDkSzjcaJdxEunN5/XvksFJ2sMBFfq6x0ryhQV/2b/KwFe21cMpmHtPOSij8K99/wSfoEuTObmuMQ==",
++      "dependencies": [
++        "es-errors",
++        "function-bind"
++      ]
++    },
++    "combined-stream@1.0.8": {
++      "integrity": "sha512-FQN4MRfuJeHf7cBbBMJFXhKSDq+2kAArBlmRBvcvFE5BB1HZKXtSFASDhdlz9zOYwxh8lDdnvmMOe/+5cdoEdg==",
++      "dependencies": [
++        "delayed-stream"
++      ]
++    },
++    "debug@4.4.3": {
++      "integrity": "sha512-RGwwWnwQvkVfavKVt22FGLw+xYSdzARwm0ru6DhTVA3umU5hZc28V3kO4stgYryrTlLpuvgI9GiijltAjNbcqA==",
++      "dependencies": [
++        "ms"
++      ]
++    },
++    "delayed-stream@1.0.0": {
++      "integrity": "sha512-ZySD7Nf91aLB0RxL4KGrKHBXl7Eds1DAmEdcoVawXnLD7SDhpNgtuII2aAkg7a7QS41jxPSZ17p4VdGnMHk3MQ=="
++    },
++    "dunder-proto@1.0.1": {
++      "integrity": "sha512-KIN/nDJBQRcXw0MLVhZE9iQHmG68qAVIBg9CqmUYjmQIhgij9U5MFvrqkUL5FbtyyzZuOeOt0zdeRe4UY7ct+A==",
++      "dependencies": [
++        "call-bind-apply-helpers",
++        "es-errors",
++        "gopd"
++      ]
++    },
++    "engine.io-client@6.6.8": {
++      "integrity": "sha512-DPN6+2uNi3A2cbSR3gqJepLVOnSQmbaJT4USgU+TgGPczEqLQT0i6t05jHrf4TT6rcxABrGp/1As0FyqwIZlGg==",
++      "dependencies": [
++        "@socket.io/component-emitter",
++        "debug",
++        "engine.io-parser",
++        "ws",
++        "xmlhttprequest-ssl"
++      ]
++    },
++    "engine.io-parser@5.2.3": {
++      "integrity": "sha512-HqD3yTBfnBxIrbnM1DoD6Pcq8NECnh8d4As1Qgh0z5Gg3jRRIqijury0CL3ghu/edArpUYiYqQiDUQBIs4np3Q=="
++    },
++    "es-define-property@1.0.1": {
++      "integrity": "sha512-e3nRfgfUZ4rNGL232gUgX06QNyyez04KdjFrF+LTRoOXmrOgFKDg4BCdsjW8EnT69eqdYGmRpJwiPVYNrCaW3g=="
++    },
++    "es-errors@1.3.0": {
++      "integrity": "sha512-Zf5H2Kxt2xjTvbJvP2ZWLEICxA6j+hAmMzIlypy4xcBg1vKVnx89Wy0GbS+kf5cwCVFFzdCFh2XSCFNULS6csw=="
++    },
++    "es-object-atoms@1.1.2": {
++      "integrity": "sha512-HWcBoN6NileqtSydK2FqHbS/LoDd2pqrnQHLyJzBj4kOp/ky2MWMN694xOfkK8/SnUsW2DH7EfyVlydKCsm1Zw==",
++      "dependencies": [
++        "es-errors"
++      ]
++    },
++    "es-set-tostringtag@2.1.0": {
++      "integrity": "sha512-j6vWzfrGVfyXxge+O0x5sh6cvxAog0a/4Rdd2K36zCMV5eJ+/+tOAngRO8cODMNWbVRdVlmGZQL2YS3yR8bIUA==",
++      "dependencies": [
++        "es-errors",
++        "get-intrinsic",
++        "has-tostringtag",
++        "hasown"
++      ]
++    },
++    "event-target-shim@6.0.2": {
++      "integrity": "sha512-8q3LsZjRezbFZ2PN+uP+Q7pnHUMmAOziU2vA2OwoFaKIXxlxl38IylhSSgUorWu/rf4er67w0ikBqjBFk/pomA=="
++    },
++    "follow-redirects@1.16.3": {
++      "integrity": "sha512-toOSoqN6d51Wjf1aOFJYcoVv1aND9rj/CwjLU0Vz40oDuSpWDayCeKe4JpL5NL0WdFvoOOCI3BRo69HahjbR1A=="
++    },
++    "form-data@4.0.6": {
++      "integrity": "sha512-vKatAh4SlVfgbv+YtmhiRjhEMJsYpsG1Y2rMQtR+SVSbytsSD1YGzDIcrAJmdFec88u/+VoGmxnl+80gL1tRCQ==",
++      "dependencies": [
++        "asynckit",
++        "combined-stream",
++        "es-set-tostringtag",
++        "hasown",
++        "mime-types"
++      ]
++    },
++    "function-bind@1.1.2": {
++      "integrity": "sha512-7XHNxH7qX9xG5mIwxkhumTox/MIRNcOgDrxWsMt2pAr23WHp6MrRlN7FBSFpCpr+oVO0F744iUgR82nJMfG2SA=="
++    },
++    "get-intrinsic@1.3.0": {
++      "integrity": "sha512-9fSjSaos/fRIVIp+xSJlE6lfwhES7LNtKaCBIamHsjr2na1BiABJPo0mOjjz8GJDURarmCPGqaiVg5mfjb98CQ==",
++      "dependencies": [
++        "call-bind-apply-helpers",
++        "es-define-property",
++        "es-errors",
++        "es-object-atoms",
++        "function-bind",
++        "get-proto",
++        "gopd",
++        "has-symbols",
++        "hasown",
++        "math-intrinsics"
++      ]
++    },
++    "get-proto@1.0.1": {
++      "integrity": "sha512-sTSfBjoXBp89JvIKIefqw7U2CCebsc74kiY6awiGogKtoSGbgjYE/G/+l9sF3MWFPNc9IcoOC4ODfKHfxFmp0g==",
++      "dependencies": [
++        "dunder-proto",
++        "es-object-atoms"
++      ]
++    },
++    "gopd@1.2.0": {
++      "integrity": "sha512-ZUKRh6/kUFoAiTAtTYPZJ3hw9wNxx+BIBOijnlG9PnrJsCcSjs1wyyD6vJpaYtgnzDrKYRSqf3OO6Rfa93xsRg=="
++    },
++    "has-symbols@1.1.0": {
++      "integrity": "sha512-1cDNdwJ2Jaohmb3sg4OmKaMBwuC48sYni5HUw2DvsC8LjGTLK9h+eb1X6RyuOHe4hT0ULCW68iomhjUoKUqlPQ=="
++    },
++    "has-tostringtag@1.0.2": {
++      "integrity": "sha512-NqADB8VjPFLM2V0VvHUewwwsw0ZWBaIdgo+ieHtK3hasLz4qeCRjYcqfB6AQrBggRKppKF8L52/VqdVsO47Dlw==",
++      "dependencies": [
++        "has-symbols"
++      ]
++    },
++    "hasown@2.0.4": {
++      "integrity": "sha512-T2UbfbBEF32wiepXIsMlTW9+dDYC6wMh/t/vYA4tuOMKqWz/n3vr1NFSxQiyP+zk2mXsoMA/i/7qV6LKut1t1A==",
++      "dependencies": [
++        "function-bind"
++      ]
++    },
++    "https-proxy-agent@5.0.1": {
++      "integrity": "sha512-dFcAjpTQFgoLMzC2VwU+C/CbS7uRL0lWmxDITmqm7C+7F0Odmj6s9l6alZc6AELXhrnggM2CeWSXHGOdX2YtwA==",
++      "dependencies": [
++        "agent-base",
++        "debug"
++      ]
++    },
++    "math-intrinsics@1.1.0": {
++      "integrity": "sha512-/IXtbwEk5HTPyEwyKX6hGkYXxM9nbj64B+ilVJnC/R6B0pH5G4V3b0pVbL7DBj4tkhBAppbQUlf6F6Xl9LHu1g=="
++    },
++    "mime-db@1.52.0": {
++      "integrity": "sha512-sPU4uV7dYlvtWJxwwxHD0PuihVNiE7TyAbQ5SWxDCB9mUYvOgroQOwYQQOKPJ8CIbE+1ETVlOoK1UC2nU3gYvg=="
++    },
++    "mime-types@2.1.35": {
++      "integrity": "sha512-ZDY+bPm5zTTF+YpCrAU9nK0UgICYPT0QtT1NZWFv4s++TNkcgVaT0g6+4R2uI4MjQjzysHB1zxuWL50hzaeXiw==",
++      "dependencies": [
++        "mime-db"
++      ]
++    },
++    "ms@2.1.3": {
++      "integrity": "sha512-6FlzubTLZG3J2a/NVCAleEhjzq5oxgHyaCU9yYXvcLsvoVaHJq/s5xXI6/XXP6tz7R9xAOtHnSO/tXtF3WRTlA=="
++    },
++    "partysocket@0.0.23": {
++      "integrity": "sha512-S43vtjJ///wvzxf0Pw8yD4HVGUDiJSmP1tJQjEzYUG6L7Id63+1CTcgZ0FXTy5BGHe8CuKNyO6bYd4LpOcy4QQ==",
++      "dependencies": [
++        "event-target-shim"
++      ]
++    },
++    "proxy-from-env@2.1.0": {
++      "integrity": "sha512-cJ+oHTW1VAEa8cJslgmUZrc+sjRKgAKl3Zyse6+PV38hZe/V6Z14TbCuXcan9F9ghlz4QrFr2c92TNF82UkYHA=="
++    },
++    "socket.io-client@4.8.4": {
++      "integrity": "sha512-7wjKAvVXYOJsbmUgkWbnhPD4bFpkqrUR0++XOjpGFmqDqsqV1CI93VTraeExLxpjxEqrWgFoSRZu1ihjLWfkAA==",
++      "dependencies": [
++        "@socket.io/component-emitter",
++        "debug",
++        "engine.io-client",
++        "socket.io-parser"
++      ]
++    },
++    "socket.io-parser@4.2.7": {
++      "integrity": "sha512-IH/iSeO9T6gz1KkFleGDWkG9N3dl4jXVYUtMhIqH10Md0ttMer8nUNWiP1DKuNrybD2xBrixLJdCC9J6ECoYkg==",
++      "dependencies": [
++        "@socket.io/component-emitter",
++        "debug"
++      ]
++    },
++    "uuid@13.0.2": {
++      "integrity": "sha512-vzi9uRZ926x4XV73S/4qQaTwPXM2JBj6/6lI/byHH1jOpCzb0zDbfytgA9LcN/hzb2l7WQSQnxITOVx5un/wGw==",
++      "bin": true
++    },
++    "ws@8.21.3": {
++      "integrity": "sha512-201TZ/kPWxoPr/OKWjquZR1SWKXcvxdH+e1xrx89b3YbmzLMFCLfnaG1HFIgWzJOEWZ7MvpK++odZufgYR50Rw=="
++    },
++    "xmlhttprequest-ssl@2.1.2": {
++      "integrity": "sha512-TEU+nJVUUnA4CYJFLvK5X9AOeH4KvDvhIfm0vV1GaQRtchnG0hgK5p8hw/xjv8cunWYCsiPCSDzObPyhEwq3KQ=="
++    }
++  },
+   "workspace": {
+     "packageJson": {
+       "dependencies": [
+-        "npm:@base44/sdk@~0.8.61",
++        "npm:@base44/sdk@~0.8.63",
+         "npm:@base44/vite-plugin@^1.0.52",
+         "npm:@eslint/js@^9.19.0",
+         "npm:@hello-pangea/dnd@17",

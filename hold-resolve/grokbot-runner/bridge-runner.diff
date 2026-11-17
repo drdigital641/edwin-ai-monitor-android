@@ -1,0 +1,861 @@
+diff -ruN '--exclude=node_modules' '--exclude=dist' runner-base/base44/entities/BridgeKey.jsonc runner/base44/entities/BridgeKey.jsonc
+--- runner-base/base44/entities/BridgeKey.jsonc	2026-11-17 22:30:59.730193567 +0000
++++ runner/base44/entities/BridgeKey.jsonc	2026-11-17 22:36:06.236474890 +0000
+@@ -26,11 +26,13 @@
+     },
+     "scope": {
+       "default": "full",
+-      "description": "full = all bridge tools (ChatGPT). overview = read-only overview for the Page One Controller, nothing else. site:<site> = that one website's automation may list, read and write its own files only. drop = a bot may only put files in the private drop folder and read drop status.",
++      "description": "full = all bridge tools (ChatGPT). overview = read-only overview for the Page One Controller, nothing else. site:<site> = that one website's automation may list, read and write its own files only. drop = a bot may only put files in the private drop folder and read drop status. needs = Grok Bot reads the needs-you list only. runner = grokbot-runner (18 Nov 2026): list/read/write live files of the named client sites (base sha256 required to replace), sitemap.xml + llms.txt rebuild, IndexNow, Controller Copy fix + tap reads, article_last update, article images; no deletes, .htaccess, credentials, DB, Bridge config or Publish.",
+       "enum": [
+         "full",
+         "overview",
+         "drop",
++        "needs",
++        "runner",
+         "site:cleanic",
+         "site:pageone"
+       ],
+diff -ruN '--exclude=node_modules' '--exclude=dist' runner-base/base44/entities/BridgeLog.jsonc runner/base44/entities/BridgeLog.jsonc
+--- runner-base/base44/entities/BridgeLog.jsonc	2026-11-17 22:30:59.730269460 +0000
++++ runner/base44/entities/BridgeLog.jsonc	2026-11-17 22:36:06.236571149 +0000
+@@ -7,7 +7,14 @@
+       "enum": [
+         "write",
+         "edit",
+-        "restore"
++        "restore",
++        "list",
++        "read",
++        "write_many",
++        "runner_sitemap",
++        "runner_indexnow",
++        "runner_controller",
++        "runner_image"
+       ],
+       "description": "Bridge operation"
+     },
+@@ -43,6 +50,10 @@
+     "duration_ms": {
+       "type": "number"
+     },
++    "label": {
++      "type": "string",
++      "description": "Who made the call when it was a named runner, e.g. grokbot-runner (every runner call is logged, allowed or refused)"
++    },
+     "detail": {
+       "type": "string",
+       "description": "JSON details for .htaccess writes: when, who, backup name, test URL results, rollback"
+diff -ruN '--exclude=node_modules' '--exclude=dist' runner-base/base44/functions/bridgeRunnerController/entry.ts runner/base44/functions/bridgeRunnerController/entry.ts
+--- runner-base/base44/functions/bridgeRunnerController/entry.ts	1970-01-01 00:00:00.000000000 +0000
++++ runner/base44/functions/bridgeRunnerController/entry.ts	2026-11-17 22:36:06.255299307 +0000
+@@ -0,0 +1,6 @@
++import { bridgeTool } from '../../shared/handler.ts';
++import { runnerController } from '../../shared/runner.ts';
++
++// GROKBOT RUNNER (18 Nov 2026): Page One Controller Copy fix issues and tap counts (read only) and the article_last_*
++// fields, through the Controller's signed runnerFeed. POST .../functions/bridgeRunnerController  body { op, ... }
++export default bridgeTool('runner_controller', (body, ctx) => runnerController(body, ctx), { needsSite: false });
+diff -ruN '--exclude=node_modules' '--exclude=dist' runner-base/base44/functions/bridgeRunnerIndexNow/entry.ts runner/base44/functions/bridgeRunnerIndexNow/entry.ts
+--- runner-base/base44/functions/bridgeRunnerIndexNow/entry.ts	1970-01-01 00:00:00.000000000 +0000
++++ runner/base44/functions/bridgeRunnerIndexNow/entry.ts	2026-11-17 22:36:06.250891742 +0000
+@@ -0,0 +1,6 @@
++import { bridgeTool } from '../../shared/handler.ts';
++import { runnerIndexNow } from '../../shared/runner.ts';
++
++// GROKBOT RUNNER (18 Nov 2026): IndexNow submit for URLs on the site's own domain(s). The Bridge reads the site's key
++// file on the server and never returns it. POST .../functions/bridgeRunnerIndexNow  body { site, urls: [..] }
++export default bridgeTool('runner_indexnow', (body) => runnerIndexNow(body));
+diff -ruN '--exclude=node_modules' '--exclude=dist' runner-base/base44/functions/bridgeRunnerSitemap/entry.ts runner/base44/functions/bridgeRunnerSitemap/entry.ts
+--- runner-base/base44/functions/bridgeRunnerSitemap/entry.ts	1970-01-01 00:00:00.000000000 +0000
++++ runner/base44/functions/bridgeRunnerSitemap/entry.ts	2026-11-17 22:36:06.246683270 +0000
+@@ -0,0 +1,6 @@
++import { bridgeTool } from '../../shared/handler.ts';
++import { runnerSitemap } from '../../shared/runner.ts';
++
++// GROKBOT RUNNER (18 Nov 2026): rebuild sitemap.xml + llms.txt for pages already on the site, then IndexNow for them.
++// POST https://blue-bridge-pilot.base44.app/functions/bridgeRunnerSitemap  body { site, paths: [..], dry_run? }
++export default bridgeTool('runner_sitemap', (body, ctx) => runnerSitemap(body, ctx));
+diff -ruN '--exclude=node_modules' '--exclude=dist' runner-base/base44/functions/generateArticleImage/entry.ts runner/base44/functions/generateArticleImage/entry.ts
+--- runner-base/base44/functions/generateArticleImage/entry.ts	1970-01-01 00:00:00.000000000 +0000
++++ runner/base44/functions/generateArticleImage/entry.ts	2026-11-17 22:36:06.259460468 +0000
+@@ -0,0 +1,6 @@
++import { bridgeTool } from '../../shared/handler.ts';
++import { generateArticleImage } from '../../shared/runnerImage.ts';
++
++// GROKBOT RUNNER (18 Nov 2026): one Base44 image -> hero, card and og:image files on Bluehost (new files only).
++// POST https://blue-bridge-pilot.base44.app/functions/generateArticleImage  body { site, slug, prompt, alt?, folder? }
++export default bridgeTool('runner_image', (body, ctx) => generateArticleImage(body, ctx), { logs: true });
+diff -ruN '--exclude=node_modules' '--exclude=dist' runner-base/base44/shared/autoSitemapRun.ts runner/base44/shared/autoSitemapRun.ts
+--- runner-base/base44/shared/autoSitemapRun.ts	2026-11-17 22:30:59.733341068 +0000
++++ runner/base44/shared/autoSitemapRun.ts	2026-11-17 22:36:06.236361663 +0000
+@@ -70,7 +70,7 @@
+ 
+ const sgDate = () => new Date(Date.now() + 8 * 3600_000).toISOString().slice(0, 10);
+ 
+-async function findIndexNowKey(site: string, prefix: string): Promise<string | null> {
++export async function findIndexNowKey(site: string, prefix: string): Promise<string | null> {
+   try {
+     const listing = await listDir(site, prefix.replace(/\/$/, ''));
+     const names = (listing.entries as any[]).filter((e) => e.type === 'file' && /^[0-9a-f]{32}\.txt$/.test(e.name)).map((e) => e.name as string).slice(0, 3);
+@@ -82,7 +82,7 @@
+   return null;
+ }
+ 
+-async function sendIndexNow(host: string, key: string, urls: string[]) {
++export async function sendIndexNow(host: string, key: string, urls: string[]) {
+   const urlList = urls.slice(0, INDEXNOW_MAX_URLS);
+   try {
+     const res = await fetch('https://api.indexnow.org/indexnow', {
+diff -ruN '--exclude=node_modules' '--exclude=dist' runner-base/base44/shared/handler.ts runner/base44/shared/handler.ts
+--- runner-base/base44/shared/handler.ts	2026-11-17 22:30:59.734125677 +0000
++++ runner/base44/shared/handler.ts	2026-11-17 22:36:06.235979801 +0000
+@@ -4,6 +4,7 @@
+ import { assertNotClaimed, KEY_ACTOR_EMAIL, type Agent } from './sync.ts';
+ import { storedKeyInfo, type KeyScope } from './keys.ts';
+ import { addNeedsYou } from './needsYou.ts';
++import { RUNNER_KEY_ACTIONS, RUNNER_SITES, RUNNER_LABEL, RUNNER_ACTOR_EMAIL } from './runner.ts';
+ 
+ const MAX_BODY = 8_000_000;
+ 
+@@ -16,6 +17,8 @@
+ // NEEDS YOU (15 Nov 2026): a "needs" key (Grok Bot) may only read the needs-you list.
+ const NEEDS_ACTOR = { email: 'grokbot (needs key)', role: 'admin' };
+ const NEEDS_KEY_ACTIONS = new Set(['needs_read']);
++// GROKBOT RUNNER (18 Nov 2026): the runner key (scope 'runner') may run RUNNER_KEY_ACTIONS on RUNNER_SITES only (runner.ts).
++const RUNNER_ACTOR = { email: RUNNER_ACTOR_EMAIL, role: 'admin' };
+ 
+ // The only action an overview key may run.
+ const OVERVIEW_ACTIONS = new Set(['overview']);
+@@ -76,6 +79,7 @@
+         const info = await keyScope(base44, key);
+         const deny = async (reason: string, status: number, extra: Record<string, unknown> = {}) => {
+           await authLog(base44, { endpoint: action, allowed: false, reason, source, ...extra });
++          if (info?.scope === 'runner') await runnerLog(base44, action, false, reason, started);
+           return Response.json({ ok: false, error: reason }, { status });
+         };
+         if (!info) return await deny('Invalid API key', 401, { key_type: 'none' });
+@@ -89,6 +93,9 @@
+         if (scope === 'needs' && !NEEDS_KEY_ACTIONS.has(action)) {
+           return await deny('This key can only read the needs-you list', 403, authMeta);
+         }
++        if (scope === 'runner' && !RUNNER_KEY_ACTIONS.has(action)) {
++          return await deny('The runner key cannot use this tool (allowed: list, read, write, write_many, sitemap, IndexNow, Controller reads, article image)', 403, authMeta);
++        }
+         if (scope.startsWith('site:')) {
+           if (!SITE_KEY_ACTIONS.has(action)) return await deny('This key can only list, read and write files', 403, authMeta);
+           siteOnly = scope.slice(5);
+@@ -96,6 +103,8 @@
+         } else if (scope === 'drop') {
+           dropKey = info.label;
+           user = { email: 'bot drop key: ' + info.label, role: 'admin' };
++        } else if (scope === 'runner') {
++          user = RUNNER_ACTOR;
+         } else {
+           user = scope === 'overview' ? OVERVIEW_ACTOR : scope === 'needs' ? NEEDS_ACTOR : KEY_ACTOR;
+         }
+@@ -112,21 +121,22 @@
+       if (opts.needsSite !== false) body.site = assertSite(body.site);
+       authMeta.site = body?.site || null;
+       if (siteOnly && body.site !== siteOnly) throw new BridgeError('This key only works for the ' + siteOnly + ' site', 403);
++      if (user === RUNNER_ACTOR && opts.needsSite !== false && !RUNNER_SITES.includes(body.site)) throw new BridgeError('The runner key does not work for site ' + body.site, 403);
+       // A site key belongs to neither AI, so it respects both AIs' claims.
+-      const agent = (user === KEY_ACTOR ? 'chatgpt' : siteOnly || dropKey ? 'automation' : 'claude') as Agent;
++      const agent = (user === KEY_ACTOR ? 'chatgpt' : siteOnly || dropKey || user === RUNNER_ACTOR ? 'automation' : 'claude') as Agent;
+       if (CHANGES.has(action)) await assertNotClaimed(base44, agent, body.site, body.path);
+-      const viaKey = user === KEY_ACTOR || user === OVERVIEW_ACTOR || user === NEEDS_ACTOR || Boolean(siteOnly) || Boolean(dropKey);
++      const viaKey = user === KEY_ACTOR || user === OVERVIEW_ACTOR || user === NEEDS_ACTOR || user === RUNNER_ACTOR || Boolean(siteOnly) || Boolean(dropKey);
+       await authLog(base44, { endpoint: action, allowed: true, ...authMeta });
+       authMeta.__ran = true; // errors after this point are not auth denials
+       const allSites = user === KEY_ACTOR || (key === null && user?.role === 'admin');
+       const result = await run(body, { base44, agent, viaKey, email: user?.email || null, keyLabel: dropKey, siteOnly, allSites });
+-      if (opts.logs) await audit(base44, user, action, body, true, result, null, started);
++      if (opts.logs || user === RUNNER_ACTOR) await audit(base44, user, action, body, true, result, null, started);
+       return Response.json({ ok: true, ...result }, { headers: { 'Cache-Control': 'no-store' } });
+     } catch (error) {
+       const status = error instanceof BridgeError ? error.status : (error as any)?.status || 500;
+       const message = error instanceof Error ? error.message : String(error);
+       if (base44 && !authMeta.__ran && (status === 401 || status === 403)) await authLog(base44, { endpoint: action, allowed: false, reason: message.slice(0, 200), ...authMeta });
+-      if (opts.logs && base44 && user) await audit(base44, user, action, body, false, null, message, started);
++      if ((opts.logs || user === RUNNER_ACTOR) && base44 && user) await audit(base44, user, action, body, false, null, message, started);
+       // CTA TAP GATE (Edwin 16 Nov 2026): a page refused for missing its tap tracker sends ONE blocked alert (duplicates are
+       // dropped by needs_you itself). Best-effort: the refusal is returned to the caller either way.
+       if (base44 && /CTA GATE refused/.test(message)) {
+@@ -148,6 +158,24 @@
+       backup_id: result?.backupId || body?.backup_id || null,
+       before_sha256: result?.beforeSha256 || null, after_sha256: result?.afterSha256 || null,
+       error, actor: user?.email || null, duration_ms: Date.now() - started,
++      ...(user?.email === RUNNER_ACTOR_EMAIL ? { label: RUNNER_LABEL, detail: runnerDetail(body) } : {}),
+     });
+   } catch { /* logging must never block a verified write result */ }
+ }
++
++// What a runner call asked for, without file contents, prompts or keys (counts and short ids only).
++function runnerDetail(body: any): string {
++  const d: Record<string, unknown> = {};
++  if (typeof body?.op === 'string') d.op = body.op.slice(0, 20);
++  if (typeof body?.slug === 'string') d.slug = body.slug.slice(0, 80);
++  for (const k of ['paths', 'urls', 'files']) if (Array.isArray(body?.[k])) d[k] = body[k].length;
++  if (body?.dry_run === true) d.dry_run = true;
++  return JSON.stringify(d);
++}
++
++// BridgeLog row for a runner call refused before it ran (wrong tool or session-only tool).
++async function runnerLog(base44: any, action: string, ok: boolean, error: string, started: number) {
++  try {
++    await base44.asServiceRole.entities.BridgeLog.create({ action, ok, error: error.slice(0, 300), actor: RUNNER_ACTOR_EMAIL, label: RUNNER_LABEL, duration_ms: Date.now() - started });
++  } catch { /* never block a refusal */ }
++}
+diff -ruN '--exclude=node_modules' '--exclude=dist' runner-base/base44/shared/heroImage.ts runner/base44/shared/heroImage.ts
+--- runner-base/base44/shared/heroImage.ts	2026-11-17 22:30:59.734179538 +0000
++++ runner/base44/shared/heroImage.ts	2026-11-17 22:36:06.236228694 +0000
+@@ -22,7 +22,7 @@
+   suffix?: string;
+ };
+ 
+-const NO_TEXT = 'No text, no letters, no numbers, no signage, no logos, no brand names, no watermark, no readable screens or labels. No close-up faces or identifiable real people. Not a before-and-after comparison.';
++export const NO_TEXT = 'No text, no letters, no numbers, no signage, no logos, no brand names, no watermark, no readable screens or labels. No close-up faces or identifiable real people. Not a before-and-after comparison.';
+ 
+ const SITE_RULES: Record<string, Rule> = {
+   // Page One: the Controller Article.hero_image is fetched by the Bridge publisher from ANY https URL, written to
+@@ -80,13 +80,13 @@
+ 
+ const CLAIM_ALT = /\b(our (client|customer|team|technician|job|work)|real (job|photo|customer)|actual (job|customer)|before and after|testimonial)\b/i;
+ 
+-function sgtNow() {
++export function sgtNow() {
+   const p = Object.fromEntries(new Intl.DateTimeFormat('en-GB', { timeZone: 'Asia/Singapore', year: 'numeric', month: '2-digit', day: '2-digit' })
+     .formatToParts(new Date()).filter((x) => x.type !== 'literal').map((x) => [x.type, x.value]));
+   return { y: p.year, m: p.month, d: p.day, date: `${p.year}-${p.month}-${p.day}` };
+ }
+ 
+-async function base44Image(base44: any, prompt: string, landscape: boolean): Promise<string> {
++export async function base44Image(base44: any, prompt: string, landscape: boolean): Promise<string> {
+   let out: any;
+   try {
+     out = await base44.asServiceRole.integrations.Core.GenerateImage({ prompt: `${prompt}${landscape ? ' Wide landscape composition (3:2).' : ''}` });
+@@ -119,7 +119,7 @@
+   return null;
+ }
+ 
+-async function fetchImage(url: string): Promise<Img> {
++export async function fetchImage(url: string): Promise<Img> {
+   const res = await fetch(url, { signal: AbortSignal.timeout(60_000) });
+   if (!res.ok) throw new BridgeError('generated image fetch HTTP ' + res.status, 502);
+   const b = new Uint8Array(await res.arrayBuffer());
+@@ -129,12 +129,12 @@
+   return img;
+ }
+ 
+-async function readState(base44: any, key: string): Promise<any | null> {
++export async function readState(base44: any, key: string): Promise<any | null> {
+   const rows = await base44.asServiceRole.entities[STATE_ENTITY].filter({ key }, '-created_date', 1).catch(() => []);
+   if (!rows?.[0]) return null;
+   try { return { id: rows[0].id, ...JSON.parse(rows[0].value || '{}') }; } catch { return null; }
+ }
+-async function writeState(base44: any, key: string, prev: any | null, value: any) {
++export async function writeState(base44: any, key: string, prev: any | null, value: any) {
+   const E = base44.asServiceRole.entities[STATE_ENTITY];
+   const { id: _id, ...clean } = value;
+   if (prev?.id) await E.update(prev.id, { value: JSON.stringify(clean) });
+diff -ruN '--exclude=node_modules' '--exclude=dist' runner-base/base44/shared/keys.ts runner/base44/shared/keys.ts
+--- runner-base/base44/shared/keys.ts	2026-11-17 22:30:59.734316567 +0000
++++ runner/base44/shared/keys.ts	2026-11-17 22:36:06.235721637 +0000
+@@ -15,12 +15,14 @@
+ // list, read and write files of that one site.
+ // 'drop': a bot's key for the drop folder only (drop_put + drop_status), see drops.ts.
+ // 'needs': Grok Bot, read the needs-you list only (15 Nov 2026).
+-export type KeyScope = 'full' | 'overview' | 'drop' | 'needs' | `site:${string}`;
++// 'runner': the Grok Bot API runner (18 Nov 2026), named client sites only, see runner.ts.
++export type KeyScope = 'full' | 'overview' | 'drop' | 'needs' | 'runner' | `site:${string}`;
+ 
+ function scopeOf(raw: unknown): KeyScope {
+   if (raw === 'overview') return 'overview';
+   if (raw === 'needs') return 'needs';
+   if (raw === 'drop') return 'drop';
++  if (raw === 'runner') return 'runner';
+   if (typeof raw === 'string' && raw.startsWith('site:') && Object.hasOwn(SITES, raw.slice(5))) return raw as KeyScope;
+   return 'full';
+ }
+@@ -59,7 +61,7 @@
+     const key = newKey();
+     if (typeof body.scope === 'string' && body.scope.startsWith('site:') && !Object.hasOwn(SITES, body.scope.slice(5))) throw new BridgeError('Unknown site in scope');
+     const scope: KeyScope = scopeOf(body.scope);
+-    const fallback = scope === 'overview' ? 'Page One Controller' : scope === 'full' ? 'ChatGPT' : scope === 'drop' ? 'Bot drop key' : scope === 'needs' ? 'Grok Bot (needs list, read only)' : scope.slice(5) + ' automation';
++    const fallback = scope === 'overview' ? 'Page One Controller' : scope === 'full' ? 'ChatGPT' : scope === 'drop' ? 'Bot drop key' : scope === 'needs' ? 'Grok Bot (needs list, read only)' : scope === 'runner' ? 'grokbot-runner' : scope.slice(5) + ' automation';
+     const label = typeof body.label === 'string' && body.label.trim() ? body.label.trim().slice(0, 80) : fallback;
+     const row = await db(base44).BridgeKey.create({ label, scope, key_hash: await keyHash(key), last4: key.slice(-4), active: true, created_by: actorEmail });
+     return { key, key_info: view(row || { label, scope, last4: key.slice(-4), active: true }) };
+diff -ruN '--exclude=node_modules' '--exclude=dist' runner-base/base44/shared/runner.ts runner/base44/shared/runner.ts
+--- runner-base/base44/shared/runner.ts	1970-01-01 00:00:00.000000000 +0000
++++ runner/base44/shared/runner.ts	2026-11-17 22:36:06.242176767 +0000
+@@ -0,0 +1,110 @@
++// GROKBOT RUNNER KEY (Edwin 18 Nov 2026, brief "Bridge runner key + image function"): routine jobs (midnight articles,
++// 5am Copy fix sweep, sgcarworkshop sweep, daily builds, IndexNow resends, area pages) move to an API runner on the
++// Grok Bot box. Every Bluehost read and write still goes through the Bridge, with key scope 'runner':
++//   - list / read live files, write_file / write_files (the base sha256 compare-and-swap, verified backup and live
++//     guard of writeFile apply as for every caller), sitemap.xml + llms.txt rebuild, IndexNow submit (the key file is
++//     found on the server and never returned), Controller Copy fix issues + tap counts (read only), the Controller
++//     article_last_* fields, and generateArticleImage (Base44 image -> hero, card and og:image files on Bluehost).
++//   - NOT: deletes, .htaccess (the htaccess tool is session-only), credentials (secret names/content are refused by
++//     writeFile), the database, Bridge config, keys, restore, sync, drops, needs-you, Base44 Publish.
++//   - Only the sites named in RUNNER_SITES. Cleanic and ContiExpert stay frozen (articles only) through the live guard.
++//   - Every runner call (allowed or refused) gets a BridgeLog row with label 'grokbot-runner'.
++import { SITES } from './bridgeConfig.ts';
++import { AUTO_SITEMAP_CLIENT_FOLDERS } from './liveGuard.ts';
++import { BridgeError, normalizeRel } from './bridgeOps.ts';
++import { autoSitemapAfter, findIndexNowKey, sendIndexNow } from './autoSitemapRun.ts';
++import { INDEXNOW_MAX_URLS } from './autoSitemap.ts';
++import { signedControllerCall } from './crawlerLogs.ts';
++
++export const RUNNER_LABEL = 'grokbot-runner';
++export const RUNNER_ACTOR_EMAIL = 'grokbot-runner (runner key)';
++
++// Named client sites (Edwin 18 Nov 2026). A site added to SITES later does NOT join the runner until it is named here.
++// 'pageone' covers pageonesingapore.com and the client folders under preview/ (ContiExpert = preview/contiexpert/,
++// frozen: articles only, enforced by the live guard for every caller).
++export const RUNNER_SITES: readonly string[] = Object.freeze([
++  'sggarage', 'cleanic', 'alicia', 'danny', 'sofacare', 'pageone', 'ktech', 'benzworld', 'lilian', 'carzy',
++  'hybridworld', 'autoseo', 'ecumats', 'apcar', 'jayven', 'urbaneco', 'snapsg',
++]);
++
++// Bridge actions the runner key may run. 'list'/'read' = bridgeListLive/bridgeList and bridgeReadLive/bridgeRead,
++// 'write' = bridgeWrite, 'write_many' = bridgeWriteMany. bridgeHtaccess also says 'write' but is session-only, which is
++// checked before the scope, so a key can never reach it.
++export const RUNNER_KEY_ACTIONS: ReadonlySet<string> = new Set([
++  'list', 'read', 'write', 'write_many', 'runner_sitemap', 'runner_indexnow', 'runner_controller', 'runner_image',
++]);
++
++const bare = (h: string) => h.toLowerCase().replace(/^www\./, '');
++
++// sitemap.xml + llms.txt rebuild for pages already on the server (e.g. after a write whose autoSitemap step failed,
++// or a resend). Same code as the step that runs after every write: merges only, never drops a URL, writes through
++// writeFile (base sha, backup, live guard, HOLD), then sends IndexNow for those pages.
++export async function runnerSitemap(body: any, ctx: { base44: any }) {
++  const list = Array.isArray(body?.paths) ? body.paths : [];
++  if (!list.length || list.length > 20) throw new BridgeError('paths must list 1-20 .html pages already on the site', 400);
++  const paths = list.map((p: unknown) => normalizeRel(p));
++  const bad = paths.find((p: string) => !/\.html?$/i.test(p));
++  if (bad) throw new BridgeError('only .html pages: ' + bad, 400);
++  return { site: body.site, paths, autoSitemap: await autoSitemapAfter({ site: body.site, written: paths.map((path: string) => ({ path })), dryRun: body?.dry_run === true, base44: ctx.base44 }) };
++}
++
++// Where a site's IndexNow key file lives: the site root, or (pageone) the client folder whose domain the URL is on.
++export function indexNowGroups(site: string): { prefix: string; domain: string }[] {
++  if (!(site in SITES)) return [];
++  if (site !== 'pageone') return [{ prefix: '', domain: SITES[site as keyof typeof SITES].domain }];
++  return [{ prefix: '', domain: SITES.pageone.domain },
++    ...Object.entries(AUTO_SITEMAP_CLIENT_FOLDERS).map(([f, d]) => ({ prefix: 'preview/' + f + '/', domain: d }))];
++}
++
++// IndexNow submit. The Bridge finds the site's key file on the server (a 32-hex .txt whose content is its own name)
++// and sends it to api.indexnow.org; the key is never returned or logged. URLs must be https on that site's own domain.
++export async function runnerIndexNow(body: any) {
++  const site = String(body?.site || '');
++  const urls = Array.isArray(body?.urls) ? body.urls.map((u: unknown) => String(u || '').trim()) : [];
++  if (!urls.length || urls.length > INDEXNOW_MAX_URLS) throw new BridgeError('urls must list 1-' + INDEXNOW_MAX_URLS + ' https URLs', 400);
++  const groups = indexNowGroups(site);
++  const byGroup = new Map<string, { prefix: string; host: string; urls: string[] }>();
++  for (const u of urls) {
++    let url: URL;
++    try { url = new URL(u); } catch { throw new BridgeError('not a URL: ' + u.slice(0, 120), 400); }
++    if (url.protocol !== 'https:' || url.username || url.password || url.port) throw new BridgeError('URL must be plain https: ' + u.slice(0, 120), 400);
++    const g = groups.find((x) => bare(x.domain) === bare(url.hostname));
++    if (!g) throw new BridgeError('URL is not on a domain of site ' + site + ': ' + u.slice(0, 120), 403);
++    const k = g.prefix + '|' + url.hostname.toLowerCase();
++    const cur = byGroup.get(k) || { prefix: g.prefix, host: url.hostname.toLowerCase(), urls: [] };
++    if (!cur.urls.includes(url.href)) cur.urls.push(url.href);
++    byGroup.set(k, cur);
++  }
++  const results: any[] = [];
++  for (const g of byGroup.values()) {
++    const key = await findIndexNowKey(site, g.prefix);
++    if (!key) { results.push({ host: g.host, status: 'skipped', reason: 'no IndexNow key file in the site folder', urls: g.urls.length }); continue; }
++    results.push({ host: g.host, ...(await sendIndexNow(g.host, key, g.urls)) });
++  }
++  const st = (s: string) => results.some((r) => r.status === s);
++  return { site, status: st('error') ? 'error' : st('sent') ? (st('skipped') ? 'partial' : 'sent') : 'skipped', results };
++}
++
++// Controller reads and the article_last_* update, through the Controller's runnerFeed function (signed with the
++// Bridge's pinned key, like articleFeed; the Controller app is private and the apps share no secret).
++export async function runnerController(body: any, ctx: { base44: any }) {
++  const op = String(body?.op || '');
++  if (!['copy_fix', 'taps', 'article_last'].includes(op)) throw new BridgeError('op must be copy_fix, taps or article_last', 400);
++  const clip = (v: unknown, n: number) => String(v ?? '').replace(/[\u0000-\u001f\u007f]/g, ' ').trim().slice(0, n);
++  const payload: Record<string, unknown> = { purpose: 'grokbot_runner', op };
++  if (op === 'article_last') {
++    payload.slug = clip(body?.slug, 80); payload.date = clip(body?.date, 10); payload.title = clip(body?.title, 200); payload.url = clip(body?.url, 400);
++    if (!/^[a-z0-9][a-z0-9-]{1,79}$/.test(String(payload.slug))) throw new BridgeError('slug must be the Controller client slug', 400);
++    if (!/^\d{4}-\d{2}-\d{2}$/.test(String(payload.date))) throw new BridgeError('date must be YYYY-MM-DD (SGT)', 400);
++    if (!payload.title) throw new BridgeError('title is required', 400);
++    if (!/^https:\/\//.test(String(payload.url))) throw new BridgeError('url must be https', 400);
++  } else if (body?.site !== undefined && body?.site !== null && body?.site !== '') {
++    payload.site = clip(body.site, 80);
++  }
++  let out: any;
++  try { out = await signedControllerCall(ctx.base44, 'runnerFeed', payload, 90_000); }
++  catch (e) { throw new BridgeError(String(e instanceof Error ? e.message : e).slice(0, 300), 502); }
++  if (!out || out.ok !== true) throw new BridgeError('Controller: ' + String(out?.error || 'no answer').slice(0, 200), 502);
++  const { ok: _ok, ...rest } = out;
++  return { op, ...rest };
++}
+diff -ruN '--exclude=node_modules' '--exclude=dist' runner-base/base44/shared/runnerImage.ts runner/base44/shared/runnerImage.ts
+--- runner-base/base44/shared/runnerImage.ts	1970-01-01 00:00:00.000000000 +0000
++++ runner/base44/shared/runnerImage.ts	2026-11-17 22:36:06.242239405 +0000
+@@ -0,0 +1,123 @@
++// generateArticleImage (Edwin 18 Nov 2026, Grok Bot runner brief): one Base44 image per article (Base44 makes every image),
++// placed on Bluehost through the Bridge as three files next to each other in the site's article image folder:
++//   <slug>.webp      hero  1536x1024 (3:2)
++//   <slug>-card.webp card  768x512   (3:2)
++//   <slug>-og.jpg    og:image / twitter:image 1200x630 (JPEG for the widest link-preview support)
++// Each file is NEW and written by writeFile (HOLD, live guard, frozen-site rule, verify). An existing file is never
++// replaced: a second call for the same site+folder+slug returns the saved result (cached) and makes no new image.
++// Same daily limits as hero_image (shared counters): 3 per site and 40 in total per Singapore day.
++// If the resize library cannot load, the original image is written once as <slug>.<ext> and all three URLs point to it
++// (warning returned), so an article is never blocked by the resizer.
++import { BridgeError, liveUrl, writeFile } from './bridgeOps.ts';
++import { base44Image, fetchImage, readState, writeState, sgtNow, NO_TEXT } from './heroImage.ts';
++
++const STATE_ENTITY = 'PageOnePublishState';
++const LIMIT_PER_SITE_PER_DAY = 3;
++const LIMIT_TOTAL_PER_DAY = 40;
++const FOLDER_RE = /^[a-z0-9][a-z0-9_-]*(\/[a-z0-9][a-z0-9_-]*){0,5}$/;
++const FOLDER_END = /(^|\/)(images|img|assets|uploads|articles|media|hero)$/;
++const STYLE = 'Photorealistic editorial photo for a Singapore or Malaysia local-business article, realistic everyday setting that matches the scene.';
++const PROMPT_BAN = /\b(our (client|customer|team|technician|shop|workshop)|testimonial|before and after|logo|certified|licensed|guarantee|award)\b|\$\s?\d|RM\s?\d/i;
++const CLAIM_ALT = /\b(our (client|customer|team|technician|job|work)|real (job|photo|customer)|actual (job|customer)|before and after|testimonial)\b/i;
++
++// Default article image folder per site when the caller sends none. Cleanic is WordPress: dated uploads folder.
++function defaultFolder(site: string, y: string, m: string): string {
++  if (site === 'cleanic') return `wp-content/uploads/${y}/${m}`;
++  if (site === 'alicia') return 'assets/articles';
++  return 'images/articles';
++}
++
++// The public URL: a pageone client folder is served on the client's own domain (preview/<folder>/ -> https://<domain>/).
++async function publicUrl(site: string, rel: string): Promise<string> {
++  if (site === 'pageone') {
++    const m = /^preview\/([a-z0-9-]+)\/(.+)$/.exec(rel);
++    if (m) {
++      const { AUTO_SITEMAP_CLIENT_FOLDERS } = await import('./liveGuard.ts');
++      const d = (AUTO_SITEMAP_CLIENT_FOLDERS as Record<string, string>)[m[1]];
++      if (d) return 'https://' + d + '/' + m[2];
++    }
++  }
++  return liveUrl(site, rel);
++}
++
++async function counts(base44: any, date: string, site: string) {
++  const rows = await base44.asServiceRole.entities[STATE_ENTITY].list('-created_date', 400).catch(() => []);
++  let total = 0, perSite = 0;
++  for (const r of rows || []) {
++    const k = String(r.key || '');
++    if (!k.startsWith('hero:')) continue;
++    let v: any = {}; try { v = JSON.parse(r.value || '{}'); } catch { /* ignore */ }
++    if (v.generated_on !== date) continue;
++    total++; if (k.startsWith('hero:' + site + ':')) perSite++;
++  }
++  return { total, perSite };
++}
++
++type Out = { kind: 'hero' | 'card' | 'og'; rel: string; bytes: Uint8Array; w: number; h: number; format: string };
++
++async function variants(src: Uint8Array, base: string, ext: string): Promise<{ files: Out[]; warning?: string }> {
++  try {
++    const { Image } = await import('npm:imagescript@1.3.0');
++    const img: any = await Image.decode(src);
++    const make = async (w: number, h: number, as: 'webp' | 'jpg', q: number) => {
++      const c = img.clone().cover(w, h);
++      return as === 'webp' ? await c.encodeWEBP(q) : await c.encodeJPEG(q);
++    };
++    return { files: [
++      { kind: 'hero', rel: base + '.webp', bytes: await make(1536, 1024, 'webp', 80), w: 1536, h: 1024, format: 'webp' },
++      { kind: 'card', rel: base + '-card.webp', bytes: await make(768, 512, 'webp', 78), w: 768, h: 512, format: 'webp' },
++      { kind: 'og', rel: base + '-og.jpg', bytes: await make(1200, 630, 'jpg', 84), w: 1200, h: 630, format: 'jpg' },
++    ] };
++  } catch (e) {
++    const msg = (e instanceof Error ? e.message : String(e)).slice(0, 120);
++    return { files: [{ kind: 'hero', rel: base + '.' + ext, bytes: src, w: 0, h: 0, format: ext }], warning: 'resize unavailable (' + msg + '): one original file is used for hero, card and og:image' };
++  }
++}
++
++// body: { site, slug, prompt, alt?, folder?, landscape? }
++export async function generateArticleImage(body: any, ctx: { base44: any }) {
++  const { base44 } = ctx;
++  const site = String(body?.site || '');
++  const now = sgtNow();
++  const slug = String(body?.slug || '');
++  if (!/^[a-z0-9][a-z0-9-]{2,79}$/.test(slug)) throw new BridgeError('slug must be lowercase-hyphen, 3-80 chars', 400);
++  const sent = typeof body?.folder === 'string' ? body.folder.trim().replace(/^\/+|\/+$/g, '') : '';
++  if (sent && (sent.includes('..') || !FOLDER_RE.test(sent) || !FOLDER_END.test(sent))) throw new BridgeError('folder must be a lowercase site folder ending in images, img, assets, uploads, articles, media or hero (e.g. images/articles or preview/aivs/images/articles)', 400);
++  if (site === 'pageone' && sent && sent.startsWith('preview/') && !/^preview\/[a-z0-9-]+\//.test(sent)) throw new BridgeError('folder under preview/ must name the client folder', 400);
++  const folder = sent || defaultFolder(site, now.y, now.m);
++  const prompt = String(body?.prompt || '').replace(/\s+/g, ' ').trim();
++  if (prompt.length < 20 || prompt.length > 400) throw new BridgeError('prompt must be 20-400 characters: describe the picture, not the article', 400);
++  if (PROMPT_BAN.test(prompt)) throw new BridgeError(`prompt contains something not allowed (${String(prompt.match(PROMPT_BAN)?.[0])}). Describe a plain scene.`, 400);
++  let alt = String(body?.alt || '').replace(/\s+/g, ' ').trim();
++  if (!alt) { alt = 'Illustrative photo: ' + prompt; if (alt.length > 125) alt = alt.slice(0, 125).replace(/\s+\S*$/, ''); }
++  if (alt.length < 20 || alt.length > 125) throw new BridgeError('alt must be 20-125 characters', 400);
++  if (!alt.toLowerCase().startsWith('illustrative')) throw new BridgeError('alt must start with "Illustrative" (AI picture on a real business site)', 400);
++  if (CLAIM_ALT.test(alt)) throw new BridgeError('alt must not claim a real job, client or team', 400);
++
++  const key = `hero:${site}:runner:${folder}:${slug}`;
++  const prev = await readState(base44, key);
++  if (prev?.stage === 'done') return { ...prev.result, cached: true };
++
++  let gatewayUrl = prev?.stage === 'generated' ? String(prev.gateway_url || '') : '';
++  if (!gatewayUrl) {
++    const c = await counts(base44, now.date, site);
++    if (c.total >= LIMIT_TOTAL_PER_DAY || c.perSite >= LIMIT_PER_SITE_PER_DAY) throw new BridgeError(`daily article image limit reached (${c.perSite} for ${site}, ${c.total} in total today)`, 429);
++    gatewayUrl = await base44Image(base44, `${STYLE} Scene: ${prompt}. Photorealistic, natural light, high detail. ${NO_TEXT}`, body?.landscape !== false);
++    // Saved at once so a retry after a hosting failure does not pay for a second image.
++    await writeState(base44, key, prev, { stage: 'generated', gateway_url: gatewayUrl, generated_on: now.date, scene: prompt });
++  }
++  const img = await fetchImage(gatewayUrl);
++  const { files, warning } = await variants(img.bytes, folder + '/' + slug, img.ext);
++  const placed: Record<string, any> = {};
++  for (const f of files) {
++    const r: any = await writeFile(site, f.rel, f.bytes, undefined);
++    if (!r?.saved && !r?.unchanged) throw new BridgeError('could not write ' + f.rel, 502);
++    placed[f.kind] = { url: await publicUrl(site, f.rel), path: '/' + f.rel, width: f.w || img.w || null, height: f.h || img.h || null, format: f.format, bytes: f.bytes.length };
++  }
++  if (!placed.card) placed.card = placed.hero;
++  if (!placed.og) placed.og = placed.hero;
++  const result = { site, folder, slug, alt, hero_url: placed.hero.url, card_url: placed.card.url, og_image_url: placed.og.url,
++    files: placed, generated_on: now.date, model: 'Base44 GenerateImage', warnings: warning ? [warning] : [] };
++  await writeState(base44, key, await readState(base44, key), { stage: 'done', gateway_url: gatewayUrl, generated_on: now.date, scene: prompt, result });
++  return { ...result, cached: false };
++}
+diff -ruN '--exclude=node_modules' '--exclude=dist' runner-base/deno.lock runner/deno.lock
+--- runner-base/deno.lock	2026-11-17 22:30:59.735251788 +0000
++++ runner/deno.lock	2026-11-17 22:36:25.098395509 +0000
+@@ -3,7 +3,8 @@
+   "specifiers": {
+     "jsr:@std/assert@*": "1.0.19",
+     "jsr:@std/assert@1": "1.0.19",
+-    "jsr:@std/internal@^1.0.12": "1.0.14"
++    "jsr:@std/internal@^1.0.12": "1.0.14",
++    "npm:imagescript@1.3.0": "1.3.0"
+   },
+   "jsr": {
+     "@std/assert@1.0.19": {
+@@ -16,10 +17,16 @@
+       "integrity": "291516b3d4c35024d6ffbc0a9df5bf4c64116e05b50012cf846710152d2ffdf7"
+     }
+   },
++  "npm": {
++    "imagescript@1.3.0": {
++      "integrity": "sha512-lCYzQrWzdnA68K03oMj/BUlBJrVBnslzDOgGFymAp49NmdGEJxGeN7sHh5mCva0nQkq+kkKSuru2zLf1m04+3A==",
++      "deprecated": true
++    }
++  },
+   "workspace": {
+     "packageJson": {
+       "dependencies": [
+-        "npm:@base44/sdk@~0.8.62",
++        "npm:@base44/sdk@~0.8.63",
+         "npm:@base44/vite-plugin@^1.0.52",
+         "npm:@eslint/js@^9.19.0",
+         "npm:@hello-pangea/dnd@17",
+diff -ruN '--exclude=node_modules' '--exclude=dist' runner-base/src/pages/Connect.jsx runner/src/pages/Connect.jsx
+--- runner-base/src/pages/Connect.jsx	2026-11-17 22:30:59.740044687 +0000
++++ runner/src/pages/Connect.jsx	2026-11-17 22:36:06.236866034 +0000
+@@ -62,10 +62,12 @@
+     try {
+       const res = await base44.functions.invoke("bridgeKey", scope === "needs"
+         ? { action: "create", scope: "needs", label: "Grok Bot (needs list, read only)" }
+-        : { action: "create", label: "ChatGPT" });
++        : scope === "runner"
++          ? { action: "create", scope: "runner", label: "grokbot-runner" }
++          : { action: "create", label: "ChatGPT" });
+       const body = bodyOf(res);
+       if (!body.key) throw new Error(body.error || "The key was not returned. Try again.");
+-      setFresh(body.key); setFreshScope(scope === "needs" ? "needs" : "full");
++      setFresh(body.key); setFreshScope(scope === "needs" || scope === "runner" ? scope : "full");
+       await load();
+     } catch (e) { setError(errText(e)); }
+     setBusy(false);
+@@ -91,12 +93,17 @@
+         <Button size="sm" variant="outline" onClick={() => create("needs")} disabled={busy}>
+           <KeyRound className="mr-1.5 h-4 w-4" />Generate Grok Bot key (read needs-you list only)
+         </Button>
++        <Button size="sm" variant="outline" onClick={() => create("runner")} disabled={busy}>
++          <KeyRound className="mr-1.5 h-4 w-4" />Generate Grok Bot runner key (client sites, no deletes)
++        </Button>
+       </div>
+       {fresh && (
+         <div className="space-y-2 rounded-lg border border-amber-300 bg-amber-50 p-3">
+           <p className="text-xs font-medium text-amber-900">{freshScope === "needs"
+             ? "Copy this key now. It is shown only once. It can only read the needs-you list (send it as X-Bridge-Key to bridgeNeedsList)."
+-            : "Copy this key now. It is shown only once. Keep it private: it can change your live websites."}</p>
++            : freshScope === "runner"
++              ? "Copy this key now. It is shown only once. Paste it into Website Manager's secure box as BRIDGE_RUNNER_KEY. It reads and writes the named client sites only (no deletes, no .htaccess, no keys); every call is logged as grokbot-runner."
++              : "Copy this key now. It is shown only once. Keep it private: it can change your live websites."}</p>
+           <MaskedCopy value={fresh} />
+         </div>
+       )}
+diff -ruN '--exclude=node_modules' '--exclude=dist' runner-base/tests/runnerKey.test.ts runner/tests/runnerKey.test.ts
+--- runner-base/tests/runnerKey.test.ts	1970-01-01 00:00:00.000000000 +0000
++++ runner/tests/runnerKey.test.ts	2026-11-17 22:36:56.936997061 +0000
+@@ -0,0 +1,260 @@
++// GROKBOT RUNNER KEY self-test (Edwin 18 Nov 2026): the runner key's allowed tools, every refusal in the brief, BridgeLog
++// rows labelled grokbot-runner, IndexNow without leaking the key, and generateArticleImage (hero, card, og files).
++// Same in-memory fake cPanel and fake entities as dropFolder.test.ts (fetch is replaced; no network except the
++// imagescript package download).
++// Run: deno test --no-check -A --import-map tests/importmap.json tests/runnerKey.test.ts
++import { keyHash } from '../base44/shared/keys.ts';
++import { SITES } from '../base44/shared/bridgeConfig.ts';
++import { RUNNER_SITES, RUNNER_KEY_ACTIONS } from '../base44/shared/runner.ts';
++import readFn from '../base44/functions/bridgeReadLive/entry.ts';
++import readOldFn from '../base44/functions/bridgeRead/entry.ts';
++import listFn from '../base44/functions/bridgeList/entry.ts';
++import listLiveFn from '../base44/functions/bridgeListLive/entry.ts';
++import writeFn from '../base44/functions/bridgeWrite/entry.ts';
++import writeManyFn from '../base44/functions/bridgeWriteMany/entry.ts';
++import editFn from '../base44/functions/bridgeEdit/entry.ts';
++import restoreFn from '../base44/functions/bridgeRestore/entry.ts';
++import syncGhFn from '../base44/functions/bridgeSyncGithub/entry.ts';
++import keyFn from '../base44/functions/bridgeKey/entry.ts';
++import overviewFn from '../base44/functions/bridgeOverview/entry.ts';
++import sitesFn from '../base44/functions/bridgeSites/entry.ts';
++import guideFn from '../base44/functions/bridgeGuide/entry.ts';
++import noteFn from '../base44/functions/bridgeNote/entry.ts';
++import claimFn from '../base44/functions/bridgeClaim/entry.ts';
++import syncFn from '../base44/functions/bridgeSync/entry.ts';
++import backupsFn from '../base44/functions/bridgeBackups/entry.ts';
++import htaccessFn from '../base44/functions/bridgeHtaccess/entry.ts';
++import heroFn from '../base44/functions/bridgeHeroImage/entry.ts';
++import gateFn from '../base44/functions/bridgeImageGate/entry.ts';
++import needsFn from '../base44/functions/bridgeNeedsYou/entry.ts';
++import needsListFn from '../base44/functions/bridgeNeedsList/entry.ts';
++import dropPutFn from '../base44/functions/bridgeDropPut/entry.ts';
++import dropPublishFn from '../base44/functions/bridgeDropPublish/entry.ts';
++import crawlerFn from '../base44/functions/bridgeCrawlerLogs/entry.ts';
++import sitemapFn from '../base44/functions/bridgeRunnerSitemap/entry.ts';
++import indexNowFn from '../base44/functions/bridgeRunnerIndexNow/entry.ts';
++import controllerFn from '../base44/functions/bridgeRunnerController/entry.ts';
++import imageFn from '../base44/functions/generateArticleImage/entry.ts';
++import { Image } from 'npm:imagescript@1.3.0';
++
++const HOME = '/home3/sgmodde1', ROOT = HOME + '/public_html', PAGEONE = ROOT + '/pageone', PRIV = HOME + '/bluehost-bridge-private';
++const MAISON = PAGEONE + '/preview/maison-interior-design';
++const files = new Map<string, Uint8Array>();
++const dirs = new Set<string>([HOME, ROOT, PAGEONE, PAGEONE + '/preview', MAISON, MAISON + '/images', ROOT + '/cleanic', PRIV, PRIV + '/backups', HOME + '/backups-private']);
++const latin1 = (b: Uint8Array) => { let s = ''; for (const c of b) s += String.fromCharCode(c); return s; };
++const ok = (data: any) => Response.json({ result: { status: 1, errors: null, data } });
++const parentOf = (p: string) => p.slice(0, p.lastIndexOf('/'));
++const uploads: string[] = [];
++globalThis.fetch = (async (input: any, init: any = {}) => {
++  const url = new URL(String(input));
++  if (url.pathname.startsWith('/execute/')) {
++    const fn = url.pathname.slice(9), q = url.searchParams;
++    if (fn === 'DomainInfo/domains_data') return ok({ main_domain: { domain: 'sggarage.com', documentroot: ROOT },
++      addon_domains: [{ domain: 'pageonesingapore.com', documentroot: PAGEONE }, { domain: 'cleanicdetailing.com', documentroot: ROOT + '/cleanic' }], sub_domains: [], parked_domains: [] });
++    if (fn === 'Fileman/get_file_information') {
++      const p = q.get('path')!;
++      if (files.has(p)) return ok({ exists: 1, mode: 0o100644, size: files.get(p)!.length, mtime: 1 });
++      if (dirs.has(p)) return ok({ exists: 1, mode: 0o040755, size: 4096, mtime: 1 });
++      return Response.json({ result: { status: 0, errors: ['The file is not available'] } });
++    }
++    if (fn === 'Fileman/list_files') {
++      const d = q.get('dir')!; if (!dirs.has(d)) return Response.json({ result: { status: 0, errors: ['No such directory'] } });
++      const rows: any[] = [];
++      for (const f of files.keys()) if (parentOf(f) === d) rows.push({ file: f.slice(d.length + 1), type: 'file', size: files.get(f)!.length });
++      for (const x of dirs) if (x !== d && parentOf(x) === d) rows.push({ file: x.slice(d.length + 1), type: 'dir' });
++      return ok(rows);
++    }
++    if (fn === 'Fileman/get_file_content') {
++      const b = files.get(q.get('dir') + '/' + q.get('file'));
++      return b ? ok({ content: latin1(b) }) : Response.json({ result: { status: 0, errors: ['No such file'] } });
++    }
++    if (fn === 'Fileman/upload_files') {
++      const form = init.body as FormData; const dir = String(form.get('dir')); const f = form.get('file-1') as File;
++      if (!dirs.has(dir)) return Response.json({ result: { status: 0, errors: ['no dir'] } });
++      files.set(dir + '/' + f.name, new Uint8Array(await f.arrayBuffer())); uploads.push(dir + '/' + f.name);
++      return ok({ succeeded: 1 });
++    }
++  }
++  if (url.pathname === '/json-api/cpanel') {
++    const p = new URLSearchParams(String(init.body)); const fn = p.get('cpanel_jsonapi_func')!;
++    const res = (data: any[]) => Response.json({ cpanelresult: { event: { result: 1 }, data } });
++    if (fn === 'mkdir') { const d = p.get('path') + '/' + p.get('name'); if (!dirs.has(p.get('path')!)) return res([{ result: 0, reason: 'no parent' }]); dirs.add(d); return res([{ result: 1 }]); }
++    if (fn === 'fileop' && p.get('op') === 'copy') { files.set(p.get('destfiles')!, files.get(p.get('sourcefiles')!)!.slice()); return res([{ result: 1 }]); }
++    if (fn === 'fileop' && p.get('op') === 'chmod') return res([{ result: 1 }]);
++  }
++  return new Response('unexpected ' + url, { status: 500 });
++}) as typeof fetch;
++
++// ---- fake Base44 entities (equality filter, newest first) ----
++const tables: Record<string, any[]> = {};
++let seq = 0;
++const table = (name: string) => (tables[name] ??= []);
++const match = (r: any, q: any) => Object.entries(q).every(([k, v]) => r[k] === v);
++const entity = (name: string) => ({
++  create: async (d: any) => { const r = { id: 'id' + (++seq).toString().padStart(8, '0'), created_date: new Date(Date.now() + seq).toISOString(), ...d }; table(name).push(r); return r; },
++  update: async (id: string, d: any) => { const r = table(name).find((x) => x.id === id); Object.assign(r, d); return r; },
++  filter: async (q: any, sort?: string, limit = 50) => {
++    const rows = table(name).filter((r) => match(r, q)).reverse();
++    if (sort && !sort.startsWith('-')) rows.sort((x, y) => String(x[sort]).localeCompare(String(y[sort]))); // ascending sort, like Base44
++    return rows.slice(0, limit);
++  },
++  list: async (_sort?: string, limit = 50) => table(name).slice().reverse().slice(0, limit),
++});
++const entities = new Proxy({}, { get: (_t, name: string) => entity(name) });
++let sessionUser: any = null;
++(globalThis as any).__bridgeTestClient = { asServiceRole: { entities }, entities, auth: { me: async () => sessionUser } };
++
++const DROP_KEY = 'bb_' + 'd'.repeat(43), FULL_KEY = 'bb_' + 'f'.repeat(43), SITE_KEY = 'bb_' + 's'.repeat(43);
++table('BridgeKey').push({ id: 'k1', label: 'Maison bot', scope: 'drop', key_hash: await keyHash(DROP_KEY), active: true, last_used_at: new Date().toISOString() });
++table('BridgeKey').push({ id: 'k2', label: 'ChatGPT', scope: 'full', key_hash: await keyHash(FULL_KEY), active: true, last_used_at: new Date().toISOString() });
++table('BridgeKey').push({ id: 'k3', label: 'cleanic automation', scope: 'site:cleanic', key_hash: await keyHash(SITE_KEY), active: true, last_used_at: new Date().toISOString() });
++
++async function call(fn: (r: Request) => Promise<Response>, body: any, key?: string | null) {
++  const headers: Record<string, string> = { 'content-type': 'application/json' };
++  if (key) headers['X-Bridge-Key'] = key;
++  const res = await fn(new Request('https://bridge.test/fn', { method: 'POST', headers, body: JSON.stringify(body) }));
++  return { status: res.status, body: await res.json() };
++}
++const enc = (s: string) => new TextEncoder().encode(s);
++const b64 = (b: Uint8Array) => btoa(latin1(b));
++function webp(n = 64, fill = 7) { const b = new Uint8Array(n).fill(fill); b.set(enc('RIFF'), 0); b.set(enc('WEBPVP8X'), 8); b[24] = 0xff; b[25] = 0x04; b[26] = 0; b[27] = 0x7f; b[28] = 0x02; b[29] = 0; return b; }
++const lines: string[] = [];
++const log = (s: string) => lines.push(s);
++function refused(what: string, fn: () => unknown, why: RegExp) {
++  try { fn(); } catch (e) { const m = (e as Error).message; if (!why.test(m)) throw new Error(what + ': wrong refusal: ' + m); log('refused  ' + what.padEnd(34) + ' -> ' + m.slice(0, 90)); return; }
++  throw new Error(what + ' was NOT refused');
++}
++
++// ---- runner additions: a real PNG behind a fake Base44 image URL, and a fake IndexNow API ----
++const harnessFetch = globalThis.fetch;
++const indexNowSent: any[] = [];
++let photo: Uint8Array = new Uint8Array();
++globalThis.fetch = (async (input: any, init: any = {}) => {
++  const url = new URL(String(input));
++  if (url.hostname === 'img.test') return new Response(photo, { status: 200, headers: { 'content-type': 'image/png' } });
++  if (url.hostname === 'api.indexnow.org') { indexNowSent.push(JSON.parse(String(init.body))); return new Response('', { status: 202 }); }
++  return harnessFetch(input, init);
++}) as typeof fetch;
++let genCalls = 0;
++(globalThis as any).__bridgeTestClient.asServiceRole.integrations = { Core: { GenerateImage: async (_a: any) => { genCalls++; return { url: 'https://img.test/gen-' + genCalls + '.png' }; } } };
++for (const d of ['/images', '/images/articles', '/preview/aivs', '/preview/aivs/images', '/preview/aivs/images/articles', '/articles']) dirs.add(PAGEONE + d);
++
++const RUNNER_KEY = 'bb_' + 'r'.repeat(43);
++table('BridgeKey').push({ id: 'k4', label: 'grokbot-runner', scope: 'runner', key_hash: await keyHash(RUNNER_KEY), active: true, last_used_at: new Date().toISOString() });
++const runnerRows = () => table('BridgeLog').filter((r) => r.label === 'grokbot-runner');
++const assert = (c: unknown, m: string) => { if (!c) throw new Error(m); };
++
++Deno.test('R1. runner sites are named, all real Bridge sites; allowed actions are exactly the brief', () => {
++  for (const s of RUNNER_SITES) assert(Object.hasOwn(SITES, s), 'unknown site ' + s);
++  assert([...RUNNER_KEY_ACTIONS].sort().join(',') === 'list,read,runner_controller,runner_image,runner_indexnow,runner_sitemap,write,write_many', 'action list changed');
++});
++
++Deno.test('R2. runner key: list, read, write (new), replace needs the base sha256, backup kept; each call logged as grokbot-runner', async () => {
++  files.set(PAGEONE + '/articles/old-page.html', enc('<html><head><title>Old</title></head><body><h1>Old</h1></body></html>'));
++  const before = runnerRows().length;
++  let r = await call(listLiveFn, { site: 'pageone', path: 'articles' }, RUNNER_KEY); assert(r.status === 200, 'list ' + JSON.stringify(r.body));
++  r = await call(listFn, { site: 'pageone', path: 'articles' }, RUNNER_KEY); assert(r.status === 200, 'list old ' + JSON.stringify(r.body));
++  r = await call(readFn, { site: 'pageone', path: 'articles/old-page.html' }, RUNNER_KEY); assert(r.status === 200 && r.body.sha256, 'read');
++  const base = r.body.sha256;
++  r = await call(readOldFn, { site: 'pageone', path: 'articles/old-page.html' }, RUNNER_KEY); assert(r.status === 200, 'read old');
++  r = await call(writeFn, { site: 'pageone', path: 'images/articles/new-note.txt', content: 'hello runner' }, RUNNER_KEY);
++  assert(r.status === 200 && r.body.saved, 'new write ' + JSON.stringify(r.body));
++  r = await call(writeFn, { site: 'pageone', path: 'articles/old-page.html', content: '<html><head><title>New</title></head><body><h1>New</h1></body></html>' }, RUNNER_KEY);
++  assert(r.status === 409 && /expected_sha256 is required/.test(r.body.error), 'replace without base must be refused: ' + JSON.stringify(r.body));
++  r = await call(writeFn, { site: 'pageone', path: 'articles/old-page.html', expected_sha256: 'a'.repeat(64), content: '<html><head><title>New</title></head><body><h1>New</h1></body></html>' }, RUNNER_KEY);
++  assert(r.status === 409 && /STALE/.test(r.body.error), 'stale base must be refused');
++  r = await call(writeFn, { site: 'pageone', path: 'articles/old-page.html', expected_sha256: base, content: '<html><head><title>New</title></head><body><h1>New</h1></body></html>' }, RUNNER_KEY);
++  assert(r.status === 200 && r.body.saved && r.body.backupId, 'replace with base ' + JSON.stringify(r.body));
++  r = await call(writeManyFn, { site: 'pageone', base: 'images/articles', files: [{ path: 'a-note.txt', content: 'a' }, { path: 'b-note.txt', content: 'b' }] }, RUNNER_KEY);
++  assert(r.status === 200, 'write_many ' + JSON.stringify(r.body).slice(0, 300));
++  const rows = runnerRows().slice(before);
++  assert(rows.length === 9, 'expected 9 grokbot-runner rows, got ' + rows.length);
++  assert(rows.every((x) => x.actor === 'grokbot-runner (runner key)'), 'actor');
++  assert(rows.filter((x) => !x.ok).length === 2, 'two refused writes logged ok:false');
++  log('runner rows: ' + rows.map((x) => x.action + (x.ok ? '' : '(refused)')).join(', '));
++});
++
++Deno.test('R3. runner key refused: edit, restore, sync, keys, overview, sites, guide, note, claim, backups, htaccess, hero_image, image_gate, needs, drops, crawler (bridgeSelfTest is a public read-only health check, no key involved)', async () => {
++  const before = runnerRows().length;
++  const cases: [string, any, any][] = [
++    ['edit', editFn, { site: 'pageone', path: 'articles/old-page.html', edits: [] }], ['restore', restoreFn, { site: 'pageone', backup_id: 'x', path: 'a' }],
++    ['sync_github', syncGhFn, { site: 'pageone' }], ['keys', keyFn, { action: 'create', scope: 'full' }], ['overview', overviewFn, {}],
++    ['sites', sitesFn, {}], ['guide', guideFn, {}], ['note', noteFn, {}], ['claim', claimFn, {}], ['sync', syncFn, {}],
++    ['backups', backupsFn, { site: 'pageone', path: 'a' }], ['htaccess', htaccessFn, { site: 'pageone', op: 'read', path: '.htaccess' }],
++    ['hero_image', heroFn, { site: 'pageone' }], ['image_gate', gateFn, { site: 'pageone' }], ['needs', needsFn, {}], ['needs_read', needsListFn, {}],
++    ['drop_put', dropPutFn, {}], ['drop_publish', dropPublishFn, {}], ['crawler', crawlerFn, {}],
++  ];
++  for (const [name, fn, body] of cases) {
++    const r = await call(fn, body, RUNNER_KEY);
++    assert(r.status === 403, name + ' was not refused: ' + r.status + ' ' + JSON.stringify(r.body).slice(0, 200));
++    log('refused  ' + name.padEnd(12) + ' -> ' + String(r.body.error).slice(0, 80));
++  }
++  const rows = runnerRows().slice(before);
++  assert(rows.length === cases.length - 1 && rows.every((x) => x.ok === false), 'every key refusal logged (crawler has its own guard): ' + rows.length);
++});
++
++Deno.test('R4. writes the live guard refuses for every caller: .htaccess, secrets, frozen Cleanic page, delete-like empty paths', async () => {
++  files.set(ROOT + '/cleanic/index.html', enc('<html><head><title>Cleanic</title></head><body><h1>Cleanic</h1></body></html>'));
++  const r0 = await call(readFn, { site: 'cleanic', path: 'index.html' }, RUNNER_KEY);
++  const cases: [string, any, RegExp][] = [
++    ['.htaccess', { site: 'pageone', path: '.htaccess', content: 'Deny from all' }, /htaccess/i],
++    ['wp-config', { site: 'cleanic', path: 'wp-config.php', content: 'x' }, /./],
++    ['secret content', { site: 'pageone', path: 'images/articles/k.txt', content: 'api_key = "sk_live_' + 'x'.repeat(30) + '"' }, /password, key or token/],
++    ['frozen cleanic home', { site: 'cleanic', path: 'index.html', expected_sha256: r0.body.sha256, content: '<html><body>changed</body></html>' }, /frozen|articles/i],
++  ];
++  for (const [name, body, why] of cases) {
++    const r = await call(writeFn, body, RUNNER_KEY);
++    assert(r.status >= 400 && why.test(String(r.body.error)), name + ' not refused: ' + r.status + ' ' + JSON.stringify(r.body).slice(0, 200));
++    log('refused  ' + name.padEnd(20) + ' -> ' + String(r.body.error).slice(0, 80));
++  }
++});
++
++Deno.test('R5. IndexNow: own domain only, key found on the server and never returned; sitemap rebuild runs', async () => {
++  const KEY = 'c'.repeat(32);
++  let r = await call(indexNowFn, { site: 'pageone', urls: ['https://evil.example/x/'] }, RUNNER_KEY);
++  assert(r.status === 403, 'foreign domain must be refused');
++  r = await call(indexNowFn, { site: 'pageone', urls: ['http://pageonesingapore.com/a/'] }, RUNNER_KEY);
++  assert(r.status === 400, 'http must be refused');
++  r = await call(indexNowFn, { site: 'pageone', urls: ['https://aivs.sg/articles/x/'] }, RUNNER_KEY);
++  assert(r.status === 200 && r.body.status === 'skipped', 'no key file -> skipped ' + JSON.stringify(r.body));
++  files.set(PAGEONE + '/preview/aivs/' + KEY + '.txt', enc(KEY));
++  r = await call(indexNowFn, { site: 'pageone', urls: ['https://aivs.sg/articles/x/', 'https://www.aivs.sg/articles/y/'] }, RUNNER_KEY);
++  assert(r.status === 200 && r.body.status === 'sent', 'sent ' + JSON.stringify(r.body));
++  assert(!JSON.stringify(r.body).includes(KEY), 'IndexNow key leaked in the response');
++  assert(!JSON.stringify(table('BridgeLog')).includes(KEY), 'IndexNow key leaked in BridgeLog');
++  assert(indexNowSent.length === 2 && indexNowSent.every((b) => b.key === KEY), 'one send per host');
++  r = await call(sitemapFn, { site: 'pageone', paths: ['articles/old-page.html'] }, RUNNER_KEY);
++  assert(r.status === 200 && r.body.autoSitemap, 'sitemap ' + JSON.stringify(r.body).slice(0, 200));
++  r = await call(sitemapFn, { site: 'pageone', paths: ['.htaccess'] }, RUNNER_KEY);
++  assert(r.status === 400, 'sitemap takes .html pages only');
++});
++
++Deno.test('R6. Controller relay: op and article_last fields checked before any call', async () => {
++  let r = await call(controllerFn, { op: 'delete_client' }, RUNNER_KEY); assert(r.status === 400, 'bad op');
++  r = await call(controllerFn, { op: 'article_last', slug: 'carzy', date: '18/11/2026', title: 't', url: 'https://x' }, RUNNER_KEY); assert(r.status === 400, 'bad date');
++  r = await call(controllerFn, { op: 'article_last', slug: 'carzy', date: '2026-11-18', title: 't', url: 'http://x' }, RUNNER_KEY); assert(r.status === 400, 'http url');
++});
++
++Deno.test('R7. generateArticleImage: hero 1536x1024 webp, card 768x512 webp, og 1200x630 jpg as NEW files; cached; prompt rules', async () => {
++  const im = new Image(1536, 1024);
++  for (let i = 0; i < im.bitmap.length; i += 4) { const x = (i / 4) % 1536, y = Math.floor(i / 4 / 1536); im.bitmap[i] = (x * 7 + y * 3) & 255; im.bitmap[i + 1] = (x ^ y) & 255; im.bitmap[i + 2] = (y / 4) & 255; im.bitmap[i + 3] = 255; }
++  photo = await im.encode(1);
++  let r = await call(imageFn, { site: 'pageone', slug: 'runner-test-article', prompt: 'our client testimonial at the workshop counter' }, RUNNER_KEY);
++  assert(r.status === 400, 'banned prompt');
++  r = await call(imageFn, { site: 'pageone', slug: 'runner-test-article', prompt: 'A quiet Singapore shophouse office desk with a laptop and a coffee cup in morning light', folder: 'preview/aivs/images/articles' }, RUNNER_KEY);
++  assert(r.status === 200, 'image ' + JSON.stringify(r.body).slice(0, 300));
++  const b = r.body;
++  assert(b.hero_url === 'https://aivs.sg/images/articles/runner-test-article.webp', 'hero url ' + b.hero_url);
++  assert(b.card_url.endsWith('/runner-test-article-card.webp') && b.og_image_url.endsWith('/runner-test-article-og.jpg'), 'card/og');
++  assert(b.files.hero.width === 1536 && b.files.card.width === 768 && b.files.og.height === 630, 'sizes');
++  assert(b.alt.startsWith('Illustrative'), 'alt');
++  for (const f of ['runner-test-article.webp', 'runner-test-article-card.webp', 'runner-test-article-og.jpg']) assert(files.has(PAGEONE + '/preview/aivs/images/articles/' + f), 'missing ' + f);
++  const g = genCalls;
++  r = await call(imageFn, { site: 'pageone', slug: 'runner-test-article', prompt: 'A quiet Singapore shophouse office desk with a laptop and a coffee cup in morning light', folder: 'preview/aivs/images/articles' }, RUNNER_KEY);
++  assert(r.status === 200 && r.body.cached === true && genCalls === g, 'second call cached, no new image');
++  r = await call(imageFn, { site: 'pageone', slug: 'x2-article', prompt: 'A quiet Singapore shophouse office desk with a laptop', folder: '../etc' }, RUNNER_KEY);
++  assert(r.status === 400, 'bad folder');
++  log('image files: ' + Object.entries(b.files).map(([k, v]: any) => k + ' ' + v.width + 'x' + v.height + ' ' + v.bytes + 'B').join(', '));
++});
++
++Deno.test('R8. summary', () => { console.log(lines.join('\n')); });
