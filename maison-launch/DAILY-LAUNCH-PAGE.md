@@ -1,13 +1,14 @@
 # Maison daily launch page run (Edwin 16 Nov 2026, PERMANENT)
 
 Each day build exactly ONE TODO project as a full-concept page in the locked template, then re-sort the hub.
+17 NOV 2026 ONE-OFF (Edwin 17 Nov 8:24am SGT): 3 pages built from ready v4 drops (Merpati Meadow, Plantation Edge I & II, Coastal Cabana). From 18 Nov 2026 back to exactly 1 page per day, GSC (A) then launch date (B). gen2 now has EC/condo options (kind_lbl, tw, primary, pkey, plan_lbl, ts, theory, keep1/2, oth_txt, chk, trust_h, rel3, src_tag, base_src, aff, plan_html, mod); see the coastal-cabana entry in data.py. Generator now lives on branch claude/project-thread-5pg280 (maison-expand/gen2) with the queue.
 Scheduled task "Maison daily launch page (2:17pm SGT)" runs this file in a fresh session. Model: Sonnet (lead) with
 Haiku helpers for checks; Opus only if a quality gate fails twice.
 
 Files (all in /mnt/project-files/maison-interior-design/): MAISON-LAUNCH-TEMPLATE.md (the locked template + quality bar),
 MAISON-LAUNCH-QUEUE.md (generated view). Source of order/status: repo branch claude/project-thread-5pg280,
 `maison-launch/launch-queue.json` (+ `sort_hub.py`, `queue_md.py`). Generator: `maison-expand/gen2/` on branch
-claude/project-thread-6s51oo (cf7fa7f). Work on a new branch from 6s51oo and copy maison-launch/ in, or merge both.
+claude/project-thread-dyseuy (16 Nov WhatsApp link fix on top of 6s51oo cf7fa7f). Work on a new branch from dyseuy and copy maison-launch/ in, or merge both.
 
 ## Steps
 0. If today's SGT date already has a "built:" line in daily-log.md (this folder), stop: one page per day.

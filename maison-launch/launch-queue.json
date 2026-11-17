@@ -1,6 +1,6 @@
 {
- "updated": "2026-11-16",
- "rule": "Queue = section A (GSC PRIORITY: TODO pages with Google clicks in the last 28 days, most clicks then most impressions; Grok Bot re-pulls GSC before each daily run and may reorder A) then section B (all other TODO, launch date earliest first, planned/undated last). Daily build takes the top TODO in A until A is empty, then B. Hub order is separate: DONE first, then TODO by launch date (hub_order).",
+ "updated": "2026-11-17",
+ "rule": "Queue = section A (GSC PRIORITY: TODO pages with Google clicks in the last 28 days, most clicks then most impressions; Grok Bot re-pulls GSC before each daily run and may reorder A) then section B (all other TODO, launch date earliest first, planned/undated last). Daily build takes the top TODO in A until A is empty, then B. Hub order is separate: DONE first, then TODO by launch date (hub_order). ONE PAGE A DAY (Edwin 17 Nov 8:24am): 17 Nov was a one-off 3-page day (Merpati Meadow, Plantation Edge I & II, Coastal Cabana, all from ready v4 drops). From 18 Nov 2026 back to exactly 1 page per day in GSC (A) then launch-date (B) order.",
  "projects": [
   {
    "slug": "keat-hong-grange",
@@ -31,6 +31,54 @@
    "section": "DONE"
   },
   {
+   "slug": "plantation-edge-i-and-ii",
+   "name": "Plantation Edge I & II",
+   "type": "BTO",
+   "launch_sort": "2023-10",
+   "launch": "Oct 2023 BTO",
+   "launch_basis": "firm",
+   "launch_source": "HDB Oct 2023 sales brochure",
+   "status": "DONE",
+   "v4_set": "plantation-edge-i-and-ii-v4",
+   "floor_plan": true,
+   "gsc_28d": {
+    "clicks": 10,
+    "impressions": 302,
+    "position": 8.08
+   },
+   "section": "DONE",
+   "v4_drop": {
+    "drop_id": "6afabacea93cdb96da1def0c",
+    "site": "maisoninteriordesign.sg",
+    "status": "published 17 Nov 2026, cleared after live check",
+    "plan": "HDB Oct 2023 brochure 4-room, about 93 sq m, pp 19-20",
+    "gaps": "no official completion or key date (leave out the third-party Dec 2027 estimate); no per-type unit counts"
+   },
+   "built": "2026-11-17"
+  },
+  {
+   "slug": "coastal-cabana",
+   "name": "Coastal Cabana",
+   "type": "EC",
+   "launch_sort": "2026-01",
+   "launch": "Jan 2026",
+   "launch_basis": "recorded",
+   "launch_source": "page (newspaper report; official site/brochure give no launch date)",
+   "status": "DONE",
+   "v4_set": "coastal-cabana-v4",
+   "floor_plan": true,
+   "gsc_28d": null,
+   "section": "DONE",
+   "v4_drop": {
+    "drop_id": "6afabaa6b2a3c08d4c3ca7a8",
+    "site": "maisoninteriordesign.sg",
+    "status": "published 17 Nov 2026, cleared after live check",
+    "plan": "see drop README",
+    "gaps": "see drop README"
+   },
+   "built": "2026-11-17"
+  },
+  {
    "slug": "bayshore-sails",
    "name": "Bayshore Sails",
    "type": "BTO",
@@ -57,6 +105,32 @@
    "floor_plan": true,
    "gsc_28d": null,
    "section": "DONE"
+  },
+  {
+   "slug": "merpati-meadow",
+   "name": "Merpati Meadow",
+   "type": "BTO",
+   "launch_sort": "2026-11",
+   "launch": "Nov 2026 BTO",
+   "launch_basis": "firm",
+   "launch_source": "HDB project page + Nov 2026 BTO release",
+   "status": "DONE",
+   "v4_set": "merpati-meadow-v4",
+   "floor_plan": true,
+   "gsc_28d": {
+    "clicks": 10,
+    "impressions": 345,
+    "position": 8.59
+   },
+   "section": "DONE",
+   "v4_drop": {
+    "drop_id": "6afaba8fdaa0c916c2eab033",
+    "site": "maisoninteriordesign.sg",
+    "status": "published 17 Nov 2026, cleared after live check",
+    "plan": "HDB Layout Ideas 4-room, about 89 sq m",
+    "gaps": "typical plan only; no 2-room Flexi layouts; no key date; blocks/views unverified"
+   },
+   "built": "2026-11-17"
   },
   {
    "slug": "plantation-dew",
@@ -99,416 +173,6 @@
    "floor_plan": true,
    "gsc_28d": null,
    "section": "DONE"
-  },
-  {
-   "slug": "merpati-meadow",
-   "name": "Merpati Meadow",
-   "type": "BTO",
-   "launch_sort": "2026-11",
-   "launch": "Nov 2026 BTO",
-   "launch_basis": "firm",
-   "launch_source": "HDB BTO portal (page facts)",
-   "status": "TODO",
-   "v4_set": "merpati-meadow-v4 (drop 6afaba8fdaa0c916c2eab033)",
-   "floor_plan": true,
-   "gsc_28d": {
-    "clicks": 10,
-    "impressions": 345,
-    "position": 8.59
-   },
-   "section": "A",
-   "v4_drop": {
-    "drop_id": "6afaba8fdaa0c916c2eab033",
-    "site": "maisoninteriordesign.sg",
-    "status": "ready 16 Nov 4:12pm SGT (Maison Design Helper)",
-    "plan": "HDB Layout Ideas 4-room, about 89 sq m",
-    "gaps": "typical plan only; no 2-room Flexi layouts; no key date; blocks/views unverified"
-   }
-  },
-  {
-   "slug": "plantation-edge-i-and-ii",
-   "name": "Plantation Edge I & II",
-   "type": "HDB",
-   "launch_sort": "9999",
-   "launch": "not on file",
-   "launch_basis": "none",
-   "launch_source": "",
-   "status": "TODO",
-   "v4_set": "plantation-edge-i-and-ii-v4 (drop 6afabacea93cdb96da1def0c)",
-   "floor_plan": true,
-   "gsc_28d": {
-    "clicks": 10,
-    "impressions": 302,
-    "position": 8.08
-   },
-   "section": "A",
-   "v4_drop": {
-    "drop_id": "6afabacea93cdb96da1def0c",
-    "site": "maisoninteriordesign.sg",
-    "status": "ready 16 Nov 4:12pm SGT (Maison Design Helper)",
-    "plan": "HDB Oct 2023 brochure 4-room, about 93 sq m, pp 19-20",
-    "gaps": "no official completion or key date (leave out the third-party Dec 2027 estimate); no per-type unit counts"
-   }
-  },
-  {
-   "slug": "plantation-verge",
-   "name": "Plantation Verge",
-   "type": "HDB",
-   "launch_sort": "9999",
-   "launch": "not on file",
-   "launch_basis": "none",
-   "launch_source": "",
-   "status": "TODO",
-   "v4_set": null,
-   "floor_plan": false,
-   "gsc_28d": {
-    "clicks": 5,
-    "impressions": 130,
-    "position": 9.22
-   },
-   "section": "A"
-  },
-  {
-   "slug": "sembawang-portico",
-   "name": "Sembawang Portico",
-   "type": "BTO",
-   "launch_sort": "2026-06-16",
-   "launch": "16 Jun 2026 BTO",
-   "launch_basis": "firm",
-   "launch_source": "HDB June 2026 BTO (page facts)",
-   "status": "TODO",
-   "v4_set": null,
-   "floor_plan": false,
-   "gsc_28d": {
-    "clicks": 5,
-    "impressions": 101,
-    "position": 8.95
-   },
-   "section": "A"
-  },
-  {
-   "slug": "luxus-hills-phase-10",
-   "name": "Luxus Hills Phase 10",
-   "type": "Landed",
-   "launch_sort": "2026-09",
-   "launch": "Sep 2026 (unofficial)",
-   "launch_basis": "planned",
-   "launch_source": "page (caveat data, not official)",
-   "status": "TODO",
-   "v4_set": null,
-   "floor_plan": false,
-   "gsc_28d": {
-    "clicks": 3,
-    "impressions": 79,
-    "position": 6.85
-   },
-   "section": "A"
-  },
-  {
-   "slug": "garden-waterfront-i-and-ii-at-tengah",
-   "name": "Garden Waterfront I & II @ Tengah",
-   "type": "HDB",
-   "launch_sort": "9999",
-   "launch": "not on file",
-   "launch_basis": "none",
-   "launch_source": "",
-   "status": "TODO",
-   "v4_set": null,
-   "floor_plan": false,
-   "gsc_28d": {
-    "clicks": 3,
-    "impressions": 48,
-    "position": 9.81
-   },
-   "section": "A"
-  },
-  {
-   "slug": "queens-arc",
-   "name": "Queen's Arc",
-   "type": "HDB",
-   "launch_sort": "9999",
-   "launch": "not on file",
-   "launch_basis": "none",
-   "launch_source": "",
-   "status": "TODO",
-   "v4_set": null,
-   "floor_plan": false,
-   "gsc_28d": {
-    "clicks": 3,
-    "impressions": 31,
-    "position": 10.1
-   },
-   "section": "A"
-  },
-  {
-   "slug": "plantation-creek-at-tengah",
-   "name": "Plantation Creek @ Tengah",
-   "type": "HDB",
-   "launch_sort": "9999",
-   "launch": "not on file",
-   "launch_basis": "none",
-   "launch_source": "",
-   "status": "TODO",
-   "v4_set": null,
-   "floor_plan": false,
-   "gsc_28d": {
-    "clicks": 3,
-    "impressions": 28,
-    "position": 5.36
-   },
-   "section": "A"
-  },
-  {
-   "slug": "jurong-arcadia",
-   "name": "Jurong Arcadia",
-   "type": "HDB",
-   "launch_sort": "9999",
-   "launch": "not on file",
-   "launch_basis": "none",
-   "launch_source": "",
-   "status": "TODO",
-   "v4_set": null,
-   "floor_plan": false,
-   "gsc_28d": {
-    "clicks": 2,
-    "impressions": 97,
-    "position": 8.44
-   },
-   "section": "A"
-  },
-  {
-   "slug": "verandah-at-kallang",
-   "name": "Verandah @ Kallang",
-   "type": "HDB",
-   "launch_sort": "9999",
-   "launch": "not on file",
-   "launch_basis": "none",
-   "launch_source": "",
-   "status": "TODO",
-   "v4_set": null,
-   "floor_plan": false,
-   "gsc_28d": {
-    "clicks": 2,
-    "impressions": 87,
-    "position": 9.82
-   },
-   "section": "A"
-  },
-  {
-   "slug": "kim-keat-heights",
-   "name": "Kim Keat Heights",
-   "type": "HDB",
-   "launch_sort": "9999",
-   "launch": "not on file",
-   "launch_basis": "none",
-   "launch_source": "",
-   "status": "TODO",
-   "v4_set": null,
-   "floor_plan": false,
-   "gsc_28d": {
-    "clicks": 2,
-    "impressions": 70,
-    "position": 7.89
-   },
-   "section": "A"
-  },
-  {
-   "slug": "lakeside-view",
-   "name": "Lakeside View",
-   "type": "BTO",
-   "launch_sort": "9999",
-   "launch": "not on file",
-   "launch_basis": "none",
-   "launch_source": "",
-   "status": "TODO",
-   "v4_set": null,
-   "floor_plan": false,
-   "gsc_28d": {
-    "clicks": 2,
-    "impressions": 63,
-    "position": 10.84
-   },
-   "section": "A"
-  },
-  {
-   "slug": "woodgrove-acres",
-   "name": "Woodgrove Acres",
-   "type": "BTO",
-   "launch_sort": "2026-06-16",
-   "launch": "16 Jun 2026 BTO",
-   "launch_basis": "firm",
-   "launch_source": "HDB June 2026 BTO (page facts)",
-   "status": "TODO",
-   "v4_set": null,
-   "floor_plan": false,
-   "gsc_28d": {
-    "clicks": 2,
-    "impressions": 41,
-    "position": 9.49
-   },
-   "section": "A"
-  },
-  {
-   "slug": "heart-of-yew-tee",
-   "name": "Heart of Yew Tee",
-   "type": "HDB",
-   "launch_sort": "9999",
-   "launch": "not on file",
-   "launch_basis": "none",
-   "launch_source": "",
-   "status": "TODO",
-   "v4_set": null,
-   "floor_plan": false,
-   "gsc_28d": {
-    "clicks": 2,
-    "impressions": 30,
-    "position": 6.87
-   },
-   "section": "A"
-  },
-  {
-   "slug": "kent-heights",
-   "name": "Kent Heights",
-   "type": "BTO",
-   "launch_sort": "9999",
-   "launch": "not on file",
-   "launch_basis": "none",
-   "launch_source": "",
-   "status": "TODO",
-   "v4_set": null,
-   "floor_plan": false,
-   "gsc_28d": {
-    "clicks": 1,
-    "impressions": 134,
-    "position": 9.2
-   },
-   "section": "A"
-  },
-  {
-   "slug": "chai-chee-green",
-   "name": "Chai Chee Green",
-   "type": "HDB",
-   "launch_sort": "9999",
-   "launch": "not on file",
-   "launch_basis": "none",
-   "launch_source": "",
-   "status": "TODO",
-   "v4_set": null,
-   "floor_plan": false,
-   "gsc_28d": {
-    "clicks": 1,
-    "impressions": 74,
-    "position": 9.23
-   },
-   "section": "A"
-  },
-  {
-   "slug": "sembawang-brook",
-   "name": "Sembawang Brook",
-   "type": "BTO",
-   "launch_sort": "2026-06-16",
-   "launch": "16 Jun 2026 BTO",
-   "launch_basis": "firm",
-   "launch_source": "HDB June 2026 BTO (page facts)",
-   "status": "TODO",
-   "v4_set": null,
-   "floor_plan": false,
-   "gsc_28d": {
-    "clicks": 1,
-    "impressions": 73,
-    "position": 9.36
-   },
-   "section": "A"
-  },
-  {
-   "slug": "berlayar-rise",
-   "name": "Berlayar Rise",
-   "type": "BTO",
-   "launch_sort": "2026-06-16",
-   "launch": "16 Jun 2026 BTO",
-   "launch_basis": "firm",
-   "launch_source": "HDB June 2026 BTO (page facts)",
-   "status": "TODO",
-   "v4_set": null,
-   "floor_plan": false,
-   "gsc_28d": {
-    "clicks": 1,
-    "impressions": 54,
-    "position": 10.3
-   },
-   "section": "A"
-  },
-  {
-   "slug": "ocbc-punggol",
-   "name": "OCBC Punggol",
-   "type": "Commercial",
-   "launch_sort": "9999",
-   "launch": "not on file",
-   "launch_basis": "none",
-   "launch_source": "",
-   "status": "TODO",
-   "v4_set": null,
-   "floor_plan": false,
-   "gsc_28d": {
-    "clicks": 1,
-    "impressions": 38,
-    "position": 7.47
-   },
-   "section": "A"
-  },
-  {
-   "slug": "farrer-park-fields",
-   "name": "Farrer Park Fields",
-   "type": "HDB",
-   "launch_sort": "9999",
-   "launch": "not on file",
-   "launch_basis": "none",
-   "launch_source": "",
-   "status": "TODO",
-   "v4_set": null,
-   "floor_plan": false,
-   "gsc_28d": {
-    "clicks": 1,
-    "impressions": 36,
-    "position": 8.58
-   },
-   "section": "A"
-  },
-  {
-   "slug": "yishun-beacon",
-   "name": "Yishun Beacon",
-   "type": "HDB",
-   "launch_sort": "9999",
-   "launch": "not on file",
-   "launch_basis": "none",
-   "launch_source": "",
-   "status": "TODO",
-   "v4_set": null,
-   "floor_plan": false,
-   "gsc_28d": {
-    "clicks": 1,
-    "impressions": 35,
-    "position": 10.29
-   },
-   "section": "A"
-  },
-  {
-   "slug": "dorset-gardens",
-   "name": "Dorset Gardens",
-   "type": "Condo",
-   "launch_sort": "2027-06",
-   "launch": "H1 2027 planned",
-   "launch_basis": "planned",
-   "launch_source": "page (third-party report)",
-   "status": "TODO",
-   "v4_set": null,
-   "floor_plan": false,
-   "gsc_28d": {
-    "clicks": 1,
-    "impressions": 33,
-    "position": 11.12
-   },
-   "section": "A"
   },
   {
    "slug": "towner-residences",
@@ -607,27 +271,6 @@
    "floor_plan": false,
    "gsc_28d": null,
    "section": "B"
-  },
-  {
-   "slug": "coastal-cabana",
-   "name": "Coastal Cabana",
-   "type": "EC",
-   "launch_sort": "2026-01",
-   "launch": "Jan 2026",
-   "launch_basis": "recorded",
-   "launch_source": "page (newspaper report)",
-   "status": "TODO",
-   "v4_set": "coastal-cabana-v4 (drop 6afabaa6b2a3c08d4c3ca7a8)",
-   "floor_plan": true,
-   "gsc_28d": null,
-   "section": "B",
-   "v4_drop": {
-    "drop_id": "6afabaa6b2a3c08d4c3ca7a8",
-    "site": "maisoninteriordesign.sg",
-    "status": "ready 16 Nov 4:12pm SGT (Maison Design Helper)",
-    "plan": "see drop README",
-    "gaps": "see drop README"
-   }
   },
   {
    "slug": "newport-residences",
@@ -756,6 +399,24 @@
    "section": "B"
   },
   {
+   "slug": "berlayar-rise",
+   "name": "Berlayar Rise",
+   "type": "BTO",
+   "launch_sort": "2026-06-16",
+   "launch": "16 Jun 2026 BTO",
+   "launch_basis": "firm",
+   "launch_source": "HDB June 2026 BTO (page facts)",
+   "status": "TODO",
+   "v4_set": null,
+   "floor_plan": false,
+   "gsc_28d": {
+    "clicks": 1,
+    "impressions": 54,
+    "position": 10.3
+   },
+   "section": "A"
+  },
+  {
    "slug": "kebun-baru-breeze",
    "name": "Kebun Baru Breeze",
    "type": "BTO",
@@ -796,6 +457,60 @@
    "floor_plan": false,
    "gsc_28d": null,
    "section": "B"
+  },
+  {
+   "slug": "sembawang-brook",
+   "name": "Sembawang Brook",
+   "type": "BTO",
+   "launch_sort": "2026-06-16",
+   "launch": "16 Jun 2026 BTO",
+   "launch_basis": "firm",
+   "launch_source": "HDB June 2026 BTO (page facts)",
+   "status": "TODO",
+   "v4_set": null,
+   "floor_plan": false,
+   "gsc_28d": {
+    "clicks": 1,
+    "impressions": 73,
+    "position": 9.36
+   },
+   "section": "A"
+  },
+  {
+   "slug": "sembawang-portico",
+   "name": "Sembawang Portico",
+   "type": "BTO",
+   "launch_sort": "2026-06-16",
+   "launch": "16 Jun 2026 BTO",
+   "launch_basis": "firm",
+   "launch_source": "HDB June 2026 BTO (page facts)",
+   "status": "TODO",
+   "v4_set": null,
+   "floor_plan": false,
+   "gsc_28d": {
+    "clicks": 5,
+    "impressions": 101,
+    "position": 8.95
+   },
+   "section": "A"
+  },
+  {
+   "slug": "woodgrove-acres",
+   "name": "Woodgrove Acres",
+   "type": "BTO",
+   "launch_sort": "2026-06-16",
+   "launch": "16 Jun 2026 BTO",
+   "launch_basis": "firm",
+   "launch_source": "HDB June 2026 BTO (page facts)",
+   "status": "TODO",
+   "v4_set": null,
+   "floor_plan": false,
+   "gsc_28d": {
+    "clicks": 2,
+    "impressions": 41,
+    "position": 9.49
+   },
+   "section": "A"
   },
   {
    "slug": "duet-at-emily",
@@ -924,6 +639,24 @@
    "section": "B"
   },
   {
+   "slug": "luxus-hills-phase-10",
+   "name": "Luxus Hills Phase 10",
+   "type": "Landed",
+   "launch_sort": "2026-09",
+   "launch": "Sep 2026 (unofficial)",
+   "launch_basis": "planned",
+   "launch_source": "page (caveat data, not official)",
+   "status": "TODO",
+   "v4_set": null,
+   "floor_plan": false,
+   "gsc_28d": {
+    "clicks": 3,
+    "impressions": 79,
+    "position": 6.85
+   },
+   "section": "A"
+  },
+  {
    "slug": "solano-grand",
    "name": "Solano Grand",
    "type": "EC",
@@ -950,6 +683,24 @@
    "floor_plan": false,
    "gsc_28d": null,
    "section": "B"
+  },
+  {
+   "slug": "dorset-gardens",
+   "name": "Dorset Gardens",
+   "type": "Condo",
+   "launch_sort": "2027-06",
+   "launch": "H1 2027 planned",
+   "launch_basis": "planned",
+   "launch_source": "page (third-party report)",
+   "status": "TODO",
+   "v4_set": null,
+   "floor_plan": false,
+   "gsc_28d": {
+    "clicks": 1,
+    "impressions": 33,
+    "position": 11.12
+   },
+   "section": "A"
   },
   {
    "slug": "hougang-central-mixed-use-development",
@@ -1064,6 +815,24 @@
    "section": "B"
   },
   {
+   "slug": "chai-chee-green",
+   "name": "Chai Chee Green",
+   "type": "HDB",
+   "launch_sort": "9999",
+   "launch": "not on file",
+   "launch_basis": "none",
+   "launch_source": "",
+   "status": "TODO",
+   "v4_set": null,
+   "floor_plan": false,
+   "gsc_28d": {
+    "clicks": 1,
+    "impressions": 74,
+    "position": 9.23
+   },
+   "section": "A"
+  },
+  {
    "slug": "chong-pang-city-integrated-development",
    "name": "Chong Pang City integrated development",
    "type": "Commercial",
@@ -1106,6 +875,24 @@
    "section": "B"
   },
   {
+   "slug": "farrer-park-fields",
+   "name": "Farrer Park Fields",
+   "type": "HDB",
+   "launch_sort": "9999",
+   "launch": "not on file",
+   "launch_basis": "none",
+   "launch_source": "",
+   "status": "TODO",
+   "v4_set": null,
+   "floor_plan": false,
+   "gsc_28d": {
+    "clicks": 1,
+    "impressions": 36,
+    "position": 8.58
+   },
+   "section": "A"
+  },
+  {
    "slug": "fernvale-sails",
    "name": "Fernvale Sails",
    "type": "HDB",
@@ -1118,6 +905,24 @@
    "floor_plan": false,
    "gsc_28d": null,
    "section": "B"
+  },
+  {
+   "slug": "garden-waterfront-i-and-ii-at-tengah",
+   "name": "Garden Waterfront I & II @ Tengah",
+   "type": "HDB",
+   "launch_sort": "9999",
+   "launch": "not on file",
+   "launch_basis": "none",
+   "launch_source": "",
+   "status": "TODO",
+   "v4_set": null,
+   "floor_plan": false,
+   "gsc_28d": {
+    "clicks": 3,
+    "impressions": 48,
+    "position": 9.81
+   },
+   "section": "A"
   },
   {
    "slug": "grand-dunman",
@@ -1134,6 +939,24 @@
    "section": "B"
   },
   {
+   "slug": "heart-of-yew-tee",
+   "name": "Heart of Yew Tee",
+   "type": "HDB",
+   "launch_sort": "9999",
+   "launch": "not on file",
+   "launch_basis": "none",
+   "launch_source": "",
+   "status": "TODO",
+   "v4_set": null,
+   "floor_plan": false,
+   "gsc_28d": {
+    "clicks": 2,
+    "impressions": 30,
+    "position": 6.87
+   },
+   "section": "A"
+  },
+  {
    "slug": "ioi-central-boulevard-towers",
    "name": "IOI Central Boulevard Towers",
    "type": "Commercial",
@@ -1146,6 +969,24 @@
    "floor_plan": false,
    "gsc_28d": null,
    "section": "B"
+  },
+  {
+   "slug": "jurong-arcadia",
+   "name": "Jurong Arcadia",
+   "type": "HDB",
+   "launch_sort": "9999",
+   "launch": "not on file",
+   "launch_basis": "none",
+   "launch_source": "",
+   "status": "TODO",
+   "v4_set": null,
+   "floor_plan": false,
+   "gsc_28d": {
+    "clicks": 2,
+    "impressions": 97,
+    "position": 8.44
+   },
+   "section": "A"
   },
   {
    "slug": "jurong-west-crystal",
@@ -1162,6 +1003,24 @@
    "section": "B"
   },
   {
+   "slug": "kent-heights",
+   "name": "Kent Heights",
+   "type": "BTO",
+   "launch_sort": "9999",
+   "launch": "not on file",
+   "launch_basis": "none",
+   "launch_source": "",
+   "status": "TODO",
+   "v4_set": null,
+   "floor_plan": false,
+   "gsc_28d": {
+    "clicks": 1,
+    "impressions": 134,
+    "position": 9.2
+   },
+   "section": "A"
+  },
+  {
    "slug": "keppel-south-central",
    "name": "Keppel South Central",
    "type": "Commercial",
@@ -1176,6 +1035,24 @@
    "section": "B"
   },
   {
+   "slug": "kim-keat-heights",
+   "name": "Kim Keat Heights",
+   "type": "HDB",
+   "launch_sort": "9999",
+   "launch": "not on file",
+   "launch_basis": "none",
+   "launch_source": "",
+   "status": "TODO",
+   "v4_set": null,
+   "floor_plan": false,
+   "gsc_28d": {
+    "clicks": 2,
+    "impressions": 70,
+    "position": 7.89
+   },
+   "section": "A"
+  },
+  {
    "slug": "kovan-wellspring",
    "name": "Kovan Wellspring",
    "type": "HDB",
@@ -1188,6 +1065,24 @@
    "floor_plan": false,
    "gsc_28d": null,
    "section": "B"
+  },
+  {
+   "slug": "lakeside-view",
+   "name": "Lakeside View",
+   "type": "BTO",
+   "launch_sort": "9999",
+   "launch": "not on file",
+   "launch_basis": "none",
+   "launch_source": "",
+   "status": "TODO",
+   "v4_set": null,
+   "floor_plan": false,
+   "gsc_28d": {
+    "clicks": 2,
+    "impressions": 63,
+    "position": 10.84
+   },
+   "section": "A"
   },
   {
    "slug": "lentor-modern-mall",
@@ -1274,6 +1169,24 @@
    "section": "B"
   },
   {
+   "slug": "ocbc-punggol",
+   "name": "OCBC Punggol",
+   "type": "Commercial",
+   "launch_sort": "9999",
+   "launch": "not on file",
+   "launch_basis": "none",
+   "launch_source": "",
+   "status": "TODO",
+   "v4_set": null,
+   "floor_plan": false,
+   "gsc_28d": {
+    "clicks": 1,
+    "impressions": 38,
+    "position": 7.47
+   },
+   "section": "A"
+  },
+  {
    "slug": "one-leonie-residences",
    "name": "One Leonie Residences",
    "type": "Condo",
@@ -1316,6 +1229,42 @@
    "section": "B"
   },
   {
+   "slug": "plantation-creek-at-tengah",
+   "name": "Plantation Creek @ Tengah",
+   "type": "HDB",
+   "launch_sort": "9999",
+   "launch": "not on file",
+   "launch_basis": "none",
+   "launch_source": "",
+   "status": "TODO",
+   "v4_set": null,
+   "floor_plan": false,
+   "gsc_28d": {
+    "clicks": 3,
+    "impressions": 28,
+    "position": 5.36
+   },
+   "section": "A"
+  },
+  {
+   "slug": "plantation-verge",
+   "name": "Plantation Verge",
+   "type": "HDB",
+   "launch_sort": "9999",
+   "launch": "not on file",
+   "launch_basis": "none",
+   "launch_source": "",
+   "status": "TODO",
+   "v4_set": null,
+   "floor_plan": false,
+   "gsc_28d": {
+    "clicks": 5,
+    "impressions": 130,
+    "position": 9.22
+   },
+   "section": "A"
+  },
+  {
    "slug": "pollen-collection",
    "name": "Pollen Collection",
    "type": "Landed",
@@ -1328,6 +1277,24 @@
    "floor_plan": true,
    "gsc_28d": null,
    "section": "B"
+  },
+  {
+   "slug": "queens-arc",
+   "name": "Queen's Arc",
+   "type": "HDB",
+   "launch_sort": "9999",
+   "launch": "not on file",
+   "launch_basis": "none",
+   "launch_source": "",
+   "status": "TODO",
+   "v4_set": null,
+   "floor_plan": false,
+   "gsc_28d": {
+    "clicks": 3,
+    "impressions": 31,
+    "position": 10.1
+   },
+   "section": "A"
   },
   {
    "slug": "shaw-tower",
@@ -1414,6 +1381,24 @@
    "section": "B"
   },
   {
+   "slug": "verandah-at-kallang",
+   "name": "Verandah @ Kallang",
+   "type": "HDB",
+   "launch_sort": "9999",
+   "launch": "not on file",
+   "launch_basis": "none",
+   "launch_source": "",
+   "status": "TODO",
+   "v4_set": null,
+   "floor_plan": false,
+   "gsc_28d": {
+    "clicks": 2,
+    "impressions": 87,
+    "position": 9.82
+   },
+   "section": "A"
+  },
+  {
    "slug": "watten-house",
    "name": "Watten House",
    "type": "Condo",
@@ -1468,6 +1453,24 @@
    "floor_plan": false,
    "gsc_28d": null,
    "section": "B"
+  },
+  {
+   "slug": "yishun-beacon",
+   "name": "Yishun Beacon",
+   "type": "HDB",
+   "launch_sort": "9999",
+   "launch": "not on file",
+   "launch_basis": "none",
+   "launch_source": "",
+   "status": "TODO",
+   "v4_set": null,
+   "floor_plan": false,
+   "gsc_28d": {
+    "clicks": 1,
+    "impressions": 35,
+    "position": 10.29
+   },
+   "section": "A"
   }
  ],
  "gsc": {
@@ -1479,8 +1482,11 @@
  "hub_order": [
   "keat-hong-grange",
   "brickland-weave",
+  "plantation-edge-i-and-ii",
+  "coastal-cabana",
   "bayshore-sails",
   "chencharu-acres",
+  "merpati-meadow",
   "plantation-dew",
   "sembawang-anchor",
   "toa-payoh-hillside",
@@ -1491,7 +1497,6 @@
   "lumina-grand",
   "norwood-grand",
   "the-orie",
-  "coastal-cabana",
   "newport-residences",
   "narra-residences",
   "february-2026-sbf-exercise",
@@ -1517,7 +1522,6 @@
   "the-serra-residences",
   "thomson-reserve",
   "bayshore-oasis",
-  "merpati-meadow",
   "luxus-hills-phase-10",
   "solano-grand",
   "wynwood-grand",
@@ -1558,7 +1562,6 @@
   "orchard-sophia",
   "parc-point",
   "plantation-creek-at-tengah",
-  "plantation-edge-i-and-ii",
   "plantation-verge",
   "pollen-collection",
   "queens-arc",
