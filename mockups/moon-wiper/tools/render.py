@@ -18,7 +18,7 @@ def field(w, h, spot=(0.62, 0.42), seed=1, drops=1.0):
     cx, cy = spot[0] * w, spot[1] * h
     d = np.sqrt(((x - cx) / (w * .8)) ** 2 + ((y - cy) / (h * .7)) ** 2)
     g = np.clip(1 - d, 0, 1) ** 1.3
-    base = np.stack([214 + 40 * g, 230 + 25 * g, 241 + 14 * g], -1)   # #D6E6F1 edge -> #FEFFFF centre
+    base = np.stack([196 + 58 * g, 228 + 27 * g, 246 + 9 * g], -1)   # #C4E4F6 sky-aqua edge -> #FEFFFF centre (round 4: brighter, more aqua)
     img = Image.fromarray(np.clip(base, 0, 255).astype(np.uint8), 'RGB').convert('RGBA')
     sh = Image.new('RGBA', (w, h), (0, 0, 0, 0)); body = Image.new('RGBA', (w, h), (0, 0, 0, 0)); hi = Image.new('RGBA', (w, h), (0, 0, 0, 0))
     ds, db, dh = ImageDraw.Draw(sh), ImageDraw.Draw(body), ImageDraw.Draw(hi)
@@ -29,7 +29,7 @@ def field(w, h, spot=(0.62, 0.42), seed=1, drops=1.0):
         sq = rnd.uniform(.82, 1.0)
         box = [px - r, py - r * sq, px + r, py + r * sq]
         ds.ellipse([box[0] + r * .15, box[1] + r * .35, box[2] + r * .15, box[3] + r * .35], fill=(20, 70, 120, 46))  # blue shadow under bead
-        db.ellipse(box, fill=(150, 190, 220, 70))                                                                   # bead body
+        db.ellipse(box, fill=(120, 190, 225, 70))                                                                   # bead body
         db.ellipse([px - r * .78, py - r * .05, px + r * .78, py + r * .85 * sq], fill=(255, 255, 255, 120))        # bright lower lens
         if r > 2.4:
             dh.ellipse([px - r * .52, py - r * .64, px - r * .08, py - r * .28], fill=(255, 255, 255, 235))       # specular

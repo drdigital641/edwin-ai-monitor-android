@@ -1,12 +1,12 @@
-/* MOON wiper blades SG preview v3 (17 Nov 2026, round 3): light water-blue identity. Pale glass ground, deep ocean primary, aqua accents, droplet + wave motifs */
+/* MOON wiper blades SG preview v4 (round 4: light 2X panel, stacked size table, dock steps aside over content) - was v3 (17 Nov 2026, round 3): light water-blue identity. Pale glass ground, deep ocean primary, aqua accents, droplet + wave motifs */
 @font-face{font-family:"Saira Condensed";src:url(fonts/saira-condensed-800.woff2) format("woff2");font-weight:800;font-display:swap}
 @font-face{font-family:"Saira";src:url(fonts/saira-400.woff2) format("woff2");font-weight:400;font-display:swap}
 @font-face{font-family:"Saira";src:url(fonts/saira-600.woff2) format("woff2");font-weight:600;font-display:swap}
 :root{--bg:#F4F8FB;--paper:#FFFFFF;--mist:#E7F0F7;--line:#D2E1EC;--ink:#0B2540;--mute:#46607A;--ocean:#0A4D8C;--ocean-d:#073A6B;--aqua:#0B8DB8;--aqua-l:#7FD8F2;--r:14px;--wrap:1160px;--g:18px;--dock:69px;
 --wave:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1200 40' preserveAspectRatio='none'%3E%3Cpath d='M0 22C150 2 300 2 450 18S750 38 900 20 1110 4 1200 14V40H0z' fill='black'/%3E%3C/svg%3E")}
 *{box-sizing:border-box}
-html{overflow-x:clip;-webkit-text-size-adjust:100%;scroll-padding-top:72px;background:var(--bg);color-scheme:light}
-body{margin:0;overflow-x:clip;background:var(--bg);color:var(--ink);font:400 16.5px/1.6 "Saira",system-ui,sans-serif;-webkit-tap-highlight-color:rgba(11,141,184,.18);caret-color:var(--aqua);padding-bottom:calc(var(--dock) + env(safe-area-inset-bottom))}
+html{overflow-x:clip;-webkit-text-size-adjust:100%;scroll-padding-top:84px;background:var(--bg);color-scheme:light}
+body{margin:0;overflow-x:clip;background:var(--bg);color:var(--ink);font:400 16.5px/1.6 "Saira",system-ui,sans-serif;-webkit-tap-highlight-color:rgba(11,141,184,.18);caret-color:var(--aqua);padding-bottom:calc(var(--dock) + 16px + env(safe-area-inset-bottom))}
 ::selection{background:var(--aqua-l);color:var(--ink)}
 a{color:var(--ocean);text-decoration-color:var(--aqua);text-underline-offset:4px;text-decoration-thickness:2px}
 a:focus-visible,summary:focus-visible{outline:3px solid var(--aqua);outline-offset:3px}
@@ -78,6 +78,7 @@ ul.dl li::before{content:"";position:absolute;left:2px;top:.42em;width:11px;heig
 .sec{padding:52px 0}
 .sec.alt{background:var(--paper);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
 .head{margin-bottom:22px}
+h1,h2,h3,section,table,.ad{scroll-margin-top:84px}
 .head p{margin:10px 0 0;color:var(--mute)}
 .card{background:var(--paper);border:1px solid var(--line);border-radius:var(--r);overflow:hidden;box-shadow:0 6px 18px rgba(10,77,140,.06)}
 /* two lines: primary + secondary panels */
@@ -92,13 +93,15 @@ ul.dl li::before{content:"";position:absolute;left:2px;top:.42em;width:11px;heig
 .pn.sm{grid-template-columns:120px 1fr;align-items:center}
 .pn.sm h3{font-size:1.6rem}
 @media(min-width:900px){.duo{grid-template-columns:1.25fr 1fr}.pn.sm{grid-template-columns:1fr}}
-/* 2X stat band: deep ocean over the beaded glass */
-.stat{position:relative;padding:64px 0 70px;background:var(--ocean-d) center/cover no-repeat;color:#fff;--wc:var(--bg)}
-.stat::before{content:"";position:absolute;inset:0;background:linear-gradient(100deg,rgba(7,58,107,.96),rgba(10,77,140,.82))}
-.stat .wrap{position:relative;display:grid;gap:10px}
-.big{font:800 clamp(6rem,34vw,12rem)/.8 "Saira Condensed",sans-serif;color:var(--aqua-l);letter-spacing:-.02em}
-.stat p{max-width:30ch;font-size:1.15rem}
-.stat .small{max-width:46ch;color:#D3E6F5}
+/* 2X stat: light blue panel, white cards */
+.stat{padding:48px 0;background:linear-gradient(160deg,#DCEEFA,#BFE0F4)}
+.stat .wrap{display:grid;gap:12px}
+.sc{background:var(--paper);border-radius:var(--r);padding:22px 20px;box-shadow:0 8px 24px rgba(10,77,140,.10)}
+.sc p{margin:8px 0 0;font-size:1.1rem;max-width:30ch}
+.sc b{display:block;font:800 1.6rem/1.05 "Saira Condensed",sans-serif;text-transform:uppercase;color:var(--ocean-d)}
+.sc .small{font-size:.9rem}
+.big{display:block;font:800 clamp(5rem,26vw,9rem)/.82 "Saira Condensed",sans-serif;color:var(--ocean);letter-spacing:-.02em}
+@media(min-width:900px){.stat .wrap{grid-template-columns:1.3fr 1fr;align-items:stretch}}
 /* range grid */
 .rg{display:grid;grid-template-columns:1fr 1fr;gap:12px;list-style:none;margin:0;padding:0}
 .rg a{display:block;text-decoration:none;color:var(--ink);height:100%}
@@ -108,14 +111,29 @@ ul.dl li::before{content:"";position:absolute;left:2px;top:.42em;width:11px;heig
 .rg span{font-size:.92rem;color:var(--mute);font-variant-numeric:tabular-nums}
 @media(min-width:900px){.rg{grid-template-columns:repeat(4,1fr)}}
 /* tables */
-.tbl{width:100%;border-collapse:collapse;font-variant-numeric:tabular-nums;background:var(--paper);border-radius:var(--r);overflow:hidden;box-shadow:0 0 0 1px var(--line)}
+.tbl{width:100%;border-collapse:separate;border-spacing:0;font-variant-numeric:tabular-nums;background:var(--paper);border:1px solid var(--line);border-radius:var(--r)}
 .tbl th,.tbl td{padding:11px 8px;border-bottom:1px solid var(--line);text-align:left}
-.tbl thead th{font:600 .8rem/1.2 "Saira",sans-serif;color:#fff;background:var(--ocean);vertical-align:bottom;border-bottom:0}
+.tbl tbody tr:last-child th,.tbl tbody tr:last-child td{border-bottom:0}
+.tbl thead th{font:600 .8rem/1.2 "Saira",sans-serif;color:#fff;background:var(--ocean);vertical-align:bottom;border-bottom:0;position:sticky;top:62px;z-index:2}
+.tbl thead th:first-child{border-top-left-radius:calc(var(--r) - 1px)}.tbl thead th:last-child{border-top-right-radius:calc(var(--r) - 1px)}
 .tbl tbody th{font:800 1.15rem "Saira Condensed",sans-serif;color:var(--ocean-d)}
 .tbl tbody tr:nth-child(even) td,.tbl tbody tr:nth-child(even) th{background:#F3F8FC}
 .tbl td.y{color:var(--aqua);font-weight:700;text-align:center}
 .tbl td.n{color:#9AAEC0;text-align:center}
 .tbl thead th.c{text-align:center}
+@media(min-width:980px){.tbl thead th{top:70px}}
+/* six-column size table becomes a stacked card list on phones */
+@media(max-width:699px){
+.tbl.st{border:0;background:none;display:block}.tbl.st thead{display:none}.tbl.st tbody{display:grid;gap:8px}
+.tbl.st tr{display:flex;flex-wrap:wrap;align-items:baseline;gap:8px 10px;padding:12px 14px;background:var(--paper)!important;border:1px solid var(--line);border-radius:var(--r)}
+.tbl.st th,.tbl.st td{padding:0;border:0;background:none!important}
+.tbl.st tbody th{font-size:1.5rem}
+.tbl.st td.num{color:var(--mute);margin-right:auto}
+.tbl.st td.n{display:none}
+.tbl.st td.y{font-size:0;line-height:0;flex-basis:auto}
+.tbl.st td.y::before{content:attr(data-l);display:inline-block;font:600 .84rem/1 "Saira",sans-serif;padding:7px 11px;border-radius:999px;background:#E3F2FA;color:var(--ocean-d)}
+.tbl.st tr::after{content:"";order:2;flex-basis:100%;height:0}
+.tbl.st td.y{order:3}}
 /* feature grid */
 .fx{display:grid;grid-template-columns:1fr 1fr;gap:10px}
 .fx div{background:var(--paper);border:1px solid var(--line);border-radius:var(--r);padding:18px 14px}
@@ -180,7 +198,7 @@ ul.dl li::before{content:"";position:absolute;left:2px;top:.42em;width:11px;heig
 .ft .legal{font-size:.84rem;color:var(--mute);border-top:1px solid var(--line);padding-top:18px;margin:0}
 @media(min-width:900px){.ft .wrap{grid-template-columns:1.2fr 1fr}.ft .legal{grid-column:1/-1}}
 /* sticky call bar: shows once the hero button has scrolled away. Height = --dock; body is padded by the same amount so it never covers text or the footer */
-.dock{position:fixed;left:0;right:0;bottom:0;z-index:40;display:flex;gap:8px;height:calc(var(--dock) + env(safe-area-inset-bottom));padding:8px var(--g) calc(8px + env(safe-area-inset-bottom));background:rgba(255,255,255,.96);border-top:1px solid var(--line);box-shadow:0 -6px 20px rgba(10,77,140,.10);transition:transform .25s ease-out}
+.dock{position:fixed;left:0;right:0;bottom:0;z-index:40;display:flex;gap:8px;height:calc(var(--dock) + env(safe-area-inset-bottom));padding:8px var(--g) calc(8px + env(safe-area-inset-bottom));background:#fff;border-top:1px solid var(--line);box-shadow:0 -6px 20px rgba(10,77,140,.10);transition:transform .25s ease-out}
 .dock .btn{flex:1;min-height:0;height:52px}
 .js .dock{transform:translateY(110%)}
 .js .dock.on{transform:none}

@@ -73,13 +73,17 @@ def contact(ref):
 <dt>Phone</dt><dd class="num">{S['phone_display']}</dd><dt>Hours</dt><dd>{e(S['hours_display'])}</dd></dl>
 <div class="links"><a href="{e(S['maps'])}" target="_blank" rel="noopener" data-cta="directions" data-ref="{ref}-directions">{ICON['pin']}Directions</a><a href="mailto:{S['email']}" data-ref="{ref}-email">{ICON['mail']}{S['email']}</a></div></div>'''
 
+def iv(f):
+    """Cache-bust: images are served with a 30-day cache, so every image URL carries ?v=<content hash>."""
+    return f'{P}img/{f}?v=' + vhash('img/' + f)
+
 def pic(name, cls='', eager=False, sizes=None, w=1080, h=1350, small=640):
     alt = IMG[name]
     src = f'{P}img/{name}'
     load = 'loading="eager" fetchpriority="high"' if eager else 'loading="lazy"'
     sz = sizes or '(min-width:900px) 560px, 100vw'
-    return (f'<picture><source type="image/webp" srcset="{src}-{small}.webp {small}w, {src}.webp {w}w" sizes="{sz}">'
-            f'<img class="{cls}" src="{src}.jpg" srcset="{src}-{small}.jpg {small}w, {src}.jpg {w}w" sizes="{sz}" width="{w}" height="{h}" alt="{e(alt)}" {load} decoding="async"></picture>')
+    return (f'<picture><source type="image/webp" srcset="{iv(name+'-'+str(small)+'.webp')} {small}w, {iv(name+'.webp')} {w}w" sizes="{sz}">'
+            f'<img class="{cls}" src="{iv(name+'.jpg')}" srcset="{iv(name+'-'+str(small)+'.jpg')} {small}w, {iv(name+'.jpg')} {w}w" sizes="{sz}" width="{w}" height="{h}" alt="{e(alt)}" {load} decoding="async"></picture>')
 
 def tile(name, sizes='(min-width:900px) 280px, 50vw', eager=False):
     return pic(name, sizes=sizes, w=720, h=720, small=360, eager=eager)
@@ -93,7 +97,7 @@ def hero(img, crumb, h1, line, extra='', label=None):
 <div class="copy wrap">{c}<h1>{h1}</h1><p class="line">{line}</p>{extra}{cta_hero(label)}</div></div></section>'''
 
 def band(crumb, h1, line, bg='band-rain', extra=''):
-    return f'''<section class="band wv" style="background-image:image-set(url('{P}img/{bg}-800.webp') type('image/webp'),url('{P}img/{bg}-800.jpg') type('image/jpeg'))"><div class="wrap">
+    return f'''<section class="band wv" style="background-image:image-set(url('{iv(bg+'-800.webp')}') type('image/webp'),url('{iv(bg+'-800.jpg')}') type('image/jpeg'))"><div class="wrap">
 <p class="crumb"><a href="{P}">Home</a> / {e(crumb)}</p><h1>{h1}</h1><p class="line">{line}</p>{extra}{cta_hero()}</div></section>'''
 
 # ---- adapter chart (Silicone Advance only) ----
@@ -115,7 +119,7 @@ def adapter_svg(code):
 def adapter_chart(title_tag='h2'):
     li = ''.join(f'<li>{adapter_svg(c)}<span class="cd">{c}</span><span class="nm">{e(t)}</span>{f"<span class=sz>{e(n)}</span>" if n else ""}</li>' for c, t, n in D['adapters'])
     return f'''<div class="head"><{title_tag}>Adapter chart</{title_tag}><p>Redrawn from the MOON leaflet. Drawings are simplified; Kohden confirms which one your wiper arm takes.</p></div>
-<p class="only">Silicone Advance only</p><ul class="ad" aria-label="Silicone Advance adapters">{li}</ul>'''
+<p class="only">Silicone Advance only</p><ul class="ad" data-nodock aria-label="Silicone Advance adapters">{li}</ul>'''
 
 def crumbs_ld(slug, name):
     items = [{"@type": "ListItem", "position": 1, "name": "Home", "item": BASE}]
@@ -150,8 +154,8 @@ def page(slug, title, desc, crumbname, body, ld=None, contact_in_body=False):
 <html lang="en-SG"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <title>{e(title)}</title><meta name="description" content="{e(desc)}"><link rel="canonical" href="{url}">
 <meta property="og:type" content="website"><meta property="og:site_name" content="{e(D['site_name'])}"><meta property="og:title" content="{e(title)}"><meta property="og:description" content="{e(desc)}"><meta property="og:url" content="{url}">
-<meta property="og:image" content="{BASE}og.jpg"><meta property="og:image:secure_url" content="{BASE}og.jpg"><meta property="og:image:type" content="image/jpeg"><meta property="og:image:width" content="1200"><meta property="og:image:height" content="630"><meta property="og:image:alt" content="MOON silicone hybrid wiper blade on water-beaded glass"><meta property="og:locale" content="en_SG">
-<meta name="twitter:card" content="summary_large_image"><meta name="twitter:title" content="{e(title)}"><meta name="twitter:description" content="{e(desc)}"><meta name="twitter:image" content="{BASE}og.jpg">
+<meta property="og:image" content="{BASE}og.jpg?v={vhash('og.jpg')}"><meta property="og:image:secure_url" content="{BASE}og.jpg?v={vhash('og.jpg')}"><meta property="og:image:type" content="image/jpeg"><meta property="og:image:width" content="1200"><meta property="og:image:height" content="630"><meta property="og:image:alt" content="MOON silicone hybrid wiper blade on water-beaded glass"><meta property="og:locale" content="en_SG">
+<meta name="twitter:card" content="summary_large_image"><meta name="twitter:title" content="{e(title)}"><meta name="twitter:description" content="{e(desc)}"><meta name="twitter:image" content="{BASE}og.jpg?v={vhash('og.jpg')}">
 <meta name="theme-color" content="#0A4D8C"><link rel="icon" href="{P}favicon.svg" type="image/svg+xml">
 <link rel="preload" href="{P}fonts/saira-condensed-800.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="stylesheet" href="{P}site.css?v={css}"><script>document.documentElement.classList.add('js')</script>
@@ -192,17 +196,17 @@ def build():
     body = hero('hero-hybrid', '', 'Moon hybrid wiper blades for <span class="hl">Singapore</span>',
                 'Taiwan-made silicone hybrid for Japanese cars, then Silicone Advance for Continental.', f'<span class="chip">Hybrid M1001 from $30 at Kohden</span>')
     body += f'''<section class="sec"><div class="wrap"><div class="head"><h2>Two lines. <span class="hl">Two kinds of car.</span></h2></div>
-<div class="duo"><a class="pn card" href="{P}hybrid-wiper-blades/">{tile('tile-m1001', '(min-width:900px) 620px, 100vw', eager=True)}<div class="tx"><h3>Silicone Hybrid M1001</h3><p class="for">For Japanese cars</p><p class="pr">{h['price']} at Kohden</p><span class="go">See the Hybrid</span></div></a>
+<div class="duo" data-nodock><a class="pn card" href="{P}hybrid-wiper-blades/">{tile('tile-m1001', '(min-width:900px) 620px, 100vw', eager=True)}<div class="tx"><h3>Silicone Hybrid M1001</h3><p class="for">For Japanese cars</p><p class="pr">{h['price']} at Kohden</p><span class="go">See the Hybrid</span></div></a>
 <a class="pn sm card" href="{P}conventional-wiper-blades/">{tile('tile-advance', '(min-width:900px) 480px, 120px', eager=True)}<div class="tx"><h3>Silicone Advance</h3><p class="for">For Continental cars</p><p class="pr">Adapter included. Price from Kohden.</p><span class="go">See Advance</span></div></a></div></div></section>
-<section class="stat wv" style="{bg('band-rain')}"><div class="wrap"><span class="big">2X</span><p>longer lasting than traditional natural rubber.</p>
-<p class="small">The maker's claim, from its own laboratory testing. Made in Taiwan by Fu-Gang, ISO 9001:2015 and IATF 16949:2016.</p></div></section>
-<section class="sec"><div class="wrap"><div class="head"><h2>Also in the range</h2></div><ul class="rg">
+<section class="stat"><div class="wrap"><div class="sc"><span class="big">2X</span><p>longer lasting than traditional natural rubber.</p><p class="small">The maker's claim, from MOON's own laboratory testing.</p></div>
+<div class="sc"><b>Made in Taiwan by Fu-Gang</b><p class="small">ISO 9001:2015 and IATF 16949:2016.</p></div></div></section>
+<section class="sec"><div class="wrap"><div class="head"><h2>Also in the range</h2></div><ul class="rg" data-nodock>
 <li class="card"><a href="{P}silicone-flat-wiper-blades/">{tile('tile-m102')}<div><b>Flat M-102</b><span>{fl['price']}</span></div></a></li>
 <li><a href="{P}silicone-flat-wiper-blades/">{tile('tile-m105')}<div><b>Japan Flat M-105</b><span>{m105['price']}</span></div></a></li>
 <li><a href="{P}rear-wiper-blades/">{tile('tile-mgr')}<div><b>Rear M-GRA / M-GRB</b><span>$20</span></div></a></li>
 <li><a href="{P}rear-wiper-blades/">{tile('tile-mfr')}<div><b>Rear Conti M-FR</b><span>{PR['mfr']['price']}</span></div></a></li></ul></div></section>
 <section class="sec alt"><div class="wrap"><div class="head"><h2>Know your size</h2><p>Some common front sizes, in inches and millimetres:</p></div>
-<table class="tbl"><thead><tr><th>Size</th><th>Length</th><th class="c">Hybrid</th><th class="c">Flat</th></tr></thead><tbody>
+<table class="tbl" data-nodock><thead><tr><th>Size</th><th>Length</th><th class="c">Hybrid</th><th class="c">Flat</th></tr></thead><tbody>
 {''.join(f'<tr><th scope="row">{i}"</th><td class="num">{mm(i)} mm</td><td class="y">Yes</td><td class="y">Yes</td></tr>' for i in (14, 16, 18, 24, 26))}</tbody></table>
 <p style="margin-top:16px"><a href="{P}wiper-size-guide/">Full size table and adapter chart</a></p></div></section>'''
     urls.append(page('', 'MOON Hybrid Wiper Blades Singapore | Silicone, Made in Taiwan',
@@ -217,7 +221,7 @@ def build():
     body += f'''<section class="sec"><div class="wrap"><div class="head"><h2>Kohden's description</h2><p>As listed on Kohden's M1001 product page; these are the seller's and maker's claims.</p></div>
 <ul class="dl">{''.join(f'<li>{e(x)}</li>' for x in kd_h)}</ul><p class="src">Source: <a href="{h['url']}" target="_blank" rel="noopener">kohden.com.sg</a></p></div></section>
 <section class="sec alt"><div class="wrap"><div class="head"><h2>Sizes at Kohden</h2><p>Inches as sold; millimetres are inches x 25.4.</p></div>
-<table class="tbl"><thead><tr><th>Size</th><th>Length</th></tr></thead><tbody>{size_rows([s for s in h['sizes'] if '+' not in s])}
+<table class="tbl" data-nodock><thead><tr><th>Size</th><th>Length</th></tr></thead><tbody>{size_rows([s for s in h['sizes'] if '+' not in s])}
 <tr><th scope="row">30" + 14"</th><td>Set of two</td></tr></tbody></table></div></section>
 <section class="sec"><div class="wrap"><div class="head"><h2>First use</h2><p>From the MOON leaflet.</p></div>
 <ol class="steps"><li><div><b>Clean the glass</b><span>Clean the windscreen before fitting.</span></div></li><li><div><b>Wipe dry for 5 minutes or more</b><span>Let the new blades run on dry glass.</span></div></li></ol>
@@ -243,7 +247,7 @@ def build():
     fdesc = 'MOON silicone beam / flat wiper blade, sold in Singapore by Kohden.'
     fb = f'<p class="src">Kohden\'s M-102 listing says:</p><ul class="dl"><li>Long-lasting silicone</li><li>Less noise and chatter</li><li>Strong corrosion resistance</li></ul>'
     body = hero('hero-flat', 'Flat blades', 'Silicone <span class="hl">flat</span> blades', 'Beam blades with no frame: M-102 and M-105 Japan Flat.', f'<span class="chip">From $30 at Kohden</span>')
-    body += f'''<section class="sec"><div class="wrap ps">
+    body += f'''<section class="sec"><div class="wrap ps" data-nodock>
 <article class="card">{tile('tile-m102', '(min-width:900px) 560px, 100vw')}<div class="tx"><h3>M-102 Silicone Flat</h3><p class="pr num" style="margin:6px 0 0">{fl['price']}</p>{fb}<ul class="sizes">{''.join(f'<li>{e(s)}</li>' for s in fl['sizes'])}</ul></div></article>
 <article class="card">{tile('tile-m105', '(min-width:900px) 560px, 100vw')}<div class="tx"><h3>M-105 Japan Flat</h3><p class="pr num" style="margin:6px 0 0">{m105['price']}</p><ul class="sizes">{''.join(f'<li>{e(s)}</li>' for s in m105['sizes'])}</ul></div></article>
 </div><div class="wrap"><p style="margin-top:22px">For most Japanese cars, start with the <a href="{P}hybrid-wiper-blades/">Silicone Hybrid M1001</a>.</p></div></section>'''
@@ -255,7 +259,7 @@ def build():
     rr = [('tile-mgr', 'M-GRA Rear A-type', PR['mgra']), ('tile-mgr', 'M-GRB Rear B-type', PR['mgrb']), ('tile-mfr', 'M-FR Rear Conti', PR['mfr'])]
     rows = ''.join(f'<li class="card">{tile(t, "116px")}<div><b>{n}</b><span class="pr">{p["price"]}</span><div class="sz">{", ".join(p["sizes"])}</div></div></li>' for t, n, p in rr)
     body = hero('hero-rear', 'Rear blades', '<span class="hl">Rear</span> wiper blades', 'Three rear types, $20 to $22 at Kohden.')
-    body += f'''<section class="sec"><div class="wrap"><ul class="rr">{rows}</ul>
+    body += f'''<section class="sec"><div class="wrap"><ul class="rr" data-nodock>{rows}</ul>
 <div class="fx" style="margin-top:22px"><div>{ICON['box']}<b>Resin frame like the original part</b><span>Kohden product description</span></div><div>{ICON['wipe']}<b>Easy to replace yourself</b><span>Kohden product description</span></div></div></div></section>'''
     rdesc = 'MOON rear wiper blade with a resin frame like the original part, sold in Singapore by Kohden.'
     urls.append(page('rear-wiper-blades/', 'MOON Rear Wiper Blades Singapore | M-GRA, M-GRB, M-FR from $20',
@@ -268,15 +272,15 @@ def build():
     for i in range(10, 31):
         cols = [has('m1001', i), has('m102', i), has('m105', i), has('mgra', i) or has('mgrb', i) or has('mfr', i)]
         if not any(cols): continue
-        rows += f'<tr><th scope="row">{i}"</th><td class="num">{mm(i)}</td>' + ''.join('<td class="y">&#10003;</td>' if c else '<td class="n">-</td>' for c in cols) + '</tr>'
+        rows += f'<tr><th scope="row">{i}"</th><td class="num">{mm(i)} mm</td>' + ''.join(f'<td class="y" data-l="{l}">&#10003;</td>' if c else f'<td class="n" data-l="{l}">-</td>' for c, l in zip(cols, ['Hybrid M1001', 'Flat M-102', 'Japan Flat M-105', 'Rear'])) + '</tr>'
     cat = ', '.join(f'{k}" = {v}mm' for k, v in D['catalogue_mm_labels'].items())
     body = band('Size guide', 'Wiper <span class="hl">size</span> guide', 'Find your size, then check which MOON blade comes in it.')
     body += f'''<section class="sec"><div class="wrap"><div class="head"><h2>Three ways to find it</h2></div><ol class="steps">
 <li><div><b>Read the old box or blade</b><span>The length is printed, usually in inches.</span></div></li>
 <li><div><b>Measure tip to tip</b><span>Measure the rubber end to end, driver and passenger side separately, plus the rear.</span></div></li>
 <li><div><b>Call Kohden</b><span>Give the make, model and year; they match the size and type.</span></div></li></ol></div></section>
-<section class="sec alt"><div class="wrap"><div class="head"><h2>Size table</h2><p>Sizes Kohden lists for each MOON blade. Millimetres are inches x 25.4, rounded.</p></div>
-<table class="tbl"><thead><tr><th>Size</th><th>mm</th><th class="c">Hybrid M1001</th><th class="c">Flat M-102</th><th class="c">Japan Flat M-105</th><th class="c">Rear</th></tr></thead><tbody>{rows}</tbody></table>
+<section class="sec alt" id="size-table"><div class="wrap"><div class="head"><h2>Size table</h2><p>Sizes Kohden lists for each MOON blade. Millimetres are inches x 25.4, rounded.</p></div>
+<table class="tbl st" data-nodock><thead><tr><th>Size</th><th>mm</th><th class="c">Hybrid M1001</th><th class="c">Flat M-102</th><th class="c">Japan Flat M-105</th><th class="c">Rear</th></tr></thead><tbody>{rows}</tbody></table>
 <p class="small" style="margin-top:14px">Fu-Gang's catalogue uses rounded labels, for example {cat}. Hybrid and M-102 also come as a 30" + 14" set. Rear: M-GRA 10-14", M-GRB 12-16", M-FR 10-16".</p></div></section>
 <section class="sec"><div class="wrap">{adapter_chart()}</div></section>'''
     urls.append(page('wiper-size-guide/', 'Wiper Blade Size Guide Singapore | Size Table, mm, Adapters | MOON',
