@@ -48,7 +48,7 @@
     .chev.none { visibility: hidden; }
     .fold { flex: 0 0 24px; width: 24px; height: 24px; color: var(--folder); }
     .row.top .fold { color: #ff3d57; }
-    .name { flex: 0 1 auto; min-width: 0; font-weight: 700; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+    .name { flex: 0 1 auto; font-size: 1rem; min-width: 0; font-weight: 700; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
     .row.top .name { font-family: var(--display); font-size: 1.08rem; }
     .tag { flex: 0 0 auto; font-size: .72rem; font-weight: 700; padding: 2px 8px; border-radius: 999px; background: #e0f2fe; color: #075985; }
     .tag.ref { background: #ffedd5; color: #9a3412; }
@@ -58,6 +58,28 @@
     .sub p { margin: 0 0 8px; font-size: .92rem; }
     .sub .acts { display: flex; gap: 8px; flex-wrap: wrap; }
     .addb { color: var(--money); border-style: dashed; }
+    .pw { flex: 1 1 auto; min-width: 0; display: flex; flex-direction: column; align-items: flex-start; text-align: left; gap: 2px; padding: 6px 0; }
+    .pl1 { display: flex; align-items: center; gap: 8px; min-width: 0; }
+    .pl2 { font-size: .8rem; line-height: 1.35; color: var(--muted); }
+    .pl2 b { display: inline; color: var(--money); font-weight: 800; }
+    .pl2 .br { color: var(--money); }
+    .sum { margin-top: 16px; background: #fff; border: 1px solid var(--line); border-radius: 16px; padding: 16px; }
+    .sum h2 { font-size: 1.25rem; margin: 0 0 10px; }
+    .tiles { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+    .tile { background: var(--bg-alt); border-radius: 12px; padding: 10px 12px; }
+    .tile small { display: block; color: var(--muted); font-size: .78rem; font-weight: 600; }
+    .tile .v { display: block; font-family: var(--display); font-weight: 700; font-size: 1.45rem; line-height: 1.15; font-variant-numeric: tabular-nums; }
+    .tile .v.g { color: var(--money); }
+    .tile .s { display: block; font-size: .78rem; color: var(--muted); }
+    .tile.wide { grid-column: 1 / -1; }
+    .chk { margin: 10px 0 0; font-size: .86rem; font-weight: 700; color: var(--money); }
+    .chk.bad { color: #c8102e; background: #fff1f2; border: 1px solid #fecdd3; border-radius: 10px; padding: 8px 10px; }
+    .tbl { width: 100%; border-collapse: collapse; margin-top: 14px; font-size: .9rem; font-variant-numeric: tabular-nums; }
+    .tbl th { text-align: left; font-size: .75rem; color: var(--muted); font-weight: 700; padding: 6px 4px; border-bottom: 1px solid var(--line); }
+    .tbl td { padding: 9px 4px; border-bottom: 1px solid var(--line); }
+    .tbl td.n { overflow-wrap: anywhere; font-weight: 700; }
+    .tbl .r { text-align: right; }
+    .tbl td.e { color: var(--money); font-weight: 800; }
     .empty { padding: 14px 16px; color: var(--muted); font-size: .92rem; border-top: 1px solid var(--line); }
     @media (prefers-reduced-motion: reduce) { .chev { transition: none; } }
   </style>
@@ -83,6 +105,7 @@
     </div>
     <div class="list"><ul id="tree"></ul></div>
     <p class="note" id="note"></p>
+    <section class="sum" id="sum" aria-labelledby="sum-h"></section>
   </main>
 <script>
 (function () {
@@ -127,8 +150,34 @@
   function kids(id) { return nodes.filter(function (n) { return n.parentId === id; }); }
   function editing() { return !!pin && live; }
 
+  // Commission maths. Every person under AutoSEO.my is one sale of SPLIT.sale.
+  // Parent earns level1, grandparent earns level2; any share with no person to receive it stays with AutoSEO.
+  function calc() {
+    var c = centre(), per = {}, keeps = 0, p1 = 0, p2 = 0, n1 = 0, n2 = 0, people = 0;
+    nodes.forEach(function (n) { per[n.id] = { d: 0, g: 0, earns: 0 }; });
+    nodes.forEach(function (n) {
+      if (n.id === c.id) return;
+      people++;
+      keeps += SPLIT.keep;
+      var par = byId(n.parentId);
+      if (!par || par.id === c.id) { keeps += SPLIT.level1 + SPLIT.level2; return; }
+      per[par.id].d++; per[par.id].earns += SPLIT.level1; p1 += SPLIT.level1; n1++;
+      var gp = byId(par.parentId);
+      if (!gp || gp.id === c.id) { keeps += SPLIT.level2; return; }
+      per[gp.id].g++; per[gp.id].earns += SPLIT.level2; p2 += SPLIT.level2; n2++;
+    });
+    return { per: per, people: people, sales: people * SPLIT.sale, p1: p1, p2: p2, n1: n1, n2: n2, paid: p1 + p2, keeps: keeps };
+  }
+  function earnText(e) {
+    var parts = [];
+    if (e.d) parts.push(e.d + " direct x " + rm(SPLIT.level1));
+    if (e.g) parts.push(e.g + " level-2 x " + rm(SPLIT.level2));
+    return parts.length ? " (" + parts.join(", ") + ")" : "";
+  }
+
   function render() {
     var root = $("tree"); root.textContent = "";
+    var C = calc();
     function item(n, d) {
       var top = n.role === "centre", k = kids(n.id), isOpen = top || !!open[n.id];
       var li = el("li");
@@ -136,8 +185,14 @@
       var tog = el("button", { class: "tog", type: "button", "aria-expanded": String(isOpen) }, [
         icon("chev", "chev" + (isOpen ? " open" : "") + (k.length || (editing() && !top) ? "" : " none")),
         icon("folder", "fold"),
-        el("span", { class: "name", text: n.name }),
-        top ? null : el("span", { class: "tag" + (k.length ? " ref" : ""), text: k.length ? "Referrer" : "Direct" })
+        el("span", { class: "pw" }, [
+          el("span", { class: "pl1" }, [
+            el("span", { class: "name", text: n.name }),
+            top ? null : el("span", { class: "tag" + (k.length ? " ref" : ""), text: k.length ? "Referrer" : "Direct" })
+          ]),
+          top ? el("span", { class: "pl2" }, ["Keeps ", el("b", { text: rm(C.keeps) })])
+              : el("span", { class: "pl2" }, ["Pays " + rm(SPLIT.sale) + ". Earns ", el("b", { text: rm(C.per[n.id].earns) }), el("span", { class: "br", text: earnText(C.per[n.id]) })])
+        ])
       ]);
       if (top) tog.disabled = false;
       tog.addEventListener("click", function () { if (!top) { open[n.id] = !open[n.id]; if (ui && ui.kind === "add" && ui.id === n.id) ui = null; render(); } });
@@ -155,7 +210,39 @@
       return li;
     }
     root.appendChild(item(centre(), 0));
+    renderSum(C);
     if (nodes.length === 1 && !editing()) root.appendChild(el("li", { class: "empty", text: "No people yet." }));
+  }
+
+  function renderSum(C) {
+    var box = $("sum"); box.textContent = "";
+    box.appendChild(el("h2", { id: "sum-h", text: "Summary" }));
+    function tile(label, val, sub, green, wide) {
+      return el("div", { class: "tile" + (wide ? " wide" : "") }, [el("small", { text: label }), el("span", { class: "v" + (green ? " g" : ""), text: val }), sub ? el("span", { class: "s", text: sub }) : null]);
+    }
+    box.appendChild(el("div", { class: "tiles" }, [
+      tile("People", String(C.people)),
+      tile("Sales", rm(C.sales), C.people + " x " + rm(SPLIT.sale)),
+      tile("Direct parts", rm(C.p1), C.n1 + " x " + rm(SPLIT.level1), true),
+      tile("Level-2 parts", rm(C.p2), C.n2 + " x " + rm(SPLIT.level2), true),
+      tile("Commission paid", rm(C.paid), null, true),
+      tile("AutoSEO.my keeps", rm(C.keeps))
+    ]));
+    var ok = C.sales === C.paid + C.keeps;
+    box.appendChild(el("p", { class: "chk" + (ok ? "" : " bad"), role: ok ? null : "alert", text: ok
+      ? "Check: " + rm(C.sales) + " sales = " + rm(C.paid) + " paid + " + rm(C.keeps) + " kept."
+      : "Warning: sales " + rm(C.sales) + " do not equal paid " + rm(C.paid) + " + kept " + rm(C.keeps) + "." }));
+    var rows = nodes.filter(function (n) { return n.role !== "centre"; }).map(function (n) { return { n: n, e: C.per[n.id] }; });
+    if (!rows.length) return;
+    rows.sort(function (a, b) { return b.e.earns - a.e.earns || a.n.name.localeCompare(b.n.name); });
+    var tb = el("tbody");
+    rows.forEach(function (r) {
+      tb.appendChild(el("tr", {}, [el("td", { class: "n", text: r.n.name }), el("td", { class: "r", text: String(r.e.d) }), el("td", { class: "r", text: String(r.e.g) }), el("td", { class: "r e", text: rm(r.e.earns) })]));
+    });
+    box.appendChild(el("table", { class: "tbl" }, [
+      el("thead", {}, [el("tr", {}, [el("th", { text: "Name" }), el("th", { class: "r", text: "Direct" }), el("th", { class: "r", text: "Level-2" }), el("th", { class: "r", text: "Earns" })])]),
+      tb
+    ]));
   }
 
   function addBox(parent, d) {
