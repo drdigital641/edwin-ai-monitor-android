@@ -1,6 +1,6 @@
 # Maison new-launch queue (generated from launch-queue.json, do not hand-edit)
 
-Updated 2026-11-17. GSC data: 2026-11-16, last 28 days (Edwin / Grok Bot GSC pull 16 Nov 3:50pm SGT).
+Updated 2026-11-17. GSC data: 2026-11-17, last 28 days (Grok Bot section A refresh in thread, 17 Nov 2026 10:54am SGT).
 
 Queue = section A (GSC PRIORITY: TODO pages with Google clicks in the last 28 days, most clicks then most impressions; Grok Bot re-pulls GSC before each daily run and may reorder A) then section B (all other TODO, launch date earliest first, planned/undated last). Daily build takes the top TODO in A until A is empty, then B. Hub order is separate: DONE first, then TODO by launch date (hub_order). ONE PAGE A DAY (Edwin 17 Nov 8:24am): 17 Nov was a one-off 3-page day (Merpati Meadow, Plantation Edge I & II, Coastal Cabana, all from ready v4 drops). From 18 Nov 2026 back to exactly 1 page per day in GSC (A) then launch-date (B) order.
 
@@ -31,6 +31,15 @@ No v4 set on the next project: policy 'make' (make = create the Base44 v4 set + 
 | 18 | Farrer Park Fields | HDB | 1 | 36 | 8.58 | not on file | N | N |
 | 19 | Yishun Beacon | HDB | 1 | 35 | 10.29 | not on file | N | N |
 | 20 | Dorset Gardens | Condo | 1 | 33 | 11.12 | H1 2027 planned | N | N |
+| 21 | Woodgrove Ascent | HDB | 1 | 32 | 11.09 | not on file | N | N |
+| 22 | Woodlands South Plains | HDB | 1 | 30 | 7.9 | not on file | N | N |
+| 23 | Fernvale Sails | HDB | 1 | 29 | 8.72 | not on file | N | N |
+| 24 | MacPherson Weave | HDB | 1 | 29 | 12.38 | not on file | N | N |
+| 25 | Kovan Wellspring | HDB | 1 | 23 | 11.22 | not on file | N | N |
+| 26 | Jurong West Crystal | HDB | 1 | 20 | 9.35 | not on file | N | N |
+| 27 | Grand Dunman | Condo | 1 | 10 | 10.7 | not on file | N | N |
+| 28 | Belgravia Ace | Landed | 1 | 9 | 15.22 | not on file | N | N |
+| 29 | 39 Robinson Road | Commercial | 1 | 8 | 8.38 | not on file | N | N |
 
 ## B) Everything else (launch date, earliest first; planned/unconfirmed, then no date on file, last)
 
@@ -67,42 +76,33 @@ No v4 set on the next project: policy 'make' (make = create the Base44 v4 set + 
 | 29 | Solano Grand | EC | Q1 2027 planned | planned | N | N |
 | 30 | Wynwood Grand | EC | Q1 2027 planned | planned | N | N |
 | 31 | Hougang Central mixed-use development | Commercial | H2 2027 planned | planned | N | N |
-| 32 | 39 Robinson Road | Commercial | not on file | none | N | N |
-| 33 | 8@BT | Condo | not on file | none | N | N |
-| 34 | Altura | EC | not on file | none | N | N |
-| 35 | Bedok North Springs | HDB | not on file | none | N | N |
-| 36 | Belgravia Ace | Landed | not on file | none | N | N |
-| 37 | Bishan Ridges | HDB | not on file | none | N | N |
-| 38 | Blossoms by the Park | Condo | not on file | none | N | N |
-| 39 | Chong Pang City integrated development | Commercial | not on file | none | N | N |
-| 40 | Dakota Crest | HDB | not on file | none | N | N |
-| 41 | Farrer Park Arena | HDB | not on file | none | N | N |
-| 42 | Fernvale Sails | HDB | not on file | none | N | N |
-| 43 | Grand Dunman | Condo | not on file | none | N | N |
-| 44 | IOI Central Boulevard Towers | Commercial | not on file | none | N | N |
-| 45 | Jurong West Crystal | HDB | not on file | none | N | N |
-| 46 | Keppel South Central | Commercial | not on file | none | N | N |
-| 47 | Kovan Wellspring | HDB | not on file | none | N | N |
-| 48 | Lentor Modern mall | Commercial | not on file | none | N | N |
-| 49 | MacPherson Weave | HDB | not on file | none | N | N |
-| 50 | Matilda Riverside | HDB | not on file | none | N | N |
-| 51 | Newport Plaza retail podium | Commercial | not on file | none | N | N |
-| 52 | Newport Tower | Commercial | not on file | none | N | N |
-| 53 | Novo Place | EC | not on file | none | N | N |
-| 54 | One Leonie Residences | Condo | not on file | none | N | N |
-| 55 | Orchard Sophia | Condo | not on file | none | N | N |
-| 56 | Parc Point | Commercial | not on file | none | N | N |
-| 57 | Pollen Collection | Landed | not on file | none | Y | Y |
-| 58 | Shaw Tower | Commercial | not on file | none | Y | Y |
-| 59 | Tampines GreenQuartz | HDB | not on file | none | N | N |
-| 60 | Tanjong Tree Residences @ Hougang | HDB | not on file | none | N | N |
-| 61 | The Botany at Dairy Farm | Condo | not on file | none | N | N |
-| 62 | The Island Residence | Condo | not on file | none | N | N |
-| 63 | UrbanVille @ Woodlands | HDB | not on file | none | N | N |
-| 64 | Watten House | Condo | not on file | none | N | N |
-| 65 | Woodgrove Ascent | HDB | not on file | none | N | N |
-| 66 | Woodgrove Edge | HDB | not on file | none | N | N |
-| 67 | Woodlands South Plains | HDB | not on file | none | N | N |
+| 32 | 8@BT | Condo | not on file | none | N | N |
+| 33 | Altura | EC | not on file | none | N | N |
+| 34 | Bedok North Springs | HDB | not on file | none | N | N |
+| 35 | Bishan Ridges | HDB | not on file | none | N | N |
+| 36 | Blossoms by the Park | Condo | not on file | none | N | N |
+| 37 | Chong Pang City integrated development | Commercial | not on file | none | N | N |
+| 38 | Dakota Crest | HDB | not on file | none | N | N |
+| 39 | Farrer Park Arena | HDB | not on file | none | N | N |
+| 40 | IOI Central Boulevard Towers | Commercial | not on file | none | N | N |
+| 41 | Keppel South Central | Commercial | not on file | none | N | N |
+| 42 | Lentor Modern mall | Commercial | not on file | none | N | N |
+| 43 | Matilda Riverside | HDB | not on file | none | N | N |
+| 44 | Newport Plaza retail podium | Commercial | not on file | none | N | N |
+| 45 | Newport Tower | Commercial | not on file | none | N | N |
+| 46 | Novo Place | EC | not on file | none | N | N |
+| 47 | One Leonie Residences | Condo | not on file | none | N | N |
+| 48 | Orchard Sophia | Condo | not on file | none | N | N |
+| 49 | Parc Point | Commercial | not on file | none | N | N |
+| 50 | Pollen Collection | Landed | not on file | none | Y | Y |
+| 51 | Shaw Tower | Commercial | not on file | none | Y | Y |
+| 52 | Tampines GreenQuartz | HDB | not on file | none | N | N |
+| 53 | Tanjong Tree Residences @ Hougang | HDB | not on file | none | N | N |
+| 54 | The Botany at Dairy Farm | Condo | not on file | none | N | N |
+| 55 | The Island Residence | Condo | not on file | none | N | N |
+| 56 | UrbanVille @ Woodlands | HDB | not on file | none | N | N |
+| 57 | Watten House | Condo | not on file | none | N | N |
+| 58 | Woodgrove Edge | HDB | not on file | none | N | N |
 
 ## DONE (full-concept pages, top of the /new-launches/ listing)
 
