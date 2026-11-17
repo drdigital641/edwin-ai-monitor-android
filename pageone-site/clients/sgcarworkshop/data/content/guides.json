@@ -1904,5 +1904,121 @@
    "car-aircon-repair",
    "general-servicing-repair"
   ]
+ },
+ {
+  "slug": "car-steering-wheel-groan-squeak",
+  "kind": "problem",
+  "short": "Steering groan or squeak",
+  "cap": 4,
+  "article": true,
+  "published": "2026-11-18",
+  "title": "Squeak or Groan When Turning the Steering | SG Car Workshop",
+  "h1": "Squeak or groan when turning the steering wheel: what it can mean",
+  "desc": "A groan or squeak when you turn the steering wheel can come from the steering, suspension or tyres. What to notice, what to tell the workshop, and when to stop.",
+  "lede": "A squeak, groan or whine when you turn the steering wheel usually comes from the power steering, the suspension joints or the tyres. Note when it happens: only at full lock, only when parked, or also over bumps. That detail helps a workshop find the cause faster, and a sudden loss of steering help is a reason to stop driving.",
+  "heading": "What the noise can mean",
+  "tell_h": "What to tell the workshop",
+  "urgent_h": "Stop driving when it is safe if:",
+  "causes": [
+   [
+    "Low or old power steering fluid",
+    "A groan or whine that gets louder as you turn can point to low or tired power steering fluid, or a pump working hard. Many newer cars use electric steering instead, which has no fluid to check. A workshop can tell you which system your car has.",
+    [
+     [
+      "services/general-servicing-repair/",
+      "Servicing and repair workshops"
+     ],
+     [
+      "guides/before-a-workshop-visit/",
+      "Before a workshop visit"
+     ]
+    ]
+   ],
+   [
+    "Worn suspension or steering joints",
+    "Rubber bushes, ball joints and top mounts can creak or squeak when they dry out or wear. The noise is often worse over humps or when turning slowly into a car park, and you may feel a knock in the steering.",
+    [
+     [
+      "guides/car-knocking-over-humps/",
+      "Knocking over humps guide"
+     ],
+     [
+      "services/general-servicing-repair/",
+      "Servicing and repair workshops"
+     ]
+    ]
+   ],
+   [
+    "Tyres scrubbing at full lock",
+    "Turning the wheel fully while parked can make the tyres squeal or chirp, especially on smooth floors. If the noise is only there at full lock and the steering feels normal, it may be tyre grip rather than a fault.",
+    [
+     [
+      "services/car-tyres/",
+      "Tyre workshops"
+     ],
+     [
+      "services/wheel-alignment/",
+      "Wheel alignment"
+     ]
+    ]
+   ],
+   [
+    "Alignment or uneven tyre wear",
+    "A car that pulls to one side, a steering wheel that sits off-centre or tyres worn unevenly can go with steering noise. An alignment check shows whether the wheels are set correctly.",
+    [
+     [
+      "services/wheel-alignment/",
+      "Wheel alignment"
+     ],
+     [
+      "guides/car-vibration-steering-shake/",
+      "Steering shake guide"
+     ]
+    ]
+   ]
+  ],
+  "tell": [
+   "When it happens: only at full lock, only when parked, while moving, or over bumps.",
+   "The sound: squeak, groan, whine, clunk or creak, and whether it gets louder as you turn.",
+   "Whether the steering feels heavier than usual or the wheel vibrates.",
+   "Any warning light on the dashboard, or fluid spots under the front of the car.",
+   "A short phone video of the noise, taken safely by a passenger."
+  ],
+  "urgent": "the steering suddenly becomes very heavy, the wheel feels loose or has a lot of play, you hear a loud clunk with every turn, or a steering or power steering warning light comes on. Pull over somewhere safe and call for roadside help rather than driving on.",
+  "faqs": [
+   [
+    "Why does my steering wheel groan when I turn it?",
+    "A groan when turning often comes from the power steering, such as low or old fluid or a pump under strain, or from worn suspension parts. A workshop can check which one it is."
+   ],
+   [
+    "Is a squeak when turning at low speed serious?",
+    "Not always. It can be dry rubber bushes or tyres gripping on a smooth surface. If the steering also feels heavy, loose or knocks, have it checked soon."
+   ],
+   [
+    "Does my car have power steering fluid?",
+    "Some cars use hydraulic power steering with fluid, and many newer ones use electric steering without it. Your owner's manual or a workshop can confirm."
+   ],
+   [
+    "Can I keep driving if the steering is noisy?",
+    "If the steering feels normal and the noise is mild, you can drive to a workshop carefully. If it gets heavy, loose or a warning light comes on, stop safely first."
+   ]
+  ],
+  "kw": [
+   "steering",
+   "steering wheel",
+   "groan",
+   "squeak",
+   "whine",
+   "power steering",
+   "turning",
+   "creak",
+   "full lock",
+   "steering noise"
+  ],
+  "cats": [
+   "general-servicing-repair",
+   "wheel-alignment"
+  ],
+  "tag_id": null
  }
 ]
