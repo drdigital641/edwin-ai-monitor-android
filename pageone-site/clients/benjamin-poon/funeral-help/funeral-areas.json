@@ -1,0 +1,1032 @@
+{
+ "date": "2026-11-17",
+ "flags": {
+  "open_24_7": true,
+  "response_en": "For urgent cases, we respond within 1 hour.",
+  "response_zh": "紧急情况，我们会在 1 小时内回复您。",
+  "religions_en": "Benjamin arranges Buddhist, Taoist and Free-thinker funerals.",
+  "religions_zh": "潘国雄安排佛教、道教及自由思想者的丧礼。",
+  "mortuary_line": true
+ },
+ "venues": {
+  "linsan": {
+   "en": "Lin San Temple",
+   "short_en": "Lin San Temple",
+   "zh": "灵山寺",
+   "page": "locations/lin-san-temple/",
+   "addr_en": "Areas near Lin San Temple, 27 Lorong 12 Geylang, Singapore 399004 (a location reference only).",
+   "addr_zh": "灵山寺附近地区（芽笼12巷27号，新加坡399004），仅作位置参考。"
+  },
+  "thianleng": {
+   "en": "Thian Leng Chong Toh Tong (Changi Road)",
+   "short_en": "Thian Leng (Changi Road)",
+   "zh": "天灵总道堂",
+   "page": "locations/thian-leng-temple/",
+   "addr_en": "Areas near Thian Leng Chong Toh Tong, 472 Changi Road, Singapore 419890 (a location reference only).",
+   "addr_zh": "天灵总道堂附近地区（樟宜路472号，新加坡419890），仅作位置参考。"
+  },
+  "nirvana": {
+   "en": "Nirvana Memorial Garden",
+   "short_en": "Nirvana Memorial Garden",
+   "zh": "富贵山庄",
+   "page": "locations/nirvana-memorial-garden/",
+   "addr_en": "Areas near Nirvana Memorial Garden, Nirvana's memorial park at 950 Old Choa Chu Kang Road, Singapore 699816.",
+   "addr_zh": "富贵山庄附近地区（旧蔡厝港路950号，新加坡699816，富贵山庄的纪念园）。"
+  }
+ },
+ "hub": {
+  "en": {
+   "title": "Someone Has Passed Away? Funeral Help in Singapore | Ben Poon",
+   "h1": "Someone has just passed away: what to do first, and how Benjamin can help",
+   "meta": "Someone has just passed away? The first steps in Singapore, and how to reach Benjamin Poon 24/7 by WhatsApp or call to arrange Nirvana funeral services.",
+   "intro": "If a loved one has just passed away, call or WhatsApp Benjamin Poon on +65 8932 9933. He represents Nirvana Singapore and arranges Nirvana funeral services for your family. Benjamin is your one contact from the first call to the final arrangement.",
+   "wa": "Hello Benjamin, someone in my family has just passed away and we need help with the funeral. [Ref: FH-hub]",
+   "areas_h": "Help by area",
+   "group_h": {
+    "linsan": "Central and north-east, near Lin San Temple (Geylang)",
+    "thianleng": "East, near Thian Leng Chong Toh Tong (Changi Road)",
+    "nirvana": "West, near Nirvana Memorial Garden"
+   },
+   "distance_note": "Distances are straight-line estimates from each area's MRT station, not travel times. Benjamin helps families across Singapore, including areas not listed here.",
+   "more_h": "More help",
+   "more": [
+    [
+     "guides/sudden-passing-call-benjamin-nirvana/",
+     "A sudden passing: what to do first"
+    ],
+    [
+     "guides/what-to-do-when-a-loved-one-passes-away-singapore/",
+     "What to do when a loved one passes away in Singapore"
+    ],
+    [
+     "services/funeral-services/",
+     "Funeral services"
+    ],
+    [
+     "locations/lin-san-temple/",
+     "Lin San Temple"
+    ],
+    [
+     "locations/thian-leng-temple/",
+     "Thian Leng Chong Toh Tong"
+    ],
+    [
+     "locations/nirvana-memorial-garden/",
+     "Nirvana Memorial Garden"
+    ]
+   ],
+   "svc_name": "Funeral help in Singapore"
+  },
+  "zh": {
+   "title": "家人刚离世怎么办？新加坡殡葬协助 | 潘国雄",
+   "h1": "家人刚刚离世：先做什么，以及潘国雄可以怎样帮您",
+   "meta": "家人刚刚离世？按顺序了解在新加坡最先要办的事，并可 24 小时致电或 WhatsApp 潘国雄，为您安排富贵山庄（Nirvana）殡葬服务。华语、广东话、福建话都可以。",
+   "intro": "如果亲人刚刚离世，请致电或 WhatsApp 潘国雄（Benjamin Poon）+65 8932 9933。他代表富贵山庄（Nirvana Singapore），为您的家人安排富贵山庄殡葬服务。从第一通电话到最后的安排，您只需联系他一人。",
+   "wa": "您好 Benjamin，我家里有人刚刚离世，需要协助安排丧事。[Ref: FH-hub]",
+   "areas_h": "按地区查看",
+   "group_h": {
+    "linsan": "中部及东北部，灵山寺（芽笼）附近",
+    "thianleng": "东部，天灵总道堂（樟宜路）附近",
+    "nirvana": "西部，富贵山庄附近"
+   },
+   "distance_note": "距离为各区地铁站的直线估算，并非车程时间。潘国雄为全岛家庭提供协助，包括未列出的地区。",
+   "more_h": "更多协助",
+   "more": [
+    [
+     "zh/guides/sudden-passing-call-benjamin-nirvana/",
+     "亲人突然离世：最先要做什么"
+    ],
+    [
+     "zh/guides/what-to-do-when-a-loved-one-passes-away-singapore/",
+     "亲人在新加坡离世后该怎么办"
+    ],
+    [
+     "zh/services/funeral-services/",
+     "殡葬服务"
+    ],
+    [
+     "zh/locations/lin-san-temple/",
+     "灵山寺"
+    ],
+    [
+     "zh/locations/thian-leng-temple/",
+     "天灵总道堂"
+    ],
+    [
+     "zh/locations/nirvana-memorial-garden/",
+     "富贵山庄"
+    ]
+   ],
+   "svc_name": "新加坡殡葬协助"
+  }
+ },
+ "areas": [
+  {
+   "slug": "geylang",
+   "cluster": "linsan",
+   "neighbours": [
+    "kallang-whampoa",
+    "eunos-kembangan"
+   ],
+   "distance_km": "1-3",
+   "en": {
+    "name": "Geylang",
+    "label": "Geylang, Aljunied and Paya Lebar",
+    "title": "Someone Passed Away in Geylang? Funeral Help | Benjamin Poon",
+    "h1": "Someone has passed away in Geylang: first steps and who to call",
+    "meta": "Someone passed away in Geylang, Aljunied or Paya Lebar? Read the first steps, then WhatsApp Benjamin Poon, who arranges Nirvana funeral services.",
+    "areas": [
+     "Geylang",
+     "Aljunied",
+     "Paya Lebar",
+     "MacPherson",
+     "Mattar",
+     "Tai Seng"
+    ],
+    "intro": "If someone close to you has just passed away in Geylang, Aljunied or Paya Lebar, take a breath first. Only a few things must happen in the first hours, and Benjamin can take you through them one at a time.",
+    "near": "Most of this area is about 1 to 3 km from Lin San Temple (27 Lorong 12 Geylang), measured in a straight line. You may be living around Aljunied and Paya Lebar MRT, or along the Circle Line at MacPherson and Tai Seng. The temple is only a location reference.",
+    "faq": [
+     {
+      "q": "Someone has passed away at home in Geylang. Who do I call first?",
+      "a": "At home, the family engages a doctor to certify the death. If no doctor can certify, for example after a sudden death, the police are called and the deceased is taken to Mortuary@HSA. Once that is settled, call Benjamin on +65 8932 9933."
+     },
+     {
+      "q": "Does Benjamin also help families in Aljunied and Paya Lebar?",
+      "a": "Yes. Benjamin arranges Nirvana funeral services for families across this part of Singapore. He is your one contact from the first call to the final arrangement."
+     },
+     {
+      "q": "My parents only speak Cantonese. Can they speak to Benjamin directly?",
+      "a": "Yes. Benjamin speaks English, Mandarin, Cantonese and Hokkien, so your parents can talk in the language they are most at ease with."
+     },
+     {
+      "q": "Do we have to choose a niche right now?",
+      "a": "No. The first call is only about what has happened and what must be done next. The niche and other choices can wait until the family is ready."
+     }
+    ]
+   },
+   "zh": {
+    "name": "芽笼",
+    "label": "芽笼、阿裕尼和巴耶利峇",
+    "title": "芽笼有亲人离世？殡葬协助 | 潘国雄",
+    "h1": "芽笼有亲人离世：第一步该做什么、该找谁",
+    "meta": "芽笼、阿裕尼或巴耶利峇有亲人离世？先看看最初的几个步骤，再用 WhatsApp 联络潘国雄（Benjamin），他为您安排 Nirvana 殡葬服务。",
+    "areas": [
+     "芽笼",
+     "阿裕尼",
+     "巴耶利峇",
+     "麦波申",
+     "马达",
+     "大成"
+    ],
+    "intro": "如果您在芽笼、阿裕尼或巴耶利峇有亲人刚刚离世，请先深呼吸。最初几个小时需要做的事情不多，潘国雄会陪您一件一件处理。",
+    "near": "这一带大多数地方距离灵山寺（芽笼12巷27号）直线距离约1至3公里。您可能住在阿裕尼和巴耶利峇地铁站一带，或是环线上的麦波申和大成。灵山寺只是方便您认路的位置参考。",
+    "faq": [
+     {
+      "q": "芽笼家中有人离世，我应该先打给谁？",
+      "a": "在家中离世，家人需要请医生证实死亡。如果没有医生能证实，例如突然离世的情况，就会通知警方，遗体会送往新加坡卫生科学局的殓房（Mortuary@HSA）。处理好这一步后，请致电潘国雄 +65 8932 9933。"
+     },
+     {
+      "q": "阿裕尼和巴耶利峇的家庭，潘国雄也能协助吗？",
+      "a": "可以。潘国雄为这一带的家庭安排 Nirvana 殡葬服务，从第一通电话到最后的安排，您只需要联络他一个人。"
+     },
+     {
+      "q": "我的父母只会讲广东话，可以直接跟潘国雄谈吗？",
+      "a": "可以。潘国雄会讲英语、华语、广东话和福建话，长辈用最自在的语言交谈就好。"
+     },
+     {
+      "q": "现在就要决定灵位（Niche）吗？",
+      "a": "不需要。第一通电话只是了解发生了什么事，以及接下来必须做什么。灵位和其他选择，等家人准备好再商量也不迟。"
+     }
+    ]
+   }
+  },
+  {
+   "slug": "kallang-whampoa",
+   "cluster": "linsan",
+   "neighbours": [
+    "geylang",
+    "toa-payoh"
+   ],
+   "distance_km": "1-2.5",
+   "en": {
+    "name": "Kallang or Whampoa",
+    "label": "Kallang, Whampoa and Bendemeer",
+    "title": "Someone Passed Away in Kallang or Whampoa? Funeral Help",
+    "h1": "Someone has passed away in Kallang or Whampoa: first steps and who to call",
+    "meta": "Someone passed away in Kallang, Whampoa or Bendemeer? Start with the first steps, then WhatsApp Benjamin Poon, who arranges Nirvana funeral services.",
+    "areas": [
+     "Kallang",
+     "Lavender",
+     "Bendemeer",
+     "Whampoa",
+     "Boon Keng",
+     "Potong Pasir"
+    ],
+    "intro": "Losing someone in Kallang, Whampoa or Bendemeer can leave a family unsure where to begin. Start here, and let Benjamin carry the arrangements so you can be with your relatives.",
+    "near": "This area is about 1 to 2.5 km from Lin San Temple (27 Lorong 12 Geylang), in a straight line. It covers Kallang and Lavender on the East-West Line, Bendemeer on the Downtown Line, and Boon Keng (near Whampoa) and Potong Pasir on the North East Line.",
+    "faq": [
+     {
+      "q": "A family member died in our Whampoa flat this morning. What happens first?",
+      "a": "The family engages a doctor to certify the death. Once certified online, the death is registered automatically. Have the NRIC, FIN or passport of the deceased ready, then call Benjamin."
+     },
+     {
+      "q": "Our relatives are spread across Kallang, Bendemeer and Boon Keng. Can one person coordinate?",
+      "a": "Yes. Benjamin is your one contact from the first call to the final arrangement, so one family member can speak to him on behalf of everyone."
+     },
+     {
+      "q": "Can my grandmother speak Hokkien with Benjamin?",
+      "a": "Yes. Benjamin speaks Hokkien, as well as English, Mandarin and Cantonese. Your grandmother does not need to switch languages."
+     },
+     {
+      "q": "Who applies for the Permit to Bury or Cremate?",
+      "a": "It is applied for on NEA's ePortal, either by the family or by someone they authorise. If you are unsure how it works, ask Benjamin to explain the steps."
+     }
+    ]
+   },
+   "zh": {
+    "name": "加冷或黄埔",
+    "label": "加冷、黄埔和明地迷亚",
+    "title": "加冷或黄埔有亲人离世？殡葬协助",
+    "h1": "加冷或黄埔有亲人离世：第一步该做什么、该找谁",
+    "meta": "加冷、黄埔或明地迷亚有亲人离世？先了解最初的步骤，再用 WhatsApp 联络潘国雄（Benjamin），他为您安排 Nirvana 殡葬服务。",
+    "areas": [
+     "加冷",
+     "劳明达",
+     "明地迷亚",
+     "黄埔",
+     "文庆",
+     "波东巴西"
+    ],
+    "intro": "在加冷、黄埔或明地迷亚失去亲人，家人往往不知从何做起。请从这里开始，把安排交给潘国雄，您可以多陪陪家人。",
+    "near": "这一带距离灵山寺（芽笼12巷27号）直线距离约1至2.5公里。包括东西线的加冷和劳明达、市区线的明地迷亚，以及东北线的文庆（靠近黄埔）和波东巴西。",
+    "faq": [
+     {
+      "q": "今早黄埔的家里有人离世，第一步是什么？",
+      "a": "家人需要请医生证实死亡。证实后，死亡会在网上自动登记。请准备好逝者的身份证、外国人识别证或护照，再致电潘国雄。"
+     },
+     {
+      "q": "亲人分散在加冷、明地迷亚和文庆，可以由一个人负责联络吗？",
+      "a": "可以。从第一通电话到最后的安排，潘国雄都是您唯一的联络人，家里由一位成员代表大家与他沟通就行。"
+     },
+     {
+      "q": "我奶奶讲福建话，可以跟潘国雄沟通吗？",
+      "a": "可以。潘国雄会讲福建话，也会英语、华语和广东话，奶奶不必勉强换语言。"
+     },
+     {
+      "q": "谁负责申请土葬或火化准证？",
+      "a": "准证在国家环境局（NEA）的网上平台申请，可以由家人自己办，或授权他人代办。如果不清楚怎么做，可以请潘国雄说明步骤。"
+     }
+    ]
+   }
+  },
+  {
+   "slug": "toa-payoh",
+   "cluster": "linsan",
+   "neighbours": [
+    "kallang-whampoa",
+    "bishan-ang-mo-kio",
+    "serangoon-hougang"
+   ],
+   "distance_km": "3.5-4.5",
+   "en": {
+    "name": "Toa Payoh",
+    "label": "Toa Payoh, Novena and Bidadari",
+    "title": "Someone Passed Away in Toa Payoh? Funeral Help | Ben Poon",
+    "h1": "Someone has passed away in Toa Payoh: first steps and who to call",
+    "meta": "Someone passed away in Toa Payoh, Novena or Bidadari? Read the first steps, then WhatsApp Benjamin Poon, who arranges Nirvana funeral services.",
+    "areas": [
+     "Toa Payoh",
+     "Bidadari / Woodleigh",
+     "Bartley",
+     "Novena"
+    ],
+    "intro": "A death in Toa Payoh, Novena or Bidadari often means phone calls to many relatives before anything else. Before you make them, read the short list below so you know the order of things.",
+    "near": "Toa Payoh and its surroundings are about 3.5 to 4.5 km from Lin San Temple (27 Lorong 12 Geylang), measured in a straight line. Think of Toa Payoh and Novena on the North-South Line, Bidadari around Woodleigh on the North East Line and Bartley on the Circle Line.",
+    "faq": [
+     {
+      "q": "My father passed away in hospital and we live in Toa Payoh. Do we still need to find a doctor?",
+      "a": "No. When a death happens in hospital, the hospital doctor certifies it. After that, you can call Benjamin to talk through what to prepare."
+     },
+     {
+      "q": "Is Benjamin able to help families around Novena and Bidadari?",
+      "a": "Yes. Benjamin arranges Nirvana funeral services and is the family's one contact, whichever Toa Payoh estate you live in."
+     },
+     {
+      "q": "Can I call Benjamin in Mandarin or Hokkien late at night?",
+      "a": "Yes. Benjamin answers calls on nights and public holidays too, and he speaks English, Mandarin, Cantonese and Hokkien."
+     },
+     {
+      "q": "How do we get the digital death certificate?",
+      "a": "After the death is certified, it is registered automatically. The digital death certificate can then be downloaded through My Legacy or LifeSG within 30 days."
+     }
+    ]
+   },
+   "zh": {
+    "name": "大巴窑",
+    "label": "大巴窑、诺维娜和比达达利",
+    "title": "大巴窑有亲人离世？殡葬协助 | 潘国雄",
+    "h1": "大巴窑有亲人离世：第一步该做什么、该找谁",
+    "meta": "大巴窑、诺维娜或比达达利有亲人离世？这里列出最初的步骤和该联络的人，您可以用 WhatsApp 联络为您安排 Nirvana 殡葬服务的潘国雄。",
+    "areas": [
+     "大巴窑",
+     "比达达利 / 伍德利",
+     "巴特礼",
+     "诺维娜"
+    ],
+    "intro": "在大巴窑、诺维娜或比达达利有人离世，家人往往要先通知许多亲友。在拨电话之前，先看看下面简短的清单，心里有个次序。",
+    "near": "大巴窑一带距离灵山寺（芽笼12巷27号）直线距离约3.5至4.5公里。大巴窑和诺维娜在南北线，比达达利一带靠近东北线的伍德利站，巴特礼在环线。",
+    "faq": [
+     {
+      "q": "我爸爸在医院离世，我们住大巴窑，还需要另外找医生吗？",
+      "a": "不需要。在医院离世，由医院的医生证实死亡。之后您可以致电潘国雄，了解需要准备什么。"
+     },
+     {
+      "q": "诺维娜和比达达利一带的家庭，潘国雄也能帮忙吗？",
+      "a": "可以。潘国雄为您安排 Nirvana 殡葬服务，不论您住在大巴窑哪一区，他都是您唯一的联络人。"
+     },
+     {
+      "q": "深夜可以用华语或福建话打给潘国雄吗？",
+      "a": "可以。潘国雄在夜间和公共假期也接听电话，他会讲英语、华语、广东话和福建话。"
+     },
+     {
+      "q": "数码死亡证书要怎么拿？",
+      "a": "死亡证实后会自动登记。数码死亡证书可以在30天内，通过 My Legacy 或 LifeSG 下载。"
+     }
+    ]
+   }
+  },
+  {
+   "slug": "serangoon-hougang",
+   "cluster": "linsan",
+   "neighbours": [
+    "bishan-ang-mo-kio",
+    "toa-payoh",
+    "geylang"
+   ],
+   "distance_km": "4.5-7",
+   "en": {
+    "name": "Serangoon or Hougang",
+    "label": "Serangoon, Kovan and Hougang",
+    "title": "Someone Passed Away in Serangoon or Hougang? Funeral Help",
+    "h1": "Someone has passed away in Serangoon or Hougang: first steps and who to call",
+    "meta": "Lost someone in Serangoon, Kovan or Hougang? Read the first steps and who to call, then WhatsApp Benjamin Poon, who arranges Nirvana funeral services.",
+    "areas": [
+     "Serangoon",
+     "Lorong Chuan",
+     "Kovan",
+     "Hougang"
+    ],
+    "intro": "If a parent or spouse has passed away in Serangoon, Kovan or Hougang, you do not have to work out the whole funeral tonight. Begin with the steps below and one phone call.",
+    "near": "The nearer parts of Serangoon and Lorong Chuan are about 4.5 km from Lin San Temple (27 Lorong 12 Geylang) in a straight line. Hougang town centre is about 6 to 7 km from both Lin San Temple and Thian Leng Chong Toh Tong (472 Changi Road). You may be around Serangoon, Kovan or Hougang MRT, or Lorong Chuan on the Circle Line.",
+    "faq": [
+     {
+      "q": "My mother lived alone in Hougang and was found at home. What should I do?",
+      "a": "If a doctor can certify the death, the family engages one. If none can, as in a sudden unexpected death at home, the police are called and she will be taken to Mortuary@HSA. Call Benjamin when you are ready, and he will explain what comes next."
+     },
+     {
+      "q": "Does the distance to the two temples change how Benjamin can help?",
+      "a": "No. The temples are only location references, measured in a straight line. Benjamin is your one contact whether you live in Kovan or Hougang."
+     },
+     {
+      "q": "My uncle in Serangoon prefers Cantonese. Is that fine?",
+      "a": "Yes. Benjamin speaks Cantonese, together with English, Mandarin and Hokkien."
+     },
+     {
+      "q": "We have not chosen a niche. Is that a problem?",
+      "a": "Not at all. Most families have not decided anything at the first call. Benjamin will go through the choices when you are ready."
+     }
+    ]
+   },
+   "zh": {
+    "name": "实龙岗或后港",
+    "label": "实龙岗、高文和后港",
+    "title": "实龙岗或后港有亲人离世？殡葬协助",
+    "h1": "实龙岗或后港有亲人离世：第一步该做什么、该找谁",
+    "meta": "实龙岗、高文或后港有亲人离世？请先看最初的步骤和该联络的人，再用 WhatsApp 联络为您安排 Nirvana 殡葬服务的潘国雄（Benjamin）。",
+    "areas": [
+     "实龙岗",
+     "罗弄干",
+     "高文",
+     "后港"
+    ],
+    "intro": "如果您的父母或伴侣在实龙岗、高文或后港离世，不必今晚就想好整个丧礼。先看看下面的步骤，打一通电话就好。",
+    "near": "实龙岗和罗弄干较近的地方，距离灵山寺（芽笼12巷27号）直线距离约4.5公里。后港市中心距离灵山寺和天灵总道堂（樟宜路472号）都是约6至7公里。您可能住在实龙岗、高文或后港地铁站一带，或环线的罗弄干。",
+    "faq": [
+     {
+      "q": "我妈妈独居后港，被发现在家中离世，我该怎么做？",
+      "a": "如果有医生能证实死亡，家人就请医生来证实。如果没有医生能证实，例如在家中突然离世，就会通知警方，遗体会送往 Mortuary@HSA。等您准备好了再致电潘国雄，他会说明接下来的步骤。"
+     },
+     {
+      "q": "离两间庙的远近，会影响潘国雄的协助吗？",
+      "a": "不会。两间庙只是位置参考，用直线距离计算。不论您住高文还是后港，潘国雄都是您唯一的联络人。"
+     },
+     {
+      "q": "我在实龙岗的叔叔比较习惯讲广东话，可以吗？",
+      "a": "可以。潘国雄会讲广东话，也会英语、华语和福建话。"
+     },
+     {
+      "q": "我们还没选灵位，这样可以吗？",
+      "a": "完全可以。多数家庭在第一通电话时还没有决定任何事情。等您准备好，潘国雄再陪您一起看有哪些选择。"
+     }
+    ]
+   }
+  },
+  {
+   "slug": "bishan-ang-mo-kio",
+   "cluster": "linsan",
+   "neighbours": [
+    "toa-payoh",
+    "serangoon-hougang"
+   ],
+   "distance_km": "5.5-7.5",
+   "en": {
+    "name": "Bishan or Ang Mo Kio",
+    "label": "Bishan and Ang Mo Kio",
+    "title": "Someone Passed Away in Bishan or Ang Mo Kio? Funeral Help",
+    "h1": "Someone has passed away in Bishan or Ang Mo Kio: first steps and who to call",
+    "meta": "Someone has passed away in Bishan or Ang Mo Kio? Learn the first steps and who to call, then WhatsApp Benjamin Poon, who arranges Nirvana funeral services.",
+    "areas": [
+     "Bishan",
+     "Ang Mo Kio"
+    ],
+    "intro": "Families in Bishan and Ang Mo Kio sometimes find themselves handling everything alone, with relatives far away. You can ask for help at any hour, and you do not need to do it all yourself.",
+    "near": "Bishan and the south and central parts of Ang Mo Kio are about 5.5 to 7.5 km from Lin San Temple (27 Lorong 12 Geylang), in a straight line. The far north of Ang Mo Kio is past 8 km. You may be around Bishan and Ang Mo Kio MRT, or Marymount on the Circle Line.",
+    "faq": [
+     {
+      "q": "My siblings are overseas and I am alone in Ang Mo Kio. Can I still arrange everything?",
+      "a": "Yes. Benjamin is your one contact, so you only explain things once. You can share his WhatsApp with your siblings abroad so they stay informed."
+     },
+     {
+      "q": "Does Benjamin help in the far north of Ang Mo Kio too?",
+      "a": "Yes. The distance to Lin San Temple is only a location reference. Benjamin helps families across all of Ang Mo Kio."
+     },
+     {
+      "q": "We are Buddhist. Can the rites follow our practice?",
+      "a": "Yes. Benjamin arranges services for Buddhist, Taoist and Free-thinker families. Tell him what your family follows, and he will explain what that means in practice."
+     },
+     {
+      "q": "What should I keep ready when I call?",
+      "a": "Have the NRIC, FIN or passport of the deceased at hand. It is needed when the Permit to Bury or Cremate is applied for on NEA's ePortal."
+     }
+    ]
+   },
+   "zh": {
+    "name": "碧山或宏茂桥",
+    "label": "碧山和宏茂桥",
+    "title": "碧山或宏茂桥有亲人离世？殡葬协助",
+    "h1": "碧山或宏茂桥有亲人离世：第一步该做什么、该找谁",
+    "meta": "碧山或宏茂桥有亲人离世？了解最初的步骤和该联络的人，再用 WhatsApp 联络为您安排 Nirvana 殡葬服务的潘国雄（Benjamin）。",
+    "areas": [
+     "碧山",
+     "宏茂桥"
+    ],
+    "intro": "碧山和宏茂桥有些家庭，亲人离世时只剩自己一个人处理，其他亲戚都在远方。您随时都可以求助，不必一个人撑着。",
+    "near": "碧山，以及宏茂桥的南部和中部，距离灵山寺（芽笼12巷27号）直线距离约5.5至7.5公里。宏茂桥最北面超过8公里。您可能住在碧山和宏茂桥地铁站一带，或环线的玛丽蒙。",
+    "faq": [
+     {
+      "q": "兄弟姐妹都在国外，我一个人在宏茂桥，也能把一切安排好吗？",
+      "a": "可以。潘国雄是您唯一的联络人，您只需要讲一次。您也可以把他的 WhatsApp 号码分享给海外的兄弟姐妹，让他们随时了解进度。"
+     },
+     {
+      "q": "宏茂桥最北面的住户，潘国雄也能协助吗？",
+      "a": "可以。距离灵山寺的远近只是位置参考，整个宏茂桥的家庭，潘国雄都能帮忙。"
+     },
+     {
+      "q": "我们是佛教徒，仪式可以按我们的习惯进行吗？",
+      "a": "可以。潘国雄为佛教、道教和自由思想者的家庭安排服务。告诉他您家遵循的习惯，他会说明实际怎么做。"
+     },
+     {
+      "q": "打电话时需要准备什么？",
+      "a": "请准备好逝者的身份证、外国人识别证或护照。在国家环境局（NEA）网上平台申请土葬或火化准证时会用到。"
+     }
+    ]
+   }
+  },
+  {
+   "slug": "eunos-kembangan",
+   "cluster": "thianleng",
+   "neighbours": [
+    "bedok",
+    "marine-parade-katong",
+    "geylang"
+   ],
+   "distance_km": "0.3-2",
+   "en": {
+    "name": "Eunos or Kembangan",
+    "label": "Eunos, Kembangan, Kaki Bukit and Ubi",
+    "title": "Someone Passed Away in Eunos or Kembangan? Funeral Help",
+    "h1": "Someone has passed away in Eunos or Kembangan: first steps and who to call",
+    "meta": "Someone passed away in Eunos, Kembangan, Kaki Bukit or Ubi? See the first steps, then WhatsApp Benjamin Poon, who arranges Nirvana funeral services.",
+    "areas": [
+     "Kembangan",
+     "Eunos",
+     "Kaki Bukit",
+     "Ubi"
+    ],
+    "intro": "When a death happens in Eunos, Kembangan, Kaki Bukit or Ubi, the first hours can feel very long. This page sets out what needs doing, and Benjamin is one phone call away.",
+    "near": "Parts of this area are only about 0.3 to 2 km from Thian Leng Chong Toh Tong (472 Changi Road), measured in a straight line. Kembangan and Eunos are on the East-West Line, while Ubi and Kaki Bukit are on the Downtown Line.",
+    "faq": [
+     {
+      "q": "Someone passed away at night in our Eunos flat. Is it too late to call?",
+      "a": "Not at all. Benjamin answers calls 24/7, including nights and public holidays. For urgent cases, we respond within 1 hour, which is a response and not an arrival time."
+     },
+     {
+      "q": "Thian Leng Chong Toh Tong is near us. Does that mean they will handle the funeral?",
+      "a": "No. The temple is only a location reference. Benjamin arranges Nirvana funeral services, and Nirvana's team carries out the service."
+     },
+     {
+      "q": "My father is most comfortable in Hokkien. Can he speak with Benjamin?",
+      "a": "Yes. Benjamin speaks Hokkien, and also English, Mandarin and Cantonese."
+     },
+     {
+      "q": "Do we need to decide on a niche during the first call?",
+      "a": "No. The first call is for the immediate steps only. Choices about the niche can come later, at the pace your family needs."
+     }
+    ]
+   },
+   "zh": {
+    "name": "友诺士或甘榜景万岸",
+    "label": "友诺士、甘榜景万岸、加基武吉和乌美",
+    "title": "友诺士或景万岸有亲人离世？殡葬协助",
+    "h1": "友诺士或景万岸有亲人离世：第一步该做什么、该找谁",
+    "meta": "友诺士、甘榜景万岸、加基武吉或乌美有亲人离世？先看最初的步骤，再用 WhatsApp 联络为您安排 Nirvana 殡葬服务的潘国雄（Benjamin）。",
+    "areas": [
+     "甘榜景万岸",
+     "友诺士",
+     "加基武吉",
+     "乌美"
+    ],
+    "intro": "在友诺士、甘榜景万岸、加基武吉或乌美遇上亲人离世，最初的几个小时会觉得特别漫长。这一页说明需要做的事，潘国雄只是一通电话的距离。",
+    "near": "这一带部分地方距离天灵总道堂（樟宜路472号）直线距离只有约0.3至2公里。甘榜景万岸和友诺士在东西线，乌美和加基武吉在市区线。",
+    "faq": [
+     {
+      "q": "友诺士的家里半夜有人离世，现在打电话会不会太晚？",
+      "a": "一点也不晚。潘国雄全天候24小时接听电话，夜间和公共假期也一样。紧急个案，我们会在1小时内回复，这是指回复，不是到达时间。"
+     },
+     {
+      "q": "天灵总道堂就在附近，是不是由他们负责丧礼？",
+      "a": "不是。天灵总道堂只是位置参考。潘国雄为您安排 Nirvana 殡葬服务，由 Nirvana 的团队执行。"
+     },
+     {
+      "q": "我爸爸最习惯讲福建话，可以跟潘国雄谈吗？",
+      "a": "可以。潘国雄会讲福建话，也会英语、华语和广东话。"
+     },
+     {
+      "q": "第一通电话就要决定灵位吗？",
+      "a": "不需要。第一通电话只处理眼前必要的步骤，灵位的事可以之后再按家人的步调慢慢决定。"
+     }
+    ]
+   }
+  },
+  {
+   "slug": "bedok",
+   "cluster": "thianleng",
+   "neighbours": [
+    "eunos-kembangan",
+    "marine-parade-katong",
+    "tampines"
+   ],
+   "distance_km": "2-4",
+   "en": {
+    "name": "Bedok",
+    "label": "Bedok, Bedok North, Bedok South and Tanah Merah",
+    "title": "Someone Passed Away in Bedok? Funeral Help | Benjamin Poon",
+    "h1": "Someone has passed away in Bedok: first steps and who to call",
+    "meta": "Someone passed away in Bedok, Bedok North or Tanah Merah? Read the first steps, then WhatsApp Benjamin Poon, who arranges Nirvana funeral services.",
+    "areas": [
+     "Bedok",
+     "Bedok North",
+     "Bedok South / Bayshore",
+     "Tanah Merah"
+    ],
+    "intro": "Losing a husband, wife or parent in Bedok leaves a long list of things to think about. You only need to take the first step today, and the rest can follow in order.",
+    "near": "Most of Bedok is about 2 to 4 km from Thian Leng Chong Toh Tong (472 Changi Road), in a straight line. Bedok and Tanah Merah are on the East-West Line, and Bedok North is on the Downtown Line.",
+    "faq": [
+     {
+      "q": "My husband passed away at home in Bedok. What do I do before calling anyone else?",
+      "a": "The family engages a doctor to certify the death. If no doctor can certify, the police are called and he is taken to Mortuary@HSA. When you are ready, call Benjamin and he will tell you what is next."
+     },
+     {
+      "q": "Can Benjamin help me in Tanah Merah or Bayshore too?",
+      "a": "Yes. Benjamin arranges Nirvana funeral services across Bedok and its neighbouring estates, and stays your one contact throughout."
+     },
+     {
+      "q": "Our family speaks a mix of Hokkien and Mandarin. Is that all right?",
+      "a": "Yes. Benjamin speaks English, Mandarin, Cantonese and Hokkien, and is used to families switching between them."
+     },
+     {
+      "q": "What do Nirvana's funeral services cover?",
+      "a": "They cover coordination of the funeral service and memorial ceremony, embalming and encoffinment, the funeral procession, and preparation of the memorial ceremony. Prices are given on request."
+     }
+    ]
+   },
+   "zh": {
+    "name": "勿洛",
+    "label": "勿洛、勿洛北、勿洛南和丹那美拉",
+    "title": "勿洛有亲人离世？殡葬协助 | 潘国雄",
+    "h1": "勿洛有亲人离世：第一步该做什么、该找谁",
+    "meta": "勿洛、勿洛北、勿洛南或丹那美拉有亲人离世？先看最初的步骤，再用 WhatsApp 联络为您安排 Nirvana 殡葬服务的潘国雄（Benjamin）。",
+    "areas": [
+     "勿洛",
+     "勿洛北",
+     "勿洛南 / 海湾",
+     "丹那美拉"
+    ],
+    "intro": "在勿洛失去丈夫、妻子或父母，需要想的事情很多。今天只要走好第一步，其余的可以一件一件来。",
+    "near": "勿洛大部分地方距离天灵总道堂（樟宜路472号）直线距离约2至4公里。勿洛和丹那美拉在东西线，勿洛北在市区线。",
+    "faq": [
+     {
+      "q": "我先生在勿洛家中离世，打给别人之前我该先做什么？",
+      "a": "家人需要请医生证实死亡。如果没有医生能证实，就会通知警方，遗体会送往 Mortuary@HSA。等您准备好，再致电潘国雄，他会告诉您下一步。"
+     },
+     {
+      "q": "丹那美拉或海湾的家庭，潘国雄也能帮忙吗？",
+      "a": "可以。潘国雄为勿洛和附近各区的家庭安排 Nirvana 殡葬服务，全程都是您唯一的联络人。"
+     },
+     {
+      "q": "我们家里福建话和华语混着讲，可以吗？",
+      "a": "可以。潘国雄会讲英语、华语、广东话和福建话，也习惯家人在几种语言之间转换。"
+     },
+     {
+      "q": "Nirvana 的殡葬服务包括哪些？",
+      "a": "包括丧礼和追思仪式的统筹、遗体防腐和入殓、出殡仪式，以及追思仪式的筹备。费用可应要求提供。"
+     }
+    ]
+   }
+  },
+  {
+   "slug": "marine-parade-katong",
+   "cluster": "thianleng",
+   "neighbours": [
+    "bedok",
+    "eunos-kembangan",
+    "geylang"
+   ],
+   "distance_km": "2-3",
+   "en": {
+    "name": "Marine Parade or Katong",
+    "label": "Marine Parade, Katong and Siglap",
+    "title": "Someone Passed Away in Marine Parade or Katong? Funeral Help",
+    "h1": "Someone has passed away in Marine Parade or Katong: first steps and who to call",
+    "meta": "A loved one has passed away in Marine Parade, Katong or Siglap? See the first steps, then WhatsApp Benjamin Poon, who arranges Nirvana funeral services.",
+    "areas": [
+     "Marine Parade",
+     "Katong / Tanjong Katong",
+     "Siglap"
+    ],
+    "intro": "Families in Marine Parade, Katong and Siglap who have just lost someone are often facing many questions at once. Start with the plain steps below, and ask Benjamin about anything that is unclear.",
+    "near": "This area is about 2 to 3 km from Thian Leng Chong Toh Tong (472 Changi Road), measured in a straight line. Marine Parade, Tanjong Katong and Siglap are all on the Thomson-East Coast Line.",
+    "faq": [
+     {
+      "q": "My mother would have wanted women to care for her. Is that possible?",
+      "a": "Nirvana has Journey with Love (爱。相随), an all-female care team for women. Ask Benjamin about it when you call."
+     },
+     {
+      "q": "Our family lives between Siglap and Katong. Can Benjamin coordinate for all of us?",
+      "a": "Yes. One person in the family can speak to Benjamin, and he stays your one contact from the first call to the final arrangement."
+     },
+     {
+      "q": "Can Benjamin explain things to my elderly aunt in Mandarin?",
+      "a": "Yes. He can speak Mandarin with her, and also English, Cantonese and Hokkien when others in the family prefer those."
+     },
+     {
+      "q": "What are the official steps after a death at home?",
+      "a": "A doctor certifies the death, and it is registered automatically once certified online. The digital death certificate can be downloaded through My Legacy or LifeSG within 30 days, and the Permit to Bury or Cremate is applied for on NEA's ePortal."
+     }
+    ]
+   },
+   "zh": {
+    "name": "马林百列或加东",
+    "label": "马林百列、加东和实乞纳",
+    "title": "马林百列或加东有亲人离世？殡葬协助",
+    "h1": "马林百列或加东有亲人离世：第一步该做什么、该找谁",
+    "meta": "马林百列、加东或实乞纳有亲人离世？先看最初的步骤，再用 WhatsApp 联络为您安排 Nirvana 殡葬服务的潘国雄（Benjamin）。",
+    "areas": [
+     "马林百列",
+     "加东 / 丹戎加东",
+     "实乞纳"
+    ],
+    "intro": "马林百列、加东和实乞纳的家庭刚失去亲人时，往往有许多疑问同时涌上来。先看看下面清楚的步骤，不明白的地方可以直接问潘国雄。",
+    "near": "这一带距离天灵总道堂（樟宜路472号）直线距离约2至3公里。马林百列、丹戎加东和实乞纳都在汤申东海岸线上。",
+    "faq": [
+     {
+      "q": "我妈妈生前希望由女性照顾，可以吗？",
+      "a": "Nirvana 设有「爱。相随」（Journey with Love），是专为女性提供的全女性关怀团队。致电时可以向潘国雄询问。"
+     },
+     {
+      "q": "我们家人分住实乞纳和加东，潘国雄能一并联络吗？",
+      "a": "可以。家里由一位成员联络潘国雄就行，从第一通电话到最后的安排，他都是您唯一的联络人。"
+     },
+     {
+      "q": "潘国雄可以用华语向我年长的阿姨解释吗？",
+      "a": "可以。他可以用华语与她沟通，其他家人习惯英语、广东话或福建话，他也都能应对。"
+     },
+     {
+      "q": "在家中离世，官方的步骤是怎样的？",
+      "a": "先由医生证实死亡，在网上证实后会自动登记。数码死亡证书可在30天内通过 My Legacy 或 LifeSG 下载，土葬或火化准证则在国家环境局（NEA）的网上平台申请。"
+     }
+    ]
+   }
+  },
+  {
+   "slug": "tampines",
+   "cluster": "thianleng",
+   "neighbours": [
+    "bedok",
+    "eunos-kembangan"
+   ],
+   "distance_km": "5-6",
+   "en": {
+    "name": "Tampines",
+    "label": "Tampines, Simei and Upper Changi",
+    "title": "Someone Passed Away in Tampines? Funeral Help | Ben Poon",
+    "h1": "Someone has passed away in Tampines: first steps and who to call",
+    "meta": "Someone passed away in Tampines, Simei or Upper Changi? Start with the first steps, then WhatsApp Benjamin Poon, who arranges Nirvana funeral services.",
+    "areas": [
+     "Simei",
+     "Tampines",
+     "Expo / Changi South",
+     "Upper Changi",
+     "Parts of Pasir Ris"
+    ],
+    "intro": "Tampines is a large town, and families in Simei, Tampines and Upper Changi may be far from each other when sad news comes. A single contact for everyone makes the next few days easier to manage.",
+    "near": "This area is about 5 to 6 km from Thian Leng Chong Toh Tong (472 Changi Road), in a straight line. Simei is on the East-West Line, Tampines and Expo are on both the East-West and Downtown lines, and Upper Changi is on the Downtown Line.",
+    "faq": [
+     {
+      "q": "Is it different if the death happens at home in Tampines rather than in hospital?",
+      "a": "Yes, slightly. In hospital, the hospital doctor certifies the death. At home, the family engages a doctor, or the police are called if no doctor can certify."
+     },
+     {
+      "q": "Some of us live in Simei, Upper Changi and parts of Pasir Ris. Can Benjamin help all of us?",
+      "a": "Yes. Benjamin is the one contact for the whole family, even when relatives live in different estates."
+     },
+     {
+      "q": "My grandfather only speaks Mandarin. Can Benjamin speak with him?",
+      "a": "Yes. Benjamin speaks Mandarin, along with English, Cantonese and Hokkien, so your grandfather can speak for himself."
+     },
+     {
+      "q": "Can we take a few days to decide on a niche?",
+      "a": "Yes. There is no need to decide on the first call. Share your wishes with Benjamin when the family is ready."
+     }
+    ]
+   },
+   "zh": {
+    "name": "淡滨尼",
+    "label": "淡滨尼、四美和樟宜上段",
+    "title": "淡滨尼有亲人离世？殡葬协助 | 潘国雄",
+    "h1": "淡滨尼有亲人离世：第一步该做什么、该找谁",
+    "meta": "淡滨尼、四美或樟宜上段有亲人离世？先看最初的步骤，再用 WhatsApp 联络为您安排 Nirvana 殡葬服务的潘国雄（Benjamin）。",
+    "areas": [
+     "四美",
+     "淡滨尼",
+     "博览 / 樟宜南",
+     "樟宜上段",
+     "白沙（部分）"
+    ],
+    "intro": "淡滨尼是个大市镇，四美、淡滨尼和樟宜上段的家人，噩耗传来时可能分隔各处。有一个人统一联络，接下来几天会轻松一些。",
+    "near": "这一带距离天灵总道堂（樟宜路472号）直线距离约5至6公里。四美在东西线，淡滨尼和博览同时在东西线和市区线，樟宜上段在市区线。",
+    "faq": [
+     {
+      "q": "在淡滨尼家中离世，和在医院离世有什么不同？",
+      "a": "有一点不同。在医院，由医院的医生证实死亡；在家中，则由家人请医生来证实，如果没有医生能证实，就会通知警方。"
+     },
+     {
+      "q": "我们有人住四美、樟宜上段，也有人住白沙部分地区，潘国雄能一起协助吗？",
+      "a": "可以。即使亲人分住不同的组屋区，潘国雄也是全家唯一的联络人。"
+     },
+     {
+      "q": "我爷爷只会讲华语，可以直接跟潘国雄谈吗？",
+      "a": "可以。潘国雄会讲华语，也会英语、广东话和福建话，爷爷可以自己跟他说。"
+     },
+     {
+      "q": "灵位可以过几天再决定吗？",
+      "a": "可以。第一通电话不必决定。等家人准备好，再把您的想法告诉潘国雄就行。"
+     }
+    ]
+   }
+  },
+  {
+   "slug": "jurong-west",
+   "cluster": "nirvana",
+   "neighbours": [
+    "choa-chu-kang-tengah",
+    "bukit-batok-jurong-east"
+   ],
+   "distance_km": "4-5",
+   "en": {
+    "name": "Jurong West",
+    "label": "Jurong West, Boon Lay and Pioneer",
+    "title": "Someone Passed Away in Jurong West? Funeral Help | Ben Poon",
+    "h1": "Someone has passed away in Jurong West: first steps and who to call",
+    "meta": "Someone passed away in Jurong West, Boon Lay or Pioneer? Read the first steps, then WhatsApp Benjamin Poon, who arranges Nirvana funeral services.",
+    "areas": [
+     "Pioneer",
+     "Boon Lay",
+     "Jurong West",
+     "Lakeside"
+    ],
+    "intro": "Nirvana's own memorial park is in the west, so families in Jurong West are not far from it. If someone has just passed away, the first steps are the same wherever you live, and Benjamin will walk them with you.",
+    "near": "Pioneer is about 3.8 km, Boon Lay about 4.1 km and Lakeside about 4.7 km from Nirvana Memorial Garden (950 Old Choa Chu Kang Road), in a straight line. All of these stations are on the East-West Line. The garden is Nirvana's memorial park, and it is given here only as a location reference.",
+    "faq": [
+     {
+      "q": "My mother died at home in Jurong West and I am her only child here. Who do I call?",
+      "a": "The family engages a doctor to certify the death. If no doctor can certify, the police are called and she is taken to Mortuary@HSA. Then call Benjamin, who will stay with you as your one contact."
+     },
+     {
+      "q": "Do I need to live close to Nirvana Memorial Garden to ask Benjamin for help?",
+      "a": "No. It is Nirvana's memorial park in the west, but being close to it is not a condition. Benjamin helps families across Jurong West, Boon Lay and Pioneer."
+     },
+     {
+      "q": "Is it fine to speak Hokkien with Benjamin if I live near Boon Lay?",
+      "a": "Yes. Benjamin speaks Hokkien, English, Mandarin and Cantonese, so you can use whichever language is easiest."
+     },
+     {
+      "q": "Do we have to choose a niche now?",
+      "a": "No. You can leave the niche for later. For now, the first call is just about the steps that cannot wait."
+     }
+    ]
+   },
+   "zh": {
+    "name": "裕廊西",
+    "label": "裕廊西、文礼和先驱",
+    "title": "裕廊西有亲人离世？殡葬协助 | 潘国雄",
+    "h1": "裕廊西有亲人离世：第一步该做什么、该找谁",
+    "meta": "裕廊西、文礼或先驱有亲人离世？先看最初的步骤，再用 WhatsApp 联络为您安排 Nirvana 殡葬服务的潘国雄（Benjamin）。",
+    "areas": [
+     "先驱",
+     "文礼",
+     "裕廊西",
+     "湖畔"
+    ],
+    "intro": "Nirvana 在西部有自己的纪念园，所以裕廊西的家庭离它并不远。不论您住哪里，最初的步骤都一样，潘国雄会陪您一步一步走。",
+    "near": "先驱距离富贵山庄 Nirvana Memorial Garden（旧蔡厝港路950号）直线距离约3.8公里，文礼约4.1公里，湖畔约4.7公里。这几个地铁站都在东西线。富贵山庄是 Nirvana 的纪念园，这里只作位置参考。",
+    "faq": [
+     {
+      "q": "我妈妈在裕廊西家中离世，我是这里唯一的孩子，该打给谁？",
+      "a": "家人需要请医生证实死亡。如果没有医生能证实，就会通知警方，遗体会送往 Mortuary@HSA。之后请致电潘国雄，他会一直是您唯一的联络人。"
+     },
+     {
+      "q": "一定要住在富贵山庄附近才能找潘国雄吗？",
+      "a": "不需要。富贵山庄是 Nirvana 在西部的纪念园，但住得近不是条件。裕廊西、文礼和先驱的家庭，潘国雄都能协助。"
+     },
+     {
+      "q": "我住在文礼附近，可以用福建话跟潘国雄沟通吗？",
+      "a": "可以。潘国雄会讲福建话、英语、华语和广东话，您用最顺口的语言就好。"
+     },
+     {
+      "q": "现在就要选灵位吗？",
+      "a": "不用。灵位可以之后再决定。现在的第一通电话，只处理不能等的步骤。"
+     }
+    ]
+   }
+  },
+  {
+   "slug": "choa-chu-kang-tengah",
+   "cluster": "nirvana",
+   "neighbours": [
+    "jurong-west",
+    "bukit-batok-jurong-east"
+   ],
+   "distance_km": "5-7",
+   "en": {
+    "name": "Choa Chu Kang or Tengah",
+    "label": "Choa Chu Kang, Tengah and Yew Tee",
+    "title": "Someone Passed Away in Choa Chu Kang? Funeral Help",
+    "h1": "Someone has passed away in Choa Chu Kang or Tengah: first steps and who to call",
+    "meta": "Someone passed away in Choa Chu Kang, Tengah or Yew Tee? Learn the first steps, then WhatsApp Benjamin Poon, who arranges Nirvana funeral services.",
+    "areas": [
+     "Choa Chu Kang",
+     "Tengah",
+     "Yew Tee"
+    ],
+    "intro": "Choa Chu Kang, Tengah and Yew Tee sit in the northwest, close to Nirvana's memorial park. If someone has just passed away, take the steps below in order, and call Benjamin whenever you are ready.",
+    "near": "Tengah town is about 5 km from Nirvana Memorial Garden (950 Old Choa Chu Kang Road), measured in a straight line. Choa Chu Kang MRT is about 6.5 km away and Yew Tee about 7 km. Tengah does not have an MRT station yet.",
+    "faq": [
+     {
+      "q": "My father passed away at home in Tengah. Who do I call first?",
+      "a": "The family engages a doctor to certify the death. If no doctor can certify, the police are called and he is taken to Mortuary@HSA. After that, call Benjamin and he will explain what comes next."
+     },
+     {
+      "q": "Does Benjamin also help families in Yew Tee?",
+      "a": "Yes. Benjamin arranges Nirvana funeral services for families in Yew Tee, Choa Chu Kang and Tengah alike."
+     },
+     {
+      "q": "Can my elderly relatives speak Cantonese or Hokkien with Benjamin?",
+      "a": "Yes. Benjamin speaks both, as well as English and Mandarin, so older relatives can be part of the conversation."
+     },
+     {
+      "q": "My brother is overseas. Can he be included in the planning?",
+      "a": "Yes. Benjamin is one contact for the family, and you can share his WhatsApp with your brother so he can follow along from abroad."
+     }
+    ]
+   },
+   "zh": {
+    "name": "蔡厝港或登加",
+    "label": "蔡厝港、登加和油池",
+    "title": "蔡厝港有亲人离世？殡葬协助 | 潘国雄",
+    "h1": "蔡厝港或登加有亲人离世：第一步该做什么、该找谁",
+    "meta": "蔡厝港、登加或油池有亲人离世？先看最初的步骤，再用 WhatsApp 联络为您安排 Nirvana 殡葬服务的潘国雄（Benjamin）。",
+    "areas": [
+     "蔡厝港",
+     "登加",
+     "油池"
+    ],
+    "intro": "蔡厝港、登加和油池位于西北部，离 Nirvana 的纪念园不远。如果有亲人刚离世，请按下面的步骤一步步来，准备好了再致电潘国雄。",
+    "near": "登加市镇距离富贵山庄 Nirvana Memorial Garden（旧蔡厝港路950号）直线距离约5公里。蔡厝港地铁站约6.5公里，油池约7公里。登加目前还没有地铁站。",
+    "faq": [
+     {
+      "q": "我爸爸在登加家中离世，应该先打给谁？",
+      "a": "家人需要请医生证实死亡。如果没有医生能证实，就会通知警方，遗体会送往 Mortuary@HSA。之后请致电潘国雄，他会说明接下来的步骤。"
+     },
+     {
+      "q": "油池的家庭，潘国雄也能协助吗？",
+      "a": "可以。油池、蔡厝港和登加的家庭，潘国雄都为他们安排 Nirvana 殡葬服务。"
+     },
+     {
+      "q": "年长的亲戚可以用广东话或福建话跟潘国雄谈吗？",
+      "a": "可以。潘国雄两种都会，也会英语和华语，长辈都可以参与谈话。"
+     },
+     {
+      "q": "我哥哥在国外，也能参与安排吗？",
+      "a": "可以。潘国雄是全家唯一的联络人，您可以把他的 WhatsApp 号码分享给哥哥，让他在国外也能跟进。"
+     }
+    ]
+   }
+  },
+  {
+   "slug": "bukit-batok-jurong-east",
+   "cluster": "nirvana",
+   "neighbours": [
+    "jurong-west",
+    "choa-chu-kang-tengah"
+   ],
+   "distance_km": "6-7.5",
+   "en": {
+    "name": "Bukit Batok or Jurong East",
+    "label": "Bukit Batok, Bukit Gombak and Jurong East",
+    "title": "Someone Passed Away in Bukit Batok or Jurong East? Funeral Help",
+    "h1": "Someone has passed away in Bukit Batok or Jurong East: first steps and who to call",
+    "meta": "Someone passed away in Bukit Batok, Bukit Gombak or Jurong East? Read the first steps, then WhatsApp Benjamin Poon, who arranges Nirvana funeral services.",
+    "areas": [
+     "Bukit Batok",
+     "Bukit Gombak",
+     "Jurong East",
+     "Chinese Garden"
+    ],
+    "intro": "In Bukit Batok, Bukit Gombak and Jurong East, a death often means calls to relatives in several parts of the island. Here is a short guide so that you know what must be done first, and who can help.",
+    "near": "Chinese Garden is about 5.9 km from Nirvana Memorial Garden (950 Old Choa Chu Kang Road), in a straight line. Bukit Batok and Bukit Gombak are about 7.2 km away, and Jurong East about 7.3 km. Bukit Batok and Bukit Gombak are on the North-South Line, Chinese Garden is on the East-West Line, and Jurong East is on both.",
+    "faq": [
+     {
+      "q": "A neighbour found my uncle at home in Bukit Batok. Who is told first?",
+      "a": "If no doctor can certify the death, as in a sudden unexpected death at home, the police are called and he is taken to Mortuary@HSA. Once that is under way, call Benjamin for guidance on the next steps."
+     },
+     {
+      "q": "Does Benjamin help in Jurong East and Chinese Garden too?",
+      "a": "Yes. Benjamin arranges Nirvana funeral services for families across Bukit Batok, Bukit Gombak, Jurong East and Chinese Garden."
+     },
+     {
+      "q": "Our family follows Taoist customs mixed with no fixed religion. Is that all right?",
+      "a": "Yes. Benjamin arranges services for Buddhist, Taoist and Free-thinker families. Tell him what matters to your family, and he will guide you."
+     },
+     {
+      "q": "Can we use English and Mandarin together on the call?",
+      "a": "Yes. Benjamin speaks English, Mandarin, Cantonese and Hokkien, and can move between them as the family needs."
+     }
+    ]
+   },
+   "zh": {
+    "name": "武吉巴督或裕廊东",
+    "label": "武吉巴督、武吉甘柏和裕廊东",
+    "title": "武吉巴督或裕廊东有亲人离世？殡葬协助",
+    "h1": "武吉巴督或裕廊东有亲人离世：第一步该做什么、该找谁",
+    "meta": "武吉巴督、武吉甘柏或裕廊东有亲人离世？先看最初的步骤，再用 WhatsApp 联络为您安排 Nirvana 殡葬服务的潘国雄（Benjamin）。",
+    "areas": [
+     "武吉巴督",
+     "武吉甘柏",
+     "裕廊东",
+     "裕华园"
+    ],
+    "intro": "在武吉巴督、武吉甘柏和裕廊东，有人离世常常意味着要联络分布在岛上各处的亲戚。这份简短的指引，让您知道先做什么、找谁帮忙。",
+    "near": "裕华园距离富贵山庄 Nirvana Memorial Garden（旧蔡厝港路950号）直线距离约5.9公里。武吉巴督和武吉甘柏约7.2公里，裕廊东约7.3公里。武吉巴督和武吉甘柏在南北线，裕华园在东西线，裕廊东则两条线都有。",
+    "faq": [
+     {
+      "q": "邻居发现我叔叔在武吉巴督家中离世，最先该通知谁？",
+      "a": "如果没有医生能证实死亡，例如在家中突然离世，就会通知警方，遗体会送往 Mortuary@HSA。这一步进行后，请致电潘国雄，他会指引接下来的步骤。"
+     },
+     {
+      "q": "裕廊东和裕华园的家庭，潘国雄也能协助吗？",
+      "a": "可以。武吉巴督、武吉甘柏、裕廊东和裕华园的家庭，潘国雄都为他们安排 Nirvana 殡葬服务。"
+     },
+     {
+      "q": "我们家信道教习俗，但没有固定宗教，可以吗？",
+      "a": "可以。潘国雄为佛教、道教和自由思想者的家庭安排服务。告诉他您家重视什么，他会为您指引。"
+     },
+     {
+      "q": "电话里可以英语和华语混着讲吗？",
+      "a": "可以。潘国雄会讲英语、华语、广东话和福建话，可以按家人的需要随时转换。"
+     }
+    ]
+   }
+  }
+ ]
+}
