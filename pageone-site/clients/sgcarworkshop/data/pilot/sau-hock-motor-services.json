@@ -1,0 +1,39 @@
+{
+ "lede": "Sau Hock Motor Services at Ang Mo Kio Industrial Park 2 is a family-run car repair workshop.",
+ "chips": [
+  "Car repair",
+  "Tail light replacement",
+  "Polishing"
+ ],
+ "services": [
+  "Car repair",
+  "Tail light replacement",
+  "Scratch polishing",
+  "Fault diagnosis"
+ ],
+ "themes": "Customers on Google Maps mention a no-frills, family-run workshop with clear explanations, tail light and polishing work, and help arranging tyres or wrapping.",
+ "faqs": [
+  [
+   "What does Sau Hock Motor Services do?",
+   "Google Maps lists it as a car repair workshop."
+  ],
+  [
+   "What are the opening hours?",
+   "The hours are listed in the Google Maps section above. Please see Google Maps for current hours."
+  ]
+ ],
+ "sources": "its Google Maps listing",
+ "stories": [],
+ "mentioned_services": [
+  "Repairs",
+  "Tail lights",
+  "Polishing",
+  "Tyres"
+ ],
+ "services_note": "Services mentioned on Google Maps. Ask the workshop for its full list.",
+ "specialties": [],
+ "makes": [],
+ "makes_note": "Not listed on its public pages. Ask the workshop about your car.",
+ "good_to_know": [],
+ "card_rules": "2026-11-05"
+}

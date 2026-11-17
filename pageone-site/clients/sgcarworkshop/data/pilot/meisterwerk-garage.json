@@ -1,0 +1,58 @@
+{
+ "lede": "Meisterwerk Garage at Ang Mo Kio Industrial Park 2 is a European car servicing workshop.",
+ "chips": [
+  "Engine oil servicing",
+  "Diagnostics",
+  "Air-con"
+ ],
+ "services": [
+  "Engine oil servicing",
+  "Brake service",
+  "Computer diagnostics",
+  "Air-con regas and repair",
+  "Tyres and wheel alignment",
+  "Pre-purchase inspection"
+ ],
+ "themes": "Customers on Google Maps mention clear explanations of what the car needs, photo reports and routine servicing, air-con and noise diagnosis on continental cars.",
+ "faqs": [
+  [
+   "What does Meisterwerk Garage do?",
+   "Google Maps lists it as a car repair workshop."
+  ],
+  [
+   "What are the opening hours?",
+   "The hours are listed in the Google Maps section above. Please see Google Maps for current hours."
+  ]
+ ],
+ "sources": "its Google Maps listing and its website",
+ "stories": [],
+ "mentioned_services": [
+  "Servicing",
+  "Aircon",
+  "Diagnostics",
+  "Pre-COE inspection"
+ ],
+ "services_note": "Services listed on its website and mentioned on Google Maps. Ask the workshop for its full list.",
+ "specialties": [
+  "Independent European car specialist",
+  "Manufacturer-level diagnostics",
+  "Pre-purchase inspection"
+ ],
+ "makes": [
+  "BMW",
+  "Mercedes-Benz",
+  "Audi",
+  "Porsche",
+  "Volkswagen",
+  "MINI",
+  "Land Rover"
+ ],
+ "makes_note": "Makes come from its website.",
+ "good_to_know": [
+  "Six workshop bays",
+  "Online booking with free rescheduling up to 24 hours before",
+  "Work is logged with photos and a write-up"
+ ],
+ "good_to_know_note": "From its website.",
+ "card_rules": "2026-11-05"
+}

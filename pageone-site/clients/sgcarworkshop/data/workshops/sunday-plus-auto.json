@@ -40,5 +40,9 @@
  "tier": "basic",
  "first_seen_at": "2026-11-17",
  "last_verified_at": "2026-11-17",
- "collector_version": "agent-v5"
+ "collector_version": "agent-v5",
+ "hold": "hold: a sampled review alleges dishonesty over an aircon part; recheck later",
+ "estate": "amk-industrial-park-2",
+ "planning_area": "Ang Mo Kio",
+ "region": "north-east"
 }

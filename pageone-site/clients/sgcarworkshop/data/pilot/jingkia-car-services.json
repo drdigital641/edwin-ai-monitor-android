@@ -1,0 +1,39 @@
+{
+ "lede": "Jingkia Car Services at Ang Mo Kio Industrial Park 2 is a car servicing and repair workshop.",
+ "chips": [
+  "Car servicing",
+  "Car repair"
+ ],
+ "services": [
+  "Car servicing",
+  "Car repair",
+  "Shock absorber work"
+ ],
+ "themes": "Customers on Google Maps mention a friendly owner and help with servicing, shock absorbers and repairs on Honda and Mazda cars.",
+ "faqs": [
+  [
+   "What does Jingkia Car Services do?",
+   "Google Maps lists it as a car repair workshop."
+  ],
+  [
+   "What are the opening hours?",
+   "The hours are listed in the Google Maps section above. Please see Google Maps for current hours."
+  ]
+ ],
+ "sources": "its Google Maps listing",
+ "stories": [],
+ "mentioned_services": [
+  "Servicing",
+  "Suspension",
+  "Repairs"
+ ],
+ "services_note": "Services mentioned on Google Maps. Ask the workshop for its full list.",
+ "specialties": [],
+ "makes": [
+  "Honda",
+  "Mazda"
+ ],
+ "makes_note": "From customer comments on Google Maps.",
+ "good_to_know": [],
+ "card_rules": "2026-11-05"
+}

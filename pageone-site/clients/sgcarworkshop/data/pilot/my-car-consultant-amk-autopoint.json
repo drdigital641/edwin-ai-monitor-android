@@ -1,0 +1,63 @@
+{
+ "lede": "My Car Consultant @ AMK Autopoint at Ang Mo Kio Industrial Park 2 is a general car servicing and repair workshop.",
+ "chips": [
+  "Servicing",
+  "Diagnostics",
+  "Accident repairs"
+ ],
+ "services": [
+  "Servicing",
+  "Diagnostics",
+  "General repairs",
+  "Pre-purchase evaluation",
+  "Hybrid servicing and battery replacement",
+  "Accident repairs",
+  "Spray painting",
+  "Gearbox overhaul"
+ ],
+ "themes": "Customers on Google Maps mention engine servicing and a BMW gearbox overhaul, with the mechanic explaining the work and keeping them updated.",
+ "faqs": [
+  [
+   "What does My Car Consultant @ AMK Autopoint do?",
+   "Google Maps lists it as a car repair workshop."
+  ],
+  [
+   "What are the opening hours?",
+   "The hours are listed in the Google Maps section above. Please see Google Maps for current hours."
+  ]
+ ],
+ "sources": "its Google Maps listing and its website",
+ "stories": [],
+ "mentioned_services": [
+  "Servicing",
+  "Gearbox",
+  "Engine servicing"
+ ],
+ "services_note": "Services listed on its website and mentioned on Google Maps. Ask the workshop for its full list.",
+ "specialties": [
+  "Hybrid vehicle servicing",
+  "Classic car service and repair",
+  "Gearbox overhaul"
+ ],
+ "makes": [
+  "Toyota",
+  "Subaru",
+  "Honda",
+  "Mercedes-Benz",
+  "BMW",
+  "Nissan",
+  "Citroen",
+  "Porsche",
+  "Audi",
+  "Jaguar",
+  "Ford"
+ ],
+ "makes_note": "Makes come from the group's website. Ask the workshop about your car.",
+ "good_to_know": [
+  "Part of the My Car Consultant group, which also offers towing and recovery",
+  "Online appointment booking",
+  "Helps with insurance renewal and accident claims"
+ ],
+ "good_to_know_note": "From the group's website.",
+ "card_rules": "2026-11-05"
+}

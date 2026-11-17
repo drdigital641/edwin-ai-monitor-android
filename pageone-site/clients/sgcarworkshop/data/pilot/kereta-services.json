@@ -1,0 +1,36 @@
+{
+ "lede": "Kereta Services at Ang Mo Kio Industrial Park 2 is a car servicing and bodykit installation workshop.",
+ "chips": [
+  "Car servicing",
+  "Bodykits"
+ ],
+ "services": [
+  "Car servicing",
+  "Bodykit supply and installation",
+  "Paintwork"
+ ],
+ "themes": "Customers on Google Maps mention friendly staff, a basic servicing done within an hour, and a bodykit fitted with paintwork.",
+ "faqs": [
+  [
+   "What does Kereta Services do?",
+   "Google Maps lists it as a car repair workshop."
+  ],
+  [
+   "What are the opening hours?",
+   "The hours are listed in the Google Maps section above. Please see Google Maps for current hours."
+  ]
+ ],
+ "sources": "its Google Maps listing",
+ "stories": [],
+ "mentioned_services": [
+  "Servicing",
+  "Bodykit",
+  "Paintwork"
+ ],
+ "services_note": "Services mentioned on Google Maps. Ask the workshop for its full list.",
+ "specialties": [],
+ "makes": [],
+ "makes_note": "Not listed on its public pages. Ask the workshop about your car.",
+ "good_to_know": [],
+ "card_rules": "2026-11-05"
+}

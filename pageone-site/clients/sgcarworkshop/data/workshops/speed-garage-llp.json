@@ -40,5 +40,9 @@
  "tier": "basic",
  "first_seen_at": "2026-11-17",
  "last_verified_at": "2026-11-17",
- "collector_version": "agent-v5"
+ "collector_version": "agent-v5",
+ "hold": "hold: same mobile as Castrol Service (same unit group); recheck which business owns it",
+ "estate": "amk-industrial-park-2",
+ "planning_area": "Ang Mo Kio",
+ "region": "north-east"
 }

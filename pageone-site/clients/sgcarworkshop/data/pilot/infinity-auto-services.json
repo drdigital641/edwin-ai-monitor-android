@@ -1,0 +1,37 @@
+{
+ "lede": "Infinity Auto Services at Ang Mo Kio Industrial Park 2 is a car servicing and spray painting workshop.",
+ "chips": [
+  "Car servicing",
+  "Spray painting"
+ ],
+ "services": [
+  "Car servicing",
+  "Spray painting",
+  "General repairs"
+ ],
+ "themes": "Customers on Google Maps mention regular servicing and a minor spray job, with a friendly owner and helpful technicians.",
+ "faqs": [
+  [
+   "What does INFINITY AUTO SERVICES do?",
+   "Google Maps lists it as a car repair workshop."
+  ],
+  [
+   "What are the opening hours?",
+   "The hours are listed in the Google Maps section above. Please see Google Maps for current hours."
+  ]
+ ],
+ "sources": "its Google Maps listing",
+ "stories": [],
+ "mentioned_services": [
+  "Servicing",
+  "Spray painting"
+ ],
+ "services_note": "Services mentioned on Google Maps. Ask the workshop for its full list.",
+ "specialties": [],
+ "makes": [
+  "Toyota"
+ ],
+ "makes_note": "From a customer comment on Google Maps.",
+ "good_to_know": [],
+ "card_rules": "2026-11-05"
+}
