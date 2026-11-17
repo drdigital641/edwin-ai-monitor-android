@@ -62,3 +62,12 @@ so the save can be re-applied on top of whatever the apps' HEAD is at save time.
 ## After the save
 Edwin Publishes the Bridge checkpoint (frontend button + MCP) and the Controller checkpoint (Publish only, never Activate).
 Backend functions are live on save; the Connect button appears after the Bridge Publish.
+
+## Saved 18 Nov 2026 ~7:10am SGT (Edwin OK 6:53am SGT)
+- Bridge checkpoint 6afcdddaeed39d3e0091a0c8 (git 36ce09c), Controller checkpoint 6afcdddb3aaf67e56cbc4403 (git 72e15c6). Both need Publish.
+- Change after review (deploy blocker): the npm imagescript build ships native .node files the function bundler cannot pack,
+  so runnerImage.ts imports the Deno build (https://deno.land/x/imagescript@1.3.0/mod.ts). It has no WebP encoder, so all
+  three files are JPEG (<slug>.jpg, <slug>-card.jpg, <slug>-og.jpg). Tests 132/0 after the change.
+- Every Bridge entry file got a one-line comment so all functions redeploy with the runner-aware handler.
+- IMPORTANT: until the Bridge checkpoint is Published, the published bundles of the existing functions still read scope
+  'runner' as 'full' (old scopeOf). Do NOT create the runner key before the Publish. Claude's test key is switched off.
