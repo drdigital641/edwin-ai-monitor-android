@@ -1,0 +1,44 @@
+{
+ "schema_version": 1,
+ "slug": "nightzconcepts",
+ "place_id": "ChIJqXIWU1oW2jERo5KgR5fLsNI",
+ "place_id_checked_at": "2026-11-17",
+ "name": "NightzConcepts",
+ "name_source_url": "google_profile",
+ "name_checked_at": "2026-11-17",
+ "address": {
+  "block": "",
+  "street": "7030 Ang Mo Kio Ave 5, #02-25 Northstar @ AMK",
+  "unit": "",
+  "building": ""
+ },
+ "postal_code": "569880",
+ "address_source_url": "google_profile",
+ "address_checked_at": "2026-11-17",
+ "categories": [
+  "SERV"
+ ],
+ "services": [
+  "General servicing and repair"
+ ],
+ "services_source_url": "google_profile",
+ "phones": [
+  {
+   "e164": "+6590035540",
+   "kind": "mobile",
+   "whatsapp": true,
+   "source": "google_profile",
+   "checked_at": "2026-11-17"
+  }
+ ],
+ "google_screen": {
+  "passed": true,
+  "reason": "OPERATIONAL, car repair, SG mobile on Google profile",
+  "checked_at": "2026-11-17"
+ },
+ "status": "pending",
+ "tier": "basic",
+ "first_seen_at": "2026-11-17",
+ "last_verified_at": "2026-11-17",
+ "collector_version": "agent-v5"
+}
