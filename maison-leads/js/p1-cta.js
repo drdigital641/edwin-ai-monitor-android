@@ -23,6 +23,7 @@ h:'Send an enquiry',lName:'Name',lMobile:'Mobile (8 digits)',lProject:'Project o
 consent:'By submitting you agree Maison may contact you about your enquiry.',privacy:'/privacy/',privacyText:'Privacy policy',
 thanks:'Thank you, Maison will WhatsApp you shortly.',waBtn:'WhatsApp us now',waNow:'Or WhatsApp us now',
 waText:function(p){return p?"Hi Maison, I'd like to ask about my "+p+" renovation.":"Hi Maison Interior Design, I'd like to discuss my renovation."},
+eSend:'Sorry, we could not save that just now.',waFailBtn:'Send it on WhatsApp instead',waFail:function(n,m,p){return 'Hi Maison, I would like a free consultation. Name: '+n+'. Mobile: '+m+(p?'. Project: '+p:'')+'.'},
 waAfter:function(n,p){return 'Hi Maison, I just sent an enquiry on your website. Name: '+n+(p?'. Project: '+p:'')+'.'},
 project:function(){var m=location.pathname.match(/^\/new-launches\/([^\/]+)\//);if(!m)return'';var e=document.querySelector('h1'),t=e?e.textContent.replace(/\s+/g,' ').trim().replace(/\s+(Renovation|Interior|Home|Design)\b.*$/i,''):'';return t&&t.length<60?t:m[1].replace(/-/g,' ').replace(/\b[a-z]/g,function(c){return c.toUpperCase()})}}};/*/CFG*/
 var API='https://base44.app/api/apps/6ac7f2548a9c3877449e2772/functions/track',d=document,REP=30*60*1000;
@@ -84,7 +85,7 @@ st.textContent='.p1f-s{padding:64px 0}.p1f-in{display:grid;gap:28px;align-items:
 '.p1f-copy p{max-width:34em}.p1f-hp{position:absolute!important;left:-9999px!important;width:1px;height:1px;overflow:hidden}'+
 '.p1f input{min-height:48px;font-size:17px}.p1f .p1f-row{display:flex;flex-direction:column;gap:12px;margin-top:6px}'+
 '.p1f-note{font-size:13px;line-height:1.5;margin:14px 0 0;opacity:.85}.p1f-note a{text-decoration:underline}'+
-'.p1f-err{color:#9b2c2c;font-size:14px;margin:10px 0 0}.p1f-ok{font-size:20px;line-height:1.4;margin:0 0 18px}'+
+'.p1f-err{color:#9b2c2c;font-size:14px;margin:10px 0 0}.p1f-err .p1f-wa{margin-top:10px}.p1f-ok{font-size:20px;line-height:1.4;margin:0 0 18px}'+
 '.p1f .p1f-btn,.p1f-wa{display:flex;align-items:center;justify-content:center;width:100%;min-height:52px;text-align:center}'+(F.css||'');d.head.appendChild(st)}
 function html(withH){var p=proj(),c=F.cls||{};
 return '<form class="p1f '+esc(c.form||'')+'" data-p1-enquiry data-ref="enquiry-form" novalidate>'+(withH&&F.h?'<h2 class="'+esc(c.h||'')+'">'+esc(F.h)+'</h2>':'')+
@@ -108,8 +109,9 @@ var k='p1f_sent',prev=0;try{prev=+sessionStorage.getItem(k)||0}catch(x){}if(Date
 var btn=f.querySelector('button');btn.disabled=true;send(f,'form_submit','Enquiry form');
 post({entity:'Enquiry',site:SITE,page_path:location.pathname.slice(0,200),ref_code:REF||pcode(),name:name,mobile:mob,project:pj,hp:g('company'),fill_ms:Date.now()-t0,
 session_id:sid(),visitor_id:vid(),device_type:MOB,ua:UA,tz:tz(),lang:(navigator.language||'').slice(0,16),bot:BOT?1:undefined,test:T?1:undefined})
-.then(function(r){if(r.status===204||r.ok){try{sessionStorage.setItem(k,String(Date.now()))}catch(x){}done()}else{btn.disabled=false;bad(F.eSend||'Sorry, that did not go through. Please WhatsApp us instead.')}})
-.catch(function(){btn.disabled=false;bad(F.eSend||'Sorry, that did not go through. Please WhatsApp us instead.')})})}
+.then(function(r){if(r.status===204||r.ok){try{sessionStorage.setItem(k,String(Date.now()))}catch(x){}done()}else fail()}).catch(fail);
+/* not saved (network, limit, or the Controller not published yet): the lead still goes out, one tap to WhatsApp with the details filled in */
+function fail(){btn.disabled=false;err.innerHTML=esc(F.eSend||'Sorry, that did not go through.')+'<a class="p1f-wa '+esc((F.cls||{}).wa||'')+'" href="'+esc(waUrl(F.waFail?F.waFail(name,mob,pj):'Hi, my name is '+name+'. Mobile: '+mob+(pj?'. Project: '+pj:'')+'.'))+'" data-cta="whatsapp" data-ref="enquiry-fallback-wa" target="_blank" rel="noopener">'+esc(F.waFailBtn||'Send it on WhatsApp instead')+'</a>';err.hidden=false}})}
 function mount(){if(!F||!F.wa)return;css();var ph=d.querySelectorAll('[data-p1-form]'),i,m,t,box,p=location.pathname,did=0;
 for(i=0;i<ph.length;i++){ph[i].innerHTML=html(1);wire(ph[i].querySelector('form'));did=1}if(did)return;
 for(i=0;i<(F.mounts||[]).length;i++){m=F.mounts[i];if(m.path&&!new RegExp(m.path).test(p))continue;t=d.querySelector(m.sel||m.before);if(!t)continue;
