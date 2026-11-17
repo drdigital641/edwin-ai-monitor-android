@@ -2019,6 +2019,8 @@
    "general-servicing-repair",
    "wheel-alignment"
   ],
-  "tag_id": null
+  "tag_id": null,
+  "hero": "articles/car-steering-wheel-groan-squeak-hero.jpg",
+  "hero_alt": "Illustrative photo of a car front wheel turned sharply, showing steering and suspension parts"
  }
 ]

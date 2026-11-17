@@ -2383,10 +2383,14 @@ def guide_page(g):
     others = ''.join('<li><a href="../../%s">%s</a></li>' % (_guides.gpath(o), E(o['short'])) for o in _guides.GUIDES if o['slug'] != g['slug'])
     faq_html = ''.join('<details><summary>%s</summary><p>%s</p></details>' % (E(q), E(a)) for q, a in g['faqs'])
     heading = g.get('heading') or ('Likely causes' if g['kind'] == 'problem' else 'What to know and ask')
+    hero_html = ''
+    if g.get('hero'):   # 18 Nov 2026: article hero image (Base44, via Bridge hero_image), also og:image + Article image
+        hw, hh = imgsize(g['hero'])
+        hero_html = '<figure style="margin:14px 0 16px"><img src="../../assets/img/%s" alt="%s" width="%d" height="%d" style="width:100%%;height:auto;max-height:420px;object-fit:cover;border-radius:12px" fetchpriority="high"></figure>\n' % (g['hero'], E(g['hero_alt'], True), hw, hh)
     body = f'''<div class="w nar guidepg">{cr}
 <h1 style="margin-top:14px">{E(g['h1'])}</h1>
 <p class="lede" style="font-size:1rem">{E(g['lede'])}</p>
-<p class="fine">General guide in plain words. It is not a diagnosis and gives no prices: only a workshop that inspects your car can say what is wrong.</p>
+{hero_html}<p class="fine">General guide in plain words. It is not a diagnosis and gives no prices: only a workshop that inspects your car can say what is wrong.</p>
 <h2>{E(heading)}</h2><ol class="causes">{causes}</ol>
 <h2>{E(g.get('tell_h') or 'What to tell the workshop')}</h2><ul class="tick svc-plain">{tell}</ul>
 <div class="urgent"><b>{E(g.get('urgent_h') or 'Do not wait if:')}</b> {E(g['urgent'])}</div>
@@ -2400,7 +2404,9 @@ def guide_page(g):
         ld.append({'@context': 'https://schema.org', '@type': 'Article', 'headline': g['h1'], 'description': g['desc'], 'inLanguage': 'en-SG',
                    'mainEntityOfPage': abs_url(path), 'datePublished': g.get('published', '2026-11-07'), 'dateModified': g.get('published', '2026-11-07'),
                    'author': {'@type': 'Organization', 'name': SITE_NAME, 'url': BASE}, 'publisher': {'@type': 'Organization', 'name': SITE_NAME, 'url': BASE}})
-    page(path, g['title'] if len(g['title']) <= 60 else fit_title(g['title'], g['h1'], g['short']), g['desc'], body, ld, h1=g['h1'])
+        if g.get('hero'):
+            ld[-1]['image'] = BASE + 'assets/img/' + g['hero']
+    page(path, g['title'] if len(g['title']) <= 60 else fit_title(g['title'], g['h1'], g['short']), g['desc'], body, ld, og=g.get('hero'), h1=g['h1'])
 
 
 # ---- Job pages (Edwin 10 Nov 2026, unlisted-services batch 1): jobs that drivers mention or workshops list on their own site,
