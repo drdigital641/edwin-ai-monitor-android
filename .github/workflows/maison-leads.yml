@@ -1,0 +1,18 @@
+name: Maison leads fix (GET-only crawl)
+on:
+  push:
+    branches: [ "claude/project-thread-3dq6my" ]
+    paths: [ ".github/maison-leads/**", "maison-leads/js/**", ".github/workflows/maison-leads.yml" ]
+permissions:
+  contents: write
+jobs:
+  crawl:
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+      - name: Crawl live pages and prepare the sync folder
+        run: python3 .github/maison-leads/fix.py
+      - name: Commit
+        run: |
+          git config user.name "github-actions[bot]"; git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add maison-leads && git commit -m "Maison leads fix: crawl output" && git push
