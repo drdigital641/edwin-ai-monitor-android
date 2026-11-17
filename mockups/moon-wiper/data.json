@@ -1,0 +1,89 @@
+{
+  "_note": "Single source of site facts. Edwin 17 Nov 2026. Never add a fact that is not from Edwin's brief or kohden.com.sg. WhatsApp: put the number (digits only, e.g. 6512345678) in whatsapp and rebuild; empty = no WhatsApp button anywhere.",
+  "base": "https://pageonesingapore.com/preview/moon-wiper/",
+  "path": "/preview/moon-wiper/",
+  "brand": "MOON",
+  "site_name": "MOON Wiper Blades Singapore",
+  "whatsapp": "",
+  "whatsapp_text": "Hi, I need Moon wiper blades for a [make] [model] [year].",
+  "maker": {
+    "name": "Fu-Gang",
+    "country": "Taiwan",
+    "certs": ["ISO 9001:2015", "IATF 16949:2016"]
+  },
+  "seller": {
+    "name": "KohDen International Pte Ltd",
+    "short": "Kohden",
+    "street": "7 Kaki Bukit Road 1 #01-15 Eunos Technolink",
+    "postcode": "415937",
+    "phone_display": "+65 6966 6565",
+    "phone_short": "6966 6565",
+    "tel": "+6569666565",
+    "email": "kohden2019@yahoo.com",
+    "hours_display": "Mon to Fri, 9am to 5pm",
+    "hours_schema": "Mo-Fr 09:00-17:00",
+    "maps": "https://www.google.com/maps/search/?api=1&query=KohDen+International+7+Kaki+Bukit+Road+1+Singapore+415937",
+    "web": "https://www.kohden.com.sg/"
+  },
+  "products": {
+    "m1001": {
+      "name": "MOON Silicone Hybrid M1001",
+      "price": "$30 to $80", "low": 30, "high": 80,
+      "sizes": ["12\"", "14\"", "15\"", "16\"", "17\"", "18\"", "19\"", "20\"", "21\"", "22\"", "24\"", "26\"", "28\"", "30\" + 14\" set"],
+      "url": "https://www.kohden.com.sg/product/moon-silicone-hybrid-blades-m1001/"
+    },
+    "m102": {
+      "name": "MOON Silicone Flat M-102",
+      "price": "$30 to $80", "low": 30, "high": 80,
+      "sizes": ["12\"", "14\"", "15\"", "16\"", "17\"", "18\"", "19\"", "20\"", "21\"", "22\"", "24\"", "26\"", "28\"", "30\" + 14\" set"],
+      "url": "https://www.kohden.com.sg/product/moon-silicone-flat-blades-m-102/"
+    },
+    "m105": {
+      "name": "MOON Silicone Japan Flat M-105",
+      "price": "$30", "low": 30, "high": 30,
+      "sizes": ["14\"", "16\"", "18\"", "24\"", "26\"", "28\""],
+      "url": "https://www.kohden.com.sg/product/moon-silicone-japan-flat-blades-m-105/"
+    },
+    "mgra": {
+      "name": "MOON Rear A-type M-GRA",
+      "price": "$20", "low": 20, "high": 20,
+      "sizes": ["10\"", "12\"", "14\""],
+      "url": "https://www.kohden.com.sg/product/moon-rear-a-type-blades-m-gra/"
+    },
+    "mgrb": {
+      "name": "MOON Rear B-type M-GRB",
+      "price": "$20", "low": 20, "high": 20,
+      "sizes": ["12\"", "14\"", "16\""],
+      "url": "https://www.kohden.com.sg/product/moon-rear-b-type-blades-m-grb/"
+    },
+    "mfr": {
+      "name": "MOON Rear Conti M-FR",
+      "price": "$22", "low": 22, "high": 22,
+      "sizes": ["10\"", "11\"", "12\"", "13\"", "14\"", "15\"", "16\""],
+      "url": "https://www.kohden.com.sg/product/moon-rear-conti-blades-m-fr/"
+    },
+    "advance": {
+      "name": "MOON Silicone Advance",
+      "price": "",
+      "sizes_shown": ["26\"", "16\""]
+    }
+  },
+  "adapters": [
+    ["D02", "Top-lock", "22mm"],
+    ["i02", "Pinch-tab", "x2"],
+    ["B02", "Side-lock", "19mm / 22mm"],
+    ["L02", "Slim-top", "19mm"],
+    ["G02", "Bayonet", ""],
+    ["A02", "U-hook", ""],
+    ["J02", "Top-lock C", ""],
+    ["K02", "Top-lock M", ""]
+  ],
+  "size_pairs": [[12,300],[14,350],[16,400],[17,425],[18,450],[19,475],[20,500],[21,525],[22,550],[24,600],[26,650],[28,700]],
+  "images": {
+    "hybrid_boxes": ["moon-silicone-hybrid-26-16-boxes", "MOON Silicone Water Repellent Hybrid wiper blade boxes, 26 inch and 16 inch, on concrete"],
+    "hybrid_close": ["moon-hybrid-boxes-closeup", "Close-up of the 26 inch and 16 inch MOON Silicone Hybrid wiper blade boxes"],
+    "leaflet": ["moon-leaflet-water-repellent-zh", "MOON leaflet in Chinese for the water-repellent silicone wiper blade, made by Fu-Gang"],
+    "advance": ["moon-silicone-advance-26-16", "MOON Silicone Advance packs, 26 inch and 16 inch, marked Water Repellency and Siflon Rubber Technology"],
+    "pack_back": ["moon-silicone-blade-pack-back", "Back of the MOON Silicone Advance pack with the maker's 2X longer lasting lab-test line"]
+  }
+}
