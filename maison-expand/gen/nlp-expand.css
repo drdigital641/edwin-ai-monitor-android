@@ -1,0 +1,26 @@
+/* Maison launch pages: flat-type cards, CTA bands, lists (16 Nov 2026). Mobile first. */
+.nx-types{display:grid;grid-template-columns:1fr;gap:14px;margin-top:22px}
+@media(min-width:700px){.nx-types{grid-template-columns:repeat(2,1fr)}}
+@media(min-width:1040px){.nx-types{grid-template-columns:repeat(3,1fr)}}
+.nx-card{display:flex;flex-direction:column;gap:12px;padding:22px 20px;background:#fbf8f3;border:1px solid var(--line);border-radius:6px}
+.nx-card h3{font:400 28px/1.1 var(--serif);color:var(--ink)}
+.nx-card p{margin:0;color:var(--ink2);font-size:16px;line-height:1.6}
+.nx-card .nlp-wa{align-self:stretch;justify-content:center;margin-top:auto;min-height:48px;text-align:center}
+.nx-meta{display:flex;flex-wrap:wrap;gap:6px 18px;font-size:15px;color:var(--ink2)}
+.nx-meta b{font-weight:500;color:var(--ink);margin-right:4px}
+.nx-meta-n{font-size:14px!important;color:var(--mute)!important}
+.nx-band{background:var(--dark);color:#f4efe8;padding:30px 0}
+.nx-band-in{display:flex;flex-direction:column;gap:18px}
+.nx-band-h{font:300 clamp(26px,4vw,38px)/1.15 var(--serif);color:#f4efe8}
+.nx-band p{margin:6px 0 0;color:#d9cfc2;max-width:36em}
+.nx-band .nlp-wa-l{align-self:flex-start;min-height:48px}
+@media(min-width:800px){.nx-band-in{flex-direction:row;align-items:center;justify-content:space-between}.nx-band .nlp-wa-l{align-self:center}}
+.nx-ideas{display:grid;grid-template-columns:1fr;gap:22px;margin:18px 0 22px}
+@media(min-width:800px){.nx-ideas{grid-template-columns:repeat(2,1fr);gap:28px 40px}}
+.nx-ideas p{color:var(--ink2);margin:6px 0 0}
+.nx-steps{counter-reset:nx;margin:16px 0 20px}
+.nx-steps li{counter-increment:nx;position:relative;padding:12px 0 12px 40px;border-bottom:1px solid var(--line);color:var(--ink2)}
+.nx-steps li::before{content:counter(nx);position:absolute;left:0;top:12px;width:26px;height:26px;border:1px solid var(--brass);border-radius:50%;display:flex;align-items:center;justify-content:center;font:500 13px/1 var(--sans);color:var(--brass)}
+.nx-faq-cta{margin-top:26px}
+.nx-faq-cta .nlp-wa{min-height:48px}
+html:focus-within{scroll-padding-top:80px}
