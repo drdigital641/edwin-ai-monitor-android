@@ -3,8 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <script>document.documentElement.classList.add("js");</script>
-  <title>Sales commission web | AutoSEO.my</title>
+  <title>AutoSEO Sales</title>
   <meta name="robots" content="noindex, nofollow">
   <meta name="googlebot" content="noindex, nofollow">
   <meta name="referrer" content="same-origin">
@@ -14,559 +13,236 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800&family=Space+Grotesk:wght@500;600;700&display=swap">
   <link rel="stylesheet" href="/assets/site.css?v=30aeba1ce8">
-  <script src="/assets/site.js?v=30aeba1ce8" defer></script>
   <style>
-    :root { --money: #4ade80; --money-ink: #15803d; }
+    :root { --money: #15803d; --folder: #ff8a3d; }
     html, body { overflow-x: clip; }
-    .sw-top { position: relative; overflow: hidden; isolation: isolate; background: var(--night); color: #dbe3f1; padding: 36px 0 44px; }
-    .sw-top h1 { color: #fff; font-size: clamp(2rem, 7vw, 3.4rem); margin-bottom: .25em; text-wrap: balance; }
-    .sw-top .lead { margin: 0 0 28px; font-size: 1.02rem; }
-    .sw-tag { display: inline-block; font-size: .8rem; font-weight: 700; color: #c9d2e3; border: 1px solid var(--line-dark); border-radius: 999px; padding: 4px 12px; margin: 0 0 14px; }
-    .num { font-family: var(--display); font-weight: 700; letter-spacing: -.03em; font-variant-numeric: tabular-nums; }
-    .money { color: var(--money); }
+    html, body { background: #f6f7fb; } main { background: none; }
+    .bar { position: sticky; top: 0; z-index: 10; background: var(--night); color: #fff; }
+    .bar-in { max-width: 720px; margin: 0 auto; padding: 12px 16px; display: flex; align-items: center; gap: 10px; }
+    .bar .logo-mark { flex: 0 0 auto; }
+    .bar h1 { flex: 1 1 auto; margin: 0; color: #fff; font-size: 1.25rem; letter-spacing: -.01em; }
+    .edit { min-height: 44px; min-width: 76px; padding: 0 16px; border-radius: 12px; border: 1px solid rgba(255,255,255,.25); background: rgba(255,255,255,.08); color: #fff; font: 700 .95rem "Plus Jakarta Sans", sans-serif; cursor: pointer; touch-action: manipulation; }
+    .edit.on { background: var(--money); border-color: var(--money); }
+    .sline { max-width: 720px; margin: 0 auto; padding: 0 16px 12px; color: #c9d2e3; font-size: .9rem; line-height: 1.4; }
+    .sline b { color: #4ade80; font-family: var(--display); font-variant-numeric: tabular-nums; }
+    .sline b.w { color: #fff; }
+    main { max-width: 720px; margin: 0 auto; padding: 14px 12px 40px; }
+    .pin { background: #fff; border: 1px solid var(--line); border-radius: 14px; padding: 14px; margin-bottom: 12px; }
+    .pin label { display: block; font-weight: 700; margin-bottom: 6px; }
+    .pin-row { display: flex; gap: 8px; }
+    input.t { flex: 1 1 auto; min-width: 0; font: 16px "Plus Jakarta Sans", sans-serif; padding: 10px 12px; min-height: 44px; border: 1px solid #c7cfdc; border-radius: 10px; caret-color: var(--red); }
+    .b { min-height: 44px; padding: 0 14px; border-radius: 10px; border: 1px solid var(--line); background: #fff; color: var(--ink); font: 700 .92rem "Plus Jakarta Sans", sans-serif; cursor: pointer; touch-action: manipulation; white-space: nowrap; }
+    .b.go { background: var(--money); border-color: var(--money); color: #fff; }
+    .b.del { background: #c8102e; border-color: #c8102e; color: #fff; }
+    .b:disabled { opacity: .5; }
+    .msg { margin: 8px 0 0; font-size: .88rem; color: #c8102e; min-height: 1.2em; }
+    .note { color: var(--muted); font-size: .88rem; margin: 10px 4px; }
 
-    /* Flow card */
-    .flow { background: var(--night-2); border: 1px solid var(--line-dark); border-radius: 22px; padding: 18px; max-width: 760px; }
-    .flow-row { display: grid; gap: 10px; }
-    .flow-row.two { grid-template-columns: 1fr 1fr; }
-    .fbox { background: rgba(255,255,255,.04); border: 1px solid var(--line-dark); border-radius: 14px; padding: 12px 14px; }
-    .fbox small { display: block; color: var(--muted-dark); font-size: .82rem; font-weight: 600; line-height: 1.3; }
-    .fbox .num { display: block; font-size: 2.1rem; line-height: 1.05; margin-top: 4px; }
-    .fbox.pay .num { font-size: 3rem; color: #fff; }
-    .fbox.keep .num { color: #fff; }
-    .fbox.pool { border-color: rgba(74,222,128,.45); background: rgba(74,222,128,.07); }
-    .fbox.lv { border-color: rgba(74,222,128,.3); }
-    .fbox .who { color: #e6ecf5; font-weight: 700; font-size: .9rem; margin-top: 2px; }
-    .flow-arrow { display: flex; justify-content: center; padding: 4px 0; color: #5b6b8a; }
-    .flow-arrow.split { justify-content: space-around; }
-    .flow-note { margin: 14px 2px 0; color: var(--muted-dark); font-size: .9rem; }
-    .flow-note b { color: #e6ecf5; }
-
-    /* Web */
-    .sw-sec { padding: 40px 0; }
-    .sw-sec h2 { font-size: clamp(1.6rem, 5vw, 2.2rem); margin-bottom: .3em; }
-    .sw-sub { color: var(--muted); margin: 0 0 18px; }
-    .sw-web-sec { background: var(--night); color: #dbe3f1; }
-    .sw-web-sec h2 { color: #fff; }
-    .sw-web-sec .sw-sub { color: var(--muted-dark); }
-    .webbox { position: relative; border: 1px solid var(--line-dark); border-radius: 22px; background: radial-gradient(circle at 50% 45%, #111c38 0%, #0a1226 55%, #070d1c 100%); overflow: hidden; }
-    .web { display: block; width: 100%; height: min(72vh, 560px); min-height: 380px; touch-action: none; user-select: none; -webkit-user-select: none; cursor: grab; }
-    .web.dragging { cursor: grabbing; }
-    .web .ring { fill: none; stroke: rgba(255,255,255,.18); stroke-width: 1.5; stroke-dasharray: 4 6; }
-    .web .ring-label { fill: #7f8db0; font: 600 11px "Plus Jakarta Sans", sans-serif; }
-    .web .edge { stroke: rgba(154,166,189,.35); stroke-width: 1.5; }
-    .web .node { cursor: pointer; }
-    .web .node circle.body { fill: #16213f; stroke: #3a4a70; stroke-width: 2; }
-    .web .node.dealer circle.body { stroke: #ff8a3d; }
-    .web .node.salesperson circle.body { stroke: #22d3ee; }
-    .web .node.sel circle.body { stroke: #fff; stroke-width: 3; }
-    .web .node text.ini { fill: #fff; font: 700 13px "Space Grotesk", sans-serif; text-anchor: middle; dominant-baseline: central; pointer-events: none; }
-    .web .node.centre text.ini { font-size: 15px; }
-    .web .node text.lbl { fill: #dbe3f1; font: 600 12px "Plus Jakarta Sans", sans-serif; text-anchor: middle; pointer-events: none; }
-    .web .badge circle { fill: var(--money); }
-    .web .badge text { fill: #052e16; font: 800 11px "Plus Jakarta Sans", sans-serif; text-anchor: middle; dominant-baseline: central; pointer-events: none; }
-    .zoombar { position: absolute; right: 10px; top: 10px; display: flex; flex-direction: column; gap: 8px; }
-    .zbtn { width: 44px; height: 44px; border-radius: 12px; border: 1px solid rgba(255,255,255,.2); background: rgba(6,11,24,.85); color: #fff; font: 700 1.25rem/1 "Space Grotesk", sans-serif; cursor: pointer; touch-action: manipulation; -webkit-tap-highlight-color: rgba(255,61,87,.25); }
-    .zbtn.fit { font-size: .78rem; }
-    .legend { display: flex; flex-wrap: wrap; gap: 8px 16px; margin: 12px 2px 0; color: var(--muted-dark); font-size: .86rem; }
-    .legend i { display: inline-block; width: 12px; height: 12px; border-radius: 50%; border: 2px solid; margin-right: 6px; vertical-align: -1px; }
-
-    /* Info panel */
-    .info { margin-top: 14px; background: var(--night-2); border: 1px solid var(--line-dark); border-radius: 18px; padding: 16px; }
-    .info h3 { color: #fff; font-size: 1.35rem; margin: 0 0 2px; overflow-wrap: anywhere; }
-    .info .role { color: var(--muted-dark); font-size: .9rem; margin: 0 0 12px; }
-    .earn { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
-    .earn div { background: rgba(255,255,255,.04); border: 1px solid var(--line-dark); border-radius: 12px; padding: 10px 12px; }
-    .earn .num { display: block; font-size: 1.9rem; color: var(--money); line-height: 1.1; }
-    .earn small { color: var(--muted-dark); font-size: .8rem; line-height: 1.3; display: block; }
-    .info .split { margin: 12px 0 0; color: #c9d2e3; font-size: .92rem; }
-    .actions { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 14px; }
-    .sbtn { min-height: 44px; padding: 10px 16px; border-radius: 12px; border: 1px solid rgba(255,255,255,.2); background: rgba(255,255,255,.06); color: #fff; font: 700 .92rem "Plus Jakarta Sans", sans-serif; cursor: pointer; touch-action: manipulation; }
-    .sbtn.add { background: var(--money-ink); border-color: var(--money-ink); }
-    .sbtn.rem { border-color: rgba(255,61,87,.6); color: #ffb3bf; }
-    .sbtn.main { background: var(--grad-strong); border: 0; }
-    .sbtn:disabled { opacity: .5; cursor: not-allowed; }
-    .light .sbtn { color: var(--ink); border-color: var(--line); background: #fff; }
-
-    /* Forms / dialogs */
-    .sheet { margin-top: 12px; padding: 14px; border-radius: 14px; background: rgba(255,255,255,.05); border: 1px solid var(--line-dark); }
-    .sheet label { display: block; font-weight: 700; font-size: .9rem; margin: 0 0 6px; color: #e6ecf5; }
-    .sheet input, .sheet select { width: 100%; font: 16px "Plus Jakarta Sans", sans-serif; padding: 11px 12px; border-radius: 10px; border: 1px solid rgba(255,255,255,.25); background: #0a1226; color: #fff; margin-bottom: 10px; caret-color: var(--red); }
-    .sheet p { margin: 0 0 10px; color: #c9d2e3; font-size: .92rem; }
-    .msg { margin: 10px 0 0; font-size: .9rem; color: #ffb3bf; min-height: 1em; }
-    .msg.ok { color: var(--money); }
-    .editbar { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; margin: 0 0 14px; }
-    .editbar .state { font-size: .88rem; color: var(--muted-dark); }
-    .editbar .state.on { color: var(--money); font-weight: 700; }
-    .datanote { font-size: .85rem; color: var(--muted-dark); margin: 10px 2px 0; }
-
-    /* List */
-    .tree, .tree ul { list-style: none; margin: 0; padding: 0; }
-    .tree ul { margin-left: 14px; padding-left: 12px; border-left: 2px solid var(--line); }
-    .trow { display: flex; align-items: center; gap: 10px; padding: 10px 12px; margin: 6px 0; background: #fff; border: 1px solid var(--line); border-radius: 14px; }
-    .trow.sel { border-color: var(--ink); box-shadow: 0 0 0 1px var(--ink); }
-    .tdot { flex: 0 0 auto; width: 12px; height: 12px; border-radius: 50%; border: 3px solid #3a4a70; }
-    .tdot.dealer { border-color: #ff8a3d; } .tdot.salesperson { border-color: #0891b2; } .tdot.centre { border: 0; background: var(--grad); }
-    .tname { flex: 1 1 auto; min-width: 0; background: none; border: 0; padding: 4px 0; text-align: left; font: 700 1rem "Plus Jakarta Sans", sans-serif; color: var(--ink); cursor: pointer; overflow-wrap: anywhere; }
-    .tname small { display: block; font-weight: 600; font-size: .8rem; color: var(--muted); }
-    .tmoney { font-family: var(--display); font-weight: 700; color: var(--money-ink); font-variant-numeric: tabular-nums; white-space: nowrap; }
-    .ttog { flex: 0 0 auto; min-width: 44px; height: 44px; border-radius: 12px; border: 1px solid var(--line); background: var(--bg-alt); font: 800 .9rem "Plus Jakarta Sans", sans-serif; color: var(--ink); cursor: pointer; touch-action: manipulation; }
-    .ttog[aria-expanded="true"] { background: var(--ink); color: #fff; border-color: var(--ink); }
-    .empty { color: var(--muted); font-size: .95rem; }
-    .sw-foot { background: var(--night); color: var(--muted-dark); padding: 22px 0; font-size: .88rem; border-top: 1px solid var(--line-dark); }
-    .sw-foot p { margin: 0; }
-    .site-header .nav { margin-left: auto; }
-    @media (min-width: 720px) {
-      .flow { padding: 24px; }
-      .flow-row.two { gap: 14px; }
-      .fbox .num { font-size: 2.6rem; }
-      .sw-sec { padding: 64px 0; }
-    }
-    @media (prefers-reduced-motion: reduce) { .web * { transition: none !important; } }
+    .list { background: #fff; border: 1px solid var(--line); border-radius: 16px; overflow: hidden; }
+    .list ul { list-style: none; margin: 0; padding: 0; }
+    .row { display: flex; align-items: center; gap: 4px; min-height: 56px; padding: 0 8px 0 calc(6px + var(--d, 0) * 22px); border-top: 1px solid var(--line); }
+    .list > ul > li:first-child > .row { border-top: 0; }
+    .tog { flex: 1 1 auto; min-width: 0; display: flex; align-items: center; gap: 8px; min-height: 56px; background: none; border: 0; padding: 0 4px; text-align: left; font: inherit; color: var(--ink); cursor: pointer; touch-action: manipulation; -webkit-tap-highlight-color: rgba(255,138,61,.15); }
+    .chev { flex: 0 0 18px; width: 18px; height: 18px; color: var(--muted); transition: transform .15s ease-out; }
+    .chev.open { transform: rotate(90deg); }
+    .chev.none { visibility: hidden; }
+    .fold { flex: 0 0 24px; width: 24px; height: 24px; color: var(--folder); }
+    .row.top .fold { color: #ff3d57; }
+    .name { flex: 0 1 auto; min-width: 0; font-weight: 700; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+    .row.top .name { font-family: var(--display); font-size: 1.08rem; }
+    .tag { flex: 0 0 auto; font-size: .72rem; font-weight: 700; padding: 2px 8px; border-radius: 999px; background: #e0f2fe; color: #075985; }
+    .tag.ref { background: #ffedd5; color: #9a3412; }
+    .cnt { flex: 0 0 auto; margin-left: auto; min-width: 26px; height: 24px; padding: 0 7px; border-radius: 999px; background: var(--money); color: #fff; font: 800 .8rem/24px "Plus Jakarta Sans", sans-serif; text-align: center; }
+    .rm { flex: 0 0 44px; width: 44px; height: 44px; border-radius: 10px; border: 1px solid #f3c2ca; background: #fff5f6; color: #c8102e; font: 800 1.3rem/1 "Plus Jakarta Sans", sans-serif; cursor: pointer; touch-action: manipulation; }
+    .sub { padding: 8px 8px 10px calc(6px + var(--d, 0) * 22px); border-top: 1px dashed var(--line); background: #fbfcfe; }
+    .sub p { margin: 0 0 8px; font-size: .92rem; }
+    .sub .acts { display: flex; gap: 8px; flex-wrap: wrap; }
+    .addb { color: var(--money); border-style: dashed; }
+    .empty { padding: 14px 16px; color: var(--muted); font-size: .92rem; border-top: 1px solid var(--line); }
+    @media (prefers-reduced-motion: reduce) { .chev { transition: none; } }
   </style>
 </head>
-<body class="lang-en">
-  <a class="skip-link" href="#main">Skip to content</a>
-  <header class="site-header">
-    <div class="wrap header-inner">
-      <a class="logo" href="/" aria-label="AutoSEO.my home">
-        <span class="logo-mark" aria-hidden="true">A</span><span>AutoSEO<b>.my</b></span>
-      </a>
-      <nav class="nav" id="nav" aria-label="Main">
-        <a href="/services/">Services</a>
-        <a href="/industries/">Industries</a>
-        <a href="/how-it-works/">How it works</a>
-        <a href="/clients/">Clients</a>
-        <a href="/about/">About</a>
-        <a href="/faq/">FAQ</a>
-        <a href="/contact/">Contact</a>
-      </nav>
-      <button class="menu-btn" id="menu-btn" type="button" aria-label="Menu" aria-expanded="false" aria-controls="nav">☰</button>
+<body>
+  <header class="bar">
+    <div class="bar-in">
+      <span class="logo-mark" aria-hidden="true">A</span>
+      <h1>AutoSEO Sales</h1>
+      <button class="edit" id="edit" type="button">Edit</button>
     </div>
+    <p class="sline" id="split"></p>
   </header>
-  <main id="main">
-    <section class="sw-top">
-      <span class="glow glow-1" aria-hidden="true"></span>
-      <span class="glow glow-2" aria-hidden="true"></span>
-      <div class="wrap">
-        <p class="sw-tag">Internal: sales team</p>
-        <h1>Sales commission web</h1>
-        <p class="lead">Who sold, who referred them, and what every sale pays.</p>
-
-        <div class="flow" aria-label="How one sale is split">
-          <div class="flow-row"><div class="fbox pay"><small>Customer pays</small><span class="num" data-k="sale">RM300</span></div></div>
-          <div class="flow-arrow split" aria-hidden="true"><svg width="18" height="18" viewBox="0 0 18 18"><path d="M9 2v13M4 10l5 5 5-5" stroke="currentColor" stroke-width="2" fill="none"/></svg><svg width="18" height="18" viewBox="0 0 18 18"><path d="M9 2v13M4 10l5 5 5-5" stroke="currentColor" stroke-width="2" fill="none"/></svg></div>
-          <div class="flow-row two">
-            <div class="fbox keep"><small>AutoSEO.my keeps</small><span class="num" data-k="keep">RM200</span></div>
-            <div class="fbox pool"><small>Commission pool</small><span class="num money" data-k="pool">RM100</span></div>
-          </div>
-          <div class="flow-arrow" style="justify-content:flex-end;padding-right:22%" aria-hidden="true"><svg width="18" height="18" viewBox="0 0 18 18"><path d="M9 2v13M4 10l5 5 5-5" stroke="currentColor" stroke-width="2" fill="none"/></svg></div>
-          <div class="flow-row two">
-            <div class="fbox lv"><small>Level 1</small><span class="num money" data-k="level1">RM60</span><span class="who">Salesperson who closed</span></div>
-            <div class="fbox lv"><small>Level 2</small><span class="num money" data-k="level2">RM40</span><span class="who">Dealer who referred them</span></div>
-          </div>
-          <p class="flow-note">Only <b>2 levels</b>. Nothing is paid above Level 2. No referring dealer? The <b class="money" data-k="level2">RM40</b> stays with AutoSEO.my.</p>
-        </div>
+  <main>
+    <div class="pin" id="pinbox" hidden>
+      <label for="pin">Edit PIN</label>
+      <div class="pin-row">
+        <input class="t" id="pin" type="password" inputmode="numeric" autocomplete="off" maxlength="40">
+        <button class="b go" id="pin-go" type="button">Unlock</button>
+        <button class="b" id="pin-x" type="button">Cancel</button>
       </div>
-    </section>
-
-    <section class="sw-sec sw-web-sec" aria-labelledby="web-h">
-      <div class="wrap">
-        <h2 id="web-h">The web</h2>
-        <p class="sw-sub">Tap a person for their numbers. Tap again to open or close their referrals.</p>
-        <div class="editbar">
-          <button class="sbtn main" id="edit-btn" type="button">Edit</button>
-          <span class="state" id="edit-state">View only</span>
-        </div>
-        <div class="sheet" id="pin-sheet" hidden>
-          <label for="pin">Edit PIN</label>
-          <input id="pin" type="password" inputmode="numeric" autocomplete="off" maxlength="40">
-          <div class="actions" style="margin-top:0">
-            <button class="sbtn add" id="pin-go" type="button">Unlock editing</button>
-            <button class="sbtn" id="pin-cancel" type="button">Cancel</button>
-          </div>
-          <p class="msg" id="pin-msg" role="status"></p>
-        </div>
-        <div class="webbox">
-          <svg class="web" id="web" role="img" aria-label="Commission web with AutoSEO.my in the centre"></svg>
-          <div class="zoombar">
-            <button class="zbtn" id="z-in" type="button" aria-label="Zoom in">+</button>
-            <button class="zbtn" id="z-out" type="button" aria-label="Zoom out">−</button>
-            <button class="zbtn fit" id="z-fit" type="button" aria-label="Fit to screen">Fit</button>
-          </div>
-        </div>
-        <p class="legend"><span><i style="border-color:#ff8a3d"></i>Referring dealer</span><span><i style="border-color:#22d3ee"></i>Salesperson</span><span><i style="border-color:#4ade80;background:#4ade80"></i>Referral count</span></p>
-        <div class="info" id="info" aria-live="polite"></div>
-        <p class="datanote" id="datanote"></p>
-      </div>
-    </section>
-
-    <section class="sw-sec" aria-labelledby="list-h">
-      <div class="wrap narrow">
-        <h2 id="list-h">The list</h2>
-        <p class="sw-sub">Same people, as a tree. Green is what each earns when they close a sale.</p>
-        <ul class="tree" id="tree"></ul>
-      </div>
-    </section>
+      <p class="msg" id="pin-msg" role="status"></p>
+    </div>
+    <div class="list"><ul id="tree"></ul></div>
+    <p class="note" id="note"></p>
   </main>
-  <footer class="sw-foot">
-    <div class="wrap"><p>© 2026 AutoSEO.my - A Brand By K Tech Auto Solution Sdn Bhd</p></div>
-  </footer>
 <script>
 (function () {
   "use strict";
   // ONE place for the commission numbers. Change here only.
   var SPLIT = { currency: "RM", sale: 300, keep: 200, pool: 100, level1: 60, level2: 40, levels: 2 };
   var API = "https://auto-seo-sales-web-675618e9.base44.app/api/sales-web";
-  var ROLE_LABEL = { centre: "Centre", dealer: "Referring dealer", salesperson: "Salesperson" };
-
   function rm(n) { return SPLIT.currency + n; }
   function $(id) { return document.getElementById(id); }
-  function el(tag, attrs, kids) {
+  function el(tag, a, kids) {
     var e = document.createElement(tag);
-    if (attrs) Object.keys(attrs).forEach(function (k) {
-      if (k === "text") e.textContent = attrs[k];
-      else if (k === "class") e.className = attrs[k];
-      else if (k.slice(0, 2) === "on") e.addEventListener(k.slice(2), attrs[k]);
-      else e.setAttribute(k, attrs[k]);
+    Object.keys(a || {}).forEach(function (k) {
+      if (k === "text") e.textContent = a[k];
+      else if (k === "class") e.className = a[k];
+      else if (k.slice(0, 2) === "on") e.addEventListener(k.slice(2), a[k]);
+      else e.setAttribute(k, a[k]);
     });
-    (kids || []).forEach(function (c) { if (c) e.appendChild(c); });
+    (kids || []).forEach(function (c) { if (c) e.appendChild(typeof c === "string" ? document.createTextNode(c) : c); });
     return e;
   }
-  var SVGNS = "http://www.w3.org/2000/svg";
-  function sv(tag, attrs) {
-    var e = document.createElementNS(SVGNS, tag);
-    Object.keys(attrs || {}).forEach(function (k) { e.setAttribute(k, attrs[k]); });
-    return e;
+  var NS = "http://www.w3.org/2000/svg";
+  function icon(kind, cls) {
+    var s = document.createElementNS(NS, "svg");
+    s.setAttribute("viewBox", "0 0 24 24"); s.setAttribute("class", cls); s.setAttribute("aria-hidden", "true");
+    var p = document.createElementNS(NS, "path");
+    if (kind === "chev") { p.setAttribute("d", "M9 5l7 7-7 7"); p.setAttribute("fill", "none"); p.setAttribute("stroke", "currentColor"); p.setAttribute("stroke-width", "2.5"); p.setAttribute("stroke-linecap", "round"); p.setAttribute("stroke-linejoin", "round"); }
+    else { p.setAttribute("d", "M3 6.5A1.5 1.5 0 0 1 4.5 5h4.6l2 2.2h8.4A1.5 1.5 0 0 1 21 8.7v9.8a1.5 1.5 0 0 1-1.5 1.5h-15A1.5 1.5 0 0 1 3 18.5z"); p.setAttribute("fill", "currentColor"); }
+    s.appendChild(p); return s;
   }
 
-  // Fill config numbers into the flow card
-  document.querySelectorAll("[data-k]").forEach(function (n) { n.textContent = rm(SPLIT[n.getAttribute("data-k")]); });
+  // Split line
+  var sp = $("split");
+  sp.append("Customer ", el("b", { class: "w", text: rm(SPLIT.sale) }), ": AutoSEO ", el("b", { class: "w", text: rm(SPLIT.keep) }), ", Direct ", el("b", { text: rm(SPLIT.level1) }), ", Referrer ", el("b", { text: rm(SPLIT.level2) }));
 
   var nodes = [{ id: "centre", name: "AutoSEO.my", role: "centre", parentId: "" }];
-  var open = {};          // id -> true when its referrals are shown
-  var selected = null;
-  var pin = null;         // kept in memory only, never stored
-  var live = false;
+  var open = {}, live = false, ui = null; // ui = {kind:"add"|"rm", id}
+  var pin = null;
+  try { pin = sessionStorage.getItem("autoseo_sales_pin"); } catch (e) {}
 
   function byId(id) { for (var i = 0; i < nodes.length; i++) if (nodes[i].id === id) return nodes[i]; return null; }
   function centre() { for (var i = 0; i < nodes.length; i++) if (nodes[i].role === "centre") return nodes[i]; return nodes[0]; }
   function kids(id) { return nodes.filter(function (n) { return n.parentId === id; }); }
-  function countAll(id) { var k = kids(id), c = k.length; k.forEach(function (x) { c += countAll(x.id); }); return c; }
-  function depth(n) { var d = 0, p = n; while (p && p.parentId) { p = byId(p.parentId); d++; if (d > 50) break; } return d; }
-  function isOpen(id) { return id === centre().id || !!open[id]; }
-  function initials(name) {
-    var w = String(name).replace(/\.my$/i, "").trim().split(/\s+/);
-    return ((w[0] || "")[0] || "").toUpperCase() + ((w[1] || "")[0] || "").toUpperCase();
-  }
-  function short(s, n) { s = String(s); return s.length > n ? s.slice(0, n - 1) + "…" : s; }
+  function editing() { return !!pin && live; }
 
-  /* ---------- the web (SVG, radial) ---------- */
-  var svg = $("web"), RING = 120, pos = {}, vb = { x: -200, y: -200, w: 400, h: 400 };
-
-  function leaves(id) {
-    if (!isOpen(id)) return 1;
-    var k = kids(id); if (!k.length) return 1;
-    return k.reduce(function (s, c) { return s + leaves(c.id); }, 0);
-  }
-  function layout() {
-    pos = {};
-    var c = centre();
-    pos[c.id] = { x: 0, y: 0, d: 0 };
-    (function place(id, a0, a1, d) {
-      if (!isOpen(id)) return;
-      var k = kids(id), total = leaves(id), a = a0;
-      k.forEach(function (ch) {
-        var span = (a1 - a0) * leaves(ch.id) / total, mid = a + span / 2, r = (d + 1) * RING;
-        pos[ch.id] = { x: r * Math.cos(mid), y: r * Math.sin(mid), d: d + 1 };
-        place(ch.id, a, a + span, d + 1);
-        a += span;
-      });
-    })(c.id, -Math.PI / 2, Math.PI * 1.5, 0);
-  }
-  function drawWeb() {
-    layout();
-    while (svg.firstChild) svg.removeChild(svg.firstChild);
-    var maxD = 0; Object.keys(pos).forEach(function (k) { maxD = Math.max(maxD, pos[k].d); });
-    var g = sv("g");
-    for (var d = 1; d <= Math.max(1, maxD); d++) {
-      g.appendChild(sv("circle", { class: "ring", cx: 0, cy: 0, r: d * RING }));
-      var t = sv("text", { class: "ring-label", x: 6, y: -d * RING - 6 }); t.textContent = "+" + d; g.appendChild(t);
-    }
-    nodes.forEach(function (n) {
-      if (!pos[n.id] || !n.parentId || !pos[n.parentId]) return;
-      var a = pos[n.parentId], b = pos[n.id];
-      g.appendChild(sv("line", { class: "edge", x1: a.x, y1: a.y, x2: b.x, y2: b.y }));
-    });
-    nodes.forEach(function (n) {
-      var p = pos[n.id]; if (!p) return;
-      var r = n.role === "centre" ? 44 : 24;
-      var ng = sv("g", { class: "node " + n.role + (selected === n.id ? " sel" : ""), transform: "translate(" + p.x + "," + p.y + ")", "data-id": n.id });
-      if (n.role === "centre") {
-        var defs = sv("defs"), lg = sv("linearGradient", { id: "cg", x1: 0, y1: 0, x2: 1, y2: 1 });
-        lg.appendChild(sv("stop", { offset: "0", "stop-color": "#ff3d57" }));
-        lg.appendChild(sv("stop", { offset: ".5", "stop-color": "#ff8a3d" }));
-        lg.appendChild(sv("stop", { offset: "1", "stop-color": "#8b5cf6" }));
-        defs.appendChild(lg); ng.appendChild(defs);
-        ng.appendChild(sv("circle", { class: "body", r: r, style: "fill:url(#cg);stroke:" + (selected === n.id ? "#fff" : "rgba(255,255,255,.25)") }));
-      } else {
-        ng.appendChild(sv("circle", { class: "body", r: r }));
-      }
-      ng.appendChild(sv("circle", { r: r + 10, fill: "transparent" })); // bigger tap area
-      var ini = sv("text", { class: "ini" }); ini.textContent = n.role === "centre" ? "AutoSEO" : initials(n.name); ng.appendChild(ini);
-      if (n.role !== "centre") {
-        var lb = sv("text", { class: "lbl", y: r + 16 }); lb.textContent = short(n.name, 16); ng.appendChild(lb);
-      }
-      var kc = kids(n.id).length;
-      if (kc && n.role !== "centre") {
-        var bg = sv("g", { class: "badge", transform: "translate(" + (r * .78) + "," + (-r * .78) + ")" });
-        bg.appendChild(sv("circle", { r: 10 }));
-        var bt = sv("text"); bt.textContent = (isOpen(n.id) ? "" : "+") + kc; bg.appendChild(bt);
-        ng.appendChild(bg);
-      }
-      g.appendChild(ng);
-    });
-    svg.appendChild(g);
-    applyVB();
-  }
-  function applyVB() { svg.setAttribute("viewBox", vb.x + " " + vb.y + " " + vb.w + " " + vb.h); }
-  function fit() {
-    var minX = 0, minY = 0, maxX = 0, maxY = 0;
-    Object.keys(pos).forEach(function (k) { var p = pos[k]; minX = Math.min(minX, p.x); maxX = Math.max(maxX, p.x); minY = Math.min(minY, p.y); maxY = Math.max(maxY, p.y); });
-    var pad = 70, w = Math.max(maxX - minX + pad * 2, 300), h = Math.max(maxY - minY + pad * 2, 300);
-    var box = svg.getBoundingClientRect(), ar = box.width && box.height ? box.width / box.height : 1;
-    if (w / h < ar) w = h * ar; else h = w / ar;
-    vb = { x: (minX + maxX) / 2 - w / 2, y: (minY + maxY) / 2 - h / 2, w: w, h: h };
-    applyVB();
-  }
-  function zoom(f, cx, cy) {
-    var nw = Math.min(Math.max(vb.w * f, 120), 20000), k = nw / vb.w;
-    if (cx === undefined) { cx = vb.x + vb.w / 2; cy = vb.y + vb.h / 2; }
-    vb = { x: cx - (cx - vb.x) * k, y: cy - (cy - vb.y) * k, w: nw, h: vb.h * k };
-    applyVB();
-  }
-  $("z-in").addEventListener("click", function () { zoom(1 / 1.3); });
-  $("z-out").addEventListener("click", function () { zoom(1.3); });
-  $("z-fit").addEventListener("click", fit);
-
-  // Pan, pinch and tap with pointer events
-  var pts = {}, startDist = 0, moved = 0, downTarget = null;
-  function toSvg(cx, cy) { var b = svg.getBoundingClientRect(); return { x: vb.x + (cx - b.left) / b.width * vb.w, y: vb.y + (cy - b.top) / b.height * vb.h }; }
-  svg.addEventListener("pointerdown", function (e) {
-    svg.setPointerCapture(e.pointerId);
-    pts[e.pointerId] = { x: e.clientX, y: e.clientY };
-    moved = 0; downTarget = e.target.closest ? e.target.closest(".node") : null;
-    var ids = Object.keys(pts);
-    if (ids.length === 2) { var a = pts[ids[0]], b = pts[ids[1]]; startDist = Math.hypot(a.x - b.x, a.y - b.y); }
-    svg.classList.add("dragging");
-  });
-  svg.addEventListener("pointermove", function (e) {
-    if (!pts[e.pointerId]) return;
-    var prev = pts[e.pointerId], ids = Object.keys(pts);
-    pts[e.pointerId] = { x: e.clientX, y: e.clientY };
-    var b = svg.getBoundingClientRect();
-    if (ids.length === 1) {
-      var dx = e.clientX - prev.x, dy = e.clientY - prev.y;
-      moved += Math.abs(dx) + Math.abs(dy);
-      vb.x -= dx / b.width * vb.w; vb.y -= dy / b.height * vb.h; applyVB();
-    } else if (ids.length === 2) {
-      var p1 = pts[ids[0]], p2 = pts[ids[1]], dist = Math.hypot(p1.x - p2.x, p1.y - p2.y);
-      if (startDist) { var m = toSvg((p1.x + p2.x) / 2, (p1.y + p2.y) / 2); zoom(startDist / dist, m.x, m.y); }
-      startDist = dist; moved += 99;
-    }
-  });
-  function up(e) {
-    if (!pts[e.pointerId]) return;
-    delete pts[e.pointerId];
-    if (!Object.keys(pts).length) {
-      svg.classList.remove("dragging");
-      if (moved < 8 && downTarget) tapNode(downTarget.getAttribute("data-id"));
-    }
-    startDist = 0;
-  }
-  svg.addEventListener("pointerup", up);
-  svg.addEventListener("pointercancel", up);
-  svg.addEventListener("wheel", function (e) { e.preventDefault(); var m = toSvg(e.clientX, e.clientY); zoom(e.deltaY > 0 ? 1.15 : 1 / 1.15, m.x, m.y); }, { passive: false });
-
-  function tapNode(id) {
-    var n = byId(id); if (!n) return;
-    if (selected === id && n.role !== "centre" && kids(id).length) { open[id] = !open[id]; }
-    else if (selected !== id && n.role !== "centre" && kids(id).length && !open[id]) { open[id] = true; }
-    selected = id;
-    render(false);
-  }
-
-  /* ---------- commissions ---------- */
-  function sellerSplit(n) {
-    // What one sale closed by node n pays out
-    var parent = byId(n.parentId);
-    if (n.role === "centre") return { l1: null, l2: null };
-    var l2 = parent && parent.role !== "centre" ? parent : null;
-    return { l1: n, l2: l2 };
-  }
-
-  /* ---------- info panel ---------- */
-  var formState = null;
-  function renderInfo() {
-    var box = $("info"); box.textContent = "";
-    var n = byId(selected) || centre();
-    var kc = kids(n.id).length;
-    box.appendChild(el("h3", { text: n.name }));
-    var lvl = depth(n);
-    box.appendChild(el("p", { class: "role", text: n.role === "centre" ? "Centre of the web" : ROLE_LABEL[n.role] + " at ring +" + lvl + ", " + kc + (kc === 1 ? " referral" : " referrals") }));
-    if (n.role === "centre") {
-      var direct = kids(n.id).length;
-      box.appendChild(el("div", { class: "earn" }, [
-        el("div", {}, [el("span", { class: "num", text: rm(SPLIT.keep) }), el("small", { text: "kept on every " + rm(SPLIT.sale) + " sale" })]),
-        el("div", {}, [el("span", { class: "num", text: "+" + rm(SPLIT.level2) }), el("small", { text: "also kept when the seller has no referring dealer" })])
-      ]));
-      box.appendChild(el("p", { class: "split", text: direct + " people one level out. " + countAll(n.id) + " in the whole web." }));
-    } else {
-      var s = sellerSplit(n);
-      box.appendChild(el("div", { class: "earn" }, [
-        el("div", {}, [el("span", { class: "num", text: rm(SPLIT.level1) }), el("small", { text: "per " + rm(SPLIT.sale) + " sale they close (Level 1)" })]),
-        el("div", {}, [el("span", { class: "num", text: rm(SPLIT.level2) }), el("small", { text: "per sale closed by each of their " + kc + (kc === 1 ? " referral" : " referrals") + " (Level 2)" })])
-      ]));
-      box.appendChild(el("p", { class: "split", text: "When " + n.name + " closes a sale: " + n.name + " gets " + rm(SPLIT.level1) + ", " + (s.l2 ? s.l2.name + " gets " + rm(SPLIT.level2) : "AutoSEO.my keeps the " + rm(SPLIT.level2)) + "." }));
-    }
-    var act = el("div", { class: "actions" });
-    if (n.role !== "centre" && kc) act.appendChild(el("button", { class: "sbtn", type: "button", text: (isOpen(n.id) ? "Hide " : "Show ") + kc + (kc === 1 ? " referral" : " referrals"), onclick: function () { open[n.id] = !open[n.id]; render(false); } }));
-    if (pin) {
-      act.appendChild(el("button", { class: "sbtn add", type: "button", text: n.role === "centre" ? "+ Add person" : "+ Add referral", onclick: function () { formState = { kind: "add", id: n.id }; renderInfo(); } }));
-      if (n.role !== "centre") act.appendChild(el("button", { class: "sbtn rem", type: "button", text: "− Remove", onclick: function () { formState = { kind: "remove", id: n.id }; renderInfo(); } }));
-    }
-    if (act.childNodes.length) box.appendChild(act);
-    if (pin && formState && formState.id === n.id) box.appendChild(formState.kind === "add" ? addForm(n) : removeForm(n));
-  }
-
-  function addForm(parent) {
-    var msg = el("p", { class: "msg", role: "status" });
-    var name = el("input", { id: "new-name", type: "text", maxlength: "60", autocomplete: "off" });
-    var kidsSheet = [el("label", { for: "new-name", text: "Name" }), name];
-    var role = null;
-    if (parent.role === "centre") {
-      role = el("select", { id: "new-role" }, [el("option", { value: "dealer", text: "Referring dealer" }), el("option", { value: "salesperson", text: "Direct salesperson" })]);
-      kidsSheet.push(el("label", { for: "new-role", text: "Role" }), role);
-    } else {
-      kidsSheet.push(el("p", { text: "Adds a salesperson brought in by " + parent.name + "." }));
-    }
-    var go = el("button", { class: "sbtn add", type: "button", text: "Add" });
-    go.addEventListener("click", function () {
-      var nm = name.value.trim();
-      if (!nm) { msg.textContent = "Type a name first."; return; }
-      go.disabled = true; msg.className = "msg"; msg.textContent = "Saving…";
-      call({ action: "add", name: nm, role: role ? role.value : "salesperson", parentId: parent.id }).then(function (r) {
-        if (r.ok) { open[parent.id] = true; formState = null; selected = r.node.id; return load().then(function () { fit(); }); }
-        go.disabled = false; msg.textContent = errText(r.error);
-      });
-    });
-    kidsSheet.push(el("div", { class: "actions", style: "margin-top:0" }, [go, el("button", { class: "sbtn", type: "button", text: "Cancel", onclick: function () { formState = null; renderInfo(); } })]), msg);
-    setTimeout(function () { name.focus(); }, 0);
-    return el("div", { class: "sheet" }, kidsSheet);
-  }
-
-  function removeForm(n) {
-    var msg = el("p", { class: "msg", role: "status" });
-    var k = kids(n.id), all = countAll(n.id), parent = byId(n.parentId);
-    var sheet = el("div", { class: "sheet" });
-    function run(mode, btn) {
-      btn.disabled = true; msg.className = "msg"; msg.textContent = "Removing…";
-      call({ action: "remove", id: n.id, children: mode }).then(function (r) {
-        if (r.ok) { formState = null; selected = parent ? parent.id : null; return load().then(function () { fit(); }); }
-        btn.disabled = false; msg.textContent = errText(r.error);
-      });
-    }
-    if (!k.length) {
-      sheet.appendChild(el("p", { text: "Remove " + n.name + " from the web?" }));
-      var b = el("button", { class: "sbtn rem", type: "button", text: "Yes, remove" });
-      b.addEventListener("click", function () { run("lift", b); });
-      sheet.appendChild(el("div", { class: "actions", style: "margin-top:0" }, [b, el("button", { class: "sbtn", type: "button", text: "Cancel", onclick: function () { formState = null; renderInfo(); } })]));
-    } else {
-      sheet.appendChild(el("p", { text: n.name + " has " + k.length + (k.length === 1 ? " referral" : " referrals") + (all > k.length ? " (" + all + " people in their branch)" : "") + ". What happens to them?" }));
-      var up = el("button", { class: "sbtn add", type: "button", text: "Move them up to " + (parent ? short(parent.name, 22) : "the centre") });
-      up.addEventListener("click", function () { run("lift", up); });
-      var all2 = el("button", { class: "sbtn rem", type: "button", text: "Remove all " + (all + 1) });
-      all2.addEventListener("click", function () { run("branch", all2); });
-      sheet.appendChild(el("div", { class: "actions", style: "margin-top:0" }, [up, all2, el("button", { class: "sbtn", type: "button", text: "Cancel", onclick: function () { formState = null; renderInfo(); } })]));
-    }
-    sheet.appendChild(msg);
-    return sheet;
-  }
-
-  /* ---------- the list ---------- */
-  function renderTree() {
+  function render() {
     var root = $("tree"); root.textContent = "";
-    function item(n) {
-      var kc = kids(n.id).length, li = el("li");
-      var s = n.role === "centre" ? rm(SPLIT.keep) : rm(SPLIT.level1);
-      var row = el("div", { class: "trow" + (selected === n.id ? " sel" : "") }, [
-        el("span", { class: "tdot " + n.role, "aria-hidden": "true" }),
-        el("button", { class: "tname", type: "button", onclick: function () { selected = n.id; render(false); document.getElementById("web-h").scrollIntoView({ behavior: "smooth" }); } }, [
-          document.createTextNode(n.name), el("small", { text: n.role === "centre" ? "Keeps per sale" : ROLE_LABEL[n.role] })
-        ]),
-        el("span", { class: "tmoney", text: s })
+    function item(n, d) {
+      var top = n.role === "centre", k = kids(n.id), isOpen = top || !!open[n.id];
+      var li = el("li");
+      var row = el("div", { class: "row" + (top ? " top" : ""), style: "--d:" + d });
+      var tog = el("button", { class: "tog", type: "button", "aria-expanded": String(isOpen) }, [
+        icon("chev", "chev" + (isOpen ? " open" : "") + (k.length || (editing() && !top) ? "" : " none")),
+        icon("folder", "fold"),
+        el("span", { class: "name", text: n.name }),
+        top ? null : el("span", { class: "tag" + (k.length ? " ref" : ""), text: k.length ? "Referrer" : "Direct" })
       ]);
-      if (kc && n.role !== "centre") row.appendChild(el("button", { class: "ttog", type: "button", "aria-expanded": isOpen(n.id) ? "true" : "false", "aria-label": (isOpen(n.id) ? "Hide " : "Show ") + kc + " referrals of " + n.name, text: (isOpen(n.id) ? "−" : "+") + kc, onclick: function () { open[n.id] = !open[n.id]; render(false); } }));
+      if (top) tog.disabled = false;
+      tog.addEventListener("click", function () { if (!top) { open[n.id] = !open[n.id]; if (ui && ui.kind === "add" && ui.id === n.id) ui = null; render(); } });
+      row.appendChild(tog);
+      if (k.length) row.appendChild(el("span", { class: "cnt", "aria-label": k.length + " referrals", text: String(k.length) }));
+      if (editing() && !top) row.appendChild(el("button", { class: "rm", type: "button", "aria-label": "Remove " + n.name, text: "−", onclick: function () { ui = { kind: "rm", id: n.id }; render(); } }));
       li.appendChild(row);
-      if (kc && isOpen(n.id)) { var ul = el("ul"); kids(n.id).forEach(function (c) { ul.appendChild(item(c)); }); li.appendChild(ul); }
+      if (ui && ui.kind === "rm" && ui.id === n.id) li.appendChild(removeBox(n, d));
+      if (isOpen) {
+        var ul = el("ul");
+        k.forEach(function (c) { ul.appendChild(item(c, d + 1)); });
+        if (editing()) ul.appendChild(el("li", {}, [addBox(n, d + 1)]));
+        if (ul.childNodes.length) li.appendChild(ul);
+      }
       return li;
     }
-    root.appendChild(item(centre()));
-    if (nodes.length === 1) root.appendChild(el("li", { class: "empty", text: "No salespeople or dealers yet." }));
+    root.appendChild(item(centre(), 0));
+    if (nodes.length === 1 && !editing()) root.appendChild(el("li", { class: "empty", text: "No people yet." }));
   }
 
-  function render(refit) { drawWeb(); if (refit) fit(); renderInfo(); renderTree(); }
+  function addBox(parent, d) {
+    var box = el("div", { class: "sub", style: "--d:" + d });
+    if (!(ui && ui.kind === "add" && ui.id === parent.id)) {
+      box.appendChild(el("button", { class: "b addb", type: "button", text: "+ Add", onclick: function () { ui = { kind: "add", id: parent.id }; render(); var i = document.getElementById("add-name"); if (i) i.focus(); } }));
+      return box;
+    }
+    var inp = el("input", { class: "t", id: "add-name", type: "text", maxlength: "60", autocomplete: "off", placeholder: "Name", "aria-label": "Name of new person under " + parent.name });
+    var msg = el("p", { class: "msg", role: "status" });
+    var save = el("button", { class: "b go", type: "button", text: "Add" });
+    function go() {
+      var v = inp.value.trim(); if (!v) { msg.textContent = "Type a name."; return; }
+      save.disabled = true; msg.textContent = "";
+      call({ action: "add", name: v, role: "salesperson", parentId: parent.id }).then(function (r) {
+        if (r.ok) { open[parent.id] = true; ui = { kind: "add", id: parent.id }; return load().then(function () { var i = document.getElementById("add-name"); if (i) i.focus(); }); }
+        save.disabled = false; msg.textContent = errText(r.error);
+      });
+    }
+    save.addEventListener("click", go);
+    inp.addEventListener("keydown", function (e) { if (e.key === "Enter") go(); });
+    box.appendChild(el("div", { class: "pin-row" }, [inp, save, el("button", { class: "b", type: "button", text: "Cancel", onclick: function () { ui = null; render(); } })]));
+    box.appendChild(msg);
+    return box;
+  }
 
-  /* ---------- data ---------- */
+  function removeBox(n, d) {
+    var k = kids(n.id), parent = byId(n.parentId);
+    var msg = el("p", { class: "msg", role: "status" });
+    var yes = el("button", { class: "b del", type: "button", text: "Remove" });
+    yes.addEventListener("click", function () {
+      yes.disabled = true;
+      call({ action: "remove", id: n.id, children: "lift" }).then(function (r) {
+        if (r.ok) { ui = null; return load(); }
+        yes.disabled = false; msg.textContent = errText(r.error);
+      });
+    });
+    var text = "Remove " + n.name + "?" + (k.length ? " Their " + k.length + (k.length === 1 ? " referral moves" : " referrals move") + " up to " + (parent ? parent.name : "AutoSEO.my") + "." : "");
+    return el("div", { class: "sub", style: "--d:" + (d + 1) }, [el("p", { text: text }), el("div", { class: "acts" }, [yes, el("button", { class: "b", type: "button", text: "Cancel", onclick: function () { ui = null; render(); } })]), msg]);
+  }
+
   function errText(e) {
-    return ({ wrong_pin: "Wrong PIN.", locked: "Too many wrong PINs. Try again in 15 minutes.", edit_off: "Editing is switched off on the server.", name: "Type a name.", role: "That role can't go there.", parent: "That person no longer exists. Reload the page.", full: "The web is full (500 people).", network: "Can't reach the server. Check your connection.", origin: "Editing only works on autoseo.my." })[e] || "Something went wrong. Try again.";
+    return ({ wrong_pin: "Wrong PIN.", locked: "Too many wrong PINs. Try again in 15 minutes.", edit_off: "Editing is off on the server.", name: "Type a name.", parent: "That folder is gone. Reload the page.", full: "List is full (500).", network: "No connection. Try again.", origin: "Editing only works on autoseo.my." })[e] || "Something went wrong. Try again.";
   }
   function call(body) {
     body.pin = pin;
     return fetch(API, { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify(body), cache: "no-store" })
       .then(function (r) { return r.json().catch(function () { return { ok: false }; }); })
-      .catch(function () { return { ok: false, error: "network" }; });
+      .catch(function () { return { ok: false, error: "network" }; })
+      .then(function (r) { if (r && r.error === "wrong_pin") { setPin(null); } return r; });
   }
   function load() {
     return fetch(API, { cache: "no-store" }).then(function (r) { if (!r.ok) throw 0; return r.json(); }).then(function (d) {
       if (!d || !d.ok || !d.nodes || !d.nodes.length) throw 0;
-      nodes = d.nodes; live = true;
-      if (selected && !byId(selected)) selected = null;
-      $("datanote").textContent = "";
-      render(false);
+      nodes = d.nodes; live = true; $("note").textContent = ""; render();
     }).catch(function () {
-      live = false;
-      $("datanote").textContent = "Live data is not connected yet, so this shows the starting point only.";
-      render(false);
+      live = false; $("note").textContent = "Live data not connected yet."; render();
     });
   }
 
-  /* ---------- edit sign-in ---------- */
-  $("edit-btn").addEventListener("click", function () {
-    if (pin) { pin = null; formState = null; $("edit-state").textContent = "View only"; $("edit-state").className = "state"; $("edit-btn").textContent = "Edit"; renderInfo(); return; }
-    $("pin-sheet").hidden = false; $("pin").focus();
+  function setPin(v) {
+    pin = v;
+    try { if (v) sessionStorage.setItem("autoseo_sales_pin", v); else sessionStorage.removeItem("autoseo_sales_pin"); } catch (e) {}
+    $("edit").textContent = v ? "Done" : "Edit";
+    $("edit").classList.toggle("on", !!v);
+    ui = null; render();
+  }
+  $("edit").addEventListener("click", function () {
+    if (pin) { setPin(null); return; }
+    $("pinbox").hidden = false; $("pin").focus();
   });
-  $("pin-cancel").addEventListener("click", function () { $("pin-sheet").hidden = true; $("pin").value = ""; $("pin-msg").textContent = ""; });
+  $("pin-x").addEventListener("click", function () { $("pinbox").hidden = true; $("pin").value = ""; $("pin-msg").textContent = ""; });
   function unlock() {
     var v = $("pin").value.trim(); if (!v) return;
-    if (!live) { $("pin-msg").textContent = "Live data is not connected yet."; return; }
-    $("pin-msg").className = "msg"; $("pin-msg").textContent = "Checking…";
+    if (!live) { $("pin-msg").textContent = "Live data not connected yet."; return; }
     pin = v;
     call({ action: "check" }).then(function (r) {
-      if (r.ok) {
-        $("pin").value = ""; $("pin-sheet").hidden = true; $("pin-msg").textContent = "";
-        $("edit-state").textContent = "Editing on"; $("edit-state").className = "state on"; $("edit-btn").textContent = "Lock";
-        renderInfo();
-      } else { pin = null; $("pin-msg").textContent = errText(r.error); }
+      if (r.ok) { $("pin").value = ""; $("pinbox").hidden = true; $("pin-msg").textContent = ""; setPin(v); }
+      else { pin = null; $("pin-msg").textContent = errText(r.error); }
     });
   }
   $("pin-go").addEventListener("click", unlock);
   $("pin").addEventListener("keydown", function (e) { if (e.key === "Enter") unlock(); });
 
-  render(true);
-  load().then(fit);
-  var lastW = window.innerWidth;
-  window.addEventListener("resize", function () { if (window.innerWidth !== lastW) { lastW = window.innerWidth; fit(); } });
+  if (pin) { $("edit").textContent = "Done"; $("edit").classList.add("on"); }
+  render();
+  load();
 })();
 </script>
 <script src="/p1-cta.js?v=33c3c1b4" defer></script>
