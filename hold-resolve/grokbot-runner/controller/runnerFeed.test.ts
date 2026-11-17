@@ -21,7 +21,15 @@ const status = { refreshed_at: '2026-11-17T20:00:00Z', stale: false, sites: [
     functions: { invoke: async (_n: string, body: any) => ({ data: body.action === 'runner_status' ? status : null }) },
   },
 };
-const { default: fn } = await import('./runnerFeedUnderTest.ts');
+// The function under test with the SDK import swapped for the fake client (temp copy; shared/ imports point at the real files).
+const src = await Deno.readTextFile(new URL('../functions/runnerFeed/entry.ts', import.meta.url));
+const shared = new URL('../shared/', import.meta.url).href;
+const patched = src.replace(/import \{ createClientFromRequest \} from 'npm:@base44\/sdk@[^']+';/, 'const createClientFromRequest = (_r: Request) => (globalThis as any).__fake;')
+  .replaceAll("'../../shared/", "'" + shared);
+if (patched === src || patched.includes('npm:@base44/sdk')) throw new Error('could not swap the SDK import');
+const tmp = await Deno.makeTempFile({ suffix: '.ts' });
+await Deno.writeTextFile(tmp, patched);
+const { default: fn } = await import('file://' + tmp);
 const call = async (body: any) => { const r = await fn(new Request('https://x.test/f', { method: 'POST', body: JSON.stringify(body) })); return { status: r.status, body: await r.json() }; };
 
 Deno.test('unsigned outsider refused; bad signature refused', async () => {
