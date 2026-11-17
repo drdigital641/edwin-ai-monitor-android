@@ -35,7 +35,7 @@ Repo drdigital641/edwin-ai-monitor-android, branch `claude/project-thread-6s51oo
 - meta description: `<Name> <Town> BTO: flat types, floor plan guide, renovation ideas and a free layout plan for your unit type. WhatsApp Maison.`
 - H1: `<Name> Renovation & Interior Design` (commercial: `Fit-Out & Interior Design`)
 - canonical + og:url `https://maisoninteriordesign.sg/new-launches/<slug>/`; og/twitter title+desc = title/desc.
-- Assets: `/mid.css?v=27d05deb`, `/nlp-expand.css?v=f0b6baaf`, `/mid.js?v=10d9e567`, `/p1-cta.js?v=b54fbe0c` (tap tracker; required).
+- Assets: `/mid.css?v=27d05deb`, `/nlp-expand.css?v=f0b6baaf`, `/mid.js?v=10d9e567`, `/p1-cta.js?v=71095ba1` (tap tracker; required).
 - JSON-LD @graph: HomeAndConstructionBusiness, BreadcrumbList, Article (datePublished = page's first publish, `pub`;
   dateModified = build date), FAQPage (one Question per visible FAQ).
 - LIVE GUARD: a title/meta/JSON-LD/FAQ-question change on an existing page needs a one-time GUARD_OVERRIDES entry
