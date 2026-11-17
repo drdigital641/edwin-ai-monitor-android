@@ -1,0 +1,24 @@
+{
+ "name": "CSKA Auto Enterprise",
+ "legalName": "CSKA Auto Enterprise Pte. Ltd.",
+ "uen": "202127592M",
+ "address": "101 Woodlands Avenue 12 #07-03B, Polaris @ Woodlands, Singapore 737719",
+ "email": "cskatrading20@gmail.com",
+ "whatsapp": {
+  "Steven Chai": "+6598222629",
+  "Kai Kiat (Ah Kiat)": "+6584930068",
+  "Alvis Kiew (Ah Yii)": "+6590372820"
+ },
+ "facebook": "https://www.facebook.com/CSKATRADING",
+ "googleMaps": "https://maps.google.com/?cid=4280054029158527073",
+ "rules": [
+  "No opening hours anywhere",
+  "Never the old E9 address or the hotmail address",
+  "No Automotive Course or Consultant",
+  "Never name customer workshops in captions"
+ ],
+ "assets": {
+  "css": "/cska-fb.css?v=4a77b2ff",
+  "js": "cska.js?v=8328ab3b"
+ }
+}
