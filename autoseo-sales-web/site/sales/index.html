@@ -16,12 +16,13 @@
   <style>
     :root { --money: #15803d; --folder: #ff8a3d; }
     html, body { overflow-x: clip; }
+    [hidden] { display: none !important; }
     html, body { background: #f6f7fb; } main { background: none; }
     .bar { position: sticky; top: 0; z-index: 10; background: var(--night); color: #fff; }
     .bar-in { max-width: 720px; margin: 0 auto; padding: 12px 16px; display: flex; align-items: center; gap: 10px; }
     .bar .logo-mark { flex: 0 0 auto; }
     .bar h1 { flex: 1 1 auto; margin: 0; color: #fff; font-size: 1.25rem; letter-spacing: -.01em; }
-    .edit { min-height: 44px; min-width: 76px; padding: 0 16px; border-radius: 12px; border: 1px solid rgba(255,255,255,.25); background: rgba(255,255,255,.08); color: #fff; font: 700 .95rem "Plus Jakarta Sans", sans-serif; cursor: pointer; touch-action: manipulation; }
+    .edit-unused { min-height: 44px; min-width: 76px; padding: 0 16px; border-radius: 12px; border: 1px solid rgba(255,255,255,.25); background: rgba(255,255,255,.08); color: #fff; font: 700 .95rem "Plus Jakarta Sans", sans-serif; cursor: pointer; touch-action: manipulation; }
     .edit.on { background: var(--money); border-color: var(--money); }
     .sline { max-width: 720px; margin: 0 auto; padding: 0 16px 12px; color: #c9d2e3; font-size: .9rem; line-height: 1.4; }
     .sline b { color: #4ade80; font-family: var(--display); font-variant-numeric: tabular-nums; }
@@ -80,44 +81,78 @@
     .tbl td.n { overflow-wrap: anywhere; font-weight: 700; }
     .tbl .r { text-align: right; }
     .tbl td.e { color: var(--money); font-weight: 800; }
+    .gear { width: 44px; height: 44px; border-radius: 12px; border: 1px solid rgba(255,255,255,.25); background: rgba(255,255,255,.08); color: #fff; cursor: pointer; display: grid; place-items: center; touch-action: manipulation; }
+    .gear svg { width: 22px; height: 22px; }
+    .out { color: #c9d2e3; font-size: .85rem; font-weight: 600; background: none; border: 0; padding: 10px 4px; cursor: pointer; text-decoration: underline; text-underline-offset: 3px; }
+    .gate { min-height: 100vh; min-height: 100dvh; display: grid; place-items: center; padding: 24px 16px; background: var(--night); }
+    .gate-in { width: 100%; max-width: 360px; text-align: center; color: #dbe3f1; }
+    .gate .logo-mark { width: 56px; height: 56px; margin: 0 auto 14px; font-size: 1.5rem; border-radius: 16px; }
+    .gate h1 { color: #fff; font-size: 1.5rem; margin: 0 0 18px; }
+    .gate input.t { width: 100%; margin-bottom: 10px; text-align: center; }
+    .gate .b.go { width: 100%; }
+    .gate .msg { color: #ffb3bf; text-align: center; }
+    .set { background: #fff; border: 1px solid var(--line); border-radius: 14px; padding: 14px; margin-bottom: 12px; }
+    .set h2 { font-size: 1.15rem; margin: 0 0 10px; }
+    .fld { display: grid; grid-template-columns: 1fr 120px; align-items: center; gap: 8px; margin-bottom: 8px; }
+    .fld label { font-weight: 700; font-size: .95rem; }
+    .fld .rmwrap { display: flex; align-items: center; gap: 6px; }
+    .fld .rmwrap span { color: var(--muted); font-weight: 700; }
+    .fld input.t { width: 100%; text-align: right; font-variant-numeric: tabular-nums; }
+    .fld .ro { text-align: right; font-family: var(--display); font-weight: 700; font-size: 1.1rem; padding-right: 12px; }
+    .set .acts { display: flex; gap: 8px; margin-top: 6px; }
     .empty { padding: 14px 16px; color: var(--muted); font-size: .92rem; border-top: 1px solid var(--line); }
     @media (prefers-reduced-motion: reduce) { .chev { transition: none; } }
   </style>
 </head>
 <body>
+  <div class="gate" id="gate">
+    <div class="gate-in">
+      <span class="logo-mark" aria-hidden="true">A</span>
+      <h1>AutoSEO Sales</h1>
+      <input class="t" id="pw" type="password" autocomplete="current-password" maxlength="64" aria-label="Password" placeholder="Password">
+      <button class="b go" id="pw-go" type="button">Enter</button>
+      <p class="msg" id="pw-msg" role="status"></p>
+    </div>
+  </div>
+  <div id="app" hidden>
   <header class="bar">
     <div class="bar-in">
       <span class="logo-mark" aria-hidden="true">A</span>
       <h1>AutoSEO Sales</h1>
-      <button class="edit" id="edit" type="button">Edit</button>
+      <button class="out" id="logout" type="button">Log out</button>
+      <button class="gear" id="gear" type="button" aria-label="Settings" aria-expanded="false"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.7 1.7 0 0 0 .3 1.8l.1.1a2 2 0 1 1-2.8 2.8l-.1-.1a1.7 1.7 0 0 0-1.8-.3 1.7 1.7 0 0 0-1 1.5V21a2 2 0 1 1-4 0v-.1a1.7 1.7 0 0 0-1.1-1.5 1.7 1.7 0 0 0-1.8.3l-.1.1a2 2 0 1 1-2.8-2.8l.1-.1a1.7 1.7 0 0 0 .3-1.8 1.7 1.7 0 0 0-1.5-1H3a2 2 0 1 1 0-4h.1a1.7 1.7 0 0 0 1.5-1.1 1.7 1.7 0 0 0-.3-1.8l-.1-.1a2 2 0 1 1 2.8-2.8l.1.1a1.7 1.7 0 0 0 1.8.3H9a1.7 1.7 0 0 0 1-1.5V3a2 2 0 1 1 4 0v.1a1.7 1.7 0 0 0 1 1.5 1.7 1.7 0 0 0 1.8-.3l.1-.1a2 2 0 1 1 2.8 2.8l-.1.1a1.7 1.7 0 0 0-.3 1.8V9a1.7 1.7 0 0 0 1.5 1H21a2 2 0 1 1 0 4h-.1a1.7 1.7 0 0 0-1.5 1z"/></svg></button>
     </div>
     <p class="sline" id="split"></p>
   </header>
   <main>
-    <div class="pin" id="pinbox" hidden>
-      <label for="pin">Edit PIN</label>
-      <div class="pin-row">
-        <input class="t" id="pin" type="password" inputmode="numeric" autocomplete="off" maxlength="40">
-        <button class="b go" id="pin-go" type="button">Unlock</button>
-        <button class="b" id="pin-x" type="button">Cancel</button>
-      </div>
-      <p class="msg" id="pin-msg" role="status"></p>
+    <div class="set" id="set" hidden>
+      <h2>Settings</h2>
+      <div class="fld"><label for="s-customer">Customer pays</label><span class="rmwrap"><span>RM</span><input class="t" id="s-customer" type="number" inputmode="decimal" min="0" step="1"></span></div>
+      <div class="fld"><label for="s-direct">Direct commission</label><span class="rmwrap"><span>RM</span><input class="t" id="s-direct" type="number" inputmode="decimal" min="0" step="1"></span></div>
+      <div class="fld"><label for="s-referral">Referral commission</label><span class="rmwrap"><span>RM</span><input class="t" id="s-referral" type="number" inputmode="decimal" min="0" step="1"></span></div>
+      <div class="fld"><span><b>AutoSEO keeps</b></span><span class="ro" id="s-keeps"></span></div>
+      <div class="acts"><button class="b go" id="s-save" type="button">Save</button><button class="b" id="s-x" type="button">Cancel</button></div>
+      <p class="msg" id="s-msg" role="status"></p>
     </div>
     <div class="list"><ul id="tree"></ul></div>
     <p class="note" id="note"></p>
     <section class="sum" id="sum" aria-labelledby="sum-h"></section>
   </main>
+  </div>
 <script>
 (function () {
   "use strict";
-  // ONE place for the commission numbers. Change here only.
-  var SPLIT = { currency: "RM", sale: 300, keep: 200, pool: 100, level1: 60, level2: 40, levels: 2 };
+  // Default numbers, used only until the saved Settings load. Saved values come from Base44.
+  var SPLIT = { currency: "RM", customer: 300, direct: 60, referral: 40 };
   var API = "https://auto-seo-sales-web-675618e9.base44.app/api/sales-web";
-  function rm(n) { return SPLIT.currency + n; }
+  var TOKEN_KEY = "autoseo_sales_token";
+  function keep() { return SPLIT.customer - SPLIT.direct - SPLIT.referral; }
+  function rm(n) { n = Math.round(n * 100) / 100; return SPLIT.currency + (n % 1 ? n.toFixed(2) : String(n)); }
   function $(id) { return document.getElementById(id); }
   function el(tag, a, kids) {
     var e = document.createElement(tag);
     Object.keys(a || {}).forEach(function (k) {
+      if (a[k] === null || a[k] === undefined) return;
       if (k === "text") e.textContent = a[k];
       else if (k === "class") e.className = a[k];
       else if (k.slice(0, 2) === "on") e.addEventListener(k.slice(2), a[k]);
@@ -136,54 +171,55 @@
     s.appendChild(p); return s;
   }
 
-  // Split line
-  var sp = $("split");
-  sp.append("Customer ", el("b", { class: "w", text: rm(SPLIT.sale) }), ": AutoSEO ", el("b", { class: "w", text: rm(SPLIT.keep) }), ", Direct ", el("b", { text: rm(SPLIT.level1) }), ", Referrer ", el("b", { text: rm(SPLIT.level2) }));
-
-  var nodes = [{ id: "centre", name: "AutoSEO.my", role: "centre", parentId: "" }];
-  var open = {}, live = false, ui = null; // ui = {kind:"add"|"rm", id}
-  var pin = null;
-  try { pin = sessionStorage.getItem("autoseo_sales_pin"); } catch (e) {}
+  var nodes = [], open = {}, ui = null, token = null;
+  try { token = sessionStorage.getItem(TOKEN_KEY); } catch (e) {}
 
   function byId(id) { for (var i = 0; i < nodes.length; i++) if (nodes[i].id === id) return nodes[i]; return null; }
   function centre() { for (var i = 0; i < nodes.length; i++) if (nodes[i].role === "centre") return nodes[i]; return nodes[0]; }
   function kids(id) { return nodes.filter(function (n) { return n.parentId === id; }); }
-  function editing() { return !!pin && live; }
 
-  // Commission maths. Every person under AutoSEO.my is one sale of SPLIT.sale.
-  // Parent earns level1, grandparent earns level2; any share with no person to receive it stays with AutoSEO.
+  function renderSplit() {
+    var sp = $("split"); sp.textContent = "";
+    sp.append("Customer ", el("b", { class: "w", text: rm(SPLIT.customer) }), ": AutoSEO ", el("b", { class: "w", text: rm(keep()) }), ", Direct ", el("b", { text: rm(SPLIT.direct) }), ", Referrer ", el("b", { text: rm(SPLIT.referral) }));
+  }
+
+  // Every person under AutoSEO.my is one sale. Parent earns direct, grandparent earns referral;
+  // any share with no person to receive it stays with AutoSEO.
   function calc() {
     var c = centre(), per = {}, keeps = 0, p1 = 0, p2 = 0, n1 = 0, n2 = 0, people = 0;
     nodes.forEach(function (n) { per[n.id] = { d: 0, g: 0, earns: 0 }; });
     nodes.forEach(function (n) {
       if (n.id === c.id) return;
       people++;
-      keeps += SPLIT.keep;
+      keeps += keep();
       var par = byId(n.parentId);
-      if (!par || par.id === c.id) { keeps += SPLIT.level1 + SPLIT.level2; return; }
-      per[par.id].d++; per[par.id].earns += SPLIT.level1; p1 += SPLIT.level1; n1++;
+      if (!par || par.id === c.id) { keeps += SPLIT.direct + SPLIT.referral; return; }
+      per[par.id].d++; per[par.id].earns += SPLIT.direct; p1 += SPLIT.direct; n1++;
       var gp = byId(par.parentId);
-      if (!gp || gp.id === c.id) { keeps += SPLIT.level2; return; }
-      per[gp.id].g++; per[gp.id].earns += SPLIT.level2; p2 += SPLIT.level2; n2++;
+      if (!gp || gp.id === c.id) { keeps += SPLIT.referral; return; }
+      per[gp.id].g++; per[gp.id].earns += SPLIT.referral; p2 += SPLIT.referral; n2++;
     });
-    return { per: per, people: people, sales: people * SPLIT.sale, p1: p1, p2: p2, n1: n1, n2: n2, paid: p1 + p2, keeps: keeps };
+    var r = function (x) { return Math.round(x * 100) / 100; };
+    return { per: per, people: people, sales: r(people * SPLIT.customer), p1: r(p1), p2: r(p2), n1: n1, n2: n2, paid: r(p1 + p2), keeps: r(keeps) };
   }
   function earnText(e) {
     var parts = [];
-    if (e.d) parts.push(e.d + " direct x " + rm(SPLIT.level1));
-    if (e.g) parts.push(e.g + " level-2 x " + rm(SPLIT.level2));
+    if (e.d) parts.push(e.d + " direct x " + rm(SPLIT.direct));
+    if (e.g) parts.push(e.g + " level-2 x " + rm(SPLIT.referral));
     return parts.length ? " (" + parts.join(", ") + ")" : "";
   }
 
   function render() {
+    renderSplit();
     var root = $("tree"); root.textContent = "";
+    if (!nodes.length) return;
     var C = calc();
     function item(n, d) {
       var top = n.role === "centre", k = kids(n.id), isOpen = top || !!open[n.id];
       var li = el("li");
       var row = el("div", { class: "row" + (top ? " top" : ""), style: "--d:" + d });
       var tog = el("button", { class: "tog", type: "button", "aria-expanded": String(isOpen) }, [
-        icon("chev", "chev" + (isOpen ? " open" : "") + (k.length || (editing() && !top) ? "" : " none")),
+        icon("chev", "chev" + (isOpen ? " open" : "") + (top ? " none" : "")),
         icon("folder", "fold"),
         el("span", { class: "pw" }, [
           el("span", { class: "pl1" }, [
@@ -191,44 +227,42 @@
             top ? null : el("span", { class: "tag" + (k.length ? " ref" : ""), text: k.length ? "Referrer" : "Direct" })
           ]),
           top ? el("span", { class: "pl2" }, ["Keeps ", el("b", { text: rm(C.keeps) })])
-              : el("span", { class: "pl2" }, ["Pays " + rm(SPLIT.sale) + ". Earns ", el("b", { text: rm(C.per[n.id].earns) }), el("span", { class: "br", text: earnText(C.per[n.id]) })])
+              : el("span", { class: "pl2" }, ["Pays " + rm(SPLIT.customer) + ". Earns ", el("b", { text: rm(C.per[n.id].earns) }), el("span", { class: "br", text: earnText(C.per[n.id]) })])
         ])
       ]);
-      if (top) tog.disabled = false;
       tog.addEventListener("click", function () { if (!top) { open[n.id] = !open[n.id]; if (ui && ui.kind === "add" && ui.id === n.id) ui = null; render(); } });
       row.appendChild(tog);
       if (k.length) row.appendChild(el("span", { class: "cnt", "aria-label": k.length + " referrals", text: String(k.length) }));
-      if (editing() && !top) row.appendChild(el("button", { class: "rm", type: "button", "aria-label": "Remove " + n.name, text: "−", onclick: function () { ui = { kind: "rm", id: n.id }; render(); } }));
+      if (!top) row.appendChild(el("button", { class: "rm", type: "button", "aria-label": "Remove " + n.name, text: "−", onclick: function () { ui = { kind: "rm", id: n.id }; render(); } }));
       li.appendChild(row);
       if (ui && ui.kind === "rm" && ui.id === n.id) li.appendChild(removeBox(n, d));
       if (isOpen) {
         var ul = el("ul");
         k.forEach(function (c) { ul.appendChild(item(c, d + 1)); });
-        if (editing()) ul.appendChild(el("li", {}, [addBox(n, d + 1)]));
-        if (ul.childNodes.length) li.appendChild(ul);
+        ul.appendChild(el("li", {}, [addBox(n, d + 1)]));
+        li.appendChild(ul);
       }
       return li;
     }
     root.appendChild(item(centre(), 0));
     renderSum(C);
-    if (nodes.length === 1 && !editing()) root.appendChild(el("li", { class: "empty", text: "No people yet." }));
   }
 
   function renderSum(C) {
     var box = $("sum"); box.textContent = "";
     box.appendChild(el("h2", { id: "sum-h", text: "Summary" }));
-    function tile(label, val, sub, green, wide) {
-      return el("div", { class: "tile" + (wide ? " wide" : "") }, [el("small", { text: label }), el("span", { class: "v" + (green ? " g" : ""), text: val }), sub ? el("span", { class: "s", text: sub }) : null]);
+    function tile(label, val, sub, green) {
+      return el("div", { class: "tile" }, [el("small", { text: label }), el("span", { class: "v" + (green ? " g" : ""), text: val }), sub ? el("span", { class: "s", text: sub }) : null]);
     }
     box.appendChild(el("div", { class: "tiles" }, [
       tile("People", String(C.people)),
-      tile("Sales", rm(C.sales), C.people + " x " + rm(SPLIT.sale)),
-      tile("Direct parts", rm(C.p1), C.n1 + " x " + rm(SPLIT.level1), true),
-      tile("Level-2 parts", rm(C.p2), C.n2 + " x " + rm(SPLIT.level2), true),
+      tile("Sales", rm(C.sales), C.people + " x " + rm(SPLIT.customer)),
+      tile("Direct parts", rm(C.p1), C.n1 + " x " + rm(SPLIT.direct), true),
+      tile("Level-2 parts", rm(C.p2), C.n2 + " x " + rm(SPLIT.referral), true),
       tile("Commission paid", rm(C.paid), null, true),
       tile("AutoSEO.my keeps", rm(C.keeps))
     ]));
-    var ok = C.sales === C.paid + C.keeps;
+    var ok = Math.abs(C.sales - (C.paid + C.keeps)) < 0.005;
     box.appendChild(el("p", { class: "chk" + (ok ? "" : " bad"), role: ok ? null : "alert", text: ok
       ? "Check: " + rm(C.sales) + " sales = " + rm(C.paid) + " paid + " + rm(C.keeps) + " kept."
       : "Warning: sales " + rm(C.sales) + " do not equal paid " + rm(C.paid) + " + kept " + rm(C.keeps) + "." }));
@@ -248,7 +282,7 @@
   function addBox(parent, d) {
     var box = el("div", { class: "sub", style: "--d:" + d });
     if (!(ui && ui.kind === "add" && ui.id === parent.id)) {
-      box.appendChild(el("button", { class: "b addb", type: "button", text: "+ Add", onclick: function () { ui = { kind: "add", id: parent.id }; render(); var i = document.getElementById("add-name"); if (i) i.focus(); } }));
+      box.appendChild(el("button", { class: "b addb", type: "button", text: "+ Add", onclick: function () { ui = { kind: "add", id: parent.id }; render(); var i = $("add-name"); if (i) i.focus(); } }));
       return box;
     }
     var inp = el("input", { class: "t", id: "add-name", type: "text", maxlength: "60", autocomplete: "off", placeholder: "Name", "aria-label": "Name of new person under " + parent.name });
@@ -258,7 +292,7 @@
       var v = inp.value.trim(); if (!v) { msg.textContent = "Type a name."; return; }
       save.disabled = true; msg.textContent = "";
       call({ action: "add", name: v, role: "salesperson", parentId: parent.id }).then(function (r) {
-        if (r.ok) { open[parent.id] = true; ui = { kind: "add", id: parent.id }; return load().then(function () { var i = document.getElementById("add-name"); if (i) i.focus(); }); }
+        if (r.ok) { open[parent.id] = true; ui = { kind: "add", id: parent.id }; return load().then(function () { var i = $("add-name"); if (i) i.focus(); }); }
         save.disabled = false; msg.textContent = errText(r.error);
       });
     }
@@ -275,7 +309,7 @@
     var yes = el("button", { class: "b del", type: "button", text: "Remove" });
     yes.addEventListener("click", function () {
       yes.disabled = true;
-      call({ action: "remove", id: n.id, children: "lift" }).then(function (r) {
+      call({ action: "remove", id: n.id }).then(function (r) {
         if (r.ok) { ui = null; return load(); }
         yes.disabled = false; msg.textContent = errText(r.error);
       });
@@ -285,51 +319,81 @@
   }
 
   function errText(e) {
-    return ({ wrong_pin: "Wrong PIN.", locked: "Too many wrong PINs. Try again in 15 minutes.", edit_off: "Editing is off on the server.", name: "Type a name.", parent: "That folder is gone. Reload the page.", full: "List is full (500).", network: "No connection. Try again.", origin: "Editing only works on autoseo.my." })[e] || "Something went wrong. Try again.";
+    return ({ wrong: "Wrong password.", locked: "Too many tries. Wait a minute and try again.", off: "The password is not set on the server.", name: "Type a name.", parent: "That folder is gone. Reload the page.", full: "List is full (500).", network: "No connection. Try again.", origin: "Only works on autoseo.my.", too_much: "Direct + referral can't be more than the customer price.", number: "Enter numbers only.", old: "The server update isn't published yet." })[e] || "Something went wrong. Try again.";
   }
-  function call(body) {
-    body.pin = pin;
+  function post(body) {
     return fetch(API, { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify(body), cache: "no-store" })
       .then(function (r) { return r.json().catch(function () { return { ok: false }; }); })
       .catch(function () { return { ok: false, error: "network" }; })
-      .then(function (r) { if (r && r.error === "wrong_pin") { setPin(null); } return r; });
+      .then(function (r) { if (r && (r.error === "wrong_pin" || r.error === "edit_off")) r.error = "old"; return r; });
+  }
+  function call(body) {
+    body.token = token;
+    return post(body).then(function (r) { if (r && r.error === "auth") logout(); return r; });
   }
   function load() {
-    return fetch(API, { cache: "no-store" }).then(function (r) { if (!r.ok) throw 0; return r.json(); }).then(function (d) {
-      if (!d || !d.ok || !d.nodes || !d.nodes.length) throw 0;
-      nodes = d.nodes; live = true; $("note").textContent = ""; render();
-    }).catch(function () {
-      live = false; $("note").textContent = "Live data not connected yet."; render();
+    return call({ action: "data" }).then(function (d) {
+      if (!d || !d.ok) { if (token) $("note").textContent = errText(d && d.error); return; }
+      nodes = d.nodes || [];
+      if (d.settings) { SPLIT.customer = d.settings.customer; SPLIT.direct = d.settings.direct; SPLIT.referral = d.settings.referral; }
+      $("note").textContent = "";
+      show(true); render();
     });
   }
 
-  function setPin(v) {
-    pin = v;
-    try { if (v) sessionStorage.setItem("autoseo_sales_pin", v); else sessionStorage.removeItem("autoseo_sales_pin"); } catch (e) {}
-    $("edit").textContent = v ? "Done" : "Edit";
-    $("edit").classList.toggle("on", !!v);
-    ui = null; render();
+  function show(inside) { $("gate").hidden = inside; $("app").hidden = !inside; }
+  function logout() {
+    token = null; nodes = []; ui = null; open = {};
+    try { sessionStorage.removeItem(TOKEN_KEY); } catch (e) {}
+    $("tree").textContent = ""; $("sum").textContent = ""; $("set").hidden = true;
+    show(false); $("pw").focus();
   }
-  $("edit").addEventListener("click", function () {
-    if (pin) { setPin(null); return; }
-    $("pinbox").hidden = false; $("pin").focus();
+  $("logout").addEventListener("click", logout);
+
+  function enter() {
+    var v = $("pw").value; if (!v) return;
+    var btn = $("pw-go"); btn.disabled = true; $("pw-msg").textContent = "";
+    post({ action: "login", password: v }).then(function (r) {
+      btn.disabled = false;
+      if (r.ok && r.token) {
+        token = r.token; $("pw").value = "";
+        try { sessionStorage.setItem(TOKEN_KEY, token); } catch (e) {}
+        return load();
+      }
+      $("pw-msg").textContent = errText(r.error);
+    });
+  }
+  $("pw-go").addEventListener("click", enter);
+  $("pw").addEventListener("keydown", function (e) { if (e.key === "Enter") enter(); });
+
+  // Settings
+  function sv(id) { return Number($(id).value); }
+  function updKeeps() {
+    var k = sv("s-customer") - sv("s-direct") - sv("s-referral");
+    $("s-keeps").textContent = isFinite(k) ? rm(k) : "-";
+    $("s-keeps").style.color = k < 0 ? "#c8102e" : "";
+  }
+  ["s-customer", "s-direct", "s-referral"].forEach(function (id) { $(id).addEventListener("input", updKeeps); });
+  $("gear").addEventListener("click", function () {
+    var s = $("set"), opening = s.hidden;
+    s.hidden = !opening; $("gear").setAttribute("aria-expanded", String(opening));
+    if (opening) { $("s-customer").value = SPLIT.customer; $("s-direct").value = SPLIT.direct; $("s-referral").value = SPLIT.referral; $("s-msg").textContent = ""; updKeeps(); }
   });
-  $("pin-x").addEventListener("click", function () { $("pinbox").hidden = true; $("pin").value = ""; $("pin-msg").textContent = ""; });
-  function unlock() {
-    var v = $("pin").value.trim(); if (!v) return;
-    if (!live) { $("pin-msg").textContent = "Live data not connected yet."; return; }
-    pin = v;
-    call({ action: "check" }).then(function (r) {
-      if (r.ok) { $("pin").value = ""; $("pinbox").hidden = true; $("pin-msg").textContent = ""; setPin(v); }
-      else { pin = null; $("pin-msg").textContent = errText(r.error); }
+  $("s-x").addEventListener("click", function () { $("set").hidden = true; $("gear").setAttribute("aria-expanded", "false"); });
+  $("s-save").addEventListener("click", function () {
+    var c = sv("s-customer"), d = sv("s-direct"), r = sv("s-referral");
+    if (![c, d, r].every(function (x) { return isFinite(x) && x >= 0; }) || c <= 0) { $("s-msg").textContent = errText("number"); return; }
+    if (d + r > c) { $("s-msg").textContent = errText("too_much"); return; }
+    var b = $("s-save"); b.disabled = true;
+    call({ action: "settings", settings: { customer: c, direct: d, referral: r } }).then(function (res) {
+      b.disabled = false;
+      if (!res.ok) { $("s-msg").textContent = errText(res.error); return; }
+      SPLIT.customer = res.settings.customer; SPLIT.direct = res.settings.direct; SPLIT.referral = res.settings.referral;
+      $("set").hidden = true; $("gear").setAttribute("aria-expanded", "false"); render();
     });
-  }
-  $("pin-go").addEventListener("click", unlock);
-  $("pin").addEventListener("keydown", function (e) { if (e.key === "Enter") unlock(); });
+  });
 
-  if (pin) { $("edit").textContent = "Done"; $("edit").classList.add("on"); }
-  render();
-  load();
+  if (token) load(); else show(false);
 })();
 </script>
 <script src="/p1-cta.js?v=33c3c1b4" defer></script>
