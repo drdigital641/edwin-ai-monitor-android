@@ -286,13 +286,5 @@
   "rx": "drip|puddle|leak|coolant|condensation|wet carpet",
   "cat": null,
   "guide": "car-water-dripping-under-car"
- },
- {
-  "id": "p-steering-noise",
-  "kind": "problem",
-  "label": "Steering groan, squeak or whine",
-  "rx": "steering|power steering|groan|whine|creak|turning",
-  "cat": null,
-  "guide": "car-steering-wheel-groan-squeak"
  }
 ]

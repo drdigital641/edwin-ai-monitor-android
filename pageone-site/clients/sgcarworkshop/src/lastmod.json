@@ -1,8 +1,8 @@
 {
 "": {
 "d": "2026-11-17",
-"h": "922ff0ad241e",
-"h2": "922ff0ad241e"
+"h": "df2f8dbed14b",
+"h2": "df2f8dbed14b"
 },
 "about/": {
 "d": "2026-11-10",
@@ -76,8 +76,8 @@
 },
 "areas/kaki-bukit-industrial-estate/": {
 "d": "2026-11-17",
-"h": "e9390b218b1a",
-"h2": "e9390b218b1a"
+"h": "ed1665dd2d7e",
+"h2": "ed1665dd2d7e"
 },
 "areas/kaki-bukit-industrial-estate/car-aircon-repair/": {
 "d": "2026-11-16",
@@ -86,8 +86,8 @@
 },
 "areas/kaki-bukit-industrial-estate/car-battery/": {
 "d": "2026-11-17",
-"h": "b6b498ab894b",
-"h2": "b6b498ab894b"
+"h": "1805711e8ca4",
+"h2": "1805711e8ca4"
 },
 "areas/kaki-bukit-industrial-estate/gearbox-repair/": {
 "d": "2026-11-16",
@@ -201,28 +201,28 @@
 },
 "brands/bmw-mercedes/": {
 "d": "2026-11-17",
-"h": "3a16bb647b64",
-"h2": "3a16bb647b64"
+"h": "c77255f93620",
+"h2": "c77255f93620"
 },
 "brands/byd/": {
 "d": "2026-11-17",
-"h": "dabf54c30c2e",
-"h2": "dabf54c30c2e"
+"h": "f136603caae6",
+"h2": "f136603caae6"
 },
 "brands/honda/": {
 "d": "2026-11-17",
-"h": "8887ffe51b4e",
-"h2": "8887ffe51b4e"
+"h": "0aa05ec89192",
+"h2": "0aa05ec89192"
 },
 "brands/tesla/": {
 "d": "2026-11-17",
-"h": "6c1a7707f681",
-"h2": "6c1a7707f681"
+"h": "fa4b9da44e8c",
+"h2": "fa4b9da44e8c"
 },
 "brands/toyota/": {
 "d": "2026-11-17",
-"h": "e65a2fe8ed10",
-"h2": "e65a2fe8ed10"
+"h": "b5845dc7ef89",
+"h2": "b5845dc7ef89"
 },
 "contact/": {
 "d": "2026-11-05",
@@ -236,103 +236,98 @@
 },
 "guides/": {
 "d": "2026-11-17",
-"h": "9af7e35ac43d",
-"h2": "9af7e35ac43d"
+"h": "e4d9d4156eb9",
+"h2": "e4d9d4156eb9"
 },
 "guides/before-a-workshop-visit/": {
 "d": "2026-11-17",
-"h": "9f875bd84b64",
-"h2": "9f875bd84b64"
+"h": "252799fc17ff",
+"h2": "252799fc17ff"
 },
 "guides/brake-squeal-noise/": {
 "d": "2026-11-17",
-"h": "d87d8d401953",
-"h2": "d87d8d401953"
+"h": "800a4f137c6b",
+"h2": "800a4f137c6b"
 },
 "guides/car-aircon-not-cold/": {
 "d": "2026-11-17",
-"h": "86f339d8a20b",
-"h2": "86f339d8a20b"
+"h": "bbd6bc8975aa",
+"h2": "bbd6bc8975aa"
 },
 "guides/car-battery-dead/": {
 "d": "2026-11-17",
-"h": "11bddada5faf",
-"h2": "11bddada5faf"
+"h": "42cc8aa2e937",
+"h2": "42cc8aa2e937"
 },
 "guides/car-burning-smell/": {
 "d": "2026-11-17",
-"h": "70abe1e77113",
-"h2": "70abe1e77113"
+"h": "aaf984244521",
+"h2": "aaf984244521"
 },
 "guides/car-knocking-over-humps/": {
 "d": "2026-11-17",
-"h": "7f4d354a3120",
-"h2": "7f4d354a3120"
+"h": "aa8eb5c16931",
+"h2": "aa8eb5c16931"
 },
 "guides/car-overheating/": {
 "d": "2026-11-17",
-"h": "a7c0677dc805",
-"h2": "a7c0677dc805"
+"h": "7779c46f6a39",
+"h2": "7779c46f6a39"
 },
 "guides/car-servicing-cost-singapore/": {
 "d": "2026-11-17",
-"h": "d50ea462cc61",
-"h2": "d50ea462cc61"
+"h": "bdb7b474c59a",
+"h2": "bdb7b474c59a"
 },
 "guides/car-spray-painting-singapore/": {
 "d": "2026-11-17",
-"h": "367096eeccbd",
-"h2": "367096eeccbd"
-},
-"guides/car-steering-wheel-groan-squeak/": {
-"d": "2026-11-17",
-"h": "28af3e8e51a2",
-"h2": "28af3e8e51a2"
+"h": "e780e10e4641",
+"h2": "e780e10e4641"
 },
 "guides/car-vibration-steering-shake/": {
 "d": "2026-11-17",
-"h": "4d28b69f09b1",
-"h2": "4d28b69f09b1"
+"h": "c8f789745918",
+"h2": "c8f789745918"
 },
 "guides/car-water-dripping-under-car/": {
 "d": "2026-11-17",
-"h": "5d4b4d1c5598",
-"h2": "5d4b4d1c5598"
+"h": "a3394fedd09e",
+"h2": "a3394fedd09e"
 },
 "guides/car-wont-start-battery/": {
 "d": "2026-11-17",
-"h": "7e8346288ebc",
-"h2": "7e8346288ebc"
+"h": "9d227de252ac",
+"h2": "9d227de252ac"
 },
 "guides/dashboard-warning-lights/": {
 "d": "2026-11-17",
-"h": "80101ae48972",
-"h2": "80101ae48972"
+"h": "c2c27ab23d4a",
+"h2": "c2c27ab23d4a"
 },
 "guides/dent-repair-singapore/": {
 "d": "2026-11-17",
-"h": "38d35c4d2af3",
-"h2": "38d35c4d2af3"
+"h": "00a6acf99b0f",
+"h2": "00a6acf99b0f"
 },
 "guides/engine-warning-light/": {
 "d": "2026-11-17",
-"h": "c52dade23b4b",
-"h2": "c52dade23b4b"
+"h": "2ffb5165c6b1",
+"h2": "2ffb5165c6b1"
 },
 "guides/gearbox-cvt-jerking/": {
 "d": "2026-11-17",
-"h": "6707f9b8be60",
-"h2": "6707f9b8be60"
+"h": "86aa243885a9",
+"h2": "86aa243885a9"
 },
 "guides/how-to-choose-a-car-workshop/": {
 "d": "2026-11-17",
-"h": "a9a355b1cc9d",
-"h2": "a9a355b1cc9d"
+"h": "450710968865",
+"h2": "450710968865"
 },
 "guides/tyre-shop-open-sunday-singapore/": {
 "d": "2026-11-17",
-"h": "6959c1ceb122",
-"h2": "6959c1ceb122"
+"h": "09fdb31ac826",
+"h2": "09fdb31ac826"
 },
 "list-your-workshop/": {
 "d": "2026-11-17",
