@@ -1,0 +1,362 @@
+[
+ {
+  "bn": "chromium",
+  "w": 390,
+  "k": "svc",
+  "sw": 390,
+  "iw": 390,
+  "imgs": [
+   {
+    "cur": "klar-graphene-coating-bmw-x2-blue-1-800.webp",
+    "ok": true,
+    "box": [
+     332,
+     249
+    ],
+    "pos": "50% 50%"
+   },
+   {
+    "cur": "klar-graphene-coating-bmw-x2-blue-2-800.webp",
+    "ok": true,
+    "box": [
+     332,
+     249
+    ],
+    "pos": "50% 35%"
+   },
+   {
+    "cur": "klar-graphene-coating-bmw-x2-blue-3-800.webp",
+    "ok": true,
+    "box": [
+     332,
+     249
+    ],
+    "pos": "50% 35%"
+   }
+  ],
+  "ref": [
+   332,
+   249
+  ]
+ },
+ {
+  "bn": "chromium",
+  "w": 390,
+  "k": "home",
+  "sw": 390,
+  "iw": 390,
+  "imgs": [
+   {
+    "cur": "klar-graphene-coating-bmw-x2-blue-1-800.webp",
+    "ok": true,
+    "box": [
+     304,
+     228
+    ],
+    "pos": "50% 50%"
+   },
+   {
+    "cur": "klar-graphene-coating-bmw-x2-blue-2-800.webp",
+    "ok": true,
+    "box": [
+     304,
+     228
+    ],
+    "pos": "50% 35%"
+   },
+   {
+    "cur": "klar-graphene-coating-bmw-x2-blue-3-800.webp",
+    "ok": true,
+    "box": [
+     304,
+     228
+    ],
+    "pos": "50% 35%"
+   }
+  ],
+  "ref": [
+   304,
+   228
+  ]
+ },
+ {
+  "bn": "chromium",
+  "w": 390,
+  "k": "work",
+  "sw": 390,
+  "iw": 390,
+  "imgs": [
+   {
+    "cur": "klar-graphene-coating-bmw-x2-blue-1-800.webp",
+    "ok": true,
+    "box": [
+     350,
+     263
+    ],
+    "pos": "50% 50%"
+   },
+   {
+    "cur": "klar-graphene-coating-bmw-x2-blue-2-800.webp",
+    "ok": true,
+    "box": [
+     350,
+     467
+    ],
+    "pos": "50% 50%"
+   },
+   {
+    "cur": "klar-graphene-coating-bmw-x2-blue-3-800.webp",
+    "ok": true,
+    "box": [
+     350,
+     467
+    ],
+    "pos": "50% 50%"
+   }
+  ],
+  "ref": [
+   350,
+   234
+  ]
+ },
+ {
+  "bn": "chromium",
+  "w": 360,
+  "k": "svc",
+  "sw": 360,
+  "iw": 360,
+  "imgs": [
+   {
+    "cur": "klar-graphene-coating-bmw-x2-blue-1-800.webp",
+    "ok": true,
+    "box": [
+     306,
+     230
+    ],
+    "pos": "50% 50%"
+   },
+   {
+    "cur": "klar-graphene-coating-bmw-x2-blue-2-800.webp",
+    "ok": true,
+    "box": [
+     306,
+     230
+    ],
+    "pos": "50% 35%"
+   },
+   {
+    "cur": "klar-graphene-coating-bmw-x2-blue-3-800.webp",
+    "ok": true,
+    "box": [
+     306,
+     230
+    ],
+    "pos": "50% 35%"
+   }
+  ],
+  "ref": [
+   306,
+   230
+  ]
+ },
+ {
+  "bn": "chromium",
+  "w": 360,
+  "k": "home",
+  "sw": 360,
+  "iw": 360,
+  "imgs": [
+   {
+    "cur": "klar-graphene-coating-bmw-x2-blue-1-800.webp",
+    "ok": true,
+    "box": [
+     281,
+     211
+    ],
+    "pos": "50% 50%"
+   },
+   {
+    "cur": "klar-graphene-coating-bmw-x2-blue-2-800.webp",
+    "ok": true,
+    "box": [
+     281,
+     211
+    ],
+    "pos": "50% 35%"
+   },
+   {
+    "cur": "klar-graphene-coating-bmw-x2-blue-3-800.webp",
+    "ok": true,
+    "box": [
+     281,
+     211
+    ],
+    "pos": "50% 35%"
+   }
+  ],
+  "ref": [
+   281,
+   211
+  ]
+ },
+ {
+  "bn": "chromium",
+  "w": 360,
+  "k": "work",
+  "sw": 360,
+  "iw": 360,
+  "imgs": [
+   {
+    "cur": "klar-graphene-coating-bmw-x2-blue-1-800.webp",
+    "ok": true,
+    "box": [
+     320,
+     240
+    ],
+    "pos": "50% 50%"
+   },
+   {
+    "cur": "klar-graphene-coating-bmw-x2-blue-2-800.webp",
+    "ok": true,
+    "box": [
+     320,
+     427
+    ],
+    "pos": "50% 50%"
+   },
+   {
+    "cur": "klar-graphene-coating-bmw-x2-blue-3-800.webp",
+    "ok": true,
+    "box": [
+     320,
+     427
+    ],
+    "pos": "50% 50%"
+   }
+  ],
+  "ref": [
+   320,
+   214
+  ]
+ },
+ {
+  "bn": "chromium",
+  "w": 1280,
+  "k": "svc",
+  "sw": 1280,
+  "iw": 1280,
+  "imgs": [
+   {
+    "cur": "klar-graphene-coating-bmw-x2-blue-1-800.webp",
+    "ok": true,
+    "box": [
+     420,
+     315
+    ],
+    "pos": "50% 50%"
+   },
+   {
+    "cur": "klar-graphene-coating-bmw-x2-blue-2-800.webp",
+    "ok": true,
+    "box": [
+     420,
+     315
+    ],
+    "pos": "50% 35%"
+   },
+   {
+    "cur": "klar-graphene-coating-bmw-x2-blue-3-800.webp",
+    "ok": true,
+    "box": [
+     420,
+     315
+    ],
+    "pos": "50% 35%"
+   }
+  ],
+  "ref": [
+   420,
+   315
+  ]
+ },
+ {
+  "bn": "chromium",
+  "w": 1280,
+  "k": "home",
+  "sw": 1280,
+  "iw": 1280,
+  "imgs": [
+   {
+    "cur": "klar-graphene-coating-bmw-x2-blue-1-800.webp",
+    "ok": true,
+    "box": [
+     380,
+     285
+    ],
+    "pos": "50% 50%"
+   },
+   {
+    "cur": "klar-graphene-coating-bmw-x2-blue-2-800.webp",
+    "ok": true,
+    "box": [
+     380,
+     285
+    ],
+    "pos": "50% 35%"
+   },
+   {
+    "cur": "klar-graphene-coating-bmw-x2-blue-3-800.webp",
+    "ok": true,
+    "box": [
+     380,
+     285
+    ],
+    "pos": "50% 35%"
+   }
+  ],
+  "ref": [
+   380,
+   285
+  ]
+ },
+ {
+  "bn": "chromium",
+  "w": 1280,
+  "k": "work",
+  "sw": 1280,
+  "iw": 1280,
+  "imgs": [
+   {
+    "cur": "klar-graphene-coating-bmw-x2-blue-1-800.webp",
+    "ok": true,
+    "box": [
+     369,
+     277
+    ],
+    "pos": "50% 50%"
+   },
+   {
+    "cur": "klar-graphene-coating-bmw-x2-blue-2-800.webp",
+    "ok": true,
+    "box": [
+     369,
+     493
+    ],
+    "pos": "50% 50%"
+   },
+   {
+    "cur": "klar-graphene-coating-bmw-x2-blue-3-800.webp",
+    "ok": true,
+    "box": [
+     369,
+     493
+    ],
+    "pos": "50% 50%"
+   }
+  ],
+  "ref": [
+   369,
+   247
+  ]
+ }
+]
