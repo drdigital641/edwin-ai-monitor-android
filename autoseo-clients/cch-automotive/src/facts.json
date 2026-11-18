@@ -1,0 +1,103 @@
+{
+  "_note": "Single source of truth for the CCH Automotive AutoSEO preview. Copied from Bridge drop 6afdbf43cffe2d24229260e6 (sha256 5d6f32de...); only notes were shortened (other-business names and banned words removed so the build grep stays clean); every fact is unchanged. Use only these facts on the site. Do not invent contact details, hours, ratings, prices, reviewer names, staff names, a map pin, a company number, certifications, dealer approval, or any claim not listed here.",
+  "name": "CCH Automotive Sdn Bhd",
+  "short": "CCH Automotive",
+  "legal_name": "CCH Automotive Sdn Bhd",
+  "site_key": "cch-automotive",
+  "also_called": "CCH Auto",
+  "company_no": null,
+  "category": "Automotive repair shop and Continental car specialist",
+  "tagline_verbatim": "Professional in Conti Car",
+  "experience_verbatim": "more than 10 years of experience",
+  "experience_note": "Their poster writes 'MORE THEN 10 YEARS'. Use correct English 'more than 10 years' on the site. Do not invent a founding year or a longer figure.",
+  "poster_tagline": "Your Car, Our Expertise!",
+  "logo_line": "CAR ENGINE · AIRCON",
+  "alt_mark_line": "CCH AUTOMOTIVE REPAIR & SERVICE",
+  "preview": {
+    "base_url": "https://autoseo.my/preview/cch-automotive/",
+    "base_path": "/preview/cch-automotive/",
+    "noindex": true,
+    "preview_host": "autoseo.my"
+  },
+  "live": {
+    "base_url": null,
+    "domain": null,
+    "noindex": true,
+    "_note": "No domain has been given yet. Preview only. Do not touch DNS."
+  },
+  "autoseo": "https://autoseo.my/",
+  "footer_credit": "Website by AutoSEO.my",
+  "updated": "2026-11-18",
+  "address": {
+    "street": "Lot 5, Batu 5½, Jalan Tuaran, Likas Baharu",
+    "postcode": "88450",
+    "locality": "Likas Baharu",
+    "city": "Kota Kinabalu",
+    "region": "Sabah",
+    "country": "MY",
+    "country_name": "Malaysia",
+    "area_note": "The Jalan Tuaran Bypass area",
+    "one_line": "Lot 5, Batu 5½, Jalan Tuaran, Likas Baharu, 88450 Kota Kinabalu, Sabah, Malaysia"
+  },
+  "geo": null,
+  "place_id": null,
+  "maps_url": "https://www.google.com/maps/search/?api=1&query=Lot%205%2C%20Batu%205%C2%BD%2C%20Jalan%20Tuaran%2C%20Likas%20Baharu%2C%2088450%20Kota%20Kinabalu%2C%20Sabah",
+  "maps_note": "No map pin was found. Use this Google Maps search link built from the address. Do not embed a guessed pin or invent coordinates.",
+  "hours": null,
+  "hours_note": "No opening hours are listed. Show none. Do not invent days or times. Omit openingHours from schema.",
+  "whatsapp": "60109359391",
+  "whatsapp_display": "010-935 9391",
+  "whatsapp_e164": "+60109359391",
+  "whatsapp_display_intl": "+60 10-935 9391",
+  "whatsapp_status": "Confirmed by Edwin, 18 Nov 2026. This is the number on their intro post and on their services poster.",
+  "whatsapp_url": "https://wa.me/60109359391",
+  "whatsapp_prefill": "Hi CCH Automotive, I'd like to ask about my car. Model and year: ",
+  "do_not_use_numbers": ["012-820 1559", "+60 12-820 1559", "018-789 3055"],
+  "do_not_use_numbers_note": "012-820 1559 appeared on the Facebook WhatsApp button; Edwin confirmed the site must use 010-935 9391 only. 018-789 3055 belongs to an unrelated CCH Auto in another state. This business is in Kota Kinabalu, Sabah.",
+  "phones": [
+    {
+      "e164": "+60109359391",
+      "display": "010-935 9391",
+      "display_intl": "+60 10-935 9391",
+      "digits": "60109359391",
+      "role": "whatsapp_and_phone",
+      "publish": true,
+      "source": "Edwin, 18 Nov 2026; also printed on their Facebook intro and services poster"
+    }
+  ],
+  "email": "cchautomotive6@gmail.com",
+  "facebook": "https://www.facebook.com/profile.php?id=100083124710565",
+  "facebook_share": "https://www.facebook.com/share/1EEtZRf9HE/",
+  "website": null,
+  "reviews": {"publish": false, "show_stars": false, "show_testimonials": false, "aggregateRating": false,
+    "note": "Only one review was found and it is negative. Show no reviews, star ratings, review widgets, or testimonials, and do not add rating schema."},
+  "staff": {"publish_names": false, "note": "Name no staff. The flyer has unnamed people in inset work photos; do not caption them as a named team."},
+  "services": [
+    {"id": "troubleshooting", "name": "Car troubleshooting", "source": "Facebook page intro and services poster"},
+    {"id": "engine-gearbox", "name": "Engine and gearbox repair", "source": "Facebook page intro"},
+    {"id": "diagnostics", "name": "Computer diagnostics", "source": "Facebook page intro and services poster ('Diagnoses')"},
+    {"id": "module-programming", "name": "Module programming and coding", "source": "Facebook page intro and services poster. Use the correct spelling on the site."},
+    {"id": "service", "name": "Car service and maintenance", "source": "Facebook page intro and flyer"},
+    {"id": "aircond", "name": "Aircond service and repair", "source": "Facebook page intro, poster and flyer"},
+    {"id": "conti", "name": "Continental car specialist", "source": "Facebook page wording and poster line 'Professional in Conti Car'"},
+    {"id": "electrical-hybrid", "name": "Electrical and hybrid", "source": "Listed on their 'Car Service & Repair' flyer as 'Electrical & Hybrid'. Advertise it as a service they offer. Do not call them a hybrid specialist or claim EV certification."},
+    {"id": "oil-change", "name": "Oil change", "source": "Listed on their flyer"},
+    {"id": "transmission", "name": "Transmission", "source": "Listed on their flyer, in addition to engine and gearbox repair on the page intro"}
+  ],
+  "oil": {
+    "brand": "Alpine Germany engine oil",
+    "examples_from_posts": ["Alpine RS 10W-60"],
+    "shown_in_photos": ["Alpine RS 0W-40", "Alpine RS 5W-40 C3", "Alpine Longlife 12 FE 0W-30", "Alpine Longlife III 5W-30", "Alpine TSN 10W-40", "Alpine RSL 5W-40", "Alpine DSG Fluid"],
+    "note": "They use Alpine Germany engine oil. Caption other oils or fluids that actually appear in a photo (Motul, Motorcraft Mercon LV, Toyota AT fluid, Autofine) as what is in that photo only. Do not claim an official Alpine dealership or exclusive use."
+  },
+  "brands_from_hashtags": ["Mercedes-Benz", "BMW", "Audi", "Volkswagen"],
+  "cars_worked_on": {
+    "from_posts": ["BMW F30 M Sport (steering and paddle shifter activation)", "Audi R8 V8 (oil change)", "Mercedes C200 Kompressor", "Porsche Carrera Turbo S", "Range Rover Sport", "Mustang GT 5.0 (cooling coil)", "Toyota Hilux (brake upgrade)", "Mini", "Toyota Alphard / Vellfire", "Honda Accord", "Toyota FJ Cruiser", "Subaru"],
+    "shown_in_photos": ["BMW (including an X3 F25)", "MINI John Cooper Works", "Mercedes-Benz C-Class", "Mercedes-Benz ML / GLE", "Mercedes-Benz A-Class or CLA", "Ford Mustang", "Toyota FJ Cruiser", "Toyota Hilux GR Sport", "Subaru WRX STI", "Porsche (workshop cover photo: a yellow Porsche and a black Porsche on the lift)"],
+    "note": "Use these as 'cars we have worked on'. Do not add models that only appear as marketing graphics. Do not caption the dark studio Audi R8 image as a workshop job photo."
+  },
+  "audience": "Kota Kinabalu and Sabah drivers of European / Continental cars, and other makes they have actually worked on.",
+  "language": {"primary": "en", "optional": "Light Malay touches on CTAs are optional. Keep copy in strings_en.py so Bahasa Malaysia can be added later."},
+  "palette": {"red": "#C8102E", "orange": "#F05A1A", "blue": "#0A4F8C", "navy": "#0B1220", "charcoal": "#161B22", "yellow_accent": "#F5C518", "white": "#FFFFFF", "black": "#0A0A0A"},
+  "gaps": ["No domain yet; preview only.", "No company registration number.", "No opening hours.", "No map pin or coordinates.", "No shopfront or signboard photo; cover is the hero.", "No reviews to publish.", "No staff names."]
+}
