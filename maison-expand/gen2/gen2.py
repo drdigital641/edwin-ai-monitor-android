@@ -89,7 +89,7 @@ def build(slug, d):
      {"@type":"HomeAndConstructionBusiness","@id":"https://maisoninteriordesign.sg/#business","name":"Maison Interior Design","url":"https://maisoninteriordesign.sg/","telephone":"+65 9339 1185","email":"maisoninteriordesignsg@gmail.com","foundingDate":"2018","areaServed":{"@type":"Country","name":"Singapore"},"image":"https://maisoninteriordesign.sg/wp-content/uploads/Jimmy-Monkey-Completed-6.jpg","founder":{"@type":"Person","name":"Roland Ng","jobTitle":"Managing Director"},"sameAs":["https://www.instagram.com/maison_interiordesign/","https://www.facebook.com/MaisonInteriorDesignSG"]},
      {"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://maisoninteriordesign.sg/"},{"@type":"ListItem","position":2,"name":"New launches","item":"https://maisoninteriordesign.sg/new-launches/"},{"@type":"ListItem","position":3,"name":n,"item":url}]},
      {"@type":"Article","headline":f"{n} Renovation & Interior Design","description":ld_desc,"datePublished":d.get("pub","2026-11-11"),"dateModified":d.get("mod","2026-11-16") if LD_FULL else "2026-11-11","author":{"@id":"https://maisoninteriordesign.sg/#business"},"publisher":{"@id":"https://maisoninteriordesign.sg/#business"},"mainEntityOfPage":url,
-      "image":[f"https://maisoninteriordesign.sg/images/new-launches/{d['dir']}/{d['dir'].replace('-v4','')}-v4-{r['stem']}-1920.webp" for r in rs],
+      "image":[f"https://maisoninteriordesign.sg/images/new-launches/{d['dir']}/{d['dir'].replace('-v4','')}-v4-{r['stem']}-{d.get('big','1920')}.webp" for r in rs],
       "about":{"@type":"Place","name":n,"address":{"@type":"PostalAddress","addressLocality":town,"addressCountry":"SG"}},
       "keywords":d.get("kw") or f"{n} renovation, {n} interior design, {n} floor plan, {town} BTO renovation, {n} built-in carpentry, {d['old_kwl']}",
       "citation":d.get("cite",["https://homes.hdb.gov.sg/home/bto"])},
@@ -100,7 +100,8 @@ def build(slug, d):
     slides = ""
     for i, r in enumerate(rs):
         b = f"{d['dir'].replace('-v4','')}-v4-{r['stem']}"
-        slides += (f'<figure class="nv-slide" id="s{i}"><img src="{IMG(d,b+"-1920.webp")}" srcset="{IMG(d,b+"-900.webp")} 900w, {IMG(d,b+"-1920.webp")} 1920w" sizes="100vw" width="1920" height="1080" alt="{E(r["alt"])}" style="object-position:{r["pos"]}"'
+        BG = d.get('big','1920'); BH = d.get('big_h','1080')
+        slides += (f'<figure class="nv-slide" id="s{i}"><img src="{IMG(d,b+"-"+BG+".webp")}" srcset="{IMG(d,b+"-900.webp")} 900w, {IMG(d,b+"-"+BG+".webp")} {BG}w" sizes="100vw" width="{BG}" height="{BH}" alt="{E(r["alt"])}" style="object-position:{r["pos"]}"'
                    + (' fetchpriority="high"' if i == 0 else ' loading="lazy"') + f'><figcaption><b>{E(r["room"])}: {E(r["style"])}</b><span>{E(CAP)}</span></figcaption></figure>')
     dots = "".join(f'<button type="button" class="nv-dot" aria-label="Show concept {i+1}: {E(r["room"])}" data-i="{i}"></button>' for i, r in enumerate(rs))
     hero = (f'<section class="nv-hero"><div class="nv-car" id="car" role="region" aria-label="{E(n)} concept images, swipe to browse" tabindex="0">{slides}</div>'
