@@ -1,5 +1,5 @@
 # English copy for the CCH Automotive site. Every fact here comes from facts.json (Bridge drop, 18 Nov 2026).
-# Keep all visible words in this file so a Bahasa Malaysia strings_ms.py can be added later with the same keys.
+# Keep all visible words in this file. strings_ms.py and strings_zh.py have exactly the same keys (shared AutoSEO template rule).
 # No hours, prices, reviews, ratings, staff names, company number or dealer claims. No em dashes in copy.
 
 UI = {
@@ -30,7 +30,57 @@ UI = {
     "related": "Other services",
     "ask_title": "Ask about your car",
     "ask_line": "Send the model, year and what the car is doing. Photos or a short video help.",
+    "lang_label": "Language",
+    "aria_main": "Main",
+    "aria_menu": "Menu",
+    "aria_pages": "Pages",
+    "aria_contact": "Contact",
+    "aria_photo": "Photo",
+    "aria_breadcrumb": "Breadcrumb",
+    "home_aria": "CCH Automotive home",
+    "logo_alt": "CCH Automotive logo",
+    "faq_about": "Questions about {name}",
+    "last_updated": "Last updated 18 November 2026.",
+    "contact_wa_h": "WhatsApp or call",
+    "contact_mail_h": "Email and Facebook",
+    "contact_hours_h": "Opening hours",
+    "contact_addr_h": "Address",
 }
+
+# WhatsApp prefill for this language (the number itself lives in facts.json).
+PREFILL = "Hi CCH Automotive, I'd like to ask about my car. Model and year: "
+
+# Alt text and captions: say only what the photo shows. Keys are image stems in build.py.
+CAPTIONS = {
+    "alpine-fender-engine": "Black BMW on a two-post lift, Alpine Germany fender cover on",
+    "bmw-x-lift": "BMW X3 (F25) on the lift, new mounts on the floor",
+    "engine-bay-mini": "MINI John Cooper Works on the lift, Motul oil ready",
+    "engine-bay-open-hood": "Open engine bay, two bottles of Motul Multipower Plus",
+    "fj-cruiser-lift": "Toyota FJ Cruiser on the scissor lift, Toyota AT fluid on the floor",
+    "fj-cruiser-yellow": "Toyota FJ Cruiser in the bay",
+    "merc-engine-bay-2": "White Mercedes-Benz on the lift with Alpine RS 0W-40",
+    "mercedes-c-white": "Mercedes-Benz C-Class in the workshop",
+    "mercedes-ml-engine": "Mercedes-Benz ML / GLE with Alpine RS 5W-40 C3",
+    "mercedes-white-engine-bay": "Mercedes-Benz A-Class or CLA, Alpine Longlife III 5W-30 and DSG Fluid",
+    "mustang-lift": "Ford Mustang transmission service, Motorcraft Mercon LV fluid",
+    "pickup-lift": "Toyota Hilux GR Sport service with Alpine TSN 10W-40",
+    "subaru-engine-bay": "Subaru WRX STI on the lift, new front control arms",
+    "oil-alpine-red": "Alpine TSN 10W-40 and a Toyota oil filter",
+    "oil-jugs-red": "Motorcraft Mercon LV, transmission pan, filter and gasket",
+    "alpine-yellow-oil": "Alpine Longlife 12 FE 0W-30 and a Perodua oil filter",
+    "parts-engine-mounts": "Gearbox mounting for a BMW X3 F25",
+    "turbo-piping-parts": "Old and new hoses on an Alpine fender cover",
+    "poster-conti": "CCH Automotive services poster: Professional in Conti Car",
+    "flyer-service-repair": "CCH Automotive Car Service and Repair flyer",
+    "oil-kit": "Parts laid out for a service: Alpine RSL 5W-40, filters, fluids, suspension and steering parts",
+    "cover": "CCH Automotive workshop bay with a black Ford Mustang, a yellow Porsche and a black Porsche on a two-post lift",
+    "og": "CCH Automotive workshop bay in Likas, Kota Kinabalu",
+}
+
+# Facebook-post car list on the home page (facts.json cars_worked_on.from_posts, in this language).
+CARS_FROM_POSTS = ["BMW F30 M Sport (steering and paddle shifter activation)", "Audi R8 V8 (oil change)", "Mercedes C200 Kompressor",
+                   "Porsche Carrera Turbo S", "Range Rover Sport", "Mustang GT 5.0 (cooling coil)", "Toyota Hilux (brake upgrade)", "Mini",
+                   "Toyota Alphard / Vellfire", "Honda Accord", "Toyota FJ Cruiser", "Subaru"]
 
 HOME = {
     "title": "Continental car workshop in Kota Kinabalu | CCH Automotive, Likas",
@@ -270,6 +320,7 @@ CONTACT = {
     "h1": "Contact our car workshop in Likas",
     "lead": "WhatsApp is the quickest way to reach us. Send the model, year and what the car is doing.",
     "hours_note": "Opening hours are not listed online yet. Please WhatsApp us to arrange a time before you come.",
+    "area_note": "The Jalan Tuaran Bypass area.",
 }
 
 PRIVACY = {

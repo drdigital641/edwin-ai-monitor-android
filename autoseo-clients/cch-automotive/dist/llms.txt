@@ -20,17 +20,20 @@
 - [Aircond service and repair](https://autoseo.my/preview/cch-automotive/services/aircond-service-repair/): Aircond not cold? Service, repair and cooling coil work.
 - [Electrical and hybrid](https://autoseo.my/preview/cch-automotive/services/electrical-hybrid/): Electrical faults and hybrid cars, as listed on our flyer.
 
+## Languages
+English at the site root, Bahasa Melayu at /ms/, Simplified Chinese at /zh/. Every page exists in all three.
+
 ## Pages
-- https://autoseo.my/preview/cch-automotive/
-- https://autoseo.my/preview/cch-automotive/services/
-- https://autoseo.my/preview/cch-automotive/about/
-- https://autoseo.my/preview/cch-automotive/contact/
-- https://autoseo.my/preview/cch-automotive/privacy/
-- https://autoseo.my/preview/cch-automotive/articles/
-- https://autoseo.my/preview/cch-automotive/services/car-troubleshooting/
-- https://autoseo.my/preview/cch-automotive/services/engine-gearbox-repair/
-- https://autoseo.my/preview/cch-automotive/services/computer-diagnostics/
-- https://autoseo.my/preview/cch-automotive/services/module-programming-coding/
-- https://autoseo.my/preview/cch-automotive/services/car-service-maintenance/
-- https://autoseo.my/preview/cch-automotive/services/aircond-service-repair/
-- https://autoseo.my/preview/cch-automotive/services/electrical-hybrid/
+- https://autoseo.my/preview/cch-automotive/ (BM: https://autoseo.my/preview/cch-automotive/ms/, 中文: https://autoseo.my/preview/cch-automotive/zh/)
+- https://autoseo.my/preview/cch-automotive/services/ (BM: https://autoseo.my/preview/cch-automotive/ms/services/, 中文: https://autoseo.my/preview/cch-automotive/zh/services/)
+- https://autoseo.my/preview/cch-automotive/about/ (BM: https://autoseo.my/preview/cch-automotive/ms/about/, 中文: https://autoseo.my/preview/cch-automotive/zh/about/)
+- https://autoseo.my/preview/cch-automotive/contact/ (BM: https://autoseo.my/preview/cch-automotive/ms/contact/, 中文: https://autoseo.my/preview/cch-automotive/zh/contact/)
+- https://autoseo.my/preview/cch-automotive/privacy/ (BM: https://autoseo.my/preview/cch-automotive/ms/privacy/, 中文: https://autoseo.my/preview/cch-automotive/zh/privacy/)
+- https://autoseo.my/preview/cch-automotive/articles/ (BM: https://autoseo.my/preview/cch-automotive/ms/articles/, 中文: https://autoseo.my/preview/cch-automotive/zh/articles/)
+- https://autoseo.my/preview/cch-automotive/services/car-troubleshooting/ (BM: https://autoseo.my/preview/cch-automotive/ms/services/car-troubleshooting/, 中文: https://autoseo.my/preview/cch-automotive/zh/services/car-troubleshooting/)
+- https://autoseo.my/preview/cch-automotive/services/engine-gearbox-repair/ (BM: https://autoseo.my/preview/cch-automotive/ms/services/engine-gearbox-repair/, 中文: https://autoseo.my/preview/cch-automotive/zh/services/engine-gearbox-repair/)
+- https://autoseo.my/preview/cch-automotive/services/computer-diagnostics/ (BM: https://autoseo.my/preview/cch-automotive/ms/services/computer-diagnostics/, 中文: https://autoseo.my/preview/cch-automotive/zh/services/computer-diagnostics/)
+- https://autoseo.my/preview/cch-automotive/services/module-programming-coding/ (BM: https://autoseo.my/preview/cch-automotive/ms/services/module-programming-coding/, 中文: https://autoseo.my/preview/cch-automotive/zh/services/module-programming-coding/)
+- https://autoseo.my/preview/cch-automotive/services/car-service-maintenance/ (BM: https://autoseo.my/preview/cch-automotive/ms/services/car-service-maintenance/, 中文: https://autoseo.my/preview/cch-automotive/zh/services/car-service-maintenance/)
+- https://autoseo.my/preview/cch-automotive/services/aircond-service-repair/ (BM: https://autoseo.my/preview/cch-automotive/ms/services/aircond-service-repair/, 中文: https://autoseo.my/preview/cch-automotive/zh/services/aircond-service-repair/)
+- https://autoseo.my/preview/cch-automotive/services/electrical-hybrid/ (BM: https://autoseo.my/preview/cch-automotive/ms/services/electrical-hybrid/, 中文: https://autoseo.my/preview/cch-automotive/zh/services/electrical-hybrid/)

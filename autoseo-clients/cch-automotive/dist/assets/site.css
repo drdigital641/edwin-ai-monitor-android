@@ -265,3 +265,15 @@ p{margin:0 0 1em;text-wrap:pretty}
   .js .steps:not(.up) .car{transform:none}
   .sweep{display:none}
 }
+
+/* Language switcher (shared AutoSEO template: EN / BM / 中文) */
+.lang-sw{display:flex;align-items:center;gap:6px;margin-left:auto;font-weight:700;font-size:.95rem}
+.lang-sw a{color:var(--mute);text-decoration:none;min-height:44px;min-width:32px;display:inline-flex;align-items:center;justify-content:center}
+.lang-sw a[aria-current]{color:var(--ink);box-shadow:inset 0 -2px 0 var(--red)}
+.lang-sw .sl{color:var(--line)}
+.bar-in .lang-sw{gap:0;font-size:.82rem}
+.bar-in .lang-sw a{min-width:28px}
+@media (max-width:420px){.badge-t{font-size:.9rem}.menu-b span{display:none}.menu-b{padding:0 10px}}
+@media (min-width:600px){.bar-in .lang-sw{gap:6px;font-size:.95rem}.bar-in .lang-sw a{min-width:32px}}
+.lang-sheet{margin:16px 0 0;font-size:1.1rem}
+@media (min-width:900px){.bar-in .nav{margin-left:auto}.bar-in .lang-sw{margin-left:0}}
