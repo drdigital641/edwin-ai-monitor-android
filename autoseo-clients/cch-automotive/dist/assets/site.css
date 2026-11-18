@@ -64,8 +64,8 @@ p{margin:0 0 1em;text-wrap:pretty}
   border-image:linear-gradient(90deg,var(--red),var(--volt)) 1}
 .bar-in{display:flex;align-items:center;gap:14px;width:min(100% - 24px,var(--wrap));margin-inline:auto;min-height:60px}
 .badge{display:flex;align-items:center;gap:10px;color:var(--ink);text-decoration:none;margin-right:auto}
-.badge img{width:44px;height:44px;object-fit:contain}
-.badge-t{font:600 1.05rem/1 var(--head);letter-spacing:.01em}
+.badge img{width:68px;height:30px}
+.badge-t{font:600 1.08rem/1 var(--head);letter-spacing:.01em;padding-top:2px}
 .badge-t b{font-weight:800;color:var(--ink)}
 .nav{display:none;gap:22px}
 .nav a{color:var(--mute);text-decoration:none;font-weight:600;padding:8px 0}
@@ -235,7 +235,7 @@ p{margin:0 0 1em;text-wrap:pretty}
 /* footer */
 .foot{background:#070C16;border-top:1px solid var(--red);padding:48px 0 20px}
 .foot-in{width:min(100% - 32px,var(--wrap));margin-inline:auto;display:grid;gap:30px}
-.foot-brand img{width:96px;height:96px;object-fit:contain}
+.foot-brand img{width:136px;height:60px}
 .foot-name{font:700 1.15rem var(--head);margin:10px 0 2px}
 .foot-tag{color:var(--mute)}
 .foot-h{font:700 1rem var(--body);color:var(--mute);letter-spacing:0;margin-bottom:8px}

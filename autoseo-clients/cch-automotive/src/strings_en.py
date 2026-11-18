@@ -252,7 +252,7 @@ SERVICES = [
         "title": "Car aircond service in Kota Kinabalu | CCH Automotive, Likas",
         "desc": "Car aircond service and repair at CCH Automotive, a Continental car workshop on Jalan Tuaran, Likas, Kota Kinabalu. WhatsApp 010-935 9391.",
         "h1": "Car aircond service in Kota Kinabalu",
-        "lead": "Aircond service and repair at our Likas workshop. Our logo says it plainly: car engine and aircon.",
+        "lead": "Aircond service and repair at our Likas workshop, as listed on our poster and flyer.",
         "body": [
             ("Aircond work we do",
              "Aircond service and repair is one of our core services and is on both our poster and our flyer. One job from our posts is a cooling coil on a Mustang GT 5.0."),

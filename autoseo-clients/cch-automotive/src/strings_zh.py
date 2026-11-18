@@ -247,7 +247,7 @@ SERVICES = [
         "title": "亚庇汽车冷气保养 | CCH Automotive，Likas",
         "desc": "CCH Automotive 汽车冷气保养和维修，欧洲车修车厂，位于亚庇 Likas 的 Jalan Tuaran。WhatsApp 010-935 9391。",
         "h1": "亚庇汽车冷气保养",
-        "lead": "在我们 Likas 的车厂做冷气保养和维修。我们的标志上写得很清楚：car engine and aircon。",
+        "lead": "在我们 Likas 的车厂做冷气保养和维修，这项服务印在我们的海报和传单上。",
         "body": [
             ("我们做的冷气工作",
              "冷气保养和维修是我们的核心服务之一，海报和传单上都有。帖子里有一个例子是 Mustang GT 5.0 的冷气蒸发器。"),

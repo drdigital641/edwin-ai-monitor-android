@@ -123,7 +123,7 @@ def business():
         '@type': ['AutoRepair', 'AutomotiveBusiness', 'LocalBusiness'], '@id': BIZ_ID,
         'name': F['name'], 'alternateName': [F['short'], F['also_called']], 'url': pabs(),
         'description': S.HOME['desc'], 'slogan': F['tagline_verbatim'],
-        'logo': absu('images/logo-transparent.png'), 'image': [absu('images/cover.webp'), absu('images/og.webp')],
+        'logo': absu('images/cch-logo-512.png'), 'image': [absu('images/cover.webp'), absu('images/og.webp')],
         'telephone': F['whatsapp_e164'], 'email': F['email'],
         'address': {'@type': 'PostalAddress', 'streetAddress': A['street'], 'addressLocality': A['city'],
                     'addressRegion': A['region'], 'postalCode': A['postcode'], 'addressCountry': A['country']},
@@ -181,8 +181,9 @@ def head(title, desc, path, graph, preload_hero=False):
 <meta name="twitter:title" content="{E(title)}">
 <meta name="twitter:description" content="{E(desc)}">
 <meta name="twitter:image" content="{absu('images/og.webp')}">
-<link rel="icon" type="image/webp" href="{img('favicon-512')}">
-<link rel="apple-touch-icon" href="{u('images/logo-transparent.png')}">
+<link rel="icon" type="image/svg+xml" href="{u('images/cch-mark.svg')}">
+<link rel="icon" type="image/png" sizes="32x32" href="{u('images/cch-mark-32.png')}">
+<link rel="apple-touch-icon" href="{u('images/cch-mark-180.png')}">
 <link rel="preload" as="font" type="font/woff2" href="{u('assets/fonts/league-spartan.woff2')}" crossorigin>
 {pre}
 <link rel="stylesheet" href="{u('assets/site.css')}?v={css_v}">
@@ -199,7 +200,7 @@ def header(active='', path=''):
     svc = ''.join(f'<a href="{pu("services/" + s["slug"] + "/")}">{E(s["name"])}</a>' for s in S.SERVICES)
     return f'''<header class="bar">
 <div class="bar-in">
-<a class="badge" href="{pu()}" aria-label="{E(S.UI['home_aria'])}"><img src="{img('favicon-512')}" width="44" height="44" alt="{E(S.UI['logo_alt'])}"><span class="badge-t"><b>CCH</b> Automotive</span></a>
+<a class="badge" href="{pu()}" aria-label="{E(S.UI['home_aria'])}"><img src="{u('images/cch-monogram.svg')}" width="68" height="30" alt="{E(S.UI['logo_alt'])}"><span class="badge-t">Automotive</span></a>
 <nav class="nav" aria-label="{E(S.UI['aria_main'])}">{links}</nav>
 {I18N.switcher(u, path, L, S.UI['lang_label'])}
 {wa('header', S.UI['wa_btn'], 'btn-wa sm hide-m')}
@@ -224,7 +225,7 @@ def footer():
     svc = ''.join(f'<a href="{pu("services/" + s["slug"] + "/")}">{E(s["name"])}</a>' for s in S.SERVICES)
     return f'''<footer class="foot">
 <div class="foot-in">
-<div class="foot-brand"><img src="{img('logo-transparent')}" width="120" height="120" alt="{E(S.UI['logo_alt'])}" loading="lazy"><p class="foot-name">{E(F['name'])}</p><p class="foot-tag">{E(F['tagline_verbatim'])}</p></div>
+<div class="foot-brand"><img src="{u('images/cch-monogram.svg')}" width="136" height="60" alt="{E(S.UI['logo_alt'])}" loading="lazy"><p class="foot-name">{E(F['name'])}</p><p class="foot-tag">{E(F['tagline_verbatim'])}</p></div>
 <div><h2 class="foot-h">{S.UI['footer_find']}</h2><address>{E(A['one_line'])}</address>{maps('footer')}</div>
 <div><h2 class="foot-h">{S.UI['footer_talk']}</h2>{wa('footer', S.UI['wa_btn_long'], 'lnk')}{call('footer', S.UI['call_btn_long'], 'lnk')}{mail('footer')}{fb('footer')}</div>
 <div><h2 class="foot-h">{S.UI['nav_services']}</h2><nav class="foot-nav" aria-label="{E(S.UI['nav_services'])}">{svc}</nav></div>
@@ -429,6 +430,9 @@ def build():
     for f in os.listdir(os.path.join(HERE, 'assets', 'fonts')):
         shutil.copy(os.path.join(HERE, 'assets', 'fonts', f), os.path.join(OUT, 'assets', 'fonts', f))
     shutil.copy(os.path.join(HERE, 'p1-cta.js'), os.path.join(OUT, 'p1-cta.js'))
+    os.makedirs(os.path.join(OUT, 'images'), exist_ok=True)  # new logo set (18 Nov); photos live on the server only
+    for f in os.listdir(os.path.join(HERE, 'assets', 'logo')):
+        shutil.copy(os.path.join(HERE, 'assets', 'logo', f), os.path.join(OUT, 'images', f))
     global S, L
     missing = [f'{c}: {n}' for c, mod in STRINGS.items() for n in ('UI', 'HOME', 'FAQ_HOME', 'SERVICES', 'SERVICES_INDEX', 'ABOUT',
                'CONTACT', 'PRIVACY', 'ARTICLES', 'PREFILL', 'CAPTIONS', 'CARS_FROM_POSTS') if not hasattr(mod, n)]

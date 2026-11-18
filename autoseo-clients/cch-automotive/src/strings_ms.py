@@ -246,7 +246,7 @@ SERVICES = [
         "title": "Servis aircond kereta di Kota Kinabalu | CCH Automotive, Likas",
         "desc": "Servis dan baiki aircond kereta di CCH Automotive, bengkel kereta Continental di Jalan Tuaran, Likas, Kota Kinabalu. WhatsApp 010-935 9391.",
         "h1": "Servis aircond kereta di Kota Kinabalu",
-        "lead": "Servis dan baiki aircond di bengkel kami di Likas. Logo kami sendiri menyebutnya dengan jelas: car engine and aircon.",
+        "lead": "Servis dan baiki aircond di bengkel kami di Likas, seperti yang tertera pada poster dan flyer kami.",
         "body": [
             ("Kerja aircond yang kami buat",
              "Servis dan baiki aircond ialah salah satu perkhidmatan teras kami dan ada pada poster dan flyer kami. Satu kerja dari hantaran kami ialah cooling coil pada Mustang GT 5.0."),
