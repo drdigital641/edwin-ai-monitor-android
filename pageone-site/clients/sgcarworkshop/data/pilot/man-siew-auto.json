@@ -1,0 +1,37 @@
+{
+ "lede": "MAN SIEW AUTO at Woodlands Avenue 10 (Woodlands Industrial Xchange) is a car repair workshop.",
+ "chips": [
+  "Car repairs",
+  "Tyres"
+ ],
+ "services": [
+  "Car repairs",
+  "Tyre repair",
+  "BMW servicing"
+ ],
+ "themes": "Customers on Google Maps mention quick help with a tyre late in the evening and a mechanic who works through tough BMW jobs.",
+ "faqs": [
+  [
+   "What does MAN SIEW AUTO do?",
+   "Google Maps lists it as a car repair workshop."
+  ],
+  [
+   "What are the opening hours?",
+   "The hours are listed in the Google Maps section above. Please see Google Maps for current hours."
+  ]
+ ],
+ "sources": "its Google Maps listing",
+ "stories": [],
+ "mentioned_services": [
+  "Tyres",
+  "Repairs"
+ ],
+ "services_note": "Services mentioned on Google Maps. Ask the workshop for its full list.",
+ "specialties": [],
+ "makes": [
+  "BMW"
+ ],
+ "makes_note": "From customer comments on Google Maps.",
+ "good_to_know": [],
+ "card_rules": "2026-11-05"
+}

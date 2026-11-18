@@ -1,0 +1,48 @@
+{
+ "schema_version": 1,
+ "slug": "stamford-tyres-auto-rescue-3",
+ "place_id": "ChIJhxVqitob2jER2g7bIOgZJtM",
+ "place_id_checked_at": "2026-11-18",
+ "name": "Stamford Tyres Auto Rescue",
+ "name_source_url": "google_profile",
+ "name_checked_at": "2026-11-18",
+ "address": {
+  "block": "",
+  "street": "1004 Bukit Merah Lane 3, #01-17 & 01-19",
+  "unit": "",
+  "building": ""
+ },
+ "postal_code": "159720",
+ "address_source_url": "google_profile",
+ "address_checked_at": "2026-11-18",
+ "categories": [
+  "SERV"
+ ],
+ "services": [
+  "General servicing and repair"
+ ],
+ "services_source_url": "google_profile",
+ "phones": [
+  {
+   "e164": "+6587973355",
+   "kind": "mobile",
+   "whatsapp": true,
+   "source": "google_profile",
+   "checked_at": "2026-11-18"
+  }
+ ],
+ "google_screen": {
+  "passed": true,
+  "reason": "OPERATIONAL, car repair, SG mobile on Google profile",
+  "checked_at": "2026-11-18"
+ },
+ "status": "pending",
+ "tier": "basic",
+ "first_seen_at": "2026-11-18",
+ "last_verified_at": "2026-11-18",
+ "collector_version": "agent-v5",
+ "hold": "held 19 Nov: 2 ratings and same mobile/slug as live card stamford-tyres-auto-rescue",
+ "estate": "bukit-merah-lane-3",
+ "planning_area": "Bukit Merah",
+ "region": "central"
+}

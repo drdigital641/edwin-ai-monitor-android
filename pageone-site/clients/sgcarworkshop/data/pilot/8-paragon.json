@@ -1,0 +1,33 @@
+{
+ "lede": "8 Paragon at Woodlands Avenue 10 (Woodlands Industrial Xchange) is a car repair workshop.",
+ "chips": [
+  "Car repair",
+  "Servicing"
+ ],
+ "services": [
+  "Car repair",
+  "Servicing"
+ ],
+ "themes": "Customers on Google Maps mention good service and a smooth car collection.",
+ "faqs": [
+  [
+   "What does 8 Paragon do?",
+   "Google Maps lists it as a car repair workshop."
+  ],
+  [
+   "What are the opening hours?",
+   "The hours are listed in the Google Maps section above. Please see Google Maps for current hours."
+  ]
+ ],
+ "sources": "its Google Maps listing",
+ "stories": [],
+ "mentioned_services": [
+  "Servicing"
+ ],
+ "services_note": "Services are not listed on its public pages. Ask the workshop for its full list.",
+ "specialties": [],
+ "makes": [],
+ "makes_note": "Not listed on its public pages. Ask the workshop about your car.",
+ "good_to_know": [],
+ "card_rules": "2026-11-05"
+}

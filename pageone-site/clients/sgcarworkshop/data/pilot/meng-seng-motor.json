@@ -1,0 +1,40 @@
+{
+ "lede": "Meng Seng Motor at Defu Industrial Estate (Defu Lane) is a car servicing and repair workshop.",
+ "chips": [
+  "Car servicing",
+  "Engine work"
+ ],
+ "services": [
+  "Car servicing",
+  "Maintenance",
+  "Timing chain tensioner",
+  "Engine mounting",
+  "Engine chemical wash"
+ ],
+ "themes": "Customers on Google Maps mention clear explanations without pressure, careful servicing and engine work done well.",
+ "faqs": [
+  [
+   "What does Meng Seng Motor do?",
+   "Google Maps lists it as a car repair workshop."
+  ],
+  [
+   "What are the opening hours?",
+   "The hours are listed in the Google Maps section above. Please see Google Maps for current hours."
+  ]
+ ],
+ "sources": "its Google Maps listing",
+ "stories": [],
+ "mentioned_services": [
+  "Servicing",
+  "Engine work",
+  "Maintenance"
+ ],
+ "services_note": "Services mentioned on Google Maps. Ask the workshop for its full list.",
+ "specialties": [],
+ "makes": [
+  "Toyota"
+ ],
+ "makes_note": "From customer comments on Google Maps.",
+ "good_to_know": [],
+ "card_rules": "2026-11-05"
+}

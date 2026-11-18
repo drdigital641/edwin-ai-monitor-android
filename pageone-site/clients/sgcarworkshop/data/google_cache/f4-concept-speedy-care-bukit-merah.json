@@ -1,0 +1,30 @@
+{
+ "businessStatus": "OPERATIONAL",
+ "primaryType": "car_repair",
+ "types": [
+  "car_repair",
+  "point_of_interest",
+  "service",
+  "establishment"
+ ],
+ "rating": 5,
+ "userRatingCount": 8,
+ "websiteUri": "https://f4concept.sg/",
+ "paymentOptions": null,
+ "parkingOptions": null,
+ "editorialSummary": null,
+ "weekdayDescriptions": [
+  "Monday: 9:00 AM – 6:30 PM",
+  "Tuesday: 9:00 AM – 6:30 PM",
+  "Wednesday: 9:00 AM – 6:30 PM",
+  "Thursday: 9:00 AM – 6:30 PM",
+  "Friday: 9:00 AM – 6:30 PM",
+  "Saturday: 9:00 AM – 5:00 PM",
+  "Sunday: Closed"
+ ],
+ "review_count_seen": 5,
+ "review_themes": "Customers on Google Maps mention a hands-on, knowledgeable boss, quick replies when something urgent comes up, and professional mechanics.",
+ "fetched_at": "2026-11-18",
+ "place_id": "ChIJ7cJvawAb2jERu2KY6jZ6wmM",
+ "source": "google_places"
+}

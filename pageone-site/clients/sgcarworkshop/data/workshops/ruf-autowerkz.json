@@ -1,0 +1,73 @@
+{
+ "schema_version": 1,
+ "slug": "ruf-autowerkz",
+ "place_id": "ChIJeTh5R9gb2jERChMr_zXKyik",
+ "place_id_checked_at": "2026-11-18",
+ "name": "RUF Autowerkz",
+ "name_source_url": "google_profile",
+ "name_checked_at": "2026-11-18",
+ "address": {
+  "block": "",
+  "street": "1002 Bukit Merah Lane 3, #01-83",
+  "unit": "",
+  "building": ""
+ },
+ "postal_code": "159719",
+ "address_source_url": "google_profile",
+ "address_checked_at": "2026-11-18",
+ "categories": [
+  "SERV"
+ ],
+ "services": [
+  "General servicing and repair"
+ ],
+ "services_source_url": "google_profile",
+ "phones": [
+  {
+   "e164": "+6586499237",
+   "kind": "mobile",
+   "whatsapp": true,
+   "source": "google_profile",
+   "checked_at": "2026-11-18"
+  }
+ ],
+ "google_screen": {
+  "passed": true,
+  "reason": "OPERATIONAL, car repair, SG mobile on Google profile",
+  "checked_at": "2026-11-18"
+ },
+ "status": "active",
+ "tier": "basic",
+ "first_seen_at": "2026-11-18",
+ "last_verified_at": "2026-11-18",
+ "collector_version": "agent-v5",
+ "estate": "bukit-merah-lane-3",
+ "planning_area": "Bukit Merah",
+ "region": "central",
+ "lat": 1.284482456945831,
+ "lng": 103.8053662473225,
+ "geo_source": "onemap",
+ "blocks": [
+  "hero",
+  "contact",
+  "services",
+  "good_for",
+  "problems",
+  "reviews",
+  "comparison",
+  "hours",
+  "stories",
+  "location",
+  "tips",
+  "faq",
+  "claim",
+  "sources"
+ ],
+ "google_rating": {
+  "rating": 5,
+  "count": 5,
+  "checked": "2026-11-18",
+  "source": "Google Places",
+  "source_date": "2026-11-18"
+ }
+}

@@ -1,0 +1,42 @@
+{
+ "businessStatus": "OPERATIONAL",
+ "primaryType": "car_repair",
+ "types": [
+  "sporting_goods_store",
+  "auto_parts_store",
+  "car_repair",
+  "race_course",
+  "event_venue",
+  "association_or_organization",
+  "sports_activity_location",
+  "point_of_interest",
+  "service",
+  "store",
+  "establishment"
+ ],
+ "rating": 5,
+ "userRatingCount": 129,
+ "websiteUri": "https://brakingpoint.sg/",
+ "paymentOptions": {
+  "acceptsCreditCards": true,
+  "acceptsDebitCards": false,
+  "acceptsCashOnly": false,
+  "acceptsNfc": true
+ },
+ "parkingOptions": null,
+ "editorialSummary": null,
+ "weekdayDescriptions": [
+  "Monday: 9:30 AM – 5:00 PM",
+  "Tuesday: 9:30 AM – 5:00 PM",
+  "Wednesday: 9:30 AM – 5:00 PM",
+  "Thursday: 9:30 AM – 5:00 PM",
+  "Friday: 9:30 AM – 5:00 PM",
+  "Saturday: Closed",
+  "Sunday: Closed"
+ ],
+ "review_count_seen": 5,
+ "review_themes": "Customers on Google Maps mention clear explanations of brake kit options, no pushy selling, and smooth, neat installation of big brake kits.",
+ "fetched_at": "2026-11-18",
+ "place_id": "ChIJTZN9G88X2jERl_hGCgPyrSQ",
+ "source": "google_places"
+}

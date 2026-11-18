@@ -55,7 +55,7 @@ for f in sorted(files):
         except Exception as e: print('BAD JSON-LD', rel, e); bad += 1
     txt = ' '.join(p.text)
     _bt = txt + ' '.join(p.ld)
-    if re.fullmatch(r'areas/[a-z-]+/index\.html', rel) and '<title>Best Car Workshops in ' in src:
+    if re.fullmatch(r'areas/[a-z0-9-]+/index\.html', rel) and '<title>Best Car Workshops in ' in src:
         # Edwin 3 Nov 2026: estate titles may say "Best ... Top Rated" only when the page ranks workshops by the combined score (8+ comparable workshops) and says so
         if 'Ranked by a combined score of Google rating and number of ratings' not in src: print('BEST title without a ranking basis', rel); bad += 1
         _bt = _bt.replace('Best Car Workshops in', 'Car Workshops in', 1)

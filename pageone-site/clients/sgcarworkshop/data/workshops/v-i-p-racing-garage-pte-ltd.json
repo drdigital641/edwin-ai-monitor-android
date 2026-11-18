@@ -1,0 +1,48 @@
+{
+ "schema_version": 1,
+ "slug": "v-i-p-racing-garage-pte-ltd",
+ "place_id": "ChIJyz8262IT2jERx6a3nO43DRk",
+ "place_id_checked_at": "2026-11-18",
+ "name": "V.I.P RACING GARAGE PTE. LTD.",
+ "name_source_url": "google_profile",
+ "name_checked_at": "2026-11-18",
+ "address": {
+  "block": "",
+  "street": "60 Jln Lam Huat, #03-08 Carros Centre",
+  "unit": "",
+  "building": ""
+ },
+ "postal_code": "737869",
+ "address_source_url": "google_profile",
+ "address_checked_at": "2026-11-18",
+ "categories": [
+  "SERV"
+ ],
+ "services": [
+  "General servicing and repair"
+ ],
+ "services_source_url": "google_profile",
+ "phones": [
+  {
+   "e164": "+6598005147",
+   "kind": "mobile",
+   "whatsapp": true,
+   "source": "google_profile",
+   "checked_at": "2026-11-18"
+  }
+ ],
+ "google_screen": {
+  "passed": true,
+  "reason": "OPERATIONAL, car repair, SG mobile on Google profile",
+  "checked_at": "2026-11-18"
+ },
+ "status": "pending",
+ "tier": "basic",
+ "first_seen_at": "2026-11-18",
+ "last_verified_at": "2026-11-18",
+ "collector_version": "agent-v5",
+ "hold": "held 19 Nov: same mobile as live card gt-auto-sg",
+ "estate": "carros-centre-jalan-lam-huat",
+ "planning_area": "Woodlands",
+ "region": "north"
+}

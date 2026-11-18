@@ -1,0 +1,38 @@
+{
+ "lede": "RUF Autowerkz at Bukit Merah Lane 3 is a car repair workshop.",
+ "chips": [
+  "Car repairs",
+  "BMW"
+ ],
+ "services": [
+  "Car repairs",
+  "Diagnosis",
+  "Parts replacement",
+  "BMW servicing"
+ ],
+ "themes": "Customers on Google Maps mention knowledgeable and friendly staff who explain the problem in detail and fix it efficiently.",
+ "faqs": [
+  [
+   "What does RUF Autowerkz do?",
+   "Google Maps lists it as a car repair workshop."
+  ],
+  [
+   "What are the opening hours?",
+   "The hours are listed in the Google Maps section above. Please see Google Maps for current hours."
+  ]
+ ],
+ "sources": "its Google Maps listing",
+ "stories": [],
+ "mentioned_services": [
+  "Repairs",
+  "Diagnosis"
+ ],
+ "services_note": "Services mentioned on Google Maps. Ask the workshop for its full list.",
+ "specialties": [],
+ "makes": [
+  "BMW"
+ ],
+ "makes_note": "From customer comments on Google Maps.",
+ "good_to_know": [],
+ "card_rules": "2026-11-05"
+}

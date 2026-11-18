@@ -33,7 +33,7 @@ ESTATE_PA = {'loyang-way': 'Pasir Ris', 'tuas-industrial-area': 'Tuas', 'soon-le
 TOWN_PA = {'toh-guan-jurong-east': 'Jurong East', 'sin-ming-bishan': 'Bishan', 'kaki-bukit': 'Bedok', 'ubi': 'Geylang', 'macpherson': 'Geylang', 'defu-hougang': 'Hougang', 'serangoon-north': 'Serangoon', 'kranji': 'Mandai', 'sembawang-admiralty': 'Sembawang', 'woodlands': 'Woodlands', 'yishun': 'Yishun', 'tampines': 'Tampines', 'toa-payoh': 'Toa Payoh'}
 
 
-SOCIAL = re.compile(r'(facebook\.com|fb\.com|fb\.me|carousell\.|instagram\.com|tiktok\.com|twitter\.com|x\.com/|linkedin\.com|youtube\.com|threads\.net|wa\.me|t\.me|xiaohongshu|lemon8)', re.I)
+SOCIAL = re.compile(r'(facebook\.com|fb\.com|fb\.me|carousell\.|instagram\.com|tiktok\.com|twitter\.com|(?<![\w-])x\.com/|linkedin\.com|youtube\.com|threads\.net|wa\.me|t\.me|xiaohongshu|lemon8)', re.I)
 
 
 def bad_sources(log, g):

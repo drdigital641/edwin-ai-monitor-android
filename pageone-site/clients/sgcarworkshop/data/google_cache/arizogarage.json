@@ -1,0 +1,31 @@
+{
+ "businessStatus": "OPERATIONAL",
+ "primaryType": "car_repair",
+ "types": [
+  "insurance_agency",
+  "car_repair",
+  "point_of_interest",
+  "service",
+  "establishment"
+ ],
+ "rating": 4.9,
+ "userRatingCount": 47,
+ "websiteUri": null,
+ "paymentOptions": null,
+ "parkingOptions": null,
+ "editorialSummary": null,
+ "weekdayDescriptions": [
+  "Monday: 12:00 – 8:00 PM",
+  "Tuesday: 12:00 – 8:00 PM",
+  "Wednesday: 12:00 – 8:00 PM",
+  "Thursday: 12:00 – 8:00 PM",
+  "Friday: 12:00 – 8:00 PM",
+  "Saturday: 12:00 – 10:00 PM",
+  "Sunday: Closed"
+ ],
+ "review_count_seen": 5,
+ "review_themes": null,
+ "fetched_at": "2026-11-18",
+ "place_id": "ChIJq6raVzMQ2jER32chC4Yk98A",
+ "source": "google_places"
+}
