@@ -101,6 +101,9 @@ def build(src_html, queue, gen2=None, heroes=None):
                         pos=x["pos"], alt=x["alt"], line=x["line"])
         if slug in P and qp.get(slug, {}).get("status") == "DONE":
             d = P[slug]; r = d["renders"][0]
+            if d.get("card"):  # theme-set pages (v5, 18 Nov 2026): card = first theme's living room
+                return dict(base=d["card"]["base"], big=d["card"].get("big", "1920"), pos=r.get("object_position", "50% 50%"),
+                            alt=r["alt"], line=d.get("card_line") or H["gen2_line"])
             return dict(base=f'{d["dir"]}/{d["dir"].replace("-v4", "")}-v4-{r["stem"]}', big=d.get("big", "1920"),
                         pos=r["pos"], alt=r["alt"], line=d.get("card_line") or H["gen2_line"])
         return None

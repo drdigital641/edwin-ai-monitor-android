@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 # Maison full-concept launch pages (Edwin standard 16 Nov 2026). Usage: gen2.py OUTDIR [LD_MODE=full|keep]
-import sys, os, json, html, hashlib
+import sys, os, json, html, hashlib, re
 from urllib.parse import quote
 from data import P, CAP
 from wa_fix import fix_html  # WhatsApp link rules (16 Nov 2026): new tab, data-cta, short layout-plan text
@@ -11,6 +11,8 @@ rd = lambda f: open(os.path.join(HERE, f), encoding="utf-8").read()
 HEAD, FOOT, FAB, PLAN = rd("head.html"), rd("foot.html"), rd("fab.html").strip(), rd("plan.html").strip()
 CSS = rd("../gen/nlp-expand.css") + rd("nv.css")
 CSSV = hashlib.md5(CSS.encode()).hexdigest()[:8]
+TCSS = rd("themes.css")  # theme picker (18 Nov 2026), linked only on pages whose data has themes[]
+TCSSV = hashlib.md5(TCSS.encode()).hexdigest()[:8]
 E = html.escape
 WA = "6593391185"
 SVG = '<svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true"><path fill="currentColor" d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2Zm0 18.2a8.2 8.2 0 0 1-4.2-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2Z"/></svg>'
@@ -29,12 +31,26 @@ THEORY = {
  "Living room": "Think of the living room as one long elevation. A tall, fluted or reeded wall breaks the glare of a flat surface, hides cabling and shelving behind doors, and lets cove light wash the wall. Warm timber and stone keep it calm, and handleless doors stop the wall from looking busy.",
  "Kitchen": "A compact HDB kitchen works when every surface earns its place. One continuous run keeps the working triangle short, a tall pantry column takes the bulk storage off the counter, and lit niches or a lit shelf give light where the work happens. A single matte colour on the doors keeps a small room from feeling cut up.",
  "Main bedroom": "A bedroom should feel lower, darker and quieter than the living room. A full-width bed-head wall with lit side niches replaces bedside tables, a built-in platform bed hides drawers, and a full-height wardrobe in one joinery set keeps lines continuous. Dim, warm light does the rest.",
+ "Entrance foyer": "The entrance works hardest for its size. A full-height shoe cabinet with a bench and a lit key niche keeps the floor clear, a flush panel can hide the DB box, and one material carried from the foyer into the living room makes a short corridor feel planned.",
+ "Dining": "The dining area links the kitchen to the living room, so it should store and serve in one move. A full-height sideboard or display wall takes the crockery, a serving ledge or coffee niche gives a landing spot, and one pendant over the table marks the zone without adding walls.",
  "Common bedroom": "A shared or child's room has to change with age. Put the bed on a platform with drawers, a wall-to-wall desk under the window with open knee space, and a tall wardrobe. A single accent colour on a few doors gives the room character that can be repainted later.",
 }
 PRACT = [("Light","Use the window wall for the desk or the dining bench so natural light does the work, then add cove, niche and shelf lighting for the evening. Mixing warm light in the living room and bedrooms keeps the home restful."),
  ("Flow","Keep a clear walking line from the door to the living area and from the kitchen to the dining table. Furniture that sits inside the joinery, not in front of it, keeps that line open."),
  ("Storage","Plan storage along whole walls, floor to ceiling, rather than in small pieces. Shoe and bag storage at the door, a pantry column in the kitchen and a wardrobe wall in every bedroom carry most households."),
  ("Small-space tricks","One material family across rooms, handleless doors, mirrors or reeded glass to bounce light, and built-in benches or platform beds with drawers all make a flat feel larger.")]
+
+THEORY["Master bedroom"] = THEORY["Main bedroom"]
+ROOM_ORDER = ["Living room", "Entrance foyer", "Kitchen", "Dining", "Master bedroom", "Common bedroom"]
+ROOM_FEAT = {"Living room":"living","Entrance foyer":"entrance","Kitchen":"kitchen","Dining":"dining","Master bedroom":"main","Main bedroom":"main","Common bedroom":"common"}
+tkey = lambda t: re.sub(r"[^a-z0-9]+", "-", t.lower()).strip("-")
+def rkey(r):  # "brickland-weave-v5-master-bedroom-modern-1920.webp" -> "master-bedroom-modern"
+    m = re.search(r"-v\d+-(.+)-\d+\.webp$", r["image"]); return m.group(1) if m else tkey(r["room"] + "-" + r["theme"])
+short = lambda t: re.sub(r"\s*Based on HDB's official [^.]*\(approx\. [^)]*\)\.?$", "", t).strip()
+def theme_groups(d):
+    names = [t["name"] for t in d["themes"]]
+    g = {n: sorted([r for r in d["renders"] if r["theme"] == n], key=lambda r: ROOM_ORDER.index(r["room"]) if r["room"] in ROOM_ORDER else 99) for n in names}
+    return names, g
 
 TS = {
  "2room": ("2-room Flexi", "Keep the flat open and light. A full-height wardrobe wall, a bench seat with drawers and a sliding or fluted-glass partition give a bedroom feel without closing the space. For senior owners, plan step-free floors, slip-resistant tiles and blocking in the walls for grab bars.", ["Wardrobe wall or bench storage","Tall fridge and pantry run in the kitchen","Slip-resistant tiles and wall blocking for grab bars where needed"], ["A sliding or fluted-glass partition","Lit niche shelf in the living area"], ["Closing the flat with full walls and losing the open feel","Choosing furniture before checking the doors and walkways"]),
@@ -59,8 +75,9 @@ def build(slug, d):
     tn = [t[0] for t in types]
     tnames = ", ".join(tn[:-1]) + " and " + tn[-1]
     rs = d["renders"]; plans = d["plans"]
+    TH = bool(d.get("themes"))
     primary = d.get("primary", "4-room"); pkey = d.get("pkey", "4room")
-    TSd = dict(TS, **d.get("ts", {})); TH = dict(THEORY, **d.get("theory", {}))
+    TSd = dict(TS, **d.get("ts", {})); TH_ = dict(THEORY, **d.get("theory", {}))
     old_desc = f"Interior design and built-in carpentry for {n}, an HDB BTO in {town}. Launch facts only; key dates unconfirmed." + ("" if slug in ("sembawang-anchor","toa-payoh-hillside") else " WhatsApp Maison with your plan.")
 
     # ---- FAQ (every live question kept verbatim; answers refreshed)
@@ -89,7 +106,8 @@ def build(slug, d):
      {"@type":"HomeAndConstructionBusiness","@id":"https://maisoninteriordesign.sg/#business","name":"Maison Interior Design","url":"https://maisoninteriordesign.sg/","telephone":"+65 9339 1185","email":"maisoninteriordesignsg@gmail.com","foundingDate":"2018","areaServed":{"@type":"Country","name":"Singapore"},"image":"https://maisoninteriordesign.sg/wp-content/uploads/Jimmy-Monkey-Completed-6.jpg","founder":{"@type":"Person","name":"Roland Ng","jobTitle":"Managing Director"},"sameAs":["https://www.instagram.com/maison_interiordesign/","https://www.facebook.com/MaisonInteriorDesignSG"]},
      {"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://maisoninteriordesign.sg/"},{"@type":"ListItem","position":2,"name":"New launches","item":"https://maisoninteriordesign.sg/new-launches/"},{"@type":"ListItem","position":3,"name":n,"item":url}]},
      {"@type":"Article","headline":f"{n} Renovation & Interior Design","description":ld_desc,"datePublished":d.get("pub","2026-11-11"),"dateModified":d.get("mod","2026-11-16") if LD_FULL else "2026-11-11","author":{"@id":"https://maisoninteriordesign.sg/#business"},"publisher":{"@id":"https://maisoninteriordesign.sg/#business"},"mainEntityOfPage":url,
-      "image":[f"https://maisoninteriordesign.sg/images/new-launches/{d['dir']}/{d['dir'].replace('-v4','')}-v4-{r['stem']}-{d.get('big','1920')}.webp" for r in rs],
+      "image":([{"@type":"ImageObject","url":"https://maisoninteriordesign.sg"+r["image"],"contentUrl":"https://maisoninteriordesign.sg"+r["image"],"width":r["width"],"height":r["height"],"name":r["title"],"caption":r["alt"]+". "+r["caption"]+"."} for t in theme_groups(d)[0] for r in theme_groups(d)[1][t]] if TH else
+               [f"https://maisoninteriordesign.sg/images/new-launches/{d['dir']}/{d['dir'].replace('-v4','')}-v4-{r['stem']}-{d.get('big','1920')}.webp" for r in rs]),
       "about":{"@type":"Place","name":n,"address":{"@type":"PostalAddress","addressLocality":town,"addressCountry":"SG"}},
       "keywords":d.get("kw") or f"{n} renovation, {n} interior design, {n} floor plan, {town} BTO renovation, {n} built-in carpentry, {d['old_kwl']}",
       "citation":d.get("cite",["https://homes.hdb.gov.sg/home/bto"])},
@@ -98,16 +116,39 @@ def build(slug, d):
 
     # ---- hero carousel
     slides = ""
-    for i, r in enumerate(rs):
+    if TH:  # hero = the default (first) theme's six rooms, living room first
+        tn0, tg = theme_groups(d)
+        for i, r in enumerate(tg[tn0[0]]):
+            slides += (f'<figure class="nv-slide" id="s{i}"><img src="{r["image"]}" srcset="{r["image_small"]} 900w, {r["image"]} {r["width"]}w" sizes="100vw" width="{r["width"]}" height="{r["height"]}" alt="{E(r["alt"])}" title="{E(r["title"])}" style="object-position:{r["object_position"]}"'
+                       + (' fetchpriority="high"' if i == 0 else ' loading="lazy"') + f'><figcaption><b>{E(r["room"])}: {E(r["theme"])}</b><span>{E(r["caption"])}</span></figcaption></figure>')
+        hero_rs = tg[tn0[0]]
+    for i, r in ([] if TH else enumerate(rs)):
         b = f"{d['dir'].replace('-v4','')}-v4-{r['stem']}"
         BG = d.get('big','1920'); BH = d.get('big_h','1080')
         slides += (f'<figure class="nv-slide" id="s{i}"><img src="{IMG(d,b+"-"+BG+".webp")}" srcset="{IMG(d,b+"-900.webp")} 900w, {IMG(d,b+"-"+BG+".webp")} {BG}w" sizes="100vw" width="{BG}" height="{BH}" alt="{E(r["alt"])}" style="object-position:{r["pos"]}"'
                    + (' fetchpriority="high"' if i == 0 else ' loading="lazy"') + f'><figcaption><b>{E(r["room"])}: {E(r["style"])}</b><span>{E(CAP)}</span></figcaption></figure>')
-    dots = "".join(f'<button type="button" class="nv-dot" aria-label="Show concept {i+1}: {E(r["room"])}" data-i="{i}"></button>' for i, r in enumerate(rs))
+    dots = "".join(f'<button type="button" class="nv-dot" aria-label="Show concept {i+1}: {E(r["room"])}" data-i="{i}"></button>' for i, r in enumerate(hero_rs if TH else rs))
     hero = (f'<section class="nv-hero"><div class="nv-car" id="car" role="region" aria-label="{E(n)} concept images, swipe to browse" tabindex="0">{slides}</div>'
             f'<div class="nv-ctl"><button type="button" class="nv-arr" data-d="-1" aria-label="Previous concept">&#8592;</button><div class="nv-dots">{dots}</div><button type="button" class="nv-arr" data-d="1" aria-label="Next concept">&#8594;</button></div>'
-            f'<div class="wrap nv-hero-t"><h1>{E(n)} Renovation &amp; Interior Design</h1><p class="nv-lead">Four concepts, the official plan and a free layout for your unit.</p>'
+            f'<div class="wrap nv-hero-t"><h1>{E(n)} Renovation &amp; Interior Design</h1><p class="nv-lead">{"Four themes, six rooms, the official plan and a free layout." if TH else "Four concepts, the official plan and a free layout for your unit."}</p>'
             + btn(slug, "hero", f"WhatsApp Maison about {n}", f"Hi Maison, I'm planning my {n} renovation. Can I see design ideas and a quote?") + '</div></section>')
+
+    # ---- theme picker (18 Nov 2026): themes[] x rooms, every image in the HTML, show/hide only
+    picker = ""
+    if TH:
+        tn, tg = theme_groups(d)
+        mood = {t["name"]: t.get("mood", "") for t in d["themes"]}
+        chips = "".join(f'<button type="button" class="nt-chip" data-t="{tkey(t)}" aria-pressed="{"true" if j == 0 else "false"}" aria-controls="nt-{tkey(t)}">{E(t)}</button>' for j, t in enumerate(tn))
+        panels = ""
+        for t in tn:
+            figs_ = ""
+            for r in tg[t]:
+                figs_ += (f'<figure class="nt-room"><div class="nt-ph"><img src="{r["image"]}" srcset="{r["image_small"]} 900w, {r["image"]} {r["width"]}w" sizes="(min-width:1240px) 560px, (min-width:800px) 46vw, 100vw" width="{r["width"]}" height="{r["height"]}" alt="{E(r["alt"])}" title="{E(r["title"])}" style="object-position:{r["object_position"]}" loading="lazy" decoding="async"></div>'
+                          f'<figcaption><h4>{E(r["room"])}</h4><p>{E(short(r["text"]))}</p><p class="nt-cap">{E(r["caption"])}</p>'
+                          + btn(slug, rkey(r), f"Ask about this {r['room'].lower()}", r["whatsapp_text"], "nlp-wa nt-wa") + '</figcaption></figure>')
+            panels += f'<div class="nt-panel" id="nt-{tkey(t)}" data-t="{tkey(t)}"><h3 class="nt-th">{E(t)}</h3><p class="nt-mood">{E(mood[t])}</p><div class="nt-grid">{figs_}</div></div>'
+        picker = (f'<section class="nlp-s nt" id="themes"><div class="wrap"><h2 class="nlp-h2">{E(d["renders_heading"])}</h2>'
+                  f'<div class="nt-pick" role="group" aria-label="Choose a design theme">{chips}</div>{panels}<p class="nt-intro">{E(d["renders_intro"])}</p><p class="nlp-small">{E(d["renders_note"])}</p></div></section>')
 
     # ---- flat type cards
     cards = ""
@@ -134,11 +175,14 @@ def build(slug, d):
 
     # ---- design concepts
     cs = ""
-    for r in rs:
+    for r in ([] if TH else rs):
         feat = {"Living room":d["feat"]["living"],"Kitchen":d["feat"]["kitchen"],"Main bedroom":d["feat"]["main"],"Common bedroom":d["feat"]["common"]}[r["room"]]
-        cs += (f'<article class="nv-con"><h3>{E(r["room"])}: {E(r["style"])}</h3><p>{E(r["text"])}</p><p><b>Why it suits this flat.</b> It is drawn for {E(feat)}. {E(TH[r["room"]])}</p></article>')
+        cs += (f'<article class="nv-con"><h3>{E(r["room"])}: {E(r["style"])}</h3><p>{E(r["text"])}</p><p><b>Why it suits this flat.</b> It is drawn for {E(feat)}. {E(TH_[r["room"]])}</p></article>')
+    if TH:
+        for room in [x["room"] for x in theme_groups(d)[1][theme_groups(d)[0][0]]]:
+            cs += (f'<article class="nv-con"><h3>{E(room)}</h3><p><b>Why it suits this flat.</b> It is drawn for {E(d["feat"][ROOM_FEAT[room]])}. {E(TH_[room])}</p></article>')
     prac = "".join(f'<li><h4>{a}</h4><p>{E(b)}</p></li>' for a, b in PRACT)
-    concepts = f'<section class="nlp-s nv-concepts" id="concepts"><div class="wrap"><h2 class="nlp-h2">The design thinking behind the four concepts</h2><div class="nv-con-g">{cs}</div><h3 class="nlp-h3">Practical design rules we use</h3><ul class="nv-prac">{prac}</ul><p class="nlp-small">AI concept designs for illustration only. Views and room proportions are illustrative. {E(CAP)}.</p></div></section>'
+    concepts = f'<section class="nlp-s nv-concepts" id="concepts"><div class="wrap"><h2 class="nlp-h2">The design thinking behind the {"six rooms" if TH else "four concepts"}</h2><div class="nv-con-g">{cs}</div><h3 class="nlp-h3">Practical design rules we use</h3><ul class="nv-prac">{prac}</ul><p class="nlp-small">{E(d["renders_note"]) if TH else "AI concept designs for illustration only. Views and room proportions are illustrative. " + E(CAP) + "."}</p></div></section>'
 
     # ---- recommendations per flat type
     rec = ""
@@ -172,7 +216,7 @@ def build(slug, d):
     b3 = band(slug, n, "recs", f"Want this scoped for your {n} flat?", "Tell us your unit type and we will send a checklist and an itemised quote for your scope.", "Get my itemised quote", f"Hi Maison, I'm collecting keys at {n}. Can I get an itemised quote for my unit type?")
     b4 = band(slug, n, "mid", f"Collecting keys at {n}?", "Tell us your unit type and we will send layout options and a quote for your unit.", "Send my plan on WhatsApp", f"Hi Maison, I'm collecting keys at {n}. Can you send layout options for my unit?")
     crumbs = f'<nav class="wrap nlp-crumbs" aria-label="Breadcrumb"><a href="/">Home</a><span aria-hidden="true">/</span><a href="/new-launches/">New launches</a><span aria-hidden="true">/</span><span aria-current="page">{E(n)}</span></nav>'
-    main = (f'<main id="main"><div class="nlp">{crumbs}{hero}'
+    main = (f'<main id="main"><div class="nlp">{crumbs}{hero}{picker}'
             f'<section class="nlp-s nx-types-s" id="flat-types"><div class="wrap"><h2 class="nlp-h2">{E(n)} {d.get("tw","flat")} types and renovation ideas</h2><div class="nx-types">{cards}</div></div></section>'
             f'<section class="nlp-s nlp-facts-s"><div class="wrap"><h2 class="nlp-h2">{E(n)} at a glance</h2><dl class="nlp-facts">{glance}</dl></div></section>'
             f'{space}{b2}{concepts}{reco}{b3}{trust}{d.get("plan_html", PLAN).replace("@@N@@", E(n))}{intro_sec}{arts}'
@@ -187,7 +231,13 @@ def build(slug, d):
               'document.querySelectorAll(".nv-arr").forEach(function(b){b.addEventListener("click",function(){go(i+parseInt(b.dataset.d,10))})});'
               'ds.forEach(function(d){d.addEventListener("click",function(){go(parseInt(d.dataset.i,10))})});'
               'c.addEventListener("keydown",function(e){if(e.key==="ArrowRight")go(i+1);if(e.key==="ArrowLeft")go(i-1)})})();</script>')
+    if TH:
+        script += ('<script>(function(){var p=document.querySelector(".nt-pick");if(!p)return;var bs=[].slice.call(p.querySelectorAll(".nt-chip")),ps=document.querySelectorAll(".nt-panel");'
+                   'function show(t){bs.forEach(function(b){b.setAttribute("aria-pressed",b.dataset.t===t?"true":"false")});ps.forEach(function(x){x.hidden=x.dataset.t!==t})}'
+                   'bs.forEach(function(b,i){b.addEventListener("click",function(){show(b.dataset.t)});b.addEventListener("keydown",function(e){var k=e.key==="ArrowRight"?1:e.key==="ArrowLeft"?-1:0;if(!k)return;e.preventDefault();var n=bs[(i+k+bs.length)%bs.length];n.focus();show(n.dataset.t)})});'
+                   'var h=(location.hash||"").replace("#nt-","");show(bs.some(function(b){return b.dataset.t===h})?h:bs[0].dataset.t)})();</script>')
     head = HEAD.replace("@@TITLE@@", title).replace("@@DESC@@", E(desc)).replace("@@URL@@", url).replace("@@LD@@", ld_s).replace("@@CSSV@@", CSSV)
+    if TH: head = head.replace(f'<link rel="stylesheet" href="/nlp-expand.css?v={CSSV}">', f'<link rel="stylesheet" href="/nlp-expand.css?v={CSSV}"><link rel="stylesheet" href="/nlp-themes.css?v={TCSSV}">', 1)
     fab = FAB.replace("@@HREF@@", wa(f"Hi Maison, I'm planning my {n} renovation. Can I see design ideas and a quote?")).replace("@@SLUG@@", slug)
     foot = FOOT.replace("@@FAB@@", fab).replace('<script src="/mid.js', script + '<script src="/mid.js', 1)
     return head + main + foot
@@ -200,4 +250,5 @@ for slug in only:
     p = os.path.join(OUT, "new-launches", slug); os.makedirs(p, exist_ok=True)
     open(os.path.join(p, "index.html"), "w", encoding="utf-8").write(fix_html(html_))
 open(os.path.join(OUT, "nlp-expand.css"), "w", encoding="utf-8").write(CSS)
+open(os.path.join(OUT, "nlp-themes.css"), "w", encoding="utf-8").write(TCSS)
 print("css", CSSV, only)

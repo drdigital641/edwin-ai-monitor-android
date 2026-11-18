@@ -5,6 +5,14 @@ def R(room, style, stem, pos, text, alt):
     return dict(room=room, style=style, stem=stem, pos=pos, text=text, alt=alt)
 
 P = {}
+import os, json
+_SETS = os.path.join(os.path.dirname(os.path.abspath(__file__)), "sets")
+def theme_set(path):
+    """4-theme concept set (v5, 18 Nov 2026): themes[] + renders[] (24 = 4 themes x 6 rooms) from the drop JSON.
+    Returns the fields gen2 merges into a project entry; the page then shows the theme picker."""
+    j = json.load(open(path, encoding="utf-8"))
+    return dict(themes=j["themes"], renders=j["renders"], renders_heading=j["renders_heading"],
+                renders_intro=j["renders_intro"], renders_note=j["renders_note"])
 P["chencharu-acres"] = dict(
  name="Chencharu Acres", town="Yishun", region="North", cls="Standard", units="1,582", dir="chencharu-acres-v4",
  old_kwl="Yishun interior design",
@@ -150,20 +158,18 @@ P["brickland-weave"] = dict(
  cite=["https://hdbprices.com/bto/brickland-weave", BW_BRO, BW_URL],
  types=[("2-room Flexi","2room","Type 1: approx. 38 sq m (36 sq m internal). Type 2: approx. 48 sq m (46 sq m internal)"),("3-room","3room","Approx. 69 sq m (66 sq m internal)"),("4-room","4room","Approx. 93 sq m (90 sq m internal)"),("5-room","5room","Approx. 113 sq m (110 sq m internal)")],
  glance=[("Type","HDB BTO, February 2023 sales launch"),("Location","Brickland District of Tengah, bounded by Brickland Road and Tengah Boulevard"),("Units","1,641 flats in 12 residential blocks of 11 to 17 storeys. The brochure does not give unit counts by flat type"),("Lease","2-room Flexi flats are offered on a 99-year lease or a short lease, per the HDB brochure"),("Key date","HDB's sales brochure does not publish a project-wide completion or key-collection month. Use your HDB letter")],
- plans=[dict(img="brickland-weave-hdb-layoutideas-4-room.webp",w=2000,h=1870,alt="Official HDB Layout Ideas floor plan of a typical Brickland Weave 4-room flat, approximately 93 square metres",title="4-room typical plan, approx. 93 sq m",cap="Approx. 93 sq m including 90 sq m internal floor area and the air-con ledge. Living and dining with a household shelter, enclosed kitchen and service yard, main bedroom with attached bath, two common bedrooms and a common bath. The suggested furniture layout is HDB's, not Maison's. A typical type plan, not a specific stack.",credit="Floor plan: HDB Brickland Weave sales brochure (February 2023), Housing & Development Board",curl=BW_BRO)],
+ plans=[dict(img="brickland-weave-hdb-layoutideas-4-room.webp",w=2000,h=1870,alt="Official HDB Layout Ideas floor plan of a typical Brickland Weave 4-room flat, approximately 93 square metres",title="4-room typical plan, approx. 93 sq m",cap="Approx. 93 sq m including 90 sq m internal floor area and the air-con ledge. Living and dining with a household shelter, a kitchen open to the dining area with a service yard beyond, main bedroom with attached bath, two common bedrooms and a common bath. The suggested furniture layout is HDB's, not Maison's. A typical type plan, not a specific stack.",credit="Floor plan: HDB Brickland Weave sales brochure (February 2023), Housing & Development Board",curl=BW_BRO)],
  plan_gaps="This is HDB's typical 4-room plan from the February 2023 brochure, not a specific stack. Areas are approximate and subject to final survey. Layout Ideas for the 2-room Flexi, 3-room and 5-room types are in the same brochure. Stack orientation and views are not verified.",
  rooms4=dict(
   living="Living and dining form one open area with the household shelter on the plan. Put the shoe cabinet at the entry, a full-height TV and storage wall on the longest living wall, and a built-in dining bench on the kitchen side so food travels the shortest route.",
-  kitchen="The kitchen is enclosed and opens to a service yard. A run with a tall fridge and pantry column, and lighting under the wall units, keeps the counter clear. Laundry goes to the yard.",
+  kitchen="The kitchen is open to the dining area, with a service yard beyond. A run with a tall fridge and pantry column, and lighting under the wall units, keeps the counter clear. Laundry goes to the yard.",
   main="The main bedroom has its own bath. A recessed headboard wall with lit niches, a built-in platform bed and a full-height wardrobe in one joinery set make the room read as a suite.",
   common="The two common bedrooms suit a child's room and a study or guest room. A platform bed with drawers and a wall-to-wall desk with knee space under the window keep the floor free.",
   other="The common bath serves the rest of the household. Plan a vanity cabinet, niches and hooks, and keep to HDB's rules on toilet finishes in the first three years."),
- feat=dict(living="the open living and dining of the typical 4-room plan, with the household shelter",kitchen="the enclosed kitchen that opens to a service yard",main="a main bedroom with its own bath",common="a common bedroom of the typical 4-room plan"),
- renders=[
-  R("Living room","Khaki Teak Breeze Hall","living-khaki-teak-breeze-hall","38% 50%","A full-height khaki-stained teak TV wall with vertical fluted panels, a floating console and concealed cove lighting, a built-in dining bench and handleless full-height storage. Based on HDB's typical 4-room plan. View illustrative, not a balcony.","Khaki Teak Breeze Hall living room concept for a Brickland Weave 4-room flat, with a fluted khaki-teak TV wall, floating console, cove lighting and a built-in dining bench"),
-  R("Kitchen","Bottle Green Compact Galley","kitchen-bottle-green-compact-galley","62% 48%","Bottle-green painted inset-panel cabinets with brushed-brass knobs, a pale stone counter and full-height backsplash, and LED lighting under the wall units, in the enclosed kitchen with a service yard beyond.","Bottle Green Compact Galley kitchen concept for a Brickland Weave 4-room flat, with bottle-green inset cabinets, brass knobs, pale stone counters and under-cabinet lighting"),
-  R("Main bedroom","Garnet Wool Night Alcove","main-bedroom-garnet-wool-night-alcove","52% 42%","A recessed headboard wall in deep garnet wool with lit bedside niches, a built-in platform bed, and a full-height walnut wardrobe with bronze-tinted glass doors. Dusk view illustrative.","Garnet Wool Night Alcove main bedroom concept for a Brickland Weave 4-room flat, with a recessed garnet-wool headboard, lit niches, a built-in platform bed and a walnut glass wardrobe, at dusk"),
-  R("Common bedroom","Canary Oak Desk Berth","common-bedroom-canary-oak-desk-berth","48% 50%","A built-in platform bed with drawers, a full-height pale-oak wardrobe with canary-yellow lacquer accent doors, and a wall-to-wall study desk with open knee space and a floating lit shelf.","Canary Oak Desk Berth common bedroom concept for a Brickland Weave 4-room flat, with a built-in platform bed, pale oak and canary-yellow wardrobe, and a wall-to-wall study desk with knee space")],
+ feat=dict(living="the living and dining at the end of the typical 4-room plan, with the window on the facade wall",entrance="the short entrance between the household shelter and the kitchen wall, with the shelter door kept clear",kitchen="the kitchen open to the dining area, with a service yard beyond",dining="the dining area against the bathroom-block wall, between the kitchen peninsula and the bedroom corridor",main="a main bedroom with its own bath",common="a common bedroom of the typical 4-room plan"),
+ **theme_set(os.path.join(_SETS, "brickland-weave-v5-4theme.json")),
+ mod="2026-11-18",
+ card=dict(base="brickland-weave-v5/brickland-weave-v5-living-modern", big="1920"),
  near=["plantation-dew"],
  near_h="Nearby new launches in Tengah",
  near_cards=[("plantation-edge-i-and-ii","HDB","HDB flat · Tengah","Plantation Edge I & II","Tengah","Renovation planning notes for new owners."),("plantation-creek-at-tengah","HDB","HDB flat · Tengah","Plantation Creek @ Tengah","Tengah","Renovation planning notes for new owners.")],
