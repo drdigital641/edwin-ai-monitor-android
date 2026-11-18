@@ -1001,3 +1001,78 @@ ARTICLES.append({
  ],
  "confirm": []
 })
+
+ARTICLES.append({
+ "slug": "hybrid-battery-health-check-singapore",
+ "name": "Hybrid Battery Health Check",
+ "card": "What a hybrid battery state-of-health check looks at, when it is worth getting one, and what the result can and cannot tell you.",
+ "title": "Hybrid Battery Health Check in Singapore",
+ "desc": "Hybrid battery health check in Singapore: what a state-of-health check reads, when to get one before buying or after a warning, and what the result cannot tell you.",
+ "h1": "Hybrid Battery Health Check in Singapore: What It Tells You",
+ "answer": "A hybrid battery health check reads data from the car to show how much usable capacity the high-voltage battery has left and how its cells are performing. It is most useful before buying a used hybrid, or when you notice a warning light or worse fuel economy. It shows present condition, not an exact lifespan.",
+ "date": "2026-11-19",
+ "updated": "19 Nov 2026",
+ "service": "/services/hybrid-ev-servicing/",
+ "minutes": 4,
+ "brand": "Hybrids and EVs",
+ "hero": {
+  "src": "/assets/articles/hybrid-battery-health-check-singapore.jpg",
+  "w": 1024,
+  "h": 1024,
+  "alt": "Illustrative technician reading hybrid battery data from a saloon car in a workshop bay"
+ },
+ "sections": [
+  {
+   "h2": "What is a hybrid battery health check?",
+   "html": "<p>State of health, often shortened to SoH, describes how much usable capacity a battery has left compared with when it was new. A battery in good condition holds charge well and its cells stay balanced. As it ages, capacity can drop and weaker cells may show up.</p><p>A check reads battery data from the car and looks at how the cells and the system are performing. What you see depends on the model and on what data the car makes available.</p>"
+  },
+  {
+   "h2": "When is a health check worth getting?",
+   "html": "<ul>\n<li>You are buying a used hybrid and the battery is a major part of what you are paying for.</li>\n<li>Electric range or fuel economy has dropped.</li>\n<li>A hybrid system warning light has appeared.</li>\n<li>The engine starts more often than it used to.</li>\n<li>You can hear fan noise from the rear seat area.</li>\n</ul><p>These are general pointers only, and the cause varies by model and fault.</p>"
+  },
+  {
+   "h2": "What does the check look at?",
+   "html": "<table>\n<thead><tr><th>What you notice</th><th>Possible area</th><th>What is checked</th></tr></thead>\n<tbody>\n<tr><td>Reduced electric range or fuel economy</td><td>Battery capacity, cooling, tyres</td><td>Battery data, fan and air path, tyre condition</td></tr>\n<tr><td>Hybrid system warning light</td><td>Battery, inverter, sensors</td><td>Stored codes and live data</td></tr>\n<tr><td>Fan noise from the rear seat area</td><td>Battery cooling fan or air path</td><td>Fan operation and cleanliness</td></tr>\n<tr><td>Engine starting more often than before</td><td>Battery state, system settings</td><td>Battery data and system status</td></tr>\n</tbody>\n</table>"
+  },
+  {
+   "h2": "What can the result not tell you?",
+   "html": "<p>It will not give an exact number of years left. The check shows the battery's present condition. Age, use and climate all affect how a battery ages, so the result is explained in context rather than turned into a prediction.</p>"
+  },
+  {
+   "h2": "Why does the battery cooling fan matter?",
+   "html": "<p>Many hybrids use a fan to draw cabin air across the high-voltage battery to keep it cool. The air intake and fan can collect dust and fibres over time. If airflow is restricted, the battery may run warmer than it should. Cleaning the fan and its air path is a basic maintenance task on suitable models, and a fan fault code or battery temperature warning is checked as well.</p>"
+  },
+  {
+   "h2": "Is it safe to look at it yourself?",
+   "html": "<p>No. High-voltage systems need proper procedures, and owners should never open orange high-voltage cabling or battery covers. If a hybrid warning light comes on, or you notice a burning smell or unusual heat, stop safely, switch the car off and call for advice.</p>"
+  },
+  {
+   "h2": "Where can you get a hybrid checked?",
+   "html": "<p>Send us your make, model and year on WhatsApp at +65 8221 5502, or use the <a href=\"/contact-us/\">contact page</a>, and we will tell you what we can check on your car. We are at 143 Bukit Timah Road, Newton Circus, inside the Shell station. Read about <a href=\"/services/hybrid-ev-servicing/\">hybrid and EV servicing</a>, and about a <a href=\"/services/pre-purchase-inspection/\">pre-purchase inspection</a> if you are buying a used car.</p>"
+  }
+ ],
+ "faqs": [
+  {
+   "q": "What does a hybrid battery health check show?",
+   "a": "It shows the battery's state of health: how much usable capacity it has left compared with when it was new, and how the cells and system are performing. Results depend on the model and the data the car provides."
+  },
+  {
+   "q": "Will it tell me how long my hybrid battery will last?",
+   "a": "No. It shows the battery's present condition, not an exact lifespan. Age, use and climate all affect how a battery ages."
+  },
+  {
+   "q": "Should I get a hybrid checked before buying it?",
+   "a": "It is a sensible step, especially for a used car, because the battery is a major part of the car's value. An inspection helps you understand its condition before you commit."
+  },
+  {
+   "q": "How much does a hybrid battery health check cost?",
+   "a": "We do not state prices in our guides. Ask us on WhatsApp for the arrangement for your model. For any repair, the quote follows inspection and is agreed with you before work starts."
+  }
+ ],
+ "related": [
+  "/services/hybrid-ev-servicing/",
+  "/services/pre-purchase-inspection/",
+  "/contact-us/"
+ ],
+ "confirm": []
+})
