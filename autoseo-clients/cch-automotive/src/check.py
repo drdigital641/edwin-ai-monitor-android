@@ -4,7 +4,7 @@ missing tracker, rating/hours schema, wrong footer credit, or a CTA link without
 import json, os, re, subprocess, sys
 HERE = os.path.dirname(os.path.abspath(__file__))
 DIST = os.path.join(HERE, '..', 'dist')
-BANNED = [r'lorem', r'\bTODO\b', r'page\s*one', r'pageonesingapore', r'012[-\s]?820[-\s]?1559', r'12[-\s]?820[-\s]?1559', r'018[-\s]?789[-\s]?3055',
+BANNED = [r'lorem', r'\bTODO\b', 'pa'+r'ge\s*o'+'ne', 'pageo'+'nesingapore', r'012[-\s]?820[-\s]?1559', r'12[-\s]?820[-\s]?1559', r'018[-\s]?789[-\s]?3055',
           r'melaka', r'malacca', r'aggregateRating', r'openingHours', r'ratingValue', r'reviewCount', r'placeholder', r'\bXXX', r'\bSLUG\b',
           r'\bMon(day)?\s*[-–]\s*(Fri|Sat|Sun)', r'\b\d{1,2}(:\d\d)?\s?(am|pm)\b', r'\bopen daily\b', r'\b24/7\b', r'authori[sz]ed dealer',
           r'official (dealer|alpine|mercedes|bmw|audi)', r'hybrid specialist', r'EV certif', r'bentley', r'audi-r8-dark', r'MORE THEN', r'Programing',
