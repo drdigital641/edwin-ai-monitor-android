@@ -1,5 +1,5 @@
 {
- "updated": "2026-11-17",
+ "updated": "2026-11-18",
  "rule": "Queue = section A (GSC PRIORITY: TODO pages with Google clicks in the last 28 days, most clicks then most impressions; Grok Bot re-pulls GSC before each daily run and may reorder A) then section B (all other TODO, launch date earliest first, planned/undated last). Daily build takes the top TODO in A until A is empty, then B. Hub order is separate: DONE first, then TODO by launch date (hub_order). ONE PAGE A DAY (Edwin 17 Nov 8:24am): 17 Nov was a one-off 3-page day (Merpati Meadow, Plantation Edge I & II, Coastal Cabana, all from ready v4 drops). From 18 Nov 2026 back to exactly 1 page per day in GSC (A) then launch-date (B) order.",
  "projects": [
   {
@@ -182,11 +182,13 @@
    "launch": "Aug 2021 BTO",
    "launch_basis": "firm",
    "launch_source": "HDB press release 11 Aug 2021 (Kallang/Whampoa)",
-   "status": "TODO",
+   "status": "DONE",
    "v4_set": "towner-v4",
    "floor_plan": true,
    "gsc_28d": null,
-   "section": "B"
+   "section": "DONE",
+   "built": "2026-11-18",
+   "note": "18 Nov 2026: built from the existing towner-v4 set (1600px renders, gen2 big=1600) and the HDB-authored Aug 2021 brochure plans (3-room p.10, 4-room both arrangements p.12; archive copy hosted by BTO HQ). Live sha b716a108, tap test ok."
   },
   {
    "slug": "canninghill-piers",
@@ -411,8 +413,8 @@
    "floor_plan": false,
    "gsc_28d": {
     "clicks": 1,
-    "impressions": 54,
-    "position": 10.3
+    "impressions": 101,
+    "position": 9.29
    },
    "section": "A"
   },
@@ -441,8 +443,12 @@
    "status": "TODO",
    "v4_set": null,
    "floor_plan": false,
-   "gsc_28d": null,
-   "section": "B"
+   "gsc_28d": {
+    "clicks": 1,
+    "impressions": 161,
+    "position": 9.57
+   },
+   "section": "A"
   },
   {
    "slug": "lakeview-cascadia",
@@ -470,9 +476,9 @@
    "v4_set": null,
    "floor_plan": false,
    "gsc_28d": {
-    "clicks": 1,
-    "impressions": 73,
-    "position": 9.36
+    "clicks": 4,
+    "impressions": 132,
+    "position": 8.72
    },
    "section": "A"
   },
@@ -488,9 +494,9 @@
    "v4_set": null,
    "floor_plan": false,
    "gsc_28d": {
-    "clicks": 5,
-    "impressions": 101,
-    "position": 8.95
+    "clicks": 7,
+    "impressions": 134,
+    "position": 8.7
    },
    "section": "A"
   },
@@ -507,8 +513,8 @@
    "floor_plan": false,
    "gsc_28d": {
     "clicks": 2,
-    "impressions": 41,
-    "position": 9.49
+    "impressions": 57,
+    "position": 9.51
    },
    "section": "A"
   },
@@ -650,9 +656,9 @@
    "v4_set": null,
    "floor_plan": false,
    "gsc_28d": {
-    "clicks": 3,
-    "impressions": 79,
-    "position": 6.85
+    "clicks": 4,
+    "impressions": 102,
+    "position": 6.76
    },
    "section": "A"
   },
@@ -696,9 +702,9 @@
    "v4_set": null,
    "floor_plan": false,
    "gsc_28d": {
-    "clicks": 1,
-    "impressions": 33,
-    "position": 11.12
+    "clicks": 2,
+    "impressions": 43,
+    "position": 12.44
    },
    "section": "A"
   },
@@ -729,8 +735,8 @@
    "floor_plan": false,
    "gsc_28d": {
     "clicks": 1,
-    "impressions": 8,
-    "position": 8.38
+    "impressions": 13,
+    "position": 8.0
    },
    "section": "A"
   },
@@ -789,8 +795,8 @@
    "floor_plan": false,
    "gsc_28d": {
     "clicks": 1,
-    "impressions": 9,
-    "position": 15.22
+    "impressions": 12,
+    "position": 13.83
    },
    "section": "A"
   },
@@ -834,9 +840,9 @@
    "v4_set": null,
    "floor_plan": false,
    "gsc_28d": {
-    "clicks": 1,
-    "impressions": 74,
-    "position": 9.23
+    "clicks": 2,
+    "impressions": 104,
+    "position": 9.06
    },
    "section": "A"
   },
@@ -895,8 +901,8 @@
    "floor_plan": false,
    "gsc_28d": {
     "clicks": 1,
-    "impressions": 36,
-    "position": 8.58
+    "impressions": 48,
+    "position": 8.67
    },
    "section": "A"
   },
@@ -913,8 +919,8 @@
    "floor_plan": false,
    "gsc_28d": {
     "clicks": 1,
-    "impressions": 29,
-    "position": 8.72
+    "impressions": 40,
+    "position": 7.92
    },
    "section": "A"
   },
@@ -931,8 +937,8 @@
    "floor_plan": false,
    "gsc_28d": {
     "clicks": 3,
-    "impressions": 48,
-    "position": 9.81
+    "impressions": 64,
+    "position": 9.91
    },
    "section": "A"
   },
@@ -949,8 +955,8 @@
    "floor_plan": false,
    "gsc_28d": {
     "clicks": 1,
-    "impressions": 10,
-    "position": 10.7
+    "impressions": 11,
+    "position": 9.82
    },
    "section": "A"
   },
@@ -967,8 +973,8 @@
    "floor_plan": false,
    "gsc_28d": {
     "clicks": 2,
-    "impressions": 30,
-    "position": 6.87
+    "impressions": 39,
+    "position": 6.54
    },
    "section": "A"
   },
@@ -999,8 +1005,8 @@
    "floor_plan": false,
    "gsc_28d": {
     "clicks": 2,
-    "impressions": 97,
-    "position": 8.44
+    "impressions": 136,
+    "position": 8.43
    },
    "section": "A"
   },
@@ -1017,8 +1023,8 @@
    "floor_plan": false,
    "gsc_28d": {
     "clicks": 1,
-    "impressions": 20,
-    "position": 9.35
+    "impressions": 30,
+    "position": 8.9
    },
    "section": "A"
   },
@@ -1034,9 +1040,9 @@
    "v4_set": null,
    "floor_plan": false,
    "gsc_28d": {
-    "clicks": 1,
-    "impressions": 134,
-    "position": 9.2
+    "clicks": 2,
+    "impressions": 220,
+    "position": 9.07
    },
    "section": "A"
   },
@@ -1067,8 +1073,8 @@
    "floor_plan": false,
    "gsc_28d": {
     "clicks": 2,
-    "impressions": 70,
-    "position": 7.89
+    "impressions": 91,
+    "position": 7.48
    },
    "section": "A"
   },
@@ -1084,9 +1090,9 @@
    "v4_set": null,
    "floor_plan": false,
    "gsc_28d": {
-    "clicks": 1,
-    "impressions": 23,
-    "position": 11.22
+    "clicks": 2,
+    "impressions": 39,
+    "position": 9.97
    },
    "section": "A"
   },
@@ -1103,8 +1109,8 @@
    "floor_plan": false,
    "gsc_28d": {
     "clicks": 2,
-    "impressions": 63,
-    "position": 10.84
+    "impressions": 86,
+    "position": 10.57
    },
    "section": "A"
   },
@@ -1135,8 +1141,8 @@
    "floor_plan": false,
    "gsc_28d": {
     "clicks": 1,
-    "impressions": 29,
-    "position": 12.38
+    "impressions": 41,
+    "position": 11.85
    },
    "section": "A"
   },
@@ -1209,8 +1215,8 @@
    "floor_plan": false,
    "gsc_28d": {
     "clicks": 1,
-    "impressions": 38,
-    "position": 7.47
+    "impressions": 73,
+    "position": 7.92
    },
    "section": "A"
   },
@@ -1269,28 +1275,29 @@
    "floor_plan": false,
    "gsc_28d": {
     "clicks": 3,
-    "impressions": 28,
-    "position": 5.36
+    "impressions": 41,
+    "position": 6.0
    },
    "section": "A"
   },
   {
    "slug": "plantation-verge",
    "name": "Plantation Verge",
-   "type": "HDB",
-   "launch_sort": "9999",
-   "launch": "not on file",
-   "launch_basis": "none",
-   "launch_source": "",
+   "type": "BTO",
+   "launch_sort": "2023-05",
+   "launch": "May 2023 BTO",
+   "launch_basis": "firm",
+   "launch_source": "HDB May 2023 sales brochure",
    "status": "TODO",
    "v4_set": null,
    "floor_plan": false,
    "gsc_28d": {
-    "clicks": 5,
-    "impressions": 130,
-    "position": 9.22
+    "clicks": 8,
+    "impressions": 186,
+    "position": 8.9
    },
-   "section": "A"
+   "section": "A",
+   "waiting_for_images": "18 Nov 2026: no v4 set or drop, and this run could not move Base44 renders or the HDB plan into the site (no byte route from the Base44 sandbox to Bluehost). Official facts found: HDB May 2023 brochure https://assets.hdb.gov.sg/residential/buying-a-flat/finding-a-flat/sales-brochure/23MAYBTO_pdf_selection/plantation_verge.pdf (971 units, 7 blocks 14-18 storeys, Plantation Close; 2-room Flexi T1 40/38, T2 48/46, 3-room 69/66, 4-room 93/90, 5-room 113/110 sq m; 4-room plan PDF page 11 (printed p.19-20), clip x125-475 y436-768 pt). Needs a Maison Design Helper drop."
   },
   {
    "slug": "pollen-collection",
@@ -1318,9 +1325,9 @@
    "v4_set": null,
    "floor_plan": false,
    "gsc_28d": {
-    "clicks": 3,
-    "impressions": 31,
-    "position": 10.1
+    "clicks": 5,
+    "impressions": 48,
+    "position": 10.12
    },
    "section": "A"
   },
@@ -1363,8 +1370,12 @@
    "status": "TODO",
    "v4_set": null,
    "floor_plan": false,
-   "gsc_28d": null,
-   "section": "B"
+   "gsc_28d": {
+    "clicks": 1,
+    "impressions": 38,
+    "position": 11.29
+   },
+   "section": "A"
   },
   {
    "slug": "the-botany-at-dairy-farm",
@@ -1420,9 +1431,9 @@
    "v4_set": null,
    "floor_plan": false,
    "gsc_28d": {
-    "clicks": 2,
-    "impressions": 87,
-    "position": 9.82
+    "clicks": 3,
+    "impressions": 142,
+    "position": 9.03
    },
    "section": "A"
   },
@@ -1453,8 +1464,8 @@
    "floor_plan": false,
    "gsc_28d": {
     "clicks": 1,
-    "impressions": 32,
-    "position": 11.09
+    "impressions": 41,
+    "position": 11.9
    },
    "section": "A"
   },
@@ -1469,8 +1480,12 @@
    "status": "TODO",
    "v4_set": null,
    "floor_plan": false,
-   "gsc_28d": null,
-   "section": "B"
+   "gsc_28d": {
+    "clicks": 3,
+    "impressions": 80,
+    "position": 9.2
+   },
+   "section": "A"
   },
   {
    "slug": "woodlands-south-plains",
@@ -1485,8 +1500,8 @@
    "floor_plan": false,
    "gsc_28d": {
     "clicks": 1,
-    "impressions": 30,
-    "position": 7.9
+    "impressions": 39,
+    "position": 7.97
    },
    "section": "A"
   },
@@ -1503,19 +1518,20 @@
    "floor_plan": false,
    "gsc_28d": {
     "clicks": 1,
-    "impressions": 35,
-    "position": 10.29
+    "impressions": 54,
+    "position": 9.96
    },
    "section": "A"
   }
  ],
  "gsc": {
-  "date": "2026-11-17",
+  "date": "2026-11-18",
   "window": "last 28 days",
-  "source": "Grok Bot section A refresh in thread, 17 Nov 2026 10:54am SGT"
+  "source": "Grok Bot section A refresh in thread, 18 Nov 2026 10:11am SGT"
  },
  "no_images_policy": "make",
  "hub_order": [
+  "towner-residences",
   "keat-hong-grange",
   "brickland-weave",
   "plantation-edge-i-and-ii",
@@ -1526,9 +1542,9 @@
   "plantation-dew",
   "sembawang-anchor",
   "toa-payoh-hillside",
-  "towner-residences",
   "canninghill-piers",
   "amo-residence",
+  "plantation-verge",
   "the-myst",
   "lumina-grand",
   "norwood-grand",
@@ -1598,7 +1614,6 @@
   "orchard-sophia",
   "parc-point",
   "plantation-creek-at-tengah",
-  "plantation-verge",
   "pollen-collection",
   "queens-arc",
   "shaw-tower",
