@@ -1,0 +1,22 @@
+name: Klar X2 photo check
+on:
+  push:
+    branches: [ "claude/project-thread-4e6mz2" ]
+    paths: [ ".github/workflows/klar-x2-check.yml", ".github/scripts/klar-x2-check.js" ]
+permissions:
+  contents: write
+jobs:
+  check:
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+      - run: |
+          npm init -y >/dev/null
+          npm i playwright@1.48.2 >/dev/null
+          npx playwright install --with-deps chromium webkit >/dev/null
+      - run: node .github/scripts/klar-x2-check.js
+      - run: |
+          git config user.name "klar-check"; git config user.email "actions@users.noreply.github.com"
+          git add klar-x2-shots
+          git commit -m "Klar X2 check screenshots" || exit 0
+          git push
