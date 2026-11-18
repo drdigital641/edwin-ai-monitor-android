@@ -1,4 +1,4 @@
-const { chromium, webkit } = require('playwright');
+const { chromium } = require('playwright-core');
 const fs = require('fs');
 const out = 'klar-x2-shots'; fs.mkdirSync(out, { recursive: true });
 const B = 'https://klardetails.com.sg';
@@ -10,8 +10,8 @@ const pages = [
 const widths = [390, 360, 1280];
 (async () => {
   const report = [];
-  for (const [bn, bt] of [['chromium', chromium], ['webkit', webkit]]) {
-    const b = await bt.launch();
+  for (const [bn, bt] of [['chromium', chromium]]) {
+    const b = await bt.launch({ executablePath: '/usr/bin/google-chrome', args: ['--no-sandbox'] });
     for (const w of widths) {
       if (bn === 'webkit' && w !== 390) continue;
       const ctx = await b.newContext({ viewport: { width: w, height: 900 }, deviceScaleFactor: 1, reducedMotion: 'reduce', isMobile: w < 500 && bn==='chromium', hasTouch: w < 500 && bn==='chromium' });

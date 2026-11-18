@@ -8,12 +8,13 @@ permissions:
 jobs:
   check:
     runs-on: ubuntu-24.04
+    timeout-minutes: 12
     steps:
       - uses: actions/checkout@v4
       - run: |
           npm init -y >/dev/null
-          npm i playwright@1.48.2 >/dev/null
-          npx playwright install --with-deps chromium webkit >/dev/null
+          npm i playwright-core@1.48.2 >/dev/null
+          which google-chrome
       - run: node .github/scripts/klar-x2-check.js
       - run: |
           git config user.name "klar-check"; git config user.email "actions@users.noreply.github.com"
