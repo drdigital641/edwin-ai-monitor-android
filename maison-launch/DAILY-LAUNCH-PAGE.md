@@ -47,7 +47,9 @@ claude/project-thread-dyseuy (16 Nov WhatsApp link fix on top of 6s51oo cf7fa7f)
    CtaClick test row (Controller sandbox can reach the domain; this container cannot).
 8. Mark DONE: set status "DONE" in launch-queue.json, run `queue_md.py` (rewrites MAISON-LAUNCH-QUEUE.md here) and
    `sort_hub.py <live hub> launch-queue.json <out>` on the live /new-launches/index.html read just now; commit, sync with
-   base_sha256. The project moves into the top group automatically. sitemap.xml/IndexNow come from the Bridge auto step
+   base_sha256. The project moves into the top group automatically. Since 18 Nov sort_hub.py also rebuilds the hub layout
+   (hub_cards.py: search box, image cards for every DONE gen2 page + hub-heroes.json legacy pages, compact list below).
+   A new DONE page gets its image card from its data.py renders[0] (living room, pos); nothing to hand-edit. sitemap.xml/IndexNow come from the Bridge auto step
    (back off on 429).
 9. Log one line in daily-log.md: "<SGT date> built: <slug> | backup <path> | tap test ok | waiting for images: ...".
 10. ONE Bridge needs_you alert: done (live URL, model line) or blocked (reason). Plus publish for any checkpoint.

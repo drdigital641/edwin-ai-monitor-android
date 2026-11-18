@@ -1,27 +1,12 @@
 #!/usr/bin/env python3
-"""Re-sort the Maison /new-launches/ hub cards from launch-queue.json (data-driven, no card content change).
-Usage: sort_hub.py hub.html launch-queue.json out.html
-Order = launch-queue.json 'hub_order' (DONE first, then TODO (DONE first, then TODO, each by launch date; planned/undated last).
-Cards not in the queue keep their old relative order at the end. Everything outside the card list is byte-identical."""
-import re, sys, json
+"""Re-sort the Maison /new-launches/ hub from launch-queue.json AND rebuild its layout (image cards + search + list).
+Usage: sort_hub.py hub.html launch-queue.json out.html   (same call as before; the daily run needs no change)
+Since 18 Nov 2026 this delegates to hub_cards.py: order = hub_order (DONE first, then TODO by launch date, undated last);
+launches with a concept detail page get image cards on top, the rest stay in the compact list. Run it on the LIVE hub."""
+import os, sys, json
+sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+import hub_cards
 src, qf, out = sys.argv[1:4]
-h = open(src, encoding="utf-8").read()
-OPEN = '<div class="lgrid" id="lgrid">'
-s = h.index(OPEN) + len(OPEN)
-rx = re.compile(r'<a class="lc[^"]*" href="/new-launches/([^/"]+)/"[^>]*>.*?</a>', re.S)
-cards, pos = [], s
-while True:
-    m = rx.match(h, pos)
-    if not m: break
-    cards.append((m.group(1), m.group(0))); pos = m.end()
-e = pos
-assert h[e:e+6] == '</div>', 'card list not contiguous'
-Q = json.load(open(qf, encoding="utf-8"))
-order = Q.get("hub_order") or [p["slug"] for p in Q["projects"]]
-rank = {slug: i for i, slug in enumerate(order)}
-new = sorted(cards, key=lambda c: (rank.get(c[0], 10**6), [x[0] for x in cards].index(c[0])))
-assert sorted(new) == sorted(cards) and len(new) == len(cards)
-res = h[:s] + "".join(c[1] for c in new) + h[e:]
-assert len(res) == len(h)
+res, nf, nl, fs = hub_cards.build(open(src, encoding="utf-8").read(), json.load(open(qf, encoding="utf-8")))
 open(out, "w", encoding="utf-8").write(res)
-print(len(new), "cards;", ", ".join(c[0] for c in new[:10]))
+print(f"{nf + nl} cards ({nf} image cards, {nl} list rows); top: {', '.join(fs[:10])}")

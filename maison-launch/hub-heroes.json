@@ -1,0 +1,13 @@
+{
+  "_note": "Card heroes for concept pages NOT built by gen2 (gen2 projects read their hero from maison-expand/gen2/data.py renders[0]). Every image here was checked live on Bluehost 18 Nov 2026 (900w + big). A project gets an image card only if it is DONE in launch-queue.json or listed here. pos = CSS object-position; line = one short line on the card (true for that page).",
+  "gen2_line": "Four concepts, the official plan and a free layout.",
+  "legacy": {
+    "canninghill-piers": {"dir": "canninghill-piers-v4", "stem": "living-riverside-teak-modernist", "big": "1920", "pos": "50% 50%", "line": "Four concepts and the official e-brochure plan.", "alt": "Riverside Teak Modernist living room concept at CanningHill Piers with teak slat feature wall and built-in window bench"},
+    "amo-residence": {"dir": "amo-residence-v4", "stem": "living-olive-ash-wabi-sabi", "big": "1920", "pos": "50% 50%", "line": "Four concepts for the 958 sq ft 3-bedroom.", "alt": "Olive Ash Wabi-Sabi living room concept for an AMO Residence 3-bedroom condo with fluted olive ash TV wall"},
+    "the-myst": {"dir": "the-myst-v4", "stem": "living-misty-forest-modern", "big": "1920", "pos": "50% 50%", "line": "Four concepts and the CDL brochure plans.", "alt": "Misty Forest Modern living room concept at The Myst with fluted oak built-in wall and balcony greenery"},
+    "lumina-grand": {"dir": "lumina-grand-v4", "stem": "living-coastal-limestone-calm", "big": "1920", "pos": "50% 50%", "line": "Four concepts for the 936 sq ft 3-bedroom.", "alt": "Coastal Limestone Calm living room concept for a Lumina Grand 3-bedroom EC with limewashed oak TV wall"},
+    "norwood-grand": {"dir": "norwood-grand-v4", "stem": "living-tropical-resort-modern", "big": "1600", "pos": "50% 50%", "line": "Four concepts and the official CDL floor plans.", "alt": "Tropical Resort Modern living room concept with fluted teak built-in wall and balcony greenery"},
+    "pollen-collection": {"dir": "pollen-collection-v4", "stem": "living-sandstone-double-height-gallery", "big": "1920", "pos": "50% 50%", "line": "Four concepts and the official house plan.", "alt": "Sandstone Double-Height Gallery living room concept for a Pollen Collection landed house"},
+    "shaw-tower": {"dir": "shaw-tower-v4", "stem": "reception-bronze-travertine-executive", "big": "1920", "pos": "50% 50%", "line": "Four office concepts and the official base plan.", "alt": "Bronze Travertine Executive office reception concept at Shaw Tower with travertine desk and fluted walnut wall"}
+  }
+}
