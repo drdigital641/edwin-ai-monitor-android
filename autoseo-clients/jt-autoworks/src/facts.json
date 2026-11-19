@@ -1,0 +1,90 @@
+{
+  "_source": "Edwin's JT Autoworks brief, 20 Nov 2026 (Asia/Singapore). facts.md on the Dev Desk (/workspace/clients/jt-autoworks/) was not reachable from this build; every fact below is from the brief. Add nothing that is not in facts.md or the brief.",
+  "slug": "jt-autoworks",
+  "legal_name": "JT AUTOWORKS PTE. LTD.",
+  "name": "JT Autoworks",
+  "sign_name": "JT AUTOWORKS",
+  "facebook_name": "JT Autoworks Pte. Ltd.",
+  "incorporated": "2026-03-12",
+  "opened": "late May 2026",
+  "flags": {
+    "show_owner_name": false,
+    "packages_confirmed_current": false
+  },
+  "owner_name": "Ah Hao",
+  "address": {
+    "display": "8 Kaki Bukit Ave 4, #02-52, Premier @ Kaki Bukit, Singapore 415875 (Gate 1)",
+    "street": "8 Kaki Bukit Ave 4, #02-52, Premier @ Kaki Bukit",
+    "unit": "#02-52",
+    "building": "Premier @ Kaki Bukit",
+    "gate": "Gate 1",
+    "postal": "415875",
+    "locality": "Singapore",
+    "country": "SG"
+  },
+  "geo": {"lat": 1.3384511, "lng": 103.9051485},
+  "place_id": "ChIJPfteMJkX2jER5y6YWmGV1v4",
+  "links": {
+    "maps": "https://www.google.com/maps/search/?api=1&query=JT%20AUTOWORKS%20PTE.%20LTD.&query_place_id=ChIJPfteMJkX2jER5y6YWmGV1v4",
+    "directions": "https://www.google.com/maps/dir/?api=1&destination=8%20Kaki%20Bukit%20Ave%204%2C%20%2302-52%2C%20Premier%20%40%20Kaki%20Bukit%2C%20Singapore%20415875&destination_place_id=ChIJPfteMJkX2jER5y6YWmGV1v4",
+    "reviews": "https://search.google.com/local/reviews?placeid=ChIJPfteMJkX2jER5y6YWmGV1v4",
+    "write_review": "https://search.google.com/local/writereview?placeid=ChIJPfteMJkX2jER5y6YWmGV1v4",
+    "cid": "https://maps.google.com/?cid=18363028776014065383",
+    "map_embed": "https://www.google.com/maps/embed/v1/place?key=&q=place_id:ChIJPfteMJkX2jER5y6YWmGV1v4",
+    "map_embed_keyless": "https://maps.google.com/maps?q=place_id:ChIJPfteMJkX2jER5y6YWmGV1v4&output=embed",
+    "facebook": "https://www.facebook.com/jtautoworkspteltd",
+    "facebook_videos": "https://www.facebook.com/61589884629425/videos",
+    "instagram": "https://www.instagram.com/jt_autoworks.sg/",
+    "instagram_handle": "@jt_autoworks.sg"
+  },
+  "whatsapp": {"display": "8358 4927", "e164": "+6583584927", "url": "https://wa.me/6583584927"},
+  "phone": {"display": "6222 3102", "e164": "+6562223102", "tel": "tel:+6562223102"},
+  "email": "hao@jtautoworks.com.sg",
+  "hours": [
+    {"days": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"], "opens": "09:00", "closes": "17:00"},
+    {"days": ["Saturday"], "opens": "09:00", "closes": "15:00"}
+  ],
+  "hours_note": "Sunday closed. No public-holiday hours published.",
+  "google": {"rating_note": "5.0 from 2 reviews on 20 Nov 2026: never show stars, counts or aggregateRating"},
+  "packages": {
+    "visits": 3,
+    "viscosities": ["5W-40", "5W-30", "0W20"],
+    "common": [
+      ["oil_filter", 3], ["check_50", 3], ["aircon_flush_gas", 1], ["tyre_rotation", 1], ["tyre_patch", 1], ["coolant", 3]
+    ],
+    "brake_fluid_note": true,
+    "lifetime_checking": true,
+    "items": [
+      {"id": "a", "letter": "A", "oil": "Liqui Moly Top Tec", "litres": 6, "price": 628, "extra_per_litre": 29, "flush_bundle": true, "windshield": true, "poster": "package-a"},
+      {"id": "b", "letter": "B", "oil": "Castrol Edge", "litres": 6, "price": 528, "extra_per_litre": 20, "flush_bundle": true, "windshield": true, "poster": "package-b"},
+      {"id": "c", "letter": "C", "oil": "Castrol Edge", "litres": 4, "price": 428, "extra_per_litre": 20, "flush_bundle": false, "windshield": false, "poster": "package-c"}
+    ]
+  },
+  "check_50_groups": ["engine", "brakes", "suspension_steering", "tyres", "electrical", "lights", "fluids", "aircon", "battery_charging", "exhaust", "safety", "body_interior"],
+  "makes": ["BMW", "Mercedes-Benz", "Audi", "Volkswagen", "Porsche", "Lexus", "Land Rover", "Volvo"],
+  "ev_hashtags": ["#Tesla", "#BYD"],
+  "landmarks": ["Gate 1", "VICOM Inspection Centre", "Kaki Bukit Camp", "Bartley Rd East", "POSB"],
+  "poster_labels": ["Bike Labz", "Sri Udhayan Coffee Bar", "Atlas Vending Solutions", "KB-1"],
+  "areas": ["kaki-bukit", "ubi", "eunos", "bedok", "tampines", "paya-lebar", "macpherson", "hougang"],
+  "area_names": {"kaki-bukit": "Kaki Bukit", "ubi": "Ubi", "eunos": "Eunos", "bedok": "Bedok", "tampines": "Tampines", "paya-lebar": "Paya Lebar", "macpherson": "MacPherson", "hougang": "Hougang"},
+  "reels": [
+    {"id": "1359302399006523", "topic": "aircon", "len": "0:59"},
+    {"id": "1464612035432245", "topic": "battery", "len": "0:49"},
+    {"id": "880677664621837", "topic": "ev_light", "len": "0:51"},
+    {"id": "1700034917808623", "topic": "dash_lights", "len": "1:15"},
+    {"id": "2081291482817652", "topic": "ev_owners", "len": "1:05"},
+    {"id": "1424081312861520", "topic": "diagnostics", "len": "1:23"},
+    {"id": "2182430029186112", "topic": "used_car", "len": "1:12"},
+    {"id": "1640509910563338", "topic": "oil_leak", "len": "1:13"},
+    {"id": "1472913717848166", "topic": "bmw5", "len": "1:23"},
+    {"id": "1524129446111337", "topic": "new_chapter", "len": "0:23"}
+  ],
+  "hero_reel": "1524129446111337",
+  "proof": {
+    "turbo_quote_elsewhere": "near $2,000",
+    "turbo_labour": "$50",
+    "since_line": "Since 2018. One mechanic. One relationship built on trust."
+  },
+  "photos_real": ["google-01", "google-02", "google-05", "google-06"],
+  "preview": {"base_path": "/preview/jt-autoworks/", "url": "https://autoseo.my/preview/jt-autoworks/"}
+}
