@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """Pre-upload gate for the JT Autoworks preview. Exit 1 on any problem. Run after build.py, before any Bridge upload.
-Fails on: lorem / TODO / placeholder text, any Page One trace, the ACRA address, the landline as WhatsApp, star ratings or
+Fails on: lorem / TODO / placeholder text, any trace of the other agency brand, the ACRA address, the landline as WhatsApp, star ratings or
 aggregateRating, "Opening Promotion" (until Edwin confirms), "top rated", the owner name while the flag is off, previous-workshop
 names, invented MRT/parking, em dashes, missing noindex, H1 count != 1, missing tracker, wrong footer credit, a CTA without
 data-cta, wrong WhatsApp / tel links, bad JSON-LD, missing hreflang, map links not pinned to the Place ID, missing media files."""
