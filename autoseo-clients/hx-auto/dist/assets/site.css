@@ -364,7 +364,7 @@ address{font-style:normal}
 .ph-b{position:relative}
 .ph img,.sv-p img{filter:grayscale(1) contrast(1.12) brightness(.95);transition:filter .35s ease-out,transform .5s ease-out}
 .ph-b::after,.sv-p::after{content:"";position:absolute;inset:0;pointer-events:none;mix-blend-mode:multiply;
-  background:linear-gradient(160deg,rgba(197,49,56,.5) 0%,rgba(158,30,38,.22) 50%,rgba(17,17,17,.35) 100%);transition:opacity .35s ease-out}
+  background:linear-gradient(160deg,rgba(197,49,56,.4) 0%,rgba(120,24,30,.2) 50%,rgba(17,17,17,.45) 100%);transition:opacity .35s ease-out}
 .sv-p{position:relative}
 .ph:hover img,.sv:hover .sv-p img{filter:grayscale(.2) contrast(1.05);transform:scale(1.04)}
 .ph:hover .ph-b::after,.sv:hover .sv-p::after{opacity:.35}
