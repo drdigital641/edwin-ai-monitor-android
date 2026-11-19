@@ -1,0 +1,19 @@
+/* ktech.my /mbmaster/ only (19 Nov 2026). Loaded on the three MBMaster pages; k.css stays as it is.
+   Screenshots sit whole on a graphite frame at their true 1600:1227 ratio: never cropped (object-fit:contain). */
+.mb-hero .hgrid{gap:18px}
+.mb-hero .btn-wa{margin-bottom:18px}
+@media(min-width:900px){.mb-hero .hgrid{grid-template-columns:1fr 1.05fr;align-items:center}.mb-hero .btn-wa{margin-bottom:0}}
+.shot{margin:0}
+.shot .fr{background:var(--ink);border:1px solid var(--ink);padding:6px}
+.shot img{width:100%;height:auto;aspect-ratio:1600/1227;object-fit:contain;background:var(--ink);pointer-events:none;-webkit-user-drag:none}
+.shot figcaption{margin:8px 0 0;font:600 13px/1.45 var(--hd);letter-spacing:.02em;color:var(--mute)}
+.mb-row{display:grid;gap:18px;align-items:start}
+.mb-row+.mb-row{margin-top:34px}
+@media(min-width:900px){.mb-row{grid-template-columns:1fr 1fr;gap:32px}.mb-row.flip .shot{order:-1}}
+.mb-tx h2{text-transform:uppercase;margin:0 0 12px}
+.mb-tx p{margin:0 0 12px;max-width:62ch;color:var(--ink2);font-size:17px;line-height:1.65}
+.mb-chips{list-style:none;display:flex;flex-wrap:wrap;gap:8px;margin:8px 0 16px;padding:0}
+.mb-chips li{padding:7px 10px;border:1px solid var(--line);background:var(--card);font:600 14px/1.2 var(--hd);color:var(--ink)}
+.mb-sub{margin:0;font:600 13px var(--hd);letter-spacing:.04em;text-transform:uppercase;color:var(--mute)}
+.mb-auth p{max-width:62ch}
+.mb-auth .mb-line{color:#fff;font-weight:600}
