@@ -6,6 +6,7 @@ FACTS = {
     'site': 'https://ktech.my/',
     'slug': 'mbmaster/',
     'wa': '60125462820',            # live header/footer WhatsApp (Autel Hooi)
+    'wa_andrew': '60125512820',     # Andrew, one-to-one MBMaster training (Edwin 19 Nov 2026; same number as JSON-LD ContactPoint Andrew)
     'app': 'MBMaster V1.5',
     'tabs': ['Identify', 'Software Read', 'EIS Boot/Simu', 'Single MCU Read/Write', 'Nec/OC', 'Coding',
              'Advanced Services', 'Special Functions', 'Program'],
@@ -23,6 +24,10 @@ FACTS = {
 S = {}
 
 S['en'] = {
+    'tr_h': 'One-to-one MBMaster technical training',
+    'tr_p': 'Ask Andrew on WhatsApp.',
+    'btn_tr': 'WhatsApp Andrew',
+    'wa_tr': 'Hi Andrew, I found ktech.my. I would like to ask about one-to-one MBMaster technical training.',
     'title': 'MBMaster V1.5 for MB Vehicles | K Tech JB',
     'desc': 'MBMaster V1.5 is now at K Tech, Johor Bahru: a professional tool for workshops and locksmiths. See what the app shows in a gearbox module demo.',
     'home': 'Home', 'crumb': 'MBMaster',
@@ -60,6 +65,10 @@ S['en'] = {
 }
 
 S['ms'] = {
+    'tr_h': 'Latihan teknikal MBMaster satu-dengan-satu',
+    'tr_p': 'Tanya Andrew di WhatsApp.',
+    'btn_tr': 'WhatsApp Andrew',
+    'wa_tr': 'Hai Andrew, saya jumpa ktech.my. Saya mahu bertanya tentang latihan teknikal MBMaster satu-dengan-satu.',
     'title': 'MBMaster V1.5 untuk Kenderaan MB | K Tech JB',
     'desc': 'MBMaster V1.5 kini di K Tech, Johor Bahru: alat profesional untuk bengkel dan tukang kunci. Lihat apa yang ditunjukkan aplikasi dalam demo modul gearbox.',
     'home': 'Utama', 'crumb': 'MBMaster',
@@ -97,6 +106,10 @@ S['ms'] = {
 }
 
 S['zh'] = {
+    'tr_h': 'MBMaster 一对一技术培训',
+    'tr_p': '请通过 WhatsApp 咨询 Andrew。',
+    'btn_tr': 'WhatsApp Andrew',
+    'wa_tr': '你好 Andrew，我在 ktech.my 看到你们。我想咨询 MBMaster 一对一技术培训。',
     'title': 'MBMaster V1.5，适用于 MB 车辆 | K Tech 新山',
     'desc': 'K Tech 新山现已提供 MBMaster V1.5：为车厂与锁匠而设的专业工具。通过变速箱模块演示，了解软件界面显示的内容。',
     'home': '首页', 'crumb': 'MBMaster',

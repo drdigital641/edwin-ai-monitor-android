@@ -28,12 +28,12 @@ MAP = 'https://www.google.com/maps/search/?api=1&query=No.%2028%2C%20Jalan%20Eko
 ADDR = 'No. 28, Jalan Ekoperniagaan 3/11, Taman Ekoperniagaan, 81100 Johor Bahru, Johor, Malaysia'
 
 
-def wa(text):
-    return f'https://wa.me/{FACTS["wa"]}?text=' + quote(text, safe='')
+def wa(text, num=None):
+    return f'https://wa.me/{num or FACTS["wa"]}?text=' + quote(text, safe='')
 
 
-def wa_btn(text, label, ref):
-    return (f'<a class="btn btn-wa" href="{e(wa(text))}" target="_blank" rel="noopener" data-ref="{ref}">'
+def wa_btn(text, label, ref, num=None):
+    return (f'<a class="btn btn-wa" href="{e(wa(text, num))}" target="_blank" rel="noopener" data-ref="{ref}">'
             f'{WA_SVG}<span>{e(label)}</span></a>')
 
 
@@ -96,6 +96,7 @@ def page(L):
 {shot(L, 'result', s)}</div></div></section>
 <section class="sec"><div class="wrap"><div class="mb-tx"><h2>{e(s['s4_h'])}</h2>{chips(FACTS['buttons'])}<p class="mb-sub">{e(s['s4_note'])}</p></div>
 <div class="newbox mb-auth" style="margin:34px 0 0"><h2>{e(s['s5_h'])}</h2><p>{e(s['s5_p'])}</p><p class="mb-line">{e(s['s5_line'])}</p></div></div></section>
+<section class="sec alt" id="training"><div class="wrap"><div class="mb-tx"><h2>{e(s['tr_h'])}</h2><p>{e(s['tr_p'])}</p>{wa_btn(s['wa_tr'], s['btn_tr'], 'wa-andrew-training', FACTS['wa_andrew'])}</div></div></section>
 <section class="sec dark end"><div class="wrap"><h2>{e(s['end_h'])}</h2><p>{e(s['end_p'])}</p>{wa_btn(s['wa_text'], s['btn_end'], 'end')}</div></section></main>'''
     gen = wa(ui['wa_generic'])
     footer = f'''<footer class="foot"><div class="wrap"><div class="fg">
