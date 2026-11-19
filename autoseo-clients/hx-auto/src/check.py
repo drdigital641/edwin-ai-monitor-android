@@ -10,7 +10,7 @@ DIST = os.path.join(HERE, '..', 'dist')
 sys.path.insert(0, HERE)
 from build import PHOTOS  # noqa: E402
 
-OK_IMAGES = set(PHOTOS) | {s + '-full' for s in PHOTOS} | {'cover', 'og', 'logo-transparent', 'logo-on-black', 'favicon-512'}
+OK_IMAGES = set(PHOTOS) | {'hx/' + s + x for s in ('shopfront-signboard', 'shopfront-forecourt', 'workshop-bays-overview', 'aircond-flushing-banner', 'mercedes-c-class-bay', 'bmw-5-series-engine', 'bmw-5-series-on-lift', 'land-rover-discovery-sport', 'mini-cooper-s-on-lift', 'kia-cerato-on-lift', 'toyota-alphard-white', 'toyota-vellfire-bay', 'mazda-3-engine', 'honda-jazz-engine') for x in ('-t', '-l', '-xl')} | {'hx/hero-960', 'hx/hero-1600', 'hx/hero-2400'} | {s + '-full' for s in PHOTOS} | {'cover', 'og', 'logo-transparent', 'logo-on-black', 'favicon-512'}
 # Words are split so this file never trips a repo-wide grep.
 BANNED = [r'lorem', r'\bTODO\b', r'\bTBD\b', r'placeholder', r'\bXXX\b', 'pa' + r'ge[\s-]*o' + 'ne', 'pageo' + 'nesingapore',
           '019' + r'[\s-]*319[\s-]*9113', r'\+?60\s*19[\s-]*319[\s-]*9113', '6019' + '3199113',
@@ -20,10 +20,13 @@ BANNED = [r'lorem', r'\bTODO\b', r'\bTBD\b', r'placeholder', r'\bXXX\b', 'pa' + 
           r'logo-(bmw|mercedes|benz|toyota|honda|lexus|audi|porsche|alpine|vw|volkswagen)',
           # Fix round 1 (Edwin, 19 Nov 2026): no star ratings or rating numbers anywhere.
           r'aggregateRating', r'ratingValue', r'reviewRating', r'bestRating', r'out of 5', r'daripada 5', r'满分', '[\u2605\u2606\u2b50]',
-          r'\b4\.0\b(?!\.)', r'Google rating', r'penilaian Google', r'评分']
+          r'\b4\.0\b(?!\.)', r'Google rating', r'penilaian Google', r'评分',
+          # Fix round 2 (Edwin, 19 Nov 2026): no June flyer promos, no review count, no photo grade.
+          r'\bflyer\b', r'RM\s?30', r'percuma', r'免费', r'传单', r'reviews on Google', r'ulasan di Google', r'Google 上有',
+          r'grayscale\(', r'mix-blend-mode', r'sepia\(']
 bad = 0
 FACTS = json.load(open(os.path.join(HERE, 'facts.json'), encoding='utf8'))
-GOOGLE_TEXT = {s['text'] for s in FACTS['reviews']['snippets'] if s['src'] == 'google'}
+GOOGLE_TEXT = {s['text'] for s in FACTS['reviews']['snippets']}  # Google + Facebook snippets, word for word
 
 
 def fail(f, m):
@@ -74,7 +77,7 @@ for f in files:
             json.loads(j)
         except Exception as e:
             fail(f, f'bad JSON-LD {e}')
-    for stem in re.findall(r'/images/([a-z0-9-]+)\.(?:webp|png)', t):
+    for stem in re.findall(r'/images/([a-z0-9/-]+)\.(?:webp|png)', t):
         if stem not in OK_IMAGES:
             fail(f, f'image not in the drop: {stem}')
 

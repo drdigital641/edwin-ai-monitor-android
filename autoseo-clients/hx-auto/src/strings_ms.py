@@ -36,9 +36,6 @@ UI = {
     'related': 'Servis lain',
     'ask_title': 'Beritahu kami apa masalah kereta anda',
     'ask_line': 'Hantar model, tahun dan apa yang anda perasan. Kami balas melalui WhatsApp.',
-    'reg_no': 'No. syarikat',
-    'footer_find': 'Cari bengkel kami',
-    'footer_hours': 'Waktu operasi (Google)',
     'footer_talk': 'Hubungi kami',
     'footer_pages': 'Halaman',
     'brands_note': 'Jenama kereta disebut sebagai teks sahaja. HX Auto Service ialah bengkel bebas, bukan pengedar berfranchais.',
@@ -53,7 +50,6 @@ UI = {
     'review_src_facebook': 'Cadangan Facebook',
     'reviews_note': 'Petikan ringkas daripada ulasan di profil Google kami, dalam bahasa asal. Nama pertama sahaja.',
     'map_title': 'Peta HX Auto Service, 47 Jalan Indah 16/11, Taman Bukit Indah',
-    'offers_note': 'Seperti yang diiklankan dalam flyer Facebook kami bulan Jun. Tanya di WhatsApp sama ada tawaran masih berjalan.',
     'zones_label': 'Ketik bahagian kereta',
     'also_label': 'Turut ada di bengkel',
 }
@@ -89,32 +85,28 @@ CAPTIONS = {
 }
 
 HOME = {
+    'view': 'Lihat servis',
+    'mosaic_h2': 'Dalam bengkel',
+    'mosaic_p': 'Kereta sebenar di bengkel kami di Taman Bukit Indah. Ketik foto untuk lihat lebih besar.',
+    'find_h2': 'Cari kami di Taman Bukit Indah',
+    'find_p': 'Satu bengkel di 47 Jalan Indah 16/11, dekat dengan Second Link.',
+    'hours_h': 'Waktu operasi',
     'title': 'Bengkel Kereta Bukit Indah | HX Auto Service, Iskandar Puteri',
     'desc': 'HX Auto Service, bengkel kereta di Taman Bukit Indah, Iskandar Puteri, Johor Bahru. Diagnostik komputer, servis, aircond, brek, suspensi dan tunda kereta. WhatsApp 011-6776 1138.',
     'h1': 'Bengkel kereta di Taman Bukit Indah, Johor',
     'hero_line': 'Imbas komputer dahulu, kemudian baiki dengan betul.',
     'svc_h2': 'Apa yang kami baiki',
     'svc_p': 'HX Auto Service ialah bengkel kereta Bukit Indah, dekat dengan Second Link, untuk servis kereta Iskandar Puteri dan Johor Bahru.',
-    'all_services': 'Semua servis',
     'steps_h2': 'Bagaimana ia berjalan',
     'steps': [
         ('WhatsApp', 'Hantar model, tahun dan apa yang anda perasan.'),
         ('Diagnosis', 'Kami pasang pengimbas, baca kod kerosakan dan periksa kereta.'),
         ('Siap', 'Kami baiki apa yang dijumpai oleh imbasan dan pemeriksaan. Ambil kereta anda di Taman Bukit Indah.'),
     ],
-    'trust_area': 'Taman Bukit Indah, dekat Second Link',
-    'trust_hours': 'Isnin hingga Sabtu sehingga 7:30 malam. Ahad tutup.',
-    'trust_reviews': '21 ulasan di Google',
     'band_h2': 'Beritahu kami apa yang berlaku pada kereta anda.',
     'band_p': 'WhatsApp model, tahun dan apa yang anda perasan.',
     'reviews_h2': 'Apa kata pelanggan kami',
-    'work_h2': 'Dalam bengkel',
-    'work_line': 'Kereta sebenar dari bengkel kereta Bukit Indah kami. Ketik foto untuk lihat penuh.',
     'brands_label': 'Jenama yang pernah masuk bengkel',
-    'offers_h2': 'Dalam flyer bulan Jun',
-    'offers_extra': 'Flyer itu juga menyebut jaminan harga dan alat ganti OEM atau tulen.',
-    'visit_h2': 'Cari kami di Taman Bukit Indah',
-    'visit_line': 'Satu bengkel di 47 Jalan Indah 16/11, dekat dengan Second Link.',
 }
 
 # Zon pada rajah kereta (laman utama). 'svc' = slug servis yang dipaut oleh zon.
@@ -141,6 +133,7 @@ SERVICES = [
         'id': 'diagnostics', 'slug': 'computer-diagnostics-coding', 'zone': 'diagnostics',
         'name': 'Diagnostik komputer dan pengekodan',
         'card_line': 'Lampu amaran menyala? Kami imbas kereta dahulu.',
+        'home_line': 'Diagnosis komputer, imbasan dan pengekodan.',
         'title': 'Diagnostik Komputer Johor Bahru | HX Auto Service Bukit Indah',
         'desc': 'Diagnostik komputer dan pengekodan di Taman Bukit Indah, Johor Bahru. Lampu amaran dan kerosakan dibaca dengan imbasan sebelum pembaikan. WhatsApp HX Auto Service 011-6776 1138.',
         'h1': 'Diagnostik komputer dan pengekodan di Johor Bahru',
@@ -150,7 +143,6 @@ SERVICES = [
             ('Pengekodan selepas pembaikan', 'Sesetengah alat ganti perlu dikodkan kepada kereta selepas dipasang. Tanya kami di WhatsApp dengan model dan tahun, dan beritahu bahagian mana yang ditukar.'),
         ],
         'faq': [
-            ('Adakah imbasan komputer percuma?', 'Flyer Facebook kami bulan Jun mengiklankan imbasan komputer percuma. Tanya di WhatsApp sama ada tawaran masih berjalan semasa anda membuat tempahan.'),
             ('Kereta apa yang boleh diimbas?', 'Kereta yang pernah masuk bengkel kami termasuk Mercedes-Benz, BMW, Toyota, Honda, Kia, Mazda, Mini, Subaru, Nissan, Lexus, Land Rover dan Volkswagen. Hantar model dan tahun untuk semak.'),
         ],
         'photo': 'bmw-5-series-engine', 'photos': ['mini-cooper-s-on-lift', 'mercedes-amg-matte'],
@@ -159,17 +151,16 @@ SERVICES = [
         'id': 'service-oil', 'slug': 'car-service-oil-change', 'zone': 'engine',
         'name': 'Servis dan tukar minyak',
         'card_line': 'Minyak enjin, penapis dan pemeriksaan am.',
+        'home_line': 'Tukar minyak hitam dan servis am.',
         'title': 'Servis Kereta dan Tukar Minyak Iskandar Puteri | HX Auto Service',
         'desc': 'Servis kereta dan tukar minyak di Taman Bukit Indah, Iskandar Puteri. Minyak enjin, penapis dan pemeriksaan am. WhatsApp HX Auto Service 011-6776 1138.',
         'h1': 'Servis kereta dan tukar minyak di Iskandar Puteri',
         'lead': 'Servis berkala memastikan masalah kecil kekal kecil. Bawa kereta ke Taman Bukit Indah untuk minyak enjin, penapis baharu dan pemeriksaan am.',
         'body': [
             ('Apa yang perlu diberitahu', 'Hantar model, tahun dan jarak perjalanan di WhatsApp, serta bila kereta kali terakhir diservis. Jika ada lampu menyala atau bunyi lain macam, sebutkan supaya kami boleh periksa dalam lawatan yang sama.'),
-            ('Alat ganti', 'Flyer Facebook kami bulan Jun menyebut alat ganti OEM atau tulen. Tanya kami alat ganti dan minyak yang sesuai untuk kereta anda.'),
         ],
         'faq': [
             ('Perlukah buat temujanji?', 'WhatsApp kami dahulu supaya kami boleh beritahu bila petak kerja kosong. Waktu operasi di Google ialah Isnin hingga Sabtu, dan Ahad tutup.'),
-            ('Boleh periksa perkara lain semasa servis?', 'Boleh. Beritahu apa yang anda perasan, dan tanya tentang pemeriksaan bawah kereta dan imbasan komputer dalam flyer Jun kami.'),
         ],
         'photo': 'bmw-oil-and-filter', 'photos': ['mercedes-oil-belt-parts', 'mercedes-c-class-bay'],
     },
@@ -177,6 +168,7 @@ SERVICES = [
         'id': 'engine-transmission', 'slug': 'engine-transmission-repair', 'zone': 'engine',
         'name': 'Enjin dan transmisi',
         'card_line': 'Baiki enjin dan servis transmisi.',
+        'home_line': 'Baiki enjin dan servis transmisi.',
         'title': 'Baiki Enjin dan Transmisi Bukit Indah | HX Auto Service',
         'desc': 'Baiki enjin dan servis transmisi di HX Auto Service, Taman Bukit Indah, Iskandar Puteri. WhatsApp 011-6776 1138 dengan model dan gejala kereta anda.',
         'h1': 'Baiki enjin dan transmisi di Bukit Indah',
@@ -195,6 +187,7 @@ SERVICES = [
         'id': 'aircond', 'slug': 'aircond-service', 'zone': 'aircond',
         'name': 'Aircond',
         'card_line': 'Servis dan flushing aircond.',
+        'home_line': 'Servis aircond, termasuk Car Air Cond Flushing Service seperti pada banner di depan bengkel kami.',
         'title': 'Servis Aircond Kereta Bukit Indah | HX Auto Service',
         'desc': 'Servis aircond kereta dan flushing di Taman Bukit Indah, Iskandar Puteri. Tidak sejuk, berbau atau bising? WhatsApp HX Auto Service 011-6776 1138.',
         'h1': 'Servis aircond kereta di Bukit Indah',
@@ -213,6 +206,7 @@ SERVICES = [
         'id': 'brakes-suspension-tyres', 'slug': 'brakes-suspension-tyres-alignment', 'zone': 'brakes',
         'name': 'Brek, suspensi, tayar dan penjajaran',
         'card_line': 'Berhenti, mengemudi dan memandu dengan selesa.',
+        'home_line': 'Sistem brek, suspensi, tayar dan penjajaran.',
         'title': 'Brek, Suspensi, Tayar dan Penjajaran | HX Auto Service',
         'desc': 'Sistem brek, suspensi, penyerap hentak, tayar dan penjajaran roda di HX Auto Service, Taman Bukit Indah, Iskandar Puteri. WhatsApp 011-6776 1138.',
         'h1': 'Brek, suspensi, tayar dan penjajaran',
@@ -232,6 +226,7 @@ SERVICES = [
         'id': 'battery-electrical', 'slug': 'battery-electrical-repair', 'zone': 'battery',
         'name': 'Bateri dan elektrik',
         'card_line': 'Lambat hidup dan kerosakan elektrik.',
+        'home_line': 'Servis bateri dan baiki elektrik.',
         'title': 'Bateri dan Elektrik Kereta Iskandar Puteri | HX Auto Service',
         'desc': 'Servis bateri kereta dan baiki elektrik di HX Auto Service, Taman Bukit Indah, Iskandar Puteri. WhatsApp 011-6776 1138.',
         'h1': 'Bateri dan baiki elektrik kereta di Iskandar Puteri',
@@ -250,6 +245,7 @@ SERVICES = [
         'id': 'undercarriage', 'slug': 'undercarriage-check', 'zone': 'undercarriage',
         'name': 'Pemeriksaan bawah kereta',
         'card_line': 'Tengok bahagian bawah, di atas lif.',
+        'home_line': 'Pemeriksaan bawah kereta.',
         'title': 'Pemeriksaan Bawah Kereta Bukit Indah | HX Auto Service',
         'desc': 'Pemeriksaan bawah kereta di atas lif di HX Auto Service, Taman Bukit Indah, Iskandar Puteri. Kebocoran, mounting, ekzos dan karat. WhatsApp 011-6776 1138.',
         'h1': 'Pemeriksaan bawah kereta di Bukit Indah',
@@ -259,7 +255,6 @@ SERVICES = [
             ('Sebelum perjalanan jauh', 'Melihat bahagian bawah berbaloi dibuat sebelum perjalanan jauh atau ketika membeli kereta terpakai. WhatsApp kami untuk atur masa.'),
         ],
         'faq': [
-            ('Adakah pemeriksaan bawah kereta percuma?', 'Flyer Facebook kami bulan Jun mengiklankan pemeriksaan bawah kereta percuma. Tanya di WhatsApp sama ada tawaran masih berjalan.'),
             ('Berapa lama masanya?', 'WhatsApp kami dahulu supaya kami boleh beritahu bila lif kosong.'),
         ],
         'photo': 'nissan-qashqai-on-lift', 'photos': ['land-rover-discovery-sport', 'mercedes-van-two-post'],
@@ -268,6 +263,7 @@ SERVICES = [
         'id': 'towing', 'slug': 'towing-recovery', 'zone': '',
         'name': 'Tunda dan pemulihan',
         'card_line': 'Kereta tak boleh bergerak? Telefon kami.',
+        'home_line': 'Servis tunda pemulihan (recovery towing).',
         'title': 'Tunda Kereta Iskandar Puteri dan Pemulihan | HX Auto Service',
         'desc': 'Khidmat tunda kereta dan pemulihan daripada HX Auto Service, Taman Bukit Indah, Iskandar Puteri, Johor Bahru. Telefon atau WhatsApp 011-6776 1138.',
         'h1': 'Tunda kereta Iskandar Puteri dan pemulihan',
@@ -284,12 +280,9 @@ SERVICES = [
     },
 ]
 
-OFFERS = ['Imbasan komputer percuma', 'Pemeriksaan bawah kereta percuma', 'Ujian emisi RM30']
 
 FAQ_HOME = [
     ('Di mana HX Auto Service?', 'Di 47 Jalan Indah 16/11, Taman Bukit Indah, 79100 Iskandar Puteri, Johor Bahru. Bengkel ini dekat dengan Second Link.'),
-    ('Apakah waktu operasi anda?', 'Di Google: Isnin hingga Sabtu 9:30 pagi hingga 7:30 malam, Khamis mulai 9:00 pagi, dan Ahad tutup.'),
-    ('Adakah kereta Singapura datang ke sini?', 'Ya. Banyak kereta dalam foto bengkel kami berplat Singapura. WhatsApp kami sebelum anda menyeberang supaya kami boleh rancang petak kerja.'),
     ('Bagaimana untuk membuat tempahan?', 'WhatsApp 011-6776 1138 dengan model kereta, tahun dan apa yang anda perasan. Anda juga boleh telefon nombor yang sama.'),
 ]
 

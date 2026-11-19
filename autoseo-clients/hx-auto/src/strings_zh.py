@@ -36,9 +36,6 @@ UI = {
     'related': '其他服务',
     'ask_title': '告诉我们你的车怎么了',
     'ask_line': '发车型、年份和你察觉到的情况给我们。我们会在 WhatsApp 回复。',
-    'reg_no': '公司注册号',
-    'footer_find': '修车厂位置',
-    'footer_hours': '营业时间（Google）',
     'footer_talk': '联系我们',
     'footer_pages': '页面',
     'brands_note': '车厂品牌仅以文字提及。HX Auto Service 是独立修车厂，不是特许经销商。',
@@ -53,7 +50,6 @@ UI = {
     'review_src_facebook': 'Facebook 推荐',
     'reviews_note': '摘自我们 Google 页面上的评价，保留原文，只显示名字。',
     'map_title': 'HX Auto Service 地图，47 Jalan Indah 16/11, Taman Bukit Indah',
-    'offers_note': '来自我们6月份的 Facebook 传单。请在 WhatsApp 询问优惠是否仍然有效。',
     'zones_label': '点选车子的部位',
     'also_label': '修车厂也有',
 }
@@ -89,32 +85,28 @@ CAPTIONS = {
 }
 
 HOME = {
+    'view': '查看服务',
+    'mosaic_h2': '工位实拍',
+    'mosaic_p': '我们 Taman Bukit Indah 修车厂的真实车辆。点选照片看大图。',
+    'find_h2': '在 Taman Bukit Indah 找到我们',
+    'find_p': '只有一间修车厂，在 47 Jalan Indah 16/11，靠近 Second Link。',
+    'hours_h': '营业时间',
     'title': 'Bukit Indah 修车厂 | HX Auto Service, Iskandar Puteri',
     'desc': 'HX Auto Service，位于 Johor Bahru Iskandar Puteri Taman Bukit Indah 的修车厂。电脑诊断、保养、冷气、刹车、悬挂和拖车。WhatsApp 011-6776 1138。',
     'h1': 'Johor Taman Bukit Indah 修车厂',
     'hero_line': '先电脑扫描，再对症维修。',
     'svc_h2': '我们修什么',
     'svc_p': 'HX Auto Service 是位于 Taman Bukit Indah 的修车厂，靠近 Second Link，提供 Iskandar Puteri 和 Johor Bahru 的汽车保养服务。',
-    'all_services': '所有服务',
     'steps_h2': '怎么进行',
     'steps': [
         ('WhatsApp', '发车型、年份和你察觉到的情况。'),
         ('诊断', '我们接上扫描仪，读取故障码，再检查车子。'),
         ('修好', '根据扫描和检查的结果进行维修，然后到 Taman Bukit Indah 取车。'),
     ],
-    'trust_area': 'Taman Bukit Indah，靠近 Second Link',
-    'trust_hours': '星期一至星期六营业至晚上7:30，星期日休息。',
-    'trust_reviews': 'Google 上有21则评价',
     'band_h2': '告诉我们你的车出了什么状况。',
     'band_p': 'WhatsApp 发车型、年份和你察觉到的情况。',
     'reviews_h2': '顾客怎么说',
-    'work_h2': '工位实拍',
-    'work_line': '来自我们 Bukit Indah 修车厂的真实车辆。点选照片查看完整图片。',
     'brands_label': '工位上出现过的品牌',
-    'offers_h2': '6月传单上的优惠',
-    'offers_extra': '传单上还写了价格保证和 OEM 或原厂零件。',
-    'visit_h2': '在 Taman Bukit Indah 找到我们',
-    'visit_line': '一间修车厂，位于 47 Jalan Indah 16/11，靠近 Second Link。',
 }
 
 # 车子示意图上的部位（首页）。'svc' = 该部位链接到的服务 slug。
@@ -141,6 +133,7 @@ SERVICES = [
         'id': 'diagnostics', 'slug': 'computer-diagnostics-coding', 'zone': 'diagnostics',
         'name': '电脑诊断和编码',
         'card_line': '警告灯亮了？我们先扫描车子。',
+        'home_line': '电脑诊断、扫描和编码。',
         'title': 'Johor Bahru 电脑诊断 | HX Auto Service Bukit Indah',
         'desc': '在 Johor Bahru Taman Bukit Indah 做电脑诊断和编码。维修前先扫描读取警告灯和故障。WhatsApp HX Auto Service 011-6776 1138。',
         'h1': 'Johor Bahru 电脑诊断和编码',
@@ -150,7 +143,6 @@ SERVICES = [
             ('维修后的编码', '有些零件装上后需要对车子进行编码。请用 WhatsApp 告诉我们车型和年份，并说明更换了哪个零件。'),
         ],
         'faq': [
-            ('电脑扫描免费吗？', '我们6月份的 Facebook 传单有写免费电脑扫描。预约时请在 WhatsApp 询问优惠是否仍然有效。'),
             ('哪些车可以扫描？', '来过我们工位的车包括 Mercedes-Benz、BMW、Toyota、Honda、Kia、Mazda、Mini、Subaru、Nissan、Lexus、Land Rover 和 Volkswagen。请发车型和年份确认。'),
         ],
         'photo': 'bmw-5-series-engine', 'photos': ['mini-cooper-s-on-lift', 'mercedes-amg-matte'],
@@ -159,17 +151,16 @@ SERVICES = [
         'id': 'service-oil', 'slug': 'car-service-oil-change', 'zone': 'engine',
         'name': '保养和换机油',
         'card_line': '机油、滤芯和一般检查。',
+        'home_line': '汽车换黑油和一般保养。',
         'title': 'Iskandar Puteri 汽车保养换机油 | HX Auto Service',
         'desc': '在 Iskandar Puteri Taman Bukit Indah 做汽车保养和换机油。机油、滤芯和一般检查。WhatsApp HX Auto Service 011-6776 1138。',
         'h1': 'Iskandar Puteri 汽车保养和换机油',
         'lead': '定期保养能让小毛病保持小毛病。把车开到 Taman Bukit Indah，换机油、换新滤芯并做一般检查。',
         'body': [
             ('请告诉我们', '用 WhatsApp 发车型、年份和里程，以及上次保养的时间。如果有灯亮或声音不一样，也请说明，我们可以在同一次进厂时一起看。'),
-            ('零件', '我们6月份的 Facebook 传单提到 OEM 或原厂零件。请问我们哪种零件和机油适合你的车。'),
         ],
         'faq': [
             ('需要预约吗？', '请先 WhatsApp 我们，我们会告诉你工位什么时候有空。Google 上的营业时间是星期一至星期六，星期日休息。'),
-            ('保养时可以检查其他项目吗？', '可以。请告诉我们你察觉到的情况，也可以询问6月传单上的底盘检查和电脑扫描。'),
         ],
         'photo': 'bmw-oil-and-filter', 'photos': ['mercedes-oil-belt-parts', 'mercedes-c-class-bay'],
     },
@@ -177,6 +168,7 @@ SERVICES = [
         'id': 'engine-transmission', 'slug': 'engine-transmission-repair', 'zone': 'engine',
         'name': '引擎和变速箱',
         'card_line': '引擎维修和变速箱保养。',
+        'home_line': '引擎维修和变速箱保养。',
         'title': 'Bukit Indah 引擎变速箱维修 | HX Auto Service',
         'desc': 'HX Auto Service（Taman Bukit Indah, Iskandar Puteri）提供引擎维修和变速箱保养。WhatsApp 011-6776 1138，告诉我们车型和症状。',
         'h1': 'Bukit Indah 引擎和变速箱维修',
@@ -195,6 +187,7 @@ SERVICES = [
         'id': 'aircond', 'slug': 'aircond-service', 'zone': 'aircond',
         'name': '冷气',
         'card_line': '冷气保养和冲洗。',
+        'home_line': '冷气保养，包括我们店面横幅上的 Car Air Cond Flushing Service（冷气清洗）。',
         'title': 'Bukit Indah 汽车冷气保养 | HX Auto Service',
         'desc': '在 Iskandar Puteri Taman Bukit Indah 做汽车冷气保养和冲洗。不够冷、有异味或声音大？WhatsApp HX Auto Service 011-6776 1138。',
         'h1': 'Bukit Indah 汽车冷气保养',
@@ -213,6 +206,7 @@ SERVICES = [
         'id': 'brakes-suspension-tyres', 'slug': 'brakes-suspension-tyres-alignment', 'zone': 'brakes',
         'name': '刹车、悬挂、轮胎和四轮定位',
         'card_line': '刹得住、转得稳、坐得舒服。',
+        'home_line': '刹车系统、悬挂、轮胎和四轮定位。',
         'title': 'Bukit Indah 刹车悬挂轮胎四轮定位 | HX Auto Service',
         'desc': 'HX Auto Service（Taman Bukit Indah, Iskandar Puteri）提供刹车系统、悬挂、避震器、轮胎和四轮定位服务。WhatsApp 011-6776 1138。',
         'h1': '刹车、悬挂、轮胎和四轮定位',
@@ -232,6 +226,7 @@ SERVICES = [
         'id': 'battery-electrical', 'slug': 'battery-electrical-repair', 'zone': 'battery',
         'name': '电池和电路',
         'card_line': '发动慢和电路故障。',
+        'home_line': '电池保养和电路维修。',
         'title': 'Iskandar Puteri 汽车电池电路维修 | HX Auto Service',
         'desc': 'HX Auto Service（Taman Bukit Indah, Iskandar Puteri）提供汽车电池保养和电路维修。WhatsApp 011-6776 1138。',
         'h1': 'Iskandar Puteri 汽车电池和电路维修',
@@ -250,6 +245,7 @@ SERVICES = [
         'id': 'undercarriage', 'slug': 'undercarriage-check', 'zone': 'undercarriage',
         'name': '底盘检查',
         'card_line': '上升降机，看看车底。',
+        'home_line': '汽车底盘检查。',
         'title': 'Bukit Indah 汽车底盘检查 | HX Auto Service',
         'desc': 'HX Auto Service（Taman Bukit Indah, Iskandar Puteri）在升降机上检查汽车底盘。漏油、引擎脚、排气管和生锈。WhatsApp 011-6776 1138。',
         'h1': 'Bukit Indah 汽车底盘检查',
@@ -259,7 +255,6 @@ SERVICES = [
             ('长途驾驶之前', '长途旅行前或买二手车时，值得检查一下车底。请 WhatsApp 我们安排。'),
         ],
         'faq': [
-            ('底盘检查免费吗？', '我们6月份的 Facebook 传单有写免费底盘检查。请在 WhatsApp 询问优惠是否仍然有效。'),
             ('需要多久？', '请先 WhatsApp 我们，我们会告诉你升降机什么时候有空。'),
         ],
         'photo': 'nissan-qashqai-on-lift', 'photos': ['land-rover-discovery-sport', 'mercedes-van-two-post'],
@@ -268,6 +263,7 @@ SERVICES = [
         'id': 'towing', 'slug': 'towing-recovery', 'zone': '',
         'name': '拖车和救援',
         'card_line': '车动不了？打电话给我们。',
+        'home_line': '拖车救援服务。',
         'title': 'Iskandar Puteri 拖车救援 | HX Auto Service',
         'desc': 'HX Auto Service（Taman Bukit Indah, Iskandar Puteri, Johor Bahru）提供拖车和救援服务。致电或 WhatsApp 011-6776 1138。',
         'h1': 'Iskandar Puteri 拖车和救援',
@@ -284,12 +280,9 @@ SERVICES = [
     },
 ]
 
-OFFERS = ['免费电脑扫描', '免费底盘检查', 'RM30 废气排放检查']
 
 FAQ_HOME = [
     ('HX Auto Service 在哪里？', '在 47 Jalan Indah 16/11, Taman Bukit Indah, 79100 Iskandar Puteri, Johor Bahru。修车厂靠近 Second Link。'),
-    ('营业时间是什么时候？', '根据 Google：星期一至星期六上午9:30至晚上7:30，星期四从上午9:00开始，星期日休息。'),
-    ('新加坡车可以来吗？', '可以。我们修车厂照片里有很多车挂着新加坡车牌。过关之前请先 WhatsApp 我们，我们好安排工位。'),
     ('怎样预约？', '请 WhatsApp 011-6776 1138，告诉我们车型、年份和你察觉到的情况。也可以拨打同一个号码。'),
 ]
 

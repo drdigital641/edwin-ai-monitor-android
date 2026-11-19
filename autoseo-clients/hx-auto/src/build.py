@@ -83,8 +83,29 @@ DAYS = ['monday', 'tuesday', 'wednesday', 'thursday', 'friday', 'saturday', 'sun
 DAY_SCHEMA = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday']
 
 
+# Enhanced full-colour set (Bridge drop hx-auto-enhanced-2026-11-19): originals in images/hd/, web sizes in images/hx/.
+# <stem>-t.webp 720x900 (4:5 tile), <stem>-l.webp 1000x750 and <stem>-xl.webp 1600x1200 (4:3 full frame). No grade or tint.
+ENH = {'shopfront-signboard', 'shopfront-forecourt', 'workshop-bays-overview', 'aircond-flushing-banner', 'mercedes-c-class-bay',
+       'bmw-5-series-engine', 'bmw-5-series-on-lift', 'land-rover-discovery-sport', 'mini-cooper-s-on-lift', 'kia-cerato-on-lift',
+       'toyota-alphard-white', 'toyota-vellfire-bay', 'mazda-3-engine', 'honda-jazz-engine'}
+for _s in ENH:
+    PHOTOS[_s] = (720, 900, 1600, 1200)
+HERO_SET = [(960, 540), (1600, 900), (2400, 1350)]
+
+
 def img(stem):
-    return u(f'images/{stem}.webp')
+    return u(f'images/hx/{stem}-t.webp') if stem in ENH else u(f'images/{stem}.webp')
+
+
+def img_full(stem):
+    return u(f'images/hx/{stem}-xl.webp') if stem in ENH else u(f'images/{stem}-full.webp')
+
+
+def hero_srcset():
+    return ', '.join(f'{u(f"images/hx/hero-{w}.webp")} {w}w' for w, _ in HERO_SET)
+
+
+HERO_SIZES = '(max-width: 899px) 170vh, 100vw'
 
 
 def icon(name):
@@ -202,7 +223,8 @@ def shield(cls, lazy=False):
 def head(title, desc, path, graph, hero=False):
     css_v = ver(os.path.join(OUT, 'assets', 'site.css'))
     rob = '<meta name="robots" content="noindex, nofollow">' if NOINDEX else ''
-    pre = f'<link rel="preload" as="image" href="{img("cover")}" type="image/webp" fetchpriority="high">' if hero else ''
+    pre = (f'<link rel="preload" as="image" href="{u("images/hx/hero-1600.webp")}" imagesrcset="{hero_srcset()}" imagesizes="{HERO_SIZES}" '
+           f'type="image/webp" fetchpriority="high">') if hero else ''
     return f'''<!DOCTYPE html>
 <html lang="{L['hreflang']}">
 <head>
@@ -299,9 +321,8 @@ def footer():
     svc = ''.join(f'<a href="{pu("services/" + s["slug"] + "/")}">{E(s["name"])}</a>' for s in S.SERVICES)
     return f'''<footer class="fb">
 <div class="fb-in">
-<div class="fb-brand">{shield('fb-shield', True)}<p class="fb-name">HX AUTO SERVICE</p><p class="fb-sub">{E(S.UI['brand_line'])}</p><p class="fb-reg">{E(S.UI['reg_no'])} {E(F['company_no'])}</p></div>
-<div class="fb-find"><h2 class="fb-h">{E(S.UI['footer_find'])}</h2><address>{E(LOC['one_line'])}</address><p class="fb-links">{waze('footer')}{gmap('footer')}</p></div>
-<div class="fb-hours"><h2 class="fb-h">{E(S.UI['footer_hours'])}</h2>{hours_table('hrs hrs-sm')}</div>
+<div class="fb-brand">{shield('fb-shield', True)}<p class="fb-name">HX AUTO SERVICE <span>({E(F['company_no'])})</span></p><p class="fb-sub">{E(S.UI['brand_line'])}</p>
+<address>{E(LOC['one_line'])}</address><p class="fb-hrs">{icon('clock')}<span>{E(S.UI['hours_short'])}</span></p></div>
 <div class="fb-talk"><h2 class="fb-h">{E(S.UI['footer_talk'])}</h2>{wa('footer', S.UI['wa_btn_long'], 'lk')}{call('footer', S.UI['call_btn_long'], 'lk')}{fb('footer')}</div>
 <div><h2 class="fb-h">{E(S.UI['nav_services'])}</h2><nav class="fb-nav" aria-label="{E(S.UI['nav_services'])}">{svc}</nav></div>
 <div><h2 class="fb-h">{E(S.UI['footer_pages'])}</h2><nav class="fb-nav" aria-label="{E(S.UI['aria_pages'])}">{pages}</nav></div>
@@ -326,7 +347,7 @@ def frame(stem, cls='ph', eager=False):
     w, h, fw, fh = PHOTOS[stem]
     cap = S.CAPTIONS[stem]
     lz = '' if eager else ' loading="lazy"'
-    return (f'<figure class="{cls}"><button type="button" class="ph-b" data-full="{u("images/" + stem + "-full.webp")}" data-w="{fw}" data-h="{fh}" '
+    return (f'<figure class="{cls}"><button type="button" class="ph-b" data-full="{img_full(stem)}" data-w="{fw}" data-h="{fh}" '
             f'data-cap="{E(cap)}" aria-label="{E(S.UI["photo_open"])}: {E(cap)}"><img src="{img(stem)}" width="{w}" height="{h}" '
             f'alt="{E(cap)}" decoding="async"{lz}></button><figcaption>{E(cap)}</figcaption></figure>')
 
@@ -373,48 +394,63 @@ def diagram():
 
 SVC_ICON = {'diagnostics': 'scan', 'service-oil': 'oil', 'engine-transmission': 'engine', 'aircond': 'snow',
             'brakes-suspension-tyres': 'disc', 'battery-electrical': 'battery', 'undercarriage': 'lift', 'towing': 'tow'}
-# Photos on the home grid: the sharpest 12 (Laplacian variance measured on the live files, 19 Nov 2026).
-GRID = ['shopfront-signboard', 'workshop-bays-overview', 'mazda-3-engine', 'kia-cerato-on-lift', 'mercedes-c-class-bay', 'toyota-alphard-white',
-        'shopfront-forecourt', 'mercedes-van-two-post', 'nissan-coils-and-oil', 'toyota-vellfire-bay', 'honda-jazz-engine', 'aircond-flushing-banner']
-# Reviews: Google snippets from facts.json, shown exactly as captured. No stars, no rating, no Facebook items, never translated.
-GOOGLE_REVIEWS = [r for r in R['snippets'] if r['src'] == 'google']
+# Home bento mosaic: 5 large 4:3 frames (the drop's suggested big tiles) and 8 4:5 tiles, all full colour.
+MOSAIC = [('shopfront-signboard', 'L'), ('bmw-5-series-engine', 's'), ('kia-cerato-on-lift', 's'),
+          ('workshop-bays-overview', 'L'), ('mini-cooper-s-on-lift', 's'), ('land-rover-discovery-sport', 's'),
+          ('mercedes-c-class-bay', 'L'), ('bmw-5-series-on-lift', 's'), ('mazda-3-engine', 's'),
+          ('toyota-alphard-white', 'L'), ('toyota-vellfire-bay', 's'), ('shopfront-forecourt', 's'),
+          ('aircond-flushing-banner', 'L')]
+# Reviews: Google and Facebook snippets from facts.json, shown exactly as captured. No stars, no rating, never translated.
+REVIEWS = R['snippets']
 
 
 def services_grid():
     cards = ''.join(f'<li class="rv" style="--d:{i % 4}"><a class="sg" href="{pu("services/" + s["slug"] + "/")}"><span class="sg-i">{icon(SVC_ICON[s["id"]])}</span>'
-                    f'<h3>{E(s["name"])}</h3><p>{E(s["card_line"])}</p><span class="sg-go">{icon("go")}</span></a></li>' for i, s in enumerate(S.SERVICES))
+                    f'<h3>{E(s["name"])}</h3><p>{E(s["home_line"])}</p><span class="sg-go"><span>{E(S.HOME["view"])}</span>{icon("go")}</span></a></li>'
+                    for i, s in enumerate(S.SERVICES))
     return (f'<section class="sec lt"><div class="wrap"><div class="sec-h rv"><h2>{E(S.HOME["svc_h2"])}</h2><p>{E(S.HOME["svc_p"])}</p></div>'
-            f'<ul class="sgs">{cards}</ul><p class="act rv"><a class="lk on-lt" href="{pu("services/")}"><span>{E(S.HOME["all_services"])}</span>{icon("go")}</a></p></div></section>')
+            f'<ul class="sgs">{cards}</ul></div></section>')
+
+
+def mosaic():
+    tiles = []
+    for i, (s, k) in enumerate(MOSAIC):
+        cap = S.CAPTIONS[s]
+        if k == 'L':
+            pic = (f'<img src="{u("images/hx/" + s + "-l.webp")}" srcset="{u("images/hx/" + s + "-l.webp")} 1000w, {img_full(s)} 1600w" '
+                   f'sizes="(min-width: 900px) 50vw, 100vw" width="1000" height="750" alt="{E(cap)}" loading="lazy" decoding="async">')
+        else:
+            pic = f'<img src="{img(s)}" width="720" height="900" alt="{E(cap)}" loading="lazy" decoding="async">'
+        tiles.append(f'<figure class="mt mt-{k} rv" style="--d:{i % 3}"><button type="button" class="ph-b" data-full="{img_full(s)}" data-w="1600" data-h="1200" '
+                     f'data-cap="{E(cap)}" aria-label="{E(S.UI["photo_open"])}: {E(cap)}">{pic}</button><figcaption>{E(cap)}</figcaption></figure>')
+    brands = ''.join(f'<li>{E(b)}</li>' for b in F['brands_seen'])
+    return (f'<section class="sec dk"><div class="wrap"><div class="sec-h rv"><h2>{E(S.HOME["mosaic_h2"])}</h2><p>{E(S.HOME["mosaic_p"])}</p></div>'
+            f'<div class="bento">{"".join(tiles)}</div>'
+            f'<h3 class="mk-h">{E(S.HOME["brands_label"])}</h3><ul class="mk">{brands}</ul></div></section>')
 
 
 def steps_strip():
     ics = ['wa', 'scan', 'wrench']
     li = ''.join(f'<li class="st rv" style="--d:{i}"><span class="st-n">{i + 1}</span><span class="st-i">{icon(ics[i])}</span>'
                  f'<h3>{E(t)}</h3><p>{E(d)}</p></li>' for i, (t, d) in enumerate(S.HOME['steps']))
-    return (f'<section class="sec dk chev"><div class="wrap"><h2 class="rv">{E(S.HOME["steps_h2"])}</h2><ol class="sts">{li}</ol>'
-            f'<p class="act rv">{wa("process", S.UI["wa_btn_long"])}</p></div></section>')
+    return f'<section class="sec dk"><div class="wrap"><h2 class="rv">{E(S.HOME["steps_h2"])}</h2><ol class="sts">{li}</ol></div></section>'
 
 
-def reviews_block():
+def reviews_block(first_n=4):
     lang = '' if L['code'] == 'en' else ' lang="en"'
-    card = lambda r, i: (f'<li class="qc rv" style="--d:{i % 3}"><blockquote{lang}><p>{E(r["text"])}</p></blockquote>'
-                         f'<p class="qc-by"><span>{E(r["name"])}</span>{E(S.UI["review_src_google"])}</p></li>')
-    first = ''.join(card(r, i) for i, r in enumerate(GOOGLE_REVIEWS[:3]))
-    rest = ''.join(card(r, i) for i, r in enumerate(GOOGLE_REVIEWS[3:]))
-    return (f'<section class="sec lt silver"><div class="wrap"><h2 class="rv">{E(S.HOME["reviews_h2"])}</h2>'
-            f'<ul class="qcs">{first}</ul><details class="more"><summary>{E(S.UI["more_reviews"])} ({len(GOOGLE_REVIEWS) - 3})</summary><ul class="qcs">{rest}</ul></details>'
+    src = lambda r: S.UI['review_src_google'] if r['src'] == 'google' else S.UI['review_src_facebook']
+    card = lambda r, i: (f'<li class="qc rv" style="--d:{i % 2}"><blockquote{lang}><p>{E(r["text"])}</p></blockquote>'
+                         f'<p class="qc-by"><span>{E(r["name"])}</span>{E(src(r))}</p></li>')
+    first = ''.join(card(r, i) for i, r in enumerate(REVIEWS[:first_n]))
+    rest = ''.join(card(r, i) for i, r in enumerate(REVIEWS[first_n:]))
+    return (f'<section class="sec lt rvw"><div class="wrap"><h2 class="rv">{E(S.HOME["reviews_h2"])}</h2>'
+            f'<ul class="qcs">{first}</ul><details class="more"><summary>{E(S.UI["more_reviews"])} ({len(REVIEWS) - first_n})</summary><ul class="qcs">{rest}</ul></details>'
             f'<p class="note">{E(S.UI["reviews_note"])}</p></div></section>')
 
 
 def wa_band():
     return (f'<section class="band"><div class="wrap band-in"><div class="rv"><h2>{E(S.HOME["band_h2"])}</h2><p>{E(S.HOME["band_p"])}</p></div>'
             f'<p class="act rv">{wa("band", S.UI["wa_btn_long"])}</p></div></section>')
-
-
-def offers_block(cls='sec lt'):
-    items = ''.join(f'<li>{E(o)}</li>' for o in S.OFFERS)
-    return (f'<section class="{cls}"><div class="wrap offers"><div><h2>{E(S.HOME["offers_h2"])}</h2><p class="note">{E(S.UI["offers_note"])}</p></div>'
-            f'<ul class="tags">{items}</ul><p class="sm-p">{E(S.HOME["offers_extra"])}</p><p class="act">{wa("offers", S.UI["wa_btn_long"], "btn-wa on-lt")}</p></div></section>')
 
 
 def faq_block(faq, h2, cls='sec dk chev'):
@@ -433,11 +469,13 @@ def page_head(h1, lead, trail):
             f'<h1>{E(h1)}</h1><p class="lead">{E(lead)}</p></div></section>')
 
 
-def visit_block(place, cls='sec lt'):
-    return (f'<section class="{cls}"><div class="wrap visit"><div><h2>{E(S.HOME["visit_h2"])}</h2><p>{E(S.HOME["visit_line"])}</p>'
-            f'<address>{E(LOC["one_line"])}</address><p class="vlinks">{waze(place, "lk on-lt")}{gmap(place, "lk on-lt")}</p>'
-            f'<p class="act">{wa(place + "_visit", S.UI["wa_btn_long"], "btn-wa on-lt")}</p></div>'
-            f'<div class="hbox"><h3>{icon("clock")}{E(S.UI["footer_hours"])}</h3>{hours_table()}</div></div></section>')
+def find_block():
+    """Find us: the one place on the home page with the opening hours, plus a lazy Google Maps embed (address search, no coordinates)."""
+    return (f'<section class="sec lt"><div class="wrap find"><div class="find-x"><h2>{E(S.HOME["find_h2"])}</h2><p>{E(S.HOME["find_p"])}</p>'
+            f'<address>{E(LOC["one_line"])}</address><p class="vlinks">{waze("home", "lk on-lt")}{gmap("home", "lk on-lt")}</p>'
+            f'<div class="hbox"><h3>{icon("clock")}{E(S.HOME["hours_h"])}</h3>{hours_table()}</div></div>'
+            f'<div class="map find-m"><iframe src="{E(LOC["maps_embed"])}" title="{E(S.UI["map_title"])}" loading="lazy" '
+            f'referrerpolicy="no-referrer-when-downgrade" allowfullscreen></iframe></div></div></section>')
 
 
 # ---------- pages ----------
@@ -445,25 +483,16 @@ def home():
     H = S.HOME
     h1 = E(H['h1']).replace('Taman Bukit Indah', '<em>Taman Bukit Indah</em>', 1)
     hero = f'''<section class="hero">
-<div class="hero-bg" aria-hidden="true"><img src="{img('cover')}" width="1600" height="1200" alt="" fetchpriority="high" decoding="async"><i class="hero-streak"></i></div>
+<img class="hero-img" src="{u('images/hx/hero-1600.webp')}" srcset="{hero_srcset()}" sizes="{HERO_SIZES}" width="1600" height="900" alt="{E(S.CAPTIONS['shopfront-signboard'])}" fetchpriority="high" decoding="async">
 <div class="wrap hero-in">
 <p class="hero-k">{E(F['signboard_ms'])}</p>
 <h1>{h1}</h1>
 <p class="hero-l">{E(H['hero_line'])}</p>
 <div class="hero-cta">{wa('home_hero', S.UI['wa_btn'])}{call('home_hero', S.UI['call_btn'])}</div>
 </div>
-<ul class="trust wrap">
-<li>{icon('pin')}<span>{E(H['trust_area'])}</span></li>
-<li>{icon('clock')}<span>{E(H['trust_hours'])}</span></li>
-<li>{icon('quote')}<span>{E(H['trust_reviews'])}</span></li>
-</ul>
 </section>'''
-    brands = ''.join(f'<li>{E(b)}</li>' for b in F['brands_seen'])
-    work = (f'<section class="sec dk chev"><div class="wrap"><h2 class="rv">{E(H["work_h2"])}</h2><p class="sub rv">{E(H["work_line"])}</p>'
-            f'<div class="pg">{"".join(frame(s, "ph rv") for s in GRID)}</div>'
-            f'<h3 class="mk-h">{E(H["brands_label"])}</h3><ul class="mk">{brands}</ul></div></section>')
-    body = (hero + services_grid() + steps_strip() + reviews_block() + work + offers_block() + wa_band()
-            + faq_block(S.FAQ_HOME, S.UI['faq_h2']) + visit_block('home'))
+    body = (hero + services_grid() + mosaic() + reviews_block() + steps_strip() + wa_band()
+            + faq_block(S.FAQ_HOME, S.UI['faq_h2'], 'sec dk') + find_block())
     graph = [business(), {'@type': 'WebSite', 'name': F['short'], 'url': pabs(), 'inLanguage': L['hreflang']},
              {'@type': 'WebPage', 'name': H['title'], 'url': pabs(), 'inLanguage': L['hreflang'], 'about': {'@id': BIZ_ID}},
              faqld(S.FAQ_HOME)]
@@ -502,7 +531,7 @@ def services_index():
     body = (page_head(X['h1'], X['lead'], trail)
             + f'<section class="sec lt"><div class="wrap">{diagram()}</div></section>'
             + f'<section class="sec lt silver"><div class="wrap"><ul class="svl">{"".join(rows)}</ul></div></section>'
-            + offers_block('sec lt') + ask_block('services'))
+            + ask_block('services'))
     graph = [business(), crumbs(trail), {'@type': 'ItemList', 'itemListElement': [
         {'@type': 'ListItem', 'position': i + 1, 'name': s['name'], 'url': pabs('services/' + s['slug'] + '/')} for i, s in enumerate(S.SERVICES)]}]
     return page('services/', X['title'], X['desc'], graph, body, 'services/')
@@ -565,6 +594,8 @@ def build():
         shutil.copy(os.path.join(HERE, 'assets', f), os.path.join(OUT, 'assets', f))
     for f in os.listdir(os.path.join(HERE, 'assets', 'fonts')):
         shutil.copy(os.path.join(HERE, 'assets', 'fonts', f), os.path.join(OUT, 'assets', 'fonts', f))
+    # Web sizes of the enhanced photo set (made from the drop originals in images/hd/ on the server; see ENH).
+    shutil.copytree(os.path.join(HERE, 'images', 'hx'), os.path.join(OUT, 'images', 'hx'))
     shutil.copy(os.path.join(HERE, 'p1-cta.js'), os.path.join(OUT, 'p1-cta.js'))
     names = [n for n in dir(strings_en) if n.isupper()]
     missing = [f'{c}: {n}' for c, mod in STRINGS.items() for n in names if not hasattr(mod, n)]
