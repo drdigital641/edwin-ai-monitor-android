@@ -1,0 +1,5 @@
+User-agent: *
+Disallow: /private-settlement/sign/
+Disallow: /zh/private-settlement/sign/
+
+Sitemap: https://sgcaraccident.sg/sitemap.xml
